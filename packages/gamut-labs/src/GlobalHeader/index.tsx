@@ -41,98 +41,58 @@ export type GlobalHeaderProps =
   | ProHeader
   | LoadingHeader;
 
-const getAppHeaderItems = (
-  props: GlobalHeaderProps
-): FormattedAppHeaderItems => {
-  switch (props.type) {
-    case 'anon':
-      switch (props.variant) {
-        case 'landing':
-          return anonLandingHeaderItems(
-            props.hidePricing,
-            props.user,
-            props.renderBookmarks
-          );
-        case 'login':
-          return anonLoginHeaderItems(
-            props.hidePricing,
-            props.user,
-            props.renderBookmarks
-          );
-        case 'signup':
-          return anonSignupHeaderItems(
-            props.hidePricing,
-            props.user,
-            props.renderBookmarks
-          );
-        default:
-          return anonDefaultHeaderItems(
-            props.hidePricing,
-            props.user,
-            props.renderBookmarks
-          );
-      }
-    case 'free':
-      return freeHeaderItems(
-        props.user,
-        props.hidePricing,
-        props.renderFavorites?.desktop,
-        props.renderBookmarks
-      );
-    case 'pro':
-      return proHeaderItems(
-        props.user,
-        props.renderFavorites?.desktop,
-        props.renderBookmarks
-      );
-    case 'loading':
-      return loadingHeaderItems;
-  }
-};
+// Overloading getAppHeaderItems function to return different types based on mobile parameter
+function getAppHeaderItems(
+  props: GlobalHeaderProps,
+  mobile: false
+): FormattedAppHeaderItems;
 
-const getMobileAppHeaderItems = (
-  props: GlobalHeaderProps
-): FormattedMobileAppHeaderItems => {
+function getAppHeaderItems(
+  props: GlobalHeaderProps,
+  mobile: true
+): FormattedMobileAppHeaderItems;
+
+function getAppHeaderItems(
+  props: GlobalHeaderProps,
+  mobile: Boolean
+): FormattedAppHeaderItems | FormattedMobileAppHeaderItems {
+  const { hidePricing } = props;
   switch (props.type) {
     case 'anon':
       switch (props.variant) {
         case 'landing':
-          return anonLandingMobileHeaderItems(
-            props.hidePricing,
-            props.user,
-            props.renderBookmarks
-          );
+          return mobile
+            ? anonLandingMobileHeaderItems(hidePricing, props.user)
+            : anonLandingHeaderItems(hidePricing, props.user);
         case 'login':
-          return anonLoginMobileHeaderItems(
-            props.hidePricing,
-            props.user,
-            props.renderBookmarks
-          );
+          return mobile
+            ? anonLoginMobileHeaderItems(hidePricing, props.user)
+            : anonLoginHeaderItems(hidePricing, props.user);
         case 'signup':
-          return anonSignupMobileHeaderItems(
-            props.hidePricing,
-            props.user,
-            props.renderBookmarks
-          );
+          return mobile
+            ? anonSignupMobileHeaderItems(hidePricing, props.user)
+            : anonSignupHeaderItems(hidePricing, props.user);
         default:
-          return anonDefaultMobileHeaderItems(
-            props.hidePricing,
-            props.user,
-            props.renderBookmarks
-          );
+          return mobile
+            ? anonDefaultMobileHeaderItems(hidePricing, props.user)
+            : anonDefaultHeaderItems(hidePricing, props.user);
       }
     case 'free':
-      return freeMobileHeaderItems(
-        props.user,
-        props.hidePricing,
-        props.renderBookmarks
-      );
+      return mobile
+        ? freeMobileHeaderItems(props.user, hidePricing)
+        : freeHeaderItems(
+            props.user,
+            hidePricing,
+            props.renderFavorites?.desktop
+          );
     case 'pro':
-      return proMobileHeaderItems(props.user, props.renderBookmarks);
+      return mobile
+        ? proMobileHeaderItems(props.user)
+        : proHeaderItems(props.user, props.renderFavorites?.desktop);
     case 'loading':
-      return loadingMobileHeaderItems;
+      return mobile ? loadingMobileHeaderItems : loadingHeaderItems;
   }
-};
+}
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const { action, onLinkAction } = props;
@@ -157,7 +117,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     <Box as="header" position="sticky" top={0} zIndex={theme.elements.headerZ}>
       <AppHeader
         action={combinedAction}
-        items={getAppHeaderItems(props)}
+        items={getAppHeaderItems(props, false)}
         search={props.search}
         {...(props.type === 'anon'
           ? {
@@ -175,7 +135,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
       />
       <AppHeaderMobile
         action={combinedAction}
-        items={getMobileAppHeaderItems(props)}
+        items={getAppHeaderItems(props, true)}
         {...(props.type === 'anon' || props.type === 'loading'
           ? {}
           : {

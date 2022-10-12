@@ -66,16 +66,17 @@ All of these methods default to true for accessibility reasons, and rely on sett
     name="Clicking Outside"
     args={{
       title: undefined,
-      showCloseButton: false,
-      children: (
-        <FlexBox center fit>
-          <FillButton>Better remember to put me in!</FillButton>
-        </FlexBox>
-      ),
+      hideCloseButton: true,
     }}
     height="350px"
   >
-    {(args) => <Modal {...args} />}
+    {(args) => (
+      <Modal {...args}>
+        <FlexBox center fit>
+          <FillButton>Better remember to put me in!</FillButton>
+        </FlexBox>
+      </Modal>
+    )}
   </Story>
 </Canvas>
 
@@ -97,17 +98,18 @@ All of these methods default to true for accessibility reasons, and rely on sett
   name="Fluid"
   args={{
     size: 'fluid',
-    children: (
+  }}
+  height="500px"
+>
+  {(args) => (
+    <ModalContainer {...args}>
       <>
         <FlexBox gridArea="title" bg="beige" height="2rem" />
         <FlexBox gridArea="close" bg="beige" height="2rem" />
         <FlexBox height="380px" width="540px" bg="beige" gridArea="content" />
       </>
-    ),
-  }}
-  height="500px"
->
-  {(args) => <ModalContainer {...args} />}
+    </ModalContainer>
+  )}
 </Story>
 
 </Box>
@@ -119,17 +121,18 @@ All of these methods default to true for accessibility reasons, and rely on sett
   name="Medium"
   args={{
     size: 'medium',
-    children: (
+  }}
+  height="350px"
+>
+  {(args) => (
+    <ModalContainer {...args}>
       <>
         <FlexBox gridArea="title" bg="beige" height="2rem" />
         <FlexBox gridArea="close" bg="beige" height="2rem" />
         <FlexBox height="auto" bg="beige" gridArea="content" />
       </>
-    ),
-  }}
-  height="350px"
->
-  {(args) => <ModalContainer {...args} />}
+    </ModalContainer>
+  )}
 </Story>
 
 </Box>
@@ -141,17 +144,18 @@ All of these methods default to true for accessibility reasons, and rely on sett
   name="Small"
   args={{
     size: 'small',
-    children: (
+  }}
+  height="350px"
+>
+  {(args) => (
+    <ModalContainer {...args}>
       <>
         <FlexBox gridArea="title" bg="beige" height="2rem" />
         <FlexBox gridArea="close" bg="beige" height="2rem" />
         <FlexBox gridArea="content" bg="beige" height="auto" />
       </>
-    ),
-  }}
-  height="350px"
->
-  {(args) => <ModalContainer {...args} />}
+    </ModalContainer>
+  )}
 </Story>
 
 </Box>
@@ -165,10 +169,14 @@ All of these methods default to true for accessibility reasons, and rely on sett
     name="Scrollable"
     args={{
       title: undefined,
-      showCloseButton: false,
+      hideCloseButton: true,
       size: 'medium',
       scrollable: true,
-      children: (
+    }}
+    height="750px"
+  >
+    {(args) => (
+      <Modal {...args}>
         <FlexBox flexDirection="column">
           <Box height="600px">
             Hello, I'm a very large box... Try zooming in and you'll be able to
@@ -176,11 +184,8 @@ All of these methods default to true for accessibility reasons, and rely on sett
           </Box>
           <FillButton>Better remember to put me in!</FillButton>
         </FlexBox>
-      ),
-    }}
-    height="750px"
-  >
-    {(args) => <Modal {...args} />}
+      </Modal>
+    )}
   </Story>
 </Canvas>
 
@@ -191,7 +196,7 @@ All of these methods default to true for accessibility reasons, and rely on sett
     name="Multiple views"
     args={{
       title: undefined,
-      showCloseButton: true,
+      hideCloseButton: false,
       size: 'medium',
       scrollable: true,
       views: [

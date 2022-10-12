@@ -18,6 +18,7 @@ export type NotificationsContentsProps = {
   actions: NotificationActions;
   notifications: Notification[];
   notificationListRef?: React.RefObject<HTMLDivElement>;
+  setOpenCrossDeviceItemId?: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export type NotificationsRendererProps = NotificationsContentsProps & {

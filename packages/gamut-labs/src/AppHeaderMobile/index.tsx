@@ -1,6 +1,6 @@
 import { Box, ContentContainer, IconButton, Overlay } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
-import { css } from '@codecademy/gamut-styles';
+import { Background, css, useColorModes } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
@@ -78,6 +78,8 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   setOpenCrossDeviceItemId,
   crossDeviceBookmarkParts,
 }) => {
+  const [mode, , modes] = useColorModes();
+  const bgCurrent = modes[mode]['background-current'];
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [allowScroll, setAllowScroll] = useState<boolean>(false);
 
@@ -140,8 +142,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   const onItemType = (type: string | undefined) => {
     if (
       type &&
-      (type === 'catalog-dropdown' ||
-        type === 'experimental-resources-dropdown')
+      (type === 'catalog-dropdown' || type === 'resources-dropdown')
     ) {
       setAllowScroll(true);
     } else {
@@ -183,37 +184,39 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         onRequestClose={() => setMobileMenuOpen(false)}
         allowScroll={allowScroll}
       >
-        <HeaderHeightArea
-          display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}
-          as="nav"
-          title="Mobile Navigation"
-          data-testid="header-mobile-menu-dropdown"
-        >
-          <StyledAppBar>
-            <StyledMenuBar role="menubar">
-              {mapItemsToElement(items.left, 'left')}
-              <AppHeaderListItem ml="auto">
-                <IconButton
-                  aria-label="close menu"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                  }}
-                  icon={CloseIcon}
-                />
-              </AppHeaderListItem>
-            </StyledMenuBar>
-          </StyledAppBar>
-          <StyledContentContainer as="ul" role="menubar" size="small">
-            <AppHeaderMainMenuMobile
-              action={action}
-              items={items.mainMenu}
-              onSearch={onSearch}
-              getItemType={onItemType}
-              isAnon={isAnon}
-              handleCloseMainMenu={() => setMobileMenuOpen(false)}
-            />
-          </StyledContentContainer>
-        </HeaderHeightArea>
+        <Background bg={bgCurrent}>
+          <HeaderHeightArea
+            display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}
+            as="nav"
+            title="Mobile Navigation"
+            data-testid="header-mobile-menu-dropdown"
+          >
+            <StyledAppBar>
+              <StyledMenuBar role="menubar">
+                {mapItemsToElement(items.left, 'left')}
+                <AppHeaderListItem ml="auto">
+                  <IconButton
+                    aria-label="close menu"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                    }}
+                    icon={CloseIcon}
+                  />
+                </AppHeaderListItem>
+              </StyledMenuBar>
+            </StyledAppBar>
+            <StyledContentContainer as="ul" role="menubar" size="small">
+              <AppHeaderMainMenuMobile
+                action={action}
+                items={items.mainMenu}
+                onSearch={onSearch}
+                getItemType={onItemType}
+                isAnon={isAnon}
+                handleCloseMainMenu={() => setMobileMenuOpen(false)}
+              />
+            </StyledContentContainer>
+          </HeaderHeightArea>
+        </Background>
       </StyledOverlay>
       <Box display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}>
         {notificationsView}

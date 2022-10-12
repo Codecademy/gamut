@@ -3,6 +3,150 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [50.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.8.0...@codecademy/gamut@50.8.1) (2022-10-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [50.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.7.1...@codecademy/gamut@50.8.0) (2022-10-05)
+
+
+### Features
+
+* **Selectdropdown:**  Add subtitle, rightlabel, disabled, and divider options ([1a1b9b6](https://github.com/Codecademy/gamut/commit/1a1b9b6b510ebac183be092c15f36091b1b462c2))
+
+
+
+### [50.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.7.0...@codecademy/gamut@50.7.1) (2022-10-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [50.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.6...@codecademy/gamut@50.7.0) (2022-10-03)
+
+
+### Features
+
+* **Markdown:** add indentation to details  ([8aded87](https://github.com/Codecademy/gamut/commit/8aded876a22b906838675ba88a7060174b99d531))
+
+
+
+### [50.6.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.5...@codecademy/gamut@50.6.6) (2022-09-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [50.6.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.4...@codecademy/gamut@50.6.5) (2022-09-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [50.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.3...@codecademy/gamut@50.6.4) (2022-09-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [50.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.2...@codecademy/gamut@50.6.3) (2022-09-08)
+
+
+### Bug Fixes
+
+* **AccordionRow, ListRow:** remove incorrect aria-expanded ([f347777](https://github.com/Codecademy/gamut/commit/f3477779899ba45ed2d9758a478397aea498928e))
+
+
+
+### [50.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.1...@codecademy/gamut@50.6.2) (2022-09-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [50.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.0...@codecademy/gamut@50.6.1) (2022-08-31)
+
+
+### Bug Fixes
+
+* **useDebouncedField:** fixing helpers logic ([0273258](https://github.com/Codecademy/gamut/commit/0273258e3c3fb2cb4d63d50aa1e67efac5bef0cd))
+
+
+
+## [50.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.5.4...@codecademy/gamut@50.6.0) (2022-08-29)
+
+
+### Features
+
+* **Modal:** change overlay shroud opacity and make modals use dark by default  ([#2499](https://github.com/Codecademy/gamut/issues/2499)) ([74e9301](https://github.com/Codecademy/gamut/commit/74e93010035c430bec921108d20ae27bd833bc01))
+
+
+
+### [50.5.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.5.3...@codecademy/gamut@50.5.4) (2022-08-29)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [50.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.5.2...@codecademy/gamut@50.5.3) (2022-08-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [50.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.5.1...@codecademy/gamut@50.5.2) (2022-08-25)
+
+
+### Bug Fixes
+
+* **useDebouncedField:** Exporting dirtying key, fixing re-dirty on watch key change, adding `shouldDirtyOnChange` arg ([9625b35](https://github.com/Codecademy/gamut/commit/9625b359411d87bd1819c4aaf3b96ed226193b88))
+
+
+
+### [50.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.5.0...@codecademy/gamut@50.5.1) (2022-08-24)
+
+
+### Bug Fixes
+
+* **Tooltip:** fix useLayoutEffect ssr warning ([9377266](https://github.com/Codecademy/gamut/commit/9377266a116b7e2cbee4712729ac0a75a93d042c))
+
+
+
+## [50.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.4.3...@codecademy/gamut@50.5.0) (2022-08-24)
+
+
+### Features
+
+* **ConnectedForm:** pass onError prop through to react-hook-form ([07973a3](https://github.com/Codecademy/gamut/commit/07973a37cd7074ebf2520cb6dbc20fdd601c07f0))
+
+
+
+### [50.4.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.4.2...@codecademy/gamut@50.4.3) (2022-08-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [50.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.4.1...@codecademy/gamut@50.4.2) (2022-08-22)
 
 **Note:** Version bump only for package @codecademy/gamut

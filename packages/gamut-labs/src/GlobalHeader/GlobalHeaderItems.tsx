@@ -24,7 +24,6 @@ import {
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
-import { headerResourcesList } from '../lib/resourcesList';
 import { User } from './types';
 
 export const logo: AppHeaderLogoItem = {
@@ -46,16 +45,6 @@ export const myHome: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const courseCatalog: AppHeaderLinkItem = {
-  dataTestId: 'header-catalog',
-  icon: BookFlipPageIcon,
-  id: 'course-catalog',
-  text: 'Catalog',
-  href: '/catalog',
-  trackingTarget: 'topnav_catalog',
-  type: 'link',
-};
-
 export const catalogDropdown = (
   hideCareerPaths?: boolean
 ): AppHeaderCatalogDropdownItem => ({
@@ -68,22 +57,13 @@ export const catalogDropdown = (
   hideCareerPaths,
 });
 
-export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
-  icon: NotebookIcon,
-  id: 'resources',
-  text: 'Resources',
-  popover: headerResourcesList,
-  trackingTarget: 'topnav_resources',
-  type: 'dropdown',
-};
-
-export const refreshedResourcesDropdown: AppHeaderResourcesDropdownItem = {
+export const resourcesDropdown: AppHeaderResourcesDropdownItem = {
   dataTestId: 'header-resources',
   icon: NotebookIcon,
-  id: 'experimental-resources-dropdown',
+  id: 'resources-dropdown',
   text: 'Resources',
   trackingTarget: 'topnav_resources',
-  type: 'experimental-resources-dropdown',
+  type: 'resources-dropdown',
 };
 
 export const communityDropdown: AppHeaderSimpleDropdownItem = {
@@ -197,16 +177,6 @@ export const favorites = (
   };
 };
 
-export const bookmarks = (
-  renderBookmarks: () => ReactNode
-): AppHeaderRenderElementItem => {
-  return {
-    id: 'bookmarks',
-    renderElement: renderBookmarks,
-    type: 'render-element',
-  };
-};
-
 const profileMyProfile: AppHeaderLinkItem = {
   id: 'my-profile',
   icon: PersonIcon,
@@ -293,13 +263,13 @@ export const freeProfile = (
 ): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile];
 
-  if (user.isBusinessAdmin || !user.isBusinessSsoUser) {
+  if (user?.isBusinessAdmin || !user?.isBusinessSsoUser) {
     topSection.push(profileAccount);
   }
 
   topSection.push(profileMyHome);
 
-  if (!isMobile && user.isAccountManager) {
+  if (!isMobile && user?.isAccountManager && !user?.hideBusinessAccount) {
     topSection.push(profileBusinessAccount);
   }
   topSection.push(profileHelpCenter);
@@ -328,7 +298,10 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
 
   topSection.push(profileMyHome);
 
-  if (user?.isAccountManager || user?.isBusinessAdmin) {
+  if (
+    (user?.isAccountManager || user?.isBusinessAdmin) &&
+    !user?.hideBusinessAccount
+  ) {
     topSection.push(profileBusinessAccount);
   }
   if (user.showReferrals) {

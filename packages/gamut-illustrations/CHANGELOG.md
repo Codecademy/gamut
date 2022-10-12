@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.32.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.32.1...@codecademy/gamut-illustrations@0.32.2) (2022-10-06)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.32.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.32.0...@codecademy/gamut-illustrations@0.32.1) (2022-10-04)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+## [0.32.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.31.0...@codecademy/gamut-illustrations@0.32.0) (2022-09-06)
+
+
+### Features
+
+* **SyllabusIllustration:** add new illustration ([69b9bf3](https://github.com/Codecademy/gamut/commit/69b9bf383c0b20c3f3d16c1561e3890932ca2825))
+
+
+
+## [0.31.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.30.0...@codecademy/gamut-illustrations@0.31.0) (2022-08-25)
+
+
+### Features
+
+* **Illustration:** add TinyBlocks ([7f33cf8](https://github.com/Codecademy/gamut/commit/7f33cf8741a65fc448a4b23d7b1658d426c2aa36))
+
+
+
 ## [0.30.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.29.1...@codecademy/gamut-illustrations@0.30.0) (2022-08-22)
 
 

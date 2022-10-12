@@ -39,6 +39,13 @@ export const useBookmarkComponentsPair = ({
     );
   };
 
+  const onRequestCloseHandler = () => {
+    // When on the mobile view, we don't want the desktop handler to fire.
+    if (window.innerWidth >= 1200) {
+      setOpenCrossDeviceItemId(CrossDeviceItemId.UNSET);
+    }
+  };
+
   return [
     {
       id,
@@ -68,6 +75,7 @@ export const useBookmarkComponentsPair = ({
           outline
           isOpen
           targetRef={buttonRef}
+          onRequestClose={onRequestCloseHandler}
         >
           <>{bookmarkParts.desktop()}</>
         </Popover>

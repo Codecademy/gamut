@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [14.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.1.0...@codecademy/gamut-styles@14.1.1) (2022-10-06)
+
+
+### Bug Fixes
+
+* **ColorMode:** always return color name from hook ([e9186ae](https://github.com/Codecademy/gamut/commit/e9186aef7a4c9e4d6ce279f4496523664db46c38))
+
+
+
+## [14.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.0.4...@codecademy/gamut-styles@14.1.0) (2022-10-04)
+
+
+### Features
+
+* **ColorMode:** correct background-current from useColorMode hook ([6e20044](https://github.com/Codecademy/gamut/commit/6e20044679771b0f8fd1b4faecf17de0a14202d2))
+
+
+
 ### [14.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.0.3...@codecademy/gamut-styles@14.0.4) (2022-08-19)
 
 **Note:** Version bump only for package @codecademy/gamut-styles

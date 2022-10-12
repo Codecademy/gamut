@@ -3,7 +3,7 @@ import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { newHeaderResourcesList } from '../../../lib/resourcesList';
+import { headerResourcesList } from '../../../lib/resourcesList';
 import { LayoutGridAntiAliased } from '../../shared';
 import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
 
@@ -58,7 +58,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
 
   return (
     <LayoutGridAntiAliased onKeyDown={keyDownEvents} ref={ref} as="ul" p={0}>
-      {newHeaderResourcesList.map((section) => (
+      {headerResourcesList.map((section) => (
         <StyledColumn size={12} key={section.title} as="li">
           <LayoutGrid>
             <Column size={{ xs: 12, md: 3 }}>

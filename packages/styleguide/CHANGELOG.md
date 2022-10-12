@@ -3,6 +3,260 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [61.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.7.1...@codecademy/styleguide@61.7.2) (2022-10-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.7.0...@codecademy/styleguide@61.7.1) (2022-10-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [61.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.6.0...@codecademy/styleguide@61.7.0) (2022-10-05)
+
+
+### Features
+
+* **Selectdropdown:**  Add subtitle, rightlabel, disabled, and divider options ([1a1b9b6](https://github.com/Codecademy/gamut/commit/1a1b9b6b510ebac183be092c15f36091b1b462c2))
+
+
+
+## [61.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.15...@codecademy/styleguide@61.6.0) (2022-10-04)
+
+
+### Features
+
+* **ColorMode:** correct background-current from useColorMode hook ([6e20044](https://github.com/Codecademy/gamut/commit/6e20044679771b0f8fd1b4faecf17de0a14202d2))
+
+
+
+### [61.5.15](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.14...@codecademy/styleguide@61.5.15) (2022-10-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.14](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.13...@codecademy/styleguide@61.5.14) (2022-09-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.13](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.12...@codecademy/styleguide@61.5.13) (2022-09-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.12](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.11...@codecademy/styleguide@61.5.12) (2022-09-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.11](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.10...@codecademy/styleguide@61.5.11) (2022-09-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.10](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.9...@codecademy/styleguide@61.5.10) (2022-09-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.8...@codecademy/styleguide@61.5.9) (2022-09-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.7...@codecademy/styleguide@61.5.8) (2022-09-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.6...@codecademy/styleguide@61.5.7) (2022-09-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.5...@codecademy/styleguide@61.5.6) (2022-09-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.4...@codecademy/styleguide@61.5.5) (2022-09-08)
+
+
+### Bug Fixes
+
+* **modals:** fixing children in modals ([#2538](https://github.com/Codecademy/gamut/issues/2538)) ([6c2ffbc](https://github.com/Codecademy/gamut/commit/6c2ffbc1250bc49412998e54154379398f2f2a78))
+
+
+
+### [61.5.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.3...@codecademy/styleguide@61.5.4) (2022-09-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.2...@codecademy/styleguide@61.5.3) (2022-09-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.1...@codecademy/styleguide@61.5.2) (2022-09-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.5.0...@codecademy/styleguide@61.5.1) (2022-08-31)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [61.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.4.2...@codecademy/styleguide@61.5.0) (2022-08-31)
+
+
+### Features
+
+* update webpack-config to 6.2.0 ([#2527](https://github.com/Codecademy/gamut/issues/2527)) ([fa596ab](https://github.com/Codecademy/gamut/commit/fa596abcd220dea694f1d96ba2229726f10c672c))
+
+
+
+### [61.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.4.1...@codecademy/styleguide@61.4.2) (2022-08-31)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.4.0...@codecademy/styleguide@61.4.1) (2022-08-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [61.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.5...@codecademy/styleguide@61.4.0) (2022-08-29)
+
+
+### Features
+
+* **Footer:** remove shop link from footer ([1f308af](https://github.com/Codecademy/gamut/commit/1f308afa87682ab1cccf018d68b61b2cd2a20edc))
+
+
+
+### [61.3.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.4...@codecademy/styleguide@61.3.5) (2022-08-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.3.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.3...@codecademy/styleguide@61.3.4) (2022-08-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.2...@codecademy/styleguide@61.3.3) (2022-08-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.1...@codecademy/styleguide@61.3.2) (2022-08-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.3.0...@codecademy/styleguide@61.3.1) (2022-08-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [61.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.2.4...@codecademy/styleguide@61.3.0) (2022-08-24)
+
+
+### Features
+
+* **ConnectedForm:** pass onError prop through to react-hook-form ([07973a3](https://github.com/Codecademy/gamut/commit/07973a37cd7074ebf2520cb6dbc20fdd601c07f0))
+
+
+
+### [61.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.2.3...@codecademy/styleguide@61.2.4) (2022-08-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [61.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.2.2...@codecademy/styleguide@61.2.3) (2022-08-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [61.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@61.2.1...@codecademy/styleguide@61.2.2) (2022-08-22)
 
 **Note:** Version bump only for package @codecademy/styleguide
