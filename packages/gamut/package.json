@@ -35,7 +35,7 @@
     "@types/marked": "^1.1.0",
     "classnames": "^2.2.5",
     "framer-motion": "^7.5.1",
-    "html-to-react": "^1.4.2",
+    "html-to-react": "^1.5.0",
     "invariant": "^2.2.4",
     "lodash": "^4.17.5",
     "marked": "^0.7.0",
@@ -47,7 +47,7 @@
     "react-select": "^5.2.2",
     "react-truncate-markup": "^5.1.2",
     "react-use": "^15.3.8",
-    "sanitize-markdown": "^2.6.6"
+    "sanitize-markdown": "^2.6.7"
   },
   "scripts": {
     "verify": "tsc --noEmit",
