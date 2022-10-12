@@ -23,10 +23,9 @@
     "@emotion/styled": "^11.3.0",
     "monaco-editor": "0.20.0",
     "react-monaco-editor": "0.46.0",
-    "react-resize-detector": "5.2.0"
+    "react-resize-detector": "7.1.2"
   },
   "devDependencies": {
-    "@types/react-resize-detector": "5.0.0",
     "monaco-editor-webpack-plugin": "1.9.1"
   },
   "scripts": {
