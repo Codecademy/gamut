@@ -28,23 +28,6 @@ This general bottom-of-the-page component should be at the bottom of roughly eve
 
 > This story is best viewed in Canvas mode.
 
-## Common Geo Usage
-
-Most geographies of usesrs, including `'US'`, will see all links in the footer: including the _Shop_ link.
-
-<Canvas>
-  <Story name="Common Geo Usage">{() => <GlobalFooter userGeo="US" />}</Story>
-</Canvas>
-
-## Indian Geo Usage
-
-Users with `userGeo` set to `"IN"` will not see the _Shop_ link.
-This is to comply with country regulations around our nascent Indian office.
-
-<Canvas>
-  <Story name="Indian Geo Usage">{() => <GlobalFooter userGeo="IN" />}</Story>
-</Canvas>
-
 ## Hide Pricing
 
 <Canvas>

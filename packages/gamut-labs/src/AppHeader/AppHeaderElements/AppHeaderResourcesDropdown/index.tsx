@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-import { newHeaderResourcesList } from '../../../lib/resourcesList';
+import { headerResourcesList } from '../../../lib/resourcesList';
 import {
   DropdownAnchor,
   DropdownIcon,
@@ -44,7 +44,7 @@ export const AppHeaderResourcesDropdown: React.FC<AppHeaderResourceDropdownProps
 
   const [focusIndex, setFocusIndex] = useState(0);
 
-  const items = newHeaderResourcesList.map((item) => item.data.length);
+  const items = headerResourcesList.map((item) => item.data.length);
   const itemsCount =
     items.reduce((prevLength, currLength) => prevLength + currLength) + 4; // extra for hardcoded headers and descriptions
   const focusFirstItem = () => setFocusIndex(0);

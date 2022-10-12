@@ -12,9 +12,6 @@ type RenderFavorites = {
   desktop: () => ReactNode;
 };
 
-// TODO: REACH-1977 remove after switch to crossDeviceBookmarkParts
-export type RenderBookmarks = () => ReactNode;
-
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
 
 type BaseHeader = {
@@ -25,7 +22,6 @@ type BaseHeader = {
   className?: string;
   hidePricing?: boolean;
   search: AppHeaderSearch;
-  renderBookmarks?: RenderBookmarks;
   crossDeviceBookmarkParts?: CrossDeviceBookmarkParts;
 };
 
@@ -43,8 +39,7 @@ export type User = {
   showProUpgrade?: boolean;
   showReferrals?: boolean;
   hideCareerPaths?: boolean;
-  // TODO: DISC-547 - remove after feature flag test for catalog is complete
-  useNewCatalogDropdown?: boolean;
+  hideBusinessAccount?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {

@@ -80,7 +80,7 @@ export type AppHeaderCatalogDropdownItem = AppHeaderBaseItem<'catalog-dropdown'>
   hideCareerPaths?: boolean;
 };
 
-export type AppHeaderResourcesDropdownItem = AppHeaderBaseItem<'experimental-resources-dropdown'> & {
+export type AppHeaderResourcesDropdownItem = AppHeaderBaseItem<'resources-dropdown'> & {
   icon?: React.ComponentType<GamutIconProps>;
   text: string;
   trackingTarget: string;
@@ -105,4 +105,12 @@ export type AppHeaderResourcesDataItem = {
   description?: string;
   link?: AppHeaderLinkItem;
   data: (AppHeaderLinkItem | AppHeaderDescriptiveLinkItem)[];
+};
+
+export type AppFooterResourcesDataItem = {
+  id: string;
+  href: string;
+  trackingTarget: string;
+  text: string;
+  newTab?: boolean;
 };

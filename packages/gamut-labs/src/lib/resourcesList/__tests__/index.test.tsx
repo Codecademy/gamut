@@ -1,13 +1,14 @@
 import { footerResourcesList, headerResourcesList } from '../index';
 
-const resourcesCount = 8;
+const footerResourcesCount = 8;
+const headerResourcesCount = 3;
 
 describe('Resources List', () => {
-  it('returns all the footer items', () => {
-    expect(footerResourcesList.length).toBe(resourcesCount);
+  it('returns all the footer resource items', () => {
+    expect(footerResourcesList.length).toBe(footerResourcesCount);
   });
 
-  it('returns all the header items', () => {
-    expect(headerResourcesList.length).toBe(resourcesCount);
+  it('returns all the header resource sections which contain items', () => {
+    expect(headerResourcesList.length).toBe(headerResourcesCount);
   });
 });

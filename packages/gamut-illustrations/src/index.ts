@@ -31,5 +31,7 @@ export * from './PracticeProject';
 export * from './Puzzle';
 export * from './Python';
 export * from './Sun';
+export * from './Syllabus';
+export * from './TinyBlocks';
 export * from './Target';
 export * from './types';
