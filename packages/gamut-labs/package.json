@@ -31,7 +31,6 @@
     "@codecademy/gamut-patterns": "^0.8.15",
     "@codecademy/gamut-styles": "^14.1.1",
     "@codecademy/variance": "^0.20.3",
-    "@loadable/component": "^5.15.2",
     "classnames": "^2.2.5",
     "framer-motion": "^7.5.1",
     "freezeframe": "^5.0.2",
@@ -51,7 +50,6 @@
     "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^14.4.3",
     "@types/enzyme": "3.10.7",
-    "@types/loadable__component": "^5.13.4",
     "enzyme": "3.11.0"
   },
   "scripts": {
