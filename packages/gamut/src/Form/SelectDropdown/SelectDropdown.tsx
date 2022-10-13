@@ -14,6 +14,7 @@ import {
   CustomContainer,
   formatGroupLabel,
   formatOptionLabel,
+  MultiValueWithColorMode,
   TypedReactSelect,
 } from './elements';
 import {
@@ -40,7 +41,7 @@ const defaultProps = {
     DropdownIndicator: ChevronDropdown,
     IndicatorSeparator: () => null,
     SelectContainer: CustomContainer,
-    MultiValue: SelectDropdownElements.MultiValue,
+    MultiValue: MultiValueWithColorMode,
     MultiValueLabel: SelectDropdownElements.MultiValueLabel,
   },
 };
