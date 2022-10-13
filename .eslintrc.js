@@ -3,7 +3,7 @@ module.exports = {
 
   extends: [require.resolve('@codecademy/eslint-config')],
 
-  plugins: ['eslint-plugin-gamut'],
+  plugins: ['eslint-plugin-gamut', 'plugin:react/jsx-runtime'],
 
   rules: {
     'gamut/prefer-themed': 'error',

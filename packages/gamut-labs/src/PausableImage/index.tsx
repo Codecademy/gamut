@@ -1,11 +1,8 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import loadable from '@loadable/component';
 import * as React from 'react';
 
-const BaseImage = loadable(() => import('./BaseImage'), {
-  ssr: false,
-});
+const BaseImage = React.lazy(() => import('./BaseImage'));
 
 interface PauseableImageProps {
   src: string;
@@ -28,12 +25,6 @@ export const PausableImage: React.FC<PauseableImageProps> = (props) => {
   const staticImage = <StaticImage {...props} />;
 
   return (
-    <>
-      {props.src?.endsWith('.gif') ? (
-        <BaseImage {...props} fallback={staticImage} />
-      ) : (
-        staticImage
-      )}
-    </>
+    <>{props.src?.endsWith('.gif') ? <BaseImage {...props} /> : staticImage}</>
   );
 };
