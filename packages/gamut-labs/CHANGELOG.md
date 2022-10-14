@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.6.3...@codecademy/gamut-labs@33.6.4) (2022-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [33.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.6.2...@codecademy/gamut-labs@33.6.3) (2022-10-11)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** capitalize S in JavaScript in catalog dropdown ([2535317](https://github.com/Codecademy/gamut/commit/253531759b55b1097df0259b8dccf292436a20b5))
+
+
+
 ### [33.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.6.1...@codecademy/gamut-labs@33.6.2) (2022-10-06)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

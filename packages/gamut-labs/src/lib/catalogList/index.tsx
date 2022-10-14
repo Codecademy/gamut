@@ -57,7 +57,7 @@ export const topLanguages: AppHeaderLinkItem[] = [
     id: 'javascript',
     href: '/catalog/language/javascript',
     trackingTarget: 'topnav_catalog_skill_javascript',
-    text: 'Javascript',
+    text: 'JavaScript',
     type: 'link',
   },
   {
