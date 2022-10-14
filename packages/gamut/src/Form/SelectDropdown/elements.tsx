@@ -1,6 +1,7 @@
 import {
   ArrowChevronDownIcon,
   MiniChevronDownIcon,
+  MiniDeleteIcon,
 } from '@codecademy/gamut-icons';
 import { ColorMode, useColorModes } from '@codecademy/gamut-styles';
 import React from 'react';
@@ -8,6 +9,7 @@ import ReactSelect, {
   components as SelectDropdownElements,
   GroupBase,
   MultiValueProps,
+  MultiValueRemoveProps,
   Props,
 } from 'react-select';
 
@@ -23,6 +25,7 @@ import {
 const {
   DropdownIndicator,
   MultiValue,
+  MultiValueRemove,
   SelectContainer,
 } = SelectDropdownElements;
 
@@ -35,6 +38,12 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
     </ColorMode>
   );
 };
+
+export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => (
+  <MultiValueRemove {...props}>
+    <MiniDeleteIcon size={12} />
+  </MultiValueRemove>
+);
 
 const indicatorSizes = {
   small: {
