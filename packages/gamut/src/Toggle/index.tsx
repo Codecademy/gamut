@@ -42,7 +42,6 @@ export const Toggle = <Props extends ToggleProps>({
         mr={label && labelSide === 'left' ? 0 : 16}
         ml={label && labelSide === 'right' ? 0 : 16}
         {...(isButton && toggleProps)}
-        {...(isButton && { type: 'button' })}
       >
         {!isButton && <ToggleInput {...toggleProps} />}
         <Circle
