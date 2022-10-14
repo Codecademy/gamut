@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [50.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.8.1...@codecademy/gamut@50.9.0) (2022-10-14)
+
+
+### Features
+
+* **Toggle:** Set toggle as type button when set as button ([1635a21](https://github.com/Codecademy/gamut/commit/1635a2185c54e8530efeb3eebc8f86fc00d1a4d9))
+
+
+
+### [50.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.8.0...@codecademy/gamut@50.8.1) (2022-10-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [50.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.7.1...@codecademy/gamut@50.8.0) (2022-10-05)
+
+
+### Features
+
+* **Selectdropdown:**  Add subtitle, rightlabel, disabled, and divider options ([1a1b9b6](https://github.com/Codecademy/gamut/commit/1a1b9b6b510ebac183be092c15f36091b1b462c2))
+
+
+
+### [50.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.7.0...@codecademy/gamut@50.7.1) (2022-10-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [50.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.6.6...@codecademy/gamut@50.7.0) (2022-10-03)
 
 
