@@ -30,5 +30,6 @@ export const getToggleElementProps = <Props extends ToggleProps>({
         role: 'switch',
         'aria-checked': checked,
         onClick,
+        type: 'button',
       };
 };
