@@ -285,7 +285,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
               pt={{ _: 8, sm: 0 }}
             >
               {quizAnchorData.text}
-              <span aria-hidden>→</span>
+              <span aria-hidden>&nbsp;→</span>
             </Anchor>
           </Box>
         </FlexBox>

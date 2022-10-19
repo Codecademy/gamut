@@ -85,7 +85,8 @@ export const AppHeaderResourcesSection = React.forwardRef<
                     mt={{ _: 24, lg: section.description ? 24 : 48 }}
                     target={section.link.newTab ? '_blank' : '_self'}
                   >
-                    {section.link.text} <span aria-hidden>→</span>
+                    {section.link.text}
+                    <span aria-hidden>&nbsp;→</span>
                   </Anchor>
                 )}
               </Background>
