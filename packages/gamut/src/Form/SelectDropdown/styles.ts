@@ -7,6 +7,13 @@ import {
 import { StylesConfig } from 'react-select';
 
 import {
+  dismissSharedStyles,
+  tagBaseStyles,
+  tagBorderRadius,
+  tagLabelFontSize,
+  tagLabelPadding,
+} from '../../Tag/elements';
+import {
   formBaseComponentStyles,
   formBaseFieldStylesObject,
   formFieldDisabledStyles,
@@ -151,23 +158,26 @@ export const getMemoizedStyles = (
     }),
     multiValue: (provided) => ({
       ...provided,
+      ...tagBaseStyles,
       cursor: 'pointer',
-      alignItems: 'center',
-      background: theme.colors['background-selected'],
+      background: theme.colors.background,
     }),
     multiValueLabel: (provided) => ({
       ...provided,
+      fontSize: `${tagLabelFontSize}px`,
       color: theme.colors.text,
+      borderRadius: tagBorderRadius,
+      padding: `0 ${tagLabelPadding}px`,
+      paddingLeft: `${tagLabelPadding}px`, // default label has an explicit rule for padding left so we need this to override it
     }),
     multiValueRemove: (provided) => ({
       ...provided,
+      ...dismissSharedStyles,
       cursor: 'pointer',
-      paddingTop: '7px',
-      paddingBottom: '7px',
-      background: theme.colors['background-selected'],
+      borderRadius: `0px ${tagBorderRadius} ${tagBorderRadius} 0px`, // only want border radius on top and bottom right
+      padding: 0, // default remove has padding left and right that we don't need
       ':hover': {
         backgroundColor: theme.colors['background-hover'],
-        color: theme.colors['primary-hover'],
       },
     }),
     valueContainer: (provided) => ({
