@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [50.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.9.0...@codecademy/gamut@50.10.0) (2022-10-19)
+
+
+### Features
+
+* **SelectDropdown:** make multi value look like tag ([5e45750](https://github.com/Codecademy/gamut/commit/5e457500f9c880a726e0d60fbab790cd4ecbc383))
+
+
+
 ## [50.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.8.1...@codecademy/gamut@50.9.0) (2022-10-14)
 
 
