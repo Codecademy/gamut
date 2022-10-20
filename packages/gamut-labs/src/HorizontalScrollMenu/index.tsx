@@ -13,9 +13,6 @@ const ScrollContainer = styled(FlexBox)`
 
 const ScrollItemWrapper = styled(Box)`
   scroll-snap-align: start;
-  &[aria-hidden='true'] {
-    visibility: hidden;
-  }
 `;
 
 export interface HorizontalScrollMenuProps {

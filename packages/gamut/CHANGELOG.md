@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [51.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.10.0...@codecademy/gamut@51.0.0) (2022-10-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Container:** Remove `Container`
+
+### Miscellaneous Chores
+
+* **Container:** Remove `Container` ([9508eab](https://github.com/Codecademy/gamut/commit/9508eabbf66bd193e2057ebe795154fdd6ec96c1))
+
+
+
+## [50.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.9.0...@codecademy/gamut@50.10.0) (2022-10-19)
+
+
+### Features
+
+* **SelectDropdown:** make multi value look like tag ([5e45750](https://github.com/Codecademy/gamut/commit/5e457500f9c880a726e0d60fbab790cd4ecbc383))
+
+
+
+## [50.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.8.1...@codecademy/gamut@50.9.0) (2022-10-14)
+
+
+### Features
+
+* **Toggle:** Set toggle as type button when set as button ([1635a21](https://github.com/Codecademy/gamut/commit/1635a2185c54e8530efeb3eebc8f86fc00d1a4d9))
+
+
+
 ### [50.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.8.0...@codecademy/gamut@50.8.1) (2022-10-06)
 
 **Note:** Version bump only for package @codecademy/gamut
