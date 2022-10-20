@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.6.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.6.5...@codecademy/gamut-labs@33.6.6) (2022-10-19)
+
+
+### Bug Fixes
+
+* **HorizontalScrollMenu:** Do not visibly hide cards when their ariaHidden is true ([183906f](https://github.com/Codecademy/gamut/commit/183906f9e4b4f0ef70773b99877557acbbb3ecc2))
+
+
+
+### [33.6.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.6.4...@codecademy/gamut-labs@33.6.5) (2022-10-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [33.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.6.3...@codecademy/gamut-labs@33.6.4) (2022-10-14)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
