@@ -1,7 +1,6 @@
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { mount } from 'enzyme';
-import React from 'react';
 
 import { AppHeaderLogoItem } from '../../types';
 import { AppHeaderLogo, AppHeaderLogoProps } from '..';

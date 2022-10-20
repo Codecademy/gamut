@@ -1,5 +1,4 @@
 import { setupEnzyme } from '@codecademy/gamut-tests';
-import React from 'react';
 import { act } from 'react-dom/test-utils';
 
 import { AccordionArea } from '..';

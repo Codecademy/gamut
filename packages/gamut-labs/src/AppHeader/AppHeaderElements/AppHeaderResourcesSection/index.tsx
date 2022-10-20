@@ -1,7 +1,7 @@
 import { Anchor, Column, FlexBox, LayoutGrid, Text } from '@codecademy/gamut';
 import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import { headerResourcesList } from '../../../lib/resourcesList';
 import { LayoutGridAntiAliased } from '../../shared';

@@ -1,6 +1,7 @@
 import { useTheme } from '@emotion/react';
 import { useId } from '@reach/auto-id';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import * as React from 'react';
 import { Options as OptionsType, StylesConfig } from 'react-select';
 
 import { getMemoizedStyles } from '../styles';

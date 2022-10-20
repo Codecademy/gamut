@@ -9,7 +9,8 @@ import {
 } from '@codecademy/gamut';
 import { MiniAddIcon } from '@codecademy/gamut-icons';
 import { Background } from '@codecademy/gamut-styles';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 export const TagExample: React.FC = () => {
   const [tagInput, setTagInput] = useState('');

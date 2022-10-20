@@ -4,7 +4,8 @@ import {
   SkipToContentTarget,
 } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
-import React, { ComponentProps, forwardRef } from 'react';
+import { ComponentProps, forwardRef } from 'react';
+import * as React from 'react';
 
 import { Banner, BannerProps } from '../Banner';
 import { GlobalFooter, GlobalFooterProps } from '../GlobalFooter';

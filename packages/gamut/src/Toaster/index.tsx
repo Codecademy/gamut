@@ -1,6 +1,7 @@
 import { ColorMode } from '@codecademy/gamut-styles';
 import { AnimatePresence } from 'framer-motion';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
+import * as React from 'react';
 
 import { ToastProps } from '..';
 import { BodyPortal } from '../BodyPortal';

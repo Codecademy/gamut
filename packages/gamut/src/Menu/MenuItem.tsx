@@ -1,5 +1,5 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import React, { ComponentProps, MutableRefObject } from 'react';
+import { ComponentProps, forwardRef, MutableRefObject } from 'react';
 
 import { ListItem, ListItemProps, ListLink, ListLinkProps } from './elements';
 import { useMenuContext } from './MenuContext';
@@ -10,7 +10,7 @@ const activePropnames = {
   select: 'selected',
 };
 
-export const MenuItem = React.forwardRef<
+export const MenuItem = forwardRef<
   HTMLLIElement | HTMLAnchorElement,
   Omit<
     ComponentProps<typeof ListItem>,

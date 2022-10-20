@@ -1,5 +1,5 @@
 import { setupEnzyme } from '@codecademy/gamut-tests';
-import React from 'react';
+import * as React from 'react';
 
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup';

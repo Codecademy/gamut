@@ -1,5 +1,5 @@
 import { Anchor, AnchorProps } from '@codecademy/gamut';
-import React from 'react';
+import * as React from 'react';
 
 import { appHeaderMobileBreakpoint } from '../../shared';
 import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';

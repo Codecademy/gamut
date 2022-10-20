@@ -1,6 +1,5 @@
 import { ButtonDeprecated } from '@codecademy/gamut';
 import { mount } from 'enzyme';
-import React from 'react';
 
 import { Interstitial } from '..';
 

@@ -2,7 +2,6 @@ import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { mount } from 'enzyme';
-import React from 'react';
 
 import { Overlay, OverlayProps } from '..';
 

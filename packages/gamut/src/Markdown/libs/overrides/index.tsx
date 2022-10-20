@@ -2,7 +2,7 @@ import cx from 'classnames';
 import HtmlToReact from 'html-to-react';
 import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
 import { get } from 'lodash';
-import React from 'react';
+import * as React from 'react';
 
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from '../../styles/index.module.scss';

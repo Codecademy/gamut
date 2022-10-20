@@ -1,6 +1,6 @@
 import { FlexBox, Text } from '@codecademy/gamut';
 import { useTheme } from '@emotion/react';
-import React from 'react';
+import * as React from 'react';
 
 type BetaStickerProps = {
   children?: never;

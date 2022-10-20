@@ -4,7 +4,6 @@ import {
   MiniDeleteIcon,
 } from '@codecademy/gamut-icons';
 import { ColorMode, useColorModes } from '@codecademy/gamut-styles';
-import React from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   GroupBase,

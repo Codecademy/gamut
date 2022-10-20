@@ -1,6 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
-import React from 'react';
 
 import { BaseImage } from '..';
 

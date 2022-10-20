@@ -1,5 +1,4 @@
 import { setupEnzyme } from '@codecademy/gamut-tests';
-import React from 'react';
 
 import { List } from '../List';
 import { ListCol } from '../ListCol';

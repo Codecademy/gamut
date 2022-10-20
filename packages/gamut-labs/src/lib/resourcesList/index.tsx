@@ -1,5 +1,4 @@
 import { Badge } from '@codecademy/gamut';
-import React from 'react';
 
 import {
   AppFooterResourcesDataItem,

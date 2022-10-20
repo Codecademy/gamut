@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Circle, ToggleInput, ToggleLabel, ToggleTrack } from './elements';
 import { ToggleProps } from './types';
 import { getToggleElementProps } from './utils';

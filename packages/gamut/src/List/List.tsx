@@ -1,11 +1,6 @@
 import { isArray } from 'lodash';
-import React, {
-  ComponentProps,
-  forwardRef,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { ComponentProps, forwardRef, useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 
 import { Box, BoxProps } from '../Box';
 import { ListEl } from './elements';
