@@ -1,11 +1,7 @@
 import { useTheme } from '@emotion/react';
 import { useId } from '@reach/auto-id';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import {
-  components as SelectDropdownElements,
-  Options as OptionsType,
-  StylesConfig,
-} from 'react-select';
+import { Options as OptionsType, StylesConfig } from 'react-select';
 
 import { getMemoizedStyles } from '../styles';
 import { parseOptions, SelectOptionBase } from '../utils';
@@ -14,6 +10,8 @@ import {
   CustomContainer,
   formatGroupLabel,
   formatOptionLabel,
+  MultiValueRemoveButton,
+  MultiValueWithColorMode,
   TypedReactSelect,
 } from './elements';
 import {
@@ -40,8 +38,8 @@ const defaultProps = {
     DropdownIndicator: ChevronDropdown,
     IndicatorSeparator: () => null,
     SelectContainer: CustomContainer,
-    MultiValue: SelectDropdownElements.MultiValue,
-    MultiValueLabel: SelectDropdownElements.MultiValueLabel,
+    MultiValue: MultiValueWithColorMode,
+    MultiValueRemove: MultiValueRemoveButton,
   },
 };
 
