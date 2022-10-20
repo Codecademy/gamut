@@ -1,6 +1,7 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/styleguide/stories",
+  "name": "styleguide",
+  "sourceRoot": "apps/styleguide/stories",
   "projectType": "application",
   "targets": {
     "build-storybook": {
@@ -8,7 +9,7 @@
       "executor": "nx:run-commands",
       "dependsOn": ["^build"],
       "options": {
-        "cwd": "packages/styleguide",
+        "cwd": "apps/styleguide",
         "outputPath": "./dist",
         "commands": [
           "NODE_ENV=production ./node_modules/.bin/build-storybook --quiet -c .storybook -o ./dist"
@@ -18,9 +19,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/packages/styleguide"],
+      "outputs": ["{workspaceRoot}/coverage/apps/styleguide"],
       "options": {
-        "jestConfig": "packages/styleguide/jest.config.ts",
+        "jestConfig": "apps/styleguide/jest.config.ts",
         "passWithNoTests": true
       }
     }

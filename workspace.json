@@ -13,8 +13,8 @@
     "@codecademy/macros": "packages/macros",
     "@codecademy/markdown-overrides": "packages/markdown-overrides",
     "@codecademy/monaco": "packages/monaco",
-    "@codecademy/styleguide": "packages/styleguide",
     "@codecademy/variance": "packages/variance",
-    "eslint-plugin-gamut": "packages/eslint-plugin-gamut"
+    "eslint-plugin-gamut": "packages/eslint-plugin-gamut",
+    "styleguide": "apps/styleguide"
   }
 }

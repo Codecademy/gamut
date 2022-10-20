@@ -3,7 +3,7 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "useNx": true,
-  "packages": ["packages/*"],
+  "packages": ["packages/*", "apps/*"],
   "command": {
     "publish": {
       "message": "chore(release): publish",
