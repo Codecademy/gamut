@@ -8,5 +8,6 @@
     "rootDir": "./src",
     "outDir": "./dist"
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["jest.config.ts"]
 }

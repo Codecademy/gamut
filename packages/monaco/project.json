@@ -20,7 +20,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/monaco"],
+      "outputs": ["{workspaceRoot}/coverage/packages/monaco"],
       "options": {
         "jestConfig": "packages/monaco/jest.config.ts",
         "passWithNoTests": true

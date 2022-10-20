@@ -20,7 +20,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/gamut-styles"],
+      "outputs": ["{workspaceRoot}/coverage/packages/gamut-styles"],
       "options": {
         "jestConfig": "packages/gamut-styles/jest.config.ts",
         "passWithNoTests": false

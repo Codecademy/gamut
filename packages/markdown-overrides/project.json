@@ -20,7 +20,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/markdown-overrides"],
+      "outputs": ["{workspaceRoot}/coverage/packages/markdown-overrides"],
       "options": {
         "jestConfig": "packages/markdown-overrides/jest.config.ts",
         "passWithNoTests": true

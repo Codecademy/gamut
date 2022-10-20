@@ -18,7 +18,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/styleguide"],
+      "outputs": ["{workspaceRoot}/coverage/packages/styleguide"],
       "options": {
         "jestConfig": "packages/styleguide/jest.config.ts",
         "passWithNoTests": true
