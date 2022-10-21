@@ -17,6 +17,7 @@ import {
   TabsBlockVariantExample,
   TabsControlledExample,
   TabsExample,
+  TabsInteractiveContentExample,
   TabsNavExample,
 } from './Tabs.examples.tsx';
 
@@ -123,4 +124,14 @@ It is recommended to add a unique `aria-label` to the `TabNav` component, to dif
 
 <Canvas>
   <Story name="Tab Navigation">{(args) => <TabsNavExample {...args} />}</Story>
+</Canvas>
+
+## Tabs with interactive content
+
+If you have tabs with interactive content within them (such as a button or link), you need to add `tabindex={-1}` to the TabPanel so that the interactive content, rather than the TabPanel itself, become focused.
+
+<Canvas>
+  <Story name="Tabs Interactive">
+    {(args) => <TabsInteractiveContentExample {...args} />}
+  </Story>
 </Canvas>
