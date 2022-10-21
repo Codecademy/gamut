@@ -75,7 +75,7 @@ export const headerResourcesList: AppHeaderResourcesDataItem[] = [
     description:
       'Find definitions, code syntax, and more -- or contribute your own code documentation.',
     link: {
-      text: 'View all docs →',
+      text: 'View all docs',
       href: '/resources/docs',
       id: 'view-all-docs',
       trackingTarget: 'topnav_resources_docs_all',
@@ -226,7 +226,7 @@ export const headerResourcesList: AppHeaderResourcesDataItem[] = [
   {
     title: 'Inspiration',
     link: {
-      text: 'View all topics →',
+      text: 'View all topics',
       href: '/resources/blog',
       id: 'view-all-inspiration',
       trackingTarget: 'topnav_resources_inspiration_all',
