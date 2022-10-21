@@ -53,7 +53,7 @@ const StyledAnchorColumn = styled(Column)(
 );
 
 const quizAnchorData: AppHeaderItem = {
-  text: 'Take our quiz →',
+  text: 'Take our quiz',
   id: 'quiz',
   type: 'text-button',
   href: '/explore/sorting-quiz',
@@ -262,7 +262,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
         >
           <FlexBox alignItems="center">
             <Box mr={12}>
-              <TinyBlocks height={26} width={26} />
+              <TinyBlocks aria-hidden height={26} width={26} />
             </Box>
             <Box>Not sure where to begin?</Box>
           </FlexBox>
@@ -285,6 +285,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
               pt={{ _: 8, sm: 0 }}
             >
               {quizAnchorData.text}
+              <span aria-hidden>&nbsp;→</span>
             </Anchor>
           </Box>
         </FlexBox>
