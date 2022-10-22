@@ -131,7 +131,10 @@ export const ConnectedForm = forwardRef(
       formState.isSubmitSuccessful
     );
 
-    const fieldsChanged = useWatch({ name: watchedFields?.fields || [] });
+    const fieldsChanged = useWatch({
+      name: watchedFields?.fields || [],
+      control: methods.control,
+    });
     if (watchedFields?.watchHandler) {
       watchedFields.watchHandler(fieldsChanged);
     }
