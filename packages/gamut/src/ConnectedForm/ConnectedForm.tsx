@@ -130,11 +130,12 @@ export const ConnectedForm = forwardRef(
       formState.isSubmitSuccessful
     );
 
-    if (watchedFields) {
-      // we're pretty exhaustively type-checking the props as they're passed in, so its fine to cast here.
-      const fields = watch(watchedFields.fields);
-      watchedFields.watchHandler(fields as any);
-    }
+    useEffect(() => {
+      if (watchedFields) {
+        const fields = watch(watchedFields.fields);
+        watchedFields.watchHandler(fields as any);
+      }
+    }, [watch, watchedFields]);
 
     useEffect(() => {
       if (isSubmitSuccessful && resetOnSubmit) {
