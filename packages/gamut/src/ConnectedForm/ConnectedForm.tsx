@@ -130,12 +130,17 @@ export const ConnectedForm = forwardRef(
       formState.isSubmitSuccessful
     );
 
+    let f: any = null;
+
+    if (watchedFields) {
+      f = watch(watchedFields.fields);
+    }
+
     useEffect(() => {
       if (watchedFields) {
-        const fields = watch(watchedFields.fields);
-        watchedFields.watchHandler(fields as any);
+        watchedFields.watchHandler(f);
       }
-    }, [watch, watchedFields]);
+    }, [f, watchedFields]);
 
     useEffect(() => {
       if (isSubmitSuccessful && resetOnSubmit) {
