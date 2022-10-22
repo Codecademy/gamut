@@ -10,6 +10,7 @@ import {
   SubmitHandler,
   useForm,
   UseFormProps,
+  useWatch,
 } from 'react-hook-form';
 
 import { Form } from '../Form';
@@ -130,17 +131,10 @@ export const ConnectedForm = forwardRef(
       formState.isSubmitSuccessful
     );
 
-    let f: any = null;
-
-    if (watchedFields) {
-      f = watch(watchedFields.fields);
+    const fieldsChanged = useWatch({ name: watchedFields?.fields || [] });
+    if (watchedFields?.watchHandler) {
+      watchedFields.watchHandler(fieldsChanged);
     }
-
-    useEffect(() => {
-      if (watchedFields) {
-        watchedFields.watchHandler(f);
-      }
-    }, [f, watchedFields]);
 
     useEffect(() => {
       if (isSubmitSuccessful && resetOnSubmit) {
