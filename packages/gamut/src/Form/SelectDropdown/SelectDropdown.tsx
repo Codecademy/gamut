@@ -6,8 +6,8 @@ import { Options as OptionsType, StylesConfig } from 'react-select';
 import { getMemoizedStyles } from '../styles';
 import { parseOptions, SelectOptionBase } from '../utils';
 import {
-  ChevronDropdown,
   CustomContainer,
+  DropdownButton,
   formatGroupLabel,
   formatOptionLabel,
   MultiValueRemoveButton,
@@ -35,7 +35,7 @@ const isSingleSelectProps = (
 const defaultProps = {
   name: undefined,
   components: {
-    DropdownIndicator: ChevronDropdown,
+    DropdownIndicator: DropdownButton,
     IndicatorSeparator: () => null,
     SelectContainer: CustomContainer,
     MultiValue: MultiValueWithColorMode,

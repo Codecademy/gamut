@@ -56,7 +56,7 @@ const indicatorSizes = {
   },
 };
 
-export const ChevronDropdown = (props: SizedIndicatorProps) => {
+export const DropdownButton = (props: SizedIndicatorProps) => {
   const { size } = props.selectProps;
   const color = props.isDisabled ? 'text-disabled' : 'text';
   const { icon: IndicatorIcon, ...iconProps } = indicatorSizes[
