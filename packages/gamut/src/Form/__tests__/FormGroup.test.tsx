@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom';
+
 import { setupRtl } from '@codecademy/gamut-tests';
 import React from 'react';
 
@@ -50,6 +52,8 @@ describe('FormGroup', () => {
       label: 'up dog',
       error: 'there is no up dog here...',
     });
-    expect(view.getByRole('alert'));
+    expect(view.getByRole('alert')).toHaveTextContent(
+      'there is no up dog here...'
+    );
   });
 });
