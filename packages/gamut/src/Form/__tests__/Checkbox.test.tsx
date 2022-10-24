@@ -34,7 +34,7 @@ describe('<Checkbox>', () => {
     const { view } = renderView({
       label: <img alt="my cat" src="cat.jpg" />,
     });
-    expect(view.getByAltText('getByAltText'));
+    expect(view.getByAltText('my cat'));
   });
 
   it('accepts an aria-label', () => {
