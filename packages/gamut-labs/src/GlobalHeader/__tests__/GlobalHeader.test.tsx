@@ -126,7 +126,7 @@ const resourcesDropdownTest = (props: GlobalHeaderProps) => {
   const { view } = renderView(props);
 
   view.getByText(resourcesDropdown.text).click();
-  view.getByText('View all topics →');
+  view.getByText('View all topics');
 };
 
 describe('GlobalHeader', () => {
