@@ -3,7 +3,13 @@ import { useCurrentMode } from '@codecademy/gamut-styles';
 import React from 'react';
 
 import { Text } from '../Typography';
-import { DismissButton, Outline, TagWrapper } from './elements';
+import {
+  DismissButton,
+  Outline,
+  tagLabelFontSize,
+  tagLabelPadding,
+  TagWrapper,
+} from './elements';
 import { TagProps } from './types';
 
 export const Tag: React.FC<TagProps> = ({
@@ -28,9 +34,9 @@ export const Tag: React.FC<TagProps> = ({
       >
         <Text
           as="span"
-          fontSize={14}
+          fontSize={tagLabelFontSize}
           lineHeight={1 as any}
-          px={8}
+          px={tagLabelPadding}
           truncate="ellipsis"
           truncateLines={1}
         >

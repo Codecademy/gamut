@@ -19,7 +19,6 @@ export * from './ConnectedForm';
 export * from './ContentContainer';
 export * from './DataList';
 export * from './Drawer';
-export * from './FlexBox';
 export * from './FloatingCard/FloatingCard';
 export * from './Flyout';
 export * from './FocusTrap';

@@ -1,4 +1,4 @@
-import { Container, FillButton, Overlay, Text } from '@codecademy/gamut/src';
+import { FillButton, FlexBox, Overlay, Text } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -34,21 +34,21 @@ a background behind content, see `Modal` for general modals and `Dialog` for con
       return (
         <>
           <FillButton onClick={() => setOpen(true)}>Open Overlay</FillButton>
-          <Container>
+          <FlexBox>
             <Overlay
               {...args}
               clickOutsideCloses
               isOpen={open}
               onRequestClose={() => setOpen(false)}
             >
-              <Container>
+              <FlexBox>
                 <Text size={48}>Hooray!</Text>
                 <FillButton onClick={() => setOpen(false)}>
                   Close Overlay
                 </FillButton>
-              </Container>
+              </FlexBox>
             </Overlay>
-          </Container>
+          </FlexBox>
         </>
       );
     }}

@@ -86,6 +86,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
                     target={section.link.newTab ? '_blank' : '_self'}
                   >
                     {section.link.text}
+                    <span aria-hidden>&nbsp;→</span>
                   </Anchor>
                 )}
               </Background>
