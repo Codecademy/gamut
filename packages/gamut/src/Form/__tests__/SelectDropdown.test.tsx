@@ -1,12 +1,10 @@
 import {
-  ArrowChevronDownIcon,
   CalendarIcon,
   DataTransferVerticalIcon,
   EarthIcon,
-  MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
-import { setupEnzyme } from '@codecademy/gamut-tests';
-import { ReactWrapper } from 'enzyme';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent, queryByAttribute } from '@testing-library/dom';
 
 import { SelectDropdown } from '../SelectDropdown';
 
@@ -22,116 +20,123 @@ const selectOptionsObject = {
 };
 
 const optionsIconsArray = [
-  { label: 'first icon', value: 'one', icon: DataTransferVerticalIcon },
-  { label: 'second icon', value: 'two', icon: CalendarIcon },
-  { label: 'third icon', value: 'three', icon: EarthIcon },
+  {
+    label: 'Data Transfer Vertical Icon',
+    value: 'one',
+    icon: DataTransferVerticalIcon,
+  },
+  { label: 'Calendar Icon', value: 'two', icon: CalendarIcon },
+  { label: 'Earth Icon', value: 'three', icon: EarthIcon },
 ];
 
-const renderWrapper = setupEnzyme(SelectDropdown, {
+const renderView = setupRtl(SelectDropdown, {
   options: selectOptions,
   name: 'colors',
 });
 
-const openDropdown = (wrapper: ReactWrapper) =>
-  wrapper.find('DropdownIndicator').simulate('mouseDown', {
-    button: 0,
-  });
+const DOWN_ARROW = { keyCode: 40 };
+
+const openDropdown = (view: ReturnType<typeof renderView>['view']) =>
+  fireEvent.keyDown(view.getByRole('combobox'), DOWN_ARROW);
+
+const getById = queryByAttribute.bind(null, 'id');
+
+const getMenuListStyles = (view: ReturnType<typeof renderView>['view']) => {
+  const menuList = getById(view.container, 'react-select-2-listbox')
+    ?.firstElementChild;
+
+  return menuList ? getComputedStyle(menuList) : { maxHeight: null };
+};
 
 describe('SelectDropdown', () => {
   it('sets the id prop on the select tag', () => {
-    const { wrapper, props } = renderWrapper();
-    expect(wrapper.find(SelectDropdown).props().id).toBe(props.id);
-  });
+    const { view } = renderView();
 
-  it('renders the same number of options as options', () => {
-    const { wrapper } = renderWrapper();
-
-    openDropdown(wrapper);
-
-    expect(wrapper.find('Option')).toHaveLength(3);
+    expect(view.getByRole('combobox')).toHaveAttribute('id', 'colors');
   });
 
   it.each([
     ['array', selectOptions],
     ['object', selectOptionsObject],
   ])('renders options when options is an %s', (_, options) => {
-    const { wrapper } = renderWrapper({ options });
+    const { view } = renderView({ options });
 
-    openDropdown(wrapper);
+    openDropdown(view);
 
-    const getByLabel = wrapper.find(`[label="green"]`);
-
-    expect(getByLabel.exists()).toBe(true);
+    expect(view.getByText('green'));
   });
 
   it('renders a small dropdown when size is "small"', () => {
-    const { wrapper } = renderWrapper({ size: 'small' });
-    expect(wrapper.exists(MiniChevronDownIcon)).toBe(true);
+    const { view } = renderView({ size: 'small' });
+    expect(view.getByTitle('Mini Chevron Down Icon'));
   });
 
   it('renders a medium dropdown when size is "medium"', () => {
-    const { wrapper } = renderWrapper({ size: 'medium' });
-    expect(wrapper.exists(ArrowChevronDownIcon)).toBe(true);
+    const { view } = renderView({ size: 'medium' });
+    expect(view.getByTitle('Arrow Chevron Down Icon'));
   });
 
   it('renders a medium dropdown by default', () => {
-    const { wrapper } = renderWrapper();
-    expect(wrapper.exists(ArrowChevronDownIcon)).toBe(true);
+    const { view } = renderView();
+    expect(view.getByTitle('Arrow Chevron Down Icon'));
   });
 
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', () => {
-    const { wrapper } = renderWrapper({ shownOptionsLimit: 4 });
+    const { view } = renderView({ shownOptionsLimit: 4 });
 
-    openDropdown(wrapper);
+    openDropdown(view);
 
-    const menuList = wrapper.find('MenuList');
-    expect(menuList.getDOMNode()).toHaveStyle('max-height : 12rem');
+    const menuListStyles = getMenuListStyles(view);
+
+    expect(menuListStyles.maxHeight).toBe('12rem');
   });
 
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified + size is "small"', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       shownOptionsLimit: 4,
       size: 'small',
     });
 
-    openDropdown(wrapper);
+    openDropdown(view);
 
-    const menuList = wrapper.find('MenuList');
-    expect(menuList.getDOMNode()).toHaveStyle('max-height : 8rem');
+    const menuListStyles = getMenuListStyles(view);
+
+    expect(menuListStyles.maxHeight).toBe('8rem');
   });
 
   it('renders a dropdown with icons', () => {
-    const { wrapper } = renderWrapper({ options: optionsIconsArray });
+    const { view } = renderView({ options: optionsIconsArray });
 
-    openDropdown(wrapper);
+    openDropdown(view);
 
-    optionsIconsArray.forEach(({ icon }) =>
-      expect(wrapper.exists(icon)).toBe(true)
-    );
+    optionsIconsArray.forEach((icon) => expect(view.getByTitle(icon.label)));
   });
 
   it('function passed to onInputChanges is called on input change', () => {
     const onInputChange = jest.fn();
-    const { wrapper } = renderWrapper({ onInputChange });
+    const { view } = renderView({ onInputChange });
 
-    openDropdown(wrapper);
-    wrapper.find('Option').first().simulate('click');
+    openDropdown(view);
+
+    fireEvent.click(view.getByText('red'));
 
     expect(onInputChange).toHaveBeenCalled();
   });
 
   it('renders selected & multiple items when passed multiple: true', () => {
-    const { wrapper } = renderWrapper({ multiple: true });
+    const { view } = renderView({ multiple: true });
 
     const numSelectedItems = 2;
 
     [...Array(numSelectedItems)].forEach(() => {
-      openDropdown(wrapper);
-      wrapper.find('Option').first().simulate('click');
+      openDropdown(view);
+      fireEvent.click(view.getByText('red'));
+      openDropdown(view);
+      fireEvent.click(view.getByText('green'));
     });
 
     selectOptions
       .slice(0, numSelectedItems)
-      .forEach((value) => expect(wrapper.text().includes(value)).toBe(true));
+      .forEach((value) => expect(view.getByText(value)));
   });
 });
