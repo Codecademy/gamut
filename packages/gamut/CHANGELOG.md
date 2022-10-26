@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [51.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.0.1...@codecademy/gamut@51.1.0) (2022-10-26)
+
+
+### Features
+
+* **SelectDropdown:** Add search icon to SelectDropdown based on isSearchable ([ac02a2b](https://github.com/Codecademy/gamut/commit/ac02a2b77b7b4d9df4be4d2a71a73d1716b242be))
+
+
+
 ### [51.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.0.0...@codecademy/gamut@51.0.1) (2022-10-25)
 
 **Note:** Version bump only for package @codecademy/gamut
