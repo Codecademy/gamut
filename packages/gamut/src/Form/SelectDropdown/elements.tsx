@@ -2,6 +2,7 @@ import {
   ArrowChevronDownIcon,
   MiniChevronDownIcon,
   MiniDeleteIcon,
+  SearchIcon,
 } from '@codecademy/gamut-icons';
 import { ColorMode, useColorModes } from '@codecademy/gamut-styles';
 import React from 'react';
@@ -56,12 +57,15 @@ const indicatorSizes = {
   },
 };
 
-export const ChevronDropdown = (props: SizedIndicatorProps) => {
-  const { size } = props.selectProps;
+export const DropdownButton = (props: SizedIndicatorProps) => {
+  const { size, isSearchable } = props.selectProps;
   const color = props.isDisabled ? 'text-disabled' : 'text';
-  const { icon: IndicatorIcon, ...iconProps } = indicatorSizes[
-    size ?? 'medium'
-  ];
+  const { ...iconProps } = indicatorSizes[size ?? 'medium'];
+  let { icon: IndicatorIcon } = iconProps;
+
+  if (isSearchable) {
+    IndicatorIcon = SearchIcon;
+  }
 
   return (
     <DropdownIndicator {...props}>
