@@ -1,11 +1,13 @@
 import {
   ArrowChevronDownIcon,
+  CloseIcon,
   MiniChevronDownIcon,
   MiniDeleteIcon,
   SearchIcon,
 } from '@codecademy/gamut-icons';
-import { ColorMode, useColorModes } from '@codecademy/gamut-styles';
-import React from 'react';
+import { ColorMode, css, theme, useColorModes } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+import React, { CSSProperties, KeyboardEvent } from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   GroupBase,
@@ -46,21 +48,30 @@ export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => (
   </MultiValueRemove>
 );
 
-const indicatorSizes = {
+const iconSize = { small: 12, medium: 16 };
+const indicatorIcons = {
   small: {
-    size: 12,
+    size: iconSize.small,
     icon: MiniChevronDownIcon,
   },
   medium: {
-    size: 16,
+    size: iconSize.medium,
     icon: ArrowChevronDownIcon,
+  },
+  smallRemove: {
+    size: iconSize.small,
+    icon: MiniDeleteIcon,
+  },
+  mediumRemove: {
+    size: iconSize.medium,
+    icon: CloseIcon,
   },
 };
 
 export const DropdownButton = (props: SizedIndicatorProps) => {
   const { size, isSearchable } = props.selectProps;
   const color = props.isDisabled ? 'text-disabled' : 'text';
-  const { ...iconProps } = indicatorSizes[size ?? 'medium'];
+  const { ...iconProps } = indicatorIcons[size ?? 'medium'];
   let { icon: IndicatorIcon } = iconProps;
 
   if (isSearchable) {
@@ -71,6 +82,50 @@ export const DropdownButton = (props: SizedIndicatorProps) => {
     <DropdownIndicator {...props}>
       <IndicatorIcon {...iconProps} color={color} />
     </DropdownIndicator>
+  );
+};
+
+const CustomStyledRemoveAllDiv = styled('div')(
+  css({
+    '&:focus': {
+      outline: `2px solid ${theme.colors.primary}`,
+    },
+  })
+);
+
+export const RemoveAllButton = (props: SizedIndicatorProps) => {
+  const {
+    getStyles,
+    innerProps: { ref, ...restInnerProps },
+    selectProps,
+  } = props;
+
+  const { size } = selectProps;
+  const { ...iconProps } = indicatorIcons[
+    size ? 'smallRemove' : 'mediumRemove'
+  ];
+  const { icon: IndicatorIcon } = iconProps;
+
+  const onPressEnter = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter' && restInnerProps.onMouseDown) {
+      restInnerProps.onMouseDown(e as any);
+    }
+  };
+
+  const style = getStyles('clearIndicator', props) as CSSProperties;
+
+  return (
+    <CustomStyledRemoveAllDiv
+      aria-label="Remove all selected"
+      tabIndex={0}
+      role="button"
+      {...restInnerProps}
+      style={style}
+      onKeyDown={onPressEnter}
+      ref={ref}
+    >
+      <IndicatorIcon {...iconProps} color="text" />
+    </CustomStyledRemoveAllDiv>
   );
 };
 

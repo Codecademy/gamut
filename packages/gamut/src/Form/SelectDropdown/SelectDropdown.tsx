@@ -12,6 +12,7 @@ import {
   formatOptionLabel,
   MultiValueRemoveButton,
   MultiValueWithColorMode,
+  RemoveAllButton,
   TypedReactSelect,
 } from './elements';
 import {
@@ -37,6 +38,7 @@ const defaultProps = {
   components: {
     DropdownIndicator: DropdownButton,
     IndicatorSeparator: () => null,
+    ClearIndicator: RemoveAllButton,
     SelectContainer: CustomContainer,
     MultiValue: MultiValueWithColorMode,
     MultiValueRemove: MultiValueRemoveButton,
