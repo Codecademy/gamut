@@ -29,13 +29,13 @@ describe('GridFormSectionTitle', () => {
   });
 
   it('renders the proper Column size when layout is set to center', () => {
-    const { view } = renderView();
+    const { view } = renderView({ 'data-testid': 'columnId' });
 
-    console.log(view.debug());
-    // const column = view.find('Column') as any;
+    const column = view.getByTestId('columnId');
     // const { size, gridRowEnd } = column.props();
 
-    // expect(size).toEqual({ _: 12, md: 12 });
+    expect(column).toHaveStyle({ size: 12 });
+    // expect(column).toEqual({ _: 12, md: 12 });
     // expect(gridRowEnd).toEqual({ _: 'span 1', md: 'span 1' });
   });
 
