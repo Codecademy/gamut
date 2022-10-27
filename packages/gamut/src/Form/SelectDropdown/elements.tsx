@@ -42,11 +42,20 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
   );
 };
 
-export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => (
-  <MultiValueRemove {...props}>
-    <MiniDeleteIcon size={12} />
-  </MultiValueRemove>
-);
+const onPressEnter2 = (e: KeyboardEvent<HTMLDivElement>, onMouseDown: any) => {
+  if (e.key === 'Enter' && onMouseDown) {
+    onMouseDown(e as any);
+  }
+};
+
+export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {
+  console.log('remove props', props);
+  return (
+    <MultiValueRemove {...props}>
+      <MiniDeleteIcon size={12} />
+    </MultiValueRemove>
+  );
+};
 
 const iconSize = { small: 12, medium: 16 };
 const indicatorIcons = {

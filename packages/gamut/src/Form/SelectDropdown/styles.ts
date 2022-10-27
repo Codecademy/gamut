@@ -93,7 +93,6 @@ export const getMemoizedStyles = (
   return {
     clearIndicator: (provided) => ({
       ...provided,
-      paddingRight: '1rem',
     }),
     container: (provided, state) => ({
       ...provided,
