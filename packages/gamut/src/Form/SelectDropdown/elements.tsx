@@ -33,6 +33,7 @@ const {
 } = SelectDropdownElements;
 
 export const MultiValueWithColorMode = (props: MultiValueProps) => {
+  /// TO-TRY : kindof an antipattern, but setState to PROVIDER then access here
   const [mode] = useColorModes();
   return (
     // we want the tags to be opposite color mode

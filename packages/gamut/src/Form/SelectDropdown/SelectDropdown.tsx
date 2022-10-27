@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Options as OptionsType, StylesConfig } from 'react-select';
 
 import { getMemoizedStyles } from '../styles';
-import { parseOptions, SelectOptionBase } from '../utils';
+import { parseOptions } from '../utils';
 import {
   CustomContainer,
   DropdownButton,
@@ -15,23 +15,13 @@ import {
   RemoveAllButton,
   TypedReactSelect,
 } from './elements';
+import { ExtendedOption, OptionStrict, SelectDropdownProps } from './types';
 import {
-  BaseOnChangeProps,
-  ExtendedOption,
-  MultiSelectDropdownProps,
-  OptionStrict,
-  SelectDropdownGroup,
-  SelectDropdownProps,
-  SingleSelectDropdownProps,
-} from './types';
-
-const isMultipleSelectProps = (
-  props: BaseOnChangeProps
-): props is MultiSelectDropdownProps => !!props.multiple;
-
-const isSingleSelectProps = (
-  props: BaseOnChangeProps
-): props is SingleSelectDropdownProps => !props.multiple;
+  filterValueFromOptions,
+  isMultipleSelectProps,
+  isOptionGroup,
+  isSingleSelectProps,
+} from './utils';
 
 const defaultProps = {
   name: undefined,
@@ -46,31 +36,6 @@ const defaultProps = {
 };
 
 const onChangeAction = 'select-option';
-
-const isOptionGroup = (obj: any): obj is SelectDropdownGroup =>
-  obj.options !== undefined;
-
-const filterValueFromOptions = (
-  options: SelectOptionBase[] | SelectDropdownGroup[],
-  value: SelectDropdownProps['value'],
-  optionsAreGrouped: boolean
-) => {
-  if (optionsAreGrouped) {
-    return (options as SelectDropdownGroup[])
-      .map((optionGroup) =>
-        optionGroup.options.filter(
-          (option) =>
-            option.value === value ||
-            (value as string[])?.includes(option.value)
-        )
-      )
-      .flat();
-  }
-  return (options as SelectOptionBase[]).filter(
-    (option: SelectOptionBase) =>
-      option.value === value || (value as string[])?.includes(option.value)
-  );
-};
 
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
