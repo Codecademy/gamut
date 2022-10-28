@@ -76,10 +76,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   }, [options]);
 
   const [activated, setActivated] = useState(false);
-  const [testObject, setTestObject] = useState({
-    currentFocusedValue: undefined,
-    ref: null,
-  });
+  const [currentFocusedValue, setCurrentFocusedValue] = useState(undefined);
 
   const removeAllButtonRef = useRef(null);
   const selectRef = useRef(null);
@@ -143,24 +140,16 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
   const keyPressHandler = (e) => {
     console.log(e.key);
-    if (
-      multiple &&
-      e.key === 'Enter' &&
-      testObject.currentFocusedValue &&
-      multiValues
-    ) {
+    if (multiple && e.key === 'Enter' && currentFocusedValue && multiValues) {
       const newMultiValues = removeValueFromSelectedOptions(
         multiValues,
-        testObject.currentFocusedValue
+        currentFocusedValue
       );
 
       if (newMultiValues !== multiValues) setMultiValues(newMultiValues);
     }
     if (e.key === 'ArrowRight' && multiValues) {
-      if (
-        testObject.currentFocusedValue ===
-        multiValues[multiValues.length - 1].value
-      ) {
+      if (currentFocusedValue === multiValues[multiValues.length - 1].value) {
         removeAllButtonRef.current.focus();
       }
     }
@@ -174,8 +163,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   return (
     <SelectDropdownContext.Provider
       value={{
-        state: testObject,
-        setStateAction: setTestObject,
+        currentFocusedValue,
+        setCurrentFocusedValue,
         removeAllButtonRef,
         selectRef,
       }}

@@ -34,10 +34,8 @@ const {
 } = SelectDropdownElements;
 
 export const SelectDropdownContext = React.createContext({
-  state: {
-    currentFocusedValue: undefined,
-  },
-  setStateAction: undefined,
+  currentFocusedValue: undefined,
+  setCurrentFocusedValue: undefined,
   selectRef: undefined,
   removeAllButtonRef: undefined,
 });
@@ -45,21 +43,23 @@ export const SelectDropdownContext = React.createContext({
 export const MultiValueWithColorMode = (props: MultiValueProps) => {
   /// TODO: kindof an antipattern, but setState to PROVIDER then access here
 
-  const { state, setStateAction } = useContext(SelectDropdownContext);
+  const { currentFocusedValue, setCurrentFocusedValue } = useContext(
+    SelectDropdownContext
+  );
 
   if (
     props.isFocused &&
-    setStateAction &&
-    state.currentFocusedValue !== props.data.value
+    setCurrentFocusedValue &&
+    currentFocusedValue !== props.data.value
   ) {
-    setStateAction({ ...state, currentFocusedValue: props.data.value });
+    setCurrentFocusedValue(props.data.value);
   }
   if (
     !props.isFocused &&
-    setStateAction &&
-    state.currentFocusedValue === props.data.value
+    setCurrentFocusedValue &&
+    currentFocusedValue === props.data.value
   ) {
-    setStateAction({ ...state, currentFocusedValue: undefined });
+    setCurrentFocusedValue(undefined);
   }
 
   const [mode] = useColorModes();
