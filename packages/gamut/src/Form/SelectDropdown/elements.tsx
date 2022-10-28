@@ -21,6 +21,7 @@ import {
   CustomContainerProps,
   ExtendedOption,
   ReactSelectAdditionalProps,
+  SelectDropdownContextValueTypes,
   SelectDropdownGroup,
   SizedIndicatorProps,
 } from './types';
@@ -30,19 +31,18 @@ const {
   MultiValue,
   MultiValueRemove,
   SelectContainer,
-  Input,
 } = SelectDropdownElements;
 
-export const SelectDropdownContext = React.createContext({
-  currentFocusedValue: undefined,
-  setCurrentFocusedValue: undefined,
-  selectRef: undefined,
-  removeAllButtonRef: undefined,
-});
+export const SelectDropdownContext = React.createContext<SelectDropdownContextValueTypes>(
+  {
+    currentFocusedValue: undefined,
+    setCurrentFocusedValue: undefined,
+    selectInputRef: undefined,
+    removeAllButtonRef: undefined,
+  }
+);
 
 export const MultiValueWithColorMode = (props: MultiValueProps) => {
-  /// TODO: kindof an antipattern, but setState to PROVIDER then access here
-
   const { currentFocusedValue, setCurrentFocusedValue } = useContext(
     SelectDropdownContext
   );
@@ -50,14 +50,14 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
   if (
     props.isFocused &&
     setCurrentFocusedValue &&
-    currentFocusedValue !== props.data.value
+    currentFocusedValue !== props?.data.value
   ) {
-    setCurrentFocusedValue(props.data.value);
+    setCurrentFocusedValue(props?.data.value);
   }
   if (
     !props.isFocused &&
     setCurrentFocusedValue &&
-    currentFocusedValue === props.data.value
+    currentFocusedValue === props?.data?.value
   ) {
     setCurrentFocusedValue(undefined);
   }
@@ -138,7 +138,9 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
     selectProps,
   } = props;
 
-  const { removeAllButtonRef, selectRef } = useContext(SelectDropdownContext);
+  const { removeAllButtonRef, selectInputRef } = useContext(
+    SelectDropdownContext
+  );
   const { size } = selectProps;
   const { ...iconProps } = indicatorIcons[
     size ? 'smallRemove' : 'mediumRemove'
@@ -151,11 +153,10 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
     }
 
     if (
-      e.key === 'ArrowRight' ||
-      e.key === 'ArrowLeft' ||
-      e.key === 'ArrowDown'
+      selectInputRef &&
+      (e.key === 'ArrowRight' || e.key === 'ArrowLeft' || e.key === 'ArrowDown')
     ) {
-      selectRef.current.focus();
+      selectInputRef?.current.focus();
     }
   };
 
@@ -260,7 +261,7 @@ export const formatGroupLabel = ({ label, divider }: SelectDropdownGroup) => {
 };
 
 interface TypedReactSelectProps extends ReactSelectAdditionalProps {
-  selectRef?: Ref<HTMLDivElement>;
+  selectRef?: Ref<any>;
 }
 
 export function TypedReactSelect<

@@ -9,6 +9,7 @@ import {
 } from 'react-select';
 
 import { SelectComponentProps, SelectOptions } from '../Select';
+import { SelectOptionBase } from '../utils';
 import { conditionalBorderStates } from './styles';
 
 export interface SharedProps {
@@ -34,6 +35,7 @@ export interface ReactSelectAdditionalProps
   extends WrapperStyleProps,
     SharedProps,
     SelectDropdownSizes {}
+
 export interface IconOption {
   label: string;
   value: string;
@@ -121,6 +123,15 @@ export interface CustomContainerProps extends ContainerProps<unknown, false> {
   children: ReactNode[];
 }
 
+export type ProgramaticFocusRef =
+  | React.MutableRefObject<HTMLDivElement>
+  | React.MutableRefObject<null>;
+export interface SelectDropdownContextValueTypes {
+  currentFocusedValue?: SelectOptionBase;
+  setCurrentFocusedValue?: React.Dispatch<React.SetStateAction<undefined>>;
+  selectInputRef?: ProgramaticFocusRef;
+  removeAllButtonRef?: ProgramaticFocusRef;
+}
 export type SizedIndicatorProps = DropdownIndicatorProps<
   unknown,
   false,

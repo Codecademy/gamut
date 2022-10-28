@@ -1,6 +1,7 @@
 import { useTheme } from '@emotion/react';
 import { useId } from '@reach/auto-id';
 import React, {
+  KeyboardEvent,
   useCallback,
   useEffect,
   useMemo,
@@ -68,18 +69,20 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
    */
   const rawInputId = useId();
   const inputId = name ?? `${id}-select-dropdown-${rawInputId}`;
+
+  const [activated, setActivated] = useState(false);
+  const [currentFocusedValue, setCurrentFocusedValue] = useState(undefined);
+
+  // these are used to programatically manage the focus state of our multi-select options + 'Remove all' button
+  const removeAllButtonRef = useRef<HTMLDivElement>(null);
+  const selectInputRef = useRef<HTMLDivElement>(null);
+
   const optionsAreGrouped = useMemo(() => {
     if (options?.length) {
       return (options as any)?.some((option: any) => isOptionGroup(option));
     }
     return false;
   }, [options]);
-
-  const [activated, setActivated] = useState(false);
-  const [currentFocusedValue, setCurrentFocusedValue] = useState(undefined);
-
-  const removeAllButtonRef = useRef(null);
-  const selectRef = useRef(null);
 
   const selectOptions = useMemo(() => {
     return parseOptions({ options: options as ExtendedOption[], id, size });
@@ -138,8 +141,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     [onChange, multiple]
   );
 
-  const keyPressHandler = (e) => {
-    console.log(e.key);
+  const keyPressHandler = (e: KeyboardEvent<HTMLDivElement>) => {
     if (multiple && e.key === 'Enter' && currentFocusedValue && multiValues) {
       const newMultiValues = removeValueFromSelectedOptions(
         multiValues,
@@ -148,10 +150,13 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
       if (newMultiValues !== multiValues) setMultiValues(newMultiValues);
     }
-    if (e.key === 'ArrowRight' && multiValues) {
-      if (currentFocusedValue === multiValues[multiValues.length - 1].value) {
-        removeAllButtonRef.current.focus();
-      }
+    if (
+      removeAllButtonRef.current !== null &&
+      e.key === 'ArrowRight' &&
+      multiValues &&
+      currentFocusedValue === multiValues[multiValues.length - 1].value
+    ) {
+      removeAllButtonRef.current.focus();
     }
   };
 
@@ -166,7 +171,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         currentFocusedValue,
         setCurrentFocusedValue,
         removeAllButtonRef,
-        selectRef,
+        selectInputRef,
       }}
     >
       <TypedReactSelect
@@ -184,14 +189,14 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         isSearchable={isSearchable}
         name={name}
         onChange={changeHandler}
-        onKeyDown={(e) => keyPressHandler(e)}
+        onKeyDown={multiple ? (e) => keyPressHandler(e) : undefined}
         options={selectOptions}
         placeholder={placeholder}
         shownOptionsLimit={shownOptionsLimit}
         size={size}
         styles={memoizedStyles}
         value={multiple ? multiValues : parsedValue}
-        selectRef={selectRef}
+        selectRef={selectInputRef}
         {...rest}
       />
     </SelectDropdownContext.Provider>
