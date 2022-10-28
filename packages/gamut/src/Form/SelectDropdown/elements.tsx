@@ -7,7 +7,7 @@ import {
 } from '@codecademy/gamut-icons';
 import { ColorMode, css, theme, useColorModes } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { CSSProperties, KeyboardEvent } from 'react';
+import React, { CSSProperties, KeyboardEvent, Ref, useContext } from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   GroupBase,
@@ -30,10 +30,38 @@ const {
   MultiValue,
   MultiValueRemove,
   SelectContainer,
+  Input,
 } = SelectDropdownElements;
 
+export const SelectDropdownContext = React.createContext({
+  state: {
+    currentFocusedValue: undefined,
+  },
+  setStateAction: undefined,
+  selectRef: undefined,
+  removeAllButtonRef: undefined,
+});
+
 export const MultiValueWithColorMode = (props: MultiValueProps) => {
-  /// TO-TRY : kindof an antipattern, but setState to PROVIDER then access here
+  /// TODO: kindof an antipattern, but setState to PROVIDER then access here
+
+  const { state, setStateAction } = useContext(SelectDropdownContext);
+
+  if (
+    props.isFocused &&
+    setStateAction &&
+    state.currentFocusedValue !== props.data.value
+  ) {
+    setStateAction({ ...state, currentFocusedValue: props.data.value });
+  }
+  if (
+    !props.isFocused &&
+    setStateAction &&
+    state.currentFocusedValue === props.data.value
+  ) {
+    setStateAction({ ...state, currentFocusedValue: undefined });
+  }
+
   const [mode] = useColorModes();
   return (
     // we want the tags to be opposite color mode
@@ -43,14 +71,11 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
   );
 };
 
-const onPressEnter2 = (e: KeyboardEvent<HTMLDivElement>, onMouseDown: any) => {
-  if (e.key === 'Enter' && onMouseDown) {
-    onMouseDown(e as any);
-  }
-};
-
 export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {
-  console.log('remove props', props);
+  // TODO: reimplement aria-label fix here lol
+
+  // props?.innerProps.['aria-label'] = `Remove ${props.data.label}`;
+
   return (
     <MultiValueRemove {...props}>
       <MiniDeleteIcon size={12} />
@@ -100,25 +125,37 @@ const CustomStyledRemoveAllDiv = styled('div')(
     '&:focus': {
       outline: `2px solid ${theme.colors.primary}`,
     },
+    '&:focus-visible': {
+      outline: `2px solid ${theme.colors.primary}`,
+    },
   })
 );
 
 export const RemoveAllButton = (props: SizedIndicatorProps) => {
   const {
     getStyles,
-    innerProps: { ref, ...restInnerProps },
+    innerProps: { ...restInnerProps },
     selectProps,
   } = props;
 
+  const { removeAllButtonRef, selectRef } = useContext(SelectDropdownContext);
   const { size } = selectProps;
   const { ...iconProps } = indicatorIcons[
     size ? 'smallRemove' : 'mediumRemove'
   ];
   const { icon: IndicatorIcon } = iconProps;
 
-  const onPressEnter = (e: KeyboardEvent<HTMLDivElement>) => {
+  const onKeyPress = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter' && restInnerProps.onMouseDown) {
       restInnerProps.onMouseDown(e as any);
+    }
+
+    if (
+      e.key === 'ArrowRight' ||
+      e.key === 'ArrowLeft' ||
+      e.key === 'ArrowDown'
+    ) {
+      selectRef.current.focus();
     }
   };
 
@@ -131,8 +168,8 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
       role="button"
       {...restInnerProps}
       style={style}
-      onKeyDown={onPressEnter}
-      ref={ref}
+      onKeyDown={onKeyPress}
+      ref={removeAllButtonRef}
     >
       <IndicatorIcon {...iconProps} color="text" />
     </CustomStyledRemoveAllDiv>
@@ -145,6 +182,7 @@ export const CustomContainer = ({
 }: CustomContainerProps) => {
   // in the react-select documentation, this line is ts-ignore'd so its safe to say there's no nice way to do this.
   const { inputProps, name } = rest.selectProps as any;
+
   const value = rest.hasValue
     ? rest
         .getValue()
@@ -221,12 +259,17 @@ export const formatGroupLabel = ({ label, divider }: SelectDropdownGroup) => {
   return label;
 };
 
+interface TypedReactSelectProps extends ReactSelectAdditionalProps {
+  selectRef?: Ref<HTMLDivElement>;
+}
+
 export function TypedReactSelect<
   OptionType,
   IsMulti extends boolean = false,
   GroupType extends GroupBase<OptionType> = GroupBase<OptionType>
 >({
+  selectRef,
   ...props
-}: Props<OptionType, IsMulti, GroupType> & ReactSelectAdditionalProps) {
-  return <ReactSelect {...props} />;
+}: Props<OptionType, IsMulti, GroupType> & TypedReactSelectProps) {
+  return <ReactSelect {...props} ref={selectRef} />;
 }

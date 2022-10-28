@@ -1,6 +1,7 @@
 import { SelectOptionBase } from '../utils';
 import {
   BaseOnChangeProps,
+  ExtendedOption,
   MultiSelectDropdownProps,
   SelectDropdownGroup,
   SelectDropdownProps,
@@ -37,5 +38,15 @@ export const filterValueFromOptions = (
   return (options as SelectOptionBase[]).filter(
     (option: SelectOptionBase) =>
       option.value === value || (value as string[])?.includes(option.value)
+  );
+};
+
+export const removeValueFromSelectedOptions = (
+  selectedOptions: ExtendedOption[] | SelectOptionBase[],
+  value: SelectDropdownProps['value']
+) => {
+  return (selectedOptions as SelectOptionBase[]).filter(
+    (option: SelectOptionBase) =>
+      option.value !== value || !value?.includes(option.value)
   );
 };

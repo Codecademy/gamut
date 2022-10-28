@@ -1,6 +1,12 @@
 import { useTheme } from '@emotion/react';
 import { useId } from '@reach/auto-id';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { Options as OptionsType, StylesConfig } from 'react-select';
 
 import { getMemoizedStyles } from '../styles';
@@ -13,6 +19,7 @@ import {
   MultiValueRemoveButton,
   MultiValueWithColorMode,
   RemoveAllButton,
+  SelectDropdownContext,
   TypedReactSelect,
 } from './elements';
 import { ExtendedOption, OptionStrict, SelectDropdownProps } from './types';
@@ -21,6 +28,7 @@ import {
   isMultipleSelectProps,
   isOptionGroup,
   isSingleSelectProps,
+  removeValueFromSelectedOptions,
 } from './utils';
 
 const defaultProps = {
@@ -68,6 +76,13 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   }, [options]);
 
   const [activated, setActivated] = useState(false);
+  const [testObject, setTestObject] = useState({
+    currentFocusedValue: undefined,
+    ref: null,
+  });
+
+  const removeAllButtonRef = useRef(null);
+  const selectRef = useRef(null);
 
   const selectOptions = useMemo(() => {
     return parseOptions({ options: options as ExtendedOption[], id, size });
@@ -126,34 +141,70 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     [onChange, multiple]
   );
 
+  const keyPressHandler = (e) => {
+    console.log(e.key);
+    if (
+      multiple &&
+      e.key === 'Enter' &&
+      testObject.currentFocusedValue &&
+      multiValues
+    ) {
+      const newMultiValues = removeValueFromSelectedOptions(
+        multiValues,
+        testObject.currentFocusedValue
+      );
+
+      if (newMultiValues !== multiValues) setMultiValues(newMultiValues);
+    }
+    if (e.key === 'ArrowRight' && multiValues) {
+      if (
+        testObject.currentFocusedValue ===
+        multiValues[multiValues.length - 1].value
+      ) {
+        removeAllButtonRef.current.focus();
+      }
+    }
+  };
+
   const theme = useTheme();
   const memoizedStyles = useMemo((): StylesConfig<any, false> => {
     return getMemoizedStyles(theme);
   }, [theme]);
 
   return (
-    <TypedReactSelect
-      {...defaultProps}
-      id={id || rest.htmlFor}
-      inputId={inputId}
-      name={name}
-      options={selectOptions}
-      value={multiple ? multiValues : parsedValue}
-      activated={activated}
-      error={Boolean(error)}
-      formatOptionLabel={formatOptionLabel}
-      onChange={changeHandler}
-      inputProps={{ ...inputProps, name }}
-      placeholder={placeholder}
-      styles={memoizedStyles}
-      isMulti={multiple}
-      isOptionDisabled={(option) => option.disabled}
-      isDisabled={disabled}
-      isSearchable={isSearchable}
-      size={size}
-      shownOptionsLimit={shownOptionsLimit}
-      formatGroupLabel={formatGroupLabel}
-      {...rest}
-    />
+    <SelectDropdownContext.Provider
+      value={{
+        state: testObject,
+        setStateAction: setTestObject,
+        removeAllButtonRef,
+        selectRef,
+      }}
+    >
+      <TypedReactSelect
+        {...defaultProps}
+        activated={activated}
+        error={Boolean(error)}
+        formatGroupLabel={formatGroupLabel}
+        formatOptionLabel={formatOptionLabel}
+        id={id || rest.htmlFor}
+        inputId={inputId}
+        inputProps={{ ...inputProps, name }}
+        isDisabled={disabled}
+        isMulti={multiple}
+        isOptionDisabled={(option) => option.disabled}
+        isSearchable={isSearchable}
+        name={name}
+        onChange={changeHandler}
+        onKeyDown={(e) => keyPressHandler(e)}
+        options={selectOptions}
+        placeholder={placeholder}
+        shownOptionsLimit={shownOptionsLimit}
+        size={size}
+        styles={memoizedStyles}
+        value={multiple ? multiValues : parsedValue}
+        selectRef={selectRef}
+        {...rest}
+      />
+    </SelectDropdownContext.Provider>
   );
 };
