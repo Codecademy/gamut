@@ -71,6 +71,14 @@ describe('Menu', () => {
     screen.getByRole('none');
     screen.getByRole('menuitem');
   });
+  it('renders menuitems with onClicks as buttons within a li with no role', () => {
+    renderView({
+      children: <MenuItem onClick={() => null}>Cool Town</MenuItem>,
+    });
+
+    screen.getByRole('none');
+    screen.getByRole('menuitem');
+  });
   it('renders and icon only when specified', () => {
     renderView({
       children: <MenuItem>Cool Town</MenuItem>,
