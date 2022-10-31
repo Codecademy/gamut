@@ -18,7 +18,7 @@ export interface ToggleBaseProps extends ToggleStyleProps {
   /** Called when the input value has changed. Only to be used when the Toggle is an input */
   onChange?: (event?: React.FormEvent<HTMLInputElement>) => void;
   /** A visible label for your Toggle - we reccommend this */
-  label?: JSX.Element;
+  label?: React.ReactNode;
   /** Which side of the toggle the label should render */
   labelSide?: 'left' | 'right';
   /** Changes the dimensions of the element for using the component outside of a form context */
@@ -34,7 +34,7 @@ export type AriaLabeledToggle = ToggleBaseProps & {
 
 export type LabeledToggle = ToggleBaseProps & {
   ariaLabel?: string;
-  label: JSX.Element;
+  label: React.ReactNode;
 };
 
 export type ToggleLabelProps = AriaLabeledToggle | LabeledToggle;
