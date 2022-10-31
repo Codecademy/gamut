@@ -26,6 +26,13 @@ const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
           boxShadow: `-8px 8px 0 currentColor`,
         },
       },
+      outline: {
+        boxShadow: '-5px 5px white, -5px 5px 0 1px black',
+        '&:hover': {
+          transform: 'translate(4px, -4px)',
+          boxShadow: `-8px 8px 0 currentColor`,
+        },
+      },
     },
   })
 );
@@ -48,6 +55,13 @@ const shadowVariants = variant({
       '&:hover': {
         transform: 'translate(4px, -4px)',
         boxShadow: `-8px 8px 0 ${theme.colors.navy}`,
+      },
+    },
+    outline: {
+      boxShadow: '-5px 5px white, -5px 5px 0 1px black',
+      '&:hover': {
+        transform: 'translate(4px, -4px)',
+        boxShadow: `-8px 8px 0 currentColor`,
       },
     },
   },
