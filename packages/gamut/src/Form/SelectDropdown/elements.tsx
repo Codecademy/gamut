@@ -153,7 +153,7 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
     }
 
     if (
-      selectInputRef &&
+      selectInputRef?.current &&
       (e.key === 'ArrowRight' || e.key === 'ArrowLeft' || e.key === 'ArrowDown')
     ) {
       selectInputRef?.current.focus();
