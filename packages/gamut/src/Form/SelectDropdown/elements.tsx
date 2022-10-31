@@ -50,14 +50,14 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
   if (
     props.isFocused &&
     setCurrentFocusedValue &&
-    currentFocusedValue !== props?.data.value
+    currentFocusedValue !== props.selectProps.value
   ) {
-    setCurrentFocusedValue(props?.data.value);
+    setCurrentFocusedValue(props.selectProps.value);
   }
   if (
     !props.isFocused &&
     setCurrentFocusedValue &&
-    currentFocusedValue === props?.data?.value
+    currentFocusedValue === props.selectProps.value
   ) {
     setCurrentFocusedValue(undefined);
   }

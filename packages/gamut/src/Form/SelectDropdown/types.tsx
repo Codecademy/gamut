@@ -128,9 +128,7 @@ export type ProgramaticFocusRef =
   | React.MutableRefObject<null>;
 export interface SelectDropdownContextValueTypes {
   currentFocusedValue?: SelectOptionBase['value'];
-  setCurrentFocusedValue?: React.Dispatch<
-    React.SetStateAction<undefined | string>
-  >;
+  setCurrentFocusedValue?: React.Dispatch<React.SetStateAction<unknown>>;
   selectInputRef?: ProgramaticFocusRef;
   removeAllButtonRef?: ProgramaticFocusRef;
 }
