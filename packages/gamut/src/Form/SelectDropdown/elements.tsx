@@ -43,21 +43,24 @@ export const SelectDropdownContext = React.createContext<SelectDropdownContextVa
 );
 
 export const MultiValueWithColorMode = (props: MultiValueProps) => {
+  // TODO: come back and fix this type, maybe
   const { currentFocusedValue, setCurrentFocusedValue } = useContext(
     SelectDropdownContext
   );
 
+  const { value } = (props?.data as any) ?? undefined;
+
   if (
     props.isFocused &&
     setCurrentFocusedValue &&
-    currentFocusedValue !== props.selectProps.value
+    currentFocusedValue !== value
   ) {
-    setCurrentFocusedValue(props.selectProps.value);
+    setCurrentFocusedValue(value);
   }
   if (
     !props.isFocused &&
     setCurrentFocusedValue &&
-    currentFocusedValue === props.selectProps.value
+    currentFocusedValue === value
   ) {
     setCurrentFocusedValue(undefined);
   }
@@ -72,9 +75,9 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
 };
 
 export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {
-  // TODO: reimplement aria-label fix here lol
+  const { label } = (props?.data as any) ?? '';
 
-  // props?.innerProps.['aria-label'] = `Remove ${props.data.label}`;
+  props.innerProps['aria-label'] = `Remove ${label}`;
 
   return (
     <MultiValueRemove {...props}>
