@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [51.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.1.0...@codecademy/gamut@51.1.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* **MenuItem:** fixes focus outlines and onClick support ([6fe141f](https://github.com/Codecademy/gamut/commit/6fe141f1250bcaabb3887a30e110b98b1c8c7af8))
+
+
+
 ## [51.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.0.1...@codecademy/gamut@51.1.0) (2022-10-26)
 
 
