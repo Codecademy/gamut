@@ -1,6 +1,7 @@
 import {
   styledOptions,
   system,
+  theme,
   transitionConcat,
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
@@ -77,6 +78,10 @@ const interactiveVariants = system.variant({
       'fast',
       'linear'
     ),
+    [Selectors.FOCUS_VISIBLE]: {
+      outline: `${theme.colors.primary} auto 2px`,
+      outlineOffset: '-2px',
+    },
   },
   variants: {
     select: {
@@ -84,9 +89,6 @@ const interactiveVariants = system.variant({
         pointerEvents: 'none',
       },
       [Selectors.HOVER]: {
-        bg: 'background-hover',
-      },
-      [Selectors.FOCUS_VISIBLE]: {
         bg: 'background-hover',
       },
     },
@@ -176,3 +178,15 @@ export const ListLink = styled('a', styledOptions<'a'>())<ListLinkProps>(
 ListLink.defaultProps = {
   zIndex: 1,
 };
+
+export const ListButton = styled(
+  'button',
+  styledOptions<'button'>()
+)<ListLinkProps>(
+  resetStyles,
+  interactiveVariants,
+  activeStates,
+  sizeVariants,
+  sharedStates,
+  listProps
+);
