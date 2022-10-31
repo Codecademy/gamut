@@ -33,11 +33,19 @@ export type AriaLabeledToggle = ToggleBaseProps & {
 };
 
 export type LabeledToggle = ToggleBaseProps & {
-  ariaLabel?: string;
+  ariaLabel: string;
   label: React.ReactNode;
 };
 
-export type ToggleLabelProps = AriaLabeledToggle | LabeledToggle;
+export type StringLabeledToggle = ToggleBaseProps & {
+  ariaLabel?: string;
+  label: string;
+};
+
+export type ToggleLabelProps =
+  | AriaLabeledToggle
+  | LabeledToggle
+  | StringLabeledToggle;
 
 export type ToggleButtonProps = ToggleLabelProps & {
   as: 'button';
