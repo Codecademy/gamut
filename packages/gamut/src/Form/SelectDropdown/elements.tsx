@@ -7,7 +7,7 @@ import {
 } from '@codecademy/gamut-icons';
 import { ColorMode, css, theme, useColorModes } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { CSSProperties, KeyboardEvent, Ref, useContext } from 'react';
+import React, { CSSProperties, KeyboardEvent, useContext } from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   GroupBase,
@@ -20,10 +20,10 @@ import { Box } from '../../Box';
 import {
   CustomContainerProps,
   ExtendedOption,
-  ReactSelectAdditionalProps,
   SelectDropdownContextValueTypes,
   SelectDropdownGroup,
   SizedIndicatorProps,
+  TypedReactSelectProps,
 } from './types';
 
 const {
@@ -269,10 +269,6 @@ export const formatGroupLabel = ({ label, divider }: SelectDropdownGroup) => {
   }
   return label;
 };
-
-interface TypedReactSelectProps extends ReactSelectAdditionalProps {
-  selectRef?: Ref<any>;
-}
 
 export function TypedReactSelect<
   OptionType,

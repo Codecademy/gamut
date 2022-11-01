@@ -1,6 +1,6 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { StyleProps } from '@codecademy/variance';
-import React, { ReactNode, SelectHTMLAttributes } from 'react';
+import React, { ReactNode, Ref, SelectHTMLAttributes } from 'react';
 import {
   ContainerProps,
   DropdownIndicatorProps,
@@ -138,3 +138,7 @@ export type SizedIndicatorProps = DropdownIndicatorProps<
   GroupBase<OptionStrict>
 > &
   InternalSelectProps;
+
+export interface TypedReactSelectProps extends ReactSelectAdditionalProps {
+  selectRef?: Ref<any>;
+}
