@@ -119,7 +119,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
     <DescriptionSectionContainer
       data-focusablecatalog="true"
       data-testid="title-description-section"
-      tabIndex={0}
+      tabIndex={-1}
       flexDirection="column"
     >
       <Text as="h2" variant="title-xs" mb={8} fontWeight={700}>
