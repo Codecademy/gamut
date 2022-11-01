@@ -43,7 +43,6 @@ export const SelectDropdownContext = React.createContext<SelectDropdownContextVa
 );
 
 export const MultiValueWithColorMode = (props: MultiValueProps) => {
-  // TODO: come back and fix this type, maybe
   const { currentFocusedValue, setCurrentFocusedValue } = useContext(
     SelectDropdownContext
   );
@@ -57,6 +56,7 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
   ) {
     setCurrentFocusedValue(value);
   }
+
   if (
     !props.isFocused &&
     setCurrentFocusedValue &&
@@ -87,14 +87,23 @@ export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {
 };
 
 const iconSize = { small: 12, medium: 16 };
+
 const indicatorIcons = {
-  small: {
+  smallChevron: {
     size: iconSize.small,
     icon: MiniChevronDownIcon,
   },
-  medium: {
+  mediumChevron: {
     size: iconSize.medium,
     icon: ArrowChevronDownIcon,
+  },
+  smallSearchable: {
+    size: iconSize.small,
+    icon: SearchIcon,
+  },
+  mediumSearchable: {
+    size: iconSize.medium,
+    icon: SearchIcon,
   },
   smallRemove: {
     size: iconSize.small,
@@ -109,12 +118,10 @@ const indicatorIcons = {
 export const DropdownButton = (props: SizedIndicatorProps) => {
   const { size, isSearchable } = props.selectProps;
   const color = props.isDisabled ? 'text-disabled' : 'text';
-  const { ...iconProps } = indicatorIcons[size ?? 'medium'];
-  let { icon: IndicatorIcon } = iconProps;
-
-  if (isSearchable) {
-    IndicatorIcon = SearchIcon;
-  }
+  const iconSize = size ?? 'medium';
+  const iconType = isSearchable ? 'Searchable' : 'Chevron';
+  const { ...iconProps } = indicatorIcons[`${iconSize}${iconType}`];
+  const { icon: IndicatorIcon } = iconProps;
 
   return (
     <DropdownIndicator {...props}>
