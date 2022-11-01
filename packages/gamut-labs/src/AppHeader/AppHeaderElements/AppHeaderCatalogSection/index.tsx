@@ -18,7 +18,10 @@ import {
   topLanguages,
   topSubjects,
 } from '../../../lib/catalogList';
-import { LayoutGridAntiAliased } from '../../shared';
+import {
+  DescriptionSectionContainer,
+  LayoutGridAntiAliased,
+} from '../../shared';
 import {
   AppHeaderCatalogDropdownItem,
   AppHeaderClickHandler,
@@ -113,17 +116,17 @@ export const AppHeaderCatalogSection = React.forwardRef<
     title: string;
     subtitle: string;
   }> = ({ title, subtitle }) => (
-    <FlexBox
+    <DescriptionSectionContainer
       data-focusablecatalog="true"
       data-testid="title-description-section"
-      tabIndex={-1}
+      tabIndex={0}
       flexDirection="column"
     >
       <Text as="h2" variant="title-xs" mb={8} fontWeight={700}>
         {title}
       </Text>
       <Text fontSize={14}>{subtitle}</Text>
-    </FlexBox>
+    </DescriptionSectionContainer>
   );
 
   return (
