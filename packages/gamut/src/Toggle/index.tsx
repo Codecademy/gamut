@@ -30,7 +30,7 @@ export const Toggle = <Props extends ToggleProps>({
 
   return (
     <ToggleLabel
-      htmlFor={label}
+      htmlFor={toggleProps.id}
       disabled={disabled}
       labelRight={labelSide === 'right'}
       {...rest}
