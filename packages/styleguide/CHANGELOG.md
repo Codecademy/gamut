@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [62.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.0.6...@codecademy/styleguide@62.1.0) (2022-11-01)
+
+
+### Features
+
+* **Toggle:** allow react node for labels ([bab3aaa](https://github.com/Codecademy/gamut/commit/bab3aaaac31ca398490f805d44f5d12fe4e68dac))
+
+
+
 ### [62.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.0.5...@codecademy/styleguide@62.0.6) (2022-10-31)
 
 **Note:** Version bump only for package @codecademy/styleguide
