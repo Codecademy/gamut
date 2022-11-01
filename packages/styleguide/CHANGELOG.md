@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [62.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.0.5...@codecademy/styleguide@62.0.6) (2022-10-31)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.0.4...@codecademy/styleguide@62.0.5) (2022-10-31)
+
+
+### Bug Fixes
+
+* **MenuItem:** fixes focus outlines and onClick support ([6fe141f](https://github.com/Codecademy/gamut/commit/6fe141f1250bcaabb3887a30e110b98b1c8c7af8))
+
+
+
 ### [62.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.0.3...@codecademy/styleguide@62.0.4) (2022-10-26)
 
 **Note:** Version bump only for package @codecademy/styleguide
