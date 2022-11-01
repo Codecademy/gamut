@@ -6,7 +6,7 @@ import React, { ComponentProps } from 'react';
 import { Box } from '../Box';
 
 const outlineStyles = {
-  boxShadow: '-5px 5px white, -5px 5px 0 1px black',
+  boxShadow: `-5px 5px ${theme.colors.white}, -5px 5px 0 1px ${theme.colors.black}`,
   '&:hover': {
     transform: 'translate(4px, -4px)',
     boxShadow: `-8px 8px 0 currentColor`,
