@@ -4,9 +4,20 @@ import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 export const items = [
-  { id: 'one', text: 'List Item 1' },
-  { id: 'two', text: 'List Item 2' },
-  { id: 'three', text: 'List Item 3' },
+  { id: 'one', text: 'I have an href', href: '#' },
+  {
+    id: 'two',
+    text: 'I have an onClick',
+    // eslint-disable-next-line no-console
+    clickHandler: () => console.log('hi'),
+  },
+  {
+    id: 'three',
+    text: 'I have an href & onClick',
+    href: '#',
+    // eslint-disable-next-line no-console
+    clickHandler: () => console.log('hi'),
+  },
 ];
 
 <Meta
