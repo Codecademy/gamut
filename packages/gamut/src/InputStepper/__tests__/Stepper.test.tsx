@@ -1,74 +1,70 @@
-import { mount, ReactWrapper } from 'enzyme';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/dom';
 
-import { InputStepper, InputStepperProps } from '..';
+import { InputStepper } from '..';
+import { ControlledStepperTest } from '../__fixtures__/helpers';
 
-const renderStepper = (optOverrides?: Partial<InputStepperProps>) => {
-  const opts = {
-    label: '',
-    value: 0,
-    ariaLabel: '',
-    ...optOverrides,
-  };
-  const wrapper = mount(
-    <InputStepper {...opts} onChange={(v) => onChange(v, wrapper)} />
-  );
-
-  return wrapper;
+const defaultProps = {
+  label: 'input stepper',
+  ariaLabel: 'input-stepper',
+  onChange: () => null,
 };
 
-const onChange = (value: number, wrapper: ReactWrapper) => {
-  wrapper.setProps({ value });
+const renderView = setupRtl(InputStepper, defaultProps);
+
+const renderWrappedView = setupRtl(ControlledStepperTest, defaultProps);
+
+const getRoleAndTestValue = ({
+  view,
+  value,
+}: {
+  view: ReturnType<typeof renderView>['view'];
+  value: number;
+}) => {
+  const field = view.getByRole('spinbutton');
+  expect(field).toHaveValue(value);
 };
-
-/**
- * wrapper around the enzyme weirdness that is required for handling
- * change events; the initial reference to the field does not get
- * updated by the change event, so we have to find it again in order
- * to actually check that the value changed
- */
-const changeValue = (value: number, wrapper: ReactWrapper) => {
-  const fieldBefore = wrapper.find('input');
-  fieldBefore.simulate('change', { target: { value } });
-
-  const fieldAfter = wrapper.find('input');
-  return fieldAfter;
-};
-
 describe('InputStepper', () => {
   it('handles initially out of bounds data', () => {
-    const wrapper = renderStepper({ min: 2, max: 4, value: 6 });
-    const field = wrapper.find('input');
-    expect(field.props().value).toEqual(4);
+    const { view } = renderView({ min: 2, max: 4, value: 6 });
+    getRoleAndTestValue({ view, value: 4 });
   });
 
   it('handles out of bounds data after a change', () => {
-    const wrapper = renderStepper({ min: 2, max: 4, value: 3 });
-    const field = changeValue(1, wrapper);
-    expect(field.props().value).toEqual(2);
+    const { view } = renderWrappedView({ min: 2, max: 4, value: 3 });
+
+    const downButton = view.getByRole('button', {
+      name: 'input-stepper current value of 3 subtract one',
+    });
+    const upButton = view.getByRole('button', {
+      name: 'input-stepper current value of 3 add one',
+    });
+    const field = view.getByRole('spinbutton');
+
+    fireEvent.click(downButton);
+    expect(field).toHaveValue(2);
+
+    fireEvent.click(upButton);
+    expect(field).toHaveValue(3);
   });
 
   it('handles a non-specified min', () => {
-    const wrapper = renderStepper({ max: 10, value: -1 });
-    const field = wrapper.find('input');
-    expect(field.props().value).toEqual(0);
+    const { view } = renderView({ max: 10, value: -1 });
+    getRoleAndTestValue({ view, value: 0 });
   });
 
   it('handles a non-specified max', () => {
-    const wrapper = renderStepper({ min: 2, value: 8 });
-    const field = wrapper.find('input');
-    expect(field.props().value).toEqual(8);
+    const { view } = renderView({ min: 2, value: 8 });
+    getRoleAndTestValue({ view, value: 8 });
   });
 
   it('handles a negative min', () => {
-    const wrapper = renderStepper({ min: -2, max: 10, value: -1 });
-    const field = wrapper.find('input');
-    expect(field.props().value).toEqual(-1);
+    const { view } = renderView({ min: -2, max: 10, value: -1 });
+    getRoleAndTestValue({ view, value: -1 });
   });
 
   it('handles a negative max', () => {
-    const wrapper = renderStepper({ min: -8, max: -2, value: -1 });
-    const field = wrapper.find('input');
-    expect(field.props().value).toEqual(-2);
+    const { view } = renderView({ min: -8, max: -2, value: -1 });
+    getRoleAndTestValue({ view, value: -2 });
   });
 });
