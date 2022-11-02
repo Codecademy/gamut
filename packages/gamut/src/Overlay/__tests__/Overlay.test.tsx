@@ -1,13 +1,10 @@
 import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
-import { matchers } from '@emotion/jest';
 import { ThemeProvider } from '@emotion/react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 import React from 'react';
 
 import { Overlay, OverlayProps } from '..';
-
-expect.extend(matchers);
 
 const OverlayTest = (props?: Partial<OverlayProps>) => {
   return (
