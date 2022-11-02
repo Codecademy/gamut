@@ -1,8 +1,10 @@
-import 'jest-styled-components';
-
+import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
+import { matchers } from '@emotion/jest';
 
 import { GridFormSectionTitle } from '../GridFormSectionTitle';
+
+expect.extend(matchers);
 
 const renderView = setupRtl(GridFormSectionTitle, {
   title: 'Updog',
@@ -43,20 +45,25 @@ describe('GridFormSectionTitle', () => {
     // initTest(theme.breakpoints.sm - 1);
 
     const { view } = renderView({ layout: 'left', 'data-testid': 'columnId' });
-    console.log(view.debug());
 
     const column = view.getByTestId('columnId');
 
-    expect(column).toHaveStyle({ gridRowEnxd: 'span 3' });
+    expect(column).toHaveStyle({ gridRowEnd: 'span 1' });
 
-    expect(column).toHaveStyleRule('gridRowEnd', 'span 1', {
-      media: '(max-width:640px)',
+    expect(column).toHaveStyleRule('grid-row-end', 'span 3', {
+      media: theme.breakpoints.md,
     });
-    // const { size, gridRowEnd } = column.props();
 
-    // expect({ gridRowEnd, size }).toEqual({
-    //   gridRowEnd: { _: 'span 1', md: 'span 3' },
-    //   size: { _: 12, md: 3 },
-    // });
+    expect(column).toHaveStyle({ gridRowEnd: 'span 1' });
+
+    expect(column).toHaveStyleRule('grid-row-end', 'span 3', {
+      media: theme.breakpoints.md,
+    });
+
+    expect(column).toHaveStyle({ gridColumnEnd: 'span 12' });
+
+    expect(column).toHaveStyleRule('grid-column-end', 'span 3', {
+      media: theme.breakpoints.md,
+    });
   });
 });
