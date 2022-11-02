@@ -32,6 +32,9 @@ export const HorizontalScrollMenu: React.FC<HorizontalScrollMenuProps> = ({
       (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
           entry.target.ariaHidden = entry.isIntersecting ? 'false' : 'true';
+          (entry.target as HTMLElement).tabIndex = entry.isIntersecting
+            ? 0
+            : -1;
         });
       },
       {
