@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [62.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.1.1...@codecademy/styleguide@62.2.0) (2022-11-02)
+
+
+### Features
+
+* **Card:** Add outline shadow variant ([199805b](https://github.com/Codecademy/gamut/commit/199805b92bce1f4637d25b2ec4cc9aa50661baad))
+
+
+
 ### [62.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.1.0...@codecademy/styleguide@62.1.1) (2022-11-01)
 
 **Note:** Version bump only for package @codecademy/styleguide
