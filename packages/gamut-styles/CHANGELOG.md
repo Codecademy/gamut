@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [14.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.0...@codecademy/gamut-styles@14.2.1) (2022-11-02)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+## [14.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.1.2...@codecademy/gamut-styles@14.2.0) (2022-11-01)
+
+
+### Features
+
+* **adminTheme:** Update dark mode green in admin theme ([a42c333](https://github.com/Codecademy/gamut/commit/a42c333481b1a590d96b7d47b6589fd7cfc1f4c7)), closes [#2410](https://github.com/Codecademy/gamut/issues/2410)
+
+
+
 ### [14.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.1.1...@codecademy/gamut-styles@14.1.2) (2022-10-31)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
