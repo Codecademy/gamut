@@ -1,6 +1,4 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { mount } from 'enzyme';
-import React from 'react';
 
 import { Video } from '..';
 
