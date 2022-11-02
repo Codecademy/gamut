@@ -1,3 +1,5 @@
+import 'jest-styled-components';
+
 import { setupRtl } from '@codecademy/gamut-tests';
 
 import { GridFormSectionTitle } from '../GridFormSectionTitle';
@@ -32,21 +34,29 @@ describe('GridFormSectionTitle', () => {
     const { view } = renderView({ 'data-testid': 'columnId' });
 
     const column = view.getByTestId('columnId');
-    // const { size, gridRowEnd } = column.props();
 
-    expect(column).toHaveStyle({ size: 12 });
-    // expect(column).toEqual({ _: 12, md: 12 });
-    // expect(gridRowEnd).toEqual({ _: 'span 1', md: 'span 1' });
+    expect(column).toHaveStyle({ gridColumnEnd: 'span 12' });
+    expect(column).toHaveStyle({ gridRowEnd: 'span 1' });
   });
 
   it('renders the proper Column size according to number of fields when layout is set to left', () => {
-    const { view } = renderView({ layout: 'left' });
-    const column = view.find('Column') as any;
-    const { size, gridRowEnd } = column.props();
+    // initTest(theme.breakpoints.sm - 1);
 
-    expect({ gridRowEnd, size }).toEqual({
-      gridRowEnd: { _: 'span 1', md: 'span 3' },
-      size: { _: 12, md: 3 },
+    const { view } = renderView({ layout: 'left', 'data-testid': 'columnId' });
+    console.log(view.debug());
+
+    const column = view.getByTestId('columnId');
+
+    expect(column).toHaveStyle({ gridRowEnxd: 'span 3' });
+
+    expect(column).toHaveStyleRule('gridRowEnd', 'span 1', {
+      media: '(max-width:640px)',
     });
+    // const { size, gridRowEnd } = column.props();
+
+    // expect({ gridRowEnd, size }).toEqual({
+    //   gridRowEnd: { _: 'span 1', md: 'span 3' },
+    //   size: { _: 12, md: 3 },
+    // });
   });
 });
