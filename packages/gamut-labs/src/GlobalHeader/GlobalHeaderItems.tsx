@@ -72,6 +72,14 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
   text: 'Community',
   popover: [
     {
+      id: 'overview',
+      href: 'https://discuss.codecademy.com/',
+      trackingTarget: 'topnav_community_overview',
+      newTab: false,
+      text: 'Overview',
+      type: 'link',
+    },
+    {
       id: 'forums',
       href: 'https://discuss.codecademy.com/',
       trackingTarget: 'topnav_community_forums',
