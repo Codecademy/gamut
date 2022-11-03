@@ -94,11 +94,7 @@ export const DescriptionSectionContainer = styled(FlexBox)(
   css({
     '&:focus-visible': {
       color: 'text',
-      outline: '1px solid currentColor',
-    },
-    '&:focus': {
-      color: 'text',
-      outline: '1px solid currentColor',
+      outline: '1px solid currentColor !important',
     },
   })
 );
