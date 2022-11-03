@@ -1,11 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { matchers } from '@emotion/jest';
 import { fireEvent } from '@testing-library/dom';
 
-import { FillButton, IconButton } from '../../Button';
 import { Alert } from '../Alert';
-
-expect.extend(matchers);
 
 const children = 'Hello';
 const onClose = jest.fn();
@@ -20,12 +16,6 @@ const renderView = setupRtl(Alert, {
 describe('Alert', () => {
   beforeEach(() => {
     jest.resetAllMocks();
-  });
-
-  it('renders without exploding', () => {
-    const { view } = renderView({});
-
-    expect(view.getByText(children));
   });
 
   it('calls the onClose callback when the close button is clicked', () => {
@@ -65,21 +55,12 @@ describe('Alert', () => {
   it('renders a clickable button to expand the truncated section', () => {
     const { view } = renderView({});
 
-    const buttons = view.getAllByRole('button');
+    const expandButton = view.getByRole('button', { name: 'Expand' });
 
-    expect(buttons.length).toBe(2);
-    console.log(view.debug());
-    expect(view.getByText(/([H]+\W+[.?!;\u2026]+)/, { exact: false }));
+    expect(view.queryByText(children)).toBeNull();
 
-    fireEvent.click(buttons[0]);
-    // buttons.at(0).simulate('click');
+    fireEvent.click(expandButton);
 
-    expect(view.findByText(children)).toHaveAttribute('aria-expanded', 'true');
-
-    // buttons.at(0).simulate('click');
-
-    // view.update();
-
-    // expect(view.find('TruncateMarkup').length).toBe(1);
+    expect(view.findByText(children));
   });
 });
