@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
 import {
   FormattedAppHeaderItems,

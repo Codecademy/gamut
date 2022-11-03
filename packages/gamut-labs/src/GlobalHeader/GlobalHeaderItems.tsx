@@ -11,7 +11,6 @@ import {
   RatingStarGiveIcon,
   SupportIcon,
 } from '@codecademy/gamut-icons';
-import { ReactNode } from 'react';
 
 import {
   AppHeaderCatalogDropdownItem,
@@ -19,7 +18,6 @@ import {
   AppHeaderLinkItem,
   AppHeaderLogoItem,
   AppHeaderProfileDropdownItem,
-  AppHeaderRenderElementItem,
   AppHeaderResourcesDropdownItem,
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
