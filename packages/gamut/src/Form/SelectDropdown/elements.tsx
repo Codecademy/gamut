@@ -145,16 +145,15 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
   const {
     getStyles,
     innerProps: { ...restInnerProps },
-    selectProps,
+    selectProps: { size },
   } = props;
 
   const { removeAllButtonRef, selectInputRef } = useContext(
     SelectDropdownContext
   );
-  const { size } = selectProps;
-  const { ...iconProps } = indicatorIcons[
-    size ? 'smallRemove' : 'mediumRemove'
-  ];
+
+  const iconSize = size ?? 'medium';
+  const { ...iconProps } = indicatorIcons[`${iconSize}Remove`];
   const { icon: IndicatorIcon } = iconProps;
 
   const onKeyPress = (e: KeyboardEvent<HTMLDivElement>) => {
