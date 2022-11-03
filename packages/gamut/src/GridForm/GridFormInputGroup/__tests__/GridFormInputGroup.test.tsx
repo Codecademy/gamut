@@ -91,7 +91,6 @@ describe('GridFormInputGroup', () => {
     });
 
     expect(getById(view.container, 'mycoolid')).toHaveAttribute('type', 'file');
-    // expect(view.getByRole('file'));
   });
 
   it('renders a textarea when the field type is textarea', () => {
@@ -132,9 +131,9 @@ describe('GridFormInputGroup', () => {
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
   });
 
-  it('invokes onUpdate when the field type is select and it gets changed', () => {
+  it('invokes onUpdate when the field type is select and it gets changed', async () => {
     const onUpdateSpy = jest.fn();
-    const newVal = 'foo';
+    const newVal = 'bbb';
 
     const { view } = renderView({
       field: { ...stubSelectField, onUpdate: onUpdateSpy },
@@ -155,9 +154,9 @@ describe('GridFormInputGroup', () => {
       field: { ...stubCheckboxField, onUpdate: onUpdateSpy },
     });
 
-    view
-      .find('input[type="checkbox"]')
-      .simulate('change', { target: { checked: newVal } });
+    const checkbox = view.getByRole('checkbox');
+
+    fireEvent.click(checkbox);
 
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
   });
@@ -170,10 +169,11 @@ describe('GridFormInputGroup', () => {
       field: { ...stubFileField, onUpdate: onUpdateSpy },
     });
 
-    view
-      .find('input[type="file"]')
-      .simulate('change', { target: { files: newVal } });
+    const input = view.getByLabelText('Stub File');
 
+    fireEvent.change(input, { target: { files: newVal } });
+
+    expect(view.container).toContainHTML('Column');
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
   });
 
@@ -183,7 +183,10 @@ describe('GridFormInputGroup', () => {
       error: 'It broke',
       isFirstError: true,
     });
-    expect(view.find('ErrorSpan').prop('aria-live')).toEqual('assertive');
+
+    const error = view.getByRole('alert');
+
+    expect(error).toHaveAttribute('aria-live', 'assertive');
   });
 
   it('sets aria-live to off if isFirstError flag is off', () => {
@@ -192,20 +195,34 @@ describe('GridFormInputGroup', () => {
       error: 'It broke',
       isFirstError: false,
     });
-    expect(view.find('ErrorSpan').prop('aria-live')).toEqual('off');
+
+    const error = view.getByRole('status');
+
+    view.container.getElementsByClassName('css-d7900z-Column e1y0e4q30');
+
+    expect(error).toHaveAttribute('aria-live', 'off');
+  });
+
+  it('creates column for inputs', () => {
+    const { view } = renderView({
+      field: { ...stubTextField },
+    });
+
+    expect(view.container).toContainHTML('Column');
   });
 
   it('does not create a column for sweet container inputs', () => {
     const { view } = renderView({
       field: { ...stubSweetContainerField },
     });
-    expect(view.find('Column').exists()).toBeFalsy();
+
+    expect(view.container).not.toContainHTML('Column');
   });
 
   it('does not create a column for hidden inputs', () => {
     const { view } = renderView({
       field: { ...stubHiddenField },
     });
-    expect(view.find('Column').exists()).toBeFalsy();
+    expect(view.container).not.toContainHTML('Column');
   });
 });
