@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.8.18](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-patterns@0.8.17...@codecademy/gamut-patterns@0.8.18) (2022-11-02)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.8.17](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-patterns@0.8.16...@codecademy/gamut-patterns@0.8.17) (2022-11-01)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
+### [0.8.16](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-patterns@0.8.15...@codecademy/gamut-patterns@0.8.16) (2022-10-31)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+
+
+
+
 ### [0.8.15](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-patterns@0.8.14...@codecademy/gamut-patterns@0.8.15) (2022-10-06)
 
 **Note:** Version bump only for package @codecademy/gamut-patterns

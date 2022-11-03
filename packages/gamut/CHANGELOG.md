@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [51.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.3.0...@codecademy/gamut@51.3.1) (2022-11-02)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [51.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.2.1...@codecademy/gamut@51.3.0) (2022-11-02)
+
+
+### Features
+
+* **Card:** Add outline shadow variant ([199805b](https://github.com/Codecademy/gamut/commit/199805b92bce1f4637d25b2ec4cc9aa50661baad))
+
+
+
+### [51.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.2.0...@codecademy/gamut@51.2.1) (2022-11-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [51.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.1.2...@codecademy/gamut@51.2.0) (2022-11-01)
+
+
+### Features
+
+* **Toggle:** allow react node for labels ([bab3aaa](https://github.com/Codecademy/gamut/commit/bab3aaaac31ca398490f805d44f5d12fe4e68dac))
+
+
+
+### [51.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.1.1...@codecademy/gamut@51.1.2) (2022-10-31)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [51.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.1.0...@codecademy/gamut@51.1.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* **MenuItem:** fixes focus outlines and onClick support ([6fe141f](https://github.com/Codecademy/gamut/commit/6fe141f1250bcaabb3887a30e110b98b1c8c7af8))
+
+
+
 ## [51.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.0.1...@codecademy/gamut@51.1.0) (2022-10-26)
 
 
