@@ -80,15 +80,11 @@ function getAppHeaderItems(
     case 'free':
       return mobile
         ? freeMobileHeaderItems(props.user, hidePricing)
-        : freeHeaderItems(
-            props.user,
-            hidePricing,
-            props.renderFavorites?.desktop
-          );
+        : freeHeaderItems(props.user, hidePricing);
     case 'pro':
       return mobile
         ? proMobileHeaderItems(props.user)
-        : proHeaderItems(props.user, props.renderFavorites?.desktop);
+        : proHeaderItems(props.user);
     case 'loading':
       return mobile ? loadingMobileHeaderItems : loadingHeaderItems;
   }

@@ -9,7 +9,6 @@ import {
   businessSolutions,
   catalogDropdown,
   communityDropdown,
-  favorites,
   freeProfile,
   login,
   logo,
@@ -147,8 +146,7 @@ export const anonSignupMobileHeaderItems = (
 
 export const freeHeaderItems = (
   user: User,
-  hidePricing?: boolean,
-  renderFavorites?: () => ReactNode
+  hidePricing?: boolean
 ): FormattedAppHeaderItems => {
   const specialLogo = { ...logo, checkMini: true };
 
@@ -163,9 +161,6 @@ export const freeHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  if (renderFavorites) {
-    rightItems.push(favorites(renderFavorites));
-  }
   rightItems.push(freeProfile(user));
   rightItems.push(
     user.showProUpgrade
@@ -206,10 +201,7 @@ export const freeMobileHeaderItems = (
   };
 };
 
-export const proHeaderItems = (
-  user: User,
-  renderFavorites?: () => ReactNode
-): FormattedAppHeaderItems => {
+export const proHeaderItems = (user: User): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
     myHome,
@@ -220,9 +212,6 @@ export const proHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  if (renderFavorites) {
-    rightItems.push(favorites(renderFavorites));
-  }
   rightItems.push(proProfile(user));
   if (user.isPaused) {
     rightItems.push(unpausePro);
