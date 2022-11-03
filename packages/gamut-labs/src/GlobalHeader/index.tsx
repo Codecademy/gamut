@@ -111,8 +111,6 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     CrossDeviceItemId.UNSET
   );
 
-  const { crossDeviceBookmarkParts } = props;
-
   return (
     <Box as="header" position="sticky" top={0} zIndex={theme.elements.headerZ}>
       <AppHeader
@@ -131,7 +129,6 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         isAnon={props.type === 'anon'}
         openCrossDeviceItemId={openCrossDeviceItemId}
         setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
-        crossDeviceBookmarkParts={crossDeviceBookmarkParts}
       />
       <AppHeaderMobile
         action={combinedAction}
@@ -146,7 +143,6 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         isAnon={props.type === 'anon'}
         openCrossDeviceItemId={openCrossDeviceItemId}
         setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
-        crossDeviceBookmarkParts={crossDeviceBookmarkParts}
       />
       {props.children}
     </Box>

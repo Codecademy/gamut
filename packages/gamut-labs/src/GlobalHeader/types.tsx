@@ -5,7 +5,6 @@ import {
   AppHeaderItemWithHref,
 } from '../AppHeader/AppHeaderElements/types';
 import { AppHeaderSearch } from '../AppHeader/Search/useHeaderSearch';
-import { CrossDeviceBookmarkParts } from '../Bookmarks/types';
 import { AppHeaderNotificationSettings } from '../Notifications/types';
 
 type RenderFavorites = {
@@ -22,7 +21,6 @@ type BaseHeader = {
   className?: string;
   hidePricing?: boolean;
   search: AppHeaderSearch;
-  crossDeviceBookmarkParts?: CrossDeviceBookmarkParts;
 };
 
 export type User = {
@@ -73,7 +71,6 @@ export type LoadingHeader = BaseHeader & {
 
 export enum CrossDeviceItemId {
   NOTIFICATIONS = 'notifications',
-  BOOKMARKS = 'bookmarks',
   UNSET = '',
 }
 

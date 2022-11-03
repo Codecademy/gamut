@@ -4,11 +4,6 @@ import styled from '@emotion/styled';
 import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
 import { AppBar } from '../AppBar';
-import {
-  CrossDeviceBookmarkParts,
-  CrossDeviceBookmarksView,
-} from '../Bookmarks/types';
-import { useBookmarkComponentsPair } from '../Bookmarks/useBookmarkComponentsPair';
 import { CrossDeviceStateProps } from '../GlobalHeader/types';
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { HeaderHeightArea } from '../HeaderHeightArea';
@@ -36,7 +31,6 @@ export type AppHeaderProps = {
   redirectParam?: string;
   search: AppHeaderSearch;
   isAnon: boolean;
-  crossDeviceBookmarkParts?: CrossDeviceBookmarkParts;
 } & CrossDeviceStateProps;
 
 export const StyledAppBar = styled(AppBar)(
@@ -139,7 +133,6 @@ export const mapItemToElement = (
 export const AppHeader: React.FC<AppHeaderProps> = ({
   openCrossDeviceItemId,
   setOpenCrossDeviceItemId,
-  crossDeviceBookmarkParts,
   action,
   items,
   notifications,
@@ -157,22 +150,13 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   });
   const [searchButton, searchPane] = useHeaderSearch(search);
 
-  const [bookmarksButton, bookmarksContent] = useBookmarkComponentsPair({
-    openCrossDeviceItemId,
-    setOpenCrossDeviceItemId,
-    bookmarkParts: crossDeviceBookmarkParts,
-    view: CrossDeviceBookmarksView.DESKTOP,
-    isAnon,
-  });
-
   const right = useMemo(
     () => [
       searchButton,
       ...(notificationsBell ? [notificationsBell] : []),
-      ...(bookmarksButton ? [bookmarksButton] : []),
       ...items.right,
     ],
-    [searchButton, notificationsBell, bookmarksButton, items]
+    [searchButton, notificationsBell, items]
   );
 
   const itemsCount = [...items.left, ...right].length - 1;
@@ -289,7 +273,6 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
         </StyledMenuBar>
       </StyledAppBar>
       {notificationsView}
-      {bookmarksContent}
       {searchPane}
     </HeaderHeightArea>
   );
