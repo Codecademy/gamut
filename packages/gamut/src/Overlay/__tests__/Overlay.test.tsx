@@ -1,6 +1,4 @@
-import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
-import { ThemeProvider } from '@emotion/react';
 import { fireEvent } from '@testing-library/react';
 import React from 'react';
 
@@ -8,16 +6,14 @@ import { Overlay, OverlayProps } from '..';
 
 const OverlayTest = (props?: Partial<OverlayProps>) => {
   return (
-    <ThemeProvider theme={theme}>
-      <main>
-        <Overlay onRequestClose={jest.fn()} {...props}>
-          <div data-testid="overlay-content">
-            Howdy!
-            <button aria-label="Button" type="button" />
-          </div>
-        </Overlay>
-      </main>
-    </ThemeProvider>
+    <main>
+      <Overlay onRequestClose={jest.fn()} {...props}>
+        <div data-testid="overlay-content">
+          Howdy!
+          <button aria-label="Button" type="button" />
+        </div>
+      </Overlay>
+    </main>
   );
 };
 

@@ -1,9 +1,13 @@
+import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
+import { matchers } from '@emotion/jest';
 import React from 'react';
 
 import { List } from '../List';
 import { ListCol } from '../ListCol';
 import { ListRow } from '../ListRow';
+
+expect.extend(matchers);
 
 const renderView = setupRtl(List, {
   children: (
@@ -28,19 +32,32 @@ describe('List', () => {
 
   it('configures rows with the correct variants', () => {
     const { view } = renderView();
-    const wrappingRow = view.find('RowEl').at(0);
-    expect(wrappingRow.prop('variant')).toBe('default');
-    expect(wrappingRow.prop('spacing')).toBe('normal');
-    expect(wrappingRow.prop('rowBreakpoint')).toBe('xs');
+
+    const rowEl = view.container.querySelector('li');
+
+    expect(rowEl).toHaveStyle({ borderTop: 'none' });
+    expect(rowEl).toHaveStyle({ gap: theme.spacing[8] });
+    expect(rowEl).toHaveStyleRule('gap', theme.spacing[40], {
+      media: theme.breakpoints.xs,
+    });
   });
+
   it('configures columns with the correct variants', () => {
     const { view } = renderView();
 
-    expect(view.find('ColEl').prop('variant')).toBe('default');
-    expect(view.find('ColEl').prop('spacing')).toBe('normal');
-    expect(view.find('ColEl').prop('rowBreakpoint')).toBe('xs');
-    expect(view.find('ColEl').prop('sticky')).toBe(false);
+    const colEl = view.getByText('Hello');
+
+    expect(colEl).not.toHaveStyle({ py: 16 });
+    expect(colEl).toHaveStyleRule('padding-top', theme.spacing[16], {
+      media: theme.breakpoints.xs,
+    });
+    expect(colEl).toHaveStyleRule('padding-bottom', theme.spacing[16], {
+      media: theme.breakpoints.xs,
+    });
+
+    expect(colEl).not.toHaveStyle({ position: 'sticky' });
   });
+
   it('fixes the row header column when scrollable - but not other columns', () => {
     const { view } = renderView({
       scrollable: true,
@@ -52,9 +69,13 @@ describe('List', () => {
       ),
     });
 
-    expect(view.find({ type: 'header', sticky: true }).length).toBe(1);
-    expect(view.find({ type: 'content', sticky: true }).length).toBe(0);
+    const headerEl = view.getByText('Hello');
+    const contentEl = view.getByText('Content');
+
+    expect(headerEl).toHaveStyle({ position: 'sticky' });
+    expect(contentEl).not.toHaveStyle({ position: 'sticky' });
   });
+
   it('renders ListRow with expanded content when expanded is true', () => {
     const { view } = renderView({
       children: (
@@ -68,8 +89,9 @@ describe('List', () => {
       ),
     });
 
-    expect(view.find('#surprise').length).toBe(1);
+    expect(view.getByText('Surprise!'));
   });
+
   it('does not render ListRow with expanded content when expanded is false', () => {
     const { view } = renderView({
       children: (
@@ -82,6 +104,6 @@ describe('List', () => {
         </ListRow>
       ),
     });
-    expect(view.find('#surprise').length).toBe(0);
+    expect(view.queryByText('Surprise!')).toBeNull();
   });
 });
