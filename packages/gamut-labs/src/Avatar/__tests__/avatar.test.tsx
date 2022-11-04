@@ -1,32 +1,39 @@
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { Avatar } from '..';
 
+const renderView = setupRtl(Avatar, {
+  src: '',
+  alt: '',
+});
+
 describe('Avatar', () => {
   it('when an "alt" prop is passed, an "alt" attribute is added to the <img/>', () => {
-    const wrapper = mount(<Avatar src="" alt="alt" />);
+    const { view } = renderView({ alt: 'alt' });
 
-    expect(wrapper.find('img[alt="alt"]')).toHaveLength(1);
+    view.getByAltText('alt');
   });
 
   it('when an "aria-labelledby" prop is passed, an "aria-labelledby" attribute is added to the <img/>', () => {
-    const wrapper = mount(
-      <>
-        <Avatar src="" aria-labelledby="label" />
-        <h1 id="label">I is label</h1>
-      </>
-    );
-    expect(wrapper.find('img[aria-labelledby="label"]')).toHaveLength(1);
+    const { view } = renderView({ 'aria-labelledby': 'label', alt: undefined });
+
+    const img = view.getByRole('img');
+    expect(img).toHaveAttribute('aria-labelledby', 'label');
   });
 
   it('when a "size" prop is passed, the <img/> height and width attributes are set accordingly', () => {
-    const wrapper = mount(<Avatar src="" alt="" size={32} />);
-    expect(wrapper.find('Image').prop('dimensions')).toBe(32);
+    const { view } = renderView({ size: 32 });
+
+    const img = view.getByRole('img');
+    expect(img).toHaveStyle('width: 32px');
+    expect(img).toHaveStyle('height: 32px');
   });
 
   it('when a "size" prop is not passed, the <img/> height and width attributes are set to the default value', () => {
-    const wrapper = mount(<Avatar src="" alt="" />);
-    expect(wrapper.find('Image').prop('dimensions')).toBe(118);
+    const { view } = renderView();
+
+    const img = view.getByRole('img');
+    expect(img).toHaveStyle('width: 118px');
+    expect(img).toHaveStyle('height: 118px');
   });
 });

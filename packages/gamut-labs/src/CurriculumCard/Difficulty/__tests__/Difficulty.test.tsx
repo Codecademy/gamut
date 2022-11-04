@@ -9,10 +9,12 @@ describe('CurriculumCard Difficulty', () => {
     const { view } = renderView({ difficulty: 'Beginner' });
     view.getByText('Beginner friendly');
   });
+
   it('displays intermediate difficulty', () => {
     const { view } = renderView({ difficulty: 'Intermediate' });
     view.getByText('Intermediate');
   });
+
   it('displays advance difficulty', () => {
     const { view } = renderView({ difficulty: 'Advanced' });
     view.getByText('Advanced');
