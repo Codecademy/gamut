@@ -1,4 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/dom';
 
 import { mockBookmarkParts } from '../../Bookmarks/fixtures';
 import { CrossDeviceItemId } from '../../GlobalHeader/types';
@@ -102,22 +103,21 @@ describe('AppHeaderMobile', () => {
   describe('Mobile Menu Open', () => {
     it('renders the mobile menu content', () => {
       const { view } = renderView(mainMenuProps);
-      view.getByTestId('header-mobile-menu').click();
+      fireEvent.click(view.getByTestId('header-mobile-menu'));
       expect(view.getByText('App Header Link'));
       expect(view.getByText('App Header Button'));
     });
 
     it('hides the mobile app header', () => {
       const { view } = renderView(mainMenuProps);
-      view.getByTestId('header-mobile-menu').click();
+      fireEvent.click(view.getByTestId('header-mobile-menu'));
       expect(view.queryByTestId('header-mobile-menu')).not.toBeInTheDocument();
     });
 
     it('renders a button to close the mobile menu', () => {
       const { view } = renderView(mainMenuProps);
-      view.getByTestId('header-mobile-menu').click();
-      const closeButton = view.getByLabelText('close menu');
-      closeButton.click();
+      fireEvent.click(view.getByTestId('header-mobile-menu'));
+      fireEvent.click(view.getByLabelText('close menu'));
       expect(view.queryByTestId('header-mobile-menu')).toBeInTheDocument();
     });
   });

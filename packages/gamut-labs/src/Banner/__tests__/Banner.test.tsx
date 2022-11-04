@@ -32,7 +32,7 @@ describe('Banner', () => {
 
     fireEvent.click(button);
 
-    expect(onCtaClick).toHaveBeenCalledTimes(1);
+    expect(onCtaClick).toHaveBeenCalled();
   });
 
   it('calls the onClose callback when the close icon is clicked', () => {
@@ -40,7 +40,7 @@ describe('Banner', () => {
 
     fireEvent.click(view.getByLabelText('dismiss'));
 
-    expect(onClose).toHaveBeenCalledTimes(1);
+    expect(onClose).toHaveBeenCalled();
   });
 
   test.each([

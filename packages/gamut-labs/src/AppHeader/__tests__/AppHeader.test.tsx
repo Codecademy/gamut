@@ -145,17 +145,13 @@ const renderView = setupRtl(AppHeader);
 describe('AppHeader', () => {
   it('renders an AppHeaderLogo when the item type is logo', () => {
     const { view } = renderView(logoProps);
-
     fireEvent.click(view.getByTitle('Codecademy Logo'));
-
     expect(action).toHaveBeenCalledTimes(1);
   });
 
   it('renders an AppHeaderLink when the item type is link', () => {
     const { view } = renderView(linkProps);
-
     fireEvent.click(view.getByText('AppHeaderLink'));
-
     expect(action).toHaveBeenCalledTimes(1);
   });
 

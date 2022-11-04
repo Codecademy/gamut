@@ -1,4 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/dom';
 
 import { AppHeaderSimpleDropdownItem } from '../../../AppHeader/AppHeaderElements/types';
 import { createMockAppHeaderLinkItem } from '../../../AppHeader/mockAppHeaderItems';
@@ -24,7 +25,7 @@ const renderView = setupRtl(AppHeaderSubMenuTarget, {
 describe('AppHeaderSubMenuTarget', () => {
   it('calls openSubMenu when the submenu target link is clicked', () => {
     const { view } = renderView();
-    view.getByText('submenu target').click();
+    fireEvent.click(view.getByText('submenu target'));
     expect(openSubMenu).toHaveBeenCalled();
   });
 });

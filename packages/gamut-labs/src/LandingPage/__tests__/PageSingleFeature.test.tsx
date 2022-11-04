@@ -102,7 +102,7 @@ describe('PageSingleFeature', () => {
   it('should not render anything when no props are provided', () => {
     const { view } = renderView();
 
-    expect(view.queryByText(/.+/)).toBeNull();
+    expect(view.queryByText(/.+/)).not.toBeInTheDocument();
   });
 
   it('should render an h1 when passed isPageHeading', () => {

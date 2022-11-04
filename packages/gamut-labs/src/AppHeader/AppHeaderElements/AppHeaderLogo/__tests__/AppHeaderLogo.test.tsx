@@ -23,7 +23,6 @@ const renderView = setupRtl(AppHeaderLogo, {
 describe('AppHeaderLogo', () => {
   it('renders a logo', () => {
     const { view } = renderView();
-
     view.getByTitle('Codecademy Logo');
   });
 
@@ -88,16 +87,13 @@ describe('AppHeaderLogo', () => {
 
   it('links to the provided href', () => {
     const { view } = renderView();
-
     const link = view.getByRole('menuitem');
     expect(link).toHaveAttribute('href', testUrl);
   });
 
   it('calls action() when clicked', () => {
     const { view } = renderView();
-
     fireEvent.click(view.getByRole('menuitem'));
-
     expect(action).toHaveBeenCalled();
   });
 });

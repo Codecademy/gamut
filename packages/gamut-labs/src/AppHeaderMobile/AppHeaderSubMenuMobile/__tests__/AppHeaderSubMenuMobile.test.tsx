@@ -1,4 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/dom';
 
 import { createMockAppHeaderLinkItem } from '../../../AppHeader/mockAppHeaderItems';
 import { AppHeaderSubMenuMobile } from '../index';
@@ -37,7 +38,7 @@ describe('AppHeaderSubMenuMobile', () => {
 
   it('calls handleClose when the menu link is clicked', () => {
     const { view } = renderView();
-    view.getByText('Menu').click();
+    fireEvent.click(view.getByText('Menu'));
     expect(handleCloseSubMenu).toHaveBeenCalled();
   });
 });
