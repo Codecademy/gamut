@@ -30,6 +30,7 @@
     "@codecademy/gamut-illustrations": "^0.32.5",
     "@codecademy/gamut-patterns": "^0.8.18",
     "@codecademy/gamut-styles": "^14.2.1",
+    "@codecademy/tracking": "0.26.0",
     "@codecademy/variance": "^0.20.3",
     "@loadable/component": "^5.15.2",
     "classnames": "^2.2.5",
@@ -37,6 +38,7 @@
     "freezeframe": "^5.0.2",
     "intersection-observer": "^0.12.0",
     "lodash": "^4.17.5",
+    "pluralize": "8.0.0",
     "react-focus-on": "^3.5.1",
     "react-freezeframe": "^5.0.2",
     "react-hook-form": "^7.21.2",
@@ -52,6 +54,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/enzyme": "3.10.7",
     "@types/loadable__component": "^5.13.4",
+    "@types/pluralize": "0.0.29",
     "enzyme": "3.11.0"
   },
   "scripts": {
