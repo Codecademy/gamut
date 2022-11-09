@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.6.18...@codecademy/gamut-labs@33.7.0) (2022-11-09)
+
+
+### Features
+
+* **ScoreSummary:** create ScoreSummary gamut-labs component ([c7ed278](https://github.com/Codecademy/gamut/commit/c7ed27890a8839ea141fcba21ddb3af11f83d8a1))
+
+
+
 ### [33.6.18](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.6.17...@codecademy/gamut-labs@33.6.18) (2022-11-07)
 
 
