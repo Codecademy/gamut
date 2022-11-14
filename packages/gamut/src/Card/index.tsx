@@ -34,38 +34,39 @@ const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
           boxShadow: `-8px 8px 0 currentColor`,
         },
       },
-      outline: outlineStyles,
+      outline: outlineStyles(variant),
     },
   })
 );
 
-const shadowVariants = variant({
-  prop: 'shadow',
-  base: {
-    position: 'relative',
-    boxShadow: `0px 0px 0 ${theme.colors.navy}`,
-    transition: 'box-shadow 200ms ease, transform 200ms ease',
-  },
-  variants: {
-    small: {
-      '&:hover': {
-        transform: 'translate(2px, -2px)',
-        boxShadow: `-4px 4px 0 ${theme.colors.navy}`,
-      },
+const shadowVariants = (variant) =>
+  variant({
+    prop: 'shadow',
+    base: {
+      position: 'relative',
+      boxShadow: `0px 0px 0 ${theme.colors.navy}`,
+      transition: 'box-shadow 200ms ease, transform 200ms ease',
     },
-    medium: {
-      '&:hover': {
-        transform: 'translate(4px, -4px)',
-        boxShadow: `-8px 8px 0 ${theme.colors.navy}`,
+    variants: {
+      small: {
+        '&:hover': {
+          transform: 'translate(2px, -2px)',
+          boxShadow: `-4px 4px 0 ${theme.colors.navy}`,
+        },
       },
+      medium: {
+        '&:hover': {
+          transform: 'translate(4px, -4px)',
+          boxShadow: `-8px 8px 0 ${theme.colors.navy}`,
+        },
+      },
+      outline: outlineStyles(variant),
     },
-    outline: outlineStyles,
-  },
-});
+  });
 
 export interface CardProps
   extends Omit<ComponentProps<typeof CardWrapper>, 'outline' | 'bg'> {
-  variant?: 'navy' | 'white' | 'hyper' | 'yellow';
+  variant?: 'navy' | 'white' | 'hyper' | 'yellow' | 'beige';
 }
 
 interface CardWrapperProps extends StyleProps<typeof shadowVariants> {

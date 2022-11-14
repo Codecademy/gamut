@@ -29,7 +29,7 @@ import { LinkTo } from '~styleguide/blocks';
 
 ## Variants
 
-We provide 4 style variants for Card.
+We provide 5 style variants for Card.
 
 <Canvas>
   <Story name="White" args={{ variant: 'white' }}>
@@ -42,6 +42,9 @@ We provide 4 style variants for Card.
     {(args) => <Card {...args} />}
   </Story>
   <Story name="Hyper" args={{ variant: 'hyper' }}>
+    {(args) => <Card {...args} />}
+  </Story>
+  <Story name="Beige" args={{ variant: 'beige' }}>
     {(args) => <Card {...args} />}
   </Story>
 </Canvas>
@@ -57,7 +60,7 @@ We provide 3 style variants for shadow.
   <Story name="Medium" args={{ shadow: 'medium' }}>
     {(args) => <Card {...args} />}
   </Story>
-  <Story name="Outline" args={{ shadow: 'outline' }}>
+  <Story name="Outline" args={{ shadow: 'outline', variant: 'beige' }}>
     {(args) => <Card {...args} />}
   </Story>
 </Canvas>
