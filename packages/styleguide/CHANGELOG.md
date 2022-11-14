@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [62.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.2.3...@codecademy/styleguide@62.3.0) (2022-11-09)
+
+
+### Features
+
+* **ScoreSummary:** create ScoreSummary gamut-labs component ([c7ed278](https://github.com/Codecademy/gamut/commit/c7ed27890a8839ea141fcba21ddb3af11f83d8a1))
+
+
+
+### [62.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.2.2...@codecademy/styleguide@62.2.3) (2022-11-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.2.1...@codecademy/styleguide@62.2.2) (2022-11-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [62.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.2.0...@codecademy/styleguide@62.2.1) (2022-11-02)
 
 **Note:** Version bump only for package @codecademy/styleguide
