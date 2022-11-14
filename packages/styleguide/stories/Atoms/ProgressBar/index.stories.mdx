@@ -1,5 +1,7 @@
 import {
+  Box,
   Column,
+  FlexBox,
   GridBox,
   LayoutGrid,
   ProgressBar,
@@ -167,6 +169,32 @@ This is a variant of the ProgressBar that has a transparent background and "bord
       <GridBox alignContent="center" height="8rem" bg="navy" border={1} p={32}>
         <ProgressBar {...args} />
       </GridBox>
+    )}
+  </Story>
+</Canvas>
+
+## Rating variant
+
+This is a variant of the ProgressBar, which can be used to show a percentage of star ratings for a course. It features a yellow percentage level bar and white background.
+
+<Canvas column={2}>
+  <Story
+    name="Rating"
+    args={{
+      percent: 75,
+      variant: 'rating',
+      size: 'medium',
+      bordered: true,
+    }}
+  >
+    {(args) => (
+      <FlexBox alignItems="center" height="4rem" bg="beige" border={1} p={32}>
+        <Text>4 stars</Text>
+        <Box width={300} px={16}>
+          <ProgressBar {...args} />
+        </Box>
+        <Text aria-hidden>75%</Text>
+      </FlexBox>
     )}
   </Story>
 </Canvas>

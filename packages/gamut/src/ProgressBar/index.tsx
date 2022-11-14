@@ -26,7 +26,7 @@ export type ProgressBarProps = {
   /**
    * Base variant display themes.
    */
-  variant: 'blue' | 'yellow' | 'dark' | 'light';
+  variant: 'blue' | 'yellow' | 'dark' | 'light' | 'rating';
 
   /**
    * Base variant display themes.
@@ -83,6 +83,9 @@ const progressBarBackgroundVariants = variant({
     light: {
       textColor: 'navy',
     },
+    rating: {
+      bg: 'white',
+    },
   },
 });
 
@@ -138,6 +141,9 @@ const progressBarForegroundVariants = variant({
       bg: 'white',
       textColor: 'white',
     },
+    rating: {
+      bg: 'yellow',
+    },
   },
 });
 
@@ -180,7 +186,11 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       variant={variant}
       backgroundOverride={Pattern ? 'pattern' : 'none'}
     >
-      <Text as="label" screenreader>{`Progress: ${percent}%`}</Text>
+      <Text as="label" screenreader>
+        {variant === 'rating'
+          ? `${percent}% of ratings`
+          : `Progress: ${percent}%`}
+      </Text>
       {Pattern && <Pattern width="100%" position="absolute" zIndex={0} />}
       <Bar
         variant={variant}
