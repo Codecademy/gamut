@@ -25,6 +25,7 @@ export * from './MobilePhone';
 export * from './New';
 export * from './NumberBlocks';
 export * from './Onboarding';
+export * from './Pillars';
 export * from './Plant';
 export * from './PortfolioProject';
 export * from './PracticeProject';
