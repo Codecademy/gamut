@@ -1,11 +1,10 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
 import { setupRtl } from '@codecademy/gamut-tests';
-import { act, fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 
-// import { act } from 'react-dom/test-utils';
 import { Markdown } from '../index';
 
 const basicMarkdown = `
