@@ -47,9 +47,9 @@ const renderView = setupRtl(Markdown);
 describe('<Markdown />', () => {
   it('renders standard Markdown', () => {
     renderView({ text: basicMarkdown });
-    expect(document.querySelectorAll('h1').length).toEqual(1);
+    view.getByRole('heading', { level: 1 })
     expect(document.querySelectorAll('h3').length).toEqual(1);
-    expect(document.querySelectorAll('code').length).toEqual(1);
+    view.getByRole('code')
   });
 
   it('Renders html content in markdown', () => {
@@ -93,9 +93,7 @@ describe('<Markdown />', () => {
 
   it('Wraps youtube iframes in a flexible container', () => {
     renderView({ text: youtubeMarkdown });
-    expect(
-      document.querySelectorAll('[data-testid="yt-iframe"]').length
-    ).toEqual(1);
+view.getByTestId('yt-iframe')
   });
 
   it('Wraps the markdown in a div by default (block)', () => {
@@ -196,9 +194,7 @@ var test = true;
       'data-testid': 'cool',
     } as any);
 
-    expect(document.querySelectorAll('div[data-testid="cool"]').length).toEqual(
-      1
-    );
+view.getByTestId('cool')
   });
 
   it('Prevents errors on malformed image tags', () => {
