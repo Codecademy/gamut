@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [51.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.4.0...@codecademy/gamut@51.4.1) (2022-11-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [51.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.3.1...@codecademy/gamut@51.4.0) (2022-11-14)
+
+
+### Features
+
+* **Card:** Have outline shadow variant to inherit variant color ([5f18683](https://github.com/Codecademy/gamut/commit/5f186835cbe286dbca7fa75c52efc54991aa9940))
+
+
+
 ### [51.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.3.0...@codecademy/gamut@51.3.1) (2022-11-02)
 
 **Note:** Version bump only for package @codecademy/gamut
