@@ -206,7 +206,7 @@ var test = true;
       text: `<img src="http://google.com/"></img>`,
     });
 
-    expect(document.querySelectorAll('img').length).toEqual(1);
+    view.getByRole('img')
   });
 
   it('Allows passing in class names', () => {
