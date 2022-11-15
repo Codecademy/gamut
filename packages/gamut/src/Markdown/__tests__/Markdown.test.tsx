@@ -47,9 +47,9 @@ const renderView = setupRtl(Markdown);
 describe('<Markdown />', () => {
   it('renders standard Markdown', () => {
     renderView({ text: basicMarkdown });
-    view.getByRole('heading', { level: 1 })
+    screen.getByRole('heading', { level: 1 });
     expect(document.querySelectorAll('h3').length).toEqual(1);
-    view.getByRole('code')
+    expect(document.querySelectorAll('code').length).toEqual(1);
   });
 
   it('Renders html content in markdown', () => {
@@ -93,7 +93,7 @@ describe('<Markdown />', () => {
 
   it('Wraps youtube iframes in a flexible container', () => {
     renderView({ text: youtubeMarkdown });
-view.getByTestId('yt-iframe')
+    screen.getByTestId('yt-iframe');
   });
 
   it('Wraps the markdown in a div by default (block)', () => {
@@ -150,8 +150,8 @@ var test = true;
         },
       };
 
-      const { view } = renderView({ text, overrides });
-      const codeblockEl = view.getByText('custom codeblock 1');
+      renderView({ text, overrides });
+      const codeblockEl = screen.getByText('custom codeblock 1');
 
       expect(codeblockEl.getAttribute('language')!).toEqual('js');
     });
@@ -182,9 +182,9 @@ var test = true;
         },
       };
 
-      const { view } = renderView({ text, overrides });
-      view.getByText('custom codeblock 2');
-      view.getByText('custom code snippet 1');
+      renderView({ text, overrides });
+      screen.getByText('custom codeblock 2');
+      screen.getByText('custom code snippet 1');
     });
   });
 
@@ -194,7 +194,7 @@ var test = true;
       'data-testid': 'cool',
     } as any);
 
-view.getByTestId('cool')
+    screen.getByTestId('cool');
   });
 
   it('Prevents errors on malformed image tags', () => {
@@ -202,7 +202,7 @@ view.getByTestId('cool')
       text: `<img src="http://google.com/"></img>`,
     });
 
-    view.getByRole('img')
+    screen.getByRole('img');
   });
 
   it('Allows passing in class names', () => {
@@ -220,15 +220,15 @@ view.getByTestId('cool')
       const text = '[link](/url)';
       const expectedText = `link`;
       expect(text).not.toEqual(expectedText);
-      const { view } = renderView({ text });
-      view.getByText(expectedText);
+      renderView({ text });
+      screen.getByText(expectedText);
     });
 
     it('doesnt error on empty links', () => {
       const text = '[link]()';
       const expectedText = `link`;
-      const { view } = renderView({ text });
-      view.getByText(expectedText);
+      renderView({ text });
+      screen.getByText(expectedText);
     });
 
     it('Adds rel="noopener" to external links', () => {
@@ -283,7 +283,6 @@ view.getByTestId('cool')
     });
 
     describe('Properties on overrides are handled', () => {
-      let markdown: ReturnType<typeof renderView>['view'];
       type RenderedProps = {
         name?: string;
         isCodeBlock?: boolean;
@@ -308,27 +307,23 @@ view.getByTestId('cool')
             allowedAttributes: ['name', 'isCodeBlock', 'isWebBrowser'],
           },
         };
-        const { view } = renderView({ text, overrides });
-        markdown = view;
+        renderView({ text, overrides });
       });
 
       it('Allows passing in allowed attributes to overrides', () => {
-        markdown.getByText('attr-testing-component');
+        screen.getByText('attr-testing-component');
         expect(renderedProps.mock.calls[0][0].name).toEqual('my name');
       });
 
       it('coerces the string "true" into a boolean', () => {
-        expect(markdown).toBeDefined();
         expect(renderedProps.mock.calls[0][0].isCodeBlock).toEqual(true);
       });
 
       it('defaults attributes without a value to true', () => {
-        expect(markdown).toBeDefined();
         expect(renderedProps.mock.calls[0][0].isWebBrowser).toEqual(true);
       });
 
       it("doesn't wrap self closing elements in p tags", () => {
-        expect(markdown).toBeDefined();
         expect(document.querySelectorAll('p > strong').length).toEqual(0);
       });
     });
@@ -353,10 +348,10 @@ view.getByTestId('cool')
 
   describe('MarkdownCheckbox', () => {
     it('replaces checkbox inputs with the MarkdownCheckbox element', () => {
-      const { view } = renderView({
+      renderView({
         text: checkboxMarkdown,
       });
-      view.getAllByTestId('gamut-md-checkbox');
+      screen.getAllByTestId('gamut-md-checkbox');
     });
 
     it(`doesn't render bulletpoints for checkbox elements`, () => {
