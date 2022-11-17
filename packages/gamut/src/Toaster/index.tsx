@@ -1,4 +1,4 @@
-import { ColorMode } from '@codecademy/gamut-styles';
+import { ColorMode, useCurrentMode } from '@codecademy/gamut-styles';
 import { AnimatePresence } from 'framer-motion';
 import React, { ReactNode } from 'react';
 
@@ -19,9 +19,11 @@ export type ToasterProps = {
 };
 
 export const Toaster: React.FC<ToasterProps> = ({ toasts = [], onClose }) => {
+  const colorMode = useCurrentMode();
+
   return (
     <BodyPortal>
-      <ColorMode mode="light">
+      <ColorMode mode={colorMode}>
         <Box right={16} bottom={88} position="fixed" aria-live="polite">
           <AnimatePresence>
             {toasts.map((toast) => (
