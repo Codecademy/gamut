@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.0...@codecademy/gamut-labs@33.8.1) (2022-11-17)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [33.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.7.2...@codecademy/gamut-labs@33.8.0) (2022-11-17)
+
+
+### Features
+
+* **RatingsBar:** create RatingsBar gamut-labs component ([8f64269](https://github.com/Codecademy/gamut/commit/8f64269b12679cb63013fc1699c6bb6da3c5fa93))
+
+
+
 ### [33.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.7.1...@codecademy/gamut-labs@33.7.2) (2022-11-15)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

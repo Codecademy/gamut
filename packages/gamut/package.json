@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "51.4.1",
+  "version": "51.4.2",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -30,7 +30,7 @@
     "@codecademy/gamut-patterns": "^0.8.18",
     "@codecademy/gamut-styles": "^14.2.1",
     "@codecademy/variance": "^0.20.3",
-    "@reach/auto-id": "^0.16.0",
+    "@reach/auto-id": "^0.18.0",
     "@reach/tabs": "^0.16.4",
     "@types/marked": "^1.1.0",
     "classnames": "^2.2.5",
@@ -46,7 +46,7 @@
     "react-player": "^2.3.1",
     "react-select": "^5.2.2",
     "react-truncate-markup": "^5.1.0",
-    "react-use": "^15.3.8",
+    "react-use": "^17.4.0",
     "sanitize-markdown": "^2.6.6"
   },
   "scripts": {
