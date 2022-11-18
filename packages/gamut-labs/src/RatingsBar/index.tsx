@@ -29,6 +29,8 @@ const Bar = styled.div`
   display: flex;
   position: relative;
   border-radius: inherit;
+  border-right-width: ${pxRem(1)};
+  border-right-style: solid;
   background-color: ${theme.colors.yellow};
 `;
 
