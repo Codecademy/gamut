@@ -43,7 +43,6 @@ export const ListSection: React.FC<ListSectionProps> = ({
   onShowAllOrLessClick,
   children,
 }) => {
-  const childrenArray = Children.toArray(children);
   const [showAll, setShowAll] = useState(false);
 
   const handleShowAll = () => {
@@ -52,17 +51,18 @@ export const ListSection: React.FC<ListSectionProps> = ({
   };
 
   const renderListItems = () => {
-    const listItems = childrenArray.map((child) => (
-      <StyledListItem>{child}</StyledListItem>
-    ));
+    const listItems = Children.map(
+      children,
+      (child) => !!child && <StyledListItem>{child}</StyledListItem>
+    )?.filter(Boolean);
 
-    if (!listItems.length) return null;
+    if (!listItems) return null;
     if (showAll) return listItems;
     return listItems.slice(0, initialDisplayAmount);
   };
 
   const renderFooterButton = () => {
-    if (childrenArray.length <= initialDisplayAmount) return null;
+    if (Children.toArray(children).length <= initialDisplayAmount) return null;
     const buttonText = `Show ${showAll ? 'Less' : 'All'}`;
     return {
       text: buttonText,
