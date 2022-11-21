@@ -27,9 +27,8 @@ describe('GridFormSectionTitle', () => {
   it('renders a title that can be styled with Text props', () => {
     const { view } = renderView({ as: 'h3', variant: 'title-xxl' });
     const titleNode = view.getByRole('header', { level: 3 });
-    const titleNodeStyle = getComputedStyle(titleNode);
 
-    expect(titleNodeStyle.fontSize).toHaveStyle('4rem');
+    expect(titleNode).toHaveStyle({ fontSize: '4rem' });
   });
 
   it('renders the proper Column size when layout is set to center', () => {
