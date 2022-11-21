@@ -22,6 +22,7 @@ export const MarkdownCheckbox: React.FC<MarkdownCheckboxProps> = ({
       htmlFor={label}
       label={label}
       onChange={changeHandler}
+      data-testid="gamut-md-checkbox"
       spacing="tight"
     />
   );

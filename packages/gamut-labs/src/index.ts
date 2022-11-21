@@ -40,6 +40,8 @@ export * from './PausableImage';
 export * from './ProLabel';
 export * from './ProLogo';
 export * from './ProLogoAlt';
+export * from './RatingsBar';
+export * from './ScoreSummary';
 export * from './SocialMediaSharing';
 export * from './TabsExperimental';
 export * from './Testimonial';
