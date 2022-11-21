@@ -1,8 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import hookform, { FormState } from 'react-hook-form';
 
-import { CTAButton, FillButton } from '../../Button';
-import { Spinner } from '../../Spinner';
+import { CTAButton } from '../../Button';
 import { SubmitButton } from '../SubmitButton';
 
 jest.mock('react-hook-form', () => ({
@@ -33,9 +32,7 @@ describe('SubmitButton', () => {
 
     const button = view.getByRole('button');
 
-    const buttonStyle = getComputedStyle(button);
-
-    expect(buttonStyle.borderRadius).toBe('4px');
+    expect(button).toHaveStyle({ borderRadius: '4px' });
   });
 
   it('renders as a CTAButton when configured', () => {
@@ -43,9 +40,7 @@ describe('SubmitButton', () => {
 
     const button = view.getByRole('button');
 
-    const buttonStyle = getComputedStyle(button);
-
-    expect(buttonStyle.borderRadius).toBe('2px');
+    expect(button).toHaveStyle({ borderRadius: '2px' });
   });
 
   it.each([
