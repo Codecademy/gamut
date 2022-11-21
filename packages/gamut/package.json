@@ -63,8 +63,6 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@testing-library/jest-dom": "^5.16.5",
-    "@types/enzyme": "3.10.7",
-    "enzyme": "3.11.0",
     "onchange": "^7.0.2"
   },
   "publishConfig": {
