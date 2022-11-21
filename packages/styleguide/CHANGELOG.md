@@ -3,6 +3,89 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [62.5.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.3...@codecademy/styleguide@62.5.4) (2022-11-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.2...@codecademy/styleguide@62.5.3) (2022-11-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.1...@codecademy/styleguide@62.5.2) (2022-11-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.0...@codecademy/styleguide@62.5.1) (2022-11-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [62.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.4.1...@codecademy/styleguide@62.5.0) (2022-11-17)
+
+
+### Features
+
+* **RatingsBar:** create RatingsBar gamut-labs component ([8f64269](https://github.com/Codecademy/gamut/commit/8f64269b12679cb63013fc1699c6bb6da3c5fa93))
+
+
+
+### [62.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.4.0...@codecademy/styleguide@62.4.1) (2022-11-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [62.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.3.0...@codecademy/styleguide@62.4.0) (2022-11-14)
+
+
+### Features
+
+* **Card:** Have outline shadow variant to inherit variant color ([5f18683](https://github.com/Codecademy/gamut/commit/5f186835cbe286dbca7fa75c52efc54991aa9940))
+
+
+
+## [62.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.2.3...@codecademy/styleguide@62.3.0) (2022-11-09)
+
+
+### Features
+
+* **ScoreSummary:** create ScoreSummary gamut-labs component ([c7ed278](https://github.com/Codecademy/gamut/commit/c7ed27890a8839ea141fcba21ddb3af11f83d8a1))
+
+
+
+### [62.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.2.2...@codecademy/styleguide@62.2.3) (2022-11-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.2.1...@codecademy/styleguide@62.2.2) (2022-11-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [62.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.2.0...@codecademy/styleguide@62.2.1) (2022-11-02)
 
 **Note:** Version bump only for package @codecademy/styleguide
