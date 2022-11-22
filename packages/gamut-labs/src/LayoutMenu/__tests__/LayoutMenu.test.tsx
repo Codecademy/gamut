@@ -1,4 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { matchers } from '@emotion/jest';
 import { fireEvent } from '@testing-library/dom';
 
 import { LayoutMenu } from '../LayoutMenu';
@@ -7,6 +8,8 @@ jest.mock('react-use', () => ({
   ...jest.requireActual<{}>('react-use'),
   useMedia: () => false,
 }));
+
+expect.extend(matchers);
 
 const renderView = setupRtl(LayoutMenu, {
   closeLabel: 'Close me',
