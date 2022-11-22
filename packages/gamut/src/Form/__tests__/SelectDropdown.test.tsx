@@ -4,9 +4,13 @@ import {
   EarthIcon,
 } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
+import { matchers } from '@emotion/jest';
 import { fireEvent, queryByAttribute } from '@testing-library/dom';
+import { cleanup } from '@testing-library/react';
 
 import { SelectDropdown } from '../SelectDropdown';
+
+expect.extend(matchers);
 
 const selectOptions = ['red', 'yellow', 'green'];
 
@@ -41,12 +45,8 @@ const openDropdown = (view: ReturnType<typeof renderView>['view']) =>
 
 const getById = queryByAttribute.bind(null, 'id');
 
-const getMenuListStyles = (view: ReturnType<typeof renderView>['view']) => {
-  const menuList = getById(view.container, 'react-select-2-listbox')
-    ?.firstElementChild;
-
-  return menuList ? getComputedStyle(menuList) : { maxHeight: null };
-};
+const getMenuList = (view: ReturnType<typeof renderView>['view']) =>
+  getById(view.container, /listbox/)?.firstChild;
 
 describe('SelectDropdown', () => {
   it('sets the id prop on the select tag', () => {
@@ -86,22 +86,22 @@ describe('SelectDropdown', () => {
 
     openDropdown(view);
 
-    const menuListStyles = getMenuListStyles(view);
+    const menuList = getMenuList(view);
 
-    expect(menuListStyles.maxHeight).toBe('12rem');
+    expect(menuList).toHaveStyle({ maxHeight: '12rem' });
   });
 
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified + size is "small"', () => {
     const { view } = renderView({
-      shownOptionsLimit: 4,
       size: 'small',
+      shownOptionsLimit: 4,
     });
 
     openDropdown(view);
 
-    const menuListStyles = getMenuListStyles(view);
+    const menuList = getMenuList(view);
 
-    expect(menuListStyles.maxHeight).toBe('8rem');
+    expect(menuList).toHaveStyle({ maxHeight: '8rem' });
   });
 
   it('renders a dropdown with icons', () => {
