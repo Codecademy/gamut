@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.8.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.3...@codecademy/gamut-labs@33.8.4) (2022-11-21)
+
+
+### Bug Fixes
+
+* **RatingsBar:** Adds stroke between yellow bar and white background ([a0ac5c0](https://github.com/Codecademy/gamut/commit/a0ac5c02b5dac53fd26d5a0d5c30567310e610ef))
+
+
+
+### [33.8.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.2...@codecademy/gamut-labs@33.8.3) (2022-11-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [33.8.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.1...@codecademy/gamut-labs@33.8.2) (2022-11-17)
 
 
