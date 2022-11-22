@@ -6,7 +6,6 @@ import {
 import { setupRtl } from '@codecademy/gamut-tests';
 import { matchers } from '@emotion/jest';
 import { fireEvent, queryByAttribute } from '@testing-library/dom';
-import { cleanup } from '@testing-library/react';
 
 import { SelectDropdown } from '../SelectDropdown';
 
