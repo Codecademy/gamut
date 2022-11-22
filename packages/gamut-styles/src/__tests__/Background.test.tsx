@@ -1,4 +1,3 @@
-import { matchers } from '@emotion/jest';
 import { ThemeProvider, useTheme } from '@emotion/react';
 import { setupRtl as setupRtlBase } from 'component-test-setup';
 import { overArgs } from 'lodash';
@@ -6,8 +5,6 @@ import React from 'react';
 
 import { Background } from '../Background';
 import { coreTheme as theme } from '../themes';
-
-expect.extend(matchers);
 
 function withThemeProvider<Props>(
   WrappedComponent: React.ComponentType<Props>

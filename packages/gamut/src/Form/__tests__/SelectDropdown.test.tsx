@@ -4,12 +4,9 @@ import {
   EarthIcon,
 } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
-import { matchers } from '@emotion/jest';
 import { fireEvent, queryByAttribute } from '@testing-library/dom';
 
 import { SelectDropdown } from '../SelectDropdown';
-
-expect.extend(matchers);
 
 const selectOptions = ['red', 'yellow', 'green'];
 

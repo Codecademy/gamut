@@ -1,10 +1,7 @@
 import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
-import { matchers } from '@emotion/jest';
 
 import { GridFormSectionTitle } from '../GridFormSectionTitle';
-
-expect.extend(matchers);
 
 const renderView = setupRtl(GridFormSectionTitle, {
   title: 'Updog',

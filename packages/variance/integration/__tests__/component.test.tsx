@@ -1,4 +1,3 @@
-import { matchers } from '@emotion/jest';
 import { ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
@@ -6,8 +5,6 @@ import renderer from 'react-test-renderer';
 
 import { variance } from '../../src/core';
 import { theme } from '../__fixtures__/theme';
-
-expect.extend(matchers);
 
 const styles = variance.create({
   margin: { property: 'margin', scale: 'spacing' },
