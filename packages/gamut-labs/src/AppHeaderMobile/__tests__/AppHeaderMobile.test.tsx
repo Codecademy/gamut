@@ -1,15 +1,26 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/dom';
 
 import { mockBookmarkParts } from '../../Bookmarks/fixtures';
+import { CrossDeviceItemId } from '../../GlobalHeader/types';
 import { AppHeaderMobile, AppHeaderMobileProps } from '..';
 
 const action = jest.fn();
 
-const logoProps: AppHeaderMobileProps = {
+const defaultProps = {
   action,
+  onSearch: jest.fn(),
+  isAnon: true,
+  openCrossDeviceItemId: CrossDeviceItemId.UNSET,
+  setOpenCrossDeviceItemId: jest.fn(),
+  items: {
+    left: [],
+    right: [],
+  },
+};
+
+const logoProps: AppHeaderMobileProps = {
+  ...defaultProps,
   items: {
     left: [
       {
@@ -23,14 +34,10 @@ const logoProps: AppHeaderMobileProps = {
     right: [],
     mainMenu: [],
   },
-  onSearch: jest.fn(),
-  isAnon: true,
-  openCrossDeviceItemId: '',
-  setOpenCrossDeviceItemId: jest.fn(),
 };
 
 const linkProps: AppHeaderMobileProps = {
-  action,
+  ...defaultProps,
   items: {
     left: [
       {
@@ -44,14 +51,10 @@ const linkProps: AppHeaderMobileProps = {
     right: [],
     mainMenu: [],
   },
-  onSearch: jest.fn(),
-  isAnon: true,
-  openCrossDeviceItemId: '',
-  setOpenCrossDeviceItemId: jest.fn(),
 };
 
 const mainMenuProps: AppHeaderMobileProps = {
-  action,
+  ...defaultProps,
   items: {
     left: [],
     right: [],
@@ -72,10 +75,6 @@ const mainMenuProps: AppHeaderMobileProps = {
       },
     ],
   },
-  onSearch: jest.fn(),
-  isAnon: true,
-  openCrossDeviceItemId: '',
-  setOpenCrossDeviceItemId: jest.fn(),
 };
 
 const appHeaderMobilePropsWithBookmarkParts: AppHeaderMobileProps = {
@@ -83,82 +82,74 @@ const appHeaderMobilePropsWithBookmarkParts: AppHeaderMobileProps = {
   crossDeviceBookmarkParts: mockBookmarkParts,
 };
 
-const renderAppHeader = (props: AppHeaderMobileProps) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <AppHeaderMobile {...props} />
-    </ThemeProvider>
-  );
-};
+const renderView = setupRtl(AppHeaderMobile);
 
 describe('AppHeaderMobile', () => {
   it('renders an AppHeaderLogo when the item type is logo', () => {
-    renderAppHeader(logoProps);
-    screen.getByTitle('Codecademy Logo');
+    const { view } = renderView(logoProps);
+    view.getByTitle('Codecademy Logo');
   });
 
   it('renders an AppHeaderLink when the item type is link', () => {
-    renderAppHeader(linkProps);
-    screen.getByText('AppHeaderLink');
+    const { view } = renderView(linkProps);
+    view.getByText('AppHeaderLink');
   });
 
   it('renders a button to open the mobile menu', () => {
-    renderAppHeader(linkProps);
-    screen.getByText('AppHeaderLink');
+    const { view } = renderView(linkProps);
+    view.getByText('AppHeaderLink');
   });
 
   describe('Mobile Menu Open', () => {
-    beforeEach(() => {
-      renderAppHeader(mainMenuProps);
-      screen.getByTestId('header-mobile-menu').click();
-    });
-
-    it('renders the  mobile menu content', () => {
-      expect(screen.getByText('App Header Link'));
-      expect(screen.getByText('App Header Button'));
+    it('renders the mobile menu content', () => {
+      const { view } = renderView(mainMenuProps);
+      fireEvent.click(view.getByTestId('header-mobile-menu'));
+      expect(view.getByText('App Header Link'));
+      expect(view.getByText('App Header Button'));
     });
 
     it('hides the mobile app header', () => {
-      expect(
-        screen.queryByTestId('header-mobile-menu')
-      ).not.toBeInTheDocument();
+      const { view } = renderView(mainMenuProps);
+      fireEvent.click(view.getByTestId('header-mobile-menu'));
+      expect(view.queryByTestId('header-mobile-menu')).not.toBeInTheDocument();
     });
 
     it('renders a button to close the mobile menu', () => {
-      const closeButton = screen.getByLabelText('close menu');
-      closeButton.click();
-      expect(screen.queryByTestId('header-mobile-menu')).toBeInTheDocument();
+      const { view } = renderView(mainMenuProps);
+      fireEvent.click(view.getByTestId('header-mobile-menu'));
+      fireEvent.click(view.getByLabelText('close menu'));
+      expect(view.queryByTestId('header-mobile-menu')).toBeInTheDocument();
     });
   });
 
   describe('bookmarks', () => {
     describe('NO crossDeviceBookmarkParts prop provided', () => {
       it('does NOT render a bookmarks button or content', () => {
-        renderAppHeader({
+        const { view } = renderView({
           ...appHeaderMobilePropsWithBookmarkParts,
           crossDeviceBookmarkParts: undefined,
         });
-        expect(screen.queryByText('IMA BOOKMARKS BUTTON')).toBeNull();
-        expect(screen.queryByText('MOBILE BOOKMARKS CONTENT')).toBeNull();
+        expect(view.queryByText('IMA BOOKMARKS BUTTON')).toBeNull();
+        expect(view.queryByText('MOBILE BOOKMARKS CONTENT')).toBeNull();
       });
     });
 
     describe('crossDeviceBookmarkParts prop IS provided', () => {
       it('renders the button but does NOT render bookmarks content if openCrossDeviceItemId is NOT set to bookmarks', () => {
-        renderAppHeader(appHeaderMobilePropsWithBookmarkParts);
+        const { view } = renderView(appHeaderMobilePropsWithBookmarkParts);
 
-        screen.getByText('IMA BOOKMARKS BUTTON');
-        expect(screen.queryByText('MOBILE BOOKMARKS CONTENT')).toBeNull();
+        view.getByText('IMA BOOKMARKS BUTTON');
+        expect(view.queryByText('MOBILE BOOKMARKS CONTENT')).toBeNull();
       });
 
       it('renders both the button and bookmarks content if openCrossDeviceItemId is set to bookmarks', () => {
-        renderAppHeader({
+        const { view } = renderView({
           ...appHeaderMobilePropsWithBookmarkParts,
-          openCrossDeviceItemId: 'bookmarks',
+          openCrossDeviceItemId: CrossDeviceItemId.BOOKMARKS,
         });
 
-        screen.getByText('IMA BOOKMARKS BUTTON');
-        screen.getByText('MOBILE BOOKMARKS CONTENT');
+        view.getByText('IMA BOOKMARKS BUTTON');
+        view.getByText('MOBILE BOOKMARKS CONTENT');
       });
     });
   });
