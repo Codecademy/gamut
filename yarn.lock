@@ -2400,10 +2400,10 @@
   resolved "https://registry.npmjs.org/@codecademy/prettier-config/-/prettier-config-0.2.0.tgz#15a13a04c08d21fac7c88c2983258c1bdaf8152f"
   integrity sha512-WRaYl9urRIbT3D3UAehGXFi0lreG6VxwMQlJt39Ov/1amYjzQpM2V9Gm+FHQrHmIqff3H/fNxSNqy4ImrqFOjw==
 
-"@codecademy/tracking@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@codecademy/tracking/-/tracking-1.0.1.tgz#cd208d425fa4a05823615a840468f9fa6a6a7dc7"
-  integrity sha512-Io6fTsueAkqgIkaeGvt+FqoP03I6ptseCi7xU/lajEoyBbXVsv/SFv9OfNFY58bF2Y6QaQelH4qN/otnKxnxFg==
+"@codecademy/tracking@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/@codecademy/tracking/-/tracking-1.0.3.tgz#70107a1739151508203eafb0da656fe014ee3867"
+  integrity sha512-5xVlbbf2h2hMqgAiaZOJaTndhFdhi/6nyI7Qw7mg/PnGWXQZrVZf/JiQYFD7okQg3VYJm75qgPwS/sxWeVA8pg==
   dependencies:
     "@babel/runtime" "^7.12.1"
 
