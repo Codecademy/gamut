@@ -20,6 +20,7 @@ export interface ScoreSummaryProps {
   untestedSubContent?: UntestedSubContent[];
   columnLayout?: boolean;
   trackUserClick: (data: UserClickData) => void;
+  description?: string;
 }
 
 const renderSubScores = ({
@@ -152,6 +153,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
   layout = 'row',
   columnLayout = false,
   trackUserClick,
+  description,
 }) => {
   let numOfRows = Object.entries(subScores).length;
   if (untestedSubContent) {
@@ -162,7 +164,6 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
       <GridBox
         zIndex={1}
         bg="transparent"
-        border={1}
         maxWidth={layout === 'row' ? pxRem(500) : pxRem(705)}
         mr={layout === 'row' ? 24 : 0}
       >
@@ -173,6 +174,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
           display={columnLayout ? 'flex' : 'block'}
           flexDirection={columnLayout ? 'column' : 'row'}
           justifyContent={columnLayout ? 'center' : ''}
+          border={1}
         >
           <QuizScore
             borderColor={borderColor}
@@ -184,6 +186,17 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
             columnLayout={columnLayout}
           />
         </Box>
+        {description && (
+          <Box
+            p={16}
+            pb={layout === 'row' ? 0 : 16}
+            border={layout === 'row' ? 'none' : 1}
+            borderTop="none"
+            textAlign={layout === 'row' ? 'center' : 'left'}
+          >
+            <Text fontSize={14}>{description}</Text>
+          </Box>
+        )}
       </GridBox>
       <FlexBox flexDirection="column" maxWidth={pxRem(705)}>
         <FlexBox
