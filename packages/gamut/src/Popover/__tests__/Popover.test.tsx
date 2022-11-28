@@ -165,7 +165,7 @@ describe('Popover', () => {
       beak: 'right',
     });
 
-    expect(view.getByTestId('popover-beak'));
+    view.getByTestId('popover-beak');
   });
 
   it("positions with default 'below', 'left', '20', '0' value when position, align, verticalOffset, horizontalOffset props are not provided respectively", () => {
@@ -280,6 +280,6 @@ describe('Popover', () => {
       pattern: CheckerDense,
     });
 
-    expect(view.getByTestId('popover-pattern'));
+    view.getByTestId('popover-pattern');
   });
 });

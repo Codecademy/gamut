@@ -37,7 +37,7 @@ describe('Select', () => {
 
     const keyWithId = `${defaultProps.id}-${selectOptions[0]}`;
 
-    expect(view.getByTestId(keyWithId));
+    view.getByTestId(keyWithId);
   });
 
   it('renders options when options is an object', () => {
@@ -54,6 +54,7 @@ describe('Select', () => {
     expect(view.getByRole('option', { name: 'yellow' })).toHaveValue(
       'yellowKey'
     );
+
     expect(view.getAllByRole('option')[0]).toHaveTextContent('red');
   });
 
@@ -62,6 +63,6 @@ describe('Select', () => {
 
     const keyWithId = `${defaultProps.id}-redKey`;
 
-    expect(view.getByTestId(keyWithId));
+    view.getByTestId(keyWithId);
   });
 });

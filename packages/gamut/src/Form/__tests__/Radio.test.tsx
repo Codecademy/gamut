@@ -18,7 +18,7 @@ const renderView = setupRtl(Radio, {
 describe('<Radio>', () => {
   it('sets the input checked state when the prop is passed', () => {
     const { view } = renderView();
-    expect(view.getByRole('radio', { checked: true }));
+    view.getByRole('radio', { checked: true });
   });
 
   it('calls the onChange callback when the input changes', () => {
@@ -34,7 +34,7 @@ describe('<Radio>', () => {
       label: <img alt="my cat" src="cat.jpg" />,
     });
 
-    expect(view.getByAltText('my cat'));
+    view.getByAltText('my cat');
   });
 
   it('accepts additional props not specified by the component', () => {

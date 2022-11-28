@@ -35,7 +35,7 @@ describe('ProgressBar', () => {
     /** RTL doesn't differentiate between visible and invisible
      test so this tests that only the screen reader text renders */
 
-    expect(view.getByText('Progress: 50%'));
+    view.getByText('Progress: 50%');
   });
 
   it('includes percentage visually when size is large', () => {
@@ -43,15 +43,15 @@ describe('ProgressBar', () => {
     /** RTL doesn't differentiate between visible and invisible
      test so this tests that only the screen reader text renders */
 
-    expect(view.getByText('Progress: 50%'));
+    view.getByText('Progress: 50%');
     expect(view.getByText('50%')).toHaveAttribute('aria-hidden', 'true');
   });
 
   it('uses an svg when given a pattern', () => {
     const { view } = renderView({ pattern: DiagonalADense });
 
-    expect(view.getByRole('img', { hidden: true }));
-    expect(view.getByTitle('Diagonal A Dense'));
+    view.getByRole('img', { hidden: true });
+    view.getByTitle('Diagonal A Dense');
   });
 
   it('does not use an svg when not given a pattern', () => {

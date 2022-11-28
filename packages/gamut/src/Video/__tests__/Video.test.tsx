@@ -11,7 +11,7 @@ describe('Video', () => {
       videoTitle: 'Super Science Friends',
     });
 
-    expect(view.getByTitle('Super Science Friends'));
+    view.getByTitle('Super Science Friends');
   });
 
   it('loads a video with a youtube ID', () => {
@@ -20,6 +20,6 @@ describe('Video', () => {
       videoTitle: 'Workout with Rick Sanchez',
     });
 
-    expect(view.getByTitle('Workout with Rick Sanchez'));
+    view.getByTitle('Workout with Rick Sanchez');
   });
 });

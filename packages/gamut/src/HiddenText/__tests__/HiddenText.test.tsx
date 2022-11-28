@@ -7,6 +7,6 @@ const renderView = setupRtl(HiddenText, { children: 'Surprise!' });
 describe('HiddenText', () => {
   it('renders', () => {
     const { view } = renderView({});
-    expect(view.getByText('Surprise!'));
+    view.getByText('Surprise!');
   });
 });

@@ -9,6 +9,6 @@ describe('Badge', () => {
   it('renders badge text', () => {
     const { view } = renderView();
 
-    expect(view.getByText(badgeText));
+    view.getByText(badgeText);
   });
 });

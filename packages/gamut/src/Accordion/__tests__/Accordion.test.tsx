@@ -22,7 +22,7 @@ describe('Accordion', () => {
   it('starts expanded when initiallyExpanded is true', () => {
     const { view } = renderView({ initiallyExpanded: true });
 
-    expect(view.getAllByTestId('contents')).toHaveLength(1);
+    view.getByTestId('contents');
   });
 
   it('expands when its button is clicked', () => {
@@ -30,7 +30,7 @@ describe('Accordion', () => {
 
     fireEvent.click(view.getByRole('button'));
 
-    expect(view.getAllByTestId('contents')).toHaveLength(1);
+    view.getByTestId('contents');
   });
 
   it('calls onClick when its button is clicked and onClick is provided', () => {

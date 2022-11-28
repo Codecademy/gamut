@@ -8,7 +8,7 @@ const renderView = setupRtl(Input, { 'aria-label': 'input' });
 describe('Input', () => {
   it('renders a text input type when the type is text', () => {
     const { view } = renderView({ type: 'text' });
-    expect(view.getByRole('textbox'));
+    view.getByRole('textbox');
   });
 
   it('renders a number input type', () => {
@@ -27,7 +27,7 @@ describe('Input', () => {
       defaultValue: 'default value',
     });
 
-    expect(view.getByDisplayValue('default value'));
+    view.getByDisplayValue('default value');
   });
 
   it('renders a correct defaultValue for numbers', () => {
@@ -36,7 +36,7 @@ describe('Input', () => {
       defaultValue: 13,
     });
 
-    expect(view.getByDisplayValue(13));
+    view.getByDisplayValue(13);
   });
 
   it('renders an AlertIcon when error is true', () => {
@@ -45,7 +45,8 @@ describe('Input', () => {
       defaultValue: 13,
       error: true,
     });
-    expect(view.getByTitle('Alert Icon'));
+
+    view.getByTitle('Alert Icon');
   });
 
   it('renders a CheckCircledIcon when valid is true', () => {
@@ -55,7 +56,7 @@ describe('Input', () => {
       valid: true,
     });
 
-    expect(view.getByTitle('Check Circled Icon'));
+    view.getByTitle('Check Circled Icon');
   });
 
   it('renders a custom gamut-icon when valid is true', () => {
@@ -65,6 +66,6 @@ describe('Input', () => {
       icon: StreakIcon,
     });
 
-    expect(view.getByTitle('Streak Icon'));
+    view.getByTitle('Streak Icon');
   });
 });

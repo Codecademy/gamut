@@ -59,22 +59,22 @@ describe('SelectDropdown', () => {
 
     openDropdown(view);
 
-    expect(view.getByText('green'));
+    view.getByText('green');
   });
 
   it('renders a small dropdown when size is "small"', () => {
     const { view } = renderView({ size: 'small' });
-    expect(view.getByTitle('Mini Chevron Down Icon'));
+    view.getByTitle('Mini Chevron Down Icon');
   });
 
   it('renders a medium dropdown when size is "medium"', () => {
     const { view } = renderView({ size: 'medium' });
-    expect(view.getByTitle('Arrow Chevron Down Icon'));
+    view.getByTitle('Arrow Chevron Down Icon');
   });
 
   it('renders a medium dropdown by default', () => {
     const { view } = renderView();
-    expect(view.getByTitle('Arrow Chevron Down Icon'));
+    view.getByTitle('Arrow Chevron Down Icon');
   });
 
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', () => {
@@ -133,6 +133,6 @@ describe('SelectDropdown', () => {
 
     selectOptions
       .slice(0, numSelectedItems)
-      .forEach((value) => expect(view.getByText(value)));
+      .forEach((value) => view.getByText(value));
   });
 });

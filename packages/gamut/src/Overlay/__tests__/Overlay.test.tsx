@@ -102,7 +102,7 @@ describe('Overlay', () => {
     const { view } = renderView({ inline: true, isOpen: true });
 
     /** main is accessible as overlay is rendering within its bounds */
-    expect(view.getByRole('main'));
+    view.getByRole('main');
   });
 
   it('it disables focus trap when rendered inline', () => {

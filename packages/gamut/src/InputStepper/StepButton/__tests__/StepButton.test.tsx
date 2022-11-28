@@ -12,13 +12,13 @@ describe('<StepButton>', () => {
   it('shows the up chevron when used as an incrementer', () => {
     const { view } = renderView();
 
-    expect(view.getByTitle('Arrow Chevron Up Icon'));
+    view.getByTitle('Arrow Chevron Up Icon');
   });
 
   it('shows the down chevron when used as a decrementer', () => {
     const { view } = renderView({ type: 'down' });
 
-    expect(view.getByTitle('Arrow Chevron Down Icon'));
+    view.getByTitle('Arrow Chevron Down Icon');
   });
 
   it('processes the button click', () => {

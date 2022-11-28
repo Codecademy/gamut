@@ -50,6 +50,6 @@ describe('<RadioGroup>', () => {
   it('sets any additional props on the outer div', () => {
     const { view } = createComponent();
 
-    expect(view.getByTestId('my-test-id'));
+    view.getByTestId('my-test-id');
   });
 });

@@ -16,7 +16,7 @@ describe('<Checkbox>', () => {
   it('sets the input checked state when the prop is passed', () => {
     const { view } = renderView({ checked: true });
 
-    expect(view.getByRole('checkbox', { checked: true }));
+    view.getByRole('checkbox', { checked: true });
   });
 
   it('calls the onChange callback when the input changes', () => {
@@ -34,7 +34,8 @@ describe('<Checkbox>', () => {
     const { view } = renderView({
       label: <img alt="my cat" src="cat.jpg" />,
     });
-    expect(view.getByAltText('my cat'));
+
+    view.getByAltText('my cat');
   });
 
   it('accepts an aria-label', () => {

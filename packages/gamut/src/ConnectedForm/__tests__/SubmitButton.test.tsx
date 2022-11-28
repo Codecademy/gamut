@@ -24,11 +24,11 @@ mockedHook.mockImplementation(() => ({
   formState: { isSubmitting: false, isValidating: false, isValid: false },
 }));
 
-const renderWrapper = setupRtl(SubmitButton, {});
+const renderView = setupRtl(SubmitButton, {});
 
 describe('SubmitButton', () => {
   it('renders as a FillButton by default', () => {
-    const { view } = renderWrapper();
+    const { view } = renderView();
 
     const button = view.getByRole('button');
 
@@ -36,7 +36,7 @@ describe('SubmitButton', () => {
   });
 
   it('renders as a CTAButton when configured', () => {
-    const { view } = renderWrapper({ as: CTAButton });
+    const { view } = renderView({ as: CTAButton });
 
     const button = view.getByRole('button');
 
@@ -49,7 +49,7 @@ describe('SubmitButton', () => {
     [{ isSubmitting: true }],
   ])('disabled states (%o)', (formState: FormState<{}>) => {
     mockFormState(formState);
-    const { view } = renderWrapper({
+    const { view } = renderView({
       disabled: ({ isValidating, isSubmitting, isValid }) =>
         isValidating || isSubmitting || !isValid,
     });
@@ -61,7 +61,7 @@ describe('SubmitButton', () => {
     [{ isSubmitting: true }, 1],
   ])('loading states (%o)', (formState: FormState<{}>, expected: number) => {
     mockFormState(formState);
-    const { view } = renderWrapper({
+    const { view } = renderView({
       loading: ({ isValidating, isSubmitting }) => isValidating || isSubmitting,
     });
 

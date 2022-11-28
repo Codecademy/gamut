@@ -23,7 +23,6 @@ describe('List', () => {
   it('renders a default list by default', () => {
     const { view } = renderView();
 
-    // const listEl = view.getByTestId('scrollable-list-el');
     const listEl = view.container.querySelector('ul');
     const rowEl = view.container.querySelector('li');
 
@@ -90,7 +89,7 @@ describe('List', () => {
       ),
     });
 
-    expect(view.getByText('Surprise!'));
+    view.getByText('Surprise!');
   });
 
   it('does not render ListRow with expanded content when expanded is false', () => {

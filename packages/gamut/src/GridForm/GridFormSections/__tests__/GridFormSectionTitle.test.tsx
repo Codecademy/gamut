@@ -41,8 +41,6 @@ describe('GridFormSectionTitle', () => {
   });
 
   it('renders the proper Column size according to number of fields when layout is set to left', () => {
-    // initTest(theme.breakpoints.sm - 1);
-
     const { view } = renderView({ layout: 'left', 'data-testid': 'columnId' });
 
     const column = view.getByTestId('columnId');

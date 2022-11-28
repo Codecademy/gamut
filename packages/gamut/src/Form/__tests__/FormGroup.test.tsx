@@ -12,14 +12,14 @@ describe('FormGroup', () => {
   it('renders Label as a label when htmlFor is provided', () => {
     const { view } = renderView({ label: 'up dog', htmlFor: 'up-dog' });
 
-    expect(view.getByLabelText('up dog'));
+    view.getByLabelText('up dog');
   });
 
   it('renders Label as a div when no htmlFor is provided', () => {
     const { view } = renderView({ label: 'up dog' });
 
     expect(view.queryByLabelText('up dog')).toBeNull();
-    expect(view.getByText('up dog'));
+    view.getByText('up dog');
   });
 
   it('adds an asterisk to showRequired labels', () => {
@@ -29,7 +29,7 @@ describe('FormGroup', () => {
       showRequired: true,
     });
 
-    expect(view.getByLabelText('up dog *'));
+    view.getByLabelText('up dog *');
   });
 
   it('renders description', () => {
@@ -38,10 +38,9 @@ describe('FormGroup', () => {
       description:
         "i don't know what up dog is and at this point i'm too afraid to ask.",
     });
-    expect(
-      view.getByText(
-        "i don't know what up dog is and at this point i'm too afraid to ask."
-      )
+
+    view.getByText(
+      "i don't know what up dog is and at this point i'm too afraid to ask."
     );
   });
 

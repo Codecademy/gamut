@@ -22,7 +22,7 @@ describe('AccordionArea', () => {
   it('starts expanded when expanded is true', () => {
     const { view } = renderView({ expanded: true });
 
-    expect(view.getAllByTestId('contents')).toHaveLength(1);
+    view.getByTestId('contents');
   });
 
   it('expands when props change to expand', () => {
@@ -30,7 +30,7 @@ describe('AccordionArea', () => {
 
     view.rerender(<AccordionArea {...defaultProps} expanded />);
 
-    expect(view.getAllByTestId('contents')).toHaveLength(1);
+    view.getByTestId('contents');
   });
 
   it('contracts after a delay when set to not expanded after being expanded', async () => {

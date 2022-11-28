@@ -26,7 +26,7 @@ describe('GridFormInputGroup', () => {
 
     const { view } = renderView({ field: stubCheckboxField, error });
 
-    expect(view.getByText(error));
+    view.getByText(error);
   });
   it('renders error text when an custom error exists', () => {
     const error = 'Oh no!';
@@ -35,7 +35,7 @@ describe('GridFormInputGroup', () => {
       field: { ...stubCheckboxField, customError: error },
     });
 
-    expect(view.getByText(error));
+    view.getByText(error);
   });
 
   it('renders a checkbox input when the field type is checkbox', () => {
@@ -43,7 +43,7 @@ describe('GridFormInputGroup', () => {
       field: { ...stubCheckboxField, id: 'mycoolid' },
     });
 
-    expect(view.getByRole('checkbox'));
+    view.getByRole('checkbox');
   });
 
   it('renders a custom input when the field type is custom', () => {
@@ -57,7 +57,7 @@ describe('GridFormInputGroup', () => {
       },
     });
 
-    expect(view.getByText(text));
+    view.getByText(text);
   });
 
   it('renders a radio group when the field type is radio-group', () => {
@@ -66,7 +66,7 @@ describe('GridFormInputGroup', () => {
     });
 
     expect(view.getAllByRole('radio')).toHaveLength(2);
-    expect(view.getByRole('radiogroup'));
+    view.getByRole('radiogroup');
   });
 
   it('renders a select when the field type is select', () => {
@@ -74,7 +74,7 @@ describe('GridFormInputGroup', () => {
       field: { ...stubSelectField, id: 'mycoolid' },
     });
 
-    expect(view.getByRole('combobox'));
+    view.getByRole('combobox');
   });
 
   it('renders a text input when the field type is text', () => {
@@ -82,7 +82,7 @@ describe('GridFormInputGroup', () => {
       field: { ...stubTextField, id: 'mycoolid' },
     });
 
-    expect(view.getByRole('textbox'));
+    view.getByRole('textbox');
   });
 
   it('renders a file input when the field type is file', () => {
