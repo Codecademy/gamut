@@ -159,16 +159,17 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
   if (untestedSubContent) {
     numOfRows += untestedSubContent.length;
   }
+  const isRowLayout = layout === 'row';
   return (
-    <GridBox gridTemplateColumns={layout === 'row' ? '2fr 3fr' : ''}>
+    <GridBox gridTemplateColumns={isRowLayout ? '2fr 3fr' : ''}>
       <GridBox
         zIndex={1}
         bg="transparent"
-        maxWidth={layout === 'row' ? pxRem(500) : pxRem(705)}
-        mr={layout === 'row' ? 24 : 0}
+        maxWidth={isRowLayout ? pxRem(500) : pxRem(705)}
+        mr={isRowLayout ? 24 : 0}
       >
         <Box
-          px={layout === 'row' ? [12, 24, 32] : [24, 32, 64, 96]}
+          px={isRowLayout ? [12, 24, 32] : [24, 32, 64, 96]}
           pt={24}
           pb={8}
           display={columnLayout ? 'flex' : 'block'}
@@ -179,7 +180,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
           <QuizScore
             borderColor={borderColor}
             correctCount={totalCorrect}
-            layout={layout === 'row' ? 'column' : 'row'}
+            layout={isRowLayout ? 'column' : 'row'}
             total={totalQuestions}
             smallerFont
             numOfRows={numOfRows}
@@ -189,10 +190,10 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
         {description && (
           <Box
             p={16}
-            pb={layout === 'row' ? 0 : 16}
-            border={layout === 'row' ? 'none' : 1}
+            pb={isRowLayout ? 0 : 16}
+            border={isRowLayout ? 'none' : 1}
             borderTop="none"
-            textAlign={layout === 'row' ? 'center' : 'left'}
+            textAlign={isRowLayout ? 'center' : 'left'}
           >
             <Text fontSize={14}>{description}</Text>
           </Box>
@@ -203,7 +204,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
           flexDirection="column"
           borderX={1}
           borderBottom={1}
-          borderTop={layout === 'row' ? 1 : undefined}
+          borderTop={isRowLayout ? 1 : undefined}
         >
           {renderSubScores({
             subScores,
