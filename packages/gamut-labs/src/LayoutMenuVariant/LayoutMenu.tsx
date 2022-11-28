@@ -89,7 +89,6 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
         onItemClick={() => setExpanded(false)}
         selectedItem={selectedItem}
       />
-      <Box />
     </Box>
   ));
 

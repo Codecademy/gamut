@@ -23,7 +23,7 @@ export const LayoutMenuSection: React.FC<LayoutMenuSectionProps> = ({
 }) => (
   <Box {...styleProps}>
     {items.map((item) => (
-      <Box key={item.slug} py={8} px={4}>
+      <Box key={item.slug} px={4}>
         {selectedItem === item.slug ? (
           <SelectedSectionItem>{item.title}</SelectedSectionItem>
         ) : (

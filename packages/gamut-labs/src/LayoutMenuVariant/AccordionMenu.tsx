@@ -7,9 +7,10 @@ import { system, transitionConcat } from '../../../gamut-styles/dist';
 import { LayoutMenuSection } from './LayoutMenuSection';
 
 const StyledAccordionArea = styled(AccordionArea)`
-  padding-bottom: ${({ theme }) => theme.spacing[32]};
+  padding-block: ${({ theme }) => theme.spacing[16]};
   position: relative;
   left: -4px;
+  border-bottom: 2px solid gray;
 `;
 
 const ExpandChevron = styled(MiniChevronDownIcon)(
@@ -51,45 +52,47 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
   const [expanded, setExpanded] = useState(true);
 
   return (
-    <StyledAccordionArea
-      expanded={expanded}
-      top={
-        <Anchor
-          variant="interface"
-          py={12}
-          px={4}
-          onClick={() => {
-            onSectionToggle(section.slug);
-            setExpanded((prev) => !prev);
-          }}
-          aria-expanded={expanded}
-          display="flex"
-          width="100%"
-        >
-          <Box display="flex" justifyContent="space-between" width="100%">
-            <Text
-              variant="p-small"
-              style={{ flex: 1, fontWeight: 'bold' }}
-              textAlign="left"
-            >
-              {section.title}
-            </Text>
-            <ExpandChevron
-              ml={12}
-              size={14}
-              expanded={expanded}
-              position="relative"
-              top={4}
-            />
-          </Box>
-        </Anchor>
-      }
-    >
-      <LayoutMenuSection
-        items={section.items}
-        selectedItem={selectedItem}
-        onItemClick={onItemClick}
-      />
-    </StyledAccordionArea>
+    <Box px={16}>
+      <StyledAccordionArea
+        expanded={expanded}
+        top={
+          <Anchor
+            variant="interface"
+            pb={12}
+            px={4}
+            onClick={() => {
+              onSectionToggle(section.slug);
+              setExpanded((prev) => !prev);
+            }}
+            aria-expanded={expanded}
+            display="flex"
+            width="100%"
+          >
+            <Box display="flex" justifyContent="space-between" width="100%">
+              <Text
+                variant="p-small"
+                style={{ flex: 1, fontWeight: 'bold' }}
+                textAlign="left"
+              >
+                {section.title}
+              </Text>
+              <ExpandChevron
+                ml={12}
+                size={16}
+                expanded={expanded}
+                position="relative"
+                top={4}
+              />
+            </Box>
+          </Anchor>
+        }
+      >
+        <LayoutMenuSection
+          items={section.items}
+          selectedItem={selectedItem}
+          onItemClick={onItemClick}
+        />
+      </StyledAccordionArea>
+    </Box>
   );
 };
