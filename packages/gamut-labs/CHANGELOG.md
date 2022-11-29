@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.8.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.6...@codecademy/gamut-labs@33.8.7) (2022-11-29)
+
+
+### Bug Fixes
+
+* **ListSection:** Filter out falsy children ([66b1706](https://github.com/Codecademy/gamut/commit/66b17068de5612a9a310d98a334889c11ec74828))
+
+
+
+### [33.8.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.5...@codecademy/gamut-labs@33.8.6) (2022-11-29)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [33.8.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.4...@codecademy/gamut-labs@33.8.5) (2022-11-22)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
