@@ -96,4 +96,11 @@ describe('ListSection', () => {
     const { view } = renderListSection();
     expect(view.getAllByRole('listitem').length).toBe(initialDisplayAmount);
   });
+
+  it('does not render falsy children', () => {
+    const { view } = renderListSection({
+      children: [false, <Text>test</Text>],
+    });
+    expect(view.getAllByRole('listitem').length).toEqual(1);
+  });
 });

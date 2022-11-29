@@ -10,6 +10,7 @@ export const Spinner: FunctionComponent<SpinnerProps> = ({
 }) => {
   return (
     <svg viewBox="0 0 1000 1000" height={size} width={size} {...props}>
+      <title>Spinner</title>
       <circle fill="currentColor" cx="937.5" cy="500" r="62.5" />
       <path
         fill="currentColor"

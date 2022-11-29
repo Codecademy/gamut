@@ -30,6 +30,9 @@ function withMockGamutProvider<Props>(
 
 // overArgs isn't fully typed yet for lack of curried generics, so we have to cast it...
 
+/**
+ * @deprecated Enzyme is no longer being maintained. Use RTL instead.
+ */
 export const setupEnzyme = overArgs(
   setupEnzymeBase,
   withMockGamutProvider

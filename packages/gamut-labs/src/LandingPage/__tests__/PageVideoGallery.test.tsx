@@ -8,8 +8,8 @@ jest.mock('@codecademy/gamut', () => ({
   Video: () => null,
 }));
 
-describe('PageVideoGallery', () => {
-  const videos = [
+const renderView = setupRtl(PageVideoGallery, {
+  videos: [
     {
       url: 'url-1',
       title: 'title-1',
@@ -22,10 +22,10 @@ describe('PageVideoGallery', () => {
       url: 'url-3',
       title: 'url-3',
     },
-  ];
+  ],
+});
 
-  const renderView = setupRtl(PageVideoGallery, { videos });
-
+describe('PageVideoGallery', () => {
   it('should render a title when one is provided', () => {
     const { view } = renderView({ title: 'title' });
 
@@ -58,6 +58,7 @@ describe('PageVideoGallery', () => {
     const { view } = renderView({
       cta: { text: 'cta', href: 'https://codecademy.com' },
     });
-    view.getByText('cta');
+
+    view.getByRole('link', { name: 'cta' });
   });
 });

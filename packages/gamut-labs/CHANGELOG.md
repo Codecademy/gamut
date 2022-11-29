@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.8.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.7...@codecademy/gamut-labs@33.8.8) (2022-11-29)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [33.8.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.6...@codecademy/gamut-labs@33.8.7) (2022-11-29)
+
+
+### Bug Fixes
+
+* **ListSection:** Filter out falsy children ([66b1706](https://github.com/Codecademy/gamut/commit/66b17068de5612a9a310d98a334889c11ec74828))
+
+
+
+### [33.8.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.5...@codecademy/gamut-labs@33.8.6) (2022-11-29)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [33.8.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.4...@codecademy/gamut-labs@33.8.5) (2022-11-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [33.8.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.3...@codecademy/gamut-labs@33.8.4) (2022-11-21)
 
 
@@ -2030,7 +2063,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **Card:** Animation Fixes and Gamut migration
 * **Byline:** use Emotion for styles (#1464)
 * bumped ESLint packages to latest and added recommended & Jest linting
-* **BrandMono:** Remove Roboto Mono in favor of using Suisse 
+* **BrandMono:** Remove Roboto Mono in favor of using Suisse
 * **PageHero:** added functionality for PageHero to take images or videos as props
 * replace VisualTheme enum with string type union (#1166)
 * add landing page prefooter component (#1185)

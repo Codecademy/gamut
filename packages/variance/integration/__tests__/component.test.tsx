@@ -6,7 +6,7 @@ import renderer from 'react-test-renderer';
 
 import { variance } from '../../src/core';
 import { theme } from '../__fixtures__/theme';
-
+// Add the custom matchers provided by '@emotion/jest'
 expect.extend(matchers);
 
 const styles = variance.create({

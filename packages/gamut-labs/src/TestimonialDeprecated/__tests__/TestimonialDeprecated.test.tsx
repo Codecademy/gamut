@@ -1,34 +1,30 @@
-import { setupEnzyme } from '@codecademy/gamut-tests';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { TestimonialDeprecated } from '..';
 
-const exampleTestmonial = {
+const renderView = setupRtl(TestimonialDeprecated, {
   firstName: 'Frank',
   lastName: 'Reynolds',
   occupation: "Co-Owner @ Paddy's Pub",
   quote:
     "I don't know how many years on this Earth I got left, I'm gonna get real weird with it.",
-};
+});
 
-describe('Testimonial', () => {
-  const renderWrapper = setupEnzyme(TestimonialDeprecated, {
-    ...exampleTestmonial,
-  });
-
+describe('TestimonialDeprecated', () => {
   it('renders the Avatar component when an imageUrl prop is present', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       imageUrl: 'someCoolUrl',
       mode: 'dark',
     });
 
-    expect(wrapper.find(`div[data-testid="avatar-container"]`)).toHaveLength(1);
+    view.getByTestId('avatar-container');
   });
 
   it('does _not_ render the Avatar component when an imageUrl prop is _not_ present', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       mode: 'dark',
     });
 
-    expect(wrapper.find(`div[data-testid="avatar-container"]`)).toHaveLength(0);
+    expect(view.queryByTestId('avatar-container')).toBeNull();
   });
 });
