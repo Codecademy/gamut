@@ -1,11 +1,9 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/dom';
 
 import { AppHeaderSimpleDropdownItem } from '../../../AppHeader/AppHeaderElements/types';
 import { createMockAppHeaderLinkItem } from '../../../AppHeader/mockAppHeaderItems';
-import { AppHeaderSubMenuTarget, AppHeaderSubMenuTargetProps } from '../index';
+import { AppHeaderSubMenuTarget } from '../index';
 
 const sublink1Href = 'https://google.com';
 const openSubMenu = jest.fn();
@@ -19,23 +17,15 @@ const mockItem: AppHeaderSimpleDropdownItem = {
   popover: [createMockAppHeaderLinkItem('sublink-1', sublink1Href, 'forum')],
 };
 
-const props: AppHeaderSubMenuTargetProps = {
+const renderView = setupRtl(AppHeaderSubMenuTarget, {
   item: mockItem,
   openSubMenu,
-};
-
-const renderAppHeaderSubMenuTarget = () => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <AppHeaderSubMenuTarget {...props} />
-    </ThemeProvider>
-  );
-};
+});
 
 describe('AppHeaderSubMenuTarget', () => {
   it('calls openSubMenu when the submenu target link is clicked', () => {
-    renderAppHeaderSubMenuTarget();
-    screen.getByText('submenu target').click();
+    const { view } = renderView();
+    fireEvent.click(view.getByText('submenu target'));
     expect(openSubMenu).toHaveBeenCalled();
   });
 });
