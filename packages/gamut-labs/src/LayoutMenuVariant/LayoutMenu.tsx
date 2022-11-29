@@ -16,10 +16,6 @@ export type LayoutMenuProps = {
    */
   sections: Section[];
   /**
-   * The slug of the current selected item
-   */
-  selectedItem?: string;
-  /**
    * Callback to be run on click of the accordion button
    */
   onSectionToggle: (sectionSlug: string) => void;
@@ -71,7 +67,6 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   closeLabel,
   sections,
   onSectionToggle,
-  selectedItem,
   mobileButtonText,
   breakpoint = 'lg',
   children,
@@ -81,22 +76,18 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
   const [expanded, setExpanded] = useState(false);
 
   const accordionMenuSections = sections.map((section) => (
-    <Box>
-      <AccordionMenu
-        key={section.slug}
-        section={section}
-        onSectionToggle={onSectionToggle}
-        onItemClick={() => setExpanded(false)}
-        selectedItem={selectedItem}
-      />
-    </Box>
+    <AccordionMenu
+      key={section.slug}
+      section={section}
+      onSectionToggle={onSectionToggle}
+      onItemClick={() => setExpanded(false)}
+    />
   ));
 
   const topLinkLayoutMenuSections = topLinkSections && (
     <LayoutMenuSection
       items={topLinkSections}
       onItemClick={() => setExpanded(false)}
-      selectedItem={selectedItem}
       pb={32}
     />
   );
@@ -110,7 +101,7 @@ export const LayoutMenu: React.FC<LayoutMenuProps> = ({
           onClose={() => setExpanded(false)}
           title={<Logo mb={32} />}
         >
-          <Box px={16}>
+          <Box px={24}>
             {topLinkLayoutMenuSections}
             {accordionMenuSections}
             {children}

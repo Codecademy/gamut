@@ -40,59 +40,51 @@ export type AccordionMenuProps = {
   section: Section;
   onSectionToggle: (sectionSlug: string) => void;
   onItemClick: () => void;
-  selectedItem?: string;
 };
 
 export const AccordionMenu: React.FC<AccordionMenuProps> = ({
   section,
   onSectionToggle,
   onItemClick,
-  selectedItem,
 }) => {
   const [expanded, setExpanded] = useState(true);
 
   return (
-    <Box px={16}>
-      <StyledAccordionArea
-        expanded={expanded}
-        top={
-          <Anchor
-            variant="interface"
-            pb={12}
-            px={4}
-            onClick={() => {
-              onSectionToggle(section.slug);
-              setExpanded((prev) => !prev);
-            }}
-            aria-expanded={expanded}
-            display="flex"
-            width="100%"
-          >
-            <Box display="flex" justifyContent="space-between" width="100%">
-              <Text
-                variant="p-small"
-                style={{ flex: 1, fontWeight: 'bold' }}
-                textAlign="left"
-              >
-                {section.title}
-              </Text>
-              <ExpandChevron
-                ml={12}
-                size={16}
-                expanded={expanded}
-                position="relative"
-                top={4}
-              />
-            </Box>
-          </Anchor>
-        }
-      >
-        <LayoutMenuSection
-          items={section.items}
-          selectedItem={selectedItem}
-          onItemClick={onItemClick}
-        />
-      </StyledAccordionArea>
-    </Box>
+    <StyledAccordionArea
+      expanded={expanded}
+      top={
+        <Anchor
+          variant="interface"
+          pb={12}
+          px={4}
+          onClick={() => {
+            onSectionToggle(section.slug);
+            setExpanded((prev) => !prev);
+          }}
+          aria-expanded={expanded}
+          display="flex"
+          width="100%"
+        >
+          <Box display="flex" justifyContent="space-between" width="100%">
+            <Text
+              variant="p-small"
+              style={{ flex: 1, fontWeight: 'bold' }}
+              textAlign="left"
+            >
+              {section.title}
+            </Text>
+            <ExpandChevron
+              ml={12}
+              size={16}
+              expanded={expanded}
+              position="relative"
+              top={4}
+            />
+          </Box>
+        </Anchor>
+      }
+    >
+      <LayoutMenuSection items={section.items} onItemClick={onItemClick} />
+    </StyledAccordionArea>
   );
 };

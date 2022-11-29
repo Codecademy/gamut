@@ -31,16 +31,7 @@ describe('AccordionMenu', () => {
     expect(props.onSectionToggle).toBeCalledTimes(1);
   });
 
-  it('does not call onClick methods when it is the selected item', () => {
-    const { view, props } = renderView({ selectedItem: 'item-slug' });
-
-    fireEvent.click(view.getByText('item title'));
-
-    expect(sectionItemOnClick).not.toBeCalled();
-    expect(props.onItemClick).not.toBeCalled();
-  });
-
-  it('calls onClick methods when it is not the selected item', () => {
+  it('calls onClick methods', () => {
     const { view, props } = renderView();
 
     fireEvent.click(view.getByText('item title'));
