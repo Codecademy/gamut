@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [62.5.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.5...@codecademy/styleguide@62.5.6) (2022-11-29)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** fix remove + remove all  buttons + medium sizing change bug for `multiple` variant ([3e181ea](https://github.com/Codecademy/gamut/commit/3e181ea93708d00a3495968e5afe3da619b22ebd))
+
+
+
 ### [62.5.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.4...@codecademy/styleguide@62.5.5) (2022-11-22)
 
 **Note:** Version bump only for package @codecademy/styleguide

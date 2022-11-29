@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [51.4.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.4.4...@codecademy/gamut@51.4.5) (2022-11-29)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** fix remove + remove all  buttons + medium sizing change bug for `multiple` variant ([3e181ea](https://github.com/Codecademy/gamut/commit/3e181ea93708d00a3495968e5afe3da619b22ebd))
+
+
+
 ### [51.4.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.4.3...@codecademy/gamut@51.4.4) (2022-11-22)
 
 **Note:** Version bump only for package @codecademy/gamut
