@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [14.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.1...@codecademy/gamut-styles@14.2.2) (2022-11-29)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
 ### [14.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.0...@codecademy/gamut-styles@14.2.1) (2022-11-02)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
