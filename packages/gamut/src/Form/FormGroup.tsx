@@ -95,7 +95,11 @@ export const FormGroup: React.FC<FormGroupProps> = ({
       {labelComponent}
       {descriptionComponent}
       {children}
-      {error && <FormError aria-live="polite">{error}</FormError>}
+      {error && (
+        <FormError aria-live="polite" role="alert">
+          {error}
+        </FormError>
+      )}
     </FormGroupContainer>
   );
 };
