@@ -1,4 +1,4 @@
-import { ColorMode, useCurrentMode } from '@codecademy/gamut-styles';
+import { ColorMode, ColorModes } from '@codecademy/gamut-styles';
 import { AnimatePresence } from 'framer-motion';
 import React, { ReactNode } from 'react';
 
@@ -16,11 +16,14 @@ interface ToasterItem extends Omit<ToastProps, 'onClose'> {
 export type ToasterProps = {
   toasts: ToasterItem[];
   onClose: (id: string) => void;
+  colorMode?: ColorModes;
 };
 
-export const Toaster: React.FC<ToasterProps> = ({ toasts = [], onClose }) => {
-  const colorMode = useCurrentMode();
-
+export const Toaster: React.FC<ToasterProps> = ({
+  toasts = [],
+  onClose,
+  colorMode = 'light',
+}) => {
   return (
     <BodyPortal>
       <ColorMode mode={colorMode}>
