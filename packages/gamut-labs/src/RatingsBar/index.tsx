@@ -39,7 +39,10 @@ export const RatingsBar: React.FC<RatingsBarProps> = ({
   return (
     <RatingsBarWrapper
       role="meter"
+      aria-valuenow={percent}
+      aria-valuemax={100}
       aria-valuetext={`${percent}% of ratings`}
+      aria-label="ratings bar"
       aria-live="polite"
     >
       <Bar
