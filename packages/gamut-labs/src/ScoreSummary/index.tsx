@@ -20,6 +20,7 @@ export interface ScoreSummaryProps {
   untestedSubContent?: UntestedSubContent[];
   columnLayout?: boolean;
   trackUserClick: (data: UserClickData) => void;
+  description?: string;
 }
 
 const renderSubScores = ({
@@ -152,45 +153,58 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
   layout = 'row',
   columnLayout = false,
   trackUserClick,
+  description,
 }) => {
   let numOfRows = Object.entries(subScores).length;
   if (untestedSubContent) {
     numOfRows += untestedSubContent.length;
   }
+  const isRowLayout = layout === 'row';
   return (
-    <GridBox gridTemplateColumns={layout === 'row' ? '2fr 3fr' : ''}>
+    <GridBox gridTemplateColumns={isRowLayout ? '2fr 3fr' : ''}>
       <GridBox
         zIndex={1}
         bg="transparent"
-        border={1}
-        maxWidth={layout === 'row' ? pxRem(500) : pxRem(705)}
-        mr={layout === 'row' ? 24 : 0}
+        maxWidth={isRowLayout ? pxRem(500) : pxRem(705)}
+        mr={isRowLayout ? 24 : 0}
       >
         <Box
-          px={layout === 'row' ? [12, 24, 32] : [24, 32, 64, 96]}
+          px={isRowLayout ? [12, 24, 32] : [24, 32, 64, 96]}
           pt={24}
           pb={8}
           display={columnLayout ? 'flex' : 'block'}
           flexDirection={columnLayout ? 'column' : 'row'}
           justifyContent={columnLayout ? 'center' : ''}
+          border={1}
         >
           <QuizScore
             borderColor={borderColor}
             correctCount={totalCorrect}
-            layout={layout === 'row' ? 'column' : 'row'}
+            layout={isRowLayout ? 'column' : 'row'}
             total={totalQuestions}
             smallerFont
             numOfRows={numOfRows}
             columnLayout={columnLayout}
           />
         </Box>
+        {description && (
+          <Box
+            p={16}
+            pb={isRowLayout ? 0 : 16}
+            border={isRowLayout ? 'none' : 1}
+            borderTop="none"
+            textAlign={isRowLayout ? 'center' : 'left'}
+          >
+            <Text fontSize={14}>{description}</Text>
+          </Box>
+        )}
       </GridBox>
       <FlexBox flexDirection="column" maxWidth={pxRem(705)}>
         <FlexBox
           flexDirection="column"
           borderX={1}
           borderBottom={1}
-          borderTop={layout === 'row' ? 1 : undefined}
+          borderTop={isRowLayout ? 1 : undefined}
         >
           {renderSubScores({
             subScores,
