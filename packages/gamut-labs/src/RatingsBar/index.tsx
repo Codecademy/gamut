@@ -38,7 +38,7 @@ export const RatingsBar: React.FC<RatingsBarProps> = ({
   percent,
 }) => {
   return (
-    <RatingsBarWrapper aria-live="polite">
+    <RatingsBarWrapper aria-live="polite" tabIndex={0}>
       <Text as="label" screenreader>{`${percent}% of ratings`}</Text>
       <Bar
         data-testid="ratings-bar-bar"
