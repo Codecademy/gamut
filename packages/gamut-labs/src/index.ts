@@ -46,6 +46,7 @@ export * from './SocialMediaSharing';
 export * from './TabsExperimental';
 export * from './Testimonial';
 export * from './TestimonialDeprecated';
+export * from './UserForm';
 export type { AnonHeaderVariant } from './GlobalHeader/types';
 export type { AppHeaderNotificationSettings } from './Notifications/types';
 export type { AppHeaderSearch } from './AppHeader/Search/useHeaderSearch';

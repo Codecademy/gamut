@@ -1,0 +1,37 @@
+import { UserForm } from '@codecademy/gamut-labs';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={UserForm}
+  parameters={{
+    subtitle: 'hey',
+    source: 'gamut-labs',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/',
+    },
+  }}
+  args={{}}
+/>
+
+`UserForm` component summary goes here
+
+## Design Principles
+
+Design Principles summary
+
+## Usage Guidelines
+
+Usage summary
+
+## Code Playground
+
+<Canvas>
+  <Story name="UserForm">{(args) => <UserForm {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="UserForm" />
