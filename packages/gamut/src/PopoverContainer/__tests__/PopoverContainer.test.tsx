@@ -6,6 +6,7 @@ import React from 'react';
 import { PopoverContainer } from '..';
 import { PopoverContainerProps, TargetRef } from '../types';
 
+// Add the custom matchers provided by '@emotion/jest'
 expect.extend(matchers);
 
 const defaultBounding = {
