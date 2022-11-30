@@ -1,4 +1,3 @@
-import { Box } from '@codecademy/gamut';
 import React from 'react';
 
 export const UserForm: React.FC = () => {
