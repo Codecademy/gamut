@@ -10,7 +10,7 @@ const StyledAccordionArea = styled(AccordionArea)`
   padding-block: ${({ theme }) => theme.spacing[16]};
   position: relative;
   left: -4px;
-  border-bottom: 2px solid gray;
+  border-bottom: 1px solid ${({ theme }) => theme.colors['navy-500']};
 `;
 
 const ExpandChevron = styled(MiniChevronDownIcon)(
