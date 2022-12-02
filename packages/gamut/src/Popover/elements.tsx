@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
 import * as React from 'react';
 
-import { GenericChildrenType } from '..';
+import { WithChildrenProp } from '..';
 import { BodyPortal } from '../BodyPortal';
 import { Box } from '../Box';
 import { toolTipBodyAlignments } from '../ToolTip/styles';
@@ -51,7 +51,7 @@ export const PatternContainer = styled.div(
 );
 
 export const PopoverPortal: React.FC<
-  Pick<PopoverProps, 'animation' | 'isOpen'> & GenericChildrenType
+  Pick<PopoverProps, 'animation' | 'isOpen'> & WithChildrenProp
 > = ({ animation, isOpen, ...rest }) =>
   animation ? (
     <AnimatePresence>

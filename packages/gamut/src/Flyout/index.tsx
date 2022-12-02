@@ -2,13 +2,13 @@ import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, Colors } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
-import { GenericChildrenType } from '..';
+import { WithChildrenProp } from '..';
 import { IconButton } from '../Button';
 import { Drawer } from '../Drawer';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 
-export interface FlyoutProps extends GenericChildrenType {
+export interface FlyoutProps extends WithChildrenProp {
   /**
    * Accessibility label for the close button.
    */
