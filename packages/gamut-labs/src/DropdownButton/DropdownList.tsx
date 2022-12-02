@@ -1,6 +1,6 @@
 import { Menu, MenuItem } from '@codecademy/gamut';
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import React from 'react';
+import * as React from 'react';
 
 export type DropdownItem = {
   id: string;

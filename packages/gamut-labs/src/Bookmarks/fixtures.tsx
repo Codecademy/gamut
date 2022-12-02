@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { CrossDeviceBookmarkParts } from './types';
 
 export const mockBookmarkParts: CrossDeviceBookmarkParts = {

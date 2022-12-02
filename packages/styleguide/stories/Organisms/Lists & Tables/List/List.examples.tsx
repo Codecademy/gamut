@@ -23,7 +23,8 @@ import {
 } from '@codecademy/gamut-icons';
 import { Keyhole } from '@codecademy/gamut-illustrations';
 import { ColorMode } from '@codecademy/gamut-styles';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 const rows = [
   { name: 'Jean Luc Picard', role: 'Captain', ship: 'USS Enterprise' },

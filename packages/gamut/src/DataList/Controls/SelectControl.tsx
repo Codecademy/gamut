@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import { Checkbox } from '../../Form/Checkbox';
 import { Text } from '../../Typography/Text';

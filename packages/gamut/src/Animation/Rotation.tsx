@@ -1,6 +1,7 @@
 import { timingValues } from '@codecademy/gamut-styles';
 import { motion } from 'framer-motion';
-import React, { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
+import * as React from 'react';
 
 export interface RotationProps extends ComponentProps<typeof motion.div> {
   /**

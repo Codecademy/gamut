@@ -1,7 +1,7 @@
 import { Background } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { isEmpty } from 'lodash';
-import React from 'react';
+import * as React from 'react';
 
 import { EmptyNotification } from './EmptyNotification';
 import { NotificationItem } from './NotificationItem';

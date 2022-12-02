@@ -1,5 +1,6 @@
 import cx from 'classnames';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import * as React from 'react';
 
 import { StepButton } from './StepButton';
 // eslint-disable-next-line gamut/no-css-standalone

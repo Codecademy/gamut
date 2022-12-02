@@ -1,5 +1,4 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import React from 'react';
 
 import { FormGroup } from '../FormGroup';
 import { Input } from '../Input';

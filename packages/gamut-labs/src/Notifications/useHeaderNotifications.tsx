@@ -1,5 +1,6 @@
 import { ButtonBaseElements } from '@codecademy/gamut';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
+import * as React from 'react';
 
 import { AnimatedHeaderZone } from '../AppHeader/shared';
 import {

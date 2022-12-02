@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import { Column } from '../../Layout/Column';
 import { Text } from '../../Typography/Text';

@@ -2,7 +2,6 @@ import { IconButton } from '@codecademy/gamut';
 import { FaviconIcon } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/react';
-import React from 'react';
 
 import { mockBookmarkParts } from '../../Bookmarks/fixtures';
 import { CrossDeviceItemId } from '../../GlobalHeader/types';

@@ -1,7 +1,7 @@
 import { Box, Video } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import { CTA } from './CTA';
 import { Description } from './Description';

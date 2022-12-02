@@ -1,7 +1,6 @@
 import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { matchers } from '@emotion/jest';
-import React from 'react';
 
 import { List } from '../List';
 import { ListCol } from '../ListCol';
