@@ -1,4 +1,3 @@
-import { Text } from '@codecademy/gamut';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -38,8 +37,14 @@ export const RatingsBar: React.FC<RatingsBarProps> = ({
   percent,
 }) => {
   return (
-    <RatingsBarWrapper aria-live="polite">
-      <Text as="label" screenreader>{`${percent}% of ratings`}</Text>
+    <RatingsBarWrapper
+      role="meter"
+      aria-valuenow={percent}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-label="ratings bar"
+      aria-live="polite"
+    >
       <Bar
         data-testid="ratings-bar-bar"
         style={{

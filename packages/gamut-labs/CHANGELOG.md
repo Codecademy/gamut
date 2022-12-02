@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.8.10](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.9...@codecademy/gamut-labs@33.8.10) (2022-12-01)
+
+
+### Bug Fixes
+
+* **RatingsBar:** fixes the focus on the wrapper ([0972f0d](https://github.com/Codecademy/gamut/commit/0972f0d4529bcf2f17d8f27e6f0dd6ec59b1a4ca))
+
+
+
 ### [33.8.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.8...@codecademy/gamut-labs@33.8.9) (2022-11-30)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
