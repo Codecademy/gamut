@@ -247,6 +247,7 @@ export const SelectDropdownMultipleExample: React.FC = () => {
         htmlFor="multi-group-dropdown"
       >
         <SelectDropdown
+          size="small"
           onChange={handleChange}
           value={selectOptions}
           name="multi-group-dropdown"

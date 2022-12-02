@@ -10,7 +10,11 @@ export const adminTheme = createTheme(coreTheme)
         hover: 'blue-400',
       },
     },
-    dark: {},
+    dark: {
+      feedback: {
+        success: 'green-400',
+      },
+    },
   })
   .build();
 

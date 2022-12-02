@@ -52,9 +52,10 @@ export const ListSection: React.FC<ListSectionProps> = ({
   };
 
   const renderListItems = () => {
-    const listItems = Children.map(children, (child) => (
-      <StyledListItem>{child}</StyledListItem>
-    ));
+    const listItems = Children.map(
+      children,
+      (child) => !!child && <StyledListItem>{child}</StyledListItem>
+    )?.filter(Boolean);
 
     if (!listItems) return null;
     if (showAll) return listItems;

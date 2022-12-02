@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-labs",
   "description": "Brand and experimental component library for Codecademy",
-  "version": "33.6.4",
+  "version": "33.8.12",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -25,17 +25,20 @@
     "react-dom": "^17.0.2 || ^18.2.0"
   },
   "dependencies": {
-    "@codecademy/gamut": "^50.9.0",
-    "@codecademy/gamut-icons": "^7.8.2",
-    "@codecademy/gamut-illustrations": "^0.32.2",
-    "@codecademy/gamut-patterns": "^0.8.15",
-    "@codecademy/gamut-styles": "^14.1.1",
-    "@codecademy/variance": "^0.20.3",
+    "@codecademy/gamut": "51.5.0",
+    "@codecademy/gamut-icons": "7.9.4",
+    "@codecademy/gamut-illustrations": "0.32.6",
+    "@codecademy/gamut-patterns": "0.8.19",
+    "@codecademy/gamut-styles": "14.2.2",
+    "@codecademy/tracking": "1.0.4",
+    "@codecademy/variance": "0.20.4",
+    "@loadable/component": "^5.15.2",
     "classnames": "^2.2.5",
     "framer-motion": "^7.5.1",
     "freezeframe": "^5.0.2",
     "intersection-observer": "^0.12.0",
     "lodash": "^4.17.5",
+    "pluralize": "8.0.0",
     "react-focus-on": "^3.5.1",
     "react-freezeframe": "^5.0.2",
     "react-hook-form": "^7.21.2",
@@ -43,14 +46,13 @@
     "react-use": "15.3.8"
   },
   "devDependencies": {
-    "@codecademy/gamut-tests": "^4.0.14",
+    "@codecademy/gamut-tests": "4.0.19",
     "@emotion/jest": "^11.3.0",
     "@testing-library/dom": "^8.11.1",
     "@testing-library/react": "^13.4.0",
     "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^14.4.3",
-    "@types/enzyme": "3.10.7",
-    "enzyme": "3.11.0"
+    "@types/pluralize": "0.0.29"
   },
   "scripts": {
     "verify": "tsc --noEmit",
