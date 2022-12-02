@@ -1,3 +1,3 @@
-export interface GenericChildrenType {
+export interface WithChildrenProp {
   children?: React.ReactNode | React.ReactNode[];
 }

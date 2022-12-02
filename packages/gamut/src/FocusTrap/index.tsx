@@ -2,7 +2,7 @@ import React from 'react';
 import { FocusOn } from 'react-focus-on';
 import { ReactFocusOnProps } from 'react-focus-on/dist/es5/types';
 
-import { GenericChildrenType } from '..';
+import { WithChildrenProp } from '..';
 
 const focusOnStyles = {
   /**
@@ -11,7 +11,7 @@ const focusOnStyles = {
   display: 'contents',
 };
 
-export interface FocusTrapProps extends GenericChildrenType {
+export interface FocusTrapProps extends WithChildrenProp {
   className?: string;
   /**
    * Called when the FocusTrap requests to be closed via the escape key

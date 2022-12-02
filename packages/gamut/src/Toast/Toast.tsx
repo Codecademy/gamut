@@ -4,7 +4,7 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import React, { ReactNode, useMemo } from 'react';
 
-import { GenericChildrenType } from '..';
+import { WithChildrenProp } from '..';
 import { Box, FlexBox } from '../Box';
 import { IconButton } from '../Button/IconButton';
 import { FloatingCard } from '../FloatingCard/FloatingCard';
@@ -52,7 +52,7 @@ const IconContainer = styled(FlexBox)(
   })
 );
 
-export interface ToastProps extends GenericChildrenType {
+export interface ToastProps extends WithChildrenProp {
   title?: ReactNode;
   icon?: ReactNode;
   onClose: () => void;

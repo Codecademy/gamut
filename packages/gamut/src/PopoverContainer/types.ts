@@ -1,6 +1,6 @@
 import { RefObject } from 'react';
 
-import { GenericChildrenType } from '..';
+import { WithChildrenProp } from '..';
 
 export type Alignments =
   | 'top-left'
@@ -68,7 +68,7 @@ export interface PopoverPositionConfig extends PopoverAlignment {
 
 export interface PopoverContainerProps
   extends PopoverAlignment,
-    GenericChildrenType {
+    WithChildrenProp {
   className?: string;
   /**
    * Whether the popover is rendered.

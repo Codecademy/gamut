@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { GenericChildrenType } from '..';
+import { WithChildrenProp } from '..';
 import { Popover, PopoverProps } from '../Popover';
 
-export interface CoachmarkProps extends GenericChildrenType {
+export interface CoachmarkProps extends WithChildrenProp {
   /**
    * Applied to the element to which the coachmark points.
    */

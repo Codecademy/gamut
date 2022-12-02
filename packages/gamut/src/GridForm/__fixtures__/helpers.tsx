@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { ConnectedForm, GenericChildrenType } from '../..';
+import { ConnectedForm, WithChildrenProp } from '../..';
 
-interface FormContextProps extends GenericChildrenType {
+interface FormContextProps extends WithChildrenProp {
   mode?: 'onChange' | 'onSubmit';
 }
 
