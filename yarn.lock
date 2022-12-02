@@ -718,7 +718,7 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@babel/highlight@^7.18.6":
+"@babel/highlight@^7.16.7", "@babel/highlight@^7.18.6":
   version "7.18.6"
   resolved "https://registry.npmjs.org/@babel/highlight/-/highlight-7.18.6.tgz#81158601e93e2563795adcbfbdf5d64be3f2ecdf"
   integrity sha512-u7stbOuYjaPezCuLj29hNW1v64M2Md2qupEKP1fHc7WdOA3DgLh37suiSrZYY7haUB7iBeQZ9P1uiRF359do3g==
@@ -2167,6 +2167,13 @@
   integrity sha512-EXpLCrk55f+cYqmHsSR+yD/0gAIMxxA9QK9lnQWzhMCvt+YmoBN7Zx94s++Kv0+unHk39vxNO8t+CMA2WSS3wA==
   dependencies:
     regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.7.7":
+  version "7.20.6"
+  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.20.6.tgz#facf4879bfed9b5326326273a64220f099b0fce3"
+  integrity sha512-Q+8MqP7TiHMWzSfwiJwXCjyf4GYA4Dgw3emg/7xmwsdLJOZUp+nMqcOwOzzYheuM1rhDu8FSj2l0aoMygEuXuA==
+  dependencies:
+    regenerator-runtime "^0.13.11"
 
 "@babel/template@^7.12.13", "@babel/template@^7.14.5", "@babel/template@^7.3.3":
   version "7.14.5"
@@ -3777,6 +3784,15 @@
   resolved "https://registry.npmjs.org/@lit/reactive-element/-/reactive-element-1.3.2.tgz#43e470537b6ec2c23510c07812616d5aa27a17cd"
   integrity sha512-A2e18XzPMrIh35nhIdE4uoqRzoIpEU5vZYuQN4S3Ee1zkGdYC27DP12pewbw/RLgPHzaE4kx/YqxMzebOpm0dA==
 
+"@loadable/component@^5.15.2":
+  version "5.15.2"
+  resolved "https://registry.npmjs.org/@loadable/component/-/component-5.15.2.tgz#b6c418d592e0a64f16b1d614ca9d3b1443d3b498"
+  integrity sha512-ryFAZOX5P2vFkUdzaAtTG88IGnr9qxSdvLRvJySXcUA4B4xVWurUNADu3AnKPksxOZajljqTrDEDcYjeL4lvLw==
+  dependencies:
+    "@babel/runtime" "^7.7.7"
+    hoist-non-react-statics "^3.3.1"
+    react-is "^16.12.0"
+
 "@mdx-js/mdx@^1.6.22":
   version "1.6.22"
   resolved "https://registry.npmjs.org/@mdx-js/mdx/-/mdx-1.6.22.tgz#8a723157bf90e78f17dc0f27995398e6c731f1ba"
@@ -3812,7 +3828,7 @@
   resolved "https://registry.npmjs.org/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@motionone/animation@^10.13.1":
+"@motionone/animation@^10.12.0", "@motionone/animation@^10.13.1":
   version "10.14.0"
   resolved "https://registry.npmjs.org/@motionone/animation/-/animation-10.14.0.tgz#2f2a3517183bb58d82e389aac777fe0850079de6"
   integrity sha512-h+1sdyBP8vbxEBW5gPFDnj+m2DCqdlAuf2g6Iafb1lcMnqjsRXWlPw1AXgvUMXmreyhqmPbJqoNfIKdytampRQ==
@@ -3820,6 +3836,18 @@
     "@motionone/easing" "^10.14.0"
     "@motionone/types" "^10.14.0"
     "@motionone/utils" "^10.14.0"
+    tslib "^2.3.1"
+
+"@motionone/dom@10.12.0":
+  version "10.12.0"
+  resolved "https://registry.npmjs.org/@motionone/dom/-/dom-10.12.0.tgz#ae30827fd53219efca4e1150a5ff2165c28351ed"
+  integrity sha512-UdPTtLMAktHiqV0atOczNYyDd/d8Cf5fFsd1tua03PqTwwCe/6lwhLSQ8a7TbnQ5SN0gm44N1slBfj+ORIhrqw==
+  dependencies:
+    "@motionone/animation" "^10.12.0"
+    "@motionone/generators" "^10.12.0"
+    "@motionone/types" "^10.12.0"
+    "@motionone/utils" "^10.12.0"
+    hey-listen "^1.0.8"
     tslib "^2.3.1"
 
 "@motionone/dom@10.13.1":
@@ -3842,7 +3870,7 @@
     "@motionone/utils" "^10.14.0"
     tslib "^2.3.1"
 
-"@motionone/generators@^10.13.1":
+"@motionone/generators@^10.12.0", "@motionone/generators@^10.13.1":
   version "10.14.0"
   resolved "https://registry.npmjs.org/@motionone/generators/-/generators-10.14.0.tgz#e05d9dd56da78a4b92db99185848a0f3db62242d"
   integrity sha512-6kRHezoFfIjFN7pPpaxmkdZXD36tQNcyJe3nwVqwJ+ZfC0e3rFmszR8kp9DEVFs9QL/akWjuGPSLBI1tvz+Vjg==
@@ -3851,12 +3879,12 @@
     "@motionone/utils" "^10.14.0"
     tslib "^2.3.1"
 
-"@motionone/types@^10.13.0", "@motionone/types@^10.14.0":
+"@motionone/types@^10.12.0", "@motionone/types@^10.13.0", "@motionone/types@^10.14.0":
   version "10.14.0"
   resolved "https://registry.npmjs.org/@motionone/types/-/types-10.14.0.tgz#148c34f3270b175397e49c3058b33fab405c21e3"
   integrity sha512-3bNWyYBHtVd27KncnJLhksMFQ5o2MSdk1cA/IZqsHtA9DnRM1SYgN01CTcJ8Iw8pCXF5Ocp34tyAjY7WRpOJJQ==
 
-"@motionone/utils@^10.13.1", "@motionone/utils@^10.14.0":
+"@motionone/utils@^10.12.0", "@motionone/utils@^10.13.1", "@motionone/utils@^10.14.0":
   version "10.14.0"
   resolved "https://registry.npmjs.org/@motionone/utils/-/utils-10.14.0.tgz#a19a3464ed35b08506747b062d035c7bc9bbe708"
   integrity sha512-sLWBLPzRqkxmOTRzSaD3LFQXCPHvDzyHJ1a3VP9PRzBxyVd2pv51/gMOsdAcxQ9n+MIeGJnxzXBYplUHKj4jkw==
@@ -5924,21 +5952,6 @@
     dom-accessibility-api "^0.5.9"
     lz-string "^1.4.4"
     pretty-format "^27.0.2"
-
-"@testing-library/jest-dom@^5.16.5":
-  version "5.16.5"
-  resolved "https://registry.npmjs.org/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz#3912846af19a29b2dbf32a6ae9c31ef52580074e"
-  integrity sha512-N5ixQ2qKpi5OLYfwQmUb/5mSV9LneAcaUfp32pn4yCnpb8r/Yz0pXFPck21dIicKmi+ta5WRAknkZCfA8refMA==
-  dependencies:
-    "@adobe/css-tools" "^4.0.1"
-    "@babel/runtime" "^7.9.2"
-    "@types/testing-library__jest-dom" "^5.9.1"
-    aria-query "^5.0.0"
-    chalk "^3.0.0"
-    css.escape "^1.5.1"
-    dom-accessibility-api "^0.5.6"
-    lodash "^4.17.15"
-    redent "^3.0.0"
 
 "@testing-library/jest-dom@^5.16.5":
   version "5.16.5"
@@ -9175,7 +9188,7 @@ color-name@1.1.3:
   resolved "https://registry.npmjs.org/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
   integrity sha1-p9BVi9icQveV3UIyj3QIMcpTvCU=
 
-color-name@^1.0.0:
+color-name@^1.0.0, color-name@~1.1.4:
   version "1.1.4"
   resolved "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
@@ -12255,6 +12268,20 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
+framer-motion@^6.5.1:
+  version "6.5.1"
+  resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-6.5.1.tgz#802448a16a6eb764124bf36d8cbdfa6dd6b931a7"
+  integrity sha512-o1BGqqposwi7cgDrtg0dNONhkmPsUFDaLcKXigzuTFC5x58mE8iyTazxSudFzmT6MEyJKfjjU8ItoMe3W+3fiw==
+  dependencies:
+    "@motionone/dom" "10.12.0"
+    framesync "6.0.1"
+    hey-listen "^1.0.8"
+    popmotion "11.0.3"
+    style-value-types "5.0.0"
+    tslib "^2.1.0"
+  optionalDependencies:
+    "@emotion/is-prop-valid" "^0.8.2"
+
 framer-motion@^7.5.1:
   version "7.5.1"
   resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-7.5.1.tgz#a21d9218999f3f271b39ca6f693093b54465c0f5"
@@ -12268,6 +12295,13 @@ framer-motion@^7.5.1:
     tslib "2.4.0"
   optionalDependencies:
     "@emotion/is-prop-valid" "^0.8.2"
+
+framesync@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.npmjs.org/framesync/-/framesync-6.0.1.tgz#5e32fc01f1c42b39c654c35b16440e07a25d6f20"
+  integrity sha512-fUY88kXvGiIItgNC7wcTOl0SNRCVXMKSWW2Yzfmn7EKNc+MpCzcz9DhdHcdjbrtN3c6R4H5dTY2jiCpPdysEjA==
+  dependencies:
+    tslib "^2.1.0"
 
 framesync@6.1.2:
   version "6.1.2"
@@ -18331,6 +18365,16 @@ polished@^4.2.2:
   dependencies:
     "@babel/runtime" "^7.17.8"
 
+popmotion@11.0.3:
+  version "11.0.3"
+  resolved "https://registry.npmjs.org/popmotion/-/popmotion-11.0.3.tgz#565c5f6590bbcddab7a33a074bb2ba97e24b0cc9"
+  integrity sha512-Y55FLdj3UxkR7Vl3s7Qr4e9m0onSnP8W7d/xQLsoJM40vs6UKHFdygs6SWryasTZYqugMjm3BepCF4CWXDiHgA==
+  dependencies:
+    framesync "6.0.1"
+    hey-listen "^1.0.8"
+    style-value-types "5.0.0"
+    tslib "^2.1.0"
+
 popmotion@11.0.5:
   version "11.0.5"
   resolved "https://registry.npmjs.org/popmotion/-/popmotion-11.0.5.tgz#8e3e014421a0ffa30ecd722564fd2558954e1f7d"
@@ -19565,15 +19609,15 @@ react-is@17.0.2, "react-is@^16.12.0 || ^17.0.0", react-is@^17.0.0, react-is@^17.
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1:
+  version "16.13.1"
+  resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
+  integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
 "react-is@^16.12.0 || ^17.0.0 || ^18.0.0", react-is@^18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
-
-react-is@^16.13.1, react-is@^16.7.0, react-is@^16.8.1:
-  version "16.13.1"
-  resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
-  integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
 react-is@^18.0.0:
   version "18.1.0"
@@ -20016,6 +20060,11 @@ regenerator-runtime@^0.13.10:
   version "0.13.10"
   resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.10.tgz#ed07b19616bcbec5da6274ebc75ae95634bfc2ee"
   integrity sha512-KepLsg4dU12hryUO7bp/axHAKvwGOCV0sGloQtpagJ12ai+ojVDqkeGSiRX1zlq+kjIMZ1t7gpze+26QqtdGqw==
+
+regenerator-runtime@^0.13.11:
+  version "0.13.11"
+  resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz#f6dca3e7ceec20590d07ada785636a90cdca17f9"
+  integrity sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==
 
 regenerator-runtime@^0.13.4, regenerator-runtime@^0.13.7:
   version "0.13.7"
@@ -21839,6 +21888,14 @@ style-to-object@0.3.0, style-to-object@^0.3.0:
   dependencies:
     inline-style-parser "0.1.1"
 
+style-value-types@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/style-value-types/-/style-value-types-5.0.0.tgz#76c35f0e579843d523187989da866729411fc8ad"
+  integrity sha512-08yq36Ikn4kx4YU6RD7jWEv27v4V+PUsOGa4n/as8Et3CuODMJQ00ENeAVXAeydX4Z2j1XHZF1K2sX4mGl18fA==
+  dependencies:
+    hey-listen "^1.0.8"
+    tslib "^2.1.0"
+
 style-value-types@5.1.2:
   version "5.1.2"
   resolved "https://registry.npmjs.org/style-value-types/-/style-value-types-5.1.2.tgz#6be66b237bd546048a764883528072ed95713b62"
@@ -22525,6 +22582,11 @@ tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3, tslib@^2.3.0, tslib@^2.3.1:
   version "2.3.1"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
+
+tslib@^2.1.0:
+  version "2.4.1"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-2.4.1.tgz#0d0bfbaac2880b91e22df0768e55be9753a5b17e"
+  integrity sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==
 
 tsutils@^3.21.0:
   version "3.21.0"
