@@ -37,11 +37,15 @@ import { PopoverMenuExample } from './Menu.examples.tsx';
     spacing: 'normal',
     children: (
       <>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem active>Active Item</MenuItem>
+        <MenuItem href="#">Menu Item</MenuItem>
+        <MenuItem active href="#">
+          Active Item
+        </MenuItem>
         <MenuSeparator />
-        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon} href="#">
+          Icon Item
+        </MenuItem>
+        <MenuItem href="#">Menu Item</MenuItem>
       </>
     ),
   }}

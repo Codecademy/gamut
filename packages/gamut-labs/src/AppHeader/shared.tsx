@@ -1,5 +1,6 @@
 import {
   Anchor,
+  FlexBox,
   GenericChildrenType,
   LayoutGrid,
   Text,
@@ -93,3 +94,13 @@ export const StyledDropdown = styled(motion.div)(
 export const LayoutGridAntiAliased = styled(LayoutGrid)`
   -webkit-font-smoothing: antialiased;
 `;
+
+/* for Resources & Catalog menus */
+export const DescriptionSectionContainer = styled(FlexBox)(
+  css({
+    '&:focus-visible': {
+      color: 'text',
+      outline: '1px solid currentColor !important',
+    },
+  })
+);

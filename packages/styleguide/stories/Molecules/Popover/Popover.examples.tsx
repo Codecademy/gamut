@@ -1,7 +1,6 @@
 import {
   Box,
   Column,
-  Container,
   FillButton,
   FlexBox,
   LayoutGrid,
@@ -27,7 +26,7 @@ export const PopoverExample = (args: PopoverProps) => {
       <Box ref={activeElRef}>
         <FillButton onClick={toggleOpen}>Open Popover</FillButton>
       </Box>
-      <Container>
+      <FlexBox>
         <Popover
           {...args}
           isOpen={open}
@@ -41,7 +40,7 @@ export const PopoverExample = (args: PopoverProps) => {
             </FillButton>
           </FlexBox>
         </Popover>
-      </Container>
+      </FlexBox>
     </>
   );
 };
@@ -57,7 +56,7 @@ export const PopoverWithoutFocus = (args: PopoverProps) => {
       <Box ref={activeElRef}>
         <FillButton onClick={toggleOpen}>Open Popover</FillButton>
       </Box>
-      <Container>
+      <FlexBox>
         <Popover
           {...args}
           isOpen={open}
@@ -68,7 +67,7 @@ export const PopoverWithoutFocus = (args: PopoverProps) => {
             Nothing clickable here but the container has fallback focus
           </FlexBox>
         </Popover>
-      </Container>
+      </FlexBox>
     </>
   );
 };

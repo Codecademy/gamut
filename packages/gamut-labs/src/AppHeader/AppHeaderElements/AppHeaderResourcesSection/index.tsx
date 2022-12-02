@@ -4,7 +4,10 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { headerResourcesList } from '../../../lib/resourcesList';
-import { LayoutGridAntiAliased } from '../../shared';
+import {
+  DescriptionSectionContainer,
+  LayoutGridAntiAliased,
+} from '../../shared';
 import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
 
 export type AppHeaderResourcesSectionProps = {
@@ -42,7 +45,11 @@ export const AppHeaderResourcesSection = React.forwardRef<
     title: string;
     subtitle?: string;
   }> = ({ title, subtitle }) => (
-    <FlexBox data-focusableresource="true" tabIndex={-1} flexDirection="column">
+    <DescriptionSectionContainer
+      data-focusableresource="true"
+      tabIndex={-1}
+      flexDirection="column"
+    >
       <Text
         as="h2"
         variant="title-xs"
@@ -53,7 +60,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
         {title}
       </Text>
       {subtitle && <Text fontSize={14}>{subtitle}</Text>}
-    </FlexBox>
+    </DescriptionSectionContainer>
   );
 
   return (
@@ -86,6 +93,7 @@ export const AppHeaderResourcesSection = React.forwardRef<
                     target={section.link.newTab ? '_blank' : '_self'}
                   >
                     {section.link.text}
+                    <span aria-hidden>&nbsp;→</span>
                   </Anchor>
                 )}
               </Background>

@@ -7,6 +7,13 @@ import {
 import { StylesConfig } from 'react-select';
 
 import {
+  dismissSharedStyles,
+  tagBaseStyles,
+  tagBorderRadius,
+  tagLabelFontSize,
+  tagLabelPadding,
+} from '../../Tag/elements';
+import {
   formBaseComponentStyles,
   formBaseFieldStylesObject,
   formFieldDisabledStyles,
@@ -44,6 +51,7 @@ const sizeVariants = variant({
   defaultVariant: 'medium',
   variants: {
     medium: formFieldPaddingStyles,
+    mediumIsMultiSelected: { px: 8, py: 8 },
     small: { height: '2rem', px: 8, py: 0 },
   },
 });
@@ -83,6 +91,9 @@ export const getMemoizedStyles = (
   theme: typeof GamutTheme
 ): StylesConfig<any, false> => {
   return {
+    clearIndicator: (provided) => ({
+      ...provided,
+    }),
     container: (provided, state) => ({
       ...provided,
       pointerEvents: 'visible',
@@ -90,17 +101,26 @@ export const getMemoizedStyles = (
       width: '100%',
       minWidth: '7rem',
     }),
-    control: (provided, state: any) => ({
-      ...selectDropdownStyles({ theme }),
-      ...sizeVariants({ size: state.selectProps.size, theme }),
-      ...conditionalBorderStates({
-        isFocused: state.isFocused,
-        isDisabled: state.isDisabled,
-        error: state.selectProps.error,
-        activated: state.selectProps.activated,
-        theme,
-      }),
-    }),
+    control: (provided, state: any) => {
+      const { isMulti, size } = state.selectProps;
+      const getSize = size ?? 'medium';
+      const getPadding =
+        isMulti && state.hasValue && size !== 'small'
+          ? `mediumIsMultiSelected`
+          : getSize;
+
+      return {
+        ...selectDropdownStyles({ theme }),
+        ...sizeVariants({ size: getPadding, theme }),
+        ...conditionalBorderStates({
+          isFocused: state.isFocused,
+          isDisabled: state.isDisabled,
+          error: state.selectProps.error,
+          activated: state.selectProps.activated,
+          theme,
+        }),
+      };
+    },
     dropdownIndicator: () => ({
       color: 'currentColor',
       display: 'flex',
@@ -151,23 +171,26 @@ export const getMemoizedStyles = (
     }),
     multiValue: (provided) => ({
       ...provided,
+      ...tagBaseStyles,
       cursor: 'pointer',
-      alignItems: 'center',
-      background: theme.colors['background-selected'],
+      background: theme.colors.background,
     }),
     multiValueLabel: (provided) => ({
       ...provided,
+      fontSize: `${tagLabelFontSize}px`,
       color: theme.colors.text,
+      borderRadius: tagBorderRadius,
+      padding: `0 ${tagLabelPadding}px`,
+      paddingLeft: `${tagLabelPadding}px`, // default label has an explicit rule for padding left so we need this to override it
     }),
     multiValueRemove: (provided) => ({
       ...provided,
+      ...dismissSharedStyles,
       cursor: 'pointer',
-      paddingTop: '7px',
-      paddingBottom: '7px',
-      background: theme.colors['background-selected'],
+      borderRadius: `0px ${tagBorderRadius} ${tagBorderRadius} 0px`, // only want border radius on top and bottom right
+      padding: 0, // default remove has padding left and right that we don't need
       ':hover': {
         backgroundColor: theme.colors['background-hover'],
-        color: theme.colors['primary-hover'],
       },
     }),
     valueContainer: (provided) => ({

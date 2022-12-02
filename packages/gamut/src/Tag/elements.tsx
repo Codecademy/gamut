@@ -13,19 +13,23 @@ import { ButtonBase } from '../ButtonBase';
 import { Selectors } from '../ButtonBase/ButtonBase';
 import { BaseTagProps } from './types';
 
-const tagBorderRadius = '4px';
+export const tagLabelPadding = 8;
+export const tagLabelFontSize = 14;
+export const tagBorderRadius = '4px';
+
+export const tagBaseStyles = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: tagBorderRadius,
+  height: '24px',
+  width: 'fit-content',
+  maxWidth: '100%',
+};
 
 export const colorVariants = variant({
   defaultVariant: 'default',
-  base: {
-    alignItems: 'center',
-    borderRadius: tagBorderRadius,
-    display: 'flex',
-    height: '24px',
-    justifyContent: 'center',
-    width: 'fit-content',
-    maxWidth: '100%',
-  },
+  base: tagBaseStyles,
   variants: {
     default: {
       bg: `background-current`,
@@ -66,19 +70,23 @@ export const TagWrapper = styled(Background)<BaseTagProps>(
   colorVariants
 );
 
+export const dismissSharedStyles = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '100%',
+  minWidth: '24px',
+};
+
 export const DismissButton = styled(ButtonBase)(
   variant({
     defaultVariant: 'default',
     base: {
-      alignItems: 'center',
+      ...dismissSharedStyles,
       border: 1,
       borderColor: 'transparent',
       borderRadiusRight: tagBorderRadius,
       color: 'currentColor',
-      display: 'flex',
-      height: '100%',
-      justifyContent: 'center',
-      minWidth: '24px',
     },
     variants: {
       default: {

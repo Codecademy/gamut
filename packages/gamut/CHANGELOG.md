@@ -3,6 +3,164 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [51.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.4.6...@codecademy/gamut@51.5.0) (2022-12-02)
+
+
+### Features
+
+* **Toaster:** Use current color mode in `Toaster` ([f0615d5](https://github.com/Codecademy/gamut/commit/f0615d52f2489f748da43ff2a22becb2a1409126)), closes [#2430](https://github.com/Codecademy/gamut/issues/2430)
+
+
+
+### [51.4.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.4.5...@codecademy/gamut@51.4.6) (2022-11-29)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [51.4.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.4.4...@codecademy/gamut@51.4.5) (2022-11-29)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** fix remove + remove all  buttons + medium sizing change bug for `multiple` variant ([3e181ea](https://github.com/Codecademy/gamut/commit/3e181ea93708d00a3495968e5afe3da619b22ebd))
+
+
+
+### [51.4.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.4.3...@codecademy/gamut@51.4.4) (2022-11-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [51.4.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.4.2...@codecademy/gamut@51.4.3) (2022-11-17)
+
+
+### Reverts
+
+* upgrades to auto-id and react-use ([ffa2c87](https://github.com/Codecademy/gamut/commit/ffa2c8736bd6a069f28d6bc11338acbd49cfd9b7))
+
+
+
+### [51.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.4.1...@codecademy/gamut@51.4.2) (2022-11-17)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [51.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.4.0...@codecademy/gamut@51.4.1) (2022-11-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [51.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.3.1...@codecademy/gamut@51.4.0) (2022-11-14)
+
+
+### Features
+
+* **Card:** Have outline shadow variant to inherit variant color ([5f18683](https://github.com/Codecademy/gamut/commit/5f186835cbe286dbca7fa75c52efc54991aa9940))
+
+
+
+### [51.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.3.0...@codecademy/gamut@51.3.1) (2022-11-02)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [51.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.2.1...@codecademy/gamut@51.3.0) (2022-11-02)
+
+
+### Features
+
+* **Card:** Add outline shadow variant ([199805b](https://github.com/Codecademy/gamut/commit/199805b92bce1f4637d25b2ec4cc9aa50661baad))
+
+
+
+### [51.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.2.0...@codecademy/gamut@51.2.1) (2022-11-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [51.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.1.2...@codecademy/gamut@51.2.0) (2022-11-01)
+
+
+### Features
+
+* **Toggle:** allow react node for labels ([bab3aaa](https://github.com/Codecademy/gamut/commit/bab3aaaac31ca398490f805d44f5d12fe4e68dac))
+
+
+
+### [51.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.1.1...@codecademy/gamut@51.1.2) (2022-10-31)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [51.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.1.0...@codecademy/gamut@51.1.1) (2022-10-31)
+
+
+### Bug Fixes
+
+* **MenuItem:** fixes focus outlines and onClick support ([6fe141f](https://github.com/Codecademy/gamut/commit/6fe141f1250bcaabb3887a30e110b98b1c8c7af8))
+
+
+
+## [51.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.0.1...@codecademy/gamut@51.1.0) (2022-10-26)
+
+
+### Features
+
+* **SelectDropdown:** Add search icon to SelectDropdown based on isSearchable ([ac02a2b](https://github.com/Codecademy/gamut/commit/ac02a2b77b7b4d9df4be4d2a71a73d1716b242be))
+
+
+
+### [51.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.0.0...@codecademy/gamut@51.0.1) (2022-10-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [51.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.10.0...@codecademy/gamut@51.0.0) (2022-10-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Container:** Remove `Container`
+
+### Miscellaneous Chores
+
+* **Container:** Remove `Container` ([9508eab](https://github.com/Codecademy/gamut/commit/9508eabbf66bd193e2057ebe795154fdd6ec96c1))
+
+
+
+## [50.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.9.0...@codecademy/gamut@50.10.0) (2022-10-19)
+
+
+### Features
+
+* **SelectDropdown:** make multi value look like tag ([5e45750](https://github.com/Codecademy/gamut/commit/5e457500f9c880a726e0d60fbab790cd4ecbc383))
+
+
+
 ## [50.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@50.8.1...@codecademy/gamut@50.9.0) (2022-10-14)
 
 
