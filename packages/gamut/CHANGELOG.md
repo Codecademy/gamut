@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [51.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.4.6...@codecademy/gamut@51.5.0) (2022-12-02)
+
+
+### Features
+
+* **Toaster:** Use current color mode in `Toaster` ([f0615d5](https://github.com/Codecademy/gamut/commit/f0615d52f2489f748da43ff2a22becb2a1409126)), closes [#2430](https://github.com/Codecademy/gamut/issues/2430)
+
+
+
 ### [51.4.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.4.5...@codecademy/gamut@51.4.6) (2022-11-29)
 
 **Note:** Version bump only for package @codecademy/gamut
