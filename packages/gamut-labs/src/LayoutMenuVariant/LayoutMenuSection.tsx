@@ -1,6 +1,7 @@
 import { Box } from '@codecademy/gamut';
 import { system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
+import styled from '@emotion/styled';
 import React from 'react';
 
 import { SectionItem } from './AccordionMenu';
@@ -13,14 +14,17 @@ export type LayoutMenuSectionProps = LayoutMenuSectionStyles & {
   onItemClick: () => void;
 };
 
+const StyledBox = styled(Box)`
+  list-style: none;
+`;
 export const LayoutMenuSection: React.FC<LayoutMenuSectionProps> = ({
   items,
   onItemClick,
   ...styleProps
 }) => (
-  <Box {...styleProps}>
+  <Box {...styleProps} as="menu" px={4} m={0}>
     {items.map((item) => (
-      <Box key={item.slug} px={4}>
+      <StyledBox key={item.slug} as="li">
         <SectionItemLink
           href={item.href}
           onClick={(event) => {
@@ -30,7 +34,7 @@ export const LayoutMenuSection: React.FC<LayoutMenuSectionProps> = ({
         >
           {item.title}
         </SectionItemLink>
-      </Box>
+      </StyledBox>
     ))}
   </Box>
 );

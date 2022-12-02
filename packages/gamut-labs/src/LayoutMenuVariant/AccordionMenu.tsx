@@ -13,6 +13,12 @@ const StyledAccordionArea = styled(AccordionArea)`
   border-bottom: 1px solid ${({ theme }) => theme.colors['navy-500']};
 `;
 
+const StyledAnchor = styled(Anchor)`
+  :hover {
+    color: inherit;
+  }
+`;
+
 const ExpandChevron = styled(MiniChevronDownIcon)(
   system.css({
     transform: 'rotate(0deg)',
@@ -53,7 +59,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
     <StyledAccordionArea
       expanded={expanded}
       top={
-        <Anchor
+        <StyledAnchor
           variant="interface"
           pb={12}
           px={4}
@@ -81,7 +87,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({
               top={4}
             />
           </Box>
-        </Anchor>
+        </StyledAnchor>
       }
     >
       <LayoutMenuSection items={section.items} onItemClick={onItemClick} />
