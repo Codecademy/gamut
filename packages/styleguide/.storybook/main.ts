@@ -42,6 +42,12 @@ module.exports = {
       configs.css().module.rules
     );
 
+    config.module.rules.push({
+      test: /\.mjs$/,
+      include: /node_modules/,
+      type: 'javascript/auto',
+    });
+
     config.resolve = {
       ...config.resolve,
       alias: {

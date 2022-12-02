@@ -25,6 +25,14 @@ export const PausableImage: React.FC<PauseableImageProps> = (props) => {
   const staticImage = <StaticImage {...props} />;
 
   return (
-    <>{props.src?.endsWith('.gif') ? <BaseImage {...props} /> : staticImage}</>
+    <>
+      {props.src?.endsWith('.gif') ? (
+        <React.Suspense fallback={staticImage}>
+          <BaseImage {...props} />
+        </React.Suspense>
+      ) : (
+        staticImage
+      )}
+    </>
   );
 };
