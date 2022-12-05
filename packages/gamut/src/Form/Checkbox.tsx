@@ -68,6 +68,7 @@ export type CheckboxProps = Omit<
      */
     value?: string | boolean;
     id?: string;
+    dontAriaHideLabel?: boolean;
   };
 
 const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled' | 'spacing'>>(
@@ -119,6 +120,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       disabled,
       spacing,
       value,
+      dontAriaHideLabel,
       ...rest
     },
     ref
@@ -170,7 +172,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             id={`text-${id || htmlFor}`}
             multiline={multiline}
             disabled={disabled}
-            aria-hidden="true"
+            aria-hidden={dontAriaHideLabel ? 'false' : 'true'}
           >
             {label}
           </CheckboxText>
