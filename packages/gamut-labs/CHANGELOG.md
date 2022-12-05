@@ -2096,7 +2096,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **Card:** Animation Fixes and Gamut migration
 * **Byline:** use Emotion for styles (#1464)
 * bumped ESLint packages to latest and added recommended & Jest linting
-* **BrandMono:** Remove Roboto Mono in favor of using Suisse 
+* **BrandMono:** Remove Roboto Mono in favor of using Suisse
 * **PageHero:** added functionality for PageHero to take images or videos as props
 * replace VisualTheme enum with string type union (#1166)
 * add landing page prefooter component (#1185)

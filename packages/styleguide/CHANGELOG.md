@@ -2209,7 +2209,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * progress bar theme => variant
 * converted ToolTip to Emotion (#1357)
 * bumped ESLint packages to latest and added recommended & Jest linting
-* **BrandMono:** Remove Roboto Mono in favor of using Suisse 
+* **BrandMono:** Remove Roboto Mono in favor of using Suisse
 * **Alert:** open cta in new tab by default (#1350)
 * **PageHero:** added functionality for PageHero to take images or videos as props
 * **Toggle:** refactor to emotion and add focus styles
