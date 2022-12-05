@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.12...@codecademy/gamut-labs@33.9.0) (2022-12-05)
+
+
+### Features
+
+* **LayoutMenuVariant:** create layout menu variant for experiment [#2199](https://github.com/Codecademy/gamut/issues/2199) ([160a20a](https://github.com/Codecademy/gamut/commit/160a20afdd8fd9a3c1819efd2cc4d8457f1f7f38))
+
+
+
 ### [33.8.12](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.11...@codecademy/gamut-labs@33.8.12) (2022-12-02)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
