@@ -70,7 +70,7 @@ export const checkboxElementStates = system.states({
     color: 'primary',
   },
   disabled: {
-    color: 'navy-500',
+    color: 'text-disabled',
     [InputSelectors.HOVER]: {
       outline: 'none',
     },
