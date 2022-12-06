@@ -1,6 +1,6 @@
 import { Box, FlexBox } from '@codecademy/gamut';
 import { LocationPinIcon } from '@codecademy/gamut-icons';
-import React from 'react';
+import * as React from 'react';
 
 export type BylineProps = {
   firstName: string;

@@ -1,7 +1,7 @@
 import { Anchor, Box } from '@codecademy/gamut';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 const heartStyles = css`
   display: inline-block;

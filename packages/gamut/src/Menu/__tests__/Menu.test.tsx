@@ -1,7 +1,6 @@
 import { MultipleUsersIcon } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { screen } from '@testing-library/react';
-import React from 'react';
 
 import { Menu } from '../Menu';
 import { MenuItem } from '../MenuItem';

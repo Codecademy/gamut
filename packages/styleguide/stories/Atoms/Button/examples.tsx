@@ -7,7 +7,6 @@ import {
   TextButton,
 } from '@codecademy/gamut';
 import { MiniDeleteIcon, SearchIcon } from '@codecademy/gamut-icons';
-import React from 'react';
 
 const buttons = [FillButton, IconButton, StrokeButton, TextButton];
 const variants = ['primary', 'secondary'] as const;

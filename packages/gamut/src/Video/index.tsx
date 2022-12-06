@@ -1,6 +1,7 @@
 import { PlayIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 import ReactPlayer from 'react-player';
 
 // eslint-disable-next-line gamut/no-css-standalone

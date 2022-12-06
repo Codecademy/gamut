@@ -1,6 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { RenderResult, waitFor } from '@testing-library/react';
-import React from 'react';
 
 import { Drawer } from '..';
 

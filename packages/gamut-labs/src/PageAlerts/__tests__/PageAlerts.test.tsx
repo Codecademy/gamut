@@ -1,7 +1,8 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { RenderResult } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import * as React from 'react';
 
 import { PageAlerts } from '../PageAlerts';
 import { PageAlertsContext, PageAlertsProvider } from '../PageAlertsProvider';

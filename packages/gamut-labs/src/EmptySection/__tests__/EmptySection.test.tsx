@@ -1,7 +1,6 @@
 import { FillButton } from '@codecademy/gamut';
 import { NumberBlocks } from '@codecademy/gamut-illustrations';
 import { setupRtl } from '@codecademy/gamut-tests';
-import React from 'react';
 
 import { EmptySection } from '..';
 

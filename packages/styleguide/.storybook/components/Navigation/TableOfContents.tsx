@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import { Description } from '@storybook/addon-docs/blocks';
 import { Link, Reset } from '../Markdown/Elements';

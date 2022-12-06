@@ -1,4 +1,5 @@
-import React, { ComponentType } from 'react';
+import { ComponentType } from 'react';
+import * as React from 'react';
 import { FormState } from 'react-hook-form';
 
 import { Box, FlexBox } from '../Box';

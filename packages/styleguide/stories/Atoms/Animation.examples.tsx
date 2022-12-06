@@ -1,5 +1,6 @@
 import { Rotation, StrokeButton } from '@codecademy/gamut';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 export const RotationExample: React.FC = ({ children }) => {
   const [isRotated, setRotated] = useState(false);

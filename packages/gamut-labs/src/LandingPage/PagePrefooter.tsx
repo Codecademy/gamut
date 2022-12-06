@@ -1,5 +1,5 @@
 import { Box, FlexBox } from '@codecademy/gamut';
-import React from 'react';
+import * as React from 'react';
 
 import { CTA } from './CTA';
 import { Description } from './Description';

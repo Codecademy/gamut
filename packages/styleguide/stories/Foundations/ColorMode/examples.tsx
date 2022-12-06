@@ -31,7 +31,8 @@ import {
   ColorMode,
   usePrefersDarkMode,
 } from '@codecademy/gamut-styles/src';
-import React, { ComponentProps, useState } from 'react';
+import { ComponentProps, useState } from 'react';
+import * as React from 'react';
 
 const renderButtons = (
   variant?: ButtonProps['variant'],

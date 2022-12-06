@@ -5,7 +5,8 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
+import * as React from 'react';
 
 const SINGLE_DIRECTIONS = ['top', 'bottom', 'left', 'right'] as const;
 

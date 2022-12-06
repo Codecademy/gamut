@@ -5,7 +5,7 @@ import {
   TabList as ReachTabList,
   TabListProps as ReachTabListProps,
 } from '@reach/tabs';
-import React from 'react';
+import * as React from 'react';
 
 import { tabElementBaseProps, TabElementStyleProps } from './props';
 import { tabContainerStates, tabContainerVariants } from './styles';

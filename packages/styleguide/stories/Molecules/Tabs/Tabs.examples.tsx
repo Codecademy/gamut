@@ -14,7 +14,7 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export const TabsExample = (args: TabsProps) => {
   return (
