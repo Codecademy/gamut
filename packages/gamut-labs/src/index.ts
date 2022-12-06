@@ -29,6 +29,7 @@ export * from './InfoCard';
 export * from './Interstitial';
 export * from './LandingPage';
 export * from './LayoutMenu';
+export * as LayoutMenuVariant from './LayoutMenuVariant';
 export * from './lib/breakpointHooks';
 export * from './ListSection';
 export * from './Loading';
