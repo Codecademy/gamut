@@ -37,12 +37,12 @@ describe('NotificationBell', () => {
     expect(view.container.textContent).toBe('Bell Icon99');
   });
 
-  it('calls onClick when the button is clicked', () => {
+  it('calls onClick when the button is clicked', async () => {
     const { props, view } = renderView({
       notifications: [createStubNotification()],
     });
 
-    userEvent.click(view.getByRole('menuitem'));
+    await userEvent.click(view.getByRole('menuitem'));
 
     expect(props.onClick).toHaveBeenCalled();
   });

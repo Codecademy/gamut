@@ -48,10 +48,11 @@ describe('PageAlerts', () => {
     const expandButtons = view
       .getAllByText('Mini Chevron Down Icon')
       .map((element: HTMLElement) => element.closest('button'));
-
-    expandButtons.forEach((button) => {
-      if (button) userEvent.click(button);
-    });
+    const clickButton = async (button: HTMLButtonElement) => {
+      if (button) await userEvent.click(button);
+    };
+    const clicks = expandButtons.map(clickButton);
+    await Promise.all(clicks);
   };
 
   it('renders the alert message on the page', () => {
@@ -72,7 +73,7 @@ describe('PageAlerts', () => {
     view.getByRole('alert');
   });
 
-  it('removes the alert when the close button is clicked', () => {
+  it('removes the alert when the close button is clicked', async () => {
     const { view } = renderView({
       alerts: [{ type: 'error', message: 'This is an error alert' }],
     });
@@ -81,7 +82,7 @@ describe('PageAlerts', () => {
     const closeButton = view.getByText('Mini Delete Icon').closest('button');
     if (!closeButton) fail('Could not find close button');
 
-    userEvent.click(closeButton);
+    await userEvent.click(closeButton);
     expect(view.queryByRole('alert')).toBeFalsy();
   });
 

@@ -38,11 +38,11 @@ describe('AvatarChooser', () => {
     view.getByText(error);
   });
 
-  it('Calls onImageChanged with the uploaded image', () => {
+  it('Calls onImageChanged with the uploaded image', async () => {
     const onImageChanged = jest.fn();
     const { view } = renderView({ onImageChanged });
 
-    userEvent.upload(
+    await userEvent.upload(
       view.getByLabelText('Choose Photo') as HTMLInputElement,
       mockAvatarImageFile
     );
@@ -51,14 +51,14 @@ describe('AvatarChooser', () => {
     expect(fileList[0]).toBe(mockAvatarImageFile);
   });
 
-  it('Updates the img src when an image is uploaded', () => {
+  it('Updates the img src when an image is uploaded', async () => {
     const uploadedImageUrl = 'uploadedImageUrl';
     global.URL.createObjectURL = jest
       .fn()
       .mockImplementation(() => uploadedImageUrl);
     const { view } = renderView();
 
-    userEvent.upload(
+    await userEvent.upload(
       view.getByLabelText('Choose Photo') as HTMLInputElement,
       mockAvatarImageFile
     );

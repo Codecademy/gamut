@@ -247,7 +247,7 @@ var test = true;
       expect(document.querySelectorAll('a[target="_blank"]').length).toEqual(0);
     });
 
-    it('Allows onClicks callbacks', () => {
+    it('Allows onClicks callbacks', async () => {
       const onClick = jest.fn();
 
       renderView({
@@ -255,9 +255,7 @@ var test = true;
         text: `<a data-testid="testLink" href="http://google.com">google</a>`,
       });
 
-      act(() => {
-        userEvent.click(screen.getByText('google'));
-      });
+      await userEvent.click(screen.getByText('google'));
 
       expect(onClick).toHaveBeenCalledTimes(1);
     });

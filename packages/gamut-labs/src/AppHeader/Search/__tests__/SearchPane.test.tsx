@@ -10,38 +10,38 @@ const renderView = setupRtl(SearchPane, {
 });
 
 describe('SearchPane', () => {
-  it('calls toggleClose when the hidden background is clicked', () => {
+  it('calls toggleClose when the hidden background is clicked', async () => {
     const { props, view } = renderView();
 
-    userEvent.click(view.container.firstElementChild!);
+    await userEvent.click(view.container.firstElementChild!);
 
     expect(props.toggleSearch).toHaveBeenCalled();
   });
 
-  it('triggers a search when the form is submitted', () => {
+  it('triggers a search when the form is submitted', async () => {
     const { props, view } = renderView();
     const value = 'abc';
 
-    userEvent.type(view.getByRole('searchbox'), `${value}{enter}`);
+    await userEvent.type(view.getByRole('searchbox'), `${value}{enter}`);
 
     expect(props.onSearch).toHaveBeenCalledWith(value);
     expect(props.toggleSearch).toHaveBeenCalled();
   });
 
-  it('fires a tracking event when a term button is clicked', () => {
+  it('fires a tracking event when a term button is clicked', async () => {
     const { props, view } = renderView();
 
-    userEvent.click(view.getByText('Web Development'));
+    await userEvent.click(view.getByText('Web Development'));
 
     expect(props.onTrackingClick).toHaveBeenCalledWith(
       'popular_search_term_webDevelopment'
     );
   });
 
-  it('fires a tracking event when the help button is clicked', () => {
+  it('fires a tracking event when the help button is clicked', async () => {
     const { props, view } = renderView();
 
-    userEvent.click(view.getByText(/Help Center$/));
+    await userEvent.click(view.getByText(/Help Center$/));
 
     expect(props.onTrackingClick).toHaveBeenCalledWith('help_center');
   });
