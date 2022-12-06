@@ -1,10 +1,10 @@
 import {
   Box,
   FillButton,
-  GenericChildrenType,
   IconButton,
   Popover,
   StrokeButton,
+  WithChildrenProp,
 } from '@codecademy/gamut';
 import {
   ArrowChevronDownFilledIcon,
@@ -31,7 +31,7 @@ const HorizontalKebabIcon = styled(MiniKebabMenuIcon)(
   })
 );
 
-export interface DropdownButtonProps extends GenericChildrenType {
+export interface DropdownButtonProps extends WithChildrenProp {
   buttonType?: 'fill' | 'stroke' | 'kebab' | 'horizontalKebab';
   dropdownItems: DropdownItem[];
   align?: 'left' | 'right';

@@ -1,4 +1,4 @@
-import { Box, GenericChildrenType } from '@codecademy/gamut';
+import { Box, WithChildrenProp } from '@codecademy/gamut';
 import { system, transitionConcat } from '@codecademy/gamut-styles';
 import { ResponsiveProp } from '@codecademy/variance';
 import { useTheme } from '@emotion/react';
@@ -28,7 +28,7 @@ const HeaderHeightAreaBase = styled(Box)(
   })
 );
 
-export interface HeaderHeightAreaProps extends GenericChildrenType {
+export interface HeaderHeightAreaProps extends WithChildrenProp {
   as?: React.ElementType<any>;
   display: ResponsiveProp<'none' | 'block'>;
   title?: string;
