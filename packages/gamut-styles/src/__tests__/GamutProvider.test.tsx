@@ -1,7 +1,6 @@
 import createCache from '@emotion/cache';
 import { Global, ThemeContext } from '@emotion/react';
 import { setupEnzyme } from 'component-test-setup';
-import React from 'react';
 
 import { createEmotionCache } from '../cache';
 import { GamutProvider } from '../GamutProvider';

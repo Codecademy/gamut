@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [33.9.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.9.0...@codecademy/gamut-labs@33.9.1) (2022-12-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [33.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.12...@codecademy/gamut-labs@33.9.0) (2022-12-05)
+
+
+### Features
+
+* **LayoutMenuVariant:** create layout menu variant for experiment [#2199](https://github.com/Codecademy/gamut/issues/2199) ([160a20a](https://github.com/Codecademy/gamut/commit/160a20afdd8fd9a3c1819efd2cc4d8457f1f7f38))
+
+
+
 ### [33.8.12](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.8.11...@codecademy/gamut-labs@33.8.12) (2022-12-02)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
@@ -2096,7 +2113,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **Card:** Animation Fixes and Gamut migration
 * **Byline:** use Emotion for styles (#1464)
 * bumped ESLint packages to latest and added recommended & Jest linting
-* **BrandMono:** Remove Roboto Mono in favor of using Suisse 
+* **BrandMono:** Remove Roboto Mono in favor of using Suisse
 * **PageHero:** added functionality for PageHero to take images or videos as props
 * replace VisualTheme enum with string type union (#1166)
 * add landing page prefooter component (#1185)

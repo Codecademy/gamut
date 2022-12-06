@@ -1,13 +1,8 @@
 import { system } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import * as React from 'react';
 import {
   useIsomorphicLayoutEffect,
   useWindowScroll,

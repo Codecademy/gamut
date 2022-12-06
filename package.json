@@ -86,7 +86,7 @@
     "@wojtekmaj/enzyme-adapter-react-17": "0.6.6",
     "babel-jest": "28.1",
     "babel-plugin-macros": "3.0.1",
-    "babel-preset-codecademy": "2.3.0",
+    "babel-preset-codecademy": "6.0.1-alpha.8dfef4.0",
     "component-test-setup": "^0.3.1",
     "conventional-changelog-cli": "^2.0.34",
     "conventional-changelog-conventionalcommits": "^4.3.0",

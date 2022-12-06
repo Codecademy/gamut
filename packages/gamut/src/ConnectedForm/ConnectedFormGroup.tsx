@@ -1,6 +1,7 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import * as React from 'react';
 
 import { FormError, FormGroup, FormGroupLabel, FormGroupProps } from '..';
 import { Anchor } from '../Anchor';

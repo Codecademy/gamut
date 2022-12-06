@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import React from 'react';
+import * as React from 'react';
 
 import { GenericMarkdownProps } from '../types';
 // eslint-disable-next-line gamut/no-css-standalone

@@ -1,7 +1,7 @@
 import { Anchor } from '@codecademy/gamut';
 import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import { GlobalFooterClickHandler } from '../types';
 

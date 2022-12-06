@@ -1,5 +1,5 @@
 import { ButtonProps, CTAButton, FillButton } from '@codecademy/gamut';
-import React from 'react';
+import * as React from 'react';
 
 export interface CTAProps extends Pick<ButtonProps, 'children'> {
   href: string;

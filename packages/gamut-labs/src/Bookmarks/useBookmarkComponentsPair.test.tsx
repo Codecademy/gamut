@@ -2,7 +2,6 @@ import { MockGamutProvider } from '@codecademy/gamut-tests';
 import { cleanup, render, screen } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
 import userEvent from '@testing-library/user-event';
-import React from 'react';
 
 import { CrossDeviceItemId } from '../GlobalHeader/types';
 import { mockBookmarkParts } from './fixtures';

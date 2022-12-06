@@ -1,6 +1,6 @@
 import { timingValues } from '@codecademy/gamut-styles';
 import { motion } from 'framer-motion';
-import React from 'react';
+import * as React from 'react';
 
 import { WithChildrenProp } from '..';
 import { Box } from '../Box';

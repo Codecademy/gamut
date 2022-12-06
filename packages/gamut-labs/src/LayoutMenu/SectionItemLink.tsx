@@ -1,5 +1,5 @@
 import { Anchor, GenericChildrenType } from '@codecademy/gamut';
-import React from 'react';
+import * as React from 'react';
 
 export interface SectionItemLinkProps extends GenericChildrenType {
   onClick: (event: React.MouseEvent) => void;

@@ -5,7 +5,8 @@ import {
   FlexBox,
   TextButton,
 } from '@codecademy/gamut';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 import { AppHeaderLink } from '../../AppHeader/AppHeaderElements/AppHeaderLink';
 import { AppHeaderListItem } from '../../AppHeader/AppHeaderElements/AppHeaderListItem';

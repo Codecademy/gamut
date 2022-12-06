@@ -1,6 +1,5 @@
 import { editorColors, platformColors } from '@codecademy/gamut-styles';
 import { isString } from 'lodash';
-import React from 'react';
 
 import { Code, ColorScale } from '~styleguide/blocks';
 

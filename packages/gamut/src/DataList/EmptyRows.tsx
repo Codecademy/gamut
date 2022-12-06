@@ -1,5 +1,4 @@
 import { DotLoose } from '@codecademy/gamut-patterns';
-import React from 'react';
 
 import { FlexBox } from '../Box';
 import { FillButton } from '../Button';

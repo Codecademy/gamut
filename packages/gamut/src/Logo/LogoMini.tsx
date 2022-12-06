@@ -1,5 +1,5 @@
 import { useCurrentMode } from '@codecademy/gamut-styles';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { LogoProps, LogoSvg } from './shared';
 

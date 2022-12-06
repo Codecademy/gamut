@@ -1,7 +1,7 @@
 import { Box, GenericChildrenType, Markdown, Text } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import { PausableImage } from '../PausableImage';
 import { BaseProps } from './types';

@@ -6,7 +6,6 @@ import {
   theme,
   trueColors,
 } from '@codecademy/gamut-styles';
-import React from 'react';
 
 import { Code, ColorScale } from '~styleguide/blocks';
 

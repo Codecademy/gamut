@@ -3,7 +3,6 @@ import { render } from '@testing-library/react';
 import { act, renderHook } from '@testing-library/react-hooks';
 import userEvent from '@testing-library/user-event';
 import { times } from 'lodash';
-import React from 'react';
 
 import { CrossDeviceItemId } from '../../GlobalHeader/types';
 import { createStubNotification } from '../__fixtures__/stubs';

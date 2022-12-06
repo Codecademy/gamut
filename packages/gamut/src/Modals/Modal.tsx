@@ -1,5 +1,6 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import React, { ComponentProps, useRef, useState } from 'react';
+import { ComponentProps, useRef, useState } from 'react';
+import * as React from 'react';
 
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';

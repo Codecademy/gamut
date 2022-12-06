@@ -5,7 +5,8 @@ import {
   Text,
   TextButton,
 } from '@codecademy/gamut';
-import React, { AriaAttributes, ReactNode } from 'react';
+import { AriaAttributes, ReactNode } from 'react';
+import * as React from 'react';
 
 type TextButtonMinimumProps = AriaAttributes & {
   text: string;

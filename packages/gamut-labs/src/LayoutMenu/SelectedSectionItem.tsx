@@ -1,5 +1,5 @@
 import { Box, GenericChildrenType, Text } from '@codecademy/gamut';
-import React from 'react';
+import * as React from 'react';
 
 export const SelectedSectionItem: React.FC<GenericChildrenType> = ({
   children,
