@@ -15,7 +15,7 @@ import {
   DiagonalALoose,
   DiagonalARegular,
 } from '@codecademy/gamut-patterns';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 export const PopoverExample = (args: PopoverProps) => {
   const [open, setOpen] = useState(false);

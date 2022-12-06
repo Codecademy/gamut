@@ -8,7 +8,7 @@ import {
   Video,
   VideoProps,
 } from '@codecademy/gamut';
-import React from 'react';
+import * as React from 'react';
 
 import { PausableImage } from '../PausableImage';
 import { CTA } from './CTA';

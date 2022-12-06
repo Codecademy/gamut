@@ -1,7 +1,8 @@
 import { FillButton, HiddenText } from '@codecademy/gamut';
 import { PauseIcon, PlayIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 import Freezeframe from 'react-freezeframe';
 
 import { imageStyles } from '..';

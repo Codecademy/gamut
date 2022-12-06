@@ -5,7 +5,7 @@ import {
   TwitterIcon,
   YoutubeIcon,
 } from '@codecademy/gamut-icons';
-import React from 'react';
+import * as React from 'react';
 
 import { FooterLinkItems } from '../FooterLinks';
 

@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
+import * as React from 'react';
 import { DocsContext, Title } from '@storybook/addon-docs/blocks';
 import { Figma } from 'storybook-addon-designs/blocks';
 

@@ -7,7 +7,7 @@ import {
 } from '@codecademy/gamut-icons';
 import { ColorMode, css, theme, useColorModes } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { CSSProperties, KeyboardEvent, useContext } from 'react';
+import { createContext, CSSProperties, KeyboardEvent, useContext } from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   GroupBase,
@@ -33,7 +33,7 @@ const {
   SelectContainer,
 } = SelectDropdownElements;
 
-export const SelectDropdownContext = React.createContext<SelectDropdownContextValueTypes>(
+export const SelectDropdownContext = createContext<SelectDropdownContextValueTypes>(
   {
     currentFocusedValue: undefined,
     setCurrentFocusedValue: undefined,

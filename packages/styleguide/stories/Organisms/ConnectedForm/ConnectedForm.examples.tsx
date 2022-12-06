@@ -12,7 +12,8 @@ import {
 } from '@codecademy/gamut';
 import { MiniArrowRightIcon, TerminalIcon } from '@codecademy/gamut-icons';
 import { action } from '@storybook/addon-actions';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 // reported open Storybook issue, see https://github.com/storybookjs/storybook/issues/14539
 

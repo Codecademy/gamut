@@ -1,5 +1,5 @@
 import { Box, Card, Text } from '@codecademy/gamut';
-import React from 'react';
+import * as React from 'react';
 
 export type HubCardProps = {
   eyebrowTitle: string;

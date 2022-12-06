@@ -1,7 +1,7 @@
 import { system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import { Column } from '../../Layout/Column';
 import { GridFormSectionBreakProps } from '../types';

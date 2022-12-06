@@ -1,6 +1,5 @@
 import { FillButton } from '@codecademy/gamut';
 import { setupRtl } from '@codecademy/gamut-tests';
-import React from 'react';
 
 import { Interstitial } from '..';
 
