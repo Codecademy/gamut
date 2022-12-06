@@ -42,7 +42,10 @@ GridForm provides the following benefits:
 4. **Visual Consistency**: Aligns all input elements with the correct vertical rhythms and grid spacing
 
 <Canvas>
-  <Story name="GridForm" args={{ validation: 'onSubmit', resetOnSubmit: true }}>
+  <Story
+    name="GridForm"
+    args={{ validation: 'onSubmit', resetOnSubmit: true, target: '_parent' }}
+  >
     {(args) => (
       <GridForm
         {...args}
