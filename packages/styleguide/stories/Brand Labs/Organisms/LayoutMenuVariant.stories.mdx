@@ -4,11 +4,9 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-const { LayoutMenu, SectionItemLink } = LayoutMenuVariant;
-
 <Meta
   title={title}
-  component={LayoutMenu}
+  component={LayoutMenuVariant.LayoutMenu}
   args={{
     sections: [
       {
@@ -64,7 +62,9 @@ const { LayoutMenu, SectionItemLink } = LayoutMenuVariant;
 />
 
 <Canvas>
-  <Story name="LayoutMenu">{(args) => <LayoutMenu {...args} />}</Story>
+  <Story name="LayoutMenu">
+    {(args) => <LayoutMenuVariant.LayoutMenu {...args} />}
+  </Story>
 </Canvas>
 
 <PropsTable story="LayoutMenu" />
@@ -76,18 +76,18 @@ Additional links outside of an accordion can be added as `children`. You can use
 <Canvas>
   <Story name="With Additional Links">
     {(args) => (
-      <LayoutMenu {...args}>
+      <LayoutMenuVariant.LayoutMenu {...args}>
         <Box py={16}>
-          <SectionItemLink
+          <LayoutMenuVariant.SectionItemLink
             onClick={() =>
               (window.location.href =
                 'https://www.codecademy.com/explore/sorting-quiz')
             }
           >
             Where do I begin?
-          </SectionItemLink>
+          </LayoutMenuVariant.SectionItemLink>
         </Box>
-      </LayoutMenu>
+      </LayoutMenuVariant.LayoutMenu>
     )}
   </Story>
 </Canvas>
@@ -99,7 +99,7 @@ Another way to add additional links outside of the accordion section is to pass 
 <Canvas>
   <Story name="With Additional Links on Top and Bottom">
     {(args) => (
-      <LayoutMenu
+      <LayoutMenuVariant.LayoutMenu
         {...args}
         selectedItem="top-link"
         topLinkSections={[
@@ -118,16 +118,16 @@ Another way to add additional links outside of the accordion section is to pass 
         ]}
       >
         <Box py={16}>
-          <SectionItemLink
+          <LayoutMenuVariant.SectionItemLink
             onClick={() =>
               (window.location.href =
                 'https://www.codecademy.com/explore/sorting-quiz')
             }
           >
             Where do I begin?
-          </SectionItemLink>
+          </LayoutMenuVariant.SectionItemLink>
         </Box>
-      </LayoutMenu>
+      </LayoutMenuVariant.LayoutMenu>
     )}
   </Story>
 </Canvas>
@@ -137,7 +137,7 @@ Another way to add additional links outside of the accordion section is to pass 
 <Canvas>
   <Story name="With Set Menu Height">
     {(args) => (
-      <LayoutMenu
+      <LayoutMenuVariant.LayoutMenu
         {...args}
         menuHeight="sm"
         sections={[
@@ -264,16 +264,16 @@ Another way to add additional links outside of the accordion section is to pass 
         ]}
       >
         <Box py={16}>
-          <SectionItemLink
+          <LayoutMenuVariant.SectionItemLink
             onClick={() =>
               (window.location.href =
                 'https://www.codecademy.com/explore/sorting-quiz')
             }
           >
             Where do I begin?
-          </SectionItemLink>
+          </LayoutMenuVariant.SectionItemLink>
         </Box>
-      </LayoutMenu>
+      </LayoutMenuVariant.LayoutMenu>
     )}
   </Story>
 </Canvas>
