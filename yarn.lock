@@ -7973,10 +7973,10 @@ babel-plugin-transform-typescript-metadata@^0.3.1:
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
-babel-preset-codecademy@6.0.1-alpha.8dfef4.0:
-  version "6.0.1-alpha.8dfef4.0"
-  resolved "https://registry.npmjs.org/babel-preset-codecademy/-/babel-preset-codecademy-6.0.1-alpha.8dfef4.0.tgz#df6dd339e58b45e7fecc65a97c9b58705141750d"
-  integrity sha512-ysOx72Opnv5LwCq8zu9R6cjxmuTYWsBlHVFiDvRInFX3kNhUd/KW4HJJjId9L1T7NAlK7J+HVoeOSFXknn/bZA==
+babel-preset-codecademy@6.0.1-alpha.042681.0:
+  version "6.0.1-alpha.42681.0"
+  resolved "https://registry.npmjs.org/babel-preset-codecademy/-/babel-preset-codecademy-6.0.1-alpha.42681.0.tgz#5ed2627794660039cf60e454e75f653a2e36e06b"
+  integrity sha512-U78NYZFF1ha5dHXlxb6wsFulbNxczgTzkeYyTw2mKfuhyop+4ShVzNJuFl6TO4U7MkhBvfjIRgB5sj6sWWTAhA==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.12.1"
     "@babel/plugin-proposal-decorators" "^7.12.1"
@@ -7995,10 +7995,10 @@ babel-preset-codecademy@6.0.1-alpha.8dfef4.0:
     babel-plugin-react-anonymous-display-name "0.0.1"
     babel-plugin-transform-dynamic-import "^2.1.0"
 
-babel-preset-codecademy@^2.3.0:
-  version "2.5.0"
-  resolved "https://registry.npmjs.org/babel-preset-codecademy/-/babel-preset-codecademy-2.5.0.tgz#3d09d5876ef44bc2a58f9a00bcfd3529fbdfcf93"
-  integrity sha512-LuGg73q9EkdPNdeWa3KgzGaqqud88eH4yMRtrobcerDgfWg0P9zNz3hYRfI6qNhu0JzFpkMI5R9UoWVoJW9JKg==
+babel-preset-codecademy@6.0.1-alpha.8dfef4.0:
+  version "6.0.1-alpha.8dfef4.0"
+  resolved "https://registry.npmjs.org/babel-preset-codecademy/-/babel-preset-codecademy-6.0.1-alpha.8dfef4.0.tgz#df6dd339e58b45e7fecc65a97c9b58705141750d"
+  integrity sha512-ysOx72Opnv5LwCq8zu9R6cjxmuTYWsBlHVFiDvRInFX3kNhUd/KW4HJJjId9L1T7NAlK7J+HVoeOSFXknn/bZA==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.12.1"
     "@babel/plugin-proposal-decorators" "^7.12.1"
