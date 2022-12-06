@@ -1,5 +1,4 @@
 import { Text, TextProps } from '@codecademy/gamut';
-import React from 'react';
 
 export const elements = {
   CodeBlock: {

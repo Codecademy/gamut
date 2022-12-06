@@ -5,7 +5,8 @@ import {
   PageAlertsContext,
   PageAlertsProvider,
 } from '@codecademy/gamut-labs';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
+import * as React from 'react';
 
 export const PageAlertsExample: React.FC = () => (
   <PageAlertsProvider>

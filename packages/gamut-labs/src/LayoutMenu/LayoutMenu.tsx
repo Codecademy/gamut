@@ -7,7 +7,8 @@ import {
 } from '@codecademy/gamut';
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 import { AccordionMenu, Section, SectionItem } from './AccordionMenu';
 import { LayoutMenuSection } from './LayoutMenuSection';

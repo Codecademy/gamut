@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [62.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.0...@codecademy/styleguide@62.6.1) (2022-12-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [62.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.12...@codecademy/styleguide@62.6.0) (2022-12-05)
+
+
+### Features
+
+* **LayoutMenuVariant:** create layout menu variant for experiment [#2199](https://github.com/Codecademy/gamut/issues/2199) ([160a20a](https://github.com/Codecademy/gamut/commit/160a20afdd8fd9a3c1819efd2cc4d8457f1f7f38))
+
+
+
 ### [62.5.12](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.11...@codecademy/styleguide@62.5.12) (2022-12-02)
 
 **Note:** Version bump only for package @codecademy/styleguide
@@ -2209,7 +2226,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * progress bar theme => variant
 * converted ToolTip to Emotion (#1357)
 * bumped ESLint packages to latest and added recommended & Jest linting
-* **BrandMono:** Remove Roboto Mono in favor of using Suisse 
+* **BrandMono:** Remove Roboto Mono in favor of using Suisse
 * **Alert:** open cta in new tab by default (#1350)
 * **PageHero:** added functionality for PageHero to take images or videos as props
 * **Toggle:** refactor to emotion and add focus styles

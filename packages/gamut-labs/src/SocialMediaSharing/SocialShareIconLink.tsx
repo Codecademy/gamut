@@ -1,7 +1,7 @@
 import { Anchor, Box } from '@codecademy/gamut';
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 const IconLink = styled(Box)``.withComponent(Anchor);
 

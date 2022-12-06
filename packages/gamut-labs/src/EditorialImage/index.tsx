@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';

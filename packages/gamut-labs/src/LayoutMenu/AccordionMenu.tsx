@@ -1,7 +1,8 @@
 import { AccordionArea, Anchor, Text } from '@codecademy/gamut';
 import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 import { system, transitionConcat } from '../../../gamut-styles/dist';
 import { LayoutMenuSection } from './LayoutMenuSection';

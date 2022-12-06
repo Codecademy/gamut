@@ -1,5 +1,5 @@
 import { GenericChildrenType, Text } from '@codecademy/gamut';
-import React from 'react';
+import * as React from 'react';
 
 export interface TitleProps extends GenericChildrenType {
   isPageHeading?: boolean;

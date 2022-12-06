@@ -1,5 +1,6 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
+import * as React from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ButtonProps, createButtonComponent } from './shared';

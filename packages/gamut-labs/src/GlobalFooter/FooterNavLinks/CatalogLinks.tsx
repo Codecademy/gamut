@@ -1,7 +1,7 @@
 import { Anchor, Box } from '@codecademy/gamut';
 import { theme, themed, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import { FooterHeading } from '../FooterHeading';
 import { FooterLinkItem, FooterLinkItems } from '../FooterLinks';

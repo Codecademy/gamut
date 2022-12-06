@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { ComponentProps, forwardRef } from 'react';
+import { ComponentProps, forwardRef } from 'react';
+import * as React from 'react';
 
 import { Box, GenericChildrenType } from '..';
 import { RowEl } from './elements';

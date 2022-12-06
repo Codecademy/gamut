@@ -3,7 +3,7 @@ import { styledOptions, system, theme } from '@codecademy/gamut-styles';
 import { ResponsiveProp } from '@codecademy/variance';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 const Image = styled('img', styledOptions<'img'>())(system.layout);
 

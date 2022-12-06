@@ -1,7 +1,8 @@
 import { GenericChildrenType } from '@codecademy/gamut';
 import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { Children, useState } from 'react';
+import { Children, useState } from 'react';
+import * as React from 'react';
 
 import { PageSection, SectionButton } from '..';
 

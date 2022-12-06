@@ -1,6 +1,7 @@
 import { ColorMode, system, useCurrentMode } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { useIsomorphicLayoutEffect } from 'react-use';
 

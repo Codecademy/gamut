@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { memo, ReactElement } from 'react';
 
 import { FlexBox } from '../..';
 import { ListCol, ListHeader } from '../../List';
@@ -90,4 +90,4 @@ export const Header: HeaderComponent = ({
   );
 };
 
-export const HeaderRow = React.memo(Header) as HeaderComponent;
+export const HeaderRow = memo(Header) as HeaderComponent;

@@ -2,7 +2,8 @@ import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, system, timing, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import React, { isValidElement, useState } from 'react';
+import { isValidElement, useState } from 'react';
+import * as React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
 
 import { GenericChildrenType } from '..';

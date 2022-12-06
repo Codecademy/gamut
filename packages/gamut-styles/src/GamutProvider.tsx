@@ -5,12 +5,14 @@ import {
   Theme,
   ThemeProvider,
 } from '@emotion/react';
-import React, { useContext, useRef } from 'react';
+import { useContext, useRef } from 'react';
+import * as React from 'react';
 
 import { createEmotionCache } from './cache';
 import { Reboot, Typography } from './globals';
 import { Variables } from './globals/Variables';
 import { coreTheme } from './themes/core';
+
 export interface GamutProviderProps {
   children?: React.ReactNode;
   useGlobals?: boolean;

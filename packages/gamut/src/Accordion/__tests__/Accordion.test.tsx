@@ -1,6 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
-import React from 'react';
 import { act } from 'react-dom/test-utils';
 
 import { Accordion } from '..';

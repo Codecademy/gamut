@@ -1,7 +1,7 @@
 import { Anchor, Box, FlexBox, GridBox, Text } from '@codecademy/gamut';
 import { Colors, pxRem } from '@codecademy/gamut-styles';
 import { UserClickData } from '@codecademy/tracking';
-import React from 'react';
+import * as React from 'react';
 
 import { QuizScore } from '../QuizScore';
 import { createResumeUrlPath } from './helpers';

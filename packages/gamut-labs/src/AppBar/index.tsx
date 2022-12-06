@@ -1,6 +1,6 @@
 import { ContentContainer, GenericChildrenType } from '@codecademy/gamut';
 import cx from 'classnames';
-import React from 'react';
+import * as React from 'react';
 
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
