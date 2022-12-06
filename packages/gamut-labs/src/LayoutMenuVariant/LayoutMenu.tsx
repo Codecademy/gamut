@@ -1,4 +1,10 @@
-import { Box, Flyout, Logo, StrokeButton } from '@codecademy/gamut';
+import {
+  Box,
+  Flyout,
+  Logo,
+  StrokeButton,
+  WithChildrenProp,
+} from '@codecademy/gamut';
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
@@ -6,7 +12,7 @@ import React, { useState } from 'react';
 import { AccordionMenu, Section, SectionItem } from './AccordionMenu';
 import { LayoutMenuSection } from './LayoutMenuSection';
 
-export type LayoutMenuProps = {
+export interface LayoutMenuProps extends WithChildrenProp {
   /**
    * Accessibility label for the mobile Flyout's close button.
    */
@@ -35,7 +41,7 @@ export type LayoutMenuProps = {
    * Set fixed height for menu with overflow
    */
   menuHeight?: 'sm' | 'md' | 'lg';
-};
+}
 
 const StyleBox = styled(Box)(
   variant({
