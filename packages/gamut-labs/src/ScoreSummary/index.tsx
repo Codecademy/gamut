@@ -12,7 +12,7 @@ export interface ScoreSummaryProps {
   totalCorrect: number;
   totalQuestions: number;
   pathSlug: string;
-  trackSlug: string;
+  trackSlug?: string;
   trackingData: UserClickData;
   borderColor?: Colors;
   lighterBorderColor?: Colors;
@@ -32,7 +32,7 @@ const renderSubScores = ({
 }: {
   subScores: CorrectAnswerCountsBySubContent;
   pathSlug: string;
-  trackSlug: string;
+  trackSlug?: string;
   trackingData: UserClickData;
   trackUserClick: (data: UserClickData) => void;
 }) =>
@@ -66,7 +66,7 @@ const renderSubScores = ({
         >
           <Text fontWeight="bold">{subContentTitle}</Text>
           <FlexBox fontSize={14} minWidth="11rem" justifyContent="flex-end">
-            {subContentPercentCorrect <= 0.6 && (
+            {subContentPercentCorrect <= 0.6 && trackSlug && (
               <>
                 <Anchor
                   aria-label={`Review concepts for ${subContentTitle}`}
