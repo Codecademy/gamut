@@ -113,7 +113,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         {...rest}
         htmlFor={htmlFor}
         disabled={disabled}
-        tooltipPadding={getToolTipPadding(tooltip)}
+        tooltipPadding={tooltip ? getToolTipPadding(tooltip) : undefined}
         className={className}
         size={size}
         as={htmlFor ? 'label' : 'div'}
