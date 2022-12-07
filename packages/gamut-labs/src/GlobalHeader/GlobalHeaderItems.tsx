@@ -341,7 +341,7 @@ export const tryProForFree = (
 ): AppHeaderFillButtonItem => ({
   dataTestId: 'upgrade-link',
   id: 'try-pro',
-  text: 'Try Pro For Free',
+  text: 'Start free trial',
   href: checkoutUrl || '/pages/pro',
   trackingTarget: 'topnav_pro_trial',
   type: 'fill-button',
@@ -352,7 +352,7 @@ export const upgradeToPro = (
 ): AppHeaderFillButtonItem => ({
   dataTestId: 'upgrade-link',
   id: 'upgrade-to-pro',
-  text: 'Upgrade to Pro',
+  text: 'Upgrade plan',
   href: checkoutUrl || '/pages/pro',
   trackingTarget: 'topnav_pro_upgrade',
   type: 'fill-button',
