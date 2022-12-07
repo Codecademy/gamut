@@ -174,7 +174,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             onClick={(event) => onClick({ event, target: 'pro_membership' })}
             variant="interface"
           >
-            Pro Membership
+            Paid Memberships
           </Anchor>
         </FooterLinkItem>
         <FooterLinkItem>
