@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import { forwardRef, useState } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { PaginationButton, PaginationButtonProps } from './PaginationButton';

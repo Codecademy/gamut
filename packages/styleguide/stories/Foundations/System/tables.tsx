@@ -3,7 +3,6 @@
 import { Anchor } from '@codecademy/gamut/src';
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
 import { kebabCase } from 'lodash';
-import React from 'react';
 
 import { Code, LinkTo } from '~styleguide/blocks';
 

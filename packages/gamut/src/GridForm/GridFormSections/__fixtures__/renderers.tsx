@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import { FormContext } from '../../__fixtures__/helpers';
 import { GridFormContent, GridFormContentProps } from '../GridFormContent';

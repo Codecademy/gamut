@@ -1,7 +1,6 @@
 import { Badge } from '@codecademy/gamut';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/react';
-import React from 'react';
 
 import { createMockAppHeaderLinkItem } from '../../../mockAppHeaderItems';
 import { AppHeaderLink } from '..';

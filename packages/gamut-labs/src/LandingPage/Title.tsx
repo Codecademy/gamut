@@ -1,5 +1,5 @@
 import { Text } from '@codecademy/gamut';
-import React from 'react';
+import * as React from 'react';
 
 export type TitleProps = {
   isPageHeading?: boolean;

@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback } from 'react';
+import { memo, ReactElement, useCallback } from 'react';
 
 import { Text } from '../..';
 import { ListCol, ListRow } from '../../List';
@@ -124,4 +124,4 @@ export const Row: DataRow = ({
   );
 };
 
-export const DataRow = React.memo(Row) as DataRow;
+export const DataRow = memo(Row) as DataRow;

@@ -1,4 +1,5 @@
-import React, { HTMLAttributes, useMemo } from 'react';
+import { HTMLAttributes, useMemo } from 'react';
+import * as React from 'react';
 
 import { Box } from '../../../../Box';
 import { HTMLToReactNode } from '..';

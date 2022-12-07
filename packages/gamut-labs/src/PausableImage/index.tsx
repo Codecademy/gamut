@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import loadable from '@loadable/component';
-import React from 'react';
+import * as React from 'react';
 
 const BaseImage = loadable(() => import('./BaseImage'), {
   ssr: false,

@@ -1,7 +1,7 @@
 // eslint-disable gamut/import-paths
 import { GridForm } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export const FormLoadingExample = () => {
   const [loading, setLoading] = useState(false);

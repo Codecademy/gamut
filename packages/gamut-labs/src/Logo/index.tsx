@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import { SVGProps } from 'react';
 
 import { CodecademyLogo } from './CodecademyLogo';
 import { CodecademyPremiumLogo } from './CodecademyPremiumLogo';

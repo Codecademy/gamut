@@ -1,6 +1,6 @@
 import { styledOptions, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { forwardRef, HTMLProps, MutableRefObject } from 'react';
+import { forwardRef, HTMLProps, MutableRefObject } from 'react';
 
 export type ButtonBaseElements = HTMLAnchorElement | HTMLButtonElement;
 export type ButtonBaseRef =

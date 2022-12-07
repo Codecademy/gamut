@@ -1,5 +1,5 @@
 import { Anchor } from '@codecademy/gamut';
-import React from 'react';
+import * as React from 'react';
 
 export type SectionItemLinkProps = {
   onClick: (event: React.MouseEvent) => void;

@@ -3,7 +3,6 @@ import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { ThemeProvider } from '@emotion/react';
 import { fireEvent } from '@testing-library/react';
-import React from 'react';
 
 import { Popover, PopoverProps } from '..';
 

@@ -36,6 +36,21 @@ module.exports = {
       },
     },
   },
+  babel: async (options: { presets: any }) => {
+    return {
+      ...options,
+      presets: [
+        ...options.presets,
+        [
+          '@babel/preset-react',
+          {
+            runtime: 'automatic',
+          },
+          'preset-react-jsx-transform', // Can name this anything, just an arbitrary alias to avoid duplicate presets'
+        ],
+      ],
+    };
+  },
 
   webpackFinal: (config: any) => {
     config.module.rules = config.module.rules.concat(

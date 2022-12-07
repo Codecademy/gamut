@@ -48,7 +48,6 @@ export const formFieldTextDisabledStyles = {
 
 export const formFieldBaseDisabledStyles = {
   borderColor: 'currentColor',
-  fontStyle: 'italic',
   opacity: 1,
   ...formFieldTextDisabledStyles,
 } as const;

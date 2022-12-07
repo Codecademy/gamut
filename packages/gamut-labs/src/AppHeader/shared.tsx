@@ -3,7 +3,7 @@ import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import { css, pxRem, states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
-import React from 'react';
+import * as React from 'react';
 
 export const appHeaderMobileBreakpoint = 'lg' as const;
 
