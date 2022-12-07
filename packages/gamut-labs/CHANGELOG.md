@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.9.3...@codecademy/gamut-labs@33.10.0) (2022-12-07)
+
+
+### Features
+
+* **global header:** update copy for plan rename ([dbc69e3](https://github.com/Codecademy/gamut/commit/dbc69e3767a5e730b78d1f426c0ebef011781531))
+
+
+
 ### [33.9.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.9.2...@codecademy/gamut-labs@33.9.3) (2022-12-06)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
