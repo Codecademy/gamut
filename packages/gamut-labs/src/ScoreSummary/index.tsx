@@ -13,13 +13,13 @@ export interface ScoreSummaryProps {
   totalQuestions: number;
   pathSlug: string;
   trackSlug?: string;
-  trackingData: UserClickData;
+  trackingData?: UserClickData;
   borderColor?: Colors;
   lighterBorderColor?: Colors;
   layout?: 'column' | 'row';
   untestedSubContent?: UntestedSubContent[];
   columnLayout?: boolean;
-  trackUserClick: (data: UserClickData) => void;
+  trackUserClick?: (data: UserClickData) => void;
   description?: string;
 }
 
@@ -33,8 +33,8 @@ const renderSubScores = ({
   subScores: CorrectAnswerCountsBySubContent;
   pathSlug: string;
   trackSlug?: string;
-  trackingData: UserClickData;
-  trackUserClick: (data: UserClickData) => void;
+  trackingData?: UserClickData;
+  trackUserClick?: (data: UserClickData) => void;
 }) =>
   Object.entries(subScores).map(
     (
@@ -73,7 +73,8 @@ const renderSubScores = ({
                   mr={16}
                   href={reviewConceptsPath}
                   onClick={() =>
-                    trackUserClick({
+                    trackingData &&
+                    trackUserClick?.({
                       ...trackingData,
                       course_progress: parseFloat(
                         subContentPercentCorrect.toFixed(4)
