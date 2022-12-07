@@ -1,6 +1,6 @@
 import { breakpoints, timingValues } from '@codecademy/gamut-styles';
 import { AnimatePresence, motion } from 'framer-motion';
-import React from 'react';
+import * as React from 'react';
 import { useMedia } from 'react-use';
 
 import { Box, BoxProps } from '../Box';

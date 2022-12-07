@@ -4,7 +4,7 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from '@codecademy/gamut-icons';
-import React from 'react';
+import * as React from 'react';
 
 import type { BaseSocialShareProps } from './SocialShareIconLink';
 import { SocialShareIconLink } from './SocialShareIconLink';

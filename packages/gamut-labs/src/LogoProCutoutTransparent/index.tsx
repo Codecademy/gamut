@@ -1,5 +1,5 @@
 import { colors } from '@codecademy/gamut-styles';
-import React from 'react';
+import * as React from 'react';
 
 export type LogoProCutoutTransparent = {
   ariaLabel?: string;

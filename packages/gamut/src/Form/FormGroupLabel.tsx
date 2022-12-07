@@ -2,7 +2,8 @@ import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
 import { states, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
+import * as React from 'react';
 
 import { Box, FlexBox } from '..';
 import { ToolTip, ToolTipProps } from '../ToolTip';

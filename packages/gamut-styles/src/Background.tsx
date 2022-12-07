@@ -1,5 +1,5 @@
 import { getContrast } from 'polished';
-import React, { ComponentProps, forwardRef, useCallback, useMemo } from 'react';
+import { ComponentProps, forwardRef, useCallback, useMemo } from 'react';
 
 import {
   ColorAlias,

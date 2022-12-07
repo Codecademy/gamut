@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [62.6.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.4...@codecademy/styleguide@62.6.5) (2022-12-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.3...@codecademy/styleguide@62.6.4) (2022-12-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.2...@codecademy/styleguide@62.6.3) (2022-12-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.1...@codecademy/styleguide@62.6.2) (2022-12-06)
+
+
+### Bug Fixes
+
+* **Checkbox:** increase contrast and fix VO for checkbox labels in fi… ([60cb532](https://github.com/Codecademy/gamut/commit/60cb5328e6d1537488662a7112ca863ea2320ba4))
+
+
+
+### [62.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.0...@codecademy/styleguide@62.6.1) (2022-12-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [62.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.12...@codecademy/styleguide@62.6.0) (2022-12-05)
 
 

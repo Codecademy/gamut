@@ -1,6 +1,6 @@
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, {
+import {
   ChangeEvent,
   forwardRef,
   TextareaHTMLAttributes,

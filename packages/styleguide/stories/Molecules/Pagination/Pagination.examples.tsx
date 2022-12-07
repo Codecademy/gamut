@@ -4,7 +4,8 @@ import {
   Pagination,
   PaginationProps,
 } from '@codecademy/gamut';
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
+import * as React from 'react';
 
 export const PaginationControlledExample: React.FC<PaginationProps> = (
   props

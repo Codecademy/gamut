@@ -1,6 +1,7 @@
 import { states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
+import * as React from 'react';
 
 import { BodyPortal } from '../BodyPortal';
 import { FlexBox } from '../Box';

@@ -1,7 +1,7 @@
 import { Box, FlexBox, GridBox, Text } from '@codecademy/gamut';
 import { CheckFilledIcon, DeleteFilledIcon } from '@codecademy/gamut-icons';
 import { Colors } from '@codecademy/gamut-styles';
-import React from 'react';
+import * as React from 'react';
 
 interface QuizScoreProps {
   correctCount: number;

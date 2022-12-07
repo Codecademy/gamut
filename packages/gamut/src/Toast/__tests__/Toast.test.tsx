@@ -1,6 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, screen } from '@testing-library/react';
-import React from 'react';
 
 import { Toast } from '../Toast';
 

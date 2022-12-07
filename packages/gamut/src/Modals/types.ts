@@ -1,4 +1,5 @@
-import React, { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
+import * as React from 'react';
 
 import { OverlayProps } from '../Overlay';
 import { ModalContainer } from './elements';

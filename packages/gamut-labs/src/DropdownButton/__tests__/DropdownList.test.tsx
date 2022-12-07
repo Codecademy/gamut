@@ -2,7 +2,6 @@ import { Text } from '@codecademy/gamut';
 import { StarIcon } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/react';
-import React from 'react';
 
 import { DropdownList } from '../DropdownList';
 

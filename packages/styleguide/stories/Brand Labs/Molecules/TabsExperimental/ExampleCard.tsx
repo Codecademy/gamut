@@ -1,6 +1,6 @@
 import { FlexBox, Text } from '@codecademy/gamut';
 import { Avatar } from '@codecademy/gamut-labs';
-import React from 'react';
+import * as React from 'react';
 
 type ExampleCardProps = {
   src: string;

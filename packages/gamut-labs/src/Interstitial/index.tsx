@@ -1,6 +1,7 @@
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 
 export type InterstitialProps = {
   /** If provided, these buttons will render below the title and children in a column. */

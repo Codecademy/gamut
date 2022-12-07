@@ -1,4 +1,5 @@
-import React, { ComponentProps, useMemo } from 'react';
+import { ComponentProps, useMemo } from 'react';
+import * as React from 'react';
 import { PROP_GROUPS } from '../propMeta';
 import { ArgsTable } from '@storybook/addon-docs/blocks';
 import { isArray } from 'lodash';

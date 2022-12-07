@@ -4,8 +4,8 @@
     "url": "https://github.com/Codecademy/gamut/issues"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "14.2.2",
-    "@codecademy/variance": "0.20.4",
+    "@codecademy/gamut-styles": "14.2.3",
+    "@codecademy/variance": "0.20.5",
     "classnames": "^2.2.5"
   },
   "devDependencies": {
@@ -42,5 +42,5 @@
     "build": "nx build @codecademy/gamut-patterns"
   },
   "sideEffects": false,
-  "version": "0.8.19"
+  "version": "0.8.20"
 }
