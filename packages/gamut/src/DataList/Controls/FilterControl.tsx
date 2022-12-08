@@ -2,7 +2,8 @@ import { FilterIcon } from '@codecademy/gamut-icons';
 import { states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { kebabCase } from 'lodash';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import * as React from 'react';
 
 import { Checkbox, FlexBox, Menu, MenuItem, Text } from '../..';
 import { Anchor } from '../../Anchor';

@@ -1,6 +1,7 @@
 import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { Children, useState } from 'react';
+import { Children, useState } from 'react';
+import * as React from 'react';
 
 import { PageSection, SectionButton } from '..';
 
@@ -51,9 +52,10 @@ export const ListSection: React.FC<ListSectionProps> = ({
   };
 
   const renderListItems = () => {
-    const listItems = Children.map(children, (child) => (
-      <StyledListItem>{child}</StyledListItem>
-    ));
+    const listItems = Children.map(
+      children,
+      (child) => !!child && <StyledListItem>{child}</StyledListItem>
+    )?.filter(Boolean);
 
     if (!listItems) return null;
     if (showAll) return listItems;

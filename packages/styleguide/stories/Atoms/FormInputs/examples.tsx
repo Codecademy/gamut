@@ -10,7 +10,8 @@ import {
 } from '@codecademy/gamut';
 import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import { Background, ColorMode } from '@codecademy/gamut-styles';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 type CustomCheckboxProps = Omit<CheckboxProps, 'checked'> & {
   defaultChecked?: boolean;
@@ -247,6 +248,7 @@ export const SelectDropdownMultipleExample: React.FC = () => {
         htmlFor="multi-group-dropdown"
       >
         <SelectDropdown
+          size="small"
           onChange={handleChange}
           value={selectOptions}
           name="multi-group-dropdown"

@@ -1,10 +1,10 @@
-import { setupEnzyme } from '@codecademy/gamut-tests';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/dom';
 import { act } from 'react-dom/test-utils';
 
 import { Accordion } from '..';
 
-const renderWrapper = setupEnzyme(Accordion, {
+const renderView = setupRtl(Accordion, {
   children: <div data-testid="contents" />,
   top: 'Click me!',
 });
@@ -13,31 +13,31 @@ jest.useFakeTimers();
 
 describe('Accordion', () => {
   it('starts collapsed when initiallyExpanded is not true', () => {
-    const { wrapper } = renderWrapper({ initiallyExpanded: false });
+    const { view } = renderView({ initiallyExpanded: false });
 
-    expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(0);
+    expect(view.queryByTestId('contents')).toBeNull();
   });
 
   it('starts expanded when initiallyExpanded is true', () => {
-    const { wrapper } = renderWrapper({ initiallyExpanded: true });
+    const { view } = renderView({ initiallyExpanded: true });
 
-    expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(1);
+    view.getByTestId('contents');
   });
 
   it('expands when its button is clicked', () => {
-    const { wrapper } = renderWrapper({ initiallyExpanded: true });
+    const { view } = renderView({ initiallyExpanded: true });
 
-    wrapper.find('button').simulate('click');
+    fireEvent.click(view.getByRole('button'));
 
-    expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(1);
+    view.getByTestId('contents');
   });
 
   it('calls onClick when its button is clicked and onClick is provided', () => {
     const onClick = jest.fn();
-    const { wrapper } = renderWrapper({ onClick });
+    const { view } = renderView({ onClick });
 
     act(() => {
-      wrapper.find('button').simulate('click');
+      fireEvent.click(view.getByRole('button'));
     });
 
     expect(onClick).toHaveBeenCalledWith(true);

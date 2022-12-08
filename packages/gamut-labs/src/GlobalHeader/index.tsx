@@ -1,6 +1,7 @@
 import { Box } from '@codecademy/gamut';
 import { useTheme } from '@emotion/react';
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
+import * as React from 'react';
 
 import { AppHeader, AppHeaderMobile } from '..';
 import {

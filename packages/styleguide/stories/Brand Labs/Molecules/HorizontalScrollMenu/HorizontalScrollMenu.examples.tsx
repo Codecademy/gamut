@@ -4,7 +4,6 @@ import {
   CurriculumCard,
   HorizontalScrollMenu,
 } from '@codecademy/gamut-labs';
-import React from 'react';
 
 const courseData = [
   {

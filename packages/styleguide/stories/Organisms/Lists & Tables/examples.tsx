@@ -8,7 +8,7 @@ import {
   useLocalQuery,
 } from '@codecademy/gamut';
 import { uniq } from 'lodash';
-import React, { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 const crew = [
   {

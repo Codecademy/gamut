@@ -1,6 +1,6 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { useCurrentMode } from '@codecademy/gamut-styles';
-import React from 'react';
+import * as React from 'react';
 
 import { Text } from '../Typography';
 import {

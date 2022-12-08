@@ -8,7 +8,8 @@ import {
 } from '@codecademy/gamut';
 import { MultipleUsersIcon } from '@codecademy/gamut-icons';
 import { Background } from '@codecademy/gamut-styles';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import * as React from 'react';
 
 export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
   const target = useRef<HTMLDivElement>(null);

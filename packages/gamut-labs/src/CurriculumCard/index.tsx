@@ -8,7 +8,8 @@ import {
 } from '@codecademy/gamut';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+import * as React from 'react';
 
 import { ProLabel } from '..';
 import { TagColor } from './BottomTag/index';

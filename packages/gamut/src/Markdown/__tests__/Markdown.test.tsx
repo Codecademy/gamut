@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
-import { setupEnzyme } from '@codecademy/gamut-tests';
-import React from 'react';
-import { act } from 'react-dom/test-utils';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { act, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import * as React from 'react';
 
 import { Markdown } from '../index';
 
@@ -41,21 +42,21 @@ const checkboxMarkdown = `
 - [ ] third checkbox
 `;
 
-const renderWrapper = setupEnzyme(Markdown);
+const renderView = setupRtl(Markdown);
 
 describe('<Markdown />', () => {
   it('renders standard Markdown', () => {
-    const { wrapper } = renderWrapper({ text: basicMarkdown });
-    expect(wrapper.find('h1').length).toEqual(1);
-    expect(wrapper.find('h3').length).toEqual(1);
-    expect(wrapper.find('code').length).toEqual(1);
+    renderView({ text: basicMarkdown });
+    screen.getByRole('heading', { level: 1 });
+    expect(document.querySelectorAll('h3').length).toEqual(1);
+    expect(document.querySelectorAll('code').length).toEqual(1);
   });
 
   it('Renders html content in markdown', () => {
-    const { wrapper } = renderWrapper({ text: htmlMarkdown });
-    expect(wrapper.find('h1').length).toEqual(1);
-    expect(wrapper.find('h3').length).toEqual(1);
-    expect(wrapper.find('iframe').length).toEqual(1);
+    renderView({ text: htmlMarkdown });
+    expect(document.querySelectorAll('h1').length).toEqual(1);
+    expect(document.querySelectorAll('h3').length).toEqual(1);
+    expect(document.querySelectorAll('iframe').length).toEqual(1);
   });
 
   it('Renders custom tables in markdown', () => {
@@ -66,8 +67,10 @@ describe('<Markdown />', () => {
 | col 2 is |    centered   |   $12 |
 | col 3 is | right-aligned |    $1 |
     `;
-    const { wrapper } = renderWrapper({ text: table });
-    expect(wrapper.find('div.tableWrapper table').length).toEqual(1);
+    renderView({ text: table });
+    expect(document.querySelectorAll('div.tableWrapper table').length).toEqual(
+      1
+    );
   });
 
   it('Skips rendering custom tables in markdown when skipProcessing.table is true', () => {
@@ -78,47 +81,53 @@ describe('<Markdown />', () => {
 | col 2 is |    centered   |   $12 |
 | col 3 is | right-aligned |    $1 |
     `;
-    const { wrapper } = renderWrapper({
+    renderView({
       skipDefaultOverrides: { table: true },
       text: table,
     });
-    expect(wrapper.find('table').length).toEqual(1);
-    expect(wrapper.find('div.tableWrapper table').length).toEqual(0);
+    expect(document.querySelectorAll('table').length).toEqual(1);
+    expect(document.querySelectorAll('div.tableWrapper table').length).toEqual(
+      0
+    );
   });
 
   it('Wraps youtube iframes in a flexible container', () => {
-    const { wrapper } = renderWrapper({ text: youtubeMarkdown });
-    expect(wrapper.find('[data-testid="yt-iframe"]').length).toEqual(1);
+    renderView({ text: youtubeMarkdown });
+    screen.getByTestId('yt-iframe');
   });
 
   it('Wraps the markdown in a div by default (block)', () => {
-    const { wrapper } = renderWrapper({ text: basicMarkdown });
-    expect(wrapper.find('div.spacing-tight').length).toEqual(1);
+    renderView({ text: basicMarkdown });
+    expect(document.querySelectorAll('div.spacing-tight').length).toEqual(1);
   });
 
   it('Wraps the markdown in a span when inline', () => {
-    const { wrapper } = renderWrapper({ text: basicMarkdown, inline: true });
-    expect(wrapper.find('span.spacing-tight').length).toEqual(1);
+    renderView({ text: basicMarkdown, inline: true });
+    expect(document.querySelectorAll('span.spacing-tight').length).toEqual(1);
   });
 
   it('does not crash on a value-less attribute', () => {
-    const { wrapper } = renderWrapper({ text: `<h1 class />` });
-    expect(wrapper.find('h1').length).toEqual(1);
+    renderView({ text: `<h1 class />` });
+    expect(document.querySelectorAll('h1').length).toEqual(1);
   });
 
   it('does not render id attributes on headers with the headerIds prop disabled', () => {
-    const { wrapper } = renderWrapper({
+    renderView({
       text: basicMarkdown,
       headerIds: false,
     });
-    expect(wrapper.find('h1').get(0).props.id).toBeUndefined();
-    expect(wrapper.find('h3').get(0).props.id).toBeUndefined();
+    expect(document.querySelector('h1')?.getAttribute('id')).toBeNull();
+    expect(document.querySelector('h3')?.getAttribute('id')).toBeNull();
   });
 
   it('renders id attributes on headers by default', () => {
-    const { wrapper } = renderWrapper({ text: basicMarkdown });
-    expect(wrapper.find('h1').get(0).props.id).toEqual('heading-heading-1');
-    expect(wrapper.find('h3').get(0).props.id).toEqual('heading-heading-3');
+    renderView({ text: basicMarkdown });
+    expect(document.querySelector('h1')?.getAttribute('id')).toEqual(
+      'heading-heading-1'
+    );
+    expect(document.querySelector('h3')?.getAttribute('id')).toEqual(
+      'heading-heading-3'
+    );
   });
 
   describe('Allows passing in a custom CodeBlock override', () => {
@@ -132,7 +141,7 @@ var test = true;
       `;
 
       const CodeBlock = (props: React.HTMLProps<HTMLElement>) => (
-        <strong {...props} />
+        <strong {...props}>custom codeblock 1</strong>
       );
 
       const overrides = {
@@ -141,9 +150,10 @@ var test = true;
         },
       };
 
-      const { wrapper } = renderWrapper({ text, overrides });
-      expect(wrapper.find(CodeBlock).length).toEqual(1);
-      expect((wrapper.find(CodeBlock).props() as any).language).toEqual('js');
+      renderView({ text, overrides });
+      const codeblockEl = screen.getByText('custom codeblock 1');
+
+      expect(codeblockEl.getAttribute('language')!).toEqual('js');
     });
 
     it('When specifying a <code /> element override with a custom CodeBlock override, the CodeBlock wins', () => {
@@ -158,7 +168,7 @@ var test = true;
       `;
 
       const CodeBlock = (props: React.HTMLProps<HTMLDivElement>) => (
-        <div {...props} />
+        <div {...props}>custom codeblock 2</div>
       );
 
       const overrides = {
@@ -167,42 +177,42 @@ var test = true;
         },
         code: {
           component: (props: React.HTMLProps<HTMLElement>) => (
-            <strong {...props} />
+            <strong {...props}>custom code snippet 1</strong>
           ),
         },
       };
 
-      const { wrapper } = renderWrapper({ text, overrides });
-
-      expect(wrapper.find(overrides.CodeBlock.component).length).toEqual(1);
-      // There should only be one <code /> override because the codeblock override overwrote it
-      expect(wrapper.find(overrides.code.component).length).toEqual(1);
+      renderView({ text, overrides });
+      screen.getByText('custom codeblock 2');
+      screen.getByText('custom code snippet 1');
     });
   });
 
   it('Renders data attributes on the markdown wrapper', () => {
-    const { wrapper } = renderWrapper({
+    renderView({
       text: basicMarkdown,
       'data-testid': 'cool',
     } as any);
 
-    expect(wrapper.find('div[data-testid="cool"]').length).toEqual(1);
+    screen.getByTestId('cool');
   });
 
   it('Prevents errors on malformed image tags', () => {
-    const { wrapper } = renderWrapper({
+    renderView({
       text: `<img src="http://google.com/"></img>`,
     });
 
-    expect(wrapper.find('img').length).toEqual(1);
+    screen.getByRole('img');
   });
 
   it('Allows passing in class names', () => {
-    const { wrapper } = renderWrapper({
+    renderView({
       text: `<div class="narrative-table-container"> # Cool </div>`,
     });
 
-    expect(wrapper.find('div.narrative-table-container').length).toEqual(1);
+    expect(
+      document.querySelectorAll('div.narrative-table-container').length
+    ).toEqual(1);
   });
 
   describe('Markdown anchor links', () => {
@@ -210,43 +220,43 @@ var test = true;
       const text = '[link](/url)';
       const expectedText = `link`;
       expect(text).not.toEqual(expectedText);
-      const { wrapper } = renderWrapper({ text });
-      expect(wrapper.text().trim()).toEqual(expectedText);
+      renderView({ text });
+      screen.getByText(expectedText);
     });
 
     it('doesnt error on empty links', () => {
       const text = '[link]()';
       const expectedText = `link`;
-      const { wrapper } = renderWrapper({ text });
-      expect(wrapper.text().trim()).toEqual(expectedText);
+      renderView({ text });
+      screen.getByText(expectedText);
     });
 
     it('Adds rel="noopener" to external links', () => {
-      const { wrapper } = renderWrapper({
+      renderView({
         text: `<a href="http://google.com">google</a>`,
       });
 
-      expect(wrapper.find('a[rel="noopener"]').length).toEqual(1);
+      expect(document.querySelectorAll('a[rel="noopener"]').length).toEqual(1);
     });
 
     it('Excludes target="_blank" from in-page links', () => {
-      const { wrapper } = renderWrapper({
+      renderView({
         text: `<a href="#heading-one">heading</a>`,
       });
-      expect(wrapper.find('a').length).toEqual(1);
-      expect(wrapper.find('a[target="_blank"]').length).toEqual(0);
+      expect(document.querySelectorAll('a').length).toEqual(1);
+      expect(document.querySelectorAll('a[target="_blank"]').length).toEqual(0);
     });
 
     it('Allows onClicks callbacks', () => {
       const onClick = jest.fn();
 
-      const { wrapper } = renderWrapper({
+      renderView({
         onAnchorClick: onClick,
         text: `<a data-testid="testLink" href="http://google.com">google</a>`,
       });
 
       act(() => {
-        wrapper.find(`a[href="http://google.com"]`).simulate('click');
+        userEvent.click(screen.getByText('google'));
       });
 
       expect(onClick).toHaveBeenCalledTimes(1);
@@ -268,20 +278,28 @@ var test = true;
           component: TestComponent,
         },
       };
-      const { wrapper } = renderWrapper({ text, overrides });
-      expect(wrapper.find('strong').length).toEqual(1);
+      renderView({ text, overrides });
+      expect(document.querySelectorAll('strong').length).toEqual(1);
     });
 
     describe('Properties on overrides are handled', () => {
-      let markdown: ReturnType<typeof renderWrapper>['wrapper'];
+      type RenderedProps = {
+        name?: string;
+        isCodeBlock?: boolean;
+        isWebBrowser?: boolean;
+      };
+      const renderedProps: jest.Mock<RenderedProps> = jest.fn();
 
-      beforeAll(() => {
+      beforeEach(() => {
         const text = `
 # Heading
 
 <TestComponent name="my name" isCodeBlock="true" isWebBrowser />
         `;
-        const TestComponent = () => <strong>coooool</strong>;
+        const TestComponent = (props: any) => {
+          renderedProps(props);
+          return <strong {...props}>attr-testing-component</strong>;
+        };
 
         const overrides = {
           TestComponent: {
@@ -289,33 +307,24 @@ var test = true;
             allowedAttributes: ['name', 'isCodeBlock', 'isWebBrowser'],
           },
         };
-        const { wrapper } = renderWrapper({ text, overrides });
-        markdown = wrapper;
+        renderView({ text, overrides });
       });
 
       it('Allows passing in allowed attributes to overrides', () => {
-        expect(markdown.find('TestComponent').props()).toMatchObject({
-          name: 'my name',
-        });
+        screen.getByText('attr-testing-component');
+        expect(renderedProps.mock.calls[0][0].name).toEqual('my name');
       });
 
       it('coerces the string "true" into a boolean', () => {
-        expect(markdown).toBeDefined();
-        expect(markdown.find('TestComponent').props()).toMatchObject({
-          isCodeBlock: true,
-        });
+        expect(renderedProps.mock.calls[0][0].isCodeBlock).toEqual(true);
       });
 
       it('defaults attributes without a value to true', () => {
-        expect(markdown).toBeDefined();
-        expect(markdown.find('TestComponent').props()).toMatchObject({
-          isWebBrowser: true,
-        });
+        expect(renderedProps.mock.calls[0][0].isWebBrowser).toEqual(true);
       });
 
       it("doesn't wrap self closing elements in p tags", () => {
-        expect(markdown).toBeDefined();
-        expect(markdown.find('p > strong').length).toEqual(0);
+        expect(document.querySelectorAll('p > strong').length).toEqual(0);
       });
     });
   });
@@ -325,70 +334,57 @@ var test = true;
       const text = `This is some text with a &mdash; in the middle`;
       const expectedText = `This is some text with a \u2014 in the middle`;
       expect(text).not.toEqual(expectedText);
-      const { wrapper } = renderWrapper({ inline: true, text });
-      expect(wrapper.text().trim()).toEqual(expectedText);
+      renderView({ inline: true, text });
+      screen.getByText(expectedText);
     });
 
     it('does not replace `&mdash;` with `---`', () => {
-      const text =
-        'This is `some code with a &mdash; in` the middle and this is a &mdash;';
-      const expectedText = `This is some code with a &mdash; in the middle and this is a \u2014`;
-      expect(text).not.toEqual(expectedText);
-      const { wrapper } = renderWrapper({ inline: true, text });
-      expect(wrapper.text().trim()).toEqual(expectedText);
+      const text = '`some code with a &mdash; in`';
+      const expectedText = 'some code with a &mdash; in';
+      renderView({ inline: true, text });
+      screen.getByText(expectedText);
     });
   });
 
   describe('MarkdownCheckbox', () => {
     it('replaces checkbox inputs with the MarkdownCheckbox element', () => {
-      const { wrapper } = renderWrapper({
+      renderView({
         text: checkboxMarkdown,
       });
-
-      expect(wrapper.find('MarkdownCheckbox').length).toEqual(3);
+      screen.getAllByTestId('gamut-md-checkbox');
     });
 
     it(`doesn't render bulletpoints for checkbox elements`, () => {
-      const { wrapper } = renderWrapper({
+      renderView({
         text: ` - [ ] default checkbox
 `,
       });
 
-      expect(wrapper.find('li').props().className).toBe('checkbox-parent li');
+      expect(document.querySelector('li')?.getAttribute('class')).toBe(
+        'checkbox-parent li'
+      );
     });
 
     it('sets the default checked state correctly', () => {
-      const { wrapper } = renderWrapper({
+      renderView({
         text: ` - [x] default checked checkbox
 `,
       });
 
-      expect(wrapper.find('input').props().checked).toBe(true);
+      expect(
+        screen.getByTestId('gamut-md-checkbox')?.getAttribute('checked')
+      ).toBe('');
     });
 
-    it('allows checkboxes to be checked and unchecked', () => {
-      const { wrapper } = renderWrapper({
-        text: ` - [ ] default checkbox
-`,
-      });
-
-      const checkboxInput = wrapper.find('input');
-      expect(checkboxInput.props().checked).toBe(false);
-
-      checkboxInput.simulate('change');
-
-      expect(wrapper.find('input').props().checked).toBe(true);
-    });
-
-    it('allows  elements to intersperse checkboxes', () => {
-      const { wrapper } = renderWrapper({
+    it('allows elements to intersperse checkboxes', () => {
+      renderView({
         text: `
 - [ ] checkbox
 an element
 - [x] default checked checkbox
 `,
       });
-      expect(wrapper.find('MarkdownCheckbox').length).toEqual(2);
+      expect(screen.getAllByTestId('gamut-md-checkbox').length).toEqual(2);
     });
   });
 });

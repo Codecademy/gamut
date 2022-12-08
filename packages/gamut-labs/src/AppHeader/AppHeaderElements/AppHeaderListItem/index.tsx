@@ -1,7 +1,7 @@
 import { Box, BoxProps } from '@codecademy/gamut';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 export const StyledListItem = styled(Box)(
   css({

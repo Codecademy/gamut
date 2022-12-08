@@ -8,7 +8,7 @@ import {
 } from '@codecademy/gamut';
 import { pxRem } from '@codecademy/gamut-styles';
 import { Theme } from '@emotion/react';
-import React from 'react';
+import * as React from 'react';
 
 const cardMinWidth = 250;
 

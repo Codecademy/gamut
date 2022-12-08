@@ -3,6 +3,229 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [62.6.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.7...@codecademy/styleguide@62.6.8) (2022-12-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.6.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.6...@codecademy/styleguide@62.6.7) (2022-12-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.6.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.5...@codecademy/styleguide@62.6.6) (2022-12-08)
+
+
+### Reverts
+
+* "feat: Add pricing link option to global header" ([1208ab6](https://github.com/Codecademy/gamut/commit/1208ab679f576029da5479166309adafd12bb52d))
+
+
+
+### [62.6.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.4...@codecademy/styleguide@62.6.5) (2022-12-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.3...@codecademy/styleguide@62.6.4) (2022-12-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.2...@codecademy/styleguide@62.6.3) (2022-12-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.1...@codecademy/styleguide@62.6.2) (2022-12-06)
+
+
+### Bug Fixes
+
+* **Checkbox:** increase contrast and fix VO for checkbox labels in fi… ([60cb532](https://github.com/Codecademy/gamut/commit/60cb5328e6d1537488662a7112ca863ea2320ba4))
+
+
+
+### [62.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.0...@codecademy/styleguide@62.6.1) (2022-12-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [62.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.12...@codecademy/styleguide@62.6.0) (2022-12-05)
+
+
+### Features
+
+* **LayoutMenuVariant:** create layout menu variant for experiment [#2199](https://github.com/Codecademy/gamut/issues/2199) ([160a20a](https://github.com/Codecademy/gamut/commit/160a20afdd8fd9a3c1819efd2cc4d8457f1f7f38))
+
+
+
+### [62.5.12](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.11...@codecademy/styleguide@62.5.12) (2022-12-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.5.11](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.10...@codecademy/styleguide@62.5.11) (2022-12-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.5.10](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.9...@codecademy/styleguide@62.5.10) (2022-12-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.5.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.8...@codecademy/styleguide@62.5.9) (2022-11-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.5.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.7...@codecademy/styleguide@62.5.8) (2022-11-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.5.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.6...@codecademy/styleguide@62.5.7) (2022-11-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.5.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.5...@codecademy/styleguide@62.5.6) (2022-11-29)
+
+
+### Bug Fixes
+
+* **SelectDropdown:** fix remove + remove all  buttons + medium sizing change bug for `multiple` variant ([3e181ea](https://github.com/Codecademy/gamut/commit/3e181ea93708d00a3495968e5afe3da619b22ebd))
+
+
+
+### [62.5.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.4...@codecademy/styleguide@62.5.5) (2022-11-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.5.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.3...@codecademy/styleguide@62.5.4) (2022-11-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.2...@codecademy/styleguide@62.5.3) (2022-11-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.1...@codecademy/styleguide@62.5.2) (2022-11-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.5.0...@codecademy/styleguide@62.5.1) (2022-11-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [62.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.4.1...@codecademy/styleguide@62.5.0) (2022-11-17)
+
+
+### Features
+
+* **RatingsBar:** create RatingsBar gamut-labs component ([8f64269](https://github.com/Codecademy/gamut/commit/8f64269b12679cb63013fc1699c6bb6da3c5fa93))
+
+
+
+### [62.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.4.0...@codecademy/styleguide@62.4.1) (2022-11-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [62.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.3.0...@codecademy/styleguide@62.4.0) (2022-11-14)
+
+
+### Features
+
+* **Card:** Have outline shadow variant to inherit variant color ([5f18683](https://github.com/Codecademy/gamut/commit/5f186835cbe286dbca7fa75c52efc54991aa9940))
+
+
+
+## [62.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.2.3...@codecademy/styleguide@62.3.0) (2022-11-09)
+
+
+### Features
+
+* **ScoreSummary:** create ScoreSummary gamut-labs component ([c7ed278](https://github.com/Codecademy/gamut/commit/c7ed27890a8839ea141fcba21ddb3af11f83d8a1))
+
+
+
+### [62.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.2.2...@codecademy/styleguide@62.2.3) (2022-11-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.2.1...@codecademy/styleguide@62.2.2) (2022-11-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [62.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.2.0...@codecademy/styleguide@62.2.1) (2022-11-02)
 
 **Note:** Version bump only for package @codecademy/styleguide
@@ -2061,7 +2284,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * progress bar theme => variant
 * converted ToolTip to Emotion (#1357)
 * bumped ESLint packages to latest and added recommended & Jest linting
-* **BrandMono:** Remove Roboto Mono in favor of using Suisse 
+* **BrandMono:** Remove Roboto Mono in favor of using Suisse
 * **Alert:** open cta in new tab by default (#1350)
 * **PageHero:** added functionality for PageHero to take images or videos as props
 * **Toggle:** refactor to emotion and add focus styles

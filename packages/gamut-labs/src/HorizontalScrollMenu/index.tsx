@@ -2,7 +2,8 @@ import 'intersection-observer';
 
 import { Box, FlexBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
-import React, { Children, useEffect, useMemo, useRef } from 'react';
+import { Children, useEffect, useMemo, useRef } from 'react';
+import * as React from 'react';
 
 const ScrollContainer = styled(FlexBox)`
   scroll-snap-type: x mandatory;
@@ -13,6 +14,9 @@ const ScrollContainer = styled(FlexBox)`
 
 const ScrollItemWrapper = styled(Box)`
   scroll-snap-align: start;
+  &[aria-hidden='true'] {
+    visibility: hidden;
+  }
 `;
 
 export interface HorizontalScrollMenuProps {

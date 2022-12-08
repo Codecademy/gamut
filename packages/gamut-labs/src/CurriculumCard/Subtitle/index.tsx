@@ -1,6 +1,6 @@
 import { FlexBox, Text } from '@codecademy/gamut';
 import { capitalize } from 'lodash';
-import React from 'react';
+import * as React from 'react';
 
 import { Difficulty } from '../Difficulty';
 import { ContentDifficultyProps, DifficultyVariant } from '../Difficulty/types';

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import { GridFormField } from '../types';
 import { GridFormContent } from './GridFormContent';

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { FlexBoxProps } from '../Box/props';

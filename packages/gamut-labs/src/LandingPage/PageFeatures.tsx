@@ -5,7 +5,8 @@ import {
   FlexBox,
   LayoutGrid,
 } from '@codecademy/gamut';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
+import * as React from 'react';
 
 import { CTA } from './CTA';
 import { Description } from './Description';

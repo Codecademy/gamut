@@ -1,9 +1,9 @@
-import { Anchor, LayoutGrid, Text } from '@codecademy/gamut';
+import { Anchor, FlexBox, LayoutGrid, Text } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import { css, pxRem, states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
-import React from 'react';
+import * as React from 'react';
 
 export const appHeaderMobileBreakpoint = 'lg' as const;
 
@@ -88,3 +88,13 @@ export const StyledDropdown = styled(motion.div)(
 export const LayoutGridAntiAliased = styled(LayoutGrid)`
   -webkit-font-smoothing: antialiased;
 `;
+
+/* for Resources & Catalog menus */
+export const DescriptionSectionContainer = styled(FlexBox)(
+  css({
+    '&:focus-visible': {
+      color: 'text',
+      outline: '1px solid currentColor !important',
+    },
+  })
+);

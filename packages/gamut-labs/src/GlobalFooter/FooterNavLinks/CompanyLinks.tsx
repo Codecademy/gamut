@@ -1,6 +1,6 @@
 import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import { LogoFromSkillsoft } from '../..';
 import { footerResourcesList } from '../../lib/resourcesList';
@@ -174,7 +174,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             onClick={(event) => onClick({ event, target: 'pro_membership' })}
             variant="interface"
           >
-            Pro Membership
+            Paid Memberships
           </Anchor>
         </FooterLinkItem>
         <FooterLinkItem>

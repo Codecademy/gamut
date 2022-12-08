@@ -1,5 +1,5 @@
 import { CTAButton, FillButton } from '@codecademy/gamut';
-import React from 'react';
+import * as React from 'react';
 
 export type CTAProps = {
   href: string;

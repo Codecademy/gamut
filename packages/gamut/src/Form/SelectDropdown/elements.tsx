@@ -1,11 +1,13 @@
 import {
   ArrowChevronDownIcon,
+  CloseIcon,
   MiniChevronDownIcon,
   MiniDeleteIcon,
   SearchIcon,
 } from '@codecademy/gamut-icons';
-import { ColorMode, useColorModes } from '@codecademy/gamut-styles';
-import React from 'react';
+import { ColorMode, css, theme, useColorModes } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+import { createContext, CSSProperties, KeyboardEvent, useContext } from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   GroupBase,
@@ -18,9 +20,10 @@ import { Box } from '../../Box';
 import {
   CustomContainerProps,
   ExtendedOption,
-  ReactSelectAdditionalProps,
+  SelectDropdownContextValueTypes,
   SelectDropdownGroup,
   SizedIndicatorProps,
+  TypedReactSelectProps,
 } from './types';
 
 const {
@@ -30,7 +33,38 @@ const {
   SelectContainer,
 } = SelectDropdownElements;
 
+export const SelectDropdownContext = createContext<SelectDropdownContextValueTypes>(
+  {
+    currentFocusedValue: undefined,
+    setCurrentFocusedValue: undefined,
+    selectInputRef: undefined,
+    removeAllButtonRef: undefined,
+  }
+);
+
 export const MultiValueWithColorMode = (props: MultiValueProps) => {
+  const { currentFocusedValue, setCurrentFocusedValue } = useContext(
+    SelectDropdownContext
+  );
+
+  const { value } = (props?.data as any) ?? undefined;
+
+  if (
+    props.isFocused &&
+    setCurrentFocusedValue &&
+    currentFocusedValue !== value
+  ) {
+    setCurrentFocusedValue(value);
+  }
+
+  if (
+    !props.isFocused &&
+    setCurrentFocusedValue &&
+    currentFocusedValue === value
+  ) {
+    setCurrentFocusedValue(undefined);
+  }
+
   const [mode] = useColorModes();
   return (
     // we want the tags to be opposite color mode
@@ -40,37 +74,115 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
   );
 };
 
-export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => (
-  <MultiValueRemove {...props}>
-    <MiniDeleteIcon size={12} />
-  </MultiValueRemove>
-);
+export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {
+  const { label } = (props?.data as any) ?? '';
 
-const indicatorSizes = {
-  small: {
-    size: 12,
+  props.innerProps['aria-label'] = `Remove ${label}`;
+
+  return (
+    <MultiValueRemove {...props}>
+      <MiniDeleteIcon size={12} />
+    </MultiValueRemove>
+  );
+};
+
+const iconSize = { small: 12, medium: 16 };
+
+const indicatorIcons = {
+  smallChevron: {
+    size: iconSize.small,
     icon: MiniChevronDownIcon,
   },
-  medium: {
-    size: 16,
+  mediumChevron: {
+    size: iconSize.medium,
     icon: ArrowChevronDownIcon,
+  },
+  smallSearchable: {
+    size: iconSize.small,
+    icon: SearchIcon,
+  },
+  mediumSearchable: {
+    size: iconSize.medium,
+    icon: SearchIcon,
+  },
+  smallRemove: {
+    size: iconSize.small,
+    icon: MiniDeleteIcon,
+  },
+  mediumRemove: {
+    size: iconSize.medium,
+    icon: CloseIcon,
   },
 };
 
 export const DropdownButton = (props: SizedIndicatorProps) => {
   const { size, isSearchable } = props.selectProps;
   const color = props.isDisabled ? 'text-disabled' : 'text';
-  const { ...iconProps } = indicatorSizes[size ?? 'medium'];
-  let { icon: IndicatorIcon } = iconProps;
-
-  if (isSearchable) {
-    IndicatorIcon = SearchIcon;
-  }
+  const iconSize = size ?? 'medium';
+  const iconType = isSearchable ? 'Searchable' : 'Chevron';
+  const { ...iconProps } = indicatorIcons[`${iconSize}${iconType}`];
+  const { icon: IndicatorIcon } = iconProps;
 
   return (
     <DropdownIndicator {...props}>
       <IndicatorIcon {...iconProps} color={color} />
     </DropdownIndicator>
+  );
+};
+
+const CustomStyledRemoveAllDiv = styled('div')(
+  css({
+    '&:focus': {
+      outline: `2px solid ${theme.colors.primary}`,
+    },
+    '&:focus-visible': {
+      outline: `2px solid ${theme.colors.primary}`,
+    },
+  })
+);
+
+export const RemoveAllButton = (props: SizedIndicatorProps) => {
+  const {
+    getStyles,
+    innerProps: { ...restInnerProps },
+    selectProps: { size },
+  } = props;
+
+  const { removeAllButtonRef, selectInputRef } = useContext(
+    SelectDropdownContext
+  );
+
+  const iconSize = size ?? 'medium';
+  const { ...iconProps } = indicatorIcons[`${iconSize}Remove`];
+  const { icon: IndicatorIcon } = iconProps;
+
+  const onKeyPress = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter' && restInnerProps.onMouseDown) {
+      restInnerProps.onMouseDown(e as any);
+    }
+
+    if (
+      selectInputRef?.current &&
+      (e.key === 'ArrowRight' || e.key === 'ArrowLeft' || e.key === 'ArrowDown')
+    ) {
+      selectInputRef?.current.focus();
+    }
+  };
+
+  const style = getStyles('clearIndicator', props) as CSSProperties;
+
+  return (
+    <CustomStyledRemoveAllDiv
+      aria-label="Remove all selected"
+      tabIndex={0}
+      role="button"
+      {...restInnerProps}
+      style={style}
+      onKeyDown={onKeyPress}
+      ref={removeAllButtonRef}
+    >
+      <IndicatorIcon {...iconProps} color="text" />
+    </CustomStyledRemoveAllDiv>
   );
 };
 
@@ -80,6 +192,7 @@ export const CustomContainer = ({
 }: CustomContainerProps) => {
   // in the react-select documentation, this line is ts-ignore'd so its safe to say there's no nice way to do this.
   const { inputProps, name } = rest.selectProps as any;
+
   const value = rest.hasValue
     ? rest
         .getValue()
@@ -161,7 +274,8 @@ export function TypedReactSelect<
   IsMulti extends boolean = false,
   GroupType extends GroupBase<OptionType> = GroupBase<OptionType>
 >({
+  selectRef,
   ...props
-}: Props<OptionType, IsMulti, GroupType> & ReactSelectAdditionalProps) {
-  return <ReactSelect {...props} />;
+}: Props<OptionType, IsMulti, GroupType> & TypedReactSelectProps) {
+  return <ReactSelect {...props} ref={selectRef} />;
 }

@@ -1,41 +1,33 @@
-import { ButtonDeprecated } from '@codecademy/gamut';
-import { mount } from 'enzyme';
-import React from 'react';
+import { FillButton } from '@codecademy/gamut';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { Interstitial } from '..';
 
+const renderView = setupRtl(Interstitial, {
+  title: 'Hello, World!',
+  children: 'Hi!',
+});
+
 describe('Interstitial', () => {
-  it('renders a decoration before the title when a decoration is provided', () => {
-    const title = 'Hello, World!';
+  it('renders a decoration when a decoration is provided', () => {
+    const { view } = renderView({
+      decoration: (
+        <span role="img" aria-label="Heart eyes">
+          😍
+        </span>
+      ),
+    });
 
-    const wrapped = mount(
-      <Interstitial
-        decoration={
-          <span role="img" aria-label="Heart eyes">
-            😍
-          </span>
-        }
-        title={title}
-      />
-    );
-
-    expect(wrapped.text()).toEqual(`😍${title}`);
+    view.getByText('😍');
   });
 
-  it('renders buttons after children when buttons are provided', () => {
-    const button = 'Click me';
-    const title = 'Hello, World!';
-    const children = 'Hi!';
+  it('renders buttons when buttons are provided', () => {
+    const buttonText = 'Click me';
 
-    const wrapped = mount(
-      <Interstitial
-        buttons={[<ButtonDeprecated key="1">{button}</ButtonDeprecated>]}
-        title={title}
-      >
-        {children}
-      </Interstitial>
-    );
+    const { view } = renderView({
+      buttons: [<FillButton key="1">{buttonText}</FillButton>],
+    });
 
-    expect(wrapped.text()).toEqual(`${title}${children}${button}`);
+    view.getByRole('button', { name: `${buttonText}` });
   });
 });

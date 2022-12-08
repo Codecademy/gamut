@@ -1,5 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import React from 'react';
+import * as React from 'react';
 
 import { FormContext } from '../../__fixtures__/helpers';
 import {

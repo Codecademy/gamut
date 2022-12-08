@@ -2,7 +2,7 @@ import { Box, Text } from '@codecademy/gamut';
 import { pxRem, system, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { times, uniqueId } from 'lodash';
-import React from 'react';
+import * as React from 'react';
 
 import { getDifficultyNumber } from './helpers';
 import { ContentDifficultyProps, DifficultyString } from './types';
