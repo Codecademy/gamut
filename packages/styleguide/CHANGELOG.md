@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [62.6.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.5...@codecademy/styleguide@62.6.6) (2022-12-08)
+
+
+### Reverts
+
+* "feat: Add pricing link option to global header" ([1208ab6](https://github.com/Codecademy/gamut/commit/1208ab679f576029da5479166309adafd12bb52d))
+
+
+
 ### [62.6.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.4...@codecademy/styleguide@62.6.5) (2022-12-07)
 
 **Note:** Version bump only for package @codecademy/styleguide
