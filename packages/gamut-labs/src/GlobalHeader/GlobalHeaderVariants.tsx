@@ -15,7 +15,6 @@ import {
   logo,
   myHome,
   pricingDropdown,
-  pricingLink,
   proProfile,
   resourcesDropdown,
   signUp,
@@ -24,10 +23,6 @@ import {
   upgradeToPro,
 } from './GlobalHeaderItems';
 import { User } from './types';
-
-// Simplify pricing dropdown to a normal link for users in India
-const pricingComponent = (user?: User) =>
-  user?.geo === 'IN' ? pricingLink : pricingDropdown;
 
 const anonHeaderItems = (
   renderLogin: boolean,
@@ -40,7 +35,7 @@ const anonHeaderItems = (
     catalogDropdown(user?.hideCareerPaths),
     resourcesDropdown,
     communityDropdown,
-    ...(hidePricing ? [] : [pricingComponent(user)]),
+    ...(hidePricing ? [] : [pricingDropdown]),
     businessSolutions,
   ];
 
@@ -78,7 +73,7 @@ const anonMobileHeaderItems = (
     catalogDropdown(user?.hideCareerPaths),
     resourcesDropdown,
     communityDropdown,
-    ...(hidePricing ? [] : [pricingComponent(user)]),
+    ...(hidePricing ? [] : [pricingDropdown]),
     businessSolutions,
   ];
 
@@ -158,7 +153,7 @@ export const freeHeaderItems = (
     catalogDropdown(user?.hideCareerPaths),
     resourcesDropdown,
     communityDropdown,
-    ...(hidePricing ? [] : [pricingComponent(user)]),
+    ...(hidePricing ? [] : [pricingDropdown]),
     businessSolutions,
   ];
 
@@ -191,7 +186,7 @@ export const freeMobileHeaderItems = (
     catalogDropdown(user?.hideCareerPaths),
     resourcesDropdown,
     communityDropdown,
-    ...(hidePricing ? [] : [pricingComponent(user)]),
+    ...(hidePricing ? [] : [pricingDropdown]),
     businessSolutions,
     freeProfile(user, true),
     user.showProUpgrade
