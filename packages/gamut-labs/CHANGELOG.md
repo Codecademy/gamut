@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.10.1...@codecademy/gamut-labs@33.11.0) (2022-12-08)
+
+
+### Features
+
+* **Footer:** rename Pro Membership link ([a953881](https://github.com/Codecademy/gamut/commit/a95388155a90b5d75acc6b267ed0e52df9b70fdb))
+
+
+
 ### [33.10.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.10.0...@codecademy/gamut-labs@33.10.1) (2022-12-08)
 
 
