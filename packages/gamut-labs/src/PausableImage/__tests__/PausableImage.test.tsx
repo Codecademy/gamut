@@ -12,12 +12,15 @@ const createImg = (url: string) => ({
 });
 
 describe('PausableImage', () => {
-  it('renders a pausable image when the URL ends with .gif', () => {
+  it('renders a pausable image when the URL ends with .gif', async () => {
     const { view } = renderView({
       ...createImg('image.gif'),
     });
-
-    view.getByText('pausable');
+    // wait to find static image while loading pause ui
+    await view.findByRole('img');
+    // wait to find pause button
+    await view.findByText('Pause animated image');
+    view.getByText('Pause animated image');
   });
 
   it('renders a static image when the URL does not end with .gif', () => {
