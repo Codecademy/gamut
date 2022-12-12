@@ -28,7 +28,6 @@ const Bar = styled.div`
   display: flex;
   position: relative;
   border-radius: inherit;
-  box-shadow: ${pxRem(0.5)} 0 0 ${pxRem(0.5)};
   background-color: ${theme.colors.yellow};
 `;
 
@@ -49,6 +48,7 @@ export const RatingsBar: React.FC<RatingsBarProps> = ({
         data-testid="ratings-bar-bar"
         style={{
           width: `${Math.max(minimumPercent, percent)}%`,
+          boxShadow: percent > 0 ? `${pxRem(0.5)} 0 0 ${pxRem(0.5)}` : 'none',
         }}
       />
     </RatingsBarWrapper>
