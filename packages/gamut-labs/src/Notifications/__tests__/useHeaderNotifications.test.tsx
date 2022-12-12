@@ -1,6 +1,6 @@
 import { MockGamutProvider } from '@codecademy/gamut-tests';
 import { render } from '@testing-library/react';
-import { act, renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks';
 import userEvent from '@testing-library/user-event';
 import { times } from 'lodash';
 
@@ -69,9 +69,7 @@ describe('useHeaderNotifications', () => {
       </MockGamutProvider>
     );
 
-    act(() => {
-      userEvent.click(buttonView.getByRole('menuitem'));
-    });
+    await userEvent.click(buttonView.getByRole('menuitem'));
 
     // verify button click would tell react to update state
     expect(mockSetOpenCrossDeviceItemId).toBeCalledTimes(1);

@@ -54,7 +54,7 @@ describe('useNotificationButtons', () => {
     ]);
   });
 
-  it('renders a Clear All button when there are more notifications than the display limit and Show More was pressed', () => {
+  it('renders a Clear All button when there are more notifications than the display limit and Show More was pressed', async () => {
     const notifications = times(4, (id) =>
       createStubNotification({ id: `${id}` })
     );
@@ -66,9 +66,7 @@ describe('useNotificationButtons', () => {
       <MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>
     );
 
-    act(() => {
-      userEvent.click(view.getByText(/Show.*More/));
-    });
+    await userEvent.click(view.getByText(/Show.*More/));
 
     expect(hook.result.current).toEqual([
       expect.anything(),
@@ -77,7 +75,7 @@ describe('useNotificationButtons', () => {
     ]);
   });
 
-  it('clears notifications when the Clear All button is pressed', () => {
+  it('clears notifications when the Clear All button is pressed', async () => {
     const hook = renderHook(() =>
       useNotificationButtons({
         ...props,
@@ -91,13 +89,13 @@ describe('useNotificationButtons', () => {
       <MockGamutProvider>{hook.result.current[0]}</MockGamutProvider>
     );
 
-    userEvent.click(view.getByLabelText('Clear all 2 notifications'));
+    await userEvent.click(view.getByLabelText('Clear all 2 notifications'));
 
     expect(actions.clear).toHaveBeenCalled();
     expect(actions.track).toHaveBeenCalledWith('notification_clear_all');
   });
 
-  it('expands notifications when the Show More button is pressed', () => {
+  it('expands notifications when the Show More button is pressed', async () => {
     const notifications = times(5, (id) =>
       createStubNotification({ id: `${id}` })
     );
@@ -109,16 +107,14 @@ describe('useNotificationButtons', () => {
       <MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>
     );
 
-    act(() => {
-      userEvent.click(view.getByText(/Show.*More/));
-    });
+    await userEvent.click(view.getByText(/Show.*More/));
 
     expect(hook.result.current[2]).toEqual(notifications);
     expect(actions.read).toHaveBeenCalledWith(notifications.slice(3));
     expect(actions.track).toHaveBeenCalledWith('notification_show_more');
   });
 
-  it('contracts notifications when the Show Less button is pressed', () => {
+  it('contracts notifications when the Show Less button is pressed', async () => {
     const notifications = times(4, (id) =>
       createStubNotification({ id: `${id}` })
     );
@@ -130,9 +126,7 @@ describe('useNotificationButtons', () => {
       <MockGamutProvider>{hook.result.current[1]}</MockGamutProvider>
     );
 
-    act(() => {
-      userEvent.click(view.getByText(/Show.*More/));
-    });
+    await userEvent.click(view.getByText(/Show.*More/));
 
     act(() => {
       view.rerender(
@@ -140,9 +134,7 @@ describe('useNotificationButtons', () => {
       );
     });
 
-    act(() => {
-      userEvent.click(view.getByText(/Show.*Less/));
-    });
+    await userEvent.click(view.getByText(/Show.*Less/));
 
     expect(hook.result.current[2]).toEqual(notifications.slice(0, 3));
     expect(actions.track).toHaveBeenCalledTimes(1);

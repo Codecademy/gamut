@@ -48,56 +48,58 @@ describe('PageAlerts', () => {
     const expandButtons = view
       .getAllByText('Mini Chevron Down Icon')
       .map((element: HTMLElement) => element.closest('button'));
-
-    expandButtons.forEach((button) => {
-      if (button) userEvent.click(button);
+    const expandActions = expandButtons.map((button) => {
+      if (button) return userEvent.click(button);
+      return Promise.resolve();
     });
+
+    return Promise.all(expandActions);
   };
 
-  it('renders the alert message on the page', () => {
+  it('renders the alert message on the page', async () => {
     const { view } = renderView({
       alerts: [{ type: 'error', message: 'This is an error alert' }],
     });
-    expandAllAlerts(view);
+    await expandAllAlerts(view);
 
     view.getByText('This is an error alert');
   });
 
-  it('renders the alert with the "alert" role', () => {
+  it('renders the alert with the "alert" role', async () => {
     const { view } = renderView({
       alerts: [{ type: 'error', message: 'This is an error alert' }],
     });
-    expandAllAlerts(view);
+    await expandAllAlerts(view);
 
     view.getByRole('alert');
   });
 
-  it('removes the alert when the close button is clicked', () => {
+  it('removes the alert when the close button is clicked', async () => {
     const { view } = renderView({
       alerts: [{ type: 'error', message: 'This is an error alert' }],
     });
-    expandAllAlerts(view);
+    await expandAllAlerts(view);
 
     const closeButton = view.getByText('Mini Delete Icon').closest('button');
     if (!closeButton) fail('Could not find close button');
 
-    userEvent.click(closeButton);
+    await userEvent.click(closeButton);
     expect(view.queryByRole('alert')).toBeFalsy();
   });
 
-  it('does not display a close button when the alert is permanent', () => {
+  it('does not display a close button when the alert is permanent', async () => {
     const { view } = renderView({
       alerts: [
         { type: 'error', message: 'This is an error alert', permanent: true },
       ],
       alertMessageToClose: 'This is an error alert',
     });
-    expandAllAlerts(view);
+    await expandAllAlerts(view);
 
     expect(view.queryByText('Close Alert')).toBeFalsy();
   });
 
-  it('should not render duplicate alerts with the same message', () => {
+  it('should not render duplicate alerts with the same message', async () => {
     const { view } = renderView({
       alerts: [
         { type: 'error', message: 'This is an error alert' },
@@ -105,19 +107,19 @@ describe('PageAlerts', () => {
         { type: 'error', message: 'This is an error alert' },
       ],
     });
-    expandAllAlerts(view);
+    await expandAllAlerts(view);
 
     expect(view.getAllByText('This is an error alert')).toHaveLength(1);
   });
 
-  it('should render multiple alerts at once', () => {
+  it('should render multiple alerts at once', async () => {
     const { view } = renderView({
       alerts: [
         { type: 'error', message: 'This is an error alert' },
         { type: 'general', message: 'This is a general alert' },
       ],
     });
-    expandAllAlerts(view);
+    await expandAllAlerts(view);
 
     view.getByText('This is an error alert');
     view.getByText('This is a general alert');

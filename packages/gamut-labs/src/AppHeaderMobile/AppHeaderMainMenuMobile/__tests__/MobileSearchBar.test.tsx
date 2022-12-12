@@ -6,14 +6,14 @@ import { MobileSearchBar } from '../MobileSearchBar';
 const renderView = setupRtl(MobileSearchBar);
 
 describe('MobileSearchBar', () => {
-  it('calls onSearch with the value when the form is submitted with a value', () => {
+  it('calls onSearch with the value when the form is submitted with a value', async () => {
     const { props, view } = renderView({
       onSearch: jest.fn(),
     });
     const value = 'abc';
 
-    userEvent.type(view.getByRole('searchbox'), value);
-    userEvent.click(view.getByRole('button'));
+    await userEvent.type(view.getByRole('searchbox'), value);
+    await userEvent.click(view.getByRole('button'));
 
     expect(props.onSearch).toHaveBeenCalledWith(value);
   });

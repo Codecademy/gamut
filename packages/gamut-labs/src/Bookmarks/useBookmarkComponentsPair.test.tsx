@@ -1,6 +1,6 @@
 import { MockGamutProvider } from '@codecademy/gamut-tests';
 import { cleanup, render, screen } from '@testing-library/react';
-import { act, renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks';
 import userEvent from '@testing-library/user-event';
 
 import { CrossDeviceItemId } from '../GlobalHeader/types';
@@ -43,9 +43,7 @@ describe('useBookmarkComponentsPair', () => {
         </MockGamutProvider>
       );
 
-      act(() => {
-        userEvent.click(screen.getByText('IMA BOOKMARKS BUTTON'));
-      });
+      await userEvent.click(screen.getByText('IMA BOOKMARKS BUTTON'));
 
       // toggle bookmarks ON
       expect(mockSetOpenCrossDeviceItemId).toBeCalledTimes(1);
@@ -69,9 +67,7 @@ describe('useBookmarkComponentsPair', () => {
         </MockGamutProvider>
       );
 
-      act(() => {
-        userEvent.click(screen.getByText('IMA BOOKMARKS BUTTON'));
-      });
+      await userEvent.click(screen.getByText('IMA BOOKMARKS BUTTON'));
 
       // toggle bookmarks OFF
       expect(mockSetOpenCrossDeviceItemId).toBeCalledTimes(1);

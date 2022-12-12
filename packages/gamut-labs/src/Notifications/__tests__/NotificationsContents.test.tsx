@@ -54,7 +54,7 @@ describe('NotificationsContents', () => {
     ]);
   });
 
-  it('tracks a click for a notification when the notification is clicked', () => {
+  it('tracks a click for a notification when the notification is clicked', async () => {
     const notifications = [
       createStubNotification({ id: '1' }),
       createStubNotification({ id: '2' }),
@@ -62,12 +62,12 @@ describe('NotificationsContents', () => {
     ];
     const { props, view } = renderView({ notifications });
 
-    userEvent.click(view.getAllByRole('link')[1]);
+    await userEvent.click(view.getAllByRole('link')[1]);
 
     expect(props.actions.click).toHaveBeenCalledWith(notifications[1]);
   });
 
-  it('marks the notification as read when an unread notification is clicked', () => {
+  it('marks the notification as read when an unread notification is clicked', async () => {
     const notifications = [
       createStubNotification({ id: '1' }),
       createStubNotification({ id: '2', unread: true }),
@@ -75,12 +75,12 @@ describe('NotificationsContents', () => {
     ];
     const { props, view } = renderView({ notifications });
 
-    userEvent.click(view.getAllByRole('link')[1]);
+    await userEvent.click(view.getAllByRole('link')[1]);
 
     expect(props.actions.read).toHaveBeenCalledWith([notifications[1]]);
   });
 
-  it('does not mark the notification as read when a read notification is clicked', () => {
+  it('does not mark the notification as read when a read notification is clicked', async () => {
     const notifications = [
       createStubNotification({ id: '1' }),
       createStubNotification({ id: '2', unread: false }),
@@ -88,7 +88,7 @@ describe('NotificationsContents', () => {
     ];
     const { props, view } = renderView({ notifications });
 
-    userEvent.click(view.getAllByRole('link')[1]);
+    await userEvent.click(view.getAllByRole('link')[1]);
 
     expect(props.actions.read).not.toHaveBeenCalled();
   });
