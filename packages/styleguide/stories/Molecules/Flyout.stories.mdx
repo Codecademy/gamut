@@ -127,3 +127,52 @@ Flyouts work in light and dark `ColorModes`.
     }}
   </Story>
 </Canvas>
+
+Flyouts work in light and dark `ColorModes`.
+
+<Canvas>
+  <Story name="Flyout with background">
+    {(args) => {
+      const [expanded, setExpanded] = useState(false);
+      return (
+        <Background bg="beige">
+          <Box height="20rem" p={12}>
+            <Flyout
+              {...args}
+              expanded={expanded}
+              title="The History of Beige"
+              onClose={() => setExpanded(false)}
+            >
+              <Box textColor="text" m={16}>
+                <Text mb={4}>
+                  Beige is variously described as a pale sandy fawn color, a
+                  grayish tan, a light-grayish yellowish brown, or a pale to
+                  grayish yellow. It takes its name from French, where the word
+                  originally meant natural wool that has been neither bleached
+                  nor dyed, hence also the color of natural wool.
+                </Text>
+                <Text fontStyle="italic" color="text-disabled">
+                  Beige began to commonly be used as a term for a color in
+                  France beginning approximately 1855–60; the writer Edmond de
+                  Goncourt used it in the novel La Fille Elisa in 1877. The
+                  first recorded use of beige as a color name in English was in
+                  1887.[
+                </Text>
+              </Box>{' '}
+            </Flyout>
+            <FillButton size="small" onClick={() => setExpanded(true)}>
+              Tell me more...
+            </FillButton>
+            <FlexBox mt={16}>
+              Beige is variously described as a pale sandy fawn color, a grayish
+              tan, a light-grayish yellowish brown, or a pale to grayish yellow.
+              It takes its name from French, where the word originally meant
+              natural wool that has been neither bleached nor dyed, hence also
+              the color of natural wool.
+            </FlexBox>
+          </Box>
+        </Background>
+      );
+    }}
+  </Story>
+</Canvas>
