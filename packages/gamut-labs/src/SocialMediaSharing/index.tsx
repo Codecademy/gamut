@@ -37,6 +37,7 @@ export const createShareLink = (
 export const SOCIAL_SHARING_PLATFORMS = [
   {
     id: 'facebook',
+    displayName: 'Facebook',
     icon: FacebookIcon,
     baseUrl: 'https://www.facebook.com/dialog/share?app_id=212500508799908',
     formatShare: ({ url, message }: SocialMediaShare) => ({
@@ -47,6 +48,7 @@ export const SOCIAL_SHARING_PLATFORMS = [
   },
   {
     id: 'twitter',
+    displayName: 'Twitter',
     icon: TwitterIcon,
     baseUrl: 'https://twitter.com/intent/tweet?',
     formatShare: ({ url, message, hashtags, mention }: SocialMediaShare) => ({
@@ -58,6 +60,7 @@ export const SOCIAL_SHARING_PLATFORMS = [
   },
   {
     id: 'linkedin',
+    displayName: 'LinkedIn',
     icon: LinkedinIcon,
     baseUrl: 'https://www.linkedin.com/shareArticle',
     formatShare: ({ url }: SocialMediaShare) => ({ url }),
