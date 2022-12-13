@@ -6,12 +6,7 @@ import {
   AppHeaderItemWithHref,
 } from '../AppHeader/AppHeaderElements/types';
 import { AppHeaderSearch } from '../AppHeader/Search/useHeaderSearch';
-import { CrossDeviceBookmarkParts } from '../Bookmarks/types';
 import { AppHeaderNotificationSettings } from '../Notifications/types';
-
-type RenderFavorites = {
-  desktop: () => ReactNode;
-};
 
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
 
@@ -23,7 +18,6 @@ interface BaseHeader extends WithChildrenProp {
   className?: string;
   hidePricing?: boolean;
   search: AppHeaderSearch;
-  crossDeviceBookmarkParts?: CrossDeviceBookmarkParts;
 }
 
 export type User = {
@@ -45,7 +39,6 @@ export type User = {
 type LoggedInHeader = BaseHeader & {
   notifications: AppHeaderNotificationSettings;
   renderProfile?: RenderProfile;
-  renderFavorites?: RenderFavorites;
   user: User;
 };
 
@@ -73,7 +66,6 @@ export type LoadingHeader = BaseHeader & {
 
 export enum CrossDeviceItemId {
   NOTIFICATIONS = 'notifications',
-  BOOKMARKS = 'bookmarks',
   UNSET = '',
 }
 
