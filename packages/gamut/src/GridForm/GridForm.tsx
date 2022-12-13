@@ -81,11 +81,6 @@ export type GridFormProps<Values extends {}> = FormContextProps & {
   /**
    * Description of the submit button at the end of the form.
    */
-  target?: HTMLFormElement['target'];
-
-  /**
-   * Description of the submit button at the end of the form.
-   */
   submit: GridFormSubmitProps;
 
   /**
