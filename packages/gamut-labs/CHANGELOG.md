@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.11.2...@codecademy/gamut-labs@34.0.0) (2022-12-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **AppHeader:** Remove bookmarks and favorites
+
+### Miscellaneous Chores
+
+* **AppHeader:** Remove bookmarks and favorites ([5c80f93](https://github.com/Codecademy/gamut/commit/5c80f937956de18e3ecd53372d03e3493546b180))
+
+
+
 ### [33.11.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.11.1...@codecademy/gamut-labs@33.11.2) (2022-12-09)
 
 
