@@ -64,6 +64,7 @@ This is for use on the syllabus
     {(args) => (
       <ScoreSummary
         {...args}
+        noMaxWidth
         subScores={{
           'id-2': {
             correct: 5,
@@ -167,6 +168,7 @@ Optional description text - shown here in row layout
       <ScoreSummary
         {...args}
         description="Try again! You can take the test again in 24 hours."
+        noMaxWidth
         subScores={{
           'id-2': {
             correct: 5,

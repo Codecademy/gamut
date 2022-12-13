@@ -20,6 +20,7 @@ export interface ScoreSummaryProps {
   untestedSubContent?: UntestedSubContent[];
   trackUserClick?: (data: UserClickData) => void;
   description?: string;
+  noMaxWidth?: boolean;
 }
 
 const renderSubScores = ({
@@ -153,6 +154,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
   layout = 'row',
   trackUserClick,
   description,
+  noMaxWidth,
 }) => {
   let numOfRows = Object.entries(subScores).length;
   if (untestedSubContent) {
@@ -164,7 +166,13 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
       <GridBox
         zIndex={1}
         bg="transparent"
-        maxWidth={isRowLayout ? { _: pxRem(705), md: pxRem(500) } : pxRem(705)}
+        maxWidth={
+          noMaxWidth
+            ? ''
+            : isRowLayout
+            ? { _: pxRem(705), md: pxRem(500) }
+            : pxRem(705)
+        }
         mr={isRowLayout ? { _: 0, md: 24 } : 0}
       >
         <Box
@@ -204,7 +212,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
           </Box>
         )}
       </GridBox>
-      <FlexBox flexDirection="column" maxWidth={pxRem(705)}>
+      <FlexBox flexDirection="column" maxWidth={noMaxWidth ? '' : pxRem(705)}>
         <FlexBox
           flexDirection="column"
           borderX={1}
