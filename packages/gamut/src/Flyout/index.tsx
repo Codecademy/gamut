@@ -52,7 +52,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
       onRequestClose={onClose}
       shroud
     >
-      <Background bg={bg}>
+      <Background bg={bg} height="auto">
         <Drawer
           bottom={0}
           display="flex"
