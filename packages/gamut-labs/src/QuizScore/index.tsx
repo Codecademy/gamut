@@ -10,7 +10,6 @@ interface QuizScoreProps {
   layout?: 'row' | 'column';
   smallerFont?: boolean;
   numOfRows?: number;
-  columnLayout?: boolean;
 }
 
 export const QuizScore: React.FC<QuizScoreProps> = ({
@@ -20,24 +19,24 @@ export const QuizScore: React.FC<QuizScoreProps> = ({
   smallerFont,
   total,
   numOfRows,
-  columnLayout,
 }) => {
+  const isRowLayout = layout === 'row';
   const quizScore = total < 1 ? 0 : Math.round((correctCount / total) * 100);
   const affirmation = quizScore > 70 ? 'Great job!' : 'Practice makes perfect!';
   return (
     <GridBox
       gridTemplateColumns={
-        layout === 'row'
+        isRowLayout
           ? {
               _: 'minmax(0,1fr)',
-              sm: '1fr min-content 1fr',
+              md: '1fr min-content 1fr',
             }
           : ''
       }
-      gridTemplateRows={layout === 'row' ? '' : 'min-content 1fr min-content'}
+      gridTemplateRows={isRowLayout ? '' : 'min-content 1fr min-content'}
       fontFamily="accent"
-      gap={[32, , 24]}
-      mb={{ _: 32, sm: 16 }}
+      gap={{ _: 16, sm: 8 }}
+      mb={{ _: !isRowLayout ? 16 : 32, sm: 16 }}
     >
       <FlexBox flexDirection="column" textAlign="center">
         <Text fontSize={smallerFont ? 34 : 44}>{quizScore}%</Text>
@@ -45,20 +44,20 @@ export const QuizScore: React.FC<QuizScoreProps> = ({
       </FlexBox>
       <Box
         bg={borderColor}
-        width={layout === 'row' ? '1px' : ''}
-        height={layout === 'row' ? '' : '1px'}
+        width={isRowLayout ? '1px' : ''}
+        height={isRowLayout ? '' : '1px'}
         display={['none', , 'block']}
       />
       <GridBox
         gridTemplateColumns={
-          columnLayout && numOfRows && numOfRows > 5
+          !isRowLayout && numOfRows && numOfRows > 5
             ? 'repeat(2,minmax(0,max-content))'
             : layout === 'row'
             ? 'repeat(2,minmax(0,max-content))'
             : { _: 'repeat(2,minmax(0,max-content))', xl: '20px 1fr 20px 1fr' }
         }
         gridTemplateRows={
-          columnLayout && numOfRows && numOfRows > 5 ? '1fr 1fr' : ''
+          !isRowLayout && numOfRows && numOfRows > 5 ? '1fr 1fr' : ''
         }
         alignItems="center"
         columnGap={16}
