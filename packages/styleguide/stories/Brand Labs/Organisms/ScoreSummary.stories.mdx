@@ -64,7 +64,6 @@ This is for use on the syllabus
     {(args) => (
       <ScoreSummary
         {...args}
-        noMaxWidth
         subScores={{
           'id-2': {
             correct: 5,
@@ -158,6 +157,50 @@ This is for use on the cumulative assessment summary page
   </Story>
 </Canvas>
 
+## Row Layout with noMaxWidth
+
+Add noMaxWidth prop if you don't want a max width, for example, for use on the career journey syllabus
+
+<Canvas>
+  <Story name="Row Layout noMaxWidth">
+    {(args) => (
+      <ScoreSummary
+        {...args}
+        noMaxWidth
+        subScores={{
+          'id-2': {
+            correct: 5,
+            slug: 'becp-22-learn-html-elements-and-structure',
+            title: 'Learn HTML: Elements and Structure',
+            total: 24,
+          },
+          'id-3': {
+            correct: 4,
+            slug: 'wdcp-22-learn-css-selectors-and-visual-roles',
+            title: 'Learn CSS: Selectors and Visual Rules',
+            total: 20,
+          },
+        }}
+        totalCorrect={9}
+        totalQuestions={44}
+        trackSlug="becp-22-website-development-fundamentals"
+        untestedSubContent={[
+          {
+            id: 'id-5',
+            slug: 'wdcp-22-the-internet-and-web-development',
+            title: 'The Internet and Web Development',
+          },
+          {
+            id: 'id-6',
+            slug: 'becp-22-going-off-platform-with-html-and-css',
+            title: 'Going off-platform with HTML and CSS',
+          },
+        ]}
+      />
+    )}
+  </Story>
+</Canvas>
+
 ## Description
 
 Optional description text - shown here in row layout
@@ -168,7 +211,6 @@ Optional description text - shown here in row layout
       <ScoreSummary
         {...args}
         description="Try again! You can take the test again in 24 hours."
-        noMaxWidth
         subScores={{
           'id-2': {
             correct: 5,
