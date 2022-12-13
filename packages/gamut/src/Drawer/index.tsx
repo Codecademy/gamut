@@ -17,7 +17,6 @@ export interface DrawerProps extends Omit<BoxProps, 'width'> {
 export const Drawer: React.FC<DrawerProps> = ({
   children,
   expanded,
-  bg,
   ...props
 }) => {
   const isDesktop = useMedia(`(min-width: ${breakpoints.sm})`);
@@ -38,7 +37,7 @@ export const Drawer: React.FC<DrawerProps> = ({
           {...props}
         >
           <Box
-            bg={bg}
+            bg="background-current"
             height="100%"
             left="0"
             position="absolute"
