@@ -67,9 +67,8 @@ const renderSubScores = ({
       });
 
       return (
-        <ListRow>
+        <ListRow key={subContentId}>
           <FlexBox
-            key={subContentId}
             px={16}
             py={8}
             borderWidth={1}
@@ -131,9 +130,8 @@ const renderUntestedSubContent = ({
   >
     {untestedSubContent.map(({ id, title }, i) => {
       return (
-        <ListRow>
+        <ListRow key={id}>
           <FlexBox
-            key={id}
             borderWidth={1}
             borderWidthTop={i === 0 ? 0 : 1}
             borderStyle="solid"
