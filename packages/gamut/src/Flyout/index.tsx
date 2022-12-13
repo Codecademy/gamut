@@ -52,38 +52,37 @@ export const Flyout: React.FC<FlyoutProps> = ({
       onRequestClose={onClose}
       shroud
     >
-      <Background bg={bg}>
-        <Drawer
-          bottom={0}
-          display="flex"
-          expanded={expanded}
-          flexDirection={openFrom === 'left' ? 'row' : 'row-reverse'}
-          position="fixed"
-          top={0}
-          {...{ [openFrom]: 0 }}
+      <Drawer
+        bg={bg}
+        bottom={0}
+        display="flex"
+        expanded={expanded}
+        flexDirection={openFrom === 'left' ? 'row' : 'row-reverse'}
+        position="fixed"
+        top={0}
+        {...{ [openFrom]: 0 }}
+      >
+        <Text
+          as="h2"
+          fontSize={22}
+          mb={8}
+          ml={16}
+          mt={24}
+          mr={40}
+          maxWidth="100%"
         >
-          <Text
-            as="h2"
-            fontSize={22}
-            mb={8}
-            ml={16}
-            mt={24}
-            mr={40}
-            maxWidth="100%"
-          >
-            {title}
-          </Text>
-          <IconButton
-            aria-label={closeLabel}
-            icon={MiniDeleteIcon}
-            onClick={onClose}
-            position="absolute"
-            top="1rem"
-            right="0.5rem"
-          />
-          {children}
-        </Drawer>
-      </Background>
+          {title}
+        </Text>
+        <IconButton
+          aria-label={closeLabel}
+          icon={MiniDeleteIcon}
+          onClick={onClose}
+          position="absolute"
+          top="1rem"
+          right="0.5rem"
+        />
+        {children}
+      </Drawer>
     </Overlay>
   );
 };
