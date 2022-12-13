@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "allowJs": true,
+    "allowJs": false,
     "module": "commonjs",
     "outDir": "./dist",
     "types": ["jest", "node"]
