@@ -1,4 +1,12 @@
-import { Anchor, Box, FlexBox, GridBox, Text } from '@codecademy/gamut';
+import {
+  Anchor,
+  Box,
+  FlexBox,
+  GridBox,
+  List,
+  ListRow,
+  Text,
+} from '@codecademy/gamut';
 import { Colors, pxRem } from '@codecademy/gamut-styles';
 import { UserClickData } from '@codecademy/tracking';
 import * as React from 'react';
@@ -29,14 +37,16 @@ const renderSubScores = ({
   trackSlug,
   trackingData,
   trackUserClick,
+  isRowLayout,
 }: {
   subScores: CorrectAnswerCountsBySubContent;
   pathSlug: string;
   trackSlug?: string;
   trackingData?: UserClickData;
   trackUserClick?: (data: UserClickData) => void;
-}) =>
-  Object.entries(subScores).map(
+  isRowLayout: boolean;
+}) => {
+  return Object.entries(subScores).map(
     (
       [
         subContentId,
@@ -57,47 +67,53 @@ const renderSubScores = ({
       });
 
       return (
-        <FlexBox
-          key={subContentId}
-          borderTop={i !== 0 ? 1 : 'none'}
-          px={16}
-          py={8}
-          justifyContent="space-between"
-        >
-          <Text fontWeight="bold">{subContentTitle}</Text>
-          <FlexBox fontSize={14} minWidth="11rem" justifyContent="flex-end">
-            {subContentPercentCorrect <= 0.6 && trackSlug && (
-              <>
-                <Anchor
-                  aria-label={`Review concepts for ${subContentTitle}`}
-                  mr={16}
-                  href={reviewConceptsPath}
-                  onClick={() =>
-                    trackingData &&
-                    trackUserClick?.({
-                      ...trackingData,
-                      course_progress: parseFloat(
-                        subContentPercentCorrect.toFixed(4)
-                      ),
-                      href: reviewConceptsPath,
-                      module_id: subContentId,
-                    })
-                  }
-                >
-                  Review Concepts
-                </Anchor>{' '}
-              </>
-            )}
-            <Text
-              aria-label={`${subContentCorrect} out of ${subContentTotal} correct`}
-            >
-              {`${subContentCorrect} / ${subContentTotal}`}
-            </Text>
+        <ListRow>
+          <FlexBox
+            key={subContentId}
+            px={16}
+            py={8}
+            borderWidth={1}
+            borderWidthTop={!isRowLayout || i > 0 ? 0 : 1}
+            borderStyle="solid"
+            justifyContent="space-between"
+            width="100%"
+          >
+            <Text fontWeight="bold">{subContentTitle}</Text>
+            <FlexBox fontSize={14} minWidth="11rem" justifyContent="flex-end">
+              {subContentPercentCorrect <= 0.6 && trackSlug && (
+                <>
+                  <Anchor
+                    aria-label={`Review concepts for ${subContentTitle}`}
+                    mr={16}
+                    href={reviewConceptsPath}
+                    onClick={() =>
+                      trackingData &&
+                      trackUserClick?.({
+                        ...trackingData,
+                        course_progress: parseFloat(
+                          subContentPercentCorrect.toFixed(4)
+                        ),
+                        href: reviewConceptsPath,
+                        module_id: subContentId,
+                      })
+                    }
+                  >
+                    Review Concepts
+                  </Anchor>{' '}
+                </>
+              )}
+              <Text
+                aria-label={`${subContentCorrect} out of ${subContentTotal} correct`}
+              >
+                {`${subContentCorrect} / ${subContentTotal}`}
+              </Text>
+            </FlexBox>
           </FlexBox>
-        </FlexBox>
+        </ListRow>
       );
     }
   );
+};
 
 const renderUntestedSubContent = ({
   untestedSubContent,
@@ -115,27 +131,30 @@ const renderUntestedSubContent = ({
   >
     {untestedSubContent.map(({ id, title }, i) => {
       return (
-        <FlexBox
-          key={id}
-          borderWidth={1}
-          borderWidthTop={i === 0 ? 0 : 1}
-          borderStyle="solid"
-          borderColor={lighterBorderColor}
-          px={16}
-          py={8}
-          justifyContent="space-between"
-          color={lighterBorderColor}
-        >
-          <Text flexGrow={1}>{title}</Text>
+        <ListRow>
           <FlexBox
-            fontSize={14}
-            alignItems="center"
-            minWidth="6.5rem"
-            justifyContent="flex-end"
+            key={id}
+            borderWidth={1}
+            borderWidthTop={i === 0 ? 0 : 1}
+            borderStyle="solid"
+            borderColor={lighterBorderColor}
+            px={16}
+            py={8}
+            justifyContent="space-between"
+            color={lighterBorderColor}
+            width="100%"
           >
-            <Text fontFamily="accent">Not tested</Text>
+            <Text flexGrow={1}>{title}</Text>
+            <FlexBox
+              fontSize={14}
+              alignItems="center"
+              minWidth="6.5rem"
+              justifyContent="flex-end"
+            >
+              <Text fontFamily="accent">Not tested</Text>
+            </FlexBox>
           </FlexBox>
-        </FlexBox>
+        </ListRow>
       );
     })}
   </FlexBox>
@@ -201,28 +220,22 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
         )}
       </GridBox>
       <FlexBox flexDirection="column" maxWidth={pxRem(705)}>
-        <FlexBox
-          flexDirection="column"
-          borderX={1}
-          borderBottom={1}
-          borderTop={isRowLayout ? 1 : undefined}
-        >
+        <List variant="plain">
           {renderSubScores({
             subScores,
             pathSlug,
             trackSlug,
             trackingData,
             trackUserClick,
+            isRowLayout,
           })}
-        </FlexBox>
-        <GridBox bg="transparent">
           {untestedSubContent &&
             untestedSubContent?.length > 0 &&
             renderUntestedSubContent({
               untestedSubContent,
               lighterBorderColor,
             })}
-        </GridBox>
+        </List>
       </FlexBox>
     </GridBox>
   );
