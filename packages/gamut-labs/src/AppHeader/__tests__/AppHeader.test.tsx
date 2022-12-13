@@ -3,7 +3,6 @@ import { FaviconIcon } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/react';
 
-import { mockBookmarkParts } from '../../Bookmarks/fixtures';
 import { CrossDeviceItemId } from '../../GlobalHeader/types';
 import { AppHeader, AppHeaderProps } from '..';
 
@@ -134,11 +133,6 @@ const fillButtonProps: AppHeaderProps = {
   },
 };
 
-const appHeaderPropsWithBookmarkParts: AppHeaderProps = {
-  ...defaultProps,
-  crossDeviceBookmarkParts: mockBookmarkParts,
-};
-
 const renderView = setupRtl(AppHeader);
 
 describe('AppHeader', () => {
@@ -176,37 +170,5 @@ describe('AppHeader', () => {
     const { view } = renderView(fillButtonProps);
     fireEvent.click(view.getByText('FillButton'));
     expect(action).toHaveBeenCalledTimes(1);
-  });
-
-  describe('bookmarks', () => {
-    describe('NO crossDeviceBookmarkParts prop provided', () => {
-      it('does NOT render a bookmarks button or content', () => {
-        const { view } = renderView({
-          ...appHeaderPropsWithBookmarkParts,
-          crossDeviceBookmarkParts: undefined,
-        });
-        expect(view.queryByText('IMA BOOKMARKS BUTTON')).toBeNull();
-        expect(view.queryByText('DESKTOP BOOKMARKS CONTENT')).toBeNull();
-      });
-    });
-
-    describe('crossDeviceBookmarkParts prop IS provided', () => {
-      it('renders the button but does NOT render bookmarks content if openCrossDeviceItemId is NOT set to bookmarks', () => {
-        const { view } = renderView(appHeaderPropsWithBookmarkParts);
-
-        view.getByText('IMA BOOKMARKS BUTTON');
-        expect(view.queryByText('DESKTOP BOOKMARKS CONTENT')).toBeNull();
-      });
-
-      it('renders both the button and bookmarks content if openCrossDeviceItemId is set to bookmarks', () => {
-        const { view } = renderView({
-          ...appHeaderPropsWithBookmarkParts,
-          openCrossDeviceItemId: CrossDeviceItemId.BOOKMARKS,
-        });
-
-        view.getByText('IMA BOOKMARKS BUTTON');
-        view.getByText('DESKTOP BOOKMARKS CONTENT');
-      });
-    });
   });
 });

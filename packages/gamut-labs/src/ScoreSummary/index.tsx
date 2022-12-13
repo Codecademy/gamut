@@ -12,14 +12,14 @@ export interface ScoreSummaryProps {
   totalCorrect: number;
   totalQuestions: number;
   pathSlug: string;
-  trackSlug: string;
-  trackingData: UserClickData;
+  trackSlug?: string;
+  trackingData?: UserClickData;
   borderColor?: Colors;
   lighterBorderColor?: Colors;
   layout?: 'column' | 'row';
   untestedSubContent?: UntestedSubContent[];
   columnLayout?: boolean;
-  trackUserClick: (data: UserClickData) => void;
+  trackUserClick?: (data: UserClickData) => void;
   description?: string;
 }
 
@@ -32,9 +32,9 @@ const renderSubScores = ({
 }: {
   subScores: CorrectAnswerCountsBySubContent;
   pathSlug: string;
-  trackSlug: string;
-  trackingData: UserClickData;
-  trackUserClick: (data: UserClickData) => void;
+  trackSlug?: string;
+  trackingData?: UserClickData;
+  trackUserClick?: (data: UserClickData) => void;
 }) =>
   Object.entries(subScores).map(
     (
@@ -66,14 +66,15 @@ const renderSubScores = ({
         >
           <Text fontWeight="bold">{subContentTitle}</Text>
           <FlexBox fontSize={14} minWidth="11rem" justifyContent="flex-end">
-            {subContentPercentCorrect <= 0.6 && (
+            {subContentPercentCorrect <= 0.6 && trackSlug && (
               <>
                 <Anchor
                   aria-label={`Review concepts for ${subContentTitle}`}
                   mr={16}
                   href={reviewConceptsPath}
                   onClick={() =>
-                    trackUserClick({
+                    trackingData &&
+                    trackUserClick?.({
                       ...trackingData,
                       course_progress: parseFloat(
                         subContentPercentCorrect.toFixed(4)

@@ -81,15 +81,11 @@ function getAppHeaderItems(
     case 'free':
       return mobile
         ? freeMobileHeaderItems(props.user, hidePricing)
-        : freeHeaderItems(
-            props.user,
-            hidePricing,
-            props.renderFavorites?.desktop
-          );
+        : freeHeaderItems(props.user, hidePricing);
     case 'pro':
       return mobile
         ? proMobileHeaderItems(props.user)
-        : proHeaderItems(props.user, props.renderFavorites?.desktop);
+        : proHeaderItems(props.user);
     case 'loading':
       return mobile ? loadingMobileHeaderItems : loadingHeaderItems;
   }
@@ -112,8 +108,6 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     CrossDeviceItemId.UNSET
   );
 
-  const { crossDeviceBookmarkParts } = props;
-
   return (
     <Box as="header" position="sticky" top={0} zIndex={theme.elements.headerZ}>
       <AppHeader
@@ -132,7 +126,6 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         isAnon={props.type === 'anon'}
         openCrossDeviceItemId={openCrossDeviceItemId}
         setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
-        crossDeviceBookmarkParts={crossDeviceBookmarkParts}
       />
       <AppHeaderMobile
         action={combinedAction}
@@ -147,7 +140,6 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         isAnon={props.type === 'anon'}
         openCrossDeviceItemId={openCrossDeviceItemId}
         setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
-        crossDeviceBookmarkParts={crossDeviceBookmarkParts}
       />
       {props.children}
     </Box>

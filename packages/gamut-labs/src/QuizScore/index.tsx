@@ -22,7 +22,7 @@ export const QuizScore: React.FC<QuizScoreProps> = ({
   numOfRows,
   columnLayout,
 }) => {
-  const quizScore = total < 1 ? 0 : Math.floor((correctCount / total) * 100);
+  const quizScore = total < 1 ? 0 : Math.round((correctCount / total) * 100);
   const affirmation = quizScore > 70 ? 'Great job!' : 'Practice makes perfect!';
   return (
     <GridBox
