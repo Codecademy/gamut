@@ -1,5 +1,4 @@
 import { Alert, BodyPortal, ContentContainer } from '@codecademy/gamut';
-import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import * as React from 'react';
