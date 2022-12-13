@@ -1,5 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { Background, Colors } from '@codecademy/gamut-styles';
+import { Colors } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 import { IconButton } from '../Button';
