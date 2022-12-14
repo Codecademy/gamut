@@ -154,7 +154,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
   layout = 'row',
   trackUserClick,
   description,
-  noMaxWidth,
+  noMaxWidth = false,
 }) => {
   let numOfRows = Object.entries(subScores).length;
   if (untestedSubContent) {
@@ -179,9 +179,9 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
           px={{ _: 24, xs: 32 }}
           pt={24}
           pb={8}
-          display={!isRowLayout ? 'flex' : { _: 'flex', md: 'block' }}
-          flexDirection={!isRowLayout ? 'column' : { _: 'column', md: 'row' }}
-          justifyContent={!isRowLayout ? 'center' : { _: 'center', md: '' }}
+          display={isRowLayout ? { _: 'flex', md: 'block' } : 'flex'}
+          flexDirection={isRowLayout ? { _: 'column', md: 'row' } : 'column'}
+          justifyContent={isRowLayout ? { _: 'center', md: '' } : 'center'}
           border={1}
         >
           <QuizScore
