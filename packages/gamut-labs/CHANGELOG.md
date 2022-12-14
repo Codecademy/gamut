@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.0...@codecademy/gamut-labs@34.0.1) (2022-12-14)
+
+
+### Bug Fixes
+
+* update width of page alert to match page contents ([d421306](https://github.com/Codecademy/gamut/commit/d4213064400c8f8a631e38beefc082f94fd9732d))
+
+
+
 ## [34.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.11.2...@codecademy/gamut-labs@34.0.0) (2022-12-13)
 
 
