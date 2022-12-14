@@ -21,6 +21,7 @@ export const QuizScore: React.FC<QuizScoreProps> = ({
   numOfRows,
 }) => {
   const isRowLayout = layout === 'row';
+  const moreThan5Rows = !isRowLayout && numOfRows && numOfRows > 5;
   const quizScore = total < 1 ? 0 : Math.round((correctCount / total) * 100);
   const affirmation = quizScore > 70 ? 'Great job!' : 'Practice makes perfect!';
   return (
@@ -50,15 +51,13 @@ export const QuizScore: React.FC<QuizScoreProps> = ({
       />
       <GridBox
         gridTemplateColumns={
-          !isRowLayout && numOfRows && numOfRows > 5
+          moreThan5Rows
             ? 'repeat(2,minmax(0,max-content))'
             : layout === 'row'
             ? 'repeat(2,minmax(0,max-content))'
             : { _: 'repeat(2,minmax(0,max-content))', xl: '20px 1fr 20px 1fr' }
         }
-        gridTemplateRows={
-          !isRowLayout && numOfRows && numOfRows > 5 ? '1fr 1fr' : ''
-        }
+        gridTemplateRows={moreThan5Rows ? '1fr 1fr' : ''}
         alignItems="center"
         columnGap={16}
         justifyContent="center"
