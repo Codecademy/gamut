@@ -1,4 +1,5 @@
 {
+  "name": "@codecademy/gamut-styles",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-styles/src",
   "projectType": "library",
@@ -20,7 +21,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/gamut-styles"],
+      "outputs": ["{workspaceRoot}/coverage/packages/gamut-styles"],
       "options": {
         "jestConfig": "packages/gamut-styles/jest.config.ts",
         "passWithNoTests": false

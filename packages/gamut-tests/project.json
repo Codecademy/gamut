@@ -1,4 +1,5 @@
 {
+  "name": "@codecademy/gamut-tests",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-tests/src",
   "projectType": "library",
@@ -19,7 +20,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/gamut-tests"],
+      "outputs": ["{workspaceRoot}/coverage/packages/gamut-tests"],
       "options": {
         "jestConfig": "packages/gamut-tests/jest.config.ts",
         "passWithNoTests": true

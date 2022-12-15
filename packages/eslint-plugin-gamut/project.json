@@ -1,4 +1,5 @@
 {
+  "name": "eslint-plugin-gamut",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/eslint-plugin-gamut/src",
   "projectType": "library",
@@ -15,7 +16,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/eslint-plugin-gamut"],
+      "outputs": ["{workspaceRoot}/coverage/packages/eslint-plugin-gamut"],
       "options": {
         "jestConfig": "packages/eslint-plugin-gamut/jest.config.ts",
         "passWithNoTests": true

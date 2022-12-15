@@ -1,4 +1,5 @@
 {
+  "name": "@codecademy/monaco",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/monaco/src",
   "projectType": "library",
@@ -20,7 +21,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/monaco"],
+      "outputs": ["{workspaceRoot}/coverage/packages/monaco"],
       "options": {
         "jestConfig": "packages/monaco/jest.config.ts",
         "passWithNoTests": true

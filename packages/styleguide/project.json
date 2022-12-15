@@ -1,4 +1,5 @@
 {
+  "name": "@codecademy/styleguide",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/styleguide/stories",
   "projectType": "application",
@@ -18,7 +19,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/styleguide"],
+      "outputs": ["{workspaceRoot}/coverage/packages/styleguide"],
       "options": {
         "jestConfig": "packages/styleguide/jest.config.ts",
         "passWithNoTests": true
