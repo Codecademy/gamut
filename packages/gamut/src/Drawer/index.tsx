@@ -28,7 +28,6 @@ export const Drawer: React.FC<DrawerProps> = ({
         <DrawerBase
           animate={{ width: fullWidth }}
           aria-expanded={expanded}
-          bg="background"
           exit={{ width: 0 }}
           initial={{ width: 0 }}
           overflowX="hidden"
@@ -38,6 +37,7 @@ export const Drawer: React.FC<DrawerProps> = ({
           {...props}
         >
           <Box
+            bg="background-current"
             height="100%"
             left="0"
             position="absolute"

@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [62.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.7.0...@codecademy/styleguide@62.7.1) (2022-12-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [62.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.11...@codecademy/styleguide@62.7.0) (2022-12-15)
+
+
+### Features
+
+* **Flyout:** Added optional background prop ([#2627](https://github.com/Codecademy/gamut/issues/2627)) ([ad14636](https://github.com/Codecademy/gamut/commit/ad14636cd35831bb661d6351ed605b4dc25a4930))
+
+
+
+### [62.6.11](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.10...@codecademy/styleguide@62.6.11) (2022-12-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [62.6.10](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.9...@codecademy/styleguide@62.6.10) (2022-12-13)
 
 **Note:** Version bump only for package @codecademy/styleguide
