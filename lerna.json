@@ -3,7 +3,6 @@
   "npmClient": "yarn",
   "exact": true,
   "useWorkspaces": true,
-  "useNx": true,
   "packages": ["packages/*"],
   "command": {
     "publish": {

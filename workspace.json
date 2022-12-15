@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "eslint-plugin-gamut": "packages/eslint-plugin-gamut",
     "gamut": "packages/gamut",
     "gamut-icons": "packages/gamut-icons",
     "gamut-illustrations": "packages/gamut-illustrations",
@@ -14,7 +15,6 @@
     "markdown-overrides": "packages/markdown-overrides",
     "monaco": "packages/monaco",
     "styleguide": "packages/styleguide",
-    "variance": "packages/variance",
-    "eslint-plugin-gamut": "packages/eslint-plugin-gamut"
+    "variance": "packages/variance"
   }
 }

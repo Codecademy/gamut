@@ -1,7 +1,7 @@
 {
+  "name": "gamut-kit",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-kit",
   "projectType": "library",
-  "tags": [],
-  "name": "gamut-kit"
+  "tags": []
 }
