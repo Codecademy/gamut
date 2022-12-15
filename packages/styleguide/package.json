@@ -1,5 +1,5 @@
 {
-  "name": "@codecademy/styleguide",
+  "name": "styleguide",
   "description": "Styleguide & Component library for codecademy.com",
   "version": "62.7.1",
   "author": "Codecademy Engineering",

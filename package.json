@@ -24,7 +24,7 @@
     "build-all": "yarn build",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
-    "build-storybook": "nx run styleguide:build-storybook && lerna run copy-storybook",
+    "build-storybook": "nx run styleguide:build-storybook && nx run styleguide:copy-storybook",
     "deploy": "cp -r ./dist/static/* ./dist/docs && gh-pages -b gh-pages -d dist"
   },
   "lint-staged": {
@@ -66,6 +66,7 @@
     "@nrwl/nx-cloud": "15.0.2",
     "@nrwl/jest": "15.3.3",
     "@nrwl/react": "15.3.3",
+    "@nrwl/web": "15.3.3",
     "@svgr/cli": "5.5.0",
     "@testing-library/dom": "^8.11.1",
     "@testing-library/jest-dom": "^5.16.1",
