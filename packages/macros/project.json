@@ -1,5 +1,5 @@
 {
-  "name": "@codecademy/macros",
+  "name": "macros",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/macros/lib",
   "projectType": "library",

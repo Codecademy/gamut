@@ -1,5 +1,5 @@
 {
-  "name": "@codecademy/markdown-overrides",
+  "name": "markdown-overrides",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/markdown-overrides/src",
   "projectType": "library",

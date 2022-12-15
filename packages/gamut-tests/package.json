@@ -33,7 +33,7 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "build": "nx build @codecademy/gamut-tests"
+    "build": "nx build gamut-tests"
   },
   "types": "./dist/index.d.ts"
 }

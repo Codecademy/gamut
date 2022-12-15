@@ -14,7 +14,7 @@
     "utils.scss"
   ],
   "scripts": {
-    "build": "nx build @codecademy/gamut-styles"
+    "build": "nx build gamut-styles"
   },
   "repository": {
     "type": "git",

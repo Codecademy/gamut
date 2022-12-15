@@ -1,5 +1,5 @@
 {
-  "name": "@codecademy/monaco",
+  "name": "monaco",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/monaco/src",
   "projectType": "library",

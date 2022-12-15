@@ -1,5 +1,5 @@
 {
-  "name": "@codecademy/gamut-patterns",
+  "name": "gamut-patterns",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-patterns/src",
   "projectType": "library",

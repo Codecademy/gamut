@@ -53,7 +53,7 @@
     "verify": "tsc --noEmit",
     "compile": "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
     "build:watch": "yarn build && onchange ./src -- yarn build",
-    "build": "nx build @codecademy/gamut"
+    "build": "nx build gamut"
   },
   "license": "MIT",
   "devDependencies": {

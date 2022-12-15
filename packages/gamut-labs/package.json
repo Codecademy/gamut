@@ -59,7 +59,7 @@
   "scripts": {
     "verify": "tsc --noEmit",
     "build:watch": "yarn build && onchange ./src -- yarn build",
-    "build": "nx build @codecademy/gamut-labs"
+    "build": "nx build gamut-labs"
   },
   "license": "MIT",
   "publishConfig": {

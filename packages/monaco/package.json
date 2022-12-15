@@ -31,7 +31,7 @@
   },
   "scripts": {
     "build:watch": "yarn build && onchange ./src -- yarn build",
-    "build": "nx build @codecademy/monaco"
+    "build": "nx build monaco"
   },
   "license": "MIT",
   "publishConfig": {

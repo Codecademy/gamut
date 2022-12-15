@@ -13,7 +13,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "nx build @codecademy/markdown-overrides"
+    "build": "nx build markdown-overrides"
   },
   "peerDependencies": {
     "react": ">=17.0.2",

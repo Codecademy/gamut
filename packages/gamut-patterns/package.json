@@ -39,7 +39,7 @@
   },
   "scripts": {
     "format": "svgo -f ./src/svg --pretty --config=.svgo.yml",
-    "build": "nx build @codecademy/gamut-patterns"
+    "build": "nx build gamut-patterns"
   },
   "sideEffects": false,
   "version": "0.8.20"
