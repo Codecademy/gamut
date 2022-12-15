@@ -4,13 +4,15 @@ jobs:
   format:
     runs-on: ubuntu-latest
     steps:
-      - uses: Codecademy/run-on-yarn@v1
+      - uses: Codecademy/run-on-yarn@v1.2
+        with:
+          node-version: 16
       - run: yarn format:verify
 
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: Codecademy/run-on-yarn@v1
+      - uses: Codecademy/run-on-yarn@v1.2
         with:
           node-version: 16
       - run: yarn build
