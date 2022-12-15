@@ -20,5 +20,6 @@
     "./**/*.tsx",
     "./**/*.ts",
     "../../packages/gamut-styles/dist/typings/theme.d.ts"
-  ]
+  ],
+  "exclude": ["jest.config.ts"]
 }

@@ -12,5 +12,6 @@
     "jsx": "react-jsx",
     "outDir": "./dist",
     "rootDir": "./src"
-  }
+  },
+  "exclude": ["jest.config.ts"]
 }
