@@ -18,9 +18,9 @@ export interface ScoreSummaryProps {
   lighterBorderColor?: Colors;
   layout?: 'column' | 'row';
   untestedSubContent?: UntestedSubContent[];
-  columnLayout?: boolean;
   trackUserClick?: (data: UserClickData) => void;
   description?: string;
+  noMaxWidth?: boolean;
 }
 
 const renderSubScores = ({
@@ -152,9 +152,9 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
   borderColor = 'white',
   lighterBorderColor = 'navy-400',
   layout = 'row',
-  columnLayout = false,
   trackUserClick,
   description,
+  noMaxWidth = false,
 }) => {
   let numOfRows = Object.entries(subScores).length;
   if (untestedSubContent) {
@@ -162,20 +162,26 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
   }
   const isRowLayout = layout === 'row';
   return (
-    <GridBox gridTemplateColumns={isRowLayout ? '2fr 3fr' : ''}>
+    <GridBox gridTemplateColumns={isRowLayout ? { _: '', md: '2fr 3fr' } : ''}>
       <GridBox
         zIndex={1}
         bg="transparent"
-        maxWidth={isRowLayout ? pxRem(500) : pxRem(705)}
-        mr={isRowLayout ? 24 : 0}
+        maxWidth={
+          noMaxWidth
+            ? ''
+            : isRowLayout
+            ? { _: pxRem(705), md: pxRem(500) }
+            : pxRem(705)
+        }
+        mr={isRowLayout ? { _: 0, md: 24 } : 0}
       >
         <Box
-          px={isRowLayout ? [12, 24, 32] : [24, 32, 64, 96]}
+          px={{ _: 24, xs: 32 }}
           pt={24}
           pb={8}
-          display={columnLayout ? 'flex' : 'block'}
-          flexDirection={columnLayout ? 'column' : 'row'}
-          justifyContent={columnLayout ? 'center' : ''}
+          display={isRowLayout ? { _: 'flex', md: 'block' } : 'flex'}
+          flexDirection={isRowLayout ? { _: 'column', md: 'row' } : 'column'}
+          justifyContent={isRowLayout ? { _: 'center', md: '' } : 'center'}
           border={1}
         >
           <QuizScore
@@ -185,27 +191,33 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
             total={totalQuestions}
             smallerFont
             numOfRows={numOfRows}
-            columnLayout={columnLayout}
           />
         </Box>
         {description && (
           <Box
             p={16}
-            pb={isRowLayout ? 0 : 16}
-            border={isRowLayout ? 'none' : 1}
+            pb={isRowLayout ? { _: 16, md: 0 } : 16}
+            border={
+              isRowLayout
+                ? {
+                    _: 1,
+                    md: 'none',
+                  }
+                : 1
+            }
             borderTop="none"
-            textAlign={isRowLayout ? 'center' : 'left'}
+            textAlign={isRowLayout ? { _: 'left', md: 'center' } : 'left'}
           >
             <Text fontSize={14}>{description}</Text>
           </Box>
         )}
       </GridBox>
-      <FlexBox flexDirection="column" maxWidth={pxRem(705)}>
+      <FlexBox flexDirection="column" maxWidth={noMaxWidth ? '' : pxRem(705)}>
         <FlexBox
           flexDirection="column"
           borderX={1}
           borderBottom={1}
-          borderTop={isRowLayout ? 1 : undefined}
+          borderTop={isRowLayout ? { _: undefined, md: 1 } : undefined}
         >
           {renderSubScores({
             subScores,
