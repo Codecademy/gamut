@@ -69,7 +69,7 @@
     "@svgr/cli": "5.5.0",
     "@testing-library/dom": "^8.11.1",
     "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "13.4.0",
+    "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/classnames": "2.2.10",
@@ -77,8 +77,8 @@
     "@types/invariant": "2.2.29",
     "@types/konami-code-js": "^0.8.0",
     "@types/lodash": "4.14.168",
-    "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.9",
+    "@types/react": "^17",
+    "@types/react-dom": "^17",
     "@types/react-test-renderer": "^17.0.1",
     "@types/stylis": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
@@ -131,4 +131,3 @@
   },
   "packageManager": "yarn@1.22.10"
 }
-
