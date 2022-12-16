@@ -66,6 +66,7 @@ const renderSubScores = ({
           px={16}
           py={8}
           justifyContent="space-between"
+          alignItems="center"
         >
           <FlexBox alignItems="center">
             {colorfulIcons ? (
@@ -183,7 +184,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
   const isRowLayout = layout === 'row';
   return (
     <GridBox gridTemplateColumns={isRowLayout ? { _: '', md: '2fr 3fr' } : ''}>
-      <GridBox
+      <Box
         zIndex={1}
         bg="transparent"
         display="inline"
@@ -232,7 +233,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
             <Text fontSize={14}>{description}</Text>
           </Box>
         )}
-      </GridBox>
+      </Box>
       <FlexBox flexDirection="column" maxWidth={noMaxWidth ? '' : pxRem(705)}>
         <FlexBox
           flexDirection="column"
