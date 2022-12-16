@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [51.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.6.0...@codecademy/gamut@51.6.1) (2022-12-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [51.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.5.2...@codecademy/gamut@51.6.0) (2022-12-15)
+
+
+### Features
+
+* **Flyout:** Added optional background prop ([#2627](https://github.com/Codecademy/gamut/issues/2627)) ([ad14636](https://github.com/Codecademy/gamut/commit/ad14636cd35831bb661d6351ed605b4dc25a4930))
+
+
+
 ### [51.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.5.1...@codecademy/gamut@51.5.2) (2022-12-06)
 
 
