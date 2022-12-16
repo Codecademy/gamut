@@ -38,7 +38,6 @@ export const Drawer: React.FC<DrawerProps> = ({
         >
           <Box
             bg="background-current"
-            height="100%"
             left="0"
             position="absolute"
             maxWidth="100%"
