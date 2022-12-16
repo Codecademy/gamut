@@ -1,24 +1,24 @@
 import { Box, FlexBox, GridBox, Text } from '@codecademy/gamut';
 import { CheckFilledIcon, DeleteFilledIcon } from '@codecademy/gamut-icons';
-import { Colors } from '@codecademy/gamut-styles';
+import { Colors, platformColors } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 interface QuizScoreProps {
   correctCount: number;
   total: number;
-  borderColor?: Colors;
   layout?: 'row' | 'column';
   smallerFont?: boolean;
   numOfRows?: number;
+  colorfulIcons?: boolean;
 }
 
 export const QuizScore: React.FC<QuizScoreProps> = ({
-  borderColor = 'white',
   correctCount,
   layout = 'row',
   smallerFont,
   total,
   numOfRows,
+  colorfulIcons,
 }) => {
   const isRowLayout = layout === 'row';
   const moreThan5Rows = !isRowLayout && numOfRows && numOfRows > 5;
@@ -44,10 +44,11 @@ export const QuizScore: React.FC<QuizScoreProps> = ({
         <Text fontSize={14}>{affirmation}</Text>
       </FlexBox>
       <Box
-        bg={borderColor}
-        width={isRowLayout ? '1px' : ''}
-        height={isRowLayout ? '' : '1px'}
-        display={['none', , 'block']}
+        borderRight={1}
+        borderBottom={1}
+        width="100%"
+        height="100%"
+        display={{ _: 'none', xs: 'block' }}
       />
       <GridBox
         gridTemplateColumns={
@@ -63,13 +64,21 @@ export const QuizScore: React.FC<QuizScoreProps> = ({
         justifyContent="center"
         display={total === correctCount ? 'flex' : 'grid'}
       >
-        <CheckFilledIcon aria-hidden size={24} />
+        <Text
+          color={
+            colorfulIcons ? (platformColors.mint['500'] as Colors) : 'inherit'
+          }
+        >
+          <CheckFilledIcon aria-hidden size={24} />
+        </Text>
         <Text fontSize={smallerFont ? 16 : 22} lineHeight={2 as any}>
           {correctCount} correct
         </Text>
         {correctCount < total && (
           <>
-            <DeleteFilledIcon aria-hidden size={24} />
+            <Text color={colorfulIcons ? ('#FA4359' as Colors) : 'inherit'}>
+              <DeleteFilledIcon aria-hidden size={24} />
+            </Text>
             <Text fontSize={smallerFont ? 16 : 22} lineHeight={2 as any}>{`${
               total - correctCount
             } to work on`}</Text>

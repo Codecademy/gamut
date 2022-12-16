@@ -1,5 +1,6 @@
 import { Anchor, Box, FlexBox, GridBox, Text } from '@codecademy/gamut';
-import { Colors, pxRem } from '@codecademy/gamut-styles';
+import { CheckFilledIcon, DeleteFilledIcon } from '@codecademy/gamut-icons';
+import { Colors, platformColors, pxRem } from '@codecademy/gamut-styles';
 import { UserClickData } from '@codecademy/tracking';
 import * as React from 'react';
 
@@ -14,13 +15,13 @@ export interface ScoreSummaryProps {
   pathSlug: string;
   trackSlug?: string;
   trackingData?: UserClickData;
-  borderColor?: Colors;
   lighterBorderColor?: Colors;
   layout?: 'column' | 'row';
   untestedSubContent?: UntestedSubContent[];
   trackUserClick?: (data: UserClickData) => void;
   description?: string;
   noMaxWidth?: boolean;
+  colorfulIcons?: boolean;
 }
 
 const renderSubScores = ({
@@ -29,12 +30,14 @@ const renderSubScores = ({
   trackSlug,
   trackingData,
   trackUserClick,
+  colorfulIcons,
 }: {
   subScores: CorrectAnswerCountsBySubContent;
   pathSlug: string;
   trackSlug?: string;
   trackingData?: UserClickData;
   trackUserClick?: (data: UserClickData) => void;
+  colorfulIcons?: boolean;
 }) =>
   Object.entries(subScores).map(
     (
@@ -64,7 +67,24 @@ const renderSubScores = ({
           py={8}
           justifyContent="space-between"
         >
-          <Text fontWeight="bold">{subContentTitle}</Text>
+          <FlexBox alignItems="center">
+            {colorfulIcons ? (
+              subContentPercentCorrect > 0.7 ? (
+                <Text
+                  height="1rem"
+                  mr={12}
+                  color={platformColors.mint['500'] as Colors}
+                >
+                  <CheckFilledIcon />
+                </Text>
+              ) : (
+                <Text height="1rem" color={'#FA4359' as Colors} mr={12}>
+                  <DeleteFilledIcon />
+                </Text>
+              )
+            ) : null}
+            <Text fontWeight="bold">{subContentTitle}</Text>
+          </FlexBox>
           <FlexBox fontSize={14} minWidth="11rem" justifyContent="flex-end">
             {subContentPercentCorrect <= 0.6 && trackSlug && (
               <>
@@ -149,12 +169,12 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
   trackSlug,
   trackingData,
   untestedSubContent,
-  borderColor = 'white',
   lighterBorderColor = 'navy-400',
   layout = 'row',
   trackUserClick,
   description,
   noMaxWidth = false,
+  colorfulIcons = false,
 }) => {
   let numOfRows = Object.entries(subScores).length;
   if (untestedSubContent) {
@@ -166,6 +186,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
       <GridBox
         zIndex={1}
         bg="transparent"
+        display="inline"
         maxWidth={
           noMaxWidth
             ? ''
@@ -185,12 +206,12 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
           border={1}
         >
           <QuizScore
-            borderColor={borderColor}
             correctCount={totalCorrect}
             layout={isRowLayout ? 'column' : 'row'}
             total={totalQuestions}
             smallerFont
             numOfRows={numOfRows}
+            colorfulIcons={colorfulIcons}
           />
         </Box>
         {description && (
@@ -225,6 +246,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
             trackSlug,
             trackingData,
             trackUserClick,
+            colorfulIcons,
           })}
         </FlexBox>
         <GridBox bg="transparent">

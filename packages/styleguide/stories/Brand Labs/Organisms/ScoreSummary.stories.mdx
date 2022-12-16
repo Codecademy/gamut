@@ -65,17 +65,29 @@ This is for use on the syllabus
       <ScoreSummary
         {...args}
         subScores={{
-          'id-2': {
+          'id-1': {
             correct: 5,
             slug: 'becp-22-learn-html-elements-and-structure',
             title: 'Learn HTML: Elements and Structure',
             total: 24,
           },
-          'id-3': {
+          'id-2': {
             correct: 4,
             slug: 'wdcp-22-learn-css-selectors-and-visual-roles',
             title: 'Learn CSS: Selectors and Visual Rules',
             total: 20,
+          },
+          'id-3': {
+            correct: 2,
+            slug: 'wdcp-22-learn-javascript-syntax-objects',
+            title: 'Learn JavaScript Syntax: Objects',
+            total: 17,
+          },
+          'id-4': {
+            correct: 2,
+            slug: 'wdcp-22-learn-javascript-syntax-arrays',
+            title: 'Learn JavaScript Syntax: Arrays',
+            total: 5,
           },
         }}
         totalCorrect={9}
@@ -325,6 +337,44 @@ Optional description text - shown here in column layout
               'Practice JavaScript Syntax: Arrays, Loops, Objects, Iterators',
           },
         ]}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Colorful Icons
+
+<Canvas>
+  <Story name="Colorful Icons">
+    {(args) => (
+      <ScoreSummary
+        {...args}
+        colorfulIcons
+        totalCorrect={18}
+        totalQuestions={26}
+        layout="column"
+        subScores={{
+          'id-2': {
+            correct: 5,
+            slug: 'becp-22-learn-html-elements-and-structure',
+            title: 'Learn HTML: Elements and Structure',
+            total: 10,
+          },
+          'id-3': {
+            correct: 5,
+            slug: 'wdcp-22-learn-css-selectors-and-visual-roles',
+            title: 'Learn CSS: Selectors and Visual Rules',
+            total: 6,
+          },
+          'id-1': {
+            correct: 8,
+            slug: 'wdcp-22-learn-javascript-syntax-objects',
+            title: 'Learn JavaScript Syntax: Objects',
+            total: 10,
+          },
+        }}
+        trackSlug={undefined}
+        untestedSubContent={[]}
       />
     )}
   </Story>
