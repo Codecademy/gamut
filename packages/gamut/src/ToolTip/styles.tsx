@@ -8,31 +8,31 @@ import {
 
 export const tooltipBackgroundColor = `background-contrast`;
 export const tooltipArrowHeight = `1rem`;
-const containerOffsetVertical = 12;
+const containerOffsetVertical = 16;
 
 export const centerMaxWidth = { maxWidth: '8rem' } as const;
 export const alignedMaxWidth = { maxWidth: '16rem' } as const;
 
 export const topStyles = {
-  bottom: 'calc(100% + 4px)',
+  bottom: 'calc(100%)',
   pb: containerOffsetVertical,
 } as const;
 
 export const topStylesAfter = {
   borderColor: 'currentColor',
   borderWidth: '0 1px 1px 0',
-  bottom: '0.25rem',
+  bottom: '0.5rem',
 } as const;
 
 export const bottomStyles = {
-  top: 'calc(100% + 4px)',
+  top: 'calc(100%)',
   pt: containerOffsetVertical,
 } as const;
 
 export const bottomStylesAfter = {
   borderColor: 'currentColor',
   borderWidth: '1px 0 0 1px',
-  top: '0.25rem',
+  top: '0.5rem',
 } as const;
 
 export const centerStyles = {
