@@ -24,6 +24,9 @@ export interface ScoreSummaryProps {
   colorfulIcons?: boolean;
 }
 
+const SHOW_REVIEW_SCORE = 0.6;
+const PASSING_SCORE = 0.7;
+
 const renderSubScores = ({
   subScores,
   pathSlug,
@@ -70,7 +73,7 @@ const renderSubScores = ({
         >
           <FlexBox alignItems="center">
             {colorfulIcons ? (
-              subContentPercentCorrect > 0.7 ? (
+              subContentPercentCorrect >= PASSING_SCORE ? (
                 <Text
                   height="1rem"
                   mr={12}
@@ -87,7 +90,7 @@ const renderSubScores = ({
             <Text fontWeight="bold">{subContentTitle}</Text>
           </FlexBox>
           <FlexBox fontSize={14} minWidth="11rem" justifyContent="flex-end">
-            {subContentPercentCorrect <= 0.6 && trackSlug && (
+            {subContentPercentCorrect < SHOW_REVIEW_SCORE && trackSlug && (
               <>
                 <Anchor
                   aria-label={`Review concepts for ${subContentTitle}`}
