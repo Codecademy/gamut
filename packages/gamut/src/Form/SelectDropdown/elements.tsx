@@ -223,18 +223,14 @@ export const formatOptionLabel = ({
       display="flex"
       justifyContent="space-between"
       width="100%"
+      aria-label={rightLabel ? `${label} ${rightLabel}` : label}
     >
       <Box display="flex" flexDirection="column">
         <Box>
           {Icon && (
             <Icon size={size === 'small' ? 16 : 24} color="text" ml={4} />
           )}
-          <Box
-            color={textColor}
-            as="span"
-            pl={Icon ? 16 : 0}
-            aria-label={rightLabel ? `${label} ${rightLabel}` : label}
-          >
+          <Box color={textColor} as="span" pl={Icon ? 16 : 0}>
             {label}
           </Box>
         </Box>
