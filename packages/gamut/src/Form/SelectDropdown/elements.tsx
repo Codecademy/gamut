@@ -229,7 +229,12 @@ export const formatOptionLabel = ({
           {Icon && (
             <Icon size={size === 'small' ? 16 : 24} color="text" ml={4} />
           )}
-          <Box color={textColor} as="span" pl={Icon ? 16 : 0}>
+          <Box
+            color={textColor}
+            as="span"
+            pl={Icon ? 16 : 0}
+            aria-label={rightLabel ? `${label} ${rightLabel}` : label}
+          >
             {label}
           </Box>
         </Box>
