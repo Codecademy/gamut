@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [62.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.7.2...@codecademy/styleguide@62.7.3) (2022-12-16)
+
+
+### Bug Fixes
+
+* **Flyout:** move background color to fix overflow ([de5b8ca](https://github.com/Codecademy/gamut/commit/de5b8ca22ade5e5d9313e92dba3345bddea26bfb))
+
+
+
+### [62.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.7.1...@codecademy/styleguide@62.7.2) (2022-12-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [62.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.7.0...@codecademy/styleguide@62.7.1) (2022-12-15)
 
 **Note:** Version bump only for package @codecademy/styleguide

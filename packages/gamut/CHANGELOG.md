@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [51.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.6.1...@codecademy/gamut@51.6.2) (2022-12-16)
+
+
+### Bug Fixes
+
+* **Flyout:** move background color to fix overflow ([de5b8ca](https://github.com/Codecademy/gamut/commit/de5b8ca22ade5e5d9313e92dba3345bddea26bfb))
+
+
+
+### [51.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.6.0...@codecademy/gamut@51.6.1) (2022-12-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [51.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.5.2...@codecademy/gamut@51.6.0) (2022-12-15)
 
 
