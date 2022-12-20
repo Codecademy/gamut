@@ -223,6 +223,7 @@ export const formatOptionLabel = ({
       display="flex"
       justifyContent="space-between"
       width="100%"
+      aria-label={rightLabel ? `${label} ${rightLabel}` : label}
     >
       <Box display="flex" flexDirection="column">
         <Box>
@@ -266,7 +267,7 @@ export const formatGroupLabel = ({ label, divider }: SelectDropdownGroup) => {
       </Box>
     );
   }
-  return <span aria-label={`${label} test`}>{label}</span>;
+  return label;
 };
 
 export function TypedReactSelect<
