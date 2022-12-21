@@ -89,7 +89,15 @@ const renderSubScores = ({
             ) : null}
             <Text fontWeight="bold">{subContentTitle}</Text>
           </FlexBox>
-          <FlexBox fontSize={14} minWidth="11rem" justifyContent="flex-end">
+          <FlexBox
+            fontSize={14}
+            minWidth={
+              subContentPercentCorrect < SHOW_REVIEW_SCORE && trackSlug
+                ? '11rem'
+                : '3rem'
+            }
+            justifyContent="flex-end"
+          >
             {subContentPercentCorrect < SHOW_REVIEW_SCORE && trackSlug && (
               <>
                 <Anchor
