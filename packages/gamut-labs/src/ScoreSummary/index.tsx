@@ -74,17 +74,17 @@ const renderSubScores = ({
           <FlexBox alignItems="center">
             {colorfulIcons ? (
               subContentPercentCorrect >= PASSING_SCORE ? (
-                <Text
-                  height="1rem"
+                <CheckFilledIcon
+                  minWidth={16}
                   mr={12}
                   color={platformColors.mint['500'] as Colors}
-                >
-                  <CheckFilledIcon />
-                </Text>
+                />
               ) : (
-                <Text height="1rem" color={'#FA4359' as Colors} mr={12}>
-                  <DeleteFilledIcon />
-                </Text>
+                <DeleteFilledIcon
+                  minWidth={16}
+                  mr={12}
+                  color={'#FA4359' as Colors}
+                />
               )
             ) : null}
             <Text fontWeight="bold">{subContentTitle}</Text>

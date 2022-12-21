@@ -64,21 +64,23 @@ export const QuizScore: React.FC<QuizScoreProps> = ({
         justifyContent="center"
         display={total === correctCount ? 'flex' : 'grid'}
       >
-        <Text
+        <CheckFilledIcon
           color={
             colorfulIcons ? (platformColors.mint['500'] as Colors) : 'inherit'
           }
-        >
-          <CheckFilledIcon aria-hidden size={24} />
-        </Text>
+          aria-hidden
+          size={24}
+        />
         <Text fontSize={smallerFont ? 16 : 22} lineHeight={2 as any}>
           {correctCount} correct
         </Text>
         {correctCount < total && (
           <>
-            <Text color={colorfulIcons ? ('#FA4359' as Colors) : 'inherit'}>
-              <DeleteFilledIcon aria-hidden size={24} />
-            </Text>
+            <DeleteFilledIcon
+              color={colorfulIcons ? ('#FA4359' as Colors) : 'inherit'}
+              aria-hidden
+              size={24}
+            />
             <Text fontSize={smallerFont ? 16 : 22} lineHeight={2 as any}>{`${
               total - correctCount
             } to work on`}</Text>
