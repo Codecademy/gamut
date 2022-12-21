@@ -233,21 +233,25 @@ export const formatOptionLabel = ({
             {label}
           </Box>
         </Box>
-        <Box as="span" fontSize={14} color="text-disabled">
-          {subtitle}
+        {subtitle && (
+          <Box as="span" fontSize={14} color="text-disabled">
+            {subtitle}
+          </Box>
+        )}
+      </Box>
+      {rightLabel && (
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="flex-end"
+          flexGrow={1}
+          textAlign="right"
+          fontSize={14}
+          aria-label={rightLabel}
+        >
+          {rightLabel}
         </Box>
-      </Box>
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="flex-end"
-        flexGrow={1}
-        textAlign="right"
-        fontSize={14}
-        aria-label={rightLabel}
-      >
-        {rightLabel}
-      </Box>
+      )}
     </Box>
   );
 };
