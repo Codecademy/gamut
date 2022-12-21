@@ -223,7 +223,6 @@ export const formatOptionLabel = ({
       display="flex"
       justifyContent="space-between"
       width="100%"
-      aria-label={rightLabel ? `${label} ${rightLabel}` : label}
     >
       <Box display="flex" flexDirection="column">
         <Box>
@@ -245,6 +244,7 @@ export const formatOptionLabel = ({
         flexGrow={1}
         textAlign="right"
         fontSize={14}
+        aria-label={rightLabel}
       >
         {rightLabel}
       </Box>
