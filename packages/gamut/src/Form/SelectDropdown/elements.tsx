@@ -9,6 +9,7 @@ import { ColorMode, css, theme, useColorModes } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { createContext, CSSProperties, KeyboardEvent, useContext } from 'react';
 import ReactSelect, {
+  AriaOnFocus,
   components as SelectDropdownElements,
   GroupBase,
   MultiValueProps,
@@ -284,3 +285,16 @@ export function TypedReactSelect<
 }: Props<OptionType, IsMulti, GroupType> & TypedReactSelectProps) {
   return <ReactSelect {...props} ref={selectRef} />;
 }
+
+export const onFocus: AriaOnFocus<ExtendedOption> = ({
+  focused: { label, subtitle, rightLabel, disabled },
+}) => {
+  const formattedSubtitle = `, ${subtitle}`;
+  const formattedRightLabel = `, ${rightLabel}`;
+
+  const msg = `You are currently focused on option ${label}, ${
+    subtitle ? formattedSubtitle : ''
+  } ${rightLabel ? formattedRightLabel : ''}${disabled ? ', disabled' : ''}`;
+
+  return msg;
+};

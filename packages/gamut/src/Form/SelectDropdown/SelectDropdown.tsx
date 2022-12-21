@@ -20,6 +20,7 @@ import {
   formatOptionLabel,
   MultiValueRemoveButton,
   MultiValueWithColorMode,
+  onFocus,
   RemoveAllButton,
   SelectDropdownContext,
   TypedReactSelect,
@@ -179,6 +180,9 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         {...defaultProps}
         activated={activated}
         error={Boolean(error)}
+        ariaLiveMessages={{
+          onFocus,
+        }}
         formatGroupLabel={formatGroupLabel}
         formatOptionLabel={formatOptionLabel}
         id={id || rest.htmlFor}
