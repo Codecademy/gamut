@@ -292,7 +292,7 @@ export const onFocus: AriaOnFocus<ExtendedOption> = ({
   const formattedSubtitle = `, ${subtitle}`;
   const formattedRightLabel = `, ${rightLabel}`;
 
-  const msg = `You are currently focused on option ${label}, ${
+  const msg = `You are currently focused on option ${label}${
     subtitle ? formattedSubtitle : ''
   } ${rightLabel ? formattedRightLabel : ''}${disabled ? ', disabled' : ''}`;
 
