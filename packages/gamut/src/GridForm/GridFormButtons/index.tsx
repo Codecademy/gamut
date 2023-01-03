@@ -47,7 +47,7 @@ const buttonMap = {
 
 export const GridFormButtons: React.FC<
   GridFormSubmitProps & CancelButtonProps
-> = ({ type = 'fill', ...props }) => {
+> = ({ type = 'fill', position, ...props }) => {
   const fillWidth = props.position === 'fill' ? '100%' : undefined;
 
   return (
