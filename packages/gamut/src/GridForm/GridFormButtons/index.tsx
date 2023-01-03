@@ -48,7 +48,7 @@ const buttonMap = {
 export const GridFormButtons: React.FC<
   GridFormSubmitProps & CancelButtonProps
 > = ({ type = 'fill', position, ...props }) => {
-  const fillWidth = props.position === 'fill' ? '100%' : undefined;
+  const fillWidth = position === 'fill' ? '100%' : undefined;
 
   return (
     <Column size={props.size}>
@@ -56,11 +56,7 @@ export const GridFormButtons: React.FC<
         mb={8}
         alignSelf="center"
         justifySelf={
-          positions[
-            !props.position || props.position === 'fill'
-              ? 'left'
-              : props.position
-          ]
+          positions[!position || position === 'fill' ? 'left' : position]
         }
         width={fillWidth}
       >
