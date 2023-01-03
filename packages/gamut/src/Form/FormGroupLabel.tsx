@@ -69,9 +69,9 @@ const Label = styled.label<FormGroupLabelProps>(
 );
 
 const getToolTip = (tooltip: FormToolTipProps) => {
-  const isToolTipLeftAlign = tooltip.position !== 'left-align';
+  const isToolTipRightAlign = tooltip.position !== 'left-align';
 
-  const targetProps = isToolTipLeftAlign
+  const targetProps = isToolTipRightAlign
     ? ({ size: '0.8rem', 'aria-hidden': 'false', mb: 4 } as const)
     : ({ size: '1rem', 'aria-hidden': 'false' } as const);
 
@@ -84,7 +84,7 @@ const getToolTip = (tooltip: FormToolTipProps) => {
     />
   );
 
-  if (isToolTipLeftAlign) {
+  if (isToolTipRightAlign) {
     return (
       <Box as="span" position="absolute" left="calc(100% - 1.1rem)">
         {ToolTipComponent}
