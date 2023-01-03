@@ -96,7 +96,7 @@ const getToolTip = (tooltip: FormToolTipProps) => {
 };
 
 const getToolTipPadding = (tooltip: FormToolTipProps) =>
-  tooltip?.position ? tooltip.position : 'right-align';
+  tooltip?.position || 'right-align';
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   children,
