@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [62.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.7.3...@codecademy/styleguide@62.8.0) (2023-01-04)
+
+
+### Features
+
+* **FormGroupLabel, GridForm:** assorted embedded user-form features ([5528b76](https://github.com/Codecademy/gamut/commit/5528b7632021988bedd96fdbbf2654f009d764e0))
+
+
+
 ### [62.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.7.2...@codecademy/styleguide@62.7.3) (2022-12-16)
 
 
