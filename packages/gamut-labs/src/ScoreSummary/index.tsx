@@ -1,6 +1,6 @@
 import { Anchor, Box, FlexBox, GridBox, Text } from '@codecademy/gamut';
 import { CheckFilledIcon, DeleteFilledIcon } from '@codecademy/gamut-icons';
-import { Colors, platformColors, pxRem } from '@codecademy/gamut-styles';
+import { Colors, pxRem } from '@codecademy/gamut-styles';
 import { UserClickData } from '@codecademy/tracking';
 import * as React from 'react';
 
@@ -77,13 +77,13 @@ const renderSubScores = ({
                 <CheckFilledIcon
                   minWidth={16}
                   mr={12}
-                  color={platformColors.mint['500'] as Colors}
+                  color="feedback-success"
                 />
               ) : (
                 <DeleteFilledIcon
                   minWidth={16}
                   mr={12}
-                  color={'#FA4359' as Colors}
+                  color="feedback-error"
                 />
               )
             ) : null}

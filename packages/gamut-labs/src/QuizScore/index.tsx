@@ -1,6 +1,5 @@
 import { Box, FlexBox, GridBox, Text } from '@codecademy/gamut';
 import { CheckFilledIcon, DeleteFilledIcon } from '@codecademy/gamut-icons';
-import { Colors, platformColors } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 interface QuizScoreProps {
@@ -65,9 +64,7 @@ export const QuizScore: React.FC<QuizScoreProps> = ({
         display={total === correctCount ? 'flex' : 'grid'}
       >
         <CheckFilledIcon
-          color={
-            colorfulIcons ? (platformColors.mint['500'] as Colors) : 'inherit'
-          }
+          color={colorfulIcons ? 'feedback-success' : 'inherit'}
           aria-hidden
           size={24}
         />
@@ -77,7 +74,7 @@ export const QuizScore: React.FC<QuizScoreProps> = ({
         {correctCount < total && (
           <>
             <DeleteFilledIcon
-              color={colorfulIcons ? ('#FA4359' as Colors) : 'inherit'}
+              color={colorfulIcons ? 'feedback-error' : 'inherit'}
               aria-hidden
               size={24}
             />
