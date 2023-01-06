@@ -1,11 +1,11 @@
-import { GenericChildrenType } from '@codecademy/gamut';
+import { WithChildrenProp } from '@codecademy/gamut';
 import cx from 'classnames';
 import * as React from 'react';
 
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
-export interface AppBarSectionProps extends GenericChildrenType {
+export interface AppBarSectionProps extends WithChildrenProp {
   /**
    * Position of the the section within the AppBar.
    */

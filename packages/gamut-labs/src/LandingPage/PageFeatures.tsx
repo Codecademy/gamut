@@ -3,8 +3,8 @@ import {
   Column,
   ColumnProps,
   FlexBox,
-  GenericChildrenType,
   LayoutGrid,
+  WithChildrenProp,
 } from '@codecademy/gamut';
 import { ReactNode } from 'react';
 import * as React from 'react';
@@ -22,7 +22,7 @@ import {
 import { Title } from './Title';
 import { BaseProps } from './types';
 
-export interface PageFeaturesProps extends BaseProps, GenericChildrenType {
+export interface PageFeaturesProps extends BaseProps, WithChildrenProp {
   maxCols?: 1 | 2 | 3 | 4;
   featuresMedia?: 'image' | 'icon' | 'stat';
   features: {

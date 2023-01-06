@@ -1,9 +1,9 @@
 import {
   Box,
   Flyout,
-  GenericChildrenType,
   Logo,
   StrokeButton,
+  WithChildrenProp,
 } from '@codecademy/gamut';
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -13,7 +13,7 @@ import * as React from 'react';
 import { AccordionMenu, Section, SectionItem } from './AccordionMenu';
 import { LayoutMenuSection } from './LayoutMenuSection';
 
-export interface LayoutMenuProps extends GenericChildrenType {
+export interface LayoutMenuProps extends WithChildrenProp {
   /**
    * Accessibility label for the mobile Flyout's close button.
    */

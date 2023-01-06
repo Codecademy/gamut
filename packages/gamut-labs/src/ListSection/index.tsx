@@ -1,4 +1,4 @@
-import { GenericChildrenType } from '@codecademy/gamut';
+import { WithChildrenProp } from '@codecademy/gamut';
 import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { Children, useState } from 'react';
@@ -6,7 +6,7 @@ import * as React from 'react';
 
 import { PageSection, SectionButton } from '..';
 
-export interface ListSectionProps extends GenericChildrenType {
+export interface ListSectionProps extends WithChildrenProp {
   title: string;
   headerButton?: SectionButton;
   headerSecondaryButton?: SectionButton;

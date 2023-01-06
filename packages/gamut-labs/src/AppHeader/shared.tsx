@@ -1,9 +1,9 @@
 import {
   Anchor,
   FlexBox,
-  GenericChildrenType,
   LayoutGrid,
   Text,
+  WithChildrenProp,
 } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import { css, pxRem, states } from '@codecademy/gamut-styles';
@@ -13,7 +13,7 @@ import * as React from 'react';
 
 export const appHeaderMobileBreakpoint = 'lg' as const;
 
-export interface AnimatedHeaderZoneProps extends GenericChildrenType {
+export interface AnimatedHeaderZoneProps extends WithChildrenProp {
   visible?: boolean;
 }
 

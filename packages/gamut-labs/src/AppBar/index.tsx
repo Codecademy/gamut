@@ -1,11 +1,11 @@
-import { ContentContainer, GenericChildrenType } from '@codecademy/gamut';
+import { ContentContainer, WithChildrenProp } from '@codecademy/gamut';
 import cx from 'classnames';
 import * as React from 'react';
 
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
-export interface AppBarProps extends GenericChildrenType {
+export interface AppBarProps extends WithChildrenProp {
   className?: string;
   /**
    * Whether the container should be larger than the default content size.

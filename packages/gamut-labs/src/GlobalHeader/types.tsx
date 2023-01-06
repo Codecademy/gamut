@@ -1,4 +1,4 @@
-import { GenericChildrenType } from '@codecademy/gamut';
+import { WithChildrenProp } from '@codecademy/gamut';
 import { ReactNode } from 'react';
 
 import {
@@ -10,7 +10,7 @@ import { AppHeaderNotificationSettings } from '../Notifications/types';
 
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
 
-interface BaseHeader extends GenericChildrenType {
+interface BaseHeader extends WithChildrenProp {
   /** A method to be called on click/activating a header item */
   action: AppHeaderClickHandler;
   /** A method to be called only on click/activating a *link* header item */

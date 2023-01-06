@@ -1,8 +1,8 @@
 import {
   AppWrapper,
-  GenericChildrenType,
   SkipToContent,
   SkipToContentTarget,
+  WithChildrenProp,
 } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import { ComponentProps, forwardRef } from 'react';
@@ -22,7 +22,7 @@ export type GlobalPageBackgroundColor =
   | 'paleYellow'
   | 'white';
 
-export interface GlobalPageProps extends GenericChildrenType {
+export interface GlobalPageProps extends WithChildrenProp {
   backgroundColor?: GlobalPageBackgroundColor;
 
   /**
