@@ -70,7 +70,7 @@ export const coreTheme = createTheme({
       text: { _: 'white', accent: 'beige', disabled: 'navy-200' },
       feedback: {
         error: 'red-0',
-        success: 'green-0',
+        success: 'green-400',
         warning: 'yellow-0',
       },
       background: {
