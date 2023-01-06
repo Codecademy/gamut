@@ -14,11 +14,6 @@ import {
 import { appHeaderMobileBreakpoint } from '../AppHeader/shared';
 import { FormattedMobileAppHeaderItems } from '../AppHeader/types';
 import { AppHeaderMainMenuMobile } from '../AppHeaderMobile/AppHeaderMainMenuMobile';
-import {
-  CrossDeviceBookmarkParts,
-  CrossDeviceBookmarksView,
-} from '../Bookmarks/types';
-import { useBookmarkComponentsPair } from '../Bookmarks/useBookmarkComponentsPair';
 import { CrossDeviceStateProps } from '../GlobalHeader/types';
 import { HeaderHeightArea } from '../HeaderHeightArea';
 import { NotificationsContents } from '../Notifications/NotificationsContents';
@@ -32,7 +27,6 @@ export type AppHeaderMobileProps = {
   redirectParam?: string;
   onSearch: (query: string) => void;
   isAnon: boolean;
-  crossDeviceBookmarkParts?: CrossDeviceBookmarkParts;
 } & CrossDeviceStateProps;
 
 const StyledOverlay = styled(Overlay)(
@@ -77,7 +71,6 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   isAnon,
   openCrossDeviceItemId,
   setOpenCrossDeviceItemId,
-  crossDeviceBookmarkParts,
 }) => {
   const [mode, , modes] = useColorModes();
   const bgCurrent = modes[mode]['background-current'];
@@ -89,14 +82,6 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     Renderer: NotificationsContents,
     openCrossDeviceItemId,
     setOpenCrossDeviceItemId,
-  });
-
-  const [bookmarksButton, bookmarksContent] = useBookmarkComponentsPair({
-    openCrossDeviceItemId,
-    setOpenCrossDeviceItemId,
-    bookmarkParts: crossDeviceBookmarkParts,
-    view: CrossDeviceBookmarksView.MOBILE,
-    isAnon,
   });
 
   const openMobileMenu = () => {
@@ -136,7 +121,6 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
 
   const right = [
     ...(notificationsBell ? [notificationsBell] : []),
-    ...(bookmarksButton ? [bookmarksButton] : []),
     ...items.right,
   ];
 
@@ -221,7 +205,6 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
       </StyledOverlay>
       <Box display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}>
         {notificationsView}
-        {bookmarksContent}
       </Box>
     </>
   );

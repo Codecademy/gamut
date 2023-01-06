@@ -17,7 +17,9 @@ const getById = queryByAttribute.bind(null, 'id');
 
 const renderView = setupRtl(GridFormInputGroupTestComponent, {
   setValue: jest.fn(),
-  register: jest.fn(),
+  register: jest.fn().mockReturnValue({
+    onChange: jest.fn(),
+  }),
 });
 
 describe('GridFormInputGroup', () => {

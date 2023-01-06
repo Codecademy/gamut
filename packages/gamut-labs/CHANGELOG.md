@@ -3,6 +3,128 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.5...@codecademy/gamut-labs@34.0.6) (2023-01-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [34.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.4...@codecademy/gamut-labs@34.0.5) (2022-12-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [34.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.3...@codecademy/gamut-labs@34.0.4) (2022-12-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [34.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.2...@codecademy/gamut-labs@34.0.3) (2022-12-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [34.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.1...@codecademy/gamut-labs@34.0.2) (2022-12-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [34.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.0...@codecademy/gamut-labs@34.0.1) (2022-12-14)
+
+
+### Bug Fixes
+
+* update width of page alert to match page contents ([d421306](https://github.com/Codecademy/gamut/commit/d4213064400c8f8a631e38beefc082f94fd9732d))
+
+
+
+## [34.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.11.2...@codecademy/gamut-labs@34.0.0) (2022-12-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **AppHeader:** Remove bookmarks and favorites
+
+### Miscellaneous Chores
+
+* **AppHeader:** Remove bookmarks and favorites ([5c80f93](https://github.com/Codecademy/gamut/commit/5c80f937956de18e3ecd53372d03e3493546b180))
+
+
+
+### [33.11.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.11.1...@codecademy/gamut-labs@33.11.2) (2022-12-09)
+
+
+### Bug Fixes
+
+* **RatingsBar:** Conditional box shadow (hide if 0%) ([592a559](https://github.com/Codecademy/gamut/commit/592a559497deb5b0f1f792ac5ce6d73fe7013f4f))
+
+
+
+### [33.11.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.11.0...@codecademy/gamut-labs@33.11.1) (2022-12-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [33.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.10.1...@codecademy/gamut-labs@33.11.0) (2022-12-08)
+
+
+### Features
+
+* **Footer:** rename Pro Membership link ([a953881](https://github.com/Codecademy/gamut/commit/a95388155a90b5d75acc6b267ed0e52df9b70fdb))
+
+
+
+### [33.10.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.10.0...@codecademy/gamut-labs@33.10.1) (2022-12-08)
+
+
+### Reverts
+
+* "feat: Add pricing link option to global header" ([1208ab6](https://github.com/Codecademy/gamut/commit/1208ab679f576029da5479166309adafd12bb52d))
+
+
+
+## [33.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.9.3...@codecademy/gamut-labs@33.10.0) (2022-12-07)
+
+
+### Features
+
+* **global header:** update copy for plan rename ([dbc69e3](https://github.com/Codecademy/gamut/commit/dbc69e3767a5e730b78d1f426c0ebef011781531))
+
+
+
+### [33.9.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.9.2...@codecademy/gamut-labs@33.9.3) (2022-12-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [33.9.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.9.1...@codecademy/gamut-labs@33.9.2) (2022-12-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [33.9.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.9.0...@codecademy/gamut-labs@33.9.1) (2022-12-06)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

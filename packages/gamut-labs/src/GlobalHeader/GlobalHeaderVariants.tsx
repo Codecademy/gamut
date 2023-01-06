@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
 import {
   FormattedAppHeaderItems,
@@ -9,13 +7,11 @@ import {
   businessSolutions,
   catalogDropdown,
   communityDropdown,
-  favorites,
   freeProfile,
   login,
   logo,
   myHome,
   pricingDropdown,
-  pricingLink,
   proProfile,
   resourcesDropdown,
   signUp,
@@ -24,10 +20,6 @@ import {
   upgradeToPro,
 } from './GlobalHeaderItems';
 import { User } from './types';
-
-// Simplify pricing dropdown to a normal link for users in India
-const pricingComponent = (user?: User) =>
-  user?.geo === 'IN' ? pricingLink : pricingDropdown;
 
 const anonHeaderItems = (
   renderLogin: boolean,
@@ -40,7 +32,7 @@ const anonHeaderItems = (
     catalogDropdown(user?.hideCareerPaths),
     resourcesDropdown,
     communityDropdown,
-    ...(hidePricing ? [] : [pricingComponent(user)]),
+    ...(hidePricing ? [] : [pricingDropdown]),
     businessSolutions,
   ];
 
@@ -78,7 +70,7 @@ const anonMobileHeaderItems = (
     catalogDropdown(user?.hideCareerPaths),
     resourcesDropdown,
     communityDropdown,
-    ...(hidePricing ? [] : [pricingComponent(user)]),
+    ...(hidePricing ? [] : [pricingDropdown]),
     businessSolutions,
   ];
 
@@ -147,8 +139,7 @@ export const anonSignupMobileHeaderItems = (
 
 export const freeHeaderItems = (
   user: User,
-  hidePricing?: boolean,
-  renderFavorites?: () => ReactNode
+  hidePricing?: boolean
 ): FormattedAppHeaderItems => {
   const specialLogo = { ...logo, checkMini: true };
 
@@ -158,14 +149,11 @@ export const freeHeaderItems = (
     catalogDropdown(user?.hideCareerPaths),
     resourcesDropdown,
     communityDropdown,
-    ...(hidePricing ? [] : [pricingComponent(user)]),
+    ...(hidePricing ? [] : [pricingDropdown]),
     businessSolutions,
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  if (renderFavorites) {
-    rightItems.push(favorites(renderFavorites));
-  }
   rightItems.push(freeProfile(user));
   rightItems.push(
     user.showProUpgrade
@@ -191,7 +179,7 @@ export const freeMobileHeaderItems = (
     catalogDropdown(user?.hideCareerPaths),
     resourcesDropdown,
     communityDropdown,
-    ...(hidePricing ? [] : [pricingComponent(user)]),
+    ...(hidePricing ? [] : [pricingDropdown]),
     businessSolutions,
     freeProfile(user, true),
     user.showProUpgrade
@@ -206,10 +194,7 @@ export const freeMobileHeaderItems = (
   };
 };
 
-export const proHeaderItems = (
-  user: User,
-  renderFavorites?: () => ReactNode
-): FormattedAppHeaderItems => {
+export const proHeaderItems = (user: User): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
     myHome,
@@ -220,9 +205,6 @@ export const proHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  if (renderFavorites) {
-    rightItems.push(favorites(renderFavorites));
-  }
   rightItems.push(proProfile(user));
   if (user.isPaused) {
     rightItems.push(unpausePro);

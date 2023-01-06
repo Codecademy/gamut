@@ -1,8 +1,8 @@
 {
   "recommendations": [
-    "silvenon.mdx",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "jpoissonnier.vscode-styled-components"
+    "unifiedjs.vscode-mdx",
+    "styled-components.vscode-styled-components"
   ]
 }
