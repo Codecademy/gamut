@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.6...@codecademy/gamut-labs@34.0.7) (2023-01-06)
+
+
+### Bug Fixes
+
+* **CurriculumCard:** do not display pro label ([2b5a16c](https://github.com/Codecademy/gamut/commit/2b5a16c7bb19b9c11949ac45a1105f5716357f5a))
+
+
+
+### [34.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.5...@codecademy/gamut-labs@34.0.6) (2023-01-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [34.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.4...@codecademy/gamut-labs@34.0.5) (2022-12-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [34.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.3...@codecademy/gamut-labs@34.0.4) (2022-12-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [34.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.2...@codecademy/gamut-labs@34.0.3) (2022-12-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [34.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.1...@codecademy/gamut-labs@34.0.2) (2022-12-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [34.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.0...@codecademy/gamut-labs@34.0.1) (2022-12-14)
+
+
+### Bug Fixes
+
+* update width of page alert to match page contents ([d421306](https://github.com/Codecademy/gamut/commit/d4213064400c8f8a631e38beefc082f94fd9732d))
+
+
+
 ## [34.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@33.11.2...@codecademy/gamut-labs@34.0.0) (2022-12-13)
 
 

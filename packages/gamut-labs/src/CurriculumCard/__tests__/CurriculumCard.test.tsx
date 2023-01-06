@@ -16,6 +16,25 @@ describe('CurriculumCard', () => {
     view.getByText('I am a card');
   });
 
+  it('prefixes the content type with Free for free courses', () => {
+    const { view } = renderView({
+      description: 'hey now!',
+      showDescription: true,
+      showProLogo: false,
+    });
+    view.getByText('Free Course');
+  });
+
+  it('does not prefix the content type with Free for courses that are pro only', () => {
+    const { view } = renderView({
+      description: 'hey now!',
+      showDescription: true,
+      showProLogo: true,
+    });
+    view.getByText('Course');
+    expect(view.queryByText('Free Course')).toBeFalsy();
+  });
+
   it('does not display an image when image does not exist', () => {
     const { view } = renderView();
     expect(view.queryByRole('img')).toBeFalsy();

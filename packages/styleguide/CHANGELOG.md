@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [62.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.8.0...@codecademy/styleguide@62.8.1) (2023-01-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [62.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.7.3...@codecademy/styleguide@62.8.0) (2023-01-04)
+
+
+### Features
+
+* **FormGroupLabel, GridForm:** assorted embedded user-form features ([5528b76](https://github.com/Codecademy/gamut/commit/5528b7632021988bedd96fdbbf2654f009d764e0))
+
+
+
+### [62.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.7.2...@codecademy/styleguide@62.7.3) (2022-12-16)
+
+
+### Bug Fixes
+
+* **Flyout:** move background color to fix overflow ([de5b8ca](https://github.com/Codecademy/gamut/commit/de5b8ca22ade5e5d9313e92dba3345bddea26bfb))
+
+
+
+### [62.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.7.1...@codecademy/styleguide@62.7.2) (2022-12-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.7.0...@codecademy/styleguide@62.7.1) (2022-12-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [62.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.11...@codecademy/styleguide@62.7.0) (2022-12-15)
+
+
+### Features
+
+* **Flyout:** Added optional background prop ([#2627](https://github.com/Codecademy/gamut/issues/2627)) ([ad14636](https://github.com/Codecademy/gamut/commit/ad14636cd35831bb661d6351ed605b4dc25a4930))
+
+
+
+### [62.6.11](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.10...@codecademy/styleguide@62.6.11) (2022-12-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [62.6.10](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.6.9...@codecademy/styleguide@62.6.10) (2022-12-13)
 
 **Note:** Version bump only for package @codecademy/styleguide

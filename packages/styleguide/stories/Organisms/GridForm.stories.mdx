@@ -42,7 +42,10 @@ GridForm provides the following benefits:
 4. **Visual Consistency**: Aligns all input elements with the correct vertical rhythms and grid spacing
 
 <Canvas>
-  <Story name="GridForm" args={{ validation: 'onSubmit', resetOnSubmit: true }}>
+  <Story
+    name="GridForm"
+    args={{ validation: 'onSubmit', resetOnSubmit: true, target: '_parent' }}
+  >
     {(args) => (
       <GridForm
         {...args}
@@ -378,6 +381,22 @@ value of left, center, right, or stretch.
             submit={{
               contents: 'Stretch Submit!?',
               position: 'stretch',
+            }}
+          />
+          <GridForm
+            fields={[
+              {
+                label: 'Simple text',
+                name: 'fill-sub-simple-text',
+                type: 'text',
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Fill Submit!?',
+              position: 'fill',
             }}
           />
         </Column>

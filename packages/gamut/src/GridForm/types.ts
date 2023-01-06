@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 import { RegisterOptions, UseFormReturn } from 'react-hook-form';
 
+import { FormToolTipProps } from '../Form';
 import { CheckboxPaddingProps } from '../Form/types';
 import { ColumnProps } from '../Layout';
-import { ToolTipProps } from '../ToolTip';
 import { TextProps } from '../Typography/Text';
 
 export interface BaseFormInputProps {
@@ -28,7 +28,7 @@ export type BaseFormField<Value> = {
    */
   id?: string;
 
-  tooltip?: ToolTipProps;
+  tooltip?: FormToolTipProps;
 
   name: string;
   onUpdate?: (value: Value) => void;
