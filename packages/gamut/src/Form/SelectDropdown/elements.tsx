@@ -9,6 +9,7 @@ import { ColorMode, css, theme, useColorModes } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { createContext, CSSProperties, KeyboardEvent, useContext } from 'react';
 import ReactSelect, {
+  AriaOnFocus,
   components as SelectDropdownElements,
   GroupBase,
   MultiValueProps,
@@ -233,20 +234,25 @@ export const formatOptionLabel = ({
             {label}
           </Box>
         </Box>
-        <Box as="span" fontSize={14} color="text-disabled">
-          {subtitle}
+        {subtitle && (
+          <Box as="span" fontSize={14} color="text-disabled">
+            {subtitle}
+          </Box>
+        )}
+      </Box>
+      {rightLabel && (
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="flex-end"
+          flexGrow={1}
+          textAlign="right"
+          fontSize={14}
+          aria-label={rightLabel}
+        >
+          {rightLabel}
         </Box>
-      </Box>
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="flex-end"
-        flexGrow={1}
-        textAlign="right"
-        fontSize={14}
-      >
-        {rightLabel}
-      </Box>
+      )}
     </Box>
   );
 };
@@ -279,3 +285,16 @@ export function TypedReactSelect<
 }: Props<OptionType, IsMulti, GroupType> & TypedReactSelectProps) {
   return <ReactSelect {...props} ref={selectRef} />;
 }
+
+export const onFocus: AriaOnFocus<ExtendedOption> = ({
+  focused: { label, subtitle, rightLabel, disabled },
+}) => {
+  const formattedSubtitle = `, ${subtitle}`;
+  const formattedRightLabel = `, ${rightLabel}`;
+
+  const msg = `You are currently focused on option ${label}${
+    subtitle ? formattedSubtitle : ''
+  } ${rightLabel ? formattedRightLabel : ''}${disabled ? ', disabled' : ''}`;
+
+  return msg;
+};
