@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.0.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.7...@codecademy/gamut-labs@34.0.8) (2023-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [34.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.6...@codecademy/gamut-labs@34.0.7) (2023-01-06)
+
+
+### Bug Fixes
+
+* **CurriculumCard:** do not display pro label ([2b5a16c](https://github.com/Codecademy/gamut/commit/2b5a16c7bb19b9c11949ac45a1105f5716357f5a))
+
+
+
 ### [34.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.5...@codecademy/gamut-labs@34.0.6) (2023-01-04)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
