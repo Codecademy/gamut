@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [34.0.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.8...@codecademy/gamut-labs@34.0.9) (2023-01-09)
+
+
+### Bug Fixes
+
+* **SocialMediaSharing:** fix partially undefined id ([868d25f](https://github.com/Codecademy/gamut/commit/868d25f1e91b660cc13fa7c595bb84de105a0141))
+
+
+
 ### [34.0.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.7...@codecademy/gamut-labs@34.0.8) (2023-01-06)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
