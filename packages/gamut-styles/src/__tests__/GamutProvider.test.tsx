@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import createCache from '@emotion/cache';
-import { Global, ThemeContext } from '@emotion/react';
+import { ThemeContext } from '@emotion/react';
 import { screen } from '@testing-library/react';
 
 import { createEmotionCache } from '../cache';

@@ -90,7 +90,6 @@
     "conventional-changelog-conventionalcommits": "^4.3.0",
     "core-js": "3.7.0",
     "cpy-cli": "^4.1.0",
-    "enzyme-to-json": "3.3.5",
     "eslint": "^8.11.0",
     "eslint-plugin-gamut": "^2.0.0",
     "eslint-plugin-local-rules": "^1.1.0",
