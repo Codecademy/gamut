@@ -9,7 +9,7 @@
   },
   "description": "Illustrations library for Codecademy",
   "devDependencies": {
-    "@testing-library/react": "^13.4.0"
+    "@testing-library/react": "^12.1.2"
   },
   "homepage": "https://github.com/Codecademy/gamut#readme",
   "name": "@codecademy/gamut-illustrations",
