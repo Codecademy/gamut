@@ -34,7 +34,7 @@
     "@codecademy/variance": "0.20.5",
     "@loadable/component": "^5.15.2",
     "classnames": "^2.2.5",
-    "framer-motion": "^7.5.1",
+    "framer-motion": "^6.5.1",
     "freezeframe": "^5.0.2",
     "intersection-observer": "^0.12.0",
     "lodash": "^4.17.5",
