@@ -2,8 +2,6 @@ import { setupRtl } from '@codecademy/gamut-tests';
 
 import { PausableImage } from '..';
 
-jest.mock('@loadable/component', () => () => () => 'pausable');
-
 const renderView = setupRtl(PausableImage);
 
 const createImg = (url: string) => ({

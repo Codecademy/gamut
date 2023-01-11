@@ -32,7 +32,6 @@
     "@codecademy/gamut-styles": "14.2.5",
     "@codecademy/tracking": "1.0.4",
     "@codecademy/variance": "0.20.5",
-    "@loadable/component": "^5.15.2",
     "classnames": "^2.2.5",
     "framer-motion": "^6.5.1",
     "freezeframe": "^5.0.2",
