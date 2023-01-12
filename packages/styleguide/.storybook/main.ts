@@ -67,6 +67,8 @@ module.exports = {
       ...config.resolve,
       alias: {
         ...emotionless(config.resolve.alias),
+        // Prevent usage of ESM version of htmlparser2
+        htmlparser2$: 'htmlparser2/lib/index.js',
         '~styleguide/blocks': path.resolve(__dirname, './components/'),
         '@codecademy/storybook-addon-variance': path.resolve(
           __dirname,
