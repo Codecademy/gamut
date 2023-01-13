@@ -1,5 +1,4 @@
 import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
-import styled from '@emotion/styled';
 import * as React from 'react';
 
 import { LogoFromSkillsoft } from '../..';
@@ -11,8 +10,6 @@ import {
   FooterLinkItemWithAnchor,
 } from '../FooterLinks';
 import { GlobalFooterClickHandler } from '../types';
-import downloadOnTheAppStore from './assets/download-on-the-app-store.svg';
-import getItOnGooglePlay from './assets/get-it-on-google-play.png';
 import { SocialMediaLinks } from './SocialMediaLinks';
 
 export type CompanyLinksProps = {
@@ -20,31 +17,13 @@ export type CompanyLinksProps = {
   onClick: GlobalFooterClickHandler;
 };
 
-const MobileImageItem = styled(Box)();
-
-MobileImageItem.defaultProps = {
-  as: 'li',
-  display: 'inline-block',
-  my: 8,
-  width: {
-    _: '50%',
-    md: '90%',
-  },
-};
-
-const MobileImageLink = styled(Anchor)();
-
-MobileImageLink.defaultProps = {
-  display: 'inline-block',
-  variant: 'interface',
-};
-
+// TODO: might have to do flex box since the grid layout style doesnt apply anymore?
 export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   hidePricing,
   onClick,
 }) => {
-  const community = (
-    <Box>
+  const community = (display: BoxProps['display']) => (
+    <Box display={display} mt={{ sm: 16 }} order={{ sm: 3 }}>
       <FooterHeading>Community</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -55,16 +34,6 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             variant="interface"
           >
             Forums
-          </Anchor>
-        </FooterLinkItem>
-        <FooterLinkItem>
-          <Anchor
-            href="https://discord.com/invite/codecademy"
-            onClick={(event) => onClick({ event, target: 'discord' })}
-            target="_blank"
-            variant="interface"
-          >
-            Discord
           </Anchor>
         </FooterLinkItem>
         <FooterLinkItem>
@@ -86,20 +55,19 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             Events
           </Anchor>
         </FooterLinkItem>
-        <FooterLinkItem>
-          <Anchor
-            href="/learner-stories"
-            onClick={(event) =>
-              onClick({ event, target: 'learner_stories_hub' })
-            }
-            variant="interface"
-          >
-            Learner Stories
-          </Anchor>
-        </FooterLinkItem>
         {/* Refer a friend marketing anchor */}
         <FooterLinkItem>
           <span id="extole_zone_global_footer" />
+        </FooterLinkItem>
+        <FooterLinkItem>
+          <Anchor
+            href="https://discord.com/invite/codecademy"
+            onClick={(event) => onClick({ event, target: 'discord' })}
+            target="_blank"
+            variant="interface"
+          >
+            Discord
+          </Anchor>
         </FooterLinkItem>
       </FooterLinkItems>
     </Box>
@@ -107,9 +75,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
 
   const company = (
     <Box>
-      <FooterHeading>
-        <LogoFromSkillsoft height={40} />
-      </FooterHeading>
+      <FooterHeading>Company</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
           <Anchor
@@ -145,28 +111,9 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     </Box>
   );
 
-  const enterprisePlans = (
+  const plans = (
     <Box>
-      <FooterHeading mt={hidePricing ? { sm: 16 } : { _: 24, sm: 0 }}>
-        Enterprise Plans
-      </FooterHeading>
-      <FooterLinkItems>
-        <FooterLinkItem>
-          <Anchor
-            href="/business"
-            onClick={(event) => onClick({ event, target: 'business_landing' })}
-            variant="interface"
-          >
-            Business Solutions
-          </Anchor>
-        </FooterLinkItem>
-      </FooterLinkItems>
-    </Box>
-  );
-
-  const individualPlans = (
-    <Box>
-      <FooterHeading>Individual Plans</FooterHeading>
+      <FooterHeading>Plans</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
           <Anchor
@@ -174,7 +121,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             onClick={(event) => onClick({ event, target: 'pro_membership' })}
             variant="interface"
           >
-            Paid Memberships
+            Paid memberships
           </Anchor>
         </FooterLinkItem>
         <FooterLinkItem>
@@ -183,55 +130,18 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
             onClick={(event) => onClick({ event, target: 'students' })}
             variant="interface"
           >
-            For Students
+            For students
           </Anchor>
         </FooterLinkItem>
-      </FooterLinkItems>
-    </Box>
-  );
-
-  const mobile = (
-    <Box
-      gridColumn="1 / 3"
-      gridColumnEnd={{ sm: '1' }}
-      gridRow={{ sm: '2 / 4' }}
-      pt={hidePricing ? { sm: 16 } : {}}
-    >
-      <FooterHeading mb={{ _: 8, sm: 16, lg: 0 }}>Mobile</FooterHeading>
-      <FooterLinkItems
-        display={{ sm: 'flex' }}
-        flexDirection={{ sm: 'column' }}
-      >
-        <MobileImageItem>
-          <MobileImageLink
-            href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
-            onClick={(event) => onClick({ event, target: 'apple_store' })}
-            target="_blank"
-            rel="noopener"
+        <FooterLinkItem>
+          <Anchor
+            href="/business"
+            onClick={(event) => onClick({ event, target: 'business_landing' })}
+            variant="interface"
           >
-            <img
-              alt="Download on the App Store"
-              height="calc(40px + 1rem)"
-              src={downloadOnTheAppStore}
-              width="calc(120px + 1.5rem)"
-            />
-          </MobileImageLink>
-        </MobileImageItem>
-        <MobileImageItem>
-          <MobileImageLink
-            href="https://play.google.com/store/apps/details?id=com.ryzac.codecademygo"
-            onClick={(event) => onClick({ event, target: 'google_play' })}
-            target="_blank"
-            rel="noopener"
-          >
-            <img
-              alt="Get it on Google Play"
-              height="calc(40px + 1rem)"
-              src={getItOnGooglePlay}
-              width="calc(133px + 1.5rem)"
-            />
-          </MobileImageLink>
-        </MobileImageItem>
+            Business solutions
+          </Anchor>
+        </FooterLinkItem>
       </FooterLinkItems>
     </Box>
   );
@@ -276,6 +186,13 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     </Box>
   );
 
+  // TODO: this needs to go at the bottom
+  const logo = (
+    <FooterHeading>
+      <LogoFromSkillsoft height={40} />
+    </FooterHeading>
+  );
+
   return (
     <GridBox
       gridTemplateColumns={{
@@ -286,12 +203,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     >
       {company}
       {resources}
-      {support({ _: 'unset', sm: 'none' })}
-      {community}
-      {hidePricing ? null : individualPlans}
-      {enterprisePlans}
-      {mobile}
       {support({ _: 'none', sm: 'unset' })}
+      {hidePricing ? null : plans}
+      {community({ _: 'none', sm: 'unset' })}
+      {support({ _: 'unset', sm: 'none' })}
+      {logo}
     </GridBox>
   );
 };

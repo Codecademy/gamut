@@ -19,22 +19,10 @@ const renderNewBadge = (text: string) => (
 
 export const footerResourcesList: AppFooterResourcesDataItem[] = [
   {
-    id: 'projects',
-    href: '/projects',
-    trackingTarget: 'projects',
-    text: 'Projects',
-  },
-  {
-    id: 'challenges',
-    href: '/code-challenges',
-    trackingTarget: 'challenges',
-    text: 'Interview Challenges',
-  },
-  {
-    id: 'docs',
-    href: '/resources/docs',
-    trackingTarget: 'docs',
-    text: 'Docs',
+    id: 'articles',
+    href: '/articles',
+    trackingTarget: 'articles',
+    text: 'Articles',
   },
   {
     id: 'cheatsheets',
@@ -43,10 +31,22 @@ export const footerResourcesList: AppFooterResourcesDataItem[] = [
     text: 'Cheatsheets',
   },
   {
-    id: 'articles',
-    href: '/articles',
-    trackingTarget: 'articles',
-    text: 'Articles',
+    id: 'challenges',
+    href: '/code-challenges',
+    trackingTarget: 'challenges',
+    text: 'Code challenges',
+  },
+  {
+    id: 'docs',
+    href: '/resources/docs',
+    trackingTarget: 'docs',
+    text: 'Docs',
+  },
+  {
+    id: 'projects',
+    href: '/projects',
+    trackingTarget: 'projects',
+    text: 'Projects',
   },
   {
     id: 'videos',
@@ -55,17 +55,17 @@ export const footerResourcesList: AppFooterResourcesDataItem[] = [
     text: 'Videos',
   },
   {
+    id: 'workspaces',
+    href: 'https://codecademy.com/pages/workspaces',
+    trackingTarget: 'workspaces',
+    text: 'Workspaces',
+  },
+  {
     id: 'blog',
     href: 'https://codecademy.com/resources/blog',
     trackingTarget: 'blog',
     text: 'Blog',
     newTab: true,
-  },
-  {
-    id: 'career-center',
-    href: '/pages/career-center',
-    trackingTarget: 'career_center',
-    text: 'Career Center',
   },
 ];
 export const headerResourcesList: AppHeaderResourcesDataItem[] = [
