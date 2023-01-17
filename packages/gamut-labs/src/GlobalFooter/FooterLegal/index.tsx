@@ -30,11 +30,9 @@ export const FooterLegal: React.FC<FooterLegalProps> = ({
   onMadeInClick,
 }) => {
   return (
-    <ContentContainer>
-      <LegalLocalContainer>
-        <LegalLinks onClick={onClick} />
-        <MadeIn onClick={onMadeInClick} />
-      </LegalLocalContainer>
-    </ContentContainer>
+    <LegalLocalContainer>
+      <LegalLinks onClick={onClick} />
+      <MadeIn onClick={onMadeInClick} />
+    </LegalLocalContainer>
   );
 };

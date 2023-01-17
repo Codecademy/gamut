@@ -22,7 +22,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   onClick,
 }) => {
   const community = (display: BoxProps['display']) => (
-    <Box display={display} mt={{ sm: 16 }} order={{ sm: 3 }}>
+    <Box display={display} mt={{ sm: hidePricing ? 0 : 16 }} order={{ sm: 3 }}>
       <FooterHeading>Community</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -198,6 +198,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         sm: 'repeat(3, minmax(0, 1fr))',
       }}
       rowGap={16}
+      columnGap={24}
     >
       {company}
       <FlexBox flexDirection="column">

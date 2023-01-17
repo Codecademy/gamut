@@ -3,7 +3,6 @@ import { theme, themed, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
 
-import { logo } from '../../GlobalHeader/GlobalHeaderItems';
 import { FooterHeading } from '../FooterHeading';
 import { FooterLinkItem, FooterLinkItems } from '../FooterLinks';
 import { GlobalFooterClickHandler } from '../types';
@@ -123,6 +122,7 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({
               href={`/catalog/language/${slug}`}
               onClick={(event) => onClick({ event, target: slug })}
               variant="interface"
+              whiteSpace="nowrap"
             >
               {text}
             </Anchor>
@@ -142,6 +142,7 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({
               href={`/catalog/subject/${slug}`}
               onClick={(event) => onClick({ event, target: slug })}
               variant="interface"
+              whiteSpace="nowrap"
             >
               {text}
             </Anchor>
@@ -278,7 +279,7 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({
           sm: 'repeat(3, minmax(0, 1fr))',
         }}
         rowGap={16}
-        columnGap={12}
+        columnGap={24}
       >
         {subjectsList}
         {languagesList}

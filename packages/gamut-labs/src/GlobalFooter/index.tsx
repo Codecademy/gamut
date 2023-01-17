@@ -42,9 +42,8 @@ export const GlobalFooter: React.FC<GlobalFooterProps> = ({
 }) => {
   return (
     <FooterContainer className={className} role="contentinfo">
-      <ContentContainer>
-        <FooterNavLinks hidePricing={hidePricing} onClick={onClick} />
-      </ContentContainer>
+      <FooterNavLinks hidePricing={hidePricing} onClick={onClick} />
+
       <FooterLegal onClick={onClick} onMadeInClick={onMadeInClick} />
     </FooterContainer>
   );
