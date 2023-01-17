@@ -1,8 +1,9 @@
-import { Anchor, Box } from '@codecademy/gamut';
+import { Anchor, Box, FlexBox, GridBox } from '@codecademy/gamut';
 import { theme, themed, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
 
+import { logo } from '../../GlobalHeader/GlobalHeaderItems';
 import { FooterHeading } from '../FooterHeading';
 import { FooterLinkItem, FooterLinkItems } from '../FooterLinks';
 import { GlobalFooterClickHandler } from '../types';
@@ -271,7 +272,23 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({
 
   return (
     <CatalogLinksContainer>
-      <Box display="flex" flexDirection={{ _: 'column', sm: 'row' }}>
+      <GridBox
+        gridTemplateColumns={{
+          _: 'repeat(2, minmax(0, 1fr))',
+          sm: 'repeat(3, minmax(0, 1fr))',
+        }}
+        rowGap={16}
+        columnGap={12}
+      >
+        {subjectsList}
+        {languagesList}
+        <FlexBox flexDirection={{ _: 'row', sm: 'column' }}>
+          {careerBuildingList}
+          {mobile}
+        </FlexBox>
+      </GridBox>
+
+      {/* <Box display="flex" flexDirection={{ _: 'column', sm: 'row' }}>
         <Box
           display={{ _: 'block', md: 'none' }}
           width={{ _: '100%', md: '50%' }}
@@ -292,7 +309,7 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({
           {careerBuildingList}
           {mobile}
         </Box>
-      </Box>
+      </Box> */}
     </CatalogLinksContainer>
   );
 };
