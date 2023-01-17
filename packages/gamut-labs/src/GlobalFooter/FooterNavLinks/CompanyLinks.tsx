@@ -1,4 +1,4 @@
-import { Anchor, Box, BoxProps, GridBox } from '@codecademy/gamut';
+import { Anchor, Box, BoxProps, FlexBox, GridBox } from '@codecademy/gamut';
 import * as React from 'react';
 
 import { LogoFromSkillsoft } from '../..';
@@ -17,7 +17,6 @@ export type CompanyLinksProps = {
   onClick: GlobalFooterClickHandler;
 };
 
-// TODO: might have to do flex box since the grid layout style doesnt apply anymore?
 export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   hidePricing,
   onClick,
@@ -186,9 +185,8 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     </Box>
   );
 
-  // TODO: this needs to go at the bottom
   const logo = (
-    <FooterHeading>
+    <FooterHeading mt="auto">
       <LogoFromSkillsoft height={40} />
     </FooterHeading>
   );
@@ -202,10 +200,14 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       rowGap={16}
     >
       {company}
-      {resources}
-      {support({ _: 'none', sm: 'unset' })}
-      {hidePricing ? null : plans}
-      {community({ _: 'none', sm: 'unset' })}
+      <FlexBox flexDirection="column">
+        {resources}
+        {support({ _: 'none', sm: 'unset' })}
+      </FlexBox>
+      <FlexBox flexDirection="column">
+        {hidePricing ? null : plans}
+        {community({ _: 'none', sm: 'unset' })}
+      </FlexBox>
       {support({ _: 'unset', sm: 'none' })}
       {logo}
     </GridBox>
