@@ -52,7 +52,6 @@ const CatalogLinksContainer = styled.div`
 
 const CatalogLinkArea = styled(FooterLinkItems)<{ variant?: 'fullHeight' }>`
   display: flex;
-  max-height: 14rem;
   flex-direction: column;
   flex-wrap: wrap;
   margin-bottom: 1rem;
@@ -103,17 +102,13 @@ const subjects = [
 ];
 
 export type CatalogLinksProps = {
-  hidePricing?: boolean;
   onClick: GlobalFooterClickHandler;
 };
 
 // TODO: Add padding between columns
-export const CatalogLinks: React.FC<CatalogLinksProps> = ({
-  hidePricing,
-  onClick,
-}) => {
+export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
   const languagesList = (
-    <Box>
+    <Box ml={24}>
       <FooterHeading>Languages</FooterHeading>
       <CatalogLinkArea variant="fullHeight">
         {languages.map(([slug, text]) => (
@@ -133,7 +128,7 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({
   );
 
   const subjectsList = (
-    <Box width={{ _: '100%', md: '50%' }}>
+    <Box>
       <FooterHeading>Subjects</FooterHeading>
       <CatalogLinkArea variant="fullHeight">
         {subjects.map(([slug, text]) => (
@@ -155,13 +150,14 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({
   // TODO: links and tracking for these
   const careerBuildingList = (
     <Box>
-      <FooterHeading>Career building</FooterHeading>
-      <CatalogLinkArea variant="fullHeight">
+      {/* <FooterHeading>Career building</FooterHeading> */}
+      {/* <CatalogLinkArea variant="fullHeight">
         <CatalogFooterLinkItem>
           <Anchor
             href="/catalog/all"
             onClick={(event) => onClick({ event, target: 'fullCatalog' })}
             variant="interface"
+            whiteSpace="nowrap"
           >
             Career paths
           </Anchor>
@@ -171,6 +167,7 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({
             href="/catalog/all"
             onClick={(event) => onClick({ event, target: 'fullCatalog' })}
             variant="interface"
+            whiteSpace="nowrap"
           >
             Career services
           </Anchor>
@@ -180,6 +177,7 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({
             href="/catalog/all"
             onClick={(event) => onClick({ event, target: 'fullCatalog' })}
             variant="interface"
+            whiteSpace="nowrap"
           >
             Interview prep
           </Anchor>
@@ -189,10 +187,13 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({
             href="/catalog/all"
             onClick={(event) => onClick({ event, target: 'fullCatalog' })}
             variant="interface"
+            whiteSpace="nowrap"
           >
             Professional certification
           </Anchor>
         </CatalogFooterLinkItem>
+      </CatalogLinkArea> */}
+      <CatalogLinkArea>
         <CatalogFooterLinkItem aria-hidden>—</CatalogFooterLinkItem>
         <CatalogFooterLinkItem>
           <Anchor
@@ -226,17 +227,9 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({
   );
 
   const mobile = (
-    <Box
-      gridColumn="1 / 3"
-      gridColumnEnd={{ sm: '1' }}
-      gridRow={{ sm: '2 / 4' }}
-      pt={hidePricing ? { sm: 16 } : {}}
-    >
+    <Box>
       <FooterHeading mb={{ _: 8, sm: 16, lg: 0 }}>Mobile</FooterHeading>
-      <FooterLinkItems
-        display={{ sm: 'flex' }}
-        flexDirection={{ sm: 'column' }}
-      >
+      <FooterLinkItems display="flex" flexDirection="column">
         <MobileImageItem>
           <MobileImageLink
             href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
@@ -283,34 +276,13 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({
       >
         {subjectsList}
         {languagesList}
-        <FlexBox flexDirection={{ _: 'row', sm: 'column' }}>
+        <FlexBox flexDirection="column" display={{ _: 'none', sm: 'flex' }}>
           {careerBuildingList}
           {mobile}
         </FlexBox>
+        <Box display={{ _: 'block', sm: 'none' }}>{careerBuildingList}</Box>
+        <Box display={{ _: 'block', sm: 'none' }}>{mobile}</Box>
       </GridBox>
-
-      {/* <Box display="flex" flexDirection={{ _: 'column', sm: 'row' }}>
-        <Box
-          display={{ _: 'block', md: 'none' }}
-          width={{ _: '100%', md: '50%' }}
-        >
-          {languagesList}
-        </Box>
-        {subjectsList}
-        <Box
-          display={{ _: 'none', md: 'block' }}
-          width={{ _: '100%', md: '50%' }}
-        >
-          {languagesList}
-        </Box>
-        <Box
-          display={{ _: 'none', md: 'block' }}
-          width={{ _: '100%', md: '50%' }}
-        >
-          {careerBuildingList}
-          {mobile}
-        </Box>
-      </Box> */}
     </CatalogLinksContainer>
   );
 };

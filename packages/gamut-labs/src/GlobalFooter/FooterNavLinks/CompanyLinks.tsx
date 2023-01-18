@@ -209,7 +209,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           </Column>
           <Column size={4}>
             <FlexBox flexDirection="column">
-              {plans}
+              {hidePricing ? null : plans}
               {community}
             </FlexBox>
           </Column>
@@ -227,7 +227,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           </Column>
           <Column size={6}>
             <FlexBox flexDirection="column">
-              {plans}
+              {hidePricing ? null : plans}
               {community}
               {logo}
             </FlexBox>
