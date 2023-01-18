@@ -1,4 +1,4 @@
-import { Anchor, Box, FlexBox, GridBox, List, Text } from '@codecademy/gamut';
+import { Anchor, Box, FlexBox, GridBox, Text } from '@codecademy/gamut';
 import { CheckFilledIcon, DeleteFilledIcon } from '@codecademy/gamut-icons';
 import { Colors, pxRem } from '@codecademy/gamut-styles';
 import { UserClickData } from '@codecademy/tracking';
