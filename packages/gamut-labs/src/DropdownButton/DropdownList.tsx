@@ -12,14 +12,21 @@ export type DropdownItem = {
 export type DropdownListProps = {
   dropdownItems: DropdownItem[];
   onClose?: () => void;
+  spacing?: 'normal' | 'condensed';
 };
 
 export const DropdownList: React.FC<DropdownListProps> = ({
   dropdownItems,
   onClose,
+  spacing,
 }) => {
   return (
-    <Menu variant="action" border="none" minWidth="max-content" py={12}>
+    <Menu
+      variant="action"
+      border="none"
+      minWidth="max-content"
+      py={spacing === 'condensed' ? 0 : 12}
+    >
       {dropdownItems.map((item) => {
         const { id, text, href, clickHandler, icon, target } = item;
 
