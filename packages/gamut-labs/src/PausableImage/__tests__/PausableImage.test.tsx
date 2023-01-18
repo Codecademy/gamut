@@ -1,4 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { waitFor } from '@testing-library/react';
 
 import { PausableImage } from '..';
 
@@ -17,7 +18,7 @@ describe('PausableImage', () => {
     // wait to find static image while loading pause ui
     await view.findByRole('img');
     // wait to find pause button
-    await view.findByText('Pause animated image');
+    await waitFor(() => view.findByText('Pause animated image'));
     view.getByText('Pause animated image');
   });
 
