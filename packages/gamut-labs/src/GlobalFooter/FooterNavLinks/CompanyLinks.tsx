@@ -1,4 +1,5 @@
 import { Anchor, Box, Column, FlexBox, LayoutGrid } from '@codecademy/gamut';
+import styled from '@emotion/styled';
 import * as React from 'react';
 
 import { LogoFromSkillsoft } from '../..';
@@ -16,6 +17,10 @@ export type CompanyLinksProps = {
   hidePricing?: boolean;
   onClick: GlobalFooterClickHandler;
 };
+
+const DesktopTabletGrid = styled(LayoutGrid)`
+  height: 100%;
+`;
 
 export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   hidePricing,
@@ -194,7 +199,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   return (
     <>
       <Box display={{ _: 'none', sm: 'block' }}>
-        <LayoutGrid>
+        <DesktopTabletGrid>
           <Column size={4}>
             <FlexBox flexDirection="column">
               {company}
@@ -213,7 +218,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
               {community}
             </FlexBox>
           </Column>
-        </LayoutGrid>
+        </DesktopTabletGrid>
       </Box>
       {/* mobile */}
       <Box display={{ _: 'block', sm: 'none' }}>
