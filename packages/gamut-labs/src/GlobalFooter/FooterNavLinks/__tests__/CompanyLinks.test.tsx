@@ -13,7 +13,7 @@ describe('CompanyLinks', () => {
       hidePricing: false,
     });
 
-    view.getByText('Individual Plans');
+    view.getByText('Plans');
   });
 
   it('does not include plans when hidePricing is true', () => {
@@ -21,7 +21,7 @@ describe('CompanyLinks', () => {
       hidePricing: true,
     });
 
-    expect(view.queryByText('Individual Plans')).toBeNull();
+    expect(view.queryByText('Plans')).toBeNull();
   });
 
   it('fires onClick when an item is clicked', () => {
