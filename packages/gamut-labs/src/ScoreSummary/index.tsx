@@ -1,4 +1,4 @@
-import { Anchor, Box, FlexBox, GridBox, Text } from '@codecademy/gamut';
+import { Anchor, Box, FlexBox, GridBox, List, Text } from '@codecademy/gamut';
 import { CheckFilledIcon, DeleteFilledIcon } from '@codecademy/gamut-icons';
 import { Colors, pxRem } from '@codecademy/gamut-styles';
 import { UserClickData } from '@codecademy/tracking';
@@ -70,6 +70,7 @@ const renderSubScores = ({
           py={8}
           justifyContent="space-between"
           alignItems="center"
+          role="listitem"
         >
           <FlexBox alignItems="center">
             {colorfulIcons ? (
@@ -121,10 +122,8 @@ const renderSubScores = ({
               </>
             )}
             <Text
-              aria-label={`${subContentCorrect} out of ${subContentTotal} correct`}
-            >
-              {`${subContentCorrect} / ${subContentTotal}`}
-            </Text>
+              aria-label={`${subContentCorrect} out of ${subContentTotal} questions correct`}
+            >{`${subContentCorrect} / ${subContentTotal}`}</Text>
           </FlexBox>
         </FlexBox>
       );
@@ -157,6 +156,7 @@ const renderUntestedSubContent = ({
           py={8}
           justifyContent="space-between"
           color={lighterBorderColor}
+          role="listitem"
         >
           <Text flexGrow={1}>{title}</Text>
           <FlexBox
@@ -245,7 +245,12 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
           </Box>
         )}
       </Box>
-      <FlexBox flexDirection="column" maxWidth={noMaxWidth ? '' : pxRem(705)}>
+      <FlexBox
+        flexDirection="column"
+        maxWidth={noMaxWidth ? '' : pxRem(705)}
+        role="list"
+        aria-label="Unit Subjects"
+      >
         <FlexBox
           flexDirection="column"
           borderX={1}
