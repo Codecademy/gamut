@@ -108,7 +108,7 @@ export type CatalogLinksProps = {
 // TODO: Add padding between columns
 export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
   const languagesList = (
-    <Box ml={24}>
+    <Box>
       <FooterHeading>Languages</FooterHeading>
       <CatalogLinkArea variant="fullHeight">
         {languages.map(([slug, text]) => (
@@ -155,7 +155,7 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
         <CatalogFooterLinkItem>
           <Anchor
             href="/catalog/all"
-            onClick={(event) => onClick({ event, target: 'full_catalog' })}
+            onClick={(event) => onClick({ event, target: 'catalog' })}
             variant="interface"
             whiteSpace="nowrap"
           >

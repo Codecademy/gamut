@@ -25,6 +25,13 @@ export const footerResourcesList: AppFooterResourcesDataItem[] = [
     text: 'Articles',
   },
   {
+    id: 'blog',
+    href: 'https://codecademy.com/resources/blog',
+    trackingTarget: 'blog',
+    text: 'Blog',
+    newTab: true,
+  },
+  {
     id: 'cheatsheets',
     href: '/resources/cheatsheets/all',
     trackingTarget: 'cheatsheets_home',
@@ -59,13 +66,6 @@ export const footerResourcesList: AppFooterResourcesDataItem[] = [
     href: 'https://codecademy.com/pages/workspaces',
     trackingTarget: 'workspaces',
     text: 'Workspaces',
-  },
-  {
-    id: 'blog',
-    href: 'https://codecademy.com/resources/blog',
-    trackingTarget: 'blog',
-    text: 'Blog',
-    newTab: true,
   },
 ];
 export const headerResourcesList: AppHeaderResourcesDataItem[] = [
