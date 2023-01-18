@@ -150,22 +150,23 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
   // TODO: links and tracking for these
   const careerBuildingList = (
     <Box>
-      {/* <FooterHeading>Career building</FooterHeading> */}
-      {/* <CatalogLinkArea variant="fullHeight">
+      <FooterHeading>Career building</FooterHeading>
+      <CatalogLinkArea variant="fullHeight">
         <CatalogFooterLinkItem>
           <Anchor
             href="/catalog/all"
-            onClick={(event) => onClick({ event, target: 'fullCatalog' })}
+            onClick={(event) => onClick({ event, target: 'full_catalog' })}
             variant="interface"
             whiteSpace="nowrap"
           >
             Career paths
           </Anchor>
         </CatalogFooterLinkItem>
-        <CatalogFooterLinkItem>
+        {/* TODO: DISC-1059 - Uncomment career links in footer once links are live on 1/30  */}
+        {/* <CatalogFooterLinkItem>
           <Anchor
-            href="/catalog/all"
-            onClick={(event) => onClick({ event, target: 'fullCatalog' })}
+            href="/pages/career-services"
+            onClick={(event) => onClick({ event, target: 'career_services' })}
             variant="interface"
             whiteSpace="nowrap"
           >
@@ -174,8 +175,8 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
         </CatalogFooterLinkItem>
         <CatalogFooterLinkItem>
           <Anchor
-            href="/catalog/all"
-            onClick={(event) => onClick({ event, target: 'fullCatalog' })}
+            href="/pages/interview-prep"
+            onClick={(event) => onClick({ event, target: 'interview_prep' })}
             variant="interface"
             whiteSpace="nowrap"
           >
@@ -184,16 +185,14 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
         </CatalogFooterLinkItem>
         <CatalogFooterLinkItem>
           <Anchor
-            href="/catalog/all"
-            onClick={(event) => onClick({ event, target: 'fullCatalog' })}
+            href="/pages/pro-certifications"
+            onClick={(event) => onClick({ event, target: 'pro_certifications' })}
             variant="interface"
             whiteSpace="nowrap"
           >
             Professional certification
           </Anchor>
-        </CatalogFooterLinkItem>
-      </CatalogLinkArea> */}
-      <CatalogLinkArea>
+        </CatalogFooterLinkItem> */}
         <CatalogFooterLinkItem aria-hidden>—</CatalogFooterLinkItem>
         <CatalogFooterLinkItem>
           <Anchor
