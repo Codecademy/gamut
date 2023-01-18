@@ -235,7 +235,7 @@ export const headerResourcesList: AppHeaderResourcesDataItem[] = [
     data: [
       {
         id: 'career-advice',
-        href: '/resources/blog/tag/career/',
+        href: '/resources/blog/category/career/',
         text: 'Career advice',
         description: 'Get answers to questions about coding careers.',
         trackingTarget: 'topnav_resources_inspiration_career_advice',
@@ -244,7 +244,7 @@ export const headerResourcesList: AppHeaderResourcesDataItem[] = [
       },
       {
         id: 'learning-tips',
-        href: '/resources/blog/tag/learning/',
+        href: '/resources/blog/category/learning-tips/',
         text: 'Learning tips',
         description: 'Learn where to start and how to stay motivated.',
         trackingTarget: 'topnav_resources_inspiration_learning_tips',
