@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import * as React from 'react';
-import { useMountedState, useRendersCount } from 'react-use';
 
 const BaseImage = React.lazy(() => import('./BaseImage'));
 
