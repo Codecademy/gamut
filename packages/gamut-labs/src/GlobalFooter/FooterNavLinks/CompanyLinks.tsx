@@ -1,4 +1,4 @@
-import { Anchor, Box, BoxProps, FlexBox, GridBox } from '@codecademy/gamut';
+import { Anchor, Box, Column, FlexBox, LayoutGrid } from '@codecademy/gamut';
 import * as React from 'react';
 
 import { LogoFromSkillsoft } from '../..';
@@ -21,8 +21,8 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   hidePricing,
   onClick,
 }) => {
-  const community = (display: BoxProps['display']) => (
-    <Box display={display} mt={{ sm: hidePricing ? 0 : 16 }} order={{ sm: 3 }}>
+  const community = (
+    <Box mt={{ sm: hidePricing ? 0 : 32 }}>
       <FooterHeading>Community</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -167,8 +167,8 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     </Box>
   );
 
-  const support = (display: BoxProps['display']) => (
-    <Box display={display} mt={{ sm: 16 }} order={{ sm: 3 }}>
+  const support = (
+    <Box mt={{ _: 0, sm: 32 }}>
       <FooterHeading>Support</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -192,25 +192,48 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   );
 
   return (
-    <GridBox
-      gridTemplateColumns={{
-        _: 'repeat(2, minmax(0, 1fr))',
-        sm: 'repeat(3, minmax(0, 1fr))',
-      }}
-      rowGap={16}
-      columnGap={24}
-    >
-      {company}
-      <FlexBox flexDirection="column">
-        {resources}
-        {support({ _: 'none', sm: 'unset' })}
-      </FlexBox>
-      <FlexBox flexDirection="column">
-        {hidePricing ? null : plans}
-        {community({ _: 'none', sm: 'unset' })}
-      </FlexBox>
-      {support({ _: 'unset', sm: 'none' })}
-      {logo}
-    </GridBox>
+    <>
+      <Box display={{ _: 'none', sm: 'block' }}>
+        <LayoutGrid>
+          <Column size={4}>
+            <FlexBox flexDirection="column">
+              {company}
+              {logo}
+            </FlexBox>
+          </Column>
+          <Column size={4}>
+            <FlexBox flexDirection="column">
+              {resources}
+              {support}
+            </FlexBox>
+          </Column>
+          <Column size={4}>
+            <FlexBox flexDirection="column">
+              {plans}
+              {community}
+            </FlexBox>
+          </Column>
+        </LayoutGrid>
+      </Box>
+      {/* mobile */}
+      <Box display={{ _: 'block', sm: 'none' }}>
+        <LayoutGrid>
+          <Column size={6}>
+            <FlexBox flexDirection="column">
+              {company}
+              {resources}
+              {support}
+            </FlexBox>
+          </Column>
+          <Column size={6}>
+            <FlexBox flexDirection="column">
+              {plans}
+              {community}
+              {logo}
+            </FlexBox>
+          </Column>
+        </LayoutGrid>
+      </Box>
+    </>
   );
 };
