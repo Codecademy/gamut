@@ -274,7 +274,7 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
           {/* desktop/tablet */}
           {appStoreLinks({ _: 'none', sm: 'unset' })}
         </Column>
-        <Column size={{ _: 6, sm: 0 }}>
+        <Column size={6} display={{ _: 'block', sm: 'none' }}>
           {/* mobile */}
           {appStoreLinks({ _: 'unset', sm: 'none' })}
         </Column>

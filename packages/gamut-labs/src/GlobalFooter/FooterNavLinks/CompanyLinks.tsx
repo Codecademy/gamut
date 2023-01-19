@@ -222,10 +222,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         {logo({ _: 'unset', sm: 'none' })}
       </Column>
       <Column
-        size={{ _: 6, sm: 4 }}
-        order={{ _: 6, sm: 4 }}
+        size={4}
+        order={4}
         gridTemplateRows="min-content"
         mt="auto"
+        display={{ _: 'none', sm: 'block' }}
       >
         {/* desktop/tablet */}
         {logo({ _: 'none', sm: 'unset' })}
