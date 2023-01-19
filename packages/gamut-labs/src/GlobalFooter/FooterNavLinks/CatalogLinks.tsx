@@ -46,7 +46,7 @@ const CatalogLinksContainer = styled.div`
   }
 
   ${theme.breakpoints.lg} {
-    padding-left: 2rem;
+    padding-left: 4rem;
   }
 `;
 
