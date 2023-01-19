@@ -16,8 +16,8 @@
     "build": "nx build @codecademy/markdown-overrides"
   },
   "peerDependencies": {
-    "react": ">=17.0.2",
-    "react-dom": ">=17.0.2"
+    "react": "^17.0.2 || ^18.2.0",
+    "react-dom": "^17.0.2 || ^18.2.0"
   },
   "dependencies": {
     "@codecademy/gamut-styles": "14.2.5",

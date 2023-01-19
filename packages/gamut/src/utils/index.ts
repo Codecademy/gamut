@@ -1,3 +1,4 @@
+export * from './childrenType';
 export * from './createPromise';
-export * from './omitProps';
 export * from './generateResponsiveClassnames';
+export * from './omitProps';

@@ -1,4 +1,10 @@
-import { Anchor, FlexBox, LayoutGrid, Text } from '@codecademy/gamut';
+import {
+  Anchor,
+  FlexBox,
+  LayoutGrid,
+  Text,
+  WithChildrenProp,
+} from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import { css, pxRem, states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -7,9 +13,9 @@ import * as React from 'react';
 
 export const appHeaderMobileBreakpoint = 'lg' as const;
 
-export type AnimatedHeaderZoneProps = {
+export interface AnimatedHeaderZoneProps extends WithChildrenProp {
   visible?: boolean;
-};
+}
 
 const animatedPopoverVariants: Variants = {
   enter: { opacity: 1, transition: { duration: 0.2 } },

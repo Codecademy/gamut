@@ -4,6 +4,7 @@ import {
   IconButton,
   Popover,
   StrokeButton,
+  WithChildrenProp,
 } from '@codecademy/gamut';
 import {
   ArrowChevronDownFilledIcon,
@@ -30,14 +31,14 @@ const HorizontalKebabIcon = styled(MiniKebabMenuIcon)(
   })
 );
 
-export type DropdownButtonProps = {
+export interface DropdownButtonProps extends WithChildrenProp {
   buttonType?: 'fill' | 'stroke' | 'kebab' | 'horizontalKebab';
   dropdownItems: DropdownItem[];
   align?: 'left' | 'right';
   onClick?: (event: React.MouseEvent) => void;
   verticalOffset?: number;
   horizontalOffset?: number;
-};
+}
 
 export const DropdownButton: React.FC<DropdownButtonProps> = ({
   buttonType = 'fill',
