@@ -1,4 +1,4 @@
-import { Box } from '@codecademy/gamut';
+import { Box, WithChildrenProp } from '@codecademy/gamut';
 import { system, transitionConcat } from '@codecademy/gamut-styles';
 import { ResponsiveProp } from '@codecademy/variance';
 import { useTheme } from '@emotion/react';
@@ -28,11 +28,11 @@ const HeaderHeightAreaBase = styled(Box)(
   })
 );
 
-export type HeaderHeightAreaProps = {
+export interface HeaderHeightAreaProps extends WithChildrenProp {
   as?: React.ElementType<any>;
   display: ResponsiveProp<'none' | 'block'>;
   title?: string;
-};
+}
 
 export const HeaderHeightArea: React.FC<HeaderHeightAreaProps> = ({
   as,

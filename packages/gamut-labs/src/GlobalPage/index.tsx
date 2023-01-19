@@ -2,6 +2,7 @@ import {
   AppWrapper,
   SkipToContent,
   SkipToContentTarget,
+  WithChildrenProp,
 } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import { ComponentProps, forwardRef } from 'react';
@@ -21,7 +22,7 @@ export type GlobalPageBackgroundColor =
   | 'paleYellow'
   | 'white';
 
-export type GlobalPageProps = {
+export interface GlobalPageProps extends WithChildrenProp {
   backgroundColor?: GlobalPageBackgroundColor;
 
   /**
@@ -48,7 +49,7 @@ export type GlobalPageProps = {
    * Custom element ID to link to by the SkipToContent control, if not a default one at the beginning of the page.
    */
   skipToContentId?: string;
-};
+}
 
 const defaultSkipToContentId = 'page-skip-to-content-target';
 

@@ -1,7 +1,8 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "declaration": true,
+    "allowJs": true,
     "module": "CommonJS",
     "outDir": "./dist",
     "rootDir": "./src"

@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [52.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.7.3...@codecademy/gamut@52.0.0) (2023-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Support React 18 [WEB-2055]
+
+### Miscellaneous Chores
+
+* Support React 18 [WEB-2055] ([89d6b22](https://github.com/Codecademy/gamut/commit/89d6b224831dd62d7bcd9a424142eaab02232a00))
+
+
+
+### [51.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.7.2...@codecademy/gamut@51.7.3) (2023-01-09)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [51.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.7.1...@codecademy/gamut@51.7.2) (2023-01-09)
+
+
+### Bug Fixes
+
+* **SelectDropDown:** fix option voice over announcement bug ([6abcfe7](https://github.com/Codecademy/gamut/commit/6abcfe7fd976694586bc4aeefcfd648c6165e05b))
+
+
+
+### [51.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.7.0...@codecademy/gamut@51.7.1) (2023-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [51.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.6.2...@codecademy/gamut@51.7.0) (2023-01-04)
+
+
+### Features
+
+* **FormGroupLabel, GridForm:** assorted embedded user-form features ([5528b76](https://github.com/Codecademy/gamut/commit/5528b7632021988bedd96fdbbf2654f009d764e0))
+
+
+
 ### [51.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.6.1...@codecademy/gamut@51.6.2) (2022-12-16)
 
 

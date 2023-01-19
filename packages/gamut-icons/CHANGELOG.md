@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.9.7...@codecademy/gamut-icons@8.0.0) (2023-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Support React 18 [WEB-2055]
+
+### Miscellaneous Chores
+
+* Support React 18 [WEB-2055] ([89d6b22](https://github.com/Codecademy/gamut/commit/89d6b224831dd62d7bcd9a424142eaab02232a00))
+
+
+
+### [7.9.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.9.6...@codecademy/gamut-icons@7.9.7) (2023-01-09)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [7.9.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.9.5...@codecademy/gamut-icons@7.9.6) (2023-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
 ### [7.9.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@7.9.4...@codecademy/gamut-icons@7.9.5) (2022-12-06)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

@@ -9,6 +9,7 @@ import {
   Input,
   useDebouncedField,
   useFormState,
+  WithChildrenProp,
 } from '../..';
 
 const mockedSetValue = jest.fn();
@@ -34,7 +35,7 @@ const mockChangeValue =
 const mockChangeKey = 'remake-intergrade';
 const mockCheckboxKey = 'episode-inter-mission';
 
-const FormWrapper: React.FC = ({ children }) => (
+const FormWrapper: React.FC<WithChildrenProp> = ({ children }) => (
   <ConnectedForm
     onSubmit={() => null}
     defaultValues={{

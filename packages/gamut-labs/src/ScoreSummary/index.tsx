@@ -1,4 +1,5 @@
 import { Anchor, Box, FlexBox, GridBox, Text } from '@codecademy/gamut';
+import { CheckFilledIcon, DeleteFilledIcon } from '@codecademy/gamut-icons';
 import { Colors, pxRem } from '@codecademy/gamut-styles';
 import { UserClickData } from '@codecademy/tracking';
 import * as React from 'react';
@@ -14,14 +15,17 @@ export interface ScoreSummaryProps {
   pathSlug: string;
   trackSlug?: string;
   trackingData?: UserClickData;
-  borderColor?: Colors;
   lighterBorderColor?: Colors;
   layout?: 'column' | 'row';
   untestedSubContent?: UntestedSubContent[];
   trackUserClick?: (data: UserClickData) => void;
   description?: string;
   noMaxWidth?: boolean;
+  colorfulIcons?: boolean;
 }
+
+const SHOW_REVIEW_SCORE = 0.6;
+const PASSING_SCORE = 0.7;
 
 const renderSubScores = ({
   subScores,
@@ -29,12 +33,14 @@ const renderSubScores = ({
   trackSlug,
   trackingData,
   trackUserClick,
+  colorfulIcons,
 }: {
   subScores: CorrectAnswerCountsBySubContent;
   pathSlug: string;
   trackSlug?: string;
   trackingData?: UserClickData;
   trackUserClick?: (data: UserClickData) => void;
+  colorfulIcons?: boolean;
 }) =>
   Object.entries(subScores).map(
     (
@@ -63,10 +69,36 @@ const renderSubScores = ({
           px={16}
           py={8}
           justifyContent="space-between"
+          alignItems="center"
         >
-          <Text fontWeight="bold">{subContentTitle}</Text>
-          <FlexBox fontSize={14} minWidth="11rem" justifyContent="flex-end">
-            {subContentPercentCorrect <= 0.6 && trackSlug && (
+          <FlexBox alignItems="center">
+            {colorfulIcons ? (
+              subContentPercentCorrect >= PASSING_SCORE ? (
+                <CheckFilledIcon
+                  minWidth={16}
+                  mr={12}
+                  color="feedback-success"
+                />
+              ) : (
+                <DeleteFilledIcon
+                  minWidth={16}
+                  mr={12}
+                  color="feedback-error"
+                />
+              )
+            ) : null}
+            <Text fontWeight="bold">{subContentTitle}</Text>
+          </FlexBox>
+          <FlexBox
+            fontSize={14}
+            minWidth={
+              subContentPercentCorrect < SHOW_REVIEW_SCORE && trackSlug
+                ? '11rem'
+                : '3rem'
+            }
+            justifyContent="flex-end"
+          >
+            {subContentPercentCorrect < SHOW_REVIEW_SCORE && trackSlug && (
               <>
                 <Anchor
                   aria-label={`Review concepts for ${subContentTitle}`}
@@ -149,12 +181,12 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
   trackSlug,
   trackingData,
   untestedSubContent,
-  borderColor = 'white',
   lighterBorderColor = 'navy-400',
   layout = 'row',
   trackUserClick,
   description,
   noMaxWidth = false,
+  colorfulIcons = false,
 }) => {
   let numOfRows = Object.entries(subScores).length;
   if (untestedSubContent) {
@@ -163,9 +195,10 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
   const isRowLayout = layout === 'row';
   return (
     <GridBox gridTemplateColumns={isRowLayout ? { _: '', md: '2fr 3fr' } : ''}>
-      <GridBox
+      <Box
         zIndex={1}
         bg="transparent"
+        display="inline"
         maxWidth={
           noMaxWidth
             ? ''
@@ -185,12 +218,12 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
           border={1}
         >
           <QuizScore
-            borderColor={borderColor}
             correctCount={totalCorrect}
             layout={isRowLayout ? 'column' : 'row'}
             total={totalQuestions}
             smallerFont
             numOfRows={numOfRows}
+            colorfulIcons={colorfulIcons}
           />
         </Box>
         {description && (
@@ -211,7 +244,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
             <Text fontSize={14}>{description}</Text>
           </Box>
         )}
-      </GridBox>
+      </Box>
       <FlexBox flexDirection="column" maxWidth={noMaxWidth ? '' : pxRem(705)}>
         <FlexBox
           flexDirection="column"
@@ -225,6 +258,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
             trackSlug,
             trackingData,
             trackUserClick,
+            colorfulIcons,
           })}
         </FlexBox>
         <GridBox bg="transparent">

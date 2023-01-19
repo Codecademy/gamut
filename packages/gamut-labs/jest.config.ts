@@ -8,5 +8,4 @@ export default base('gamut-labs', {
   setupFiles: ['<rootDir>/../../script/jest/base-setup.js'],
   setupFilesAfterEnv: ['<rootDir>/../../script/jest/rtl-setup.js'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  snapshotSerializers: ['enzyme-to-json/serializer'],
 });

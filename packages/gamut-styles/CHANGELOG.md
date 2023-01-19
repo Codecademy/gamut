@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.5...@codecademy/gamut-styles@15.0.0) (2023-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Support React 18 [WEB-2055]
+
+### Miscellaneous Chores
+
+* Support React 18 [WEB-2055] ([89d6b22](https://github.com/Codecademy/gamut/commit/89d6b224831dd62d7bcd9a424142eaab02232a00))
+
+
+
+### [14.2.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.4...@codecademy/gamut-styles@14.2.5) (2023-01-09)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [14.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.3...@codecademy/gamut-styles@14.2.4) (2023-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
 ### [14.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.2...@codecademy/gamut-styles@14.2.3) (2022-12-06)
 
 **Note:** Version bump only for package @codecademy/gamut-styles

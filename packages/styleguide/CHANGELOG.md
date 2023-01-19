@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [63.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.8.6...@codecademy/styleguide@63.0.0) (2023-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Support React 18 [WEB-2055]
+
+### Miscellaneous Chores
+
+* Support React 18 [WEB-2055] ([89d6b22](https://github.com/Codecademy/gamut/commit/89d6b224831dd62d7bcd9a424142eaab02232a00))
+
+
+
+### [62.8.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.8.5...@codecademy/styleguide@62.8.6) (2023-01-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.8.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.8.4...@codecademy/styleguide@62.8.5) (2023-01-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.8.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.8.3...@codecademy/styleguide@62.8.4) (2023-01-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.8.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.8.2...@codecademy/styleguide@62.8.3) (2023-01-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.8.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.8.1...@codecademy/styleguide@62.8.2) (2023-01-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [62.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.8.0...@codecademy/styleguide@62.8.1) (2023-01-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [62.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.7.3...@codecademy/styleguide@62.8.0) (2023-01-04)
+
+
+### Features
+
+* **FormGroupLabel, GridForm:** assorted embedded user-form features ([5528b76](https://github.com/Codecademy/gamut/commit/5528b7632021988bedd96fdbbf2654f009d764e0))
+
+
+
 ### [62.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.7.2...@codecademy/styleguide@62.7.3) (2022-12-16)
 
 

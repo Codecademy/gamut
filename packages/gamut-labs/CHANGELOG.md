@@ -3,6 +3,78 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.1.0...@codecademy/gamut-labs@35.0.0) (2023-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Support React 18 [WEB-2055]
+
+### Miscellaneous Chores
+
+* Support React 18 [WEB-2055] ([89d6b22](https://github.com/Codecademy/gamut/commit/89d6b224831dd62d7bcd9a424142eaab02232a00))
+
+
+
+## [34.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.11...@codecademy/gamut-labs@34.1.0) (2023-01-18)
+
+
+### Features
+
+* **resourcesList:** update blog links in global header ([704f009](https://github.com/Codecademy/gamut/commit/704f009c03656ffa3665bfbeb188e9ee7eeffad3))
+
+
+
+### [34.0.11](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.10...@codecademy/gamut-labs@34.0.11) (2023-01-09)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [34.0.10](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.9...@codecademy/gamut-labs@34.0.10) (2023-01-09)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [34.0.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.8...@codecademy/gamut-labs@34.0.9) (2023-01-09)
+
+
+### Bug Fixes
+
+* **SocialMediaSharing:** fix partially undefined id ([868d25f](https://github.com/Codecademy/gamut/commit/868d25f1e91b660cc13fa7c595bb84de105a0141))
+
+
+
+### [34.0.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.7...@codecademy/gamut-labs@34.0.8) (2023-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [34.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.6...@codecademy/gamut-labs@34.0.7) (2023-01-06)
+
+
+### Bug Fixes
+
+* **CurriculumCard:** do not display pro label ([2b5a16c](https://github.com/Codecademy/gamut/commit/2b5a16c7bb19b9c11949ac45a1105f5716357f5a))
+
+
+
+### [34.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.5...@codecademy/gamut-labs@34.0.6) (2023-01-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [34.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.4...@codecademy/gamut-labs@34.0.5) (2022-12-16)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
