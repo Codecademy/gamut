@@ -1,4 +1,4 @@
-import { Anchor, Column, LayoutGrid } from '@codecademy/gamut';
+import { Anchor, Box, BoxProps, Column, LayoutGrid } from '@codecademy/gamut';
 import * as React from 'react';
 
 import { LogoFromSkillsoft } from '../..';
@@ -22,11 +22,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   onClick,
 }) => {
   const community = (
-    <Column
-      size={{ _: 6, sm: 4 }}
-      order={{ _: 4, sm: 6 }}
-      gridTemplateRows="min-content"
-    >
+    <Box>
       <FooterHeading>Community</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -73,11 +69,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           </Anchor>
         </FooterLinkItem>
       </FooterLinkItems>
-    </Column>
+    </Box>
   );
 
   const company = (
-    <Column size={{ _: 6, sm: 4 }} order={1} gridTemplateRows="min-content">
+    <>
       <FooterHeading>Company</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -111,15 +107,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           <SocialMediaLinks />
         </FooterLinkItem>
       </FooterLinkItems>
-    </Column>
+    </>
   );
 
   const plans = (
-    <Column
-      size={{ _: 6, sm: 4 }}
-      order={{ _: 2, sm: 3 }}
-      gridTemplateRows="min-content"
-    >
+    <Box mb={{ _: 0, sm: 24 }}>
       <FooterHeading>Plans</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -150,15 +142,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           </Anchor>
         </FooterLinkItem>
       </FooterLinkItems>
-    </Column>
+    </Box>
   );
 
-  const resources = (
-    <Column
-      size={{ _: 6, sm: 4 }}
-      order={{ _: 3, sm: 2 }}
-      gridTemplateRows="min-content"
-    >
+  const resources = (display: BoxProps['display']) => (
+    <Box display={display}>
       <FooterHeading>Resources</FooterHeading>
       <FooterLinkItems>
         {footerResourcesList.map(
@@ -176,11 +164,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           )
         )}
       </FooterLinkItems>
-    </Column>
+    </Box>
   );
 
-  const support = (
-    <Column size={{ _: 6, sm: 4 }} order={5} gridTemplateRows="min-content">
+  const support = (display: BoxProps['display']) => (
+    <Box display={display} mt={{ _: 0, sm: 24 }}>
       <FooterHeading>Support</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -194,29 +182,49 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           </Anchor>
         </FooterLinkItem>
       </FooterLinkItems>
-    </Column>
+    </Box>
   );
 
-  const logo = (
-    <Column
-      size={{ _: 6, sm: 4 }}
-      order={{ _: 6, sm: 4 }}
-      gridTemplateRows="min-content"
-    >
+  const logo = (display: BoxProps['display']) => (
+    <Box display={display} mt="auto">
       <FooterHeading>
         <LogoFromSkillsoft height={40} />
       </FooterHeading>
-    </Column>
+    </Box>
   );
 
   return (
-    <LayoutGrid>
-      {company}
-      {resources}
-      {hidePricing ? null : plans}
-      {logo}
-      {support}
-      {community}
+    <LayoutGrid rowGap={{ _: 24, md: 8 }}>
+      <Column size={{ _: 6, sm: 4 }} order={1} gridTemplateRows="min-content">
+        {company}
+        {resources({ _: 'unset', sm: 'none' })}
+        {support({ _: 'unset', sm: 'none' })}
+      </Column>
+      <Column
+        size={{ _: 6, sm: 4 }}
+        order={{ _: 3, sm: 2 }}
+        gridTemplateRows="min-content"
+      >
+        {resources({ _: 'none', sm: 'unset' })}
+        {support({ _: 'none', sm: 'unset' })}
+      </Column>
+      <Column
+        size={{ _: 6, sm: 4 }}
+        order={{ _: 2, sm: 3 }}
+        gridTemplateRows="min-content"
+      >
+        {hidePricing ? null : plans}
+        {community}
+        {logo({ _: 'unset', sm: 'none' })}
+      </Column>
+      <Column
+        size={{ _: 6, sm: 4 }}
+        order={{ _: 6, sm: 4 }}
+        gridTemplateRows="min-content"
+        mt="auto"
+      >
+        {logo({ _: 'none', sm: 'unset' })}
+      </Column>
     </LayoutGrid>
   );
 };
