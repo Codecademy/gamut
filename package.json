@@ -71,7 +71,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/classnames": "2.2.10",
     "@types/invariant": "2.2.29",
     "@types/konami-code-js": "^0.8.0",

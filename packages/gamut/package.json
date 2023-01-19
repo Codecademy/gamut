@@ -62,7 +62,7 @@
     "@testing-library/dom": "^8.11.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.4.3",
     "onchange": "^7.0.2"
   },
   "publishConfig": {
