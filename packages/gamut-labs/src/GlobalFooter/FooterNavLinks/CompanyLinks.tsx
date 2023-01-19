@@ -1,5 +1,4 @@
-import { Anchor, Box, Column, FlexBox, LayoutGrid } from '@codecademy/gamut';
-import styled from '@emotion/styled';
+import { Anchor, Column, LayoutGrid } from '@codecademy/gamut';
 import * as React from 'react';
 
 import { LogoFromSkillsoft } from '../..';
@@ -18,16 +17,16 @@ export type CompanyLinksProps = {
   onClick: GlobalFooterClickHandler;
 };
 
-const DesktopTabletGrid = styled(LayoutGrid)`
-  height: 100%;
-`;
-
 export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   hidePricing,
   onClick,
 }) => {
   const community = (
-    <Box mt={{ sm: hidePricing ? 0 : 32 }}>
+    <Column
+      size={{ _: 6, sm: 4 }}
+      order={{ _: 4, sm: 6 }}
+      mt={{ sm: hidePricing ? 0 : 32 }}
+    >
       <FooterHeading>Community</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -74,11 +73,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           </Anchor>
         </FooterLinkItem>
       </FooterLinkItems>
-    </Box>
+    </Column>
   );
 
   const company = (
-    <Box>
+    <Column size={{ _: 6, sm: 4 }} order={1}>
       <FooterHeading>Company</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -112,11 +111,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           <SocialMediaLinks />
         </FooterLinkItem>
       </FooterLinkItems>
-    </Box>
+    </Column>
   );
 
   const plans = (
-    <Box>
+    <Column size={{ _: 6, sm: 4 }} order={{ _: 2, sm: 3 }}>
       <FooterHeading>Plans</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -147,11 +146,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           </Anchor>
         </FooterLinkItem>
       </FooterLinkItems>
-    </Box>
+    </Column>
   );
 
   const resources = (
-    <Box>
+    <Column size={{ _: 6, sm: 4 }} order={{ _: 3, sm: 2 }}>
       <FooterHeading>Resources</FooterHeading>
       <FooterLinkItems>
         {footerResourcesList.map(
@@ -169,11 +168,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           )
         )}
       </FooterLinkItems>
-    </Box>
+    </Column>
   );
 
   const support = (
-    <Box mt={{ _: 0, sm: 32 }}>
+    <Column size={{ _: 6, sm: 4 }} order={5}>
       <FooterHeading>Support</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -187,58 +186,25 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
           </Anchor>
         </FooterLinkItem>
       </FooterLinkItems>
-    </Box>
+    </Column>
   );
 
   const logo = (
-    <FooterHeading mt="auto">
-      <LogoFromSkillsoft height={40} />
-    </FooterHeading>
+    <Column size={{ _: 6, sm: 4 }} order={{ _: 6, sm: 4 }}>
+      <FooterHeading mt="auto">
+        <LogoFromSkillsoft height={40} />
+      </FooterHeading>
+    </Column>
   );
 
   return (
-    <>
-      <Box display={{ _: 'none', sm: 'block' }}>
-        <DesktopTabletGrid>
-          <Column size={4}>
-            <FlexBox flexDirection="column">
-              {company}
-              {logo}
-            </FlexBox>
-          </Column>
-          <Column size={4}>
-            <FlexBox flexDirection="column">
-              {resources}
-              {support}
-            </FlexBox>
-          </Column>
-          <Column size={4}>
-            <FlexBox flexDirection="column">
-              {hidePricing ? null : plans}
-              {community}
-            </FlexBox>
-          </Column>
-        </DesktopTabletGrid>
-      </Box>
-      {/* mobile */}
-      <Box display={{ _: 'block', sm: 'none' }}>
-        <LayoutGrid>
-          <Column size={6}>
-            <FlexBox flexDirection="column">
-              {company}
-              {resources}
-              {support}
-            </FlexBox>
-          </Column>
-          <Column size={6}>
-            <FlexBox flexDirection="column">
-              {hidePricing ? null : plans}
-              {community}
-              {logo}
-            </FlexBox>
-          </Column>
-        </LayoutGrid>
-      </Box>
-    </>
+    <LayoutGrid>
+      {company}
+      {resources}
+      {hidePricing ? null : plans}
+      {logo}
+      {support}
+      {community}
+    </LayoutGrid>
   );
 };
