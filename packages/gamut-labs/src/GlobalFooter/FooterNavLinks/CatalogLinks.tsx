@@ -1,4 +1,4 @@
-import { Anchor, Box, FlexBox, GridBox } from '@codecademy/gamut';
+import { Anchor, Box, BoxProps, Column, LayoutGrid } from '@codecademy/gamut';
 import { theme, themed, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
@@ -46,7 +46,7 @@ const CatalogLinksContainer = styled.div`
   }
 
   ${theme.breakpoints.lg} {
-    padding-left: 4rem;
+    padding-left: 2rem;
   }
 `;
 
@@ -147,7 +147,6 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
     </Box>
   );
 
-  // TODO: links and tracking for these
   const careerBuildingList = (
     <Box>
       <FooterHeading>Career building</FooterHeading>
@@ -225,8 +224,8 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
     </Box>
   );
 
-  const mobile = (
-    <Box>
+  const appStoreLinks = (display: BoxProps['display']) => (
+    <Box display={display}>
       <FooterHeading>Mobile</FooterHeading>
       <CatalogLinkArea variant="fullHeight">
         <FooterLinkItems display="flex" flexDirection="column">
@@ -265,25 +264,22 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
     </Box>
   );
 
+  // Footer items change placement depending on screen size
   return (
     <CatalogLinksContainer>
-      <GridBox
-        gridTemplateColumns={{
-          _: 'repeat(2, minmax(0, 1fr))',
-          sm: 'repeat(3, minmax(0, 1fr))',
-        }}
-        rowGap={16}
-        columnGap={24}
-      >
-        {subjectsList}
-        {languagesList}
-        <FlexBox flexDirection="column" display={{ _: 'none', sm: 'flex' }}>
+      <LayoutGrid columnGap={24}>
+        <Column size={{ _: 6, sm: 4 }}>{subjectsList}</Column>
+        <Column size={{ _: 6, sm: 4 }}>{languagesList}</Column>
+        <Column size={{ _: 6, sm: 4 }} gridTemplateRows="min-content">
           {careerBuildingList}
-          {mobile}
-        </FlexBox>
-        <Box display={{ _: 'block', sm: 'none' }}>{careerBuildingList}</Box>
-        <Box display={{ _: 'block', sm: 'none' }}>{mobile}</Box>
-      </GridBox>
+          {/* desktop/tablet */}
+          {appStoreLinks({ _: 'none', sm: 'unset' })}
+        </Column>
+        <Column size={{ _: 6, sm: 0 }}>
+          {/* mobile */}
+          {appStoreLinks({ _: 'unset', sm: 'none' })}
+        </Column>
+      </LayoutGrid>
     </CatalogLinksContainer>
   );
 };

@@ -193,10 +193,12 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     </Box>
   );
 
+  // Footer items change placement depending on screen size
   return (
-    <LayoutGrid rowGap={{ _: 24, md: 8 }}>
+    <LayoutGrid>
       <Column size={{ _: 6, sm: 4 }} order={1} gridTemplateRows="min-content">
         {company}
+        {/* mobile */}
         {resources({ _: 'unset', sm: 'none' })}
         {support({ _: 'unset', sm: 'none' })}
       </Column>
@@ -205,6 +207,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         order={{ _: 3, sm: 2 }}
         gridTemplateRows="min-content"
       >
+        {/* desktop/tablet */}
         {resources({ _: 'none', sm: 'unset' })}
         {support({ _: 'none', sm: 'unset' })}
       </Column>
@@ -215,6 +218,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
       >
         {hidePricing ? null : plans}
         {community}
+        {/* mobile */}
         {logo({ _: 'unset', sm: 'none' })}
       </Column>
       <Column
@@ -223,6 +227,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
         gridTemplateRows="min-content"
         mt="auto"
       >
+        {/* desktop/tablet */}
         {logo({ _: 'none', sm: 'unset' })}
       </Column>
     </LayoutGrid>
