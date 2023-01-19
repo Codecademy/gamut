@@ -93,7 +93,7 @@ const subjects = [
   ['developer-tools', 'Developer Tools'],
   ['devops', 'DevOps'],
   ['game-development', 'Game Development'],
-  ['information-technology', 'Information Technology'],
+  ['information-technology', 'IT'],
   ['machine-learning', 'Machine Learning'],
   ['math', 'Math'],
   ['mobile-development', 'Mobile Development'],
@@ -226,40 +226,38 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
   const appStoreLinks = (display: BoxProps['display']) => (
     <Box display={display}>
       <FooterHeading>Mobile</FooterHeading>
-      <CatalogLinkArea variant="fullHeight">
-        <FooterLinkItems display="flex" flexDirection="column">
-          <MobileImageItem>
-            <MobileImageLink
-              href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
-              onClick={(event) => onClick({ event, target: 'apple_store' })}
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                alt="Download on the App Store"
-                height="calc(40px + 1rem)"
-                src={downloadOnTheAppStore}
-                width="calc(120px + 1.5rem)"
-              />
-            </MobileImageLink>
-          </MobileImageItem>
-          <MobileImageItem>
-            <MobileImageLink
-              href="https://play.google.com/store/apps/details?id=com.ryzac.codecademygo"
-              onClick={(event) => onClick({ event, target: 'google_play' })}
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                alt="Get it on Google Play"
-                height="calc(40px + 1rem)"
-                src={getItOnGooglePlay}
-                width="calc(133px + 1.5rem)"
-              />
-            </MobileImageLink>
-          </MobileImageItem>
-        </FooterLinkItems>
-      </CatalogLinkArea>
+      <FooterLinkItems display="flex" flexDirection="column">
+        <MobileImageItem>
+          <MobileImageLink
+            href="https://itunes.apple.com/us/app/codecademy-go/id1376029326"
+            onClick={(event) => onClick({ event, target: 'apple_store' })}
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              alt="Download on the App Store"
+              height="calc(40px + 1rem)"
+              src={downloadOnTheAppStore}
+              width="calc(120px + 1.5rem)"
+            />
+          </MobileImageLink>
+        </MobileImageItem>
+        <MobileImageItem>
+          <MobileImageLink
+            href="https://play.google.com/store/apps/details?id=com.ryzac.codecademygo"
+            onClick={(event) => onClick({ event, target: 'google_play' })}
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              alt="Get it on Google Play"
+              height="calc(40px + 1rem)"
+              src={getItOnGooglePlay}
+              width="calc(133px + 1.5rem)"
+            />
+          </MobileImageLink>
+        </MobileImageItem>
+      </FooterLinkItems>
     </Box>
   );
 
