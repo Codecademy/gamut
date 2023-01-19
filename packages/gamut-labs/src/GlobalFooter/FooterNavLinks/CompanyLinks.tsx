@@ -25,7 +25,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
     <Column
       size={{ _: 6, sm: 4 }}
       order={{ _: 4, sm: 6 }}
-      mt={{ sm: hidePricing ? 0 : 32 }}
+      gridTemplateRows="min-content"
     >
       <FooterHeading>Community</FooterHeading>
       <FooterLinkItems>
@@ -77,7 +77,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   );
 
   const company = (
-    <Column size={{ _: 6, sm: 4 }} order={1}>
+    <Column size={{ _: 6, sm: 4 }} order={1} gridTemplateRows="min-content">
       <FooterHeading>Company</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -115,7 +115,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   );
 
   const plans = (
-    <Column size={{ _: 6, sm: 4 }} order={{ _: 2, sm: 3 }}>
+    <Column
+      size={{ _: 6, sm: 4 }}
+      order={{ _: 2, sm: 3 }}
+      gridTemplateRows="min-content"
+    >
       <FooterHeading>Plans</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -150,7 +154,11 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   );
 
   const resources = (
-    <Column size={{ _: 6, sm: 4 }} order={{ _: 3, sm: 2 }}>
+    <Column
+      size={{ _: 6, sm: 4 }}
+      order={{ _: 3, sm: 2 }}
+      gridTemplateRows="min-content"
+    >
       <FooterHeading>Resources</FooterHeading>
       <FooterLinkItems>
         {footerResourcesList.map(
@@ -172,7 +180,7 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   );
 
   const support = (
-    <Column size={{ _: 6, sm: 4 }} order={5}>
+    <Column size={{ _: 6, sm: 4 }} order={5} gridTemplateRows="min-content">
       <FooterHeading>Support</FooterHeading>
       <FooterLinkItems>
         <FooterLinkItem>
@@ -190,8 +198,12 @@ export const CompanyLinks: React.FC<CompanyLinksProps> = ({
   );
 
   const logo = (
-    <Column size={{ _: 6, sm: 4 }} order={{ _: 6, sm: 4 }}>
-      <FooterHeading mt="auto">
+    <Column
+      size={{ _: 6, sm: 4 }}
+      order={{ _: 6, sm: 4 }}
+      gridTemplateRows="min-content"
+    >
+      <FooterHeading>
         <LogoFromSkillsoft height={40} />
       </FooterHeading>
     </Column>
