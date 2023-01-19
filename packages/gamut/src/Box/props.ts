@@ -1,6 +1,8 @@
 import { system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 
+import { WithChildrenProp } from '..';
+
 export const boxProps = variance.compose(
   system.space,
   system.border,
@@ -60,7 +62,8 @@ export const gridStates = system.states({
 
 export interface BoxProps
   extends StyleProps<typeof boxProps>,
-    StyleProps<typeof sharedStates> {}
+    StyleProps<typeof sharedStates>,
+    WithChildrenProp {}
 
 export interface FlexBoxProps extends BoxProps, StyleProps<typeof flexStates> {}
 export interface GridBoxProps extends BoxProps, StyleProps<typeof gridStates> {}
