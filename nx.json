@@ -43,9 +43,6 @@
       "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
     }
   },
-  "cli": {
-    "defaultCollection": "@nrwl/react"
-  },
   "generators": {
     "@nrwl/js:library": {
       "buildable": true
