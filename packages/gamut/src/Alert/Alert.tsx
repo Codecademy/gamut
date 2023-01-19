@@ -6,6 +6,7 @@ import { isValidElement, useState } from 'react';
 import * as React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
 
+import { WithChildrenProp } from '..';
 import { Box } from '../Box';
 import { FillButton, IconButton } from '../Button';
 import { alertVariants, placementVariants } from './variants';
@@ -13,7 +14,7 @@ import { alertVariants, placementVariants } from './variants';
 export type AlertType = keyof typeof alertVariants;
 export type AlertPlacements = 'inline' | 'floating';
 
-export interface AlertProps {
+export interface AlertProps extends WithChildrenProp {
   type?: AlertType;
   placement?: AlertPlacements;
   hidden?: boolean;

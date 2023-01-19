@@ -19,12 +19,16 @@ export const generateResponsiveClassnames = (
   Object.entries(config).forEach(([propName, propValue]) => {
     switch (typeof propValue) {
       case 'number':
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore: Fallthrough case in switch.
       case 'string': {
         const mappedClass = styleMap[`${propName}_${propValue}__xs`];
         if (mappedClass) {
           styleList.push(mappedClass);
         }
       }
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore: Fallthrough case in switch.
       case 'object': {
         if (propValue !== null) {
           Object.entries(propValue).forEach(([mediaSize, mediaPropValue]) => {

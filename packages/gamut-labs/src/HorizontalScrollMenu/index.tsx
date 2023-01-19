@@ -1,6 +1,6 @@
 import 'intersection-observer';
 
-import { Box, FlexBox } from '@codecademy/gamut';
+import { Box, FlexBox, WithChildrenProp } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import { Children, useEffect, useMemo, useRef } from 'react';
 import * as React from 'react';
@@ -19,7 +19,7 @@ const ScrollItemWrapper = styled(Box)`
   }
 `;
 
-export interface HorizontalScrollMenuProps {
+export interface HorizontalScrollMenuProps extends WithChildrenProp {
   className?: string;
 }
 
