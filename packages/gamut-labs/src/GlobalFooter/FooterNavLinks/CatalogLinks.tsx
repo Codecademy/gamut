@@ -105,7 +105,6 @@ export type CatalogLinksProps = {
   onClick: GlobalFooterClickHandler;
 };
 
-// TODO: Add padding between columns
 export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
   const languagesList = (
     <Box>
