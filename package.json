@@ -9,7 +9,6 @@
     "node": "^16.17",
     "yarn": "^1.21.1"
   },
-  "nx": {},
   "scripts": {
     "test": "nx run-many --target=test --all",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\" --max-warnings 0",
