@@ -15,9 +15,9 @@ import React from 'react';
 import { Divider } from './shared';
 import { CourseDifficulty, EnrollmentStatus } from './types';
 
-export const Image = Box.withComponent('img');
+const Image = Box.withComponent('img');
 
-export type ContentGroupBaseCardProps = {
+type ContentGroupBaseCardProps = {
   headerBackgroundColor: Colors;
   headerText: string;
   title: string;
@@ -34,7 +34,7 @@ export type ContentGroupBaseCardProps = {
   minWidth?: CardProps['minWidth'];
 };
 
-export type EnrollmentStatusAssets = {
+type EnrollmentStatusAssets = {
   [status in
     | EnrollmentStatus.InProgress
     | EnrollmentStatus.Completed
