@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.6.120...@codecademy/monaco@0.7.0) (2023-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Support React 18 [WEB-2055]
+
+### Miscellaneous Chores
+
+* Support React 18 [WEB-2055] ([89d6b22](https://github.com/Codecademy/gamut/packages/monaco/commit/89d6b224831dd62d7bcd9a424142eaab02232a00))
+
+
+
 ### [0.6.120](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.6.119...@codecademy/monaco@0.6.120) (2023-01-09)
 
 **Note:** Version bump only for package @codecademy/monaco

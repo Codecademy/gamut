@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ComponentProps, forwardRef } from 'react';
 import * as React from 'react';
 
-import { Box } from '..';
+import { Box, WithChildrenProp } from '..';
 import { RowEl } from './elements';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
@@ -28,7 +28,7 @@ export interface SimpleRowProps extends RowProps {
 
 export type ListRowProps = ExpandableRowProps | SimpleRowProps;
 
-const ExpandInCollapseOut: React.FC = ({ children }) => {
+const ExpandInCollapseOut: React.FC<WithChildrenProp> = ({ children }) => {
   return (
     <motion.div
       initial="collapsed"
@@ -95,16 +95,18 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         rowBreakpoint={rowBreakpoint}
         {...wrapperProps}
       >
-        {content}
-        <AnimatePresence>
-          {expanded && (
-            <ExpandInCollapseOut>
-              <Box role="region" aria-label={expandedRowAriaLabel}>
-                {renderExpanded?.()}
-              </Box>
-            </ExpandInCollapseOut>
-          )}
-        </AnimatePresence>
+        <>
+          {content}
+          <AnimatePresence>
+            {expanded && (
+              <ExpandInCollapseOut>
+                <Box role="region" aria-label={expandedRowAriaLabel}>
+                  {renderExpanded?.()}
+                </Box>
+              </ExpandInCollapseOut>
+            )}
+          </AnimatePresence>
+        </>
       </RowEl>
     );
   }
