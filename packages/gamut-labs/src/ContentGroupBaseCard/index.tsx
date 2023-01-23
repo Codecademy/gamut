@@ -57,13 +57,13 @@ export const ContentGroupBaseCard: React.FC<ContentGroupBaseCardProps> = ({
   minHeight,
   minWidth,
 }) => {
-  export const enrollmentAssets: EnrollmentStatusAssets = {
+  const enrollmentAssets: EnrollmentStatusAssets = {
     completed: { text: headerText + ' completed!', backgroundColor: 'green' },
     inProgress: { text: 'In progress...', backgroundColor: 'yellow' },
     none: { text: headerText, backgroundColor: headerBackgroundColor },
   };
 
-  export const isEnrolled =
+  const isEnrolled =
     enrollmentStatus === EnrollmentStatus.InProgress ||
     enrollmentStatus === EnrollmentStatus.Completed;
 
