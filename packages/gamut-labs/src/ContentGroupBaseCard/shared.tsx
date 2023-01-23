@@ -1,7 +1,5 @@
-import { Box, FlexBox, Text } from '@codecademy/gamut';
-import { CertificateIcon } from '@codecademy/gamut-icons';
+import { Box } from '@codecademy/gamut';
 import { CheckerDense } from '@codecademy/gamut-patterns';
-import pluralize from 'pluralize';
 
 export const Divider: React.FC = () => {
   return (
@@ -9,33 +7,5 @@ export const Divider: React.FC = () => {
     <Box py={4} height={0} position="relative">
       <CheckerDense height="1px" display="flex" position="absolute" />
     </Box>
-  );
-};
-
-export const CertificateComponent: React.FC = () => {
-  return (
-    <>
-      <FlexBox alignItems="center">
-        <FlexBox pr={4}>
-          <CertificateIcon />
-        </FlexBox>
-        <Text variant="p-small" pl={4}>
-          With <b>Certificate</b>
-        </Text>
-      </FlexBox>
-    </>
-  );
-};
-
-export const CourseCountComponent: React.FC<{ count: number }> = ({
-  count,
-}) => {
-  return (
-    <Text variant="p-small">
-      Includes{' '}
-      <b>
-        {count} {pluralize('Courses', count)}
-      </b>
-    </Text>
   );
 };
