@@ -1,0 +1,27 @@
+import { ContentGroupBaseCard } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={ContentGroupBaseCard}
+  args={{
+    headerBackgroundColor: 'blue',
+    headerText: 'Course',
+    title: 'Java',
+    numLessons: 20,
+  }}
+  parameters={{
+    subtitle: 'A base card to create curriculum cards from.',
+    status: 'current',
+    source: 'gamut',
+  }}
+/>
+
+<Canvas>
+  <Story name="ContentGroupBaseCard">
+    {(args) => <ContentGroupBaseCard {...args} />}
+  </Story>
+</Canvas>
+
+<Props story="ContentGroupBaseCard" />
