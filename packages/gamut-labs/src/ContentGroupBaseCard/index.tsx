@@ -89,6 +89,10 @@ export const ContentGroupBaseCard: React.FC<ContentGroupBaseCardProps> = ({
         }
         pl={12}
         py={4}
+        border={1}
+        borderColor="white"
+        borderRadius="4px"
+        borderBottom="none"
       >
         <Text fontFamily="accent" fontSize={14}>
           {enrollmentStatus
