@@ -128,15 +128,17 @@ export const ContentGroupBaseCard: React.FC<ContentGroupBaseCardProps> = ({
             {children}
             <Divider />
             <FlexBox justifyContent="space-between">
-              <FlexBox alignItems="center">
-                <FlexBox pr={4}>
-                  <LevelIcon />
+              {difficulty && (
+                <FlexBox alignItems="center">
+                  <FlexBox pr={4}>
+                    <LevelIcon />
+                  </FlexBox>
+                  <Text variant="p-small" pl={4} whiteSpace="nowrap">
+                    <b>{difficulty}</b>
+                    {difficulty === CourseDifficulty.Beginner && <> Friendly</>}
+                  </Text>
                 </FlexBox>
-                <Text variant="p-small" pl={4} whiteSpace="nowrap">
-                  <b>{difficulty}</b>
-                  {difficulty === CourseDifficulty.Beginner && <> Friendly</>}
-                </Text>
-              </FlexBox>
+              )}
               {numLessons > 0 && (
                 <FlexBox>
                   <Text variant="p-small" pl={4} whiteSpace="nowrap">

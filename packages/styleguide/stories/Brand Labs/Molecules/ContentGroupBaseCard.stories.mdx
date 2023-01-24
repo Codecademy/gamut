@@ -11,7 +11,6 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
     headerText: 'Course',
     title: 'Python 101',
     numLessons: 20,
-    difficulty: 'Beginner',
   }}
   parameters={{
     subtitle: 'A base card to create curriculum cards from.',
@@ -39,6 +38,35 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
     }}
   >
     {(args) => <ContentGroupBaseCard {...args} />}
+  </Story>
+</Canvas>
+
+## ContentGroupBaseCard with Difficulty
+
+<Canvas>
+  <Story name="ContentGroupBaseCard with Description">
+    {(args) => (
+      <LayoutGrid gap={24} pb={8}>
+        <Column size={4}>
+          <Text variant="p-large" pb={4}>
+            Beginner (friendly is appended automatically)
+          </Text>
+          <ContentGroupBaseCard {...args} difficulty="Beginner" />
+        </Column>
+        <Column size={4}>
+          <Text variant="p-large" pb={4}>
+            Intermediate
+          </Text>
+          <ContentGroupBaseCard {...args} difficulty="Intermediate" />
+        </Column>
+        <Column size={4}>
+          <Text variant="p-large" pb={4}>
+            Advanced
+          </Text>
+          <ContentGroupBaseCard {...args} difficulty="Advanced" />
+        </Column>
+      </LayoutGrid>
+    )}
   </Story>
 </Canvas>
 
