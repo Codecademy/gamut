@@ -22,8 +22,8 @@ type ContentGroupBaseCardProps = {
   headerText: string;
   title: string;
   headingLevel?: HeadingTags;
-  description?: string;
-  difficulty: CourseDifficulty;
+  description?: string | null;
+  difficulty?: CourseDifficulty | null;
   numLessons: number;
   imageSrc?: string;
   isFullSize?: boolean;
