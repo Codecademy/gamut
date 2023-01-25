@@ -91,7 +91,7 @@ export const ContentGroupBaseCard: React.FC<ContentGroupBaseCardProps> = ({
         py={4}
         border={1}
         borderColor="white"
-        borderRadius="4px"
+        borderRadius="4px 4px 0 0"
         borderBottom="none"
       >
         <Text fontFamily="accent" fontSize={14}>
