@@ -5,10 +5,10 @@ export const getPathImageUrl = (
   imageUrl: string
 ) => {
   if (enrollment === EnrollmentStatus.InProgress) {
-    return imageUrl.replaceAll('-inProgress', '');
+    return imageUrl.replace('-inProgress', '');
   }
   if (enrollment === EnrollmentStatus.Completed) {
-    return imageUrl.replaceAll('-completed', '');
+    return imageUrl.replace('-completed', '');
   }
   return imageUrl;
 };
