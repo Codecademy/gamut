@@ -1,0 +1,32 @@
+import { CareerPathCard } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={CareerPathCard}
+  args={{
+    content: {
+      title: 'Python 101',
+      shortDescription:
+        'BI Data Analysts use Python and SQL to query, analyze, and visualize data — and Tableau and Excel to communicate findings.',
+      difficulty: 'Beginner',
+      lessonCount: 46,
+      imageUrl:
+        'https://static-assets.codecademy.com/components/curriculum/path/bi-data-analyst/curriculum-card.svg',
+      courseCount: 18,
+      enrollmentStatus: 'none',
+    },
+  }}
+  parameters={{
+    subtitle: 'A path card.',
+    status: 'current',
+    source: 'gamut',
+  }}
+/>
+
+<Canvas>
+  <Story name="CareerPathCard">{(args) => <CareerPathCard {...args} />}</Story>
+</Canvas>
+
+<Props story="CareerPathCard" />
