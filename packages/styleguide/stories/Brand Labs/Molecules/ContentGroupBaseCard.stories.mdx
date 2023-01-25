@@ -27,29 +27,15 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
 
 <Props story="ContentGroupBaseCard" />
 
-## ContentGroupBaseCard with Description
-
-<Canvas>
-  <Story
-    name="ContentGroupBaseCard with Description"
-    args={{
-      description:
-        'Filler text is text that shares some characteristics of a real written text, but is random or otherwise generated.',
-    }}
-  >
-    {(args) => <ContentGroupBaseCard {...args} />}
-  </Story>
-</Canvas>
-
 ## ContentGroupBaseCard with Difficulty
 
 <Canvas>
-  <Story name="ContentGroupBaseCard with Description">
+  <Story name="ContentGroupBaseCard with Difficulty">
     {(args) => (
       <LayoutGrid gap={24} pb={8}>
         <Column size={4}>
           <Text variant="p-large" pb={4}>
-            Beginner (friendly is appended automatically)
+            Beginner ("Friendly" is appended automatically)
           </Text>
           <ContentGroupBaseCard {...args} difficulty="Beginner" />
         </Column>
@@ -67,6 +53,20 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
         </Column>
       </LayoutGrid>
     )}
+  </Story>
+</Canvas>
+
+## ContentGroupBaseCard with Description
+
+<Canvas>
+  <Story
+    name="ContentGroupBaseCard with Description"
+    args={{
+      description:
+        'Filler text is text that shares some characteristics of a real written text, but is random or otherwise generated.',
+    }}
+  >
+    {(args) => <ContentGroupBaseCard {...args} />}
   </Story>
 </Canvas>
 
