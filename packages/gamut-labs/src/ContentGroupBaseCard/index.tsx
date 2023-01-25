@@ -133,7 +133,12 @@ export const ContentGroupBaseCard: React.FC<ContentGroupBaseCardProps> = ({
                   <FlexBox pr={4}>
                     <LevelIcon />
                   </FlexBox>
-                  <Text variant="p-small" pl={4} whiteSpace="nowrap">
+                  <Text
+                    variant="p-small"
+                    pl={4}
+                    whiteSpace="nowrap"
+                    data-testid="card-difficulty"
+                  >
                     <b>{difficulty}</b>
                     {difficulty === CourseDifficulty.Beginner && <> Friendly</>}
                   </Text>
@@ -141,7 +146,12 @@ export const ContentGroupBaseCard: React.FC<ContentGroupBaseCardProps> = ({
               )}
               {numLessons > 0 && (
                 <FlexBox>
-                  <Text variant="p-small" pl={4} whiteSpace="nowrap">
+                  <Text
+                    variant="p-small"
+                    pl={4}
+                    whiteSpace="nowrap"
+                    data-testid="card-num-lessons"
+                  >
                     <b>{numLessons}</b> {pluralize('Lessons', numLessons)}
                   </Text>
                 </FlexBox>
