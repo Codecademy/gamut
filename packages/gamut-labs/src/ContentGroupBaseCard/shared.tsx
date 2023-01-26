@@ -1,4 +1,5 @@
-import { Box } from '@codecademy/gamut';
+import { Box, FlexBox, Text } from '@codecademy/gamut';
+import { CertificateIcon } from '@codecademy/gamut-icons';
 import { CheckerDense } from '@codecademy/gamut-patterns';
 
 export const Divider: React.FC = () => {
@@ -7,5 +8,20 @@ export const Divider: React.FC = () => {
     <Box py={4} height={0} position="relative">
       <CheckerDense height="1px" display="flex" position="absolute" />
     </Box>
+  );
+};
+
+export const CertificateComponent: React.FC = () => {
+  return (
+    <>
+      <FlexBox alignItems="center">
+        <FlexBox pr={4}>
+          <CertificateIcon />
+        </FlexBox>
+        <Text variant="p-small" pl={4}>
+          With <b>Certificate</b>
+        </Text>
+      </FlexBox>
+    </>
   );
 };
