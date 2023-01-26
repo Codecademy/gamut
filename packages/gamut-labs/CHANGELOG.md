@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.0.1...@codecademy/gamut-labs@35.0.2) (2023-01-26)
+
+
+### Bug Fixes
+
+* **ScoreSummary:** Use List role for subjects in ScoreSummary ([27fb197](https://github.com/Codecademy/gamut/commit/27fb197ccb14d130706a758265f6a16a97ccbc36))
+
+
+
 ### [35.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.0.0...@codecademy/gamut-labs@35.0.1) (2023-01-24)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
