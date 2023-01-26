@@ -1,0 +1,28 @@
+import { CourseCard } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={CourseCard}
+  args={{
+    title: 'Building Interactive JavaScript Websites',
+    lessonCount: 13,
+    grantsCertificate: true,
+    shortDescription:
+      'Learn the Document Object Model, the interface between JavaScript and HTML elements, and combine HTML, CSS, and JavaScript into exciting interactive sites!',
+    difficulty: 'Intermediate',
+    pro: true,
+  }}
+  parameters={{
+    subtitle: 'Course card.',
+    status: 'current',
+    source: 'gamut',
+  }}
+/>
+
+<Canvas>
+  <Story name="CourseCard">{(args) => <CourseCard {...args} />}</Story>
+</Canvas>
+
+<Props story="CourseCard" />
