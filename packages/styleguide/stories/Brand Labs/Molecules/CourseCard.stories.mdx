@@ -8,13 +8,13 @@ import LinkTo from '@storybook/addon-links/react';
   title={title}
   component={CourseCard}
   args={{
-    title: 'Building Interactive JavaScript Websites',
-    lessonCount: 13,
+    title: 'Learn JavaScript',
+    lessonCount: 11,
     grantsCertificate: false,
     pro: false,
     shortDescription:
-      'Learn the Document Object Model, the interface between JavaScript and HTML elements, and combine HTML, CSS, and JavaScript into exciting interactive sites!',
-    difficulty: 'Intermediate',
+      'Learn how to use JavaScript — a powerful and flexible programming language for adding website interactivity.',
+    difficulty: 'Beginner',
   }}
   parameters={{
     subtitle: 'Curriculum card for courses.',
@@ -31,13 +31,30 @@ For the `CourseCard` we've extended the <LinkTo kind="brand-labs-molecules-conte
 
 <Props story="CourseCard" />
 
-## CourseCard with Certificate
+## Pro CourseCard
 
-`grantsCertificate` and `pro` must be true for certificate to show on card.
+### Title
+
+`title` will be "Course" for the `CourseCard` when either `pro` or `inModuleBasedGatingExp` is true.
+
+### Certificate
+
+`grantsCertificate` and `pro` must be true for the certificate info to show on the card.
 We only show certificates for pro exclusive courses, since only pro users can do pro courses and only pro users can gain certificates.
 
 <Canvas>
-  <Story name="CourseCard with Certificate">
+  <Story
+    name="Pro CourseCard"
+    args={{
+      title: 'Building Interactive JavaScript Websites',
+      lessonCount: 13,
+      grantsCertificate: false,
+      pro: false,
+      shortDescription:
+        'Learn the Document Object Model, the interface between JavaScript and HTML elements, and combine HTML, CSS, and JavaScript into exciting interactive sites!',
+      difficulty: 'Intermediate',
+    }}
+  >
     {(args) => <CourseCard {...args} pro grantsCertificate />}
   </Story>
 </Canvas>
