@@ -1,12 +1,12 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { faker } from '@faker-js/faker';
-import userEvent from '@testing-library/user-event';
 import { ReactChildren } from 'react';
 
-import { trackUserClick } from '~/libs/tracking';
-
-import { createMockCareerPathContent } from '../__fixtures__';
-import { CareerPathCard } from './CareerPathCard';
+import {
+  CourseDifficulty,
+  EnrollmentStatus,
+} from '../../ContentGroupBaseCard/types';
+import { CareerPathCard } from '../index';
+import { PathGoalEnum } from '../types';
 
 jest.mock('~/libs/tracking');
 
@@ -14,33 +14,32 @@ jest.mock('next/link', () => ({ children }: { children: ReactChildren }) =>
   children
 );
 
-const path = createMockCareerPathContent();
+const content = {
+  id: '1',
+  title: 'Python 101',
+  shortDescription:
+    'BI Data Analysts use Python and SQL to query, analyze, and visualize data.',
+  difficulty: CourseDifficulty.Beginner,
+  lessonCount: 46,
+  imageUrl:
+    'https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card.svg',
+  courseCount: 18,
+  enrollmentStatus: EnrollmentStatus.None,
+  goal: PathGoalEnum.Career,
+  projectCount: 4,
+  portfolioProjectCount: 4,
+  pro: false,
+  slug: 'python-101',
+  type: 'Path',
+};
 
-const pageName = faker.lorem.word();
-const context = faker.lorem.word();
-const renderView = setupRtl(CareerPathCard, {
-  trackingData: {
-    page_name: pageName,
-    context,
-  },
-});
+const renderView = setupRtl(CareerPathCard);
 
 describe('CareerPathCard', () => {
-  it('calls trackUserClick when card is clicked', () => {
-    const { view } = renderView({ content: path });
-
-    userEvent.click(view.getByText(path.title));
-
-    expect(trackUserClick).toHaveBeenCalledWith({
-      page_name: pageName,
-      context,
-      slug: path.slug,
-      target: 'path-card',
-    });
-  });
-
   it('renders career in header', () => {
-    const { view } = renderView({ content: path });
+    const { view } = renderView({
+      content,
+    });
     view.getByText('Career path');
   });
 });

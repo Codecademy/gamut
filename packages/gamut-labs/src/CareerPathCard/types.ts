@@ -3,7 +3,7 @@ import {
   EnrollmentStatus,
 } from '../ContentGroupBaseCard/types';
 
-declare enum PathGoalEnum {
+export declare enum PathGoalEnum {
   Skill = 'skill',
   Career = 'career',
 }
@@ -20,7 +20,7 @@ declare type CatalogContentData_Path_Fragment = {
   slug: string;
   tag?: string;
   title: string;
-  type: 'Course';
+  type: string;
   categories?: { title: string[] };
 };
 
