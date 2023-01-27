@@ -9,8 +9,8 @@ export enum PathGoalEnum {
 }
 
 declare type CatalogContentData_Path_Fragment = {
-  shortDescription?: string;
-  difficulty?: CourseDifficulty;
+  shortDescription?: string | null;
+  difficulty?: CourseDifficulty | null;
   enrollmentStatus: EnrollmentStatus;
   id: string;
   lessonCount: number;
@@ -18,10 +18,10 @@ declare type CatalogContentData_Path_Fragment = {
   portfolioProjectCount: number;
   pro: boolean;
   slug: string;
-  tag?: string;
+  tag?: string | null;
   title: string;
   type: string;
-  categories?: { title: string[] };
+  categories?: { title: string[] } | null;
 };
 
 export type PathDataFragment = {
