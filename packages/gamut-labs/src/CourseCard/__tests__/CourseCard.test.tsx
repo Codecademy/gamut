@@ -42,7 +42,7 @@ describe('CourseCard', () => {
   });
 
   describe('When the course is in Module Based Gating Experiment', () => {
-    it('renders always renders "Course" tag', () => {
+    it('always renders "Course" tag', () => {
       const { view } = renderView({
         ...mockFreeCourseContent,
         inModuleBasedGatingExp: true,
