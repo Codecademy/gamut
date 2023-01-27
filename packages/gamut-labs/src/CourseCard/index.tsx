@@ -7,7 +7,7 @@ import {
   EnrollmentStatus,
 } from '../ContentGroupBaseCard/types';
 
-type CourseCardProps = {
+export type CourseCardProps = {
   title: string;
   lessonCount: number;
   grantsCertificate: boolean;
