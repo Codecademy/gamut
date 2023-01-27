@@ -3,7 +3,7 @@ import {
   EnrollmentStatus,
 } from '../ContentGroupBaseCard/types';
 
-export declare enum PathGoalEnum {
+export enum PathGoalEnum {
   Skill = 'skill',
   Career = 'career',
 }

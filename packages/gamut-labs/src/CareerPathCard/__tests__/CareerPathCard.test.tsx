@@ -1,5 +1,4 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { ReactChildren } from 'react';
 
 import {
   CourseDifficulty,
@@ -7,12 +6,6 @@ import {
 } from '../../ContentGroupBaseCard/types';
 import { CareerPathCard } from '../index';
 import { PathGoalEnum } from '../types';
-
-jest.mock('~/libs/tracking');
-
-jest.mock('next/link', () => ({ children }: { children: ReactChildren }) =>
-  children
-);
 
 const content = {
   id: '1',
