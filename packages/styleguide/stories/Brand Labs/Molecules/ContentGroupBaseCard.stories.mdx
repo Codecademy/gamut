@@ -1,0 +1,134 @@
+import { Column, LayoutGrid, Text } from '@codecademy/gamut/src';
+import { ContentGroupBaseCard } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={ContentGroupBaseCard}
+  args={{
+    headerBackgroundColor: 'pink',
+    headerText: 'Course',
+    title: 'Python 101',
+    numLessons: 20,
+  }}
+  parameters={{
+    subtitle: 'A base card to create curriculum cards from.',
+    status: 'current',
+    source: 'gamut',
+  }}
+/>
+
+<Canvas>
+  <Story name="ContentGroupBaseCard">
+    {(args) => <ContentGroupBaseCard {...args} />}
+  </Story>
+</Canvas>
+
+<Props story="ContentGroupBaseCard" />
+
+## ContentGroupBaseCard with Difficulty
+
+<Canvas>
+  <Story name="ContentGroupBaseCard with Difficulty">
+    {(args) => (
+      <LayoutGrid gap={24} pb={8}>
+        <Column size={4}>
+          <Text variant="p-large" pb={4}>
+            Beginner ("Friendly" is appended automatically)
+          </Text>
+          <ContentGroupBaseCard {...args} difficulty="Beginner" />
+        </Column>
+        <Column size={4}>
+          <Text variant="p-large" pb={4}>
+            Intermediate
+          </Text>
+          <ContentGroupBaseCard {...args} difficulty="Intermediate" />
+        </Column>
+        <Column size={4}>
+          <Text variant="p-large" pb={4}>
+            Advanced
+          </Text>
+          <ContentGroupBaseCard {...args} difficulty="Advanced" />
+        </Column>
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>
+
+## ContentGroupBaseCard with Description
+
+<Canvas>
+  <Story
+    name="ContentGroupBaseCard with Description"
+    args={{
+      description:
+        'Filler text is text that shares some characteristics of a real written text, but is random or otherwise generated.',
+    }}
+  >
+    {(args) => <ContentGroupBaseCard {...args} />}
+  </Story>
+</Canvas>
+
+## ContentGroupBaseCard with Image
+
+`isFullSize` must be true for image to show on card.
+
+<Canvas>
+  <Story
+    name="ContentGroupBaseCard with Image"
+    args={{
+      isFullSize: true,
+      imageSrc:
+        'https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card.svg',
+    }}
+  >
+    {(args) => <ContentGroupBaseCard {...args} />}
+  </Story>
+</Canvas>
+
+## ContentGroupBaseCard with Shadow Variants
+
+<Canvas>
+  <Story name="ContentGroupBaseCard with Shadow Variants">
+    {(args) => (
+      <LayoutGrid gap={24} pb={8}>
+        <Column size={4}>
+          <Text variant="p-large" pb={4}>
+            Small
+          </Text>
+          <ContentGroupBaseCard {...args} shadow="small" />
+        </Column>
+        <Column size={4}>
+          <Text variant="p-large" pb={4}>
+            Medium (default)
+          </Text>
+          <ContentGroupBaseCard {...args} />
+        </Column>
+        <Column size={4}>
+          <Text variant="p-large" pb={4}>
+            Outline
+          </Text>
+          <ContentGroupBaseCard {...args} shadow="outline" />
+        </Column>
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>
+
+## ContentGroupBaseCard with Enrollment Status
+
+<Canvas>
+  <Story name="ContentGroupBaseCard with Enrollment Status">
+    {(args) => (
+      <LayoutGrid gap={24}>
+        <Column size={6}>
+          <ContentGroupBaseCard {...args} enrollmentStatus="inProgress" />
+        </Column>
+        <Column size={6}>
+          <ContentGroupBaseCard {...args} enrollmentStatus="completed" />
+        </Column>
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>

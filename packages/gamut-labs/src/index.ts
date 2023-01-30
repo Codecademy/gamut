@@ -13,6 +13,7 @@ export * from './AvatarChooser';
 export * from './Banner';
 export * from './BetaSticker';
 export * from './Byline';
+export * from './ContentGroupBaseCard';
 export * from './CurriculumCard';
 export * from './CurriculumCard/Difficulty';
 export * from './CurriculumCard/Difficulty/types';
