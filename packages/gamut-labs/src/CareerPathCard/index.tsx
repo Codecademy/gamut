@@ -10,17 +10,14 @@ import {
 import {
   CourseDifficulty,
   EnrollmentStatus,
-  PathGoalEnum,
 } from '../ContentGroupBaseCard/types';
 
 type CareerPathCardProps = {
-  goal: PathGoalEnum;
   imageUrl: string;
   courseCount: number;
   shortDescription?: string | null;
   difficulty?: CourseDifficulty | null;
   enrollmentStatus: EnrollmentStatus;
-  id: string;
   lessonCount: number;
   projectCount: number;
   portfolioProjectCount: number;
