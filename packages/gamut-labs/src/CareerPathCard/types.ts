@@ -20,8 +20,8 @@ declare type CatalogContentData_Path_Fragment = {
   slug: string;
   tag?: string | null;
   title: string;
-  type: string;
-  categories?: { title: string[] } | null;
+  type: 'Path';
+  categories?: { title: string }[] | null;
 };
 
 export type PathDataFragment = {
