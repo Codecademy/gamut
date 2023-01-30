@@ -1,6 +1,7 @@
 import { CareerPathCard } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 <Meta
   title={title}
@@ -23,11 +24,13 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
     portfolioProjectCount: 4,
   }}
   parameters={{
-    subtitle: 'A path card.',
+    subtitle: 'Curriculum card for career paths.',
     status: 'current',
     source: 'gamut',
   }}
 />
+
+For the `CareerPathCard` we've extended the <LinkTo kind="brand-labs-molecules-contentgroupbasecard">ContentGroupBaseCard</LinkTo> with extra props specific to paths.
 
 <Canvas>
   <Story name="CareerPathCard">{(args) => <CareerPathCard {...args} />}</Story>
