@@ -1,3 +1,4 @@
+import { Box, Column, LayoutGrid } from '@codecademy/gamut/src';
 import { SkillPathCard } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
@@ -13,6 +14,8 @@ import LinkTo from '@storybook/addon-links/react';
     shortDescription:
       'Web applications are constantly under threat. Authentication and authorization, protected data, and secure code will protect your web app.',
     difficulty: 'Intermediate',
+    imageUrl:
+      'https://static-assets.codecademy.com/components/curriculum/path/securing-express-applications/curriculum-card.svg',
   }}
   parameters={{
     subtitle: 'Curriculum card for skill paths.',
@@ -24,7 +27,13 @@ import LinkTo from '@storybook/addon-links/react';
 For the `SkillPathCard` we've extended the <LinkTo kind="brand-labs-molecules-contentgroupbasecard">ContentGroupBaseCard</LinkTo> with extra props specific to skill paths.
 
 <Canvas>
-  <Story name="SkillPathCard">{(args) => <SkillPathCard {...args} />}</Story>
+  <Story name="SkillPathCard">
+    {(args) => (
+      <Box pb={8}>
+        <SkillPathCard {...args} />
+      </Box>
+    )}
+  </Story>
 </Canvas>
 
 <Props story="SkillPathCard" />
@@ -36,11 +45,45 @@ For the `SkillPathCard` we've extended the <LinkTo kind="brand-labs-molecules-co
 <Canvas>
   <Story name="SkillPathCard with Image">
     {(args) => (
-      <SkillPathCard
-        {...args}
-        isFullSize
-        imageSrc="https://static-assets.codecademy.com/components/curriculum/path/code-foundations/curriculum-card.svg"
-      />
+      <Box pb={8}>
+        <SkillPathCard {...args} isFullSize />
+      </Box>
+    )}
+  </Story>
+</Canvas>
+
+## SkillPathCard with Enrollment Status
+
+Unlike the old <LinkTo kind="brand-labs-molecules-curriculumcard--curriculum-card#career-path-description-variant">
+CurriculumCard</LinkTo> designs, we show the same image for unenrolled, in progress, and completed full size skill path cards. We achieve this by stripping "-inProgress" and "-completed" from the imageUrl.
+
+<Canvas>
+  <Story name="SkillPathCard with Enrollment Status">
+    {(args) => (
+      <LayoutGrid gap={24} pb={8}>
+        <Column size={6}>
+          <SkillPathCard {...args} enrollmentStatus="inProgress" />
+        </Column>
+        <Column size={6}>
+          <SkillPathCard {...args} enrollmentStatus="completed" />
+        </Column>
+        <Column size={6}>
+          <SkillPathCard
+            {...args}
+            enrollmentStatus="inProgress"
+            isFullSize
+            imageUrl="https://static-assets.codecademy.com/components/curriculum/path/securing-express-applications/curriculum-card-inProgress.svg"
+          />
+        </Column>
+        <Column size={6}>
+          <SkillPathCard
+            {...args}
+            enrollmentStatus="completed"
+            isFullSize
+            imageUrl="https://static-assets.codecademy.com/components/curriculum/path/securing-express-applications/curriculum-card-completed.svg"
+          />
+        </Column>
+      </LayoutGrid>
     )}
   </Story>
 </Canvas>
