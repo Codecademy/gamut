@@ -25,7 +25,6 @@ type CareerPathCardProps = {
   slug: string;
   tag?: string | null;
   title: string;
-  type: 'Path';
   categories?: { title: string }[] | null;
   isFullSize?: boolean;
   minHeight?: CardProps['minHeight'];
