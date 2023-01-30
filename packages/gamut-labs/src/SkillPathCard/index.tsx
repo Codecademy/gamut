@@ -12,12 +12,10 @@ import {
   EnrollmentStatus,
 } from '../ContentGroupBaseCard/types';
 
-interface SkillPathCardProps {
+export interface SkillPathCardProps {
   title: string;
   lessonCount: number;
-  grantsCertificate: boolean;
   enrollmentStatus: EnrollmentStatus;
-  pro: boolean;
   shortDescription?: string | null;
   difficulty?: CourseDifficulty | null;
   imageUrl: string;

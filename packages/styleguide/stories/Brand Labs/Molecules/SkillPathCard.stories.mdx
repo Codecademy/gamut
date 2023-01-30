@@ -10,8 +10,6 @@ import LinkTo from '@storybook/addon-links/react';
     title: 'Securing Express Applications',
     lessonCount: 11,
     courseCount: 5,
-    grantsCertificate: true,
-    pro: true,
     shortDescription:
       'Web applications are constantly under threat. Authentication and authorization, protected data, and secure code will protect your web app.',
     difficulty: 'Intermediate',
@@ -30,3 +28,19 @@ For the `SkillPathCard` we've extended the <LinkTo kind="brand-labs-molecules-co
 </Canvas>
 
 <Props story="SkillPathCard" />
+
+## SkillPathCard with Image
+
+`isFullSize` must be true for image to show on card.
+
+<Canvas>
+  <Story name="SkillPathCard with Image">
+    {(args) => (
+      <SkillPathCard
+        {...args}
+        isFullSize
+        imageSrc="https://static-assets.codecademy.com/components/curriculum/path/code-foundations/curriculum-card.svg"
+      />
+    )}
+  </Story>
+</Canvas>
