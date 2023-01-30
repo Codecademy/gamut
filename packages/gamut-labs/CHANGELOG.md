@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.1.0...@codecademy/gamut-labs@35.2.0) (2023-01-30)
+
+
+### Features
+
+* **ContentGroupBaseCard:** New base card for upcoming curriculum cards ([#2653](https://github.com/Codecademy/gamut/issues/2653)) ([16fd7fe](https://github.com/Codecademy/gamut/commit/16fd7fe000bd3eeecfeb06d5d507cba60e2c6b2c))
+
+
+
+## [35.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.0.2...@codecademy/gamut-labs@35.1.0) (2023-01-26)
+
+
+### Features
+
+* **GlobalFooter:** Change 'Paid Memberships' URL to '/pages/paid-plans' ([1b1e3c6](https://github.com/Codecademy/gamut/commit/1b1e3c6200b951a008f33ca8f73abf5512f2863f))
+
+
+
+### [35.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.0.1...@codecademy/gamut-labs@35.0.2) (2023-01-26)
+
+
+### Bug Fixes
+
+* **ScoreSummary:** Use List role for subjects in ScoreSummary ([27fb197](https://github.com/Codecademy/gamut/commit/27fb197ccb14d130706a758265f6a16a97ccbc36))
+
+
+
 ### [35.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.0.0...@codecademy/gamut-labs@35.0.1) (2023-01-24)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
