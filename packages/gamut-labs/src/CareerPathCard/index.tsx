@@ -7,31 +7,46 @@ import {
   CourseCountComponent,
   Divider,
 } from '../ContentGroupBaseCard/shared';
-import { PathDataFragment } from './types';
+import {
+  CourseDifficulty,
+  EnrollmentStatus,
+  PathGoalEnum,
+} from '../ContentGroupBaseCard/types';
 
 type CareerPathCardProps = {
-  content: PathDataFragment;
+  goal: PathGoalEnum;
+  imageUrl: string;
+  courseCount: number;
+  shortDescription?: string | null;
+  difficulty?: CourseDifficulty | null;
+  enrollmentStatus: EnrollmentStatus;
+  id: string;
+  lessonCount: number;
+  projectCount: number;
+  portfolioProjectCount: number;
+  pro: boolean;
+  slug: string;
+  tag?: string | null;
+  title: string;
+  type: 'Path';
+  categories?: { title: string }[] | null;
   isFullSize?: boolean;
   minHeight?: CardProps['minHeight'];
   minWidth?: CardProps['minWidth'];
 };
 
 export const CareerPathCard: React.FC<CareerPathCardProps> = ({
-  content,
-  isFullSize = false,
+  imageUrl,
+  courseCount,
+  shortDescription,
+  difficulty,
+  enrollmentStatus,
+  lessonCount,
+  title,
+  isFullSize,
   minHeight,
   minWidth,
 }) => {
-  const {
-    title,
-    shortDescription,
-    difficulty,
-    lessonCount,
-    imageUrl,
-    courseCount,
-    enrollmentStatus,
-  } = content;
-
   return (
     <ContentGroupBaseCard
       headerBackgroundColor="navy"

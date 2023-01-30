@@ -1,14 +1,10 @@
 import {
   CourseDifficulty,
   EnrollmentStatus,
+  PathGoalEnum,
 } from '../ContentGroupBaseCard/types';
 
-export enum PathGoalEnum {
-  Skill = 'skill',
-  Career = 'career',
-}
-
-declare type CatalogContentData_Path_Fragment = {
+type CatalogContentData_Path_Fragment = {
   shortDescription?: string | null;
   difficulty?: CourseDifficulty | null;
   enrollmentStatus: EnrollmentStatus;

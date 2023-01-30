@@ -9,3 +9,8 @@ export enum EnrollmentStatus {
   Completed = 'completed',
   None = 'none',
 }
+
+export enum PathGoalEnum {
+  Skill = 'skill',
+  Career = 'career',
+}
