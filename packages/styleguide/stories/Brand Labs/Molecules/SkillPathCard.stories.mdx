@@ -1,0 +1,32 @@
+import { SkillPathCard } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+<Meta
+  title={title}
+  component={SkillPathCard}
+  args={{
+    title: 'Securing Express Applications',
+    lessonCount: 11,
+    courseCount: 5,
+    grantsCertificate: true,
+    pro: true,
+    shortDescription:
+      'Web applications are constantly under threat. Authentication and authorization, protected data, and secure code will protect your web app.',
+    difficulty: 'Intermediate',
+  }}
+  parameters={{
+    subtitle: 'Curriculum card for skill paths.',
+    status: 'current',
+    source: 'gamut',
+  }}
+/>
+
+For the `SkillPathCard` we've extended the <LinkTo kind="brand-labs-molecules-contentgroupbasecard">ContentGroupBaseCard</LinkTo> with extra props specific to skill paths.
+
+<Canvas>
+  <Story name="SkillPathCard">{(args) => <SkillPathCard {...args} />}</Story>
+</Canvas>
+
+<Props story="SkillPathCard" />
