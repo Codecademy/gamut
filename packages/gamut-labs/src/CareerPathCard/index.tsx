@@ -2,7 +2,11 @@ import { CardProps } from '@codecademy/gamut';
 
 import { getPathImageUrl } from '../ContentGroupBaseCard/helpers';
 import { ContentGroupBaseCard } from '../ContentGroupBaseCard/index';
-import { CertificateComponent, Divider } from '../ContentGroupBaseCard/shared';
+import {
+  CertificateComponent,
+  CourseCountComponent,
+  Divider,
+} from '../ContentGroupBaseCard/shared';
 import {
   CourseDifficulty,
   EnrollmentStatus,
