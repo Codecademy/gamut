@@ -27,6 +27,11 @@ describe('CourseCard', () => {
   });
 
   describe('When the course is pro', () => {
+    it('renders just Course in header', () => {
+      const { view } = renderView(mockProCourseContent);
+      view.getByText('Course');
+    });
+
     it('renders certificate when the course grants a certificate', () => {
       const { view } = renderView(mockProCourseContent);
       view.getByText('Certificate');
@@ -38,17 +43,6 @@ describe('CourseCard', () => {
         grantsCertificate: false,
       });
       expect(view.queryByText('Certificate')).toBeFalsy();
-    });
-  });
-
-  describe('When the course is in Module Based Gating Experiment', () => {
-    it('always renders "Course" tag', () => {
-      const { view } = renderView({
-        ...mockFreeCourseContent,
-        inModuleBasedGatingExp: true,
-      });
-      expect(view.queryByText('Free course')).toBeFalsy();
-      expect(view.queryByText('Course'));
     });
   });
 });
