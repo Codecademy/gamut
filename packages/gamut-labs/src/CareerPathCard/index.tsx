@@ -19,10 +19,6 @@ type CareerPathCardProps = {
   difficulty?: CourseDifficulty | null;
   enrollmentStatus: EnrollmentStatus;
   lessonCount: number;
-  projectCount: number;
-  portfolioProjectCount: number;
-  pro: boolean;
-  slug: string;
   tag?: string | null;
   title: string;
   categories?: { title: string }[] | null;

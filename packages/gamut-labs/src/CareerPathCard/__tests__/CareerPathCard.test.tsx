@@ -9,8 +9,6 @@ import { CareerPathCard } from '../index';
 const renderView = setupRtl(CareerPathCard, {
   enrollmentStatus: EnrollmentStatus.None,
   lessonCount: 46,
-  pro: false,
-  slug: 'python-101',
   shortDescription:
     'BI Data Analysts use Python and SQL to query, analyze, and visualize data.',
   difficulty: CourseDifficulty.Beginner,
@@ -18,8 +16,6 @@ const renderView = setupRtl(CareerPathCard, {
   imageUrl:
     'https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card.svg',
   courseCount: 18,
-  projectCount: 4,
-  portfolioProjectCount: 4,
 });
 
 describe('CareerPathCard', () => {
