@@ -14,16 +14,14 @@ export const Divider: React.FC = () => {
 
 export const CertificateComponent: React.FC = () => {
   return (
-    <>
-      <FlexBox alignItems="center">
-        <FlexBox pr={4}>
-          <CertificateIcon />
-        </FlexBox>
-        <Text variant="p-small" pl={4}>
-          With <b>Certificate</b>
-        </Text>
+    <FlexBox alignItems="center">
+      <FlexBox pr={4}>
+        <CertificateIcon />
       </FlexBox>
-    </>
+      <Text variant="p-small" pl={4}>
+        With <b>Certificate</b>
+      </Text>
+    </FlexBox>
   );
 };
 
