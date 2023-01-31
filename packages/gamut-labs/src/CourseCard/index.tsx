@@ -15,7 +15,6 @@ export type CourseCardProps = {
   pro: boolean;
   shortDescription?: string | null;
   difficulty?: CourseDifficulty | null;
-  inModuleBasedGatingExp?: boolean;
   isFullSize?: boolean;
   minHeight?: CardProps['minHeight'];
   minWidth?: CardProps['minWidth'];
@@ -29,7 +28,6 @@ export const CourseCard: React.FC<CourseCardProps> = ({
   difficulty,
   enrollmentStatus,
   pro,
-  inModuleBasedGatingExp,
   isFullSize,
   minHeight,
   minWidth,
@@ -42,7 +40,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({
     <ContentGroupBaseCard
       headerBackgroundColor="green-100"
       headingLevel="h3"
-      headerText={pro || inModuleBasedGatingExp ? 'Course' : 'Free course'}
+      headerText={pro ? 'Course' : 'Free course'}
       title={title}
       description={shortDescription}
       difficulty={difficulty}
