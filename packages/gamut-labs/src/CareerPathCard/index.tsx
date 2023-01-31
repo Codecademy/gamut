@@ -13,19 +13,13 @@ import {
 } from '../ContentGroupBaseCard/types';
 
 type CareerPathCardProps = {
-  imageUrl: string;
-  courseCount: number;
+  title: string;
+  lessonCount: number;
+  enrollmentStatus: EnrollmentStatus;
   shortDescription?: string | null;
   difficulty?: CourseDifficulty | null;
-  enrollmentStatus: EnrollmentStatus;
-  lessonCount: number;
-  projectCount: number;
-  portfolioProjectCount: number;
-  pro: boolean;
-  slug: string;
-  tag?: string | null;
-  title: string;
-  categories?: { title: string }[] | null;
+  imageUrl: string;
+  courseCount: number;
   isFullSize?: boolean;
   minHeight?: CardProps['minHeight'];
   minWidth?: CardProps['minWidth'];
