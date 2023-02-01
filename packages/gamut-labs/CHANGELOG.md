@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.3.0...@codecademy/gamut-labs@35.3.1) (2023-02-01)
+
+
+### Bug Fixes
+
+* **GlobalFooter:** show new career building links in footer ([3d85ed9](https://github.com/Codecademy/gamut/commit/3d85ed9a068d2c9198edcc799c3a2d109942ea22))
+
+
+
+## [35.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.2.0...@codecademy/gamut-labs@35.3.0) (2023-01-31)
+
+
+### Features
+
+* **CourseCard:** New course card ([a705447](https://github.com/Codecademy/gamut/commit/a705447e806a966e42623cfb6bf53795c84d3311))
+
+
+
 ## [35.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.1.0...@codecademy/gamut-labs@35.2.0) (2023-01-30)
 
 

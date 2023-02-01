@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [63.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.2.0...@codecademy/styleguide@63.2.1) (2023-02-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [63.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.1.0...@codecademy/styleguide@63.2.0) (2023-01-31)
+
+
+### Features
+
+* **CourseCard:** New course card ([a705447](https://github.com/Codecademy/gamut/commit/a705447e806a966e42623cfb6bf53795c84d3311))
+
+
+
 ## [63.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.0.3...@codecademy/styleguide@63.1.0) (2023-01-30)
 
 
