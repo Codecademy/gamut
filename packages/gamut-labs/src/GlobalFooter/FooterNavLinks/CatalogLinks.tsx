@@ -160,8 +160,7 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
             Career paths
           </Anchor>
         </CatalogFooterLinkItem>
-        {/* TODO: DISC-1059 - Uncomment career links in footer once links are live on 1/30  */}
-        {/* <CatalogFooterLinkItem>
+        <CatalogFooterLinkItem>
           <Anchor
             href="/pages/career-services"
             onClick={(event) => onClick({ event, target: 'career_services' })}
@@ -184,13 +183,15 @@ export const CatalogLinks: React.FC<CatalogLinksProps> = ({ onClick }) => {
         <CatalogFooterLinkItem>
           <Anchor
             href="/pages/pro-certifications"
-            onClick={(event) => onClick({ event, target: 'pro_certifications' })}
+            onClick={(event) =>
+              onClick({ event, target: 'pro_certifications' })
+            }
             variant="interface"
             whiteSpace="nowrap"
           >
             Professional certification
           </Anchor>
-        </CatalogFooterLinkItem> */}
+        </CatalogFooterLinkItem>
         <CatalogFooterLinkItem aria-hidden>—</CatalogFooterLinkItem>
         <CatalogFooterLinkItem>
           <Anchor
