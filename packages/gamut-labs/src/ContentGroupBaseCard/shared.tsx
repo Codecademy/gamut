@@ -39,3 +39,16 @@ export const CourseCountComponent: React.FC<{ count: number }> = ({
     </Text>
   );
 };
+
+export const CourseCountComponent: React.FC<{ count: number }> = ({
+  count,
+}) => {
+  return (
+    <Text variant="p-small">
+      Includes{' '}
+      <b>
+        {count} {pluralize('Courses', count)}
+      </b>
+    </Text>
+  );
+};
