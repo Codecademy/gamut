@@ -15,6 +15,7 @@ export * from './BetaSticker';
 export * from './Byline';
 export * from './ContentGroupBaseCard';
 export * from './CareerPathCard';
+export * from './CourseCard';
 export * from './CurriculumCard';
 export * from './CurriculumCard/Difficulty';
 export * from './CurriculumCard/Difficulty/types';
