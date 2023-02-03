@@ -4,7 +4,7 @@ import { FormState } from 'react-hook-form';
 
 import { Box, FlexBox } from '../Box';
 import { ButtonProps, FillButton } from '../Button';
-import { Spinner } from '../Spinner';
+import { Spinner } from '../Loading/Spinner';
 import { useSubmitState } from './utils';
 
 export interface SubmitContextProps {
