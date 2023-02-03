@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [63.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.4.0...@codecademy/styleguide@63.4.1) (2023-02-03)
+
+
+### Bug Fixes
+
+* **GridFormSubmit:** delete `fill` GridFormSubmit + fix `stretch` GridForm submit ([5032467](https://github.com/Codecademy/gamut/commit/503246754cfb48622292c2256ae93e645a70bb6d))
+
+
+
 ## [63.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.3.0...@codecademy/styleguide@63.4.0) (2023-02-02)
 
 
