@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [63.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.3.0...@codecademy/styleguide@63.4.0) (2023-02-02)
+
+
+### Features
+
+* **CareerPathCard:** New CareerPathCard ([7cf1ad0](https://github.com/Codecademy/gamut/commit/7cf1ad0f4aed837110d85a6bcc3f171a1dfb8d60))
+
+
+
 ## [63.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.2.1...@codecademy/styleguide@63.3.0) (2023-02-01)
 
 
