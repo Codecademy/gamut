@@ -79,6 +79,15 @@ export const coreSwatches = {
     '800': '#616161',
     '900': '#424242',
   },
+  white: {
+    '100': rgba(white, 0.04),
+    '200': rgba(white, 0.09),
+    '300': rgba(white, 0.2),
+    '400': rgba(white, 0.33),
+    '500': rgba(white, 0.5),
+    '600': rgba(white, 0.65),
+    '700': rgba(white, 0.8),
+  },
 } as const;
 
 export const trueColors = {
