@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [52.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.0.0...@codecademy/gamut@52.0.1) (2023-02-03)
+
+
+### Bug Fixes
+
+* **GridFormSubmit:** delete `fill` GridFormSubmit + fix `stretch` GridForm submit ([5032467](https://github.com/Codecademy/gamut/commit/503246754cfb48622292c2256ae93e645a70bb6d))
+
+
+
 ## [52.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.7.3...@codecademy/gamut@52.0.0) (2023-01-19)
 
 

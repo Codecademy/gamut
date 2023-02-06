@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.0...@codecademy/gamut-labs@35.5.1) (2023-02-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [35.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.4.0...@codecademy/gamut-labs@35.5.0) (2023-02-02)
+
+
+### Features
+
+* **CareerPathCard:** New CareerPathCard ([7cf1ad0](https://github.com/Codecademy/gamut/commit/7cf1ad0f4aed837110d85a6bcc3f171a1dfb8d60))
+
+
+
 ## [35.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.3.1...@codecademy/gamut-labs@35.4.0) (2023-02-01)
 
 
