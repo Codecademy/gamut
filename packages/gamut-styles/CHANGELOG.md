@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@15.0.0...@codecademy/gamut-styles@15.1.0) (2023-02-06)
+
+
+### Features
+
+* **ColorMode:** add text-secondary + new white weights ([cc75989](https://github.com/Codecademy/gamut/commit/cc759899c08d03a91de65777bc7123c957db2d21))
+
+
+
 ## [15.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.5...@codecademy/gamut-styles@15.0.0) (2023-01-19)
 
 
