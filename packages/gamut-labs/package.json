@@ -11,6 +11,7 @@
   ],
   "module": "./dist/index.js",
   "main": "./dist/index.js",
+  "type": "module",
   "files": [
     "dist"
   ],

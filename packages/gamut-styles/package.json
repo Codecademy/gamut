@@ -5,6 +5,7 @@
   "author": "Jake Hiller <jake@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "type": "module",
   "files": [
     "dist",
     "core",

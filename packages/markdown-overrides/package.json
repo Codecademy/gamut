@@ -5,6 +5,7 @@
   "author": "Codecademy Engineering",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Codecademy/gamut.git"
