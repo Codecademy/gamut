@@ -6,6 +6,7 @@ import { rgba } from 'polished';
 
 const black = '#000000';
 const white = '#ffffff';
+const navy = '#10162F';
 
 const effects = {
   shadow: {
@@ -33,14 +34,14 @@ export const coreSwatches = {
     '800': '#1D2340',
   },
   navy: {
-    '100': '#F3F3F5',
-    '200': '#DBDCE0',
-    '300': '#C3C5CB',
-    '400': '#9FA2AC',
-    '500': '#707382',
-    '600': '#585C6D',
-    '700': '#34394C',
-    '800': '#10162F',
+    '100': rgba(navy, 0.04),
+    '200': rgba(navy, 0.12),
+    '300': rgba(navy, 0.28),
+    '400': rgba(navy, 0.45),
+    '500': rgba(navy, 0.63),
+    '600': rgba(navy, 0.75),
+    '700': rgba(navy, 0.86),
+    '800': navy,
     '900': '#0A0D1C',
   },
   green: {
