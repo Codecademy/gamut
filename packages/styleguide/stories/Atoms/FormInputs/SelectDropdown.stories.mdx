@@ -376,14 +376,18 @@ You can chose how options will be shown in the dropdown. 6 is the default limit 
 
 You may need to add additional info to your dropdowns, like disabled options, option subtitles, or group dividers
 
-<SelectDropdownOptionVariantsExample />
+<Canvas>
+  <Story name="SelectDropdown Option Variants">
+    {() => <SelectDropdownOptionVariantsExample />}
+  </Story>
+</Canvas>
 
 ```tsx
 import { Box, FormGroup, SelectDropdown } from '@codecademy/gamut/src';
 import React from 'react';
 
 export const SelectDropdownOptionVariantsExample: React.FC = () => (
-  <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+  <Box p={16} width="100%" height="12rem" border={1} bg="background-primary">
     <FormGroup label="I might have disabled options" htmlFor="disabled-dropdown">
       <SelectDropdown
         name="disabled-dropdown"
@@ -406,7 +410,7 @@ export const SelectDropdownOptionVariantsExample: React.FC = () => (
       />
     </FormGroup>
   </Box>
-  <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+  <Box p={16} width="100%" height="12rem" border={1} bg="background-primary">
     <FormGroup label="I have subtitle and extended info options" htmlFor="disabled-dropdown">
       <SelectDropdown
         name="disabled-dropdown"
@@ -469,7 +473,7 @@ import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import React from 'react';
 
 export const SelectDropdownMultipleExample: React.FC = () => (
-  <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+  <Box p={16} width="100%" height="12rem" border={1} bg="background-primary">
     <FormGroup label="I have multiple select options" htmlFor="multi-dropdown">
       <SelectDropdown
         name="multi-dropdown"
@@ -505,7 +509,7 @@ import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import React from 'react';
 
 export const SelectDropdownIconExample: React.FC = () => (
-  <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+  <Box p={16} width="100%" height="12rem" border={1} bg="background-primary">
     <FormGroup label="i have pizzazz" htmlFor="pizzaz-dropdown">
       <SelectDropdown
         name="pizzaz-dropdown"

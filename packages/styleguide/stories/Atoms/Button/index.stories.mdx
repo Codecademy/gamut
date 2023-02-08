@@ -21,7 +21,6 @@ import { ButtonScale } from './examples';
     children: 'Click Me',
     disabled: false,
     href: '',
-    mode: 'light',
     size: 'normal',
   }}
   parameters={{
@@ -130,7 +129,11 @@ Writing words for a link or button? Above all else, make sure that the words alo
 
 <Canvas>
   <Story name="IconButton">
-    <IconButton icon={SearchIcon} />
+    {(args) => (
+      <IconButton {...args} icon={SearchIcon}>
+        {undefined}
+      </IconButton>
+    )}
   </Story>
 </Canvas>
 
