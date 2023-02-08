@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.2...@codecademy/gamut-labs@35.5.3) (2023-02-06)
+
+
+### Bug Fixes
+
+* **LayoutMenuVariant:** change border color of accordion area ([2cf4fb8](https://github.com/Codecademy/gamut/commit/2cf4fb87852c518801ee456bf508122e361b9e8c))
+
+
+
+### [35.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.1...@codecademy/gamut-labs@35.5.2) (2023-02-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [35.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.0...@codecademy/gamut-labs@35.5.1) (2023-02-03)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

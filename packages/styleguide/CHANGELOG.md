@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [63.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.0...@codecademy/styleguide@63.5.1) (2023-02-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [63.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.4.1...@codecademy/styleguide@63.5.0) (2023-02-06)
+
+
+### Features
+
+* **ColorMode:** add text-secondary + new white weights ([cc75989](https://github.com/Codecademy/gamut/commit/cc759899c08d03a91de65777bc7123c957db2d21))
+
+
+
 ### [63.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.4.0...@codecademy/styleguide@63.4.1) (2023-02-03)
 
 
