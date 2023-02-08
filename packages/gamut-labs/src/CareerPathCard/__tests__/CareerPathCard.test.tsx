@@ -23,4 +23,14 @@ describe('CareerPathCard', () => {
     const { view } = renderView();
     view.getByText('Career path');
   });
+
+  it('renders professional certification if career journey exists for the career', () => {
+    const { view } = renderView({ hasCareerJourney: true });
+    view.getByText('ProfessionalCertification');
+  });
+
+  it('renders certificate for other career paths', () => {
+    const { view } = renderView({ hasCareerJourney: false });
+    view.getByText('Certificate');
+  });
 });

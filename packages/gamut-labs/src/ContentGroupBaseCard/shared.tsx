@@ -12,7 +12,9 @@ export const Divider: React.FC = () => {
   );
 };
 
-export const CertificateComponent: React.FC = () => {
+export const CertificateComponent: React.FC<{ professionalCert?: boolean }> = ({
+  professionalCert,
+}) => {
   return (
     <>
       <FlexBox alignItems="center">
@@ -20,7 +22,10 @@ export const CertificateComponent: React.FC = () => {
           <CertificateIcon />
         </FlexBox>
         <Text variant="p-small" pl={4}>
-          With <b>Certificate</b>
+          With{' '}
+          <b>
+            {professionalCert ? `Professional Certificiation` : `Certificate`}
+          </b>
         </Text>
       </FlexBox>
     </>
