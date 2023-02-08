@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 
 import {
-  CourseDifficulty,
+  DifficultyLevels,
   EnrollmentStatus,
 } from '../../ContentGroupBaseCard/types';
 import { CareerPathCard } from '../index';
@@ -11,7 +11,7 @@ const renderView = setupRtl(CareerPathCard, {
   lessonCount: 46,
   shortDescription:
     'BI Data Analysts use Python and SQL to query, analyze, and visualize data.',
-  difficulty: CourseDifficulty.Beginner,
+  difficulty: DifficultyLevels.Beginner,
   title: 'Python 101',
   imageUrl:
     'https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card.svg',

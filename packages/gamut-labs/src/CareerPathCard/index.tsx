@@ -8,7 +8,7 @@ import {
   Divider,
 } from '../ContentGroupBaseCard/shared';
 import {
-  CourseDifficulty,
+  DifficultyLevels,
   EnrollmentStatus,
 } from '../ContentGroupBaseCard/types';
 
@@ -17,7 +17,7 @@ type CareerPathCardProps = {
   lessonCount: number;
   enrollmentStatus: EnrollmentStatus;
   shortDescription?: string | null;
-  difficulty?: CourseDifficulty | null;
+  difficulty?: DifficultyLevels | null;
   imageUrl: string;
   courseCount: number;
   isFullSize?: boolean;

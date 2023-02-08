@@ -13,7 +13,7 @@ import pluralize from 'pluralize';
 import React from 'react';
 
 import { Divider } from './shared';
-import { CourseDifficulty, EnrollmentStatus } from './types';
+import { DifficultyLevels, EnrollmentStatus } from './types';
 
 const Image = Box.withComponent('img');
 
@@ -23,7 +23,7 @@ type ContentGroupBaseCardProps = {
   title: string;
   headingLevel?: HeadingTags;
   description?: string | null;
-  difficulty?: CourseDifficulty | null;
+  difficulty?: DifficultyLevels | null;
   numLessons: number;
   imageSrc?: string;
   isFullSize?: boolean;
@@ -140,7 +140,7 @@ export const ContentGroupBaseCard: React.FC<ContentGroupBaseCardProps> = ({
                     data-testid="card-difficulty"
                   >
                     <b>{difficulty}</b>
-                    {difficulty === CourseDifficulty.Beginner && <> Friendly</>}
+                    {difficulty === DifficultyLevels.Beginner && <> Friendly</>}
                   </Text>
                 </FlexBox>
               )}
