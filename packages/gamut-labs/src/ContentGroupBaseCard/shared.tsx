@@ -24,7 +24,7 @@ export const CertificateComponent: React.FC<{ professionalCert?: boolean }> = ({
         <Text variant="p-small" pl={4}>
           With{' '}
           <b>
-            {professionalCert ? `Professional Certificiation` : `Certificate`}
+            {professionalCert ? `Professional Certification` : `Certificate`}
           </b>
         </Text>
       </FlexBox>
