@@ -26,7 +26,7 @@ describe('CareerPathCard', () => {
 
   it('renders professional certification if career journey exists for the career', () => {
     const { view } = renderView({ hasCareerJourney: true });
-    view.getByText('ProfessionalCertification');
+    view.getByText('Professional Certification');
   });
 
   it('renders certificate for other career paths', () => {
