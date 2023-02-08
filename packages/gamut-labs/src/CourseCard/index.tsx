@@ -3,7 +3,7 @@ import { CardProps } from '@codecademy/gamut';
 import { ContentGroupBaseCard } from '../ContentGroupBaseCard';
 import { CertificateComponent, Divider } from '../ContentGroupBaseCard/shared';
 import {
-  DifficultyLevels,
+  DifficultyLevel,
   EnrollmentStatus,
 } from '../ContentGroupBaseCard/types';
 
@@ -14,7 +14,7 @@ export type CourseCardProps = {
   enrollmentStatus: EnrollmentStatus;
   pro: boolean;
   shortDescription?: string | null;
-  difficulty?: DifficultyLevels | null;
+  difficulty?: DifficultyLevel | null;
   isFullSize?: boolean;
   minHeight?: CardProps['minHeight'];
   minWidth?: CardProps['minWidth'];
