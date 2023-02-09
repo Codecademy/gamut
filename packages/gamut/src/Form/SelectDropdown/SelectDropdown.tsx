@@ -64,11 +64,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   shownOptionsLimit = 6,
   ...rest
 }) => {
-  /**
-   * Currently the `id` prop isn't required, though in the future, it should be (or we should use
-   * React 18: https://github.com/reactwg/react-18/discussions/111), to help enforce the ReactSelect
-   * id requirement
-   */
   const rawInputId = useId();
   const inputId = name ?? `${id}-select-dropdown-${rawInputId}`;
 
