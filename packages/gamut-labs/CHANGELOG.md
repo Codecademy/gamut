@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.5.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.3...@codecademy/gamut-labs@35.5.4) (2023-02-09)
+
+
+### Bug Fixes
+
+* **CareerPathCard:** add professional certification text for Journeys ([85971d2](https://github.com/Codecademy/gamut/commit/85971d24d1ce6c9897ad913a8290fdc6330ea9ec))
+
+
+
 ### [35.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.2...@codecademy/gamut-labs@35.5.3) (2023-02-06)
 
 
