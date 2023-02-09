@@ -1,11 +1,11 @@
 import {
-  DifficultyLevel,
+  CourseDifficulty,
   EnrollmentStatus,
 } from '../../../ContentGroupBaseCard/types';
 import { SkillPathCardProps } from '../..';
 
 export const mockSkillPathContent: SkillPathCardProps = {
-  difficulty: DifficultyLevel.Intermediate,
+  difficulty: CourseDifficulty.Intermediate,
   enrollmentStatus: EnrollmentStatus.None,
   courseCount: 5,
   lessonCount: 11,

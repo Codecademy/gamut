@@ -1,11 +1,11 @@
 import {
-  DifficultyLevel,
+  CourseDifficulty,
   EnrollmentStatus,
 } from '../../../ContentGroupBaseCard/types';
 import { CourseCardProps } from '../..';
 
 export const mockFreeCourseContent: CourseCardProps = {
-  difficulty: DifficultyLevel.Beginner,
+  difficulty: CourseDifficulty.Beginner,
   enrollmentStatus: EnrollmentStatus.None,
   grantsCertificate: false,
   lessonCount: 20,
@@ -15,7 +15,7 @@ export const mockFreeCourseContent: CourseCardProps = {
 };
 
 export const mockProCourseContent: CourseCardProps = {
-  difficulty: DifficultyLevel.Advanced,
+  difficulty: CourseDifficulty.Advanced,
   enrollmentStatus: EnrollmentStatus.None,
   grantsCertificate: true,
   lessonCount: 10,
