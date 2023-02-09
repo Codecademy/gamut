@@ -118,6 +118,7 @@ Array [
   "useField",
   "useFormState",
   "useGetInitialFormValue",
+  "useIsMounted",
   "useLocalQuery",
   "useSubmitState",
   "Video",
