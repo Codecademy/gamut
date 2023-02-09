@@ -169,9 +169,6 @@ export class Markdown extends PureComponent<MarkdownProps> {
     return (
       <Wrapper
         {...omitProps(Object.keys(this.props), this.props)}
-        suppressHydrationWarning={['production', 'test'].includes(
-          process.env.NODE_ENV || ''
-        )}
         className={classes}
       >
         {react}
