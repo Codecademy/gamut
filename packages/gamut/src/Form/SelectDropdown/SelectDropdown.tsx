@@ -185,7 +185,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         }}
         formatGroupLabel={formatGroupLabel}
         formatOptionLabel={formatOptionLabel}
-        id={id || rest.htmlFor}
+        id={id || rest.htmlFor || rawInputId}
         inputId={inputId}
         inputProps={{ ...inputProps, name }}
         isDisabled={disabled}
