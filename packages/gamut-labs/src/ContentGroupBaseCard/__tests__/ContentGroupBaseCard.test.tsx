@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 
 import { ContentGroupBaseCard } from '..';
-import { DifficultyLevel, EnrollmentStatus } from '../types';
+import { CourseDifficulty, EnrollmentStatus } from '../types';
 
 const renderView = setupRtl(ContentGroupBaseCard, {
   headerBackgroundColor: 'pink',
@@ -32,7 +32,7 @@ describe('ContentGroupBaseCard', () => {
 
   it('appends the word Friendly if the difficulty level is Beginner', () => {
     const { view } = renderView({
-      difficulty: DifficultyLevel.Beginner,
+      difficulty: CourseDifficulty.Beginner,
     });
 
     const difficultyContent = view.getByTestId('card-difficulty');
