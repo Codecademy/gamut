@@ -1,4 +1,8 @@
-import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
+import {
+  MiniChevronDownIcon,
+  MiniDeleteIcon,
+  SearchIcon,
+} from '@codecademy/gamut-icons';
 import { Background, system, timing, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
@@ -136,7 +140,7 @@ export const Alert: React.FC<AlertProps> = ({
 
   return (
     <AlertBanner bg={bg} {...props}>
-      <Icon size={32} aria-hidden p={8} />
+      <SearchIcon size={32} aria-hidden p={8} color="danger" />
       <CollapsableContent
         aria-expanded={expanded}
         initial={toggleState}
