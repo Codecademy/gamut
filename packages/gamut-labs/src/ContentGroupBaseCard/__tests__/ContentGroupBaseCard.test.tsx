@@ -1,7 +1,10 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 
+import {
+  CourseDifficulty,
+  EnrollmentStatus,
+} from '../../../dist/ContentGroupBaseCard/types';
 import { ContentGroupBaseCard } from '..';
-import { CourseDifficulty, EnrollmentStatus } from '../types';
 
 const renderView = setupRtl(ContentGroupBaseCard, {
   headerBackgroundColor: 'pink',
