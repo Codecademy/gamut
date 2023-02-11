@@ -61,13 +61,14 @@ const plugin = (api) => {
       const newerChildren = types.jsxElement(gTagOpen, gTagClose, [
         rectTagComplete,
       ]);
-
       const newChildren = types.jsxElement(maskTagOpen, maskTagClosed, [
         ...path.node.children,
-        newerChildren,
       ]);
 
-      path.replaceWith(types.jsxElement(ogOpen, ogClose, [newChildren]));
+      path.replaceWith(
+        types.jsxElement(ogOpen, ogClose, [newChildren, newerChildren])
+      );
+
       path.skip();
     },
   };

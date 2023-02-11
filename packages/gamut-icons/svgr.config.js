@@ -1,4 +1,5 @@
 const emotionPlugin = require('./emotion-plugin');
+const maskPlugin = require('./mask-plugin');
 const template = require('./icon-template');
 const indexTemplate = require('./index-template');
 
@@ -23,7 +24,7 @@ module.exports = {
   },
   jsx: {
     babelConfig: {
-      plugins: [emotionPlugin],
+      plugins: [maskPlugin, emotionPlugin],
     },
   },
   indexTemplate,
