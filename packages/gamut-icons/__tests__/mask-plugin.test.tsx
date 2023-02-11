@@ -13,8 +13,10 @@ const testPlugin = (code: string) => {
 
 describe('title plugin', () => {
   it('should add title attribute if not present', () => {
-    expect(testPlugin('<svg><title>updog</title></svg>')).toMatchInlineSnapshot(
-      `"<svg><mask><title id={titleId}>{title}</title></mask></svg>"`
+    expect(
+      testPlugin('<svg><title>updog</title><div/></svg>')
+    ).toMatchInlineSnapshot(
+      `"<svg><mask id={'updogId'}><title>updog</title><div /></mask></svg>;"`
     );
   });
 });
