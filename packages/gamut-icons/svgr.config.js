@@ -8,6 +8,7 @@ module.exports = {
   titleProp: true,
   ref: true,
   svgProps: {
+    fill: '#fff',
     role: 'img',
     'aria-hidden': 'true',
     width: '{width}',
