@@ -1,19 +1,18 @@
 const plugin = (api) => {
   const { types } = api;
 
-  const maskTag = types.jSXIdentifier('mask');
+  const clipPathTag = types.jSXIdentifier('clipPath');
   const gTag = types.jSXIdentifier('g');
   const rectTag = types.jSXIdentifier('rect');
 
+  const normalizeTitle = (title) => {
+    return title.toLowerCase().replace(/\s+/g, '-');
+  };
   const createAttribute = (tag, value) => {
     return types.jsxAttribute(
       types.jsxIdentifier(tag),
       types.jsxExpressionContainer(types.identifier(`'${value}'`))
     );
-  };
-
-  const normalizeTitle = (title) => {
-    return title.toLowerCase().replace(/\s+/g, '-');
   };
 
   const vistor = {
@@ -40,12 +39,13 @@ const plugin = (api) => {
       const ogOpen = path.get('openingElement').node;
       const ogClose = path.get('closingElement').node;
 
-      const maskTagOpen = types.jsxOpeningElement(maskTag, [newId]);
-      const maskTagClosed = types.jsxClosingElement(maskTag, []);
+      const maskTagOpen = types.jsxOpeningElement(clipPathTag, [newId]);
+      const maskTagClosed = types.jsxClosingElement(clipPathTag, []);
 
-      const maskGAttr = createAttribute('mask', `url(#${title})`);
+      const maskGAttr = createAttribute('clip-path', `url(#${title})`);
+      const idGAttr = createAttribute('id', `${title}-path`);
 
-      const gTagOpen = types.jsxOpeningElement(gTag, [maskGAttr]);
+      const gTagOpen = types.jsxOpeningElement(gTag, [idGAttr, maskGAttr]);
 
       const gTagClose = types.jsxClosingElement(gTag, []);
 
@@ -55,7 +55,7 @@ const plugin = (api) => {
           [
             createAttribute('width', '24'),
             createAttribute('height', '24'),
-            createAttribute('fill', 'red'),
+            createAttribute('fill', 'currentColor'),
           ],
           true
         ),

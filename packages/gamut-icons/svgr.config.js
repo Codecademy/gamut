@@ -8,7 +8,6 @@ module.exports = {
   titleProp: true,
   ref: true,
   svgProps: {
-    fill: 'currentColor',
     role: 'img',
     'aria-hidden': 'true',
     width: '{width}',
@@ -18,9 +17,10 @@ module.exports = {
     parser: 'typescript',
   },
   replaceAttrValues: {
-    '#000': 'currentColor',
-    '#111': 'currentColor',
-    '#444': 'currentColor',
+    '#000': '#fff',
+    '#111': '#fff',
+    '#444': '#fff',
+    currentColor: '#fff',
   },
   jsx: {
     babelConfig: {
