@@ -53,9 +53,9 @@ const plugin = (api) => {
         types.jsxOpeningElement(
           rectTag,
           [
-            createAttribute('width', '24'),
-            createAttribute('height', '24'),
-            createAttribute('fill', 'red'),
+            createAttribute('width', '100%'),
+            createAttribute('height', '100%'),
+            createAttribute('fill', 'currentColor'),
           ],
           true
         ),
