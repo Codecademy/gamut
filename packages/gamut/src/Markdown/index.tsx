@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import HtmlToReact from 'html-to-react';
-import marked from 'marked';
+import { marked } from 'marked';
 import { PureComponent } from 'react';
 import * as React from 'react';
 import sanitizeMarkdown from 'sanitize-markdown';
@@ -126,6 +126,42 @@ export class Markdown extends PureComponent<MarkdownProps> {
       ...standardOverrides,
     ].filter(Boolean);
 
+    const markedExtensions: marked.TokenizerAndRendererExtension[] = Object.keys(
+      userOverrides
+    ).map((tagName) => {
+      return {
+        name: tagName,
+        level: 'block',
+        start(src) {
+          return src.match(RegExp(`^.*<${tagName}`))?.index;
+        },
+        tokenizer(src) {
+          const singleTag = RegExp(`^.*<${tagName}.*/>`);
+          const fullTag = RegExp(`^.*<${tagName}.*>(.|\n)*?</${tagName}>`);
+          const fullTagMatch = fullTag.exec(src);
+          const singleTagMatch = singleTag.exec(src);
+          if (fullTagMatch) {
+            return {
+              type: tagName,
+              raw: fullTagMatch[0],
+              text: fullTagMatch[1],
+            };
+          }
+          if (singleTagMatch) {
+            return {
+              type: tagName,
+              raw: singleTagMatch[0],
+            };
+          }
+        },
+        renderer(token) {
+          return token.raw;
+        },
+      };
+    });
+
+    marked.use({ extensions: markedExtensions });
+
     const markedOptions = {
       smartypants: true,
       headerIds,
@@ -134,8 +170,14 @@ export class Markdown extends PureComponent<MarkdownProps> {
 
     // Render markdown to html
     const rawHtml = inline
-      ? marked.inlineLexer(text, [], markedOptions)
-      : marked(text, markedOptions);
+      ? marked.parseInline(text, markedOptions)
+      : marked.parse(text, markedOptions);
+
+    if (rawHtml.includes('table')) {
+      console.groupCollapsed();
+      console.log(rawHtml);
+      console.groupEnd();
+    }
 
     const sanitizationConfig = {
       ...defaultSanitizationConfig,
@@ -157,7 +199,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
     };
 
     const html = sanitizeMarkdown(rawHtml, sanitizationConfig);
-
+    // console.log(html);
     // Render html to a react tree
     const react = htmlToReactParser.parseWithInstructions(
       html,

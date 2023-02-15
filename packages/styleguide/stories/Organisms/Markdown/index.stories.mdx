@@ -46,9 +46,9 @@ In cases where our default Markdown renderer is not returning exactly what you n
     name="Element Overrides"
     args={{
       overrides: elements,
-      text: `"## Hello World
-          <CodeBlock>Span inside a custom code block element</CodeBlock>
-          <CustomElement title='A Custom Component' />"`,
+      text: `## Hello World
+<CodeBlock>Span inside a custom code block element</CodeBlock>
+<CustomElement title='A Custom Component' />`,
     }}
   >
     {(args) => <Markdown {...args} />}
