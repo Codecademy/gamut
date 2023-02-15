@@ -7,20 +7,20 @@ export type conditionalStyleProps = {
   isDisabled?: boolean | null;
 };
 
-export enum InputSelectors {
-  HOVER = '&:hover',
-  ACTIVE = '&:active',
-  PLACEHOLDER = '&:placeholder',
-  FOCUS = '&:focus',
-  FOCUS_LABEL_DIV_CHILD = '&:focus + label > div',
-  DISABLED = "&:disabled, &[aria-disabled='true']",
-  BEFORE = '&::before',
-  AFTER = '&::after',
-  BEFORE_AND_AFTER = '&::before, &::after',
-  CHECKED_BEFORE = '&:checked + label::before',
-  CHECKED_AFTER = '&:checked + label::after',
-  HOVER_FOCUS_BEFORE = '&:hover + label::before, &:focus + label::before',
-}
+export const InputSelectors = {
+  HOVER: '&:hover',
+  ACTIVE: '&:active',
+  PLACEHOLDER: '&:placeholder',
+  FOCUS: '&:focus',
+  FOCUS_LABEL_DIV_CHILD: '&:focus + label > div',
+  DISABLED: "&:disabled, &[aria-disabled='true']",
+  BEFORE: '&::before',
+  AFTER: '&::after',
+  BEFORE_AND_AFTER: '&::before, &::after',
+  CHECKED_BEFORE: '&:checked + label::before',
+  CHECKED_AFTER: '&:checked + label::after',
+  HOVER_FOCUS_BEFORE: '&:hover + label::before, &:focus + label::before',
+} as const;
 
 export const formBaseStyles = {
   fontWeight: 'base',
