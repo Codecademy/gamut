@@ -18,6 +18,7 @@ type CareerPathCardProps = {
   enrollmentStatus: EnrollmentStatus;
   shortDescription?: string | null;
   difficulty?: CourseDifficulty | null;
+  hasCareerJourney?: boolean;
   imageUrl: string;
   courseCount: number;
   isFullSize?: boolean;
@@ -36,6 +37,7 @@ export const CareerPathCard: React.FC<CareerPathCardProps> = ({
   isFullSize,
   minHeight,
   minWidth,
+  hasCareerJourney,
 }) => {
   return (
     <ContentGroupBaseCard
@@ -56,7 +58,7 @@ export const CareerPathCard: React.FC<CareerPathCardProps> = ({
       <Divider />
       <CourseCountComponent count={courseCount} />
       <Divider />
-      <CertificateComponent />
+      <CertificateComponent professionalCert={!!hasCareerJourney} />
     </ContentGroupBaseCard>
   );
 };
