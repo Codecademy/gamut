@@ -11,6 +11,7 @@ module.exports = {
     fill: '#fff',
     role: 'img',
     'aria-hidden': 'true',
+    'pointer-events': 'none',
     width: '{width}',
     height: '{height}',
   },
