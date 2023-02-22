@@ -9,3 +9,4 @@ plugins:
   - removeDesc: true
   - mergePaths: false
   - convertShapeToPath: false
+  - prefixIds: true
