@@ -15,9 +15,8 @@ import {
 } from '@codecademy/gamut-patterns';
 import { css, states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import { planDetails } from './consts';
 import { PlanFeature } from './PlanFeature';
 import { PricingAmount } from './PricingAmount';
 import { RecommendedBadge } from './RecommendedBadge';
@@ -68,42 +67,38 @@ const Label = styled(Text)`
 `.withComponent('label');
 
 export interface CheckoutPlansProps {
-  currentPlan?: PaymentPlan;
   upgradePlanOptions: PaymentPlan[];
   subscription: BillingSubscription;
-  changePlanQueryParam: boolean;
+  selectedPlan: PaymentPlan;
+  setSelectedPlan: React.Dispatch<
+    React.SetStateAction<PaymentPlan | undefined>
+  >;
+  ariaLabelledBy: string;
+  plans: {
+    price: number;
+    id: string;
+    title: string;
+    tag: string;
+    isLite: boolean;
+    features: Record<string, boolean>;
+    newFeatures?: Record<string, boolean> | undefined;
+  }[];
 }
 
 export const CheckoutPlans: React.FC<CheckoutPlansProps> = ({
-  currentPlan,
   upgradePlanOptions,
   subscription,
-  changePlanQueryParam,
+  selectedPlan,
+  setSelectedPlan,
+  ariaLabelledBy,
+  plans,
 }) => {
-  const [selectedPlan, setSelectedPlan] = useState<PaymentPlan | undefined>(
-    currentPlan
-  );
-
-  useEffect(() => {
-    if (changePlanQueryParam)
-      setSelectedPlan(
-        upgradePlanOptions.find((plan) => plan.plan_type === 'pro-gold')
-      );
-  }, [changePlanQueryParam, upgradePlanOptions]);
-
-  const plans = upgradePlanOptions.map((product) => {
-    return {
-      ...planDetails[product.plan_type],
-      price: product.price,
-    };
-  });
-
   const hasLongPrice = subscription.plan.price / 100 > 99;
 
   return (
     <GridBox
       role="radiogroup"
-      aria-labelledby="plan-change-description"
+      aria-labelledby={ariaLabelledBy}
       aria-live="polite"
       gridTemplateColumns={{
         _: '1fr',
@@ -111,7 +106,7 @@ export const CheckoutPlans: React.FC<CheckoutPlansProps> = ({
       }}
       gap={24}
     >
-      {plans.reverse().map((plan) => {
+      {plans.map((plan) => {
         const isSelected = plan.id === selectedPlan?.plan_type;
         const accentColor = plan.isLite ? 'paleYellow' : 'yellow';
 
