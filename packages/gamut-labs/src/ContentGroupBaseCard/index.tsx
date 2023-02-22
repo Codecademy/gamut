@@ -1,7 +1,6 @@
 import {
   Box,
   Card,
-  CardProps,
   FlexBox,
   GridBox,
   HeadingTags,
@@ -30,8 +29,6 @@ type ContentGroupBaseCardProps = {
   shadow?: 'small' | 'outline' | 'medium';
   enrollmentStatus?: EnrollmentStatus;
   children?: React.ReactNode;
-  minHeight?: CardProps['minHeight'];
-  minWidth?: CardProps['minWidth'];
 };
 
 type EnrollmentStatusAssets = {
@@ -54,8 +51,6 @@ export const ContentGroupBaseCard: React.FC<ContentGroupBaseCardProps> = ({
   shadow = 'medium',
   enrollmentStatus,
   children,
-  minHeight,
-  minWidth,
 }) => {
   const enrollmentAssets: EnrollmentStatusAssets = {
     completed: { text: headerText + ' completed!', backgroundColor: 'green' },
@@ -78,8 +73,6 @@ export const ContentGroupBaseCard: React.FC<ContentGroupBaseCardProps> = ({
       shadow={shadow}
       p={0}
       height="100%"
-      minHeight={minHeight}
-      minWidth={minWidth}
     >
       <Background
         bg={
@@ -117,7 +110,7 @@ export const ContentGroupBaseCard: React.FC<ContentGroupBaseCardProps> = ({
               <Text
                 variant="p-small"
                 truncate="ellipsis"
-                truncateLines={4}
+                truncateLines={3}
                 mb={isFullSize ? 16 : 0}
               >
                 {description}
