@@ -14,6 +14,7 @@ export * from './Coffee';
 export * from './Confetti';
 export * from './EmailAt';
 export * from './Envelope';
+export * from './ErrorWindow';
 export * from './Heart';
 export * from './Hills';
 export * from './HomeOffice';

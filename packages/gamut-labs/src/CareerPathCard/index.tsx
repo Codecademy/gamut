@@ -1,5 +1,3 @@
-import { CardProps } from '@codecademy/gamut';
-
 import { getPathImageUrl } from '../ContentGroupBaseCard/helpers';
 import { ContentGroupBaseCard } from '../ContentGroupBaseCard/index';
 import {
@@ -22,8 +20,6 @@ type CareerPathCardProps = {
   imageUrl: string;
   courseCount: number;
   isFullSize?: boolean;
-  minHeight?: CardProps['minHeight'];
-  minWidth?: CardProps['minWidth'];
 };
 
 export const CareerPathCard: React.FC<CareerPathCardProps> = ({
@@ -35,8 +31,6 @@ export const CareerPathCard: React.FC<CareerPathCardProps> = ({
   lessonCount,
   title,
   isFullSize,
-  minHeight,
-  minWidth,
   hasCareerJourney,
 }) => {
   return (
@@ -52,8 +46,6 @@ export const CareerPathCard: React.FC<CareerPathCardProps> = ({
       imageSrc={getPathImageUrl(enrollmentStatus, imageUrl)}
       isFullSize={isFullSize}
       enrollmentStatus={enrollmentStatus}
-      minHeight={minHeight}
-      minWidth={minWidth}
     >
       <Divider />
       <CourseCountComponent count={courseCount} />
