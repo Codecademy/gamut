@@ -137,9 +137,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
             id={plan.id}
             value={plan.id}
             checked={isSelected}
-            onChange={(e) => {
-              onChange(e.target.value);
-            }}
+            onChange={onChange}
           />
           <Label variant="title-xs" ml={8} htmlFor={`radio-${plan.id}`}>
             {plan.title}
