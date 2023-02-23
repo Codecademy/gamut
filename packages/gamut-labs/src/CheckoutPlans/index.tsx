@@ -16,6 +16,7 @@ import { css, states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { planDetails } from './consts';
 import { PlanFeature } from './PlanFeature';
 import { PricingAmount } from './PricingAmount';
 import { RecommendedBadge } from './RecommendedBadge';
@@ -83,13 +84,15 @@ export interface PlanCardProps {
   // ariaLabelledBy: string;
   // plans: Plan[];
   isSelected: boolean;
-  hasLongPrice: boolean;
-  accentColor: 'yellow' | 'paleYellow';
-  price: string;
+  // hasLongPrice: boolean;
+  // accentColor: 'yellow' | 'paleYellow';
+  price?: string;
   currency: Currency;
-  plan: Plan;
+  // plan: Plan;
   termMonths: number;
   onChange: (thing: any) => void;
+  // isLite: boolean;
+  planType: string;
 }
 
 export const PlanCard: React.FC<PlanCardProps> = ({
@@ -100,19 +103,25 @@ export const PlanCard: React.FC<PlanCardProps> = ({
   // ariaLabelledBy,
   // plans,
   isSelected,
-  hasLongPrice,
-  accentColor,
+  // hasLongPrice,
+  // accentColor,
   // planType, // planDetails id
   price,
   currency,
-  plan,
+  // plan,
   termMonths,
   onChange,
+  // isLite,
+  planType,
 }) => {
   // plan.id = 'pro-silver', etc.
 
+  const planDetail = planDetails[planType];
+  const hasLongPrice = Number(price) > 99;
+  const accentColor = planDetail.isLite ? 'paleYellow' : 'yellow';
+
   return (
-    <Card key={plan.id} shadow="medium" p={0} borderWidth={isSelected ? 2 : 1}>
+    <Card key={planType} shadow="medium" p={0} borderWidth={isSelected ? 2 : 1}>
       <FlexBox
         flexDirection={{
           _: 'column',
@@ -134,17 +143,17 @@ export const PlanCard: React.FC<PlanCardProps> = ({
           <StyledRadio
             name="planId"
             htmlFor="radio"
-            id={plan.id}
-            value={plan.id}
+            id={planType}
+            value={planType}
             checked={isSelected}
             onChange={onChange}
           />
-          <Label variant="title-xs" ml={8} htmlFor={`radio-${plan.id}`}>
-            {plan.title}
+          <Label variant="title-xs" ml={8} htmlFor={`radio-${planType}`}>
+            {planDetail.title}
           </Label>
         </FlexBox>
         <Badge variant="strokeContrast" ml={{ _: 32, xs: 0, md: 32 }}>
-          {plan.tag}
+          {planDetail.tag}
         </Badge>
       </FlexBox>
       <FlexBox
@@ -184,7 +193,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
               <PricingAmount
                 termMonths={termMonths}
                 price={price}
-                product={plan.id as PlanType}
+                product={planType as PlanType}
                 currency={currency}
                 compact
               />
@@ -198,10 +207,10 @@ export const PlanCard: React.FC<PlanCardProps> = ({
         </Box>
       )}
       <FlexBox justifyContent="center" position="relative" p={24} m={0}>
-        {plan.id === 'pro-gold' && <RecommendedBadge top={-14} />}
+        {planType === 'pro-gold' && <RecommendedBadge top={-14} />}
         {
           <List>
-            {Object.entries(plan.features).map(([feature, available]) => (
+            {Object.entries(planDetail.features).map(([feature, available]) => (
               <PlanFeature
                 feature={feature}
                 available={available}
@@ -209,8 +218,10 @@ export const PlanCard: React.FC<PlanCardProps> = ({
               />
             ))}
             {/* Features that are coming soon */}
-            {plan.newFeatures &&
-              Object.entries(plan.newFeatures).map(([feature, available]) => (
+            {planDetail.newFeatures &&
+              Object.entries(
+                planDetail.newFeatures
+              ).map(([feature, available]) => (
                 <PlanFeature
                   feature={feature}
                   available={available}
