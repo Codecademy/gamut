@@ -26,7 +26,7 @@ module.exports = {
   },
   jsx: {
     babelConfig: {
-      plugins: [maskPlugin, emotionPlugin],
+      plugins: [maskPlugin, emotionPlugin, 'react-inline-svg-unique-id'],
     },
   },
   indexTemplate,
