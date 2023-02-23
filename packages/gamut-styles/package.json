@@ -26,7 +26,6 @@
     "polished": "^4.1.2"
   },
   "peerDependencies": {
-    "@inline-svg-unique-id/react": "^1.2.3",
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",

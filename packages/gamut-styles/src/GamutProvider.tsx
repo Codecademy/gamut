@@ -12,11 +12,9 @@ import { createEmotionCache } from './cache';
 import { Reboot, Typography } from './globals';
 import { Variables } from './globals/Variables';
 import { coreTheme } from './themes/core';
-import { UniqueIdProvider } from './UniqueIdProvider';
 
 export interface GamutProviderProps {
   children?: React.ReactNode;
-  useIcons?: boolean;
   useGlobals?: boolean;
   useCache?: boolean;
   theme: Theme;
@@ -41,7 +39,6 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   variables,
   useGlobals = true,
   useCache = true,
-  useIcons = true,
 }) => {
   const { hasGlobals, hasCache } = useContext(GamutContext);
   const shouldCreateCache = useCache && !hasCache;
@@ -71,11 +68,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
       <GamutContext.Provider value={contextValue}>
         <CacheProvider value={activeCache.current}>
           {globals}
-          <ThemeProvider theme={theme}>
-            <UniqueIdProvider useUniqueIconIds={useIcons}>
-              {children}
-            </UniqueIdProvider>
-          </ThemeProvider>
+          <ThemeProvider theme={theme}>{children}</ThemeProvider>
         </CacheProvider>
       </GamutContext.Provider>
     );
