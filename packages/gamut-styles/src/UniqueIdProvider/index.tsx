@@ -7,12 +7,14 @@ export interface UniqueIdProviderProps extends ProviderProps {
   useUniqueIconIds?: boolean;
 }
 
-export const UniqueIdProvider: React.FC<UniqueIdProviderProps> = (
-  { useUniqueIconIds = true, children },
-  ...rest
-) => {
+export const UniqueIdProvider: React.FC<UniqueIdProviderProps> = ({
+  useUniqueIconIds = true,
+  children,
+}) => {
   if (!useUniqueIconIds) <>{children}</>;
   return (
-    <UniqueIdGeneratorProvider {...rest}>{children}</UniqueIdGeneratorProvider>
+    <UniqueIdGeneratorProvider idPrefix="custom-prefix">
+      {children}
+    </UniqueIdGeneratorProvider>
   );
 };
