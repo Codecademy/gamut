@@ -3,7 +3,6 @@ import {
   Box,
   Card,
   FlexBox,
-  GridBox,
   List,
   Radio,
   Text,
@@ -20,7 +19,7 @@ import React from 'react';
 import { PlanFeature } from './PlanFeature';
 import { PricingAmount } from './PricingAmount';
 import { RecommendedBadge } from './RecommendedBadge';
-import { BillingSubscription, Currency, PaymentPlan, PlanType } from './types';
+import { Currency, PlanType } from './types';
 
 const PricingBox = styled(FlexBox)(
   css({
