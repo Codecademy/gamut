@@ -20,7 +20,7 @@ import React from 'react';
 import { PlanFeature } from './PlanFeature';
 import { PricingAmount } from './PricingAmount';
 import { RecommendedBadge } from './RecommendedBadge';
-import { BillingSubscription, PaymentPlan } from './types';
+import { BillingSubscription, Currency, PaymentPlan, PlanType } from './types';
 
 const PricingBox = styled(FlexBox)(
   css({
@@ -66,176 +66,164 @@ const Label = styled(Text)`
   }
 `.withComponent('label');
 
-export interface CheckoutPlansProps {
-  upgradePlanOptions: PaymentPlan[];
-  subscription: BillingSubscription;
-  selectedPlan: PaymentPlan;
-  setSelectedPlan: React.Dispatch<
-    React.SetStateAction<PaymentPlan | undefined>
-  >;
-  ariaLabelledBy: string;
-  plans: {
-    price: number;
-    id: string;
-    title: string;
-    tag: string;
-    isLite: boolean;
-    features: Record<string, boolean>;
-    newFeatures?: Record<string, boolean> | undefined;
-  }[];
+interface Plan {
+  price: number;
+  id: string;
+  title: string;
+  tag: string;
+  isLite: boolean;
+  features: Record<string, boolean>;
+  newFeatures?: Record<string, boolean> | undefined;
 }
 
-export const CheckoutPlans: React.FC<CheckoutPlansProps> = ({
-  upgradePlanOptions,
-  subscription,
-  selectedPlan,
-  setSelectedPlan,
-  ariaLabelledBy,
-  plans,
+export interface PlanCardProps {
+  // upgradePlanOptions?: PaymentPlan[];
+  // subscription: BillingSubscription;
+  // selectedPlan: PaymentPlan;
+  // setSelectedPlan: React.Dispatch<React.SetStateAction<Plan | undefined>>;
+  // ariaLabelledBy: string;
+  // plans: Plan[];
+  isSelected: boolean;
+  hasLongPrice: boolean;
+  accentColor: 'yellow' | 'paleYellow';
+  price: string;
+  currency: Currency;
+  plan: Plan;
+  termMonths: number;
+  onChange: (thing: any) => void;
+}
+
+export const PlanCard: React.FC<PlanCardProps> = ({
+  // upgradePlanOptions,
+  // subscription,
+  // selectedPlan,
+  // setSelectedPlan,
+  // ariaLabelledBy,
+  // plans,
+  isSelected,
+  hasLongPrice,
+  accentColor,
+  // planType, // planDetails id
+  price,
+  currency,
+  plan,
+  termMonths,
+  onChange,
 }) => {
-  const hasLongPrice = subscription.plan.price / 100 > 99;
+  // plan.id = 'pro-silver', etc.
 
   return (
-    <GridBox
-      role="radiogroup"
-      aria-labelledby={ariaLabelledBy}
-      aria-live="polite"
-      gridTemplateColumns={{
-        _: '1fr',
-        sm: '1fr 1fr',
-      }}
-      gap={24}
-    >
-      {plans.map((plan) => {
-        const isSelected = plan.id === selectedPlan?.plan_type;
-        const accentColor = plan.isLite ? 'paleYellow' : 'yellow';
+    <Card key={plan.id} shadow="medium" p={0} borderWidth={isSelected ? 2 : 1}>
+      <FlexBox
+        flexDirection={{
+          _: 'column',
+          xs: 'row',
+          md: 'column',
+          lg: 'row',
+        }}
+        alignItems={{
+          _: 'flex-start',
+          lg: 'center',
+        }}
+        justifyContent="space-between"
+        px={16}
+        py={12}
+        borderBottom={isSelected ? 2 : 1}
+        bg={isSelected ? accentColor : undefined}
+      >
+        <FlexBox alignItems="center" whiteSpace="nowrap">
+          <StyledRadio
+            name="planId"
+            htmlFor="radio"
+            id={plan.id}
+            value={plan.id}
+            checked={isSelected}
+            onChange={(e) => {
+              onChange(e.target.value);
+            }}
+          />
+          <Label variant="title-xs" ml={8} htmlFor={`radio-${plan.id}`}>
+            {plan.title}
+          </Label>
+        </FlexBox>
+        <Badge variant="strokeContrast" ml={{ _: 32, xs: 0, md: 32 }}>
+          {plan.tag}
+        </Badge>
+      </FlexBox>
+      <FlexBox
+        position="relative"
+        alignItems="center"
+        justifyContent="center"
+        p={24}
+        color="yellow"
+      >
+        {isSelected && (
+          <DiagonalARegular
+            position="absolute"
+            left={0}
+            top={0}
+            width="100%"
+            height="100%"
+          />
+        )}
 
-        return (
-          <Card
-            key={plan.id}
-            shadow="medium"
-            p={0}
-            borderWidth={isSelected ? 2 : 1}
-          >
-            <FlexBox
-              flexDirection={{
-                _: 'column',
-                xs: 'row',
-                md: 'column',
-                lg: 'row',
-              }}
-              alignItems={{
-                _: 'flex-start',
-                lg: 'center',
-              }}
-              justifyContent="space-between"
-              px={16}
-              py={12}
-              borderBottom={isSelected ? 2 : 1}
-              bg={isSelected ? accentColor : undefined}
-            >
-              <FlexBox alignItems="center" whiteSpace="nowrap">
-                <StyledRadio
-                  name="planId"
-                  htmlFor="radio"
-                  id={plan.id}
-                  value={plan.id}
-                  checked={isSelected}
-                  onChange={(e) => {
-                    setSelectedPlan(
-                      upgradePlanOptions.find(
-                        (plan) => plan.plan_type === e.target.value
-                      )
-                    );
-                  }}
-                />
-                <Label variant="title-xs" ml={8} htmlFor={`radio-${plan.id}`}>
-                  {plan.title}
-                </Label>
-              </FlexBox>
-              <Badge variant="strokeContrast" ml={{ _: 32, xs: 0, md: 32 }}>
-                {plan.tag}
-              </Badge>
-            </FlexBox>
-            <FlexBox
-              position="relative"
-              alignItems="center"
-              justifyContent="center"
-              p={24}
+        <Box color="navy" position="relative">
+          {isSelected && (
+            <Box
+              position="absolute"
+              top={4}
+              right={4}
               color="yellow"
+              width="100%"
+              height="100%"
+              bg="white"
+              overflow="hidden"
             >
-              {isSelected && (
-                <DiagonalARegular
-                  position="absolute"
-                  left={0}
-                  top={0}
-                  width="100%"
-                  height="100%"
+              <DiagonalADense />
+            </Box>
+          )}
+          {price && (
+            <PricingBox hasLongPrice={hasLongPrice}>
+              <PricingAmount
+                termMonths={termMonths}
+                price={price}
+                product={plan.id as PlanType}
+                currency={currency}
+                compact
+              />
+            </PricingBox>
+          )}
+        </Box>
+      </FlexBox>
+      {!isSelected && (
+        <Box height="1px" mx={16} overflow="hidden">
+          <DotDense height="auto" />
+        </Box>
+      )}
+      <FlexBox justifyContent="center" position="relative" p={24} m={0}>
+        {plan.id === 'pro-gold' && <RecommendedBadge top={-14} />}
+        {
+          <List>
+            {Object.entries(plan.features).map(([feature, available]) => (
+              <PlanFeature
+                feature={feature}
+                available={available}
+                key={feature}
+              />
+            ))}
+            {/* Features that are coming soon */}
+            {plan.newFeatures &&
+              Object.entries(plan.newFeatures).map(([feature, available]) => (
+                <PlanFeature
+                  feature={feature}
+                  available={available}
+                  isNew={available}
+                  key={feature}
                 />
-              )}
-
-              <Box color="navy" position="relative">
-                {isSelected && (
-                  <Box
-                    position="absolute"
-                    top={4}
-                    right={4}
-                    color="yellow"
-                    width="100%"
-                    height="100%"
-                    bg="white"
-                    overflow="hidden"
-                  >
-                    <DiagonalADense />
-                  </Box>
-                )}
-                {plan.price && (
-                  <PricingBox hasLongPrice={hasLongPrice}>
-                    <PricingAmount
-                      termMonths={subscription.plan.period_number}
-                      price={(plan.price / 100).toString()}
-                      product={subscription.plan.plan_type}
-                      currency={subscription.currency}
-                      compact
-                    />
-                  </PricingBox>
-                )}
-              </Box>
-            </FlexBox>
-            {!isSelected && (
-              <Box height="1px" mx={16} overflow="hidden">
-                <DotDense height="auto" />
-              </Box>
-            )}
-            <FlexBox justifyContent="center" position="relative" p={24} m={0}>
-              {plan.id === 'pro-gold' && <RecommendedBadge top={-14} />}
-              {
-                <List>
-                  {Object.entries(plan.features).map(([feature, available]) => (
-                    <PlanFeature
-                      feature={feature}
-                      available={available}
-                      key={feature}
-                    />
-                  ))}
-                  {/* Features that are coming soon */}
-                  {plan.newFeatures &&
-                    Object.entries(
-                      plan.newFeatures
-                    ).map(([feature, available]) => (
-                      <PlanFeature
-                        feature={feature}
-                        available={available}
-                        isNew={available}
-                        key={feature}
-                      />
-                    ))}
-                </List>
-              }
-            </FlexBox>
-          </Card>
-        );
-      })}
-    </GridBox>
+              ))}
+          </List>
+        }
+      </FlexBox>
+    </Card>
   );
 };
