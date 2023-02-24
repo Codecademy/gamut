@@ -31,14 +31,14 @@ const HeaderHeightAreaBase = styled(Box)(
 export interface HeaderHeightAreaProps extends WithChildrenProp {
   as?: React.ElementType<any>;
   display: ResponsiveProp<'none' | 'block'>;
-  title?: string;
+  ariaLabel?: string;
 }
 
 export const HeaderHeightArea: React.FC<HeaderHeightAreaProps> = ({
   as,
   children,
   display,
-  title,
+  ariaLabel,
 }) => {
   const theme = useTheme();
   const isInHeaderRegion = useIsInHeaderRegion();
@@ -49,7 +49,7 @@ export const HeaderHeightArea: React.FC<HeaderHeightAreaProps> = ({
       display={display}
       height={theme.elements.headerHeight}
       faded={isInHeaderRegion}
-      title={title}
+      aria-label={ariaLabel}
     >
       {children}
     </HeaderHeightAreaBase>
