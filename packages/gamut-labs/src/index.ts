@@ -16,7 +16,7 @@ export * from './Byline';
 export * from './ContentGroupBaseCard';
 export * from './ContentGroupBaseCard/types';
 export * from './CareerPathCard';
-export * from './CheckoutPlans';
+export * from './PlanCard';
 export * from './CourseCard';
 export * from './CurriculumCard';
 export * from './CurriculumCard/Difficulty';

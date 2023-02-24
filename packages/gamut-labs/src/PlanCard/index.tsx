@@ -14,7 +14,7 @@ import {
 } from '@codecademy/gamut-patterns';
 import { css, states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 import { planDetails } from './consts';
 import { PlanFeature } from './PlanFeature';
@@ -66,56 +66,23 @@ const Label = styled(Text)`
   }
 `.withComponent('label');
 
-// interface Plan {
-//   price: number;
-//   id: string;
-//   title: string;
-//   tag: string;
-//   isLite: boolean;
-//   features: Record<string, boolean>;
-//   newFeatures?: Record<string, boolean> | undefined;
-// }
-
 export interface PlanCardProps {
-  // upgradePlanOptions?: PaymentPlan[];
-  // subscription: BillingSubscription;
-  // selectedPlan: PaymentPlan;
-  // setSelectedPlan: React.Dispatch<React.SetStateAction<Plan | undefined>>;
-  // ariaLabelledBy: string;
-  // plans: Plan[];
   isSelected: boolean;
-  // hasLongPrice: boolean;
-  // accentColor: 'yellow' | 'paleYellow';
-  price?: string;
+  price: string;
   currency: Currency;
-  // plan: Plan;
   termMonths: number;
-  onChange: (thing: any) => void;
-  // isLite: boolean;
-  planType: string;
+  onChange: (changeEvent: ChangeEvent<HTMLInputElement>) => void;
+  planType: PlanType;
 }
 
 export const PlanCard: React.FC<PlanCardProps> = ({
-  // upgradePlanOptions,
-  // subscription,
-  // selectedPlan,
-  // setSelectedPlan,
-  // ariaLabelledBy,
-  // plans,
   isSelected,
-  // hasLongPrice,
-  // accentColor,
-  // planType, // planDetails id
   price,
   currency,
-  // plan,
   termMonths,
   onChange,
-  // isLite,
   planType,
 }) => {
-  // plan.id = 'pro-silver', etc.
-
   const planDetail = planDetails[planType];
   const hasLongPrice = Number(price) > 99;
   const accentColor = planDetail.isLite ? 'paleYellow' : 'yellow';
@@ -193,7 +160,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
               <PricingAmount
                 termMonths={termMonths}
                 price={price}
-                product={planType as PlanType}
+                product={planType}
                 currency={currency}
                 compact
               />

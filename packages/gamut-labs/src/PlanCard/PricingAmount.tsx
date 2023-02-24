@@ -3,8 +3,7 @@ import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { getCurrencySymbol } from './consts';
-import { Currency, PlanType } from './types';
+import { Currency, getCurrencySymbol, PlanType } from './types';
 
 const Amount = styled(Text)`
   font-weight: bold;
