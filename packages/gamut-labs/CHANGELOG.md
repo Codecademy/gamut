@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.6.0...@codecademy/gamut-labs@35.6.1) (2023-02-24)
+
+
+### Bug Fixes
+
+* **AppHeader:** Change title to aria-label ([5f7e18c](https://github.com/Codecademy/gamut/commit/5f7e18c118e88c24f6f5fdb2ad1d2cdc336ef241))
+
+
+
 ## [35.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.10...@codecademy/gamut-labs@35.6.0) (2023-02-22)
 
 
