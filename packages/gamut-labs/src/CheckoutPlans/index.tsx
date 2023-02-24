@@ -66,15 +66,15 @@ const Label = styled(Text)`
   }
 `.withComponent('label');
 
-interface Plan {
-  price: number;
-  id: string;
-  title: string;
-  tag: string;
-  isLite: boolean;
-  features: Record<string, boolean>;
-  newFeatures?: Record<string, boolean> | undefined;
-}
+// interface Plan {
+//   price: number;
+//   id: string;
+//   title: string;
+//   tag: string;
+//   isLite: boolean;
+//   features: Record<string, boolean>;
+//   newFeatures?: Record<string, boolean> | undefined;
+// }
 
 export interface PlanCardProps {
   // upgradePlanOptions?: PaymentPlan[];
