@@ -8,7 +8,6 @@ import {
   login,
   myHome,
   pricingDropdown,
-  referrals,
   resourcesDropdown,
   signUp,
   tryProForFree,
@@ -22,7 +21,6 @@ const user: User = {
   avatar:
     'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
   displayName: 'Codey',
-  showReferrals: true,
 };
 
 const defaultProps = {
@@ -354,12 +352,6 @@ describe('GlobalHeader', () => {
       it('renders profileDropdown', () => {
         const { view } = renderView(proHeaderProps);
         view.getByTestId('avatar-container');
-      });
-
-      it('renders referrals', () => {
-        const { view } = renderView(proHeaderProps);
-        view.getByTestId('avatar-container').click();
-        view.getByText(referrals.text);
       });
     });
 
