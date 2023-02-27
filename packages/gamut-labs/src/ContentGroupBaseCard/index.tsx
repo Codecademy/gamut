@@ -111,7 +111,7 @@ export const ContentGroupBaseCard: React.FC<ContentGroupBaseCardProps> = ({
                 variant="p-small"
                 truncate="ellipsis"
                 truncateLines={3}
-                mb={isFullSize ? 16 : 0}
+                mb={16}
               >
                 {description}
               </Text>
