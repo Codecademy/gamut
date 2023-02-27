@@ -67,7 +67,7 @@
     "@nrwl/nx-cloud": "^14.3.0",
     "@nrwl/react": "^14.5.2",
     "@svgr/cli": "5.5.0",
-    "@testing-library/dom": "^8.11.1",
+    "@testing-library/dom": "^9.0.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
