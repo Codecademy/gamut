@@ -63,10 +63,13 @@ export const CareerPathCard: React.FC<CareerPathCardProps> = ({
       enrollmentStatus={enrollmentStatus}
     >
       {salary && (
-        <SalaryComponent
-          lowerBound={salary.lowerBound}
-          upperBound={salary.upperBound}
-        />
+        <>
+          <Divider />
+          <SalaryComponent
+            lowerBound={salary.lowerBound}
+            upperBound={salary.upperBound}
+          />
+        </>
       )}
       <Divider />
       <CourseCountComponent count={courseCount} />
