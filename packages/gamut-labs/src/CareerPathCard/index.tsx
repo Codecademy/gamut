@@ -1,3 +1,5 @@
+import { Text } from '@codecademy/gamut';
+
 import { getPathImageUrl } from '../ContentGroupBaseCard/helpers';
 import { ContentGroupBaseCard } from '../ContentGroupBaseCard/index';
 import {
@@ -8,6 +10,7 @@ import {
 import {
   CourseDifficulty,
   EnrollmentStatus,
+  SalaryRange,
 } from '../ContentGroupBaseCard/types';
 
 type CareerPathCardProps = {
@@ -20,8 +23,19 @@ type CareerPathCardProps = {
   imageUrl: string;
   courseCount: number;
   isFullSize?: boolean;
+  salary?: SalaryRange;
 };
 
+const SalaryComponent: React.FC<SalaryRange> = ({ lowerBound, upperBound }) => {
+  return (
+    <Text variant="p-small">
+      Avgerage Salary (US)
+      <b>
+        ${upperBound}K - {lowerBound}K
+      </b>
+    </Text>
+  );
+};
 export const CareerPathCard: React.FC<CareerPathCardProps> = ({
   imageUrl,
   courseCount,
@@ -32,6 +46,7 @@ export const CareerPathCard: React.FC<CareerPathCardProps> = ({
   title,
   isFullSize,
   hasCareerJourney,
+  salary,
 }) => {
   return (
     <ContentGroupBaseCard
@@ -47,6 +62,12 @@ export const CareerPathCard: React.FC<CareerPathCardProps> = ({
       isFullSize={isFullSize}
       enrollmentStatus={enrollmentStatus}
     >
+      {salary && (
+        <SalaryComponent
+          lowerBound={salary.lowerBound}
+          upperBound={salary.upperBound}
+        />
+      )}
       <Divider />
       <CourseCountComponent count={courseCount} />
       <Divider />
