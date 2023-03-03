@@ -48,7 +48,10 @@ Note: This card will need to be wrapped in an Anchor or Link in order to be clic
 <Canvas>
   <Story name="CareerPathCard with Salary metadat">
     {(args) => (
-      <CareerPathCard {...args} salary={{ upperBound: 250, lowerBound: 150 }} />
+      <CareerPathCard
+        {...args}
+        salary={{ upperBound: 250000, lowerBound: 150000 }}
+      />
     )}
   </Story>
 </Canvas>

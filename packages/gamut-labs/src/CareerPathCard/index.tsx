@@ -29,9 +29,9 @@ type CareerPathCardProps = {
 const SalaryComponent: React.FC<SalaryRange> = ({ lowerBound, upperBound }) => {
   return (
     <Text variant="p-small">
-      Avgerage Salary (US)
+      Avgerage Salary (US){' '}
       <b>
-        ${upperBound}K - {lowerBound}K
+        ${upperBound / 1000}K - {lowerBound / 1000}K
       </b>
     </Text>
   );
