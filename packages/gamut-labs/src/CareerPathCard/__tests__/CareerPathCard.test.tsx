@@ -33,4 +33,12 @@ describe('CareerPathCard', () => {
     const { view } = renderView({ hasCareerJourney: false });
     view.getByText('Certificate');
   });
+
+  it('renders salary data when provided', () => {
+    const { view } = renderView({
+      salary: { upperBound: 200000, lowerBound: 145000 },
+    });
+    view.getByText('Average Salary (US)');
+    view.getByText('$145K - 200K');
+  });
 });
