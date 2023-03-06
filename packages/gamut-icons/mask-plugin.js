@@ -5,10 +5,9 @@ const plugin = (api) => {
   const gTag = types.jSXIdentifier('g');
   const rectTag = types.jSXIdentifier('rect');
 
-  const createUniqueAttributeId = (tag, value) => {
+  const createUniqueAttributeId = (tag) => {
     const titleId = '${maskId}';
-    const identifier = `${value}-${titleId}`;
-    const newId = tag === 'mask' ? `url(#${identifier})` : identifier;
+    const newId = tag === 'mask' ? `url(#${titleId})` : titleId;
     return newId;
   };
 
@@ -22,30 +21,13 @@ const plugin = (api) => {
     );
   };
 
-  const normalizeTitle = (title) => {
-    return title.toLowerCase().replace(/\s+/g, '-');
-  };
-
   const vistor = {
     JSXElement(path) {
       if (!path.get('openingElement.name').isJSXIdentifier({ name: 'svg' })) {
         return;
       }
 
-      let title = '';
-
-      path.node.children.forEach((child) => {
-        if (
-          child.openingElement.name.name === 'title' &&
-          (child.children[0].type === 'JSXText' ||
-            child.children[0].type === 'StringLiteral' ||
-            child.children[0].type === 'JSXExpressionContainer')
-        ) {
-          title = normalizeTitle(child.children[0].expression.value);
-        }
-      });
-
-      const newId = createAttribute('id', createUniqueAttributeId('id', title));
+      const newId = createAttribute('id', createUniqueAttributeId('id'));
 
       const ogOpen = path.get('openingElement').node;
       const ogClose = path.get('closingElement').node;
@@ -55,7 +37,7 @@ const plugin = (api) => {
 
       const maskGAttr = createAttribute(
         'mask',
-        createUniqueAttributeId('mask', title)
+        createUniqueAttributeId('mask')
       );
 
       const gTagOpen = types.jsxOpeningElement(gTag, [maskGAttr]);
