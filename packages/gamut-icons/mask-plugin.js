@@ -26,6 +26,18 @@ const plugin = (api) => {
       if (!path.get('openingElement.name').isJSXIdentifier({ name: 'svg' })) {
         return;
       }
+      let titleNode;
+
+      path.get('children').some((childPath) => {
+        // we want to delete the title and reinsert it so it lands outside the mask. this fixes some issues with svgr's built-in titleProp parsing.
+        if (!childPath.isJSXElement()) return false;
+        const name = childPath.get('openingElement').get('name');
+        if (name.node.name === 'title') {
+          titleNode = childPath.node;
+          childPath.remove();
+        }
+        return false;
+      });
 
       const newId = createAttribute('id', createUniqueAttributeId('id'));
 
@@ -70,6 +82,7 @@ const plugin = (api) => {
         types.jsxElement(ogOpen, ogClose, [newChildren, newerChildren])
       );
 
+      path.node.children.unshift(titleNode);
       path.skip();
     },
   };
