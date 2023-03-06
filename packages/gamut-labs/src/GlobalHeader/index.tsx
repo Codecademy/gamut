@@ -31,6 +31,7 @@ import {
 import {
   AnonHeader,
   CrossDeviceItemId,
+  EnterpriseHeader,
   FreeHeader,
   LoadingHeader,
   ProHeader,
@@ -40,6 +41,7 @@ export type GlobalHeaderProps =
   | AnonHeader
   | FreeHeader
   | ProHeader
+  | EnterpriseHeader
   | LoadingHeader;
 
 // Overloading getAppHeaderItems function to return different types based on mobile parameter
@@ -83,6 +85,10 @@ function getAppHeaderItems(
         ? freeMobileHeaderItems(props.user, hidePricing)
         : freeHeaderItems(props.user, hidePricing);
     case 'pro':
+      return mobile
+        ? proMobileHeaderItems(props.user)
+        : proHeaderItems(props.user);
+    case 'enterprise':
       return mobile
         ? proMobileHeaderItems(props.user)
         : proHeaderItems(props.user);

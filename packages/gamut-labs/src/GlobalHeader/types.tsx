@@ -59,6 +59,10 @@ export type ProHeader = LoggedInHeader & {
   type: 'pro';
 };
 
+export type EnterpriseHeader = LoggedInHeader & {
+  type: 'enterprise';
+};
+
 export type LoadingHeader = BaseHeader & {
   type: 'loading';
 };
