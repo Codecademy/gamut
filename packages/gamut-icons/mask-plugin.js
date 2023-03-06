@@ -6,7 +6,7 @@ const plugin = (api) => {
   const rectTag = types.jSXIdentifier('rect');
 
   const createUniqueAttributeId = (tag, value) => {
-    const titleId = "${titleId ?? 'default'}";
+    const titleId = '${maskId}';
     const identifier = `${value}-${titleId}`;
     const newId = tag === 'mask' ? `url(#${identifier})` : identifier;
     return newId;
