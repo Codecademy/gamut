@@ -62,17 +62,20 @@ export const CareerPathCard: React.FC<CareerPathCardProps> = ({
       isFullSize={isFullSize}
       enrollmentStatus={enrollmentStatus}
     >
-      {salary && (
+      <Divider />
+      {salary ? (
         <>
-          <Divider />
           <SalaryComponent
             lowerBound={salary.lowerBound}
             upperBound={salary.upperBound}
           />
         </>
+      ) : (
+        <>
+          <CourseCountComponent count={courseCount} />
+        </>
       )}
-      <Divider />
-      <CourseCountComponent count={courseCount} />
+
       <Divider />
       <CertificateComponent professionalCert={!!hasCareerJourney} />
     </ContentGroupBaseCard>
