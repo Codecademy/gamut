@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [52.0.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.0.7...@codecademy/gamut@52.0.8) (2023-03-03)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [52.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.0.6...@codecademy/gamut@52.0.7) (2023-03-03)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [52.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.0.5...@codecademy/gamut@52.0.6) (2023-02-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [52.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.0.4...@codecademy/gamut@52.0.5) (2023-02-09)
+
+
+### Bug Fixes
+
+* React 18 updates for hydration warnings ([d7f8829](https://github.com/Codecademy/gamut/commit/d7f88297d640c05d624318cddf5fe67601f5bfac))
+
+
+
+### [52.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.0.3...@codecademy/gamut@52.0.4) (2023-02-09)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [52.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.0.2...@codecademy/gamut@52.0.3) (2023-02-09)
+
+
+### Bug Fixes
+
+* React 18 react-player compatibility ([5ec107c](https://github.com/Codecademy/gamut/commit/5ec107c802886550ac16f355d92d9e71e6c3b0ba))
+
+
+
+### [52.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.0.1...@codecademy/gamut@52.0.2) (2023-02-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [52.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.0.0...@codecademy/gamut@52.0.1) (2023-02-03)
+
+
+### Bug Fixes
+
+* **GridFormSubmit:** delete `fill` GridFormSubmit + fix `stretch` GridForm submit ([5032467](https://github.com/Codecademy/gamut/commit/503246754cfb48622292c2256ae93e645a70bb6d))
+
+
+
 ## [52.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@51.7.3...@codecademy/gamut@52.0.0) (2023-01-19)
 
 

@@ -259,7 +259,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
     <HeaderHeightArea
       display={{ _: 'none', [appHeaderMobileBreakpoint]: 'block' }}
       as="nav"
-      title="Main Navigation"
+      ariaLabel="Main Navigation"
     >
       <StyledAppBar>
         <StyledMenuBar
