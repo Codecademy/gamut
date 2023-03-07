@@ -12,10 +12,12 @@ import {
   login,
   logo,
   myHome,
+  myPercipioHome,
   pricingDropdown,
   proProfile,
   resourcesDropdown,
   signUp,
+  simpleResourceDropdown,
   tryProForFree,
   unpausePro,
   upgradeToPro,
@@ -195,25 +197,16 @@ export const freeMobileHeaderItems = (
   };
 };
 
-export const enterpriseHeaderItems = (user: User): FormattedAppHeaderItems => {
+export const enterpriseHeaderItems = (user: User) => {
+  const enterpriseResourcesDropdown = simpleResourceDropdown(user);
   const leftItems: AppHeaderItem[] = [
     enterpriseLogo,
-    myHome,
-    catalogDropdown(user?.hideCareerPaths),
-    resourcesDropdown,
-    communityDropdown,
-    businessSolutions,
+    myPercipioHome,
+    enterpriseResourcesDropdown,
   ];
-
-  const rightItems: AppHeaderItem[] = [];
-  rightItems.push(proProfile(user));
-  if (user.isPaused) {
-    rightItems.push(unpausePro);
-  }
-
   return {
     left: leftItems,
-    right: rightItems,
+    right: [],
   };
 };
 

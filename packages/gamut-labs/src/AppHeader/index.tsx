@@ -32,6 +32,10 @@ export type AppHeaderProps = {
   redirectParam?: string;
   search: AppHeaderSearch;
   isAnon: boolean;
+  /**
+   * used to conditonally hide the default search icon and notification bell
+   */
+  hideDefaultItems?: boolean;
 } & CrossDeviceStateProps;
 
 export const StyledAppBar = styled(AppBar)(
@@ -132,14 +136,15 @@ export const mapItemToElement = (
 };
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
-  openCrossDeviceItemId,
-  setOpenCrossDeviceItemId,
   action,
+  isAnon,
+  hideDefaultItems,
   items,
   notifications,
+  openCrossDeviceItemId,
   redirectParam,
   search,
-  isAnon,
+  setOpenCrossDeviceItemId,
 }) => {
   const menuContainerRef = useRef<HTMLUListElement>(null);
 
@@ -151,14 +156,12 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   });
   const [searchButton, searchPane] = useHeaderSearch(search);
 
-  const right = useMemo(
-    () => [
-      searchButton,
-      ...(notificationsBell ? [notificationsBell] : []),
-      ...items.right,
-    ],
-    [searchButton, notificationsBell, items]
-  );
+  const right = useMemo(() => {
+    const defaultItems = hideDefaultItems
+      ? []
+      : [searchButton, ...(notificationsBell ? [notificationsBell] : [])];
+    return [...defaultItems, ...items.right];
+  }, [searchButton, notificationsBell, hideDefaultItems, items]);
 
   const itemsCount = [...items.left, ...right].length - 1;
 

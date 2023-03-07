@@ -130,6 +130,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           : {
               notifications: props.notifications,
             })}
+        hideDefaultItems={props.type === 'enterprise'}
         isAnon={props.type === 'anon'}
         openCrossDeviceItemId={openCrossDeviceItemId}
         setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}

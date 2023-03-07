@@ -36,7 +36,7 @@ export const logo: AppHeaderLogoItem = {
 export const enterpriseLogo: AppHeaderLogoItem = {
   dataTestId: 'header-logo',
   id: 'logo',
-  href: '/',
+  href: 'https://my.percipio.com/',
   enterprise: true,
   pro: false,
   trackingTarget: 'topnav_logo',
@@ -49,6 +49,17 @@ export const myHome: AppHeaderLinkItem = {
   id: 'my-home',
   text: 'My Home',
   href: '/learn',
+  trackingTarget: 'topnav_home',
+  type: 'link',
+};
+
+export const myPercipioHome: AppHeaderLinkItem = {
+  dataTestId: 'header-percihome',
+  icon: HouseEntranceIcon,
+  id: 'my-home',
+  text: 'My Percipio',
+  href: 'https://my.percipio.com/',
+  newTab: true,
   trackingTarget: 'topnav_home',
   type: 'link',
 };
@@ -72,6 +83,42 @@ export const resourcesDropdown: AppHeaderResourcesDropdownItem = {
   text: 'Resources',
   trackingTarget: 'topnav_resources',
   type: 'resources-dropdown',
+};
+
+export const simpleResourceDropdown = (
+  user: User
+): AppHeaderSimpleDropdownItem => {
+  return {
+    dataTestId: 'header-resources',
+    icon: NotebookIcon,
+    id: 'resources-dropdown',
+    text: 'Resources',
+    popover: [
+      {
+        id: 'articles',
+        href: '/articles',
+        trackingTarget: 'topnav_article',
+        text: 'Articles',
+        type: 'link',
+      },
+      {
+        id: 'docs',
+        href: '/resources/docs',
+        trackingTarget: 'topnav_docs',
+        text: 'Docs',
+        type: 'link',
+      },
+      {
+        id: 'workspaces',
+        href: `/users/${user.displayName}/workspaces`,
+        trackingTarget: 'topnav_article',
+        text: 'Articles',
+        type: 'link',
+      },
+    ],
+    trackingTarget: 'topnav_resources',
+    type: 'dropdown',
+  };
 };
 
 export const communityDropdown: AppHeaderSimpleDropdownItem = {
