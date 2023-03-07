@@ -17,7 +17,7 @@ import {
   proProfile,
   resourcesDropdown,
   signUp,
-  simpleResourceDropdown,
+  simpleResourcesDropdown,
   tryProForFree,
   unpausePro,
   upgradeToPro,
@@ -201,7 +201,7 @@ export const enterpriseHeaderItems = () => {
   const leftItems: AppHeaderItem[] = [
     enterpriseLogo,
     myPercipioHome,
-    simpleResourceDropdown,
+    simpleResourcesDropdown,
   ];
   return {
     left: leftItems,
@@ -237,7 +237,7 @@ export const enterpriseMobileHeaderItems = (): FormattedMobileAppHeaderItems => 
 
   const mainMenuItems: AppHeaderItem[] = [
     myPercipioHome,
-    simpleResourceDropdown,
+    simpleResourcesDropdown,
   ];
 
   return {

@@ -85,7 +85,7 @@ export const resourcesDropdown: AppHeaderResourcesDropdownItem = {
   type: 'resources-dropdown',
 };
 
-export const simpleResourceDropdown: AppHeaderSimpleDropdownItem = {
+export const simpleResourcesDropdown: AppHeaderSimpleDropdownItem = {
   dataTestId: 'header-resources',
   icon: NotebookIcon,
   id: 'resources-dropdown',

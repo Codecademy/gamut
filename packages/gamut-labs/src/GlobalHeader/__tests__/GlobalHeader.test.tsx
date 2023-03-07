@@ -7,9 +7,11 @@ import {
   communityDropdown,
   login,
   myHome,
+  myPercipioHome,
   pricingDropdown,
   resourcesDropdown,
   signUp,
+  simpleResourcesDropdown,
   tryProForFree,
   unpausePro,
   upgradeToPro,
@@ -105,6 +107,12 @@ const proPausedHeaderProps: GlobalHeaderProps = {
   },
 };
 
+const enterpriseHeaderProps: GlobalHeaderProps = {
+  ...defaultProps,
+  type: 'enterprise',
+  user,
+};
+
 const loadingHeaderProps: GlobalHeaderProps = {
   ...defaultProps,
   type: 'loading',
@@ -124,6 +132,15 @@ const resourcesDropdownTest = (props: GlobalHeaderProps) => {
 
   view.getByText(resourcesDropdown.text).click();
   view.getByText('View all topics');
+};
+
+const simpleResourcesDropdownTest = (props: GlobalHeaderProps) => {
+  const { view } = renderView(props);
+
+  view.getByText(simpleResourcesDropdown.text).click();
+  view.getByText('Articles');
+  view.getByText('Docs');
+  view.getByText('Workspaces');
 };
 
 describe('GlobalHeader', () => {
@@ -352,6 +369,35 @@ describe('GlobalHeader', () => {
       it('renders profileDropdown', () => {
         const { view } = renderView(proHeaderProps);
         view.getByTestId('avatar-container');
+      });
+    });
+
+    describe('is paused', () => {
+      it('renders unpause', () => {
+        const { view } = renderView(proPausedHeaderProps);
+        view.getByText(unpausePro.text);
+      });
+    });
+  });
+  describe('enterprise users', () => {
+    it('does not renders search', () => {
+      const { view } = renderView(enterpriseHeaderProps);
+      expect(view.queryByTitle('Search Icon')).toBeNull();
+    });
+
+    it('does not renders notifications', () => {
+      const { view } = renderView(enterpriseHeaderProps);
+      expect(view.queryByTitle('Bell Icon')).toBeNull();
+    });
+
+    describe('default', () => {
+      it('renders myPercipioHome', () => {
+        const { view } = renderView(enterpriseHeaderProps);
+        view.getAllByText(myPercipioHome.text);
+      });
+
+      it('renders simpleResourcesDropdown', () => {
+        simpleResourcesDropdownTest(enterpriseHeaderProps);
       });
     });
 
