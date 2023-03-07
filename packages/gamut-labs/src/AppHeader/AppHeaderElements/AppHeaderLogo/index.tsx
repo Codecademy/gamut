@@ -54,7 +54,7 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
             ? 'pro'
             : 'default'
         }
-        height={27}
+        height={item.enterprise ? 36 : 27}
         verticalAlign="text-bottom"
       />
     </Anchor>

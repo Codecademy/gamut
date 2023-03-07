@@ -35,7 +35,7 @@ export type AppHeaderProps = {
   /**
    * used to conditonally hide the default search icon and notification bell
    */
-  hideDefaultItems?: boolean;
+  isEnterprise?: boolean;
 } & CrossDeviceStateProps;
 
 export const StyledAppBar = styled(AppBar)(
@@ -46,12 +46,13 @@ export const StyledAppBar = styled(AppBar)(
 
 export const StyledMenuBar = styled.ul(
   css({
+    // TO-DO: Check if this looks okay across screensizes + variants.
+    alignItems: 'stretch',
     display: `flex`,
     padding: 0,
     listStyle: `none`,
     margin: 0,
     width: `100%`,
-    alignItems: 'flex-start',
   })
 );
 
@@ -62,6 +63,11 @@ const KEY_CODES = {
   RIGHT: 'ArrowRight',
   END: 'End',
   HOME: 'Home',
+} as const;
+
+const spacing = {
+  standard: 8,
+  enterprise: 12,
 } as const;
 
 export const mapItemToElement = (
@@ -138,7 +144,7 @@ export const mapItemToElement = (
 export const AppHeader: React.FC<AppHeaderProps> = ({
   action,
   isAnon,
-  hideDefaultItems,
+  isEnterprise,
   items,
   notifications,
   openCrossDeviceItemId,
@@ -157,11 +163,11 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   const [searchButton, searchPane] = useHeaderSearch(search);
 
   const right = useMemo(() => {
-    const defaultItems = hideDefaultItems
+    const defaultItems = isEnterprise
       ? []
       : [searchButton, ...(notificationsBell ? [notificationsBell] : [])];
     return [...defaultItems, ...items.right];
-  }, [searchButton, notificationsBell, hideDefaultItems, items]);
+  }, [searchButton, notificationsBell, isEnterprise, items]);
 
   const itemsCount = [...items.left, ...right].length - 1;
 
@@ -245,17 +251,20 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
     items: T,
     side: 'left' | 'right'
   ) => {
-    return items.map((item, index) => (
-      <AppHeaderListItem
-        key={item.id}
-        mr={8}
-        ml={side === 'right' && index === 0 ? 'auto' : 8}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-      >
-        {mapItemToElement(action, item, isAnon, redirectParam)}
-      </AppHeaderListItem>
-    ));
+    return items.map((item, index) => {
+      const margin = isEnterprise ? spacing.enterprise : spacing.standard;
+      return (
+        <AppHeaderListItem
+          key={item.id}
+          mr={margin}
+          ml={side === 'right' && index === 0 ? 'auto' : margin}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+        >
+          {mapItemToElement(action, item, isAnon, redirectParam)}
+        </AppHeaderListItem>
+      );
+    });
   };
 
   return (

@@ -39,7 +39,7 @@ export const enterpriseLogo: AppHeaderLogoItem = {
   href: 'https://my.percipio.com/',
   enterprise: true,
   pro: false,
-  trackingTarget: 'topnav_logo',
+  trackingTarget: 'topnav_enterprise_logo',
   type: 'logo',
 };
 
@@ -60,7 +60,7 @@ export const myPercipioHome: AppHeaderLinkItem = {
   text: 'My Percipio',
   href: 'https://my.percipio.com/',
   newTab: true,
-  trackingTarget: 'topnav_home',
+  trackingTarget: 'topnav_enterprise_home',
   type: 'link',
 };
 
@@ -97,22 +97,22 @@ export const simpleResourceDropdown = (
       {
         id: 'articles',
         href: '/articles',
-        trackingTarget: 'topnav_article',
+        trackingTarget: 'topnav_enterprise_articles',
         text: 'Articles',
         type: 'link',
       },
       {
         id: 'docs',
         href: '/resources/docs',
-        trackingTarget: 'topnav_docs',
+        trackingTarget: 'topnav_enterprise_docs',
         text: 'Docs',
         type: 'link',
       },
       {
         id: 'workspaces',
         href: `/users/${user.displayName}/workspaces`,
-        trackingTarget: 'topnav_article',
-        text: 'Articles',
+        trackingTarget: 'topnav_enterprise_workspaces',
+        text: 'Workspaces',
         type: 'link',
       },
     ],

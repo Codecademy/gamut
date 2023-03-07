@@ -40,6 +40,8 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
       minWidth="0"
       textAlign="left"
       whiteSpace="nowrap"
+      // makes sure this is level with our dropdowns, which have a 1px height differential
+      mb={{ _: 0, [appHeaderMobileBreakpoint]: 1 as any }}
       mx={mx}
       py={py}
       {...props}
