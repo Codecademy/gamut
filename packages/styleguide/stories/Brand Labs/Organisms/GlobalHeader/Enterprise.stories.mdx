@@ -14,7 +14,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   parameters={{
     status: 'updating',
     docs: { inlineStories: false, iframeHeight: 750 },
-    subtitle: 'Enterprise variants for the Codecademy GlobalHeader',
+    subtitle:
+      'Enterprise and business variants for the Codecademy GlobalHeader',
     design: {
       type: 'figma',
       url:
@@ -24,6 +25,51 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 />
 
 #### Enterprise
+
+<Canvas>
+  <Story name="Enterprise">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="enterprise"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Kallie',
+          isAccountManager: true,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Business Account Manager - Pro
 
 <Canvas>
   <Story name="Business Account Manager - Pro">
@@ -56,7 +102,52 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
           onSearch: () => {},
           onTrackingClick: () => {},
         }}
-        type="enterprise"
+        type="pro"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Kallie',
+          isAccountManager: true,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Business Account Manager - Free
+
+<Canvas>
+  <Story name="Business Account Manager - Free">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="free"
         user={{
           avatar:
             'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',

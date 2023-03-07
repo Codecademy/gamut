@@ -86,3 +86,100 @@ Check the [Navigation How-To Guide](https://docs.google.com/presentation/d/1YHG6
 ## GlobalHeader Variants
 
 GlobalHeader user variants are documented in the sibling stories to this documentation, listed <MyLink id="brand-labs-organisms-globalheader-about--page">in the GlobalHeader folder.</MyLink>
+
+Non user-specific variants and examples are below.
+
+### GlobalHeader With Search and Notifications
+
+To mock this, IconButtons are provided as placeholders.
+
+<Canvas>
+  <Story name="GlobalHeader With Search and Notifications">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="pro"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Codey',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### GlobalHeader Over Background Color
+
+<Canvas>
+  <Story name="GlobalHeader Over Background Color">
+    {() => (
+      <Box bg="beige" width="100%">
+        <GlobalHeader
+          action={() => {}}
+          search={{
+            onEnable: () => {},
+            onSearch: () => {},
+            onTrackingClick: () => {},
+          }}
+          type="pro"
+          user={{
+            avatar:
+              'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+            displayName: 'Codey',
+          }}
+        />
+      </Box>
+    )}
+  </Story>
+</Canvas>
+
+### GlobalHeader With an Action Function
+
+To mock this, a very basic action function is provided, which prints out the event & the item to the console.
+
+<Canvas>
+  <Story name="GlobalHeader With an Action Function">
+    {() => (
+      <GlobalHeader
+        action={(event, item) => {
+          // eslint-disable-next-line no-console
+          console.log(event);
+          // eslint-disable-next-line no-console
+          console.log(item);
+        }}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="anon"
+      />
+    )}
+  </Story>
+</Canvas>
+
+### Loading
+
+A version of the header with just the logo, for use when data has not been fetched yet.
+
+<Canvas>
+  <Story name="Loading">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="loading"
+      />
+    )}
+  </Story>
+</Canvas>

@@ -14,55 +14,87 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   parameters={{
     status: 'updating',
     docs: { inlineStories: false, iframeHeight: 750 },
-    subtitle: 'Enterprise variants for the Codecademy GlobalHeader',
+    subtitle: 'Anonymous user variants for the Codecademy GlobalHeader',
     design: {
       type: 'figma',
       url:
-        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=60:2&t=5IUbjLj8omh90GmT-0',
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=735%3A4',
     },
   }}
 />
 
-#### Enterprise
+### Anonymous User
+
+#### Anonymous User - Default
 
 <Canvas>
-  <Story name="Business Account Manager - Pro">
+  <Story name="Anonymous User - Default">
     {() => (
       <GlobalHeader
         action={() => {}}
-        notifications={{
-          baseUrl: '',
-          notifications: [
-            {
-              campaign: 'existence_is_pain',
-              date: '5 hours',
-              id: '1',
-              link: 'https://codecademy.com',
-              text: "Look at me! I'm Mr. Notification!",
-              unread: true,
-            },
-          ],
-          onEnable: () => {},
-          actions: {
-            clear: () => {},
-            click: () => {},
-            dismiss: () => {},
-            read: () => {},
-            track: () => {},
-          },
-        }}
         search={{
           onEnable: () => {},
           onSearch: () => {},
           onTrackingClick: () => {},
         }}
-        type="enterprise"
-        user={{
-          avatar:
-            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-          displayName: 'Kallie',
-          isAccountManager: true,
+        type="anon"
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Anonymous User - Landing Page
+
+<Canvas>
+  <Story name="Anonymous User - Landing Page">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
         }}
+        type="anon"
+        variant="landing"
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Anonymous User - Login Page
+
+<Canvas>
+  <Story name="Anonymous User - Login Page">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="anon"
+        variant="login"
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Anonymous User - Signup Page
+
+<Canvas>
+  <Story name="Anonymous User - Signup Page">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="anon"
+        variant="signup"
       />
     )}
   </Story>
