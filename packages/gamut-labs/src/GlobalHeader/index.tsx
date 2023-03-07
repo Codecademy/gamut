@@ -22,6 +22,7 @@ import {
   anonSignupHeaderItems,
   anonSignupMobileHeaderItems,
   enterpriseHeaderItems,
+  enterpriseMobileHeaderItems,
   freeHeaderItems,
   freeMobileHeaderItems,
   loadingHeaderItems,
@@ -82,9 +83,7 @@ function getAppHeaderItems(
             : anonDefaultHeaderItems(hidePricing, props.user);
       }
     case 'enterprise':
-      return mobile
-        ? proMobileHeaderItems(props.user)
-        : enterpriseHeaderItems(props.user);
+      return mobile ? enterpriseMobileHeaderItems() : enterpriseHeaderItems();
     case 'free':
       return mobile
         ? freeMobileHeaderItems(props.user, hidePricing)
@@ -145,6 +144,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
             })}
         onSearch={props.search.onSearch}
         redirectParam={props.type === 'anon' ? props.redirectParam : undefined}
+        isEnterprise={props.type === 'enterprise'}
         isAnon={props.type === 'anon'}
         openCrossDeviceItemId={openCrossDeviceItemId}
         setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}

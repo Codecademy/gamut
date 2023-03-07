@@ -197,12 +197,11 @@ export const freeMobileHeaderItems = (
   };
 };
 
-export const enterpriseHeaderItems = (user: User) => {
-  const enterpriseResourcesDropdown = simpleResourceDropdown(user);
+export const enterpriseHeaderItems = () => {
   const leftItems: AppHeaderItem[] = [
     enterpriseLogo,
     myPercipioHome,
-    enterpriseResourcesDropdown,
+    simpleResourceDropdown,
   ];
   return {
     left: leftItems,
@@ -229,6 +228,22 @@ export const proHeaderItems = (user: User): FormattedAppHeaderItems => {
   return {
     left: leftItems,
     right: rightItems,
+  };
+};
+
+export const enterpriseMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
+  const leftItems: AppHeaderItem[] = [enterpriseLogo];
+  const rightItems: AppHeaderItem[] = [];
+
+  const mainMenuItems: AppHeaderItem[] = [
+    myPercipioHome,
+    simpleResourceDropdown,
+  ];
+
+  return {
+    left: leftItems,
+    right: rightItems,
+    mainMenu: mainMenuItems,
   };
 };
 

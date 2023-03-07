@@ -85,40 +85,36 @@ export const resourcesDropdown: AppHeaderResourcesDropdownItem = {
   type: 'resources-dropdown',
 };
 
-export const simpleResourceDropdown = (
-  user: User
-): AppHeaderSimpleDropdownItem => {
-  return {
-    dataTestId: 'header-resources',
-    icon: NotebookIcon,
-    id: 'resources-dropdown',
-    text: 'Resources',
-    popover: [
-      {
-        id: 'articles',
-        href: '/articles',
-        trackingTarget: 'topnav_enterprise_articles',
-        text: 'Articles',
-        type: 'link',
-      },
-      {
-        id: 'docs',
-        href: '/resources/docs',
-        trackingTarget: 'topnav_enterprise_docs',
-        text: 'Docs',
-        type: 'link',
-      },
-      {
-        id: 'workspaces',
-        href: `/users/${user.displayName}/workspaces`,
-        trackingTarget: 'topnav_enterprise_workspaces',
-        text: 'Workspaces',
-        type: 'link',
-      },
-    ],
-    trackingTarget: 'topnav_resources',
-    type: 'dropdown',
-  };
+export const simpleResourceDropdown: AppHeaderSimpleDropdownItem = {
+  dataTestId: 'header-resources',
+  icon: NotebookIcon,
+  id: 'resources-dropdown',
+  text: 'Resources',
+  popover: [
+    {
+      id: 'articles',
+      href: '/articles',
+      trackingTarget: 'topnav_enterprise_articles',
+      text: 'Articles',
+      type: 'link',
+    },
+    {
+      id: 'docs',
+      href: '/resources/docs',
+      trackingTarget: 'topnav_enterprise_docs',
+      text: 'Docs',
+      type: 'link',
+    },
+    {
+      id: 'workspaces',
+      href: '/users/me/workspaces',
+      trackingTarget: 'topnav_enterprise_workspaces',
+      text: 'Workspaces',
+      type: 'link',
+    },
+  ],
+  trackingTarget: 'topnav_resources',
+  type: 'dropdown',
 };
 
 export const communityDropdown: AppHeaderSimpleDropdownItem = {
