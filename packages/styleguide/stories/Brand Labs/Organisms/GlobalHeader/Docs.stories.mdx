@@ -1,10 +1,11 @@
 import { Box } from '@codecademy/gamut/src';
 import { GlobalHeader } from '@codecademy/gamut-labs/src';
-import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
+
+import { LinkTo as MyLink } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -17,8 +18,7 @@ import LinkTo from '@storybook/addon-links/react';
   parameters={{
     status: 'updating',
     docs: { inlineStories: false, iframeHeight: 750 },
-    subtitle:
-      'Header for a unified Codecademy global navigation system, meant to be consumed by any entity which requires a standard Codecademy header.',
+    subtitle: 'Documentation and how-tos for the Codecademy GlobalHeader',
     design: {
       type: 'figma',
       url:
@@ -85,163 +85,4 @@ Check the [Navigation How-To Guide](https://docs.google.com/presentation/d/1YHG6
 
 ## GlobalHeader Variants
 
-The following are available variations for the GlobalHeader component.
-
-### Free User
-
-#### Free User - Default
-
-<Canvas>
-  <Story name="Free User - Default">
-    {() => (
-      <Background bg="background-primary" position="relative" zIndex={0}>
-        <GlobalHeader
-          action={() => {}}
-          notifications={{
-            baseUrl: '',
-            notifications: [
-              {
-                campaign: 'existence_is_pain',
-                date: '5 hours',
-                id: '1',
-                link: 'https://codecademy.com',
-                text: "Look at me! I'm Mr. Notification!",
-                unread: true,
-              },
-            ],
-            onEnable: () => {},
-            actions: {
-              clear: () => {},
-              click: () => {},
-              dismiss: () => {},
-              read: () => {},
-              track: () => {},
-            },
-          }}
-          search={{
-            onEnable: () => {},
-            onSearch: () => {},
-            onTrackingClick: () => {},
-          }}
-          type="free"
-          user={{
-            avatar:
-              'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-            displayName: 'Codey',
-          }}
-        />
-        <Box>Page content would go here</Box>
-      </Background>
-    )}
-  </Story>
-</Canvas>
-
-#### Business Account Manager - Pro
-
-<Canvas>
-  <Story name="Business Account Manager - Pro">
-    {() => (
-      <GlobalHeader
-        action={() => {}}
-        notifications={{
-          baseUrl: '',
-          notifications: [
-            {
-              campaign: 'existence_is_pain',
-              date: '5 hours',
-              id: '1',
-              link: 'https://codecademy.com',
-              text: "Look at me! I'm Mr. Notification!",
-              unread: true,
-            },
-          ],
-          onEnable: () => {},
-          actions: {
-            clear: () => {},
-            click: () => {},
-            dismiss: () => {},
-            read: () => {},
-            track: () => {},
-          },
-        }}
-        search={{
-          onEnable: () => {},
-          onSearch: () => {},
-          onTrackingClick: () => {},
-        }}
-        type="pro"
-        user={{
-          avatar:
-            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-          displayName: 'Kallie',
-          isAccountManager: true,
-        }}
-      />
-    )}
-  </Story>
-</Canvas>
-
-#### Business Account Manager - Free
-
-<Canvas>
-  <Story name="Business Account Manager - Free">
-    {() => (
-      <GlobalHeader
-        action={() => {}}
-        notifications={{
-          baseUrl: '',
-          notifications: [
-            {
-              campaign: 'existence_is_pain',
-              date: '5 hours',
-              id: '1',
-              link: 'https://codecademy.com',
-              text: "Look at me! I'm Mr. Notification!",
-              unread: true,
-            },
-          ],
-          onEnable: () => {},
-          actions: {
-            clear: () => {},
-            click: () => {},
-            dismiss: () => {},
-            read: () => {},
-            track: () => {},
-          },
-        }}
-        search={{
-          onEnable: () => {},
-          onSearch: () => {},
-          onTrackingClick: () => {},
-        }}
-        type="free"
-        user={{
-          avatar:
-            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-          displayName: 'Kallie',
-          isAccountManager: true,
-        }}
-      />
-    )}
-  </Story>
-</Canvas>
-
-### Loading
-
-A version of the header with just the logo, for use when data has not been fetched yet.
-
-<Canvas>
-  <Story name="Loading">
-    {() => (
-      <GlobalHeader
-        action={() => {}}
-        search={{
-          onEnable: () => {},
-          onSearch: () => {},
-          onTrackingClick: () => {},
-        }}
-        type="loading"
-      />
-    )}
-  </Story>
-</Canvas>
+GlobalHeader variants are documented in the sibling stories to this documentation, listed <MyLink id="brand-labs-organisms-globalheader-about--page">in the GlobalHeader folder.</MyLink>

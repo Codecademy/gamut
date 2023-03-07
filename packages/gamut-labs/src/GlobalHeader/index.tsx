@@ -21,6 +21,7 @@ import {
   anonLoginMobileHeaderItems,
   anonSignupHeaderItems,
   anonSignupMobileHeaderItems,
+  enterpriseHeaderItems,
   freeHeaderItems,
   freeMobileHeaderItems,
   loadingHeaderItems,
@@ -80,15 +81,15 @@ function getAppHeaderItems(
             ? anonDefaultMobileHeaderItems(hidePricing, props.user)
             : anonDefaultHeaderItems(hidePricing, props.user);
       }
+    case 'enterprise':
+      return mobile
+        ? proMobileHeaderItems(props.user)
+        : enterpriseHeaderItems(props.user);
     case 'free':
       return mobile
         ? freeMobileHeaderItems(props.user, hidePricing)
         : freeHeaderItems(props.user, hidePricing);
     case 'pro':
-      return mobile
-        ? proMobileHeaderItems(props.user)
-        : proHeaderItems(props.user);
-    case 'enterprise':
       return mobile
         ? proMobileHeaderItems(props.user)
         : proHeaderItems(props.user);

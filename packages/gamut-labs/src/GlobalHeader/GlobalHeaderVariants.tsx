@@ -7,6 +7,7 @@ import {
   businessSolutions,
   catalogDropdown,
   communityDropdown,
+  enterpriseLogo,
   freeProfile,
   login,
   logo,
@@ -191,6 +192,28 @@ export const freeMobileHeaderItems = (
     left: leftItems,
     right: rightItems,
     mainMenu: mainMenuItems,
+  };
+};
+
+export const enterpriseHeaderItems = (user: User): FormattedAppHeaderItems => {
+  const leftItems: AppHeaderItem[] = [
+    enterpriseLogo,
+    myHome,
+    catalogDropdown(user?.hideCareerPaths),
+    resourcesDropdown,
+    communityDropdown,
+    businessSolutions,
+  ];
+
+  const rightItems: AppHeaderItem[] = [];
+  rightItems.push(proProfile(user));
+  if (user.isPaused) {
+    rightItems.push(unpausePro);
+  }
+
+  return {
+    left: leftItems,
+    right: rightItems,
   };
 };
 

@@ -27,6 +27,17 @@ export const logo: AppHeaderLogoItem = {
   dataTestId: 'header-logo',
   id: 'logo',
   href: '/',
+  enterprise: false,
+  pro: false,
+  trackingTarget: 'topnav_logo',
+  type: 'logo',
+};
+
+export const enterpriseLogo: AppHeaderLogoItem = {
+  dataTestId: 'header-logo',
+  id: 'logo',
+  href: '/',
+  enterprise: true,
   pro: false,
   trackingTarget: 'topnav_logo',
   type: 'logo',
