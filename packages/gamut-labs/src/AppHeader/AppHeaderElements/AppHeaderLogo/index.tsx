@@ -4,6 +4,12 @@ import * as React from 'react';
 
 import { AppHeaderClickHandler, AppHeaderLogoItem } from '../types';
 
+const getLogoVariant = (item: AppHeaderLogoItem, showMini: boolean) => {
+  if (item.checkMini && showMini) return 'mini';
+  if (item.enterprise) return 'enterprise';
+  return item.pro ? 'pro' : 'default';
+};
+
 export type AppHeaderLogoProps = {
   action: AppHeaderClickHandler;
   item: AppHeaderLogoItem;
@@ -45,15 +51,7 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
     >
       <Logo
         color="currentColor"
-        variant={
-          item.checkMini && showMini
-            ? 'mini'
-            : item.enterprise
-            ? 'enterprise'
-            : item.pro
-            ? 'pro'
-            : 'default'
-        }
+        variant={getLogoVariant(item, showMini)}
         height={item.enterprise ? 36 : 27}
         verticalAlign="text-bottom"
       />
