@@ -124,7 +124,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           ? {
               redirectParam: props.redirectParam,
             }
-          : props.type === 'loading'
+          : props.type === 'loading' || props.type === 'enterprise'
           ? {}
           : {
               notifications: props.notifications,
@@ -137,7 +137,9 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
       <AppHeaderMobile
         action={combinedAction}
         items={getAppHeaderItems(props, true)}
-        {...(props.type === 'anon' || props.type === 'loading'
+        {...(props.type === 'anon' ||
+        props.type === 'loading' ||
+        props.type === 'enterprise'
           ? {}
           : {
               notifications: props.notifications,
