@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [63.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.14...@codecademy/styleguide@63.6.0) (2023-03-07)
+
+
+### Features
+
+* **CareerPathCard:** :sparkles: Adds salary metadata to CareerPathCard component ([ab85e90](https://github.com/Codecademy/gamut/commit/ab85e90e76ebb1f69ec377af34e0dc7b32500c70))
+* **PlanCard:** Adds PlanCard ([0160d3e](https://github.com/Codecademy/gamut/commit/0160d3e8f3a70cda9cdb0058cd60f82a6e56656b))
+
+
+
 ### [63.5.14](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.13...@codecademy/styleguide@63.5.14) (2023-03-03)
 
 **Note:** Version bump only for package @codecademy/styleguide
