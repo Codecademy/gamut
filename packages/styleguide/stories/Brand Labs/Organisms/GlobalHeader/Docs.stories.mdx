@@ -57,7 +57,7 @@ import { LinkTo as MyLink } from '~styleguide/blocks';
 
 GlobalHeader determines whether to render the desktop or mobile version of the global header (<LinkTo kind="Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo> or <LinkTo kind="Molecules/AppHeaderMobile" story="AppHeaderMobile">AppHeaderMobile</LinkTo>, respectively) based on the viewport size.
 
-GlobalHeader takes in several props. `type` determines which header to render based on the user role (anonymous, free, or pro), or a loading state. `type` will also determine which of Search and/or Notification components need to be passed in: Search will appear for all users, whereas Notifications will only appear for logged-in users.
+GlobalHeader takes in several props. `type` determines which header to render based on the user role (anonymous, free, pro, or enterprise), or a loading state. `type` will also determine which of Search and/or Notification components need to be passed in: Search will appear for all users, whereas Notifications will only appear for logged-in users.
 
 `action` is a function which will be defined by the consumer and handles any routing/tracking that needs to be done. `variant` is a prop which may only be used when `type="anon"`, and provides variations of the anonymous header based on the user's location: there are different headers for the landing page, login page, and signup page.
 
