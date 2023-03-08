@@ -38,10 +38,10 @@ describe('Compiled gamut-icons:', () => {
     expect(titleEl?.innerHTML).toEqual('Accessible');
   });
 
-  it('Sets a default fill of currentColor', () => {
+  it('Sets a default fill of #fff', () => {
     renderView();
 
     const svgEl = screen.getByRole('img', { hidden: true });
-    expect(svgEl.getAttribute('fill')).toEqual('currentColor');
+    expect(svgEl.getAttribute('fill')).toEqual('#fff');
   });
 });
