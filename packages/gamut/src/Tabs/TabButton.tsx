@@ -1,4 +1,4 @@
-import { states, variant } from '@codecademy/gamut-styles';
+import { states, theme, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -39,6 +39,10 @@ const tabVariants = variant({
     [TabSelectors.DISABLED]: {
       opacity: 0.25,
       cursor: 'default',
+    },
+    [TabSelectors.FOCUS_VISIBLE]: {
+      boxShadow: `inset 0 0 0 2px ${theme.colors.primary}`,
+      borderRadius: '4px',
     },
   },
   variants: {
