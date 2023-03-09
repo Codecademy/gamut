@@ -1,9 +1,1 @@
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>search</title>
-      <mask id="mask0_1884_2837" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0">
-        <circle class="a" cx="9.813" cy="9.812" r="9.063" transform="translate(-3.056 4.62) rotate(-23.025)"/>
-        <line class="a" x1="16.221" y1="16.22" x2="23.25" y2="23.25"/>
-      </mask>
-      <g mask="url(#mask0_1884_2837)">
-        <rect width="24" height="24" fill="currentColor"/>
-      </g>
-    </svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>search</title><circle class="a" cx="9.813" cy="9.812" r="9.063" transform="translate(-3.056 4.62) rotate(-23.025)"/><line class="a" x1="16.221" y1="16.22" x2="23.25" y2="23.25"/></svg>
