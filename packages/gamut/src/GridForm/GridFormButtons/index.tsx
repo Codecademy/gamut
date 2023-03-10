@@ -53,6 +53,7 @@ export const GridFormButtons: React.FC<
         mb={8}
         alignSelf="center"
         justifySelf={positions[props.position || 'left']}
+        gridTemplateColumns={props.cancel ? 'auto auto' : undefined}
       >
         {props.cancel && (
           <TextButton {...props.cancel} mr={32} data-testid="cancel-button" />
