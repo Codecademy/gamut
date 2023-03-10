@@ -17,6 +17,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs';
   parameters={{
     subtitle: `Curriculum cards for paths and courses.`,
     source: 'gamut-labs',
+    status: 'deprecated',
     design: {
       type: 'figma',
       url:
@@ -24,6 +25,8 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs';
     },
   }}
 />
+
+**Deprecated version of a one-size fits all curriculum card used for paths and courses. Please instead use CareerPathCard, SkillPathCard, or CourseCard.**
 
 <Canvas withSource="open">
   <Story name="Curriculum Card">{(args) => <CurriculumCard {...args} />}</Story>
