@@ -199,7 +199,7 @@ export const freeMobileHeaderItems = (
 
 export const enterpriseHeaderItems = (user: User) => {
   const leftItems: AppHeaderItem[] = [
-    enterpriseLogo,
+    enterpriseLogo(user),
     myPercipioHome(user),
     simpleResourcesDropdown,
   ];
@@ -234,7 +234,7 @@ export const proHeaderItems = (user: User): FormattedAppHeaderItems => {
 export const enterpriseMobileHeaderItems = (
   user: User
 ): FormattedMobileAppHeaderItems => {
-  const leftItems: AppHeaderItem[] = [enterpriseLogo];
+  const leftItems: AppHeaderItem[] = [enterpriseLogo(user)];
   const rightItems: AppHeaderItem[] = [];
 
   const mainMenuItems: AppHeaderItem[] = [

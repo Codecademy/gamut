@@ -83,7 +83,9 @@ function getAppHeaderItems(
             : anonDefaultHeaderItems(hidePricing, props.user);
       }
     case 'enterprise':
-      return mobile ? enterpriseMobileHeaderItems() : enterpriseHeaderItems();
+      return mobile
+        ? enterpriseMobileHeaderItems(props.user)
+        : enterpriseHeaderItems(props.user);
     case 'free':
       return mobile
         ? freeMobileHeaderItems(props.user, hidePricing)
