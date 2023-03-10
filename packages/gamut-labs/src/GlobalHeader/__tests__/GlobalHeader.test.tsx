@@ -7,7 +7,6 @@ import {
   communityDropdown,
   login,
   myHome,
-  myPercipioHome,
   pricingDropdown,
   resourcesDropdown,
   signUp,
@@ -393,7 +392,7 @@ describe('GlobalHeader', () => {
     describe('default', () => {
       it('renders myPercipioHome', () => {
         const { view } = renderView(enterpriseHeaderProps);
-        view.getAllByText(myPercipioHome.text);
+        view.getAllByText('My Percipio');
       });
 
       it('renders simpleResourcesDropdown', () => {
