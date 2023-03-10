@@ -33,14 +33,16 @@ export const logo: AppHeaderLogoItem = {
   type: 'logo',
 };
 
-export const enterpriseLogo: AppHeaderLogoItem = {
-  dataTestId: 'header-logo',
-  id: 'logo',
-  href: 'https://my.percipio.com/',
-  enterprise: true,
-  pro: false,
-  trackingTarget: 'topnav_enterprise_logo',
-  type: 'logo',
+export const enterpriseLogo = (user: User): AppHeaderLogoItem => {
+  return {
+    dataTestId: 'header-logo',
+    id: 'logo',
+    href: user?.enterpriseUrl ?? 'https://www.skillsoft.com/login-skillsoft',
+    enterprise: true,
+    pro: false,
+    trackingTarget: 'topnav_enterprise_logo',
+    type: 'logo',
+  };
 };
 
 export const myHome: AppHeaderLinkItem = {
@@ -59,7 +61,7 @@ export const myPercipioHome = (user: User): AppHeaderLinkItem => {
     icon: HouseEntranceIcon,
     id: 'my-home',
     text: 'My Percipio',
-    href: user?.enterpriseUrl ?? 'https://percipio.com/',
+    href: user?.enterpriseUrl ?? 'https://www.skillsoft.com/login-skillsoft',
     newTab: true,
     trackingTarget: 'topnav_enterprise_home',
     type: 'link',

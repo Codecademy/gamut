@@ -12,6 +12,7 @@ const item: AppHeaderLogoItem = {
   href: testUrl,
   type: 'logo',
   pro: false,
+  enterprise: false,
   trackingTarget: 'tracking target',
 };
 
