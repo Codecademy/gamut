@@ -142,7 +142,7 @@ export interface RowProps
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 8, xs: 0 },
-    // bg: 'inherit',
+    bg: 'inherit',
   }),
   rowBreakpointVariants,
   rowVariants,
@@ -352,6 +352,7 @@ export const ColEl = styled(
   ])
 )<ColProps>(
   css({
+    bg: 'initial',
     display: 'inline-flex',
     alignItems: 'center',
     whiteSpace: 'nowrap',
