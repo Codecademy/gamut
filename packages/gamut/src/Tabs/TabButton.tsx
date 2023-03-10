@@ -1,4 +1,4 @@
-import { states, theme, variant } from '@codecademy/gamut-styles';
+import { states, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -22,6 +22,18 @@ const tabSelectedStyles = {
   borderColor: 'primary',
 } as const;
 
+const focusVisbleStyles = {
+  [TabSelectors.FOCUS_VISIBLE + TabSelectors.BEFORE]: {
+    content: '""',
+    border: 2,
+    borderColor: 'primary',
+    position: 'absolute',
+    inset: 0,
+    zIndex: 0,
+    borderRadius: '4px 4px 0 0',
+  },
+} as const;
+
 const tabVariants = variant({
   base: {
     position: 'relative',
@@ -40,10 +52,7 @@ const tabVariants = variant({
       opacity: 0.25,
       cursor: 'default',
     },
-    [TabSelectors.FOCUS_VISIBLE]: {
-      boxShadow: `inset 0 0 0 2px ${theme.colors.primary}`,
-      borderRadius: '4px',
-    },
+    ...focusVisbleStyles,
   },
   variants: {
     standard: {
