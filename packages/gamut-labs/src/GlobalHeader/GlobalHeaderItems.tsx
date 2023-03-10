@@ -53,15 +53,17 @@ export const myHome: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const myPercipioHome: AppHeaderLinkItem = {
-  dataTestId: 'header-percihome',
-  icon: HouseEntranceIcon,
-  id: 'my-home',
-  text: 'My Percipio',
-  href: 'https://my.percipio.com/',
-  newTab: true,
-  trackingTarget: 'topnav_enterprise_home',
-  type: 'link',
+export const myPercipioHome = (user: User): AppHeaderLinkItem => {
+  return {
+    dataTestId: 'header-percihome',
+    icon: HouseEntranceIcon,
+    id: 'my-home',
+    text: 'My Percipio',
+    href: user?.enterpriseUrl ?? 'https://percipio.com/',
+    newTab: true,
+    trackingTarget: 'topnav_enterprise_home',
+    type: 'link',
+  };
 };
 
 export const catalogDropdown = (
