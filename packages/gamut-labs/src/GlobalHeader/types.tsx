@@ -31,7 +31,6 @@ export type User = {
   isPaused?: boolean;
   proCheckoutUrl?: string;
   showProUpgrade?: boolean;
-  showReferrals?: boolean;
   hideCareerPaths?: boolean;
   hideBusinessAccount?: boolean;
 };

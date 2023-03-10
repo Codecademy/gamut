@@ -1,0 +1,159 @@
+import { GridBox } from '@codecademy/gamut/src';
+import { PlanCard } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  component={PlanCard}
+  parameters={{
+    source: 'gamut-labs',
+    status: 'updating',
+    subtitle: `Shows plan details in checkout or billing plan change modal.`,
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/KLXvcxaNkadmU6XFb5ngWO/Pro-Gold-GTM?node-id=695%3A21306&t=gi0TWmyKfBtwq9Si-0',
+    },
+  }}
+  args={{
+    isSelected: false,
+    price: '29.99',
+    currency: 'USD',
+    termMonths: 1,
+    onChange: () => {},
+    planType: 'pro-gold',
+  }}
+  title={title}
+/>
+
+<Canvas>
+  <Story name="Plan Card">
+    {(args) => (
+      <GridBox
+        role="radiogroup"
+        gridTemplateColumns={{
+          _: '1fr',
+          sm: '1fr 1fr',
+        }}
+        gap={24}
+      >
+        <PlanCard
+          isSelected
+          price="17.49"
+          currency="USD"
+          termMonths={1}
+          onChange={() => {}}
+          planType="pro-silver"
+        />
+        <PlanCard {...args} />
+      </GridBox>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable story="Plan Card" />
+
+## Annual Plus Card
+
+<Canvas>
+  <Story name="Annual Plus Card">
+    {() => (
+      <GridBox
+        role="radiogroup"
+        gridTemplateColumns={{
+          _: '1fr',
+          sm: '1fr 1fr',
+        }}
+        gap={24}
+      >
+        <PlanCard
+          isSelected
+          price="17.49"
+          currency="USD"
+          termMonths={12}
+          onChange={() => {}}
+          planType="pro-silver"
+        />
+      </GridBox>
+    )}
+  </Story>
+</Canvas>
+
+## Annual Pro Card
+
+<Canvas>
+  <Story name="Annual Pro Card">
+    {() => (
+      <GridBox
+        role="radiogroup"
+        gridTemplateColumns={{
+          _: '1fr',
+          sm: '1fr 1fr',
+        }}
+        gap={24}
+      >
+        <PlanCard
+          isSelected
+          price="29.99"
+          currency="USD"
+          termMonths={12}
+          onChange={() => {}}
+          planType="pro-gold"
+        />
+      </GridBox>
+    )}
+  </Story>
+</Canvas>
+
+## Monthly Plus Card
+
+<Canvas>
+  <Story name="Monthly Plus Card">
+    {() => (
+      <GridBox
+        role="radiogroup"
+        gridTemplateColumns={{
+          _: '1fr',
+          sm: '1fr 1fr',
+        }}
+        gap={24}
+      >
+        <PlanCard
+          isSelected
+          price="34.99"
+          currency="USD"
+          termMonths={1}
+          onChange={() => {}}
+          planType="pro-silver"
+        />
+      </GridBox>
+    )}
+  </Story>
+</Canvas>
+
+## Monthly Pro Card
+
+<Canvas>
+  <Story name="Monthly Pro Card">
+    {() => (
+      <GridBox
+        role="radiogroup"
+        gridTemplateColumns={{
+          _: '1fr',
+          sm: '1fr 1fr',
+        }}
+        gap={24}
+      >
+        <PlanCard
+          isSelected
+          price="59.99"
+          currency="USD"
+          termMonths={1}
+          onChange={() => {}}
+          planType="pro-gold"
+        />
+      </GridBox>
+    )}
+  </Story>
+</Canvas>
