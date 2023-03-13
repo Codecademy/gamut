@@ -80,7 +80,11 @@ const LineDecoration = styled(Box)`
       inProgress ? theme.colors.navy : theme.colors['navy-200']};
 `;
 
-/* @deprecated  This component is deprecated. Please use the CareerPathCard, SkillPathCard, or CourseCard instead.
+/**
+ *
+ * @deprecated  This component is deprecated
+ *
+ * Please use the CareerPathCard, SkillPathCard, or CourseCard instead
  */
 
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
