@@ -257,7 +257,7 @@ const columnStates = states({
     position: 'sticky',
     left: 0,
     zIndex: 1,
-    bg: 'feedback-error',
+    bg: 'transparent',
     '&:not(:first-of-type)': {
       left: { xs: 16 },
       overflow: 'visible',
