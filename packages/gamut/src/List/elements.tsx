@@ -257,7 +257,7 @@ const columnStates = states({
     position: 'sticky',
     left: 0,
     zIndex: 1,
-    // bg: 'transparent',
+    bg: 'inherit',
     '&:not(:first-of-type)': {
       left: { xs: 16 },
       overflow: 'visible',
@@ -265,7 +265,7 @@ const columnStates = states({
     '&:not(:first-of-type):before': {
       display: { _: 'none', xs: 'block' },
       content: '""',
-      bg: 'feedback-success',
+      bg: 'inherit',
       left: -16,
       height: 1,
       width: 16,
