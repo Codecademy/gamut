@@ -49,6 +49,11 @@ export interface GlobalPageProps extends WithChildrenProp {
    * Custom element ID to link to by the SkipToContent control, if not a default one at the beginning of the page.
    */
   skipToContentId?: string;
+
+  /**
+   * Prop to conditionally render footer.
+   */
+  showFooter?: boolean;
 }
 
 const defaultSkipToContentId = 'page-skip-to-content-target';
@@ -72,6 +77,7 @@ export const GlobalPage: React.FC<GlobalPageProps> = ({
   footer,
   header,
   skipToContentId,
+  showFooter = true,
 }) => {
   return (
     <GlobalPageWrapper bg={backgroundColor} minHeight="100vh">
@@ -80,7 +86,7 @@ export const GlobalPage: React.FC<GlobalPageProps> = ({
       <GlobalHeader {...header} />
       {!skipToContentId && <SkipToContentTarget id={defaultSkipToContentId} />}
       <AppWrapper as={contentAs}>{children}</AppWrapper>
-      <GlobalFooter {...footer} />
+      {showFooter && <GlobalFooter {...footer} />}
     </GlobalPageWrapper>
   );
 };
