@@ -257,7 +257,7 @@ const columnStates = states({
     position: 'sticky',
     left: 0,
     zIndex: 1,
-    bg: 'inherit',
+    bg: 'feedback-error',
     '&:not(:first-of-type)': {
       left: { xs: 16 },
       overflow: 'visible',
@@ -265,7 +265,7 @@ const columnStates = states({
     '&:not(:first-of-type):before': {
       display: { _: 'none', xs: 'block' },
       content: '""',
-      bg: 'inherit',
+      bg: 'feedback-success',
       left: -16,
       height: 1,
       width: 16,
@@ -352,7 +352,6 @@ export const ColEl = styled(
   ])
 )<ColProps>(
   css({
-    bg: 'initial',
     display: 'inline-flex',
     alignItems: 'center',
     whiteSpace: 'nowrap',
