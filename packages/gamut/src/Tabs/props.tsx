@@ -8,6 +8,7 @@ export enum TabSelectors {
   FOCUS = '&:focus',
   DISABLED = "[disabled], &:disabled, &[aria-disabled='true']",
   FOCUS_VISIBLE = ' &:focus-visible',
+  BEFORE = '&::before',
 }
 
 export interface TabElementStyleProps
