@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [52.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.1.0...@codecademy/gamut@52.1.1) (2023-03-14)
+
+
+### Bug Fixes
+
+* **TabButton:** fixes focus outline on tabs ([f5808d8](https://github.com/Codecademy/gamut/commit/f5808d844a62075056060de61362f63b3681a24b))
+
+
+
 ## [52.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.0.8...@codecademy/gamut@52.1.0) (2023-03-07)
 
 
