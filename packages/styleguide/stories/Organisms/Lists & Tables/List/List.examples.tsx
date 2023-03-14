@@ -403,13 +403,39 @@ const ExpandedColumns: React.FC<Omit<ExpandableRowProps, 'key'>> = ({
   ship,
 }) => (
   <>
-    <ListCol fill size="content" type="header">
+    <ListCol size="lg" type="header">
       <FlexBox column>
         <Text color="text-disabled" textTransform="uppercase" variant="p-small">
           {ship}
         </Text>
         <Text variant="title-xs">{name}</Text>
       </FlexBox>
+    </ListCol>
+    <ListCol size="md" fill>
+      <FlexBox column>
+        <Text color="text-disabled" textTransform="uppercase" variant="p-small">
+          Rank
+        </Text>
+        <Text variant="title-xs">{role}</Text>
+      </FlexBox>
+    </ListCol>
+    <ListCol fill size="sm">
+      <Text variant="p-small" color="text-disabled" lineHeight="title" mt={4}>
+        <StreakIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+        87%
+      </Text>
+    </ListCol>
+    <ListCol fill size="sm">
+      <Text variant="p-small" color="text-disabled" lineHeight="title" mt={4}>
+        <TrophyIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+        48%
+      </Text>
+    </ListCol>
+    <ListCol fill size="sm">
+      <Text variant="p-small" color="text-disabled" lineHeight="title" mt={4}>
+        <StarIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+        66%
+      </Text>
     </ListCol>
   </>
 );
@@ -430,7 +456,7 @@ export const ExpandableRowClick: React.FC<ExpandableRowProps> = ({
       renderExpanded={() => <ExpandedRow name={name} role={role} ship={ship} />}
     >
       <ExpandedColumns name={name} role={role} ship={ship} />
-      <ListCol type="control">
+      <ListCol size="xl" type="control">
         <FlexBox mt={{ _: 8, xs: 0 }} pl={{ _: 0, xs: 16 }} width={1} center>
           <Rotation rotated={isExpanded}>
             <ArrowChevronDownIcon color="text-disabled" />
@@ -473,7 +499,7 @@ export const ExpandedTemplateRowClick: React.FC<
 > = ({ mode, variant }) => (
   <ColorMode bg="black" mode={mode}>
     <Box p={8}>
-      <List variant="plain" scrollable>
+      <List variant={variant}>
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
           <ExpandableRowClick name={name} role={role} ship={ship} key={key} />
         ))}
