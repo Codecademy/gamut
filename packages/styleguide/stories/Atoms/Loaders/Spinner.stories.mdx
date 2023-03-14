@@ -8,9 +8,14 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   component={Spinner}
   parameters={{
     subtitle: `Perpetually spinning circle, such as for a loading indicator. Similar to a
-\`ProgressBar\`.`,
+\`ProgressBar\`. Spinners work best when used inside of components that are already loaded. They are small, compact, and imply elements of feedback.`,
     source: 'gamut',
-    status: 'deprecated',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=29975%3A39412&t=nzcwAhSF1DoNC1YO-0',
+    },
   }}
   args={{ size: 60 }}
 />
