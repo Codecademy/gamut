@@ -46,7 +46,6 @@ export const StyledAppBar = styled(AppBar)(
 
 export const StyledMenuBar = styled.ul(
   css({
-    // TO-DO: Check if this looks okay across screensizes + variants.
     alignItems: 'stretch',
     display: `flex`,
     padding: 0,
