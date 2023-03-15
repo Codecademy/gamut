@@ -23,7 +23,11 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
       />
     );
     if (sticky) {
-      return <StickyColumnWrapper>{col}</StickyColumnWrapper>;
+      return (
+        <StickyColumnWrapper data-testid="header-container">
+          {col}
+        </StickyColumnWrapper>
+      );
     }
     return <>{col}</>;
   }
