@@ -1,0 +1,252 @@
+import { Box } from '@codecademy/gamut/src';
+import { GlobalHeader } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={GlobalHeader}
+  decorators={[
+    (Story) => {
+      return <Box style={{ width: '100%' }}>{Story()}</Box>;
+    },
+  ]}
+  parameters={{
+    status: 'current',
+    docs: { inlineStories: false, iframeHeight: 750 },
+    subtitle: 'Pro user variants for the Codecademy GlobalHeader',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=29718:38907&t=5IUbjLj8omh90GmT-0',
+    },
+  }}
+/>
+
+### Pro User
+
+#### Pro User - Default
+
+<Canvas>
+  <Story name="Pro User - Default">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="pro"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Codey',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Pro User - Paused
+
+<Canvas>
+  <Story name="Pro User - Paused">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="pro"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Codey',
+          isPaused: true,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Pro User - Admin
+
+<Canvas>
+  <Story name="Pro User - Admin">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="pro"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Codey',
+          isAdmin: true,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Pro User - Customer Support
+
+<Canvas>
+  <Story name="Pro User - Customer Support">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="pro"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Codey',
+          isAdmin: true,
+          isCustomerSupport: true,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Pro User - Pro Lite Subscription
+
+<Canvas>
+  <Story name="Pro User - Pro Lite Subscription">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        notifications={{
+          baseUrl: '',
+          notifications: [
+            {
+              campaign: 'existence_is_pain',
+              date: '5 hours',
+              id: '1',
+              link: 'https://codecademy.com',
+              text: "Look at me! I'm Mr. Notification!",
+              unread: true,
+            },
+          ],
+          onEnable: () => {},
+          actions: {
+            clear: () => {},
+            click: () => {},
+            dismiss: () => {},
+            read: () => {},
+            track: () => {},
+          },
+        }}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="pro"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Codey',
+          isAdmin: true,
+          isCustomerSupport: true,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
