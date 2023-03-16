@@ -4,19 +4,7 @@ import * as React from 'react';
 
 import { Box, BoxProps } from '../Box';
 
-const shimmer = keyframes`
-  0% {
-    left: -500px; opacity: 0;
-  }
-  50% {
-    left: 0px;
-    opacity: 1;
-  }
-  100% {
-    left: 500px;
-    opacity: 0;
-  }
-`;
+const shimmer = keyframes`0% { left: -500px; opacity: 0; } 50% { left: 0px; opacity: 1; } 100% { left: 500px; opacity: 0; }`;
 
 const ShimmerForeground = styled.div`
   position: 'absolute';
