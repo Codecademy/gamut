@@ -2516,10 +2516,10 @@
   resolved "https://registry.npmjs.org/@codecademy/tsconfig/-/tsconfig-0.2.0.tgz#995047e64b53f91bd708f3849b9ec7d53c8022c2"
   integrity sha512-8lVLeEkFGP/M0quAr/oMiMQtQkODLIwcxj+oEZ3kl7OtNc5y0km/XWd/2M9H8wCQmpOw2xn1iSZGhmfB+sRO5Q==
 
-"@codecademy/webpack-config@6.2.1-alpha.df59b9.0":
-  version "6.2.1-alpha.df59b9.0"
-  resolved "https://registry.npmjs.org/@codecademy/webpack-config/-/webpack-config-6.2.1-alpha.df59b9.0.tgz#1194e664593c06f0d433b679957c0ca231155db4"
-  integrity sha512-MfYId5XpwSAR2sQrCyLouEOAbH2yDal0zuZwl0TFzPUetyR3I6GMnKKZBrlrg6pRDSBFpJcSw+E59qxSgUV3gQ==
+"@codecademy/webpack-config@6.3.0":
+  version "6.3.0"
+  resolved "https://registry.npmjs.org/@codecademy/webpack-config/-/webpack-config-6.3.0.tgz#f53471f689f92c936b3a199ed71d2076cef09658"
+  integrity sha512-TX48we3qw6ixSL+PmvPdgcTvdSriKQKklYeZfot5UXmVtQjbXqO4hCpXL5V1vuUvUf6DZmrCjGvErkZMmf6qIw==
   dependencies:
     babel-loader "^8.2.5"
     case-sensitive-paths-webpack-plugin "^2.4.0"
