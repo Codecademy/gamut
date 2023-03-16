@@ -7,14 +7,17 @@ import {
   businessSolutions,
   catalogDropdown,
   communityDropdown,
+  enterpriseLogo,
   freeProfile,
   login,
   logo,
   myHome,
+  myPercipioHome,
   pricingDropdown,
   proProfile,
   resourcesDropdown,
   signUp,
+  simpleResourcesDropdown,
   tryProForFree,
   unpausePro,
   upgradeToPro,
@@ -194,6 +197,18 @@ export const freeMobileHeaderItems = (
   };
 };
 
+export const enterpriseHeaderItems = (user: User) => {
+  const leftItems: AppHeaderItem[] = [
+    enterpriseLogo(user),
+    myPercipioHome(user),
+    simpleResourcesDropdown,
+  ];
+  return {
+    left: leftItems,
+    right: [],
+  };
+};
+
 export const proHeaderItems = (user: User): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
@@ -213,6 +228,24 @@ export const proHeaderItems = (user: User): FormattedAppHeaderItems => {
   return {
     left: leftItems,
     right: rightItems,
+  };
+};
+
+export const enterpriseMobileHeaderItems = (
+  user: User
+): FormattedMobileAppHeaderItems => {
+  const leftItems: AppHeaderItem[] = [enterpriseLogo(user)];
+  const rightItems: AppHeaderItem[] = [];
+
+  const mainMenuItems: AppHeaderItem[] = [
+    myPercipioHome(user),
+    simpleResourcesDropdown,
+  ];
+
+  return {
+    left: leftItems,
+    right: rightItems,
+    mainMenu: mainMenuItems,
   };
 };
 
