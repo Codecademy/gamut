@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [63.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.6.2...@codecademy/styleguide@63.7.0) (2023-03-15)
+
+
+### Features
+
+* **GlobalHeader:** Enterprise view ([0d7551b](https://github.com/Codecademy/gamut/commit/0d7551bad700b5f89d851350257041b36ead2b3c))
+
+
+
+### [63.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.6.1...@codecademy/styleguide@63.6.2) (2023-03-14)
+
+
+### Bug Fixes
+
+* storybook for shimmer + spinner stories now in a single folder ([12ecf7b](https://github.com/Codecademy/gamut/commit/12ecf7bbaad5c68a8862c0d2aa1335773861dfd9))
+
+
+
+### [63.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.6.0...@codecademy/styleguide@63.6.1) (2023-03-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [63.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.14...@codecademy/styleguide@63.6.0) (2023-03-07)
+
+
+### Features
+
+* **CareerPathCard:** :sparkles: Adds salary metadata to CareerPathCard component ([ab85e90](https://github.com/Codecademy/gamut/commit/ab85e90e76ebb1f69ec377af34e0dc7b32500c70))
+* **PlanCard:** Adds PlanCard ([0160d3e](https://github.com/Codecademy/gamut/commit/0160d3e8f3a70cda9cdb0058cd60f82a6e56656b))
+
+
+
 ### [63.5.14](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.13...@codecademy/styleguide@63.5.14) (2023-03-03)
 
 **Note:** Version bump only for package @codecademy/styleguide

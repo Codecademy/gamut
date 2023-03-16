@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.7.12](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.7.11...@codecademy/monaco@0.7.12) (2023-03-15)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.7.11](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.7.10...@codecademy/monaco@0.7.11) (2023-03-14)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.7.10](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.7.9...@codecademy/monaco@0.7.10) (2023-03-14)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
+### [0.7.9](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.7.8...@codecademy/monaco@0.7.9) (2023-03-07)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
 ### [0.7.8](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.7.7...@codecademy/monaco@0.7.8) (2023-03-03)
 
 **Note:** Version bump only for package @codecademy/monaco

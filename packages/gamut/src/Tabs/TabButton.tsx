@@ -22,6 +22,18 @@ const tabSelectedStyles = {
   borderColor: 'primary',
 } as const;
 
+const focusVisibleStyles = {
+  [TabSelectors.FOCUS_VISIBLE + TabSelectors.BEFORE]: {
+    content: '""',
+    border: 2,
+    borderColor: 'primary',
+    position: 'absolute',
+    inset: 0,
+    zIndex: 0,
+    borderRadius: '4px 4px 0 0',
+  },
+} as const;
+
 const tabVariants = variant({
   base: {
     position: 'relative',
@@ -40,6 +52,7 @@ const tabVariants = variant({
       opacity: 0.25,
       cursor: 'default',
     },
+    ...focusVisibleStyles,
   },
   variants: {
     standard: {
