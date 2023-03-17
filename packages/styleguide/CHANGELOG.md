@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [63.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.6.2...@codecademy/styleguide@63.7.0) (2023-03-15)
+
+
+### Features
+
+* **GlobalHeader:** Enterprise view ([0d7551b](https://github.com/Codecademy/gamut/commit/0d7551bad700b5f89d851350257041b36ead2b3c))
+
+
+
 ### [63.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.6.1...@codecademy/styleguide@63.6.2) (2023-03-14)
 
 
