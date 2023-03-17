@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "63.7.0",
+  "version": "63.8.0",
   "author": "Codecademy Engineering",
   "scripts": {
     "start": "yarn storybook",
@@ -22,7 +22,7 @@
     "@codecademy/gamut-styles": "15.1.0",
     "@codecademy/macros": "^3.0.2",
     "@codecademy/variance": "0.21.0",
-    "@codecademy/webpack-config": "6.2.0",
+    "@codecademy/webpack-config": "6.3.0",
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
