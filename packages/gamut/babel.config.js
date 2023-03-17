@@ -1,6 +1,21 @@
 module.exports = {
   extends: '../../babel.defaults.js',
-  presets: ['codecademy', '@babel/preset-typescript'],
+  presets: [
+    [
+      '@babel/env',
+      {
+        modules: false,
+        targets: 'defaults',
+      },
+    ],
+    [
+      '@babel/react',
+      {
+        runtime: 'automatic',
+      },
+    ],
+    '@babel/preset-typescript',
+  ],
   plugins: [
     [
       '@emotion/babel-plugin',
