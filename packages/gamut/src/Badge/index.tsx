@@ -25,7 +25,7 @@ const colorVariants = variant({
       textColor: 'navy',
     },
     grey: {
-      bg: `navy-500`,
+      bg: `text-disabled`,
       textColor: 'white',
     },
     stroke: {
