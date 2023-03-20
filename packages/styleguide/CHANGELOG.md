@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [63.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.8.0...@codecademy/styleguide@63.8.1) (2023-03-20)
+
+
+### Bug Fixes
+
+* **GridForm:** cancel + submit button ([14244a8](https://github.com/Codecademy/gamut/commit/14244a8490ff71fa9e78338a331252176befe953))
+
+
+
+## [63.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.7.0...@codecademy/styleguide@63.8.0) (2023-03-17)
+
+
+### Features
+
+* **styleguide:** bump webpack config with node sass upgrade ([860e6b3](https://github.com/Codecademy/gamut/commit/860e6b301505f381351e0882d68eec68e0d83cfa))
+
+
+
 ## [63.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.6.2...@codecademy/styleguide@63.7.0) (2023-03-15)
 
 
