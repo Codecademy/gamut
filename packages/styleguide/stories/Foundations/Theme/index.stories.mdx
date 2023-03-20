@@ -1,7 +1,8 @@
+import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { DataTable, LinkTo } from '~styleguide/blocks';
+import { DataTable } from '~styleguide/blocks';
 
 import * as TABLES from './tables';
 
@@ -16,7 +17,20 @@ import * as TABLES from './tables';
 
 All Emotion components we build have access to a typed theme object allowing you to have direct access to all the design tokens without any imports.
 
-These are available through context or directly as the `theme` prop on every styled component.
+These are most easily available through our context and accessed via our `gamut-styles` utility functions.
+
+```tsx
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+
+// Single value using static color
+const Box = styled.div(css({ bg: 'navy-400', p: 4 }));
+
+// Multiple values using ColorMode semantic color
+const OtherCoolThing = styled.div(css({ color: 'primary', p: 4 }));
+```
+
+They can also be accessed directly as the `theme` prop on every styled component.
 
 ```tsx
 import styled from '@emotion/styled';
@@ -41,7 +55,7 @@ const myStyles = css`
 
 **Key**: `theme.colors`
 
-All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches. This object will not include older or more specific design tokens; if you need to access these color variables please check out the <LinkTo id="foundations-colors--standard">full colors documentation</LinkTo>
+All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches.
 
 ### Standard Colors
 
@@ -51,12 +65,22 @@ Standard color atoms we select from in creating designs. All colors on Codecadem
   <DataTable {...TABLES.color} />
 </Story>
 
-### Swatches
+### Solid Color Swatches
 
-Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a full list of all the swatches available.
+Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a list of all the solid swatches available.
 
 <Story name="swatches">
   <DataTable {...TABLES.swatch} />
+</Story>
+
+### Navy and White Color Swatches
+
+With the exception of the `weight-100`, `navy-800`, and `navy-900` color weights, our navy and white color weights are semi-transparent. Special consideration should be taken when using these colors, especially when overlapping. The white weights, with the non-transparent exceptions, are only visible in dark mode, and the navy weights, with the non-transparent exceptions, are only visible in light mode. You can swap modes using the `Color Mode` toggle at the top of this screen.
+
+These tokens are also accessible with a dashcase key `theme.colors['${color}-${weight}']`.
+
+<Story name="navy and white swatches">
+  <DataTable {...TABLES.rgbaSwatch} />
 </Story>
 
 ## Color Modes
@@ -75,7 +99,9 @@ For more on Color Modes please checkout the [full color mode documentation](/?pa
 ### Light Mode
 
 <Story name="light">
-  <DataTable {...TABLES.lightMode} />
+  <Background bg="white">
+    <DataTable {...TABLES.lightMode} />
+  </Background>
 </Story>
 
 **Example**
@@ -83,7 +109,9 @@ For more on Color Modes please checkout the [full color mode documentation](/?pa
 ### Dark Mode
 
 <Story name="dark">
-  <DataTable {...TABLES.darkMode} />
+  <Background bg="navy">
+    <DataTable {...TABLES.darkMode} />
+  </Background>
 </Story>
 
 ## Typography

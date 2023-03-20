@@ -1,6 +1,6 @@
 import { ComponentProps, forwardRef } from 'react';
 
-import { ColEl } from './elements';
+import { ColEl, StickyColumnWrapper } from './elements';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
 
@@ -12,7 +12,7 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
     const { scrollable, ...activeVariants } = useListContext();
     const sticky = type === 'header' && scrollable;
 
-    return (
+    const col = (
       <ColEl
         {...activeVariants}
         {...rest}
@@ -22,5 +22,13 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
         ref={ref}
       />
     );
+    if (sticky) {
+      return (
+        <StickyColumnWrapper data-testid="header-container">
+          {col}
+        </StickyColumnWrapper>
+      );
+    }
+    return <>{col}</>;
   }
 );
