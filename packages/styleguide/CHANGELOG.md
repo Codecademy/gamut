@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [63.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.8.0...@codecademy/styleguide@63.8.1) (2023-03-20)
+
+
+### Bug Fixes
+
+* **GridForm:** cancel + submit button ([14244a8](https://github.com/Codecademy/gamut/commit/14244a8490ff71fa9e78338a331252176befe953))
+
+
+
 ## [63.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.7.0...@codecademy/styleguide@63.8.0) (2023-03-17)
 
 
