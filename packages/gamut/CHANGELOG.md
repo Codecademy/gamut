@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [52.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.2.0...@codecademy/gamut@52.2.1) (2023-03-20)
+
+
+### Bug Fixes
+
+* **GridForm:** cancel + submit button ([14244a8](https://github.com/Codecademy/gamut/commit/14244a8490ff71fa9e78338a331252176befe953))
+
+
+
 ## [52.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.1.2...@codecademy/gamut@52.2.0) (2023-03-15)
 
 

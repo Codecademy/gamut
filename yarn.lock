@@ -2514,10 +2514,10 @@
   resolved "https://registry.npmjs.org/@codecademy/tsconfig/-/tsconfig-0.2.0.tgz#995047e64b53f91bd708f3849b9ec7d53c8022c2"
   integrity sha512-8lVLeEkFGP/M0quAr/oMiMQtQkODLIwcxj+oEZ3kl7OtNc5y0km/XWd/2M9H8wCQmpOw2xn1iSZGhmfB+sRO5Q==
 
-"@codecademy/webpack-config@6.2.0":
-  version "6.2.0"
-  resolved "https://registry.npmjs.org/@codecademy/webpack-config/-/webpack-config-6.2.0.tgz#b07021771d8dd1ba581b6c27818d960b6ce27c19"
-  integrity sha512-VYUmEHMFxsjLolOAwW9Y/f4TmW+yPVF4UIwzOPybZdbE8aMAZn6nHrCQ1xRqjbaSyNWhMemdhuyNKltP42+QLg==
+"@codecademy/webpack-config@6.3.0":
+  version "6.3.0"
+  resolved "https://registry.npmjs.org/@codecademy/webpack-config/-/webpack-config-6.3.0.tgz#f53471f689f92c936b3a199ed71d2076cef09658"
+  integrity sha512-TX48we3qw6ixSL+PmvPdgcTvdSriKQKklYeZfot5UXmVtQjbXqO4hCpXL5V1vuUvUf6DZmrCjGvErkZMmf6qIw==
   dependencies:
     babel-loader "^8.2.5"
     case-sensitive-paths-webpack-plugin "^2.4.0"
@@ -2525,7 +2525,7 @@
     cssnano "^4.1.11"
     file-loader "^3.0.1"
     mini-css-extract-plugin "^0.12.0"
-    node-sass "^4.14.1"
+    node-sass "^8.0.0"
     postcss-flexbugs-fixes "^4.1.0"
     postcss-focus-visible "^5.0.0"
     postcss-loader "^3.0.0"
@@ -17162,7 +17162,7 @@ node-releases@^2.0.6:
   resolved "https://registry.npmjs.org/node-releases/-/node-releases-2.0.6.tgz#8a7088c63a55e493845683ebf3c828d8c51c5503"
   integrity sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==
 
-node-sass@^4.14.1, node-sass@^6.0.1:
+node-sass@^6.0.1, node-sass@^8.0.0:
   version "6.0.1"
   resolved "https://registry.npmjs.org/node-sass/-/node-sass-6.0.1.tgz#cad1ccd0ce63e35c7181f545d8b986f3a9a887fe"
   integrity sha512-f+Rbqt92Ful9gX0cGtdYwjTrWAaGURgaK5rZCWOgCNyGWusFYHhbqCCBoFBeat+HKETOU02AyTxNhJV0YZf2jQ==
