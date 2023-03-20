@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [53.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.2.1...@codecademy/gamut@53.0.0) (2023-03-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ColorMode:** add new navy weights
+
+### Features
+
+* **ColorMode:** add new navy weights ([4babb66](https://github.com/Codecademy/gamut/commit/4babb66348b8c64457e0df6765df1376be880140))
+
+
+
 ### [52.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.2.0...@codecademy/gamut@52.2.1) (2023-03-20)
 
 
