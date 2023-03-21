@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [64.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.8.1...@codecademy/styleguide@64.0.0) (2023-03-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ColorMode:** add new navy weights
+
+### Features
+
+* **ColorMode:** add new navy weights ([4babb66](https://github.com/Codecademy/gamut/commit/4babb66348b8c64457e0df6765df1376be880140))
+
+
+
+### [63.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.8.0...@codecademy/styleguide@63.8.1) (2023-03-20)
+
+
+### Bug Fixes
+
+* **GridForm:** cancel + submit button ([14244a8](https://github.com/Codecademy/gamut/commit/14244a8490ff71fa9e78338a331252176befe953))
+
+
+
+## [63.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.7.0...@codecademy/styleguide@63.8.0) (2023-03-17)
+
+
+### Features
+
+* **styleguide:** bump webpack config with node sass upgrade ([860e6b3](https://github.com/Codecademy/gamut/commit/860e6b301505f381351e0882d68eec68e0d83cfa))
+
+
+
+## [63.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.6.2...@codecademy/styleguide@63.7.0) (2023-03-15)
+
+
+### Features
+
+* **GlobalHeader:** Enterprise view ([0d7551b](https://github.com/Codecademy/gamut/commit/0d7551bad700b5f89d851350257041b36ead2b3c))
+
+
+
+### [63.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.6.1...@codecademy/styleguide@63.6.2) (2023-03-14)
+
+
+### Bug Fixes
+
+* storybook for shimmer + spinner stories now in a single folder ([12ecf7b](https://github.com/Codecademy/gamut/commit/12ecf7bbaad5c68a8862c0d2aa1335773861dfd9))
+
+
+
+### [63.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.6.0...@codecademy/styleguide@63.6.1) (2023-03-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [63.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.14...@codecademy/styleguide@63.6.0) (2023-03-07)
 
 

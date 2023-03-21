@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/monaco",
   "description": "Monaco editor with Codecademy specific configuration",
-  "version": "0.7.9",
+  "version": "0.7.14",
   "author": "Codecademy Engineering",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -17,8 +17,8 @@
     "react-dom": "^17.0.2 || ^18.2.0"
   },
   "dependencies": {
-    "@codecademy/gamut": "52.1.0",
-    "@codecademy/gamut-styles": "15.1.0",
+    "@codecademy/gamut": "53.0.0",
+    "@codecademy/gamut-styles": "16.0.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "monaco-editor": "0.20.0",

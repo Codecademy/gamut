@@ -519,35 +519,96 @@ Optionally, include a cancel button.
 
 <Canvas>
   <Story name="Cancel button">
-    {() => (
-      <GridForm
-        fields={[
-          {
-            label: 'A label',
-            name: 'a-label',
-            size: 6,
-            type: 'text',
-          },
-          {
-            label: 'This other label',
-            name: 'this-other-label',
-            size: 6,
-            type: 'text',
-          },
-        ]}
-        cancel={{
-          children: 'Cancel',
-          onClick: () => {},
-        }}
-        onSubmit={async (values) => {
-          action('Form Submitted')(values);
-        }}
-        submit={{
-          contents: 'Submit',
-          position: 'right',
-        }}
-      />
-    )}
+    <LayoutGrid>
+      <Column size={6}>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'right-sub-simple-text',
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          cancel={{
+            children: 'Cancel',
+            onClick: () => {},
+          }}
+          submit={{
+            contents: 'Right Submit!?',
+            position: 'right',
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'center-sub-simple-text',
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          cancel={{
+            children: 'Cancel',
+            onClick: () => {},
+          }}
+          submit={{
+            contents: 'Center Submit!?',
+            position: 'center',
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'left-sub-simple-text',
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          cancel={{
+            children: 'Cancel',
+            onClick: () => {},
+          }}
+          submit={{
+            contents: 'Left Submit!?',
+            position: 'left',
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'stretch-sub-simple-text',
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          cancel={{
+            children: 'Cancel',
+            onClick: () => {},
+          }}
+          submit={{
+            contents: 'Stretch Submit!?',
+            position: 'stretch',
+          }}
+        />
+      </Column>
+    </LayoutGrid>
   </Story>
 </Canvas>
 

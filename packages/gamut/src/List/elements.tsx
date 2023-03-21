@@ -254,23 +254,9 @@ const columnSizes = variant({
 const columnStates = states({
   fill: { flexGrow: { xs: 1 } },
   sticky: {
-    position: 'sticky',
-    left: 0,
-    zIndex: 1,
+    width: '100%',
+    height: '100%',
     bg: 'inherit',
-    '&:not(:first-of-type)': {
-      left: { xs: 16 },
-      overflow: 'visible',
-    },
-    '&:not(:first-of-type):before': {
-      display: { _: 'none', xs: 'block' },
-      content: '""',
-      bg: 'inherit',
-      left: -16,
-      height: 1,
-      width: 16,
-      position: 'absolute',
-    },
   },
   delimiter: {
     overflow: 'visible',
@@ -364,4 +350,46 @@ export const ColEl = styled(
   columnStates,
   columnJustify,
   system.layout
+);
+
+export const StickyColumnWrapper = styled.div(
+  css({
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      bg: 'background',
+      width: '100%',
+      height: '100%',
+      top: 0,
+      left: 0,
+      zIndex: -1,
+    },
+    '&:after': {
+      content: '""',
+      position: 'absolute',
+      bg: 'inherit',
+      width: '100%',
+      height: '100%',
+      top: 0,
+      left: 0,
+      zIndex: -1,
+    },
+    position: 'sticky',
+    left: 0,
+    zIndex: 1,
+    bg: 'inherit',
+    '&:not(:first-of-type)': {
+      left: { xs: 16 },
+      overflow: 'visible',
+    },
+    '&:not(:first-of-type):before': {
+      display: { _: 'none', xs: 'block' },
+      content: '""',
+      bg: 'inherit',
+      left: -16,
+      height: 1,
+      width: 16,
+      position: 'absolute',
+    },
+  })
 );

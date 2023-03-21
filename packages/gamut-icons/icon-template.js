@@ -10,6 +10,7 @@ function iconTemplate(api, opts, { jsx }) {
   return template.ast`
     import * as React from 'react';
     import { Svg, GamutIconProps } from '../../props';
+    import { useIconId } from '../../useIconId';
 
     export const ${exportName} = React.forwardRef<SVGSVGElement, GamutIconProps>(({
       title = "${title}",
@@ -21,6 +22,8 @@ function iconTemplate(api, opts, { jsx }) {
     },
       svgRef
     ) => {
+      const maskId = useIconId('${exportName}');
+
       return ${jsx};
     }) as React.ForwardRefExoticComponent<
     GamutIconProps & React.RefAttributes<SVGSVGElement>

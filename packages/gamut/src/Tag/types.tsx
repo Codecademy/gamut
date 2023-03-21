@@ -2,7 +2,8 @@ import { StyleProps } from '@codecademy/variance';
 
 import { WithChildrenProp } from '..';
 import { ButtonProps } from '../Button';
-import { colorVariants, tagProps } from './elements';
+import { tagProps } from './elements';
+import { colorVariants } from './styles';
 
 export interface BaseTagProps
   extends StyleProps<typeof tagProps>,

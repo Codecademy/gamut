@@ -1,0 +1,101 @@
+import { Box } from '@codecademy/gamut/src';
+import { GlobalHeader } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={GlobalHeader}
+  decorators={[
+    (Story) => {
+      return <Box style={{ width: '100%' }}>{Story()}</Box>;
+    },
+  ]}
+  parameters={{
+    status: 'current',
+    docs: { inlineStories: false, iframeHeight: 750 },
+    subtitle: 'Anonymous user variants for the Codecademy GlobalHeader',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=29718:38907&t=5IUbjLj8omh90GmT-0',
+    },
+  }}
+/>
+
+### Anonymous User
+
+#### Anonymous User - Default
+
+<Canvas>
+  <Story name="Anonymous User - Default">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="anon"
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Anonymous User - Landing Page
+
+<Canvas>
+  <Story name="Anonymous User - Landing Page">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="anon"
+        variant="landing"
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Anonymous User - Login Page
+
+<Canvas>
+  <Story name="Anonymous User - Login Page">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="anon"
+        variant="login"
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Anonymous User - Signup Page
+
+<Canvas>
+  <Story name="Anonymous User - Signup Page">
+    {() => (
+      <GlobalHeader
+        action={() => {}}
+        search={{
+          onEnable: () => {},
+          onSearch: () => {},
+          onTrackingClick: () => {},
+        }}
+        type="anon"
+        variant="signup"
+      />
+    )}
+  </Story>
+</Canvas>

@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [53.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.2.1...@codecademy/gamut@53.0.0) (2023-03-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ColorMode:** add new navy weights
+
+### Features
+
+* **ColorMode:** add new navy weights ([4babb66](https://github.com/Codecademy/gamut/commit/4babb66348b8c64457e0df6765df1376be880140))
+
+
+
+### [52.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.2.0...@codecademy/gamut@52.2.1) (2023-03-20)
+
+
+### Bug Fixes
+
+* **GridForm:** cancel + submit button ([14244a8](https://github.com/Codecademy/gamut/commit/14244a8490ff71fa9e78338a331252176befe953))
+
+
+
+## [52.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.1.2...@codecademy/gamut@52.2.0) (2023-03-15)
+
+
+### Features
+
+* **GlobalHeader:** Enterprise view ([0d7551b](https://github.com/Codecademy/gamut/commit/0d7551bad700b5f89d851350257041b36ead2b3c))
+
+
+
+### [52.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.1.1...@codecademy/gamut@52.1.2) (2023-03-14)
+
+
+### Bug Fixes
+
+* storybook for shimmer + spinner stories now in a single folder ([12ecf7b](https://github.com/Codecademy/gamut/commit/12ecf7bbaad5c68a8862c0d2aa1335773861dfd9))
+
+
+
+### [52.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.1.0...@codecademy/gamut@52.1.1) (2023-03-14)
+
+
+### Bug Fixes
+
+* **TabButton:** fixes focus outline on tabs ([f5808d8](https://github.com/Codecademy/gamut/commit/f5808d844a62075056060de61362f63b3681a24b))
+
+
+
 ## [52.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.0.8...@codecademy/gamut@52.1.0) (2023-03-07)
 
 
