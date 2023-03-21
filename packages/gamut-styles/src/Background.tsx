@@ -83,6 +83,15 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
       return highestContrastMode;
     }, [modes, active, getTextContrast]);
 
+    console.log(
+      'debugging background: bg:',
+      bg,
+      'accessibleMode:',
+      accessibleMode,
+      'trueColor',
+      trueColor
+    );
+
     return <ColorMode {...rest} mode={accessibleMode} bg={bg} ref={ref} />;
   }
 );
