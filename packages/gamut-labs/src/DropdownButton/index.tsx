@@ -16,6 +16,7 @@ import { useRef, useState } from 'react';
 import * as React from 'react';
 
 import { DropdownItem, DropdownList } from './DropdownList';
+import { useDynamicPopoverPosition } from './useDynamicPopoverPosition';
 
 const DownArrow = styled(ArrowChevronDownFilledIcon, styledOptions)<{
   isOpen?: boolean;
@@ -50,6 +51,8 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   horizontalOffset,
 }) => {
   const targetRef = useRef<HTMLDivElement>(null);
+  const position = useDynamicPopoverPosition(targetRef);
+
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = (event: React.MouseEvent) => {
     if (!isOpen) {
@@ -127,6 +130,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
           align={align}
           verticalOffset={verticalOffset}
           horizontalOffset={horizontalOffset}
+          position={position}
           outline
         >
           <DropdownList
