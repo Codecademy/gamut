@@ -33,6 +33,12 @@ export const alertVariants = {
     bg: 'blue-300',
     icon: MiniStarIcon,
   },
+  subtle: {
+    // for some reason, background-disabled, abckground-hoiver isn't applying here
+    // ask cass? :)
+    bg: 'background-hover',
+    icon: MiniInfoCircleIcon,
+  },
 } as const;
 
 export const placementVariants = variant({

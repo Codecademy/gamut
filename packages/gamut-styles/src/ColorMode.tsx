@@ -153,7 +153,7 @@ export const ColorMode = forwardRef<
   const theme = useTheme();
   const { modes, mode: active, colors } = theme;
   const contextBg = bg ? 'background-current' : undefined;
-
+  console.log('context bg in colormode', contextBg);
   // This makes sure the background-current context is always set to the correct color + not the semantic color name.
   const currentParentBg = useContext(BackgroundCurrentContext);
 
