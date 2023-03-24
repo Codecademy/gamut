@@ -13,7 +13,7 @@ export const Warning: React.FC<IllustrationProps> = ({
     className={className}
     height={height}
     width={width}
-    viewBox="0 0 275 275"
+    viewBox="0 0 300 168"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
