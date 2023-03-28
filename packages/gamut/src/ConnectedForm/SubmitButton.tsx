@@ -42,6 +42,7 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
         type="submit"
         disabled
         aria-label={isLoading ? 'Loading' : undefined}
+        aria-live={isLoading ? 'polite' : undefined}
       >
         {/** This maintains button dimensions while hiding it from screen readers and the page */}
         <Box as="span" opacity={0} aria-hidden>
