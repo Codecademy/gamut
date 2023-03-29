@@ -2,25 +2,39 @@ import { PopoverProps } from '@codecademy/gamut';
 import { useEffect, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
-// Use 'above" when the bottom of the target is
-// within 96px from the bottom of the viewport.
-export const DYNAMIC_POSITION_THRESHOLD = 96;
+export type UseDynamicPopoverPositionProps = {
+  targetRef: PopoverProps['targetRef'];
+  popoverContainerRef: PopoverProps['popoverContainerRef'];
+};
 
-export const useDynamicPopoverPosition = (
-  targetRef: PopoverProps['targetRef']
-) => {
-  const [position, setPosition] = useState<PopoverProps['position']>('below');
-  const { height } = useWindowSize();
+const VERTICAL_OFFSET = 20;
+
+type PopoverPosition = PopoverProps['position'];
+
+export const useDynamicPopoverPosition = ({
+  targetRef,
+  popoverContainerRef,
+}: UseDynamicPopoverPositionProps): PopoverPosition => {
+  const { height: windowHeight } = useWindowSize();
+
+  const getPos = () => {
+    const targetRect = targetRef?.current?.getBoundingClientRect();
+    const targetBottom = targetRect?.bottom ?? 0;
+
+    const popoverRect = popoverContainerRef?.current?.getBoundingClientRect();
+    const popoverHeight = popoverRect?.height ?? 128;
+
+    return targetBottom + popoverHeight + VERTICAL_OFFSET > windowHeight
+      ? 'above'
+      : 'below';
+  };
+
+  const [position, setPosition] = useState<PopoverPosition>(getPos());
   const { y } = useWindowScroll();
 
   useEffect(() => {
-    if (targetRef?.current) {
-      const { bottom } = targetRef.current.getBoundingClientRect();
-      setPosition(
-        bottom + DYNAMIC_POSITION_THRESHOLD > height ? 'above' : 'below'
-      );
-    }
-  }, [targetRef, height, y]);
+    setPosition(getPos());
+  }, [targetRef, windowHeight, y]);
 
   return position;
 };

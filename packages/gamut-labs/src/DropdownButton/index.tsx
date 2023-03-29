@@ -51,7 +51,11 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   horizontalOffset,
 }) => {
   const targetRef = useRef<HTMLDivElement>(null);
-  const position = useDynamicPopoverPosition(targetRef);
+  const popoverContainerRef = useRef<HTMLDivElement>(null);
+  const position = useDynamicPopoverPosition({
+    targetRef,
+    popoverContainerRef,
+  });
 
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = (event: React.MouseEvent) => {
@@ -124,6 +128,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
       </Box>
       {isOpen && dropdownItems.length !== 0 && (
         <Popover
+          popoverContainerRef={popoverContainerRef}
           targetRef={targetRef}
           isOpen={isOpen}
           onRequestClose={handleRequestClosed}

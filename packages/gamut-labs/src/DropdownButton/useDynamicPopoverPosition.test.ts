@@ -1,19 +1,67 @@
 import { PopoverProps } from '@codecademy/gamut';
 import { renderHook } from '@testing-library/react-hooks';
 
-import {
-  DYNAMIC_POSITION_THRESHOLD,
-  useDynamicPopoverPosition,
-} from './useDynamicPopoverPosition';
+import { useDynamicPopoverPosition } from './useDynamicPopoverPosition';
 
-const VIEWPORT_HEIGHT = 1000;
+const WINDOW_HEIGHT = 1000;
 
 jest.mock('react-use', () => ({
-  useWindowSize: () => ({ height: VIEWPORT_HEIGHT }),
+  useWindowSize: () => ({ height: WINDOW_HEIGHT }),
   useWindowScroll: () => ({ y: 0 }),
 }));
 
-const mockTargetRef = (rect: Pick<DOMRect, 'bottom'>) =>
+type TestScenario = { targetBottom: number; popoverContainerHeight: number };
+type TestExpectation = { position: PopoverProps['position']; because: string };
+type TestCase = { scenario: TestScenario; expectation: TestExpectation };
+
+const describeScenario = (scenario: TestScenario) => {
+  const { targetBottom, popoverContainerHeight } = scenario;
+  return [
+    `for a target with bottom: ${targetBottom}`,
+    `popover container height: ${popoverContainerHeight}`,
+    `and window height: ${WINDOW_HEIGHT}`,
+  ].join(', ');
+};
+
+const describeExpectation = (expectation: TestExpectation) => {
+  const { position, because } = expectation;
+  return `position should be: "${position}" because ${because}`;
+};
+
+const testCases: TestCase[] = [
+  {
+    scenario: {
+      targetBottom: 600,
+      popoverContainerHeight: 200,
+    },
+    expectation: {
+      position: 'below',
+      because: 'there is plenty of room for the popover beneath the target',
+    },
+  },
+  {
+    scenario: {
+      targetBottom: 900,
+      popoverContainerHeight: 200,
+    },
+    expectation: {
+      position: 'above',
+      because: 'the target is near the bottom of the window',
+    },
+  },
+  {
+    scenario: {
+      targetBottom: 600,
+      popoverContainerHeight: 500,
+    },
+    expectation: {
+      position: 'above',
+      because: 'the popover is too tall to fit beneath the target',
+    },
+  },
+];
+
+const mockRef = (rect: Partial<DOMRect>) =>
   ({
     current: {
       getBoundingClientRect: () => rect,
@@ -21,25 +69,20 @@ const mockTargetRef = (rect: Pick<DOMRect, 'bottom'>) =>
   } as PopoverProps['targetRef']);
 
 describe('useDynamicPopoverPosition', () => {
-  it('returns "below" when target is far enough from viewport bottom', () => {
-    const targetRef = mockTargetRef({
-      // just outside threshold
-      bottom: VIEWPORT_HEIGHT - DYNAMIC_POSITION_THRESHOLD,
+  for (const { scenario, expectation } of testCases) {
+    it(`${describeScenario(scenario)}, ${describeExpectation(
+      expectation
+    )}`, () => {
+      const { targetBottom, popoverContainerHeight } = scenario;
+
+      const hook = renderHook(() =>
+        useDynamicPopoverPosition({
+          targetRef: mockRef({ bottom: targetBottom }),
+          popoverContainerRef: mockRef({ height: popoverContainerHeight }),
+        })
+      );
+
+      expect(hook.result.current).toEqual(expectation.position);
     });
-
-    const hook = renderHook(() => useDynamicPopoverPosition(targetRef));
-
-    expect(hook.result.current).toEqual('below');
-  });
-
-  it('returns "above" when target close enough to viewport bottom', () => {
-    const targetRef = mockTargetRef({
-      // just within threshold
-      bottom: VIEWPORT_HEIGHT + 1 - DYNAMIC_POSITION_THRESHOLD,
-    });
-
-    const hook = renderHook(() => useDynamicPopoverPosition(targetRef));
-
-    expect(hook.result.current).toEqual('above');
-  });
+  }
 });
