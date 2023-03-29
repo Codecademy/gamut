@@ -1,5 +1,11 @@
 import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { Background, system, timing, variant } from '@codecademy/gamut-styles';
+import {
+  Background,
+  system,
+  timing,
+  useCurrentMode,
+  variant,
+} from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import { isValidElement, useState } from 'react';
@@ -29,6 +35,10 @@ export interface AlertProps extends WithChildrenProp {
 }
 
 const AlertBanner = styled(Background)<Pick<AlertProps, 'type' | 'placement'>>(
+  placementVariants
+);
+
+const AlertBox = styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(
   placementVariants
 );
 
@@ -78,6 +88,9 @@ export const Alert: React.FC<AlertProps> = ({
   const activeAlert = alertVariants?.[type] ?? alertVariants.general;
   const { icon: Icon, bg } = activeAlert;
 
+  const currentColorMode = useCurrentMode();
+  const isSubtleVariant = type === 'subtle';
+
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
@@ -120,11 +133,13 @@ export const Alert: React.FC<AlertProps> = ({
     />
   );
 
+  const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
+
   const ctaButton = cta && Boolean(cta.children ?? cta.text) && (
     <Box gridColumn={['2', , 'auto']} gridRow={['2', , 'auto']}>
       <FillButton
         {...cta}
-        mode="dark"
+        mode={buttonColorMode}
         variant="secondary"
         size="small"
         tabIndex={tabIndex}
@@ -134,8 +149,10 @@ export const Alert: React.FC<AlertProps> = ({
     </Box>
   );
 
+  const AlertWrapper = isSubtleVariant ? AlertBox : AlertBanner;
+
   return (
-    <AlertBanner bg={bg} {...props}>
+    <AlertWrapper bg={bg} {...props}>
       <Icon size={32} aria-hidden p={8} />
       <CollapsableContent
         aria-expanded={expanded}
@@ -156,7 +173,7 @@ export const Alert: React.FC<AlertProps> = ({
           icon={MiniDeleteIcon}
         />
       )}
-    </AlertBanner>
+    </AlertWrapper>
   );
 };
 

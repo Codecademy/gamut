@@ -63,7 +63,7 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
        * value.
        *
        * TODO: Add a tiebreaker.  This could possibly have other dimensions as
-       * it will likelyfail to return a mode outside of the lighest and
+       * it will likely fail to return a mode outside of the lightest and
        * darkest versions.
        */
       const [highestContrastMode] = possibleModes.reduce<[ColorModes, number]>(
@@ -72,6 +72,7 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
           [mode, { text }]: [ColorModes, ColorModeShape]
         ) => {
           const contrast = getTextContrast(text);
+
           // Keep the higher contrast mode.
           return contrast > prevContrast
             ? [mode, contrast]
@@ -82,15 +83,6 @@ export const Background = forwardRef<HTMLDivElement, BackgroundProps>(
 
       return highestContrastMode;
     }, [modes, active, getTextContrast]);
-
-    console.log(
-      'debugging background: bg:',
-      bg,
-      'accessibleMode:',
-      accessibleMode,
-      'trueColor',
-      trueColor
-    );
 
     return <ColorMode {...rest} mode={accessibleMode} bg={bg} ref={ref} />;
   }

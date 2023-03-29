@@ -34,8 +34,6 @@ export const alertVariants = {
     icon: MiniStarIcon,
   },
   subtle: {
-    // for some reason, background-disabled, abckground-hoiver isn't applying here
-    // ask cass? :)
     bg: 'background-hover',
     icon: MiniInfoCircleIcon,
   },

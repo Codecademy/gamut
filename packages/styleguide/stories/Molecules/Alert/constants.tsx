@@ -32,6 +32,6 @@ export const ALERTS = {
   subtle: {
     type: 'subtle',
     cta: { children: 'Learn more' },
-    children: 'WOW',
+    children: 'Subtly alerting the user',
   },
 };
