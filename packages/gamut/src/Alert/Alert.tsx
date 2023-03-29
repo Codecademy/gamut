@@ -48,6 +48,12 @@ AlertBanner.defaultProps = {
   'aria-live': 'polite',
 };
 
+AlertBox.defaultProps = {
+  role: 'status',
+  'aria-label': 'alert box',
+  'aria-live': 'polite',
+};
+
 const CollapsableContent = styled(motion.div)(
   system.css({ py: 4, overflowY: 'hidden' })
 );
