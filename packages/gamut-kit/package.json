@@ -1,17 +1,17 @@
 {
   "name": "@codecademy/gamut-kit",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "0.6.297",
+  "version": "0.6.298",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "repository": {
     "type": "git",
     "url": "git@github.com:Codecademy/gamut.git"
   },
   "dependencies": {
-    "@codecademy/gamut": "53.0.1",
+    "@codecademy/gamut": "53.0.2",
     "@codecademy/gamut-icons": "9.0.0",
     "@codecademy/gamut-illustrations": "0.35.0",
-    "@codecademy/gamut-labs": "35.8.4",
+    "@codecademy/gamut-labs": "35.8.5",
     "@codecademy/gamut-patterns": "0.9.3",
     "@codecademy/gamut-styles": "16.0.0",
     "@codecademy/gamut-tests": "5.0.2",
