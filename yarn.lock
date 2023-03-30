@@ -56,6 +56,8 @@
   version "7.16.7"
   resolved "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.16.7.tgz#44416b6bd7624b998f5b1af5d470856c40138789"
   integrity sha512-iAXqUn8IIeBTNd72xsFlgaXHkMBMt6y4HJp1tIaK465CWLT/fG1aqB7ykr95gHHmlBdGbFeWWfyB4NJJ0nmeIg==
+  dependencies:
+    "@babel/highlight" "^7.16.7"
 
 "@babel/code-frame@^7.18.6":
   version "7.18.6"
@@ -2529,6 +2531,26 @@
     postcss-flexbugs-fixes "^4.1.0"
     postcss-focus-visible "^5.0.0"
     postcss-loader "^3.0.0"
+    sass-loader "^7.3.1"
+    style-loader "^1.3.0"
+    terser-webpack-plugin "^4.2.3"
+    webpack-merge "^4.2.2"
+
+"@codecademy/webpack-config@6.3.1-alpha.861202.0":
+  version "6.3.1-alpha.861202.0"
+  resolved "https://registry.npmjs.org/@codecademy/webpack-config/-/webpack-config-6.3.1-alpha.861202.0.tgz#2ff207f97ba92ece5efe7a677667e134116c6d71"
+  integrity sha512-kOlzWL8pHj6GkvLi2gP8VHd+O8jFiNLIEQtp1Srkmh9T8E2Oyc+aDutbnYPVGCO/1JSPoFXAPt5oBxrTMKkmfw==
+  dependencies:
+    babel-loader "^8.2.5"
+    case-sensitive-paths-webpack-plugin "^2.4.0"
+    css-loader "^3.6.0"
+    cssnano "^4.1.11"
+    file-loader "^3.0.1"
+    mini-css-extract-plugin "^0.12.0"
+    postcss-flexbugs-fixes "^4.1.0"
+    postcss-focus-visible "^5.0.0"
+    postcss-loader "^3.0.0"
+    sass "^1.59.3"
     sass-loader "^7.3.1"
     style-loader "^1.3.0"
     terser-webpack-plugin "^4.2.3"
@@ -9241,6 +9263,8 @@ color-convert@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz#72d3a68d598c9bdb3af2ad1e84f21d896abd4de3"
   integrity sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==
+  dependencies:
+    color-name "~1.1.4"
 
 color-name@1.1.3:
   version "1.1.3"
@@ -20696,6 +20720,15 @@ sass@^1.42.1:
   version "1.54.3"
   resolved "https://registry.npmjs.org/sass/-/sass-1.54.3.tgz#37baa2652f7f1fdadb73240ee9a2b9b81fabb5c4"
   integrity sha512-fLodey5Qd41Pxp/Tk7Al97sViYwF/TazRc5t6E65O7JOk4XF8pzwIW7CvCxYVOfJFFI/1x5+elDyBIixrp+zrw==
+  dependencies:
+    chokidar ">=3.0.0 <4.0.0"
+    immutable "^4.0.0"
+    source-map-js ">=0.6.2 <2.0.0"
+
+sass@^1.59.3:
+  version "1.60.0"
+  resolved "https://registry.npmjs.org/sass/-/sass-1.60.0.tgz#657f0c23a302ac494b09a5ba8497b739fb5b5a81"
+  integrity sha512-updbwW6fNb5gGm8qMXzVO7V4sWf7LMXnMly/JEyfbfERbVH46Fn6q02BX7/eHTdKpE7d+oTkMMQpFWNUMfFbgQ==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
