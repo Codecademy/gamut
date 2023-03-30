@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.8.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.8.4...@codecademy/gamut-labs@35.8.5) (2023-03-29)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.8.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.8.3...@codecademy/gamut-labs@35.8.4) (2023-03-27)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.8.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.8.2...@codecademy/gamut-labs@35.8.3) (2023-03-23)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.8.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.8.1...@codecademy/gamut-labs@35.8.2) (2023-03-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.8.0...@codecademy/gamut-labs@35.8.1) (2023-03-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## [35.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.7.2...@codecademy/gamut-labs@35.8.0) (2023-03-15)
 
 

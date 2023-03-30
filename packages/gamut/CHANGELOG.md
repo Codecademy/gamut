@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [53.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@53.0.1...@codecademy/gamut@53.0.2) (2023-03-29)
+
+
+### Bug Fixes
+
+* order of operations for color-brightness function ([108f331](https://github.com/Codecademy/gamut/commit/108f3310a54059c5a2e08e839ffbf012a850d11a))
+
+
+
+### [53.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@53.0.0...@codecademy/gamut@53.0.1) (2023-03-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [53.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.2.1...@codecademy/gamut@53.0.0) (2023-03-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ColorMode:** add new navy weights
+
+### Features
+
+* **ColorMode:** add new navy weights ([4babb66](https://github.com/Codecademy/gamut/commit/4babb66348b8c64457e0df6765df1376be880140))
+
+
+
+### [52.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.2.0...@codecademy/gamut@52.2.1) (2023-03-20)
+
+
+### Bug Fixes
+
+* **GridForm:** cancel + submit button ([14244a8](https://github.com/Codecademy/gamut/commit/14244a8490ff71fa9e78338a331252176befe953))
+
+
+
 ## [52.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@52.1.2...@codecademy/gamut@52.2.0) (2023-03-15)
 
 

@@ -36,3 +36,4 @@ export * from './Syllabus';
 export * from './TinyBlocks';
 export * from './Target';
 export * from './types';
+export * from './Warning';

@@ -12,7 +12,7 @@ import {
   tagBorderRadius,
   tagLabelFontSize,
   tagLabelPadding,
-} from '../../Tag/elements';
+} from '../../Tag/styles';
 import {
   formBaseComponentStyles,
   formBaseFieldStylesObject,
