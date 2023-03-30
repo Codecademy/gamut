@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.8.5...@codecademy/gamut-labs@35.9.0) (2023-03-30)
+
+
+### Features
+
+* **GlobalPage:** Make footer optional ([071eabb](https://github.com/Codecademy/gamut/commit/071eabb2d0baa0c18abffcf3a2861ede1e6cb77d))
+
+
+
 ### [35.8.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.8.4...@codecademy/gamut-labs@35.8.5) (2023-03-29)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
