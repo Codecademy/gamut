@@ -1,0 +1,100 @@
+import { Column, LayoutGrid } from '@codecademy/gamut/src';
+import { CourseCard } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+<Meta
+  title={title}
+  component={CourseCard}
+  args={{
+    title: 'Learn JavaScript',
+    lessonCount: 11,
+    grantsCertificate: false,
+    pro: false,
+    shortDescription:
+      'Learn how to use JavaScript — a powerful and flexible programming language for adding website interactivity.',
+    difficulty: 'Beginner',
+  }}
+  parameters={{
+    subtitle: 'Curriculum card for courses.',
+    status: 'current',
+    source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30186%3A41296&t=w69Da7eesMEL0plO-0',
+    },
+  }}
+/>
+
+For the `CourseCard` we've extended the <LinkTo kind="brand-labs-molecules-contentgroupbasecard">ContentGroupBaseCard</LinkTo> with extra props specific to courses.
+
+Note: This card will need to be wrapped in an Anchor or Link in order to be clickable.
+
+<Canvas>
+  <Story name="CourseCard">{(args) => <CourseCard {...args} />}</Story>
+</Canvas>
+
+<Props story="CourseCard" />
+
+## Pro CourseCard
+
+### Title
+
+`title` will be "Course" for the `CourseCard` when `pro` is true.
+
+### Certificate
+
+`grantsCertificate` and `pro` must be true for the certificate info to show on the card.
+We only show certificates for pro exclusive courses, since only pro users can do pro courses and only pro users can gain certificates.
+
+<Canvas>
+  <Story
+    name="Pro CourseCard"
+    args={{
+      title: 'Building Interactive JavaScript Websites',
+      lessonCount: 13,
+      grantsCertificate: false,
+      pro: false,
+      shortDescription:
+        'Learn the Document Object Model, the interface between JavaScript and HTML elements, and combine HTML, CSS, and JavaScript into exciting interactive sites!',
+      difficulty: 'Intermediate',
+    }}
+  >
+    {(args) => <CourseCard {...args} pro grantsCertificate />}
+  </Story>
+</Canvas>
+
+## CourseCard with Image
+
+`isFullSize` must be true for image to show on card.
+
+<Canvas>
+  <Story name="CourseCard with Image">
+    {(args) => <CourseCard {...args} isFullSize />}
+  </Story>
+</Canvas>
+
+## CourseCard with Enrollment Status
+
+<Canvas>
+  <Story name="CourseCard with Enrollment Status">
+    {(args) => (
+      <LayoutGrid gap={24}>
+        <Column size={6}>
+          <CourseCard {...args} enrollmentStatus="inProgress" />
+        </Column>
+        <Column size={6}>
+          <CourseCard {...args} enrollmentStatus="completed" />
+        </Column>
+        <Column size={6}>
+          <CourseCard {...args} enrollmentStatus="inProgress" isFullSize />
+        </Column>
+        <Column size={6}>
+          <CourseCard {...args} enrollmentStatus="completed" isFullSize />
+        </Column>
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>

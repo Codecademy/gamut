@@ -3,6 +3,317 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [64.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.0.2...@codecademy/styleguide@64.0.3) (2023-03-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [64.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.0.1...@codecademy/styleguide@64.0.2) (2023-03-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [64.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.0.0...@codecademy/styleguide@64.0.1) (2023-03-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [64.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.8.1...@codecademy/styleguide@64.0.0) (2023-03-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ColorMode:** add new navy weights
+
+### Features
+
+* **ColorMode:** add new navy weights ([4babb66](https://github.com/Codecademy/gamut/commit/4babb66348b8c64457e0df6765df1376be880140))
+
+
+
+### [63.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.8.0...@codecademy/styleguide@63.8.1) (2023-03-20)
+
+
+### Bug Fixes
+
+* **GridForm:** cancel + submit button ([14244a8](https://github.com/Codecademy/gamut/commit/14244a8490ff71fa9e78338a331252176befe953))
+
+
+
+## [63.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.7.0...@codecademy/styleguide@63.8.0) (2023-03-17)
+
+
+### Features
+
+* **styleguide:** bump webpack config with node sass upgrade ([860e6b3](https://github.com/Codecademy/gamut/commit/860e6b301505f381351e0882d68eec68e0d83cfa))
+
+
+
+## [63.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.6.2...@codecademy/styleguide@63.7.0) (2023-03-15)
+
+
+### Features
+
+* **GlobalHeader:** Enterprise view ([0d7551b](https://github.com/Codecademy/gamut/commit/0d7551bad700b5f89d851350257041b36ead2b3c))
+
+
+
+### [63.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.6.1...@codecademy/styleguide@63.6.2) (2023-03-14)
+
+
+### Bug Fixes
+
+* storybook for shimmer + spinner stories now in a single folder ([12ecf7b](https://github.com/Codecademy/gamut/commit/12ecf7bbaad5c68a8862c0d2aa1335773861dfd9))
+
+
+
+### [63.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.6.0...@codecademy/styleguide@63.6.1) (2023-03-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [63.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.14...@codecademy/styleguide@63.6.0) (2023-03-07)
+
+
+### Features
+
+* **CareerPathCard:** :sparkles: Adds salary metadata to CareerPathCard component ([ab85e90](https://github.com/Codecademy/gamut/commit/ab85e90e76ebb1f69ec377af34e0dc7b32500c70))
+* **PlanCard:** Adds PlanCard ([0160d3e](https://github.com/Codecademy/gamut/commit/0160d3e8f3a70cda9cdb0058cd60f82a6e56656b))
+
+
+
+### [63.5.14](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.13...@codecademy/styleguide@63.5.14) (2023-03-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [63.5.13](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.12...@codecademy/styleguide@63.5.13) (2023-03-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [63.5.12](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.11...@codecademy/styleguide@63.5.12) (2023-02-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [63.5.11](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.10...@codecademy/styleguide@63.5.11) (2023-02-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [63.5.10](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.9...@codecademy/styleguide@63.5.10) (2023-02-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [63.5.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.8...@codecademy/styleguide@63.5.9) (2023-02-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [63.5.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.7...@codecademy/styleguide@63.5.8) (2023-02-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [63.5.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.6...@codecademy/styleguide@63.5.7) (2023-02-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [63.5.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.5...@codecademy/styleguide@63.5.6) (2023-02-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [63.5.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.4...@codecademy/styleguide@63.5.5) (2023-02-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [63.5.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.3...@codecademy/styleguide@63.5.4) (2023-02-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [63.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.2...@codecademy/styleguide@63.5.3) (2023-02-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [63.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.1...@codecademy/styleguide@63.5.2) (2023-02-09)
+
+
+### Bug Fixes
+
+* **CareerPathCard:** add professional certification text for Journeys ([85971d2](https://github.com/Codecademy/gamut/commit/85971d24d1ce6c9897ad913a8290fdc6330ea9ec))
+
+
+
+### [63.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.5.0...@codecademy/styleguide@63.5.1) (2023-02-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [63.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.4.1...@codecademy/styleguide@63.5.0) (2023-02-06)
+
+
+### Features
+
+* **ColorMode:** add text-secondary + new white weights ([cc75989](https://github.com/Codecademy/gamut/commit/cc759899c08d03a91de65777bc7123c957db2d21))
+
+
+
+### [63.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.4.0...@codecademy/styleguide@63.4.1) (2023-02-03)
+
+
+### Bug Fixes
+
+* **GridFormSubmit:** delete `fill` GridFormSubmit + fix `stretch` GridForm submit ([5032467](https://github.com/Codecademy/gamut/commit/503246754cfb48622292c2256ae93e645a70bb6d))
+
+
+
+## [63.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.3.0...@codecademy/styleguide@63.4.0) (2023-02-02)
+
+
+### Features
+
+* **CareerPathCard:** New CareerPathCard ([7cf1ad0](https://github.com/Codecademy/gamut/commit/7cf1ad0f4aed837110d85a6bcc3f171a1dfb8d60))
+
+
+
+## [63.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.2.1...@codecademy/styleguide@63.3.0) (2023-02-01)
+
+
+### Features
+
+* **SkillPathCard:** New skill path card ([a90b0e4](https://github.com/Codecademy/gamut/commit/a90b0e4f973525160dd6d8b42533079866060ecd))
+
+
+
+### [63.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.2.0...@codecademy/styleguide@63.2.1) (2023-02-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [63.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.1.0...@codecademy/styleguide@63.2.0) (2023-01-31)
+
+
+### Features
+
+* **CourseCard:** New course card ([a705447](https://github.com/Codecademy/gamut/commit/a705447e806a966e42623cfb6bf53795c84d3311))
+
+
+
+## [63.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.0.3...@codecademy/styleguide@63.1.0) (2023-01-30)
+
+
+### Features
+
+* **ContentGroupBaseCard:** New base card for upcoming curriculum cards ([#2653](https://github.com/Codecademy/gamut/issues/2653)) ([16fd7fe](https://github.com/Codecademy/gamut/commit/16fd7fe000bd3eeecfeb06d5d507cba60e2c6b2c))
+
+
+
+### [63.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.0.2...@codecademy/styleguide@63.0.3) (2023-01-26)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [63.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.0.1...@codecademy/styleguide@63.0.2) (2023-01-26)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [63.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@63.0.0...@codecademy/styleguide@63.0.1) (2023-01-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [63.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.8.6...@codecademy/styleguide@63.0.0) (2023-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Support React 18 [WEB-2055]
+
+### Miscellaneous Chores
+
+* Support React 18 [WEB-2055] ([89d6b22](https://github.com/Codecademy/gamut/commit/89d6b224831dd62d7bcd9a424142eaab02232a00))
+
+
+
+### [62.8.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.8.5...@codecademy/styleguide@62.8.6) (2023-01-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [62.8.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@62.8.4...@codecademy/styleguide@62.8.5) (2023-01-09)
 
 **Note:** Version bump only for package @codecademy/styleguide

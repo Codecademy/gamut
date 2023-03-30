@@ -3,6 +3,298 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.8.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.8.4...@codecademy/gamut-labs@35.8.5) (2023-03-29)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.8.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.8.3...@codecademy/gamut-labs@35.8.4) (2023-03-27)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.8.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.8.2...@codecademy/gamut-labs@35.8.3) (2023-03-23)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.8.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.8.1...@codecademy/gamut-labs@35.8.2) (2023-03-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.8.0...@codecademy/gamut-labs@35.8.1) (2023-03-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [35.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.7.2...@codecademy/gamut-labs@35.8.0) (2023-03-15)
+
+
+### Features
+
+* **GlobalHeader:** Enterprise view ([0d7551b](https://github.com/Codecademy/gamut/commit/0d7551bad700b5f89d851350257041b36ead2b3c))
+
+
+
+### [35.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.7.1...@codecademy/gamut-labs@35.7.2) (2023-03-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.7.0...@codecademy/gamut-labs@35.7.1) (2023-03-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [35.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.6.4...@codecademy/gamut-labs@35.7.0) (2023-03-07)
+
+
+### Features
+
+* **CareerPathCard:** :sparkles: Adds salary metadata to CareerPathCard component ([ab85e90](https://github.com/Codecademy/gamut/commit/ab85e90e76ebb1f69ec377af34e0dc7b32500c70))
+* **PlanCard:** Adds PlanCard ([0160d3e](https://github.com/Codecademy/gamut/commit/0160d3e8f3a70cda9cdb0058cd60f82a6e56656b))
+
+
+
+### [35.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.6.3...@codecademy/gamut-labs@35.6.4) (2023-03-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.6.2...@codecademy/gamut-labs@35.6.3) (2023-03-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.6.1...@codecademy/gamut-labs@35.6.2) (2023-02-27)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.6.0...@codecademy/gamut-labs@35.6.1) (2023-02-24)
+
+
+### Bug Fixes
+
+* **AppHeader:** Change title to aria-label ([5f7e18c](https://github.com/Codecademy/gamut/commit/5f7e18c118e88c24f6f5fdb2ad1d2cdc336ef241))
+
+
+
+## [35.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.10...@codecademy/gamut-labs@35.6.0) (2023-02-22)
+
+
+### Features
+
+* **GlobalHeader:** remove referral link in header ([31f8967](https://github.com/Codecademy/gamut/commit/31f8967ea3de9d00a141d5840d3c18ba8368859f))
+
+
+
+### [35.5.10](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.9...@codecademy/gamut-labs@35.5.10) (2023-02-17)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.5.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.8...@codecademy/gamut-labs@35.5.9) (2023-02-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.5.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.7...@codecademy/gamut-labs@35.5.8) (2023-02-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.5.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.6...@codecademy/gamut-labs@35.5.7) (2023-02-09)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.5.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.5...@codecademy/gamut-labs@35.5.6) (2023-02-09)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.5.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.4...@codecademy/gamut-labs@35.5.5) (2023-02-09)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.5.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.3...@codecademy/gamut-labs@35.5.4) (2023-02-09)
+
+
+### Bug Fixes
+
+* **CareerPathCard:** add professional certification text for Journeys ([85971d2](https://github.com/Codecademy/gamut/commit/85971d24d1ce6c9897ad913a8290fdc6330ea9ec))
+
+
+
+### [35.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.2...@codecademy/gamut-labs@35.5.3) (2023-02-06)
+
+
+### Bug Fixes
+
+* **LayoutMenuVariant:** change border color of accordion area ([2cf4fb8](https://github.com/Codecademy/gamut/commit/2cf4fb87852c518801ee456bf508122e361b9e8c))
+
+
+
+### [35.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.1...@codecademy/gamut-labs@35.5.2) (2023-02-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.5.0...@codecademy/gamut-labs@35.5.1) (2023-02-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [35.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.4.0...@codecademy/gamut-labs@35.5.0) (2023-02-02)
+
+
+### Features
+
+* **CareerPathCard:** New CareerPathCard ([7cf1ad0](https://github.com/Codecademy/gamut/commit/7cf1ad0f4aed837110d85a6bcc3f171a1dfb8d60))
+
+
+
+## [35.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.3.1...@codecademy/gamut-labs@35.4.0) (2023-02-01)
+
+
+### Features
+
+* **SkillPathCard:** New skill path card ([a90b0e4](https://github.com/Codecademy/gamut/commit/a90b0e4f973525160dd6d8b42533079866060ecd))
+
+
+
+### [35.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.3.0...@codecademy/gamut-labs@35.3.1) (2023-02-01)
+
+
+### Bug Fixes
+
+* **GlobalFooter:** show new career building links in footer ([3d85ed9](https://github.com/Codecademy/gamut/commit/3d85ed9a068d2c9198edcc799c3a2d109942ea22))
+
+
+
+## [35.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.2.0...@codecademy/gamut-labs@35.3.0) (2023-01-31)
+
+
+### Features
+
+* **CourseCard:** New course card ([a705447](https://github.com/Codecademy/gamut/commit/a705447e806a966e42623cfb6bf53795c84d3311))
+
+
+
+## [35.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.1.0...@codecademy/gamut-labs@35.2.0) (2023-01-30)
+
+
+### Features
+
+* **ContentGroupBaseCard:** New base card for upcoming curriculum cards ([#2653](https://github.com/Codecademy/gamut/issues/2653)) ([16fd7fe](https://github.com/Codecademy/gamut/commit/16fd7fe000bd3eeecfeb06d5d507cba60e2c6b2c))
+
+
+
+## [35.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.0.2...@codecademy/gamut-labs@35.1.0) (2023-01-26)
+
+
+### Features
+
+* **GlobalFooter:** Change 'Paid Memberships' URL to '/pages/paid-plans' ([1b1e3c6](https://github.com/Codecademy/gamut/commit/1b1e3c6200b951a008f33ca8f73abf5512f2863f))
+
+
+
+### [35.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.0.1...@codecademy/gamut-labs@35.0.2) (2023-01-26)
+
+
+### Bug Fixes
+
+* **ScoreSummary:** Use List role for subjects in ScoreSummary ([27fb197](https://github.com/Codecademy/gamut/commit/27fb197ccb14d130706a758265f6a16a97ccbc36))
+
+
+
+### [35.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.0.0...@codecademy/gamut-labs@35.0.1) (2023-01-24)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [35.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.1.0...@codecademy/gamut-labs@35.0.0) (2023-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Support React 18 [WEB-2055]
+
+### Miscellaneous Chores
+
+* Support React 18 [WEB-2055] ([89d6b22](https://github.com/Codecademy/gamut/commit/89d6b224831dd62d7bcd9a424142eaab02232a00))
+
+
+
+## [34.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.11...@codecademy/gamut-labs@34.1.0) (2023-01-18)
+
+
+### Features
+
+* **resourcesList:** update blog links in global header ([704f009](https://github.com/Codecademy/gamut/commit/704f009c03656ffa3665bfbeb188e9ee7eeffad3))
+
+
+
 ### [34.0.11](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@34.0.10...@codecademy/gamut-labs@34.0.11) (2023-01-09)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

@@ -37,7 +37,7 @@ export const FooterLinkItemWithAnchor: React.FC<
   }
 > = ({ trackingTarget, footerOnClick, ...anchorProps }) => {
   const anchorOnClick = useCallback(
-    (event) => {
+    (event: React.MouseEvent<Element, MouseEvent>) => {
       footerOnClick({ event, target: trackingTarget });
     },
     [footerOnClick, trackingTarget]

@@ -13,7 +13,7 @@ describe('CompanyLinks', () => {
       hidePricing: false,
     });
 
-    view.getByText('Individual Plans');
+    view.getByRole('heading', { name: /plans/i });
   });
 
   it('does not include plans when hidePricing is true', () => {
@@ -21,13 +21,13 @@ describe('CompanyLinks', () => {
       hidePricing: true,
     });
 
-    expect(view.queryByText('Individual Plans')).toBeNull();
+    expect(view.queryByRole('heading', { name: /plans/i })).toBeNull();
   });
 
   it('fires onClick when an item is clicked', () => {
     const { props, view } = renderView();
 
-    fireEvent.click(view.getByText('About'));
+    fireEvent.click(view.getByRole('link', { name: /about/i }));
 
     expect(props.onClick).toHaveBeenCalled();
   });

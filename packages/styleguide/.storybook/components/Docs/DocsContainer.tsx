@@ -1,6 +1,7 @@
 import { MDXProvider } from '@mdx-js/react';
 import { ThemeProvider, ensure as ensureTheme } from '@storybook/theming';
 import { components as htmlComponents } from '@storybook/components';
+import Helmet from 'react-helmet';
 import {
   DocsContext,
   SourceContainer,
@@ -109,7 +110,9 @@ export const DocsContainer: React.FC<{ context: DocsContextProps }> = ({
         cache={createEmotionCache({ speedy: false })}
         theme={coreTheme}
       >
-        <AssetProvider />
+        <Helmet>
+          <AssetProvider />
+        </Helmet>
         <NavigationProvider>
           <SourceContainer>
             <ThemeProvider theme={overrides}>

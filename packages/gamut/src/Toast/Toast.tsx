@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import { ReactNode, useMemo } from 'react';
 import * as React from 'react';
 
+import { WithChildrenProp } from '..';
 import { Box, FlexBox } from '../Box';
 import { IconButton } from '../Button/IconButton';
 import { FloatingCard } from '../FloatingCard/FloatingCard';
@@ -52,11 +53,11 @@ const IconContainer = styled(FlexBox)(
   })
 );
 
-export type ToastProps = {
+export interface ToastProps extends WithChildrenProp {
   title?: ReactNode;
   icon?: ReactNode;
   onClose: () => void;
-};
+}
 
 export const Toast: React.FC<ToastProps> = ({
   title,

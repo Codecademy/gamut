@@ -94,19 +94,21 @@ export const Row: DataRow = ({
 
         return (
           <ListCol {...colProps}>
-            {render ? (
-              render(row)
-            ) : typeof row[key] === 'string' ? (
-              <Text
-                truncate="ellipsis"
-                truncateLines={1}
-                textAlign={justify ?? 'left'}
-              >
-                {row[key]}
-              </Text>
-            ) : (
-              row[key]
-            )}
+            <>
+              {render ? (
+                render(row)
+              ) : typeof row[key] === 'string' ? (
+                <Text
+                  truncate="ellipsis"
+                  truncateLines={1}
+                  textAlign={justify ?? 'left'}
+                >
+                  {row[key]}
+                </Text>
+              ) : (
+                row[key]
+              )}
+            </>
           </ListCol>
         );
       })}

@@ -14,6 +14,7 @@ import { Variables } from './globals/Variables';
 import { coreTheme } from './themes/core';
 
 export interface GamutProviderProps {
+  children?: React.ReactNode;
   useGlobals?: boolean;
   useCache?: boolean;
   theme: Theme;

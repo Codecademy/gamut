@@ -19,40 +19,10 @@ const renderNewBadge = (text: string) => (
 
 export const footerResourcesList: AppFooterResourcesDataItem[] = [
   {
-    id: 'projects',
-    href: '/projects',
-    trackingTarget: 'projects',
-    text: 'Projects',
-  },
-  {
-    id: 'challenges',
-    href: '/code-challenges',
-    trackingTarget: 'challenges',
-    text: 'Interview Challenges',
-  },
-  {
-    id: 'docs',
-    href: '/resources/docs',
-    trackingTarget: 'docs',
-    text: 'Docs',
-  },
-  {
-    id: 'cheatsheets',
-    href: '/resources/cheatsheets/all',
-    trackingTarget: 'cheatsheets_home',
-    text: 'Cheatsheets',
-  },
-  {
     id: 'articles',
     href: '/articles',
     trackingTarget: 'articles',
     text: 'Articles',
-  },
-  {
-    id: 'videos',
-    href: '/resources/videos',
-    trackingTarget: 'videos_homepage',
-    text: 'Videos',
   },
   {
     id: 'blog',
@@ -62,10 +32,40 @@ export const footerResourcesList: AppFooterResourcesDataItem[] = [
     newTab: true,
   },
   {
-    id: 'career-center',
-    href: '/pages/career-center',
-    trackingTarget: 'career_center',
-    text: 'Career Center',
+    id: 'cheatsheets',
+    href: '/resources/cheatsheets/all',
+    trackingTarget: 'cheatsheets_home',
+    text: 'Cheatsheets',
+  },
+  {
+    id: 'challenges',
+    href: '/code-challenges',
+    trackingTarget: 'challenges',
+    text: 'Code challenges',
+  },
+  {
+    id: 'docs',
+    href: '/resources/docs',
+    trackingTarget: 'docs',
+    text: 'Docs',
+  },
+  {
+    id: 'projects',
+    href: '/projects',
+    trackingTarget: 'projects',
+    text: 'Projects',
+  },
+  {
+    id: 'videos',
+    href: '/resources/videos',
+    trackingTarget: 'videos_homepage',
+    text: 'Videos',
+  },
+  {
+    id: 'workspaces',
+    href: 'https://codecademy.com/pages/workspaces',
+    trackingTarget: 'workspaces',
+    text: 'Workspaces',
   },
 ];
 export const headerResourcesList: AppHeaderResourcesDataItem[] = [
@@ -235,7 +235,7 @@ export const headerResourcesList: AppHeaderResourcesDataItem[] = [
     data: [
       {
         id: 'career-advice',
-        href: '/resources/blog/tag/career/',
+        href: '/resources/blog/category/career/',
         text: 'Career advice',
         description: 'Get answers to questions about coding careers.',
         trackingTarget: 'topnav_resources_inspiration_career_advice',
@@ -244,7 +244,7 @@ export const headerResourcesList: AppHeaderResourcesDataItem[] = [
       },
       {
         id: 'learning-tips',
-        href: '/resources/blog/tag/learning/',
+        href: '/resources/blog/category/learning-tips/',
         text: 'Learning tips',
         description: 'Learn where to start and how to stay motivated.',
         trackingTarget: 'topnav_resources_inspiration_learning_tips',

@@ -68,7 +68,7 @@ describe('List', () => {
       ),
     });
 
-    const headerEl = view.getByText('Hello');
+    const headerEl = view.getByTestId('header-container');
     const contentEl = view.getByText('Content');
 
     expect(headerEl).toHaveStyle({ position: 'sticky' });

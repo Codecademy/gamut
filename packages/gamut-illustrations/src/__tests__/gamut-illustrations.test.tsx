@@ -3,10 +3,10 @@ import { render } from '@testing-library/react';
 import * as illustrations from '..';
 
 describe('illustrations', () => {
-  for (const [name, Illustration] of Object.entries(illustrations)) {
-    if (name.startsWith('_')) continue;
-    it(`${name} renders`, () => {
+  it.each(Object.entries(illustrations))(
+    '%s renders',
+    (_name, Illustration) => {
       render(<Illustration />);
-    });
-  }
+    }
+  );
 });

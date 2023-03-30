@@ -72,7 +72,7 @@ export const Popover: React.FC<PopoverProps> = ({
   }, [targetRect, isInViewport, onRequestClose]);
 
   const handleClickOutside = useCallback(
-    (e) => {
+    (e: MouseEvent) => {
       /**
        * Allows targetRef to be or contain a button that toggles the popover open and closed.
        * Without this check it would toggle closed then back open immediately.

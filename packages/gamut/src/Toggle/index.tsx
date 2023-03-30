@@ -14,7 +14,7 @@ export const Toggle = <Props extends ToggleProps>({
   size = 'medium',
   ...rest
 }: Props) => {
-  const checkedColor = checked ? 'primary' : 'navy-600';
+  const checkedColor = checked ? 'primary' : 'text-disabled';
   const isButton = as === 'button';
   const toggleProps = getToggleElementProps<Props>({
     ariaLabel,

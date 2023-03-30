@@ -29,7 +29,12 @@ export const coreTheme = createTheme({
   .addColors(corePalette)
   .addColorModes('light', {
     light: {
-      text: { _: 'navy-800', accent: 'navy-900', disabled: 'navy-500' },
+      text: {
+        _: 'navy-800',
+        accent: 'navy-900',
+        disabled: 'navy-500',
+        secondary: 'navy-600',
+      },
       feedback: {
         error: 'red-600',
         success: 'green-700',
@@ -67,7 +72,12 @@ export const coreTheme = createTheme({
       },
     },
     dark: {
-      text: { _: 'white', accent: 'beige', disabled: 'navy-200' },
+      text: {
+        _: 'white',
+        accent: 'beige',
+        disabled: 'white-500',
+        secondary: 'white-600',
+      },
       feedback: {
         error: 'red-0',
         success: 'green-400',
@@ -78,9 +88,9 @@ export const coreTheme = createTheme({
         contrast: 'black',
         current: 'navy-800',
         primary: 'navy-900',
-        selected: 'navy-700',
-        disabled: 'navy-500',
-        hover: 'navy-600',
+        selected: 'white-100',
+        disabled: 'white-200',
+        hover: 'white-200',
       },
       shadow: {
         opaque: 'shadow-black-heavy',
@@ -93,7 +103,7 @@ export const coreTheme = createTheme({
       },
       secondary: {
         _: 'white',
-        hover: 'navy-200',
+        hover: 'white-700',
       },
       danger: {
         _: 'red-0',

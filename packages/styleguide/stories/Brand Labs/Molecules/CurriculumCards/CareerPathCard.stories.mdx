@@ -1,0 +1,108 @@
+import { Column, LayoutGrid } from '@codecademy/gamut/src';
+import { CareerPathCard } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+<Meta
+  title={title}
+  component={CareerPathCard}
+  args={{
+    enrollmentStatus: 'none',
+    lessonCount: 46,
+    shortDescription:
+      'BI Data Analysts use Python and SQL to query, analyze, and visualize data.',
+    difficulty: 'Beginner',
+    title: 'Python 101',
+    imageUrl:
+      'https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card.svg',
+    courseCount: 18,
+  }}
+  parameters={{
+    subtitle: 'Curriculum card for career paths.',
+    status: 'current',
+    source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30186%3A41296&t=w69Da7eesMEL0plO-0',
+    },
+  }}
+/>
+
+For the `CareerPathCard` we've extended the <LinkTo kind="brand-labs-molecules-contentgroupbasecard">ContentGroupBaseCard</LinkTo> with extra props specific to career paths.
+
+Note: This card will need to be wrapped in an Anchor or Link in order to be clickable.
+
+<Canvas>
+  <Story name="CareerPathCard">{(args) => <CareerPathCard {...args} />}</Story>
+</Canvas>
+
+<Props story="CareerPathCard" />
+
+## CareerPathCard with Image
+
+<Canvas>
+  <Story name="CareerPathCard with Image">
+    {(args) => <CareerPathCard {...args} isFullSize />}
+  </Story>
+</Canvas>
+
+## CareerPathCard with Salary metadata
+
+Course count is hidden when salary is shown.
+
+<Canvas>
+  <Story name="CareerPathCard with Salary metadata">
+    {(args) => (
+      <CareerPathCard
+        {...args}
+        salary={{ upperBound: 250000, lowerBound: 150000 }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## CareerPathCard for career with a Journey
+
+<Canvas>
+  <Story name="CareerPathCard with Journey">
+    {(args) => <CareerPathCard {...args} isFullSize hasCareerJourney />}
+  </Story>
+</Canvas>
+
+## CareerPathCard with Enrollment Status
+
+Unlike the old <LinkTo kind="brand-labs-molecules-curriculumcard--curriculum-card#career-path-description-variant">
+CurriculumCard</LinkTo> designs, we show the same image for unenrolled, in progress, and completed full size career path cards. We achieve this by stripping "-inProgress" and "-completed" from the imageUrl.
+
+<Canvas>
+  <Story name="CareerPathCard with Enrollment Status">
+    {(args) => (
+      <LayoutGrid gap={24} pb={8}>
+        <Column size={6}>
+          <CareerPathCard {...args} enrollmentStatus="inProgress" />
+        </Column>
+        <Column size={6}>
+          <CareerPathCard {...args} enrollmentStatus="completed" />
+        </Column>
+        <Column size={6}>
+          <CareerPathCard
+            {...args}
+            enrollmentStatus="inProgress"
+            isFullSize
+            imageUrl="https://static-assets.codecademy.com/components/curriculum/path/securing-express-applications/curriculum-card-inProgress.svg"
+          />
+        </Column>
+        <Column size={6}>
+          <CareerPathCard
+            {...args}
+            enrollmentStatus="completed"
+            isFullSize
+            imageUrl="https://static-assets.codecademy.com/components/curriculum/path/securing-express-applications/curriculum-card-completed.svg"
+          />
+        </Column>
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>

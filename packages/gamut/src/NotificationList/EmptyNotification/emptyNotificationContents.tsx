@@ -6,8 +6,14 @@ import {
   Sun,
 } from '@codecademy/gamut-illustrations';
 
+export type exportNotificationsContent = {
+  text: string;
+  subtext: string;
+  image: typeof Bee;
+};
+
 /* must have at least one in array */
-export const emptyNotificationContents = [
+export const emptyNotificationContents: readonly exportNotificationsContent[] = [
   {
     text: "You're all caught up!",
     subtext: 'Go forth and learn new things.',

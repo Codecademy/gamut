@@ -2,7 +2,7 @@ import { ColorModes } from '@codecademy/gamut-styles';
 import { ComponentProps } from 'react';
 import * as React from 'react';
 
-import { Box } from '../../Box';
+import { GridBox } from '../../Box';
 import { CTAButton, FillButton, TextButton } from '../../Button';
 import { ButtonProps } from '../../Button/shared';
 import { SubmitButton, SubmitButtonProps } from '../../ConnectedForm';
@@ -37,7 +37,6 @@ const positions = {
   center: 'center',
   right: 'flex-end',
   stretch: 'stretch',
-  fill: 'fill',
 };
 
 const buttonMap = {
@@ -47,18 +46,14 @@ const buttonMap = {
 
 export const GridFormButtons: React.FC<
   GridFormSubmitProps & CancelButtonProps
-> = ({ type = 'fill', position, ...props }) => {
-  const fillWidth = position === 'fill' ? '100%' : undefined;
-
+> = ({ type = 'fill', ...props }) => {
   return (
     <Column size={props.size}>
-      <Box
+      <GridBox
         mb={8}
         alignSelf="center"
-        justifySelf={
-          positions[!position || position === 'fill' ? 'left' : position]
-        }
-        width={fillWidth}
+        justifySelf={positions[props.position || 'left']}
+        gridTemplateColumns={props.cancel ? 'auto auto' : undefined}
       >
         {props.cancel && (
           <TextButton {...props.cancel} mr={32} data-testid="cancel-button" />
@@ -68,11 +63,10 @@ export const GridFormButtons: React.FC<
           mode={props.mode}
           disabled={props.disabled}
           loading={props.loading}
-          width={fillWidth}
         >
           {props.contents}
         </SubmitButton>
-      </Box>
+      </GridBox>
     </Column>
   );
 };

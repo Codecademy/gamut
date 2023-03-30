@@ -1,3 +1,4 @@
+import { WithChildrenProp } from '@codecademy/gamut';
 import { ReactNode } from 'react';
 
 import {
@@ -9,7 +10,7 @@ import { AppHeaderNotificationSettings } from '../Notifications/types';
 
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
 
-type BaseHeader = {
+interface BaseHeader extends WithChildrenProp {
   /** A method to be called on click/activating a header item */
   action: AppHeaderClickHandler;
   /** A method to be called only on click/activating a *link* header item */
@@ -17,11 +18,12 @@ type BaseHeader = {
   className?: string;
   hidePricing?: boolean;
   search: AppHeaderSearch;
-};
+}
 
 export type User = {
   avatar: string;
   displayName: string;
+  enterpriseUrl?: string;
   isAdmin?: boolean;
   isBusinessAdmin?: boolean;
   isBusinessSsoUser?: boolean;
@@ -30,7 +32,6 @@ export type User = {
   isPaused?: boolean;
   proCheckoutUrl?: string;
   showProUpgrade?: boolean;
-  showReferrals?: boolean;
   hideCareerPaths?: boolean;
   hideBusinessAccount?: boolean;
 };
@@ -57,6 +58,11 @@ export type FreeHeader = LoggedInHeader & {
 
 export type ProHeader = LoggedInHeader & {
   type: 'pro';
+};
+
+export type EnterpriseHeader = BaseHeader & {
+  type: 'enterprise';
+  user: User;
 };
 
 export type LoadingHeader = BaseHeader & {

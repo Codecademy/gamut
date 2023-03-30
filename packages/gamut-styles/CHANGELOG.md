@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@15.1.0...@codecademy/gamut-styles@16.0.0) (2023-03-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ColorMode:** add new navy weights
+
+### Features
+
+* **ColorMode:** add new navy weights ([4babb66](https://github.com/Codecademy/gamut/commit/4babb66348b8c64457e0df6765df1376be880140))
+
+
+
+## [15.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@15.0.0...@codecademy/gamut-styles@15.1.0) (2023-02-06)
+
+
+### Features
+
+* **ColorMode:** add text-secondary + new white weights ([cc75989](https://github.com/Codecademy/gamut/commit/cc759899c08d03a91de65777bc7123c957db2d21))
+
+
+
+## [15.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.5...@codecademy/gamut-styles@15.0.0) (2023-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Support React 18 [WEB-2055]
+
+### Miscellaneous Chores
+
+* Support React 18 [WEB-2055] ([89d6b22](https://github.com/Codecademy/gamut/commit/89d6b224831dd62d7bcd9a424142eaab02232a00))
+
+
+
 ### [14.2.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.4...@codecademy/gamut-styles@14.2.5) (2023-01-09)
 
 **Note:** Version bump only for package @codecademy/gamut-styles

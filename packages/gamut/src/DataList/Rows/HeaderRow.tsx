@@ -38,52 +38,54 @@ export const Header: HeaderComponent = ({
 
   return (
     <ListHeader>
-      {selectable && (
-        <ListCol size="content">
-          {!hideSelectAll && (
-            <SelectControl
-              disabled={empty}
-              rowId="header"
-              name={prefixId('all')}
-              label="Select All"
-              onSelect={onSelect}
-              selected={selected}
-            />
-          )}
-        </ListCol>
-      )}
-      {columns.map(({ key, header, sortable, filters, ...colProps }) => {
-        const rowProperty = key as string;
-        const renderKey = prefixId(`header-col-${rowProperty}`);
-        const columnText = header || key;
-
-        return (
-          <ListCol key={renderKey} {...colProps} columnHeader>
-            <FlexBox gap={8} alignItems="flex-end" width="100%">
-              {filters && (
-                <FilterControl
-                  columnKey={rowProperty}
-                  onFilter={onFilter}
-                  options={filters}
-                  justify={colProps.justify}
-                />
-              )}
-              {sortable ? (
-                <SortControl columnKey={rowProperty} onSort={onSort}>
-                  {columnText}
-                </SortControl>
-              ) : (
-                columnText
-              )}
-            </FlexBox>
+      <>
+        {selectable && (
+          <ListCol size="content">
+            {!hideSelectAll && (
+              <SelectControl
+                disabled={empty}
+                rowId="header"
+                name={prefixId('all')}
+                label="Select All"
+                onSelect={onSelect}
+                selected={selected}
+              />
+            )}
           </ListCol>
-        );
-      })}
-      {expandable && (
-        <ListCol size="content" ghost>
-          <ExpandControl />
-        </ListCol>
-      )}
+        )}
+        {columns.map(({ key, header, sortable, filters, ...colProps }) => {
+          const rowProperty = key as string;
+          const renderKey = prefixId(`header-col-${rowProperty}`);
+          const columnText = String(header || key);
+
+          return (
+            <ListCol key={renderKey} {...colProps} columnHeader>
+              <FlexBox gap={8} alignItems="flex-end" width="100%">
+                {filters && (
+                  <FilterControl
+                    columnKey={rowProperty}
+                    onFilter={onFilter}
+                    options={filters}
+                    justify={colProps.justify}
+                  />
+                )}
+                {sortable ? (
+                  <SortControl columnKey={rowProperty} onSort={onSort}>
+                    {columnText}
+                  </SortControl>
+                ) : (
+                  columnText
+                )}
+              </FlexBox>
+            </ListCol>
+          );
+        })}
+        {expandable && (
+          <ListCol size="content" ghost>
+            <ExpandControl />
+          </ListCol>
+        )}
+      </>
     </ListHeader>
   );
 };
