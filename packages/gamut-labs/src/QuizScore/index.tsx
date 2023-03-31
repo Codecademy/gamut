@@ -42,7 +42,7 @@ export const QuizScore: React.FC<QuizScoreProps> = ({
     >
       <FlexBox flexDirection="column" textAlign="center">
         <Text fontSize={smallerFont ? 34 : 44}>{quizScore}%</Text>
-        {percentToPass && quizScore < 70 && (
+        {percentToPass && quizScore < percentToPass && (
           <Text fontSize={14}>{`Get ${percentToPass}% to pass`}</Text>
         )}
         <Text fontSize={14}>{affirmation}</Text>
