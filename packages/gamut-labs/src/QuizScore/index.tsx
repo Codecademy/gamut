@@ -45,8 +45,6 @@ export const QuizScore: React.FC<QuizScoreProps> = ({
       <Box
         borderRight={1}
         borderBottom={1}
-        width="100%"
-        height="100%"
         display={{ _: 'none', xs: 'block' }}
       />
       <GridBox
