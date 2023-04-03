@@ -806,7 +806,7 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@babel/highlight@^7.18.6":
+"@babel/highlight@^7.16.7", "@babel/highlight@^7.18.6":
   version "7.18.6"
   resolved "https://registry.npmjs.org/@babel/highlight/-/highlight-7.18.6.tgz#81158601e93e2563795adcbfbdf5d64be3f2ecdf"
   integrity sha512-u7stbOuYjaPezCuLj29hNW1v64M2Md2qupEKP1fHc7WdOA3DgLh37suiSrZYY7haUB7iBeQZ9P1uiRF359do3g==
@@ -2516,10 +2516,10 @@
   resolved "https://registry.npmjs.org/@codecademy/tsconfig/-/tsconfig-0.2.0.tgz#995047e64b53f91bd708f3849b9ec7d53c8022c2"
   integrity sha512-8lVLeEkFGP/M0quAr/oMiMQtQkODLIwcxj+oEZ3kl7OtNc5y0km/XWd/2M9H8wCQmpOw2xn1iSZGhmfB+sRO5Q==
 
-"@codecademy/webpack-config@6.3.1-alpha.861202.0":
-  version "6.3.1-alpha.861202.0"
-  resolved "https://registry.npmjs.org/@codecademy/webpack-config/-/webpack-config-6.3.1-alpha.861202.0.tgz#2ff207f97ba92ece5efe7a677667e134116c6d71"
-  integrity sha512-kOlzWL8pHj6GkvLi2gP8VHd+O8jFiNLIEQtp1Srkmh9T8E2Oyc+aDutbnYPVGCO/1JSPoFXAPt5oBxrTMKkmfw==
+"@codecademy/webpack-config@6.4.0":
+  version "6.4.0"
+  resolved "https://registry.npmjs.org/@codecademy/webpack-config/-/webpack-config-6.4.0.tgz#de1814232f6215bf5c29b030125603a1fae4cf99"
+  integrity sha512-2hpqWY7IEbJRyD9ZXs8Hhu+/azI91w2UPqirD/vngKaGGnTScd8pyZGMCprU3a0qC/vhvz4oYMSnPNNFGtxjhw==
   dependencies:
     babel-loader "^8.2.5"
     case-sensitive-paths-webpack-plugin "^2.4.0"
@@ -9251,7 +9251,7 @@ color-name@1.1.3:
   resolved "https://registry.npmjs.org/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
   integrity sha1-p9BVi9icQveV3UIyj3QIMcpTvCU=
 
-color-name@^1.0.0:
+color-name@^1.0.0, color-name@~1.1.4:
   version "1.1.4"
   resolved "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
