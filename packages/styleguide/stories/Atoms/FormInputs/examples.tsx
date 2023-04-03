@@ -9,7 +9,7 @@ import {
   SelectDropdown,
 } from '@codecademy/gamut';
 import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
-import { Background, ColorMode } from '@codecademy/gamut-styles';
+import { Background } from '@codecademy/gamut-styles';
 import { useState } from 'react';
 import * as React from 'react';
 
@@ -44,40 +44,38 @@ export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
 
 export const CheckboxExample: React.FC = () => {
   return (
-    <ColorMode mode="light">
-      <Box bg="background" border={1} p={16}>
-        <LayoutGrid>
-          <Column size={4}>
+    <Box border={1} p={16}>
+      <LayoutGrid>
+        <Column size={4}>
+          <CustomCheckbox
+            htmlFor="a-custom-checkbox"
+            label="a fancy custom checkbox made with the example below, isn't it so so nice?"
+            multiline
+          />
+        </Column>
+        <Column size={4}>
+          <CustomCheckbox
+            htmlFor="a-custom-checkbox-again"
+            label="disabled custom checkbox"
+            defaultChecked
+            disabled
+          />
+        </Column>
+        <Column size={4}>
+          <Background bg="black" pl={8}>
             <CustomCheckbox
-              htmlFor="a-custom-checkbox"
-              label="a fancy custom checkbox made with the example below, isn't it so so nice?"
-              multiline
+              htmlFor="a-custom-checkbox-the-third"
+              label="a dark mode fancy checkbox"
             />
-          </Column>
-          <Column size={4}>
-            <CustomCheckbox
-              htmlFor="a-custom-checkbox-again"
-              label="disabled custom checkbox"
-              defaultChecked
-              disabled
-            />
-          </Column>
-          <Column size={4}>
-            <Background bg="black" pl={8}>
-              <CustomCheckbox
-                htmlFor="a-custom-checkbox-the-third"
-                label="a dark mode fancy checkbox"
-              />
-            </Background>
-          </Column>
-        </LayoutGrid>
-      </Box>
-    </ColorMode>
+          </Background>
+        </Column>
+      </LayoutGrid>
+    </Box>
   );
 };
 
 export const SelectDropdownIconExample: React.FC = () => (
-  <Box p={16} width="100%" height="20rem" border={1} bg="palePink">
+  <Box p={16} width="100%" height="20rem" border={1}>
     <FormGroup label="i have pizzazz" htmlFor="pizzaz-dropdown">
       <SelectDropdown
         name="pizzaz-dropdown"
@@ -100,7 +98,7 @@ export const SelectDropdownIconExample: React.FC = () => (
         ]}
       />
     </FormGroup>
-    <Background p={16} bg="navy">
+    <Box p={16}>
       <FormGroup label="i am fancy" htmlFor="fancy-dropdown">
         <SelectDropdown
           name="fancy-dropdown"
@@ -124,13 +122,13 @@ export const SelectDropdownIconExample: React.FC = () => (
           ]}
         />
       </FormGroup>
-    </Background>
+    </Box>
   </Box>
 );
 
 export const SelectDropdownOptionVariantsExample: React.FC = () => (
   <>
-    <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+    <Box p={16} width="100%" height="12rem">
       <FormGroup
         label="I might have disabled options"
         htmlFor="disabled-dropdown"
@@ -156,7 +154,8 @@ export const SelectDropdownOptionVariantsExample: React.FC = () => (
         />
       </FormGroup>
     </Box>
-    <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+    <Box as="hr" width="100%" />
+    <Box p={16} width="100%" height="24rem">
       <FormGroup
         label="I have subtitle and extended info options"
         htmlFor="extended-dropdown"
@@ -216,7 +215,7 @@ export const SelectDropdownMultipleExample: React.FC = () => {
     setSelectOptions(options.map((option) => option.value));
   };
   return (
-    <Box p={16} width="100%" height="12rem" border={1} bg="palePink">
+    <Box p={16} width="100%" height="12rem" border={1}>
       <FormGroup
         label="I have multiple select options"
         htmlFor="multi-dropdown"

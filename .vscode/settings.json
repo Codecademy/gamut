@@ -31,6 +31,7 @@
       "source.fixAll": true
     }
   },
+  "mdx.experimentalLanguageServer": true,
   "search.exclude": {
     "docs": true
   },

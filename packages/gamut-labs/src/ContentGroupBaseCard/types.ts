@@ -9,3 +9,8 @@ export enum EnrollmentStatus {
   Completed = 'completed',
   None = 'none',
 }
+
+export interface SalaryRange {
+  lowerBound: number;
+  upperBound: number;
+}
