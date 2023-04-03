@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.10.0...@codecademy/gamut-labs@35.11.0) (2023-04-03)
+
+
+### Features
+
+* **GlobalHeader:** Update enterprise home text ([eda337c](https://github.com/Codecademy/gamut/commit/eda337cec309941b6448f34efdd29d3c1ac53fd9))
+
+
+
 ## [35.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.9.1...@codecademy/gamut-labs@35.10.0) (2023-04-03)
 
 
