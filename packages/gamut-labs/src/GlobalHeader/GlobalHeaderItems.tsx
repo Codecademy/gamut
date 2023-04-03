@@ -60,7 +60,7 @@ export const myPercipioHome = (user: User): AppHeaderLinkItem => {
     dataTestId: 'header-percihome',
     icon: HouseEntranceIcon,
     id: 'my-home',
-    text: 'My Percipio',
+    text: 'Home',
     href: user?.enterpriseUrl ?? 'https://www.skillsoft.com/login-skillsoft',
     newTab: true,
     trackingTarget: 'topnav_enterprise_home',

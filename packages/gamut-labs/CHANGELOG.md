@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.10.0...@codecademy/gamut-labs@35.11.0) (2023-04-03)
+
+
+### Features
+
+* **GlobalHeader:** Update enterprise home text ([eda337c](https://github.com/Codecademy/gamut/commit/eda337cec309941b6448f34efdd29d3c1ac53fd9))
+
+
+
+## [35.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.9.1...@codecademy/gamut-labs@35.10.0) (2023-04-03)
+
+
+### Features
+
+* **ScoreSummary:** percent to pass ([77d4b1f](https://github.com/Codecademy/gamut/commit/77d4b1fdbb5dc079bfe90d67b85f854836bb057a))
+
+
+
 ### [35.9.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.9.0...@codecademy/gamut-labs@35.9.1) (2023-03-31)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
