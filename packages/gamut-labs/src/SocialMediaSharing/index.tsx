@@ -4,6 +4,7 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from '@codecademy/gamut-icons';
+import styled from '@emotion/styled';
 import * as React from 'react';
 
 import type { BaseSocialShareProps } from './SocialShareIconLink';
@@ -15,6 +16,10 @@ export type SocialMediaShare = {
   hashtags?: string[];
   mention?: string;
 };
+
+const UnstyledUnorderedList = styled(GridBox)`
+  list-style: none;
+`;
 
 export const createShareLink = (
   formatter: (payload: SocialMediaShare) => Record<string, string>,
@@ -100,7 +105,7 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
           {label}
         </Text>
       )}
-      <GridBox
+      <UnstyledUnorderedList
         gridAutoColumns="max-content"
         gridAutoFlow="column"
         gap={16}
@@ -123,7 +128,7 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
             onClick={(e) => action?.(e, `${id}_share`)}
           />
         ))}
-      </GridBox>
+      </UnstyledUnorderedList>
     </Box>
   );
 };
