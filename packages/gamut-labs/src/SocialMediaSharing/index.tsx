@@ -105,6 +105,7 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
         gridAutoFlow="column"
         gap={16}
         className={iconStyles}
+        as="ul"
       >
         {SOCIAL_SHARING_PLATFORMS.map(({ id, icon, formatShare, baseUrl }) => (
           <SocialShareIconLink

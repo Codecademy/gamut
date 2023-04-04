@@ -51,6 +51,7 @@ export const SocialShareIconLink: React.FC<SocialShareIconLinkProps> = ({
       borderWidth={size === 'small' ? 1 : 2}
       borderColor="text"
       borderRadius="50%"
+      as="li"
     >
       <IconComponent
         title={id}
