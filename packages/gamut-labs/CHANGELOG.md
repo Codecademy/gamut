@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.11.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.11.0...@codecademy/gamut-labs@35.11.1) (2023-04-05)
+
+
+### Bug Fixes
+
+* **ScoreSummary:** Fix Safari ScoreSummary border bug ([eb4f02e](https://github.com/Codecademy/gamut/commit/eb4f02e70de97d732194bd04c45dfae3e8d40a2c))
+
+
+
 ## [35.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.10.0...@codecademy/gamut-labs@35.11.0) (2023-04-03)
 
 
