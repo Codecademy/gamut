@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [64.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.1.2...@codecademy/styleguide@64.2.0) (2023-04-06)
+
+
+### Features
+
+* **webpack-config:** bump in order to use dart sass ([f482a1c](https://github.com/Codecademy/gamut/commit/f482a1ce63c533e7e30dfda39d40a0ee9dda5ab2))
+
+
+
+### [64.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.1.1...@codecademy/styleguide@64.1.2) (2023-04-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [64.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.1.0...@codecademy/styleguide@64.1.1) (2023-04-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [64.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.0.5...@codecademy/styleguide@64.1.0) (2023-04-03)
+
+
+### Features
+
+* **ScoreSummary:** percent to pass ([77d4b1f](https://github.com/Codecademy/gamut/commit/77d4b1fdbb5dc079bfe90d67b85f854836bb057a))
+
+
+
+### [64.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.0.4...@codecademy/styleguide@64.0.5) (2023-03-31)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [64.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.0.3...@codecademy/styleguide@64.0.4) (2023-03-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [64.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.0.2...@codecademy/styleguide@64.0.3) (2023-03-29)
 
 **Note:** Version bump only for package @codecademy/styleguide

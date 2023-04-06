@@ -392,7 +392,7 @@ describe('GlobalHeader', () => {
     describe('default', () => {
       it('renders myPercipioHome', () => {
         const { view } = renderView(enterpriseHeaderProps);
-        view.getAllByText('My Percipio');
+        view.getAllByTestId('header-percihome');
       });
 
       it('renders simpleResourcesDropdown', () => {

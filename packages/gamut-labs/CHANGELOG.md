@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.11.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.11.0...@codecademy/gamut-labs@35.11.1) (2023-04-05)
+
+
+### Bug Fixes
+
+* **ScoreSummary:** Fix Safari ScoreSummary border bug ([eb4f02e](https://github.com/Codecademy/gamut/commit/eb4f02e70de97d732194bd04c45dfae3e8d40a2c))
+
+
+
+## [35.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.10.0...@codecademy/gamut-labs@35.11.0) (2023-04-03)
+
+
+### Features
+
+* **GlobalHeader:** Update enterprise home text ([eda337c](https://github.com/Codecademy/gamut/commit/eda337cec309941b6448f34efdd29d3c1ac53fd9))
+
+
+
+## [35.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.9.1...@codecademy/gamut-labs@35.10.0) (2023-04-03)
+
+
+### Features
+
+* **ScoreSummary:** percent to pass ([77d4b1f](https://github.com/Codecademy/gamut/commit/77d4b1fdbb5dc079bfe90d67b85f854836bb057a))
+
+
+
+### [35.9.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.9.0...@codecademy/gamut-labs@35.9.1) (2023-03-31)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [35.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.8.5...@codecademy/gamut-labs@35.9.0) (2023-03-30)
+
+
+### Features
+
+* **GlobalPage:** Make footer optional ([071eabb](https://github.com/Codecademy/gamut/commit/071eabb2d0baa0c18abffcf3a2861ede1e6cb77d))
+
+
+
 ### [35.8.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.8.4...@codecademy/gamut-labs@35.8.5) (2023-03-29)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
