@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [64.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.1.2...@codecademy/styleguide@64.2.0) (2023-04-06)
+
+
+### Features
+
+* **webpack-config:** bump in order to use dart sass ([f482a1c](https://github.com/Codecademy/gamut/commit/f482a1ce63c533e7e30dfda39d40a0ee9dda5ab2))
+
+
+
 ### [64.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.1.1...@codecademy/styleguide@64.1.2) (2023-04-05)
 
 **Note:** Version bump only for package @codecademy/styleguide
