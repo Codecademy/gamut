@@ -19,6 +19,8 @@ export type SocialMediaShare = {
 
 const UnstyledUnorderedList = styled(GridBox)`
   list-style: none;
+  padding: 0;
+  margin: 0;
 `;
 
 export const createShareLink = (
