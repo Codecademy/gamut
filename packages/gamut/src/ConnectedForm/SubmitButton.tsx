@@ -4,6 +4,7 @@ import { FormState } from 'react-hook-form';
 
 import { Box, FlexBox } from '../Box';
 import { ButtonProps, FillButton } from '../Button';
+import { HiddenText } from '../HiddenText';
 import { Spinner } from '../Spinner';
 import { useSubmitState } from './utils';
 
@@ -42,7 +43,6 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
         type="submit"
         disabled
         aria-label={isLoading ? 'Loading' : undefined}
-        aria-live={isLoading ? 'polite' : undefined}
       >
         {/** This maintains button dimensions while hiding it from screen readers and the page */}
         <Box as="span" opacity={0} aria-hidden>
@@ -51,6 +51,7 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
         {isLoading && (
           <FlexBox position="absolute" inset={0} center>
             <Spinner size={16} />
+            <HiddenText aria-live="polite">Loading</HiddenText>
           </FlexBox>
         )}
       </Button>
