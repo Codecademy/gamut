@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.35.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.34.1...@codecademy/gamut-illustrations@0.35.0) (2023-03-27)
+
+
+### Features
+
+* **Illustration:** add warning illustration ([10c465f](https://github.com/Codecademy/gamut/commit/10c465f563d527f28e99af039d4ce3f242afdea2))
+
+
+
+### [0.34.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.34.0...@codecademy/gamut-illustrations@0.34.1) (2023-03-20)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+## [0.34.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.33.1...@codecademy/gamut-illustrations@0.34.0) (2023-02-16)
+
+
+### Features
+
+* **Illustration:** adds ErrorWindow illustration ([ed3060c](https://github.com/Codecademy/gamut/commit/ed3060cdc6a5f06c6951551777594ec0fdb5cdcc))
+
+
+
 ### [0.33.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.33.0...@codecademy/gamut-illustrations@0.33.1) (2023-02-06)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations

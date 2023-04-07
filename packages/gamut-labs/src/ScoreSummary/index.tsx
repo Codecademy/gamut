@@ -22,6 +22,7 @@ export interface ScoreSummaryProps {
   description?: string;
   noMaxWidth?: boolean;
   colorfulIcons?: boolean;
+  percentToPass?: number;
 }
 
 const SHOW_REVIEW_SCORE = 0.6;
@@ -187,6 +188,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
   description,
   noMaxWidth = false,
   colorfulIcons = false,
+  percentToPass,
 }) => {
   let numOfRows = Object.entries(subScores).length;
   if (untestedSubContent) {
@@ -224,6 +226,7 @@ export const ScoreSummary: React.FC<ScoreSummaryProps> = ({
             smallerFont
             numOfRows={numOfRows}
             colorfulIcons={colorfulIcons}
+            percentToPass={percentToPass}
           />
         </Box>
         {description && (

@@ -45,7 +45,7 @@ export * from './PopoverContainer';
 export * from './ProgressBar';
 export * from './RadialProgress';
 export * from './SkipToContent';
-export * from './Spinner';
+export * from './Loading/Spinner';
 export * from './Tag';
 export * from './Tabs';
 export * from './theming/VisualTheme';

@@ -12,3 +12,5 @@ export const FlexBox = styled(
   flexStates,
   boxProps
 );
+
+export type { FlexBoxProps } from './props';

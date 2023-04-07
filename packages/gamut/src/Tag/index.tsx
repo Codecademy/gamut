@@ -3,13 +3,8 @@ import { useCurrentMode } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 import { Text } from '../Typography';
-import {
-  DismissButton,
-  Outline,
-  tagLabelFontSize,
-  tagLabelPadding,
-  TagWrapper,
-} from './elements';
+import { DismissButton, Outline, TagWrapper } from './elements';
+import { tagBg, tagLabelFontSize, tagLabelPadding } from './styles';
 import { TagProps } from './types';
 
 export const Tag: React.FC<TagProps> = ({
@@ -20,18 +15,10 @@ export const Tag: React.FC<TagProps> = ({
   ...rest
 }) => {
   const mode = useCurrentMode();
-
+  const trueVariant = !variant ? 'default' : variant;
   return (
     <Outline {...rest}>
-      <TagWrapper
-        bg={
-          variant === 'grey'
-            ? 'navy-500'
-            : mode === 'light'
-            ? 'navy-900'
-            : 'white'
-        }
-      >
+      <TagWrapper bg={tagBg[mode][trueVariant]} variant={trueVariant}>
         <Text
           as="span"
           fontSize={tagLabelFontSize}
@@ -47,7 +34,7 @@ export const Tag: React.FC<TagProps> = ({
             aria-label={`Dismiss ${children} Tag`}
             onClick={onDismiss || undefined}
           >
-            <MiniDeleteIcon size={12} />
+            <MiniDeleteIcon size={12} color="inherit" />
           </DismissButton>
         )}
       </TagWrapper>

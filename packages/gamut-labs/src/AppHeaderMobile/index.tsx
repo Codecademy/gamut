@@ -27,6 +27,10 @@ export type AppHeaderMobileProps = {
   redirectParam?: string;
   onSearch: (query: string) => void;
   isAnon: boolean;
+  /**
+   * used to conditonally hide the default search icon and notification bell
+   */
+  isEnterprise?: boolean;
 } & CrossDeviceStateProps;
 
 const StyledOverlay = styled(Overlay)(
@@ -69,6 +73,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   onSearch,
   redirectParam,
   isAnon,
+  isEnterprise,
   openCrossDeviceItemId,
   setOpenCrossDeviceItemId,
 }) => {
@@ -120,7 +125,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   };
 
   const right = [
-    ...(notificationsBell ? [notificationsBell] : []),
+    ...(notificationsBell && !isEnterprise ? [notificationsBell] : []),
     ...items.right,
   ];
 
@@ -141,7 +146,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         <HeaderHeightArea
           display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}
           as="nav"
-          title="Mobile Navigation"
+          ariaLabel="Mobile Navigation"
         >
           <StyledAppBar>
             <StyledMenuBar role="menubar">
@@ -173,7 +178,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           <HeaderHeightArea
             display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}
             as="nav"
-            title="Mobile Navigation"
+            ariaLabel="Mobile Navigation"
             data-testid="header-mobile-menu-dropdown"
           >
             <StyledAppBar>
@@ -197,6 +202,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
                 onSearch={onSearch}
                 getItemType={onItemType}
                 isAnon={isAnon}
+                isEnterprise={isEnterprise}
                 handleCloseMainMenu={() => setMobileMenuOpen(false)}
               />
             </StyledContentContainer>

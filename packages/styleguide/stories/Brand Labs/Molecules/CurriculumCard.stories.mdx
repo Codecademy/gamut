@@ -2,6 +2,7 @@ import { Column, LayoutGrid } from '@codecademy/gamut/src';
 import { CurriculumCard, Difficulty } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs';
+import LinkTo from '@storybook/addon-links/react';
 
 <Meta
   title={title}
@@ -17,6 +18,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs';
   parameters={{
     subtitle: `Curriculum cards for paths and courses.`,
     source: 'gamut-labs',
+    status: 'deprecated',
     design: {
       type: 'figma',
       url:
@@ -24,6 +26,18 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs';
     },
   }}
 />
+
+**Deprecated version of the one-size fits all curriculum card used for paths and courses. Please use new CareerPathCard, SkillPathCard, or CourseCard instead. <LinkTo kind="brand-labs-molecules-curriculumcards-about--page">You can view the new cards here.</LinkTo>**
+
+1.  <LinkTo kind="brand-labs-molecules-curriculumcards-careerpathcard--career-path-card">
+      CareerPath card
+    </LinkTo>
+2.  <LinkTo kind="brand-labs-molecules-curriculumcards-skillpathcard--skill-path-card">
+      SkillPath card
+    </LinkTo>
+3.  <LinkTo kind="brand-labs-molecules-curriculumcards-coursecard--course-card">
+      Course card
+    </LinkTo>
 
 <Canvas withSource="open">
   <Story name="Curriculum Card">{(args) => <CurriculumCard {...args} />}</Story>

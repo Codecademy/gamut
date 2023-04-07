@@ -20,6 +20,11 @@ import LinkTo from '@storybook/addon-links/react';
     subtitle: 'Curriculum card for courses.',
     status: 'current',
     source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30186%3A41296&t=w69Da7eesMEL0plO-0',
+    },
   }}
 />
 
@@ -67,13 +72,7 @@ We only show certificates for pro exclusive courses, since only pro users can do
 
 <Canvas>
   <Story name="CourseCard with Image">
-    {(args) => (
-      <CourseCard
-        {...args}
-        isFullSize
-        imageSrc="https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card.svg"
-      />
-    )}
+    {(args) => <CourseCard {...args} isFullSize />}
   </Story>
 </Canvas>
 
@@ -90,20 +89,10 @@ We only show certificates for pro exclusive courses, since only pro users can do
           <CourseCard {...args} enrollmentStatus="completed" />
         </Column>
         <Column size={6}>
-          <CourseCard
-            {...args}
-            enrollmentStatus="inProgress"
-            isFullSize
-            imageSrc="https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card.svg"
-          />
+          <CourseCard {...args} enrollmentStatus="inProgress" isFullSize />
         </Column>
         <Column size={6}>
-          <CourseCard
-            {...args}
-            enrollmentStatus="completed"
-            isFullSize
-            imageSrc="https://static-assets.codecademy.com/components/curriculum/path/front-end-engineer-career-path/curriculum-card.svg"
-          />
+          <CourseCard {...args} enrollmentStatus="completed" isFullSize />
         </Column>
       </LayoutGrid>
     )}
