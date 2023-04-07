@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.6.303](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.302...@codecademy/gamut-kit@0.6.303) (2023-04-05)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.6.302](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.301...@codecademy/gamut-kit@0.6.302) (2023-04-03)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.6.301](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.300...@codecademy/gamut-kit@0.6.301) (2023-04-03)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.6.300](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.299...@codecademy/gamut-kit@0.6.300) (2023-03-31)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.6.299](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.298...@codecademy/gamut-kit@0.6.299) (2023-03-30)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.6.298](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.297...@codecademy/gamut-kit@0.6.298) (2023-03-29)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.6.297](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.296...@codecademy/gamut-kit@0.6.297) (2023-03-27)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
+### [0.6.296](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.295...@codecademy/gamut-kit@0.6.296) (2023-03-23)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+
+
+
+
 ### [0.6.295](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.294...@codecademy/gamut-kit@0.6.295) (2023-03-20)
 
 **Note:** Version bump only for package @codecademy/gamut-kit

@@ -9,6 +9,7 @@ interface QuizScoreProps {
   smallerFont?: boolean;
   numOfRows?: number;
   colorfulIcons?: boolean;
+  percentToPass?: number;
 }
 
 export const QuizScore: React.FC<QuizScoreProps> = ({
@@ -18,6 +19,7 @@ export const QuizScore: React.FC<QuizScoreProps> = ({
   total,
   numOfRows,
   colorfulIcons,
+  percentToPass,
 }) => {
   const isRowLayout = layout === 'row';
   const moreThan5Rows = !isRowLayout && numOfRows && numOfRows > 5;
@@ -40,13 +42,14 @@ export const QuizScore: React.FC<QuizScoreProps> = ({
     >
       <FlexBox flexDirection="column" textAlign="center">
         <Text fontSize={smallerFont ? 34 : 44}>{quizScore}%</Text>
+        {percentToPass && quizScore < percentToPass && (
+          <Text fontSize={14}>{`Get ${percentToPass}% to pass`}</Text>
+        )}
         <Text fontSize={14}>{affirmation}</Text>
       </FlexBox>
       <Box
         borderRight={1}
         borderBottom={1}
-        width="100%"
-        height="100%"
         display={{ _: 'none', xs: 'block' }}
       />
       <GridBox
