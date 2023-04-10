@@ -20,19 +20,29 @@ import { alertVariants, placementVariants } from './variants';
 export type AlertType = keyof typeof alertVariants;
 export type AlertPlacements = 'inline' | 'floating';
 
-export interface AlertProps extends WithChildrenProp {
-  type?: AlertType;
-  placement?: AlertPlacements;
-  hidden?: boolean;
-  className?: string;
-  /** Callback to be called when the close icon is clicked */
-  onClose?: () => void;
-  /** Call to Action Configuration */
-  cta?: Omit<
-    React.ComponentProps<typeof FillButton>,
-    'variant' | 'mode' | 'size'
-  > & { text?: string };
-}
+// Subtle alert types should only be used inline
+type AlertPlacementType =
+  | {
+      type?: Exclude<AlertType, 'subtle'>;
+      placement?: AlertPlacements;
+    }
+  | {
+      type: 'subtle';
+      placement: 'inline';
+    };
+
+export type AlertProps = WithChildrenProp &
+  AlertPlacementType & {
+    hidden?: boolean;
+    className?: string;
+    /** Callback to be called when the close icon is clicked */
+    onClose?: () => void;
+    /** Call to Action Configuration */
+    cta?: Omit<
+      React.ComponentProps<typeof FillButton>,
+      'variant' | 'mode' | 'size'
+    > & { text?: string };
+  };
 
 const AlertBanner = styled(Background)<Pick<AlertProps, 'type' | 'placement'>>(
   placementVariants
