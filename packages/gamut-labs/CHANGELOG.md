@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.11.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.11.2...@codecademy/gamut-labs@35.11.3) (2023-04-10)
+
+
+### Bug Fixes
+
+* **PlanCard:** use darker color for crossed-out features ([31d2925](https://github.com/Codecademy/gamut/commit/31d29252bae45f50afbd2e995e397cd69c84353b))
+
+
+
 ### [35.11.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.11.1...@codecademy/gamut-labs@35.11.2) (2023-04-10)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
