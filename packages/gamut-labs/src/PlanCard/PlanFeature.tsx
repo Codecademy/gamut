@@ -27,7 +27,7 @@ export const PlanFeature: React.FC<PlanFeatureProps> = ({
       <Icon
         mr={8}
         flexShrink={0}
-        color={available ? 'green' : 'gray-600'}
+        color={available ? 'green' : 'text-secondary'}
         aria-hidden
       />
 
@@ -42,7 +42,7 @@ export const PlanFeature: React.FC<PlanFeatureProps> = ({
           </>
         ) : (
           <>
-            <UnavailableFeature color="gray-600">
+            <UnavailableFeature color="text-secondary">
               <HiddenText>Not included: </HiddenText>
               {feature}
             </UnavailableFeature>
