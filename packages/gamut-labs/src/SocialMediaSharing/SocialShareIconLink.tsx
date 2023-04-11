@@ -39,7 +39,7 @@ export const SocialShareIconLink: React.FC<SocialShareIconLinkProps> = ({
   };
 
   return (
-    <Box as="li">
+    <Box as="li" role="listitem">
       <IconLink
         href={href}
         onClick={onIconClick}

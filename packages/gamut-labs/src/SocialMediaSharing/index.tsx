@@ -18,7 +18,7 @@ export type SocialMediaShare = {
   mention?: string;
 };
 
-const UnstyledUnorderedList = styled.ul(
+const UnorderedList = styled.ul(
   css({
     listStyle: 'none',
     padding: 0,
@@ -111,7 +111,7 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
           {label}
         </Text>
       )}
-      <UnstyledUnorderedList className={iconStyles}>
+      <UnorderedList role="list" className={iconStyles}>
         {SOCIAL_SHARING_PLATFORMS.map(({ id, icon, formatShare, baseUrl }) => (
           <SocialShareIconLink
             key={id}
@@ -128,7 +128,7 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
             onClick={(e) => action?.(e, `${id}_share`)}
           />
         ))}
-      </UnstyledUnorderedList>
+      </UnorderedList>
     </Box>
   );
 };
