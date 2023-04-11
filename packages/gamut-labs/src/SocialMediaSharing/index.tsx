@@ -4,6 +4,7 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from '@codecademy/gamut-icons';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
 
@@ -17,11 +18,13 @@ export type SocialMediaShare = {
   mention?: string;
 };
 
-const UnstyledUnorderedList = styled(GridBox)`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-`;
+const UnstyledUnorderedList = styled.ul(
+  css({
+    listStyle: 'none',
+    padding: 0,
+    margin: 0,
+  })
+);
 
 export const createShareLink = (
   formatter: (payload: SocialMediaShare) => Record<string, string>,
@@ -107,30 +110,33 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
           {label}
         </Text>
       )}
-      <UnstyledUnorderedList
+      <GridBox
         gridAutoColumns="max-content"
         gridAutoFlow="column"
         gap={16}
         className={iconStyles}
-        as="ul"
       >
-        {SOCIAL_SHARING_PLATFORMS.map(({ id, icon, formatShare, baseUrl }) => (
-          <SocialShareIconLink
-            key={id}
-            id={id}
-            sectionId={sectionId}
-            href={createShareLink(formatShare, baseUrl, {
-              url,
-              message,
-              hashtags,
-              mention,
-            })}
-            icon={icon}
-            size={size}
-            onClick={(e) => action?.(e, `${id}_share`)}
-          />
-        ))}
-      </UnstyledUnorderedList>
+        <UnstyledUnorderedList>
+          {SOCIAL_SHARING_PLATFORMS.map(
+            ({ id, icon, formatShare, baseUrl }) => (
+              <SocialShareIconLink
+                key={id}
+                id={id}
+                sectionId={sectionId}
+                href={createShareLink(formatShare, baseUrl, {
+                  url,
+                  message,
+                  hashtags,
+                  mention,
+                })}
+                icon={icon}
+                size={size}
+                onClick={(e) => action?.(e, `${id}_share`)}
+              />
+            )
+          )}
+        </UnstyledUnorderedList>
+      </GridBox>
     </Box>
   );
 };
