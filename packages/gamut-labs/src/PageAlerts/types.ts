@@ -14,7 +14,7 @@ export type PageAlert = {
     >]?: AlertProps['cta'][Prop];
   };
   onClose?: () => void;
-  type: AlertProps['type'];
+  type: Exclude<AlertProps['type'], 'subtle'>;
   message: string;
   permanent?: boolean;
 };
