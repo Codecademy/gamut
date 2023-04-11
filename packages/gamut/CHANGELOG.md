@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [53.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@53.0.2...@codecademy/gamut@53.0.3) (2023-04-10)
+
+
+### Bug Fixes
+
+* Resolve sass division warnings ([#2701](https://github.com/Codecademy/gamut/issues/2701)) ([65ea2b2](https://github.com/Codecademy/gamut/commit/65ea2b2b2c1d29f5afa3438f13b2b89a9c306596))
+
+
+
 ### [53.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@53.0.1...@codecademy/gamut@53.0.2) (2023-03-29)
 
 

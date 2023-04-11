@@ -5,7 +5,7 @@ $btn-padding-y: 0.375rem !default;
 $btn-font-weight: bold !default;
 
 $btn-line-height: 1.5 !default;
-$btn-line-height-lg: 4 / 3 !default;
+$btn-line-height-lg: calc(4 / 3) !default;
 $btn-line-height-sm: 1.5 !default;
 
 $btn-font-size-base: px-rem(16) !default;
