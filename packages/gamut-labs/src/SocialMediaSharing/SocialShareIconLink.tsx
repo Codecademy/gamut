@@ -3,7 +3,7 @@ import { GamutIconProps } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import * as React from 'react';
 
-const IconLink = styled(Anchor)``;
+const IconLink = styled(Box)``.withComponent(Anchor);
 
 const getTitleId = (id: string, sectionId?: string) =>
   sectionId ? `${sectionId}-${id}` : id;
@@ -39,27 +39,25 @@ export const SocialShareIconLink: React.FC<SocialShareIconLinkProps> = ({
   };
 
   return (
-    <Box as="li" role="listitem">
-      <IconLink
-        href={href}
-        onClick={onIconClick}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`share on ${id}`}
-        p={8}
-        lineHeight={0}
-        borderStyle="solid"
-        borderWidth={size === 'small' ? 1 : 2}
-        borderColor="text"
-        borderRadius="50%"
-      >
-        <IconComponent
-          title={id}
-          titleId={getTitleId(id, sectionId)}
-          size={size === 'small' ? 16 : 24}
-          color="text"
-        />
-      </IconLink>
-    </Box>
+    <IconLink
+      href={href}
+      onClick={onIconClick}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`share on ${id}`}
+      p={8}
+      lineHeight={0}
+      borderStyle="solid"
+      borderWidth={size === 'small' ? 1 : 2}
+      borderColor="text"
+      borderRadius="50%"
+    >
+      <IconComponent
+        title={id}
+        titleId={getTitleId(id, sectionId)}
+        size={size === 'small' ? 16 : 24}
+        color="text"
+      />
+    </IconLink>
   );
 };

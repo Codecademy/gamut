@@ -1,4 +1,4 @@
-import { Box, Text } from '@codecademy/gamut';
+import { Box, GridBox, Text } from '@codecademy/gamut';
 import {
   FacebookIcon,
   LinkedinIcon,
@@ -18,9 +18,17 @@ export type SocialMediaShare = {
   mention?: string;
 };
 
-const UnorderedList = styled.ul(
+const UnorderedListGridBox = styled(GridBox)(
   css({
     listStyle: 'none',
+    padding: 0,
+    margin: 0,
+    display: 'inherit',
+  })
+);
+
+const ListItem = styled.li(
+  css({
     padding: 0,
     margin: 0,
     display: 'inherit',
@@ -111,24 +119,33 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
           {label}
         </Text>
       )}
-      <UnorderedList role="list" className={iconStyles}>
+      <UnorderedListGridBox
+        role="list"
+        className={iconStyles}
+        as="ul"
+        gridAutoColumns="max-content"
+        gridAutoFlow="column"
+        gap={16}
+      >
         {SOCIAL_SHARING_PLATFORMS.map(({ id, icon, formatShare, baseUrl }) => (
-          <SocialShareIconLink
-            key={id}
-            id={id}
-            sectionId={sectionId}
-            href={createShareLink(formatShare, baseUrl, {
-              url,
-              message,
-              hashtags,
-              mention,
-            })}
-            icon={icon}
-            size={size}
-            onClick={(e) => action?.(e, `${id}_share`)}
-          />
+          <ListItem role="listitem">
+            <SocialShareIconLink
+              key={id}
+              id={id}
+              sectionId={sectionId}
+              href={createShareLink(formatShare, baseUrl, {
+                url,
+                message,
+                hashtags,
+                mention,
+              })}
+              icon={icon}
+              size={size}
+              onClick={(e) => action?.(e, `${id}_share`)}
+            />
+          </ListItem>
         ))}
-      </UnorderedList>
+      </UnorderedListGridBox>
     </Box>
   );
 };
