@@ -22,7 +22,6 @@ const UnorderedListGridBox = styled(GridBox)(
   css({
     listStyle: 'none',
     padding: 0,
-    margin: 'inherit',
     display: 'inherit',
   })
 );
