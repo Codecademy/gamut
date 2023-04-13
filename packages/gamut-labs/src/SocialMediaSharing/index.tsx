@@ -118,9 +118,8 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
         gap={16}
       >
         {SOCIAL_SHARING_PLATFORMS.map(({ id, icon, formatShare, baseUrl }) => (
-          <ListItem role="listitem">
+          <ListItem role="listitem" key={id}>
             <SocialShareIconLink
-              key={id}
               id={id}
               sectionId={sectionId}
               href={createShareLink(formatShare, baseUrl, {
