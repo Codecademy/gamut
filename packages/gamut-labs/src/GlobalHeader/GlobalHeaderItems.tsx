@@ -201,7 +201,7 @@ export const pricingDropdown: AppHeaderSimpleDropdownItem = {
 };
 
 export const upgradePlan: AppHeaderLinkItem = {
-  icon: BriefcaseIcon,
+  icon: AccountingCoinsIcon,
   id: 'upgrade-plan',
   trackingTarget: 'topnav_upgrade_plan',
   text: 'Upgrade',
