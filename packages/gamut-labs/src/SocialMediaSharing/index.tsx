@@ -18,15 +18,6 @@ export type SocialMediaShare = {
   mention?: string;
 };
 
-const UnorderedListGridBox = styled(GridBox)(
-  css({
-    listStyle: 'none',
-    padding: 0,
-    margin: 'inherit',
-    display: 'inherit',
-  })
-);
-
 const ListItem = styled.li(
   css({
     padding: 0,
@@ -119,10 +110,9 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
           {label}
         </Text>
       )}
-      <UnorderedListGridBox
+      <GridBox
         role="list"
         className={iconStyles}
-        as="ul"
         gridAutoColumns="max-content"
         gridAutoFlow="column"
         gap={16}
@@ -145,7 +135,7 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
             />
           </ListItem>
         ))}
-      </UnorderedListGridBox>
+      </GridBox>
     </Box>
   );
 };
