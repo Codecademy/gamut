@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.11.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.11.3...@codecademy/gamut-labs@35.11.4) (2023-04-13)
+
+
+### Bug Fixes
+
+* made social media links a grouped list ([3a2991b](https://github.com/Codecademy/gamut/commit/3a2991bb64743d7410b801fa0af544529faf47dc))
+
+
+
 ### [35.11.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.11.2...@codecademy/gamut-labs@35.11.3) (2023-04-10)
 
 
