@@ -6,6 +6,7 @@ export * from './BinaryStairs';
 export * from './Blocks';
 export * from './Blueprint';
 export * from './BlueprintWhite';
+export * from './BookAndNotepad';
 export * from './Browser';
 export * from './BrowserLock';
 export * from './BrowserPuzzle';
