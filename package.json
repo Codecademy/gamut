@@ -117,8 +117,7 @@
     "typescript": "4.4.2"
   },
   "resolutions": {
-    "@typescript-eslint/utils": "^5.15.0",
-    "node-sass": "^6.0.1"
+    "@typescript-eslint/utils": "^5.15.0"
   },
   "husky": {
     "skipCI": false,
