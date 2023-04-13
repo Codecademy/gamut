@@ -200,6 +200,15 @@ export const pricingDropdown: AppHeaderSimpleDropdownItem = {
   type: 'dropdown',
 };
 
+export const upgradePlan: AppHeaderLinkItem = {
+  icon: BriefcaseIcon,
+  id: 'upgrade-plan',
+  trackingTarget: 'topname_upgrade_plan',
+  text: 'Upgrade',
+  href: '/pricing',
+  type: 'link',
+};
+
 export const businessSolutions: AppHeaderLinkItem = {
   icon: BriefcaseIcon,
   id: 'business-solutions',
