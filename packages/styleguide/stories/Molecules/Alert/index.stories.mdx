@@ -113,7 +113,7 @@ Writing an error message? Above all else, error messages should explain and reso
 
 ## Inline Variant
 
-For inline use you can use these non-stroked versions for the General, Success and Error type.
+For inline use you can use these non-stroked versions for the General, Success and Error type. Use the ColorMode toggle to checkout both ColorModes for our `subtle` variant!
 
 ### General
 
@@ -142,6 +142,12 @@ For inline use you can use these non-stroked versions for the General, Success a
 ### Feature
 
 <Story name="Inline Feature" args={{ ...ALERTS.feature, placement: 'inline' }}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+### Subtle
+
+<Story name="Inline Subtle" args={{ ...ALERTS.subtle, placement: 'inline' }}>
   {(args) => <Alert {...args} />}
 </Story>
 

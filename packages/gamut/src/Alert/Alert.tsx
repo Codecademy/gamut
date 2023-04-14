@@ -1,5 +1,11 @@
 import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { Background, system, timing, variant } from '@codecademy/gamut-styles';
+import {
+  Background,
+  system,
+  timing,
+  useCurrentMode,
+  variant,
+} from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import { isValidElement, useState } from 'react';
@@ -14,25 +20,45 @@ import { alertVariants, placementVariants } from './variants';
 export type AlertType = keyof typeof alertVariants;
 export type AlertPlacements = 'inline' | 'floating';
 
-export interface AlertProps extends WithChildrenProp {
-  type?: AlertType;
-  placement?: AlertPlacements;
-  hidden?: boolean;
-  className?: string;
-  /** Callback to be called when the close icon is clicked */
-  onClose?: () => void;
-  /** Call to Action Configuration */
-  cta?: Omit<
-    React.ComponentProps<typeof FillButton>,
-    'variant' | 'mode' | 'size'
-  > & { text?: string };
-}
+// Subtle alert types should only be used inline
+type AlertPlacementType =
+  | {
+      type?: Exclude<AlertType, 'subtle'>;
+      placement?: AlertPlacements;
+    }
+  | {
+      type: 'subtle';
+      placement: 'inline';
+    };
+
+export type AlertProps = WithChildrenProp &
+  AlertPlacementType & {
+    hidden?: boolean;
+    className?: string;
+    /** Callback to be called when the close icon is clicked */
+    onClose?: () => void;
+    /** Call to Action Configuration */
+    cta?: Omit<
+      React.ComponentProps<typeof FillButton>,
+      'variant' | 'mode' | 'size'
+    > & { text?: string };
+  };
 
 const AlertBanner = styled(Background)<Pick<AlertProps, 'type' | 'placement'>>(
   placementVariants
 );
 
+const AlertBox = styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(
+  placementVariants
+);
+
 AlertBanner.defaultProps = {
+  role: 'status',
+  'aria-label': 'alert box',
+  'aria-live': 'polite',
+};
+
+AlertBox.defaultProps = {
   role: 'status',
   'aria-label': 'alert box',
   'aria-live': 'polite',
@@ -78,6 +104,9 @@ export const Alert: React.FC<AlertProps> = ({
   const activeAlert = alertVariants?.[type] ?? alertVariants.general;
   const { icon: Icon, bg } = activeAlert;
 
+  const currentColorMode = useCurrentMode();
+  const isSubtleVariant = type === 'subtle';
+
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
@@ -120,11 +149,13 @@ export const Alert: React.FC<AlertProps> = ({
     />
   );
 
+  const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
+
   const ctaButton = cta && Boolean(cta.children ?? cta.text) && (
     <Box gridColumn={['2', , 'auto']} gridRow={['2', , 'auto']}>
       <FillButton
         {...cta}
-        mode="dark"
+        mode={buttonColorMode}
         variant="secondary"
         size="small"
         tabIndex={tabIndex}
@@ -134,8 +165,10 @@ export const Alert: React.FC<AlertProps> = ({
     </Box>
   );
 
+  const AlertWrapper = isSubtleVariant ? AlertBox : AlertBanner;
+
   return (
-    <AlertBanner bg={bg} {...props}>
+    <AlertWrapper bg={bg} {...props}>
       <Icon size={32} aria-hidden p={8} />
       <CollapsableContent
         aria-expanded={expanded}
@@ -156,7 +189,7 @@ export const Alert: React.FC<AlertProps> = ({
           icon={MiniDeleteIcon}
         />
       )}
-    </AlertBanner>
+    </AlertWrapper>
   );
 };
 
