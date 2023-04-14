@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.12.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.11.4...@codecademy/gamut-labs@35.12.0) (2023-04-14)
+
+
+### Features
+
+* **Alert:** Add subtle light and dark variants to inline alerts ([37aa3a8](https://github.com/Codecademy/gamut/commit/37aa3a85ace90261ada31ff5470e6823bd72f9a2))
+
+
+
 ### [35.11.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.11.3...@codecademy/gamut-labs@35.11.4) (2023-04-13)
 
 
