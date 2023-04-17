@@ -29,4 +29,9 @@ export const ALERTS = {
     children:
       'We were unable to add this team member. Please refresh the page and try again.',
   },
+  subtle: {
+    type: 'subtle',
+    cta: { children: 'Learn more' },
+    children: 'Subtly alerting the user',
+  },
 };
