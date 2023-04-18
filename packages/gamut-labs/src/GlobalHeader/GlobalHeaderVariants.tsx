@@ -262,6 +262,7 @@ export const proMobileHeaderItems = (
     catalogDropdown(user?.hideCareerPaths),
     resourcesDropdown,
     communityDropdown,
+    ...(user.isPlusUser ? [upgradePlan] : []),
     businessSolutions,
     proProfile(user),
   ];
