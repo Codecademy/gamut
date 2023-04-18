@@ -1,5 +1,6 @@
 import {
   AccountingCoinsIcon,
+  ArrowThickCircleUpIcon,
   BookFlipPageIcon,
   BriefcaseIcon,
   CommunityIcon,
@@ -201,7 +202,7 @@ export const pricingDropdown: AppHeaderSimpleDropdownItem = {
 };
 
 export const upgradePlan: AppHeaderLinkItem = {
-  icon: AccountingCoinsIcon,
+  icon: ArrowThickCircleUpIcon,
   id: 'upgrade-plan',
   trackingTarget: 'topnav_upgrade_plan',
   text: 'Upgrade',
