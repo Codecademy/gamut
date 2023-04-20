@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.13.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.12.1...@codecademy/gamut-labs@35.13.0) (2023-04-20)
+
+
+### Features
+
+* **GlobalHeader:** add upgrade link for plus users ([14be834](https://github.com/Codecademy/gamut/commit/14be834f812bc4c40a4dcb018496caa529700b0e))
+
+
+
 ### [35.12.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.12.0...@codecademy/gamut-labs@35.12.1) (2023-04-14)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
