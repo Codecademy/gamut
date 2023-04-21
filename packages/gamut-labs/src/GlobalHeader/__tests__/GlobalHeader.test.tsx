@@ -8,11 +8,12 @@ import {
   login,
   myHome,
   pricingDropdown,
-  referrals,
   resourcesDropdown,
   signUp,
+  simpleResourcesDropdown,
   tryProForFree,
   unpausePro,
+  upgradePlan,
   upgradeToPro,
 } from '../GlobalHeaderItems';
 import { User } from '../types';
@@ -22,7 +23,6 @@ const user: User = {
   avatar:
     'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
   displayName: 'Codey',
-  showReferrals: true,
 };
 
 const defaultProps = {
@@ -98,6 +98,12 @@ const proHeaderProps: GlobalHeaderProps = {
   user,
 };
 
+const plusHeaderProps: GlobalHeaderProps = {
+  ...defaultProps,
+  type: 'pro',
+  user: { ...user, isPlusUser: true },
+};
+
 const proPausedHeaderProps: GlobalHeaderProps = {
   ...defaultProps,
   type: 'pro',
@@ -105,6 +111,12 @@ const proPausedHeaderProps: GlobalHeaderProps = {
     isPaused: true,
     ...user,
   },
+};
+
+const enterpriseHeaderProps: GlobalHeaderProps = {
+  ...defaultProps,
+  type: 'enterprise',
+  user,
 };
 
 const loadingHeaderProps: GlobalHeaderProps = {
@@ -126,6 +138,15 @@ const resourcesDropdownTest = (props: GlobalHeaderProps) => {
 
   view.getByText(resourcesDropdown.text).click();
   view.getByText('View all topics');
+};
+
+const simpleResourcesDropdownTest = (props: GlobalHeaderProps) => {
+  const { view } = renderView(props);
+
+  view.getByText(simpleResourcesDropdown.text).click();
+  view.getByText('Articles');
+  view.getByText('Docs');
+  view.getByText('Workspaces');
 };
 
 describe('GlobalHeader', () => {
@@ -327,6 +348,14 @@ describe('GlobalHeader', () => {
       view.getAllByTitle('Bell Icon');
     });
 
+    describe('plus users', () => {
+      it('renders upgrade link', () => {
+        const { view } = renderView(plusHeaderProps);
+        const link = view.getByText(upgradePlan.text);
+        expect(link).toHaveAttribute('href', upgradePlan.href);
+      });
+    });
+
     describe('default', () => {
       it('renders myHome', () => {
         const { view } = renderView(proHeaderProps);
@@ -355,11 +384,34 @@ describe('GlobalHeader', () => {
         const { view } = renderView(proHeaderProps);
         view.getByTestId('avatar-container');
       });
+    });
 
-      it('renders referrals', () => {
-        const { view } = renderView(proHeaderProps);
-        view.getByTestId('avatar-container').click();
-        view.getByText(referrals.text);
+    describe('is paused', () => {
+      it('renders unpause', () => {
+        const { view } = renderView(proPausedHeaderProps);
+        view.getByText(unpausePro.text);
+      });
+    });
+  });
+  describe('enterprise users', () => {
+    it('does not renders search', () => {
+      const { view } = renderView(enterpriseHeaderProps);
+      expect(view.queryByTitle('Search Icon')).toBeNull();
+    });
+
+    it('does not renders notifications', () => {
+      const { view } = renderView(enterpriseHeaderProps);
+      expect(view.queryByTitle('Bell Icon')).toBeNull();
+    });
+
+    describe('default', () => {
+      it('renders myPercipioHome', () => {
+        const { view } = renderView(enterpriseHeaderProps);
+        view.getAllByTestId('header-percihome');
+      });
+
+      it('renders simpleResourcesDropdown', () => {
+        simpleResourcesDropdownTest(enterpriseHeaderProps);
       });
     });
 

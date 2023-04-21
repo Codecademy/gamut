@@ -23,15 +23,16 @@ interface BaseHeader extends WithChildrenProp {
 export type User = {
   avatar: string;
   displayName: string;
+  enterpriseUrl?: string;
   isAdmin?: boolean;
   isBusinessAdmin?: boolean;
   isBusinessSsoUser?: boolean;
   isCustomerSupport?: boolean;
   isAccountManager?: boolean;
   isPaused?: boolean;
+  isPlusUser?: boolean;
   proCheckoutUrl?: string;
   showProUpgrade?: boolean;
-  showReferrals?: boolean;
   hideCareerPaths?: boolean;
   hideBusinessAccount?: boolean;
 };
@@ -58,6 +59,11 @@ export type FreeHeader = LoggedInHeader & {
 
 export type ProHeader = LoggedInHeader & {
   type: 'pro';
+};
+
+export type EnterpriseHeader = BaseHeader & {
+  type: 'enterprise';
+  user: User;
 };
 
 export type LoadingHeader = BaseHeader & {

@@ -7,16 +7,20 @@ import {
   businessSolutions,
   catalogDropdown,
   communityDropdown,
+  enterpriseLogo,
   freeProfile,
   login,
   logo,
   myHome,
+  myPercipioHome,
   pricingDropdown,
   proProfile,
   resourcesDropdown,
   signUp,
+  simpleResourcesDropdown,
   tryProForFree,
   unpausePro,
+  upgradePlan,
   upgradeToPro,
 } from './GlobalHeaderItems';
 import { User } from './types';
@@ -194,6 +198,18 @@ export const freeMobileHeaderItems = (
   };
 };
 
+export const enterpriseHeaderItems = (user: User) => {
+  const leftItems: AppHeaderItem[] = [
+    enterpriseLogo(user),
+    myPercipioHome(user),
+    simpleResourcesDropdown,
+  ];
+  return {
+    left: leftItems,
+    right: [],
+  };
+};
+
 export const proHeaderItems = (user: User): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
@@ -201,6 +217,7 @@ export const proHeaderItems = (user: User): FormattedAppHeaderItems => {
     catalogDropdown(user?.hideCareerPaths),
     resourcesDropdown,
     communityDropdown,
+    ...(user.isPlusUser ? [upgradePlan] : []),
     businessSolutions,
   ];
 
@@ -216,6 +233,24 @@ export const proHeaderItems = (user: User): FormattedAppHeaderItems => {
   };
 };
 
+export const enterpriseMobileHeaderItems = (
+  user: User
+): FormattedMobileAppHeaderItems => {
+  const leftItems: AppHeaderItem[] = [enterpriseLogo(user)];
+  const rightItems: AppHeaderItem[] = [];
+
+  const mainMenuItems: AppHeaderItem[] = [
+    myPercipioHome(user),
+    simpleResourcesDropdown,
+  ];
+
+  return {
+    left: leftItems,
+    right: rightItems,
+    mainMenu: mainMenuItems,
+  };
+};
+
 export const proMobileHeaderItems = (
   user: User
 ): FormattedMobileAppHeaderItems => {
@@ -227,6 +262,7 @@ export const proMobileHeaderItems = (
     catalogDropdown(user?.hideCareerPaths),
     resourcesDropdown,
     communityDropdown,
+    ...(user.isPlusUser ? [upgradePlan] : []),
     businessSolutions,
     proProfile(user),
   ];

@@ -1,5 +1,3 @@
-import { CardProps } from '@codecademy/gamut';
-
 import { ContentGroupBaseCard } from '../ContentGroupBaseCard';
 import { CertificateComponent, Divider } from '../ContentGroupBaseCard/shared';
 import {
@@ -16,8 +14,6 @@ export type CourseCardProps = {
   shortDescription?: string | null;
   difficulty?: CourseDifficulty | null;
   isFullSize?: boolean;
-  minHeight?: CardProps['minHeight'];
-  minWidth?: CardProps['minWidth'];
 };
 
 export const CourseCard: React.FC<CourseCardProps> = ({
@@ -29,8 +25,6 @@ export const CourseCard: React.FC<CourseCardProps> = ({
   enrollmentStatus,
   pro,
   isFullSize,
-  minHeight,
-  minWidth,
 }) => {
   // only show certificates for pro exclusive courses, since only pro users can do pro courses & only pro users can gain certificates
   // edge case here: pro users who are logged in wont be able to tell - from the card - that a free course can grant them a cert as well
@@ -48,8 +42,6 @@ export const CourseCard: React.FC<CourseCardProps> = ({
       isFullSize={isFullSize}
       imageSrc="https://static-assets.codecademy.com/Courses/Course-Cards/pillars.svg"
       enrollmentStatus={enrollmentStatus}
-      minHeight={minHeight}
-      minWidth={minWidth}
     >
       {showCertificate && (
         <>

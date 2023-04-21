@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.0.2...@codecademy/gamut-icons@9.1.0) (2023-04-20)
+
+
+### Features
+
+* **GlobalHeader:** add upgrade link for plus users ([14be834](https://github.com/Codecademy/gamut/commit/14be834f812bc4c40a4dcb018496caa529700b0e))
+
+
+
+### [9.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.0.1...@codecademy/gamut-icons@9.0.2) (2023-04-14)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [9.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.0.0...@codecademy/gamut-icons@9.0.1) (2023-04-10)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [9.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@8.1.1...@codecademy/gamut-icons@9.0.0) (2023-03-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ColorMode:** add new navy weights
+
+### Features
+
+* **ColorMode:** add new navy weights ([4babb66](https://github.com/Codecademy/gamut/commit/4babb66348b8c64457e0df6765df1376be880140))
+
+
+
+### [8.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@8.1.0...@codecademy/gamut-icons@8.1.1) (2023-03-03)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [8.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@8.0.1...@codecademy/gamut-icons@8.1.0) (2023-03-03)
+
+
+### Features
+
+* **Icon:** Add OneTimeIcon ([3fa5cd9](https://github.com/Codecademy/gamut/commit/3fa5cd9bf938aa813e57287193fb423037f89706))
+
+
+
 ### [8.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@8.0.0...@codecademy/gamut-icons@8.0.1) (2023-02-06)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

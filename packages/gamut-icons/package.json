@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-icons",
   "description": "Icon library for codecademy.com",
-  "version": "8.0.1",
+  "version": "9.1.0",
   "author": "Codecademy <dev@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -20,7 +20,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@codecademy/gamut-tests": "5.0.1",
+    "@codecademy/gamut-tests": "5.0.4",
     "@svgr/cli": "5.5.0",
     "@testing-library/react": "^12.1.2",
     "svgo": "^1.3.2",
@@ -30,7 +30,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "15.1.0",
+    "@codecademy/gamut-styles": "16.1.0",
     "@codecademy/variance": "0.21.0"
   },
   "peerDependencies": {

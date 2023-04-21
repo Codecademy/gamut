@@ -38,7 +38,7 @@ export interface GlobalPageProps extends WithChildrenProp {
   /**
    * Props directly passed to the GlobalFooter.
    */
-  footer: GlobalFooterProps;
+  footer?: GlobalFooterProps;
 
   /**
    * Props directly passed to the GlobalHeader.
@@ -80,7 +80,7 @@ export const GlobalPage: React.FC<GlobalPageProps> = ({
       <GlobalHeader {...header} />
       {!skipToContentId && <SkipToContentTarget id={defaultSkipToContentId} />}
       <AppWrapper as={contentAs}>{children}</AppWrapper>
-      <GlobalFooter {...footer} />
+      {footer && <GlobalFooter {...footer} />}
     </GlobalPageWrapper>
   );
 };
