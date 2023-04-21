@@ -7,7 +7,7 @@ export type UseDynamicPopoverPositionProps = {
   popoverContainerRef: PopoverProps['popoverContainerRef'];
 };
 
-const VERTICAL_OFFSET = 20;
+const VERT_OFFSET = 20;
 
 type PopoverPosition = PopoverProps['position'];
 
@@ -17,23 +17,18 @@ export const useDynamicPopoverPosition = ({
 }: UseDynamicPopoverPositionProps): PopoverPosition => {
   const { height: windowHeight } = useWindowSize();
 
-  const getPos = () => {
+  const [position, setPosition] = useState<PopoverPosition>('below');
+  const { y } = useWindowScroll();
+
+  useEffect(() => {
     const targetRect = targetRef?.current?.getBoundingClientRect();
     const targetBottom = targetRect?.bottom ?? 0;
 
     const popoverRect = popoverContainerRef?.current?.getBoundingClientRect();
     const popoverHeight = popoverRect?.height ?? 128;
+    const above = targetBottom + popoverHeight + VERT_OFFSET > windowHeight;
 
-    return targetBottom + popoverHeight + VERTICAL_OFFSET > windowHeight
-      ? 'above'
-      : 'below';
-  };
-
-  const [position, setPosition] = useState<PopoverPosition>(getPos());
-  const { y } = useWindowScroll();
-
-  useEffect(() => {
-    setPosition(getPos());
+    setPosition(above ? 'above' : 'below');
   }, [targetRef, windowHeight, y]);
 
   return position;
