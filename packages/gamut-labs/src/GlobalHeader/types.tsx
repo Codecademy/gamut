@@ -30,6 +30,7 @@ export type User = {
   isCustomerSupport?: boolean;
   isAccountManager?: boolean;
   isPaused?: boolean;
+  isPlusUser?: boolean;
   proCheckoutUrl?: string;
   showProUpgrade?: boolean;
   hideCareerPaths?: boolean;

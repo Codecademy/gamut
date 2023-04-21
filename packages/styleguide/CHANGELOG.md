@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [64.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.3.1...@codecademy/styleguide@64.3.2) (2023-04-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [64.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.3.0...@codecademy/styleguide@64.3.1) (2023-04-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [64.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.2.3...@codecademy/styleguide@64.3.0) (2023-04-14)
+
+
+### Features
+
+* **Alert:** Add subtle light and dark variants to inline alerts ([37aa3a8](https://github.com/Codecademy/gamut/commit/37aa3a85ace90261ada31ff5470e6823bd72f9a2))
+
+
+
+### [64.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.2.2...@codecademy/styleguide@64.2.3) (2023-04-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [64.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.2.1...@codecademy/styleguide@64.2.2) (2023-04-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [64.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.2.0...@codecademy/styleguide@64.2.1) (2023-04-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [64.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.1.2...@codecademy/styleguide@64.2.0) (2023-04-06)
 
 

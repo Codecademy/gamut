@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-styles",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "16.0.0",
+  "version": "16.1.0",
   "author": "Jake Hiller <jake@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",

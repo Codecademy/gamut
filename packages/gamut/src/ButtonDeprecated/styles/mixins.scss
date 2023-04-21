@@ -146,11 +146,14 @@
 
 @function color-brightness($color) {
   @return round(
-    ((red($color) * 299) + (green($color) * 587) + (blue($color) * 114)) / 1000
+    calc(
+      ((red($color) * 299) + (green($color) * 587) + (blue($color) * 114)) /
+        1000
+    )
   );
 }
 
-$brightness-threshold: color-brightness($color-white) / 2;
+$brightness-threshold: calc(color-brightness($color-white) / 2);
 
 @function text-contrast-color($background) {
   $brightness: color-brightness($background);

@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/markdown-overrides",
   "description": "Markdown overrides React Components for Codecademy",
-  "version": "0.10.2",
+  "version": "0.10.4",
   "author": "Codecademy Engineering",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -20,7 +20,7 @@
     "react-dom": "^17.0.2 || ^18.2.0"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "16.0.0",
+    "@codecademy/gamut-styles": "16.1.0",
     "classnames": "^2.2.5",
     "katex": "0.9.0"
   },
