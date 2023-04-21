@@ -81,7 +81,7 @@ const renderSubScores = ({
                   mr={12}
                   color="feedback-success"
                   aria-hidden={false}
-                  aria-label="Checkmark"
+                  aria-label="Passed"
                 />
               ) : (
                 <DeleteFilledIcon
@@ -89,7 +89,7 @@ const renderSubScores = ({
                   mr={12}
                   color="feedback-error"
                   aria-hidden={false}
-                  aria-label="X"
+                  aria-label="Failed"
                 />
               )
             ) : null}
