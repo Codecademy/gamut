@@ -24,7 +24,7 @@ export const Popover: React.FC<PopoverProps> = ({
   outline = false,
   skipFocusTrap,
   pattern: Pattern,
-  popoverContainerRef = useRef<HTMLDivElement>(null),
+  popoverContainerRef = useRef<HTMLDivElement>(null), // eslint-disable-line
   position = 'below',
   role,
   variant,

@@ -29,7 +29,7 @@ export const useDynamicPopoverPosition = ({
     const above = targetBottom + popoverHeight + VERT_OFFSET > windowHeight;
 
     setPosition(above ? 'above' : 'below');
-  }, [targetRef, windowHeight, y]);
+  }, [targetRef, popoverContainerRef, windowHeight, y]);
 
   return position;
 };
