@@ -80,12 +80,16 @@ const renderSubScores = ({
                   minWidth={16}
                   mr={12}
                   color="feedback-success"
+                  aria-hidden={false}
+                  aria-label="Passed"
                 />
               ) : (
                 <DeleteFilledIcon
                   minWidth={16}
                   mr={12}
                   color="feedback-error"
+                  aria-hidden={false}
+                  aria-label="Failed"
                 />
               )
             ) : null}
