@@ -21,6 +21,7 @@ interface ModalView {
   nextCta?: DialogButtonProps;
   confirmCta?: DialogButtonProps;
   cancelCta?: DialogButtonProps;
+  image?: React.ReactNode | string;
 }
 export interface SingleViewModalProps extends ModalBaseProps {
   size?: ComponentProps<typeof ModalContainer>['size'];
@@ -123,6 +124,9 @@ export const Modal: React.FC<ModalProps> = ({
           gridArea="content"
           data-testid="modal-content"
         >
+          <Box bg="danger" mx={-24 as any}>
+            hey
+          </Box>
           {views?.[currentView].children || children}
         </Box>
         {views?.[currentView].cancelCta && (
