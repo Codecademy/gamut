@@ -144,21 +144,3 @@ Here we are using the `DiagonalARegular` pattern in navy in the large ProgressBa
     {(args) => <ProgressBar {...args} />}
   </Story>
 </Canvas>
-
-## Bordered
-
-The yellow variant always has a border for accessibility color contrast and the default variant has a border by design, but you can add a border to the blue variant via the `bordered` prop.
-
-<Canvas>
-  <Story
-    name="Bordered"
-    args={{
-      size: 'medium',
-      percent: 33,
-      variant: 'blue',
-      bordered: true,
-    }}
-  >
-    {(args) => <ProgressBar {...args} />}
-  </Story>
-</Canvas>
