@@ -26,7 +26,7 @@ export type ProgressBarProps = {
   /**
    * Base variant display themes.
    */
-  variant: 'blue' | 'yellow' | 'dark' | 'light';
+  variant: 'blue' | 'yellow' | 'default';
 
   /**
    * Base variant display themes.
@@ -69,19 +69,20 @@ const progressBarSizeVariants = variant({
 });
 
 const progressBarBackgroundVariants = variant({
-  defaultVariant: 'blue',
+  defaultVariant: 'default',
   variants: {
     blue: {
       bg: 'navy',
     },
     yellow: {
       bg: `gray-100`,
+      borderWidth: '1px',
+      borderStyle: 'solid',
     },
-    dark: {
-      textColor: 'white',
-    },
-    light: {
-      textColor: 'navy',
+    default: {
+      textColor: 'text',
+      borderWidth: '1px',
+      borderStyle: 'solid',
     },
   },
 });
@@ -101,9 +102,7 @@ const progressBarBorderVariants = variant({
   defaultVariant: 'basic',
   prop: 'border',
   variants: {
-    basic: {
-      borderWidth: '0',
-    },
+    basic: {},
     bordered: {
       borderWidth: '1px',
       borderStyle: 'solid',
@@ -112,7 +111,7 @@ const progressBarBorderVariants = variant({
 });
 
 const progressBarForegroundVariants = variant({
-  defaultVariant: 'blue',
+  defaultVariant: 'default',
   base: {
     alignItems: 'center',
     height: '100%',
@@ -130,13 +129,9 @@ const progressBarForegroundVariants = variant({
       bg: `yellow`,
       textColor: `black`,
     },
-    light: {
-      bg: 'navy',
-      textColor: 'navy',
-    },
-    dark: {
-      bg: 'white',
-      textColor: 'white',
+    default: {
+      bg: 'text',
+      textColor: 'background',
     },
   },
 });
@@ -170,8 +165,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   pattern: Pattern,
   bordered,
   size = 'small',
-  variant = 'blue',
+  variant,
 }) => {
+  const showBarBorder = variant === 'yellow' && percent > 0;
   return (
     <ProgressBarWrapper
       aria-live="polite"
@@ -187,6 +183,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         data-testid="progress-bar-bar"
         style={{
           width: `${Math.max(minimumPercent, percent)}%`,
+          boxShadow: showBarBorder ? '0.5px 0 0 0.5px' : 'none',
         }}
       >
         {['large', 'xl'].includes(size) && (

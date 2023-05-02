@@ -6,6 +6,7 @@ import {
   Text,
 } from '@codecademy/gamut/src';
 import { DiagonalADense, DiagonalARegular } from '@codecademy/gamut-patterns';
+import { Background } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -56,6 +57,47 @@ percentage label.
 
 <PropsTable story="ProgressBar" />
 
+## Default variant
+
+This is a variant of the ProgressBar that has a transparent background and bordered look with colors based on the current color mode.
+
+### Dark Mode
+
+<Canvas column={2}>
+  <Story
+    name="Dark Mode"
+    args={{
+      percent: 50,
+      variant: 'default',
+    }}
+  >
+    {(args) => (
+      <Background bg="navy" p={32}>
+        <ProgressBar {...args} />
+      </Background>
+    )}
+  </Story>
+</Canvas>
+
+### Light Mode
+
+<Canvas column={2}>
+  <Story
+    name="Light Mode"
+    args={{
+      percent: 42,
+      variant: 'default',
+      size: 'large',
+    }}
+  >
+    {(args) => (
+      <Background bg="palePink" p={32}>
+        <ProgressBar {...args} />
+      </Background>
+    )}
+  </Story>
+</Canvas>
+
 ## Minimum Percent
 
 Some bars (generally small ones) should display at least a little bit of
@@ -75,7 +117,7 @@ Here we are using the `DiagonalARegular` pattern in navy in the large ProgressBa
 
 <Canvas column={2}>
   <Story
-    name="Stripe - Regular"
+    name="Stripes - Regular"
     args={{
       pattern: DiagonalARegular,
       size: 'large',
@@ -91,7 +133,7 @@ Here we are using the `DiagonalARegular` pattern in navy in the large ProgressBa
 
 <Canvas>
   <Story
-    name="Stripe - Dense"
+    name="Stripes - Dense"
     args={{
       size: 'medium',
       pattern: DiagonalADense,
@@ -103,70 +145,20 @@ Here we are using the `DiagonalARegular` pattern in navy in the large ProgressBa
   </Story>
 </Canvas>
 
-## Bordered variant
+## Bordered
 
-This is a variant of the ProgressBar that has a transparent background and "bordered" look. `light` should always be displayed against a dark background and `dark` should be displayed against a light background.
+The yellow variant always has a border for accessibility color contrast and the default variant has a border by design, but you can add a border to the blue variant via the `bordered` prop.
 
-### Bordered Light
-
-<Canvas column={2}>
+<Canvas>
   <Story
-    name="Dark"
+    name="Bordered"
     args={{
-      percent: 50,
-      variant: 'dark',
+      size: 'medium',
+      percent: 33,
+      variant: 'blue',
       bordered: true,
     }}
   >
-    {(args) => (
-      <GridBox alignContent="center" height="8rem" bg="navy" p={32}>
-        <ProgressBar {...args} />
-      </GridBox>
-    )}
-  </Story>
-</Canvas>
-
-### Bordered Dark
-
-<Canvas column={2}>
-  <Story
-    name="Bordered - Light"
-    args={{
-      percent: 42,
-      variant: 'light',
-      medium: 'large',
-      bordered: true,
-    }}
-  >
-    {(args) => (
-      <GridBox
-        alignContent="center"
-        height="8rem"
-        bg="palePink"
-        border={1}
-        p={32}
-      >
-        <ProgressBar {...args} />
-      </GridBox>
-    )}
-  </Story>
-</Canvas>
-
-<Canvas column={2}>
-  <Story
-    name="Bordered - Light - Large"
-    args={{
-      pattern: 'diagonalADense',
-      percent: 71,
-      variant: 'dark',
-      size: 'large',
-      bordered: true,
-    }}
-  >
-    {(args) => (
-      <GridBox alignContent="center" height="8rem" bg="navy" border={1} p={32}>
-        <ProgressBar {...args} />
-      </GridBox>
-    )}
+    {(args) => <ProgressBar {...args} />}
   </Story>
 </Canvas>
