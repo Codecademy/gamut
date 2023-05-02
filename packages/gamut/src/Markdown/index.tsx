@@ -1,3 +1,4 @@
+import { PausableImage } from '@codecademy/gamut-labs';
 import cx from 'classnames';
 import HtmlToReact from 'html-to-react';
 import marked from 'marked';
@@ -122,6 +123,9 @@ export class Markdown extends PureComponent<MarkdownProps> {
         createInputOverride('checkbox', {
           component: MarkdownCheckbox,
         }),
+      createInputOverride('img', {
+        component: PausableImage,
+      }),
       ...overrides,
       ...standardOverrides,
     ].filter(Boolean);
