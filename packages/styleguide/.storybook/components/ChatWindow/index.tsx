@@ -21,7 +21,7 @@ export const ChatWindow: React.FC = ({}) => {
       <Box right={6} bottom={0} position="fixed" aria-live="polite">
         <ColorMode mode="dark">
           {open && (
-            <FloatingCard pattern={DotDense}>
+            <FloatingCard pattern={DotDense} width={'344px'}>
               <FlexBox
                 bg="white-100"
                 width="100%"
