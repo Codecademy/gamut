@@ -22,6 +22,7 @@ import * as React from 'react';
 import { merge } from 'lodash';
 import { Link } from '../Markdown/Elements';
 import { coreTheme } from '@codecademy/gamut-styles/src/themes/core';
+import { ChatWindow } from '../ChatWindow';
 
 const defaultComponents = {
   ...htmlComponents,
@@ -117,6 +118,7 @@ export const DocsContainer: React.FC<{ context: DocsContextProps }> = ({
           <SourceContainer>
             <ThemeProvider theme={overrides}>
               <MDXProvider components={allComponents}>{children}</MDXProvider>
+              <ChatWindow />
             </ThemeProvider>
           </SourceContainer>
         </NavigationProvider>
