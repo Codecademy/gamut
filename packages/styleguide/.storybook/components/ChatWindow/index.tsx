@@ -42,7 +42,7 @@ export const ChatWindow: React.FC = ({}) => {
             </FloatingCard>
           )}
           <Box bg="navy-800" borderRadius={'100px'}>
-            <IconButton icon={GearIcon} />
+            <IconButton icon={GearIcon} onClick={() => setOpen(!open)} />
           </Box>
         </ColorMode>
       </Box>
