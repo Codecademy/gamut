@@ -72,15 +72,13 @@ const progressBarBackgroundVariants = variant({
   variants: {
     blue: {
       bg: 'navy',
-      textColor: 'navy',
+      borderColor: 'navy',
     },
     yellow: {
       bg: 'gray-100',
-      textColor: 'navy',
+      borderColor: 'navy',
     },
-    default: {
-      textColor: 'text',
-    },
+    default: {},
   },
 });
 
