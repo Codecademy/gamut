@@ -8,10 +8,9 @@ import {
   IconButton,
   Text,
 } from '@codecademy/gamut';
-import { ColorMode, css } from '@codecademy/gamut-styles';
+import { ColorMode } from '@codecademy/gamut-styles';
 import { GearIcon, GrowthIcon } from '@codecademy/gamut-icons';
 import { Chat } from './components/Chat';
-import styled from '@emotion/styled';
 import { DotDense } from '@codecademy/gamut-patterns';
 
 export const ChatWindow: React.FC = ({}) => {
