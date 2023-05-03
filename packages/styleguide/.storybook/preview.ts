@@ -23,6 +23,7 @@ export const parameters = {
         'Atoms',
         'Molecules',
         'Organisms',
+        'AI',
         'Brand Labs',
         'UX Writing',
         [
