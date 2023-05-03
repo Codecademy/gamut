@@ -41,6 +41,7 @@ export type SkipDefaultOverridesSettings = {
   details?: boolean;
   iframe?: boolean;
   table?: boolean;
+  img?: boolean;
 };
 
 export type MarkdownProps = {
@@ -124,9 +125,18 @@ export class Markdown extends PureComponent<MarkdownProps> {
         createInputOverride('checkbox', {
           component: MarkdownCheckbox,
         }),
-      createInputOverride('img', {
-        component: PausableImage,
-      }),
+      !skipDefaultOverrides.img &&
+        createTagOverride('img', {
+          component: PausableImage,
+          processNode: (node, props) => {
+            // Note: this processNode override is necessary because wrapping this component
+            // has children components which will cause react rendering to crash because
+            // the img tag does not support children.
+            return (
+              <PausableImage {...(props as { alt: string; src: string })} />
+            );
+          },
+        }),
       ...overrides,
       ...standardOverrides,
     ].filter(Boolean);
