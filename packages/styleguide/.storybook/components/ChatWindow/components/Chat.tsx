@@ -2,7 +2,7 @@ import { Box } from '@codecademy/gamut';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 
-export const ChatForm: React.FC = ({}) => {
+export const Chat: React.FC = ({}) => {
   const [messages, setMessages] = React.useState(['hey', 'hi']);
 
   const {
