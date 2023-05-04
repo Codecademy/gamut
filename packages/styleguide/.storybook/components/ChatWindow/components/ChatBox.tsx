@@ -9,9 +9,10 @@ export const ChatBox: React.FC<{ author: 'user' | 'bot'; message: string }> = ({
 }) => {
   return (
     <FlexBox
-      color={author === 'user' ? 'white-600' : 'white'}
+      color={author === 'user' ? 'text-secondary' : 'text'}
       flexDirection={author === 'user' ? 'row-reverse' : 'row'}
       justifyContent={'flex-start'}
+      my={8}
     >
       <Background
         bg={author === 'bot' ? 'white' : 'blue-500'}

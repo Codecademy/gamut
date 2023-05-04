@@ -52,7 +52,7 @@ export const Chat: React.FC = ({}) => {
       <Box
         py={8}
         px={24}
-        bg="navy-900"
+        bg="background-primary"
         maxHeight={'400px'}
         overflow="scroll"
         width={'100%'}
@@ -80,7 +80,7 @@ export const Chat: React.FC = ({}) => {
             You need to submit a prompt!
           </TinyFormError>
         )}
-        <IconButton icon={RocketIcon} height={'32px'} ml={4} type="submit" />
+        <IconButton icon={RocketIcon} height={'32px'} mx={8} type="submit" />
       </ChatForm>
     </>
   );
