@@ -1,34 +1,87 @@
-import { Box } from '@codecademy/gamut';
+import { Box, IconButton, GridBox, StrokeButton } from '@codecademy/gamut';
+import { ChatBox } from './ChatBox';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
+import { RocketIcon } from '@codecademy/gamut-icons';
+import { ChatForm, ChatTextArea, TinyFormError } from './elements';
+
+const defaultPrompts = [
+  { prompt: 'hey' },
+  { prompt: 'whats up' },
+  { prompt: 'you good?' },
+];
 
 export const Chat: React.FC = ({}) => {
-  const [messages, setMessages] = React.useState(['hey', 'hi']);
+  const [messages, setMessages] = React.useState([
+    { message: 'hello i am user', author: 'user' },
+    { message: 'hello i am bot', author: 'bot' },
+  ]);
+
+  const [prompts, setPrompts] = React.useState([]);
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
+    reset,
   } = useForm();
 
-  const onSubmit = (data) => setMessages([...messages, data.user]);
+  const onPromptSubmit = (prompt: string) => {
+    setMessages([
+      ...messages,
+      { message: prompt, author: 'user' },
+      { message: "i can't do that right now, dave.", author: 'bot' },
+    ]);
+    setPrompts([]);
+  };
 
-  console.log(watch('example')); // watch input value by passing the name of it
+  const onSubmit = (data: { prompt: string }) => {
+    if (data.prompt === 'show me the prompts') {
+      setPrompts(defaultPrompts);
+    }
+    setMessages([
+      ...messages,
+      { message: data.prompt, author: 'user' },
+      { message: "i can't do that right now, dave.", author: 'bot' },
+    ]);
+    reset();
+  };
 
   return (
-    <Box pt={8} px={16}>
-      peekaboo
-      {messages.map((message) => (
-        <Box>{message}</Box>
-      ))}
-      {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {/* include validation with required or other standard HTML validation rules */}
-        <input {...register('user', { required: true })} />
-        {errors.exampleRequired && <span>This field is required</span>}
-        <input type="submit" />
-      </form>
-    </Box>
+    <>
+      <Box
+        py={8}
+        px={24}
+        bg="navy-900"
+        maxHeight={'400px'}
+        overflow="scroll"
+        width={'100%'}
+      >
+        {messages.map((message) => (
+          <ChatBox {...message} />
+        ))}
+        {prompts.length > 0 && (
+          <GridBox rowGap={8} justifyItems="end" py={8}>
+            {prompts.map(({ prompt }) => (
+              <StrokeButton
+                onClick={() => onPromptSubmit(prompt)}
+                width="fit-content"
+              >
+                {prompt}
+              </StrokeButton>
+            ))}
+          </GridBox>
+        )}
+      </Box>
+      <ChatForm onSubmit={handleSubmit(onSubmit)}>
+        <ChatTextArea {...register('prompt', { required: true })} />
+        {errors.prompt && (
+          <TinyFormError variant="absolute">
+            You need to submit a prompt!
+          </TinyFormError>
+        )}
+        <IconButton icon={RocketIcon} height={'32px'} ml={4} type="submit" />
+      </ChatForm>
+    </>
   );
 };
