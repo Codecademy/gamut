@@ -394,9 +394,9 @@ describe('GridForm', () => {
       expect(sectionBreaks.length).toEqual(2);
     });
 
-    it('does NOT render a section break if breakType is none', () => {
+    it('does NOT render a section break if hideSectionBreak is passed', () => {
       const { view } = renderView({
-        breakType: 'none',
+        hideSectionBreak: true,
         fields: sectionFields,
       });
       const sectionBreaks = view.queryByTestId('form-section-break');
