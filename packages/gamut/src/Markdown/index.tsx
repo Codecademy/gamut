@@ -1,4 +1,3 @@
-import { PausableImage } from '@codecademy/gamut-labs';
 import cx from 'classnames';
 import HtmlToReact from 'html-to-react';
 import marked from 'marked';
@@ -6,9 +5,11 @@ import { PureComponent } from 'react';
 import * as React from 'react';
 import sanitizeMarkdown from 'sanitize-markdown';
 
+import { PausableImage } from '../PausableImage';
 import { omitProps } from '../utils/omitProps';
 import {
   createCodeBlockOverride,
+  createImgOverride,
   createInputOverride,
   createTagOverride,
   ManyOverrideSettings,
@@ -125,16 +126,8 @@ export class Markdown extends PureComponent<MarkdownProps> {
           component: MarkdownCheckbox,
         }),
       !skipDefaultOverrides.img &&
-        createTagOverride('img', {
+        createImgOverride('img', {
           component: PausableImage,
-          processNode: (node, props) => {
-            // Note: this processNode override is necessary because wrapping this component
-            // has children components which will cause react rendering to crash because
-            // the img tag does not support children.
-            return (
-              <PausableImage {...(props as { alt: string; src: string })} />
-            );
-          },
         }),
       ...overrides,
       ...standardOverrides,
