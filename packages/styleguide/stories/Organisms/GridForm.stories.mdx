@@ -969,21 +969,17 @@ When using the left-aligned layout, please note that the `title` takes up 3 colu
   </Story>
 </Canvas>
 
-### Section Break Type
+### Section Breaks
 
-You can set the `breakType` prop to adjust the type of separation between each section.
-
-The following values can be passed to `breakType`:
-
-- `none`: no border
-- `default`: 1px solid border that matches color of `text`
+By default, there are full width 1px breaks between each section (see above example).
+You can set the `hideSectionBreak` prop to disable these breaks.
 
 <Canvas>
   <Story name="Section Breaks">
     {() => {
       return (
         <GridForm
-          breakType="none"
+          hideSectionBreak
           fields={[
             {
               title: 'first section',
