@@ -39,11 +39,6 @@ const isGridFormSection = (
 };
 
 export type GridFormProps<Values extends {}> = FormContextProps & {
-  /**
-   * If the default visual break between sections should be hidden.
-   */
-  hideSectionBreak?: boolean;
-
   children?: React.ReactNode;
   className?: string;
 
@@ -91,7 +86,6 @@ export type GridFormProps<Values extends {}> = FormContextProps & {
 };
 
 export function GridForm<Values extends FormValues<Values>>({
-  hideSectionBreak,
   cancel,
   children,
   columnGap = defaultColumnGap,
@@ -130,7 +124,7 @@ export function GridForm<Values extends FormValues<Values>>({
     >
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         <>
-          {fields.map((field) => {
+          {fields.map((field, index) => {
             if (isGridFormSection(field)) {
               const { title, as, layout, fields, variant } = field;
               return (
@@ -146,7 +140,10 @@ export function GridForm<Values extends FormValues<Values>>({
                     fields={fields}
                     showRequired={showRequired}
                   />
-                  {!hideSectionBreak && <GridFormSectionBreak />}
+                  {/* don't show break on last section */}
+                  {index + 1 === fields.length ? null : (
+                    <GridFormSectionBreak />
+                  )}
                 </Fragment>
               );
             }

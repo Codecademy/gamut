@@ -385,19 +385,24 @@ describe('GridForm', () => {
         title: 'Other Test Title',
       },
     ];
+    const sectionField = [
+      {
+        fields: [stubCheckboxField],
+        title: 'Test Title',
+      },
+    ];
 
     it('renders a section break by default', () => {
       const { view } = renderView({
         fields: sectionFields,
       });
       const sectionBreaks = view.getAllByTestId('form-section-break');
-      expect(sectionBreaks.length).toEqual(2);
+      expect(sectionBreaks.length).toEqual(1);
     });
 
-    it('does NOT render a section break if hideSectionBreak is passed', () => {
+    it('does NOT render a section break if there is only one section', () => {
       const { view } = renderView({
-        hideSectionBreak: true,
-        fields: sectionFields,
+        fields: sectionField,
       });
       const sectionBreaks = view.queryByTestId('form-section-break');
       expect(sectionBreaks).not.toBeInTheDocument();
