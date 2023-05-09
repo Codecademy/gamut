@@ -18,10 +18,10 @@ describe('BaseImage', () => {
     expect(view.getAllByRole('img')[0]).toHaveAttribute('src', 'image.gif');
   });
 
-  it('renders a paused image after clicking pause', async () => {
+  it('renders a paused image after clicking pause', () => {
     const { view } = renderView();
 
-    await userEvent.click(view.getByRole('button'));
+    userEvent.click(view.getByRole('button'));
 
     expect(view.getAllByRole('img')[0]).toHaveAttribute(
       'src',
