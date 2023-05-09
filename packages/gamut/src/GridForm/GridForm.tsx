@@ -21,7 +21,6 @@ import {
 import {
   GridFormField,
   GridFormFieldsProps,
-  GridFormSectionBreakTypes,
   GridFormSectionProps,
 } from './types';
 import { assignDefaultValue } from './utils';
@@ -41,9 +40,9 @@ const isGridFormSection = (
 
 export type GridFormProps<Values extends {}> = FormContextProps & {
   /**
-   * If a visual break should be added between sections.
+   * If the default visual break between sections should be hidden.
    */
-  breakType?: GridFormSectionBreakTypes;
+  hideSectionBreak?: boolean;
 
   children?: React.ReactNode;
   className?: string;
@@ -92,7 +91,7 @@ export type GridFormProps<Values extends {}> = FormContextProps & {
 };
 
 export function GridForm<Values extends FormValues<Values>>({
-  breakType,
+  hideSectionBreak,
   cancel,
   children,
   columnGap = defaultColumnGap,
@@ -147,7 +146,7 @@ export function GridForm<Values extends FormValues<Values>>({
                     fields={fields}
                     showRequired={showRequired}
                   />
-                  <GridFormSectionBreak breakType={breakType} />
+                  {!hideSectionBreak && <GridFormSectionBreak />}
                 </Fragment>
               );
             }
