@@ -12,7 +12,7 @@ const createImg = (url: string) => ({
 
 describe('PausableImage', () => {
   it('renders a pausable image when the URL ends with .gif', async () => {
-    const { view } = await renderView({
+    const { view } = renderView({
       ...createImg('image.gif'),
     });
 
