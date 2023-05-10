@@ -57,7 +57,13 @@ export const BaseImage: React.FC<BaseImageProps> = ({ alt, ...rest }) => {
       <FillButton
         bottom={0}
         m={8}
-        onClick={() => setPaused(!paused)}
+        onClick={(e) => {
+          setPaused(!paused);
+          // preventing the deafualt behavior of the image
+          // container from preventing the button image from
+          //  being paused e.g. if the image is in a link
+          e.preventDefault();
+        }}
         position="absolute"
         right={0}
         variant="secondary"
