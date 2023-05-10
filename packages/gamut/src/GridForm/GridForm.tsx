@@ -125,6 +125,7 @@ export function GridForm<Values extends FormValues<Values>>({
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         <>
           {fields.map((field, index) => {
+            const numSections = fields.length;
             if (isGridFormSection(field)) {
               const { title, as, layout, fields, variant } = field;
               return (
@@ -141,9 +142,7 @@ export function GridForm<Values extends FormValues<Values>>({
                     showRequired={showRequired}
                   />
                   {/* don't show break on last section */}
-                  {index + 1 === fields.length ? null : (
-                    <GridFormSectionBreak />
-                  )}
+                  {index + 1 === numSections ? null : <GridFormSectionBreak />}
                 </Fragment>
               );
             }
