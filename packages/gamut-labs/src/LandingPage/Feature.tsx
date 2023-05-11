@@ -1,14 +1,9 @@
-import {
-  Box,
-  Markdown,
-  PausableImage,
-  Text,
-  WithChildrenProp,
-} from '@codecademy/gamut';
+import { Box, Markdown, Text, WithChildrenProp } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
 
+import { PausableImage } from '../PausableImage';
 import { BaseProps } from './types';
 
 const Image = Box.withComponent('img');
