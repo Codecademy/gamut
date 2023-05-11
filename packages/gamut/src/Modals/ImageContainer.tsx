@@ -20,7 +20,6 @@ export const ImageContainer: React.FC<ImageProps> = ({
 }) => {
   return (
     <Box
-      bg="beige"
       mx={-24 as any}
       overflow="clip"
       height={imageHeights[size === false ? 'fluid' : size]}
