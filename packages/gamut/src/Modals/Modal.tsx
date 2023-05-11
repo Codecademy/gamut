@@ -7,6 +7,7 @@ import { FillButton, IconButton, TextButton } from '../Button';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer } from './elements';
+import { ImageContainer } from './ImageContainer';
 import { ModalBaseProps } from './types';
 
 interface DialogButtonProps {
@@ -15,50 +16,24 @@ interface DialogButtonProps {
   onClick?: ComponentProps<typeof FillButton>['onClick'];
   disabled?: boolean;
 }
-interface ModalView {
+export interface ModalView {
   title?: string;
   children: React.ReactNode;
   nextCta?: DialogButtonProps;
   confirmCta?: DialogButtonProps;
   cancelCta?: DialogButtonProps;
-  image?: React.ReactNode | string;
+  image?: React.ReactNode;
 }
 export interface SingleViewModalProps extends ModalBaseProps {
-  size?: ComponentProps<typeof ModalContainer>['size'];
-  /**
-   * Whether to hide the default close button and pass your own through children
-   */
-  hideCloseButton?: boolean;
-  /**
-   * Whether to show scrollbar on content overflow
-   */
-  scrollable?: boolean;
   views?: never;
-  /**
-   * Whether to disable X button at top right of modal
-   */
-  closeDisabled?: boolean;
 }
 
 export interface MultiViewModalProps extends Omit<ModalBaseProps, 'children'> {
   children?: never;
-  size?: ComponentProps<typeof ModalContainer>['size'];
-  /**
-   * Whether to hide the default close button and pass your own through children
-   */
-  hideCloseButton?: boolean;
-  /**
-   * Whether to show scrollbar on content overflow
-   */
-  scrollable?: boolean;
   /**
    * Optional array of multiple screens
    */
   views: ModalView[];
-  /**
-   * Whether to disable X button at top right of modal
-   */
-  closeDisabled?: boolean;
 }
 
 export type ModalProps = SingleViewModalProps | MultiViewModalProps;
@@ -69,6 +44,7 @@ export const Modal: React.FC<ModalProps> = ({
   className,
   headingLevel = 'h2',
   hideCloseButton = false,
+  image,
   onRequestClose,
   scrollable = false,
   size = 'fluid',
@@ -124,9 +100,7 @@ export const Modal: React.FC<ModalProps> = ({
           gridArea="content"
           data-testid="modal-content"
         >
-          <Box bg="danger" mx={-24 as any}>
-            hey
-          </Box>
+          {image && <ImageContainer image={image} size={size} />}
           {views?.[currentView].children || children}
         </Box>
         {views?.[currentView].cancelCta && (

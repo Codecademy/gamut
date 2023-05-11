@@ -4,8 +4,11 @@ import {
   FlexBox,
   GridBox,
   Modal,
+  Text,
+  TextButton,
 } from '@codecademy/gamut/src';
 import { ModalContainer } from '@codecademy/gamut/src/Modals/elements';
+import { CodeCelebration } from '@codecademy/gamut-illustrations';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -223,6 +226,43 @@ All of these methods default to true for accessibility reasons, and rely on sett
     height="750px"
   >
     {(args) => <Modal {...args} />}
+  </Story>
+</Canvas>
+
+## With Image
+
+The image prop can be used to include a full-width product image or illustration with a 16:9 aspect ratio. This image should help clarify the message of the modal.
+
+Overflow for images will be cut off, so make sure the image is correctly sized for the modal.
+
+<Canvas>
+  <Story
+    height="600px"
+    name="Image modals"
+    args={{
+      image: (
+        <FlexBox center height="100%" width="100%">
+          <CodeCelebration height="100%" />
+        </FlexBox>
+      ),
+      size: 'medium',
+      title: 'Image modal',
+    }}
+  >
+    {(args) => (
+      <Modal {...args}>
+        <>
+          <Text smooth fontSize={14} my={12}>
+            Optional 1-2 lines of explanation that provides relevant details.
+            Lorem ipsum cras nulla massa odio ligula.
+          </Text>
+          <FlexBox justifyContent="right">
+            <TextButton mr={16}>Cancel</TextButton>
+            <FillButton>Primary action</FillButton>
+          </FlexBox>
+        </>
+      </Modal>
+    )}
   </Story>
 </Canvas>
 
