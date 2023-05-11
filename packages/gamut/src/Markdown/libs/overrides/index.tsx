@@ -202,7 +202,7 @@ export const standardOverrides = [
   },
 ];
 
-// img tag override
+// Allows for img tag override, which is separate because it doesn't have children
 export const createImgOverride = (
   tagName: string,
   Override: OverrideSettings
