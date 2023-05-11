@@ -25,15 +25,43 @@ export interface ModalView {
   image?: React.ReactNode;
 }
 export interface SingleViewModalProps extends ModalBaseProps {
+  size?: ComponentProps<typeof ModalContainer>['size'];
+  /**
+   * Whether to hide the default close button and pass your own through children
+   */
+  hideCloseButton?: boolean;
+  /**
+   * Whether to show scrollbar on content overflow
+   */
+  scrollable?: boolean;
   views?: never;
+  /**
+   * Whether to disable X button at top right of modal
+   */
+  closeDisabled?: boolean;
+  image?: React.ReactNode;
 }
 
 export interface MultiViewModalProps extends Omit<ModalBaseProps, 'children'> {
   children?: never;
+  image?: never;
+  size?: ComponentProps<typeof ModalContainer>['size'];
+  /**
+   * Whether to hide the default close button and pass your own through children
+   */
+  hideCloseButton?: boolean;
+  /**
+   * Whether to show scrollbar on content overflow
+   */
+  scrollable?: boolean;
   /**
    * Optional array of multiple screens
    */
   views: ModalView[];
+  /**
+   * Whether to disable X button at top right of modal
+   */
+  closeDisabled?: boolean;
 }
 
 export type ModalProps = SingleViewModalProps | MultiViewModalProps;
@@ -44,7 +72,6 @@ export const Modal: React.FC<ModalProps> = ({
   className,
   headingLevel = 'h2',
   hideCloseButton = false,
-  image,
   onRequestClose,
   scrollable = false,
   size = 'fluid',
@@ -55,6 +82,8 @@ export const Modal: React.FC<ModalProps> = ({
 }) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [currentView, setCurrentView] = useState(0);
+  const image = (views?.[currentView].image || rest?.image) ?? null;
+
   return (
     <Overlay
       shroud

@@ -5,7 +5,6 @@ import {
   GridBox,
   Modal,
   Text,
-  TextButton,
 } from '@codecademy/gamut/src';
 import { ModalContainer } from '@codecademy/gamut/src/Modals/elements';
 import { CodeCelebration } from '@codecademy/gamut-illustrations';
@@ -257,16 +256,10 @@ Overflow for images will be cut off, so make sure the image is correctly sized f
   >
     {(args) => (
       <Modal {...args}>
-        <>
-          <Text smooth fontSize={14} my={12}>
-            Optional 1-2 lines of explanation that provides relevant details.
-            Lorem ipsum cras nulla massa odio ligula.
-          </Text>
-          <FlexBox justifyContent="right">
-            <TextButton mr={16}>Cancel</TextButton>
-            <FillButton>Primary action</FillButton>
-          </FlexBox>
-        </>
+        <Text smooth fontSize={14} my={12}>
+          Optional 1-2 lines of explanation that provides relevant details.
+          Lorem ipsum cras nulla massa odio ligula.
+        </Text>
       </Modal>
     )}
   </Story>
