@@ -7,7 +7,6 @@ import Freezeframe from 'react-freezeframe';
 
 import { Box } from '../../Box';
 import { FillButton } from '../../Button';
-import { HiddenText } from '../../HiddenText';
 import { imageStyles, PauseableImageProps } from '..';
 
 export interface BaseImageProps extends PauseableImageProps {}
@@ -45,25 +44,30 @@ const StyledFreezeframe = styled(Freezeframe)(imageStyles);
 export const BaseImage: React.FC<BaseImageProps> = ({ alt, ...rest }) => {
   const [paused, setPaused] = useState(false);
 
-  const [liveText, buttonLabel, Icon, Image] = paused
-    ? [`${alt}, paused`, 'Play animated image', PlayIcon, StyledFreezeframe]
-    : [`${alt}, playing`, 'Pause animated image', PauseIcon, PlayingImage];
+  const [liveText, buttonLabel, altFallBack, Icon, Image] = paused
+    ? [
+        `${alt}, paused`,
+        'Play animated image',
+        'Playing animated image',
+        PlayIcon,
+        StyledFreezeframe,
+      ]
+    : [
+        `${alt}, playing`,
+        'Pause animated image',
+        'Paused animated image',
+        PauseIcon,
+        PlayingImage,
+      ];
 
   return (
     <Container>
-      <Image alt={alt} {...rest} />
       {/* ensure proper fall back label if an empty string is given as alt */}
-      <HiddenText aria-live="polite">{alt ? liveText : buttonLabel}</HiddenText>
+      <Image alt={alt ? liveText : altFallBack} {...rest} />
       <FillButton
         bottom={0}
         m={8}
-        onClick={(e) => {
-          setPaused(!paused);
-          // preventing the deafualt behavior of the image
-          // container from preventing the button image from
-          //  being paused e.g. if the image is in a link
-          e.preventDefault();
-        }}
+        onClick={() => setPaused(!paused)}
         position="absolute"
         right={0}
         variant="secondary"
