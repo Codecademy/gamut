@@ -216,7 +216,7 @@ var test = true;
     await waitFor(() => screen.findByText('Pause animated image'));
   });
 
-  it(`doesn't renders a pausable image when the URL ends with .gif`, async () => {
+  it(`doesn't render a pausable image when the URL doesn't end with .gif`, async () => {
     renderView({
       text: `<img src="http://google.com/"/>`,
     });

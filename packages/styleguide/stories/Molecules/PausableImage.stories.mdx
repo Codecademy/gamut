@@ -1,4 +1,4 @@
-import { Anchor, PausableImage } from '@codecademy/gamut';
+import { PausableImage } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -38,27 +38,6 @@ import { PausableImage } from '@codecademy/gamut';
 
 <PausableImage src="" alt="" />;
 ```
-
-## Interactive Container
-
-If the image is wrapped in an interactive container, we prevent the default of the container whe clicking the toggle button. This is useful for when the image is wrapped in an anchor tag.
-
-<Canvas>
-  <Story
-    name="Interactive container"
-    args={{
-      src:
-        '//images.ctfassets.net/go6kr6r0ykrq/2vjTCK9DmJ6BOd5NtFxNIG/e5ced4209aef5241cd581841fa6e2511/learn-css_box-model_06.16.gif',
-      alt: 'demonstration of learning environment',
-    }}
-  >
-    {(args) => (
-      <Anchor href="https://www.codecademy.com/">
-        <PausableImage {...args} />
-      </Anchor>
-    )}
-  </Story>
-</Canvas>
 
 ## Color Modes
 
