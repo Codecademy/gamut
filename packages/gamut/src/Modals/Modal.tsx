@@ -39,10 +39,10 @@ export interface SingleViewModalProps extends ModalBaseProps {
    * Whether to disable X button at top right of modal
    */
   closeDisabled?: boolean;
-  image?: React.ReactNode;
 }
 
-export interface MultiViewModalProps extends Omit<ModalBaseProps, 'children'> {
+export interface MultiViewModalProps
+  extends Omit<ModalBaseProps, 'children' | 'image'> {
   children?: never;
   image?: never;
   size?: ComponentProps<typeof ModalContainer>['size'];

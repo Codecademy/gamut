@@ -7,6 +7,7 @@ import { FillButton, IconButton, TextButton } from '../Button';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer, ModalContainerProps } from './elements';
+import { ImageContainer } from './ImageContainer';
 import { ModalBaseProps } from './types';
 
 interface DialogButtonProps {
@@ -33,6 +34,7 @@ export const Dialog: React.FC<DialogProps> = ({
   confirmCta,
   cancelCta,
   onRequestClose,
+  image,
   size = 'small',
   ...rest
 }) => {
@@ -67,6 +69,7 @@ export const Dialog: React.FC<DialogProps> = ({
           gridArea="close"
         />
         <Box as="div" gridArea="content" data-testid="dialog-content">
+          {image && <ImageContainer image={image} size={size} />}
           {children}
         </Box>
         {cancelCta && (

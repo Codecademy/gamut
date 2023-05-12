@@ -42,7 +42,7 @@ export const DialogExample: React.FC = () => {
   return (
     <Box>
       {['small', 'medium'].map((size) => (
-        <Dialog key={size} inline isOpen>
+        <Dialog key={size} isOpen image={modalProps.image}>
           {children}
         </Dialog>
       ))}
