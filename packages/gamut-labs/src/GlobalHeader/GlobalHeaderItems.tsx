@@ -1,5 +1,6 @@
 import {
   AccountingCoinsIcon,
+  ArrowThickCircleUpIcon,
   BookFlipPageIcon,
   BriefcaseIcon,
   CommunityIcon,
@@ -159,7 +160,7 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
     },
     {
       id: 'learner-stories',
-      href: '/learner-stories',
+      href: '/resources/blog/category/learner-stories/',
       trackingTarget: 'topnav_learner_stories_hub',
       text: 'Learner Stories',
       type: 'link',
@@ -198,6 +199,15 @@ export const pricingDropdown: AppHeaderSimpleDropdownItem = {
   ],
   trackingTarget: 'topnav_pricing',
   type: 'dropdown',
+};
+
+export const upgradePlan: AppHeaderLinkItem = {
+  icon: ArrowThickCircleUpIcon,
+  id: 'upgrade-plan',
+  trackingTarget: 'topnav_upgrade_plan',
+  text: 'Upgrade',
+  href: '/pricing',
+  type: 'link',
 };
 
 export const businessSolutions: AppHeaderLinkItem = {

@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [53.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@53.1.2...@codecademy/gamut@53.2.0) (2023-05-02)
+
+
+### Features
+
+* **Popover:** allow passing container ref into popover ([ac82195](https://github.com/Codecademy/gamut/commit/ac821953136b1d2b5f5421b3218c5d5c17f10f0c))
+
+
+
+### [53.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@53.1.1...@codecademy/gamut@53.1.2) (2023-04-20)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [53.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@53.1.0...@codecademy/gamut@53.1.1) (2023-04-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [53.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@53.0.3...@codecademy/gamut@53.1.0) (2023-04-14)
+
+
+### Features
+
+* **Alert:** Add subtle light and dark variants to inline alerts ([37aa3a8](https://github.com/Codecademy/gamut/commit/37aa3a85ace90261ada31ff5470e6823bd72f9a2))
+
+
+
 ### [53.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@53.0.2...@codecademy/gamut@53.0.3) (2023-04-10)
 
 

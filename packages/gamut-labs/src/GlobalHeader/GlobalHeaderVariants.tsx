@@ -20,6 +20,7 @@ import {
   simpleResourcesDropdown,
   tryProForFree,
   unpausePro,
+  upgradePlan,
   upgradeToPro,
 } from './GlobalHeaderItems';
 import { User } from './types';
@@ -216,6 +217,7 @@ export const proHeaderItems = (user: User): FormattedAppHeaderItems => {
     catalogDropdown(user?.hideCareerPaths),
     resourcesDropdown,
     communityDropdown,
+    ...(user.isPlusUser ? [upgradePlan] : []),
     businessSolutions,
   ];
 
@@ -260,6 +262,7 @@ export const proMobileHeaderItems = (
     catalogDropdown(user?.hideCareerPaths),
     resourcesDropdown,
     communityDropdown,
+    ...(user.isPlusUser ? [upgradePlan] : []),
     businessSolutions,
     proProfile(user),
   ];

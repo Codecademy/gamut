@@ -13,6 +13,7 @@ import {
   simpleResourcesDropdown,
   tryProForFree,
   unpausePro,
+  upgradePlan,
   upgradeToPro,
 } from '../GlobalHeaderItems';
 import { User } from '../types';
@@ -95,6 +96,12 @@ const proHeaderProps: GlobalHeaderProps = {
   ...defaultProps,
   type: 'pro',
   user,
+};
+
+const plusHeaderProps: GlobalHeaderProps = {
+  ...defaultProps,
+  type: 'pro',
+  user: { ...user, isPlusUser: true },
 };
 
 const proPausedHeaderProps: GlobalHeaderProps = {
@@ -339,6 +346,14 @@ describe('GlobalHeader', () => {
     it('renders notifications', () => {
       const { view } = renderView(proHeaderProps);
       view.getAllByTitle('Bell Icon');
+    });
+
+    describe('plus users', () => {
+      it('renders upgrade link', () => {
+        const { view } = renderView(plusHeaderProps);
+        const link = view.getByText(upgradePlan.text);
+        expect(link).toHaveAttribute('href', upgradePlan.href);
+      });
     });
 
     describe('default', () => {

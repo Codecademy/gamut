@@ -3,6 +3,75 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [35.14.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.1...@codecademy/gamut-labs@35.14.2) (2023-05-02)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.14.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.0...@codecademy/gamut-labs@35.14.1) (2023-05-01)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [35.14.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.13.1...@codecademy/gamut-labs@35.14.0) (2023-04-27)
+
+
+### Features
+
+* **GlabalHeaderItems:** Update a link in the site nav. ([017408b](https://github.com/Codecademy/gamut/commit/017408b94a2a95e3a4111c72d0f5da78b098b0ac))
+
+
+
+### [35.13.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.13.0...@codecademy/gamut-labs@35.13.1) (2023-04-24)
+
+
+### Bug Fixes
+
+* **ScoreSummary:** Add labels to informative icons ([2d2d6ca](https://github.com/Codecademy/gamut/commit/2d2d6ca79224283cbde40362322fb078d20fbc8a))
+
+
+
+## [35.13.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.12.1...@codecademy/gamut-labs@35.13.0) (2023-04-20)
+
+
+### Features
+
+* **GlobalHeader:** add upgrade link for plus users ([14be834](https://github.com/Codecademy/gamut/commit/14be834f812bc4c40a4dcb018496caa529700b0e))
+
+
+
+### [35.12.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.12.0...@codecademy/gamut-labs@35.12.1) (2023-04-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [35.12.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.11.4...@codecademy/gamut-labs@35.12.0) (2023-04-14)
+
+
+### Features
+
+* **Alert:** Add subtle light and dark variants to inline alerts ([37aa3a8](https://github.com/Codecademy/gamut/commit/37aa3a85ace90261ada31ff5470e6823bd72f9a2))
+
+
+
+### [35.11.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.11.3...@codecademy/gamut-labs@35.11.4) (2023-04-13)
+
+
+### Bug Fixes
+
+* made social media links a grouped list ([3a2991b](https://github.com/Codecademy/gamut/commit/3a2991bb64743d7410b801fa0af544529faf47dc))
+
+
+
 ### [35.11.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.11.2...@codecademy/gamut-labs@35.11.3) (2023-04-10)
 
 

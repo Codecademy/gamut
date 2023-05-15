@@ -4,6 +4,8 @@ import {
   LinkedinIcon,
   TwitterIcon,
 } from '@codecademy/gamut-icons';
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import * as React from 'react';
 
 import type { BaseSocialShareProps } from './SocialShareIconLink';
@@ -15,6 +17,14 @@ export type SocialMediaShare = {
   hashtags?: string[];
   mention?: string;
 };
+
+const ListItem = styled.li(
+  css({
+    padding: 0,
+    margin: 0,
+    display: 'inherit',
+  })
+);
 
 export const createShareLink = (
   formatter: (payload: SocialMediaShare) => Record<string, string>,
@@ -101,26 +111,28 @@ export const SocialMediaSharing: React.FC<SocialMediaSharingProps> = ({
         </Text>
       )}
       <GridBox
+        role="list"
+        className={iconStyles}
         gridAutoColumns="max-content"
         gridAutoFlow="column"
         gap={16}
-        className={iconStyles}
       >
         {SOCIAL_SHARING_PLATFORMS.map(({ id, icon, formatShare, baseUrl }) => (
-          <SocialShareIconLink
-            key={id}
-            id={id}
-            sectionId={sectionId}
-            href={createShareLink(formatShare, baseUrl, {
-              url,
-              message,
-              hashtags,
-              mention,
-            })}
-            icon={icon}
-            size={size}
-            onClick={(e) => action?.(e, `${id}_share`)}
-          />
+          <ListItem role="listitem" key={id}>
+            <SocialShareIconLink
+              id={id}
+              sectionId={sectionId}
+              href={createShareLink(formatShare, baseUrl, {
+                url,
+                message,
+                hashtags,
+                mention,
+              })}
+              icon={icon}
+              size={size}
+              onClick={(e) => action?.(e, `${id}_share`)}
+            />
+          </ListItem>
         ))}
       </GridBox>
     </Box>
