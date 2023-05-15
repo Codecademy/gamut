@@ -18,7 +18,7 @@ interface DialogButtonProps {
 
 export interface DialogProps extends ModalBaseProps {
   title: ModalBaseProps['title'];
-  size?: Exclude<ModalContainerProps['size'], 'fluid'>;
+  size?: Exclude<ModalContainerProps['size'], 'fluid' | false>;
   variant?: Extract<
     ComponentProps<typeof FillButton>['variant'],
     'primary' | 'danger'
