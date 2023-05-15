@@ -12,22 +12,22 @@ export const typographyStyleVariants = {
   'title-lg': {
     fontSize: 34,
     fontWeight: 'title',
-    lineHeight: 'title',
+    lineHeight: 'spacedTitle',
   },
   'title-md': {
     fontSize: 26,
     fontWeight: 'title',
-    lineHeight: 'title',
+    lineHeight: 'spacedTitle',
   },
   'title-sm': {
     fontSize: 22,
     fontWeight: 'title',
-    lineHeight: 'title',
+    lineHeight: 'spacedTitle',
   },
   'title-xs': {
     fontSize: 20,
     fontWeight: 'title',
-    lineHeight: 'title',
+    lineHeight: 'spacedTitle',
   },
   'p-large': {
     fontSize: 18,
