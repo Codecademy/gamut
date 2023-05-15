@@ -16,13 +16,11 @@ interface DialogButtonProps {
   onClick?: ComponentProps<typeof FillButton>['onClick'];
   disabled?: boolean;
 }
-export interface ModalView {
-  title?: string;
+export interface ModalView extends Omit<ModalBaseProps, 'headingLevel'> {
   children: React.ReactNode;
   nextCta?: DialogButtonProps;
   confirmCta?: DialogButtonProps;
   cancelCta?: DialogButtonProps;
-  image?: React.ReactNode;
 }
 export interface SingleViewModalProps extends ModalBaseProps {
   size?: ComponentProps<typeof ModalContainer>['size'];
@@ -129,7 +127,7 @@ export const Modal: React.FC<ModalProps> = ({
           gridArea="content"
           data-testid="modal-content"
         >
-          {image && <ImageContainer image={image} size={size} />}
+          {image && size && <ImageContainer image={image} size={size} />}
           {views?.[currentView].children || children}
         </Box>
         {views?.[currentView].cancelCta && (

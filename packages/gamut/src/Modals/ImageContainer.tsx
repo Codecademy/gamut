@@ -5,7 +5,10 @@ import { ModalContainer } from './elements';
 import { ModalView } from './Modal';
 
 interface ImageProps extends Pick<ModalView, 'image'> {
-  size?: ComponentProps<typeof ModalContainer>['size'];
+  size: Exclude<
+    ComponentProps<typeof ModalContainer>['size'],
+    false | undefined
+  >;
 }
 
 const imageHeights = {
@@ -19,11 +22,7 @@ export const ImageContainer: React.FC<ImageProps> = ({
   size = 'fluid',
 }) => {
   return (
-    <Box
-      mx={-24 as any}
-      overflow="clip"
-      height={imageHeights[size === false ? 'fluid' : size]}
-    >
+    <Box mx={-24 as any} overflow="clip" height={imageHeights[size]}>
       {image}
     </Box>
   );
