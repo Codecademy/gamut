@@ -18,6 +18,10 @@ const beakLeft = {
   left: '25px',
 };
 
+const beakCenter = {
+  left: 'calc(50% - 10px)',
+};
+
 const popoverAboveSml = {
   borderRight: 'inherit',
   borderBottom: 'inherit',
@@ -49,6 +53,8 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
     }
     if (alignment.includes('right')) {
       styleObject = { ...beakRightSml, ...styleObject };
+    } else if (alignment.includes('center')) {
+      styleObject = { ...beakCenter, ...styleObject };
     } else {
       styleObject = { ...beakLeftSml, ...styleObject };
     }
@@ -60,6 +66,8 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
     }
     if (alignment.includes('right')) {
       styleObject = { ...beakRight, ...styleObject };
+    } else if (alignment.includes('center')) {
+      styleObject = { ...beakCenter, ...styleObject };
     } else {
       styleObject = { ...beakLeft, ...styleObject };
     }
