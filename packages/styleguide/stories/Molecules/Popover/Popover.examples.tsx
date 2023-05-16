@@ -17,7 +17,11 @@ import {
 } from '@codecademy/gamut-patterns';
 import { useRef, useState } from 'react';
 
-export const PopoverExample = (args: PopoverProps) => {
+type PopoverExampleProps = PopoverProps & {
+  p?: number;
+};
+
+export const PopoverExample = ({ p = 16, ...rest }: PopoverExampleProps) => {
   const [open, setOpen] = useState(false);
   const activeElRef = useRef<HTMLDivElement>(null);
   const toggleOpen = () => setOpen(!open);
@@ -28,12 +32,12 @@ export const PopoverExample = (args: PopoverProps) => {
       </Box>
       <FlexBox>
         <Popover
-          {...args}
+          {...rest}
           isOpen={open}
           targetRef={activeElRef}
           onRequestClose={() => setOpen(false)}
         >
-          <FlexBox flexDirection="column" p={16} alignItems="flex-start">
+          <FlexBox flexDirection="column" p={p} alignItems="flex-start">
             <Box mb={8}>Hooray!</Box>
             <FillButton size="small" onClick={() => setOpen(false)}>
               Close Popover
