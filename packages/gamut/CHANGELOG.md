@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [54.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@53.2.0...@codecademy/gamut@54.0.0) (2023-05-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ProgressBar:** add border to yellow variant and use color mode
+
+### Features
+
+* **ProgressBar:** add border to yellow variant and use color mode ([46421f7](https://github.com/Codecademy/gamut/commit/46421f750f8d2323c22a366e0345a869decfa4c5))
+
+
+
 ## [53.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@53.1.2...@codecademy/gamut@53.2.0) (2023-05-02)
 
 
