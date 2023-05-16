@@ -392,8 +392,8 @@ monospace",
   },
   "lineHeight": Object {
     "base": 1.5,
-    "spacedTitle": 1.2,
-    "title": 1.1,
+    "spacedTitle": 1.3,
+    "title": 1.2,
   },
   "mode": "light",
   "modes": Object {
@@ -860,8 +860,8 @@ monospace",
   },
   "lineHeight": Object {
     "base": 1.5,
-    "spacedTitle": 1.2,
-    "title": 1.1,
+    "spacedTitle": 1.3,
+    "title": 1.2,
   },
   "mode": "light",
   "modes": Object {
@@ -1458,8 +1458,8 @@ monospace",
   },
   "lineHeight": Object {
     "base": 1.5,
-    "spacedTitle": 1.2,
-    "title": 1.1,
+    "spacedTitle": 1.3,
+    "title": 1.2,
   },
   "mode": "dark",
   "modes": Object {
