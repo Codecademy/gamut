@@ -63,7 +63,7 @@ export type PopoverProps = PopoverBaseProps &
     /**
      * Which side to position the beak. If not provided, beak will not be rendered.
      */
-    beak?: 'left' | 'right';
+    beak?: 'left' | 'right' | 'center';
     /**
      * Whether the popover is rendered.
      */
