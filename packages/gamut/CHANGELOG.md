@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@54.1.0...@codecademy/gamut@55.0.0) (2023-05-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **GridForm:** Update section break
+
+### Features
+
+* **GridForm:** Update section break ([9a82549](https://github.com/Codecademy/gamut/commit/9a8254982bcbbf641c809740e1fa2ff86b66d6fd))
+
+
+
 ## [54.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@54.0.0...@codecademy/gamut@54.1.0) (2023-05-16)
 
 
