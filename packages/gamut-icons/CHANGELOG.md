@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.1.0...@codecademy/gamut-icons@9.2.0) (2023-05-19)
+
+
+### Features
+
+* **Icon:** add PersonFilledIcon ([25ce7fc](https://github.com/Codecademy/gamut/commit/25ce7fcd83b5b0b6bff0b0acd5b13dbdffb78d50))
+
+
+
 ## [9.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.0.2...@codecademy/gamut-icons@9.1.0) (2023-04-20)
 
 
