@@ -22,4 +22,5 @@ export interface ModalBaseProps
    * Heading titles for the Modal. They should almost always be the default `h2`, but should sometimes be `h1` if the Modal takes up the entire page
    */
   headingLevel?: 'h1' | 'h2';
+  image?: React.ReactNode;
 }
