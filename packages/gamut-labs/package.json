@@ -30,7 +30,7 @@
     "@codecademy/gamut-illustrations": "0.36.0",
     "@codecademy/gamut-patterns": "0.9.5",
     "@codecademy/gamut-styles": "16.1.0",
-    "@codecademy/tracking": "1.0.7",
+    "@codecademy/tracking": "1.0.9",
     "@codecademy/variance": "0.21.0",
     "classnames": "^2.2.5",
     "framer-motion": "^6.5.1",
