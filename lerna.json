@@ -1,4 +1,5 @@
 {
+  "version": "56.0.0",
   "npmClient": "yarn",
   "exact": true,
   "packages": ["packages/*"],
