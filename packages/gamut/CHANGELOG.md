@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.0...@codecademy/gamut@55.1.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **ModalView:** fix onRequestClose type ([718ec33](https://github.com/Codecademy/gamut/commit/718ec3373a260348719196daabac021f24e04681))
+
+
+
 ## [55.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.0.1...@codecademy/gamut@55.1.0) (2023-05-19)
 
 

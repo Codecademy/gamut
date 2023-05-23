@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.7.27](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.7.26...@codecademy/monaco@0.7.27) (2023-05-23)
+
+**Note:** Version bump only for package @codecademy/monaco
+
+
+
+
+
 ### [0.7.26](https://github.com/Codecademy/gamut/packages/monaco/compare/@codecademy/monaco@0.7.25...@codecademy/monaco@0.7.26) (2023-05-19)
 
 **Note:** Version bump only for package @codecademy/monaco
