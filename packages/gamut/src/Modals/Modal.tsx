@@ -16,7 +16,8 @@ interface DialogButtonProps {
   onClick?: ComponentProps<typeof FillButton>['onClick'];
   disabled?: boolean;
 }
-export interface ModalView extends Omit<ModalBaseProps, 'headingLevel'> {
+export interface ModalView
+  extends Omit<ModalBaseProps, 'headingLevel' | 'onRequestClose'> {
   children: React.ReactNode;
   nextCta?: DialogButtonProps;
   confirmCta?: DialogButtonProps;
