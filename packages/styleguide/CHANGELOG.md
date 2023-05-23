@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.0...@codecademy/styleguide@66.1.1) (2023-05-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [66.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.0.1...@codecademy/styleguide@66.1.0) (2023-05-19)
+
+
+### Features
+
+* **Modal + Dialog:** add image prop to modal ([adb60c4](https://github.com/Codecademy/gamut/commit/adb60c49b18b0ac25038f97f468b0ea9a3b62522))
+
+
+
+### [66.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.0.0...@codecademy/styleguide@66.0.1) (2023-05-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [66.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@65.1.0...@codecademy/styleguide@66.0.0) (2023-05-16)
 
 
