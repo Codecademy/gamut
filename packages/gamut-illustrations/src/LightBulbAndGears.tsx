@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { IllustrationProps } from './types';
 
-export const LightBulbGears: React.FC<IllustrationProps> = ({
+export const LightBulbAndGears: React.FC<IllustrationProps> = ({
   'aria-hidden': ariaHidden,
   className,
   height = '304',

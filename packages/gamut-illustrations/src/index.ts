@@ -21,7 +21,7 @@ export * from './Heart';
 export * from './Hills';
 export * from './HomeOffice';
 export * from './Keyhole';
-export * from './LightBulbGears';
+export * from './LightBulbAndGears';
 export * from './MagnifyingGlass';
 export * from './Maze';
 export * from './Megaphone';
