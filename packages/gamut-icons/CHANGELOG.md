@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.2.0...@codecademy/gamut-icons@9.3.0) (2023-05-24)
+
+
+### Features
+
+* **Icon:** add mini circle icon ([fea023f](https://github.com/Codecademy/gamut/commit/fea023fba021ba20c8ad2e8fdee6082ee6e5bc34))
+
+
+
 ## [9.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.1.0...@codecademy/gamut-icons@9.2.0) (2023-05-19)
 
 
