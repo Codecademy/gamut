@@ -11,7 +11,7 @@ describe('themed', () => {
   it('returned function looks up the value at the supplied path', () => {
     const getLineHeight = themed('lineHeight.title');
 
-    expect(getLineHeight({ theme })).toEqual(1.1);
+    expect(getLineHeight({ theme })).toEqual(1.2);
   });
   it('returned function looks up the value at the supplied path with a number', () => {
     const getSpacing4 = themed('spacing.4');

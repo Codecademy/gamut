@@ -3,6 +3,90 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.3...@codecademy/styleguide@66.1.4) (2023-05-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [66.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.2...@codecademy/styleguide@66.1.3) (2023-05-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [66.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.1...@codecademy/styleguide@66.1.2) (2023-05-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [66.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.0...@codecademy/styleguide@66.1.1) (2023-05-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [66.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.0.1...@codecademy/styleguide@66.1.0) (2023-05-19)
+
+
+### Features
+
+* **Modal + Dialog:** add image prop to modal ([adb60c4](https://github.com/Codecademy/gamut/commit/adb60c49b18b0ac25038f97f468b0ea9a3b62522))
+
+
+
+### [66.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.0.0...@codecademy/styleguide@66.0.1) (2023-05-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [66.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@65.1.0...@codecademy/styleguide@66.0.0) (2023-05-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **GridForm:** Update section break
+
+### Features
+
+* **GridForm:** Update section break ([9a82549](https://github.com/Codecademy/gamut/commit/9a8254982bcbbf641c809740e1fa2ff86b66d6fd))
+
+
+
+## [65.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@65.0.0...@codecademy/styleguide@65.1.0) (2023-05-16)
+
+
+### Features
+
+* **Popover:** Creating a center beak for Popover ([e97df14](https://github.com/Codecademy/gamut/commit/e97df14a11adfe57953550c24d64a30c8a8ebf6d))
+
+
+
+## [65.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.3.6...@codecademy/styleguide@65.0.0) (2023-05-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ProgressBar:** add border to yellow variant and use color mode
+
+### Features
+
+* **ProgressBar:** add border to yellow variant and use color mode ([46421f7](https://github.com/Codecademy/gamut/commit/46421f750f8d2323c22a366e0345a869decfa4c5))
+
+
+
 ### [64.3.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@64.3.5...@codecademy/styleguide@64.3.6) (2023-05-02)
 
 **Note:** Version bump only for package @codecademy/styleguide

@@ -50,12 +50,16 @@ export const outlineVariants = variant({
 const beakVariantsArray = [
   'below-left',
   'below-right',
+  'below-center',
   'above-left',
   'above-right',
+  'above-center',
   'below-left-sml',
   'below-right-sml',
+  'below-center-sml',
   'above-left-sml',
   'above-right-sml',
+  'above-center-sml',
 ];
 
 const beakVariantStyles = createVariantsFromAlignments(
