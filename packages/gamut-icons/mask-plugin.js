@@ -4,6 +4,7 @@ const plugin = (api) => {
   const maskTag = types.jSXIdentifier('mask');
   const gTag = types.jSXIdentifier('g');
   const rectTag = types.jSXIdentifier('rect');
+  let hasMask = false;
 
   const createUniqueAttributeId = (tag) => {
     const titleId = '${maskId}';
@@ -26,6 +27,7 @@ const plugin = (api) => {
       if (!path.get('openingElement.name').isJSXIdentifier({ name: 'svg' })) {
         return;
       }
+
       let titleNode;
 
       path.get('children').some((childPath) => {
@@ -36,53 +38,60 @@ const plugin = (api) => {
           titleNode = childPath.node;
           childPath.remove();
         }
+        if (name.node.name === 'mask') {
+          hasMask = true;
+        }
         return false;
       });
 
-      const newId = createAttribute('id', createUniqueAttributeId('id'));
+      if (!hasMask) {
+        // we want to add a mask if the svg doesn't already have one.
+        const newId = createAttribute('id', createUniqueAttributeId('id'));
 
-      const ogOpen = path.get('openingElement').node;
-      const ogClose = path.get('closingElement').node;
+        const ogOpen = path.get('openingElement').node;
+        const ogClose = path.get('closingElement').node;
 
-      const maskTagOpen = types.jsxOpeningElement(maskTag, [newId]);
-      const maskTagClosed = types.jsxClosingElement(maskTag, []);
+        const maskTagOpen = types.jsxOpeningElement(maskTag, [newId]);
+        const maskTagClosed = types.jsxClosingElement(maskTag, []);
 
-      const maskGAttr = createAttribute(
-        'mask',
-        createUniqueAttributeId('mask')
-      );
+        const maskGAttr = createAttribute(
+          'mask',
+          createUniqueAttributeId('mask')
+        );
 
-      const gTagOpen = types.jsxOpeningElement(gTag, [maskGAttr]);
+        const gTagOpen = types.jsxOpeningElement(gTag, [maskGAttr]);
 
-      const gTagClose = types.jsxClosingElement(gTag, []);
+        const gTagClose = types.jsxClosingElement(gTag, []);
 
-      const rectTagComplete = types.jsxElement(
-        types.jsxOpeningElement(
-          rectTag,
-          [
-            createAttribute('width', '100%'),
-            createAttribute('height', '100%'),
-            createAttribute('fill', 'currentColor'),
-          ],
+        const rectTagComplete = types.jsxElement(
+          types.jsxOpeningElement(
+            rectTag,
+            [
+              createAttribute('width', '100%'),
+              createAttribute('height', '100%'),
+              createAttribute('fill', 'currentColor'),
+            ],
+            true
+          ),
+          null,
+          [],
           true
-        ),
-        null,
-        [],
-        true
-      );
+        );
 
-      const newerChildren = types.jsxElement(gTagOpen, gTagClose, [
-        rectTagComplete,
-      ]);
-      const newChildren = types.jsxElement(maskTagOpen, maskTagClosed, [
-        ...path.node.children,
-      ]);
+        const newerChildren = types.jsxElement(gTagOpen, gTagClose, [
+          rectTagComplete,
+        ]);
+        const newChildren = types.jsxElement(maskTagOpen, maskTagClosed, [
+          ...path.node.children,
+        ]);
 
-      path.replaceWith(
-        types.jsxElement(ogOpen, ogClose, [newChildren, newerChildren])
-      );
+        path.replaceWith(
+          types.jsxElement(ogOpen, ogClose, [newChildren, newerChildren])
+        );
 
-      path.node.children.unshift(titleNode);
+        path.node.children.unshift(titleNode);
+      }
+
       path.skip();
     },
   };
