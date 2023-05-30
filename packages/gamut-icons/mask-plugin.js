@@ -1,14 +1,23 @@
 const plugin = (api) => {
-  const { types } = api;
+  const { template, types } = api;
 
   const maskTag = types.jSXIdentifier('mask');
   const gTag = types.jSXIdentifier('g');
   const rectTag = types.jSXIdentifier('rect');
 
-  const createUniqueAttributeId = (tag) => {
+  const createUniqueAttributeId = (tag, templateLiteral) => {
     const titleId = '${maskId}';
-    const newId = tag === 'mask' ? `url(#${titleId})` : titleId;
-    return newId;
+    const newId =
+      tag === 'mask' && templateLiteral
+        ? '`url(#${maskId})`'
+        : tag === 'mask'
+        ? `url(#${titleId})`
+        : templateLiteral
+        ? 'maskId'
+        : titleId;
+    return templateLiteral
+      ? types.jsxExpressionContainer(template.ast(newId).expression)
+      : newId;
   };
 
   const createAttribute = (tag, value) => {
@@ -21,6 +30,16 @@ const plugin = (api) => {
     );
   };
 
+  const replaceExistingAttribute = (path, name, targetAttr) => {
+    path.forEach((attr) => {
+      if (attr.node.name.name === name) {
+        attr
+          .get('value')
+          .replaceWith(createUniqueAttributeId(targetAttr, true));
+      }
+    });
+  };
+
   const vistor = {
     JSXElement(path) {
       if (!path.get('openingElement.name').isJSXIdentifier({ name: 'svg' })) {
@@ -28,7 +47,7 @@ const plugin = (api) => {
       }
 
       let titleNode;
-      let hasMask = false;
+      let hasMask;
 
       path.get('children').some((childPath) => {
         // we want to delete the title and reinsert it so it lands outside the mask. this fixes some issues with svgr's built-in titleProp parsing.
@@ -38,8 +57,22 @@ const plugin = (api) => {
           titleNode = childPath.node;
           childPath.remove();
         }
+
         if (name.node.name === 'mask') {
           hasMask = true;
+          const idPath = childPath.get('openingElement').get('attributes');
+          replaceExistingAttribute(idPath, 'id', 'id');
+        }
+
+        if (name.node.name === 'rect') {
+          const idPath = childPath.get('openingElement').get('attributes');
+          idPath.forEach((attr) => {
+            if (attr.node.name.name === 'mask') {
+              attr
+                .get('value')
+                .replaceWith(createUniqueAttributeId('mask', true));
+            }
+          });
         }
         return false;
       });
