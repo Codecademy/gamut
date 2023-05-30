@@ -4,7 +4,6 @@ const plugin = (api) => {
   const maskTag = types.jSXIdentifier('mask');
   const gTag = types.jSXIdentifier('g');
   const rectTag = types.jSXIdentifier('rect');
-  let hasMask = false;
 
   const createUniqueAttributeId = (tag) => {
     const titleId = '${maskId}';
@@ -29,6 +28,7 @@ const plugin = (api) => {
       }
 
       let titleNode;
+      let hasMask = false;
 
       path.get('children').some((childPath) => {
         // we want to delete the title and reinsert it so it lands outside the mask. this fixes some issues with svgr's built-in titleProp parsing.
