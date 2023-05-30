@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.3...@codecademy/gamut@55.1.4) (2023-05-30)
+
+
+### Bug Fixes
+
+* added aria-live to SubmitButton component to annouce loading state ([b6d52c3](https://github.com/Codecademy/gamut/commit/b6d52c3ac77fdffa0096fea890801fa5c4a79e99))
+
+
+
 ### [55.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.2...@codecademy/gamut@55.1.3) (2023-05-25)
 
 **Note:** Version bump only for package @codecademy/gamut
