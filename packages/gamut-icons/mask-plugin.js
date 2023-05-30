@@ -30,9 +30,10 @@ const plugin = (api) => {
     );
   };
 
-  const replaceExistingAttribute = (path, name, targetAttr) => {
-    path.forEach((attr) => {
-      if (attr.node.name.name === name) {
+  const replaceExistingAttribute = (path, targetAttr) => {
+    const idPath = path.get('openingElement').get('attributes');
+    idPath.forEach((attr) => {
+      if (attr.node.name.name === targetAttr) {
         attr
           .get('value')
           .replaceWith(createUniqueAttributeId(targetAttr, true));
@@ -60,25 +61,17 @@ const plugin = (api) => {
 
         if (name.node.name === 'mask') {
           hasMask = true;
-          const idPath = childPath.get('openingElement').get('attributes');
-          replaceExistingAttribute(idPath, 'id', 'id');
+          replaceExistingAttribute(childPath, 'id');
         }
 
         if (name.node.name === 'rect') {
-          const idPath = childPath.get('openingElement').get('attributes');
-          idPath.forEach((attr) => {
-            if (attr.node.name.name === 'mask') {
-              attr
-                .get('value')
-                .replaceWith(createUniqueAttributeId('mask', true));
-            }
-          });
+          replaceExistingAttribute(childPath, 'mask');
         }
         return false;
       });
 
       if (!hasMask) {
-        // we want to add a mask if the svg doesn't already have one.
+        // we only want to add a new color mask if the svg doesn't already have one.
         const newId = createAttribute('id', createUniqueAttributeId('id'));
 
         const ogOpen = path.get('openingElement').node;
