@@ -32,6 +32,7 @@ export * from './Onboarding';
 export * from './Plant';
 export * from './PortfolioProject';
 export * from './PracticeProject';
+export * from './PracticeTarget';
 export * from './Puzzle';
 export * from './Python';
 export * from './Sun';
