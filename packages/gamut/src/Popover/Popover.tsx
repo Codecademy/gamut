@@ -24,6 +24,7 @@ export const Popover: React.FC<PopoverProps> = ({
   outline = false,
   skipFocusTrap,
   pattern: Pattern,
+  popoverContainerRef,
   position = 'below',
   role,
   variant,
@@ -84,7 +85,7 @@ export const Popover: React.FC<PopoverProps> = ({
     [onRequestClose, targetRef]
   );
 
-  const popoverRef = useRef<HTMLDivElement>(null);
+  const nullRef = useRef<HTMLDivElement>(null);
   if ((!isOpen || !targetRef) && !animation) return null;
 
   const contents = (
@@ -93,13 +94,17 @@ export const Popover: React.FC<PopoverProps> = ({
       className={className}
       data-testid="popover-content-container"
       position={position}
-      ref={popoverRef}
+      ref={(popoverContainerRef as React.RefObject<HTMLDivElement>) ?? nullRef}
       role={role}
       style={getPopoverPosition()}
       tabIndex={-1}
     >
       <RaisedDiv
-        alignment={variant === 'primary' || beak ? 'aligned' : undefined}
+        alignment={
+          (variant === 'primary' || beak) && beak !== 'center'
+            ? 'aligned'
+            : 'centered'
+        }
         outline={outline ? 'outline' : 'boxShadow'}
         variant={variant}
         widthRestricted={widthRestricted}

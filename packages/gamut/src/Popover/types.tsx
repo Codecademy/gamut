@@ -63,7 +63,7 @@ export type PopoverProps = PopoverBaseProps &
     /**
      * Which side to position the beak. If not provided, beak will not be rendered.
      */
-    beak?: 'left' | 'right';
+    beak?: 'left' | 'right' | 'center';
     /**
      * Whether the popover is rendered.
      */
@@ -77,6 +77,13 @@ export type PopoverProps = PopoverBaseProps &
      * The target element around which the popover will be positioned.
      */
     targetRef: React.RefObject<
+      Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
+    >;
+
+    /**
+     * The PopoverContainer which contents will be rendered into.
+     */
+    popoverContainerRef?: React.RefObject<
       Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
     >;
 

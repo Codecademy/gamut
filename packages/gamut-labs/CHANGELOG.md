@@ -3,6 +3,146 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.15.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.14...@codecademy/gamut-labs@35.15.0) (2023-06-01)
+
+
+### Features
+
+* bump tracking in labs ([ec2d91c](https://github.com/Codecademy/gamut/commit/ec2d91cd5e2ca7248d9cb4c9fe038b81d740af98))
+
+
+
+### [35.14.14](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.13...@codecademy/gamut-labs@35.14.14) (2023-05-31)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.14.13](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.12...@codecademy/gamut-labs@35.14.13) (2023-05-31)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.14.12](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.11...@codecademy/gamut-labs@35.14.12) (2023-05-30)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.14.11](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.10...@codecademy/gamut-labs@35.14.11) (2023-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.14.10](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.9...@codecademy/gamut-labs@35.14.10) (2023-05-24)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.14.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.8...@codecademy/gamut-labs@35.14.9) (2023-05-23)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.14.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.7...@codecademy/gamut-labs@35.14.8) (2023-05-22)
+
+
+### Bug Fixes
+
+* tracking bump to ver 1.0.9 ([fa7e57a](https://github.com/Codecademy/gamut/commit/fa7e57a5e32f90a62ac80613bad35ba2a777e345))
+
+
+
+### [35.14.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.6...@codecademy/gamut-labs@35.14.7) (2023-05-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.14.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.5...@codecademy/gamut-labs@35.14.6) (2023-05-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.14.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.4...@codecademy/gamut-labs@35.14.5) (2023-05-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.14.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.3...@codecademy/gamut-labs@35.14.4) (2023-05-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.14.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.2...@codecademy/gamut-labs@35.14.3) (2023-05-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.14.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.1...@codecademy/gamut-labs@35.14.2) (2023-05-02)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [35.14.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.14.0...@codecademy/gamut-labs@35.14.1) (2023-05-01)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [35.14.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.13.1...@codecademy/gamut-labs@35.14.0) (2023-04-27)
+
+
+### Features
+
+* **GlabalHeaderItems:** Update a link in the site nav. ([017408b](https://github.com/Codecademy/gamut/commit/017408b94a2a95e3a4111c72d0f5da78b098b0ac))
+
+
+
+### [35.13.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.13.0...@codecademy/gamut-labs@35.13.1) (2023-04-24)
+
+
+### Bug Fixes
+
+* **ScoreSummary:** Add labels to informative icons ([2d2d6ca](https://github.com/Codecademy/gamut/commit/2d2d6ca79224283cbde40362322fb078d20fbc8a))
+
+
+
 ## [35.13.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-labs@35.12.1...@codecademy/gamut-labs@35.13.0) (2023-04-20)
 
 

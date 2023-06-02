@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.3.1...@codecademy/gamut-icons@9.3.2) (2023-05-31)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+### [9.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.3.0...@codecademy/gamut-icons@9.3.1) (2023-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
+## [9.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.2.0...@codecademy/gamut-icons@9.3.0) (2023-05-24)
+
+
+### Features
+
+* **Icon:** add mini circle icon ([fea023f](https://github.com/Codecademy/gamut/commit/fea023fba021ba20c8ad2e8fdee6082ee6e5bc34))
+
+
+
+## [9.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.1.0...@codecademy/gamut-icons@9.2.0) (2023-05-19)
+
+
+### Features
+
+* **Icon:** add PersonFilledIcon ([25ce7fc](https://github.com/Codecademy/gamut/commit/25ce7fcd83b5b0b6bff0b0acd5b13dbdffb78d50))
+
+
+
 ## [9.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.0.2...@codecademy/gamut-icons@9.1.0) (2023-04-20)
 
 

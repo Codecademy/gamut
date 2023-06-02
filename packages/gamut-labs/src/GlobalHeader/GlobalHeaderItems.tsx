@@ -160,7 +160,7 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
     },
     {
       id: 'learner-stories',
-      href: '/learner-stories',
+      href: '/resources/blog/category/learner-stories/',
       trackingTarget: 'topnav_learner_stories_hub',
       text: 'Learner Stories',
       type: 'link',

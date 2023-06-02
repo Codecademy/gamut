@@ -169,9 +169,3 @@ export type GridFormSectionProps = GridFormSectionTitleBaseProps & {
 };
 
 export type GridFormFieldsProps = GridFormField | GridFormSectionProps;
-
-export type GridFormSectionBreakTypes = 'none' | 'default';
-
-export interface GridFormSectionBreakProps {
-  breakType?: GridFormSectionBreakTypes;
-}

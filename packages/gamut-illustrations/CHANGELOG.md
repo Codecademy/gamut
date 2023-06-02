@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.38.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.37.1...@codecademy/gamut-illustrations@0.38.0) (2023-05-31)
+
+
+### Features
+
+* **Illustration:** add PracticeTarget illustration ([1dac50c](https://github.com/Codecademy/gamut/commit/1dac50cbb67d7739cecc3e183bac8ffa12678be0))
+
+
+
+### [0.37.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.37.0...@codecademy/gamut-illustrations@0.37.1) (2023-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+## [0.37.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.36.0...@codecademy/gamut-illustrations@0.37.0) (2023-05-24)
+
+
+### Features
+
+* **Illustration:** add LightBulbGears illustration ([2a81052](https://github.com/Codecademy/gamut/commit/2a81052edd1959efa813c91cd4a149ba1db08023))
+
+
+
 ## [0.36.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.35.2...@codecademy/gamut-illustrations@0.36.0) (2023-04-14)
 
 

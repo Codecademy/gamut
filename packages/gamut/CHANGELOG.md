@@ -3,6 +3,117 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.1.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.5...@codecademy/gamut@55.1.6) (2023-05-31)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [55.1.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.4...@codecademy/gamut@55.1.5) (2023-05-31)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [55.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.3...@codecademy/gamut@55.1.4) (2023-05-30)
+
+
+### Bug Fixes
+
+* added aria-live to SubmitButton component to annouce loading state ([b6d52c3](https://github.com/Codecademy/gamut/commit/b6d52c3ac77fdffa0096fea890801fa5c4a79e99))
+
+
+
+### [55.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.2...@codecademy/gamut@55.1.3) (2023-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [55.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.1...@codecademy/gamut@55.1.2) (2023-05-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [55.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.0...@codecademy/gamut@55.1.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **ModalView:** fix onRequestClose type ([718ec33](https://github.com/Codecademy/gamut/commit/718ec3373a260348719196daabac021f24e04681))
+
+
+
+## [55.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.0.1...@codecademy/gamut@55.1.0) (2023-05-19)
+
+
+### Features
+
+* **Modal + Dialog:** add image prop to modal ([adb60c4](https://github.com/Codecademy/gamut/commit/adb60c49b18b0ac25038f97f468b0ea9a3b62522))
+
+
+
+### [55.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.0.0...@codecademy/gamut@55.0.1) (2023-05-19)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [55.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@54.1.0...@codecademy/gamut@55.0.0) (2023-05-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **GridForm:** Update section break
+
+### Features
+
+* **GridForm:** Update section break ([9a82549](https://github.com/Codecademy/gamut/commit/9a8254982bcbbf641c809740e1fa2ff86b66d6fd))
+
+
+
+## [54.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@54.0.0...@codecademy/gamut@54.1.0) (2023-05-16)
+
+
+### Features
+
+* **Popover:** Creating a center beak for Popover ([e97df14](https://github.com/Codecademy/gamut/commit/e97df14a11adfe57953550c24d64a30c8a8ebf6d))
+
+
+
+## [54.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@53.2.0...@codecademy/gamut@54.0.0) (2023-05-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ProgressBar:** add border to yellow variant and use color mode
+
+### Features
+
+* **ProgressBar:** add border to yellow variant and use color mode ([46421f7](https://github.com/Codecademy/gamut/commit/46421f750f8d2323c22a366e0345a869decfa4c5))
+
+
+
+## [53.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@53.1.2...@codecademy/gamut@53.2.0) (2023-05-02)
+
+
+### Features
+
+* **Popover:** allow passing container ref into popover ([ac82195](https://github.com/Codecademy/gamut/commit/ac821953136b1d2b5f5421b3218c5d5c17f10f0c))
+
+
+
 ### [53.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@53.1.1...@codecademy/gamut@53.1.2) (2023-04-20)
 
 **Note:** Version bump only for package @codecademy/gamut
