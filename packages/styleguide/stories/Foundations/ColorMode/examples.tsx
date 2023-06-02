@@ -1,4 +1,5 @@
 /* eslint-disable gamut/import-paths */
+import { ProLabel } from '@codecademy/brand';
 import {
   Anchor,
   Box,
@@ -25,7 +26,6 @@ import {
   SearchIcon,
   StreakIcon,
 } from '@codecademy/gamut-icons';
-import { ProLabel } from '@codecademy/gamut-labs/src';
 import {
   Background,
   ColorMode,

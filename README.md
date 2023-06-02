@@ -10,7 +10,7 @@ This repository is a monorepo that we manage using [Lerna](https://lerna.js.org/
 
 ## Gamut Kit
 
-We provide a single package to manage the versions of a few core dependencies: `gamut`, `gamut-icons`, `gamut-illustrations`, `gamut-labs`, `gamut-patterns`, `gamut-styles`. Since these packages are highly intertwined we suggest only installing `@codecademy/gamut-kit` when your app needs all of these.
+We provide a single package to manage the versions of a few core dependencies: `gamut`, `gamut-icons`, `gamut-illustrations`, `gamut-patterns`, `gamut-styles`. Since these packages are highly intertwined we suggest only installing `@codecademy/gamut-kit` when your app needs all of these.
 
 [`gamut-kit`: Include in your application instead of the individual packages to simplify version management. ](/packages/gamut-kit/README.md)
 
@@ -47,8 +47,6 @@ We provide a single package to manage the versions of a few core dependencies: `
 [`gamut-icons`: SVG Icons for Gamut components and codecademy apps](/packages/gamut-icons/README.md)
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-icons.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-icons)
-
-[`gamut-labs`: Experimental and brand level components](/packages/gamut-labs/README.md)
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-labs.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-labs)
 
