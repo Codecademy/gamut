@@ -299,6 +299,13 @@ export interface SandboxOutputTerminalComponent {
   type: 'SandboxOutputTerminal';
 }
 
+export interface CodeChallengeNarrativeComponent {
+  id: string;
+  type: 'CodeChallengeNarrative';
+  content: string;
+  instructions?: string;
+}
+
 export type LayoutComponent =
   | BriefComponent
   | NarrativeComponent
@@ -314,7 +321,8 @@ export type LayoutComponent =
   | ExpoPreviewComponent
   | ReplTerminalComponent
   | SandboxCodeEditorComponent
-  | SandboxOutputTerminalComponent;
+  | SandboxOutputTerminalComponent
+  | CodeChallengeNarrativeComponent;
 
 export interface AssessmentAnswer {
   text: string;
