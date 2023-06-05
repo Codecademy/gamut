@@ -1,4 +1,3 @@
-/* eslint-disable gamut/import-paths */
 import {
   Anchor,
   Box,
@@ -17,7 +16,7 @@ import {
   Text,
   TextButton,
   Toggle,
-} from '@codecademy/gamut/src';
+} from '@codecademy/gamut';
 import { ButtonProps } from '@codecademy/gamut/src/Button/shared';
 import {
   MiniArrowRightIcon,
@@ -25,12 +24,11 @@ import {
   SearchIcon,
   StreakIcon,
 } from '@codecademy/gamut-icons';
-import { ProLabel } from '@codecademy/gamut-labs/src';
 import {
   Background,
   ColorMode,
   usePrefersDarkMode,
-} from '@codecademy/gamut-styles/src';
+} from '@codecademy/gamut-styles';
 import { ComponentProps, useState } from 'react';
 import * as React from 'react';
 
@@ -155,7 +153,7 @@ const ColorModeExampleContents = () => {
         <Logo variant="mini" />
       </GridBox>
       <Text as="p" fontSize={16} fontFamily="accent" mb={16}>
-        <ProLabel height={22} verticalAlign="text-bottom" /> Cool Feature
+        Cool Feature
       </Text>
       <Text as="p" mb={16}>
         Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore
