@@ -79,6 +79,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
             icon={MiniDeleteIcon}
             onClick={onClose}
             position="absolute"
+            title={closeLabel}
             top="1rem"
             right="0.5rem"
           />
