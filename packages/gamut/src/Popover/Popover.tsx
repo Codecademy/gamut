@@ -23,12 +23,10 @@ const findScrollingParent = ({
       )
     ) {
       return parentElement;
-    } else {
-      return findScrollingParent(parentElement);
     }
-  } else {
-    return null;
+    return findScrollingParent(parentElement);
   }
+  return null;
 };
 
 export const Popover: React.FC<PopoverProps> = ({
