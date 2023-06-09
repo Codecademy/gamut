@@ -12,6 +12,25 @@ import {
 } from './elements';
 import { PopoverProps } from './types';
 
+const findScrollingParent = ({
+  parentElement,
+}: HTMLElement): HTMLElement | null => {
+  if (parentElement) {
+    const { overflow, overflowY, overflowX } = getComputedStyle(parentElement);
+    if (
+      [overflow, overflowY, overflowX].some((val) =>
+        ['scroll', 'auto'].includes(val)
+      )
+    ) {
+      return parentElement;
+    } else {
+      return findScrollingParent(parentElement);
+    }
+  } else {
+    return null;
+  }
+};
+
 export const Popover: React.FC<PopoverProps> = ({
   animation,
   align = 'left',
@@ -57,6 +76,23 @@ export const Popover: React.FC<PopoverProps> = ({
   useEffect(() => {
     setTargetRect(targetRef?.current?.getBoundingClientRect());
   }, [targetRef, isOpen, width, height, x, y]);
+
+  useEffect(() => {
+    if (!targetRef.current) {
+      return;
+    }
+    const scrollingParent = findScrollingParent(
+      targetRef.current as HTMLElement
+    );
+    if (!scrollingParent?.addEventListener) {
+      return;
+    }
+    const handler = () => {
+      setTargetRect(targetRef?.current?.getBoundingClientRect());
+    };
+    scrollingParent.addEventListener('scroll', handler);
+    return () => scrollingParent.removeEventListener('scroll', handler);
+  }, [targetRef]);
 
   useEffect(() => {
     if (targetRect) {
