@@ -22,7 +22,9 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   const [escapePressed, setEscapePressed] = React.useState(false);
   const accessibilityProps = getAccessibilityProps({ focusable, id });
 
-  const action = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleShowHideAction = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     if (e.type === 'mouseenter') {
       ref?.current?.focus();
       setEscapePressed(false);
@@ -45,8 +47,8 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
     <TooltipWrapper>
       <TargetContainer
         ref={ref}
-        onMouseEnter={(e) => action(e)}
-        onMouseLeave={(e) => action(e)}
+        onMouseEnter={(e) => handleShowHideAction(e)}
+        onMouseLeave={(e) => handleShowHideAction(e)}
         onKeyDown={(e) => escapeKeyPressHandler(e)}
         {...accessibilityProps}
       >
