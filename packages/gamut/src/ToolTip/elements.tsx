@@ -1,4 +1,4 @@
-import { css, theme } from '@codecademy/gamut-styles';
+import { css, system, theme } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -25,16 +25,26 @@ export const TargetContainer = styled.div(
     },
   })
 );
+const activeStates = system.states({
+  selected: {
+    '&:hover': {
+      visibility: 'hidden',
+    },
+  },
+});
 
 export interface ToolTipContainerProps
-  extends StyleProps<typeof toolTipAlignmentVariants> {}
+  extends StyleProps<typeof toolTipAlignmentVariants>,
+    StyleProps<typeof activeStates> {
+  hide?: boolean;
+}
 
 export const ToolTipContainer = styled(Box)<ToolTipContainerProps>`
   ${TargetContainer}:hover + &,
   ${TargetContainer}:focus-within + &,
   &:hover {
     opacity: 1;
-    visibility: visible;
+    visibility: ${({ hide }) => (hide ? 'hidden' : 'visible')};
   }
   ${toolTipAlignmentVariants}
 `;

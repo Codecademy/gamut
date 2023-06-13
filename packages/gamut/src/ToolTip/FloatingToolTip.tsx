@@ -51,10 +51,12 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
       setIsFocused(false);
     }
     if (type === 'mouseenter' && !isOpen) {
+      ref?.current?.focus();
       setIsOpen(true);
     }
     if (type === 'mouseleave' && isOpen && !isFocused) {
       setIsOpen(false);
+      ref?.current?.blur();
     }
   };
 

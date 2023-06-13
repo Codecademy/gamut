@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useRef } from 'react';
 
 import {
   TargetContainer,
@@ -7,7 +8,7 @@ import {
   TooltipWrapper,
 } from './elements';
 import { tooltipDefaultProps, ToolTipPlacementComponentProps } from './types';
-import { escapeKeyPressHandler, getAccessibilityProps } from './utils';
+import { getAccessibilityProps } from './utils';
 
 export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   alignment = tooltipDefaultProps.alignment,
@@ -17,11 +18,35 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   target,
   widthMode = tooltipDefaultProps.widthMode,
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [escapePressed, setEscapePressed] = React.useState(false);
   const accessibilityProps = getAccessibilityProps({ focusable, id });
+
+  const action = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (e.type === 'mouseenter') {
+      ref?.current?.focus();
+      setEscapePressed(false);
+      return;
+    }
+
+    ref?.current?.blur();
+  };
+
+  const escapeKeyPressHandler = (
+    event: React.KeyboardEvent<HTMLDivElement>
+  ) => {
+    if (event.key === 'Escape') {
+      setEscapePressed(true);
+      ref?.current?.blur();
+    }
+  };
 
   return (
     <TooltipWrapper>
       <TargetContainer
+        ref={ref}
+        onMouseEnter={(e) => action(e)}
+        onMouseLeave={(e) => action(e)}
         onKeyDown={(e) => escapeKeyPressHandler(e)}
         {...accessibilityProps}
       >
@@ -33,6 +58,7 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
         as="div"
         id={id}
         role="tooltip"
+        hidden={escapePressed}
       >
         <ToolTipBody
           alignment={alignment.includes('center') ? 'centered' : 'aligned'}
