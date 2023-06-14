@@ -30,6 +30,19 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
     }
   }, []);
 
+  useLayoutEffect(() => {
+    if (isOpen) {
+      const closeOnEsc = ({ key }: { key: string }) => {
+        if (key === 'Escape') {
+          setIsOpen(false);
+        }
+      };
+      document.addEventListener('keydown', closeOnEsc);
+
+      return () => document.removeEventListener('keydown', closeOnEsc);
+    }
+  }, [isOpen]);
+
   const accessibilityProps = getAccessibilityProps({
     focusable,
     id,
@@ -51,12 +64,10 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
       setIsFocused(false);
     }
     if (type === 'mouseenter' && !isOpen) {
-      ref?.current?.focus();
       setIsOpen(true);
     }
     if (type === 'mouseleave' && isOpen && !isFocused) {
       setIsOpen(false);
-      ref?.current?.blur();
     }
   };
 

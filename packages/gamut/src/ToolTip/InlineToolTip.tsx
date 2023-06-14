@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 
 import {
   TargetContainer,
@@ -20,30 +20,34 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [escapePressed, setEscapePressed] = React.useState(false);
+  const [isOpenFromMouse, setIsOpenFromMouse] = React.useState(false);
   const accessibilityProps = getAccessibilityProps({ focusable, id });
+
+  useLayoutEffect(() => {
+    if (isOpenFromMouse) {
+      const closeOnEsc = ({ key }: { key: string }) => {
+        if (key === 'Escape') {
+          setEscapePressed(true);
+        }
+      };
+      document.addEventListener('keydown', closeOnEsc);
+
+      return () => {
+        setEscapePressed(false);
+        document.removeEventListener('keydown', closeOnEsc);
+      };
+    }
+  }, [isOpenFromMouse]);
 
   const handleShowHideAction = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
     if (e.type === 'mouseenter') {
-      ref?.current?.focus();
-      setEscapePressed(false);
+      setIsOpenFromMouse(true);
     }
 
     if (e.type === 'mouseleave') {
-      ref?.current?.blur();
-      setEscapePressed(false);
-    }
-  };
-
-  const escapeKeyPressHandler = (
-    event: React.KeyboardEvent<HTMLDivElement>
-  ) => {
-    if (event.key === 'Escape') {
-      ref?.current?.blur();
-      console.log('escape pressed');
-
-      setEscapePressed(true);
+      setIsOpenFromMouse(false);
     }
   };
 
@@ -51,9 +55,9 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
     <TooltipWrapper>
       <TargetContainer
         ref={ref}
+        onClick={() => setEscapePressed(false)}
         onMouseEnter={(e) => handleShowHideAction(e)}
         onMouseLeave={(e) => handleShowHideAction(e)}
-        onKeyDown={(e) => escapeKeyPressHandler(e)}
         {...accessibilityProps}
       >
         {target}

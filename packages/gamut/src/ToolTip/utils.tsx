@@ -75,8 +75,6 @@ export const escapeKeyPressHandler = (
   event: React.KeyboardEvent<HTMLDivElement>
 ) => {
   if (event.key === 'Escape') {
-    console.log('escape pressed');
-
     (event.target as HTMLElement).blur();
   }
 };
