@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import {
   TargetContainer,
@@ -23,7 +23,7 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   const [isOpenFromMouse, setIsOpenFromMouse] = React.useState(false);
   const accessibilityProps = getAccessibilityProps({ focusable, id });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (isOpenFromMouse) {
       const closeOnEsc = ({ key }: { key: string }) => {
         if (key === 'Escape') {

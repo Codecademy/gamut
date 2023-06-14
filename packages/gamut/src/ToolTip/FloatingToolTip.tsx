@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
 
 import { Box, FlexBox } from '../Box';
@@ -30,7 +30,7 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
     }
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (isOpen) {
       const closeOnEsc = ({ key }: { key: string }) => {
         if (key === 'Escape') {
