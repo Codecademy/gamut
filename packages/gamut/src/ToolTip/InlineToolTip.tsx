@@ -28,18 +28,22 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
     if (e.type === 'mouseenter') {
       ref?.current?.focus();
       setEscapePressed(false);
-      return;
     }
 
-    ref?.current?.blur();
+    if (e.type === 'mouseleave') {
+      ref?.current?.blur();
+      setEscapePressed(false);
+    }
   };
 
   const escapeKeyPressHandler = (
     event: React.KeyboardEvent<HTMLDivElement>
   ) => {
     if (event.key === 'Escape') {
-      setEscapePressed(true);
       ref?.current?.blur();
+      console.log('escape pressed');
+
+      setEscapePressed(true);
     }
   };
 
