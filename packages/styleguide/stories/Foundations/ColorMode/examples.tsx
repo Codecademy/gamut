@@ -1,6 +1,7 @@
 import {
   Anchor,
   Box,
+  ButtonProps,
   Checkbox,
   CTAButton,
   FillButton,
@@ -17,7 +18,6 @@ import {
   TextButton,
   Toggle,
 } from '@codecademy/gamut';
-import { ButtonProps } from '@codecademy/gamut/src/Button/shared';
 import {
   MiniArrowRightIcon,
   MiniDeleteIcon,
