@@ -13,6 +13,7 @@ export * from './BrowserPuzzle';
 export * from './ChatBox';
 export * from './CodeCelebration';
 export * from './Coffee';
+export * from './ComputerLock';
 export * from './Confetti';
 export * from './EmailAt';
 export * from './Envelope';
