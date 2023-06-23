@@ -1,20 +1,14 @@
 import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
-import {
-  Background,
-  system,
-  timing,
-  useCurrentMode,
-  variant,
-} from '@codecademy/gamut-styles';
+import { Background, system, useCurrentMode } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import { isValidElement, useState } from 'react';
 import * as React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
 
-import { WithChildrenProp } from '..';
+import { Rotation, WithChildrenProp } from '..';
 import { Box } from '../Box';
-import { FillButton, IconButton } from '../Button';
+import { FillButton, IconButton, TextButton } from '../Button';
 import { alertVariants, placementVariants } from './variants';
 
 export type AlertType = keyof typeof alertVariants;
@@ -76,22 +70,6 @@ CollapsableContent.defaultProps = {
   transition: { duration: 0.2, ease: 'easeInOut' },
 };
 
-const CollapseButton = styled(IconButton)(
-  variant({
-    prop: 'toggleState',
-    defaultVariant: 'collapsed',
-    base: { svg: { transition: `${timing.fast} transform` } },
-    variants: {
-      collapsed: {},
-      expanded: {
-        svg: {
-          transform: 'rotate(180deg)',
-        },
-      },
-    },
-  })
-);
-
 export const Alert: React.FC<AlertProps> = ({
   children,
   cta,
@@ -138,15 +116,17 @@ export const Alert: React.FC<AlertProps> = ({
   );
 
   const expandButton = truncated && (
-    <CollapseButton
+    <TextButton
       tabIndex={tabIndex}
       aria-label={expanded ? 'Collapse' : 'Expand'}
-      toggleState={toggleState}
       variant="secondary"
       size="small"
-      icon={MiniChevronDownIcon}
       onClick={() => setExpanded(!expanded)}
-    />
+    >
+      <Rotation rotated={toggleState === 'expanded'}>
+        {MiniChevronDownIcon}
+      </Rotation>
+    </TextButton>
   );
 
   const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
