@@ -16,8 +16,12 @@ const activePropnames = {
   select: 'selected',
 };
 
+// TODO: Refactor navigation menus to not be menus
+// Action and select menus should be using aria-selected, while navigation menus should be using aria-current
+// Unless these are just aesthetic differences, which I need to look into :)
+
 const activeAriaProps = {
-  navigation: 'location',
+  navigation: 'true',
   action: 'true',
   select: 'true',
 };
@@ -37,10 +41,10 @@ export const MenuItem = forwardRef<
   const computed = {
     ...props,
     ...rest,
-    // variant: variant === 'select' ? 'select' : 'link',
+    variant: variant === 'select' ? 'select' : 'link',
     role: 'menuitem',
     [activeProp]: active,
-    'aria-current': active ? activeAriaProps[variant] : undefined,
+    'aria-selected': active ? activeAriaProps[variant] : undefined,
   } as ListItemProps;
 
   const content = (
@@ -62,9 +66,7 @@ export const MenuItem = forwardRef<
     return (
       <ListItem role="none">
         <ListLink
-          // {...(computed as ListLinkProps)}
-          role="menuitem"
-          aria-current={active ? 'location' : undefined}
+          {...(computed as ListLinkProps)}
           href={href}
           ref={linkRef}
           target={target}
