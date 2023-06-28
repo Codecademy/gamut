@@ -16,6 +16,12 @@ const activePropnames = {
   select: 'selected',
 };
 
+const activeAriaProps = {
+  navigation: 'location',
+  action: 'true',
+  select: 'true',
+};
+
 export const MenuItem = forwardRef<
   HTMLLIElement | HTMLAnchorElement | HTMLButtonElement,
   Omit<
@@ -31,9 +37,10 @@ export const MenuItem = forwardRef<
   const computed = {
     ...props,
     ...rest,
-    variant: variant === 'select' ? 'select' : 'link',
+    // variant: variant === 'select' ? 'select' : 'link',
     role: 'menuitem',
     [activeProp]: active,
+    'aria-current': active ? activeAriaProps[variant] : undefined,
   } as ListItemProps;
 
   const content = (
@@ -55,7 +62,9 @@ export const MenuItem = forwardRef<
     return (
       <ListItem role="none">
         <ListLink
-          {...(computed as ListLinkProps)}
+          // {...(computed as ListLinkProps)}
+          role="menuitem"
+          aria-current={active ? 'location' : undefined}
           href={href}
           ref={linkRef}
           target={target}
