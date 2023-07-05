@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.1.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.7...@codecademy/gamut@55.1.8) (2023-07-05)
+
+
+### Bug Fixes
+
+* **Popover:** move position with target when in scroll container ([184c8d4](https://github.com/Codecademy/gamut/commit/184c8d4eb4bb2dc852aa96b257eb948fc15501d6))
+
+
+
 ### [55.1.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.6...@codecademy/gamut@55.1.7) (2023-06-21)
 
 **Note:** Version bump only for package @codecademy/gamut
