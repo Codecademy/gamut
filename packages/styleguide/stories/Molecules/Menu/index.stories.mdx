@@ -1,17 +1,10 @@
-import {
-  Column,
-  LayoutGrid,
-  Menu,
-  MenuItem,
-  MenuSeparator,
-} from '@codecademy/gamut';
-import { MultipleUsersIcon } from '@codecademy/gamut-icons';
+import { Column, LayoutGrid, Menu } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
 
-import { PopoverMenuExample } from './Menu.examples.tsx';
+import { MenuItemsExample, PopoverMenuExample } from './Menu.examples.tsx';
 
 <Meta
   title={title}
@@ -35,19 +28,7 @@ import { PopoverMenuExample } from './Menu.examples.tsx';
   args={{
     variant: 'select',
     spacing: 'normal',
-    children: (
-      <>
-        <MenuItem href="#">Menu Item</MenuItem>
-        <MenuItem active href="#">
-          Active Item
-        </MenuItem>
-        <MenuSeparator />
-        <MenuItem icon={MultipleUsersIcon} href="#">
-          Icon Item
-        </MenuItem>
-        <MenuItem href="#">Menu Item</MenuItem>
-      </>
-    ),
+    children: <MenuItemsExample type="default" />,
   }}
 />
 
@@ -90,7 +71,11 @@ const MyMenu = () => (
 ### Action
 
 <Story name="Action" args={{ variant: 'action' }}>
-  {(args) => <Menu {...args} />}
+  {(args) => (
+    <Menu {...args}>
+      <MenuItemsExample type="button" />
+    </Menu>
+  )}
 </Story>
 
 </Column>
@@ -99,7 +84,11 @@ const MyMenu = () => (
 ### Navigation
 
 <Story name="Navigation" args={{ variant: 'navigation' }}>
-  {(args) => <Menu {...args} />}
+  {(args) => (
+    <Menu {...args}>
+      <MenuItemsExample type="link" />
+    </Menu>
+  )}
 </Story>
 
 </Column>
@@ -116,7 +105,11 @@ const MyMenu = () => (
   name="Select Condensed"
   args={{ variant: 'select', spacing: 'condensed' }}
 >
-  {(args) => <Menu {...args} />}
+  {(args) => (
+    <Menu {...args}>
+      <MenuItemsExample type="link" />
+    </Menu>
+  )}
 </Story>
 
 </Column>
