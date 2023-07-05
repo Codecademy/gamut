@@ -1,6 +1,7 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { ComponentProps, forwardRef, MutableRefObject } from 'react';
 
+import { Text } from '../Typography';
 import {
   ListButton,
   ListItem,
@@ -10,20 +11,19 @@ import {
 } from './elements';
 import { useMenuContext } from './MenuContext';
 
+const getListItemType = (href: boolean, onClick: boolean) =>
+  href ? 'link' : onClick ? 'button' : 'item';
+
 const activePropnames = {
   navigation: 'active-navlink',
   action: 'active',
   select: 'selected',
 };
 
-// TODO: Refactor navigation menus to not be menus
-// Action and select menus should be using aria-selected, while navigation menus should be using aria-current
-// Unless these are just aesthetic differences, which I need to look into :)
-
-const activeAriaProps = {
-  navigation: 'true',
-  action: 'true',
-  select: 'true',
+const currentItemText = {
+  link: 'current page',
+  button: 'current action',
+  item: 'current item',
 };
 
 export const MenuItem = forwardRef<
@@ -44,8 +44,9 @@ export const MenuItem = forwardRef<
     variant: variant === 'select' ? 'select' : 'link',
     role: 'menuitem',
     [activeProp]: active,
-    'aria-selected': active ? activeAriaProps[variant] : undefined,
   } as ListItemProps;
+
+  const listItemType = getListItemType(!!href, !!props.onClick);
 
   const content = (
     <>
@@ -56,11 +57,12 @@ export const MenuItem = forwardRef<
           data-testid="menuitem-icon"
         />
       )}
+      {active && <Text screenreader>{currentItemText[listItemType]},</Text>}
       {children}
     </>
   );
 
-  if (href) {
+  if (listItemType === 'link') {
     const linkRef = ref as MutableRefObject<HTMLAnchorElement>;
 
     return (
@@ -77,7 +79,7 @@ export const MenuItem = forwardRef<
     );
   }
 
-  if (props.onClick) {
+  if (listItemType === 'button') {
     const buttonRef = ref as MutableRefObject<HTMLButtonElement>;
 
     return (
