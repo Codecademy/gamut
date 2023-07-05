@@ -91,4 +91,39 @@ describe('Menu', () => {
 
     screen.getByTestId('menuitem-icon');
   });
+  it('renders `current page` screenreader text for active link', () => {
+    renderView({
+      children: (
+        <MenuItem active href="#link">
+          Cool Town
+        </MenuItem>
+      ),
+    });
+
+    screen.getByText('current page,');
+  });
+  it('renders `current action` screenreader text for active buttons', () => {
+    renderView({
+      children: (
+        <MenuItem active onClick={() => null}>
+          Cool Town
+        </MenuItem>
+      ),
+    });
+
+    screen.getByText('current action,');
+  });
+  it('renders `current item` screenreader text for active default ', () => {
+    renderView({
+      children: <MenuItem active>Cool Town</MenuItem>,
+    });
+
+    expect(screen.queryByTestId('menuitem-icon')).toBeNull();
+
+    renderView({
+      children: <MenuItem icon={MultipleUsersIcon}>Cool Town</MenuItem>,
+    });
+
+    screen.getByText('current item,');
+  });
 });
