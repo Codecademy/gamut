@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import * as React from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
@@ -119,7 +119,6 @@ export const Popover: React.FC<PopoverProps> = ({
     [onRequestClose, targetRef]
   );
 
-  const nullRef = useRef<HTMLDivElement>(null);
   if ((!isOpen || !targetRef) && !animation) return null;
 
   const contents = (
@@ -128,7 +127,7 @@ export const Popover: React.FC<PopoverProps> = ({
       className={className}
       data-testid="popover-content-container"
       position={position}
-      ref={(popoverContainerRef as React.RefObject<HTMLDivElement>) ?? nullRef}
+      {...(popoverContainerRef ? { ref: popoverContainerRef } : {})}
       role={role}
       style={getPopoverPosition()}
       tabIndex={-1}
