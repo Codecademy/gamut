@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import type { editor as EditorType } from 'monaco-editor';
-import React, { Component } from 'react';
+import { Component } from 'react';
 import ReactMonacoEditor from 'react-monaco-editor';
 import ReactResizeDetector from 'react-resize-detector';
 

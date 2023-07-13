@@ -1,3 +1,4 @@
+import { WithChildrenProp } from '@codecademy/gamut';
 import { ReactNode } from 'react';
 
 import {
@@ -5,16 +6,11 @@ import {
   AppHeaderItemWithHref,
 } from '../AppHeader/AppHeaderElements/types';
 import { AppHeaderSearch } from '../AppHeader/Search/useHeaderSearch';
-import { CrossDeviceBookmarkParts } from '../Bookmarks/types';
 import { AppHeaderNotificationSettings } from '../Notifications/types';
-
-type RenderFavorites = {
-  desktop: () => ReactNode;
-};
 
 type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
 
-type BaseHeader = {
+interface BaseHeader extends WithChildrenProp {
   /** A method to be called on click/activating a header item */
   action: AppHeaderClickHandler;
   /** A method to be called only on click/activating a *link* header item */
@@ -22,22 +18,21 @@ type BaseHeader = {
   className?: string;
   hidePricing?: boolean;
   search: AppHeaderSearch;
-  crossDeviceBookmarkParts?: CrossDeviceBookmarkParts;
-};
+}
 
 export type User = {
   avatar: string;
   displayName: string;
-  geo?: string;
+  enterpriseUrl?: string;
   isAdmin?: boolean;
   isBusinessAdmin?: boolean;
   isBusinessSsoUser?: boolean;
   isCustomerSupport?: boolean;
   isAccountManager?: boolean;
   isPaused?: boolean;
+  isPlusUser?: boolean;
   proCheckoutUrl?: string;
   showProUpgrade?: boolean;
-  showReferrals?: boolean;
   hideCareerPaths?: boolean;
   hideBusinessAccount?: boolean;
 };
@@ -45,7 +40,6 @@ export type User = {
 type LoggedInHeader = BaseHeader & {
   notifications: AppHeaderNotificationSettings;
   renderProfile?: RenderProfile;
-  renderFavorites?: RenderFavorites;
   user: User;
 };
 
@@ -67,13 +61,17 @@ export type ProHeader = LoggedInHeader & {
   type: 'pro';
 };
 
+export type EnterpriseHeader = BaseHeader & {
+  type: 'enterprise';
+  user: User;
+};
+
 export type LoadingHeader = BaseHeader & {
   type: 'loading';
 };
 
 export enum CrossDeviceItemId {
   NOTIFICATIONS = 'notifications',
-  BOOKMARKS = 'bookmarks',
   UNSET = '',
 }
 

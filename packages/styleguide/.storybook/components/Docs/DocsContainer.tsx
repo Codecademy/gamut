@@ -1,6 +1,7 @@
 import { MDXProvider } from '@mdx-js/react';
 import { ThemeProvider, ensure as ensureTheme } from '@storybook/theming';
 import { components as htmlComponents } from '@storybook/components';
+import Helmet from 'react-helmet';
 import {
   DocsContext,
   SourceContainer,
@@ -16,7 +17,8 @@ import {
   GamutProvider,
 } from '@codecademy/gamut-styles/src';
 import { NavigationProvider } from '../Navigation/NavigationProvider';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import * as React from 'react';
 import { merge } from 'lodash';
 import { Link } from '../Markdown/Elements';
 import { coreTheme } from '@codecademy/gamut-styles/src/themes/core';
@@ -108,7 +110,9 @@ export const DocsContainer: React.FC<{ context: DocsContextProps }> = ({
         cache={createEmotionCache({ speedy: false })}
         theme={coreTheme}
       >
-        <AssetProvider />
+        <Helmet>
+          <AssetProvider />
+        </Helmet>
         <NavigationProvider>
           <SourceContainer>
             <ThemeProvider theme={overrides}>

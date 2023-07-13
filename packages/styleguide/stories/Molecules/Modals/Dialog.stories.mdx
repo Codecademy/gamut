@@ -1,4 +1,5 @@
-import { Dialog } from '@codecademy/gamut/src';
+import { Dialog, FlexBox, Text } from '@codecademy/gamut/src';
+import { CodeCelebration } from '@codecademy/gamut-illustrations';
 import { ColorMode } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -147,6 +148,43 @@ Check it out:
         <ColorMode mode="dark">
           <Dialog {...args} />
         </ColorMode>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### With Images
+
+The image prop can be used to include a full-width product image or illustration with a 16:9 aspect ratio. This image should help clarify the message of the dialog.
+
+Overflow for images will be cut off, so make sure the image is correctly sized for the dialog.
+
+<Canvas>
+  <Story
+    name="Image Dialogs"
+    height="500px"
+    args={{
+      image: (
+        <FlexBox
+          bg="background-primary"
+          center
+          height="100%"
+          p={4}
+          width="100%"
+        >
+          <CodeCelebration height="100%" />
+        </FlexBox>
+      ),
+    }}
+  >
+    {(args) => {
+      return (
+        <Dialog {...args}>
+          <Text mt={12} fontSize={14}>
+            Optional 1-2 lines of explanation that provides relevant details.
+            Lorem ipsum cras nulla massa odio ligula.
+          </Text>
+        </Dialog>
       );
     }}
   </Story>

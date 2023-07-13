@@ -6,7 +6,7 @@ import {
   TabsKeyboardActivation,
   TabsProps as ReachTabsProps,
 } from '@reach/tabs';
-import React from 'react';
+import * as React from 'react';
 
 import { tabElementBaseProps, TabElementStyleProps } from './props';
 import { tabContainerVariants } from './styles';

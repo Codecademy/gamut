@@ -2,7 +2,8 @@ import { Box } from '@codecademy/gamut';
 import { SearchIcon } from '@codecademy/gamut-icons';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 const SearchForm = Box.withComponent('form');
 

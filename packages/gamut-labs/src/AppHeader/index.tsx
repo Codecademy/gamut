@@ -1,14 +1,10 @@
 import { FillButton, TextButton } from '@codecademy/gamut';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import * as React from 'react';
 
 import { AppBar } from '../AppBar';
-import {
-  CrossDeviceBookmarkParts,
-  CrossDeviceBookmarksView,
-} from '../Bookmarks/types';
-import { useBookmarkComponentsPair } from '../Bookmarks/useBookmarkComponentsPair';
 import { CrossDeviceStateProps } from '../GlobalHeader/types';
 import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { HeaderHeightArea } from '../HeaderHeightArea';
@@ -36,7 +32,10 @@ export type AppHeaderProps = {
   redirectParam?: string;
   search: AppHeaderSearch;
   isAnon: boolean;
-  crossDeviceBookmarkParts?: CrossDeviceBookmarkParts;
+  /**
+   * used to conditonally hide the default search icon and notification bell
+   */
+  isEnterprise?: boolean;
 } & CrossDeviceStateProps;
 
 export const StyledAppBar = styled(AppBar)(
@@ -47,12 +46,12 @@ export const StyledAppBar = styled(AppBar)(
 
 export const StyledMenuBar = styled.ul(
   css({
+    alignItems: 'stretch',
     display: `flex`,
     padding: 0,
     listStyle: `none`,
     margin: 0,
     width: `100%`,
-    alignItems: 'flex-start',
   })
 );
 
@@ -63,6 +62,11 @@ const KEY_CODES = {
   RIGHT: 'ArrowRight',
   END: 'End',
   HOME: 'Home',
+} as const;
+
+const spacing = {
+  standard: 8,
+  enterprise: 12,
 } as const;
 
 export const mapItemToElement = (
@@ -137,15 +141,15 @@ export const mapItemToElement = (
 };
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
-  openCrossDeviceItemId,
-  setOpenCrossDeviceItemId,
-  crossDeviceBookmarkParts,
   action,
+  isAnon,
+  isEnterprise,
   items,
   notifications,
+  openCrossDeviceItemId,
   redirectParam,
   search,
-  isAnon,
+  setOpenCrossDeviceItemId,
 }) => {
   const menuContainerRef = useRef<HTMLUListElement>(null);
 
@@ -157,23 +161,12 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   });
   const [searchButton, searchPane] = useHeaderSearch(search);
 
-  const [bookmarksButton, bookmarksContent] = useBookmarkComponentsPair({
-    openCrossDeviceItemId,
-    setOpenCrossDeviceItemId,
-    bookmarkParts: crossDeviceBookmarkParts,
-    view: CrossDeviceBookmarksView.DESKTOP,
-    isAnon,
-  });
-
-  const right = useMemo(
-    () => [
-      searchButton,
-      ...(notificationsBell ? [notificationsBell] : []),
-      ...(bookmarksButton ? [bookmarksButton] : []),
-      ...items.right,
-    ],
-    [searchButton, notificationsBell, bookmarksButton, items]
-  );
+  const right = useMemo(() => {
+    const defaultItems = isEnterprise
+      ? []
+      : [searchButton, ...(notificationsBell ? [notificationsBell] : [])];
+    return [...defaultItems, ...items.right];
+  }, [searchButton, notificationsBell, isEnterprise, items]);
 
   const itemsCount = [...items.left, ...right].length - 1;
 
@@ -257,24 +250,27 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
     items: T,
     side: 'left' | 'right'
   ) => {
-    return items.map((item, index) => (
-      <AppHeaderListItem
-        key={item.id}
-        mr={8}
-        ml={side === 'right' && index === 0 ? 'auto' : 8}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-      >
-        {mapItemToElement(action, item, isAnon, redirectParam)}
-      </AppHeaderListItem>
-    ));
+    return items.map((item, index) => {
+      const margin = isEnterprise ? spacing.enterprise : spacing.standard;
+      return (
+        <AppHeaderListItem
+          key={item.id}
+          mr={margin}
+          ml={side === 'right' && index === 0 ? 'auto' : margin}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+        >
+          {mapItemToElement(action, item, isAnon, redirectParam)}
+        </AppHeaderListItem>
+      );
+    });
   };
 
   return (
     <HeaderHeightArea
       display={{ _: 'none', [appHeaderMobileBreakpoint]: 'block' }}
       as="nav"
-      title="Main Navigation"
+      ariaLabel="Main Navigation"
     >
       <StyledAppBar>
         <StyledMenuBar
@@ -289,7 +285,6 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
         </StyledMenuBar>
       </StyledAppBar>
       {notificationsView}
-      {bookmarksContent}
       {searchPane}
     </HeaderHeightArea>
   );

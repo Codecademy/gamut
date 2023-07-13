@@ -1,11 +1,13 @@
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import { ProLogoAlt } from '..';
 
+const renderView = setupRtl(ProLogoAlt);
+
 describe('LogoProAlt', () => {
   it('renders the Pro Alt logo', () => {
-    const wrapper = mount(<ProLogoAlt />);
-    expect(wrapper.exists()).toBe(true);
+    const { view } = renderView();
+
+    view.getByLabelText('Codecademy Pro Logo');
   });
 });

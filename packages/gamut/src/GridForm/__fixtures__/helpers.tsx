@@ -1,8 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 
-import { ConnectedForm } from '../..';
+import { ConnectedForm, WithChildrenProp } from '../..';
 
-type FormContextProps = { mode?: 'onChange' | 'onSubmit' };
+interface FormContextProps extends WithChildrenProp {
+  mode?: 'onChange' | 'onSubmit';
+}
 
 export const FormContext: React.FC<FormContextProps> = ({
   mode = 'onSubmit',

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { Card, GridBox } from '@codecademy/gamut/src';

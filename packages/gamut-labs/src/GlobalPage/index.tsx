@@ -2,9 +2,11 @@ import {
   AppWrapper,
   SkipToContent,
   SkipToContentTarget,
+  WithChildrenProp,
 } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
-import React, { ComponentProps, forwardRef } from 'react';
+import { ComponentProps, forwardRef } from 'react';
+import * as React from 'react';
 
 import { Banner, BannerProps } from '../Banner';
 import { GlobalFooter, GlobalFooterProps } from '../GlobalFooter';
@@ -20,7 +22,7 @@ export type GlobalPageBackgroundColor =
   | 'paleYellow'
   | 'white';
 
-export type GlobalPageProps = {
+export interface GlobalPageProps extends WithChildrenProp {
   backgroundColor?: GlobalPageBackgroundColor;
 
   /**
@@ -36,7 +38,7 @@ export type GlobalPageProps = {
   /**
    * Props directly passed to the GlobalFooter.
    */
-  footer: GlobalFooterProps;
+  footer?: GlobalFooterProps;
 
   /**
    * Props directly passed to the GlobalHeader.
@@ -47,7 +49,7 @@ export type GlobalPageProps = {
    * Custom element ID to link to by the SkipToContent control, if not a default one at the beginning of the page.
    */
   skipToContentId?: string;
-};
+}
 
 const defaultSkipToContentId = 'page-skip-to-content-target';
 
@@ -78,7 +80,7 @@ export const GlobalPage: React.FC<GlobalPageProps> = ({
       <GlobalHeader {...header} />
       {!skipToContentId && <SkipToContentTarget id={defaultSkipToContentId} />}
       <AppWrapper as={contentAs}>{children}</AppWrapper>
-      <GlobalFooter {...footer} />
+      {footer && <GlobalFooter {...footer} />}
     </GlobalPageWrapper>
   );
 };

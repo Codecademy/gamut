@@ -2,7 +2,7 @@ import { CloseIcon } from '@codecademy/gamut-icons';
 import { theme, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import cx from 'classnames';
-import React from 'react';
+import * as React from 'react';
 
 import { ButtonDeprecated } from '../ButtonDeprecated';
 import { Overlay, OverlayProps } from '../Overlay';

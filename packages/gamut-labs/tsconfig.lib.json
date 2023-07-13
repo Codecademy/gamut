@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "outDir": "./dist",
     "rootDir": "./src",
     "paths": {}
@@ -26,6 +26,7 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "typings/**/*.ts",
-    "../../packages/gamut-styles/dist/typings/theme.d.ts"
+    "../../packages/gamut-styles/dist/typings/theme.d.ts",
+    "../../packages/gamut/dist/typings/*.d.ts"
   ]
 }

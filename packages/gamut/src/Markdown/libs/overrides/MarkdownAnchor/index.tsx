@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React, { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
+import * as React from 'react';
 
 import { Anchor } from '../../../../Anchor';
 

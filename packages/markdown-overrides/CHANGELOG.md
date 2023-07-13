@@ -3,6 +3,123 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.10.6](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.10.5...@codecademy/markdown-overrides@0.10.6) (2023-07-05)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+### [0.10.5](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.10.4...@codecademy/markdown-overrides@0.10.5) (2023-05-25)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+### [0.10.4](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.10.3...@codecademy/markdown-overrides@0.10.4) (2023-04-14)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+### [0.10.3](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.10.2...@codecademy/markdown-overrides@0.10.3) (2023-04-10)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+### [0.10.2](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.10.1...@codecademy/markdown-overrides@0.10.2) (2023-03-20)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+### [0.10.1](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.10.0...@codecademy/markdown-overrides@0.10.1) (2023-02-06)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+## [0.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.9.19...@codecademy/markdown-overrides@0.10.0) (2023-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Support React 18 [WEB-2055]
+
+### Miscellaneous Chores
+
+* Support React 18 [WEB-2055] ([89d6b22](https://github.com/Codecademy/gamut/commit/89d6b224831dd62d7bcd9a424142eaab02232a00))
+
+
+
+### [0.9.19](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.9.18...@codecademy/markdown-overrides@0.9.19) (2023-01-09)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+### [0.9.18](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.9.17...@codecademy/markdown-overrides@0.9.18) (2023-01-06)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+### [0.9.17](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.9.16...@codecademy/markdown-overrides@0.9.17) (2022-12-06)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+### [0.9.16](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.9.15...@codecademy/markdown-overrides@0.9.16) (2022-11-29)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+### [0.9.15](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.9.14...@codecademy/markdown-overrides@0.9.15) (2022-11-02)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+### [0.9.14](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.9.13...@codecademy/markdown-overrides@0.9.14) (2022-11-01)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+### [0.9.13](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.9.12...@codecademy/markdown-overrides@0.9.13) (2022-10-31)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
 ### [0.9.12](https://github.com/Codecademy/gamut/compare/@codecademy/markdown-overrides@0.9.11...@codecademy/markdown-overrides@0.9.12) (2022-10-06)
 
 **Note:** Version bump only for package @codecademy/markdown-overrides

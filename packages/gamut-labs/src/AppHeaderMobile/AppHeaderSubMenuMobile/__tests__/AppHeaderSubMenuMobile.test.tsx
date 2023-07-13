@@ -1,10 +1,8 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/dom';
 
 import { createMockAppHeaderLinkItem } from '../../../AppHeader/mockAppHeaderItems';
-import { AppHeaderSubMenuMobile, AppHeaderSubMenuMobileProps } from '../index';
+import { AppHeaderSubMenuMobile } from '../index';
 
 const sublink1Href = 'https://google.com';
 const sublink2Href = 'https://medium.com';
@@ -12,7 +10,7 @@ const action = jest.fn();
 const handleCloseSubMenu = jest.fn();
 const handleCloseMainMenu = jest.fn();
 
-const props: AppHeaderSubMenuMobileProps = {
+const renderView = setupRtl(AppHeaderSubMenuMobile, {
   action,
   item: {
     dataTestId: '',
@@ -27,28 +25,20 @@ const props: AppHeaderSubMenuMobileProps = {
   },
   handleCloseSubMenu,
   handleCloseMainMenu,
-};
-
-const renderAppHeaderSubMenuMobile = () => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <AppHeaderSubMenuMobile {...props} />
-    </ThemeProvider>
-  );
-};
+});
 
 describe('AppHeaderSubMenuMobile', () => {
   it('creates sublinks with the provided hrefs', () => {
-    renderAppHeaderSubMenuMobile();
-    const linkArray = screen
+    const { view } = renderView();
+    const linkArray = view
       .getAllByRole('menuitem')
       .map((node) => node.getAttribute('href'));
     expect(linkArray).toStrictEqual([sublink1Href, sublink2Href]);
   });
 
   it('calls handleClose when the menu link is clicked', () => {
-    renderAppHeaderSubMenuMobile();
-    screen.getByText('Menu').click();
+    const { view } = renderView();
+    fireEvent.click(view.getByText('Menu'));
     expect(handleCloseSubMenu).toHaveBeenCalled();
   });
 });

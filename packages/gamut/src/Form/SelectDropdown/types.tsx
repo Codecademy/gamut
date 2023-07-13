@@ -1,6 +1,7 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { StyleProps } from '@codecademy/variance';
-import React, { ReactNode, SelectHTMLAttributes } from 'react';
+import { ReactNode, Ref, SelectHTMLAttributes } from 'react';
+import * as React from 'react';
 import {
   ContainerProps,
   DropdownIndicatorProps,
@@ -9,6 +10,7 @@ import {
 } from 'react-select';
 
 import { SelectComponentProps, SelectOptions } from '../Select';
+import { SelectOptionBase } from '../utils';
 import { conditionalBorderStates } from './styles';
 
 export interface SharedProps {
@@ -34,6 +36,7 @@ export interface ReactSelectAdditionalProps
   extends WrapperStyleProps,
     SharedProps,
     SelectDropdownSizes {}
+
 export interface IconOption {
   label: string;
   value: string;
@@ -121,9 +124,22 @@ export interface CustomContainerProps extends ContainerProps<unknown, false> {
   children: ReactNode[];
 }
 
+export type ProgramaticFocusRef =
+  | React.MutableRefObject<HTMLDivElement>
+  | React.MutableRefObject<null>;
+export interface SelectDropdownContextValueTypes {
+  currentFocusedValue?: SelectOptionBase['value'];
+  setCurrentFocusedValue?: React.Dispatch<React.SetStateAction<unknown>>;
+  selectInputRef?: ProgramaticFocusRef;
+  removeAllButtonRef?: ProgramaticFocusRef;
+}
 export type SizedIndicatorProps = DropdownIndicatorProps<
   unknown,
   false,
   GroupBase<OptionStrict>
 > &
   InternalSelectProps;
+
+export interface TypedReactSelectProps extends ReactSelectAdditionalProps {
+  selectRef?: Ref<any>;
+}

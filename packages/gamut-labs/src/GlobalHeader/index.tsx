@@ -1,6 +1,7 @@
 import { Box } from '@codecademy/gamut';
 import { useTheme } from '@emotion/react';
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
+import * as React from 'react';
 
 import { AppHeader, AppHeaderMobile } from '..';
 import {
@@ -20,6 +21,8 @@ import {
   anonLoginMobileHeaderItems,
   anonSignupHeaderItems,
   anonSignupMobileHeaderItems,
+  enterpriseHeaderItems,
+  enterpriseMobileHeaderItems,
   freeHeaderItems,
   freeMobileHeaderItems,
   loadingHeaderItems,
@@ -30,6 +33,7 @@ import {
 import {
   AnonHeader,
   CrossDeviceItemId,
+  EnterpriseHeader,
   FreeHeader,
   LoadingHeader,
   ProHeader,
@@ -39,6 +43,7 @@ export type GlobalHeaderProps =
   | AnonHeader
   | FreeHeader
   | ProHeader
+  | EnterpriseHeader
   | LoadingHeader;
 
 // Overloading getAppHeaderItems function to return different types based on mobile parameter
@@ -77,18 +82,18 @@ function getAppHeaderItems(
             ? anonDefaultMobileHeaderItems(hidePricing, props.user)
             : anonDefaultHeaderItems(hidePricing, props.user);
       }
+    case 'enterprise':
+      return mobile
+        ? enterpriseMobileHeaderItems(props.user)
+        : enterpriseHeaderItems(props.user);
     case 'free':
       return mobile
         ? freeMobileHeaderItems(props.user, hidePricing)
-        : freeHeaderItems(
-            props.user,
-            hidePricing,
-            props.renderFavorites?.desktop
-          );
+        : freeHeaderItems(props.user, hidePricing);
     case 'pro':
       return mobile
         ? proMobileHeaderItems(props.user)
-        : proHeaderItems(props.user, props.renderFavorites?.desktop);
+        : proHeaderItems(props.user);
     case 'loading':
       return mobile ? loadingMobileHeaderItems : loadingHeaderItems;
   }
@@ -111,8 +116,6 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     CrossDeviceItemId.UNSET
   );
 
-  const { crossDeviceBookmarkParts } = props;
-
   return (
     <Box as="header" position="sticky" top={0} zIndex={theme.elements.headerZ}>
       <AppHeader
@@ -123,30 +126,32 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           ? {
               redirectParam: props.redirectParam,
             }
-          : props.type === 'loading'
+          : props.type === 'loading' || props.type === 'enterprise'
           ? {}
           : {
               notifications: props.notifications,
             })}
+        isEnterprise={props.type === 'enterprise'}
         isAnon={props.type === 'anon'}
         openCrossDeviceItemId={openCrossDeviceItemId}
         setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
-        crossDeviceBookmarkParts={crossDeviceBookmarkParts}
       />
       <AppHeaderMobile
         action={combinedAction}
         items={getAppHeaderItems(props, true)}
-        {...(props.type === 'anon' || props.type === 'loading'
+        {...(props.type === 'anon' ||
+        props.type === 'loading' ||
+        props.type === 'enterprise'
           ? {}
           : {
               notifications: props.notifications,
             })}
         onSearch={props.search.onSearch}
         redirectParam={props.type === 'anon' ? props.redirectParam : undefined}
+        isEnterprise={props.type === 'enterprise'}
         isAnon={props.type === 'anon'}
         openCrossDeviceItemId={openCrossDeviceItemId}
         setOpenCrossDeviceItemId={setOpenCrossDeviceItemId}
-        crossDeviceBookmarkParts={crossDeviceBookmarkParts}
       />
       {props.children}
     </Box>

@@ -1,11 +1,13 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import React, { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
+import * as React from 'react';
 
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer, ModalContainerProps } from './elements';
+import { ImageContainer } from './ImageContainer';
 import { ModalBaseProps } from './types';
 
 interface DialogButtonProps {
@@ -16,7 +18,7 @@ interface DialogButtonProps {
 
 export interface DialogProps extends ModalBaseProps {
   title: ModalBaseProps['title'];
-  size?: Exclude<ModalContainerProps['size'], 'fluid'>;
+  size?: Exclude<ModalContainerProps['size'], 'fluid' | false>;
   variant?: Extract<
     ComponentProps<typeof FillButton>['variant'],
     'primary' | 'danger'
@@ -32,6 +34,7 @@ export const Dialog: React.FC<DialogProps> = ({
   confirmCta,
   cancelCta,
   onRequestClose,
+  image,
   size = 'small',
   ...rest
 }) => {
@@ -66,6 +69,7 @@ export const Dialog: React.FC<DialogProps> = ({
           gridArea="close"
         />
         <Box as="div" gridArea="content" data-testid="dialog-content">
+          {image && <ImageContainer image={image} size={size} />}
           {children}
         </Box>
         {cancelCta && (

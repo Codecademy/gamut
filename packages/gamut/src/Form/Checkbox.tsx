@@ -6,7 +6,7 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
+import { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
 import {
   checkboxElement,
@@ -68,6 +68,7 @@ export type CheckboxProps = Omit<
      */
     value?: string | boolean;
     id?: string;
+    dontAriaHideLabel?: boolean;
   };
 
 const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled' | 'spacing'>>(
@@ -83,8 +84,8 @@ const CheckboxElement = styled('div', styledOptions)<
 
 const CheckboxVector = styled.svg`
   position: absolute;
-  top: -2px;
-  left: -2px;
+  top: -1px;
+  left: -1px;
 `;
 
 const Polyline = styled.polyline<Pick<CheckboxProps, 'checked'>>`
@@ -119,6 +120,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       disabled,
       spacing,
       value,
+      dontAriaHideLabel,
       ...rest
     },
     ref
@@ -153,16 +155,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             disabled={disabled}
           >
             <CheckboxVector
-              width="22px"
-              height="22px"
-              viewBox="0 0 20 20"
+              width="19px"
+              height="19px"
+              viewBox="0 0 19 19"
               color={checked ? 'currentColor' : 'transparent'}
               aria-hidden
             >
-              <path
-                d="M3,1 L17,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,17 L19,17 C19,18.1045695 18.1045695,19 17,19 L3,19 L3,19 C1.8954305,19 1,18.1045695 1,17 L1,3 L1,3 C1,1.8954305 1.8954305,1 3,1 Z"
-                fill="currentColor"
-              />
+              <path fill="currentColor" d="M1 1h19v19h-19z" />
               <Polyline checked={checked} points="4 11 8 15 16 6" />
             </CheckboxVector>
           </CheckboxElement>
@@ -170,7 +169,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             id={`text-${id || htmlFor}`}
             multiline={multiline}
             disabled={disabled}
-            aria-hidden="true"
+            aria-hidden={dontAriaHideLabel ? 'false' : 'true'}
           >
             {label}
           </CheckboxText>

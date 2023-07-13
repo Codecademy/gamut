@@ -1,5 +1,6 @@
 import {
   AccountingCoinsIcon,
+  ArrowThickCircleUpIcon,
   BookFlipPageIcon,
   BriefcaseIcon,
   CommunityIcon,
@@ -8,10 +9,8 @@ import {
   NotebookIcon,
   PersonIcon,
   PieLineGraphIcon,
-  RatingStarGiveIcon,
   SupportIcon,
 } from '@codecademy/gamut-icons';
-import { ReactNode } from 'react';
 
 import {
   AppHeaderCatalogDropdownItem,
@@ -19,7 +18,6 @@ import {
   AppHeaderLinkItem,
   AppHeaderLogoItem,
   AppHeaderProfileDropdownItem,
-  AppHeaderRenderElementItem,
   AppHeaderResourcesDropdownItem,
   AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
@@ -30,9 +28,22 @@ export const logo: AppHeaderLogoItem = {
   dataTestId: 'header-logo',
   id: 'logo',
   href: '/',
+  enterprise: false,
   pro: false,
   trackingTarget: 'topnav_logo',
   type: 'logo',
+};
+
+export const enterpriseLogo = (user: User): AppHeaderLogoItem => {
+  return {
+    dataTestId: 'header-logo',
+    id: 'logo',
+    href: user?.enterpriseUrl ?? 'https://www.skillsoft.com/login-skillsoft',
+    enterprise: true,
+    pro: false,
+    trackingTarget: 'topnav_enterprise_logo',
+    type: 'logo',
+  };
 };
 
 export const myHome: AppHeaderLinkItem = {
@@ -43,6 +54,19 @@ export const myHome: AppHeaderLinkItem = {
   href: '/learn',
   trackingTarget: 'topnav_home',
   type: 'link',
+};
+
+export const myPercipioHome = (user: User): AppHeaderLinkItem => {
+  return {
+    dataTestId: 'header-percihome',
+    icon: HouseEntranceIcon,
+    id: 'my-home',
+    text: 'Home',
+    href: user?.enterpriseUrl ?? 'https://www.skillsoft.com/login-skillsoft',
+    newTab: true,
+    trackingTarget: 'topnav_enterprise_home',
+    type: 'link',
+  };
 };
 
 export const catalogDropdown = (
@@ -64,6 +88,38 @@ export const resourcesDropdown: AppHeaderResourcesDropdownItem = {
   text: 'Resources',
   trackingTarget: 'topnav_resources',
   type: 'resources-dropdown',
+};
+
+export const simpleResourcesDropdown: AppHeaderSimpleDropdownItem = {
+  dataTestId: 'header-resources',
+  icon: NotebookIcon,
+  id: 'resources-dropdown',
+  text: 'Resources',
+  popover: [
+    {
+      id: 'articles',
+      href: '/articles',
+      trackingTarget: 'topnav_enterprise_articles',
+      text: 'Articles',
+      type: 'link',
+    },
+    {
+      id: 'docs',
+      href: '/resources/docs',
+      trackingTarget: 'topnav_enterprise_docs',
+      text: 'Docs',
+      type: 'link',
+    },
+    {
+      id: 'workspaces',
+      href: '/users/me/workspaces',
+      trackingTarget: 'topnav_enterprise_workspaces',
+      text: 'Workspaces',
+      type: 'link',
+    },
+  ],
+  trackingTarget: 'topnav_resources',
+  type: 'dropdown',
 };
 
 export const communityDropdown: AppHeaderSimpleDropdownItem = {
@@ -104,7 +160,7 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
     },
     {
       id: 'learner-stories',
-      href: '/learner-stories',
+      href: '/resources/blog/category/learner-stories/',
       trackingTarget: 'topnav_learner_stories_hub',
       text: 'Learner Stories',
       type: 'link',
@@ -112,15 +168,6 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
   ],
   trackingTarget: 'topnav_community',
   type: 'dropdown',
-};
-
-export const pricingLink: AppHeaderLinkItem = {
-  icon: AccountingCoinsIcon,
-  id: 'pricing',
-  href: '/pricing',
-  text: 'Pricing',
-  trackingTarget: 'topnav_pricing',
-  type: 'link',
 };
 
 export const pricingDropdown: AppHeaderSimpleDropdownItem = {
@@ -154,6 +201,15 @@ export const pricingDropdown: AppHeaderSimpleDropdownItem = {
   type: 'dropdown',
 };
 
+export const upgradePlan: AppHeaderLinkItem = {
+  icon: ArrowThickCircleUpIcon,
+  id: 'upgrade-plan',
+  trackingTarget: 'topnav_upgrade_plan',
+  text: 'Upgrade',
+  href: '/pricing',
+  type: 'link',
+};
+
 export const businessSolutions: AppHeaderLinkItem = {
   icon: BriefcaseIcon,
   id: 'business-solutions',
@@ -161,20 +217,6 @@ export const businessSolutions: AppHeaderLinkItem = {
   text: 'Business Solutions',
   href: '/business',
   type: 'link',
-};
-
-/**
- * Note: this is currently experimental!
- * This will be cleaned up as part of EGG-1644.
- */
-export const favorites = (
-  renderFavorites: () => ReactNode
-): AppHeaderRenderElementItem => {
-  return {
-    id: 'favorites',
-    renderElement: renderFavorites,
-    type: 'render-element',
-  };
 };
 
 const profileMyProfile: AppHeaderLinkItem = {
@@ -304,9 +346,6 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   ) {
     topSection.push(profileBusinessAccount);
   }
-  if (user.showReferrals) {
-    topSection.push(referrals);
-  }
 
   topSection.push(profileHelpCenter);
 
@@ -341,7 +380,7 @@ export const tryProForFree = (
 ): AppHeaderFillButtonItem => ({
   dataTestId: 'upgrade-link',
   id: 'try-pro',
-  text: 'Try Pro For Free',
+  text: 'Start free trial',
   href: checkoutUrl || '/pages/pro',
   trackingTarget: 'topnav_pro_trial',
   type: 'fill-button',
@@ -352,7 +391,7 @@ export const upgradeToPro = (
 ): AppHeaderFillButtonItem => ({
   dataTestId: 'upgrade-link',
   id: 'upgrade-to-pro',
-  text: 'Upgrade to Pro',
+  text: 'Upgrade plan',
   href: checkoutUrl || '/pages/pro',
   trackingTarget: 'topnav_pro_upgrade',
   type: 'fill-button',
@@ -385,14 +424,4 @@ export const signUp: AppHeaderFillButtonItem = {
   trackingTarget: 'topnav_signup',
   type: 'fill-button',
   redirect: true,
-};
-
-export const referrals: AppHeaderLinkItem = {
-  dataTestId: 'header-referrals',
-  id: 'referrals',
-  text: 'Give Pro, Get Pro',
-  href: '/referrals',
-  type: 'link',
-  icon: RatingStarGiveIcon,
-  trackingTarget: 'avatar_referrals',
 };

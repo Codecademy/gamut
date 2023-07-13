@@ -1,42 +1,64 @@
-import { setupEnzyme } from '@codecademy/gamut-tests';
-import React from 'react';
+import { theme } from '@codecademy/gamut-styles';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { matchers } from '@emotion/jest';
 
 import { List } from '../List';
 import { ListCol } from '../ListCol';
 import { ListRow } from '../ListRow';
 
-const renderWrapper = setupEnzyme(List, {
+// Add the custom matchers provided by '@emotion/jest'
+expect.extend(matchers);
+
+const renderView = setupRtl(List, {
   children: (
-    <ListRow>
+    <ListRow data-testid="row-el">
       <ListCol>Hello</ListCol>
     </ListRow>
   ),
+  id: 'list-el',
 });
 
 describe('List', () => {
   it('renders a default list by default', () => {
-    const { wrapper } = renderWrapper();
+    const { view } = renderView();
 
-    expect(wrapper.find('ListEl').prop('variant')).toBe('default');
-    expect(wrapper.find('ListEl').prop('scrollable')).toBe(undefined);
+    const listEl = view.container.querySelector('ul');
+    const rowEl = view.container.querySelector('li');
+
+    expect(listEl).toHaveStyle({ borderRadius: '2px' });
+    expect(rowEl).not.toHaveStyle({ minWidth: 'min-content' });
   });
+
   it('configures rows with the correct variants', () => {
-    const { wrapper } = renderWrapper();
-    const wrappingRow = wrapper.find('RowEl').at(0);
-    expect(wrappingRow.prop('variant')).toBe('default');
-    expect(wrappingRow.prop('spacing')).toBe('normal');
-    expect(wrappingRow.prop('rowBreakpoint')).toBe('xs');
-  });
-  it('configures columns with the correct variants', () => {
-    const { wrapper } = renderWrapper();
+    const { view } = renderView();
 
-    expect(wrapper.find('ColEl').prop('variant')).toBe('default');
-    expect(wrapper.find('ColEl').prop('spacing')).toBe('normal');
-    expect(wrapper.find('ColEl').prop('rowBreakpoint')).toBe('xs');
-    expect(wrapper.find('ColEl').prop('sticky')).toBe(false);
+    const rowEl = view.container.querySelector('li');
+
+    expect(rowEl).toHaveStyle({ borderTop: 'none' });
+    expect(rowEl).toHaveStyle({ gap: theme.spacing[8] });
+    expect(rowEl).toHaveStyleRule('gap', theme.spacing[40], {
+      media: theme.breakpoints.xs,
+    });
   });
+
+  it('configures columns with the correct variants', () => {
+    const { view } = renderView();
+
+    const colEl = view.getByText('Hello');
+
+    expect(colEl).not.toHaveStyle({ py: 16 });
+    expect(colEl).toHaveStyleRule('padding-top', theme.spacing[16], {
+      media: theme.breakpoints.xs,
+    });
+    expect(colEl).toHaveStyleRule('padding-bottom', theme.spacing[16], {
+      media: theme.breakpoints.xs,
+    });
+
+    expect(colEl).not.toHaveStyle({ position: 'sticky' });
+  });
+
   it('fixes the row header column when scrollable - but not other columns', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       scrollable: true,
       children: (
         <ListRow>
@@ -46,11 +68,15 @@ describe('List', () => {
       ),
     });
 
-    expect(wrapper.find({ type: 'header', sticky: true }).length).toBe(1);
-    expect(wrapper.find({ type: 'content', sticky: true }).length).toBe(0);
+    const headerEl = view.getByTestId('header-container');
+    const contentEl = view.getByText('Content');
+
+    expect(headerEl).toHaveStyle({ position: 'sticky' });
+    expect(contentEl).not.toHaveStyle({ position: 'sticky' });
   });
+
   it('renders ListRow with expanded content when expanded is true', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       children: (
         <ListRow
           expanded
@@ -62,10 +88,11 @@ describe('List', () => {
       ),
     });
 
-    expect(wrapper.find('#surprise').length).toBe(1);
+    view.getByText('Surprise!');
   });
+
   it('does not render ListRow with expanded content when expanded is false', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       children: (
         <ListRow
           expanded={false}
@@ -76,6 +103,6 @@ describe('List', () => {
         </ListRow>
       ),
     });
-    expect(wrapper.find('#surprise').length).toBe(0);
+    expect(view.queryByText('Surprise!')).toBeNull();
   });
 });

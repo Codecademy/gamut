@@ -4,8 +4,10 @@ import {
   ColumnProps,
   FlexBox,
   LayoutGrid,
+  WithChildrenProp,
 } from '@codecademy/gamut';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
+import * as React from 'react';
 
 import { CTA } from './CTA';
 import { Description } from './Description';
@@ -20,7 +22,7 @@ import {
 import { Title } from './Title';
 import { BaseProps } from './types';
 
-export type PageFeaturesProps = BaseProps & {
+export interface PageFeaturesProps extends BaseProps, WithChildrenProp {
   maxCols?: 1 | 2 | 3 | 4;
   featuresMedia?: 'image' | 'icon' | 'stat';
   features: {
@@ -31,7 +33,7 @@ export type PageFeaturesProps = BaseProps & {
     statText?: string;
     testId?: string;
   }[];
-};
+}
 
 const rowRenderEach = (
   items: PageFeaturesProps['features'],

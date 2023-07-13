@@ -5,7 +5,7 @@ import {
   TwitterIcon,
   YoutubeIcon,
 } from '@codecademy/gamut-icons';
-import React from 'react';
+import * as React from 'react';
 
 import { FooterLinkItems } from '../FooterLinks';
 
@@ -35,7 +35,7 @@ const media = [
 
 export const SocialMediaLinks: React.FC = () => {
   return (
-    <FooterLinkItems aria-label="Social Media">
+    <FooterLinkItems aria-label="Social Media" pt={16}>
       {media.map(({ label, url, icon: IconComponent }) => (
         <Box as="li" display="inline-block" key={label}>
           <Anchor

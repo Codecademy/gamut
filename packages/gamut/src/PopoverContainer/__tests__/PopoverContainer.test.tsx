@@ -1,11 +1,11 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { matchers } from '@emotion/jest';
 import { fireEvent, screen } from '@testing-library/react';
-import React from 'react';
 
 import { PopoverContainer } from '..';
 import { PopoverContainerProps, TargetRef } from '../types';
 
+// Add the custom matchers provided by '@emotion/jest'
 expect.extend(matchers);
 
 const defaultBounding = {

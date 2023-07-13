@@ -44,4 +44,16 @@ describe('GlobalPage', () => {
 
     view.getByText('banner text');
   });
+
+  it('renders a footer when provided', () => {
+    const { view } = renderView();
+
+    view.getByLabelText('Legal');
+  });
+
+  it('does not render a footer when not provided', () => {
+    const { view } = renderView({ footer: undefined });
+
+    expect(view.queryByLabelText('Legal')).toBeNull();
+  });
 });

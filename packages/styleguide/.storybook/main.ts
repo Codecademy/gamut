@@ -36,16 +36,39 @@ module.exports = {
       },
     },
   },
+  babel: async (options: { presets: any }) => {
+    return {
+      ...options,
+      presets: [
+        ...options.presets,
+        [
+          '@babel/preset-react',
+          {
+            runtime: 'automatic',
+          },
+          'preset-react-jsx-transform', // Can name this anything, just an arbitrary alias to avoid duplicate presets'
+        ],
+      ],
+    };
+  },
 
   webpackFinal: (config: any) => {
     config.module.rules = config.module.rules.concat(
       configs.css().module.rules
     );
 
+    config.module.rules.push({
+      test: /\.mjs$/,
+      include: /node_modules/,
+      type: 'javascript/auto',
+    });
+
     config.resolve = {
       ...config.resolve,
       alias: {
         ...emotionless(config.resolve.alias),
+        // Prevent usage of ESM version of htmlparser2
+        htmlparser2$: 'htmlparser2/lib/index.js',
         '~styleguide/blocks': path.resolve(__dirname, './components/'),
         '@codecademy/storybook-addon-variance': path.resolve(
           __dirname,
@@ -57,10 +80,6 @@ module.exports = {
         ),
 
         '@codecademy/gamut$': path.resolve(__dirname, '../../gamut/src'),
-        '@codecademy/gamut-labs$': path.resolve(
-          __dirname,
-          '../../gamut-labs/src'
-        ),
         '@codecademy/gamut-illustrations$': path.resolve(
           __dirname,
           '../../gamut-illustrations/src'

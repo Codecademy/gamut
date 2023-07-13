@@ -1,6 +1,6 @@
 import { Text } from '@codecademy/gamut';
 import { setupRtl } from '@codecademy/gamut-tests';
-import React from 'react';
+import * as React from 'react';
 
 import { TabPanelExperimental } from '../TabPanelExperimental';
 import { TabsExperimental } from '../TabsExperimental';

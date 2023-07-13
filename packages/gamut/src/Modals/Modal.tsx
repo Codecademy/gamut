@@ -1,11 +1,13 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import React, { ComponentProps, useRef, useState } from 'react';
+import { ComponentProps, useRef, useState } from 'react';
+import * as React from 'react';
 
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer } from './elements';
+import { ImageContainer } from './ImageContainer';
 import { ModalBaseProps } from './types';
 
 interface DialogButtonProps {
@@ -14,8 +16,8 @@ interface DialogButtonProps {
   onClick?: ComponentProps<typeof FillButton>['onClick'];
   disabled?: boolean;
 }
-interface ModalView {
-  title?: string;
+export interface ModalView
+  extends Omit<ModalBaseProps, 'headingLevel' | 'onRequestClose'> {
   children: React.ReactNode;
   nextCta?: DialogButtonProps;
   confirmCta?: DialogButtonProps;
@@ -38,8 +40,10 @@ export interface SingleViewModalProps extends ModalBaseProps {
   closeDisabled?: boolean;
 }
 
-export interface MultiViewModalProps extends Omit<ModalBaseProps, 'children'> {
+export interface MultiViewModalProps
+  extends Omit<ModalBaseProps, 'children' | 'image'> {
   children?: never;
+  image?: never;
   size?: ComponentProps<typeof ModalContainer>['size'];
   /**
    * Whether to hide the default close button and pass your own through children
@@ -77,6 +81,8 @@ export const Modal: React.FC<ModalProps> = ({
 }) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [currentView, setCurrentView] = useState(0);
+  const image = (views?.[currentView].image || rest?.image) ?? null;
+
   return (
     <Overlay
       shroud
@@ -122,6 +128,7 @@ export const Modal: React.FC<ModalProps> = ({
           gridArea="content"
           data-testid="modal-content"
         >
+          {image && size && <ImageContainer image={image} size={size} />}
           {views?.[currentView].children || children}
         </Box>
         {views?.[currentView].cancelCta && (

@@ -1,5 +1,12 @@
-import { Box, FlexBox, Text, TextButton } from '@codecademy/gamut';
-import React, { AriaAttributes, ReactNode } from 'react';
+import {
+  Box,
+  FlexBox,
+  Text,
+  TextButton,
+  WithChildrenProp,
+} from '@codecademy/gamut';
+import { AriaAttributes, ReactNode } from 'react';
+import * as React from 'react';
 
 type TextButtonMinimumProps = AriaAttributes & {
   text: string;
@@ -15,12 +22,12 @@ function isSectionButtonATextButton(
   return (button as TextButtonMinimumProps).text !== undefined;
 }
 
-export type PageSectionProps = {
+export interface PageSectionProps extends WithChildrenProp {
   title: string;
   headerButton?: SectionButton;
   headerSecondaryButton?: SectionButton;
   footerButton?: SectionButton;
-};
+}
 
 export const PageSection: React.FC<PageSectionProps> = ({
   title,

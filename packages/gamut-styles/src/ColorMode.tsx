@@ -7,8 +7,9 @@ import {
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { mapValues, pick } from 'lodash';
-import React, {
+import {
   ComponentProps,
+  createContext,
   forwardRef,
   useContext,
   useEffect,
@@ -69,7 +70,7 @@ interface BackgroundCurrentContextInterface {
   'background-current'?: keyof typeof GamutTheme.colors;
 }
 
-const BackgroundCurrentContext = React.createContext<BackgroundCurrentContextInterface>(
+const BackgroundCurrentContext = createContext<BackgroundCurrentContextInterface>(
   {
     'background-current': undefined,
   }
@@ -152,7 +153,6 @@ export const ColorMode = forwardRef<
   const theme = useTheme();
   const { modes, mode: active, colors } = theme;
   const contextBg = bg ? 'background-current' : undefined;
-
   // This makes sure the background-current context is always set to the correct color + not the semantic color name.
   const currentParentBg = useContext(BackgroundCurrentContext);
 

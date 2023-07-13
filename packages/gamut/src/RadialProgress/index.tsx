@@ -1,6 +1,7 @@
 import { theme } from '@codecademy/gamut-styles';
 import cx from 'classnames';
-import React, { SVGProps } from 'react';
+import { SVGProps } from 'react';
+import * as React from 'react';
 
 import { Text } from '../Typography';
 // eslint-disable-next-line gamut/no-css-standalone

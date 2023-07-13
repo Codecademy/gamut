@@ -1,7 +1,7 @@
 import { styledOptions, system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 const fromLogoStyles = variance.compose(
   system.layout,

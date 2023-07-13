@@ -7,7 +7,7 @@
   ],
   "compilerOptions": {
     "declaration": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "outDir": "./dist",
     "rootDir": "./src"
   }

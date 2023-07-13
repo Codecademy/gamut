@@ -2,7 +2,7 @@ import { Anchor, Box, FlexBox, GridBox, VisualTheme } from '@codecademy/gamut';
 import { CheckerDense } from '@codecademy/gamut-patterns';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import darkQuotes from '../assets/darkQuotes.svg';
 import lightQuotes from '../assets/lightQuotes.svg';

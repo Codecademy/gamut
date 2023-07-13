@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "51.0.0",
+  "version": "55.1.11",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -21,21 +21,21 @@
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "react": ">=17.0.2",
-    "react-dom": ">=17.0.2"
+    "react": "^17.0.2 || ^18.2.0",
+    "react-dom": "^17.0.2 || ^18.2.0"
   },
   "dependencies": {
-    "@codecademy/gamut-icons": "^7.8.2",
-    "@codecademy/gamut-illustrations": "^0.32.2",
-    "@codecademy/gamut-patterns": "^0.8.15",
-    "@codecademy/gamut-styles": "^14.1.1",
-    "@codecademy/variance": "^0.20.3",
+    "@codecademy/gamut-icons": "9.3.4",
+    "@codecademy/gamut-illustrations": "0.38.2",
+    "@codecademy/gamut-patterns": "0.9.7",
+    "@codecademy/gamut-styles": "16.1.2",
+    "@codecademy/variance": "0.21.0",
     "@reach/auto-id": "^0.16.0",
     "@reach/tabs": "^0.16.4",
     "@types/marked": "^1.1.0",
     "classnames": "^2.2.5",
-    "framer-motion": "^4.1.17",
-    "html-to-react": "^1.4.2",
+    "framer-motion": "^6.5.1",
+    "html-to-react": "^1.5.0",
     "invariant": "^2.2.4",
     "lodash": "^4.17.5",
     "marked": "^0.7.0",
@@ -45,9 +45,9 @@
     "react-hook-form": "^7.21.2",
     "react-player": "^2.3.1",
     "react-select": "^5.2.2",
-    "react-truncate-markup": "^5.1.0",
+    "react-truncate-markup": "^5.1.2",
     "react-use": "^15.3.8",
-    "sanitize-markdown": "^2.6.6"
+    "sanitize-markdown": "^2.6.7"
   },
   "scripts": {
     "verify": "tsc --noEmit",
@@ -57,13 +57,12 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@codecademy/gamut-tests": "^4.0.14",
+    "@codecademy/gamut-tests": "5.0.6",
     "@emotion/jest": "^11.3.0",
     "@testing-library/dom": "^8.11.1",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "@types/enzyme": "3.10.7",
-    "enzyme": "3.11.0",
     "onchange": "^7.0.2"
   },
   "publishConfig": {

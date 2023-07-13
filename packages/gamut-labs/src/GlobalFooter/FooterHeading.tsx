@@ -9,5 +9,5 @@ FooterHeading.defaultProps = {
   fontSize: { sm: 16 },
   mt: [24, , 0],
   mb: 16,
-  textTransform: 'uppercase',
+  fontWeight: 'bold',
 };

@@ -5,12 +5,8 @@ import {
 } from '@codecademy/gamut-icons';
 import { system } from '@codecademy/gamut-styles';
 import styled, { StyledComponent } from '@emotion/styled';
-import React, {
-  ChangeEvent,
-  forwardRef,
-  InputHTMLAttributes,
-  useState,
-} from 'react';
+import { ChangeEvent, forwardRef, InputHTMLAttributes, useState } from 'react';
+import * as React from 'react';
 
 import { Box, FlexBox } from '../Box';
 import {

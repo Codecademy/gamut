@@ -1,10 +1,13 @@
-import React, { HTMLAttributes, useMemo } from 'react';
+import { HTMLAttributes, useMemo } from 'react';
+import * as React from 'react';
 
 import { Box } from '../../../../Box';
 import { HTMLToReactNode } from '..';
 // import styles from '../../../styles/_'
-export interface MarkdownDetailsProps
-  extends HTMLAttributes<HTMLDetailsElement> {
+
+interface MarkdownHTMLDetailsAttributes
+  extends Omit<HTMLAttributes<HTMLDetailsElement>, 'children'> {}
+export interface MarkdownDetailsProps extends MarkdownHTMLDetailsAttributes {
   open?: boolean;
   children?: HTMLToReactNode[];
 }
@@ -32,7 +35,11 @@ const getStyledDetailChildren = ({
 
     return {
       summary,
-      children: [<Box ml={24}>{copiedChildren.map((elem) => elem)}</Box>],
+      children: (
+        <Box ml={24}>
+          <>{copiedChildren.map((elem) => elem)}</>
+        </Box>
+      ),
     };
   }
 };
@@ -55,8 +62,10 @@ export const Details: React.FC<MarkdownDetailsProps> = ({
 
   return (
     <details data-testid="gamut-md-details" {...props}>
-      {editedDetails?.summary}
-      {editedDetails?.children}
+      <>
+        {editedDetails?.summary}
+        {editedDetails?.children}
+      </>
     </details>
   );
 };

@@ -1,8 +1,10 @@
+import { WithChildrenProp } from '@codecademy/gamut';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 
-export type InterstitialProps = {
+export interface InterstitialProps extends WithChildrenProp {
   /** If provided, these buttons will render below the title and children in a column. */
   buttons?: React.ReactNode[];
   className?: string;
@@ -12,7 +14,7 @@ export type InterstitialProps = {
   focus?: boolean;
   /** h1 title for the interstitial */
   title: string;
-};
+}
 
 const InterstitialWrapper = styled.div`
   align-items: center;

@@ -1,9 +1,12 @@
 import { Anchor, Box } from '@codecademy/gamut';
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 const IconLink = styled(Box)``.withComponent(Anchor);
+
+const getTitleId = (id: string, sectionId?: string) =>
+  sectionId ? `${sectionId}-${id}` : id;
 
 export type BaseSocialShareProps = {
   sectionId?: string;
@@ -51,7 +54,7 @@ export const SocialShareIconLink: React.FC<SocialShareIconLinkProps> = ({
     >
       <IconComponent
         title={id}
-        titleId={`${sectionId}-${id}`}
+        titleId={getTitleId(id, sectionId)}
         size={size === 'small' ? 16 : 24}
         color="text"
       />

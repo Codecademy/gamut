@@ -6,7 +6,7 @@ import { variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, {
+import {
   ChangeEvent,
   forwardRef,
   SelectHTMLAttributes,

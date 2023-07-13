@@ -1,4 +1,4 @@
-import { Toggle } from '@codecademy/gamut/src';
+import { Text, Toggle } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -85,6 +85,23 @@ Disabling the input will change the opacity and cursor but still denote the curr
     {(args) => <Toggle {...args} />}
   </Story>
   <Story name="disabled-checked" args={{ checked: true, disabled: true }}>
+    {(args) => <Toggle {...args} />}
+  </Story>
+</Canvas>
+
+## Component Labels
+
+Labels can also be React components
+
+<Canvas>
+  <Story
+    name="Component Label"
+    args={{
+      checked: false,
+      label: <Text>I am a Text component</Text>,
+      ariaLabel: 'Hello there',
+    }}
+  >
     {(args) => <Toggle {...args} />}
   </Story>
 </Canvas>

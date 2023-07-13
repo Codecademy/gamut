@@ -1,11 +1,11 @@
-import { CTAButton, FillButton } from '@codecademy/gamut';
-import React from 'react';
+import { ButtonProps, CTAButton, FillButton } from '@codecademy/gamut';
+import * as React from 'react';
 
-export type CTAProps = {
+export interface CTAProps extends Pick<ButtonProps, 'children'> {
   href: string;
   onClick?: React.MouseEventHandler;
   buttonType?: 'cta' | 'fill';
-};
+}
 
 export const CTA: React.FC<CTAProps> = ({
   buttonType = 'cta',

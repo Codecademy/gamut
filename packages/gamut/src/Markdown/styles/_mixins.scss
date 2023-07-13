@@ -37,7 +37,7 @@
     .ul,
     .ol {
       // Even out nested lists
-      margin-top: $base-unit / 2;
+      margin-top: calc($base-unit / 2);
       li:last-child {
         margin-bottom: 0;
       }
@@ -45,7 +45,7 @@
     .li {
       position: relative;
       margin-left: $base-unit * 2;
-      margin-bottom: $base-unit / 2;
+      margin-bottom: calc($base-unit / 2);
       line-height: $line-height;
       &:last-child {
         margin-bottom: $base-unit;
@@ -131,7 +131,7 @@
     display: block;
     font-family: $font-family-base;
     padding-left: $base-margin;
-    border-left: ($base-margin / 2) solid $color-gray-200;
+    border-left: calc($base-margin / 2) solid $color-gray-200;
     margin: 0;
     margin-bottom: $base-margin;
     font-style: italic;

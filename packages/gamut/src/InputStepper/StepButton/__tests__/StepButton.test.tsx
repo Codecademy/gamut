@@ -1,35 +1,33 @@
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/dom';
 
-import { StepButton, StepButtonProps } from '..';
+import { StepButton } from '..';
 
-const renderStepBtn = (overrideProps: Partial<StepButtonProps>) => {
-  const props: StepButtonProps = {
-    type: 'up',
-    onClick: jest.fn(),
-    labelledBy: '',
-    ...overrideProps,
-  };
-  return mount(<StepButton {...props} />);
-};
+const renderView = setupRtl(StepButton, {
+  type: 'up',
+  labelledBy: '',
+});
 
 describe('<StepButton>', () => {
   it('shows the up chevron when used as an incrementer', () => {
-    const wrapper = renderStepBtn({ type: 'up' });
-    const icon = wrapper.find('svg');
-    expect(icon.find('title').text()).toContain('Arrow Chevron Up Icon');
+    const { view } = renderView();
+
+    view.getByTitle('Arrow Chevron Up Icon');
   });
 
   it('shows the down chevron when used as a decrementer', () => {
-    const wrapper = renderStepBtn({ type: 'down' });
-    const icon = wrapper.find('svg');
-    expect(icon.find('title').text()).toContain('Arrow Chevron Down Icon');
+    const { view } = renderView({ type: 'down' });
+
+    view.getByTitle('Arrow Chevron Down Icon');
   });
 
   it('processes the button click', () => {
     const onClick = jest.fn();
-    const wrapper = renderStepBtn({ onClick });
-    wrapper.simulate('click');
+    const { view } = renderView({ onClick });
+
+    const upButton = view.getByRole('button');
+
+    fireEvent.click(upButton);
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 });

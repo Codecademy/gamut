@@ -1,7 +1,6 @@
 import { Text } from '@codecademy/gamut';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/react';
-import React from 'react';
 
 import { ListSection } from '..';
 
@@ -95,5 +94,12 @@ describe('ListSection', () => {
   it('renders the list elements as semantic list items', () => {
     const { view } = renderListSection();
     expect(view.getAllByRole('listitem').length).toBe(initialDisplayAmount);
+  });
+
+  it('does not render falsy children', () => {
+    const { view } = renderListSection({
+      children: [false, <Text>test</Text>],
+    });
+    expect(view.getAllByRole('listitem').length).toEqual(1);
   });
 });

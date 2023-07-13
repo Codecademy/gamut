@@ -6,7 +6,8 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { BellIcon } from '@codecademy/gamut-icons';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import * as React from 'react';
 
 export type NotificationBellProps = {
   bellRef: React.RefObject<ButtonBaseElements>;

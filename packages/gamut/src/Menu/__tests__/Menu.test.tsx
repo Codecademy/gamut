@@ -1,7 +1,6 @@
 import { MultipleUsersIcon } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { screen } from '@testing-library/react';
-import React from 'react';
 
 import { Menu } from '../Menu';
 import { MenuItem } from '../MenuItem';
@@ -71,6 +70,14 @@ describe('Menu', () => {
     screen.getByRole('none');
     screen.getByRole('menuitem');
   });
+  it('renders menuitems with onClicks as buttons within a li with no role', () => {
+    renderView({
+      children: <MenuItem onClick={() => null}>Cool Town</MenuItem>,
+    });
+
+    screen.getByRole('none');
+    screen.getByRole('menuitem');
+  });
   it('renders and icon only when specified', () => {
     renderView({
       children: <MenuItem>Cool Town</MenuItem>,
@@ -83,5 +90,40 @@ describe('Menu', () => {
     });
 
     screen.getByTestId('menuitem-icon');
+  });
+  it('renders `current page` screenreader text for active link', () => {
+    renderView({
+      children: (
+        <MenuItem active href="#link">
+          Cool Town
+        </MenuItem>
+      ),
+    });
+
+    screen.getByText('current page,');
+  });
+  it('renders `current action` screenreader text for active buttons', () => {
+    renderView({
+      children: (
+        <MenuItem active onClick={() => null}>
+          Cool Town
+        </MenuItem>
+      ),
+    });
+
+    screen.getByText('current action,');
+  });
+  it('renders `current item` screenreader text for active default ', () => {
+    renderView({
+      children: <MenuItem active>Cool Town</MenuItem>,
+    });
+
+    expect(screen.queryByTestId('menuitem-icon')).toBeNull();
+
+    renderView({
+      children: <MenuItem icon={MultipleUsersIcon}>Cool Town</MenuItem>,
+    });
+
+    screen.getByText('current item,');
   });
 });

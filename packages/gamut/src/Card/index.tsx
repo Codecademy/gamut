@@ -1,9 +1,18 @@
 import { Background, system, theme, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
+import * as React from 'react';
 
 import { Box } from '../Box';
+
+const outlineStyles = {
+  boxShadow: `-5px 5px ${theme.colors['background-current']}, -5px 5px 0 1px ${theme.colors.black}`,
+  '&:hover': {
+    transform: 'translate(4px, -4px)',
+    boxShadow: `-8px 8px 0 currentColor`,
+  },
+};
 
 const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
   variant({
@@ -26,6 +35,7 @@ const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
           boxShadow: `-8px 8px 0 currentColor`,
         },
       },
+      outline: outlineStyles,
     },
   })
 );
@@ -50,12 +60,13 @@ const shadowVariants = variant({
         boxShadow: `-8px 8px 0 ${theme.colors.navy}`,
       },
     },
+    outline: outlineStyles,
   },
 });
 
 export interface CardProps
   extends Omit<ComponentProps<typeof CardWrapper>, 'outline' | 'bg'> {
-  variant?: 'navy' | 'white' | 'hyper' | 'yellow';
+  variant?: 'navy' | 'white' | 'hyper' | 'yellow' | 'beige';
 }
 
 interface CardWrapperProps extends StyleProps<typeof shadowVariants> {

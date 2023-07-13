@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 import { Checkbox, CheckboxProps } from '../../../../Form';
 
@@ -22,6 +23,7 @@ export const MarkdownCheckbox: React.FC<MarkdownCheckboxProps> = ({
       htmlFor={label}
       label={label}
       onChange={changeHandler}
+      data-testid="gamut-md-checkbox"
       spacing="tight"
     />
   );

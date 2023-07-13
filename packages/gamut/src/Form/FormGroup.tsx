@@ -1,7 +1,8 @@
 import { variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
+import * as React from 'react';
 
 import { Box } from '../Box';
 import { ToolTipProps } from '../ToolTip';
@@ -95,7 +96,11 @@ export const FormGroup: React.FC<FormGroupProps> = ({
       {labelComponent}
       {descriptionComponent}
       {children}
-      {error && <FormError aria-live="polite">{error}</FormError>}
+      {error && (
+        <FormError aria-live="polite" role="alert">
+          {error}
+        </FormError>
+      )}
     </FormGroupContainer>
   );
 };

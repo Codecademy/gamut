@@ -1,15 +1,13 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/react';
 
 import { createMockAppHeaderLinkItem } from '../../../mockAppHeaderItems';
-import { AppHeaderDropdown, AppHeaderDropdownProps } from '..';
+import { AppHeaderDropdown } from '..';
 
 const testDropdownTexts = ['Test SubLink 1 Text', 'Test Sublink 2 Text'];
 const testDropdownUrls = ['test-sublink-url-1', 'test-sublink-url-2'];
 
-const props: AppHeaderDropdownProps = {
+const renderView = setupRtl(AppHeaderDropdown, {
   action: jest.fn(),
   item: {
     dataTestId: '',
@@ -30,29 +28,21 @@ const props: AppHeaderDropdownProps = {
     trackingTarget: '',
     type: 'dropdown',
   },
-};
-
-const renderAppHeaderDropdown = () => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <AppHeaderDropdown {...props} />
-    </ThemeProvider>
-  );
-};
+});
 
 describe('AppHeaderDropdown', () => {
   it('displays sublinks text upon expanding the dropdown', () => {
-    renderAppHeaderDropdown();
-    screen.getByRole('button').click();
-    expect(screen.getByText(testDropdownTexts[0]));
-    expect(screen.getByText(testDropdownTexts[1]));
+    const { view } = renderView();
+    fireEvent.click(view.getByRole('button'));
+    view.getByText(testDropdownTexts[0]);
+    view.getByText(testDropdownTexts[1]);
   });
 
   it('sublinks link to the provided hrefs', () => {
-    renderAppHeaderDropdown();
-    screen.getByRole('button').click();
+    const { view } = renderView();
+    fireEvent.click(view.getByRole('button'));
     expect(
-      screen.getAllByRole('menuitem').map((node) => node.getAttribute('href'))
+      view.getAllByRole('menuitem').map((node) => node.getAttribute('href'))
     ).toStrictEqual(testDropdownUrls);
   });
 });

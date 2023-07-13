@@ -1,5 +1,5 @@
 import { Box, TextButton } from '@codecademy/gamut';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { defaultDisplayLimit } from './constants';
 import { NotificationsContentsProps } from './types';

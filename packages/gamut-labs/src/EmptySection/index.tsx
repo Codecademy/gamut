@@ -4,7 +4,7 @@ import { DotLoose } from '@codecademy/gamut-patterns';
 import { pxRem, styledOptions, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import { DropdownButtonProps } from '..';
 

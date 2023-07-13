@@ -1,6 +1,5 @@
 import { ConnectedForm, FlexBox, SubmitButton, Text } from '@codecademy/gamut';
 import { action } from '@storybook/addon-actions';
-import React from 'react';
 
 export const SubmitButtonStates = () => {
   return (

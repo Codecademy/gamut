@@ -1,5 +1,4 @@
 import { css, Global } from '@emotion/react';
-import React from 'react';
 
 import { webFonts } from '../remoteAssets/fonts';
 import { coreTheme as theme } from '../themes';

@@ -11,7 +11,8 @@ import { css } from '@codecademy/gamut-styles';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { camelCase } from 'lodash';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 
 export type SearchPaneProps = {
   onSearch: (query: string) => void;

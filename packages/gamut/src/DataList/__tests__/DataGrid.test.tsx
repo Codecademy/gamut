@@ -1,6 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { act, fireEvent, RenderResult, screen } from '@testing-library/react';
-import React from 'react';
 
 import { DataGrid, DataGridProps } from '../DataGrid';
 import { ColumnConfig } from '../types';

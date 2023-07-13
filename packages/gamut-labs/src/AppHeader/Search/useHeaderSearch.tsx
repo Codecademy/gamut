@@ -1,6 +1,6 @@
 import { IconButton } from '@codecademy/gamut';
 import { SearchIcon } from '@codecademy/gamut-icons';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { AnimatedHeaderZone } from '../shared';
 import { SearchPane } from './SearchPane';

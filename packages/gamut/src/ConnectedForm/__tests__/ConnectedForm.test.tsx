@@ -1,7 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, queries } from '@testing-library/dom';
 import { act, RenderResult, waitFor } from '@testing-library/react';
-import React from 'react';
 import * as rhf from 'react-hook-form';
 
 import { createPromise } from '../../utils';

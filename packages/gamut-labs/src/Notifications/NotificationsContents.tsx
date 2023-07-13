@@ -7,7 +7,8 @@ import {
 } from '@codecademy/gamut';
 import { CheckerDense } from '@codecademy/gamut-patterns';
 import { Background } from '@codecademy/gamut-styles';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import * as React from 'react';
 
 import { NotificationsContentsProps } from './types';
 import { useNotificationButtons } from './useNotificationButtons';

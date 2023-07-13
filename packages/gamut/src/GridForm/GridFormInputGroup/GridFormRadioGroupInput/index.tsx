@@ -1,5 +1,5 @@
 import { isString } from 'lodash';
-import React from 'react';
+import * as React from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
 import { Radio, RadioGroup } from '../../../Form';

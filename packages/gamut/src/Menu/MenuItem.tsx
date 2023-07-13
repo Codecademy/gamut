@@ -1,8 +1,18 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import React, { ComponentProps, MutableRefObject } from 'react';
+import { ComponentProps, forwardRef, MutableRefObject } from 'react';
 
-import { ListItem, ListItemProps, ListLink, ListLinkProps } from './elements';
+import { Text } from '../Typography';
+import {
+  ListButton,
+  ListItem,
+  ListItemProps,
+  ListLink,
+  ListLinkProps,
+} from './elements';
 import { useMenuContext } from './MenuContext';
+
+const getListItemType = (href: boolean, onClick: boolean) =>
+  href ? 'link' : onClick ? 'button' : 'item';
 
 const activePropnames = {
   navigation: 'active-navlink',
@@ -10,8 +20,14 @@ const activePropnames = {
   select: 'selected',
 };
 
-export const MenuItem = React.forwardRef<
-  HTMLLIElement | HTMLAnchorElement,
+const currentItemText = {
+  link: 'current page',
+  button: 'current action',
+  item: 'current item',
+};
+
+export const MenuItem = forwardRef<
+  HTMLLIElement | HTMLAnchorElement | HTMLButtonElement,
   Omit<
     ComponentProps<typeof ListItem>,
     'variant' | 'selected' | 'active-navlink'
@@ -30,6 +46,8 @@ export const MenuItem = React.forwardRef<
     [activeProp]: active,
   } as ListItemProps;
 
+  const listItemType = getListItemType(!!href, !!props.onClick);
+
   const content = (
     <>
       {Icon && (
@@ -39,11 +57,12 @@ export const MenuItem = React.forwardRef<
           data-testid="menuitem-icon"
         />
       )}
+      {active && <Text screenreader>{currentItemText[listItemType]},</Text>}
       {children}
     </>
   );
 
-  if (href) {
+  if (listItemType === 'link') {
     const linkRef = ref as MutableRefObject<HTMLAnchorElement>;
 
     return (
@@ -56,6 +75,18 @@ export const MenuItem = React.forwardRef<
         >
           {content}
         </ListLink>
+      </ListItem>
+    );
+  }
+
+  if (listItemType === 'button') {
+    const buttonRef = ref as MutableRefObject<HTMLButtonElement>;
+
+    return (
+      <ListItem role="none">
+        <ListButton {...(computed as ListLinkProps)} ref={buttonRef}>
+          {content}
+        </ListButton>
       </ListItem>
     );
   }

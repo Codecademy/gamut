@@ -1,6 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { configure } from '@testing-library/dom';
-import React from 'react';
 
 import { getComponent } from './renderers';
 

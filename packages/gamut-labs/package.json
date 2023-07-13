@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-labs",
   "description": "Brand and experimental component library for Codecademy",
-  "version": "33.6.8",
+  "version": "35.15.6",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -21,22 +21,23 @@
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "react": ">=17.0.2",
-    "react-dom": ">=17.0.2"
+    "react": "^17.0.2 || ^18.2.0",
+    "react-dom": "^17.0.2 || ^18.2.0"
   },
   "dependencies": {
-    "@codecademy/gamut": "^51.0.0",
-    "@codecademy/gamut-icons": "^7.8.2",
-    "@codecademy/gamut-illustrations": "^0.32.2",
-    "@codecademy/gamut-patterns": "^0.8.15",
-    "@codecademy/gamut-styles": "^14.1.1",
-    "@codecademy/variance": "^0.20.3",
-    "@loadable/component": "^5.15.2",
+    "@codecademy/gamut": "55.1.11",
+    "@codecademy/gamut-icons": "9.3.4",
+    "@codecademy/gamut-illustrations": "0.38.2",
+    "@codecademy/gamut-patterns": "0.9.7",
+    "@codecademy/gamut-styles": "16.1.2",
+    "@codecademy/tracking": "1.0.10",
+    "@codecademy/variance": "0.21.0",
     "classnames": "^2.2.5",
-    "framer-motion": "^4.1.17",
+    "framer-motion": "^6.5.1",
     "freezeframe": "^5.0.2",
     "intersection-observer": "^0.12.0",
     "lodash": "^4.17.5",
+    "pluralize": "8.0.0",
     "react-focus-on": "^3.5.1",
     "react-freezeframe": "^5.0.2",
     "react-hook-form": "^7.21.2",
@@ -44,15 +45,14 @@
     "react-use": "15.3.8"
   },
   "devDependencies": {
-    "@codecademy/gamut-tests": "^4.0.14",
+    "@codecademy/gamut-tests": "5.0.6",
     "@emotion/jest": "^11.3.0",
     "@testing-library/dom": "^8.11.1",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^13.5.0",
-    "@types/enzyme": "3.10.7",
-    "@types/loadable__component": "^5.13.4",
-    "enzyme": "3.11.0"
+    "@types/pluralize": "0.0.29"
   },
   "scripts": {
     "verify": "tsc --noEmit",

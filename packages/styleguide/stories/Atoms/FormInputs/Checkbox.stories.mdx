@@ -1,4 +1,4 @@
-import { Checkbox, FlexBox } from '@codecademy/gamut';
+import { Anchor, Box, Checkbox, FlexBox, Text } from '@codecademy/gamut';
 import { MiniStarIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -186,6 +186,18 @@ To ensure our `Checkboxes` are accessible, we require an `aria-label` be added i
       aria-label="a node"
       htmlFor="accessible-2"
       name="accessible-2"
+    />
+    <Checkbox
+      dontAriaHideLabel
+      aria-label="Here is a link to click"
+      name="accessible-3"
+      label={
+        <Box>
+          <Text aria-hidden>Here is a link to&nbsp;</Text>
+          <Anchor href="/">click</Anchor>
+          <Text aria-hidden>!</Text>
+        </Box>
+      }
     />
   </Story>
 </Canvas>

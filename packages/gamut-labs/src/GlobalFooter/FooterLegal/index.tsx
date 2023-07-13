@@ -1,7 +1,6 @@
-import { ContentContainer } from '@codecademy/gamut';
 import { theme, themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import { GlobalFooterClickHandler } from '../types';
 import { LegalLinks } from './LegalLinks';
@@ -30,11 +29,9 @@ export const FooterLegal: React.FC<FooterLegalProps> = ({
   onMadeInClick,
 }) => {
   return (
-    <ContentContainer>
-      <LegalLocalContainer>
-        <LegalLinks onClick={onClick} />
-        <MadeIn onClick={onMadeInClick} />
-      </LegalLocalContainer>
-    </ContentContainer>
+    <LegalLocalContainer>
+      <LegalLinks onClick={onClick} />
+      <MadeIn onClick={onMadeInClick} />
+    </LegalLocalContainer>
   );
 };

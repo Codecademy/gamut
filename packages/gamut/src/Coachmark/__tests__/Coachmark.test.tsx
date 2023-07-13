@@ -1,7 +1,6 @@
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
-import React from 'react';
 
 import { Coachmark, CoachmarkProps } from '..';
 

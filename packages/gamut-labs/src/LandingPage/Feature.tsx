@@ -1,7 +1,7 @@
-import { Box, Markdown, Text } from '@codecademy/gamut';
+import { Box, Markdown, Text, WithChildrenProp } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import { PausableImage } from '../PausableImage';
 import { BaseProps } from './types';
@@ -26,7 +26,7 @@ export const FeaturedIcon: React.FC<FeaturedIconProps> = ({ src, alt }) => (
   <Image alt={alt} src={src} mb={32} width="64px" data-testid="feature-icon" />
 );
 
-export const FeaturedStat: React.FC = ({ children }) => (
+export const FeaturedStat: React.FC<WithChildrenProp> = ({ children }) => (
   <Text
     as="div"
     variant="title-xxl"
@@ -37,9 +37,9 @@ export const FeaturedStat: React.FC = ({ children }) => (
   </Text>
 );
 
-export type FeaturedTitleProps = {
+export interface FeaturedTitleProps extends WithChildrenProp {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-};
+}
 export const FeaturedTitle: React.FC<FeaturedTitleProps> = ({
   as,
   children,
@@ -80,9 +80,11 @@ const FeatureBlock = styled.div`
     }
   }
 `;
-export type FeatureProps = {
+
+export interface FeatureProps extends WithChildrenProp {
   testId?: string;
-};
+}
+
 export const Feature: React.FC<FeatureProps> = ({ testId, children }) => (
   <FeatureBlock data-testid={testId}>{children}</FeatureBlock>
 );

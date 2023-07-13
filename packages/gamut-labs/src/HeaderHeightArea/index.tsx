@@ -1,9 +1,9 @@
-import { Box } from '@codecademy/gamut';
+import { Box, WithChildrenProp } from '@codecademy/gamut';
 import { system, transitionConcat } from '@codecademy/gamut-styles';
 import { ResponsiveProp } from '@codecademy/variance';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import { useIsInHeaderRegion } from './useIsInHeaderRegion';
 
@@ -28,17 +28,17 @@ const HeaderHeightAreaBase = styled(Box)(
   })
 );
 
-export type HeaderHeightAreaProps = {
+export interface HeaderHeightAreaProps extends WithChildrenProp {
   as?: React.ElementType<any>;
   display: ResponsiveProp<'none' | 'block'>;
-  title?: string;
-};
+  ariaLabel?: string;
+}
 
 export const HeaderHeightArea: React.FC<HeaderHeightAreaProps> = ({
   as,
   children,
   display,
-  title,
+  ariaLabel,
 }) => {
   const theme = useTheme();
   const isInHeaderRegion = useIsInHeaderRegion();
@@ -49,7 +49,7 @@ export const HeaderHeightArea: React.FC<HeaderHeightAreaProps> = ({
       display={display}
       height={theme.elements.headerHeight}
       faded={isInHeaderRegion}
-      title={title}
+      aria-label={ariaLabel}
     >
       {children}
     </HeaderHeightAreaBase>

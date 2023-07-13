@@ -3,7 +3,7 @@ import 'katex/dist/katex.css';
 
 import cx from 'classnames';
 import katex from 'katex';
-import React from 'react';
+import * as React from 'react';
 
 import styles from './styles.module.scss';
 

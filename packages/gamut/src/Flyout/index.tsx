@@ -1,12 +1,14 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import React from 'react';
+import { Background, Colors } from '@codecademy/gamut-styles';
+import * as React from 'react';
 
+import { WithChildrenProp } from '..';
 import { IconButton } from '../Button';
 import { Drawer } from '../Drawer';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 
-export interface FlyoutProps {
+export interface FlyoutProps extends WithChildrenProp {
   /**
    * Accessibility label for the close button.
    */
@@ -31,6 +33,7 @@ export interface FlyoutProps {
    * Contents for a top-left h2.
    */
   title: React.ReactNode;
+  bg?: Colors;
 }
 
 export const Flyout: React.FC<FlyoutProps> = ({
@@ -40,6 +43,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
   openFrom = 'left',
   onClose,
   title,
+  bg = 'background',
 }) => {
   return (
     <Overlay
@@ -49,36 +53,38 @@ export const Flyout: React.FC<FlyoutProps> = ({
       onRequestClose={onClose}
       shroud
     >
-      <Drawer
-        bottom={0}
-        display="flex"
-        expanded={expanded}
-        flexDirection={openFrom === 'left' ? 'row' : 'row-reverse'}
-        position="fixed"
-        top={0}
-        {...{ [openFrom]: 0 }}
-      >
-        <Text
-          as="h2"
-          fontSize={22}
-          mb={8}
-          ml={16}
-          mt={24}
-          mr={40}
-          maxWidth="100%"
+      <Background bg={bg}>
+        <Drawer
+          bottom={0}
+          display="flex"
+          expanded={expanded}
+          flexDirection={openFrom === 'left' ? 'row' : 'row-reverse'}
+          position="fixed"
+          top={0}
+          {...{ [openFrom]: 0 }}
         >
-          {title}
-        </Text>
-        <IconButton
-          aria-label={closeLabel}
-          icon={MiniDeleteIcon}
-          onClick={onClose}
-          position="absolute"
-          top="1rem"
-          right="0.5rem"
-        />
-        {children}
-      </Drawer>
+          <Text
+            as="h2"
+            fontSize={22}
+            mb={8}
+            ml={16}
+            mt={24}
+            mr={40}
+            maxWidth="100%"
+          >
+            {title}
+          </Text>
+          <IconButton
+            aria-label={closeLabel}
+            icon={MiniDeleteIcon}
+            onClick={onClose}
+            position="absolute"
+            top="1rem"
+            right="0.5rem"
+          />
+          {children}
+        </Drawer>
+      </Background>
     </Overlay>
   );
 };

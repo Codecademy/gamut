@@ -1,5 +1,4 @@
 import { each, isObject } from 'lodash';
-import React from 'react';
 
 import {
   ExtendedOption,

@@ -1,7 +1,8 @@
 import { FlexBox, FormError, Input } from '@codecademy/gamut';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
+import * as React from 'react';
 import { UseFormReturn, Validate } from 'react-hook-form';
 
 import { Avatar } from '..';

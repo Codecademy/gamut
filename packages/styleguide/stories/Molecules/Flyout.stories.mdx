@@ -41,7 +41,7 @@ Our Flyouts are [controlled components](https://reactjs.org/docs/forms.html#cont
             title="About Baharroth"
             onClose={() => setExpanded(false)}
           >
-            <Box bg="background" textColor="text" m={16}>
+            <Box textColor="text" m={16}>
               Baharroth, &quot;the Cry of the Wind,&quot; is the Winged Phoenix,
               the oldest of the Swooping Hawks and the first Exarch of those
               winged Aspect Warriors. Baharroth is the founder of the Eldar
@@ -72,6 +72,8 @@ Our Flyouts are [controlled components](https://reactjs.org/docs/forms.html#cont
 </Canvas>
 
 <Props story="Flyout" />
+
+## Flyout in Dark Mode
 
 Flyouts work in light and dark `ColorModes`.
 
@@ -123,6 +125,87 @@ Flyouts work in light and dark `ColorModes`.
             </FlexBox>
           </Box>
         </Background>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Flyout with Overflow
+
+Flyouts scroll on vertical overflow and keep the background color.
+
+<Canvas>
+  <Story name="Flyout with Overflow">
+    {(args) => {
+      const [expanded, setExpanded] = useState(false);
+      return (
+        <Box height="20rem" p={12}>
+          <Flyout
+            {...args}
+            expanded={expanded}
+            title="Traitor Legions, Renegade Space Marine Chapters"
+            onClose={() => setExpanded(false)}
+            bg="beige"
+          >
+            <Box textColor="text" m={16}>
+              Several of the Renegades listed here are simply Space Marine
+              Chapters that have turned on the Imperium of Man or been unfairly
+              declared Excommunicate Traitoris for one reason or another, but
+              still view themselves as loyal to the Emperor of Mankind and not
+              to the corrupt edifice of the Imperium His servants have built
+              over the last 10,000 years. These types of Renegade Chapters are
+              certainly no friends of Chaos or the other enemies of Humanity,
+              though their lack of allies can often lead even the
+              best-intentioned Renegades down the ultimate path of corruption to
+              the willing worship of the Dark Powers, if only to secure their
+              own survival when they are beset on all sides by enemies. Several
+              of the Renegades listed here are simply Space Marine Chapters that
+              have turned on the Imperium of Man or been unfairly declared
+              Excommunicate Traitoris for one reason or another, but still view
+              themselves as loyal to the Emperor of Mankind and not to the
+              corrupt edifice of the Imperium His servants have built over the
+              last 10,000 years. These types of Renegade Chapters are certainly
+              no friends of Chaos or the other enemies of Humanity, though their
+              lack of allies can often lead even the best-intentioned Renegades
+              down the ultimate path of corruption to the willing worship of the
+              Dark Powers, if only to secure their own survival when they are
+              beset on all sides by enemies. Several of the Renegades listed
+              here are simply Space Marine Chapters that have turned on the
+              Imperium of Man or been unfairly declared Excommunicate Traitoris
+              for one reason or another, but still view themselves as loyal to
+              the Emperor of Mankind and not to the corrupt edifice of the
+              Imperium His servants have built over the last 10,000 years. These
+              types of Renegade Chapters are certainly no friends of Chaos or
+              the other enemies of Humanity, though their lack of allies can
+              often lead even the best-intentioned Renegades down the ultimate
+              path of corruption to the willing worship of the Dark Powers, if
+              only to secure their own survival when they are beset on all sides
+              by enemies. Several of the Renegades listed here are simply Space
+              Marine Chapters that have turned on the Imperium of Man or been
+              unfairly declared Excommunicate Traitoris for one reason or
+              another, but still view themselves as loyal to the Emperor of
+              Mankind and not to the corrupt edifice of the Imperium His
+              servants have built over the last 10,000 years. These types of
+              Renegade Chapters are certainly no friends of Chaos or the other
+              enemies of Humanity, though their lack of allies can often lead
+              even the best-intentioned Renegades down the ultimate path of
+              corruption to the willing worship of the Dark Powers, if only to
+              secure their own survival when they are beset on all sides by
+              enemies.
+            </Box>
+          </Flyout>
+          <FillButton size="small" onClick={() => setExpanded(true)}>
+            Tell me more...
+          </FillButton>
+          <FlexBox mt={16}>
+            Renegade Chapters are generally made up of Chaos Space Marines whose
+            Chapters or companies turned to Chaos after the end of the Horus
+            Heresy, sometimes many millennia later. Some are not whole Chapters
+            but simply warbands composed of a few tens or hundreds of Astartes
+            drawn from the same original source and led by a charismatic
+            commander or Chaos Lord.
+          </FlexBox>
+        </Box>
       );
     }}
   </Story>

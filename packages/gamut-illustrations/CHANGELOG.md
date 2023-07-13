@@ -3,6 +3,176 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.38.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.38.1...@codecademy/gamut-illustrations@0.38.2) (2023-07-12)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.38.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.38.0...@codecademy/gamut-illustrations@0.38.1) (2023-07-05)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+## [0.38.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.37.1...@codecademy/gamut-illustrations@0.38.0) (2023-05-31)
+
+
+### Features
+
+* **Illustration:** add PracticeTarget illustration ([1dac50c](https://github.com/Codecademy/gamut/commit/1dac50cbb67d7739cecc3e183bac8ffa12678be0))
+
+
+
+### [0.37.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.37.0...@codecademy/gamut-illustrations@0.37.1) (2023-05-25)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+## [0.37.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.36.0...@codecademy/gamut-illustrations@0.37.0) (2023-05-24)
+
+
+### Features
+
+* **Illustration:** add LightBulbGears illustration ([2a81052](https://github.com/Codecademy/gamut/commit/2a81052edd1959efa813c91cd4a149ba1db08023))
+
+
+
+## [0.36.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.35.2...@codecademy/gamut-illustrations@0.36.0) (2023-04-14)
+
+
+### Features
+
+* **Illustration:** Add new illustrations for upcoming dashboard component  ([c574ed7](https://github.com/Codecademy/gamut/commit/c574ed70ba7bcb9ee33829256af6dda42ae84d09))
+
+
+
+### [0.35.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.35.1...@codecademy/gamut-illustrations@0.35.2) (2023-04-14)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.35.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.35.0...@codecademy/gamut-illustrations@0.35.1) (2023-04-10)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+## [0.35.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.34.1...@codecademy/gamut-illustrations@0.35.0) (2023-03-27)
+
+
+### Features
+
+* **Illustration:** add warning illustration ([10c465f](https://github.com/Codecademy/gamut/commit/10c465f563d527f28e99af039d4ce3f242afdea2))
+
+
+
+### [0.34.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.34.0...@codecademy/gamut-illustrations@0.34.1) (2023-03-20)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+## [0.34.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.33.1...@codecademy/gamut-illustrations@0.34.0) (2023-02-16)
+
+
+### Features
+
+* **Illustration:** adds ErrorWindow illustration ([ed3060c](https://github.com/Codecademy/gamut/commit/ed3060cdc6a5f06c6951551777594ec0fdb5cdcc))
+
+
+
+### [0.33.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.33.0...@codecademy/gamut-illustrations@0.33.1) (2023-02-06)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+## [0.33.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.32.9...@codecademy/gamut-illustrations@0.33.0) (2023-01-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Support React 18 [WEB-2055]
+
+### Miscellaneous Chores
+
+* Support React 18 [WEB-2055] ([89d6b22](https://github.com/Codecademy/gamut/commit/89d6b224831dd62d7bcd9a424142eaab02232a00))
+
+
+
+### [0.32.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.32.8...@codecademy/gamut-illustrations@0.32.9) (2023-01-09)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.32.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.32.7...@codecademy/gamut-illustrations@0.32.8) (2023-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.32.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.32.6...@codecademy/gamut-illustrations@0.32.7) (2022-12-06)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.32.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.32.5...@codecademy/gamut-illustrations@0.32.6) (2022-11-29)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.32.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.32.4...@codecademy/gamut-illustrations@0.32.5) (2022-11-02)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.32.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.32.3...@codecademy/gamut-illustrations@0.32.4) (2022-11-01)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.32.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.32.2...@codecademy/gamut-illustrations@0.32.3) (2022-10-31)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
 ### [0.32.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.32.1...@codecademy/gamut-illustrations@0.32.2) (2022-10-06)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations

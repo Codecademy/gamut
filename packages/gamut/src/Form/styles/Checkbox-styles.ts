@@ -37,9 +37,9 @@ export const checkboxElement = system.css({
   minWidth: 22,
   width: 22,
   height: 22,
-  border: 2,
+  borderWidth: '2px',
+  borderStyle: 'solid',
   borderColor: 'currentColor',
-  color: 'background-disabled',
   transition: transitionConcat(
     ['transform', 'outline', 'background-color', 'box-shadow'],
     'slow',
@@ -70,7 +70,7 @@ export const checkboxElementStates = system.states({
     color: 'primary',
   },
   disabled: {
-    color: 'background-disabled',
+    color: 'text-disabled',
     [InputSelectors.HOVER]: {
       outline: 'none',
     },

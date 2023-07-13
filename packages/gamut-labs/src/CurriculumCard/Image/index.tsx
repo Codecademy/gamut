@@ -1,6 +1,7 @@
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { BASE_STATIC_ASSET_PATH } from '../../remoteAssets/components';

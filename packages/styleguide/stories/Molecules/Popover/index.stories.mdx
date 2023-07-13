@@ -1,4 +1,4 @@
-import { Popover } from '@codecademy/gamut-labs/src';
+import { Popover } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -47,6 +47,16 @@ Using the beak prop, you can add a beak to the popover.
   <Story name="Beak">
     {(args) => {
       return <PopoverExample {...args} beak="left" />;
+    }}
+  </Story>
+</Canvas>
+
+Tooltips with a _centered_ beak -`center`- are smaller sized and meant for a single small number of words, like keyboard shortcuts. Similar to the center aligned [tooltips](http://localhost:6006/?path=/docs/atoms-tooltip--smaller-alignment#smaller-alignments)
+
+<Canvas>
+  <Story name="Center Beak">
+    {(args) => {
+      return <PopoverExample {...args} beak="center" p={0} />;
     }}
   </Story>
 </Canvas>

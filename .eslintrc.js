@@ -1,7 +1,10 @@
 module.exports = {
   root: true,
 
-  extends: [require.resolve('@codecademy/eslint-config')],
+  extends: [
+    require.resolve('@codecademy/eslint-config'),
+    'plugin:react/jsx-runtime',
+  ],
 
   plugins: ['eslint-plugin-gamut'],
 
@@ -51,6 +54,7 @@ module.exports = {
         '@typescript-eslint/no-unsafe-return': 'off',
         '@typescript-eslint/restrict-plus-operands': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
+        'import/no-extraneous-dependencies': 'off',
       },
     },
   ],

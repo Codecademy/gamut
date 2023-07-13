@@ -1,6 +1,6 @@
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
-import React from 'react';
+import * as React from 'react';
 
 import { ButtonDeprecated } from '../ButtonDeprecated';
 import {

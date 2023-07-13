@@ -1,7 +1,7 @@
 import { PatternProps } from '@codecademy/gamut-patterns';
-import { variant } from '@codecademy/gamut-styles';
+import { theme, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import { Text } from '../Typography';
 
@@ -26,12 +26,7 @@ export type ProgressBarProps = {
   /**
    * Base variant display themes.
    */
-  variant: 'blue' | 'yellow' | 'dark' | 'light';
-
-  /**
-   * Base variant display themes.
-   */
-  bordered?: boolean;
+  variant: 'blue' | 'yellow' | 'default';
 
   /**
    * Pattern component to use as a background.
@@ -69,20 +64,21 @@ const progressBarSizeVariants = variant({
 });
 
 const progressBarBackgroundVariants = variant({
-  defaultVariant: 'blue',
+  defaultVariant: 'default',
+  base: {
+    borderWidth: '1px',
+    borderStyle: 'solid',
+  },
   variants: {
     blue: {
       bg: 'navy',
+      borderColor: 'navy',
     },
     yellow: {
-      bg: `gray-100`,
+      bg: 'gray-100',
+      borderColor: 'navy',
     },
-    dark: {
-      textColor: 'white',
-    },
-    light: {
-      textColor: 'navy',
-    },
+    default: {},
   },
 });
 
@@ -97,22 +93,8 @@ const progressBarBackgroundOverride = variant({
   },
 });
 
-const progressBarBorderVariants = variant({
-  defaultVariant: 'basic',
-  prop: 'border',
-  variants: {
-    basic: {
-      borderWidth: '0',
-    },
-    bordered: {
-      borderWidth: '1px',
-      borderStyle: 'solid',
-    },
-  },
-});
-
 const progressBarForegroundVariants = variant({
-  defaultVariant: 'blue',
+  defaultVariant: 'default',
   base: {
     alignItems: 'center',
     height: '100%',
@@ -127,16 +109,12 @@ const progressBarForegroundVariants = variant({
       textColor: 'white',
     },
     yellow: {
-      bg: `yellow`,
-      textColor: `black`,
-    },
-    light: {
-      bg: 'navy',
+      bg: 'yellow',
       textColor: 'navy',
     },
-    dark: {
-      bg: 'white',
-      textColor: 'white',
+    default: {
+      bg: 'text',
+      textColor: 'background',
     },
   },
 });
@@ -144,14 +122,12 @@ const progressBarForegroundVariants = variant({
 type ProgressBarElementProps = Pick<ProgressBarProps, 'variant' | 'size'>;
 
 type ProgressBarElementWrapperProps = ProgressBarElementProps & {
-  border: 'basic' | 'bordered';
   backgroundOverride: 'pattern' | 'none';
 };
 
 const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
   ${progressBarBackgroundVariants};
   ${progressBarSizeVariants};
-  ${progressBarBorderVariants};
   ${progressBarBackgroundOverride};
 `;
 
@@ -168,14 +144,13 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   minimumPercent = 0,
   percent,
   pattern: Pattern,
-  bordered,
   size = 'small',
-  variant = 'blue',
+  variant,
 }) => {
+  const showBarBorder = percent > 0 || minimumPercent > 0;
   return (
     <ProgressBarWrapper
       aria-live="polite"
-      border={bordered ? 'bordered' : 'basic'}
       size={size}
       variant={variant}
       backgroundOverride={Pattern ? 'pattern' : 'none'}
@@ -187,6 +162,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         data-testid="progress-bar-bar"
         style={{
           width: `${Math.max(minimumPercent, percent)}%`,
+          boxShadow: showBarBorder
+            ? `0.5px 0 0 0.5px ${theme.colors.navy}`
+            : 'none',
         }}
       >
         {['large', 'xl'].includes(size) && (

@@ -1,4 +1,4 @@
-import React, { ComponentProps, useMemo } from 'react';
+import { ComponentProps, useMemo } from 'react';
 
 import { List } from '../List';
 import { DataListControls, IdentifiableKeys } from '.';

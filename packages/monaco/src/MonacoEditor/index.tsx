@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 import useLanguageService from '../libs/languageServices/useLanguageService';
 import { SimpleMonacoEditor } from './SimpleMonacoEditor';

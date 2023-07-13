@@ -4,8 +4,8 @@
     "url": "https://github.com/Codecademy/gamut/issues"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^14.1.1",
-    "@codecademy/variance": "^0.20.3",
+    "@codecademy/gamut-styles": "16.1.2",
+    "@codecademy/variance": "0.21.0",
     "classnames": "^2.2.5"
   },
   "devDependencies": {
@@ -27,8 +27,8 @@
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "react": ">=17.0.2",
-    "react-dom": ">=17.0.2"
+    "react": "^17.0.2 || ^18.2.0",
+    "react-dom": "^17.0.2 || ^18.2.0"
   },
   "publishConfig": {
     "access": "public"
@@ -42,5 +42,5 @@
     "build": "nx build @codecademy/gamut-patterns"
   },
   "sideEffects": false,
-  "version": "0.8.15"
+  "version": "0.9.7"
 }

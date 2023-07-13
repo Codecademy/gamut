@@ -2,7 +2,8 @@ import { Box, ContentContainer, IconButton, Overlay } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
 import { Background, css, useColorModes } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 import { mapItemToElement, StyledAppBar } from '../AppHeader';
 import { AppHeaderListItem } from '../AppHeader/AppHeaderElements/AppHeaderListItem';
@@ -13,11 +14,6 @@ import {
 import { appHeaderMobileBreakpoint } from '../AppHeader/shared';
 import { FormattedMobileAppHeaderItems } from '../AppHeader/types';
 import { AppHeaderMainMenuMobile } from '../AppHeaderMobile/AppHeaderMainMenuMobile';
-import {
-  CrossDeviceBookmarkParts,
-  CrossDeviceBookmarksView,
-} from '../Bookmarks/types';
-import { useBookmarkComponentsPair } from '../Bookmarks/useBookmarkComponentsPair';
 import { CrossDeviceStateProps } from '../GlobalHeader/types';
 import { HeaderHeightArea } from '../HeaderHeightArea';
 import { NotificationsContents } from '../Notifications/NotificationsContents';
@@ -31,7 +27,10 @@ export type AppHeaderMobileProps = {
   redirectParam?: string;
   onSearch: (query: string) => void;
   isAnon: boolean;
-  crossDeviceBookmarkParts?: CrossDeviceBookmarkParts;
+  /**
+   * used to conditonally hide the default search icon and notification bell
+   */
+  isEnterprise?: boolean;
 } & CrossDeviceStateProps;
 
 const StyledOverlay = styled(Overlay)(
@@ -74,9 +73,9 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   onSearch,
   redirectParam,
   isAnon,
+  isEnterprise,
   openCrossDeviceItemId,
   setOpenCrossDeviceItemId,
-  crossDeviceBookmarkParts,
 }) => {
   const [mode, , modes] = useColorModes();
   const bgCurrent = modes[mode]['background-current'];
@@ -88,14 +87,6 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     Renderer: NotificationsContents,
     openCrossDeviceItemId,
     setOpenCrossDeviceItemId,
-  });
-
-  const [bookmarksButton, bookmarksContent] = useBookmarkComponentsPair({
-    openCrossDeviceItemId,
-    setOpenCrossDeviceItemId,
-    bookmarkParts: crossDeviceBookmarkParts,
-    view: CrossDeviceBookmarksView.MOBILE,
-    isAnon,
   });
 
   const openMobileMenu = () => {
@@ -134,8 +125,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   };
 
   const right = [
-    ...(notificationsBell ? [notificationsBell] : []),
-    ...(bookmarksButton ? [bookmarksButton] : []),
+    ...(notificationsBell && !isEnterprise ? [notificationsBell] : []),
     ...items.right,
   ];
 
@@ -156,7 +146,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         <HeaderHeightArea
           display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}
           as="nav"
-          title="Mobile Navigation"
+          ariaLabel="Mobile Navigation"
         >
           <StyledAppBar>
             <StyledMenuBar role="menubar">
@@ -188,7 +178,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           <HeaderHeightArea
             display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}
             as="nav"
-            title="Mobile Navigation"
+            ariaLabel="Mobile Navigation"
             data-testid="header-mobile-menu-dropdown"
           >
             <StyledAppBar>
@@ -212,6 +202,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
                 onSearch={onSearch}
                 getItemType={onItemType}
                 isAnon={isAnon}
+                isEnterprise={isEnterprise}
                 handleCloseMainMenu={() => setMobileMenuOpen(false)}
               />
             </StyledContentContainer>
@@ -220,7 +211,6 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
       </StyledOverlay>
       <Box display={{ _: `block`, [appHeaderMobileBreakpoint]: `none` }}>
         {notificationsView}
-        {bookmarksContent}
       </Box>
     </>
   );

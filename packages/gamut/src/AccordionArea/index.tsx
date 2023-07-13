@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
 export type AccordionAreaProps = {

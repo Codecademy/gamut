@@ -1,7 +1,8 @@
 import { themed } from '@codecademy/gamut-styles/src';
 import { Anchor } from '@codecademy/gamut/src';
 import styled from '@emotion/styled';
-import React, { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
+import * as React from 'react';
 import { linkTo } from '@storybook/addon-links';
 import { useComponentLinks } from '../Navigation';
 

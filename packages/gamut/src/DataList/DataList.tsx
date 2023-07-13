@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 import { DataGrid, DataGridProps } from './DataGrid';
 import { ColumnConfig, IdentifiableKeys } from './types';

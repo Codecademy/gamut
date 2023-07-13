@@ -1,7 +1,8 @@
 import { styledOptions, system } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { ComponentProps, forwardRef } from 'react';
+import { ComponentProps, forwardRef } from 'react';
+import * as React from 'react';
 
 const formSystemProps = variance.compose(
   system.space,

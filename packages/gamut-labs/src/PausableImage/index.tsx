@@ -1,11 +1,8 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import loadable from '@loadable/component';
-import React from 'react';
+import * as React from 'react';
 
-const BaseImage = loadable(() => import('./BaseImage'), {
-  ssr: false,
-});
+const BaseImage = React.lazy(() => import('./BaseImage'));
 
 interface PauseableImageProps {
   src: string;
@@ -27,10 +24,18 @@ const StaticImage = imageStyles;
 export const PausableImage: React.FC<PauseableImageProps> = (props) => {
   const staticImage = <StaticImage {...props} />;
 
+  // Avoid rendering React.Suspense on the server until it's fully supported by React & our applications
+  const [isMounted, setIsMounted] = React.useState(false);
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <>
-      {props.src?.endsWith('.gif') ? (
-        <BaseImage {...props} fallback={staticImage} />
+      {isMounted && props.src?.endsWith('.gif') ? (
+        <React.Suspense fallback={staticImage}>
+          <BaseImage {...props} />
+        </React.Suspense>
       ) : (
         staticImage
       )}

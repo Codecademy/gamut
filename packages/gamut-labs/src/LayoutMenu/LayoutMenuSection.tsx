@@ -1,7 +1,7 @@
 import { Box } from '@codecademy/gamut';
 import { system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import React from 'react';
+import * as React from 'react';
 
 import { SectionItem } from './AccordionMenu';
 import { SectionItemLink } from './SectionItemLink';

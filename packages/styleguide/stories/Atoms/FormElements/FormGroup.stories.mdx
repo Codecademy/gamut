@@ -110,15 +110,15 @@ A field can include [our existing `ToolTip`](/?path=/docs/atoms-tooltip--tool-ti
       </FormGroup>
     )}
   </Story>
-  <Story name="FormGroupTooltipDark">
+  <Story name="FormGroupToolTipLeft">
     {() => (
       <FormGroup
-        label="dark mode"
+        label="left align"
         tooltip={{
-          id: 'dark-mode-tooltip',
-          mode: 'dark',
+          id: 'tooltip-left',
           children:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          position: 'left-align',
         }}
       >
         <Input />

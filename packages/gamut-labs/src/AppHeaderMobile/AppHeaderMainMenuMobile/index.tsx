@@ -5,7 +5,8 @@ import {
   FlexBox,
   TextButton,
 } from '@codecademy/gamut';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 import { AppHeaderLink } from '../../AppHeader/AppHeaderElements/AppHeaderLink';
 import { AppHeaderListItem } from '../../AppHeader/AppHeaderElements/AppHeaderListItem';
@@ -25,6 +26,7 @@ export type AppHeaderMainMenuMobileProps = {
   onSearch: (query: string) => void;
   getItemType: (type: string | undefined) => void;
   isAnon: boolean;
+  isEnterprise?: boolean;
   handleCloseMainMenu: () => void;
 };
 
@@ -34,6 +36,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
   onSearch,
   getItemType,
   isAnon,
+  isEnterprise,
   handleCloseMainMenu,
 }) => {
   const [subMenuItem, setSubMenuItem] = useState<AppHeaderDropdownItem>();
@@ -113,9 +116,12 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
   ) : (
     <Box>
       <ContentContainer>
-        <AppHeaderListItem>
-          <MobileSearchBar onSearch={onSearch} />
-        </AppHeaderListItem>
+        {!isEnterprise && (
+          <AppHeaderListItem>
+            <MobileSearchBar onSearch={onSearch} />
+          </AppHeaderListItem>
+        )}
+
         {items.map((item) => (
           <AppHeaderListItem key={item.id}>
             {mapItemToElement(item, action)}

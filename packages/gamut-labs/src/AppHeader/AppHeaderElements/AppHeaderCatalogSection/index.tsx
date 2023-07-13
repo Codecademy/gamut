@@ -11,14 +11,17 @@ import {
 import { TinyBlocks } from '@codecademy/gamut-illustrations';
 import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import {
   careerPaths,
   topLanguages,
   topSubjects,
 } from '../../../lib/catalogList';
-import { LayoutGridAntiAliased } from '../../shared';
+import {
+  DescriptionSectionContainer,
+  LayoutGridAntiAliased,
+} from '../../shared';
 import {
   AppHeaderCatalogDropdownItem,
   AppHeaderClickHandler,
@@ -113,7 +116,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
     title: string;
     subtitle: string;
   }> = ({ title, subtitle }) => (
-    <FlexBox
+    <DescriptionSectionContainer
       data-focusablecatalog="true"
       data-testid="title-description-section"
       tabIndex={-1}
@@ -123,7 +126,7 @@ export const AppHeaderCatalogSection = React.forwardRef<
         {title}
       </Text>
       <Text fontSize={14}>{subtitle}</Text>
-    </FlexBox>
+    </DescriptionSectionContainer>
   );
 
   return (

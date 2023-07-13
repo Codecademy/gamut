@@ -8,9 +8,9 @@ import {
 } from '@codecademy/gamut';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+import * as React from 'react';
 
-import { ProLabel } from '..';
 import { TagColor } from './BottomTag/index';
 import { Footer } from './Footer/index';
 import { Image } from './Image/index';
@@ -80,6 +80,13 @@ const LineDecoration = styled(Box)`
       inProgress ? theme.colors.navy : theme.colors['navy-200']};
 `;
 
+/**
+ *
+ * @deprecated  This component is deprecated
+ *
+ * Please use the CareerPathCard, SkillPathCard, or CourseCard instead
+ */
+
 export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   beta,
   difficulty,
@@ -90,7 +97,6 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   isStaticSize = false,
   progressState,
   scope,
-  showProLogo,
   tag,
   tagColor,
   text,
@@ -103,9 +109,9 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
   horizontalOrientation,
   minHeight,
   minWidth,
+  showProLogo: pro,
 }) => {
   const boxVariant = progressState && cardStyles[progressState];
-  const mode = progressState === 'completed' ? 'dark' : 'light';
 
   const isCareerPathVariant =
     text.toLowerCase() === 'career path' && showCareerPathVariant;
@@ -119,6 +125,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
       : pxRem(cardHeight);
   }, [isFullSize, isStaticSize, minHeight]);
 
+  const contentType = text === 'Course' && !pro ? 'Free Course' : text;
   return (
     <Card
       display="flex"
@@ -143,8 +150,7 @@ export const CurriculumCard: React.FC<CurriculumCardProps> = ({
           fontFamily="accent"
           textTransform="capitalize"
         >
-          {showProLogo && <ProLabel alignSelf="center" mr={8} mode={mode} />}
-          {text}
+          {contentType}
         </Text>
         <Text as={headingLevel} mb={4} fontSize={20}>
           {title}

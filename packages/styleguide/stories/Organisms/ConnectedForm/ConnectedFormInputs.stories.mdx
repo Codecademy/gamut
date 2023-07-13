@@ -1,9 +1,9 @@
 import {
   Box,
-  ConnectedFormInput,
+  ConnectedInput,
   ConnectedRadioGroupInput,
   List,
-} from '@codecademy/gamut';
+} from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Meta } from '@storybook/addon-docs/blocks';
@@ -13,7 +13,7 @@ import { ListRowRenderer } from './utils';
 
 <Meta
   title={title}
-  component={ConnectedFormInput}
+  component={ConnectedInput}
   parameters={{
     subtitle: 'A form input for ConnectedForms',
     source: 'gamut',
@@ -23,7 +23,7 @@ import { ListRowRenderer } from './utils';
 
 <br />
 
-We have a selection of `ConnectedFormInput` components that are visually identical to their un-connected <LinkTo kind='Atoms/FormInputs'>FormInput</LinkTo> counterparts. Please reference the links below for component-specific prop and styling configuration:
+We have a selection of `ConnectedInput` components that are visually identical to their un-connected <LinkTo kind='Atoms/FormInputs'>FormInput</LinkTo> counterparts. Please reference the links below for component-specific prop and styling configuration:
 
 <Box mx={36} mt={16} mb={42}>
   <List variant="table">

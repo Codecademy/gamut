@@ -2,7 +2,8 @@ import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
 import { states, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
+import * as React from 'react';
 
 import { Box, FlexBox } from '..';
 import { ToolTip, ToolTipProps } from '../ToolTip';
@@ -25,15 +26,30 @@ const labelSizeVariants = variant({
   },
 });
 
+const labelPaddingVariants = variant({
+  prop: 'tooltipPadding',
+  variants: {
+    'right-align': {
+      mr: 16,
+    },
+    'left-align': {
+      mr: 4,
+    },
+  },
+});
+
 const labelStates = states({
   disabled: formFieldTextDisabledStyles,
-  tooltipPadding: { mr: 16 },
 });
 
 export interface LabelVariants
   extends StyleProps<typeof labelSizeVariants>,
+    StyleProps<typeof labelPaddingVariants>,
     StyleProps<typeof labelStates> {}
 
+export type FormToolTipProps = ToolTipProps & {
+  position?: 'left-align' | 'right-align';
+};
 export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
   HTMLAttributes<HTMLLabelElement> &
   LabelVariants & {
@@ -46,7 +62,41 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
     size?: 'small' | 'large';
   };
 
-const Label = styled.label<FormGroupLabelProps>(labelSizeVariants, labelStates);
+const Label = styled.label<FormGroupLabelProps>(
+  labelSizeVariants,
+  labelPaddingVariants,
+  labelStates
+);
+
+const getToolTip = (tooltip: FormToolTipProps) => {
+  const isToolTipRightAlign = tooltip.position !== 'left-align';
+
+  const targetProps = isToolTipRightAlign
+    ? ({ size: '0.8rem', 'aria-hidden': 'false', mb: 4 } as const)
+    : ({ size: '1rem', 'aria-hidden': 'false' } as const);
+
+  const ToolTipComponent = (
+    <ToolTip
+      alignment="bottom-right"
+      focusable
+      target={<MiniInfoOutlineIcon {...targetProps} />}
+      {...tooltip}
+    />
+  );
+
+  if (isToolTipRightAlign) {
+    return (
+      <Box as="span" position="absolute" left="calc(100% - 1.1rem)">
+        {ToolTipComponent}
+      </Box>
+    );
+  }
+
+  return <>{ToolTipComponent}</>;
+};
+
+const getToolTipPadding = (tooltip: FormToolTipProps) =>
+  tooltip?.position || 'right-align';
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   children,
@@ -64,7 +114,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         {...rest}
         htmlFor={htmlFor}
         disabled={disabled}
-        tooltipPadding={Boolean(tooltip)}
+        tooltipPadding={tooltip ? getToolTipPadding(tooltip) : undefined}
         className={className}
         size={size}
         as={htmlFor ? 'label' : 'div'}
@@ -72,18 +122,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         {children}
         {showRequired ? ' *' : ''}
       </Label>
-      {tooltip && (
-        <Box as="span" position="absolute" left="calc(100% - 1.1rem)">
-          <ToolTip
-            alignment="bottom-right"
-            focusable
-            target={
-              <MiniInfoOutlineIcon size="0.8rem" aria-hidden="false" mb={4} />
-            }
-            {...tooltip}
-          />
-        </Box>
-      )}
+      {tooltip && getToolTip(tooltip)}
     </FlexBox>
   );
 };

@@ -1,7 +1,8 @@
 import { Anchor, Box, FloatingCard, Text } from '@codecademy/gamut';
 import { modeColorProps, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { ComponentProps, useMemo } from 'react';
+import { ComponentProps, useMemo } from 'react';
+import * as React from 'react';
 
 import darkQuotes from '../assets/navyQuotes.svg';
 

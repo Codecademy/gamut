@@ -7,7 +7,8 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { SVGProps } from 'react';
+import { SVGProps } from 'react';
+import * as React from 'react';
 
 export type ProLabelProps = SVGProps<SVGSVGElement> &
   StyleProps<typeof logoStyles> &

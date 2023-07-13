@@ -1,7 +1,7 @@
-import { Alert, BodyPortal } from '@codecademy/gamut';
-import { breakpoints } from '@codecademy/gamut-styles';
+import { Alert, BodyPortal, ContentContainer } from '@codecademy/gamut';
 import styled from '@emotion/styled';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
+import * as React from 'react';
 
 import {
   PageAlertsContext,
@@ -16,16 +16,19 @@ export type PageAlertsProps = {
 export const AlertArea = styled.div`
   display: grid;
   justify-content: center;
-  width: calc(${breakpoints.md} - 4rem);
-  padding: 1rem;
-  max-width: 100%;
+  width: 100%;
+  padding: 1rem 0rem;
   grid-template-columns: 1fr;
   row-gap: 1rem;
-  top: 5rem;
+  top: 3.5rem;
   left: 50%;
   z-index: 15;
   position: fixed;
   transform: translate(-50%, 0);
+`;
+
+const StyledAlert = styled(Alert)`
+  max-width: 100%;
 `;
 
 export const PageAlerts: React.FC<PageAlertsProps> = ({ extra = [] }) => {
@@ -66,21 +69,23 @@ export const PageAlerts: React.FC<PageAlertsProps> = ({ extra = [] }) => {
         ref={refCallback}
       >
         {alerts.map((alert) => (
-          <Alert
-            cta={alert.cta}
-            onClose={
-              alert.permanent
-                ? undefined
-                : () => {
-                    closeAlert(alert.message);
-                    alert?.onClose?.();
-                  }
-            }
-            type={alert.type}
-            key={alert.message}
-          >
-            {alert.message}
-          </Alert>
+          <ContentContainer size="medium">
+            <StyledAlert
+              cta={alert.cta}
+              onClose={
+                alert.permanent
+                  ? undefined
+                  : () => {
+                      closeAlert(alert.message);
+                      alert?.onClose?.();
+                    }
+              }
+              type={alert.type}
+              key={alert.message}
+            >
+              {alert.message}
+            </StyledAlert>
+          </ContentContainer>
         ))}
       </AlertArea>
     </BodyPortal>

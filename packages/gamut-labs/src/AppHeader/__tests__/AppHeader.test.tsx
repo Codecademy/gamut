@@ -1,11 +1,9 @@
 import { IconButton } from '@codecademy/gamut';
 import { FaviconIcon } from '@codecademy/gamut-icons';
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/react';
 
-import { mockBookmarkParts } from '../../Bookmarks/fixtures';
+import { CrossDeviceItemId } from '../../GlobalHeader/types';
 import { AppHeader, AppHeaderProps } from '..';
 
 const action = jest.fn();
@@ -18,7 +16,7 @@ const defaultProps = {
     onTrackingClick: jest.fn(),
   },
   isAnon: true,
-  openCrossDeviceItemId: '',
+  openCrossDeviceItemId: CrossDeviceItemId.UNSET,
   setOpenCrossDeviceItemId: jest.fn(),
   items: {
     left: [],
@@ -135,85 +133,42 @@ const fillButtonProps: AppHeaderProps = {
   },
 };
 
-const appHeaderPropsWithBookmarkParts: AppHeaderProps = {
-  ...defaultProps,
-  crossDeviceBookmarkParts: mockBookmarkParts,
-};
-
-const renderAppHeader = (props: AppHeaderProps) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <AppHeader {...props} />
-    </ThemeProvider>
-  );
-};
+const renderView = setupRtl(AppHeader);
 
 describe('AppHeader', () => {
   it('renders an AppHeaderLogo when the item type is logo', () => {
-    renderAppHeader(logoProps);
-    fireEvent.click(screen.getByTitle('Codecademy Logo'));
+    const { view } = renderView(logoProps);
+    fireEvent.click(view.getByTitle('Codecademy Logo'));
     expect(action).toHaveBeenCalledTimes(1);
   });
 
   it('renders an AppHeaderLink when the item type is link', () => {
-    renderAppHeader(linkProps);
-    fireEvent.click(screen.getByText('AppHeaderLink'));
+    const { view } = renderView(linkProps);
+    fireEvent.click(view.getByText('AppHeaderLink'));
     expect(action).toHaveBeenCalledTimes(1);
   });
 
   it('renders an AppHeaderDropdown when the item type is dropdown', () => {
-    renderAppHeader(dropdownProps);
-    fireEvent.click(screen.getByText('AppHeaderDropdown'));
+    const { view } = renderView(dropdownProps);
+    fireEvent.click(view.getByText('AppHeaderDropdown'));
     expect(action).toHaveBeenCalledTimes(1);
   });
 
   it('renders a custom component when the item type is render-element', () => {
-    renderAppHeader(renderElementProps);
-    fireEvent.click(screen.getByTitle('Favicon Icon'));
+    const { view } = renderView(renderElementProps);
+    fireEvent.click(view.getByTitle('Favicon Icon'));
     expect(action).not.toHaveBeenCalled();
   });
 
   it('calls action() when a TextButton is clicked', () => {
-    renderAppHeader(textButtonProps);
-    fireEvent.click(screen.getByText('TextButton'));
+    const { view } = renderView(textButtonProps);
+    fireEvent.click(view.getByText('TextButton'));
     expect(action).toHaveBeenCalledTimes(1);
   });
 
   it('calls action() when a FillButton clicked', () => {
-    renderAppHeader(fillButtonProps);
-    fireEvent.click(screen.getByText('FillButton'));
+    const { view } = renderView(fillButtonProps);
+    fireEvent.click(view.getByText('FillButton'));
     expect(action).toHaveBeenCalledTimes(1);
-  });
-
-  describe('bookmarks', () => {
-    describe('NO crossDeviceBookmarkParts prop provided', () => {
-      it('does NOT render a bookmarks button or content', () => {
-        renderAppHeader({
-          ...appHeaderPropsWithBookmarkParts,
-          crossDeviceBookmarkParts: undefined,
-        });
-        expect(screen.queryByText('IMA BOOKMARKS BUTTON')).toBeNull();
-        expect(screen.queryByText('DESKTOP BOOKMARKS CONTENT')).toBeNull();
-      });
-    });
-
-    describe('crossDeviceBookmarkParts prop IS provided', () => {
-      it('renders the button but does NOT render bookmarks content if openCrossDeviceItemId is NOT set to bookmarks', () => {
-        renderAppHeader(appHeaderPropsWithBookmarkParts);
-
-        screen.getByText('IMA BOOKMARKS BUTTON');
-        expect(screen.queryByText('DESKTOP BOOKMARKS CONTENT')).toBeNull();
-      });
-
-      it('renders both the button and bookmarks content if openCrossDeviceItemId is set to bookmarks', () => {
-        renderAppHeader({
-          ...appHeaderPropsWithBookmarkParts,
-          openCrossDeviceItemId: 'bookmarks',
-        });
-
-        screen.getByText('IMA BOOKMARKS BUTTON');
-        screen.getByText('DESKTOP BOOKMARKS CONTENT');
-      });
-    });
   });
 });

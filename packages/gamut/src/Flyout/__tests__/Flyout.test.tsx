@@ -2,7 +2,6 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 import { RenderResult, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React from 'react';
 import { act } from 'react-dom/test-utils';
 
 import { Flyout } from '..';

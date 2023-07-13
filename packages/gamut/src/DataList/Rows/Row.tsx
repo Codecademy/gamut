@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback } from 'react';
+import { memo, ReactElement, useCallback } from 'react';
 
 import { Text } from '../..';
 import { ListCol, ListRow } from '../../List';
@@ -94,19 +94,21 @@ export const Row: DataRow = ({
 
         return (
           <ListCol {...colProps}>
-            {render ? (
-              render(row)
-            ) : typeof row[key] === 'string' ? (
-              <Text
-                truncate="ellipsis"
-                truncateLines={1}
-                textAlign={justify ?? 'left'}
-              >
-                {row[key]}
-              </Text>
-            ) : (
-              row[key]
-            )}
+            <>
+              {render ? (
+                render(row)
+              ) : typeof row[key] === 'string' ? (
+                <Text
+                  truncate="ellipsis"
+                  truncateLines={1}
+                  textAlign={justify ?? 'left'}
+                >
+                  {row[key]}
+                </Text>
+              ) : (
+                row[key]
+              )}
+            </>
           </ListCol>
         );
       })}
@@ -124,4 +126,4 @@ export const Row: DataRow = ({
   );
 };
 
-export const DataRow = React.memo(Row) as DataRow;
+export const DataRow = memo(Row) as DataRow;

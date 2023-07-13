@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
+import * as React from 'react';
 import {
   DeepPartial,
   Mode,
@@ -20,7 +21,6 @@ import {
 import {
   GridFormField,
   GridFormFieldsProps,
-  GridFormSectionBreakTypes,
   GridFormSectionProps,
 } from './types';
 import { assignDefaultValue } from './utils';
@@ -39,11 +39,6 @@ const isGridFormSection = (
 };
 
 export type GridFormProps<Values extends {}> = FormContextProps & {
-  /**
-   * If a visual break should be added between sections.
-   */
-  breakType?: GridFormSectionBreakTypes;
-
   children?: React.ReactNode;
   className?: string;
 
@@ -91,7 +86,6 @@ export type GridFormProps<Values extends {}> = FormContextProps & {
 };
 
 export function GridForm<Values extends FormValues<Values>>({
-  breakType,
   cancel,
   children,
   columnGap = defaultColumnGap,
@@ -130,7 +124,8 @@ export function GridForm<Values extends FormValues<Values>>({
     >
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         <>
-          {fields.map((field) => {
+          {fields.map((field, index) => {
+            const numSections = fields.length;
             if (isGridFormSection(field)) {
               const { title, as, layout, fields, variant } = field;
               return (
@@ -146,7 +141,8 @@ export function GridForm<Values extends FormValues<Values>>({
                     fields={fields}
                     showRequired={showRequired}
                   />
-                  <GridFormSectionBreak breakType={breakType} />
+                  {/* don't show break on last section */}
+                  {index + 1 === numSections ? null : <GridFormSectionBreak />}
                 </Fragment>
               );
             }

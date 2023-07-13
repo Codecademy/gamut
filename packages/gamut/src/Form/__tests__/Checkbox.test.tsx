@@ -1,11 +1,11 @@
-import { setupEnzyme } from '@codecademy/gamut-tests';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent } from '@testing-library/dom';
 
 import { Checkbox } from '../Checkbox';
 
 const onChange = jest.fn();
 
-const renderWrapper = setupEnzyme(Checkbox, {
+const renderView = setupRtl(Checkbox, {
   htmlFor: 'some-label',
   label: 'Some label',
   onChange,
@@ -13,37 +13,37 @@ const renderWrapper = setupEnzyme(Checkbox, {
 
 describe('<Checkbox>', () => {
   it('sets the input checked state when the prop is passed', () => {
-    const { wrapper } = renderWrapper({ checked: true });
+    const { view } = renderView({ checked: true });
 
-    expect(wrapper.find('input[type="checkbox"]').prop('checked')).toEqual(
-      true
-    );
+    view.getByRole('checkbox', { checked: true });
   });
 
   it('calls the onChange callback when the input changes', () => {
     const onChange = jest.fn();
 
-    const { wrapper } = renderWrapper({ onChange });
+    const { view } = renderView({ onChange });
 
-    wrapper.find('input[type="checkbox"]').simulate('change');
+    const checkbox = view.getByRole('checkbox');
+    fireEvent.click(checkbox);
 
     expect(onChange).toHaveBeenCalled();
   });
 
   it('accepts JSX in the label', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       label: <img alt="my cat" src="cat.jpg" />,
     });
 
-    expect(wrapper.find('img').length).toBe(1);
+    view.getByAltText('my cat');
   });
 
   it('accepts an aria-label', () => {
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       'aria-label': 'i am a labeled checkbox',
     });
-    expect(
-      wrapper.find('input[aria-label="i am a labeled checkbox"]').length
-    ).toBe(1);
+    expect(view.getByLabelText('i am a labeled checkbox')).toHaveAttribute(
+      'type',
+      'checkbox'
+    );
   });
 });

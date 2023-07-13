@@ -1,6 +1,3 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-
 import { webFonts } from './remoteAssets/fonts';
 
 export const createFontLinks = () =>
@@ -18,5 +15,5 @@ export const createFontLinks = () =>
   );
 
 export const AssetProvider = () => {
-  return <Helmet>{createFontLinks()}</Helmet>;
+  return <>{createFontLinks()}</>;
 };

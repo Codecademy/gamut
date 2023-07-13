@@ -1,7 +1,14 @@
 import { Anchor, Logo } from '@codecademy/gamut';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import * as React from 'react';
 
 import { AppHeaderClickHandler, AppHeaderLogoItem } from '../types';
+
+const getLogoVariant = (item: AppHeaderLogoItem, showMini: boolean) => {
+  if (item.checkMini && showMini) return 'mini';
+  if (item.enterprise) return 'enterprise';
+  return item.pro ? 'pro' : 'default';
+};
 
 export type AppHeaderLogoProps = {
   action: AppHeaderClickHandler;
@@ -44,10 +51,8 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
     >
       <Logo
         color="currentColor"
-        variant={
-          item.checkMini && showMini ? 'mini' : item.pro ? 'pro' : 'default'
-        }
-        height={27}
+        variant={getLogoVariant(item, showMini)}
+        height={item.enterprise ? 36 : 27}
         verticalAlign="text-bottom"
       />
     </Anchor>

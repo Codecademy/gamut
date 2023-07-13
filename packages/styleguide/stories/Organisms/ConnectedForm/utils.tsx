@@ -1,6 +1,6 @@
 import { ListCol, ListRow, Text } from '@codecademy/gamut';
 import LinkTo from '@storybook/addon-links/react';
-import React from 'react';
+import * as React from 'react';
 
 // reported open Storybook issue, see https://github.com/storybookjs/storybook/issues/14539
 const StorybookLink = LinkTo as any;

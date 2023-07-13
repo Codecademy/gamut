@@ -1,5 +1,5 @@
 import { FlexBox } from '@codecademy/gamut';
-import React from 'react';
+import * as React from 'react';
 
 import { Tab } from './Tab';
 import { TabListProps } from './types';

@@ -1,42 +1,45 @@
 import { useTheme } from '@emotion/react';
 import { useId } from '@reach/auto-id';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import {
+  KeyboardEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import * as React from 'react';
 import { Options as OptionsType, StylesConfig } from 'react-select';
 
 import { getMemoizedStyles } from '../styles';
-import { parseOptions, SelectOptionBase } from '../utils';
+import { parseOptions } from '../utils';
 import {
-  ChevronDropdown,
   CustomContainer,
+  DropdownButton,
   formatGroupLabel,
   formatOptionLabel,
   MultiValueRemoveButton,
   MultiValueWithColorMode,
+  onFocus,
+  RemoveAllButton,
+  SelectDropdownContext,
   TypedReactSelect,
 } from './elements';
+import { ExtendedOption, OptionStrict, SelectDropdownProps } from './types';
 import {
-  BaseOnChangeProps,
-  ExtendedOption,
-  MultiSelectDropdownProps,
-  OptionStrict,
-  SelectDropdownGroup,
-  SelectDropdownProps,
-  SingleSelectDropdownProps,
-} from './types';
-
-const isMultipleSelectProps = (
-  props: BaseOnChangeProps
-): props is MultiSelectDropdownProps => !!props.multiple;
-
-const isSingleSelectProps = (
-  props: BaseOnChangeProps
-): props is SingleSelectDropdownProps => !props.multiple;
+  filterValueFromOptions,
+  isMultipleSelectProps,
+  isOptionGroup,
+  isSingleSelectProps,
+  removeValueFromSelectedOptions,
+} from './utils';
 
 const defaultProps = {
   name: undefined,
   components: {
-    DropdownIndicator: ChevronDropdown,
+    DropdownIndicator: DropdownButton,
     IndicatorSeparator: () => null,
+    ClearIndicator: RemoveAllButton,
     SelectContainer: CustomContainer,
     MultiValue: MultiValueWithColorMode,
     MultiValueRemove: MultiValueRemoveButton,
@@ -44,31 +47,6 @@ const defaultProps = {
 };
 
 const onChangeAction = 'select-option';
-
-const isOptionGroup = (obj: any): obj is SelectDropdownGroup =>
-  obj.options !== undefined;
-
-const filterValueFromOptions = (
-  options: SelectOptionBase[] | SelectDropdownGroup[],
-  value: SelectDropdownProps['value'],
-  optionsAreGrouped: boolean
-) => {
-  if (optionsAreGrouped) {
-    return (options as SelectDropdownGroup[])
-      .map((optionGroup) =>
-        optionGroup.options.filter(
-          (option) =>
-            option.value === value ||
-            (value as string[])?.includes(option.value)
-        )
-      )
-      .flat();
-  }
-  return (options as SelectOptionBase[]).filter(
-    (option: SelectOptionBase) =>
-      option.value === value || (value as string[])?.includes(option.value)
-  );
-};
 
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   options,
@@ -86,21 +64,22 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   shownOptionsLimit = 6,
   ...rest
 }) => {
-  /**
-   * Currently the `id` prop isn't required, though in the future, it should be (or we should use
-   * React 18: https://github.com/reactwg/react-18/discussions/111), to help enforce the ReactSelect
-   * id requirement
-   */
   const rawInputId = useId();
   const inputId = name ?? `${id}-select-dropdown-${rawInputId}`;
+
+  const [activated, setActivated] = useState(false);
+  const [currentFocusedValue, setCurrentFocusedValue] = useState(undefined);
+
+  // these are used to programatically manage the focus state of our multi-select options + 'Remove all' button
+  const removeAllButtonRef = useRef<HTMLDivElement>(null);
+  const selectInputRef = useRef<HTMLDivElement>(null);
+
   const optionsAreGrouped = useMemo(() => {
     if (options?.length) {
       return (options as any)?.some((option: any) => isOptionGroup(option));
     }
     return false;
   }, [options]);
-
-  const [activated, setActivated] = useState(false);
 
   const selectOptions = useMemo(() => {
     return parseOptions({ options: options as ExtendedOption[], id, size });
@@ -159,34 +138,67 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     [onChange, multiple]
   );
 
+  const keyPressHandler = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (multiple && e.key === 'Enter' && currentFocusedValue && multiValues) {
+      const newMultiValues = removeValueFromSelectedOptions(
+        multiValues,
+        currentFocusedValue
+      );
+
+      if (newMultiValues !== multiValues) setMultiValues(newMultiValues);
+    }
+    if (
+      removeAllButtonRef.current !== null &&
+      e.key === 'ArrowRight' &&
+      multiValues &&
+      currentFocusedValue === multiValues[multiValues.length - 1].value
+    ) {
+      removeAllButtonRef.current.focus();
+    }
+  };
+
   const theme = useTheme();
   const memoizedStyles = useMemo((): StylesConfig<any, false> => {
     return getMemoizedStyles(theme);
   }, [theme]);
 
   return (
-    <TypedReactSelect
-      {...defaultProps}
-      id={id || rest.htmlFor}
-      inputId={inputId}
-      name={name}
-      options={selectOptions}
-      value={multiple ? multiValues : parsedValue}
-      activated={activated}
-      error={Boolean(error)}
-      formatOptionLabel={formatOptionLabel}
-      onChange={changeHandler}
-      inputProps={{ ...inputProps, name }}
-      placeholder={placeholder}
-      styles={memoizedStyles}
-      isMulti={multiple}
-      isOptionDisabled={(option) => option.disabled}
-      isDisabled={disabled}
-      isSearchable={isSearchable}
-      size={size}
-      shownOptionsLimit={shownOptionsLimit}
-      formatGroupLabel={formatGroupLabel}
-      {...rest}
-    />
+    <SelectDropdownContext.Provider
+      value={{
+        currentFocusedValue,
+        setCurrentFocusedValue,
+        removeAllButtonRef,
+        selectInputRef,
+      }}
+    >
+      <TypedReactSelect
+        {...defaultProps}
+        activated={activated}
+        error={Boolean(error)}
+        ariaLiveMessages={{
+          onFocus,
+        }}
+        formatGroupLabel={formatGroupLabel}
+        formatOptionLabel={formatOptionLabel}
+        id={id || rest.htmlFor || rawInputId}
+        inputId={inputId}
+        inputProps={{ ...inputProps, name }}
+        isDisabled={disabled}
+        isMulti={multiple}
+        isOptionDisabled={(option) => option.disabled}
+        isSearchable={isSearchable}
+        name={name}
+        onChange={changeHandler}
+        onKeyDown={multiple ? (e) => keyPressHandler(e) : undefined}
+        options={selectOptions}
+        placeholder={placeholder}
+        shownOptionsLimit={shownOptionsLimit}
+        size={size}
+        styles={memoizedStyles}
+        value={multiple ? multiValues : parsedValue}
+        selectRef={selectInputRef}
+        {...rest}
+      />
+    </SelectDropdownContext.Provider>
   );
 };

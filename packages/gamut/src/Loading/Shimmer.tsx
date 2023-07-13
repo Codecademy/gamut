@@ -1,7 +1,7 @@
 import { css } from '@codecademy/gamut-styles';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import { Box, BoxProps } from '../Box';
 

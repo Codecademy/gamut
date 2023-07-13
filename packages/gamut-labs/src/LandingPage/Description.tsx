@@ -1,5 +1,5 @@
 import { Box, Markdown } from '@codecademy/gamut';
-import React from 'react';
+import * as React from 'react';
 
 import { BaseProps } from './types';
 
