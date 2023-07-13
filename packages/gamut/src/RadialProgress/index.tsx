@@ -15,7 +15,7 @@ export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
   strokeLinecap?: 'round' | 'butt' | 'square';
   outerStrokeWidth?: number | string;
   progressRemainingColor?: string;
-  haasOuterStroke?: boolean;
+  hasOuterStroke?: boolean;
 }
 
 const offsetForEmptyProgress = 290;
