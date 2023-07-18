@@ -133,7 +133,9 @@ export class Markdown extends PureComponent<MarkdownProps> {
     };
 
     // Render markdown to html
-    const rawHtml = marked(text, markedOptions);
+    const rawHtml = inline
+      ? marked.parseInline(text, markedOptions)
+      : marked(text, markedOptions);
 
     const sanitizationConfig = {
       ...defaultSanitizationConfig,
