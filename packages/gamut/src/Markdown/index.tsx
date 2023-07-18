@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import HtmlToReact from 'html-to-react';
-import marked from 'marked';
+import { marked } from 'marked';
 import { PureComponent } from 'react';
 import * as React from 'react';
 import sanitizeMarkdown from 'sanitize-markdown';
@@ -133,9 +133,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
     };
 
     // Render markdown to html
-    const rawHtml = inline
-      ? marked.inlineLexer(text, [], markedOptions)
-      : marked(text, markedOptions);
+    const rawHtml = marked(text, markedOptions);
 
     const sanitizationConfig = {
       ...defaultSanitizationConfig,
