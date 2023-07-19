@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.1.11](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.10...@codecademy/gamut@55.1.11) (2023-07-13)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [55.1.10](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.9...@codecademy/gamut@55.1.10) (2023-07-12)
+
+
+### Bug Fixes
+
+* **MenuItem:** add active state to screenreader ([a957b86](https://github.com/Codecademy/gamut/commit/a957b866766cca94c5c922b03cdcccd86dfa8738))
+
+
+
+### [55.1.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.8...@codecademy/gamut@55.1.9) (2023-07-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [55.1.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.7...@codecademy/gamut@55.1.8) (2023-07-05)
+
+
+### Bug Fixes
+
+* **Popover:** move position with target when in scroll container ([184c8d4](https://github.com/Codecademy/gamut/commit/184c8d4eb4bb2dc852aa96b257eb948fc15501d6))
+
+
+
 ### [55.1.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.6...@codecademy/gamut@55.1.7) (2023-06-21)
 
 **Note:** Version bump only for package @codecademy/gamut

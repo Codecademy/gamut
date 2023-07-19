@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.1.15](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.14...@codecademy/styleguide@66.1.15) (2023-07-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [66.1.14](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.13...@codecademy/styleguide@66.1.14) (2023-07-12)
+
+
+### Bug Fixes
+
+* **MenuItem:** add active state to screenreader ([a957b86](https://github.com/Codecademy/gamut/commit/a957b866766cca94c5c922b03cdcccd86dfa8738))
+
+
+
+### [66.1.13](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.12...@codecademy/styleguide@66.1.13) (2023-07-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [66.1.12](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.11...@codecademy/styleguide@66.1.12) (2023-07-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [66.1.11](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.10...@codecademy/styleguide@66.1.11) (2023-06-21)
 
 **Note:** Version bump only for package @codecademy/styleguide

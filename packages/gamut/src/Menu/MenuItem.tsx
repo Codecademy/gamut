@@ -1,6 +1,7 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { ComponentProps, forwardRef, MutableRefObject } from 'react';
 
+import { Text } from '../Typography';
 import {
   ListButton,
   ListItem,
@@ -10,10 +11,19 @@ import {
 } from './elements';
 import { useMenuContext } from './MenuContext';
 
+const getListItemType = (href: boolean, onClick: boolean) =>
+  href ? 'link' : onClick ? 'button' : 'item';
+
 const activePropnames = {
   navigation: 'active-navlink',
   action: 'active',
   select: 'selected',
+};
+
+const currentItemText = {
+  link: 'current page',
+  button: 'current action',
+  item: 'current item',
 };
 
 export const MenuItem = forwardRef<
@@ -36,6 +46,8 @@ export const MenuItem = forwardRef<
     [activeProp]: active,
   } as ListItemProps;
 
+  const listItemType = getListItemType(!!href, !!props.onClick);
+
   const content = (
     <>
       {Icon && (
@@ -45,11 +57,12 @@ export const MenuItem = forwardRef<
           data-testid="menuitem-icon"
         />
       )}
+      {active && <Text screenreader>{currentItemText[listItemType]},</Text>}
       {children}
     </>
   );
 
-  if (href) {
+  if (listItemType === 'link') {
     const linkRef = ref as MutableRefObject<HTMLAnchorElement>;
 
     return (
@@ -66,7 +79,7 @@ export const MenuItem = forwardRef<
     );
   }
 
-  if (props.onClick) {
+  if (listItemType === 'button') {
     const buttonRef = ref as MutableRefObject<HTMLButtonElement>;
 
     return (
