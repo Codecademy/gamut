@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.39.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.38.2...@codecademy/gamut-illustrations@0.39.0) (2023-07-20)
+
+
+### Features
+
+* **Illustrations:** Add 3 new onboarding quiz illustrations ([07a2ad7](https://github.com/Codecademy/gamut/commit/07a2ad77d6b80274431112b2f9095a31559d9292))
+
+
+
 ### [0.38.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.38.1...@codecademy/gamut-illustrations@0.38.2) (2023-07-12)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations
