@@ -90,6 +90,7 @@ describe('DataGrid', () => {
         payload: { rowId: '1', toggle: false },
       });
     });
+
     it("clicking the row's checkbox deselects the row when the row is already selected", () => {
       renderView({ selected: [1] });
 
@@ -144,7 +145,7 @@ describe('DataGrid', () => {
       });
     });
     it('it unselects all rows when the header checkbox is clicked and all rows are selected', () => {
-      renderView({ selected: [1, 2, 3] });
+      renderView({ selected: ['1', '2', '3'] });
 
       const checkbox = screen.getByRole('checkbox', {
         name: 'Select All',
@@ -197,7 +198,7 @@ describe('DataGrid', () => {
       });
       expect(onRowExpand).toHaveBeenLastCalledWith({
         payload: {
-          rowId: 1,
+          rowId: '1',
           toggle: false,
         },
         type: 'expand',
@@ -215,7 +216,7 @@ describe('DataGrid', () => {
       expect(onRowExpand).toHaveBeenLastCalledWith({
         type: 'expand',
         payload: {
-          rowId: 1,
+          rowId: '1',
           toggle: true,
         },
       });

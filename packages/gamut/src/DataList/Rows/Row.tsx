@@ -64,7 +64,7 @@ export const Row: DataRow = ({
             disabled={loading}
             label={`Select ${id}`}
             name={prefixId(String(id))}
-            rowId={String(id)}
+            rowId={id}
             selected={selected}
             onSelect={onSelect}
           />
