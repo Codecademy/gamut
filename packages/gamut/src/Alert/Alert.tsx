@@ -2,6 +2,7 @@ import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, system, useCurrentMode } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
+import { set } from 'lodash';
 import { isValidElement, useState } from 'react';
 import * as React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
@@ -124,7 +125,7 @@ export const Alert: React.FC<AlertProps> = ({
       onClick={() => setExpanded(!expanded)}
     >
       <Rotation rotated={toggleState === 'expanded'}>
-        {MiniChevronDownIcon}
+        <MiniChevronDownIcon />
       </Rotation>
     </TextButton>
   );
