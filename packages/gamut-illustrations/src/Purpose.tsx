@@ -2,7 +2,7 @@ import React from 'react';
 
 import { IllustrationProps } from './types';
 
-export const Goal: React.FC<IllustrationProps> = ({
+export const Purpose: React.FC<IllustrationProps> = ({
   'aria-hidden': ariaHidden,
   className,
   height,
@@ -18,7 +18,7 @@ export const Goal: React.FC<IllustrationProps> = ({
     xmlnsXlink="http://www.w3.org/1999/xlink"
     fill="none"
   >
-    <title>Goal Illustration</title>
+    <title>Purpose Illustration</title>
     <path
       fill="#10162F"
       stroke="#10162F"

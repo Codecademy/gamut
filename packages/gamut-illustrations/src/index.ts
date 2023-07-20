@@ -17,7 +17,7 @@ export * from './Confetti';
 export * from './EmailAt';
 export * from './Envelope';
 export * from './ErrorWindow';
-export * from './Goal';
+export * from './Purpose';
 export * from './Heart';
 export * from './Hills';
 export * from './HomeOffice';
