@@ -43,15 +43,17 @@ interface UseConnectedFormProps<
   };
 }
 
-interface ConnectedFormStrictProps<Values, Rules>
-  extends UseConnectedFormProps<Values, Rules> {
+interface ConnectedFormStrictProps<
+  Values extends {},
+  Rules extends { [Key in keyof Values]?: RegisterOptions }
+> extends UseConnectedFormProps<Values, Rules> {
   (
     props: UseConnectedFormProps<Values, Rules> & ConnectedFormProps<Values>
   ): ReturnType<typeof ConnectedForm>;
 }
 
 export const useConnectedForm = <
-  Values,
+  Values extends {},
   ValidationRules extends { [K in keyof Values]: RegisterOptions }
 >({
   defaultValues,
