@@ -130,6 +130,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       smartypants: true,
       headerIds,
       headerPrefix: 'heading-',
+      mangle: false,
     };
 
     // Render markdown to html
