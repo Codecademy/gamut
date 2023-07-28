@@ -6,13 +6,10 @@
     "@codecademy/gamut-icons": "packages/gamut-icons",
     "@codecademy/gamut-illustrations": "packages/gamut-illustrations",
     "@codecademy/gamut-kit": "packages/gamut-kit",
-    "@codecademy/gamut-labs": "packages/gamut-labs",
     "@codecademy/gamut-patterns": "packages/gamut-patterns",
     "@codecademy/gamut-styles": "packages/gamut-styles",
     "@codecademy/gamut-tests": "packages/gamut-tests",
     "@codecademy/macros": "packages/macros",
-    "@codecademy/markdown-overrides": "packages/markdown-overrides",
-    "@codecademy/monaco": "packages/monaco",
     "@codecademy/styleguide": "packages/styleguide",
     "@codecademy/variance": "packages/variance",
     "eslint-plugin-gamut": "packages/eslint-plugin-gamut"

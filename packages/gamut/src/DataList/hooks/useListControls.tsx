@@ -27,7 +27,7 @@ export function useListControls<
   const selectable = !!onRowSelect;
 
   const prefixId = useCallback(
-    <T extends keyof any>(affix: T) => `${id}-${kebabCase(`${affix}`)}`,
+    <T extends keyof any>(affix: T) => `${id}-${kebabCase(`${String(affix)}`)}`,
     [id]
   );
 

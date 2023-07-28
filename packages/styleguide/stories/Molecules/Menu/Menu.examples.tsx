@@ -11,6 +11,30 @@ import { Background } from '@codecademy/gamut-styles';
 import { useRef, useState } from 'react';
 import * as React from 'react';
 
+export const MenuItemsExample: React.FC<{
+  type?: 'button' | 'link' | 'default';
+}> = ({ type }) => {
+  const menuItemProps =
+    type === 'button'
+      ? { onClick: () => null }
+      : type === 'link'
+      ? { href: '#' }
+      : {};
+  return (
+    <>
+      <MenuItem {...menuItemProps}>Menu Item</MenuItem>
+      <MenuItem active {...menuItemProps}>
+        Active Item
+      </MenuItem>
+      <MenuSeparator />
+      <MenuItem icon={MultipleUsersIcon} {...menuItemProps}>
+        Icon Item
+      </MenuItem>
+      <MenuItem {...menuItemProps}>Menu Item</MenuItem>
+    </>
+  );
+};
+
 export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
   const target = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);

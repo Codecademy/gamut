@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import * as React from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
@@ -11,6 +11,23 @@ import {
   RaisedDiv,
 } from './elements';
 import { PopoverProps } from './types';
+
+const findScrollingParent = ({
+  parentElement,
+}: HTMLElement): HTMLElement | null => {
+  if (parentElement) {
+    const { overflow, overflowY, overflowX } = getComputedStyle(parentElement);
+    if (
+      [overflow, overflowY, overflowX].some((val) =>
+        ['scroll', 'auto'].includes(val)
+      )
+    ) {
+      return parentElement;
+    }
+    return findScrollingParent(parentElement);
+  }
+  return null;
+};
 
 export const Popover: React.FC<PopoverProps> = ({
   animation,
@@ -59,6 +76,23 @@ export const Popover: React.FC<PopoverProps> = ({
   }, [targetRef, isOpen, width, height, x, y]);
 
   useEffect(() => {
+    if (!targetRef.current) {
+      return;
+    }
+    const scrollingParent = findScrollingParent(
+      targetRef.current as HTMLElement
+    );
+    if (!scrollingParent?.addEventListener) {
+      return;
+    }
+    const handler = () => {
+      setTargetRect(targetRef?.current?.getBoundingClientRect());
+    };
+    scrollingParent.addEventListener('scroll', handler);
+    return () => scrollingParent.removeEventListener('scroll', handler);
+  }, [targetRef]);
+
+  useEffect(() => {
     if (targetRect) {
       const inView =
         targetRect.top >= 0 &&
@@ -85,7 +119,6 @@ export const Popover: React.FC<PopoverProps> = ({
     [onRequestClose, targetRef]
   );
 
-  const nullRef = useRef<HTMLDivElement>(null);
   if ((!isOpen || !targetRef) && !animation) return null;
 
   const contents = (
@@ -94,7 +127,7 @@ export const Popover: React.FC<PopoverProps> = ({
       className={className}
       data-testid="popover-content-container"
       position={position}
-      ref={(popoverContainerRef as React.RefObject<HTMLDivElement>) ?? nullRef}
+      {...(popoverContainerRef ? { ref: popoverContainerRef } : {})}
       role={role}
       style={getPopoverPosition()}
       tabIndex={-1}

@@ -83,9 +83,9 @@ export type PopoverProps = PopoverBaseProps &
     /**
      * The PopoverContainer which contents will be rendered into.
      */
-    popoverContainerRef?: React.RefObject<
-      Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
-    >;
+    popoverContainerRef?:
+      | React.RefObject<HTMLDivElement>
+      | React.RefCallback<HTMLDivElement>;
 
     /**
      * Whether to add width restrictions to Popover.

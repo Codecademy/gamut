@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [16.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@16.1.1...@codecademy/gamut-styles@16.1.2) (2023-07-05)
+
+
+### Bug Fixes
+
+* **focusVisible:** enable always for both native and polyfill ([014e348](https://github.com/Codecademy/gamut/commit/014e348fda451c81c7074458e443e7bc46b10c0a))
+
+
+
 ### [16.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@16.1.0...@codecademy/gamut-styles@16.1.1) (2023-05-25)
 
 **Note:** Version bump only for package @codecademy/gamut-styles

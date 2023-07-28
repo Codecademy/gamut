@@ -63,8 +63,8 @@ export const Row: DataRow = ({
           <SelectControl
             disabled={loading}
             label={`Select ${id}`}
-            name={prefixId(id)}
-            rowId={id}
+            name={prefixId(String(id))}
+            rowId={String(id)}
             selected={selected}
             onSelect={onSelect}
           />
@@ -77,7 +77,7 @@ export const Row: DataRow = ({
           justify,
           fill,
           type,
-          key: prefixId(`${id}-col-${key}`),
+          key: prefixId(`${id}-col-${String(key)}`),
         };
 
         if (loading) {

@@ -4,6 +4,7 @@ import {
   GamutIconProps,
 } from '@codecademy/gamut-icons';
 import { system } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled, { StyledComponent } from '@emotion/styled';
 import { ChangeEvent, forwardRef, InputHTMLAttributes, useState } from 'react';
 import * as React from 'react';
@@ -38,7 +39,9 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
    */
   activated?: boolean;
 };
-export interface StyledInputProps extends InputProps {
+export interface StyledInputProps
+  extends StyleProps<typeof conditionalStyles>,
+    InputProps {
   icon?: boolean;
 }
 
