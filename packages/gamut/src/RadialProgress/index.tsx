@@ -12,6 +12,10 @@ export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
   value: number | number[];
   strokeWidth?: number | string;
   strokeLinecap?: 'round' | 'butt' | 'square';
+  progressOutline?: {
+    size: number;
+    color: string;
+  };
 }
 
 const offsetForEmptyProgress = 290;
@@ -34,10 +38,23 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
   value,
   strokeLinecap = 'round',
   strokeWidth = 10,
+  progressOutline,
   ...props
 }) => {
   let startingValue;
   let finalValue;
+  let strokeWidthForOutline = 0;
+  let circleRadius = 45;
+
+  if (progressOutline) {
+    const { size: progressOutlineSize = 0 } = progressOutline;
+    const strokeWidthParsed =
+      typeof strokeWidth === 'number' ? strokeWidth : parseFloat(strokeWidth);
+    if (!Number.isNaN(strokeWidthParsed)) {
+      strokeWidthForOutline = strokeWidthParsed + progressOutlineSize;
+    }
+    circleRadius -= progressOutlineSize;
+  }
 
   if (Array.isArray(value)) {
     startingValue = convertPercentToOffset(value[0]);
@@ -57,16 +74,43 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
         <circle
           cx="50"
           cy="50"
-          r="45"
+          r={`${circleRadius}`}
           stroke="currentColor"
           strokeWidth={strokeWidth}
           fill="none"
           opacity=".2"
         />
+        {progressOutline && strokeWidthForOutline && (
+          <circle
+            cx="50"
+            cy="50"
+            r={`${circleRadius}`}
+            stroke={progressOutline.color}
+            strokeWidth={strokeWidthForOutline}
+            strokeLinecap={strokeLinecap}
+            fill="none"
+            opacity="1"
+            strokeDashoffset={finalValue}
+            strokeDasharray={offsetForEmptyProgress}
+            transform="rotate(-90 50 50)"
+          >
+            {startingValue !== finalValue && (
+              <animate
+                attributeType="CSS"
+                attributeName="stroke-dashoffset"
+                from={startingValue}
+                to={finalValue}
+                dur={`${duration}ms`}
+                begin="0"
+                fill="freeze"
+              />
+            )}
+          </circle>
+        )}
         <circle
           cx="50"
           cy="50"
-          r="45"
+          r={`${circleRadius}`}
           stroke="currentColor"
           strokeWidth={strokeWidth}
           strokeLinecap={strokeLinecap}
