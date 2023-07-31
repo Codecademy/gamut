@@ -63,11 +63,17 @@ export function DataGrid<
   }, [rows, selected, idKey, empty]);
 
   const selectedRows = useMemo(() => {
-    return selected?.reduce((carry, next) => ({ ...carry, [next]: true }), {});
+    return selected?.reduce(
+      (carry, next) => ({ ...carry, [String(next)]: true }),
+      {}
+    );
   }, [selected]);
 
   const expandedRows = useMemo(() => {
-    return expanded?.reduce((carry, next) => ({ ...carry, [next]: true }), {});
+    return expanded?.reduce(
+      (carry, next) => ({ ...carry, [String(next)]: true }),
+      {}
+    );
   }, [expanded]);
 
   const loadingRows = useMemo<Row[]>(() => {
@@ -120,8 +126,8 @@ export function DataGrid<
                 id={rowId}
                 row={row}
                 columns={columns}
-                selected={selectedRows?.[rowId]}
-                expanded={expandedRows?.[rowId]}
+                selected={selectedRows?.[rowId as keyof typeof selectedRows]}
+                expanded={expandedRows?.[rowId as keyof typeof expandedRows]}
                 loading={loading}
                 showOverflow={showOverflow}
               />
