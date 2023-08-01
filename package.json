@@ -25,7 +25,7 @@
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
     "build-storybook": "nx run @codecademy/styleguide:build-storybook && lerna run copy-storybook",
-    "deploy": "cp -r ./dist/static/* ./dist/docs && gh-pages -b  gh-pages -d dist"
+    "deploy": "cp -r ./dist/static/* ./dist/docs && gh-pages -b gh-pages -d dist"
   },
   "lint-staged": {
     "**/*.{mdx,js,ts,tsx,json}": [
