@@ -16,6 +16,7 @@ export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
     size: number;
     color: string;
   };
+  adjustForStrokeWidth?: boolean;
 }
 
 const offsetForEmptyProgress = 290;
@@ -39,21 +40,46 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
   strokeLinecap = 'round',
   strokeWidth = 10,
   progressOutline,
+  adjustForStrokeWidth,
   ...props
 }) => {
   let startingValue;
   let finalValue;
+  const MAX_VIEWABLE_STROKE_WIDTH = 10;
+  const strokeWidthParsed =
+    typeof strokeWidth === 'number' ? strokeWidth : parseFloat(strokeWidth);
   let strokeWidthForOutline = 0;
-  let circleRadius = 45;
+  const circleRadius = 45;
+  const viewBox = {
+    minX: 0,
+    minY: 0,
+    width: 100,
+    height: 100,
+  };
 
   if (progressOutline) {
     const { size: progressOutlineSize = 0 } = progressOutline;
-    const strokeWidthParsed =
-      typeof strokeWidth === 'number' ? strokeWidth : parseFloat(strokeWidth);
     if (!Number.isNaN(strokeWidthParsed)) {
       strokeWidthForOutline = strokeWidthParsed + progressOutlineSize;
     }
-    circleRadius -= progressOutlineSize;
+  }
+
+  if (
+    adjustForStrokeWidth &&
+    !Number.isNaN(strokeWidthParsed) &&
+    (strokeWidthParsed > MAX_VIEWABLE_STROKE_WIDTH ||
+      strokeWidthForOutline > MAX_VIEWABLE_STROKE_WIDTH)
+  ) {
+    const largestStrokeWidth =
+      strokeWidthForOutline > strokeWidthParsed
+        ? strokeWidthForOutline
+        : strokeWidthParsed;
+    const excessStrokeWidth = largestStrokeWidth - MAX_VIEWABLE_STROKE_WIDTH;
+    const halfOfExcessStrokeWidth = excessStrokeWidth / 2;
+    viewBox.minX -= halfOfExcessStrokeWidth;
+    viewBox.minY -= halfOfExcessStrokeWidth;
+    viewBox.width += excessStrokeWidth;
+    viewBox.height += excessStrokeWidth;
   }
 
   if (Array.isArray(value)) {
@@ -64,13 +90,15 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
   }
   const labelPercent = Array.isArray(value) ? value[1] : value;
 
+  const svgViewBoxStr = `${viewBox.minX} ${viewBox.minY} ${viewBox.width} ${viewBox.height}`;
+
   return (
     <figure
       className={cx(styles.radialProgress, className)}
       style={{ height: size, width: size }}
     >
       <Text as="figcaption" screenreader>{`${labelPercent}% progress`}</Text>
-      <svg viewBox="0 0 100 100" height={size} width={size} {...props}>
+      <svg viewBox={svgViewBoxStr} height={size} width={size} {...props}>
         <circle
           cx="50"
           cy="50"
