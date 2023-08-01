@@ -23,7 +23,7 @@ module.exports = {
   ],
   stories: ['../stories/**/*.stories.@(mdx|tsx)'],
   typescript: {
-    reactDocgen: 'react-docgen-typescript-plugin',
+    reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
