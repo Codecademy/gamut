@@ -67,6 +67,7 @@ export type ModalProps = SingleViewModalProps | MultiViewModalProps;
 
 export const Modal: React.FC<ModalProps> = ({
   'aria-label': ariaLabel,
+  'aria-live': ariaLive = 'polite',
   children,
   className,
   headingLevel = 'h2',
@@ -98,7 +99,7 @@ export const Modal: React.FC<ModalProps> = ({
         role="dialog"
         layout={views && views?.length > 0 ? 'dialog' : 'standard'}
         size={size}
-        aria-live="polite"
+        aria-live={ariaLive}
       >
         {(title || views?.[currentView].title) && (
           <Text

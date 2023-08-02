@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.14...@codecademy/gamut@55.2.0) (2023-08-01)
+
+
+### Features
+
+* **Modal:** adding aria-live as a prop to ModalContainer ([e5d9543](https://github.com/Codecademy/gamut/commit/e5d9543b76c921293b554efbb30c1cd82d71630c))
+
+
+
 ### [55.1.14](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.1.13...@codecademy/gamut@55.1.14) (2023-07-28)
 
 **Note:** Version bump only for package @codecademy/gamut
