@@ -125,8 +125,5 @@
       "pre-commit": "lint-staged"
     }
   },
-  "packageManager": "yarn@1.22.10",
-  "devDependencies": {
-    "react-docgen-typescript-plugin": "^1.0.5"
-  }
+  "packageManager": "yarn@1.22.10"
 }
