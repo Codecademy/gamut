@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.1.22](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.21...@codecademy/styleguide@66.1.22) (2023-08-03)
+
+
+### Bug Fixes
+
+* **styleguide:** revert styleguide to previous TS version for now ([cc9ff0d](https://github.com/Codecademy/gamut/commit/cc9ff0d6e61b369ca5bf4cfe057d2303ec4cb2d4))
+
+
+
 ### [66.1.21](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.20...@codecademy/styleguide@66.1.21) (2023-08-02)
 
 **Note:** Version bump only for package @codecademy/styleguide
