@@ -18,8 +18,8 @@ const ShimmerForeground = styled(Box)`
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 0) 20%,
-    rgb(0, 0, 0, 0.2) 50%,
-    rgb(0, 0, 0, 0) 80%
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0) 80%
   );
 `;
 
