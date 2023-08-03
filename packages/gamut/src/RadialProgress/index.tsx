@@ -17,6 +17,7 @@ export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
     color: string;
   };
   adjustForStrokeWidth?: boolean;
+  baseColor?: string;
 }
 
 const offsetForEmptyProgress = 290;
@@ -41,6 +42,7 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
   strokeWidth = 10,
   progressOutline,
   adjustForStrokeWidth,
+  baseColor,
   ...props
 }) => {
   let startingValue;
@@ -103,10 +105,10 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
           cx="50"
           cy="50"
           r={`${circleRadius}`}
-          stroke="currentColor"
+          stroke={baseColor || 'currentColor'}
           strokeWidth={strokeWidth}
           fill="none"
-          opacity=".2"
+          opacity={baseColor ? '1' : '.2'}
         />
         {progressOutline && strokeWidthForOutline && (
           <circle
