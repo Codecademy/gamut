@@ -39,7 +39,7 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
   strokeLinecap = 'round',
   strokeWidth = 10,
   progressOutlineSize,
-  progressOutlineColor = theme.colors.black,
+  progressOutlineColor = theme.colors['background-current'],
   baseColor,
   ...props
 }) => {
