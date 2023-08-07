@@ -1,3 +1,4 @@
+import { theme } from '@codecademy/gamut-styles';
 import cx from 'classnames';
 import { SVGProps } from 'react';
 import * as React from 'react';
@@ -12,6 +13,9 @@ export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
   value: number | number[];
   strokeWidth?: number | string;
   strokeLinecap?: 'round' | 'butt' | 'square';
+  progressOutlineSize?: number;
+  progressOutlineColor?: string;
+  baseColor?: string;
 }
 
 const offsetForEmptyProgress = 290;
@@ -34,10 +38,45 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
   value,
   strokeLinecap = 'round',
   strokeWidth = 10,
+  progressOutlineSize,
+  progressOutlineColor = theme.colors['background-current'],
+  baseColor,
   ...props
 }) => {
   let startingValue;
   let finalValue;
+  const MAX_VIEWABLE_STROKE_WIDTH = 10;
+  const strokeWidthParsed =
+    typeof strokeWidth === 'number' ? strokeWidth : parseFloat(strokeWidth);
+  let strokeWidthForOutline = 0;
+  const circleRadius = 45;
+  const viewBox = {
+    minX: 0,
+    minY: 0,
+    width: 100,
+    height: 100,
+  };
+
+  if (progressOutlineSize && !Number.isNaN(strokeWidthParsed)) {
+    strokeWidthForOutline = strokeWidthParsed + progressOutlineSize;
+  }
+
+  if (
+    !Number.isNaN(strokeWidthParsed) &&
+    (strokeWidthParsed > MAX_VIEWABLE_STROKE_WIDTH ||
+      strokeWidthForOutline > MAX_VIEWABLE_STROKE_WIDTH)
+  ) {
+    const largestStrokeWidth =
+      strokeWidthForOutline > strokeWidthParsed
+        ? strokeWidthForOutline
+        : strokeWidthParsed;
+    const excessStrokeWidth = largestStrokeWidth - MAX_VIEWABLE_STROKE_WIDTH;
+    const halfOfExcessStrokeWidth = excessStrokeWidth / 2;
+    viewBox.minX -= halfOfExcessStrokeWidth;
+    viewBox.minY -= halfOfExcessStrokeWidth;
+    viewBox.width += excessStrokeWidth;
+    viewBox.height += excessStrokeWidth;
+  }
 
   if (Array.isArray(value)) {
     startingValue = convertPercentToOffset(value[0]);
@@ -47,26 +86,55 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
   }
   const labelPercent = Array.isArray(value) ? value[1] : value;
 
+  const svgViewBoxStr = `${viewBox.minX} ${viewBox.minY} ${viewBox.width} ${viewBox.height}`;
+
   return (
     <figure
       className={cx(styles.radialProgress, className)}
       style={{ height: size, width: size }}
     >
       <Text as="figcaption" screenreader>{`${labelPercent}% progress`}</Text>
-      <svg viewBox="0 0 100 100" height={size} width={size} {...props}>
+      <svg viewBox={svgViewBoxStr} height={size} width={size} {...props}>
         <circle
           cx="50"
           cy="50"
-          r="45"
-          stroke="currentColor"
+          r={`${circleRadius}`}
+          stroke={baseColor || 'currentColor'}
           strokeWidth={strokeWidth}
           fill="none"
-          opacity=".2"
+          opacity={baseColor ? '1' : '.2'}
         />
+        {progressOutlineSize && strokeWidthForOutline && (
+          <circle
+            cx="50"
+            cy="50"
+            r={`${circleRadius}`}
+            stroke={progressOutlineColor}
+            strokeWidth={strokeWidthForOutline}
+            strokeLinecap={strokeLinecap}
+            fill="none"
+            opacity="1"
+            strokeDashoffset={finalValue}
+            strokeDasharray={offsetForEmptyProgress}
+            transform="rotate(-90 50 50)"
+          >
+            {startingValue !== finalValue && (
+              <animate
+                attributeType="CSS"
+                attributeName="stroke-dashoffset"
+                from={startingValue}
+                to={finalValue}
+                dur={`${duration}ms`}
+                begin="0"
+                fill="freeze"
+              />
+            )}
+          </circle>
+        )}
         <circle
           cx="50"
           cy="50"
-          r="45"
+          r={`${circleRadius}`}
           stroke="currentColor"
           strokeWidth={strokeWidth}
           strokeLinecap={strokeLinecap}
