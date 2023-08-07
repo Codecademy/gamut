@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.2.1...@codecademy/gamut@55.2.2) (2023-08-04)
+
+
+### Bug Fixes
+
+* Refactor Shimmer styles for SWC compatibility ([735dd81](https://github.com/Codecademy/gamut/commit/735dd81ea213c386b522856f4e18658bceef88ed))
+
+
+
 ### [55.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.2.0...@codecademy/gamut@55.2.1) (2023-08-02)
 
 **Note:** Version bump only for package @codecademy/gamut
