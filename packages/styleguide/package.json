@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "66.1.23",
+  "version": "66.1.24",
   "author": "Codecademy Engineering",
   "scripts": {
     "start": "yarn storybook",
@@ -14,7 +14,7 @@
     "url": "git@github.com:Codecademy/gamut.git"
   },
   "dependencies": {
-    "@codecademy/gamut": "55.2.2",
+    "@codecademy/gamut": "55.3.0",
     "@codecademy/gamut-icons": "9.3.5",
     "@codecademy/gamut-illustrations": "0.39.0",
     "@codecademy/gamut-patterns": "0.9.7",

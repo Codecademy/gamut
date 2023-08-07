@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.2.2...@codecademy/gamut@55.3.0) (2023-08-07)
+
+
+### Features
+
+* **RadialProgress:** updated with option to render outline around progress indicator ([442a6aa](https://github.com/Codecademy/gamut/commit/442a6aa6b38e512eaaa988a00cb2ccedcc6caf73))
+
+
+
 ### [55.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.2.1...@codecademy/gamut@55.2.2) (2023-08-04)
 
 
