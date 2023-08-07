@@ -1,3 +1,4 @@
+import { theme } from '@codecademy/gamut-styles';
 import cx from 'classnames';
 import { SVGProps } from 'react';
 import * as React from 'react';
@@ -12,11 +13,8 @@ export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
   value: number | number[];
   strokeWidth?: number | string;
   strokeLinecap?: 'round' | 'butt' | 'square';
-  progressOutline?: {
-    size: number;
-    color: string;
-  };
-  adjustForStrokeWidth?: boolean;
+  progressOutlineSize?: number;
+  progressOutlineColor?: string;
   baseColor?: string;
 }
 
@@ -40,8 +38,8 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
   value,
   strokeLinecap = 'round',
   strokeWidth = 10,
-  progressOutline,
-  adjustForStrokeWidth,
+  progressOutlineSize,
+  progressOutlineColor = theme.colors.black,
   baseColor,
   ...props
 }) => {
@@ -59,15 +57,11 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
     height: 100,
   };
 
-  if (progressOutline) {
-    const { size: progressOutlineSize = 0 } = progressOutline;
-    if (!Number.isNaN(strokeWidthParsed)) {
-      strokeWidthForOutline = strokeWidthParsed + progressOutlineSize;
-    }
+  if (progressOutlineSize && !Number.isNaN(strokeWidthParsed)) {
+    strokeWidthForOutline = strokeWidthParsed + progressOutlineSize;
   }
 
   if (
-    adjustForStrokeWidth &&
     !Number.isNaN(strokeWidthParsed) &&
     (strokeWidthParsed > MAX_VIEWABLE_STROKE_WIDTH ||
       strokeWidthForOutline > MAX_VIEWABLE_STROKE_WIDTH)
@@ -110,12 +104,12 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
           fill="none"
           opacity={baseColor ? '1' : '.2'}
         />
-        {progressOutline && strokeWidthForOutline && (
+        {progressOutlineSize && strokeWidthForOutline && (
           <circle
             cx="50"
             cy="50"
             r={`${circleRadius}`}
-            stroke={progressOutline.color}
+            stroke={progressOutlineColor}
             strokeWidth={strokeWidthForOutline}
             strokeLinecap={strokeLinecap}
             fill="none"
