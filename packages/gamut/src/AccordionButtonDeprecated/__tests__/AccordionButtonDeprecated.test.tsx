@@ -2,18 +2,18 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 import { cleanup } from '@testing-library/react';
 
-import { AccordionButton, AccordionButtonTheme } from '..';
+import { AccordionButtonDeprecated, AccordionButtonTheme } from '..';
 
 const onClick = jest.fn();
 
-const renderView = setupRtl(AccordionButton, {
+const renderView = setupRtl(AccordionButtonDeprecated, {
   onClick,
   children: 'Hi there!',
   size: 'normal',
   theme: 'yellow',
 });
 
-describe('AccordionButton', () => {
+describe('AccordionButtonDeprecated', () => {
   afterEach(() => {
     cleanup();
   });

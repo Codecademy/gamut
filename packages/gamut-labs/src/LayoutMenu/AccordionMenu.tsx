@@ -1,4 +1,4 @@
-import { AccordionArea, Anchor, Text } from '@codecademy/gamut';
+import { AccordionAreaDeprecated, Anchor, Text } from '@codecademy/gamut';
 import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import { useState } from 'react';
@@ -7,7 +7,7 @@ import * as React from 'react';
 import { system, transitionConcat } from '../../../gamut-styles/dist';
 import { LayoutMenuSection } from './LayoutMenuSection';
 
-const StyledAccordionArea = styled(AccordionArea)`
+const StyledAccordionArea = styled(AccordionAreaDeprecated)`
   padding-bottom: ${({ theme }) => theme.spacing[32]};
   position: relative;
   left: -4px;

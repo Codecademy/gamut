@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import * as React from 'react';
 
-import { AccordionArea } from '../AccordionArea';
+import { AccordionAreaDeprecated } from '../AccordionAreaDeprecated';
 import {
-  AccordionButton,
+  AccordionButtonDeprecated,
   AccordionButtonSize,
   AccordionButtonTheme,
-} from '../AccordionButton';
+} from '../AccordionButtonDeprecated';
 
 export type ChildrenOrExpandedRender =
   | React.ReactNode
   | ((expanded: boolean) => React.ReactNode);
 
-export type AccordionProps = {
+export type AccordionDeprecatedProps = {
   children: ChildrenOrExpandedRender;
 
   /**
@@ -55,7 +55,7 @@ export type AccordionProps = {
  * Check the [Gamut Board](https://www.notion.so/codecademy/Gamut-Status-Timeline-dd3c135d3848464ea6eb1b48e68fbb1d) for component status
  */
 
-export const Accordion: React.FC<AccordionProps> = ({
+export const AccordionDeprecated: React.FC<AccordionDeprecatedProps> = ({
   children,
   className,
   initiallyExpanded,
@@ -69,11 +69,11 @@ export const Accordion: React.FC<AccordionProps> = ({
     renderer instanceof Function ? renderer(expanded) : renderer;
 
   return (
-    <AccordionArea
+    <AccordionAreaDeprecated
       className={className}
       expanded={expanded}
       top={
-        <AccordionButton
+        <AccordionButtonDeprecated
           expanded={expanded}
           onClick={() => {
             setExpanded(!expanded);
@@ -83,10 +83,10 @@ export const Accordion: React.FC<AccordionProps> = ({
           theme={theme}
         >
           {expandRenderer(top)}
-        </AccordionButton>
+        </AccordionButtonDeprecated>
       }
     >
       {expandRenderer(children)}
-    </AccordionArea>
+    </AccordionAreaDeprecated>
   );
 };

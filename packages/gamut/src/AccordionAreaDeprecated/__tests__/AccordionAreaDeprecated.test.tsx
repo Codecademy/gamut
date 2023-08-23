@@ -1,17 +1,17 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { act } from 'react-dom/test-utils';
 
-import { AccordionArea } from '..';
+import { AccordionAreaDeprecated } from '..';
 
 const defaultProps = {
   children: <div data-testid="contents" />,
   top: 'Click me!',
 };
-const renderView = setupRtl(AccordionArea, defaultProps);
+const renderView = setupRtl(AccordionAreaDeprecated, defaultProps);
 
 jest.useFakeTimers();
 
-describe('AccordionArea', () => {
+describe('AccordionAreaDeprecated', () => {
   it('starts collapsed when expanded is not true', () => {
     const { view } = renderView({ expanded: false });
 
@@ -27,7 +27,7 @@ describe('AccordionArea', () => {
   it('expands when props change to expand', () => {
     const { view } = renderView({ expanded: false });
 
-    view.rerender(<AccordionArea {...defaultProps} expanded />);
+    view.rerender(<AccordionAreaDeprecated {...defaultProps} expanded />);
 
     view.getByTestId('contents');
   });
@@ -35,7 +35,9 @@ describe('AccordionArea', () => {
   it('contracts after a delay when set to not expanded after being expanded', async () => {
     const { view } = renderView({ expanded: true });
 
-    view.rerender(<AccordionArea {...defaultProps} expanded={false} />);
+    view.rerender(
+      <AccordionAreaDeprecated {...defaultProps} expanded={false} />
+    );
 
     await act(async () => {
       jest.runAllTimers();
