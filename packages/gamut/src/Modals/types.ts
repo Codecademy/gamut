@@ -23,4 +23,5 @@ export interface ModalBaseProps
    */
   headingLevel?: 'h1' | 'h2';
   image?: React.ReactNode;
+  inline?: boolean;
 }
