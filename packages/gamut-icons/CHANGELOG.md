@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.3.5...@codecademy/gamut-icons@9.4.0) (2023-08-21)
+
+
+### Features
+
+* **Icon:** add AIChatSparkIcon and AIChatSparkFilledIcon ([bfe21e0](https://github.com/Codecademy/gamut/commit/bfe21e0a8bd28fe4d55a9c0523603f786736e4f2))
+
+
+
 ### [9.3.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.3.4...@codecademy/gamut-icons@9.3.5) (2023-07-28)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
