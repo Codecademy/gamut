@@ -88,6 +88,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
     });
 
     const processingInstructions = [
+      ...overrides,
       !skipDefaultOverrides.iframe &&
         createTagOverride('iframe', {
           component: Iframe,
@@ -122,7 +123,6 @@ export class Markdown extends PureComponent<MarkdownProps> {
         createInputOverride('checkbox', {
           component: MarkdownCheckbox,
         }),
-      ...overrides,
       ...standardOverrides,
     ].filter(Boolean);
 
