@@ -26,7 +26,7 @@ import { defaultSanitizationConfig } from './libs/sanitizationConfig';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
-const htmlToReactParser = new HtmlToReact.Parser({
+const htmlToReactParser = HtmlToReact.Parser({
   xmlMode: true,
 });
 

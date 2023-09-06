@@ -8,7 +8,7 @@ import * as React from 'react';
 import styles from '../../styles/index.module.scss';
 import { getLabel, isCheckboxParent, isInput, isLabelText } from './utils';
 
-const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
+const processNodeDefinitions = HtmlToReact.ProcessNodeDefinitions();
 
 export interface AttributesMap {
   [key: string]: string | boolean;
