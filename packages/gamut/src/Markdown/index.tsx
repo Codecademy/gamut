@@ -10,7 +10,7 @@ import {
   createCodeBlockOverride,
   createInputOverride,
   createTagOverride,
-  ManyOverrideSettings,
+  MarkdownOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
 import { MarkdownCheckbox } from './libs/overrides/Checkbox';
@@ -45,7 +45,7 @@ export type SkipDefaultOverridesSettings = {
 export type MarkdownProps = {
   className?: string;
   inline?: boolean;
-  overrides?: ManyOverrideSettings;
+  overrides?: MarkdownOverrideSettings;
   skipDefaultOverrides?: SkipDefaultOverridesSettings;
   /**
    * Enables generated header ids for H1-6 tags
@@ -177,3 +177,8 @@ export class Markdown extends PureComponent<MarkdownProps> {
     );
   }
 }
+
+export type {
+  MarkdownOverrideSetting,
+  MarkdownOverrideSettings,
+} from './libs/overrides';

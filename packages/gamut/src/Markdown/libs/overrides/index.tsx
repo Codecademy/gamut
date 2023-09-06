@@ -32,27 +32,27 @@ const attributeMap: { [key: string]: string } = {
   class: 'className',
 };
 
-export type OverrideSettingsBase = {
+type OverrideSettingsBase = {
   component?: React.ComponentType<any>;
   allowedAttributes?: string[];
   processNode?: (node: HTMLToReactNode, props: object) => React.ReactNode;
   shouldProcessNode?: (node: HTMLToReactNode) => boolean;
 };
 
-export interface OverrideSettingsComponent extends OverrideSettingsBase {
+interface OverrideSettingsComponent extends OverrideSettingsBase {
   component: React.ComponentType<any>;
 }
 
-export interface OverrideSettingsProcessNode extends OverrideSettingsBase {
+interface OverrideSettingsProcessNode extends OverrideSettingsBase {
   processNode: (node: HTMLToReactNode, props: object) => React.ReactNode;
 }
 
-export type OverrideSettings =
+export type MarkdownOverrideSetting =
   | OverrideSettingsComponent
   | OverrideSettingsProcessNode;
 
-export type ManyOverrideSettings = {
-  [i: string]: OverrideSettings;
+export type MarkdownOverrideSettings = {
+  [i: string]: MarkdownOverrideSetting;
 };
 
 const processAttributeValue = (value: string | boolean) => {
@@ -81,7 +81,7 @@ export const processAttributes = (attributes: AttributesMap = {}) =>
 // generic html tag override
 export const createTagOverride = (
   tagName: string,
-  Override: OverrideSettings
+  Override: MarkdownOverrideSetting
 ) => ({
   shouldProcessNode(node: HTMLToReactNode) {
     if (!Override) return false;
@@ -117,7 +117,7 @@ export const createTagOverride = (
 // Allows <CodeBlock></CodeBlock> override and overrides of standard fenced codeblocks
 export const createCodeBlockOverride = (
   tagName: string,
-  Override: OverrideSettings
+  Override: MarkdownOverrideSetting
 ) =>
   createTagOverride(tagName, {
     shouldProcessNode(node: HTMLToReactNode) {
@@ -142,7 +142,10 @@ export const createCodeBlockOverride = (
     ...Override,
   });
 
-export const createInputOverride = (type: string, Override: OverrideSettings) =>
+export const createInputOverride = (
+  type: string,
+  Override: MarkdownOverrideSetting
+) =>
   createTagOverride('input', {
     shouldProcessNode(node: HTMLToReactNode) {
       return (
