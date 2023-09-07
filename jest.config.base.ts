@@ -14,7 +14,7 @@ const baseConfig = (packageName: string, overrides: Object) => ({
       '<rootDir>/../../script/jest/fileMock',
     '\\.(css|scss)$': '<rootDir>/../../script/jest/styleMock',
   },
-  transformIgnorePatterns: ['jest-runner'],
+  transformIgnorePatterns: ['./disable', 'jest-runner'],
   testPathIgnorePatterns: ['node_modules', 'dist'],
   ...overrides,
 });
