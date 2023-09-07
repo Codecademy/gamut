@@ -1,14 +1,14 @@
 {
+  "name": "@codecademy/gamut-styles",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-styles/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{workspaceRoot}/dist"],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/gamut-styles",
-        "outputPath": "./dist",
         "commands": [
           "rm -rf ./dist",
           "tsc --emitDeclarationOnly --project tsconfig.lib.json",
@@ -20,7 +20,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/gamut-styles"],
+      "outputs": ["{workspaceRoot}/coverage/packages/gamut-styles"],
       "options": {
         "jestConfig": "packages/gamut-styles/jest.config.ts",
         "passWithNoTests": false

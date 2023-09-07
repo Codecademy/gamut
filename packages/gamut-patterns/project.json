@@ -1,14 +1,19 @@
 {
+  "name": "@codecademy/gamut-patterns",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-patterns/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "outputs": ["./dist", "./src/patterns"],
+      "outputs": [
+        "{projectRoot}/dist",
+        "{projectRoot}/src/patterns",
+        "{workspaceRoot}/dist",
+        "{workspaceRoot}/src/patterns"
+      ],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/gamut-patterns",
-        "outputPath": ["./dist", "./src/patterns"],
         "commands": [
           "rm -rf ./dist",
           "rm -rf ./src/patterns",
@@ -22,7 +27,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/gamut-patterns"],
+      "outputs": ["{workspaceRoot}/coverage/packages/gamut-patterns"],
       "dependsOn": ["build"],
       "options": {
         "jestConfig": "packages/gamut-patterns/jest.config.ts",

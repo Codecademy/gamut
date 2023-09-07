@@ -2,7 +2,6 @@ const baseConfig = (packageName: string, overrides: Object) => ({
   displayName: packageName,
   preset: '../../jest.preset.js',
   clearMocks: true,
-  verbose: true,
   coverageDirectory: process.env.CI
     ? `/tmp/test-results/jest/${packageName}`
     : `../../coverage/packages/${packageName}`,
@@ -15,7 +14,7 @@ const baseConfig = (packageName: string, overrides: Object) => ({
       '<rootDir>/../../script/jest/fileMock',
     '\\.(css|scss)$': '<rootDir>/../../script/jest/styleMock',
   },
-  transformIgnorePatterns: ['./disable-transform-ignoring-for-node_modules'],
+  transformIgnorePatterns: ['jest-runner'],
   testPathIgnorePatterns: ['node_modules', 'dist'],
   ...overrides,
 });

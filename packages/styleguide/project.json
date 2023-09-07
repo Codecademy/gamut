@@ -1,15 +1,15 @@
 {
+  "name": "@codecademy/styleguide",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/styleguide/stories",
   "projectType": "application",
   "targets": {
     "build-storybook": {
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{workspaceRoot}/dist"],
       "executor": "nx:run-commands",
       "dependsOn": ["^build"],
       "options": {
         "cwd": "packages/styleguide",
-        "outputPath": "./dist",
         "commands": [
           "NODE_ENV=production ./node_modules/.bin/build-storybook --quiet -c .storybook -o ./dist"
         ],
@@ -18,7 +18,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/styleguide"],
+      "outputs": ["{workspaceRoot}/coverage/packages/styleguide"],
       "options": {
         "jestConfig": "packages/styleguide/jest.config.ts",
         "passWithNoTests": true
