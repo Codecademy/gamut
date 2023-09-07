@@ -29,6 +29,9 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["prod", "^prod"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
     }
   },
   "generators": {
