@@ -1,5 +1,5 @@
 {
-  "name": "@codecademy/gamut-illustrations",
+  "name": "gamut-illustrations",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-illustrations/src",
   "projectType": "library",
