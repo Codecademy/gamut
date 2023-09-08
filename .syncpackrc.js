@@ -3,12 +3,7 @@
 /** @type {import("syncpack").RcFile} */
 const config = {
   dependencyTypes: ['prod', 'dev', 'resolution', 'local', 'overrides'],
-  source: [
-    'package.json',
-    'apps/*/package.json',
-    'libs/*/package.json',
-    'libs/**/*/package.json',
-  ],
+  source: ['package.json', 'packages/*/package.json'],
   semverGroups: [
     {
       dependencies: ['**'],
@@ -27,13 +22,13 @@ const config = {
     'scripts',
   ],
   sortFirst: ['name', 'description', 'version', 'author'],
-  versionGroups: [
-    {
-      packages: ['**'],
-      dependencies: ['**'],
-      snapTo: ['gamut-repo'],
-    },
-  ],
+  // versionGroups: [
+  //   {
+  //     packages: ['**'],
+  //     dependencies: ['**'],
+  //     snapTo: ['gamut-repo'],
+  //   },
+  // ],
 };
 
 module.exports = config;

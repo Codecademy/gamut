@@ -56,15 +56,6 @@
     "build": "nx build @codecademy/gamut"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@codecademy/gamut-tests": "5.0.6",
-    "@emotion/jest": "^11.3.0",
-    "@testing-library/dom": "^8.11.1",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "onchange": "^7.0.2"
-  },
   "publishConfig": {
     "access": "public"
   }

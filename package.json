@@ -120,5 +120,8 @@
   "resolutions": {
     "@typescript-eslint/utils": "^5.15.0"
   },
-  "packageManager": "yarn@1.22.10"
+  "packageManager": "yarn@1.22.10",
+  "devDependencies": {
+    "onchange": "^7.0.2"
+  }
 }
