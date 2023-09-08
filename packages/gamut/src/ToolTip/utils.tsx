@@ -95,7 +95,7 @@ export const getAccessibilityProps = ({
   const ariaLabel =
     isOpenPopoverToolTip === undefined || isOpenPopoverToolTip
       ? { 'aria-labelledby': id }
-      : { 'aria-label': id };
+      : { 'aria-describedby': id };
   // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
   // This element still needs tab focus so we must use the `tabIndex=0` hack.
   return {
