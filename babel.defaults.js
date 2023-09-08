@@ -1,4 +1,4 @@
-let ignorePatterns = ['./**/*.d.ts'];
+let ignorePatterns = [];
 
 if (process.env.NODE_ENV !== 'test') {
   ignorePatterns = [
@@ -9,6 +9,7 @@ if (process.env.NODE_ENV !== 'test') {
     '**/__tests__',
     '**/__mocks__',
     '**/__fixtures',
+    './**/*.d.ts',
   ];
 }
 
