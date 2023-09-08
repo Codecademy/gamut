@@ -6,7 +6,7 @@
   "tags": [],
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/macros"],
       "options": {
         "jestConfig": "packages/macros/jest.config.ts",

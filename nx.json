@@ -38,7 +38,7 @@
     "@nrwl/js:library": {
       "buildable": true
     },
-    "@nrwl/react:library": {
+    "@nx/react:library": {
       "buildable": true,
       "publishable": true,
       "style": "@emotion/styled",

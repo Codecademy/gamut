@@ -19,7 +19,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/gamut"],
       "options": {
         "jestConfig": "packages/gamut/jest.config.ts",

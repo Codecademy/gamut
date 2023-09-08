@@ -14,7 +14,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/eslint-plugin-gamut"],
       "options": {
         "jestConfig": "packages/eslint-plugin-gamut/jest.config.ts",
