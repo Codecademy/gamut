@@ -4,14 +4,7 @@
 const config = {
   dependencyTypes: ['prod', 'dev', 'resolution', 'local', 'overrides'],
   source: ['package.json', 'packages/*/package.json'],
-  semverGroups: [
-    {
-      dependencies: ['**'],
-      dependencyTypes: ['dev'],
-      packages: ['**'],
-      range: '^',
-    },
-  ],
+  semverRange: '^',
   sortAz: [
     'contributors',
     'dependencies',
