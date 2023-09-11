@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.26...@codecademy/styleguide@66.2.0) (2023-09-11)
+
+
+### Features
+
+* **Markdown:** Allow overrides in Markdown without passing skipDefaultOverrides ([1ce6487](https://github.com/Codecademy/gamut/commit/1ce6487a9b50590f2c3bcb6f629ea90d5e02c32b))
+
+
+
+### [66.1.26](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.25...@codecademy/styleguide@66.1.26) (2023-09-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [66.1.25](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.1.24...@codecademy/styleguide@66.1.25) (2023-08-21)
 
 **Note:** Version bump only for package @codecademy/styleguide

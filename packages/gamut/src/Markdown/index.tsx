@@ -10,7 +10,7 @@ import {
   createCodeBlockOverride,
   createInputOverride,
   createTagOverride,
-  ManyOverrideSettings,
+  MarkdownOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
 import { MarkdownCheckbox } from './libs/overrides/Checkbox';
@@ -26,7 +26,7 @@ import { defaultSanitizationConfig } from './libs/sanitizationConfig';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
-const htmlToReactParser = new HtmlToReact.Parser({
+const htmlToReactParser = HtmlToReact.Parser({
   xmlMode: true,
 });
 
@@ -45,7 +45,7 @@ export type SkipDefaultOverridesSettings = {
 export type MarkdownProps = {
   className?: string;
   inline?: boolean;
-  overrides?: ManyOverrideSettings;
+  overrides?: MarkdownOverrideSettings;
   skipDefaultOverrides?: SkipDefaultOverridesSettings;
   /**
    * Enables generated header ids for H1-6 tags
@@ -88,6 +88,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
     });
 
     const processingInstructions = [
+      ...overrides,
       !skipDefaultOverrides.iframe &&
         createTagOverride('iframe', {
           component: Iframe,
@@ -122,7 +123,6 @@ export class Markdown extends PureComponent<MarkdownProps> {
         createInputOverride('checkbox', {
           component: MarkdownCheckbox,
         }),
-      ...overrides,
       ...standardOverrides,
     ].filter(Boolean);
 
@@ -177,3 +177,8 @@ export class Markdown extends PureComponent<MarkdownProps> {
     );
   }
 }
+
+export type {
+  MarkdownOverrideSetting,
+  MarkdownOverrideSettings,
+} from './libs/overrides';
