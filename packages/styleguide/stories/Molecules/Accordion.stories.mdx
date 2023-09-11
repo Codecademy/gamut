@@ -1,56 +1,51 @@
-import {
-  AccordionAreaDeprecated,
-  AccordionButtonDeprecated,
-  AccordionDeprecated,
-} from '@codecademy/gamut/src';
+import { Accordion } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
-  component={AccordionDeprecated}
+  component={Accordion}
   parameters={{
     subtitle: `A molecule consisting of a "top" section and an expandable body,
 such as a "hint" section in the LE or a list of department jobs on a careers page.
 `,
-    status: 'deprecated',
+    status: 'current',
     source: 'gamut',
+  }}
+  args={{
+    renderHeader: <div>Click me!</div>,
+    renderExpanded: <div>Hidden treasure!</div>,
+    ariaLabel: 'click me',
   }}
 />
 
 <Canvas>
-  <Story name="AccordionDeprecated">
-    {(args) => (
-      <AccordionDeprecated top="Click me!" {...args}>
-        Hidden treasure!
-      </AccordionDeprecated>
-    )}
-  </Story>
+  <Story name="Accordion">{(args) => <Accordion {...args} />}</Story>
 </Canvas>
 
-<PropsTable story="AccordionDeprecated" />
+<PropsTable story="Accordion" />
 
-> Note that accordions will fit to `100%` of the the height of their parent container.
-> If you need a fixed height container, wrap the accordion in a `<div>`.
-
-## AccordionAreaDeprecated
-
-If you'd like a "controlled" component equivalent, you can manually use the `AccordionAreaDeprecated` and `AccordionButtonDeprecated` sub-components.
-Most accordions should use an `AccordionButtonDeprecated`; other forms of buttons are acceptable for custom accordions.
+## Custom Text
 
 <Canvas>
   <Story
-    name="AccordionAreaDeprecated"
+    name="Custom text"
     args={{
-      expanded: true,
-      top: (
-        <AccordionButtonDeprecated expanded>
-          Click me!
-        </AccordionButtonDeprecated>
-      ),
+      customText: {
+        expanded: 'Hide details',
+        collapsed: 'Show details',
+      },
     }}
   >
-    {(args) => <AccordionAreaDeprecated {...args} />}
+    {(args) => <Accordion {...args} />}
+  </Story>
+</Canvas>
+
+## Initially Expanded
+
+<Canvas>
+  <Story name="Expanded" args={{ initiallyExpanded: true }}>
+    {(args) => <Accordion {...args} />}
   </Story>
 </Canvas>
