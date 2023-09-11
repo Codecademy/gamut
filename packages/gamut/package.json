@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "55.3.1",
+  "version": "55.4.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -35,7 +35,7 @@
     "@types/marked": "^4.0.8",
     "classnames": "^2.2.5",
     "framer-motion": "^6.5.1",
-    "html-to-react": "^1.5.0",
+    "html-to-react": "^1.6.0",
     "invariant": "^2.2.4",
     "lodash": "^4.17.5",
     "marked": "^4.3.0",
