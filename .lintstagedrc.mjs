@@ -5,9 +5,9 @@ export default {
   [`*`]: (allChanges) => {
     const commands = [];
 
-    // if (micromatch.some(allChanges, '**/package.json')) {
-    //   commands.push(`yarn syncpack format`);
-    // }
+    if (micromatch.some(allChanges, '**/package.json')) {
+      commands.push(`yarn syncpack format`);
+    }
 
     // if (micromatch.some(allChanges, 'yarn.lock')) {
     //   commands.push(`npx yarn-deduplicate`);

@@ -3,9 +3,10 @@
   "description": "Babel Utility Macros",
   "version": "3.0.3",
   "author": "codecademy",
-  "homepage": "https://github.com/Codecademy/gamut#readme",
-  "license": "MIT",
-  "main": "lib",
+  "bugs": "https://github.com/Codecademy/gamut/issues",
+  "dependencies": {
+    "babel-plugin-macros": "^3.0.1"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -13,20 +14,14 @@
   "files": [
     "lib"
   ],
+  "homepage": "https://github.com/Codecademy/gamut#readme",
+  "license": "MIT",
+  "main": "lib",
   "publishConfig": {
     "access": "public"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Codecademy/gamut.git"
-  },
+  "repository": "Codecademy/gamut.git",
   "scripts": {
     "test": "jest"
-  },
-  "bugs": {
-    "url": "https://github.com/Codecademy/gamut/issues"
-  },
-  "dependencies": {
-    "babel-plugin-macros": "^3.0.1"
   }
 }

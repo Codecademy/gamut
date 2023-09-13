@@ -3,16 +3,6 @@
   "description": "Styleguide & Component library for codecademy.com",
   "version": "66.2.1",
   "author": "Codecademy Engineering",
-  "scripts": {
-    "start": "yarn storybook",
-    "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet",
-    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ./dist",
-    "copy-storybook": "rm -rf ../../dist/docs && cp -r ./dist ../../dist/docs"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:Codecademy/gamut.git"
-  },
   "dependencies": {
     "@codecademy/gamut": "55.4.1",
     "@codecademy/gamut-icons": "9.4.1",
@@ -58,5 +48,12 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "repository": "git@github.com:Codecademy/gamut.git",
+  "scripts": {
+    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ./dist",
+    "copy-storybook": "rm -rf ../../dist/docs && cp -r ./dist ../../dist/docs",
+    "start": "yarn storybook",
+    "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet"
   }
 }
