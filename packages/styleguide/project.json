@@ -5,7 +5,7 @@
   "projectType": "application",
   "targets": {
     "build-storybook": {
-      "outputs": ["{workspaceRoot}/dist"],
+      "outputs": ["{projectRoot}/dist"],
       "executor": "nx:run-commands",
       "dependsOn": ["^build"],
       "options": {

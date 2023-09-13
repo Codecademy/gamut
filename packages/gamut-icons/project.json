@@ -8,8 +8,8 @@
       "outputs": [
         "{projectRoot}/dist",
         "{projectRoot}/src/icons",
-        "{workspaceRoot}/dist",
-        "{workspaceRoot}/src/icons"
+        "{projectRoot}/dist",
+        "{projectRoot}/src/icons"
       ],
       "executor": "nx:run-commands",
       "options": {

@@ -5,7 +5,7 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "outputs": ["{workspaceRoot}/dist"],
+      "outputs": ["{projectRoot}/dist"],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/variance",

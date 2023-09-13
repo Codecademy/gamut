@@ -8,8 +8,8 @@
       "outputs": [
         "{projectRoot}/dist",
         "{projectRoot}/src/patterns",
-        "{workspaceRoot}/dist",
-        "{workspaceRoot}/src/patterns"
+        "{projectRoot}/dist",
+        "{projectRoot}/src/patterns"
       ],
       "executor": "nx:run-commands",
       "options": {
