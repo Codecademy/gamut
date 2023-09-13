@@ -36,7 +36,6 @@
     "@storybook/theming": "6.3.4",
     "@testing-library/react": "^12.1.2",
     "@types/mdx-js__react": "^1.5.3",
-    "@types/react": "*",
     "autoprefixer": "^9.7.4",
     "babel-preset-codecademy": "6.0.1-alpha.042681.0",
     "css-loader": "^3.5.2",

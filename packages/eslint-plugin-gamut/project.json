@@ -1,21 +1,20 @@
 {
+  "name": "eslint-plugin-gamut",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/eslint-plugin-gamut/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "outputs": ["{options.outputPath}"],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/eslint-plugin-gamut",
-        "outputPath": "./dist",
         "commands": ["rm -rf ./dist", "tsc -p tsconfig.lib.json"],
         "parallel": false
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/eslint-plugin-gamut"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/eslint-plugin-gamut"],
       "options": {
         "jestConfig": "packages/eslint-plugin-gamut/jest.config.ts",
         "passWithNoTests": true
