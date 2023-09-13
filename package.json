@@ -125,5 +125,16 @@
       "pre-commit": "lint-staged"
     }
   },
-  "packageManager": "yarn@1.22.10"
+  "packageManager": "yarn@1.22.10",
+  "devDependencies": {
+    "@omlet/cli": "^1.0.1-beta.36"
+  },
+  "omlet": {
+    "tsconfigPath": "tsconfig.json",
+    "aliases": {
+      "@codecademy/gamut": [
+        "packages/gamut/src/*"
+      ]
+    }
+  }
 }
