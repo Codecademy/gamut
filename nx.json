@@ -19,19 +19,28 @@
     "libsDir": "packages"
   },
   "namedInputs": {
+    "babelConfig": ["{workspaceRoot}/babel.defaults.js"],
     "default": ["{projectRoot}/**/*"],
-    "prod": [
+    "production": [
+      "default",
       "!{projectRoot}/**/*.(test|spec).ts{,.snap}",
-      "!{projectRoot}/**/__tests__/**/*"
+      "!{projectRoot}/**/__tests__/**/*",
+      "!{projectRoot}/**/__fixtures__/**/*"
     ]
   },
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["prod", "^prod"]
+      "inputs": ["production", "^production", "babelConfig"]
     },
     "test": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
+        "babelConfig"
+      ]
     }
   },
   "generators": {

@@ -15,13 +15,6 @@ const config = {
     'scripts',
   ],
   sortFirst: ['name', 'description', 'version', 'author'],
-  // versionGroups: [
-  //   {
-  //     packages: ['**'],
-  //     dependencies: ['**'],
-  //     snapTo: ['gamut-repo'],
-  //   },
-  // ],
 };
 
 module.exports = config;
