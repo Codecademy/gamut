@@ -12,6 +12,7 @@ module.exports = {
     'gamut/prefer-themed': 'error',
     'gamut/no-css-standalone': 'error',
     'gamut/import-paths': 'error',
+    'import/no-extraneous-dependencies': 'off',
   },
 
   overrides: [
@@ -19,15 +20,6 @@ module.exports = {
       files: ['**/typings/*', '*.d.ts'],
       rules: {
         '@typescript-eslint/no-namespace': 'off',
-      },
-    },
-    {
-      files: ['**/jest/*'],
-      rules: {
-        'import/no-extraneous-dependencies': [
-          'error',
-          { devDependencies: true },
-        ],
       },
     },
     {
@@ -54,7 +46,6 @@ module.exports = {
         '@typescript-eslint/no-unsafe-return': 'off',
         '@typescript-eslint/restrict-plus-operands': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
-        'import/no-extraneous-dependencies': 'off',
       },
     },
   ],
