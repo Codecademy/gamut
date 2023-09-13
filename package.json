@@ -6,6 +6,8 @@
   "dependencies": {
     "@babel/cli": "7.22.15",
     "@babel/core": "7.22.19",
+    "@babel/preset-env": "^7.22.15",
+    "@babel/preset-react": "^7.22.15",
     "@babel/preset-typescript": "^7.22.15",
     "@codecademy/eslint-config": "8.0.0",
     "@codecademy/prettier-config": "^0.2.0",
@@ -36,7 +38,6 @@
     "@typescript-eslint/parser": "^5.15.0",
     "babel-jest": "29.6.4",
     "babel-plugin-macros": "3.0.1",
-    "babel-preset-codecademy": "7.0.0",
     "component-test-setup": "^0.3.1",
     "conventional-changelog-cli": "^2.0.34",
     "conventional-changelog-conventionalcommits": "^4.3.0",
