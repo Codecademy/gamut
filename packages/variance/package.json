@@ -2,37 +2,34 @@
   "name": "@codecademy/variance",
   "description": "Constraint based CSS in JS for building scalable design systems",
   "version": "0.21.1",
-  "keywords": [
-    "emotion",
-    "css",
-    "styles",
-    "css-in-js"
-  ],
   "author": "codecaaron <aaron@codecademy.com>",
-  "homepage": "https://github.com/Codecademy/gamut/variance",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "dependencies": {
+    "csstype": "^3.0.7",
+    "lodash": "^4.17.5"
+  },
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Codecademy/gamut.git"
-  },
-  "scripts": {
-    "build": "nx build @codecademy/variance"
-  },
+  "homepage": "https://github.com/Codecademy/gamut/variance",
+  "keywords": [
+    "css",
+    "css-in-js",
+    "emotion",
+    "styles"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "peerDependencies": {
     "@emotion/react": "*",
     "typescript": ">=4.3.5"
   },
-  "dependencies": {
-    "csstype": "^3.0.7",
-    "lodash": "^4.17.5"
-  }
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "Codecademy/gamut.git",
+  "scripts": {
+    "build": "nx build @codecademy/variance"
+  },
+  "types": "dist/index.d.ts"
 }
