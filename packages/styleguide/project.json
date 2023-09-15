@@ -7,7 +7,6 @@
     "build-storybook": {
       "outputs": ["{projectRoot}/dist"],
       "executor": "nx:run-commands",
-      "dependsOn": ["^build"],
       "options": {
         "cwd": "packages/styleguide",
         "commands": [
