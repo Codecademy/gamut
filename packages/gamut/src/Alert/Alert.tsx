@@ -1,7 +1,5 @@
 import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { Background, system, useCurrentMode } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
+import { useCurrentMode } from '@codecademy/gamut-styles';
 import { isValidElement, useState } from 'react';
 import * as React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
@@ -9,7 +7,8 @@ import TruncateMarkup from 'react-truncate-markup';
 import { Rotation, WithChildrenProp } from '..';
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
-import { alertVariants, placementVariants } from './variants';
+import { AlertBanner, AlertBox, CollapsableContent } from './elements';
+import { alertVariants } from './variants';
 
 export type AlertType = keyof typeof alertVariants;
 export type AlertPlacements = 'inline' | 'floating';
@@ -38,47 +37,16 @@ export type AlertProps = WithChildrenProp &
     > & { text?: string };
   };
 
-const AlertBanner = styled(Background)<Pick<AlertProps, 'type' | 'placement'>>(
-  placementVariants
-);
-
-const AlertBox = styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(
-  placementVariants
-);
-
-AlertBanner.defaultProps = {
-  role: 'status',
-  'aria-label': 'alert box',
-  'aria-live': 'polite',
-};
-
-AlertBox.defaultProps = {
-  role: 'status',
-  'aria-label': 'alert box',
-  'aria-live': 'polite',
-};
-
-const CollapsableContent = styled(motion.div)(
-  system.css({ py: 4, overflowY: 'hidden' })
-);
-
-CollapsableContent.defaultProps = {
-  variants: {
-    collapsed: { height: '2rem' },
-    expanded: { height: 'auto' },
-  },
-  transition: { duration: 0.2, ease: 'easeInOut' },
-};
-
 export const Alert: React.FC<AlertProps> = ({
   children,
   cta,
   onClose,
   hidden,
+  placement = 'floating',
   type = 'general',
   ...props
 }) => {
-  const isInline = props.placement === 'inline';
+  const isInline = placement === 'inline';
   const activeAlert = alertVariants?.[type] ?? alertVariants.general;
   const { icon: Icon, bg } = activeAlert;
 
@@ -171,9 +139,4 @@ export const Alert: React.FC<AlertProps> = ({
       )}
     </AlertWrapper>
   );
-};
-
-Alert.defaultProps = {
-  type: 'general',
-  placement: 'floating',
 };

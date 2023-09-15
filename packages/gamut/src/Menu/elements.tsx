@@ -1,8 +1,11 @@
 import {
+  css,
+  states,
   styledOptions,
   system,
   theme,
   transitionConcat,
+  variant,
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
@@ -34,8 +37,8 @@ export interface ListProps extends ListStyleProps, StyleStateProps {
   as?: 'ul' | 'ol';
 }
 
-export const List = styled('ul', styledOptions<'ul'>())<ListProps>(
-  system.css({
+const StyledList = styled('ul', styledOptions<'ul'>())<ListProps>(
+  css({
     listStyle: 'none',
     width: 1,
     bg: 'inherit',
@@ -44,7 +47,7 @@ export const List = styled('ul', styledOptions<'ul'>())<ListProps>(
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
   }),
-  system.states({
+  states({
     root: {
       minWidth: 192,
       bg: 'background',
@@ -57,13 +60,12 @@ export const List = styled('ul', styledOptions<'ul'>())<ListProps>(
   listProps
 );
 
-List.defaultProps = {
-  root: true,
-  context: true,
-  m: 0,
-};
+export const List: React.FC<ListProps> = (
+  { context = true, m = 0, root = true },
+  ...rest
+) => <StyledList context={context} m={m} root={root} {...rest} />;
 
-const interactiveVariants = system.variant({
+const interactiveVariants = variant({
   base: {
     display: 'flex',
     alignItems: 'center',
@@ -107,7 +109,7 @@ const interactiveVariants = system.variant({
   },
 });
 
-const activeStates = system.states({
+const activeStates = states({
   selected: {
     bg: 'background-selected',
   },
@@ -124,7 +126,7 @@ const activeStates = system.states({
   },
 });
 
-const sizeVariants = system.variant({
+const sizeVariants = variant({
   prop: 'spacing',
   variants: {
     condensed: {
@@ -166,7 +168,7 @@ export interface ListLinkProps extends ListItemProps {
   navlink?: boolean;
 }
 
-export const ListLink = styled('a', styledOptions<'a'>())<ListLinkProps>(
+export const StyledListLink = styled('a', styledOptions<'a'>())<ListLinkProps>(
   resetStyles,
   interactiveVariants,
   activeStates,
@@ -175,9 +177,9 @@ export const ListLink = styled('a', styledOptions<'a'>())<ListLinkProps>(
   listProps
 );
 
-ListLink.defaultProps = {
-  zIndex: 1,
-};
+export const ListLink: React.FC<ListLinkProps> = ({ zIndex = 1 }, ...rest) => (
+  <StyledList zIndex={zIndex} {...rest} />
+);
 
 export const ListButton = styled(
   'button',
