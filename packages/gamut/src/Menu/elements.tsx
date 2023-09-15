@@ -183,9 +183,10 @@ export const StyledListLink = styled('a', styledOptions<'a'>())<ListLinkProps>(
   listProps
 );
 
-export const ListLink: React.FC<ListLinkProps> = ({ zIndex = 1 }, ...rest) => (
-  <StyledList zIndex={zIndex} {...rest} />
-);
+export const ListLink: React.FC<ComponentProps<typeof StyledListLink>> = (
+  { zIndex = 1 },
+  ...rest
+) => <StyledList zIndex={zIndex} {...rest} />;
 
 export const ListButton = styled(
   'button',
