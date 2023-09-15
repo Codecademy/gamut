@@ -15,7 +15,7 @@
     "defaultBase": "main"
   },
   "workspaceLayout": {
-    "appsDir": "packages",
+    "appsDir": "apps",
     "libsDir": "packages"
   },
   "namedInputs": {
