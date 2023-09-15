@@ -165,6 +165,7 @@ jobs:
       - *restore_node_modules
       - *restore_nx_cache
       - *restore_webpack_cache
+      - *build_all_packages
       - run:
           name: build storybook
           command: yarn build-storybook
@@ -185,6 +186,7 @@ jobs:
       - *restore_node_modules
       - *restore_nx_cache
       - *restore_webpack_cache
+      - *build_all_packages
       - run:
           name: build storybook
           command: yarn build-storybook
