@@ -10,8 +10,8 @@ export const Menu = forwardRef<
   const currentContext = useMenu({ variant, spacing });
 
   return (
-    <List {...rest} {...currentContext} ref={ref}>
+    <StyledList {...rest} {...currentContext} ref={ref}>
       <MenuProvider value={currentContext}>{children}</MenuProvider>
-    </List>
+    </StyledList>
   );
 });

@@ -9,6 +9,7 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import { ComponentProps, forwardRef } from 'react';
 
 import { sharedStates } from '../Box/props';
 import { resetStyles, Selectors } from '../ButtonBase/ButtonBase';
@@ -60,10 +61,16 @@ const StyledList = styled('ul', styledOptions<'ul'>())<ListProps>(
   listProps
 );
 
-export const List: React.FC<ListProps> = (
-  { context = true, m = 0, root = true },
-  ...rest
-) => <StyledList context={context} m={m} root={root} {...rest} />;
+export const List = forwardRef<
+  HTMLUListElement | HTMLOListElement,
+  ComponentProps<typeof StyledList>
+>(({ context = true, m = 0, root = true, children, ...rest }, ref) => {
+  return (
+    <StyledList context={context} m={m} root={root} {...rest} ref={ref}>
+      {children}
+    </StyledList>
+  );
+});
 
 const interactiveVariants = variant({
   base: {
@@ -71,7 +78,6 @@ const interactiveVariants = variant({
     alignItems: 'center',
     cursor: 'pointer',
     width: 1,
-    zIndex: 1,
     px: 24,
     py: 12,
     position: 'relative',
