@@ -133,8 +133,8 @@ export const ConnectedForm = forwardRef(
 
     if (watchedFields) {
       // we're pretty exhaustively type-checking the props as they're passed in, so its fine to cast here.
-      const fields = watch(watchedFields.fields);
-      watchedFields.watchHandler(fields as any);
+      const fields = watch(watchedFields.fields as any);
+      watchedFields.watchHandler(fields);
     }
 
     useEffect(() => {

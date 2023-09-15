@@ -1923,7 +1923,7 @@ __metadata:
     polished: ^4.1.2
     react-aria-tabpanel: ^4.4.0
     react-focus-on: ^3.5.1
-    react-hook-form: ^7.21.2
+    react-hook-form: 7.21.2
     react-player: ^2.3.1
     react-select: ^5.2.2
     react-truncate-markup: ^5.1.2
@@ -20690,12 +20690,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.21.2":
+"react-hook-form@npm:7.21.2":
   version: 7.21.2
-  resolution: "react-hook-form@npm:7.46.1"
+  resolution: "react-hook-form@npm:7.21.2"
   peerDependencies:
-    react: ^16.8.0 || ^17 || ^18
-  checksum: 9c11ba454ce5b2a16e7499f2ca710e0c0cff227f39689b8e7985902f27f99bfc7a2c49f145ef228528764cf8286bf6101fc8a0f5094ce652eb31cab1684518d1
+    react: ^16.8.0 || ^17
+  checksum: a33084dc814d51b30210f5006c69a39ef2a7ba2aa0fa0e63f8d787c0afd08106a2d82b56d16507d950da5bbd0ddf2c34949dc54574f726dfece67d017a4628e6
   languageName: node
   linkType: hard
 
