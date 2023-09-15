@@ -16,7 +16,6 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
   field,
   register,
   required,
-  rows,
 }) => {
   const { onChange, ...rest } = {
     ...register(field.name, {
