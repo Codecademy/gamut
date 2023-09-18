@@ -3,12 +3,12 @@ import { ComponentProps } from 'react';
 
 import { TabButton } from './TabButton';
 
-export const TabNavLink = styled(TabButton)();
+const StyledTabNavLink = styled(TabButton)();
 
-export const TabNavLink2: React.FC<ComponentProps<typeof TabNavLink>> = ({
+export const TabNavLink: React.FC<ComponentProps<typeof StyledTabNavLink>> = ({
   variant = 'standard',
   roles = 'tab',
   ...rest
 }) => {
-  return <TabNavLink roles={roles} variant={variant} {...rest} />;
+  return <StyledTabNavLink roles={roles} variant={variant} {...rest} />;
 };
