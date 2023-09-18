@@ -104,7 +104,10 @@ const getInputState = (error: boolean, valid: boolean) => {
 };
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
-  ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
+  (
+    { error, className, id, valid, as: As, icon: Icon, type = 'text', ...rest },
+    ref
+  ) => {
     const [activatedStyle, setActivatedStyle] = useState(false);
 
     const { color, icon } = inputStates[
@@ -125,18 +128,19 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
 
     return (
       <Box
-        display={rest.type === 'hidden' ? 'none' : undefined}
+        display={type === 'hidden' ? 'none' : undefined}
         position="relative"
         color={color}
       >
         <AsComponent
           {...rest}
-          id={id || rest.htmlFor}
-          ref={ref}
-          variant={conditionalStyleState(Boolean(error), activatedStyle)}
-          icon={error || valid || !!Icon}
           className={className}
+          icon={error || valid || !!Icon}
+          id={id || rest.htmlFor}
           onChange={changeHandler}
+          ref={ref}
+          type={type}
+          variant={conditionalStyleState(Boolean(error), activatedStyle)}
         />
         {!!ShownIcon && (
           <FlexBox
@@ -154,7 +158,3 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     );
   }
 );
-
-Input.defaultProps = {
-  type: 'text',
-};
