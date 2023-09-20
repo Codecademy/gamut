@@ -133,7 +133,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           {...rest}
           id={id || rest.htmlFor}
           ref={ref}
-          variant={conditionalStyleState(Boolean(error), activatedStyle)}
+          variant={conditionalStyleState(Boolean(error), rest.activated !== undefined ? rest.activated : activatedStyle)}
           icon={error || valid || !!Icon}
           className={className}
           onChange={changeHandler}
