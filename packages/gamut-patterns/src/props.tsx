@@ -1,6 +1,8 @@
-import { styledOptions, system } from '@codecademy/gamut-styles';
+import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import { rest } from 'lodash';
+import { ComponentProps, forwardRef } from 'react';
 
 const patternStyles = variance.compose(
   system.layout,
@@ -20,12 +22,13 @@ export interface PatternProps
   ref?: React.Ref<SVGSVGElement>;
 }
 
-export const Svg = styled(
+const StyledSvg = styled(
   'svg',
   styledOptions<'svg'>()
 )<PatternProps>(patternStyles);
 
-Svg.defaultProps = {
-  width: '100%',
-  height: '100%',
-};
+export const Svg = forwardRef<SVGSVGElement, ComponentProps<typeof StyledSvg>>(
+  ({ height = '100%', width = '100%', ...rest }, ref) => (
+    <StyledSvg height={height} width={width} ref={ref} {...rest} />
+  )
+);
