@@ -2,9 +2,9 @@
 import { ComponentProps } from 'react';
 import * as React from 'react';
 
-import { Anchor } from '../../../../Anchor';
+import { AnchorBase } from '../../../../Anchor';
 
-export interface MarkdownAnchorProps extends ComponentProps<typeof Anchor> {
+export interface MarkdownAnchorProps extends ComponentProps<typeof AnchorBase> {
   href?: string;
 }
 
@@ -50,5 +50,5 @@ export const MarkdownAnchor: React.FC<MarkdownAnchorProps> = ({
     delete anchorProps.target;
   }
 
-  return <Anchor {...anchorProps}>{children}</Anchor>;
+  return <AnchorBase {...anchorProps}>{children}</AnchorBase>;
 };
