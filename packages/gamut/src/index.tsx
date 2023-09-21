@@ -1,3 +1,4 @@
+export * from './Accordion';
 export * from './AccordionDeprecated';
 export * from './AccordionAreaDeprecated';
 export * from './AccordionButtonDeprecated';
