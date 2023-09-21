@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { RegisterOptions, UseFormReturn } from 'react-hook-form';
 
-import { FormToolTipProps } from '../Form';
+import { FormToolTipProps, TextAreaProps } from '../Form';
 import { CheckboxPaddingProps } from '../Form/types';
 import { ColumnProps } from '../Layout';
 import { TextProps } from '../Typography/Text';
@@ -115,12 +115,12 @@ export type GridFormFileField = BaseFormField<FileList> & {
   type: 'file';
 };
 
-export type GridFormTextAreaField = BaseFormField<string> & {
-  label: React.ReactNode;
-  placeholder?: string;
-  validation?: RegisterOptions;
-  type: 'textarea';
-};
+export type GridFormTextAreaField = BaseFormField<string> &
+  Pick<TextAreaProps, 'rows' | 'placeholder'> & {
+    label: React.ReactNode;
+    validation?: RegisterOptions;
+    type: 'textarea';
+  };
 
 type HiddenField = Omit<BaseFormField<any>, 'size' | 'rowspan'>;
 
