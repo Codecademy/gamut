@@ -1,35 +1,14 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "55.4.0",
+  "version": "55.4.2",
   "author": "Codecademy Engineering <dev@codecademy.com>",
-  "sideEffects": [
-    "**/*.css",
-    "**/*.scss",
-    "dist/**/[A-Z]**/[A-Z]*.js",
-    "dist/**/[A-Z]**/index.js"
-  ],
-  "module": "./dist/index.js",
-  "main": "./dist/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:Codecademy/gamut.git"
-  },
-  "files": [
-    "dist"
-  ],
-  "peerDependencies": {
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
-    "react": "^17.0.2 || ^18.2.0",
-    "react-dom": "^17.0.2 || ^18.2.0"
-  },
   "dependencies": {
-    "@codecademy/gamut-icons": "9.4.0",
-    "@codecademy/gamut-illustrations": "0.39.0",
-    "@codecademy/gamut-patterns": "0.9.7",
-    "@codecademy/gamut-styles": "16.1.2",
-    "@codecademy/variance": "0.21.0",
+    "@codecademy/gamut-icons": "9.4.2",
+    "@codecademy/gamut-illustrations": "0.39.2",
+    "@codecademy/gamut-patterns": "0.9.9",
+    "@codecademy/gamut-styles": "16.1.4",
+    "@codecademy/variance": "0.21.2",
     "@reach/auto-id": "^0.16.0",
     "@reach/tabs": "^0.16.4",
     "@types/marked": "^4.0.8",
@@ -49,23 +28,32 @@
     "react-use": "^15.3.8",
     "sanitize-markdown": "^2.6.7"
   },
-  "scripts": {
-    "verify": "tsc --noEmit",
-    "compile": "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
-    "build:watch": "yarn build && onchange ./src -- yarn build",
-    "build": "nx build @codecademy/gamut"
-  },
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
-  "devDependencies": {
-    "@codecademy/gamut-tests": "5.0.6",
-    "@emotion/jest": "^11.3.0",
-    "@testing-library/dom": "^8.11.1",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "onchange": "^7.0.2"
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "peerDependencies": {
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "react": "^17.0.2 || ^18.2.0",
+    "react-dom": "^17.0.2 || ^18.2.0"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "repository": "git@github.com:Codecademy/gamut.git",
+  "scripts": {
+    "build": "nx build @codecademy/gamut",
+    "build:watch": "yarn build && onchange ./src -- yarn build",
+    "compile": "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
+    "verify": "tsc --noEmit"
+  },
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss",
+    "dist/**/[A-Z]**/[A-Z]*.js",
+    "dist/**/[A-Z]**/index.js"
+  ]
 }

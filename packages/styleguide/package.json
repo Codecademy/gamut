@@ -1,26 +1,16 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "66.2.0",
+  "version": "66.2.3",
   "author": "Codecademy Engineering",
-  "scripts": {
-    "start": "yarn storybook",
-    "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet",
-    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ./dist",
-    "copy-storybook": "rm -rf ../../dist/docs && cp -r ./dist ../../dist/docs"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:Codecademy/gamut.git"
-  },
   "dependencies": {
-    "@codecademy/gamut": "55.4.0",
-    "@codecademy/gamut-icons": "9.4.0",
-    "@codecademy/gamut-illustrations": "0.39.0",
-    "@codecademy/gamut-patterns": "0.9.7",
-    "@codecademy/gamut-styles": "16.1.2",
-    "@codecademy/macros": "^3.0.2",
-    "@codecademy/variance": "0.21.0",
+    "@codecademy/gamut": "55.4.2",
+    "@codecademy/gamut-icons": "9.4.2",
+    "@codecademy/gamut-illustrations": "0.39.2",
+    "@codecademy/gamut-patterns": "0.9.9",
+    "@codecademy/gamut-styles": "16.1.4",
+    "@codecademy/macros": "3.0.4",
+    "@codecademy/variance": "0.21.2",
     "@codecademy/webpack-config": "6.4.0",
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",
@@ -36,7 +26,6 @@
     "@storybook/theming": "6.3.4",
     "@testing-library/react": "^12.1.2",
     "@types/mdx-js__react": "^1.5.3",
-    "@types/react": "*",
     "autoprefixer": "^9.7.4",
     "babel-preset-codecademy": "6.0.1-alpha.042681.0",
     "css-loader": "^3.5.2",
@@ -59,5 +48,12 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "repository": "git@github.com:Codecademy/gamut.git",
+  "scripts": {
+    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ./dist",
+    "copy-storybook": "rm -rf ../../dist/docs && cp -r ./dist ../../dist/docs",
+    "start": "yarn storybook",
+    "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet"
   }
 }

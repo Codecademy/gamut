@@ -3,240 +3,159 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-### [16.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@16.1.1...@codecademy/gamut-styles@16.1.2) (2023-07-05)
+### [16.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@16.1.3...@codecademy/gamut-styles@16.1.4) (2023-09-14)
 
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+### [16.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@16.1.2...@codecademy/gamut-styles@16.1.3) (2023-09-13)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+### [16.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@16.1.1...@codecademy/gamut-styles@16.1.2) (2023-07-05)
 
 ### Bug Fixes
 
-* **focusVisible:** enable always for both native and polyfill ([014e348](https://github.com/Codecademy/gamut/commit/014e348fda451c81c7074458e443e7bc46b10c0a))
-
-
+- **focusVisible:** enable always for both native and polyfill ([014e348](https://github.com/Codecademy/gamut/commit/014e348fda451c81c7074458e443e7bc46b10c0a))
 
 ### [16.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@16.1.0...@codecademy/gamut-styles@16.1.1) (2023-05-25)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
 
-
-
-
-
 ## [16.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@16.0.1...@codecademy/gamut-styles@16.1.0) (2023-04-14)
-
 
 ### Features
 
-* **Alert:** Add subtle light and dark variants to inline alerts ([37aa3a8](https://github.com/Codecademy/gamut/commit/37aa3a85ace90261ada31ff5470e6823bd72f9a2))
-
-
+- **Alert:** Add subtle light and dark variants to inline alerts ([37aa3a8](https://github.com/Codecademy/gamut/commit/37aa3a85ace90261ada31ff5470e6823bd72f9a2))
 
 ### [16.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@16.0.0...@codecademy/gamut-styles@16.0.1) (2023-04-10)
 
-
 ### Bug Fixes
 
-* Resolve sass division warnings ([#2701](https://github.com/Codecademy/gamut/issues/2701)) ([65ea2b2](https://github.com/Codecademy/gamut/commit/65ea2b2b2c1d29f5afa3438f13b2b89a9c306596))
-
-
+- Resolve sass division warnings ([#2701](https://github.com/Codecademy/gamut/issues/2701)) ([65ea2b2](https://github.com/Codecademy/gamut/commit/65ea2b2b2c1d29f5afa3438f13b2b89a9c306596))
 
 ## [16.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@15.1.0...@codecademy/gamut-styles@16.0.0) (2023-03-20)
 
-
 ### ⚠ BREAKING CHANGES
 
-* **ColorMode:** add new navy weights
+- **ColorMode:** add new navy weights
 
 ### Features
 
-* **ColorMode:** add new navy weights ([4babb66](https://github.com/Codecademy/gamut/commit/4babb66348b8c64457e0df6765df1376be880140))
-
-
+- **ColorMode:** add new navy weights ([4babb66](https://github.com/Codecademy/gamut/commit/4babb66348b8c64457e0df6765df1376be880140))
 
 ## [15.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@15.0.0...@codecademy/gamut-styles@15.1.0) (2023-02-06)
 
-
 ### Features
 
-* **ColorMode:** add text-secondary + new white weights ([cc75989](https://github.com/Codecademy/gamut/commit/cc759899c08d03a91de65777bc7123c957db2d21))
-
-
+- **ColorMode:** add text-secondary + new white weights ([cc75989](https://github.com/Codecademy/gamut/commit/cc759899c08d03a91de65777bc7123c957db2d21))
 
 ## [15.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.5...@codecademy/gamut-styles@15.0.0) (2023-01-19)
 
-
 ### ⚠ BREAKING CHANGES
 
-* Support React 18 [WEB-2055]
+- Support React 18 [WEB-2055]
 
 ### Miscellaneous Chores
 
-* Support React 18 [WEB-2055] ([89d6b22](https://github.com/Codecademy/gamut/commit/89d6b224831dd62d7bcd9a424142eaab02232a00))
-
-
+- Support React 18 [WEB-2055] ([89d6b22](https://github.com/Codecademy/gamut/commit/89d6b224831dd62d7bcd9a424142eaab02232a00))
 
 ### [14.2.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.4...@codecademy/gamut-styles@14.2.5) (2023-01-09)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
 
-
-
-
-
 ### [14.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.3...@codecademy/gamut-styles@14.2.4) (2023-01-06)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
-
-
-
-
 
 ### [14.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.2...@codecademy/gamut-styles@14.2.3) (2022-12-06)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
 
-
-
-
-
 ### [14.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.1...@codecademy/gamut-styles@14.2.2) (2022-11-29)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
-
-
-
-
 
 ### [14.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.2.0...@codecademy/gamut-styles@14.2.1) (2022-11-02)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
 
-
-
-
-
 ## [14.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.1.2...@codecademy/gamut-styles@14.2.0) (2022-11-01)
-
 
 ### Features
 
-* **adminTheme:** Update dark mode green in admin theme ([a42c333](https://github.com/Codecademy/gamut/commit/a42c333481b1a590d96b7d47b6589fd7cfc1f4c7)), closes [#2410](https://github.com/Codecademy/gamut/issues/2410)
-
-
+- **adminTheme:** Update dark mode green in admin theme ([a42c333](https://github.com/Codecademy/gamut/commit/a42c333481b1a590d96b7d47b6589fd7cfc1f4c7)), closes [#2410](https://github.com/Codecademy/gamut/issues/2410)
 
 ### [14.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.1.1...@codecademy/gamut-styles@14.1.2) (2022-10-31)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
 
-
-
-
-
 ### [14.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.1.0...@codecademy/gamut-styles@14.1.1) (2022-10-06)
-
 
 ### Bug Fixes
 
-* **ColorMode:** always return color name from hook ([e9186ae](https://github.com/Codecademy/gamut/commit/e9186aef7a4c9e4d6ce279f4496523664db46c38))
-
-
+- **ColorMode:** always return color name from hook ([e9186ae](https://github.com/Codecademy/gamut/commit/e9186aef7a4c9e4d6ce279f4496523664db46c38))
 
 ## [14.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.0.4...@codecademy/gamut-styles@14.1.0) (2022-10-04)
 
-
 ### Features
 
-* **ColorMode:** correct background-current from useColorMode hook ([6e20044](https://github.com/Codecademy/gamut/commit/6e20044679771b0f8fd1b4faecf17de0a14202d2))
-
-
+- **ColorMode:** correct background-current from useColorMode hook ([6e20044](https://github.com/Codecademy/gamut/commit/6e20044679771b0f8fd1b4faecf17de0a14202d2))
 
 ### [14.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.0.3...@codecademy/gamut-styles@14.0.4) (2022-08-19)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
 
-
-
-
-
 ### [14.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.0.2...@codecademy/gamut-styles@14.0.3) (2022-08-09)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
-
-
-
-
 
 ### [14.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.0.1...@codecademy/gamut-styles@14.0.2) (2022-07-29)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
 
-
-
-
-
 ### [14.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@14.0.0...@codecademy/gamut-styles@14.0.1) (2022-07-29)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
 
-
-
-
-
 ## [14.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.4.0...@codecademy/gamut-styles@14.0.0) (2022-07-27)
-
 
 ### ⚠ BREAKING CHANGES
 
-* **Text:** highlighted text
+- **Text:** highlighted text
 
 ### Features
 
-* **Text:** highlighted text ([4b1d299](https://github.com/Codecademy/gamut/commit/4b1d2995267e90fe21cb7934598f140963fd4780))
-
-
+- **Text:** highlighted text ([4b1d299](https://github.com/Codecademy/gamut/commit/4b1d2995267e90fe21cb7934598f140963fd4780))
 
 ## [13.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.3.0...@codecademy/gamut-styles@13.4.0) (2022-07-19)
 
-
 ### Features
 
-* **ColorMode:** Adding "system" option to ColorMode ([#2439](https://github.com/Codecademy/gamut/issues/2439)) ([a3e6a47](https://github.com/Codecademy/gamut/commit/a3e6a47d610b840b76b87f167e90777483482c99))
-
-
+- **ColorMode:** Adding "system" option to ColorMode ([#2439](https://github.com/Codecademy/gamut/issues/2439)) ([a3e6a47](https://github.com/Codecademy/gamut/commit/a3e6a47d610b840b76b87f167e90777483482c99))
 
 ## [13.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.2.0...@codecademy/gamut-styles@13.3.0) (2022-07-15)
 
-
 ### Features
 
-* **Tooltip:** Add tooltip placements ([8bb047c](https://github.com/Codecademy/gamut/commit/8bb047c61f783b919b04b7c0cc08c5e88fbed00b))
-
-
+- **Tooltip:** Add tooltip placements ([8bb047c](https://github.com/Codecademy/gamut/commit/8bb047c61f783b919b04b7c0cc08c5e88fbed00b))
 
 ## [13.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.1.1...@codecademy/gamut-styles@13.2.0) (2022-05-24)
 
-
 ### Features
 
-* **Typography:** new lineHeight system props ([0f3418e](https://github.com/Codecademy/gamut/commit/0f3418e2636124bf5ac76e52d9766e2d25e8477e))
-
-
+- **Typography:** new lineHeight system props ([0f3418e](https://github.com/Codecademy/gamut/commit/0f3418e2636124bf5ac76e52d9766e2d25e8477e))
 
 ### [13.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.1.0...@codecademy/gamut-styles@13.1.1) (2022-05-17)
 
-
 ### Bug Fixes
 
-* **ColorMode:** Fixing bug with usePrefersDarkMode ([#2350](https://github.com/Codecademy/gamut/issues/2350)) ([aae0cba](https://github.com/Codecademy/gamut/commit/aae0cba8189b0810433bc079c64fee24fe48df0c))
-
-
+- **ColorMode:** Fixing bug with usePrefersDarkMode ([#2350](https://github.com/Codecademy/gamut/issues/2350)) ([aae0cba](https://github.com/Codecademy/gamut/commit/aae0cba8189b0810433bc079c64fee24fe48df0c))
 
 ## [13.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.0.2...@codecademy/gamut-styles@13.1.0) (2022-04-13)
 
-
 ### Features
 
-* **SocialMediaSharing:** making SocialMediaSharing responsive to colormode ([591414e](https://github.com/Codecademy/gamut/commit/591414e523b8c4a8fba73e1ee0c380806fe5ff1e))
-
-
+- **SocialMediaSharing:** making SocialMediaSharing responsive to colormode ([591414e](https://github.com/Codecademy/gamut/commit/591414e523b8c4a8fba73e1ee0c380806fe5ff1e))
 
 ### [13.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@13.0.1...@codecademy/gamut-styles@13.0.2) (2022-02-18)
 

@@ -1,14 +1,14 @@
 {
+  "name": "gamut",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{projectRoot}/dist"],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/gamut",
-        "outputPath": "./dist",
         "commands": [
           "rm -rf ./dist",
           "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
@@ -19,8 +19,8 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/gamut"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/gamut"],
       "options": {
         "jestConfig": "packages/gamut/jest.config.ts",
         "passWithNoTests": true

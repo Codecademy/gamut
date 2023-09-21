@@ -1,14 +1,14 @@
 {
+  "name": "variance",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/variance/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{projectRoot}/dist"],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/variance",
-        "outputPath": "./dist",
         "commands": [
           "rm -rf ./dist",
           "tsc --project tsconfig.lib.json",
@@ -18,8 +18,8 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/variance"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/variance"],
       "options": {
         "jestConfig": "packages/variance/jest.config.ts",
         "passWithNoTests": true
