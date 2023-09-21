@@ -118,8 +118,6 @@ export type GridFormFileField = BaseFormField<FileList> & {
 export type GridFormTextAreaField = BaseFormField<string> &
   Pick<TextAreaProps, 'rows' | 'placeholder'> & {
     label: React.ReactNode;
-    // placeholder?: string;
-    // rows?: number;
     validation?: RegisterOptions;
     type: 'textarea';
   };
