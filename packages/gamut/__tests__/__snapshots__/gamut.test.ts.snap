@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Gamut Exported Keys 1`] = `
-Array [
+[
   "AccordionAreaDeprecated",
   "AccordionButtonDeprecated",
   "AccordionDeprecated",
