@@ -6,6 +6,7 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import { ComponentProps, forwardRef } from 'react';
 
 import { typographyElementVariants, typographyStyleVariants } from './variants';
 
@@ -138,7 +139,7 @@ export interface TextNoTruncateProps extends BaseTextProps {
 
 export type TextProps = TextTruncateProps | TextNoTruncateProps;
 
-export const Text = styled('span', styledOptions<'span'>())<TextProps>(
+export const StyledText = styled('span', styledOptions<'span'>())<TextProps>(
   elementVariants,
   truncateVariants,
   displayVariants,
@@ -146,7 +147,14 @@ export const Text = styled('span', styledOptions<'span'>())<TextProps>(
   textProps
 );
 
-Text.defaultProps = {
-  as: 'span',
-  m: 0,
-};
+export const Text = forwardRef<
+  HTMLSpanElement,
+  ComponentProps<typeof StyledText>
+>(({ as = 'span', m = 0, ...rest }, ref) => (
+  <StyledText as={as} m={m} ref={ref} {...rest} />
+));
+
+// Text.defaultProps = {
+//   as: 'span',
+//   m: 0,
+// };
