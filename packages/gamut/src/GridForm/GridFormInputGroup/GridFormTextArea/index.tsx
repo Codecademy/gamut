@@ -38,6 +38,7 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
         await onChange(event);
       }}
       placeholder={field.placeholder}
+      rows={field.rows}
     />
   );
 };
