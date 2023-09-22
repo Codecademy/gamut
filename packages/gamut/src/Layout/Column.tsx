@@ -1,7 +1,7 @@
 import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps } from 'react';
+import { ComponentProps, forwardRef } from 'react';
 
 const rows = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6 };
 
@@ -69,10 +69,9 @@ const StyledColumn = styled(
   styledOptions(columnProps.propNames)
 )<ColumnProps>(columnProps({ size: 12 }), columnVariants, columnProps);
 
-// CASS : TODO - needs forwardRef
-export const Column: React.FC<ComponentProps<typeof StyledColumn>> = ({
-  variant = 'fitContent',
-  ...rest
-}) => {
-  return <StyledColumn variant={variant} {...rest} />;
-};
+export const Column = forwardRef<
+  HTMLDivElement,
+  ComponentProps<typeof StyledColumn>
+>(({ variant = 'fitContent', ...rest }, ref) => (
+  <StyledColumn variant={variant} ref={ref} {...rest} />
+));
