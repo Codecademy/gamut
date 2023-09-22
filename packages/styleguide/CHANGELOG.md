@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.2.3...@codecademy/styleguide@66.3.0) (2023-09-21)
+
+### Features
+
+- **GridFormTextArea:** add rows to text-area field ([9742130](https://github.com/Codecademy/gamut/commit/9742130e097acf5e2e947bda6baed9d9cb8ad9e7))
+
 ### [66.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.2.2...@codecademy/styleguide@66.2.3) (2023-09-15)
 
 **Note:** Version bump only for package @codecademy/styleguide

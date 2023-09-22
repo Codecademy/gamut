@@ -2,6 +2,7 @@ import { cleanup } from '@testing-library/react';
 
 import {
   additionalRadioGroupTests,
+  additionalTextAreaTests,
   itHandlesStandardFieldTests,
 } from '../__fixtures__/assertions';
 import { getComponent } from '../__fixtures__/renderers';
@@ -28,5 +29,7 @@ describe('GridFormInputs', () => {
     });
     if (component === 'GridFormRadioGroupInput')
       additionalRadioGroupTests({ renderField, defaultFieldProps });
+    if (component === 'GridFormTextArea')
+      additionalTextAreaTests({ renderField, defaultFieldProps });
   });
 });

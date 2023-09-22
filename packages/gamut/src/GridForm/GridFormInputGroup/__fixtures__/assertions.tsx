@@ -112,3 +112,36 @@ export const additionalRadioGroupTests = ({
     });
   });
 };
+
+export const additionalTextAreaTests = ({
+  renderField,
+  defaultFieldProps,
+}: Pick<StandardFieldTestsProps, 'renderField' | 'defaultFieldProps'>) => {
+  describe('TextArea', () => {
+    it('does not specify rows by default', () => {
+      const { view } = renderField({
+        field: {
+          ...defaultFieldProps,
+          id: 'id',
+          options: [{ label: <img alt="" src="" />, value: '' }],
+          name: 'name',
+        },
+      });
+      const textArea = view.getByRole('textbox');
+      expect(textArea).not.toHaveAttribute('rows');
+    });
+    it('renders other numbers of rows when specified', () => {
+      const { view } = renderField({
+        field: {
+          ...defaultFieldProps,
+          id: 'id',
+          options: [{ label: <img alt="" src="" />, value: '' }],
+          name: 'name',
+          rows: 8,
+        },
+      });
+      const textArea = view.getByRole('textbox');
+      expect(textArea).toHaveAttribute('rows', '8');
+    });
+  });
+};
