@@ -8,7 +8,7 @@ import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
 export interface AnchorProps
   extends StyleProps<typeof anchorProps>,
     StyleProps<typeof anchorVariants> {
-  onClick?: HTMLProps<HTMLAnchorElement>['onClick'];
+  onClick: HTMLProps<HTMLAnchorElement>['onClick'];
 }
 
 const anchorVariants = variant({
