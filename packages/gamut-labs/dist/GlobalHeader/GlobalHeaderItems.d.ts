@@ -1,0 +1,17 @@
+import { AppHeaderCatalogDropdownItem, AppHeaderFillButtonItem, AppHeaderLinkItem, AppHeaderLogoItem, AppHeaderProfileDropdownItem, AppHeaderResourcesDropdownItem, AppHeaderSimpleDropdownItem, AppHeaderTextButtonItem } from '../AppHeader/AppHeaderElements/types';
+import { User } from './types';
+export declare const logo: AppHeaderLogoItem;
+export declare const myHome: AppHeaderLinkItem;
+export declare const catalogDropdown: (hideCareerPaths?: boolean | undefined) => AppHeaderCatalogDropdownItem;
+export declare const resourcesDropdown: AppHeaderResourcesDropdownItem;
+export declare const communityDropdown: AppHeaderSimpleDropdownItem;
+export declare const pricingDropdown: AppHeaderSimpleDropdownItem;
+export declare const businessSolutions: AppHeaderLinkItem;
+export declare const freeProfile: (user: User, isMobile?: boolean | undefined) => AppHeaderProfileDropdownItem;
+export declare const proProfile: (user: User) => AppHeaderProfileDropdownItem;
+export declare const tryProForFree: (checkoutUrl?: string | undefined) => AppHeaderFillButtonItem;
+export declare const upgradeToPro: (checkoutUrl?: string | undefined) => AppHeaderFillButtonItem;
+export declare const unpausePro: AppHeaderFillButtonItem;
+export declare const login: AppHeaderTextButtonItem;
+export declare const signUp: AppHeaderFillButtonItem;
+export declare const referrals: AppHeaderLinkItem;

@@ -1,0 +1,9 @@
+@import "~@codecademy/gamut-styles/utils";
+
+// Importants are necessary and safe here
+// to override default styles for markdown code blocks
+.pseudoBlock {
+  padding: 1rem !important;
+  background-color: $color-gray-200 !important;
+  color: $color-black !important;
+}
