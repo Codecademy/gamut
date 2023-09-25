@@ -1,7 +1,7 @@
 import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps, forwardRef, HTMLProps, RefObject } from 'react';
+import { HTMLProps } from 'react';
 
 import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
 
@@ -91,31 +91,8 @@ export const AnchorBase = styled('a', styledOptions<'a'>())<AnchorProps>(
   anchorProps
 );
 
-type AnchorBaseProps =
-  | ComponentProps<typeof AnchorBase>
-  | (Exclude<ComponentProps<typeof AnchorBase>, 'ref'> &
-      ComponentProps<typeof ButtonBase>);
+export const Anchor = AnchorBase.withComponent(ButtonBase);
 
-export const Anchor = forwardRef<
-  HTMLAnchorElement | HTMLButtonElement,
-  AnchorBaseProps
->(({ variant = 'inline', ...rest }, ref) => {
-  if (!rest.href) {
-    return (
-      <AnchorBase
-        as={ButtonBase}
-        variant={variant}
-        ref={ref as RefObject<HTMLAnchorElement>}
-        {...rest}
-      />
-    );
-  }
-
-  return (
-    <AnchorBase
-      variant={variant}
-      ref={ref as RefObject<HTMLAnchorElement>}
-      {...rest}
-    />
-  );
-});
+Anchor.defaultProps = {
+  variant: 'inline',
+};
