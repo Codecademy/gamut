@@ -29,6 +29,7 @@ export * from './MagnifyingGlass';
 export * from './Maze';
 export * from './Megaphone';
 export * from './MobilePhone';
+export * from './MoneyBack';
 export * from './New';
 export * from './NumberBlocks';
 export * from './Onboarding';
