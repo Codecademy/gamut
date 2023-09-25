@@ -153,8 +153,3 @@ export const Text = forwardRef<
 >(({ as = 'span', m = 0, ...rest }, ref) => (
   <StyledText as={as} m={m} ref={ref} {...rest} />
 ));
-
-// Text.defaultProps = {
-//   as: 'span',
-//   m: 0,
-// };

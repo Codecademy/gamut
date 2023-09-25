@@ -95,7 +95,6 @@ exports[`Gamut Exported Keys 1`] = `
   "SkipToContentTarget",
   "Spinner",
   "StrokeButton",
-  "StyledText",
   "SubmitButton",
   "submitSuccessStatus",
   "Tab",
