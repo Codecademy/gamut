@@ -1,7 +1,6 @@
-import { styledOptions, system, variant } from '@codecademy/gamut-styles';
+import { styledOptions, system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { rest } from 'lodash';
 import { ComponentProps, forwardRef } from 'react';
 
 const patternStyles = variance.compose(
