@@ -7,13 +7,7 @@ import TruncateMarkup from 'react-truncate-markup';
 import { Rotation, WithChildrenProp } from '..';
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
-import {
-  AlertBanner,
-  AlertBox,
-  CollapsableContent,
-  collapsableContentTransition,
-  collapsableContentVariants,
-} from './elements';
+import { AlertBanner, AlertBox, CollapsableContent } from './elements';
 import { alertVariants } from './variants';
 
 export type AlertType = keyof typeof alertVariants;
@@ -127,8 +121,14 @@ export const Alert: React.FC<AlertProps> = ({
         animate={toggleState}
         aria-expanded={expanded}
         initial={toggleState}
-        variant={collapsableContentVariants}
-        transition={collapsableContentTransition}
+        transition={{
+          duration: 0.2,
+          ease: 'easeInOut',
+        }}
+        variants={{
+          collapsed: { height: '2rem' },
+          expanded: { height: 'auto' },
+        }}
       >
         {isInline ? children : floatingContent}
       </CollapsableContent>

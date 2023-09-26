@@ -10,7 +10,6 @@ import { ComponentProps, forwardRef } from 'react';
 
 import { sharedStates } from '../Box/props';
 import { resetStyles, Selectors } from '../ButtonBase/ButtonBase';
-import { StyledText } from '../Typography/Text';
 
 type ListStyleProps = StyleProps<typeof listProps>;
 

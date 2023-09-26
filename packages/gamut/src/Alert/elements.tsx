@@ -64,13 +64,3 @@ export const AlertBox = forwardRef<
 export const CollapsableContent = styled(motion.div)(
   css({ py: 4, overflowY: 'hidden' })
 );
-
-export const collapsableContentVariants = {
-  collapsed: { height: '2rem' },
-  expanded: { height: 'auto' },
-};
-
-export const collapsableContentTransition = {
-  duration: 0.2,
-  ease: 'easeInOut',
-};
