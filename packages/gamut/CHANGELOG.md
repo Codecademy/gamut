@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.6.0...@codecademy/gamut@55.6.1) (2023-09-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [55.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.5.0...@codecademy/gamut@55.6.0) (2023-09-25)
+
+### Features
+
+- **Tooltip:** add aria-described by to floating tooltip ([6caabd8](https://github.com/Codecademy/gamut/commit/6caabd8969ef3d4b32d3d25ecc86490be25b1eca))
+
 ## [55.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.4.2...@codecademy/gamut@55.5.0) (2023-09-21)
 
 ### Features
