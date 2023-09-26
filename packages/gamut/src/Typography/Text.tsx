@@ -139,7 +139,7 @@ export interface TextNoTruncateProps extends BaseTextProps {
 
 export type TextProps = TextTruncateProps | TextNoTruncateProps;
 
-const StyledText = styled('span', styledOptions<'span'>())<TextProps>(
+export const StyledText = styled('span', styledOptions<'span'>())<TextProps>(
   elementVariants,
   truncateVariants,
   displayVariants,
