@@ -57,7 +57,7 @@ const StyledFormGroupContainer = styled(Box)<
   height: max-content;
 `;
 
-export const FormGroupContainer: React.FC<
+const FormGroupContainer: React.FC<
   ComponentProps<typeof StyledFormGroupContainer>
 > = ({ pb = 8, mb = 24, ...rest }) => {
   return <StyledFormGroupContainer pb={pb} mb={mb} {...rest} />;
