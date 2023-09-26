@@ -50,5 +50,9 @@ export const MarkdownAnchor: React.FC<MarkdownAnchorProps> = ({
     delete anchorProps.target;
   }
 
-  return <AnchorBase {...anchorProps}>{children}</AnchorBase>;
+  return (
+    <AnchorBase variant="inline" {...anchorProps}>
+      {children}
+    </AnchorBase>
+  );
 };
