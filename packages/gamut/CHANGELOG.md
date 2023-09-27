@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.6.1...@codecademy/gamut@55.6.2) (2023-09-27)
+
+### Bug Fixes
+
+- **Input:** use activatedStyle from props when value is provided ([59d4513](https://github.com/Codecademy/gamut/commit/59d4513aa9345aec550f75f8a51a38a4e08bb74e))
+
 ### [55.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.6.0...@codecademy/gamut@55.6.1) (2023-09-25)
 
 **Note:** Version bump only for package @codecademy/gamut
