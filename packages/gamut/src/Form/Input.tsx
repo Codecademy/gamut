@@ -140,7 +140,10 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           onChange={changeHandler}
           ref={ref}
           type={type}
-          variant={conditionalStyleState(Boolean(error), activatedStyle)}
+          variant={conditionalStyleState(
+            Boolean(error),
+            rest.activated !== undefined ? rest.activated : activatedStyle
+          )}
         />
         {!!ShownIcon && (
           <FlexBox
