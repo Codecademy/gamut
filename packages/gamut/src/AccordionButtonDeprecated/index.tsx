@@ -14,7 +14,7 @@ export type AccordionButtonSize = 'normal' | 'large';
 
 export type AccordionButtonTheme = 'blue' | 'plain' | 'yellow';
 
-export type AccordionButtonProps = ButtonDeprecatedBaseProps & {
+export type AccordionButtonDeprecatedProps = ButtonDeprecatedBaseProps & {
   /**
    * Whether the button should display as open or closed.
    */
@@ -59,7 +59,7 @@ const buttonThemes = {
  * Check the [Gamut Board](https://www.notion.so/codecademy/Gamut-Status-Timeline-dd3c135d3848464ea6eb1b48e68fbb1d) for component status
  */
 
-export const AccordionButton: React.FC<AccordionButtonProps> = ({
+export const AccordionButtonDeprecated: React.FC<AccordionButtonDeprecatedProps> = ({
   children,
   className,
   expanded,

@@ -1,14 +1,14 @@
-import { AccordionButton } from '@codecademy/gamut/src';
+import { AccordionButtonDeprecated } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
-  component={AccordionButton}
+  component={AccordionButtonDeprecated}
   parameters={{
     subtitle: `
-The standard "top" button for an \`Accordion\`.
+The standard "top" button for an \`AccordionDeprecated\`.
 Comes in a few standard size and color combinations.
 `,
     source: 'gamut',
@@ -23,44 +23,44 @@ Comes in a few standard size and color combinations.
 />
 
 <Canvas>
-  <Story name="AccordionButton">
-    {(args) => <AccordionButton {...args} />}
+  <Story name="AccordionButtonDeprecated">
+    {(args) => <AccordionButtonDeprecated {...args} />}
   </Story>
 </Canvas>
 
-<PropsTable story="AccordionButton" />
+<PropsTable story="AccordionButtonDeprecated" />
 
 ## Themes
 
 ### Blue
 
-Blue accordion tops are only usable in dark contexts, such as the LE's
+Blue AccordionButtonDeprecated tops are only usable in dark contexts, such as the LE's
 Help Menu.
 
 <Canvas className="dark">
   <Story name="Blue" args={{ expanded: true, theme: 'blue' }}>
-    {(args) => <AccordionButton {...args} />}
+    {(args) => <AccordionButtonDeprecated {...args} />}
   </Story>
 </Canvas>
 
 ### Plain
 
-Plain AccordionButton tops are best applied in plain pages such as marketing pages
+Plain AccordionButtonDeprecated tops are best applied in plain pages such as marketing pages
 where we haven't been able to invest yet in a more solid theme.
 
 <Canvas>
   <Story name="Plain" args={{ expanded: true, theme: 'plain' }}>
-    {(args) => <AccordionButton {...args} />}
+    {(args) => <AccordionButtonDeprecated {...args} />}
   </Story>
 </Canvas>
 
 ### Yellow
 
-Yellow AccordionButton tops are used in the "Get a Hint" sections of the LE's
+Yellow AccordionButtonDeprecated tops are used in the "Get a Hint" sections of the LE's
 narrative pane.
 
 <Canvas>
   <Story name="Yellow" args={{ expanded: true, theme: 'yellow' }}>
-    {(args) => <AccordionButton {...args} />}
+    {(args) => <AccordionButtonDeprecated {...args} />}
   </Story>
 </Canvas>

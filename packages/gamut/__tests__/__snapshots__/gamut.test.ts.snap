@@ -2,9 +2,9 @@
 
 exports[`Gamut Exported Keys 1`] = `
 [
-  "Accordion",
-  "AccordionArea",
-  "AccordionButton",
+  "AccordionAreaDeprecated",
+  "AccordionButtonDeprecated",
+  "AccordionDeprecated",
   "Alert",
   "Anchor",
   "AnchorBase",
