@@ -68,7 +68,7 @@ export const radioInput = css({
   },
 });
 
-export const conditionalRadioLabelStyles = system.variant({
+export const conditionalRadioLabelStyles = variant({
   base: {
     [InputSelectors.BEFORE]: {
       boxShadow: `0 0 0 1px currentColor`,
