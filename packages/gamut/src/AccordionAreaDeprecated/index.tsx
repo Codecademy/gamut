@@ -4,7 +4,7 @@ import { useState } from 'react';
 import * as React from 'react';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
-export type AccordionAreaProps = {
+export type AccordionAreaDeprecatedProps = {
   children: React.ReactNode;
 
   className?: string;
@@ -34,7 +34,7 @@ const variants = {
  * Check the [Gamut Board](https://www.notion.so/codecademy/Gamut-Status-Timeline-dd3c135d3848464ea6eb1b48e68fbb1d) for component status
  */
 
-export const AccordionArea: React.FC<AccordionAreaProps> = ({
+export const AccordionAreaDeprecated: React.FC<AccordionAreaDeprecatedProps> = ({
   children,
   className,
   expanded,
