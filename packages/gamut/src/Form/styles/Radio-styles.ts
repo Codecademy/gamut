@@ -1,8 +1,9 @@
 import {
-  system,
+  css,
   theme,
   timing,
   transitionConcat,
+  variant,
 } from '@codecademy/gamut-styles';
 
 import {
@@ -11,7 +12,7 @@ import {
   InputSelectors,
 } from '.';
 
-export const radioWrapper = system.css({
+export const radioWrapper = css({
   margin: '0.25rem 0',
   width: '100%',
   fontWeight: 'normal',
@@ -27,7 +28,7 @@ const consistentLabelStyles = {
   mr: 8,
 } as const;
 
-export const radioLabel = system.css({
+export const radioLabel = css({
   ...formBaseComponentStyles,
   bg: 'transparent',
   display: 'flex',
@@ -51,7 +52,7 @@ export const radioLabel = system.css({
   },
 });
 
-export const radioInput = system.css({
+export const radioInput = css({
   [InputSelectors.CHECKED_AFTER]: {
     bg: 'primary',
     borderWidth: 4,
@@ -85,7 +86,7 @@ export const conditionalRadioLabelStyles = system.variant({
   },
 });
 
-export const conditionalRadioInputStyles = system.variant({
+export const conditionalRadioInputStyles = variant({
   base: {
     [InputSelectors.CHECKED_AFTER]: {
       bg: 'currentColor',
