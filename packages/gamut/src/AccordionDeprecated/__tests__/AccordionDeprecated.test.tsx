@@ -2,16 +2,16 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 import { act } from 'react-dom/test-utils';
 
-import { Accordion } from '..';
+import { AccordionDeprecated } from '..';
 
-const renderView = setupRtl(Accordion, {
+const renderView = setupRtl(AccordionDeprecated, {
   children: <div data-testid="contents" />,
   top: 'Click me!',
 });
 
 jest.useFakeTimers();
 
-describe('Accordion', () => {
+describe('AccordionDeprecated', () => {
   it('starts collapsed when initiallyExpanded is not true', () => {
     const { view } = renderView({ initiallyExpanded: false });
 
