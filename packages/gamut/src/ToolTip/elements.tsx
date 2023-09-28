@@ -3,6 +3,7 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { Box } from '../Box';
+import { Selectors } from '../ButtonBase/ButtonBase';
 import {
   toolTipAlignmentVariants,
   toolTipBodyAlignments,
@@ -13,6 +14,11 @@ export const TooltipWrapper = styled.div(
   css({ position: 'relative', display: 'inline-flex' })
 );
 
+enum TargetSelectors {
+  OUTLINE = '&:before',
+  OUTLINE_FOCUS_VISIBLE = '&:focus-visible:before',
+}
+
 export const TargetContainer = styled.div(
   css({
     cursor: 'pointer',
@@ -20,8 +26,21 @@ export const TargetContainer = styled.div(
     background: 'none',
     padding: 0,
 
-    '&:focus-visible': {
-      outline: `0.3rem auto ${theme.colors['primary-hover']}`,
+    [Selectors.FOCUS_VISIBLE]: {
+      outline: 'none',
+    },
+    [TargetSelectors.OUTLINE]: {
+      content: "''",
+      position: 'absolute',
+      inset: -4,
+      borderRadius: '4px',
+      border: 2,
+      borderColor: 'primary',
+      opacity: 0,
+      zIndex: 0,
+    },
+    [TargetSelectors.OUTLINE_FOCUS_VISIBLE]: {
+      opacity: 1,
     },
   })
 );

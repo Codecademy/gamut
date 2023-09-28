@@ -11,6 +11,11 @@ import { ComponentProps, forwardRef } from 'react';
 import { sharedStates } from '../Box/props';
 import { resetStyles, Selectors } from '../ButtonBase/ButtonBase';
 
+enum MenuItemSelectors {
+  OUTLINE = '&:after',
+  OUTLINE_FOCUS_VISIBLE = '&:focus-visible:after',
+}
+
 type ListStyleProps = StyleProps<typeof listProps>;
 
 type StyleStateProps = StyleProps<typeof sharedStates>;
@@ -81,8 +86,20 @@ const interactiveVariants = system.variant({
       'linear'
     ),
     [Selectors.FOCUS_VISIBLE]: {
-      outline: `${theme.colors.primary} auto 2px`,
-      outlineOffset: '-2px',
+      outline: 'none',
+    },
+    [MenuItemSelectors.OUTLINE]: {
+      content: "''",
+      position: 'absolute',
+      inset: 4,
+      borderRadius: '4px',
+      border: 2,
+      borderColor: 'primary',
+      opacity: 0,
+      zIndex: 0,
+    },
+    [MenuItemSelectors.OUTLINE_FOCUS_VISIBLE]: {
+      opacity: 1,
     },
   },
   variants: {
