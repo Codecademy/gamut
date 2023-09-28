@@ -59,6 +59,9 @@ const anchorVariants = variant({
       display: 'inline',
       whiteSpace: 'initial',
       textDecoration: 'underline',
+      [ButtonSelectors.FOCUS_VISIBLE]: {
+        textDecoration: 'underline',
+      },
     },
     interface: {
       color: 'text',
