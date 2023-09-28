@@ -32,7 +32,7 @@ export const TargetContainer = styled.div(
     [TargetSelectors.OUTLINE]: {
       content: "''",
       position: 'absolute',
-      inset: -4,
+      inset: -2,
       borderRadius: '4px',
       border: 2,
       borderColor: 'primary',
