@@ -12,6 +12,11 @@ import LinkTo from '@storybook/addon-links/react';
       'Badges are generally used as a standard way to highlight a short piece of text, likely a single word.',
     status: 'updating',
     source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?type=design&node-id=60-3&mode=design&t=hPpagoOgF1gcAb05-0',
+    },
   }}
 />
 
@@ -30,21 +35,21 @@ export const BadgeTemplate = (args) => (
 
 ## Variants
 
-We support the following variants of Badges: `default`, `grey`, `stroke`, `strokeContrast`, and `yellow`.
+We support the following variants of Badges: `primary`, `secondary`, `tertiary`, `strokeContrast`, and `accent`.
 
-- **Greyscale Badges** provide different levels of priority for the `default` (primary), `grey` (secondary), and `stroke` (tertiary) variants
+- **Greyscale Badges** provide different levels of priority for the `primary`, `secondary`, and `tertiary` variants
 - **Accent colors** like `yellow` are meant to be used sparingly so they can stand out against other elements.
 
 Additional variants should designed with both <LinkTo kind='Foundations/ColorMode'>ColorModes</LinkTo> in mind. For example, the `yellow` and `grey` variants work against both light and dark backgrounds, while the `default` and `stroke` variants both adapt to their ColorMode (which you can check out by using the toolbar at the top of this page!)
 
 <Canvas>
-  <Story name="default" args={{ children: 'default' }}>
+  <Story name="primary" args={{ children: 'primary' }}>
     {BadgeTemplate.bind({})}
   </Story>
-  <Story name="grey" args={{ variant: 'grey' }}>
+  <Story name="secondary" args={{ variant: 'secondary' }}>
     {BadgeTemplate.bind({})}
   </Story>
-  <Story name="stroke" args={{ variant: 'stroke' }}>
+  <Story name="tertiary" args={{ variant: 'tertiary' }}>
     {BadgeTemplate.bind({})}
   </Story>
   <Story name="strokeContrast" args={{ variant: 'strokeContrast' }}>

@@ -3,7 +3,7 @@ import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 const colorVariants = variant({
-  defaultVariant: 'default',
+  defaultVariant: 'primary',
   base: {
     alignItems: 'center',
     borderRadius: '40px',
@@ -16,19 +16,19 @@ const colorVariants = variant({
     whiteSpace: 'nowrap',
   },
   variants: {
-    default: {
+    primary: {
       bg: `text`,
       textColor: 'background',
     },
-    yellow: {
+    accent: {
       bg: 'yellow',
       textColor: 'navy',
     },
-    grey: {
+    secondary: {
       bg: `text-disabled`,
       textColor: 'white',
     },
-    stroke: {
+    tertiary: {
       border: 1,
       borderColor: 'text-disabled',
       color: 'text-disabled',
