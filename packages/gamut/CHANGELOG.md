@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.7.0...@codecademy/gamut@55.7.1) (2023-09-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [55.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.6.2...@codecademy/gamut@55.7.0) (2023-09-27)
+
+### Features
+
+- Rename accordion to deprecated ([80ba1dc](https://github.com/Codecademy/gamut/commit/80ba1dc1c2265e50bb81efbc63ba0fe090302d88))
+
+### [55.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.6.1...@codecademy/gamut@55.6.2) (2023-09-27)
+
+### Bug Fixes
+
+- **Input:** use activatedStyle from props when value is provided ([59d4513](https://github.com/Codecademy/gamut/commit/59d4513aa9345aec550f75f8a51a38a4e08bb74e))
+
+### [55.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.6.0...@codecademy/gamut@55.6.1) (2023-09-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [55.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.5.0...@codecademy/gamut@55.6.0) (2023-09-25)
+
+### Features
+
+- **Tooltip:** add aria-described by to floating tooltip ([6caabd8](https://github.com/Codecademy/gamut/commit/6caabd8969ef3d4b32d3d25ecc86490be25b1eca))
+
 ## [55.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.4.2...@codecademy/gamut@55.5.0) (2023-09-21)
 
 ### Features

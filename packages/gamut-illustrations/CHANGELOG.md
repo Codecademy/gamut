@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.40.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.39.2...@codecademy/gamut-illustrations@0.40.0) (2023-09-25)
+
+### Features
+
+- **Illustrations:** add MoneyBack illustration ([3d15812](https://github.com/Codecademy/gamut/commit/3d158128d323002d5a0b0bee02f6a7eb47a67d98))
+
 ### [0.39.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.39.1...@codecademy/gamut-illustrations@0.39.2) (2023-09-14)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations

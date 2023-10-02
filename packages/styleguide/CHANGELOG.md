@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.0...@codecademy/styleguide@66.5.1) (2023-09-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [66.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.4.2...@codecademy/styleguide@66.5.0) (2023-09-27)
+
+### Features
+
+- Rename accordion to deprecated ([80ba1dc](https://github.com/Codecademy/gamut/commit/80ba1dc1c2265e50bb81efbc63ba0fe090302d88))
+
+### [66.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.4.1...@codecademy/styleguide@66.4.2) (2023-09-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.4.0...@codecademy/styleguide@66.4.1) (2023-09-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [66.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.3.0...@codecademy/styleguide@66.4.0) (2023-09-25)
+
+### Features
+
+- **Tooltip:** add aria-described by to floating tooltip ([6caabd8](https://github.com/Codecademy/gamut/commit/6caabd8969ef3d4b32d3d25ecc86490be25b1eca))
+
 ## [66.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.2.3...@codecademy/styleguide@66.3.0) (2023-09-21)
 
 ### Features
