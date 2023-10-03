@@ -1,7 +1,6 @@
 import {
   styledOptions,
   system,
-  theme,
   transitionConcat,
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
