@@ -48,22 +48,27 @@ const anchorVariants = variant({
   variants: {
     standard: {
       color: 'primary',
+      fontWeight: 'bold',
+      WebkitFontSmoothing: 'antialiased',
+      MozOsxFontSmoothing: 'grayscale',
       [ButtonSelectors.HOVER]: {
         textDecoration: 'underline',
       },
       [ButtonSelectors.FOCUS_VISIBLE]: {
         color: 'text',
+        WebkitFontSmoothing: 'antialiased',
+        MozOsxFontSmoothing: 'grayscale',
       },
     },
     inline: {
       display: 'inline',
       whiteSpace: 'initial',
       textDecoration: 'underline',
-      [ButtonSelectors.OUTLINE]: {
-        display: 'none',
+      [ButtonSelectors.HOVER]: {
+        color: 'primary',
       },
       [ButtonSelectors.FOCUS_VISIBLE]: {
-        outline: 'currentColor auto 4px',
+        color: 'primary',
         textDecoration: 'underline',
       },
     },
