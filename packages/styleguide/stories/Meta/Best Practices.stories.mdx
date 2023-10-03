@@ -1,3 +1,4 @@
+import { Box, Text } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta } from '@storybook/addon-docs/blocks';
 
@@ -69,4 +70,183 @@ const UtilityBox = styled.div(
 );
 
 <UtilityBox disabled center />;
+```
+
+<Box bg="navy-400" border={1} color="white" mx={16} p={16}>
+  <Text smooth>
+    Share your css methods easily with <code>StyleProps</code> from
+    <code>gamut-styles</code>!
+  </Text>
+</Box>
+
+```tsx
+import { states } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
+import styled from '@emotion/styled';
+import React from 'react';
+
+const someWrapperStates = states({
+  absolute: { position: 'absolute', left: 'calc(50% - 85px)' },
+  danger: { color: 'text', bg: 'danger' },
+});
+
+const SomeWrapper = styled.div(someWrapperStates);
+
+export interface CoolNumberComponentProps
+  extends StyleProps<typeof someWrapperStates> {
+  coolNumber: number;
+  anotherCoolNumber: number;
+}
+
+export const CoolNumberComponent: React.FC<CoolNumberComponentProps> = ({
+  coolNumber,
+  anotherCoolNumber,
+  ...rest //where your state props are!
+}) => <SomeWrapper {...rest} />;
+```
+
+# System Props
+
+System props are a core part of our new approach to dynamic and customized styling. Where writing custom styles is painful, system props are here to make it painless.
+
+```tsx
+import { Box } from '@codecademy/gamut';
+
+const MyContainer = ({ children }) => (
+  <Box paddingX={[16, 32, 64, , 96]}>{children}</Box>
+);
+
+const MyOtherContainer = ({ children }) => (
+  <Box
+    mb={40}
+    px={{ _: 0, md: 64 }}
+    display={{ _: 'block', md: 'flex' }}
+    width={{ _: 'initial', md: `${pxRem(420)}` }}
+  >
+    {children}
+  </Box>
+);
+```
+
+**Intellisense + Typesafety** - Many system props are tied to specific design token scales. You can be sure that you are using the correct tokens between contexts. All props will autosuggest possible values for the scale that you are in.
+
+**Responsive Syntax** - [**Docs**](https://gamut.codecademy.com/storybook/?path=/docs/foundations-system-responsive-properties--page) All system props accept 2 responsive syntaxes for easily creating responsive layouts. System prop media queries are mobile first (Greater Than or Equal To).
+
+**The typings behind the scenes:**
+
+```tsx
+type MediaQueryMap<T> = {
+  _?: T;
+  xs?: T;
+  sm?: T;
+  md?: T;
+  lg?: T;
+  xl?: T;
+};
+
+type MediaQueryArray<T> = [
+  T?, // base
+  T?, // xs
+  T?, // sm
+  T?, // md
+  T?, // lg
+  T? // xl
+];
+
+type SystemProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
+```
+
+**Usage:**
+
+```tsx
+import { Box } from '@codecademy/gamut';
+
+// Object Syntax
+<Box width={{ _: "100%", sm: "50%" }} />
+
+// Array Syntax
+<Box width={["100%", ,"50%"]} />
+```
+
+<Box bg="navy-400" border={1} color="white" mx={16} p={16} mb={32}>
+  <Text smooth>
+    <Text as="strong">Tip:</Text> If you wish to skip a breakpoint in using the
+    array shorthand you may specify undefined at the index.
+  </Text>
+</Box>
+
+## Real world use cases
+
+**Mobile / Desktop specific content**
+
+```tsx
+import { Box } from '@codecademy/gamut';
+
+const App = () => (
+  <main>
+    <h1>Title</h1>
+    <Box display={{ _: 'none', sm: 'block' }}>Desktop Only Content</Box>
+    <Box display={{ _: 'block', sm: 'none' }}>Mobile Only Content</Box>
+  </main>
+);
+```
+
+**Adaptive Layouts** - 3 columns ⇒ 2 columns
+
+```tsx
+import { GridBox } from '@codecademy/gamut';
+
+const SomeCoolLayout = ({ children }) => (
+  <GridBox gridTemplateColumns={['1fr 1fr', , '1fr 1fr 1fr']}>
+    {children}
+  </GridBox>
+);
+```
+
+**Design Token Access** - Responsively accessing tokens by key.
+
+```tsx
+const CardLikeThing = ({ children }) => (
+  <Box
+    backgroundColor={{ _: 'background', md: 'text' }}
+    textColor={{ _: 'text', md: 'background' }}
+  >
+    {children}
+  </Box>
+);
+
+const Content = ({ children }) => (
+  <Box padding={{ _: 16, md: 32 }}>{children}</Box>
+);
+```
+
+# ❌ Nested Selectors
+
+Nested selectors can cause a huge amount of side effects unwittingly and make it very hard to maintain consistent behavior while making updates. We politely ask (and will shortly lint) that you refrain from using:
+
+- **Tag Selectors** - `*` `div` `p` `span`
+- **Component Selectors (From Gamut)** - EG: `Box`
+
+```tsx
+//❌ Don't do this❌
+const App = styled.main`
+  * {
+		box-sizing: content-box;
+  }
+`;
+
+//❌ Don't do this❌
+const App = styled.main`
+  display: flex;
+
+  ${Box} {
+    align-self: start;
+  }
+`;
+
+// ✅ Do this ✅
+const App = ({ children }) => (
+ <FlexBox as="main">
+   <Box alignSelf="start">{children}</Box>
+</FlexBox>
 ```
