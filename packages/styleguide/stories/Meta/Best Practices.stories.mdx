@@ -1,0 +1,72 @@
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  parameters={{
+    subtitle: 'Current Best Practices for using the Gamut Design System',
+    status: 'current',
+  }}
+/>
+
+For best practices for writing for specific components, like alerts, errors, or confirmation dialogs, check out the individual component pages.
+
+# Variants + ColorMode
+
+The way we access design tokens is becoming increasingly important as we move away from a single theme and towards a system of themes. The best way to access design tokens is through our semantic colors, which are are tied intrinsically to ColorModes This means that when you use a semantic color, you are guaranteed to get the right color for the right theme. Using variants and and its related utilities will also guarantee you have access to the right tokens, typings, and _state_ going forward. It is also [safer](https://gamut.codecademy.com/?path=/docs/foundations-system-compose--page)!
+
+Think of our semantic color names as a variable referencing _what the primary use of the color is within each color mode_. For example - an icon set to the `text` color will match _the primary color of text within that color mode._
+
+For specific semantic name to color, please see the [ColorMode](https://gamut.codecademy.com/?path=/docs/foundations-colormode--page) documentation.
+
+### Use the utility functions from `gamut-styles` with ColorMode semantic color names + shorthands
+
+```tsx
+import { css, states, variant } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+
+// Single value
+const Box = styled.div(css({ p: 4 }));
+
+// Mutiple values
+const OtherCoolThing = styled.div(css({ color: 'primary', p: 4 }));
+
+// Need some variants?
+const Anchor = styled.a(
+  variant({
+    base: { p: 4 },
+    defaultVariant: 'interface',
+    variants: {
+      interface: {
+        color: 'text',
+        '&:hover': {
+          color: 'text-accent',
+        },
+      },
+      inline: {
+        color: 'primary',
+        '&:hover': {
+          color: 'secondary',
+        },
+      },
+    },
+  })
+);
+
+// Need some boolean states?
+const UtilityBox = styled.div(
+  states({
+    base: { mx: 4, my: 8, p: 16 },
+    disabled: {
+      bg: 'background-disabled',
+      color: 'text-disabled',
+    },
+    center: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  })
+);
+
+<UtilityBox disabled center />;
+```
