@@ -55,7 +55,6 @@ const anchorVariants = variant({
         textDecoration: 'underline',
       },
       [ButtonSelectors.FOCUS_VISIBLE]: {
-        color: 'text',
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',
       },
