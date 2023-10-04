@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.7.1...@codecademy/gamut@55.7.2) (2023-10-03)
+
+### Bug Fixes
+
+- **Toggle:** add border to dark mode circle ([ac407ff](https://github.com/Codecademy/gamut/commit/ac407ff145a7270b96257a666cedc919a054aed8))
+
 ### [55.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.7.0...@codecademy/gamut@55.7.1) (2023-09-27)
 
 **Note:** Version bump only for package @codecademy/gamut
