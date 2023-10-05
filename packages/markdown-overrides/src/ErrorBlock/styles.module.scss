@@ -1,9 +1,0 @@
-@import "~@codecademy/gamut-styles/utils";
-
-// Importants are necessary and safe here
-// to override default styles for markdown code blocks
-.errorBlock {
-  padding: 1rem !important;
-  background-color: $color-black !important;
-  color: $color-red-500 !important;
-}

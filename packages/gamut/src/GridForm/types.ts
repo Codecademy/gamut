@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 import { RegisterOptions, UseFormReturn } from 'react-hook-form';
 
+import { FormToolTipProps, TextAreaProps } from '../Form';
 import { CheckboxPaddingProps } from '../Form/types';
 import { ColumnProps } from '../Layout';
-import { ToolTipProps } from '../ToolTip';
 import { TextProps } from '../Typography/Text';
 
 export interface BaseFormInputProps {
@@ -28,7 +28,7 @@ export type BaseFormField<Value> = {
    */
   id?: string;
 
-  tooltip?: ToolTipProps;
+  tooltip?: FormToolTipProps;
 
   name: string;
   onUpdate?: (value: Value) => void;
@@ -115,12 +115,12 @@ export type GridFormFileField = BaseFormField<FileList> & {
   type: 'file';
 };
 
-export type GridFormTextAreaField = BaseFormField<string> & {
-  label: React.ReactNode;
-  placeholder?: string;
-  validation?: RegisterOptions;
-  type: 'textarea';
-};
+export type GridFormTextAreaField = BaseFormField<string> &
+  Pick<TextAreaProps, 'rows' | 'placeholder'> & {
+    label: React.ReactNode;
+    validation?: RegisterOptions;
+    type: 'textarea';
+  };
 
 type HiddenField = Omit<BaseFormField<any>, 'size' | 'rowspan'>;
 
@@ -169,9 +169,3 @@ export type GridFormSectionProps = GridFormSectionTitleBaseProps & {
 };
 
 export type GridFormFieldsProps = GridFormField | GridFormSectionProps;
-
-export type GridFormSectionBreakTypes = 'none' | 'default';
-
-export interface GridFormSectionBreakProps {
-  breakType?: GridFormSectionBreakTypes;
-}

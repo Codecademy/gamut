@@ -1,7 +1,8 @@
 import { ColorModes } from '@codecademy/gamut-styles';
-import React, { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
+import * as React from 'react';
 
-import { Box } from '../../Box';
+import { GridBox } from '../../Box';
 import { CTAButton, FillButton, TextButton } from '../../Button';
 import { ButtonProps } from '../../Button/shared';
 import { SubmitButton, SubmitButtonProps } from '../../ConnectedForm';
@@ -48,10 +49,11 @@ export const GridFormButtons: React.FC<
 > = ({ type = 'fill', ...props }) => {
   return (
     <Column size={props.size}>
-      <Box
+      <GridBox
         mb={8}
         alignSelf="center"
         justifySelf={positions[props.position || 'left']}
+        gridTemplateColumns={props.cancel ? 'auto auto' : undefined}
       >
         {props.cancel && (
           <TextButton {...props.cancel} mr={32} data-testid="cancel-button" />
@@ -64,7 +66,7 @@ export const GridFormButtons: React.FC<
         >
           {props.contents}
         </SubmitButton>
-      </Box>
+      </GridBox>
     </Column>
   );
 };

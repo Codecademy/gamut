@@ -1,14 +1,19 @@
 {
+  "name": "gamut-icons",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-icons/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "outputs": ["./dist", "./src/icons"],
+      "outputs": [
+        "{projectRoot}/dist",
+        "{projectRoot}/src/icons",
+        "{projectRoot}/dist",
+        "{projectRoot}/src/icons"
+      ],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/gamut-icons",
-        "outputPath": ["./dist", "./src/icons"],
         "commands": [
           "rm -rf ./dist",
           "rm -rf ./src/icons",
@@ -22,8 +27,8 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/gamut-icons"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/gamut-icons"],
       "options": {
         "jestConfig": "packages/gamut-icons/jest.config.ts",
         "passWithNoTests": true

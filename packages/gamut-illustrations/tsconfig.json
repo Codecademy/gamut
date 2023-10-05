@@ -3,8 +3,9 @@
   "include": ["../../typings/*.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],
   "compilerOptions": {
     "declaration": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "outDir": "./dist",
     "rootDir": "./src"
-  }
+  },
+  "exclude": ["jest.config.ts"]
 }

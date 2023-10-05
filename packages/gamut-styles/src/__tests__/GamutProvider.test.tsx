@@ -1,7 +1,7 @@
+import { setupRtl } from '@codecademy/gamut-tests';
 import createCache from '@emotion/cache';
-import { Global, ThemeContext } from '@emotion/react';
-import { setupEnzyme } from 'component-test-setup';
-import React from 'react';
+import { ThemeContext } from '@emotion/react';
+import { screen } from '@testing-library/react';
 
 import { createEmotionCache } from '../cache';
 import { GamutProvider } from '../GamutProvider';
@@ -12,7 +12,7 @@ jest.mock('../cache', () => {
   return { createEmotionCache: cacheMock };
 });
 
-const renderWrapper = setupEnzyme(GamutProvider, { theme });
+const renderView = setupRtl(GamutProvider, { theme });
 
 describe(GamutProvider, () => {
   beforeEach(() => {
@@ -20,29 +20,35 @@ describe(GamutProvider, () => {
   });
 
   it('renders with a cache by default', () => {
-    const { wrapper } = renderWrapper();
+    renderView();
 
-    expect(wrapper).toBeDefined();
     expect(createEmotionCache).toHaveBeenCalled();
   });
 
   it('does not create a cache when configured not to', () => {
-    renderWrapper({ useCache: false });
+    renderView({ useCache: false });
 
     expect(createEmotionCache).not.toHaveBeenCalled();
   });
   it('renders global styles', () => {
-    const { wrapper } = renderWrapper();
+    renderView();
+    const allStyles = Array.from(
+      document.querySelectorAll('style')
+    ).filter((el) => Boolean(el.getAttribute('data-emotion')));
 
-    expect(wrapper.find(Global).length).toBe(4);
+    expect(allStyles.length).toBeGreaterThan(0);
   });
   it('does not render global styles when configured', () => {
-    const { wrapper } = renderWrapper({ useGlobals: false });
+    renderView({ useGlobals: false });
+    const allStyles = Array.from(
+      document.querySelectorAll('style')
+    ).filter((el) => Boolean(el.getAttribute('data-emotion')));
 
-    expect(wrapper.find(Global).length).toBe(0);
+    expect(allStyles.length).toBe(0);
   });
+
   it('wraps all elements in a ThemeProvider', () => {
-    const { wrapper } = renderWrapper({
+    renderView({
       children: (
         <ThemeContext.Consumer>
           {(value) => <div>{JSON.stringify(value)}</div>}
@@ -50,27 +56,37 @@ describe(GamutProvider, () => {
       ),
     });
 
-    expect(wrapper.find('div').text()).toBe(JSON.stringify(theme));
+    screen.getByText(JSON.stringify(theme));
   });
   it('it can have another GamutProvider as a child with creating multiple caches or globals', () => {
-    const { wrapper } = renderWrapper({
+    renderView({
+      useGlobals: false,
       children: <GamutProvider theme={theme} />,
     });
 
+    const allStyles = Array.from(
+      document.querySelectorAll('style')
+    ).filter((el) => Boolean(el.getAttribute('data-emotion')));
+
     expect(createEmotionCache).toHaveBeenCalledTimes(1);
-    expect(wrapper.find(Global).length).toEqual(4);
+    expect(allStyles.length).toBeGreaterThan(0);
   });
+
   it('can accept a custom cache', () => {
-    renderWrapper({ cache: createCache({ key: 'gamut' }) });
+    renderView({ cache: createCache({ key: 'gamut' }) });
 
     expect(createEmotionCache).toHaveBeenCalledTimes(0);
   });
+
   it('can render custom variables', () => {
-    const { wrapper } = renderWrapper({
+    renderView({
       variables: { cool: { '--cool': 'blue' } },
     });
 
-    const globals = wrapper.find(Global);
-    expect(globals.length).toBe(5);
+    const allStyles = Array.from(
+      document.querySelectorAll('style')
+    ).filter((el) => el.innerHTML.includes('--cool'));
+
+    expect(allStyles.length).toBe(1);
   });
 });

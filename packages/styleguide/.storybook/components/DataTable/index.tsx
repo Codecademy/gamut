@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Table, Row, Col, ColProps } from './elements';
 
 interface Row {

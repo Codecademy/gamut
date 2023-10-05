@@ -1,13 +1,8 @@
 import { system } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import * as React from 'react';
 import {
   useIsomorphicLayoutEffect,
   useWindowScroll,
@@ -79,7 +74,8 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
    * Without this check it would toggle closed then back open immediately.
    */
   const handleClickOutside = useCallback(
-    (e) => !targetRef.current?.contains(e.target as Node) && onRequestClose?.(),
+    (e: MouseEvent | TouchEvent) =>
+      !targetRef.current?.contains(e.target as Node) && onRequestClose?.(),
     [onRequestClose, targetRef]
   );
 

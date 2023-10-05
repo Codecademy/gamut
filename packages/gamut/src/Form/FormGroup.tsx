@@ -1,7 +1,8 @@
 import { variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import React, { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
+import * as React from 'react';
 
 import { Box } from '../Box';
 import { ToolTipProps } from '../ToolTip';
@@ -47,16 +48,19 @@ const formGroupSpacing = variant({
   },
 });
 
-const FormGroupContainer = styled(Box)<StyleProps<typeof formGroupSpacing>>`
+const StyledFormGroupContainer = styled(Box)<
+  StyleProps<typeof formGroupSpacing>
+>`
   ${formGroupSpacing}
   position: relative;
   width: 100%;
   height: max-content;
 `;
 
-FormGroupContainer.defaultProps = {
-  pb: 8,
-  mb: 24,
+const FormGroupContainer: React.FC<
+  ComponentProps<typeof StyledFormGroupContainer>
+> = ({ pb = 8, mb = 24, ...rest }) => {
+  return <StyledFormGroupContainer pb={pb} mb={mb} {...rest} />;
 };
 
 export const FormGroup: React.FC<FormGroupProps> = ({
@@ -95,7 +99,11 @@ export const FormGroup: React.FC<FormGroupProps> = ({
       {labelComponent}
       {descriptionComponent}
       {children}
-      {error && <FormError aria-live="polite">{error}</FormError>}
+      {error && (
+        <FormError aria-live="polite" role="alert">
+          {error}
+        </FormError>
+      )}
     </FormGroupContainer>
   );
 };

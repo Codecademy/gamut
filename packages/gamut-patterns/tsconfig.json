@@ -9,8 +9,9 @@
   "compilerOptions": {
     "declaration": true,
     "strictFunctionTypes": false,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "outDir": "./dist",
     "rootDir": "./src"
-  }
+  },
+  "exclude": ["jest.config.ts"]
 }

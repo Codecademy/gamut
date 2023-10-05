@@ -1,5 +1,4 @@
 import { css, Global } from '@emotion/react';
-import React from 'react';
 
 import { coreTheme as theme } from '../themes';
 

@@ -1,6 +1,7 @@
 import { FillButton, GridBox, Toaster } from '@codecademy/gamut';
 import { Target } from '@codecademy/gamut-illustrations';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 export const exampleToasts = [
   {

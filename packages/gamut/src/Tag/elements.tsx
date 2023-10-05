@@ -11,32 +11,8 @@ import styled from '@emotion/styled';
 import { Box } from '../Box';
 import { ButtonBase } from '../ButtonBase';
 import { Selectors } from '../ButtonBase/ButtonBase';
+import { colorVariants, dismissSharedStyles, tagBorderRadius } from './styles';
 import { BaseTagProps } from './types';
-
-const tagBorderRadius = '4px';
-
-export const colorVariants = variant({
-  defaultVariant: 'default',
-  base: {
-    alignItems: 'center',
-    borderRadius: tagBorderRadius,
-    display: 'flex',
-    height: '24px',
-    justifyContent: 'center',
-    width: 'fit-content',
-    maxWidth: '100%',
-  },
-  variants: {
-    default: {
-      bg: `background-current`,
-      color: 'text',
-    },
-    grey: {
-      bg: `navy-500`,
-      color: 'white',
-    },
-  },
-});
 
 export const tagProps = variance.compose(
   system.space,
@@ -70,15 +46,11 @@ export const DismissButton = styled(ButtonBase)(
   variant({
     defaultVariant: 'default',
     base: {
-      alignItems: 'center',
+      ...dismissSharedStyles,
       border: 1,
       borderColor: 'transparent',
       borderRadiusRight: tagBorderRadius,
       color: 'currentColor',
-      display: 'flex',
-      height: '100%',
-      justifyContent: 'center',
-      minWidth: '24px',
     },
     variants: {
       default: {

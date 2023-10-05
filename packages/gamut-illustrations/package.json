@@ -1,43 +1,35 @@
 {
+  "name": "@codecademy/gamut-illustrations",
+  "description": "Illustrations library for Codecademy",
+  "version": "0.40.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
-  "bugs": {
-    "url": "https://github.com/Codecademy/gamut/issues"
-  },
+  "bugs": "https://github.com/Codecademy/gamut/issues",
   "dependencies": {
-    "@codecademy/gamut-styles": "^14.0.4",
+    "@codecademy/gamut-styles": "16.1.4",
     "classnames": "^2.2.5"
   },
-  "description": "Illustrations library for Codecademy",
-  "devDependencies": {
-    "@testing-library/react": "^12.1.2"
-  },
-  "homepage": "https://github.com/Codecademy/gamut#readme",
-  "name": "@codecademy/gamut-illustrations",
-  "module": "./dist/index.js",
-  "main": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "homepage": "https://github.com/Codecademy/gamut#readme",
   "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "react": ">=17.0.2",
-    "react-dom": ">=17.0.2"
+    "react": "^17.0.2 || ^18.2.0",
+    "react-dom": "^17.0.2 || ^18.2.0"
   },
   "publishConfig": {
     "access": "public"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/Codecademy/gamut.git"
-  },
+  "repository": "Codecademy/gamut.git",
   "scripts": {
     "build": "nx build @codecademy/gamut-illustrations"
   },
   "sideEffects": [
     "dist/**/[A-Z]**/[A-Z]*.js",
     "dist/**/[A-Z]**/index.js"
-  ],
-  "version": "0.31.0"
+  ]
 }

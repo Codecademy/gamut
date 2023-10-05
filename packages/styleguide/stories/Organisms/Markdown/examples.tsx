@@ -1,24 +1,15 @@
-import { HeadingDeprecated, TextDeprecated } from '@codecademy/gamut';
-import React from 'react';
+import { Text, TextProps } from '@codecademy/gamut';
 
 export const elements = {
   CodeBlock: {
-    component: (props: any) => (
-      <TextDeprecated style={{ color: 'darkblue' }} {...props} />
-    ),
+    component: (props: TextProps) => <Text {...props} />,
   },
   CustomElement: {
     component: ({ title }: { title: string }) => {
       return (
-        <HeadingDeprecated
-          as="h3"
-          fontSize="md"
-          style={{
-            color: 'rebeccapurple',
-          }}
-        >
+        <Text as="h3" color="primary" fontSize={26} m={24}>
           {title}
-        </HeadingDeprecated>
+        </Text>
       );
     },
     allowedAttributes: ['title'],
@@ -27,8 +18,8 @@ export const elements = {
 
 export const tags = {
   h3: {
-    component: (props: any) => (
-      <HeadingDeprecated {...props} as="h3" size="xs" />
+    component: (props: TextProps) => (
+      <Text {...props} as="h3" fontSize={20} m={16} />
     ),
   },
 };

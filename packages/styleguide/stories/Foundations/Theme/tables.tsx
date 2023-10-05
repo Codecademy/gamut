@@ -6,7 +6,6 @@ import {
   theme,
   trueColors,
 } from '@codecademy/gamut-styles';
-import React from 'react';
 
 import { Code, ColorScale } from '~styleguide/blocks';
 
@@ -100,8 +99,11 @@ export const color = {
   ],
 };
 
+const { navy, white, ...solidSwatches } = coreSwatches;
+const rgbaSwatches = { navy, white };
+
 export const swatch = {
-  rows: Object.entries(coreSwatches).map(([id, value]) => ({
+  rows: Object.entries(solidSwatches).map(([id, value]) => ({
     id,
     hexes: value,
   })),
@@ -109,11 +111,13 @@ export const swatch = {
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ id, hexes }: any) => (
-        <Code>
-          theme.colors[`{id}-{Object.keys(hexes)[0]}`]
-        </Code>
-      ),
+      render: ({ id, hexes }: any) => {
+        return (
+          <Code>
+            theme.colors[`{id}-{Object.keys(hexes)[0]}`]
+          </Code>
+        );
+      },
     },
     {
       key: 'swatch',
@@ -122,6 +126,48 @@ export const swatch = {
       render: ({ hexes }: { hexes: Record<string, string> }) => (
         <ColorScale colors={hexes} />
       ),
+    },
+  ],
+};
+
+export const rgbaSwatch = {
+  rows: Object.entries(rgbaSwatches).map(([id, value]) => ({
+    id,
+    hexes: value,
+  })),
+  columns: [
+    PROP_COLUMN,
+    {
+      ...PATH_COLUMN,
+      render: ({ id, hexes }: any) => {
+        return (
+          <Code>
+            theme.colors[`{id}-{Object.keys(hexes)[0]}`]
+          </Code>
+        );
+      },
+    },
+    {
+      key: 'swatch',
+      name: 'Swatch',
+      size: 'fill',
+      render: ({ hexes }: { hexes: Record<string, string> }) => {
+        const {
+          100: first,
+          200: second,
+          300: third,
+          400: fourth,
+          ...rest
+        } = hexes;
+
+        const firstHexes = { 100: first, 200: second, 300: third, 400: fourth };
+        return (
+          <>
+            <ColorScale colors={firstHexes} />
+            <ColorScale colors={rest} />
+          </>
+        );
+      },
     },
   ],
 };

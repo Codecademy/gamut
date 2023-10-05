@@ -1,8 +1,7 @@
-import { setupEnzyme } from '@codecademy/gamut-tests';
+import { setupRtl } from '@codecademy/gamut-tests';
 import hookform, { FormState } from 'react-hook-form';
 
-import { CTAButton, FillButton } from '../../Button';
-import { Spinner } from '../../Spinner';
+import { CTAButton } from '../../Button';
 import { SubmitButton } from '../SubmitButton';
 
 jest.mock('react-hook-form', () => ({
@@ -25,32 +24,36 @@ mockedHook.mockImplementation(() => ({
   formState: { isSubmitting: false, isValidating: false, isValid: false },
 }));
 
-const renderWrapper = setupEnzyme(SubmitButton, {});
+const renderView = setupRtl(SubmitButton, {});
 
 describe('SubmitButton', () => {
   it('renders as a FillButton by default', () => {
-    const { wrapper } = renderWrapper();
+    const { view } = renderView();
 
-    expect(wrapper.find(FillButton).length).toBe(1);
+    const button = view.getByRole('button');
+
+    expect(button).toHaveStyle({ borderRadius: '4px' });
   });
 
   it('renders as a CTAButton when configured', () => {
-    const { wrapper } = renderWrapper({ as: CTAButton });
+    const { view } = renderView({ as: CTAButton });
 
-    expect(wrapper.find(CTAButton).length).toBe(1);
+    const button = view.getByRole('button');
+
+    expect(button).toHaveStyle({ borderRadius: '2px' });
   });
 
   it.each([
-    [{ isValid: false }, true],
-    [{ isValidating: true }, true],
-    [{ isSubmitting: true }, true],
-  ])('disabled states (%o)', (formState: FormState<{}>, expected: boolean) => {
+    [{ isValid: false }],
+    [{ isValidating: true }],
+    [{ isSubmitting: true }],
+  ])('disabled states (%o)', (formState: FormState<{}>) => {
     mockFormState(formState);
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       disabled: ({ isValidating, isSubmitting, isValid }) =>
         isValidating || isSubmitting || !isValid,
     });
-    expect(wrapper.find('button').prop('disabled')).toBe(expected);
+    expect(view.getByRole('button')).toBeDisabled();
   });
   it.each([
     [{}, 0],
@@ -58,9 +61,10 @@ describe('SubmitButton', () => {
     [{ isSubmitting: true }, 1],
   ])('loading states (%o)', (formState: FormState<{}>, expected: number) => {
     mockFormState(formState);
-    const { wrapper } = renderWrapper({
+    const { view } = renderView({
       loading: ({ isValidating, isSubmitting }) => isValidating || isSubmitting,
     });
-    expect(wrapper.find(Spinner).length).toBe(expected);
+
+    expect(view.queryAllByTitle('Spinner')).toHaveLength(expected);
   });
 });

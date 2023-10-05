@@ -1,8 +1,10 @@
 import { PlayIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 import ReactPlayer from 'react-player';
 
+import { useIsMounted } from '../utils';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
@@ -50,26 +52,29 @@ export const Video: React.FC<VideoProps> = ({
   onPlay,
 }) => {
   const [loading, setLoading] = useState(true);
+  const isMounted = useIsMounted();
   return (
     <div
       className={cx(styles.videoWrapper, loading && styles.loading, className)}
     >
-      <ReactPlayer
-        url={videoUrl}
-        light={placeholderImage}
-        title={videoTitle}
-        playing={autoplay}
-        className={styles.iframe}
-        controls={controls === undefined ? true : controls}
-        loop={loop}
-        muted={muted}
-        playIcon={<OverlayPlayButton videoTitle={videoTitle} />}
-        onReady={(player: ReactPlayerWithWrapper) => {
-          onReady?.(player);
-          setLoading(false);
-        }}
-        onPlay={onPlay}
-      />
+      {isMounted ? (
+        <ReactPlayer
+          url={videoUrl}
+          light={placeholderImage}
+          title={videoTitle}
+          playing={autoplay}
+          className={styles.iframe}
+          controls={controls === undefined ? true : controls}
+          loop={loop}
+          muted={muted}
+          playIcon={<OverlayPlayButton videoTitle={videoTitle} />}
+          onReady={(player: ReactPlayerWithWrapper) => {
+            onReady?.(player);
+            setLoading(false);
+          }}
+          onPlay={onPlay}
+        />
+      ) : null}
     </div>
   );
 };

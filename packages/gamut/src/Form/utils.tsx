@@ -1,8 +1,7 @@
 import { each, isObject } from 'lodash';
-import React from 'react';
 
 import {
-  IconOption,
+  ExtendedOption,
   OptionStrict,
   SelectDropdownOptions,
   SelectDropdownSizes,
@@ -11,6 +10,7 @@ import {
 export interface SelectOptionBase extends OptionStrict, SelectDropdownSizes {
   key?: string;
 }
+
 export interface ParseSelectOptionProps extends SelectDropdownSizes {
   id?: string | number;
   options?: SelectDropdownOptions;
@@ -40,7 +40,7 @@ export const parseOptions = ({
 }: ParseOptionProps) => {
   const parsedOptions: SelectOptionBase[] = [];
   if (Array.isArray(options)) {
-    options.forEach((value: string | IconOption) => {
+    options.forEach((value: string | ExtendedOption) => {
       if (isObject(value)) {
         const key = id ? `${id}-${value?.value}` : value?.value;
         parsedOptions.push({ ...value, key, size });

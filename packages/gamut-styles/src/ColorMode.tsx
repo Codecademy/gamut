@@ -7,14 +7,17 @@ import {
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { mapValues, pick } from 'lodash';
-import React, {
+import {
   ComponentProps,
+  createContext,
   forwardRef,
+  useContext,
   useEffect,
   useMemo,
   useState,
 } from 'react';
 
+import { theme as GamutTheme } from '.';
 import {
   background,
   border,
@@ -63,14 +66,40 @@ export const modeColorProps = ({
   ).variables;
 };
 
+interface BackgroundCurrentContextInterface {
+  'background-current'?: keyof typeof GamutTheme.colors;
+}
+
+const BackgroundCurrentContext = createContext<BackgroundCurrentContextInterface>(
+  {
+    'background-current': undefined,
+  }
+);
+
 export function useColorModes(): [
   ColorModes,
   ColorModeShape,
   ColorModeConfig,
   (color: Colors) => string
 ] {
+  const bgCurrent = useContext(BackgroundCurrentContext);
   const { mode, modes, _getColorValue: getColorValue } = useTheme() || {};
-  return [mode, modes?.[mode], modes, getColorValue];
+  const modesCopy = { ...modes };
+
+  if (
+    bgCurrent['background-current'] &&
+    modesCopy[mode]['background-current'] !== bgCurrent['background-current']
+  ) {
+    /* sets the color to the copy of our modes object, and casts the type as the default color values for background-current.
+    we could potentially alter the Merge type utility function from createTheme, but since 'background-current' is the only exception to the type-merging rule  and this is the only place we override, this seems to be a more straightforward + lower-risk solution.
+    */
+
+    modesCopy[mode]['background-current'] = bgCurrent['background-current'] as
+      | 'white'
+      | 'navy-800';
+  }
+
+  return [mode, modesCopy?.[mode], modes, getColorValue];
 }
 
 export function useCurrentMode(mode?: ColorModes) {
@@ -124,6 +153,15 @@ export const ColorMode = forwardRef<
   const theme = useTheme();
   const { modes, mode: active, colors } = theme;
   const contextBg = bg ? 'background-current' : undefined;
+  // This makes sure the background-current context is always set to the correct color + not the semantic color name.
+  const currentParentBg = useContext(BackgroundCurrentContext);
+
+  const bgCurrent =
+    bg === 'background-current'
+      ? currentParentBg['background-current']
+        ? currentParentBg['background-current']
+        : modes[active]['background-current']
+      : bg;
 
   /** Serialize color variables for the current mode
    * 1. If all variables are required add all mode variables to the current context
@@ -149,7 +187,11 @@ export const ColorMode = forwardRef<
       : pick(variables, ['--color-background-current']);
 
     return (
-      <VariableProvider {...rest} variables={vars} bg={contextBg} ref={ref} />
+      <BackgroundCurrentContext.Provider
+        value={{ 'background-current': bgCurrent }}
+      >
+        <VariableProvider {...rest} variables={vars} bg={contextBg} ref={ref} />
+      </BackgroundCurrentContext.Provider>
     );
   }
 

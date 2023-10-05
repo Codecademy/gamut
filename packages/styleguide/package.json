@@ -1,28 +1,17 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "61.4.0",
+  "version": "66.5.4",
   "author": "Codecademy Engineering",
-  "scripts": {
-    "start": "yarn storybook",
-    "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet",
-    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ./dist",
-    "copy-storybook": "rm -rf ../../dist/docs && cp -r ./dist ../../dist/docs"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:Codecademy/gamut.git"
-  },
   "dependencies": {
-    "@codecademy/gamut": "^50.5.4",
-    "@codecademy/gamut-icons": "^7.7.0",
-    "@codecademy/gamut-illustrations": "^0.31.0",
-    "@codecademy/gamut-labs": "^33.2.0",
-    "@codecademy/gamut-patterns": "^0.8.13",
-    "@codecademy/gamut-styles": "^14.0.4",
-    "@codecademy/macros": "^3.0.2",
-    "@codecademy/variance": "^0.20.3",
-    "@codecademy/webpack-config": "^6.0.1",
+    "@codecademy/gamut": "55.7.3",
+    "@codecademy/gamut-icons": "9.4.2",
+    "@codecademy/gamut-illustrations": "0.40.0",
+    "@codecademy/gamut-patterns": "0.9.10",
+    "@codecademy/gamut-styles": "16.1.4",
+    "@codecademy/macros": "3.0.4",
+    "@codecademy/variance": "0.21.2",
+    "@codecademy/webpack-config": "6.4.0",
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
@@ -37,28 +26,34 @@
     "@storybook/theming": "6.3.4",
     "@testing-library/react": "^12.1.2",
     "@types/mdx-js__react": "^1.5.3",
-    "@types/react": "*",
     "autoprefixer": "^9.7.4",
-    "babel-preset-codecademy": "^2.3.0",
+    "babel-preset-codecademy": "6.0.1-alpha.042681.0",
     "css-loader": "^3.5.2",
     "focus-visible": "^5.2.0",
     "glob": "^7.1.6",
     "invariant": "2.2.4",
     "jsdom": "20.0.0",
     "lodash": "4.17.20",
-    "node-sass": "5.0.0",
     "polished": "^4.1.2",
     "postcss-loader": "^3.0.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "1.56.2",
     "sass-loader": "^10.1.1",
     "storybook-addon-designs": "^6.0.1",
     "style-loader": "^1.2.0",
-    "typescript": "*",
+    "typescript": "4.4.2",
     "webpack": "4.46.0"
   },
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "repository": "git@github.com:Codecademy/gamut.git",
+  "scripts": {
+    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ./dist",
+    "copy-storybook": "rm -rf ../../dist/docs && cp -r ./dist ../../dist/docs",
+    "start": "yarn storybook",
+    "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet"
   }
 }

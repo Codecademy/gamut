@@ -5,7 +5,7 @@ orbs:
 references:
   default_env: &default_env
     docker:
-      - image: circleci/node:14.17.2
+      - image: cimg/node:16.17.0
     working_directory: ~/repo
     environment:
       IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
@@ -153,7 +153,7 @@ jobs:
       - *save_nx_cache
       - run:
           name: Lerna Publish
-          command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
+          command: yarn lerna publish --yes --exact --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
 
   deploy:
     <<: *default_env
@@ -165,6 +165,7 @@ jobs:
       - *restore_node_modules
       - *restore_nx_cache
       - *restore_webpack_cache
+      - *build_all_packages
       - run:
           name: build storybook
           command: yarn build-storybook
@@ -185,6 +186,7 @@ jobs:
       - *restore_node_modules
       - *restore_nx_cache
       - *restore_webpack_cache
+      - *build_all_packages
       - run:
           name: build storybook
           command: yarn build-storybook

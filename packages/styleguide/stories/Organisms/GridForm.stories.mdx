@@ -42,7 +42,10 @@ GridForm provides the following benefits:
 4. **Visual Consistency**: Aligns all input elements with the correct vertical rhythms and grid spacing
 
 <Canvas>
-  <Story name="GridForm" args={{ validation: 'onSubmit', resetOnSubmit: true }}>
+  <Story
+    name="GridForm"
+    args={{ validation: 'onSubmit', resetOnSubmit: true, target: '_parent' }}
+  >
     {(args) => (
       <GridForm
         {...args}
@@ -516,35 +519,96 @@ Optionally, include a cancel button.
 
 <Canvas>
   <Story name="Cancel button">
-    {() => (
-      <GridForm
-        fields={[
-          {
-            label: 'A label',
-            name: 'a-label',
-            size: 6,
-            type: 'text',
-          },
-          {
-            label: 'This other label',
-            name: 'this-other-label',
-            size: 6,
-            type: 'text',
-          },
-        ]}
-        cancel={{
-          children: 'Cancel',
-          onClick: () => {},
-        }}
-        onSubmit={async (values) => {
-          action('Form Submitted')(values);
-        }}
-        submit={{
-          contents: 'Submit',
-          position: 'right',
-        }}
-      />
-    )}
+    <LayoutGrid>
+      <Column size={6}>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'right-sub-simple-text',
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          cancel={{
+            children: 'Cancel',
+            onClick: () => {},
+          }}
+          submit={{
+            contents: 'Right Submit!?',
+            position: 'right',
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'center-sub-simple-text',
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          cancel={{
+            children: 'Cancel',
+            onClick: () => {},
+          }}
+          submit={{
+            contents: 'Center Submit!?',
+            position: 'center',
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'left-sub-simple-text',
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          cancel={{
+            children: 'Cancel',
+            onClick: () => {},
+          }}
+          submit={{
+            contents: 'Left Submit!?',
+            position: 'left',
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'stretch-sub-simple-text',
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          cancel={{
+            children: 'Cancel',
+            onClick: () => {},
+          }}
+          submit={{
+            contents: 'Stretch Submit!?',
+            position: 'stretch',
+          }}
+        />
+      </Column>
+    </LayoutGrid>
   </Story>
 </Canvas>
 
@@ -739,6 +803,7 @@ See the <LinkTo id="atoms-forminputs-radio--radio">`Radio`</LinkTo> story for an
               name: 'textarea-field',
               size: 6,
               type: 'textarea',
+              rows: 6,
               placeholder: 'Check out my tooltip',
               validation: {
                 required: 'Please write something about tooltips!',
@@ -866,87 +931,6 @@ When using the left-aligned layout, please note that the `title` takes up 3 colu
                 {
                   label: 'Write another long paragraph',
                   name: 'paragraph02-left-section',
-                  size: 8,
-                  type: 'textarea',
-                  validation: {
-                    required: 'Please write something about penguins!',
-                  },
-                },
-              ],
-            },
-            {
-              title: 'hi there... again',
-              as: 'h3',
-              fields: [
-                {
-                  label: 'hello....',
-                  name: 'text01-center-section',
-                  size: 5,
-                  type: 'text',
-                  validation: {
-                    required: true,
-                  },
-                },
-              ],
-            },
-          ]}
-          sectionGap={48}
-          onSubmit={async (values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            contents: 'Submit me',
-            size: 12,
-          }}
-          validation="onSubmit"
-        />
-      );
-    }}
-  </Story>
-</Canvas>
-
-### Section Break Type
-
-You can set the `breakType` prop to adjust the type of separation between each section.
-
-The following values can be passed to `breakType`:
-
-- `none`: no border
-- `default`: 1px solid border that matches color of `text`
-
-<Canvas>
-  <Story name="Section Breaks">
-    {() => {
-      return (
-        <GridForm
-          breakType="none"
-          fields={[
-            {
-              title: 'first section',
-              layout: 'left',
-              variant: 'title-xs',
-              fields: [
-                {
-                  label: 'hi?',
-                  name: 'text01-left-section',
-                  size: 4,
-                  type: 'text',
-                  validation: {
-                    required: true,
-                  },
-                },
-                {
-                  label: 'hello?',
-                  name: 'text02-left-section',
-                  size: 4,
-                  type: 'text',
-                  validation: {
-                    required: true,
-                  },
-                },
-                {
-                  label: 'Write a paragraph.',
-                  name: 'paragraph01-left-section',
                   size: 8,
                   type: 'textarea',
                   validation: {

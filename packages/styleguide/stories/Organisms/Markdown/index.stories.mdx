@@ -1,4 +1,4 @@
-import { Markdown, TextDeprecated } from '@codecademy/gamut/src';
+import { Markdown, Text } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -66,24 +66,21 @@ A common override may be to change the font size of a Heading.
   </Story>
 </Canvas>
 
-If you need to override a link, iframe, or table, you also need to provide the `skipDefaultOverides` prop.
-
-export const overrides = {
-  a: {
-    component: TextDeprecated,
-  },
-};
+If you need to override a link, iframe, or table, you do not need to provide the `skipDefaultOverides` prop. This prop is now only used for removing the default heading, paragraph, and list element overrides.
 
 <Canvas>
   <Story
     name="Link Overrides"
     args={{
-      text: 'This was a link](https://codecademy.com).',
-      skipDefaultOverides: true,
-      overrides,
+      text: '[This was a link](https://codecademy.com), Now it is not.',
+      overrides: {
+        a: {
+          component: (props) => <Text {...props} as="span" color="blue-500" />,
+        },
+      },
     }}
   >
-    <Markdown skipDefaultOverides />
+    {(args) => <Markdown {...args} />}
   </Story>
 </Canvas>
 

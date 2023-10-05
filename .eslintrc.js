@@ -1,7 +1,10 @@
 module.exports = {
   root: true,
 
-  extends: [require.resolve('@codecademy/eslint-config')],
+  extends: [
+    require.resolve('@codecademy/eslint-config'),
+    'plugin:react/jsx-runtime',
+  ],
 
   plugins: ['eslint-plugin-gamut'],
 
@@ -9,6 +12,7 @@ module.exports = {
     'gamut/prefer-themed': 'error',
     'gamut/no-css-standalone': 'error',
     'gamut/import-paths': 'error',
+    'import/no-extraneous-dependencies': 'off',
   },
 
   overrides: [
@@ -16,15 +20,6 @@ module.exports = {
       files: ['**/typings/*', '*.d.ts'],
       rules: {
         '@typescript-eslint/no-namespace': 'off',
-      },
-    },
-    {
-      files: ['**/jest/*'],
-      rules: {
-        'import/no-extraneous-dependencies': [
-          'error',
-          { devDependencies: true },
-        ],
       },
     },
     {

@@ -1,4 +1,4 @@
-import React, { ComponentProps, forwardRef } from 'react';
+import { ComponentProps, forwardRef } from 'react';
 
 import { ColEl } from '../elements';
 import { useListContext } from '../ListProvider';

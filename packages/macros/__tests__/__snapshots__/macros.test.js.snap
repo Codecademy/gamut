@@ -2,14 +2,14 @@
 
 exports[`title.macro should transform a js file 1`] = `
 "export const meta = {
-  default: \\"World/Hello.js\\",
-  title: \\"World/Hello.js\\"
+  default: "World/Hello.js",
+  title: "World/Hello.js"
 };"
 `;
 
 exports[`title.macro should transform a story file 1`] = `
 "export const meta = {
-  default: \\"World/Example\\",
-  title: \\"World/Example\\"
+  default: "World/Example",
+  title: "World/Example"
 };"
 `;

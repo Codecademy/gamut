@@ -1,5 +1,6 @@
 import {
   Badge,
+  FillButton,
   InputStepper,
   Tab,
   TabList,
@@ -13,7 +14,7 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export const TabsExample = (args: TabsProps) => {
   return (
@@ -159,6 +160,38 @@ export const TabsNavExample = (args: TabNavProps) => {
         <TabNavLink href="/">Tab Link 2</TabNavLink>
         <TabNavLink href="/">Tab Link 3</TabNavLink>
       </TabNav>
+    </>
+  );
+};
+
+export const TabsInteractiveContentExample = (args: TabsProps) => {
+  return (
+    <>
+      <Tabs {...args}>
+        <TabList mx={24}>
+          <Tab>Interactive Tab 1</Tab>
+          <Tab>Just Plain Tab 2</Tab>
+          <Tab>Also Interactive Tab 3</Tab>
+        </TabList>
+        <TabPanels my={24} className="lol">
+          <TabPanel tabIndex={-1}>
+            <Text as="h2">Welcome to Tab 1</Text>
+            <FillButton>
+              I should come into focus, rather than the panel.
+            </FillButton>
+          </TabPanel>
+          <TabPanel>
+            <Text as="h2">Welcome to Tab 2</Text>
+            <Text>I am normal. My panel should just focus.</Text>
+          </TabPanel>
+          <TabPanel tabIndex={-1}>
+            <Text as="h2">Welcome to Tab 3</Text>
+            <FillButton variant="secondary">
+              I also should come into focus, rather than the panel.
+            </FillButton>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
     </>
   );
 };

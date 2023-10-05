@@ -1,6 +1,7 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { StyleProps } from '@codecademy/variance';
-import React, { ReactNode, SelectHTMLAttributes } from 'react';
+import { ReactNode, Ref, SelectHTMLAttributes } from 'react';
+import * as React from 'react';
 import {
   ContainerProps,
   DropdownIndicatorProps,
@@ -9,11 +10,16 @@ import {
 } from 'react-select';
 
 import { SelectComponentProps, SelectOptions } from '../Select';
+import { SelectOptionBase } from '../utils';
 import { conditionalBorderStates } from './styles';
 
 export interface SharedProps {
   inputProps?: Record<string, string | number | boolean>;
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
+}
+
+export interface SelectDropdownGroup extends GroupBase<ExtendedOption> {
+  divider?: boolean;
 }
 
 export interface WrapperStyleProps
@@ -30,7 +36,20 @@ export interface ReactSelectAdditionalProps
   extends WrapperStyleProps,
     SharedProps,
     SelectDropdownSizes {}
+
 export interface IconOption {
+  label: string;
+  value: string;
+  icon?: React.ComponentType<GamutIconProps>;
+}
+export interface ExtendedOption extends IconOption {
+  subtitle?: string;
+  disabled?: boolean;
+  rightLabel?: string;
+  size?: string;
+}
+
+export interface ExtendedOptions {
   label: string;
   value: string;
   icon?: React.ComponentType<GamutIconProps>;
@@ -42,7 +61,10 @@ export type SelectDropdownBaseProps = Omit<
 > &
   SelectDropdownSizes;
 
-export type SelectDropdownOptions = SelectOptions | IconOption[];
+export type SelectDropdownOptions =
+  | SelectOptions
+  | IconOption[]
+  | ExtendedOption[];
 
 export interface SelectDropdownCoreProps
   extends SelectDropdownBaseProps,
@@ -65,7 +87,7 @@ export interface SelectDropdownCoreProps
     SharedProps {
   name: string;
   placeholder?: string;
-  options?: SelectDropdownOptions;
+  options?: SelectDropdownOptions | SelectDropdownGroup[];
 }
 
 export interface SingleSelectDropdownProps extends SelectDropdownCoreProps {
@@ -102,9 +124,22 @@ export interface CustomContainerProps extends ContainerProps<unknown, false> {
   children: ReactNode[];
 }
 
+export type ProgramaticFocusRef =
+  | React.MutableRefObject<HTMLDivElement>
+  | React.MutableRefObject<null>;
+export interface SelectDropdownContextValueTypes {
+  currentFocusedValue?: SelectOptionBase['value'];
+  setCurrentFocusedValue?: React.Dispatch<React.SetStateAction<unknown>>;
+  selectInputRef?: ProgramaticFocusRef;
+  removeAllButtonRef?: ProgramaticFocusRef;
+}
 export type SizedIndicatorProps = DropdownIndicatorProps<
   unknown,
   false,
   GroupBase<OptionStrict>
 > &
   InternalSelectProps;
+
+export interface TypedReactSelectProps extends ReactSelectAdditionalProps {
+  selectRef?: Ref<any>;
+}

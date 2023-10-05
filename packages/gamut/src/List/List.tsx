@@ -1,11 +1,6 @@
 import { isArray } from 'lodash';
-import React, {
-  ComponentProps,
-  forwardRef,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { ComponentProps, forwardRef, useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 
 import { Box, BoxProps } from '../Box';
 import { ListEl } from './elements';
@@ -15,6 +10,7 @@ import { AllListProps } from './types';
 export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
   /** Whether a placeholder width should be set when loading */
   loading?: boolean;
+  /** Should only be used internally to Gamut */
   scrollable?: boolean;
   /** Whether the component should scroll to top after its rows update. */
   scrollToTopOnUpdate?: boolean;

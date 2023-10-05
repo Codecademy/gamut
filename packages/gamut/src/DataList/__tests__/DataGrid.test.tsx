@@ -1,11 +1,10 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { act, fireEvent, RenderResult, screen } from '@testing-library/react';
-import React from 'react';
 
 import { DataGrid, DataGridProps } from '../DataGrid';
 import { ColumnConfig } from '../types';
 
-type Row = { id: number; name: string; sin: string };
+type Row = { id: string; name: string; sin: string };
 type Columns = ColumnConfig<Row>[];
 
 type Props = DataGridProps<Row, 'id', Columns>;
@@ -18,9 +17,9 @@ const props = {
   id: 'test',
   idKey: 'id',
   rows: [
-    { id: 1, name: 'Hari Seldon', sin: 'Messiah Complex' },
-    { id: 2, name: 'Bel Roise', sin: 'Competence' },
-    { id: 3, name: 'Cleon II', sin: 'Hubris' },
+    { id: '1', name: 'Hari Seldon', sin: 'Messiah Complex' },
+    { id: '2', name: 'Bel Roise', sin: 'Competence' },
+    { id: '3', name: 'Cleon II', sin: 'Hubris' },
   ],
   columns: [{ key: 'name' }, { key: 'sin' }],
   onRowSelect,
@@ -88,9 +87,10 @@ describe('DataGrid', () => {
 
       expect(onRowSelect).toHaveBeenLastCalledWith({
         type: 'select',
-        payload: { rowId: 1, toggle: false },
+        payload: { rowId: '1', toggle: false },
       });
     });
+
     it("clicking the row's checkbox deselects the row when the row is already selected", () => {
       renderView({ selected: [1] });
 
@@ -103,7 +103,7 @@ describe('DataGrid', () => {
       expect(onRowSelect).toHaveBeenLastCalledWith({
         type: 'select',
         payload: {
-          rowId: 1,
+          rowId: '1',
           toggle: true,
         },
       });
@@ -121,7 +121,7 @@ describe('DataGrid', () => {
       expect(onRowSelect).toHaveBeenLastCalledWith({
         type: 'select',
         payload: {
-          rowId: 1,
+          rowId: '1',
           toggle: false,
         },
       });
@@ -145,7 +145,7 @@ describe('DataGrid', () => {
       });
     });
     it('it unselects all rows when the header checkbox is clicked and all rows are selected', () => {
-      renderView({ selected: [1, 2, 3] });
+      renderView({ selected: ['1', '2', '3'] });
 
       const checkbox = screen.getByRole('checkbox', {
         name: 'Select All',
@@ -197,11 +197,11 @@ describe('DataGrid', () => {
         fireEvent.click(expandButton);
       });
       expect(onRowExpand).toHaveBeenLastCalledWith({
-        type: 'expand',
         payload: {
-          rowId: 1,
+          rowId: '1',
           toggle: false,
         },
+        type: 'expand',
       });
     });
     it('calls the onRowExpand with the id omitted when an expanded row toggle is clicked', () => {
@@ -216,7 +216,7 @@ describe('DataGrid', () => {
       expect(onRowExpand).toHaveBeenLastCalledWith({
         type: 'expand',
         payload: {
-          rowId: 1,
+          rowId: '1',
           toggle: true,
         },
       });

@@ -1,7 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, queries } from '@testing-library/dom';
 import { act, RenderResult, waitFor } from '@testing-library/react';
-import React from 'react';
 
 import { createPromise } from '../../utils';
 import { GridForm, GridFormField } from '..';
@@ -376,29 +375,61 @@ describe('GridForm', () => {
   });
 
   describe('Section Break', () => {
-    const sectionFields = [
-      {
-        fields: [stubCheckboxField],
-        title: 'Test Title',
-      },
-      {
-        fields: [stubTextField],
-        title: 'Other Test Title',
-      },
-    ];
-
-    it('renders a section break by default', () => {
+    it('renders a section break when there are multiple sections', () => {
       const { view } = renderView({
-        fields: sectionFields,
+        fields: [
+          {
+            fields: [stubCheckboxField],
+            title: 'Test Title',
+          },
+          {
+            fields: [stubTextField],
+            title: 'Other Test Title',
+          },
+        ],
       });
       const sectionBreaks = view.getAllByTestId('form-section-break');
-      expect(sectionBreaks.length).toEqual(2);
+      expect(sectionBreaks.length).toEqual(1);
     });
 
-    it('does NOT render a section break if breakType is none', () => {
+    it('renders a section break when there are multiple sections with subfields', () => {
       const { view } = renderView({
-        breakType: 'none',
-        fields: sectionFields,
+        fields: [
+          {
+            fields: [stubCheckboxField],
+            title: 'Test Title',
+          },
+          {
+            fields: [stubTextField, stubCheckboxField],
+            title: 'Other Test Title',
+          },
+        ],
+      });
+      const sectionBreaks = view.getAllByTestId('form-section-break');
+      expect(sectionBreaks.length).toEqual(1);
+    });
+
+    it('does NOT render a section break if there is only one section', () => {
+      const { view } = renderView({
+        fields: [
+          {
+            fields: [stubCheckboxField],
+            title: 'Test Title',
+          },
+        ],
+      });
+      const sectionBreaks = view.queryByTestId('form-section-break');
+      expect(sectionBreaks).not.toBeInTheDocument();
+    });
+
+    it('does NOT render a section break if there is only one section with multiple subfields', () => {
+      const { view } = renderView({
+        fields: [
+          {
+            fields: [stubCheckboxField, stubTextField],
+            title: 'Test Title',
+          },
+        ],
       });
       const sectionBreaks = view.queryByTestId('form-section-break');
       expect(sectionBreaks).not.toBeInTheDocument();

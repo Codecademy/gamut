@@ -1,6 +1,7 @@
-import { ColorMode } from '@codecademy/gamut-styles';
+import { ColorMode, ColorModes } from '@codecademy/gamut-styles';
 import { AnimatePresence } from 'framer-motion';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
+import * as React from 'react';
 
 import { ToastProps } from '..';
 import { BodyPortal } from '../BodyPortal';
@@ -16,12 +17,17 @@ interface ToasterItem extends Omit<ToastProps, 'onClose'> {
 export type ToasterProps = {
   toasts: ToasterItem[];
   onClose: (id: string) => void;
+  colorMode?: ColorModes;
 };
 
-export const Toaster: React.FC<ToasterProps> = ({ toasts = [], onClose }) => {
+export const Toaster: React.FC<ToasterProps> = ({
+  toasts = [],
+  onClose,
+  colorMode = 'light',
+}) => {
   return (
     <BodyPortal>
-      <ColorMode mode="light">
+      <ColorMode mode={colorMode}>
         <Box right={16} bottom={88} position="fixed" aria-live="polite">
           <AnimatePresence>
             {toasts.map((toast) => (

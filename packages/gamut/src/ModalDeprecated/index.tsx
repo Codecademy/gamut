@@ -1,9 +1,10 @@
 import { CloseIcon } from '@codecademy/gamut-icons';
+import { theme, variant } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import cx from 'classnames';
-import React from 'react';
+import * as React from 'react';
 
 import { ButtonDeprecated } from '../ButtonDeprecated';
-import { CardShell } from '../DeprecatedCard';
 import { Overlay, OverlayProps } from '../Overlay';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';
@@ -11,6 +12,31 @@ import styles from './styles.module.scss';
 export type ModalDeprecatedOverlayProps = Partial<
   Pick<OverlayProps, 'clickOutsideCloses' | 'escapeCloses' | 'className'>
 >;
+
+// this should be deleted with the removal of ModalDeprecated
+const CardShell = styled.div(
+  variant({
+    defaultVariant: 'shadowed',
+    base: {
+      background: 'white',
+      borderRadius: '2px',
+      boxShadow: `0 2px 8px 0  ${theme.colors['shadow-black-slight']}`,
+      position: 'relative',
+      transition: 'box-shadow 250ms ease-in',
+    },
+    variants: {
+      shadowed: {},
+      flat: {
+        boxShadow: 'none',
+      },
+      hoverable: {
+        '&:hover': {
+          boxShadow: `-2px 8px 22px 0 ${theme.colors['shadow-black-slight']}`,
+        },
+      },
+    },
+  })
+);
 
 export type ModalDeprecatedProps = {
   children?: React.ReactNode;

@@ -33,6 +33,10 @@ export const alertVariants = {
     bg: 'blue-300',
     icon: MiniStarIcon,
   },
+  subtle: {
+    bg: 'background-hover',
+    icon: MiniInfoCircleIcon,
+  },
 } as const;
 
 export const placementVariants = variant({

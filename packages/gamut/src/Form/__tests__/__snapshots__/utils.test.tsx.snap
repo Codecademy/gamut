@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`parseSelectOptions creates an option list 1`] = `
-Array [
+[
   <option
     data-testid="test-val"
     label="Value"
@@ -20,7 +20,7 @@ Array [
 `;
 
 exports[`parseSelectOptions creates an option list 2`] = `
-Array [
+[
   <option
     data-testid="test-val"
     label="val"
@@ -39,13 +39,13 @@ Array [
 `;
 
 exports[`parseSelectOptions creates an option list as object 1`] = `
-Array [
-  Object {
+[
+  {
     "key": "test-val",
     "label": "Value",
     "value": "val",
   },
-  Object {
+  {
     "key": "test-val2",
     "label": "Value 2",
     "value": "val2",
@@ -54,12 +54,12 @@ Array [
 `;
 
 exports[`parseSelectOptions creates an option list as object without generated labels 1`] = `
-Array [
-  Object {
+[
+  {
     "label": "val",
     "value": "val",
   },
-  Object {
+  {
     "label": "val2",
     "value": "val2",
   },

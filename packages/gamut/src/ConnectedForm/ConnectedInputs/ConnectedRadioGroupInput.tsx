@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import { ConnectedRadio, ConnectedRadioGroup } from '.';
 import { ConnectedRadioGroupInputProps } from './types';

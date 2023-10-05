@@ -12,11 +12,12 @@ export const getToggleElementProps = <Props extends ToggleProps>({
   Props,
   'ariaLabel' | 'as' | 'checked' | 'disabled' | 'label' | 'onChange' | 'onClick'
 >): Omit<ToggleInputStyledProps, 'size' | 'color'> => {
+  const id = label && typeof label === 'string' ? label : ariaLabel;
   const sharedProps = {
     'aria-label': ariaLabel,
     as,
     checked,
-    id: label || ariaLabel,
+    id,
     disabled,
   };
   return as === 'input'
@@ -30,5 +31,6 @@ export const getToggleElementProps = <Props extends ToggleProps>({
         role: 'switch',
         'aria-checked': checked,
         onClick,
+        type: 'button',
       };
 };

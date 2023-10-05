@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { createContext, useContext } from 'react';
 
 export interface MenuContextProps {
   spacing: 'normal' | 'condensed';
@@ -6,7 +6,7 @@ export interface MenuContextProps {
   depth: number;
 }
 
-export const MenuContext = React.createContext<MenuContextProps>({
+export const MenuContext = createContext<MenuContextProps>({
   spacing: 'normal',
   variant: 'select',
   depth: 0,

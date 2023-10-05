@@ -2,13 +2,13 @@ import cx from 'classnames';
 import HtmlToReact from 'html-to-react';
 import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
 import { get } from 'lodash';
-import React from 'react';
+import * as React from 'react';
 
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from '../../styles/index.module.scss';
 import { getLabel, isCheckboxParent, isInput, isLabelText } from './utils';
 
-const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
+const processNodeDefinitions = HtmlToReact.ProcessNodeDefinitions();
 
 export interface AttributesMap {
   [key: string]: string | boolean;
@@ -32,27 +32,27 @@ const attributeMap: { [key: string]: string } = {
   class: 'className',
 };
 
-export type OverrideSettingsBase = {
+type OverrideSettingsBase = {
   component?: React.ComponentType<any>;
   allowedAttributes?: string[];
   processNode?: (node: HTMLToReactNode, props: object) => React.ReactNode;
   shouldProcessNode?: (node: HTMLToReactNode) => boolean;
 };
 
-export interface OverrideSettingsComponent extends OverrideSettingsBase {
+interface OverrideSettingsComponent extends OverrideSettingsBase {
   component: React.ComponentType<any>;
 }
 
-export interface OverrideSettingsProcessNode extends OverrideSettingsBase {
+interface OverrideSettingsProcessNode extends OverrideSettingsBase {
   processNode: (node: HTMLToReactNode, props: object) => React.ReactNode;
 }
 
-export type OverrideSettings =
+export type MarkdownOverrideSetting =
   | OverrideSettingsComponent
   | OverrideSettingsProcessNode;
 
-export type ManyOverrideSettings = {
-  [i: string]: OverrideSettings;
+export type MarkdownOverrideSettings = {
+  [i: string]: MarkdownOverrideSetting;
 };
 
 const processAttributeValue = (value: string | boolean) => {
@@ -81,7 +81,7 @@ export const processAttributes = (attributes: AttributesMap = {}) =>
 // generic html tag override
 export const createTagOverride = (
   tagName: string,
-  Override: OverrideSettings
+  Override: MarkdownOverrideSetting
 ) => ({
   shouldProcessNode(node: HTMLToReactNode) {
     if (!Override) return false;
@@ -117,7 +117,7 @@ export const createTagOverride = (
 // Allows <CodeBlock></CodeBlock> override and overrides of standard fenced codeblocks
 export const createCodeBlockOverride = (
   tagName: string,
-  Override: OverrideSettings
+  Override: MarkdownOverrideSetting
 ) =>
   createTagOverride(tagName, {
     shouldProcessNode(node: HTMLToReactNode) {
@@ -142,7 +142,10 @@ export const createCodeBlockOverride = (
     ...Override,
   });
 
-export const createInputOverride = (type: string, Override: OverrideSettings) =>
+export const createInputOverride = (
+  type: string,
+  Override: MarkdownOverrideSetting
+) =>
   createTagOverride('input', {
     shouldProcessNode(node: HTMLToReactNode) {
       return (

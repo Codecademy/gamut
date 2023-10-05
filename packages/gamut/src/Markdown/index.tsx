@@ -1,7 +1,8 @@
 import cx from 'classnames';
 import HtmlToReact from 'html-to-react';
-import marked from 'marked';
-import React, { PureComponent } from 'react';
+import { marked } from 'marked';
+import { PureComponent } from 'react';
+import * as React from 'react';
 import sanitizeMarkdown from 'sanitize-markdown';
 
 import { omitProps } from '../utils/omitProps';
@@ -9,7 +10,7 @@ import {
   createCodeBlockOverride,
   createInputOverride,
   createTagOverride,
-  ManyOverrideSettings,
+  MarkdownOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
 import { MarkdownCheckbox } from './libs/overrides/Checkbox';
@@ -25,7 +26,7 @@ import { defaultSanitizationConfig } from './libs/sanitizationConfig';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
-const htmlToReactParser = new HtmlToReact.Parser({
+const htmlToReactParser = HtmlToReact.Parser({
   xmlMode: true,
 });
 
@@ -44,7 +45,7 @@ export type SkipDefaultOverridesSettings = {
 export type MarkdownProps = {
   className?: string;
   inline?: boolean;
-  overrides?: ManyOverrideSettings;
+  overrides?: MarkdownOverrideSettings;
   skipDefaultOverrides?: SkipDefaultOverridesSettings;
   /**
    * Enables generated header ids for H1-6 tags
@@ -87,6 +88,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
     });
 
     const processingInstructions = [
+      ...overrides,
       !skipDefaultOverrides.iframe &&
         createTagOverride('iframe', {
           component: Iframe,
@@ -121,7 +123,6 @@ export class Markdown extends PureComponent<MarkdownProps> {
         createInputOverride('checkbox', {
           component: MarkdownCheckbox,
         }),
-      ...overrides,
       ...standardOverrides,
     ].filter(Boolean);
 
@@ -129,11 +130,12 @@ export class Markdown extends PureComponent<MarkdownProps> {
       smartypants: true,
       headerIds,
       headerPrefix: 'heading-',
+      mangle: false,
     };
 
     // Render markdown to html
     const rawHtml = inline
-      ? marked.inlineLexer(text, [], markedOptions)
+      ? marked.parseInline(text, markedOptions)
       : marked(text, markedOptions);
 
     const sanitizationConfig = {
@@ -175,3 +177,8 @@ export class Markdown extends PureComponent<MarkdownProps> {
     );
   }
 }
+
+export type {
+  MarkdownOverrideSetting,
+  MarkdownOverrideSettings,
+} from './libs/overrides';

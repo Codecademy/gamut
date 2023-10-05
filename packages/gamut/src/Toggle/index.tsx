@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Circle, ToggleInput, ToggleLabel, ToggleTrack } from './elements';
 import { ToggleProps } from './types';
 import { getToggleElementProps } from './utils';
@@ -16,7 +14,7 @@ export const Toggle = <Props extends ToggleProps>({
   size = 'medium',
   ...rest
 }: Props) => {
-  const checkedColor = checked ? 'primary' : 'navy-600';
+  const checkedColor = checked ? 'primary' : 'text-disabled';
   const isButton = as === 'button';
   const toggleProps = getToggleElementProps<Props>({
     ariaLabel,
@@ -30,7 +28,7 @@ export const Toggle = <Props extends ToggleProps>({
 
   return (
     <ToggleLabel
-      htmlFor={label}
+      htmlFor={toggleProps.id}
       disabled={disabled}
       labelRight={labelSide === 'right'}
       {...rest}
@@ -45,13 +43,16 @@ export const Toggle = <Props extends ToggleProps>({
       >
         {!isButton && <ToggleInput {...toggleProps} />}
         <Circle
-          width="40%"
-          borderRadius="50%"
           bg="white"
-          position="absolute"
-          top="10%"
+          borderColor="background"
+          borderRadius="50%"
+          borderStyle="solid"
+          borderWidth="1px"
           bottom="10%"
           left={checked ? '55%' : '5%'}
+          position="absolute"
+          top="10%"
+          width="40%"
         />
       </ToggleTrack>
     </ToggleLabel>

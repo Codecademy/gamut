@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "declaration": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "rootDir": "./src",
     "outDir": "./dist",
     "strict": true,
@@ -13,5 +13,6 @@
     "./src/**/*.ts",
     "./src/**/*.tsx",
     "../../packages/gamut-styles/dist/typings/theme.d.ts"
-  ]
+  ],
+  "exclude": ["jest.config.ts"]
 }

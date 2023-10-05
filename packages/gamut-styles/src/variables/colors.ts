@@ -6,6 +6,7 @@ import { rgba } from 'polished';
 
 const black = '#000000';
 const white = '#ffffff';
+const navy = '#10162F';
 
 const effects = {
   shadow: {
@@ -26,24 +27,26 @@ export const coreSwatches = {
   },
   blue: {
     '0': '#F5FCFF',
+    '100': '#D3F2FF',
     '300': '#66C4FF',
     '400': '#3388FF',
     '500': '#1557FF',
     '800': '#1D2340',
   },
   navy: {
-    '100': '#F3F3F5',
-    '200': '#DBDCE0',
-    '300': '#C3C5CB',
-    '400': '#9FA2AC',
-    '500': '#707382',
-    '600': '#585C6D',
-    '700': '#34394C',
-    '800': '#10162F',
+    '100': rgba(navy, 0.04),
+    '200': rgba(navy, 0.12),
+    '300': rgba(navy, 0.28),
+    '400': rgba(navy, 0.45),
+    '500': rgba(navy, 0.63),
+    '600': rgba(navy, 0.75),
+    '700': rgba(navy, 0.86),
+    '800': navy,
     '900': '#0A0D1C',
   },
   green: {
     '0': '#F5FFE3',
+    '100': '#EAFDC6',
     '400': '#AEE938',
     '700': '#008A27',
   },
@@ -76,6 +79,15 @@ export const coreSwatches = {
     '600': '#9E9E9E',
     '800': '#616161',
     '900': '#424242',
+  },
+  white: {
+    '100': rgba(white, 0.04),
+    '200': rgba(white, 0.09),
+    '300': rgba(white, 0.2),
+    '400': rgba(white, 0.33),
+    '500': rgba(white, 0.5),
+    '600': rgba(white, 0.65),
+    '700': rgba(white, 0.8),
   },
 } as const;
 

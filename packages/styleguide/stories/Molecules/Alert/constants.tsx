@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const ALERTS = {
   general: {
     type: 'general',
@@ -30,5 +28,10 @@ export const ALERTS = {
     cta: { children: '' },
     children:
       'We were unable to add this team member. Please refresh the page and try again.',
+  },
+  subtle: {
+    type: 'subtle',
+    cta: { children: 'Learn more' },
+    children: 'Subtly alerting the user',
   },
 };

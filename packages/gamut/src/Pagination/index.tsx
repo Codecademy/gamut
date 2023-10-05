@@ -2,7 +2,8 @@ import {
   MiniChevronLeftIcon,
   MiniChevronRightIcon,
 } from '@codecademy/gamut-icons';
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
+import * as React from 'react';
 
 import { HiddenText } from '..';
 import { FlexBox } from '../Box';

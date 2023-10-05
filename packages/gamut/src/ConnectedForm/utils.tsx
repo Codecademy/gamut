@@ -1,4 +1,4 @@
-import { omit } from 'lodash';
+import { isNull, isUndefined, omit } from 'lodash';
 import {
   ChangeEvent,
   ChangeEventHandler,
@@ -6,7 +6,6 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useRef,
   useState,
 } from 'react';
 import {
@@ -44,15 +43,17 @@ interface UseConnectedFormProps<
   };
 }
 
-interface ConnectedFormStrictProps<Values, Rules>
-  extends UseConnectedFormProps<Values, Rules> {
+interface ConnectedFormStrictProps<
+  Values extends {},
+  Rules extends { [Key in keyof Values]?: RegisterOptions }
+> extends UseConnectedFormProps<Values, Rules> {
   (
     props: UseConnectedFormProps<Values, Rules> & ConnectedFormProps<Values>
   ): ReturnType<typeof ConnectedForm>;
 }
 
 export const useConnectedForm = <
-  Values,
+  Values extends {},
   ValidationRules extends { [K in keyof Values]: RegisterOptions }
 >({
   defaultValues,
@@ -209,14 +210,16 @@ interface GetInitialFormValueProps {
   name: string;
   setLocalValue: (value: string) => void;
   watchUpdateKeyName?: string;
+  defaultValue: string | boolean;
 }
 
 export const useGetInitialFormValue = ({
   name,
   setLocalValue,
   watchUpdateKeyName,
+  defaultValue,
 }: GetInitialFormValueProps) => {
-  const { getValues, watch } = useFormState();
+  const { getValues, watch, setValue } = useFormState();
 
   /**
    * This ensures that the initialValue can be updated on subsequent re-renders
@@ -243,10 +246,12 @@ export const useGetInitialFormValue = ({
   ]);
 
   useEffect(() => {
-    if (initialValue) {
+    if (!(isNull(initialValue) || isUndefined(initialValue))) {
       setLocalValue(initialValue);
+    } else {
+      setValue(name, defaultValue);
     }
-  }, [initialValue, setLocalValue]);
+  }, [initialValue, defaultValue, name, setLocalValue, setValue]);
 };
 
 export const USE_DEBOUNCED_FIELD_DIRTY_KEY = '';
@@ -267,24 +272,14 @@ export const USE_DEBOUNCED_FIELD_DIRTY_KEY = '';
  *
  * This is very hacky, but in our testing we couldn't find any problems with it.
  */
-const useMakeSetFormDirty = (
-  resetKey?: string,
-  shouldDirtyOnChange?: boolean
-) => {
-  const hasDirtiedRef = useRef(false);
-
-  const { isDirty, setValue, watch } = useFormState();
-
-  const resetVal = resetKey ? watch(resetKey) : undefined;
-
-  useEffect(() => {
-    hasDirtiedRef.current = false;
-  }, [resetVal]);
+const useMakeSetFormDirty = (shouldDirtyOnChange?: boolean) => {
+  const { isDirty, setValue } = useFormState();
 
   return () => {
-    if (shouldDirtyOnChange && !isDirty && !hasDirtiedRef.current) {
-      hasDirtiedRef.current = true;
-      setValue(USE_DEBOUNCED_FIELD_DIRTY_KEY, '', { shouldDirty: true });
+    if (shouldDirtyOnChange && !isDirty) {
+      setValue(USE_DEBOUNCED_FIELD_DIRTY_KEY, '', {
+        shouldDirty: true,
+      });
     }
   };
 };
@@ -332,7 +327,7 @@ type InputTypes =
 
 type DebouncedFieldProps<T extends InputTypes> = Omit<
   GetInitialFormValueProps,
-  'setLocalValue'
+  'setLocalValue' | 'defaultValue'
 > &
   Pick<useFieldProps, 'loading' | 'disabled' | 'name'> & {
     type: T;
@@ -349,21 +344,19 @@ export function useDebouncedField<T extends InputTypes>({
 }: DebouncedFieldProps<T>) {
   const useFieldPayload = useField({ name, disabled, loading });
 
+  const defaultValue = type === 'checkbox' ? false : '';
+
   // START - Specific to useDebouncedField - START
-  const [localValue, setLocalValue] = useState(
-    type === 'checkbox' ? false : ''
-  );
+  const [localValue, setLocalValue] = useState(defaultValue);
 
   useGetInitialFormValue({
     name,
     setLocalValue,
     watchUpdateKeyName,
+    defaultValue,
   });
 
-  const setFormDirty = useMakeSetFormDirty(
-    watchUpdateKeyName,
-    shouldDirtyOnChange
-  );
+  const setFormDirty = useMakeSetFormDirty(shouldDirtyOnChange);
 
   const onChange: ChangeEventHandler<
     HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -378,7 +371,10 @@ export function useDebouncedField<T extends InputTypes>({
     );
     setFormDirty();
   };
-  const onBlur = () => useFieldPayload.setValue(name, localValue);
+  const onBlur = () =>
+    useFieldPayload.setValue(name, localValue, {
+      shouldDirty: !shouldDirtyOnChange,
+    });
   // END - Specific to useDebouncedField - END
 
   return {

@@ -26,9 +26,24 @@ describe('Toggle', () => {
       expect(action).toHaveBeenCalled();
     });
 
+    it('renders label node', () => {
+      const { view } = renderView({ label: <p>hello</p> });
+
+      view.getByText('hello');
+    });
+
     it('applies an aria-label appropriately when provided with no label', () => {
       const { view } = renderView({
         label: undefined,
+        ariaLabel: 'Toggle Text',
+      });
+
+      view.getByLabelText('Toggle Text');
+    });
+
+    it('applies an aria-label appropriately when provided with non string label', () => {
+      const { view } = renderView({
+        label: <p>Hello</p>,
         ariaLabel: 'Toggle Text',
       });
 
@@ -73,6 +88,18 @@ describe('Toggle', () => {
       const { view } = renderView({
         as: 'button',
         label: undefined,
+        ariaLabel: 'Toggle Text',
+        onChange: undefined,
+        onClick: action,
+      });
+
+      view.getByLabelText('Toggle Text');
+    });
+
+    it('applies an aria-label appropriately when provided with a non string label', () => {
+      const { view } = renderView({
+        as: 'button',
+        label: <p>hello</p>,
         ariaLabel: 'Toggle Text',
         onChange: undefined,
         onClick: action,

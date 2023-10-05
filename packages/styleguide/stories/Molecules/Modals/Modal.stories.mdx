@@ -4,8 +4,10 @@ import {
   FlexBox,
   GridBox,
   Modal,
+  Text,
 } from '@codecademy/gamut/src';
 import { ModalContainer } from '@codecademy/gamut/src/Modals/elements';
+import { CodeCelebration } from '@codecademy/gamut-illustrations';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -66,16 +68,17 @@ All of these methods default to true for accessibility reasons, and rely on sett
     name="Clicking Outside"
     args={{
       title: undefined,
-      showCloseButton: false,
-      children: (
-        <FlexBox center fit>
-          <FillButton>Better remember to put me in!</FillButton>
-        </FlexBox>
-      ),
+      hideCloseButton: true,
     }}
     height="350px"
   >
-    {(args) => <Modal {...args} />}
+    {(args) => (
+      <Modal {...args}>
+        <FlexBox center fit>
+          <FillButton>Better remember to put me in!</FillButton>
+        </FlexBox>
+      </Modal>
+    )}
   </Story>
 </Canvas>
 
@@ -97,17 +100,18 @@ All of these methods default to true for accessibility reasons, and rely on sett
   name="Fluid"
   args={{
     size: 'fluid',
-    children: (
+  }}
+  height="500px"
+>
+  {(args) => (
+    <ModalContainer {...args}>
       <>
         <FlexBox gridArea="title" bg="beige" height="2rem" />
         <FlexBox gridArea="close" bg="beige" height="2rem" />
         <FlexBox height="380px" width="540px" bg="beige" gridArea="content" />
       </>
-    ),
-  }}
-  height="500px"
->
-  {(args) => <ModalContainer {...args} />}
+    </ModalContainer>
+  )}
 </Story>
 
 </Box>
@@ -119,17 +123,18 @@ All of these methods default to true for accessibility reasons, and rely on sett
   name="Medium"
   args={{
     size: 'medium',
-    children: (
+  }}
+  height="350px"
+>
+  {(args) => (
+    <ModalContainer {...args}>
       <>
         <FlexBox gridArea="title" bg="beige" height="2rem" />
         <FlexBox gridArea="close" bg="beige" height="2rem" />
         <FlexBox height="auto" bg="beige" gridArea="content" />
       </>
-    ),
-  }}
-  height="350px"
->
-  {(args) => <ModalContainer {...args} />}
+    </ModalContainer>
+  )}
 </Story>
 
 </Box>
@@ -141,17 +146,18 @@ All of these methods default to true for accessibility reasons, and rely on sett
   name="Small"
   args={{
     size: 'small',
-    children: (
+  }}
+  height="350px"
+>
+  {(args) => (
+    <ModalContainer {...args}>
       <>
         <FlexBox gridArea="title" bg="beige" height="2rem" />
         <FlexBox gridArea="close" bg="beige" height="2rem" />
         <FlexBox gridArea="content" bg="beige" height="auto" />
       </>
-    ),
-  }}
-  height="350px"
->
-  {(args) => <ModalContainer {...args} />}
+    </ModalContainer>
+  )}
 </Story>
 
 </Box>
@@ -165,10 +171,14 @@ All of these methods default to true for accessibility reasons, and rely on sett
     name="Scrollable"
     args={{
       title: undefined,
-      showCloseButton: false,
+      hideCloseButton: true,
       size: 'medium',
       scrollable: true,
-      children: (
+    }}
+    height="750px"
+  >
+    {(args) => (
+      <Modal {...args}>
         <FlexBox flexDirection="column">
           <Box height="600px">
             Hello, I'm a very large box... Try zooming in and you'll be able to
@@ -176,11 +186,8 @@ All of these methods default to true for accessibility reasons, and rely on sett
           </Box>
           <FillButton>Better remember to put me in!</FillButton>
         </FlexBox>
-      ),
-    }}
-    height="750px"
-  >
-    {(args) => <Modal {...args} />}
+      </Modal>
+    )}
   </Story>
 </Canvas>
 
@@ -191,7 +198,7 @@ All of these methods default to true for accessibility reasons, and rely on sett
     name="Multiple views"
     args={{
       title: undefined,
-      showCloseButton: true,
+      hideCloseButton: false,
       size: 'medium',
       scrollable: true,
       views: [
@@ -218,6 +225,43 @@ All of these methods default to true for accessibility reasons, and rely on sett
     height="750px"
   >
     {(args) => <Modal {...args} />}
+  </Story>
+</Canvas>
+
+## With Image
+
+The image prop can be used to include a full-width product image or illustration with a 16:9 aspect ratio. This image should help clarify the message of the modal.
+
+Overflow for images will be cut off, so make sure the image is correctly sized for the modal.
+
+<Canvas>
+  <Story
+    height="600px"
+    name="Image modals"
+    args={{
+      image: (
+        <FlexBox
+          bg="background-primary"
+          center
+          height="100%"
+          p={4}
+          width="100%"
+        >
+          <CodeCelebration height="100%" />
+        </FlexBox>
+      ),
+      size: 'medium',
+      title: 'Image modal',
+    }}
+  >
+    {(args) => (
+      <Modal {...args}>
+        <Text smooth fontSize={14} my={12}>
+          Optional 1-2 lines of explanation that provides relevant details.
+          Lorem ipsum cras nulla massa odio ligula.
+        </Text>
+      </Modal>
+    )}
   </Story>
 </Canvas>
 

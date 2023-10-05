@@ -1,6 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 
 import { Anchor } from '../Anchor';
 import { Box, FlexBox } from '../Box';
@@ -41,19 +41,19 @@ export type ClickableCrumb<T extends string | Object> = Crumb & {
   payload: T;
 };
 
-export type Breadcrumb<T> = Crumb | ClickableCrumb<T>;
+export type Breadcrumb<T extends string | Object> = Crumb | ClickableCrumb<T>;
 
-export const isClickableCrumb = <T,>(
+export const isClickableCrumb = <T extends string | Object>(
   crumb: Breadcrumb<T>
 ): crumb is ClickableCrumb<T> => !!(crumb as ClickableCrumb<T>).href;
 
-export type BreadcrumbsProps<T> = {
+export type BreadcrumbsProps<T extends string | Object> = {
   crumbs: Breadcrumb<T>[];
   onClick?: (event: React.MouseEvent, crumb: ClickableCrumb<T>) => void;
   className?: string;
 };
 
-export const Breadcrumbs = <T,>({
+export const Breadcrumbs = <T extends string | Object>({
   crumbs,
   onClick,
   className,

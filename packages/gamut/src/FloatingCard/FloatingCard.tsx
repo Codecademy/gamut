@@ -3,7 +3,8 @@ import { styledOptions, system, theme } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { Properties } from 'csstype';
-import React, { ComponentProps, forwardRef } from 'react';
+import { ComponentProps, forwardRef } from 'react';
+import * as React from 'react';
 
 import { Box } from '../Box';
 

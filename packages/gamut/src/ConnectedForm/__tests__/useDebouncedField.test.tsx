@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
-import React from 'react';
+import * as React from 'react';
 import { act } from 'react-dom/test-utils';
 
 import {
@@ -9,6 +9,7 @@ import {
   Input,
   useDebouncedField,
   useFormState,
+  WithChildrenProp,
 } from '../..';
 
 const mockedSetValue = jest.fn();
@@ -34,7 +35,7 @@ const mockChangeValue =
 const mockChangeKey = 'remake-intergrade';
 const mockCheckboxKey = 'episode-inter-mission';
 
-const FormWrapper: React.FC = ({ children }) => (
+const FormWrapper: React.FC<WithChildrenProp> = ({ children }) => (
   <ConnectedForm
     onSubmit={() => null}
     defaultValues={{
@@ -113,6 +114,7 @@ describe('ConnectedForm - useDebouncedField', () => {
     const input = view.getByRole('textbox') as HTMLInputElement;
     expect(input.value).toEqual(mockDefaultValue);
   });
+
   it('should allow users to change the value', async () => {
     const { view } = renderView();
     const input = view.getByRole('textbox') as HTMLInputElement;
@@ -120,8 +122,9 @@ describe('ConnectedForm - useDebouncedField', () => {
 
     expect(input.value).toEqual(mockChangeValue);
   });
+
   it("should ONLY update the input's value on the form on blur of input", async () => {
-    const { view } = renderView({ shouldDirtyOnChange: true });
+    const { view } = renderView({ shouldDirtyOnChange: false });
 
     const input = view.getByRole('textbox') as HTMLInputElement;
 
@@ -133,15 +136,16 @@ describe('ConnectedForm - useDebouncedField', () => {
       fireEvent.change(input, { target: { value: 'tif' } });
       fireEvent.change(input, { target: { value: 'tifa' } });
     });
-    // Form has been dirtied by changing input
-    expect(mockedSetValue).toHaveBeenCalledTimes(1);
-    expect(mockedSetValue).lastCalledWith('', '', { shouldDirty: true });
 
+    // Form has been dirtied by changing input
     input.blur();
     // Now it has finally been called to update the data
-    expect(mockedSetValue).toHaveBeenCalledTimes(2);
-    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa');
+    expect(mockedSetValue).toHaveBeenCalledTimes(1);
+    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa', {
+      shouldDirty: true,
+    });
   });
+
   it("doesn't call the dirty function on change if shouldDirtyOnChange is false", async () => {
     const { view } = renderView();
 
@@ -160,8 +164,11 @@ describe('ConnectedForm - useDebouncedField', () => {
 
     input.blur();
     expect(mockedSetValue).toHaveBeenCalledTimes(1);
-    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa');
+    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa', {
+      shouldDirty: true,
+    });
   });
+
   it('should update the "initial" value of the input based on a change to the `watchUpdateKeyName` value', async () => {
     const { view } = renderView();
     const input = view.getByRole('textbox') as HTMLInputElement;
@@ -175,7 +182,8 @@ describe('ConnectedForm - useDebouncedField', () => {
 
     expect(input.value).toEqual(mockChangeValue);
   });
-  it('should allow the form to be re-dirtied after a change to the `watchUpdateKeyName` value', async () => {
+
+  it('should allow the form to be re-dirtied after submission', async () => {
     const { view } = renderView({ shouldDirtyOnChange: true });
 
     const input = view.getByRole('textbox') as HTMLInputElement;
@@ -193,7 +201,9 @@ describe('ConnectedForm - useDebouncedField', () => {
     input.blur();
     // Now it has finally been called to update the data
     expect(mockedSetValue).toHaveBeenCalledTimes(2);
-    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa');
+    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa', {
+      shouldDirty: false,
+    });
 
     await act(async () => {
       fireEvent.click(changeButton);
@@ -207,12 +217,14 @@ describe('ConnectedForm - useDebouncedField', () => {
     expect(mockedSetValue).toHaveBeenCalledTimes(3);
     expect(mockedSetValue).lastCalledWith('', '', { shouldDirty: true });
   });
+
   it('can handle non-string values (aka a checkbox)', async () => {
     const { view } = renderCheckboxView();
 
     const input = view.getByRole('checkbox') as HTMLInputElement;
     expect(input.checked).toBe(false);
 
+    // inital value setting
     expect(mockedSetValue).toHaveBeenCalledTimes(0);
 
     input.focus();
@@ -223,7 +235,9 @@ describe('ConnectedForm - useDebouncedField', () => {
 
     input.blur();
 
-    expect(mockedSetValue).toHaveBeenLastCalledWith(mockCheckboxKey, true);
+    expect(mockedSetValue).toHaveBeenLastCalledWith(mockCheckboxKey, true, {
+      shouldDirty: true,
+    });
     expect(input.checked).toBe(true);
     expect(mockedSetValue).toHaveBeenCalledTimes(1);
 
@@ -235,7 +249,9 @@ describe('ConnectedForm - useDebouncedField', () => {
 
     input.blur();
 
-    expect(mockedSetValue).toHaveBeenLastCalledWith(mockCheckboxKey, false);
+    expect(mockedSetValue).toHaveBeenLastCalledWith(mockCheckboxKey, false, {
+      shouldDirty: true,
+    });
     expect(input.checked).toBe(false);
     expect(mockedSetValue).toHaveBeenCalledTimes(2);
   });

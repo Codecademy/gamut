@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
 import { TextArea } from '../../../Form';
@@ -38,6 +38,7 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
         await onChange(event);
       }}
       placeholder={field.placeholder}
+      rows={field.rows}
     />
   );
 };

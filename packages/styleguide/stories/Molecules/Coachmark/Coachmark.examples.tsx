@@ -5,7 +5,7 @@ import {
   FlexBox,
   Text,
 } from '@codecademy/gamut';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export const CoachmarkExample = (args: CoachmarkProps) => {
   const [shouldShow, setShouldShow] = useState(

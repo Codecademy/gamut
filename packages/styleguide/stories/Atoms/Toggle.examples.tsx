@@ -1,5 +1,6 @@
 import { Toggle } from '@codecademy/gamut';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as React from 'react';
 
 export const InteractiveInputToggle: React.FC = () => {
   const [checked, setChecked] = useState(false);

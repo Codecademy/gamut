@@ -1,8 +1,8 @@
-import { system } from '@codecademy/gamut-styles';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
 export const Example = styled.div(
-  system.css({
+  css({
     minHeight: '3rem',
     bg: 'navy',
     color: 'white',
@@ -12,4 +12,4 @@ export const Example = styled.div(
   })
 );
 
-export const RowExample = styled(Example)(system.css({ mb: 16 }));
+export const RowExample = styled(Example)(css({ mb: 16 }));

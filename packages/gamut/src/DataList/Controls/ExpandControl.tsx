@@ -1,5 +1,5 @@
 import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
-import React from 'react';
+import * as React from 'react';
 
 import { Rotation } from '../../Animation';
 import { FlexBox } from '../../Box/FlexBox';

@@ -1,24 +1,7 @@
 {
-  "extends": "nx/presets/npm.json",
-  "affected": {
-    "defaultBase": "main"
-  },
-  "workspaceLayout": {
-    "appsDir": "packages",
-    "libsDir": "packages"
-  },
-  "implicitDependencies": {
-    "yarn.lock": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
-    "tsconfig.base.json": "*",
-    "nx.json": "*"
-  },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/nx-cloud",
+      "runner": "nx-cloud",
       "options": {
         "cacheableOperations": ["build", "test", "verify", "build-storybook"],
         "parallel": 3,
@@ -27,31 +10,49 @@
       }
     }
   },
+  "extends": "nx/presets/npm.json",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "workspaceLayout": {
+    "appsDir": "packages",
+    "libsDir": "packages"
+  },
   "namedInputs": {
+    "babelConfig": ["{workspaceRoot}/babel.defaults.js"],
     "default": ["{projectRoot}/**/*"],
-    "prod": [
+    "production": [
+      "default",
       "!{projectRoot}/**/*.(test|spec).ts{,.snap}",
-      "!{projectRoot}/**/__tests__/**/*"
+      "!{projectRoot}/**/__tests__/**/*",
+      "!{projectRoot}/**/__fixtures__/**/*"
     ]
   },
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["prod", "^prod"]
+      "inputs": ["production", "^production", "babelConfig"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
+        "babelConfig"
+      ]
     }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/react"
   },
   "generators": {
     "@nrwl/js:library": {
       "buildable": true
     },
-    "@nrwl/react:library": {
+    "@nx/react:library": {
       "buildable": true,
       "publishable": true,
       "style": "@emotion/styled",
       "linter": "eslint"
     }
-  }
+  },
+  "$schema": "./node_modules/nx/schemas/nx-schema.json"
 }

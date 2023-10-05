@@ -1,5 +1,6 @@
 import cx from 'classnames';
-import React, { HTMLProps, ReactNode } from 'react';
+import { HTMLProps, ReactNode } from 'react';
+import * as React from 'react';
 
 import { ChildComponentDescriptor } from '../typings/react';
 import { omitProps } from '../utils/omitProps';

@@ -1,8 +1,9 @@
 # Set Gamut team as default reviewers for visibility
+
 * @codecademy/gamut
 
 # -- Documentation changes
-packages/styleguide/ @songstephen @Codecademy/gamut
+
+packages/styleguide/ @codecademy/gamut
 
 yarn.lock
-packages/gamut-labs

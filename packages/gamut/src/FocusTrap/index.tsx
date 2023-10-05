@@ -1,6 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { FocusOn } from 'react-focus-on';
 import { ReactFocusOnProps } from 'react-focus-on/dist/es5/types';
+
+import { WithChildrenProp } from '..';
 
 const focusOnStyles = {
   /**
@@ -9,7 +11,7 @@ const focusOnStyles = {
   display: 'contents',
 };
 
-export type FocusTrapProps = {
+export interface FocusTrapProps extends WithChildrenProp {
   className?: string;
   /**
    * Called when the FocusTrap requests to be closed via the escape key
@@ -34,7 +36,7 @@ export type FocusTrapProps = {
    * Passthrough for react-focus-on library props
    */
   focusOnProps?: ReactFocusOnProps;
-};
+}
 
 export const FocusTrap: React.FC<FocusTrapProps> = ({
   className,
