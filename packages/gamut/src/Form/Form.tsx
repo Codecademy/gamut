@@ -18,11 +18,7 @@ const StyledForm = styled('form', styledOptions<'form'>())(formSystemProps);
 export type FormProps = ComponentProps<typeof StyledForm>;
 
 export const Form: React.FC<FormProps> = forwardRef(
-  ({ method, ...props }, ref) => {
+  ({ method = 'post', ...props }, ref) => {
     return <StyledForm {...props} noValidate method={method} ref={ref} />;
   }
 );
-
-Form.defaultProps = {
-  method: 'post',
-};
