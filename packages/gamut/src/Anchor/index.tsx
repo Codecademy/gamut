@@ -63,11 +63,11 @@ const anchorVariants = variant({
       display: 'inline',
       whiteSpace: 'initial',
       textDecoration: 'underline',
-      [ButtonSelectors.HOVER]: {
-        color: 'primary',
+      [ButtonSelectors.OUTLINE]: {
+        display: 'none',
       },
       [ButtonSelectors.FOCUS_VISIBLE]: {
-        color: 'primary',
+        outline: 'currentColor auto 4px',
         textDecoration: 'underline',
       },
     },
