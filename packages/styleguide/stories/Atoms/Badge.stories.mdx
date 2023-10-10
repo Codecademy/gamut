@@ -36,7 +36,7 @@ export const BadgeTemplate = (args) => (
 
 ## Variants
 
-We support the following variants of Badges: `primary`, `secondary`, `tertiary`, `strokeContrast`, and `accent`.
+We support the following variants of Badges: `primary`, `secondary`, `tertiary`, and `accent`.
 
 - **Greyscale Badges** provide different levels of priority for the `primary`, `secondary`, and `tertiary` variants
 - **Accent colors** like `yellow` are meant to be used sparingly so they can stand out against other elements.
@@ -51,9 +51,6 @@ Additional variants should designed with both <LinkTo kind='Foundations/ColorMod
     {BadgeTemplate.bind({})}
   </Story>
   <Story name="tertiary" args={{ variant: 'tertiary' }}>
-    {BadgeTemplate.bind({})}
-  </Story>
-  <Story name="strokeContrast" args={{ variant: 'strokeContrast' }}>
     {BadgeTemplate.bind({})}
   </Story>
   <Story name="yellow" args={{ variant: 'yellow' }}>

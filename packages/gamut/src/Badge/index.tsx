@@ -34,12 +34,6 @@ const colorVariants = variant({
       color: 'text-disabled',
       bg: 'transparent',
     },
-    strokeContrast: {
-      border: 1,
-      borderColor: 'text',
-      color: 'text',
-      bg: 'transparent',
-    },
   },
 });
 
