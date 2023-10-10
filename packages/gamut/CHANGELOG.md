@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.7.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.7.4...@codecademy/gamut@55.7.5) (2023-10-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ### [55.7.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.7.3...@codecademy/gamut@55.7.4) (2023-10-10)
 
 ### Bug Fixes
