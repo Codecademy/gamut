@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.7.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.7.3...@codecademy/gamut@55.7.4) (2023-10-10)
+
+### Bug Fixes
+
+- **MenuItem_Anchor_tooltipTarget:** Focus state fixes ([28ccb9d](https://github.com/Codecademy/gamut/commit/28ccb9d552e856d2d9440d6a96e733806f7d3a86))
+
 ### [55.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.7.2...@codecademy/gamut@55.7.3) (2023-10-05)
 
 **Note:** Version bump only for package @codecademy/gamut
