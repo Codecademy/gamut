@@ -1,6 +1,7 @@
 import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import { ComponentProps, forwardRef } from 'react';
 
 const rows = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6 };
 
@@ -41,6 +42,7 @@ const gridProps = variance.create({
   },
 });
 
+// TODO - this should be swapped to states?
 const columnVariants = variant({
   variants: {
     fitContent: {
@@ -62,9 +64,14 @@ export type ColumnStyleProps = StyleProps<typeof columnProps>;
 
 export interface ColumnProps extends ColumnVariantProps, ColumnStyleProps {}
 
-export const Column = styled(
+const StyledColumn = styled(
   'div',
   styledOptions(columnProps.propNames)
 )<ColumnProps>(columnProps({ size: 12 }), columnVariants, columnProps);
 
-Column.defaultProps = { variant: 'fitContent' };
+export const Column = forwardRef<
+  HTMLDivElement,
+  ComponentProps<typeof StyledColumn>
+>(({ variant = 'fitContent', ...rest }, ref) => (
+  <StyledColumn variant={variant} ref={ref} {...rest} />
+));

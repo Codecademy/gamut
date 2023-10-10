@@ -48,16 +48,19 @@ const formGroupSpacing = variant({
   },
 });
 
-const FormGroupContainer = styled(Box)<StyleProps<typeof formGroupSpacing>>`
+const StyledFormGroupContainer = styled(Box)<
+  StyleProps<typeof formGroupSpacing>
+>`
   ${formGroupSpacing}
   position: relative;
   width: 100%;
   height: max-content;
 `;
 
-FormGroupContainer.defaultProps = {
-  pb: 8,
-  mb: 24,
+const FormGroupContainer: React.FC<
+  ComponentProps<typeof StyledFormGroupContainer>
+> = ({ pb = 8, mb = 24, ...rest }) => {
+  return <StyledFormGroupContainer pb={pb} mb={mb} {...rest} />;
 };
 
 export const FormGroup: React.FC<FormGroupProps> = ({

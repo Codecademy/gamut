@@ -43,13 +43,16 @@ export const Toggle = <Props extends ToggleProps>({
       >
         {!isButton && <ToggleInput {...toggleProps} />}
         <Circle
-          width="40%"
-          borderRadius="50%"
           bg="white"
-          position="absolute"
-          top="10%"
+          borderColor="background"
+          borderRadius="50%"
+          borderStyle="solid"
+          borderWidth="1px"
           bottom="10%"
           left={checked ? '55%' : '5%'}
+          position="absolute"
+          top="10%"
+          width="40%"
         />
       </ToggleTrack>
     </ToggleLabel>

@@ -6,6 +6,7 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import { ComponentProps, forwardRef } from 'react';
 
 import { sharedStates } from '../Box/props';
 import { resetStyles, Selectors } from '../ButtonBase/ButtonBase';
@@ -34,7 +35,7 @@ export interface ListProps extends ListStyleProps, StyleStateProps {
   as?: 'ul' | 'ol';
 }
 
-export const List = styled('ul', styledOptions<'ul'>())<ListProps>(
+const StyledList = styled('ul', styledOptions<'ul'>())<ListProps>(
   system.css({
     listStyle: 'none',
     width: 1,
@@ -57,11 +58,12 @@ export const List = styled('ul', styledOptions<'ul'>())<ListProps>(
   listProps
 );
 
-List.defaultProps = {
-  root: true,
-  context: true,
-  m: 0,
-};
+export const List = forwardRef<
+  HTMLUListElement,
+  ComponentProps<typeof StyledList>
+>(({ context = true, m = 0, root = true, ...rest }, ref) => (
+  <StyledList context={context} m={m} root={root} ref={ref} {...rest} />
+));
 
 const interactiveVariants = system.variant({
   base: {
@@ -166,7 +168,7 @@ export interface ListLinkProps extends ListItemProps {
   navlink?: boolean;
 }
 
-export const ListLink = styled('a', styledOptions<'a'>())<ListLinkProps>(
+const StyledListLink = styled('a', styledOptions<'a'>())<ListLinkProps>(
   resetStyles,
   interactiveVariants,
   activeStates,
@@ -175,9 +177,12 @@ export const ListLink = styled('a', styledOptions<'a'>())<ListLinkProps>(
   listProps
 );
 
-ListLink.defaultProps = {
-  zIndex: 1,
-};
+export const ListLink = forwardRef<
+  HTMLAnchorElement,
+  ComponentProps<typeof StyledListLink>
+>(({ zIndex = 1, ...rest }, ref) => (
+  <StyledListLink zIndex={zIndex} ref={ref} {...rest} />
+));
 
 export const ListButton = styled(
   'button',
