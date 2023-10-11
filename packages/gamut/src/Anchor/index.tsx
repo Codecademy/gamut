@@ -39,6 +39,7 @@ const anchorVariants = variant({
     position: 'relative',
     color: 'primary',
     whiteSpace: 'nowrap',
+    outline: 'none',
     [ButtonSelectors.HOVER]: {
       textDecoration: 'none',
       cursor: 'pointer',
@@ -61,7 +62,6 @@ const anchorVariants = variant({
       [ButtonSelectors.FOCUS_VISIBLE]: {
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',
-        outline: 'none',
       },
       ...outlineFocusVisible,
     },
@@ -84,7 +84,6 @@ const anchorVariants = variant({
       },
       [ButtonSelectors.FOCUS_VISIBLE]: {
         color: 'primary',
-        outline: 'none',
       },
       ...outlineFocusVisible,
     },
