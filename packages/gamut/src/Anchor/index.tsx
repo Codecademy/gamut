@@ -41,6 +41,9 @@ const anchorVariants = variant({
       textDecoration: 'none',
       color: 'text-disabled',
     },
+    [ButtonSelectors.FOCUS_VISIBLE]: {
+      outline: 'none',
+    },
     [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
       opacity: 1,
     },
@@ -63,11 +66,7 @@ const anchorVariants = variant({
       display: 'inline',
       whiteSpace: 'initial',
       textDecoration: 'underline',
-      [ButtonSelectors.OUTLINE]: {
-        display: 'none',
-      },
       [ButtonSelectors.FOCUS_VISIBLE]: {
-        outline: 'currentColor auto 4px',
         textDecoration: 'underline',
       },
     },
