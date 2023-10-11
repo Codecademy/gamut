@@ -72,7 +72,7 @@ const anchorVariants = variant({
       [ButtonSelectors.FOCUS_VISIBLE]: {
         outline: 'currentColor solid 2px',
         borderRadius: '1px',
-        outlineOffset: '3px',
+        outlineOffset: '1.5px',
         textDecoration: 'underline',
       },
     },
