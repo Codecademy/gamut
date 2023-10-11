@@ -11,6 +11,23 @@ export interface AnchorProps
   onClick?: HTMLProps<HTMLAnchorElement>['onClick'];
 }
 
+const outlineFocusVisible = {
+  [ButtonSelectors.OUTLINE]: {
+    content: "''",
+    position: 'absolute',
+    inset: -4,
+    borderRadius: '4px',
+    border: 2,
+    borderColor: 'primary',
+    opacity: 0,
+    zIndex: 0,
+  },
+
+  [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
+    opacity: 1,
+  },
+} as const;
+
 const anchorVariants = variant({
   base: {
     display: 'inline-block',
@@ -22,16 +39,6 @@ const anchorVariants = variant({
     position: 'relative',
     color: 'primary',
     whiteSpace: 'nowrap',
-    [ButtonSelectors.OUTLINE]: {
-      content: "''",
-      position: 'absolute',
-      inset: -4,
-      borderRadius: '4px',
-      border: 2,
-      borderColor: 'primary',
-      opacity: 0,
-      zIndex: 0,
-    },
     [ButtonSelectors.HOVER]: {
       textDecoration: 'none',
       cursor: 'pointer',
@@ -40,12 +47,6 @@ const anchorVariants = variant({
       cursor: 'not-allowed',
       textDecoration: 'none',
       color: 'text-disabled',
-    },
-    [ButtonSelectors.FOCUS_VISIBLE]: {
-      outline: 'none',
-    },
-    [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
-      opacity: 1,
     },
   },
   variants: {
@@ -60,13 +61,18 @@ const anchorVariants = variant({
       [ButtonSelectors.FOCUS_VISIBLE]: {
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',
+        outline: 'none',
       },
+      ...outlineFocusVisible,
     },
     inline: {
       display: 'inline',
       whiteSpace: 'initial',
       textDecoration: 'underline',
       [ButtonSelectors.FOCUS_VISIBLE]: {
+        outline: 'currentColor solid 2px',
+        borderRadius: '1px',
+        outlineOffset: '3px',
         textDecoration: 'underline',
       },
     },
@@ -78,7 +84,9 @@ const anchorVariants = variant({
       },
       [ButtonSelectors.FOCUS_VISIBLE]: {
         color: 'primary',
+        outline: 'none',
       },
+      ...outlineFocusVisible,
     },
   },
 });
