@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import * as React from 'react';
 import { DocsContext, Title } from '@storybook/addon-docs/blocks';
-import { Figma } from 'storybook-addon-designs/blocks';
 
 import { Parameters } from '@storybook/addons';
 import { useNavigation } from '../Navigation/NavigationProvider';
@@ -18,6 +17,7 @@ import { BreadCrumbs } from '../Navigation/BreadCrumbs';
 import { OpenIcon } from '@codecademy/gamut-icons';
 import { StatusIndicator } from './StatusIndicator';
 import { Background } from '@codecademy/gamut-styles/src';
+import { FigmaEmbed } from './FigmaEmbed';
 
 const isLocalhost = globalThis.location?.toString().includes('localhost');
 
@@ -123,11 +123,7 @@ export const DocsPage: React.FC = ({ children }) => {
             </GridBox>
           </Background>
         )}
-        {design?.url && (
-          <GridBox mb={32}>
-            <Figma height="56.25%" collapsable url={design?.url} />
-          </GridBox>
-        )}
+        {design?.url && <FigmaEmbed url={design.url} />}
         {children}
       </ContentContainer>
     </Background>
