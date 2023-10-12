@@ -1,4 +1,4 @@
-import { styledOptions, system } from '@codecademy/gamut-styles';
+import { css, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { forwardRef, HTMLProps, MutableRefObject } from 'react';
 
@@ -37,7 +37,7 @@ export enum Selectors {
   FOCUS_VISIBLE = '&:focus-visible',
 }
 
-export const resetStyles = system.css({
+export const resetStyles = css({
   background: 'none',
   boxShadow: 'none',
   border: 'none',

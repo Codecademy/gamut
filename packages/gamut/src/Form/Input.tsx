@@ -104,7 +104,19 @@ const getInputState = (error: boolean, valid: boolean) => {
 };
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
-  ({ error, className, id, valid, as: As, icon: Icon, ...rest }, ref) => {
+  (
+    {
+      error,
+      className,
+      id,
+      valid,
+      as: As,
+      icon: IconSvg,
+      type = 'text',
+      ...rest
+    },
+    ref
+  ) => {
     const [activatedStyle, setActivatedStyle] = useState(false);
 
     const { color, icon } = inputStates[
@@ -121,43 +133,40 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     };
 
     const AsComponent = As || InputElement;
-    const ShownIcon = Icon || icon;
+    const ShownIcon = IconSvg || icon;
 
     return (
       <Box
-        display={rest.type === 'hidden' ? 'none' : undefined}
+        display={type === 'hidden' ? 'none' : undefined}
         position="relative"
         color={color}
       >
         <AsComponent
           {...rest}
+          className={className}
+          icon={error || valid || !!IconSvg}
           id={id || rest.htmlFor}
+          onChange={changeHandler}
           ref={ref}
+          type={type}
           variant={conditionalStyleState(
             Boolean(error),
             rest.activated !== undefined ? rest.activated : activatedStyle
           )}
-          icon={error || valid || !!Icon}
-          className={className}
-          onChange={changeHandler}
         />
         {!!ShownIcon && (
           <FlexBox
-            pr={Icon ? 12 : 16}
+            pr={IconSvg ? 12 : 16}
             position="absolute"
             alignItems="center"
             right="0"
             top="0"
             bottom="0"
           >
-            <ShownIcon size={Icon ? 24 : 16} aria-hidden />
+            <ShownIcon size={IconSvg ? 24 : 16} aria-hidden />
           </FlexBox>
         )}
       </Box>
     );
   }
 );
-
-Input.defaultProps = {
-  type: 'text',
-};

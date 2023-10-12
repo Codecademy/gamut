@@ -66,7 +66,7 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
   );
 };
 
-export const SkipToContentTarget = styled.div(({ theme, children }) => {
+const StyledSkipToContentTarget = styled.div(({ theme, children }) => {
   const offset = theme.elements.headerHeight;
   if (children) {
     return css`
@@ -80,7 +80,20 @@ export const SkipToContentTarget = styled.div(({ theme, children }) => {
   `;
 });
 
-SkipToContentTarget.defaultProps = {
-  tabIndex: -1,
-  ...({ 'data-testid': 'skip-to-content-target' } as Record<string, string>),
+type DataTestId = { 'data-testid'?: string };
+
+export const SkipToContentTarget: React.FC<
+  React.ComponentProps<typeof StyledSkipToContentTarget> & DataTestId
+> = ({
+  tabIndex = -1,
+  'data-testid': dataTestId = 'skip-to-content-target',
+  ...rest
+}) => {
+  return (
+    <StyledSkipToContentTarget
+      data-testid={dataTestId}
+      tabIndex={tabIndex}
+      {...rest}
+    />
+  );
 };

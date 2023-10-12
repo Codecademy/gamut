@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.4.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.4.2...@codecademy/gamut-icons@9.4.3) (2023-10-10)
+
+### Bug Fixes
+
+- **Icon:** make AiChatSparkIcon thicker ([60bfc9a](https://github.com/Codecademy/gamut/commit/60bfc9a1e5abc1de8913fd2e5bff1f66c60a2951))
+
 ### [9.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.4.1...@codecademy/gamut-icons@9.4.2) (2023-09-14)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

@@ -23,7 +23,7 @@ export const parameters = {
         'Atoms',
         'Molecules',
         'Organisms',
-        'Brand Labs',
+        'Meta',
         'UX Writing',
         [
           'About',
@@ -41,7 +41,7 @@ export const parameters = {
             'Tooltips',
           ],
         ],
-        'Meta',
+        'Brand Labs',
         'Deprecated',
       ],
       // Fallback ordering

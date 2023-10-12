@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.7.5...@codecademy/gamut@55.8.0) (2023-10-11)
+
+### Features
+
+- **Anchor:** bold standard ([bc91c3a](https://github.com/Codecademy/gamut/commit/bc91c3a31b08b28f9337f25e7d371cf159185661))
+
+### [55.7.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.7.4...@codecademy/gamut@55.7.5) (2023-10-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.7.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.7.3...@codecademy/gamut@55.7.4) (2023-10-10)
+
+### Bug Fixes
+
+- **MenuItem_Anchor_tooltipTarget:** Focus state fixes ([28ccb9d](https://github.com/Codecademy/gamut/commit/28ccb9d552e856d2d9440d6a96e733806f7d3a86))
+
+### [55.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.7.2...@codecademy/gamut@55.7.3) (2023-10-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.7.1...@codecademy/gamut@55.7.2) (2023-10-03)
+
+### Bug Fixes
+
+- **Toggle:** add border to dark mode circle ([ac407ff](https://github.com/Codecademy/gamut/commit/ac407ff145a7270b96257a666cedc919a054aed8))
+
 ### [55.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.7.0...@codecademy/gamut@55.7.1) (2023-09-27)
 
 **Note:** Version bump only for package @codecademy/gamut

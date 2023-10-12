@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.5.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.6...@codecademy/styleguide@66.5.7) (2023-10-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.5.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.5...@codecademy/styleguide@66.5.6) (2023-10-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.5.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.4...@codecademy/styleguide@66.5.5) (2023-10-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.5.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.3...@codecademy/styleguide@66.5.4) (2023-10-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.2...@codecademy/styleguide@66.5.3) (2023-10-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.1...@codecademy/styleguide@66.5.2) (2023-10-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [66.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.0...@codecademy/styleguide@66.5.1) (2023-09-27)
 
 **Note:** Version bump only for package @codecademy/styleguide
