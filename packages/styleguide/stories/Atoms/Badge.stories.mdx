@@ -37,10 +37,10 @@ export const BadgeTemplate = (args) => (
 
 We support the following variants of Badges: `primary`, `secondary`, `tertiary`, and `accent`.
 
-- **Greyscale Badges** provide different levels of priority for the `primary`, `secondary`, and `tertiary` variants
-- **Accent colors** like `yellow` are meant to be used sparingly so they can stand out against other elements.
+- **Greyscale Badges** provide different levels of priority for the `primary`, `secondary`, and `tertiary` variants.
+- **Accent colors** like `accent` are meant to be used sparingly so they can stand out against other elements.
 
-Additional variants should designed with both <LinkTo kind='Foundations/ColorMode'>ColorModes</LinkTo> in mind. For example, the `yellow` and `grey` variants work against both light and dark backgrounds, while the `default` and `stroke` variants both adapt to their ColorMode (which you can check out by using the toolbar at the top of this page!)
+Additional variants should designed with both <LinkTo kind='Foundations/ColorMode'>ColorModes</LinkTo> in mind. For example, the `accent` and `secondary` variants work against both light and dark backgrounds, while the `primary` and `tertiary` variants both adapt to their ColorMode (which you can check out by using the toolbar at the top of this page!)
 
 <Canvas>
   <Story name="primary" args={{ children: 'primary' }}>
@@ -52,7 +52,7 @@ Additional variants should designed with both <LinkTo kind='Foundations/ColorMod
   <Story name="tertiary" args={{ variant: 'tertiary' }}>
     {BadgeTemplate.bind({})}
   </Story>
-  <Story name="yellow" args={{ variant: 'yellow' }}>
+  <Story name="accent" args={{ variant: 'accent' }}>
     {BadgeTemplate.bind({})}
   </Story>
 </Canvas>
@@ -61,13 +61,13 @@ Additional variants should designed with both <LinkTo kind='Foundations/ColorMod
 
 We have two `size` options, which should be used according to their context:
 
-- Use `default` when the `Badge` is a standalone entitity
+- Use `primary` when the `Badge` is a standalone entitity
 - Use `sm` when the `Badge` is inline with other components such as <LinkTo kind='Typography/Text'>Text</LinkTo>
 
 <Canvas>
   <Story
     name="default size"
-    args={{ variant: 'stroke', children: 'default size' }}
+    args={{ variant: 'tertiary', children: 'default size' }}
   >
     {BadgeTemplate.bind({})}
   </Story>
