@@ -10,7 +10,7 @@ import { MiniDeleteIcon, SearchIcon } from '@codecademy/gamut-icons';
 
 const buttons = [FillButton, IconButton, StrokeButton, TextButton];
 const variants = ['primary', 'secondary'] as const;
-const sizes = ['normal', 'small'] as const;
+const sizes = ['normal', 'small', 'large'] as const;
 
 export const ButtonScale = ({ mode }: { mode: 'dark' | 'light' }) => {
   const grid = buttons.map(({ displayName }) => (
