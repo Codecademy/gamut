@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.4.3...@codecademy/gamut-icons@9.5.0) (2023-10-30)
+
+### Features
+
+- Add office building double icon ([a015c00](https://github.com/Codecademy/gamut/commit/a015c00253705846b2da52e26a26c28163e96a47))
+
 ### [9.4.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.4.2...@codecademy/gamut-icons@9.4.3) (2023-10-10)
 
 ### Bug Fixes
