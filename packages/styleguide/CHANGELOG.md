@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.11...@codecademy/styleguide@66.6.0) (2023-10-31)
+
+### Features
+
+- **EditableIcon:** Add SparkleIcon, BugIcon, ThumbsUpFilledIcon, ThumbsDownFilledIcon, and OpenAIFullIcon ([51c6ec0](https://github.com/Codecademy/gamut/commit/51c6ec09509e2f55176427bc2a54ac708411383a))
+
 ### [66.5.11](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.10...@codecademy/styleguide@66.5.11) (2023-10-30)
 
 **Note:** Version bump only for package @codecademy/styleguide

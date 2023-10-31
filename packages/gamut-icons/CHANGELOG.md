@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.6.0...@codecademy/gamut-icons@9.7.0) (2023-10-31)
+
+### Features
+
+- **EditableIcon:** Add SparkleIcon, BugIcon, ThumbsUpFilledIcon, ThumbsDownFilledIcon, and OpenAIFullIcon ([51c6ec0](https://github.com/Codecademy/gamut/commit/51c6ec09509e2f55176427bc2a54ac708411383a))
+
 ## [9.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.5.0...@codecademy/gamut-icons@9.6.0) (2023-10-30)
 
 ### Features
