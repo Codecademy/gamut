@@ -192,6 +192,13 @@ export const layout = {
   ...flexItems,
 } as const;
 
+export const list = {
+  listStyle: { property: 'listStyle' },
+  listStyleType: { property: 'listStyleType' },
+  listStylePosition: { property: 'listStylePosition' },
+  listStyleImage: { property: 'listStyleImage' },
+} as const;
+
 export const typography = {
   fontFamily: { property: 'fontFamily', scale: 'fontFamily' },
   fontWeight: { property: 'fontWeight', scale: 'fontWeight' },
@@ -257,4 +264,5 @@ export const all = {
   ...border,
   ...background,
   ...color,
+  ...list,
 };

@@ -13,6 +13,7 @@ export const color = variance.create(PROPERTIES.color);
 export const shadow = variance.create(PROPERTIES.shadows);
 export const space = variance.create(PROPERTIES.space);
 export const border = variance.create(PROPERTIES.border);
+export const list = variance.create(PROPERTIES.list);
 
 /** Sub Groups */
 export const padding = variance.create(PROPERTIES.padding);
