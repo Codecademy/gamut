@@ -30,8 +30,8 @@ const colorVariants = variant({
     },
     tertiary: {
       border: 1,
-      borderColor: 'secondary',
-      color: 'secondary',
+      borderColor: 'text-secondary',
+      color: 'text-secondary',
       bg: 'transparent',
     },
   },
