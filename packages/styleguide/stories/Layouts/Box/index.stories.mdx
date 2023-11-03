@@ -85,3 +85,25 @@ Positioning elements and maintaining stacking contexts can be annoying, especial
     )}
   </Story>
 </Canvas>
+
+### Lists
+
+When presenting multiple boxes as a group, it is often necessary to render them as a list to make the content more accessible. An outer `<Box />` can be rendered as a `<ul />` or `<ol />` element, and its `<Box />` children can be rendered as `<li />` elements. The list styles can also be adjusted via the `listStyle`, `listStyleType`, `listStylePosition`, and `listStyleImage` props.
+
+<Canvas>
+  <Story name="Lists">
+    {() => (
+      <Box as="ul" listStyle="none" p={16} border={1}>
+        <Box as="li" border={1} p={8} my={8}>
+          list item 1
+        </Box>
+        <Box as="li" border={1} p={8} my={8}>
+          list item 2
+        </Box>
+        <Box as="li" border={1} p={8} my={8}>
+          and so on
+        </Box>
+      </Box>
+    )}
+  </Story>
+</Canvas>

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.6.0...@codecademy/styleguide@66.7.0) (2023-11-02)
+
+### Features
+
+- add listStyle props to Box and Column ([77d2f13](https://github.com/Codecademy/gamut/commit/77d2f138ae5dccf465be0f414b372b8d7bc0d917))
+
 ## [66.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.11...@codecademy/styleguide@66.6.0) (2023-10-31)
 
 ### Features
