@@ -26,12 +26,12 @@ const colorVariants = variant({
     },
     secondary: {
       bg: `text-disabled`,
-      textColor: 'white',
+      textColor: 'background',
     },
     tertiary: {
       border: 1,
-      borderColor: 'text-disabled',
-      color: 'text-disabled',
+      borderColor: 'text-secondary',
+      color: 'text-secondary',
       bg: 'transparent',
     },
   },
