@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.9.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.9.0...@codecademy/gamut@55.9.1) (2023-11-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [55.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.8.5...@codecademy/gamut@55.9.0) (2023-11-02)
+
+### Features
+
+- add listStyle props to Box and Column ([77d2f13](https://github.com/Codecademy/gamut/commit/77d2f138ae5dccf465be0f414b372b8d7bc0d917))
+
 ### [55.8.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.8.4...@codecademy/gamut@55.8.5) (2023-10-31)
 
 **Note:** Version bump only for package @codecademy/gamut
