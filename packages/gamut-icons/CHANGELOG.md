@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.7.1...@codecademy/gamut-icons@9.8.0) (2023-11-07)
+
+### Features
+
+- **StopSignIcon:** added StopSignIcon ([5e7df13](https://github.com/Codecademy/gamut/commit/5e7df130c3c927b4289443e2f1605140d511bee3))
+
 ### [9.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.7.0...@codecademy/gamut-icons@9.7.1) (2023-11-02)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
