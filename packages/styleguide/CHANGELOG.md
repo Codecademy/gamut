@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.7.3...@codecademy/styleguide@66.8.0) (2023-11-08)
+
+### Features
+
+- **Button:** add large size ([5e0a811](https://github.com/Codecademy/gamut/commit/5e0a811e10ce3a9e6180719de23e778d4f461b45))
+
 ### [66.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.7.2...@codecademy/styleguide@66.7.3) (2023-11-07)
 
 **Note:** Version bump only for package @codecademy/styleguide
