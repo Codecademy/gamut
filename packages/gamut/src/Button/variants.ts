@@ -117,6 +117,13 @@ export const sizeVariants = variant({
       py: 4,
       px: 8,
     },
+    large: {
+      fontSize: 18,
+      height: 56,
+      minWidth: 40,
+      py: 4,
+      px: 16,
+    },
   },
 });
 
@@ -131,6 +138,10 @@ export const iconSizeVariants = variant({
     small: {
       height: 32,
       width: 32,
+    },
+    large: {
+      width: 56,
+      height: 56,
     },
   },
 });
