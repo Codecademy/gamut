@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.8.0...@codecademy/gamut-icons@9.9.0) (2023-11-09)
+
+### Features
+
+- **Icons:** add miniCopyIcon ([24aee8c](https://github.com/Codecademy/gamut/commit/24aee8c3569804dc2a10342e237c3b9e28a03648))
+
 ## [9.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.7.1...@codecademy/gamut-icons@9.8.0) (2023-11-07)
 
 ### Features
