@@ -67,11 +67,11 @@ We have two `size` options, which should be used according to their context:
 <Canvas>
   <Story
     name="default size"
-    args={{ variant: 'tertiary', children: 'default size' }}
+    args={{ children: 'default size' }}
   >
     {BadgeTemplate.bind({})}
   </Story>
-  <Story name="small" args={{ size: 'sm', children: 'sm size' }}>
+  <Story name="small" args={{ children: 'sm size', size: 'sm', variant: 'tertiary' }}>
     {BadgeTemplate.bind({})}
   </Story>
 </Canvas>
