@@ -65,13 +65,13 @@ We have two `size` options, which should be used according to their context:
 - Use `sm` when the `Badge` is inline with other components such as <LinkTo kind='Typography/Text'>Text</LinkTo>
 
 <Canvas>
-  <Story
-    name="default size"
-    args={{ children: 'default size' }}
-  >
+  <Story name="default size" args={{ children: 'default size' }}>
     {BadgeTemplate.bind({})}
   </Story>
-  <Story name="small" args={{ children: 'sm size', size: 'sm', variant: 'tertiary' }}>
+  <Story
+    name="small"
+    args={{ children: 'sm size', size: 'sm', variant: 'tertiary' }}
+  >
     {BadgeTemplate.bind({})}
   </Story>
 </Canvas>
