@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.8.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.4...@codecademy/styleguide@66.8.5) (2023-11-30)
+
+### Bug Fixes
+
+- **Badge:** color of secondary badges ([a9b41ba](https://github.com/Codecademy/gamut/commit/a9b41ba7e17c6a309e09067506ddc2a7ebdc7f44))
+
 ### [66.8.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.3...@codecademy/styleguide@66.8.4) (2023-11-27)
 
 **Note:** Version bump only for package @codecademy/styleguide
