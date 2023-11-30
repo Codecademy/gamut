@@ -15,7 +15,6 @@ jobs:
       - uses: Codecademy/run-on-yarn@v1.2.0
         with:
           node-version: 16
-      - run: yarn nx reset
       - run: yarn build
       - run: yarn ${{ matrix.command }}
 
