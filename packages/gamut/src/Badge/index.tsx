@@ -25,7 +25,7 @@ const colorVariants = variant({
       textColor: 'navy',
     },
     secondary: {
-      bg: `text-disabled`,
+      bg: 'text-secondary',
       textColor: 'background',
     },
     tertiary: {
