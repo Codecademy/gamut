@@ -12,5 +12,5 @@ _UI Icons for the Gamut component library_
 
 ## Icon Guidelines
 
-1. All icons must be square
-2. All Icons should ideally be designed inside of a 16x16 pixel grid
+1. All icons must be square.
+2. All Icons should ideally be designed inside of a 16x16 pixel grid.
