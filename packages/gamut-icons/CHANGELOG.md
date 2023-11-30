@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.12.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.11.1...@codecademy/gamut-icons@9.12.0) (2023-11-30)
+
+### Features
+
+- **Icons:** add bookBookmarkIcon ([4c0f6ff](https://github.com/Codecademy/gamut/commit/4c0f6ff7b8fd95c3d4035c2a1143b2f239fe5b5b))
+
 ### [9.11.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.11.0...@codecademy/gamut-icons@9.11.1) (2023-11-27)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
