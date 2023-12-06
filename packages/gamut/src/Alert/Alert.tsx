@@ -99,17 +99,15 @@ export const Alert: React.FC<AlertProps> = ({
   const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
 
   const ctaButton = cta && Boolean(cta.children ?? cta.text) && (
-    <Box gridColumn={['2', , 'auto']} gridRow={['2', , 'auto']}>
-      <FillButton
-        {...cta}
-        mode={buttonColorMode}
-        variant="secondary"
-        size="small"
-        tabIndex={tabIndex}
-      >
-        {cta.children ?? cta.text}
-      </FillButton>
-    </Box>
+    <FillButton
+      {...cta}
+      mode={buttonColorMode}
+      variant="secondary"
+      size="small"
+      tabIndex={tabIndex}
+    >
+      {cta.children ?? cta.text}
+    </FillButton>
   );
 
   const AlertWrapper = isSubtleVariant ? AlertBox : AlertBanner;
@@ -133,7 +131,13 @@ export const Alert: React.FC<AlertProps> = ({
         {isInline ? children : floatingContent}
       </CollapsableContent>
       <Box>{expandButton}</Box>
-      <Box alignSelf="center">{ctaButton}</Box>
+      <Box
+        alignSelf="center"
+        gridColumn={isInline ? ['2', , 'auto'] : 'auto'}
+        gridRow={isInline ? ['2', , 'auto'] : 'auto'}
+      >
+        {ctaButton}
+      </Box>
       {onClose && (
         <IconButton
           tabIndex={tabIndex}
