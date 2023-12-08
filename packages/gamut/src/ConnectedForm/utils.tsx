@@ -1,6 +1,3 @@
-import { padding } from '@codecademy/gamut-styles/dist/variance/props';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import { isNull, isUndefined, omit } from 'lodash';
 import {
   ChangeEvent,
@@ -17,7 +14,6 @@ import {
   useFormContext,
 } from 'react-hook-form';
 
-import { FlexBox } from '../Box';
 import {
   ConnectedForm,
   ConnectedFormGroup,

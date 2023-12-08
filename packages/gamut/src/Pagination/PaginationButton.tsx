@@ -12,11 +12,13 @@ import {
 } from './styles';
 
 const PaginationTextButtonInner = createButtonComponent(
+  'Text',
   paginationTextButtonStates,
   paginationTextVariant
 );
 
 const PaginationStrokeButtonInner = createButtonComponent(
+  'Stroke',
   paginationStrokeButtonStates,
   paginationStrokeVariant
 );

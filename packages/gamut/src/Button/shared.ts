@@ -109,17 +109,17 @@ export interface ButtonBaseProps
   as?: never;
   mode?: ColorModes;
 }
-export interface IconInnerButtonProps extends ButtonBaseProps {
-  'aria-label': string;
-}
+export interface IconInnerButtonProps extends ButtonBaseProps {}
 
 export interface IconButtonProps extends IconInnerButtonProps {
   icon: React.ComponentType<GamutIconProps>;
 }
 
 export interface ButtonIconVariantProps
-  extends Partial<Pick<IconButtonProps, 'icon'>> {
+  extends ButtonBaseProps,
+    Partial<Pick<IconButtonProps, 'icon'>> {
   iconSide?: 'right' | 'left';
+  'aria-label'?: string;
 }
 
 export type ButtonProps =
