@@ -133,19 +133,29 @@ export const createButtonComponent = <P>(
   buttonType: ButtonTypes,
   ...args: (<T extends ThemeProps>(props: T) => CSSObject)[]
 ) => {
-  const styledButtonProps = {
+  if (buttonType === 'CTA') {
+    return styled(ButtonBase)<ButtonBaseProps & P>(
+      fontSmoothPixel,
+      modeColorProps,
+      buttonStyles,
+      ...args,
+      buttonProps
+    );
+  }
+  if (buttonType === 'Icon') {
+    return styled(ButtonBase)<IconInnerButtonProps & P>(
+      fontSmoothPixel,
+      modeColorProps,
+      buttonStyles,
+      ...args,
+      buttonProps
+    );
+  }
+  return styled(ButtonBase)<ButtonIconVariantProps & P>(
     fontSmoothPixel,
     modeColorProps,
     buttonStyles,
     ...args,
-    buttonProps,
-  };
-
-  if (buttonType === 'CTA') {
-    return styled(ButtonBase)<ButtonBaseProps & P>(...styledButtonProps);
-  }
-  if (buttonType === 'Icon') {
-    return styled(ButtonBase)<IconInnerButtonProps & P>(...styledButtonProps);
-  }
-  return styled(ButtonBase)<ButtonIconVariantProps & P>(...styledButtonProps);
+    buttonProps
+  );
 };
