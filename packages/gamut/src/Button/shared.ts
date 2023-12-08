@@ -1,3 +1,4 @@
+import { GamutIconProps } from '@codecademy/gamut-icons';
 import {
   ColorModes,
   fontSmoothPixel,
@@ -99,7 +100,7 @@ export const buttonStyles = system.css({
   },
 });
 
-export interface ButtonProps
+export interface ButtonBaseProps
   extends ComponentProps<typeof ButtonBase>,
     StyleProps<typeof buttonProps> {
   onClick?: HTMLProps<HTMLButtonElement>['onClick'];
@@ -108,14 +109,43 @@ export interface ButtonProps
   as?: never;
   mode?: ColorModes;
 }
+export interface IconInnerButtonProps extends ButtonBaseProps {
+  'aria-label': string;
+}
+
+export interface IconButtonProps extends IconInnerButtonProps {
+  icon: React.ComponentType<GamutIconProps>;
+}
+
+export interface ButtonIconVariantProps
+  extends Partial<Pick<IconButtonProps, 'icon'>> {
+  iconSide?: 'right' | 'left';
+}
+
+export type ButtonProps =
+  | ButtonBaseProps
+  | IconButtonProps
+  | ButtonIconVariantProps;
+
+export type ButtonTypes = 'CTA' | 'Icon' | 'Fill' | 'Stroke' | 'Text';
 
 export const createButtonComponent = <P>(
+  buttonType: ButtonTypes,
   ...args: (<T extends ThemeProps>(props: T) => CSSObject)[]
-) =>
-  styled(ButtonBase)<ButtonProps & P>(
+) => {
+  const styledButtonProps = {
     fontSmoothPixel,
     modeColorProps,
     buttonStyles,
     ...args,
-    buttonProps
-  );
+    buttonProps,
+  };
+
+  if (buttonType === 'CTA') {
+    return styled(ButtonBase)<ButtonBaseProps & P>(...styledButtonProps);
+  }
+  if (buttonType === 'Icon') {
+    return styled(ButtonBase)<IconInnerButtonProps & P>(...styledButtonProps);
+  }
+  return styled(ButtonBase)<ButtonIconVariantProps & P>(...styledButtonProps);
+};
