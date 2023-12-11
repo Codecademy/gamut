@@ -103,6 +103,7 @@ export const buttonStyles = system.css({
 export interface ButtonBaseProps
   extends ComponentProps<typeof ButtonBase>,
     StyleProps<typeof buttonProps> {
+  'aria-label'?: string;
   onClick?: HTMLProps<HTMLButtonElement>['onClick'];
   variant?: typeof buttonVariants[number];
   size?: 'normal' | 'small' | 'large';
@@ -114,21 +115,16 @@ export interface ButtonBaseProps
 export interface CTAIconTestProps extends ButtonBaseProps {
   icon?: never;
 }
-export interface IconInnerButtonProps extends ButtonBaseProps {
-  'aria-label': string;
-}
-
-export interface IconButtonProps extends IconInnerButtonProps {
+export interface IconButtonProps extends ButtonBaseProps {
   icon: React.ComponentType<GamutIconProps>;
 }
 
 export interface ButtonIconVariantProps extends ButtonBaseProps {
-  'aria-label'?: string;
   iconSide?: 'right' | 'left';
 }
 
 export type ButtonProps =
-  | ButtonBaseProps
+  | CTAIconTestProps
   | IconButtonProps
   | ButtonIconVariantProps;
 
@@ -148,7 +144,7 @@ export const createButtonComponent = <P>(
     );
   }
   if (buttonType === 'Icon') {
-    return styled(ButtonBase)<IconInnerButtonProps & P>(
+    return styled(ButtonBase)<ButtonBaseProps & P>(
       fontSmoothPixel,
       modeColorProps,
       buttonStyles,
