@@ -10,10 +10,3 @@ export const TextButtonAgain = createButtonComponent2(
   textButtonVariants,
   sizeVariants
 );
-
-const Test = () => (
-  <>
-    <TextButton variant="no" onClick={() => void} />
-    <TextButtonAgain />
-  </>
-);
