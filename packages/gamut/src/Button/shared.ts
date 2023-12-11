@@ -108,18 +108,23 @@ export interface ButtonBaseProps
   size?: 'normal' | 'small' | 'large';
   as?: never;
   mode?: ColorModes;
+  icon?: React.ComponentType<GamutIconProps>;
 }
-export interface IconInnerButtonProps extends ButtonBaseProps {}
+
+export interface CTAIconTestProps extends ButtonBaseProps {
+  icon?: never;
+}
+export interface IconInnerButtonProps extends ButtonBaseProps {
+  'aria-label': string;
+}
 
 export interface IconButtonProps extends IconInnerButtonProps {
   icon: React.ComponentType<GamutIconProps>;
 }
 
-export interface ButtonIconVariantProps
-  extends ButtonBaseProps,
-    Partial<Pick<IconButtonProps, 'icon'>> {
-  iconSide?: 'right' | 'left';
+export interface ButtonIconVariantProps extends ButtonBaseProps {
   'aria-label'?: string;
+  iconSide?: 'right' | 'left';
 }
 
 export type ButtonProps =
@@ -134,7 +139,7 @@ export const createButtonComponent = <P>(
   ...args: (<T extends ThemeProps>(props: T) => CSSObject)[]
 ) => {
   if (buttonType === 'CTA') {
-    return styled(ButtonBase)<ButtonBaseProps & P>(
+    return styled(ButtonBase)<CTAIconTestProps & P>(
       fontSmoothPixel,
       modeColorProps,
       buttonStyles,
@@ -151,6 +156,7 @@ export const createButtonComponent = <P>(
       buttonProps
     );
   }
+
   return styled(ButtonBase)<ButtonIconVariantProps & P>(
     fontSmoothPixel,
     modeColorProps,
