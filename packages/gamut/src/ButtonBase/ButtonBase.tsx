@@ -1,6 +1,6 @@
 import { css, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { forwardRef, HTMLProps, MutableRefObject } from 'react';
+import { ComponentProps, forwardRef, HTMLProps, MutableRefObject } from 'react';
 
 export type ButtonBaseElements = HTMLAnchorElement | HTMLButtonElement;
 export type ButtonBaseRef =
@@ -55,12 +55,21 @@ export const resetStyles = css({
 });
 
 const ResetElement = styled('button', styledOptions<'button'>())(resetStyles);
+const ResetElementAnchor = styled('a', styledOptions<'a'>())(resetStyles);
+
+type ButtonAsButton = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  href?: never;
+};
+
+type ButtonAsExternal = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+  href?: string;
+};
 
 export const ButtonBase = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
-  any
->(({ href, disabled, children, role, type = 'button', ...rest }, ref) => {
-  if (href == null || disabled) {
+  ButtonAsButton | ButtonAsExternal
+>((props, ref) => {
+  if (props?.href == null || disabled) {
     return (
       <ResetElement
         {...rest}
@@ -76,7 +85,7 @@ export const ButtonBase = forwardRef<
   }
 
   return (
-    <ResetElement
+    <ResetElementAnchor
       {...rest}
       ref={ref as MutableRefObject<HTMLAnchorElement>}
       as="a"
@@ -85,6 +94,6 @@ export const ButtonBase = forwardRef<
       {...rest}
     >
       {children}
-    </ResetElement>
+    </ResetElementAnchor>
   );
 });

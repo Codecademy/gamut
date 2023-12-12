@@ -99,9 +99,7 @@ export const buttonStyles = system.css({
   },
 });
 
-export interface ButtonProps
-  extends ComponentProps<typeof ButtonBase>,
-    StyleProps<typeof buttonProps> {
+export interface ButtonProps {
   onClick?: HTMLProps<HTMLButtonElement>['onClick'];
   variant?: typeof buttonVariants[number];
   size?: 'normal' | 'small' | 'large';
@@ -109,13 +107,15 @@ export interface ButtonProps
   mode?: ColorModes;
 }
 
-export const createButtonComponent = <P>(
-  ...args: (<T extends ThemeProps>(props: T) => CSSObject)[]
+export const createButtonComponent = <StyleType, SizeType>(
+  styleVariants: <T extends ThemeProps>(props: T) => CSSObject,
+  sizeVariants: <T extends ThemeProps>(props: T) => CSSObject
 ) =>
-  styled(ButtonBase)<ButtonProps & P>(
+  styled('button')<ButtonProps & StyleType & SizeType>(
     fontSmoothPixel,
     modeColorProps,
     buttonStyles,
-    ...args,
+    styleVariants,
+    sizeVariants,
     buttonProps
   );
