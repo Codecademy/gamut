@@ -5,3 +5,5 @@ export const StrokeButton = createButtonComponent(
   sizeVariants,
   strokeButtonVariants
 );
+
+const Hey = () => <StrokeButton>Hey</StrokeButton>;
