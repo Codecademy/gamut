@@ -1,10 +1,9 @@
-import { GamutIconProps, StreakIcon } from '@codecademy/gamut-icons';
-import { StyleProps } from '@codecademy/variance';
+import { GamutIconProps } from '@codecademy/gamut-icons';
 import { forwardRef } from 'react';
 import * as React from 'react';
 
-import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
-import { ButtonBaseProps, buttonProps, createButtonComponent } from './shared';
+import { ButtonBaseElements, PolymorphicProps } from '../ButtonBase/ButtonBase';
+import { ButtonBaseProps, createButtonComponent } from './shared';
 import { iconSizeVariants, textButtonVariants } from './variants';
 
 const IconButtonInner = createButtonComponent(
@@ -12,28 +11,21 @@ const IconButtonInner = createButtonComponent(
   textButtonVariants
 );
 
-type ButtonProps = JSX.IntrinsicElements['button'] & {
-  href?: undefined;
-};
-
-type AnchorProps = JSX.IntrinsicElements['a'] & {
-  href: string;
-};
-type PolymorphicProps = ButtonProps | AnchorProps;
-
-export interface IconButtonProps
-  extends ButtonBaseProps,
-    StyleProps<typeof buttonProps> {
+export interface IconButtonBaseProps extends ButtonBaseProps {
   'aria-label': string;
   icon: React.ComponentType<GamutIconProps>;
 }
 
-type IconButtonCoolProps = IconButtonProps & PolymorphicProps;
+export type IconButtonProps = IconButtonBaseProps & PolymorphicProps;
 
-export const IconButton = forwardRef<ButtonBaseElements, IconButtonCoolProps>(
+export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
   ({ children, icon: Icon, variant = 'secondary', ...props }, ref) => {
     return (
-      <IconButtonInner {...props} variant={variant} ref={ref}>
+      <IconButtonInner
+        {...props}
+        variant={variant}
+        ref={ref as React.MutableRefObject<any>}
+      >
         {Icon && (
           <Icon
             width="calc(100% - 14px)"

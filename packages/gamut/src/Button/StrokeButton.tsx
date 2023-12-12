@@ -6,4 +6,32 @@ export const StrokeButton = createButtonComponent(
   strokeButtonVariants
 );
 
-const Hey = () => <StrokeButton>Hey</StrokeButton>;
+export const Test = () => {
+  return (
+    <>
+      <StrokeButton mb={4} />
+    </>
+  );
+};
+
+const Hey = () => {
+  return (
+    <>
+      <StrokeButton variant="ok" />
+      <StrokeButton anything="ok" />
+      <StrokeButton aria-label="hey" mb={30} href="/75">
+        Click
+      </StrokeButton>
+      <StrokeButton aria-label="hey" mb={4}>
+        Click
+      </StrokeButton>
+      <StrokeButton
+        aria-label="hey"
+        mb={4}
+        tabIndex={-1}
+        variant="primary"
+        anything="quack"
+      />
+    </>
+  );
+};
