@@ -13,10 +13,11 @@ import {
   variance,
 } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps, HTMLProps } from 'react';
+import { HTMLProps } from 'react';
 
 import {
   ButtonBase,
+  ButtonBasicProps,
   ButtonSelectors,
   PolymorphicProps,
 } from '../ButtonBase/ButtonBase';
@@ -111,12 +112,16 @@ export interface ButtonBaseProps extends StyleProps<typeof buttonProps> {
   mode?: ColorModes;
 }
 
-export type ButtonProps = ButtonBaseProps & PolymorphicProps;
+export interface RestrictedButtonProps
+  extends ButtonBasicProps,
+    ButtonBaseProps {}
+
+export type PolymorphicButtonProps = ButtonBaseProps & PolymorphicProps;
 
 export const createButtonComponent = <P>(
   ...args: (<T extends ThemeProps>(props: T) => CSSObject)[]
 ) =>
-  styled(ButtonBase)<ButtonProps & P>(
+  styled(ButtonBase)<PolymorphicButtonProps & P>(
     fontSmoothPixel,
     modeColorProps,
     buttonStyles,

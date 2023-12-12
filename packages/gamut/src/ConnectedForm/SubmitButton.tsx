@@ -4,14 +4,10 @@ import { FormState } from 'react-hook-form';
 
 import { Box, FlexBox } from '../Box';
 import { ButtonProps, FillButton } from '../Button';
+import { RestrictedButtonProps } from '../Button/shared';
 import { HiddenText } from '../HiddenText';
 import { Spinner } from '../Loading/Spinner';
 import { useSubmitState } from './utils';
-
-export interface SubmitContextProps {
-  loading?: FormStateCallback | boolean;
-  disabled?: FormStateCallback | boolean;
-}
 
 export type FormStateCallback<Values = {}> = (
   formState: FormState<Values>
@@ -21,13 +17,14 @@ export interface SubmitContextProps {
   loading?: FormStateCallback | boolean;
   disabled?: FormStateCallback | boolean;
 }
+
 export interface SubmitButtonProps
-  extends Omit<ButtonProps, 'as'>,
+  extends Omit<RestrictedButtonProps, 'as' | 'disabled'>,
     SubmitContextProps {
   as?: ComponentType<ButtonProps>;
 }
 
-export const SubmitButton: React.FC<SubmitButtonProps> = ({
+export const SubmitButton: React.FC<ButtonProps & SubmitContextProps> = ({
   as: Button = FillButton,
   children,
   disabled = false,

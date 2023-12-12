@@ -56,15 +56,17 @@ export const resetStyles = css({
 
 const ResetElement = styled('button', styledOptions<'button'>())(resetStyles);
 const ResetElementAnchor = styled('a', styledOptions<'a'>())(resetStyles);
-type ButtonProps = JSX.IntrinsicElements['button'] & {
+
+export type ButtonBasicProps = JSX.IntrinsicElements['button'] & {
   href?: undefined;
 };
 
 type AnchorProps = JSX.IntrinsicElements['a'] & {
   href: string;
+  disabled?: boolean;
 };
 
-type PolymorphicProps = ButtonProps | AnchorProps;
+export type PolymorphicProps = ButtonBasicProps | AnchorProps;
 
 const isAnchorElement = (props: PolymorphicProps): props is AnchorProps => {
   return props.href !== undefined;
