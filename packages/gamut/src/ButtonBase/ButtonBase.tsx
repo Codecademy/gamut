@@ -55,33 +55,49 @@ export const resetStyles = css({
 });
 
 const ResetElement = styled('button', styledOptions<'button'>())(resetStyles);
+const ResetElementAnchor = styled('a', styledOptions<'a'>())(resetStyles);
+type ButtonProps = JSX.IntrinsicElements['button'] & {
+  href?: undefined;
+};
+
+type AnchorProps = JSX.IntrinsicElements['a'] & {
+  href: string;
+};
+
+type PolymorphicProps = ButtonProps | AnchorProps;
+
+const isAnchorElement = (props: PolymorphicProps): props is AnchorProps => {
+  return props.href !== undefined;
+};
 
 export const ButtonBase = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
-  any
->(({ href, disabled, children, role, type = 'button', ...rest }, ref) => {
-  if (href == null || disabled) {
+  PolymorphicProps
+>((props, ref) => {
+  if (isAnchorElement(props)) {
+    const { href, children, role, ...rest } = props;
+
     return (
-      <ResetElement
+      <ResetElementAnchor
+        ref={ref as MutableRefObject<HTMLAnchorElement>}
+        as="a"
+        href={href}
+        role={role}
         {...rest}
-        ref={ref as MutableRefObject<HTMLButtonElement>}
-        as="button"
-        type={type}
-        role={role ?? 'button'}
-        disabled={!!disabled}
       >
         {children}
-      </ResetElement>
+      </ResetElementAnchor>
     );
   }
+  const { type, children, disabled, role, ...rest } = props;
 
   return (
     <ResetElement
-      {...rest}
-      ref={ref as MutableRefObject<HTMLAnchorElement>}
-      as="a"
-      href={href}
-      role={role}
+      ref={ref as MutableRefObject<HTMLButtonElement>}
+      as="button"
+      type={type}
+      role={role ?? 'button'}
+      disabled={!!disabled}
       {...rest}
     >
       {children}

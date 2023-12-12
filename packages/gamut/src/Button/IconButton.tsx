@@ -4,12 +4,7 @@ import { forwardRef } from 'react';
 import * as React from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
-import {
-  ButtonBaseProps,
-  ButtonProps,
-  buttonProps,
-  createButtonComponent,
-} from './shared';
+import { ButtonBaseProps, buttonProps, createButtonComponent } from './shared';
 import { iconSizeVariants, textButtonVariants } from './variants';
 
 const IconButtonInner = createButtonComponent(
@@ -51,28 +46,3 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonCoolProps>(
     );
   }
 );
-
-const Hey = () => {
-  return (
-    <>
-      <IconButtonInner mb={75} variant="primary">
-        ok
-      </IconButtonInner>
-      <IconButtonInner anything="ok">ok</IconButtonInner>
-      <IconButton mb={75} variant="primary">
-        ok
-      </IconButton>
-      <IconButton variant="ok" />
-      <IconButton anything="ok" />
-      <IconButton aria-label="hey" mb={4} icon={StreakIcon} />
-      <IconButton
-        aria-label="hey"
-        mb={4}
-        icon={StreakIcon}
-        tabIndex="forty"
-        variant="primary"
-        anything="quack"
-      />
-    </>
-  );
-};

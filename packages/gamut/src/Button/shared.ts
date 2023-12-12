@@ -15,7 +15,11 @@ import {
 import styled from '@emotion/styled';
 import { ComponentProps, HTMLProps } from 'react';
 
-import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
+import {
+  ButtonBase,
+  ButtonSelectors,
+  PolymorphicProps,
+} from '../ButtonBase/ButtonBase';
 
 export const config = styledOptions<'button', 'size'>(['size']);
 
@@ -107,15 +111,7 @@ export interface ButtonBaseProps {
   mode?: ColorModes;
 }
 
-export interface ButtonProps
-  extends ComponentProps<typeof ButtonBase>,
-    StyleProps<typeof buttonProps> {
-  onClick?: HTMLProps<HTMLButtonElement>['onClick'];
-  variant?: typeof buttonVariants[number];
-  size?: 'normal' | 'small' | 'large';
-  as?: never;
-  mode?: ColorModes;
-}
+export type ButtonProps = ButtonBaseProps & PolymorphicProps;
 
 export const createButtonComponent = <P>(
   ...args: (<T extends ThemeProps>(props: T) => CSSObject)[]
