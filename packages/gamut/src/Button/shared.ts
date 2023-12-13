@@ -116,12 +116,12 @@ export interface RestrictedButtonProps
   extends ButtonBasicProps,
     ButtonBaseProps {}
 
-export type PolymorphicButtonProps = ButtonBaseProps & PolymorphicProps;
+export type ButtonProps = ButtonBaseProps & PolymorphicProps;
 
 export const createButtonComponent = <P>(
   ...args: (<T extends ThemeProps>(props: T) => CSSObject)[]
 ) =>
-  styled(ButtonBase)<PolymorphicButtonProps & P>(
+  styled(ButtonBase)<ButtonProps & P>(
     fontSmoothPixel,
     modeColorProps,
     buttonStyles,

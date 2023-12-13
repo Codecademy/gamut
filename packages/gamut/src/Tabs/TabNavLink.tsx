@@ -7,8 +7,8 @@ const StyledTabNavLink = styled(TabButton)();
 
 export const TabNavLink: React.FC<ComponentProps<typeof StyledTabNavLink>> = ({
   variant = 'standard',
-  roles = 'tab',
+  role = 'tab',
   ...rest
 }) => {
-  return <StyledTabNavLink roles={roles} variant={variant} {...rest} />;
+  return <StyledTabNavLink role={role} variant={variant} {...rest} />;
 };
