@@ -1,8 +1,9 @@
 import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { useCurrentMode } from '@codecademy/gamut-styles';
-import { isValidElement, useState } from 'react';
+import { breakpoints, useCurrentMode } from '@codecademy/gamut-styles';
+import { isValidElement, useMemo, useState } from 'react';
 import * as React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
+import { useMedia } from 'react-use';
 
 import { Rotation, WithChildrenProp } from '..';
 import { Box } from '../Box';
@@ -55,32 +56,38 @@ export const Alert: React.FC<AlertProps> = ({
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
-  const toggleState = expanded || isInline ? 'expanded' : 'collapsed';
+  const isDesktop = useMedia(`(min-width: ${breakpoints.sm})`);
+
+  const toggleState = useMemo(() => {
+    return expanded || isInline || !isDesktop ? 'expanded' : 'collapsed';
+  }, [expanded, isInline, isDesktop]);
+
   const tabIndex = hidden ? -1 : undefined;
 
-  const floatingContent = expanded ? (
-    <Box as="span" display="inline-block" width="100%">
-      {children}
-    </Box>
-  ) : (
-    <TruncateMarkup
-      tokenize="characters"
-      ellipsis={<span>...</span>}
-      lines={1}
-      onTruncate={setTruncated}
-    >
-      {/** Truncate markup expects a single child element */}
+  const floatingContent =
+    expanded || !isDesktop ? (
       <Box as="span" display="inline-block" width="100%">
-        {React.Children.map(children, (child) =>
-          isValidElement(child) || typeof child === 'string' ? (
-            child
-          ) : (
-            <TruncateMarkup.Atom>{child}</TruncateMarkup.Atom>
-          )
-        )}
+        {children}
       </Box>
-    </TruncateMarkup>
-  );
+    ) : (
+      <TruncateMarkup
+        tokenize="characters"
+        ellipsis={<span>...</span>}
+        lines={1}
+        onTruncate={setTruncated}
+      >
+        {/** Truncate markup expects a single child element */}
+        <Box as="span" display="inline-block" width="100%">
+          {React.Children.map(children, (child) =>
+            isValidElement(child) || typeof child === 'string' ? (
+              child
+            ) : (
+              <TruncateMarkup.Atom>{child}</TruncateMarkup.Atom>
+            )
+          )}
+        </Box>
+      </TruncateMarkup>
+    );
 
   const expandButton = truncated && (
     <TextButton
@@ -97,6 +104,8 @@ export const Alert: React.FC<AlertProps> = ({
   );
 
   const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
+
+  const gridButtonOrder = expanded ? '2' : (['2', , 'auto'] as const);
 
   const ctaButton = cta && Boolean(cta.children ?? cta.text) && (
     <FillButton
@@ -133,8 +142,8 @@ export const Alert: React.FC<AlertProps> = ({
       <Box>{expandButton}</Box>
       <Box
         alignSelf="center"
-        gridColumn={isInline ? ['2', , 'auto'] : 'auto'}
-        gridRow={isInline ? ['2', , 'auto'] : 'auto'}
+        gridColumn={gridButtonOrder}
+        gridRow={gridButtonOrder}
       >
         {ctaButton}
       </Box>
