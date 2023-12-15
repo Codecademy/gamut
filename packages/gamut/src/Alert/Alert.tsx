@@ -64,8 +64,6 @@ export const Alert: React.FC<AlertProps> = ({
 
   const tabIndex = hidden ? -1 : undefined;
 
-  console.log('isDt', isDesktop);
-
   const floatingContent =
     expanded || !isDesktop ? (
       <Box as="span" display="inline-block" width="100%">
