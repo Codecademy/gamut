@@ -56,13 +56,15 @@ export const Alert: React.FC<AlertProps> = ({
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
-  const isDesktop = useMedia(`(min-width: ${breakpoints.sm})`);
+  const isDesktop = useMedia(`(min-width: ${breakpoints.xs})`);
 
   const toggleState = useMemo(() => {
     return expanded || isInline || !isDesktop ? 'expanded' : 'collapsed';
   }, [expanded, isInline, isDesktop]);
 
   const tabIndex = hidden ? -1 : undefined;
+
+  console.log('isDt', isDesktop);
 
   const floatingContent =
     expanded || !isDesktop ? (
