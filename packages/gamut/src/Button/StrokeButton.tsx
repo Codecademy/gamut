@@ -1,3 +1,6 @@
+import { MiniKebabMenuIcon } from '@codecademy/gamut-icons';
+import { useRef } from 'react';
+
 import { Box } from '../Box';
 import { CTAButton } from './CTAButton';
 import { IconButton } from './IconButton';
@@ -10,6 +13,7 @@ export const StrokeButton = createButtonComponent(
 );
 
 const Hey = () => {
+  const myRef = useRef(null);
   return (
     <>
       <Box tabIndex={-1}>Hey</Box>
@@ -25,18 +29,20 @@ const Hey = () => {
       <StrokeButton href="/primary" anything="seventeen" mb={4}>
         hey
       </StrokeButton>
-      {/* <IconButton
-        variant="primary"
+      <IconButton
+        aria-label="icon menu"
+        icon={MiniKebabMenuIcon}
+        size="small"
         tabIndex={-1}
-        mb={4}
-        href="https://www.google.com"
+        ref={myRef}
       />
+
       <IconButton
         variant="no"
         anything="seventeen"
         tabIndex="seventeen"
         mb={4}
-      /> */}
+      />
     </>
   );
 };
