@@ -88,7 +88,6 @@ export const ButtonBase = forwardRef<
       as="a"
       href={rest?.href}
       role={role}
-      {...rest}
     >
       {children}
     </ResetElementAnchor>

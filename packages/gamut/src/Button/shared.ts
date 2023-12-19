@@ -99,9 +99,7 @@ export const buttonStyles = system.css({
   },
 });
 
-export interface ButtonProps
-  extends ComponentProps<typeof ButtonBase>,
-    StyleProps<typeof buttonProps> {
+export interface ButtonProps extends StyleProps<typeof buttonProps> {
   onClick?: HTMLProps<HTMLButtonElement>['onClick'];
   variant?: typeof buttonVariants[number];
   size?: 'normal' | 'small' | 'large';

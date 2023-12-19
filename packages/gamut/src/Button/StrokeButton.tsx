@@ -1,5 +1,4 @@
-import { Box, Box } from 'framer-motion';
-
+import { Box } from '../Box';
 import { CTAButton } from './CTAButton';
 import { IconButton } from './IconButton';
 import { createButtonComponent } from './shared';
@@ -13,25 +12,31 @@ export const StrokeButton = createButtonComponent(
 const Hey = () => {
   return (
     <>
-      <Box anything="seventeen">Hey</Box>
+      <Box tabIndex={-1}>Hey</Box>
+      <CTAButton tabIndex={-1} mb={4}>
+        hey
+      </CTAButton>
       <CTAButton anything="seventeen" mb={4}>
         hey
       </CTAButton>
-      <StrokeButton variant="no" anything="seventeen" mb={54}>
+      <StrokeButton variant="primary" anything="seventeen" mb={54}>
         hey
       </StrokeButton>
-      <IconButton
+      <StrokeButton href="/primary" anything="seventeen" mb={4}>
+        hey
+      </StrokeButton>
+      {/* <IconButton
         variant="primary"
-        anything="seventeen"
-        tabIndex="seventeen"
+        tabIndex={-1}
         mb={4}
+        href="https://www.google.com"
       />
       <IconButton
         variant="no"
         anything="seventeen"
         tabIndex="seventeen"
         mb={4}
-      />
+      /> */}
     </>
   );
 };
