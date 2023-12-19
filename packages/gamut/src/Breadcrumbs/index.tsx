@@ -67,7 +67,9 @@ export const Breadcrumbs = <T extends string | Object>({
               data-testid={`breadcrumb-${crumb.title}`}
               href={crumb.href}
               variant="interface"
-              onClick={(e) => onClick?.(e, crumb)}
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+                onClick?.(e, crumb)
+              }
             >
               {crumb.title}
             </BreadcrumbAnchor>
