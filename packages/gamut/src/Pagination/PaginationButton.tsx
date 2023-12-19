@@ -2,7 +2,7 @@ import { GamutIconProps } from '@codecademy/gamut-icons';
 import { forwardRef, useMemo } from 'react';
 import * as React from 'react';
 
-import { ButtonProps, createButtonComponent } from '../Button/shared';
+import { createButtonComponent } from '../Button/shared';
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import {
   paginationStrokeButtonStates,
@@ -11,17 +11,22 @@ import {
   paginationTextVariant,
 } from './styles';
 
-const PaginationTextButtonInner = createButtonComponent(
+export interface BasePaginationButtonProps {
+  showButton?: 'shown' | 'hidden';
+}
+
+const PaginationTextButtonInner = createButtonComponent<BasePaginationButtonProps>(
   paginationTextButtonStates,
   paginationTextVariant
 );
 
-const PaginationStrokeButtonInner = createButtonComponent(
+const PaginationStrokeButtonInner = createButtonComponent<BasePaginationButtonProps>(
   paginationStrokeButtonStates,
   paginationStrokeVariant
 );
 
-export interface PaginationButtonProps extends Omit<ButtonProps, 'variant'> {
+export interface PaginationButtonProps
+  extends Omit<typeof PaginationStrokeButtonInner, 'variant'> {
   icon: React.ComponentType<GamutIconProps>;
   variant?: 'stroke' | 'text';
   showButton?: 'shown' | 'hidden';

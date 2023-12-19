@@ -35,6 +35,7 @@ const Hey = () => {
         size="small"
         tabIndex={-1}
         ref={myRef}
+        variant="75"
       />
 
       <IconButton mb={4} />

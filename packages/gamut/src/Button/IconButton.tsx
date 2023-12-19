@@ -1,7 +1,7 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { ComponentProps, forwardRef } from 'react';
 
-import { ButtonBase } from '../ButtonBase/ButtonBase';
+import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { createButtonComponent } from './shared';
 import { iconSizeVariants, textButtonVariants } from './variants';
 
@@ -15,14 +15,10 @@ export type IconButtonProps = ComponentProps<typeof IconButtonInner> & {
   icon: React.ComponentType<GamutIconProps>;
 };
 
-export const IconButton = forwardRef<typeof ButtonBase, IconButtonProps>(
+export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
   ({ children, icon: Icon, variant = 'secondary', ...props }, ref) => {
     return (
-      <IconButtonInner
-        {...props}
-        variant={variant}
-        ref={ref as IconButtonProps['ref']}
-      >
+      <IconButtonInner {...props} variant={variant} ref={ref}>
         {Icon && (
           <Icon
             width="calc(100% - 14px)"
