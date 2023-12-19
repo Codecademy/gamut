@@ -26,6 +26,12 @@ const Hey = () => {
         tabIndex="seventeen"
         mb={4}
       />
+      <IconButton
+        variant="no"
+        anything="seventeen"
+        tabIndex="seventeen"
+        mb={4}
+      />
     </>
   );
 };
