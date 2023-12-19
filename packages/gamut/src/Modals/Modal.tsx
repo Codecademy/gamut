@@ -3,7 +3,7 @@ import { ComponentProps, useRef, useState } from 'react';
 import * as React from 'react';
 
 import { Box } from '../Box';
-import { FillButton, IconButton, TextButton } from '../Button';
+import { ButtonProps, FillButton, IconButton, TextButton } from '../Button';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer } from './elements';
@@ -13,7 +13,7 @@ import { ModalBaseProps } from './types';
 interface DialogButtonProps {
   children: React.ReactNode;
   href?: string;
-  onClick?: ComponentProps<typeof FillButton>['onClick'];
+  onClick?: ComponentProps<ButtonProps>['onClick'];
   disabled?: boolean;
 }
 export interface ModalView

@@ -1,6 +1,5 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import { forwardRef, useMemo } from 'react';
-import * as React from 'react';
+import { ComponentProps, ComponentType, forwardRef, useMemo } from 'react';
 
 import { createButtonComponent } from '../Button/shared';
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
@@ -15,21 +14,20 @@ export interface BasePaginationButtonProps {
   showButton?: 'shown' | 'hidden';
 }
 
-const PaginationTextButtonInner = createButtonComponent<BasePaginationButtonProps>(
+export const PaginationTextButtonInner = createButtonComponent<BasePaginationButtonProps>(
   paginationTextButtonStates,
   paginationTextVariant
 );
 
-const PaginationStrokeButtonInner = createButtonComponent<BasePaginationButtonProps>(
+export const PaginationStrokeButtonInner = createButtonComponent<BasePaginationButtonProps>(
   paginationStrokeButtonStates,
   paginationStrokeVariant
 );
 
 export interface PaginationButtonProps
-  extends Omit<typeof PaginationStrokeButtonInner, 'variant'> {
-  icon: React.ComponentType<GamutIconProps>;
+  extends Omit<ComponentProps<typeof PaginationStrokeButtonInner>, 'variant'> {
+  icon: ComponentType<GamutIconProps>;
   variant?: 'stroke' | 'text';
-  showButton?: 'shown' | 'hidden';
 }
 
 export const PaginationButton = forwardRef<
@@ -54,15 +52,18 @@ export const PaginationButton = forwardRef<
     }, [variant]);
 
     return (
-      <ButtonStyleWrapper
-        aria-hidden={showButton === 'hidden'}
-        showButton={showButton}
-        {...props}
-        ref={ref}
-      >
-        {Icon && <Icon width={14} height={14} aria-hidden />}
-        {children}
-      </ButtonStyleWrapper>
+      <>
+        <PaginationStrokeButtonInner aria-label="75" />
+        <ButtonStyleWrapper
+          aria-hidden={showButton === 'hidden'}
+          showButton={showButton}
+          {...props}
+          ref={ref}
+        >
+          {Icon && <Icon width={14} height={14} aria-hidden />}
+          {children}
+        </ButtonStyleWrapper>
+      </>
     );
   }
 );

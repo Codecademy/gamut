@@ -13,7 +13,7 @@ import {
   variance,
 } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { HTMLProps } from 'react';
+import { ComponentProps, HTMLProps } from 'react';
 
 import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
 import { CTAButton } from './CTAButton';
@@ -129,3 +129,5 @@ export type ButtonTypes =
   | typeof IconButton
   | typeof StrokeButton
   | typeof TextButton;
+
+// export type ButtonComponentProps = ComponentProps<typeof FillButton>;
