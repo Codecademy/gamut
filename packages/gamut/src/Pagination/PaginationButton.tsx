@@ -52,18 +52,15 @@ export const PaginationButton = forwardRef<
     }, [variant]);
 
     return (
-      <>
-        <PaginationStrokeButtonInner aria-label="75" />
-        <ButtonStyleWrapper
-          aria-hidden={showButton === 'hidden'}
-          showButton={showButton}
-          {...props}
-          ref={ref}
-        >
-          {Icon && <Icon width={14} height={14} aria-hidden />}
-          {children}
-        </ButtonStyleWrapper>
-      </>
+      <ButtonStyleWrapper
+        aria-hidden={showButton === 'hidden'}
+        showButton={showButton}
+        {...props}
+        ref={ref}
+      >
+        {Icon && <Icon width={14} height={14} aria-hidden />}
+        {children}
+      </ButtonStyleWrapper>
     );
   }
 );
