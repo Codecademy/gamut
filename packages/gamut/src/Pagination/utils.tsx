@@ -54,14 +54,10 @@ const slideAnimationVariants = {
   },
 };
 
-type WrappedComponentProps<
-  WrappedComponentProps extends typeof BaseEllipsisButton
-> = React.ComponentProps<WrappedComponentProps>;
-
 export const wrapWithSlideAnimation = (
-  WrappedComponent: typeof BaseEllipsisButton
+  WrappedComponent: typeof BaseEllipsisButton | typeof PaginationButton
 ) => {
-  return (props: WrappedComponentProps<typeof WrappedComponent>) => {
+  return (props: React.ComponentProps<typeof BaseEllipsisButton>) => {
     const isFirstRender = useRef(true);
 
     useEffect(() => {
@@ -106,17 +102,22 @@ export const createAnimatedFadeButton = (
   WrappedComponent: typeof PaginationButton
 ) => {
   const AnimatedButton = motion(WrappedComponent);
-  return (props: WrappedComponentProps<typeof WrappedComponent>) => (
+  return (props: React.ComponentProps<typeof AnimatedButton>) => (
     <AnimatedButton
-      {...props}
-      aria-label={props.showButton === 'hidden' ? null : props['aria-label']}
+      aria-label={
+        props.showButton === 'hidden' ? undefined : props['aria-label']
+      }
       animate={props.showButton}
       initial={false}
       variants={fadeAnimationVariants}
       disabled={props.showButton === 'hidden'}
-      transitionStart={{ visibility: 'visible' }}
-      transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
-      transitionEnd={{ visibility: 'hidden' }}
+      transition={{
+        transitionStart: { visibility: 'visible' },
+        duration: 0.3,
+        ease: [0.04, 0.62, 0.23, 0.98],
+        transitionEnd: { visibility: 'hidden' },
+      }}
+      {...props}
     />
   );
 };
