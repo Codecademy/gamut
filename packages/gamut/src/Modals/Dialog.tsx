@@ -38,12 +38,16 @@ export const Dialog: React.FC<DialogProps> = ({
   size = 'small',
   ...rest
 }) => {
-  const onConfirm: DialogButtonProps['onClick'] = (e) => {
+  const onConfirm: DialogButtonProps['onClick'] = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     onRequestClose();
     confirmCta.onClick?.(e);
   };
 
-  const onCancel: DialogButtonProps['onClick'] = (e) => {
+  const onCancel: DialogButtonProps['onClick'] = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     onRequestClose();
     cancelCta?.onClick?.(e);
   };

@@ -1,4 +1,4 @@
-import { GamutIconProps, StreakIcon } from '@codecademy/gamut-icons';
+import { GamutIconProps } from '@codecademy/gamut-icons';
 import { StyleProps } from '@codecademy/variance';
 import { ComponentProps, ComponentType, forwardRef, useMemo } from 'react';
 
@@ -67,8 +67,3 @@ export const PaginationButton = forwardRef<
     );
   }
 );
-
-// // CASS: Note to self - you are figuring out why href is not working here :)
-// const Hey = () => {
-//   return <PaginationButton href="/" icon={StreakIcon} buttonType="text" />;
-// };

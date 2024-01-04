@@ -13,7 +13,7 @@ import {
   variance,
 } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { HTMLProps } from 'react';
+import { ComponentProps, HTMLProps } from 'react';
 
 import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
 import { CTAButton } from './CTAButton';
@@ -111,6 +111,8 @@ export interface ButtonBaseProps extends StyleProps<typeof buttonProps> {
   as?: never;
   mode?: ColorModes;
 }
+
+export type ButtonProps = ButtonBaseProps & ComponentProps<typeof ButtonBase>;
 
 export const createButtonComponent = <P>(
   ...args: (<T extends ThemeProps>(props: T) => CSSObject)[]

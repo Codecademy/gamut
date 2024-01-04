@@ -1,9 +1,7 @@
-import { StyleProps } from '@codecademy/variance';
 import { forwardRef, useState } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { PaginationButton, PaginationButtonProps } from './PaginationButton';
-import { paginationStrokeButtonStates } from './styles';
 import { wrapWithSlideAnimation } from './utils';
 
 export type EllipsisButtonProps = PaginationButtonProps & {

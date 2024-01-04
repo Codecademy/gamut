@@ -13,7 +13,7 @@ import { ModalBaseProps } from './types';
 interface DialogButtonProps {
   children: React.ReactNode;
   href?: string;
-  onClick?: ComponentProps<ButtonProps>['onClick'];
+  onClick?: ButtonProps['onClick'];
   disabled?: boolean;
 }
 export interface ModalView

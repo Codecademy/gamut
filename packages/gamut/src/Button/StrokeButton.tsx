@@ -35,10 +35,18 @@ const Hey = () => {
         size="small"
         tabIndex={-1}
         ref={myRef}
-        variant="75"
+        variant="primary"
+        mb={4}
       />
 
-      <IconButton mb={4} />
+      <IconButton
+        aria-label={7}
+        icon={MiniKebabMenuIcon}
+        size="never"
+        tabIndex={-1}
+        variant="65"
+        mb={4}
+      />
     </>
   );
 };
