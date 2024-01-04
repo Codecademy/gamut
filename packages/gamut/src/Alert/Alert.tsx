@@ -105,7 +105,7 @@ export const Alert: React.FC<AlertProps> = ({
 
   const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
 
-  const gridButtonOrder = ['2', , 'auto'] as const;
+  const gridButtonOrder = expanded ? '2' : (['2', , 'auto'] as const);
 
   const ctaButton = cta && Boolean(cta.children ?? cta.text) && (
     <FillButton
@@ -141,7 +141,7 @@ export const Alert: React.FC<AlertProps> = ({
       </CollapsableContent>
       <Box>{expandButton}</Box>
       <Box
-        alignSelf={isInline ? 'center' : 'start'}
+        alignSelf="center"
         gridColumn={gridButtonOrder}
         gridRow={gridButtonOrder}
       >
