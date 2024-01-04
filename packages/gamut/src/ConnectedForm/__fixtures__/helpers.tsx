@@ -22,7 +22,11 @@ export const PlainConnectedFields: React.FC<{
           label: 'cool-checkbox',
         }}
       />
-      <SubmitButton variant="secondary" m={32} disabled={false}>
+      <SubmitButton
+        variant="secondary"
+        m={32}
+        disabled={onChangeValidation ? ({ isValid }) => !isValid : undefined}
+      >
         submit this form.
       </SubmitButton>
       <ConnectedFormGroup
