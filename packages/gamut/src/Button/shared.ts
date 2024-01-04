@@ -13,7 +13,7 @@ import {
   variance,
 } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps, HTMLProps } from 'react';
+import { HTMLProps } from 'react';
 
 import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
 import { CTAButton } from './CTAButton';
