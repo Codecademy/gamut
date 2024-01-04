@@ -59,13 +59,14 @@ export interface PaginationProps {
 export const Pagination: React.FC<PaginationProps> = ({
   chapterSize = 5,
   defaultPageNumber = 1,
-  isNavigation: navigation,
+  isNavigation,
   onChange,
   pageNumber,
   totalPages,
   type,
   variant = 'stroke',
 }) => {
+  const navigation = isNavigation ? '/' : undefined;
   const [currentPage, setCurrentPage] = useState(
     pageNumber ?? defaultPageNumber
   );
@@ -219,7 +220,7 @@ export const Pagination: React.FC<PaginationProps> = ({
                 ? 'hidden'
                 : 'shown'
             }
-            variant={variant}
+            buttonType={variant}
           >
             {totalPages}
           </AnimatedSlideButton>

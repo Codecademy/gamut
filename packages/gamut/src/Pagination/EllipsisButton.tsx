@@ -1,13 +1,15 @@
+import { StyleProps } from '@codecademy/variance';
 import { forwardRef, useState } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { PaginationButton, PaginationButtonProps } from './PaginationButton';
+import { paginationStrokeButtonStates } from './styles';
 import { wrapWithSlideAnimation } from './utils';
 
-export interface EllipsisButtonProps extends PaginationButtonProps {
+export type EllipsisButtonProps = PaginationButtonProps & {
   'aria-label': string;
   direction: 'back' | 'forward';
-}
+};
 
 const ellipsisButtonContents = { ellipsis: '•••', back: '«', forward: '»' };
 

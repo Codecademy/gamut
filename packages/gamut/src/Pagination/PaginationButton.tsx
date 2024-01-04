@@ -1,4 +1,5 @@
 import { GamutIconProps, StreakIcon } from '@codecademy/gamut-icons';
+import { StyleProps } from '@codecademy/variance';
 import { ComponentProps, ComponentType, forwardRef, useMemo } from 'react';
 
 import { createButtonComponent } from '../Button/shared';
@@ -23,12 +24,14 @@ export const PaginationStrokeButtonInner = createButtonComponent<BasePaginationB
   paginationStrokeButtonStates,
   paginationStrokeVariant
 );
-type PaginationTOVar = ComponentProps<typeof PaginationTextButtonInner>;
 
-export type PaginationButtonProps = PaginationTOVar & {
-  icon: ComponentType<GamutIconProps>;
-  buttonType?: 'stroke' | 'text';
-};
+export type PaginationButtonProps = ComponentProps<
+  typeof PaginationStrokeButtonInner
+> &
+  StyleProps<typeof paginationStrokeButtonStates> & {
+    icon?: ComponentType<GamutIconProps>;
+    buttonType?: 'stroke' | 'text';
+  };
 
 export const PaginationButton = forwardRef<
   ButtonBaseElements,
@@ -65,7 +68,7 @@ export const PaginationButton = forwardRef<
   }
 );
 
-// CASS: Note to self - you are figuring out why href is not working here :)
-const Hey = () => {
-  return <PaginationButton href="/" icon={StreakIcon} buttonType="text" />;
-};
+// // CASS: Note to self - you are figuring out why href is not working here :)
+// const Hey = () => {
+//   return <PaginationButton href="/" icon={StreakIcon} buttonType="text" />;
+// };
