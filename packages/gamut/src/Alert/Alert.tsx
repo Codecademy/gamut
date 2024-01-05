@@ -46,7 +46,7 @@ export const Alert: React.FC<AlertProps> = ({
   type = 'general',
   ...props
 }) => {
-  const isInline = props.placement === 'inline';
+  const isDesktop = useMedia(`(min-width: ${breakpoints.xs})`);
   const activeAlert = alertVariants?.[type] ?? alertVariants.general;
   const { icon: Icon, bg } = activeAlert;
 
@@ -56,38 +56,43 @@ export const Alert: React.FC<AlertProps> = ({
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
-  const isDesktop = useMedia(`(min-width: ${breakpoints.xs})`);
+  const gridButtonOrder = useMemo(() => {
+    return isDesktop ? undefined : (['2', , 'auto'] as const);
+  }, [isDesktop]);
+
+  const isInline = useMemo(() => {
+    return props.placement === 'inline' || !isDesktop;
+  }, [props.placement, isDesktop]);
 
   const toggleState = useMemo(() => {
-    return expanded || isInline || !isDesktop ? 'expanded' : 'collapsed';
-  }, [expanded, isInline, isDesktop]);
+    return expanded || isInline ? 'expanded' : 'collapsed';
+  }, [expanded, isInline]);
 
   const tabIndex = hidden ? -1 : undefined;
 
-  const floatingContent =
-    expanded || !isDesktop ? (
+  const floatingContent = expanded ? (
+    <Box as="span" display="inline-block" width="100%">
+      {children}
+    </Box>
+  ) : (
+    <TruncateMarkup
+      tokenize="characters"
+      ellipsis={<span>...</span>}
+      lines={1}
+      onTruncate={setTruncated}
+    >
+      {/** Truncate markup expects a single child element */}
       <Box as="span" display="inline-block" width="100%">
-        {children}
+        {React.Children.map(children, (child) =>
+          isValidElement(child) || typeof child === 'string' ? (
+            child
+          ) : (
+            <TruncateMarkup.Atom>{child}</TruncateMarkup.Atom>
+          )
+        )}
       </Box>
-    ) : (
-      <TruncateMarkup
-        tokenize="characters"
-        ellipsis={<span>...</span>}
-        lines={1}
-        onTruncate={setTruncated}
-      >
-        {/** Truncate markup expects a single child element */}
-        <Box as="span" display="inline-block" width="100%">
-          {React.Children.map(children, (child) =>
-            isValidElement(child) || typeof child === 'string' ? (
-              child
-            ) : (
-              <TruncateMarkup.Atom>{child}</TruncateMarkup.Atom>
-            )
-          )}
-        </Box>
-      </TruncateMarkup>
-    );
+    </TruncateMarkup>
+  );
 
   const expandButton = truncated && (
     <TextButton
@@ -104,8 +109,6 @@ export const Alert: React.FC<AlertProps> = ({
   );
 
   const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
-
-  const gridButtonOrder = expanded ? '2' : (['2', , 'auto'] as const);
 
   const ctaButton = cta && Boolean(cta.children ?? cta.text) && (
     <FillButton
@@ -141,9 +144,9 @@ export const Alert: React.FC<AlertProps> = ({
       </CollapsableContent>
       <Box>{expandButton}</Box>
       <Box
-        alignSelf="center"
         gridColumn={gridButtonOrder}
         gridRow={gridButtonOrder}
+        py={ctaButton ? 4 : 0}
       >
         {ctaButton}
       </Box>
