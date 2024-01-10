@@ -32,8 +32,10 @@ export const VENDOR_ICONS = pick(
     'SlackIcon',
     'TwitterIcon',
     'TwitterOutlineIcon',
+    'WhatsAppIcon',
     'VisaIcon',
     'YoutubeIcon',
+    'XIcon',
   ].sort()
 );
 
