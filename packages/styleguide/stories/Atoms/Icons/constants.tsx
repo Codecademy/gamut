@@ -32,7 +32,7 @@ export const VENDOR_ICONS = pick(
     'SlackIcon',
     'TwitterIcon',
     'TwitterOutlineIcon',
-    'WhatsAppIcon',
+    'WhatsAppFilledIcon',
     'VisaIcon',
     'YoutubeIcon',
     'XIcon',
