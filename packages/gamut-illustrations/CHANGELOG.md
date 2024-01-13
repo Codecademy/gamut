@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.41.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.40.0...@codecademy/gamut-illustrations@0.41.0) (2023-10-13)
+
+### Features
+
+- **Illustration:** add seven day trial illustration ([ff796ac](https://github.com/Codecademy/gamut/commit/ff796acb97f88b323256390a7398ad2e5d39d048))
+
 ## [0.40.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.39.2...@codecademy/gamut-illustrations@0.40.0) (2023-09-25)
 
 ### Features
