@@ -50,7 +50,10 @@ export const placementVariants = variant({
     px: 4,
     py: 8,
     width: 1,
-    gridTemplateColumns: 'max-content minmax(0, 1fr) repeat(3, max-content)',
+    gridTemplateColumns: {
+      _: 'max-content minmax(0, 1fr) repeat(2, max-content)',
+      sm: 'max-content minmax(0, 1fr) repeat(3, max-content)',
+    },
   },
   variants: {
     inline: {
