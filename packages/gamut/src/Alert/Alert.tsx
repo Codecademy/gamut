@@ -94,18 +94,20 @@ export const Alert: React.FC<AlertProps> = ({
     </TruncateMarkup>
   );
 
-  const expandButton = (truncated && !isInline) && (
-    <TextButton
-      tabIndex={tabIndex}
-      aria-label={expanded ? 'Collapse' : 'Expand'}
-      variant="secondary"
-      size="small"
-      onClick={() => setExpanded(!expanded)}
-    >
-      <Rotation rotated={toggleState === 'expanded'}>
-        <MiniChevronDownIcon />
-      </Rotation>
-    </TextButton>
+  const expandButton = truncated && !isInline && (
+    <Box>
+      <TextButton
+        tabIndex={tabIndex}
+        aria-label={expanded ? 'Collapse' : 'Expand'}
+        variant="secondary"
+        size="small"
+        onClick={() => setExpanded(!expanded)}
+      >
+        <Rotation rotated={toggleState === 'expanded'}>
+          <MiniChevronDownIcon />
+        </Rotation>
+      </TextButton>
+    </Box>
   );
 
   const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
@@ -142,7 +144,7 @@ export const Alert: React.FC<AlertProps> = ({
       >
         {isInline ? children : floatingContent}
       </CollapsableContent>
-      <Box>{expandButton}</Box>
+      {expandButton}
       <Box gridColumn={gridButtonOrder} gridRow={gridButtonOrder}>
         {ctaButton}
       </Box>

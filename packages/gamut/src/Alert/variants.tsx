@@ -42,24 +42,20 @@ export const alertVariants = {
 export const placementVariants = variant({
   prop: 'placement',
   base: {
-    borderColor: 'navy',
-    display: 'grid',
     alignItems: 'start',
-    width: 1,
-    maxWidth: `calc(${breakpoints.md} - 4rem)`,
-    border: 2,
     borderRadius: '3px',
     columnGap: [4, 8, , 12],
+    display: 'grid',
+    maxWidth: `calc(${breakpoints.md} - 4rem)`,
+    px: 4,
+    py: 8,
+    width: 1,
     gridTemplateColumns: 'max-content minmax(0, 1fr) repeat(3, max-content)',
   },
   variants: {
     inline: {
       border: 'none',
-      p: 4,
-      py: 8,
     },
-    floating: {
-      p: 4,
-    },
+    floating: { border: 2, borderColor: 'navy' },
   },
 });
