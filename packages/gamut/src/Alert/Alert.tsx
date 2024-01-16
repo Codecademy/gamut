@@ -94,7 +94,7 @@ export const Alert: React.FC<AlertProps> = ({
     </TruncateMarkup>
   );
 
-  const expandButton = truncated && (
+  const expandButton = (truncated && !isInline) && (
     <TextButton
       tabIndex={tabIndex}
       aria-label={expanded ? 'Collapse' : 'Expand'}
@@ -143,11 +143,7 @@ export const Alert: React.FC<AlertProps> = ({
         {isInline ? children : floatingContent}
       </CollapsableContent>
       <Box>{expandButton}</Box>
-      <Box
-        gridColumn={gridButtonOrder}
-        gridRow={gridButtonOrder}
-        py={ctaButton ? 4 : 0}
-      >
+      <Box gridColumn={gridButtonOrder} gridRow={gridButtonOrder}>
         {ctaButton}
       </Box>
       {onClose && (
