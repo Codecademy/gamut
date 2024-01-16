@@ -48,17 +48,32 @@ export const placementVariants = variant({
     display: 'grid',
     maxWidth: `calc(${breakpoints.md} - 4rem)`,
     px: 4,
-    py: 8,
     width: 1,
-    gridTemplateColumns: {
-      _: 'max-content minmax(0, 1fr) repeat(2, max-content)',
-      sm: 'max-content minmax(0, 1fr) repeat(3, max-content)',
-    },
   },
   variants: {
     inline: {
       border: 'none',
+      py: 8,
     },
-    floating: { border: 2, borderColor: 'navy' },
+    floating: {
+      border: 2,
+      borderColor: 'navy',
+      py: 4,
+    },
   },
 });
+
+export interface buttonExistenceObject {
+  cta?: boolean;
+  onClose?: boolean;
+  truncated?: boolean;
+}
+
+export const getGridTemplateColumns = (
+  buttonExistenceObject: buttonExistenceObject
+) => {
+  const numOfButtons = Object.values(buttonExistenceObject).filter(
+    (item) => item === true
+  ).length;
+  return `max-content minmax(0, 1fr) repeat(${numOfButtons}, max-content)`;
+};

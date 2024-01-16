@@ -8,8 +8,13 @@ import { useMedia } from 'react-use';
 import { Rotation, WithChildrenProp } from '..';
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
-import { AlertBanner, AlertBox, CollapsableContent } from './elements';
-import { alertVariants } from './variants';
+import {
+  AlertBanner,
+  AlertBox,
+  alertContentProps,
+  CollapsableContent,
+} from './elements';
+import { alertVariants, getGridTemplateColumns } from './variants';
 
 export type AlertType = keyof typeof alertVariants;
 export type AlertPlacements = 'inline' | 'floating';
@@ -44,6 +49,7 @@ export const Alert: React.FC<AlertProps> = ({
   onClose,
   hidden,
   type = 'general',
+  placement = 'floating',
   ...props
 }) => {
   const isDesktop = useMedia(`(min-width: ${breakpoints.xs})`);
@@ -56,24 +62,38 @@ export const Alert: React.FC<AlertProps> = ({
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
-  const gridButtonOrder = useMemo(() => {
-    return isDesktop ? undefined : (['2', , 'auto'] as const);
-  }, [isDesktop]);
+  const ctaExists = cta && Boolean(cta.children ?? cta.text);
 
   const isInline = useMemo(() => {
-    return props.placement === 'inline' || !isDesktop;
-  }, [props.placement, isDesktop]);
+    return placement === 'inline' || !isDesktop;
+  }, [placement, isDesktop]);
 
   const toggleState = useMemo(() => {
     return expanded || isInline ? 'expanded' : 'collapsed';
   }, [expanded, isInline]);
 
+  const ctaButtonPadding = useMemo(() => {
+    return !isDesktop && placement === 'floating' ? 4 : undefined;
+  }, [placement, isDesktop]);
+
+  const gridButtonOrder = useMemo(() => {
+    return isDesktop ? undefined : (['2', , 'auto'] as const);
+  }, [isDesktop]);
+
+  const gridTemplateColumns = useMemo(() => {
+    return !isDesktop
+      ? `max-content minmax(0, 1fr) repeat(1, max-content)`
+      : getGridTemplateColumns({
+          cta: ctaExists,
+          onClose: !!onClose,
+          truncated,
+        });
+  }, [ctaExists, isDesktop, onClose, truncated]);
+
   const tabIndex = hidden ? -1 : undefined;
 
   const floatingContent = expanded ? (
-    <Box as="span" display="inline-block" width="100%">
-      {children}
-    </Box>
+    <Box {...alertContentProps}>{children}</Box>
   ) : (
     <TruncateMarkup
       tokenize="characters"
@@ -82,7 +102,7 @@ export const Alert: React.FC<AlertProps> = ({
       onTruncate={setTruncated}
     >
       {/** Truncate markup expects a single child element */}
-      <Box as="span" display="inline-block" width="100%">
+      <Box {...alertContentProps}>
         {React.Children.map(children, (child) =>
           isValidElement(child) || typeof child === 'string' ? (
             child
@@ -112,22 +132,33 @@ export const Alert: React.FC<AlertProps> = ({
 
   const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
 
-  const ctaButton = cta && Boolean(cta.children ?? cta.text) && (
-    <FillButton
-      {...cta}
-      mode={buttonColorMode}
-      variant="secondary"
-      size="small"
-      tabIndex={tabIndex}
+  const ctaButton = ctaExists && (
+    <Box
+      gridColumn={gridButtonOrder}
+      gridRow={gridButtonOrder}
+      pb={ctaButtonPadding}
     >
-      {cta.children ?? cta.text}
-    </FillButton>
+      <FillButton
+        {...cta}
+        mode={buttonColorMode}
+        variant="secondary"
+        size="small"
+        tabIndex={tabIndex}
+      >
+        {cta.children ?? cta.text}
+      </FillButton>
+    </Box>
   );
 
   const AlertWrapper = isSubtleVariant ? AlertBox : AlertBanner;
 
   return (
-    <AlertWrapper bg={bg} {...props}>
+    <AlertWrapper
+      bg={bg}
+      placement={placement}
+      gridTemplateColumns={gridTemplateColumns}
+      {...props}
+    >
       <Icon size={32} aria-hidden p={8} />
       <CollapsableContent
         animate={toggleState}
@@ -145,9 +176,7 @@ export const Alert: React.FC<AlertProps> = ({
         {isInline ? children : floatingContent}
       </CollapsableContent>
       {expandButton}
-      <Box gridColumn={gridButtonOrder} gridRow={gridButtonOrder}>
-        {ctaButton}
-      </Box>
+      {ctaButton}
       {onClose && (
         <IconButton
           tabIndex={tabIndex}
@@ -160,9 +189,4 @@ export const Alert: React.FC<AlertProps> = ({
       )}
     </AlertWrapper>
   );
-};
-
-Alert.defaultProps = {
-  type: 'general',
-  placement: 'floating',
 };
