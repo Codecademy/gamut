@@ -6,18 +6,38 @@ import { Menu } from '../Menu';
 import { MenuItem } from '../MenuItem';
 import { MenuSeparator } from '../MenuSeparator';
 
-const renderView = setupRtl(Menu, { role: 'menu' });
+const renderView = setupRtl(Menu, {});
 
 describe('Menu', () => {
-  it('renders a list with a role of menu', () => {
-    renderView();
-    screen.getByRole('menu');
-  });
-  it('renders nested menus as groups', () => {
+  it('does not renders nested menus as groups', () => {
     renderView({ children: <Menu /> });
 
-    screen.getByRole('menu');
-    screen.getByRole('group');
+    expect(screen.queryByRole('menu')).toBeNull();
+    expect(screen.queryByRole('group')).toBeNull();
+  });
+  it('renders items without menuitem role as default', () => {
+    renderView({
+      children: <MenuItem>Cool Town</MenuItem>,
+    });
+
+    expect(screen.queryByRole('menuitem')).toBeNull();
+  });
+
+  it('renders link menuitems as anchors within a li', () => {
+    renderView({
+      children: <MenuItem href="#link">Cool Town</MenuItem>,
+    });
+
+    screen.getByRole('link');
+    expect(screen.queryByRole('menuitem')).toBeNull();
+  });
+  it('renders menuitems with onClicks as buttons within a li', () => {
+    renderView({
+      children: <MenuItem onClick={() => null}>Cool Town</MenuItem>,
+    });
+
+    screen.getByRole('button');
+    expect(screen.queryByRole('menuitem')).toBeNull();
   });
   it('renders menu separators when the variant is action', () => {
     renderView({
@@ -53,30 +73,6 @@ describe('Menu', () => {
     });
 
     expect(screen.queryByRole('separator')).toBeNull();
-  });
-
-  it('renders items as MenuItems by default', () => {
-    renderView({
-      children: <MenuItem>Cool Town</MenuItem>,
-    });
-
-    screen.getByRole('menuitem');
-  });
-  it('renders link menuitems as anchors within a li with no role', () => {
-    renderView({
-      children: <MenuItem href="#link">Cool Town</MenuItem>,
-    });
-
-    screen.getByRole('none');
-    screen.getByRole('menuitem');
-  });
-  it('renders menuitems with onClicks as buttons within a li with no role', () => {
-    renderView({
-      children: <MenuItem onClick={() => null}>Cool Town</MenuItem>,
-    });
-
-    screen.getByRole('none');
-    screen.getByRole('menuitem');
   });
   it('renders and icon only when specified', () => {
     renderView({
@@ -125,5 +121,44 @@ describe('Menu', () => {
     });
 
     screen.getByText('current item,');
+  });
+  describe('when the role is menu', () => {
+    it('renders a list with a role of menu', () => {
+      renderView({ role: 'menu' });
+      screen.getByRole('menu');
+    });
+    it('renders nested menus as groups', () => {
+      renderView({ children: <Menu />, role: 'menu' });
+
+      screen.getByRole('menu');
+      screen.getByRole('group');
+    });
+
+    it('renders items as MenuItems by default', () => {
+      renderView({
+        children: <MenuItem>Cool Town</MenuItem>,
+        role: 'menu',
+      });
+
+      screen.getByRole('menuitem');
+    });
+    it('renders link menuitems as anchors within a li with no role', () => {
+      renderView({
+        children: <MenuItem href="#link">Cool Town</MenuItem>,
+        role: 'menu',
+      });
+
+      screen.getByRole('none');
+      screen.getByRole('menuitem');
+    });
+    it('renders menuitems with onClicks as buttons within a li with no role', () => {
+      renderView({
+        children: <MenuItem onClick={() => null}>Cool Town</MenuItem>,
+        role: 'menu',
+      });
+
+      screen.getByRole('none');
+      screen.getByRole('menuitem');
+    });
   });
 });
