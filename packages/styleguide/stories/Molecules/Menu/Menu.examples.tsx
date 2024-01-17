@@ -69,12 +69,12 @@ export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
             height="100%"
             ref={target}
           >
-            <Menu border="none" variant="navigation">
+            <Menu border="none" variant="navigation" role="menu">
               <MenuItem
                 active={activeIndex === 0}
                 onClick={() => clickHandler(-68, 0)}
               >
-                i have a side menu
+                i have a side menu ??
               </MenuItem>
               <MenuItem
                 active={activeIndex === 1}

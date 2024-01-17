@@ -6,7 +6,7 @@ import { Menu } from '../Menu';
 import { MenuItem } from '../MenuItem';
 import { MenuSeparator } from '../MenuSeparator';
 
-const renderView = setupRtl(Menu, {});
+const renderView = setupRtl(Menu, { role: 'menu' });
 
 describe('Menu', () => {
   it('renders a list with a role of menu', () => {

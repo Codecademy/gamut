@@ -36,17 +36,18 @@ export const MenuItem = forwardRef<
       icon?: React.ComponentType<GamutIconProps>;
     }
 >(({ href, target, children, active, icon: Icon, ...props }, ref) => {
-  const { variant, ...rest } = useMenuContext();
+  const { variant, role, ...rest } = useMenuContext();
   const activeProp = activePropnames[variant];
   const computed = {
     ...props,
     ...rest,
     variant: variant === 'select' ? 'select' : 'link',
-    role: 'menuitem',
+    role: role === 'menu' ? 'menuitem' : undefined,
     [activeProp]: active,
   } as ListItemProps;
 
   const listItemType = getListItemType(!!href, !!props.onClick);
+  const listItemRole = role === 'menu' ? 'none' : undefined;
 
   const content = (
     <>
@@ -66,7 +67,7 @@ export const MenuItem = forwardRef<
     const linkRef = ref as MutableRefObject<HTMLAnchorElement>;
 
     return (
-      <ListItem role="none">
+      <ListItem role={listItemRole}>
         <ListLink
           {...(computed as ListLinkProps)}
           href={href}
@@ -83,7 +84,7 @@ export const MenuItem = forwardRef<
     const buttonRef = ref as MutableRefObject<HTMLButtonElement>;
 
     return (
-      <ListItem role="none">
+      <ListItem role={listItemRole}>
         <ListButton {...(computed as ListLinkProps)} ref={buttonRef}>
           {content}
         </ListButton>
