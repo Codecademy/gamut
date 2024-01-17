@@ -13,7 +13,8 @@ export const boxProps = variance.compose(
   system.background,
   system.typography,
   system.flex,
-  system.grid
+  system.grid,
+  system.list
 );
 
 export const sharedStates = system.states({

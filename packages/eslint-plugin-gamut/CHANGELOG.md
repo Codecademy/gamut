@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.0](https://github.com/Codecademy/gamut/compare/eslint-plugin-gamut@2.0.5...eslint-plugin-gamut@2.1.0) (2023-11-30)
+
+### Features
+
+- **Icons:** add bookBookmarkIcon ([4c0f6ff](https://github.com/Codecademy/gamut/commit/4c0f6ff7b8fd95c3d4035c2a1143b2f239fe5b5b))
+
 ### [2.0.5](https://github.com/Codecademy/gamut/compare/eslint-plugin-gamut@2.0.4...eslint-plugin-gamut@2.0.5) (2023-09-14)
 
 **Note:** Version bump only for package eslint-plugin-gamut

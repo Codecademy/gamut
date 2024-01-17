@@ -220,3 +220,27 @@ const Box = styled.div(system.shadow);
 <Story name="shadows">
   <DataTable rows={getPropRows('shadows')} columns={defaultColumns} />
 </Story>
+
+# List
+
+Props for adjusting list styles when rendering a component as a `ul` or `ol`
+
+```tsx
+import styled from '@emotion/styled';
+import { system } from '@codecademy/gamut-styles';
+
+const Box = styled.div(system.list);
+
+<Box
+  as="ul"
+  listStyleType="square"
+  listStylePosition="inside"
+  listStyleImage="none"
+>
+  <Box as="li">a list item</Box>
+</Box>;
+```
+
+<Story name="lists">
+  <DataTable rows={getPropRows('list')} columns={defaultColumns} />
+</Story>

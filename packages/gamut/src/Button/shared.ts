@@ -104,7 +104,7 @@ export interface ButtonProps
     StyleProps<typeof buttonProps> {
   onClick?: HTMLProps<HTMLButtonElement>['onClick'];
   variant?: typeof buttonVariants[number];
-  size?: 'normal' | 'small';
+  size?: 'normal' | 'small' | 'large';
   as?: never;
   mode?: ColorModes;
 }

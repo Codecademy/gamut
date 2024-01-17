@@ -3,6 +3,86 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.15.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.15.0...@codecademy/gamut-icons@9.15.1) (2024-01-11)
+
+### Bug Fixes
+
+- **Icons:** Rename WhatsAppIcon to WhatsAppFilledIcon ([617c072](https://github.com/Codecademy/gamut/commit/617c07220a5b7da807428ac5719480d3e33ed04c))
+
+## [9.15.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.14.0...@codecademy/gamut-icons@9.15.0) (2024-01-10)
+
+### Features
+
+- **Icons:** add EmailFilledIcon, WhatsAppIcon, and XIcon ([83c138a](https://github.com/Codecademy/gamut/commit/83c138a79dde638eaa447ceb0a1a1aeec1e6f028))
+
+## [9.14.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.13.0...@codecademy/gamut-icons@9.14.0) (2024-01-05)
+
+### Features
+
+- **icons:** add miniEditIcon ([d230d4d](https://github.com/Codecademy/gamut/commit/d230d4de6c91ef814af999951d713d4715f82b5e))
+
+## [9.13.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.12.0...@codecademy/gamut-icons@9.13.0) (2023-12-13)
+
+### Features
+
+- **Icons:** add mini open icon ([1a9a159](https://github.com/Codecademy/gamut/commit/1a9a1599aed563af477dfee6246b2fb1080f976e))
+
+## [9.12.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.11.1...@codecademy/gamut-icons@9.12.0) (2023-11-30)
+
+### Features
+
+- **Icons:** add bookBookmarkIcon ([4c0f6ff](https://github.com/Codecademy/gamut/commit/4c0f6ff7b8fd95c3d4035c2a1143b2f239fe5b5b))
+
+### [9.11.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.11.0...@codecademy/gamut-icons@9.11.1) (2023-11-27)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.10.0...@codecademy/gamut-icons@9.11.0) (2023-11-27)
+
+### Features
+
+- **Icons:** add ProductsBriefcaseIcon, SmileyHappyIcon, SmileySadIcon, SmileyIndifferentIcon, and SmileyStarEyesIcon ([a885490](https://github.com/Codecademy/gamut/commit/a8854906dc67e92de0f7ba3249d6e6c10272418a))
+
+## [9.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.9.0...@codecademy/gamut-icons@9.10.0) (2023-11-09)
+
+### Features
+
+- **Icons:** add miniUndoIcon ([83deff1](https://github.com/Codecademy/gamut/commit/83deff10cc4724c01d34a6e278581a675060db16))
+
+## [9.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.8.0...@codecademy/gamut-icons@9.9.0) (2023-11-09)
+
+### Features
+
+- **Icons:** add miniCopyIcon ([24aee8c](https://github.com/Codecademy/gamut/commit/24aee8c3569804dc2a10342e237c3b9e28a03648))
+
+## [9.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.7.1...@codecademy/gamut-icons@9.8.0) (2023-11-07)
+
+### Features
+
+- **StopSignIcon:** added StopSignIcon ([5e7df13](https://github.com/Codecademy/gamut/commit/5e7df130c3c927b4289443e2f1605140d511bee3))
+
+### [9.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.7.0...@codecademy/gamut-icons@9.7.1) (2023-11-02)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.6.0...@codecademy/gamut-icons@9.7.0) (2023-10-31)
+
+### Features
+
+- **EditableIcon:** Add SparkleIcon, BugIcon, ThumbsUpFilledIcon, ThumbsDownFilledIcon, and OpenAIFullIcon ([51c6ec0](https://github.com/Codecademy/gamut/commit/51c6ec09509e2f55176427bc2a54ac708411383a))
+
+## [9.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.5.0...@codecademy/gamut-icons@9.6.0) (2023-10-30)
+
+### Features
+
+- **Icons:** add SendIcon ([47cfb37](https://github.com/Codecademy/gamut/commit/47cfb37826f73adaa448137c720011915456d0de))
+
+## [9.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.4.3...@codecademy/gamut-icons@9.5.0) (2023-10-30)
+
+### Features
+
+- Add office building double icon ([a015c00](https://github.com/Codecademy/gamut/commit/a015c00253705846b2da52e26a26c28163e96a47))
+
 ### [9.4.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.4.2...@codecademy/gamut-icons@9.4.3) (2023-10-10)
 
 ### Bug Fixes

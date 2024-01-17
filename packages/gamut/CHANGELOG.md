@@ -3,6 +3,88 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.10.11](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.10.10...@codecademy/gamut@55.10.11) (2024-01-11)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.10.10](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.10.9...@codecademy/gamut@55.10.10) (2024-01-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.10.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.10.8...@codecademy/gamut@55.10.9) (2024-01-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.10.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.10.7...@codecademy/gamut@55.10.8) (2023-12-13)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.10.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.10.6...@codecademy/gamut@55.10.7) (2023-12-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.10.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.10.5...@codecademy/gamut@55.10.6) (2023-11-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.10.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.10.4...@codecademy/gamut@55.10.5) (2023-11-30)
+
+### Bug Fixes
+
+- **Badge:** color of secondary badges ([a9b41ba](https://github.com/Codecademy/gamut/commit/a9b41ba7e17c6a309e09067506ddc2a7ebdc7f44))
+
+### [55.10.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.10.3...@codecademy/gamut@55.10.4) (2023-11-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.10.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.10.2...@codecademy/gamut@55.10.3) (2023-11-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.10.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.10.1...@codecademy/gamut@55.10.2) (2023-11-09)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.10.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.10.0...@codecademy/gamut@55.10.1) (2023-11-09)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [55.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.9.2...@codecademy/gamut@55.10.0) (2023-11-08)
+
+### Features
+
+- **Button:** add large size ([5e0a811](https://github.com/Codecademy/gamut/commit/5e0a811e10ce3a9e6180719de23e778d4f461b45))
+
+### [55.9.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.9.1...@codecademy/gamut@55.9.2) (2023-11-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.9.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.9.0...@codecademy/gamut@55.9.1) (2023-11-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [55.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.8.5...@codecademy/gamut@55.9.0) (2023-11-02)
+
+### Features
+
+- add listStyle props to Box and Column ([77d2f13](https://github.com/Codecademy/gamut/commit/77d2f138ae5dccf465be0f414b372b8d7bc0d917))
+
+### [55.8.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.8.4...@codecademy/gamut@55.8.5) (2023-10-31)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.8.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.8.3...@codecademy/gamut@55.8.4) (2023-10-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.8.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.8.2...@codecademy/gamut@55.8.3) (2023-10-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.8.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.8.1...@codecademy/gamut@55.8.2) (2023-10-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ### [55.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.8.0...@codecademy/gamut@55.8.1) (2023-10-13)
 
 **Note:** Version bump only for package @codecademy/gamut

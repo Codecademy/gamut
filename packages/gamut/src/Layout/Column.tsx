@@ -56,6 +56,7 @@ const columnProps = variance.compose(
   system.layout,
   system.space,
   system.grid,
+  system.list,
   gridProps
 );
 

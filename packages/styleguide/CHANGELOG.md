@@ -3,6 +3,100 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.9.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.9.0...@codecademy/styleguide@66.9.1) (2024-01-11)
+
+### Bug Fixes
+
+- **Icons:** Rename WhatsAppIcon to WhatsAppFilledIcon ([617c072](https://github.com/Codecademy/gamut/commit/617c07220a5b7da807428ac5719480d3e33ed04c))
+
+## [66.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.9...@codecademy/styleguide@66.9.0) (2024-01-10)
+
+### Features
+
+- **Icons:** add EmailFilledIcon, WhatsAppIcon, and XIcon ([83c138a](https://github.com/Codecademy/gamut/commit/83c138a79dde638eaa447ceb0a1a1aeec1e6f028))
+
+### [66.8.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.8...@codecademy/styleguide@66.8.9) (2024-01-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.8.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.7...@codecademy/styleguide@66.8.8) (2023-12-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.8.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.6...@codecademy/styleguide@66.8.7) (2023-12-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.8.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.5...@codecademy/styleguide@66.8.6) (2023-11-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.8.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.4...@codecademy/styleguide@66.8.5) (2023-11-30)
+
+### Bug Fixes
+
+- **Badge:** color of secondary badges ([a9b41ba](https://github.com/Codecademy/gamut/commit/a9b41ba7e17c6a309e09067506ddc2a7ebdc7f44))
+
+### [66.8.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.3...@codecademy/styleguide@66.8.4) (2023-11-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.8.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.2...@codecademy/styleguide@66.8.3) (2023-11-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.8.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.1...@codecademy/styleguide@66.8.2) (2023-11-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.8.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.0...@codecademy/styleguide@66.8.1) (2023-11-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [66.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.7.3...@codecademy/styleguide@66.8.0) (2023-11-08)
+
+### Features
+
+- **Button:** add large size ([5e0a811](https://github.com/Codecademy/gamut/commit/5e0a811e10ce3a9e6180719de23e778d4f461b45))
+
+### [66.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.7.2...@codecademy/styleguide@66.7.3) (2023-11-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.7.1...@codecademy/styleguide@66.7.2) (2023-11-07)
+
+### Bug Fixes
+
+- gamut failing prettier check ([4c8dbd0](https://github.com/Codecademy/gamut/commit/4c8dbd0fb6913ec0dd9f7bbe10baa37de5c8133a))
+
+### [66.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.7.0...@codecademy/styleguide@66.7.1) (2023-11-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [66.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.6.0...@codecademy/styleguide@66.7.0) (2023-11-02)
+
+### Features
+
+- add listStyle props to Box and Column ([77d2f13](https://github.com/Codecademy/gamut/commit/77d2f138ae5dccf465be0f414b372b8d7bc0d917))
+
+## [66.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.11...@codecademy/styleguide@66.6.0) (2023-10-31)
+
+### Features
+
+- **EditableIcon:** Add SparkleIcon, BugIcon, ThumbsUpFilledIcon, ThumbsDownFilledIcon, and OpenAIFullIcon ([51c6ec0](https://github.com/Codecademy/gamut/commit/51c6ec09509e2f55176427bc2a54ac708411383a))
+
+### [66.5.11](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.10...@codecademy/styleguide@66.5.11) (2023-10-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.5.10](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.9...@codecademy/styleguide@66.5.10) (2023-10-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.5.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.8...@codecademy/styleguide@66.5.9) (2023-10-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [66.5.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.5.7...@codecademy/styleguide@66.5.8) (2023-10-13)
 
 **Note:** Version bump only for package @codecademy/styleguide

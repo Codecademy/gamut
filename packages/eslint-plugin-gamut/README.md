@@ -1,6 +1,6 @@
 # `eslint-plugin-gamut`
 
-Recommended eslint plugin for Gamut applications. ✨
+Recommended eslint plugins for Gamut applications. ✨
 
 ## Usage
 
