@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.9.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.9.0...@codecademy/styleguide@66.9.1) (2024-01-11)
+
+### Bug Fixes
+
+- **Icons:** Rename WhatsAppIcon to WhatsAppFilledIcon ([617c072](https://github.com/Codecademy/gamut/commit/617c07220a5b7da807428ac5719480d3e33ed04c))
+
+## [66.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.9...@codecademy/styleguide@66.9.0) (2024-01-10)
+
+### Features
+
+- **Icons:** add EmailFilledIcon, WhatsAppIcon, and XIcon ([83c138a](https://github.com/Codecademy/gamut/commit/83c138a79dde638eaa447ceb0a1a1aeec1e6f028))
+
+### [66.8.9](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.8...@codecademy/styleguide@66.8.9) (2024-01-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [66.8.8](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.8.7...@codecademy/styleguide@66.8.8) (2023-12-13)
 
 **Note:** Version bump only for package @codecademy/styleguide

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.15.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.15.0...@codecademy/gamut-icons@9.15.1) (2024-01-11)
+
+### Bug Fixes
+
+- **Icons:** Rename WhatsAppIcon to WhatsAppFilledIcon ([617c072](https://github.com/Codecademy/gamut/commit/617c07220a5b7da807428ac5719480d3e33ed04c))
+
+## [9.15.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.14.0...@codecademy/gamut-icons@9.15.0) (2024-01-10)
+
+### Features
+
+- **Icons:** add EmailFilledIcon, WhatsAppIcon, and XIcon ([83c138a](https://github.com/Codecademy/gamut/commit/83c138a79dde638eaa447ceb0a1a1aeec1e6f028))
+
+## [9.14.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.13.0...@codecademy/gamut-icons@9.14.0) (2024-01-05)
+
+### Features
+
+- **icons:** add miniEditIcon ([d230d4d](https://github.com/Codecademy/gamut/commit/d230d4de6c91ef814af999951d713d4715f82b5e))
+
 ## [9.13.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.12.0...@codecademy/gamut-icons@9.13.0) (2023-12-13)
 
 ### Features
