@@ -70,7 +70,8 @@
     "typescript": "5.1.3"
   },
   "devDependencies": {
-    "onchange": "^7.0.2"
+    "onchange": "^7.0.2",
+    "webpack": "4.46.0"
   },
   "engines": {
     "node": "^16.17",
