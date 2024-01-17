@@ -46,16 +46,6 @@ const getTrueProps = ({
   };
 };
 
-const getRole = (root: boolean, role: ListProps['role']) => {
-  if (root) {
-    return role;
-  }
-  if (role === 'menu') {
-    return 'group';
-  }
-  return undefined;
-};
-
 export function useMenu({
   role: roleProp,
   spacing: spacingProp,
@@ -74,7 +64,7 @@ export function useMenu({
 
   return {
     root,
-    role: getRole(root, role),
+    role: root ? role : role === 'menu' ? 'group' : undefined,
     variant,
     spacing,
     depth: nextDepth,
