@@ -40,6 +40,13 @@ While most Menus are used as layout elements, Menus can also be used as popover 
 - `MenuItem`: A clickable list item that renders as a link or a clickable `li` element if a href is specified.
 - `MenuSeparator`: A semantic element for separating `li` items visually. This element will not display if used outside of `action` menus.
 
+## The `menu` role
+
+A `Menu` should only have the `menu` role when it is a list of actions or functions a user can evoke. For example - a popover menu that allows the user to copy text, paste text, or reset a workspace. If your `Menu` is simply a list of links it should not have the `menu` role. Adding the role of `menu` to the menu component will programmatically set the correct roles on its `MenuItem`s and `MenuSeparator`s.
+
+If you would like to know more about the `menu` role - check out the MDN web docs [here](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role).
+
+
 ## Usage
 
 ```tsx
@@ -142,6 +149,8 @@ const MyMenu = () => (
 ## Popover Menus
 
 You can create popover menus by utilizing our <LinkTo kind="Atoms/PopoverContainer">PopoverContainer</LinkTo>. Once you have your base positioning, you just need to adjust the `y` axis by `48` for the `normal` spacing or `32` for the `condensed` spacing for each of the `MenuItem`s. You may also need to change the `alignment` of the `PopoverContainer` to ensure correct positioning.
+
+Popover Menus that have complex functionalities or actions, like the example below, should have the `menu` role.
 
 Click through each item to see how the `Menu`s appear (and disappear when the item is clicked again, or another item is selected.)
 
