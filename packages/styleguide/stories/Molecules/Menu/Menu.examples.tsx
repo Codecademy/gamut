@@ -90,10 +90,7 @@ export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
               >
                 Icon Item
               </MenuItem>
-              <MenuItem
-                active={activeIndex === 3}
-                onClick={() => console.log('WOAH')}
-              >
+              <MenuItem active={activeIndex === 3} onClick={() => null}>
                 A complex action
               </MenuItem>
             </Menu>
