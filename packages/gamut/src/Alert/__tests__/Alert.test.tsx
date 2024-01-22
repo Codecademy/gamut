@@ -1,12 +1,12 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 
+import { mockUseMedia } from '../__mocks__';
 import { Alert } from '../Alert';
 
 const children = 'Hello';
 const onClose = jest.fn();
 const onClick = jest.fn();
-const mockUseMedia = jest.fn();
 
 // not testing for mobile as default
 jest.mock('react-use', () => ({
