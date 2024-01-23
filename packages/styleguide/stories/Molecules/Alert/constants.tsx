@@ -13,8 +13,7 @@ export const ALERTS = {
   feature: {
     type: 'feature',
     cta: { children: 'Add your name' },
-    children:
-      'Update your profile with your name to help your team with account management.',
+    children: 'Alert message',
   },
   notice: {
     type: 'notice',
