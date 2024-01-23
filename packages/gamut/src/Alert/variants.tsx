@@ -77,5 +77,6 @@ export const getGridTemplateColumns = (
   const numOfButtons = Object.values(buttonExistenceObject).filter(
     (item) => item === true
   ).length;
-  return `max-content minmax(0, 1fr) repeat(${numOfButtons}, max-content)`;
+  const repeatCount = numOfButtons <= 0 ? 1 : numOfButtons;
+  return `max-content minmax(0, 1fr) repeat(${repeatCount}, max-content)`;
 };
