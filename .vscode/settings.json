@@ -28,7 +28,7 @@
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 120,
     "editor.codeActionsOnSave": {
-      "source.fixAll": "explicit"
+      "source.fixAll": true
     }
   },
   "mdx.experimentalLanguageServer": true,
@@ -37,7 +37,7 @@
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": true
   },
   "storyExplorer.storiesGlobs": "packages/styleguide/stories/**/*.stories.mdx",
   "jest.jestCommandLine": "node_modules/.bin/jest"
