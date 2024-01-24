@@ -48,7 +48,6 @@ export const placementVariants = variant({
     maxWidth: `calc(${breakpoints.md} - 4rem)`,
     px: 4,
     width: 1,
-    borderRadius: '5px',
   },
   variants: {
     inline: {
