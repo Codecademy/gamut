@@ -1,14 +1,20 @@
 import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { useCurrentMode } from '@codecademy/gamut-styles';
-import { isValidElement, useState } from 'react';
+import { breakpoints, useCurrentMode } from '@codecademy/gamut-styles';
+import { isValidElement, useMemo, useState } from 'react';
 import * as React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
+import { useMedia } from 'react-use';
 
 import { Rotation, WithChildrenProp } from '..';
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
-import { AlertBanner, AlertBox, CollapsableContent } from './elements';
-import { alertVariants } from './variants';
+import {
+  AlertBanner,
+  AlertBox,
+  alertContentProps,
+  CollapsableContent,
+} from './elements';
+import { alertVariants, getGridTemplateColumns } from './variants';
 
 export type AlertType = keyof typeof alertVariants;
 export type AlertPlacements = 'inline' | 'floating';
@@ -43,9 +49,10 @@ export const Alert: React.FC<AlertProps> = ({
   onClose,
   hidden,
   type = 'general',
+  placement = 'floating',
   ...props
 }) => {
-  const isInline = props.placement === 'inline';
+  const isDesktop = useMedia(`(min-width: ${breakpoints.xs})`);
   const activeAlert = alertVariants?.[type] ?? alertVariants.general;
   const { icon: Icon, bg } = activeAlert;
 
@@ -55,13 +62,38 @@ export const Alert: React.FC<AlertProps> = ({
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
-  const toggleState = expanded || isInline ? 'expanded' : 'collapsed';
+  const ctaExists = cta && Boolean(cta.children ?? cta.text);
+
+  const isInline = useMemo(() => {
+    return placement === 'inline' || !isDesktop;
+  }, [placement, isDesktop]);
+
+  const toggleState = useMemo(() => {
+    return expanded || isInline ? 'expanded' : 'collapsed';
+  }, [expanded, isInline]);
+
+  const ctaButtonPadding = useMemo(() => {
+    return !isDesktop && placement === 'floating' ? 4 : undefined;
+  }, [placement, isDesktop]);
+
+  const gridButtonOrder = useMemo(() => {
+    return isDesktop ? undefined : (['2', , 'auto'] as const);
+  }, [isDesktop]);
+
+  const gridTemplateColumns = useMemo(() => {
+    return !isDesktop
+      ? `max-content minmax(0, 1fr) repeat(1, max-content)`
+      : getGridTemplateColumns({
+          cta: ctaExists,
+          onClose: !!onClose,
+          truncated,
+        });
+  }, [ctaExists, isDesktop, onClose, truncated]);
+
   const tabIndex = hidden ? -1 : undefined;
 
   const floatingContent = expanded ? (
-    <Box as="span" display="inline-block" width="100%">
-      {children}
-    </Box>
+    <Box {...alertContentProps}>{children}</Box>
   ) : (
     <TruncateMarkup
       tokenize="characters"
@@ -70,7 +102,7 @@ export const Alert: React.FC<AlertProps> = ({
       onTruncate={setTruncated}
     >
       {/** Truncate markup expects a single child element */}
-      <Box as="span" display="inline-block" width="100%">
+      <Box {...alertContentProps}>
         {React.Children.map(children, (child) =>
           isValidElement(child) || typeof child === 'string' ? (
             child
@@ -82,24 +114,30 @@ export const Alert: React.FC<AlertProps> = ({
     </TruncateMarkup>
   );
 
-  const expandButton = truncated && (
-    <TextButton
-      tabIndex={tabIndex}
-      aria-label={expanded ? 'Collapse' : 'Expand'}
-      variant="secondary"
-      size="small"
-      onClick={() => setExpanded(!expanded)}
-    >
-      <Rotation rotated={toggleState === 'expanded'}>
-        <MiniChevronDownIcon />
-      </Rotation>
-    </TextButton>
+  const expandButton = truncated && !isInline && (
+    <Box>
+      <TextButton
+        tabIndex={tabIndex}
+        aria-label={expanded ? 'Collapse' : 'Expand'}
+        variant="secondary"
+        size="small"
+        onClick={() => setExpanded(!expanded)}
+      >
+        <Rotation rotated={toggleState === 'expanded'}>
+          <MiniChevronDownIcon />
+        </Rotation>
+      </TextButton>
+    </Box>
   );
 
   const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
 
-  const ctaButton = cta && Boolean(cta.children ?? cta.text) && (
-    <Box gridColumn={['2', , 'auto']} gridRow={['2', , 'auto']}>
+  const ctaButton = ctaExists && (
+    <Box
+      gridColumn={gridButtonOrder}
+      gridRow={gridButtonOrder}
+      pb={ctaButtonPadding}
+    >
       <FillButton
         {...cta}
         mode={buttonColorMode}
@@ -115,7 +153,12 @@ export const Alert: React.FC<AlertProps> = ({
   const AlertWrapper = isSubtleVariant ? AlertBox : AlertBanner;
 
   return (
-    <AlertWrapper bg={bg} {...props}>
+    <AlertWrapper
+      bg={bg}
+      placement={placement}
+      gridTemplateColumns={gridTemplateColumns}
+      {...props}
+    >
       <Icon size={32} aria-hidden p={8} />
       <CollapsableContent
         animate={toggleState}
@@ -132,8 +175,8 @@ export const Alert: React.FC<AlertProps> = ({
       >
         {isInline ? children : floatingContent}
       </CollapsableContent>
-      <Box>{expandButton}</Box>
-      <Box alignSelf="center">{ctaButton}</Box>
+      {expandButton}
+      {ctaButton}
       {onClose && (
         <IconButton
           tabIndex={tabIndex}
@@ -146,9 +189,4 @@ export const Alert: React.FC<AlertProps> = ({
       )}
     </AlertWrapper>
   );
-};
-
-Alert.defaultProps = {
-  type: 'general',
-  placement: 'floating',
 };

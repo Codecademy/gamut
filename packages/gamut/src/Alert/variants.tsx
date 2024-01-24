@@ -42,24 +42,41 @@ export const alertVariants = {
 export const placementVariants = variant({
   prop: 'placement',
   base: {
-    borderColor: 'navy',
-    display: 'grid',
     alignItems: 'start',
-    width: 1,
-    maxWidth: `calc(${breakpoints.md} - 4rem)`,
-    border: 2,
-    borderRadius: '3px',
     columnGap: [4, 8, , 12],
-    gridTemplateColumns: 'max-content minmax(0, 1fr) repeat(3, max-content)',
+    display: 'grid',
+    maxWidth: `calc(${breakpoints.md} - 4rem)`,
+    px: 4,
+    width: 1,
   },
   variants: {
     inline: {
       border: 'none',
-      p: 4,
+      borderRadius: '3px',
       py: 8,
     },
     floating: {
-      p: 4,
+      borderColor: 'navy',
+      borderRadius: '5px',
+      borderStyle: 'solid',
+      borderWidth: '2px',
+      py: 4,
     },
   },
 });
+
+export interface buttonExistenceObject {
+  cta?: boolean;
+  onClose?: boolean;
+  truncated?: boolean;
+}
+
+export const getGridTemplateColumns = (
+  buttonExistenceObject: buttonExistenceObject
+) => {
+  const numOfButtons = Object.values(buttonExistenceObject).filter(
+    (item) => item === true
+  ).length;
+  const repeatCount = numOfButtons <= 0 ? 1 : numOfButtons;
+  return `max-content minmax(0, 1fr) repeat(${repeatCount}, max-content)`;
+};
