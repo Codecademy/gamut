@@ -69,7 +69,7 @@ export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
             height="100%"
             ref={target}
           >
-            <Menu border="none" variant="navigation">
+            <Menu border="none" variant="navigation" role="menu">
               <MenuItem
                 active={activeIndex === 0}
                 onClick={() => clickHandler(-68, 0)}
@@ -90,11 +90,8 @@ export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
               >
                 Icon Item
               </MenuItem>
-              <MenuItem
-                active={activeIndex === 3}
-                onClick={() => clickHandler(-166, 3)}
-              >
-                Menu Item
+              <MenuItem active={activeIndex === 3} onClick={() => null}>
+                A complex action
               </MenuItem>
             </Menu>
           </FlexBox>
@@ -107,7 +104,7 @@ export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
             targetRef={target}
           >
             <Background bg="white" borderRadius="10px">
-              <Menu variant="select">
+              <Menu variant="select" role="menu">
                 {activeIndex % 2 === 0 ? (
                   <>
                     <MenuItem>i am a side menu!</MenuItem>
@@ -120,7 +117,7 @@ export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
                     <MenuSeparator />
                     <MenuItem href="cool-too"> another cool link</MenuItem>
                     <MenuSeparator />
-                    <MenuItem>another item</MenuItem>
+                    <MenuItem>an action</MenuItem>
                   </>
                 )}
               </Menu>
