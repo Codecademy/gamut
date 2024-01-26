@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.10.11...@codecademy/gamut@55.11.0) (2024-01-24)
+
+### Features
+
+- **Alert:** wrap button under text + remove truncation on smaller screensizes ([0f9fb69](https://github.com/Codecademy/gamut/commit/0f9fb6989b9b3ad43844ea463f13d102e7c46577))
+
 ### [55.10.11](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.10.10...@codecademy/gamut@55.10.11) (2024-01-11)
 
 **Note:** Version bump only for package @codecademy/gamut

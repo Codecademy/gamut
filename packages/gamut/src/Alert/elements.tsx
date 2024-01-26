@@ -61,6 +61,17 @@ export const AlertBox = forwardRef<
   )
 );
 
+export const alertContentProps = {
+  as: 'span',
+  display: 'inline-block',
+  width: '100%',
+} as const;
+
 export const CollapsableContent = styled(motion.div)(
-  css({ py: 4, overflowY: 'hidden' })
+  css({
+    py: 4,
+    overflowY: 'hidden',
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale',
+  })
 );

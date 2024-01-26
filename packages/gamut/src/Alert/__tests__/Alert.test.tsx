@@ -6,6 +6,14 @@ import { Alert } from '../Alert';
 const children = 'Hello';
 const onClose = jest.fn();
 const onClick = jest.fn();
+const mockUseMedia = jest.fn();
+
+// not testing for mobile as default
+jest.mock('react-use', () => ({
+  get useMedia() {
+    return mockUseMedia;
+  },
+}));
 
 const renderView = setupRtl(Alert, {
   onClose,
@@ -14,11 +22,8 @@ const renderView = setupRtl(Alert, {
 });
 
 describe('Alert', () => {
-  beforeEach(() => {
-    jest.resetAllMocks();
-  });
-
   it('calls the onClose callback when the close button is clicked', () => {
+    mockUseMedia.mockReturnValue(true);
     const { view } = renderView({});
 
     const buttons = view.getAllByRole('button');
@@ -61,6 +66,14 @@ describe('Alert', () => {
 
     fireEvent.click(expandButton);
 
+    expect(view.findByText(children));
+  });
+
+  it('does not render a clickable button and renders untruncated text when on the xs screen size', () => {
+    mockUseMedia.mockReturnValue(false);
+    const { view } = renderView({});
+
+    expect(view.queryByRole('button', { name: 'Expand' })).toBeNull();
     expect(view.findByText(children));
   });
 });
