@@ -67,9 +67,13 @@ export const ButtonBase = forwardRef<
   ButtonBaseProps
 >(({ disabled, children, role, type = 'button', ...rest }, ref) => {
   if (!('href' in rest) || rest?.href === undefined || disabled) {
+    // @ts-expect-error we need this to turn a disabled anchor into a button without passing on the href prop
+    // eslint-disable-next-line
+    const { href, ...filteredProps } = rest;
+
     return (
       <ResetElement
-        {...rest}
+        {...filteredProps}
         ref={ref as MutableRefObject<HTMLButtonElement>}
         as="button"
         type={type}
