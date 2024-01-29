@@ -228,7 +228,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       )}
       <AnimatedFadeButton
         aria-label={`Navigate forward to page ${currentPage + 1}`}
-        href="/"
+        href={navigation}
         icon={MiniChevronRightIcon}
         onClick={() => changeHandler(currentPage + 1)}
         showButton={currentPage === totalPages ? 'hidden' : 'shown'}
