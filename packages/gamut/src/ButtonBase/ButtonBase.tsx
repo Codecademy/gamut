@@ -66,7 +66,7 @@ export const ButtonBase = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
   ButtonBaseProps
 >(({ disabled, children, role, type = 'button', ...rest }, ref) => {
-  if (!('href' in rest) || rest?.href === null || disabled) {
+  if (!('href' in rest) || rest?.href === undefined || disabled) {
     return (
       <ResetElement
         {...rest}
