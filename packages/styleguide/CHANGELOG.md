@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.9.2...@codecademy/styleguide@66.10.0) (2024-01-26)
+
+### Features
+
+- **Menu:** add optional menu role ([f3efc3f](https://github.com/Codecademy/gamut/commit/f3efc3f9406bcca68efc549e8c3cf68de091d259))
+
+### [66.9.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.9.1...@codecademy/styleguide@66.9.2) (2024-01-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [66.9.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.9.0...@codecademy/styleguide@66.9.1) (2024-01-11)
 
 ### Bug Fixes
