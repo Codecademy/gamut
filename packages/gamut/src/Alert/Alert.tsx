@@ -37,7 +37,7 @@ export type AlertProps = WithChildrenProp &
     /** Callback to be called when the close icon is clicked */
     onClose?: () => void;
     /** Call to Action Configuration */
-    cta?: Omit<
+    cta?: Exclude<
       React.ComponentProps<typeof FillButton>,
       'variant' | 'mode' | 'size'
     > & { text?: string };
