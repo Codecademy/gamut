@@ -30,6 +30,11 @@ type AlertPlacementType =
       placement: 'inline';
     };
 
+export type AlertCTAProps = Exclude<
+  React.ComponentProps<typeof FillButton>,
+  'variant' | 'mode' | 'size'
+> & { text?: string };
+
 export type AlertProps = WithChildrenProp &
   AlertPlacementType & {
     hidden?: boolean;
@@ -37,10 +42,7 @@ export type AlertProps = WithChildrenProp &
     /** Callback to be called when the close icon is clicked */
     onClose?: () => void;
     /** Call to Action Configuration */
-    cta?: Exclude<
-      React.ComponentProps<typeof FillButton>,
-      'variant' | 'mode' | 'size'
-    > & { text?: string };
+    cta?: AlertCTAProps;
   };
 
 export const Alert: React.FC<AlertProps> = ({
