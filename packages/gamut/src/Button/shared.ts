@@ -131,5 +131,3 @@ export type ButtonTypes =
   | typeof IconButton
   | typeof StrokeButton
   | typeof TextButton;
-
-// export type ButtonComponentProps = ComponentProps<typeof FillButton>;
