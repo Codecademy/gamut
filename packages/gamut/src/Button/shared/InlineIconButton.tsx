@@ -15,31 +15,27 @@ type InlineIconButtonType = InlineIconButtonComponents & {
   button: React.ComponentType<InlineIconButtonComponents>;
 };
 
-const IconBoxProps = { center: true, height: '100%' } as const;
-
-// we can theoretically do this with display: flex + `order` but since our buttons sometimes are styled with different display types, this is a safer way to ensure these are positioned properly
 const getButtonContent = ({
   iconPosition,
   icon: Icon,
   children,
 }: Pick<InlineIconButtonType, 'iconPosition' | 'icon' | 'children'>) => {
   const iconSpacing = iconPosition === 'left' ? 'mr' : 'ml';
+  const iconPositioning = iconPosition === 'left' ? 0 : 1;
+
   const iconProps = {
     'aria-hidden': true,
     size: 12,
     [iconSpacing]: 8,
+    order: iconPositioning,
   } as const;
+
   return !Icon ? (
     <> {children} </>
-  ) : iconPosition === 'left' ? (
-    <FlexBox {...IconBoxProps}>
-      {Icon && <Icon {...iconProps} />}
-      {children}
-    </FlexBox>
   ) : (
-    <FlexBox {...IconBoxProps}>
-      {children}
+    <FlexBox center height="100%">
       {Icon && <Icon {...iconProps} />}
+      {children}
     </FlexBox>
   );
 };
