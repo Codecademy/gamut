@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { Box, FlexBox } from '../../Box';
+import { FlexBox } from '../../Box';
 import { ButtonBaseElements } from '../../ButtonBase/ButtonBase';
 import { FillButtonProps } from '../FillButton';
 import { StrokeButtonProps } from '../StrokeButton';
