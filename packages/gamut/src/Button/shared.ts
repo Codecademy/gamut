@@ -1,3 +1,4 @@
+import { GamutIconProps } from '@codecademy/gamut-icons';
 import {
   ColorModes,
   fontSmoothPixel,
@@ -13,9 +14,14 @@ import {
   variance,
 } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps, HTMLProps } from 'react';
+import { size } from 'lodash';
+import { ComponentProps, forwardRef, HTMLProps } from 'react';
 
-import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
+import {
+  ButtonBase,
+  ButtonBaseElements,
+  ButtonSelectors,
+} from '../ButtonBase/ButtonBase';
 import { CTAButton } from './CTAButton';
 import { FillButton } from './FillButton';
 import { IconButton } from './IconButton';
@@ -113,7 +119,14 @@ export interface ButtonBaseProps extends StyleProps<typeof buttonProps> {
 }
 
 export type ButtonProps = ButtonBaseProps & ComponentProps<typeof ButtonBase>;
-
+export type InlineIconButtonProps<
+  BaseButtonType extends
+    | keyof JSX.IntrinsicElements
+    | React.JSXElementConstructor<any>
+> = ComponentProps<BaseButtonType> & {
+  iconPosition?: 'right' | 'left';
+  icon?: React.ComponentType<GamutIconProps>;
+};
 export const createButtonComponent = <P>(
   ...args: (<T extends ThemeProps>(props: T) => CSSObject)[]
 ) =>

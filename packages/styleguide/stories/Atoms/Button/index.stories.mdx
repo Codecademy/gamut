@@ -157,6 +157,21 @@ For different priority buttons we provide `primary` and `secondary` variants.
 </FillButton>
 ```
 
+## Inline Icon
+
+Our FillButtons, StrokeButtons, and TextButtons all support a single inline icon. You can align the icon to the left or right of the button text using the `iconPosition` prop.
+
+<Canvas>
+  <Story name="Inline Icon">
+    {(args) => (
+      <FillButton variant="primary" icon={SearchIcon}>
+       updog
+      </FillButton>
+    )}
+  </Story>
+</Canvas>
+
+
 ### Light Mode
 
 <Canvas>
