@@ -5,7 +5,7 @@ import {
   StrokeButton,
   TextButton,
 } from '@codecademy/gamut/src';
-import { SearchIcon } from '@codecademy/gamut-icons/src';
+import { MiniArrowLeftIcon, MiniArrowRightIcon, MiniRibbonIcon,SearchIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -165,13 +165,13 @@ Our FillButtons, StrokeButtons, and TextButtons all support a single inline icon
   <Story name="Inline Icon">
     {(args) => (
       <>
-      <FillButton icon={SearchIcon} {...args}>
+      <FillButton mr={4} icon={MiniArrowLeftIcon} {...args}>
        FillButton
       </FillButton>
-      <StrokeButton icon={SearchIcon} {...args}>
-       StrokeButton
+      <StrokeButton mr={4} icon={MiniRibbonIcon} {...args}>
+       Leading icon
       </StrokeButton>
-      <TextButton icon={SearchIcon} {...args}>
+      <TextButton icon={MiniArrowRightIcon} iconPosition="right"{...args}>
        TextButton
       </TextButton>
       </>
