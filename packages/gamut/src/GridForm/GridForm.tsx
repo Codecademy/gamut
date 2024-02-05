@@ -7,7 +7,7 @@ import {
   UnpackNestedValue,
 } from 'react-hook-form';
 
-import { ButtonProps } from '../Button/shared';
+import { ButtonProps } from '../Button';
 import { ConnectedForm, FormContextProps } from '../ConnectedForm';
 import { FormValues } from '../Form/types';
 import { LayoutGrid, LayoutGridProps } from '../Layout';

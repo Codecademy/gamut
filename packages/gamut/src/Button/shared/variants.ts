@@ -1,7 +1,7 @@
 import { theme, variant } from '@codecademy/gamut-styles';
 
-import { ButtonSelectors } from '../ButtonBase/ButtonBase';
-import { buttonVariants, templateVariants } from './shared';
+import { ButtonSelectors } from '../../ButtonBase/ButtonBase';
+import { buttonVariants, templateVariants } from './styles';
 
 export const fillButtonVariants = templateVariants(
   buttonVariants,

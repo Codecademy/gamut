@@ -3,8 +3,7 @@ import { ComponentProps } from 'react';
 import * as React from 'react';
 
 import { GridBox } from '../../Box';
-import { CTAButton, FillButton, TextButton } from '../../Button';
-import { ButtonProps } from '../../Button/shared';
+import { ButtonProps, CTAButton, FillButton, TextButton } from '../../Button';
 import { SubmitButton, SubmitButtonProps } from '../../ConnectedForm';
 import { Column } from '../../Layout';
 

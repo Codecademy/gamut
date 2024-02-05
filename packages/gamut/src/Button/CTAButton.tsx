@@ -1,5 +1,5 @@
-import { createButtonComponent } from './shared';
-import { ctaButtonVariants } from './variants';
+import { createButtonComponent } from './shared/styles';
+import { ctaButtonVariants } from './shared/variants';
 
 export const CTAButton = createButtonComponent<{ variant?: 'primary' }>(
   ctaButtonVariants
