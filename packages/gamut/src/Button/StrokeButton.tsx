@@ -9,7 +9,7 @@ import {
   strokeButtonVariants,
 } from './shared';
 
-export const StrokeButtonBase = createButtonComponent(
+const StrokeButtonBase = createButtonComponent(
   sizeVariants,
   strokeButtonVariants
 );

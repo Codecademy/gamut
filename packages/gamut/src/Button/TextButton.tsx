@@ -9,10 +9,7 @@ import {
   textButtonVariants,
 } from './shared';
 
-export const TextButtonBase = createButtonComponent(
-  textButtonVariants,
-  sizeVariants
-);
+const TextButtonBase = createButtonComponent(textButtonVariants, sizeVariants);
 
 export type TextButtonProps = InlineIconButtonProps<typeof TextButtonBase>;
 

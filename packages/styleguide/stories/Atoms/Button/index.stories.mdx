@@ -164,9 +164,17 @@ Our FillButtons, StrokeButtons, and TextButtons all support a single inline icon
 <Canvas>
   <Story name="Inline Icon">
     {(args) => (
-      <FillButton variant="primary" icon={SearchIcon}>
-       updog
+      <>
+      <FillButton icon={SearchIcon} {...args}>
+       FillButton
       </FillButton>
+      <StrokeButton icon={SearchIcon} {...args}>
+       StrokeButton
+      </StrokeButton>
+      <TextButton icon={SearchIcon} {...args}>
+       TextButton
+      </TextButton>
+      </>
     )}
   </Story>
 </Canvas>
