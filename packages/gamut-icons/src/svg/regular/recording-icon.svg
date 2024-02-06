@@ -1,12 +1,7 @@
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<mask id="mask0_3586_19685" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="0" width="20" height="24">
 <path d="M3 9.75V14.423" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M7.5 5.25V18.75" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M21 9.75V14.423" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M16.5 5.25V18.75" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 0.75V23.25" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</mask>
-<g mask="url(#mask0_3586_19685)">
-<rect y="0.5" width="24" height="24" fill="#10162F"/>
-</g>
 </svg>
