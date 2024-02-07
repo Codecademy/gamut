@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.12.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.12.1...@codecademy/gamut@55.12.2) (2024-02-07)
+
+### Bug Fixes
+
+- **Button:** button typing issues ([4eefddf](https://github.com/Codecademy/gamut/commit/4eefddf31fc9729d4bc9795de9b657839eff1bca))
+
 ### [55.12.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.12.0...@codecademy/gamut@55.12.1) (2024-02-07)
 
 **Note:** Version bump only for package @codecademy/gamut
