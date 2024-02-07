@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.16.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.15.1...@codecademy/gamut-icons@9.16.0) (2024-02-07)
+
+### Features
+
+- **Icons:** add MicrophoneIcon,RecordingIcon and ListeningIcon ([1957899](https://github.com/Codecademy/gamut/commit/195789995109de3aa4030a3b16ebcaba4957b8b2))
+
 ### [9.15.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.15.0...@codecademy/gamut-icons@9.15.1) (2024-01-11)
 
 ### Bug Fixes
