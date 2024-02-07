@@ -93,8 +93,8 @@ const anchorVariants = variant({
 
 const anchorProps = variance.compose(
   system.layout,
-  system.typography,
-  system.space
+  system.space,
+  system.typography
 );
 
 export const AnchorBase = styled('a', styledOptions<'a'>())<AnchorProps>(

@@ -4,10 +4,10 @@ import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { PaginationButton, PaginationButtonProps } from './PaginationButton';
 import { wrapWithSlideAnimation } from './utils';
 
-export interface EllipsisButtonProps extends PaginationButtonProps {
+export type EllipsisButtonProps = PaginationButtonProps & {
   'aria-label': string;
   direction: 'back' | 'forward';
-}
+};
 
 const ellipsisButtonContents = { ellipsis: '•••', back: '«', forward: '»' };
 

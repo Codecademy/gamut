@@ -1,9 +1,8 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
-import { forwardRef } from 'react';
-import * as React from 'react';
+import { ComponentProps, forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
-import { ButtonProps, createButtonComponent } from './shared';
+import { createButtonComponent } from './shared';
 import { iconSizeVariants, textButtonVariants } from './variants';
 
 const IconButtonInner = createButtonComponent(
@@ -11,10 +10,10 @@ const IconButtonInner = createButtonComponent(
   textButtonVariants
 );
 
-export interface IconButtonProps extends ButtonProps {
+export type IconButtonProps = ComponentProps<typeof IconButtonInner> & {
   'aria-label': string;
   icon: React.ComponentType<GamutIconProps>;
-}
+};
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
   ({ children, icon: Icon, variant = 'secondary', ...props }, ref) => {

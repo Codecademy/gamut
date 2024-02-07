@@ -10,6 +10,7 @@ import { useListState } from '../hooks/useListState';
 
 const SortAnchor = styled(Anchor)(
   css({
+    color: 'text',
     textAlign: 'left',
     width: '100%',
     alignItems: 'flex-end',
@@ -69,7 +70,6 @@ export const SortControl: React.FC<SortControlProps> = ({
       }
       display="inline-flex"
       aria-label={`sort by ${columnKey}`}
-      color="text"
     >
       {children}
       <FlexBox column width={16} ml={8} mb={4}>

@@ -1,8 +1,8 @@
 import { StyleProps } from '@codecademy/variance';
+import { ComponentProps } from 'react';
 
 import { WithChildrenProp } from '..';
-import { ButtonProps } from '../Button';
-import { tagProps } from './elements';
+import { DismissButton, tagProps } from './elements';
 import { colorVariants } from './styles';
 
 export interface BaseTagProps
@@ -27,7 +27,7 @@ export interface DismissableTagProps extends BaseTagProps {
   /**
    * ClickHandler for the DismissButton.
    */
-  onDismiss: ButtonProps['onClick'];
+  onDismiss: ComponentProps<typeof DismissButton>['onClick'];
 }
 
 export type TagProps = ReadOnlyTagProps | DismissableTagProps;

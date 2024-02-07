@@ -21,11 +21,10 @@ export interface SubmitContextProps {
   loading?: FormStateCallback | boolean;
   disabled?: FormStateCallback | boolean;
 }
-export interface SubmitButtonProps
-  extends Omit<ButtonProps, 'as'>,
-    SubmitContextProps {
-  as?: ComponentType<ButtonProps>;
-}
+export type SubmitButtonProps = Omit<ButtonProps, 'as' | 'disabled'> &
+  SubmitContextProps & {
+    as?: ComponentType<ButtonProps>;
+  };
 
 export const SubmitButton: React.FC<SubmitButtonProps> = ({
   as: Button = FillButton,
