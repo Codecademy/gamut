@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.12.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.12.2...@codecademy/gamut@55.12.3) (2024-02-07)
+
+### Bug Fixes
+
+- **Alert:** href error ([93ee979](https://github.com/Codecademy/gamut/commit/93ee97916002becd36a1043f2ff68f5adf3251a4))
+
 ### [55.12.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.12.1...@codecademy/gamut@55.12.2) (2024-02-07)
 
 ### Bug Fixes
