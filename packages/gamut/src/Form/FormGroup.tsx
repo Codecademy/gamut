@@ -5,7 +5,7 @@ import { ComponentProps } from 'react';
 import * as React from 'react';
 
 import { Box } from '../Box';
-import { ToolTipProps } from '../ToolTip';
+import { ToolTipProps } from '../Tip';
 import { FormError } from './FormError';
 import { FormGroupDescription } from './FormGroupDescription';
 import { FormGroupLabel } from './FormGroupLabel';

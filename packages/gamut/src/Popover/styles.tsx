@@ -4,8 +4,8 @@ import {
   tooltipArrowHeight,
   tooltipBackgroundColor,
   toolTipBodyCss,
-} from '../ToolTip/styles';
-import { createVariantsFromAlignments } from '../ToolTip/utils';
+} from '../Tip/styles';
+import { createVariantsFromAlignments } from '../Tip/utils';
 import {
   createBeakVariantFromAlignment,
   createPatternVariantFromAlignment,

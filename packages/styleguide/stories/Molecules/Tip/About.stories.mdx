@@ -1,0 +1,27 @@
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { TableOfContents } from '~styleguide/blocks';
+
+import { TipTable } from './examples';
+
+<Meta
+  title={title}
+  parameters={{
+    status: 'current',
+    subtitle: 'Use tips to reveal non-essential information upon interaction.',
+  }}
+/>
+
+Tips come in the form of Tooltips or Infotips (and eventually link previews). These represent distinct use cases and should not be interchanged. If you are unsure, reference the comparison table below.
+
+<TipTable/>
+
+tldr;
+Tooltip > tell me about this thing before I click on it
+Infotip > tell me more about something nearby
+PreviewTip > preview content before I navigate to it
+
+DeprecatedTip > these are being phased out and should not be used
+
+<TableOfContents />

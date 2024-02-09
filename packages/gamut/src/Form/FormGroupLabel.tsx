@@ -6,7 +6,7 @@ import { HTMLAttributes } from 'react';
 import * as React from 'react';
 
 import { Box, FlexBox } from '..';
-import { ToolTip, ToolTipProps } from '../ToolTip';
+import { ToolTip, ToolTipProps } from '../Tip';
 import { formBaseStyles, formFieldTextDisabledStyles } from './styles';
 
 const labelSizeVariants = variant({

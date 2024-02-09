@@ -5,6 +5,7 @@ import { FloatingToolTip } from './FloatingToolTip';
 import { InlineToolTip } from './InlineToolTip';
 import { tooltipDefaultProps, ToolTipProps } from './types';
 
+// This iteration of ToolTip is deprecated, parts of it will be used in the upcoming InfoTip, ToolTip, and PreviewTip components
 export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = tooltipDefaultProps.alignment,
   placement = tooltipDefaultProps.placement,
