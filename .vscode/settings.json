@@ -1,7 +1,14 @@
 {
   "eslint.options": {
     "overrideConfigFile": "./.eslintrc.js",
-    "extensions": [".js", ".jsx", ".md", ".mdx", ".ts", ".tsx"]
+    "extensions": [
+      ".js",
+      ".jsx",
+      ".md",
+      ".mdx",
+      ".ts",
+      ".tsx"
+    ]
   },
   "eslint.probe": [
     "mdx",
@@ -28,7 +35,7 @@
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 120,
     "editor.codeActionsOnSave": {
-      "source.fixAll": true
+      "source.fixAll": "explicit"
     }
   },
   "mdx.experimentalLanguageServer": true,
@@ -37,7 +44,7 @@
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "storyExplorer.storiesGlobs": "packages/styleguide/stories/**/*.stories.mdx",
   "jest.jestCommandLine": "node_modules/.bin/jest"
