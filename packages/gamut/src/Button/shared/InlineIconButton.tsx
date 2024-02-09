@@ -31,7 +31,7 @@ const getButtonContent = ({
   } as const;
 
   return !Icon ? (
-    <> {children} </>
+    <>{children} </>
   ) : (
     <FlexBox center height="100%">
       {Icon && <Icon {...iconProps} />}
