@@ -7,7 +7,7 @@ import * as React from 'react';
 import { WithChildrenProp } from '..';
 import { BodyPortal } from '../BodyPortal';
 import { Box } from '../Box';
-import { toolTipBodyAlignments } from '../Tip/styles';
+import { toolTipBodyAlignments } from '../Tip/shared/styles';
 import {
   beakSize,
   beakVariants,

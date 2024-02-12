@@ -12,7 +12,7 @@ import {
   GridBox,
   Markdown,
   Text,
-  ToolTip,
+  DeprecatedToolTip,
 } from '@codecademy/gamut/src';
 import { BreadCrumbs } from '../Navigation/BreadCrumbs';
 import { OpenIcon } from '@codecademy/gamut-icons';
@@ -73,12 +73,12 @@ export const DocsPage: React.FC = ({ children }) => {
     return (
       <Text as="strong">
         Status:{' '}
-        <ToolTip
+        <DeprecatedToolTip
           id="status"
           target={<StatusIndicator status={status}>{label}</StatusIndicator>}
         >
           <Text fontWeight="base">{tooltip}</Text>
-        </ToolTip>
+        </DeprecatedToolTip>
       </Text>
     );
   };

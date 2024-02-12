@@ -1,2 +1,2 @@
-export * from './ToolTip';
-export type { ToolTipProps } from './types';
+export * from './DeprecatedToolTip';
+export type { ToolTipProps } from './shared/types';

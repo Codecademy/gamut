@@ -2,8 +2,8 @@ import { css } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { Box } from '../Box';
-import { Selectors } from '../ButtonBase/ButtonBase';
+import { Box } from '../../Box';
+import { Selectors } from '../../ButtonBase/ButtonBase';
 import {
   toolTipAlignmentVariants,
   toolTipBodyAlignments,

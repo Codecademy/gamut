@@ -1,4 +1,4 @@
-import { Box, Radio, ToolTip } from '@codecademy/gamut';
+import { Box, DeprecatedToolTip,Radio } from '@codecademy/gamut';
 import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -84,14 +84,14 @@ The label is a ReactNode, making it customizable outside of a standard text labe
         <>
           Option with tooltip
           <Box pl={8}>
-            <ToolTip
+            <DeprecatedToolTip
               alignment="bottom-right"
               focusable
               id="radio-tooltip"
               target={<MiniInfoOutlineIcon size="0.8rem" />}
             >
               More info!
-            </ToolTip>
+            </DeprecatedToolTip>
           </Box>
         </>
       ),

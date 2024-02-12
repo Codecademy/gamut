@@ -1,4 +1,4 @@
-import { PopoverProps } from '../Popover';
+import { PopoverProps } from '../../Popover';
 import {
   bottomStyles,
   bottomStylesAfter,

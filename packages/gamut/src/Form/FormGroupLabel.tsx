@@ -6,7 +6,7 @@ import { HTMLAttributes } from 'react';
 import * as React from 'react';
 
 import { Box, FlexBox } from '..';
-import { ToolTip, ToolTipProps } from '../Tip';
+import { DeprecatedToolTip, ToolTipProps } from '../Tip';
 import { formBaseStyles, formFieldTextDisabledStyles } from './styles';
 
 const labelSizeVariants = variant({
@@ -76,7 +76,7 @@ const getToolTip = (tooltip: FormToolTipProps) => {
     : ({ size: '1rem', 'aria-hidden': 'false' } as const);
 
   const ToolTipComponent = (
-    <ToolTip
+    <DeprecatedToolTip
       alignment="bottom-right"
       focusable
       target={<MiniInfoOutlineIcon {...targetProps} />}
