@@ -59,7 +59,7 @@ export const rightStylesAfter = {
   left: '1.5rem',
 } as const;
 
-const tooltipVariantStyles = createVariantsFromAlignments(
+export const tooltipVariantStyles = createVariantsFromAlignments(
   toolTipAlignmentArray,
   createToolTipVariantFromAlignment
 );

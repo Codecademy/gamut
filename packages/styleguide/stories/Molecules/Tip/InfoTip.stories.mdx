@@ -1,0 +1,43 @@
+import {
+  FlexBox,
+  InfoTip,
+} from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { LinkTo } from '~styleguide/blocks';
+
+
+<Meta
+  title={title}
+  component={InfoTip}
+  parameters={{
+    subtitle:
+      'A tip triggered by clicking on an information icon button. Use an infotip to provide additional info about a nearby element or content.',
+    source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/branch/ayKNSg6QvZUjsgw0FFysW4/%F0%9F%93%90-Gamut?type=design&node-id=41617-57229&mode=design&t=jvPgrTVlTluC9J2a-0',
+    },
+    status: 'current',
+  }}
+  args={{
+    info: `I am helpful text.`,
+  }}
+/>
+
+
+_Small_ piece of extra information toggled by cliking on an (i) button.
+
+> If you'd like interactive contents, use a <LinkTo id="molecules-popover--popover">Popover</LinkTo>.
+
+<Canvas>
+  <Story name="InfoTip">
+    {(args) => (
+      <FlexBox center py={64} m={24}>
+        <InfoTip {...args}/>
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
