@@ -5,7 +5,7 @@ import { ComponentProps } from 'react';
 import * as React from 'react';
 
 import { Box } from '../Box';
-import { ToolTipProps } from '../Tip';
+import { InfoTipProps } from '../Tip';
 import { FormError } from './FormError';
 import { FormGroupDescription } from './FormGroupDescription';
 import { FormGroupLabel } from './FormGroupLabel';
@@ -22,7 +22,7 @@ export interface FormGroupProps
   error?: string;
   disabled?: boolean;
   labelSize?: 'small' | 'large';
-  tooltip?: ToolTipProps;
+  infotip?: InfoTipProps;
 }
 
 const formGroupSpacing = variant({
@@ -64,16 +64,16 @@ const FormGroupContainer: React.FC<
 };
 
 export const FormGroup: React.FC<FormGroupProps> = ({
-  tooltip,
-  label,
-  description,
-  htmlFor,
   children,
   className,
-  showRequired,
-  error,
-  labelSize,
+  description,
   disabled,
+  error,
+  htmlFor,
+  infotip,
+  label,
+  labelSize,
+  showRequired,
   ...rest
 }) => {
   const labelComponent = label ? (
@@ -82,7 +82,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
       showRequired={showRequired}
       size={labelSize}
       disabled={disabled}
-      tooltip={tooltip}
+      infotip={infotip}
     >
       {label}
     </FormGroupLabel>

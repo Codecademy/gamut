@@ -1,16 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { Text } from '../../Typography';
-import {
-  TargetContainer,
-  ToolTipBody,
-  TooltipWrapper,
-} from '../shared/elements';
+import { ToolTipBody, TooltipWrapper } from '../shared/elements';
 import { tooltipDefaultProps, ToolTipStaticAlignment } from '../shared/types';
 import { InfoTipButton } from './InfoTipButton';
 import { InfoTipContainer } from './styles';
 
 export interface InfoTipProps {
+  // TO-DO: REMOVE CENTER ALIGNMENTS
   alignment?: ToolTipStaticAlignment;
   emphasis?: 'low' | 'high';
   info: string;
@@ -52,17 +49,15 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   return (
     <>
-      <Text hidden aria-live="polite" role="status">
+      <Text hidden aria-live="polite" role="status" lineHeight={0}>
         {info}
       </Text>
-      <TooltipWrapper ref={newRef}>
-        <TargetContainer onKeyDown={(e) => escapeKeyPressHandler(e)}>
-          <InfoTipButton
-            active={!hideTip}
-            emphasis={emphasis}
-            onClick={() => setHideTip(!hideTip)}
-          />
-        </TargetContainer>
+      <TooltipWrapper ref={newRef} onKeyDown={(e) => escapeKeyPressHandler(e)}>
+        <InfoTipButton
+          active={!hideTip}
+          emphasis={emphasis}
+          onClick={() => setHideTip(!hideTip)}
+        />
         <InfoTipContainer
           hideTip={hideTip}
           alignment={alignment}
