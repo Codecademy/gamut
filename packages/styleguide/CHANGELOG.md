@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.10.3...@codecademy/styleguide@66.11.0) (2024-02-14)
+
+### Features
+
+- **Buttons:** Leading + trailing icons ([5209b31](https://github.com/Codecademy/gamut/commit/5209b31e84909d476d44ced7989496dd666259bc))
+
 ### [66.10.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.10.2...@codecademy/styleguide@66.10.3) (2024-02-07)
 
 **Note:** Version bump only for package @codecademy/styleguide
