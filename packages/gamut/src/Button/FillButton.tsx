@@ -1,7 +1,20 @@
-import { createButtonComponent } from './shared';
-import { fillButtonVariants, sizeVariants } from './variants';
+import { forwardRef } from 'react';
 
-export const FillButton = createButtonComponent(
+import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
+import {
+  createButtonComponent,
+  fillButtonVariants,
+  InlineIconButton,
+  InlineIconButtonProps,
   sizeVariants,
-  fillButtonVariants
+} from './shared';
+
+const FillButtonBase = createButtonComponent(sizeVariants, fillButtonVariants);
+
+export type FillButtonProps = InlineIconButtonProps<typeof FillButtonBase>;
+
+export const FillButton = forwardRef<ButtonBaseElements, FillButtonProps>(
+  ({ ...props }, ref) => {
+    return <InlineIconButton button={FillButtonBase} {...props} ref={ref} />;
+  }
 );

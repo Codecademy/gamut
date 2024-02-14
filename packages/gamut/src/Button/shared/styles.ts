@@ -1,26 +1,15 @@
 import {
-  ColorModes,
   fontSmoothPixel,
   modeColorProps,
   styledOptions,
   system,
   transitionConcat,
 } from '@codecademy/gamut-styles';
-import {
-  CSSObject,
-  StyleProps,
-  ThemeProps,
-  variance,
-} from '@codecademy/variance';
+import { CSSObject, ThemeProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps, HTMLProps } from 'react';
 
-import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
-import { CTAButton } from './CTAButton';
-import { FillButton } from './FillButton';
-import { IconButton } from './IconButton';
-import { StrokeButton } from './StrokeButton';
-import { TextButton } from './TextButton';
+import { ButtonBase, ButtonSelectors } from '../../ButtonBase/ButtonBase';
+import { ButtonBaseProps } from './types';
 
 export const config = styledOptions<'button', 'size'>(['size']);
 
@@ -104,16 +93,6 @@ export const buttonStyles = system.css({
   },
 });
 
-export interface ButtonBaseProps extends StyleProps<typeof buttonProps> {
-  onClick?: HTMLProps<HTMLButtonElement>['onClick'];
-  variant?: typeof buttonVariants[number];
-  size?: 'normal' | 'small' | 'large';
-  as?: never;
-  mode?: ColorModes;
-}
-
-export type ButtonProps = ButtonBaseProps & ComponentProps<typeof ButtonBase>;
-
 export const createButtonComponent = <P>(
   ...args: (<T extends ThemeProps>(props: T) => CSSObject)[]
 ) =>
@@ -124,10 +103,3 @@ export const createButtonComponent = <P>(
     ...args,
     buttonProps
   );
-
-export type ButtonTypes =
-  | typeof CTAButton
-  | typeof FillButton
-  | typeof IconButton
-  | typeof StrokeButton
-  | typeof TextButton;

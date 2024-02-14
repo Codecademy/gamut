@@ -1,6 +1,6 @@
 import { states, theme, transitionConcat } from '@codecademy/gamut-styles';
 
-import { templateVariants } from '../Button/shared';
+import { templateVariants } from '../Button/shared/styles';
 import { ButtonSelectors } from '../ButtonBase/ButtonBase';
 
 const paginationBaseStyles = {

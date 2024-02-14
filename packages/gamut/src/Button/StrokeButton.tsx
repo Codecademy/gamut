@@ -1,7 +1,23 @@
-import { createButtonComponent } from './shared';
-import { sizeVariants, strokeButtonVariants } from './variants';
+import { forwardRef } from 'react';
 
-export const StrokeButton = createButtonComponent(
+import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
+import {
+  createButtonComponent,
+  InlineIconButton,
+  InlineIconButtonProps,
+  sizeVariants,
+  strokeButtonVariants,
+} from './shared';
+
+const StrokeButtonBase = createButtonComponent(
   sizeVariants,
   strokeButtonVariants
+);
+
+export type StrokeButtonProps = InlineIconButtonProps<typeof StrokeButtonBase>;
+
+export const StrokeButton = forwardRef<ButtonBaseElements, StrokeButtonProps>(
+  ({ ...props }, ref) => {
+    return <InlineIconButton button={StrokeButtonBase} {...props} ref={ref} />;
+  }
 );

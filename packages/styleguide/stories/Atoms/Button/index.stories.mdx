@@ -1,11 +1,12 @@
 import {
   CTAButton,
   FillButton,
+  GridBox,
   IconButton,
   StrokeButton,
   TextButton,
 } from '@codecademy/gamut/src';
-import { SearchIcon } from '@codecademy/gamut-icons/src';
+import { MiniArrowLeftIcon, MiniArrowRightIcon, MiniRibbonIcon,SearchIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -156,6 +157,29 @@ For different priority buttons we provide `primary` and `secondary` variants.
   Cancel
 </FillButton>
 ```
+
+## Inline Icon
+
+Our FillButtons, StrokeButtons, and TextButtons all support a single inline icon. You can align the icon to the left or right of the button text using the `iconPosition` prop. These icons should be from the mini set to be legible at a  smaller size.
+
+<Canvas>
+  <Story name="Inline Icon">
+    {(args) => (
+      <GridBox gridTemplateColumns="1fr 1fr 1fr 3fr">
+      <FillButton maxWidth="fit-content"  icon={MiniArrowLeftIcon} >
+       FillButton
+      </FillButton>
+      <StrokeButton  maxWidth="fit-content"  icon={MiniRibbonIcon}>
+       Leading icon
+      </StrokeButton>
+      <TextButton maxWidth="fit-content"  icon={MiniArrowRightIcon} iconPosition="right">
+       TextButton
+      </TextButton>
+      </GridBox>
+    )}
+  </Story>
+</Canvas>
+
 
 ### Light Mode
 
