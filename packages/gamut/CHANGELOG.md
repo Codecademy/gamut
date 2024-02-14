@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.13.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.12.3...@codecademy/gamut@55.13.0) (2024-02-14)
+
+### Features
+
+- **Buttons:** Leading + trailing icons ([5209b31](https://github.com/Codecademy/gamut/commit/5209b31e84909d476d44ced7989496dd666259bc))
+
 ### [55.12.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.12.2...@codecademy/gamut@55.12.3) (2024-02-07)
 
 ### Bug Fixes
