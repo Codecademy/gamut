@@ -8,14 +8,14 @@ import { createButtonComponent } from '../../Button/shared';
 import { ButtonBaseElements } from '../../ButtonBase/ButtonBase';
 import { InfoTipProps } from '.';
 import {
+  infoButtonStates,
   InfoButtonStatesProps,
   infoButtonStyles,
-  infoVisibilityStates,
 } from './styles';
 
 const InfoTipButtonBase = createButtonComponent<InfoButtonStatesProps>(
   infoButtonStyles,
-  infoVisibilityStates
+  infoButtonStates
 );
 
 export type InfoTipButtonProps = ComponentProps<typeof InfoTipButtonBase> &

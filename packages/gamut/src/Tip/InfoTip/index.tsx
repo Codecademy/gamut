@@ -1,4 +1,5 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
+import { on } from 'react-use/lib/util';
 
 import { Text } from '../../Typography';
 import { ToolTipBody, TooltipWrapper } from '../shared/elements';
@@ -13,7 +14,7 @@ export interface InfoTipProps {
   /**
    * Called when the info tip is clicked - intended to be used for programmatic focus in the case of links within the tip.
    */
-  onClick: (arg0: { isTipHidden: boolean }) => void;
+  onClick?: (arg0: { isTipHidden: boolean }) => void;
 }
 
 export const InfoTip: React.FC<InfoTipProps> = ({
@@ -46,7 +47,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   const clickHandler = () => {
     setHideTip(!isTipHidden);
-    onClick({ isTipHidden });
+    if (onClick) onClick({ isTipHidden });
   };
 
   useEffect(() => {
