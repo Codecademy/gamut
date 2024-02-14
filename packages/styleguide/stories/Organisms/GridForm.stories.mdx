@@ -753,23 +753,24 @@ field's value in a parent component before onSubmit gets triggered.
   </Story>
 </Canvas>
 
-## With tooltip
+## With InfoTip
 
-A field can include <LinkTo id="atoms-tooltip--tool-tip">our existing `ToolTip`</LinkTo>. The position of the tooltip on each field is always set to the bottom-right. You also have the option to render each tooltip in dark or light mode.
+A field can include our existing `InfoTip`. The position of the infotip on each field is always set to the bottom-right.
 
-See the <LinkTo id="atoms-forminputs-radio--radio">`Radio`</LinkTo> story for an example of how to add a tooltip to a radio option.
+See the <LinkTo id="atoms-forminputs-radio--radio">`Radio`</LinkTo> story for an example of how to add a infotip to a radio option.
 
 <Canvas>
-  <Story name="Tooltip">
+  <Story name="InfoTip">
     {() => (
       <>
         <GridForm
+        my={16}
           fields={[
             {
-              tooltip: {
-                id: 'text-tooltip',
-                children:
+              infotip: {
+                info:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                  alignment: 'bottom-left',
               },
               label: 'Tool input',
               name: 'input-field',
@@ -777,14 +778,13 @@ See the <LinkTo id="atoms-forminputs-radio--radio">`Radio`</LinkTo> story for an
               type: 'text',
             },
             {
-              tooltip: {
-                id: 'select-tooltip',
-                mode: 'dark',
-                children: (
+              infotip: {
+                info: (
                   <Markdown text="My grandmother used to tell me stories..." />
                 ),
+              alignment: 'bottom-right',
               },
-              label: 'Select with tooltip',
+              label: 'Select with infotip',
               options: ['', 'Water', 'Earth', 'Fire', 'Air', 'Boomerang'],
               size: 3,
               type: 'select',
@@ -794,24 +794,23 @@ See the <LinkTo id="atoms-forminputs-radio--radio">`Radio`</LinkTo> story for an
               name: 'select-field',
             },
             {
-              tooltip: {
-                id: 'textarea-tooltip',
-                children:
+              infotip: {
+                info:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
-              label: 'Write a paragraph about tooltips',
+              label: 'Write a paragraph about infotips',
               name: 'textarea-field',
               size: 6,
               type: 'textarea',
               rows: 6,
-              placeholder: 'Check out my tooltip',
+              placeholder: 'Check out my infotip',
               validation: {
-                required: 'Please write something about tooltips!',
+                required: 'Please write something about infotips!',
               },
             },
             {
-              tooltip: {
-                children:
+              infotip: {
+                info:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
               label: 'Preferred Modern Artist',
@@ -833,10 +832,10 @@ See the <LinkTo id="atoms-forminputs-radio--radio">`Radio`</LinkTo> story for an
               },
             },
             {
-              tooltip: {
-                id: 'checkbox-tooltip',
-                children:
+              infotip: {
+                info:
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                  alignment: 'bottom-right',
               },
               label: 'End User License Agreement',
               description: 'I promise that I read it',

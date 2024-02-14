@@ -15,7 +15,7 @@ export const toolTipAlignmentArray = [
 
 export type ToolTipPlacements = 'inline' | 'floating';
 
-export type ToolTipFloatingAlignment = typeof toolTipBaseAlignmentArray[number];
+export type ToolTipBaseAlignment = typeof toolTipBaseAlignmentArray[number];
 
 export type ToolTipStaticAlignment = typeof toolTipAlignmentArray[number];
 
@@ -35,7 +35,7 @@ export type ToolTipFloatingProps = {
   /**
    * How to align the tooltip relative to the target.
    */
-  alignment?: ToolTipFloatingAlignment;
+  alignment?: ToolTipBaseAlignment;
 
   /**
    * Whether Tooltip should be inline or floating (should only be used in certain overflow situations).

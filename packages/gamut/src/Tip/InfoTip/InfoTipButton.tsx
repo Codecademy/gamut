@@ -18,26 +18,29 @@ const InfoTipButtonBase = createButtonComponent<InfoButtonStatesProps>(
   infoVisibilityStates
 );
 
-export type InfoTipsButtonProps = ComponentProps<typeof InfoTipButtonBase> &
+export type InfoTipButtonProps = ComponentProps<typeof InfoTipButtonBase> &
   Pick<InfoTipProps, 'emphasis'>;
 
-export const InfoTipButton = forwardRef<
-  ButtonBaseElements,
-  InfoTipsButtonProps
->(({ active, children, emphasis, ...props }, ref) => {
-  const Icon = emphasis === 'high' ? MiniInfoCircleIcon : MiniInfoOutlineIcon;
+export const InfoTipButton = forwardRef<ButtonBaseElements, InfoTipButtonProps>(
+  ({ active, children, emphasis, ...props }, ref) => {
+    const Icon = emphasis === 'high' ? MiniInfoCircleIcon : MiniInfoOutlineIcon;
 
-  return (
-    <InfoTipButtonBase
-      active={active}
-      aria-label="Information"
-      {...props}
-      ref={ref}
-    >
-      {Icon && (
-        <Icon width="calc(100% - 4px)" height="calc(100% - 4px)" aria-hidden />
-      )}
-      {children}
-    </InfoTipButtonBase>
-  );
-});
+    return (
+      <InfoTipButtonBase
+        active={active}
+        aria-label="Information"
+        {...props}
+        ref={ref}
+      >
+        {Icon && (
+          <Icon
+            width="calc(100% - 4px)"
+            height="calc(100% - 4px)"
+            aria-hidden
+          />
+        )}
+        {children}
+      </InfoTipButtonBase>
+    );
+  }
+);

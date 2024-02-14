@@ -1,25 +1,37 @@
-import { useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
 import { Text } from '../../Typography';
 import { ToolTipBody, TooltipWrapper } from '../shared/elements';
-import { tooltipDefaultProps, ToolTipStaticAlignment } from '../shared/types';
+import { ToolTipBaseAlignment, tooltipDefaultProps } from '../shared/types';
 import { InfoTipButton } from './InfoTipButton';
 import { InfoTipContainer } from './styles';
 
 export interface InfoTipProps {
-  // TO-DO: REMOVE CENTER ALIGNMENTS
-  alignment?: ToolTipStaticAlignment;
+  alignment?: ToolTipBaseAlignment;
   emphasis?: 'low' | 'high';
-  info: string;
+  info: string | ReactNode;
+  /**
+   * Called when the info tip is clicked - intended to be used for programmatic focus in the case of links within the tip.
+   */
+  onClick: (arg0: { isTipHidden: boolean }) => void;
 }
 
 export const InfoTip: React.FC<InfoTipProps> = ({
   alignment = tooltipDefaultProps.alignment,
   emphasis = 'low',
   info,
+  onClick,
 }) => {
-  const [hideTip, setHideTip] = useState(true);
+  const [isTipHidden, setHideTip] = useState(true);
   const newRef = useRef<HTMLDivElement>(null);
+
+  const escapeKeyPressHandler = (
+    event: React.KeyboardEvent<HTMLDivElement>
+  ) => {
+    if (event.key === 'Escape') {
+      setHideTip(true);
+    }
+  };
 
   const handleOutsideClick = (e: MouseEvent) => {
     if (
@@ -32,12 +44,9 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     }
   };
 
-  const escapeKeyPressHandler = (
-    event: React.KeyboardEvent<HTMLDivElement>
-  ) => {
-    if (event.key === 'Escape') {
-      setHideTip(true);
-    }
+  const clickHandler = () => {
+    setHideTip(!isTipHidden);
+    onClick({ isTipHidden });
   };
 
   useEffect(() => {
@@ -54,12 +63,12 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       </Text>
       <TooltipWrapper ref={newRef} onKeyDown={(e) => escapeKeyPressHandler(e)}>
         <InfoTipButton
-          active={!hideTip}
+          active={!isTipHidden}
           emphasis={emphasis}
-          onClick={() => setHideTip(!hideTip)}
+          onClick={() => clickHandler()}
         />
         <InfoTipContainer
-          hideTip={hideTip}
+          hideTip={isTipHidden}
           alignment={alignment}
           aria-live="polite"
         >
