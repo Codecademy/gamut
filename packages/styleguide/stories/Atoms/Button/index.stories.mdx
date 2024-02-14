@@ -1,6 +1,7 @@
 import {
   CTAButton,
   FillButton,
+  GridBox,
   IconButton,
   StrokeButton,
   TextButton,
@@ -164,17 +165,17 @@ Our FillButtons, StrokeButtons, and TextButtons all support a single inline icon
 <Canvas>
   <Story name="Inline Icon">
     {(args) => (
-      <>
-      <FillButton mr={4} icon={MiniArrowLeftIcon} {...args}>
+      <GridBox gridTemplateColumns="1fr 1fr 1fr 3fr">
+      <FillButton maxWidth="fit-content"  icon={MiniArrowLeftIcon} >
        FillButton
       </FillButton>
-      <StrokeButton mr={4} icon={MiniRibbonIcon} {...args}>
+      <StrokeButton  maxWidth="fit-content"  icon={MiniRibbonIcon} {...args}>
        Leading icon
       </StrokeButton>
-      <TextButton icon={MiniArrowRightIcon} iconPosition="right"{...args}>
+      <TextButton maxWidth="fit-content"  icon={MiniArrowRightIcon} iconPosition="right"{...args}>
        TextButton
       </TextButton>
-      </>
+      </GridBox>
     )}
   </Story>
 </Canvas>
