@@ -1,5 +1,4 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
-import { on } from 'react-use/lib/util';
 
 import { Text } from '../../Typography';
 import { ToolTipBody, TooltipWrapper } from '../shared/elements';

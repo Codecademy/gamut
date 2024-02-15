@@ -3,7 +3,13 @@ import styled from '@emotion/styled';
 import { useEffect } from 'react';
 import * as React from 'react';
 
-import { FormError, FormGroup, FormGroupLabel, FormGroupProps } from '..';
+import {
+  FormError,
+  FormGroup,
+  FormGroupLabel,
+  FormGroupProps,
+  InfoTipProps,
+} from '..';
 import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
@@ -28,7 +34,7 @@ export interface ConnectedFormGroupBaseProps
   label: React.ReactNode;
   required?: boolean;
   showRequired?: boolean;
-  tooltip?: any;
+  infotip?: InfoTipProps;
 }
 
 export interface ConnectedFormGroupProps<T extends ConnectedField>
@@ -52,7 +58,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   name,
   labelSize,
   spacing = 'fit',
-  tooltip,
+  infotip,
 }: ConnectedFormGroupProps<T>) {
   const {
     error,
@@ -77,7 +83,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
     <FormGroupLabel
       disabled={isDisabled}
       htmlFor={id || name}
-      tooltip={tooltip}
+      infotip={infotip}
       showRequired={showRequired && !!validation}
       size={labelSize}
     >
