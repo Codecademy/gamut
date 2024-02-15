@@ -3,15 +3,18 @@ import * as React from 'react';
 
 import { Box, FlexBox } from '../../Box';
 import { Popover } from '../../Popover';
-import { TargetContainer } from './elements';
-import { tooltipDefaultProps, ToolTipPlacementComponentProps } from './types';
+import { TargetContainer } from '../shared/elements';
+import {
+  DeprecatedToolTipPlacementComponentProps,
+  tooltipDefaultProps,
+} from '../shared/types';
 import {
   escapeKeyPressHandler,
   getAccessibilityProps,
   getPopoverAlignment,
-} from './utils';
+} from '../shared/utils';
 
-export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
+export const FloatingToolTip: React.FC<DeprecatedToolTipPlacementComponentProps> = ({
   alignment = tooltipDefaultProps.alignment,
   children,
   focusable,

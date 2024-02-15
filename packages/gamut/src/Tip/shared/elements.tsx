@@ -25,7 +25,6 @@ export const TargetContainer = styled.div(
     border: 'none',
     background: 'none',
     padding: 0,
-
     [Selectors.FOCUS_VISIBLE]: {
       outline: 'none',
     },
@@ -48,13 +47,17 @@ export const TargetContainer = styled.div(
 export interface ToolTipContainerProps
   extends StyleProps<typeof toolTipAlignmentVariants> {}
 
-export const ToolTipContainer = styled(Box)<ToolTipContainerProps>`
+export const DeprecatedToolTipContainer = styled(Box)<ToolTipContainerProps>`
   ${TargetContainer}:hover + &,
   ${TargetContainer}:focus-within + &,
   &:hover {
     opacity: 1;
     visibility: visible;
   }
+  ${toolTipAlignmentVariants}
+`;
+
+export const ToolTipContainer = styled(Box)<ToolTipContainerProps>`
   ${toolTipAlignmentVariants}
 `;
 

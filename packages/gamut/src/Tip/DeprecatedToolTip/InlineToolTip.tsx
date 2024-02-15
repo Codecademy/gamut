@@ -1,15 +1,18 @@
 import * as React from 'react';
 
 import {
+  DeprecatedToolTipContainer,
   TargetContainer,
   ToolTipBody,
-  ToolTipContainer,
   TooltipWrapper,
-} from './elements';
-import { tooltipDefaultProps, ToolTipPlacementComponentProps } from './types';
-import { escapeKeyPressHandler, getAccessibilityProps } from './utils';
+} from '../shared/elements';
+import {
+  DeprecatedToolTipPlacementComponentProps,
+  tooltipDefaultProps,
+} from '../shared/types';
+import { escapeKeyPressHandler, getAccessibilityProps } from '../shared/utils';
 
-export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
+export const InlineToolTip: React.FC<DeprecatedToolTipPlacementComponentProps> = ({
   alignment = tooltipDefaultProps.alignment,
   children,
   focusable,
@@ -27,7 +30,7 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
       >
         {target}
       </TargetContainer>
-      <ToolTipContainer
+      <DeprecatedToolTipContainer
         alignment={alignment}
         aria-live="polite"
         as="div"
@@ -41,7 +44,7 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
         >
           {children}
         </ToolTipBody>
-      </ToolTipContainer>
+      </DeprecatedToolTipContainer>
     </TooltipWrapper>
   );
 };

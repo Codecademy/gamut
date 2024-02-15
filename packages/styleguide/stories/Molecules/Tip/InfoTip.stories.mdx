@@ -1,8 +1,12 @@
 import {
+  Box,
   FlexBox,
+  GridBox,
   InfoTip,
+  Text
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { LinkTo } from '~styleguide/blocks';
@@ -28,7 +32,7 @@ import { LinkTo } from '~styleguide/blocks';
 />
 
 
-_Small_ piece of extra information toggled by cliking on an (i) button.
+_Small_ piece of extra information toggled by clicking on an (i) button.
 
 > If you'd like interactive contents, use a <LinkTo id="molecules-popover--popover">Popover</LinkTo>.
 
@@ -36,7 +40,62 @@ _Small_ piece of extra information toggled by cliking on an (i) button.
   <Story name="InfoTip">
     {(args) => (
       <FlexBox center py={64} m={24}>
-        <InfoTip {...args}/>
+    <Text mr={4}>Some text that needs info</Text> <InfoTip {...args}/>
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable story="InfoTip" />
+
+## Emphasis
+The InfoTip has high and low emphasis variants.
+
+<Canvas>
+  <Story name="Emphasis">
+    {(args) => (
+      <FlexBox center py={64} m={24}>
+       <Text mr={4}>Some text that needs info and its super important</Text> <InfoTip emphasis="high"{...args}/>
+      </FlexBox>
+    )}
+  </Story>
+  </Canvas>
+
+## Alignments
+InfoTips have four different alignment options: `top-right, top-left, bottom-right, and bottom-left. They have a consistent size and are meant for longer content. If you need a smaller, more concise component checkout ToolTip or Link Preview to see if they fit your use case.
+
+<Canvas>
+  <Story name="Alignments">
+    {(args) => {
+      return (
+        <GridBox gap={24} py={64} ml={8} gridTemplateColumns="1fr 1fr">
+          {['top-right', 'top-left', 'bottom-right', 'bottom-left'].map(
+            (alignment) => {
+              return (
+                <Box key={alignment}>
+                  <InfoTip
+                    {...args}
+                    alignment={alignment}
+                  />
+                </Box>
+              );
+            }
+          )}
+        </GridBox>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+## Placement
+InfoTips sometimes need to be in used in a way that they need to escape the confines of their parents container. The `floating` variant of the `placement` prop allows InfoTips do just this. (Notice how this section doesn't need as much padding because the InfoTips are able to escape their context!)
+
+<Canvas>
+  <Story name="Floating">
+    {(args) => (
+      <FlexBox center >
+       <Text mr={4}>This text is in a small space and needs floating placement</Text> <InfoTip placement="floating"{...args}/>
       </FlexBox>
     )}
   </Story>

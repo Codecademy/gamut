@@ -1,15 +1,16 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
 
 import { Text } from '../../Typography';
-import { ToolTipBody, TooltipWrapper } from '../shared/elements';
+import { FloatingTip } from '../shared/FloatingTip';
+import { InlineTip } from '../shared/InlineTip';
 import { ToolTipBaseAlignment, tooltipDefaultProps } from '../shared/types';
 import { InfoTipButton } from './InfoTipButton';
-import { InfoTipContainer } from './styles';
 
 export interface InfoTipProps {
   alignment?: ToolTipBaseAlignment;
   emphasis?: 'low' | 'high';
   info: string | ReactNode;
+  placement?: 'floating' | 'inline';
   /**
    * Called when the info tip is clicked - intended to be used for programmatic focus in the case of links within the tip.
    */
@@ -17,13 +18,19 @@ export interface InfoTipProps {
 }
 
 export const InfoTip: React.FC<InfoTipProps> = ({
-  alignment = tooltipDefaultProps.alignment,
   emphasis = 'low',
   info,
   onClick,
+  placement = tooltipDefaultProps.placement,
+  ...rest
 }) => {
   const [isTipHidden, setHideTip] = useState(true);
-  const newRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   const escapeKeyPressHandler = (
     event: React.KeyboardEvent<HTMLDivElement>
@@ -35,9 +42,9 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   const handleOutsideClick = (e: MouseEvent) => {
     if (
-      newRef.current &&
+      wrapperRef.current &&
       (e.target instanceof HTMLElement
-        ? !newRef.current?.contains(e?.target)
+        ? !wrapperRef.current?.contains(e?.target)
         : true)
     ) {
       setHideTip(true);
@@ -56,27 +63,27 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     };
   });
 
+  const Tip = placement === 'floating' && loaded ? FloatingTip : InlineTip;
+  const tipProps = {
+    escapeKeyPressHandler,
+    info,
+    isTipHidden,
+    wrapperRef,
+    ...rest,
+  };
+
   return (
     <>
-      <Text hidden aria-live="polite" role="status" lineHeight={0}>
-        {info}
+      <Text screenreader role="status">
+        {!isTipHidden && info}
       </Text>
-      <TooltipWrapper ref={newRef} onKeyDown={(e) => escapeKeyPressHandler(e)}>
+      <Tip {...tipProps}>
         <InfoTipButton
           active={!isTipHidden}
           emphasis={emphasis}
           onClick={() => clickHandler()}
         />
-        <InfoTipContainer
-          hideTip={isTipHidden}
-          alignment={alignment}
-          aria-live="polite"
-        >
-          <ToolTipBody alignment="aligned" color="currentColor" minWidth="4rem">
-            {info}
-          </ToolTipBody>
-        </InfoTipContainer>
-      </TooltipWrapper>
+      </Tip>
     </>
   );
 };

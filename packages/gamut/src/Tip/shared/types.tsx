@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+import { InfoTipProps } from '../InfoTip';
+
 export const toolTipBaseAlignmentArray = [
   'bottom-left',
   'bottom-right',
@@ -71,4 +73,16 @@ export const tooltipDefaultProps: Required<
   widthMode: 'standard',
 };
 
-export type ToolTipPlacementComponentProps = Omit<ToolTipProps, 'placement'>;
+export type TipPlacementComponentProps = Omit<
+  InfoTipProps,
+  'placement' | 'emphasis'
+> & {
+  isTipHidden: boolean;
+  escapeKeyPressHandler: (event: React.KeyboardEvent<HTMLDivElement>) => void;
+  wrapperRef?: React.RefObject<HTMLDivElement>;
+};
+
+export type DeprecatedToolTipPlacementComponentProps = Omit<
+  ToolTipProps,
+  'placement'
+>;
