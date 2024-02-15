@@ -9,7 +9,6 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { LinkTo } from '~styleguide/blocks';
 
 
 <Meta
@@ -34,7 +33,6 @@ import { LinkTo } from '~styleguide/blocks';
 
 _Small_ piece of extra information toggled by clicking on an (i) button.
 
-> If you'd like interactive contents, use a <LinkTo id="molecules-popover--popover">Popover</LinkTo>.
 
 <Canvas>
   <Story name="InfoTip">
@@ -90,6 +88,19 @@ InfoTips have four different alignment options: `top-right, top-left, bottom-rig
 
 ## Placement
 InfoTips sometimes need to be in used in a way that they need to escape the confines of their parents container. The `floating` variant of the `placement` prop allows InfoTips do just this. (Notice how this section doesn't need as much padding because the InfoTips are able to escape their context!)
+
+<Canvas>
+  <Story name="Floating">
+    {(args) => (
+      <FlexBox center >
+       <Text mr={4}>This text is in a small space and needs floating placement</Text> <InfoTip placement="floating"{...args}/>
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+## InfoTips with links or buttons
+Links or buttons within InfoTips should be used sparingly and only when the information is critical to the user's understanding of the content. If an infotip *absolutely requires* a link or button, it needs to provide a programmatic focus by way of the `onClick` prop.
 
 <Canvas>
   <Story name="Floating">
