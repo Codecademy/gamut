@@ -10,6 +10,7 @@ export * from './BookAndNotepad';
 export * from './Browser';
 export * from './BrowserLock';
 export * from './BrowserPuzzle';
+export * from './CareerInterest';
 export * from './ChatBox';
 export * from './CodeCelebration';
 export * from './Coffee';
