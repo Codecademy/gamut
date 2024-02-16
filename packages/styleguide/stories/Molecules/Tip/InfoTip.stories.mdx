@@ -9,6 +9,7 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
+import {InfoTipLinkExample} from './examples';
 
 
 <Meta
@@ -100,13 +101,13 @@ InfoTips sometimes need to be in used in a way that they need to escape the conf
 </Canvas>
 
 ## InfoTips with links or buttons
-Links or buttons within InfoTips should be used sparingly and only when the information is critical to the user's understanding of the content. If an infotip *absolutely requires* a link or button, it needs to provide a programmatic focus by way of the `onClick` prop.
+Links or buttons within InfoTips should be used sparingly and only when the information is critical to the user's understanding of the content. If an infotip *absolutely requires* a link or button, it needs to provide a programmatic focus by way of the `onClick` prop. The `onClick` prop accepts a function that calls the object `{isTipHidden}` and should focus when the tip is visible.
 
 <Canvas>
-  <Story name="Floating">
-    {(args) => (
-      <FlexBox center >
-       <Text mr={4}>This text is in a small space and needs floating placement</Text> <InfoTip placement="floating"{...args}/>
+  <Story name="Programmatic Focus">
+    {() => (
+      <FlexBox center py={64} >
+       <Text mr={4}>This text is in a small space and needs info </Text> <InfoTipLinkExample/>
       </FlexBox>
     )}
   </Story>
