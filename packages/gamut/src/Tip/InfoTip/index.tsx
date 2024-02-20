@@ -52,8 +52,10 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   };
 
   const clickHandler = () => {
-    setHideTip(!isTipHidden);
-    if (onClick) onClick({ isTipHidden });
+    const currentTipState = !isTipHidden;
+    setHideTip(currentTipState);
+    // we want to call the onClick handler after the tip has mounted
+    if (onClick) setTimeout(() => onClick({ isTipHidden: currentTipState }), 0);
   };
 
   useEffect(() => {
@@ -64,6 +66,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   });
 
   const Tip = placement === 'floating' && loaded ? FloatingTip : InlineTip;
+
   const tipProps = {
     escapeKeyPressHandler,
     info,
