@@ -114,4 +114,5 @@ export const toolTipBodyCss = {
   display: 'inline-block',
   fontSize: 14,
   lineHeight: 'base',
+  maxWidth: '16rem',
 } as const;
