@@ -37,7 +37,6 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
         horizontalOffset={offset}
         isOpen={!isTipHidden}
         outline
-        role="tooltip"
         variant="secondary"
         skipFocusTrap
         targetRef={ref}

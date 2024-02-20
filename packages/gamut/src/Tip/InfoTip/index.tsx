@@ -78,7 +78,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   return (
     <>
       <Text screenreader role="status">
-        {!isTipHidden && info}
+        {!isTipHidden ? info : 'Show information'}
       </Text>
       <Tip {...tipProps}>
         <InfoTipButton

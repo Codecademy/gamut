@@ -8,6 +8,7 @@ import {
   infoTipBodyCss,
   toolTipAlignmentVariants,
   toolTipBodyAlignments,
+  toolTipBodyCss,
 } from './styles';
 
 export const TooltipWrapper = styled.div(
@@ -60,6 +61,10 @@ export const DeprecatedToolTipContainer = styled(Box)<ToolTipContainerProps>`
 export const ToolTipContainer = styled(Box)<ToolTipContainerProps>`
   ${toolTipAlignmentVariants}
 `;
+
+export const ToolTipBody = styled(Box)<
+  StyleProps<typeof toolTipBodyAlignments>
+>(css({ ...toolTipBodyCss }), toolTipBodyAlignments);
 
 export const InfoTipBody = styled(Box)<
   StyleProps<typeof toolTipBodyAlignments>

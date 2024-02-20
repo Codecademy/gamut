@@ -38,6 +38,7 @@ export const FloatingToolTip: React.FC<DeprecatedToolTipPlacementComponentProps>
     id,
     isOpenPopoverToolTip: isOpen,
   });
+
   const popoverAlignments = getPopoverAlignment({ alignment });
 
   const handleShowHideAction = ({
