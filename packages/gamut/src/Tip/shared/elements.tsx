@@ -5,9 +5,9 @@ import styled from '@emotion/styled';
 import { Box } from '../../Box';
 import { Selectors } from '../../ButtonBase/ButtonBase';
 import {
+  infoTipBodyCss,
   toolTipAlignmentVariants,
   toolTipBodyAlignments,
-  toolTipBodyCss,
 } from './styles';
 
 export const TooltipWrapper = styled.div(
@@ -61,6 +61,6 @@ export const ToolTipContainer = styled(Box)<ToolTipContainerProps>`
   ${toolTipAlignmentVariants}
 `;
 
-export const ToolTipBody = styled(Box)<
+export const InfoTipBody = styled(Box)<
   StyleProps<typeof toolTipBodyAlignments>
->(css({ ...toolTipBodyCss }), toolTipBodyAlignments);
+>(css({ ...infoTipBodyCss }), toolTipBodyAlignments);

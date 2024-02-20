@@ -1,5 +1,5 @@
 import { InfoTipContainer } from '../InfoTip/styles';
-import { ToolTipBody, TooltipWrapper } from './elements';
+import { InfoTipBody, TooltipWrapper } from './elements';
 import { TipPlacementComponentProps, tooltipDefaultProps } from './types';
 
 export const InlineTip: React.FC<TipPlacementComponentProps> = ({
@@ -18,9 +18,9 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
       >
         {children}
         <InfoTipContainer hideTip={isTipHidden} alignment={alignment}>
-          <ToolTipBody alignment="aligned" color="currentColor" minWidth="4rem">
+          <InfoTipBody alignment="aligned" color="currentColor" minWidth="4rem">
             {info}
-          </ToolTipBody>
+          </InfoTipBody>
         </InfoTipContainer>
       </TooltipWrapper>
     </>

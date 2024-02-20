@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import {
   DeprecatedToolTipContainer,
+  InfoTipBody,
   TargetContainer,
-  ToolTipBody,
   TooltipWrapper,
 } from '../shared/elements';
 import {
@@ -37,13 +37,13 @@ export const InlineToolTip: React.FC<DeprecatedToolTipPlacementComponentProps> =
         id={id}
         role="tooltip"
       >
-        <ToolTipBody
+        <InfoTipBody
           alignment={alignment.includes('center') ? 'centered' : 'aligned'}
           color="currentColor"
           minWidth={widthMode === 'unlimited' ? 'initial' : '4rem'}
         >
           {children}
-        </ToolTipBody>
+        </InfoTipBody>
       </DeprecatedToolTipContainer>
     </TooltipWrapper>
   );
