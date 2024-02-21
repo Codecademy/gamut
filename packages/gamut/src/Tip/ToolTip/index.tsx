@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { FloatingTip } from '../shared/FloatingTip';
+import { InlineTip } from '../shared/InlineTip';
 import {
   TipBaseProps,
   TipCenterAlignment,
@@ -12,7 +14,7 @@ export interface ToolTipProps extends TipBaseProps {
   id: string;
 }
 
-export const ToolTip: React.FC<ToolTipProps> = ({
+export const NewToolTip: React.FC<ToolTipProps> = ({
   alignment = 'top-center',
   children,
   info,
@@ -26,7 +28,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
     setLoaded(true);
   }, []);
 
-  const Tip = getTip({ placement, loaded });
+  const Tip = placement === 'floating' && loaded ? FloatingTip : InlineTip;
 
   const tipProps = {
     info,

@@ -1,0 +1,47 @@
+import {
+  FlexBox,
+  IconButton,
+  NewToolTip,
+  Text} from '@codecademy/gamut/src';
+import { SparkleIcon } from '@codecademy/gamut-icons';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+
+
+<Meta
+  title={title}
+  component={NewToolTip}
+  parameters={{
+    subtitle:
+      'A short tip triggered on hover and focus of an interactive element. Use a tooltip to further explain an element’s primary action, a disabled button state, or to display a label for an icon-only button.',
+    source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/branch/ayKNSg6QvZUjsgw0FFysW4/%F0%9F%93%90-Gamut?type=design&node-id=41617-57229&mode=design&t=jvPgrTVlTluC9J2a-0',
+    },
+    status: 'updating',
+  }}
+  args={{
+    info: `I am helpful text.`,
+  }}
+/>
+
+
+A short tip triggered on hover and focus of an interactive element. Use a tooltip to further explain an element’s primary action, a disabled button state, or to display a label for an icon-only button.
+
+*When using an icon-only button, a tooltip displaying the label is required.* Any additional tip (eg. keyboard shortcut, disabled state tip, etc) should come after the label.
+
+<Canvas>
+  <Story name="NewToolTip">
+    {() => (
+      <FlexBox center py={64} m={24}>
+    <Text mr={4}>Some text that needs info</Text> <NewToolTip id='new-id'><IconButton aria-describedby="new-id" icon={SparkleIcon}/></NewToolTip>
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable story="NewToolTip" />
