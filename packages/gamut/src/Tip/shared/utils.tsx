@@ -1,6 +1,4 @@
 import { PopoverProps } from '../../Popover';
-import { FloatingTip } from './FloatingTip';
-import { InlineTip } from './InlineTip';
 import {
   bottomStyles,
   bottomStylesAfter,
@@ -13,7 +11,7 @@ import {
   topStyles,
   topStylesAfter,
 } from './styles';
-import { TipBaseProps, TipPlacementComponentProps } from './types';
+import { TipPlacementComponentProps } from './types';
 
 export const getPopoverAlignment = ({
   alignment = 'top-left',
@@ -29,6 +27,10 @@ export const getPopoverAlignment = ({
   if (alignment.includes('right')) {
     popoverAlignment.align = 'left';
     popoverAlignment.beak = 'left';
+  }
+
+  if (alignment.includes('center')) {
+    popoverAlignment.beak = 'center';
   }
 
   return popoverAlignment;
@@ -80,9 +82,3 @@ export const escapeKeyPressHandler = (
     (event.target as HTMLElement).blur();
   }
 };
-
-export const getTip = ({
-  placement,
-  loaded,
-}: Pick<TipBaseProps, 'placement'> & { loaded: boolean }) =>
-  placement === 'floating' && loaded ? FloatingTip : InlineTip;

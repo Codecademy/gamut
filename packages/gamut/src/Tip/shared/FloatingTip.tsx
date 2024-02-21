@@ -27,6 +27,7 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
   const [isFocused, setIsFocused] = useState(false);
 
   useLayoutEffect(() => {
+    // CASS - HERE - We need to get the width of the tooltip ref to calculate the offset for center alignment
     if (ref?.current) {
       setOffset(-ref.current.clientWidth / 2 + 32);
     }

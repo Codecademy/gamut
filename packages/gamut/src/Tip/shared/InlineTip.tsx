@@ -22,10 +22,9 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
         {children}
         <InfoTipContainer hideTip={isTipHidden} alignment={alignment}>
           <TipBody
-            alignment="aligned"
+            alignment={alignment.includes('center') ? 'centered' : 'aligned'}
             color="currentColor"
             id={id}
-            minWidth="4rem"
           >
             {info}
           </TipBody>

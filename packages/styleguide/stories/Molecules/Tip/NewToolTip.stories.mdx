@@ -38,7 +38,7 @@ A short tip triggered on hover and focus of an interactive element. Use a toolti
   <Story name="NewToolTip">
     {() => (
       <FlexBox center py={64} m={24}>
-    <Text mr={4}>Some text that needs info</Text> <NewToolTip id='new-id'><IconButton aria-describedby="new-id" icon={SparkleIcon}/></NewToolTip>
+    <Text mr={4}>Some text that needs info</Text><NewToolTip id='new-id' info="Beautify button" placement='floating'><IconButton aria-describedby="new-id" icon={SparkleIcon}/></NewToolTip>
       </FlexBox>
     )}
   </Story>

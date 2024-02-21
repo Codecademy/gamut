@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { Text } from '../../Typography';
+import { FloatingTip } from '../shared/FloatingTip';
+import { InlineTip } from '../shared/InlineTip';
 import {
   TipBaseAlignment,
   TipBaseProps,
   tipDefaultProps,
 } from '../shared/types';
-import { getTip } from '../shared/utils';
 import { InfoTipButton } from './InfoTipButton';
 
 export interface InfoTipProps extends TipBaseProps {
@@ -66,7 +67,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     };
   });
 
-  const Tip = getTip({ placement, loaded });
+  const Tip = loaded && placement === 'floating' ? FloatingTip : InlineTip;
 
   const tipProps = {
     alignment,
