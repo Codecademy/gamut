@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.12.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.11.0...@codecademy/styleguide@66.12.0) (2024-02-21)
+
+### Features
+
+- **Icons:** add ArrowThickCircleRightIcon, CreditCard1Icon, MoneyWalletIcon, OptimizationClockIcon, PaypalLogoIcon, QrCodeScanIcon and SavingBankIcon ([bc127d1](https://github.com/Codecademy/gamut/commit/bc127d1d8479331d8531348e1dfd8878d55bc807))
+
 ## [66.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.10.3...@codecademy/styleguide@66.11.0) (2024-02-14)
 
 ### Features
