@@ -1,27 +1,28 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Text } from '../../Typography';
-import { FloatingTip } from '../shared/FloatingTip';
-import { InlineTip } from '../shared/InlineTip';
-import { ToolTipBaseAlignment, tooltipDefaultProps } from '../shared/types';
+import {
+  TipBaseAlignment,
+  TipBaseProps,
+  tipDefaultProps,
+} from '../shared/types';
+import { getTip } from '../shared/utils';
 import { InfoTipButton } from './InfoTipButton';
 
-export interface InfoTipProps {
-  alignment?: ToolTipBaseAlignment;
+export interface InfoTipProps extends TipBaseProps {
+  alignment?: TipBaseAlignment;
   emphasis?: 'low' | 'high';
-  info: string | ReactNode;
-  placement?: 'floating' | 'inline';
   /**
    * Called when the info tip is clicked - intended to be used for programmatic focus in the case of links within the tip.
    */
   onClick?: (arg0: { isTipHidden: boolean }) => void;
 }
-
 export const InfoTip: React.FC<InfoTipProps> = ({
+  alignment = 'top-right',
   emphasis = 'low',
   info,
   onClick,
-  placement = tooltipDefaultProps.placement,
+  placement = tipDefaultProps.placement,
   ...rest
 }) => {
   const [isTipHidden, setHideTip] = useState(true);
@@ -65,9 +66,10 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     };
   });
 
-  const Tip = placement === 'floating' && loaded ? FloatingTip : InlineTip;
+  const Tip = getTip({ placement, loaded });
 
   const tipProps = {
+    alignment,
     escapeKeyPressHandler,
     info,
     isTipHidden,
@@ -80,7 +82,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       <Text screenreader role="status">
         {!isTipHidden ? info : 'Show information'}
       </Text>
-      <Tip {...tipProps}>
+      <Tip {...tipProps} type="info">
         <InfoTipButton
           active={!isTipHidden}
           emphasis={emphasis}

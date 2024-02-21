@@ -30,24 +30,24 @@ const findScrollingParent = ({
 };
 
 export const Popover: React.FC<PopoverProps> = ({
-  animation,
   align = 'left',
+  animation,
   beak,
   children,
   className,
+  dims,
   horizontalOffset = 0,
   isOpen,
   onRequestClose,
   outline = false,
-  skipFocusTrap,
   pattern: Pattern,
   popoverContainerRef,
   position = 'below',
   role,
-  variant,
+  skipFocusTrap,
   targetRef,
+  variant,
   verticalOffset = variant === 'secondary' ? 15 : 20,
-  widthRestricted,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const [isInViewport, setIsInViewport] = useState(true);
@@ -138,9 +138,9 @@ export const Popover: React.FC<PopoverProps> = ({
             ? 'aligned'
             : 'centered'
         }
+        dims={dims}
         outline={outline ? 'outline' : 'boxShadow'}
         variant={variant}
-        widthRestricted={widthRestricted}
       >
         {beak && (
           <Beak

@@ -1,88 +1,46 @@
 import { ReactNode } from 'react';
 
-import { InfoTipProps } from '../InfoTip';
+import { ToolTip } from '../ToolTip';
 
-export const toolTipBaseAlignmentArray = [
+export const tipBaseAlignmentArray = [
   'bottom-left',
   'bottom-right',
   'top-left',
   'top-right',
 ] as const;
 
-export const toolTipAlignmentArray = [
-  ...toolTipBaseAlignmentArray,
-  'bottom-center',
-  'top-center',
+const tipCenterAlignmentArray = ['bottom-center', 'top-center'] as const;
+
+export const tipAlignmentArray = [
+  ...tipBaseAlignmentArray,
+  ...tipCenterAlignmentArray,
 ] as const;
 
-export type ToolTipPlacements = 'inline' | 'floating';
+export type TipPlacements = 'inline' | 'floating';
 
-export type ToolTipBaseAlignment = typeof toolTipBaseAlignmentArray[number];
+export type TipBaseAlignment = typeof tipBaseAlignmentArray[number];
 
-export type ToolTipStaticAlignment = typeof toolTipAlignmentArray[number];
+export type TipCenterAlignment = typeof tipCenterAlignmentArray[number];
 
-export type ToolTipInlineProps = {
-  /**
-   * How to align the tooltip relative to the target.
-   */
-  alignment?: ToolTipStaticAlignment;
+export type TipStaticAlignment = typeof tipAlignmentArray[number];
 
-  /**
-   * Whether Tooltip should be inline or floating (should only be used in certain overflow situations).
-   */
-  placement?: 'inline';
-};
+export interface TipBaseProps {
+  info: string | ReactNode;
+  placement?: 'floating' | 'inline';
+}
 
-export type ToolTipFloatingProps = {
-  /**
-   * How to align the tooltip relative to the target.
-   */
-  alignment?: ToolTipBaseAlignment;
-
-  /**
-   * Whether Tooltip should be inline or floating (should only be used in certain overflow situations).
-   */
-  placement: 'floating';
-};
-
-export type ToolTipContainerProps = ToolTipFloatingProps | ToolTipInlineProps;
-
-export type ToolTipProps = ToolTipContainerProps & {
-  children?: ReactNode;
-
-  /**
-   * Whether to  add a tabIndex of 0 to the target container, for tooltips without focusable children.
-   */
-  focusable?: boolean;
-
-  id: string;
-
-  target?: ReactNode;
-
-  /**
-   * If Tooltip content should override width restrictions
-   */
-  widthMode?: 'standard' | 'unlimited';
-};
-
-export const tooltipDefaultProps: Required<
-  Pick<ToolTipProps, 'alignment' | 'placement' | 'widthMode'>
-> = {
-  alignment: 'top-right',
+export const tipDefaultProps: Required<Pick<TipBaseProps, 'placement'>> = {
   placement: 'inline',
-  widthMode: 'standard',
 };
 
 export type TipPlacementComponentProps = Omit<
-  InfoTipProps,
+  TipBaseProps,
   'placement' | 'emphasis'
 > & {
-  isTipHidden: boolean;
-  escapeKeyPressHandler: (event: React.KeyboardEvent<HTMLDivElement>) => void;
+  alignment: TipStaticAlignment;
+  escapeKeyPressHandler?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
+  id?: string;
+  isTipHidden?: boolean;
+  type: 'info' | 'tool';
   wrapperRef?: React.RefObject<HTMLDivElement>;
 };
-
-export type DeprecatedToolTipPlacementComponentProps = Omit<
-  ToolTipProps,
-  'placement'
->;

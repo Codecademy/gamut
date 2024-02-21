@@ -1,6 +1,6 @@
 import { fontSmoothPixel, timing, variant } from '@codecademy/gamut-styles';
 
-import { toolTipAlignmentArray } from './types';
+import { tipAlignmentArray } from './types';
 import {
   createToolTipVariantFromAlignment,
   createVariantsFromAlignments,
@@ -60,7 +60,7 @@ export const rightStylesAfter = {
 } as const;
 
 export const tooltipVariantStyles = createVariantsFromAlignments(
-  toolTipAlignmentArray,
+  tipAlignmentArray,
   createToolTipVariantFromAlignment
 );
 
@@ -105,6 +105,9 @@ export const toolTipBodyAlignments = variant({
   },
 });
 
+export const infoTipDims = { width: 256 } as const;
+export const toolTipDims = { minWidth: 64, maxWidth: 128 } as const;
+
 export const toolTipBodyCss = {
   bg: tooltipBackgroundColor,
   color: 'text-accent',
@@ -118,5 +121,5 @@ export const toolTipBodyCss = {
 
 export const infoTipBodyCss = {
   ...toolTipBodyCss,
-  width: '16rem',
+  ...infoTipDims,
 } as const;

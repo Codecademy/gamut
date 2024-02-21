@@ -13,24 +13,24 @@ import {
   beakVariants,
   outlineVariants,
   patternVariantStyles,
-  popoverStates,
+  popoverVariants,
   raisedDivVariants,
   transformValues,
 } from './styles';
 import { PopoverProps } from './types';
 
 export type PopoverVariants = StyleProps<typeof raisedDivVariants> &
-  StyleProps<typeof popoverStates>;
+  StyleProps<typeof popoverVariants>;
 
 export const RaisedDiv = styled.div<
   StyleProps<typeof toolTipBodyAlignments> &
     StyleProps<typeof outlineVariants> &
     PopoverVariants
->(popoverStates, toolTipBodyAlignments, outlineVariants, raisedDivVariants);
+>(popoverVariants, toolTipBodyAlignments, outlineVariants, raisedDivVariants);
 
 // TO-DO -- prob should use variance compose, only needs left
 export const Beak = styled(Box)<
-  StyleProps<typeof popoverStates> &
+  StyleProps<typeof popoverVariants> &
     StyleProps<typeof outlineVariants> &
     StyleProps<typeof beakVariants> &
     StyleProps<typeof beakSize>

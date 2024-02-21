@@ -4,23 +4,20 @@ import * as React from 'react';
 import { Box, FlexBox } from '../../Box';
 import { Popover } from '../../Popover';
 import { TargetContainer } from '../shared/elements';
+import { escapeKeyPressHandler, getPopoverAlignment } from '../shared/utils';
 import {
+  deprecatedTooltipDefaultProps,
   DeprecatedToolTipPlacementComponentProps,
-  tooltipDefaultProps,
-} from '../shared/types';
-import {
-  escapeKeyPressHandler,
-  getAccessibilityProps,
-  getPopoverAlignment,
-} from '../shared/utils';
+} from './types';
+import { getDeprecatedAccessibilityProps } from './utils';
 
-export const FloatingToolTip: React.FC<DeprecatedToolTipPlacementComponentProps> = ({
-  alignment = tooltipDefaultProps.alignment,
+export const DeprecatedFloatingToolTip: React.FC<DeprecatedToolTipPlacementComponentProps> = ({
+  alignment = deprecatedTooltipDefaultProps.alignment,
   children,
   focusable,
   id,
   target,
-  widthMode = tooltipDefaultProps.widthMode,
+  widthMode = deprecatedTooltipDefaultProps.widthMode,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
@@ -33,7 +30,7 @@ export const FloatingToolTip: React.FC<DeprecatedToolTipPlacementComponentProps>
     }
   }, []);
 
-  const accessibilityProps = getAccessibilityProps({
+  const accessibilityProps = getDeprecatedAccessibilityProps({
     focusable,
     id,
     isOpenPopoverToolTip: isOpen,
@@ -93,7 +90,7 @@ export const FloatingToolTip: React.FC<DeprecatedToolTipPlacementComponentProps>
         variant="secondary"
         skipFocusTrap
         targetRef={ref}
-        widthRestricted={widthMode === 'standard'}
+        dims={widthMode === 'standard' ? 'widthRestricted' : undefined}
       >
         <FlexBox id={id} alignItems="flex-start" flexDirection="column">
           {children}

@@ -1,26 +1,27 @@
 import * as React from 'react';
 
 import {
-  DeprecatedToolTipContainer,
   TargetContainer,
   ToolTipBody,
   TooltipWrapper,
 } from '../shared/elements';
+import { escapeKeyPressHandler } from '../shared/utils';
+import { DeprecatedToolTipContainer } from './elements';
 import {
+  deprecatedTooltipDefaultProps,
   DeprecatedToolTipPlacementComponentProps,
-  tooltipDefaultProps,
-} from '../shared/types';
-import { escapeKeyPressHandler, getAccessibilityProps } from '../shared/utils';
+} from './types';
+import { getDeprecatedAccessibilityProps } from './utils';
 
-export const InlineToolTip: React.FC<DeprecatedToolTipPlacementComponentProps> = ({
-  alignment = tooltipDefaultProps.alignment,
+export const DeprecatedInlineToolTip: React.FC<DeprecatedToolTipPlacementComponentProps> = ({
+  alignment = deprecatedTooltipDefaultProps.alignment,
   children,
   focusable,
   id,
   target,
-  widthMode = tooltipDefaultProps.widthMode,
+  widthMode = deprecatedTooltipDefaultProps.widthMode,
 }) => {
-  const accessibilityProps = getAccessibilityProps({ focusable, id });
+  const accessibilityProps = getDeprecatedAccessibilityProps({ focusable, id });
 
   return (
     <TooltipWrapper>

@@ -48,20 +48,6 @@ export const TargetContainer = styled.div(
 export interface ToolTipContainerProps
   extends StyleProps<typeof toolTipAlignmentVariants> {}
 
-export const DeprecatedToolTipContainer = styled(Box)<ToolTipContainerProps>`
-  ${TargetContainer}:hover + &,
-  ${TargetContainer}:focus-within + &,
-  &:hover {
-    opacity: 1;
-    visibility: visible;
-  }
-  ${toolTipAlignmentVariants}
-`;
-
-export const ToolTipContainer = styled(Box)<ToolTipContainerProps>`
-  ${toolTipAlignmentVariants}
-`;
-
 export const ToolTipBody = styled(Box)<
   StyleProps<typeof toolTipBodyAlignments>
 >(css({ ...toolTipBodyCss }), toolTipBodyAlignments);

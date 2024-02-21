@@ -1,11 +1,12 @@
 import { InfoTipContainer } from '../InfoTip/styles';
 import { InfoTipBody, TooltipWrapper } from './elements';
-import { TipPlacementComponentProps, tooltipDefaultProps } from './types';
+import { TipPlacementComponentProps } from './types';
 
 export const InlineTip: React.FC<TipPlacementComponentProps> = ({
-  alignment = tooltipDefaultProps.alignment,
+  alignment,
   children,
   escapeKeyPressHandler,
+  id,
   info,
   isTipHidden,
   wrapperRef,
@@ -14,11 +15,18 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
     <>
       <TooltipWrapper
         ref={wrapperRef}
-        onKeyDown={(e) => escapeKeyPressHandler(e)}
+        onKeyDown={
+          escapeKeyPressHandler ? (e) => escapeKeyPressHandler(e) : undefined
+        }
       >
         {children}
         <InfoTipContainer hideTip={isTipHidden} alignment={alignment}>
-          <InfoTipBody alignment="aligned" color="currentColor" minWidth="4rem">
+          <InfoTipBody
+            alignment="aligned"
+            color="currentColor"
+            id={id}
+            minWidth="4rem"
+          >
             {info}
           </InfoTipBody>
         </InfoTipContainer>

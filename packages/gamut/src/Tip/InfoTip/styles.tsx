@@ -15,7 +15,7 @@ import {
   tooltipBackgroundColor,
   tooltipVariantStyles,
 } from '../shared/styles';
-import { ToolTipContainerProps } from '../shared/types';
+import { TipPlacementComponentProps } from '../shared/types';
 
 const textColor = 'secondary';
 
@@ -78,7 +78,8 @@ export const infoVisibilityStates = states({
 });
 
 export const InfoTipContainer = styled(Box)<
-  ToolTipContainerProps & StyleProps<typeof infoVisibilityStates>
+  Pick<TipPlacementComponentProps, 'alignment'> &
+    StyleProps<typeof infoVisibilityStates>
 >`
   ${infoVisibilityStates}
   ${newInfoTipAlignmentVariants}
