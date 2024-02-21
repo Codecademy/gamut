@@ -1,5 +1,5 @@
 import { InfoTipContainer } from '../InfoTip/styles';
-import { InfoTipBody, TooltipWrapper } from './elements';
+import { TipBody, TipWrapper } from './elements';
 import { TipPlacementComponentProps } from './types';
 
 export const InlineTip: React.FC<TipPlacementComponentProps> = ({
@@ -13,7 +13,7 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
 }) => {
   return (
     <>
-      <TooltipWrapper
+      <TipWrapper
         ref={wrapperRef}
         onKeyDown={
           escapeKeyPressHandler ? (e) => escapeKeyPressHandler(e) : undefined
@@ -21,16 +21,16 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
       >
         {children}
         <InfoTipContainer hideTip={isTipHidden} alignment={alignment}>
-          <InfoTipBody
+          <TipBody
             alignment="aligned"
             color="currentColor"
             id={id}
             minWidth="4rem"
           >
             {info}
-          </InfoTipBody>
+          </TipBody>
         </InfoTipContainer>
-      </TooltipWrapper>
+      </TipWrapper>
     </>
   );
 };

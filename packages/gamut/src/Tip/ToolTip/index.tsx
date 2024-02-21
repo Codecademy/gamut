@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { FloatingTip } from '../shared/FloatingTip';
-import { InlineTip } from '../shared/InlineTip';
 import {
   TipBaseProps,
   TipCenterAlignment,

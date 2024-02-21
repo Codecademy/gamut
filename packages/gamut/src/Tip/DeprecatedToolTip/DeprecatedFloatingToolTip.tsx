@@ -90,7 +90,7 @@ export const DeprecatedFloatingToolTip: React.FC<DeprecatedToolTipPlacementCompo
         variant="secondary"
         skipFocusTrap
         targetRef={ref}
-        dims={widthMode === 'standard' ? 'widthRestricted' : undefined}
+        widthRestricted={widthMode === 'standard' ?? 'widthRestricted'}
       >
         <FlexBox id={id} alignItems="flex-start" flexDirection="column">
           {children}

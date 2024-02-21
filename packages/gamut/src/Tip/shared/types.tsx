@@ -7,9 +7,18 @@ export const tipBaseAlignmentArray = [
   'top-right',
 ] as const;
 
-const tipCenterAlignmentArray = ['bottom-center', 'top-center'] as const;
+const tipCenterAlignmentArray = [] as const;
 
 export const tipAlignmentArray = [
+  'bottom-left',
+  'bottom-right',
+  'top-left',
+  'top-right',
+  'bottom-center',
+  'top-center',
+];
+
+export const tipAlignmentArray2 = [
   ...tipBaseAlignmentArray,
   ...tipCenterAlignmentArray,
 ] as const;

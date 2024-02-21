@@ -77,7 +77,6 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
       <Popover
         {...popoverAlignments}
         animation="fade"
-        dims={isToolType ? 'toolTip' : 'infoTip'}
         horizontalOffset={offset}
         isOpen={isToolType ? isOpen : !isTipHidden}
         outline

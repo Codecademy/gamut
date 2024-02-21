@@ -66,7 +66,7 @@ export const newInfoTipAlignmentVariants = variant({
       borderStyle: 'solid',
     },
   },
-  variants: { 'top-right': { color: 'red' } },
+  variants: tooltipVariantStyles,
 });
 
 export const infoButtonStates = states({
@@ -82,4 +82,5 @@ export const InfoTipContainer = styled(Box)<
     StyleProps<typeof infoVisibilityStates>
 >`
   ${infoVisibilityStates}
+  ${newInfoTipAlignmentVariants}
 `;

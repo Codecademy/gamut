@@ -10,8 +10,8 @@ export const tooltipBackgroundColor = `background-contrast`;
 export const tooltipArrowHeight = `1rem`;
 const containerOffsetVertical = 12;
 
-export const centerMaxWidth = { maxWidth: '8rem' } as const;
-export const alignedMaxWidth = { maxWidth: '16rem' } as const;
+export const centerMaxWidth = { minWidth: 64, maxWidth: 128 } as const;
+export const alignedMaxWidth = { width: 256 } as const;
 
 export const topStyles = {
   bottom: 'calc(100% + 4px)',
@@ -105,9 +105,6 @@ export const toolTipBodyAlignments = variant({
   },
 });
 
-export const infoTipDims = { width: 256 } as const;
-export const toolTipDims = { minWidth: 64, maxWidth: 128 } as const;
-
 export const toolTipBodyCss = {
   bg: tooltipBackgroundColor,
   color: 'text-accent',
@@ -117,9 +114,4 @@ export const toolTipBodyCss = {
   display: 'inline-block',
   fontSize: 14,
   lineHeight: 'base',
-} as const;
-
-export const infoTipBodyCss = {
-  ...toolTipBodyCss,
-  ...infoTipDims,
 } as const;
