@@ -28,7 +28,7 @@ export const NewToolTip: React.FC<ToolTipProps> = ({
     setLoaded(true);
   }, []);
 
-  const Tip = placement === 'floating' && loaded ? FloatingTip : InlineTip;
+  const Tip = getTip({ placement, loaded });
 
   const tipProps = {
     info,
