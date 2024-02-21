@@ -86,4 +86,9 @@ export type PopoverProps = PopoverBaseProps &
     popoverContainerRef?:
       | React.RefObject<HTMLDivElement>
       | React.RefCallback<HTMLDivElement>;
+
+    /**
+     * Whether to add width restrictions to Popover.
+     */
+    widthRestricted?: boolean;
   };

@@ -1,31 +1,20 @@
-import { variant } from '@codecademy/gamut-styles';
+import { states, variant } from '@codecademy/gamut-styles';
 
 import {
-  infoTipDims,
   tooltipArrowHeight,
   tooltipBackgroundColor,
   toolTipBodyCss,
-  toolTipDims,
-} from '../Tip/shared/styles';
-import { createVariantsFromAlignments } from '../Tip/shared/utils';
+} from '../ToolTip/styles';
+import { createVariantsFromAlignments } from '../ToolTip/utils';
 import {
   createBeakVariantFromAlignment,
   createPatternVariantFromAlignment,
 } from './utils';
 
-export const popoverVariants = variant({
-  prop: 'dims',
-  variants: {
-    widthRestricted: {
-      minWidth: '4rem',
-      maxWidth: '16rem',
-    },
-    toolTip: {
-      ...toolTipDims,
-    },
-    infoTip: {
-      ...infoTipDims,
-    },
+export const popoverStates = states({
+  widthRestricted: {
+    minWidth: '4rem',
+    maxWidth: '16rem',
   },
 });
 
