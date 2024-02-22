@@ -1,6 +1,8 @@
+import { useId } from '@reach/auto-id';
 import { ComponentProps, forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
+import { ToolTipProps } from '../Tip';
 import {
   createButtonComponent,
   IconComponentType,
@@ -16,10 +18,13 @@ const IconButtonBase = createButtonComponent(
 export type IconButtonProps = ComponentProps<typeof IconButtonBase> &
   IconComponentType & {
     'aria-label': string;
+    tip: ToolTipProps['info'];
+    tipProps?: Omit<ToolTipProps, 'info'>;
   };
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
   ({ children, icon: Icon, variant = 'secondary', ...props }, ref) => {
+    const tipId = useId();
     return (
       <IconButtonBase {...props} variant={variant} ref={ref}>
         {Icon && (

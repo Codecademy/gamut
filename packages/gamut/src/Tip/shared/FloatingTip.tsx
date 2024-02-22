@@ -1,5 +1,4 @@
-import { get } from 'lodash';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
 import { useMeasure } from 'react-use'; // or just 'react-use-measure'
 
@@ -19,6 +18,7 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
   escapeKeyPressHandler,
   id,
   info,
+  isTipHidden,
   wrapperRef,
   type,
 }) => {
@@ -29,19 +29,20 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
-  const isCentered = alignment.includes('center');
-
   useLayoutEffect(() => {
-    // CASS - HERE - We need to get the width of the tooltip ref to calculate the offset for center alignment
-    if (ref?.current && !isCentered) {
-      setOffset(-ref.current.clientWidth / 2 + 32);
-    } else if (isCentered && ref?.current) {
-      const tw = tipWidth + 16;
-      const cw = ref?.current.clientWidth + 4;
-      const diffOs = (tw - cw) / 2;
-      setOffset(diffOs);
+    const isCentered = alignment.includes('center');
+
+    if (ref?.current) {
+      if (!isCentered) {
+        setOffset(-ref.current.clientWidth / 2 + 32);
+      } else {
+        const trueTw = tipWidth + 16;
+        const targetWidth = ref?.current.clientWidth;
+        const diffOs = (trueTw - targetWidth) / 2;
+        setOffset(diffOs);
+      }
     }
-  }, [isCentered, tipWidth]);
+  }, [alignment, tipWidth]);
 
   const popoverAlignments = getPopoverAlignment({ alignment, type });
 
@@ -75,13 +76,13 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
       onMouseLeave={toolOnlyEventFunc}
     >
       <TargetContainer
-        ref={ref}
-        onKeyDown={
-          escapeKeyPressHandler ? (e) => escapeKeyPressHandler(e) : undefined
-        }
         onFocus={toolOnlyEventFunc}
         onBlur={toolOnlyEventFunc}
         onMouseEnter={toolOnlyEventFunc}
+        onKeyDown={
+          escapeKeyPressHandler ? (e) => escapeKeyPressHandler(e) : undefined
+        }
+        ref={ref}
       >
         {children}
       </TargetContainer>
@@ -89,8 +90,7 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
         {...popoverAlignments}
         animation="fade"
         horizontalOffset={offset}
-        // isOpen={isToolType ? isOpen : !isTipHidden}
-        isOpen
+        isOpen={isToolType ? isOpen : !isTipHidden}
         outline
         skipFocusTrap
         targetRef={ref}
@@ -99,11 +99,10 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
         <FlexBox
           alignItems="flex-start"
           flexDirection="column"
-          id={id}
           ref={childRef}
-          role={isToolType ? 'tooltip' : 'infotip'}
+          role={isToolType ? 'tooltip' : undefined}
           width="100%"
-          bg="paleBlue"
+          id={id}
         >
           {info}
         </FlexBox>
