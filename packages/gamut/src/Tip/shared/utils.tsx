@@ -15,12 +15,17 @@ import { TipPlacementComponentProps } from './types';
 
 export const getPopoverAlignment = ({
   alignment = 'top-left',
-}: Pick<TipPlacementComponentProps, 'alignment'>) => {
+  type,
+}: Partial<Pick<TipPlacementComponentProps, 'alignment' | 'type'>>) => {
   const popoverAlignment: Pick<PopoverProps, 'align' | 'beak' | 'position'> = {
     align: 'right',
     beak: 'right',
     position: 'above',
   };
+
+  if (type === 'tool') {
+    popoverAlignment.align = undefined;
+  }
 
   if (alignment.includes('bottom')) popoverAlignment.position = 'below';
 

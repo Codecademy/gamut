@@ -42,6 +42,10 @@ const beakLeftSml = {
   left: '1.5rem',
 };
 
+const beakCenterSml = {
+  left: 'calc(50% - 8px)',
+};
+
 export const createBeakVariantFromAlignment = (alignment: string) => {
   let styleObject = {};
 
@@ -54,7 +58,7 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
     if (alignment.includes('right')) {
       styleObject = { ...beakRightSml, ...styleObject };
     } else if (alignment.includes('center')) {
-      styleObject = { ...beakCenter, ...styleObject };
+      styleObject = { ...beakCenterSml, ...styleObject };
     } else {
       styleObject = { ...beakLeftSml, ...styleObject };
     }
