@@ -1,8 +1,7 @@
 import {
   FlexBox,
   IconButton,
-  NewToolTip,
-  Text} from '@codecademy/gamut/src';
+  NewToolTip} from '@codecademy/gamut/src';
 import { SparkleIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
@@ -38,7 +37,7 @@ A short tip triggered on hover and focus of an interactive element. Use a toolti
   <Story name="NewToolTip">
     {() => (
       <FlexBox center py={64} m={24}>
-    <Text mr={4}>Some text that needs info</Text><NewToolTip id='new-id' info="Tooltip" placement='floating'><IconButton aria-describedby="new-id" icon={SparkleIcon}/></NewToolTip>
+    <IconButton aria-describedby="new-id" icon={SparkleIcon} tip="Tooltip" />
       </FlexBox>
     )}
   </Story>

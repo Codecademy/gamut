@@ -2,7 +2,7 @@ import { useId } from '@reach/auto-id';
 import { ComponentProps, forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
-import { ToolTipProps } from '../Tip';
+import { NewToolTip, ToolTipProps } from '../Tip';
 import {
   createButtonComponent,
   IconComponentType,
@@ -18,24 +18,29 @@ const IconButtonBase = createButtonComponent(
 export type IconButtonProps = ComponentProps<typeof IconButtonBase> &
   IconComponentType & {
     'aria-label': string;
-    tip: ToolTipProps['info'];
+    tip: string;
     tipProps?: Omit<ToolTipProps, 'info'>;
   };
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
-  ({ children, icon: Icon, variant = 'secondary', ...props }, ref) => {
-    const tipId = useId();
+  ({ icon: Icon, tip, tipProps, variant = 'secondary', ...props }, ref) => {
+    const tipId = useId() ?? 'icon-button-tip';
+
     return (
-      <IconButtonBase {...props} variant={variant} ref={ref}>
-        {Icon && (
+      <NewToolTip info={tip} {...tipProps} id={tipId}>
+        <IconButtonBase
+          {...props}
+          variant={variant}
+          ref={ref}
+          aria-describedby={tipId}
+        >
           <Icon
             width="calc(100% - 14px)"
             height="calc(100% - 14px)"
             aria-hidden
           />
-        )}
-        {children}
-      </IconButtonBase>
+        </IconButtonBase>
+      </NewToolTip>
     );
   }
 );
