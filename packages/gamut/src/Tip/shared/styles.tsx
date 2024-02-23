@@ -36,6 +36,7 @@ export const bottomStylesAfter = {
 } as const;
 
 export const centerStyles = {
+  ...centerWidths,
   left: 'calc(50% - 4rem)',
 } as const;
 
