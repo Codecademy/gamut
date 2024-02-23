@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { TargetContainer, TipBody, TipWrapper } from '../shared/elements';
 import { escapeKeyPressHandler } from '../shared/utils';
-import { DeprecatedToolTipContainer } from './elements';
+import { ToolTipContainer } from '../ToolTip/elements';
 import {
   deprecatedTooltipDefaultProps,
   DeprecatedToolTipPlacementComponentProps,
@@ -27,7 +27,7 @@ export const DeprecatedInlineToolTip: React.FC<DeprecatedToolTipPlacementCompone
       >
         {target}
       </TargetContainer>
-      <DeprecatedToolTipContainer
+      <ToolTipContainer
         alignment={alignment}
         aria-live="polite"
         as="div"
@@ -41,7 +41,7 @@ export const DeprecatedInlineToolTip: React.FC<DeprecatedToolTipPlacementCompone
         >
           {children}
         </TipBody>
-      </DeprecatedToolTipContainer>
+      </ToolTipContainer>
     </TipWrapper>
   );
 };
