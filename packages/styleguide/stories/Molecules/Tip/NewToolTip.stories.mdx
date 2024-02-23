@@ -21,7 +21,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     status: 'updating',
   }}
   args={{
-    info: `I am helpful text.`,
+    info: `Don't click me.`,
   }}
 />
 
@@ -34,9 +34,9 @@ When a Button is disabled with a tooltip, you should use the `aria-disabled` pro
 
 <Canvas>
   <Story name="NewToolTip">
-    {() => (
+    {(args) => (
       <FlexBox center py={64} m={24}>
-      <NewToolTip id="fill-id" info="Blah blah blah blah blah">
+      <NewToolTip id="fill-id" {...args}>
         <FillButton aria-describedby="fill-id" aria-disabled icon={SparkleIcon}>Click me</FillButton>
         </NewToolTip>
         </FlexBox>

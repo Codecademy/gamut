@@ -17,7 +17,6 @@ const IconButtonBase = createButtonComponent(
 
 export type IconButtonProps = ComponentProps<typeof IconButtonBase> &
   IconComponentType & {
-    'aria-label': string;
     tip: string;
     tipProps?: Omit<ToolTipProps, 'info'>;
   };

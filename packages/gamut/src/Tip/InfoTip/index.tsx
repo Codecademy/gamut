@@ -73,7 +73,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     alignment,
     escapeKeyPressHandler,
     info,
-    isTipHidden: false,
+    isTipHidden,
     wrapperRef,
     ...rest,
   };

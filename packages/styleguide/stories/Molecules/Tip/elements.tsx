@@ -1,29 +1,46 @@
 import {
   Alert,
   Badge,
+  Box,
   FlexBox,
+  IconButton,
+  InfoTip,
   List,
   ListCol,
   ListRow,
   Text,
 } from '@codecademy/gamut';
+import { MiniStarIcon } from '@codecademy/gamut-icons';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
 const components = {
   ToolTip: {
-    status: 'Coming soon',
+    component: (
+      <IconButton
+        placement="floating"
+        size="small"
+        icon={MiniStarIcon}
+        tip="ToolTip"
+        tipProps={{
+          placement: 'floating',
+        }}
+      />
+    ),
+    status: 'New',
     useCase: 'Clarify function of a UI element',
     contents: 'Icon labels, shortcuts, quick tips',
     triggers: 'On hover and focus',
   },
   InfoTip: {
+    component: <InfoTip placement="floating" info="I am an infotip." />,
     status: 'New',
     useCase: 'Provide context and clarify terms',
     contents: 'Additional details, explanations, definitions',
     triggers: 'On click (info button)',
   },
   PreviewTip: {
+    component: <></>,
     status: 'Coming soon',
     useCase: 'Preview linked content without leaving page',
     contents: 'Page snippets, textual insights, summaries, etc.',
@@ -46,14 +63,14 @@ const ComponentRow = ({ array }: { array: typeof colTitles }) => {
     <ListRow>
       <ListCol size="sm" />
       {array.map((title) => {
-        const { status } = components[title];
+        const { component, status } = components[title];
         const badgeVariant = status === 'New' ? 'accent' : 'tertiary';
 
         return (
           <BorderRow size="xl">
             <FlexBox alignItems="center" flexWrap="wrap">
               <Text variant="title-sm" mr={8}>
-                {title}
+                {title} {component}
               </Text>
               <Badge variant={badgeVariant} size="sm">
                 {status}
