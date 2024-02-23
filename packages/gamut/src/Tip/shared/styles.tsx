@@ -98,10 +98,11 @@ export const toolTipBodyAlignments = variant({
       m: 'auto',
       p: 8,
       textAlign: 'center',
-      minWidth: 64,
+      ...centerWidths,
     },
     aligned: {
       p: 16,
+      ...alignedMaxWidth,
     },
   },
 });

@@ -1,5 +1,5 @@
 import { FillButton,  FlexBox, IconButton,NewToolTip}  from '@codecademy/gamut/src';
-import {SparkleIcon} from '@codecademy/gamut-icons';
+import {SmileyStarEyesIcon,SparkleIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -30,13 +30,13 @@ A short tip triggered on hover and focus of an interactive element. Use a toolti
 
 When using the NewToolTip component, the `id` prop is required to associate the tooltip with the interactive element and the interactive element's `aria-describedby` prop must be set to the `id` of the tooltip.
 
-When a Button is disabled with a tooltip, you should use the aria-disabled props instead of disabled prop so the user can still focus the button and view the tooltip.
+When a Button is disabled with a tooltip, you should use the `aria-disabled` prop instead of `disabled` prop so the user can still focus the button and view the tooltip.
 
 <Canvas>
   <Story name="NewToolTip">
     {() => (
       <FlexBox center py={64} m={24}>
-      <NewToolTip id="fill-id" info="s">
+      <NewToolTip id="fill-id" info="Blah blah blah blah blah">
         <FillButton aria-describedby="fill-id" aria-disabled icon={SparkleIcon}>Click me</FillButton>
         </NewToolTip>
         </FlexBox>
@@ -52,11 +52,25 @@ When using an icon-only button, a tooltip displaying the label is required to pr
 
 
 <Canvas>
-  <Story name="InfoButton Tooltip">
+  <Story name="InfoButton Tooltip ">
     {() => (
     <FlexBox center py={64} m={24}>
-        <IconButton tip="Beautify" icon={SparkleIcon} tipProps={{alignment: "bottom-center"}}/>
+        <IconButton tip="Beautify" icon={SparkleIcon} tipProps={{alignment: "bottom-center"  }}/>
         </FlexBox>
+          )}
+  </Story>
+  </Canvas>
+
+## Floating Placement
+
+ToolTips sometimes need to be in used in a way that they need to escape the confines of their parents container. The `floating` variant of the `placement` prop allows ToolTips do just this. (Notice how this section doesn't need as much padding because the ToolTips are able to escape their context!)
+
+This `floating` variant should only be used when it as needed.
+
+<Canvas>
+  <Story name="Floating Placement ToolTip">
+    {() => (
+        <IconButton tip="I am floating, spooky" icon={ SmileyStarEyesIcon } tipProps={{alignment: "bottom-center", placement: 'floating'  }}/>
           )}
   </Story>
   </Canvas>

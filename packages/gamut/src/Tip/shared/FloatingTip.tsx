@@ -97,7 +97,7 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
         variant="secondary"
       >
         <FlexBox
-          alignItems="flex-start"
+          alignItems={isToolType ? undefined : 'flex-start'}
           flexDirection="column"
           ref={childRef}
           role={isToolType ? 'tooltip' : undefined}
