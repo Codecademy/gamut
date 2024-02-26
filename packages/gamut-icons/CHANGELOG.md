@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.18.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.17.0...@codecademy/gamut-icons@9.18.0) (2024-02-26)
+
+### Features
+
+- **Icons:** add SparkleOutlineIcon ([f2824ea](https://github.com/Codecademy/gamut/commit/f2824eabc8a520421c6e75c7810f0051c57d5243))
+
 ## [9.17.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.16.0...@codecademy/gamut-icons@9.17.0) (2024-02-21)
 
 ### Features
