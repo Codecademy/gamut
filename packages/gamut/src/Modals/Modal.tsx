@@ -122,6 +122,7 @@ export const Modal: React.FC<ModalProps> = ({
             gridArea="close"
             disabled={closeDisabled}
             ref={buttonRef}
+            tip="Close modal"
           />
         )}
         <Box
