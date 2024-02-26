@@ -2,7 +2,7 @@ import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, Colors } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
-import { WithChildrenProp } from '..';
+import { Box, WithChildrenProp } from '..';
 import { IconButton } from '../Button';
 import { Drawer } from '../Drawer';
 import { Overlay } from '../Overlay';
@@ -74,14 +74,16 @@ export const Flyout: React.FC<FlyoutProps> = ({
           >
             {title}
           </Text>
-          <IconButton
-            aria-label={closeLabel}
-            icon={MiniDeleteIcon}
-            onClick={onClose}
-            position="absolute"
-            top="1rem"
-            right="0.5rem"
-          />
+          <Box position="fixed" top="1rem" left="26rem">
+            <IconButton
+              aria-label={closeLabel}
+              icon={MiniDeleteIcon}
+              onClick={onClose}
+              tip="Close"
+              tipProps={{ alignment: 'bottom-center' }}
+            />
+          </Box>
+
           {children}
         </Drawer>
       </Background>
