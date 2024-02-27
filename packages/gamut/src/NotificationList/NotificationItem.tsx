@@ -145,11 +145,11 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
     <IconButton
       icon={MiniDeleteIcon}
       onClick={handleDismiss}
-      aria-label="Dismiss Notification"
       aria-describedby={notificationItemId}
       size="small"
       variant="secondary"
-      z-index={1}
+      zIndex={1}
+      tip="Dismiss Notification"
     />
   );
 
