@@ -1,7 +1,6 @@
 import {
   Alert,
   Badge,
-  Box,
   FlexBox,
   IconButton,
   InfoTip,
