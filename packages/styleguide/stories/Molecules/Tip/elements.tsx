@@ -17,7 +17,6 @@ const components = {
   ToolTip: {
     component: (
       <IconButton
-        placement="floating"
         size="small"
         icon={MiniStarIcon}
         tip="ToolTip"
