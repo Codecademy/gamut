@@ -10,6 +10,7 @@ const mockUseMedia = jest.fn();
 
 // not testing for mobile as default
 jest.mock('react-use', () => ({
+  ...jest.requireActual<{}>('react-use'),
   get useMedia() {
     return mockUseMedia;
   },
