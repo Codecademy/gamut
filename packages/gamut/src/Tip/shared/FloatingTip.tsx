@@ -95,6 +95,8 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
         skipFocusTrap
         targetRef={ref}
         variant="secondary"
+        // The InfoTip has an aria-live region that is updated when the tip is shown or hidden, so we don't want this to be announced twice
+        aria-hidden={!isToolType}
       >
         <FlexBox
           alignItems={isToolType ? undefined : 'flex-start'}

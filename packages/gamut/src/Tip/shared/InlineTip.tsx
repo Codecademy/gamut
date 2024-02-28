@@ -13,10 +13,10 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
   type,
   wrapperRef,
 }) => {
-  const isToolTip = type === 'tool';
+  const isToolType = type === 'tool';
 
-  const InlineTipWrapper = isToolTip ? ToolTipContainer : InfoTipContainer;
-  const InlineWrapperProps = isToolTip ? {} : { hideTip: isTipHidden };
+  const InlineTipWrapper = isToolType ? ToolTipContainer : InfoTipContainer;
+  const InlineWrapperProps = isToolType ? {} : { hideTip: isTipHidden };
 
   return (
     <TipWrapper>
@@ -28,12 +28,17 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
       >
         {children}
       </TargetContainer>
-      <InlineTipWrapper alignment={alignment} {...InlineWrapperProps}>
+      <InlineTipWrapper
+        alignment={alignment}
+        // The InfoTip has an aria-live region that is updated when the tip is shown or hidden, so we don't want this to be announced twice
+        aria-hidden
+        {...InlineWrapperProps}
+      >
         <TipBody
           alignment={alignment.includes('center') ? 'centered' : 'aligned'}
           color="currentColor"
           id={id}
-          role={isToolTip ? 'tooltip' : undefined}
+          role={isToolType ? 'tooltip' : undefined}
         >
           {info}
         </TipBody>
