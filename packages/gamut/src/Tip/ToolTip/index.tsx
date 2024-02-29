@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
+import { FlexBox } from '../../Box';
+import { FillButton } from '../../Button';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
@@ -8,15 +10,16 @@ import {
   tipDefaultProps,
 } from '../shared/types';
 
-export interface ToolTipProps extends TipBaseProps {
+export interface NewToolTipProps extends TipBaseProps {
   alignment?: TipCenterAlignment;
+  children: ReactNode;
   /**
    * Required for accessiblity - the same id needs to be passed to the `aria-describedby` attribute of the element that the tooltip is describing.
    */
   id: string;
 }
 
-export const NewToolTip: React.FC<ToolTipProps> = ({
+export const NewToolTip: React.FC<NewToolTipProps> = ({
   alignment = 'top-center',
   children,
   info,
@@ -43,5 +46,17 @@ export const NewToolTip: React.FC<ToolTipProps> = ({
     <Tip {...tipProps} type="tool">
       {children}
     </Tip>
+  );
+};
+
+const NewTip = () => {
+  return (
+    <FlexBox center py={64} m={24}>
+      <NewToolTip id="fill-id" info="hey">
+        <FillButton aria-describedby="fill-id" aria-disabled>
+          Click me
+        </FillButton>
+      </NewToolTip>
+    </FlexBox>
   );
 };
