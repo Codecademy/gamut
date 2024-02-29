@@ -76,8 +76,6 @@ exports[`Gamut Exported Keys 1`] = `
   "Modal",
   "ModalDeprecated",
   "NewToolTip",
-  "NotificationItem",
-  "NotificationList",
   "omitProps",
   "Overlay",
   "Pagination",

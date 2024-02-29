@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
+import userEvent from '@testing-library/user-event';
 
 import { InfoTip } from '../InfoTip';
 
@@ -17,7 +18,7 @@ describe('InfoTip', () => {
 
       expect(tip).not.toBeVisible();
 
-      fireEvent.click(view.getByRole('button'));
+      userEvent.click(view.getByRole('button'));
 
       expect(tip.parentElement).not.toHaveStyle({
         visibility: 'hidden',
@@ -36,10 +37,10 @@ describe('InfoTip', () => {
 
       expect(view.queryByText(info)).toBeNull();
 
-      fireEvent.click(view.getByRole('button'));
+      userEvent.click(view.getByRole('button'));
 
       // The first get by text result is the a11y text, the second is the actual tip text
-      expect(view.queryAllByText(info).length).toBe(3);
+      expect(view.queryAllByText(info).length).toBe(2);
     });
   });
 });
