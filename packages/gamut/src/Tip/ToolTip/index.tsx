@@ -1,7 +1,5 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
 
-import { FlexBox } from '../../Box';
-import { FillButton } from '../../Button';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {

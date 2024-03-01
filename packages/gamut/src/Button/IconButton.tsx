@@ -18,7 +18,7 @@ const IconButtonBase = createButtonComponent(
 export type IconButtonProps = ComponentProps<typeof IconButtonBase> &
   IconComponentType & {
     tip: string;
-    tipProps?: Omit<NewToolTipProps, 'info' | 'id'>;
+    tipProps?: Omit<NewToolTipProps, 'info' | 'id' | 'children'>;
   };
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
