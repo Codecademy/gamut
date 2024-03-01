@@ -1,8 +1,8 @@
 import { Box } from '../../Box';
 import { FillButton } from '../../Button';
-import { NewToolTip, ToolTipProps } from '../ToolTip';
+import { NewToolTip, NewToolTipProps } from '../ToolTip';
 
-export const NewToolTipMock: React.FC<ToolTipProps> = (props) => {
+export const NewToolTipMock: React.FC<NewToolTipProps> = (props) => {
   return (
     <Box width="500px">
       <Box width="200px">

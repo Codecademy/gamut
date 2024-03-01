@@ -2,7 +2,7 @@ import { useId } from '@reach/auto-id';
 import { ComponentProps, forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
-import { NewToolTip, ToolTipProps } from '../Tip';
+import { NewToolTip, NewToolTipProps } from '../Tip';
 import {
   createButtonComponent,
   IconComponentType,
@@ -18,7 +18,7 @@ const IconButtonBase = createButtonComponent(
 export type IconButtonProps = ComponentProps<typeof IconButtonBase> &
   IconComponentType & {
     tip: string;
-    tipProps?: Omit<ToolTipProps, 'info' | 'id'>;
+    tipProps?: Omit<NewToolTipProps, 'info' | 'id'>;
   };
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(

@@ -48,15 +48,3 @@ export const NewToolTip: React.FC<NewToolTipProps> = ({
     </Tip>
   );
 };
-
-const NewTip = () => {
-  return (
-    <FlexBox center py={64} m={24}>
-      <NewToolTip id="fill-id" info="hey">
-        <FillButton aria-describedby="fill-id" aria-disabled>
-          Click me
-        </FillButton>
-      </NewToolTip>
-    </FlexBox>
-  );
-};
