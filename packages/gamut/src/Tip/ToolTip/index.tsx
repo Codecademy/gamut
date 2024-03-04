@@ -1,5 +1,6 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
+import { WithChildrenProp } from '../..';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
@@ -8,9 +9,8 @@ import {
   tipDefaultProps,
 } from '../shared/types';
 
-export interface NewToolTipProps extends TipBaseProps {
+export interface NewToolTipProps extends TipBaseProps, WithChildrenProp {
   alignment?: TipCenterAlignment;
-  children: ReactNode;
   /**
    * Required for accessiblity - the same id needs to be passed to the `aria-describedby` attribute of the element that the tooltip is describing.
    */

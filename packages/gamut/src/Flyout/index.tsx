@@ -2,7 +2,7 @@ import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, Colors, timingValues } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
-import { Box, WithChildrenProp } from '..';
+import { WithChildrenProp } from '..';
 import { IconButton } from '../Button';
 import { Drawer } from '../Drawer';
 import { Overlay } from '../Overlay';
