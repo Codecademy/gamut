@@ -1,10 +1,13 @@
-import { FillButton,  FlexBox, IconButton,NewToolTip}  from '@codecademy/gamut/src';
-import {SmileyStarEyesIcon,SparkleIcon } from '@codecademy/gamut-icons';
+import {
+  FillButton,
+  FlexBox,
+  IconButton,
+  NewToolTip,
+} from '@codecademy/gamut/src';
+import { SmileyStarEyesIcon, SparkleIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-
-
 
 <Meta
   title={title}
@@ -25,7 +28,6 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   }}
 />
 
-
 A short tip triggered on hover and focus of an interactive element. Use a tooltip to further explain an element’s primary action, a disabled button state, or to display a label for an icon-only button.
 
 When using the NewToolTip component, the `id` prop is required to associate the tooltip with the interactive element and the interactive element's `aria-labelledby` prop must be set to the `id` of the tooltip.
@@ -36,11 +38,17 @@ When a Button is disabled with a tooltip, you must use the `aria-disabled` prop 
   <Story name="NewToolTip">
     {(args) => (
       <FlexBox center py={64} m={24}>
-      <NewToolTip id="fill-id" {...args}>
-        <FillButton aria-labelledby="fill-id" aria-disabled icon={SparkleIcon}>Click me</FillButton>
+        <NewToolTip id="fill-id" {...args}>
+          <FillButton
+            aria-labelledby="fill-id"
+            aria-disabled
+            icon={SparkleIcon}
+          >
+            Click me
+          </FillButton>
         </NewToolTip>
-        </FlexBox>
-          )}
+      </FlexBox>
+    )}
   </Story>
 </Canvas>
 
@@ -50,16 +58,19 @@ When a Button is disabled with a tooltip, you must use the `aria-disabled` prop 
 
 When using an icon-only button, a tooltip displaying the label is required to provide context for the button's action. This is accessible directly through the `IconButton`'s required `tip` prop. You can adjust positioning and alignment of the tooltip by using the tipProps prop.
 
-
 <Canvas>
   <Story name="InfoButton Tooltip ">
     {() => (
-    <FlexBox center py={64} m={24}>
-        <IconButton tip="Beautify" icon={SparkleIcon} tipProps={{alignment: "bottom-center"  }}/>
-        </FlexBox>
-          )}
+      <FlexBox center py={64} m={24}>
+        <IconButton
+          tip="Beautify"
+          icon={SparkleIcon}
+          tipProps={{ alignment: 'bottom-center' }}
+        />
+      </FlexBox>
+    )}
   </Story>
-  </Canvas>
+</Canvas>
 
 ## Floating Placement
 
@@ -70,7 +81,11 @@ This `floating` variant should only be used when it as needed.
 <Canvas>
   <Story name="Floating Placement ToolTip">
     {() => (
-        <IconButton tip="I am floating, spooky" icon={ SmileyStarEyesIcon } tipProps={{alignment: "bottom-center", placement: 'floating'  }}/>
-          )}
+      <IconButton
+        tip="I am floating, spooky"
+        icon={SmileyStarEyesIcon}
+        tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
+      />
+    )}
   </Story>
-  </Canvas>
+</Canvas>

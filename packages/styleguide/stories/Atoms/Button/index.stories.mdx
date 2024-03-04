@@ -138,7 +138,12 @@ You must pass a string for the `tip` prop to label your icon button. The `tipPro
 <Canvas>
   <Story name="IconButton">
     {(args) => (
-      <IconButton {...args} icon={SearchIcon} tip="ToolTip" tipProps={{placement: 'floating'}}>
+      <IconButton
+        {...args}
+        icon={SearchIcon}
+        tip="ToolTip"
+        tipProps={{ placement: 'floating' }}
+      >
         {undefined}
       </IconButton>
     )}
