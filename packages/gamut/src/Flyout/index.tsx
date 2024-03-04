@@ -1,5 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { Background, Colors } from '@codecademy/gamut-styles';
+import { Background, Colors, timingValues } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 import { Box, WithChildrenProp } from '..';
@@ -7,6 +7,11 @@ import { IconButton } from '../Button';
 import { Drawer } from '../Drawer';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
+import {
+  ButtonContainer,
+  closeButtonVariants,
+  getAnimationVariant,
+} from './elements';
 
 export interface FlyoutProps extends WithChildrenProp {
   /**
@@ -74,7 +79,21 @@ export const Flyout: React.FC<FlyoutProps> = ({
           >
             {title}
           </Text>
-          <Box position="fixed" top="1rem" left="26rem">
+          <ButtonContainer
+            animate={getAnimationVariant({ openFrom, expanded })}
+            variants={
+              openFrom === 'left'
+                ? closeButtonVariants.left
+                : closeButtonVariants.right
+            }
+            initial={getAnimationVariant({ openFrom, expanded: false })}
+            position="fixed"
+            top="1rem"
+            transition={{
+              type: 'tween',
+              duration: timingValues.slow / 1000,
+            }}
+          >
             <IconButton
               aria-label={closeLabel}
               icon={MiniDeleteIcon}
@@ -82,7 +101,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
               tip="Close"
               tipProps={{ alignment: 'bottom-center' }}
             />
-          </Box>
+          </ButtonContainer>
 
           {children}
         </Drawer>
