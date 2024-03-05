@@ -11,23 +11,17 @@ const renderView = setupRtl(NewToolTipMock, {
 });
 
 describe('ToolTip', () => {
-  describe('inline placement', () => {
-    it('shows the tip when moused over', async () => {
-      const { view } = renderView({});
-    });
-
-    describe('floating placement', () => {
-      it('shows the tip when it is hovered over', () => {
-        const { view } = renderView({
-          placement: 'floating',
-        });
-
-        expect(view.queryByText(info)).toBeNull();
-
-        userEvent.hover(view.getByRole('button'));
-
-        view.getByText(info);
+  describe('floating placement', () => {
+    it('shows the tip when it is hovered over', () => {
+      const { view } = renderView({
+        placement: 'floating',
       });
+
+      expect(view.queryByText(info)).toBeNull();
+
+      userEvent.hover(view.getByRole('button'));
+
+      view.getByText(info);
     });
   });
 });

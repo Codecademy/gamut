@@ -1,5 +1,4 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { fireEvent } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 
 import { InfoTip } from '../InfoTip';
