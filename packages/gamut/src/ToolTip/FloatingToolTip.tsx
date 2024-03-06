@@ -78,25 +78,23 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
       >
         {target}
       </TargetContainer>
-      <TargetContainer onMouseEnter={(e) => handleShowHideAction(e)}>
-        <Popover
-          {...popoverAlignments}
-          animation="fade"
-          aria-live="polite"
-          horizontalOffset={offset}
-          isOpen={isOpen}
-          outline
-          role="tooltip"
-          variant="secondary"
-          skipFocusTrap
-          targetRef={ref}
-          widthRestricted={widthMode === 'standard'}
-        >
-          <FlexBox id={id} alignItems="flex-start" flexDirection="column">
-            {children}
-          </FlexBox>
-        </Popover>
-      </TargetContainer>
+      <Popover
+        {...popoverAlignments}
+        animation="fade"
+        aria-live="polite"
+        horizontalOffset={offset}
+        isOpen={isOpen}
+        outline
+        role="tooltip"
+        variant="secondary"
+        skipFocusTrap
+        targetRef={ref}
+        widthRestricted={widthMode === 'standard'}
+      >
+        <FlexBox id={id} alignItems="flex-start" flexDirection="column">
+          {children}
+        </FlexBox>
+      </Popover>
     </Box>
   );
 };
