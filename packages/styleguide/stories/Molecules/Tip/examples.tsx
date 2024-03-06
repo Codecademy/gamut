@@ -1,4 +1,4 @@
-import { Anchor, InfoTip, Text } from '@codecademy/gamut';
+import { Anchor, Box, FlexBox, InfoTip, Text } from '@codecademy/gamut';
 import { useRef } from 'react';
 
 export const InfoTipLinkExample = () => {

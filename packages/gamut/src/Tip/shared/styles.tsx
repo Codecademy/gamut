@@ -74,7 +74,7 @@ export const toolTipAlignmentVariants = variant({
     transitionDelay: `${timing.fast}`,
     position: 'absolute',
     width: '70vw',
-    zIndex: 1,
+    // zIndex: 1,
     opacity: 0,
     visibility: 'hidden',
     '&::after': {

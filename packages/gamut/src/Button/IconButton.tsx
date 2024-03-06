@@ -26,7 +26,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
     const tipId = useId() ?? 'icon-button-tip';
 
     return (
-      <NewToolTip info={tip} {...tipProps} id={tipId}>
+      <NewToolTip info={tip} id={tipId} {...(tipProps as any)}>
         <IconButtonBase
           {...props}
           variant={variant}

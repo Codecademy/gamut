@@ -1,10 +1,16 @@
 import {
+  Box,
   FillButton,
   FlexBox,
   IconButton,
   NewToolTip,
 } from '@codecademy/gamut/src';
-import { SmileyStarEyesIcon, SparkleIcon } from '@codecademy/gamut-icons';
+import {
+  SmileyStarEyesIcon,
+  SparkleIcon,
+  ThumbsDownIcon,
+  ThumbsUpIcon,
+} from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -86,6 +92,35 @@ This `floating` variant should only be used when it as needed.
         icon={SmileyStarEyesIcon}
         tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
       />
+    )}
+  </Story>
+</Canvas>
+
+## zIndex + Inline Placement
+
+If using an inline placement, you will have access to the `zIndex` prop to adjust the ToolTip's stacking order.
+
+<Canvas>
+  <Story name="Inline Placement ToolTip">
+    {() => (
+      <FlexBox center flexDirection="column" py={64} m={24}>
+        <IconButton
+          tip="I am inline, cool"
+          icon={ThumbsDownIcon}
+          tipProps={{ alignment: 'bottom-center' }}
+        />
+        <Box bg="paleBlue" zIndex={3}>
+          I will not be behind the tooltip, sad + unreadable
+        </Box>
+        <IconButton
+          tip="I am inline, cool"
+          icon={ThumbsUpIcon}
+          tipProps={{ alignment: 'bottom-center', zIndex: 5 }}
+        />
+        <Box bg="paleBlue" zIndex={3}>
+          I will be behind the tooltip, nice + great{' '}
+        </Box>
+      </FlexBox>
     )}
   </Story>
 </Canvas>
