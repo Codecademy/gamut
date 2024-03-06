@@ -7,7 +7,7 @@ export const NewToolTipMock: React.FC<
   NewToolTipProps & ComponentProps<typeof FillButton>
 > = ({ info, placement, onClick }) => {
   return (
-    <NewToolTip info={info} placement="floating" id="tip-id" zIndex={14}>
+    <NewToolTip info={info} placement={placement} id="tip-id">
       <FillButton aria-describedby="tip-id" onClick={onClick}>
         Click me
       </FillButton>
