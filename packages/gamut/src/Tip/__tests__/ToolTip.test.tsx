@@ -15,7 +15,7 @@ const renderView = setupRtl(NewToolTipMock, {
 describe('ToolTip', () => {
   describe('inline placement', () => {
     it('calls onClick when clicked', () => {
-      const { view } = renderView();
+      const { view } = renderView({});
 
       userEvent.click(view.getByRole('button'));
 
@@ -35,7 +35,7 @@ describe('ToolTip', () => {
       view.getByRole('tooltip');
     });
     it('calls onClick when clicked', () => {
-      const { view } = renderView();
+      const { view } = renderView({});
 
       userEvent.click(view.getByRole('button'));
 

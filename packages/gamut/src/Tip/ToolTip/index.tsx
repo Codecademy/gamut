@@ -9,13 +9,14 @@ import {
   tipDefaultProps,
 } from '../shared/types';
 
-export interface NewToolTipProps extends TipBaseProps, WithChildrenProp {
-  alignment?: TipCenterAlignment;
-  /**
-   * Required for accessiblity - the same id needs to be passed to the `aria-labelledby` attribute of the element that the tooltip is describing.
-   */
-  id: string;
-}
+export type NewToolTipProps = TipBaseProps &
+  WithChildrenProp & {
+    alignment?: TipCenterAlignment;
+    /**
+     * Required for accessiblity - the same id needs to be passed to the `aria-labelledby` attribute of the element that the tooltip is describing.
+     */
+    id: string;
+  };
 
 export const NewToolTip: React.FC<NewToolTipProps> = ({
   alignment = 'top-center',

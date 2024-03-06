@@ -10,14 +10,15 @@ import {
 } from '../shared/types';
 import { InfoTipButton } from './InfoTipButton';
 
-export interface InfoTipProps extends TipBaseProps {
+export type InfoTipProps = TipBaseProps & {
   alignment?: TipBaseAlignment;
   emphasis?: 'low' | 'high';
   /**
    * Called when the info tip is clicked - intended to be used for programmatic focus in the case of links within the tip.
    */
   onClick?: (arg0: { isTipHidden: boolean }) => void;
-}
+};
+
 export const InfoTip: React.FC<InfoTipProps> = ({
   alignment = 'top-right',
   emphasis = 'low',

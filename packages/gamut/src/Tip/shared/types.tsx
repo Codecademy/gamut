@@ -22,17 +22,26 @@ export type TipCenterAlignment = typeof tipCenterAlignmentArray[number];
 
 export type TipStaticAlignment = typeof tipAlignmentArray[number];
 
-export interface TipBaseProps {
+export interface TipNewBaseProps {
   info: string | ReactNode;
   placement?: 'floating' | 'inline';
 }
+export interface TipInlineProps extends TipNewBaseProps {
+  placement?: 'inline';
+  zIndex?: number;
+}
+export interface TipFloatingProps extends TipNewBaseProps {
+  placement: 'floating';
+  zIndex?: never;
+}
 
-export const tipDefaultProps: Required<Pick<TipBaseProps, 'placement'>> = {
+export type TipBaseProps = TipInlineProps | TipFloatingProps;
+export const tipDefaultProps: Required<Pick<TipNewBaseProps, 'placement'>> = {
   placement: 'inline',
 };
 
 export type TipPlacementComponentProps = Omit<
-  TipBaseProps,
+  TipNewBaseProps,
   'placement' | 'emphasis'
 > & {
   alignment: TipStaticAlignment;
@@ -41,4 +50,5 @@ export type TipPlacementComponentProps = Omit<
   isTipHidden?: boolean;
   type: 'info' | 'tool';
   wrapperRef?: React.RefObject<HTMLDivElement>;
+  zIndex?: number;
 };

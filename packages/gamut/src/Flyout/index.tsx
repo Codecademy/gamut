@@ -99,7 +99,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
               icon={MiniDeleteIcon}
               onClick={onClose}
               tip="Close"
-              tipProps={{ alignment: 'bottom-center' }}
+              tipProps={{ alignment: 'bottom-center', zIndex: 2 }}
             />
           </ButtonContainer>
 

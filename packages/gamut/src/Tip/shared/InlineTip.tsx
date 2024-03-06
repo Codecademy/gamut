@@ -12,6 +12,7 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
   isTipHidden,
   type,
   wrapperRef,
+  zIndex,
 }) => {
   const isToolType = type === 'tool';
 
@@ -32,6 +33,7 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
         alignment={alignment}
         // The InfoTip has an aria-live region that is updated when the tip is shown or hidden, so we don't want this to be announced twice
         aria-hidden={!isToolType}
+        zIndex={zIndex}
         {...InlineWrapperProps}
       >
         <TipBody

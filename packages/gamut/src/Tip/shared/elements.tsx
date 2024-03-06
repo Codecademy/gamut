@@ -21,7 +21,7 @@ enum TargetSelectors {
   OUTLINE_FOCUS_VISIBLE = '&:focus-visible:before',
 }
 
-export const TargetContainer = styled.div(
+export const TargetContainer = styled(Box)(
   css({
     cursor: 'pointer',
     border: 'none',
