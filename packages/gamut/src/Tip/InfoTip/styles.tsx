@@ -53,8 +53,6 @@ export const newInfoTipAlignmentVariants = variant({
     transition: `opacity ${timing.fast}`,
     transitionDelay: `${timing.fast}`,
     position: 'absolute',
-    width: '70vw',
-    zIndex: 1,
     '&::after': {
       bg: tooltipBackgroundColor,
       content: '""',

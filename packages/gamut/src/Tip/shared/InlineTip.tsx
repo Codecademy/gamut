@@ -42,7 +42,6 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
           id={id}
           role={isToolType ? 'tooltip' : undefined}
         >
-          HI CASI
           {info}
         </TipBody>
       </InlineTipWrapper>
