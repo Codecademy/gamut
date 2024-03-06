@@ -5,6 +5,13 @@ import * as React from 'react';
 
 import { Text } from '../Typography';
 
+const borderRadius = {
+  small: '3px',
+  medium: '80px',
+  large: '9px',
+  xl: '18px',
+};
+
 export type ProgressBarProps = {
   className?: string;
 
@@ -66,20 +73,20 @@ const progressBarSizeVariants = variant({
   variants: {
     small: {
       height: '6px',
-      borderRadius: '3px',
+      borderRadius: borderRadius.small,
     },
     medium: {
       height: '8px',
-      borderRadius: '80px',
+      borderRadius: borderRadius.medium,
     },
     large: {
       height: '18px',
-      borderRadius: '9px',
+      borderRadius: borderRadius.large,
       fontSize: 14,
     },
     xl: {
       height: '36px',
-      borderRadius: '18px',
+      borderRadius: borderRadius.xl,
     },
   },
 });
@@ -122,7 +129,6 @@ const progressBarForegroundVariants = variant({
     display: 'flex',
     transition: 'width 0.5s',
     position: 'relative',
-    borderRadius: 'inherit',
   },
   variants: {
     blue: {
@@ -192,6 +198,8 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
           boxShadow: showBarBorder
             ? `0.5px 0 0 0.5px ${theme.colors.navy}`
             : 'none',
+          borderTopRightRadius: flat ? borderRadius[size] : 'inherit',
+          borderBottomRightRadius: flat ? borderRadius[size] : 'inherit',
         }}
       >
         {['large', 'xl'].includes(size) && (
