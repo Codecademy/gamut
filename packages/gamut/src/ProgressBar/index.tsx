@@ -29,10 +29,31 @@ export type ProgressBarProps = {
   variant: 'blue' | 'yellow' | 'default';
 
   /**
+   * Whether to flatten the bottom or top of the progress bar.
+   */
+  flat?: 'flat-bottom' | 'flat-top';
+
+  /**
    * Pattern component to use as a background.
    */
   pattern?: React.ComponentType<PatternProps>;
 };
+
+const progressBarFlatVariants = variant({
+  defaultVariant: 'default',
+  prop: 'flat',
+  variants: {
+    'flat-bottom': {
+      borderBottomRightRadius: 0,
+      borderBottomLeftRadius: 0,
+    },
+    'flat-top': {
+      borderTopRightRadius: 0,
+      borderTopLeftRadius: 0,
+    },
+    default: {},
+  },
+});
 
 const progressBarSizeVariants = variant({
   defaultVariant: 'small',
@@ -119,7 +140,10 @@ const progressBarForegroundVariants = variant({
   },
 });
 
-type ProgressBarElementProps = Pick<ProgressBarProps, 'variant' | 'size'>;
+type ProgressBarElementProps = Pick<
+  ProgressBarProps,
+  'variant' | 'size' | 'flat'
+>;
 
 type ProgressBarElementWrapperProps = ProgressBarElementProps & {
   backgroundOverride: 'pattern' | 'none';
@@ -129,6 +153,7 @@ const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
   ${progressBarBackgroundVariants};
   ${progressBarSizeVariants};
   ${progressBarBackgroundOverride};
+  ${progressBarFlatVariants}
 `;
 
 const Bar = styled.div(progressBarForegroundVariants);
@@ -141,6 +166,7 @@ const DisplayedPercent = styled.span`
 `;
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
+  flat,
   minimumPercent = 0,
   percent,
   pattern: Pattern,
@@ -151,6 +177,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   return (
     <ProgressBarWrapper
       aria-live="polite"
+      flat={flat}
       size={size}
       variant={variant}
       backgroundOverride={Pattern ? 'pattern' : 'none'}

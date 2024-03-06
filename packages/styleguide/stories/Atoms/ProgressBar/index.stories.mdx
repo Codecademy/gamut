@@ -144,3 +144,41 @@ Here we are using the `DiagonalARegular` pattern in navy in the large ProgressBa
     {(args) => <ProgressBar {...args} />}
   </Story>
 </Canvas>
+
+## Flat
+
+Use the prop flat and set it to either "flat-bottom" or "flat-bottom". This allows the ProgressBar to be either be on top of or bottom of a Card.
+
+### Flat-top
+
+<Canvas>
+  <Story
+    name="Flat - flat-top"
+    args={{
+      size: 'xl',
+      pattern: DiagonalADense,
+      percent: 33,
+      variant: 'yellow',
+      flat: 'flat-top'
+    }}
+  >
+    {(args) => <ProgressBar {...args} />}
+  </Story>
+</Canvas>
+
+### Flat-bottom
+
+<Canvas>
+  <Story
+    name="Flat - flat-bottom"
+    args={{
+      size: 'xl',
+      pattern: DiagonalADense,
+      percent: 33,
+      variant: 'yellow',
+      flat: 'flat-bottom'
+    }}
+  >
+    {(args) => <ProgressBar {...args} />}
+  </Story>
+</Canvas>
