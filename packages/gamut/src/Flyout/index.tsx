@@ -64,6 +64,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
           {...{ [openFrom]: 0 }}
         >
           <FlexBox
+            alignItems="center"
             mb={8}
             ml={16}
             mt={24}
