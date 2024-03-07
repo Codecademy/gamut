@@ -109,7 +109,7 @@ export const toolTipBodyAlignments = variant({
 
 export const toolTipBodyCss = {
   bg: tooltipBackgroundColor,
-  color: 'text-accent',
+  color: 'text',
   border: 1,
   boxShadow: 'none',
   borderRadius: '3px',

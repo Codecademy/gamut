@@ -38,7 +38,7 @@ export interface FlyoutProps extends WithChildrenProp {
 
 export const Flyout: React.FC<FlyoutProps> = ({
   children,
-  closeLabel,
+  closeLabel = 'Close',
   expanded,
   openFrom = 'left',
   onClose,
@@ -75,11 +75,10 @@ export const Flyout: React.FC<FlyoutProps> = ({
               {title}
             </Text>
             <IconButton
-              aria-label={closeLabel}
               icon={MiniDeleteIcon}
               onClick={onClose}
               mx={16}
-              tip="Close"
+              tip={closeLabel}
               tipProps={{
                 alignment: 'bottom-center',
                 placement: 'floating',
