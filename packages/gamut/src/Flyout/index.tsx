@@ -1,17 +1,12 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { Background, Colors, timingValues } from '@codecademy/gamut-styles';
+import { Background, Colors } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
-import { WithChildrenProp } from '..';
+import { FlexBox, WithChildrenProp } from '..';
 import { IconButton } from '../Button';
 import { Drawer } from '../Drawer';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
-import {
-  ButtonContainer,
-  closeButtonVariants,
-  getAnimationVariant,
-} from './elements';
 
 export interface FlyoutProps extends WithChildrenProp {
   /**
@@ -68,41 +63,28 @@ export const Flyout: React.FC<FlyoutProps> = ({
           top={0}
           {...{ [openFrom]: 0 }}
         >
-          <Text
-            as="h2"
-            fontSize={22}
+          <FlexBox
             mb={8}
             ml={16}
             mt={24}
-            mr={40}
             maxWidth="100%"
+            justifyContent="space-between"
           >
-            {title}
-          </Text>
-          <ButtonContainer
-            animate={getAnimationVariant({ openFrom, expanded })}
-            variants={
-              openFrom === 'left'
-                ? closeButtonVariants.left
-                : closeButtonVariants.right
-            }
-            initial={getAnimationVariant({ openFrom, expanded: false })}
-            position="fixed"
-            top="1rem"
-            transition={{
-              type: 'tween',
-              duration: timingValues.slow / 1000,
-            }}
-          >
+            <Text as="h2" fontSize={22}>
+              {title}
+            </Text>
             <IconButton
               aria-label={closeLabel}
               icon={MiniDeleteIcon}
               onClick={onClose}
+              mx={16}
               tip="Close"
-              tipProps={{ alignment: 'bottom-center', zIndex: 3 }}
+              tipProps={{
+                alignment: 'bottom-center',
+                placement: 'floating',
+              }}
             />
-          </ButtonContainer>
-
+          </FlexBox>
           {children}
         </Drawer>
       </Background>

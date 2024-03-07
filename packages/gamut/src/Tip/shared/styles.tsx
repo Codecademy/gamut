@@ -96,7 +96,7 @@ export const toolTipBodyAlignments = variant({
   variants: {
     centered: {
       m: 'auto',
-      p: 8,
+      p: 4,
       textAlign: 'center',
       ...centerWidths,
     },
