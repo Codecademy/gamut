@@ -119,18 +119,16 @@ Links or buttons within InfoTips should be used sparingly and only when the info
 <Canvas>
   <Story name="z-index">
     {() => (
-          <FlexBox center flexDirection="column" py={64} m={24}>
-                <Box bg="paleBlue" zIndex={3}>
-        I will not be behind the infotip, sad + unreadable
-      </Box>
-      <InfoTip info="I am inline, cool"  />
-    <Box bg="paleBlue" zIndex={3}>
-        I will be behind the infotip, nice + great
-      </Box>
-      <InfoTip info="I am inline, cool" zIndex={5} />
-    </FlexBox>
+      <FlexBox center flexDirection="column" py={64} m={24}>
+        <Box bg="paleBlue" zIndex={3}>
+          I will not be behind the infotip, sad + unreadable
+        </Box>
+        <InfoTip info="I am inline, cool" />
+        <Box bg="paleBlue" zIndex={3}>
+          I will be behind the infotip, nice + great
+        </Box>
+        <InfoTip info="I am inline, cool" zIndex={5} />
+      </FlexBox>
     )}
   </Story>
 </Canvas>
-
-
