@@ -1,5 +1,6 @@
 import { PopoverProps } from '../../Popover';
 import {
+  bottomCenterStylesAfter,
   bottomStyles,
   bottomStylesAfter,
   centerStyles,
@@ -8,6 +9,7 @@ import {
   leftStylesAfter,
   rightStyles,
   rightStylesAfter,
+  topCenterStylesAfter,
   topStyles,
   topStylesAfter,
 } from './styles';
@@ -56,6 +58,11 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
   if (alignment.includes('center')) {
     styleObject = { ...styleObject, ...centerStyles };
     styleObjectAfter = { ...styleObjectAfter, ...centerStylesAfter };
+    if (alignment.includes('top')) {
+      styleObjectAfter = { ...styleObjectAfter, ...topCenterStylesAfter };
+    } else {
+      styleObjectAfter = { ...styleObjectAfter, ...bottomCenterStylesAfter };
+    }
   } else if (alignment.includes('right')) {
     styleObject = { ...styleObject, ...rightStyles };
     styleObjectAfter = { ...styleObjectAfter, ...rightStylesAfter };

@@ -17,6 +17,7 @@ const IconButtonBase = createButtonComponent(
 
 export type IconButtonProps = ComponentProps<typeof IconButtonBase> &
   IconComponentType & {
+    'aria-label': string;
     tip: string;
     tipProps?: Omit<NewToolTipProps, 'info' | 'id' | 'children'>;
   };
@@ -31,7 +32,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
           {...props}
           variant={variant}
           ref={ref}
-          aria-labelledby={tipId}
+          aria-describedbyby={tipId}
         >
           <Icon
             width="calc(100% - 14px)"

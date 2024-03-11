@@ -1,4 +1,9 @@
-import { fontSmoothPixel, timing, variant } from '@codecademy/gamut-styles';
+import {
+  fontSmoothPixel,
+  theme,
+  timing,
+  variant,
+} from '@codecademy/gamut-styles';
 
 import { tipAlignmentArray } from './types';
 import {
@@ -42,6 +47,15 @@ export const centerStyles = {
 
 export const centerStylesAfter = { left: 'calc(50% - 0.5rem)' } as const;
 
+// This halfway fills the square we use to create the 'beak' of the tip so it does not overlap the tip text on the 'center' alignments
+export const topCenterStylesAfter = {
+  backgroundImage: `linear-gradient(to top left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+};
+
+export const bottomCenterStylesAfter = {
+  backgroundImage: `linear-gradient(to bottom right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+};
+
 export const leftStyles = {
   ...alignedMaxWidth,
   justifyContent: 'flex-end',
@@ -74,11 +88,9 @@ export const toolTipAlignmentVariants = variant({
     transitionDelay: `${timing.fast}`,
     position: 'absolute',
     width: '70vw',
-    // zIndex: 1,
     opacity: 0,
     visibility: 'hidden',
     '&::after': {
-      bg: tooltipBackgroundColor,
       content: '""',
       display: 'block',
       height: `${tooltipArrowHeight}`,
