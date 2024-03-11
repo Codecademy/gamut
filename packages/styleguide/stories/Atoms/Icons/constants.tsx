@@ -30,6 +30,7 @@ export const VENDOR_ICONS = pick(
     'RedditIcon',
     'RubyIcon',
     'SlackIcon',
+    'TikTokIcon',
     'TwitterIcon',
     'TwitterOutlineIcon',
     'WhatsAppFilledIcon',
