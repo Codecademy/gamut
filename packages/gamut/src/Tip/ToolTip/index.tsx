@@ -13,7 +13,7 @@ export type NewToolTipProps = TipBaseProps &
   WithChildrenProp & {
     alignment?: TipCenterAlignment;
     /**
-     * Required for accessiblity - the same id needs to be passed to the `aria-labelledby` attribute of the element that the tooltip is describing.
+     * Required for accessiblity - the same id needs to be passed to the `aria-describedby` attribute of the element that the tooltip is describing.
      */
     id: string;
   };

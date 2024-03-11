@@ -75,6 +75,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
               {title}
             </Text>
             <IconButton
+              aria-label="Close"
               icon={MiniDeleteIcon}
               onClick={onClose}
               mx={16}

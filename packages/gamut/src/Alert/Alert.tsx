@@ -179,12 +179,13 @@ export const Alert: React.FC<AlertProps> = ({
       {ctaButton}
       {onClose && (
         <IconButton
+          aria-label="Close"
           tabIndex={tabIndex}
           variant="secondary"
           size="small"
           onClick={onClose}
           icon={MiniDeleteIcon}
-          tip="Close alert"
+          tip="Dismiss alert"
           tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
         />
       )}

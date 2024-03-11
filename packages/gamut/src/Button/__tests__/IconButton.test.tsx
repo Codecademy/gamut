@@ -8,9 +8,10 @@ import { IconButtonFloatingMock } from './mocks';
 const onClick = jest.fn();
 
 const renderView = setupRtl(IconButton, {
+  'aria-label': 'Click me!',
   icon: StarIcon,
   onClick,
-  tip: 'Click me!',
+  tip: 'This is a button to click',
 });
 
 const renderFloatingView = setupRtl(IconButtonFloatingMock, {

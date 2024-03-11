@@ -32,7 +32,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
           {...props}
           variant={variant}
           ref={ref}
-          aria-describedbyby={tipId}
+          aria-describedby={tipId}
         >
           <Icon
             width="calc(100% - 14px)"
