@@ -17,8 +17,8 @@
     "@nx/jest": "16.8.1",
     "@nx/react": "16.8.1",
     "@svgr/cli": "5.5.0",
-    "@testing-library/dom": "^9.3.4",
-    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/dom": "^8.11.1",
+    "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^13.5.0",
@@ -70,7 +70,6 @@
     "typescript": "5.1.3"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
     "onchange": "^7.0.2",
     "webpack": "4.46.0"
   },
