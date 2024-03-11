@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.19.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.18.0...@codecademy/gamut-icons@9.19.0) (2024-03-11)
+
+### Features
+
+- **Icons:** add TikTokIcon ([fc5a378](https://github.com/Codecademy/gamut/commit/fc5a37858f469dcdd727c96fe3c13d8b7ecc2651))
+
 ## [9.18.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.17.0...@codecademy/gamut-icons@9.18.0) (2024-02-26)
 
 ### Features
