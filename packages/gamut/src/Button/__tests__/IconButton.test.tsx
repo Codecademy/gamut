@@ -6,19 +6,16 @@ import { IconButton } from '../IconButton';
 import { IconButtonFloatingMock } from './mocks';
 
 const onClick = jest.fn();
-
-const renderView = setupRtl(IconButton, {
+const buttonProps = {
   'aria-label': 'Click me!',
   icon: StarIcon,
   onClick,
   tip: 'This is a button to click',
-});
+};
 
-const renderFloatingView = setupRtl(IconButtonFloatingMock, {
-  icon: StarIcon,
-  onClick,
-  tip: 'Click me!',
-});
+const renderView = setupRtl(IconButton, buttonProps);
+
+const renderFloatingView = setupRtl(IconButtonFloatingMock, buttonProps);
 
 describe('IconButton', () => {
   it('renders a clickable button', () => {
@@ -36,7 +33,13 @@ describe('IconButton', () => {
     view.getByTitle('Star Icon');
   });
 
-  it('renders a tip', async () => {
+  it('renders an inline tip', async () => {
+    const { view } = renderView({});
+
+    view.getByRole('button', { description: 'This is a button to click' });
+  });
+
+  it('renders a floating tip', async () => {
     const { view } = renderFloatingView({});
 
     expect(view.queryByRole('tooltip')).toBeNull();
