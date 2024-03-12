@@ -33,6 +33,7 @@ describe('IconButton', () => {
     view.getByTitle('Star Icon');
   });
 
+  // TO-DO: When we upgrade jest, we can use `description` in the tests below to make sure they are semnantically connected to buttons.
   it('renders an inline tip', async () => {
     const { view } = renderView({});
 
