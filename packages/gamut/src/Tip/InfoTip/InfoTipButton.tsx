@@ -28,7 +28,8 @@ export const InfoTipButton = forwardRef<ButtonBaseElements, InfoTipButtonProps>(
     return (
       <InfoTipButtonBase
         active={active}
-        aria-label="Information"
+        aria-expanded={active}
+        aria-label="Show information"
         {...props}
         ref={ref}
       >
