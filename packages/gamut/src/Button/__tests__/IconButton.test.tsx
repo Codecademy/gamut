@@ -36,7 +36,7 @@ describe('IconButton', () => {
   it('renders an inline tip', async () => {
     const { view } = renderView({});
 
-    view.getByRole('button', { description: 'This is a button to click' });
+    view.getByRole('tooltip', { name: 'This is a button to click' });
   });
 
   it('renders a floating tip', async () => {
@@ -48,6 +48,6 @@ describe('IconButton', () => {
 
     userEvent.hover(cta);
 
-    view.getByRole('tooltip');
+    view.getByRole('tooltip', { name: 'This is a button to click' });
   });
 });
