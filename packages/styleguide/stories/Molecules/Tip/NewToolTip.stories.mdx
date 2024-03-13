@@ -36,12 +36,12 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 A short tip triggered on hover and focus of an interactive element. Use a tooltip to further explain an element’s primary action, a disabled button state, or to display a description for an icon-only button.
 
-When using the NewToolTip component, the `id` prop is required to associate the tooltip with the interactive element and the interactive element's `aria-describedby` prop must be set to the `id` of the tooltip.
+When using the ToolTip component, the `id` prop is required to associate the tooltip with the interactive element and the interactive element's `aria-describedby` prop must be set to the `id` of the tooltip.
 
 When a Button is disabled with a tooltip, you must use the `aria-disabled` prop instead of `disabled` prop so the user can still focus the button and view the tooltip.
 
 <Canvas>
-  <Story name="NewToolTip">
+  <Story name="ToolTip">
     {(args) => (
       <FlexBox center py={64} m={24}>
         <NewToolTip id="fill-id" {...args}>
@@ -62,7 +62,7 @@ When a Button is disabled with a tooltip, you must use the `aria-disabled` prop 
 
 ## IconButtons and ToolTips
 
-When using an icon-only button, a tooltip displaying the label is required to provide context for the button's action. This is accessible directly through the `IconButton`'s required `tip` prop. You can adjust positioning and alignment of the tooltip by using the tipProps prop. An additonal label that is different from the tip should also be provided.
+When using an icon-only button, a tooltip displaying the label is required to provide context for the button's action. This is accessible directly through the `IconButton`'s required `tip` prop. You can adjust positioning and alignment of the tooltip by using the tipProps prop. An additional label that is different from the tip should also be provided.
 
 <Canvas>
   <Story name="InfoButton Tooltip ">
