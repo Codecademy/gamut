@@ -196,8 +196,8 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         boxShadow={
           showBarBorder ? `0.5px 0 0 0.5px ${theme.colors.navy}` : 'none'
         }
-        borderRadiusTopRight={flat ? borderRadius[size] : 'inherit'}
-        borderRadiusBottomRight={flat ? borderRadius[size] : 'inherit'}
+        borderRadiusTopRight={flat ? 0 : 'inherit'}
+        borderRadiusBottomRight={flat ? 0 : 'inherit'}
         width={`${Math.max(minimumPercent, percent)}%`}
         data-testid="progress-bar-bar"
       >
