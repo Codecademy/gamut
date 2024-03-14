@@ -69,7 +69,6 @@ const beakVariantStyles = createVariantsFromAlignments(
 
 export const beakVariants = variant({
   base: {
-    bg: tooltipBackgroundColor,
     position: 'absolute',
     transform: 'rotate(45deg)',
   },
@@ -82,7 +81,6 @@ export const beakSize = variant({
   defaultVariant: 'lrg',
   variants: {
     sml: {
-      bg: tooltipBackgroundColor,
       height: tooltipArrowHeight,
       width: tooltipArrowHeight,
     },
