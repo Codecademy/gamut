@@ -51,7 +51,7 @@ export const NewToolTip: React.FC<NewToolTipProps> = ({
           {info}
         </Text>
       )}
-      <Tip {...tipProps} type="tool">
+      <Tip {...tipProps} id={id} type="tool">
         {children}
       </Tip>
     </>
