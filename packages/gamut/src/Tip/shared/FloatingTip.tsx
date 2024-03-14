@@ -16,7 +16,6 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
   alignment,
   children,
   escapeKeyPressHandler,
-  id,
   info,
   isTipHidden,
   wrapperRef,
@@ -95,8 +94,8 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
         skipFocusTrap
         targetRef={ref}
         variant="secondary"
-        // The InfoTip has an aria-live region that is updated when the tip is shown or hidden, so we don't want this to be announced twice
-        aria-hidden={!isToolType}
+        // The InfoTip + FloatingToolTip have their own accessibility logic, so we don't want this to be announced twice
+        aria-hidden
       >
         <FlexBox
           alignItems={isToolType ? undefined : 'flex-start'}
@@ -104,7 +103,6 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
           ref={childRef}
           role={isToolType ? 'tooltip' : undefined}
           width="100%"
-          id={id}
         >
           {info}
         </FlexBox>

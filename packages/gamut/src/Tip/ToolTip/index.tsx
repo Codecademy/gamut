@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { WithChildrenProp } from '../..';
+import { Text } from '../../Typography';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
@@ -23,6 +24,7 @@ export const NewToolTip: React.FC<NewToolTipProps> = ({
   children,
   info,
   placement = tipDefaultProps.placement,
+  id,
   ...rest
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -32,7 +34,8 @@ export const NewToolTip: React.FC<NewToolTipProps> = ({
     setLoaded(true);
   }, []);
 
-  const Tip = loaded && placement === 'floating' ? FloatingTip : InlineTip;
+  const isFloating = placement === 'floating';
+  const Tip = loaded && isFloating ? FloatingTip : InlineTip;
 
   const tipProps = {
     alignment,
@@ -42,8 +45,15 @@ export const NewToolTip: React.FC<NewToolTipProps> = ({
   };
 
   return (
-    <Tip {...tipProps} type="tool">
-      {children}
-    </Tip>
+    <>
+      {isFloating && (
+        <Text screenreader id={id}>
+          {info}
+        </Text>
+      )}
+      <Tip {...tipProps} type="tool">
+        {children}
+      </Tip>
+    </>
   );
 };
