@@ -3,6 +3,7 @@ import { theme, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
 
+import { Box } from '../Box';
 import { Text } from '../Typography';
 
 const borderRadius = {
@@ -162,7 +163,7 @@ const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
   ${progressBarFlatVariants}
 `;
 
-const Bar = styled.div(progressBarForegroundVariants);
+const Bar = styled(Box)(progressBarForegroundVariants);
 
 const DisplayedPercent = styled.span`
   font-weight: bold;
@@ -192,15 +193,13 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       {Pattern && <Pattern width="100%" position="absolute" zIndex={0} />}
       <Bar
         variant={variant}
+        boxShadow={
+          showBarBorder ? `0.5px 0 0 0.5px ${theme.colors.navy}` : 'none'
+        }
+        borderRadiusTopRight={flat ? borderRadius[size] : 'inherit'}
+        borderRadiusBottomRight={flat ? borderRadius[size] : 'inherit'}
+        width={`${Math.max(minimumPercent, percent)}%`}
         data-testid="progress-bar-bar"
-        style={{
-          width: `${Math.max(minimumPercent, percent)}%`,
-          boxShadow: showBarBorder
-            ? `0.5px 0 0 0.5px ${theme.colors.navy}`
-            : 'none',
-          borderTopRightRadius: flat ? borderRadius[size] : 'inherit',
-          borderBottomRightRadius: flat ? borderRadius[size] : 'inherit',
-        }}
       >
         {['large', 'xl'].includes(size) && (
           <DisplayedPercent aria-hidden>{percent}%</DisplayedPercent>
