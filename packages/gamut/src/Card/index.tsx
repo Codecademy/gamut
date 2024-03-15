@@ -100,7 +100,7 @@ const CardWrapper = styled(Background)<CardWrapperProps>(
 export const Card: React.FC<CardProps> = ({ variant, ...rest }) => {
   // mode neeeds to be overwritten if it isn't passed in
   const [mode] = useColorModes();
-  const { mode: modeFromRest, ...otherRest } = rest;
+  const { mode: _, ...otherRest } = rest;
 
   if (!variant) {
     return (
