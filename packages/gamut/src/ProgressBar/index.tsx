@@ -3,7 +3,15 @@ import { theme, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
 
+import { Box } from '../Box';
 import { Text } from '../Typography';
+
+const borderRadius = {
+  small: '3px',
+  medium: '80px',
+  large: '9px',
+  xl: '18px',
+};
 
 export type ProgressBarProps = {
   className?: string;
@@ -29,10 +37,31 @@ export type ProgressBarProps = {
   variant: 'blue' | 'yellow' | 'default';
 
   /**
+   * Whether to flatten the bottom or top of the progress bar.
+   */
+  flat?: 'flat-bottom' | 'flat-top';
+
+  /**
    * Pattern component to use as a background.
    */
   pattern?: React.ComponentType<PatternProps>;
 };
+
+const progressBarFlatVariants = variant({
+  defaultVariant: 'default',
+  prop: 'flat',
+  variants: {
+    'flat-bottom': {
+      borderBottomRightRadius: 0,
+      borderBottomLeftRadius: 0,
+    },
+    'flat-top': {
+      borderTopRightRadius: 0,
+      borderTopLeftRadius: 0,
+    },
+    default: {},
+  },
+});
 
 const progressBarSizeVariants = variant({
   defaultVariant: 'small',
@@ -45,20 +74,20 @@ const progressBarSizeVariants = variant({
   variants: {
     small: {
       height: '6px',
-      borderRadius: '3px',
+      borderRadius: borderRadius.small,
     },
     medium: {
       height: '8px',
-      borderRadius: '80px',
+      borderRadius: borderRadius.medium,
     },
     large: {
       height: '18px',
-      borderRadius: '9px',
+      borderRadius: borderRadius.large,
       fontSize: 14,
     },
     xl: {
       height: '36px',
-      borderRadius: '18px',
+      borderRadius: borderRadius.xl,
     },
   },
 });
@@ -101,7 +130,6 @@ const progressBarForegroundVariants = variant({
     display: 'flex',
     transition: 'width 0.5s',
     position: 'relative',
-    borderRadius: 'inherit',
   },
   variants: {
     blue: {
@@ -119,7 +147,10 @@ const progressBarForegroundVariants = variant({
   },
 });
 
-type ProgressBarElementProps = Pick<ProgressBarProps, 'variant' | 'size'>;
+type ProgressBarElementProps = Pick<
+  ProgressBarProps,
+  'variant' | 'size' | 'flat'
+>;
 
 type ProgressBarElementWrapperProps = ProgressBarElementProps & {
   backgroundOverride: 'pattern' | 'none';
@@ -129,9 +160,10 @@ const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
   ${progressBarBackgroundVariants};
   ${progressBarSizeVariants};
   ${progressBarBackgroundOverride};
+  ${progressBarFlatVariants}
 `;
 
-const Bar = styled.div(progressBarForegroundVariants);
+const Bar = styled(Box)(progressBarForegroundVariants);
 
 const DisplayedPercent = styled.span`
   font-weight: bold;
@@ -141,6 +173,7 @@ const DisplayedPercent = styled.span`
 `;
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
+  flat,
   minimumPercent = 0,
   percent,
   pattern: Pattern,
@@ -151,6 +184,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   return (
     <ProgressBarWrapper
       aria-live="polite"
+      flat={flat}
       size={size}
       variant={variant}
       backgroundOverride={Pattern ? 'pattern' : 'none'}
@@ -159,13 +193,13 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       {Pattern && <Pattern width="100%" position="absolute" zIndex={0} />}
       <Bar
         variant={variant}
+        boxShadow={
+          showBarBorder ? `0.5px 0 0 0.5px ${theme.colors.navy}` : 'none'
+        }
+        borderRadiusTopRight={flat ? 0 : 'inherit'}
+        borderRadiusBottomRight={flat ? 0 : 'inherit'}
+        width={`${Math.max(minimumPercent, percent)}%`}
         data-testid="progress-bar-bar"
-        style={{
-          width: `${Math.max(minimumPercent, percent)}%`,
-          boxShadow: showBarBorder
-            ? `0.5px 0 0 0.5px ${theme.colors.navy}`
-            : 'none',
-        }}
       >
         {['large', 'xl'].includes(size) && (
           <DisplayedPercent aria-hidden>{percent}%</DisplayedPercent>
