@@ -30,7 +30,6 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     status: 'updating',
   }}
   args={{
-    info: `Tooltip`,
   }}
 />
 
@@ -42,9 +41,9 @@ When a Button is disabled with a tooltip, you must use the `aria-disabled` prop 
 
 <Canvas>
   <Story name="ToolTip">
-    {(args) => (
+    {() => (
       <FlexBox center py={64} m={24}>
-        <NewToolTip id="fill-id" {...args}>
+        <NewToolTip id="fill-id" info="Tooltip">
           <FillButton
             aria-describedby="fill-id"
             aria-disabled
@@ -106,8 +105,7 @@ If using an inline placement, you will have access to the `zIndex` prop to adjus
     {() => (
       <FlexBox center flexDirection="column" py={64} m={24}>
         <IconButton
-          aria-label="No"
-          tip="No, this is not helpful"
+          tip="Click me to vote no"
           icon={ThumbsDownIcon}
           tipProps={{ alignment: 'bottom-center' }}
         />
@@ -115,8 +113,7 @@ If using an inline placement, you will have access to the `zIndex` prop to adjus
           I will not be behind the tooltip, sad + unreadable
         </Box>
         <IconButton
-          aria-label="Yes"
-          tip="Yes, this is helpful"
+          tip="Click me to vote yes"
           icon={ThumbsUpIcon}
           tipProps={{ alignment: 'bottom-center', zIndex: 5 }}
         />
