@@ -17,22 +17,46 @@ const IconButtonBase = createButtonComponent(
 
 export type IconButtonProps = ComponentProps<typeof IconButtonBase> &
   IconComponentType & {
-    'aria-label': string;
+    'aria-label'?: string;
     tip: string;
-    tipProps?: Omit<NewToolTipProps, 'info' | 'id' | 'children'>;
+    tipProps?: Omit<NewToolTipProps, 'info' | 'id' | 'children' | 'hasLabel'>;
   };
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
-  ({ icon: Icon, tip, tipProps, variant = 'secondary', ...props }, ref) => {
+  (
+    {
+      'aria-label': ariaLabel,
+      icon: Icon,
+      tip,
+      tipProps,
+      variant = 'secondary',
+      ...props
+    },
+    ref
+  ) => {
     const tipId = useId() ?? 'icon-button-tip';
 
+    const firstWord = tip.split(' ')[0];
+
+    const hasRepetitiveLabel =
+      ariaLabel?.toLowerCase() === firstWord.toLowerCase() || !ariaLabel;
+
+    const trueAriaLabel = ariaLabel ?? firstWord;
+
     return (
-      <NewToolTip info={tip} id={tipId} {...(tipProps as any)}>
+      <NewToolTip
+        info={tip}
+        id={tipId}
+        hasRepetitiveLabel={hasRepetitiveLabel}
+        {...(tipProps as any)}
+        l
+      >
         <IconButtonBase
           {...props}
           variant={variant}
           ref={ref}
           aria-describedby={tipId}
+          aria-label={trueAriaLabel}
         >
           <Icon
             width="calc(100% - 14px)"

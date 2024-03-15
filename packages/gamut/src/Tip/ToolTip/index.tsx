@@ -17,6 +17,10 @@ export type NewToolTipProps = TipBaseProps &
      * Required for accessiblity - the same id needs to be passed to the `aria-describedby` attribute of the element that the tooltip is describing.
      */
     id: string;
+    /**
+     * If your button has a label that is repeated in the first word of the tooltip, you can set this to `true` to avoid repetition. If your info tip is not a string, you cannot do this.
+     */
+    hasRepetitiveLabel?: boolean;
   };
 
 export const NewToolTip: React.FC<NewToolTipProps> = ({
@@ -25,6 +29,7 @@ export const NewToolTip: React.FC<NewToolTipProps> = ({
   info,
   placement = tipDefaultProps.placement,
   id,
+  hasRepetitiveLabel,
   ...rest
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -36,6 +41,10 @@ export const NewToolTip: React.FC<NewToolTipProps> = ({
 
   const isFloating = placement === 'floating';
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
+  const adjustedInfo =
+    hasRepetitiveLabel && typeof info === 'string'
+      ? info.split(' ').slice(1).join(' ')
+      : info;
 
   const tipProps = {
     alignment,
@@ -46,12 +55,10 @@ export const NewToolTip: React.FC<NewToolTipProps> = ({
 
   return (
     <>
-      {isFloating && (
-        <Text screenreader id={id}>
-          {info}
-        </Text>
-      )}
-      <Tip {...tipProps} id={id} type="tool">
+      <Text screenreader id={id} role="tooltip">
+        {adjustedInfo}
+      </Text>
+      <Tip {...tipProps} type="tool">
         {children}
       </Tip>
     </>

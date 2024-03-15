@@ -69,7 +69,6 @@ When using an icon-only button, a tooltip displaying the label is required to pr
     {() => (
       <FlexBox center py={64} m={24}>
         <IconButton
-          aria-label="Prettier"
           tip="Beautify your code"
           icon={SparkleIcon}
           tipProps={{ alignment: 'bottom-center' }}
@@ -89,8 +88,8 @@ This `floating` variant should only be used when it as needed.
   <Story name="Floating Placement ToolTip">
     {() => (
       <IconButton
-        aria-label="Smiley star eyes"
-        tip="I am floating, spooky"
+        aria-label="Wonder"
+        tip="Wonder at the majesty of the universe"
         icon={SmileyStarEyesIcon}
         tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
       />
@@ -107,8 +106,8 @@ If using an inline placement, you will have access to the `zIndex` prop to adjus
     {() => (
       <FlexBox center flexDirection="column" py={64} m={24}>
         <IconButton
-          aria-label="Thumbs down"
-          tip="I am inline, cool"
+          aria-label="No"
+          tip="No, this is not helpful"
           icon={ThumbsDownIcon}
           tipProps={{ alignment: 'bottom-center' }}
         />
@@ -116,8 +115,8 @@ If using an inline placement, you will have access to the `zIndex` prop to adjus
           I will not be behind the tooltip, sad + unreadable
         </Box>
         <IconButton
-          aria-label="Thumbs up"
-          tip="I am inline, cool"
+          aria-label="Yes"
+          tip="Yes, this is helpful"
           icon={ThumbsUpIcon}
           tipProps={{ alignment: 'bottom-center', zIndex: 5 }}
         />

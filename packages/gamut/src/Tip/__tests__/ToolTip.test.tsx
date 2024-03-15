@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 import { NewToolTipMock } from './mocks';
 
+const ariaLabel = 'Click';
 const info = 'I am information';
 const onClick = jest.fn();
 
@@ -10,10 +11,26 @@ const renderView = setupRtl(NewToolTipMock, {
   info,
   id: 'info-id',
   onClick,
+  hasRepetitiveLabel: false,
 });
 
 describe('ToolTip', () => {
   describe('inline placement', () => {
+    it('has an accessible tooltip', () => {
+      const { view } = renderView({});
+
+      view.getByRole('tooltip', { name: info });
+    });
+    it('removes the label text when hasLabel is true', () => {
+      const { view } = renderView({
+        'aria-label': ariaLabel,
+        hasRepetitiveLabel: true,
+        info: `${ariaLabel}, ${info}`,
+      });
+
+      view.getByRole('button', { name: 'Click' });
+      view.getByRole('tooltip', { name: info });
+    });
     it('calls onClick when clicked', () => {
       const { view } = renderView({});
 
@@ -22,24 +39,41 @@ describe('ToolTip', () => {
       expect(onClick).toHaveBeenCalled();
     });
   });
-  describe('floating placement', () => {
-    it('shows the tip when it is hovered over', () => {
-      const { view } = renderView({
-        placement: 'floating',
-      });
+});
+describe('floating placement', () => {
+  it('has an accessible tooltip', () => {
+    const { view } = renderView({ placement: 'floating' });
 
-      expect(view.queryByRole('tooltip')).toBeNull();
-
-      userEvent.hover(view.getByRole('button'));
-
-      view.getByRole('tooltip');
+    view.getByRole('tooltip', { name: info });
+  });
+  it('removes the label text when hasRepetitiveLabel is true', () => {
+    const { view } = renderView({
+      'aria-label': ariaLabel,
+      placement: 'floating',
+      hasRepetitiveLabel: true,
+      info: `${ariaLabel}, ${info}`,
     });
-    it('calls onClick when clicked', () => {
-      const { view } = renderView({});
 
-      userEvent.click(view.getByRole('button'));
-
-      expect(onClick).toHaveBeenCalled();
+    view.getByRole('button', { name: 'Click' });
+    view.getByRole('tooltip', { name: info });
+  });
+  it('shows the tip when it is hovered over', () => {
+    const { view } = renderView({
+      placement: 'floating',
     });
+
+    expect(view.queryAllByText(info).length).toBe(1);
+
+    userEvent.hover(view.getByRole('button'));
+
+    view.getByRole('tooltip');
+    expect(view.queryAllByText(info).length).toBe(2);
+  });
+  it('calls onClick when clicked', () => {
+    const { view } = renderView({});
+
+    userEvent.click(view.getByRole('button'));
+
+    expect(onClick).toHaveBeenCalled();
   });
 });
