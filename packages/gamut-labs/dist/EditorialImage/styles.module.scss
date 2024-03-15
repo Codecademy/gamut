@@ -1,0 +1,36 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.imageContainer {
+  position: relative;
+  width: calc(100% - 1rem);
+  @include screen-size-gte($grid-xs-min) {
+    width: inherit;
+  }
+}
+
+.image {
+  width: 100%;
+  position: relative;
+}
+
+.imageContainer::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 2rem;
+  background-image: url("../assets/dots.svg");
+  background-repeat: repeat;
+  height: calc(100% - 1rem);
+  width: 100%;
+  z-index: 0;
+  filter: invert(19%) sepia(50%) saturate(3200%) hue-rotate(-24deg)
+    brightness(95%) contrast(97%);
+}
+
+.caption {
+  color: $color-white;
+  opacity: 0.7;
+  font-weight: bold;
+  margin: 1rem 1rem 0;
+  display: block;
+}
