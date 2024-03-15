@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.14.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.13.6...@codecademy/gamut@55.14.0) (2024-03-15)
+
+### Features
+
+- **ProgressBar:** adds flat prop to progressBar ([df8f6f6](https://github.com/Codecademy/gamut/commit/df8f6f6c0a3e87f2c61a817f4849afb3b5044350))
+
 ### [55.13.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.13.5...@codecademy/gamut@55.13.6) (2024-03-11)
 
 **Note:** Version bump only for package @codecademy/gamut
