@@ -40,7 +40,7 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
           alignment={alignment.includes('center') ? 'centered' : 'aligned'}
           color="currentColor"
           id={id}
-          zIndex={zIndex ? zIndex + 1 : 2}
+          zIndex="auto"
         >
           {info}
         </TipBody>

@@ -1,10 +1,6 @@
 import { states, variant } from '@codecademy/gamut-styles';
 
-import {
-  tooltipArrowHeight,
-  tooltipBackgroundColor,
-  toolTipBodyCss,
-} from '../Tip/shared/styles';
+import { tooltipArrowHeight, toolTipBodyCss } from '../Tip/shared/styles';
 import { createVariantsFromAlignments } from '../Tip/shared/utils';
 import {
   createBeakVariantFromAlignment,
