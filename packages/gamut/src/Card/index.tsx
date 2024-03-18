@@ -43,7 +43,7 @@ const DynamicCardWrapper = styled(Box)<CardWrapperProps>(({ mode, ...props }) =>
           boxShadow: `-8px 8px 0 currentColor`,
         },
       },
-      outline: outlineStyles(mode), // Use the function with mode
+      outline: outlineStyles(mode),
     },
   })(props)
 );
