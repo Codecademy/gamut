@@ -100,6 +100,7 @@ const CardWrapper = styled(Background)<CardWrapperProps>(
 export const Card: React.FC<CardProps> = ({ variant, ...rest }) => {
   // mode neeeds to be overwritten if it isn't passed in
   const [mode] = useColorModes();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { mode: _, ...otherRest } = rest;
 
   if (!variant) {
