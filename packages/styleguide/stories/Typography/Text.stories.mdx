@@ -183,7 +183,9 @@ Text has some special props with common use cases to make your life easier.
         </Column>
         <Column size={9}>
           <Text screenreader={variant}>
-            { variant ? 'Visible only to screenreaders' : 'When set to "false", this text is visible to non-screenreaders.' }
+            {variant
+              ? 'Visible only to screenreaders'
+              : 'When set to "false", this text is visible to non-screenreaders.'}
           </Text>
         </Column>
       </Fragment>
