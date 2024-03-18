@@ -39,7 +39,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
     const firstWord = tip?.split(' ')[0] ?? tip;
 
     const hasRepetitiveLabel =
-      ariaLabel?.toLowerCase() === firstWord.toLowerCase() || !ariaLabel;
+      ariaLabel?.toLowerCase() === firstWord?.toLowerCase() || !ariaLabel;
 
     const trueAriaLabel = ariaLabel ?? firstWord;
 
