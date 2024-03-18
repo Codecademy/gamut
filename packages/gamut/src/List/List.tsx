@@ -23,7 +23,7 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
   /** A custom message to override the default empty message  */
   emptyMessage?: React.ReactNode;
   /**
-   * @deprecated Use overflow instead
+   * @deprecated Use overflow instead!
    * Whether the List container should have overflow hidden.
    */
   overflowHidden?: boolean;
