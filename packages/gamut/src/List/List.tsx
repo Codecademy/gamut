@@ -27,7 +27,6 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
    * Whether the List container should have overflow hidden.
    */
   overflowHidden?: boolean;
-  /** An overflow css property the List container should have. */
   overflow?: BoxProps['overflow'];
 }
 
