@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.14.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.13.0...@codecademy/styleguide@66.14.0) (2024-03-15)
+
+### Features
+
+- **ProgressBar:** adds flat prop to progressBar ([df8f6f6](https://github.com/Codecademy/gamut/commit/df8f6f6c0a3e87f2c61a817f4849afb3b5044350))
+
+## [66.13.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.12.4...@codecademy/styleguide@66.13.0) (2024-03-11)
+
+### Features
+
+- **Icons:** add TikTokIcon ([fc5a378](https://github.com/Codecademy/gamut/commit/fc5a37858f469dcdd727c96fe3c13d8b7ecc2651))
+
+### [66.12.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.12.3...@codecademy/styleguide@66.12.4) (2024-03-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.12.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.12.2...@codecademy/styleguide@66.12.3) (2024-03-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [66.12.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.12.1...@codecademy/styleguide@66.12.2) (2024-02-29)
 
 **Note:** Version bump only for package @codecademy/styleguide

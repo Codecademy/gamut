@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.14.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.13.6...@codecademy/gamut@55.14.0) (2024-03-15)
+
+### Features
+
+- **ProgressBar:** adds flat prop to progressBar ([df8f6f6](https://github.com/Codecademy/gamut/commit/df8f6f6c0a3e87f2c61a817f4849afb3b5044350))
+
+### [55.13.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.13.5...@codecademy/gamut@55.13.6) (2024-03-11)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.13.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.13.4...@codecademy/gamut@55.13.5) (2024-03-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.13.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.13.3...@codecademy/gamut@55.13.4) (2024-03-01)
+
+### Bug Fixes
+
+- maintain open state when hovering over 'floating' tooltip content ([cde4828](https://github.com/Codecademy/gamut/commit/cde48283dac4b6a994cf3529bceef5aafcb759f1))
+
 ### [55.13.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.13.2...@codecademy/gamut@55.13.3) (2024-02-29)
 
 **Note:** Version bump only for package @codecademy/gamut
