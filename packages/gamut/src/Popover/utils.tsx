@@ -40,10 +40,12 @@ const popoverBelowSml = {
 
 const beakRightSml = {
   right: '1.5rem',
+  bg: tooltipBackgroundColor,
 };
 
 const beakLeftSml = {
   left: '1.5rem',
+  bg: tooltipBackgroundColor,
 };
 
 const beakCenterSml = {
@@ -58,7 +60,7 @@ const beakCenterSmlBelow = {
   backgroundImage: `linear-gradient(to bottom right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
 };
 
-const beakCenterSmlBg = {
+const beakBg = {
   background: tooltipBackgroundColor,
 };
 
@@ -79,8 +81,6 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
         styleObject = { ...beakCenterSmlAbove, ...styleObject };
       } else if (alignment.includes('below')) {
         styleObject = { ...beakCenterSmlBelow, ...styleObject };
-      } else {
-        styleObject = { ...beakCenterSmlBg, ...styleObject };
       }
     } else {
       styleObject = { ...beakLeftSml, ...styleObject };
