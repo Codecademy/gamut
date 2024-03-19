@@ -60,10 +60,6 @@ const beakCenterSmlBelow = {
   backgroundImage: `linear-gradient(to bottom right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
 };
 
-const beakBg = {
-  background: tooltipBackgroundColor,
-};
-
 export const createBeakVariantFromAlignment = (alignment: string) => {
   let styleObject = {};
 
