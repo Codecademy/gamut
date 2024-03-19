@@ -120,7 +120,10 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 
   if ((!isOpen || !targetRef) && !animation) return null;
-
+  const alignment =
+    (variant === 'primary' || beak) && beak !== 'center'
+      ? 'aligned'
+      : 'centered';
   const contents = (
     <PopoverContainer
       align={align}
@@ -133,14 +136,18 @@ export const Popover: React.FC<PopoverProps> = ({
       tabIndex={-1}
     >
       <RaisedDiv
-        alignment={
-          (variant === 'primary' || beak) && beak !== 'center'
-            ? 'aligned'
-            : 'centered'
-        }
+        alignment={alignment}
         outline={outline ? 'outline' : 'boxShadow'}
         variant={variant}
-        widthRestricted={widthRestricted}
+        widthRestricted={
+          variant === 'secondary'
+            ? alignment === 'centered'
+              ? 'centered'
+              : 'aligned'
+            : widthRestricted
+            ? 'popover'
+            : 'default'
+        }
       >
         {beak && (
           <Beak

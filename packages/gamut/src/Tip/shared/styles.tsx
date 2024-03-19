@@ -78,6 +78,10 @@ export const tooltipVariantStyles = createVariantsFromAlignments(
   createToolTipVariantFromAlignment
 );
 
+const centeredBodyStyles = { m: 'auto', p: 4, textAlign: 'center' } as const;
+
+const alignedBodyStyles = { p: 16 } as const;
+
 export const toolTipAlignmentVariants = variant({
   prop: 'alignment',
   base: {
@@ -103,18 +107,48 @@ export const toolTipAlignmentVariants = variant({
   variants: tooltipVariantStyles,
 });
 
-export const toolTipBodyAlignments = variant({
+export const inlineToolTipBodyAlignments = variant({
   prop: 'alignment',
   variants: {
     centered: {
-      m: 'auto',
-      p: 4,
-      textAlign: 'center',
+      ...centeredBodyStyles,
       ...centerWidths,
     },
     aligned: {
-      p: 16,
+      ...alignedBodyStyles,
       ...alignedMaxWidth,
+    },
+  },
+});
+
+export const popoverToolTipBodyAlignments = variant({
+  prop: 'alignment',
+  variants: {
+    centered: {
+      ...centeredBodyStyles,
+    },
+    aligned: {
+      ...alignedBodyStyles,
+    },
+  },
+});
+
+export const toolTipWidthRestrictions = variant({
+  prop: 'widthRestricted',
+  variants: {
+    centered: {
+      ...centerWidths,
+    },
+    aligned: {
+      ...alignedMaxWidth,
+    },
+    default: {
+      minWidth: undefined,
+      maxWidth: undefined,
+    },
+    popover: {
+      minWidth: '4rem',
+      maxWidth: '16rem',
     },
   },
 });

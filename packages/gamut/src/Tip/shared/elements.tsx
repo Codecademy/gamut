@@ -1,14 +1,12 @@
-import { css, variant } from '@codecademy/gamut-styles';
+import { css } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { Box, FlexBox } from '../../Box';
+import { Box } from '../../Box';
 import { Selectors } from '../../ButtonBase/ButtonBase';
 import {
-  alignedMaxWidth,
-  centerWidths,
+  inlineToolTipBodyAlignments,
   toolTipAlignmentVariants,
-  toolTipBodyAlignments,
   toolTipBodyCss,
 } from './styles';
 
@@ -49,17 +47,6 @@ export const TargetContainer = styled(Box)(
 export interface ToolTipContainerProps
   extends StyleProps<typeof toolTipAlignmentVariants> {}
 
-export const TipBody = styled(Box)<StyleProps<typeof toolTipBodyAlignments>>(
-  css({ ...toolTipBodyCss }),
-  toolTipBodyAlignments
-);
-
-export const PopoverTipWrapper = styled(FlexBox)(
-  variant({
-    prop: 'type',
-    variants: {
-      info: { ...alignedMaxWidth },
-      tool: { ...centerWidths },
-    },
-  })
-);
+export const TipBody = styled(Box)<
+  StyleProps<typeof inlineToolTipBodyAlignments>
+>(css({ ...toolTipBodyCss }), inlineToolTipBodyAlignments);
