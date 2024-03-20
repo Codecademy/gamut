@@ -5,6 +5,7 @@ import { useMeasure } from 'react-use'; // or just 'react-use-measure'
 import { Box, FlexBox } from '../../Box';
 import { Popover } from '../../Popover';
 import { TargetContainer } from './elements';
+import { narrowWidth } from './styles';
 import { TipPlacementComponentProps } from './types';
 import { getPopoverAlignment } from './utils';
 
@@ -20,6 +21,7 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
   isTipHidden,
   wrapperRef,
   type,
+  narrow,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [childRef, { width: tipWidth }] = useMeasure<HTMLDivElement>();
@@ -101,7 +103,7 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
           alignItems={isToolType ? undefined : 'flex-start'}
           flexDirection="column"
           ref={childRef}
-          width="100%"
+          width={narrow ? narrowWidth : '100%'}
         >
           {info}
         </FlexBox>

@@ -25,6 +25,10 @@ export type TipStaticAlignment = typeof tipAlignmentArray[number];
 export interface TipNewBaseProps {
   info: string | ReactNode;
   placement?: 'floating' | 'inline';
+  /**
+   * Forces the tooltip to be its narrowest width. For use along the edges of the page or other tight spaces.
+   */
+  narrow?: boolean;
 }
 export interface TipInlineProps extends TipNewBaseProps {
   placement?: 'inline';

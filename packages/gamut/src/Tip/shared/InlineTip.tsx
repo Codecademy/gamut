@@ -1,6 +1,7 @@
 import { InfoTipContainer } from '../InfoTip/styles';
 import { ToolTipContainer } from '../ToolTip/elements';
 import { TargetContainer, TipBody, TipWrapper } from './elements';
+import { narrowWidth } from './styles';
 import { TipPlacementComponentProps } from './types';
 
 export const InlineTip: React.FC<TipPlacementComponentProps> = ({
@@ -11,6 +12,7 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
   info,
   isTipHidden,
   type,
+  narrow,
   wrapperRef,
   zIndex,
 }) => {
@@ -40,6 +42,7 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
           alignment={alignment.includes('center') ? 'centered' : 'aligned'}
           color="currentColor"
           id={id}
+          width={narrow ? narrowWidth : undefined}
           zIndex="auto"
         >
           {info}

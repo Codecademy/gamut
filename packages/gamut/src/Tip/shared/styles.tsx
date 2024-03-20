@@ -15,6 +15,7 @@ export const tooltipBackgroundColor = `background-contrast`;
 export const tooltipArrowHeight = `1rem`;
 const containerOffsetVertical = 12;
 
+export const narrowWidth = 64;
 export const centerWidths = { minWidth: 64, maxWidth: 128 } as const;
 export const alignedMaxWidth = { width: 256 } as const;
 
