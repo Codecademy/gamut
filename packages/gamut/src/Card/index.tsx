@@ -22,30 +22,31 @@ const outlineStyles = (mode: ColorModes) => ({
   },
 });
 
-const DynamicCardWrapper = styled(Box)<CardWrapperProps>(({ mode, ...props }) =>
-  variant({
-    prop: 'shadow',
-    base: {
-      position: 'relative',
-      boxShadow: `0px 0px 0 currentColor`,
-      transition: 'box-shadow 200ms ease, transform 200ms ease',
-    },
-    variants: {
-      small: {
-        '&:hover': {
-          transform: 'translate(2px, -2px)',
-          boxShadow: `-4px 4px 0 currentColor`,
-        },
+const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
+  ({ mode = 'light', ...props }) =>
+    variant({
+      prop: 'shadow',
+      base: {
+        position: 'relative',
+        boxShadow: `0px 0px 0 currentColor`,
+        transition: 'box-shadow 200ms ease, transform 200ms ease',
       },
-      medium: {
-        '&:hover': {
-          transform: 'translate(4px, -4px)',
-          boxShadow: `-8px 8px 0 currentColor`,
+      variants: {
+        small: {
+          '&:hover': {
+            transform: 'translate(2px, -2px)',
+            boxShadow: `-4px 4px 0 currentColor`,
+          },
         },
+        medium: {
+          '&:hover': {
+            transform: 'translate(4px, -4px)',
+            boxShadow: `-8px 8px 0 currentColor`,
+          },
+        },
+        outline: outlineStyles(mode),
       },
-      outline: outlineStyles(mode),
-    },
-  })(props)
+    })(props)
 );
 
 const shadowVariants = (mode: ColorModes) =>
@@ -80,12 +81,12 @@ export interface CardProps
 
 interface CardWrapperProps {
   outline?: boolean;
-  mode: ColorModes;
+  mode?: ColorModes;
   shadow?: 'small' | 'medium' | 'outline';
 }
 
 const CardWrapper = styled(Background)<CardWrapperProps>(
-  ({ mode, ...props }) => ({
+  ({ mode = 'light', ...props }) => ({
     ...shadowVariants(mode)(props),
     ...system.states({
       outline: {
