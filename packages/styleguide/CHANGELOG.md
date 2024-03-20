@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.14.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.14.0...@codecademy/styleguide@66.14.1) (2024-03-18)
+
+### Bug Fixes
+
+- **MenuItem:** outline styles blocking clickTarget ([4bce850](https://github.com/Codecademy/gamut/commit/4bce850857428074bcde9321a9fbc82fb9c3c4b2))
+
 ## [66.14.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.13.0...@codecademy/styleguide@66.14.0) (2024-03-15)
 
 ### Features

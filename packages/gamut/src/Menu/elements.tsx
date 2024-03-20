@@ -95,7 +95,7 @@ const interactiveVariants = system.variant({
       border: 2,
       borderColor: 'primary',
       opacity: 0,
-      zIndex: 0,
+      zIndex: -1,
     },
     [MenuItemSelectors.OUTLINE_FOCUS_VISIBLE]: {
       opacity: 1,
