@@ -82,7 +82,7 @@ export interface CardProps
 interface CardWrapperProps {
   outline?: boolean;
   mode?: ColorModes;
-  shadow?: 'small' | 'medium' | 'outline';
+  shadow?: 'small' | 'medium' | 'outline' | false;
 }
 
 const CardWrapper = styled(Background)<CardWrapperProps>(
