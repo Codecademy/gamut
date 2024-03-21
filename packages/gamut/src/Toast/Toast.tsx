@@ -103,7 +103,6 @@ export const Toast: React.FC<ToastProps> = ({
         </Text>
       </Box>
       <IconButton
-        aria-label="Close"
         onClick={onClose}
         size="small"
         variant="secondary"
