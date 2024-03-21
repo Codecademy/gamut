@@ -39,7 +39,7 @@ When using the ToolTip component, the `id` prop is required to associate the too
 When a Button is disabled with a tooltip, you must use the `aria-disabled` prop instead of `disabled` prop so the user can still focus the button and view the tooltip.
 
 <Canvas>
-  <Story name="ToolTip">
+  <Story name="NewToolTip">
     {() => (
       <FlexBox center py={64} m={24}>
         <NewToolTip id="fill-id" info="Tooltip">
@@ -63,7 +63,7 @@ When a Button is disabled with a tooltip, you must use the `aria-disabled` prop 
 When using an icon-only button, a tooltip displaying the label is required to provide context for the button's action. This is accessible directly through the `IconButton`'s required `tip` prop. You can adjust positioning and alignment of the tooltip by using the tipProps prop. An additional label that is different from the tip should also be provided.
 
 <Canvas>
-  <Story name="InfoButton Tooltip ">
+  <Story name="InfoButton Tooltip">
     {() => (
       <FlexBox center py={64} m={24}>
         <IconButton

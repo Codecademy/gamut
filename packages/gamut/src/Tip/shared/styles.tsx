@@ -57,13 +57,18 @@ export const bottomCenterStylesAfter = {
   backgroundImage: `linear-gradient(to bottom right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
 };
 
+export const alignedStylesAfter = { bg: tooltipBackgroundColor };
+
 export const leftStyles = {
   ...alignedMaxWidth,
   justifyContent: 'flex-end',
   left: 'calc(50% - 14rem)',
 } as const;
 
-export const leftStylesAfter = { right: '1.5rem' } as const;
+export const leftStylesAfter = {
+  right: '1.5rem',
+  ...alignedStylesAfter,
+} as const;
 
 export const rightStyles = {
   ...alignedMaxWidth,
@@ -72,6 +77,7 @@ export const rightStyles = {
 
 export const rightStylesAfter = {
   left: '1.5rem',
+  ...alignedStylesAfter,
 } as const;
 
 export const tooltipVariantStyles = createVariantsFromAlignments(
