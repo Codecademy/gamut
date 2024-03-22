@@ -9,6 +9,7 @@ import {
   PatternedPopoversGrid,
   PopoverExample,
   PopoverWithoutFocus,
+  PositionPopoverGrid,
 } from './Popover.examples';
 
 <Meta
@@ -70,6 +71,18 @@ The outline color is theme.colors.secondary so in Dark Mode, the outline will be
   <Story name="Outline">
     {(args) => {
       return <PopoverExample {...args} outline />;
+    }}
+  </Story>
+</Canvas>
+
+## Position
+
+Using the position prop, you can add a position (`above` or `below`) to the popover. It will be `below` by default.
+
+<Canvas>
+  <Story name="Position">
+    {(args) => {
+      return <PositionPopoverGrid {...args}  />;
     }}
   </Story>
 </Canvas>
