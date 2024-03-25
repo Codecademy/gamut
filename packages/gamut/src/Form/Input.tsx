@@ -80,6 +80,9 @@ const InputElement = styled.input<StyledInputProps>`
   ${conditionalStyles}
   text-indent: 0;
   padding-right: ${(props) => (props.icon ? `2.3rem` : `initial`)};
+  &::placeholder {
+    color: teal;
+  }
 `;
 
 const inputStates = {
