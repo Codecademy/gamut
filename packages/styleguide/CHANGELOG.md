@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.14.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.14.2...@codecademy/styleguide@66.14.3) (2024-03-21)
+
+### Bug Fixes
+
+- **popover:** add position to popover stories ([dd872c5](https://github.com/Codecademy/gamut/commit/dd872c5a51471dedd7b351bfe9e6852091b0667a))
+
+### [66.14.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.14.1...@codecademy/styleguide@66.14.2) (2024-03-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.14.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.14.0...@codecademy/styleguide@66.14.1) (2024-03-18)
+
+### Bug Fixes
+
+- **MenuItem:** outline styles blocking clickTarget ([4bce850](https://github.com/Codecademy/gamut/commit/4bce850857428074bcde9321a9fbc82fb9c3c4b2))
+
 ## [66.14.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.13.0...@codecademy/styleguide@66.14.0) (2024-03-15)
 
 ### Features
