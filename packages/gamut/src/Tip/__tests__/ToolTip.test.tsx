@@ -31,6 +31,16 @@ describe('ToolTip', () => {
       view.getByRole('button', { name: 'Click' });
       view.getByRole('tooltip', { name: info });
     });
+    it('hides ariaTooltip when there is no text other than the aria-label', () => {
+      const { view } = renderView({
+        'aria-label': ariaLabel,
+        hasRepetitiveLabel: true,
+        info: `${ariaLabel}`,
+      });
+
+      view.getByRole('button', { name: 'Click' });
+      expect(view.queryByRole('tooltip')).toBeNull();
+    });
     it('calls onClick when clicked', () => {
       const { view } = renderView({});
 

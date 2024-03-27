@@ -47,6 +47,10 @@ export const NewToolTip: React.FC<NewToolTipProps> = ({
       : info;
   }, [info, hasRepetitiveLabel]);
 
+  // this should only happen if the button has an aria-label that is the same is and ONLY the content of the tooltip
+
+  const shouldRenderAriaTip = adjustedInfo !== '';
+
   const tipProps = {
     alignment,
     info,
@@ -56,9 +60,11 @@ export const NewToolTip: React.FC<NewToolTipProps> = ({
 
   return (
     <>
-      <Text screenreader id={id} role="tooltip">
-        {adjustedInfo ?? 'Tooltip content is currently loading...'}
-      </Text>
+      {shouldRenderAriaTip && (
+        <Text screenreader id={id} role="tooltip">
+          {adjustedInfo}
+        </Text>
+      )}
       <Tip {...tipProps} type="tool">
         {children}
       </Tip>
