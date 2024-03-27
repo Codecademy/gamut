@@ -1,23 +1,23 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
 
-import { Box, FlexBox } from '../Box';
-import { Popover } from '../Popover';
-import { TargetContainer } from './elements';
-import { tooltipDefaultProps, ToolTipPlacementComponentProps } from './types';
+import { Box, FlexBox } from '../../Box';
+import { Popover } from '../../Popover';
+import { TargetContainer } from '../shared/elements';
+import { escapeKeyPressHandler, getPopoverAlignment } from '../shared/utils';
 import {
-  escapeKeyPressHandler,
-  getAccessibilityProps,
-  getPopoverAlignment,
-} from './utils';
+  deprecatedTooltipDefaultProps,
+  DeprecatedToolTipPlacementComponentProps,
+} from './types';
+import { getDeprecatedAccessibilityProps } from './utils';
 
-export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
-  alignment = tooltipDefaultProps.alignment,
+export const DeprecatedFloatingToolTip: React.FC<DeprecatedToolTipPlacementComponentProps> = ({
+  alignment = deprecatedTooltipDefaultProps.alignment,
   children,
   focusable,
   id,
   target,
-  widthMode = tooltipDefaultProps.widthMode,
+  widthMode = deprecatedTooltipDefaultProps.widthMode,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
@@ -30,11 +30,12 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
     }
   }, []);
 
-  const accessibilityProps = getAccessibilityProps({
+  const accessibilityProps = getDeprecatedAccessibilityProps({
     focusable,
     id,
     isOpenPopoverToolTip: isOpen,
   });
+
   const popoverAlignments = getPopoverAlignment({ alignment });
 
   const handleShowHideAction = ({

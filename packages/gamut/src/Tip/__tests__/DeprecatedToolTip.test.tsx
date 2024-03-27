@@ -1,11 +1,11 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 
-import { ToolTip } from '..';
+import { DeprecatedToolTip } from '../DeprecatedToolTip';
 
 const children = 'Hello';
 
-const renderView = setupRtl(ToolTip, {
+const renderView = setupRtl(DeprecatedToolTip, {
   children,
   id: 'test-id',
   target: 'Target',

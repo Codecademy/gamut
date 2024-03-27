@@ -49,7 +49,7 @@ export * from './theming/VisualTheme';
 export * from './Toast/Toast';
 export * from './Toaster';
 export * from './Toggle';
-export * from './ToolTip';
+export * from './Tip';
 export * from './typings/responsive-properties';
 export * from './Typography/Text';
 export type { HeadingTags } from './Typography/types';

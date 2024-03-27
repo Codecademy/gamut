@@ -41,7 +41,7 @@ describe('Flyout', () => {
     const { props, view } = renderView({ expanded: true });
 
     act(() => {
-      userEvent.click(view.getByLabelText(props.closeLabel));
+      userEvent.click(view.getByLabelText('Close'));
     });
 
     expect(props.onClose).toHaveBeenCalled();

@@ -94,6 +94,7 @@ const rowVariants = variant({
       },
     },
     table: {
+      bg: 'transparent',
       '&:nth-of-type(2n)': {
         bg: 'background-selected',
       },

@@ -142,7 +142,7 @@ export const CondensedTemplate: React.FC<typeof List> = (args, { mode }) => (
             <FillButton size="small">Engage</FillButton>
           </ListCol>
           <ListCol type="control">
-            <IconButton icon={MiniKebabMenuIcon} size="small" />
+            <IconButton icon={MiniKebabMenuIcon} size="small" tip="Engage!" />
             <IconButton icon={MiniDeleteIcon} size="small" />
           </ListCol>
         </ListRow>

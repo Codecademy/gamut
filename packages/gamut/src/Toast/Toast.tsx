@@ -108,7 +108,8 @@ export const Toast: React.FC<ToastProps> = ({
         variant="secondary"
         icon={MiniDeleteIcon}
         alignSelf="start"
-        aria-label="Dismiss Toast"
+        tip="Dismiss Toast"
+        tipProps={{ placement: 'floating' }}
       />
     </ToastContainer>
   );

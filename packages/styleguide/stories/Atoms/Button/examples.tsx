@@ -30,6 +30,7 @@ export const ButtonScale = ({ mode }: { mode: 'dark' | 'light' }) => {
             <IconButton
               {...props}
               icon={size === 'small' ? MiniDeleteIcon : SearchIcon}
+              tip="Here's a tip!"
             />
           );
         }

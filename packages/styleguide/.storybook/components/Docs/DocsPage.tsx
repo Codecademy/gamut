@@ -12,12 +12,13 @@ import {
   GridBox,
   Markdown,
   Text,
-  ToolTip,
+  InfoTip,
+  Box,
 } from '@codecademy/gamut/src';
 import { BreadCrumbs } from '../Navigation/BreadCrumbs';
 import { OpenIcon } from '@codecademy/gamut-icons';
-import { StatusIndicator } from './StatusIndicator';
 import { Background } from '@codecademy/gamut-styles/src';
+import { StatusIndicator } from './StatusIndicator';
 
 const isLocalhost = globalThis.location?.toString().includes('localhost');
 
@@ -30,19 +31,19 @@ export interface GamutParameters extends Parameters {
 
 const STATUS = {
   deprecated: {
-    tooltip:
+    infotip:
       'This component uses our old visual identity or uses CSS Modules for styling and should not be used in new work',
     label: 'Old Style',
     status: 'deprecated',
   },
   current: {
-    tooltip:
+    infotip:
       'This component is up to date with our latest visual identity and styling standards',
     label: 'Up to date',
     status: 'current',
   },
   updating: {
-    tooltip:
+    infotip:
       "We're actively working on updating this component! This is safe to use, but may change in behavior.",
     label: 'Updating',
     status: 'updating',
@@ -68,17 +69,14 @@ export const DocsPage: React.FC = ({ children }) => {
 
   const renderStatus = () => {
     if (storyStatus === 'static') return null;
-    const { label, status, tooltip } = STATUS[storyStatus] ?? {};
+    const { label, status, infotip } = STATUS[storyStatus] ?? {};
 
     return (
       <Text as="strong">
-        Status:{' '}
-        <ToolTip
-          id="status"
-          target={<StatusIndicator status={status}>{label}</StatusIndicator>}
-        >
-          <Text fontWeight="base">{tooltip}</Text>
-        </ToolTip>
+        Status: <StatusIndicator status={status}>{label}</StatusIndicator>
+        <Text fontWeight="normal">
+          <InfoTip info={infotip} />
+        </Text>
       </Text>
     );
   };
@@ -103,6 +101,7 @@ export const DocsPage: React.FC = ({ children }) => {
               fontWeight={700}
               gridAutoFlow={['row', , 'column']}
               gridAutoColumns="max-content"
+              alignItems="end"
             >
               {renderStatus()}
               {modes && (

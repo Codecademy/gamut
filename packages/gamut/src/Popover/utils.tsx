@@ -1,3 +1,7 @@
+import { theme } from '@codecademy/gamut-styles';
+
+import { tooltipBackgroundColor } from '../Tip/shared/styles';
+
 const popoverAbove = {
   borderRight: 'inherit',
   borderBottom: 'inherit',
@@ -36,10 +40,24 @@ const popoverBelowSml = {
 
 const beakRightSml = {
   right: '1.5rem',
+  bg: tooltipBackgroundColor,
 };
 
 const beakLeftSml = {
   left: '1.5rem',
+  bg: tooltipBackgroundColor,
+};
+
+const beakCenterSml = {
+  left: 'calc(50% - 8px)',
+};
+
+const beakCenterSmlAbove = {
+  backgroundImage: `linear-gradient(to top left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+};
+
+const beakCenterSmlBelow = {
+  backgroundImage: `linear-gradient(to bottom right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
 };
 
 export const createBeakVariantFromAlignment = (alignment: string) => {
@@ -54,7 +72,12 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
     if (alignment.includes('right')) {
       styleObject = { ...beakRightSml, ...styleObject };
     } else if (alignment.includes('center')) {
-      styleObject = { ...beakCenter, ...styleObject };
+      styleObject = { ...beakCenterSml, ...styleObject };
+      if (alignment.includes('above')) {
+        styleObject = { ...beakCenterSmlAbove, ...styleObject };
+      } else if (alignment.includes('below')) {
+        styleObject = { ...beakCenterSmlBelow, ...styleObject };
+      }
     } else {
       styleObject = { ...beakLeftSml, ...styleObject };
     }

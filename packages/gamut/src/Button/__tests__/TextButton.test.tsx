@@ -1,5 +1,5 @@
 import { StarIcon } from '@codecademy/gamut-icons';
-import { fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { setupRtl } from 'component-test-setup';
 
 import { TextButton } from '../TextButton';
@@ -17,16 +17,11 @@ describe('TextButton', () => {
 
     const cta = view.getByRole('button', { name: 'Click me!' });
 
-    fireEvent.click(cta);
+    userEvent.click(cta);
 
     expect(onClick).toHaveBeenCalled();
   });
   it('renders an leading icon when an icon is provided', () => {
-    const { view } = renderView({ icon: StarIcon });
-
-    view.getByTitle('Star Icon');
-  });
-  it('renders an icon when an icon is provided', () => {
     const { view } = renderView({ icon: StarIcon });
 
     view.getByTitle('Star Icon');

@@ -2,7 +2,7 @@ import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, Colors } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
-import { WithChildrenProp } from '..';
+import { FlexBox, WithChildrenProp } from '..';
 import { IconButton } from '../Button';
 import { Drawer } from '../Drawer';
 import { Overlay } from '../Overlay';
@@ -38,7 +38,7 @@ export interface FlyoutProps extends WithChildrenProp {
 
 export const Flyout: React.FC<FlyoutProps> = ({
   children,
-  closeLabel,
+  closeLabel = 'Close',
   expanded,
   openFrom = 'left',
   onClose,
@@ -63,25 +63,29 @@ export const Flyout: React.FC<FlyoutProps> = ({
           top={0}
           {...{ [openFrom]: 0 }}
         >
-          <Text
-            as="h2"
-            fontSize={22}
+          <FlexBox
+            alignItems="center"
             mb={8}
             ml={16}
             mt={24}
-            mr={40}
             maxWidth="100%"
+            justifyContent="space-between"
           >
-            {title}
-          </Text>
-          <IconButton
-            aria-label={closeLabel}
-            icon={MiniDeleteIcon}
-            onClick={onClose}
-            position="absolute"
-            top="1rem"
-            right="0.5rem"
-          />
+            <Text as="h2" fontSize={22}>
+              {title}
+            </Text>
+            <IconButton
+              aria-label="Close"
+              icon={MiniDeleteIcon}
+              onClick={onClose}
+              mx={16}
+              tip={closeLabel}
+              tipProps={{
+                alignment: 'bottom-center',
+                placement: 'floating',
+              }}
+            />
+          </FlexBox>
           {children}
         </Drawer>
       </Background>
