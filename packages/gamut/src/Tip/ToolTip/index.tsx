@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { WithChildrenProp } from '../..';
 import { Text } from '../../Typography';
@@ -41,10 +41,11 @@ export const NewToolTip: React.FC<NewToolTipProps> = ({
 
   const isFloating = placement === 'floating';
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
-  const adjustedInfo =
-    hasRepetitiveLabel && typeof info === 'string'
+  const adjustedInfo = useMemo(() => {
+    return hasRepetitiveLabel && typeof info === 'string'
       ? info.split(' ').slice(1).join(' ')
       : info;
+  }, [info, hasRepetitiveLabel]);
 
   const tipProps = {
     alignment,
@@ -56,7 +57,7 @@ export const NewToolTip: React.FC<NewToolTipProps> = ({
   return (
     <>
       <Text screenreader id={id} role="tooltip">
-        {adjustedInfo}
+        {adjustedInfo ?? 'Tooltip content is currently loading...'}
       </Text>
       <Tip {...tipProps} type="tool">
         {children}

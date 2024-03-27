@@ -34,7 +34,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
     },
     ref
   ) => {
-    const tipId = useId() ?? 'icon-button-tip';
+    const tipId = useId();
 
     const firstWord = tip?.split(' ')[0] ?? tip;
 
