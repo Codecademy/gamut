@@ -16,9 +16,7 @@ const outlineStyles = (mode: ColorModes) => ({
   boxShadow: `-5px 5px ${theme.colors['background-current']}, -5px 5px 0 1px ${theme.colors.black}`,
   '&:hover': {
     transform: 'translate(4px, -4px)',
-    boxShadow: `-8px 8px 0 ${
-      mode === 'dark' ? theme.colors['background-current'] : 'currentColor'
-    }`,
+    boxShadow: `-8px 8px 0 ${mode === 'dark' ? 'white' : theme.colors.black}`,
   },
 });
 
@@ -61,13 +59,17 @@ const shadowVariants = (mode: ColorModes) =>
       small: {
         '&:hover': {
           transform: 'translate(2px, -2px)',
-          boxShadow: `-4px 4px 0 ${mode === 'dark' ? 'white' : 'currentColor'}`,
+          boxShadow: `-4px 4px 0 ${
+            mode === 'dark' ? 'white' : theme.colors.black
+          }`,
         },
       },
       medium: {
         '&:hover': {
           transform: 'translate(4px, -4px)',
-          boxShadow: `-8px 8px 0 ${mode === 'dark' ? 'white' : 'currentColor'}`,
+          boxShadow: `-8px 8px 0 ${
+            mode === 'dark' ? 'white' : theme.colors.black
+          }`,
         },
       },
       outline: outlineStyles(mode),
