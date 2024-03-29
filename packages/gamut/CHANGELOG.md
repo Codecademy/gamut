@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.14.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.14.2...@codecademy/gamut@55.14.3) (2024-03-29)
+
+### Bug Fixes
+
+- Color Mode BoxShadow for cards ([bd84e2b](https://github.com/Codecademy/gamut/commit/bd84e2b518403b7d94f70f00cd22ec927e63f15e))
+
 ### [55.14.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.14.1...@codecademy/gamut@55.14.2) (2024-03-21)
 
 **Note:** Version bump only for package @codecademy/gamut
