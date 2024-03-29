@@ -10,7 +10,7 @@ import {
   tipDefaultProps,
 } from '../shared/types';
 
-export type NewToolTipProps = TipBaseProps &
+export type ToolTipProps = TipBaseProps &
   WithChildrenProp & {
     alignment?: TipCenterAlignment;
     /**
@@ -23,7 +23,7 @@ export type NewToolTipProps = TipBaseProps &
     hasRepetitiveLabel?: boolean;
   };
 
-export const NewToolTip: React.FC<NewToolTipProps> = ({
+export const ToolTip: React.FC<ToolTipProps> = ({
   alignment = 'top-center',
   children,
   info,

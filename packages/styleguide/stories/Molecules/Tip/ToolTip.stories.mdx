@@ -3,7 +3,7 @@ import {
   FillButton,
   FlexBox,
   IconButton,
-  NewToolTip,
+  ToolTip,
 } from '@codecademy/gamut/src';
 import {
   SmileyStarEyesIcon,
@@ -17,7 +17,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <Meta
   title={title}
-  component={NewToolTip}
+  component={ToolTip}
   parameters={{
     subtitle:
       'A short tip triggered on hover and focus of an interactive element. Use a tooltip to further explain an element’s primary action, a disabled button state, or to display a label for an icon-only button.',
@@ -39,10 +39,10 @@ When using the ToolTip component, the `id` prop is required to associate the too
 When a Button is disabled with a tooltip, you must use the `aria-disabled` prop instead of `disabled` prop so the user can still focus the button and view the tooltip.
 
 <Canvas>
-  <Story name="NewToolTip">
+  <Story name="ToolTip">
     {() => (
       <FlexBox center py={64} m={24}>
-        <NewToolTip id="fill-id" info="Tooltip">
+        <ToolTip id="fill-id" info="Tooltip">
           <FillButton
             aria-describedby="fill-id"
             aria-disabled
@@ -50,13 +50,13 @@ When a Button is disabled with a tooltip, you must use the `aria-disabled` prop 
           >
             Click me
           </FillButton>
-        </NewToolTip>
+        </ToolTip>
       </FlexBox>
     )}
   </Story>
 </Canvas>
 
-<PropsTable story="NewToolTip" />
+<PropsTable story="ToolTip" />
 
 ## IconButtons and ToolTips
 

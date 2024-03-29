@@ -2,7 +2,7 @@ import { useId } from '@reach/auto-id';
 import { ComponentProps, forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
-import { NewToolTip, NewToolTipProps } from '../Tip';
+import { ToolTip, ToolTipProps } from '../Tip';
 import {
   createButtonComponent,
   IconComponentType,
@@ -19,7 +19,7 @@ export type IconButtonProps = ComponentProps<typeof IconButtonBase> &
   IconComponentType & {
     'aria-label'?: string;
     tip: string;
-    tipProps?: Omit<NewToolTipProps, 'info' | 'id' | 'children' | 'hasLabel'>;
+    tipProps?: Omit<ToolTipProps, 'info' | 'id' | 'children' | 'hasLabel'>;
   };
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
@@ -44,7 +44,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
     const trueAriaLabel = ariaLabel ?? firstWord;
 
     return (
-      <NewToolTip
+      <ToolTip
         info={tip}
         id={tipId}
         hasRepetitiveLabel={hasRepetitiveLabel}
@@ -64,7 +64,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
             aria-hidden
           />
         </IconButtonBase>
-      </NewToolTip>
+      </ToolTip>
     );
   }
 );

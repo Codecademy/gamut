@@ -75,7 +75,7 @@ exports[`Gamut Exported Keys 1`] = `
   "MenuSeparator",
   "Modal",
   "ModalDeprecated",
-  "NewToolTip",
+  "ToolTip",
   "omitProps",
   "Overlay",
   "Pagination",

@@ -1,13 +1,13 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
 
-import { NewToolTipMock } from './mocks';
+import { ToolTipMock } from './mocks';
 
 const ariaLabel = 'Click';
 const info = 'I am information';
 const onClick = jest.fn();
 
-const renderView = setupRtl(NewToolTipMock, {
+const renderView = setupRtl(ToolTipMock, {
   info,
   id: 'info-id',
   onClick,

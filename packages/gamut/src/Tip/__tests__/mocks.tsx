@@ -1,10 +1,10 @@
 import { ComponentProps } from 'react';
 
 import { FillButton } from '../../Button';
-import { NewToolTip, NewToolTipProps } from '../ToolTip';
+import { ToolTip, ToolTipProps } from '../ToolTip';
 
-export const NewToolTipMock: React.FC<
-  NewToolTipProps & ComponentProps<typeof FillButton>
+export const ToolTipMock: React.FC<
+  ToolTipProps & ComponentProps<typeof FillButton>
 > = ({
   'aria-label': ariaLabel,
   info,
@@ -13,7 +13,7 @@ export const NewToolTipMock: React.FC<
   hasRepetitiveLabel,
 }) => {
   return (
-    <NewToolTip
+    <ToolTip
       info={info}
       placement={placement}
       id="tip-id"
@@ -26,6 +26,6 @@ export const NewToolTipMock: React.FC<
       >
         Click me
       </FillButton>
-    </NewToolTip>
+    </ToolTip>
   );
 };
