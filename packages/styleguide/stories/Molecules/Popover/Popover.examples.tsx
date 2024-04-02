@@ -96,3 +96,17 @@ export const PatternedPopoversGrid = (args: PopoverProps) => {
     </LayoutGrid>
   );
 };
+
+export const PositionPopoverGrid = (args: PopoverProps) => {
+  return (
+    <LayoutGrid columnGap={8} rowGap={48}>
+      {(['above', 'below'] as const).map((position) => (
+        <Column key={position} size={4}>
+          <FlexBox justifyContent="center">
+            <PopoverExample {...args} position={position} />
+          </FlexBox>
+        </Column>
+      ))}
+    </LayoutGrid>
+  );
+};

@@ -45,6 +45,7 @@ dist/docs
 # NX
 dist/out-tsc
 *.tsbuildinfo
+/.nx
 
 packages/gamut-styles/demo-styles
 
@@ -54,3 +55,11 @@ packages/gamut-styles/demo-styles
 
 # Automatic report....json files
 report*.json
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
