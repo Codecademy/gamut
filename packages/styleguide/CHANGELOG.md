@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.14.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.14.4...@codecademy/styleguide@66.14.5) (2024-04-02)
+
+### Bug Fixes
+
+- **HiddenText:** updated status to deprecated ([ba04142](https://github.com/Codecademy/gamut/commit/ba04142b6645ad461189b8f9ea4c991fb599f10e))
+
 ### [66.14.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.14.3...@codecademy/styleguide@66.14.4) (2024-03-29)
 
 **Note:** Version bump only for package @codecademy/styleguide
