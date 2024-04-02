@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.20.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.19.0...@codecademy/gamut-icons@9.20.0) (2024-03-21)
+
+### Features
+
+- **icons:** add miniPinIcon ([fcf7fc6](https://github.com/Codecademy/gamut/commit/fcf7fc61ee200d0b3451eed18430a68a8b370ea6))
+
 ## [9.19.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.18.0...@codecademy/gamut-icons@9.19.0) (2024-03-11)
 
 ### Features
