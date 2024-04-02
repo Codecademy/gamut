@@ -25,10 +25,11 @@ export const AlertBanner = forwardRef<
     ref
   ) => (
     <StyledAlertBanner
-      aria-label={ariaLabel}
+      aria-label='THIS IS THE ALERT BANNER'
       aria-live={ariaLive}
       role={role}
       ref={ref}
+      p={40}
       {...rest}
     />
   )
@@ -52,10 +53,11 @@ export const AlertBox = forwardRef<
     ref
   ) => (
     <StyledAlertBox
-      aria-label={ariaLabel}
+      aria-label="THIS THE ALERT BOX"
       aria-live={ariaLive}
       role={role}
       ref={ref}
+      pr={40}
       {...rest}
     />
   )
