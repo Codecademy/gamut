@@ -102,6 +102,7 @@ export const useFormState = () => {
     setValue,
     watch,
     clearErrors,
+    setFocus,
   } = useFormContext();
 
   const {
@@ -126,6 +127,7 @@ export const useFormState = () => {
     isDisabled: (isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
     register,
     reset,
+    setFocus,
     setError,
     setValue,
     showRequired,
