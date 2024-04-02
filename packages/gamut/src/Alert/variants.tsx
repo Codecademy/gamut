@@ -46,7 +46,7 @@ export const placementVariants = variant({
     columnGap: [4, 8, , 12],
     display: 'grid',
     maxWidth: `calc(${breakpoints.md} - 4rem)`,
-    px: 4,
+    px: 12,
     width: 1,
   },
   variants: {

@@ -73,7 +73,7 @@ export const Alert: React.FC<AlertProps> = ({
   }, [expanded, isInline]);
 
   const ctaButtonPadding = useMemo(() => {
-    return !isDesktop && placement === 'floating' ? 96 : undefined;
+    return !isDesktop && placement === 'floating' ? 4 : undefined;
   }, [placement, isDesktop]);
 
   const gridButtonOrder = useMemo(() => {
@@ -131,12 +131,13 @@ export const Alert: React.FC<AlertProps> = ({
   );
 
   const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
-
+  onClose = false
   const ctaButton = ctaExists && (
     <Box
       gridColumn={gridButtonOrder}
       gridRow={gridButtonOrder}
       pb={ctaButtonPadding}
+      mr={ onClose ? undefined : 4 }
     >
       <FillButton
         {...cta}
@@ -157,8 +158,6 @@ export const Alert: React.FC<AlertProps> = ({
       bg={bg}
       placement={placement}
       gridTemplateColumns={gridTemplateColumns}
-      p={96}
-      aria-label="OVERRIDING THE ARIA-LABEL?"
       {...props}
     >
       <Icon size={32} aria-hidden p={8} />
@@ -179,7 +178,7 @@ export const Alert: React.FC<AlertProps> = ({
       </CollapsableContent>
       {expandButton}
       {ctaButton}
-      {/* {onClose && (
+      {onClose && (
         <IconButton
           tabIndex={tabIndex}
           aria-label="Close Alert"
@@ -188,7 +187,7 @@ export const Alert: React.FC<AlertProps> = ({
           onClick={onClose}
           icon={MiniDeleteIcon}
         />
-      )} */}
+      )}
 
     </AlertWrapper>
   );
