@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.14.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.14.4...@codecademy/gamut@55.14.5) (2024-04-03)
+
+### Bug Fixes
+
+- **storybook:** fix storybook bug with connectedform story ([344cd8b](https://github.com/Codecademy/gamut/commit/344cd8b125a145ccfdc38dc6f0ac5bf2036027d3))
+
 ### [55.14.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.14.3...@codecademy/gamut@55.14.4) (2024-04-02)
 
 ### Bug Fixes
