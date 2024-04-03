@@ -20,7 +20,7 @@ export const ALERTS = {
     type: 'notice',
     cta: { children: 'Learn more' },
     children: (
-      <>Maintenance: Codecademy will be offline between 2AM and 4AM EST.</>,
+      <>Maintenance: Codecademy will be offline between 2AM and 4AM EST.</>
     ),
   },
   error: {
