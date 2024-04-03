@@ -56,7 +56,6 @@ export const AlertBox = forwardRef<
       aria-live={ariaLive}
       role={role}
       ref={ref}
-      pr={40}
       {...rest}
     />
   )
