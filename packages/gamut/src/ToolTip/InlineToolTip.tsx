@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect, useRef } from 'react';
 
 import {
   TargetContainer,
@@ -7,7 +8,7 @@ import {
   TooltipWrapper,
 } from './elements';
 import { tooltipDefaultProps, ToolTipPlacementComponentProps } from './types';
-import { escapeKeyPressHandler, getAccessibilityProps } from './utils';
+import { getAccessibilityProps } from './utils';
 
 export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   alignment = tooltipDefaultProps.alignment,
@@ -17,12 +18,46 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
   target,
   widthMode = tooltipDefaultProps.widthMode,
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [escapePressed, setEscapePressed] = React.useState(false);
+  const [isOpenFromMouse, setIsOpenFromMouse] = React.useState(false);
   const accessibilityProps = getAccessibilityProps({ focusable, id });
+
+  useEffect(() => {
+    if (isOpenFromMouse) {
+      const closeOnEsc = ({ key }: { key: string }) => {
+        if (key === 'Escape') {
+          setEscapePressed(true);
+        }
+      };
+      document.addEventListener('keydown', closeOnEsc);
+
+      return () => {
+        setEscapePressed(false);
+        document.removeEventListener('keydown', closeOnEsc);
+      };
+    }
+  }, [isOpenFromMouse]);
+
+  const handleShowHideAction = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    if (e.type === 'mouseenter') {
+      setIsOpenFromMouse(true);
+    }
+
+    if (e.type === 'mouseleave') {
+      setIsOpenFromMouse(false);
+    }
+  };
 
   return (
     <TooltipWrapper>
       <TargetContainer
-        onKeyDown={(e) => escapeKeyPressHandler(e)}
+        ref={ref}
+        onClick={() => setEscapePressed(false)}
+        onMouseEnter={(e) => handleShowHideAction(e)}
+        onMouseLeave={(e) => handleShowHideAction(e)}
         {...accessibilityProps}
       >
         {target}
@@ -33,6 +68,7 @@ export const InlineToolTip: React.FC<ToolTipPlacementComponentProps> = ({
         as="div"
         id={id}
         role="tooltip"
+        hidden={escapePressed}
       >
         <ToolTipBody
           alignment={alignment.includes('center') ? 'centered' : 'aligned'}

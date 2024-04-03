@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
 
 import { Box, FlexBox } from '../Box';
@@ -29,6 +29,19 @@ export const FloatingToolTip: React.FC<ToolTipPlacementComponentProps> = ({
       setOffset(-ref.current.clientWidth / 2 + 32);
     }
   }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      const closeOnEsc = ({ key }: { key: string }) => {
+        if (key === 'Escape') {
+          setIsOpen(false);
+        }
+      };
+      document.addEventListener('keydown', closeOnEsc);
+
+      return () => document.removeEventListener('keydown', closeOnEsc);
+    }
+  }, [isOpen]);
 
   const accessibilityProps = getAccessibilityProps({
     focusable,
