@@ -130,14 +130,20 @@ export const Alert: React.FC<AlertProps> = ({
     </Box>
   );
 
+  const boxRightMargin = {
+    'xs': -4,
+    'sm': 0,
+    'md': 4,
+  }
+
   const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
-  // onClose = false
+  onClose = false
   const ctaButton = ctaExists && (
     <Box
       gridColumn={gridButtonOrder}
       gridRow={gridButtonOrder}
       pb={ctaButtonPadding}
-      mr={ onClose ? undefined : 4 }
+      mr={ onClose ? undefined : boxRightMargin }
     >
       <FillButton
         {...cta}
