@@ -131,7 +131,7 @@ export const Alert: React.FC<AlertProps> = ({
   );
 
   const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
-  onClose = false
+  // onClose = false
   const ctaButton = ctaExists && (
     <Box
       gridColumn={gridButtonOrder}
@@ -188,7 +188,6 @@ export const Alert: React.FC<AlertProps> = ({
           icon={MiniDeleteIcon}
         />
       )}
-
     </AlertWrapper>
   );
 };
