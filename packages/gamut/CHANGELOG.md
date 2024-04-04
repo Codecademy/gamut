@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.16.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.15.0...@codecademy/gamut@55.16.0) (2024-04-04)
+
+### Features
+
+- **ToolTip:** New + Improved ([6aaf2f8](https://github.com/Codecademy/gamut/commit/6aaf2f8f82edb9c5b88a06e2dd4e39f2510da506))
+
 ## [55.15.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.14.5...@codecademy/gamut@55.15.0) (2024-04-04)
 
 ### Features
