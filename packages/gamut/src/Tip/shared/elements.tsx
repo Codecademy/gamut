@@ -2,15 +2,15 @@ import { css } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { Box } from '../Box';
-import { Selectors } from '../ButtonBase/ButtonBase';
+import { Box } from '../../Box';
+import { Selectors } from '../../ButtonBase/ButtonBase';
 import {
+  inlineToolTipBodyAlignments,
   toolTipAlignmentVariants,
-  toolTipBodyAlignments,
   toolTipBodyCss,
 } from './styles';
 
-export const TooltipWrapper = styled.div(
+export const TipWrapper = styled.div(
   css({ position: 'relative', display: 'inline-flex' })
 );
 
@@ -19,13 +19,12 @@ enum TargetSelectors {
   OUTLINE_FOCUS_VISIBLE = '&:focus-visible:before',
 }
 
-export const TargetContainer = styled.div(
+export const TargetContainer = styled(Box)(
   css({
     cursor: 'pointer',
     border: 'none',
     background: 'none',
     padding: 0,
-
     [Selectors.FOCUS_VISIBLE]: {
       outline: 'none',
     },
@@ -48,16 +47,6 @@ export const TargetContainer = styled.div(
 export interface ToolTipContainerProps
   extends StyleProps<typeof toolTipAlignmentVariants> {}
 
-export const ToolTipContainer = styled(Box)<ToolTipContainerProps>`
-  ${TargetContainer}:hover + &,
-  ${TargetContainer}:focus-within + &,
-  &:hover {
-    opacity: 1;
-    visibility: visible;
-  }
-  ${toolTipAlignmentVariants}
-`;
-
-export const ToolTipBody = styled(Box)<
-  StyleProps<typeof toolTipBodyAlignments>
->(css({ ...toolTipBodyCss }), toolTipBodyAlignments);
+export const TipBody = styled(Box)<
+  StyleProps<typeof inlineToolTipBodyAlignments>
+>(css({ ...toolTipBodyCss }), inlineToolTipBodyAlignments);

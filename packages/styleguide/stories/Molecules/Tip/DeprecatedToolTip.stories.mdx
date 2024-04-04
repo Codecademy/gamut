@@ -1,10 +1,10 @@
 import {
   Box,
+  DeprecatedToolTip,
   FillButton,
   FlexBox,
   GridBox,
   Text,
-  ToolTip,
 } from '@codecademy/gamut/src';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
@@ -14,21 +14,22 @@ import { upperFirst } from 'lodash';
 
 import { LinkTo } from '~styleguide/blocks';
 
-import { CustomCheckbox } from '../Atoms/FormInputs/examples';
+import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
+import { DeprecatedWarning } from './elements';
 
 <Meta
   title={title}
-  component={ToolTip}
+  component={DeprecatedToolTip}
   parameters={{
     subtitle:
-      'A teeny floating text component that positions itself relative to its target.',
+      'Deprecated: A teeny floating text component that positions itself relative to its target. Currently being replaced by the new InfoTip + upcoming LinkPreview components',
     source: 'gamut',
     design: {
       type: 'figma',
       url:
         'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1111%3A0',
     },
-    status: 'current',
+    status: 'deprecated',
   }}
   args={{
     children: `I am helpful text related to this target`,
@@ -36,6 +37,8 @@ import { CustomCheckbox } from '../Atoms/FormInputs/examples';
     id: 'my-unique-id',
   }}
 />
+
+<DeprecatedWarning />
 
 _Small_ piece of extra information triggered on the focus or hover of a button or icon, such as extra requirements for a form surfaced from an informative (i) icon.
 
@@ -46,11 +49,11 @@ Great for surfacing additional information that may or may not be relevant _with
 > If you'd like interactive contents, use a <LinkTo id="molecules-popover--popover">Popover</LinkTo>.
 
 <Canvas>
-  <Story name="ToolTip">
+  <Story name="DeprecatedToolTip">
     {(args) => (
       <FlexBox center py={64} m={24}>
         <Text aria-describedby={args.id}> Hello! &nbsp;</Text>
-        <ToolTip {...args} target={<InfoCircleIcon size={16} />} />
+        <DeprecatedToolTip {...args} target={<InfoCircleIcon size={16} />} />
       </FlexBox>
     )}
   </Story>
@@ -112,7 +115,7 @@ _Note:_ Because of the size of these ToolTips, they should never overflow their 
           {['bottom-center', 'top-center'].map((alignment) => {
             return (
               <Box key={alignment}>
-                <ToolTip
+                <DeprecatedToolTip
                   {...args}
                   alignment={alignment}
                   target={
@@ -122,7 +125,7 @@ _Note:_ Because of the size of these ToolTips, they should never overflow their 
                   }
                 >
                   Hi!
-                </ToolTip>
+                </DeprecatedToolTip>
               </Box>
             );
           })}
@@ -145,7 +148,7 @@ Tooltips with _corner_ alignments -`*-left` or `*-right`- are larger sized and m
             (alignment) => {
               return (
                 <Box key={alignment}>
-                  <ToolTip
+                  <DeprecatedToolTip
                     {...args}
                     alignment={alignment}
                     target={
@@ -175,7 +178,7 @@ If the target is not focusable, such as for plain text or icons, use the `focusa
     {(args) => {
       return (
         <Box pt={64} pl={12}>
-          <ToolTip {...args} focusable target="Information!" />
+          <DeprecatedToolTip {...args} focusable target="Information!" />
         </Box>
       );
     }}
@@ -191,23 +194,23 @@ Tooltips sometimes need to be in used in a way that they need to escape the conf
     {() => {
       return (
         <FlexBox alignItems="center" justifyContent="space-around" p={4}>
-          <ToolTip
+          <DeprecatedToolTip
             id="floating-focusable-id"
             placement="floating"
             target={<FillButton> Hey! </FillButton>}
           >
             I am a floating Tooltip who has a focusable target
-          </ToolTip>
+          </DeprecatedToolTip>
           <Box>
             Some cool info
-            <ToolTip
+            <DeprecatedToolTip
               id="floating-focusable-id"
               focusable
               placement="floating"
               target={<InfoCircleIcon size={20} />}
             >
               I am a floating Tooltip who does not have a focusable target
-            </ToolTip>
+            </DeprecatedToolTip>
           </Box>
         </FlexBox>
       );

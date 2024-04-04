@@ -113,16 +113,16 @@ export const Modal: React.FC<ModalProps> = ({
           </Text>
         )}
         {!hideCloseButton && (
-          <IconButton
-            aria-label="Close Dialog"
-            size="small"
-            alignSelf="start"
-            icon={MiniDeleteIcon}
-            onClick={onRequestClose}
-            gridArea="close"
-            disabled={closeDisabled}
-            ref={buttonRef}
-          />
+          <Box alignSelf="start" gridArea="close">
+            <IconButton
+              size="small"
+              icon={MiniDeleteIcon}
+              onClick={onRequestClose}
+              disabled={closeDisabled}
+              ref={buttonRef}
+              tip="Close modal"
+            />
+          </Box>
         )}
         <Box
           overflowY={scrollable ? 'auto' : 'visible'}
