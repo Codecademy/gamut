@@ -43,10 +43,11 @@ export const placementVariants = variant({
   prop: 'placement',
   base: {
     alignItems: 'start',
-    columnGap: [4, 8, , 12],
+    columnGap: [4, 8, 12],
     display: 'grid',
     maxWidth: `calc(${breakpoints.md} - 4rem)`,
-    px: 4,
+    pl: 4,
+    // pr: 4,
     width: 1,
   },
   variants: {
@@ -77,6 +78,7 @@ export const getGridTemplateColumns = (
   const numOfButtons = Object.values(buttonExistenceObject).filter(
     (item) => item === true
   ).length;
+  console.log('here are the buttons', buttonExistenceObject)
   const repeatCount = numOfButtons <= 0 ? 1 : numOfButtons;
   return `max-content minmax(0, 1fr) repeat(${repeatCount}, max-content)`;
 };

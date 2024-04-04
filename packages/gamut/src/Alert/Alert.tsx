@@ -84,11 +84,16 @@ export const Alert: React.FC<AlertProps> = ({
     return !isDesktop
       ? `max-content minmax(0, 1fr) repeat(1, max-content)`
       : getGridTemplateColumns({
-          cta: ctaExists,
-          onClose: !!onClose,
+          // cta: ctaExists,
+          cta: false,
+          onClose: false,
+          // onClose: !!onClose,
           truncated,
         });
-  }, [ctaExists, isDesktop, onClose, truncated]);
+//   }, [ctaExists, isDesktop, onClose, truncated]);
+// }, [/* ctaExists */, isDesktop, onClose, truncated]);
+// }, [ctaExists, isDesktop, /* onClose */, truncated]);
+}, [/* ctaExists */, isDesktop, /* onClose */, truncated]);
 
   const tabIndex = hidden ? -1 : undefined;
 
@@ -130,20 +135,14 @@ export const Alert: React.FC<AlertProps> = ({
     </Box>
   );
 
-  const boxRightMargin = {
-    'xs': -4,
-    'sm': 0,
-    'md': 4,
-  }
-
   const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
   onClose = false
+
   const ctaButton = ctaExists && (
     <Box
       gridColumn={gridButtonOrder}
       gridRow={gridButtonOrder}
       pb={ctaButtonPadding}
-      mr={ onClose ? undefined : boxRightMargin }
     >
       <FillButton
         {...cta}
@@ -157,14 +156,27 @@ export const Alert: React.FC<AlertProps> = ({
     </Box>
   );
 
-  const AlertWrapper = isSubtleVariant ? AlertBox : AlertBanner;
+  const determineRightPadding = () => {
+    if(ctaExists && onClose) {
+      return 4
+    }
+    if(ctaExists) {
+      console.log('this is getting hit')
+      return {'_': 4, 'xs': 12,'sm': 16/* , 'md': 16 */}
+    }
+    // console.log('this is getting hit')
+    // return {'xs': 8,'sm':12, 'md': 16}
+  }
 
+  const AlertWrapper = isSubtleVariant ? AlertBox : AlertBanner;
   return (
     <AlertWrapper
       bg={bg}
       placement={placement}
       gridTemplateColumns={gridTemplateColumns}
       {...props}
+      pr={determineRightPadding()}
+
     >
       <Icon size={32} aria-hidden p={8} />
       <CollapsableContent
@@ -183,7 +195,7 @@ export const Alert: React.FC<AlertProps> = ({
         {isInline ? children : floatingContent}
       </CollapsableContent>
       {expandButton}
-      {ctaButton}
+      {/* {ctaButton} */}
       {onClose && (
         <IconButton
           tabIndex={tabIndex}
