@@ -78,12 +78,10 @@ export const getGridTemplateColumns = (
   const numOfButtons = Object.values(buttonExistenceObject).filter(
     (item) => item === true
   ).length;
-  console.log('here are the buttons', buttonExistenceObject)
   const repeatCount = numOfButtons <= 0 ? 1 : numOfButtons;
   return `max-content minmax(0, 1fr) repeat(${repeatCount}, max-content)`;
 };
 
 export const getAlertRightPadding = (onClose: boolean) => {
-  // check the `_:4 for 2nd obj after setting falsy for cta and onclose in story
   return onClose ? 4 : {_: 4, xs: 12, sm: 16} as const
 }
