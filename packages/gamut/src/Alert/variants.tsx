@@ -44,7 +44,7 @@ export const placementVariants = variant({
   prop: 'placement',
   base: {
     alignItems: 'start',
-    columnGap: {_:4, xs:8, sm:12},
+    columnGap: {_: 4, xs: 8, sm: 12},
     display: 'grid',
     maxWidth: `calc(${breakpoints.md} - 4rem)`,
     pl: 4,
