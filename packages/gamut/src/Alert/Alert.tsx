@@ -187,7 +187,7 @@ export const Alert: React.FC<AlertProps> = ({
         {isInline ? children : floatingContent}
       </CollapsableContent>
       {expandButton}
-      {/* {ctaButton} */}
+      {ctaButton}
       {onClose && (
         <IconButton
           tabIndex={tabIndex}
