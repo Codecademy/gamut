@@ -6,7 +6,6 @@ import {
   MiniWarningTriangleIcon,
 } from '@codecademy/gamut-icons';
 import { breakpoints, variant } from '@codecademy/gamut-styles';
-import { on } from 'react-use/lib/util';
 
 export const alertVariants = {
   general: {
