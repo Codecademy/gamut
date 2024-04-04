@@ -96,8 +96,6 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
         skipFocusTrap
         targetRef={ref}
         variant="secondary"
-        // The InfoTip + FloatingToolTip have their own accessibility logic, so we don't want this to be announced twice
-        aria-hidden
       >
         <FlexBox
           alignItems={isToolType ? undefined : 'flex-start'}

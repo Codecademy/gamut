@@ -33,8 +33,6 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
       </TargetContainer>
       <InlineTipWrapper
         alignment={alignment}
-        // The InfoTip + ToolTip have their own accessibility logic, so we don't want this to be announced twice
-        aria-hidden
         zIndex={zIndex ?? 1}
         {...InlineWrapperProps}
       >
