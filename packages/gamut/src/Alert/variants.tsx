@@ -6,6 +6,7 @@ import {
   MiniWarningTriangleIcon,
 } from '@codecademy/gamut-icons';
 import { breakpoints, variant } from '@codecademy/gamut-styles';
+import { on } from 'react-use/lib/util';
 
 export const alertVariants = {
   general: {
@@ -43,11 +44,10 @@ export const placementVariants = variant({
   prop: 'placement',
   base: {
     alignItems: 'start',
-    columnGap: [4, 8, 12],
+    columnGap: {_:4, xs:8, sm:12},
     display: 'grid',
     maxWidth: `calc(${breakpoints.md} - 4rem)`,
     pl: 4,
-    // pr: 4,
     width: 1,
   },
   variants: {
@@ -82,3 +82,8 @@ export const getGridTemplateColumns = (
   const repeatCount = numOfButtons <= 0 ? 1 : numOfButtons;
   return `max-content minmax(0, 1fr) repeat(${repeatCount}, max-content)`;
 };
+
+export const getAlertRightPadding = (onClose: boolean) => {
+  // check the `_:4 for 2nd obj after setting falsy for cta and onclose in story
+  return onClose ? 4 : {_: 4, xs: 12, sm: 16} as const
+}

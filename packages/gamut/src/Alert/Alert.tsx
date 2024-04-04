@@ -14,7 +14,7 @@ import {
   alertContentProps,
   CollapsableContent,
 } from './elements';
-import { alertVariants, getGridTemplateColumns } from './variants';
+import { alertVariants, getAlertRightPadding,getGridTemplateColumns } from './variants';
 
 export type AlertType = keyof typeof alertVariants;
 export type AlertPlacements = 'inline' | 'floating';
@@ -84,16 +84,21 @@ export const Alert: React.FC<AlertProps> = ({
     return !isDesktop
       ? `max-content minmax(0, 1fr) repeat(1, max-content)`
       : getGridTemplateColumns({
-          // cta: ctaExists,
-          cta: false,
-          onClose: false,
-          // onClose: !!onClose,
+          cta: ctaExists,
+          // cta: false,
+          // onClose: false,
+          onClose: !!onClose,
           truncated,
         });
-//   }, [ctaExists, isDesktop, onClose, truncated]);
-// }, [/* ctaExists */, isDesktop, onClose, truncated]);
+  }, [ctaExists, isDesktop, onClose, truncated]);
+  // }, [/* /, isDesktop, onClose, truncated]);
 // }, [ctaExists, isDesktop, /* onClose */, truncated]);
-}, [/* ctaExists */, isDesktop, /* onClose */, truncated]);
+// }, [/* ctaExists */, isDesktop, /* onClose */, truncated]);
+
+
+  const alertRightPadding = useMemo(() => {
+    return getAlertRightPadding(Boolean(onClose)) ;
+  }, [onClose])
 
   const tabIndex = hidden ? -1 : undefined;
 
@@ -136,7 +141,7 @@ export const Alert: React.FC<AlertProps> = ({
   );
 
   const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
-  onClose = false
+  // onClose = false
 
   const ctaButton = ctaExists && (
     <Box
@@ -156,27 +161,14 @@ export const Alert: React.FC<AlertProps> = ({
     </Box>
   );
 
-  const determineRightPadding = () => {
-    if(ctaExists && onClose) {
-      return 4
-    }
-    if(ctaExists) {
-      console.log('this is getting hit')
-      return {'_': 4, 'xs': 12,'sm': 16/* , 'md': 16 */}
-    }
-    // console.log('this is getting hit')
-    // return {'xs': 8,'sm':12, 'md': 16}
-  }
-
   const AlertWrapper = isSubtleVariant ? AlertBox : AlertBanner;
   return (
     <AlertWrapper
       bg={bg}
       placement={placement}
       gridTemplateColumns={gridTemplateColumns}
+      pr={alertRightPadding}
       {...props}
-      pr={determineRightPadding()}
-
     >
       <Icon size={32} aria-hidden p={8} />
       <CollapsableContent
