@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.15.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.14.5...@codecademy/gamut@55.15.0) (2024-04-04)
+
+### Features
+
+- **List:** add overflow prop ([2ebd754](https://github.com/Codecademy/gamut/commit/2ebd7549828e017e9f1250d22d90d858aa41ff77))
+
 ### [55.14.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.14.4...@codecademy/gamut@55.14.5) (2024-04-03)
 
 ### Bug Fixes
