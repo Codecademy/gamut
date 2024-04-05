@@ -13,7 +13,7 @@ describe('Compiled gamut-icons:', () => {
     expect(svgEl.getAttribute('aria-hidden')).toEqual('true');
   });
 
-  it('Sets a mask and id automatically', () => {
+  it('Sets a mask and maskiid automatically', () => {
     renderView({
       size: 1,
     });
@@ -21,7 +21,7 @@ describe('Compiled gamut-icons:', () => {
     const svgEl = screen.getByRole('img', { hidden: true });
     const maskEl = svgEl.querySelector('mask');
 
-    expect(maskEl?.getAttribute('id')).toEqual(/.*?AddIcon(.*)/);
+    expect(maskEl?.getAttribute('id')).toMatch(/.*?AddIcon(.*)/);
   });
 
   it('Allows passing a custom title', () => {
