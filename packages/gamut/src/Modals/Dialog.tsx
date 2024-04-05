@@ -71,6 +71,7 @@ export const Dialog: React.FC<DialogProps> = ({
           icon={MiniDeleteIcon}
           onClick={onCancel}
           gridArea="close"
+          tip="Close dialog"
         />
         <Box as="div" gridArea="content" data-testid="dialog-content">
           {image && <ImageContainer image={image} size={size} />}
