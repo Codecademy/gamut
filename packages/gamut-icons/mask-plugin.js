@@ -26,14 +26,12 @@ const plugin = (api) => {
       if (!path.get('openingElement.name').isJSXIdentifier({ name: 'svg' })) {
         return;
       }
-      let titleNode;
 
       path.get('children').some((childPath) => {
-        // we want to delete the title and reinsert it so it lands outside the mask. this fixes some issues with svgr's built-in titleProp parsing.
+        // we want to delete the default title tag since it is not accessible
         if (!childPath.isJSXElement()) return false;
         const name = childPath.get('openingElement').get('name');
         if (name.node.name === 'title') {
-          titleNode = childPath.node;
           childPath.remove();
         }
         return false;
