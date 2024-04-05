@@ -1,11 +1,7 @@
 import { states, variant } from '@codecademy/gamut-styles';
 
-import {
-  tooltipArrowHeight,
-  tooltipBackgroundColor,
-  toolTipBodyCss,
-} from '../ToolTip/styles';
-import { createVariantsFromAlignments } from '../ToolTip/utils';
+import { tooltipArrowHeight, toolTipBodyCss } from '../Tip/shared/styles';
+import { createVariantsFromAlignments } from '../Tip/shared/utils';
 import {
   createBeakVariantFromAlignment,
   createPatternVariantFromAlignment,
@@ -69,7 +65,6 @@ const beakVariantStyles = createVariantsFromAlignments(
 
 export const beakVariants = variant({
   base: {
-    bg: tooltipBackgroundColor,
     position: 'absolute',
     transform: 'rotate(45deg)',
   },
@@ -82,7 +77,6 @@ export const beakSize = variant({
   defaultVariant: 'lrg',
   variants: {
     sml: {
-      bg: tooltipBackgroundColor,
       height: tooltipArrowHeight,
       width: tooltipArrowHeight,
     },

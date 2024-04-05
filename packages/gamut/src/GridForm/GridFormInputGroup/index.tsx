@@ -148,7 +148,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     <FormGroupLabel
       disabled={disabled}
       htmlFor={field.id || field.name}
-      tooltip={field.tooltip}
+      infotip={field.infotip}
       showRequired={showRequired && rest?.required}
     >
       {field.label}

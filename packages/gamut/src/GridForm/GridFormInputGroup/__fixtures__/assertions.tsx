@@ -1,9 +1,11 @@
+import '@testing-library/jest-dom';
+
 import { setupRtl } from '@codecademy/gamut-tests';
-import { configure } from '@testing-library/dom';
+import { queryByAttribute } from '@testing-library/dom';
 
 import { getComponent } from './renderers';
 
-configure({ testIdAttribute: 'id' });
+const getById = queryByAttribute.bind(null, 'id');
 
 interface StandardFieldTestsProps
   extends Pick<ReturnType<typeof getComponent>, 'defaultFieldProps'> {
@@ -26,7 +28,7 @@ export const itHandlesStandardFieldTests = ({
     const testId =
       component !== 'GridFormRadioGroupInput' ? 'mycoolid' : 'name-0-mycoolid';
 
-    await view.findByTestId(testId);
+    expect(getById(view.container, testId));
   });
 
   it('renders a field with the id equal to the field name when no id is passed', async () => {
@@ -36,7 +38,7 @@ export const itHandlesStandardFieldTests = ({
 
     const testId = component !== 'GridFormRadioGroupInput' ? 'name' : 'name-0';
 
-    await view.findByTestId(testId);
+    expect(getById(view.container, testId));
   });
 
   it('has the property aria-invalid if error exists', async () => {
@@ -45,7 +47,7 @@ export const itHandlesStandardFieldTests = ({
     const field =
       component !== 'GridFormFileInput'
         ? view.getByRole(selector)
-        : view.getByTestId(selector);
+        : getById(view.container, selector);
     expect(field).toBeInvalid();
   });
 
@@ -55,7 +57,7 @@ export const itHandlesStandardFieldTests = ({
     const field =
       component !== 'GridFormFileInput'
         ? view.getByRole(selector)
-        : view.getByTestId(selector);
+        : getById(view.container, selector);
     expect(field).not.toHaveAttribute('aria-invalid');
   });
 };

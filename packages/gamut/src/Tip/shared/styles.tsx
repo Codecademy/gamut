@@ -1,6 +1,11 @@
-import { fontSmoothPixel, timing, variant } from '@codecademy/gamut-styles';
+import {
+  fontSmoothPixel,
+  theme,
+  timing,
+  variant,
+} from '@codecademy/gamut-styles';
 
-import { toolTipAlignmentArray } from './types';
+import { tipAlignmentArray } from './types';
 import {
   createToolTipVariantFromAlignment,
   createVariantsFromAlignments,
@@ -10,8 +15,9 @@ export const tooltipBackgroundColor = `background-contrast`;
 export const tooltipArrowHeight = `1rem`;
 const containerOffsetVertical = 12;
 
-export const centerMaxWidth = { maxWidth: '8rem' } as const;
-export const alignedMaxWidth = { maxWidth: '16rem' } as const;
+export const narrowWidth = 64;
+export const centerWidths = { minWidth: 64, maxWidth: 128 } as const;
+export const alignedMaxWidth = { width: 256 } as const;
 
 export const topStyles = {
   bottom: 'calc(100% + 4px)',
@@ -36,11 +42,22 @@ export const bottomStylesAfter = {
 } as const;
 
 export const centerStyles = {
-  ...centerMaxWidth,
+  ...centerWidths,
   left: 'calc(50% - 4rem)',
 } as const;
 
 export const centerStylesAfter = { left: 'calc(50% - 0.5rem)' } as const;
+
+// This halfway fills the square we use to create the 'beak' of the tip so it does not overlap the tip text on the 'center' alignments
+export const topCenterStylesAfter = {
+  backgroundImage: `linear-gradient(to top left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+};
+
+export const bottomCenterStylesAfter = {
+  backgroundImage: `linear-gradient(to bottom right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+};
+
+export const alignedStylesAfter = { bg: tooltipBackgroundColor };
 
 export const leftStyles = {
   ...alignedMaxWidth,
@@ -48,7 +65,10 @@ export const leftStyles = {
   left: 'calc(50% - 14rem)',
 } as const;
 
-export const leftStylesAfter = { right: '1.5rem' } as const;
+export const leftStylesAfter = {
+  right: '1.5rem',
+  ...alignedStylesAfter,
+} as const;
 
 export const rightStyles = {
   ...alignedMaxWidth,
@@ -57,12 +77,17 @@ export const rightStyles = {
 
 export const rightStylesAfter = {
   left: '1.5rem',
+  ...alignedStylesAfter,
 } as const;
 
-const tooltipVariantStyles = createVariantsFromAlignments(
-  toolTipAlignmentArray,
+export const tooltipVariantStyles = createVariantsFromAlignments(
+  tipAlignmentArray,
   createToolTipVariantFromAlignment
 );
+
+const centeredBodyStyles = { m: 'auto', p: 4, textAlign: 'center' } as const;
+
+const alignedBodyStyles = { p: 16 } as const;
 
 export const toolTipAlignmentVariants = variant({
   prop: 'alignment',
@@ -74,11 +99,9 @@ export const toolTipAlignmentVariants = variant({
     transitionDelay: `${timing.fast}`,
     position: 'absolute',
     width: '70vw',
-    zIndex: 1,
     opacity: 0,
     visibility: 'hidden',
     '&::after': {
-      bg: tooltipBackgroundColor,
       content: '""',
       display: 'block',
       height: `${tooltipArrowHeight}`,
@@ -91,23 +114,55 @@ export const toolTipAlignmentVariants = variant({
   variants: tooltipVariantStyles,
 });
 
-export const toolTipBodyAlignments = variant({
+export const inlineToolTipBodyAlignments = variant({
   prop: 'alignment',
   variants: {
     centered: {
-      m: 'auto',
-      p: 8,
-      textAlign: 'center',
+      ...centeredBodyStyles,
+      ...centerWidths,
     },
     aligned: {
-      p: 16,
+      ...alignedBodyStyles,
+      ...alignedMaxWidth,
+    },
+  },
+});
+
+export const popoverToolTipBodyAlignments = variant({
+  prop: 'alignment',
+  variants: {
+    centered: {
+      ...centeredBodyStyles,
+    },
+    aligned: {
+      ...alignedBodyStyles,
+    },
+  },
+});
+
+export const toolTipWidthRestrictions = variant({
+  prop: 'widthRestricted',
+  variants: {
+    centered: {
+      ...centerWidths,
+    },
+    aligned: {
+      ...alignedMaxWidth,
+    },
+    default: {
+      minWidth: undefined,
+      maxWidth: undefined,
+    },
+    popover: {
+      minWidth: '4rem',
+      maxWidth: '16rem',
     },
   },
 });
 
 export const toolTipBodyCss = {
   bg: tooltipBackgroundColor,
-  color: 'text-accent',
+  color: 'text',
   border: 1,
   boxShadow: 'none',
   borderRadius: '3px',

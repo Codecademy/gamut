@@ -1,5 +1,6 @@
-import { PopoverProps } from '../Popover';
+import { PopoverProps } from '../../Popover';
 import {
+  bottomCenterStylesAfter,
   bottomStyles,
   bottomStylesAfter,
   centerStyles,
@@ -8,25 +9,35 @@ import {
   leftStylesAfter,
   rightStyles,
   rightStylesAfter,
+  topCenterStylesAfter,
   topStyles,
   topStylesAfter,
 } from './styles';
-import { ToolTipInlineProps, ToolTipProps } from './types';
+import { TipPlacementComponentProps } from './types';
 
 export const getPopoverAlignment = ({
   alignment = 'top-left',
-}: Pick<ToolTipInlineProps, 'alignment'>) => {
+  type,
+}: Partial<Pick<TipPlacementComponentProps, 'alignment' | 'type'>>) => {
   const popoverAlignment: Pick<PopoverProps, 'align' | 'beak' | 'position'> = {
     align: 'right',
     beak: 'right',
     position: 'above',
   };
 
+  if (type === 'tool') {
+    popoverAlignment.align = undefined;
+  }
+
   if (alignment.includes('bottom')) popoverAlignment.position = 'below';
 
   if (alignment.includes('right')) {
     popoverAlignment.align = 'left';
     popoverAlignment.beak = 'left';
+  }
+
+  if (alignment.includes('center')) {
+    popoverAlignment.beak = 'center';
   }
 
   return popoverAlignment;
@@ -47,6 +58,11 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
   if (alignment.includes('center')) {
     styleObject = { ...styleObject, ...centerStyles };
     styleObjectAfter = { ...styleObjectAfter, ...centerStylesAfter };
+    if (alignment.includes('top')) {
+      styleObjectAfter = { ...styleObjectAfter, ...topCenterStylesAfter };
+    } else {
+      styleObjectAfter = { ...styleObjectAfter, ...bottomCenterStylesAfter };
+    }
   } else if (alignment.includes('right')) {
     styleObject = { ...styleObject, ...rightStyles };
     styleObjectAfter = { ...styleObjectAfter, ...rightStylesAfter };
@@ -77,31 +93,4 @@ export const escapeKeyPressHandler = (
   if (event.key === 'Escape') {
     (event.target as HTMLElement).blur();
   }
-};
-
-export type ToolTipAccessibiltyProps = Pick<
-  ToolTipProps,
-  'focusable' | 'id'
-> & {
-  isOpenPopoverToolTip?: boolean;
-};
-
-export const getAccessibilityProps = ({
-  focusable,
-  id,
-  isOpenPopoverToolTip,
-}: ToolTipAccessibiltyProps) => {
-  // Since PopoverToolTips are removed from the DOM, when they are inactive they need an aria-label instead of aria-labelledby
-  const labeling =
-    isOpenPopoverToolTip === undefined || isOpenPopoverToolTip
-      ? { 'aria-labelledby': id }
-      : { 'aria-describedby': id };
-  // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
-  // This element still needs tab focus so we must use the `tabIndex=0` hack.
-  return {
-    ...labeling,
-    role: focusable ? 'button' : undefined,
-    tabIndex: focusable ? 0 : undefined,
-    'aria-label': focusable ? 'tooltip' : undefined,
-  };
 };
