@@ -82,7 +82,7 @@ const plugin = (api) => {
         types.jsxElement(ogOpen, ogClose, [newChildren, newerChildren])
       );
 
-      path.node.children.unshift(titleNode);
+      // path.node.children.unshift(titleNode);
       path.skip();
     },
   };
