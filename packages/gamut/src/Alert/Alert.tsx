@@ -136,7 +136,6 @@ export const Alert: React.FC<AlertProps> = ({
   );
 
   const buttonColorMode = isSubtleVariant ? currentColorMode : 'dark';
-  // onClose = false
 
   const ctaButton = ctaExists && (
     <Box
