@@ -85,15 +85,10 @@ export const Alert: React.FC<AlertProps> = ({
       ? `max-content minmax(0, 1fr) repeat(1, max-content)`
       : getGridTemplateColumns({
           cta: ctaExists,
-          // cta: false,
-          // onClose: false,
           onClose: !!onClose,
           truncated,
         });
   }, [ctaExists, isDesktop, onClose, truncated]);
-  // }, [/* /, isDesktop, onClose, truncated]);
-// }, [ctaExists, isDesktop, /* onClose */, truncated]);
-// }, [/* ctaExists */, isDesktop, /* onClose */, truncated]);
 
 
   const alertRightPadding = useMemo(() => {
