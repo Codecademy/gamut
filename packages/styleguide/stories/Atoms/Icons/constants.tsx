@@ -8,6 +8,7 @@ export const VENDOR_ICONS = pick(
   ICONS,
   [
     'AmexIcon',
+    'DiscordIcon',
     'FacebookIcon',
     'FaviconIcon',
     'FaviconSolidIcon',
