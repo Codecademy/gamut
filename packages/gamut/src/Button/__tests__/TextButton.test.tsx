@@ -21,9 +21,9 @@ describe('TextButton', () => {
 
     expect(onClick).toHaveBeenCalled();
   });
-  it('renders an leading icon when an icon is provided', () => {
+  it('renders an leading decorative icon when an icon is provided', () => {
     const { view } = renderView({ icon: StarIcon });
 
-    view.getByTitle('Star Icon');
+    view.getByRole('img', { hidden: true });
   });
 });
