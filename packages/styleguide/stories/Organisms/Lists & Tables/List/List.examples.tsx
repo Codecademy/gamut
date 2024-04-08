@@ -158,7 +158,7 @@ export const CondensedTemplate: React.FC<typeof List> = (args) => (
   </List>
 );
 
-export const NormalTemplate: React.FC<typeof List> = (args, { mode }) => (
+export const NormalTemplate: React.FC<typeof List> = (args) => (
   <List {...args}>
     {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
       <ListRow key={key}>
