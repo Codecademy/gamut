@@ -56,6 +56,7 @@ export const MenuItem = forwardRef<
           size={rest.spacing === 'condensed' ? 16 : 24}
           mr={12}
           data-testid="menuitem-icon"
+          aria-hidden
         />
       )}
       {active && <Text screenreader>{currentItemText[listItemType]},</Text>}

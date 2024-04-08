@@ -34,9 +34,9 @@ export const StepButton: React.FC<StepButtonProps> = ({
       aria-labelledby={`${labelledBy} ${id}`}
     >
       {type === 'up' ? (
-        <ArrowChevronUpIcon className={styles.stepperUp} />
+        <ArrowChevronUpIcon className={styles.stepperUp} aria-hidden />
       ) : (
-        <ArrowChevronDownIcon className={styles.stepperDown} />
+        <ArrowChevronDownIcon className={styles.stepperDown} aria-hidden />
       )}
     </ButtonDeprecated>
   );

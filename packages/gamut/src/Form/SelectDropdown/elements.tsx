@@ -82,7 +82,7 @@ export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {
 
   return (
     <MultiValueRemove {...props}>
-      <MiniDeleteIcon size={12} />
+      <MiniDeleteIcon size={12} aria-hidden />
     </MultiValueRemove>
   );
 };
@@ -126,7 +126,7 @@ export const DropdownButton = (props: SizedIndicatorProps) => {
 
   return (
     <DropdownIndicator {...props}>
-      <IndicatorIcon {...iconProps} color={color} />
+      <IndicatorIcon {...iconProps} color={color} aria-hidden />
     </DropdownIndicator>
   );
 };
@@ -182,7 +182,7 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
       onKeyDown={onKeyPress}
       ref={removeAllButtonRef}
     >
-      <IndicatorIcon {...iconProps} color="text" />
+      <IndicatorIcon {...iconProps} color="text" aria-hidden />
     </CustomStyledRemoveAllDiv>
   );
 };
@@ -228,7 +228,12 @@ export const formatOptionLabel = ({
       <Box display="flex" flexDirection="column">
         <Box>
           {Icon && (
-            <Icon size={size === 'small' ? 16 : 24} color="text" ml={4} />
+            <Icon
+              size={size === 'small' ? 16 : 24}
+              color="text"
+              ml={4}
+              aria-hidden
+            />
           )}
           <Box color={textColor} as="span" pl={Icon ? 16 : 0}>
             {label}
