@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.16.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.16.0...@codecademy/styleguide@66.16.1) (2024-04-08)
+
+### Bug Fixes
+
+- **Alert:** padding issue when no dismiss button ([8232a19](https://github.com/Codecademy/gamut/commit/8232a1948ab967f21fcf35f9e932f0fd12d9a19a))
+
 ## [66.16.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.15.0...@codecademy/styleguide@66.16.0) (2024-04-04)
 
 ### Features
