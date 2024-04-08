@@ -108,7 +108,12 @@ export const ModalDeprecated: React.FC<ModalDeprecatedProps> = ({
               onClick={onRequestClose}
               className={styles.closeButton}
             >
-              <CloseIcon width={22} height={22} className={styles.closeIcon} />
+              <CloseIcon
+                width={22}
+                height={22}
+                className={styles.closeIcon}
+                aria-hidden
+              />
             </ButtonDeprecated>
           </div>
         )}
