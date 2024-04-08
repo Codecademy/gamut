@@ -32,10 +32,10 @@ describe('IconButton', () => {
 
     expect(onClick).toHaveBeenCalled();
   });
-  it('renders an icon ', () => {
+  it('renders a decorative icon', () => {
     const { view } = renderView();
 
-    view.getByTitle('Star Icon');
+    view.getByRole('img', { hidden: true });
   });
 
   // TO-DO: When we upgrade jest, we can use `description` in the tests below to make sure they are semantically connected to buttons.
