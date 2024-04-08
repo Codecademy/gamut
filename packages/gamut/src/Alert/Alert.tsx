@@ -90,6 +90,7 @@ export const Alert: React.FC<AlertProps> = ({
         });
   }, [ctaExists, isDesktop, onClose, truncated]);
 
+
   const alertRightPadding = useMemo(() => {
     return getAlertRightPadding(Boolean(onClose)) ;
   }, [onClose])
