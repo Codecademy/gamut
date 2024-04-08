@@ -17,7 +17,7 @@ export const AlertBanner = forwardRef<
 >(
   (
     {
-      'aria-label': ariaLabel = 'alert box',
+      'aria-label': ariaLabel = 'alert banner',
       'aria-live': ariaLive = 'polite',
       role = 'status',
       ...rest
