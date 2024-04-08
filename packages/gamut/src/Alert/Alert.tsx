@@ -14,7 +14,7 @@ import {
   alertContentProps,
   CollapsableContent,
 } from './elements';
-import { alertVariants, getAlertRightPadding,getGridTemplateColumns } from './variants';
+import { alertVariants, getAlertRightPadding, getGridTemplateColumns } from './variants';
 
 export type AlertType = keyof typeof alertVariants;
 export type AlertPlacements = 'inline' | 'floating';
