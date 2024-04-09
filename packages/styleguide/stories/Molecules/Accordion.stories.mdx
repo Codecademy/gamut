@@ -1,0 +1,33 @@
+
+import { Accordion } from '@codecademy/gamut/src/Accordion';
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+
+// TO ASK: why does this need `.../src/Accordion` when other imports don't?
+<Meta
+  title={title}
+  component={Accordion}
+  parameters={{
+    subtitle: `
+A molecule consisting of a “top” section and an expandable body, such as a “hint” section in the LE or a list of department jobs on a careers page.
+`,
+    source: 'gamut',
+    status: 'current',
+  }}
+  args={{
+    header: 'testing',
+    body: 'testing the body',
+  }}
+/>
+
+## This is a sample
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<Story name="Accordion new"  >
+  {(args) => <Accordion {...args} />}
+</Story>
+
+
+
+
