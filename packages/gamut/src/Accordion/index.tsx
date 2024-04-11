@@ -94,11 +94,8 @@ export const Accordion: React.FC<AccordionProps> = ({
         column
         py={determineVerticalPadding(size)}
         px={determineHorizontalPadding(size)}
-
       >
-        <Text>
-          {overline && overline}
-        </Text>
+
         <StyledAnchor
           aria-label={isExpanded ? 'Collapse Content' : 'Expand Content'}
           aria-expanded={isExpanded}
@@ -106,13 +103,16 @@ export const Accordion: React.FC<AccordionProps> = ({
           width="100%"
           variant="interface"
         >
+          <Text textAlign="start" width="100%">
+            {overline && overline}
+          </Text>
           <FlexBox
             flexDirection={{ _: 'column', sm: 'row' }}
             justifyContent="space-between"
             center
             columnGap={40}
           >
-            <Text alignSelf='start' as={headingLevel}>
+            <Text textAlign='start' as={headingLevel} width="100%">
               {header}
             </Text>
             <Rotation rotated={isExpanded}>
