@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.17.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.16.1...@codecademy/styleguide@66.17.0) (2024-04-11)
+
+### Features
+
+- **Icons:** Add DiscordIcon and GaugeDashboardIcon ([075e370](https://github.com/Codecademy/gamut/commit/075e370e212e9b88bd8ac9858073b7d83ff3402e))
+
 ### [66.16.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.16.0...@codecademy/styleguide@66.16.1) (2024-04-08)
 
 ### Bug Fixes
