@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.17.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.17.0...@codecademy/styleguide@66.17.1) (2024-04-12)
+
+### Bug Fixes
+
+- **storybook:** list story ([511fc72](https://github.com/Codecademy/gamut/commit/511fc72cd6b20050a3d7ec9a99dbcc477d19c495))
+
 ## [66.17.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.16.1...@codecademy/styleguide@66.17.0) (2024-04-11)
 
 ### Features
