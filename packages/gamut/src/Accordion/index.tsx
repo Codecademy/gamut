@@ -29,7 +29,8 @@ export type AccordionProps = {
   display: AccordionDisplayProps
   size: 'normal' | 'condensed' | 'compact',
   colorMode: 'light' | 'dark'
-  overline?: string
+  overline?: string,
+  subheader?: string,
 }
 
 
@@ -40,14 +41,32 @@ const StyledAnchor = styled(Anchor)`
   }
 `;
 
+const StyledAnchorWithStates = styled(Anchor)(css({
+  '&:hover': {
+    color: 'text',
+    textDecoration: 'none',
+    bg: 'background-hover'
+  },
+  '&:focus': {
+    color: 'text',
+    background: 'background-selected'
+  },
+  '&:disabled': {
+    color: 'text-disabled',
+    background: 'background-disabled'
+  }
+}))
+
 const stylingVariants = variant({
   prop: 'style',
   variants: {
     standard: {
-      bg: 'background-current'
+      bg: 'background-current',
+      border: 'solid'
     },
     block: {
-      bg: 'background'
+      bg: 'background',
+      border: 'none'
     }
   }
 })
@@ -78,7 +97,8 @@ export const Accordion: React.FC<AccordionProps> = ({
   display='background-current',
   colorMode='light',
   overline='overline is optional',
-  size='normal'
+  size='normal',
+  subheader='subheader is optional'
 }) => {
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded)
 
@@ -95,15 +115,15 @@ export const Accordion: React.FC<AccordionProps> = ({
         py={determineVerticalPadding(size)}
         px={determineHorizontalPadding(size)}
       >
-
-        <StyledAnchor
+        <StyledAnchorWithStates
           aria-label={isExpanded ? 'Collapse Content' : 'Expand Content'}
           aria-expanded={isExpanded}
           onClick={handleClick}
           width="100%"
           variant="interface"
+          mb={isExpanded? 16 : 0}
         >
-          <Text textAlign="start" width="100%">
+          <Text textAlign="start" width="100%" color='text-secondary'>
             {overline && overline}
           </Text>
           <FlexBox
@@ -119,7 +139,10 @@ export const Accordion: React.FC<AccordionProps> = ({
               { size === 'normal' ? <ArrowChevronDownIcon /> : <MiniChevronDownIcon/> }
             </Rotation>
           </FlexBox>
-        </StyledAnchor>
+          <Text textAlign="start" width="100%">
+            {subheader && subheader}
+          </Text>
+        </StyledAnchorWithStates>
         <Box>
           {isExpanded && <AccordionArea body={body}/>}
         </Box>
