@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.43.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.42.0...@codecademy/gamut-illustrations@0.43.0) (2024-04-15)
+
+### Features
+
+- **Illustration:** Add OfficeAnnouncement Illustration ([#2861](https://github.com/Codecademy/gamut/issues/2861)) ([692ccf1](https://github.com/Codecademy/gamut/commit/692ccf11a465d09b64dec56ff0ea695677095045))
+
 ## [0.42.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.41.1...@codecademy/gamut-illustrations@0.42.0) (2023-12-06)
 
 ### Features
