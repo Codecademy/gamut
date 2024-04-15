@@ -1,6 +1,6 @@
 import { IllustrationProps } from './types';
 
-export const Chapters: React.FC<IllustrationProps> = ({
+export const OfficeAnnouncement: React.FC<IllustrationProps> = ({
   'aria-hidden': ariaHidden,
   className,
   height,
