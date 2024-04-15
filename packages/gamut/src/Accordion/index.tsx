@@ -21,13 +21,13 @@ import { Box, FlexBox } from '../Box';
 // }
 
 // TODO: BODY CAN BE ANYTHING, not just a string!
+// how to make body more flexible?
 export type AccordionProps = {
   header: string,
   headingLevel: 'h1'|'h2'|'h3'|'h4'|'h5',
   body: string,
   bodyBg: boolean,
   initiallyExpanded: boolean,
-  // display: AccordionDisplayProps
   size: 'normal' | 'condensed' | 'compact',
   colorMode: 'light' | 'dark'
   overline?: string,
@@ -37,7 +37,7 @@ export type AccordionProps = {
 }
 
 // NTS: THIS WORKS, but couldn't render background properly
-const StyledAnchor = styled(Anchor)`
+const StyledAnchorCSSonly = styled(Anchor)`
   &:hover,
   &:focus {
     color: ${theme.colors.text};
@@ -89,7 +89,7 @@ const StyledFlexBox = styled(FlexBox)(
   })
 )
 
-const StyledAnchorWithStates = styled(Anchor)(
+const StyledAnchorVariants = styled(Anchor)(
   variant({
     prop: 'appearance',
     base: {
@@ -152,13 +152,19 @@ const stylingVariants = variant({
 })
 
 // THESE CAN PROBABLY BE SOME HELPER FUNCTIONS
-const determineVerticalPadding = (size) => {
+const determineVerticalPadding = (size: Pick<AccordionProps, 'size'>) => {
   const verticalPaddingSizeMapping = {
     'normal': 16,
     'condensed': 8,
     'compact': 4
   }
-  return verticalPaddingSizeMapping[size]
+  const key: keyof typeof verticalPaddingSizeMapping = size
+  // enum verticalPaddingSizeMapping {
+  //   normal= 16,
+  //   condensed= 8,
+  //   compact= 4
+  // }
+  return verticalPaddingSizeMapping[key]
 }
 
 const determineHorizontalPadding = (size) => {
@@ -174,7 +180,7 @@ export const Accordion: React.FC<AccordionProps> = ({
   header,
   headingLevel='h3',
   body,
-  bodyBg=true,
+  bodyBg,
   initiallyExpanded = true,
   // display='background-current',
   colorMode='light',
@@ -196,16 +202,16 @@ export const Accordion: React.FC<AccordionProps> = ({
         width="100%"
         border='solid 1px'
         column
-        py={determineVerticalPadding(size)}
-        px={determineHorizontalPadding(size)}
       >
-        <StyledAnchorWithStates
+        <StyledAnchorVariants
           aria-label={isExpanded ? 'Collapse Content' : 'Expand Content'}
           aria-expanded={isExpanded}
           onClick={handleClick}
           width="100%"
           variant="interface"
           appearance={appearance}
+          py={determineVerticalPadding(size)}
+          px={determineHorizontalPadding(size)}
         >
           <Text textAlign="start" width="100%" color='text-secondary'>
             {overline && overline}
@@ -225,8 +231,11 @@ export const Accordion: React.FC<AccordionProps> = ({
           <Text textAlign="start" width="100%">
             {subheader && subheader}
           </Text>
-        </StyledAnchorWithStates>
-        {isExpanded && <AccordionArea body={body} bodyBg={bodyBg} ctaText={ctaText}/> }
+        </StyledAnchorVariants>
+        {isExpanded && <Box pb={determineVerticalPadding(size)}
+          px={determineHorizontalPadding(size)}>
+          <AccordionArea body={body} bodyBg={bodyBg} ctaText={ctaText} size={size} />
+        </Box> }
       </StyledFlexBox>
     </ColorMode>
   )
