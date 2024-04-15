@@ -3,6 +3,7 @@ import title from '@codecademy/macros/lib/title.macro';
 import { Meta, Story } from '@storybook/addon-docs/blocks';
 
 // TO ASK: why does this need `.../src/Accordion` when other imports don't?
+
 <Meta
   title={title}
   component={Accordion}
@@ -14,9 +15,11 @@ A molecule consisting of a “top” section and an expandable body, such as a �
     status: 'current',
   }}
   args={{
-    header: 'this is the header. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-    display: 'background'
+    header:
+      'this is the header. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    body:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    display: 'background',
   }}
 />
 
@@ -24,10 +27,4 @@ A molecule consisting of a “top” section and an expandable body, such as a �
 
 Edit attributes and see what’s possible to do with this component or get the exact output you want.
 
-<Story name="Accordion new"  >
-  {(args) => <Accordion {...args} />}
-</Story>
-
-
-
-
+<Story name="Accordion new">{(args) => <Accordion {...args} />}</Story>

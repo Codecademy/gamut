@@ -1,4 +1,7 @@
-import { ArrowChevronDownIcon, MiniChevronDownIcon } from '@codecademy/gamut-icons';
+import {
+  ArrowChevronDownIcon,
+  MiniChevronDownIcon,
+} from '@codecademy/gamut-icons';
 import { ColorMode, theme, variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -6,7 +9,7 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 import * as React from 'react';
 
-import { Anchor, Rotation, Text,TextButton, WithChildrenProp } from '..';
+import { Anchor, Rotation, Text, TextButton, WithChildrenProp } from '..';
 import { AccordionArea } from '../AccordionArea';
 import { Box, FlexBox } from '../Box';
 
@@ -23,18 +26,18 @@ import { Box, FlexBox } from '../Box';
 // TODO: BODY CAN BE ANYTHING, not just a string!
 // how to make body more flexible?
 export type AccordionProps = {
-  header: string,
-  headingLevel: 'h1'|'h2'|'h3'|'h4'|'h5',
-  body: string,
-  bodyBg: boolean,
-  initiallyExpanded: boolean,
-  size: 'normal' | 'condensed' | 'compact',
-  colorMode: 'light' | 'dark'
-  overline?: string,
-  subheader?: string,
-  appearance: 'standard' | 'block',
-  ctaText?: string,
-}
+  header: string;
+  headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+  body: string;
+  bodyBg: boolean;
+  initiallyExpanded: boolean;
+  size: 'normal' | 'condensed' | 'compact';
+  colorMode: 'light' | 'dark';
+  overline?: string;
+  subheader?: string;
+  appearance: 'standard' | 'block';
+  ctaText?: string;
+};
 
 // NTS: THIS WORKS, but couldn't render background properly
 const StyledAnchorCSSonly = styled(Anchor)`
@@ -83,11 +86,11 @@ const StyledFlexBox = styled(FlexBox)(
       },
       block: {
         bg: 'background',
-        border: 'none'
-      }
-    }
+        border: 'none',
+      },
+    },
   })
-)
+);
 
 const StyledAnchorVariants = styled(Anchor)(
   variant({
@@ -95,16 +98,16 @@ const StyledAnchorVariants = styled(Anchor)(
     base: {
       '&:hover': {
         color: 'text',
-        bg: 'background-hover'
+        bg: 'background-hover',
       },
       '&:focus': {
         color: 'text',
-        bg: 'background-selected'
+        bg: 'background-selected',
       },
       '&:disabled': {
         color: 'text',
-        bg: 'background-disabled'
-      }
+        bg: 'background-disabled',
+      },
     },
     variants: {
       standard: {
@@ -112,95 +115,97 @@ const StyledAnchorVariants = styled(Anchor)(
       },
       block: {
         bg: 'background',
-        border: 'none'
-      }
-    }
+        border: 'none',
+      },
+    },
   })
-)
+);
 
 // NTS: this doesn't work
-const StyledAnchors2 = styled(Anchor)(variant({
-  variants: {
-    '&:hover': {
-      color: 'text',
-      textDecoration: 'none',
-      bg: 'background-hover'
+const StyledAnchors2 = styled(Anchor)(
+  variant({
+    variants: {
+      '&:hover': {
+        color: 'text',
+        textDecoration: 'none',
+        bg: 'background-hover',
+      },
+      '&:focus': {
+        color: 'text',
+        bg: 'background-selected',
+      },
+      '&:disabled': {
+        color: 'text',
+        bg: 'background-disabled',
+      },
     },
-    '&:focus': {
-      color: 'text',
-      bg: 'background-selected'
-    },
-    '&:disabled': {
-      color: 'text',
-      bg: 'background-disabled'
-    }
-  }
-}))
+  })
+);
 
 const stylingVariants = variant({
   prop: 'appearance',
   variants: {
     standard: {
       bg: 'background-current',
-      border: 'solid'
+      border: 'solid',
     },
     block: {
       bg: 'background',
-      border: 'none'
-    }
-  }
-})
+      border: 'none',
+    },
+  },
+});
 
 // THESE CAN PROBABLY BE SOME HELPER FUNCTIONS
 const determineVerticalPadding = (size: Pick<AccordionProps, 'size'>) => {
   const verticalPaddingSizeMapping = {
-    'normal': 16,
-    'condensed': 8,
-    'compact': 4
-  }
-  const key: keyof typeof verticalPaddingSizeMapping = size
+    normal: 16,
+    condensed: 8,
+    compact: 4,
+  };
+  const key: keyof typeof verticalPaddingSizeMapping = size;
   // enum verticalPaddingSizeMapping {
   //   normal= 16,
   //   condensed= 8,
   //   compact= 4
   // }
-  return verticalPaddingSizeMapping[key]
-}
+  return verticalPaddingSizeMapping[key];
+};
 
 const determineHorizontalPadding = (size) => {
   const horizontalPaddingSizeMapping = {
-    'normal': 16,
-    'condensed': 8,
-    'compact': 8
-  }
-  return horizontalPaddingSizeMapping[size]
-}
+    normal: 16,
+    condensed: 8,
+    compact: 8,
+  };
+  return horizontalPaddingSizeMapping[size];
+};
 
 export const Accordion: React.FC<AccordionProps> = ({
   header,
-  headingLevel='h3',
+  headingLevel = 'h3',
   body,
   bodyBg,
   initiallyExpanded = true,
   // display='background-current',
-  colorMode='light',
-  overline='overline is optional',
-  size='normal',
-  subheader='subheader is optional',
-  appearance='standard',
-  ctaText
+  colorMode = 'light',
+  overline = 'overline is optional',
+  size = 'normal',
+  subheader = 'subheader is optional',
+  appearance = 'standard',
+  ctaText,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(initiallyExpanded)
+  const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
 
   const handleClick = () => {
-    setIsExpanded(prev => !prev)
-  }
+    setIsExpanded((prev) => !prev);
+  };
   return (
     <ColorMode mode={colorMode}>
       <StyledFlexBox
         appearance={appearance}
         width="100%"
-        border='solid 1px'
+        border="solid 1px"
         column
       >
         <StyledAnchorVariants
@@ -213,30 +218,43 @@ export const Accordion: React.FC<AccordionProps> = ({
           py={determineVerticalPadding(size)}
           px={determineHorizontalPadding(size)}
         >
-          <Text textAlign="start" width="100%" color='text-secondary'>
+          <Text textAlign="start" width="100%" color="text-secondary">
             {overline && overline}
           </Text>
           <FlexBox
-            flexDirection='row'
+            flexDirection="row"
             justifyContent="space-between"
             columnGap={40}
           >
-            <Text textAlign='start' as={headingLevel} width="100%">
+            <Text textAlign="start" as={headingLevel} width="100%">
               {header}
             </Text>
             <Rotation rotated={isExpanded}>
-              { size === 'normal' ? <ArrowChevronDownIcon /> : <MiniChevronDownIcon/> }
+              {size === 'normal' ? (
+                <ArrowChevronDownIcon />
+              ) : (
+                <MiniChevronDownIcon />
+              )}
             </Rotation>
           </FlexBox>
           <Text textAlign="start" width="100%">
             {subheader && subheader}
           </Text>
         </StyledAnchorVariants>
-        {isExpanded && <Box pb={determineVerticalPadding(size)}
-          px={determineHorizontalPadding(size)}>
-          <AccordionArea body={body} bodyBg={bodyBg} ctaText={ctaText} size={size} />
-        </Box> }
+        {isExpanded && (
+          <Box
+            pb={determineVerticalPadding(size)}
+            px={determineHorizontalPadding(size)}
+          >
+            <AccordionArea
+              body={body}
+              bodyBg={bodyBg}
+              ctaText={ctaText}
+              size={size}
+            />
+          </Box>
+        )}
       </StyledFlexBox>
     </ColorMode>
-  )
-}
+  );
+};
