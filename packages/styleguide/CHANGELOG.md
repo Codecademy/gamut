@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.17.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.17.2...@codecademy/styleguide@66.17.3) (2024-04-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.17.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.17.1...@codecademy/styleguide@66.17.2) (2024-04-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.17.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.17.0...@codecademy/styleguide@66.17.1) (2024-04-12)
+
+### Bug Fixes
+
+- **storybook:** list story ([511fc72](https://github.com/Codecademy/gamut/commit/511fc72cd6b20050a3d7ec9a99dbcc477d19c495))
+
+## [66.17.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.16.1...@codecademy/styleguide@66.17.0) (2024-04-11)
+
+### Features
+
+- **Icons:** Add DiscordIcon and GaugeDashboardIcon ([075e370](https://github.com/Codecademy/gamut/commit/075e370e212e9b88bd8ac9858073b7d83ff3402e))
+
 ### [66.16.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.16.0...@codecademy/styleguide@66.16.1) (2024-04-08)
 
 ### Bug Fixes
