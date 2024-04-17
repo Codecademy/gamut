@@ -67,7 +67,9 @@
     "ts-jest": "29.1.1",
     "ts-node": "10.9.1",
     "tslib": "2.4.0",
-    "typescript": "5.1.3"
+    "typescript": "5.1.3",
+    "react-freezeframe": "^5.0.2",
+    "freezeframe": "^5.0.2"
   },
   "devDependencies": {
     "onchange": "^7.0.2",

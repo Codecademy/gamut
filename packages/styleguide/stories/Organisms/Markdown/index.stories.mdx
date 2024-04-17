@@ -66,39 +66,8 @@ A common override may be to change the font size of a Heading.
   </Story>
 </Canvas>
 
-Img tags are overwitten by the PausableImage component because of the accessibility benefits it provides.
-When provided with a Gif it allow the user to pause the gif.
-
-<Canvas>
-  <Story
-    name="Image Overrides"
-    args={{
-      text:
-        '<img alt="demonstration of learning environment" src="//images.ctfassets.net/go6kr6r0ykrq/2vjTCK9DmJ6BOd5NtFxNIG/e5ced4209aef5241cd581841fa6e2511/learn-css_box-model_06.16.gif" >',
-    }}
-  >
-    <LayoutGrid gap={16}>
-      <Column size={6}>
-        <Markdown
-          spacing="none"
-          text={
-            '<img src="https://cdn.mos.cms.futurecdn.net/wtqqnkYDYi2ifsWZVW2MT4-1200-80.jpg" alt="beach" data-testid="feature-image">'
-          }
-        />
-      </Column>
-      <Column size={6}>
-        <Markdown
-          spacing="none"
-          text={
-            '<img alt="demonstration of learning environment" src="//images.ctfassets.net/go6kr6r0ykrq/2vjTCK9DmJ6BOd5NtFxNIG/e5ced4209aef5241cd581841fa6e2511/learn-css_box-model_06.16.gif">'
-          }
-        />
-      </Column>
-    </LayoutGrid>
-  </Story>
-</Canvas>
-
-If you need to override a link, iframe, or table, you also need to provide the `skipDefaultOverides` prop.
+Img tags are overwitten by the `PausableImage` component because of the accessibility benefits it provides.
+When provided with a Gif it will allow it to be be pausable.
 
 <Canvas>
   <Story
