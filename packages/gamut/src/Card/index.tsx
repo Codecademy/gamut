@@ -12,11 +12,17 @@ import * as React from 'react';
 
 import { Box } from '../Box';
 
-const outlineStyles = (mode: ColorModes) => ({
-  boxShadow: `-5px 5px ${theme.colors['background-current']}, -5px 5px 0 1px ${theme.colors.black}`,
+const outlineStyles = (mode: ColorModes, variant: boolean) => ({
+  boxShadow: `-5px 5px ${theme.colors['background-current']}, -5px 5px 0 1px ${
+    mode === 'dark' && !variant ? 'white' : theme.colors.black
+  }`,
   '&:hover': {
     transform: 'translate(4px, -4px)',
-    boxShadow: `-8px 8px 0 ${mode === 'dark' ? 'white' : theme.colors.black}`,
+    boxShadow: `-8px 8px 0 ${
+      theme.colors['background-current']
+    }, -8px 8px 0 1px ${
+      mode === 'dark' && !variant ? 'white' : theme.colors.black
+    }`,
   },
 });
 
@@ -26,23 +32,23 @@ const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
       prop: 'shadow',
       base: {
         position: 'relative',
-        boxShadow: `0px 0px 0 currentColor`,
+        boxShadow: `0px 0px 0 ${theme.colors.navy}`,
         transition: 'box-shadow 200ms ease, transform 200ms ease',
       },
       variants: {
         small: {
           '&:hover': {
             transform: 'translate(2px, -2px)',
-            boxShadow: `-4px 4px 0 currentColor`,
+            boxShadow: `-4px 4px 0 ${theme.colors.navy}, -4px 4px 0 1px white`,
           },
         },
         medium: {
           '&:hover': {
             transform: 'translate(4px, -4px)',
-            boxShadow: `-8px 8px 0 currentColor`,
+            boxShadow: `-8px 8px 0 ${theme.colors.navy}, -8px 8px 0 1px white`,
           },
         },
-        outline: outlineStyles(mode),
+        outline: outlineStyles(mode, false),
       },
     })(props)
 );
@@ -52,27 +58,23 @@ const shadowVariants = (mode: ColorModes) =>
     prop: 'shadow',
     base: {
       position: 'relative',
-      boxShadow: `0px 0px 0 currentColor`,
+      boxShadow: `0px 0px 0 ${theme.colors.navy}`,
       transition: 'box-shadow 200ms ease, transform 200ms ease',
     },
     variants: {
       small: {
         '&:hover': {
           transform: 'translate(2px, -2px)',
-          boxShadow: `-4px 4px 0 ${
-            mode === 'dark' ? 'white' : theme.colors.black
-          }`,
+          boxShadow: `-4px 4px 0 ${theme.colors.navy}, -4px 4px 0 1px white`,
         },
       },
       medium: {
         '&:hover': {
           transform: 'translate(4px, -4px)',
-          boxShadow: `-8px 8px 0 ${
-            mode === 'dark' ? 'white' : theme.colors.black
-          }`,
+          boxShadow: `-4px 4px 0 ${theme.colors.navy}, -4px 4px 0 1px white`,
         },
       },
-      outline: outlineStyles(mode),
+      outline: outlineStyles(mode, true),
     },
   });
 
@@ -90,13 +92,6 @@ interface CardWrapperProps {
 const CardWrapper = styled(Background)<CardWrapperProps>(
   ({ mode = 'light', ...props }) => ({
     ...shadowVariants(mode)(props),
-    ...system.states({
-      outline: {
-        '&:hover': {
-          outline: '1px solid currentColor',
-        },
-      },
-    })(props),
   })
 );
 
