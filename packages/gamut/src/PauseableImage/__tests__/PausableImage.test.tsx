@@ -1,17 +1,17 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { waitFor } from '@testing-library/react';
 
-import { PausableImage } from '..';
+import { PauseableImage } from '..';
 
-const renderView = setupRtl(PausableImage);
+const renderView = setupRtl(PauseableImage);
 
 const createImg = (url: string) => ({
   alt: '',
   src: url,
 });
 
-describe('PausableImage', () => {
-  it('renders a pausable image when the URL ends with .gif', async () => {
+describe('PauseableImage', () => {
+  it('renders a pauseable image when the URL ends with .gif', async () => {
     const { view } = renderView({
       ...createImg('image.gif'),
     });

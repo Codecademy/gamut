@@ -1,4 +1,4 @@
-import { PausableImage } from '@codecademy/gamut';
+import { PauseableImage } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -7,7 +7,7 @@ import { LinkTo } from '~styleguide/blocks';
 
 <Meta
   title={title}
-  component={PausableImage}
+  component={PauseableImage}
   parameters={{
     subtitle:
       'Image component that allows for gifs to be pausable for better accesbility.',
@@ -18,29 +18,29 @@ import { LinkTo } from '~styleguide/blocks';
 
 <Canvas>
   <Story
-    name="PausableImage"
+    name="PauseableImage"
     args={{
       src:
         '//images.ctfassets.net/go6kr6r0ykrq/2vjTCK9DmJ6BOd5NtFxNIG/e5ced4209aef5241cd581841fa6e2511/learn-css_box-model_06.16.gif',
       alt: 'demonstration of learning environment',
     }}
   >
-    {(args) => <PausableImage {...args} />}
+    {(args) => <PauseableImage {...args} />}
   </Story>
 </Canvas>
 
-<PropsTable story="PausableImage" />
+<PropsTable story="PauseableImage" />
 
 ## Usage
 
 ```tsx
-import { PausableImage } from '@codecademy/gamut';
+import { PauseableImage } from '@codecademy/gamut';
 
-<PausableImage src="" alt="" />;
+<PauseableImage src="" alt="" />;
 ```
 
 ## Color Modes
 
-PausableImage components respond to the current <LinkTo id="foundations-color-mode--page">Color Mode</LinkTo> they are used in. The button and icon color will correctly display for the current color mode without any extra configuration.
+PauseableImage components respond to the current <LinkTo id="foundations-color-mode--page">Color Mode</LinkTo> they are used in. The button and icon color will correctly display for the current color mode without any extra configuration.
 
 - Use the colormode changer of the top of the page to see the change

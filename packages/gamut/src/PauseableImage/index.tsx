@@ -21,7 +21,7 @@ export const imageStyles = styled.img(
 
 const StaticImage = imageStyles;
 
-export const PausableImage: React.FC<PauseableImageProps> = (props) => {
+export const PauseableImage: React.FC<PauseableImageProps> = (props) => {
   const staticImage = <StaticImage {...props} />;
 
   // Avoid rendering React.Suspense on the server until it's fully supported by React & our applications

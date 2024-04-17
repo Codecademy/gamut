@@ -37,7 +37,7 @@ export * from './ModalDeprecated';
 export * from './Modals';
 export * from './Overlay';
 export * from './Pagination';
-export * from './PausableImage';
+export * from './PauseableImage';
 export * from './Popover';
 export * from './PopoverContainer';
 export * from './ProgressBar';
