@@ -7,9 +7,9 @@ import Freezeframe from 'react-freezeframe';
 
 import { Box } from '../../Box';
 import { FillButton } from '../../Button';
-import { imageStyles, PauseableImageProps } from '..';
+import { imageStyles, PausableImageProps } from '..';
 
-export interface BaseImageProps extends PauseableImageProps {}
+export interface BaseImageProps extends PausableImageProps {}
 
 export const Container = styled(Box)(
   css({

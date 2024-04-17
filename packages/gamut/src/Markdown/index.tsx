@@ -5,7 +5,7 @@ import { PureComponent } from 'react';
 import * as React from 'react';
 import sanitizeMarkdown from 'sanitize-markdown';
 
-import { PauseableImage } from '../PauseableImage';
+import { PausableImage } from '../PausableImage';
 import { omitProps } from '../utils/omitProps';
 import {
   createCodeBlockOverride,
@@ -128,7 +128,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
         }),
       !skipDefaultOverrides.img &&
         createImgOverride('img', {
-          component: PauseableImage,
+          component: PausableImage,
         }),
       ...overrides,
       ...standardOverrides,

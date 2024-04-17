@@ -4,7 +4,7 @@ import * as React from 'react';
 
 const BaseImage = React.lazy(() => import('./BaseImage'));
 
-export interface PauseableImageProps {
+export interface PausableImageProps {
   src: string;
   alt: string;
 }
@@ -21,7 +21,7 @@ export const imageStyles = styled.img(
 
 const StaticImage = imageStyles;
 
-export const PauseableImage: React.FC<PauseableImageProps> = (props) => {
+export const PausableImage: React.FC<PausableImageProps> = (props) => {
   const staticImage = <StaticImage {...props} />;
 
   // Avoid rendering React.Suspense on the server until it's fully supported by React & our applications
