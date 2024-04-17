@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.45.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.44.0...@codecademy/gamut-illustrations@0.45.0) (2024-04-16)
+
+### Features
+
+- **Icons:** add new icons for community event cards ([eda79b9](https://github.com/Codecademy/gamut/commit/eda79b9c2fbb231b7afcb0f1215f90074dcb305e))
+
 ## [0.44.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.43.0...@codecademy/gamut-illustrations@0.44.0) (2024-04-15)
 
 ### Features
