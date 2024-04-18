@@ -2,38 +2,43 @@ import { useState } from 'react';
 import * as React from 'react';
 
 import { TextButton } from '..';
+import { determineHorizontalSpacing, determineVerticalSpacing } from '../Accordion/helpers';
 import { Box, FlexBox } from '../Box';
 import { Text } from '../Typography';
 
 export type AccordionAreaProps = {
-  body: string;
+  body: React.ReactNode;
   bodyBg: boolean;
-  size: 'normal' | 'condensed' | 'compact';
+  spacing: 'normal' | 'condensed' | 'compact';
   ctaText?: string;
 };
 
 export const AccordionArea: React.FC<AccordionAreaProps> = ({
   body,
   bodyBg = true,
-  size,
+  spacing,
   ctaText = 'Button text',
 }) => {
   // Maybe use BACKGROUND instead of box, and then set a box to limit the width
   return (
-    <FlexBox
-      maxWidth="600px"
-      column
-      bg={bodyBg && 'shadow-solid'}
-      p={bodyBg ? 8 : 0}
+    <Box
+      pb={determineVerticalSpacing(spacing)}
+      px={determineHorizontalSpacing(spacing)}
     >
-      <Text width="100%" lineHeight={size === 'compact' ? 1.3 : 1.5}>
-        {body}
-      </Text>
-      {ctaText && (
-        <TextButton alignSelf="flex-end" pt={bodyBg ? 8 : 0}>
-          {ctaText}
-        </TextButton>
-      )}
-    </FlexBox>
+      <FlexBox
+        column
+        bg={bodyBg && 'background-selected'}
+        p={bodyBg ? 8 : 0}
+      >
+        <Text width="100%" lineHeight={spacing === 'compact' ? 'title' : 'base'} maxWidth="600px">
+          {body}
+        </Text>
+        {ctaText && (
+          <TextButton alignSelf="flex-end" pt={bodyBg ? 8 : 0}>
+            {ctaText}
+          </TextButton>
+        )}
+      </FlexBox>
+    </Box>
   );
 };
