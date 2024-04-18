@@ -43,10 +43,10 @@ export const placementVariants = variant({
   prop: 'placement',
   base: {
     alignItems: 'start',
-    columnGap: [4, 8, , 12],
+    columnGap: { _: 4, xs: 8, sm: 12 },
     display: 'grid',
     maxWidth: `calc(${breakpoints.md} - 4rem)`,
-    px: 4,
+    pl: 4,
     width: 1,
   },
   variants: {
@@ -79,4 +79,8 @@ export const getGridTemplateColumns = (
   ).length;
   const repeatCount = numOfButtons <= 0 ? 1 : numOfButtons;
   return `max-content minmax(0, 1fr) repeat(${repeatCount}, max-content)`;
+};
+
+export const getAlertRightPadding = (onClose: boolean) => {
+  return onClose ? 4 : ({ _: 4, xs: 12, sm: 16 } as const);
 };

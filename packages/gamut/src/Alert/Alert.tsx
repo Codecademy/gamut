@@ -14,7 +14,11 @@ import {
   alertContentProps,
   CollapsableContent,
 } from './elements';
-import { alertVariants, getGridTemplateColumns } from './variants';
+import {
+  alertVariants,
+  getAlertRightPadding,
+  getGridTemplateColumns,
+} from './variants';
 
 export type AlertType = keyof typeof alertVariants;
 export type AlertPlacements = 'inline' | 'floating';
@@ -90,6 +94,10 @@ export const Alert: React.FC<AlertProps> = ({
         });
   }, [ctaExists, isDesktop, onClose, truncated]);
 
+  const alertRightPadding = useMemo(() => {
+    return getAlertRightPadding(Boolean(onClose));
+  }, [onClose]);
+
   const tabIndex = hidden ? -1 : undefined;
 
   const floatingContent = expanded ? (
@@ -151,12 +159,12 @@ export const Alert: React.FC<AlertProps> = ({
   );
 
   const AlertWrapper = isSubtleVariant ? AlertBox : AlertBanner;
-
   return (
     <AlertWrapper
       bg={bg}
       placement={placement}
       gridTemplateColumns={gridTemplateColumns}
+      pr={alertRightPadding}
       {...props}
     >
       <Icon size={32} aria-hidden p={8} />
@@ -180,11 +188,12 @@ export const Alert: React.FC<AlertProps> = ({
       {onClose && (
         <IconButton
           tabIndex={tabIndex}
-          aria-label="Close Alert"
           variant="secondary"
           size="small"
           onClick={onClose}
           icon={MiniDeleteIcon}
+          tip="Close alert"
+          tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
         />
       )}
     </AlertWrapper>

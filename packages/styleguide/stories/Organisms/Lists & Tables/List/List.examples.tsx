@@ -22,7 +22,7 @@ import {
   TrophyIcon,
 } from '@codecademy/gamut-icons';
 import { Keyhole } from '@codecademy/gamut-illustrations';
-import { ColorMode } from '@codecademy/gamut-styles';
+import { Background } from '@codecademy/gamut-styles';
 import { useState } from 'react';
 import * as React from 'react';
 
@@ -75,7 +75,6 @@ export const DemoCardTemplate: React.FC = (args) => {
               flexDirection="column"
               height="8rem"
               bg="palePink"
-              borderRadius={100}
               justifyContent="center"
               alignItems="center"
               p={8}
@@ -90,140 +89,146 @@ export const DemoCardTemplate: React.FC = (args) => {
   );
 };
 
-export const CondensedTemplate: React.FC<typeof List> = (args, { mode }) => (
-  <ColorMode mode={mode}>
-    <List {...args}>
-      {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
-        <ListRow key={key}>
-          <ListCol size="lg" type="header">
-            <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
-              {name}
-            </Text>
-          </ListCol>
-          <ListCol size="lg">
+export const CondensedTemplate: React.FC<typeof List> = (args) => (
+  <List {...args}>
+    {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
+      <ListRow key={key}>
+        <ListCol size="lg" type="header">
+          <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
+            {name}
+          </Text>
+        </ListCol>
+        <ListCol size="lg">
+          <Text
+            variant="p-small"
+            color="text-disabled"
+            truncate="ellipsis"
+            truncateLines={1}
+          >
+            {role}
+          </Text>
+        </ListCol>
+        <ListCol size="lg" fill>
+          <Text
+            variant="p-small"
+            color="text-disabled"
+            truncate="ellipsis"
+            truncateLines={1}
+          >
+            {ship}
+          </Text>
+        </ListCol>
+        <ListCol size="sm">
+          <Text variant="p-small" color="text-disabled" lineHeight="title">
+            <StreakIcon verticalAlign="bottom" mr={8} />
+            87%
+          </Text>
+        </ListCol>
+        <ListCol size="sm">
+          <Text variant="p-small" color="text-disabled" lineHeight="title">
+            <TrophyIcon verticalAlign="bottom" mr={8} />
+            48%
+          </Text>
+        </ListCol>
+        <ListCol size="sm">
+          <Text variant="p-small" color="text-disabled" lineHeight="title">
+            <StarIcon verticalAlign="bottom" mr={8} />
+            66%
+          </Text>
+        </ListCol>
+        <ListCol>
+          <FillButton size="small">Engage</FillButton>
+        </ListCol>
+        <ListCol type="control">
+          <IconButton
+            icon={MiniKebabMenuIcon}
+            size="small"
+            tip="Options"
+            tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
+          />
+          <IconButton
+            icon={MiniDeleteIcon}
+            size="small"
+            tip="Delete"
+            tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
+          />
+        </ListCol>
+      </ListRow>
+    ))}
+  </List>
+);
+
+export const NormalTemplate: React.FC<typeof List> = (args) => (
+  <List {...args}>
+    {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
+      <ListRow key={key}>
+        <ListCol size="lg" type="header">
+          <FlexBox column>
             <Text
-              variant="p-small"
               color="text-disabled"
-              truncate="ellipsis"
-              truncateLines={1}
-            >
-              {role}
-            </Text>
-          </ListCol>
-          <ListCol size="lg" fill>
-            <Text
+              textTransform="uppercase"
               variant="p-small"
-              color="text-disabled"
-              truncate="ellipsis"
-              truncateLines={1}
             >
               {ship}
             </Text>
-          </ListCol>
-          <ListCol size="sm">
-            <Text variant="p-small" color="text-disabled" lineHeight="title">
-              <StreakIcon verticalAlign="bottom" mr={8} />
-              87%
+            <Text variant="title-xs">{name}</Text>
+          </FlexBox>
+        </ListCol>
+        <ListCol size="md" fill>
+          <FlexBox column>
+            <Text
+              color="text-disabled"
+              textTransform="uppercase"
+              variant="p-small"
+            >
+              Rank
             </Text>
-          </ListCol>
-          <ListCol size="sm">
-            <Text variant="p-small" color="text-disabled" lineHeight="title">
-              <TrophyIcon verticalAlign="bottom" mr={8} />
-              48%
-            </Text>
-          </ListCol>
-          <ListCol size="sm">
-            <Text variant="p-small" color="text-disabled" lineHeight="title">
-              <StarIcon verticalAlign="bottom" mr={8} />
-              66%
-            </Text>
-          </ListCol>
-          <ListCol>
-            <FillButton size="small">Engage</FillButton>
-          </ListCol>
-          <ListCol type="control">
-            <IconButton icon={MiniKebabMenuIcon} size="small" />
-            <IconButton icon={MiniDeleteIcon} size="small" />
-          </ListCol>
-        </ListRow>
-      ))}
-    </List>
-  </ColorMode>
+            <Text variant="title-xs">{role}</Text>
+          </FlexBox>
+        </ListCol>
+        <ListCol fill size="sm">
+          <Text
+            variant="p-small"
+            color="text-disabled"
+            lineHeight="title"
+            mt={4}
+          >
+            <StreakIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+            87%
+          </Text>
+        </ListCol>
+        <ListCol fill size="sm">
+          <Text
+            variant="p-small"
+            color="text-disabled"
+            lineHeight="title"
+            mt={4}
+          >
+            <TrophyIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+            48%
+          </Text>
+        </ListCol>
+        <ListCol fill size="sm">
+          <Text
+            variant="p-small"
+            color="text-disabled"
+            lineHeight="title"
+            mt={4}
+          >
+            <StarIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+            66%
+          </Text>
+        </ListCol>
+        <ListCol size="lg" type="control">
+          <TextButton mr={16}>Hail</TextButton>
+          <FillButton>Engage</FillButton>
+        </ListCol>
+      </ListRow>
+    ))}
+  </List>
 );
 
-export const NormalTemplate: React.FC<typeof List> = (args, { mode }) => (
-  <ColorMode mode={mode}>
-    <List {...args}>
-      {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
-        <ListRow key={key}>
-          <ListCol size="lg" type="header">
-            <FlexBox column>
-              <Text
-                color="text-disabled"
-                textTransform="uppercase"
-                variant="p-small"
-              >
-                {ship}
-              </Text>
-              <Text variant="title-xs">{name}</Text>
-            </FlexBox>
-          </ListCol>
-          <ListCol size="md" fill>
-            <FlexBox column>
-              <Text
-                color="text-disabled"
-                textTransform="uppercase"
-                variant="p-small"
-              >
-                Rank
-              </Text>
-              <Text variant="title-xs">{role}</Text>
-            </FlexBox>
-          </ListCol>
-          <ListCol fill size="sm">
-            <Text
-              variant="p-small"
-              color="text-disabled"
-              lineHeight="title"
-              mt={4}
-            >
-              <StreakIcon size={18} verticalAlign="middle" mr={8} mb={4} />
-              87%
-            </Text>
-          </ListCol>
-          <ListCol fill size="sm">
-            <Text
-              variant="p-small"
-              color="text-disabled"
-              lineHeight="title"
-              mt={4}
-            >
-              <TrophyIcon size={18} verticalAlign="middle" mr={8} mb={4} />
-              48%
-            </Text>
-          </ListCol>
-          <ListCol fill size="sm">
-            <Text
-              variant="p-small"
-              color="text-disabled"
-              lineHeight="title"
-              mt={4}
-            >
-              <StarIcon size={18} verticalAlign="middle" mr={8} mb={4} />
-              66%
-            </Text>
-          </ListCol>
-          <ListCol size="lg" type="control">
-            <TextButton mr={16}>Hail</TextButton>
-            <FillButton>Engage</FillButton>
-          </ListCol>
-        </ListRow>
-      ))}
-    </List>
-  </ColorMode>
-);
-
-const sizes = ['content', 'sm', 'md', 'lg', 'xl'];
+const sizes = ['content', 'sm', 'md', 'lg', 'xl'] as const;
 
 export const ColumnTemplate: React.FC<typeof List> = (args) => {
   return (
@@ -349,8 +354,18 @@ export const ResponsiveTemplate: React.FC<typeof List> = (args) => {
           </Text>
         </ListCol>
         <ListCol type="control">
-          <IconButton icon={MiniKebabMenuIcon} size="small" />
-          <IconButton icon={MiniDeleteIcon} size="small" />
+          <IconButton
+            icon={MiniKebabMenuIcon}
+            size="small"
+            tip="Options"
+            tipProps={{ placement: 'floating' }}
+          />
+          <IconButton
+            icon={MiniDeleteIcon}
+            size="small"
+            tip="Delete"
+            tipProps={{ placement: 'floating' }}
+          />
         </ListCol>
       </ListRow>
     </List>
@@ -484,20 +499,18 @@ export const ExpandableButtonClickRow: React.FC<{
       <ExpandedColumns name={name} role={role} ship={ship} />
       <ListCol size="lg" type="control">
         <TextButton>Hail</TextButton>
-        <IconButton onClick={() => setExpanded(!isExpanded)}>
+        <TextButton onClick={() => setExpanded(!isExpanded)}>
           <Rotation rotated={isExpanded}>
             <MiniChevronDownIcon />
           </Rotation>
-        </IconButton>
+        </TextButton>
       </ListCol>
     </ListRow>
   );
 };
 
-export const ExpandedTemplateRowClick: React.FC<
-  ListProps & { mode: 'light' | 'dark' }
-> = ({ mode, variant }) => (
-  <ColorMode bg="black" mode={mode}>
+export const ExpandedTemplateRowClick: React.FC<ListProps> = ({ variant }) => (
+  <Background bg="black">
     <Box p={8}>
       <List variant={variant}>
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
@@ -505,13 +518,13 @@ export const ExpandedTemplateRowClick: React.FC<
         ))}
       </List>
     </Box>
-  </ColorMode>
+  </Background>
 );
 
-export const ExpandedTemplateButtonClick: React.FC<
-  ListProps & { mode: 'light' | 'dark' }
-> = ({ mode, variant }) => (
-  <ColorMode bg="black" mode={mode}>
+export const ExpandedTemplateButtonClick: React.FC<ListProps> = ({
+  variant,
+}) => (
+  <Background bg="black">
     <Box p={8}>
       <List variant={variant}>
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
@@ -524,5 +537,5 @@ export const ExpandedTemplateButtonClick: React.FC<
         ))}
       </List>
     </Box>
-  </ColorMode>
+  </Background>
 );

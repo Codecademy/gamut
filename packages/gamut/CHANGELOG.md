@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.17.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.2...@codecademy/gamut@55.17.3) (2024-04-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.17.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.1...@codecademy/gamut@55.17.2) (2024-04-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.17.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.0...@codecademy/gamut@55.17.1) (2024-04-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [55.17.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.16.1...@codecademy/gamut@55.17.0) (2024-04-11)
+
+### Features
+
+- **Icons:** Add DiscordIcon and GaugeDashboardIcon ([075e370](https://github.com/Codecademy/gamut/commit/075e370e212e9b88bd8ac9858073b7d83ff3402e))
+
+### [55.16.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.16.0...@codecademy/gamut@55.16.1) (2024-04-08)
+
+### Bug Fixes
+
+- **Alert:** padding issue when no dismiss button ([8232a19](https://github.com/Codecademy/gamut/commit/8232a1948ab967f21fcf35f9e932f0fd12d9a19a))
+
+## [55.16.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.15.0...@codecademy/gamut@55.16.0) (2024-04-04)
+
+### Features
+
+- **ToolTip:** New + Improved ([6aaf2f8](https://github.com/Codecademy/gamut/commit/6aaf2f8f82edb9c5b88a06e2dd4e39f2510da506))
+
+## [55.15.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.14.5...@codecademy/gamut@55.15.0) (2024-04-04)
+
+### Features
+
+- **List:** add overflow prop ([2ebd754](https://github.com/Codecademy/gamut/commit/2ebd7549828e017e9f1250d22d90d858aa41ff77))
+
+### [55.14.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.14.4...@codecademy/gamut@55.14.5) (2024-04-03)
+
+### Bug Fixes
+
+- **storybook:** fix storybook bug with connectedform story ([344cd8b](https://github.com/Codecademy/gamut/commit/344cd8b125a145ccfdc38dc6f0ac5bf2036027d3))
+
+### [55.14.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.14.3...@codecademy/gamut@55.14.4) (2024-04-02)
+
+### Bug Fixes
+
+- **HiddenText:** updated status to deprecated ([ba04142](https://github.com/Codecademy/gamut/commit/ba04142b6645ad461189b8f9ea4c991fb599f10e))
+
+### [55.14.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.14.2...@codecademy/gamut@55.14.3) (2024-03-29)
+
+### Bug Fixes
+
+- Color Mode BoxShadow for cards ([bd84e2b](https://github.com/Codecademy/gamut/commit/bd84e2b518403b7d94f70f00cd22ec927e63f15e))
+
 ### [55.14.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.14.1...@codecademy/gamut@55.14.2) (2024-03-21)
 
 **Note:** Version bump only for package @codecademy/gamut

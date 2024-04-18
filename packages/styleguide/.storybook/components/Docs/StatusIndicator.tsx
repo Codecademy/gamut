@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { variant } from '@codecademy/gamut-styles';
+import { css, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 
 export const badgeVariants = variant({
@@ -20,7 +20,7 @@ export const badgeVariants = variant({
   },
 });
 
-export const StatusIndicator = styled.span(badgeVariants);
+export const StatusIndicator = styled.span(badgeVariants, css({ mr: 4 }));
 
 export const StatusTab = styled.div<StyleProps<typeof badgeVariants>>`
   position: absolute;
