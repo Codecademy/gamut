@@ -19,7 +19,6 @@ export const AccordionArea: React.FC<AccordionAreaProps> = ({
   spacing,
   ctaText = 'Button text',
 }) => {
-  // Maybe use BACKGROUND instead of box, and then set a box to limit the width
   return (
     <Box
       pb={determineVerticalSpacing(spacing)}
@@ -30,11 +29,12 @@ export const AccordionArea: React.FC<AccordionAreaProps> = ({
         bg={bodyBg && 'background-selected'}
         p={bodyBg ? 8 : 0}
       >
-        <Text width="100%" lineHeight={spacing === 'compact' ? 'title' : 'base'} maxWidth="600px">
+        <Text width="100%" lineHeight={spacing === 'compact' ? 'title' : 'base'}>
           {body}
         </Text>
         {ctaText && (
-          <TextButton alignSelf="flex-end" pt={bodyBg ? 8 : 0}>
+          // Add onclick prop
+          <TextButton alignSelf="flex-end" pt={bodyBg ? 8 : 0} >
             {ctaText}
           </TextButton>
         )}
