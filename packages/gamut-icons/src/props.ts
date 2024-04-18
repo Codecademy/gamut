@@ -23,11 +23,11 @@ export interface GamutBaseIconProps
 }
 
 interface GamutHiddenIconProps extends GamutBaseIconProps {
-  'aria-hidden': true;
+  'aria-hidden'?: true;
   'aria-label'?: never;
 }
 interface GamutVisibleIconProps extends GamutBaseIconProps {
-  'aria-hidden'?: false;
+  'aria-hidden': false;
   'aria-label': string;
 }
 

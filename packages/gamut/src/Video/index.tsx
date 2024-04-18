@@ -15,7 +15,7 @@ const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
       role="button"
       aria-label={`play video${videoTitle ? `: ${videoTitle}` : ''}`}
     >
-      <PlayIcon className={styles.hoverButton} aria-hidden />
+      <PlayIcon className={styles.hoverButton} />
     </div>
   );
 };

@@ -146,7 +146,7 @@ export const Alert: React.FC<AlertProps> = ({
           aria-label={expanded ? 'Collapse' : 'Expand'}
         >
           <Rotation rotated={toggleState === 'expanded'}>
-            <MiniChevronDownIcon aria-hidden />
+            <MiniChevronDownIcon />
           </Rotation>
         </TextButton>
       </ToolTip>

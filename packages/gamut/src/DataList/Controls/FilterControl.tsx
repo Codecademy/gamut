@@ -131,7 +131,6 @@ export const FilterControl: React.FC<FilterProps> = ({
       >
         <FlexBox center dimensions={16} mb={4} mr={4}>
           <FilterIcon
-            aria-hidden
             size={14}
             color={filters.length > 0 ? 'primary' : 'text'}
           />

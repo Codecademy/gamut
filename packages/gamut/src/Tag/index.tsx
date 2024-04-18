@@ -34,7 +34,7 @@ export const Tag: React.FC<TagProps> = ({
             aria-label={`Dismiss ${children} Tag`}
             onClick={onDismiss || undefined}
           >
-            <MiniDeleteIcon size={12} color="inherit" aria-hidden />
+            <MiniDeleteIcon size={12} color="inherit" />
           </DismissButton>
         )}
       </TagWrapper>
