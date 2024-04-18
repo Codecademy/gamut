@@ -13,7 +13,7 @@ describe('Compiled gamut-icons:', () => {
     expect(svgEl.getAttribute('aria-hidden')).toEqual('true');
   });
 
-  it('Sets a mask and maskiid automatically', () => {
+  it('Sets a mask and maskid automatically', () => {
     renderView({
       size: 1,
     });
