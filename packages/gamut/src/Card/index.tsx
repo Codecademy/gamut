@@ -1,7 +1,6 @@
 import {
   Background,
   ColorModes,
-  system,
   theme,
   useColorModes,
   variant,
