@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.23.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.22.0...@codecademy/gamut-icons@9.23.0) (2024-04-18)
+
+### Features
+
+- **Icons:** add new icons miniThumbsUpIcon and miniThumbsDownIcon ([12cfac3](https://github.com/Codecademy/gamut/commit/12cfac3fa541696da67abc50e91ec8325b3b3cd2))
+
+## [9.22.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.21.0...@codecademy/gamut-icons@9.22.0) (2024-04-16)
+
+### Features
+
+- **Icons:** add new icons for community event cards ([eda79b9](https://github.com/Codecademy/gamut/commit/eda79b9c2fbb231b7afcb0f1215f90074dcb305e))
+
 ## [9.21.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.20.0...@codecademy/gamut-icons@9.21.0) (2024-04-11)
 
 ### Features
