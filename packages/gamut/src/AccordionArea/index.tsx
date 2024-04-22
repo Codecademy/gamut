@@ -6,18 +6,21 @@ import { determineHorizontalSpacing, determineVerticalSpacing } from '../Accordi
 import { Box, FlexBox } from '../Box';
 import { Text } from '../Typography';
 
-export type AccordionAreaProps = {
+export interface AccordionAreaProps {
   body: React.ReactNode;
-  bodyBg: boolean;
-  spacing: 'normal' | 'condensed' | 'compact';
+  bodyBg: boolean
   ctaText?: string;
-};
+  spacing: 'normal' | 'condensed' | 'compact';
+  ctaCallback: () => void;
+}
 
 export const AccordionArea: React.FC<AccordionAreaProps> = ({
   body,
   bodyBg = true,
   spacing,
+  // Remove this default later
   ctaText = 'Button text',
+  ctaCallback,
 }) => {
   return (
     <Box
@@ -34,7 +37,7 @@ export const AccordionArea: React.FC<AccordionAreaProps> = ({
         </Text>
         {ctaText && (
           // Add onclick prop
-          <TextButton alignSelf="flex-end" pt={bodyBg ? 8 : 0} >
+          <TextButton alignSelf="flex-end" pt={bodyBg ? 8 : 0} onClick={() => ctaCallback()}>
             {ctaText}
           </TextButton>
         )}
