@@ -1,3 +1,5 @@
+import { states, variant } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import { useState } from 'react';
 import * as React from 'react';
 
@@ -8,40 +10,66 @@ import { Text } from '../Typography';
 
 export interface AccordionAreaProps {
   body: React.ReactNode;
-  bodyBg: boolean
+  areaBackground: 'default' | 'withBackground';
   ctaText?: string;
   spacing: 'normal' | 'condensed' | 'compact';
   ctaCallback: () => void;
 }
 
+// TODO: make this into a state instead (it's boolean)
+// shouldn't use background-current
+// const MoreStyledFlexBox = styled(FlexBox)(
+//   variant({
+//     prop: 'areaBackground',
+//     defaultVariant: 'default',
+//     variants: {
+//       default: {
+//         bg: 'background-current',
+//       },
+//       withBackground: {
+//         bg: 'background-selected',
+//         p: 8
+//       },
+//     },
+//   })
+// )
+
+const MoreStyledFlexBox = styled(FlexBox)(
+  states({
+    withBackground: {
+      bg: 'background-selected',
+      p: 8
+    },
+  })
+)
+
 export const AccordionArea: React.FC<AccordionAreaProps> = ({
   body,
-  bodyBg = true,
+  areaBackground,
   spacing,
   // Remove this default later
   ctaText = 'Button text',
   ctaCallback,
 }) => {
   return (
-    <Box
-      pb={determineVerticalSpacing(spacing)}
-      px={determineHorizontalSpacing(spacing)}
+    <MoreStyledFlexBox
+      column
+      // areaBackground={areaBackground}
+      withBackground
+      mb={determineVerticalSpacing(spacing)}
+      mx={determineHorizontalSpacing(spacing)}
     >
-      <FlexBox
-        column
-        bg={bodyBg && 'background-selected'}
-        p={bodyBg ? 8 : 0}
-      >
-        <Text width="100%" lineHeight={spacing === 'compact' ? 'title' : 'base'}>
-          {body}
-        </Text>
-        {ctaText && (
-          // Add onclick prop
-          <TextButton alignSelf="flex-end" pt={bodyBg ? 8 : 0} onClick={() => ctaCallback()}>
-            {ctaText}
-          </TextButton>
-        )}
-      </FlexBox>
-    </Box>
+      <Text width="100%" lineHeight={spacing === 'compact' ? 'title' : 'base'}>
+        {body}
+      </Text>
+      {ctaText && (
+        // Add onclick prop
+        <TextButton
+          alignSelf="flex-end"
+          pt={areaBackground === 'withBackground' ? 8 : 0} onClick={() => ctaCallback()}>
+          {ctaText}
+        </TextButton>
+      )}
+    </MoreStyledFlexBox>
   );
 };

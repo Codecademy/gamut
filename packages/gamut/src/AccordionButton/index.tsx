@@ -43,6 +43,7 @@ const StyledAnchorVariants = styled(Anchor)(
 );
 
 export interface AccordionButtonProps {
+  // TODO:  pull it directly from variant call
   spacing: 'normal' | 'condensed' | 'compact';
   header: string;
   headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';

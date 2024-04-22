@@ -1,18 +1,13 @@
-import {
-  ArrowChevronDownIcon,
-  MiniChevronDownIcon,
-} from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion  } from 'framer-motion';
-// import { breakpoints, useCurrentMode } from '@codecademy/gamut-styles';
 import { useState } from 'react';
 import * as React from 'react';
 
-import { Anchor, Rotation, Text, TextButton, TextProps, WithChildrenProp } from '..';
+import { WithChildrenProp } from '..';
 import { AccordionArea, AccordionAreaProps } from '../AccordionArea';
 import { AccordionButton, AccordionButtonProps  } from '../AccordionButton';
-import { Box, FlexBox } from '../Box';
+import { FlexBox } from '../Box';
 
 const ExpandInCollapseOut: React.FC<WithChildrenProp> = ({ children }) => {
   return (
@@ -31,7 +26,6 @@ const ExpandInCollapseOut: React.FC<WithChildrenProp> = ({ children }) => {
     </motion.div>
   );
 };
-
 
 interface AccordionProps extends AccordionButtonProps, AccordionAreaProps {
   initiallyExpanded: boolean;
@@ -54,17 +48,20 @@ const StyledFlexBox = styled(FlexBox)(
   })
 )
 
+
+// Appearances can be made optional and given a reasonable default value
 export const Accordion: React.FC<AccordionProps> = ({
   disabled=false,
   header,
   variant,
   headingLevel = 'h3',
   initiallyExpanded = true,
+  // Remove these defaults later (maybe keep spacing)
   overline = 'overline is optional',
   spacing = 'normal',
   subheader = 'subheader is optional',
   body,
-  bodyBg,
+  areaBackground,
   ctaText,
   ctaCallback,
 }) => {
@@ -89,17 +86,22 @@ export const Accordion: React.FC<AccordionProps> = ({
       />
       <AnimatePresence>
         {isExpanded && (
-            <ExpandInCollapseOut>
-              <AccordionArea
-                body={body}
-                bodyBg={bodyBg}
-                ctaText={ctaText}
-                spacing={spacing}
-                ctaCallback={ctaCallback}
-              />
-            </ExpandInCollapseOut>
+          <ExpandInCollapseOut>
+            <AccordionArea
+              body={body}
+              areaBackground={areaBackground}
+              ctaText={ctaText}
+              spacing={spacing}
+              ctaCallback={ctaCallback}
+            />
+          </ExpandInCollapseOut>
         )}
       </AnimatePresence>
     </StyledFlexBox>
   );
 };
+
+// const testAcc: React.FC<> = () => (
+//   <Accordion
+//     initiallyExpanded/>
+// )
