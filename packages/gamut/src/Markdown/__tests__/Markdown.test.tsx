@@ -7,6 +7,13 @@ import * as React from 'react';
 
 import { Markdown } from '../index';
 
+jest.mock('../../PausableImage/BaseImage', () => ({ src }: { src: string }) => (
+  <>
+    <img alt="" src={`frozen-${src}`} />
+    <span>Pause animated image</span>
+  </>
+));
+
 const basicMarkdown = `
 # Heading 1
 
