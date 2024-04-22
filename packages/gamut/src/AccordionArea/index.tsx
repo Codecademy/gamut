@@ -12,7 +12,7 @@ export interface AccordionAreaProps {
   body: React.ReactNode;
   areaBackground: 'default' | 'withBackground';
   ctaText?: string;
-  spacing: 'normal' | 'condensed' | 'compact';
+  spacing?: 'normal' | 'condensed' | 'compact';
   ctaCallback: () => void;
 }
 

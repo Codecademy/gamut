@@ -44,14 +44,14 @@ const StyledAnchorVariants = styled(Anchor)(
 
 export interface AccordionButtonProps {
   // TODO:  pull it directly from variant call
-  spacing: 'normal' | 'condensed' | 'compact';
+  spacing?: 'normal' | 'condensed' | 'compact';
   header: string;
   headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
   overline?: string;
   subheader?: string;
   isExpanded: boolean;
   setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>,
-  disabled: boolean,
+  disabled?: boolean,
 }
 
 export const AccordionButton: React.FC<AccordionButtonProps> = ({
