@@ -38,6 +38,7 @@ export const VENDOR_ICONS = pick(
     'VisaIcon',
     'YoutubeIcon',
     'XIcon',
+    'YoutubePlayIcon',
   ].sort()
 );
 
