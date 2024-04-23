@@ -5,16 +5,11 @@ import * as React from 'react';
 
 import { TextButton } from '..';
 import { determineHorizontalSpacing, determineVerticalSpacing } from '../Accordion/helpers';
+import { AccordionAreaProps } from '../Accordion/types';
 import { Box, FlexBox } from '../Box';
 import { Text } from '../Typography';
 
-export interface AccordionAreaProps {
-  body: React.ReactNode;
-  areaBackground: 'default' | 'withBackground';
-  ctaText?: string;
-  spacing?: 'normal' | 'condensed' | 'compact';
-  ctaCallback: () => void;
-}
+
 
 // TODO: make this into a state instead (it's boolean)
 // shouldn't use background-current
@@ -34,7 +29,7 @@ export interface AccordionAreaProps {
 //   })
 // )
 
-const MoreStyledFlexBox = styled(FlexBox)(
+const StyledFlexBox = styled(FlexBox)(
   states({
     withBackground: {
       bg: 'background-selected',
@@ -45,16 +40,15 @@ const MoreStyledFlexBox = styled(FlexBox)(
 
 export const AccordionArea: React.FC<AccordionAreaProps> = ({
   body,
-  areaBackground,
-  spacing,
+  withBackground='false',
+  spacing='normal',
   // Remove this default later
   ctaText = 'Button text',
   ctaCallback,
 }) => {
   return (
-    <MoreStyledFlexBox
+    <StyledFlexBox
       column
-      // areaBackground={areaBackground}
       withBackground
       mb={determineVerticalSpacing(spacing)}
       mx={determineHorizontalSpacing(spacing)}
@@ -66,10 +60,10 @@ export const AccordionArea: React.FC<AccordionAreaProps> = ({
         // Add onclick prop
         <TextButton
           alignSelf="flex-end"
-          pt={areaBackground === 'withBackground' ? 8 : 0} onClick={() => ctaCallback()}>
+          pt={withBackground ? 8 : 0} onClick={() => ctaCallback()}>
           {ctaText}
         </TextButton>
       )}
-    </MoreStyledFlexBox>
+    </StyledFlexBox>
   );
 };

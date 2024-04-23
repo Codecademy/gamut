@@ -8,6 +8,7 @@ import * as React from 'react';
 
 import { Anchor, Rotation, Text } from '..';
 import { determineHorizontalSpacing, determineVerticalSpacing } from '../Accordion/helpers';
+import { AccordionButtonProps } from '../Accordion/types';
 import { Box, FlexBox } from '../Box';
 
 
@@ -41,18 +42,6 @@ const StyledAnchorVariants = styled(Anchor)(
     },
   })
 );
-
-export interface AccordionButtonProps {
-  // TODO:  pull it directly from variant call
-  spacing?: 'normal' | 'condensed' | 'compact';
-  header: string;
-  headingLevel: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
-  overline?: string;
-  subheader?: string;
-  isExpanded: boolean;
-  setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>,
-  disabled?: boolean,
-}
 
 export const AccordionButton: React.FC<AccordionButtonProps> = ({
   spacing='normal',

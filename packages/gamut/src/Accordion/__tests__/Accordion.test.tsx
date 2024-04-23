@@ -45,14 +45,15 @@ const renderView = setupRtl(Accordion,  defaultProps);
 // 5. when the button is clicked ctaCallback is called
 describe('Accordion', () => {
   it('displays the body when clicked', ()=> {
-    const { view } = renderView({initiallyExpanded: false});
+    const { view } = renderView({initiallyExpanded: false, headingLevel: 'h3', withBackground: false });
 
     const AccButton = view.getByRole('button');
-    const AccBodyText = view.queryByText('This should render when expanded')
+    let AccBodyText = view.queryByText('This should render when expanded')
     expect(AccBodyText).toBeNull();
 
     userEvent.click(AccButton)
 
+    AccBodyText = view.queryByText('This should render when expanded')
     expect(AccBodyText).toBeTruthy();
   })
 })

@@ -5,9 +5,10 @@ import { useState } from 'react';
 import * as React from 'react';
 
 import { WithChildrenProp } from '..';
-import { AccordionArea, AccordionAreaProps } from '../AccordionArea';
-import { AccordionButton, AccordionButtonProps  } from '../AccordionButton';
+import { AccordionArea } from '../AccordionArea';
+import { AccordionButton } from '../AccordionButton';
 import { FlexBox } from '../Box';
+import { AccordionProps } from './types';
 
 const ExpandInCollapseOut: React.FC<WithChildrenProp> = ({ children }) => {
   return (
@@ -26,11 +27,6 @@ const ExpandInCollapseOut: React.FC<WithChildrenProp> = ({ children }) => {
     </motion.div>
   );
 };
-
-interface AccordionProps extends AccordionButtonProps, AccordionAreaProps {
-  initiallyExpanded: boolean;
-  variant?: 'default' | 'block'
-}
 
 const StyledFlexBox = styled(FlexBox)(
   variant({
@@ -61,7 +57,7 @@ export const Accordion: React.FC<AccordionProps> = ({
   spacing = 'normal',
   subheader = 'subheader is optional',
   body,
-  areaBackground,
+  withBackground,
   ctaText,
   ctaCallback,
 }) => {
@@ -70,7 +66,6 @@ export const Accordion: React.FC<AccordionProps> = ({
   return (
     <StyledFlexBox
       width="100%"
-      border="solid 1px"
       column
       variant={variant}
     >
@@ -89,7 +84,7 @@ export const Accordion: React.FC<AccordionProps> = ({
           <ExpandInCollapseOut>
             <AccordionArea
               body={body}
-              areaBackground={areaBackground}
+              withBackground={withBackground}
               ctaText={ctaText}
               spacing={spacing}
               ctaCallback={ctaCallback}
@@ -100,8 +95,3 @@ export const Accordion: React.FC<AccordionProps> = ({
     </StyledFlexBox>
   );
 };
-
-// const testAcc: React.FC<> = () => (
-//   <Accordion
-//     initiallyExpanded/>
-// )
