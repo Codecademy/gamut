@@ -1,14 +1,14 @@
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { AnimatePresence, motion  } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import * as React from 'react';
 
 import { WithChildrenProp } from '..';
-import { AccordionArea } from '../AccordionArea';
-import { AccordionButton } from '../AccordionButton';
 import { FlexBox } from '../Box';
-import { AccordionProps } from './types';
+import { DisclosureArea } from '../DisclosureArea';
+import { DisclosureButton } from '../DisclosureButton';
+import { DisclosureProps } from './types';
 
 const ExpandInCollapseOut: React.FC<WithChildrenProp> = ({ children }) => {
   return (
@@ -42,12 +42,11 @@ const StyledFlexBox = styled(FlexBox)(
       },
     },
   })
-)
-
+);
 
 // Appearances can be made optional and given a reasonable default value
-export const Accordion: React.FC<AccordionProps> = ({
-  disabled=false,
+export const Disclosure: React.FC<DisclosureProps> = ({
+  disabled = false,
   header,
   variant,
   headingLevel = 'h3',
@@ -64,12 +63,8 @@ export const Accordion: React.FC<AccordionProps> = ({
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
 
   return (
-    <StyledFlexBox
-      width="100%"
-      column
-      variant={variant}
-    >
-      <AccordionButton
+    <StyledFlexBox width="100%" column variant={variant}>
+      <DisclosureButton
         spacing={spacing}
         header={header}
         headingLevel={headingLevel}
@@ -82,7 +77,7 @@ export const Accordion: React.FC<AccordionProps> = ({
       <AnimatePresence>
         {isExpanded && (
           <ExpandInCollapseOut>
-            <AccordionArea
+            <DisclosureArea
               body={body}
               withBackground={withBackground}
               ctaText={ctaText}

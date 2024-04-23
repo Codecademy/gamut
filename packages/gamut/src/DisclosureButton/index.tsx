@@ -7,10 +7,12 @@ import styled from '@emotion/styled';
 import * as React from 'react';
 
 import { Anchor, Rotation, Text } from '..';
-import { determineHorizontalSpacing, determineVerticalSpacing } from '../Accordion/helpers';
-import { AccordionButtonProps } from '../Accordion/types';
-import { Box, FlexBox } from '../Box';
-
+import { FlexBox } from '../Box';
+import {
+  determineHorizontalSpacing,
+  determineVerticalSpacing,
+} from '../Disclosure/helpers';
+import { DisclosureButtonProps } from '../Disclosure/types';
 
 const StyledAnchorVariants = styled(Anchor)(
   variant({
@@ -43,18 +45,20 @@ const StyledAnchorVariants = styled(Anchor)(
   })
 );
 
-export const AccordionButton: React.FC<AccordionButtonProps> = ({
-  spacing='normal',
+export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
+  spacing = 'normal',
   header,
   headingLevel = 'h3',
   overline = 'overline is optional',
   subheader = 'subheader is optional',
   isExpanded,
   setIsExpanded,
-  disabled=false,
+  disabled = false,
 }) => {
   const handleClick = () => {
-    setIsExpanded((prev: boolean)=> !prev);
+    if (setIsExpanded) {
+      setIsExpanded((prev: boolean) => !prev);
+    }
   };
 
   return (
@@ -68,7 +72,12 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
       px={determineHorizontalSpacing(spacing)}
       disabled={disabled}
     >
-      <Text textAlign="start" width="100%" color="text-secondary" fontFamily="accent">
+      <Text
+        textAlign="start"
+        width="100%"
+        color="text-secondary"
+        fontFamily="accent"
+      >
         {overline && overline}
       </Text>
       <FlexBox
@@ -91,5 +100,5 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
         {subheader && subheader}
       </Text>
     </StyledAnchorVariants>
-  )
-}
+  );
+};

@@ -1,4 +1,4 @@
-export interface AccordionButtonProps {
+export interface DisclosureButtonProps {
   // TODO:  pull it directly from variant call
   spacing?: 'normal' | 'condensed' | 'compact';
   header: string;
@@ -7,11 +7,11 @@ export interface AccordionButtonProps {
   subheader?: string;
   // Is this right? since we're always passing this in for them?
   isExpanded?: boolean;
-  setIsExpanded?: React.Dispatch<React.SetStateAction<boolean>>,
-  disabled?: boolean,
+  setIsExpanded?: React.Dispatch<React.SetStateAction<boolean>>;
+  disabled?: boolean;
 }
 
-export interface AccordionAreaProps {
+export interface DisclosureAreaProps {
   body: React.ReactNode;
   withBackground: boolean;
   ctaText?: string;
@@ -19,7 +19,9 @@ export interface AccordionAreaProps {
   ctaCallback?: () => void;
 }
 
-export interface AccordionProps extends AccordionButtonProps, AccordionAreaProps {
+export interface DisclosureProps
+  extends DisclosureButtonProps,
+    DisclosureAreaProps {
   initiallyExpanded: boolean;
-  variant?: 'default' | 'block'
+  variant?: 'default' | 'block';
 }

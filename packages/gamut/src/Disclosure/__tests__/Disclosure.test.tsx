@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
 
-import { Accordion } from "..";
+import { Accordion } from '..';
 
 // const defaultProps = {
 //   variant: 'default' as const,
@@ -19,8 +19,7 @@ import { Accordion } from "..";
 //   ctaCallback: () => {console.log('got clicked')}
 // };
 
-const ctaCallback = jest.fn()
-
+const ctaCallback = jest.fn();
 
 // will need to change once overline and byline are not default props
 const defaultProps = {
@@ -28,9 +27,9 @@ const defaultProps = {
   body: <div data-testid="contents">This should render when expanded </div>,
   ctaText: 'testing',
   ctaCallback,
-}
+};
 
-const renderView = setupRtl(Accordion,  defaultProps);
+const renderView = setupRtl(Accordion, defaultProps);
 
 // Test cases:
 // Unexpanded:
@@ -44,16 +43,20 @@ const renderView = setupRtl(Accordion,  defaultProps);
 // 4. when there's a cta, there's a ctaCallback
 // 5. when the button is clicked ctaCallback is called
 describe('Accordion', () => {
-  it('displays the body when clicked', ()=> {
-    const { view } = renderView({initiallyExpanded: false, headingLevel: 'h3', withBackground: false });
+  it('displays the body when clicked', () => {
+    const { view } = renderView({
+      initiallyExpanded: false,
+      headingLevel: 'h3',
+      withBackground: false,
+    });
 
     const AccButton = view.getByRole('button');
-    let AccBodyText = view.queryByText('This should render when expanded')
+    let AccBodyText = view.queryByText('This should render when expanded');
     expect(AccBodyText).toBeNull();
 
-    userEvent.click(AccButton)
+    userEvent.click(AccButton);
 
-    AccBodyText = view.queryByText('This should render when expanded')
+    AccBodyText = view.queryByText('This should render when expanded');
     expect(AccBodyText).toBeTruthy();
-  })
-})
+  });
+});

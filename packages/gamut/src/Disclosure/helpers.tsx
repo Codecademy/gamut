@@ -4,7 +4,9 @@ const verticalSpacingMap = {
   compact: 4,
 } as const;
 
-export const determineVerticalSpacing = (spacing: keyof typeof verticalSpacingMap ) => {
+export const determineVerticalSpacing = (
+  spacing: keyof typeof verticalSpacingMap
+) => {
   return verticalSpacingMap[spacing];
 };
 
@@ -14,6 +16,8 @@ const horizontalSpacingMap = {
   compact: 4,
 } as const;
 
-export const determineHorizontalSpacing = (spacing: keyof typeof horizontalSpacingMap) => {
+export const determineHorizontalSpacing = (
+  spacing: keyof typeof horizontalSpacingMap
+) => {
   return horizontalSpacingMap[spacing];
 };
