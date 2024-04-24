@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.24.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.23.0...@codecademy/gamut-icons@9.24.0) (2024-04-24)
+
+### Features
+
+- **EditableIcon:** Add YoutubePlayIcon ([#2867](https://github.com/Codecademy/gamut/issues/2867)) ([83e42bd](https://github.com/Codecademy/gamut/commit/83e42bd8b251be6bd3ebc01227a0ba4eece1b8c9))
+
 ## [9.23.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.22.0...@codecademy/gamut-icons@9.23.0) (2024-04-18)
 
 ### Features
