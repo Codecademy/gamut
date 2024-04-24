@@ -1,3 +1,5 @@
+import { FillButton, StrokeButton, TextButton } from "../Button";
+
 const verticalSpacingMap = {
   normal: 16,
   condensed: 8,
@@ -21,3 +23,33 @@ export const determineHorizontalSpacing = (
 ) => {
   return horizontalSpacingMap[spacing];
 };
+
+export const renderButton = (buttonName: string, ctaText: string , ctaCallback: ()=>void) => {
+  if(buttonName.match(/fill/i)) {
+    return(<FillButton
+      alignSelf="flex-end"
+      pt={8}
+      onClick={ctaCallback ? () => ctaCallback() : undefined}
+    >
+      {ctaText}
+    </FillButton>)
+  } if (buttonName.match(/stroke/i)) {
+    return(<StrokeButton
+      alignSelf="flex-end"
+      pt={8}
+      onClick={ctaCallback ? () => ctaCallback() : undefined}
+    >
+      {ctaText}
+    </StrokeButton>)
+  }
+  return (
+    <TextButton
+      alignSelf="flex-end"
+      pt={8}
+      onClick={ctaCallback ? () => ctaCallback() : undefined}
+    >
+      {ctaText}
+    </TextButton>
+  )
+}
+

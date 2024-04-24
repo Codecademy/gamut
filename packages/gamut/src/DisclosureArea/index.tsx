@@ -2,11 +2,11 @@ import { states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
 
-import { TextButton } from '..';
 import { FlexBox } from '../Box';
 import {
   determineHorizontalSpacing,
   determineVerticalSpacing,
+  renderButton,
 } from '../Disclosure/helpers';
 import { DisclosureAreaProps } from '../Disclosure/types';
 import { Text } from '../Typography';
@@ -22,32 +22,22 @@ const StyledFlexBox = styled(FlexBox)(
 
 export const DisclosureArea: React.FC<DisclosureAreaProps> = ({
   body,
-  withBackground = 'false',
+  withBackground = false,
   spacing = 'normal',
-  // Remove this default later
-  ctaText = 'Button text',
+  ctaText,
   ctaCallback,
 }) => {
   return (
     <StyledFlexBox
       column
-      withBackground
+      withBackground={withBackground}
       mb={determineVerticalSpacing(spacing)}
       mx={determineHorizontalSpacing(spacing)}
     >
       <Text width="100%" lineHeight={spacing === 'compact' ? 'title' : 'base'}>
         {body}
       </Text>
-      {ctaText && (
-        // Add onclick prop
-        <TextButton
-          alignSelf="flex-end"
-          pt={withBackground ? 8 : 0}
-          onClick={ctaCallback ? () => ctaCallback() : undefined}
-        >
-          {ctaText}
-        </TextButton>
-      )}
+      {ctaText && ctaCallback && renderButton("TextButton", ctaText, ctaCallback)}
     </StyledFlexBox>
   );
 };
