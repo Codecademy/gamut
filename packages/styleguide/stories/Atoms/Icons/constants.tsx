@@ -34,10 +34,11 @@ export const VENDOR_ICONS = pick(
     'TikTokIcon',
     'TwitterIcon',
     'TwitterOutlineIcon',
-    'WhatsAppFilledIcon',
     'VisaIcon',
-    'YoutubeIcon',
+    'WhatsAppFilledIcon',
     'XIcon',
+    'YoutubeIcon',
+    'YoutubePlayIcon',
   ].sort()
 );
 
