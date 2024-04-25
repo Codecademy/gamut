@@ -1,9 +1,8 @@
 import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import {
-  IconComponentType,
-} from './shared';
+
+import { IconComponentType } from '../Button/shared';
 
 const colorVariants = variant({
   defaultVariant: 'primary',
@@ -90,25 +89,29 @@ const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
   sizeVariants
 );
 
+const iconSizeMap = {
+  base: 16,
+  sm: 8
+}
 export interface BadgeProps
   extends BadgeBaseProps,
-  StyleProps<typeof iconSizeVariants> {
-  badgeText: string;
-  icon: IconComponentType;
-}
+  StyleProps<typeof iconSizeVariants>,
+  IconComponentType {}
+
 
 export const Badge: React.FC<BadgeProps> = ({
-  icon = Icon,
-  iconSize = 'base',
-  badgeText,
+  icon: Icon,
+  children,
+  ...rest
 }) => {
+  const iconSize = rest?.size ?? 'base'
   return (
-    <BadgeBase>
-      <Icon ><{badgeText}
+    <BadgeBase {...rest}>
+      {Icon && <Icon height={16}/>}
+      {children}
     </BadgeBase>
   )
-})
-
+}
 
 // or something like createButtonComponent from IconButton?
 // probably createButtonComp, since we don't need to redo all the current badges
