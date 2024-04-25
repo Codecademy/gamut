@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.17.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.5...@codecademy/gamut@55.17.6) (2024-04-25)
+
+### Bug Fixes
+
+- **Icons:** remove default title ([7ac11a1](https://github.com/Codecademy/gamut/commit/7ac11a1e233b4bc9bc5ca9deb8cf04e8b0928f88))
+
 ### [55.17.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.4...@codecademy/gamut@55.17.5) (2024-04-24)
 
 **Note:** Version bump only for package @codecademy/gamut
