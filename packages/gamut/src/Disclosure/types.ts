@@ -1,3 +1,5 @@
+import { ButtonProps } from "../Button/shared/types";
+
 export interface DisclosureButtonProps {
   // TODO:  pull it directly from variant call
   spacing?: 'normal' | 'condensed' | 'compact';
@@ -5,23 +7,23 @@ export interface DisclosureButtonProps {
   headingLevel?: 'h2' | 'h3' | 'h4' | 'h5';
   overline?: string;
   subheader?: string;
-  // Is this right? since we're always passing this in for them?
   isExpanded?: boolean;
   setIsExpanded?: React.Dispatch<React.SetStateAction<boolean>>;
   disabled?: boolean;
 }
 
-export interface DisclosureAreaProps {
+export interface DisclosureBodyProps {
   body: React.ReactNode;
-  withBackground: boolean;
+  withBackground?: boolean;
   ctaText?: string;
   spacing?: 'normal' | 'condensed' | 'compact';
   ctaCallback?: () => void;
+  button?: React.ComponentType<ButtonProps>;
 }
 
 export interface DisclosureProps
   extends DisclosureButtonProps,
-    DisclosureAreaProps {
+  DisclosureBodyProps {
   initiallyExpanded: boolean;
   variant?: 'default' | 'block';
 }

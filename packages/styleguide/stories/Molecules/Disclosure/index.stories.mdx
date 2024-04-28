@@ -1,0 +1,142 @@
+import { Disclosure } from '@codecademy/gamut/src/Disclosure';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+// TO ASK: why does this need `.../src/Disclosure` when other imports don't?
+
+<Meta
+  title={title}
+  component={Disclosure}
+  parameters={{
+    subtitle:
+      'A Disclosure is an expandable container featuring a header that serves as a toggle to expand or collapse a content section.',
+    source: 'gamut',
+    status: 'current',
+    padded: true,
+  }}
+  args={{
+    header: 'Disclosure header',
+    body: 'Disclosure body.',
+  }}
+/>
+
+<Story name="Disclosure">{(args) => <Disclosure {...args} />}</Story>
+
+## Usage
+
+Use a Disclosure to progressively reveal information, giving users the option to access additional details as needed. By initially hiding less immediately relevant information, it minimizes cognitive load and boosts content scannability.
+
+Use the List component when presenting a group of disclosures.
+
+## Variants
+
+Disclosure has 2 variants (default, block) and 3 spacing options (normal, condensed, compact)
+
+### Default and Block variants
+
+<Canvas>
+  <Story
+    name="default"
+    args={{
+      header: 'Default variant',
+      body: 'Notice the border and it uses the `background`',
+    }}
+  >
+    {(args) => <Disclosure {...args} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="block"
+    args={{
+      header: 'Block variant',
+      body:
+        'Notice the LACK of border and it uses the `background-current`. Set `variant="block"` to enable this styling.',
+      variant: 'block',
+    }}
+  >
+    {(args) => <Disclosure {...args} />}
+  </Story>
+</Canvas>
+
+### Spacing Options
+
+`spacing` is an optional prop you can pass to `<Disclosure>`. By default it's set to `"normal"`, though you can set it to `"condensed"` or `"compact"` as well. Spacing will determine the height of the header, the size of the chevron icon, as well as the padding of both the header and the body.
+
+<Canvas>
+  <Story
+    name="Normal Spacing"
+    args={{
+      header: 'Normal spacing',
+      body:
+        'Lorem ipsum dolor sit amet consectetur. Ut consectetur adipiscing a donec sed volutpat. Tempor risus rhoncus quisque vel sit mattis. Accumsan vel posuere tortor sit mattis augue congue sit.',
+    }}
+  >
+    {(args) => <Disclosure {...args} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Condensed spacing"
+    args={{
+      header: 'Condensed spacing',
+      body:
+        'Lorem ipsum dolor sit amet consectetur. Ut consectetur adipiscing a donec sed volutpat. Tempor risus rhoncus quisque vel sit mattis. Accumsan vel posuere tortor sit mattis augue congue sit.',
+      spacing: 'condensed',
+    }}
+  >
+    {(args) => <Disclosure {...args} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Compact spacing"
+    args={{
+      header: 'Compact Spacing',
+      body:
+        'Lorem ipsum dolor sit amet consectetur. Ut consectetur adipiscing a donec sed volutpat. Tempor risus rhoncus quisque vel sit mattis. Accumsan vel posuere tortor sit mattis augue congue sit.',
+      spacing: 'compact',
+    }}
+  >
+    {(args) => <Disclosure {...args} />}
+  </Story>
+</Canvas>
+
+### Additional Notes
+
+- `overline` can be given a string value to appear above the header
+- `subheader` can be given a string value to appear below the header
+- `initiallyExpanded` will determine whether or not the Disclosure is expanded upon load. `initiallyExpanded` set to `false` by default.
+- A Disclosure's body can recieve a React Node.
+  - If only providing text, set the max width of the text container to be `600px` for readability's sake.
+- `widthBackground`: is defaulted to `false` but if assigned `true` will render an background with some padding for the text.
+- The Disclosure can be set to `disabled` and rendered unclickable
+  CHANGE THE LINE BELOW ONCE THE BUTTON LOGIC IS FIXED
+- `ctaText`: you can pass in `'TextButton'`|`'StrokeButton'`| `'FillButton'` to provide a button in the body.
+- `ctaCallback`: when providing a `ctaButton` a `ctaCallback` function MUST be included along with the `ctaText`.
+
+## Code Playground
+
+<Canvas>
+  <Story
+    name="Disclosure Playground"
+    args={{
+      header: "All the fixin's",
+      body: `Lorem ipsum dolor sit amet consectetur. Ut consectetur adipiscing a donec sed volutpat. Tempor risus rhoncus quisque vel sit mattis. Accumsan vel posuere tortor sit mattis augue congue sit.`,
+      overline: 'overline is text-secondary and fontFamily: accent',
+      subheader: 'subheader is text-secondary',
+      ctaText: 'Optional button - must include a callback!',
+      ctaCallback: () => {},
+      withBackground: true,
+      initiallyExpanded: true,
+    }}
+  >
+    {(args) => <Disclosure {...args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="Disclosure Playground" />

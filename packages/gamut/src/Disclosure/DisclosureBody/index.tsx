@@ -2,14 +2,14 @@ import { states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
 
-import { FlexBox } from '../Box';
+import { FlexBox } from '../../Box';
+import { Text } from '../../Typography';
 import {
   determineHorizontalSpacing,
   determineVerticalSpacing,
   renderButton,
-} from '../Disclosure/helpers';
-import { DisclosureAreaProps } from '../Disclosure/types';
-import { Text } from '../Typography';
+} from '../helpers';
+import { DisclosureBodyProps } from '../types';
 
 const StyledFlexBox = styled(FlexBox)(
   states({
@@ -20,13 +20,15 @@ const StyledFlexBox = styled(FlexBox)(
   })
 );
 
-export const DisclosureArea: React.FC<DisclosureAreaProps> = ({
+export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
   body,
   withBackground = false,
   spacing = 'normal',
   ctaText,
   ctaCallback,
+  // button: Button,
 }) => {
+  // const buttonExists = Boolean(Button)
   return (
     <StyledFlexBox
       column
@@ -37,7 +39,12 @@ export const DisclosureArea: React.FC<DisclosureAreaProps> = ({
       <Text width="100%" lineHeight={spacing === 'compact' ? 'title' : 'base'}>
         {body}
       </Text>
-      {ctaText && ctaCallback && renderButton("TextButton", ctaText, ctaCallback)}
+      {/* This is a placeholder for now, not sure why I can't get Button to render... trying to coerce it into a boolean doesn't seem to work (or it's coming back falsy) */}
+      {ctaText &&
+        ctaCallback &&
+        renderButton('TextButton', ctaText, ctaCallback)}
+      {/* { (ctaText && ctaCallback && Boolean(Button)) ? 'something' : Button
+      } */}
     </StyledFlexBox>
   );
 };
