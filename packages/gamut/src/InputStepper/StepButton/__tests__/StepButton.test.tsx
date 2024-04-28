@@ -8,6 +8,20 @@ const renderView = setupRtl(StepButton, {
   labelledBy: '',
 });
 
+jest.mock('@codecademy/gamut-icons', () => ({
+  ...jest.requireActual<{}>('@codecademy/gamut-icons'),
+  ArrowChevronDownIcon: () => (
+    <svg>
+      <title>Arrow Chevron Down Icon</title>
+    </svg>
+  ),
+  ArrowChevronUpIcon: () => (
+    <svg>
+      <title>Arrow Chevron Up Icon</title>
+    </svg>
+  ),
+}));
+
 describe('<StepButton>', () => {
   it('shows the up chevron when used as an incrementer', () => {
     const { view } = renderView();
