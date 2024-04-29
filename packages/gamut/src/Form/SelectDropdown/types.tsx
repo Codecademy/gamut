@@ -1,9 +1,8 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { StyleProps } from '@codecademy/variance';
-import { ReactNode, Ref, SelectHTMLAttributes } from 'react';
+import { Ref, SelectHTMLAttributes } from 'react';
 import * as React from 'react';
 import {
-  ContainerProps,
   DropdownIndicatorProps,
   GroupBase,
   Props as NamedProps,
