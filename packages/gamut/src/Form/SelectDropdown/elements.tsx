@@ -267,6 +267,7 @@ export const formatOptionLabel = ({
           textAlign="right"
           fontSize={14}
           aria-label={rightLabel}
+          pr={16}
         >
           {rightLabel}
         </Box>

@@ -164,43 +164,22 @@ export const SelectDropdownOptionVariantsExample: React.FC = () => (
           name="extended-dropdown"
           options={[
             {
-              options: [
-                {
-                  label: 'king@chess.com',
-                  subtitle: 'The King of Chess',
-                  value: 'xxx',
-                  disabled: true,
-                },
-                {
-                  label: 'queen@chess.com',
-                  rightLabel: 'The Queen of Chess',
-                  value: 'yyy',
-                },
-                {
-                  label: 'bishop@chess.com',
-                  subtitle: 'Bishop Chess',
-                  rightLabel: 'I can move diagonally',
-                  value: 'zzz',
-                  disabled: false,
-                },
-              ],
+              label: 'king@chess.com',
+              subtitle: 'The King of Chess',
+              value: 'xxx',
+              disabled: true,
             },
             {
-              divider: true,
-              options: [
-                {
-                  label: 'knight@chess.com',
-                  subtitle: 'Sir Chess',
-                  rightLabel: 'By leaps and bounds',
-                  value: 'zzz',
-                  disabled: true,
-                },
-                {
-                  label: 'pawn@chess.com',
-                  value: 'zzz',
-                  disabled: false,
-                },
-              ],
+              label: 'queen@chess.com',
+              rightLabel: 'The Queen of Chess',
+              value: 'yyy',
+            },
+            {
+              label: 'bishop@chess.com',
+              subtitle: 'Bishop Chess',
+              rightLabel: 'I can move diagonally',
+              value: 'zzz',
+              disabled: false,
             },
           ]}
         />
