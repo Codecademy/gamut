@@ -120,10 +120,6 @@ export interface OptionStrict {
   value: string;
 }
 
-export interface CustomContainerProps extends ContainerProps<unknown, false> {
-  children: ReactNode[];
-}
-
 export type ProgramaticFocusRef =
   | React.MutableRefObject<HTMLDivElement>
   | React.MutableRefObject<null>;
@@ -139,6 +135,10 @@ export type SizedIndicatorProps = DropdownIndicatorProps<
   GroupBase<OptionStrict>
 > &
   InternalSelectProps;
+
+export type CustomSelectComponentProps<
+  T extends React.JSXElementConstructor<any>
+> = React.ComponentProps<T> & InternalSelectProps;
 
 export interface TypedReactSelectProps extends ReactSelectAdditionalProps {
   selectRef?: Ref<any>;

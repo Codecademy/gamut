@@ -1,6 +1,6 @@
 import {
   ArrowChevronDownIcon,
-  CheckCircledIcon,
+  CheckIcon,
   CloseIcon,
   MiniChevronDownIcon,
   MiniDeleteIcon,
@@ -8,13 +8,7 @@ import {
 } from '@codecademy/gamut-icons';
 import { ColorMode, css, theme, useColorModes } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import {
-  ComponentProps,
-  createContext,
-  CSSProperties,
-  KeyboardEvent,
-  useContext,
-} from 'react';
+import { createContext, CSSProperties, KeyboardEvent, useContext } from 'react';
 import ReactSelect, {
   AriaOnFocus,
   components as SelectDropdownElements,
@@ -26,7 +20,7 @@ import ReactSelect, {
 
 import { Box } from '../../Box';
 import {
-  CustomContainerProps,
+  CustomSelectComponentProps,
   ExtendedOption,
   SelectDropdownContextValueTypes,
   SelectDropdownGroup,
@@ -199,9 +193,8 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
 export const CustomContainer = ({
   children,
   ...rest
-}: CustomContainerProps) => {
-  // in the react-select documentation, this line is ts-ignore'd so its safe to say there's no nice way to do this.
-  const { inputProps, name } = rest.selectProps as any;
+}: CustomSelectComponentProps<typeof SelectContainer>) => {
+  const { inputProps, name } = rest.selectProps;
 
   const value = rest.hasValue
     ? rest
@@ -221,11 +214,15 @@ export const CustomContainer = ({
 export const IconOption = ({
   children,
   ...rest
-}: ComponentProps<typeof Option>) => {
-  console.log('cass', rest);
+}: CustomSelectComponentProps<typeof Option>) => {
+  const { size } = rest.selectProps;
+
   return (
     <Option {...rest}>
-      {children} {rest?.isSelected && <CheckCircledIcon />}
+      {children}
+      {rest?.isSelected && (
+        <CheckIcon size={selectedIconSize[size ?? 'medium']} />
+      )}
     </Option>
   );
 };
@@ -238,8 +235,6 @@ export const formatOptionLabel = ({
   rightLabel,
   disabled,
 }: any) => {
-  // console.log('hey cassie', rest);
-
   const textColor = disabled ? 'text-disabled' : 'inherit';
   return (
     <Box
