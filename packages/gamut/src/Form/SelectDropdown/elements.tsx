@@ -1,5 +1,6 @@
 import {
   ArrowChevronDownIcon,
+  CheckCircledIcon,
   CloseIcon,
   MiniChevronDownIcon,
   MiniDeleteIcon,
@@ -7,7 +8,13 @@ import {
 } from '@codecademy/gamut-icons';
 import { ColorMode, css, theme, useColorModes } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { createContext, CSSProperties, KeyboardEvent, useContext } from 'react';
+import {
+  ComponentProps,
+  createContext,
+  CSSProperties,
+  KeyboardEvent,
+  useContext,
+} from 'react';
 import ReactSelect, {
   AriaOnFocus,
   components as SelectDropdownElements,
@@ -32,6 +39,7 @@ const {
   MultiValue,
   MultiValueRemove,
   SelectContainer,
+  Option,
 } = SelectDropdownElements;
 
 export const SelectDropdownContext = createContext<SelectDropdownContextValueTypes>(
@@ -88,6 +96,7 @@ export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {
 };
 
 const iconSize = { small: 12, medium: 16 };
+const selectedIconSize = { small: 16, medium: 24 };
 
 const indicatorIcons = {
   smallChevron: {
@@ -209,6 +218,18 @@ export const CustomContainer = ({
   );
 };
 
+export const IconOption = ({
+  children,
+  ...rest
+}: ComponentProps<typeof Option>) => {
+  console.log('cass', rest);
+  return (
+    <Option {...rest}>
+      {children} {rest?.isSelected && <CheckCircledIcon />}
+    </Option>
+  );
+};
+
 export const formatOptionLabel = ({
   label,
   icon: Icon,
@@ -216,7 +237,9 @@ export const formatOptionLabel = ({
   subtitle,
   rightLabel,
   disabled,
-}: ExtendedOption) => {
+}: any) => {
+  // console.log('hey cassie', rest);
+
   const textColor = disabled ? 'text-disabled' : 'inherit';
   return (
     <Box
