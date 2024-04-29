@@ -14,6 +14,7 @@ import ReactSelect, {
   GroupBase,
   MultiValueProps,
   MultiValueRemoveProps,
+  OptionProps,
   Props,
 } from 'react-select';
 
@@ -32,6 +33,7 @@ const {
   MultiValue,
   MultiValueRemove,
   SelectContainer,
+  Option
 } = SelectDropdownElements;
 
 export const SelectDropdownContext = createContext<SelectDropdownContextValueTypes>(
@@ -40,6 +42,8 @@ export const SelectDropdownContext = createContext<SelectDropdownContextValueTyp
     setCurrentFocusedValue: undefined,
     selectInputRef: undefined,
     removeAllButtonRef: undefined,
+    highlightedOption: '',
+    setHighlightedOption: () => null,
   }
 );
 
@@ -130,6 +134,19 @@ export const DropdownButton = (props: SizedIndicatorProps) => {
     </DropdownIndicator>
   );
 };
+
+export const SelectDropdownOption = (props: OptionProps) => {
+  const { setHighlightedOption } = useContext(SelectDropdownContext)
+  const { isFocused, innerProps } = props;
+
+  if(isFocused) {
+    setHighlightedOption(innerProps.id);
+  }
+
+  return (
+      <Option {...props} innerProps={{...innerProps, "aria-selected": isFocused}} />
+  )
+}
 
 const CustomStyledRemoveAllDiv = styled('div')(
   css({
