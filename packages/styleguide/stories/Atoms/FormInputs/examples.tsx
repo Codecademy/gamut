@@ -158,28 +158,50 @@ export const SelectDropdownOptionVariantsExample: React.FC = () => (
     <Box p={16} width="100%" height="24rem">
       <FormGroup
         label="I have subtitle and extended info options"
-        htmlFor="extended-dropdown"
+        htmlFor="other-dropdown"
       >
         <SelectDropdown
-          name="extended-dropdown"
+          value="queen"
+          name="other-dropdown"
           options={[
             {
-              label: 'king@chess.com',
-              subtitle: 'The King of Chess',
-              value: 'xxx',
-              disabled: true,
+              options: [
+                {
+                  label: 'king@chess.com',
+                  subtitle: 'The King of Chess',
+                  value: 'king',
+                  disabled: true,
+                },
+                {
+                  label: 'queen@chess.com',
+                  rightLabel: 'The Queen of Chess',
+                  value: 'queen',
+                },
+                {
+                  label: 'bishop@chess.com',
+                  subtitle: 'Bishop Chess',
+                  rightLabel: 'I can move diagonally',
+                  value: 'bishop',
+                  disabled: false,
+                },
+              ],
             },
             {
-              label: 'queen@chess.com',
-              rightLabel: 'The Queen of Chess',
-              value: 'yyy',
-            },
-            {
-              label: 'bishop@chess.com',
-              subtitle: 'Bishop Chess',
-              rightLabel: 'I can move diagonally',
-              value: 'zzz',
-              disabled: false,
+              divider: true,
+              options: [
+                {
+                  label: 'knight@chess.com',
+                  subtitle: 'Sir Chess',
+                  rightLabel: 'By leaps and bounds',
+                  value: 'chess',
+                  disabled: true,
+                },
+                {
+                  label: 'pawn@chess.com',
+                  value: 'pawn',
+                  disabled: false,
+                },
+              ],
             },
           ]}
         />
