@@ -33,7 +33,7 @@ const {
   MultiValue,
   MultiValueRemove,
   SelectContainer,
-  Option
+  Option,
 } = SelectDropdownElements;
 
 export const SelectDropdownContext = createContext<SelectDropdownContextValueTypes>(
@@ -136,17 +136,20 @@ export const DropdownButton = (props: SizedIndicatorProps) => {
 };
 
 export const SelectDropdownOption = (props: OptionProps) => {
-  const { setHighlightedOption } = useContext(SelectDropdownContext)
+  const { setHighlightedOption } = useContext(SelectDropdownContext);
   const { isFocused, innerProps } = props;
 
-  if(isFocused) {
+  if (isFocused) {
     setHighlightedOption(innerProps.id);
   }
 
   return (
-      <Option {...props} innerProps={{...innerProps, "aria-selected": isFocused}} />
-  )
-}
+    <Option
+      {...props}
+      innerProps={{ ...innerProps, 'aria-selected': isFocused }}
+    />
+  );
+};
 
 const CustomStyledRemoveAllDiv = styled('div')(
   css({

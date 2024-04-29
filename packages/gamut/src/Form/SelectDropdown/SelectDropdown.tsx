@@ -75,7 +75,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   // these are used to programatically manage the focus state of our multi-select options + 'Remove all' button
   const removeAllButtonRef = useRef<HTMLDivElement>(null);
   const selectInputRef = useRef<HTMLDivElement>(null);
-  const [highlightedOption, setHighlightedOption] = useState('')
+  const [highlightedOption, setHighlightedOption] = useState('');
 
   const optionsAreGrouped = useMemo(() => {
     if (options?.length) {
@@ -114,11 +114,11 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
   useEffect(() => {
     if (inputId) {
-      const inputelemet = document.getElementById(inputId)
-      inputelemet?.setAttribute("aria-activedescendant", highlightedOption)
+      const inputelemet = document.getElementById(inputId);
+      inputelemet?.setAttribute('aria-activedescendant', highlightedOption);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [highlightedOption])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [highlightedOption]);
 
   const changeHandler = useCallback(
     (optionEvent: OptionStrict | OptionsType<OptionStrict>) => {
@@ -181,7 +181,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         removeAllButtonRef,
         selectInputRef,
         highlightedOption,
-        setHighlightedOption
+        setHighlightedOption,
       }}
     >
       <TypedReactSelect
