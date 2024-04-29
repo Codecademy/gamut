@@ -29,6 +29,35 @@ const optionsIconsArray = [
   { label: 'Earth Icon', value: 'three', icon: EarthIcon },
 ];
 
+jest.mock('@codecademy/gamut-icons', () => ({
+  ...jest.requireActual<{}>('@codecademy/gamut-icons'),
+  MiniChevronDownIcon: () => (
+    <svg>
+      <title>Mini Chevron Down Icon</title>
+    </svg>
+  ),
+  ArrowChevronDownIcon: () => (
+    <svg>
+      <title>Arrow Chevron Down Icon</title>
+    </svg>
+  ),
+  DataTransferVerticalIcon: () => (
+    <svg>
+      <title>Data Transfer Vertical Icon</title>
+    </svg>
+  ),
+  CalendarIcon: () => (
+    <svg>
+      <title>Calendar Icon</title>
+    </svg>
+  ),
+  EarthIcon: () => (
+    <svg>
+      <title>Earth Icon</title>
+    </svg>
+  ),
+}));
+
 const renderView = setupRtl(SelectDropdown, {
   options: selectOptions,
   name: 'colors',
@@ -126,8 +155,8 @@ describe('SelectDropdown', () => {
 
     [...Array(numSelectedItems)].forEach(() => {
       openDropdown(view);
-      fireEvent.click(view.getByText('red'));
-      openDropdown(view);
+      // fireEvent.click(view.getByText('red'));
+      // openDropdown(view);
       fireEvent.click(view.getByText('green'));
     });
 

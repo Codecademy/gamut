@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.18.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.18.0...@codecademy/styleguide@66.18.1) (2024-04-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ## [66.18.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.17.5...@codecademy/styleguide@66.18.0) (2024-04-24)
 
 ### Features

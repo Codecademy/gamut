@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.24.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.24.0...@codecademy/gamut-icons@9.24.1) (2024-04-25)
+
+### Bug Fixes
+
+- **Icons:** remove default title ([7ac11a1](https://github.com/Codecademy/gamut/commit/7ac11a1e233b4bc9bc5ca9deb8cf04e8b0928f88))
+
 ## [9.24.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.23.0...@codecademy/gamut-icons@9.24.0) (2024-04-24)
 
 ### Features

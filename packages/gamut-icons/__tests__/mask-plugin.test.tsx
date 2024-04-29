@@ -13,7 +13,7 @@ const menuIcon =
 const menuIconTitleEnd =
   "<svg viewBox='0 0 16 16' height='16' width='16'><g transform='matrix(1.6,0,0,1.6,0,0)'><path d='M8.03,2.72,5.53.22a.749.749,0,0,0-1.06,0l-2.5,2.5A.75.75,0,0,0,3.03,3.78L4.25,2.561V9.25a.75.75,0,0,0,1.5,0V2.561L6.97,3.78A.75.75,0,1,0,8.03,2.72Z' fill='#000000' stroke='none' stroke-linecap='round' stroke-linejoin='round' stroke-width='0'></path></g><title>mini-bold-interface-arrow-up</title></svg>";
 
-const postTransformIcon = `"<svg viewBox='0 0 16 16' height='16' width='16'><title>mini-bold-interface-arrow-up</title><mask id={${maskIdString}}><g transform='matrix(1.6,0,0,1.6,0,0)'><path d='M8.03,2.72,5.53.22a.749.749,0,0,0-1.06,0l-2.5,2.5A.75.75,0,0,0,3.03,3.78L4.25,2.561V9.25a.75.75,0,0,0,1.5,0V2.561L6.97,3.78A.75.75,0,1,0,8.03,2.72Z' fill='#000000' stroke='none' stroke-linecap='round' stroke-linejoin='round' stroke-width='0'></path></g></mask><g mask={${urlIdString}}><rect width={${size}} height={${size}} fill={${currentColor}} /></g></svg>;"`;
+const postTransformIcon = `"<svg viewBox='0 0 16 16' height='16' width='16'><mask id={${maskIdString}}><g transform='matrix(1.6,0,0,1.6,0,0)'><path d='M8.03,2.72,5.53.22a.749.749,0,0,0-1.06,0l-2.5,2.5A.75.75,0,0,0,3.03,3.78L4.25,2.561V9.25a.75.75,0,0,0,1.5,0V2.561L6.97,3.78A.75.75,0,1,0,8.03,2.72Z' fill='#000000' stroke='none' stroke-linecap='round' stroke-linejoin='round' stroke-width='0'></path></g></mask><g mask={${urlIdString}}><rect width={${size}} height={${size}} fill={${currentColor}} /></g></svg>;"`;
 
 const testPlugin = (code: string) => {
   const result = transform(code, {

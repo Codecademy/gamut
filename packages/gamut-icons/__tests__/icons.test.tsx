@@ -13,18 +13,15 @@ describe('Compiled gamut-icons:', () => {
     expect(svgEl.getAttribute('aria-hidden')).toEqual('true');
   });
 
-  it('Sets a title and id automatically and uses the appropriate aria label', () => {
+  it('Sets a mask and maskid automatically', () => {
     renderView({
       size: 1,
     });
 
     const svgEl = screen.getByRole('img', { hidden: true });
-    const titleEl = svgEl.querySelector('title');
+    const maskEl = svgEl.querySelector('mask');
 
-    expect(svgEl.getAttribute('aria-labelledby')).toEqual(
-      titleEl?.getAttribute('id')
-    );
-    expect(titleEl?.innerHTML).toEqual('Add Icon');
+    expect(maskEl?.getAttribute('id')).toMatch(/.*?AddIcon(.*)/);
   });
 
   it('Allows passing a custom title', () => {
