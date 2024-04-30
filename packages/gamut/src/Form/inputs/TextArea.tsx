@@ -12,15 +12,13 @@ import {
   conditionalStyleState,
   formFieldStyles,
 } from '../styles';
+import { BaseInputProps } from './types';
 
-export type TextWrapperProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
-  className?: string;
-  error?: boolean;
-  htmlFor?: string;
-  name?: string;
-  required?: boolean;
-  value?: string;
-};
+export type TextWrapperProps = TextareaHTMLAttributes<HTMLTextAreaElement> &
+  Omit<BaseInputProps, 'label'> & {
+    className?: string;
+    value?: string;
+  };
 
 export interface TextAreaProps
   extends TextWrapperProps,

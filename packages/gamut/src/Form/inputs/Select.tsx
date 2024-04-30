@@ -21,17 +21,17 @@ import {
   formFieldStyles,
 } from '../styles';
 import { parseSelectOptions } from '../utils';
+import { BaseInputProps } from './types';
 
 export type SelectOptions = string[] | Record<string, number | string>;
 
 export type SelectComponentProps = Pick<
   SelectHTMLAttributes<HTMLSelectElement>,
   'disabled' | 'id'
-> & {
-  error?: boolean;
-  htmlFor?: string;
-  options?: SelectOptions;
-};
+> &
+  Pick<BaseInputProps, 'htmlFor' | 'error'> & {
+    options?: SelectOptions;
+  };
 
 export type SelectWrapperProps = SelectComponentProps &
   SelectHTMLAttributes<HTMLSelectElement> & {
