@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 
-import { FormGroup } from '../FormGroup';
-import { Input } from '../Input';
+import { FormGroup } from '../elements/FormGroup';
+import { Input } from '../inputs/Input';
 
 const renderView = setupRtl(FormGroup, {
   children: <Input id="up-dog" />,

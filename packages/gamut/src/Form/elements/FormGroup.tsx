@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 import { ComponentProps } from 'react';
 import * as React from 'react';
 
-import { Box } from '../Box';
-import { InfoTipProps } from '../Tip';
+import { Box } from '../../Box';
+import { InfoTipProps } from '../../Tip';
 import { FormError } from './FormError';
 import { FormGroupDescription } from './FormGroupDescription';
 import { FormGroupLabel } from './FormGroupLabel';

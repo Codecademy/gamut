@@ -14,7 +14,7 @@ import {
 } from 'react-hook-form';
 
 import { Form } from '../Form';
-import { FormProps } from '../Form/Form';
+import { FormProps } from '../Form/elements/Form';
 import { FormValues } from '../Form/types';
 import { submitSuccessStatus } from './utils';
 

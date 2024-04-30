@@ -4,9 +4,9 @@ import styled from '@emotion/styled';
 import { HTMLAttributes } from 'react';
 import * as React from 'react';
 
-import { FlexBox } from '..';
-import { InfoTip, InfoTipProps } from '../Tip';
-import { formBaseStyles, formFieldTextDisabledStyles } from './styles';
+import { FlexBox } from '../..';
+import { InfoTip, InfoTipProps } from '../../Tip';
+import { formBaseStyles, formFieldTextDisabledStyles } from '../styles';
 
 const labelSizeVariants = variant({
   defaultVariant: 'small',

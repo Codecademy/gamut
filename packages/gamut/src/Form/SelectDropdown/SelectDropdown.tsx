@@ -11,7 +11,6 @@ import {
 import * as React from 'react';
 import { Options as OptionsType, StylesConfig } from 'react-select';
 
-import { getMemoizedStyles } from '../styles';
 import { parseOptions } from '../utils';
 import {
   CustomContainer,
@@ -25,6 +24,7 @@ import {
   SelectDropdownContext,
   TypedReactSelect,
 } from './elements';
+import { getMemoizedStyles } from './styles';
 import { ExtendedOption, OptionStrict, SelectDropdownProps } from './types';
 import {
   filterValueFromOptions,
