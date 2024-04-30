@@ -18,7 +18,7 @@ import ReactSelect, {
   Props,
 } from 'react-select';
 
-import { Box } from '../../Box';
+import { Box, FlexBox } from '../../Box';
 import {
   CustomSelectComponentProps,
   ExtendedOption,
@@ -237,30 +237,26 @@ export const formatOptionLabel = ({
 }: any) => {
   const textColor = disabled ? 'text-disabled' : 'inherit';
   return (
-    <Box
-      color={textColor}
-      display="flex"
-      justifyContent="space-between"
-      width="100%"
-    >
-      <Box display="flex" flexDirection="column">
-        <Box>
+    <FlexBox color={textColor} justifyContent="space-between" width="100%">
+      <FlexBox flexDirection="column">
+        <FlexBox flexDirection="row">
           {Icon && (
-            <Icon size={size === 'small' ? 16 : 24} color="text" ml={4} />
+            <FlexBox center>
+              <Icon size={size === 'small' ? 16 : 24} color="text" ml={4} />
+            </FlexBox>
           )}
           <Box color={textColor} as="span" pl={Icon ? 16 : 0}>
             {label}
           </Box>
-        </Box>
+        </FlexBox>
         {subtitle && (
           <Box as="span" fontSize={14} color="text-disabled">
             {subtitle}
           </Box>
         )}
-      </Box>
+      </FlexBox>
       {rightLabel && (
-        <Box
-          display="flex"
+        <FlexBox
           alignItems="center"
           justifyContent="flex-end"
           flexGrow={1}
@@ -270,9 +266,9 @@ export const formatOptionLabel = ({
           pr={16}
         >
           {rightLabel}
-        </Box>
+        </FlexBox>
       )}
-    </Box>
+    </FlexBox>
   );
 };
 
