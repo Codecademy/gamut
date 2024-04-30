@@ -234,7 +234,7 @@ export const formatOptionLabel = ({
   subtitle,
   rightLabel,
   disabled,
-}: any) => {
+}: ExtendedOption) => {
   const textColor = disabled ? 'text-disabled' : 'inherit';
   return (
     <FlexBox color={textColor} justifyContent="space-between" width="100%">
