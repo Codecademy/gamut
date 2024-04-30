@@ -11,7 +11,7 @@ import {
   radioLabel,
   radioWrapper,
 } from '../styles';
-import { BaseInputProps } from './types';
+import { BaseInputProps } from '../types';
 
 export type RadioProps = InputHTMLAttributes<HTMLInputElement> &
   Omit<BaseInputProps, 'label'> & {

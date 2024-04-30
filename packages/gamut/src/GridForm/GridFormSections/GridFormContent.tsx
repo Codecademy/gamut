@@ -6,13 +6,9 @@ import { GridFormField } from '../types';
 
 export type GridFormContentProps = {
   field: GridFormField;
-  showRequired: boolean;
 };
 
-export const GridFormContent: React.FC<GridFormContentProps> = ({
-  field,
-  showRequired,
-}) => {
+export const GridFormContent: React.FC<GridFormContentProps> = ({ field }) => {
   const { error, isFirstError, register, setValue, isDisabled } = useField({
     name: field.name,
     disabled: field.disabled,
@@ -34,7 +30,6 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({
       register={register}
       setValue={setValue}
       required={requiredBoolean}
-      showRequired={showRequired}
     />
   );
 };

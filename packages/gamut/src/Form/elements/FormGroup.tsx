@@ -6,20 +6,18 @@ import * as React from 'react';
 
 import { Box } from '../../Box';
 import { InfoTipProps } from '../../Tip';
+import { BaseInputProps } from '../types';
 import { FormError } from './FormError';
 import { FormGroupDescription } from './FormGroupDescription';
 import { FormGroupLabel } from './FormGroupLabel';
 
 export interface FormGroupProps
-  extends ComponentProps<typeof FormGroupContainer> {
-  label?: string;
+  extends ComponentProps<typeof FormGroupContainer>,
+    Omit<BaseInputProps, 'name'> {
   /**
    * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
    */
-  htmlFor?: string;
   description?: string;
-  showRequired?: boolean;
-  error?: string;
   disabled?: boolean;
   labelSize?: 'small' | 'large';
   infotip?: InfoTipProps;
@@ -73,13 +71,13 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   infotip,
   label,
   labelSize,
-  showRequired,
+  required,
   ...rest
 }) => {
   const labelComponent = label ? (
     <FormGroupLabel
       htmlFor={htmlFor}
-      showRequired={showRequired}
+      required={required}
       size={labelSize}
       disabled={disabled}
       infotip={infotip}

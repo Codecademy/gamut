@@ -1,12 +1,14 @@
 import { states, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import { size } from 'lodash';
 import { HTMLAttributes } from 'react';
 import * as React from 'react';
 
 import { FlexBox } from '../..';
 import { InfoTip, InfoTipProps } from '../../Tip';
 import { formBaseStyles, formFieldTextDisabledStyles } from '../styles';
+import { BaseInputProps } from '../types';
 
 const labelSizeVariants = variant({
   defaultVariant: 'small',
@@ -34,13 +36,12 @@ export interface LabelVariants
 
 export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
   HTMLAttributes<HTMLLabelElement> &
-  LabelVariants & {
+  LabelVariants &
+  Pick<BaseInputProps, 'htmlFor' | 'required'> & {
     /**
      * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
      */
-    htmlFor?: string;
     infotip?: InfoTipProps;
-    showRequired?: boolean;
     size?: 'small' | 'large';
   };
 
@@ -52,7 +53,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   disabled,
   htmlFor,
   infotip,
-  showRequired,
+  required,
   size,
   ...rest
 }) => {
@@ -67,7 +68,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         as={htmlFor ? 'label' : 'div'}
       >
         {children}
-        {showRequired ? ' *' : ''}
+        {required ? ' *' : ' (optional)'}
       </Label>
       {infotip && <InfoTip {...infotip} />}
     </FlexBox>

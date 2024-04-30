@@ -19,7 +19,7 @@ import {
   formFieldPaddingStyles,
   formFieldStyles,
 } from '../styles';
-import { BaseInputProps } from './types';
+import { BaseInputProps } from '../types';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> &
   BaseInputProps & {

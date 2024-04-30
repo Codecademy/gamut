@@ -18,7 +18,7 @@ import {
   checkboxTextStates,
   polyline,
 } from '../styles';
-import { BaseInputProps } from './types';
+import { BaseInputProps } from '../types';
 
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;

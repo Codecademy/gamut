@@ -37,7 +37,6 @@ export type GridFormInputGroupProps = {
   register: UseFormReturn['register'];
   setValue: UseFormReturn['setValue'];
   required?: boolean;
-  showRequired?: boolean;
 };
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
@@ -45,7 +44,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   field,
   isFirstError,
   isDisabled,
-  showRequired,
   ...rest
 }) => {
   const disabled = isDisabled || field.disabled;
@@ -149,7 +147,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       disabled={disabled}
       htmlFor={field.id || field.name}
       infotip={field.infotip}
-      showRequired={showRequired && rest?.required}
+      required={rest?.required}
     >
       {field.label}
     </FormGroupLabel>

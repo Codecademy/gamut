@@ -20,8 +20,8 @@ import {
   conditionalStyleState,
   formFieldStyles,
 } from '../styles';
+import { BaseInputProps } from '../types';
 import { parseSelectOptions } from '../utils';
-import { BaseInputProps } from './types';
 
 export type SelectOptions = string[] | Record<string, number | string>;
 

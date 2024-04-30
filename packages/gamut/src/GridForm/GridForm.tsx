@@ -63,9 +63,9 @@ export type GridFormProps<Values extends {}> = FormContextProps & {
   onSubmit: SubmitHandler<Values>;
 
   /**
-   * Show asterisks next to required fields.
+   * Whether to hide 'required' explanation at the start of forms - can be disabled only for forms without a required field.
    */
-  showRequired?: boolean;
+  hideRequiredText?: boolean;
 
   /**
    * Layout grid row gap override between fields.
@@ -93,7 +93,7 @@ export function GridForm<Values extends FormValues<Values>>({
   rowGap = 16,
   submit,
   validation = 'onSubmit',
-  showRequired = false,
+  hideRequiredText,
   ...rest
 }: GridFormProps<Values>) {
   const flatFields = fields.flatMap((field) =>
@@ -114,6 +114,8 @@ export function GridForm<Values extends FormValues<Values>>({
     {} as Defaults
   );
 
+  // console.log(!isGridFormSection(fields[0]), !hideRequiredText);
+
   return (
     <ConnectedForm<Values>
       validation={validation}
@@ -124,6 +126,7 @@ export function GridForm<Values extends FormValues<Values>>({
     >
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         <>
+          {!isGridFormSection(fields[0]) && !hideRequiredText && '* Required'}
           {fields.map((field, index) => {
             const numSections = fields.length;
             if (isGridFormSection(field)) {
@@ -137,9 +140,10 @@ export function GridForm<Values extends FormValues<Values>>({
                     numberOfFields={fields.length}
                     variant={variant}
                   />
+                  {index === 0 && !hideRequiredText && '* Required'}
                   <GridFormSection
                     fields={fields}
-                    showRequired={showRequired}
+                    // showRequired={showRequired}
                   />
                   {/* don't show break on last section */}
                   {index + 1 === numSections ? null : <GridFormSectionBreak />}
@@ -149,7 +153,7 @@ export function GridForm<Values extends FormValues<Values>>({
             return (
               <GridFormContent
                 field={field}
-                showRequired={showRequired}
+                // showRequired={showRequired}
                 key={field.name}
               />
             );
