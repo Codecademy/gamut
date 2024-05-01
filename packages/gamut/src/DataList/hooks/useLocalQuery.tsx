@@ -1,4 +1,4 @@
-import { orderBy } from 'lodash';
+import orderBy from 'lodash/orderBy';
 import { useCallback, useMemo, useState } from 'react';
 
 import { ColumnConfig, IdentifiableKeys, OnQueryChange, Query } from '..';

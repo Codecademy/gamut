@@ -1,7 +1,7 @@
 import { FilterIcon } from '@codecademy/gamut-icons';
 import { states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { kebabCase } from 'lodash';
+import kebabCase from 'lodash/kebabCase';
 import { useRef, useState } from 'react';
 import * as React from 'react';
 

@@ -1,4 +1,7 @@
-import { get, isArray, isObject, isString } from 'lodash';
+import get from 'lodash/get';
+import isArray from 'lodash/isArray';
+import isObject from 'lodash/isObject';
+import isString from 'lodash/isString';
 
 import { Prop } from '../types/config';
 import { ThemeProps } from '../types/props';
