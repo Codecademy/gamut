@@ -17,6 +17,7 @@ import {
   DropdownButton,
   formatGroupLabel,
   formatOptionLabel,
+  IconOption,
   MultiValueRemoveButton,
   MultiValueWithColorMode,
   onFocus,
@@ -43,6 +44,7 @@ const defaultProps = {
     SelectContainer: CustomContainer,
     MultiValue: MultiValueWithColorMode,
     MultiValueRemove: MultiValueRemoveButton,
+    Option: IconOption,
   },
 };
 
