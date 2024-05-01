@@ -7,7 +7,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   title={title}
   component={FormRequiredText}
   parameters={{
-    subtitle: 'A Text element that renders our required field explanation, should be included in all forms with required fields.',
+    subtitle:
+      'A Text element that renders our required field explanation, should be included in all forms with required fields.',
     source: 'gamut',
     status: 'current',
   }}
@@ -16,9 +17,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 `FormRequiredText` should be included in all forms with required fields. Accepts all props of [our existing `Text`](/?path=/docs/typography-text--element-variantst) component.
 
 <Canvas>
-  <Story name="R">
-    {(args) => <FormRequiredText {...args} />}
-  </Story>
+  <Story name="R">{(args) => <FormRequiredText {...args} />}</Story>
 </Canvas>
 
 <PropsTable story="FormRequiredText" />
