@@ -1,5 +1,6 @@
 import { Theme } from '@emotion/react';
-import { isObject, merge } from 'lodash';
+import isObject from 'lodash/isObject';
+import merge from 'lodash/merge';
 
 import { CSSObject } from '../types/props';
 
