@@ -14,6 +14,7 @@ import {
   useFormContext,
 } from 'react-hook-form';
 
+import { FormRequiredText } from '../Form';
 import {
   ConnectedForm,
   ConnectedFormGroup,
@@ -72,7 +73,9 @@ export const useConnectedForm = <
         validationRules,
         watchedFields,
       },
+      FormRequiredText,
     }),
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
