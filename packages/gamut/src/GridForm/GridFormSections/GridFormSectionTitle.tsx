@@ -1,17 +1,21 @@
 import * as React from 'react';
 
+import { Box } from '../../Box';
 import { Column } from '../../Layout/Column';
 import { Text } from '../../Typography/Text';
 import { GridFormSectionTitleBaseProps } from '../types';
+import { requiredText } from '../utils';
 
 export type GridFormSectionTitleProps = GridFormSectionTitleBaseProps & {
-  numberOfFields: number;
   'data-testid'?: string;
+  showRequired?: boolean;
+  numberOfFields: number;
 };
 
 export const GridFormSectionTitle: React.FC<GridFormSectionTitleProps> = ({
   as = 'h2',
   'data-testid': dataTestId,
+  showRequired,
   layout = 'center',
   numberOfFields,
   title,
@@ -26,9 +30,12 @@ export const GridFormSectionTitle: React.FC<GridFormSectionTitleProps> = ({
       gridRowEnd={{ _: `span 1`, md: `span ${rowspan}` }}
       data-testid={dataTestId}
     >
-      <Text as={as} variant={variant}>
-        {title}
-      </Text>
+      <Box>
+        <Text as={as} variant={variant}>
+          {title}
+        </Text>
+        {showRequired && <Text>{requiredText}</Text>}
+      </Box>
     </Column>
   );
 };

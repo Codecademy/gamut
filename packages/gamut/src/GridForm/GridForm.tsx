@@ -10,7 +10,7 @@ import {
 import { ButtonProps } from '../Button';
 import { ConnectedForm, FormContextProps } from '../ConnectedForm';
 import { FormValues } from '../Form/types';
-import { LayoutGrid, LayoutGridProps } from '../Layout';
+import { Column, LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
 import {
   GridFormContent,
@@ -23,7 +23,7 @@ import {
   GridFormFieldsProps,
   GridFormSectionProps,
 } from './types';
-import { assignDefaultValue } from './utils';
+import { assignDefaultValue, requiredText } from './utils';
 
 export * from './types';
 
@@ -114,8 +114,6 @@ export function GridForm<Values extends FormValues<Values>>({
     {} as Defaults
   );
 
-  // console.log(!isGridFormSection(fields[0]), !hideRequiredText);
-
   return (
     <ConnectedForm<Values>
       validation={validation}
@@ -126,7 +124,9 @@ export function GridForm<Values extends FormValues<Values>>({
     >
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         <>
-          {!isGridFormSection(fields[0]) && !hideRequiredText && '* Required'}
+          {!hideRequiredText && !isGridFormSection(fields[0]) && (
+            <Column size={12}>{requiredText}</Column>
+          )}
           {fields.map((field, index) => {
             const numSections = fields.length;
             if (isGridFormSection(field)) {
@@ -139,24 +139,15 @@ export function GridForm<Values extends FormValues<Values>>({
                     layout={layout}
                     numberOfFields={fields.length}
                     variant={variant}
+                    showRequired={index === 0 && !hideRequiredText}
                   />
-                  {index === 0 && !hideRequiredText && '* Required'}
-                  <GridFormSection
-                    fields={fields}
-                    // showRequired={showRequired}
-                  />
+                  <GridFormSection fields={fields} />
                   {/* don't show break on last section */}
                   {index + 1 === numSections ? null : <GridFormSectionBreak />}
                 </Fragment>
               );
             }
-            return (
-              <GridFormContent
-                field={field}
-                // showRequired={showRequired}
-                key={field.name}
-              />
-            );
+            return <GridFormContent field={field} key={field.name} />;
           })}
         </>
         <GridFormButtons cancel={cancel} {...submit} />
