@@ -69,7 +69,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
       >
         {children}
         <Text as="span" aria-hidden>
-          {required ? ' *' : ' (optional)'}
+          {required ? '\u00A0*' : ' \u00A0(optional)'}
         </Text>
       </Label>
       {infotip && <InfoTip {...infotip} />}
