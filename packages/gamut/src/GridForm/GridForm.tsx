@@ -9,6 +9,7 @@ import {
 
 import { ButtonProps } from '../Button';
 import { ConnectedForm, FormContextProps } from '../ConnectedForm';
+import { FormRequiredText } from '../Form';
 import { FormValues } from '../Form/types';
 import { Column, LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
@@ -23,7 +24,7 @@ import {
   GridFormFieldsProps,
   GridFormSectionProps,
 } from './types';
-import { assignDefaultValue, requiredText } from './utils';
+import { assignDefaultValue } from './utils';
 
 export * from './types';
 
@@ -125,7 +126,9 @@ export function GridForm<Values extends FormValues<Values>>({
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         <>
           {!hideRequiredText && !isGridFormSection(fields[0]) && (
-            <Column size={12}>{requiredText}</Column>
+            <Column size={12}>
+              <FormRequiredText />
+            </Column>
           )}
           {fields.map((field, index) => {
             const numSections = fields.length;

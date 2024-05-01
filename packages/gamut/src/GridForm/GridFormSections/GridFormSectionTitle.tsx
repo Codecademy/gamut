@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 import { Box } from '../../Box';
+import { FormRequiredText } from '../../Form';
 import { Column } from '../../Layout/Column';
 import { Text } from '../../Typography/Text';
 import { GridFormSectionTitleBaseProps } from '../types';
-import { requiredText } from '../utils';
 
 export type GridFormSectionTitleProps = GridFormSectionTitleBaseProps & {
   'data-testid'?: string;
@@ -34,7 +34,7 @@ export const GridFormSectionTitle: React.FC<GridFormSectionTitleProps> = ({
         <Text as={as} variant={variant}>
           {title}
         </Text>
-        {showRequired && <Text>{requiredText}</Text>}
+        {showRequired && <FormRequiredText />}
       </Box>
     </Column>
   );

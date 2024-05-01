@@ -2,6 +2,7 @@ export * from './elements/FormError';
 export * from './elements/FormGroup';
 export * from './elements/FormGroupLabel';
 export * from './elements/FormGroupDescription';
+export * from './elements/FormRequiredText';
 export * from './inputs/Checkbox';
 export * from './inputs/Select';
 export * from './SelectDropdown';

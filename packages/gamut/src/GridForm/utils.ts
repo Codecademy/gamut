@@ -2,8 +2,6 @@ import { isArray } from 'lodash';
 
 import { GridFormField } from './types';
 
-export const requiredText = '* Required';
-
 export const assignDefaultValue = (field: GridFormField) => {
   switch (field.type) {
     case 'checkbox':

@@ -28,10 +28,6 @@ export interface FormContextProps {
    */
   resetOnSubmit?: boolean;
   /**
-   * If required field should show asterisks in labels.
-   */
-  showRequired?: boolean;
-  /**
    * Validation rules form fields. Fields with validation rules must have a defaultValue listed in the defaultValue prop.
    */
   validationRules?: { string?: RegisterOptions };
@@ -99,7 +95,6 @@ export const ConnectedForm = forwardRef(
       validation = 'onChange',
       disableFieldsOnSubmit = false,
       resetOnSubmit = false,
-      showRequired = false,
       validationRules,
       wasSubmitSuccessful = undefined,
       watchedFields,
@@ -147,14 +142,12 @@ export const ConnectedForm = forwardRef(
       return {
         disableFieldsOnSubmit,
         resetOnSubmit,
-        showRequired,
         validationRules,
         wasSubmitSuccessful,
       };
     }, [
       disableFieldsOnSubmit,
       resetOnSubmit,
-      showRequired,
       validationRules,
       wasSubmitSuccessful,
     ]);
