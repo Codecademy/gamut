@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.19.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.18.1...@codecademy/styleguide@66.19.0) (2024-05-01)
+
+### Features
+
+- **SelectDropdown:** Add checkmark to selected option ([d953291](https://github.com/Codecademy/gamut/commit/d953291a5e8147beda25397c6aee188becefbdbd))
+
 ### [66.18.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.18.0...@codecademy/styleguide@66.18.1) (2024-04-25)
 
 **Note:** Version bump only for package @codecademy/styleguide
