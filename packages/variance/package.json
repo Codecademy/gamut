@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/variance",
   "description": "Constraint based CSS in JS for building scalable design systems",
-  "version": "0.21.2",
+  "version": "0.21.3",
   "author": "codecaaron <aaron@codecademy.com>",
   "dependencies": {
     "csstype": "^3.0.7",
