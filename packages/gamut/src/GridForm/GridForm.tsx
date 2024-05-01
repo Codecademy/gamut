@@ -36,7 +36,7 @@ const defaultColumnGap = {
 const isGridFormSection = (
   field: GridFormField | GridFormSectionProps
 ): field is GridFormSectionProps => {
-  return (field as GridFormSectionProps).title !== undefined;
+  return (field as GridFormSectionProps)?.title !== undefined;
 };
 
 export type GridFormProps<Values extends {}> = FormContextProps & {

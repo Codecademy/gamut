@@ -53,7 +53,6 @@ export const getonUpdateAndFields = () => {
 
 const renderView = setupRtl(GridForm, {
   fields,
-  showRequired: false,
   submit: { type: 'fill', contents: <>Submit</>, size: 6 },
 });
 
