@@ -13,10 +13,11 @@ import { FormGroupLabel } from './FormGroupLabel';
 
 export interface FormGroupProps
   extends ComponentProps<typeof FormGroupContainer>,
-    Omit<BaseInputProps, 'name'> {
+    Omit<BaseInputProps, 'name' | 'error'> {
   /**
    * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
    */
+  error?: string;
   description?: string;
   disabled?: boolean;
   labelSize?: 'small' | 'large';

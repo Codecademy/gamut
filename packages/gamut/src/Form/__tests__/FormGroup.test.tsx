@@ -7,25 +7,27 @@ const renderView = setupRtl(FormGroup, {
   children: <Input id="up-dog" />,
 });
 
+const optionalLabelText = 'up dog (optional)';
+
 describe('FormGroup', () => {
   it('renders Label as a label when htmlFor is provided', () => {
     const { view } = renderView({ label: 'up dog', htmlFor: 'up-dog' });
 
-    view.getByLabelText('up dog');
+    view.getByLabelText(optionalLabelText);
   });
 
   it('renders Label as a div when no htmlFor is provided', () => {
     const { view } = renderView({ label: 'up dog' });
 
-    expect(view.queryByLabelText('up dog')).toBeNull();
-    view.getByText('up dog');
+    expect(view.queryByLabelText(optionalLabelText)).toBeNull();
+    view.getByText(optionalLabelText);
   });
 
   it('adds an asterisk to showRequired labels', () => {
     const { view } = renderView({
       label: 'up dog',
       htmlFor: 'up-dog',
-      showRequired: true,
+      required: true,
     });
 
     view.getByLabelText('up dog *');
