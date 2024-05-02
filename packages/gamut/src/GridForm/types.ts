@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
-import { RegisterOptions, UseFormReturn } from 'react-hook-form';
-
-import { TextAreaProps } from '../Form';
+import { BoxProps } from '../Box';
 import { CheckboxPaddingProps } from '../Form/types';
 import { ColumnProps } from '../Layout';
 import { InfoTipProps } from '../Tip';
-import { BoxProps } from '../Box';
+import { ReactNode } from 'react';
+import { RegisterOptions, UseFormReturn } from 'react-hook-form';
+import { TextAreaProps } from '../Form';
 import { TextProps } from '../Typography/Text';
 
 export interface BaseFormInputProps {
