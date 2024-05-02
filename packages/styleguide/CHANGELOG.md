@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.19.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.19.0...@codecademy/styleguide@66.19.1) (2024-05-01)
+
+### Performance Improvements
+
+- Cherry-pick Lodash imports for smaller bundles ([0ee58af](https://github.com/Codecademy/gamut/commit/0ee58afe79297a6213e87453271391375fde8568))
+
 ## [66.19.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.18.1...@codecademy/styleguide@66.19.0) (2024-05-01)
 
 ### Features

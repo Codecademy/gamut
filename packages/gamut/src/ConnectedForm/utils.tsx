@@ -1,4 +1,6 @@
-import { isNull, isUndefined, omit } from 'lodash';
+import isNull from 'lodash/isNull';
+import isUndefined from 'lodash/isUndefined';
+import omit from 'lodash/omit';
 import {
   ChangeEvent,
   ChangeEventHandler,
