@@ -219,7 +219,10 @@ export const IconOption = ({
   const { isFocused, innerProps } = rest;
 
   return (
-    <Option {...rest} innerProps={{...innerProps, "aria-selected": isFocused}}>
+    <Option
+      {...rest}
+      innerProps={{ ...innerProps, 'aria-selected': isFocused }}
+    >
       {children}
       {rest?.isSelected && (
         <CheckIcon size={selectedIconSize[size ?? 'medium']} />
