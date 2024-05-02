@@ -132,8 +132,6 @@ export interface SelectDropdownContextValueTypes {
   setCurrentFocusedValue?: React.Dispatch<React.SetStateAction<unknown>>;
   selectInputRef?: ProgramaticFocusRef;
   removeAllButtonRef?: ProgramaticFocusRef;
-  highlightedOption: string;
-  setHighlightedOption: React.Dispatch<React.SetStateAction<unknown>>;
 }
 export type SizedIndicatorProps = DropdownIndicatorProps<
   unknown,
