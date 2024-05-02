@@ -199,6 +199,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         styles={memoizedStyles}
         value={multiple ? multiValues : parsedValue}
         selectRef={selectInputRef}
+        aria-live="assertive"
         {...rest}
       />
     </SelectDropdownContext.Provider>
