@@ -7,7 +7,7 @@ import {
   Text,
   useLocalQuery,
 } from '@codecademy/gamut';
-import { uniq } from 'lodash';
+import uniq from 'lodash/uniq';
 import { useCallback, useMemo, useState } from 'react';
 
 const crew = [

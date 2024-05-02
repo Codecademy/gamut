@@ -1,5 +1,5 @@
 const path = require('path');
-const { startCase } = require('lodash');
+const startCase = require('lodash/startCase');
 
 function patternTemplate(api, opts, { jsx }) {
   const template = api.template.smart({ plugins: ['jsx', 'typescript'] });

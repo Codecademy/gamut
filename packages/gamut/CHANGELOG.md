@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.18.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.18.0...@codecademy/gamut@55.18.1) (2024-05-01)
+
+### Performance Improvements
+
+- Cherry-pick Lodash imports for smaller bundles ([0ee58af](https://github.com/Codecademy/gamut/commit/0ee58afe79297a6213e87453271391375fde8568))
+
+## [55.18.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.6...@codecademy/gamut@55.18.0) (2024-05-01)
+
+### Features
+
+- **SelectDropdown:** Add checkmark to selected option ([d953291](https://github.com/Codecademy/gamut/commit/d953291a5e8147beda25397c6aee188becefbdbd))
+
 ### [55.17.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.5...@codecademy/gamut@55.17.6) (2024-04-25)
 
 ### Bug Fixes

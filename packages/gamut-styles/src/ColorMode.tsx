@@ -6,7 +6,8 @@ import {
 } from '@codecademy/variance';
 import { CSSObject, Theme, ThemeProvider, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { mapValues, pick } from 'lodash';
+import mapValues from 'lodash/mapValues';
+import pick from 'lodash/pick';
 import {
   ComponentProps,
   createContext,

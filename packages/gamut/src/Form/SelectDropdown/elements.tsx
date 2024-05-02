@@ -1,5 +1,6 @@
 import {
   ArrowChevronDownIcon,
+  CheckIcon,
   CloseIcon,
   MiniChevronDownIcon,
   MiniDeleteIcon,
@@ -18,9 +19,9 @@ import ReactSelect, {
   Props,
 } from 'react-select';
 
-import { Box } from '../../Box';
+import { Box, FlexBox } from '../../Box';
 import {
-  CustomContainerProps,
+  CustomSelectComponentProps,
   ExtendedOption,
   SelectDropdownContextValueTypes,
   SelectDropdownGroup,
@@ -90,6 +91,7 @@ export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {
 };
 
 const iconSize = { small: 12, medium: 16 };
+const selectedIconSize = { small: 16, medium: 24 };
 
 const indicatorIcons = {
   smallChevron: {
@@ -203,9 +205,8 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
 export const CustomContainer = ({
   children,
   ...rest
-}: CustomContainerProps) => {
-  // in the react-select documentation, this line is ts-ignore'd so its safe to say there's no nice way to do this.
-  const { inputProps, name } = rest.selectProps as any;
+}: CustomSelectComponentProps<typeof SelectContainer>) => {
+  const { inputProps, name } = rest.selectProps;
 
   const value = rest.hasValue
     ? rest
@@ -222,6 +223,22 @@ export const CustomContainer = ({
   );
 };
 
+export const IconOption = ({
+  children,
+  ...rest
+}: CustomSelectComponentProps<typeof Option>) => {
+  const { size } = rest.selectProps;
+
+  return (
+    <Option {...rest}>
+      {children}
+      {rest?.isSelected && (
+        <CheckIcon size={selectedIconSize[size ?? 'medium']} />
+      )}
+    </Option>
+  );
+};
+
 export const formatOptionLabel = ({
   label,
   icon: Icon,
@@ -232,41 +249,38 @@ export const formatOptionLabel = ({
 }: ExtendedOption) => {
   const textColor = disabled ? 'text-disabled' : 'inherit';
   return (
-    <Box
-      color={textColor}
-      display="flex"
-      justifyContent="space-between"
-      width="100%"
-    >
-      <Box display="flex" flexDirection="column">
-        <Box>
+    <FlexBox color={textColor} justifyContent="space-between" width="100%">
+      <FlexBox flexDirection="column">
+        <FlexBox flexDirection="row">
           {Icon && (
-            <Icon size={size === 'small' ? 16 : 24} color="text" ml={4} />
+            <FlexBox center>
+              <Icon size={size === 'small' ? 16 : 24} color="text" ml={4} />
+            </FlexBox>
           )}
           <Box color={textColor} as="span" pl={Icon ? 16 : 0}>
             {label}
           </Box>
-        </Box>
+        </FlexBox>
         {subtitle && (
           <Box as="span" fontSize={14} color="text-disabled">
             {subtitle}
           </Box>
         )}
-      </Box>
+      </FlexBox>
       {rightLabel && (
-        <Box
-          display="flex"
+        <FlexBox
           alignItems="center"
           justifyContent="flex-end"
           flexGrow={1}
           textAlign="right"
           fontSize={14}
           aria-label={rightLabel}
+          pr={16}
         >
           {rightLabel}
-        </Box>
+        </FlexBox>
       )}
-    </Box>
+    </FlexBox>
   );
 };
 
