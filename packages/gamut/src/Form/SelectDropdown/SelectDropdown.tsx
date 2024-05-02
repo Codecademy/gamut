@@ -24,7 +24,6 @@ import {
   onFocus,
   RemoveAllButton,
   SelectDropdownContext,
-  SelectDropdownOption,
   TypedReactSelect,
 } from './elements';
 import { ExtendedOption, OptionStrict, SelectDropdownProps } from './types';

@@ -15,7 +15,6 @@ import ReactSelect, {
   GroupBase,
   MultiValueProps,
   MultiValueRemoveProps,
-  OptionProps,
   Props,
 } from 'react-select';
 
@@ -135,17 +134,6 @@ export const DropdownButton = (props: SizedIndicatorProps) => {
   );
 };
 
-export const SelectDropdownOption = (props: OptionProps) => {
-  const { isFocused, innerProps } = props;
-
-  return (
-    <Option
-      {...props}
-      innerProps={{ ...innerProps, 'aria-selected': isFocused }}
-    />
-  );
-};
-
 const CustomStyledRemoveAllDiv = styled('div')(
   css({
     '&:focus': {
@@ -228,9 +216,10 @@ export const IconOption = ({
   ...rest
 }: CustomSelectComponentProps<typeof Option>) => {
   const { size } = rest.selectProps;
+  const { isFocused, innerProps } = rest;
 
   return (
-    <Option {...rest}>
+    <Option {...rest} innerProps={{...innerProps, "aria-selected": isFocused}}>
       {children}
       {rest?.isSelected && (
         <CheckIcon size={selectedIconSize[size ?? 'medium']} />
