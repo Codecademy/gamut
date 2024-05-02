@@ -19,7 +19,7 @@ import {
 import { NavigationProvider } from '../Navigation/NavigationProvider';
 import { useEffect } from 'react';
 import * as React from 'react';
-import { merge } from 'lodash';
+import merge from 'lodash/merge';
 import { Link } from '../Markdown/Elements';
 import { coreTheme } from '@codecademy/gamut-styles/src/themes/core';
 

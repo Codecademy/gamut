@@ -1,4 +1,5 @@
-import { keys, pick } from 'lodash';
+import keys from 'lodash/keys';
+import pick from 'lodash/pick';
 
 export const getStaticCss = (
   props: Record<string, any>,

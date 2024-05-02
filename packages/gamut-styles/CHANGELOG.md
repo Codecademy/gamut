@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [16.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@16.2.0...@codecademy/gamut-styles@16.2.1) (2024-05-01)
+
+### Performance Improvements
+
+- Cherry-pick Lodash imports for smaller bundles ([0ee58af](https://github.com/Codecademy/gamut/commit/0ee58afe79297a6213e87453271391375fde8568))
+
 ## [16.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@16.1.4...@codecademy/gamut-styles@16.2.0) (2023-11-02)
 
 ### Features
