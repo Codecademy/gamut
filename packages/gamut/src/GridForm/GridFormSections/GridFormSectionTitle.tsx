@@ -19,6 +19,7 @@ export const GridFormSectionTitle: React.FC<GridFormSectionTitleProps> = ({
   layout = 'center',
   numberOfFields,
   title,
+  titleWrapperProps,
   variant,
 }) => {
   const size = layout === 'center' ? 12 : 3;
@@ -30,7 +31,7 @@ export const GridFormSectionTitle: React.FC<GridFormSectionTitleProps> = ({
       gridRowEnd={{ _: `span 1`, md: `span ${rowspan}` }}
       data-testid={dataTestId}
     >
-      <Box>
+      <Box {...titleWrapperProps}>
         <Text as={as} variant={variant}>
           {title}
         </Text>
