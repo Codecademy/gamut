@@ -4,7 +4,7 @@ module.exports = {
     [
       '@babel/env',
       {
-        modules: process.env.NODE_ENV === 'test' ? 'commonjs' : false,
+        modules: 'commonjs',
         targets: 'defaults',
       },
     ],
