@@ -867,7 +867,7 @@ Our `GridForm`s optionally take an array of sections that have left and center-a
 
 Each sections should have a title that correctly follows [heading ranks](https://usability.yale.edu/web-accessibility/articles/headings). You can set the text type of this title though the `as` prop on that section -- the default is `h2`. You can only set the `as` prop to a heading.
 
-You can set the <LinkTo id="typography-text--variants">Text variant</LinkTo> prop for the section title the same way. Only title variants are accepted.
+You can set the <LinkTo id="typography-text--variants">Text variant</LinkTo> prop for the section title the same way. Only title variants are reccomended, but if you need more granular control of the Text component, you can pass them into `titleWrapperProps`.
 
 When using the left-aligned layout, please note that the `title` takes up 3 columns, so any field size over 9 may cause inconsistent behavior!
 
@@ -1337,6 +1337,40 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
                     message: 'that is not an email 😔',
                   },
                 },
+                size: 12,
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Submit Me 💖',
+            }}
+          />
+        </Background>
+      </>
+    )}
+  </Story>
+</Canvas>
+
+We can combine these together to create some pretty cool forms which have a loading state, disable their fields while submitting, and reset the form when the submit was successful.
+
+## hideRequiredText
+
+`hideRequiredText` will hide the '* Required' text that appears at the top of our forms. This should only be hidden if the form has no required fields.
+
+<Canvas>
+  <Story name="hideRequiredText">
+    {() => (
+      <>
+        <Background bg="paleBlue" p={32}>
+          <GridForm
+            fields={[
+              {
+                label: 'A field',
+                placeholder: 'I am very optional',
+                name: 'very-optional',
+                type: 'input',
                 size: 12,
               },
             ]}
