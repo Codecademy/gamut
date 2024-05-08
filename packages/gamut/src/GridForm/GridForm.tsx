@@ -22,6 +22,7 @@ import {
 import {
   GridFormField,
   GridFormFieldsProps,
+  GridFormRequiredTextProps,
   GridFormSectionProps,
 } from './types';
 import { assignDefaultValue } from './utils';
@@ -39,52 +40,53 @@ const isGridFormSection = (
   return (field as GridFormSectionProps)?.title !== undefined;
 };
 
-export type GridFormProps<Values extends {}> = FormContextProps & {
-  children?: React.ReactNode;
-  className?: string;
+export type GridFormProps<Values extends {}> = FormContextProps &
+  GridFormRequiredTextProps & {
+    children?: React.ReactNode;
+    className?: string;
 
-  /**
-   * Layout grid column gap override.
-   */
-  columnGap?: LayoutGridProps['columnGap'];
+    /**
+     * Layout grid column gap override.
+     */
+    columnGap?: LayoutGridProps['columnGap'];
 
-  /**
-   * Descriptions of any fields or sections comprising the form.
-   */
-  fields?: GridFormFieldsProps[];
+    /**
+     * Descriptions of any fields or sections comprising the form.
+     */
+    fields?: GridFormFieldsProps[];
 
-  /**
-   * Renders a cancel button with the provided child text and onClick function.
-   */
-  cancel?: ButtonProps;
+    /**
+     * Renders a cancel button with the provided child text and onClick function.
+     */
+    cancel?: ButtonProps;
 
-  /**
-   * Function called with field values on submit, if all validations have passed.
-   */
-  onSubmit: SubmitHandler<Values>;
+    /**
+     * Function called with field values on submit, if all validations have passed.
+     */
+    onSubmit: SubmitHandler<Values>;
 
-  /**
-   * Whether to hide 'required' explanation at the start of forms - can be disabled only for forms without a required field.
-   */
-  hideRequiredText?: boolean;
+    /**
+     * Whether to hide 'required' explanation at the start of forms - can be disabled only for forms without a required field.
+     */
+    hideRequiredText?: boolean;
 
-  /**
-   * Layout grid row gap override between fields.
-   */
-  rowGap?: LayoutGridProps['rowGap'];
+    /**
+     * Layout grid row gap override between fields.
+     */
+    rowGap?: LayoutGridProps['rowGap'];
 
-  /**
-   * Description of the submit button at the end of the form.
-   */
-  submit: GridFormSubmitProps;
+    /**
+     * Description of the submit button at the end of the form.
+     */
+    submit: GridFormSubmitProps;
 
-  /**
-   * Which react hook form mode we are going to use for validation.
-   * If you use the onChange mode the submit button will be disabled until all
-   * required fields are completed.
-   */
-  validation?: Exclude<Mode, 'onBlur'>;
-};
+    /**
+     * Which react hook form mode we are going to use for validation.
+     * If you use the onChange mode the submit button will be disabled until all
+     * required fields are completed.
+     */
+    validation?: Exclude<Mode, 'onBlur'>;
+  };
 
 export function GridForm<Values extends FormValues<Values>>({
   cancel,
@@ -95,6 +97,7 @@ export function GridForm<Values extends FormValues<Values>>({
   submit,
   validation = 'onSubmit',
   hideRequiredText,
+  requiredTextProps,
   ...rest
 }: GridFormProps<Values>) {
   const flatFields = fields.flatMap((field) =>
@@ -127,7 +130,7 @@ export function GridForm<Values extends FormValues<Values>>({
         <>
           {!hideRequiredText && !isGridFormSection(fields[0]) && (
             <Column size={12}>
-              <FormRequiredText />
+              <FormRequiredText {...requiredTextProps} />
             </Column>
           )}
           {fields.map((field, index) => {
@@ -143,6 +146,11 @@ export function GridForm<Values extends FormValues<Values>>({
                     numberOfFields={fields.length}
                     variant={variant}
                     showRequired={index === 0 && !hideRequiredText}
+                    requiredTextProps={
+                      index === 0 && !hideRequiredText
+                        ? requiredTextProps
+                        : undefined
+                    }
                   />
                   <GridFormSection fields={fields} />
                   {/* don't show break on last section */}

@@ -208,6 +208,7 @@ If an input is not meant to be usable, such as when a portion of a form is disab
   <Story name="Disabled Inputs">
     {() => (
       <GridForm
+        ideRequiredText
         fields={[
           {
             disabled: true,
@@ -237,12 +238,13 @@ If an input is not meant to be usable, such as when a portion of a form is disab
 
 ## GridForm-atting
 
-We can use the `size` and `rowspan` props (borrowed from <LinkTo id="layouts-layoutgrid--layout-grid">LayoutGrid</LinkTo>) to customize the layouts of our GridForms.
+We can use the `size` and `rowspan` props (borrowed from <LinkTo id="layouts-layoutgrid--layout-grid">LayoutGrid</LinkTo>) to customize the layouts of our GridForms. You can also customize the `FormRequiredText` using the `requiredTextProps`. `FormRequiredText` should be spaced apart from or be stylistically different from the text element above it.
 
 <Canvas>
   <Story name="Rowspan Formatting">
     {() => (
       <GridForm
+        requiredTextProps={{ color: 'danger', variant: 'title-xs'}}
         fields={[
           {
             label: 'Fave Gamut Component',
@@ -876,6 +878,7 @@ When using the left-aligned layout, please note that the `title` takes up 3 colu
     {() => {
       return (
         <GridForm
+          requiredTextProps={{ color: 'primary', fontStyle: 'italic' }}
           fields={[
             {
               title: 'first section',
@@ -1390,3 +1393,4 @@ We can combine these together to create some pretty cool forms which have a load
 We can combine these together to create some pretty cool forms which have a loading state, disable their fields while submitting, and reset the form when the submit was successful.
 
 <FormLoadingExample />
+

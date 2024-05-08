@@ -6,7 +6,7 @@ import { TextAreaProps } from '../Form';
 import { CheckboxPaddingProps } from '../Form/types';
 import { ColumnProps } from '../Layout';
 import { InfoTipProps } from '../Tip';
-import { TextProps } from '../Typography/Text';
+import { Text, TextProps } from '../Typography/Text';
 
 export interface BaseFormInputProps {
   className?: string;
@@ -159,6 +159,13 @@ type RestrictedTitleVariant = FilterNestedEnumByPrefix<
   Pick<TextProps, 'variant'>,
   'title'
 >;
+
+export type GridFormRequiredTextProps = {
+  /**
+   * Style overrides for the required text -- required text should be spaced apart from or stylistically different from the element above it.
+   */
+  requiredTextProps?: React.ComponentProps<typeof Text>;
+};
 
 export type GridFormSectionTitleBaseProps = RestrictedTitleVariant & {
   title: string;
