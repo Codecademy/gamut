@@ -1,4 +1,8 @@
 import { Badge } from '@codecademy/gamut/src';
+import {
+  MiniCheckCircleIcon,
+  MiniWarningTriangleIcon,
+} from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -15,7 +19,7 @@ import LinkTo from '@storybook/addon-links/react';
     design: {
       type: 'figma',
       url:
-        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?type=design&node-id=60-3&mode=design&t=aRabEpDXVTIQicAe-0',
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?type=design&node-id=29959-39721&mode=design&t=27y0ZBTRsAgBmZ9z-0',
     },
   }}
 />
@@ -26,6 +30,7 @@ Badges are generally found next to interface elements that need to be called out
 
 - Use Badges to display read-only information like statuses, attributes, and other emphasized information.
 - Use the `variant` and `size` properties to ensure your badges have the right visibility and visual hierarchy on your page.
+- Use an <LinkTo kind='Atoms/Icons'>Icon</LinkTo> to draw attention to the badge using the `icon` prop.
 - **Limit Badge text to 1–2 words if possible.** These elements are most effective when displaying short pieces of text.
 - **Do not use Badges for elements that are meant to be clickable or interactive**. Badges are fully rounded to distinguish themselves from elements such as <LinkTo kind='Atoms/Button'>Buttons</LinkTo>.
 
@@ -71,6 +76,34 @@ We have two `size` options, which should be used according to their context:
   <Story
     name="small"
     args={{ children: 'sm size', size: 'sm', variant: 'tertiary' }}
+  >
+    {BadgeTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Leading Icon
+
+Include the `icon` property when the icon reinforces the badge’s message and improves scannability. Since badges are inherently small, it's recommended to use Gamut's mini icons.
+
+<Canvas>
+  <Story
+    name="sample icon"
+    args={{
+      children: 'sample icon',
+      variant: 'primary',
+      icon: MiniCheckCircleIcon,
+    }}
+  >
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story
+    name="small icon"
+    args={{
+      children: 'sm icon',
+      size: 'sm',
+      variant: 'accent',
+      icon: MiniWarningTriangleIcon,
+    }}
   >
     {BadgeTemplate.bind({})}
   </Story>

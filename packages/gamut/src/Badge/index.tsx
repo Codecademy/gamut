@@ -2,7 +2,9 @@ import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
+import { Box } from '../Box';
 import { IconComponentType } from '../Button/shared';
+import { determineIconSize, determineIconSpacing } from './helpers';
 
 const colorVariants = variant({
   defaultVariant: 'primary',
@@ -61,23 +63,6 @@ const badgeProps = variance.compose(
   system.layout,
   system.typography
 );
-
- const iconSizeVariants = variant({
-  prop: 'iconSize',
-  defaultVariant: 'base',
-  variants: {
-    base: {
-      height: 16,
-      width: 16,
-    },
-    sm: {
-      height: 8,
-      width: 8,
-    },
-  },
-});
-
-
 export interface BadgeBaseProps
   extends StyleProps<typeof badgeProps>,
     StyleProps<typeof colorVariants>,
@@ -89,29 +74,24 @@ const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
   sizeVariants
 );
 
-const iconSizeMap = {
-  base: 16,
-  sm: 8
-}
-export interface BadgeProps
-  extends BadgeBaseProps,
-  StyleProps<typeof iconSizeVariants>,
-  IconComponentType {}
-
+export interface BadgeProps extends BadgeBaseProps, IconComponentType {}
 
 export const Badge: React.FC<BadgeProps> = ({
   icon: Icon,
   children,
   ...rest
 }) => {
-  const iconSize = rest?.size ?? 'base'
+  const iconSize = rest.size === 'sm' ? 'sm' : 'base';
+  const size = determineIconSize(iconSize);
+  const spacing = determineIconSpacing(iconSize);
   return (
     <BadgeBase {...rest}>
-      {Icon && <Icon height={16}/>}
+      {Icon && (
+        <Box pr={spacing}>
+          <Icon height={size} width={size} />
+        </Box>
+      )}
       {children}
     </BadgeBase>
-  )
-}
-
-// or something like createButtonComponent from IconButton?
-// probably createButtonComp, since we don't need to redo all the current badges
+  );
+};
