@@ -46,8 +46,8 @@ const colorVariants = variant({
     },
     // KENNY: REMOVE THIS LATER
     checking: {
-      bg: 'feedback-success'
-    }
+      bg: 'feedback-success',
+    },
   },
 });
 

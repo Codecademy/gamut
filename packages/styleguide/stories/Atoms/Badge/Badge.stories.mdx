@@ -8,7 +8,7 @@ import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
 
-import { TertiaryFillExample } from './examples'
+import { TertiaryFillExample } from './examples';
 
 <Meta
   title={title}
@@ -69,12 +69,9 @@ Additional variants should designed with both <LinkTo kind='Foundations/ColorMod
 
 In the example below that the background is set to `background-primary` (beige).
 Notice that `tertiary` has a transparent background while `tertiaryFill` has a regular `background` color.
+
 <Canvas>
-  <Story name="tertiaryFillSeparate">
-    {() => (
-      <TertiaryFillExample />
-    )}
-  </Story>
+  <Story name="tertiaryFillSeparate">{() => <TertiaryFillExample />}</Story>
 </Canvas>
 
 ## Size
@@ -131,4 +128,3 @@ Include the `icon` property when the icon reinforces the badge’s message and i
 </Canvas>
 
 <PropsTable story="Badge" />
-
