@@ -44,10 +44,6 @@ const colorVariants = variant({
       color: 'text-secondary',
       bg: 'background',
     },
-    // KENNY: REMOVE THIS LATER
-    checking: {
-      bg: 'feedback-success',
-    },
   },
 });
 
@@ -83,7 +79,7 @@ const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
   sizeVariants
 );
 
-export interface BadgeProps extends BadgeBaseProps, IconComponentType {}
+export interface BadgeProps extends BadgeBaseProps, Partial<IconComponentType> {}
 
 export const Badge: React.FC<BadgeProps> = ({
   icon: Icon,
