@@ -18,6 +18,7 @@ import {
   DropdownButton,
   formatGroupLabel,
   formatOptionLabel,
+  IconOption,
   MultiValueRemoveButton,
   MultiValueWithColorMode,
   onFocus,
@@ -43,6 +44,7 @@ const defaultProps = {
     SelectContainer: CustomContainer,
     MultiValue: MultiValueWithColorMode,
     MultiValueRemove: MultiValueRemoveButton,
+    Option: IconOption,
   },
 };
 
@@ -197,6 +199,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         styles={memoizedStyles}
         value={multiple ? multiValues : parsedValue}
         selectRef={selectInputRef}
+        aria-live="assertive"
         {...rest}
       />
     </SelectDropdownContext.Provider>

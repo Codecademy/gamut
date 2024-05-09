@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.21.3](https://github.com/Codecademy/gamut/compare/@codecademy/variance@0.21.2...@codecademy/variance@0.21.3) (2024-05-01)
+
+### Performance Improvements
+
+- Cherry-pick Lodash imports for smaller bundles ([0ee58af](https://github.com/Codecademy/gamut/commit/0ee58afe79297a6213e87453271391375fde8568))
+
 ### [0.21.2](https://github.com/Codecademy/gamut/compare/@codecademy/variance@0.21.1...@codecademy/variance@0.21.2) (2023-09-14)
 
 **Note:** Version bump only for package @codecademy/variance

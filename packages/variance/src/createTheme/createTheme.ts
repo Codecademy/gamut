@@ -1,4 +1,5 @@
-import { mapValues, merge } from 'lodash';
+import mapValues from 'lodash/mapValues';
+import merge from 'lodash/merge';
 
 import { CSSObject } from '../types/props';
 import { AbstractTheme } from '../types/theme';

@@ -1,5 +1,7 @@
 import invariant from 'invariant';
-import { AnyKindOfDictionary, isPlainObject, omit, without } from 'lodash';
+import isPlainObject from 'lodash/isPlainObject';
+import omit from 'lodash/omit';
+import without from 'lodash/without';
 
 export type RemoveFrom<TContainer, TRemoved> = {
   [P in keyof TContainer]: P extends keyof TRemoved ? never : TContainer[P];
@@ -28,7 +30,7 @@ export function omitProps<TOmittedProps extends {}, TProps extends {}>(
   const dataProps = propsToOmit.filter((p) => /^data-.*/.exec(p));
 
   return omit(
-    (props as unknown) as AnyKindOfDictionary,
+    (props as unknown) as Record<string | number, unknown>,
     without(propsToOmit, 'children', 'className', ...dataProps)
   ) as RemoveFrom<TOmittedProps, TProps>;
 }
