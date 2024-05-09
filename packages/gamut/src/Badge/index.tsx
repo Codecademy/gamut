@@ -2,7 +2,7 @@ import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { Box } from '../Box';
+import { FlexBox } from '../Box';
 import { IconComponentType } from '../Button/shared';
 import { determineIconSize, determineIconSpacing } from './helpers';
 
@@ -92,9 +92,9 @@ export const Badge: React.FC<BadgeProps> = ({
   return (
     <BadgeBase {...rest}>
       {Icon && (
-        <Box pr={spacing}>
+        <FlexBox pr={spacing}>
           <Icon height={size} width={size} />
-        </Box>
+        </FlexBox>
       )}
       {children}
     </BadgeBase>
