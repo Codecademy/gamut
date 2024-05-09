@@ -8,6 +8,8 @@ import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
 
+import { TertiaryFillExample } from './examples'
+
 <Meta
   title={title}
   component={Badge}
@@ -40,12 +42,12 @@ export const BadgeTemplate = (args) => (
 
 ## Variants
 
-We support the following variants of Badges: `primary`, `secondary`, `tertiary`, and `accent`.
+We support the following variants of Badges: `primary`, `secondary`, `tertiary`, `tertiaryFill`, and `accent`.
 
-- **Greyscale Badges** provide different levels of priority for the `primary`, `secondary`, and `tertiary` variants.
+- **Greyscale Badges** provide different levels of priority for the `primary`, `secondary`, `tertiary`, and `tertiaryFill` variants.
 - **Accent colors** like `accent` are meant to be used sparingly so they can stand out against other elements.
 
-Additional variants should designed with both <LinkTo kind='Foundations/ColorMode'>ColorModes</LinkTo> in mind. For example, the `accent` and `secondary` variants work against both light and dark backgrounds, while the `primary` and `tertiary` variants both adapt to their ColorMode (which you can check out by using the toolbar at the top of this page!)
+Additional variants should designed with both <LinkTo kind='Foundations/ColorMode'>ColorModes</LinkTo> in mind. For example, the `accent` and `secondary` variants work against both light and dark backgrounds, while the `primary` and `tertiary`, and `tertiaryFill` variants both adapt to their ColorMode (which you can check out by using the toolbar at the top of this page!)
 
 <Canvas>
   <Story name="primary" args={{ children: 'primary' }}>
@@ -57,8 +59,21 @@ Additional variants should designed with both <LinkTo kind='Foundations/ColorMod
   <Story name="tertiary" args={{ variant: 'tertiary' }}>
     {BadgeTemplate.bind({})}
   </Story>
+  <Story name="tertiaryFill" args={{ variant: 'tertiaryFill' }}>
+    {BadgeTemplate.bind({})}
+  </Story>
   <Story name="accent" args={{ variant: 'accent' }}>
     {BadgeTemplate.bind({})}
+  </Story>
+</Canvas>
+
+In the example below that the background is set to `background-primary` (beige).
+Notice that `tertiary` has a transparent background while `tertiaryFill` has a regular `background` color.
+<Canvas>
+  <Story name="tertiaryFillSeparate">
+    {() => (
+      <TertiaryFillExample />
+    )}
   </Story>
 </Canvas>
 
@@ -116,3 +131,4 @@ Include the `icon` property when the icon reinforces the badge’s message and i
 </Canvas>
 
 <PropsTable story="Badge" />
+

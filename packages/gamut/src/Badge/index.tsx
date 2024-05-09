@@ -38,12 +38,21 @@ const colorVariants = variant({
       color: 'text-secondary',
       bg: 'transparent',
     },
+    tertiaryFill: {
+      border: 1,
+      borderColor: 'text-secondary',
+      color: 'text-secondary',
+      bg: 'background',
+    },
+    // KENNY: REMOVE THIS LATER
+    checking: {
+      bg: 'feedback-success'
+    }
   },
 });
 
 const sizeVariants = variant({
   prop: 'size',
-  defaultVariant: 'base',
   variants: {
     base: {
       height: '1.5rem',
