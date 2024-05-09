@@ -10,11 +10,3 @@ export const TertiaryFillExample = () => {
   );
 };
 
-/**
- *In the example below that the background is set to `background-primary` (beige).
-Notice that `tertiary` has a transparent background while `tertiaryFill` has a regular `background` color.
-
-<Canvas>
-  <Story name="tertiaryFillSeparate">{() => <TertiaryFillExample />}</Story>
-</Canvas>
- */

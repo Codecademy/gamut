@@ -3,7 +3,7 @@ import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { FlexBox } from '../Box';
-import { IconComponentType } from '../utils';
+import { IconComponentType, WithChildrenProp } from '../utils';
 import { determineIconSize, determineIconSpacing } from './helpers';
 
 const colorVariants = variant({
@@ -71,7 +71,8 @@ const badgeProps = variance.compose(
 export interface BadgeBaseProps
   extends StyleProps<typeof badgeProps>,
     StyleProps<typeof colorVariants>,
-    StyleProps<typeof sizeVariants> {}
+    StyleProps<typeof sizeVariants>,
+    WithChildrenProp {}
 
 const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
   badgeProps,
@@ -81,7 +82,7 @@ const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
 
 export interface BadgeProps
   extends Partial<IconComponentType>,
-    BadgeBaseProps {}
+  BadgeBaseProps {}
 
 export const Badge: React.FC<BadgeProps> = ({
   icon: Icon,
