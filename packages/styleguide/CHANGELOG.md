@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.19.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.19.2...@codecademy/styleguide@66.19.3) (2024-05-13)
+
+### Bug Fixes
+
+- **Button:** remove button as default role ([3a66628](https://github.com/Codecademy/gamut/commit/3a66628f372f65f4a09a730365944ac88b782f0f))
+
 ### [66.19.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.19.1...@codecademy/styleguide@66.19.2) (2024-05-02)
 
 **Note:** Version bump only for package @codecademy/styleguide
