@@ -27,6 +27,8 @@ export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
   ctaText,
   ctaCallback,
   // button: Button,
+  // button props, add in buttons later
+    // can pick certain props based on what stacey wants
 }) => {
   // const buttonExists = Boolean(Button)
   return (
@@ -43,8 +45,12 @@ export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
       {ctaText &&
         ctaCallback &&
         renderButton('TextButton', ctaText, ctaCallback)}
-      {/* { (ctaText && ctaCallback && Boolean(Button)) ? 'something' : Button
+      {/* { (ctaText && ctaCallback && Button) ? 'something' : <Button>
+      If doing this, do it outside of the return
+        if doing button props, can get rid of ctaText
+        also consider `href`
       } */}
+
     </StyledFlexBox>
   );
 };

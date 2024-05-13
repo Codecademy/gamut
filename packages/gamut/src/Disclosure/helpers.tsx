@@ -25,39 +25,42 @@ export const determineHorizontalSpacing = (
 };
 
 export const renderButton = (
-  buttonName: string,
+  buttonType: "TextButton" | "FillButton" | "StrokeButton",
   ctaText: string,
   ctaCallback: () => void
 ) => {
-  if (buttonName.match(/fill/i)) {
-    return (
-      <FillButton
-        alignSelf="flex-end"
-        pt={8}
-        onClick={ctaCallback ? () => ctaCallback() : undefined}
-      >
-        {ctaText}
-      </FillButton>
-    );
+  switch (buttonType) {
+    case "FillButton":
+      return (
+        <FillButton
+          alignSelf="flex-end"
+          pt={8}
+          onClick={ctaCallback ? () => ctaCallback() : undefined}
+        >
+          {ctaText}
+        </FillButton>
+      );
+    case "StrokeButton":
+      return (
+        <StrokeButton
+          alignSelf="flex-end"
+          pt={8}
+          onClick={ctaCallback ? () => ctaCallback() : undefined}
+        >
+          {ctaText}
+        </StrokeButton>
+      );
+    case "TextButton":
+      return (
+        <TextButton
+          alignSelf="flex-end"
+          pt={8}
+          onClick={ctaCallback ? () => ctaCallback() : undefined}
+        >
+          {ctaText}
+        </TextButton>
+      );
+    default:
+      return null;
   }
-  if (buttonName.match(/stroke/i)) {
-    return (
-      <StrokeButton
-        alignSelf="flex-end"
-        pt={8}
-        onClick={ctaCallback ? () => ctaCallback() : undefined}
-      >
-        {ctaText}
-      </StrokeButton>
-    );
-  }
-  return (
-    <TextButton
-      alignSelf="flex-end"
-      pt={8}
-      onClick={ctaCallback ? () => ctaCallback() : undefined}
-    >
-      {ctaText}
-    </TextButton>
-  );
 };
