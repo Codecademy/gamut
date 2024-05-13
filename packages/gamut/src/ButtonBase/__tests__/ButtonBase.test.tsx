@@ -39,7 +39,6 @@ describe('ButtonBase', () => {
 
   describe('when the button is disabled', () => {
     it('does not render the href attribute and renders a button', () => {
-      const buttonText = 'Submit';
       const { view } = renderView({ disabled: true });
 
       const el = view.getByText(buttonText);
@@ -48,7 +47,6 @@ describe('ButtonBase', () => {
     });
 
     it('renders the disabled attribute on button tags', () => {
-      const buttonText = 'Submit';
       const { view } = renderView({ disabled: true });
 
       const el = view.getByText(buttonText);
