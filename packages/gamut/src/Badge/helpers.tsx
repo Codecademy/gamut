@@ -22,7 +22,9 @@ const TextTopMarginSpaceMap = {
   sm: 0,
 } as const;
 
-export const determineTextTopMargin = (size: keyof typeof TextTopMarginSpaceMap) => {
+export const determineTextTopMargin = (
+  size: keyof typeof TextTopMarginSpaceMap
+) => {
   return TextTopMarginSpaceMap[size];
 };
 
@@ -33,6 +35,8 @@ const TextBottomMarginSpaceMap = {
   // sm: 0,
 } as const;
 
-export const determineTextBottomMargin = (size: keyof typeof TextBottomMarginSpaceMap) => {
+export const determineTextBottomMargin = (
+  size: keyof typeof TextBottomMarginSpaceMap
+) => {
   return TextBottomMarginSpaceMap[size];
 };
