@@ -2,9 +2,9 @@ import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { FlexBox } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { IconComponentType, WithChildrenProp } from '../utils';
-import { determineIconSize, determineIconSpacing } from './helpers';
+import { determineIconSize, determineIconSpacing, determineTextBottomMargin, determineTextTopMargin } from './helpers';
 
 const colorVariants = variant({
   defaultVariant: 'primary',
@@ -99,7 +99,7 @@ export const Badge: React.FC<BadgeProps> = ({
           <Icon height={size} width={size} />
         </FlexBox>
       )}
-      {children}
+      <Box mt={Icon && determineTextTopMargin(iconSize)} mb={Icon && determineTextBottomMargin(iconSize)}>{children}</Box>
     </BadgeBase>
   );
 };

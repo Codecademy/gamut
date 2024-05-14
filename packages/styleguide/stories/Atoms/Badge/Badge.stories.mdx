@@ -1,6 +1,8 @@
 import { Badge } from '@codecademy/gamut/src';
 import {
-  MiniCheckCircleIcon,
+  MiniInfoCircleIcon,
+  MiniPinIcon,
+  MiniStarIcon,
   MiniWarningTriangleIcon,
 } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
@@ -85,9 +87,18 @@ We have two `size` options, which should be used according to their context:
   <Story name="default size" args={{ children: 'default size' }}>
     {BadgeTemplate.bind({})}
   </Story>
+  <Story name="default size FOR TESTING" args={{ children: 'DEFAULT' }}>
+    {BadgeTemplate.bind({})}
+  </Story>
   <Story
     name="small"
     args={{ children: 'sm size', size: 'sm', variant: 'tertiary' }}
+  >
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story
+    name="small FOR TESTING"
+    args={{ children: 'SMALL', size: 'sm', variant: 'tertiary' }}
   >
     {BadgeTemplate.bind({})}
   </Story>
@@ -102,8 +113,38 @@ Include the `icon` property when the icon reinforces the badge’s message and i
     name="sample icon"
     args={{
       children: 'sample icon',
-      variant: 'primary',
-      icon: MiniCheckCircleIcon,
+      variant: 'tertiaryFill',
+      icon: MiniStarIcon,
+    }}
+  >
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story
+    name="another sample icon FOR TESTING"
+    args={{
+      children: 'IN CAPS',
+      variant: 'tertiaryFill',
+      icon: MiniStarIcon,
+    }}
+  >
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story
+    name="different test icon FOR TESTING"
+    args={{
+      children: 'another icon',
+      variant: 'tertiaryFill',
+      icon: MiniPinIcon,
+    }}
+  >
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story
+    name="different icon FOR TESTING"
+    args={{
+      children: 'IN CAPS',
+      variant: 'tertiaryFill',
+      icon: MiniPinIcon,
     }}
   >
     {BadgeTemplate.bind({})}
@@ -115,6 +156,17 @@ Include the `icon` property when the icon reinforces the badge’s message and i
       size: 'sm',
       variant: 'accent',
       icon: MiniWarningTriangleIcon,
+    }}
+  >
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story
+    name="small icon caps FOR TESTING"
+    args={{
+      children: 'SMOL',
+      size: 'sm',
+      variant: 'accent',
+      icon: MiniInfoCircleIcon,
     }}
   >
     {BadgeTemplate.bind({})}
