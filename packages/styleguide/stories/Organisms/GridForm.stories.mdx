@@ -208,7 +208,7 @@ If an input is not meant to be usable, such as when a portion of a form is disab
   <Story name="Disabled Inputs">
     {() => (
       <GridForm
-        ideRequiredText
+        hideRequiredText
         fields={[
           {
             disabled: true,
@@ -316,6 +316,7 @@ value of left, center, right, or stretch.
       <LayoutGrid>
         <Column size={6}>
           <GridForm
+          hideRequiredText
             fields={[
               {
                 label: 'Simple text',
@@ -334,6 +335,7 @@ value of left, center, right, or stretch.
         </Column>
         <Column size={6}>
           <GridForm
+          hideRequiredText
             fields={[
               {
                 label: 'Simple text',
@@ -352,6 +354,7 @@ value of left, center, right, or stretch.
         </Column>
         <Column size={6}>
           <GridForm
+          hideRequiredText
             fields={[
               {
                 label: 'Simple text',
@@ -370,6 +373,7 @@ value of left, center, right, or stretch.
         </Column>
         <Column size={6}>
           <GridForm
+          hideRequiredText
             fields={[
               {
                 label: 'Simple text',
@@ -401,6 +405,7 @@ the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="
     {() => (
       <>
         <GridForm
+        hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -418,6 +423,7 @@ the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="
           }}
         />
         <GridForm
+        hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -436,6 +442,7 @@ the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="
           }}
         />
         <GridForm
+        hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -454,6 +461,7 @@ the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="
           }}
         />
         <GridForm
+        hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -493,6 +501,7 @@ align nicely with the input.
   <Story name="Inline Text Input With Label">
     {() => (
       <GridForm
+      hideRequiredText
         fields={[
           {
             hideLabel: true,
@@ -524,6 +533,7 @@ Optionally, include a cancel button.
     <LayoutGrid>
       <Column size={6}>
         <GridForm
+        hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -546,6 +556,7 @@ Optionally, include a cancel button.
       </Column>
       <Column size={6}>
         <GridForm
+        hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -568,6 +579,7 @@ Optionally, include a cancel button.
       </Column>
       <Column size={6}>
         <GridForm
+        hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -590,6 +602,7 @@ Optionally, include a cancel button.
       </Column>
       <Column size={6}>
         <GridForm
+        hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -625,6 +638,7 @@ We also have a 'custom-group' type for when you are passing in a custom FormGrou
   <Story name="Custom Inputs">
     {() => (
       <GridForm
+      hideRequiredText
         fields={[
           {
             render: ({ error, setValue }) => (
@@ -700,6 +714,7 @@ more details on why using placeholders is often bad.
   <Story name="Placeholder Text">
     {() => (
       <GridForm
+      hideRequiredText
         fields={[
           {
             label: 'Email',
@@ -733,6 +748,7 @@ field's value in a parent component before onSubmit gets triggered.
         <>
           <>The text value is: {text}</>
           <GridForm
+          hideRequiredText
             fields={[
               {
                 label: 'Text with onUpdate',
@@ -1022,6 +1038,7 @@ Hidden inputs can be used to include data that users can't see or modify with th
   <Story name="Hidden Input">
     {() => (
       <GridForm
+      hideRequiredText
         fields={[
           {
             type: 'hidden',
@@ -1055,6 +1072,7 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
   <Story name="Sweet Container Input">
     {() => (
       <GridForm
+      hideRequiredText
         fields={[
           {
             label: 'This is our sticky sweet label',
@@ -1132,6 +1150,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
             id: 'cozy-check-0',
             defaultValue: true,
             spacing: 'tight',
+            label: 'must check',
             validation: {
               required: 'sos',
             },
@@ -1144,6 +1163,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
             id: 'cozy-check-1',
             defaultValue: true,
             spacing: 'tight',
+            label: 'must check',
             validation: {
               required: 'pls help',
             },
@@ -1155,6 +1175,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
             type: 'checkbox',
             id: 'cozy-check-2',
             defaultValue: true,
+            label: 'you do not have to check this',
             spacing: 'tight',
           },
           {
@@ -1164,6 +1185,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
             type: 'checkbox',
             id: 'cozy-check-3',
             defaultValue: true,
+            label: 'you do not have to check this',
             spacing: 'tight',
           },
         ]}
@@ -1187,6 +1209,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
       <>
         <Background bg="beige" p={32}>
           <GridForm
+          hideRequiredText
             fields={[
               {
                 label: 'Email',
@@ -1206,6 +1229,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
         </Background>
         <Background bg="navy" p={32}>
           <GridForm
+          hideRequiredText
             fields={[
               {
                 label: 'Email',
@@ -1238,6 +1262,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
       <>
         <Background bg="palePink" p={32}>
           <GridForm
+          hideRequiredText
             disableFieldsOnSubmit
             fields={[
               {
@@ -1264,6 +1289,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
         </Background>
         <Background bg="black" p={32}>
           <GridForm
+          hideRequiredText
             disableFieldsOnSubmit
             wasSubmitSuccessful={false}
             fields={[
@@ -1287,6 +1313,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
         </Background>
         <Background bg="paleBlue" p={32}>
           <GridForm
+          hideRequiredText
             disableFieldsOnSubmit
             fields={[
               {
@@ -1326,6 +1353,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
       <>
         <Background bg="beige" p={32}>
           <GridForm
+          hideRequiredText
             resetOnSubmit
             fields={[
               {
