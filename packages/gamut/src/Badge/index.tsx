@@ -4,10 +4,7 @@ import styled from '@emotion/styled';
 
 import { Box, FlexBox } from '../Box';
 import { IconComponentType, WithChildrenProp } from '../utils';
-import {
-  determineIconSize,
-  determineIconSpacing
-} from './helpers';
+import { determineIconSize, determineIconSpacing } from './helpers';
 
 const colorVariants = variant({
   defaultVariant: 'primary',
@@ -104,7 +101,7 @@ export const Badge: React.FC<BadgeProps> = ({
       )}
       <Box
         // Badges with icon need less spacing, but since 4 is the lowest we can go, we'll use 2 and set it as `any` as to not throw TS errors
-        mt={Icon && 2 as any}
+        mt={Icon && (2 as any)}
       >
         {children}
       </Box>
