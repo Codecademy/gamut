@@ -1,4 +1,9 @@
-import { get, identity, isArray, isObject, isUndefined, merge } from 'lodash';
+import get from 'lodash/get';
+import identity from 'lodash/identity';
+import isArray from 'lodash/isArray';
+import isObject from 'lodash/isObject';
+import isUndefined from 'lodash/isUndefined';
+import merge from 'lodash/merge';
 
 import { createScaleLookup } from './scales/createScaleLookup';
 import {

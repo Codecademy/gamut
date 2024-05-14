@@ -1,4 +1,4 @@
-import { isObject } from 'lodash';
+import isObject from 'lodash/isObject';
 
 /**
  * Returns an exhaustive list of all possible paths of an object T for keys K.

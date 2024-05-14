@@ -1,6 +1,6 @@
 import { Path, PathValue } from '@codecademy/variance';
 import { Theme } from '@emotion/react';
-import { get } from 'lodash';
+import get from 'lodash/get';
 
 /**
  * Creates a function that will look up the a design token from the `theme` context of a
@@ -19,5 +19,5 @@ export type SafeThemeValues = Omit<
 export function themed<P extends Path<SafeThemeValues>>(
   path: P
 ): (props: { theme: Theme }) => PathValue<SafeThemeValues, P> {
-  return ({ theme }) => get(theme, path);
+  return ({ theme }) => get(theme, path as string);
 }

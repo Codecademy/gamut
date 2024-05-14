@@ -6,7 +6,7 @@ export interface IconStyleProps extends StyleProps<typeof iconProps> {
   size?: StyleProps<typeof iconProps>['width'];
 }
 
-export interface GamutIconProps
+export interface GamutBaseIconProps
   extends Omit<React.SVGProps<SVGSVGElement>, keyof IconStyleProps>,
     IconStyleProps {
   /**
@@ -22,7 +22,17 @@ export interface GamutIconProps
   path?: string;
 }
 
-export type ForwardableProps = Omit<GamutIconProps, keyof IconStyleProps>;
+interface GamutHiddenIconProps extends GamutBaseIconProps {
+  'aria-hidden'?: true;
+  'aria-label'?: never;
+}
+interface GamutVisibleIconProps extends GamutBaseIconProps {
+  'aria-hidden': false;
+  'aria-label': string;
+}
+
+export type GamutIconProps = GamutHiddenIconProps | GamutVisibleIconProps;
+export type ForwardableProps = Omit<GamutBaseIconProps, keyof IconStyleProps>;
 
 export const iconProps = variance.compose(
   system.layout,

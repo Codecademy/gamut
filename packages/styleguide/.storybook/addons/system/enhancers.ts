@@ -1,6 +1,10 @@
-import { mapValues } from 'lodash/fp';
+import mapValues from 'lodash/fp/mapValues';
 import { ArgTypesEnhancer } from '@storybook/client-api';
-import { hasIn, isObject, isString, kebabCase, merge } from 'lodash';
+import hasIn from 'lodash/hasIn';
+import isObject from 'lodash/isObject';
+import isString from 'lodash/isString';
+import kebabCase from 'lodash/kebabCase';
+import merge from 'lodash/merge';
 import { ALL_PROPS, PROP_MAP, PROP_GROUPS } from './propMeta';
 import { theme } from '@codecademy/gamut-styles';
 

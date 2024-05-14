@@ -1,5 +1,5 @@
 import { useReducer, useMemo, useContext } from 'react';
-import { intersection } from 'lodash';
+import intersection from 'lodash/intersection';
 import { DocsContext } from '@storybook/addon-docs/blocks';
 import { ALL_PROPS, PropGroups, PROP_GROUPS } from '../propMeta';
 

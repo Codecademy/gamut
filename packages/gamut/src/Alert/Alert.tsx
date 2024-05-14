@@ -1,11 +1,12 @@
 import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { breakpoints, useCurrentMode } from '@codecademy/gamut-styles';
+import { useId } from '@reach/auto-id';
 import { isValidElement, useMemo, useState } from 'react';
 import * as React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
 import { useMedia } from 'react-use';
 
-import { Rotation, WithChildrenProp } from '..';
+import { Rotation, ToolTip, WithChildrenProp } from '..';
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
 import {
@@ -59,6 +60,8 @@ export const Alert: React.FC<AlertProps> = ({
   const isDesktop = useMedia(`(min-width: ${breakpoints.xs})`);
   const activeAlert = alertVariants?.[type] ?? alertVariants.general;
   const { icon: Icon, bg } = activeAlert;
+
+  const tipId = useId();
 
   const currentColorMode = useCurrentMode();
   const isSubtleVariant = type === 'subtle';
@@ -122,19 +125,31 @@ export const Alert: React.FC<AlertProps> = ({
     </TruncateMarkup>
   );
 
+  const buttonLabel = expanded ? 'Collapse alert' : 'Expand alert';
+  const ariaId = tipId ?? '';
+
   const expandButton = truncated && !isInline && (
     <Box>
-      <TextButton
-        tabIndex={tabIndex}
-        aria-label={expanded ? 'Collapse' : 'Expand'}
-        variant="secondary"
-        size="small"
-        onClick={() => setExpanded(!expanded)}
+      <ToolTip
+        id={ariaId}
+        info={buttonLabel}
+        alignment="bottom-center"
+        placement="floating"
+        hasRepetitiveLabel
       >
-        <Rotation rotated={toggleState === 'expanded'}>
-          <MiniChevronDownIcon />
-        </Rotation>
-      </TextButton>
+        <TextButton
+          aria-describedby={ariaId}
+          tabIndex={tabIndex}
+          variant="secondary"
+          size="small"
+          onClick={() => setExpanded(!expanded)}
+          aria-label={expanded ? 'Collapse' : 'Expand'}
+        >
+          <Rotation rotated={toggleState === 'expanded'}>
+            <MiniChevronDownIcon />
+          </Rotation>
+        </TextButton>
+      </ToolTip>
     </Box>
   );
 

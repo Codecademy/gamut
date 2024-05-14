@@ -74,6 +74,7 @@ export const SortControl: React.FC<SortControlProps> = ({
       {children}
       <FlexBox column width={16} ml={8} mb={4}>
         <SortIcon
+          aria-hidden={false}
           asc
           active={direction === 'asc'}
           size={9}
@@ -81,6 +82,7 @@ export const SortControl: React.FC<SortControlProps> = ({
           color="currentColor"
         />
         <SortIcon
+          aria-hidden={false}
           size={9}
           active={direction === 'desc'}
           aria-label="descending"

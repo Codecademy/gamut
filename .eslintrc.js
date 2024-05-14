@@ -48,5 +48,12 @@ module.exports = {
         '@typescript-eslint/restrict-template-expressions': 'off',
       },
     },
+    {
+      files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
+      plugins: ['lodash'],
+      rules: {
+        'lodash/import-scope': ['error', 'method'],
+      },
+    },
   ],
 };

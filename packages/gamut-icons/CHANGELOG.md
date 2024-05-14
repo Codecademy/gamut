@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.24.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.24.1...@codecademy/gamut-icons@9.24.2) (2024-05-01)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.24.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.24.0...@codecademy/gamut-icons@9.24.1) (2024-04-25)
+
+### Bug Fixes
+
+- **Icons:** remove default title ([7ac11a1](https://github.com/Codecademy/gamut/commit/7ac11a1e233b4bc9bc5ca9deb8cf04e8b0928f88))
+
+## [9.24.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.23.0...@codecademy/gamut-icons@9.24.0) (2024-04-24)
+
+### Features
+
+- **EditableIcon:** Add YoutubePlayIcon ([#2867](https://github.com/Codecademy/gamut/issues/2867)) ([83e42bd](https://github.com/Codecademy/gamut/commit/83e42bd8b251be6bd3ebc01227a0ba4eece1b8c9))
+
 ## [9.23.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.22.0...@codecademy/gamut-icons@9.23.0) (2024-04-18)
 
 ### Features

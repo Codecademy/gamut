@@ -1,7 +1,7 @@
 import { matchers } from '@emotion/jest';
 import { ThemeProvider, useTheme } from '@emotion/react';
 import { setupRtl as setupRtlBase } from 'component-test-setup';
-import { overArgs } from 'lodash';
+import overArgs from 'lodash/overArgs';
 import * as React from 'react';
 
 import { Background } from '../Background';

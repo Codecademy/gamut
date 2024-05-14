@@ -411,28 +411,32 @@ export const SelectDropdownOptionVariantsExample: React.FC = () => (
     </FormGroup>
   </Box>
   <Box p={16} width="100%" height="12rem" border={1} bg="background-primary">
-    <FormGroup label="I have subtitle and extended info options" htmlFor="disabled-dropdown">
-      <SelectDropdown
-        name="disabled-dropdown"
+      <FormGroup
+        label="I have subtitle and extended info options"
+        htmlFor="chess-dropdown"
+      >
+        <SelectDropdown
+          value="queen"
+          name="chess-dropdown"
           options={[
             {
               options: [
                 {
                   label: 'king@chess.com',
                   subtitle: 'The King of Chess',
-                  value: 'xxx',
+                  value: 'king',
                   disabled: true,
                 },
                 {
                   label: 'queen@chess.com',
                   rightLabel: 'The Queen of Chess',
-                  value: 'yyy',
+                  value: 'queen',
                 },
                 {
                   label: 'bishop@chess.com',
                   subtitle: 'Bishop Chess',
                   rightLabel: 'I can move diagonally',
-                  value: 'zzz',
+                  value: 'bishop',
                   disabled: false,
                 },
               ],
@@ -444,19 +448,19 @@ export const SelectDropdownOptionVariantsExample: React.FC = () => (
                   label: 'knight@chess.com',
                   subtitle: 'Sir Chess',
                   rightLabel: 'By leaps and bounds',
-                  value: 'zzz',
+                  value: 'chess',
                   disabled: true,
                 },
                 {
                   label: 'pawn@chess.com',
-                  value: 'zzz',
+                  value: 'pawn',
                   disabled: false,
                 },
               ],
             },
           ]}
-      />
-    </FormGroup>
+        />
+      </FormGroup>
   </Box>
 );
 ```

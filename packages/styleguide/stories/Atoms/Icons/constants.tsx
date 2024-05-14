@@ -1,6 +1,8 @@
 // eslint-disable-next-line gamut/import-paths
 import * as icons from '@codecademy/gamut-icons/src/icons/regular';
-import { keys, omit, pick } from 'lodash';
+import keys from 'lodash/keys';
+import omit from 'lodash/omit';
+import pick from 'lodash/pick';
 
 export const ICONS = icons;
 
@@ -34,10 +36,11 @@ export const VENDOR_ICONS = pick(
     'TikTokIcon',
     'TwitterIcon',
     'TwitterOutlineIcon',
-    'WhatsAppFilledIcon',
     'VisaIcon',
-    'YoutubeIcon',
+    'WhatsAppFilledIcon',
     'XIcon',
+    'YoutubeIcon',
+    'YoutubePlayIcon',
   ].sort()
 );
 

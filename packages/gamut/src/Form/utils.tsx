@@ -1,4 +1,5 @@
-import { each, isObject } from 'lodash';
+import each from 'lodash/each';
+import isObject from 'lodash/isObject';
 
 import {
   ExtendedOption,

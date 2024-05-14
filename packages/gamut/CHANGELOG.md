@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.19.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.19.0...@codecademy/gamut@55.19.1) (2024-05-13)
+
+### Bug Fixes
+
+- **Button:** remove button as default role ([3a66628](https://github.com/Codecademy/gamut/commit/3a66628f372f65f4a09a730365944ac88b782f0f))
+
+## [55.19.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.18.1...@codecademy/gamut@55.19.0) (2024-05-02)
+
+### Features
+
+- **SelectDropdown:** updated aria-live to be assertive and added aria-selected attribute to SelectDropdown ([7733904](https://github.com/Codecademy/gamut/commit/7733904899c0cc3d599a2bc508bcd05f81382ead))
+
+### [55.18.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.18.0...@codecademy/gamut@55.18.1) (2024-05-01)
+
+### Performance Improvements
+
+- Cherry-pick Lodash imports for smaller bundles ([0ee58af](https://github.com/Codecademy/gamut/commit/0ee58afe79297a6213e87453271391375fde8568))
+
+## [55.18.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.6...@codecademy/gamut@55.18.0) (2024-05-01)
+
+### Features
+
+- **SelectDropdown:** Add checkmark to selected option ([d953291](https://github.com/Codecademy/gamut/commit/d953291a5e8147beda25397c6aee188becefbdbd))
+
+### [55.17.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.5...@codecademy/gamut@55.17.6) (2024-04-25)
+
+### Bug Fixes
+
+- **Icons:** remove default title ([7ac11a1](https://github.com/Codecademy/gamut/commit/7ac11a1e233b4bc9bc5ca9deb8cf04e8b0928f88))
+
+### [55.17.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.4...@codecademy/gamut@55.17.5) (2024-04-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ### [55.17.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.3...@codecademy/gamut@55.17.4) (2024-04-18)
 
 **Note:** Version bump only for package @codecademy/gamut
