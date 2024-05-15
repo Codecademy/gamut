@@ -45,7 +45,7 @@ describe('FormGroup', () => {
       required: true,
     });
 
-    view.getByLabelText('up dog *');
+    view.getByLabelText('up dog*');
   });
 
   it('renders description', () => {
