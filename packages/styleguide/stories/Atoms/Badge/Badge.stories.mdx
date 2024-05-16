@@ -94,6 +94,8 @@ We have two `size` options, which should be used according to their context:
 
 Include the `icon` property when the icon reinforces the badge’s message and improves scannability. Since badges are inherently small, it's recommended to use Gamut's mini icons.
 
+There is also an optional `manualTextTopMargin` prop you can use to provide more `margin-top` to the text of a Badge with a leading icon. This can be helpful if you need to adjust the vertical position of the text — e.gc. if the icon has a lot of negative space, or if the parent container's styling inters with the Badge's setSyntheticTrailingComments.
+
 <Canvas>
   <Story
     name="sample icon"
@@ -124,4 +126,5 @@ Include the `icon` property when the icon reinforces the badge’s message and i
   <Story name="Badge">{(args) => <Badge {...args}>badge</Badge>}</Story>
 </Canvas>
 
-<PropsTable story="Badge" />
+<PropsTable story="Badge" />import { setSyntheticTrailingComments } from 'typescript';
+
