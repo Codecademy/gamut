@@ -68,7 +68,7 @@ In the example below that the background is set to `background-primary` (beige).
 Notice that `tertiary` has a transparent background while `tertiaryFill` has a regular `background` color.
 
 <Canvas>
-  <Story name="tertiaryFillSeparate">{() => <TertiaryFillExample />}</Story>
+  <Story name="tertiary vs teritaryFill">{() => <TertiaryFillExample />}</Story>
 </Canvas>
 
 ## Size
@@ -93,8 +93,6 @@ We have two `size` options, which should be used according to their context:
 ## Leading Icon
 
 Include the `icon` property when the icon reinforces the badge’s message and improves scannability. Since badges are inherently small, it's recommended to use Gamut's mini icons.
-
-There is also an optional `manualTextTopMargin` prop you can use to provide more `margin-top` to the text of a Badge with a leading icon. This can be helpful if you need to adjust the vertical position of the text — e.gc. if the icon has a lot of negative space, or if the parent container's styling inters with the Badge's setSyntheticTrailingComments.
 
 <Canvas>
   <Story
@@ -126,5 +124,5 @@ There is also an optional `manualTextTopMargin` prop you can use to provide more
   <Story name="Badge">{(args) => <Badge {...args}>badge</Badge>}</Story>
 </Canvas>
 
-<PropsTable story="Badge" />import { setSyntheticTrailingComments } from 'typescript';
+<PropsTable story="Badge" />
 

@@ -2,7 +2,7 @@ import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { Box, FlexBox } from '../Box';
+import { FlexBox } from '../Box';
 import { IconComponentType, WithChildrenProp } from '../utils';
 import { determineIconSize, determineIconSpacing } from './helpers';
 
@@ -82,22 +82,16 @@ const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
 
 export interface BadgeProps
   extends Partial<IconComponentType>,
-    BadgeBaseProps {
-      manualTextTopMargin?: typeof system.space;
-    }
+  BadgeBaseProps {}
 
 export const Badge: React.FC<BadgeProps> = ({
   icon: Icon,
   children,
-  manualTextTopMargin,
   ...rest
 }) => {
   const iconSize = rest.size === 'sm' ? 'sm' : 'base';
   const size = determineIconSize(iconSize);
   const spacing = determineIconSpacing(iconSize);
-  // Badges with icon need less spacing, but since 4 is the lowest we can go, we'll use 2 and set it as `any` as to not throw TS errors
-  let textTopMargin = Icon && iconSize === 'base' ? 2 as any : 0
-  textTopMargin = manualTextTopMargin || textTopMargin
   return (
     <BadgeBase {...rest}>
       {Icon && (
@@ -105,11 +99,9 @@ export const Badge: React.FC<BadgeProps> = ({
           <Icon height={size} width={size} />
         </FlexBox>
       )}
-      <Box
-        mt={textTopMargin}
-      >
+      <FlexBox height="100%" alignItems="center">
         {children}
-      </Box>
+      </FlexBox>
     </BadgeBase>
   );
 };
