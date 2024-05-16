@@ -82,7 +82,7 @@ const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
 
 export interface BadgeProps
   extends Partial<IconComponentType>,
-  BadgeBaseProps {}
+    BadgeBaseProps {}
 
 export const Badge: React.FC<BadgeProps> = ({
   icon: Icon,
