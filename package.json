@@ -109,6 +109,7 @@
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
     "test": "nx run-many --target=test --all",
+    "test-two": "nx run-many --target=test --all",
     "verify": "nx run-many --target=verify --parallel=3 --all",
     "verify-all": "yarn verify"
   },
