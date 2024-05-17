@@ -35,7 +35,7 @@ export interface FocusTrapProps extends WithChildrenProp {
   /**
    * Passthrough for react-focus-on library props
    */
-  focusOnProps?: ReactFocusOnProps;
+  focusOnProps?: Omit<ReactFocusOnProps, 'children'>;
 }
 
 export const FocusTrap: React.FC<FocusTrapProps> = ({
@@ -44,7 +44,7 @@ export const FocusTrap: React.FC<FocusTrapProps> = ({
   onClickOutside,
   onEscapeKey,
   active = true,
-  allowPageInteraction = false,
+  allowPageInteraction = false,s
   focusOnProps,
 }) => {
   return (
