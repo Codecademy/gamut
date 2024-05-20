@@ -24,6 +24,10 @@ export interface FocusTrapProps extends WithChildrenProp {
    */
   onClickOutside?: ReactFocusOnProps['onClickOutside'];
   /**
+   * Called immediately after  the FocusTrap is closed - especially useful for more complicated programmatic focus management
+   */
+  onDeactivation?: ReactFocusOnProps['onDeactivation'];
+  /**
    * Whether the focus trap is active
    */
   active?: boolean;
