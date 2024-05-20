@@ -43,13 +43,14 @@ export interface FocusTrapProps extends WithChildrenProp {
 }
 
 export const FocusTrap: React.FC<FocusTrapProps> = ({
-  className,
-  children,
-  onClickOutside,
-  onEscapeKey,
   active = true,
   allowPageInteraction = false,
+  children,
+  className,
   focusOnProps,
+  onClickOutside,
+  onDeactivation,
+  onEscapeKey,
 }) => {
   return (
     <FocusOn
@@ -61,6 +62,7 @@ export const FocusTrap: React.FC<FocusTrapProps> = ({
       scrollLock={!allowPageInteraction}
       noIsolation={allowPageInteraction}
       data-testid="focus-trap"
+      onDeactivation={onDeactivation}
       {...focusOnProps}
     >
       {children}
