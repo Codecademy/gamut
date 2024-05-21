@@ -1,3 +1,6 @@
+import { variant } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+
 import { FillButton, StrokeButton, TextButton } from '../Button';
 
 const verticalSpacingMap = {
@@ -24,41 +27,78 @@ export const determineHorizontalSpacing = (
   return horizontalSpacingMap[spacing];
 };
 
+const sharedVariants = {
+  left: {
+    alignSelf: 'flex-start',
+    justifyContent: 'left'
+  },
+  right: {
+    alignSelf: 'flex-end',
+    justifyContent: 'right'
+  }
+}
+
+const StyledTextButton = styled(TextButton)(
+  variant({
+    prop: 'placement',
+    variants: sharedVariants
+  })
+)
+
+const StyledStrokeButton = styled(StrokeButton)(
+  variant({
+    prop: 'placement',
+    variants: sharedVariants
+  })
+)
+
+const StyledFillButton = styled(FillButton)(
+  variant({
+    prop: 'placement',
+    variants: sharedVariants
+  })
+)
+
 export const renderButton = (
   buttonType: "TextButton" | "FillButton" | "StrokeButton",
   ctaText: string,
-  ctaCallback: () => void
+  ctaCallback: () => void,
+  buttonPlacement: 'right' | 'left',
+  href: string,
 ) => {
+  const buttonProps = {
+    pt: 8 as const,
+    px: 0 as const,
+    lineHeight: 'normal',
+    onClick: (ctaCallback ? () => ctaCallback() : undefined),
+    textAlign: buttonPlacement,
+    href
+  }
   switch (buttonType) {
     case "FillButton":
       return (
-        <FillButton
-          alignSelf="flex-end"
-          pt={8}
-          onClick={ctaCallback ? () => ctaCallback() : undefined}
+        <StyledFillButton
+          {...buttonProps}
         >
           {ctaText}
-        </FillButton>
+        </StyledFillButton>
       );
     case "StrokeButton":
       return (
-        <StrokeButton
-          alignSelf="flex-end"
-          pt={8}
-          onClick={ctaCallback ? () => ctaCallback() : undefined}
+        <StyledStrokeButton
+          {...buttonProps}
         >
           {ctaText}
-        </StrokeButton>
+        </StyledStrokeButton>
       );
     case "TextButton":
       return (
-        <TextButton
-          alignSelf="flex-end"
-          pt={8}
-          onClick={ctaCallback ? () => ctaCallback() : undefined}
+        <StyledTextButton
+          {...buttonProps}
+          placement={buttonPlacement}
         >
           {ctaText}
-        </TextButton>
+        </StyledTextButton>
       );
     default:
       return null;

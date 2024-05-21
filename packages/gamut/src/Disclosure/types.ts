@@ -18,7 +18,9 @@ export interface DisclosureBodyProps {
   ctaText?: string;
   spacing?: 'normal' | 'condensed' | 'compact';
   ctaCallback?: () => void;
-  button?: React.ComponentType<ButtonProps>;
+  button?: 'FillButton' | 'StrokeButton' | 'TextButton'
+  buttonPlacement: 'left' | 'right';
+  href: string;
 }
 
 export interface DisclosureProps

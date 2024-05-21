@@ -26,9 +26,9 @@ export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
   spacing = 'normal',
   ctaText,
   ctaCallback,
-  // button: Button,
-  // button props, add in buttons later
-    // can pick certain props based on what stacey wants
+  buttonPlacement,
+  href,
+  button = 'TextButton'
 }) => {
   // const buttonExists = Boolean(Button)
   return (
@@ -44,13 +44,7 @@ export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
       {/* This is a placeholder for now, not sure why I can't get Button to render... trying to coerce it into a boolean doesn't seem to work (or it's coming back falsy) */}
       {ctaText &&
         ctaCallback &&
-        renderButton('TextButton', ctaText, ctaCallback)}
-      {/* { (ctaText && ctaCallback && Button) ? 'something' : <Button>
-      If doing this, do it outside of the return
-        if doing button props, can get rid of ctaText
-        also consider `href`
-      } */}
-
+        renderButton(button, ctaText, ctaCallback, buttonPlacement, href)}
     </StyledFlexBox>
   );
 };
