@@ -1,4 +1,4 @@
-import { ButtonProps } from "../Button/shared/types";
+// import { ButtonProps } from "../Button/shared/types";
 
 export interface DisclosureButtonProps {
   // TODO:  pull it directly from variant call
