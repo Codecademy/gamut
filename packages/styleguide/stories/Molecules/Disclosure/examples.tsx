@@ -35,7 +35,9 @@ export const ListDisclosureExample = () => {
 
 export const ConstrainedText = (
   <Text maxWidth="600px">
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis tempore voluptatum, hic ipsum cum commodi laudantium? Mollitia quod totam consequuntur facere, praesentium cumque nesciunt debitis officiis, ipsa sapiente recusandae iusto.
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis tempore
+    voluptatum, hic ipsum cum commodi laudantium? Mollitia quod totam
+    consequuntur facere, praesentium cumque nesciunt debitis officiis, ipsa
+    sapiente recusandae iusto.
   </Text>
-)
-
+);
