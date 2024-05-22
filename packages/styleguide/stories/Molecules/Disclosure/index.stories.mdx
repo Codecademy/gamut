@@ -40,7 +40,7 @@ Disclosure has 2 variants (default, block) and 3 spacing options (normal, conden
     name="default"
     args={{
       heading: 'Default variant',
-      body: 'Notice the border and it uses the `background`',
+      body: 'Notice the border and it uses `background`',
     }}
   >
     {(args) => <Disclosure {...args} />}
@@ -53,7 +53,7 @@ Disclosure has 2 variants (default, block) and 3 spacing options (normal, conden
     args={{
       heading: 'Block variant',
       body:
-        'Notice the LACK of border and it uses the `background-current`. Set `variant="block"` to enable this styling.',
+        'Notice the LACK of border and it uses `background-current`. Set `variant="block"` to enable this styling.',
       variant: 'block',
     }}
   >
@@ -116,17 +116,17 @@ Disclosure has 2 variants (default, block) and 3 spacing options (normal, conden
 
 ### Additional Notes
 
-- `overline` can be given a string value to appear above the heading
-- `headingLevel` can be set to render the title with a proper heading level (default is `h3`)
-- `subheading` can be given a string value to appear below the heading
+- `overline` can be given a string value to appear above the heading.
+- `headingLevel` can be set to render the title with a proper semantic heading level (default is `h3`).
+- `subheading` can be given a string value to appear below the heading.
 - `initiallyExpanded` will determine whether or not the Disclosure is expanded upon load. `initiallyExpanded` set to `false` by default.
 - A Disclosure's body can recieve a React Node.
   - If only providing text, set the max width of the text container to be `600px` for readability's sake.
 - `widthBackground`: is defaulted to `false` but if assigned `true` will render an background for the body with some padding for the text.
-- The Disclosure can be set to `disabled` and rendered unclickable
+- The Disclosure can be set to `disabled` and rendered unclickable.
 - `ctaText`: you can pass in `'TextButton'`|`'StrokeButton'`| `'FillButton'` to provide a button in the body.
 - `ctaCallback`: when providing a `ctaButton` a `ctaCallback` function MUST be included along with the `ctaText`.
-- `buttonPlacement`: when providing a button, you can specify where to place it, either the `"right"` (default) or `"left"` of the Disclosure's body
+- `buttonPlacement`: when providing a button, you can specify where to place it, either the `"right"` (default) or `"left"` of the Disclosure's body.
 
 ## Code Playground
 
