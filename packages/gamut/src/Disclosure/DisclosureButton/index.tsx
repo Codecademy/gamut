@@ -63,6 +63,7 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
     }
   };
 
+  const rotationSize = determineRotationSize(spacing);
   return (
     <FlexBox>
       <StyledAnchorVariants
@@ -105,13 +106,13 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
 
           <Rotation
             rotated={isExpanded}
-            height={determineRotationSize(spacing)}
-            width={determineRotationSize(spacing)}
+            height={rotationSize}
+            width={rotationSize}
           >
             {spacing === 'normal' ? (
-              <ArrowChevronDownIcon size={24} />
+              <ArrowChevronDownIcon size={rotationSize} />
             ) : (
-              <MiniChevronDownIcon size={16} />
+              <MiniChevronDownIcon size={rotationSize} />
             )}
           </Rotation>
         </FlexBox>

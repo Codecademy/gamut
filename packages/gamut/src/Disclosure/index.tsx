@@ -42,6 +42,7 @@ export const Disclosure: React.FC<DisclosureProps> = ({
   ctaCallback,
   buttonPlacement = 'right',
   href,
+  button,
 }) => {
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
 
@@ -69,6 +70,7 @@ export const Disclosure: React.FC<DisclosureProps> = ({
               ctaCallback={ctaCallback}
               buttonPlacement={buttonPlacement}
               href={href}
+              button={button}
             />
           </ExpandInCollapseOut>
         </AnimatePresence>

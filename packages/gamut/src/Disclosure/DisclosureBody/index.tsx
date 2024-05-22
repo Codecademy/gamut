@@ -26,11 +26,11 @@ export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
   spacing = 'normal',
   ctaText,
   ctaCallback,
-  buttonPlacement,
+  buttonPlacement = 'right',
   href,
   button = 'TextButton',
 }) => {
-  // const buttonExists = Boolean(Button)
+  const buttonRequirements = ctaText && ctaCallback;
   return (
     <StyledFlexBox
       column
@@ -41,9 +41,7 @@ export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
       <Text width="100%" lineHeight={spacing === 'compact' ? 'title' : 'base'}>
         {body}
       </Text>
-      {/* This is a placeholder for now, not sure why I can't get Button to render... trying to coerce it into a boolean doesn't seem to work (or it's coming back falsy) */}
-      {ctaText &&
-        ctaCallback &&
+      {buttonRequirements &&
         renderButton(button, ctaText, ctaCallback, buttonPlacement, href)}
     </StyledFlexBox>
   );

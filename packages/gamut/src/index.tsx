@@ -17,6 +17,7 @@ export * from './Card';
 export * from './Coachmark';
 export * from './ConnectedForm';
 export * from './ContentContainer';
+export * from './Disclosure';
 export * from './DataList';
 export * from './Drawer';
 export * from './FloatingCard/FloatingCard';

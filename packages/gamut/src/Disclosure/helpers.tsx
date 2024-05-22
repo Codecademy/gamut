@@ -40,7 +40,7 @@ export const determineTitleSize = (spacing: keyof typeof titleVariantMap) => {
 export const determineRotationSize = (
   spacing: 'normal' | 'condensed' | 'compact'
 ) => {
-  return spacing === 'normal' ? 24 : 16;
+  return spacing === 'normal' ? 24 : 12;
 };
 
 const sharedVariants = {
@@ -80,15 +80,15 @@ export const renderButton = (
   ctaText: string,
   ctaCallback: () => void,
   buttonPlacement: 'right' | 'left',
-  href: string
+  href?: string
 ) => {
   const buttonProps = {
     pt: 8 as const,
-    px: 0 as const,
     lineHeight: 'normal',
     onClick: ctaCallback ? () => ctaCallback() : undefined,
     textAlign: buttonPlacement,
     href,
+    placement: buttonPlacement,
   };
   switch (buttonType) {
     case 'FillButton':
@@ -98,11 +98,7 @@ export const renderButton = (
         <StyledStrokeButton {...buttonProps}>{ctaText}</StyledStrokeButton>
       );
     case 'TextButton':
-      return (
-        <StyledTextButton {...buttonProps} placement={buttonPlacement}>
-          {ctaText}
-        </StyledTextButton>
-      );
+      return <StyledTextButton {...buttonProps}>{ctaText}</StyledTextButton>;
     default:
       return null;
   }
