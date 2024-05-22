@@ -1,3 +1,4 @@
+import { has } from 'lodash';
 import { Fragment } from 'react';
 import * as React from 'react';
 import {
@@ -125,7 +126,8 @@ export function GridForm<Values extends FormValues<Values>>({
   );
 
   const hasComputedSoloField = flatFields.length === 1 || hasSoloField === true;
-  const showRequiredText = !hideRequiredText || !hasComputedSoloField;
+
+  const showRequiredText = hideRequiredText ? false : !hasComputedSoloField;
 
   return (
     <ConnectedForm<Values>
@@ -157,7 +159,7 @@ export function GridForm<Values extends FormValues<Values>>({
                     variant={variant}
                     showRequired={index === 0 && showRequiredText}
                     requiredTextProps={
-                      index === 0 && !hideRequiredText
+                      index === 0 && showRequiredText
                         ? requiredTextProps
                         : undefined
                     }

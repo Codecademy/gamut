@@ -149,7 +149,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       htmlFor={field.id || field.name}
       infotip={field.infotip}
       required={rest?.required}
-      isSoloField={rest?.isSoloField}
+      isSoloField={rest?.isSoloField || field?.isSoloField}
     >
       {field.label}
     </FormGroupLabel>

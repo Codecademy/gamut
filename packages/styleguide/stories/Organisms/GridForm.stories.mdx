@@ -161,7 +161,6 @@ GridForm provides the following benefits:
         submit={{
           contents: 'Submit Me!?',
         }}
-        showRequired
       />
     )}
   </Story>
@@ -638,7 +637,6 @@ We also have a 'custom-group' type for when you are passing in a custom FormGrou
   <Story name="Custom Inputs">
     {() => (
       <GridForm
-        hideRequiredText
         fields={[
           {
             render: ({ error, setValue }) => (
@@ -1023,7 +1021,6 @@ A field can take a custom error in addition to validation errors. The validation
             contents: 'Submit Me!?',
             size: 12,
           }}
-          showRequired
         />
       );
     }}
