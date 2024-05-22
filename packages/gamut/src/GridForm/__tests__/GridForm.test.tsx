@@ -164,6 +164,22 @@ describe('GridForm', () => {
     expect(result).toEqual(baseResults);
   });
 
+  it('adds required text by default', async () => {
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+
+    const { view } = renderView({ onSubmit });
+    view.getByText('* Required');
+  });
+
+  it('does not add required text for a single input', async () => {
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+
+    const { view } = renderView({ fields: [stubSelectField], onSubmit });
+    expect(view.queryByText('* Required')).nottoBeNull();
+  });
+
   it('only sets aria-live prop on the first validation error in a form', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);

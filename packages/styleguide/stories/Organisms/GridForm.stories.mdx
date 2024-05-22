@@ -1035,7 +1035,6 @@ Hidden inputs can be used to include data that users can't see or modify with th
   <Story name="Hidden Input">
     {() => (
       <GridForm
-        hideRequiredText
         fields={[
           {
             type: 'hidden',
@@ -1385,9 +1384,9 @@ We can combine these together to create some pretty cool forms which have a load
 
 <FormLoadingExample />
 
-## hideRequiredText
+## hasSoloField
 
-`hideRequiredText` will hide the ;\* Required' text that appears at the top of our forms. This should only be hidden if the form has no required fields.
+hideRequiredText `hideRequiredText` will hide the ;\* Required' text that appears at the top of our forms. This should only be hidden if the form has no required fields.
 
 <Canvas>
   <Story name="hideRequiredText">
@@ -1403,6 +1402,48 @@ We can combine these together to create some pretty cool forms which have a load
                 name: 'very-optional',
                 type: 'input',
                 size: 12,
+              },
+              {
+                label: 'A field',
+                placeholder: 'I am very optional',
+                name: 'very-optional',
+                type: 'input',
+                size: 12,
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Submit Me 💖',
+            }}
+          />
+        </Background>
+      </>
+    )}
+  </Story>
+</Canvas>
+
+## Solo Field Forms
+
+Solo field form should always have their solo input be required. They should automagically not have the required/optional text - if you have a custom rendered hidden input, you may have to use the `hasSoloField` prop.
+
+<Canvas>
+  <Story name="Solo Field Form">
+    {() => (
+      <>
+        <Background bg="paleBlue" p={32}>
+          <GridForm
+            fields={[
+              {
+                label: 'A field',
+                placeholder: 'I am a required solo field',
+                name: 'so-required',
+                type: 'input',
+                size: 12,
+                validation: {
+                  required: 'I am required',
+                },
               },
             ]}
             onSubmit={async (values) => {

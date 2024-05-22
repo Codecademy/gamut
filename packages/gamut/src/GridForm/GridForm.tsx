@@ -1,5 +1,4 @@
-import { has } from 'lodash';
-import { Fragment } from 'react';
+import { Fragment, useMemo } from 'react';
 import * as React from 'react';
 import {
   DeepPartial,
@@ -107,7 +106,7 @@ export function GridForm<Values extends FormValues<Values>>({
   validation = 'onSubmit',
   ...rest
 }: GridFormProps<Values>) {
-  const flatFields = fields.flatMap((field) =>
+  const flatFields = fields?.flatMap((field) =>
     isGridFormSection(field) ? field.fields : field
   );
 
@@ -125,7 +124,15 @@ export function GridForm<Values extends FormValues<Values>>({
     {} as Defaults
   );
 
-  const hasComputedSoloField = flatFields.length === 1 || hasSoloField === true;
+  const hiddenInputCount = useMemo(
+    () =>
+      flatFields.filter(
+        (field) => field.type === 'hidden' || field.type === 'sweet-container'
+      ),
+    [flatFields]
+  );
+  const hasComputedSoloField =
+    flatFields.length - hiddenInputCount.length === 1 || hasSoloField === true;
 
   const showRequiredText = hideRequiredText ? false : !hasComputedSoloField;
 
