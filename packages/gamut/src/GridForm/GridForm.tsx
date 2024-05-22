@@ -61,7 +61,7 @@ export type GridFormProps<Values extends {}> = FormContextProps &
     cancel?: ButtonProps;
 
     /**
-     * If your form is a single visible field. You should only have to set this if you have a single field in addition to hidden inputs, otherwise it should happen automatically.
+     * If your form has a single visible field. You should only have to set this if you have a single field in addition to hidden custom rendered inputs, otherwise it should happen automatically.
      */
     hasSoloField?: boolean;
 
@@ -106,7 +106,7 @@ export function GridForm<Values extends FormValues<Values>>({
   validation = 'onSubmit',
   ...rest
 }: GridFormProps<Values>) {
-  const flatFields = fields?.flatMap((field) =>
+  const flatFields = fields.flatMap((field) =>
     isGridFormSection(field) ? field.fields : field
   );
 
