@@ -3,9 +3,9 @@ import { ComponentProps, forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ToolTip, ToolTipProps } from '../Tip';
+import { IconComponentType } from '../utils';
 import {
   createButtonComponent,
-  IconComponentType,
   iconSizeVariants,
   textButtonVariants,
 } from './shared';
