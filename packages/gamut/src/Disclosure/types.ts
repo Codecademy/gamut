@@ -18,14 +18,14 @@ export interface DisclosureBodyProps {
   ctaText?: string;
   spacing?: 'normal' | 'condensed' | 'compact';
   ctaCallback?: () => void;
-  button?: 'FillButton' | 'StrokeButton' | 'TextButton'
+  button?: 'FillButton' | 'StrokeButton' | 'TextButton';
   buttonPlacement: 'left' | 'right';
   href: string;
 }
 
 export interface DisclosureProps
   extends DisclosureButtonProps,
-  DisclosureBodyProps {
+    DisclosureBodyProps {
   initiallyExpanded: boolean;
   variant?: 'default' | 'block';
 }

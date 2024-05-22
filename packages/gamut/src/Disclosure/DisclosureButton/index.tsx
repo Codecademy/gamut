@@ -7,7 +7,7 @@ import styled from '@emotion/styled';
 import * as React from 'react';
 
 import { Anchor, Rotation, Text } from '../..';
-import { Box, FlexBox } from '../../Box';
+import { FlexBox } from '../../Box';
 import {
   determineHorizontalSpacing,
   determineRotationSize,
@@ -92,24 +92,28 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
           columnGap={40}
           alignItems="center"
         >
-          <Text textAlign="start" as={headingLevel} width="100%" p={0} variant={determineTitleSize(spacing)} fontWeight="title">
+          <Text
+            textAlign="start"
+            as={headingLevel}
+            width="100%"
+            p={0}
+            variant={determineTitleSize(spacing)}
+            fontWeight="title"
+          >
             {heading}
           </Text>
 
-            <Rotation rotated={isExpanded} height={determineRotationSize(spacing)} width={determineRotationSize(spacing)}>
-
-                {spacing === 'normal' ? (
-
-                  <ArrowChevronDownIcon size={24}/>
-
-                ) : (
-                  <MiniChevronDownIcon size={16} />
-                )}
-
-
-            </Rotation>
-
-
+          <Rotation
+            rotated={isExpanded}
+            height={determineRotationSize(spacing)}
+            width={determineRotationSize(spacing)}
+          >
+            {spacing === 'normal' ? (
+              <ArrowChevronDownIcon size={24} />
+            ) : (
+              <MiniChevronDownIcon size={16} />
+            )}
+          </Rotation>
         </FlexBox>
         {subheading && (
           <Text textAlign="start" width="100%">

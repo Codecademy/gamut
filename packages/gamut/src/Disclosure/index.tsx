@@ -41,7 +41,7 @@ export const Disclosure: React.FC<DisclosureProps> = ({
   ctaText,
   ctaCallback,
   buttonPlacement = 'right',
-  href
+  href,
 }) => {
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
 

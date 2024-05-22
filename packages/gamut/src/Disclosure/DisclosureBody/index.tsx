@@ -28,7 +28,7 @@ export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
   ctaCallback,
   buttonPlacement,
   href,
-  button = 'TextButton'
+  button = 'TextButton',
 }) => {
   // const buttonExists = Boolean(Button)
   return (
