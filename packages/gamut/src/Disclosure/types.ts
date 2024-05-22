@@ -3,10 +3,10 @@
 export interface DisclosureButtonProps {
   // TODO:  pull it directly from variant call
   spacing?: 'normal' | 'condensed' | 'compact';
-  header: string;
+  heading: string;
   headingLevel?: 'h2' | 'h3' | 'h4' | 'h5';
   overline?: string;
-  subheader?: string;
+  subheading?: string;
   isExpanded?: boolean;
   setIsExpanded?: React.Dispatch<React.SetStateAction<boolean>>;
   disabled?: boolean;

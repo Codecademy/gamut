@@ -27,6 +27,22 @@ export const determineHorizontalSpacing = (
   return horizontalSpacingMap[spacing];
 };
 
+const titleVariantMap = {
+  normal: "title-sm",
+  condensed: "title-xs",
+  compact: "p-base"
+} as const
+
+export const determineTitleSize = (
+  spacing: keyof typeof titleVariantMap
+) => {
+  return titleVariantMap[spacing];
+}
+
+export const determineRotationSize = (spacing: 'normal' | 'condensed' | 'compact') => {
+  return spacing === 'normal' ? 24 : 16
+}
+
 const sharedVariants = {
   left: {
     alignSelf: 'flex-start',

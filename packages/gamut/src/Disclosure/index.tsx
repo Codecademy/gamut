@@ -29,13 +29,13 @@ const StyledFlexBox = styled(FlexBox)(
 
 export const Disclosure: React.FC<DisclosureProps> = ({
   disabled = false,
-  header,
+  heading,
   variant,
   headingLevel = 'h3',
   initiallyExpanded,
   spacing = 'normal',
   overline,
-  subheader,
+  subheading,
   body,
   withBackground,
   ctaText,
@@ -49,10 +49,10 @@ export const Disclosure: React.FC<DisclosureProps> = ({
     <StyledFlexBox width="100%" column variant={variant}>
       <DisclosureButton
         spacing={spacing}
-        header={header}
+        heading={heading}
         headingLevel={headingLevel}
         overline={overline}
-        subheader={subheader}
+        subheading={subheading}
         isExpanded={isExpanded}
         setIsExpanded={setIsExpanded}
         disabled={disabled}

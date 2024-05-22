@@ -7,9 +7,11 @@ import styled from '@emotion/styled';
 import * as React from 'react';
 
 import { Anchor, Rotation, Text } from '../..';
-import { FlexBox } from '../../Box';
+import { Box, FlexBox } from '../../Box';
 import {
   determineHorizontalSpacing,
+  determineRotationSize,
+  determineTitleSize,
   determineVerticalSpacing,
 } from '../helpers';
 import { DisclosureButtonProps } from '../types';
@@ -47,10 +49,10 @@ const StyledAnchorVariants = styled(Anchor)(
 
 export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
   spacing = 'normal',
-  header,
+  heading,
   headingLevel = 'h3',
   overline,
-  subheader,
+  subheading,
   isExpanded,
   setIsExpanded,
   disabled = false,
@@ -88,21 +90,30 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
           flexDirection="row"
           justifyContent="space-between"
           columnGap={40}
+          alignItems="center"
         >
-          <Text textAlign="start" as={headingLevel} width="100%" p={0}>
-            {header}
+          <Text textAlign="start" as={headingLevel} width="100%" p={0} variant={determineTitleSize(spacing)} fontWeight="title">
+            {heading}
           </Text>
-          <Rotation rotated={isExpanded}>
-            {spacing === 'normal' ? (
-              <ArrowChevronDownIcon />
-            ) : (
-              <MiniChevronDownIcon />
-            )}
-          </Rotation>
+
+            <Rotation rotated={isExpanded} height={determineRotationSize(spacing)} width={determineRotationSize(spacing)}>
+
+                {spacing === 'normal' ? (
+
+                  <ArrowChevronDownIcon size={24}/>
+
+                ) : (
+                  <MiniChevronDownIcon size={16} />
+                )}
+
+
+            </Rotation>
+
+
         </FlexBox>
-        {subheader && (
+        {subheading && (
           <Text textAlign="start" width="100%">
-            {subheader}
+            {subheading}
           </Text>
         )}
       </StyledAnchorVariants>

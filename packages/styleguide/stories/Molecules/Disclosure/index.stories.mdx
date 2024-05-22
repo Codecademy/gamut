@@ -8,13 +8,13 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   component={Disclosure}
   parameters={{
     subtitle:
-      'A Disclosure is an expandable container featuring a header that serves as a toggle to expand or collapse a content section.',
+      'A Disclosure is an expandable container featuring a heading that serves as a toggle to expand or collapse a content section.',
     source: 'gamut',
     status: 'current',
     padded: true,
   }}
   args={{
-    header: 'Disclosure header',
+    heading: 'Disclosure heading',
     body: 'Disclosure body.',
   }}
 />
@@ -37,7 +37,7 @@ Disclosure has 2 variants (default, block) and 3 spacing options (normal, conden
   <Story
     name="default"
     args={{
-      header: 'Default variant',
+      heading: 'Default variant',
       body: 'Notice the border and it uses the `background`',
     }}
   >
@@ -49,7 +49,7 @@ Disclosure has 2 variants (default, block) and 3 spacing options (normal, conden
   <Story
     name="block"
     args={{
-      header: 'Block variant',
+      heading: 'Block variant',
       body:
         'Notice the LACK of border and it uses the `background-current`. Set `variant="block"` to enable this styling.',
       variant: 'block',
@@ -61,13 +61,13 @@ Disclosure has 2 variants (default, block) and 3 spacing options (normal, conden
 
 ### Spacing Options
 
-`spacing` is an optional prop you can pass to `<Disclosure>`. By default it's set to `"normal"`, though you can set it to `"condensed"` or `"compact"` as well. Spacing will determine the height of the header, the size of the chevron icon, as well as the padding of both the header and the body.
+`spacing` is an optional prop you can pass to `<Disclosure>`. By default it's set to `"normal"`, though you can set it to `"condensed"` or `"compact"` as well. Spacing will determine the height of the heading, the size of the chevron icon, as well as the padding of both the heading and the body.
 
 <Canvas>
   <Story
     name="Normal Spacing"
     args={{
-      header: 'Normal spacing',
+      heading: 'Normal spacing',
       body:
         'Lorem ipsum dolor sit amet consectetur. Ut consectetur adipiscing a donec sed volutpat. Tempor risus rhoncus quisque vel sit mattis. Accumsan vel posuere tortor sit mattis augue congue sit.',
     }}
@@ -80,7 +80,7 @@ Disclosure has 2 variants (default, block) and 3 spacing options (normal, conden
   <Story
     name="Condensed spacing"
     args={{
-      header: 'Condensed spacing',
+      heading: 'Condensed spacing',
       body:
         'Lorem ipsum dolor sit amet consectetur. Ut consectetur adipiscing a donec sed volutpat. Tempor risus rhoncus quisque vel sit mattis. Accumsan vel posuere tortor sit mattis augue congue sit.',
       spacing: 'condensed',
@@ -94,7 +94,7 @@ Disclosure has 2 variants (default, block) and 3 spacing options (normal, conden
   <Story
     name="Compact spacing"
     args={{
-      header: 'Compact Spacing',
+      heading: 'Compact Spacing',
       body:
         'Lorem ipsum dolor sit amet consectetur. Ut consectetur adipiscing a donec sed volutpat. Tempor risus rhoncus quisque vel sit mattis. Accumsan vel posuere tortor sit mattis augue congue sit.',
       spacing: 'compact',
@@ -106,8 +106,8 @@ Disclosure has 2 variants (default, block) and 3 spacing options (normal, conden
 
 ### Additional Notes
 
-- `overline` can be given a string value to appear above the header
-- `subheader` can be given a string value to appear below the header
+- `overline` can be given a string value to appear above the heading
+- `subheading` can be given a string value to appear below the heading
 - `initiallyExpanded` will determine whether or not the Disclosure is expanded upon load. `initiallyExpanded` set to `false` by default.
 - A Disclosure's body can recieve a React Node.
   - If only providing text, set the max width of the text container to be `600px` for readability's sake.
@@ -123,10 +123,10 @@ Disclosure has 2 variants (default, block) and 3 spacing options (normal, conden
   <Story
     name="Disclosure Playground"
     args={{
-      header: "All the fixin's",
+      heading: "All the fixin's",
       body: `Lorem ipsum dolor sit amet consectetur. Ut consectetur adipiscing a donec sed volutpat. Tempor risus rhoncus quisque vel sit mattis. Accumsan vel posuere tortor sit mattis augue congue sit.`,
       overline: 'overline is text-secondary and fontFamily: accent',
-      subheader: 'subheader is text-secondary',
+      subheading: 'subheading is text-secondary',
       ctaText: 'Optional button - must include a callback!',
       ctaCallback: () => {},
       withBackground: true,
