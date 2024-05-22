@@ -127,7 +127,7 @@ export const stubFieldCases = [
     'file field',
     stubFileField,
     'byLabelText',
-    'Stub File (optional)',
+    'Stub File',
     undefined,
     'fire-file',
   ],
