@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.20.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.19.1...@codecademy/gamut@55.20.0) (2024-05-22)
+
+### Features
+
+- **badge:** adding `leading-icon` to badge ([ce73c59](https://github.com/Codecademy/gamut/commit/ce73c594265f8678ddd2e9bc56118b8be6d91706))
+
 ### [55.19.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.19.0...@codecademy/gamut@55.19.1) (2024-05-13)
 
 ### Bug Fixes
