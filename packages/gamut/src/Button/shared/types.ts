@@ -1,9 +1,9 @@
-import { GamutIconProps } from '@codecademy/gamut-icons';
 import { ColorModes } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import { ComponentProps, HTMLProps } from 'react';
 
 import { ButtonBase } from '../../ButtonBase';
+import { IconComponentType } from '../../utils';
 import { CTAButton } from '../CTAButton';
 import { FillButton } from '../FillButton';
 import { IconButton } from '../IconButton';
@@ -20,7 +20,6 @@ export interface ButtonBaseProps extends StyleProps<typeof buttonProps> {
 }
 
 export type ButtonProps = ButtonBaseProps & ComponentProps<typeof ButtonBase>;
-export type IconComponentType = { icon: React.ComponentType<GamutIconProps> };
 
 export type InlineIconButtonProps<
   BaseButtonType extends
