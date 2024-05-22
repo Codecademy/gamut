@@ -40,7 +40,7 @@ export const Disclosure: React.FC<DisclosureProps> = ({
   withBackground,
   ctaText,
   ctaCallback,
-  buttonPlacement = 'right',
+  buttonPlacement,
   href,
   button,
 }) => {

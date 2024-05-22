@@ -1,4 +1,4 @@
-import { Disclosure, List } from '@codecademy/gamut';
+import { Disclosure, List, Text } from '@codecademy/gamut';
 
 export const ListDisclosureExample = () => {
   return (
@@ -32,3 +32,10 @@ export const ListDisclosureExample = () => {
     </List>
   );
 };
+
+export const ConstrainedText = (
+  <Text maxWidth="600px">
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis tempore voluptatum, hic ipsum cum commodi laudantium? Mollitia quod totam consequuntur facere, praesentium cumque nesciunt debitis officiis, ipsa sapiente recusandae iusto.
+  </Text>
+)
+

@@ -3,7 +3,7 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { ListDisclosureExample } from './examples';
+import { ConstrainedText, ListDisclosureExample } from './examples';
 
 <Meta
   title={title}
@@ -135,7 +135,7 @@ Disclosure has 2 variants (default, block) and 3 spacing options (normal, conden
     name="Disclosure Playground"
     args={{
       heading: "All the fixin's",
-      body: `Lorem ipsum dolor sit amet consectetur. Ut consectetur adipiscing a donec sed volutpat. Tempor risus rhoncus quisque vel sit mattis. Accumsan vel posuere tortor sit mattis augue congue sit.`,
+      body: ConstrainedText,
       overline: 'overline is text-secondary and fontFamily: accent',
       subheading: 'subheading is text-secondary',
       ctaText: 'Optional button - must include a callback!',

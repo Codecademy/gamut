@@ -25,6 +25,6 @@ export interface DisclosureBodyProps {
 export interface DisclosureProps
   extends DisclosureButtonProps,
     DisclosureBodyProps {
-  initiallyExpanded: boolean;
-  variant?: 'default' | 'block';
-}
+      initiallyExpanded: boolean;
+      variant?: 'default' | 'block';
+    }
