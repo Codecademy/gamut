@@ -48,6 +48,17 @@ describe('FormGroup', () => {
     view.getByLabelText('up dog*');
   });
 
+  it('does not add an asterisk to solo field labels', () => {
+    const { view } = renderView({
+      label,
+      htmlFor,
+      required: true,
+      isSoloField: true,
+    });
+
+    view.getByLabelText('up dog');
+  });
+
   it('renders description', () => {
     const { view } = renderView({
       label: 'up dog',

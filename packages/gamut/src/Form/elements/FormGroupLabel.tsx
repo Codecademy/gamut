@@ -43,6 +43,10 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
      */
     infotip?: InfoTipProps;
     size?: 'small' | 'large';
+    /**
+     * Solo fields should always be required and have no optional/required text
+     */
+    isSoloField?: boolean;
   };
 
 const Label = styled.label<FormGroupLabelProps>(labelSizeVariants, labelStates);
@@ -53,6 +57,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   disabled,
   htmlFor,
   infotip,
+  isSoloField,
   required,
   size,
   ...rest
@@ -69,7 +74,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
       >
         {children}
         <Text as="span" aria-hidden>
-          {required ? '*' : ' \u00A0(optional)'}
+          {isSoloField ? null : required ? '*' : ' \u00A0(optional)'}
         </Text>
       </Label>
       {infotip && <InfoTip {...infotip} />}

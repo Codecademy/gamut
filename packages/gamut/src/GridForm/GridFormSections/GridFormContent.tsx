@@ -9,7 +9,14 @@ export type GridFormContentProps = {
 };
 
 export const GridFormContent: React.FC<GridFormContentProps> = ({ field }) => {
-  const { error, isFirstError, register, setValue, isDisabled } = useField({
+  const {
+    error,
+    isFirstError,
+    register,
+    setValue,
+    isDisabled,
+    isSoloField,
+  } = useField({
     name: field.name,
     disabled: field.disabled,
   });
@@ -20,6 +27,8 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({ field }) => {
     field.validation?.required
   );
 
+  // console.log(isSoloField);
+
   return (
     <GridFormInputGroup
       error={error}
@@ -28,6 +37,7 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({ field }) => {
       field={field}
       key={field.name}
       register={register}
+      isSoloField={isSoloField}
       setValue={setValue}
       required={requiredBoolean}
     />

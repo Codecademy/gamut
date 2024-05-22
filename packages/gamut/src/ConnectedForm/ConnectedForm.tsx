@@ -24,6 +24,10 @@ export interface FormContextProps {
    */
   disableFieldsOnSubmit?: boolean;
   /**
+   * Solo fields should always be required and have no optional/required text
+   */
+  isSoloField?: boolean;
+  /**
    * If fields should be reset after successful submission.
    */
   resetOnSubmit?: boolean;
@@ -89,12 +93,13 @@ export const ConnectedForm = forwardRef(
   <Values extends FormValues<Values>>(
     {
       children,
-      onSubmit,
-      onError,
       defaultValues,
-      validation = 'onChange',
       disableFieldsOnSubmit = false,
+      isSoloField,
+      onError,
+      onSubmit,
       resetOnSubmit = false,
+      validation = 'onChange',
       validationRules,
       wasSubmitSuccessful = undefined,
       watchedFields,
@@ -141,12 +146,14 @@ export const ConnectedForm = forwardRef(
     const contextValues = useMemo(() => {
       return {
         disableFieldsOnSubmit,
+        isSoloField,
         resetOnSubmit,
         validationRules,
         wasSubmitSuccessful,
       };
     }, [
       disableFieldsOnSubmit,
+      isSoloField,
       resetOnSubmit,
       validationRules,
       wasSubmitSuccessful,

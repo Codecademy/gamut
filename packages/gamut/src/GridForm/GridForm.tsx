@@ -61,12 +61,17 @@ export type GridFormProps<Values extends {}> = FormContextProps &
     cancel?: ButtonProps;
 
     /**
+     * If your form is a single visible field. You should only have to set this if you have a single field in addition to hidden inputs, otherwise it should happen automatically.
+     */
+    hasSoloField?: boolean;
+
+    /**
      * Function called with field values on submit, if all validations have passed.
      */
     onSubmit: SubmitHandler<Values>;
 
     /**
-     * Whether to hide 'required' explanation at the start of forms - can be disabled only for forms without a required field.
+     * Whether to hide 'required' explanation at the start of forms - should be disabled only for forms without a required field.
      */
     hideRequiredText?: boolean;
 
@@ -93,11 +98,12 @@ export function GridForm<Values extends FormValues<Values>>({
   children,
   columnGap = defaultColumnGap,
   fields = [],
+  hasSoloField = false,
+  hideRequiredText,
+  requiredTextProps,
   rowGap = 16,
   submit,
   validation = 'onSubmit',
-  hideRequiredText,
-  requiredTextProps,
   ...rest
 }: GridFormProps<Values>) {
   const flatFields = fields.flatMap((field) =>
@@ -118,17 +124,21 @@ export function GridForm<Values extends FormValues<Values>>({
     {} as Defaults
   );
 
+  const hasComputedSoloField = flatFields.length === 1 || hasSoloField === true;
+  const showRequiredText = !hideRequiredText || !hasComputedSoloField;
+
   return (
     <ConnectedForm<Values>
       validation={validation}
       defaultValues={defaultValues}
       display="flex"
       flexDirection="column"
+      isSoloField={hasComputedSoloField}
       {...rest}
     >
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         <>
-          {!hideRequiredText && !isGridFormSection(fields[0]) && (
+          {showRequiredText && !isGridFormSection(fields[0]) && (
             <Column size={12}>
               <FormRequiredText {...requiredTextProps} />
             </Column>
@@ -145,7 +155,7 @@ export function GridForm<Values extends FormValues<Values>>({
                     layout={layout}
                     numberOfFields={fields.length}
                     variant={variant}
-                    showRequired={index === 0 && !hideRequiredText}
+                    showRequired={index === 0 && showRequiredText}
                     requiredTextProps={
                       index === 0 && !hideRequiredText
                         ? requiredTextProps

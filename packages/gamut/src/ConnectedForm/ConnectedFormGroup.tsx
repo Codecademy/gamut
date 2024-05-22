@@ -57,6 +57,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   name,
   labelSize,
   spacing = 'fit',
+  isSoloField,
   infotip,
 }: ConnectedFormGroupProps<T>) {
   const { error, isFirstError, isDisabled, setError, validation } = useField({
@@ -79,6 +80,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
       disabled={isDisabled}
       htmlFor={id || name}
       infotip={infotip}
+      isSoloField={isSoloField}
       required={!!validation?.required}
       size={labelSize}
     >

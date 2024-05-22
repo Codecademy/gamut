@@ -98,22 +98,23 @@ export const useFormState = () => {
   // https://github.com/react-hook-form/react-hook-form/issues/2887
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const {
+    clearErrors,
     control,
     formState,
     getValues,
     register,
     reset,
     setError,
+    setFocus,
     setValue,
     watch,
-    clearErrors,
-    setFocus,
   } = useFormContext();
 
   const {
     disableFieldsOnSubmit,
     validationRules,
     wasSubmitSuccessful,
+    isSoloField,
   } = useContext(FormPropsContext);
 
   const { isSubmitting, isDirty, errors } = formState;
@@ -123,21 +124,22 @@ export const useFormState = () => {
   );
 
   return {
+    clearErrors,
     control,
     errors,
     formState,
     getValues,
     isDirty,
     isDisabled: (isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
+    isSoloField,
     register,
     reset,
-    setFocus,
     setError,
+    setFocus,
     setValue,
     useFieldArray,
     validationRules,
     watch,
-    clearErrors,
   };
 };
 
@@ -155,6 +157,7 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
     errors,
     register,
     isDisabled: formStateDisabled,
+    isSoloField,
     setError,
     setValue,
     validationRules,
@@ -185,6 +188,7 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
     isFirstError: Object.keys(errors)[0] === name,
     isLoading,
     isRequired: !!validation?.required,
+    isSoloField,
     register,
     validation,
     ref,

@@ -32,6 +32,7 @@ export type BaseFormField<Value> = {
 
   infotip?: InfoTipProps;
 
+  isSoloField?: boolean;
   name: string;
   onUpdate?: (value: Value) => void;
   size: ColumnProps['size'];
