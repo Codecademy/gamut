@@ -1,4 +1,5 @@
-import { Anchor, Box, Column, LayoutGrid, Text } from '@codecademy/gamut/src';
+import { Anchor, Box, Column, FlexBox, LayoutGrid, Text } from '@codecademy/gamut/src';
+import { MiniArrowLeftIcon, MiniArrowRightIcon, MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
 import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -42,7 +43,7 @@ import { Anchor } from '@codecademy/gamut';
 
 ## Variants
 
-There are three main varaints for Anchor links that are meant to be used in specific contexts. Their default states all a visually distinct. Please refer to the (design guidelines)[https://www.figma.com/file/N6TfoPI5OA7GanX6Zl8nWj/]
+There are three main varaints for Anchor links that are meant to be used in specific contexts. Their default states all a visually distinct. Please refer to the [design guidelines](https://www.figma.com/file/N6TfoPI5OA7GanX6Zl8nWj/)
 
 - `inline` (default): For use in paragraphs, underlined for extra readability to stand out more beyond just the different color.
 - `interface`: The menu link should be used in instances where the context of the link makes it clear that it is clickable. Examples of these contexts include our catalog menu, navigation bar, and footer.
@@ -142,7 +143,33 @@ Writing words for a link or button? Above all else, make sure that the words alo
   spacing="tight"
 />
 
-<br />
+## Adding an Icon
+You can use an <LinkTo id="atoms-icons-about--page">Icon</LinkTo> can be added to the right or left of the Anchor text.
+* Use the `icon` prop to specify the Icon
+* set `iconPosition` to `"left"` or `"right"` for placement (default is `"left"`)
+* set `center` to `true` to horitzonally center the icon and text
+  * the Icon and text come vertically centered
+
+
+<Canvas>
+  <Story name="Anchor with Icon">
+    {(args) => {
+      return (
+        <>
+        <FlexBox justifyContent="space-between">
+          <Anchor {...args} href="/" icon={MiniArrowLeftIcon} iconPosition="left">Previous</Anchor>
+          <Anchor {...args} href="/" icon={MiniArrowRightIcon} iconPosition="right">Next</Anchor>
+        </FlexBox>
+        <Text>
+        <Anchor {...args} href="/" icon={MiniInfoOutlineIcon} iconPosition="left" variant="inline">Centered</Anchor> Testing
+        </Text>
+        </>
+      )
+    }}
+  </Story>
+</Canvas>
+
+
 
 ## Code Playground
 

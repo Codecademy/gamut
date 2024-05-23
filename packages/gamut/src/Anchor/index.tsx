@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { ComponentProps, forwardRef, HTMLProps, RefObject } from 'react';
 
 import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
+import { InlineIconProps,renderIconWithContent } from '../utils';
 
 export interface AnchorProps
   extends StyleProps<typeof anchorProps>,
@@ -107,10 +108,13 @@ type AnchorBaseProps =
   | (Exclude<ComponentProps<typeof AnchorBase>, 'ref'> &
       ComponentProps<typeof ButtonBase>);
 
+type AnchorExtProps = InlineIconProps & AnchorBaseProps;
+
 export const Anchor = forwardRef<
   HTMLAnchorElement | HTMLButtonElement,
-  AnchorBaseProps
->(({ variant = 'inline', ...rest }, ref) => {
+  AnchorExtProps
+>(({ variant = 'inline', icon, iconPosition = 'left', children, center, ...rest }, ref) => {
+  const content = renderIconWithContent({ iconPosition, icon, children, center });
   if (!rest.href) {
     return (
       <AnchorBase
@@ -118,7 +122,9 @@ export const Anchor = forwardRef<
         variant={variant}
         ref={ref as RefObject<HTMLAnchorElement>}
         {...rest}
-      />
+      >
+        {content}
+      </AnchorBase>
     );
   }
 
@@ -127,6 +133,8 @@ export const Anchor = forwardRef<
       variant={variant}
       ref={ref as RefObject<HTMLAnchorElement>}
       {...rest}
-    />
+    >
+      {content}
+    </AnchorBase>
   );
 });
