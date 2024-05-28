@@ -99,7 +99,7 @@ export function GridForm<Values extends FormValues<Values>>({
   columnGap = defaultColumnGap,
   fields = [],
   hasSoloField = false,
-  hideRequiredText,
+  hideRequiredText = false,
   requiredTextProps,
   rowGap = 16,
   submit,

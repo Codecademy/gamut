@@ -27,8 +27,6 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({ field }) => {
     field.validation?.required
   );
 
-  // console.log(isSoloField);
-
   return (
     <GridFormInputGroup
       error={error}
