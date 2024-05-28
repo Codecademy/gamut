@@ -6,7 +6,7 @@ export interface InlineIconProps
     IconComponentType {
   iconPosition?: 'left' | 'right';
   iconSize?: number;
-  iconAndTextPadding?: number;
+  iconAndTextGap?: number;
   center: boolean
 }
 
