@@ -1,4 +1,4 @@
-import { FlexBox } from "../Box";
+import { Box, FlexBox } from "../Box";
 import { IconComponentType, WithChildrenProp } from "../utils";
 
 export interface InlineIconProps
@@ -37,3 +37,22 @@ export const renderIconWithContent = ({
     </FlexBox>
   );
 };
+
+// export const renderInlineIconWithContent = ({
+//   iconPosition,
+//   icon: Icon,
+//   children,
+//   iconSize = 12,
+//   iconAndTextGap = 8,
+//   center = false
+// }: InlineIconProps
+// }) => {
+//   return !Icon ? (
+//     <>{children}</>
+//   ) : (
+//     <Box >
+//       {Icon && <Icon {...iconProps} />}
+//       {children}
+//     </Box>
+//   );
+// }
