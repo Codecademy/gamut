@@ -11,6 +11,7 @@ export const ListDisclosureExample = () => {
         ctaCallback={() => null}
         buttonPlacement="right"
         href="/"
+        isListItem
       />
       <Disclosure
         heading="Second"
@@ -20,7 +21,8 @@ export const ListDisclosureExample = () => {
         ctaCallback={() => null}
         buttonPlacement="left"
         href="/"
-        button="StrokeButton"
+        buttonType="StrokeButton"
+        isListItem
       />
       <Disclosure
         heading="Third"
@@ -29,7 +31,8 @@ export const ListDisclosureExample = () => {
         ctaText="click here!"
         ctaCallback={() => null}
         href="/"
-        button="FillButton"
+        buttonType="FillButton"
+        isListItem
       />
     </List>
   );
