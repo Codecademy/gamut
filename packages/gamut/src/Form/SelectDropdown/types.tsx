@@ -8,7 +8,7 @@ import {
   Props as NamedProps,
 } from 'react-select';
 
-import { SelectComponentProps, SelectOptions } from '../Select';
+import { SelectComponentProps, SelectOptions } from '../inputs/Select';
 import { SelectOptionBase } from '../utils';
 import { conditionalBorderStates } from './styles';
 

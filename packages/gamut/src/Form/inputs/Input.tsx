@@ -9,7 +9,7 @@ import styled, { StyledComponent } from '@emotion/styled';
 import { ChangeEvent, forwardRef, InputHTMLAttributes, useState } from 'react';
 import * as React from 'react';
 
-import { Box, FlexBox } from '../Box';
+import { Box, FlexBox } from '../../Box';
 import {
   conditionalStyleProps,
   conditionalStyles,
@@ -18,27 +18,24 @@ import {
   formFieldFocusStyles,
   formFieldPaddingStyles,
   formFieldStyles,
-} from './styles';
+} from '../styles';
+import { BaseInputProps } from '../types';
 
-export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
-  id?: string;
-  className?: string;
-  error?: boolean;
-  /**
-   * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
-   */
-  htmlFor?: string;
-  label?: string;
-  name?: string;
-  placeholder?: string;
-  required?: boolean;
-  type?: string;
-  valid?: boolean;
-  /**
-   * Allows Inputs to manage their own activated style state to account for some edge-cases.
-   */
-  activated?: boolean;
-};
+export type InputProps = InputHTMLAttributes<HTMLInputElement> &
+  BaseInputProps & {
+    /**
+     * Allows Inputs to manage their own activated style state to account for some edge-cases.
+     */
+    activated?: boolean;
+    className?: string;
+    /**
+     * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
+     */
+    placeholder?: string;
+    type?: string;
+    valid?: boolean;
+  };
+
 export interface StyledInputProps
   extends StyleProps<typeof conditionalStyles>,
     InputProps {

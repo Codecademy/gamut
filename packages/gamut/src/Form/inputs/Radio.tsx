@@ -10,22 +10,20 @@ import {
   radioInput,
   radioLabel,
   radioWrapper,
-} from './styles';
+} from '../styles';
+import { BaseInputProps } from '../types';
 
-export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
-  checked?: boolean;
-  disabled?: boolean;
-  htmlFor?: string;
-  id?: string;
-  label?: ReactNode;
-  name?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  required?: boolean;
-  tabIndex?: number;
-  value?: string;
-  readOnly?: boolean;
-  error?: boolean;
-};
+export type RadioProps = InputHTMLAttributes<HTMLInputElement> &
+  Omit<BaseInputProps, 'label'> & {
+    checked?: boolean;
+    disabled?: boolean;
+    id?: string;
+    label?: ReactNode;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    tabIndex?: number;
+    value?: string;
+    readOnly?: boolean;
+  };
 export interface RadioElementProps
   extends RadioProps,
     StyleProps<typeof conditionalRadioInputStyles> {}

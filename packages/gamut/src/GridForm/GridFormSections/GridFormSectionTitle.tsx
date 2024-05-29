@@ -1,20 +1,30 @@
 import * as React from 'react';
 
+import { Box } from '../../Box';
+import { FormRequiredText } from '../../Form';
 import { Column } from '../../Layout/Column';
 import { Text } from '../../Typography/Text';
-import { GridFormSectionTitleBaseProps } from '../types';
+import {
+  GridFormRequiredTextProps,
+  GridFormSectionTitleBaseProps,
+} from '../types';
 
-export type GridFormSectionTitleProps = GridFormSectionTitleBaseProps & {
-  numberOfFields: number;
-  'data-testid'?: string;
-};
+export type GridFormSectionTitleProps = GridFormSectionTitleBaseProps &
+  GridFormRequiredTextProps & {
+    'data-testid'?: string;
+    showRequired?: boolean;
+    numberOfFields: number;
+  };
 
 export const GridFormSectionTitle: React.FC<GridFormSectionTitleProps> = ({
   as = 'h2',
   'data-testid': dataTestId,
+  showRequired,
   layout = 'center',
   numberOfFields,
+  requiredTextProps,
   title,
+  titleWrapperProps,
   variant,
 }) => {
   const size = layout === 'center' ? 12 : 3;
@@ -26,9 +36,12 @@ export const GridFormSectionTitle: React.FC<GridFormSectionTitleProps> = ({
       gridRowEnd={{ _: `span 1`, md: `span ${rowspan}` }}
       data-testid={dataTestId}
     >
-      <Text as={as} variant={variant}>
-        {title}
-      </Text>
+      <Box {...titleWrapperProps}>
+        <Text as={as} variant={variant}>
+          {title}
+        </Text>
+        {showRequired && <FormRequiredText {...requiredTextProps} />}
+      </Box>
     </Column>
   );
 };

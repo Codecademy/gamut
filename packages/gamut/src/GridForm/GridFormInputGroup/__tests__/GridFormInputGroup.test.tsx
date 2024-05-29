@@ -171,7 +171,7 @@ describe('GridFormInputGroup', () => {
       field: { ...stubFileField, onUpdate: onUpdateSpy },
     });
 
-    const input = view.getByLabelText('Stub File');
+    const input = view.getByLabelText('Stub File (optional)');
 
     fireEvent.change(input, { target: { files: newVal } });
 

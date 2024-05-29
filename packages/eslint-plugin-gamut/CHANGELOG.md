@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.0](https://github.com/Codecademy/gamut/compare/eslint-plugin-gamut@2.1.0...eslint-plugin-gamut@2.2.0) (2024-05-29)
+
+### Features
+
+- **Form + GridForm:** Add actual required optional + required form text ([e712b44](https://github.com/Codecademy/gamut/commit/e712b4476554a7816ba556fe5482ad0451ebde33))
+
 ## [2.1.0](https://github.com/Codecademy/gamut/compare/eslint-plugin-gamut@2.0.5...eslint-plugin-gamut@2.1.0) (2023-11-30)
 
 ### Features

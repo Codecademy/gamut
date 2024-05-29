@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 
-import { Select } from '../Select';
+import { Select } from '../inputs/Select';
 
 const selectOptions = ['red', 'yellow', 'green'];
 const defaultProps = {

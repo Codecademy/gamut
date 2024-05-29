@@ -49,6 +49,7 @@ exports[`Gamut Exported Keys 1`] = `
   "FormGroupDescription",
   "FormGroupLabel",
   "FormPropsContext",
+  "FormRequiredText",
   "generateResponsiveClassnames",
   "GridBox",
   "GridForm",
