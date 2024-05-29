@@ -30,7 +30,7 @@ export interface DisclosureBodyProps {
   /**
    * These are pre-styled buttons that can be rendered in the body.
    */
-  button?: 'FillButton' | 'StrokeButton' | 'TextButton';
+  buttonType?: 'FillButton' | 'StrokeButton' | 'TextButton';
   /**
    * You can specify `"right"` (default) or `"left"` placement of the optional button at the bottom of the body.
    */

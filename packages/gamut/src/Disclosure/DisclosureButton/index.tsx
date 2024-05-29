@@ -2,20 +2,13 @@ import {
   ArrowChevronDownIcon,
   MiniChevronDownIcon,
 } from '@codecademy/gamut-icons';
-import { variant } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import * as React from 'react';
 
-import { Anchor, Rotation, Text } from '../..';
+import { Rotation, Text } from '../..';
 import { FlexBox } from '../../Box';
 import { DisclosureButtonWrapper } from '../elements';
-import {
-  getRotationSize,
-  getSpacing,
-  getTitleSize,
-} from '../helpers';
+import { getRotationSize, getSpacing, getTitleSize } from '../helpers';
 import { DisclosureButtonProps } from '../types';
-
 
 export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
   disabled = false,
@@ -33,9 +26,9 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
     }
   };
 
-  const titleSize = getTitleSize(spacing)
+  const titleSize = getTitleSize(spacing);
   const rotationSize = getRotationSize(spacing);
-  const { verticalSpacing, horizontalSpacing } = getSpacing(spacing)
+  const { verticalSpacing, horizontalSpacing } = getSpacing(spacing);
 
   return (
     <FlexBox>
@@ -56,6 +49,7 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
             width="100%"
             color="text-secondary"
             fontFamily="accent"
+            variant="p-small"
           >
             {overline}
           </Text>

@@ -1,15 +1,15 @@
-import { states, variant } from "@codecademy/gamut-styles";
-import styled from "@emotion/styled";
+import { states, variant } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 
-import { Anchor } from "../Anchor";
-import { FlexBox } from "../Box";
-import { FillButton, StrokeButton, TextButton } from "../Button";
+import { Anchor } from '../Anchor';
+import { FlexBox } from '../Box';
+import { FillButton, StrokeButton, TextButton } from '../Button';
 
 export const DisclosureWrapper = styled(FlexBox)(
   variant({
     defaultVariant: 'default',
     base: {
-      width: '100%'
+      width: '100%',
     },
     variants: {
       default: {
@@ -56,7 +56,6 @@ export const DisclosureButtonWrapper = styled(Anchor)(
   })
 );
 
-
 const sharedVariants = {
   left: {
     alignSelf: 'flex-start',
@@ -89,7 +88,6 @@ export const StyledFillButton = styled(FillButton)(
   })
 );
 
-
 export const DisclosureBodyWrapper = styled(FlexBox)(
   states({
     hasPanelBg: {
@@ -98,4 +96,3 @@ export const DisclosureBodyWrapper = styled(FlexBox)(
     },
   })
 );
-

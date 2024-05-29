@@ -2,15 +2,12 @@ import * as React from 'react';
 
 import { Text } from '../../Typography';
 import { DisclosureBodyWrapper } from '../elements';
-import {
-  getSpacing,
-  renderButton,
-} from '../helpers';
+import { getSpacing, renderButton } from '../helpers';
 import { DisclosureBodyProps } from '../types';
 
 export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
   body,
-  button = 'TextButton',
+  buttonType = 'TextButton',
   buttonPlacement = 'right',
   ctaCallback,
   ctaText,
@@ -19,8 +16,9 @@ export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
   spacing = 'normal',
 }) => {
   const buttonRequirements = ctaText && ctaCallback;
-  const getLineHeight = spacing === 'compact' ? 'title' : 'base'
-  const { verticalSpacing, horizontalSpacing } = getSpacing(spacing)
+
+  const getLineHeight = spacing === 'compact' ? 'title' : 'base';
+  const { verticalSpacing, horizontalSpacing } = getSpacing(spacing);
   return (
     <DisclosureBodyWrapper
       column
@@ -32,7 +30,13 @@ export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
         {body}
       </Text>
       {buttonRequirements &&
-        renderButton(button, ctaText, ctaCallback, buttonPlacement, href)}
+        renderButton({
+          buttonPlacement,
+          buttonType,
+          ctaCallback,
+          ctaText,
+          href,
+        })}
     </DisclosureBodyWrapper>
   );
 };

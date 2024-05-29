@@ -1,4 +1,8 @@
-import { StyledFillButton, StyledStrokeButton, StyledTextButton } from './elements';
+import {
+  StyledFillButton,
+  StyledStrokeButton,
+  StyledTextButton,
+} from './elements';
 
 export const getSpacing = (spacing: 'compact' | 'condensed' | 'normal') => {
   const verticalSpacingMap = {
@@ -13,8 +17,11 @@ export const getSpacing = (spacing: 'compact' | 'condensed' | 'normal') => {
     normal: 16,
   } as const;
 
-  return {verticalSpacing: verticalSpacingMap[spacing], horizontalSpacing: horizontalSpacingMap[spacing] }
-}
+  return {
+    verticalSpacing: verticalSpacingMap[spacing],
+    horizontalSpacing: horizontalSpacingMap[spacing],
+  };
+};
 
 const titleVariantMap = {
   compact: 'p-base',
@@ -27,19 +34,26 @@ export const getTitleSize = (spacing: keyof typeof titleVariantMap) => {
 };
 
 export const getRotationSize = (
-  spacing: 'compact' | 'condensed' |  'normal'
+  spacing: 'compact' | 'condensed' | 'normal'
 ) => {
   return spacing === 'normal' ? 24 : 12;
 };
 
-export const renderButton = (
-  buttonPlacement: 'left' | 'right',
-  buttonType: 'TextButton' | 'FillButton' | 'StrokeButton',
-  ctaCallback: () => void,
-  ctaText: string,
-  href?: string
-) => {
-  const buttonProps = {
+export const renderButton = (buttonProps: {
+  buttonPlacement: 'left' | 'right';
+  buttonType: 'FillButton' | 'StrokeButton' | 'TextButton';
+  ctaCallback: () => void;
+  ctaText: string;
+  href?: string | undefined;
+}) => {
+  const {
+    buttonPlacement,
+    buttonType,
+    ctaCallback,
+    ctaText,
+    href,
+  } = buttonProps;
+  const sharedProps = {
     pt: 8 as const,
     lineHeight: 'normal',
     onClick: ctaCallback ? () => ctaCallback() : undefined,
@@ -49,13 +63,13 @@ export const renderButton = (
   };
   switch (buttonType) {
     case 'FillButton':
-      return <StyledFillButton {...buttonProps}>{ctaText}</StyledFillButton>;
+      return <StyledFillButton {...sharedProps}>{ctaText}</StyledFillButton>;
     case 'StrokeButton':
       return (
-        <StyledStrokeButton {...buttonProps}>{ctaText}</StyledStrokeButton>
+        <StyledStrokeButton {...sharedProps}>{ctaText}</StyledStrokeButton>
       );
     case 'TextButton':
-      return <StyledTextButton {...buttonProps}>{ctaText}</StyledTextButton>;
+      return <StyledTextButton {...sharedProps}>{ctaText}</StyledTextButton>;
     default:
       return null;
   }

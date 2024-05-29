@@ -10,7 +10,7 @@ import { DisclosureProps } from './types';
 
 export const Disclosure: React.FC<DisclosureProps> = ({
   body,
-  button,
+  buttonType: button,
   buttonPlacement,
   ctaCallback,
   ctaText,
@@ -30,7 +30,12 @@ export const Disclosure: React.FC<DisclosureProps> = ({
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
 
   return (
-    <DisclosureWrapper column variant={variant} onClick={() => onClick()} as={isListItem ? 'li' : undefined}>
+    <DisclosureWrapper
+      column
+      variant={variant}
+      onClick={() => onClick()}
+      as={isListItem ? 'li' : undefined}
+    >
       <DisclosureButton
         spacing={spacing}
         heading={heading}
@@ -52,7 +57,7 @@ export const Disclosure: React.FC<DisclosureProps> = ({
               ctaCallback={ctaCallback}
               buttonPlacement={buttonPlacement}
               href={href}
-              button={button}
+              buttonType={button}
             />
           </ExpandInCollapseOut>
         </AnimatePresence>
