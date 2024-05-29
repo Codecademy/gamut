@@ -28,7 +28,6 @@ export const Disclosure: React.FC<DisclosureProps> = ({
   variant,
 }) => {
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
-
   return (
     <DisclosureWrapper
       column

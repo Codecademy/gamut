@@ -5,7 +5,7 @@ import {
 import * as React from 'react';
 
 import { Rotation, Text } from '../..';
-import { FlexBox } from '../../Box';
+import { Box, FlexBox } from '../../Box';
 import { DisclosureButtonWrapper } from '../elements';
 import { getRotationSize, getSpacing, getTitleSize } from '../helpers';
 import { DisclosureButtonProps } from '../types';
@@ -27,6 +27,7 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
   };
 
   const titleSize = getTitleSize(spacing);
+  const subheadingSize = spacing === 'normal' ? 'p-base' : 'p-small';
   const rotationSize = getRotationSize(spacing);
   const { verticalSpacing, horizontalSpacing } = getSpacing(spacing);
 
@@ -71,20 +72,22 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
             {heading}
           </Text>
 
-          <Rotation
-            rotated={isExpanded}
-            height={rotationSize}
-            width={rotationSize}
-          >
-            {spacing === 'normal' ? (
-              <ArrowChevronDownIcon size={rotationSize} />
-            ) : (
-              <MiniChevronDownIcon size={rotationSize} />
-            )}
-          </Rotation>
+          <Box p={8}>
+            <Rotation
+              rotated={isExpanded}
+              height={rotationSize}
+              width={rotationSize}
+            >
+              {spacing === 'normal' ? (
+                <ArrowChevronDownIcon aria-hidden size={rotationSize} />
+              ) : (
+                <MiniChevronDownIcon aria-hidden size={rotationSize} />
+              )}
+            </Rotation>
+          </Box>
         </FlexBox>
         {subheading && (
-          <Text textAlign="start" width="100%">
+          <Text textAlign="start" width="100%" variant={subheadingSize}>
             {subheading}
           </Text>
         )}

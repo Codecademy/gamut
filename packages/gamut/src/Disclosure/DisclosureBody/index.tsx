@@ -24,7 +24,9 @@ export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
       column
       hasPanelBg={hasPanelBg}
       mb={verticalSpacing}
+      mt={4}
       mx={horizontalSpacing}
+      px={horizontalSpacing}
     >
       <Text width="100%" lineHeight={getLineHeight}>
         {body}

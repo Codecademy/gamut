@@ -12,7 +12,7 @@ export const getSpacing = (spacing: 'compact' | 'condensed' | 'normal') => {
   } as const;
 
   const horizontalSpacingMap = {
-    compact: 4,
+    compact: 8,
     condensed: 8,
     normal: 16,
   } as const;
@@ -36,7 +36,7 @@ export const getTitleSize = (spacing: keyof typeof titleVariantMap) => {
 export const getRotationSize = (
   spacing: 'compact' | 'condensed' | 'normal'
 ) => {
-  return spacing === 'normal' ? 24 : 12;
+  return spacing === 'normal' ? 24 : 16;
 };
 
 export const renderButton = (buttonProps: {
@@ -54,7 +54,7 @@ export const renderButton = (buttonProps: {
     href,
   } = buttonProps;
   const sharedProps = {
-    pt: 8 as const,
+    mt: 8 as const,
     lineHeight: 'normal',
     onClick: ctaCallback ? () => ctaCallback() : undefined,
     textAlign: buttonPlacement,
