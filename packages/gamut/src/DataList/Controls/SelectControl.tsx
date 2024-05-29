@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Checkbox } from '../../Form/Checkbox';
+import { Checkbox } from '../../Form/inputs/Checkbox';
 import { Text } from '../../Typography/Text';
 import { RowChange } from '..';
 

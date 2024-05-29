@@ -33,7 +33,6 @@ export interface ConnectedFormGroupBaseProps
   name: string;
   label: React.ReactNode;
   required?: boolean;
-  showRequired?: boolean;
   infotip?: InfoTipProps;
 }
 
@@ -58,16 +57,13 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   name,
   labelSize,
   spacing = 'fit',
+  isSoloField,
   infotip,
 }: ConnectedFormGroupProps<T>) {
-  const {
-    error,
-    isFirstError,
-    isDisabled,
-    showRequired,
-    setError,
-    validation,
-  } = useField({ name, disabled });
+  const { error, isFirstError, isDisabled, setError, validation } = useField({
+    name,
+    disabled,
+  });
   const { component: Component, ...rest } = field;
 
   useEffect(() => {
@@ -84,7 +80,8 @@ export function ConnectedFormGroup<T extends ConnectedField>({
       disabled={isDisabled}
       htmlFor={id || name}
       infotip={infotip}
-      showRequired={showRequired && !!validation}
+      isSoloField={isSoloField}
+      required={!!validation?.required}
       size={labelSize}
     >
       {label}

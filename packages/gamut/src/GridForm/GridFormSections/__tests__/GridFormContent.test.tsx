@@ -24,7 +24,7 @@ describe('GridFormContent', () => {
   it('renders the label and field', () => {
     const { view } = renderView();
 
-    view.getByLabelText('Stub Text');
+    view.getByLabelText('Stub Text (optional)');
     view.getByRole('textbox', { name: 'Stub Text' });
   });
 

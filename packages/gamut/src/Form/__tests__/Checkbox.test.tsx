@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 
-import { Checkbox } from '../Checkbox';
+import { Checkbox } from '../inputs/Checkbox';
 
 const onChange = jest.fn();
 

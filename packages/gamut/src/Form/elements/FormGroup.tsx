@@ -4,25 +4,22 @@ import styled from '@emotion/styled';
 import { ComponentProps } from 'react';
 import * as React from 'react';
 
-import { Box } from '../Box';
-import { InfoTipProps } from '../Tip';
+import { Box } from '../../Box';
+import { BaseInputProps } from '../types';
 import { FormError } from './FormError';
 import { FormGroupDescription } from './FormGroupDescription';
-import { FormGroupLabel } from './FormGroupLabel';
+import { FormGroupLabel, FormGroupLabelProps } from './FormGroupLabel';
 
 export interface FormGroupProps
-  extends ComponentProps<typeof FormGroupContainer> {
-  label?: string;
+  extends ComponentProps<typeof FormGroupContainer>,
+    Omit<BaseInputProps, 'name' | 'error'>,
+    Pick<FormGroupLabelProps, 'disabled' | 'infotip' | 'isSoloField'> {
   /**
    * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
    */
-  htmlFor?: string;
-  description?: string;
-  showRequired?: boolean;
   error?: string;
-  disabled?: boolean;
+  description?: string;
   labelSize?: 'small' | 'large';
-  infotip?: InfoTipProps;
 }
 
 const formGroupSpacing = variant({
@@ -73,16 +70,18 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   infotip,
   label,
   labelSize,
-  showRequired,
+  required,
+  isSoloField,
   ...rest
 }) => {
   const labelComponent = label ? (
     <FormGroupLabel
-      htmlFor={htmlFor}
-      showRequired={showRequired}
-      size={labelSize}
       disabled={disabled}
+      htmlFor={htmlFor}
       infotip={infotip}
+      isSoloField={isSoloField}
+      required={required}
+      size={labelSize}
     >
       {label}
     </FormGroupLabel>
