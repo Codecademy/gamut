@@ -1,11 +1,12 @@
 import { ReactNode } from 'react';
 import { RegisterOptions, UseFormReturn } from 'react-hook-form';
 
+import { BoxProps } from '../Box';
 import { TextAreaProps } from '../Form';
 import { CheckboxPaddingProps } from '../Form/types';
 import { ColumnProps } from '../Layout';
 import { InfoTipProps } from '../Tip';
-import { TextProps } from '../Typography/Text';
+import { Text, TextProps } from '../Typography/Text';
 
 export interface BaseFormInputProps {
   className?: string;
@@ -31,6 +32,7 @@ export type BaseFormField<Value> = {
 
   infotip?: InfoTipProps;
 
+  isSoloField?: boolean;
   name: string;
   onUpdate?: (value: Value) => void;
   size: ColumnProps['size'];
@@ -159,10 +161,18 @@ type RestrictedTitleVariant = FilterNestedEnumByPrefix<
   'title'
 >;
 
+export type GridFormRequiredTextProps = {
+  /**
+   * Style overrides for the required text -- required text should be spaced apart from or stylistically different from the element above it.
+   */
+  requiredTextProps?: React.ComponentProps<typeof Text>;
+};
+
 export type GridFormSectionTitleBaseProps = RestrictedTitleVariant & {
   title: string;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   layout?: 'center' | 'left';
+  titleWrapperProps?: BoxProps;
 };
 
 export type GridFormSectionProps = GridFormSectionTitleBaseProps & {

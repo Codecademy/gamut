@@ -18,6 +18,7 @@ export const FormLoadingExample = () => {
   return (
     <Background bg="navy" p={32}>
       <GridForm
+        hideRequiredText
         disableFieldsOnSubmit
         resetOnSubmit
         fields={[

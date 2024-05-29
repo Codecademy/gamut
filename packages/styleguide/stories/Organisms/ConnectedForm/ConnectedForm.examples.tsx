@@ -6,6 +6,7 @@ import {
   ConnectedRadioGroupInput,
   ConnectedSelect,
   ConnectedTextArea,
+  FormRequiredText,
   SubmitButton,
   Text,
   useConnectedForm,
@@ -150,6 +151,7 @@ export const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
       {...connectedForm}
     >
       <SubmitButton m={8}>submit this form</SubmitButton>
+      <FormRequiredText />
       <ConnectedFormGroup
         name="checkboxField"
         label="checkbox field"
