@@ -8,54 +8,24 @@ import * as React from 'react';
 
 import { Anchor, Rotation, Text } from '../..';
 import { FlexBox } from '../../Box';
+import { DisclosureButtonWrapper } from '../elements';
 import {
-  determineHorizontalSpacing,
-  determineRotationSize,
-  determineTitleSize,
-  determineVerticalSpacing,
+  getRotationSize,
+  getSpacing,
+  getTitleSize,
 } from '../helpers';
 import { DisclosureButtonProps } from '../types';
 
-const StyledAnchorVariants = styled(Anchor)(
-  variant({
-    prop: 'appearance',
-    defaultVariant: 'default',
-    base: {
-      '&:hover': {
-        color: 'text',
-        bg: 'background-hover',
-      },
-      '&:focus': {
-        color: 'text',
-        bg: 'background-selected',
-      },
-      '&:disabled': {
-        color: 'text-disabled',
-        bg: 'background-disabled',
-      },
-    },
-    // Don't actually need the variant here, but it errors out if omitted
-    variants: {
-      default: {
-        bg: 'background-current',
-      },
-      block: {
-        bg: 'background',
-        border: 'none',
-      },
-    },
-  })
-);
 
 export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
-  spacing = 'normal',
+  disabled = false,
   heading,
   headingLevel = 'h3',
-  overline,
-  subheading,
   isExpanded,
+  overline,
   setIsExpanded,
-  disabled = false,
+  spacing = 'normal',
+  subheading,
 }) => {
   const handleClick = () => {
     if (setIsExpanded) {
@@ -63,17 +33,20 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
     }
   };
 
-  const rotationSize = determineRotationSize(spacing);
+  const titleSize = getTitleSize(spacing)
+  const rotationSize = getRotationSize(spacing);
+  const { verticalSpacing, horizontalSpacing } = getSpacing(spacing)
+
   return (
     <FlexBox>
-      <StyledAnchorVariants
+      <DisclosureButtonWrapper
         aria-label={isExpanded ? 'Collapse Content' : 'Expand Content'}
         aria-expanded={isExpanded}
         onClick={handleClick}
         width="100%"
         variant="interface"
-        py={determineVerticalSpacing(spacing)}
-        px={determineHorizontalSpacing(spacing)}
+        py={verticalSpacing}
+        px={horizontalSpacing}
         disabled={disabled}
         height="100%"
       >
@@ -98,7 +71,7 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
             as={headingLevel}
             width="100%"
             p={0}
-            variant={determineTitleSize(spacing)}
+            variant={titleSize}
             fontWeight="title"
           >
             {heading}
@@ -121,7 +94,7 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
             {subheading}
           </Text>
         )}
-      </StyledAnchorVariants>
+      </DisclosureButtonWrapper>
     </FlexBox>
   );
 };

@@ -1,53 +1,36 @@
-import { variant } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import * as React from 'react';
 
 import { ExpandInCollapseOut } from '../Animation/ExpandInCollapseOut';
-import { FlexBox } from '../Box';
 import { DisclosureBody } from './DisclosureBody';
 import { DisclosureButton } from './DisclosureButton';
+import { DisclosureWrapper } from './elements';
 import { DisclosureProps } from './types';
 
-const StyledFlexBox = styled(FlexBox)(
-  variant({
-    defaultVariant: 'default',
-    variants: {
-      default: {
-        bg: 'background-current',
-        border: 1,
-        maxHeight: 'fit-content',
-      },
-      block: {
-        bg: 'background',
-        border: 'none',
-      },
-    },
-  })
-);
-
 export const Disclosure: React.FC<DisclosureProps> = ({
+  body,
+  button,
+  buttonPlacement,
+  ctaCallback,
+  ctaText,
   disabled = false,
   heading,
-  variant,
   headingLevel = 'h3',
-  initiallyExpanded,
-  spacing = 'normal',
-  overline,
-  subheading,
-  body,
-  withBackground,
-  ctaText,
-  ctaCallback,
-  buttonPlacement,
   href,
-  button,
+  initiallyExpanded,
+  isListItem = false,
+  onClick,
+  overline,
+  hasPanelBg,
+  spacing = 'normal',
+  subheading,
+  variant,
 }) => {
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
 
   return (
-    <StyledFlexBox width="100%" column variant={variant}>
+    <DisclosureWrapper column variant={variant} onClick={() => onClick()} as={isListItem ? 'li' : undefined}>
       <DisclosureButton
         spacing={spacing}
         heading={heading}
@@ -58,13 +41,12 @@ export const Disclosure: React.FC<DisclosureProps> = ({
         setIsExpanded={setIsExpanded}
         disabled={disabled}
       />
-
       {isExpanded && (
         <AnimatePresence>
           <ExpandInCollapseOut>
             <DisclosureBody
               body={body}
-              withBackground={withBackground}
+              hasPanelBg={hasPanelBg}
               ctaText={ctaText}
               spacing={spacing}
               ctaCallback={ctaCallback}
@@ -75,6 +57,6 @@ export const Disclosure: React.FC<DisclosureProps> = ({
           </ExpandInCollapseOut>
         </AnimatePresence>
       )}
-    </StyledFlexBox>
+    </DisclosureWrapper>
   );
 };

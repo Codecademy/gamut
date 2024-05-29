@@ -1,48 +1,38 @@
-import { states } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import * as React from 'react';
 
-import { FlexBox } from '../../Box';
 import { Text } from '../../Typography';
+import { DisclosureBodyWrapper } from '../elements';
 import {
-  determineHorizontalSpacing,
-  determineVerticalSpacing,
+  getSpacing,
   renderButton,
 } from '../helpers';
 import { DisclosureBodyProps } from '../types';
 
-const StyledFlexBox = styled(FlexBox)(
-  states({
-    withBackground: {
-      bg: 'background-selected',
-      p: 8,
-    },
-  })
-);
-
 export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
   body,
-  withBackground = false,
-  spacing = 'normal',
-  ctaText,
-  ctaCallback,
-  buttonPlacement = 'right',
-  href,
   button = 'TextButton',
+  buttonPlacement = 'right',
+  ctaCallback,
+  ctaText,
+  hasPanelBg = false,
+  href,
+  spacing = 'normal',
 }) => {
   const buttonRequirements = ctaText && ctaCallback;
+  const getLineHeight = spacing === 'compact' ? 'title' : 'base'
+  const { verticalSpacing, horizontalSpacing } = getSpacing(spacing)
   return (
-    <StyledFlexBox
+    <DisclosureBodyWrapper
       column
-      withBackground={withBackground}
-      mb={determineVerticalSpacing(spacing)}
-      mx={determineHorizontalSpacing(spacing)}
+      hasPanelBg={hasPanelBg}
+      mb={verticalSpacing}
+      mx={horizontalSpacing}
     >
-      <Text width="100%" lineHeight={spacing === 'compact' ? 'title' : 'base'}>
+      <Text width="100%" lineHeight={getLineHeight}>
         {body}
       </Text>
       {buttonRequirements &&
         renderButton(button, ctaText, ctaCallback, buttonPlacement, href)}
-    </StyledFlexBox>
+    </DisclosureBodyWrapper>
   );
 };

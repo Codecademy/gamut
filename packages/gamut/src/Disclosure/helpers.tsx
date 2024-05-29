@@ -1,85 +1,42 @@
-import { variant } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { StyledFillButton, StyledStrokeButton, StyledTextButton } from './elements';
 
-import { FillButton, StrokeButton, TextButton } from '../Button';
+export const getSpacing = (spacing: 'compact' | 'condensed' | 'normal') => {
+  const verticalSpacingMap = {
+    compact: 4,
+    condensed: 8,
+    normal: 16,
+  } as const;
 
-const verticalSpacingMap = {
-  normal: 16,
-  condensed: 8,
-  compact: 4,
-} as const;
+  const horizontalSpacingMap = {
+    compact: 4,
+    condensed: 8,
+    normal: 16,
+  } as const;
 
-export const determineVerticalSpacing = (
-  spacing: keyof typeof verticalSpacingMap
-) => {
-  return verticalSpacingMap[spacing];
-};
-
-const horizontalSpacingMap = {
-  normal: 16,
-  condensed: 8,
-  compact: 4,
-} as const;
-
-export const determineHorizontalSpacing = (
-  spacing: keyof typeof horizontalSpacingMap
-) => {
-  return horizontalSpacingMap[spacing];
-};
+  return {verticalSpacing: verticalSpacingMap[spacing], horizontalSpacing: horizontalSpacingMap[spacing] }
+}
 
 const titleVariantMap = {
-  normal: 'title-sm',
-  condensed: 'title-xs',
   compact: 'p-base',
+  condensed: 'title-xs',
+  normal: 'title-sm',
 } as const;
 
-export const determineTitleSize = (spacing: keyof typeof titleVariantMap) => {
+export const getTitleSize = (spacing: keyof typeof titleVariantMap) => {
   return titleVariantMap[spacing];
 };
 
-export const determineRotationSize = (
-  spacing: 'normal' | 'condensed' | 'compact'
+export const getRotationSize = (
+  spacing: 'compact' | 'condensed' |  'normal'
 ) => {
   return spacing === 'normal' ? 24 : 12;
 };
 
-const sharedVariants = {
-  left: {
-    alignSelf: 'flex-start',
-    justifyContent: 'left',
-  },
-  right: {
-    alignSelf: 'flex-end',
-    justifyContent: 'right',
-  },
-};
-
-const StyledTextButton = styled(TextButton)(
-  variant({
-    prop: 'placement',
-    variants: sharedVariants,
-  })
-);
-
-const StyledStrokeButton = styled(StrokeButton)(
-  variant({
-    prop: 'placement',
-    variants: sharedVariants,
-  })
-);
-
-const StyledFillButton = styled(FillButton)(
-  variant({
-    prop: 'placement',
-    variants: sharedVariants,
-  })
-);
-
 export const renderButton = (
+  buttonPlacement: 'left' | 'right',
   buttonType: 'TextButton' | 'FillButton' | 'StrokeButton',
-  ctaText: string,
   ctaCallback: () => void,
-  buttonPlacement: 'right' | 'left',
+  ctaText: string,
   href?: string
 ) => {
   const buttonProps = {
