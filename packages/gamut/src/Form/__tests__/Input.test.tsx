@@ -1,7 +1,7 @@
 import { StreakIcon } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
 
-import { Input } from '../Input';
+import { Input } from '../inputs/Input';
 
 jest.mock('@codecademy/gamut-icons', () => ({
   AlertIcon: () => (

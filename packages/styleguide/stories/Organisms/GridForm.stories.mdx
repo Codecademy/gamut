@@ -64,7 +64,7 @@ GridForm provides the following benefits:
             type: 'text',
           },
           {
-            label: 'Simple select (required)',
+            label: 'Simple select',
             name: 'simple-select',
             options: ['', 'One fish', 'Two fish', 'Red fish', 'Blue fish'],
             size: 5,
@@ -161,7 +161,6 @@ GridForm provides the following benefits:
         submit={{
           contents: 'Submit Me!?',
         }}
-        showRequired
       />
     )}
   </Story>
@@ -208,6 +207,7 @@ If an input is not meant to be usable, such as when a portion of a form is disab
   <Story name="Disabled Inputs">
     {() => (
       <GridForm
+        hideRequiredText
         fields={[
           {
             disabled: true,
@@ -237,12 +237,13 @@ If an input is not meant to be usable, such as when a portion of a form is disab
 
 ## GridForm-atting
 
-We can use the `size` and `rowspan` props (borrowed from <LinkTo id="layouts-layoutgrid--layout-grid">LayoutGrid</LinkTo>) to customize the layouts of our GridForms.
+We can use the `size` and `rowspan` props (borrowed from <LinkTo id="layouts-layoutgrid--layout-grid">LayoutGrid</LinkTo>) to customize the layouts of our GridForms. You can also customize the `FormRequiredText` using the `requiredTextProps`. `FormRequiredText` should be spaced apart from or be stylistically different from the text element above it.
 
 <Canvas>
   <Story name="Rowspan Formatting">
     {() => (
       <GridForm
+        requiredTextProps={{ color: 'danger', variant: 'title-xs' }}
         fields={[
           {
             label: 'Fave Gamut Component',
@@ -314,6 +315,7 @@ value of left, center, right, or stretch.
       <LayoutGrid>
         <Column size={6}>
           <GridForm
+            hideRequiredText
             fields={[
               {
                 label: 'Simple text',
@@ -332,6 +334,7 @@ value of left, center, right, or stretch.
         </Column>
         <Column size={6}>
           <GridForm
+            hideRequiredText
             fields={[
               {
                 label: 'Simple text',
@@ -350,6 +353,7 @@ value of left, center, right, or stretch.
         </Column>
         <Column size={6}>
           <GridForm
+            hideRequiredText
             fields={[
               {
                 label: 'Simple text',
@@ -368,6 +372,7 @@ value of left, center, right, or stretch.
         </Column>
         <Column size={6}>
           <GridForm
+            hideRequiredText
             fields={[
               {
                 label: 'Simple text',
@@ -399,6 +404,7 @@ the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="
     {() => (
       <>
         <GridForm
+          hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -416,6 +422,7 @@ the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="
           }}
         />
         <GridForm
+          hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -434,6 +441,7 @@ the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="
           }}
         />
         <GridForm
+          hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -452,6 +460,7 @@ the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="
           }}
         />
         <GridForm
+          hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -491,6 +500,7 @@ align nicely with the input.
   <Story name="Inline Text Input With Label">
     {() => (
       <GridForm
+        hideRequiredText
         fields={[
           {
             hideLabel: true,
@@ -522,6 +532,7 @@ Optionally, include a cancel button.
     <LayoutGrid>
       <Column size={6}>
         <GridForm
+          hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -544,6 +555,7 @@ Optionally, include a cancel button.
       </Column>
       <Column size={6}>
         <GridForm
+          hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -566,6 +578,7 @@ Optionally, include a cancel button.
       </Column>
       <Column size={6}>
         <GridForm
+          hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -588,6 +601,7 @@ Optionally, include a cancel button.
       </Column>
       <Column size={6}>
         <GridForm
+          hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -698,6 +712,7 @@ more details on why using placeholders is often bad.
   <Story name="Placeholder Text">
     {() => (
       <GridForm
+        hideRequiredText
         fields={[
           {
             label: 'Email',
@@ -731,6 +746,7 @@ field's value in a parent component before onSubmit gets triggered.
         <>
           <>The text value is: {text}</>
           <GridForm
+            hideRequiredText
             fields={[
               {
                 label: 'Text with onUpdate',
@@ -867,7 +883,7 @@ Our `GridForm`s optionally take an array of sections that have left and center-a
 
 Each sections should have a title that correctly follows [heading ranks](https://usability.yale.edu/web-accessibility/articles/headings). You can set the text type of this title though the `as` prop on that section -- the default is `h2`. You can only set the `as` prop to a heading.
 
-You can set the <LinkTo id="typography-text--variants">Text variant</LinkTo> prop for the section title the same way. Only title variants are accepted.
+You can set the <LinkTo id="typography-text--variants">Text variant</LinkTo> prop for the section title the same way. Only title variants are reccomended, but if you need more granular control of the Text component, you can pass them into `titleWrapperProps`.
 
 When using the left-aligned layout, please note that the `title` takes up 3 columns, so any field size over 9 may cause inconsistent behavior!
 
@@ -876,11 +892,15 @@ When using the left-aligned layout, please note that the `title` takes up 3 colu
     {() => {
       return (
         <GridForm
+          requiredTextProps={{ color: 'primary', fontStyle: 'italic' }}
           fields={[
             {
               title: 'first section',
               layout: 'left',
               variant: 'title-xs',
+              titleWrapperProps: {
+                color: 'danger',
+              },
               fields: [
                 {
                   label: 'hi?',
@@ -1001,7 +1021,6 @@ A field can take a custom error in addition to validation errors. The validation
             contents: 'Submit Me!?',
             size: 12,
           }}
-          showRequired
         />
       );
     }}
@@ -1049,6 +1068,7 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
   <Story name="Sweet Container Input">
     {() => (
       <GridForm
+        hideRequiredText
         fields={[
           {
             label: 'This is our sticky sweet label',
@@ -1126,6 +1146,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
             id: 'cozy-check-0',
             defaultValue: true,
             spacing: 'tight',
+            label: 'must check',
             validation: {
               required: 'sos',
             },
@@ -1138,6 +1159,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
             id: 'cozy-check-1',
             defaultValue: true,
             spacing: 'tight',
+            label: 'must check',
             validation: {
               required: 'pls help',
             },
@@ -1149,6 +1171,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
             type: 'checkbox',
             id: 'cozy-check-2',
             defaultValue: true,
+            label: 'you do not have to check this',
             spacing: 'tight',
           },
           {
@@ -1158,6 +1181,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
             type: 'checkbox',
             id: 'cozy-check-3',
             defaultValue: true,
+            label: 'you do not have to check this',
             spacing: 'tight',
           },
         ]}
@@ -1181,6 +1205,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
       <>
         <Background bg="beige" p={32}>
           <GridForm
+            hideRequiredText
             fields={[
               {
                 label: 'Email',
@@ -1200,6 +1225,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
         </Background>
         <Background bg="navy" p={32}>
           <GridForm
+            hideRequiredText
             fields={[
               {
                 label: 'Email',
@@ -1232,6 +1258,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
       <>
         <Background bg="palePink" p={32}>
           <GridForm
+            hideRequiredText
             disableFieldsOnSubmit
             fields={[
               {
@@ -1258,6 +1285,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
         </Background>
         <Background bg="black" p={32}>
           <GridForm
+            hideRequiredText
             disableFieldsOnSubmit
             wasSubmitSuccessful={false}
             fields={[
@@ -1281,6 +1309,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
         </Background>
         <Background bg="paleBlue" p={32}>
           <GridForm
+            hideRequiredText
             disableFieldsOnSubmit
             fields={[
               {
@@ -1320,6 +1349,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
       <>
         <Background bg="beige" p={32}>
           <GridForm
+            hideRequiredText
             resetOnSubmit
             fields={[
               {
@@ -1353,3 +1383,78 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
 We can combine these together to create some pretty cool forms which have a loading state, disable their fields while submitting, and reset the form when the submit was successful.
 
 <FormLoadingExample />
+
+## hideRequiredText
+
+`hideRequiredText` will hide the '\* Required' text that appears at the top of our forms. This should only be hidden if the form has no required fields.
+
+<Canvas>
+  <Story name="hideRequiredText">
+    {() => (
+      <>
+        <Background bg="paleBlue" p={32}>
+          <GridForm
+            hideRequiredText
+            fields={[
+              {
+                label: 'A field',
+                placeholder: 'I am very optional',
+                name: 'very-optional',
+                type: 'input',
+                size: 12,
+              },
+              {
+                label: 'A field',
+                placeholder: 'I am very optional',
+                name: 'very-optional',
+                type: 'input',
+                size: 12,
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Submit Me 💖',
+            }}
+          />
+        </Background>
+      </>
+    )}
+  </Story>
+</Canvas>
+
+## Solo Field Forms
+
+Solo field form should always have their solo input be required. They should automagically not have the required/optional text - if you have a custom rendered hidden input, you may have to use the `hasSoloField` prop.
+
+<Canvas>
+  <Story name="Solo Field Form">
+    {() => (
+      <>
+        <Background bg="paleBlue" p={32}>
+          <GridForm
+            fields={[
+              {
+                label: 'A field',
+                placeholder: 'I am a required solo field',
+                name: 'so-required',
+                type: 'input',
+                size: 12,
+                validation: {
+                  required: 'I am required',
+                },
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Submit Me 💖',
+            }}
+          />
+        </Background>
+      </>
+    )}
+  </Story>
+</Canvas>

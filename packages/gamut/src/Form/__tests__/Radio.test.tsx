@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 
-import { Radio } from '../Radio';
+import { Radio } from '../inputs/Radio';
 
 const onChangeCallback = jest.fn();
 const testid = 'my-test-id';

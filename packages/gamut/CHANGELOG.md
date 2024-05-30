@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.21.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.21.0...@codecademy/gamut@55.21.1) (2024-05-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [55.21.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.20.0...@codecademy/gamut@55.21.0) (2024-05-29)
+
+### Features
+
+- **Form + GridForm:** Add actual required optional + required form text ([e712b44](https://github.com/Codecademy/gamut/commit/e712b4476554a7816ba556fe5482ad0451ebde33))
+
 ## [55.20.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.19.1...@codecademy/gamut@55.20.0) (2024-05-22)
 
 ### Features

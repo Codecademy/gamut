@@ -14,28 +14,22 @@ type GridFormSectionTestComponentProps = GridFormSectionProps & {
 
 export const GridFormContentTestComponent: React.FC<GridFormContentTestComponentProps> = ({
   field,
-  showRequired,
   mode = 'onSubmit',
 }) => {
   return (
     <FormContext mode={mode}>
-      <GridFormContent
-        field={field}
-        showRequired={showRequired}
-        key={field.name}
-      />
+      <GridFormContent field={field} key={field.name} />
     </FormContext>
   );
 };
 
 export const GridFormSectionTestComponent: React.FC<GridFormSectionTestComponentProps> = ({
   fields,
-  showRequired,
   mode = 'onSubmit',
 }) => {
   return (
     <FormContext mode={mode}>
-      <GridFormSection fields={fields} showRequired={showRequired} />
+      <GridFormSection fields={fields} />
     </FormContext>
   );
 };

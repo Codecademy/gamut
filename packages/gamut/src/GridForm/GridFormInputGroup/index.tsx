@@ -31,13 +31,13 @@ const ErrorAnchor = styled(Anchor)(
 
 export type GridFormInputGroupProps = {
   error?: string;
-  isFirstError?: boolean;
-  isDisabled?: boolean;
   field: GridFormField;
+  isDisabled?: boolean;
+  isFirstError?: boolean;
+  isSoloField?: boolean;
   register: UseFormReturn['register'];
-  setValue: UseFormReturn['setValue'];
   required?: boolean;
-  showRequired?: boolean;
+  setValue: UseFormReturn['setValue'];
 };
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
@@ -45,7 +45,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   field,
   isFirstError,
   isDisabled,
-  showRequired,
   ...rest
 }) => {
   const disabled = isDisabled || field.disabled;
@@ -149,7 +148,8 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       disabled={disabled}
       htmlFor={field.id || field.name}
       infotip={field.infotip}
-      showRequired={showRequired && rest?.required}
+      required={rest?.required}
+      isSoloField={rest?.isSoloField || field?.isSoloField}
     >
       {field.label}
     </FormGroupLabel>

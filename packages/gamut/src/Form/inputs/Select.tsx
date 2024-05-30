@@ -14,24 +14,24 @@ import {
   useState,
 } from 'react';
 
-import { Box, FlexBox } from '../Box';
+import { Box, FlexBox } from '../../Box';
 import {
   conditionalStyles,
   conditionalStyleState,
   formFieldStyles,
-} from './styles';
-import { parseSelectOptions } from './utils';
+} from '../styles';
+import { BaseInputProps } from '../types';
+import { parseSelectOptions } from '../utils';
 
 export type SelectOptions = string[] | Record<string, number | string>;
 
 export type SelectComponentProps = Pick<
   SelectHTMLAttributes<HTMLSelectElement>,
   'disabled' | 'id'
-> & {
-  error?: boolean;
-  htmlFor?: string;
-  options?: SelectOptions;
-};
+> &
+  Pick<BaseInputProps, 'htmlFor' | 'error'> & {
+    options?: SelectOptions;
+  };
 
 export type SelectWrapperProps = SelectComponentProps &
   SelectHTMLAttributes<HTMLSelectElement> & {

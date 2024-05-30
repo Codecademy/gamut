@@ -14,7 +14,7 @@ import {
 } from 'react-hook-form';
 
 import { Form } from '../Form';
-import { FormProps } from '../Form/Form';
+import { FormProps } from '../Form/elements/Form';
 import { FormValues } from '../Form/types';
 import { submitSuccessStatus } from './utils';
 
@@ -24,13 +24,13 @@ export interface FormContextProps {
    */
   disableFieldsOnSubmit?: boolean;
   /**
+   * Solo fields should always be required and have no optional/required text
+   */
+  isSoloField?: boolean;
+  /**
    * If fields should be reset after successful submission.
    */
   resetOnSubmit?: boolean;
-  /**
-   * If required field should show asterisks in labels.
-   */
-  showRequired?: boolean;
   /**
    * Validation rules form fields. Fields with validation rules must have a defaultValue listed in the defaultValue prop.
    */
@@ -93,13 +93,13 @@ export const ConnectedForm = forwardRef(
   <Values extends FormValues<Values>>(
     {
       children,
-      onSubmit,
-      onError,
       defaultValues,
-      validation = 'onChange',
       disableFieldsOnSubmit = false,
+      isSoloField,
+      onError,
+      onSubmit,
       resetOnSubmit = false,
-      showRequired = false,
+      validation = 'onChange',
       validationRules,
       wasSubmitSuccessful = undefined,
       watchedFields,
@@ -146,15 +146,15 @@ export const ConnectedForm = forwardRef(
     const contextValues = useMemo(() => {
       return {
         disableFieldsOnSubmit,
+        isSoloField,
         resetOnSubmit,
-        showRequired,
         validationRules,
         wasSubmitSuccessful,
       };
     }, [
       disableFieldsOnSubmit,
+      isSoloField,
       resetOnSubmit,
-      showRequired,
       validationRules,
       wasSubmitSuccessful,
     ]);
