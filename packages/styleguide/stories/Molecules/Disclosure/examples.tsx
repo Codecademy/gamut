@@ -1,4 +1,5 @@
 import { Disclosure, List, Text } from '@codecademy/gamut';
+import { Background } from '@codecademy/gamut-styles';
 
 export const ListDisclosureExample = () => {
   return (
@@ -46,3 +47,17 @@ export const ConstrainedText = (
     sapiente recusandae iusto.
   </Text>
 );
+
+export const BeigeBackground = (
+  <Background bg="background-primary">
+    <Disclosure
+        heading="Third"
+        initiallyExpanded={false}
+        body="Third Disclosure expanded"
+        ctaText="click here!"
+        ctaCallback={() => null}
+        href="/"
+        buttonType="FillButton"
+      />
+  </Background>
+)

@@ -1,9 +1,10 @@
 import { Disclosure } from '@codecademy/gamut';
+import { Background } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { ConstrainedText, ListDisclosureExample } from './examples';
+import {ConstrainedText, ListDisclosureExample } from './examples';
 
 <Meta
   title={title}
@@ -107,10 +108,27 @@ Disclosure has 2 variants (default, block) and 3 spacing options (normal, conden
 </Canvas>
 
 ### List with Disclosures
-
+When creating a List of Disclosures, make sure to set `isListItem` to `true`.
 <Canvas>
   <Story name="List example">
     <ListDisclosureExample />
+  </Story>
+</Canvas>
+
+
+### Using `<Background>` with Disclosure
+You can nest Disclosure inside a `<Background>` to provide a different color.
+<Canvas>
+  <Story name="just for testing">
+    <Background bg="background-primary">
+    <Disclosure
+        heading="Hint"
+        initiallyExpanded={false}
+        body="possible mock for a hint, slight concern about spacing though... since all this text will get smushed up, if that's ok? then I can work a little more on this. Maybe the only thing that really needs to be exposed is an expandedTitle and a collapsedTitle"
+        href="/"
+        spacing="compact"
+      />
+  </Background>
   </Story>
 </Canvas>
 
