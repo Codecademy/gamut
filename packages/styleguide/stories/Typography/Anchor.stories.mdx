@@ -26,6 +26,9 @@ import { CustomCheckbox } from '../Atoms/FormInputs/examples';
     href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     target: '_blank',
     fontWeight: 'title',
+    icon: MiniInfoOutlineIcon,
+    iconPosition: "left",
+    variant: "inline"
   }}
 />
 
@@ -157,8 +160,8 @@ You can use an <LinkTo id="atoms-icons-about--page">Icon</LinkTo> can be added t
       return (
         <>
         <FlexBox justifyContent="space-between">
-          <Anchor {...args} href="/" icon={MiniArrowLeftIcon} iconPosition="left">Previous</Anchor>
-          <Anchor {...args} href="/" icon={MiniArrowRightIcon} iconPosition="right">Next</Anchor>
+          <Anchor {...args} href="/" icon={MiniArrowLeftIcon} iconPosition="left" variant="inline">Previous</Anchor>
+          <Anchor {...args} href="/" icon={MiniArrowRightIcon} iconPosition="right" variant="inline">Next</Anchor>
         </FlexBox>
         <Text>
         <Anchor {...args} href="/" icon={MiniInfoOutlineIcon} iconPosition="left" variant="inline">Centered</Anchor> Testing
