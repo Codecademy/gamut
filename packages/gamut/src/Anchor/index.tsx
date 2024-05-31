@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { ComponentProps, forwardRef, HTMLProps, RefObject } from 'react';
 
 import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
-import { AppendedIconProps,appendIconToContent } from '../utils';
+import { AppendedIconProps, appendIconToContent } from '../utils';
 
 export interface AnchorProps
   extends StyleProps<typeof anchorProps>,
@@ -108,17 +108,48 @@ type AnchorBaseProps =
   | (Exclude<ComponentProps<typeof AnchorBase>, 'ref'> &
       ComponentProps<typeof ButtonBase>);
 
-type AnchorExtProps = AppendedIconProps & AnchorBaseProps ;
+type AnchorExtProps = AppendedIconProps & AnchorBaseProps;
 
 export const Anchor = forwardRef<
   HTMLAnchorElement | HTMLButtonElement,
   AnchorExtProps
->(({ variant = 'inline', icon, iconSize=12, iconPosition = 'left', children, center, isInlineIcon=true, ...rest }, ref) => {
-  const content = appendIconToContent({ iconPosition, iconSize, icon, children, center, isInlineIcon });
-  if (!rest.href) {
+>(
+  (
+    {
+      variant = 'inline',
+      icon,
+      iconSize = 12,
+      iconPosition = 'left',
+      children,
+      center,
+      isInlineIcon = true,
+      ...rest
+    },
+    ref
+  ) => {
+    const content = appendIconToContent({
+      iconPosition,
+      iconSize,
+      icon,
+      children,
+      center,
+      isInlineIcon,
+    });
+    if (!rest.href) {
+      return (
+        <AnchorBase
+          as={ButtonBase}
+          variant={variant}
+          ref={ref as RefObject<HTMLAnchorElement>}
+          {...rest}
+        >
+          {content}
+        </AnchorBase>
+      );
+    }
+
     return (
       <AnchorBase
-        as={ButtonBase}
         variant={variant}
         ref={ref as RefObject<HTMLAnchorElement>}
         {...rest}
@@ -127,14 +158,4 @@ export const Anchor = forwardRef<
       </AnchorBase>
     );
   }
-
-  return (
-    <AnchorBase
-      variant={variant}
-      ref={ref as RefObject<HTMLAnchorElement>}
-      {...rest}
-    >
-      {content}
-    </AnchorBase>
-  );
-});
+);

@@ -1,14 +1,12 @@
-import { Box, FlexBox } from "../Box";
-import { IconComponentType, WithChildrenProp } from "../utils";
+import { Box, FlexBox } from '../Box';
+import { IconComponentType, WithChildrenProp } from '../utils';
 
-export interface AppendedIconProps
-  extends WithChildrenProp,
-    IconComponentType {
+export interface AppendedIconProps extends WithChildrenProp, IconComponentType {
   iconPosition?: 'left' | 'right';
   iconSize?: number;
   iconAndTextGap?: number;
-  center: boolean
-  isInlineIcon?: boolean
+  center: boolean;
+  isInlineIcon?: boolean;
 }
 
 export const appendIconToContent = ({
@@ -18,9 +16,9 @@ export const appendIconToContent = ({
   iconAndTextGap = 8,
   iconPosition,
   iconSize = 12,
-  isInlineIcon = false
+  isInlineIcon = false,
 }: AppendedIconProps) => {
-  if (!Icon) return <>{children}</>
+  if (!Icon) return <>{children}</>;
 
   const iconSpacing = iconPosition === 'left' ? 'mr' : 'ml';
   const iconPositioning = iconPosition === 'left' ? 0 : 1;
@@ -32,20 +30,21 @@ export const appendIconToContent = ({
     order: iconPositioning,
   } as const;
 
-  const content = iconPosition === 'left' ?
-  <>
-    {Icon && <Icon {...iconProps} />}
-    {children}
-  </> :
-  <>
-    {children}
-    {Icon && <Icon {...iconProps} />}
-  </>
+  const content =
+    iconPosition === 'left' ? (
+      <>
+        {Icon && <Icon {...iconProps} />}
+        {children}
+      </>
+    ) : (
+      <>
+        {children}
+        {Icon && <Icon {...iconProps} />}
+      </>
+    );
 
   return isInlineIcon ? (
-    <Box display="inline">
-       {content}
-     </Box>
+    <Box display="inline">{content}</Box>
   ) : (
     <FlexBox center={center} alignItems="center" height="100%">
       {Icon && <Icon {...iconProps} />}
