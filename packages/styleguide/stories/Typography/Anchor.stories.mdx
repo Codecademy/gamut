@@ -1,5 +1,9 @@
 import { Anchor, Box, Column, LayoutGrid, Text } from '@codecademy/gamut/src';
-import { MiniInfoOutlineIcon, MiniStarIcon } from '@codecademy/gamut-icons';
+import {
+  MiniArrowRightIcon,
+  MiniInfoOutlineIcon,
+  MiniStarIcon,
+} from '@codecademy/gamut-icons';
 import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -167,7 +171,8 @@ You can use an <LinkTo id="atoms-icons-about--page">Icon</LinkTo> can be added t
             Anybody can do what I do.
           </Anchor>{' '}
           Just go back and put one little more happy tree in there. Everybody's
-          different.{' '}<Anchor
+          different.{' '}
+          <Anchor
             {...args}
             href="/"
             icon={MiniArrowRightIcon}
