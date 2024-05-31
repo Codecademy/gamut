@@ -1,5 +1,5 @@
 import { Box, FlexBox } from '../Box';
-import { IconComponentType, WithChildrenProp } from '.';
+import { IconComponentType, WithChildrenProp } from '../utils';
 
 export interface AppendedIconProps
   extends WithChildrenProp,

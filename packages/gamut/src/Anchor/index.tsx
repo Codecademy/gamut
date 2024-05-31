@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { ComponentProps, forwardRef, HTMLProps, RefObject } from 'react';
 
 import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
-import { AppendedIconProps, appendIconToContent } from '../utils';
+import { AppendedIconProps, appendIconToContent } from '../helpers';
 
 export interface AnchorProps
   extends StyleProps<typeof anchorProps>,
