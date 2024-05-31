@@ -60,6 +60,6 @@ export interface DisclosureProps
    */
   initiallyExpanded: boolean;
   isListItem?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
   variant?: 'default' | 'block';
 }

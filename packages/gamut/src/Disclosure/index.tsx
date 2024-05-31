@@ -32,7 +32,7 @@ export const Disclosure: React.FC<DisclosureProps> = ({
     <DisclosureWrapper
       column
       variant={variant}
-      onClick={() => onClick()}
+      onClick={() => onClick?.()}
       as={isListItem ? 'li' : undefined}
     >
       <DisclosureButton
