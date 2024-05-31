@@ -21,6 +21,18 @@ export const DisclosureWrapper = styled(FlexBox)(
         bg: 'background',
         border: 'none',
       },
+      defaultWithPanelBg: {
+        bg: 'background',
+        border: 1,
+      },
+      defaultWithPanelBgOnWhite: {
+        bg: 'background-selected',
+        border: 1,
+      },
+      blockWithPanelBgOnWhite: {
+        bg: 'background-selected',
+        border: 'none',
+      },
     },
   })
 );
@@ -46,11 +58,7 @@ export const DisclosureButtonWrapper = styled(Anchor)(
     // Don't actually need the variant here, but it errors out if omitted
     variants: {
       default: {
-        bg: 'background-current',
-      },
-      block: {
-        bg: 'background',
-        border: 'none',
+        bg: 'transparent',
       },
     },
   })
