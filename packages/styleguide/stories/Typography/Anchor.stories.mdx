@@ -1,5 +1,5 @@
-import { Anchor, Box, Column, FlexBox, LayoutGrid, Text } from '@codecademy/gamut/src';
-import { MiniArrowLeftIcon, MiniArrowRightIcon, MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
+import { Anchor, Box, Column, LayoutGrid, Text } from '@codecademy/gamut/src';
+import { MiniInfoOutlineIcon, MiniStarIcon } from '@codecademy/gamut-icons';
 import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -148,25 +148,14 @@ Writing words for a link or button? Above all else, make sure that the words alo
 
 ## Adding an Icon
 You can use an <LinkTo id="atoms-icons-about--page">Icon</LinkTo> can be added to the right or left of the Anchor text.
-* Use the `icon` prop to specify the Icon
-* set `iconPosition` to `"left"` or `"right"` for placement (default is `"left"`)
-* set `center` to `true` to horitzonally center the icon and text
-  * the Icon and text come vertically centered
-
 
 <Canvas>
   <Story name="Anchor with Icon">
     {(args) => {
       return (
-        <>
-        <FlexBox justifyContent="space-between">
-          <Anchor {...args} href="/" icon={MiniArrowLeftIcon} iconPosition="left" variant="inline">Previous</Anchor>
-          <Anchor {...args} href="/" icon={MiniArrowRightIcon} iconPosition="right" variant="inline">Next</Anchor>
-        </FlexBox>
         <Text>
-        <Anchor {...args} href="/" icon={MiniInfoOutlineIcon} iconPosition="left" variant="inline">Centered</Anchor> Testing
+          I started painting as a hobby when I was little. I didn't know I had any talent. I believe talent is just a pursued interest. <Anchor {...args} href="/" icon={MiniStarIcon} iconPosition="left" variant="inline"> Anybody can do what I do.</Anchor> Just go back and put one little more happy tree in there. Everybody's different. Testing
         </Text>
-        </>
       )
     }}
   </Story>
