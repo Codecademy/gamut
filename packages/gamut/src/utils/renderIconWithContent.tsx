@@ -1,11 +1,11 @@
 import { Box, FlexBox } from '../Box';
 import { IconComponentType, WithChildrenProp } from '../utils';
 
-export interface AppendedIconProps extends WithChildrenProp, IconComponentType {
+export interface AppendedIconProps extends WithChildrenProp, Partial<IconComponentType> {
   iconPosition?: 'left' | 'right';
   iconSize?: number;
   iconAndTextGap?: number;
-  center: boolean;
+  center?: boolean;
   isInlineIcon?: boolean;
 }
 
