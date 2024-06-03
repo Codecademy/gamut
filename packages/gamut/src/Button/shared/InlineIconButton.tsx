@@ -1,6 +1,5 @@
 import { forwardRef } from 'react';
 
-import { FlexBox } from '../../Box';
 import { ButtonBaseElements } from '../../ButtonBase/ButtonBase';
 import { appendIconToContent } from '../../helpers';
 import { FillButtonProps } from '../FillButton';
