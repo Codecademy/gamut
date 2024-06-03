@@ -3,6 +3,7 @@ import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { FlexBox } from '../Box';
+import { appendIconToContent } from '../helpers';
 import { IconComponentType, WithChildrenProp } from '../utils';
 import { determineIconSize, determineIconSpacing } from './helpers';
 
@@ -85,23 +86,18 @@ export interface BadgeProps
     BadgeBaseProps {}
 
 export const Badge: React.FC<BadgeProps> = ({
-  icon: Icon,
+  icon,
   children,
   ...rest
 }) => {
-  const iconSize = rest.size === 'sm' ? 'sm' : 'base';
-  const size = determineIconSize(iconSize);
-  const spacing = determineIconSpacing(iconSize);
+  const size = rest.size === 'sm' ? 'sm' : 'base';
+  const iconSize = determineIconSize(size);
+  const spacing = determineIconSpacing(size);
+
+  const content = appendIconToContent({iconSize, iconPosition: 'left', icon, iconAndTextGap: spacing, center: true, children})
   return (
     <BadgeBase {...rest}>
-      {Icon && (
-        <FlexBox pr={spacing}>
-          <Icon height={size} width={size} />
-        </FlexBox>
-      )}
-      <FlexBox height="100%" alignItems="center">
-        {children}
-      </FlexBox>
+      {content}
     </BadgeBase>
   );
 };
