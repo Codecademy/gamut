@@ -7,9 +7,43 @@ import { TableOfContents } from '~styleguide/blocks';
   title={title}
   parameters={{
     subtitle:
-      'SVG Icon components from [Streamline](https://streamlineicons.com/)',
+      'SVG Icon components from [Streamline](https://streamlineicons.com/).',
     status: 'current',
   }}
 />
+
+## Adding An Icon
+
+If you cannot find the Icon you would like in the ones that we have specified here, please follow these steps to add one.
+
+Regular Icon:
+1. With Design's approval pick an Icon ideally from `Streamline Regular`, if you need a filled icon you may pick from `Streamline Bold` but we would prefer the former. If you need something at exists in neither please consult design to create a custom one.
+2. Select the Outline version of the icon as opposed to stroke. You will not be able to get this from the App, and you must find the icon's outline version in our assets. You can check to see if an Icon is stroke by if it has any `stoke-width: 1.5px` rules in it's markup, outline will not have this.
+3. If the SVG doesn’t already have it add the streamline slug (IE: `delete-1`) as the SVG title if it does not already exist and ensure the viewBox is set to `viewBox="0 0 24 24"`. Preserve the source URL, add any relevent comments, and disregard the asset size.
+4. Add the SVG asset to [packages/gamut-icons/src/svg](https://github.com/Codecademy/gamut/tree/main/packages/gamut-icons) with the following naming convention `<ICON_NAME>-icon.svg`.
+5. Run `yarn build-all && yarn start` to see it be added to Storybook. It will by default be added to the `Interface` section alphabetically, however you may change this in the config.
+6. Make a PR describing where you got the Icon, what its use is and a description of its naming choice.
+
+Mini Icon:
+1. Given an Icon SVG from Design that was designated 'mini', add it to [packages/gamut-icons/src/svg/mini](https://github.com/Codecademy/gamut/tree/main/packages/gamut-icons) with the following naming convention `Mini<ICON_NAME>Icon.svg` (e.g. `MiniStarIcon.svg`).
+  a. You can check that it's mini with it's `viewBox="0 0 12 12"` and does NOT have stroke.
+2. Preserve the source URL, add any relevent comments, and disregard the asset size.
+3. Run `yarn build-all && yarn start` to see it be added to Storybook.
+4. Make a PR describing where you got the Icon, what its use is and a description of its naming choice.
+
+(Alernative):
+1. Given an Icon SVG from Design that was designated 'mini', add it to [packages/gamut-icons/src/svg/mini](https://github.com/Codecademy/gamut/tree/main/packages/gamut-icons/mini) with the following naming convention `Mini<ICON_NAME>Icon.svg` (e.g. `MiniStarIcon.svg`).
+  a. You can check that it's mini with it's `viewBox="0 0 12 12"` and does NOT have stroke.
+  b. a Regular Icon should have `viewBox="0 0 24 24"`
+  c. You should be using the Icon from Streamline, NOT Figma.
+2. Preserve the source URL, add any relevent comments, and disregard the asset size.
+3. Add the SVG asset to appropriate folder in `packages/gamut-icons/src/svg/` - either `[regular](https://github.com/Codecademy/gamut/tree/main/packages/gamut-icons)` or `[mini](https://github.com/Codecademy/gamut/tree/main/packages/gamut-icons/mini)`.
+  a. Regular Icons should follow the naming convention: `<ICON_NAME>Icon.svg`. (e.g. `AddIcon.svg`)
+  b. Mini Icons should follow the naming convention: `Mini<ICON_NAME>Icon.svg` (e.g. `MiniStarIcon.svg`).
+4. Run `yarn build-all && yarn start` to see the icon add to Storybook.
+  a. Regular Icons will by default be added to the `Interface` section alphabetically, however you may change this in the config.
+5. Make a PR describing where you got the Icon, what its use is and a description of its naming choice.
+
+
 
 <TableOfContents />
