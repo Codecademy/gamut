@@ -1,4 +1,5 @@
 import { Disclosure } from '@codecademy/gamut';
+import { Background } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -14,6 +15,11 @@ import { ConstrainedText, ListDisclosureExample } from './examples';
     source: 'gamut',
     status: 'current',
     padded: true,
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30186-40432&m=dev',
+    },
   }}
   args={{
     heading: 'Disclosure heading',
@@ -27,20 +33,60 @@ import { ConstrainedText, ListDisclosureExample } from './examples';
 
 Use a Disclosure to progressively reveal information, giving users the option to access additional details as needed. By initially hiding less immediately relevant information, it minimizes cognitive load and boosts content scannability.
 
-Use the List component when presenting a group of disclosures.
+Use the List component when presenting a group of Disclosures.
 
 ## Variants
 
-Disclosure has 2 variants (default, block) and 3 spacing options (normal, condensed, compact)
+Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noBgBordered'`, `'subtleBgBordered'`, and `'subtleBgUnbordered'`) and 3 spacing options (`'normal'`, `'condensed'`, `'compact'`). Check the Figma design to apply the correct styling.
 
 ### Default and Block variants
 
 <Canvas>
   <Story
-    name="default"
+    name="defaultBgBordered"
     args={{
-      heading: 'Default variant',
+      heading: 'defaultBgBordered',
       body: 'Notice the border and it uses `background`',
+    }}
+  >
+    {(args) => <Background bg="background-primary"><Disclosure {...args} /></Background>}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="subtleBgBordered"
+    args={{
+      variant: 'subtleBgBordered',
+      heading: 'subtleBgBordered',
+      body: 'Notice the border and it uses `background-selected`. For this example there is a `<Background>` set to `"background-primary"`.'
+    }}
+  >
+    {(args) => <Background bg="background-primary"><Disclosure {...args} /></Background>}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="noBgBordered"
+    args={{
+      variant: 'noBgBordered',
+      heading: 'noBgBordered',
+      body: 'Notice the border and it uses `background-current` to inherit the existing background color. For this example there is a `<Background>` set to `"primary-inverse"`.'
+    }}
+  >
+    {(args) => <Background bg="primary-inverse"><Disclosure {...args} /></Background>}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="defaultBgUnbordered"
+    args={{
+      variant: 'defaultBgUnbordered',
+      heading: 'Block variant',
+      body:
+        'Notice the LACK of border and it uses `background`',
     }}
   >
     {(args) => <Disclosure {...args} />}
@@ -49,15 +95,15 @@ Disclosure has 2 variants (default, block) and 3 spacing options (normal, conden
 
 <Canvas>
   <Story
-    name="block"
+    name="subtleBgUnbordered"
     args={{
-      heading: 'Block variant',
+      variant: 'subtleBgUnbordered',
+      heading: 'subtleBgUnbordered',
       body:
-        'Notice the LACK of border and it uses `background-current`. Set `variant="block"` to enable this styling.',
-      variant: 'block',
+        'Notice the LACK of border and it uses `background-selected`. For this example there is a `<Background>` set to `"background-primary"`.'
     }}
   >
-    {(args) => <Disclosure {...args} />}
+    {(args) => <Background bg="background-primary"><Disclosure {...args} /></Background>}
   </Story>
 </Canvas>
 

@@ -5,31 +5,32 @@ import { Anchor } from '../Anchor';
 import { FlexBox } from '../Box';
 import { FillButton, StrokeButton, TextButton } from '../Button';
 
+
 export const DisclosureWrapper = styled(FlexBox)(
   variant({
-    defaultVariant: 'default',
+    defaultVariant: 'defaultBgBordered',
     base: {
       width: '100%',
+      maxHeight: 'fit-content',
     },
     variants: {
-      default: {
-        bg: 'background-current',
+      defaultBgBordered: {
+        bg: 'background',
         border: 1,
-        maxHeight: 'fit-content',
       },
-      block: {
+      defaultBgUnbordered: {
         bg: 'background',
         border: 'none',
       },
-      defaultWithPanelBg: {
-        bg: 'background',
+      noBgBordered: {
+        bg: 'background-current',
         border: 1,
       },
-      defaultWithPanelBgOnWhite: {
+      subtleBgBordered: {
         bg: 'background-selected',
         border: 1,
       },
-      blockWithPanelBgOnWhite: {
+      subtleBgUnbordered: {
         bg: 'background-selected',
         border: 'none',
       },
@@ -58,7 +59,7 @@ export const DisclosureButtonWrapper = styled(Anchor)(
     // Don't actually need the variant here, but it errors out if omitted
     variants: {
       default: {
-        bg: 'transparent',
+        bg: 'inherit',
       },
     },
   })

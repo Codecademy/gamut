@@ -61,5 +61,6 @@ export interface DisclosureProps
   initiallyExpanded: boolean;
   isListItem?: boolean;
   onClick?: () => void;
-  variant?: 'default' | 'block' | 'defaultWithPanelBg' | 'defaultWithPanelBgOnWhite' | 'blockWithPanelBgOnWhite';
+  variant?: 'defaultBgBordered' | 'defaultBgUnbordered' | 'noBgBordered' |'subtleBgBordered' |
+  'subtleBgUnbordered';
 }
