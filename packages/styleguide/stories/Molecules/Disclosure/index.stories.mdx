@@ -49,7 +49,11 @@ Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noB
       body: 'Notice the border and it uses `background`',
     }}
   >
-    {(args) => <Background bg="background-primary"><Disclosure {...args} /></Background>}
+    {(args) => (
+      <Background bg="background-primary">
+        <Disclosure {...args} />
+      </Background>
+    )}
   </Story>
 </Canvas>
 
@@ -59,10 +63,15 @@ Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noB
     args={{
       variant: 'subtleBgBordered',
       heading: 'subtleBgBordered',
-      body: 'Notice the border and it uses `background-selected`. For this example there is a `<Background>` set to `"background-primary"`.'
+      body:
+        'Notice the border and it uses `background-selected`. For this example there is a `<Background>` set to `"background-primary"`.',
     }}
   >
-    {(args) => <Background bg="background-primary"><Disclosure {...args} /></Background>}
+    {(args) => (
+      <Background bg="background-primary">
+        <Disclosure {...args} />
+      </Background>
+    )}
   </Story>
 </Canvas>
 
@@ -72,10 +81,15 @@ Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noB
     args={{
       variant: 'noBgBordered',
       heading: 'noBgBordered',
-      body: 'Notice the border and it uses `background-current` to inherit the existing background color. For this example there is a `<Background>` set to `"primary-inverse"`.'
+      body:
+        'Notice the border and it uses `background-current` to inherit the existing background color. For this example there is a `<Background>` set to `"primary-inverse"`.',
     }}
   >
-    {(args) => <Background bg="primary-inverse"><Disclosure {...args} /></Background>}
+    {(args) => (
+      <Background bg="primary-inverse">
+        <Disclosure {...args} />
+      </Background>
+    )}
   </Story>
 </Canvas>
 
@@ -85,8 +99,7 @@ Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noB
     args={{
       variant: 'defaultBgUnbordered',
       heading: 'Block variant',
-      body:
-        'Notice the LACK of border and it uses `background`',
+      body: 'Notice the LACK of border and it uses `background`',
     }}
   >
     {(args) => <Disclosure {...args} />}
@@ -100,10 +113,14 @@ Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noB
       variant: 'subtleBgUnbordered',
       heading: 'subtleBgUnbordered',
       body:
-        'Notice the LACK of border and it uses `background-selected`. For this example there is a `<Background>` set to `"background-primary"`.'
+        'Notice the LACK of border and it uses `background-selected`. For this example there is a `<Background>` set to `"background-primary"`.',
     }}
   >
-    {(args) => <Background bg="background-primary"><Disclosure {...args} /></Background>}
+    {(args) => (
+      <Background bg="background-primary">
+        <Disclosure {...args} />
+      </Background>
+    )}
   </Story>
 </Canvas>
 

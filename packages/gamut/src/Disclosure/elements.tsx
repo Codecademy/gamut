@@ -5,7 +5,6 @@ import { Anchor } from '../Anchor';
 import { FlexBox } from '../Box';
 import { FillButton, StrokeButton, TextButton } from '../Button';
 
-
 export const DisclosureWrapper = styled(FlexBox)(
   variant({
     defaultVariant: 'defaultBgBordered',
