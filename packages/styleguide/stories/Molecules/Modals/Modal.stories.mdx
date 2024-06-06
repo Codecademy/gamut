@@ -88,7 +88,6 @@ All of these methods default to true for accessibility reasons, and rely on sett
   mt={32}
   gap={24}
   gridTemplateColumns="1fr 1fr"
-  gridTemplateRows="repeat(2, 280px)"
   gridAutoFlow="row dense"
 >
 
@@ -115,12 +114,13 @@ All of these methods default to true for accessibility reasons, and rely on sett
 </Story>
 
 </Box>
+
 <Box>
 
 ### Large
 
 <Story
-  name="large"
+  name="Large"
   args={{
     size: 'large',
   }}
@@ -138,7 +138,16 @@ All of these methods default to true for accessibility reasons, and rely on sett
 </Story>
 
 </Box>
-<Box >
+
+</GridBox>
+
+<GridBox
+  gap={24}
+  gridTemplateColumns="540px 400px "
+  gridAutoFlow="row dense"
+>
+
+<Box>
 
 ### Medium
 
@@ -154,14 +163,14 @@ All of these methods default to true for accessibility reasons, and rely on sett
       <>
         <FlexBox gridArea="title" bg="beige" height="2rem" />
         <FlexBox gridArea="close" bg="beige" height="2rem" />
-        <FlexBox height="auto" bg="beige" gridArea="content" />
+        <FlexBox height="auto" bg="beige" gridArea="content"  />
       </>
     </ModalContainer>
   )}
 </Story>
 
 </Box>
-<Box >
+<Box>
 
 ### Small
 
