@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useMemo } from 'react';
 import * as React from 'react';
 import {
   DeepPartial,
@@ -9,8 +9,9 @@ import {
 
 import { ButtonProps } from '../Button';
 import { ConnectedForm, FormContextProps } from '../ConnectedForm';
+import { FormRequiredText } from '../Form';
 import { FormValues } from '../Form/types';
-import { LayoutGrid, LayoutGridProps } from '../Layout';
+import { Column, LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
 import {
   GridFormContent,
@@ -21,6 +22,7 @@ import {
 import {
   GridFormField,
   GridFormFieldsProps,
+  GridFormRequiredTextProps,
   GridFormSectionProps,
 } from './types';
 import { assignDefaultValue } from './utils';
@@ -35,65 +37,73 @@ const defaultColumnGap = {
 const isGridFormSection = (
   field: GridFormField | GridFormSectionProps
 ): field is GridFormSectionProps => {
-  return (field as GridFormSectionProps).title !== undefined;
+  return (field as GridFormSectionProps)?.title !== undefined;
 };
 
-export type GridFormProps<Values extends {}> = FormContextProps & {
-  children?: React.ReactNode;
-  className?: string;
+export type GridFormProps<Values extends {}> = FormContextProps &
+  GridFormRequiredTextProps & {
+    children?: React.ReactNode;
+    className?: string;
 
-  /**
-   * Layout grid column gap override.
-   */
-  columnGap?: LayoutGridProps['columnGap'];
+    /**
+     * Layout grid column gap override.
+     */
+    columnGap?: LayoutGridProps['columnGap'];
 
-  /**
-   * Descriptions of any fields or sections comprising the form.
-   */
-  fields?: GridFormFieldsProps[];
+    /**
+     * Descriptions of any fields or sections comprising the form.
+     */
+    fields?: GridFormFieldsProps[];
 
-  /**
-   * Renders a cancel button with the provided child text and onClick function.
-   */
-  cancel?: ButtonProps;
+    /**
+     * Renders a cancel button with the provided child text and onClick function.
+     */
+    cancel?: ButtonProps;
 
-  /**
-   * Function called with field values on submit, if all validations have passed.
-   */
-  onSubmit: SubmitHandler<Values>;
+    /**
+     * If your form has a single visible field. You should only have to set this if you have a single field in addition to hidden custom rendered inputs, otherwise it should happen automatically.
+     */
+    hasSoloField?: boolean;
 
-  /**
-   * Show asterisks next to required fields.
-   */
-  showRequired?: boolean;
+    /**
+     * Function called with field values on submit, if all validations have passed.
+     */
+    onSubmit: SubmitHandler<Values>;
 
-  /**
-   * Layout grid row gap override between fields.
-   */
-  rowGap?: LayoutGridProps['rowGap'];
+    /**
+     * Whether to hide 'required' explanation at the start of forms - should be disabled only for forms without a required field.
+     */
+    hideRequiredText?: boolean;
 
-  /**
-   * Description of the submit button at the end of the form.
-   */
-  submit: GridFormSubmitProps;
+    /**
+     * Layout grid row gap override between fields.
+     */
+    rowGap?: LayoutGridProps['rowGap'];
 
-  /**
-   * Which react hook form mode we are going to use for validation.
-   * If you use the onChange mode the submit button will be disabled until all
-   * required fields are completed.
-   */
-  validation?: Exclude<Mode, 'onBlur'>;
-};
+    /**
+     * Description of the submit button at the end of the form.
+     */
+    submit: GridFormSubmitProps;
+
+    /**
+     * Which react hook form mode we are going to use for validation.
+     * If you use the onChange mode the submit button will be disabled until all
+     * required fields are completed.
+     */
+    validation?: Exclude<Mode, 'onBlur'>;
+  };
 
 export function GridForm<Values extends FormValues<Values>>({
   cancel,
   children,
   columnGap = defaultColumnGap,
   fields = [],
+  hasSoloField = false,
+  hideRequiredText = false,
+  requiredTextProps,
   rowGap = 16,
   submit,
   validation = 'onSubmit',
-  showRequired = false,
   ...rest
 }: GridFormProps<Values>) {
   const flatFields = fields.flatMap((field) =>
@@ -114,16 +124,34 @@ export function GridForm<Values extends FormValues<Values>>({
     {} as Defaults
   );
 
+  const hiddenInputCount = useMemo(
+    () =>
+      flatFields.filter(
+        (field) => field.type === 'hidden' || field.type === 'sweet-container'
+      ),
+    [flatFields]
+  );
+  const hasComputedSoloField =
+    flatFields.length - hiddenInputCount.length === 1 || hasSoloField === true;
+
+  const showRequiredText = hideRequiredText ? false : !hasComputedSoloField;
+
   return (
     <ConnectedForm<Values>
       validation={validation}
       defaultValues={defaultValues}
       display="flex"
       flexDirection="column"
+      isSoloField={hasComputedSoloField}
       {...rest}
     >
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         <>
+          {showRequiredText && !isGridFormSection(fields[0]) && (
+            <Column size={12}>
+              <FormRequiredText {...requiredTextProps} />
+            </Column>
+          )}
           {fields.map((field, index) => {
             const numSections = fields.length;
             if (isGridFormSection(field)) {
@@ -136,23 +164,20 @@ export function GridForm<Values extends FormValues<Values>>({
                     layout={layout}
                     numberOfFields={fields.length}
                     variant={variant}
+                    showRequired={index === 0 && showRequiredText}
+                    requiredTextProps={
+                      index === 0 && showRequiredText
+                        ? requiredTextProps
+                        : undefined
+                    }
                   />
-                  <GridFormSection
-                    fields={fields}
-                    showRequired={showRequired}
-                  />
+                  <GridFormSection fields={fields} />
                   {/* don't show break on last section */}
                   {index + 1 === numSections ? null : <GridFormSectionBreak />}
                 </Fragment>
               );
             }
-            return (
-              <GridFormContent
-                field={field}
-                showRequired={showRequired}
-                key={field.name}
-              />
-            );
+            return <GridFormContent field={field} key={field.name} />;
           })}
         </>
         <GridFormButtons cancel={cancel} {...submit} />

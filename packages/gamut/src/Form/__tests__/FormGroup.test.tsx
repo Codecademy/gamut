@@ -1,34 +1,62 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 
-import { FormGroup } from '../FormGroup';
-import { Input } from '../Input';
+import { FormGroup } from '../elements/FormGroup';
+import { Input } from '../inputs/Input';
 
 const renderView = setupRtl(FormGroup, {
   children: <Input id="up-dog" />,
 });
 
+const label = 'up dog';
+const htmlFor = 'up-dog';
+const optional = '(optional)';
+const optionalLabelText = `${label} (optional)`;
+
 describe('FormGroup', () => {
-  it('renders Label as a label when htmlFor is provided', () => {
-    const { view } = renderView({ label: 'up dog', htmlFor: 'up-dog' });
+  describe('when htmlFor is provided', () => {
+    it('renders Label as a label', () => {
+      const { view } = renderView({ label, htmlFor });
 
-    view.getByLabelText('up dog');
+      view.getByLabelText(optionalLabelText);
+    });
+    it('render (optional) as aria-hidden', async () => {
+      const { view } = renderView({ label, htmlFor });
+      expect(view.getByText(optional)).toHaveAttribute('aria-hidden', 'true');
+    });
   });
+  describe('when htmlFor is not provided', () => {
+    it('renders Label as a div', () => {
+      const { view } = renderView({ label });
 
-  it('renders Label as a div when no htmlFor is provided', () => {
-    const { view } = renderView({ label: 'up dog' });
-
-    expect(view.queryByLabelText('up dog')).toBeNull();
-    view.getByText('up dog');
-  });
-
-  it('adds an asterisk to showRequired labels', () => {
-    const { view } = renderView({
-      label: 'up dog',
-      htmlFor: 'up-dog',
-      showRequired: true,
+      expect(view.queryByLabelText(optionalLabelText)).toBeNull();
+      view.getByText(label);
     });
 
-    view.getByLabelText('up dog *');
+    it('render (optional) as aria-hidden', () => {
+      const { view } = renderView({ label });
+      expect(view.getByText(optional)).toHaveAttribute('aria-hidden', 'true');
+    });
+  });
+
+  it('adds an asterisk to required labels', () => {
+    const { view } = renderView({
+      label,
+      htmlFor,
+      required: true,
+    });
+
+    view.getByLabelText('up dog*');
+  });
+
+  it('does not add an asterisk to solo field labels', () => {
+    const { view } = renderView({
+      label,
+      htmlFor,
+      required: true,
+      isSoloField: true,
+    });
+
+    view.getByLabelText('up dog');
   });
 
   it('renders description', () => {

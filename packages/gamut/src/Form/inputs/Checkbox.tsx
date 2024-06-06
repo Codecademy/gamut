@@ -17,7 +17,8 @@ import {
   checkboxPadding,
   checkboxTextStates,
   polyline,
-} from './styles';
+} from '../styles';
+import { BaseInputProps } from '../types';
 
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;
@@ -26,7 +27,8 @@ export type CheckboxProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
   'value'
 > &
-  CheckboxPaddingProps & {
+  CheckboxPaddingProps &
+  Pick<BaseInputProps, 'name' | 'required'> & {
     /**
      * If the label is a ReactNode, an aria-label must be added.
      */
@@ -38,8 +40,6 @@ export type CheckboxProps = Omit<
      * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
      */
     htmlFor: string;
-    name?: string;
-    required?: boolean;
     /**
      * @remarks
      * The `value` prop here gets passed to the underlying `input` component

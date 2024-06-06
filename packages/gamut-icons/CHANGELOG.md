@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.26.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.25.0...@codecademy/gamut-icons@9.26.0) (2024-06-05)
+
+### Features
+
+- **Icons:** Add DiscordOutlineIcon ([54b936a](https://github.com/Codecademy/gamut/commit/54b936a815f5c57442b49b312ae4acb20f406d5a))
+
+## [9.25.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.24.3...@codecademy/gamut-icons@9.25.0) (2024-05-30)
+
+### Features
+
+- **UnlockHeavyIcon:** add UnlockHeavyIcon to regular icons ([edce3bd](https://github.com/Codecademy/gamut/commit/edce3bd9b2c07344272f81934dac376e44993020))
+
+### [9.24.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.24.2...@codecademy/gamut-icons@9.24.3) (2024-05-29)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
 ### [9.24.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.24.1...@codecademy/gamut-icons@9.24.2) (2024-05-01)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
