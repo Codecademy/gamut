@@ -1,4 +1,11 @@
-import { Disclosure, List, Text } from '@codecademy/gamut';
+import {
+  Disclosure,
+  FlexBox,
+  List,
+  Text,
+  WithChildrenProp,
+} from '@codecademy/gamut';
+import { Background, BackgroundProps } from '@codecademy/gamut-styles';
 
 export const ListDisclosureExample = () => {
   return (
@@ -46,3 +53,14 @@ export const ConstrainedText = (
     sapiente recusandae iusto.
   </Text>
 );
+
+export const BackgroundWithPadding = ({
+  bg,
+  children,
+}: Pick<BackgroundProps, 'bg'> & WithChildrenProp) => {
+  return (
+    <Background bg={bg}>
+      <FlexBox p={16}>{children}</FlexBox>
+    </Background>
+  );
+};

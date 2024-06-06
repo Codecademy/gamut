@@ -1,10 +1,13 @@
 import { Disclosure } from '@codecademy/gamut';
-import { Background } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { ConstrainedText, ListDisclosureExample } from './examples';
+import {
+  BackgroundWithPadding,
+  ConstrainedText,
+  ListDisclosureExample,
+} from './examples';
 
 <Meta
   title={title}
@@ -50,9 +53,9 @@ Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noB
     }}
   >
     {(args) => (
-      <Background bg="background-primary">
+      <BackgroundWithPadding bg="background-primary">
         <Disclosure {...args} />
-      </Background>
+      </BackgroundWithPadding>
     )}
   </Story>
 </Canvas>
@@ -68,9 +71,9 @@ Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noB
     }}
   >
     {(args) => (
-      <Background bg="background-primary">
+      <BackgroundWithPadding bg="background-primary">
         <Disclosure {...args} />
-      </Background>
+      </BackgroundWithPadding>
     )}
   </Story>
 </Canvas>
@@ -80,15 +83,15 @@ Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noB
     name="noBgBordered"
     args={{
       variant: 'noBgBordered',
-      heading: 'noBgBordered',
+      heading: 'noBgBordered (Transparent background)',
       body:
-        'Notice the border and it uses `background-current` to inherit the existing background color. For this example there is a `<Background>` set to `"primary-inverse"`.',
+        'Notice the border and it uses `background-current` to inherit the existing background color.',
     }}
   >
     {(args) => (
-      <Background bg="primary-inverse">
+      <BackgroundWithPadding bg="background-primary">
         <Disclosure {...args} />
-      </Background>
+      </BackgroundWithPadding>
     )}
   </Story>
 </Canvas>
@@ -102,7 +105,11 @@ Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noB
       body: 'Notice the LACK of border and it uses `background`',
     }}
   >
-    {(args) => <Disclosure {...args} />}
+    {(args) => (
+      <BackgroundWithPadding bg="background-primary">
+        <Disclosure {...args} />
+      </BackgroundWithPadding>
+    )}
   </Story>
 </Canvas>
 
@@ -117,9 +124,9 @@ Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noB
     }}
   >
     {(args) => (
-      <Background bg="background-primary">
+      <BackgroundWithPadding bg="background-primary">
         <Disclosure {...args} />
-      </Background>
+      </BackgroundWithPadding>
     )}
   </Story>
 </Canvas>
