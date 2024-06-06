@@ -117,6 +117,29 @@ All of these methods default to true for accessibility reasons, and rely on sett
 </Box>
 <Box>
 
+### Large
+
+<Story
+  name="large"
+  args={{
+    size: 'large',
+  }}
+  height="350px"
+>
+  {(args) => (
+    <ModalContainer {...args}>
+      <>
+        <FlexBox gridArea="title" bg="beige" height="2rem" />
+        <FlexBox gridArea="close" bg="beige" height="2rem" />
+        <FlexBox height="auto" bg="beige" gridArea="content" />
+      </>
+    </ModalContainer>
+  )}
+</Story>
+
+</Box>
+<Box >
+
 ### Medium
 
 <Story
