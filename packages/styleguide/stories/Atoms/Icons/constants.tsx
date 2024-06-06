@@ -19,8 +19,6 @@ export const VENDOR_ICONS = pick(
     'GithubOutlineIcon',
     'GplusIcon',
     'InstagramIcon',
-    'JavaIcon',
-    'JavascriptIcon',
     'JiraIcon',
     'LinkedinIcon',
     'LinkedinOutlineIcon',
@@ -28,11 +26,9 @@ export const VENDOR_ICONS = pick(
     'MediumIcon',
     'OpenAiFullIcon',
     'OpenAiIcon',
-    'PythonIcon',
     'RailsIcon',
     'ReactIcon',
     'RedditIcon',
-    'RubyIcon',
     'SlackIcon',
     'TikTokIcon',
     'TwitterIcon',
@@ -81,4 +77,45 @@ export const LE_ICONS = pick(
   ].sort()
 );
 
-export const UI_ICONS = omit(ICONS, keys({ ...LE_ICONS, ...VENDOR_ICONS }));
+export const SKILLS_ICONS = pick(
+  ICONS,
+  [
+    'ArtificialIntelligenceIcon',
+    'BashShellIcon',
+    'CIcon',
+    'CPlusIcon',
+    'CSharpIcon',
+    'CloudComputingIcon',
+    'ComputerScienceIcon',
+    'CybersecurityIcon',
+    'DataAnalyticsIcon',
+    'DataEngineeringIcon',
+    'DataScienceIcon',
+    'DataVisualizationIcon',
+    'DevOpsIcon',
+    'FallbackSkillIcon',
+    'GameDevelopmentIcon',
+    'GoIcon',
+    'HTMLCSSIcon',
+    'ITIcon',
+    'JavaIcon',
+    'JavascriptIcon',
+    'KotlinIcon',
+    'MachineLearningIcon',
+    'MathIcon',
+    'MobileDevelopmentIcon',
+    'PHPIcon',
+    'PythonIcon',
+    'RIcon',
+    'RubyIcon',
+    'SQLIcon',
+    'SwiftIcon',
+    'WebDesignIcon',
+    'WebDevelopmentIcon',
+  ].sort()
+);
+
+export const UI_ICONS = omit(
+  ICONS,
+  keys({ ...LE_ICONS, ...VENDOR_ICONS, ...SKILLS_ICONS })
+);
