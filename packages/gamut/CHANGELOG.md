@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.22.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.21.2...@codecademy/gamut@55.22.0) (2024-06-07)
+
+### Features
+
+- **Modal:** add large size option to Modal ([a5f97f9](https://github.com/Codecademy/gamut/commit/a5f97f94a90c576348698dd8154ff164d5c20508))
+
 ### [55.21.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.21.1...@codecademy/gamut@55.21.2) (2024-06-05)
 
 **Note:** Version bump only for package @codecademy/gamut
