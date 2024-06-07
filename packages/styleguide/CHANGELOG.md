@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.23.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.22.0...@codecademy/styleguide@66.23.0) (2024-06-07)
+
+### Features
+
+- **Modal:** add large size option to Modal ([a5f97f9](https://github.com/Codecademy/gamut/commit/a5f97f94a90c576348698dd8154ff164d5c20508))
+
 ## [66.22.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.21.1...@codecademy/styleguide@66.22.0) (2024-06-05)
 
 ### Features
