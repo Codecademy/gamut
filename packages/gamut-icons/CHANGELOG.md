@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.27.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.26.0...@codecademy/gamut-icons@9.27.0) (2024-06-10)
+
+### Features
+
+- add new Skills icons ([#2884](https://github.com/Codecademy/gamut/issues/2884)) ([afe8fe8](https://github.com/Codecademy/gamut/commit/afe8fe83ef084768b6f35654e2ced9db8247465c))
+
 ## [9.26.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.25.0...@codecademy/gamut-icons@9.26.0) (2024-06-05)
 
 ### Features

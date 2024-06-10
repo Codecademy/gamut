@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.24.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.23.0...@codecademy/styleguide@66.24.0) (2024-06-10)
+
+### Features
+
+- add new Skills icons ([#2884](https://github.com/Codecademy/gamut/issues/2884)) ([afe8fe8](https://github.com/Codecademy/gamut/commit/afe8fe83ef084768b6f35654e2ced9db8247465c))
+
 ## [66.23.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.22.0...@codecademy/styleguide@66.23.0) (2024-06-07)
 
 ### Features
