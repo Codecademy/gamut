@@ -27,7 +27,7 @@ export const DisclosureWrapper = styled(FlexBox)(
   states({
     hasBorder: {
       border: 1,
-    }
+    },
   })
 );
 

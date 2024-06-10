@@ -62,8 +62,5 @@ export interface DisclosureProps
   isListItem?: boolean;
   onClick?: () => void;
   hasBorder?: boolean;
-  variant?:
-    | 'default'
-    | 'transparent'
-    | 'subtle';
+  variant?: 'default' | 'transparent' | 'subtle';
 }
