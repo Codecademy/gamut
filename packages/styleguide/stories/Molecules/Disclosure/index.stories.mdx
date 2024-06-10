@@ -36,24 +36,24 @@ import {
 
 Use a Disclosure to progressively reveal information, giving users the option to access additional details as needed. By initially hiding less immediately relevant information, it minimizes cognitive load and boosts content scannability.
 
-Use the List component when presenting a group of Disclosures.
+If you need to use multiple Disclosures, use the List component with `<ExpandableRowClick>` for the time being.
 
 ## Variants
 
-Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noBgBordered'`, `'subtleBgBordered'`, and `'subtleBgUnbordered'`) and 3 spacing options (`'normal'`, `'condensed'`, `'compact'`). Check the Figma design to apply the correct styling.
+Disclosure has 3 variants for background color (`'default'`, `'subtle', 'transparent'`), a state of `hasBorder` to render a 1px solid black border, and 3 spacing options (`'normal'`, `'condensed'`, `'compact'`). Check the Figma design to apply the correct styling.
 
 ### Background and Border variants
 
 <Canvas>
   <Story
-    name="defaultBgBordered"
+    name="default"
     args={{
-      heading: 'defaultBgBordered',
-      body: 'Notice the border and it uses `background`',
+      heading: 'default',
+      body: 'Uses `background`',
     }}
   >
     {(args) => (
-      <BackgroundWithPadding bg="background-primary">
+      <BackgroundWithPadding bg="background-primary" hasBorder>
         <Disclosure {...args} />
       </BackgroundWithPadding>
     )}
@@ -64,10 +64,10 @@ Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noB
   <Story
     name="subtleBgBordered"
     args={{
-      variant: 'subtleBgBordered',
-      heading: 'subtleBgBordered',
+      variant: 'subtle',
+      heading: 'subtle',
       body:
-        'Notice the border and it uses `background-selected`. For this example there is a `<Background>` set to `"background-primary"`.',
+        'Uses `background-selected`. For this example there is a `<Background>` set to `"background-primary"`.',
     }}
   >
     {(args) => (
@@ -80,10 +80,10 @@ Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noB
 
 <Canvas>
   <Story
-    name="noBgBordered"
+    name="transparent"
     args={{
-      variant: 'noBgBordered',
-      heading: 'noBgBordered (Transparent background)',
+      variant: 'transparent',
+      heading: 'transparent',
       body:
         'Notice the border and it uses `background-current` to inherit the existing background color.',
     }}
@@ -98,38 +98,21 @@ Disclosure has 5 variants (`'defaultBgBordered'`, `'defaultBgUnbordered'`, `'noB
 
 <Canvas>
   <Story
-    name="defaultBgUnbordered"
+    name="hasBorder"
     args={{
-      variant: 'defaultBgUnbordered',
-      heading: 'defaultBgUnbordered',
-      body: 'Notice the LACK of border and it uses `background`',
+      heading: 'hasBorder (set to false)',
+      body: 'This is a `default` variant without a border',
+      hasBorder: false,
     }}
   >
     {(args) => (
-      <BackgroundWithPadding bg="background-primary">
+      <BackgroundWithPadding bg="background-primary" hasBorder>
         <Disclosure {...args} />
       </BackgroundWithPadding>
     )}
   </Story>
 </Canvas>
 
-<Canvas>
-  <Story
-    name="subtleBgUnbordered"
-    args={{
-      variant: 'subtleBgUnbordered',
-      heading: 'subtleBgUnbordered',
-      body:
-        'Notice the LACK of border and it uses `background-selected`. For this example there is a `<Background>` set to `"background-primary"`.',
-    }}
-  >
-    {(args) => (
-      <BackgroundWithPadding bg="background-primary">
-        <Disclosure {...args} />
-      </BackgroundWithPadding>
-    )}
-  </Story>
-</Canvas>
 
 ### Spacing Options
 

@@ -7,33 +7,27 @@ import { FillButton, StrokeButton, TextButton } from '../Button';
 
 export const DisclosureWrapper = styled(FlexBox)(
   variant({
-    defaultVariant: 'defaultBgBordered',
+    defaultVariant: 'default',
     base: {
       width: '100%',
       maxHeight: 'fit-content',
     },
     variants: {
-      defaultBgBordered: {
+      default: {
         bg: 'background',
-        border: 1,
       },
-      defaultBgUnbordered: {
-        bg: 'background',
-        border: 'none',
+      subtle: {
+        bg: 'background-selected',
       },
-      noBgBordered: {
+      transparent: {
         bg: 'background-current',
-        border: 1,
-      },
-      subtleBgBordered: {
-        bg: 'background-selected',
-        border: 1,
-      },
-      subtleBgUnbordered: {
-        bg: 'background-selected',
-        border: 'none',
       },
     },
+  }),
+  states({
+    hasBorder: {
+      border: 1,
+    }
   })
 );
 

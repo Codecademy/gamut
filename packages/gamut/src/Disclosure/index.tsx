@@ -22,6 +22,7 @@ export const Disclosure: React.FC<DisclosureProps> = ({
   isListItem = false,
   onClick,
   overline,
+  hasBorder = true,
   hasPanelBg,
   spacing = 'normal',
   subheading,
@@ -32,6 +33,7 @@ export const Disclosure: React.FC<DisclosureProps> = ({
     <DisclosureWrapper
       column
       variant={variant}
+      hasBorder={hasBorder}
       onClick={() => onClick?.()}
       as={isListItem ? 'li' : undefined}
     >

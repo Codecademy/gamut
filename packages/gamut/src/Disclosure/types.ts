@@ -58,13 +58,12 @@ export interface DisclosureProps
    * Determines whether or not the Disclosure is expanded upon load.
    * Default value is `false`.
    */
-  initiallyExpanded: boolean;
+  initiallyExpanded?: boolean;
   isListItem?: boolean;
   onClick?: () => void;
+  hasBorder?: boolean;
   variant?:
-    | 'defaultBgBordered'
-    | 'defaultBgUnbordered'
-    | 'noBgBordered'
-    | 'subtleBgBordered'
-    | 'subtleBgUnbordered';
+    | 'default'
+    | 'transparent'
+    | 'subtle';
 }
