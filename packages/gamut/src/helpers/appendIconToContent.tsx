@@ -7,12 +7,10 @@ export interface AppendedIconProps
   iconPosition?: 'left' | 'right';
   iconSize?: number;
   iconAndTextGap?: number;
-  center?: boolean;
   isInlineIcon?: boolean;
 }
 
 export const appendIconToContent = ({
-  center = false,
   children,
   icon: Icon,
   iconAndTextGap = 8,
@@ -35,7 +33,7 @@ export const appendIconToContent = ({
   const content =
     iconPosition === 'left' ? (
       <>
-        {Icon && <Icon {...iconProps} />}
+        <Box display="inline" >{Icon && <Icon {...iconProps} verticalAlign="middle" />}</Box>
         {children}
       </>
     ) : (
@@ -46,9 +44,9 @@ export const appendIconToContent = ({
     );
 
   return isInlineIcon ? (
-    <Box display="inline">{content}</Box>
+    <Box display="inline" >{content}</Box>
   ) : (
-    <FlexBox center={center} alignItems="center" height="100%">
+    <FlexBox center alignItems="center" height="100%">
       {Icon && <Icon {...iconProps} />}
       {children}
     </FlexBox>

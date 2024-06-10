@@ -121,7 +121,6 @@ export const Anchor = forwardRef<
       iconSize = 12,
       iconPosition = 'left',
       children,
-      center,
       isInlineIcon = true,
       ...rest
     },
@@ -132,7 +131,6 @@ export const Anchor = forwardRef<
       iconSize,
       icon,
       children,
-      center,
       isInlineIcon,
     });
     if (!rest.href) {
