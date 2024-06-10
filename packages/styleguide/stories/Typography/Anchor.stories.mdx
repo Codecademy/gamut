@@ -1,8 +1,10 @@
 import { Anchor, Box, Column, LayoutGrid, Text } from '@codecademy/gamut/src';
 import {
+  MiniArrowLeftIcon,
   MiniArrowRightIcon,
   MiniInfoOutlineIcon,
   MiniStarIcon,
+  MiniThumbsUpIcon,
 } from '@codecademy/gamut-icons';
 import { Background } from '@codecademy/gamut-styles/src';
 import title from '@codecademy/macros/lib/title.macro';
@@ -164,7 +166,7 @@ You can add an <LinkTo id="atoms-icons-about--page">Icon</LinkTo> to the left or
           <Anchor
             {...args}
             href="/"
-            icon={MiniStarIcon}
+            icon={MiniInfoOutlineIcon}
             iconPosition="left"
             variant="inline"
           >
@@ -194,7 +196,12 @@ Edit attributes and see what’s possible to do with this component or get the e
 <Canvas>
   <Story name="Anchor">
     {(args) => {
-      return <Anchor {...args}>I am a cool link</Anchor>;
+      return (
+        <>
+          <Anchor {...args} icon={MiniStarIcon}>I am a cool link</Anchor>{" "}
+          <Anchor {...args} variant="standard" icon={MiniArrowLeftIcon}>I am a cool link</Anchor> {" "}
+          <Anchor {...args} variant="interface" iconPosition="right" icon={MiniThumbsUpIcon}>I am a cool link</Anchor>
+        </>)
     }}
   </Story>
 </Canvas>

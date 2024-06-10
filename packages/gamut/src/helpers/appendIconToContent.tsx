@@ -30,10 +30,14 @@ export const appendIconToContent = ({
     order: iconPositioning,
   } as const;
 
+  // const InlineCenteredIcon = <Box display="inline-block" >{Icon && <Icon {...iconProps} verticalAlign="middle" />}</Box>
+  // const InlineCenteredIcon = <Box display="inline-block" my="auto">{Icon && <Icon {...iconProps}/>}</Box>
+  const InlineCenteredIcon = <>{Icon && <Icon {...iconProps}/>}</>
+
   const content =
     iconPosition === 'left' ? (
       <>
-        <Box display="inline" >{Icon && <Icon {...iconProps} verticalAlign="middle" />}</Box>
+        {InlineCenteredIcon}
         {children}
       </>
     ) : (
