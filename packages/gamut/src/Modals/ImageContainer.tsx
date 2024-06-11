@@ -14,6 +14,7 @@ interface ImageProps extends Pick<ModalView, 'image'> {
 const imageHeights = {
   small: 225,
   medium: 303.75,
+  large: 382.5,
   fluid: 'max-content',
 };
 
