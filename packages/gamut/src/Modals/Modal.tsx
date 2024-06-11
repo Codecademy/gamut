@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import { Box } from '../Box';
 import { ButtonProps, FillButton, IconButton, TextButton } from '../Button';
+import { FocusTrap } from '../FocusTrap';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer } from './elements';
@@ -85,12 +86,14 @@ export const Modal: React.FC<ModalProps> = ({
   const image = (views?.[currentView].image || rest?.image) ?? null;
 
   return (
+
     <Overlay
       shroud
       onRequestClose={onRequestClose}
       data-testid="modal"
       {...rest}
     >
+      <FocusTrap active allowPageInteraction>
       <ModalContainer
         className={className}
         aria-label={ariaLabel}
@@ -167,6 +170,7 @@ export const Modal: React.FC<ModalProps> = ({
           />
         )}
       </ModalContainer>
+      </FocusTrap>
     </Overlay>
   );
 };
