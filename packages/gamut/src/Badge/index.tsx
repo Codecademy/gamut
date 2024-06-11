@@ -90,12 +90,11 @@ export const Badge: React.FC<BadgeProps> = ({ icon, children, ...rest }) => {
   const spacing = determineIconSpacing(size);
 
   const content = appendIconToContent({
-    iconSize,
-    iconPosition: 'left',
+    children,
     icon,
     iconAndTextGap: spacing,
-    center: true,
-    children,
+    iconPosition: 'left',
+    iconSize,
   });
   return <BadgeBase {...rest}>{content}</BadgeBase>;
 };

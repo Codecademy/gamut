@@ -4,9 +4,10 @@ import { IconComponentType, WithChildrenProp } from '../utils';
 export interface AppendedIconProps
   extends WithChildrenProp,
     Partial<IconComponentType> {
+  iconAndTextGap?: number;
+  iconOffset?: number;
   iconPosition?: 'left' | 'right';
   iconSize?: number;
-  iconAndTextGap?: number;
   isInlineIcon?: boolean;
 }
 
@@ -14,6 +15,7 @@ export const appendIconToContent = ({
   children,
   icon: Icon,
   iconAndTextGap = 8,
+  iconOffset = 0,
   iconPosition,
   iconSize = 12,
   isInlineIcon = false,
@@ -30,9 +32,8 @@ export const appendIconToContent = ({
     order: iconPositioning,
   } as const;
 
-  // const InlineCenteredIcon = <Box display="inline-block" >{Icon && <Icon {...iconProps} verticalAlign="middle" />}</Box>
-  // const InlineCenteredIcon = <Box display="inline-block" my="auto">{Icon && <Icon {...iconProps}/>}</Box>
-  const InlineCenteredIcon = <>{Icon && <Icon {...iconProps}/>}</>
+  // const InlineCenteredIcon = <Box display="inline" >{Icon && <Icon {...iconProps} pb={iconOffset as any} verticalAlign="middle" height={iconSize + iconOffset} width={iconSize} />}</Box>
+  const InlineCenteredIcon = <Icon {...iconProps} pb={iconOffset as any} verticalAlign="middle" height={iconSize + iconOffset} width={iconSize} />
 
   const content =
     iconPosition === 'left' ? (
@@ -43,7 +44,7 @@ export const appendIconToContent = ({
     ) : (
       <>
         {children}
-        {Icon && <Icon {...iconProps} />}
+        {InlineCenteredIcon}
       </>
     );
 

@@ -116,21 +116,27 @@ export const Anchor = forwardRef<
 >(
   (
     {
-      variant = 'inline',
-      icon,
-      iconSize = 12,
-      iconPosition = 'left',
       children,
+      icon,
+      iconOffset,
+      iconPosition = 'left',
+      iconSize = 12,
+      iconAndTextGap = 8,
       isInlineIcon = true,
+      variant = 'inline',
       ...rest
     },
     ref
   ) => {
+    iconOffset = variant === 'inline' ? 2 : 4;
+
     const content = appendIconToContent({
+      children,
+      icon,
+      iconOffset,
       iconPosition,
       iconSize,
-      icon,
-      children,
+      iconAndTextGap,
       isInlineIcon,
     });
     if (!rest.href) {
