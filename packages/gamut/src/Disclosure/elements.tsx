@@ -1,97 +1,117 @@
 import { states, variant } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { Anchor } from '../Anchor';
 import { FlexBox } from '../Box';
 import { FillButton, StrokeButton, TextButton } from '../Button';
 
-const DisclosureWrapperBase = styled(FlexBox)(
-  variant({
-    defaultVariant: 'default',
-    base: {
-      width: '100%',
-      maxHeight: 'fit-content',
-    },
-    variants: {
-      default: {
-        bg: 'background',
-      },
-      subtle: {
-        bg: 'background-selected',
-      },
-      transparent: {
-        bg: 'background-current',
-      },
-    },
-  })
-  // TS complains when I try to do this, so created a separate styled component below
-  // states({
-  //   hasBorder: {
-  //     border: 1,
-  //   },
-  // })
-);
-
-export const DisclosureWrapper = styled(DisclosureWrapperBase)(
-  states({
-    hasBorder: {
-      border: 1,
-    },
-  })
-);
-
-// const DisclosureWrapperVariants = variant({
-//   defaultVariant: 'default',
-//   base: {
-//     width: '100%',
-//     maxHeight: 'fit-content',
-//   },
-//   variants: {
-//     default: {
-//       bg: 'background',
+// const DisclosureWrapperBase = styled(FlexBox)(
+//   variant({
+//     defaultVariant: 'default',
+//     base: {
+//       width: '100%',
+//       maxHeight: 'fit-content',
 //     },
-//     subtle: {
-//       bg: 'background-selected',
+//     variants: {
+//       default: {
+//         bg: 'background',
+//       },
+//       subtle: {
+//         bg: 'background-selected',
+//       },
+//       transparent: {
+//         bg: 'background-current',
+//       },
 //     },
-//     transparent: {
-//       bg: 'background-current',
+//   }),
+//   // TS complains when I try to do this, so created a separate styled component below
+//   states({
+//     hasBorder: {
+//       border: 1,
 //     },
-//   }
-// })
-// const DisclosureWrapperStates = states({
-//   hasBorder: {
-//     border: 1
-//   },
-// })
+//   })
+// );
 
-// export const DisclosureWrapper = styled(FlexBox)(DisclosureWrapperVariants, DisclosureWrapperStates)
+// export const DisclosureWrapper = styled(DisclosureWrapperBase)(
+//   states({
+//     hasBorder: {
+//       border: 1,
+//     },
+//   })
+// );
+
+const disclosureWrapperVariants = variant({
+  defaultVariant: 'default',
+  base: {
+    width: '100%',
+    maxHeight: 'fit-content',
+  },
+  variants: {
+    default: {
+      bg: 'background',
+    },
+    subtle: {
+      bg: 'background-selected',
+    },
+    transparent: {
+      bg: 'background-current',
+    },
+  }
+})
+const disclosureWrapperStates = states({
+  hasBorder: {
+    border: 1
+  },
+})
+
+type DisclosureWrapperStateProps = StyleProps<typeof disclosureWrapperStates>;
+type DisclosureWrapperVariantProps = StyleProps<typeof disclosureWrapperVariants>;
+export type DisclosureWrapperStyles = DisclosureWrapperStateProps & DisclosureWrapperVariantProps
+
+export const DisclosureWrapper = styled(FlexBox)<DisclosureWrapperStyles>(disclosureWrapperStates, disclosureWrapperVariants)
 
 export const DisclosureButtonWrapper = styled(Anchor)(
   variant({
-    prop: 'appearance',
+    prop: 'isWrapper',
     defaultVariant: 'default',
-    base: {
-      '&:hover': {
-        color: 'text',
-        bg: 'background-hover',
-      },
-      '&:focus': {
-        color: 'text',
-        bg: 'background-selected',
-      },
-      '&:disabled': {
-        color: 'text-disabled',
-        bg: 'background-disabled',
-      },
-    },
-    // Don't actually need the variant here, but it errors out if omitted
     variants: {
       default: {
         bg: 'inherit',
+        '&:hover': {
+          color: 'text',
+          bg: 'background-hover',
+        },
+        '&:focus': {
+          color: 'text',
+          bg: 'background-selected',
+        },
+        '&:disabled': {
+          color: 'text-disabled',
+          bg: 'background-disabled',
+        },
       },
     },
   })
 );
+// export const DisclosureButtonWrapper = styled(Box)(
+//   css({
+//     // KENNY: ADD POINTER here
+//     '&:hover': {
+//       color: 'text',
+//       bg: 'background-hover',
+//     },
+//     '&:focus': {
+//       color: 'text',
+//       bg: 'background-selected',
+//     },
+//     '&:disabled': {
+//       color: 'text-disabled',
+//       bg: 'background-disabled',
+//     },
+
+//   })
+// )
 
 const sharedVariants = {
   left: {

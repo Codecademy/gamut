@@ -1,3 +1,5 @@
+import { DisclosureWrapperStyles } from "./elements";
+
 export interface DisclosureButtonProps {
   /**
    * Renders the Disclosure unclickable.
@@ -48,12 +50,13 @@ export interface DisclosureBodyProps {
    */
   hasPanelBg?: boolean;
   href?: string;
+  // UPDATE THIS TO EXTEND OFF VARIANT
   spacing?: 'normal' | 'condensed' | 'compact';
 }
 
 export interface DisclosureProps
   extends DisclosureButtonProps,
-    DisclosureBodyProps {
+    DisclosureBodyProps, DisclosureWrapperStyles {
   /**
    * Determines whether or not the Disclosure is expanded upon load.
    * Default value is `false`.
@@ -61,6 +64,4 @@ export interface DisclosureProps
   initiallyExpanded?: boolean;
   isListItem?: boolean;
   onClick?: () => void;
-  hasBorder?: boolean;
-  variant?: 'default' | 'transparent' | 'subtle';
 }
