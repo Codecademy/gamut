@@ -5,7 +5,7 @@ import { Anchor } from '../Anchor';
 import { FlexBox } from '../Box';
 import { FillButton, StrokeButton, TextButton } from '../Button';
 
-export const DisclosureWrapper = styled(FlexBox)(
+const DisclosureWrapperBase = styled(FlexBox)(
   variant({
     defaultVariant: 'default',
     base: {
@@ -23,13 +23,48 @@ export const DisclosureWrapper = styled(FlexBox)(
         bg: 'background-current',
       },
     },
-  }),
+  })
+  // TS complains when I try to do this, so created a separate styled component below
+  // states({
+  //   hasBorder: {
+  //     border: 1,
+  //   },
+  // })
+);
+
+export const DisclosureWrapper = styled(DisclosureWrapperBase)(
   states({
     hasBorder: {
       border: 1,
     },
   })
 );
+
+// const DisclosureWrapperVariants = variant({
+//   defaultVariant: 'default',
+//   base: {
+//     width: '100%',
+//     maxHeight: 'fit-content',
+//   },
+//   variants: {
+//     default: {
+//       bg: 'background',
+//     },
+//     subtle: {
+//       bg: 'background-selected',
+//     },
+//     transparent: {
+//       bg: 'background-current',
+//     },
+//   }
+// })
+// const DisclosureWrapperStates = states({
+//   hasBorder: {
+//     border: 1
+//   },
+// })
+
+// export const DisclosureWrapper = styled(FlexBox)(DisclosureWrapperVariants, DisclosureWrapperStates)
 
 export const DisclosureButtonWrapper = styled(Anchor)(
   variant({
