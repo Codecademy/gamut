@@ -6,7 +6,7 @@ import { Anchor } from '..';
 
 const anchorText = 'I am an anchor';
 const href = 'https://example.com';
-const renderView = setupRtl(Anchor, { children: anchorText, href});
+const renderView = setupRtl(Anchor, { children: anchorText, href });
 
 describe('Anchor', () => {
   it('renders an anchor with the href', () => {
@@ -18,7 +18,7 @@ describe('Anchor', () => {
   });
 
   it('renders an anchor with an icon and href', () => {
-    const { view } = renderView({icon: MiniWarningTriangleIcon});
+    const { view } = renderView({ icon: MiniWarningTriangleIcon });
 
     const anchorElement = view.getByRole('link');
     screen.getByRole('img', { hidden: true });
@@ -27,7 +27,7 @@ describe('Anchor', () => {
   });
 
   it('renders an anchor without an href as a button', () => {
-    const { view } = renderView({href: undefined});
+    const { view } = renderView({ href: undefined });
 
     const buttonElement = view.getByRole('button');
 

@@ -71,11 +71,7 @@ export const VariantsExample = ({ useIcon }: { useIcon: boolean }) => {
   );
 };
 
-export const InlineAnchorWithIconAndText = ({
-  args,
-}: {
-  args: any;
-}) => {
+export const InlineAnchorWithIconAndText = ({ args }: { args: any }) => {
   return (
     <>
       <Text>
@@ -104,7 +100,8 @@ export const InlineAnchorWithIconAndText = ({
       </Text>
       <FlexBox center>
         <Text>
-          I&apos;LL DELETE THIS BUT THIS HAS A FLEXBOX FOR CHECKING. IS IT OK TO LEAVE THE TYPE AS `ANY`????e
+          I&apos;LL DELETE THIS BUT THIS HAS A FLEXBOX FOR CHECKING. IS IT OK TO
+          LEAVE THE TYPE AS `ANY`????e
           <Anchor
             {...args}
             href="/"
