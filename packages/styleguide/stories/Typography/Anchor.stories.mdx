@@ -1,17 +1,15 @@
-import { Anchor, FlexBox, Text } from '@codecademy/gamut/src';
-import {
-  MiniArrowRightIcon,
-  MiniInfoOutlineIcon,
-  MiniOpenIcon,
-  MiniStarIcon,
-} from '@codecademy/gamut-icons';
+import { Anchor } from '@codecademy/gamut/src';
+import { MiniInfoOutlineIcon, MiniOpenIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { LinkTo, PropsTable } from '~styleguide/blocks';
 
 import { CustomCheckbox } from '../Atoms/FormInputs/examples';
-import { VariantsExample } from './Anchor.examples';
+import {
+  InlineAnchorWithIconAndText,
+  VariantsExample,
+} from './Anchor.examples';
 
 <Meta
   title={title}
@@ -56,9 +54,7 @@ There are three main varaints for Anchor links that are meant to be used in spec
 - `interface`: The menu link should be used in instances where the context of the link makes it clear that it is clickable. Examples of these contexts include our catalog menu, navigation bar, and footer.
 - `standard`: For use outside of a ‘menu’ instance where (for a good reason) you can’t use the Text Button with the included button-padding.
 
-<Story name="modes">
-  {() => (<VariantsExample />)}
-</Story>
+<Story name="modes">{() => <VariantsExample useIcon={false} />}</Story>
 
 <br />
 
@@ -113,70 +109,13 @@ You can add an <LinkTo id="atoms-icons-about--page">Icon</LinkTo> to the left or
 
 <Canvas>
   <Story name="Anchor with Icon">
-    {(args) => {
-      return (
-        <>
-        <Text>
-          I started painting as a hobby when I was little. I didn't know I had
-          any talent. I believe talent is just a pursued interest.e{' '}
-          <Anchor
-            {...args}
-            href="/"
-            icon={MiniInfoOutlineIcon}
-            iconPosition="left"
-            variant="inline"
-          >
-            Anybody can do what I do.
-          </Anchor>{' '}
-          Just go back and put one little more happy tree in there. Everybody's
-          different.{' '}
-          <Anchor
-            {...args}
-            href="/"
-            icon={MiniArrowRightIcon}
-            iconPosition="right"
-            variant="inline"
-          >
-            Learn more
-          </Anchor>
-        </Text>
-        <FlexBox center>
-        <Text>
-          I'LL DELETE THIS BUT THIS HAS A FLEXBOX FOR CHECKING
-          <Anchor
-            {...args}
-            href="/"
-            icon={MiniInfoOutlineIcon}
-            iconPosition="left"
-            variant="inline"
-          >
-            left anchor
-          </Anchor>{' '}
-          BREAK{' '}
-          <Anchor
-            {...args}
-            href="/"
-            icon={MiniArrowRightIcon}
-            iconPosition="right"
-            variant="inline"
-          >
-            right anchor
-          </Anchor>
-          e!
-        </Text>
-        </FlexBox>
-        </>
-      );
-    }}
+    {(args) => <InlineAnchorWithIconAndText args={args} />}
   </Story>
 </Canvas>
 
 Here's how icons can look with all the variants.
 
-<Story name="modes with icons">
-  {() => ( <VariantsExample icon={MiniStarIcon}/>)}
-</Story>
-
+<Story name="modes with icons">{() => <VariantsExample useIcon />}</Story>
 
 ## Code Playground
 
@@ -187,8 +126,11 @@ Edit attributes and see what’s possible to do with this component or get the e
     {(args) => {
       return (
         <>
-          <Anchor {...args} icon={MiniOpenIcon} iconPosition="right">I am a cool link</Anchor>{" "}
-        </>)
+          <Anchor {...args} icon={MiniOpenIcon} iconPosition="right">
+            I am a cool link
+          </Anchor>{' '}
+        </>
+      );
     }}
   </Story>
 </Canvas>

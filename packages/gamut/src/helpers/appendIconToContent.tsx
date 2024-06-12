@@ -33,7 +33,15 @@ export const appendIconToContent = ({
   } as const;
 
   // const InlineCenteredIcon = <Box display="inline" >{Icon && <Icon {...iconProps} pb={iconOffset as any} verticalAlign="middle" height={iconSize + iconOffset} width={iconSize} />}</Box>
-  const InlineCenteredIcon = <Icon {...iconProps} pb={iconOffset as any} verticalAlign="middle" height={iconSize + iconOffset} width={iconSize} />
+  const InlineCenteredIcon = (
+    <Icon
+      {...iconProps}
+      pb={iconOffset as any}
+      verticalAlign="middle"
+      height={iconSize + iconOffset}
+      width={iconSize}
+    />
+  );
 
   const content =
     iconPosition === 'left' ? (
@@ -49,7 +57,7 @@ export const appendIconToContent = ({
     );
 
   return isInlineIcon ? (
-    <Box display="inline" >{content}</Box>
+    <Box display="inline">{content}</Box>
   ) : (
     <FlexBox center alignItems="center" height="100%">
       {Icon && <Icon {...iconProps} />}
