@@ -67,6 +67,7 @@ export const LE_ICONS = pick(
     'PathIcon',
     'PinIcon',
     'PortfolioProjectIcon',
+    'ProfessionalCertificateIcon',
     'ProjectsIcon',
     'QuizIcon',
     'ResponsiveIcon',
