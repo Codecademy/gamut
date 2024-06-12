@@ -1,4 +1,7 @@
-import { DisclosureWrapperStyles } from "./elements";
+import {
+  DisclosureBodyWrapperStyles,
+  DisclosureWrapperStyles,
+} from './elements';
 
 export interface DisclosureButtonProps {
   /**
@@ -16,15 +19,18 @@ export interface DisclosureButtonProps {
    * Provide a string value to render overline text appear above the heading.
    */
   overline?: string;
-  setIsExpanded?: React.Dispatch<React.SetStateAction<boolean>>;
+  /**
+   * Determines the size of the heading text and the space between text in the body.
+   */
   spacing?: 'normal' | 'condensed' | 'compact';
+  setIsExpanded?: React.Dispatch<React.SetStateAction<boolean>>;
   /**
    * Provide a string value to appear below the heading.
    */
   subheading?: string;
 }
 
-export interface DisclosureBodyProps {
+export interface DisclosureBodyProps extends DisclosureBodyWrapperStyles {
   /**
    * If only providing text, set the max width of the text container to be `600px` for readability's sake.
    */
@@ -45,23 +51,25 @@ export interface DisclosureBodyProps {
    * This string is the value displayed in the optional button rendered in the body.
    */
   ctaText?: string;
-  /**
-   * Accepts a boolean to render a background for the body and adds extra padding for the text.
-   */
-  hasPanelBg?: boolean;
   href?: string;
-  // UPDATE THIS TO EXTEND OFF VARIANT
+  /**
+   * Determines the size of the heading text and the space between text in the body.
+   */
   spacing?: 'normal' | 'condensed' | 'compact';
 }
 
 export interface DisclosureProps
   extends DisclosureButtonProps,
-    DisclosureBodyProps, DisclosureWrapperStyles {
+    DisclosureBodyProps,
+    DisclosureWrapperStyles {
   /**
    * Determines whether or not the Disclosure is expanded upon load.
    * Default value is `false`.
    */
   initiallyExpanded?: boolean;
+  /**
+   * Renders as a `li` if `true`.
+   */
   isListItem?: boolean;
   onClick?: () => void;
 }

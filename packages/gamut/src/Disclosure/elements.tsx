@@ -6,41 +6,6 @@ import { Anchor } from '../Anchor';
 import { FlexBox } from '../Box';
 import { FillButton, StrokeButton, TextButton } from '../Button';
 
-// const DisclosureWrapperBase = styled(FlexBox)(
-//   variant({
-//     defaultVariant: 'default',
-//     base: {
-//       width: '100%',
-//       maxHeight: 'fit-content',
-//     },
-//     variants: {
-//       default: {
-//         bg: 'background',
-//       },
-//       subtle: {
-//         bg: 'background-selected',
-//       },
-//       transparent: {
-//         bg: 'background-current',
-//       },
-//     },
-//   }),
-//   // TS complains when I try to do this, so created a separate styled component below
-//   states({
-//     hasBorder: {
-//       border: 1,
-//     },
-//   })
-// );
-
-// export const DisclosureWrapper = styled(DisclosureWrapperBase)(
-//   states({
-//     hasBorder: {
-//       border: 1,
-//     },
-//   })
-// );
-
 const disclosureWrapperVariants = variant({
   defaultVariant: 'default',
   base: {
@@ -57,19 +22,26 @@ const disclosureWrapperVariants = variant({
     transparent: {
       bg: 'background-current',
     },
-  }
-})
+  },
+});
+
 const disclosureWrapperStates = states({
   hasBorder: {
-    border: 1
+    border: 1,
   },
-})
+});
 
 type DisclosureWrapperStateProps = StyleProps<typeof disclosureWrapperStates>;
-type DisclosureWrapperVariantProps = StyleProps<typeof disclosureWrapperVariants>;
-export type DisclosureWrapperStyles = DisclosureWrapperStateProps & DisclosureWrapperVariantProps
+type DisclosureWrapperVariantProps = StyleProps<
+  typeof disclosureWrapperVariants
+>;
+export type DisclosureWrapperStyles = DisclosureWrapperStateProps &
+  DisclosureWrapperVariantProps;
 
-export const DisclosureWrapper = styled(FlexBox)<DisclosureWrapperStyles>(disclosureWrapperStates, disclosureWrapperVariants)
+export const DisclosureWrapper = styled(FlexBox)<DisclosureWrapperStyles>(
+  disclosureWrapperStates,
+  disclosureWrapperVariants
+);
 
 export const DisclosureButtonWrapper = styled(Anchor)(
   variant({
@@ -94,24 +66,6 @@ export const DisclosureButtonWrapper = styled(Anchor)(
     },
   })
 );
-// export const DisclosureButtonWrapper = styled(Box)(
-//   css({
-//     // KENNY: ADD POINTER here
-//     '&:hover': {
-//       color: 'text',
-//       bg: 'background-hover',
-//     },
-//     '&:focus': {
-//       color: 'text',
-//       bg: 'background-selected',
-//     },
-//     '&:disabled': {
-//       color: 'text-disabled',
-//       bg: 'background-disabled',
-//     },
-
-//   })
-// )
 
 const sharedVariants = {
   left: {
@@ -145,11 +99,17 @@ export const StyledFillButton = styled(FillButton)(
   })
 );
 
-export const DisclosureBodyWrapper = styled(FlexBox)(
-  states({
-    hasPanelBg: {
-      bg: 'background-selected',
-      p: 8,
-    },
-  })
-);
+export type DisclosureBodyWrapperStyles = StyleProps<
+  typeof disclosureBodyWrapperStates
+>;
+
+const disclosureBodyWrapperStates = states({
+  hasPanelBg: {
+    bg: 'background-selected',
+    p: 8,
+  },
+});
+
+export const DisclosureBodyWrapper = styled(
+  FlexBox
+)<DisclosureBodyWrapperStyles>(disclosureBodyWrapperStates);

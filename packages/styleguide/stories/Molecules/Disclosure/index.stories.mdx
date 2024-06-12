@@ -3,11 +3,7 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import {
-  BackgroundWithPadding,
-  ConstrainedText,
-  ListDisclosureExample,
-} from './examples';
+import { BackgroundWithPadding, ConstrainedText } from './examples';
 
 <Meta
   title={title}
@@ -155,14 +151,6 @@ Disclosure has 3 variants for background color (`'default'`, `'subtle', 'transpa
     }}
   >
     {(args) => <Disclosure {...args} />}
-  </Story>
-</Canvas>
-
-### List with Disclosures
-
-<Canvas>
-  <Story name="List example">
-    <ListDisclosureExample />
   </Story>
 </Canvas>
 
