@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.25.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.24.1...@codecademy/styleguide@66.25.0) (2024-06-12)
+
+### Features
+
+- **Icons:** add ProfessionalCertificateIcon ([b58018f](https://github.com/Codecademy/gamut/commit/b58018f85ecc8dd768d8a3cc711348c53543377d))
+
 ### [66.24.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.24.0...@codecademy/styleguide@66.24.1) (2024-06-12)
 
 **Note:** Version bump only for package @codecademy/styleguide

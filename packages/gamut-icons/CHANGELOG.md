@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.28.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.27.1...@codecademy/gamut-icons@9.28.0) (2024-06-12)
+
+### Features
+
+- **Icons:** add ProfessionalCertificateIcon ([b58018f](https://github.com/Codecademy/gamut/commit/b58018f85ecc8dd768d8a3cc711348c53543377d))
+
 ### [9.27.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.27.0...@codecademy/gamut-icons@9.27.1) (2024-06-12)
 
 ### Bug Fixes
