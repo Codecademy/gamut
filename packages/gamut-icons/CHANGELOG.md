@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.27.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.27.0...@codecademy/gamut-icons@9.27.1) (2024-06-12)
+
+### Bug Fixes
+
+- update Java, JS, and Python icons to latest streamline versions ([c12a25e](https://github.com/Codecademy/gamut/commit/c12a25e68ab418a50c2004df947f49cd2119c891))
+
 ## [9.27.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.26.0...@codecademy/gamut-icons@9.27.0) (2024-06-10)
 
 ### Features
