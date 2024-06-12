@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.25.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.24.1...@codecademy/styleguide@66.25.0) (2024-06-12)
+
+### Features
+
+- **Icons:** add ProfessionalCertificateIcon ([b58018f](https://github.com/Codecademy/gamut/commit/b58018f85ecc8dd768d8a3cc711348c53543377d))
+
+### [66.24.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.24.0...@codecademy/styleguide@66.24.1) (2024-06-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [66.24.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.23.0...@codecademy/styleguide@66.24.0) (2024-06-10)
+
+### Features
+
+- add new Skills icons ([#2884](https://github.com/Codecademy/gamut/issues/2884)) ([afe8fe8](https://github.com/Codecademy/gamut/commit/afe8fe83ef084768b6f35654e2ced9db8247465c))
+
+## [66.23.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.22.0...@codecademy/styleguide@66.23.0) (2024-06-07)
+
+### Features
+
+- **Modal:** add large size option to Modal ([a5f97f9](https://github.com/Codecademy/gamut/commit/a5f97f94a90c576348698dd8154ff164d5c20508))
+
 ## [66.22.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.21.1...@codecademy/styleguide@66.22.0) (2024-06-05)
 
 ### Features

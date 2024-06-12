@@ -11,6 +11,7 @@ const sizeVariant = variant({
   variants: {
     small: { width: '400px', minHeight: '170px' },
     medium: { width: '540px', minHeight: '240px' },
+    large: { width: '680px', minHeight: '310px' },
     fluid: {
       width: 'max-content',
     },
