@@ -4,10 +4,25 @@ import { IconComponentType, WithChildrenProp } from '../utils';
 export interface AppendedIconProps
   extends WithChildrenProp,
     Partial<IconComponentType> {
+  /**
+   * This provides the space between the icon and the children
+   */
   iconAndTextGap?: number;
+  /**
+   * This value adds a padding to the icon's parent container and bumps up the icon's height by the offset
+   */
   iconOffset?: number;
+  /**
+   * Can set the positioning of the icon relative to children, default is `left`
+   */
   iconPosition?: 'left' | 'right';
+  /**
+   * This value determines the size of the icon
+   */
   iconSize?: number;
+  /**
+   * This boolean value determines if the icon should be displayed inline with the children
+   */
   isInlineIcon?: boolean;
 }
 
@@ -32,7 +47,6 @@ export const appendIconToContent = ({
     order: iconPositioning,
   } as const;
 
-  // const InlineCenteredIcon = <Box display="inline" >{Icon && <Icon {...iconProps} pb={iconOffset as any} verticalAlign="middle" height={iconSize + iconOffset} width={iconSize} />}</Box>
   const InlineCenteredIcon = (
     <Icon
       {...iconProps}

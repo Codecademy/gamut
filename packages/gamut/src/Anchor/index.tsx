@@ -128,6 +128,7 @@ export const Anchor = forwardRef<
     },
     ref
   ) => {
+    // At the moment, inconOffset is hardcoded for font-size 16px, but if needed, we can expose this for developers
     iconOffset = variant === 'inline' ? 2 : 4;
 
     const content = appendIconToContent({
