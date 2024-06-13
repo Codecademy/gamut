@@ -1,5 +1,6 @@
 import {
   Anchor,
+  AnchorExtProps,
   Box,
   Column,
   FlexBox,
@@ -71,7 +72,7 @@ export const VariantsExample = ({ useIcon }: { useIcon: boolean }) => {
   );
 };
 
-export const InlineAnchorWithIconAndText = ({ args }: { args: any }) => {
+export const InlineAnchorWithIconAndText: React.FC<AnchorExtProps> = (args) => {
   return (
     <>
       <Text>
