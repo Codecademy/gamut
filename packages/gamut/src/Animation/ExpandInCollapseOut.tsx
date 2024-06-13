@@ -15,7 +15,7 @@ export const ExpandInCollapseOut: React.FC<WithChildrenProp> = ({
         expanded: { height: 'auto' },
         collapsed: { height: 0 },
       }}
-      transition={{ duration: 0.2, ease: 'easeInOut' }}
+      transition={{ duration: 0.5, ease: 'easeInOut' }}
     >
       {children}
     </motion.div>

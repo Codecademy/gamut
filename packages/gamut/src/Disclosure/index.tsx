@@ -2,7 +2,7 @@ import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import * as React from 'react';
 
-import { ExpandInCollapseOut } from '../Animation/ExpandInCollapseOut';
+import { ExpandInCollapseOut } from '../Animation';
 import { DisclosureBody } from './DisclosureBody';
 import { DisclosureButton } from './DisclosureButton';
 import { DisclosureWrapper } from './elements';
@@ -47,8 +47,8 @@ export const Disclosure: React.FC<DisclosureProps> = ({
         setIsExpanded={setIsExpanded}
         disabled={disabled}
       />
-      {isExpanded && (
-        <AnimatePresence>
+      <AnimatePresence>
+        {isExpanded && (
           <ExpandInCollapseOut>
             <DisclosureBody
               body={body}
@@ -61,8 +61,8 @@ export const Disclosure: React.FC<DisclosureProps> = ({
               buttonType={button}
             />
           </ExpandInCollapseOut>
-        </AnimatePresence>
-      )}
+        )}
+      </AnimatePresence>
     </DisclosureWrapper>
   );
 };
