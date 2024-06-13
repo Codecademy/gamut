@@ -43,13 +43,20 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
 
     const trueAriaLabel = ariaLabel ?? firstWord;
 
+    const size = props.size  || 'normal';
+    const iconSizeMapping = {
+      normal: 24,
+      small: 16,
+      large: 40,
+    }
+    const iconSize = iconSizeMapping[size]
+
     return (
       <ToolTip
         info={tip}
         id={tipId}
         hasRepetitiveLabel={hasRepetitiveLabel}
         {...(tipProps as any)}
-        l
       >
         <IconButtonBase
           {...props}
@@ -59,9 +66,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
           aria-label={trueAriaLabel}
         >
           <Icon
-            width="calc(100% - 14px)"
-            height="calc(100% - 14px)"
-            aria-hidden
+            size={iconSize}
           />
         </IconButtonBase>
       </ToolTip>
