@@ -43,13 +43,13 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
 
     const trueAriaLabel = ariaLabel ?? firstWord;
 
-    const size = props.size  || 'normal';
+    const size = props.size || 'normal';
     const iconSizeMapping = {
       normal: 24,
       small: 16,
       large: 40,
-    }
-    const iconSize = iconSizeMapping[size]
+    };
+    const iconSize = iconSizeMapping[size];
 
     return (
       <ToolTip
@@ -65,9 +65,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
           aria-describedby={tipId}
           aria-label={trueAriaLabel}
         >
-          <Icon
-            size={iconSize}
-          />
+          <Icon size={iconSize} />
         </IconButtonBase>
       </ToolTip>
     );
