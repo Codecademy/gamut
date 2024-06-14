@@ -39,6 +39,7 @@ exports[`Gamut Exported Keys 1`] = `
   "Disclosure",
   "Drawer",
   "ExpandControl",
+  "ExpandInCollapseOut",
   "FillButton",
   "FlexBox",
   "FloatingCard",
