@@ -1,4 +1,4 @@
-import { Box, InfoTip, Radio } from '@codecademy/gamut';
+import { Box, FlexBox, InfoTip, Radio } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -77,16 +77,12 @@ The label is a ReactNode, making it customizable outside of a standard text labe
   <Story
     name="Custom labels"
     args={{
+      children:   <FlexBox alignContent="center" pl={8} >
+            <InfoTip info="More info!" emphasis="high" />
+          </FlexBox>,
       htmlFor: 'example-custom',
       name: 'example-custom',
-      label: (
-        <>
-          Option with infotip
-          <Box pl={8}>
-            <InfoTip info="More info!" emphasis="high" />
-          </Box>
-        </>
-      ),
+      label: "Option with infotip",
     }}
   >
     {(args) => (

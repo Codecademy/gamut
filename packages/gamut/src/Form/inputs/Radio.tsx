@@ -18,7 +18,7 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> &
     checked?: boolean;
     disabled?: boolean;
     id?: string;
-    label?: ReactNode;
+    label?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     tabIndex?: number;
     value?: string;
@@ -46,17 +46,18 @@ const conditionalStyleState = (error?: boolean, disabled?: boolean) => {
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
     {
-      name,
-      value,
-      label,
       checked,
+      children,
       className,
       disabled,
+      error,
       htmlFor,
+      id,
+      label,
+      name,
       onChange,
       required,
-      id,
-      error,
+      value,
       ...rest
     },
     ref
@@ -82,6 +83,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         <RadioLabel htmlFor={htmlFor} disabled={disabled} variant={styleState}>
           {label}
         </RadioLabel>
+        {children}
       </RadioWrapper>
     );
   }
