@@ -4,6 +4,8 @@ import styled from '@emotion/styled';
 import { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 import * as React from 'react';
 
+import { FlexBox } from '../../Box';
+import { InfoTip, InfoTipProps } from '../../Tip';
 import {
   conditionalRadioInputStyles,
   conditionalRadioLabelStyles,
@@ -18,7 +20,9 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> &
     checked?: boolean;
     disabled?: boolean;
     id?: string;
-    label?: string;
+    infotip?: InfoTipProps;
+    // A label for your Radio input - should not include infotips or other interactive elements
+    label?: ReactNode;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     tabIndex?: number;
     value?: string;
@@ -47,12 +51,12 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
     {
       checked,
-      children,
       className,
       disabled,
       error,
       htmlFor,
       id,
+      infotip,
       label,
       name,
       onChange,
@@ -83,7 +87,11 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         <RadioLabel htmlFor={htmlFor} disabled={disabled} variant={styleState}>
           {label}
         </RadioLabel>
-        {children}
+        {infotip && (
+          <FlexBox center pl={8}>
+            <InfoTip {...infotip} />
+          </FlexBox>
+        )}
       </RadioWrapper>
     );
   }

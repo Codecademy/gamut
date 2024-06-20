@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
+import userEvent from '@testing-library/user-event';
 
 import { Radio } from '../inputs/Radio';
 
@@ -34,6 +35,19 @@ describe('<Radio>', () => {
     });
 
     view.getByAltText('my cat');
+  });
+
+  it('renders an infotip', () => {
+    const info = 'small info';
+    const { view } = renderView({
+      label: 'label',
+      infotip: { info: 'small info' },
+    });
+    const tip = view.getByText(info);
+
+    expect(tip).not.toBeVisible();
+
+    userEvent.click(view.getByRole('button'));
   });
 
   it('accepts additional props not specified by the component', () => {
