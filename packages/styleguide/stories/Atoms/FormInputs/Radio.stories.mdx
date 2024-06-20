@@ -77,10 +77,14 @@ The label is a ReactNode, making it customizable outside of a standard text labe
   <Story
     name="Custom labels"
     args={{
-      infotip: {emphasis: 'high', info: 'This is an infotip', placement: 'floating'},
+      infotip: {
+        emphasis: 'high',
+        info: 'This is an infotip',
+        placement: 'floating',
+      },
       htmlFor: 'example-custom',
       name: 'example-custom',
-      label: "Option with infotip",
+      label: 'Option with infotip',
     }}
   >
     {(args) => (
