@@ -108,7 +108,7 @@ type AnchorBaseProps =
   | (Exclude<ComponentProps<typeof AnchorBase>, 'ref'> &
       ComponentProps<typeof ButtonBase>);
 
-export type AnchorExtProps = Partial<AppendedIconProps> & AnchorBaseProps;
+type AnchorExtProps = Partial<AppendedIconProps> & AnchorBaseProps;
 
 export const Anchor = forwardRef<
   HTMLAnchorElement | HTMLButtonElement,
