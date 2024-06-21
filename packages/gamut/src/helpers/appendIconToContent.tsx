@@ -1,5 +1,6 @@
 import { Box, FlexBox } from '../Box';
 import { IconComponentType, WithChildrenProp } from '../utils';
+import { pixelToEm } from './pixelToEmCalc';
 
 export interface AppendedIconProps
   extends WithChildrenProp,
@@ -30,7 +31,7 @@ export const appendIconToContent = ({
   children,
   icon: Icon,
   iconAndTextGap = 8,
-  iconOffset = 0,
+  iconOffset,
   iconPosition,
   iconSize = 12,
   isInlineIcon = false,
@@ -39,6 +40,13 @@ export const appendIconToContent = ({
 
   const iconSpacing = iconPosition === 'left' ? 'mr' : 'ml';
   const iconPositioning = iconPosition === 'left' ? 0 : 1;
+
+  if (typeof iconOffset !== 'number') {
+    iconOffset = isInlineIcon ? 2 : 4;
+  }
+
+  const iconOffsetInEm = pixelToEm(iconOffset);
+  const heightOffset = pixelToEm(iconSize + iconOffset);
 
   const iconProps = {
     'aria-hidden': true,
@@ -50,9 +58,9 @@ export const appendIconToContent = ({
   const InlineCenteredIcon = (
     <Icon
       {...iconProps}
-      pb={iconOffset as any}
+      pb={iconOffsetInEm as any}
       verticalAlign="middle"
-      height={iconSize + iconOffset}
+      height={heightOffset}
       width={iconSize}
     />
   );
