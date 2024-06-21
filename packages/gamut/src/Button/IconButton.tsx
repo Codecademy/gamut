@@ -6,6 +6,7 @@ import { ToolTip, ToolTipProps } from '../Tip';
 import { IconComponentType } from '../utils';
 import {
   createButtonComponent,
+  iconSizeMapping,
   iconSizeVariants,
   textButtonVariants,
 } from './shared';
@@ -30,6 +31,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
       tip,
       tipProps,
       variant = 'secondary',
+      size,
       ...props
     },
     ref
@@ -43,13 +45,9 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
 
     const trueAriaLabel = ariaLabel ?? firstWord;
 
-    const size = props.size || 'normal';
-    const iconSizeMapping = {
-      normal: 24,
-      small: 16,
-      large: 40,
-    };
-    const iconSize = iconSizeMapping[size];
+    const buttonSize = size || 'normal';
+
+    const iconSize = iconSizeMapping[buttonSize];
 
     return (
       <ToolTip
@@ -60,10 +58,11 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
       >
         <IconButtonBase
           {...props}
-          variant={variant}
-          ref={ref}
           aria-describedby={tipId}
+          aria-hidden
           aria-label={trueAriaLabel}
+          ref={ref}
+          variant={variant}
         >
           <Icon size={iconSize} />
         </IconButtonBase>
