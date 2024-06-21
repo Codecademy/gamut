@@ -1,5 +1,4 @@
 import { StarIcon } from '@codecademy/gamut-icons';
-import {screen} from '@testing-library/dom'
 import userEvent from '@testing-library/user-event';
 import { setupRtl } from 'component-test-setup';
 
