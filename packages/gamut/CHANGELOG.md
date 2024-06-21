@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.22.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.22.3...@codecademy/gamut@55.22.4) (2024-06-17)
+
+### Bug Fixes
+
+- Use child selector for li in markdown ([#2888](https://github.com/Codecademy/gamut/issues/2888)) ([5790726](https://github.com/Codecademy/gamut/commit/57907268f548b2b99b9904926503ff4ed531d843))
+
 ### [55.22.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.22.2...@codecademy/gamut@55.22.3) (2024-06-12)
 
 **Note:** Version bump only for package @codecademy/gamut
