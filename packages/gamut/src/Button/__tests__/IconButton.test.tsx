@@ -1,9 +1,11 @@
 import { StarIcon } from '@codecademy/gamut-icons';
+import {screen} from '@testing-library/dom'
 import userEvent from '@testing-library/user-event';
 import { setupRtl } from 'component-test-setup';
 
 import { IconButton } from '../IconButton';
 import { IconButtonFloatingMock } from './mocks';
+
 
 const label = 'Click';
 const tip = 'Click this button';

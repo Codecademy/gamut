@@ -59,7 +59,6 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
         <IconButtonBase
           {...props}
           aria-describedby={tipId}
-          aria-hidden
           aria-label={trueAriaLabel}
           ref={ref}
           variant={variant}
