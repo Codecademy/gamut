@@ -95,6 +95,7 @@ export const SKILLS_ICONS = pick(
     'DataVisualizationIcon',
     'DevopsIcon',
     'FallbackSkillIcon',
+    'FlutterIcon',
     'GameDevelopmentIcon',
     'GoIcon',
     'HtmlCssIcon',
