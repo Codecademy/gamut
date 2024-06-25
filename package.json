@@ -75,8 +75,8 @@
     "webpack": "4.46.0"
   },
   "engines": {
-    "node": "^16.17",
-    "yarn": "^1.21.1"
+    "node": "^18.18.2",
+    "yarn": "^1.22"
   },
   "license": "MIT",
   "lint-staged": {
