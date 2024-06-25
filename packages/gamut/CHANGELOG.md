@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.23.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.22.6...@codecademy/gamut@55.23.0) (2024-06-25)
+
+### Features
+
+- **Anchor:** Add icon to Anchor ([8d32f85](https://github.com/Codecademy/gamut/commit/8d32f859f569543b4548af3441698f40fc6131ca))
+
 ### [55.22.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.22.5...@codecademy/gamut@55.22.6) (2024-06-24)
 
 **Note:** Version bump only for package @codecademy/gamut
