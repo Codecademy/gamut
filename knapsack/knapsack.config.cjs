@@ -14,7 +14,7 @@ module.exports = configureKnapsack({
       webpackConfig: {
         module: {
           rules: [
-            ...configs.css().module.rules,
+            // ...configs.css().module.rules,
             // {
             //   test: /\.mjs$/,
             //   include: /node_modules/,
