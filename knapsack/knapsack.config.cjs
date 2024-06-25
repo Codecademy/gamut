@@ -1,7 +1,7 @@
 const { KnapsackReactRenderer } = require('@knapsack/renderer-react');
 const { configureKnapsack } = require('@knapsack/app');
 const { join } = require('path');
-const { configs } = require('@codecademy/webpack-config');
+// doesn't work
 const { version } = require('../package.json');
 
 module.exports = configureKnapsack({
@@ -11,38 +11,54 @@ module.exports = configureKnapsack({
   version,
   templateRenderers: [
     new KnapsackReactRenderer({
-      webpackConfig: {
-        module: {
-          rules: [
-            // ...configs.css().module.rules,
-            // {
-            //   test: /\.mjs$/,
-            //   include: /node_modules/,
-            //   type: 'javascript/auto',
-            // },
+      babelConfig: {
+        presets: [
+          [
+            '@babel/env',
             {
-              test: /\.(js|jsx|mjs|ts|tsx)$/,
-              include: [join(__dirname, './src')],
-              loader: 'babel-loader',
-              options: {
-                presets: [
-                  [
-                    '@babel/preset-react',
-                    {
-                      runtime: 'automatic',
-                    },
-                    'preset-react-jsx-transform',
-                  ],
-                ],
-              },
+              modules: false,
+              targets: 'defaults',
             },
           ],
+          '@babel/preset-typescript',
+        ],
+        plugins: [
+          'macros',
+          [
+            '@emotion',
+            {
+              sourceMap: true,
+              autoLabel: 'always',
+              labelFormat: '[local]',
+              cssPropOptimization: true,
+            },
+          ],
+        ],
+        ignore: [],
+        env: {
+          test: {
+            plugins: ['require-context-hook'],
+          },
+        },
+      },
+      webpackConfig: {
+        module: {
+          rules: [],
         },
       },
       demoWrapperPath: join(__dirname, './meta/DemoWrapper.tsx'),
     }),
   ],
-  plugins: [],
+  plugins: [
+    [
+      '@emotion/babel-plugin',
+      {
+        sourceMap: true,
+        autoLabel: 'always',
+        labelFormat: '[local]',
+      },
+    ],
+  ],
   cloud: {
     siteId: 'codeacademy-sandbox',
     repoRoot: join(__dirname, '..'),
