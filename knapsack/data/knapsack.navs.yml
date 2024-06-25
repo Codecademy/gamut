@@ -1,0 +1,14 @@
+byId:
+  alert:
+    id: alert
+    name: Alert
+    parentId: atoms
+    path: /pattern/alert
+  atoms:
+    id: atoms
+    name: Atoms
+    parentId: root
+    path: /pages/atoms
+order:
+  - atoms
+  - alert
