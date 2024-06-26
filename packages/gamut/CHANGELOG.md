@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.25.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.24.0...@codecademy/gamut@55.25.0) (2024-06-26)
+
+### Features
+
+- **IconButton:** aria-describedby override ([ca12c0b](https://github.com/Codecademy/gamut/commit/ca12c0bd063df52c7dae215731b6333591348ced))
+
 ## [55.24.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.23.0...@codecademy/gamut@55.24.0) (2024-06-26)
 
 ### Features
