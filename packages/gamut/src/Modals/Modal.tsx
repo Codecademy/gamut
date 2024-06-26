@@ -89,6 +89,7 @@ export const Modal: React.FC<ModalProps> = ({
       shroud
       onRequestClose={onRequestClose}
       data-testid="modal"
+      tabIndex={-1}
       {...rest}
     >
       <ModalContainer
