@@ -22,7 +22,7 @@ export type ToolTipProps = TipBaseProps &
      */
     hasRepetitiveLabel?: boolean;
     /**
-     * If you would like to forgo the aria-describedby attribute set this to `false`. When using this props, the `aria-label` should always be identical to the `tip`.
+     * If you would like to forgo the aria-describedby attribute set this to `true`. When using this props, the `aria-label` should always be identical to the `tip`.
      */
     hideAriaToolTip?: boolean;
   };
@@ -53,7 +53,11 @@ export const ToolTip: React.FC<ToolTipProps> = ({
       : info;
   }, [info, hasRepetitiveLabel]);
 
-  const shouldRenderAriaTip = hideAriaToolTip ? false : adjustedInfo !== '';
+  const shouldRenderAriaTip = useMemo(() => {
+    return hideAriaToolTip ? false : adjustedInfo !== '';
+  }, [hideAriaToolTip, adjustedInfo]);
+
+  // const shouldRenderAriaTip = hideAriaToolTip ? false : adjustedInfo !== '';
 
   // this should only happen if the button has an aria-label that is the same is and ONLY the content of the tooltip
 
