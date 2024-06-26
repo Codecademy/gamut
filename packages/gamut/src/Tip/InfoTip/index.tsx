@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { Text } from '../../Typography';
 import { FloatingTip } from '../shared/FloatingTip';
@@ -30,6 +30,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const [isTipHidden, setHideTip] = useState(true);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
+  const [clickNum, setClickNum] = useState(0);
 
   useEffect(() => {
     setLoaded(true);
@@ -57,6 +58,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const clickHandler = () => {
     const currentTipState = !isTipHidden;
     setHideTip(currentTipState);
+    if (currentTipState) setClickNum(clickNum + 1);
     // we want to call the onClick handler after the tip has mounted
     if (onClick) setTimeout(() => onClick({ isTipHidden: currentTipState }), 0);
   };
@@ -68,12 +70,19 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     };
   });
 
+  const screenReaderText = useMemo(() => {
+    // Voiceover won't read duplicated on subsequent mounts - this is a workaround to make Voiceover think "new" text is being added every mount.
+    const text = clickNum % 2 === 0 ? info : `${info}\u00A0`;
+
+    return !isTipHidden ? text : '';
+  }, [clickNum, info, isTipHidden]);
+
   const Tip = loaded && placement === 'floating' ? FloatingTip : InlineTip;
 
   const tipProps = {
     alignment,
     escapeKeyPressHandler,
-    info,
+    info: screenReaderText,
     isTipHidden,
     wrapperRef,
     ...rest,
@@ -82,7 +91,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   return (
     <>
       <Text screenreader aria-live="assertive">
-        {!isTipHidden ? info : ''}
+        {screenReaderText}
       </Text>
       <Tip {...tipProps} type="info">
         <InfoTipButton
