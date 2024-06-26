@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { ComponentProps, forwardRef, HTMLProps, RefObject } from 'react';
 
 import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
+import { AppendedIconProps, appendIconToContent } from '../helpers';
 
 export interface AnchorProps
   extends StyleProps<typeof anchorProps>,
@@ -107,26 +108,56 @@ type AnchorBaseProps =
   | (Exclude<ComponentProps<typeof AnchorBase>, 'ref'> &
       ComponentProps<typeof ButtonBase>);
 
+type AnchorExtProps = Partial<AppendedIconProps> & AnchorBaseProps;
+
 export const Anchor = forwardRef<
   HTMLAnchorElement | HTMLButtonElement,
-  AnchorBaseProps
->(({ variant = 'inline', ...rest }, ref) => {
-  if (!rest.href) {
+  AnchorExtProps
+>(
+  (
+    {
+      children,
+      icon,
+      iconOffset,
+      iconPosition = 'left',
+      iconSize = 12,
+      iconAndTextGap = 8,
+      isInlineIcon = true,
+      variant = 'inline',
+      ...rest
+    },
+    ref
+  ) => {
+    const content = appendIconToContent({
+      children,
+      icon,
+      iconOffset,
+      iconPosition,
+      iconSize,
+      iconAndTextGap,
+      isInlineIcon,
+    });
+    if (!rest.href) {
+      return (
+        <AnchorBase
+          as={ButtonBase}
+          variant={variant}
+          ref={ref as RefObject<HTMLAnchorElement>}
+          {...rest}
+        >
+          {content}
+        </AnchorBase>
+      );
+    }
+
     return (
       <AnchorBase
-        as={ButtonBase}
         variant={variant}
         ref={ref as RefObject<HTMLAnchorElement>}
         {...rest}
-      />
+      >
+        {content}
+      </AnchorBase>
     );
   }
-
-  return (
-    <AnchorBase
-      variant={variant}
-      ref={ref as RefObject<HTMLAnchorElement>}
-      {...rest}
-    />
-  );
-});
+);
