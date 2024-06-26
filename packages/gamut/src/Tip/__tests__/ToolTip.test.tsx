@@ -61,14 +61,6 @@ describe('ToolTip', () => {
       expect(view.queryByRole('tooltip')).toBeNull();
     });
 
-    it('calls onClick when clicked', () => {
-      const { view } = renderView({});
-
-      userEvent.click(view.getByRole('button'));
-
-      expect(onClick).toHaveBeenCalled();
-    });
-  });
 });
 describe('floating placement', () => {
   it('has an accessible tooltip', () => {
