@@ -1,0 +1,12 @@
+{
+  "id": "K5QkcOoZFe",
+  "title": "New Variation",
+  "description": "A description",
+  "type": "data",
+  "patternId": "alert",
+  "templateId": "react-rbiiU4NNpR",
+  "data": {
+    "props": {},
+    "slots": {}
+  }
+}

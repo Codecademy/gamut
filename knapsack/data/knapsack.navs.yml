@@ -4,11 +4,6 @@ byId:
     name: Alert
     parentId: atoms
     path: /pattern/alert
-  alert-f0moymr7f2:
-    id: alert-f0moymr7f2
-    name: Alert
-    parentId: alert
-    path: /pattern/alert-f0moymr7f2
   atoms:
     id: atoms
     name: Atoms
@@ -17,4 +12,3 @@ byId:
 order:
   - atoms
   - alert
-  - alert-f0moymr7f2
