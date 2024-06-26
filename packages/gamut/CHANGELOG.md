@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [55.24.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.23.0...@codecademy/gamut@55.24.0) (2024-06-26)
+
+### Features
+
+- **Disclosure:** creating an Disclosure component ([a45825f](https://github.com/Codecademy/gamut/commit/a45825fbe343db9c66d29fe5359508a4099a5479))
+
 ## [55.23.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.22.6...@codecademy/gamut@55.23.0) (2024-06-25)
 
 ### Features
