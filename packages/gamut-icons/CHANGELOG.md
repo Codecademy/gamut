@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.29.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.28.0...@codecademy/gamut-icons@9.29.0) (2024-06-21)
+
+### Features
+
+- **icons:** add flutterIcon ([4403a2c](https://github.com/Codecademy/gamut/commit/4403a2c01b441d944ea3b79d1c1b675e1f5115ca))
+
 ## [9.28.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.27.1...@codecademy/gamut-icons@9.28.0) (2024-06-12)
 
 ### Features

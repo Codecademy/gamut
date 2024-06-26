@@ -11,6 +11,7 @@ export const ToolTipMock: React.FC<
   placement,
   onClick,
   hasRepetitiveLabel,
+  hideAriaToolTip,
 }) => {
   return (
     <ToolTip
@@ -18,6 +19,7 @@ export const ToolTipMock: React.FC<
       placement={placement}
       id="tip-id"
       hasRepetitiveLabel={hasRepetitiveLabel}
+      hideAriaToolTip={hideAriaToolTip}
     >
       <FillButton
         aria-label={ariaLabel}

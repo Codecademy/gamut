@@ -2,7 +2,7 @@ import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { FlexBox } from '../Box';
+import { appendIconToContent } from '../helpers';
 import { IconComponentType, WithChildrenProp } from '../utils';
 import { determineIconSize, determineIconSpacing } from './helpers';
 
@@ -84,24 +84,17 @@ export interface BadgeProps
   extends Partial<IconComponentType>,
     BadgeBaseProps {}
 
-export const Badge: React.FC<BadgeProps> = ({
-  icon: Icon,
-  children,
-  ...rest
-}) => {
-  const iconSize = rest.size === 'sm' ? 'sm' : 'base';
-  const size = determineIconSize(iconSize);
-  const spacing = determineIconSpacing(iconSize);
-  return (
-    <BadgeBase {...rest}>
-      {Icon && (
-        <FlexBox pr={spacing}>
-          <Icon height={size} width={size} />
-        </FlexBox>
-      )}
-      <FlexBox height="100%" alignItems="center">
-        {children}
-      </FlexBox>
-    </BadgeBase>
-  );
+export const Badge: React.FC<BadgeProps> = ({ icon, children, ...rest }) => {
+  const size = rest.size === 'sm' ? 'sm' : 'base';
+  const iconSize = determineIconSize(size);
+  const spacing = determineIconSpacing(size);
+
+  const content = appendIconToContent({
+    children,
+    icon,
+    iconAndTextGap: spacing,
+    iconPosition: 'left',
+    iconSize,
+  });
+  return <BadgeBase {...rest}>{content}</BadgeBase>;
 };
