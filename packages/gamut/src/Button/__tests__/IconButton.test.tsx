@@ -5,7 +5,6 @@ import { setupRtl } from 'component-test-setup';
 import { IconButton } from '../IconButton';
 import { IconButtonFloatingMock } from './mocks';
 
-
 const label = 'Click';
 const tip = 'Click this button';
 const tipText = 'this button';
