@@ -41,12 +41,24 @@ describe('ToolTip', () => {
       view.getByRole('button', { name: 'Click' });
       expect(view.queryByRole('tooltip')).toBeNull();
     });
+
     it('calls onClick when clicked', () => {
       const { view } = renderView({});
 
       userEvent.click(view.getByRole('button'));
 
       expect(onClick).toHaveBeenCalled();
+    });
+
+    it('hides ariaTooltip when there is hideAriaToolTip is true', () => {
+      const { view } = renderView({
+        'aria-label': ariaLabel,
+        hideAriaToolTip: true,
+        info: `${ariaLabel}`,
+      });
+
+      view.getByRole('button', { name: 'Click' });
+      expect(view.queryByRole('tooltip')).toBeNull();
     });
   });
 });
