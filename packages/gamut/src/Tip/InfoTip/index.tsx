@@ -82,7 +82,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const tipProps = {
     alignment,
     escapeKeyPressHandler,
-    info: screenReaderText,
+    info,
     isTipHidden,
     wrapperRef,
     ...rest,
