@@ -60,7 +60,7 @@ describe('ToolTip', () => {
       view.getByRole('button', { name: 'Click' });
       expect(view.queryByRole('tooltip')).toBeNull();
     });
-
+  });
 });
 describe('floating placement', () => {
   it('has an accessible tooltip', () => {
