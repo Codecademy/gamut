@@ -1,0 +1,49 @@
+{
+  "id": "alert-f0moymr7f2",
+  "title": "Alert",
+  "description": "",
+  "statuses": {},
+  "templates": [
+    {
+      "id": "react-U-j5KSG92",
+      "title": "Alert",
+      "path": "../../packages/gamut/src/Alert/Alert.tsx",
+      "alias": "Alert",
+      "templateLanguageId": "react",
+      "spec": {
+        "isInferred": true
+      },
+      "demoIds": ["Z8zgtjdBUX"],
+      "blockIds": ["J35VKyebYz"]
+    }
+  ],
+  "tabs": [
+    {
+      "type": "template",
+      "id": "react-U-j5KSG92"
+    },
+    {
+      "id": "lZ8ETyYrkr",
+      "type": "designSrc"
+    },
+    {
+      "id": "EZqWHk6Dqs",
+      "type": "designSrc"
+    }
+  ],
+  "subPages": [],
+  "designSrcComponentsById": {
+    "lZ8ETyYrkr": {
+      "id": "lZ8ETyYrkr",
+      "componentId": "1118:23",
+      "title": "Figma Component",
+      "fileId": "ReGfRNillGABAj5SlITalN"
+    },
+    "EZqWHk6Dqs": {
+      "id": "EZqWHk6Dqs",
+      "componentId": "27627:31065",
+      "title": "Figma Component",
+      "fileId": "ReGfRNillGABAj5SlITalN"
+    }
+  }
+}

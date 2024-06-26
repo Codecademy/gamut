@@ -5,6 +5,13 @@ blocks:
 demos:
   settings: {}
 settings:
+  designSrcs:
+    files:
+      - fileId: ReGfRNillGABAj5SlITalN
+        name: 📐 Gamut
+        type: figma
+        url: https://www.figma.com/file/ReGfRNillGABAj5SlITalN?version-id=6078232483
+        version: '6078232483'
   logoUrl: ''
   theme:
     appearance:

@@ -1,0 +1,21 @@
+{
+  "id": "J35VKyebYz",
+  "blockType": "callout",
+  "data": {
+    "type": "warning",
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Ask about JS-Doc prop descriptions, failures when trying to restart ks, + our light/dark mode themes"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

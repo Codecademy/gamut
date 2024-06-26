@@ -1,4 +1,4 @@
-import { css } from '@codecademy/gamut-styles';
+import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import { ComponentProps, forwardRef } from 'react';
@@ -7,9 +7,9 @@ import { Box } from '../Box';
 import { AlertProps } from './Alert';
 import { placementVariants } from './variants';
 
-const StyledAlertBanner = styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(
-  placementVariants
-);
+const StyledAlertBanner = styled(Background)<
+  Pick<AlertProps, 'type' | 'placement'>
+>(placementVariants);
 
 export const AlertBanner = forwardRef<
   HTMLDivElement,
