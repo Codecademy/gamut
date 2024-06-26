@@ -20,10 +20,18 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> &
     checked?: boolean;
     disabled?: boolean;
     id?: string;
+    /**
+     * Infotip props to render to the right of your radio label
+     */
     infotip?: InfoTipProps;
-    // A label for your Radio input - should not include infotips or other interactive elements
+    /**
+     * A label for your Radio input - should not include infotips or other interactive elements
+     */
     label?: ReactNode;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    /**
+     * Specifies the tab order of the Radio input
+     */
     tabIndex?: number;
     value?: string;
     readOnly?: boolean;

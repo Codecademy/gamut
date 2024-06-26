@@ -48,6 +48,8 @@ describe('<Radio>', () => {
     expect(tip).not.toBeVisible();
 
     userEvent.click(view.getByRole('button'));
+
+    expect(tip).toBeVisible();
   });
 
   it('accepts additional props not specified by the component', () => {
