@@ -102,6 +102,8 @@
     "build:graph": "nx graph",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
     "deploy": "cp -r ./dist/static/* ./dist/docs && gh-pages -b gh-pages -d dist",
+    "figma:publish": "npx figma connect publish",
+    "figma:create": "npx figma connect create",
     "format": "yarn lint:fix && yarn prettier --write",
     "format:verify": "yarn prettier --check",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\" --max-warnings 0",
