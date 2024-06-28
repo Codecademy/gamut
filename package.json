@@ -6,6 +6,8 @@
   "dependencies": {
     "@babel/cli": "7.20.7",
     "@babel/core": "7.20.12",
+    "@babel/preset-env": "^7.18.6",
+    "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
     "@codecademy/eslint-config": "8.0.0",
     "@codecademy/prettier-config": "^0.2.0",
