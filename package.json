@@ -4,11 +4,6 @@
   "version": "1.2.0",
   "author": "Codecademy Engineers <dev@codecademy.com>",
   "dependencies": {
-    "@babel/cli": "7.20.7",
-    "@babel/core": "7.20.12",
-    "@babel/preset-env": "^7.18.6",
-    "@babel/preset-react": "^7.18.6",
-    "@babel/preset-typescript": "^7.18.6",
     "@codecademy/eslint-config": "8.0.0",
     "@codecademy/prettier-config": "^0.2.0",
     "@codecademy/tsconfig": "^0.2.0",
@@ -72,13 +67,18 @@
     "typescript": "5.1.3"
   },
   "devDependencies": {
+    "@babel/cli": "7.20.7",
+    "@babel/core": "7.20.12",
+    "@babel/preset-env": "^7.18.6",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
     "eslint-plugin-lodash": "^7.4.0",
     "onchange": "^7.0.2",
     "webpack": "5.88.1"
   },
   "engines": {
     "node": "^18.18.2",
-    "yarn": "^1.21.1"
+    "yarn": "^1.22"
   },
   "license": "MIT",
   "lint-staged": {
