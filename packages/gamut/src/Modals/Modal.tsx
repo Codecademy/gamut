@@ -80,7 +80,7 @@ export const Modal: React.FC<ModalProps> = ({
   closeDisabled,
   ...rest
 }) => {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  // const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [currentView, setCurrentView] = useState(0);
   const image = (views?.[currentView].image || rest?.image) ?? null;
 
@@ -89,6 +89,7 @@ export const Modal: React.FC<ModalProps> = ({
       shroud
       onRequestClose={onRequestClose}
       data-testid="modal"
+      tabIndex={-1}
       {...rest}
     >
       <ModalContainer
@@ -100,6 +101,7 @@ export const Modal: React.FC<ModalProps> = ({
         layout={views && views?.length > 0 ? 'dialog' : 'standard'}
         size={size}
         aria-live={ariaLive}
+        // tabIndex={-1}
       >
         {(title || views?.[currentView].title) && (
           <Text
@@ -119,7 +121,7 @@ export const Modal: React.FC<ModalProps> = ({
               icon={MiniDeleteIcon}
               onClick={onRequestClose}
               disabled={closeDisabled}
-              ref={buttonRef}
+              // ref={buttonRef}
               tip="Close modal"
             />
           </Box>
@@ -150,7 +152,7 @@ export const Modal: React.FC<ModalProps> = ({
             variant="primary"
             onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
               setCurrentView(currentView + 1);
-              buttonRef.current?.focus();
+              // buttonRef.current?.focus();
               views?.[currentView].nextCta?.onClick?.(e);
             }}
             gridArea="confirm"
