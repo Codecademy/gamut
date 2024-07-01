@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-tests/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "outputs": ["{projectRoot}/dist"],
@@ -21,10 +22,8 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/gamut-tests"],
       "options": {
-        "jestConfig": "packages/gamut-tests/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "packages/gamut-tests/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }

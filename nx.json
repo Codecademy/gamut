@@ -1,25 +1,5 @@
 {
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx-cloud",
-      "options": {
-        "cacheableOperations": [
-          "lint",
-          "build",
-          "test",
-          "verify",
-          "build-storybook"
-        ],
-        "parallel": 3,
-        "useDaemonProcess": false,
-        "accessToken": "ZmVjZWYxNzctYTdmZC00ODYzLTg4MzEtZTE1YTVmZDdkZmY1fHJlYWQ="
-      }
-    }
-  },
   "extends": "nx/presets/npm.json",
-  "affected": {
-    "defaultBase": "main"
-  },
   "workspaceLayout": {
     "appsDir": "packages",
     "libsDir": "packages"
@@ -37,16 +17,30 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production", "babelConfig"]
+      "inputs": ["production", "^production", "babelConfig"],
+      "cache": true
     },
-    "test": {
+    "verify": {
+      "cache": true
+    },
+    "@nx/jest:jest": {
       "dependsOn": ["^build"],
       "inputs": [
         "default",
         "^production",
         "{workspaceRoot}/jest.preset.js",
         "babelConfig"
-      ]
+      ],
+      "cache": true,
+      "options": {
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
     }
   },
   "generators": {
@@ -60,5 +54,10 @@
       "linter": "eslint"
     }
   },
-  "$schema": "./node_modules/nx/schemas/nx-schema.json"
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "useDaemonProcess": false,
+  "nxCloudAccessToken": "ZmVjZWYxNzctYTdmZC00ODYzLTg4MzEtZTE1YTVmZDdkZmY1fHJlYWQ=",
+  "parallel": 3,
+  "useInferencePlugins": false,
+  "defaultBase": "main"
 }

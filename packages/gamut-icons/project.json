@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-icons/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "outputs": [
@@ -30,10 +31,8 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/gamut-icons"],
       "options": {
-        "jestConfig": "packages/gamut-icons/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "packages/gamut-icons/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }
