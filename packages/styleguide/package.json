@@ -11,7 +11,7 @@
     "@codecademy/gamut-styles": "16.3.0",
     "@codecademy/macros": "3.0.4",
     "@codecademy/variance": "0.21.3",
-    "@codecademy/webpack-config": "6.4.0",
+    "@codecademy/webpack-config": "6.4.1",
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
@@ -43,7 +43,7 @@
     "storybook-addon-designs": "^6.0.1",
     "style-loader": "^1.2.0",
     "typescript": "4.4.2",
-    "webpack": "4.46.0"
+    "webpack": "5.88.1"
   },
   "license": "MIT",
   "publishConfig": {
