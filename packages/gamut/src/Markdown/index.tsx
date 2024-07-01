@@ -5,9 +5,11 @@ import { PureComponent } from 'react';
 import * as React from 'react';
 import sanitizeMarkdown from 'sanitize-markdown';
 
+import { PausableImage } from '../PausableImage';
 import { omitProps } from '../utils/omitProps';
 import {
   createCodeBlockOverride,
+  createImgOverride,
   createInputOverride,
   createTagOverride,
   MarkdownOverrideSettings,
@@ -40,6 +42,7 @@ export type SkipDefaultOverridesSettings = {
   details?: boolean;
   iframe?: boolean;
   table?: boolean;
+  img?: boolean;
 };
 
 export type MarkdownProps = {
@@ -123,6 +126,11 @@ export class Markdown extends PureComponent<MarkdownProps> {
         createInputOverride('checkbox', {
           component: MarkdownCheckbox,
         }),
+      !skipDefaultOverrides.img &&
+        createImgOverride('img', {
+          component: PausableImage,
+        }),
+      ...overrides,
       ...standardOverrides,
     ].filter(Boolean);
 

@@ -201,3 +201,34 @@ export const standardOverrides = [
     processNode: processNodeDefinitions.processDefaultNode,
   },
 ];
+
+// Allows for img tag override, which is separate because it doesn't have children
+export const createImgOverride = (
+  tagName: string,
+  Override: OverrideSettingsBase
+) => ({
+  shouldProcessNode(node: HTMLToReactNode) {
+    if (!Override) return false;
+
+    if (Override.shouldProcessNode) {
+      return Override.shouldProcessNode(node);
+    }
+    return node.name === tagName.toLowerCase();
+  },
+  processNode(node: HTMLToReactNode, key: React.Key) {
+    if (!Override) return null;
+
+    const props = {
+      ...processAttributes(node.attribs),
+      key,
+    };
+
+    if (Override.processNode) {
+      return Override.processNode(node, props);
+    }
+
+    if (!Override.component) return null;
+
+    return <Override.component {...props} />;
+  },
+});
