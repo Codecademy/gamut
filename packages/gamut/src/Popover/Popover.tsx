@@ -30,22 +30,23 @@ const findScrollingParent = ({
 };
 
 export const Popover: React.FC<PopoverProps> = ({
-  animation,
   align = 'left',
+  animation,
   beak,
   children,
   className,
   horizontalOffset = 0,
   isOpen,
+  onDeactivation,
   onRequestClose,
   outline = false,
-  skipFocusTrap,
   pattern: Pattern,
   popoverContainerRef,
   position = 'below',
   role,
-  variant,
+  skipFocusTrap,
   targetRef,
+  variant,
   verticalOffset = variant === 'secondary' ? 15 : 20,
   widthRestricted,
 }) => {
@@ -176,6 +177,7 @@ export const Popover: React.FC<PopoverProps> = ({
           allowPageInteraction
           onClickOutside={handleClickOutside}
           onEscapeKey={onRequestClose}
+          onDeactivation={onDeactivation}
         >
           {contents}
         </FocusTrap>

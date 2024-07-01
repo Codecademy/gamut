@@ -24,6 +24,10 @@ export interface FocusTrapProps extends WithChildrenProp {
    */
   onClickOutside?: ReactFocusOnProps['onClickOutside'];
   /**
+   * Called immediately after  the FocusTrap is closed - especially useful for more complicated programmatic focus management
+   */
+  onDeactivation?: ReactFocusOnProps['onDeactivation'];
+  /**
    * Whether the focus trap is active
    */
   active?: boolean;
@@ -35,17 +39,18 @@ export interface FocusTrapProps extends WithChildrenProp {
   /**
    * Passthrough for react-focus-on library props
    */
-  focusOnProps?: ReactFocusOnProps;
+  focusOnProps?: Omit<ReactFocusOnProps, 'children'>;
 }
 
 export const FocusTrap: React.FC<FocusTrapProps> = ({
-  className,
-  children,
-  onClickOutside,
-  onEscapeKey,
   active = true,
   allowPageInteraction = false,
+  children,
+  className,
   focusOnProps,
+  onClickOutside,
+  onDeactivation,
+  onEscapeKey,
 }) => {
   return (
     <FocusOn
@@ -57,6 +62,7 @@ export const FocusTrap: React.FC<FocusTrapProps> = ({
       scrollLock={!allowPageInteraction}
       noIsolation={allowPageInteraction}
       data-testid="focus-trap"
+      onDeactivation={onDeactivation}
       {...focusOnProps}
     >
       {children}

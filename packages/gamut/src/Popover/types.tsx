@@ -1,9 +1,10 @@
 import { PatternProps } from '@codecademy/gamut-patterns';
 import { HTMLAttributes } from 'react';
 
+import { FocusTrapProps } from '../FocusTrap';
 import { PopoverVariants } from './elements';
 
-export type FocusTrapPopoverProps = {
+export type FocusTrapPopoverProps = Pick<FocusTrapProps, 'onDeactivation'> & {
   /**
    * Called when the Popover requests to be closed,
    * this could be due to clicking outside of the popover, or by clicking the escape key.
@@ -25,6 +26,7 @@ export type SkippedFocusTrapPopoverProps = {
    * Whether to include the focus trap - should only be skipped if parent of Popover is handling focus managment and accessibility (as is the case with FloatingToolTip). This also disables you from being to specify FocusTrap specific event handlers. tl;dr: use with caution
    */
   skipFocusTrap: true;
+  onDeactivation?: never;
 };
 
 export type PopoverBaseProps =

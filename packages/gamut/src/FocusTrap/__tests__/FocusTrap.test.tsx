@@ -4,11 +4,23 @@ import * as React from 'react';
 
 import { FocusTrap, FocusTrapProps } from '..';
 
-const FocusTrapContainer: React.FC<Partial<FocusTrapProps>> = (props) => {
+const FocusTrapContainer: React.FC<Partial<FocusTrapProps>> = ({
+  onClickOutside,
+  ...props
+}) => {
+  const [open, setIsOpen] = React.useState(true);
+
+  const handleOutsideClick = (e: MouseEvent) => {
+    if (onClickOutside) {
+      onClickOutside?.(e);
+    }
+    setIsOpen(false);
+  };
+
   return (
     <div data-testid="focus-trap-outside">
       <button aria-label="Button" type="button" data-testid="button-outside" />
-      <FocusTrap {...props}>
+      <FocusTrap active={open} onClickOutside={handleOutsideClick} {...props}>
         <div data-testid="focus-trap-content">
           Howdy!
           <button
@@ -67,5 +79,17 @@ describe('FocusTrap', () => {
     });
     fireEvent.mouseDown(screen.getByTestId('focus-trap-content'));
     expect(onClickOutside.mock.calls.length).toBe(0);
+  });
+
+  it('calls onDeactivation when FocusTrap is closed', () => {
+    const onDeactivation = jest.fn();
+
+    renderFocusTrap({
+      onDeactivation,
+    });
+
+    fireEvent.mouseDown(screen.getByTestId('focus-trap-outside'));
+
+    expect(onDeactivation).toBeCalledTimes(1);
   });
 });
