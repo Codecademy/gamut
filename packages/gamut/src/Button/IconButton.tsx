@@ -65,6 +65,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
           aria-label={trueAriaLabel}
           ref={ref}
           variant={variant}
+          size={size}
         >
           <Icon size={iconSize} />
         </IconButtonBase>
