@@ -27,7 +27,7 @@ describe('ButtonBase', () => {
     const { view } = renderView({ href: '' });
 
     view.getByText(buttonText);
-    view.getByRole('link');
+    expect(view.container.querySelector('a')?.getAttribute('href')).toBe('');
   });
 
   it('renders a button with the correct role', () => {

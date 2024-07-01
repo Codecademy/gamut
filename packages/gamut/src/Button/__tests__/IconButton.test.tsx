@@ -23,12 +23,12 @@ const renderView = setupRtl(IconButton, buttonProps);
 const renderFloatingView = setupRtl(IconButtonFloatingMock, buttonProps);
 
 describe('IconButton', () => {
-  it('renders a clickable button', () => {
+  it('renders a clickable button', async () => {
     const { view } = renderView();
 
     const cta = view.getByRole('button', { name: label });
 
-    userEvent.click(cta);
+    await userEvent.click(cta);
 
     expect(onClick).toHaveBeenCalled();
   });
@@ -70,7 +70,7 @@ describe('IconButton', () => {
 
     expect(view.queryByText('tooltip')).toBeNull();
 
-    userEvent.hover(cta);
+    await userEvent.hover(cta);
 
     view.getByText(tip);
   });

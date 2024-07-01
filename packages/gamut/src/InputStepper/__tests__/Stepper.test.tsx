@@ -1,5 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { fireEvent } from '@testing-library/dom';
+import { userEvent } from '@testing-library/user-event';
 
 import { InputStepper } from '..';
 import { ControlledStepperTest } from '../__fixtures__/helpers';
@@ -30,7 +30,7 @@ describe('InputStepper', () => {
     getRoleAndTestValue({ view, value: 4 });
   });
 
-  it('handles out of bounds data after a change', () => {
+  it('handles out of bounds data after a change', async () => {
     const { view } = renderWrappedView({ min: 2, max: 4, value: 3 });
 
     const downButton = view.getByRole('button', {
@@ -41,10 +41,10 @@ describe('InputStepper', () => {
     });
     const field = view.getByRole('spinbutton');
 
-    fireEvent.click(downButton);
+    await userEvent.click(downButton);
     expect(field).toHaveValue(2);
 
-    fireEvent.click(upButton);
+    await userEvent.click(upButton);
     expect(field).toHaveValue(3);
   });
 
