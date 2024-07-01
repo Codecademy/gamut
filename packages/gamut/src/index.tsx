@@ -10,7 +10,7 @@ export * from './BodyPortal';
 export * from './Box';
 export * from './Breadcrumbs';
 export * from './Button';
-export type { ButtonBaseElements } from './ButtonBase/ButtonBase';
+export * from './ButtonBase/ButtonBase';
 export * from './ButtonDeprecated';
 export * from './ButtonDeprecatedBase';
 export * from './Card';
