@@ -4,6 +4,8 @@ import styled from '@emotion/styled';
 import { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 import * as React from 'react';
 
+import { FlexBox } from '../../Box';
+import { InfoTip, InfoTipProps } from '../../Tip';
 import {
   conditionalRadioInputStyles,
   conditionalRadioLabelStyles,
@@ -18,8 +20,18 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> &
     checked?: boolean;
     disabled?: boolean;
     id?: string;
+    /**
+     * Infotip props to render to the right of your radio label
+     */
+    infotip?: InfoTipProps;
+    /**
+     * A label for your Radio input - should not include infotips or other interactive elements
+     */
     label?: ReactNode;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    /**
+     * Specifies the tab order of the Radio input
+     */
     tabIndex?: number;
     value?: string;
     readOnly?: boolean;
@@ -46,17 +58,18 @@ const conditionalStyleState = (error?: boolean, disabled?: boolean) => {
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
     {
-      name,
-      value,
-      label,
       checked,
       className,
       disabled,
+      error,
       htmlFor,
+      id,
+      infotip,
+      label,
+      name,
       onChange,
       required,
-      id,
-      error,
+      value,
       ...rest
     },
     ref
@@ -82,6 +95,11 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         <RadioLabel htmlFor={htmlFor} disabled={disabled} variant={styleState}>
           {label}
         </RadioLabel>
+        {infotip && (
+          <FlexBox center pl={8}>
+            <InfoTip {...infotip} />
+          </FlexBox>
+        )}
       </RadioWrapper>
     );
   }
