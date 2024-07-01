@@ -103,6 +103,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
             // See https://codecademy.atlassian.net/browse/WEB-1214
             return (
               <MarkdownAnchor
+                key={props.key}
                 onClick={onAnchorClick}
                 {...(props as MarkdownAnchorProps)}
               />

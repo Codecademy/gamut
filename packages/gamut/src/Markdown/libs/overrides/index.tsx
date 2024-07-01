@@ -25,6 +25,11 @@ export interface HTMLToReactNode {
   parent: HTMLToReactNode;
 }
 
+export interface HTMLToReactProps {
+  key: React.Key;
+  [x: string]: any;
+}
+
 // Mapping of html attributes to their camelCase variants
 const attributeMap: { [key: string]: string } = {
   ...camelCaseMap,
@@ -35,7 +40,10 @@ const attributeMap: { [key: string]: string } = {
 type OverrideSettingsBase = {
   component?: React.ComponentType<any>;
   allowedAttributes?: string[];
-  processNode?: (node: HTMLToReactNode, props: object) => React.ReactNode;
+  processNode?: (
+    node: HTMLToReactNode,
+    props: HTMLToReactProps
+  ) => React.ReactNode;
   shouldProcessNode?: (node: HTMLToReactNode) => boolean;
 };
 
@@ -44,7 +52,10 @@ interface OverrideSettingsComponent extends OverrideSettingsBase {
 }
 
 interface OverrideSettingsProcessNode extends OverrideSettingsBase {
-  processNode: (node: HTMLToReactNode, props: object) => React.ReactNode;
+  processNode: (
+    node: HTMLToReactNode,
+    props: HTMLToReactProps
+  ) => React.ReactNode;
 }
 
 export type MarkdownOverrideSetting =
