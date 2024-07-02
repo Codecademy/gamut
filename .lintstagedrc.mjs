@@ -22,9 +22,9 @@ export default {
 
     if (eslintFiles.length) {
       commands.push(
-        `node_modules/@codecademy/eslint-config/bin/eslint-fix.js ${eslintFiles.join(
-          ' '
-        )}`
+        `node_modules/@codecademy/eslint-config/bin/eslint-fix.js ${eslintFiles
+          .map((filename) => `"${filename}"`)
+          .join(' ')}`
       );
     }
 
