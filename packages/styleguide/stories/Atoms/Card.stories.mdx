@@ -65,6 +65,20 @@ We provide 3 style variants for shadow.
   </Story>
 </Canvas>
 
+Examples with variant = hyper.
+
+<Canvas>
+  <Story name="SmallVariant" args={{ shadow: 'small', variant: 'hyper' }}>
+    {(args) => <Card {...args} />}
+  </Story>
+  <Story name="MediumVariant" args={{ shadow: 'medium', variant: 'hyper' }}>
+    {(args) => <Card {...args} />}
+  </Story>
+  <Story name="OutlineVariant" args={{ shadow: 'outline', variant: 'hyper' }}>
+    {(args) => <Card {...args} />}
+  </Story>
+</Canvas>
+
 ### Shadow Variant "outline" with color
 
 The outline color will inherit the color of the card.
