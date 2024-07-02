@@ -5,8 +5,6 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
-import { WithChildrenProp } from '..';
-
 const PortalWrapper = styled
   .div(
     system.css({
@@ -20,7 +18,7 @@ const PortalWrapper = styled
   )
   .withComponent(ColorMode);
 
-export const BodyPortal: React.FC<WithChildrenProp> = ({ children }) => {
+export const BodyPortal = ({ children }: React.PropsWithChildren) => {
   const [ready, setReady] = useState(false);
   const mode = useCurrentMode();
 
