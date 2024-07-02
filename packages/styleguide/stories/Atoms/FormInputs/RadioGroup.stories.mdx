@@ -1,0 +1,36 @@
+import { Radio, RadioGroup } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+export const exampleRadios = [{ id: '1' }, { id: '2' }];
+
+<Meta
+  title={title}
+  component={RadioGroup}
+  parameters={{
+    subtitle:
+      'A helper element for grouping multiple `<Radio />` components semantically.',
+    source: 'gamut',
+    status: 'current',
+  }}
+  args={{
+    htmlFor: 'example-radio',
+    label: 'A radio Label',
+    name: 'example-radio',
+    children: exampleRadios.map(({ id }) => (
+      <Radio key={id} value={id} label={`Radio ${id}`} />
+    )),
+  }}
+  argTypes={{
+    children: {
+      control: { disable: true },
+    },
+  }}
+/>
+
+<Canvas>
+  <Story name="RadioGroup">{(args) => <RadioGroup {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="RadioGroup" />

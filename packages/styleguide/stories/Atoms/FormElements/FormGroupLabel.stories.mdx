@@ -1,0 +1,60 @@
+import { FormGroupLabel } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={FormGroupLabel}
+  parameters={{
+    subtitle: 'A label element to be tied to a group of elements',
+    source: 'gamut',
+    status: 'current',
+  }}
+  args={{ children: 'I am a label' }}
+/>
+
+<Canvas>
+  <Story name="FormGroupLabel">
+    {(args) => <FormGroupLabel htmlFor="label-default" {...args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="FormGroupLabel" />
+
+### Label Variants
+
+<Canvas>
+  <Story name="FormGroupLabelLarge">
+    {(args) => <FormGroupLabel htmlFor="label-large" size="large" {...args} />}
+  </Story>
+  <Story name="FormGroupLabelRequired">
+    {(args) => (
+      <FormGroupLabel htmlFor="label-required" showRequired {...args} />
+    )}
+  </Story>
+  <Story name="FormGroupLabeldisabled">
+    {(args) => <FormGroupLabel htmlFor="label-disabled" disabled {...args} />}
+  </Story>
+</Canvas>
+
+### Label htmlFor
+
+It is best to provide `htmlFor` to both the FormGroup + inner form element to make it super accessible. If this is not provided, the FormLabel will default to `<div>`. If an `htmlFor` is provided, it will be a `<label>`.
+
+<Canvas>
+  <Story name="FormGroupLabelasLabel">
+    {() => (
+      <FormGroupLabel htmlFor="label">
+        I look like a label, and I am a label.
+      </FormGroupLabel>
+    )}
+  </Story>
+  <Story name="FormGroupLabelasDiv">
+    {() => (
+      <FormGroupLabel>
+        I may look like a label, but I'm actually a div.
+      </FormGroupLabel>
+    )}
+  </Story>
+</Canvas>

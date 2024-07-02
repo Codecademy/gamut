@@ -1,0 +1,96 @@
+import { Alert } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { LinkTo } from '~styleguide/blocks';
+
+import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
+
+<Meta
+  title={title}
+  parameters={{
+    subtitle:
+      'Make clear what you’re alerting the user to. Then, clarify any next steps they need to take or inform them about the timing of a resolution on our end.',
+  }}
+/>
+
+Alerts are used to display important information and, if relevant, provide relevant actions the learner needs to take to resolve the alert.
+
+Alerts are similar to <LinkTo id="ux-writing-component-guidelines-error-messages--page">error messages</LinkTo>, but the approach is slightly different. An error message informs users of **what went wrong** and **how to proceed**, but with an alert nothing has gone wrong _yet_.
+
+Alerts should make clear **what the issue or information is** and **how to proceed**. In the event of an alert, the user might need to take action to proceed _or_ they may simply need to be informed that _we_ will be taking action within a specific timeframe.
+
+<Story name="Examples" />
+
+## Examples
+
+<br />
+
+<Alert type="general" cta={{ children: 'Resend verification' }}>
+  Please verify your email so we can make sure your account is secure. A link
+  has been sent to name@email.com.
+</Alert>
+
+<br />
+
+<Alert type="success" cta={{ children: '' }}>
+  Success! Your content has been assigned.
+</Alert>
+
+<br />
+
+<Alert type="error" cta={{ children: '' }}>
+  We were unable to add this team member. Please refresh the page and try again.
+</Alert>
+
+<br />
+
+<Alert type="notice" cta={{ children: 'Learn more' }}>
+  Maintenance: Codecademy will be offline between 2AM and 4AM EST.
+</Alert>
+
+<br />
+
+<Alert type="feature" cta={{ children: 'Add your name' }}>
+  Update your profile with your name to help your team with account management.
+</Alert>
+
+<br />
+
+<Story name="Best practices" />
+
+## Best practices
+
+- **Start with the full context in mind.** Your goal is to alert the learner without frustration. That's why, before you start writing, you'll need to know answers to the following questions:
+  1. What will a learner be trying to do when this alert appears?
+  2. What might happen if the learner doesn't receive the information in this alert?
+  3. Does the learner need to take action to remove the alert?
+  4. If the learner can't resolve the alert on their own, what information can we provide so they know what to expect?
+- **Explain and clarify how to proceed.** Inform learners of the issue or information (explain) and let them know how to proceed. For example, we may alert learners that they need to verify their email address before they can update their profile. If there is no way for them to proceed, don't just leave them hanging. For instance, if the site has scheduled downtime, let them know when it will be back up. If more information is needed, prompt them to contact customer support or share a link to an FAQ where they can learn more.
+- **Write in a conversational style.** Oftentimes, alerts end up sounding robotic. Instead of writing like a computer, write like a human. Before you start writing, try explaining things to yourself or someone else out loud. This practice can help you figure out how to write the alert in a more human way.
+- **Front-load the most important information.** While our alert component allows for multiple lines of text, we truncate after the first line and users can expand to see the full message.
+
+<Story name="Checklist" />
+
+## Checklist
+
+<CustomCheckbox
+  htmlFor="alerts-1"
+  label="Does the alert explain the information or issue clearly?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="alerts-2"
+  label="If relevant, have you explained what the user can do to resolve the alert or what we're doing on our end?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="alerts-3"
+  label="Is important information front-loaded?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="alerts-4"
+  label="Have you asked someone unrelated to the project to read the message and did they understand it?"
+  spacing="tight"
+/>

@@ -1,0 +1,35 @@
+import { InputStepper } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={InputStepper}
+  parameters={{
+    subtitle: `
+Input Steppers allow for finetuned control over numeric values. They
+override the default styles for numeric inputs.`,
+    source: 'gamut',
+    status: 'deprecated',
+  }}
+  args={{
+    min: 0,
+    max: 999,
+    ariaLabel: 'input stepper',
+    label: 'things',
+    value: 99,
+  }}
+/>
+
+Steppers will default to a small size if selecting over values that are
+at most 1 digit, and choose a wider format sutable for 3 digits
+otherwise.
+
+Steppers are not appropriate for values larger than three digits.
+
+<Preview>
+  <Story name="InputStepper">{(args) => <InputStepper {...args} />}</Story>
+</Preview>
+
+<PropsTable story="InputStepper" />

@@ -1,0 +1,212 @@
+import {
+  Box,
+  FillButton,
+  FlexBox,
+  Flyout,
+  StrokeButton,
+  Text,
+} from '@codecademy/gamut/src';
+import { Background } from '@codecademy/gamut-styles';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { useState } from 'react';
+
+import { LinkTo } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={Flyout}
+  parameters={{
+    subtitle:
+      'Flyout is a general purpose container that animates into view. On button click, a container animates in from the left side of the window. It can be configured to close by pressing the "X" close icon, pressing they "esc" key, and/or clicking outside of the container.',
+    source: 'gamut',
+    status: 'current',
+  }}
+/>
+
+An example of an organism that uses Flyout is the <LinkTo id="organisms-layoutmenu--layout-menu">LayoutMenu</LinkTo>.
+Internally, Flyout is a combination of <LinkTo id="molecules-modals-overlay--overlay">Overlay</LinkTo> and <LinkTo id="atoms-drawer--drawer">Drawer</LinkTo>.
+
+Our Flyouts are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded` and `onChange`:
+
+<Canvas>
+  <Story name="Flyout">
+    {(args) => {
+      const [expanded, setExpanded] = useState(false);
+      return (
+        <Box height="20rem">
+          <Flyout
+            {...args}
+            expanded={expanded}
+            title="About Baharroth"
+            onClose={() => setExpanded(false)}
+          >
+            <Box textColor="text" m={16}>
+              Baharroth, &quot;the Cry of the Wind,&quot; is the Winged Phoenix,
+              the oldest of the Swooping Hawks and the first Exarch of those
+              winged Aspect Warriors. Baharroth is the founder of the Eldar
+              Warrior Path that is represented today by the Swooping Hawks
+              Aspect Shrines. Baharroth is also known for his speed and is said
+              to be the fastest of all the Eldar who have ever lived, a
+              formidable claim that would make him a deadly opponent indeed.
+              Though he moves with the subtlety and grace of a zephyr, he
+              attacks with the force of a hurricane.
+            </Box>
+          </Flyout>
+          <StrokeButton onClick={() => setExpanded(true)}>
+            Tell me more?!
+          </StrokeButton>
+          <FlexBox>
+            An Avatar of Khaine is the term normally applied to the physical
+            form that the spirit of an Eldar God has managed to possess and
+            animate. This term is most often applied to the physical body
+            possessed by a fragment of the spirit of the Eldar God of War Kaela
+            Mensha Khaine, though the term can actually apply to any divine
+            entity of the Warp that has found some way to take on a corporeal
+            form within realspace.
+          </FlexBox>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Props story="Flyout" />
+
+## Flyout in Dark Mode
+
+Flyouts work in light and dark `ColorModes`.
+
+<Canvas>
+  <Story name="Flyout in DarkMode">
+    {(args) => {
+      const [expanded, setExpanded] = useState(false);
+      return (
+        <Background bg="black">
+          <Box height="20rem" p={12}>
+            <Flyout
+              {...args}
+              expanded={expanded}
+              title="Traitor Legions, Renegade Space Marine Chapters"
+              onClose={() => setExpanded(false)}
+            >
+              <Box bg="background" textColor="text" m={16}>
+                <Text as="h3" mb={4} variant="title-xs">
+                  tl;dr
+                </Text>
+                <Text mb={4}>
+                  Several of the Renegades listed here are simply Space Marine
+                  Chapters that have turned on the Imperium of Man or been
+                  unfairly declared Excommunicate Traitoris for one reason or
+                  another, but still view themselves as loyal to the Emperor of
+                  Mankind and not to the corrupt edifice of the Imperium His
+                  servants have built over the last 10,000 years.
+                </Text>
+                <Text fontStyle="italic" color="text-disabled">
+                  These types of Renegade Chapters are certainly no friends of
+                  Chaos or the other enemies of Humanity, though their lack of
+                  allies can often lead even the best-intentioned Renegades down
+                  the ultimate path of corruption to the willing worship of the
+                  Dark Powers, if only to secure their own survival when they
+                  are beset on all sides by enemies.
+                </Text>
+              </Box>{' '}
+            </Flyout>
+            <FillButton size="small" onClick={() => setExpanded(true)}>
+              Tell me more...
+            </FillButton>
+            <FlexBox mt={16}>
+              Renegade Chapters are generally made up of Chaos Space Marines
+              whose Chapters or companies turned to Chaos after the end of the
+              Horus Heresy, sometimes many millennia later. Some are not whole
+              Chapters but simply warbands composed of a few tens or hundreds of
+              Astartes drawn from the same original source and led by a
+              charismatic commander or Chaos Lord.
+            </FlexBox>
+          </Box>
+        </Background>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Flyout with Overflow
+
+Flyouts scroll on vertical overflow and keep the background color.
+
+<Canvas>
+  <Story name="Flyout with Overflow">
+    {(args) => {
+      const [expanded, setExpanded] = useState(false);
+      return (
+        <Box height="20rem" p={12}>
+          <Flyout
+            {...args}
+            expanded={expanded}
+            title="Traitor Legions, Renegade Space Marine Chapters"
+            onClose={() => setExpanded(false)}
+            bg="beige"
+          >
+            <Box textColor="text" m={16}>
+              Several of the Renegades listed here are simply Space Marine
+              Chapters that have turned on the Imperium of Man or been unfairly
+              declared Excommunicate Traitoris for one reason or another, but
+              still view themselves as loyal to the Emperor of Mankind and not
+              to the corrupt edifice of the Imperium His servants have built
+              over the last 10,000 years. These types of Renegade Chapters are
+              certainly no friends of Chaos or the other enemies of Humanity,
+              though their lack of allies can often lead even the
+              best-intentioned Renegades down the ultimate path of corruption to
+              the willing worship of the Dark Powers, if only to secure their
+              own survival when they are beset on all sides by enemies. Several
+              of the Renegades listed here are simply Space Marine Chapters that
+              have turned on the Imperium of Man or been unfairly declared
+              Excommunicate Traitoris for one reason or another, but still view
+              themselves as loyal to the Emperor of Mankind and not to the
+              corrupt edifice of the Imperium His servants have built over the
+              last 10,000 years. These types of Renegade Chapters are certainly
+              no friends of Chaos or the other enemies of Humanity, though their
+              lack of allies can often lead even the best-intentioned Renegades
+              down the ultimate path of corruption to the willing worship of the
+              Dark Powers, if only to secure their own survival when they are
+              beset on all sides by enemies. Several of the Renegades listed
+              here are simply Space Marine Chapters that have turned on the
+              Imperium of Man or been unfairly declared Excommunicate Traitoris
+              for one reason or another, but still view themselves as loyal to
+              the Emperor of Mankind and not to the corrupt edifice of the
+              Imperium His servants have built over the last 10,000 years. These
+              types of Renegade Chapters are certainly no friends of Chaos or
+              the other enemies of Humanity, though their lack of allies can
+              often lead even the best-intentioned Renegades down the ultimate
+              path of corruption to the willing worship of the Dark Powers, if
+              only to secure their own survival when they are beset on all sides
+              by enemies. Several of the Renegades listed here are simply Space
+              Marine Chapters that have turned on the Imperium of Man or been
+              unfairly declared Excommunicate Traitoris for one reason or
+              another, but still view themselves as loyal to the Emperor of
+              Mankind and not to the corrupt edifice of the Imperium His
+              servants have built over the last 10,000 years. These types of
+              Renegade Chapters are certainly no friends of Chaos or the other
+              enemies of Humanity, though their lack of allies can often lead
+              even the best-intentioned Renegades down the ultimate path of
+              corruption to the willing worship of the Dark Powers, if only to
+              secure their own survival when they are beset on all sides by
+              enemies.
+            </Box>
+          </Flyout>
+          <FillButton size="small" onClick={() => setExpanded(true)}>
+            Tell me more...
+          </FillButton>
+          <FlexBox mt={16}>
+            Renegade Chapters are generally made up of Chaos Space Marines whose
+            Chapters or companies turned to Chaos after the end of the Horus
+            Heresy, sometimes many millennia later. Some are not whole Chapters
+            but simply warbands composed of a few tens or hundreds of Astartes
+            drawn from the same original source and led by a charismatic
+            commander or Chaos Lord.
+          </FlexBox>
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>

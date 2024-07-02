@@ -1,0 +1,150 @@
+import { Anchor, Box, GridBox, Text, Toast } from '@codecademy/gamut/src';
+import { TrophyIcon } from '@codecademy/gamut-icons';
+import { Target } from '@codecademy/gamut-illustrations';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { LinkTo, PropsTable } from '~styleguide/blocks';
+
+import { CustomCheckbox } from '../Atoms/FormInputs/examples';
+
+<Meta
+  title={title}
+  component={Toast}
+  parameters={{
+    subtitle: 'A toast component for asynchronous user feedback.',
+    source: 'gamut',
+    status: 'updating',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1086%3A0',
+    },
+  }}
+  args={{
+    children: 'I am a toast hear me roar!',
+  }}
+/>
+
+<br />
+
+## Usage Guidelines
+
+- Can be used when an immediate feedback is needed for learners upon completing a learning task. (E.g. unlocking an achievement during learning)
+- Should NOT repeat messages that are recieved in the notification bell.
+- Appears at the bottom right of the screen.
+- Slides in to the screen and when canceled, slides back and leaves the screen.
+
+### Key Principles
+
+- Only one should appear at the screen at a time.
+- Toasts shouldn’t distract from learning. Be hesitant to use them in the Learning Environment, especially for messages that can be communicated outside of the LE.
+
+## Writing Tips
+
+When writing copy for a toast, Keep it brief, ensure the message is personal and relevant, and avoid distracting from the learning experience. Refer to the checklist below for guidance. To learn more, check out the full <LinkTo id="ux-writing-component-guidelines-toasts--page">writing guide about toasts</LinkTo>.
+
+<CustomCheckbox
+  htmlFor="toast-1"
+  label="Keep toast copy to 3 lines (including the title)."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="toast-2"
+  label="Ensure the messaging is relevant to all learners that will see it."
+  spacing="tight"
+/>
+
+## Styling
+
+- Has a fixed width
+- Height changes depends on the body-text length.
+- Max. 3 rows of body-text is recommended.
+- Has variants, and colored different for light and dark theme.
+- Uses pattern at 80% opacity to give component depth.
+
+export const exampleToasts = [
+  {
+    icon:
+      'https://static-assets.codecademy.com/assets/achievements/weekly-streak-4.svg',
+    title: 'I have a toast!',
+    children: "Here's to us :)",
+  },
+  {
+    icon:
+      'https://static-assets.codecademy.com/assets/achievements/weekly-streak-2.svg',
+    children:
+      'This message can be longer than most as we do not have to worry about a title taking all the space.',
+  },
+  { title: 'I have a toast!', children: "Here's to us :)" },
+  {
+    children:
+      'This message can be longer than most as we do not have to worry about a title or icon taking all the space.',
+  },
+];
+
+<Story name="Layouts">
+  <GridBox py={24} gap={32} gridTemplateColumns="max-content max-content">
+    {exampleToasts.map((toast) => (
+      <Box>
+        <Text variant="title-xs" mb={16}>
+          {Object.keys(toast).join(' + ')}
+        </Text>
+        <Box>
+          <Toast key={toast.message} {...toast} />
+        </Box>
+      </Box>
+    ))}
+  </GridBox>
+</Story>
+
+### Icons
+
+Icons can either be urls or react nodes:
+
+- Images will be sized correctly by default and resolved as a background image.
+- If you choose to use a custom element you must cofigure the content to be the correct width (64x64) and fit within the containing circle manually.
+
+<Story name="JSX Icon">
+  <Toast icon={<Target width="100%" />}>
+    Inline has hasn't been this cool since the disney channel original movie
+    Brink!
+  </Toast>
+</Story>
+
+### Content
+
+Toasts can have other content internal to each section like links or icons.
+
+<Story name="Title Icons">
+  <GridBox py={24} gap={32} gridTemplateColumns="max-content max-content">
+    <Box>
+      <Toast
+        title={
+          <>
+            <TrophyIcon verticalAlign="middle" mr={4} /> Congrats you won!
+          </>
+        }
+      >
+        Some message that informs you where to claim your physical trophy.
+      </Toast>
+    </Box>
+    <Box>
+      <Toast>
+        Feedback fruit loops. <Anchor>Go go go!</Anchor>
+      </Toast>
+    </Box>
+  </GridBox>
+</Story>
+
+<Story name="Links" />
+
+### Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<Canvas>
+  <Story name="Toast">{(args) => <Toast {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Toast" />

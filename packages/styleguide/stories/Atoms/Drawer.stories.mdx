@@ -1,0 +1,46 @@
+import { Drawer, FlexBox, StrokeButton } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/blocks';
+import { useState } from 'react';
+
+import { LinkTo } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={Drawer}
+  parameters={{
+    subtitle:
+      'Animated container that expands horizontally to show its contents.',
+    source: 'gamut',
+    status: 'current',
+  }}
+/>
+
+Drawers animate between having `0` width and having a responsive width:
+
+- Mobile devices (&lt;`sm`): `75vw`
+- Tablet and larger (&gt;=`sm`): `30rem`
+
+An example of a molecule that uses Drawer is the <LinkTo id="molecules-flyout--flyout">Flyout</LinkTo>.
+
+Our Drawers are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded`.
+
+<Canvas>
+  <Story name="Drawer">
+    {() => {
+      const [expanded, setExpanded] = useState(false);
+      return (
+        <FlexBox bg="paleYellow" height="20rem">
+          <Drawer expanded={expanded}>Drawer content in here!</Drawer>
+          <StrokeButton
+            onClick={() => setExpanded((previousExpanded) => !previousExpanded)}
+          >
+            Toggle Drawer
+          </StrokeButton>
+        </FlexBox>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Props story="Drawer" />
