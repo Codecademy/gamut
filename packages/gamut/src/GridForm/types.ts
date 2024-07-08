@@ -92,7 +92,7 @@ export type GridFormTextField = BaseFormField<string> & {
   type: BasicInputType;
 };
 
-export type GridFormRadioOption = {
+export type GridFormRadioOption = Pick<BaseFormField<string>, 'infotip'> & {
   label: ReactNode;
   value: string;
 };
