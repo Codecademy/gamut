@@ -15,6 +15,13 @@ const config = {
     'scripts',
   ],
   sortFirst: ['name', 'description', 'version', 'author'],
+  semverGroups: [
+    {
+      range: '',
+      dependencies: ['@codecademy/**'],
+      packages: ['**'],
+    },
+  ],
 };
 
 module.exports = config;

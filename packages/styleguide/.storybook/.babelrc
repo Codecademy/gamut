@@ -1,0 +1,45 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "forceAllTransforms": true,
+        "targets": "defaults"
+      }
+    ],
+    [
+      "@babel/react",
+      {
+        "runtime": "automatic"
+      }
+    ],
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    "macros",
+    [
+      "@emotion",
+      {
+        "sourceMap": true,
+        "autoLabel": "always",
+        "labelFormat": "[local]",
+        "cssPropOptimization": true
+      }
+    ]
+  ],
+  "ignore": [],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "modules": "commonjs",
+            "targets": "defaults"
+          }
+        ]
+      ],
+      "plugins": ["require-context-hook"]
+    }
+  }
+}

@@ -5,7 +5,8 @@ tests
 powered-test
 
 # asset directories
-docs
+
+# docs (incompatible with storybook)
 website
 images
 

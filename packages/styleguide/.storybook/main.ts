@@ -23,7 +23,7 @@ module.exports = {
   ],
   stories: ['../stories/**/*.stories.@(mdx|tsx)'],
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
+    reactDocgen: 'react-docgen-typescript-plugin',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
@@ -36,27 +36,28 @@ module.exports = {
       },
     },
   },
-  babel: async (options: { presets: any }) => {
-    return {
-      ...options,
-      presets: [
-        ...options.presets,
-        [
-          '@babel/preset-react',
-          {
-            runtime: 'automatic',
-          },
-          'preset-react-jsx-transform', // Can name this anything, just an arbitrary alias to avoid duplicate presets'
-        ],
-      ],
-    };
-  },
+  // babel: async (options: { presets: any }) => {
+  //   console.log(JSON.stringify(options, null, 2));
+  //   return {
+  //     ...options,
+  //     presets: [
+  //       ...options.presets,
+  //       // [
+  //       //   '@babel/preset-react',
+  //       //   {
+  //       //     runtime: 'automatic',
+  //       //   },
+  //       //   'preset-react-jsx-transform', // Can name this anything, just an arbitrary alias to avoid duplicate presets'
+  //       // ],
+  //     ],
+  //   };
+  // },
 
   webpackFinal: (config: any) => {
     config.module.rules = config.module.rules.concat(
       configs.css().module.rules
     );
-
+    // console.log(JSON.stringify(config, null, 2));
     config.module.rules.push({
       test: /\.mjs$/,
       include: /node_modules/,

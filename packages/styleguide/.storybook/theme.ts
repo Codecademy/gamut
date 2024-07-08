@@ -3,7 +3,7 @@ import {
   theme as gamutTheme,
   trueColors,
   coreSwatches,
-} from '@codecademy/gamut-styles/src';
+} from '@codecademy/gamut-styles';
 import logo from './assets/logo.svg';
 
 const isLocalhost = globalThis.location?.toString().includes('localhost');

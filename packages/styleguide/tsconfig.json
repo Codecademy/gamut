@@ -6,7 +6,9 @@
       "~styleguide/blocks": [".storybook/components"],
       "@codecademy/storybook-addon-variance": [
         ".storybook/addons/system/components"
-      ]
+      ],
+      "@codecademy/variance*": ["../variance/src/*"],
+      "@codecademy/gamut-styles*": ["../gamut-styles/src/*"]
     },
     "allowJs": true,
     "noEmit": true,
