@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.25.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.2...@codecademy/gamut@55.25.3) (2024-07-08)
+
+### Bug Fixes
+
+- **Alert:** height and alignment ([fae2fb7](https://github.com/Codecademy/gamut/commit/fae2fb7bd2ba84e4faf916c35fff6160c854f05d))
+
 ### [55.25.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.1...@codecademy/gamut@55.25.2) (2024-07-08)
 
 ### Bug Fixes
