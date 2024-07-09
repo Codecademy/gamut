@@ -12,6 +12,10 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
+import {
+  ModalExample
+} from './Modal.examples';
+
 <Meta
   title={title}
   component={Modal}
@@ -294,6 +298,16 @@ Overflow for images will be cut off, so make sure the image is correctly sized f
         </Text>
       </Modal>
     )}
+  </Story>
+</Canvas>
+
+### Triggering a Modal
+
+<Canvas>
+  <Story name="Center Beak">
+    {(args) => {
+      return <ModalExample/>;
+    }}
   </Story>
 </Canvas>
 
