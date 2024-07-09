@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.29.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.3...@codecademy/styleguide@66.29.4) (2024-07-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.29.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.2...@codecademy/styleguide@66.29.3) (2024-07-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.29.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.1...@codecademy/styleguide@66.29.2) (2024-07-01)
+
+### Bug Fixes
+
+- **Radio:** infotip prop ([f7f1aa6](https://github.com/Codecademy/gamut/commit/f7f1aa64fd2ad5986119710b795c3aafd1cc564c))
+
+### [66.29.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.0...@codecademy/styleguide@66.29.1) (2024-07-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ## [66.29.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.28.0...@codecademy/styleguide@66.29.0) (2024-06-26)
 
 ### Features

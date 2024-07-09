@@ -43,6 +43,7 @@ export const placementVariants = variant({
   prop: 'placement',
   base: {
     alignItems: 'start',
+    borderRadius: '3px',
     columnGap: { _: 4, xs: 8, sm: 12 },
     display: 'grid',
     maxWidth: `calc(${breakpoints.md} - 4rem)`,
@@ -52,12 +53,10 @@ export const placementVariants = variant({
   variants: {
     inline: {
       border: 'none',
-      borderRadius: '3px',
       py: 8,
     },
     floating: {
       borderColor: 'navy',
-      borderRadius: '5px',
       borderStyle: 'solid',
       borderWidth: '2px',
       py: 4,
