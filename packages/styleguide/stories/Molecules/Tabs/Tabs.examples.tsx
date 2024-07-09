@@ -1,7 +1,7 @@
 import {
   Badge,
   FillButton,
-  InputStepper,
+  Input,
   Tab,
   TabList,
   TabNav,
@@ -60,11 +60,11 @@ export const TabsControlledExample = () => {
   return (
     <>
       <Background bg="yellow" mb={24} p={12}>
-        <InputStepper
+        <Input
           label="Tab Index"
-          ariaLabel="Tab Index"
           value={controlledIndex}
           onChange={setIndex}
+          type="number"
         />
       </Background>
       <Tabs index={controlledIndex} onChange={setIndex}>
