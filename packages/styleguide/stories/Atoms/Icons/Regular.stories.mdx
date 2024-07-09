@@ -39,25 +39,11 @@ import { ICONS, LE_ICONS, UI_ICONS, VENDOR_ICONS } from './constants';
 />
 
 ## General Infomation
+For regular icons, we use a subset of [Streamline's "Ultimate Regular" icons](https://www.streamlinehq.com/icons/streamline-regular).
 
-We use a subset of [streamline icons](https://app.streamlineicons.com/streamline-regular), mainly the Outline version of the Regular set.
-
-We like to standardize our icons by using a viewBox size of `"0 0 24 24"`. Icons should be centered and take up the entirety of this viewBox.
+Our icons by using standardized with a viewBox size of `"0 0 24 24"`. Icons should be centered and take up the entirety of this viewBox.
 
 All of our Icons are not minified by default, and optimized by [SVGO](https://github.com/svg/svgo) before build time. We like to preserve the source URL as well as any relevent comments or metadata within these SVGs.
-
-## Adding An Icon
-
-If you cannot find the Icon you would like in the ones that we have specified here, please follow these steps to add one.
-
-1. With design's approval pick an Icon ideally from `Streamline Regular`, if you need a filled icon you may pick from `Streamline Bold` but we would prefer the former.
-   If you need something at exists in neither please consult design to create a custom one.
-2. Select the Outline version of the icon as opposed to stroke. You will not be able to get this from the App, and you must find the icon's outline version in our assets.
-   you can check to see if an Icon is stroke by if it has any `stoke-width: 1.5px` rules in it's markup, outline will not have this.
-3. If it doesn’t already have it add the streamline slug (IE: `delete-1`) as the SVG title if it does not already exist and ensure the viewBox is set to `viewBox="0 0 24 24"`. Preserve the source URL, add any relevent comments, and disregard the asset size.
-4. Add the svg asset to [packages/gamut-icons/src/svg](https://github.com/Codecademy/gamut/tree/main/packages/gamut-icons) with the following naming convention `<ICON_NAME>-icon.svg`.
-5. Run `yarn build-all && yarn start` to see it be added to Storybook. It will by default be added to the `Interface` section alphabetically, however you may change this in the config.
-6. Make a PR describing where you got the Icon, what its use is and a description of its naming choice.
 
 ## Sandbox
 
