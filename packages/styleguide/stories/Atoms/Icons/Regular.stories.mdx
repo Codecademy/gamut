@@ -9,7 +9,13 @@ import {
 
 import { PropsTable, selectableColors } from '~styleguide/blocks';
 
-import { ICONS, LE_ICONS, UI_ICONS, VENDOR_ICONS } from './constants';
+import {
+  ICONS,
+  LE_ICONS,
+  SKILLS_ICONS,
+  UI_ICONS,
+  VENDOR_ICONS,
+} from './constants';
 
 <Meta
   title={title}
@@ -22,7 +28,7 @@ import { ICONS, LE_ICONS, UI_ICONS, VENDOR_ICONS } from './constants';
     design: {
       type: 'figma',
       url:
-        'https://www.figma.com/file/J83FDDI1r6h68k5KzdL5DO/Icons-Audit?node-id=39%3A549',
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1883-1795',
     },
   }}
   argTypes={{
@@ -98,6 +104,18 @@ Vendor specific icons.
 
 <IconGallery>
   {Object.entries(VENDOR_ICONS).map(([iconName, Icon]) => (
+    <IconItem key={iconName} name={iconName}>
+      <Icon size={64} color={selectableColors.black} />
+    </IconItem>
+  ))}
+</IconGallery>
+
+### Skills
+
+Icons for the languages and subjects that we teach.
+
+<IconGallery>
+  {Object.entries(SKILLS_ICONS).map(([iconName, Icon]) => (
     <IconItem key={iconName} name={iconName}>
       <Icon size={64} color={selectableColors.black} />
     </IconItem>
