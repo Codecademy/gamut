@@ -1,4 +1,4 @@
-import { ButtonDeprecated, ModalDeprecated } from '@codecademy/gamut/src';
+import { FillButton,ModalDeprecated } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -26,9 +26,9 @@ import { LinkTo } from '~styleguide/blocks';
       const [isOpen, setIsOpen] = useState(false);
       return (
         <>
-          <ButtonDeprecated onClick={() => setIsOpen(true)}>
+          <FillButton onClick={() => setIsOpen(true)}>
             Open
-          </ButtonDeprecated>
+          </FillButton>
           <ModalDeprecated
             isOpen={isOpen}
             onRequestClose={() => setIsOpen(false)}
@@ -59,18 +59,18 @@ You can then use the `isOpen` prop to create other controls that toggle the Moda
       const [isOpen, setIsOpen] = useState(false);
       return (
         <>
-          <ButtonDeprecated onClick={() => setIsOpen(true)}>
+          <FillButton onClick={() => setIsOpen(true)}>
             Open
-          </ButtonDeprecated>
+          </FillButton>
           <ModalDeprecated
             isOpen={isOpen}
             hideDefaultCloseButton
             onRequestClose={() => setIsOpen(false)}
           >
             <p>Close the ModalDeprecated...</p>
-            <ButtonDeprecated block onClick={() => setIsOpen(false)}>
+            <FillButton block onClick={() => setIsOpen(false)}>
               with this button instead
-            </ButtonDeprecated>
+            </FillButton>
           </ModalDeprecated>
         </>
       );
@@ -93,9 +93,9 @@ All of these methods default to true for accessibility reasons, and rely on sett
       const [isOpen, setIsOpen] = useState(false);
       return (
         <>
-          <ButtonDeprecated onClick={() => setIsOpen(true)}>
+          <FillButton onClick={() => setIsOpen(true)}>
             Open
-          </ButtonDeprecated>
+          </FillButton>
           <ModalDeprecated
             isOpen={isOpen}
             hideDefaultCloseButton
