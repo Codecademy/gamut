@@ -49,7 +49,8 @@ export const TabsControlledExample = () => {
 
   const maxTabIndex = 2;
   const setIndex = useCallback(
-    (val) => {
+    (value) => {
+      const val = Number(value);
       if (val > maxTabIndex) return setControlledIndex(0);
       if (val < 0) return setControlledIndex(maxTabIndex);
       setControlledIndex(val);
@@ -63,8 +64,9 @@ export const TabsControlledExample = () => {
         <Input
           label="Tab Index"
           value={controlledIndex}
-          onChange={setIndex}
+          onChange={(e) => setIndex(e.target.value)}
           type="number"
+          min={1}
         />
       </Background>
       <Tabs index={controlledIndex} onChange={setIndex}>
