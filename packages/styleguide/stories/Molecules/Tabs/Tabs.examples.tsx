@@ -1,6 +1,7 @@
 import {
   Badge,
   FillButton,
+  FormGroup,
   Input,
   Tab,
   TabList,
@@ -61,13 +62,16 @@ export const TabsControlledExample = () => {
   return (
     <>
       <Background bg="yellow" mb={24} p={12}>
-        <Input
-          label="Tab Index"
-          value={controlledIndex}
-          onChange={(e) => setIndex(e.target.value)}
-          type="number"
-          min={1}
-        />
+        <FormGroup label="Tab Index" htmlFor="tab-index">
+          <Input
+            label="Tab Index"
+            value={controlledIndex}
+            onChange={(e) => setIndex(e.target.value)}
+            type="number"
+            min={1}
+            htmlFor="tab-index"
+          />
+        </FormGroup>
       </Background>
       <Tabs index={controlledIndex} onChange={setIndex}>
         <TabList mx={24}>
