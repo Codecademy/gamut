@@ -81,9 +81,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   return (
     <>
-      <Text screenreader aria-live="assertive">
-        {!isTipHidden ? info : ''}
-      </Text>
       <Tip {...tipProps} type="info">
         <InfoTipButton
           active={!isTipHidden}
@@ -91,6 +88,9 @@ export const InfoTip: React.FC<InfoTipProps> = ({
           onClick={() => clickHandler()}
         />
       </Tip>
+      <Text screenreader aria-live="assertive">
+        {!isTipHidden ? info : ''}
+      </Text>
     </>
   );
 };
