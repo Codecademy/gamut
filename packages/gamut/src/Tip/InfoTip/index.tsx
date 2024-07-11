@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Text } from '../../Typography';
 import { FloatingTip } from '../shared/FloatingTip';
