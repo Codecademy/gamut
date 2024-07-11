@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { Text } from '../../Typography';
 import { FloatingTip } from '../shared/FloatingTip';
@@ -79,18 +79,29 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     ...rest,
   };
 
-  return (
+  const screenReaderText = (
+    <Text screenreader aria-live="assertive">
+      {!isTipHidden ? info : `\xa0`}
+    </Text>
+  );
+
+  const tipContent = (
+    <Tip {...tipProps} type="info">
+      <InfoTipButton
+        active={!isTipHidden}
+        emphasis={emphasis}
+        onClick={() => clickHandler()}
+      />
+    </Tip>
+  );
+
+  return alignment.includes('top') ? (
     <>
-      <Text screenreader aria-live="assertive">
-        {!isTipHidden ? info : ''}
-      </Text>
-      <Tip {...tipProps} type="info">
-        <InfoTipButton
-          active={!isTipHidden}
-          emphasis={emphasis}
-          onClick={() => clickHandler()}
-        />
-      </Tip>
+      {screenReaderText} {tipContent}
+    </>
+  ) : (
+    <>
+      {tipContent} {screenReaderText}
     </>
   );
 };
