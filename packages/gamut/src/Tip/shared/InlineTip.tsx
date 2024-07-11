@@ -21,8 +21,6 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
   const InlineTipWrapper = isToolType ? ToolTipContainer : InfoTipContainer;
   const InlineWrapperProps = isToolType ? {} : { hideTip: isTipHidden };
 
-  // CASS - you need to swap the order here
-
   const target = (
     <TargetContainer
       ref={wrapperRef}
