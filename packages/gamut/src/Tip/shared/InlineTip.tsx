@@ -1,6 +1,12 @@
 import { InfoTipContainer } from '../InfoTip/styles';
 import { ToolTipContainer } from '../ToolTip/elements';
-import { TargetContainer, TipBody, TipWrapper } from './elements';
+import {
+  InfoTipWrapper,
+  TargetContainer,
+  TipBody,
+  TipWrapper,
+  ToolTipWrapper,
+} from './elements';
 import { narrowWidth } from './styles';
 import { TipPlacementComponentProps } from './types';
 
@@ -18,7 +24,8 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
 }) => {
   const isToolType = type === 'tool';
 
-  const InlineTipWrapper = isToolType ? ToolTipContainer : InfoTipContainer;
+  const InlineTipWrapper = isToolType ? ToolTipWrapper : InfoTipWrapper;
+  const InlineTipBodyWrapper = isToolType ? ToolTipContainer : InfoTipContainer;
   const InlineWrapperProps = isToolType ? {} : { hideTip: isTipHidden };
 
   const target = (
@@ -33,7 +40,7 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
   );
 
   const tipBody = (
-    <InlineTipWrapper
+    <InlineTipBodyWrapper
       alignment={alignment}
       zIndex={zIndex ?? 1}
       {...InlineWrapperProps}
@@ -47,11 +54,11 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
       >
         {info}
       </TipBody>
-    </InlineTipWrapper>
+    </InlineTipBodyWrapper>
   );
 
   return (
-    <TipWrapper>
+    <InlineTipWrapper>
       {alignment.includes('top') ? (
         <>
           {tipBody}
@@ -63,6 +70,6 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
           {tipBody}
         </>
       )}
-    </TipWrapper>
+    </InlineTipWrapper>
   );
 };
