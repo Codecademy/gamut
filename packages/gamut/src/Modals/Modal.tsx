@@ -89,7 +89,6 @@ export const Modal: React.FC<ModalProps> = ({
       shroud
       onRequestClose={onRequestClose}
       data-testid="modal"
-      tabIndex={-1}
       {...rest}
     >
       <ModalContainer
@@ -101,7 +100,8 @@ export const Modal: React.FC<ModalProps> = ({
         layout={views && views?.length > 0 ? 'dialog' : 'standard'}
         size={size}
         aria-live={ariaLive}
-        // tabIndex={-1}
+        tabIndex={-1}
+        data-autofocus
       >
         {(title || views?.[currentView].title) && (
           <Text

@@ -3,7 +3,6 @@ import { useState } from "react";
 
 export const ModalExample = () => {
   const [open, setOpen] = useState(false);
-
   const toggleOpen = () => setOpen(true);
 
   return (
