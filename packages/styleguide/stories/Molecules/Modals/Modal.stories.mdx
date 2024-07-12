@@ -88,12 +88,12 @@ All of these methods default to true for accessibility reasons, and rely on sett
 
 <GridBox
   mt={32}
-  gap={24}
+  gap="150px 24px"
   gridTemplateColumns="1fr 1fr"
   gridAutoFlow="row dense"
 >
 
-<Box gridRowEnd="span 2">
+<Box gridRowEnd="span 2" height="100%">
 
 ### Fluid
 
@@ -102,14 +102,13 @@ All of these methods default to true for accessibility reasons, and rely on sett
   args={{
     size: 'fluid',
   }}
-  height="500px"
 >
   {(args) => (
     <ModalContainer {...args}>
       <>
         <FlexBox gridArea="title" bg="beige" height="2rem" />
         <FlexBox gridArea="close" bg="beige" height="2rem" />
-        <FlexBox height="380px" width="540px" bg="beige" gridArea="content" />
+        <FlexBox height="350px" width="540px" bg="beige" gridArea="content" />
       </>
     </ModalContainer>
   )}
@@ -126,7 +125,6 @@ All of these methods default to true for accessibility reasons, and rely on sett
   args={{
     size: 'large',
   }}
-  height="350px"
 >
   {(args) => (
     <ModalContainer {...args}>
@@ -158,7 +156,6 @@ All of these methods default to true for accessibility reasons, and rely on sett
   args={{
     size: 'medium',
   }}
-  height="350px"
 >
   {(args) => (
     <ModalContainer {...args}>
@@ -181,7 +178,6 @@ All of these methods default to true for accessibility reasons, and rely on sett
   args={{
     size: 'small',
   }}
-  height="350px"
 >
   {(args) => (
     <ModalContainer {...args}>
