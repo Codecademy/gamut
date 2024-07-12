@@ -111,7 +111,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     </Tip>
   );
 
-  // on floating alignment - since this uses React.Portal we're breaking the DOM order so the screenreader text need to be navigable, in the correct DOM order, and never aria-hidden
+  // on floating alignment - since this uses React.Portal we're breaking the DOM order so the screenreader text needs to be navigable, in the correct DOM order, and never aria-hidden
 
   return placement !== 'floating' || alignment.includes('top') ? (
     <>
