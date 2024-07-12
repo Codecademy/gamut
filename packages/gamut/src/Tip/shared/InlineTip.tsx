@@ -4,7 +4,6 @@ import {
   InfoTipWrapper,
   TargetContainer,
   TipBody,
-  TipWrapper,
   ToolTipWrapper,
 } from './elements';
 import { narrowWidth } from './styles';
