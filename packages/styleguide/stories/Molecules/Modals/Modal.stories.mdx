@@ -12,7 +12,7 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { ClickOpenModal } from './Modal.examples';
+import { ClickOpenModal, ClickOpenMultiViewModal } from './Modal.examples';
 
 <Meta
   title={title}
@@ -302,7 +302,12 @@ You can also cause a Modal to appear/disappear by maintaining a state for `isOpe
 <Canvas>
   <Story name="Trigger Modal">
     {() => {
-      return <ClickOpenModal />;
+      return (
+        <FlexBox gap={12}>
+          <ClickOpenModal />
+          <ClickOpenMultiViewModal />
+        </FlexBox>
+      );
     }}
   </Story>
 </Canvas>
