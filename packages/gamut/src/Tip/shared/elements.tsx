@@ -11,7 +11,14 @@ import {
 } from './styles';
 
 export const TipWrapper = styled.div(
-  css({ position: 'relative', display: 'inline-flex' })
+  css({
+    '&:hover > div, &:focus-within > div': {
+      opacity: 1,
+      visibility: 'visible',
+    },
+    position: 'relative',
+    display: 'inline-flex',
+  })
 );
 
 enum TargetSelectors {
