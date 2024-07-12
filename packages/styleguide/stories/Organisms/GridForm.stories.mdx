@@ -169,7 +169,7 @@ GridForm provides the following benefits:
 
 <PropsTable of={GridForm} />
 
-## Modifying Elements
+## Modifying elements
 
 `GridForms` are laid out with `LayoutGrid`, so you can override its `columnGap` and `rowGap` with the normal string or responsive layouts to style and align the GridForm to your designs. You can also configure the `GridFormButtons` to modify the submit buttons and optional cancel buttons.
 
@@ -189,7 +189,7 @@ The [GridForm page in Gamut](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%
 - **Inline Submit**: A form incorporating the <LinkTo id="organisms-gridform--inline-text-input-with-label">Inline Submit</LinkTo> Button style of GridForm
 - **Instructions**: Contains suggestions for modifying the Figma component for your own designs
 
-### Figma Component Instructions
+### Figma component instructions
 
 - Enable Layout Grid (^G)
 - Select a `❖ GridForm` variant as a template
@@ -200,7 +200,7 @@ The [GridForm page in Gamut](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%
 - Customize `🚥 GridFormButtons`
   - Submit button style (Fill/CTA), position, cancel button
 
-## Disabled Inputs
+## Disabled inputs
 
 If an input is not meant to be usable, such as when a portion of a form is disabled pending user action, you can make it visually disabled with a `disabled` field member.
 
@@ -305,7 +305,7 @@ We can use the `size` and `rowspan` props (borrowed from <LinkTo id="layouts-lay
   </Story>
 </Canvas>
 
-## Submit Button Position
+## Submit button position
 
 We can position the submit button by passing the position prop with a
 value of left, center, right, or stretch.
@@ -395,7 +395,7 @@ value of left, center, right, or stretch.
   </Story>
 </Canvas>
 
-## Submit Button Options
+## Submit button options
 
 We can specify the version of our button by passing the type prop. We can choose between
 the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="atoms-button--cta-button">`CTAButton`</LinkTo>.
@@ -485,7 +485,7 @@ the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="
   </Story>
 </Canvas>
 
-## Inline Submit Button
+## Inline submit button
 
 We can make the Submit button inline with an input by setting the column
 sizes so they fit on the same row (e.g size 8 for an input and size 4 for
@@ -696,7 +696,7 @@ We also have a 'custom-group' type for when you are passing in a custom FormGrou
   </Story>
 </Canvas>
 
-## Placeholder Text
+## Placeholder text
 
 Text inputs are allowed to have traditional `placeholder` text.
 This is a somewhat dangerous behavior for accessibility, as browsers
@@ -733,7 +733,7 @@ more details on why using placeholders is often bad.
   </Story>
 </Canvas>
 
-## On Field Update
+## On field update
 
 A field can take an onUpdate callback. This callback will fire when the
 field's value changes. This could be useful if you need to use the
@@ -770,7 +770,7 @@ field's value in a parent component before onSubmit gets triggered.
   </Story>
 </Canvas>
 
-## With InfoTip
+## InfoTip + GridForm
 
 A field can include our existing `InfoTip`. The position of the infotip on each field is always set to the bottom-right.
 
@@ -990,7 +990,7 @@ When using the left-aligned layout, please note that the `title` takes up 3 colu
   </Story>
 </Canvas>
 
-## Custom Error
+## Custom error
 
 A field can take a custom error in addition to validation errors. The validation error will always take precedence to the custom error.
 
@@ -1028,7 +1028,7 @@ A field can take a custom error in addition to validation errors. The validation
   </Story>
 </Canvas>
 
-## Hidden Input
+## Hidden input
 
 Hidden inputs can be used to include data that users can't see or modify with the submission. For this implementation you can set the `defaultValue` in the object and it will be submitted with the regular form data.
 
@@ -1059,7 +1059,7 @@ Hidden inputs can be used to include data that users can't see or modify with th
   </Story>
 </Canvas>
 
-## Sweet Container Input
+## Sweet container input
 
 "Sweet container" ([honeypot](<https://en.wikipedia.org/wiki/Honeypot_(computing)>)) inputs can be used to detect bots by providing a field that would not generally be clicked by human users, but might be triggered automatically by bots.
 
@@ -1093,7 +1093,7 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
   </Story>
 </Canvas>
 
-## Markdown Errors
+## Markdown errors
 
 GridForm renders errors through our <LinkTo id="atoms-markdown--basics">Markdown</LinkTo> component so we can optionally add markdown to our validation messages.
 
@@ -1129,7 +1129,7 @@ Here's an example using components in context. By toggling dark mode you can see
 
 Please note you **cannot** use the deprecated 'business' button type with `ColorMode`.
 
-## Checkbox Spacing
+## Checkbox spacing
 
 If you need to checkboxes to fit into a smaller space, you can use our our `tight` spacing prop for checkboxes that are a bit closer together.
 
@@ -1249,7 +1249,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
   </Story>
 </Canvas>
 
-## Disabled Fields on Submit
+## Disabled fields on submit
 
 `disableFieldsOnSubmit` will disable all form fields once the form has been successfully submitted. If you have any server-side validation that needs to happen, we recommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
 
@@ -1340,7 +1340,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
   </Story>
 </Canvas>
 
-## Reset Form on Submit
+## Reset form on submit
 
 `resetOnSubmit` will reset the form once the GridForm has been successfully submitted. If you have any server validation that needs to happen, we recommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
 
@@ -1425,7 +1425,7 @@ We can combine these together to create some pretty cool forms which have a load
   </Story>
 </Canvas>
 
-## Solo Field Forms
+## Solo field forms
 
 Solo field form should always have their solo input be required. They should automagically not have the required/optional text - if you have a custom rendered hidden input, you may have to use the `hasSoloField` prop.
 

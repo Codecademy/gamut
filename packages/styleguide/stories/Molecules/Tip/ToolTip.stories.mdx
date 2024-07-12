@@ -59,7 +59,7 @@ When a Button is disabled with a tooltip, you must use the `aria-disabled` prop 
 
 <PropsTable story="ToolTip" />
 
-## IconButtons and ToolTips
+## IconButton + ToolTip
 
 When using an icon-only button, a tooltip displaying the label is required to provide context for the button's action. This is accessible directly through the `IconButton`'s required `tip` prop. You can adjust positioning and alignment of the tooltip by using the tipProps prop. An additional label that is different from the tip should also be provided.
 
@@ -86,7 +86,7 @@ If your `IconButton` doesn't require `aria-describedby` text, you can set the `h
   </Story>
 </Canvas>
 
-## Floating Placement
+## Floating placement
 
 ToolTips sometimes need to be in used in a way that they need to escape the confines of their parents container. The `floating` variant of the `placement` prop allows ToolTips do just this. (Notice how this section doesn't need as much padding because the ToolTips are able to escape their context!)
 
@@ -105,7 +105,7 @@ This `floating` variant should only be used when it as needed.
   </Story>
 </Canvas>
 
-## zIndex + Inline Placement
+## zIndex + inline placement
 
 If using an inline placement, you will have access to the `zIndex` prop to adjust the ToolTip's stacking order.
 

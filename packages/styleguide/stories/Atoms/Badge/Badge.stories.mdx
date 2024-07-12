@@ -27,11 +27,11 @@ Badges are generally found next to interface elements that need to be called out
 
 ## Usage
 
-- Use badges to display read-only information like statuses, attributes, and other emphasized information.
-- Use the `variant` and `size` properties to ensure your badges have the right visibility and visual hierarchy on your page.
-- Use an <LinkTo kind='Atoms/Icons'>Icon</LinkTo> to draw attention to the badge using the `icon` prop.
-- **Limit badge text to 1–2 words if possible.** These elements are most effective when displaying short pieces of text.
-- **Do not use badges for elements that are meant to be clickable or interactive**. Badges are fully rounded to distinguish themselves from elements such as <LinkTo kind='Atoms/Button'>Buttons</LinkTo>.
+- Use Badges to display read-only information like statuses, attributes, and other emphasized information.
+- Use the `variant` and `size` properties to ensure your Badges have the right visibility and visual hierarchy on your page.
+- Use an <LinkTo kind='Atoms/Icons'>Icon</LinkTo> to draw attention to the Badge using the `icon` prop.
+- **Limit Badge text to 1–2 words if possible.** These elements are most effective when displaying short pieces of text.
+- **Do not use Badges for elements that are meant to be clickable or interactive**. Badges are fully rounded to distinguish themselves from elements such as <LinkTo kind='Atoms/Button'>Buttons</LinkTo>.
 
 export const BadgeTemplate = (args) => (
   <Badge {...args}>{args.children ? args.children : args.variant}</Badge>
@@ -39,9 +39,9 @@ export const BadgeTemplate = (args) => (
 
 ## Variants
 
-We support the following variants of badges: `primary`, `secondary`, `tertiary`, `tertiaryFill`, and `accent`.
+We support the following Badge variants: `primary`, `secondary`, `tertiary`, `tertiaryFill`, and `accent`.
 
-- **Greyscale badges** provide different levels of priority for the `primary`, `secondary`, `tertiary`, and `tertiaryFill` variants.
+- **Greyscale** provides different levels of priority for the `primary`, `secondary`, `tertiary`, and `tertiaryFill` variants.
 - **Accent colors** like `accent` are meant to be used sparingly so they can stand out against other elements.
 
 Additional variants should be designed with both <LinkTo kind='Foundations/ColorMode'>ColorModes</LinkTo> in mind. For example, the `accent` and `secondary` variants work against both light and dark backgrounds, while the `primary` and `tertiary`, and `tertiaryFill` variants both adapt to their ColorMode (which you can check out by using the toolbar at the top of this page!)
