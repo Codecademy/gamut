@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.29.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.4...@codecademy/styleguide@66.29.5) (2024-07-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.29.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.3...@codecademy/styleguide@66.29.4) (2024-07-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.29.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.2...@codecademy/styleguide@66.29.3) (2024-07-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.29.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.1...@codecademy/styleguide@66.29.2) (2024-07-01)
+
+### Bug Fixes
+
+- **Radio:** infotip prop ([f7f1aa6](https://github.com/Codecademy/gamut/commit/f7f1aa64fd2ad5986119710b795c3aafd1cc564c))
+
+### [66.29.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.0...@codecademy/styleguide@66.29.1) (2024-07-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [66.29.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.28.0...@codecademy/styleguide@66.29.0) (2024-06-26)
+
+### Features
+
+- **IconButton:** aria-describedby override ([ca12c0b](https://github.com/Codecademy/gamut/commit/ca12c0bd063df52c7dae215731b6333591348ced))
+
+## [66.28.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.27.0...@codecademy/styleguide@66.28.0) (2024-06-26)
+
+### Features
+
+- **Disclosure:** creating an Disclosure component ([a45825f](https://github.com/Codecademy/gamut/commit/a45825fbe343db9c66d29fe5359508a4099a5479))
+
 ## [66.27.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.26.1...@codecademy/styleguide@66.27.0) (2024-06-25)
 
 ### Features

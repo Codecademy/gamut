@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [55.25.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.2...@codecademy/gamut@55.25.3) (2024-07-08)
+
+### Bug Fixes
+
+- **Alert:** height and alignment ([fae2fb7](https://github.com/Codecademy/gamut/commit/fae2fb7bd2ba84e4faf916c35fff6160c854f05d))
+
+### [55.25.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.1...@codecademy/gamut@55.25.2) (2024-07-08)
+
+### Bug Fixes
+
+- **Radio:** add infotip type to radio fields ([19cb620](https://github.com/Codecademy/gamut/commit/19cb620b334b80786ee5707c7258a8cc759a228c))
+
+### [55.25.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.0...@codecademy/gamut@55.25.1) (2024-07-01)
+
+### Bug Fixes
+
+- **Radio:** infotip prop ([f7f1aa6](https://github.com/Codecademy/gamut/commit/f7f1aa64fd2ad5986119710b795c3aafd1cc564c))
+
+## [55.25.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.24.0...@codecademy/gamut@55.25.0) (2024-06-26)
+
+### Features
+
+- **IconButton:** aria-describedby override ([ca12c0b](https://github.com/Codecademy/gamut/commit/ca12c0bd063df52c7dae215731b6333591348ced))
+
+## [55.24.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.23.0...@codecademy/gamut@55.24.0) (2024-06-26)
+
+### Features
+
+- **Disclosure:** creating an Disclosure component ([a45825f](https://github.com/Codecademy/gamut/commit/a45825fbe343db9c66d29fe5359508a4099a5479))
+
 ## [55.23.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.22.6...@codecademy/gamut@55.23.0) (2024-06-25)
 
 ### Features

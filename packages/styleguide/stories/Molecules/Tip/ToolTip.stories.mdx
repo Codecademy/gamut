@@ -6,6 +6,7 @@ import {
   ToolTip,
 } from '@codecademy/gamut/src';
 import {
+  ArrowRightIcon,
   SmileyStarEyesIcon,
   SparkleIcon,
   ThumbsDownIcon,
@@ -27,7 +28,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
       url:
         'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/branch/ayKNSg6QvZUjsgw0FFysW4/%F0%9F%93%90-Gamut?type=design&node-id=41538-55279&mode=design&t=fGkWf5GSl5cj5fQo-0',
     },
-    status: 'updating',
+    status: 'current',
   }}
   args={{}}
 />
@@ -62,14 +63,23 @@ When a Button is disabled with a tooltip, you must use the `aria-disabled` prop 
 
 When using an icon-only button, a tooltip displaying the label is required to provide context for the button's action. This is accessible directly through the `IconButton`'s required `tip` prop. You can adjust positioning and alignment of the tooltip by using the tipProps prop. An additional label that is different from the tip should also be provided.
 
+If your `IconButton` doesn't require `aria-describedby` text, you can set the `hideAriaToolTip` tipProp to `true` to hide the `aria-describedby` text. When using the `hideAriaToolTip` prop, the `aria-label` should always be identical to the `tip` prop.
+
 <Canvas>
   <Story name="InfoButton Tooltip">
     {() => (
-      <FlexBox center py={64} m={24}>
+      <FlexBox justifyContent="space-around" m={24} width="95%">
         <IconButton
           tip="Beautify your code"
           icon={SparkleIcon}
           tipProps={{ alignment: 'bottom-center' }}
+        />
+        <IconButton
+          aria-label="Next Prompt"
+          tip="Next Prompt"
+          icon={ArrowRightIcon}
+          variant="secondary"
+          tipProps={{ alignment: 'bottom-center', hideAriaToolTip: true }}
         />
       </FlexBox>
     )}
