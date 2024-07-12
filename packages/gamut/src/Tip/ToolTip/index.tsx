@@ -69,7 +69,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   return (
     <>
       {shouldRenderAriaTip && (
-        <Text screenreader id={id} role="tooltip">
+        <Text aria-hidden screenreader id={id} role="tooltip">
           {adjustedInfo}
         </Text>
       )}
