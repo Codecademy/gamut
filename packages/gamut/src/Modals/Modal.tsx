@@ -1,5 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { ComponentProps, useRef, useState } from 'react';
+import { ComponentProps, useState } from 'react';
 import * as React from 'react';
 
 import { Box } from '../Box';
@@ -80,7 +80,6 @@ export const Modal: React.FC<ModalProps> = ({
   closeDisabled,
   ...rest
 }) => {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [currentView, setCurrentView] = useState(0);
   const image = (views?.[currentView].image || rest?.image) ?? null;
 
@@ -121,7 +120,6 @@ export const Modal: React.FC<ModalProps> = ({
               icon={MiniDeleteIcon}
               onClick={onRequestClose}
               disabled={closeDisabled}
-              ref={buttonRef}
               tip="Close modal"
             />
           </Box>

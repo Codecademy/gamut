@@ -80,7 +80,6 @@ export const Overlay: React.FC<OverlayProps> = ({
       className={className}
       inline={inline}
       shroud={shroud}
-      
     >
       <FocusTrap
         active={!inline}

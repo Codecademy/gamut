@@ -1,7 +1,7 @@
-import { Box, FillButton, FlexBox, Modal } from "@codecademy/gamut";
-import { useState } from "react";
+import { Box, FillButton, FlexBox, Modal } from '@codecademy/gamut';
+import { useState } from 'react';
 
-export const ModalExample = () => {
+export const ClickOpenModal = () => {
   const [open, setOpen] = useState(false);
   const toggleOpen = () => setOpen(true);
 

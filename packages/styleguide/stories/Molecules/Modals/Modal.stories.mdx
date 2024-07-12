@@ -12,9 +12,7 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import {
-  ModalExample
-} from './Modal.examples';
+import { ClickOpenModal } from './Modal.examples';
 
 <Meta
   title={title}
@@ -301,12 +299,14 @@ Overflow for images will be cut off, so make sure the image is correctly sized f
   </Story>
 </Canvas>
 
-### Triggering a Modal
+## Triggering a Modal
+
+You can also cause a Modal to appear/disappear by maintaining a state for `isOpen`. The example below toggles `isOpen` with a button click.
 
 <Canvas>
   <Story name="Trigger Modal">
     {() => {
-      return <ModalExample/>;
+      return <ClickOpenModal />;
     }}
   </Story>
 </Canvas>
