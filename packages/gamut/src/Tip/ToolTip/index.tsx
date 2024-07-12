@@ -69,6 +69,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   return (
     <>
       {shouldRenderAriaTip && (
+        // These are aria-hidden to ensure there's no duplication of content for screen readers navigating with CTRL + OPTION + ARROW
         <Text aria-hidden screenreader id={id} role="tooltip">
           {adjustedInfo}
         </Text>
