@@ -1,9 +1,8 @@
-import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { useCurrentMode } from '@codecademy/gamut-styles';
+import {  useCurrentMode } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 import { Text } from '../Typography';
-import { DismissButton, Outline, TagWrapper } from './elements';
+import { DismissButton, Outline, StyledMiniDeleteIcon, TagWrapper } from './elements';
 import { tagBg, tagLabelFontSize, tagLabelPadding } from './styles';
 import { TagProps } from './types';
 
@@ -33,9 +32,10 @@ export const Tag: React.FC<TagProps> = ({
           <DismissButton
             aria-label={`Dismiss ${children} Tag`}
             onClick={onDismiss || undefined}
-          >
-            <MiniDeleteIcon size={12} color="inherit" />
-          </DismissButton>
+            tip="Remove"
+            tipProps={{ placement: 'floating' }}
+            icon={StyledMiniDeleteIcon}
+          />
         )}
       </TagWrapper>
     </Outline>

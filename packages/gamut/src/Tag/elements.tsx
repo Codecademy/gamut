@@ -1,3 +1,4 @@
+import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import {
   Background,
   css,
@@ -9,7 +10,7 @@ import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { Box } from '../Box';
-import { ButtonBase } from '../ButtonBase';
+import { IconButton } from '../Button';
 import { Selectors } from '../ButtonBase/ButtonBase';
 import { colorVariants, dismissSharedStyles, tagBorderRadius } from './styles';
 import { BaseTagProps } from './types';
@@ -42,7 +43,7 @@ export const TagWrapper = styled(Background)<BaseTagProps>(
   colorVariants
 );
 
-export const DismissButton = styled(ButtonBase)(
+export const DismissButton = styled(IconButton)(
   variant({
     defaultVariant: 'default',
     base: {
@@ -51,6 +52,7 @@ export const DismissButton = styled(ButtonBase)(
       borderColor: 'transparent',
       borderRadiusRight: tagBorderRadius,
       color: 'currentColor',
+      width: 12,
     },
     variants: {
       default: {
@@ -63,12 +65,20 @@ export const DismissButton = styled(ButtonBase)(
       },
       grey: {
         [Selectors.HOVER]: {
-          bg: 'navy-600',
+          bg: 'primary',
         },
         [Selectors.FOCUS]: {
           bg: 'navy-700',
         },
       },
     },
+  })
+);
+
+
+export const StyledMiniDeleteIcon = styled(MiniDeleteIcon)(
+  css({
+    width: 12,
+    color: 'inherit',
   })
 );

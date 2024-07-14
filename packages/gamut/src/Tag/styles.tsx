@@ -14,6 +14,7 @@ export const tagBaseStyles = {
   maxWidth: '100%',
 };
 
+// KENNY: can clean this up? add to base styles or just use CSS
 export const colorVariants = variant({
   defaultVariant: 'default',
   base: tagBaseStyles,
@@ -22,18 +23,23 @@ export const colorVariants = variant({
       color: 'text',
     },
     grey: {
-      color: 'white',
+      color: 'text',
     },
   },
 });
 
 export const tagBg = {
   light: {
-    grey: 'navy-500',
+    grey: 'navy-600',
+    // grey: 'white-600',
+    // grey: 'text-secondary',
+    // KENNY: Shouldn't this be navy-800?
     default: 'navy-900',
   },
   dark: {
-    grey: 'white-500',
+    grey: 'white-600',
+    // grey: 'gray-600',
+    // grey: 'text-secondary',
     default: 'white',
   },
 } as const;
