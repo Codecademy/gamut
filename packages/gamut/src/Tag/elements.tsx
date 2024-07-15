@@ -38,6 +38,9 @@ export const Outline = styled(Box)(
   })
 );
 
+// Changing it to colormode equivalent
+// don't need this background anymore (there wasn't any semantic color mode)
+
 export const TagWrapper = styled(Background)<BaseTagProps>(
   tagProps,
   colorVariants
