@@ -98,10 +98,10 @@ instead notify of a request to change using `onChange`.
   </Story>
 </Canvas>
 
-## Tabs with badges
+## Tab + Badge
 
 <Canvas>
-  <Story name="Tabs With Badges">
+  <Story name="Tab + Badge">
     {(args) => <TabsBadgeExample {...args} />}
   </Story>
 </Canvas>
@@ -111,7 +111,7 @@ instead notify of a request to change using `onChange`.
 If you pass in the variant 'block', you will get a slim, dark mode version of tabs.
 
 <Canvas>
-  <Story name="Block Variant">
+  <Story name="Block variant">
     {(args) => <TabsBlockVariantExample {...args} />}
   </Story>
 </Canvas>
@@ -123,7 +123,7 @@ You can also use tabs as standard link-based navigation. To do this, you can use
 It is recommended to add a unique `aria-label` to the `TabNav` component, to differentiate it from other navigation elements on the page.
 
 <Canvas>
-  <Story name="Tab Navigation">{(args) => <TabsNavExample {...args} />}</Story>
+  <Story name="Tab navigation">{(args) => <TabsNavExample {...args} />}</Story>
 </Canvas>
 
 ## Tabs with interactive content
@@ -131,7 +131,7 @@ It is recommended to add a unique `aria-label` to the `TabNav` component, to dif
 If you have tabs with interactive content within them (such as a button or link), you need to add `tabindex={-1}` to the TabPanel so that the interactive content, rather than the TabPanel itself, become focused.
 
 <Canvas>
-  <Story name="Tabs Interactive">
+  <Story name="Tabs interactive">
     {(args) => <TabsInteractiveContentExample {...args} />}
   </Story>
 </Canvas>

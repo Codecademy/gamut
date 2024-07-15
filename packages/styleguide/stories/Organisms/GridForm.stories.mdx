@@ -205,7 +205,7 @@ The [GridForm page in Gamut](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%
 If an input is not meant to be usable, such as when a portion of a form is disabled pending user action, you can make it visually disabled with a `disabled` field member.
 
 <Canvas>
-  <Story name="Disabled Inputs">
+  <Story name="Disabled inputs">
     {() => (
       <GridForm
         hideRequiredText
@@ -241,7 +241,7 @@ If an input is not meant to be usable, such as when a portion of a form is disab
 We can use the `size` and `rowspan` props (borrowed from <LinkTo id="layouts-layoutgrid--layout-grid">LayoutGrid</LinkTo>) to customize the layouts of our GridForms. You can also customize the `FormRequiredText` using the `requiredTextProps`. `FormRequiredText` should be spaced apart from or be stylistically different from the text element above it.
 
 <Canvas>
-  <Story name="Rowspan Formatting">
+  <Story name="Rowspan formatting">
     {() => (
       <GridForm
         requiredTextProps={{ color: 'danger', variant: 'title-xs' }}
@@ -311,7 +311,7 @@ We can position the submit button by passing the position prop with a
 value of left, center, right, or stretch.
 
 <Canvas>
-  <Story name="Submit Button Position">
+  <Story name="Submit button position">
     {() => (
       <LayoutGrid>
         <Column size={6}>
@@ -401,7 +401,7 @@ We can specify the version of our button by passing the type prop. We can choose
 the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="atoms-button--cta-button">`CTAButton`</LinkTo>.
 
 <Canvas>
-  <Story name="Submit Button Options">
+  <Story name="Submit button options">
     {() => (
       <>
         <GridForm
@@ -498,7 +498,7 @@ align nicely with the input.
 #### Submit button aligned correctly with a hidden label
 
 <Canvas>
-  <Story name="Inline Text Input With Label">
+  <Story name="Inline submit button">
     {() => (
       <GridForm
         hideRequiredText
@@ -635,7 +635,7 @@ their own inputs. We can specify a 'custom' field type to with a [render prop](h
 We also have a 'custom-group' type for when you are passing in a custom FormGroup - including a label. If you do not want GridForm to surface errors for your field, you should likely use a 'custom-group'. If you chose to go this route, please be aware of [accessibility best practices](https://www.deque.com/blog/anatomy-of-accessible-forms-best-practices/) for forms.
 
 <Canvas>
-  <Story name="Custom Inputs">
+  <Story name="Custom inputs">
     {() => (
       <GridForm
         fields={[
@@ -710,7 +710,7 @@ See [this article](https://www.nngroup.com/articles/form-design-placeholders/) o
 more details on why using placeholders is often bad.
 
 <Canvas>
-  <Story name="Placeholder Text">
+  <Story name="Placeholder text">
     {() => (
       <GridForm
         hideRequiredText
@@ -740,7 +740,7 @@ field's value changes. This could be useful if you need to use the
 field's value in a parent component before onSubmit gets triggered.
 
 <Canvas>
-  <Story name="On Field Update">
+  <Story name="On field update">
     {() => {
       const [text, setText] = useState('');
       return (
@@ -995,7 +995,7 @@ When using the left-aligned layout, please note that the `title` takes up 3 colu
 A field can take a custom error in addition to validation errors. The validation error will always take precedence to the custom error.
 
 <Canvas>
-  <Story name="Custom Error">
+  <Story name="Custom error">
     {() => {
       return (
         <GridForm
@@ -1033,7 +1033,7 @@ A field can take a custom error in addition to validation errors. The validation
 Hidden inputs can be used to include data that users can't see or modify with the submission. For this implementation you can set the `defaultValue` in the object and it will be submitted with the regular form data.
 
 <Canvas>
-  <Story name="Hidden Input">
+  <Story name="Hidden input">
     {() => (
       <GridForm
         fields={[
@@ -1066,7 +1066,7 @@ Hidden inputs can be used to include data that users can't see or modify with th
 We call it a "sweet container" so that bots do not immediately detect it as a honeypot input.
 
 <Canvas>
-  <Story name="Sweet Container Input">
+  <Story name="Sweet container input">
     {() => (
       <GridForm
         hideRequiredText
@@ -1098,7 +1098,7 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
 GridForm renders errors through our <LinkTo id="atoms-markdown--basics">Markdown</LinkTo> component so we can optionally add markdown to our validation messages.
 
 <Canvas>
-  <Story name="Markdown Errors">
+  <Story name="Markdown errors">
     {() => (
       <GridForm
         fields={[
@@ -1134,7 +1134,7 @@ Please note you **cannot** use the deprecated 'business' button type with `Color
 If you need to checkboxes to fit into a smaller space, you can use our our `tight` spacing prop for checkboxes that are a bit closer together.
 
 <Canvas>
-  <Story name="Checkbox Spacing">
+  <Story name="Checkbox spacing">
     {() => (
       <GridForm
         rowGap={0}
@@ -1201,7 +1201,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
 ## Loading
 
 <Canvas>
-  <Story name="Loading States">
+  <Story name="Loading states">
     {() => (
       <>
         <Background bg="beige" p={32}>
@@ -1254,7 +1254,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
 `disableFieldsOnSubmit` will disable all form fields once the form has been successfully submitted. If you have any server-side validation that needs to happen, we recommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
 
 <Canvas>
-  <Story name="Disabled Fields on Submit">
+  <Story name="Disabled fields on submit">
     {() => (
       <>
         <Background bg="palePink" p={32}>
@@ -1345,7 +1345,7 @@ If you need to checkboxes to fit into a smaller space, you can use our our `tigh
 `resetOnSubmit` will reset the form once the GridForm has been successfully submitted. If you have any server validation that needs to happen, we recommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
 
 <Canvas>
-  <Story name="Reset Form on Submit">
+  <Story name="Reset form on submit">
     {() => (
       <>
         <Background bg="beige" p={32}>
@@ -1425,12 +1425,12 @@ We can combine these together to create some pretty cool forms which have a load
   </Story>
 </Canvas>
 
-## Solo field forms
+## Solo field form
 
 Solo field form should always have their solo input be required. They should automagically not have the required/optional text - if you have a custom rendered hidden input, you may have to use the `hasSoloField` prop.
 
 <Canvas>
-  <Story name="Solo Field Form">
+  <Story name="Solo field form">
     {() => (
       <>
         <Background bg="paleBlue" p={32}>

@@ -31,7 +31,7 @@ Tags are compact, dynamic elements that support user inputs, selections, and act
 Tags have a ColorModed `default` variant and a `grey` variant as well as a `readonly` variant
 
 <Canvas>
-  <Story name="Tag Variants">
+  <Story name="Tag variants">
     {(args) => (
       <FlexBox center justifyContent="space-around">
         <Tag {...args} onDismiss={(e) => e.target.blur()} />
@@ -47,7 +47,7 @@ Tags have a ColorModed `default` variant and a `grey` variant as well as a `read
 When tag content exceeds the width of its container, it is truncated.
 
 <Canvas>
-  <Story name="Truncated Tags">
+  <Story name="Truncated tags">
     {() => (
       <Box width="12rem">
         <Tag>I am long tag yes I am much am a very long tag</Tag>
@@ -59,7 +59,7 @@ When tag content exceeds the width of its container, it is truncated.
 ## Dismissable tag example
 
 <Canvas>
-  <Story name="Working Example">{() => <TagExample />}</Story>
+  <Story name="Working example">{() => <TagExample />}</Story>
 </Canvas>
 
 ## Code playground

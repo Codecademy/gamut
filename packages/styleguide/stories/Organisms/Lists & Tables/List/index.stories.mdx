@@ -95,7 +95,7 @@ Lists come with 3 spacing variants `normal`, `condensed`, and `compact`.
 
 For mixed content use the normal size to ensure that there is enough space for components
 
-<Story name="Spacing - Normal" args={{ spacing: 'normal' }}>
+<Story name="Spacing: normal" args={{ spacing: 'normal' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -103,7 +103,7 @@ For mixed content use the normal size to ensure that there is enough space for c
 
 For a more compact list use the condensed spacing
 
-<Story name="Spacing - Condensed" args={{ spacing: 'condensed' }}>
+<Story name="Spacing: condensed" args={{ spacing: 'condensed' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -111,7 +111,7 @@ For a more compact list use the condensed spacing
 
 For an even more compact list use the compact spacing
 
-<Story name="Spacing - Compact" args={{ spacing: 'compact' }}>
+<Story name="Spacing: compact" args={{ spacing: 'compact' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -344,20 +344,20 @@ export const ExpandableRow: React.FC<{
 Here's some examples of Lists to use as guides.
 
 <Canvas>
-  <Story name="Normal - Example" args={{ spacing: 'normal' }}>
+  <Story name="Spacing: normal example" args={{ spacing: 'normal' }}>
     {NormalTemplate.bind({})}
   </Story>
 </Canvas>
 
 <Canvas>
-  <Story name="Condensed - Example" args={{ spacing: 'condensed' }}>
+  <Story name="Spacing: condensed example" args={{ spacing: 'condensed' }}>
     {CondensedTemplate.bind({})}
   </Story>
 </Canvas>
 
 <Canvas>
   <Story
-    name="Dark Mode - Example"
+    name="Spacing: dark mode example"
     args={{ variant: 'table', spacing: 'condensed', mode: 'dark' }}
   >
     {CondensedTemplate.bind({})}
@@ -365,13 +365,13 @@ Here's some examples of Lists to use as guides.
 </Canvas>
 
 <Canvas>
-  <Story name="Expanded - Button" args={{ mode: 'dark' }}>
+  <Story name="Expandable button example" args={{ mode: 'dark' }}>
     {ExpandedTemplateButtonClick.bind({})}
   </Story>
 </Canvas>
 
 <Canvas>
-  <Story name="Expanded - Row" args={{ variant: 'block', mode: 'dark' }}>
+  <Story name="Expandable row example" args={{ variant: 'block', mode: 'dark' }}>
     {ExpandedTemplateRowClick.bind({})}
   </Story>
 </Canvas>

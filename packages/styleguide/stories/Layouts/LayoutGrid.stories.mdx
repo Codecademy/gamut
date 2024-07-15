@@ -65,7 +65,7 @@ If you would like to adjust the space between rows, set the `rowGap`.
 Both these properties can take a <LinkTo id="foundations-system-responsive-properties--page">responsive size</LinkTo>,allowing you to define gaps at each breakpoint.
 
 <Canvas>
-  <Story name="Grid Gaps">
+  <Story name="Grid gaps">
     {(args) => (
       <LayoutGrid {...args}>
         {[
@@ -85,7 +85,7 @@ Both these properties can take a <LinkTo id="foundations-system-responsive-prope
 ## Row height
 
 <Canvas>
-  <Story name="Row Height" args={{ rowHeight: 75 }}>
+  <Story name="Row height" args={{ rowHeight: 75 }}>
     {(args) => (
       <LayoutGrid {...args}>
         {new Array(12).fill({ size: 3 }).map((props, i) => (
@@ -104,7 +104,7 @@ Columns may be offset from the left by numbers within the [0-12] scale.
 As with column and row gaps, those numbers may be static or responsive.
 
 <Canvas>
-  <Story name="Column Offsets">
+  <Story name="Column offsets">
     {(args) => (
       <LayoutGrid {...args}>
         {[
@@ -130,7 +130,7 @@ As with column and row gaps, those numbers may be static or responsive.
 Columns may be span multiple rows. Make sure you have a consistent row height when using rowspans.
 
 <Canvas>
-  <Story name="Column Rowspans" args={{ rowHeight: 48 }}>
+  <Story name="Column rowspans" args={{ rowHeight: 48 }}>
     {(args) => {
       const children = new Array(12).fill({ size: 3 }).map((props, i) => {
         const span = {
