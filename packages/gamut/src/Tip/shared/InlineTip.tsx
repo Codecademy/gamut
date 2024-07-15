@@ -50,6 +50,7 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
         id={id}
         width={narrow ? narrowWidth : undefined}
         zIndex="auto"
+        aria-hidden={isToolType}
       >
         {info}
       </TipBody>

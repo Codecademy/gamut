@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { Text } from '../../Typography';
+import { JawsTipText } from '../shared/elements';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
@@ -96,9 +97,12 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   };
 
   const text = (
-    <Text aria-hidden={isAriaHidden} aria-live="assertive" screenreader>
-      {!isTipHidden ? info : `\xa0`}
-    </Text>
+    <>
+      <JawsTipText>upjaws</JawsTipText>
+      <Text aria-hidden={isAriaHidden} aria-live="assertive" screenreader>
+        {!isTipHidden ? info : `\xa0`}
+      </Text>
+    </>
   );
 
   const tip = (
@@ -113,7 +117,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   // on floating alignment - since this uses React.Portal we're breaking the DOM order so the screenreader text needs to be navigable, in the correct DOM order, and never aria-hidden
 
-  return placement !== 'floating' || alignment.includes('top') ? (
+  return placement === 'floating' && alignment.includes('bottom') ? (
     <>
       {text}
       {tip}

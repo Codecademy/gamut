@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 
 import { Box } from '../../Box';
 import { Selectors } from '../../ButtonBase/ButtonBase';
+import { Text } from '../../Typography';
 import {
   inlineToolTipBodyAlignments,
   toolTipAlignmentVariants,
@@ -67,3 +68,14 @@ export interface ToolTipContainerProps
 export const TipBody = styled(Box)<
   StyleProps<typeof inlineToolTipBodyAlignments>
 >(css({ ...toolTipBodyCss }), inlineToolTipBodyAlignments);
+
+export const JawsTipText = styled(Text)(
+  css({
+    clipPath: 'inset(50%)',
+    height: '1px',
+    overflow: 'hidden',
+    position: 'absolute',
+    whiteSpace: 'nowrap',
+    width: '1px',
+  })
+);
