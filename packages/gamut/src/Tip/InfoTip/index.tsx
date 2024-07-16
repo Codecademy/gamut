@@ -97,12 +97,9 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   };
 
   const text = (
-    <>
-      <JawsTipText>upjaws</JawsTipText>
-      <Text aria-hidden={isAriaHidden} aria-live="assertive" screenreader>
-        {!isTipHidden ? info : `\xa0`}
-      </Text>
-    </>
+    <Text aria-hidden={isAriaHidden} aria-live="assertive" screenreader>
+      {!isTipHidden ? info : `\xa0`}
+    </Text>
   );
 
   const tip = (
@@ -117,7 +114,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   // on floating alignment - since this uses React.Portal we're breaking the DOM order so the screenreader text needs to be navigable, in the correct DOM order, and never aria-hidden
 
-  return placement === 'floating' && alignment.includes('bottom') ? (
+  return placement === 'floating' && alignment.includes('top') ? (
     <>
       {text}
       {tip}
