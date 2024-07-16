@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { Text } from '../../Typography';
-import { JawsTipText } from '../shared/elements';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
