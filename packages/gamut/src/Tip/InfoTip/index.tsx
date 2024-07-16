@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { Text } from '../../Typography';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
@@ -8,6 +7,7 @@ import {
   TipBaseProps,
   tipDefaultProps,
 } from '../shared/types';
+import { ScreenreaderNavigableTaxt } from './elements';
 import { InfoTipButton } from './InfoTipButton';
 
 export type InfoTipProps = TipBaseProps & {
@@ -96,9 +96,13 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   };
 
   const text = (
-    <Text aria-hidden={isAriaHidden} aria-live="assertive" screenreader>
+    <ScreenreaderNavigableTaxt
+      aria-hidden={isAriaHidden}
+      aria-live="assertive"
+      screenreader
+    >
       {!isTipHidden ? info : `\xa0`}
-    </Text>
+    </ScreenreaderNavigableTaxt>
   );
 
   const tip = (
