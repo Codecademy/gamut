@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.5...@codecademy/styleguide@67.0.0) (2024-07-16)
+
+### ⚠ BREAKING CHANGES
+
+- Remove `ButtonDeprecated`, `ButtonDeprecatedBase` and `InputStepper`
+
+### Miscellaneous Chores
+
+- Remove `ButtonDeprecated`, `ButtonDeprecatedBase` and `InputStepper` ([9425567](https://github.com/Codecademy/gamut/commit/942556773e7df3b7d0d44429f06d5819589d0231))
+
 ### [66.29.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.4...@codecademy/styleguide@66.29.5) (2024-07-12)
 
 **Note:** Version bump only for package @codecademy/styleguide
