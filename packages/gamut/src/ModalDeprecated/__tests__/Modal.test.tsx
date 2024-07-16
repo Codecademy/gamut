@@ -33,17 +33,13 @@ describe('ModalDeprecated', () => {
       children: <button type="button">Click Me</button>,
     });
 
-    expect(
-      screen.queryByTestId('modal-default-close-button')
-    ).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument();
   });
 
   it('renders its close button if hideDefaultCloseButton is false', () => {
     renderModal();
 
-    expect(
-      screen.queryByTestId('modal-default-close-button')
-    ).toBeInTheDocument();
+    expect(screen.queryByLabelText('Close')).toBeInTheDocument();
   });
 
   it('triggers onRequestClose callback when escape key is triggered', () => {
