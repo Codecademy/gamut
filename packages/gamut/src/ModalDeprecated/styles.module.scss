@@ -17,17 +17,3 @@
   // whatever had it previously
   outline: none;
 }
-
-.closeButtonContainer {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.closeButton {
-  padding: 0.5rem;
-  margin: -0.5rem -0.5rem 0.5rem 0;
-}
-
-.closeIcon {
-  color: $color-gray-800;
-}
