@@ -1,4 +1,4 @@
-import { css, theme, variant } from '@codecademy/gamut-styles';
+import { theme, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -52,5 +52,5 @@ export interface ModalContainerProps
 
 export const ModalContainer = styled(FloatingCard)<ModalContainerProps>(
   sizeVariant,
-  layoutVariant,
+  layoutVariant
 );
