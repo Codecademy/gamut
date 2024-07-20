@@ -1,11 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import {
-  Background,
-  css,
-  system,
-  theme,
-  variant,
-} from '@codecademy/gamut-styles';
+import { css, system, theme, variant } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -40,10 +34,7 @@ export const Outline = styled(Box)(
   })
 );
 
-export const TagWrapper = styled(Box)<BaseTagProps>(
-  tagProps,
-  colorVariants
-);
+export const TagWrapper = styled(Box)<BaseTagProps>(tagProps, colorVariants);
 
 export const DismissButton = styled(IconButton)(
   variant({

@@ -31,7 +31,6 @@ export const colorVariants = variant({
   },
 });
 
-
 export const dismissSharedStyles = {
   display: 'flex',
   alignItems: 'center',

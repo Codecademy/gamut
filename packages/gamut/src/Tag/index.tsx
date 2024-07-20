@@ -1,7 +1,12 @@
 import * as React from 'react';
 
 import { Text } from '../Typography';
-import { DismissButton, Outline, StyledMiniDeleteIcon, TagWrapper } from './elements';
+import {
+  DismissButton,
+  Outline,
+  StyledMiniDeleteIcon,
+  TagWrapper,
+} from './elements';
 import { tagLabelFontSize, tagLabelPadding } from './styles';
 import { TagProps } from './types';
 
