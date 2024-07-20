@@ -21,6 +21,8 @@ export const tagProps = variance.compose(
   system.typography
 );
 
+// KENNY: Is this needed anymore? can't I add a focus-visible to the dismiss button?
+// KENNY: is this to perserve the outside focus on the tag too?
 export const Outline = styled(Box)(
   css({
     // this is a bit of a hack as we don't have access to focus-visible from this component.  if you are not properly dismissing your tags you may see this primary colored outline after clicking X, but otherwise you should never hit this behavior.
@@ -38,10 +40,7 @@ export const Outline = styled(Box)(
   })
 );
 
-// Changing it to colormode equivalent
-// don't need this background anymore (there wasn't any semantic color mode)
-
-export const TagWrapper = styled(Background)<BaseTagProps>(
+export const TagWrapper = styled(Box)<BaseTagProps>(
   tagProps,
   colorVariants
 );
@@ -49,6 +48,7 @@ export const TagWrapper = styled(Background)<BaseTagProps>(
 export const DismissButton = styled(IconButton)(
   variant({
     defaultVariant: 'default',
+    prop: 'tagType',
     base: {
       ...dismissSharedStyles,
       border: 1,
@@ -57,27 +57,31 @@ export const DismissButton = styled(IconButton)(
       color: 'currentColor',
       width: 12,
     },
+    // KENNY: could maybe add shared pseudo styles to both default and grey
     variants: {
       default: {
         [Selectors.HOVER]: {
-          bg: 'background-hover',
+          color: 'background',
+          bg: 'secondary-hover',
         },
         [Selectors.FOCUS]: {
+          color: 'background',
           bg: 'background-selected',
         },
       },
       grey: {
         [Selectors.HOVER]: {
-          bg: 'primary',
+          color: 'background',
+          bg: 'secondary-hover',
         },
         [Selectors.FOCUS]: {
-          bg: 'navy-700',
+          color: 'background',
+          bg: 'secondary-hover',
         },
       },
     },
   })
 );
-
 
 export const StyledMiniDeleteIcon = styled(MiniDeleteIcon)(
   css({

@@ -1,9 +1,8 @@
-import {  useCurrentMode } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 import { Text } from '../Typography';
 import { DismissButton, Outline, StyledMiniDeleteIcon, TagWrapper } from './elements';
-import { tagBg, tagLabelFontSize, tagLabelPadding } from './styles';
+import { tagLabelFontSize, tagLabelPadding } from './styles';
 import { TagProps } from './types';
 
 export const Tag: React.FC<TagProps> = ({
@@ -13,11 +12,9 @@ export const Tag: React.FC<TagProps> = ({
   onDismiss,
   ...rest
 }) => {
-  const mode = useCurrentMode();
-  const trueVariant = !variant ? 'default' : variant;
   return (
     <Outline {...rest}>
-      <TagWrapper bg={tagBg[mode][trueVariant]} variant={trueVariant}>
+      <TagWrapper variant={variant}>
         <Text
           as="span"
           fontSize={tagLabelFontSize}
@@ -35,6 +32,7 @@ export const Tag: React.FC<TagProps> = ({
             tip="Remove"
             tipProps={{ placement: 'floating' }}
             icon={StyledMiniDeleteIcon}
+            tagType={variant}
           />
         )}
       </TagWrapper>
