@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [56.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.0...@codecademy/gamut@56.0.1) (2024-07-22)
+
+### Bug Fixes
+
+- **InfoTip:** fix DOM ordering + tip not being reread ([08e8b6a](https://github.com/Codecademy/gamut/commit/08e8b6ad26b8ea8e84b15a363c4229b21eb7f7ff))
+
 ## [56.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.3...@codecademy/gamut@56.0.0) (2024-07-16)
 
 ### ⚠ BREAKING CHANGES
