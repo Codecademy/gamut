@@ -91,16 +91,16 @@ export const Modal: React.FC<ModalProps> = ({
       {...rest}
     >
       <ModalContainer
-        className={className}
-        aria-label={ariaLabel}
-        aria-hidden="false"
-        aria-modal="true"
+        tabIndex={-1}
+        size={size}
         role="dialog"
         layout={views && views?.length > 0 ? 'dialog' : 'standard'}
-        size={size}
-        aria-live={ariaLive}
-        tabIndex={-1}
         data-autofocus
+        className={className}
+        aria-modal="true"
+        aria-live={ariaLive}
+        aria-label={ariaLabel}
+        aria-hidden="false"
       >
         {(title || views?.[currentView].title) && (
           <Text
@@ -150,7 +150,6 @@ export const Modal: React.FC<ModalProps> = ({
             variant="primary"
             onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
               setCurrentView(currentView + 1);
-              // buttonRef.current?.focus();
               views?.[currentView].nextCta?.onClick?.(e);
             }}
             gridArea="confirm"
