@@ -8,7 +8,7 @@ export const tagBaseStyles = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: tagBorderRadius,
+  borderRadius: "4px 0 0 4px",
   height: '24px',
   width: 'fit-content',
   maxWidth: '100%',
@@ -20,6 +20,7 @@ export const colorVariants = variant({
   base: {
     ...tagBaseStyles,
     color: 'background',
+    borderRight: 'transparent',
   },
   variants: {
     default: {
@@ -37,4 +38,7 @@ export const dismissSharedStyles = {
   justifyContent: 'center',
   height: '100%',
   minWidth: '24px',
+  '&::before, &::after': {
+    display: 'none',
+  }
 };
