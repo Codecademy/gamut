@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [56.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.1...@codecademy/gamut@56.0.2) (2024-07-23)
+
+### Bug Fixes
+
+- **Modal:** Give Modal programmatic focus instead of close button ([5de79dc](https://github.com/Codecademy/gamut/commit/5de79dc362267d5c66293ef08772db6d1bb7530a))
+
 ### [56.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.0...@codecademy/gamut@56.0.1) (2024-07-22)
 
 ### Bug Fixes
