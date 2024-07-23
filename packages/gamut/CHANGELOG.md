@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [56.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.1...@codecademy/gamut@56.0.2) (2024-07-23)
+
+### Bug Fixes
+
+- **Modal:** Give Modal programmatic focus instead of close button ([5de79dc](https://github.com/Codecademy/gamut/commit/5de79dc362267d5c66293ef08772db6d1bb7530a))
+
+### [56.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.0...@codecademy/gamut@56.0.1) (2024-07-22)
+
+### Bug Fixes
+
+- **InfoTip:** fix DOM ordering + tip not being reread ([08e8b6a](https://github.com/Codecademy/gamut/commit/08e8b6ad26b8ea8e84b15a363c4229b21eb7f7ff))
+
+## [56.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.3...@codecademy/gamut@56.0.0) (2024-07-16)
+
+### ⚠ BREAKING CHANGES
+
+- Remove `ButtonDeprecated`, `ButtonDeprecatedBase` and `InputStepper`
+
+### Miscellaneous Chores
+
+- Remove `ButtonDeprecated`, `ButtonDeprecatedBase` and `InputStepper` ([9425567](https://github.com/Codecademy/gamut/commit/942556773e7df3b7d0d44429f06d5819589d0231))
+
 ### [55.25.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.2...@codecademy/gamut@55.25.3) (2024-07-08)
 
 ### Bug Fixes

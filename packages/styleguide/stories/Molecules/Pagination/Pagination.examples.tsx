@@ -1,6 +1,7 @@
 import {
   FlexBox,
-  InputStepper,
+  FormGroup,
+  Input,
   Pagination,
   PaginationProps,
 } from '@codecademy/gamut';
@@ -14,7 +15,8 @@ export const PaginationControlledExample: React.FC<PaginationProps> = (
   const [totalPages, setTotalPages] = useState(3);
 
   const setChangedPage = useCallback(
-    (page) => {
+    (pg) => {
+      const page = Number(pg);
       if (page > totalPages) return setPageNumber(1);
       if (page <= 0) return setPageNumber(totalPages);
       if (page !== pageNumber) setPageNumber(page);
@@ -23,8 +25,8 @@ export const PaginationControlledExample: React.FC<PaginationProps> = (
   );
 
   const setChangedTotalPages = useCallback(
-    (pages) => {
-      setTotalPages(pages);
+    (page) => {
+      setTotalPages(Number(page));
     },
     [setTotalPages]
   );
@@ -32,18 +34,26 @@ export const PaginationControlledExample: React.FC<PaginationProps> = (
   return (
     <>
       <FlexBox justifyContent="center" mb={24} p={12}>
-        <InputStepper
-          label="page number"
-          ariaLabel="page number"
-          value={pageNumber}
-          onChange={setChangedPage}
-        />
-        <InputStepper
-          label="total pages"
-          ariaLabel="total pages"
-          value={totalPages}
-          onChange={setChangedTotalPages}
-        />
+        <FormGroup label="Current Page" htmlFor="current-page">
+          <Input
+            label="current page"
+            value={pageNumber}
+            onChange={(e) => setChangedPage(e.target.value)}
+            type="number"
+            min={1}
+            htmlFor="current-page"
+          />
+        </FormGroup>
+        <FormGroup label="Total Pages" htmlFor="total-pages">
+          <Input
+            label="total pages"
+            value={totalPages}
+            onChange={(e) => setChangedTotalPages(e.target.value)}
+            type="number"
+            min={1}
+            htmlFor="total-pages"
+          />
+        </FormGroup>
       </FlexBox>
       <Pagination
         {...props}

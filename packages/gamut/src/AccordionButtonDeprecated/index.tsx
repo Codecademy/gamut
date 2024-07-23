@@ -2,11 +2,11 @@ import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
 import * as React from 'react';
 
-import { ButtonDeprecated } from '../ButtonDeprecated';
+import { ButtonDeprecated } from './ButtonDeprecated';
 import {
   ButtonDeprecatedBase,
   ButtonDeprecatedBaseProps,
-} from '../ButtonDeprecatedBase';
+} from './ButtonDeprecatedBase';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';
 

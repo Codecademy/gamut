@@ -60,19 +60,23 @@ export const Dialog: React.FC<DialogProps> = ({
         aria-modal="true"
         role="dialog"
         layout="dialog"
+        tabIndex={-1}
+        data-autofocus
+        aria-label="dialog"
       >
         <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
           {title}
         </Text>
-        <IconButton
-          aria-label="Close Dialog"
-          size="small"
-          alignSelf="start"
-          icon={MiniDeleteIcon}
-          onClick={onCancel}
-          gridArea="close"
-          tip="Close dialog"
-        />
+        <Box gridArea="close">
+          <IconButton
+            aria-label="Close Dialog"
+            size="small"
+            alignSelf="start"
+            icon={MiniDeleteIcon}
+            onClick={onCancel}
+            tip="Close dialog"
+          />
+        </Box>
         <Box as="div" gridArea="content" data-testid="dialog-content">
           {image && <ImageContainer image={image} size={size} />}
           {children}

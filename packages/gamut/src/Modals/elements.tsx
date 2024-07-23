@@ -1,4 +1,4 @@
-import { variant } from '@codecademy/gamut-styles';
+import { theme, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -28,6 +28,10 @@ const layoutVariant = variant({
     columnGap: 16,
     gridTemplateColumns: '1fr min-content 2rem',
     gridTemplateRows: 'max-content 1fr max-content',
+    '&:focus-visible': {
+      outlineOffset: '4px',
+      outline: `2px solid ${theme.colors.primary} !important`,
+    },
   },
   variants: {
     standard: {

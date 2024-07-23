@@ -4,11 +4,11 @@ import hasIn from 'lodash/hasIn';
 import { ReactNode } from 'react';
 import * as React from 'react';
 
+import { omitProps } from '../../utils/omitProps';
 import {
   ButtonDeprecatedBase,
   ButtonDeprecatedBaseProps,
 } from '../ButtonDeprecatedBase';
-import { omitProps } from '../utils/omitProps';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
