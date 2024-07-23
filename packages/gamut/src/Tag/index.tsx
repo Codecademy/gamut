@@ -1,17 +1,15 @@
-import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import * as React from 'react';
 
+import { FlexBox } from '../Box';
 import { Text } from '../Typography';
 import {
   DismissButton,
   Outline,
   StyledMiniDeleteIcon,
-  TagWrapper,
+  TagLabelWrapper,
 } from './elements';
 import { tagLabelFontSize, tagLabelPadding } from './styles';
 import { TagProps } from './types';
-import { ToolTip } from '../Tip';
-import { Box, FlexBox } from '../Box';
 
 export const Tag: React.FC<TagProps> = ({
   children,
@@ -22,8 +20,8 @@ export const Tag: React.FC<TagProps> = ({
 }) => {
   return (
     <Outline {...rest}>
-      <FlexBox >
-        <TagWrapper variant={variant}>
+      <FlexBox flexDirection='row'>
+        <TagLabelWrapper variant={variant} readOnly={readonly}>
           <Text
             as="span"
             fontSize={tagLabelFontSize}
@@ -34,18 +32,7 @@ export const Tag: React.FC<TagProps> = ({
           >
             {children}
           </Text>
-        </TagWrapper>
-        {/* {!readonly && (
-          <ToolTip id="dismiss-button" placement="floating" info="Test">
-            <DismissButton
-              aria-label={`Dismiss ${children} Tag`}
-              onClick={onDismiss || undefined}
-              aria-describedby='dismiss-button'
-            >
-              <MiniDeleteIcon size={12} color="inherit" />
-            </DismissButton>
-          </ToolTip>
-        )} */}
+        </TagLabelWrapper>
         {!readonly && (
           <DismissButton
           aria-label={`Dismiss ${children} Tag`}
