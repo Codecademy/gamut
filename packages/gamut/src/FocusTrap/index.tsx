@@ -63,6 +63,7 @@ export const FocusTrap: React.FC<FocusTrapProps> = ({
       noIsolation={allowPageInteraction}
       data-testid="focus-trap"
       onDeactivation={onDeactivation}
+      returnFocus
       {...focusOnProps}
     >
       {children}
