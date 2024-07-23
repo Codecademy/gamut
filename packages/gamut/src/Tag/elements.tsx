@@ -6,7 +6,12 @@ import styled from '@emotion/styled';
 import { Box, FlexBox } from '../Box';
 import { IconButton } from '../Button';
 import { Selectors } from '../ButtonBase/ButtonBase';
-import { colorVariants, dismissSharedStyles, tagBorderRadius, tagWrapperStates } from './styles';
+import {
+  colorVariants,
+  dismissSharedStyles,
+  tagBorderRadius,
+  tagWrapperStates,
+} from './styles';
 import { BaseTagProps } from './types';
 
 export const tagProps = variance.compose(
@@ -31,7 +36,11 @@ export const Outline = styled(Box)(
   })
 );
 
-export const TagLabelWrapper = styled(FlexBox)<BaseTagProps>(tagProps, colorVariants, tagWrapperStates);
+export const TagLabelWrapper = styled(FlexBox)<BaseTagProps>(
+  tagProps,
+  colorVariants,
+  tagWrapperStates
+);
 
 export const DismissButton = styled(IconButton)(
   variant({
@@ -54,7 +63,6 @@ export const DismissButton = styled(IconButton)(
         [Selectors.FOCUS]: {
           color: 'background',
           bg: 'background-selected',
-
         },
       },
       grey: {
@@ -71,7 +79,6 @@ export const DismissButton = styled(IconButton)(
     },
   })
 );
-
 
 export const StyledMiniDeleteIcon = styled(MiniDeleteIcon)(
   css({

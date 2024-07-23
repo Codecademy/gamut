@@ -20,7 +20,7 @@ export const Tag: React.FC<TagProps> = ({
 }) => {
   return (
     <Outline {...rest}>
-      <FlexBox flexDirection='row'>
+      <FlexBox flexDirection="row">
         <TagLabelWrapper variant={variant} readOnly={readonly}>
           <Text
             as="span"
@@ -35,13 +35,13 @@ export const Tag: React.FC<TagProps> = ({
         </TagLabelWrapper>
         {!readonly && (
           <DismissButton
-          aria-label={`Dismiss ${children} Tag`}
-          onClick={onDismiss || undefined}
-          tip="Remove"
-          tipProps={{ placement: 'floating' }}
-          icon={StyledMiniDeleteIcon}
-          tagType={variant}
-         />
+            aria-label={`Dismiss ${children} Tag`}
+            onClick={onDismiss || undefined}
+            tip="Remove"
+            tipProps={{ placement: 'floating' }}
+            icon={StyledMiniDeleteIcon}
+            tagType={variant}
+          />
         )}
       </FlexBox>
     </Outline>
