@@ -3,7 +3,7 @@ import { css, system, theme, variant } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { Box, FlexBox } from '../Box';
+import { Box } from '../Box';
 import { IconButton } from '../Button';
 import { Selectors } from '../ButtonBase/ButtonBase';
 import {
@@ -36,7 +36,7 @@ export const Outline = styled(Box)(
   })
 );
 
-export const TagLabelWrapper = styled(FlexBox)<BaseTagProps>(
+export const TagLabelWrapper = styled(Box)<BaseTagProps>(
   tagProps,
   colorVariants,
   tagWrapperStates
