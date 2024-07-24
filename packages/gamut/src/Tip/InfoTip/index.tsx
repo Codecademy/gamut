@@ -7,7 +7,7 @@ import {
   TipBaseProps,
   tipDefaultProps,
 } from '../shared/types';
-import { ScreenreaderNavigableTaxt } from './elements';
+import { ScreenreaderNavigableText } from './elements';
 import { InfoTipButton } from './InfoTipButton';
 
 export type InfoTipProps = TipBaseProps & {
@@ -84,7 +84,9 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     };
   });
 
-  const Tip = loaded && placement === 'floating' ? FloatingTip : InlineTip;
+  const isFloating = placement === 'floating';
+
+  const Tip = loaded && isFloating ? FloatingTip : InlineTip;
 
   const tipProps = {
     alignment,
@@ -96,36 +98,40 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   };
 
   const text = (
-    <ScreenreaderNavigableTaxt
+    <ScreenreaderNavigableText
       aria-hidden={isAriaHidden}
       aria-live="assertive"
       screenreader
     >
       {!isTipHidden ? info : `\xa0`}
-    </ScreenreaderNavigableTaxt>
+    </ScreenreaderNavigableText>
   );
 
   const tip = (
-    <Tip {...tipProps} type="info">
-      <InfoTipButton
-        active={!isTipHidden}
-        emphasis={emphasis}
-        onClick={() => clickHandler()}
-      />
-    </Tip>
+    <InfoTipButton
+      active={!isTipHidden}
+      emphasis={emphasis}
+      onClick={() => clickHandler()}
+    />
   );
 
-  // on floating alignment - since this uses React.Portal we're breaking the DOM order so the screenreader text needs to be navigable, in the correct DOM order, and never aria-hidden
+  /* on floating alignment
+  since Popover uses React.Portal the DOM order is incorrect so the screenreader text needs to be navigable, in the correct DOM order, and never aria-hidden
+  should be fixed in GM-797 */
 
-  return placement === 'floating' && alignment.includes('top') ? (
-    <>
-      {text}
-      {tip}
-    </>
-  ) : (
-    <>
-      {tip}
-      {text}
-    </>
+  return (
+    <Tip {...tipProps} type="info">
+      {isFloating && alignment.includes('top') ? (
+        <>
+          {text}
+          {tip}
+        </>
+      ) : (
+        <>
+          {tip}
+          {text}
+        </>
+      )}
+    </Tip>
   );
 };
