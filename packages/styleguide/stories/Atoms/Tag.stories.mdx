@@ -50,9 +50,22 @@ When tag content exceeds the width of its container, it is truncated.
 <Canvas>
   <Story name="Truncated Tags">
     {() => (
-      <Box width="12rem">
-        <Tag>I am long tag yes I am much am a very long tag</Tag>
+      <FlexBox flexDirection="column">
+      <Box>
+      I'll restore to just the first box once PR's approved, the other two are for visual tests:
       </Box>
+      <FlexBox justifyContent="space-between" >
+        <Box width="12rem">
+          <Tag>I am long tag yes I am much am a very long tag</Tag>
+        </Box>
+        <Box width="4rem">
+          <Tag>shorty</Tag>
+        </Box>
+        <Box width="25px">
+          <Tag>shorty</Tag>
+        </Box>
+      </FlexBox>
+      </FlexBox>
     )}
   </Story>
 </Canvas>

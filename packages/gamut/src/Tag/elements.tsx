@@ -24,12 +24,8 @@ export const Outline = styled(Box)(
   css({
     // this is a bit of a hack as we don't have access to focus-visible from this component.  if you are not properly dismissing your tags you may see this primary colored outline after clicking X, but otherwise you should never hit this behavior.
     borderRadius: tagBorderRadius,
-    // minWidth: '100%',
     width: '100%',
     maxWidth: 'fit-content',
-    // display: 'flex',
-    // flexDirection: 'row',
-    // width:'fit-content',
     '&:focus-within': {
       outline: `2px solid ${theme.colors.primary}`,
       outlineOffset: '2px',
@@ -61,9 +57,9 @@ export const DismissButton = styled(IconButton)(
         opacity: 0
       },
       // This removes the pseudo elements that are used for the focus outline
-      // '::before, ::after': {
-      //   display: 'none',
-      // }
+      '::before, ::after': {
+        display: 'none',
+      }
     },
     variants: {
       default: {

@@ -11,7 +11,7 @@ export const tagBaseStyles = {
   height: '24px',
   justifyContent: 'center',
   maxWidth: '100%',
-  width: 'fit-content',
+  // width: 'fit-content',
 };
 
 export const colorVariants = variant({
