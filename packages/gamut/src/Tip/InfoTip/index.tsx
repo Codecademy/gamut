@@ -117,7 +117,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   /* on floating alignment
   since Popover uses React.Portal the DOM order is incorrect so the screenreader text needs to be navigable, in the correct DOM order, and never aria-hidden
-  should be fixed in ticket ### */
+  should be fixed in GM-797 */
 
   return (
     <Tip {...tipProps} type="info">
