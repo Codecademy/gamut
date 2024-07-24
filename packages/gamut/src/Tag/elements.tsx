@@ -3,7 +3,7 @@ import { css, system, theme, variant } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { Box, FlexBox } from '../Box';
+import { Box } from '../Box';
 import { IconButton } from '../Button';
 import { ButtonSelectors, Selectors } from '../ButtonBase/ButtonBase';
 import {
@@ -53,13 +53,13 @@ export const DismissButton = styled(IconButton)(
       borderRadius: `0 ${tagBorderRadius} ${tagBorderRadius} 0`,
       width: 12,
       // This removes a black solid outline
-      [ButtonSelectors.OUTLINE_FOCUS_VISIBLE] : {
-        opacity: 0
+      [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
+        opacity: 0,
       },
-      // This removes the pseudo elements that are used for the focus outline
+      // These pseudo elements add an extra slightly opaque border on hover/focus
       '::before, ::after': {
         display: 'none',
-      }
+      },
     },
     variants: {
       default: {

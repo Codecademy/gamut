@@ -19,9 +19,13 @@ export const Tag: React.FC<TagProps> = ({
   ...rest
 }) => {
   return (
-    <Outline {...rest} >
-      <FlexBox flexDirection="row" {...rest} width={ readonly ? 'fit-content' : 'calc(100% - 24px)'}>
-        <TagLabelWrapper variant={variant} readOnly={readonly} >
+    <Outline {...rest}>
+      <FlexBox
+        flexDirection="row"
+        {...rest}
+        width={readonly ? 'fit-content' : 'calc(100% - 24px)'}
+      >
+        <TagLabelWrapper variant={variant} readOnly={readonly}>
           <Text
             as="span"
             fontSize={tagLabelFontSize}
@@ -41,7 +45,7 @@ export const Tag: React.FC<TagProps> = ({
             tipProps={{ placement: 'floating' }}
             icon={StyledMiniDeleteIcon}
             tagType={variant}
-            width='100%'
+            width="100%"
           />
         )}
       </FlexBox>
