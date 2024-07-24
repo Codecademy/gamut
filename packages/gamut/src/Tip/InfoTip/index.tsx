@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { Box } from '../../Box';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
@@ -7,7 +8,7 @@ import {
   TipBaseProps,
   tipDefaultProps,
 } from '../shared/types';
-import { ScreenreaderNavigableTaxt } from './elements';
+import { ScreenreaderNavigableText } from './elements';
 import { InfoTipButton } from './InfoTipButton';
 
 export type InfoTipProps = TipBaseProps & {
@@ -96,36 +97,38 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   };
 
   const text = (
-    <ScreenreaderNavigableTaxt
+    <ScreenreaderNavigableText
       aria-hidden={isAriaHidden}
       aria-live="assertive"
       screenreader
     >
       {!isTipHidden ? info : `\xa0`}
-    </ScreenreaderNavigableTaxt>
+    </ScreenreaderNavigableText>
   );
 
   const tip = (
-    <Tip {...tipProps} type="info">
-      <InfoTipButton
-        active={!isTipHidden}
-        emphasis={emphasis}
-        onClick={() => clickHandler()}
-      />
-    </Tip>
+    <InfoTipButton
+      active={!isTipHidden}
+      emphasis={emphasis}
+      onClick={() => clickHandler()}
+    />
   );
 
   // on floating alignment - since this uses React.Portal we're breaking the DOM order so the screenreader text needs to be navigable, in the correct DOM order, and never aria-hidden
 
-  return placement === 'floating' && alignment.includes('top') ? (
-    <>
-      {text}
-      {tip}
-    </>
-  ) : (
-    <>
-      {tip}
-      {text}
-    </>
+  return (
+    <Tip {...tipProps} type="info">
+      {placement === 'floating' && alignment.includes('top') ? (
+        <>
+          {text}
+          {tip}
+        </>
+      ) : (
+        <>
+          {tip}
+          {text}
+        </>
+      )}
+    </Tip>
   );
 };

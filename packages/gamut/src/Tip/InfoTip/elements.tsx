@@ -3,6 +3,6 @@ import styled from '@emotion/styled';
 
 import { Text } from '../../Typography';
 
-export const ScreenreaderNavigableTaxt = styled(Text)(
-  css({ position: 'relative' })
+export const ScreenreaderNavigableText = styled(Text)(
+  css({ display: 'absolute', position: 'relative' })
 );
