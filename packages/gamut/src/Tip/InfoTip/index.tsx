@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { Box } from '../../Box';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
