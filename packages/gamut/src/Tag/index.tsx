@@ -1,6 +1,8 @@
+import { css, theme } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import * as React from 'react';
 
-import { FlexBox } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { Text } from '../Typography';
 import {
   DismissButton,
@@ -8,8 +10,26 @@ import {
   StyledMiniDeleteIcon,
   TagLabelWrapper,
 } from './elements';
-import { tagLabelFontSize, tagLabelPadding } from './styles';
+import { tagBorderRadius, tagLabelFontSize, tagLabelPadding } from './styles';
 import { TagProps } from './types';
+
+const StyledFlexBox = styled(FlexBox)(
+  css({
+    borderRadius: tagBorderRadius,
+    // minWidth: '100%',
+    width: '100%',
+    maxWidth: 'fit-content',
+    // display: 'flex',
+    // flexDirection: 'row',
+    // width:'fit-content',
+    '&:focus-within': {
+      outline: `2px solid ${theme.colors.primary}`,
+      outlineOffset: '2px',
+    },
+    '&:active': {
+      outlineColor: `transparent`,
+    }})
+)
 
 export const Tag: React.FC<TagProps> = ({
   children,
@@ -19,8 +39,9 @@ export const Tag: React.FC<TagProps> = ({
   ...rest
 }) => {
   return (
-    <Outline {...rest}>
-      <FlexBox flexDirection="row">
+    // <Outline {...rest} >
+
+      <StyledFlexBox flexDirection="row" {...rest}>
         <TagLabelWrapper variant={variant} readOnly={readonly}>
           <Text
             as="span"
@@ -41,9 +62,11 @@ export const Tag: React.FC<TagProps> = ({
             tipProps={{ placement: 'floating' }}
             icon={StyledMiniDeleteIcon}
             tagType={variant}
+            width='100%'
           />
         )}
-      </FlexBox>
-    </Outline>
+      </StyledFlexBox>
+
+    // </Outline>
   );
 };

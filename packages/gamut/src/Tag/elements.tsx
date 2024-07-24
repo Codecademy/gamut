@@ -3,9 +3,9 @@ import { css, system, theme, variant } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { Box } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { IconButton } from '../Button';
-import { Selectors } from '../ButtonBase/ButtonBase';
+import { ButtonSelectors, Selectors } from '../ButtonBase/ButtonBase';
 import {
   colorVariants,
   dismissSharedStyles,
@@ -24,8 +24,12 @@ export const Outline = styled(Box)(
   css({
     // this is a bit of a hack as we don't have access to focus-visible from this component.  if you are not properly dismissing your tags you may see this primary colored outline after clicking X, but otherwise you should never hit this behavior.
     borderRadius: tagBorderRadius,
-    width: 'fit-content',
-    maxWidth: '100%',
+    // minWidth: '100%',
+    width: '100%',
+    maxWidth: 'fit-content',
+    // display: 'flex',
+    // flexDirection: 'row',
+    // width:'fit-content',
     '&:focus-within': {
       outline: `2px solid ${theme.colors.primary}`,
       outlineOffset: '2px',
@@ -52,26 +56,26 @@ export const DismissButton = styled(IconButton)(
       border: 'none',
       borderRadius: `0 ${tagBorderRadius} ${tagBorderRadius} 0`,
       width: 12,
+      // This removes a black solid outline
+      [ButtonSelectors.OUTLINE_FOCUS_VISIBLE] : {
+        opacity: 0
+      },
+      // This removes the pseudo elements that are used for the focus outline
+      // '::before, ::after': {
+      //   display: 'none',
+      // }
     },
     variants: {
       default: {
         bg: 'secondary',
-        [Selectors.HOVER]: {
+        [`${Selectors.HOVER}, ${Selectors.FOCUS}`]: {
           color: 'background',
           bg: 'secondary-hover',
-        },
-        [Selectors.FOCUS]: {
-          color: 'background',
-          bg: 'background-selected',
         },
       },
       grey: {
         bg: 'text-secondary',
-        [Selectors.HOVER]: {
-          color: 'background',
-          bg: 'secondary-hover',
-        },
-        [Selectors.FOCUS]: {
+        [`${Selectors.HOVER}, ${Selectors.FOCUS}`]: {
           color: 'background',
           bg: 'secondary-hover',
         },
