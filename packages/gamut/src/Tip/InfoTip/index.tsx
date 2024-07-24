@@ -84,7 +84,9 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     };
   });
 
-  const Tip = loaded && placement === 'floating' ? FloatingTip : InlineTip;
+  const isFloating = placement === 'floating';
+
+  const Tip = loaded && isFloating ? FloatingTip : InlineTip;
 
   const tipProps = {
     alignment,
@@ -119,7 +121,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   return (
     <Tip {...tipProps} type="info">
-      {placement === 'floating' && alignment.includes('top') ? (
+      {isFloating && alignment.includes('top') ? (
         <>
           {text}
           {tip}
