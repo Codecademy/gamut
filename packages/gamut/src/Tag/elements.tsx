@@ -52,9 +52,17 @@ export const DismissButton = styled(IconButton)(
       border: 'none',
       borderRadius: `0 ${tagBorderRadius} ${tagBorderRadius} 0`,
       width: 12,
-      // This removes a black solid outline
+      // This removes a black solid outline on focus
       [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
         opacity: 0,
+      },
+      [Selectors.HOVER]: {
+        color: 'background',
+        bg: 'secondary-hover',
+      },
+      [Selectors.FOCUS]: {
+        color: 'background',
+        bg: 'secondary-hover',
       },
       // These pseudo elements add an extra slightly opaque border on hover/focus
       '::before, ::after': {
@@ -64,25 +72,9 @@ export const DismissButton = styled(IconButton)(
     variants: {
       default: {
         bg: 'secondary',
-        [Selectors.HOVER]: {
-          color: 'background',
-          bg: 'secondary-hover',
-        },
-        [Selectors.FOCUS]: {
-          color: 'background',
-          bg: 'secondary-hover',
-        },
       },
       grey: {
         bg: 'text-secondary',
-        [Selectors.HOVER]: {
-          color: 'background',
-          bg: 'secondary-hover',
-        },
-        [Selectors.FOCUS]: {
-          color: 'background',
-          bg: 'secondary-hover',
-        },
       },
     },
   })
