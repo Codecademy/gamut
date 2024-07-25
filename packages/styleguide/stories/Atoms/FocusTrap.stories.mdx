@@ -1,0 +1,70 @@
+import { Box, FillButton, FocusTrap, GridForm } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { useState } from '@storybook/addons';
+
+<Meta
+  title={title}
+  component={FocusTrap}
+  parameters={{
+    subtitle:
+      "Used for modal and dialog experiences like `Overlay` and `ModalDeprecated`, this component controls focus management behavior when we need to limit focus to a single area of the page for some amount of time. It doesn't need to be a modal or overlay, and can instead be controlled with the `active` prop.",
+    source: 'gamut',
+    status: 'current',
+  }}
+/>
+
+This component is a wrapper around the [react-focus-on](https://github.com/theKashey/react-focus-on) library, so any necessary functionality that provides should be exposed through this component. If necessary, you can pass props directly to `react-focus-on` through the `focusOnProps` prop.
+
+<Canvas>
+  <Story name="FocusTrap">
+    {(args) => {
+      const [trapActive, setActive] = useState(false);
+      return (
+        <>
+          <Box>
+            <FillButton onClick={() => setActive(true)}>
+              Enable Focus Trap
+            </FillButton>
+            <FocusTrap {...args} active={trapActive}>
+              <Box
+                p="24"
+                mY="24"
+                border={1}
+                borderColor={trapActive ? 'black' : 'gray-200'}
+              >
+                <GridForm
+                  fields={[
+                    {
+                      label: 'email',
+                      name: 'email-text',
+                      size: 12,
+                      type: 'text',
+                    },
+                    {
+                      label: 'password',
+                      name: 'password-text',
+                      size: 12,
+                      type: 'password',
+                    },
+                  ]}
+                  onSubmit={async () => {
+                    setActive(false);
+                  }}
+                  submit={{
+                    contents: 'Disable Focus Trap',
+                    position: 'right',
+                    size: 12,
+                  }}
+                />
+              </Box>
+            </FocusTrap>
+          </Box>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<PropsTable story="FocusTrap" />

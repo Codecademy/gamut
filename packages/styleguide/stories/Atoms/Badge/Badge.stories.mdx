@@ -1,0 +1,127 @@
+import { Badge } from '@codecademy/gamut/src';
+import { MiniStarIcon, MiniWarningTriangleIcon } from '@codecademy/gamut-icons';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+import { TertiaryFillExample } from './examples';
+
+<Meta
+  title={title}
+  component={Badge}
+  parameters={{
+    subtitle:
+      'Badges are generally used as a standard way to highlight a short piece of text, likely a single word.',
+    status: 'updating',
+    source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?type=design&node-id=29959-39721&mode=design&t=27y0ZBTRsAgBmZ9z-0',
+    },
+  }}
+/>
+
+Badges are generally found next to interface elements that need to be called out. They are small Atoms that can either be used inline, or inside larger Molecules and Organisms.
+
+## Usage
+
+- Use Badges to display read-only information like statuses, attributes, and other emphasized information.
+- Use the `variant` and `size` properties to ensure your badges have the right visibility and visual hierarchy on your page.
+- Use an <LinkTo kind='Atoms/Icons'>Icon</LinkTo> to draw attention to the badge using the `icon` prop.
+- **Limit Badge text to 1–2 words if possible.** These elements are most effective when displaying short pieces of text.
+- **Do not use Badges for elements that are meant to be clickable or interactive**. Badges are fully rounded to distinguish themselves from elements such as <LinkTo kind='Atoms/Button'>Buttons</LinkTo>.
+
+export const BadgeTemplate = (args) => (
+  <Badge {...args}>{args.children ? args.children : args.variant}</Badge>
+);
+
+## Variants
+
+We support the following variants of Badges: `primary`, `secondary`, `tertiary`, `tertiaryFill`, and `accent`.
+
+- **Greyscale Badges** provide different levels of priority for the `primary`, `secondary`, `tertiary`, and `tertiaryFill` variants.
+- **Accent colors** like `accent` are meant to be used sparingly so they can stand out against other elements.
+
+Additional variants should designed with both <LinkTo kind='Foundations/ColorMode'>ColorModes</LinkTo> in mind. For example, the `accent` and `secondary` variants work against both light and dark backgrounds, while the `primary` and `tertiary`, and `tertiaryFill` variants both adapt to their ColorMode (which you can check out by using the toolbar at the top of this page!)
+
+<Canvas>
+  <Story name="primary" args={{ children: 'primary' }}>
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story name="secondary" args={{ variant: 'secondary' }}>
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story name="tertiary" args={{ variant: 'tertiary' }}>
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story name="tertiaryFill" args={{ variant: 'tertiaryFill' }}>
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story name="accent" args={{ variant: 'accent' }}>
+    {BadgeTemplate.bind({})}
+  </Story>
+</Canvas>
+
+In the example below that the background is set to `background-primary` (beige).
+Notice that `tertiary` has a transparent background while `tertiaryFill` has a regular `background` color.
+
+<Canvas>
+  <Story name="tertiary vs teritaryFill">{() => <TertiaryFillExample />}</Story>
+</Canvas>
+
+## Size
+
+We have two `size` options, which should be used according to their context:
+
+- Use `primary` when the `Badge` is a standalone entitity
+- Use `sm` when the `Badge` is inline with other components such as <LinkTo kind='Typography/Text'>Text</LinkTo>
+
+<Canvas>
+  <Story name="default size" args={{ children: 'default size' }}>
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story
+    name="small"
+    args={{ children: 'sm size', size: 'sm', variant: 'tertiary' }}
+  >
+    {BadgeTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Leading Icon
+
+Include the `icon` property when the icon reinforces the badge’s message and improves scannability. Since badges are inherently small, it's recommended to use Gamut's mini icons.
+
+<Canvas>
+  <Story
+    name="sample icon"
+    args={{
+      children: 'sample icon',
+      variant: 'tertiaryFill',
+      icon: MiniStarIcon,
+    }}
+  >
+    {BadgeTemplate.bind({})}
+  </Story>
+  <Story
+    name="small icon"
+    args={{
+      children: 'sm icon',
+      size: 'sm',
+      variant: 'accent',
+      icon: MiniWarningTriangleIcon,
+    }}
+  >
+    {BadgeTemplate.bind({})}
+  </Story>
+</Canvas>
+
+## Code Playground
+
+<Canvas>
+  <Story name="Badge">{(args) => <Badge {...args}>badge</Badge>}</Story>
+</Canvas>
+
+<PropsTable story="Badge" />

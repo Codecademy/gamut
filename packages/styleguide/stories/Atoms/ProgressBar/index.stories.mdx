@@ -1,0 +1,184 @@
+import {
+  Column,
+  GridBox,
+  LayoutGrid,
+  ProgressBar,
+  Text,
+} from '@codecademy/gamut/src';
+import { DiagonalADense, DiagonalARegular } from '@codecademy/gamut-patterns';
+import { Background } from '@codecademy/gamut-styles';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { bars } from './constants';
+
+<Meta
+  title={title}
+  component={ProgressBar}
+  parameters={{
+    subtitle: 'A horizontal bar for displaying progress',
+    source: 'gamut',
+    status: 'current',
+  }}
+  args={{ minimumPercent: 5, percent: 5 }}
+/>
+
+ProgressBars are to be used when you would like to indicate a known or
+somewhat-known amount of progress along a fixed course. For example, you
+might show one on a quiz page indicating how many questions have been
+completed.
+
+ProgressBar comes in one of four sizes: `small`, `medium`, `large`, and `xl`.
+
+Bars with the `large` and `xl` sizes are thicker and will display a
+percentage label.
+
+<Canvas>
+  <Story name="ProgressBar">
+    {() => (
+      <LayoutGrid gap={16}>
+        {bars.map(({ size, variant }) => (
+          <Column key={[size, variant].join()} size={{ md: 6, lg: 3 }}>
+            <Text variant="title-sm" textTransform="capitalize">
+              {size}
+            </Text>
+            {[0, 25, 50, 75, 100].map((percent) => (
+              <GridBox alignContent="center" height={48}>
+                <ProgressBar size={size} percent={percent} variant={variant} />
+              </GridBox>
+            ))}
+          </Column>
+        ))}
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable story="ProgressBar" />
+
+## Default variant
+
+This is a variant of the ProgressBar that has a transparent background and bordered look with colors based on the current color mode.
+
+### Dark Mode
+
+<Canvas column={2}>
+  <Story
+    name="Dark Mode"
+    args={{
+      percent: 50,
+      variant: 'default',
+    }}
+  >
+    {(args) => (
+      <Background bg="navy" p={32}>
+        <ProgressBar {...args} />
+      </Background>
+    )}
+  </Story>
+</Canvas>
+
+### Light Mode
+
+<Canvas column={2}>
+  <Story
+    name="Light Mode"
+    args={{
+      percent: 42,
+      variant: 'default',
+      size: 'large',
+    }}
+  >
+    {(args) => (
+      <Background bg="palePink" p={32}>
+        <ProgressBar {...args} />
+      </Background>
+    )}
+  </Story>
+</Canvas>
+
+## Minimum Percent
+
+Some bars (generally small ones) should display at least a little bit of
+progress, even if the technical progress number is zero. You can use the
+`minimumPercent` prop for a minimum visual width percentage.
+
+<Canvas>
+  <Story name="Minimum Percentage">{(args) => <ProgressBar {...args} />}</Story>
+</Canvas>
+
+## Pattern background
+
+Use components from `@codecademy/gamut-patterns` for a pattern background.
+Here we are using the `DiagonalARegular` pattern in navy in the large ProgressBar and the `DiagonalADense` pattern in the smaller ProgressBar.
+
+### Stripes Regular
+
+<Canvas column={2}>
+  <Story
+    name="Stripes - Regular"
+    args={{
+      pattern: DiagonalARegular,
+      size: 'large',
+      percent: 50,
+      variant: 'yellow',
+    }}
+  >
+    {(args) => <ProgressBar {...args} />}
+  </Story>
+</Canvas>
+
+### Stripes Dense
+
+<Canvas>
+  <Story
+    name="Stripes - Dense"
+    args={{
+      size: 'medium',
+      pattern: DiagonalADense,
+      percent: 33,
+      variant: 'blue',
+    }}
+  >
+    {(args) => <ProgressBar {...args} />}
+  </Story>
+</Canvas>
+
+## Flat
+
+Use the prop flat and set it to either "flat-top" or "flat-bottom". This allows the ProgressBar to be on top or bottom of a Card.
+
+### Flat-top
+
+<Canvas>
+  <Story
+    name="Flat - flat-top"
+    args={{
+      size: 'xl',
+      pattern: DiagonalADense,
+      percent: 33,
+      variant: 'yellow',
+      flat: 'flat-top',
+    }}
+  >
+    {(args) => <ProgressBar {...args} />}
+  </Story>
+</Canvas>
+
+### Flat-bottom
+
+<Canvas>
+  <Story
+    name="Flat - flat-bottom"
+    args={{
+      size: 'xl',
+      pattern: DiagonalADense,
+      percent: 33,
+      variant: 'yellow',
+      flat: 'flat-bottom',
+    }}
+  >
+    {(args) => <ProgressBar {...args} />}
+  </Story>
+</Canvas>

@@ -1,0 +1,168 @@
+import { ButtonDeprecated, ButtonDeprecatedBase } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { brandThemeKeys, deprecatedThemeKeys, newThemeKeys } from './helpers';
+
+<Meta
+  title={title}
+  component={ButtonDeprecated}
+  subcomponents={{ ButtonDeprecatedBase }}
+  parameters={{
+    subtitle: 'Older buttons that are used in legacy code',
+    status: 'deprecated',
+    source: 'gamut',
+  }}
+  args={{ theme: 'brand-blue', children: 'Submit' }}
+/>
+
+Primary versions of buttons and links. Previously, all focusable,
+interactive elements were using some form of a `ButtonDeprecated` (if
+they look like this) or `ButtonDeprecatedBase` (if they have custom
+styles).
+
+**Now they're deprecated.**
+
+Prefer `brand-purple` for significant actions such as Pro signups. Prefer `brand-blue` for generic actions.
+
+Play with this button, if you&apos;d like!
+
+<Canvas>
+  <Story name="ButtonDeprecated">
+    {(args) => <ButtonDeprecated {...args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="ButtonDeprecated" />
+
+## Themes
+
+There are several theme sets you can use with `ButtonDeprecated`
+
+### New
+
+<Canvas columns={1}>
+  <Story name="New Buttons" args={{ style: { margin: '1rem' } }}>
+    {(args) =>
+      newThemeKeys.map((theme) => (
+        <ButtonDeprecated key={theme} {...args} theme={theme}>
+          {theme}
+        </ButtonDeprecated>
+      ))
+    }
+  </Story>
+</Canvas>
+
+### Brand
+
+<Canvas columns={1}>
+  <Story name="Brand Buttons" args={{ style: { margin: '1rem' } }}>
+    {(args) =>
+      brandThemeKeys.map((theme) => (
+        <ButtonDeprecated key={theme} {...args} theme={theme}>
+          {theme}
+        </ButtonDeprecated>
+      ))
+    }
+  </Story>
+</Canvas>
+
+### Deprecated
+
+We also have legacy button colors floating around. Do not use these.
+
+<Canvas>
+  <Story name="Deprecated" args={{ style: { margin: '1rem' } }}>
+    {(args) =>
+      deprecatedThemeKeys.map((theme) => (
+        <ButtonDeprecated key={`${theme}`} {...args} theme={theme}>
+          {theme}
+        </ButtonDeprecated>
+      ))
+    }
+  </Story>
+</Canvas>
+
+## ButtonDeprecatedBase Variants
+
+Use `ButtonDeprecatedBase` when you need something that acts as a link or
+button, but don&apos;t need the default button styles.
+
+_Note:_ keep in mind that buttons generally need focus and hover
+indicators for accessibility. If you use `ButtonDeprecatedBase`, be sure you&apos;re
+adding in your own.
+
+<Canvas>
+  <Story name="ButtonDeprecatedBase" args={{ children: 'I am basic' }}>
+    {(args) => <ButtonDeprecatedBase {...args} />}
+  </Story>
+  <Story
+    name="ButtonDeprecatedBase Link"
+    args={{ href: '#', children: 'a basic link' }}
+  >
+    {(args) => <ButtonDeprecatedBase {...args} />}
+  </Story>
+  <Story
+    name="ButtonDeprecatedBase Link Style"
+    args={{ link: true, children: 'a basic button styled as a link' }}
+  >
+    {(args) => <ButtonDeprecatedBase {...args} />}
+  </Story>
+</Canvas>
+
+## Link Button
+
+You may also configure a button to behave purely like a link
+
+<Canvas>
+  <Story name="Link Button" args={{ children: 'Link', link: true, href: '#' }}>
+    {(args) => (
+      <>
+        This is an example of a <ButtonDeprecated {...args} />
+      </>
+    )}
+  </Story>
+</Canvas>
+
+## Button options
+
+Common variants of buttons you might come across.
+
+<Canvas columns={1}>
+  <Story
+    name="Flat"
+    args={{ theme: 'brand-blue', flat: true, href: '#', children: 'Flaat' }}
+  >
+    {(args) => <ButtonDeprecated {...args} />}
+  </Story>
+  <Story
+    name="Outline"
+    args={{ children: 'Outline', href: '#', outline: true }}
+  >
+    {(args) => <ButtonDeprecated {...args} />}
+  </Story>
+  <Story name="Large" args={{ size: 'large', children: 'Large' }}>
+    {(args) => <ButtonDeprecated {...args} />}
+  </Story>
+  <Story name="Small" args={{ size: 'small', children: 'Small' }}>
+    {(args) => <ButtonDeprecated {...args} />}
+  </Story>
+  <Story name="Disabled" args={{ disabled: true, children: 'Disabled' }}>
+    {(args) => <ButtonDeprecated {...args} />}
+  </Story>
+  <Story name="Caps" args={{ caps: true, children: 'Caps' }}>
+    {(args) => <ButtonDeprecated {...args} />}
+  </Story>
+</Canvas>
+
+## Round
+
+Buttons might also be `round` to indicate rounded corners. These tend to
+be larger, advertise-y placements.
+
+<Canvas>
+  <Story name="Round" args={{ round: true, children: 'Round' }}>
+    {(args) => <ButtonDeprecated {...args} />}
+  </Story>
+</Canvas>

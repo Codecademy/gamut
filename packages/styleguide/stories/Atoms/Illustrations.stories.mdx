@@ -1,0 +1,84 @@
+import * as illustrations from '@codecademy/gamut-illustrations/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import {
+  IconGallery,
+  IconItem,
+  Meta,
+  Preview,
+  Story,
+} from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  args={{
+    illustration: 'NumberBlocks',
+    width: 256,
+  }}
+  argTypes={{
+    illustration: {
+      control: {
+        options: Object.keys(illustrations),
+        type: 'select',
+      },
+    },
+    width: {
+      control: {
+        type: 'number',
+      },
+    },
+  }}
+  parameters={{
+    subtitle: `We're developing a set of fun illustrations given us to design.`,
+    source: 'gamut-illustrations',
+    status: 'current',
+  }}
+  component={illustrations.NumberBlocks}
+/>
+
+## General Infomation
+
+These are intended to be able to take in props for variants such as color, so despite being SVG-based, they're stored in our code as regular React components.
+
+## Adding An Illustration
+
+If you cannot find the Illustration you would like in the ones that we have specified here, please follow these steps to add one.
+
+1. In a Figma that contains an illustration, right-click on the layer and copy it as an SVG
+2. Use `svgo`, such as through https://jakearchibald.github.io/svgomg, to minify that markup
+   - Tip: the default settings work _except_ you'll need to add the root `viewport` attribute back to the `<svg>`
+3. Paste the SVG in a new component under `packages/gamut-illustrations/src/<IllustrationName>.tsx`
+4. Run the ESLint auto-fixer to correct React attribute names
+5. Add the illustration under `packages/gamut-illustrations/src/index.ts`
+6. Send this in as a `feat` pull request
+
+## Sandbox
+
+<Preview>
+  <Story name="Editable Illustration">
+    {({ illustration, ...args }) => {
+      const IllustrationComponent = illustrations[illustration];
+      return <IllustrationComponent {...args} />;
+    }}
+  </Story>
+</Preview>
+
+<PropsTable story="Editable Illustration" />
+
+## Usage
+
+```tsx
+import { NumberBlocks } from '@codecademy/gamut-illustrations';
+
+const MyComponent = () => <NumberBlocks />;
+```
+
+## Illustrations
+
+<IconGallery>
+  {Object.entries(illustrations).map(([illustrationName, Illustration]) => (
+    <IconItem key={illustrationName} name={illustrationName}>
+      <Illustration aria-hidden width="128px" />
+    </IconItem>
+  ))}
+</IconGallery>

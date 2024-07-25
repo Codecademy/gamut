@@ -1,0 +1,174 @@
+import { Background } from '@codecademy/gamut-styles/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { DataTable } from '~styleguide/blocks';
+
+import * as TABLES from './tables';
+
+<Meta
+  title={title}
+  parameters={{
+    subtitle: 'The Emotion theme for codecademy',
+    status: 'current',
+    source: 'gamut-styles',
+  }}
+/>
+
+All Emotion components we build have access to a typed theme object allowing you to have direct access to all the design tokens without any imports.
+
+These are most easily available through our context and accessed via our `gamut-styles` utility functions.
+
+```tsx
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+
+// Single value using static color
+const Box = styled.div(css({ bg: 'navy-400', p: 4 }));
+
+// Multiple values using ColorMode semantic color
+const OtherCoolThing = styled.div(css({ color: 'primary', p: 4 }));
+```
+
+They can also be accessed directly as the `theme` prop on every styled component.
+
+```tsx
+import styled from '@emotion/styled';
+
+const styles = styled.div`
+  blue: ${({ theme }) => theme.colors.blue};
+`;
+```
+
+Or by importing the object from `@codecademy/gamut-styles` if you are not using a `ThemeProvider` in your app.
+
+```tsx
+import { css } from '@emotion/react';
+import { theme } from '@codecademy/gamut-styles';
+
+const myStyles = css`
+  font-size: ${theme.fontSize[14]};
+`;
+```
+
+## Color
+
+**Key**: `theme.colors`
+
+All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches.
+
+### Standard Colors
+
+Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
+
+<Story name="colors">
+  <DataTable {...TABLES.color} />
+</Story>
+
+### Solid Color Swatches
+
+Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a list of all the solid swatches available.
+
+<Story name="swatches">
+  <DataTable {...TABLES.swatch} />
+</Story>
+
+### Navy and White Color Swatches
+
+With the exception of the `weight-100`, `navy-800`, and `navy-900` color weights, our navy and white color weights are semi-transparent. Special consideration should be taken when using these colors, especially when overlapping. The white weights, with the non-transparent exceptions, are only visible in dark mode, and the navy weights, with the non-transparent exceptions, are only visible in light mode. You can swap modes using the `Color Mode` toggle at the top of this screen.
+
+These tokens are also accessible with a dashcase key `theme.colors['${color}-${weight}']`.
+
+<Story name="navy and white swatches">
+  <DataTable {...TABLES.rgbaSwatch} />
+</Story>
+
+## Color Modes
+
+We have 2 core color modes that we support: `light` and `dark`.
+
+Each color mode consists of a set of aliased color tokens. Each alias has semantic meaning for how the color is used throughout our design system:
+
+- `text`: The standard text color for all type.
+- `background`: The base background color.
+- `primary`: The color used for interactive elements with a primary action.
+- `secondary`: The color used for interactive elements with a secondary action.
+
+For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-colormode--page)
+
+### Light Mode
+
+<Story name="light">
+  <Background bg="white">
+    <DataTable {...TABLES.lightMode} />
+  </Background>
+</Story>
+
+**Example**
+
+### Dark Mode
+
+<Story name="dark">
+  <Background bg="navy">
+    <DataTable {...TABLES.darkMode} />
+  </Background>
+</Story>
+
+## Typography
+
+export const sampleText = 'Example Text';
+
+export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+`;
+
+### Font Family
+
+**Key**: `theme.fontFamily`
+
+<Story name="fontFamily">
+  <DataTable {...TABLES.fontFamily} />
+</Story>
+
+### Font Size
+
+**Key**: `theme.fontSize`
+
+<Story name="fontSize">
+  <DataTable {...TABLES.fontSize} />
+</Story>
+
+### Font Weight
+
+**Key**: `theme.fontWeight`
+
+<Story name="fontWeight">
+  <DataTable {...TABLES.fontWeight} />
+</Story>
+
+### Line Height
+
+**Key**: `theme.lineHeight`
+
+<Story name="lineHeight">
+  <DataTable {...TABLES.lineHeight} />
+</Story>
+
+## Space
+
+### Spacing
+
+**Key**: `theme.spacing`
+
+<Story name="spacing">
+  <DataTable {...TABLES.space} />
+</Story>
+
+## Layout
+
+### Breakpoints
+
+**Key**: `theme.breakpoints`
+
+<Story name="breakpoints">
+  <DataTable {...TABLES.breakpoint} />
+</Story>

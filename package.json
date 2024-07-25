@@ -75,7 +75,7 @@
     "webpack": "4.46.0"
   },
   "engines": {
-    "node": "^20.15",
+    "node": "^18.18",
     "yarn": "^1.21.1"
   },
   "license": "MIT",
@@ -115,6 +115,12 @@
   "workspaces": {
     "packages": [
       "packages/*"
+    ],
+    "nohoist": [
+      "**/@storybook",
+      "**/@storybook/**",
+      "**/storybook-*",
+      "**/storybook-*/**"
     ]
   }
 }

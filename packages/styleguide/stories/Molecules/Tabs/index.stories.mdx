@@ -1,0 +1,137 @@
+import {
+  Tab,
+  TabList,
+  TabNav,
+  TabNavLink,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+} from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import {
+  TabsBadgeExample,
+  TabsBlockVariantExample,
+  TabsControlledExample,
+  TabsExample,
+  TabsInteractiveContentExample,
+  TabsNavExample,
+} from './Tabs.examples.tsx';
+
+<Meta
+  title={title}
+  component={Tabs}
+  subcomponents={{
+    TabList,
+    Tab,
+    TabPanel,
+    TabPanels,
+    TabNav,
+    TabNavLink,
+  }}
+  parameters={{
+    subtitle: `Use a series of tabbed areas for when you have multiple potential sections
+to show, but only one should be visible at a time.`,
+    source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/RfVSt2smXRygdjHYSDJAMa/Navigation-Pattern-Cleanup?node-id=108%3A463',
+    },
+    status: 'updating',
+  }}
+  args={{
+    onChange: () => {},
+  }}
+/>
+
+<Canvas>
+  <Story name="Tabs">
+    {(args) => (
+      <Tabs {...args}>
+        <TabList>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+          <Tab>Tab 3</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <Text as="h2">Welcome to Tab 1</Text>
+            <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
+          </TabPanel>
+          <TabPanel>
+            <Text as="h2">Welcome to Tab 2</Text>
+            <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
+          </TabPanel>
+          <TabPanel>
+            <Text as="h2">Welcome to Tab 3</Text>
+            <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable story="Tabs" />
+
+## Usage
+
+By default, the tabs component is uncontrolled, meaning it will maintain it's own state and switch between the different `TabPanel` components without passing any data to the component. This is good for basic use-cases where you don't need to do anything "extra" when switching tabs.
+
+<Canvas>
+  <Story name="Uncontrolled">{(args) => <TabsExample {...args} />}</Story>
+</Canvas>
+
+## Controlled
+
+When `index` is specified, the component switches to
+being a controlled component. It won't change its own tab state, but will
+instead notify of a request to change using `onChange`.
+
+<Canvas>
+  <Story name="Controlled">
+    {(args) => <TabsControlledExample {...args} />}
+  </Story>
+</Canvas>
+
+## Tabs With Badges
+
+<Canvas>
+  <Story name="Tabs With Badges">
+    {(args) => <TabsBadgeExample {...args} />}
+  </Story>
+</Canvas>
+
+## Block Variant
+
+If you pass in the variant 'block', you will get a slim, dark mode version of tabs.
+
+<Canvas>
+  <Story name="Block Variant">
+    {(args) => <TabsBlockVariantExample {...args} />}
+  </Story>
+</Canvas>
+
+## Tab Navigation
+
+You can also use tabs as standard link-based navigation. To do this, you can use the `TabNav` and `TabNavLink` components.
+
+It is recommended to add a unique `aria-label` to the `TabNav` component, to differentiate it from other navigation elements on the page.
+
+<Canvas>
+  <Story name="Tab Navigation">{(args) => <TabsNavExample {...args} />}</Story>
+</Canvas>
+
+## Tabs with interactive content
+
+If you have tabs with interactive content within them (such as a button or link), you need to add `tabindex={-1}` to the TabPanel so that the interactive content, rather than the TabPanel itself, become focused.
+
+<Canvas>
+  <Story name="Tabs Interactive">
+    {(args) => <TabsInteractiveContentExample {...args} />}
+  </Story>
+</Canvas>

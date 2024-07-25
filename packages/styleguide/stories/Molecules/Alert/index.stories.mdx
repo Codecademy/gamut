@@ -1,0 +1,165 @@
+import { Alert } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { LinkTo } from '~styleguide/blocks';
+
+import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
+import { ALERTS } from './constants';
+
+<Meta
+  title={title}
+  component={Alert}
+  parameters={{
+    subtitle:
+      'An alert displays an important, succinct message, and provides actions for users to address (or dismiss the alert). It requires a user action to be dismissed.',
+    status: 'current',
+    source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30186%3A40359',
+    },
+    padded: true,
+  }}
+  args={{
+    type: 'general',
+    placement: 'floating',
+    cta: {
+      children: 'Learn More',
+    },
+    children:
+      'You have been logged out due to inactivity. Click the button to log in again.',
+  }}
+/>
+
+<Story name="Usage guidelines">{(args) => <Alert {...args} />}</Story>
+
+<br />
+
+## Usage Guidelines
+
+- There are 5 alert types. Choose the one that applies most to your case.
+- Display alerts at the top of the page, below the navigation bar.
+- Persistent and non-modal, allowing the user to either ignore them or interact with them at any time.
+- Floats/overlays over any content below it.
+- Only use Feature alert for product/feature announcements that are specific to that page (e.g. Dashboard, Catalog, Profile, LE)
+- **For Inline use**: Only use the inline variant (non-stroked) and only use Success, Error or General type, other types are for top-level use only.
+
+<Story name="Writing tips" />
+
+## Writing Tips
+
+Alert copy should make it clear **what the issue or information is** and **how to proceed**. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="ux-writing-component-guidelines-alerts--examples">writing for alerts</LinkTo>.
+
+<CustomCheckbox
+  htmlFor="alert-1"
+  label="Explain the information or issue clearly."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="alert-2"
+  label="If relevant, explain what the user can do to resolve the alert (or what we are doing on our end to resolve it)."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="alert-3"
+  label="Front-load important information."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="alert-4"
+  label="Ask someone unrelated to the project to read the message to see if it makes sense."
+  spacing="tight"
+/>
+
+Writing an error message? Above all else, error messages should explain and resolve. Inform learners of what went wrong and let them know how to proceed. For more tips and best practices, check out the full guide about <LinkTo id="ux-writing-component-guidelines-error-messages--page">writing error messages</LinkTo>.
+
+## Alert Types
+
+<br />
+
+### General
+
+<Story name="General" args={ALERTS.general}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+### Success
+
+<Story name="Success" args={ALERTS.success}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+### Error
+
+<Story name="Error" args={ALERTS.error}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+### Notice
+
+<Story name="Notice" args={ALERTS.notice}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+### Feature
+
+<Story name="Feature" args={ALERTS.feature}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+<br />
+
+## Inline Variant
+
+For inline use you can use these non-stroked versions for the General, Success and Error type. Use the ColorMode toggle to checkout both ColorModes for our `subtle` variant!
+
+### General
+
+<Story name="Inline General" args={{ ...ALERTS.general, placement: 'inline' }}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+### Success
+
+<Story name="Inline Success" args={{ ...ALERTS.success, placement: 'inline' }}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+### Error
+
+<Story name="Inline Error" args={{ ...ALERTS.error, placement: 'inline' }}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+### Notice
+
+<Story name="Inline Notice" args={{ ...ALERTS.notice, placement: 'inline' }}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+### Feature
+
+<Story name="Inline Feature" args={{ ...ALERTS.feature, placement: 'inline' }}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+### Subtle
+
+<Story name="Inline Subtle" args={{ ...ALERTS.subtle, placement: 'inline' }}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+<br />
+
+## Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<Canvas>
+  <Story name="Playground">{(args) => <Alert {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Playground" />

@@ -1,0 +1,48 @@
+import { TextArea } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={TextArea}
+  parameters={{
+    subtitle: 'A `<textarea />` component for long form text entry',
+    source: 'gamut',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0',
+    },
+  }}
+  args={{
+    htmlFor: 'example-input',
+    name: 'example-input',
+    defaultValue: 'Some text',
+    rows: 4,
+  }}
+/>
+
+<Canvas>
+  <Story name="TextArea">{(args) => <TextArea {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="TextArea" />
+
+### Input States
+
+<Canvas>
+  <Story name="Disabled" args={{ defaultValue: 'Disabled', disabled: true }}>
+    {(args) => <TextArea {...args} />}
+  </Story>
+  <Story name="Error" args={{ defaultValue: 'Error', error: true }}>
+    {(args) => <TextArea {...args} />}
+  </Story>
+  <Story
+    name="Placeholder"
+    args={{ placeholder: 'Placeholder', defaultValue: undefined }}
+  >
+    {(args) => <TextArea {...args} />}
+  </Story>
+</Canvas>

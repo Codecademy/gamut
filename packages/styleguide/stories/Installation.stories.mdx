@@ -1,0 +1,97 @@
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  parameters={{
+    subtitle:
+      'A quick start guide for installing and configuring Gamut in a new application',
+    status: 'current',
+  }}
+/>
+
+<br />
+
+## Installation + Setup
+
+1. Add gamut-kit and peer dependencies dependencies
+
+```bash
+yarn add @codecademy/gamut-kit @emotion/react @emotion/styled
+```
+
+2. Add peer dependencies (no-op) for intellisense to package.json.
+
+```json
+{
+  "peerDependencies": {
+    "@codecademy/gamut": "*",
+    "@codecademy/gamut-icons": "*",
+    "@codecademy/gamut-illustrations": "*",
+    "@codecademy/gamut-patterns": "*",
+    "@codecademy/gamut-styles": "*",
+    "@codecademy/gamut-tests": "*",
+    "@codecademy/variance": "*"
+  }
+}
+```
+
+3. Wrap your application root with `GamutProvider` and give it the theme you would like to use for your app.
+
+```tsx
+import React from 'react';
+import { render } from 'react-dom';
+import { GamutProvider, theme } from '@codecademy/gamut-styles';
+
+import { App } from './App';
+
+const rootElement = document.getElementById('root');
+
+render(
+  <GamutProvider>
+    <App />
+  </GamutProvider>,
+  rootElement
+);
+```
+
+GamutProvider handles a few critical tasks that need to happen in order for components to work.
+
+1. Wraps components in the ThemeContext
+2. Creates an emotion cache with our plugins
+3. Adds Global styles and CSS Variables
+4. Sets the current Color Mode context and variables.
+
+**Note:** For react frameworks like Next and Gatsby this will be slightly different (see the SSR section for further steps for each framework). Your entry points for each framework will be:
+
+- **Next** `_app.tsx`
+- **Gatsby** `gatsby-ssr.js` `gatsby-browser.js` and use `wrapRootElement` in each.
+
+4. Add required types for your theme, which will determine what props Gamut components allow.
+
+```tsx
+// theme.d.ts
+import '@emotion/react';
+
+// Import the appropriate theme shape `PlatformTheme` or `CoreTheme`
+import { CoreTheme } from '@codecademy/gamut-styles';
+
+declare module '@emotion/react' {
+  export interface Theme extends CoreTheme {}
+}
+```
+
+For more information this declaration please checkout the [official emotion documentation](https://emotion.sh/docs/typescript#define-a-theme)!
+
+5. Start Building!
+
+```tsx
+import { Background } from '@codecademy/gamut-styles';
+import { Text } from '@codecademy/gamut';
+
+export const App = () => (
+  <Background bg="beige">
+    <Text as="h1">Hello World!</Text>
+  </Background>
+);
+```

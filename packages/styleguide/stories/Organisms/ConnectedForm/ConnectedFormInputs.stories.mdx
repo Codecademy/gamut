@@ -1,0 +1,136 @@
+import {
+  Box,
+  ConnectedInput,
+  ConnectedRadioGroupInput,
+  List,
+} from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Meta } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+import { ListRowRenderer } from './utils';
+
+<Meta
+  title={title}
+  component={ConnectedInput}
+  parameters={{
+    subtitle: 'A form input for ConnectedForms',
+    source: 'gamut',
+    status: 'updating',
+  }}
+/>
+
+<br />
+
+We have a selection of `ConnectedInput` components that are visually identical to their un-connected <LinkTo kind='Atoms/FormInputs'>FormInput</LinkTo> counterparts. Please reference the links below for component-specific prop and styling configuration:
+
+<Box mx={36} mt={16} mb={42}>
+  <List variant="table">
+    <ListRowRenderer
+      inputs={[
+        { name: 'ConnectedInput', counterpart: 'Input' },
+        { name: 'ConnectedSelect', counterpart: 'Select' },
+        { name: 'ConnectedCheckbox', counterpart: 'Checkbox' },
+        { name: 'ConnectedTextArea', counterpart: 'TextArea' },
+      ]}
+    />
+  </List>
+</Box>
+
+### ConnectedRadioGroupInput
+
+`ConnectedRadioGroupInput` is the exception to the rule, and has some props that differ, particularly `options`.
+
+<PropsTable of={ConnectedRadioGroupInput} />
+
+For further styling configurations, check out <LinkTo kind="Atoms/FormInputs/RadioGroup">RadioGroup</LinkTo>.
+
+`ConnectedRadioGroup` and `ConnectedRadio` should rarely, if ever, be used outside of `ConnectedRadioGroupInput`.
+
+<br />
+
+## Usage
+
+The components are engineered to be passed into the component prop of <LinkTo kind="Organisms/ConnectedForm/ConnectedFormGroup">ConnectedFormGroup</LinkTo>, like so:
+
+```tsx
+<ConnectedFormGroup
+  name="badRadioGroup"
+  label="cool radio group dude"
+  field={{
+    component: ConnectedRadioGroupInput,
+    //type error, these options are not formatted correctly.
+    options: ['one', 'two', 'zero'],
+  }}
+/>
+
+<ConnectedFormGroup
+  name="goodRadioGroup"
+  label="cool radio group dude"
+  field={{
+    component: ConnectedRadioGroupInput,
+    // perfection 🙌
+    options: [
+            { label: 'one', value: 'one' },
+            { label: 'two', value: 'two' },
+            { label: 'zero', value: 'zero' },
+          ],
+  }}
+/>
+```
+
+Use outside of `ConnectedFormGroup` removes much of the accessibility and type-safety built into these components.
+
+<br />
+
+## Delaying Updates to ConnectedForm
+
+On forms with many nested and/or array-like fields, it can be useful for performance reasons to delay updating the form state until the user has finished updating a field (rather than, for example, on every keystroke in a text input).
+
+To faciliate this, developers can use the `useDebouncedField` hook, which connects to `ConnectedForm` the same way that the `useField` hook or a `ConnectedInput` does internally, but delays the `setValue` call until the user has blurred focus on the input.
+
+```tsx
+// DebouncedInput.tsx
+import { Input } from '@codecademy/gamut'
+
+export const DebouncedInput: React.FC<...> = ({ name }) => {
+  const { onChange, onBlur, value } = useDebouncedField({ name, type: 'text' })
+
+  return (
+    <Input
+      name={name}
+      type="text"
+      onChange={onChange}
+      onBlur={onBlur}
+      value={value}
+      htmlFor={name}
+    />
+  )
+}
+
+// FormPage.tsx
+import { ConnectedForm } from '@codecademy/gamut'
+import { DebouncedInput } from './DebouncedInput'
+
+enum FieldNames {
+  favoriteXFilesEpisode = 'favoriteXFilesEpisode'
+}
+
+export const FormPage: React.FC = () => {
+  reutrn (
+    <ConnectedForm
+      defaultValues={{
+        [FieldNames.favoriteXFilesEpisode]: 'Bad Blood'
+      }}
+      onSubmit={() => ...}
+    >
+      <DebouncedInput
+        name={FieldNames.favoriteXFilesEpisode}
+      />
+    </ConnectedForm>
+  )
+}
+```
+
+`useDebouncedField` should not be used with any varaint of the standard `ConnectedInput`, as it will clash with the default `useField` instance used internally by those components.
