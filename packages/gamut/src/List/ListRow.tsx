@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ComponentProps, forwardRef } from 'react';
 import * as React from 'react';
@@ -59,15 +60,17 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     ref
   ) => {
     const {
-      variant,
-      scrollable,
+      isOl,
       rowBreakpoint,
+      scrollable,
+      variant,
       ...rowConfig
     } = useListContext();
     const wrapperProps = !renderExpanded
       ? rowConfig
       : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
     let content = children;
+    const renderNumbering = isOl && renderExpanded !== undefined;
 
     if (renderExpanded) {
       content = (
@@ -76,9 +79,10 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           {...rowConfig}
           aria-expanded={rest?.onClick ? expanded : undefined}
           clickable={!!rest?.onClick}
+          isOl={isOl}
+          onClick={rest?.onClick}
           role={rest?.onClick ? 'button' : rest?.role}
           tabIndex={rest?.onClick ? 0 : rest?.tabIndex}
-          onClick={rest?.onClick}
           {...rest}
           ref={ref}
         >
@@ -93,6 +97,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         expanded={!!renderExpanded}
         scrollable={scrollable}
         rowBreakpoint={rowBreakpoint}
+        isOl={renderNumbering}
         {...wrapperProps}
       >
         <>

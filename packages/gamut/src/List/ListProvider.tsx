@@ -20,10 +20,11 @@ export function useListContext() {
 }
 
 export function useList({
+  isOl,
+  rowBreakpoint,
+  scrollable,
   spacing,
   variant,
-  scrollable,
-  rowBreakpoint,
 }: PrivateListProps) {
   const {
     depth = 0,
@@ -35,13 +36,14 @@ export function useList({
 
   return useMemo(
     () => ({
-      root: depth === 0,
-      scrollable,
-      variant: activeVariant,
-      spacing: activeSpacing,
-      rowBreakpoint,
       depth: depth + 1,
+      isOl,
+      root: depth === 0,
+      rowBreakpoint,
+      scrollable,
+      spacing: activeSpacing,
+      variant: activeVariant,
     }),
-    [scrollable, activeVariant, activeSpacing, depth, rowBreakpoint]
+    [isOl, scrollable, activeVariant, activeSpacing, depth, rowBreakpoint]
   );
 }

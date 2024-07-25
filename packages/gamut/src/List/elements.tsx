@@ -13,6 +13,7 @@ const listVariants = variant({
   prop: 'variant',
   defaultVariant: 'default',
   base: {
+    counterReset: 'section',
     listStyleType: 'none',
     p: 0,
     m: 0,
@@ -44,6 +45,17 @@ export const ListEl = styled(
 )<ListProps>(listVariants);
 
 const rowStates = states({
+  isOl: {
+    '&::before': {
+      alignItems: 'center',
+      content: 'counters(section, ".") "."',
+      counterIncrement: 'section',
+      display: 'flex',
+      fontFamily: 'accent',
+      fontSize: 'inherit',
+      pl: 16,
+    },
+  },
   scrollable: {
     minWidth: 'min-content',
     width: '100%',
@@ -84,7 +96,9 @@ const spacingVariants = variant({
 
 const rowVariants = variant({
   prop: 'variant',
-  base: { bg: 'background' },
+  base: {
+    bg: 'background',
+  },
   variants: {
     default: {
       border: 1,
