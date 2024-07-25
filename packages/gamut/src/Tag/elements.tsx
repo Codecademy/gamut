@@ -64,14 +64,22 @@ export const DismissButton = styled(IconButton)(
     variants: {
       default: {
         bg: 'secondary',
-        [`${Selectors.HOVER}, ${Selectors.FOCUS}`]: {
+        [Selectors.HOVER]: {
+          color: 'background',
+          bg: 'secondary-hover',
+        },
+        [Selectors.FOCUS]: {
           color: 'background',
           bg: 'secondary-hover',
         },
       },
       grey: {
         bg: 'text-secondary',
-        [`${Selectors.HOVER}, ${Selectors.FOCUS}`]: {
+        [Selectors.HOVER]: {
+          color: 'background',
+          bg: 'secondary-hover',
+        },
+        [Selectors.FOCUS]: {
           color: 'background',
           bg: 'secondary-hover',
         },
