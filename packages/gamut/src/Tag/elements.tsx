@@ -43,6 +43,8 @@ export const TagLabelWrapper = styled(Box)<BaseTagProps>(
   tagWrapperStates
 );
 
+const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}`;
+
 export const DismissButton = styled(IconButton)(
   variant({
     defaultVariant: 'default',
@@ -54,14 +56,14 @@ export const DismissButton = styled(IconButton)(
       border: 'none',
       borderRadius: `0 ${tagBorderRadius} ${tagBorderRadius} 0`,
       width: 12,
-      [Selectors.HOVER]: {
+      [hoverAndFocus]: {
         color: 'background',
         bg: 'secondary-hover',
       },
-      [Selectors.FOCUS]: {
-        color: 'background',
-        bg: 'secondary-hover',
-      },
+      // [Selectors.FOCUS]: {
+      //   color: 'background',
+      //   bg: 'secondary-hover',
+      // },
     },
     variants: {
       default: {
