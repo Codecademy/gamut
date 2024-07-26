@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ComponentProps, forwardRef } from 'react';
 import * as React from 'react';
