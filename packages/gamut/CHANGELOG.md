@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [56.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.3...@codecademy/gamut@56.0.4) (2024-07-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [56.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.2...@codecademy/gamut@56.0.3) (2024-07-24)
+
+### Bug Fixes
+
+- **GridForm:** properly align gridform infotips ([ec08fd8](https://github.com/Codecademy/gamut/commit/ec08fd8647aef12ae65c6829e71446b7f5aacba4))
+
 ### [56.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.1...@codecademy/gamut@56.0.2) (2024-07-23)
 
 ### Bug Fixes
