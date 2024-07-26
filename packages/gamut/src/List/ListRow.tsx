@@ -70,7 +70,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       ? rowConfig
       : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
     let content = children;
-    const renderNumbering = isOl && renderExpanded !== undefined;
+    const renderNumbering = isOl && renderExpanded === undefined;
 
     if (renderExpanded) {
       content = (

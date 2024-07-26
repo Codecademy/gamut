@@ -46,6 +46,8 @@ export const ListEl = styled(
 
 const rowStates = states({
   isOl: {
+    /// how do we deal with this on mobile?
+    /// CASS - apply this to be hidden on mobile, and show on mobile for the HEADER ITEM TYPE
     '&::before': {
       alignItems: 'center',
       content: 'counters(section, ".") "."',
@@ -204,6 +206,16 @@ const columnType = variant({
   variants: {
     header: {
       gridColumn: 1,
+      '&::before': {
+        // CASS - have this show only on HEADER, OL, AND MOBILE
+        alignItems: 'baseline', // maybe do this for all header items on mobile
+        content: 'counters(section, ".") "."',
+        counterIncrement: 'section',
+        display: 'flex',
+        fontFamily: 'accent',
+        fontSize: 'inherit',
+        pl: 8,
+      },
     },
     content: {
       gridColumnEnd: 'span 2',

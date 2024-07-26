@@ -43,9 +43,10 @@ const rows = [
 
 export const DemoTemplate: React.FC = (args) => {
   return (
-    <List {...args}>
+    <List {...args} as="ol">
       {rows.map(({ name, ship }) => (
         <ListRow>
+          yo
           <ListCol size="md">{name}</ListCol>
           <ListCol fill>{ship}</ListCol>
         </ListRow>
