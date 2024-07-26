@@ -52,7 +52,7 @@ const rowStates = states({
       alignItems: 'center',
       content: 'counters(section, ".") "."',
       counterIncrement: 'section',
-      display: 'flex',
+      display: { _: 'none', xs: 'flex' },
       fontFamily: 'accent',
       fontSize: 'inherit',
       pl: 16,
@@ -200,23 +200,27 @@ export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
   headerVariants
 );
 
+const headerStyles = { gridColumn: 1 } as const;
 const columnType = variant({
   prop: 'type',
   defaultVariant: 'content',
   variants: {
     header: {
-      gridColumn: 1,
+      ...headerStyles,
+    },
+    orderedHeader: {
+      ...headerStyles,
       '&::before': {
-        // CASS - have this show only on HEADER, OL, AND MOBILE
-        alignItems: 'baseline', // maybe do this for all header items on mobile
+        alignItems: 'baseline', // maybe do this for all header items on mobile ?
         content: 'counters(section, ".") "."',
         counterIncrement: 'section',
-        display: 'flex',
+        display: { _: 'flex', xs: 'none' },
         fontFamily: 'accent',
         fontSize: 'inherit',
         pl: 8,
       },
     },
+
     content: {
       gridColumnEnd: 'span 2',
     },

@@ -43,11 +43,12 @@ const rows = [
 
 export const DemoTemplate: React.FC = (args) => {
   return (
-    <List {...args} as="ol">
+    <List {...args}>
       {rows.map(({ name, ship }) => (
         <ListRow>
-          yo
-          <ListCol size="md">{name}</ListCol>
+          <ListCol type="header" size="md">
+            {name}
+          </ListCol>
           <ListCol fill>{ship}</ListCol>
         </ListRow>
       ))}
@@ -331,7 +332,7 @@ export const ResponsiveTemplate: React.FC<typeof List> = (args) => {
       <ListRow>
         <ListCol size="lg" type="header">
           <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
-            Header
+            Ordered List Header
           </Text>
         </ListCol>
         <ListCol size="lg">
