@@ -5,10 +5,11 @@ import styled from '@emotion/styled';
 
 import { Box } from '../Box';
 import { IconButton } from '../Button';
-import { ButtonSelectors, Selectors } from '../ButtonBase/ButtonBase';
+import { Selectors } from '../ButtonBase/ButtonBase';
 import {
   colorVariants,
   dismissSharedStyles,
+  iconButtonOverrides,
   tagBorderRadius,
   tagWrapperStates,
 } from './styles';
@@ -48,14 +49,11 @@ export const DismissButton = styled(IconButton)(
     prop: 'tagType',
     base: {
       ...dismissSharedStyles,
+      ...iconButtonOverrides,
       color: 'background',
       border: 'none',
       borderRadius: `0 ${tagBorderRadius} ${tagBorderRadius} 0`,
       width: 12,
-      // This removes a black solid outline on focus
-      [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
-        opacity: 0,
-      },
       [Selectors.HOVER]: {
         color: 'background',
         bg: 'secondary-hover',
@@ -63,10 +61,6 @@ export const DismissButton = styled(IconButton)(
       [Selectors.FOCUS]: {
         color: 'background',
         bg: 'secondary-hover',
-      },
-      // These pseudo elements add an extra slightly opaque border on hover/focus
-      '::before, ::after': {
-        display: 'none',
       },
     },
     variants: {
