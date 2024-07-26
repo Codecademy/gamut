@@ -9,6 +9,14 @@ import {
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
+const olStyles = {
+  alignItems: 'center',
+  content: 'counters(section, ".") "."',
+  counterIncrement: 'section',
+  fontFamily: 'accent',
+  fontSize: 'inherit',
+} as const;
+
 const listVariants = variant({
   prop: 'variant',
   defaultVariant: 'default',
@@ -49,12 +57,8 @@ const rowStates = states({
     /// how do we deal with this on mobile?
     /// CASS - apply this to be hidden on mobile, and show on mobile for the HEADER ITEM TYPE
     '&::before': {
-      alignItems: 'center',
-      content: 'counters(section, ".") "."',
-      counterIncrement: 'section',
+      ...olStyles,
       display: { _: 'none', xs: 'flex' },
-      fontFamily: 'accent',
-      fontSize: 'inherit',
       pl: 16,
     },
   },
@@ -211,12 +215,8 @@ const columnType = variant({
     orderedHeader: {
       ...headerStyles,
       '&::before': {
-        alignItems: 'baseline', // maybe do this for all header items on mobile ?
-        content: 'counters(section, ".") "."',
-        counterIncrement: 'section',
+        ...olStyles,
         display: { _: 'flex', xs: 'none' },
-        fontFamily: 'accent',
-        fontSize: 'inherit',
         pl: 8,
       },
     },
