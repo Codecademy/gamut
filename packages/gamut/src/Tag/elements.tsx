@@ -60,10 +60,6 @@ export const DismissButton = styled(IconButton)(
         color: 'background',
         bg: 'secondary-hover',
       },
-      // [Selectors.FOCUS]: {
-      //   color: 'background',
-      //   bg: 'secondary-hover',
-      // },
     },
     variants: {
       default: {
