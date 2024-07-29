@@ -168,7 +168,10 @@ For making feature-forward designs (like our Dashboard), or to use as page secti
 
 ## Ordered List
 
-Our `List`s by default are the `ul` HTML element or unordered list. All of the above configurations works with ordered lists as well. Passing `ol` to the `as` prop will render an ordered list and add numbering to the rows. Ordered lists should always have aheader
+Our `List`s by default are the `ul` HTML element or unordered list. All of the above configurations works with ordered lists as well. Passing `ol` to the `as` prop will render an ordered list and add numbering to the rows.
+
+Ordered lists should always have a one column with a `header` type row to ensure that the numbering is rendered correctly.
+
 
 <Story name="Ordered List" args={{ as:"ol",  variant: 'table', spacing: 'condensed' }}>
   {DemoTemplate.bind({})}
