@@ -511,10 +511,13 @@ export const ExpandableButtonClickRow: React.FC<{
   );
 };
 
-export const ExpandedTemplateRowClick: React.FC<ListProps> = ({ variant }) => (
+export const ExpandedTemplateRowClick: React.FC<ListProps> = ({
+  as,
+  variant,
+}) => (
   <Background bg="black">
     <Box p={8}>
-      <List variant={variant}>
+      <List as={as} variant={variant}>
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
           <ExpandableRowClick name={name} role={role} ship={ship} key={key} />
         ))}

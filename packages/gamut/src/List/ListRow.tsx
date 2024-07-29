@@ -69,6 +69,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       ? rowConfig
       : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
     let content = children;
+    const isClickable = !!rest?.onClick;
     const renderNumbering = isOl && renderExpanded === undefined;
 
     if (renderExpanded) {
@@ -77,7 +78,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           as="div"
           {...rowConfig}
           aria-expanded={rest?.onClick ? expanded : undefined}
-          clickable={!!rest?.onClick}
+          clickable={isClickable}
           isOl={isOl}
           onClick={rest?.onClick}
           role={rest?.onClick ? 'button' : rest?.role}
@@ -97,6 +98,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         scrollable={scrollable}
         rowBreakpoint={rowBreakpoint}
         isOl={renderNumbering}
+        role={isClickable ? 'presentation' : rest?.role}
         {...wrapperProps}
       >
         <>
