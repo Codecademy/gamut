@@ -28,7 +28,15 @@ describe('List', () => {
     expect(listEl).toHaveStyle({ borderRadius: '2px' });
     expect(rowEl).not.toHaveStyle({ minWidth: 'min-content' });
   });
+  it('renders numbering for ordered lists  ', () => {
+    const { view } = renderView({ as: 'ol' });
 
+    const listEl = view.container.querySelector('ol');
+    const rowEl = view.container.querySelector('li');
+
+    expect(listEl).toBeTruthy();
+    expect(rowEl).not.toHaveTextContent('1.');
+  });
   it('configures rows with the correct variants', () => {
     const { view } = renderView();
 
