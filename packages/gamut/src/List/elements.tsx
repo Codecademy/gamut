@@ -54,8 +54,6 @@ export const ListEl = styled(
 
 const rowStates = states({
   isOl: {
-    /// how do we deal with this on mobile?
-    /// CASS - apply this to be hidden on mobile, and show on mobile for the HEADER ITEM TYPE
     '&::before': {
       ...olStyles,
       display: { _: 'none', xs: 'flex' },
