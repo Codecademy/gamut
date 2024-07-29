@@ -172,8 +172,10 @@ Our `List`s by default are the `ul` HTML element or unordered list. All of the a
 
 Ordered lists should always have a one column with a `header` type row to ensure that the numbering is rendered correctly.
 
-
-<Story name="Ordered List" args={{ as:"ol",  variant: 'table', spacing: 'condensed' }}>
+<Story
+  name="Ordered List"
+  args={{ as: 'ol', variant: 'table', spacing: 'condensed' }}
+>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -260,7 +262,7 @@ Optionally, you can pass a `breakpoint` prop to the List to alter this behavior.
 
 <Canvas>
   <Story
-  args={{as: 'ol'}}
+    args={{ as: 'ol' }}
     name="Responsive Layout - Content"
     parameters={{
       docs: { inlineStories: false, iframeHeight: 180 },
@@ -385,7 +387,10 @@ Here's some examples of Lists to use as guides.
 </Canvas>
 
 <Canvas>
-  <Story name="Expanded - Row" args={{ as: 'ol', variant: 'block', mode: 'dark' }}>
+  <Story
+    name="Expanded - Row"
+    args={{ as: 'ol', variant: 'block', mode: 'dark' }}
+  >
     {ExpandedTemplateRowClick.bind({})}
   </Story>
 </Canvas>
@@ -396,5 +401,5 @@ Here's some examples of Lists to use as guides.
   <Story name="List">{DemoTemplate.bind({})}</Story>
 </Canvas>
 
-<PropsTable story="List" exclude={['overflowHidden']} />import { list } from '@codecademy/gamut-styles/dist/variance/props';
-
+<PropsTable story="List" exclude={['overflowHidden']} />
+import {list} from '@codecademy/gamut-styles/dist/variance/props';

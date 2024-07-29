@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { ComponentProps, forwardRef } from 'react';
+import { ComponentProps, forwardRef, MouseEvent } from 'react';
 import * as React from 'react';
 
 import { Box, WithChildrenProp } from '..';
@@ -81,6 +81,11 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           clickable={isClickable}
           isOl={isOl}
           onClick={rest?.onClick}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && rest?.onClick) {
+              rest.onClick((e as unknown) as MouseEvent<HTMLLIElement>);
+            }
+          }}
           role={rest?.onClick ? 'button' : rest?.role}
           tabIndex={rest?.onClick ? 0 : rest?.tabIndex}
           {...rest}
@@ -93,6 +98,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
 
     return (
       <RowEl
+        aria-live={renderExpanded ? 'polite' : undefined}
         variant={variant}
         expanded={!!renderExpanded}
         scrollable={scrollable}
