@@ -49,3 +49,4 @@ export * from './Target';
 export * from './TinyBlocks';
 export * from './types';
 export * from './Warning';
+export * from './ProjectReview';
