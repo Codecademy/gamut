@@ -62,9 +62,8 @@ export const TagExample: React.FC = () => {
         </Text>
         <FlexBox>
           {tagArray.map((tag) => (
-            <Box m={8}>
+            <Box m={8} key={`${tag}`}>
               <Tag
-                key={`${tag}`}
                 onDismiss={() => {
                   removeItemHandler(tagArray, tag);
                 }}

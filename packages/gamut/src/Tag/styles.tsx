@@ -8,12 +8,12 @@ export const tagBorderRadius = '4px';
 
 export const tagBaseStyles = {
   alignItems: 'center',
-  borderRadius: `${tagBorderRadius} 0 0 ${tagBorderRadius}`,
+  borderRadiusLeft: `${tagBorderRadius}`,
   display: 'flex',
   height: '24px',
   justifyContent: 'center',
   maxWidth: '100%',
-  // width: 'fit-content',
+  width: 'fit-content',
 };
 
 export const colorVariants = variant({
