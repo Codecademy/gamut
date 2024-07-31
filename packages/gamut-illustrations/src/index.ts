@@ -39,6 +39,7 @@ export * from './Plant';
 export * from './PortfolioProject';
 export * from './PracticeProject';
 export * from './PracticeTarget';
+export * from './ProjectReview';
 export * from './Purpose';
 export * from './Puzzle';
 export * from './Python';
