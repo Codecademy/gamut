@@ -25,7 +25,6 @@ export interface DialogProps extends ModalBaseProps {
   >;
   confirmCta: DialogButtonProps;
   cancelCta?: DialogButtonProps;
-  closeButtonLabel?: string;
   closeButtonTipText?: string;
 }
 
@@ -38,7 +37,6 @@ export const Dialog: React.FC<DialogProps> = ({
   onRequestClose,
   image,
   size = 'small',
-  closeButtonLabel = 'Close Dialog',
   closeButtonTipText = 'Close dialog',
   ...rest
 }) => {
@@ -73,7 +71,6 @@ export const Dialog: React.FC<DialogProps> = ({
         </Text>
         <Box gridArea="close">
           <IconButton
-            aria-label={closeButtonLabel}
             size="small"
             alignSelf="start"
             icon={MiniDeleteIcon}
