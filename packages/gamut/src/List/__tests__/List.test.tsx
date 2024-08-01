@@ -129,4 +129,3 @@ describe('List', () => {
     expect(view.queryByText('Surprise!')).toBeNull();
   });
 });
-ˆ;
