@@ -1,6 +1,7 @@
 import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { matchers } from '@emotion/jest';
+import { on } from 'react-use/lib/util';
 
 import { List } from '../List';
 import { ListCol } from '../ListCol';
@@ -76,11 +77,26 @@ describe('List', () => {
       ),
     });
 
-    const headerEl = view.getByText('header-container');
+    const headerEl = view.getByTestId('header-container');
     const contentEl = view.getByText('Content');
 
     expect(headerEl).toHaveStyle({ position: 'sticky' });
     expect(contentEl).not.toHaveStyle({ position: 'sticky' });
+  });
+
+  it('renders ListRow with a button when it has an onClick', () => {
+    const onClick = jest.fn();
+    const { view } = renderView({
+      children: (
+        <ListRow onClick={onClick}>
+          <ListCol type="header">Hello</ListCol>
+          <ListCol>Content</ListCol>
+        </ListRow>
+      ),
+    });
+
+    view.getByRole('button').click();
+    expect(onClick).toHaveBeenCalled();
   });
 
   it('renders ListRow with expanded content when expanded is true', () => {
