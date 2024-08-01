@@ -59,14 +59,14 @@ When a Button is disabled with a tooltip, you must use the `aria-disabled` prop 
 
 <PropsTable story="ToolTip" />
 
-## IconButtons and ToolTips
+## IconButton + ToolTip
 
 When using an icon-only button, a tooltip displaying the label is required to provide context for the button's action. This is accessible directly through the `IconButton`'s required `tip` prop. You can adjust positioning and alignment of the tooltip by using the tipProps prop. An additional label that is different from the tip should also be provided.
 
 If your `IconButton` doesn't require `aria-describedby` text, you can set the `hideAriaToolTip` tipProp to `true` to hide the `aria-describedby` text. When using the `hideAriaToolTip` prop, the `aria-label` should always be identical to the `tip` prop.
 
 <Canvas>
-  <Story name="InfoButton Tooltip">
+  <Story name="IconButton + ToolTip">
     {() => (
       <FlexBox justifyContent="space-around" m={24} width="95%">
         <IconButton
@@ -86,14 +86,14 @@ If your `IconButton` doesn't require `aria-describedby` text, you can set the `h
   </Story>
 </Canvas>
 
-## Floating Placement
+## Floating placement
 
 ToolTips sometimes need to be in used in a way that they need to escape the confines of their parents container. The `floating` variant of the `placement` prop allows ToolTips do just this. (Notice how this section doesn't need as much padding because the ToolTips are able to escape their context!)
 
 This `floating` variant should only be used when it as needed.
 
 <Canvas>
-  <Story name="Floating Placement ToolTip">
+  <Story name="Floating placement">
     {() => (
       <IconButton
         aria-label="Wonder"
@@ -105,12 +105,12 @@ This `floating` variant should only be used when it as needed.
   </Story>
 </Canvas>
 
-## zIndex + Inline Placement
+## zIndex + inline placement
 
 If using an inline placement, you will have access to the `zIndex` prop to adjust the ToolTip's stacking order.
 
 <Canvas>
-  <Story name="Inline Placement ToolTip">
+  <Story name="Inline placement">
     {() => (
       <FlexBox center flexDirection="column" py={64} m={24}>
         <IconButton

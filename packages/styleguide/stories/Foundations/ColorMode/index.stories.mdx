@@ -35,11 +35,11 @@ Gamut components are built using these aliases instead of referring to specific 
 - Colors usage more meaningful when reading through code as aliases hint to usage.
 - Dead simple configuration.
 
-### Light Mode
+### Light mode
 
 <Story id="foundations-theme--light" />
 
-### Dark Mode
+### Dark mode
 
 <Story id="foundations-theme--dark" />
 
@@ -79,7 +79,7 @@ const Page = ({ children }) => (
 
 There are many cases where you may need a specific background color for a section of a page, like a card or a landing page. Instead of having to guess the right mode for the background, we've added a `<Background />` component to detect if contrast of the background and current mode's text color meet an accessible standard. If not, we will automatically change the mode to an accessible one, allowing you to be sure that all components inside your background will meet contrast requirements and designs without any configuration!
 
-### Current Background
+### Current background
 
 When you use `Background` the selected background color is set to a theme variable `background-current`. This is useful to reference when you need access to an ancestors background color (e.g. simulating transparency + masking content).
 

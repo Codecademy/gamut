@@ -26,7 +26,7 @@ import { Fragment } from 'react';
 
 <br />
 
-## Usage Guidelines
+## Usage guidelines
 
 This is the preferred component for customizing typography. The API is progressively specific. In order to achieve the effect you are looking for there are 3 levels of precedence.
 
@@ -49,7 +49,7 @@ import { Text } from '@codecademy/gamut';
 
 <br />
 
-## 1. Element Variants
+## 1. Element variants
 
 When you use a specific element Text will style it with overridable defaults as our best guess behavior. These styles take lowest priority as they are merely meant to act as a useful default, both `variant` and any system prop will override the styles specified here.
 
@@ -61,7 +61,7 @@ import { Text } from '@codecademy/gamut';
 <Text as="h1" />;
 ```
 
-<Story name="Element Variants">
+<Story name="Element variants">
   {() => (
     <LayoutGrid gap={32} my={48}>
       {Object.keys(typographyElementVariants).map((tag) => (
@@ -80,7 +80,7 @@ import { Text } from '@codecademy/gamut';
   )}
 </Story>
 
-## 2. Style Variants
+## 2. Style variants
 
 These are our base semantic font scales. These apply directly to the typography scales in figma and can be used with any arbitrary tag. These take precedence over any element based variants if configured. If none of these specifically match your need you can also override behavior with any system prop (such as `lineHeight` and `fontSize`).
 
@@ -149,7 +149,7 @@ Text has some special props with common use cases to make your life easier.
   </Story>
 </Canvas>
 
-### Font Smoothing (default: false)
+### Font smoothing (default: false)
 
 <Story name="Smoothing">
   <LayoutGrid gap={32} mt={24} mb={48}>
@@ -214,7 +214,7 @@ Text has some special props with common use cases to make your life easier.
   </LayoutGrid>
 </Story>
 
-## Code Playground
+## Code playground
 
 Edit attributes and see what’s possible to do with this component or get the exact output you want.
 

@@ -73,19 +73,19 @@ import { DataTableTemplate } from './examples.tsx';
   }}
 />
 
-## Design Principles
+## Design principles
 
-**Design Principles**
+**Design principles**
 
 - Recommended for bulk analysis across Rows
 - Tables best support information that needs sorting, filtering, pagination, and querying
 - Prioritize data and information that’s meant to be compared up front, then surface secondary information on external surfaces
 
-**Use Table affordances for best information design**
+**Use table affordances for best information design**
 
 - Design and arrange table metrics to encourage finding, scanning, and comparing information
 
-**Use Cell-level interactions to activate specific data**
+**Use cell-level interactions to activate specific data**
 
 - Use Coachmarks, Tooltips, Modals, and Flyovers to augment information
 - Use Anchors and Links to direct users to another surface
@@ -130,50 +130,50 @@ const DataTown = () => {
 
 <br />
 
-### Sorting and Filtering
+### Sorting and filtering
 
 Each column takes a `sortable` and `filters` prop - this is will determine if the column should be sortable and which filters should appear in the dropdown menu of the column.
 
-<Story name="Full Example">
+<Story name="Full example">
   <DataTableTemplate />
 </Story>
 
 <br />
 
-### Empty
+### Empty state
 
-<Story name="Empty State" args={{ rows: [], shadow: true }}>
+<Story name="Empty state" args={{ rows: [], shadow: true }}>
   {(args) => <DataTable {...args} scrollable />}
 </Story>
 
 <br />
 
-### Loading
+### Loading rows
 
 Replaces content of current rows with <LinkTo kind="Atoms/Loaders/Shimmer">Shimmer</LinkTo>.
 
-<Story name="Loading Rows" args={{ loading: true, shadow: true }}>
+<Story name="Loading rows" args={{ loading: true, shadow: true }}>
   {(args) => <DataTable {...args} />}
 </Story>
 
 <br />
 
-### Scrollable Indicators
+### Scrollable indicators
 
-<Story name="Scroll Shadow" args={{ shadow: true }}>
+<Story name="Scrollable indicators" args={{ shadow: true }}>
   {(args) => <DataTable {...args} />}
 </Story>
 
 <br />
 
-### Additional Column Configuration
+### Additional column configuration
 
 - `size` - enum which determines how much space the column should take up within the table
 - `fill` - boolean which, when set to true, takes up the remaining space in the table. Each `DataTable` should only have one `fill` column.
 
 <br />
 
-### Code Playground
+### Code playground
 
 <Story name="DataTable">{(args) => <DataTable {...args} />}</Story>
 

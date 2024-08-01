@@ -57,7 +57,7 @@ const myStyles = css`
 
 All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches.
 
-### Standard Colors
+### Standard colors
 
 Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
 
@@ -65,7 +65,7 @@ Standard color atoms we select from in creating designs. All colors on Codecadem
   <DataTable {...TABLES.color} />
 </Story>
 
-### Solid Color Swatches
+### Solid color swatches
 
 Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a list of all the solid swatches available.
 
@@ -73,7 +73,7 @@ Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weigh
   <DataTable {...TABLES.swatch} />
 </Story>
 
-### Navy and White Color Swatches
+### Navy and white color swatches
 
 With the exception of the `weight-100`, `navy-800`, and `navy-900` color weights, our navy and white color weights are semi-transparent. Special consideration should be taken when using these colors, especially when overlapping. The white weights, with the non-transparent exceptions, are only visible in dark mode, and the navy weights, with the non-transparent exceptions, are only visible in light mode. You can swap modes using the `Color Mode` toggle at the top of this screen.
 
@@ -83,7 +83,7 @@ These tokens are also accessible with a dashcase key `theme.colors['${color}-${w
   <DataTable {...TABLES.rgbaSwatch} />
 </Story>
 
-## Color Modes
+## Color modes
 
 We have 2 core color modes that we support: `light` and `dark`.
 
@@ -96,7 +96,7 @@ Each color mode consists of a set of aliased color tokens. Each alias has semant
 
 For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-colormode--page)
 
-### Light Mode
+### Light mode
 
 <Story name="light">
   <Background bg="white">
@@ -106,7 +106,7 @@ For more on Color Modes please checkout the [full color mode documentation](/?pa
 
 **Example**
 
-### Dark Mode
+### Dark mode
 
 <Story name="dark">
   <Background bg="navy">
@@ -121,7 +121,7 @@ export const sampleText = 'Example Text';
 export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 `;
 
-### Font Family
+### Font family
 
 **Key**: `theme.fontFamily`
 
@@ -129,7 +129,7 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
   <DataTable {...TABLES.fontFamily} />
 </Story>
 
-### Font Size
+### Font size
 
 **Key**: `theme.fontSize`
 
@@ -137,7 +137,7 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
   <DataTable {...TABLES.fontSize} />
 </Story>
 
-### Font Weight
+### Font weight
 
 **Key**: `theme.fontWeight`
 
@@ -145,7 +145,7 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
   <DataTable {...TABLES.fontWeight} />
 </Story>
 
-### Line Height
+### Line height
 
 **Key**: `theme.lineHeight`
 
