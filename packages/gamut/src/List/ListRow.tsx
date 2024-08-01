@@ -66,18 +66,19 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       ...rowConfig
     } = useListContext();
     const { onClick, role, tabIndex, ...rowProps } = rest;
-    const wrapperProps = !renderExpanded
-      ? { ...rowConfig, ...rowProps }
-      : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
+    const wrapperProps =
+      !renderExpanded && !onClick
+        ? { ...rowConfig, ...rowProps }
+        : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
     let content = children;
-    const renderNumbering = isOl && renderExpanded === undefined;
+    const renderNumbering = isOl && renderExpanded === undefined && !onClick;
 
-    if (renderExpanded) {
+    if (renderExpanded || Boolean(onClick)) {
       content = (
         <RowEl
           as="div"
           {...rowConfig}
-          aria-expanded={onClick ? expanded : undefined}
+          aria-expanded={renderExpanded ? expanded : undefined}
           clickable={Boolean(onClick)}
           isOl={isOl}
           onClick={onClick}
