@@ -65,11 +65,11 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       variant,
       ...rowConfig
     } = useListContext();
+    const { onClick, role, tabIndex, ...rowProps } = rest;
     const wrapperProps = !renderExpanded
-      ? rowConfig
+      ? { ...rowConfig, ...rowProps }
       : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
     let content = children;
-    const isClickable = !!rest?.onClick;
     const renderNumbering = isOl && renderExpanded === undefined;
 
     if (renderExpanded) {
@@ -77,18 +77,18 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         <RowEl
           as="div"
           {...rowConfig}
-          aria-expanded={rest?.onClick ? expanded : undefined}
-          clickable={isClickable}
+          aria-expanded={onClick ? expanded : undefined}
+          clickable={Boolean(onClick)}
           isOl={isOl}
-          onClick={rest?.onClick}
+          onClick={onClick}
           onKeyDown={(e) => {
-            if (e.key === 'Enter' && rest?.onClick) {
-              rest.onClick((e as unknown) as MouseEvent<HTMLLIElement>);
+            if (e.key === 'Enter' && onClick) {
+              onClick((e as unknown) as MouseEvent<HTMLLIElement>);
             }
           }}
-          role={rest?.onClick ? 'button' : rest?.role}
-          tabIndex={rest?.onClick ? 0 : rest?.tabIndex}
-          {...rest}
+          role={onClick ? 'button' : role}
+          tabIndex={onClick ? 0 : tabIndex}
+          {...rowProps}
           ref={ref}
         >
           {children}
@@ -104,7 +104,8 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         scrollable={scrollable}
         rowBreakpoint={rowBreakpoint}
         isOl={renderNumbering}
-        role={isClickable ? 'presentation' : rest?.role}
+        role={onClick ? 'presentation' : role}
+        tabIndex={tabIndex}
         {...wrapperProps}
       >
         <>
