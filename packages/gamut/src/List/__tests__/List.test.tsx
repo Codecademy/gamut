@@ -23,7 +23,7 @@ describe('List', () => {
     const { view } = renderView();
 
     const listEl = view.container.querySelector('ul');
-    const rowEl = view.container.querySelector('li');
+    const rowEl = view.getByRole('listitem');
 
     expect(listEl).toHaveStyle({ borderRadius: '2px' });
     expect(rowEl).not.toHaveStyle({ minWidth: 'min-content' });
@@ -32,7 +32,7 @@ describe('List', () => {
     const { view } = renderView({ as: 'ol' });
 
     const listEl = view.container.querySelector('ol');
-    const rowEl = view.container.querySelector('li');
+    const rowEl = view.getByRole('listitem');
 
     expect(listEl).toBeTruthy();
     expect(rowEl).not.toHaveTextContent('1.');
@@ -40,7 +40,7 @@ describe('List', () => {
   it('configures rows with the correct variants', () => {
     const { view } = renderView();
 
-    const rowEl = view.container.querySelector('li');
+    const rowEl = view.getByRole('listitem');
 
     expect(rowEl).toHaveStyle({ borderTop: 'none' });
     expect(rowEl).toHaveStyle({ gap: theme.spacing[8] });
@@ -76,7 +76,7 @@ describe('List', () => {
       ),
     });
 
-    const headerEl = view.getByTestId('header-container');
+    const headerEl = view.getByText('header-container');
     const contentEl = view.getByText('Content');
 
     expect(headerEl).toHaveStyle({ position: 'sticky' });
