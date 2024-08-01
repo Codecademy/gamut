@@ -12,6 +12,8 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
+import { ClickOpenModal, ClickOpenMultiViewModal } from './Modal.examples';
+
 <Meta
   title={title}
   component={Modal}
@@ -86,12 +88,12 @@ All of these methods default to true for accessibility reasons, and rely on sett
 
 <GridBox
   mt={32}
-  gap={24}
+  gap="150px 24px"
   gridTemplateColumns="1fr 1fr"
   gridAutoFlow="row dense"
 >
 
-<Box gridRowEnd="span 2">
+<Box gridRowEnd="span 2" height="100%">
 
 ### Fluid
 
@@ -100,14 +102,13 @@ All of these methods default to true for accessibility reasons, and rely on sett
   args={{
     size: 'fluid',
   }}
-  height="500px"
 >
   {(args) => (
     <ModalContainer {...args}>
       <>
         <FlexBox gridArea="title" bg="beige" height="2rem" />
         <FlexBox gridArea="close" bg="beige" height="2rem" />
-        <FlexBox height="380px" width="540px" bg="beige" gridArea="content" />
+        <FlexBox height="350px" width="540px" bg="beige" gridArea="content" />
       </>
     </ModalContainer>
   )}
@@ -124,7 +125,6 @@ All of these methods default to true for accessibility reasons, and rely on sett
   args={{
     size: 'large',
   }}
-  height="350px"
 >
   {(args) => (
     <ModalContainer {...args}>
@@ -156,7 +156,6 @@ All of these methods default to true for accessibility reasons, and rely on sett
   args={{
     size: 'medium',
   }}
-  height="350px"
 >
   {(args) => (
     <ModalContainer {...args}>
@@ -179,7 +178,6 @@ All of these methods default to true for accessibility reasons, and rely on sett
   args={{
     size: 'small',
   }}
-  height="350px"
 >
   {(args) => (
     <ModalContainer {...args}>
@@ -269,7 +267,7 @@ Overflow for images will be cut off, so make sure the image is correctly sized f
 <Canvas>
   <Story
     height="600px"
-    name="Image modals"
+    name="Modal with image"
     args={{
       image: (
         <FlexBox
@@ -297,7 +295,26 @@ Overflow for images will be cut off, so make sure the image is correctly sized f
   </Story>
 </Canvas>
 
+
+## Triggering a Modal
+
+You can also cause a Modal to appear/disappear by maintaining a state for `isOpen`. The examples below toggle `isOpen` with a button click.
+
+<Canvas>
+  <Story name="Trigger Modal">
+    {() => {
+      return (
+        <FlexBox gap={12}>
+          <ClickOpenModal />
+          <ClickOpenMultiViewModal />
+        </FlexBox>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ### Code playground
+
 
 Edit attributes and see what’s possible to do with this component or get the exact output you want.
 

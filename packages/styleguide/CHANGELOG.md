@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [67.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.0.4...@codecademy/styleguide@67.0.5) (2024-07-31)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [67.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.0.3...@codecademy/styleguide@67.0.4) (2024-07-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [67.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.0.2...@codecademy/styleguide@67.0.3) (2024-07-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [67.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.0.1...@codecademy/styleguide@67.0.2) (2024-07-23)
+
+### Bug Fixes
+
+- **Modal:** Give Modal programmatic focus instead of close button ([5de79dc](https://github.com/Codecademy/gamut/commit/5de79dc362267d5c66293ef08772db6d1bb7530a))
+
+### [67.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.0.0...@codecademy/styleguide@67.0.1) (2024-07-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [67.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.5...@codecademy/styleguide@67.0.0) (2024-07-16)
+
+### ⚠ BREAKING CHANGES
+
+- Remove `ButtonDeprecated`, `ButtonDeprecatedBase` and `InputStepper`
+
+### Miscellaneous Chores
+
+- Remove `ButtonDeprecated`, `ButtonDeprecatedBase` and `InputStepper` ([9425567](https://github.com/Codecademy/gamut/commit/942556773e7df3b7d0d44429f06d5819589d0231))
+
+### [66.29.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.4...@codecademy/styleguide@66.29.5) (2024-07-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.29.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.3...@codecademy/styleguide@66.29.4) (2024-07-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.29.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.2...@codecademy/styleguide@66.29.3) (2024-07-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [66.29.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.1...@codecademy/styleguide@66.29.2) (2024-07-01)
 
 ### Bug Fixes

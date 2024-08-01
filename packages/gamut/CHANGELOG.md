@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [56.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.4...@codecademy/gamut@56.0.5) (2024-07-31)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [56.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.3...@codecademy/gamut@56.0.4) (2024-07-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [56.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.2...@codecademy/gamut@56.0.3) (2024-07-24)
+
+### Bug Fixes
+
+- **GridForm:** properly align gridform infotips ([ec08fd8](https://github.com/Codecademy/gamut/commit/ec08fd8647aef12ae65c6829e71446b7f5aacba4))
+
+### [56.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.1...@codecademy/gamut@56.0.2) (2024-07-23)
+
+### Bug Fixes
+
+- **Modal:** Give Modal programmatic focus instead of close button ([5de79dc](https://github.com/Codecademy/gamut/commit/5de79dc362267d5c66293ef08772db6d1bb7530a))
+
+### [56.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.0...@codecademy/gamut@56.0.1) (2024-07-22)
+
+### Bug Fixes
+
+- **InfoTip:** fix DOM ordering + tip not being reread ([08e8b6a](https://github.com/Codecademy/gamut/commit/08e8b6ad26b8ea8e84b15a363c4229b21eb7f7ff))
+
+## [56.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.3...@codecademy/gamut@56.0.0) (2024-07-16)
+
+### ⚠ BREAKING CHANGES
+
+- Remove `ButtonDeprecated`, `ButtonDeprecatedBase` and `InputStepper`
+
+### Miscellaneous Chores
+
+- Remove `ButtonDeprecated`, `ButtonDeprecatedBase` and `InputStepper` ([9425567](https://github.com/Codecademy/gamut/commit/942556773e7df3b7d0d44429f06d5819589d0231))
+
+### [55.25.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.2...@codecademy/gamut@55.25.3) (2024-07-08)
+
+### Bug Fixes
+
+- **Alert:** height and alignment ([fae2fb7](https://github.com/Codecademy/gamut/commit/fae2fb7bd2ba84e4faf916c35fff6160c854f05d))
+
+### [55.25.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.1...@codecademy/gamut@55.25.2) (2024-07-08)
+
+### Bug Fixes
+
+- **Radio:** add infotip type to radio fields ([19cb620](https://github.com/Codecademy/gamut/commit/19cb620b334b80786ee5707c7258a8cc759a228c))
+
 ### [55.25.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.0...@codecademy/gamut@55.25.1) (2024-07-01)
 
 ### Bug Fixes
