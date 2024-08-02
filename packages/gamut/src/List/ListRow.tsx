@@ -78,7 +78,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         <RowEl
           as="div"
           {...rowConfig}
-          aria-expanded={renderExpanded ? expanded : undefined}
+          aria-expanded={renderExpanded && onClick ? expanded : undefined}
           clickable={Boolean(onClick)}
           isOl={isOl}
           onClick={onClick}
