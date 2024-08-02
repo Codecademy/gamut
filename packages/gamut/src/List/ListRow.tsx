@@ -105,7 +105,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         scrollable={scrollable}
         rowBreakpoint={rowBreakpoint}
         isOl={renderNumbering}
-        role={onClick ? 'presentation' : role}
+        role={role}
         tabIndex={tabIndex}
         {...wrapperProps}
       >
