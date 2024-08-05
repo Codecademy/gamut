@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.0.5...@codecademy/styleguide@67.1.0) (2024-08-05)
+
+### Features
+
+- **List:** Ordered lists ([db8dd68](https://github.com/Codecademy/gamut/commit/db8dd683029e5a69631d8f91f19c20061b2ac435))
+
 ### [67.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.0.4...@codecademy/styleguide@67.0.5) (2024-07-31)
 
 **Note:** Version bump only for package @codecademy/styleguide

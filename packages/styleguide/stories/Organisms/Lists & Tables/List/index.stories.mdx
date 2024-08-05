@@ -166,6 +166,21 @@ For making feature-forward designs (like our Dashboard), or to use as page secti
 
 <br />
 
+## Ordered List
+
+Our `List`s by default are the `ul` HTML element or unordered list. All of the above configurations works with ordered lists as well. Passing `ol` to the `as` prop will render an ordered list and add numbering to the rows.
+
+Ordered lists should always have a one column with a `header` type row to ensure that the numbering is rendered correctly.
+
+<Story
+  name="Ordered List"
+  args={{ as: 'ol', variant: 'table', spacing: 'condensed' }}
+>
+  {DemoTemplate.bind({})}
+</Story>
+
+<br />
+
 ## Columns
 
 ### Sizing
@@ -226,7 +241,7 @@ If you have a list with many columns and would like to avoid collapsing any colu
 
 List rows will switch to a mobile layout at screen widths less than smallest breakpoint (480px). This layout is built for smaller screens and is restructured to a card like structure. There is no extra configuration needed for this to take effect pending you've configured a few named column types:
 
-- `header`: The column of the row with any critical indifying information goes at the top of the view.
+- `header`: The column of the row with any critical identifying information goes at the top of the view. This is especially important for ordered lists as this is where the numbering will render.
 - `control`: A column for buttons or other interactive elements. Typically these may be icon buttons with expandable menus with more options for controlling anything represented in the row.
 - `content`: All other columns in the row are treated as content and will render in order they were specified.
 
@@ -247,6 +262,7 @@ Optionally, you can pass a `breakpoint` prop to the List to alter this behavior.
 
 <Canvas>
   <Story
+    args={{ as: 'ol' }}
     name="Responsive Layout - Content"
     parameters={{
       docs: { inlineStories: false, iframeHeight: 180 },
@@ -371,7 +387,10 @@ Here's some examples of Lists to use as guides.
 </Canvas>
 
 <Canvas>
-  <Story name="Expanded - Row" args={{ variant: 'block', mode: 'dark' }}>
+  <Story
+    name="Expanded - Row"
+    args={{ as: 'ol', variant: 'block', mode: 'dark' }}
+  >
     {ExpandedTemplateRowClick.bind({})}
   </Story>
 </Canvas>
