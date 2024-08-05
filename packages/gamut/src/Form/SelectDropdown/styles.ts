@@ -174,6 +174,7 @@ export const getMemoizedStyles = (
       ...tagBaseStyles,
       cursor: 'pointer',
       background: theme.colors.background,
+      borderRadius: '4px',
     }),
     multiValueLabel: (provided) => ({
       ...provided,
