@@ -15,11 +15,17 @@ export interface DrawerProps extends Omit<BoxProps, 'width'> {
    * Whether the drawer should be open.
    */
   expanded?: boolean;
+
+  /**
+   * Which edge of the drawer content container is aligned to during the animation.
+   */
+  alignContentContainer?: 'left' | 'right';
 }
 
 export const Drawer: React.FC<DrawerProps> = ({
   children,
   expanded,
+  alignContentContainer = 'right',
   ...props
 }) => {
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -41,8 +47,7 @@ export const Drawer: React.FC<DrawerProps> = ({
           bg="background-current"
           exit={{ width: 0 }}
           initial={{ width: 0 }}
-          overflowX="hidden"
-          overflowY="auto"
+          overflow="clip"
           position="relative"
           ref={drawerRef}
           tabIndex={-1}
@@ -51,10 +56,12 @@ export const Drawer: React.FC<DrawerProps> = ({
         >
           <Box
             height="100%"
-            left="0"
+            {...{ [alignContentContainer]: 0 }}
             position="absolute"
             maxWidth="100%"
             minWidth={fullWidth}
+            overflowY="auto"
+            overflowX="hidden"
           >
             {children}
           </Box>

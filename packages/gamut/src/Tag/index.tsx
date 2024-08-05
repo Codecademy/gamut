@@ -1,10 +1,14 @@
-import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { useCurrentMode } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
+import { FlexBox } from '../Box';
 import { Text } from '../Typography';
-import { DismissButton, Outline, TagWrapper } from './elements';
-import { tagBg, tagLabelFontSize, tagLabelPadding } from './styles';
+import {
+  DismissButton,
+  Outline,
+  StyledMiniDeleteIcon,
+  TagLabelWrapper,
+} from './elements';
+import { tagLabelFontSize, tagLabelPadding } from './styles';
 import { TagProps } from './types';
 
 export const Tag: React.FC<TagProps> = ({
@@ -14,30 +18,37 @@ export const Tag: React.FC<TagProps> = ({
   onDismiss,
   ...rest
 }) => {
-  const mode = useCurrentMode();
-  const trueVariant = !variant ? 'default' : variant;
   return (
     <Outline {...rest}>
-      <TagWrapper bg={tagBg[mode][trueVariant]} variant={trueVariant}>
-        <Text
-          as="span"
-          fontSize={tagLabelFontSize}
-          lineHeight={1 as any}
-          px={tagLabelPadding}
-          truncate="ellipsis"
-          truncateLines={1}
-        >
-          {children}
-        </Text>
+      <FlexBox
+        flexDirection="row"
+        {...rest}
+        width={readonly ? 'fit-content' : 'calc(100% - 24px)'}
+      >
+        <TagLabelWrapper variant={variant} readOnly={readonly}>
+          <Text
+            as="span"
+            fontSize={tagLabelFontSize}
+            lineHeight={1 as any}
+            px={tagLabelPadding}
+            truncate="ellipsis"
+            truncateLines={1}
+          >
+            {children}
+          </Text>
+        </TagLabelWrapper>
         {!readonly && (
           <DismissButton
             aria-label={`Dismiss ${children} Tag`}
             onClick={onDismiss || undefined}
-          >
-            <MiniDeleteIcon size={12} color="inherit" />
-          </DismissButton>
+            tip="Remove"
+            tipProps={{ placement: 'floating' }}
+            icon={StyledMiniDeleteIcon}
+            tagType={variant}
+            width="100%"
+          />
         )}
-      </TagWrapper>
+      </FlexBox>
     </Outline>
   );
 };
