@@ -1,9 +1,17 @@
-import { breakpoints, timingValues } from '@codecademy/gamut-styles';
+import { breakpoints, css, timingValues } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
 import * as React from 'react';
 import { useMedia } from 'react-use';
 
 import { Box, BoxProps } from '../Box';
+
+// const RoundedBox = styled(Box)(css({
+//   borderRadius: 'medium',
+// }))
+
+
+// const DrawerBase = motion(RoundedBox);
 
 const DrawerBase = motion(Box);
 
@@ -38,11 +46,12 @@ export const Drawer: React.FC<DrawerProps> = ({
           {...props}
         >
           <Box
+            borderRadius='medium'
             height="100%"
             left="0"
-            position="absolute"
             maxWidth="100%"
             minWidth={fullWidth}
+            position="absolute"
           >
             {children}
           </Box>

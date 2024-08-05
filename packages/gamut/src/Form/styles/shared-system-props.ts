@@ -74,7 +74,7 @@ export const formBaseFieldStylesObject = {
   ),
   border: 1,
   borderColor: 'text-disabled',
-  borderRadius: '2px',
+  borderRadius: 'medium',
   [InputSelectors.HOVER]: {
     borderColor: 'primary',
   },

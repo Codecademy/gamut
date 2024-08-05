@@ -22,12 +22,13 @@ const layoutVariant = variant({
   prop: 'layout',
   defaultVariant: 'standard',
   base: {
-    display: 'grid',
-    p: 24,
-    rowGap: 12,
+    borderRadius: 'small',
     columnGap: 16,
+    display: 'grid',
     gridTemplateColumns: '1fr min-content 2rem',
     gridTemplateRows: 'max-content 1fr max-content',
+    p: 24,
+    rowGap: 12,
     '&:focus-visible': {
       outlineOffset: '4px',
       outline: `2px solid ${theme.colors.primary} !important`,

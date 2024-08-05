@@ -37,9 +37,10 @@ export const checkboxElement = system.css({
   minWidth: 22,
   width: 22,
   height: 22,
-  borderWidth: '2px',
-  borderStyle: 'solid',
   borderColor: 'currentColor',
+  borderRadius: 'medium',
+  borderStyle: 'solid',
+  borderWidth: '2px',
   transition: transitionConcat(
     ['transform', 'outline', 'background-color', 'box-shadow'],
     'slow',
