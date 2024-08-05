@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [56.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.1.1...@codecademy/gamut@56.1.2) (2024-08-05)
+
+### Bug Fixes
+
+- **Drawer,Flyout:** alignment ([3a931d9](https://github.com/Codecademy/gamut/commit/3a931d99e9cf69b409643ff689cec69b39e695a9))
+
 ### [56.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.1.0...@codecademy/gamut@56.1.1) (2024-08-05)
 
 **Note:** Version bump only for package @codecademy/gamut
