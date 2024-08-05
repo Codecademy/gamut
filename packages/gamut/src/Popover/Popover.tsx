@@ -24,7 +24,20 @@ const findScrollingParent = ({
     ) {
       return parentElement;
     }
-    return findScrollingParent(parentElement);
+    return findScrollingParent(parentElement); // parent of this parent is used via prop destructure
+  }
+  return null;
+};
+
+const findResizingParent = ({
+  parentElement,
+}: HTMLElement): HTMLElement | null => {
+  if (parentElement) {
+    const { overflow, overflowY, overflowX } = getComputedStyle(parentElement);
+    if ([overflow, overflowY, overflowX].some((val) => val === 'clip')) {
+      return parentElement;
+    }
+    return findResizingParent(parentElement); // parent of this parent is used via prop destructure
   }
   return null;
 };
@@ -90,6 +103,23 @@ export const Popover: React.FC<PopoverProps> = ({
     };
     scrollingParent.addEventListener('scroll', handler);
     return () => scrollingParent.removeEventListener('scroll', handler);
+  }, [targetRef]);
+
+  useEffect(() => {
+    // handles movement of target within a clipped container e.g. Drawer
+    if (!targetRef.current || typeof ResizeObserver === 'undefined') {
+      return;
+    }
+    const resizingParent = findResizingParent(targetRef.current as HTMLElement);
+    if (!resizingParent?.addEventListener) {
+      return;
+    }
+    const handler = () => {
+      setTargetRect(targetRef?.current?.getBoundingClientRect());
+    };
+    const ro = new ResizeObserver(handler);
+    ro.observe(resizingParent);
+    return () => ro.unobserve(resizingParent);
   }, [targetRef]);
 
   useEffect(() => {
