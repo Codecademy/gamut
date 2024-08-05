@@ -23,16 +23,24 @@ describe('List', () => {
     const { view } = renderView();
 
     const listEl = view.container.querySelector('ul');
-    const rowEl = view.container.querySelector('li');
+    const rowEl = view.getByRole('listitem');
 
     expect(listEl).toHaveStyle({ borderRadius: '2px' });
     expect(rowEl).not.toHaveStyle({ minWidth: 'min-content' });
   });
+  it('renders numbering for ordered lists  ', () => {
+    const { view } = renderView({ as: 'ol' });
 
+    const listEl = view.container.querySelector('ol');
+    const rowEl = view.getByRole('listitem');
+
+    expect(listEl).toBeTruthy();
+    expect(rowEl).not.toHaveTextContent('1.');
+  });
   it('configures rows with the correct variants', () => {
     const { view } = renderView();
 
-    const rowEl = view.container.querySelector('li');
+    const rowEl = view.getByRole('listitem');
 
     expect(rowEl).toHaveStyle({ borderTop: 'none' });
     expect(rowEl).toHaveStyle({ gap: theme.spacing[8] });
@@ -73,6 +81,21 @@ describe('List', () => {
 
     expect(headerEl).toHaveStyle({ position: 'sticky' });
     expect(contentEl).not.toHaveStyle({ position: 'sticky' });
+  });
+
+  it('renders ListRow with a button when it has an onClick', () => {
+    const onClick = jest.fn();
+    const { view } = renderView({
+      children: (
+        <ListRow onClick={onClick}>
+          <ListCol type="header">Hello</ListCol>
+          <ListCol>Content</ListCol>
+        </ListRow>
+      ),
+    });
+
+    view.getByRole('button').click();
+    expect(onClick).toHaveBeenCalled();
   });
 
   it('renders ListRow with expanded content when expanded is true', () => {
