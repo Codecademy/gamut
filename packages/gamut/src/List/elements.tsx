@@ -9,10 +9,19 @@ import {
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
+const olStyles = {
+  alignItems: 'center',
+  content: 'counters(section, ".") "."',
+  counterIncrement: 'section',
+  fontFamily: 'accent',
+  fontSize: 'inherit',
+} as const;
+
 const listVariants = variant({
   prop: 'variant',
   defaultVariant: 'default',
   base: {
+    counterReset: 'section',
     listStyleType: 'none',
     p: 0,
     m: 0,
@@ -44,6 +53,13 @@ export const ListEl = styled(
 )<ListProps>(listVariants);
 
 const rowStates = states({
+  isOl: {
+    '&::before': {
+      ...olStyles,
+      display: { _: 'none', xs: 'flex' },
+      pl: 16,
+    },
+  },
   scrollable: {
     minWidth: 'min-content',
     width: '100%',
@@ -84,7 +100,9 @@ const spacingVariants = variant({
 
 const rowVariants = variant({
   prop: 'variant',
-  base: { bg: 'background' },
+  base: {
+    bg: 'background',
+  },
   variants: {
     default: {
       border: 1,
@@ -184,13 +202,23 @@ export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
   headerVariants
 );
 
+const headerStyles = { gridColumn: 1 } as const;
 const columnType = variant({
   prop: 'type',
   defaultVariant: 'content',
   variants: {
     header: {
-      gridColumn: 1,
+      ...headerStyles,
     },
+    orderedHeader: {
+      ...headerStyles,
+      '&::before': {
+        ...olStyles,
+        display: { _: 'flex', xs: 'none' },
+        pl: 8,
+      },
+    },
+
     content: {
       gridColumnEnd: 'span 2',
     },
