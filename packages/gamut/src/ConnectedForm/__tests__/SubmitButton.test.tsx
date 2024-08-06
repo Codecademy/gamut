@@ -3,6 +3,7 @@ import hookform, { FormState } from 'react-hook-form';
 
 import { CTAButton } from '../../Button';
 import { SubmitButton } from '../SubmitButton';
+import { theme } from '@codecademy/gamut-styles';
 
 jest.mock('react-hook-form', () => ({
   useFormContext: jest.fn(),
@@ -32,7 +33,8 @@ describe('SubmitButton', () => {
 
     const button = view.getByRole('button');
 
-    expect(button).toHaveStyle({ borderRadius: '4px' });
+    const borderRadiusSize = theme.borderRadii.m
+    expect(button).toHaveStyle({ borderRadius: borderRadiusSize });
   });
 
   it('renders as a CTAButton when configured', () => {
@@ -40,7 +42,8 @@ describe('SubmitButton', () => {
 
     const button = view.getByRole('button');
 
-    expect(button).toHaveStyle({ borderRadius: '2px' });
+    const borderRadiusSize = theme.borderRadii.m
+    expect(button).toHaveStyle({ borderRadius: borderRadiusSize });
   });
 
   it.each([
