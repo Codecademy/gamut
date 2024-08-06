@@ -1,0 +1,41 @@
+import { FlexBox,PreviewTip } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+
+<Meta
+  title={title}
+  component={PreviewTip}
+  parameters={{
+    subtitle:
+      'An Anchor that provides a snippet of relevant information from the link destination.',
+    source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/branch/ayKNSg6QvZUjsgw0FFysW4/%F0%9F%93%90-Gamut?type=design&node-id=41538-55277&mode=design&t=fGkWf5GSl5cj5fQo-0',
+    },
+    status: 'current',
+  }}
+  args={{
+    alignment: 'top-left',
+    children: 'PreviewTip Anchor',
+    info: `I am a small snippet of information about a link destination`,
+    href: 'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExamp6NDVlZzNpam01NnlhaGRreWMwZGlzZ3Z6bWd2dmtneTJrN3pnZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/X5Lta1bjuULTubmGzR/giphy.webp',
+  }}
+
+/>
+
+_Small_ piece of extra information toggled by clicking on an (i) button.
+
+<Canvas>
+  <Story name="PreviewTip">
+    {(args) => (
+        <PreviewTip {...args} />
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable story="PreviewTip" />
+
