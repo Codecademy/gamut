@@ -22,7 +22,7 @@ const layoutVariant = variant({
   prop: 'layout',
   defaultVariant: 'standard',
   base: {
-    borderRadius: 'small',
+    borderRadius: 'sm',
     columnGap: 16,
     display: 'grid',
     gridTemplateColumns: '1fr min-content 2rem',

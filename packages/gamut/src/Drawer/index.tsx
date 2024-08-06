@@ -43,7 +43,7 @@ export const Drawer: React.FC<DrawerProps> = ({
           {...props}
         >
           <Box
-            borderRadius="medium"
+            borderRadius="m"
             height="100%"
             {...{ [alignContentContainer]: 0 }}
             position="absolute"
