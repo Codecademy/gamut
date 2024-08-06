@@ -1,9 +1,9 @@
+import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
 import hookform, { FormState } from 'react-hook-form';
 
 import { CTAButton } from '../../Button';
 import { SubmitButton } from '../SubmitButton';
-import { theme } from '@codecademy/gamut-styles';
 
 jest.mock('react-hook-form', () => ({
   useFormContext: jest.fn(),
