@@ -22,7 +22,7 @@ export const raisedDivVariants = variant({
   variants: {
     primary: {
       bg: 'background',
-      borderRadius: 'small',
+      borderRadius: 'sm',
     },
     secondary: { ...toolTipBodyCss },
   },

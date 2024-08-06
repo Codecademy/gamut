@@ -165,7 +165,7 @@ export const toolTipBodyCss = {
   color: 'text',
   border: 1,
   boxShadow: 'none',
-  borderRadius: 'small',
+  borderRadius: 'sm',
   display: 'inline-block',
   fontSize: 14,
   lineHeight: 'base',

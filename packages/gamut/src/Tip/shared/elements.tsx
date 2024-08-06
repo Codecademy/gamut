@@ -49,7 +49,7 @@ export const TargetContainer = styled(Box)(
       content: "''",
       position: 'absolute',
       inset: -2,
-      borderRadius: 'medium',
+      borderRadius: 'm',
       border: 2,
       borderColor: 'primary',
       opacity: 0,
