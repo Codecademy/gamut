@@ -45,12 +45,12 @@ const progressBarFlatVariants = variant({
   prop: 'flat',
   variants: {
     'flat-bottom': {
-      borderBottomRightRadius: 0,
-      borderBottomLeftRadius: 0,
+      borderBottomRightRadius: 'none',
+      borderBottomLeftRadius: 'none',
     },
     'flat-top': {
-      borderTopRightRadius: 0,
-      borderTopLeftRadius: 0,
+      borderTopRightRadius: 'none',
+      borderTopLeftRadius: 'none',
     },
     default: {},
   },
@@ -67,20 +67,20 @@ const progressBarSizeVariants = variant({
   variants: {
     small: {
       height: '6px',
-      borderRadius: 'small',
+      borderRadius: 'sm',
     },
     medium: {
       height: '8px',
-      borderRadius: 'medium',
+      borderRadius: 'm',
     },
     large: {
       height: '18px',
-      borderRadius: 'large',
+      borderRadius: 'l',
       fontSize: 14,
     },
     xl: {
       height: '36px',
-      borderRadius: 'xLarge',
+      borderRadius: 'xl',
     },
   },
 });

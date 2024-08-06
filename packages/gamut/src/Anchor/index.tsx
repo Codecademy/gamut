@@ -17,7 +17,7 @@ const outlineFocusVisible = {
     content: "''",
     position: 'absolute',
     inset: -4,
-    borderRadius: 'medium',
+    borderRadius: 'm',
     border: 2,
     borderColor: 'primary',
     opacity: 0,
@@ -72,7 +72,7 @@ const anchorVariants = variant({
       textDecoration: 'underline',
       [ButtonSelectors.FOCUS_VISIBLE]: {
         outline: 'currentColor solid 2px',
-        borderRadius: 'small',
+        borderRadius: 'sm',
         outlineOffset: '1.5px',
         textDecoration: 'underline',
       },

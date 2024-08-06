@@ -20,7 +20,7 @@ export const colorVariants = variant({
   base: {
     ...tagBaseStyles,
     color: 'background',
-    borderRadiusLeft: 'medium',
+    borderRadiusLeft: 'm',
   },
   variants: {
     default: {
@@ -34,7 +34,7 @@ export const colorVariants = variant({
 
 export const tagWrapperStates = states({
   readOnly: {
-    borderRadius: 'medium',
+    borderRadius: 'm',
   },
 });
 
