@@ -109,7 +109,7 @@ export const Card: React.FC<CardProps> = ({ variant, ...rest }) => {
       <DynamicCardWrapper
         border={1}
         borderColor="secondary-hover"
-        borderRadius= 'medium'
+        borderRadius="medium"
         bg="background"
         color="text"
         p={16}

@@ -57,27 +57,39 @@ export const border = {
   borderRadiusLeft: {
     property: 'borderRadius',
     properties: ['borderTopLeftRadius', 'borderBottomLeftRadius'],
-    scale: 'borderRadii'
+    scale: 'borderRadii',
   },
   borderRadiusTop: {
     property: 'borderRadius',
     properties: ['borderTopLeftRadius', 'borderTopRightRadius'],
-    scale: 'borderRadii'
+    scale: 'borderRadii',
   },
   borderRadiusBottom: {
     property: 'borderRadius',
     properties: ['borderBottomLeftRadius', 'borderBottomRightRadius'],
-    scale: 'borderRadii'
+    scale: 'borderRadii',
   },
   borderRadiusRight: {
     property: 'borderRadius',
     properties: ['borderTopRightRadius', 'borderBottomRightRadius'],
-    scale: 'borderRadii'
+    scale: 'borderRadii',
   },
-  borderRadiusTopLeft: { property: 'borderTopLeftRadius', scale: 'borderRadii' },
-  borderRadiusTopRight: { property: 'borderTopRightRadius' , scale: 'borderRadii' },
-  borderRadiusBottomRight: { property: 'borderBottomRightRadius', scale: 'borderRadii' },
-  borderRadiusBottomLeft: { property: 'borderBottomLeftRadius', scale: 'borderRadii' },
+  borderRadiusTopLeft: {
+    property: 'borderTopLeftRadius',
+    scale: 'borderRadii',
+  },
+  borderRadiusTopRight: {
+    property: 'borderTopRightRadius',
+    scale: 'borderRadii',
+  },
+  borderRadiusBottomRight: {
+    property: 'borderBottomRightRadius',
+    scale: 'borderRadii',
+  },
+  borderRadiusBottomLeft: {
+    property: 'borderBottomLeftRadius',
+    scale: 'borderRadii',
+  },
   // Style
   borderStyle: { property: 'borderStyle' },
   borderStyleX: {
