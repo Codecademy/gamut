@@ -41,7 +41,7 @@ const tabVariants = variant({
     justifyContent: 'center',
     alignItems: 'center',
     whiteSpace: 'nowrap',
-    borderRadius: 0,
+    borderRadius: 'none',
     px: 24,
     textOverflow: 'ellipsis',
     color: 'text',
