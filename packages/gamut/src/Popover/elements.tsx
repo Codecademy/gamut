@@ -51,7 +51,7 @@ export const PatternContainer = styled.div(
     base: {
       width: '100%',
       height: '100%',
-      borderRadius: 'small',
+      borderRadius: 'sm',
       overflow: 'hidden',
       bg: 'background',
       position: 'absolute',
