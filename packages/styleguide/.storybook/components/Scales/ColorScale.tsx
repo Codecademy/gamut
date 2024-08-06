@@ -22,7 +22,7 @@ export const ColorScale: React.FC<{ colors: Record<string, string> }> = ({
       <Card
         p={0}
         width="100%"
-        borderRadius="4px"
+        borderRadius="m"
         display="grid"
         minHeight="3rem"
         gridAutoFlow="column"

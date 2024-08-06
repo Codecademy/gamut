@@ -47,7 +47,7 @@ export const TagExample: React.FC = () => {
 
       <Background
         bg="background-primary"
-        borderRadius="3px"
+        borderRadius="m"
         mx={8}
         my={24}
         p={24}
