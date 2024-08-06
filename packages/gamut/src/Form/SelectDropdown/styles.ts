@@ -66,7 +66,7 @@ const dropdownBorderStyles = css({
   borderColor: 'currentColor',
   position: 'absolute',
   marginTop: 0,
-  borderRadius: 'medium',
+  borderRadius: 'none',
   zIndex: 2,
 });
 

@@ -285,7 +285,7 @@ export const formatGroupLabel = ({ label, divider }: SelectDropdownGroup) => {
           fit
           height="1px"
           bg="text-disabled"
-          borderRadius="medium"
+          borderRadius="m"
           mx={16}
         />
       </Box>
