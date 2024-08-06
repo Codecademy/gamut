@@ -9,7 +9,6 @@ import { StylesConfig } from 'react-select';
 import {
   dismissSharedStyles,
   tagBaseStyles,
-  tagBorderRadius,
   tagLabelFontSize,
   tagLabelPadding,
 } from '../../Tag/styles';
@@ -180,7 +179,7 @@ export const getMemoizedStyles = (
       ...provided,
       fontSize: `${tagLabelFontSize}px`,
       color: theme.colors.text,
-      borderRadius: tagBorderRadius,
+      borderRadius: 'medium',
       padding: `0 ${tagLabelPadding}px`,
       paddingLeft: `${tagLabelPadding}px`, // default label has an explicit rule for padding left so we need this to override it
     }),
@@ -188,7 +187,7 @@ export const getMemoizedStyles = (
       ...provided,
       ...dismissSharedStyles,
       cursor: 'pointer',
-      borderRadius: `0px ${tagBorderRadius} ${tagBorderRadius} 0px`, // only want border radius on top and bottom right
+      borderRadius: `0px 4px 4px 0px` as const, // only want border radius on top and bottom right
       padding: 0, // default remove has padding left and right that we don't need
       ':hover': {
         backgroundColor: theme.colors['background-hover'],
