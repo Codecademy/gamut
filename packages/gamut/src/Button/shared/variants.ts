@@ -71,7 +71,7 @@ export const strokeButtonVariants = templateVariants(
 );
 
 export const ctaButtonVariants = templateVariants(['primary'], (variant) => ({
-  borderRadius: 'medium',
+  borderRadius: 'm',
   fontFamily: 'accent',
   fontWeight: 'title',
   boxShadow: `-4px 4px 0 0 ${theme.colors.text}`,
