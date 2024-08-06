@@ -25,7 +25,7 @@ const consistentLabelStyles = {
   width: 20,
   height: 20,
   minWidth: 20,
-  borderRadius: '100%',
+  borderRadius: 'full',
   mr: 8,
 } as const;
 

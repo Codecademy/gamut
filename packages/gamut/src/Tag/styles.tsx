@@ -4,11 +4,10 @@ import { ButtonSelectors } from '../ButtonBase/ButtonBase';
 
 export const tagLabelPadding = 8;
 export const tagLabelFontSize = 14;
-export const tagBorderRadius = '4px';
 
 export const tagBaseStyles = {
   alignItems: 'center',
-  borderRadiusLeft: `${tagBorderRadius}`,
+
   display: 'flex',
   height: '24px',
   justifyContent: 'center',
@@ -21,6 +20,7 @@ export const colorVariants = variant({
   base: {
     ...tagBaseStyles,
     color: 'background',
+    borderRadiusLeft: 'medium',
   },
   variants: {
     default: {
@@ -34,7 +34,7 @@ export const colorVariants = variant({
 
 export const tagWrapperStates = states({
   readOnly: {
-    borderRadius: tagBorderRadius,
+    borderRadius: 'medium',
   },
 });
 
