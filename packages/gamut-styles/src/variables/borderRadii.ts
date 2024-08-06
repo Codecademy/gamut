@@ -5,4 +5,4 @@ export const borderRadii = {
   l: '8px',
   xl: '16px',
   full: '50%',
-}
+};
