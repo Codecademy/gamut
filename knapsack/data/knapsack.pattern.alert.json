@@ -1,0 +1,57 @@
+{
+  "id": "alert",
+  "title": "Alert",
+  "description": "",
+  "statuses": {},
+  "templates": [
+    {
+      "id": "react-rbiiU4NNpR",
+      "title": "Alert",
+      "path": "../../packages/gamut/src/Alert/Alert.tsx",
+      "alias": "Alert",
+      "templateLanguageId": "react",
+      "spec": {},
+      "demoIds": ["tQI-uxpXaM", "K5QkcOoZFe"],
+      "blockIds": []
+    }
+  ],
+  "tabs": [
+    {
+      "id": "zIAi7rhtMc",
+      "type": "designSrc"
+    },
+    {
+      "id": "t4wS5fER2",
+      "type": "designSrc"
+    },
+    {
+      "id": "5HfGFK2pP",
+      "type": "designSrc"
+    },
+    {
+      "type": "template",
+      "id": "react-rbiiU4NNpR"
+    }
+  ],
+  "subPages": [],
+  "designSrcComponentsById": {
+    "zIAi7rhtMc": {
+      "id": "zIAi7rhtMc",
+      "componentId": "1884:2431",
+      "title": "Figma Component",
+      "fileId": "ReGfRNillGABAj5SlITalN"
+    },
+    "t4wS5fER2": {
+      "id": "t4wS5fER2",
+      "componentId": "27627:31065",
+      "title": "Figma Component",
+      "fileId": "ReGfRNillGABAj5SlITalN"
+    },
+    "5HfGFK2pP": {
+      "id": "5HfGFK2pP",
+      "componentId": "1118:23",
+      "title": "Figma Component",
+      "fileId": "ReGfRNillGABAj5SlITalN"
+    }
+  }
+}
