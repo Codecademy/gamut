@@ -43,6 +43,7 @@ export const TagLabelWrapper = styled(Box)<BaseTagProps>(
 );
 
 const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}`;
+const borderRadiusStyle = `${theme.borderRadii.none} ${theme.borderRadii.m} ${theme.borderRadii.m} ${theme.borderRadii.none}`
 
 export const DismissButton = styled(IconButton)(
   variant({
@@ -53,7 +54,7 @@ export const DismissButton = styled(IconButton)(
       ...iconButtonOverrides,
       color: 'background',
       border: 'none',
-      borderRadius: `0 ${theme.borderRadii.m} ${theme.borderRadii.m} 0` as any,
+      borderRadius: borderRadiusStyle as any,
       width: 12,
       [hoverAndFocus]: {
         color: 'background',
