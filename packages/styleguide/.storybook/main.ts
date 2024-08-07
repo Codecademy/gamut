@@ -53,6 +53,29 @@ module.exports = {
   },
 
   webpackFinal: (config: any) => {
+    const transpileModules = ['@reach'];
+
+    // Find existing rule that excludes node_modules
+    const nodeModulesRule = config.module.rules?.find((rule: any) =>
+      rule.exclude?.toString().includes('node_modules')
+    );
+    if (nodeModulesRule) {
+      // Tell existing rule to not exclude modules that need transpiling
+      const newExclude = new RegExp(
+        `node_modules/(?!(${transpileModules.join('|')})/).*`
+      );
+
+      if (Array.isArray(nodeModulesRule.exclude)) {
+        nodeModulesRule.exclude = [
+          newExclude,
+          ...nodeModulesRule.exclude?.filter(
+            (exclude: any) => !exclude.toString().includes('node_modules')
+          ),
+        ];
+      } else {
+        nodeModulesRule.exclude = newExclude;
+      }
+    }
     config.module.rules = config.module.rules.concat(
       configs.css().module.rules
     );
