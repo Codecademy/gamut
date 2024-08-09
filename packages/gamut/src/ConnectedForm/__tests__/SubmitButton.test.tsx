@@ -33,7 +33,7 @@ describe('SubmitButton', () => {
 
     const button = view.getByRole('button');
 
-    const borderRadiusSize = theme.borderRadii.m
+    const borderRadiusSize = theme.borderRadii.md
     expect(button).toHaveStyle({ borderRadius: borderRadiusSize });
   });
 
@@ -42,7 +42,7 @@ describe('SubmitButton', () => {
 
     const button = view.getByRole('button');
 
-    const borderRadiusSize = theme.borderRadii.m
+    const borderRadiusSize = theme.borderRadii.md
     expect(button).toHaveStyle({ borderRadius: borderRadiusSize });
   });
 

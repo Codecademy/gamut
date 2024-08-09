@@ -20,7 +20,7 @@ export const colorVariants = variant({
   base: {
     ...tagBaseStyles,
     color: 'background',
-    borderRadiusLeft: 'm',
+    borderRadiusLeft: 'md',
   },
   variants: {
     default: {
