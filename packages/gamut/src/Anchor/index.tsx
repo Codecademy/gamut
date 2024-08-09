@@ -17,7 +17,7 @@ const outlineFocusVisible = {
     content: "''",
     position: 'absolute',
     inset: -4,
-    borderRadius: 'm',
+    borderRadius: 'md',
     border: 2,
     borderColor: 'primary',
     opacity: 0,

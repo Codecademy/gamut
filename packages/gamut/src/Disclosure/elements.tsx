@@ -11,7 +11,7 @@ const disclosureWrapperVariants = variant({
   base: {
     width: '100%',
     maxHeight: 'fit-content',
-    borderRadius: 'm',
+    borderRadius: 'md',
   },
   variants: {
     default: {
@@ -49,7 +49,7 @@ export const DisclosureButtonWrapper = styled(Anchor)(
     prop: 'isWrapper',
     defaultVariant: 'default',
     base: {
-      borderRadius: 'm',
+      borderRadius: 'md',
     },
     variants: {
       default: {

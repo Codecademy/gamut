@@ -24,7 +24,7 @@ export const PropItem = styled.pre(
     bg: 'background-disabled',
     color: 'navy-700',
     lineHeight: 'base',
-    borderRadius: 'm',
+    borderRadius: 'md',
   })
 );
 
@@ -38,7 +38,7 @@ export const PropGroupTag = styled.div(
       py: 4,
       px: 8,
       fontSize: 14,
-      borderRadius: 'm',
+      borderRadius: 'md',
       cursor: 'help',
       border: 1,
       '&:hover > div': {

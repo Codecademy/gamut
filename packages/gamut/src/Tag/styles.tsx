@@ -34,7 +34,7 @@ export const colorVariants = variant({
 
 export const tagWrapperStates = states({
   readOnly: {
-    borderRadius: 'm',
+    borderRadius: 'md',
   },
 });
 

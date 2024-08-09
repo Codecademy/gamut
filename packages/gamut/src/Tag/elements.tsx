@@ -23,7 +23,7 @@ export const tagProps = variance.compose(
 export const Outline = styled(Box)(
   css({
     // this is a bit of a hack as we don't have access to focus-visible from this component.  if you are not properly dismissing your tags you may see this primary colored outline after clicking X, but otherwise you should never hit this behavior.
-    borderRadius: 'm',
+    borderRadius: 'md',
     width: '100%',
     maxWidth: 'fit-content',
     '&:focus-within': {

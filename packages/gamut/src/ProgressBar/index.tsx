@@ -71,11 +71,11 @@ const progressBarSizeVariants = variant({
     },
     medium: {
       height: '8px',
-      borderRadius: 'm',
+      borderRadius: 'md',
     },
     large: {
       height: '18px',
-      borderRadius: 'l',
+      borderRadius: 'lg',
       fontSize: 14,
     },
     xl: {
