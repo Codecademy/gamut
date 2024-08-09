@@ -28,7 +28,7 @@ const StyledTextArea = styled.textarea<TextAreaProps>`
   ${formFieldStyles}
   ${conditionalStyles}
   position: initial;
-  border-Radius: 'md';
+  border-radius: 'md';
 `;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
