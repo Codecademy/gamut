@@ -1,6 +1,7 @@
 import { createTheme } from '@codecademy/variance';
 
 import {
+  borderRadii,
   corePalette,
   elements,
   fontFamily,
@@ -19,6 +20,7 @@ import {
 
 export const coreTheme = createTheme({
   breakpoints: mediaQueries,
+  borderRadii,
   fontSize,
   fontFamily,
   lineHeight,

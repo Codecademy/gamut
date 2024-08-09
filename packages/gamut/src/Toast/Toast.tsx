@@ -77,7 +77,7 @@ export const Toast: React.FC<ToastProps> = ({
       return (
         <IconContainer
           gridArea="icon"
-          borderRadius="50%"
+          borderRadius="full"
           backgroundImage={`url(${icon})`}
         />
       );

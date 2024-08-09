@@ -1,8 +1,9 @@
+export * from './borderRadii';
 export * from './colors';
+export * from './elements';
 export * from './responsive';
 export * from './spacing';
-export * from './typography';
 export * from './timing';
-export * from './elements';
+export * from './typography';
 // Deprecated variables
 export * from './deprecated-colors';

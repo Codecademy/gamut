@@ -1,3 +1,4 @@
+import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
 import hookform, { FormState } from 'react-hook-form';
 
@@ -32,7 +33,8 @@ describe('SubmitButton', () => {
 
     const button = view.getByRole('button');
 
-    expect(button).toHaveStyle({ borderRadius: '4px' });
+    const borderRadiusSize = theme.borderRadii.md;
+    expect(button).toHaveStyle({ borderRadius: borderRadiusSize });
   });
 
   it('renders as a CTAButton when configured', () => {
@@ -40,7 +42,8 @@ describe('SubmitButton', () => {
 
     const button = view.getByRole('button');
 
-    expect(button).toHaveStyle({ borderRadius: '2px' });
+    const borderRadiusSize = theme.borderRadii.md;
+    expect(button).toHaveStyle({ borderRadius: borderRadiusSize });
   });
 
   it.each([

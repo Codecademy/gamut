@@ -10,7 +10,7 @@ const colorVariants = variant({
   defaultVariant: 'primary',
   base: {
     alignItems: 'center',
-    borderRadius: '40px',
+    borderRadius: 'xl',
     fontFamily: 'accent',
     fontWeight: 400,
     display: 'flex',
