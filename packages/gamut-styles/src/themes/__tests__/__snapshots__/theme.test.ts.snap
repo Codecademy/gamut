@@ -254,8 +254,8 @@ exports[`themes admin - theme shape 1`] = `
   },
   "borderRadii": {
     "full": "50%",
-    "l": "8px",
-    "m": "4px",
+    "lg": "8px",
+    "md": "4px",
     "none": "0px",
     "sm": "2px",
     "xl": "16px",
@@ -730,8 +730,8 @@ exports[`themes core - theme shape 1`] = `
   },
   "borderRadii": {
     "full": "50%",
-    "l": "8px",
-    "m": "4px",
+    "lg": "8px",
+    "md": "4px",
     "none": "0px",
     "sm": "2px",
     "xl": "16px",
@@ -1301,8 +1301,8 @@ exports[`themes platform - theme shape 1`] = `
   },
   "borderRadii": {
     "full": "50%",
-    "l": "8px",
-    "m": "4px",
+    "lg": "8px",
+    "md": "4px",
     "none": "0px",
     "sm": "2px",
     "xl": "16px",
