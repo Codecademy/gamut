@@ -109,7 +109,7 @@ export const Card: React.FC<CardProps> = ({ variant, ...rest }) => {
       <DynamicCardWrapper
         border={1}
         borderColor="secondary-hover"
-        borderRadius="m"
+        borderRadius="md"
         bg="background"
         color="text"
         p={16}
@@ -124,7 +124,7 @@ export const Card: React.FC<CardProps> = ({ variant, ...rest }) => {
       bg={variant}
       border={1}
       borderColor="navy"
-      borderRadius="m"
+      borderRadius="md"
       p={16}
       outline={variant === 'navy'}
       mode={mode}
