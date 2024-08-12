@@ -60,17 +60,17 @@ export const TagExample: React.FC = () => {
         >
           A lovely list of tags
         </Text>
-        <FlexBox flexWrap="wrap" maxWidth="100%">
+        <FlexBox>
           {tagArray.map((tag) => (
-            <Tag
-              key={`${tag}`}
-              onDismiss={() => {
-                removeItemHandler(tagArray, tag);
-              }}
-              m={8}
-            >
-              {tag}
-            </Tag>
+            <Box m={8} key={`${tag}`}>
+              <Tag
+                onDismiss={() => {
+                  removeItemHandler(tagArray, tag);
+                }}
+              >
+                {tag}
+              </Tag>
+            </Box>
           ))}
         </FlexBox>
       </Background>

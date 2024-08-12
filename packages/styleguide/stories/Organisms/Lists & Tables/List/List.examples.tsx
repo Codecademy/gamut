@@ -46,7 +46,9 @@ export const DemoTemplate: React.FC = (args) => {
     <List {...args}>
       {rows.map(({ name, ship }) => (
         <ListRow>
-          <ListCol size="md">{name}</ListCol>
+          <ListCol type="header" size="md">
+            {name}
+          </ListCol>
           <ListCol fill>{ship}</ListCol>
         </ListRow>
       ))}
@@ -330,7 +332,7 @@ export const ResponsiveTemplate: React.FC<typeof List> = (args) => {
       <ListRow>
         <ListCol size="lg" type="header">
           <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
-            Header
+            Ordered List Header
           </Text>
         </ListCol>
         <ListCol size="lg">
@@ -509,10 +511,13 @@ export const ExpandableButtonClickRow: React.FC<{
   );
 };
 
-export const ExpandedTemplateRowClick: React.FC<ListProps> = ({ variant }) => (
+export const ExpandedTemplateRowClick: React.FC<ListProps> = ({
+  as,
+  variant,
+}) => (
   <Background bg="black">
     <Box p={8}>
-      <List variant={variant}>
+      <List as={as} variant={variant}>
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
           <ExpandableRowClick name={name} role={role} ship={ship} key={key} />
         ))}

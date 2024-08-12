@@ -124,6 +124,10 @@ Writing words for a link or button? Above all else, make sure that the words alo
 
 ## TextButton
 
+**Note**: Our text buttons use bold formatting to differentiate themselves from normal text, as color alone does not meet the 3:1 contrast ratio required for accessibility. However, bold formatting may not be sufficient in all contexts, such as when placed alongside a bold heading.
+
+In these cases, we recommend including a leading or trailing icon to further distinguish the button from other bold text. This additional visual cue ensures that the text button is easily identifiable and accessible to all users.
+
 <Canvas>
   <Story name="TextButton">{(args) => <TextButton {...args} />}</Story>
 </Canvas>

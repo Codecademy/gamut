@@ -16,7 +16,7 @@ import { TagExample } from './Tag.examples.tsx';
     design: {
       type: 'figma',
       url:
-        'https://www.figma.com/file/a0xaVwpkrXpOReMJ3ArqCe/Badges?node-id=1%3A40',
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=46539-40954',
     },
   }}
   args={{ children: 'Tag' }}
@@ -28,7 +28,7 @@ Tags are compact, dynamic elements that support user inputs, selections, and act
 
 ## Variants
 
-Tags have a ColorModed `default` variant and a `grey` variant as well as a `readonly` variant
+Tags have `default` and `gray` color variants that work in color mode. You can also omit the dimiss button by passing in the `readonly` prop.
 
 <Canvas>
   <Story name="Tag variants">
@@ -36,7 +36,8 @@ Tags have a ColorModed `default` variant and a `grey` variant as well as a `read
       <FlexBox center justifyContent="space-around">
         <Tag {...args} onDismiss={(e) => e.target.blur()} />
         <Tag {...args} onDismiss={(e) => e.target.blur()} variant="grey" />
-        <Tag {...args} readonly /> <Tag {...args} readonly variant="grey" />
+        <Tag {...args} readonly />
+        <Tag {...args} readonly variant="grey" />
       </FlexBox>
     )}
   </Story>

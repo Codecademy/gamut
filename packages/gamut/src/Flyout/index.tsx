@@ -61,6 +61,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
           flexDirection={openFrom === 'left' ? 'row' : 'row-reverse'}
           position="fixed"
           top={0}
+          alignContentContainer={openFrom === 'left' ? 'right' : 'left'}
           {...{ [openFrom]: 0 }}
         >
           <FlexBox
