@@ -1,4 +1,4 @@
-import { FlexBox,PreviewTip } from '@codecademy/gamut/src';
+import {FlexBox, PreviewTip } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -24,7 +24,6 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
     info: `I am a small snippet of information about a link destination`,
     href: 'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExamp6NDVlZzNpam01NnlhaGRreWMwZGlzZ3Z6bWd2dmtneTJrN3pnZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/X5Lta1bjuULTubmGzR/giphy.webp',
   }}
-
 />
 
 _Small_ piece of extra information toggled by clicking on an (i) button.
@@ -32,7 +31,9 @@ _Small_ piece of extra information toggled by clicking on an (i) button.
 <Canvas>
   <Story name="PreviewTip">
     {(args) => (
+      <FlexBox center p={156}>
         <PreviewTip {...args} />
+        </FlexBox>
     )}
   </Story>
 </Canvas>
