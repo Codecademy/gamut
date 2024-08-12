@@ -62,6 +62,7 @@ export const Drawer: React.FC<DrawerProps> = ({
             minWidth={fullWidth}
             overflowY="auto"
             overflowX="hidden"
+            p={4}
           >
             {children}
           </Box>
