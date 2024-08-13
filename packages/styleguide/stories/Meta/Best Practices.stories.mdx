@@ -5,7 +5,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 <Meta
   title={title}
   parameters={{
-    subtitle: 'Current Best Practices for using the Gamut Design System',
+    subtitle: 'Current best practices for using the Gamut Design System',
     status: 'current',
   }}
 />
@@ -105,7 +105,7 @@ export const CoolNumberComponent: React.FC<CoolNumberComponentProps> = ({
 }) => <SomeWrapper {...rest} />;
 ```
 
-# System Props
+# System props
 
 System props are a core part of our new approach to dynamic and customized styling. Where writing custom styles is painful, system props are here to make it painless.
 
@@ -175,7 +175,7 @@ import { Box } from '@codecademy/gamut';
   </Text>
 </Box>
 
-## Real world use cases
+## Real-world use cases
 
 **Mobile / Desktop specific content**
 
@@ -220,7 +220,7 @@ const Content = ({ children }) => (
 );
 ```
 
-# ❌ Nested Selectors
+# ❌ Nested selectors
 
 Nested selectors can cause a huge amount of side effects unwittingly and make it very hard to maintain consistent behavior while making updates. We politely ask (and will shortly lint) that you refrain from using:
 

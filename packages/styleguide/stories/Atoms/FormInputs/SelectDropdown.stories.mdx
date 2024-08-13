@@ -58,7 +58,7 @@ export const fruitOptions = [
 
 <PropsTable story="SelectDropdown" />
 
-## Examples + Usage
+## Examples and usage
 
 `SelectDropdown` has a larger JavaScript dependency size than our standard `Select` component so should not be used unless specified in designs. These dropdowns are optionally searchable through the `isSearchable` prop.
 
@@ -125,7 +125,7 @@ If you are using this in a standard form, `SelectDropdown` must be provided an `
   </Story>
 </Canvas>
 
-### Events and Controlled Components
+### Events and controlled components
 
 Instead of a standard HTML Select event return, SelectDropdown returns the selected option. This is formatted as `{label: 'labelText', value: 'valueText' }`. Your event functions should be formatted as `(event) => changeHandler(event.value)` instead of `(event) => changeHandler(event.target.value)`.
 
@@ -162,7 +162,7 @@ export const CustomDropdown: React.FC = ({
 };
 ```
 
-### Form Group + Select
+### FormGroup + SelectDropdown
 
 `SelectDropdown` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `SelectDropdown` for maximum accessibility.
 
@@ -205,7 +205,7 @@ export const CustomDropdown: React.FC = ({
   </Story>
 </Canvas>
 
-### Size Variant
+### Size variant
 
 We have a smaller SelectDropdown for more compact spaces.
 
@@ -372,12 +372,12 @@ You can chose how options will be shown in the dropdown. 6 is the default limit 
   </Story>
 </Canvas>
 
-### SelectDropdown Option Variants
+### SelectDropdown option variants
 
 You may need to add additional info to your dropdowns, like disabled options, option subtitles, or group dividers
 
 <Canvas>
-  <Story name="SelectDropdown Option Variants">
+  <Story name="SelectDropdown option variants">
     {() => <SelectDropdownOptionVariantsExample />}
   </Story>
 </Canvas>
@@ -465,7 +465,7 @@ export const SelectDropdownOptionVariantsExample: React.FC = () => (
 );
 ```
 
-### SelectDropdown Multiple Select
+### SelectDropdown multiple select
 
 To add some pizzazz to your dropdown, you can add any of our <LinkTo kind='Atoms/Icons'>gamut-icons</LinkTo> to your options.
 
@@ -501,7 +501,7 @@ export const SelectDropdownMultipleExample: React.FC = () => (
 );
 ```
 
-### SelectDropdown Option Icons
+### SelectDropdown option icons
 
 To add some pizzazz to your dropdown, you can add any of our <LinkTo kind='Atoms/Icons'>gamut-icons</LinkTo> to your options.
 

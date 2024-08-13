@@ -42,7 +42,7 @@ Lists are one of the main design tools for displaying information in a structure
 - Lists are distinct from Tables in that they have mixed column content (interactive elements / metrics) whereas tables have only metrics. If you plan on having row controls or options in your table, use a List.
 - When presenting repetitive content prefer using a List view over a Card view.
 
-## Design Principles
+## Design principles
 
 Recommended for engaging with individual Items
 
@@ -95,7 +95,7 @@ Lists come with 3 spacing variants `normal`, `condensed`, and `compact`.
 
 For mixed content use the normal size to ensure that there is enough space for components
 
-<Story name="Spacing - Normal" args={{ spacing: 'normal' }}>
+<Story name="Spacing: normal" args={{ spacing: 'normal' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -103,7 +103,7 @@ For mixed content use the normal size to ensure that there is enough space for c
 
 For a more compact list use the condensed spacing
 
-<Story name="Spacing - Condensed" args={{ spacing: 'condensed' }}>
+<Story name="Spacing: condensed" args={{ spacing: 'condensed' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -111,7 +111,7 @@ For a more compact list use the condensed spacing
 
 For an even more compact list use the compact spacing
 
-<Story name="Spacing - Compact" args={{ spacing: 'compact' }}>
+<Story name="Spacing: compact" args={{ spacing: 'compact' }}>
   {DemoTemplate.bind({})}
 </Story>
 
@@ -196,7 +196,7 @@ It is recommended that you use the aliases for any content that may have variabl
 
 <br />
 
-### Filling Empty Space
+### Filling empty space
 
 You can specify a column to expand or collapse beyond its normal flex basis. These modifiers can be used in conjunction with any size specification:
 
@@ -221,7 +221,7 @@ You can align the content to the right of each column using the `justify` prop o
 
 ## Layouts
 
-### Horizontal Scrolling
+### Horizontal scrolling
 
 If you have a list with many columns and would like to avoid collapsing any columns information you can use the `scrollable` prop which will lock the row header to the left hand side and expand all columns to the their minimum flex-basis. All rows and columns scroll along the X axis in tandem to ensure that you may compare data or take multiple actions between each row.
 
@@ -276,7 +276,7 @@ Optionally, you can pass a `breakpoint` prop to the List to alter this behavior.
 
 <br />
 
-### Example Configuration
+### Example configuration
 
 ```tsx
 <List>
@@ -292,11 +292,11 @@ Optionally, you can pass a `breakpoint` prop to the List to alter this behavior.
 
 <br />
 
-### Collapsible Row Content
+### Collapsible row content
 
 You can define collapsible content by passing an `expanded` prop and the `React.Node` to the `renderExpanded` prop of your `ListRow` components.
 
-#### Expand on Button Click
+#### Expand on button click
 
 ```tsx
 export const ExpandableRow: React.FC<{
@@ -326,7 +326,7 @@ export const ExpandableRow: React.FC<{
 };
 ```
 
-#### Expand on RowClick
+#### Expand on row click
 
 ```tsx
 export const ExpandableRow: React.FC<{
@@ -360,20 +360,20 @@ export const ExpandableRow: React.FC<{
 Here's some examples of Lists to use as guides.
 
 <Canvas>
-  <Story name="Normal - Example" args={{ spacing: 'normal' }}>
+  <Story name="Spacing: normal example" args={{ spacing: 'normal' }}>
     {NormalTemplate.bind({})}
   </Story>
 </Canvas>
 
 <Canvas>
-  <Story name="Condensed - Example" args={{ spacing: 'condensed' }}>
+  <Story name="Spacing: condensed example" args={{ spacing: 'condensed' }}>
     {CondensedTemplate.bind({})}
   </Story>
 </Canvas>
 
 <Canvas>
   <Story
-    name="Dark Mode - Example"
+    name="Spacing: dark mode example"
     args={{ variant: 'table', spacing: 'condensed', mode: 'dark' }}
   >
     {CondensedTemplate.bind({})}
@@ -381,21 +381,21 @@ Here's some examples of Lists to use as guides.
 </Canvas>
 
 <Canvas>
-  <Story name="Expanded - Button" args={{ mode: 'dark' }}>
+  <Story name="Expandable button example" args={{ mode: 'dark' }}>
     {ExpandedTemplateButtonClick.bind({})}
   </Story>
 </Canvas>
 
 <Canvas>
   <Story
-    name="Expanded - Row"
+    name="Expandable row example"
     args={{ as: 'ol', variant: 'block', mode: 'dark' }}
   >
     {ExpandedTemplateRowClick.bind({})}
   </Story>
 </Canvas>
 
-## Code Playground
+## Code playground
 
 <Canvas>
   <Story name="List">{DemoTemplate.bind({})}</Story>
