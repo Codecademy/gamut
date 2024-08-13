@@ -8,6 +8,8 @@ import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
 export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
+  /** Whether List should be an ol or ul element */
+  as?: 'ol' | 'ul';
   /** Whether a placeholder width should be set when loading */
   loading?: boolean;
   /** Should only be used internally to Gamut */
@@ -33,6 +35,7 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
 export const List = forwardRef<HTMLUListElement, ListProps>(
   (
     {
+      as = 'ul',
       loading,
       id,
       variant = 'default',
@@ -54,7 +57,13 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     const isEmpty = !children || (isArray(children) && children.length === 0);
     const [isEnd, setIsEnd] = useState(false);
     const showShadow = shadow && scrollable && !isEnd;
-    const value = useList({ variant, spacing, scrollable, rowBreakpoint });
+    const value = useList({
+      isOl: as === 'ol',
+      rowBreakpoint,
+      scrollable,
+      spacing,
+      variant,
+    });
 
     const topOfTable = useRef<HTMLDivElement>(null);
 
@@ -65,7 +74,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     });
 
     const listContent = (
-      <ListEl ref={ref} variant={value.variant}>
+      <ListEl as={as} ref={ref} variant={value.variant}>
         {children}
       </ListEl>
     );
