@@ -1,4 +1,5 @@
 import { InfoTipContainer } from '../InfoTip/styles';
+import { PreviewTipContents, PreviewTipShadow } from '../PreviewTip/elements';
 import { ToolTipContainer } from '../ToolTip/elements';
 import {
   InfoTipWrapper,
@@ -52,8 +53,9 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
         zIndex="auto"
         aria-hidden={isToolType}
       >
-        {info}
+        <PreviewTipContents info="hey" overline="o" title="lets go" />
       </TipBody>
+      <PreviewTipShadow />
     </InlineTipBodyWrapper>
   );
 

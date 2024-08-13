@@ -22,7 +22,12 @@ export type TipCenterAlignment = typeof tipCenterAlignmentArray[number];
 
 export type TipStaticAlignment = typeof tipAlignmentArray[number];
 
-export type PreviewTipText = { overline?: string; title?: string };
+export type PreviewTipContent = {
+  avatar?: ReactNode;
+  overline?: string;
+  title?: string;
+};
+
 export interface TipNewBaseProps {
   info: string | ReactNode;
   placement?: 'floating' | 'inline';
