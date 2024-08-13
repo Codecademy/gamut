@@ -53,9 +53,9 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
         zIndex="auto"
         aria-hidden={isToolType}
       >
-        <PreviewTipContents info="hey" overline="o" title="lets go" />
+        <PreviewTipContents info={info} overline="o" title="lets go" />
       </TipBody>
-      <PreviewTipShadow />
+      <PreviewTipShadow alignment={alignment} zIndex={zIndex} />
     </InlineTipBodyWrapper>
   );
 

@@ -7,13 +7,15 @@ import { PreviewTipContent, TipPlacementComponentProps } from '../shared/types';
 type PreviewTipContentsProps = Pick<TipPlacementComponentProps, 'info'> &
   PreviewTipContent;
 
+const ShadowAlignment = { topOrLeft: '-8px', bottomOrRight: '8px' };
+
 export const PreviewTipContents: React.FC<PreviewTipContentsProps> = ({
   overline,
   info,
   title,
 }) => {
   return (
-    <FlexBox column maxWidth={384} aria-label="Link Preview:">
+    <FlexBox column aria-label="Link Preview:">
       <Text textColor="text-secondary" fontFamily="accent" fontSize={14}>
         {title}
       </Text>
@@ -27,18 +29,25 @@ export const PreviewTipContents: React.FC<PreviewTipContentsProps> = ({
   );
 };
 
-export const PreviewTipShadow = ({}) => {
-  const zIndex = 1;
-  const alignment = 'bottom-left';
+type PreviewTipShadowProps = Pick<
+  TipPlacementComponentProps,
+  'alignment' | 'zIndex'
+>;
+
+export const PreviewTipShadow: React.FC<PreviewTipShadowProps> = ({
+  alignment,
+  zIndex,
+}) => {
+  const yShadow = alignment.includes('top');
+  const xShadow = alignment.includes('left');
 
   return (
     <CheckerDense
-      dimensions={1}
+      height="calc(100% - 12px)"
       position="absolute"
-      top="-8px"
-      left="-8px"
+      top={yShadow ? ShadowAlignment.topOrLeft : ShadowAlignment.bottomOrRight}
+      left={xShadow ? ShadowAlignment.topOrLeft : ShadowAlignment.bottomOrRight}
       zIndex={zIndex ? zIndex - 2 : -1}
-      // right={shadow === 'bottomRight' ? '-0.5rem' : undefined}
     />
-ya  );
+  );
 };
