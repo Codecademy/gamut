@@ -33,9 +33,7 @@ export const Drawer: React.FC<DrawerProps> = ({
   const fullWidth = isDesktop ? `30rem` : '75vw';
 
   useEffect(() => {
-    if (expanded && drawerRef.current) {
-      drawerRef.current.focus();
-    }
+    if (expanded) drawerRef?.current?.focus();
   }, [expanded]);
 
   return (
