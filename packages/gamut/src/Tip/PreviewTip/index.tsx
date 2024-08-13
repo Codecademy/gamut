@@ -5,19 +5,24 @@ import { Anchor } from '../..';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
+  PreviewTipText,
+  TipBaseAlignment,
   TipBaseProps,
-  TipCenterAlignment,
   tipDefaultProps,
 } from '../shared/types';
 
 export type PreviewTipProps = ComponentProps<typeof Anchor> &
-  TipBaseProps & {
-    alignment?: TipCenterAlignment;
+  Pick<TipBaseProps, 'placement'> &
+  PreviewTipText & {
+    alignment?: TipBaseAlignment;
+    linkDescription: string;
   };
 
 export const PreviewTip: React.FC<PreviewTipProps> = ({
-  alignment = 'top-center',
-  info,
+  alignment = 'top-right',
+  linkDescription,
+  overline,
+  title,
   placement = tipDefaultProps.placement,
   ...rest
 }) => {
@@ -34,13 +39,15 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
 
   const tipProps = {
     alignment,
-    info,
+    info: linkDescription,
     wrapperRef,
     ...rest,
   };
 
   return (
-    <Tip {...tipProps} type="tool" id={descriptionId}>
+    <Tip {...tipProps} type="preview" id={descriptionId}>
+      {title}
+      {overline}
       <Anchor {...rest} aria-describedby={descriptionId} />
     </Tip>
   );

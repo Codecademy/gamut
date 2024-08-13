@@ -22,6 +22,7 @@ export type TipCenterAlignment = typeof tipCenterAlignmentArray[number];
 
 export type TipStaticAlignment = typeof tipAlignmentArray[number];
 
+export type PreviewTipText = { overline?: string; title?: string };
 export interface TipNewBaseProps {
   info: string | ReactNode;
   placement?: 'floating' | 'inline';
@@ -40,6 +41,7 @@ export interface TipFloatingProps extends TipNewBaseProps {
 }
 
 export type TipBaseProps = TipInlineProps | TipFloatingProps;
+
 export const tipDefaultProps: Required<Pick<TipNewBaseProps, 'placement'>> = {
   placement: 'inline',
 };
@@ -52,7 +54,7 @@ export type TipPlacementComponentProps = Omit<
   escapeKeyPressHandler?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
   id?: string;
   isTipHidden?: boolean;
-  type: 'info' | 'tool';
+  type: 'info' | 'tool' | 'preview';
   wrapperRef?: React.RefObject<HTMLDivElement>;
   zIndex?: number;
 };

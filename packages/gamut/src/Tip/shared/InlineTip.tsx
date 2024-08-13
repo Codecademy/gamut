@@ -1,7 +1,3 @@
-import { CheckerDense } from '@codecademy/gamut-patterns';
-
-import { FlexBox } from '../../Box';
-import { Text } from '../../Typography';
 import { InfoTipContainer } from '../InfoTip/styles';
 import { ToolTipContainer } from '../ToolTip/elements';
 import {
@@ -55,25 +51,9 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
         width={narrow ? narrowWidth : undefined}
         zIndex="auto"
         aria-hidden={isToolType}
-        position="relative"
       >
-        <FlexBox column maxWidth={384} aria-label="Tooltip:">
-          <Text textColor="text-secondary" fontFamily="accent" fontSize={14}>
-            Docs
-          </Text>
-          <Text as="p" fontSize={16} truncate="ellipsis" truncateLines={4}>
-            ayoooooooooooooooooo
-          </Text>
-        </FlexBox>
+        {info}
       </TipBody>
-      <CheckerDense
-        dimensions={1}
-        position="absolute"
-        top="-8px"
-        left="-8px"
-        zIndex={zIndex ? zIndex - 1 : -1}
-        // right={shadow === 'bottomRight' ? '-0.5rem' : undefined}
-      />
     </InlineTipBodyWrapper>
   );
 
