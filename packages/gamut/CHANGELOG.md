@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [56.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.2.0...@codecademy/gamut@56.3.0) (2024-08-14)
+
+### Features
+
+- **Flyout:** focus container on open ([c690c32](https://github.com/Codecademy/gamut/commit/c690c32c09ea68082ccc3886514ae460cdae48f3))
+
 ## [56.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.1.3...@codecademy/gamut@56.2.0) (2024-08-14)
 
 ### Features
