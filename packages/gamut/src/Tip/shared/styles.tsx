@@ -18,6 +18,7 @@ const containerOffsetVertical = 12;
 export const narrowWidth = 64;
 export const centerWidths = { minWidth: 64, maxWidth: 128 } as const;
 export const alignedMaxWidth = { width: 256 } as const;
+export const alignedPreviewWidth = { width: 418 } as const;
 
 export const topStyles = {
   bottom: 'calc(100% + 4px)',
@@ -124,6 +125,11 @@ export const inlineToolTipBodyAlignments = variant({
     aligned: {
       ...alignedBodyStyles,
       ...alignedMaxWidth,
+    },
+    previewAligned: {
+      // ...alignedBodyStyles,
+      bg: 'paleBlue',
+      width: '418px',
     },
   },
 });

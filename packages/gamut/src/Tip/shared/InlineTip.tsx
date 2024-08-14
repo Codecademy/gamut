@@ -46,7 +46,7 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
       {...InlineWrapperProps}
     >
       <TipBody
-        alignment={alignment.includes('center') ? 'centered' : 'aligned'}
+        alignment="previewAligned"
         color="currentColor"
         id={id}
         width={narrow ? narrowWidth : undefined}
