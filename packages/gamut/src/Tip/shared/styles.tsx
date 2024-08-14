@@ -61,9 +61,8 @@ export const bottomCenterStylesAfter = {
 export const alignedStylesAfter = { bg: tooltipBackgroundColor };
 
 export const leftStyles = {
-  ...alignedMaxWidth,
   justifyContent: 'flex-end',
-  left: 'calc(50% - 14rem)',
+  right: 'calc(50% - 2rem)',
 } as const;
 
 export const leftStylesAfter = {
@@ -72,7 +71,6 @@ export const leftStylesAfter = {
 } as const;
 
 export const rightStyles = {
-  ...alignedMaxWidth,
   left: 'calc(50% - 2rem)',
 } as const;
 
@@ -127,9 +125,11 @@ export const inlineToolTipBodyAlignments = variant({
       ...alignedMaxWidth,
     },
     previewAligned: {
-      // ...alignedBodyStyles,
+      ...alignedPreviewWidth,
       bg: 'paleBlue',
-      width: '418px',
+    },
+    avatarAligned: {
+      maxWidth: 'fit-content',
     },
   },
 });
@@ -154,6 +154,10 @@ export const toolTipWidthRestrictions = variant({
     },
     aligned: {
       ...alignedMaxWidth,
+    },
+    previewAligned: {
+      ...alignedPreviewWidth,
+      bg: 'paleBlue',
     },
     default: {
       minWidth: undefined,

@@ -8,10 +8,13 @@ import {
   ToolTipWrapper,
 } from './elements';
 import { narrowWidth } from './styles';
-import { TipPlacementComponentProps } from './types';
+import { TipWrapperProps } from './types';
 
-export const InlineTip: React.FC<TipPlacementComponentProps> = ({
+export const InlineTip: React.FC<TipWrapperProps> = ({
   alignment,
+  avatar,
+  username,
+  overline,
   children,
   escapeKeyPressHandler,
   id,
@@ -22,6 +25,7 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
   wrapperRef,
   zIndex,
 }) => {
+  console.log(avatar, username, overline);
   const isToolType = type === 'tool';
 
   const InlineTipWrapper = isToolType ? ToolTipWrapper : InfoTipWrapper;
@@ -53,7 +57,12 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
         zIndex="auto"
         aria-hidden={isToolType}
       >
-        <PreviewTipContents info={info} overline="o" title="lets go" />
+        <PreviewTipContents
+          avatar={avatar}
+          info={info}
+          username={username}
+          overline={overline}
+        />
       </TipBody>
       <PreviewTipShadow alignment={alignment} zIndex={zIndex} />
     </InlineTipBodyWrapper>

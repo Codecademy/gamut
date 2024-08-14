@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+import { PreviewTipContents } from '../PreviewTip/elements';
+
 export const tipBaseAlignmentArray = [
   'bottom-left',
   'bottom-right',
@@ -25,7 +27,8 @@ export type TipStaticAlignment = typeof tipAlignmentArray[number];
 export type PreviewTipContent = {
   avatar?: ReactNode;
   overline?: string;
-  title?: string;
+  maxLines?: number;
+  username?: string;
 };
 
 export interface TipNewBaseProps {
@@ -50,6 +53,8 @@ export type TipBaseProps = TipInlineProps | TipFloatingProps;
 export const tipDefaultProps: Required<Pick<TipNewBaseProps, 'placement'>> = {
   placement: 'inline',
 };
+
+export type TipWrapperProps = TipPlacementComponentProps & PreviewTipContent;
 
 export type TipPlacementComponentProps = Omit<
   TipNewBaseProps,

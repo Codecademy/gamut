@@ -1,5 +1,5 @@
 import { useId } from '@reach/auto-id';
-import { ComponentProps, ReactNode, useEffect, useRef, useState } from 'react';
+import { ComponentProps, useEffect, useRef, useState } from 'react';
 
 import { Anchor } from '../..';
 import { FloatingTip } from '../shared/FloatingTip';
@@ -19,12 +19,14 @@ export type PreviewTipProps = ComponentProps<typeof Anchor> &
   };
 
 export const PreviewTip: React.FC<PreviewTipProps> = ({
-  avatar,
   alignment = 'top-right',
+  avatar,
+  children,
   linkDescription,
+  maxLines,
   overline,
-  title,
   placement = tipDefaultProps.placement,
+  username,
   ...rest
 }) => {
   const descriptionId = useId();
@@ -39,18 +41,21 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
 
   const tipProps = {
-    avatar,
-    overline,
-    title,
     alignment,
+    avatar,
     info: linkDescription,
+    maxLines,
+    overline,
+    username,
     wrapperRef,
     ...rest,
   };
 
   return (
     <Tip {...tipProps} type="preview" id={descriptionId}>
-      <Anchor {...rest} aria-describedby={descriptionId} />
+      <Anchor {...rest} aria-describedby={descriptionId}>
+        {avatar || children}
+      </Anchor>
     </Tip>
   );
 };

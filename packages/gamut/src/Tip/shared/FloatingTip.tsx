@@ -6,14 +6,14 @@ import { Box, FlexBox } from '../../Box';
 import { Popover } from '../../Popover';
 import { TargetContainer } from './elements';
 import { narrowWidth } from './styles';
-import { TipPlacementComponentProps } from './types';
+import { TipWrapperProps } from './types';
 import { getPopoverAlignment } from './utils';
 
 type FocusOrMouseEvent =
   | React.FocusEvent<HTMLDivElement, Element>
   | React.MouseEvent<HTMLDivElement, MouseEvent>;
 
-export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
+export const FloatingTip: React.FC<TipWrapperProps> = ({
   alignment,
   children,
   escapeKeyPressHandler,

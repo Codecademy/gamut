@@ -10,17 +10,17 @@ type PreviewTipContentsProps = Pick<TipPlacementComponentProps, 'info'> &
 const ShadowAlignment = { topOrLeft: '-8px', bottomOrRight: '8px' };
 
 export const PreviewTipContents: React.FC<PreviewTipContentsProps> = ({
-  overline,
   info,
-  title,
+  overline,
+  username,
 }) => {
   return (
     <FlexBox column aria-label="Link Preview:">
       <Text textColor="text-secondary" fontFamily="accent" fontSize={14}>
-        {title}
+        {overline}
       </Text>
       <Text fontWeight="bold" fontSize={16}>
-        {overline}
+        {username}
       </Text>
       <Text as="p" fontSize={16} truncate="ellipsis" truncateLines={4}>
         {info}

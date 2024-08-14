@@ -1,8 +1,8 @@
-import {FlexBox, PreviewTip } from '@codecademy/gamut/src';
+import {Box, FlexBox, PreviewTip } from '@codecademy/gamut/src';
+import {SmileyIndifferentIcon} from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-
 
 <Meta
   title={title}
@@ -33,6 +33,16 @@ _Small_ piece of extra information toggled by clicking on an (i) button.
     {(args) => (
       <FlexBox center p={156}>
         <PreviewTip {...args} />
+        </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Avatar Tip">
+    {(args) => (
+      <FlexBox center p={156}>
+        <PreviewTip {...args} avatar={<Box bg="navy" height={32} borderRadius='100%' width={32} ><SmileyIndifferentIcon  color="yellow"  size="100%"/></Box> }username="@coolguy" overline="Profile" />
         </FlexBox>
     )}
   </Story>
