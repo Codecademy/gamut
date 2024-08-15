@@ -1,7 +1,7 @@
 import { useId } from '@reach/auto-id';
 import { ComponentProps, useEffect, useRef, useState } from 'react';
 
-import { Anchor, Box } from '../..';
+import { Anchor } from '../..';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {

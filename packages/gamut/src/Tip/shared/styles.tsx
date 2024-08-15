@@ -126,10 +126,10 @@ export const inlineToolTipBodyAlignments = variant({
     },
     previewAligned: {
       ...alignedPreviewWidth,
-      bg: 'paleBlue',
     },
     avatarAligned: {
-      maxWidth: 'fit-content',
+      width: 'max-content',
+      maxWidth: { _: '95vw', xs: '600px' },
     },
   },
 });
@@ -157,7 +157,6 @@ export const toolTipWidthRestrictions = variant({
     },
     previewAligned: {
       ...alignedPreviewWidth,
-      bg: 'paleBlue',
     },
     default: {
       minWidth: undefined,

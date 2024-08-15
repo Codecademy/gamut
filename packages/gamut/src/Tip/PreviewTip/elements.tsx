@@ -17,16 +17,16 @@ export const PreviewTipContents: React.FC<PreviewTipContentsProps> = ({
   avatar,
   info,
   overline,
-  truncateLines,
+  truncateLines = 4,
   username,
 }) => {
   return (
     <GridBox
-      gridTemplateColumns={avatar ? avatarColumnTemplate : '1fr'}
-      gridTemplateAreas={avatar ? avatarGridTemplate : defaultGridTemplate}
-      rowGap={4}
       aria-label="Link Preview:"
+      gridTemplateAreas={avatar ? avatarGridTemplate : defaultGridTemplate}
+      gridTemplateColumns={avatar ? avatarColumnTemplate : '1fr'}
       p={16}
+      rowGap={4}
     >
       {avatar && (
         <FlexBox center aria-hidden gridArea="avatar" pr={12}>
@@ -71,6 +71,7 @@ export const PreviewTipShadow: React.FC<PreviewTipShadowProps> = ({
   return (
     <CheckerDense
       height="calc(100% - 12px)"
+      width="100%"
       position="absolute"
       zIndex={zIndex ? zIndex - 2 : -1}
       {...shadowAlignment}

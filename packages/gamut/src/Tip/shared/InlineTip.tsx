@@ -25,7 +25,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   wrapperRef,
   zIndex,
 }) => {
-  const isToolType = type === 'tool';
+  const isToolType = type === 'tool' || type === 'preview';
 
   const InlineTipWrapper = isToolType ? ToolTipWrapper : InfoTipWrapper;
   const InlineTipBodyWrapper = isToolType ? ToolTipContainer : InfoTipContainer;
@@ -49,7 +49,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
       {...InlineWrapperProps}
     >
       <TipBody
-        alignment="previewAligned"
+        alignment="avatarAligned"
         color="currentColor"
         id={id}
         width={narrow ? narrowWidth : undefined}
@@ -62,8 +62,8 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
           username={username}
           overline={overline}
         />
+        <PreviewTipShadow alignment={alignment} zIndex={zIndex} />
       </TipBody>
-      <PreviewTipShadow alignment={alignment} zIndex={zIndex} />
     </InlineTipBodyWrapper>
   );
 

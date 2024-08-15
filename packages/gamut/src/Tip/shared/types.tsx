@@ -24,13 +24,11 @@ export type TipCenterAlignment = typeof tipCenterAlignmentArray[number];
 
 export type TipStaticAlignment = typeof tipAlignmentArray[number];
 
-export type PreviewTipContent = Pick<
-  ComponentProps<typeof Text>,
-  'truncateLines'
-> & {
+export type PreviewTipContent = {
   avatar?: ReactNode;
   overline?: string;
   username?: string;
+  truncateLines?: ComponentProps<typeof Text>['truncateLines'];
 };
 
 export interface TipNewBaseProps {
