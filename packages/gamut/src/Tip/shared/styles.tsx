@@ -97,9 +97,9 @@ export const toolTipAlignmentVariants = variant({
     transition: `opacity ${timing.fast}`,
     transitionDelay: `${timing.fast}`,
     position: 'absolute',
-    width: '70vw',
     opacity: 0,
     visibility: 'hidden',
+    maxWidth: '70vw',
     '&::after': {
       content: '""',
       display: 'block',
