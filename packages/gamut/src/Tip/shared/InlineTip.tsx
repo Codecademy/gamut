@@ -25,7 +25,6 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   wrapperRef,
   zIndex,
 }) => {
-  console.log(avatar, username, overline);
   const isToolType = type === 'tool';
 
   const InlineTipWrapper = isToolType ? ToolTipWrapper : InfoTipWrapper;

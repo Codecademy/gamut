@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 
-import { PreviewTipContents } from '../PreviewTip/elements';
+import { Text } from '../../Typography';
 
 export const tipBaseAlignmentArray = [
   'bottom-left',
@@ -24,10 +24,12 @@ export type TipCenterAlignment = typeof tipCenterAlignmentArray[number];
 
 export type TipStaticAlignment = typeof tipAlignmentArray[number];
 
-export type PreviewTipContent = {
+export type PreviewTipContent = Pick<
+  ComponentProps<typeof Text>,
+  'truncateLines'
+> & {
   avatar?: ReactNode;
   overline?: string;
-  maxLines?: number;
   username?: string;
 };
 

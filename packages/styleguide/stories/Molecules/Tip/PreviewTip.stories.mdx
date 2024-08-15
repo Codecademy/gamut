@@ -38,15 +38,17 @@ _Small_ piece of extra information toggled by clicking on an (i) button.
   </Story>
 </Canvas>
 
+<PropsTable story="PreviewTip" />
+
+
 <Canvas>
   <Story name="Avatar Tip">
-    {(args) => (
-      <FlexBox center p={156}>
-        <PreviewTip {...args} avatar={<Box bg="navy" height={32} borderRadius='100%' width={32} ><SmileyIndifferentIcon  color="yellow"  size="100%"/></Box> }username="@coolguy" overline="Profile" />
-        </FlexBox>
+    {() => (
+      <FlexBox center height={400}>
+          <PreviewTip avatar={<Box bg="navy" height="100%" borderRadius='100%' width="100%" href="www.google.com"><SmileyIndifferentIcon  color="yellow"  size="100%"/></Box>} height={32} width={32} linkDescription="# of contributions" username="@coolguy" overline="Profile" truncateLines={1} />
+      </FlexBox>
     )}
   </Story>
 </Canvas>
 
-<PropsTable story="PreviewTip" />
 

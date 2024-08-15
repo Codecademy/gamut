@@ -1,7 +1,7 @@
 import { useId } from '@reach/auto-id';
 import { ComponentProps, useEffect, useRef, useState } from 'react';
 
-import { Anchor } from '../..';
+import { Anchor, Box } from '../..';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
@@ -23,9 +23,9 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
   avatar,
   children,
   linkDescription,
-  maxLines,
   overline,
   placement = tipDefaultProps.placement,
+  truncateLines,
   username,
   ...rest
 }) => {
@@ -44,8 +44,8 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
     alignment,
     avatar,
     info: linkDescription,
-    maxLines,
     overline,
+    truncateLines,
     username,
     wrapperRef,
     ...rest,

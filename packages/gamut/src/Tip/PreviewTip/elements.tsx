@@ -1,31 +1,59 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
 
-import { FlexBox } from '../../Box';
+import { Box, FlexBox, GridBox } from '../../Box';
 import { Text } from '../../Typography';
 import { PreviewTipContent, TipPlacementComponentProps } from '../shared/types';
+import {
+  avatarColumnTemplate,
+  avatarGridTemplate,
+  defaultGridTemplate,
+  getShadowAlignment,
+} from './styles';
 
 type PreviewTipContentsProps = Pick<TipPlacementComponentProps, 'info'> &
   PreviewTipContent;
 
-const ShadowAlignment = { topOrLeft: '-8px', bottomOrRight: '8px' };
-
 export const PreviewTipContents: React.FC<PreviewTipContentsProps> = ({
+  avatar,
   info,
   overline,
+  truncateLines,
   username,
 }) => {
   return (
-    <FlexBox column aria-label="Link Preview:">
-      <Text textColor="text-secondary" fontFamily="accent" fontSize={14}>
-        {overline}
-      </Text>
-      <Text fontWeight="bold" fontSize={16}>
-        {username}
-      </Text>
-      <Text as="p" fontSize={16} truncate="ellipsis" truncateLines={4}>
+    <GridBox
+      gridTemplateColumns={avatar ? avatarColumnTemplate : '1fr'}
+      gridTemplateAreas={avatar ? avatarGridTemplate : defaultGridTemplate}
+      rowGap={4}
+      aria-label="Link Preview:"
+      p={16}
+    >
+      {avatar && (
+        <FlexBox center aria-hidden gridArea="avatar" pr={12}>
+          <Box height={40} width={40}>
+            {avatar}
+          </Box>
+        </FlexBox>
+      )}
+      {overline && (
+        <Text textColor="text-secondary" fontFamily="accent" fontSize={14}>
+          {overline}
+        </Text>
+      )}
+      {username && (
+        <Text fontWeight="bold" fontSize={16}>
+          {username}
+        </Text>
+      )}
+      <Text
+        as="p"
+        fontSize={16}
+        truncate="ellipsis"
+        truncateLines={truncateLines ?? 4}
+      >
         {info}
       </Text>
-    </FlexBox>
+    </GridBox>
   );
 };
 
@@ -38,16 +66,14 @@ export const PreviewTipShadow: React.FC<PreviewTipShadowProps> = ({
   alignment,
   zIndex,
 }) => {
-  const yShadow = alignment.includes('top');
-  const xShadow = alignment.includes('left');
+  const shadowAlignment = getShadowAlignment(alignment);
 
   return (
     <CheckerDense
       height="calc(100% - 12px)"
       position="absolute"
-      top={yShadow ? ShadowAlignment.topOrLeft : ShadowAlignment.bottomOrRight}
-      left={xShadow ? ShadowAlignment.topOrLeft : ShadowAlignment.bottomOrRight}
       zIndex={zIndex ? zIndex - 2 : -1}
+      {...shadowAlignment}
     />
   );
 };
