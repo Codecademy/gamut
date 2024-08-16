@@ -362,7 +362,7 @@ export const borderRadii = {
       render: ({ value }: any) => (
         <Box
           display="inline-block"
-          width="4rem"
+          width="6rem"
           height="4em"
           bg="navy"
           borderRadius={value}
