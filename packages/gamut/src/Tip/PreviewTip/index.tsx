@@ -53,7 +53,11 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
 
   return (
     <Tip {...tipProps} type="preview" id={descriptionId}>
-      <Anchor {...rest} aria-describedby={descriptionId}>
+      <Anchor
+        {...rest}
+        aria-label={avatar ? `Profile Preview:` : `Link Preview:`}
+        aria-describedby={descriptionId}
+      >
         {avatar || children}
       </Anchor>
     </Tip>

@@ -22,7 +22,6 @@ export const PreviewTipContents: React.FC<PreviewTipContentsProps> = ({
 }) => {
   return (
     <GridBox
-      aria-label="Link Preview:"
       gridTemplateAreas={avatar ? avatarGridTemplate : defaultGridTemplate}
       gridTemplateColumns={avatar ? avatarColumnTemplate : '1fr'}
       p={16}

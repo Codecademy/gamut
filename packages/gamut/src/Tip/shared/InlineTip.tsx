@@ -1,4 +1,3 @@
-import { Box } from '../../Box';
 import { InfoTipContainer } from '../InfoTip/styles';
 import { PreviewTipContents, PreviewTipShadow } from '../PreviewTip/elements';
 import { ToolTipContainer } from '../ToolTip/elements';
@@ -68,10 +67,14 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
               username={username}
               overline={overline}
             />
-            <PreviewTipShadow alignment={alignment} zIndex={zIndex} />
+            <PreviewTipShadow
+              aria-hidden
+              alignment={alignment}
+              zIndex={zIndex}
+            />
           </>
         ) : (
-          { info }
+          info
         )}
       </TipBody>
     </InlineTipBodyWrapper>
