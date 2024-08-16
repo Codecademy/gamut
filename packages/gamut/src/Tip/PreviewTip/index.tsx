@@ -1,7 +1,7 @@
 import { useId } from '@reach/auto-id';
-import { ComponentProps, useEffect, useRef, useState } from 'react';
+import { ComponentProps, useEffect, useMemo, useRef, useState } from 'react';
 
-import { Anchor } from '../..';
+import { Anchor, Text } from '../..';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
@@ -10,6 +10,7 @@ import {
   TipBaseProps,
   tipDefaultProps,
 } from '../shared/types';
+import { getPreviewDescription } from './utils';
 
 export type PreviewTipProps = ComponentProps<typeof Anchor> &
   Pick<TipBaseProps, 'placement'> &
@@ -17,7 +18,6 @@ export type PreviewTipProps = ComponentProps<typeof Anchor> &
     alignment?: TipBaseAlignment;
     linkDescription: string;
   };
-
 export const PreviewTip: React.FC<PreviewTipProps> = ({
   alignment = 'top-right',
   avatar,
@@ -39,7 +39,10 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
 
   const isFloating = placement === 'floating';
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
-
+  const description = useMemo(
+    () => getPreviewDescription({ linkDescription, overline, username }),
+    [linkDescription, overline, username]
+  );
   const tipProps = {
     alignment,
     avatar,
@@ -48,15 +51,19 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
     truncateLines,
     username,
     wrapperRef,
-    ...rest,
   };
 
   return (
-    <Tip {...tipProps} type="preview" id={descriptionId}>
+    <Tip {...tipProps} type="preview">
+      <Text aria-hidden screenreader id={descriptionId}>
+        {`${description}`}
+      </Text>
+
       <Anchor
         {...rest}
         aria-label={avatar ? `Profile Preview:` : `Link Preview:`}
         aria-describedby={descriptionId}
+        display={avatar && rest?.display === undefined ? 'flex' : rest?.display}
       >
         {avatar || children}
       </Anchor>

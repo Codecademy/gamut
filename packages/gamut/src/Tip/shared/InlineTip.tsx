@@ -68,7 +68,6 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
               overline={overline}
             />
             <PreviewTipShadow
-              aria-hidden
               alignment={alignment}
               zIndex={zIndex}
             />

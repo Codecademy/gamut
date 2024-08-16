@@ -1,8 +1,9 @@
-import {Box, FlexBox, PreviewTip } from '@codecademy/gamut/src';
-import {SmileyIndifferentIcon} from '@codecademy/gamut-icons';
+import { FlexBox, PreviewTip } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import {AvatarExample} from './examples.tsx'
 
 <Meta
   title={title}
@@ -21,7 +22,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   args={{
     alignment: 'top-left',
     children: 'PreviewTip Anchor',
-    info: `Include a relevant snippet from the links destination on hover and focus, on click navigates to the page for more details. By default, the snippet will truncate after 4 lines, but the max lines can be set to any number lines fourty three`,
+    linkDescription: `Include a relevant snippet from the links destination on hover and focus, on click navigates to the page for more details. By default, the snippet will truncate after 4 lines, but the max lines can be set to any number lines fourty three`,
     href: 'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExamp6NDVlZzNpam01NnlhaGRreWMwZGlzZ3Z6bWd2dmtneTJrN3pnZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/X5Lta1bjuULTubmGzR/giphy.webp',
   }}
 />
@@ -31,7 +32,7 @@ _Small_ piece of extra information toggled by clicking on an (i) button.
 <Canvas>
   <Story name="PreviewTip">
     {(args) => (
-      <FlexBox center p={156}>
+      <FlexBox center py={156}>
         <PreviewTip {...args} />
         </FlexBox>
     )}
@@ -44,9 +45,7 @@ _Small_ piece of extra information toggled by clicking on an (i) button.
 <Canvas>
   <Story name="Avatar Tip">
     {() => (
-      <FlexBox center height={400}>
-          <PreviewTip avatar={<Box bg="navy" height="100%" borderRadius='100%' width="100%" href="www.google.com"><SmileyIndifferentIcon  color="yellow"  size="100%"/></Box>} height={32} width={32} linkDescription="# of contributions" username="@coolguy" overline="Profile" truncateLines={1} />
-      </FlexBox>
+        <AvatarExample/>
     )}
   </Story>
 </Canvas>

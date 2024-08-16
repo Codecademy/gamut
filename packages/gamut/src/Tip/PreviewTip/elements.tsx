@@ -69,6 +69,7 @@ export const PreviewTipShadow: React.FC<PreviewTipShadowProps> = ({
 
   return (
     <CheckerDense
+      aria-hidden
       height="calc(100% - 12px)"
       width="100%"
       position="absolute"
