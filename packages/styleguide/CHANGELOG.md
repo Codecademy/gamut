@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.1.6...@codecademy/styleguide@67.2.0) (2024-08-14)
+
+### Features
+
+- **Flyout:** focus container on open ([c690c32](https://github.com/Codecademy/gamut/commit/c690c32c09ea68082ccc3886514ae460cdae48f3))
+
+### [67.1.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.1.5...@codecademy/styleguide@67.1.6) (2024-08-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [67.1.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.1.4...@codecademy/styleguide@67.1.5) (2024-08-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [67.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.1.3...@codecademy/styleguide@67.1.4) (2024-08-07)
 
 **Note:** Version bump only for package @codecademy/styleguide
