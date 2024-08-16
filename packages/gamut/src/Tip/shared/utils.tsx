@@ -13,7 +13,17 @@ import {
   topStyles,
   topStylesAfter,
 } from './styles';
-import { TipPlacementComponentProps } from './types';
+import { TipPlacementComponentProps, TipWrapperProps } from './types';
+
+export const getInlineAlignment = ({
+  alignment,
+  avatar,
+  type,
+}: Pick<TipWrapperProps, 'alignment' | 'avatar' | 'type'>) => {
+  if (avatar) return 'avatarAligned';
+  if (type === 'preview') return 'previewAligned';
+  return alignment.includes('center') ? 'centered' : 'aligned';
+};
 
 export const getPopoverAlignment = ({
   alignment = 'top-left',

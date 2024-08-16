@@ -1,3 +1,4 @@
+import { Box } from '../../Box';
 import { InfoTipContainer } from '../InfoTip/styles';
 import { PreviewTipContents, PreviewTipShadow } from '../PreviewTip/elements';
 import { ToolTipContainer } from '../ToolTip/elements';
@@ -9,6 +10,7 @@ import {
 } from './elements';
 import { narrowWidth } from './styles';
 import { TipWrapperProps } from './types';
+import { getInlineAlignment } from './utils';
 
 export const InlineTip: React.FC<TipWrapperProps> = ({
   alignment,
@@ -26,10 +28,12 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   zIndex,
 }) => {
   const isToolType = type === 'tool' || type === 'preview';
+  const isPreviewType = type === 'preview';
 
   const InlineTipWrapper = isToolType ? ToolTipWrapper : InfoTipWrapper;
   const InlineTipBodyWrapper = isToolType ? ToolTipContainer : InfoTipContainer;
   const InlineWrapperProps = isToolType ? {} : { hideTip: isTipHidden };
+  const tipBodyAlignment = getInlineAlignment({ alignment, avatar, type });
 
   const target = (
     <TargetContainer
@@ -49,20 +53,26 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
       {...InlineWrapperProps}
     >
       <TipBody
-        alignment="avatarAligned"
+        alignment={tipBodyAlignment}
         color="currentColor"
         id={id}
         width={narrow ? narrowWidth : undefined}
         zIndex="auto"
         aria-hidden={isToolType}
       >
-        <PreviewTipContents
-          avatar={avatar}
-          info={info}
-          username={username}
-          overline={overline}
-        />
-        <PreviewTipShadow alignment={alignment} zIndex={zIndex} />
+        {isPreviewType ? (
+          <>
+            <PreviewTipContents
+              avatar={avatar}
+              info={info}
+              username={username}
+              overline={overline}
+            />
+            <PreviewTipShadow alignment={alignment} zIndex={zIndex} />
+          </>
+        ) : (
+          { info }
+        )}
       </TipBody>
     </InlineTipBodyWrapper>
   );
