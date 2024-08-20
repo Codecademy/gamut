@@ -27,7 +27,6 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   zIndex,
 }) => {
   const isHoverType = type === 'tool' || type === 'preview';
-  const isPreviewType = type === 'preview';
 
   const InlineTipWrapper = isHoverType ? ToolTipWrapper : InfoTipWrapper;
   const InlineTipBodyWrapper = isHoverType
@@ -62,7 +61,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
         zIndex="auto"
         aria-hidden={isHoverType}
       >
-        {isPreviewType ? (
+        {type === 'preview' ? (
           <>
             <PreviewTipContents
               avatar={avatar}

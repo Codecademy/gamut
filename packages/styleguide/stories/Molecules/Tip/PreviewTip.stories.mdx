@@ -43,6 +43,14 @@ _Small_ piece of extra information toggled by clicking on an (i) button.
 
 
 <Canvas>
+  <Story name="Floating PreviewTip">
+    {({alignment, ...args}) => (
+               <PreviewTip alignment="top-right"  placement="floating" {...args} />
+    )}
+  </Story>
+</Canvas>
+
+<Canvas>
   <Story name="Avatar Tip">
     {() => (
         <AvatarExample/>

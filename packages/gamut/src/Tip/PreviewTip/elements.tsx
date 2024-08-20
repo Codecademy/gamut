@@ -24,7 +24,6 @@ export const PreviewTipContents: React.FC<PreviewTipContentsProps> = ({
     <GridBox
       gridTemplateAreas={avatar ? avatarGridTemplate : defaultGridTemplate}
       gridTemplateColumns={avatar ? avatarColumnTemplate : '1fr'}
-      p={16}
       rowGap={4}
     >
       {avatar && (
@@ -68,6 +67,7 @@ export const PreviewTipShadow: React.FC<PreviewTipShadowProps> = ({
   const shadowAlignment = getShadowAlignment(alignment);
 
   return (
+    // CASS - maybe dedupe in FloatingTip
     <CheckerDense
       aria-hidden
       height="calc(100% - 12px)"

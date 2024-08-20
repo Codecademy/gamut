@@ -170,7 +170,7 @@ export const Popover: React.FC<PopoverProps> = ({
         outline={outline ? 'outline' : 'boxShadow'}
         variant={variant}
         widthRestricted={
-          variant === 'secondary'
+          variant === 'secondary' && widthRestricted === undefined
             ? alignment === 'centered'
               ? 'centered'
               : 'aligned'

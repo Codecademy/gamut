@@ -131,6 +131,7 @@ export const inlineToolTipBodyAlignments = variant({
     },
     previewAligned: {
       ...alignedPreviewWidth,
+      p: 16,
     },
     avatarAligned: {
       width: 'max-content',

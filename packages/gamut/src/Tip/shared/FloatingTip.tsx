@@ -1,9 +1,11 @@
+import { CheckerDense } from '@codecademy/gamut-patterns';
 import { useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
 import { useMeasure } from 'react-use'; // or just 'react-use-measure'
 
 import { Box, FlexBox } from '../../Box';
 import { Popover } from '../../Popover';
+import { PreviewTipContents } from '../PreviewTip/elements';
 import { TargetContainer } from './elements';
 import { narrowWidth } from './styles';
 import { TipWrapperProps } from './types';
@@ -15,13 +17,16 @@ type FocusOrMouseEvent =
 
 export const FloatingTip: React.FC<TipWrapperProps> = ({
   alignment,
+  avatar,
   children,
   escapeKeyPressHandler,
   info,
   isTipHidden,
-  wrapperRef,
-  type,
   narrow,
+  overline,
+  type,
+  username,
+  wrapperRef,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [childRef, { width: tipWidth }] = useMeasure<HTMLDivElement>();
@@ -64,10 +69,25 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
     }
   };
 
-  const isToolType = type === 'tool';
-  const toolOnlyEventFunc = isToolType
+  const isHoverType = type === 'tool' || type === 'preview';
+  const isPreviewType = type === 'preview';
+
+  const toolOnlyEventFunc = isHoverType
     ? (e: FocusOrMouseEvent) => handleShowHideAction(e)
     : undefined;
+
+  const contents = isPreviewType ? (
+    <>
+      <PreviewTipContents
+        avatar={avatar}
+        info={info}
+        username={username}
+        overline={overline}
+      />
+    </>
+  ) : (
+    info
+  );
 
   return (
     <Box
@@ -91,19 +111,21 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         {...popoverAlignments}
         animation="fade"
         horizontalOffset={offset}
-        isOpen={isToolType ? isOpen : !isTipHidden}
+        // isOpen={isHoverType ? isOpen : !isTipHidden}
+        isOpen
         outline
         skipFocusTrap
         targetRef={ref}
-        variant="secondary"
+        pattern={isPreviewType ? CheckerDense : undefined}
+        widthRestricted={isPreviewType ? false : undefined}
       >
         <FlexBox
-          alignItems={isToolType ? undefined : 'flex-start'}
+          alignItems={isHoverType ? undefined : 'flex-start'}
           flexDirection="column"
           ref={childRef}
-          width={narrow ? narrowWidth : '100%'}
+          width={narrow ? narrowWidth : isPreviewType ? '418px' : '100%'}
         >
-          {info}
+          {contents}
         </FlexBox>
       </Popover>
     </Box>

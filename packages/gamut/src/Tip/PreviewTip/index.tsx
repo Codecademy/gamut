@@ -47,6 +47,7 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
     alignment,
     avatar,
     info: linkDescription,
+    placement,
     overline,
     truncateLines,
     username,
