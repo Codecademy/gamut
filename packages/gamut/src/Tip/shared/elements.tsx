@@ -4,11 +4,7 @@ import styled from '@emotion/styled';
 
 import { Box } from '../../Box';
 import { Selectors } from '../../ButtonBase/ButtonBase';
-import {
-  inlineToolTipBodyAlignments,
-  toolTipAlignmentVariants,
-  toolTipBodyCss,
-} from './styles';
+import { inlineToolTipBodyAlignments, toolTipBodyCss } from './styles';
 
 const tipWrapperStyles = {
   position: 'relative',
@@ -60,9 +56,6 @@ export const TargetContainer = styled(Box)(
     },
   })
 );
-
-export interface ToolTipContainerProps
-  extends StyleProps<typeof toolTipAlignmentVariants> {}
 
 export const TipBody = styled(Box)<
   StyleProps<typeof inlineToolTipBodyAlignments>

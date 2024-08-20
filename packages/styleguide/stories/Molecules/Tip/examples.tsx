@@ -35,7 +35,7 @@ export const InfoTipLinkExample = () => {
 
 export const AvatarExample = () => {
   return (
-    <FlexBox center pt={96} mt={16}>
+    <FlexBox center py={96} mt={16}>
       <PreviewTip
         avatar={
           <Box bg="navy" height="100%" borderRadius="100%" width="100%">

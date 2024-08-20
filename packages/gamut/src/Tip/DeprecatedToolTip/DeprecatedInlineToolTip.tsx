@@ -33,6 +33,7 @@ export const DeprecatedInlineToolTip: React.FC<DeprecatedToolTipPlacementCompone
         as="div"
         id={id}
         role="tooltip"
+        isToolTip
       >
         <TipBody
           alignment={alignment.includes('center') ? 'centered' : 'aligned'}

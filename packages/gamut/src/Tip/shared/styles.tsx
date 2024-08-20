@@ -1,5 +1,6 @@
 import {
   fontSmoothPixel,
+  states,
   theme,
   timing,
   variant,
@@ -111,6 +112,10 @@ export const toolTipAlignmentVariants = variant({
     },
   },
   variants: tooltipVariantStyles,
+});
+
+export const inlineToolTipState = states({
+  isToolTip: { width: '70vw' },
 });
 
 export const inlineToolTipBodyAlignments = variant({
