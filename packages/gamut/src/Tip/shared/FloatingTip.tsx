@@ -3,13 +3,13 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
 import { useMeasure } from 'react-use'; // or just 'react-use-measure'
 
-import { Box, FlexBox } from '../../Box';
+import { Box } from '../../Box';
 import { Popover } from '../../Popover';
 import { PreviewTipContents } from '../PreviewTip/elements';
-import { TargetContainer } from './elements';
+import { FloatingTipBody, TargetContainer } from './elements';
 import { narrowWidth } from './styles';
 import { TipWrapperProps } from './types';
-import { getPopoverAlignment } from './utils';
+import { getAlignmentWidths, getPopoverAlignment } from './utils';
 
 type FocusOrMouseEvent =
   | React.FocusEvent<HTMLDivElement, Element>
@@ -51,6 +51,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   }, [alignment, tipWidth]);
 
   const popoverAlignments = getPopoverAlignment({ alignment, type });
+  const dims = getAlignmentWidths({ avatar, alignment, type });
 
   const handleShowHideAction = ({ type }: FocusOrMouseEvent) => {
     if (type === 'focus' && !isOpen) {
@@ -111,22 +112,23 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         {...popoverAlignments}
         animation="fade"
         horizontalOffset={offset}
-        // isOpen={isHoverType ? isOpen : !isTipHidden}
-        isOpen
+        isOpen={isHoverType ? isOpen : !isTipHidden}
         outline
+        pattern={isPreviewType ? CheckerDense : undefined}
         skipFocusTrap
         targetRef={ref}
-        pattern={isPreviewType ? CheckerDense : undefined}
-        widthRestricted={isPreviewType ? false : undefined}
+        variant="secondary"
+        widthRestricted={false}
       >
-        <FlexBox
+        <FloatingTipBody
           alignItems={isHoverType ? undefined : 'flex-start'}
+          dims={dims}
           flexDirection="column"
           ref={childRef}
           width={narrow ? narrowWidth : isPreviewType ? '418px' : '100%'}
         >
           {contents}
-        </FlexBox>
+        </FloatingTipBody>
       </Popover>
     </Box>
   );

@@ -43,6 +43,13 @@ export const outlineVariants = variant({
   },
 });
 
+export const widthStates = states({
+  widthRestricted: {
+    minWidth: '4rem',
+    maxWidth: '16rem',
+  },
+});
+
 const beakVariantsArray = [
   'below-left',
   'below-right',

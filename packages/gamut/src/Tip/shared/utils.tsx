@@ -15,7 +15,7 @@ import {
 } from './styles';
 import { TipPlacementComponentProps, TipWrapperProps } from './types';
 
-export const getInlineAlignment = ({
+export const getAlignmentWidths = ({
   alignment,
   avatar,
   type,

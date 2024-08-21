@@ -2,9 +2,13 @@ import { css } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { Box } from '../../Box';
+import { Box, FlexBox } from '../../Box';
 import { Selectors } from '../../ButtonBase/ButtonBase';
-import { inlineToolTipBodyAlignments, toolTipBodyCss } from './styles';
+import {
+  inlineToolTipBodyAlignments,
+  toolTipBodyCss,
+  toolTipWidthRestrictions,
+} from './styles';
 
 const tipWrapperStyles = {
   position: 'relative',
@@ -60,3 +64,7 @@ export const TargetContainer = styled(Box)(
 export const TipBody = styled(Box)<
   StyleProps<typeof inlineToolTipBodyAlignments>
 >(css({ ...toolTipBodyCss }), inlineToolTipBodyAlignments);
+
+export const FloatingTipBody = styled(FlexBox)<
+  StyleProps<typeof toolTipWidthRestrictions>
+>(toolTipWidthRestrictions);

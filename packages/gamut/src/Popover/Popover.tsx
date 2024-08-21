@@ -60,7 +60,7 @@ export const Popover: React.FC<PopoverProps> = ({
   variant,
   targetRef,
   verticalOffset = variant === 'secondary' ? 15 : 20,
-  widthRestricted,
+  widthRestricted = true,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const [isInViewport, setIsInViewport] = useState(true);
@@ -169,15 +169,7 @@ export const Popover: React.FC<PopoverProps> = ({
         alignment={alignment}
         outline={outline ? 'outline' : 'boxShadow'}
         variant={variant}
-        widthRestricted={
-          variant === 'secondary' && widthRestricted === undefined
-            ? alignment === 'centered'
-              ? 'centered'
-              : 'aligned'
-            : widthRestricted
-            ? 'popover'
-            : 'default'
-        }
+        widthRestricted={widthRestricted}
       >
         {beak && (
           <Beak

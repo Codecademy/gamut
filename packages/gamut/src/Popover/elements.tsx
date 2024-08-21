@@ -7,10 +7,7 @@ import * as React from 'react';
 import { WithChildrenProp } from '..';
 import { BodyPortal } from '../BodyPortal';
 import { Box } from '../Box';
-import {
-  popoverToolTipBodyAlignments,
-  toolTipWidthRestrictions,
-} from '../Tip/shared/styles';
+import { popoverToolTipBodyAlignments } from '../Tip/shared/styles';
 import {
   beakSize,
   beakVariants,
@@ -19,6 +16,7 @@ import {
   popoverStates,
   raisedDivVariants,
   transformValues,
+  widthStates,
 } from './styles';
 import { PopoverProps } from './types';
 
@@ -27,15 +25,15 @@ export type PopoverVariants = StyleProps<typeof raisedDivVariants> & {
 };
 
 export const RaisedDiv = styled.div<
-  StyleProps<typeof raisedDivVariants> &
+  StyleProps<typeof outlineVariants> &
+    StyleProps<typeof raisedDivVariants> &
     StyleProps<typeof popoverToolTipBodyAlignments> &
-    StyleProps<typeof toolTipWidthRestrictions> &
-    StyleProps<typeof outlineVariants>
+    StyleProps<typeof widthStates>
 >(
-  popoverToolTipBodyAlignments,
-  toolTipWidthRestrictions,
   outlineVariants,
-  raisedDivVariants
+  popoverToolTipBodyAlignments,
+  raisedDivVariants,
+  widthStates
 );
 
 // TO-DO -- prob should use variance compose, only needs left

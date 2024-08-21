@@ -9,7 +9,7 @@ import {
 } from './elements';
 import { narrowWidth } from './styles';
 import { TipWrapperProps } from './types';
-import { getInlineAlignment } from './utils';
+import { getAlignmentWidths } from './utils';
 
 export const InlineTip: React.FC<TipWrapperProps> = ({
   alignment,
@@ -33,7 +33,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
     ? ToolTipContainer
     : InfoTipContainer;
   const InlineWrapperProps = isHoverType ? {} : { hideTip: isTipHidden };
-  const tipBodyAlignment = getInlineAlignment({ alignment, avatar, type });
+  const tipBodyAlignment = getAlignmentWidths({ alignment, avatar, type });
 
   const target = (
     <TargetContainer

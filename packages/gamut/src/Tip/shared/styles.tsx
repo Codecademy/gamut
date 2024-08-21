@@ -18,8 +18,14 @@ const containerOffsetVertical = 12;
 
 export const narrowWidth = 64;
 export const centerWidths = { minWidth: 64, maxWidth: 128 } as const;
-export const alignedMaxWidth = { width: 256 } as const;
-export const alignedPreviewWidth = { width: 418 } as const;
+const alignedAvatarWidth = {
+  maxWidth: { _: '95vw', xs: '600px' },
+  width: 'max-content',
+} as const;
+const alignedMaxWidth = { width: 256 } as const;
+const alignedPreviewWidth = { width: 418 } as const;
+
+const previewTipPadding = { p: 16 } as const;
 
 export const topStyles = {
   bottom: 'calc(100% + 4px)',
@@ -131,11 +137,11 @@ export const inlineToolTipBodyAlignments = variant({
     },
     previewAligned: {
       ...alignedPreviewWidth,
-      p: 16,
+      ...previewTipPadding,
     },
     avatarAligned: {
-      width: 'max-content',
-      maxWidth: { _: '95vw', xs: '600px' },
+      ...alignedAvatarWidth,
+      ...previewTipPadding,
     },
   },
 });
@@ -153,7 +159,7 @@ export const popoverToolTipBodyAlignments = variant({
 });
 
 export const toolTipWidthRestrictions = variant({
-  prop: 'widthRestricted',
+  prop: 'dims',
   variants: {
     centered: {
       ...centerWidths,
@@ -161,16 +167,11 @@ export const toolTipWidthRestrictions = variant({
     aligned: {
       ...alignedMaxWidth,
     },
+    avatarAligned: {
+      alignedAvatarWidth,
+    },
     previewAligned: {
       ...alignedPreviewWidth,
-    },
-    default: {
-      minWidth: undefined,
-      maxWidth: undefined,
-    },
-    popover: {
-      minWidth: '4rem',
-      maxWidth: '16rem',
     },
   },
 });
