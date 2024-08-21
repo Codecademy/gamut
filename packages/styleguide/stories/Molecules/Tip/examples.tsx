@@ -49,6 +49,7 @@ export const AvatarExample = () => {
         truncateLines={1}
         username="@coolguy"
         width={32}
+        placement="floating"
       />
     </FlexBox>
   );

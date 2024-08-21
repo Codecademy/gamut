@@ -28,6 +28,7 @@ export type PreviewTipContent = {
   avatar?: ReactNode;
   overline?: string;
   username?: string;
+  loading?: boolean;
   truncateLines?: ComponentProps<typeof Text>['truncateLines'];
 };
 

@@ -14,15 +14,16 @@ import { getAlignmentWidths } from './utils';
 export const InlineTip: React.FC<TipWrapperProps> = ({
   alignment,
   avatar,
-  username,
-  overline,
   children,
   escapeKeyPressHandler,
   id,
   info,
   isTipHidden,
-  type,
+  loading,
   narrow,
+  overline,
+  type,
+  username,
   wrapperRef,
   zIndex,
 }) => {
@@ -66,8 +67,9 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
             <PreviewTipContents
               avatar={avatar}
               info={info}
-              username={username}
+              loading={loading}
               overline={overline}
+              username={username}
             />
             <PreviewTipShadow alignment={alignment} zIndex={zIndex} />
           </>

@@ -22,6 +22,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   escapeKeyPressHandler,
   info,
   isTipHidden,
+  loading,
   narrow,
   overline,
   type,
@@ -82,8 +83,9 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
       <PreviewTipContents
         avatar={avatar}
         info={info}
-        username={username}
+        loading={loading}
         overline={overline}
+        username={username}
       />
     </>
   ) : (
@@ -125,7 +127,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
           dims={dims}
           flexDirection="column"
           ref={childRef}
-          width={narrow ? narrowWidth : isPreviewType ? '418px' : '100%'}
+          width={narrow ? narrowWidth : undefined}
         >
           {contents}
         </FloatingTipBody>
