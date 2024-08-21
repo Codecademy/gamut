@@ -56,7 +56,7 @@ It is best to provide `htmlFor` to both the FormGroup + inner form element to ma
   <Story name="FormGroupRequired">
     {() => (
       <FormGroup
-        showRequired
+        required
         label="I am required!!"
         description="You can tell by the asterisk."
         htmlFor="required1"
@@ -68,7 +68,7 @@ It is best to provide `htmlFor` to both the FormGroup + inner form element to ma
   <Story name="FormGroupError">
     {() => (
       <FormGroup
-        showRequired
+        required
         label="I am also required!!"
         description="You can tell by the asterisk."
         error="You messed up dude."
@@ -81,7 +81,7 @@ It is best to provide `htmlFor` to both the FormGroup + inner form element to ma
   <Story name="FormGroupValidated">
     {() => (
       <FormGroup
-        showRequired
+        required
         label="I am also required!!"
         htmlFor="required-valid"
       >
