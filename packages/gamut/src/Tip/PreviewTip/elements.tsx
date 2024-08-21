@@ -13,14 +13,16 @@ import {
 } from './styles';
 
 const PreviewTipBodyShimmer = ({
+  avatar,
   truncateLines = 4,
-}: Pick<PreviewTipContent, 'truncateLines'>) => {
+}: Pick<PreviewTipContent, 'avatar' | 'truncateLines'>) => {
   const lineHeight = 24;
-  const height = (truncateLines as number) * lineHeight;
+  const height = avatar ? lineHeight : (truncateLines as number) * lineHeight;
+  const width = avatar ? '5.5rem' : '100%';
   return (
     <>
       <Shimmer height={lineHeight} width="4.5rem" />
-      <Shimmer height={height} width="100%" />
+      <Shimmer height={height} width={width} />
     </>
   );
 };
@@ -38,16 +40,9 @@ export const PreviewTipContents: React.FC<PreviewTipContentsProps> = ({
 }) => {
   const contents = useMemo(() => {
     return loading ? (
-      <PreviewTipBodyShimmer truncateLines={truncateLines} />
+      <PreviewTipBodyShimmer avatar={avatar} truncateLines={truncateLines} />
     ) : (
       <>
-        {avatar && (
-          <FlexBox center aria-hidden gridArea="avatar" pr={12}>
-            <Box height={40} width={40}>
-              {avatar}
-            </Box>
-          </FlexBox>
-        )}
         {overline && (
           <Text textColor="text-secondary" fontFamily="accent" fontSize={14}>
             {overline}
@@ -76,6 +71,13 @@ export const PreviewTipContents: React.FC<PreviewTipContentsProps> = ({
       gridTemplateColumns={avatar ? avatarColumnTemplate : '1fr'}
       rowGap={4}
     >
+      {avatar && (
+        <FlexBox center aria-hidden gridArea="avatar" pr={12}>
+          <Box height={40} width={40}>
+            {avatar}
+          </Box>
+        </FlexBox>
+      )}
       {contents}
     </GridBox>
   );
