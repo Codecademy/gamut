@@ -15,8 +15,14 @@ import {
 const PreviewTipBodyShimmer = ({
   truncateLines = 4,
 }: Pick<PreviewTipContent, 'truncateLines'>) => {
-  const height = (truncateLines as number) * 24;
-  return <Shimmer height={height} width="100%" />;
+  const lineHeight = 24;
+  const height = (truncateLines as number) * lineHeight;
+  return (
+    <>
+      <Shimmer height={lineHeight} width="4.5rem" />
+      <Shimmer height={height} width="100%" />
+    </>
+  );
 };
 
 type PreviewTipContentsProps = Pick<TipPlacementComponentProps, 'info'> &

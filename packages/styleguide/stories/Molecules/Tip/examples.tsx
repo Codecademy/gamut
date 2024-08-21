@@ -50,6 +50,7 @@ export const AvatarExample = () => {
         username="@coolguy"
         width={32}
         placement="floating"
+        loading
       />
     </FlexBox>
   );
