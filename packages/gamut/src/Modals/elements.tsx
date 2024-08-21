@@ -26,6 +26,7 @@ const layoutVariant = variant({
   defaultVariant: 'standard',
   base: {
     borderRadius: 'sm',
+    p: 24,
     columnGap: 16,
     display: 'grid',
     gridTemplateColumns: '1fr min-content 2rem',

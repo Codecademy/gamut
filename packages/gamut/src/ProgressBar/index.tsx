@@ -45,12 +45,10 @@ const progressBarFlatVariants = variant({
   prop: 'flat',
   variants: {
     'flat-bottom': {
-      borderBottomRightRadius: 'none',
-      borderBottomLeftRadius: 'none',
+      borderRadiusBottom: 'none',
     },
     'flat-top': {
-      borderTopRightRadius: 'none',
-      borderTopLeftRadius: 'none',
+      borderRadiusTop: 'none',
     },
     default: {},
   },
