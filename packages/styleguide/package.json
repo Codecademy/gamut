@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "67.2.1",
+  "version": "67.2.2",
   "author": "Codecademy Engineering",
   "dependencies": {
     "@codecademy/gamut": "56.3.1",
