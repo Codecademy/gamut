@@ -80,11 +80,7 @@ It is best to provide `htmlFor` to both the FormGroup + inner form element to ma
   </Story>
   <Story name="FormGroupValidated">
     {() => (
-      <FormGroup
-        required
-        label="I am also required!!"
-        htmlFor="required-valid"
-      >
+      <FormGroup required label="I am also required!!" htmlFor="required-valid">
         <Input defaultValue="Good job!" htmlFor="required-valid" valid />
       </FormGroup>
     )}
