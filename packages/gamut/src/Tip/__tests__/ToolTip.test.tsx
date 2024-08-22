@@ -19,7 +19,9 @@ describe('ToolTip', () => {
     it('has an accessible tooltip', () => {
       const { view } = renderView({});
 
-      view.getByRole('tooltip', { name: info });
+      expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
+        info
+      );
     });
     it('removes the label text when hasLabel is true', () => {
       const { view } = renderView({
@@ -29,7 +31,9 @@ describe('ToolTip', () => {
       });
 
       view.getByRole('button', { name: 'Click' });
-      view.getByRole('tooltip', { name: info });
+      expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
+        info
+      );
     });
     it('hides ariaTooltip when there is no text other than the aria-label', () => {
       const { view } = renderView({
@@ -41,6 +45,7 @@ describe('ToolTip', () => {
       view.getByRole('button', { name: 'Click' });
       expect(view.queryByRole('tooltip')).toBeNull();
     });
+
     it('calls onClick when clicked', () => {
       const { view } = renderView({});
 
@@ -48,13 +53,24 @@ describe('ToolTip', () => {
 
       expect(onClick).toHaveBeenCalled();
     });
+
+    it('hides ariaTooltip when there is hideAriaToolTip is true', () => {
+      const { view } = renderView({
+        'aria-label': ariaLabel,
+        hideAriaToolTip: true,
+        info: `${ariaLabel}`,
+      });
+
+      view.getByRole('button', { name: 'Click' });
+      expect(view.queryByRole('tooltip')).toBeNull();
+    });
   });
 });
 describe('floating placement', () => {
   it('has an accessible tooltip', () => {
     const { view } = renderView({ placement: 'floating' });
 
-    view.getByRole('tooltip', { name: info });
+    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(info);
   });
   it('removes the label text when hasRepetitiveLabel is true', () => {
     const { view } = renderView({
@@ -65,7 +81,7 @@ describe('floating placement', () => {
     });
 
     view.getByRole('button', { name: 'Click' });
-    view.getByRole('tooltip', { name: info });
+    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(info);
   });
   it('shows the tip when it is hovered over', () => {
     const { view } = renderView({
@@ -76,7 +92,7 @@ describe('floating placement', () => {
 
     userEvent.hover(view.getByRole('button'));
 
-    view.getByRole('tooltip');
+    view.getByRole('tooltip', { hidden: true });
     expect(view.queryAllByText(info).length).toBe(2);
   });
   it('calls onClick when clicked', () => {

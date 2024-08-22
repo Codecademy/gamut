@@ -53,7 +53,6 @@ export const getonUpdateAndFields = () => {
 
 const renderView = setupRtl(GridForm, {
   fields,
-  showRequired: false,
   submit: { type: 'fill', contents: <>Submit</>, size: 6 },
 });
 
@@ -163,6 +162,27 @@ describe('GridForm', () => {
     const result = await api.innerPromise;
 
     expect(result).toEqual(baseResults);
+  });
+
+  it('adds required text by default', async () => {
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+    const fields = [
+      { ...stubTextField, validation: { required: 'Please enter text' } },
+      stubSelectField,
+    ];
+    const { view } = renderView({ fields, onSubmit });
+    view.getByText('* Required');
+    view.getByLabelText('Stub Text*');
+  });
+
+  it('does not add required text for a single input', async () => {
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+
+    const { view } = renderView({ fields: [stubTextField], onSubmit });
+    expect(view.queryByText('* Required')).toBeNull();
+    view.getByLabelText('Stub Text');
   });
 
   it('only sets aria-live prop on the first validation error in a form', async () => {

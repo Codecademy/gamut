@@ -2,6 +2,10 @@ import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
+import { appendIconToContent } from '../helpers';
+import { IconComponentType, WithChildrenProp } from '../utils';
+import { determineIconSize, determineIconSpacing } from './helpers';
+
 const colorVariants = variant({
   defaultVariant: 'primary',
   base: {
@@ -34,12 +38,17 @@ const colorVariants = variant({
       color: 'text-secondary',
       bg: 'transparent',
     },
+    tertiaryFill: {
+      border: 1,
+      borderColor: 'text-secondary',
+      color: 'text-secondary',
+      bg: 'background',
+    },
   },
 });
 
 const sizeVariants = variant({
   prop: 'size',
-  defaultVariant: 'base',
   variants: {
     base: {
       height: '1.5rem',
@@ -59,14 +68,33 @@ const badgeProps = variance.compose(
   system.layout,
   system.typography
 );
-
-export interface BadgeProps
+export interface BadgeBaseProps
   extends StyleProps<typeof badgeProps>,
     StyleProps<typeof colorVariants>,
-    StyleProps<typeof sizeVariants> {}
+    StyleProps<typeof sizeVariants>,
+    WithChildrenProp {}
 
-export const Badge = styled('div', styledOptions)<BadgeProps>(
+const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
   badgeProps,
   colorVariants,
   sizeVariants
 );
+
+export interface BadgeProps
+  extends Partial<IconComponentType>,
+    BadgeBaseProps {}
+
+export const Badge: React.FC<BadgeProps> = ({ icon, children, ...rest }) => {
+  const size = rest.size === 'sm' ? 'sm' : 'base';
+  const iconSize = determineIconSize(size);
+  const spacing = determineIconSpacing(size);
+
+  const content = appendIconToContent({
+    children,
+    icon,
+    iconAndTextGap: spacing,
+    iconPosition: 'left',
+    iconSize,
+  });
+  return <BadgeBase {...rest}>{content}</BadgeBase>;
+};

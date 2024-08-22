@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 
 import { setupRtl } from '@codecademy/gamut-tests';
 import { queryByAttribute } from '@testing-library/dom';
+import userEvent from '@testing-library/user-event';
 
 import { getComponent } from './renderers';
 
@@ -78,6 +79,30 @@ export const additionalRadioGroupTests = ({
       });
 
       expect(view.getByRole('img'));
+    });
+
+    it('renders an infotip in the radio', () => {
+      const info = 'info';
+
+      const { view } = renderField({
+        field: {
+          ...defaultFieldProps,
+          id: 'id',
+          options: [
+            {
+              label: <img alt="" src="" />,
+              value: '',
+              infotip: { info },
+            },
+          ],
+          name: 'name',
+        },
+      });
+
+      const tip = view.getByText(info);
+      expect(tip).not.toBeVisible();
+      userEvent.click(view.getByRole('button'));
+      expect(tip).toBeVisible();
     });
 
     describe('aria-label', () => {

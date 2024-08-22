@@ -9,7 +9,13 @@ import {
 
 import { PropsTable, selectableColors } from '~styleguide/blocks';
 
-import { ICONS, LE_ICONS, UI_ICONS, VENDOR_ICONS } from './constants';
+import {
+  ICONS,
+  LE_ICONS,
+  SKILLS_ICONS,
+  UI_ICONS,
+  VENDOR_ICONS,
+} from './constants';
 
 <Meta
   title={title}
@@ -22,7 +28,7 @@ import { ICONS, LE_ICONS, UI_ICONS, VENDOR_ICONS } from './constants';
     design: {
       type: 'figma',
       url:
-        'https://www.figma.com/file/J83FDDI1r6h68k5KzdL5DO/Icons-Audit?node-id=39%3A549',
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1883-1795',
     },
   }}
   argTypes={{
@@ -38,15 +44,15 @@ import { ICONS, LE_ICONS, UI_ICONS, VENDOR_ICONS } from './constants';
   }}
 />
 
-## General Infomation
+## General infomation
 
-We use a subset of [streamline icons](https://app.streamlineicons.com/streamline-regular), mainly the Outline version of the Regular set.
+For regular icons, we use a subset of [Streamline's "Ultimate Regular" icons](https://www.streamlinehq.com/icons/streamline-regular).
 
-We like to standardize our icons by using a viewBox size of `"0 0 24 24"`. Icons should be centered and take up the entirety of this viewBox.
+Our icons are standardized with a viewBox size of `"0 0 24 24"`. Icons should be centered and take up the entirety of this viewBox.
 
 All of our Icons are not minified by default, and optimized by [SVGO](https://github.com/svg/svgo) before build time. We like to preserve the source URL as well as any relevent comments or metadata within these SVGs.
 
-## Adding An Icon
+## Adding an icon
 
 If you cannot find the Icon you would like in the ones that we have specified here, please follow these steps to add one.
 
@@ -62,7 +68,7 @@ If you cannot find the Icon you would like in the ones that we have specified he
 ## Sandbox
 
 <Preview>
-  <Story name="Editable Icon">
+  <Story name="Editable icons">
     {({ iconName, ...args }) => {
       const IconComponent = ICONS[iconName];
       return <IconComponent {...args} />;
@@ -94,7 +100,7 @@ General user interface icons with affordances
   ))}
 </IconGallery>
 
-### Learning Environment
+### Learning environment
 
 Icons that have specific meanings relative to our course content.
 
@@ -112,6 +118,18 @@ Vendor specific icons.
 
 <IconGallery>
   {Object.entries(VENDOR_ICONS).map(([iconName, Icon]) => (
+    <IconItem key={iconName} name={iconName}>
+      <Icon size={64} color={selectableColors.black} />
+    </IconItem>
+  ))}
+</IconGallery>
+
+### Skills
+
+Icons for the languages and subjects that we teach.
+
+<IconGallery>
+  {Object.entries(SKILLS_ICONS).map(([iconName, Icon]) => (
     <IconItem key={iconName} name={iconName}>
       <Icon size={64} color={selectableColors.black} />
     </IconItem>

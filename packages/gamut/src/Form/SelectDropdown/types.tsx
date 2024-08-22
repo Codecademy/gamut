@@ -1,15 +1,14 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { StyleProps } from '@codecademy/variance';
-import { ReactNode, Ref, SelectHTMLAttributes } from 'react';
+import { Ref, SelectHTMLAttributes } from 'react';
 import * as React from 'react';
 import {
-  ContainerProps,
   DropdownIndicatorProps,
   GroupBase,
   Props as NamedProps,
 } from 'react-select';
 
-import { SelectComponentProps, SelectOptions } from '../Select';
+import { SelectComponentProps, SelectOptions } from '../inputs/Select';
 import { SelectOptionBase } from '../utils';
 import { conditionalBorderStates } from './styles';
 
@@ -120,10 +119,6 @@ export interface OptionStrict {
   value: string;
 }
 
-export interface CustomContainerProps extends ContainerProps<unknown, false> {
-  children: ReactNode[];
-}
-
 export type ProgramaticFocusRef =
   | React.MutableRefObject<HTMLDivElement>
   | React.MutableRefObject<null>;
@@ -139,6 +134,10 @@ export type SizedIndicatorProps = DropdownIndicatorProps<
   GroupBase<OptionStrict>
 > &
   InternalSelectProps;
+
+export type CustomSelectComponentProps<
+  T extends React.JSXElementConstructor<unknown>
+> = React.ComponentProps<T> & InternalSelectProps;
 
 export interface TypedReactSelectProps extends ReactSelectAdditionalProps {
   selectRef?: Ref<any>;

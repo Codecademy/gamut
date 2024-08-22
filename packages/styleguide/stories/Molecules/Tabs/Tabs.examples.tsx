@@ -1,7 +1,8 @@
 import {
   Badge,
   FillButton,
-  InputStepper,
+  FormGroup,
+  Input,
   Tab,
   TabList,
   TabNav,
@@ -49,7 +50,8 @@ export const TabsControlledExample = () => {
 
   const maxTabIndex = 2;
   const setIndex = useCallback(
-    (val) => {
+    (value) => {
+      const val = Number(value);
       if (val > maxTabIndex) return setControlledIndex(0);
       if (val < 0) return setControlledIndex(maxTabIndex);
       setControlledIndex(val);
@@ -60,12 +62,16 @@ export const TabsControlledExample = () => {
   return (
     <>
       <Background bg="yellow" mb={24} p={12}>
-        <InputStepper
-          label="Tab Index"
-          ariaLabel="Tab Index"
-          value={controlledIndex}
-          onChange={setIndex}
-        />
+        <FormGroup label="Tab Index" htmlFor="tab-index">
+          <Input
+            label="Tab Index"
+            value={controlledIndex}
+            onChange={(e) => setIndex(e.target.value)}
+            type="number"
+            min={1}
+            htmlFor="tab-index"
+          />
+        </FormGroup>
       </Background>
       <Tabs index={controlledIndex} onChange={setIndex}>
         <TabList mx={24}>

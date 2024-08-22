@@ -1,7 +1,25 @@
 import { StreakIcon } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
 
-import { Input } from '../Input';
+import { Input } from '../inputs/Input';
+
+jest.mock('@codecademy/gamut-icons', () => ({
+  AlertIcon: () => (
+    <svg>
+      <title>Alert Icon</title>
+    </svg>
+  ),
+  CheckCircledIcon: () => (
+    <svg>
+      <title>Check Circled Icon</title>
+    </svg>
+  ),
+  StreakIcon: () => (
+    <svg>
+      <title>Streak Icon </title>
+    </svg>
+  ),
+}));
 
 const renderView = setupRtl(Input, { 'aria-label': 'input' });
 

@@ -20,14 +20,22 @@ import {
     design: {
       type: 'figma',
       url:
-        'https://www.figma.com/file/J83FDDI1r6h68k5KzdL5DO/Icons-Audit?node-id=39%3A549',
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1883-1795',
     },
   }}
   args={{}}
 />
 
+## General Infomation
+
+For mini icons, we use a subset of [Streamline's "Core Solid" icons](https://www.streamlinehq.com/icons/core-solid).
+
+Our icons by using standardized with a viewBox size of `"0 0 16 16"`. Icons should be centered and take up the entirety of this viewBox.
+
+All of our Icons are not minified by default, and optimized by [SVGO](https://github.com/svg/svgo) before build time. We like to preserve the source URL as well as any relevent comments or metadata within these SVGs.
+
 <Canvas>
-  <Story name="Mini Icon">{(args) => <MINI.MiniStarIcon {...args} />}</Story>
+  <Story name="Mini icons">{(args) => <MINI.MiniStarIcon {...args} />}</Story>
 </Canvas>
 
 <PropsTable story="Mini Icon" />

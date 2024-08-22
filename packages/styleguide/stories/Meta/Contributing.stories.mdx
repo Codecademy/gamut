@@ -10,7 +10,7 @@ We love working with Codecademy employees across all our teams.`,
   }}
 />
 
-## Pre-Work
+## Prework
 
 We track planned work for Gamut components in the [Web Platform Board](https://codecademy.atlassian.net/jira/software/projects/WEB/boards/1386) on JIRA.
 
@@ -18,9 +18,9 @@ We track planned work for Gamut components in the [Web Platform Board](https://c
 - If the work you'd like to do isn't captured in a JIRA ticket, talk to us and we can work with you to create that ticket.
 - If you would like to make a request for work to be done, please discuss with us and create a ticket on the [Web Request board](https://codecademy.atlassian.net/jira/software/projects/WEBREQ/boards/181).
 
-## Writing Components
+## Writing components
 
-### Component Structure
+### Component structure
 
 Create your component as an `index.tsx` file in a PascalCase-named folder within its package directory, such as `packages/gamut/src/ProgressBar/index.tsx`.
 Consider saving this recommended format as an editor snippet:
@@ -38,7 +38,7 @@ export const MyComponent: React.FC<MyComponentProps> = ({ /* ... */ }) => {
 };
 ```
 
-#### Props Documentation
+#### Props documentation
 
 With the exception of widespread, self-documenting props such as `className`, please include a sentence cased description of the prop's intent.
 React props on the component will be picked up by Storybook and added to the component's documentation story.
@@ -55,7 +55,7 @@ limit: number;
 - Consider starting comments for booleans with _"Whether "_.
 - Props such as `className` that are common to many components generally don't need to be documented.
 
-#### Class Names
+#### Class names
 
 Most components are fairly simple, and consist of one container element with some children.
 In that case it's reasonable to add a `className?: string` prop so that consumers can apply positioning styles onto the element.
@@ -73,7 +73,7 @@ Most components that have configurable themes use one of two APIs:
 We generally prefer components start off with the `style` prop when first created, to allow consumers to more easily flesh out how we'd want to use them.
 As we learn more and restrict component usage over time, we might switch to `theme`.
 
-### Unit Tests
+### Unit tests
 
 Your component should have unit tests in a `__tests__/MyComponent-test.tsx` file within its directory.
 Use Enzyme's `mount` to test it.
@@ -85,14 +85,14 @@ We generally try to unit test all component logic, with the exception of class n
 All components should have Storybook stories showing their use.
 See <LinkTo kind="Meta" story="Stories">Stories</LinkTo> for documentation.
 
-## Pull Requests
+## Pull requests
 
 Please fill out the pull request template, including links to the corresponding Abstract design and JIRA ticket.
 
 > 😉 Protip: You can use a [Draft PR](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests#draft-pull-requests) to still run CI jobs.
 > That includes deploying a Netlify preview and publishing alpha package versions to npm.
 
-### Publishing Updates
+### Publishing updates
 
 If you know your PR has breaking changes in at least one downstream repository:
 
@@ -104,7 +104,7 @@ If you know your PR has breaking changes in at least one downstream repository:
 
 If your PR contains breaking changes that might affect other users, please mention them in the `#frontend` Slack channel.
 
-## Creating a New Package
+## Creating a new package
 
 1. Copy and paste a similar existing package under `packages/`
 2. Modify its `package.json`'s `dependencies`, `description`, and `name` to match your new package

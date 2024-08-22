@@ -1,12 +1,15 @@
-import { Anchor, Box, Column, LayoutGrid, Text } from '@codecademy/gamut/src';
-import { Background } from '@codecademy/gamut-styles/src';
+import { Anchor } from '@codecademy/gamut/src';
+import { MiniInfoOutlineIcon, MiniOpenIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { startCase } from 'lodash';
 
 import { LinkTo, PropsTable } from '~styleguide/blocks';
 
 import { CustomCheckbox } from '../Atoms/FormInputs/examples';
+import {
+  InlineAnchorWithIconAndText,
+  VariantsExample,
+} from './Anchor.examples';
 
 <Meta
   title={title}
@@ -18,13 +21,16 @@ import { CustomCheckbox } from '../Atoms/FormInputs/examples';
     design: {
       type: 'figma',
       url:
-        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=992%3A3',
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=993-0',
     },
   }}
   args={{
     href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     target: '_blank',
     fontWeight: 'title',
+    icon: MiniInfoOutlineIcon,
+    iconPosition: 'left',
+    variant: 'inline',
   }}
 />
 
@@ -42,62 +48,17 @@ import { Anchor } from '@codecademy/gamut';
 
 ## Variants
 
-There are three main varaints for Anchor links that are meant to be used in specific contexts. Their default states all a visually distinct. Please refer to the (design guidelines)[https://www.figma.com/file/N6TfoPI5OA7GanX6Zl8nWj/]
+There are three main varaints for Anchor links that are meant to be used in specific contexts. Their default states all a visually distinct. Please refer to the [design guidelines](https://www.figma.com/file/N6TfoPI5OA7GanX6Zl8nWj/)
 
 - `inline` (default): For use in paragraphs, underlined for extra readability to stand out more beyond just the different color.
 - `interface`: The menu link should be used in instances where the context of the link makes it clear that it is clickable. Examples of these contexts include our catalog menu, navigation bar, and footer.
 - `standard`: For use outside of a ‘menu’ instance where (for a good reason) you can’t use the Text Button with the included button-padding.
 
-export const variants = ['inline', 'interface', 'standard'];
-
-<Story name="modes">
-  {() => (
-    <LayoutGrid>
-      <Column size={6}>
-        <Background
-          p={32}
-          bg="white"
-          display="grid"
-          gridTemplateColumns="repeat(3, 1fr)"
-        >
-          {variants.map((variant) => (
-            <Box key={`${variant}-light`}>
-              <Text as="p" fontWeight="title">
-                {startCase(variant)}
-              </Text>
-              <Anchor mr={8} variant={variant} href={`#${variant}`}>
-                Click Me
-              </Anchor>
-            </Box>
-          ))}
-        </Background>
-      </Column>
-      <Column size={6}>
-        <Background
-          p={32}
-          bg="navy"
-          display="grid"
-          gridTemplateColumns="repeat(3, 1fr)"
-        >
-          {variants.map((variant) => (
-            <Box key={`${variant}-dark`}>
-              <Text as="p" fontWeight="title">
-                {startCase(variant)}
-              </Text>{' '}
-              <Anchor mr={8} variant={variant} href={`#${variant}`}>
-                Click Me
-              </Anchor>
-            </Box>
-          ))}
-        </Background>
-      </Column>
-    </LayoutGrid>
-  )}
-</Story>
+<Story name="modes">{() => <VariantsExample useIcon={false} />}</Story>
 
 <br />
 
-## Color Modes
+## Color modes
 
 Anchor elements respond to the current <LinkTo id="foundations-color-mode--page">Color Mode</LinkTo> they are used in. This means you do not have to configure a prop to ensure that they meet contrast and design guidelines. Each variant will have consistent and inverse behavior in different contexts.
 
@@ -117,7 +78,7 @@ import { ColorMode } from '@codecademy/gamut-styles';
 </ColorMode>
 ```
 
-## Writing Tips
+## Writing tips
 
 Writing words for a link or button? Above all else, make sure that the words alone make it clear where a button or link will take the user. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="writing-ux-writing-component-guidelines-buttons-and-links--page">writing for buttons and links</LinkTo>.
 
@@ -142,16 +103,34 @@ Writing words for a link or button? Above all else, make sure that the words alo
   spacing="tight"
 />
 
-<br />
+## Adding an icon
 
-## Code Playground
+You can add an <LinkTo id="atoms-icons-about--page">Icon</LinkTo> to the left or right of the Anchor text.
+
+<Canvas>
+  <Story name="Anchor with icon">
+    {(args) => <InlineAnchorWithIconAndText args={args} />}
+  </Story>
+</Canvas>
+
+Here's how icons can look with all the variants.
+
+<Story name="modes with icons">{() => <VariantsExample useIcon />}</Story>
+
+## Code playground
 
 Edit attributes and see what’s possible to do with this component or get the exact output you want.
 
 <Canvas>
   <Story name="Anchor">
     {(args) => {
-      return <Anchor {...args}>I am a cool link</Anchor>;
+      return (
+        <>
+          <Anchor {...args} icon={MiniOpenIcon} iconPosition="right">
+            I am a cool link
+          </Anchor>{' '}
+        </>
+      );
     }}
   </Story>
 </Canvas>

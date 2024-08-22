@@ -1,7 +1,9 @@
-import { Box, InfoTip, Radio } from '@codecademy/gamut';
+import { Box, Radio } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { LinkTo } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -30,7 +32,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <PropsTable story="Radio" />
 
-### Input States
+### Input states
 
 <Canvas>
   <Story
@@ -69,24 +71,22 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   </Story>
 </Canvas>
 
-### Custom labels
+### Custom labels + InfoTip
 
-The label is a ReactNode, making it customizable outside of a standard text label.
+The `label` is a `ReactNode`, making it customizable outside of a standard text label. If you are including an <LinkTo component="InfoTip">`InfoTip`</LinkTo>, you should include it as the infotip prop to ensure it isn't repeated by screen readers.
 
 <Canvas>
   <Story
     name="Custom labels"
     args={{
+      infotip: {
+        emphasis: 'high',
+        info: 'This is an infotip',
+        placement: 'floating',
+      },
       htmlFor: 'example-custom',
       name: 'example-custom',
-      label: (
-        <>
-          Option with infotip
-          <Box pl={8}>
-            <InfoTip info="More info!" emphasis="high" />
-          </Box>
-        </>
-      ),
+      label: 'Option with infotip',
     }}
   >
     {(args) => (

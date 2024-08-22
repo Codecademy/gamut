@@ -1,6 +1,8 @@
 // eslint-disable-next-line gamut/import-paths
 import * as icons from '@codecademy/gamut-icons/src/icons/regular';
-import { keys, omit, pick } from 'lodash';
+import keys from 'lodash/keys';
+import omit from 'lodash/omit';
+import pick from 'lodash/pick';
 
 export const ICONS = icons;
 
@@ -9,6 +11,7 @@ export const VENDOR_ICONS = pick(
   [
     'AmexIcon',
     'DiscordIcon',
+    'DiscordOutlineIcon',
     'FacebookIcon',
     'FaviconIcon',
     'FaviconSolidIcon',
@@ -16,8 +19,6 @@ export const VENDOR_ICONS = pick(
     'GithubOutlineIcon',
     'GplusIcon',
     'InstagramIcon',
-    'JavaIcon',
-    'JavascriptIcon',
     'JiraIcon',
     'LinkedinIcon',
     'LinkedinOutlineIcon',
@@ -25,19 +26,18 @@ export const VENDOR_ICONS = pick(
     'MediumIcon',
     'OpenAiFullIcon',
     'OpenAiIcon',
-    'PythonIcon',
     'RailsIcon',
     'ReactIcon',
     'RedditIcon',
-    'RubyIcon',
     'SlackIcon',
     'TikTokIcon',
     'TwitterIcon',
     'TwitterOutlineIcon',
-    'WhatsAppFilledIcon',
     'VisaIcon',
-    'YoutubeIcon',
+    'WhatsAppFilledIcon',
     'XIcon',
+    'YoutubeIcon',
+    'YoutubePlayIcon',
   ].sort()
 );
 
@@ -67,6 +67,7 @@ export const LE_ICONS = pick(
     'PathIcon',
     'PinIcon',
     'PortfolioProjectIcon',
+    'ProfessionalCertificateIcon',
     'ProjectsIcon',
     'QuizIcon',
     'ResponsiveIcon',
@@ -77,4 +78,46 @@ export const LE_ICONS = pick(
   ].sort()
 );
 
-export const UI_ICONS = omit(ICONS, keys({ ...LE_ICONS, ...VENDOR_ICONS }));
+export const SKILLS_ICONS = pick(
+  ICONS,
+  [
+    'ArtificialIntelligenceIcon',
+    'BashShellIcon',
+    'CIcon',
+    'CPlusIcon',
+    'CSharpIcon',
+    'CloudComputingIcon',
+    'ComputerScienceIcon',
+    'CybersecurityIcon',
+    'DataAnalyticsIcon',
+    'DataEngineeringIcon',
+    'DataScienceIcon',
+    'DataVisualizationIcon',
+    'DevopsIcon',
+    'FallbackSkillIcon',
+    'FlutterIcon',
+    'GameDevelopmentIcon',
+    'GoIcon',
+    'HtmlCssIcon',
+    'ItIcon',
+    'JavaIcon',
+    'JavascriptIcon',
+    'KotlinIcon',
+    'MachineLearningIcon',
+    'MathIcon',
+    'MobileDevelopmentIcon',
+    'PhpIcon',
+    'PythonIcon',
+    'RIcon',
+    'RubyIcon',
+    'SqlIcon',
+    'SwiftIcon',
+    'WebDesignIcon',
+    'WebDevelopmentIcon',
+  ].sort()
+);
+
+export const UI_ICONS = omit(
+  ICONS,
+  keys({ ...LE_ICONS, ...VENDOR_ICONS, ...SKILLS_ICONS })
+);

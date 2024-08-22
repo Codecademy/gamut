@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { Text } from '../../Typography';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
@@ -8,6 +7,7 @@ import {
   TipBaseProps,
   tipDefaultProps,
 } from '../shared/types';
+import { ScreenreaderNavigableText } from './elements';
 import { InfoTipButton } from './InfoTipButton';
 
 export type InfoTipProps = TipBaseProps & {
@@ -28,6 +28,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   ...rest
 }) => {
   const [isTipHidden, setHideTip] = useState(true);
+  const [isAriaHidden, setIsAriaHidden] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
 
@@ -35,11 +36,26 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     setLoaded(true);
   }, []);
 
+  const setTipIsHidden = (nextTipState: boolean) => {
+    if (!nextTipState) {
+      setHideTip(nextTipState);
+      if (placement !== 'floating') {
+        // on inline component - stops text from being able to be navigated through, instead user can nav through visible text
+        setTimeout(() => {
+          setIsAriaHidden(true);
+        }, 1000);
+      }
+    } else {
+      if (isAriaHidden) setIsAriaHidden(false);
+      setHideTip(nextTipState);
+    }
+  };
+
   const escapeKeyPressHandler = (
     event: React.KeyboardEvent<HTMLDivElement>
   ) => {
     if (event.key === 'Escape') {
-      setHideTip(true);
+      setTipIsHidden(true);
     }
   };
 
@@ -50,13 +66,13 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         ? !wrapperRef.current?.contains(e?.target)
         : true)
     ) {
-      setHideTip(true);
+      setTipIsHidden(true);
     }
   };
 
   const clickHandler = () => {
     const currentTipState = !isTipHidden;
-    setHideTip(currentTipState);
+    setTipIsHidden(currentTipState);
     // we want to call the onClick handler after the tip has mounted
     if (onClick) setTimeout(() => onClick({ isTipHidden: currentTipState }), 0);
   };
@@ -68,7 +84,9 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     };
   });
 
-  const Tip = loaded && placement === 'floating' ? FloatingTip : InlineTip;
+  const isFloating = placement === 'floating';
+
+  const Tip = loaded && isFloating ? FloatingTip : InlineTip;
 
   const tipProps = {
     alignment,
@@ -79,18 +97,41 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     ...rest,
   };
 
+  const text = (
+    <ScreenreaderNavigableText
+      aria-hidden={isAriaHidden}
+      aria-live="assertive"
+      screenreader
+    >
+      {!isTipHidden ? info : `\xa0`}
+    </ScreenreaderNavigableText>
+  );
+
+  const tip = (
+    <InfoTipButton
+      active={!isTipHidden}
+      emphasis={emphasis}
+      onClick={() => clickHandler()}
+    />
+  );
+
+  /* on floating alignment
+  since Popover uses React.Portal the DOM order is incorrect so the screenreader text needs to be navigable, in the correct DOM order, and never aria-hidden
+  should be fixed in GM-797 */
+
   return (
-    <>
-      <Text screenreader aria-live="assertive">
-        {!isTipHidden ? info : ''}
-      </Text>
-      <Tip {...tipProps} type="info">
-        <InfoTipButton
-          active={!isTipHidden}
-          emphasis={emphasis}
-          onClick={() => clickHandler()}
-        />
-      </Tip>
-    </>
+    <Tip {...tipProps} type="info">
+      {isFloating && alignment.includes('top') ? (
+        <>
+          {text}
+          {tip}
+        </>
+      ) : (
+        <>
+          {tip}
+          {text}
+        </>
+      )}
+    </Tip>
   );
 };

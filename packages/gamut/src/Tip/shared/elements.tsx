@@ -10,8 +10,25 @@ import {
   toolTipBodyCss,
 } from './styles';
 
-export const TipWrapper = styled.div(
-  css({ position: 'relative', display: 'inline-flex' })
+const tipWrapperStyles = {
+  position: 'relative',
+  display: 'inline-flex',
+} as const;
+
+export const ToolTipWrapper = styled.div(
+  css({
+    '&:hover > div, &:focus-within > div': {
+      opacity: 1,
+      visibility: 'visible',
+    },
+    ...tipWrapperStyles,
+  })
+);
+
+export const InfoTipWrapper = styled.div(
+  css({
+    ...tipWrapperStyles,
+  })
 );
 
 enum TargetSelectors {

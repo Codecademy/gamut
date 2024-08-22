@@ -5563,10 +5563,10 @@
   resolved "https://registry.npmjs.org/@types/konami-code-js/-/konami-code-js-0.8.0.tgz#dd7b3bd23266d0d1c6bfcad870232b1a3788a883"
   integrity sha512-7fhuggz5XuuQJxWhVL/5i3oQEQ80jjp3yvwaWlwNjFbM40BELnzV4qKeyPDLtjsHC9NG6E7XT22epH9eDZC3zg==
 
-"@types/lodash@4.14.168":
-  version "4.14.168"
-  resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.168.tgz#fe24632e79b7ade3f132891afff86caa5e5ce008"
-  integrity sha512-oVfRvqHV/V6D1yifJbVRU3TMp8OT6o6BG+U9MkwuJ3U8/CsDHvalRpsxBqivn71ztOFZBTfJMvETbqHiaNSj7Q==
+"@types/lodash@4.17.0":
+  version "4.17.0"
+  resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.17.0.tgz#d774355e41f372d5350a4d0714abb48194a489c3"
+  integrity sha512-t7dhREVv6dbNj0q17X12j7yDG4bD/DHYX7o5/DbDxobP0HnGPgpRz2Ej77aL7TZT3DSw13fqUTj8J4mMnqa7WA==
 
 "@types/markdown-to-jsx@^6.11.3":
   version "6.11.3"
@@ -9894,6 +9894,13 @@ eslint-plugin-local-rules@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/eslint-plugin-local-rules/-/eslint-plugin-local-rules-1.1.0.tgz#5f934f685b08c96eed40b92aee7b02f03cf55f7b"
   integrity sha512-FdPyzxakUKgZkeNM3x/vvRcB6nCjTNbui5gWALhvcaH1R6aCiD37fWtdesagcyBpEe9S9XRHAJ8CJ4rUJ3K9tQ==
+
+eslint-plugin-lodash@^7.4.0:
+  version "7.4.0"
+  resolved "https://registry.npmjs.org/eslint-plugin-lodash/-/eslint-plugin-lodash-7.4.0.tgz#14a761547f126c92ff56789662a20a44f8bb6290"
+  integrity sha512-Tl83UwVXqe1OVeBRKUeWcfg6/pCW1GTRObbdnbEJgYwjxp5Q92MEWQaH9+dmzbRt6kvYU1Mp893E79nJiCSM8A==
+  dependencies:
+    lodash "^4.17.21"
 
 eslint-plugin-no-only-tests@^2.6.0:
   version "2.6.0"

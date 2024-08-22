@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { ComponentProps, forwardRef } from 'react';
+import { ComponentProps, forwardRef, MouseEvent } from 'react';
 import * as React from 'react';
 
 import { Box, WithChildrenProp } from '..';
@@ -59,27 +59,37 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     ref
   ) => {
     const {
-      variant,
-      scrollable,
+      isOl,
       rowBreakpoint,
+      scrollable,
+      variant,
       ...rowConfig
     } = useListContext();
-    const wrapperProps = !renderExpanded
-      ? rowConfig
-      : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
+    const { onClick, role, tabIndex, ...rowProps } = rest;
+    const wrapperProps =
+      !renderExpanded && !onClick
+        ? { ...rowConfig, ...rowProps }
+        : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
     let content = children;
+    const renderNumbering = isOl && renderExpanded === undefined && !onClick;
 
-    if (renderExpanded) {
+    if (renderExpanded || Boolean(onClick)) {
       content = (
         <RowEl
           as="div"
           {...rowConfig}
-          aria-expanded={rest?.onClick ? expanded : undefined}
-          clickable={!!rest?.onClick}
-          role={rest?.onClick ? 'button' : rest?.role}
-          tabIndex={rest?.onClick ? 0 : rest?.tabIndex}
-          onClick={rest?.onClick}
-          {...rest}
+          aria-expanded={renderExpanded && onClick ? expanded : undefined}
+          clickable={Boolean(onClick)}
+          isOl={isOl}
+          onClick={onClick}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && onClick) {
+              onClick((e as unknown) as MouseEvent<HTMLLIElement>);
+            }
+          }}
+          role={onClick ? 'button' : role}
+          tabIndex={onClick ? 0 : tabIndex}
+          {...rowProps}
           ref={ref}
         >
           {children}
@@ -89,10 +99,14 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
 
     return (
       <RowEl
+        aria-live={renderExpanded ? 'polite' : undefined}
         variant={variant}
         expanded={!!renderExpanded}
         scrollable={scrollable}
         rowBreakpoint={rowBreakpoint}
+        isOl={renderNumbering}
+        role={role}
+        tabIndex={tabIndex}
         {...wrapperProps}
       >
         <>

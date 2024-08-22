@@ -12,12 +12,14 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
+import { ClickOpenModal, ClickOpenMultiViewModal } from './Modal.examples';
+
 <Meta
   title={title}
   component={Modal}
   parameters={{
     subtitle: `Simple Modal portal to escape current DOM Context.`,
-    status: 'current',
+    status: 'updating',
     source: 'gamut',
     design: {
       type: 'figma',
@@ -34,7 +36,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
   }}
 />
 
-## Customizing Close Behavior
+## Customizing close behavior
 
 ### Creating a custom close button
 
@@ -86,13 +88,12 @@ All of these methods default to true for accessibility reasons, and rely on sett
 
 <GridBox
   mt={32}
-  gap={24}
+  gap="150px 24px"
   gridTemplateColumns="1fr 1fr"
-  gridTemplateRows="repeat(2, 280px)"
   gridAutoFlow="row dense"
 >
 
-<Box gridRowEnd="span 2">
+<Box gridRowEnd="span 2" height="100%">
 
 ### Fluid
 
@@ -101,30 +102,29 @@ All of these methods default to true for accessibility reasons, and rely on sett
   args={{
     size: 'fluid',
   }}
-  height="500px"
 >
   {(args) => (
     <ModalContainer {...args}>
       <>
         <FlexBox gridArea="title" bg="beige" height="2rem" />
         <FlexBox gridArea="close" bg="beige" height="2rem" />
-        <FlexBox height="380px" width="540px" bg="beige" gridArea="content" />
+        <FlexBox height="350px" width="540px" bg="beige" gridArea="content" />
       </>
     </ModalContainer>
   )}
 </Story>
 
 </Box>
+
 <Box>
 
-### Medium
+### Large
 
 <Story
-  name="Medium"
+  name="Large"
   args={{
-    size: 'medium',
+    size: 'large',
   }}
-  height="350px"
 >
   {(args) => (
     <ModalContainer {...args}>
@@ -138,7 +138,38 @@ All of these methods default to true for accessibility reasons, and rely on sett
 </Story>
 
 </Box>
-<Box >
+
+</GridBox>
+
+<GridBox
+  gap={24}
+  gridTemplateColumns="540px 400px "
+  gridAutoFlow="row dense"
+>
+
+<Box>
+
+### Medium
+
+<Story
+  name="Medium"
+  args={{
+    size: 'medium',
+  }}
+>
+  {(args) => (
+    <ModalContainer {...args}>
+      <>
+        <FlexBox gridArea="title" bg="beige" height="2rem" />
+        <FlexBox gridArea="close" bg="beige" height="2rem" />
+        <FlexBox height="auto" bg="beige" gridArea="content" />
+      </>
+    </ModalContainer>
+  )}
+</Story>
+
+</Box>
+<Box>
 
 ### Small
 
@@ -147,7 +178,6 @@ All of these methods default to true for accessibility reasons, and rely on sett
   args={{
     size: 'small',
   }}
-  height="350px"
 >
   {(args) => (
     <ModalContainer {...args}>
@@ -228,7 +258,7 @@ All of these methods default to true for accessibility reasons, and rely on sett
   </Story>
 </Canvas>
 
-## With Image
+## Image + Modal
 
 The image prop can be used to include a full-width product image or illustration with a 16:9 aspect ratio. This image should help clarify the message of the modal.
 
@@ -237,7 +267,7 @@ Overflow for images will be cut off, so make sure the image is correctly sized f
 <Canvas>
   <Story
     height="600px"
-    name="Image modals"
+    name="Modal with image"
     args={{
       image: (
         <FlexBox
@@ -265,7 +295,24 @@ Overflow for images will be cut off, so make sure the image is correctly sized f
   </Story>
 </Canvas>
 
-### Code Playground
+## Triggering a Modal
+
+You can also cause a Modal to appear/disappear by maintaining a state for `isOpen`. The examples below toggle `isOpen` with a button click.
+
+<Canvas>
+  <Story name="Trigger Modal">
+    {() => {
+      return (
+        <FlexBox gap={12}>
+          <ClickOpenModal />
+          <ClickOpenMultiViewModal />
+        </FlexBox>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Code playground
 
 Edit attributes and see what’s possible to do with this component or get the exact output you want.
 

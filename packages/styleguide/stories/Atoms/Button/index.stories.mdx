@@ -26,7 +26,6 @@ import { ButtonScale } from './examples';
   args={{
     children: 'Click Me',
     disabled: false,
-    href: '',
     size: 'normal',
   }}
   parameters={{
@@ -72,7 +71,7 @@ All but CTA button support a size of either `normal` (default) or `small`.
 
 <br />
 
-## Writing Tips
+## Writing tips
 
 Writing words for a link or button? Above all else, make sure that the words alone make it clear where a button or link will take the user. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="ux-writing-component-guidelines-buttons-and-links--page">writing for buttons and links</LinkTo>.
 
@@ -99,7 +98,7 @@ Writing words for a link or button? Above all else, make sure that the words alo
 
 <br />
 
-## CTA Button
+## CTAButton
 
 <Canvas>
   <Story name="CTAButton">{(args) => <CTAButton {...args} />}</Story>
@@ -107,7 +106,7 @@ Writing words for a link or button? Above all else, make sure that the words alo
 
 <PropsTable exclude={['size']} story="CTAButton" />
 
-## Fill Button
+## FillButton
 
 <Canvas>
   <Story name="FillButton">{(args) => <FillButton {...args} />}</Story>
@@ -115,7 +114,7 @@ Writing words for a link or button? Above all else, make sure that the words alo
 
 <PropsTable story="FillButton" />
 
-## Stroke Button
+## StrokeButton
 
 <Canvas>
   <Story name="StrokeButton">{(args) => <StrokeButton {...args} />}</Story>
@@ -123,7 +122,11 @@ Writing words for a link or button? Above all else, make sure that the words alo
 
 <PropsTable story="StrokeButton" />
 
-## Text Button
+## TextButton
+
+**Note**: Our text buttons use bold formatting to differentiate themselves from normal text, as color alone does not meet the 3:1 contrast ratio required for accessibility. However, bold formatting may not be sufficient in all contexts, such as when placed alongside a bold heading.
+
+In these cases, we recommend including a leading or trailing icon to further distinguish the button from other bold text. This additional visual cue ensures that the text button is easily identifiable and accessible to all users.
 
 <Canvas>
   <Story name="TextButton">{(args) => <TextButton {...args} />}</Story>
@@ -131,9 +134,9 @@ Writing words for a link or button? Above all else, make sure that the words alo
 
 <PropsTable story="TextButton" />
 
-## Icon Button
+## IconButton
 
-You must pass a string for the `tip` prop to label your icon button. The `tipProps` prop is optional and can be used to customize the tooltip.
+You must pass a string for the `tip` prop to label your icon button. The `tipProps` prop is optional and can be used to customize the tooltip - for more information on `tooltip`s + `IconButton`s see the <LinkTo component="ToolTip">ToolTip page</LinkTo>.
 
 <Canvas>
   <Story name="IconButton">
@@ -152,7 +155,7 @@ You must pass a string for the `tip` prop to label your icon button. The `tipPro
 
 <PropsTable story="IconButton" />
 
-## Button Variants
+## Button variants
 
 We have 2 button color modes: `light` and `dark`.
 For different priority buttons we provide `primary` and `secondary` variants.
@@ -170,12 +173,12 @@ For different priority buttons we provide `primary` and `secondary` variants.
 </FillButton>
 ```
 
-## Inline Icon
+## Inline icons
 
 Our FillButtons, StrokeButtons, and TextButtons all support a single inline icon. You can align the icon to the left or right of the button text using the `iconPosition` prop. These icons should be from the mini set to be legible at a smaller size.
 
 <Canvas>
-  <Story name="Inline Icon">
+  <Story name="Inline icon">
     {() => (
       <GridBox gridTemplateColumns="1fr 1fr 1fr 3fr">
         <FillButton maxWidth="fit-content" icon={MiniArrowLeftIcon}>
@@ -196,18 +199,18 @@ Our FillButtons, StrokeButtons, and TextButtons all support a single inline icon
   </Story>
 </Canvas>
 
-### Light Mode
+### Light mode
 
 <Canvas>
-  <Story name="Light Mode">
+  <Story name="Light mode">
     <ButtonScale mode="light" />
   </Story>
 </Canvas>
 
-## Dark Mode
+## Dark mode
 
 <Canvas>
-  <Story name="Dark Mode">
+  <Story name="Dark mode">
     <ButtonScale mode="dark" />
   </Story>
 </Canvas>

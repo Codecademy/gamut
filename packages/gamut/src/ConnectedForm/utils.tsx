@@ -1,4 +1,6 @@
-import { isNull, isUndefined, omit } from 'lodash';
+import isNull from 'lodash/isNull';
+import isUndefined from 'lodash/isUndefined';
+import omit from 'lodash/omit';
 import {
   ChangeEvent,
   ChangeEventHandler,
@@ -14,6 +16,7 @@ import {
   useFormContext,
 } from 'react-hook-form';
 
+import { FormRequiredText } from '../Form';
 import {
   ConnectedForm,
   ConnectedFormGroup,
@@ -72,7 +75,9 @@ export const useConnectedForm = <
         validationRules,
         watchedFields,
       },
+      FormRequiredText,
     }),
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
@@ -93,23 +98,23 @@ export const useFormState = () => {
   // https://github.com/react-hook-form/react-hook-form/issues/2887
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const {
+    clearErrors,
     control,
     formState,
     getValues,
     register,
     reset,
     setError,
+    setFocus,
     setValue,
     watch,
-    clearErrors,
-    setFocus,
   } = useFormContext();
 
   const {
     disableFieldsOnSubmit,
-    showRequired,
     validationRules,
     wasSubmitSuccessful,
+    isSoloField,
   } = useContext(FormPropsContext);
 
   const { isSubmitting, isDirty, errors } = formState;
@@ -119,22 +124,22 @@ export const useFormState = () => {
   );
 
   return {
+    clearErrors,
     control,
     errors,
     formState,
     getValues,
     isDirty,
     isDisabled: (isSubmitting || isSubmitSuccessful) && disableFieldsOnSubmit,
+    isSoloField,
     register,
     reset,
-    setFocus,
     setError,
+    setFocus,
     setValue,
-    showRequired,
     useFieldArray,
     validationRules,
     watch,
-    clearErrors,
   };
 };
 
@@ -152,9 +157,9 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
     errors,
     register,
     isDisabled: formStateDisabled,
+    isSoloField,
     setError,
     setValue,
-    showRequired,
     validationRules,
   } = useFormState();
 
@@ -183,12 +188,12 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
     isFirstError: Object.keys(errors)[0] === name,
     isLoading,
     isRequired: !!validation?.required,
+    isSoloField,
     register,
     validation,
     ref,
     setValue,
     setError,
-    showRequired,
   };
 };
 

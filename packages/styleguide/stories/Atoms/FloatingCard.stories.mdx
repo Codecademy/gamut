@@ -20,7 +20,7 @@ import { LinkTo, PropsTable } from '~styleguide/blocks';
 
 <br />
 
-## Usage Guidelines
+## Usage guidelines
 
 - They have patterned drop shadow to indicate that are outside the normal document flow.
 - This is a shared component for `Toast`, `Dialog`, and `Coachmark`; before using this component directly please check that these components do not cover your use case!
@@ -48,12 +48,12 @@ FloatingCards can optionally display a beak. This is used to indicate a point of
 
 <br />
 
-## Shadow Direction
+## Shadow direction
 
 There are 2 types of shadow directions. By default, FloatingCards is set with a shadow offset to the bottom-left.
 
 <Canvas>
-  <Story name="FloatingCard Shadow">
+  <Story name="FloatingCard shadow">
     {() => (
       <GridBox gridAutoFlow="column" columnGap={24} py={16}>
         {['bottomLeft', 'bottomRight'].map((shadow) => (
@@ -64,7 +64,7 @@ There are 2 types of shadow directions. By default, FloatingCards is set with a 
   </Story>
 </Canvas>
 
-## Shadow Pattern
+## Shadow pattern
 
 We can specify the pattern of the FloatingCard shadow by providing the `pattern` prop with the imported pattern from `@codecademy/gamut-patterns`.
 
@@ -83,7 +83,7 @@ export const MyComponent: React.FC = () => {
 };
 ```
 
-## Card Wrapper Display
+## Card wrapper display
 
 The wrapper display may need to be changed from the default `inline-block`
 
@@ -100,7 +100,7 @@ export const MyComponent: React.FC = () => {
 };
 ```
 
-## Code Playground
+## Code playground
 
 Edit attributes and see what’s possible to do with this component or get the exact output you want.
 

@@ -3,6 +3,206 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [56.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.3.0...@codecademy/gamut@56.3.1) (2024-08-19)
+
+### Bug Fixes
+
+- **Disclosure:** remove aria-label ([ad9c44f](https://github.com/Codecademy/gamut/commit/ad9c44ffbad4e2a83311354dd2f13947aaf66b40))
+
+## [56.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.2.0...@codecademy/gamut@56.3.0) (2024-08-14)
+
+### Features
+
+- **Flyout:** focus container on open ([c690c32](https://github.com/Codecademy/gamut/commit/c690c32c09ea68082ccc3886514ae460cdae48f3))
+
+## [56.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.1.3...@codecademy/gamut@56.2.0) (2024-08-14)
+
+### Features
+
+- **Dialog:** a new optional prop for the close button ([54eaddc](https://github.com/Codecademy/gamut/commit/54eaddc426140d55510ab4a7570be4a2755e6134))
+
+### [56.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.1.2...@codecademy/gamut@56.1.3) (2024-08-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [56.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.1.1...@codecademy/gamut@56.1.2) (2024-08-05)
+
+### Bug Fixes
+
+- **Drawer,Flyout:** alignment ([3a931d9](https://github.com/Codecademy/gamut/commit/3a931d99e9cf69b409643ff689cec69b39e695a9))
+
+### [56.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.1.0...@codecademy/gamut@56.1.1) (2024-08-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [56.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.5...@codecademy/gamut@56.1.0) (2024-08-05)
+
+### Features
+
+- **List:** Ordered lists ([db8dd68](https://github.com/Codecademy/gamut/commit/db8dd683029e5a69631d8f91f19c20061b2ac435))
+
+### [56.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.4...@codecademy/gamut@56.0.5) (2024-07-31)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [56.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.3...@codecademy/gamut@56.0.4) (2024-07-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [56.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.2...@codecademy/gamut@56.0.3) (2024-07-24)
+
+### Bug Fixes
+
+- **GridForm:** properly align gridform infotips ([ec08fd8](https://github.com/Codecademy/gamut/commit/ec08fd8647aef12ae65c6829e71446b7f5aacba4))
+
+### [56.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.1...@codecademy/gamut@56.0.2) (2024-07-23)
+
+### Bug Fixes
+
+- **Modal:** Give Modal programmatic focus instead of close button ([5de79dc](https://github.com/Codecademy/gamut/commit/5de79dc362267d5c66293ef08772db6d1bb7530a))
+
+### [56.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.0.0...@codecademy/gamut@56.0.1) (2024-07-22)
+
+### Bug Fixes
+
+- **InfoTip:** fix DOM ordering + tip not being reread ([08e8b6a](https://github.com/Codecademy/gamut/commit/08e8b6ad26b8ea8e84b15a363c4229b21eb7f7ff))
+
+## [56.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.3...@codecademy/gamut@56.0.0) (2024-07-16)
+
+### ⚠ BREAKING CHANGES
+
+- Remove `ButtonDeprecated`, `ButtonDeprecatedBase` and `InputStepper`
+
+### Miscellaneous Chores
+
+- Remove `ButtonDeprecated`, `ButtonDeprecatedBase` and `InputStepper` ([9425567](https://github.com/Codecademy/gamut/commit/942556773e7df3b7d0d44429f06d5819589d0231))
+
+### [55.25.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.2...@codecademy/gamut@55.25.3) (2024-07-08)
+
+### Bug Fixes
+
+- **Alert:** height and alignment ([fae2fb7](https://github.com/Codecademy/gamut/commit/fae2fb7bd2ba84e4faf916c35fff6160c854f05d))
+
+### [55.25.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.1...@codecademy/gamut@55.25.2) (2024-07-08)
+
+### Bug Fixes
+
+- **Radio:** add infotip type to radio fields ([19cb620](https://github.com/Codecademy/gamut/commit/19cb620b334b80786ee5707c7258a8cc759a228c))
+
+### [55.25.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.25.0...@codecademy/gamut@55.25.1) (2024-07-01)
+
+### Bug Fixes
+
+- **Radio:** infotip prop ([f7f1aa6](https://github.com/Codecademy/gamut/commit/f7f1aa64fd2ad5986119710b795c3aafd1cc564c))
+
+## [55.25.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.24.0...@codecademy/gamut@55.25.0) (2024-06-26)
+
+### Features
+
+- **IconButton:** aria-describedby override ([ca12c0b](https://github.com/Codecademy/gamut/commit/ca12c0bd063df52c7dae215731b6333591348ced))
+
+## [55.24.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.23.0...@codecademy/gamut@55.24.0) (2024-06-26)
+
+### Features
+
+- **Disclosure:** creating an Disclosure component ([a45825f](https://github.com/Codecademy/gamut/commit/a45825fbe343db9c66d29fe5359508a4099a5479))
+
+## [55.23.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.22.6...@codecademy/gamut@55.23.0) (2024-06-25)
+
+### Features
+
+- **Anchor:** Add icon to Anchor ([8d32f85](https://github.com/Codecademy/gamut/commit/8d32f859f569543b4548af3441698f40fc6131ca))
+
+### [55.22.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.22.5...@codecademy/gamut@55.22.6) (2024-06-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.22.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.22.4...@codecademy/gamut@55.22.5) (2024-06-21)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.22.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.22.3...@codecademy/gamut@55.22.4) (2024-06-17)
+
+### Bug Fixes
+
+- Use child selector for li in markdown ([#2888](https://github.com/Codecademy/gamut/issues/2888)) ([5790726](https://github.com/Codecademy/gamut/commit/57907268f548b2b99b9904926503ff4ed531d843))
+
+### [55.22.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.22.2...@codecademy/gamut@55.22.3) (2024-06-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.22.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.22.1...@codecademy/gamut@55.22.2) (2024-06-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.22.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.22.0...@codecademy/gamut@55.22.1) (2024-06-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [55.22.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.21.2...@codecademy/gamut@55.22.0) (2024-06-07)
+
+### Features
+
+- **Modal:** add large size option to Modal ([a5f97f9](https://github.com/Codecademy/gamut/commit/a5f97f94a90c576348698dd8154ff164d5c20508))
+
+### [55.21.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.21.1...@codecademy/gamut@55.21.2) (2024-06-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.21.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.21.0...@codecademy/gamut@55.21.1) (2024-05-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [55.21.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.20.0...@codecademy/gamut@55.21.0) (2024-05-29)
+
+### Features
+
+- **Form + GridForm:** Add actual required optional + required form text ([e712b44](https://github.com/Codecademy/gamut/commit/e712b4476554a7816ba556fe5482ad0451ebde33))
+
+## [55.20.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.19.1...@codecademy/gamut@55.20.0) (2024-05-22)
+
+### Features
+
+- **badge:** adding `leading-icon` to badge ([ce73c59](https://github.com/Codecademy/gamut/commit/ce73c594265f8678ddd2e9bc56118b8be6d91706))
+
+### [55.19.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.19.0...@codecademy/gamut@55.19.1) (2024-05-13)
+
+### Bug Fixes
+
+- **Button:** remove button as default role ([3a66628](https://github.com/Codecademy/gamut/commit/3a66628f372f65f4a09a730365944ac88b782f0f))
+
+## [55.19.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.18.1...@codecademy/gamut@55.19.0) (2024-05-02)
+
+### Features
+
+- **SelectDropdown:** updated aria-live to be assertive and added aria-selected attribute to SelectDropdown ([7733904](https://github.com/Codecademy/gamut/commit/7733904899c0cc3d599a2bc508bcd05f81382ead))
+
+### [55.18.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.18.0...@codecademy/gamut@55.18.1) (2024-05-01)
+
+### Performance Improvements
+
+- Cherry-pick Lodash imports for smaller bundles ([0ee58af](https://github.com/Codecademy/gamut/commit/0ee58afe79297a6213e87453271391375fde8568))
+
+## [55.18.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.6...@codecademy/gamut@55.18.0) (2024-05-01)
+
+### Features
+
+- **SelectDropdown:** Add checkmark to selected option ([d953291](https://github.com/Codecademy/gamut/commit/d953291a5e8147beda25397c6aee188becefbdbd))
+
+### [55.17.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.5...@codecademy/gamut@55.17.6) (2024-04-25)
+
+### Bug Fixes
+
+- **Icons:** remove default title ([7ac11a1](https://github.com/Codecademy/gamut/commit/7ac11a1e233b4bc9bc5ca9deb8cf04e8b0928f88))
+
+### [55.17.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.4...@codecademy/gamut@55.17.5) (2024-04-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [55.17.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.3...@codecademy/gamut@55.17.4) (2024-04-18)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ### [55.17.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@55.17.2...@codecademy/gamut@55.17.3) (2024-04-16)
 
 **Note:** Version bump only for package @codecademy/gamut

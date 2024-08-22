@@ -3,6 +3,218 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [67.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.2.1...@codecademy/styleguide@67.2.2) (2024-08-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [67.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.2.0...@codecademy/styleguide@67.2.1) (2024-08-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [67.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.1.6...@codecademy/styleguide@67.2.0) (2024-08-14)
+
+### Features
+
+- **Flyout:** focus container on open ([c690c32](https://github.com/Codecademy/gamut/commit/c690c32c09ea68082ccc3886514ae460cdae48f3))
+
+### [67.1.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.1.5...@codecademy/styleguide@67.1.6) (2024-08-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [67.1.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.1.4...@codecademy/styleguide@67.1.5) (2024-08-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [67.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.1.3...@codecademy/styleguide@67.1.4) (2024-08-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [67.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.1.2...@codecademy/styleguide@67.1.3) (2024-08-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [67.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.1.1...@codecademy/styleguide@67.1.2) (2024-08-05)
+
+### Bug Fixes
+
+- **Drawer,Flyout:** alignment ([3a931d9](https://github.com/Codecademy/gamut/commit/3a931d99e9cf69b409643ff689cec69b39e695a9))
+
+### [67.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.1.0...@codecademy/styleguide@67.1.1) (2024-08-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [67.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.0.5...@codecademy/styleguide@67.1.0) (2024-08-05)
+
+### Features
+
+- **List:** Ordered lists ([db8dd68](https://github.com/Codecademy/gamut/commit/db8dd683029e5a69631d8f91f19c20061b2ac435))
+
+### [67.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.0.4...@codecademy/styleguide@67.0.5) (2024-07-31)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [67.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.0.3...@codecademy/styleguide@67.0.4) (2024-07-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [67.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.0.2...@codecademy/styleguide@67.0.3) (2024-07-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [67.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.0.1...@codecademy/styleguide@67.0.2) (2024-07-23)
+
+### Bug Fixes
+
+- **Modal:** Give Modal programmatic focus instead of close button ([5de79dc](https://github.com/Codecademy/gamut/commit/5de79dc362267d5c66293ef08772db6d1bb7530a))
+
+### [67.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.0.0...@codecademy/styleguide@67.0.1) (2024-07-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [67.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.5...@codecademy/styleguide@67.0.0) (2024-07-16)
+
+### ⚠ BREAKING CHANGES
+
+- Remove `ButtonDeprecated`, `ButtonDeprecatedBase` and `InputStepper`
+
+### Miscellaneous Chores
+
+- Remove `ButtonDeprecated`, `ButtonDeprecatedBase` and `InputStepper` ([9425567](https://github.com/Codecademy/gamut/commit/942556773e7df3b7d0d44429f06d5819589d0231))
+
+### [66.29.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.4...@codecademy/styleguide@66.29.5) (2024-07-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.29.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.3...@codecademy/styleguide@66.29.4) (2024-07-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.29.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.2...@codecademy/styleguide@66.29.3) (2024-07-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.29.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.1...@codecademy/styleguide@66.29.2) (2024-07-01)
+
+### Bug Fixes
+
+- **Radio:** infotip prop ([f7f1aa6](https://github.com/Codecademy/gamut/commit/f7f1aa64fd2ad5986119710b795c3aafd1cc564c))
+
+### [66.29.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.29.0...@codecademy/styleguide@66.29.1) (2024-07-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [66.29.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.28.0...@codecademy/styleguide@66.29.0) (2024-06-26)
+
+### Features
+
+- **IconButton:** aria-describedby override ([ca12c0b](https://github.com/Codecademy/gamut/commit/ca12c0bd063df52c7dae215731b6333591348ced))
+
+## [66.28.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.27.0...@codecademy/styleguide@66.28.0) (2024-06-26)
+
+### Features
+
+- **Disclosure:** creating an Disclosure component ([a45825f](https://github.com/Codecademy/gamut/commit/a45825fbe343db9c66d29fe5359508a4099a5479))
+
+## [66.27.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.26.1...@codecademy/styleguide@66.27.0) (2024-06-25)
+
+### Features
+
+- **Anchor:** Add icon to Anchor ([8d32f85](https://github.com/Codecademy/gamut/commit/8d32f859f569543b4548af3441698f40fc6131ca))
+
+### [66.26.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.26.0...@codecademy/styleguide@66.26.1) (2024-06-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [66.26.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.25.1...@codecademy/styleguide@66.26.0) (2024-06-21)
+
+### Features
+
+- **icons:** add flutterIcon ([4403a2c](https://github.com/Codecademy/gamut/commit/4403a2c01b441d944ea3b79d1c1b675e1f5115ca))
+
+### [66.25.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.25.0...@codecademy/styleguide@66.25.1) (2024-06-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [66.25.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.24.1...@codecademy/styleguide@66.25.0) (2024-06-12)
+
+### Features
+
+- **Icons:** add ProfessionalCertificateIcon ([b58018f](https://github.com/Codecademy/gamut/commit/b58018f85ecc8dd768d8a3cc711348c53543377d))
+
+### [66.24.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.24.0...@codecademy/styleguide@66.24.1) (2024-06-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [66.24.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.23.0...@codecademy/styleguide@66.24.0) (2024-06-10)
+
+### Features
+
+- add new Skills icons ([#2884](https://github.com/Codecademy/gamut/issues/2884)) ([afe8fe8](https://github.com/Codecademy/gamut/commit/afe8fe83ef084768b6f35654e2ced9db8247465c))
+
+## [66.23.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.22.0...@codecademy/styleguide@66.23.0) (2024-06-07)
+
+### Features
+
+- **Modal:** add large size option to Modal ([a5f97f9](https://github.com/Codecademy/gamut/commit/a5f97f94a90c576348698dd8154ff164d5c20508))
+
+## [66.22.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.21.1...@codecademy/styleguide@66.22.0) (2024-06-05)
+
+### Features
+
+- **Icons:** Add DiscordOutlineIcon ([54b936a](https://github.com/Codecademy/gamut/commit/54b936a815f5c57442b49b312ae4acb20f406d5a))
+
+### [66.21.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.21.0...@codecademy/styleguide@66.21.1) (2024-05-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [66.21.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.20.0...@codecademy/styleguide@66.21.0) (2024-05-29)
+
+### Features
+
+- **Form + GridForm:** Add actual required optional + required form text ([e712b44](https://github.com/Codecademy/gamut/commit/e712b4476554a7816ba556fe5482ad0451ebde33))
+
+## [66.20.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.19.3...@codecademy/styleguide@66.20.0) (2024-05-22)
+
+### Features
+
+- **badge:** adding `leading-icon` to badge ([ce73c59](https://github.com/Codecademy/gamut/commit/ce73c594265f8678ddd2e9bc56118b8be6d91706))
+
+### [66.19.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.19.2...@codecademy/styleguide@66.19.3) (2024-05-13)
+
+### Bug Fixes
+
+- **Button:** remove button as default role ([3a66628](https://github.com/Codecademy/gamut/commit/3a66628f372f65f4a09a730365944ac88b782f0f))
+
+### [66.19.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.19.1...@codecademy/styleguide@66.19.2) (2024-05-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [66.19.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.19.0...@codecademy/styleguide@66.19.1) (2024-05-01)
+
+### Performance Improvements
+
+- Cherry-pick Lodash imports for smaller bundles ([0ee58af](https://github.com/Codecademy/gamut/commit/0ee58afe79297a6213e87453271391375fde8568))
+
+## [66.19.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.18.1...@codecademy/styleguide@66.19.0) (2024-05-01)
+
+### Features
+
+- **SelectDropdown:** Add checkmark to selected option ([d953291](https://github.com/Codecademy/gamut/commit/d953291a5e8147beda25397c6aee188becefbdbd))
+
+### [66.18.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.18.0...@codecademy/styleguide@66.18.1) (2024-04-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [66.18.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.17.5...@codecademy/styleguide@66.18.0) (2024-04-24)
+
+### Features
+
+- **EditableIcon:** Add YoutubePlayIcon ([#2867](https://github.com/Codecademy/gamut/issues/2867)) ([83e42bd](https://github.com/Codecademy/gamut/commit/83e42bd8b251be6bd3ebc01227a0ba4eece1b8c9))
+
+### [66.17.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.17.4...@codecademy/styleguide@66.17.5) (2024-04-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [66.17.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@66.17.3...@codecademy/styleguide@66.17.4) (2024-04-16)
 
 **Note:** Version bump only for package @codecademy/styleguide

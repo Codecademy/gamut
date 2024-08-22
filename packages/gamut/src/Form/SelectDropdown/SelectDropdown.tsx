@@ -11,13 +11,13 @@ import {
 import * as React from 'react';
 import { Options as OptionsType, StylesConfig } from 'react-select';
 
-import { getMemoizedStyles } from '../styles';
 import { parseOptions } from '../utils';
 import {
   CustomContainer,
   DropdownButton,
   formatGroupLabel,
   formatOptionLabel,
+  IconOption,
   MultiValueRemoveButton,
   MultiValueWithColorMode,
   onFocus,
@@ -25,6 +25,7 @@ import {
   SelectDropdownContext,
   TypedReactSelect,
 } from './elements';
+import { getMemoizedStyles } from './styles';
 import { ExtendedOption, OptionStrict, SelectDropdownProps } from './types';
 import {
   filterValueFromOptions,
@@ -43,6 +44,7 @@ const defaultProps = {
     SelectContainer: CustomContainer,
     MultiValue: MultiValueWithColorMode,
     MultiValueRemove: MultiValueRemoveButton,
+    Option: IconOption,
   },
 };
 
@@ -197,6 +199,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         styles={memoizedStyles}
         value={multiple ? multiValues : parsedValue}
         selectRef={selectInputRef}
+        aria-live="assertive"
         {...rest}
       />
     </SelectDropdownContext.Provider>

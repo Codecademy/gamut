@@ -20,7 +20,7 @@ import { LinkTo } from '~styleguide/blocks';
     subtitle:
       'Flyout is a general purpose container that animates into view. On button click, a container animates in from the left side of the window. It can be configured to close by pressing the "X" close icon, pressing they "esc" key, and/or clicking outside of the container.',
     source: 'gamut',
-    status: 'updating',
+    status: 'current',
   }}
 />
 
@@ -50,7 +50,7 @@ Our Flyouts are [controlled components](https://reactjs.org/docs/forms.html#cont
               to be the fastest of all the Eldar who have ever lived, a
               formidable claim that would make him a deadly opponent indeed.
               Though he moves with the subtlety and grace of a zephyr, he
-              attacks with the force of a hurricane.
+              attacks with the force of a hurricane...
             </Box>
           </Flyout>
           <StrokeButton onClick={() => setExpanded(true)}>
@@ -73,12 +73,12 @@ Our Flyouts are [controlled components](https://reactjs.org/docs/forms.html#cont
 
 <Props story="Flyout" />
 
-## Flyout in Dark Mode
+## Flyout in dark mode
 
 Flyouts work in light and dark `ColorModes`.
 
 <Canvas>
-  <Story name="Flyout in DarkMode">
+  <Story name="Flyout in dark mode">
     {(args) => {
       const [expanded, setExpanded] = useState(false);
       return (
@@ -130,12 +130,12 @@ Flyouts work in light and dark `ColorModes`.
   </Story>
 </Canvas>
 
-## Flyout with Overflow
+## Flyout with overflow
 
 Flyouts scroll on vertical overflow and keep the background color.
 
 <Canvas>
-  <Story name="Flyout with Overflow">
+  <Story name="Flyout with overflow">
     {(args) => {
       const [expanded, setExpanded] = useState(false);
       return (

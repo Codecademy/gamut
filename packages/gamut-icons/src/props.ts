@@ -3,10 +3,14 @@ import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 export interface IconStyleProps extends StyleProps<typeof iconProps> {
+  /**
+   * Set both the width and height of the icon at the same time
+   * Otherwise the default size is 24 for regular icons and 16 for mini icons
+   */
   size?: StyleProps<typeof iconProps>['width'];
 }
 
-export interface GamutIconProps
+export interface GamutBaseIconProps
   extends Omit<React.SVGProps<SVGSVGElement>, keyof IconStyleProps>,
     IconStyleProps {
   /**
@@ -22,7 +26,17 @@ export interface GamutIconProps
   path?: string;
 }
 
-export type ForwardableProps = Omit<GamutIconProps, keyof IconStyleProps>;
+interface GamutHiddenIconProps extends GamutBaseIconProps {
+  'aria-hidden'?: true;
+  'aria-label'?: never;
+}
+interface GamutVisibleIconProps extends GamutBaseIconProps {
+  'aria-hidden': false;
+  'aria-label': string;
+}
+
+export type GamutIconProps = GamutHiddenIconProps | GamutVisibleIconProps;
+export type ForwardableProps = Omit<GamutBaseIconProps, keyof IconStyleProps>;
 
 export const iconProps = variance.compose(
   system.layout,

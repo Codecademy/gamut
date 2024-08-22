@@ -3,6 +3,78 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.30.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.29.1...@codecademy/gamut-icons@9.30.0) (2024-08-07)
+
+### Features
+
+- **EditableIcon:** Add ProgrammingTeamChatIcon ([1d80c91](https://github.com/Codecademy/gamut/commit/1d80c912877daecf664ce59ca84dda6524cb3cee))
+
+### [9.29.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.29.0...@codecademy/gamut-icons@9.29.1) (2024-07-25)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.29.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.28.0...@codecademy/gamut-icons@9.29.0) (2024-06-21)
+
+### Features
+
+- **icons:** add flutterIcon ([4403a2c](https://github.com/Codecademy/gamut/commit/4403a2c01b441d944ea3b79d1c1b675e1f5115ca))
+
+## [9.28.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.27.1...@codecademy/gamut-icons@9.28.0) (2024-06-12)
+
+### Features
+
+- **Icons:** add ProfessionalCertificateIcon ([b58018f](https://github.com/Codecademy/gamut/commit/b58018f85ecc8dd768d8a3cc711348c53543377d))
+
+### [9.27.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.27.0...@codecademy/gamut-icons@9.27.1) (2024-06-12)
+
+### Bug Fixes
+
+- update Java, JS, and Python icons to latest streamline versions ([c12a25e](https://github.com/Codecademy/gamut/commit/c12a25e68ab418a50c2004df947f49cd2119c891))
+
+## [9.27.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.26.0...@codecademy/gamut-icons@9.27.0) (2024-06-10)
+
+### Features
+
+- add new Skills icons ([#2884](https://github.com/Codecademy/gamut/issues/2884)) ([afe8fe8](https://github.com/Codecademy/gamut/commit/afe8fe83ef084768b6f35654e2ced9db8247465c))
+
+## [9.26.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.25.0...@codecademy/gamut-icons@9.26.0) (2024-06-05)
+
+### Features
+
+- **Icons:** Add DiscordOutlineIcon ([54b936a](https://github.com/Codecademy/gamut/commit/54b936a815f5c57442b49b312ae4acb20f406d5a))
+
+## [9.25.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.24.3...@codecademy/gamut-icons@9.25.0) (2024-05-30)
+
+### Features
+
+- **UnlockHeavyIcon:** add UnlockHeavyIcon to regular icons ([edce3bd](https://github.com/Codecademy/gamut/commit/edce3bd9b2c07344272f81934dac376e44993020))
+
+### [9.24.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.24.2...@codecademy/gamut-icons@9.24.3) (2024-05-29)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.24.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.24.1...@codecademy/gamut-icons@9.24.2) (2024-05-01)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.24.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.24.0...@codecademy/gamut-icons@9.24.1) (2024-04-25)
+
+### Bug Fixes
+
+- **Icons:** remove default title ([7ac11a1](https://github.com/Codecademy/gamut/commit/7ac11a1e233b4bc9bc5ca9deb8cf04e8b0928f88))
+
+## [9.24.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.23.0...@codecademy/gamut-icons@9.24.0) (2024-04-24)
+
+### Features
+
+- **EditableIcon:** Add YoutubePlayIcon ([#2867](https://github.com/Codecademy/gamut/issues/2867)) ([83e42bd](https://github.com/Codecademy/gamut/commit/83e42bd8b251be6bd3ebc01227a0ba4eece1b8c9))
+
+## [9.23.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.22.0...@codecademy/gamut-icons@9.23.0) (2024-04-18)
+
+### Features
+
+- **Icons:** add new icons miniThumbsUpIcon and miniThumbsDownIcon ([12cfac3](https://github.com/Codecademy/gamut/commit/12cfac3fa541696da67abc50e91ec8325b3b3cd2))
+
 ## [9.22.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.21.0...@codecademy/gamut-icons@9.22.0) (2024-04-16)
 
 ### Features

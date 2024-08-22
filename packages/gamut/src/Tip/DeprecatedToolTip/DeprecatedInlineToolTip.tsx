@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { TargetContainer, TipBody, TipWrapper } from '../shared/elements';
+import { TargetContainer, TipBody, ToolTipWrapper } from '../shared/elements';
 import { escapeKeyPressHandler } from '../shared/utils';
 import { ToolTipContainer } from '../ToolTip/elements';
 import {
@@ -20,7 +20,7 @@ export const DeprecatedInlineToolTip: React.FC<DeprecatedToolTipPlacementCompone
   const accessibilityProps = getDeprecatedAccessibilityProps({ focusable, id });
 
   return (
-    <TipWrapper>
+    <ToolTipWrapper>
       <TargetContainer
         onKeyDown={(e) => escapeKeyPressHandler(e)}
         {...accessibilityProps}
@@ -42,6 +42,6 @@ export const DeprecatedInlineToolTip: React.FC<DeprecatedToolTipPlacementCompone
           {children}
         </TipBody>
       </ToolTipContainer>
-    </TipWrapper>
+    </ToolTipWrapper>
   );
 };

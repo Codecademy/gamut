@@ -7,13 +7,14 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { LinkTo, PropsTable } from '~styleguide/blocks';
 
 import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
+import { ClickOpenDialog } from './Dialog.examples';
 
 <Meta
   title={title}
   component={Dialog}
   parameters={{
     subtitle: `Structured dialog modals with binary options`,
-    status: 'current',
+    status: 'updating',
     source: 'gamut',
     design: {
       type: 'figma',
@@ -41,7 +42,7 @@ import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
 - Dialogs appear unprompted and require confirmation before the user can continue.
 - Use the modal component sparingly. This is the most dispruptive tool in our arsenal. We should only have a small handful of these in our system at any given time.
 
-## Usage Guidelines
+## Usage guidelines
 
 - Dialogs have a width of 400px in the `small` size, and 540px in `medium`.
   - Small is the default style, and works best with 1-2 lines of text.
@@ -53,7 +54,7 @@ import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
 - Dialogs should always be displayed over an <LinkTo id="molecules-modals-overlay--overlay">Overlay</LinkTo>. Use the Overlay components in Gamut (and Figma) to capture the appropriate background opacity.
   - The overlay in light mode should be white at 95% opacity, the overlay in dark mode should be black at 75% opacity.
 
-## Writing Tips
+## Writing tips
 
 Simplify the language, prioritize the message, and make sure the implication of what learners are saying “Yes” (or “No”) to is crystal clear. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="ux-writing-component-guidelines-confirmation-dialogs--page">writing for confirmation dialogs</LinkTo>.
 
@@ -124,7 +125,7 @@ Simplify the language, prioritize the message, and make sure the implication of 
   </Story>
 </Canvas>
 
-## Color Modes
+## Color modes
 
 Dialog components respond to the current <LinkTo id="foundations-color-mode--page">Color Mode</LinkTo> they are used in. Each component inside of dialog will correctly display for the current color mode without any extra configuration.
 Check it out:
@@ -153,7 +154,7 @@ Check it out:
   </Story>
 </Canvas>
 
-### With Images
+### With images
 
 The image prop can be used to include a full-width product image or illustration with a 16:9 aspect ratio. This image should help clarify the message of the dialog.
 
@@ -190,7 +191,19 @@ Overflow for images will be cut off, so make sure the image is correctly sized f
   </Story>
 </Canvas>
 
-## Code Playground
+## Triggering a Dialog
+
+You can also cause a Dialog to appear/disappear by maintaining a state for `isOpen`. The example below toggles `isOpen` with a button click.
+
+<Canvas>
+  <Story name="Trigger Dialog">
+    {() => {
+      return <ClickOpenDialog />;
+    }}
+  </Story>
+</Canvas>
+
+## Code playground
 
 Edit attributes and see what’s possible to do with this component or get the exact output you want.
 

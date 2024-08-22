@@ -21,6 +21,10 @@ export type ToolTipProps = TipBaseProps &
      * If your button has a label that is repeated in the first word of the tooltip, you can set this to `true` to avoid repetition. If your info tip is not a string, you cannot do this.
      */
     hasRepetitiveLabel?: boolean;
+    /**
+     * If you would like to forgo the aria-describedby attribute set this to `true`. When using this prop, the `aria-label` should always be identical to the `tip`.
+     */
+    hideAriaToolTip?: boolean;
   };
 
 export const ToolTip: React.FC<ToolTipProps> = ({
@@ -30,6 +34,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   placement = tipDefaultProps.placement,
   id,
   hasRepetitiveLabel,
+  hideAriaToolTip,
   ...rest
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -41,6 +46,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
 
   const isFloating = placement === 'floating';
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
+
   const adjustedInfo = useMemo(() => {
     return hasRepetitiveLabel && typeof info === 'string'
       ? info.split(' ').slice(1).join(' ')
@@ -49,7 +55,9 @@ export const ToolTip: React.FC<ToolTipProps> = ({
 
   // this should only happen if the button has an aria-label that is the same is and ONLY the content of the tooltip
 
-  const shouldRenderAriaTip = adjustedInfo !== '';
+  const shouldRenderAriaTip = useMemo(() => {
+    return hideAriaToolTip ? false : adjustedInfo !== '';
+  }, [hideAriaToolTip, adjustedInfo]);
 
   const tipProps = {
     alignment,
@@ -61,7 +69,8 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   return (
     <>
       {shouldRenderAriaTip && (
-        <Text screenreader id={id} role="tooltip">
+        // These are aria-hidden to ensure there's no duplication of content for screen readers navigating with CTRL + OPTION + ARROW
+        <Text aria-hidden screenreader id={id} role="tooltip">
           {adjustedInfo}
         </Text>
       )}

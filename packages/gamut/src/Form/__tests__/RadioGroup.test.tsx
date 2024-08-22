@@ -1,8 +1,8 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 
-import { Radio } from '../Radio';
-import { RadioGroup } from '../RadioGroup';
+import { Radio } from '../inputs/Radio';
+import { RadioGroup } from '../inputs/RadioGroup';
 
 const renderView = setupRtl(RadioGroup, {
   htmlForPrefix: 'what-salad-maker-do-you-prefer',

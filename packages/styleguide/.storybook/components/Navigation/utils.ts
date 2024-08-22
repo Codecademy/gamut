@@ -1,6 +1,13 @@
 import { DocsContextProps } from '@storybook/addon-docs/blocks';
-import { set, head, keyBy, isEmpty, tail, update, assign } from 'lodash';
-import { merge } from 'lodash/fp';
+import set from 'lodash/set';
+import head from 'lodash/head';
+import keyBy from 'lodash/keyBy';
+import isEmpty from 'lodash/isEmpty';
+import tail from 'lodash/tail';
+import update from 'lodash/update';
+import assign from 'lodash/assign';
+
+import merge from 'lodash/fp/merge';
 import {
   ComponentRegistry,
   ContentItem,

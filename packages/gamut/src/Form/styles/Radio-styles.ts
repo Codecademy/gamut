@@ -16,6 +16,7 @@ export const radioWrapper = css({
   margin: '0.25rem 0',
   width: '100%',
   fontWeight: 'normal',
+  display: 'flex',
 });
 
 const consistentLabelStyles = {
@@ -50,6 +51,7 @@ export const radioLabel = css({
     borderColor: 'background',
     transform: 'scale(0)',
   },
+  width: 'max-content',
 });
 
 export const radioInput = css({

@@ -12,7 +12,7 @@ import { LinkTo } from '~styleguide/blocks';
     subtitle:
       'Animated container that expands horizontally to show its contents.',
     source: 'gamut',
-    status: 'updating',
+    status: 'current',
   }}
 />
 
@@ -27,11 +27,16 @@ Our Drawers are [controlled components](https://reactjs.org/docs/forms.html#cont
 
 <Canvas>
   <Story name="Drawer">
-    {() => {
+    {({ alignContentContainer }) => {
       const [expanded, setExpanded] = useState(false);
       return (
         <FlexBox bg="paleYellow" height="20rem">
-          <Drawer expanded={expanded}>Drawer content in here!</Drawer>
+          <Drawer
+            expanded={expanded}
+            alignContentContainer={alignContentContainer}
+          >
+            Drawer content in here!
+          </Drawer>
           <StrokeButton
             onClick={() => setExpanded((previousExpanded) => !previousExpanded)}
           >

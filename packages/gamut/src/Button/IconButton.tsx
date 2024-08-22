@@ -3,9 +3,10 @@ import { ComponentProps, forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ToolTip, ToolTipProps } from '../Tip';
+import { IconComponentType } from '../utils';
 import {
   createButtonComponent,
-  IconComponentType,
+  iconSizeMapping,
   iconSizeVariants,
   textButtonVariants,
 } from './shared';
@@ -19,7 +20,10 @@ export type IconButtonProps = ComponentProps<typeof IconButtonBase> &
   IconComponentType & {
     'aria-label'?: string;
     tip: string;
-    tipProps?: Omit<ToolTipProps, 'info' | 'id' | 'children' | 'hasLabel'>;
+    tipProps?: Omit<
+      ToolTipProps,
+      'info' | 'id' | 'children' | 'hasRepetitiveLabel'
+    >;
   };
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
@@ -30,6 +34,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
       tip,
       tipProps,
       variant = 'secondary',
+      size,
       ...props
     },
     ref
@@ -43,26 +48,26 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
 
     const trueAriaLabel = ariaLabel ?? firstWord;
 
+    const buttonSize = size || 'normal';
+
+    const iconSize = iconSizeMapping[buttonSize];
+
     return (
       <ToolTip
         info={tip}
         id={tipId}
         hasRepetitiveLabel={hasRepetitiveLabel}
         {...(tipProps as any)}
-        l
       >
         <IconButtonBase
           {...props}
-          variant={variant}
-          ref={ref}
           aria-describedby={tipId}
           aria-label={trueAriaLabel}
+          ref={ref}
+          size={size}
+          variant={variant}
         >
-          <Icon
-            width="calc(100% - 14px)"
-            height="calc(100% - 14px)"
-            aria-hidden
-          />
+          <Icon size={iconSize} />
         </IconButtonBase>
       </ToolTip>
     );

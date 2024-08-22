@@ -10,7 +10,7 @@ import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
-import { upperFirst } from 'lodash';
+import upperFirst from 'lodash/upperFirst';
 
 import { LinkTo } from '~styleguide/blocks';
 
@@ -108,7 +108,7 @@ Tooltips with _centered_ alignments -`bottom-center` or `top-center`- are smalle
 _Note:_ Because of the size of these ToolTips, they should never overflow their container so are not applicable to Tooltips with the 'floating' `placement`.
 
 <Canvas>
-  <Story name="Smaller Alignment">
+  <Story name="Smaller alignment">
     {(args) => {
       return (
         <FlexBox py={48} justifyContent="space-around">
@@ -140,7 +140,7 @@ _Note:_ Because of the size of these ToolTips, they should never overflow their 
 Tooltips with _corner_ alignments -`*-left` or `*-right`- are larger sized and meant for the occasional longer explanation, like form field validation explainers.
 
 <Canvas>
-  <Story name="Larger Alignment">
+  <Story name="Larger alignment">
     {(args) => {
       return (
         <GridBox gap={24} py={64} ml={8} gridTemplateColumns="1fr 1fr">

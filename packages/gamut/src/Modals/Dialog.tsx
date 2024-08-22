@@ -25,6 +25,7 @@ export interface DialogProps extends ModalBaseProps {
   >;
   confirmCta: DialogButtonProps;
   cancelCta?: DialogButtonProps;
+  closeButtonTipText?: string;
 }
 
 export const Dialog: React.FC<DialogProps> = ({
@@ -36,6 +37,7 @@ export const Dialog: React.FC<DialogProps> = ({
   onRequestClose,
   image,
   size = 'small',
+  closeButtonTipText = 'Close dialog',
   ...rest
 }) => {
   const onConfirm: DialogButtonProps['onClick'] = (
@@ -60,19 +62,22 @@ export const Dialog: React.FC<DialogProps> = ({
         aria-modal="true"
         role="dialog"
         layout="dialog"
+        tabIndex={-1}
+        data-autofocus
+        aria-label="dialog"
       >
         <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
           {title}
         </Text>
-        <IconButton
-          aria-label="Close Dialog"
-          size="small"
-          alignSelf="start"
-          icon={MiniDeleteIcon}
-          onClick={onCancel}
-          gridArea="close"
-          tip="Close dialog"
-        />
+        <Box gridArea="close">
+          <IconButton
+            size="small"
+            alignSelf="start"
+            icon={MiniDeleteIcon}
+            onClick={onCancel}
+            tip={closeButtonTipText}
+          />
+        </Box>
         <Box as="div" gridArea="content" data-testid="dialog-content">
           {image && <ImageContainer image={image} size={size} />}
           {children}

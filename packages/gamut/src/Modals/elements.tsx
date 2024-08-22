@@ -3,6 +3,9 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { FloatingCard } from '../FloatingCard/FloatingCard';
+import { focusVisibleStyle } from '../utils';
+
+const modalFocusVisibleStyle = focusVisibleStyle();
 
 const sizeVariant = variant({
   prop: 'size',
@@ -11,6 +14,7 @@ const sizeVariant = variant({
   variants: {
     small: { width: '400px', minHeight: '170px' },
     medium: { width: '540px', minHeight: '240px' },
+    large: { width: '680px', minHeight: '310px' },
     fluid: {
       width: 'max-content',
     },
@@ -27,6 +31,7 @@ const layoutVariant = variant({
     columnGap: 16,
     gridTemplateColumns: '1fr min-content 2rem',
     gridTemplateRows: 'max-content 1fr max-content',
+    ...modalFocusVisibleStyle,
   },
   variants: {
     standard: {

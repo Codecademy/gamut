@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.9.13](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-patterns@0.9.12...@codecademy/gamut-patterns@0.9.13) (2024-05-29)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
+### [0.9.12](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-patterns@0.9.11...@codecademy/gamut-patterns@0.9.12) (2024-05-01)
+
+### Performance Improvements
+
+- Cherry-pick Lodash imports for smaller bundles ([0ee58af](https://github.com/Codecademy/gamut/commit/0ee58afe79297a6213e87453271391375fde8568))
+
 ### [0.9.11](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-patterns@0.9.10...@codecademy/gamut-patterns@0.9.11) (2023-11-02)
 
 **Note:** Version bump only for package @codecademy/gamut-patterns

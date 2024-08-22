@@ -5,23 +5,13 @@ import { GridFormContent } from './GridFormContent';
 
 export type GridFormSectionProps = {
   fields: GridFormField[];
-  showRequired: boolean;
 };
 
-export const GridFormSection: React.FC<GridFormSectionProps> = ({
-  fields,
-  showRequired,
-}) => {
+export const GridFormSection: React.FC<GridFormSectionProps> = ({ fields }) => {
   return (
     <>
       {fields.map((field) => {
-        return (
-          <GridFormContent
-            field={field}
-            showRequired={showRequired}
-            key={field.name}
-          />
-        );
+        return <GridFormContent field={field} key={field.name} />;
       })}
     </>
   );

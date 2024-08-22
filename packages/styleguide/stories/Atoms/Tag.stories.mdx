@@ -16,38 +16,39 @@ import { TagExample } from './Tag.examples.tsx';
     design: {
       type: 'figma',
       url:
-        'https://www.figma.com/file/a0xaVwpkrXpOReMJ3ArqCe/Badges?node-id=1%3A40',
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=46539-40954',
     },
   }}
   args={{ children: 'Tag' }}
 />
 
-## Usage Guidelines
+## Usage guidelines
 
 Tags are compact, dynamic elements that support user inputs, selections, and actions. Tags can either be dismissable individually, or read-only when paired with other controls. Use Tags in designs like Filters.
 
 ## Variants
 
-Tags have a ColorModed `default` variant and a `grey` variant as well as a `readonly` variant
+Tags have `default` and `gray` color variants that work in color mode. You can also omit the dimiss button by passing in the `readonly` prop.
 
 <Canvas>
-  <Story name="Tag Variants">
+  <Story name="Tag variants">
     {(args) => (
       <FlexBox center justifyContent="space-around">
         <Tag {...args} onDismiss={(e) => e.target.blur()} />
         <Tag {...args} onDismiss={(e) => e.target.blur()} variant="grey" />
-        <Tag {...args} readonly /> <Tag {...args} readonly variant="grey" />
+        <Tag {...args} readonly />
+        <Tag {...args} readonly variant="grey" />
       </FlexBox>
     )}
   </Story>
 </Canvas>
 
-## Truncated Tags
+## Truncated tags
 
 When tag content exceeds the width of its container, it is truncated.
 
 <Canvas>
-  <Story name="Truncated Tags">
+  <Story name="Truncated tags">
     {() => (
       <Box width="12rem">
         <Tag>I am long tag yes I am much am a very long tag</Tag>
@@ -56,13 +57,13 @@ When tag content exceeds the width of its container, it is truncated.
   </Story>
 </Canvas>
 
-## Dismissable Tags Example
+## Dismissable tag example
 
 <Canvas>
-  <Story name="Working Example">{() => <TagExample />}</Story>
+  <Story name="Working example">{() => <TagExample />}</Story>
 </Canvas>
 
-## Code Playground
+## Code playground
 
 <Canvas>
   <Story name="Tag">{(args) => <Tag {...args} />}</Story>
