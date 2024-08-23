@@ -46,7 +46,7 @@ export const Beak = styled(Box)<
     StyleProps<typeof beakSize>
 >(beakVariants, beakSize);
 
-export const PatternContainer = styled.div(
+export const PatternContainer = styled(Box)(
   variant({
     base: {
       width: '100%',
