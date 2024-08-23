@@ -61,7 +61,7 @@ export const Popover: React.FC<PopoverProps> = ({
   targetRef,
   verticalOffset = variant === 'secondary' ? 15 : 20,
   widthRestricted,
-  zIndex,
+  zIndex = 1,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const [isInViewport, setIsInViewport] = useState(true);
@@ -179,7 +179,7 @@ export const Popover: React.FC<PopoverProps> = ({
             ? 'popover'
             : 'default'
         }
-        zIndex={zIndex ?? 1}
+        zIndex={zIndex}
       >
         {beak && (
           <Beak
