@@ -15,9 +15,6 @@ export const popoverStates = states({
 });
 
 export const raisedDivVariants = variant({
-  base: {
-    zIndex: 1,
-  },
   defaultVariant: 'primary',
   variants: {
     primary: {

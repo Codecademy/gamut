@@ -26,7 +26,7 @@ export type PopoverVariants = StyleProps<typeof raisedDivVariants> & {
   widthRestricted?: boolean;
 };
 
-export const RaisedDiv = styled.div<
+export const RaisedDiv = styled(Box)<
   StyleProps<typeof raisedDivVariants> &
     StyleProps<typeof popoverToolTipBodyAlignments> &
     StyleProps<typeof toolTipWidthRestrictions> &

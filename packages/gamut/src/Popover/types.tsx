@@ -91,4 +91,8 @@ export type PopoverProps = PopoverBaseProps &
      * Whether to add width restrictions to Popover.
      */
     widthRestricted?: boolean;
+    /**
+     * Custom z-index for when there are competing Popovers
+     */
+    zIndex?: number;
   };
