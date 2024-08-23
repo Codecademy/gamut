@@ -10,10 +10,6 @@ import { Text } from '../Typography';
 
 export interface FlyoutProps extends WithChildrenProp {
   /**
-   * Heading-level prop for title (h2 by default).
-   */
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  /**
    * Accessibility label for the close button.
    */
   closeLabel: string;
@@ -34,14 +30,13 @@ export interface FlyoutProps extends WithChildrenProp {
   openFrom?: 'left' | 'right';
 
   /**
-   * Contents for a top-left (h2 by default).
+   * Contents for a top-left h1.
    */
   title: React.ReactNode;
   bg?: Colors;
 }
 
 export const Flyout: React.FC<FlyoutProps> = ({
-  as = 'h2',
   children,
   closeLabel = 'Close',
   expanded,
@@ -77,7 +72,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
             maxWidth="100%"
             justifyContent="space-between"
           >
-            <Text as={as} fontSize={22}>
+            <Text as="h1" fontSize={22}>
               {title}
             </Text>
             <IconButton
