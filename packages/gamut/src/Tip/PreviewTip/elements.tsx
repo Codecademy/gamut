@@ -1,8 +1,11 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
+import { variant } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import { useMemo } from 'react';
 
 import { Box, FlexBox, GridBox } from '../../Box';
 import { Shimmer } from '../../Loading/Shimmer';
+import { patternVariantStyles } from '../../Popover/styles';
 import { Text } from '../../Typography';
 import { PreviewTipContent, TipPlacementComponentProps } from '../shared/types';
 import {
@@ -88,6 +91,17 @@ type PreviewTipShadowProps = Pick<
   'alignment' | 'zIndex'
 >;
 
+export const PreviewTipPattern = styled(CheckerDense)(
+  variant({
+    base: {
+      height: 'calc(100% - 12px)',
+      width: '100%',
+      position: 'absolute',
+    },
+    variants: patternVariantStyles,
+  })
+);
+
 export const PreviewTipShadow: React.FC<PreviewTipShadowProps> = ({
   alignment,
   zIndex,
@@ -95,14 +109,10 @@ export const PreviewTipShadow: React.FC<PreviewTipShadowProps> = ({
   const shadowAlignment = getShadowAlignment(alignment);
 
   return (
-    // CASS - maybe dedupe in FloatingTip
-    <CheckerDense
+    <PreviewTipPattern
       aria-hidden
-      height="calc(100% - 12px)"
-      width="100%"
-      position="absolute"
       zIndex={zIndex ? zIndex - 2 : -1}
-      {...shadowAlignment}
+      variant={shadowAlignment}
     />
   );
 };

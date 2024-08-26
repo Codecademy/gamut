@@ -1,7 +1,7 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
 import { useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
-import { useMeasure } from 'react-use'; // or just 'react-use-measure'
+import { useMeasure } from 'react-use';
 
 import { Box } from '../../Box';
 import { Popover } from '../../Popover';
