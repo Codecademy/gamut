@@ -28,7 +28,7 @@ const ToggleTrackVariants = variant({
     cursor: 'inherit',
     transition: 'background-color 0.2s ease',
     borderColor: 'primary',
-    borderRadius: '99rem',
+    borderRadius: 'full',
     position: 'relative',
     '&:after': {
       content: '""',

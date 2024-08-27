@@ -25,10 +25,10 @@ const layoutVariant = variant({
   prop: 'layout',
   defaultVariant: 'standard',
   base: {
-    display: 'grid',
+    borderRadius: 'sm',
     p: 24,
-    rowGap: 12,
     columnGap: 16,
+    display: 'grid',
     gridTemplateColumns: '1fr min-content 2rem',
     gridTemplateRows: 'max-content 1fr max-content',
     ...modalFocusVisibleStyle,

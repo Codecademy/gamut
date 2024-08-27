@@ -333,3 +333,41 @@ export const breakpoint = {
     { ...VALUE_COLUMN, size: 'fill' },
   ],
 };
+
+export const borderRadii = {
+  rows: Object.entries(theme.borderRadii).map(([id, value]) => ({
+    id,
+    value,
+  })),
+  columns: [
+    PROP_COLUMN,
+    {
+      ...PATH_COLUMN,
+      size: 'xl',
+      render: ({ id }: any) => <Code>theme.borderRadii.{id}</Code>,
+    },
+    {
+      ...VALUE_COLUMN,
+      render: ({ value }: any) => (
+        <Box maxWidth="24rem">
+          <Code>{value.split(',')[0]}</Code>
+        </Box>
+      ),
+      size: 'lg',
+    },
+    {
+      key: 'example',
+      name: 'Example',
+      size: 'fill',
+      render: ({ value }: any) => (
+        <Box
+          display="inline-block"
+          width="6rem"
+          height="4em"
+          bg="navy"
+          borderRadius={value}
+        />
+      ),
+    },
+  ],
+};

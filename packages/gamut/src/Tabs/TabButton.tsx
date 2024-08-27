@@ -30,7 +30,8 @@ const focusVisibleStyles = {
     position: 'absolute',
     inset: 0,
     zIndex: 0,
-    borderRadius: '4px 4px 0 0',
+    borderRadiusTop: 'md',
+    borderRadiusBottom: 'none',
   },
 } as const;
 
@@ -41,7 +42,7 @@ const tabVariants = variant({
     justifyContent: 'center',
     alignItems: 'center',
     whiteSpace: 'nowrap',
-    borderRadius: 0,
+    borderRadius: 'none',
     px: 24,
     textOverflow: 'ellipsis',
     color: 'text',
