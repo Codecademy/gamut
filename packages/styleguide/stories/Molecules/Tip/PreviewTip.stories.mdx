@@ -3,7 +3,7 @@ import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import {AvatarExample} from './examples.tsx'
+import { AvatarExample } from './examples.tsx';
 
 <Meta
   title={title}
@@ -23,8 +23,9 @@ import {AvatarExample} from './examples.tsx'
     alignment: 'top-left',
     children: 'PreviewTip Anchor',
     linkDescription: `Include a relevant snippet from the links destination on hover and focus, on click navigates to the page for more details. By default, the snippet will truncate after 4 lines, but the max lines can be set to any number lines fourty three`,
-    href: 'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExamp6NDVlZzNpam01NnlhaGRreWMwZGlzZ3Z6bWd2dmtneTJrN3pnZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/X5Lta1bjuULTubmGzR/giphy.webp',
-    loading: true
+    href:
+      'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExamp6NDVlZzNpam01NnlhaGRreWMwZGlzZ3Z6bWd2dmtneTJrN3pnZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/X5Lta1bjuULTubmGzR/giphy.webp',
+    loading: true,
   }}
 />
 
@@ -35,28 +36,21 @@ _Small_ piece of extra information toggled by clicking on an (i) button.
     {(args) => (
       <FlexBox center py={156}>
         <PreviewTip {...args} />
-        </FlexBox>
+      </FlexBox>
     )}
   </Story>
 </Canvas>
 
 <PropsTable story="PreviewTip" />
 
-
 <Canvas>
   <Story name="Floating PreviewTip">
     {(args) => (
-               <PreviewTip  placement="floating" {...args} alignment="top-right" />
+      <PreviewTip placement="floating" {...args} alignment="top-right" />
     )}
   </Story>
 </Canvas>
 
 <Canvas>
-  <Story name="Avatar Tip">
-    {() => (
-        <AvatarExample/>
-    )}
-  </Story>
+  <Story name="Avatar Tip">{() => <AvatarExample />}</Story>
 </Canvas>
-
-
