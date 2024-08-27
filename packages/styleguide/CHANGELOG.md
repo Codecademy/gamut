@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [68.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.2.3...@codecademy/styleguide@68.0.0) (2024-08-27)
+
+### ⚠ BREAKING CHANGES
+
+- **BorderRadius token:** Adding a border radius scale
+
+### Features
+
+- **BorderRadius token:** Adding a border radius scale ([915834b](https://github.com/Codecademy/gamut/commit/915834ba3798c5d7be19a57001e8814ebebe7956))
+
 ### [67.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@67.2.2...@codecademy/styleguide@67.2.3) (2024-08-23)
 
 **Note:** Version bump only for package @codecademy/styleguide
