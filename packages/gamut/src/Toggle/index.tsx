@@ -45,7 +45,7 @@ export const Toggle = <Props extends ToggleProps>({
         <Circle
           bg="white"
           borderColor="background"
-          borderRadius="50%"
+          borderRadius="full"
           borderStyle="solid"
           borderWidth="1px"
           bottom="10%"

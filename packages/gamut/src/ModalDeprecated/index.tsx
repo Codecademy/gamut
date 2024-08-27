@@ -18,7 +18,7 @@ export type ModalDeprecatedOverlayProps = Partial<
 const CardShell = styled.div(
   css({
     background: 'white',
-    borderRadius: '2px',
+    borderRadius: 'sm',
     boxShadow: `0 2px 8px 0  ${theme.colors['shadow-black-slight']}`,
     position: 'relative',
     transition: 'box-shadow 250ms ease-in',
