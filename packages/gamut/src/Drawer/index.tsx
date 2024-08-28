@@ -30,7 +30,8 @@ export const Drawer: React.FC<DrawerProps> = ({
 }) => {
   const drawerRef = useRef<HTMLDivElement>(null);
   const isDesktop = useMedia(`(min-width: ${breakpoints.sm})`);
-  const fullWidth = isDesktop ? `30rem` : '75vw';
+  const isXS = useMedia(`(max-width: ${breakpoints.xs})`);
+  const fullWidth = isDesktop ? `30rem` : isXS ? '80vw' : '75vw';
 
   useEffect(() => {
     if (expanded) drawerRef?.current?.focus();
