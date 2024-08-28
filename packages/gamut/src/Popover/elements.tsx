@@ -12,6 +12,7 @@ import {
   beakSize,
   beakVariants,
   outlineVariants,
+  patternContainerBaseStyles,
   patternVariantStyles,
   popoverStates,
   raisedDivVariants,
@@ -47,12 +48,8 @@ export const Beak = styled(Box)<
 export const PatternContainer = styled.div(
   variant({
     base: {
-      width: '100%',
       height: '100%',
-      borderRadius: 'sm',
-      overflow: 'hidden',
-      bg: 'background',
-      position: 'absolute',
+      ...patternContainerBaseStyles,
     },
     variants: patternVariantStyles,
   })

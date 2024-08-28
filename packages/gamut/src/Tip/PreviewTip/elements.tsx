@@ -1,12 +1,11 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
-import { variant } from '@codecademy/gamut-styles';
+import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useMemo } from 'react';
 
 import { Box, FlexBox, GridBox } from '../../Box';
 import { Shimmer } from '../../Loading/Shimmer';
-import { PatternContainer } from '../../Popover/elements';
-import { patternVariantStyles } from '../../Popover/styles';
+import { patternContainerBaseStyles } from '../../Popover/styles';
 import { Text } from '../../Typography';
 import { PreviewTipContent, TipPlacementComponentProps } from '../shared/types';
 import {
@@ -93,16 +92,9 @@ type PreviewTipShadowProps = Pick<
 >;
 
 export const PreviewTipPattern = styled(Box)(
-  variant({
-    base: {
-      bg: 'background',
-      borderRadius: 'sm',
-      height: 'calc(100% - 12px)',
-      overflow: 'hidden',
-      position: 'absolute',
-      width: '100%',
-    },
-    variants: patternVariantStyles,
+  css({
+    height: 'calc(100% - 12px)',
+    ...patternContainerBaseStyles,
   })
 );
 
@@ -116,7 +108,7 @@ export const PreviewTipShadow: React.FC<PreviewTipShadowProps> = ({
     <PreviewTipPattern
       aria-hidden
       zIndex={zIndex ? zIndex - 2 : -1}
-      variant={shadowAlignment}
+      {...shadowAlignment}
     >
       <CheckerDense />
     </PreviewTipPattern>
