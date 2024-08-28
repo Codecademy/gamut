@@ -5,6 +5,7 @@ import { useMemo } from 'react';
 
 import { Box, FlexBox, GridBox } from '../../Box';
 import { Shimmer } from '../../Loading/Shimmer';
+import { PatternContainer } from '../../Popover/elements';
 import { patternVariantStyles } from '../../Popover/styles';
 import { Text } from '../../Typography';
 import { PreviewTipContent, TipPlacementComponentProps } from '../shared/types';
@@ -91,12 +92,15 @@ type PreviewTipShadowProps = Pick<
   'alignment' | 'zIndex'
 >;
 
-export const PreviewTipPattern = styled(CheckerDense)(
+export const PreviewTipPattern = styled(Box)(
   variant({
     base: {
+      bg: 'background',
+      borderRadius: 'sm',
       height: 'calc(100% - 12px)',
-      width: '100%',
+      overflow: 'hidden',
       position: 'absolute',
+      width: '100%',
     },
     variants: patternVariantStyles,
   })
@@ -113,6 +117,8 @@ export const PreviewTipShadow: React.FC<PreviewTipShadowProps> = ({
       aria-hidden
       zIndex={zIndex ? zIndex - 2 : -1}
       variant={shadowAlignment}
-    />
+    >
+      <CheckerDense />
+    </PreviewTipPattern>
   );
 };
