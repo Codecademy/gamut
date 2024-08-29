@@ -2,7 +2,6 @@ import {
   fontSmoothPixel,
   states,
   theme,
-  timing,
   variant,
 } from '@codecademy/gamut-styles';
 
@@ -99,14 +98,12 @@ export const toolTipAlignmentVariants = variant({
   prop: 'alignment',
   base: {
     bg: 'transparent',
-    fontSmoothPixel,
     display: 'flex',
-    transition: `opacity ${timing.fast}`,
-    transitionDelay: `${timing.fast}`,
-    position: 'absolute',
-    opacity: 0,
-    visibility: 'hidden',
+    fontSmoothPixel,
     maxWidth: '70vw',
+    opacity: 0,
+    position: 'absolute',
+    visibility: 'hidden',
     '&::after': {
       content: '""',
       display: 'block',

@@ -1,4 +1,4 @@
-import { css } from '@codecademy/gamut-styles';
+import { css, timing } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -19,6 +19,8 @@ export const ToolTipWrapper = styled.div(
   css({
     '&:hover > div, &:focus-within > div': {
       opacity: 1,
+      transition: `opacity ${timing.fast} ease-in-out`,
+      transitionDelay: timing.base,
       visibility: 'visible',
     },
     ...tipWrapperStyles,
