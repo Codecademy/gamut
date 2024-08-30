@@ -34,7 +34,6 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
   return (
     <FlexBox>
       <DisclosureButtonWrapper
-        aria-label={isExpanded ? 'Collapse Content' : 'Expand Content'}
         aria-expanded={isExpanded}
         onClick={handleClick}
         width="100%"

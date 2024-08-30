@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [57.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.3.2...@codecademy/gamut@57.0.0) (2024-08-27)
+
+### ⚠ BREAKING CHANGES
+
+- **BorderRadius token:** Adding a border radius scale
+
+### Features
+
+- **BorderRadius token:** Adding a border radius scale ([915834b](https://github.com/Codecademy/gamut/commit/915834ba3798c5d7be19a57001e8814ebebe7956))
+
+### [56.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.3.1...@codecademy/gamut@56.3.2) (2024-08-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [56.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.3.0...@codecademy/gamut@56.3.1) (2024-08-19)
+
+### Bug Fixes
+
+- **Disclosure:** remove aria-label ([ad9c44f](https://github.com/Codecademy/gamut/commit/ad9c44ffbad4e2a83311354dd2f13947aaf66b40))
+
+## [56.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.2.0...@codecademy/gamut@56.3.0) (2024-08-14)
+
+### Features
+
+- **Flyout:** focus container on open ([c690c32](https://github.com/Codecademy/gamut/commit/c690c32c09ea68082ccc3886514ae460cdae48f3))
+
+## [56.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.1.3...@codecademy/gamut@56.2.0) (2024-08-14)
+
+### Features
+
+- **Dialog:** a new optional prop for the close button ([54eaddc](https://github.com/Codecademy/gamut/commit/54eaddc426140d55510ab4a7570be4a2755e6134))
+
 ### [56.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.1.2...@codecademy/gamut@56.1.3) (2024-08-07)
 
 **Note:** Version bump only for package @codecademy/gamut

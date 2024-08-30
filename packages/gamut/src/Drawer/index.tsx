@@ -1,11 +1,14 @@
-import { breakpoints, timingValues } from '@codecademy/gamut-styles';
+import { breakpoints, css, timingValues } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
-import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { useMedia } from 'react-use';
 
 import { Box, BoxProps } from '../Box';
+import { focusVisibleStyle } from '../utils';
 
-const DrawerBase = motion(Box);
+const drawerVisibleStyle = focusVisibleStyle('-3px');
+const DrawerBase = styled(motion(Box))(css(drawerVisibleStyle));
 
 export interface DrawerProps extends Omit<BoxProps, 'width'> {
   /**
@@ -25,8 +28,13 @@ export const Drawer: React.FC<DrawerProps> = ({
   alignContentContainer = 'right',
   ...props
 }) => {
+  const drawerRef = useRef<HTMLDivElement>(null);
   const isDesktop = useMedia(`(min-width: ${breakpoints.sm})`);
   const fullWidth = isDesktop ? `30rem` : '75vw';
+
+  useEffect(() => {
+    if (expanded) drawerRef?.current?.focus();
+  }, [expanded]);
 
   return (
     <AnimatePresence>
@@ -39,10 +47,13 @@ export const Drawer: React.FC<DrawerProps> = ({
           initial={{ width: 0 }}
           overflow="clip"
           position="relative"
+          ref={drawerRef}
+          tabIndex={-1}
           transition={{ duration: timingValues.slow / 1000 }}
           {...props}
         >
           <Box
+            borderRadius="sm"
             height="100%"
             {...{ [alignContentContainer]: 0 }}
             position="absolute"
@@ -50,6 +61,7 @@ export const Drawer: React.FC<DrawerProps> = ({
             minWidth={fullWidth}
             overflowY="auto"
             overflowX="hidden"
+            p={4}
           >
             {children}
           </Box>

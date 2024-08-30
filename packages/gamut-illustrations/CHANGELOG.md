@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.47.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.47.0...@codecademy/gamut-illustrations@0.47.1) (2024-08-27)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+## [0.47.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.46.0...@codecademy/gamut-illustrations@0.47.0) (2024-08-23)
+
+### Features
+
+- **illustration:** AI Project Review illustration ([eebdcae](https://github.com/Codecademy/gamut/commit/eebdcae9a48f86a6d97e57c47c6ee8c6d572b03a))
+
 ## [0.46.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.45.2...@codecademy/gamut-illustrations@0.46.0) (2024-07-31)
 
 ### Features

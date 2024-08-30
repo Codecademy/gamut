@@ -1,8 +1,11 @@
-import { theme, variant } from '@codecademy/gamut-styles';
+import { variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { FloatingCard } from '../FloatingCard/FloatingCard';
+import { focusVisibleStyle } from '../utils';
+
+const modalFocusVisibleStyle = focusVisibleStyle();
 
 const sizeVariant = variant({
   prop: 'size',
@@ -22,16 +25,13 @@ const layoutVariant = variant({
   prop: 'layout',
   defaultVariant: 'standard',
   base: {
-    display: 'grid',
+    borderRadius: 'sm',
     p: 24,
-    rowGap: 12,
     columnGap: 16,
+    display: 'grid',
     gridTemplateColumns: '1fr min-content 2rem',
     gridTemplateRows: 'max-content 1fr max-content',
-    '&:focus-visible': {
-      outlineOffset: '4px',
-      outline: `2px solid ${theme.colors.primary} !important`,
-    },
+    ...modalFocusVisibleStyle,
   },
   variants: {
     standard: {

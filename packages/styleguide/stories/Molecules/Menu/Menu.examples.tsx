@@ -60,7 +60,7 @@ export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
   return (
     <FlexBox minHeight="30px" width={1} position="relative" m={48}>
       <FlexBox flex={1}>
-        <Background bg="black" height="100%" pl={48} borderRadius="10px">
+        <Background bg="black" height="100%" pl={48} borderRadius="lg">
           <FlexBox
             bg="navy"
             justifyContent="right"
@@ -103,7 +103,7 @@ export const PopoverMenuExample: React.FC<PopoverContainerProps> = () => {
             y={currentTarget}
             targetRef={target}
           >
-            <Background bg="white" borderRadius="10px">
+            <Background bg="white" borderRadius="lg">
               <Menu variant="select" role="menu">
                 {activeIndex % 2 === 0 ? (
                   <>

@@ -29,7 +29,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 <PropsTable story="FormGroup" />
 
-### Form Group htmlFor
+### FormGroup + htmlFor
 
 It is best to provide `htmlFor` to both the FormGroup + inner form element to make it super accessible. If this is not provided, the FormLabel will default to `<div>`. If an `htmlFor` is provided, it will be a `<label>`.
 
@@ -50,13 +50,13 @@ It is best to provide `htmlFor` to both the FormGroup + inner form element to ma
   </Story>
 </Canvas>
 
-### Form Group States
+### FormGroup states
 
 <Canvas>
   <Story name="FormGroupRequired">
     {() => (
       <FormGroup
-        showRequired
+        required
         label="I am required!!"
         description="You can tell by the asterisk."
         htmlFor="required1"
@@ -68,7 +68,7 @@ It is best to provide `htmlFor` to both the FormGroup + inner form element to ma
   <Story name="FormGroupError">
     {() => (
       <FormGroup
-        showRequired
+        required
         label="I am also required!!"
         description="You can tell by the asterisk."
         error="You messed up dude."
@@ -80,18 +80,14 @@ It is best to provide `htmlFor` to both the FormGroup + inner form element to ma
   </Story>
   <Story name="FormGroupValidated">
     {() => (
-      <FormGroup
-        showRequired
-        label="I am also required!!"
-        htmlFor="required-valid"
-      >
+      <FormGroup required label="I am also required!!" htmlFor="required-valid">
         <Input defaultValue="Good job!" htmlFor="required-valid" valid />
       </FormGroup>
     )}
   </Story>
 </Canvas>
 
-### Form Group with infotip
+### FormGroup + InfoTip
 
 A field can include [our existing `InfoTip`](/?path=/docs/atoms-tooltip--tool-tip).
 

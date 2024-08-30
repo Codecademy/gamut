@@ -30,7 +30,7 @@ const listVariants = variant({
   },
   variants: {
     default: {
-      borderRadius: '2px',
+      borderRadius: 'sm',
     },
     table: {},
     card: {
@@ -119,11 +119,11 @@ const rowVariants = variant({
     },
     card: {
       border: 1,
-      borderRadius: '2px',
+      borderRadius: 'sm',
     },
     block: {
       border: 'none',
-      borderRadius: '2px',
+      borderRadius: 'sm',
     },
     plain: {},
   },
