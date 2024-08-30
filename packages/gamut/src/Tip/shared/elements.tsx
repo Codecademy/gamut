@@ -19,8 +19,7 @@ export const ToolTipWrapper = styled.div(
   css({
     '&:hover > div, &:focus-within > div': {
       opacity: 1,
-      transition: `opacity ${timing.fast} ease-in-out`,
-      transitionDelay: timing.base,
+      transition: `opacity ${timing.fast} ${timing.base}`,
       visibility: 'visible',
     },
     ...tipWrapperStyles,
