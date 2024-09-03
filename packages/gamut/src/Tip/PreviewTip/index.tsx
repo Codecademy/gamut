@@ -59,7 +59,7 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
 
   return (
     <Tip {...tipProps} type="preview">
-      <Text aria-hidden screenreader id={descriptionId}>
+      <Text aria-hidden screenreader id={descriptionId} role="tooltip">
         {`${description}`}
       </Text>
 
