@@ -7,7 +7,7 @@ export const createFontLinks = () =>
         key={`${filePath}-${ext}`}
         rel="preload"
         href={`${filePath}.${ext}`}
-        crossOrigin="anonymous"
+        crossOrigin="use-credentials"
         as="font"
         type={`font/${ext}`}
       />
