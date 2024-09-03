@@ -10,6 +10,7 @@ import {
   TipBaseProps,
   tipDefaultProps,
 } from '../shared/types';
+import { PreviewTipAnchor } from './elements';
 import { getPreviewDescription } from './utils';
 
 export type PreviewTipProps = ComponentProps<typeof Anchor> &
@@ -62,14 +63,14 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
         {`${description}`}
       </Text>
 
-      <Anchor
+      <PreviewTipAnchor
         {...rest}
         aria-label={avatar ? `Profile Preview:` : `Link Preview:`}
         aria-describedby={descriptionId}
         display={avatar && rest?.display === undefined ? 'flex' : rest?.display}
       >
         {avatar || children}
-      </Anchor>
+      </PreviewTipAnchor>
     </Tip>
   );
 };

@@ -3,7 +3,9 @@ import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useMemo } from 'react';
 
+import { Anchor } from '../../Anchor';
 import { Box, FlexBox, GridBox } from '../../Box';
+import { ButtonSelectors } from '../../ButtonBase/ButtonBase';
 import { Shimmer } from '../../Loading/Shimmer';
 import { patternContainerBaseStyles } from '../../Popover/styles';
 import { Text } from '../../Typography';
@@ -14,6 +16,16 @@ import {
   defaultGridTemplate,
   getShadowAlignment,
 } from './styles';
+
+export const PreviewTipAnchor = styled(Anchor)(
+  css({
+    textDecorationStyle: 'dotted',
+    [ButtonSelectors.HOVER]: {
+      textDecoration: 'underline',
+      textDecorationStyle: 'solid',
+    },
+  })
+);
 
 const PreviewTipBodyShimmer = ({
   avatar,
