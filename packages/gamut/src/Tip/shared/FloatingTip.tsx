@@ -9,7 +9,7 @@ import { PreviewTipContents } from '../PreviewTip/elements';
 import { FloatingTipBody, TargetContainer } from './elements';
 import { narrowWidth } from './styles';
 import { TipWrapperProps } from './types';
-import { getAlignmentWidths, getPopoverAlignment } from './utils';
+import { getAlignmentWidths, getPopoverAlignment, runWithDelay } from './utils';
 
 type FocusOrMouseEvent =
   | React.FocusEvent<HTMLDivElement, Element>
@@ -56,15 +56,17 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
 
   const handleShowHideAction = ({ type }: FocusOrMouseEvent) => {
     if (type === 'focus' && !isOpen) {
-      setIsOpen(true);
-      setIsFocused(true);
+      runWithDelay(() => {
+        setIsOpen(true);
+        setIsFocused(true);
+      });
     }
     if (type === 'blur' && isOpen) {
       setIsOpen(false);
       setIsFocused(false);
     }
     if (type === 'mouseenter' && !isOpen) {
-      setIsOpen(true);
+      runWithDelay(() => setIsOpen(true));
     }
     if (type === 'mouseleave' && isOpen && !isFocused) {
       setIsOpen(false);

@@ -1,3 +1,5 @@
+import { timingValues } from '@codecademy/gamut-styles';
+
 import { PopoverProps } from '../../Popover';
 import {
   bottomCenterStylesAfter,
@@ -14,6 +16,10 @@ import {
   topStylesAfter,
 } from './styles';
 import { TipPlacementComponentProps, TipWrapperProps } from './types';
+
+export const runWithDelay = (func: () => void) => {
+  setTimeout(func, timingValues?.base);
+};
 
 export const getAlignmentWidths = ({
   alignment,
