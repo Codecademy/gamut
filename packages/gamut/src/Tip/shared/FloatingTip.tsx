@@ -25,6 +25,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   loading,
   narrow,
   overline,
+  truncateLines,
   type,
   username,
   wrapperRef,
@@ -87,6 +88,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         info={info}
         loading={loading}
         overline={overline}
+        truncateLines={truncateLines}
         username={username}
       />
     </>

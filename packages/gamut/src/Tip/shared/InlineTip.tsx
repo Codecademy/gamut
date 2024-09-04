@@ -22,6 +22,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   loading,
   narrow,
   overline,
+  truncateLines,
   type,
   username,
   wrapperRef,
@@ -69,6 +70,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
               info={info}
               loading={loading}
               overline={overline}
+              truncateLines={truncateLines}
               username={username}
             />
             <PreviewTipShadow alignment={alignment} zIndex={zIndex} />
