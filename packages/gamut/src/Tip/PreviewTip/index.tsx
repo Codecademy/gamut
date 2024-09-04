@@ -68,6 +68,7 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
         aria-label={avatar ? `Profile Preview:` : `Link Preview:`}
         aria-describedby={descriptionId}
         display={avatar && rest?.display === undefined ? 'flex' : rest?.display}
+        tipType={avatar ? 'avatar' : 'anchor'}
       >
         {avatar || children}
       </PreviewTipAnchor>

@@ -1,5 +1,5 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
-import { css } from '@codecademy/gamut-styles';
+import { css, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useMemo } from 'react';
 
@@ -18,11 +18,23 @@ import {
 } from './styles';
 
 export const PreviewTipAnchor = styled(Anchor)(
-  css({
-    textDecorationStyle: 'dotted',
-    [ButtonSelectors.HOVER]: {
-      textDecoration: 'underline',
-      textDecorationStyle: 'solid',
+  variant({
+    defaultVariant: 'anchor',
+    prop: 'tipType',
+    variants: {
+      anchor: {
+        textDecorationStyle: 'dotted',
+        [ButtonSelectors.HOVER]: {
+          textDecoration: 'underline',
+          textDecorationStyle: 'solid',
+        },
+      },
+      avatar: {
+        borderRadius: 'sm',
+        [ButtonSelectors.HOVER]: {
+          bg: 'background-hover',
+        },
+      },
     },
   })
 );
