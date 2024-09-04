@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [57.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.0.0...@codecademy/gamut@57.1.0) (2024-09-04)
+
+### Features
+
+- **Flyout:** Add as prop for Flyout title ([6bdc1d6](https://github.com/Codecademy/gamut/commit/6bdc1d65847bff7a313c719b94ee52f530600d6f))
+
 ## [57.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@56.3.2...@codecademy/gamut@57.0.0) (2024-08-27)
 
 ### ⚠ BREAKING CHANGES
