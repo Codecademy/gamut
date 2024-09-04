@@ -32,6 +32,7 @@ export const textButtonVariants = templateVariants(
     color: variant === 'interface' ? 'text' : variant,
     [ButtonSelectors.HOVER]: {
       color: variant,
+      bg: 'background-hover',
     },
     [ButtonSelectors.FOCUS_VISIBLE]: {
       color: variant,
