@@ -25,6 +25,9 @@ export type TipCenterAlignment = typeof tipCenterAlignmentArray[number];
 export type TipStaticAlignment = typeof tipAlignmentArray[number];
 
 export type PreviewTipContent = {
+  /**
+   * ReactNode avatar to display - including an avatar will automatically defer to the avatar type.
+   */
   avatar?: ReactNode;
   overline?: string;
   username?: string;
