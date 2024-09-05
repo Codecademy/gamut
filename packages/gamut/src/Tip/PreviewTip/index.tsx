@@ -59,8 +59,10 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
 
   return (
     <Tip {...tipProps} type="preview">
-      <Text aria-hidden screenreader id={descriptionId} role="tooltip">
-        {`${description}`}
+      <Text aria-hidden aria-busy={loading} screenreader id={descriptionId}>
+        {loading && !linkDescription
+          ? 'Preview content is loading '
+          : `${description}`}
       </Text>
 
       <PreviewTipAnchor
