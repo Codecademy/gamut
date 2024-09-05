@@ -1,8 +1,6 @@
 const shadowAlignment = '-8px';
 
-export const avatarGridTemplate = `'avatar 1fr'
-'avatar 1fr'
-'avatar 1fr'`;
+export const avatarGridTemplate = `'avatar 1fr'`;
 
 export const avatarColumnTemplate = 'min-content 1fr';
 

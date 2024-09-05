@@ -38,19 +38,16 @@ export const AvatarExample = () => {
     <FlexBox center py={96} mt={16}>
       <PreviewTip
         avatar={
-          <Box bg="navy" height="100%" borderRadius="100%" width="100%">
+          <Box bg="navy" height="100%" borderRadius="full" width="100%">
             <SmileyIndifferentIcon color="yellow" size="100%" />
           </Box>
         }
         height={32}
         href="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGx4aDdoZ3htdm01MjRreTJ2NzZsbXhla2txYmJteGxiZGJ3cTM0bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ToMjGpqisXrK0S9hNoA/giphy.webp"
         linkDescription="# of contributions"
-        overline="Profile"
         truncateLines={1}
         username="@coolguy"
         width={32}
-        placement="floating"
-        loading
       />
     </FlexBox>
   );

@@ -2,8 +2,9 @@ import { css, timing } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { Box, FlexBox } from '../../Box';
+import { Box } from '../../Box';
 import { Selectors } from '../../ButtonBase/ButtonBase';
+import { Popover } from '../../Popover';
 import {
   inlineToolTipBodyAlignments,
   toolTipBodyCss,
@@ -66,6 +67,6 @@ export const TipBody = styled(Box)<
   StyleProps<typeof inlineToolTipBodyAlignments>
 >(css({ ...toolTipBodyCss }), inlineToolTipBodyAlignments);
 
-export const FloatingTipBody = styled(FlexBox)<
+export const FloatingTipBody = styled(Popover)<
   StyleProps<typeof toolTipWidthRestrictions>
 >(toolTipWidthRestrictions);

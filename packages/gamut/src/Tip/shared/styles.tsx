@@ -165,7 +165,7 @@ export const toolTipWidthRestrictions = variant({
       ...alignedMaxWidth,
     },
     avatarAligned: {
-      alignedAvatarWidth,
+      ...alignedAvatarWidth,
     },
     previewAligned: {
       ...alignedPreviewWidth,

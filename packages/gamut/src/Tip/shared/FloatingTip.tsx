@@ -3,8 +3,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
 import { useMeasure } from 'react-use';
 
-import { Box } from '../../Box';
-import { Popover } from '../../Popover';
+import { Box, FlexBox } from '../../Box';
 import { PreviewTipContents } from '../PreviewTip/elements';
 import { FloatingTipBody, TargetContainer } from './elements';
 import { narrowWidth } from './styles';
@@ -114,9 +113,10 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
       >
         {children}
       </TargetContainer>
-      <Popover
+      <FloatingTipBody
         {...popoverAlignments}
         animation="fade"
+        dims={dims}
         horizontalOffset={offset}
         isOpen={isHoverType ? isOpen : !isTipHidden}
         outline
@@ -126,16 +126,15 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         variant="secondary"
         widthRestricted={false}
       >
-        <FloatingTipBody
+        <FlexBox
           alignItems={isHoverType ? undefined : 'flex-start'}
-          dims={dims}
           flexDirection="column"
           ref={childRef}
           width={narrow ? narrowWidth : undefined}
         >
           {contents}
-        </FloatingTipBody>
-      </Popover>
+        </FlexBox>
+      </FloatingTipBody>
     </Box>
   );
 };

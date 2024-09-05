@@ -65,6 +65,22 @@ export const PreviewTipContents: React.FC<PreviewTipContentsProps> = ({
   truncateLines = 4,
   username,
 }) => {
+  const gridTemplateAreas = useMemo(() => {
+    if (!avatar) return defaultGridTemplate;
+
+    let avatarGridTemplateString = '';
+
+    [info, overline, username].forEach((el) => {
+      if (el)
+        avatarGridTemplateString = avatarGridTemplateString.concat(
+          `\n`,
+          avatarGridTemplate
+        );
+    });
+
+    return avatarGridTemplateString;
+  }, [avatar, info, overline, username]);
+
   const contents = useMemo(() => {
     return loading ? (
       <PreviewTipBodyShimmer avatar={avatar} truncateLines={truncateLines} />
@@ -94,7 +110,7 @@ export const PreviewTipContents: React.FC<PreviewTipContentsProps> = ({
 
   return (
     <GridBox
-      gridTemplateAreas={avatar ? avatarGridTemplate : defaultGridTemplate}
+      gridTemplateAreas={gridTemplateAreas}
       gridTemplateColumns={avatar ? avatarColumnTemplate : '1fr'}
       rowGap={4}
     >
