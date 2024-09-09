@@ -56,6 +56,9 @@ export const strokeButtonVariants = templateVariants(
     borderColor: variant,
     bg: 'transparent',
     color: variant,
+    [ButtonSelectors.HOVER]: {
+      bg: 'background-hover',
+    },
     [ButtonSelectors.OUTLINE]: {
       borderColor: variant,
     },
