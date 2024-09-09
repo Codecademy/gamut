@@ -43,8 +43,11 @@ describe('IconButton', () => {
   it('renders a tip with repetition removed', async () => {
     const { view } = renderView({});
 
-    view.getByRole('button', { name: label });
+    const button = view.getByRole('button', { name: label });
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore: We need to update the rest of the testing suite to use the correct types (which are reliant on upgrading Node)
+    expect(button).toHaveAccessibleDescription(tipText);
     expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
       tipText
     );
