@@ -41,10 +41,12 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
 
   const isFloating = placement === 'floating';
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
+
   const description = useMemo(
     () => getPreviewDescription({ linkDescription, overline, username }),
     [linkDescription, overline, username]
   );
+
   const tipProps = {
     alignment,
     avatar,

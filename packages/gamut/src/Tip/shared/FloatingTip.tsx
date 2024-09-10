@@ -81,16 +81,14 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
     : undefined;
 
   const contents = isPreviewType ? (
-    <>
-      <PreviewTipContents
-        avatar={avatar}
-        info={info}
-        loading={loading}
-        overline={overline}
-        truncateLines={truncateLines}
-        username={username}
-      />
-    </>
+    <PreviewTipContents
+      avatar={avatar}
+      info={info}
+      loading={loading}
+      overline={overline}
+      truncateLines={truncateLines}
+      username={username}
+    />
   ) : (
     info
   );

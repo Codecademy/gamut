@@ -37,7 +37,6 @@ export const RaisedDiv = styled.div<
   widthStates
 );
 
-// TO-DO -- prob should use variance compose, only needs left
 export const Beak = styled(Box)<
   StyleProps<typeof popoverStates> &
     StyleProps<typeof outlineVariants> &
