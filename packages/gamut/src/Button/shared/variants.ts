@@ -1,4 +1,4 @@
-import { theme, variant } from '@codecademy/gamut-styles';
+import { theme, transitionConcat, variant } from '@codecademy/gamut-styles';
 
 import { ButtonSelectors } from '../../ButtonBase/ButtonBase';
 import { buttonVariants, templateVariants } from './styles';
@@ -33,6 +33,7 @@ export const textButtonVariants = templateVariants(
     [ButtonSelectors.HOVER]: {
       color: variant,
       bg: 'background-hover',
+      transition: transitionConcat(['background-color'], 'fast', 'ease-in'),
     },
     [ButtonSelectors.FOCUS_VISIBLE]: {
       color: variant,
@@ -58,6 +59,7 @@ export const strokeButtonVariants = templateVariants(
     color: variant,
     [ButtonSelectors.HOVER]: {
       bg: 'background-hover',
+      transition: transitionConcat(['background-color'], 'fast', 'ease-in'),
     },
     [ButtonSelectors.OUTLINE]: {
       borderColor: variant,

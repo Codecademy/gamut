@@ -60,7 +60,6 @@ export const buttonStyles = system.css({
     transition: transitionConcat(['opacity'], 'fast', 'ease-in'),
     position: 'absolute',
     borderRadius: 'md',
-    bg: 'text',
     inset: -2,
     opacity: 0,
     zIndex: 0,
