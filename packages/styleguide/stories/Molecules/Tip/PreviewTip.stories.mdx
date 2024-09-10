@@ -72,12 +72,12 @@ The `loading` prop will render a <LinkTo component="Shimmer">`Shimmer`</LinkTo> 
 
 <Canvas>
   <Story name="Loading PreviewTip">
-  {(args) => (
+    {(args) => (
       <FlexBox center py={156}>
-        <PreviewTip loading  {...args} linkDescription={false} />
+        <PreviewTip loading {...args} linkDescription={false} />
       </FlexBox>
     )}
-   </Story>
+  </Story>
 </Canvas>
 
 ## Truncation
@@ -86,10 +86,10 @@ The `truncateLines` prop allows you to set the maximum number of lines that the 
 
 <Canvas>
   <Story name="Truncation">
-  {(args) => (
-      <FlexBox  py={156} width='100%' justifyContent="space-around">
+    {(args) => (
+      <FlexBox py={156} width="100%" justifyContent="space-around">
         <PreviewTip {...args} truncateLines={2} alignment="top-right" />
-        <PreviewTip {...args} truncateLines={5} alignment="bottom-left"/>
+        <PreviewTip {...args} truncateLines={5} alignment="bottom-left" />
       </FlexBox>
     )}
   </Story>

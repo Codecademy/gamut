@@ -60,7 +60,7 @@ export const Popover: React.FC<PopoverProps> = ({
   variant,
   targetRef,
   verticalOffset = variant === 'secondary' ? 15 : 20,
-  widthRestricted = true,
+  widthRestricted,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const [isInViewport, setIsInViewport] = useState(true);
