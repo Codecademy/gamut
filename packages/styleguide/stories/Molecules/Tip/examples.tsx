@@ -7,7 +7,8 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { SmileyIndifferentIcon } from '@codecademy/gamut-icons';
-import { useRef } from 'react';
+import { timingValues } from '@codecademy/gamut-styles';
+import { useRef, useState } from 'react';
 
 export const InfoTipLinkExample = () => {
   const ref = useRef<HTMLButtonElement>(null);
@@ -49,6 +50,32 @@ export const AvatarExample = () => {
         username="@coolguy"
         width={32}
       />
+    </FlexBox>
+  );
+};
+
+export const LoadingTip = () => {
+  const [load, setIsTempLoad] = useState(false);
+
+  const onFocus = () => {
+    setIsTempLoad(true);
+    setTimeout(() => setIsTempLoad(false), 5000);
+  };
+
+  return (
+    <FlexBox center py={96} mt={16}>
+      <PreviewTip
+        height={32}
+        linkDescription={load ? 'loading...' : 'test'}
+        loading={load}
+        onFocus={onFocus}
+        truncateLines={1}
+        width={32}
+        overline="overline"
+        href="/test"
+      >
+        I am a test tooltip
+      </PreviewTip>
     </FlexBox>
   );
 };

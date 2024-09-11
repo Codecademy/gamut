@@ -5,7 +5,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { LinkTo } from '~styleguide/blocks';
 
-import { AvatarExample } from './examples.tsx';
+import { AvatarExample, LoadingTip } from './examples.tsx';
 
 <Meta
   title={title}
@@ -74,7 +74,7 @@ The `loading` prop will render a <LinkTo component="Shimmer">`Shimmer`</LinkTo> 
   <Story name="Loading PreviewTip">
     {(args) => (
       <FlexBox center py={156}>
-        <PreviewTip loading {...args} linkDescription={false} />
+        <LoadingTip />
       </FlexBox>
     )}
   </Story>

@@ -1,5 +1,12 @@
 import { useId } from '@reach/auto-id';
-import { ComponentProps, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  ComponentProps,
+  FocusEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { Anchor, Text } from '../..';
 import { FloatingTip } from '../shared/FloatingTip';
@@ -34,10 +41,22 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
   const descriptionId = useId();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
+  const [isLive, setIsLive] = useState(false);
 
   useEffect(() => {
     setLoaded(true);
   }, []);
+
+  const onFocus = (event: FocusEvent<HTMLAnchorElement>) => {
+    // Will read text in case user is focused on the link as it loads in content
+    setIsLive(true);
+    rest?.onFocus?.(event);
+  };
+
+  const onBlur = (event: FocusEvent<HTMLAnchorElement>) => {
+    setIsLive(false);
+    rest?.onBlur?.(event);
+  };
 
   const isFloating = placement === 'floating';
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
@@ -61,7 +80,13 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
 
   return (
     <Tip {...tipProps} type="preview">
-      <Text aria-hidden aria-busy={loading} screenreader id={descriptionId}>
+      <Text
+        aria-hidden={!isLive}
+        aria-live={isLive ? 'polite' : 'off'}
+        aria-busy={loading}
+        screenreader
+        id={descriptionId}
+      >
         {loading && !linkDescription
           ? 'Preview content is loading '
           : `${description}`}
@@ -73,6 +98,8 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
         aria-describedby={descriptionId}
         display={avatar && rest?.display === undefined ? 'flex' : rest?.display}
         tipType={avatar ? 'avatar' : 'anchor'}
+        onFocus={onFocus}
+        onBlur={onBlur}
       >
         {avatar || children}
       </PreviewTipAnchor>
