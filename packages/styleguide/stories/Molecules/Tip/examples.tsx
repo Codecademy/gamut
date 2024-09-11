@@ -7,7 +7,6 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { SmileyIndifferentIcon } from '@codecademy/gamut-icons';
-import { timingValues } from '@codecademy/gamut-styles';
 import { useRef, useState } from 'react';
 
 export const InfoTipLinkExample = () => {
@@ -59,7 +58,7 @@ export const LoadingTip = () => {
 
   const onFocus = () => {
     setIsTempLoad(true);
-    setTimeout(() => setIsTempLoad(false), 5000);
+    setTimeout(() => setIsTempLoad(false), 4000);
   };
 
   return (
