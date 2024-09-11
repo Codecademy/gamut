@@ -154,3 +154,45 @@ export const platformPalette = {
   ...flattenScale(platformSwatches),
   ...truePlatformColors,
 } as const;
+
+/**
+ * Enterprise Colors
+ */
+
+export const enterpriseSwatches = {
+  hotPink: {
+    '100': '#e83e8c',
+    '400': '#c22c5a',
+  },
+  enterpriseNavy: {
+    '100': '#212d56',
+    '400': '#141c36',
+  },
+  enterpriseBeige: {
+    '100': '#F7F6F2',
+    '400': '#ebe9df',
+  },
+  enterpriseGreen: {
+    '0': '#48ac2c',
+  },
+  enterpriseYellow: {
+    '0': '#ffc107',
+  },
+  enterpriseRed: {
+    '0': '#dc3545',
+  },
+} as const;
+
+const trueEnterpriseColors = {
+  hotPink: enterpriseSwatches.hotPink[100],
+  enterpriseNavy: enterpriseSwatches.enterpriseNavy[400],
+  enterpriseBeige: enterpriseSwatches.enterpriseBeige[400],
+  enterpriseGreen: enterpriseSwatches.enterpriseGreen[0],
+  enterpriseYellow: enterpriseSwatches.enterpriseYellow[0],
+  enterpriseRed: enterpriseSwatches.enterpriseRed[0],
+} as const;
+
+export const enterprisePalette = {
+  ...flattenScale(enterpriseSwatches),
+  ...trueEnterpriseColors,
+} as const;
