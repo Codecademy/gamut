@@ -7,37 +7,65 @@ export const enterpriseTheme = createTheme(coreTheme)
   .addColors(enterprisePalette)
   .addColorModes('light', {
     light: {
-      text: 'enterpriseNavy-400',
-      primary: {
-        _: 'hotPink-100',
-        hover: 'hotPink-400',
-      },
-      secondary: {
-        _: 'enterpriseNavy-400',
-        hover: 'enterpriseNavy-100',
-      },
-      interface: {
-        _: 'hotPink-100',
-        hover: 'hotPink-400',
+      text: {
+        _: 'gray-900',
+        accent: 'blue',
+        disabled: 'gray-500',
+        secondary: 'gray-500',
       },
       feedback: {
-        error: 'enterpriseRed-0',
-        success: 'enterpriseGreen-0',
-        warning: 'enterpriseYellow-0',
+        error: 'red',
+        success: 'green',
+        warning: 'yellow',
+      },
+      background: {
+        _: 'white',
+        contrast: 'white',
+        current: 'white',
+        primary: 'beige',
+        selected: 'blue-50',
+        disabled: 'gray-100',
+        hover: 'gray-200',
+      },
+      primary: {
+        _: 'blue',
+        hover: 'blue-400',
+        inverse: 'white',
+      },
+      secondary: {
+        _: 'gray-900',
+        hover: 'gray-800',
+      },
+      interface: {
+        _: 'blue',
+        hover: 'blue-400',
+      },
+      danger: {
+        _: 'red',
+        hover: 'red-600',
       },
     },
     dark: {
       background: {
-        _: 'enterpriseNavy-400',
-        current: 'navy-800',
-        primary: 'navy-900',
-        selected: 'navy-700',
-        disabled: 'navy-500',
-        hover: 'navy-600',
+        _: 'gray-900',
+        current: 'gray-800',
+        primary: 'gray-900',
+        selected: 'gray-700',
+        disabled: 'gray-500',
+        hover: 'gray-600',
+      },
+      primary: {
+        _: 'skyBlue',
+        hover: 'skyBlue-100',
+        inverse: 'blue',
+      },
+      secondary: {
+        _: 'white',
+        hover: 'blue-50',
       },
       interface: {
-        _: 'hotPink-100',
-        hover: 'hotPink-400',
+        _: 'white',
+        hover: 'blue-50',
       },
     },
   })
