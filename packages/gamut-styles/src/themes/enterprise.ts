@@ -13,11 +13,7 @@ export const enterpriseTheme = createTheme(coreTheme)
         disabled: 'gray-500',
         secondary: 'gray-500',
       },
-      feedback: {
-        error: 'red',
-        success: 'green',
-        warning: 'yellow',
-      },
+
       background: {
         _: 'white',
         contrast: 'white',
@@ -46,6 +42,12 @@ export const enterpriseTheme = createTheme(coreTheme)
       },
     },
     dark: {
+      text: {
+        _: 'white',
+        accent: 'blue',
+        disabled: 'gray-100',
+        secondary: 'gray-200',
+      },
       background: {
         _: 'gray-900',
         current: 'gray-800',
