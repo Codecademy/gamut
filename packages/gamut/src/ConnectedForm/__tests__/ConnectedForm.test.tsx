@@ -91,7 +91,7 @@ describe('ConnectedForm', () => {
       view
     );
 
-    doBaseFormActions(selectField, textField, checkboxField, radioOption);
+    await doBaseFormActions(selectField, textField, checkboxField, radioOption);
 
     await act(async () => {
       fireEvent.submit(view.getByRole('button'));
@@ -225,12 +225,65 @@ describe('ConnectedForm', () => {
         radioOption,
       } = getBaseCases(view);
 
-      doBaseFormActions(selectField, textField, checkboxField, radioOption);
+      await doBaseFormActions(
+        selectField,
+        textField,
+        checkboxField,
+        radioOption
+      );
 
       expect(checkboxField.checked).toEqual(true);
       expect(selectField.value).toEqual(selectValue);
       expect(textField.value).toEqual(textValue);
       expect(radioOption.value).toEqual(radioValue);
+      await waitFor(() => expect(view.getByRole('button')).not.toBeDisabled());
+    });
+  });
+
+  describe('onTouched validation', () => {
+    it('disables the submit button when by default when required fields are incomplete', async () => {
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const { view } = renderView({
+        children: <PlainConnectedFields onChangeValidation />,
+        validation: 'onTouched',
+        validationRules,
+        defaultValues,
+        onSubmit,
+      });
+
+      expect(view.getByRole('button')).toBeDisabled();
+    });
+
+    it('enables the submit button after the required fields are completed', async () => {
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const { view } = renderView({
+        children: <PlainConnectedFields onChangeValidation />,
+        validation: 'onTouched',
+        validationRules,
+        defaultValues,
+        onSubmit,
+      });
+
+      const {
+        checkboxField,
+        selectField,
+        textField,
+        radioOption,
+      } = getBaseCases(view);
+
+      await act(async () => {
+        doBaseFormActions(selectField, textField, checkboxField, radioOption);
+      });
+
+      expect(checkboxField.checked).toEqual(true);
+      expect(selectField.value).toEqual(selectValue);
+      expect(textField.value).toEqual(textValue);
+      expect(radioOption.value).toEqual(radioValue);
+
       await waitFor(() => expect(view.getByRole('button')).not.toBeDisabled());
     });
   });

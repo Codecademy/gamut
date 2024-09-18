@@ -36,6 +36,12 @@ export interface FormContextProps {
    */
   validationRules?: { string?: RegisterOptions };
   /**
+   * Which react hook form mode we are going to use for validation.
+   * If you use the onTouched mode the submit button will be disabled until all
+   * required fields are completed.
+   */
+  validationMode: Mode;
+  /**
    * Sets if form submission was successful - if `undefined` will fall back to react-hook-forms native formState.isSubmitSuccessful.
    */
   wasSubmitSuccessful?: boolean;
@@ -150,6 +156,7 @@ export const ConnectedForm = forwardRef(
         resetOnSubmit,
         validationRules,
         wasSubmitSuccessful,
+        validationMode: validation,
       };
     }, [
       disableFieldsOnSubmit,
@@ -157,6 +164,7 @@ export const ConnectedForm = forwardRef(
       resetOnSubmit,
       validationRules,
       wasSubmitSuccessful,
+      validation,
     ]);
 
     return (
