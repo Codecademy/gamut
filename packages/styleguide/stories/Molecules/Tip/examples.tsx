@@ -73,7 +73,6 @@ export const LoadingTip = () => {
         linkDescription={load ? 'loading...' : 'test'}
         loading={load}
         onFocus={onFocus}
-        overline="overline"
         truncateLines={1}
         width={32}
       >
