@@ -62,18 +62,22 @@ export const LoadingTip = () => {
   };
 
   return (
-    <FlexBox center py={96} mt={16}>
+    <FlexBox justifyContent="space-between" py={96} mt={16} width="100%">
+      <PreviewTip linkDescription="loading..." loading href="/test">
+        I am a perpetually loading preview.
+      </PreviewTip>
       <PreviewTip
+        alignment="bottom-left"
         height={32}
+        href="/test"
         linkDescription={load ? 'loading...' : 'test'}
         loading={load}
         onFocus={onFocus}
+        overline="overline"
         truncateLines={1}
         width={32}
-        overline="overline"
-        href="/test"
       >
-        I am a test tooltip
+        I will show loading for a few seconds on keyboard focus.
       </PreviewTip>
     </FlexBox>
   );
