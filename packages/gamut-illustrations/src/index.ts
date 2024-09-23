@@ -33,6 +33,7 @@ export * from './MobilePhone';
 export * from './MoneyBack';
 export * from './New';
 export * from './NumberBlocks';
+export * from './StackedPages';
 export * from './OfficeAnnouncement';
 export * from './Onboarding';
 export * from './Plant';
