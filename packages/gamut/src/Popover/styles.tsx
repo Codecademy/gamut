@@ -96,7 +96,7 @@ export const beakSize = variant({
 });
 
 export const patternContainerBaseStyles = {
-  bg: 'background',
+  bg: 'transparent',
   borderRadius: 'sm',
   overflow: 'hidden',
   position: 'absolute',
