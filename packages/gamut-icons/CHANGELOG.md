@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.31.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.30.1...@codecademy/gamut-icons@9.31.0) (2024-09-23)
+
+### Features
+
+- **Icons:** add AssessmentsIcon ([#2937](https://github.com/Codecademy/gamut/issues/2937)) ([f7780f8](https://github.com/Codecademy/gamut/commit/f7780f8e13262f2e0bfaa6d84df68ebb46e413f1))
+
 ### [9.30.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.30.0...@codecademy/gamut-icons@9.30.1) (2024-08-27)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
