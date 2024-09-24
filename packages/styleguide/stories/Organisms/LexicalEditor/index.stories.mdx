@@ -1,0 +1,28 @@
+import { Text, PlaygroundApp } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+<Meta
+  title={title}
+  component={PlaygroundApp}
+  parameters={{
+    subtitle: 'Lexical Editor PlaygroundApp.',
+    source: 'gamut',
+    status: 'updating',
+  }}
+/>
+
+<Canvas>
+  <Story name="Basics">{(args) => <PlaygroundApp {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Basics" />
+
+## Full example
+
+<Canvas>
+  <Story name="Full example">
+    {(args) => <PlaygroundApp {...args} />}
+  </Story>
+</Canvas>
+
