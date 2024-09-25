@@ -54,10 +54,9 @@ export const AvatarExample = () => {
 };
 
 export const LoadingTip = () => {
-  const [load, setIsTempLoad] = useState(false);
+  const [load, setIsTempLoad] = useState(true);
 
   const onFocus = () => {
-    setIsTempLoad(true);
     setTimeout(() => setIsTempLoad(false), 4000);
   };
 
