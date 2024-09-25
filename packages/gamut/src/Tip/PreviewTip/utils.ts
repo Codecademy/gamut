@@ -9,3 +9,12 @@ export const getPreviewDescription = ({
     username ? `${username} ` : ''
   }${linkDescription}`;
 };
+
+export const getPreviewLabel = ({
+  avatar,
+  children,
+}: Pick<PreviewTipProps, 'avatar' | 'children'>) => {
+  const textChildren = typeof children === 'string' ? `${children} ` : '';
+
+  return avatar ? 'Profile Preview:' : `${textChildren}Link Preview:`;
+};
