@@ -1,5 +1,4 @@
 import { useId } from '@reach/auto-id';
-import { set } from 'lodash';
 import {
   ComponentProps,
   FocusEvent,
