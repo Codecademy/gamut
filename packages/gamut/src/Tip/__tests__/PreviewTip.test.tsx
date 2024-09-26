@@ -5,6 +5,7 @@ import userEvent from '@testing-library/user-event';
 import { PreviewTip } from '../PreviewTip';
 
 const info = 'I am information';
+const infoText = `Preview: ${info}`;
 const onClick = jest.fn();
 const overline = 'overline';
 const username = 'username';
@@ -23,7 +24,7 @@ describe('PreviewTip', () => {
         username,
       });
 
-      view.getByText(`${overline} ${username} ${info}`);
+      view.getByText(`Preview: ${overline} ${username} ${info}`);
     });
   });
 
@@ -33,7 +34,7 @@ describe('PreviewTip', () => {
     await waitFor(() => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore: We need to update the rest of the testing suite to use the correct types (which are reliant on upgrading Node)
-      expect(view.getByRole('link')).toHaveAccessibleDescription(info);
+      expect(view.getByRole('link')).toHaveAccessibleDescription(infoText);
     });
   });
 
@@ -52,7 +53,7 @@ describe('PreviewTip', () => {
       await waitFor(() => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore: We need to update the rest of the testing suite to use the correct types (which are reliant on upgrading Node)
-        expect(view.getByRole('link')).toHaveAccessibleDescription(info);
+        expect(view.getByRole('link')).toHaveAccessibleDescription(infoText);
       });
     });
 
@@ -61,12 +62,12 @@ describe('PreviewTip', () => {
         placement: 'floating',
       });
 
-      expect(view.queryAllByText(info).length).toBe(1);
+      expect(view.queryAllByText(info).length).toBe(0);
 
       userEvent.hover(view.getByRole('link'));
 
       await waitFor(() => {
-        expect(view.queryAllByText(info).length).toBe(2);
+        expect(view.queryAllByText(info).length).toBe(1);
       });
     });
 

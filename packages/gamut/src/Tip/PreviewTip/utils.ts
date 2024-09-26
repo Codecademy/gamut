@@ -5,7 +5,7 @@ export const getPreviewDescription = ({
   overline,
   username,
 }: Pick<PreviewTipProps, 'linkDescription' | 'overline' | 'username'>) => {
-  return `Preview: ${overline ? `${overline} ` : ''} ${
+  return `Preview: ${overline ? `${overline} ` : ''}${
     username ? `${username} ` : ''
   }${linkDescription}`;
 };
