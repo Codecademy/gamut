@@ -18,7 +18,7 @@ import {
   tipDefaultProps,
 } from '../shared/types';
 import { PreviewTipAnchor } from './elements';
-import { getPreviewDescription, getPreviewLabel } from './utils';
+import { getPreviewDescription } from './utils';
 
 export type PreviewTipProps = ComponentProps<typeof Anchor> &
   Pick<TipBaseProps, 'placement'> &
@@ -61,11 +61,10 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
   const isFloating = placement === 'floating';
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
 
-  const label = getPreviewLabel({ avatar, children });
-  const description = useMemo(
-    () => getPreviewDescription({ linkDescription, overline, username }),
-    [linkDescription, overline, username]
-  );
+  const description = useMemo(() => {
+    const text = getPreviewDescription({ linkDescription, overline, username });
+    return loading ? 'Preview content is loading ' : text;
+  }, [loading, linkDescription, overline, username]);
 
   const tipProps = {
     alignment,
@@ -81,22 +80,12 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
 
   return (
     <Tip {...tipProps} type="preview">
-      <Text
-        aria-hidden={!isLive}
-        aria-live={isLive ? 'assertive' : 'off'}
-        aria-busy={loading}
-        screenreader
-      >
-        <div id={descriptionId}>
-          {loading && !linkDescription
-            ? 'Preview content is loading '
-            : `${description}`}
-        </div>
+      <Text aria-hidden={!isLive} aria-live="polite" screenreader>
+        <div id={descriptionId}>{description}</div>
       </Text>
 
       <PreviewTipAnchor
         {...rest}
-        aria-label={label}
         aria-describedby={descriptionId}
         display={avatar && rest?.display === undefined ? 'flex' : rest?.display}
         tipType={avatar ? 'avatar' : 'anchor'}
