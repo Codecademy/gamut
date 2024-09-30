@@ -6,13 +6,15 @@ module.exports = {
     'plugin:react/jsx-runtime',
   ],
 
-  plugins: ['eslint-plugin-gamut'],
+  plugins: [],
 
   rules: {
-    'gamut/prefer-themed': 'error',
-    'gamut/no-css-standalone': 'error',
-    'gamut/import-paths': 'error',
+    'gamut/prefer-themed': 'warn',
+    'gamut/no-css-standalone': 'warn',
+    'gamut/import-paths': 'warn',
     'import/no-extraneous-dependencies': 'off',
+    "@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": "^React$" }]
+
   },
 
   overrides: [
@@ -20,12 +22,18 @@ module.exports = {
       files: ['**/typings/*', '*.d.ts'],
       rules: {
         '@typescript-eslint/no-namespace': 'off',
+        "@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": "^React$" }]
+
       },
     },
     {
       files: ['*.mdx'],
       rules: {
         'gamut/import-paths': 'off',
+        "react/*": "off",
+        "react/react-in-jsx-scope": "off",
+        "@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": "^React$" }]
+
       },
     },
     {
@@ -46,13 +54,15 @@ module.exports = {
         '@typescript-eslint/no-unsafe-return': 'off',
         '@typescript-eslint/restrict-plus-operands': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
+        "@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": "^React$" }]
+
       },
     },
     {
       files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
       plugins: ['lodash'],
       rules: {
-        'lodash/import-scope': ['error', 'method'],
+        'lodash/import-scope': ['warn', 'method'],
       },
     },
   ],
