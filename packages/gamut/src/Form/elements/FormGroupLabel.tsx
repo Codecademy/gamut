@@ -5,7 +5,7 @@ import { HTMLAttributes } from 'react';
 import * as React from 'react';
 
 import { FlexBox } from '../..';
-import { InfoTip, InfoTipProps } from '../../Tip';
+import { InfoTip, InfoTipProps } from '../../Tip/InfoTip';
 import { Text } from '../../Typography/Text';
 import { formBaseStyles, formFieldTextDisabledStyles } from '../styles';
 import { BaseInputProps } from '../types';

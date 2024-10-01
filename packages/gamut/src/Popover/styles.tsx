@@ -43,6 +43,13 @@ export const outlineVariants = variant({
   },
 });
 
+export const widthStates = states({
+  widthRestricted: {
+    minWidth: '4rem',
+    maxWidth: '16rem',
+  },
+});
+
 const beakVariantsArray = [
   'below-left',
   'below-right',
@@ -87,6 +94,14 @@ export const beakSize = variant({
     },
   },
 });
+
+export const patternContainerBaseStyles = {
+  bg: 'transparent',
+  borderRadius: 'sm',
+  overflow: 'hidden',
+  position: 'absolute',
+  width: '100%',
+} as const;
 
 const patternVariantArray = [
   'above-left',

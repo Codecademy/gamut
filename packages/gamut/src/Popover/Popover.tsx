@@ -169,15 +169,7 @@ export const Popover: React.FC<PopoverProps> = ({
         alignment={alignment}
         outline={outline ? 'outline' : 'boxShadow'}
         variant={variant}
-        widthRestricted={
-          variant === 'secondary'
-            ? alignment === 'centered'
-              ? 'centered'
-              : 'aligned'
-            : widthRestricted
-            ? 'popover'
-            : 'default'
-        }
+        widthRestricted={widthRestricted}
       >
         {beak && (
           <Beak

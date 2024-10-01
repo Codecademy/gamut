@@ -5,7 +5,7 @@ import { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 import * as React from 'react';
 
 import { FlexBox } from '../../Box';
-import { InfoTip, InfoTipProps } from '../../Tip';
+import { InfoTip, InfoTipProps } from '../../Tip/InfoTip';
 import {
   conditionalRadioInputStyles,
   conditionalRadioLabelStyles,

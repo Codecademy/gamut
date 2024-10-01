@@ -5,7 +5,7 @@ import { BoxProps } from '../Box';
 import { TextAreaProps } from '../Form';
 import { CheckboxPaddingProps } from '../Form/types';
 import { ColumnProps } from '../Layout';
-import { InfoTipProps } from '../Tip';
+import { InfoTipProps } from '../Tip/InfoTip';
 import { Text, TextProps } from '../Typography/Text';
 
 export interface BaseFormInputProps {
