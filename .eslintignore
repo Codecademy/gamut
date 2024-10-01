@@ -9,3 +9,6 @@ docs
 packages/gamut-icons/src/icons
 packages/gamut-patterns/src/patterns
 .nx
+packages/gamut/src/LexicalEditor
+packages/gamut/src/LexicalEditor/**/*.tsx
+packages/gamut/src/LexicalEditor/**/*.js
