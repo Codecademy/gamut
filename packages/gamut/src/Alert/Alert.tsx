@@ -1,10 +1,16 @@
 import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { breakpoints, useCurrentMode } from '@codecademy/gamut-styles';
 import { useId } from '@reach/auto-id';
-import { isValidElement, useMemo, useState } from 'react';
+import {
+  isValidElement,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import * as React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
-import { useMedia } from 'react-use';
 
 import { Rotation, ToolTip, WithChildrenProp } from '..';
 import { Box } from '../Box';
@@ -20,6 +26,28 @@ import {
   getAlertRightPadding,
   getGridTemplateColumns,
 } from './variants';
+
+const useResize = (ref: React.RefObject<HTMLElement>) => {
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+
+  const handleResize = useCallback(() => {
+    setWidth(ref.current?.offsetWidth ?? 0);
+    setHeight(ref.current?.offsetHeight ?? 0);
+  }, [ref]);
+
+  useEffect(() => {
+    window.addEventListener('load', handleResize);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('load', handleResize);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [ref, handleResize]);
+
+  return { width, height };
+};
 
 export type AlertType = keyof typeof alertVariants;
 export type AlertPlacements = 'inline' | 'floating';
@@ -57,7 +85,12 @@ export const Alert: React.FC<AlertProps> = ({
   placement = 'floating',
   ...props
 }) => {
-  const isDesktop = useMedia(`(min-width: ${breakpoints.xs})`);
+  const ref = useRef<HTMLDivElement>(null);
+  const { width } = useResize(ref);
+  const isDesktop = useMemo(() => {
+    return width > parseInt(breakpoints.xs, 10);
+  }, [width]);
+
   const activeAlert = alertVariants?.[type] ?? alertVariants.general;
   const { icon: Icon, bg } = activeAlert;
 
@@ -180,6 +213,7 @@ export const Alert: React.FC<AlertProps> = ({
       placement={placement}
       gridTemplateColumns={gridTemplateColumns}
       pr={alertRightPadding}
+      ref={ref}
       {...props}
     >
       <Icon size={32} aria-hidden p={8} />
