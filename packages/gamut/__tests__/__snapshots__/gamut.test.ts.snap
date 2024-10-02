@@ -80,6 +80,7 @@ exports[`Gamut Exported Keys 1`] = `
   "Pagination",
   "Popover",
   "PopoverContainer",
+  "PreviewTip",
   "ProgressBar",
   "RadialProgress",
   "Radio",

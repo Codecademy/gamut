@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [57.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.2.2...@codecademy/gamut@57.3.0) (2024-10-01)
+
+### Features
+
+- **PreviewTip:** add preview tip ([fc90775](https://github.com/Codecademy/gamut/commit/fc90775bdfead2cc5e9b6dbc36fef3796403a109))
+
 ### [57.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.2.1...@codecademy/gamut@57.2.2) (2024-09-23)
 
 **Note:** Version bump only for package @codecademy/gamut
