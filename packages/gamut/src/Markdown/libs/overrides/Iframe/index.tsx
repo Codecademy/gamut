@@ -3,7 +3,6 @@ import { FunctionComponent, HTMLAttributes } from 'react';
 
 import { Video } from '../../../../Video';
 // eslint-disable-next-line gamut/no-css-standalone
-import styles from './styles.module.scss';
 
 export interface IframeProps extends HTMLAttributes<HTMLIFrameElement> {
   src?: string;
@@ -20,8 +19,6 @@ export const Iframe: FunctionComponent<IframeProps> = (props) => {
     props.src &&
     [YOUTUBE_PATTERN, VIMEO_PATTERN].some((pattern) => pattern.test(props.src!))
   ) {
-    // const { width = 16, height = 9 } = props;
-
     return (
       <Video
         height={props?.height}

@@ -1,5 +1,4 @@
 import { PlayIcon } from '@codecademy/gamut-icons';
-import { theme } from '@codecademy/gamut-styles';
 import cx from 'classnames';
 import { useState } from 'react';
 import * as React from 'react';
@@ -24,9 +23,6 @@ const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
 /**
  * @remarks ReactPlayer has optional key 'wrapper' that we require for the onReady callback
  */
-
-const YOUTUBE_PATTERN = /youtu(be\.com|\.be)/;
-const VIMEO_PATTERN = /player\.vimeo\.com/;
 
 export type ReactPlayerWithWrapper = ReactPlayer & { wrapper: HTMLElement };
 
