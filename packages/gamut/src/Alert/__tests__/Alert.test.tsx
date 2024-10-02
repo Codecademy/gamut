@@ -7,6 +7,15 @@ const children = 'Hello';
 const onClose = jest.fn();
 const onClick = jest.fn();
 
+const mockUseMeasure = jest.fn(() => [jest.fn(), { width: 1600 }]);
+
+jest.mock('react-use', () => ({
+  ...jest.requireActual<{}>('react-use'),
+  get useMeasure() {
+    return mockUseMeasure;
+  },
+}));
+
 const renderView = setupRtl(Alert, {
   onClose,
   children,
