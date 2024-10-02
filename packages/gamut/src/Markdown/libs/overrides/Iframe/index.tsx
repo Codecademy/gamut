@@ -5,6 +5,7 @@ import { Video } from '../../../../Video';
 // eslint-disable-next-line gamut/no-css-standalone
 
 export interface IframeProps extends HTMLAttributes<HTMLIFrameElement> {
+  allow?: string;
   src?: string;
   title?: string;
   width?: number;
