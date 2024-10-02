@@ -3,11 +3,9 @@ import { Video } from '@codecademy/gamut';
 export const VideoWithPlaceholder = () => {
   return (
     <Video
-      placeholder="https://i.ytimg.com/vi/1y_kfWUCFDQ/maxresdefault.jpg"
-      videoUrl="https://www.youtube.com/watch?v=Yl8yy5tpVIM"
-      videoTitle="Workout with Rick Sanchez"
+      videoUrl="https://player.vimeo.com/video/188237476"
+      videoTitle="A Dream Within a Dream"
       placeholderImage="https://placekitten.com/400/300"
-      autoplay
     />
   );
 };
