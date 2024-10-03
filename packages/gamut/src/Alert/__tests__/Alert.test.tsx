@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
+import { ReactNode } from 'react';
 
 import { Alert } from '../Alert';
 
@@ -14,6 +15,10 @@ jest.mock('react-use', () => ({
   get useMeasure() {
     return mockUseMeasure;
   },
+}));
+
+jest.mock('../../Tip/Tooltip', () => ({
+  ToolTip: ({ children }: { children: ReactNode }) => <>{children}</>,
 }));
 
 const renderView = setupRtl(Alert, {
@@ -34,7 +39,7 @@ describe('Alert', () => {
     expect(onClose).toHaveBeenCalled();
   });
 
-  it('renders a clickable  button', () => {
+  it('renders a clickable button', () => {
     const { view } = renderView({ cta: { onClick, children: 'Click Me!' } });
 
     const cta = view.getByRole('button', { name: 'Click Me!' });
@@ -70,6 +75,8 @@ describe('Alert', () => {
   });
 
   it('does not render a clickable button and renders untruncated text when on the xs screen size', () => {
+    mockUseMeasure.mockReturnValueOnce([jest.fn(), { width: 400 }]);
+
     const { view } = renderView({});
 
     expect(view.queryByRole('button', { name: 'Expand' })).toBeNull();
