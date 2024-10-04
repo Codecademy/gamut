@@ -43,6 +43,10 @@ const youtubeMarkdown = `
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `;
 
+const vimeoMarkdown = `
+<iframe src="https://player.vimeo.com/video/188237476?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+`;
+
 const checkboxMarkdown = `
 - [ ] checkbox
 - [x] default checked checkbox
@@ -98,7 +102,17 @@ describe('<Markdown />', () => {
     );
   });
 
-  it('Render YouTube iframes using the Video component', () => {
+  it('Renders YouTube iframes using the Video component', () => {
+    renderView({ text: youtubeMarkdown });
+    screen.getByTitle(youtubeTitle);
+  });
+
+  it('Renders Vimeo iframes using the Video component', () => {
+    renderView({ text: vimeoMarkdown });
+    screen.getByTitle(youtubeTitle);
+  });
+
+  it('Renders YouTube iframes using the Video component', () => {
     renderView({ text: youtubeMarkdown });
     screen.getByTitle(youtubeTitle);
   });
