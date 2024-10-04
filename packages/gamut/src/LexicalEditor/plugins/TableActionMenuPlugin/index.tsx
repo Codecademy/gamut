@@ -1,5 +1,5 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
-import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
+// import { useLexicalEditable } from "@lexical/react/useLexicalEditable"
 import {
   $deleteTableColumn__EXPERIMENTAL,
   $deleteTableRow__EXPERIMENTAL,
@@ -751,7 +751,7 @@ export default function TableActionMenuPlugin({
   anchorElem = document.body,
   cellMerge = false
 }) {
-  const isEditable = useLexicalEditable()
+  const isEditable = null
   return createPortal(
     isEditable ? (
       <TableCellActionMenuContainer

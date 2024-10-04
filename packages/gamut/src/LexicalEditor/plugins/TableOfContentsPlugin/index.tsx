@@ -5,14 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import type {TableOfContentsEntry} from '@lexical/react/LexicalTableOfContentsPlugin';
+// import type {TableOfContentsEntry} from '@lexical/react/LexicalTableOfContentsPlugin';
 import type {HeadingTagType} from '@lexical/rich-text';
 import type {NodeKey} from 'lexical';
 
 import './index.scss';
 
 import {useLexicalComposerContext} from '@lexical/react/LexicalComposerContext';
-import {TableOfContentsPlugin as LexicalTableOfContentsPlugin} from '@lexical/react/LexicalTableOfContentsPlugin';
+// import {TableOfContentsPlugin as LexicalTableOfContentsPlugin} from '@lexical/react/LexicalTableOfContentsPlugin';
 import {useEffect, useRef, useState} from 'react';
 import * as React from 'react';
 
@@ -46,7 +46,7 @@ function isHeadingBelowTheTopOfThePage(element: HTMLElement): boolean {
 function TableOfContentsList({
   tableOfContents,
 }: {
-  tableOfContents: Array<TableOfContentsEntry>;
+  tableOfContents: Array<any>;
 }): JSX.Element {
   const [selectedKey, setSelectedKey] = useState('');
   const selectedIndex = useRef(0);
@@ -188,10 +188,11 @@ function TableOfContentsList({
 
 export default function TableOfContentsPlugin() {
   return (
-    <LexicalTableOfContentsPlugin>
-      {(tableOfContents) => {
-        return <TableOfContentsList tableOfContents={tableOfContents} />;
-      }}
-    </LexicalTableOfContentsPlugin>
+    <></>
+    // <LexicalTableOfContentsPlugin>
+    //   {/* {(tableOfContents) => {
+    //     return <TableOfContentsList tableOfContents={tableOfContents} />;
+    //   }} */}
+    // </LexicalTableOfContentsPlugin>
   );
 }
