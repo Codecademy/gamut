@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [57.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.3.0...@codecademy/gamut@57.3.1) (2024-10-04)
+
+### Bug Fixes
+
+- **FloatingTip:** fixes delay timeouts for hover + mouseover ([b644cac](https://github.com/Codecademy/gamut/commit/b644cac7b419933e6a20dcab308b050ad2d1d7c0))
+
 ## [57.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.2.2...@codecademy/gamut@57.3.0) (2024-10-01)
 
 ### Features
