@@ -5,11 +5,13 @@ import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
-import { useIsMounted } from '../../utils';
 import { Markdown } from '../index';
 
+const youtubeTitle = 'a fake youtube';
+
 jest.mock('react-player', () => ({
-  ...jest.requireActual<{}>('react-player'),
+  __esModule: true,
+  default: () => <iframe title={youtubeTitle} />,
 }));
 
 const basicMarkdown = `
@@ -57,12 +59,10 @@ describe('<Markdown />', () => {
     expect(document.querySelectorAll('code').length).toEqual(1);
   });
 
-  it('Renders html content in markdown', async () => {
-    const { view } = renderView({ text: htmlMarkdown });
+  it('Renders html content in markdown', () => {
+    renderView({ text: htmlMarkdown });
     expect(document.querySelectorAll('h1').length).toEqual(1);
     expect(document.querySelectorAll('h3').length).toEqual(1);
-    console.log(view.debug());
-    await screen.findByRole('iframe');
     expect(document.querySelectorAll('iframe').length).toEqual(1);
   });
 
@@ -98,9 +98,9 @@ describe('<Markdown />', () => {
     );
   });
 
-  it('Wraps youtube iframes in a flexible container', () => {
+  it('Render YouTube iframes using the Video component', () => {
     renderView({ text: youtubeMarkdown });
-    screen.getByTestId('yt-iframe');
+    screen.getByTitle(youtubeTitle);
   });
 
   it('Wraps the markdown in a div by default (block)', () => {
