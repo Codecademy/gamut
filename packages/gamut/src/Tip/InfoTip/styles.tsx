@@ -25,7 +25,7 @@ export const infoButtonStyles = css({
   height: 24,
   width: 24,
   [ButtonSelectors.HOVER]: {
-    color: textColor,
+    bg: 'background-hover',
   },
   [ButtonSelectors.FOCUS_VISIBLE]: {
     color: textColor,
