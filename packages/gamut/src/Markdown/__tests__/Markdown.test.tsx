@@ -66,7 +66,7 @@ describe('<Markdown />', () => {
 | col 1 is |  left-aligned | $1600 |
 | col 2 is |    centered   |   $12 |
 | col 3 is | right-aligned |    $1 |
-    `;
+`;
     renderView({ text: table });
     expect(document.querySelectorAll('div.tableWrapper table').length).toEqual(
       1
