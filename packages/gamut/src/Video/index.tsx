@@ -1,22 +1,50 @@
 import { PlayIcon } from '@codecademy/gamut-icons';
-import cx from 'classnames';
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import { useState } from 'react';
 import * as React from 'react';
 import ReactPlayer from 'react-player';
 
+import { Box, FlexBox } from '../Box';
 import { useIsMounted } from '../utils';
-// eslint-disable-next-line gamut/no-css-standalone
-import styles from './styles/index.module.scss';
+
+const ReactVideoPlayer = styled(ReactPlayer)(
+  css({
+    width: '100% !important',
+    height: '100% !important',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    border: 'none',
+    padding: 0,
+    '&:focus-visible': {
+      outlineOffset: '3px',
+    },
+  })
+);
 
 const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
   return (
-    <div
-      className={styles.overlay}
+    <FlexBox
       role="button"
       aria-label={`play video${videoTitle ? `: ${videoTitle}` : ''}`}
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      position="relative"
+      color="white"
+      width="100%"
+      height="100%"
+      opacity="0.5"
     >
-      <PlayIcon className={styles.hoverButton} />
-    </div>
+      <PlayIcon
+        width="15%"
+        height="26.7%"
+        minWidth="75px"
+        minHeight="75px"
+        color="white"
+      />
+    </FlexBox>
   );
 };
 
@@ -54,16 +82,21 @@ export const Video: React.FC<VideoProps> = ({
   const [loading, setLoading] = useState(true);
   const isMounted = useIsMounted();
   return (
-    <div
-      className={cx(styles.videoWrapper, loading && styles.loading, className)}
+    <Box
+      position="relative"
+      width="100%"
+      pt={'56.25%' as any}
+      borderRadius="md"
+      overflow="hidden"
+      // bg={loading ? 'blue-1100'}
     >
       {isMounted ? (
-        <ReactPlayer
+        <ReactVideoPlayer
+          className={className}
           url={videoUrl}
           light={placeholderImage}
           title={videoTitle}
           playing={autoplay}
-          className={styles.iframe}
           controls={controls === undefined ? true : controls}
           loop={loop}
           muted={muted}
@@ -75,6 +108,6 @@ export const Video: React.FC<VideoProps> = ({
           onPlay={onPlay}
         />
       ) : null}
-    </div>
+    </Box>
   );
 };
