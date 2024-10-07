@@ -42,14 +42,6 @@ const checkboxMarkdown = `
 - [ ] third checkbox
 `;
 
-const table = `
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
-`;
-
 const renderView = setupRtl(Markdown);
 
 describe('<Markdown />', () => {
@@ -68,6 +60,13 @@ describe('<Markdown />', () => {
   });
 
   it('Renders custom tables in markdown', () => {
+    const table = `
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
+    `;
     renderView({ text: table });
     expect(document.querySelectorAll('div.tableWrapper table').length).toEqual(
       1
@@ -75,6 +74,13 @@ describe('<Markdown />', () => {
   });
 
   it('Skips rendering custom tables in markdown when skipProcessing.table is true', () => {
+    const table = `
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
+    `;
     renderView({
       skipDefaultOverrides: { table: true },
       text: table,
