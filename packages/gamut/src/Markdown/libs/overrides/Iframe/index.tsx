@@ -2,7 +2,6 @@
 import { FunctionComponent, HTMLAttributes } from 'react';
 
 import { Video } from '../../../../Video';
-// eslint-disable-next-line gamut/no-css-standalone
 
 export interface IframeProps extends HTMLAttributes<HTMLIFrameElement> {
   allow?: string;
