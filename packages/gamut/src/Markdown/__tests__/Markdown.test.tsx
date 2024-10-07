@@ -11,7 +11,7 @@ const youtubeTitle = 'a fake youtube';
 
 jest.mock('react-player', () => ({
   __esModule: true,
-  default: () => <iframe title={youtubeTitle} />,
+  default: () => <iframe title={youtubeTitle} data-testid="player-mock" />,
 }));
 
 const basicMarkdown = `
@@ -45,6 +45,17 @@ const youtubeMarkdown = `
 
 const vimeoMarkdown = `
 <iframe src="https://player.vimeo.com/video/188237476?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+`;
+
+const videoMarkdown = `
+<video src="/example.webm" title="video" />
+`;
+
+const videoSourceMarkdown = `
+<video controls poster="/images/spaceghost.gif">
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+</video>
 `;
 
 const checkboxMarkdown = `
@@ -104,6 +115,12 @@ describe('<Markdown />', () => {
   it('Renders Vimeo iframes using the Video component', () => {
     renderView({ text: vimeoMarkdown });
     screen.getByTitle(youtubeTitle);
+  });
+
+  it('Renders video tags using the Video component if they have an src', () => {
+    renderView({ text: videoMarkdown });
+    screen.getByTitle(youtubeTitle);
+    screen.getByTestId('player-mock');
   });
 
   it('Renders YouTube iframes using the Video component', () => {

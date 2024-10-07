@@ -351,12 +351,14 @@ Vimeo and Youtube video iframes will be rendered by our Video component, otherwi
 
 <iframe src="https://player.vimeo.com/video/188237476?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Studio Ghibli in Real Life"></iframe>
 
-<iframe width="2314" height="1194" src="https://www.youtube.com/embed/Sx4xVyXHl60" title="[Ghibli Music Collection 2023] 🌈 Best Ghibli Piano Collection 🍉 BGM for work/relax/study" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<br/>
+
+<iframe width="1094" height="842" src="https://www.youtube.com/embed/zhDwjnYZiCo" title="Ghibli Coffee Shop ☕️ Music to put you in a better mood 🌿 lofi hip hop - lofi songs | study / relax" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ### Video
 
-Video with an src will be rendered by our Video component, otherwise they'll render as stated.
+`video`s with an `src` will be rendered by our Video component, otherwise they'll render as stated.
 
 <video src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" title="video" />
 
