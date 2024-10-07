@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [57.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.3.1...@codecademy/gamut@57.3.2) (2024-10-07)
+
+### Bug Fixes
+
+- **InfoTip:** background hover ([21686f3](https://github.com/Codecademy/gamut/commit/21686f3cdaaec71fa73cacd559e5afcc4e19ccd4))
+
 ### [57.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.3.0...@codecademy/gamut@57.3.1) (2024-10-04)
 
 ### Bug Fixes
