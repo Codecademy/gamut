@@ -1,17 +1,33 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
-import { HTMLAttributes } from 'react';
+import { DetailedHTMLProps, VideoHTMLAttributes } from 'react';
 
 import { Video } from '../../../../Video';
 // eslint-disable-next-line gamut/no-css-standalone
 
-export interface MarkdownVideoProps extends HTMLAttributes<HTMLVideoElement> {}
+export type MarkdownVideoProps = DetailedHTMLProps<
+  VideoHTMLAttributes<HTMLVideoElement>,
+  HTMLVideoElement
+>;
 
-export const MarkdownVideo: React.FC<MarkdownVideoProps> = ({
-  src,
-  title,
-  ...rest
-}) => {
-  /// pass the props we want to the Video components, or else, render it the way it is
+export const MarkdownVideo: React.FC<MarkdownVideoProps> = (props) => {
+  if (props?.src) {
+    // Sanitize the props to pass to the Video component
+    const videoProps = {
+      autoplay: props?.autoPlay,
+      className: props?.className,
+      controls: props?.controls,
+      height: Number(props?.height),
+      loop: props?.loop,
+      muted: props?.muted,
+      onPlay: props?.onPlay as () => void,
+      placeholderImage: props?.poster,
+      videoTitle: props?.title,
+      videoUrl: props?.src,
+      width: Number(props?.width),
+    };
 
-  return <Video videoUrl={src} videoTitle={title} />;
+    return <Video {...videoProps} />;
+  }
+  // eslint-disable-next-line jsx-a11y/media-has-caption
+  return <video {...props} />;
 };
