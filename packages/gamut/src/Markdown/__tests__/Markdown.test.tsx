@@ -7,11 +7,11 @@ import * as React from 'react';
 
 import { Markdown } from '../index';
 
-const youtubeTitle = 'a fake youtube';
+const mockTitle = 'a fake youtube';
 
 jest.mock('react-player', () => ({
   __esModule: true,
-  default: () => <iframe title={youtubeTitle} data-testid="player-mock" />,
+  default: () => <iframe title={mockTitle} />,
 }));
 
 const basicMarkdown = `
@@ -109,23 +109,26 @@ describe('<Markdown />', () => {
 
   it('Renders YouTube iframes using the Video component', () => {
     renderView({ text: youtubeMarkdown });
-    screen.getByTitle(youtubeTitle);
+    screen.getByTitle(mockTitle);
   });
 
   it('Renders Vimeo iframes using the Video component', () => {
     renderView({ text: vimeoMarkdown });
-    screen.getByTitle(youtubeTitle);
+    screen.getByTitle(mockTitle);
   });
 
   it('Renders video tags using the Video component if they have an src', () => {
     renderView({ text: videoMarkdown });
-    screen.getByTitle(youtubeTitle);
-    screen.getByTestId('player-mock');
+    screen.getByTitle(mockTitle);
+  });
+  it('Renders video tags using the Video component if they have an src', () => {
+    renderView({ text: videoSourceMarkdown });
+    expect(screen.queryByTitle(mockTitle)).toBeNull();
   });
 
   it('Renders YouTube iframes using the Video component', () => {
     renderView({ text: youtubeMarkdown });
-    screen.getByTitle(youtubeTitle);
+    screen.getByTitle(mockTitle);
   });
 
   it('Wraps the markdown in a div by default (block)', () => {
