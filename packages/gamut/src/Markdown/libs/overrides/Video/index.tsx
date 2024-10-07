@@ -14,13 +14,10 @@ export const MarkdownVideo: React.FC<MarkdownVideoProps> = (props) => {
     // Sanitize the props to pass to the Video component
     const videoProps = {
       autoplay: props?.autoPlay,
-      className: props?.className,
       controls: props?.controls,
       height: Number(props?.height),
       loop: props?.loop,
       muted: props?.muted,
-      onPlay: props?.onPlay as () => void,
-      placeholderImage: props?.poster,
       videoTitle: props?.title,
       videoUrl: props?.src,
       width: Number(props?.width),
