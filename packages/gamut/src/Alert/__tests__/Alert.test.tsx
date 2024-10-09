@@ -1,6 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
-import { ReactNode } from 'react';
 
 import { Alert } from '../Alert';
 
