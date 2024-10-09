@@ -17,10 +17,6 @@ jest.mock('react-use', () => ({
   },
 }));
 
-jest.mock('../../Tip/Tooltip', () => ({
-  ToolTip: ({ children }: { children: ReactNode }) => <>{children}</>,
-}));
-
 const renderView = setupRtl(Alert, {
   onClose,
   children,
