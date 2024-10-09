@@ -54,22 +54,31 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   const popoverAlignments = getPopoverAlignment({ alignment, type });
   const dims = getAlignmentWidths({ avatar, alignment, type });
 
+  let hoverDelay: NodeJS.Timeout | undefined;
+  let focusDelay: NodeJS.Timeout | undefined;
+
   const handleShowHideAction = ({ type }: FocusOrMouseEvent) => {
     if (type === 'focus' && !isOpen) {
-      runWithDelay(() => {
+      focusDelay = runWithDelay(() => {
         setIsOpen(true);
         setIsFocused(true);
       });
     }
-    if (type === 'blur' && isOpen) {
-      setIsOpen(false);
-      setIsFocused(false);
+    if (type === 'blur') {
+      if (focusDelay) clearTimeout(focusDelay);
+      if (isOpen) {
+        setIsOpen(false);
+        setIsFocused(false);
+      }
     }
     if (type === 'mouseenter' && !isOpen) {
-      runWithDelay(() => setIsOpen(true));
+      hoverDelay = runWithDelay(() => setIsOpen(true));
     }
-    if (type === 'mouseleave' && isOpen && !isFocused) {
-      setIsOpen(false);
+    if (type === 'mouseleave') {
+      if (hoverDelay) clearTimeout(hoverDelay);
+      if (isOpen && !isFocused) {
+        setIsOpen(false);
+      }
     }
   };
 
