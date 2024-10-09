@@ -27,47 +27,64 @@ const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
 export type ReactPlayerWithWrapper = ReactPlayer & { wrapper: HTMLElement };
 
 export type VideoProps = {
-  videoUrl: string;
-  videoTitle?: string;
-  placeholderImage?: string | boolean;
   autoplay?: boolean;
+  className?: string;
   controls?: boolean;
+  height?: number;
   loop?: boolean;
   muted?: boolean;
-  className?: string;
-  onReady?: (player: ReactPlayerWithWrapper) => void;
   onPlay?: () => void;
+  onReady?: (player: ReactPlayerWithWrapper) => void;
+  placeholderImage?: string | boolean;
+  videoTitle?: string;
+  videoUrl: string;
+  width?: number;
 };
 
 export const Video: React.FC<VideoProps> = ({
-  videoUrl,
-  videoTitle,
-  placeholderImage,
   autoplay,
+  className,
   controls,
+  height,
   loop,
   muted,
-  className,
-  onReady,
   onPlay,
+  onReady,
+  placeholderImage,
+  videoTitle,
+  videoUrl,
+  width,
 }) => {
   const [loading, setLoading] = useState(true);
   const isMounted = useIsMounted();
+
+  const config = {
+    youtube: {
+      playerVars: { color: 'white' },
+    },
+    vimeo: {
+      title: videoTitle,
+    },
+  };
+
   return (
     <div
       className={cx(styles.videoWrapper, loading && styles.loading, className)}
     >
       {isMounted ? (
         <ReactPlayer
-          url={videoUrl}
-          light={placeholderImage}
-          title={videoTitle}
-          playing={autoplay}
           className={styles.iframe}
+          config={config}
           controls={controls === undefined ? true : controls}
+          height={height}
+          light={placeholderImage}
           loop={loop}
           muted={muted}
           playIcon={<OverlayPlayButton videoTitle={videoTitle} />}
+          playing={autoplay}
+          title={videoTitle}
+          url={videoUrl}
+          width={width}
           onReady={(player: ReactPlayerWithWrapper) => {
             onReady?.(player);
             setLoading(false);

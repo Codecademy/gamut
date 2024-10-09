@@ -22,7 +22,7 @@
     "react-aria-tabpanel": "^4.4.0",
     "react-focus-on": "^3.5.1",
     "react-hook-form": "^7.21.2",
-    "react-player": "^2.3.1",
+    "react-player": "^2.16.0",
     "react-select": "^5.2.2",
     "react-truncate-markup": "^5.1.2",
     "react-use": "^15.3.8",
