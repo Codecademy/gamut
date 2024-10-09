@@ -115,6 +115,7 @@ export const useFormState = () => {
     validationRules,
     wasSubmitSuccessful,
     isSoloField,
+    validationMode,
   } = useContext(FormPropsContext);
 
   const { isSubmitting, isDirty, errors } = formState;
@@ -138,6 +139,7 @@ export const useFormState = () => {
     setFocus,
     setValue,
     useFieldArray,
+    validationMode,
     validationRules,
     watch,
   };
@@ -198,7 +200,7 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
 };
 
 export const useSubmitState = ({ loading, disabled }: SubmitContextProps) => {
-  const { formState } = useFormContext();
+  const { formState, validationMode } = useFormState();
 
   const isLoading =
     typeof loading === 'function' ? loading(formState) : loading;
@@ -206,8 +208,8 @@ export const useSubmitState = ({ loading, disabled }: SubmitContextProps) => {
   const isDisabled =
     typeof disabled === 'function'
       ? disabled(formState)
-      : disabled === undefined
-      ? formState.isValid
+      : disabled === undefined && validationMode === 'onTouched'
+      ? !formState.isValid
       : disabled;
 
   return { isLoading, isDisabled };
