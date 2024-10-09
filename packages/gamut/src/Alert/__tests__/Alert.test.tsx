@@ -1,6 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
-import { ReactNode } from 'react';
 
 import { Alert } from '../Alert';
 
@@ -15,10 +14,6 @@ jest.mock('react-use', () => ({
   get useMeasure() {
     return mockUseMeasure;
   },
-}));
-
-jest.mock('../../Tip/Tooltip', () => ({
-  ToolTip: ({ children }: { children: ReactNode }) => <>{children}</>,
 }));
 
 const renderView = setupRtl(Alert, {
