@@ -1,11 +1,18 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
 import { setupRtl } from '@codecademy/gamut-tests';
-import { act, screen } from '@testing-library/react';
+import { act, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
 import { Markdown } from '../index';
+
+jest.mock('../../PausableImage/BaseImage', () => ({ src }: { src: string }) => (
+  <>
+    <img alt="" src={`frozen-${src}`} />
+    <span>Pause animated image</span>
+  </>
+));
 
 const basicMarkdown = `
 # Heading 1
@@ -203,6 +210,30 @@ var test = true;
     });
 
     screen.getByRole('img');
+  });
+
+  it('renders a pausable image when the URL ends with .gif', async () => {
+    renderView({
+      text: `<img src="/image.gif"/>`,
+    });
+
+    // wait to find static image while loading pause ui
+    screen.getByRole('img');
+    // wait to find pause button
+    await waitFor(() => screen.findByText('Pause animated image'));
+  });
+
+  it(`doesn't render a pausable image when the URL doesn't end with .gif`, async () => {
+    renderView({
+      text: `<img src="http://google.com/"/>`,
+    });
+
+    // wait to find static image while loading pause ui
+    screen.getByRole('img');
+    // wait to find pause button
+    await waitFor(() =>
+      expect(screen.queryByText('Pause animated image')).toBeNull()
+    );
   });
 
   it('Allows passing in class names', () => {

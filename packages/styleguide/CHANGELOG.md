@@ -1916,7 +1916,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **PauseableImage:** :sparkles: Creating new pausable image component ([00c233d](https://github.com/Codecademy/gamut/commit/00c233d56498b819546b41c4dfba872618283044))
+- **PausableImage:** :sparkles: Creating new pausable image component ([00c233d](https://github.com/Codecademy/gamut/commit/00c233d56498b819546b41c4dfba872618283044))
 
 ### [55.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@55.0.4...@codecademy/styleguide@55.0.5) (2022-03-08)
 
