@@ -1,0 +1,7 @@
+{
+  "codeConnect": {
+    "include": ["packages/gamut/src/**"],
+    "exclude": [],
+    "parser": "react"
+  }
+}
