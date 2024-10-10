@@ -59,6 +59,7 @@ export const Alert: React.FC<AlertProps> = ({
 }) => {
   const [ref, { width }] = useMeasure<HTMLDivElement>();
   const isDesktop = useMemo(() => {
+    if (width === 0) return true; // default to desktop if we don't have a width
     return width > parseInt(breakpoints.xs, 10);
   }, [width]);
 
