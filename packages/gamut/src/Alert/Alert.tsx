@@ -4,7 +4,7 @@ import { useId } from '@reach/auto-id';
 import { isValidElement, useMemo, useState } from 'react';
 import * as React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
-import { useMedia } from 'react-use';
+import { useMeasure } from 'react-use';
 
 import { Rotation, ToolTip, WithChildrenProp } from '..';
 import { Box } from '../Box';
@@ -57,7 +57,12 @@ export const Alert: React.FC<AlertProps> = ({
   placement = 'floating',
   ...props
 }) => {
-  const isDesktop = useMedia(`(min-width: ${breakpoints.xs})`);
+  const [ref, { width }] = useMeasure<HTMLDivElement>();
+  const isDesktop = useMemo(() => {
+    if (width === 0) return true; // default to desktop if we don't have a width
+    return width > parseInt(breakpoints.xs, 10);
+  }, [width]);
+
   const activeAlert = alertVariants?.[type] ?? alertVariants.general;
   const { icon: Icon, bg } = activeAlert;
 
@@ -84,7 +89,7 @@ export const Alert: React.FC<AlertProps> = ({
   }, [placement, isDesktop]);
 
   const gridButtonOrder = useMemo(() => {
-    return isDesktop ? undefined : (['2', , 'auto'] as const);
+    return isDesktop ? 'auto' : '2';
   }, [isDesktop]);
 
   const gridTemplateColumns = useMemo(() => {
@@ -180,6 +185,7 @@ export const Alert: React.FC<AlertProps> = ({
       placement={placement}
       gridTemplateColumns={gridTemplateColumns}
       pr={alertRightPadding}
+      ref={ref}
       {...props}
     >
       <Icon size={32} aria-hidden p={8} />

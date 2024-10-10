@@ -1,4 +1,4 @@
-import { Alert } from '@codecademy/gamut/src';
+import { Alert, Box } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { PropsTable } from '@codecademy/storybook-addon-variance';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
@@ -150,6 +150,20 @@ For inline use you can use these non-stroked versions for the General, Success a
 
 <Story name="Inline subtle" args={{ ...ALERTS.subtle, placement: 'inline' }}>
   {(args) => <Alert {...args} />}
+</Story>
+
+<br />
+
+## Small widths
+
+When the width of the alert is less than 480px, the button automatically stacks below the text.
+
+<Story name="Small width" args={ALERTS.feature}>
+  {(args) => (
+    <Box width="400px">
+      <Alert {...args} />
+    </Box>
+  )}
 </Story>
 
 <br />
