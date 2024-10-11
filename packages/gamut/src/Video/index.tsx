@@ -1,5 +1,4 @@
 import { PlayIcon } from '@codecademy/gamut-icons';
-import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import * as React from 'react';
@@ -8,20 +7,18 @@ import ReactPlayer from 'react-player';
 import { Box, FlexBox } from '../Box';
 import { useIsMounted } from '../utils';
 
-const ReactVideoPlayer = styled(ReactPlayer)(
-  css({
-    width: '100% !important',
-    height: '100% !important',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    border: 'none',
-    padding: 0,
-    '&:focus-visible': {
-      outlineOffset: '3px',
-    },
-  })
-);
+const ReactVideoPlayer = styled(ReactPlayer)`
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  & :focus-visible {
+    outline-offset: 3px;
+  }
+`;
 
 const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
   return (
