@@ -5,11 +5,7 @@ const config: StorybookConfig = {
   addons: ['@storybook/addon-essentials', '@nx/react/plugins/storybook'],
   framework: {
     name: '@storybook/react-webpack5',
-    options: {
-      builder: {
-        useSWC: false,
-      },
-    },
+    options: {},
   },
 };
 
