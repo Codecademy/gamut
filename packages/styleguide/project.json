@@ -9,7 +9,7 @@
       "executor": "@nx/eslint:lint"
     },
     "build": {
-     "outputs": ["{projectRoot}/dist"],
+      "outputs": ["{projectRoot}/dist"],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/styleguide",
@@ -20,6 +20,31 @@
           "cpy './src/**/*.{d.ts,scss,svg,png}' ./dist"
         ],
         "parallel": false
+      }
+    },
+    "storybook": {
+      "executor": "@nx/storybook:storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "packages/styleguide/.storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nx/storybook:build",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/styleguide",
+        "configDir": "packages/styleguide/.storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
       }
     }
   }
