@@ -347,7 +347,7 @@ Use the `printf()` function.
 
 ### Iframes
 
-Vimeo and Youtube video iframes will be rendered by our Video component, otherwise they'll render as stated.
+Vimeo and Youtube video iframes will be rendered by our Video component, otherwise they'll render the original code.
 
 <iframe src="https://player.vimeo.com/video/188237476?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Studio Ghibli in Real Life"></iframe>
 
