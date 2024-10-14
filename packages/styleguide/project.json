@@ -9,23 +9,17 @@
       "executor": "@nx/eslint:lint"
     },
     "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{projectRoot}/dist"],
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "dist/packages/styleguide",
-        "tsConfig": "packages/styleguide/tsconfig.lib.json",
-        "project": "packages/styleguide/package.json",
-        "entryFile": "packages/styleguide/src/index.ts",
-        "external": ["react", "react-dom", "@emotion/react/jsx-runtime"],
-        "rollupConfig": "@nx/react/plugins/bundle-rollup",
-        "compiler": "babel",
-        "assets": [
-          {
-            "glob": "packages/styleguide/README.md",
-            "input": ".",
-            "output": "."
-          }
-        ]
+        "cwd": "packages/styleguide",
+        "commands": [
+          "rm -rf ./dist",
+          "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
+          "tsc --emitDeclarationOnly --project ./tsconfig.lib.json",
+          "cpy './src/**/*.{d.ts,scss,svg,png}' ./dist"
+        ],
+        "parallel": false
       }
     },
     "storybook": {
