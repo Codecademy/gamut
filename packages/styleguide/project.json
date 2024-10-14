@@ -1,0 +1,26 @@
+{
+  "name": "styleguide",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/styleguide/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "build": {
+     "outputs": ["{projectRoot}/dist"],
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/styleguide",
+        "commands": [
+          "rm -rf ./dist",
+          "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
+          "tsc --emitDeclarationOnly --project ./tsconfig.lib.json",
+          "cpy './src/**/*.{d.ts,scss,svg,png}' ./dist"
+        ],
+        "parallel": false
+      }
+    }
+  }
+}
