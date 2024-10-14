@@ -15,6 +15,10 @@
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
+    "@storybook/addon-essentials": "8.3.5",
+    "@storybook/addon-controls": "8.3.5",
+    "@storybook/react-webpack5": "8.3.5",
+    "@storybook/icons": "1.2.12",
     "@testing-library/react": "^12.1.2",
     "@types/mdx-js__react": "^1.5.3",
     "autoprefixer": "^9.7.4",
@@ -31,9 +35,11 @@
     "react-dom": "^17.0.2",
     "sass": "1.56.2",
     "sass-loader": "^10.1.1",
+    "storybook": "8.3.5",
     "style-loader": "^1.2.0",
     "typescript": "4.4.2",
-    "webpack": "4.46.0"
+    "webpack": "4.46.0",
+    "@nx/webpack": "20.0.0"
   },
   "license": "MIT",
   "publishConfig": {
