@@ -11,7 +11,10 @@
       "default",
       "!{projectRoot}/**/*.(test|spec).ts{,.snap}",
       "!{projectRoot}/**/__tests__/**/*",
-      "!{projectRoot}/**/__fixtures__/**/*"
+      "!{projectRoot}/**/__fixtures__/**/*",
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+      "!{projectRoot}/.storybook/**/*",
+      "!{projectRoot}/tsconfig.storybook.json"
     ]
   },
   "targetDefaults": {
@@ -41,6 +44,15 @@
           "codeCoverage": true
         }
       }
+    },
+    "build-storybook": {
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        "{projectRoot}/.storybook/**/*",
+        "{projectRoot}/tsconfig.storybook.json"
+      ]
     }
   },
   "generators": {
