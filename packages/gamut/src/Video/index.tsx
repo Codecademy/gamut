@@ -7,6 +7,7 @@ import ReactPlayer from 'react-player';
 import { useIsMounted } from '../utils';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
+import { VideoWrapper } from './styles/VideoWrapper';
 
 const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
   return (
@@ -68,7 +69,7 @@ export const Video: React.FC<VideoProps> = ({
   };
 
   return (
-    <div
+    <VideoWrapper
       className={cx(styles.videoWrapper, loading && styles.loading, className)}
     >
       {isMounted ? (
@@ -92,6 +93,6 @@ export const Video: React.FC<VideoProps> = ({
           onPlay={onPlay}
         />
       ) : null}
-    </div>
+    </VideoWrapper>
   );
 };

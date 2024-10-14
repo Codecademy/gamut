@@ -10,6 +10,7 @@ import {
   createCodeBlockOverride,
   createInputOverride,
   createTagOverride,
+  createVideoOverride,
   MarkdownOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
@@ -117,7 +118,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
           allowedAttributes: ['style'],
         }),
       !skipDefaultOverrides.video &&
-        createTagOverride('video', {
+        createVideoOverride('video', {
           component: MarkdownVideo,
         }),
       !skipDefaultOverrides.details &&
