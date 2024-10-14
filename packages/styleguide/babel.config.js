@@ -1,21 +1,29 @@
 module.exports = {
-  presets: ['codecademy', '@babel/preset-typescript'],
-  plugins: [
-    'macros',
+  extends: '../../babel.defaults.js',
+  presets: [
     [
-      '@emotion',
+      '@babel/env',
+      {
+        modules: process.env.NODE_ENV === 'test' ? 'commonjs' : false,
+        targets: 'defaults',
+      },
+    ],
+    [
+      '@babel/react',
+      {
+        runtime: 'automatic',
+      },
+    ],
+    '@babel/preset-typescript',
+  ],
+  plugins: [
+    [
+      '@emotion/babel-plugin',
       {
         sourceMap: true,
         autoLabel: 'always',
         labelFormat: '[local]',
-        cssPropOptimization: true,
       },
     ],
   ],
-  ignore: [],
-  env: {
-    test: {
-      plugins: ['require-context-hook'],
-    },
-  },
 };
