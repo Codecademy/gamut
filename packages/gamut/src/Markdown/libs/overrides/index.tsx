@@ -222,13 +222,14 @@ export const createVideoOverride = (
   ) {
     if (!Override) return null;
 
-    const { src, ...processedAttributes } = processAttributes(node.attribs);
+    const { src, ...processedAttributes } = processAttributes(
+      node.attribs
+    ) as any;
 
-    const altVideoSrc = [];
-    const altCaptionSrc = [];
+    const altVideoSrc = [] as any;
 
     if (children) {
-      children.forEach((element) => {
+      children.forEach((element: any) => {
         if (element.type === 'source' && element?.props?.src) {
           if (element.props?.type.includes('video')) {
             altVideoSrc.push({
