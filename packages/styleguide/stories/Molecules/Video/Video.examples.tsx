@@ -6,6 +6,7 @@ export const VideoWithPlaceholder = () => {
       videoUrl="https://player.vimeo.com/video/188237476"
       videoTitle="A Dream Within a Dream"
       placeholderImage="https://placekitten.com/400/300"
+      autoplay
     />
   );
 };
