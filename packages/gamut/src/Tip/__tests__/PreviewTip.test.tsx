@@ -38,10 +38,10 @@ describe('PreviewTip', () => {
     });
   });
 
-  it('calls onClick when clicked', () => {
+  it('calls onClick when clicked', async () => {
     const { view } = renderView({});
 
-    userEvent.click(view.getByRole('link'));
+    await userEvent.click(view.getByRole('link'));
 
     expect(onClick).toHaveBeenCalled();
   });
@@ -64,17 +64,17 @@ describe('PreviewTip', () => {
 
       expect(view.queryAllByText(info).length).toBe(0);
 
-      userEvent.hover(view.getByRole('link'));
+      await userEvent.hover(view.getByRole('link'));
 
       await waitFor(() => {
         expect(view.queryAllByText(info).length).toBe(1);
       });
     });
 
-    it('calls onClick when clicked', () => {
+    it('calls onClick when clicked', async () => {
       const { view } = renderView({});
 
-      userEvent.click(view.getByRole('link'));
+      await userEvent.click(view.getByRole('link'));
 
       expect(onClick).toHaveBeenCalled();
     });
