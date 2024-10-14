@@ -1,3 +1,5 @@
+import { timingValues } from '@codecademy/gamut-styles';
+
 import { PopoverProps } from '../../Popover';
 import {
   bottomCenterStylesAfter,
@@ -13,7 +15,21 @@ import {
   topStyles,
   topStylesAfter,
 } from './styles';
-import { TipPlacementComponentProps } from './types';
+import { TipPlacementComponentProps, TipWrapperProps } from './types';
+
+export const runWithDelay = (func: () => void) => {
+  return setTimeout(func, timingValues?.base);
+};
+
+export const getAlignmentWidths = ({
+  alignment,
+  avatar,
+  type,
+}: Pick<TipWrapperProps, 'alignment' | 'avatar' | 'type'>) => {
+  if (avatar) return 'avatarAligned';
+  if (type === 'preview') return 'previewAligned';
+  return alignment.includes('center') ? 'centered' : 'aligned';
+};
 
 export const getPopoverAlignment = ({
   alignment = 'top-left',

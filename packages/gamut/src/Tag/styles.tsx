@@ -1,47 +1,58 @@
-import { variant } from '@codecademy/gamut-styles';
+import { states, variant } from '@codecademy/gamut-styles';
+
+import { ButtonSelectors } from '../ButtonBase/ButtonBase';
 
 export const tagLabelPadding = 8;
 export const tagLabelFontSize = 14;
-export const tagBorderRadius = '4px';
 
 export const tagBaseStyles = {
-  display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
-  borderRadius: tagBorderRadius,
+
+  display: 'flex',
   height: '24px',
-  width: 'fit-content',
+  justifyContent: 'center',
   maxWidth: '100%',
+  width: 'fit-content',
 };
 
 export const colorVariants = variant({
   defaultVariant: 'default',
-  base: tagBaseStyles,
+  base: {
+    ...tagBaseStyles,
+    color: 'background',
+    borderRadiusLeft: 'md',
+  },
   variants: {
     default: {
-      color: 'text',
+      bg: 'secondary',
     },
     grey: {
-      color: 'white',
+      bg: 'text-secondary',
     },
   },
 });
 
-export const tagBg = {
-  light: {
-    grey: 'navy-500',
-    default: 'navy-900',
+export const tagWrapperStates = states({
+  readOnly: {
+    borderRadius: 'md',
   },
-  dark: {
-    grey: 'white-500',
-    default: 'white',
-  },
-} as const;
+});
 
 export const dismissSharedStyles = {
-  display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
+  display: 'flex',
   height: '100%',
+  justifyContent: 'center',
   minWidth: '24px',
+};
+
+export const iconButtonOverrides = {
+  // These pseudo elements add an extra slightly opaque border on hover/focus
+  '::before, ::after': {
+    display: 'none',
+  },
+  // This removes a black solid outline on focus
+  [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
+    opacity: 0,
+  },
 };

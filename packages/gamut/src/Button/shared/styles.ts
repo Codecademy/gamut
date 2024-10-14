@@ -48,32 +48,13 @@ export const buttonStyles = system.css({
   justifyContent: 'center',
   alignItems: 'center',
   border: 2,
-  borderRadius: '4px',
+  borderRadius: 'md',
   borderColor: 'transparent',
   transition: transitionConcat(
     ['border-color', 'color', 'background-color', 'box-shadow'],
     'fast',
     'ease-in'
   ),
-  [ButtonSelectors.SHADOW]: {
-    content: '""',
-    transition: transitionConcat(['opacity'], 'fast', 'ease-in'),
-    position: 'absolute',
-    borderRadius: '4px',
-    bg: 'text',
-    inset: -2,
-    opacity: 0,
-    zIndex: 0,
-  },
-  [ButtonSelectors.SHADOW_HOVER]: {
-    opacity: 0.06,
-  },
-  [ButtonSelectors.SHADOW_ACTIVE]: {
-    opacity: 0.025,
-  },
-  [ButtonSelectors.SHADOW_DISABLED]: {
-    opacity: 0,
-  },
   [ButtonSelectors.DISABLED]: {
     cursor: 'not-allowed',
     userSelect: 'none',
@@ -82,7 +63,7 @@ export const buttonStyles = system.css({
     content: '""',
     transition: transitionConcat(['opacity'], 'fast'),
     position: 'absolute',
-    borderRadius: '6px',
+    borderRadius: 'lg',
     border: 2,
     inset: -5,
     opacity: 0,

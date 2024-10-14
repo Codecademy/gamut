@@ -1,51 +1,100 @@
 import { InfoTipContainer } from '../InfoTip/styles';
+import { PreviewTipContents, PreviewTipShadow } from '../PreviewTip/elements';
 import { ToolTipContainer } from '../ToolTip/elements';
-import { TargetContainer, TipBody, TipWrapper } from './elements';
+import {
+  InfoTipWrapper,
+  TargetContainer,
+  TipBody,
+  ToolTipWrapper,
+} from './elements';
 import { narrowWidth } from './styles';
-import { TipPlacementComponentProps } from './types';
+import { TipWrapperProps } from './types';
+import { getAlignmentWidths } from './utils';
 
-export const InlineTip: React.FC<TipPlacementComponentProps> = ({
+export const InlineTip: React.FC<TipWrapperProps> = ({
   alignment,
+  avatar,
   children,
   escapeKeyPressHandler,
   id,
   info,
   isTipHidden,
-  type,
+  loading,
   narrow,
+  overline,
+  truncateLines,
+  type,
+  username,
   wrapperRef,
   zIndex,
 }) => {
-  const isToolType = type === 'tool';
+  const isHoverType = type === 'tool' || type === 'preview';
 
-  const InlineTipWrapper = isToolType ? ToolTipContainer : InfoTipContainer;
-  const InlineWrapperProps = isToolType ? {} : { hideTip: isTipHidden };
+  const InlineTipWrapper = isHoverType ? ToolTipWrapper : InfoTipWrapper;
+  const InlineTipBodyWrapper = isHoverType
+    ? ToolTipContainer
+    : InfoTipContainer;
+  const InlineWrapperProps = isHoverType ? {} : { hideTip: isTipHidden };
+  const tipBodyAlignment = getAlignmentWidths({ alignment, avatar, type });
+
+  const target = (
+    <TargetContainer
+      ref={wrapperRef}
+      onKeyDown={
+        escapeKeyPressHandler ? (e) => escapeKeyPressHandler(e) : undefined
+      }
+    >
+      {children}
+    </TargetContainer>
+  );
+
+  const tipBody = (
+    <InlineTipBodyWrapper
+      alignment={alignment}
+      zIndex={zIndex ?? 1}
+      isToolTip={type === 'tool'}
+      {...InlineWrapperProps}
+    >
+      <TipBody
+        alignment={tipBodyAlignment}
+        color="currentColor"
+        id={id}
+        width={narrow ? narrowWidth : undefined}
+        zIndex="auto"
+        aria-hidden={isHoverType}
+      >
+        {type === 'preview' ? (
+          <>
+            <PreviewTipContents
+              avatar={avatar}
+              info={info}
+              loading={loading}
+              overline={overline}
+              truncateLines={truncateLines}
+              username={username}
+            />
+            <PreviewTipShadow alignment={alignment} zIndex={zIndex} />
+          </>
+        ) : (
+          info
+        )}
+      </TipBody>
+    </InlineTipBodyWrapper>
+  );
 
   return (
-    <TipWrapper>
-      <TargetContainer
-        ref={wrapperRef}
-        onKeyDown={
-          escapeKeyPressHandler ? (e) => escapeKeyPressHandler(e) : undefined
-        }
-      >
-        {children}
-      </TargetContainer>
-      <InlineTipWrapper
-        alignment={alignment}
-        zIndex={zIndex ?? 1}
-        {...InlineWrapperProps}
-      >
-        <TipBody
-          alignment={alignment.includes('center') ? 'centered' : 'aligned'}
-          color="currentColor"
-          id={id}
-          width={narrow ? narrowWidth : undefined}
-          zIndex="auto"
-        >
-          {info}
-        </TipBody>
-      </InlineTipWrapper>
-    </TipWrapper>
+    <InlineTipWrapper>
+      {alignment.includes('top') ? (
+        <>
+          {tipBody}
+          {target}
+        </>
+      ) : (
+        <>
+          {target}
+          {tipBody}
+        </>
+      )}
+    </InlineTipWrapper>
   );
 };

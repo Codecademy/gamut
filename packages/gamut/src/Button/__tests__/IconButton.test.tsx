@@ -42,36 +42,48 @@ describe('IconButton', () => {
   it('renders a tip with repetition removed', async () => {
     const { view } = renderView({});
 
-    view.getByRole('button', { name: label });
-    view.getByRole('tooltip', { name: tipText });
+    const button = view.getByRole('button', { name: label });
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore: We need to update the rest of the testing suite to use the correct types (which are reliant on upgrading Node)
+    expect(button).toHaveAccessibleDescription(tipText);
+    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
+      tipText
+    );
   });
 
   it('renders a tip with both labels when they are not repetitive', async () => {
     const { view } = renderView({ tip: uniqueTip });
 
     view.getByRole('button', { name: label });
-    view.getByRole('tooltip', { name: uniqueTip });
+    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
+      uniqueTip
+    );
   });
 
   it('renders a true aria-label based on tip when aria-label is not defined', async () => {
     const { view } = renderView({ 'aria-label': undefined });
 
     view.getByRole('button', { name: label });
-    view.getByRole('tooltip', { name: tipText });
+    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
+      tipText
+    );
   });
 
   it('renders a floating tip', async () => {
     const { view } = renderFloatingView({});
 
-    view.getByRole('tooltip', { name: tipText });
+    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
+      tipText
+    );
+
     expect(view.queryByText(tip)).toBeNull();
 
     const cta = view.getByRole('button', { name: label });
 
     expect(view.queryByText('tooltip')).toBeNull();
 
-    await userEvent.hover(cta);
-
-    view.getByText(tip);
+    userEvent.hover(cta);
+    await view.findByText(tip);
   });
 });

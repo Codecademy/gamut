@@ -6,13 +6,6 @@ import * as React from 'react';
 import { Box } from '../Box';
 import { Text } from '../Typography';
 
-const borderRadius = {
-  small: '3px',
-  medium: '80px',
-  large: '9px',
-  xl: '18px',
-};
-
 export type ProgressBarProps = {
   className?: string;
 
@@ -52,12 +45,10 @@ const progressBarFlatVariants = variant({
   prop: 'flat',
   variants: {
     'flat-bottom': {
-      borderBottomRightRadius: 0,
-      borderBottomLeftRadius: 0,
+      borderRadiusBottom: 'none',
     },
     'flat-top': {
-      borderTopRightRadius: 0,
-      borderTopLeftRadius: 0,
+      borderRadiusTop: 'none',
     },
     default: {},
   },
@@ -74,20 +65,20 @@ const progressBarSizeVariants = variant({
   variants: {
     small: {
       height: '6px',
-      borderRadius: borderRadius.small,
+      borderRadius: 'sm',
     },
     medium: {
       height: '8px',
-      borderRadius: borderRadius.medium,
+      borderRadius: 'md',
     },
     large: {
       height: '18px',
-      borderRadius: borderRadius.large,
+      borderRadius: 'lg',
       fontSize: 14,
     },
     xl: {
       height: '36px',
-      borderRadius: borderRadius.xl,
+      borderRadius: 'xl',
     },
   },
 });
@@ -196,8 +187,8 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         boxShadow={
           showBarBorder ? `0.5px 0 0 0.5px ${theme.colors.navy}` : 'none'
         }
-        borderRadiusTopRight={flat ? 0 : 'inherit'}
-        borderRadiusBottomRight={flat ? 0 : 'inherit'}
+        borderRadiusTopRight={flat ? 'none' : 'inherit'}
+        borderRadiusBottomRight={flat ? 'none' : 'inherit'}
         width={`${Math.max(minimumPercent, percent)}%`}
         data-testid="progress-bar-bar"
       >

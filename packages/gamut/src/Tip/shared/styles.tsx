@@ -1,7 +1,7 @@
 import {
   fontSmoothPixel,
+  states,
   theme,
-  timing,
   variant,
 } from '@codecademy/gamut-styles';
 
@@ -17,7 +17,14 @@ const containerOffsetVertical = 12;
 
 export const narrowWidth = 64;
 export const centerWidths = { minWidth: 64, maxWidth: 128 } as const;
-export const alignedMaxWidth = { width: 256 } as const;
+const alignedAvatarWidth = {
+  maxWidth: { _: '95vw', xs: '600px' },
+  width: 'max-content',
+} as const;
+const alignedMaxWidth = { width: 256 } as const;
+const alignedPreviewWidth = { width: 418 } as const;
+
+const previewTipPadding = { p: 16 } as const;
 
 export const topStyles = {
   bottom: 'calc(100% + 4px)',
@@ -60,9 +67,8 @@ export const bottomCenterStylesAfter = {
 export const alignedStylesAfter = { bg: tooltipBackgroundColor };
 
 export const leftStyles = {
-  ...alignedMaxWidth,
   justifyContent: 'flex-end',
-  left: 'calc(50% - 14rem)',
+  right: 'calc(50% - 2rem)',
 } as const;
 
 export const leftStylesAfter = {
@@ -71,7 +77,6 @@ export const leftStylesAfter = {
 } as const;
 
 export const rightStyles = {
-  ...alignedMaxWidth,
   left: 'calc(50% - 2rem)',
 } as const;
 
@@ -93,13 +98,11 @@ export const toolTipAlignmentVariants = variant({
   prop: 'alignment',
   base: {
     bg: 'transparent',
-    fontSmoothPixel,
     display: 'flex',
-    transition: `opacity ${timing.fast}`,
-    transitionDelay: `${timing.fast}`,
-    position: 'absolute',
-    width: '70vw',
+    fontSmoothPixel,
+    maxWidth: '70vw',
     opacity: 0,
+    position: 'absolute',
     visibility: 'hidden',
     '&::after': {
       content: '""',
@@ -114,6 +117,10 @@ export const toolTipAlignmentVariants = variant({
   variants: tooltipVariantStyles,
 });
 
+export const inlineToolTipState = states({
+  isToolTip: { width: '70vw' },
+});
+
 export const inlineToolTipBodyAlignments = variant({
   prop: 'alignment',
   variants: {
@@ -124,6 +131,14 @@ export const inlineToolTipBodyAlignments = variant({
     aligned: {
       ...alignedBodyStyles,
       ...alignedMaxWidth,
+    },
+    previewAligned: {
+      ...alignedPreviewWidth,
+      ...previewTipPadding,
+    },
+    avatarAligned: {
+      ...alignedAvatarWidth,
+      ...previewTipPadding,
     },
   },
 });
@@ -141,7 +156,7 @@ export const popoverToolTipBodyAlignments = variant({
 });
 
 export const toolTipWidthRestrictions = variant({
-  prop: 'widthRestricted',
+  prop: 'dims',
   variants: {
     centered: {
       ...centerWidths,
@@ -149,13 +164,11 @@ export const toolTipWidthRestrictions = variant({
     aligned: {
       ...alignedMaxWidth,
     },
-    default: {
-      minWidth: undefined,
-      maxWidth: undefined,
+    avatarAligned: {
+      ...alignedAvatarWidth,
     },
-    popover: {
-      minWidth: '4rem',
-      maxWidth: '16rem',
+    previewAligned: {
+      ...alignedPreviewWidth,
     },
   },
 });
@@ -165,7 +178,7 @@ export const toolTipBodyCss = {
   color: 'text',
   border: 1,
   boxShadow: 'none',
-  borderRadius: '3px',
+  borderRadius: 'sm',
   display: 'inline-block',
   fontSize: 14,
   lineHeight: 'base',

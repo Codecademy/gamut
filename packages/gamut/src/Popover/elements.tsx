@@ -7,18 +7,17 @@ import * as React from 'react';
 import { WithChildrenProp } from '..';
 import { BodyPortal } from '../BodyPortal';
 import { Box } from '../Box';
-import {
-  popoverToolTipBodyAlignments,
-  toolTipWidthRestrictions,
-} from '../Tip/shared/styles';
+import { popoverToolTipBodyAlignments } from '../Tip/shared/styles';
 import {
   beakSize,
   beakVariants,
   outlineVariants,
+  patternContainerBaseStyles,
   patternVariantStyles,
   popoverStates,
   raisedDivVariants,
   transformValues,
+  widthStates,
 } from './styles';
 import { PopoverProps } from './types';
 
@@ -27,18 +26,17 @@ export type PopoverVariants = StyleProps<typeof raisedDivVariants> & {
 };
 
 export const RaisedDiv = styled.div<
-  StyleProps<typeof raisedDivVariants> &
+  StyleProps<typeof outlineVariants> &
+    StyleProps<typeof raisedDivVariants> &
     StyleProps<typeof popoverToolTipBodyAlignments> &
-    StyleProps<typeof toolTipWidthRestrictions> &
-    StyleProps<typeof outlineVariants>
+    StyleProps<typeof widthStates>
 >(
-  popoverToolTipBodyAlignments,
-  toolTipWidthRestrictions,
   outlineVariants,
-  raisedDivVariants
+  popoverToolTipBodyAlignments,
+  raisedDivVariants,
+  widthStates
 );
 
-// TO-DO -- prob should use variance compose, only needs left
 export const Beak = styled(Box)<
   StyleProps<typeof popoverStates> &
     StyleProps<typeof outlineVariants> &
@@ -49,12 +47,8 @@ export const Beak = styled(Box)<
 export const PatternContainer = styled.div(
   variant({
     base: {
-      width: '100%',
       height: '100%',
-      borderRadius: '2px',
-      overflow: 'hidden',
-      bg: 'background',
-      position: 'absolute',
+      ...patternContainerBaseStyles,
     },
     variants: patternVariantStyles,
   })

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.0.0...@codecademy/gamut-styles@17.1.0) (2024-10-01)
+
+### Features
+
+- **PreviewTip:** add preview tip ([fc90775](https://github.com/Codecademy/gamut/commit/fc90775bdfead2cc5e9b6dbc36fef3796403a109))
+
+## [17.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@16.3.0...@codecademy/gamut-styles@17.0.0) (2024-08-27)
+
+### ⚠ BREAKING CHANGES
+
+- **BorderRadius token:** Adding a border radius scale
+
+### Features
+
+- **BorderRadius token:** Adding a border radius scale ([915834b](https://github.com/Codecademy/gamut/commit/915834ba3798c5d7be19a57001e8814ebebe7956))
+
 ## [16.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@16.2.1...@codecademy/gamut-styles@16.3.0) (2024-05-29)
 
 ### Features

@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.48.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.48.0...@codecademy/gamut-illustrations@0.48.1) (2024-10-01)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+## [0.48.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.47.1...@codecademy/gamut-illustrations@0.48.0) (2024-09-23)
+
+### Features
+
+- **Illustration:** added new stackedPagesIllustration ([4173b45](https://github.com/Codecademy/gamut/commit/4173b456aa5a23dc82e852b7f4106731d44b955f))
+
+### [0.47.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.47.0...@codecademy/gamut-illustrations@0.47.1) (2024-08-27)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+## [0.47.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.46.0...@codecademy/gamut-illustrations@0.47.0) (2024-08-23)
+
+### Features
+
+- **illustration:** AI Project Review illustration ([eebdcae](https://github.com/Codecademy/gamut/commit/eebdcae9a48f86a6d97e57c47c6ee8c6d572b03a))
+
+## [0.46.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.45.2...@codecademy/gamut-illustrations@0.46.0) (2024-07-31)
+
+### Features
+
+- **Illustration:** Add ProjectReview Illustration ([b33bbf0](https://github.com/Codecademy/gamut/commit/b33bbf0f388a42d9ba2bca834aa38a8a21728abb))
+
 ### [0.45.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.45.1...@codecademy/gamut-illustrations@0.45.2) (2024-05-29)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations

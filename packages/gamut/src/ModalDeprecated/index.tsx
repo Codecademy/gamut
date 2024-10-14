@@ -1,10 +1,11 @@
-import { CloseIcon } from '@codecademy/gamut-icons';
-import { theme, variant } from '@codecademy/gamut-styles';
+import { MiniDeleteIcon } from '@codecademy/gamut-icons';
+import { css, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import cx from 'classnames';
 import * as React from 'react';
 
-import { ButtonDeprecated } from '../ButtonDeprecated';
+import { FlexBox } from '../Box';
+import { IconButton } from '../Button';
 import { Overlay, OverlayProps } from '../Overlay';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';
@@ -15,26 +16,12 @@ export type ModalDeprecatedOverlayProps = Partial<
 
 // this should be deleted with the removal of ModalDeprecated
 const CardShell = styled.div(
-  variant({
-    defaultVariant: 'shadowed',
-    base: {
-      background: 'white',
-      borderRadius: '2px',
-      boxShadow: `0 2px 8px 0  ${theme.colors['shadow-black-slight']}`,
-      position: 'relative',
-      transition: 'box-shadow 250ms ease-in',
-    },
-    variants: {
-      shadowed: {},
-      flat: {
-        boxShadow: 'none',
-      },
-      hoverable: {
-        '&:hover': {
-          boxShadow: `-2px 8px 22px 0 ${theme.colors['shadow-black-slight']}`,
-        },
-      },
-    },
+  css({
+    background: 'white',
+    borderRadius: 'sm',
+    boxShadow: `0 2px 8px 0  ${theme.colors['shadow-black-slight']}`,
+    position: 'relative',
+    transition: 'box-shadow 250ms ease-in',
   })
 );
 
@@ -97,20 +84,14 @@ export const ModalDeprecated: React.FC<ModalDeprecatedProps> = ({
         aria-label={ariaLabel}
       >
         {!hideDefaultCloseButton && (
-          <div
-            className={styles.closeButtonContainer}
-            data-testid="modal-default-close-button"
-          >
-            <ButtonDeprecated
-              flat
-              theme="brand-dark-blue"
-              fitText
+          <FlexBox justifyContent="flex-end" mt={-8 as any} mr={-8 as any}>
+            <IconButton
+              size="small"
+              icon={MiniDeleteIcon}
               onClick={onRequestClose}
-              className={styles.closeButton}
-            >
-              <CloseIcon width={22} height={22} className={styles.closeIcon} />
-            </ButtonDeprecated>
-          </div>
+              tip="Close modal"
+            />
+          </FlexBox>
         )}
         {children}
       </CardShell>

@@ -1,17 +1,17 @@
-import {
-  Background,
-  css,
-  system,
-  theme,
-  variant,
-} from '@codecademy/gamut-styles';
+import { MiniDeleteIcon } from '@codecademy/gamut-icons';
+import { css, system, theme, variant } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { Box } from '../Box';
-import { ButtonBase } from '../ButtonBase';
+import { IconButton } from '../Button';
 import { Selectors } from '../ButtonBase/ButtonBase';
-import { colorVariants, dismissSharedStyles, tagBorderRadius } from './styles';
+import {
+  colorVariants,
+  dismissSharedStyles,
+  iconButtonOverrides,
+  tagWrapperStates,
+} from './styles';
 import { BaseTagProps } from './types';
 
 export const tagProps = variance.compose(
@@ -23,10 +23,9 @@ export const tagProps = variance.compose(
 export const Outline = styled(Box)(
   css({
     // this is a bit of a hack as we don't have access to focus-visible from this component.  if you are not properly dismissing your tags you may see this primary colored outline after clicking X, but otherwise you should never hit this behavior.
-
-    borderRadius: tagBorderRadius,
-    width: 'fit-content',
-    maxWidth: '100%',
+    borderRadius: 'md',
+    width: '100%',
+    maxWidth: 'fit-content',
     '&:focus-within': {
       outline: `2px solid ${theme.colors.primary}`,
       outlineOffset: '2px',
@@ -37,38 +36,45 @@ export const Outline = styled(Box)(
   })
 );
 
-export const TagWrapper = styled(Background)<BaseTagProps>(
+export const TagLabelWrapper = styled(Box)<BaseTagProps>(
   tagProps,
-  colorVariants
+  colorVariants,
+  tagWrapperStates
 );
 
-export const DismissButton = styled(ButtonBase)(
+const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}`;
+
+export const DismissButton = styled(IconButton)(
   variant({
     defaultVariant: 'default',
+    prop: 'tagType',
     base: {
       ...dismissSharedStyles,
-      border: 1,
-      borderColor: 'transparent',
-      borderRadiusRight: tagBorderRadius,
-      color: 'currentColor',
+      ...iconButtonOverrides,
+      color: 'background',
+      border: 'none',
+      borderRadiusRight: 'md',
+      borderRadiusLeft: 'none',
+      width: 12,
+      [hoverAndFocus]: {
+        color: 'background',
+        bg: 'secondary-hover',
+      },
     },
     variants: {
       default: {
-        [Selectors.HOVER]: {
-          bg: 'background-hover',
-        },
-        [Selectors.FOCUS]: {
-          bg: 'background-selected',
-        },
+        bg: 'secondary',
       },
       grey: {
-        [Selectors.HOVER]: {
-          bg: 'navy-600',
-        },
-        [Selectors.FOCUS]: {
-          bg: 'navy-700',
-        },
+        bg: 'text-secondary',
       },
     },
+  })
+);
+
+export const StyledMiniDeleteIcon = styled(MiniDeleteIcon)(
+  css({
+    width: 12,
+    color: 'inherit',
   })
 );

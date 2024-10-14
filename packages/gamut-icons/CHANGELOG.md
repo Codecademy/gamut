@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.32.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.31.1...@codecademy/gamut-icons@9.32.0) (2024-10-09)
+
+### Features
+
+- **Icons:** add UnlockIcon ([9776de5](https://github.com/Codecademy/gamut/commit/9776de5abe41c7a472fe8fe919a66514c10292dc))
+
+### [9.31.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.31.0...@codecademy/gamut-icons@9.31.1) (2024-10-01)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.31.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.30.1...@codecademy/gamut-icons@9.31.0) (2024-09-23)
+
+### Features
+
+- **Icons:** add AssessmentsIcon ([#2937](https://github.com/Codecademy/gamut/issues/2937)) ([f7780f8](https://github.com/Codecademy/gamut/commit/f7780f8e13262f2e0bfaa6d84df68ebb46e413f1))
+
+### [9.30.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.30.0...@codecademy/gamut-icons@9.30.1) (2024-08-27)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.30.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.29.1...@codecademy/gamut-icons@9.30.0) (2024-08-07)
+
+### Features
+
+- **EditableIcon:** Add ProgrammingTeamChatIcon ([1d80c91](https://github.com/Codecademy/gamut/commit/1d80c912877daecf664ce59ca84dda6524cb3cee))
+
+### [9.29.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.29.0...@codecademy/gamut-icons@9.29.1) (2024-07-25)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
 ## [9.29.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.28.0...@codecademy/gamut-icons@9.29.0) (2024-06-21)
 
 ### Features

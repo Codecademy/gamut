@@ -24,7 +24,20 @@ const findScrollingParent = ({
     ) {
       return parentElement;
     }
-    return findScrollingParent(parentElement);
+    return findScrollingParent(parentElement); // parent of this parent is used via prop destructure
+  }
+  return null;
+};
+
+const findResizingParent = ({
+  parentElement,
+}: HTMLElement): HTMLElement | null => {
+  if (parentElement) {
+    const { overflow, overflowY, overflowX } = getComputedStyle(parentElement);
+    if ([overflow, overflowY, overflowX].some((val) => val === 'clip')) {
+      return parentElement;
+    }
+    return findResizingParent(parentElement); // parent of this parent is used via prop destructure
   }
   return null;
 };
@@ -93,6 +106,23 @@ export const Popover: React.FC<PopoverProps> = ({
   }, [targetRef]);
 
   useEffect(() => {
+    // handles movement of target within a clipped container e.g. Drawer
+    if (!targetRef.current || typeof ResizeObserver === 'undefined') {
+      return;
+    }
+    const resizingParent = findResizingParent(targetRef.current as HTMLElement);
+    if (!resizingParent?.addEventListener) {
+      return;
+    }
+    const handler = () => {
+      setTargetRect(targetRef?.current?.getBoundingClientRect());
+    };
+    const ro = new ResizeObserver(handler);
+    ro.observe(resizingParent);
+    return () => ro.unobserve(resizingParent);
+  }, [targetRef]);
+
+  useEffect(() => {
     if (targetRect) {
       const inView =
         targetRect.top >= 0 &&
@@ -139,15 +169,7 @@ export const Popover: React.FC<PopoverProps> = ({
         alignment={alignment}
         outline={outline ? 'outline' : 'boxShadow'}
         variant={variant}
-        widthRestricted={
-          variant === 'secondary'
-            ? alignment === 'centered'
-              ? 'centered'
-              : 'aligned'
-            : widthRestricted
-            ? 'popover'
-            : 'default'
-        }
+        widthRestricted={widthRestricted}
       >
         {beak && (
           <Beak

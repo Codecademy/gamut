@@ -2,7 +2,7 @@ import { useId } from '@reach/auto-id';
 import { ComponentProps, forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
-import { ToolTip, ToolTipProps } from '../Tip';
+import { ToolTip, ToolTipProps } from '../Tip/ToolTip';
 import { IconComponentType } from '../utils';
 import {
   createButtonComponent,
@@ -64,6 +64,7 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
           aria-describedby={tipId}
           aria-label={trueAriaLabel}
           ref={ref}
+          size={size}
           variant={variant}
         >
           <Icon size={iconSize} />

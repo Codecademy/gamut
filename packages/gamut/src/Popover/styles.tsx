@@ -22,7 +22,7 @@ export const raisedDivVariants = variant({
   variants: {
     primary: {
       bg: 'background',
-      borderRadius: '2px',
+      borderRadius: 'sm',
     },
     secondary: { ...toolTipBodyCss },
   },
@@ -40,6 +40,13 @@ export const outlineVariants = variant({
       border: 1,
       boxShadow: 'none',
     },
+  },
+});
+
+export const widthStates = states({
+  widthRestricted: {
+    minWidth: '4rem',
+    maxWidth: '16rem',
   },
 });
 
@@ -87,6 +94,14 @@ export const beakSize = variant({
     },
   },
 });
+
+export const patternContainerBaseStyles = {
+  bg: 'transparent',
+  borderRadius: 'sm',
+  overflow: 'hidden',
+  position: 'absolute',
+  width: '100%',
+} as const;
 
 const patternVariantArray = [
   'above-left',

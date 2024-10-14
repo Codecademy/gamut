@@ -30,7 +30,7 @@ export interface FlyoutProps extends WithChildrenProp {
   openFrom?: 'left' | 'right';
 
   /**
-   * Contents for a top-left h2.
+   * Contents for a top-left h1.
    */
   title: React.ReactNode;
   bg?: Colors;
@@ -61,6 +61,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
           flexDirection={openFrom === 'left' ? 'row' : 'row-reverse'}
           position="fixed"
           top={0}
+          alignContentContainer={openFrom === 'left' ? 'right' : 'left'}
           {...{ [openFrom]: 0 }}
         >
           <FlexBox
@@ -71,7 +72,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
             maxWidth="100%"
             justifyContent="space-between"
           >
-            <Text as="h2" fontSize={22}>
+            <Text as="h1" fontSize={22}>
               {title}
             </Text>
             <IconButton

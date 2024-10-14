@@ -1,17 +1,36 @@
-import { css } from '@codecademy/gamut-styles';
+import { css, timing } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 import { Box } from '../../Box';
 import { Selectors } from '../../ButtonBase/ButtonBase';
+import { Popover } from '../../Popover';
 import {
   inlineToolTipBodyAlignments,
-  toolTipAlignmentVariants,
   toolTipBodyCss,
+  toolTipWidthRestrictions,
 } from './styles';
 
-export const TipWrapper = styled.div(
-  css({ position: 'relative', display: 'inline-flex' })
+const tipWrapperStyles = {
+  position: 'relative',
+  display: 'inline-flex',
+} as const;
+
+export const ToolTipWrapper = styled.div(
+  css({
+    '&:hover > div, &:focus-within > div': {
+      opacity: 1,
+      transition: `opacity ${timing.fast} ${timing.base}`,
+      visibility: 'visible',
+    },
+    ...tipWrapperStyles,
+  })
+);
+
+export const InfoTipWrapper = styled.div(
+  css({
+    ...tipWrapperStyles,
+  })
 );
 
 enum TargetSelectors {
@@ -32,7 +51,7 @@ export const TargetContainer = styled(Box)(
       content: "''",
       position: 'absolute',
       inset: -2,
-      borderRadius: '4px',
+      borderRadius: 'md',
       border: 2,
       borderColor: 'primary',
       opacity: 0,
@@ -44,9 +63,10 @@ export const TargetContainer = styled(Box)(
   })
 );
 
-export interface ToolTipContainerProps
-  extends StyleProps<typeof toolTipAlignmentVariants> {}
-
 export const TipBody = styled(Box)<
   StyleProps<typeof inlineToolTipBodyAlignments>
 >(css({ ...toolTipBodyCss }), inlineToolTipBodyAlignments);
+
+export const FloatingTipBody = styled(Popover)<
+  StyleProps<typeof toolTipWidthRestrictions>
+>(toolTipWidthRestrictions);

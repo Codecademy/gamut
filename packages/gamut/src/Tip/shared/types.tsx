@@ -1,4 +1,6 @@
-import { ReactNode } from 'react';
+import { ComponentProps, ReactNode } from 'react';
+
+import { Text } from '../../Typography';
 
 export const tipBaseAlignmentArray = [
   'bottom-left',
@@ -22,6 +24,17 @@ export type TipCenterAlignment = typeof tipCenterAlignmentArray[number];
 
 export type TipStaticAlignment = typeof tipAlignmentArray[number];
 
+export type PreviewTipContent = {
+  /**
+   * ReactNode avatar to display - including an avatar will automatically defer to the avatar type.
+   */
+  avatar?: ReactNode;
+  overline?: string;
+  username?: string;
+  loading?: boolean;
+  truncateLines?: ComponentProps<typeof Text>['truncateLines'];
+};
+
 export interface TipNewBaseProps {
   info: string | ReactNode;
   placement?: 'floating' | 'inline';
@@ -40,9 +53,12 @@ export interface TipFloatingProps extends TipNewBaseProps {
 }
 
 export type TipBaseProps = TipInlineProps | TipFloatingProps;
+
 export const tipDefaultProps: Required<Pick<TipNewBaseProps, 'placement'>> = {
   placement: 'inline',
 };
+
+export type TipWrapperProps = TipPlacementComponentProps & PreviewTipContent;
 
 export type TipPlacementComponentProps = Omit<
   TipNewBaseProps,
@@ -52,7 +68,7 @@ export type TipPlacementComponentProps = Omit<
   escapeKeyPressHandler?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
   id?: string;
   isTipHidden?: boolean;
-  type: 'info' | 'tool';
+  type: 'info' | 'tool' | 'preview';
   wrapperRef?: React.RefObject<HTMLDivElement>;
   zIndex?: number;
 } & React.PropsWithChildren;
