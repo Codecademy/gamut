@@ -83,7 +83,8 @@ describe('IconButton', () => {
 
     expect(view.queryByText('tooltip')).toBeNull();
 
-    userEvent.hover(cta);
-    await view.findByText(tip);
+    await userEvent.hover(cta);
+
+    view.getByText(tip);
   });
 });
