@@ -75,6 +75,10 @@ const table = `
 const renderView = setupRtl(Markdown);
 
 describe('<Markdown />', () => {
+  beforeEach(() => {
+    // We are mimicking unconventional behavior in the markdown parser, so these errors are expected.
+    jest.spyOn(console, 'error').mockImplementation(jest.fn());
+  });
   it('renders standard Markdown', () => {
     renderView({ text: basicMarkdown });
     screen.getByRole('heading', { level: 1 });
