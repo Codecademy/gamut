@@ -75,10 +75,6 @@ const table = `
 const renderView = setupRtl(Markdown);
 
 describe('<Markdown />', () => {
-  beforeEach(() => {
-    // We are mimicking unconventional behavior in the markdown parser, so these errors are expected.
-    jest.spyOn(console, 'error').mockImplementation(jest.fn());
-  });
   it('renders standard Markdown', () => {
     renderView({ text: basicMarkdown });
     screen.getByRole('heading', { level: 1 });
@@ -94,6 +90,7 @@ describe('<Markdown />', () => {
   });
 
   it('Renders custom tables in markdown', () => {
+    jest.spyOn(console, 'error').mockImplementation(jest.fn());
     renderView({ text: table });
     expect(document.querySelectorAll('div.tableWrapper table').length).toEqual(
       1
@@ -101,6 +98,7 @@ describe('<Markdown />', () => {
   });
 
   it('Skips rendering custom tables in markdown when skipProcessing.table is true', () => {
+    jest.spyOn(console, 'error').mockImplementation(jest.fn());
     renderView({
       skipDefaultOverrides: { table: true },
       text: table,
