@@ -151,6 +151,61 @@ export const createVideoOverride = (
   },
 });
 
+export const createALTVideoOverride = (
+  tagName: string,
+  Override: MarkdownOverrideSetting
+) => ({
+  shouldProcessNode(node: HTMLToReactNode) {
+    if (!Override) return false;
+
+    if (Override.shouldProcessNode) {
+      return Override.shouldProcessNode(node);
+    }
+    return node.name === tagName.toLowerCase();
+  },
+  processNode(
+    node: HTMLToReactNode,
+    children: HTMLToReactNode[],
+    key: React.Key
+  ) {
+    if (!Override) return null;
+
+    const { src, ...processedAttributes } = processAttributes(
+      node.attribs
+    ) as any;
+
+    const altVideoSrc = [] as any;
+
+    if (children) {
+      children.forEach((element: any) => {
+        if (element.type === 'source' && element?.props?.src) {
+          if (element.props?.type.includes('video')) {
+            altVideoSrc.push({
+              src: element?.props.src,
+              type: element?.props.type,
+            });
+          }
+        } // Once we enable captions in the Video component, we can add an additional check here - GM-909
+      });
+    }
+
+    const props = {
+      src: src || altVideoSrc,
+      ...processedAttributes,
+      children,
+      key,
+    };
+
+    if (Override.processNode) {
+      return Override.processNode(node, props);
+    }
+
+    if (!Override.component) return null;
+
+    return <Override.component {...props} />;
+  },
+});
+
 // Allows <CodeBlock></CodeBlock> override and overrides of standard fenced codeblocks
 export const createCodeBlockOverride = (
   tagName: string,

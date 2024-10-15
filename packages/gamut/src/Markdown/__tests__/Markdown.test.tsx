@@ -121,11 +121,11 @@ describe('<Markdown />', () => {
     renderView({ text: videoMarkdown });
     screen.getByTitle(mockTitle);
   });
-  it('Renders video tags using the Video component if they have an src', () => {
-    renderView({ text: videoSourceMarkdown });
-    expect(screen.queryByTitle(mockTitle)).toBeNull();
-  });
 
+  it('Renders video tags using the Video component if they have a source', () => {
+    renderView({ text: videoSourceMarkdown });
+    screen.getByTitle(mockTitle);
+  });
   it('Renders YouTube iframes using the Video component', () => {
     renderView({ text: youtubeMarkdown });
     screen.getByTitle(mockTitle);

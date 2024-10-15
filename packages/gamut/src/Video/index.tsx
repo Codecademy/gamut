@@ -3,6 +3,7 @@ import cx from 'classnames';
 import { useState } from 'react';
 import * as React from 'react';
 import ReactPlayer from 'react-player';
+import { BaseReactPlayerProps } from 'react-player/base';
 
 import { useIsMounted } from '../utils';
 // eslint-disable-next-line gamut/no-css-standalone
@@ -25,9 +26,17 @@ const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
  */
 
 export type ReactPlayerWithWrapper = ReactPlayer & { wrapper: HTMLElement };
+type Captions = {
+  label: string;
+  kind: string;
+  src: string;
+  srcLang: string;
+  default: boolean;
+};
 
 export type VideoProps = {
   autoplay?: boolean;
+  captions?: Captions[];
   className?: string;
   controls?: boolean;
   height?: number;
@@ -43,6 +52,7 @@ export type VideoProps = {
 
 export const Video: React.FC<VideoProps> = ({
   autoplay,
+  captions,
   className,
   controls,
   height,
@@ -64,6 +74,9 @@ export const Video: React.FC<VideoProps> = ({
     },
     vimeo: {
       title: videoTitle,
+    },
+    file: {
+      tracks: captions || [],
     },
   };
 

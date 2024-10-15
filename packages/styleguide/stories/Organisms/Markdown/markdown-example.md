@@ -358,7 +358,10 @@ Vimeo and Youtube video iframes will be rendered by our Video component, otherwi
 
 ### Video
 
-`video`s with an `src` will be rendered by our Video component, otherwise they'll render as stated.
+`video`s with an `src` or a `source` video file will be rendered by our Video component, otherwise they'll render the original code. The Video component supports captions and multiple sources.
 
 <video src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" title="video" />
 
+<video align="middle" controls="">
+  <source src="https://content.codecademy.com/courses/asp-dot-net/visual-studio-videos/debugging-in-visual-studio.mp4" type="video/mp4">
+</video>
