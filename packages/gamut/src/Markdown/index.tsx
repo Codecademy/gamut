@@ -7,7 +7,6 @@ import sanitizeMarkdown from 'sanitize-markdown';
 
 import { omitProps } from '../utils/omitProps';
 import {
-  createALTVideoOverride,
   createCodeBlockOverride,
   createInputOverride,
   createTagOverride,
@@ -119,7 +118,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
           allowedAttributes: ['style'],
         }),
       !skipDefaultOverrides.video &&
-        createALTVideoOverride('video', {
+        createVideoOverride('video', {
           component: MarkdownVideo,
         }),
       !skipDefaultOverrides.details &&

@@ -120,42 +120,6 @@ export const createVideoOverride = (
   Override: MarkdownOverrideSetting
 ) => ({
   shouldProcessNode(node: HTMLToReactNode) {
-    if (!Override) return false;
-
-    if (Override.shouldProcessNode) {
-      return Override.shouldProcessNode(node);
-    }
-
-    return node.name === tagName.toLowerCase();
-  },
-  processNode(
-    node: HTMLToReactNode,
-    children: HTMLToReactNode[],
-    key: React.Key
-  ) {
-    if (!Override) return null;
-
-    const props = {
-      ...processAttributes(node.attribs),
-      children,
-      key,
-    };
-
-    if (Override.processNode) {
-      return Override.processNode(node, props);
-    }
-
-    if (!Override.component) return null;
-
-    return <Override.component {...props} />;
-  },
-});
-
-export const createALTVideoOverride = (
-  tagName: string,
-  Override: MarkdownOverrideSetting
-) => ({
-  shouldProcessNode(node: HTMLToReactNode) {
     if (!Override || node?.attribs?.style) return false;
 
     if (Override.shouldProcessNode) {
