@@ -25,17 +25,9 @@ const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
  */
 
 export type ReactPlayerWithWrapper = ReactPlayer & { wrapper: HTMLElement };
-type Captions = {
-  label: string;
-  kind: string;
-  src: string;
-  srcLang: string;
-  default: boolean;
-};
 
 export type VideoProps = {
   autoplay?: boolean;
-  captions?: Captions[];
   className?: string;
   controls?: boolean;
   height?: number;
@@ -51,7 +43,6 @@ export type VideoProps = {
 
 export const Video: React.FC<VideoProps> = ({
   autoplay,
-  captions,
   className,
   controls,
   height,
@@ -73,9 +64,6 @@ export const Video: React.FC<VideoProps> = ({
     },
     vimeo: {
       title: videoTitle,
-    },
-    file: {
-      tracks: captions || [],
     },
   };
 
