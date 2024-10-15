@@ -1,4 +1,5 @@
 import { PlayIcon } from '@codecademy/gamut-icons';
+import { theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import * as React from 'react';
@@ -17,6 +18,12 @@ const ReactVideoPlayer = styled(ReactPlayer)`
   left: 0;
   & :focus-visible {
     outline-offset: 3px;
+  }
+  video::-webkit-media-controls-panel {
+    background-image: linear-gradient(
+      transparent 15%,
+      ${theme.colors['navy-900']} 55%
+    );
   }
 `;
 
@@ -85,7 +92,7 @@ export const Video: React.FC<VideoProps> = ({
       pt={'56.25%' as any}
       borderRadius="md"
       overflow="hidden"
-      // bg={loading ? 'blue-1100'}
+      bg={loading ? 'black' : undefined}
     >
       {isMounted ? (
         <ReactVideoPlayer
