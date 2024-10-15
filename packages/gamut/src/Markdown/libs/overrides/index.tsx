@@ -190,7 +190,7 @@ export const createALTVideoOverride = (
     }
 
     const props = {
-      src: src || altVideoSrc,
+      src: altVideoSrc.length > 0 ? altVideoSrc : src,
       ...processedAttributes,
       children,
       key,
