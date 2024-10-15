@@ -114,6 +114,43 @@ export const createTagOverride = (
   },
 });
 
+// generic video tag override
+export const createVideoOverride = (
+  tagName: string,
+  Override: MarkdownOverrideSetting
+) => ({
+  shouldProcessNode(node: HTMLToReactNode) {
+    if (!Override || node?.attribs?.src) return false;
+
+    if (Override.shouldProcessNode) {
+      return Override.shouldProcessNode(node);
+    }
+
+    return node.name === tagName.toLowerCase();
+  },
+  processNode(
+    node: HTMLToReactNode,
+    children: HTMLToReactNode[],
+    key: React.Key
+  ) {
+    if (!Override) return null;
+
+    const props = {
+      ...processAttributes(node.attribs),
+      children,
+      key,
+    };
+
+    if (Override.processNode) {
+      return Override.processNode(node, props);
+    }
+
+    if (!Override.component) return null;
+
+    return <Override.component {...props} />;
+  },
+});
+
 // Allows <CodeBlock></CodeBlock> override and overrides of standard fenced codeblocks
 export const createCodeBlockOverride = (
   tagName: string,

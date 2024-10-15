@@ -20,6 +20,7 @@ export const MarkdownVideo: React.FC<MarkdownVideoProps> = (props) => {
       muted: props?.muted,
       videoTitle: props?.title,
       videoUrl: props?.src,
+      style: props?.style,
       width: Number(props?.width),
     };
 
