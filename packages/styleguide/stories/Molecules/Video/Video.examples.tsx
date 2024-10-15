@@ -19,12 +19,3 @@ export const VimeoVideo = () => {
     />
   );
 };
-
-export const VideoWithCaptions = () => {
-  return (
-    <Video
-      videoUrl="https://media.geeksforgeeks.org/wp-content/uploads/20190616234019/Canvas.move_.mp4"
-      videoTitle="Geek4Geek"
-    />
-  );
-};

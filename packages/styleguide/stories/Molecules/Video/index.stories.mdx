@@ -4,7 +4,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
-import { VideoWithCaptions, VimeoVideo } from './Video.examples.tsx';
+import { VideoWithPlaceholder, VimeoVideo } from './Video.examples.tsx';
 
 <Meta
   title={title}
@@ -48,7 +48,7 @@ You can insert an image to be used as a thumbnail for the video player before th
 <Canvas>
   <Story name="Video with placeholder">
     {(args) => {
-      return <VideoWithCaptions {...args} />;
+      return <VideoWithPlaceholder {...args} />;
     }}
   </Story>
 </Canvas>
