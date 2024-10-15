@@ -358,6 +358,6 @@ Vimeo and Youtube video iframes will be rendered by our Video component, otherwi
 
 ### Video
 
-`video`s with an `src` or a `source` video file will be rendered by our Video component, otherwise they'll render the original code. Videos with a `style` prop or another restricted prop will render their original code.
+`video`s with an `src` or a `source` video file will be rendered by our Video component, otherwise they'll render the original code. Videos with a `style` prop or another restricted prop will be stripped of that property.
 
 <video width="100%" height="100%" align="middle" controls> <source src="https://content.codecademy.com/articles/db-browser/open-database.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
