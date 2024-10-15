@@ -120,7 +120,7 @@ export const createVideoOverride = (
   Override: MarkdownOverrideSetting
 ) => ({
   shouldProcessNode(node: HTMLToReactNode) {
-    if (!Override || node?.attribs?.src) return false;
+    if (!Override) return false;
 
     if (Override.shouldProcessNode) {
       return Override.shouldProcessNode(node);
@@ -156,7 +156,7 @@ export const createALTVideoOverride = (
   Override: MarkdownOverrideSetting
 ) => ({
   shouldProcessNode(node: HTMLToReactNode) {
-    if (!Override) return false;
+    if (!Override || node?.attribs?.style) return false;
 
     if (Override.shouldProcessNode) {
       return Override.shouldProcessNode(node);

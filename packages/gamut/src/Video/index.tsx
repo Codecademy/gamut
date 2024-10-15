@@ -3,7 +3,6 @@ import cx from 'classnames';
 import { useState } from 'react';
 import * as React from 'react';
 import ReactPlayer from 'react-player';
-import { BaseReactPlayerProps } from 'react-player/base';
 
 import { useIsMounted } from '../utils';
 // eslint-disable-next-line gamut/no-css-standalone
