@@ -18,7 +18,7 @@ import {
 import { TipPlacementComponentProps, TipWrapperProps } from './types';
 
 export const runWithDelay = (func: () => void) => {
-  setTimeout(func, timingValues?.base);
+  return setTimeout(func, timingValues?.base);
 };
 
 export const getAlignmentWidths = ({

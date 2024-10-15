@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [57.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.3.3...@codecademy/gamut@57.4.0) (2024-10-15)
+
+### Features
+
+- **Video + Markdown:** update react player + put videos in markdown ([4170f40](https://github.com/Codecademy/gamut/commit/4170f401374295ae0cbbc4f52c1cf612fe1239f8))
+
+### [57.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.3.2...@codecademy/gamut@57.3.3) (2024-10-09)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [57.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.3.1...@codecademy/gamut@57.3.2) (2024-10-07)
+
+### Bug Fixes
+
+- **InfoTip:** background hover ([21686f3](https://github.com/Codecademy/gamut/commit/21686f3cdaaec71fa73cacd559e5afcc4e19ccd4))
+
+### [57.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.3.0...@codecademy/gamut@57.3.1) (2024-10-04)
+
+### Bug Fixes
+
+- **FloatingTip:** fixes delay timeouts for hover + mouseover ([b644cac](https://github.com/Codecademy/gamut/commit/b644cac7b419933e6a20dcab308b050ad2d1d7c0))
+
 ## [57.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.2.2...@codecademy/gamut@57.3.0) (2024-10-01)
 
 ### Features

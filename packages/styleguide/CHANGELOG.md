@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [68.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.1.3...@codecademy/styleguide@68.2.0) (2024-10-15)
+
+### Features
+
+- **Video + Markdown:** update react player + put videos in markdown ([4170f40](https://github.com/Codecademy/gamut/commit/4170f401374295ae0cbbc4f52c1cf612fe1239f8))
+
+### [68.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.1.2...@codecademy/styleguide@68.1.3) (2024-10-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [68.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.1.1...@codecademy/styleguide@68.1.2) (2024-10-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [68.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.1.0...@codecademy/styleguide@68.1.1) (2024-10-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ## [68.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.0.4...@codecademy/styleguide@68.1.0) (2024-10-01)
 
 ### Features
