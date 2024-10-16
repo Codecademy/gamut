@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [68.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.2.1...@codecademy/styleguide@68.2.2) (2024-10-16)
+
+### Bug Fixes
+
+- **Alert:** Update alert to be based on component width ([9367531](https://github.com/Codecademy/gamut/commit/936753191363a9e3f822e12d37bb279d9d55ded4))
+
 ### [68.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.2.0...@codecademy/styleguide@68.2.1) (2024-10-16)
 
 ### Bug Fixes
