@@ -1,19 +1,32 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
+import { dirname, join } from 'path';
 
 const config: StorybookConfig = {
-  stories: [
-    '../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
-    '../src/lib/**/*.mdx',
+  stories: ['../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+
+  addons: [
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@nx/react/plugins/storybook', ''),
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-designs'),
   ],
-  addons: ['@storybook/addon-essentials', '@nx/react/plugins/storybook'],
+
   framework: {
-    name: '@storybook/react-webpack5',
-    options: {},
+    name: getAbsolutePath('@storybook/react-webpack5'),
+    options: {
+      builder: {},
+    },
+  },
+
+  docs: {},
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
   },
 };
 
 export default config;
 
-// To customize your webpack configuration you can use the webpackFinal field.
-// Check https://storybook.js.org/docs/react/builders/webpack#extending-storybooks-webpack-config
-// and https://nx.dev/recipes/storybook/custom-builder-configs
+function getAbsolutePath(value: string, root = 'package.json'): string {
+  return dirname(require.resolve(join(value, root)));
+}

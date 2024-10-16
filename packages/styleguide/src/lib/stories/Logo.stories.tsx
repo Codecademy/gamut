@@ -1,8 +1,10 @@
-import { Logo } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import { Logo } from '../../Logo';
 
 const meta: Meta<typeof Logo> = {
   component: Logo,
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -14,33 +16,5 @@ export const Default: Story = {
 
   args: {
     variant: 'default',
-  },
-};
-
-export const Pro: Story = {
-  render: (args) => <Logo {...args} />,
-  name: 'Pro',
-
-  args: {
-    variant: 'pro',
-  },
-};
-
-export const Mini: Story = {
-  render: (args) => <Logo {...args} />,
-  name: 'Mini',
-
-  args: {
-    variant: 'mini',
-  },
-};
-
-export const Enterprise: Story = {
-  render: (args) => <Logo {...args} />,
-  name: 'Enterprise',
-
-  args: {
-    variant: 'enterprise',
-    height: 36,
   },
 };
