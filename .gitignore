@@ -63,3 +63,5 @@ report*.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# Environment Variables
+.env
