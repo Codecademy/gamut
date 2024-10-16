@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [68.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.2.0...@codecademy/styleguide@68.2.1) (2024-10-16)
+
+### Bug Fixes
+
+- **Markdown:** filter styles from video ([51e34e4](https://github.com/Codecademy/gamut/commit/51e34e407221feb4ca3bca44f3b9ef0ef0a3d474))
+
 ## [68.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.1.3...@codecademy/styleguide@68.2.0) (2024-10-15)
 
 ### Features
