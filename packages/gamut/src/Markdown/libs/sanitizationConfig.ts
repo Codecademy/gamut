@@ -15,7 +15,16 @@ export const defaultSanitizationConfig = {
     source: ['src', 'type'],
     img: ['src', 'alt', 'height', 'width', 'title', 'aria-label', 'style'],
     input: ['checked', 'type'],
-    video: ['width', 'height', 'align', 'style', 'controls'],
+    video: [
+      'align',
+      'autoPlay',
+      'controls',
+      'height',
+      'loop',
+      'muted',
+      'src',
+      'width',
+    ],
     iframe: [
       'src',
       'width',
