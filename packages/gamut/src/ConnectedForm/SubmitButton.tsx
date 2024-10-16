@@ -29,7 +29,7 @@ export type SubmitButtonProps = Omit<ButtonProps, 'as' | 'disabled'> &
 export const SubmitButton: React.FC<SubmitButtonProps> = ({
   as: Button = FillButton,
   children,
-  disabled = false,
+  disabled,
   loading = false,
   ...rest
 }) => {
