@@ -71,8 +71,7 @@
   },
   "devDependencies": {
     "eslint-plugin-lodash": "^7.4.0",
-    "onchange": "^7.0.2",
-    "webpack": "4.46.0"
+    "onchange": "^7.0.2"
   },
   "engines": {
     "node": "^18.18.2",
