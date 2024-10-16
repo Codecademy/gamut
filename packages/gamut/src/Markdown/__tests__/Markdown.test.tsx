@@ -90,6 +90,7 @@ describe('<Markdown />', () => {
   });
 
   it('Renders custom tables in markdown', () => {
+    jest.spyOn(console, 'error').mockImplementation(jest.fn());
     renderView({ text: table });
     expect(document.querySelectorAll('div.tableWrapper table').length).toEqual(
       1
@@ -97,6 +98,7 @@ describe('<Markdown />', () => {
   });
 
   it('Skips rendering custom tables in markdown when skipProcessing.table is true', () => {
+    jest.spyOn(console, 'error').mockImplementation(jest.fn());
     renderView({
       skipDefaultOverrides: { table: true },
       text: table,
@@ -121,11 +123,11 @@ describe('<Markdown />', () => {
     renderView({ text: videoMarkdown });
     screen.getByTitle(mockTitle);
   });
-  it('Renders video tags using the Video component if they have an src', () => {
-    renderView({ text: videoSourceMarkdown });
-    expect(screen.queryByTitle(mockTitle)).toBeNull();
-  });
 
+  it('Renders video tags using the Video component if they have a source', () => {
+    renderView({ text: videoSourceMarkdown });
+    screen.getByTitle(mockTitle);
+  });
   it('Renders YouTube iframes using the Video component', () => {
     renderView({ text: youtubeMarkdown });
     screen.getByTitle(mockTitle);
