@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: Codecademy/run-on-yarn@v1.2.0
         with:
-          node-version: 16
+          node-version: 20
       - run: yarn format:verify
 
   lint:
@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: Codecademy/run-on-yarn@v1.2.0
         with:
-          node-version: 16
+          node-version: 20
       - run: yarn build
       - run: yarn ${{ matrix.command }}
 
