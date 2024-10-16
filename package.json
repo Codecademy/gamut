@@ -35,7 +35,7 @@
     "@storybook/addon-links": "^8.3.5",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
     "@storybook/blocks": "^8.3.5",
-    "@storybook/core-server": "^7.5.3",
+    "@storybook/core-server": "8.3.5",
     "@storybook/icons": "1.2.12",
     "@storybook/react-webpack5": "^8.3.5",
     "@svgr/cli": "5.5.0",
