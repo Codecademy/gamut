@@ -19,9 +19,9 @@ describe('Breadcrumbs', () => {
   it('renders crumbs with a path as links', () => {
     const { view } = renderView({
       crumbs: [
-        { title: 'one', href: 'one/path' },
-        { title: 'two', href: 'two/path' },
-        { title: 'three', href: 'three/path' },
+        { title: 'one', href: 'www.one.com/path' },
+        { title: 'two', href: 'www.two.com/path' },
+        { title: 'three', href: 'www.three.com/path' },
       ],
     });
     view.getByText('one');
@@ -31,13 +31,14 @@ describe('Breadcrumbs', () => {
   });
 
   it('passes payload to onClick if both are provided', async () => {
-    const payload = 'owo';
+    const payload = { owo: 'hey' };
     const onClick = jest.fn();
 
     const { view } = renderView({
-      crumbs: [{ title: 'one', href: 'one/path', payload }],
+      crumbs: [{ title: 'one', href: '#one/path', payload }],
       onClick,
     });
+
     await userEvent.click(view.getByText('one'));
 
     expect(onClick).toHaveBeenCalledWith(

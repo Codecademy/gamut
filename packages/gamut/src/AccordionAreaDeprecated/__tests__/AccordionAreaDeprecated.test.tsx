@@ -1,5 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 
 import { AccordionAreaDeprecated } from '..';
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [57.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.4.0...@codecademy/gamut@57.4.1) (2024-10-16)
+
+### Bug Fixes
+
+- **Markdown:** filter styles from video ([51e34e4](https://github.com/Codecademy/gamut/commit/51e34e407221feb4ca3bca44f3b9ef0ef0a3d474))
+
+## [57.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.3.3...@codecademy/gamut@57.4.0) (2024-10-15)
+
+### Features
+
+- **Video + Markdown:** update react player + put videos in markdown ([4170f40](https://github.com/Codecademy/gamut/commit/4170f401374295ae0cbbc4f52c1cf612fe1239f8))
+
 ### [57.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.3.2...@codecademy/gamut@57.3.3) (2024-10-09)
 
 **Note:** Version bump only for package @codecademy/gamut

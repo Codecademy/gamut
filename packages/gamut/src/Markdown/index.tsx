@@ -10,6 +10,7 @@ import {
   createCodeBlockOverride,
   createInputOverride,
   createTagOverride,
+  createVideoOverride,
   MarkdownOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
@@ -21,6 +22,7 @@ import {
   MarkdownAnchorProps,
 } from './libs/overrides/MarkdownAnchor';
 import { Table } from './libs/overrides/Table';
+import { MarkdownVideo } from './libs/overrides/Video';
 import { createPreprocessingInstructions } from './libs/preprocessing';
 import { defaultSanitizationConfig } from './libs/sanitizationConfig';
 // eslint-disable-next-line gamut/no-css-standalone
@@ -40,6 +42,7 @@ export type SkipDefaultOverridesSettings = {
   details?: boolean;
   iframe?: boolean;
   table?: boolean;
+  video?: boolean;
 };
 
 export type MarkdownProps = {
@@ -113,6 +116,10 @@ export class Markdown extends PureComponent<MarkdownProps> {
         createTagOverride('table', {
           component: Table,
           allowedAttributes: ['style'],
+        }),
+      !skipDefaultOverrides.video &&
+        createVideoOverride('video', {
+          component: MarkdownVideo,
         }),
       !skipDefaultOverrides.details &&
         createTagOverride('details', {

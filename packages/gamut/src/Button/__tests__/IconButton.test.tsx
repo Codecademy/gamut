@@ -1,4 +1,5 @@
 import { StarIcon } from '@codecademy/gamut-icons';
+import { waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { setupRtl } from 'component-test-setup';
 
@@ -85,6 +86,8 @@ describe('IconButton', () => {
 
     await userEvent.hover(cta);
 
-    view.getByText(tip);
+    await waitFor(() => {
+      view.getByText(tip);
+    });
   });
 });
