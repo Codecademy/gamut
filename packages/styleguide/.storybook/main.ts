@@ -9,6 +9,33 @@ const config: StorybookConfig = {
     getAbsolutePath('@nx/react/plugins/storybook', ''),
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-designs'),
+    {
+      name: '@storybook/addon-styling-webpack',
+      options: {
+        rules: [
+          // Replaces existing CSS rules to support CSS Modules
+          {
+            test: /\.s[ac]ss$/i,
+            use: [
+              'style-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: {
+                    auto: true,
+                    localIdentName: '[name]__[local]--[hash:base64:5]',
+                  },
+                },
+              },
+              {
+                loader: 'sass-loader',
+                options: { implementation: require.resolve('sass') },
+              },
+            ],
+          },
+        ],
+      },
+    },
   ],
 
   framework: {

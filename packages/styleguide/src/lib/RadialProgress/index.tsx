@@ -3,7 +3,6 @@ import cx from 'classnames';
 import { SVGProps } from 'react';
 import * as React from 'react';
 
-import { Text } from '../Typography';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';
 
@@ -93,7 +92,7 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
       className={cx(styles.radialProgress, className)}
       style={{ height: size, width: size }}
     >
-      <Text as="figcaption" screenreader>{`${labelPercent}% progress`}</Text>
+      <figcaption>{`${labelPercent}% progress`}</figcaption>
       <svg viewBox={svgViewBoxStr} height={size} width={size} {...props}>
         <circle
           cx="50"
