@@ -14,5 +14,7 @@ export const Default: Story = {
   render: (args) => <RadialProgress {...args} />,
   name: 'Default',
 
-  args: {},
+  args: {
+    value: [50, 75],
+  },
 };
