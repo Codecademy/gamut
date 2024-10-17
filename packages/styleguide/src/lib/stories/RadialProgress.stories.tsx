@@ -1,6 +1,5 @@
+import { RadialProgress } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
-
-import { RadialProgress } from '../RadialProgress';
 
 const meta: Meta<typeof RadialProgress> = {
   component: RadialProgress,

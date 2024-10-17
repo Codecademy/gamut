@@ -1,5 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
-import { dirname, join } from 'path';
+import { resolve, dirname, join } from 'path';
 
 const config: StorybookConfig = {
   stories: ['../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
@@ -22,6 +22,24 @@ const config: StorybookConfig = {
 
   typescript: {
     reactDocgen: 'react-docgen-typescript',
+  },
+  webpackFinal(config) {
+    config.resolve = {
+      ...config.resolve,
+      alias: {
+        '@codecademy/gamut-styles$': resolve(
+          __dirname,
+          '../../gamut-styles/src'
+        ),
+        '@codecademy/gamut$': resolve(__dirname, '../../gamut/src'),
+        '@codecademy/gamut-illustrations$': resolve(
+          __dirname,
+          '../../gamut-illustrations/src'
+        ),
+        '@codecademy/variance$': resolve(__dirname, '../../variance/src'),
+      },
+    };
+    return config;
   },
 };
 
