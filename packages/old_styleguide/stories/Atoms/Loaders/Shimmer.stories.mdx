@@ -1,0 +1,27 @@
+import { Shimmer } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={Shimmer}
+  parameters={{
+    subtitle:
+      'Shimmer effect for boxes — a generic style that apply to our Skeleton elements.',
+    source: 'gamut',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=29975%3A39412&t=nzcwAhSF1DoNC1YO-0',
+    },
+  }}
+  args={{ height: 200 }}
+/>
+
+<Canvas>
+  <Story name="Shimmer">{(args) => <Shimmer {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Shimmer" />

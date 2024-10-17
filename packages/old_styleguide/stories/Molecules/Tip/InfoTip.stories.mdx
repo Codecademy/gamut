@@ -1,0 +1,134 @@
+import { Box, FlexBox, GridBox, InfoTip, Text } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { InfoTipLinkExample } from './examples';
+
+<Meta
+  title={title}
+  component={InfoTip}
+  parameters={{
+    subtitle:
+      'A tip triggered by clicking on an information icon button. Use an infotip to provide additional info about a nearby element or content.',
+    source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/branch/ayKNSg6QvZUjsgw0FFysW4/%F0%9F%93%90-Gamut?type=design&node-id=41538-55277&mode=design&t=fGkWf5GSl5cj5fQo-0',
+    },
+    status: 'current',
+  }}
+  args={{
+    alignment: 'top-left',
+    info: `I am additional information about a nearby element or content.`,
+  }}
+/>
+
+_Small_ piece of extra information toggled by clicking on an (i) button.
+
+<Canvas>
+  <Story name="InfoTip">
+    {(args) => (
+      <FlexBox center py={64} m={24}>
+        <Text mr={4}>Some text that needs info</Text> <InfoTip {...args} />
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable story="InfoTip" />
+
+## Emphasis
+
+The InfoTip has high and low emphasis variants.
+
+<Canvas>
+  <Story name="Emphasis">
+    {(args) => (
+      <FlexBox center py={64} m={24}>
+        <Text mr={4}>Some text that needs info and its super important</Text>{' '}
+        <InfoTip emphasis="high" {...args} />
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+## Alignments
+
+InfoTips have four different alignment options: `top-right`, `top-left`, `bottom-right`, and `bottom-left`. They have a consistent size and are meant for longer content. If you need a smaller, more concise component checkout (the upcoming) ToolTip or Link Preview components to see if they fit your use case.
+
+<Canvas>
+  <Story name="Alignments">
+    {(args) => {
+      return (
+        <GridBox gap={24} py={64} ml={8} gridTemplateColumns="1fr 1fr">
+          {['top-right', 'top-left', 'bottom-right', 'bottom-left'].map(
+            (alignment) => {
+              return (
+                <Box key={alignment}>
+                  <InfoTip {...args} alignment={alignment} />
+                </Box>
+              );
+            }
+          )}
+        </GridBox>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Placement
+
+InfoTips sometimes need to be in used in a way that they need to escape the confines of their parent container. The `floating` variant of the `placement` prop allows InfoTips do just this. (Notice how this section doesn't need as much padding because the InfoTips are able to escape their context!)
+
+This `floating` variant should only be used as needed.
+
+<Canvas>
+  <Story name="Floating">
+    {(args) => (
+      <FlexBox center>
+        <Text mr={4}>
+          This text is in a small space and needs floating placement
+        </Text>{' '}
+        <InfoTip placement="floating" {...args} />
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+## InfoTips with links or buttons
+
+Links or buttons within InfoTips should be used sparingly and only when the information is critical to the user's understanding of the content. If an infotip _absolutely requires_ a link or button, it needs to provide a programmatic focus by way of the `onClick` prop. The `onClick` prop accepts a function that calls the object `{isTipHidden}` and should focus when the tip is visible.
+
+<Canvas>
+  <Story name="Programmatic focus">
+    {() => (
+      <FlexBox center py={64}>
+        <Text mr={4}>This text is in a small space and needs info </Text>{' '}
+        <InfoTipLinkExample />
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+## InfoTips and zIndex
+
+You can change the zIndex of your `InfoTip` with the zIndex property.
+
+<Canvas>
+  <Story name="z-index">
+    {() => (
+      <FlexBox center flexDirection="column" py={64} m={24}>
+        <Box bg="paleBlue" zIndex={3}>
+          I will not be behind the infotip, sad + unreadable
+        </Box>
+        <InfoTip info="I am inline, cool" />
+        <Box bg="paleBlue" zIndex={3}>
+          I will be behind the infotip, nice + great
+        </Box>
+        <InfoTip info="I am inline, cool" zIndex={5} />
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>

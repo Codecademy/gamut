@@ -1,0 +1,62 @@
+import { FillButton, FlexBox, Overlay, Text } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { useState } from '@storybook/addons';
+
+<Meta
+  title={title}
+  component={Overlay}
+  parameters={{
+    subtitle: `Overlay primitives are controlled components that are told whether they're open by their parent. They're very basic and don't have animations defined.`,
+    source: 'gamut',
+    status: 'current',
+  }}
+  args={{ shroud: true }}
+/>
+
+Unlike the legacy `Modal` implementations in the monolith, this:
+
+- always assumes viewport is locked, by making content `position: fixed`
+- cannot override contentProps, animation, or shouldFocusOnMount.
+
+Use this overlay only for actual 'overlay' content that takes
+up the full screen. Do not use it for dropdowns or other small
+interactive items.
+
+Note that this atom does not come with styles defined. If you need styles such as
+a background behind content, see `Modal` for general modals and `Dialog` for confirmation flows.
+
+<Canvas>
+  <Story name="Overlay">
+    {(args) => {
+      const [open, setOpen] = useState(false);
+      return (
+        <>
+          <FillButton onClick={() => setOpen(true)}>Open Overlay</FillButton>
+          <FlexBox>
+            <Overlay
+              {...args}
+              clickOutsideCloses
+              isOpen={open}
+              onRequestClose={() => setOpen(false)}
+            >
+              <FlexBox>
+                <Text size={48}>Hooray!</Text>
+                <FillButton onClick={() => setOpen(false)}>
+                  Close Overlay
+                </FillButton>
+              </FlexBox>
+            </Overlay>
+          </FlexBox>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Code playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<PropsTable story="Overlay" />
