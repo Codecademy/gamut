@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [57.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.4.1...@codecademy/gamut@57.4.2) (2024-10-16)
+
+### Bug Fixes
+
+- **Alert:** Update alert to be based on component width ([9367531](https://github.com/Codecademy/gamut/commit/936753191363a9e3f822e12d37bb279d9d55ded4))
+
+### [57.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.4.0...@codecademy/gamut@57.4.1) (2024-10-16)
+
+### Bug Fixes
+
+- **Markdown:** filter styles from video ([51e34e4](https://github.com/Codecademy/gamut/commit/51e34e407221feb4ca3bca44f3b9ef0ef0a3d474))
+
 ## [57.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.3.3...@codecademy/gamut@57.4.0) (2024-10-15)
 
 ### Features

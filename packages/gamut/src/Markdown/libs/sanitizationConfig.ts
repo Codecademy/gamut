@@ -23,7 +23,6 @@ export const defaultSanitizationConfig = {
       'loop',
       'muted',
       'src',
-      'style',
       'width',
     ],
     iframe: [
