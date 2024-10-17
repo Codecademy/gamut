@@ -1,0 +1,27 @@
+import { Spinner } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={Spinner}
+  parameters={{
+    subtitle: `Perpetually spinning circle, such as for a loading indicator. Similar to a
+\`ProgressBar\`. Spinners work best when used inside of components that are already loaded. They are small, compact, and imply elements of feedback.`,
+    source: 'gamut',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=29975%3A39412&t=nzcwAhSF1DoNC1YO-0',
+    },
+  }}
+  args={{ size: 60 }}
+/>
+
+<Canvas>
+  <Story name="Spinner">{(args) => <Spinner {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Spinner" />

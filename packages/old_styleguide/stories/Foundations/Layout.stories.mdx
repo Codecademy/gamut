@@ -1,0 +1,180 @@
+import { Box } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta } from '@storybook/addon-docs/blocks';
+
+import { DataTable, LinkTo } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  parameters={{
+    subtitle: 'Design Guidelines for overall page layout',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=464%3A691',
+    },
+  }}
+/>
+
+These are the grids we use for all the screen sizes we design for. We use a 12-column grid approach, meaning every layout can be divided in sections of 2 or 3. It’s important to design with the in mind to create structured and consistent experiences. On smaller screensizes try to avoid using smaller components while using the grid as a guide.
+
+## Screensizes
+
+We have 6 main screensizes we design for, these are not the same thing as `breakpoints` which are used to help us achieve these guidelines. You can checkout our <LinkTo id="foundations-theme--breakpoints">Theme</LinkTo>
+
+<DataTable
+  rows={[
+    {
+      id: 'XL',
+      dimensions: '1440x900',
+      maxContent: '1248px',
+      foldHeight: '680px',
+    },
+    {
+      id: 'LG',
+      dimensions: '1200x900',
+      maxContent: '1072px',
+      foldHeight: '680px',
+    },
+    {
+      id: 'MD',
+      dimensions: '1024x768',
+      maxContent: '896px',
+      foldHeight: '680px',
+    },
+    {
+      id: 'SM',
+      dimensions: '768x1024',
+      maxContent: '704px',
+      foldHeight: '680px',
+    },
+    {
+      id: 'XS',
+      dimensions: '480x900',
+      maxContent: '448px',
+      foldHeight: '440px',
+    },
+    {
+      id: 'Base',
+      dimensions: '320x480',
+      maxContent: '288px',
+      foldHeight: '440px',
+    },
+  ]}
+  columns={[
+    {
+      name: 'Alias',
+      key: 'id',
+      size: 'md',
+      render: ({ id }) => <strong>{id}</strong>,
+    },
+    {
+      name: 'Dimensions',
+      key: 'dimensions',
+      size: 'fill',
+      render: ({ dimensions }) => <strong>{dimensions}</strong>,
+    },
+    {
+      name: 'Max Content',
+      key: 'maxContent',
+      size: 'fill',
+    },
+    {
+      name: 'Fold Height',
+      key: 'foldHeight',
+      size: 'fill',
+    },
+  ]}
+/>
+
+<br />
+
+### Breakpoints
+
+The designer decides how many columns at each breakpoint a section should span. The grid will allow the engineer to set a minimum amount of columns for each breakpoint.
+
+```tsx
+// Object syntax
+<Column size={{ _: 6, xs: 4 }}>Content</Column>
+
+// Array syntax
+<Column size={[6, 4]} />
+```
+
+This section would be 6 columns at the smallest screen size and 4 columns at anything larger than the 4th breakpoint.
+
+### Best practices
+
+- You should begin most design work with a target viewport of 1440px width, using the `XL` column grid.
+- Make sure you adjust each design to the viewports and take into account their respective screenheights (the ‘fold’).
+- Wider layouts should maintain proper line-lengths and component widths by adjusting arrangements to take advantage of the increased area—do not simply stretch to fill.
+- Elements that are not placed in an explicit lockup (like catalog cards) do not need to fill entire column widths. Alignment to gridlines on on axis (usually left side) is often enough
+
+## Spacing
+
+For spacing between components and sections use these as a guide. Each of these scales is a subset of our `spacing` sizes found on <LinkTo id="foundations-theme--spacing">our theme</LinkTo>. While you will have access to all of them in your code use these sets as a practical guide.
+
+<DataTable
+  rows={[
+    {
+      id: 'horizontal',
+      title: 'Horizontal Spacing',
+      sizes: [64, 48, 32, 16],
+    },
+    {
+      id: 'gutters',
+      title: 'Column Gaps (Gutters)',
+      sizes: [32, 24, 16, 8],
+    },
+    {
+      id: 'vertical',
+      title: 'Row Gaps',
+      sizes: [32, 24, 16, 8],
+    },
+  ]}
+  columns={[
+    {
+      name: 'Spacing',
+      key: 'title',
+      size: 'md',
+    },
+    {
+      name: 'Sizes',
+      key: 'sizes',
+      size: 'fill',
+      render: ({ sizes }) => (
+        <>
+          <Box
+            display="grid"
+            gridTemplateColumns={`repeat(${sizes.length}, max-content)`}
+            columnGap="2rem"
+            rowGap="0.5rem"
+            alignItems="end"
+          >
+            {sizes.map((size) => (
+              <Box
+                width={`${size}px`}
+                height={`${size}px`}
+                display="inline-block"
+                bg="navy"
+              />
+            ))}
+            {sizes.map((size) => (
+              <Box textAlign="center" fontSize={14}>
+                {size}
+              </Box>
+            ))}
+          </Box>
+        </>
+      ),
+    },
+  ]}
+/>
+
+### Best practices
+
+- The smallest unit of space for block elements is 8px.
+- Type can be placed with greater precision within elements or in relation to other lines of type (eg. Headlines/text or information in cards) using the 4px baseline grid.
+- Spaces between elements should use default units in multiples of 8px. The default spacing amount for margins and padding is 16px.
+- Use additional spacing in order to conceptually group or distance design elements, to create more negative space in a composition, or to assist with rhythm. Whenever possible, make sure that objects line up, both vertically and horizontally.
