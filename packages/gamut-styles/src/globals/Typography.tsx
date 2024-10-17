@@ -5,27 +5,22 @@ import { coreTheme as theme } from '../themes';
 
 const { fontSize, spacing, fontWeight, lineHeight } = theme;
 
-const typographyGlobals = css`
-  ${webFonts.map(
-    ({
-      name,
-      style = 'normal',
-      weight = 'normal',
-      extensions,
-      filePath,
-    }) => css`
-      @font-face {
-        font-display: swap;
-        font-family: '${name}';
-        font-style: ${style};
-        font-weight: ${weight};
-        src: ${extensions
-          .map((ext) => `url("${filePath}.${ext}") format("${ext}")`)
-          .join(', ')};
-      }
-    `
-  )}
+export const webFontFaceStyles = webFonts.map(
+  ({ name, style = 'normal', weight = 'normal', extensions, filePath }) => css`
+    @font-face {
+      font-display: swap;
+      font-family: '${name}';
+      font-style: ${style};
+      font-weight: ${weight};
+      src: ${extensions
+        .map((ext) => `url("${filePath}.${ext}") format("${ext}")`)
+        .join(', ')};
+    }
+  `
+);
 
+const typographyGlobals = css`
+  ${webFontFaceStyles}
   h1,
   h2,
   h3,
