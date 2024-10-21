@@ -147,6 +147,7 @@ export const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
       alignItems="center"
       justifyContent="space-between"
       minHeight="50rem"
+      resetOnSubmit
       {...connectedFormProps}
       {...connectedForm}
     >
