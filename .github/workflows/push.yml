@@ -4,24 +4,23 @@ jobs:
   format:
     runs-on: ubuntu-latest
     steps:
-      - uses: Codecademy/run-on-yarn@v1.2.0
+      - uses: Codecademy/run-on-yarn@v3.0.0
         with:
           node-version: 16
-      - run: yarn format:verify
+          command: format:verify
 
   lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: Codecademy/run-on-yarn@v1.2.0
-        with:
-          node-version: 16
-      - run: yarn build
-      - run: yarn ${{ matrix.command }}
-
     strategy:
       fail-fast: false
       matrix:
         command: ['lint', 'verify']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Codecademy/run-on-yarn@v3.0.0
+        with:
+          node-version: 16
+          command: build
+      - run: yarn ${{ matrix.command }}
 
 on:
   push:
