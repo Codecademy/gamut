@@ -21,7 +21,7 @@ import { useEffect } from 'react';
 import * as React from 'react';
 import merge from 'lodash/merge';
 import { Link } from '../Markdown/Elements';
-import { coreTheme } from '@codecademy/gamut-styles/src/themes/core';
+import { enterpriseTheme } from '@codecademy/gamut-styles/src/themes';
 
 const defaultComponents = {
   ...htmlComponents,
@@ -108,7 +108,7 @@ export const DocsContainer: React.FC<{ context: DocsContextProps }> = ({
     <DocsContext.Provider value={context}>
       <GamutProvider
         cache={createEmotionCache({ speedy: false })}
-        theme={coreTheme}
+        theme={enterpriseTheme as any}
       >
         <Helmet>
           <AssetProvider />
