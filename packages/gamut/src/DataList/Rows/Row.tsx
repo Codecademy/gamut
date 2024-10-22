@@ -1,4 +1,4 @@
-import { memo, ReactElement, useCallback } from 'react';
+import { memo, ReactElement, ReactNode, useCallback } from 'react';
 
 import { Text } from '../..';
 import { ListCol, ListRow } from '../../List';
@@ -103,7 +103,7 @@ export const Row: DataRow = ({
                   truncateLines={1}
                   textAlign={justify ?? 'left'}
                 >
-                  {row[key]}
+                  {row[key] as ReactNode}
                 </Text>
               ) : (
                 row[key]

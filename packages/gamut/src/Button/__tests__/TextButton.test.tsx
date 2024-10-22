@@ -12,12 +12,12 @@ const renderView = setupRtl(TextButton, {
 });
 
 describe('TextButton', () => {
-  it('renders a clickable button', () => {
+  it('renders a clickable button', async () => {
     const { view } = renderView();
 
     const cta = view.getByRole('button', { name: 'Click me!' });
 
-    userEvent.click(cta);
+    await userEvent.click(cta);
 
     expect(onClick).toHaveBeenCalled();
   });
