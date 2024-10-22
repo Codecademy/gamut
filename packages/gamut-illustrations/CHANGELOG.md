@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.49.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.48.1...@codecademy/gamut-illustrations@0.49.0) (2024-10-21)
+
+### Features
+
+- **Illustration:** adds CustomProject illustration ([70d0b31](https://github.com/Codecademy/gamut/commit/70d0b31c898ba3913cad87d8ea52c2d809df706e))
+
 ### [0.48.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.48.0...@codecademy/gamut-illustrations@0.48.1) (2024-10-01)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [57.4.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.4.2...@codecademy/gamut@57.4.3) (2024-10-21)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [57.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.4.1...@codecademy/gamut@57.4.2) (2024-10-16)
+
+### Bug Fixes
+
+- **Alert:** Update alert to be based on component width ([9367531](https://github.com/Codecademy/gamut/commit/936753191363a9e3f822e12d37bb279d9d55ded4))
+
 ### [57.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.4.0...@codecademy/gamut@57.4.1) (2024-10-16)
 
 ### Bug Fixes

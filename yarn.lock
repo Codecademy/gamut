@@ -1195,10 +1195,10 @@
   resolved "https://registry.npmjs.org/@codecademy/prettier-config/-/prettier-config-0.2.0.tgz#15a13a04c08d21fac7c88c2983258c1bdaf8152f"
   integrity sha512-WRaYl9urRIbT3D3UAehGXFi0lreG6VxwMQlJt39Ov/1amYjzQpM2V9Gm+FHQrHmIqff3H/fNxSNqy4ImrqFOjw==
 
-"@codecademy/tsconfig@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.npmjs.org/@codecademy/tsconfig/-/tsconfig-0.2.0.tgz#995047e64b53f91bd708f3849b9ec7d53c8022c2"
-  integrity sha512-8lVLeEkFGP/M0quAr/oMiMQtQkODLIwcxj+oEZ3kl7OtNc5y0km/XWd/2M9H8wCQmpOw2xn1iSZGhmfB+sRO5Q==
+"@codecademy/tsconfig@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/@codecademy/tsconfig/-/tsconfig-0.3.0.tgz#dc463a3e668bbf1ad3c3d13d9f8b825e8bc31442"
+  integrity sha512-NbSXNdZaGvo+t4GW/ucCKNgAyYY5GMxKgsbYanek7tqbQgdX3hwAsbPkd1G5QR82+ARfsjNfWi7Yss4WTSybrA==
 
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"

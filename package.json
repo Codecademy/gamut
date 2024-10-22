@@ -11,7 +11,7 @@
     "@babel/preset-typescript": "^7.24.7",
     "@codecademy/eslint-config": "8.0.0",
     "@codecademy/prettier-config": "^0.2.0",
-    "@codecademy/tsconfig": "^0.2.0",
+    "@codecademy/tsconfig": "^0.3.0",
     "@emotion/babel-plugin": "11.11.0",
     "@emotion/jest": "^11.11.0",
     "@emotion/react": "11.11.1",
