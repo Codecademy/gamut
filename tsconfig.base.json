@@ -22,6 +22,6 @@
   },
   "exclude": ["**/node_modules", "tmp"],
   "paths": {
-    "@codecademy/cariant": ["packages/variance/src/index.ts"],
+    "@codecademy/variance": ["packages/variance/src/index.ts"],
   }
 }
