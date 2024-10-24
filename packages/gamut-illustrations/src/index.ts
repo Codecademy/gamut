@@ -14,6 +14,7 @@ export * from './ChatBox';
 export * from './CodeCelebration';
 export * from './Coffee';
 export * from './Confetti';
+export * from './CustomProject';
 export * from './EmailAt';
 export * from './Envelope';
 export * from './ErrorWindow';
