@@ -196,7 +196,7 @@ jobs:
           name: deploy
           command: |
             DEPLOY_MESSAGE="User: ${CIRCLE_USERNAME} Project: ${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} Pull Request: ${CIRCLE_PULL_REQUEST}"
-            npx netlify-cli@17.37.1 netlify deploy --dir=dist/storybook/styleguide --json > .deploy-output
+            npx netlify-cli@2.37.0 deploy --message="${DEPLOY_MESSAGE}" --dir=dist/docs --json > .deploy-output
       - setup_remote_docker
       - run: docker pull cloudposse/github-commenter:0.5.0-58
       - run:
