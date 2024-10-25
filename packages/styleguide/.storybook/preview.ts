@@ -2,11 +2,64 @@ import { Preview } from '@storybook/react';
 
 import theme from './GamutTheme';
 import { withEmotion } from './theming/GamutThemeProvider';
+import { breakpoints } from 'packages/gamut-styles/src';
 
 const preview: Preview = {
   parameters: {
     docs: {
       theme: theme,
+    },
+    backgrounds: {
+      disable: true,
+    },
+    viewport: {
+      defaultViewport: 'responsive',
+      viewports: {
+        responsive: {
+          name: 'Responsive',
+          type: 'desktop',
+        },
+        xs: {
+          name: `XS - ${breakpoints.xs}`,
+          styles: {
+            width: breakpoints.xs,
+            height: '900px',
+          },
+          type: 'mobile',
+        },
+        sm: {
+          name: `SM - ${breakpoints.sm}`,
+          styles: {
+            width: breakpoints.sm,
+            height: '1024px',
+          },
+          type: 'tablet',
+        },
+        md: {
+          name: `MD - ${breakpoints.md}`,
+          styles: {
+            width: breakpoints.md,
+            height: '768px',
+          },
+          type: 'desktop',
+        },
+        lg: {
+          name: `LG - ${breakpoints.lg}`,
+          styles: {
+            width: breakpoints.lg,
+            height: '900px',
+          },
+          type: 'desktop',
+        },
+        xl: {
+          name: `XL - ${breakpoints.xl}`,
+          styles: {
+            width: breakpoints.xl,
+            height: '900px',
+          },
+          type: 'desktop',
+        },
+      },
     },
   },
 };
