@@ -1,0 +1,216 @@
+import {
+  CTAButton,
+  FillButton,
+  GridBox,
+  IconButton,
+  StrokeButton,
+  TextButton,
+} from '@codecademy/gamut/src';
+import {
+  MiniArrowLeftIcon,
+  MiniArrowRightIcon,
+  MiniRibbonIcon,
+  SearchIcon,
+} from '@codecademy/gamut-icons/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { LinkTo } from '~styleguide/blocks';
+
+import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
+import { ButtonScale } from './examples';
+
+<Meta
+  title={title}
+  args={{
+    children: 'Click Me',
+    disabled: false,
+    size: 'normal',
+  }}
+  parameters={{
+    subtitle: 'Button atoms for specfic use cases',
+    source: 'gamut',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0',
+    },
+  }}
+  component={TextButton}
+  argTypes={{
+    href: {
+      description: 'If defined, component will use an anchor tag',
+    },
+    mode: {
+      control: {
+        type: 'select',
+        options: ['dark', 'light'],
+      },
+    },
+    size: {
+      control: {
+        type: 'select',
+        options: ['normal', 'small', 'large'],
+      },
+    },
+    icon: {
+      control: {
+        options: [SearchIcon],
+      },
+    },
+  }}
+/>
+
+We have several versions of buttons that you can use.
+Each supports a _light_ and _dark_ mode.
+
+See the [Figma designs](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0) for a nice grid view of all the variants.
+All but CTA button support a size of either `normal` (default) or `small`.
+
+<br />
+
+## Writing tips
+
+Writing words for a link or button? Above all else, make sure that the words alone make it clear where a button or link will take the user. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="ux-writing-component-guidelines-buttons-and-links--page">writing for buttons and links</LinkTo>.
+
+<CustomCheckbox
+  htmlFor="buttons-1"
+  label="Make sure it is clear where the link or button will take the user."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="buttons-2"
+  label="Use sentence case, capitalizing only proper nouns."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="buttons-3"
+  label="For buttons, start with an action-oriented verb (like “explore” or “view”)."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="buttons-4"
+  label="For buttons, use 3 words or less (unless more words are necessary for clarity)."
+  spacing="tight"
+/>
+
+<br />
+
+## CTAButton
+
+<Canvas>
+  <Story name="CTAButton">{(args) => <CTAButton {...args} />}</Story>
+</Canvas>
+
+<PropsTable exclude={['size']} story="CTAButton" />
+
+## FillButton
+
+<Canvas>
+  <Story name="FillButton">{(args) => <FillButton {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="FillButton" />
+
+## StrokeButton
+
+<Canvas>
+  <Story name="StrokeButton">{(args) => <StrokeButton {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="StrokeButton" />
+
+## TextButton
+
+**Note**: Our text buttons use bold formatting to differentiate themselves from normal text, as color alone does not meet the 3:1 contrast ratio required for accessibility. However, bold formatting may not be sufficient in all contexts, such as when placed alongside a bold heading.
+
+In these cases, we recommend including a leading or trailing icon to further distinguish the button from other bold text. This additional visual cue ensures that the text button is easily identifiable and accessible to all users.
+
+<Canvas>
+  <Story name="TextButton">{(args) => <TextButton {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="TextButton" />
+
+## IconButton
+
+You must pass a string for the `tip` prop to label your icon button. The `tipProps` prop is optional and can be used to customize the tooltip - for more information on `tooltip`s + `IconButton`s see the <LinkTo component="ToolTip">ToolTip page</LinkTo>.
+
+<Canvas>
+  <Story name="IconButton">
+    {(args) => (
+      <IconButton
+        {...args}
+        icon={SearchIcon}
+        tip="ToolTip"
+        tipProps={{ placement: 'floating' }}
+      >
+        {undefined}
+      </IconButton>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable story="IconButton" />
+
+## Button variants
+
+We have 2 button color modes: `light` and `dark`.
+For different priority buttons we provide `primary` and `secondary` variants.
+
+- **Do** Use `primary` for high priority actions (e.g. Submit).
+- **Do** Use `secondary` for low priority buttons (e.g. Close).
+- **Don't** use a color mode outside of its context (no light buttons on navy backgrounds)
+
+```tsx
+<FillButton mode="dark" variant="primary">
+  Submit
+</FillButton>
+<FillButton mode="dark" variant="secondary">
+  Cancel
+</FillButton>
+```
+
+## Inline icons
+
+Our FillButtons, StrokeButtons, and TextButtons all support a single inline icon. You can align the icon to the left or right of the button text using the `iconPosition` prop. These icons should be from the mini set to be legible at a smaller size.
+
+<Canvas>
+  <Story name="Inline icon">
+    {() => (
+      <GridBox gridTemplateColumns="1fr 1fr 1fr 3fr">
+        <FillButton maxWidth="fit-content" icon={MiniArrowLeftIcon}>
+          FillButton
+        </FillButton>
+        <StrokeButton maxWidth="fit-content" icon={MiniRibbonIcon}>
+          Leading icon
+        </StrokeButton>
+        <TextButton
+          maxWidth="fit-content"
+          icon={MiniArrowRightIcon}
+          iconPosition="right"
+        >
+          TextButton
+        </TextButton>
+      </GridBox>
+    )}
+  </Story>
+</Canvas>
+
+### Light mode
+
+<Canvas>
+  <Story name="Light mode">
+    <ButtonScale mode="light" />
+  </Story>
+</Canvas>
+
+## Dark mode
+
+<Canvas>
+  <Story name="Dark mode">
+    <ButtonScale mode="dark" />
+  </Story>
+</Canvas>

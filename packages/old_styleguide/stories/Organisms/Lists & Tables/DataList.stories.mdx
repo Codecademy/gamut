@@ -1,0 +1,168 @@
+import { DataList, DataTable, FlexBox } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { DataListTemplate } from './examples.tsx';
+
+<Meta
+  title={title}
+  component={DataList}
+  parameters={{
+    subtitle:
+      'Displays rich information and supports visually distinctive formats for individual List Items',
+    source: 'gamut',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/MkQYGsGhMCCUls9TK0pn4U/Lists?node-id=302%3A8236',
+    },
+  }}
+  args={{
+    id: 'crew',
+    idKey: 'name',
+    query: { sort: { name: 'desc', role: 'asc' } },
+    rows: [
+      { name: 'Jean Luc Picard', role: 'Captain', ship: 'USS Enterprise' },
+      {
+        name: 'Wesley Crusher',
+        role: 'Deus Ex Machina',
+        ship: 'USS Enterprise',
+      },
+      {
+        name: 'Geordie LaForge',
+        role: 'Chief Engineer / Rascal',
+        ship: 'Borg Cube',
+      },
+      {
+        name: 'Data',
+        role: 'Lt. Commander / Scamp',
+        ship: 'He is a ship',
+      },
+    ],
+    columns: [
+      {
+        label: 'Name',
+        key: 'name',
+        size: 'lg',
+        type: 'header',
+        sortable: true,
+      },
+      { label: 'Rank', key: 'role', size: 'lg', sortable: true },
+      { label: 'Ship', key: 'ship', size: 'lg', sortable: true, fill: true },
+    ],
+    header: false,
+    spacing: 'condensed',
+    expandedContent: ({ row }) => (
+      <FlexBox borderTop={1} borderColor="background-hover" p={16} pl={[0, 64]}>
+        <DataTable
+          id={row.name}
+          idKey="id"
+          header={false}
+          variant="table"
+          columns={[
+            { key: 'name', size: 'md' },
+            { key: 'text', size: 'lg' },
+          ]}
+          rows={[
+            { id: 1, name: 'Sub Row 1', text: 'Ooo very cool' },
+            { id: 2, name: 'Sub Row 2', text: 'Ooo very cool' },
+            { id: 3, name: 'Sub Row 3', text: 'Ooo very cool' },
+          ]}
+        />
+      </FlexBox>
+    ),
+  }}
+/>
+
+## Design principles
+
+**Recommended for engaging with individual Items**
+
+- Manage and open Items inside your List
+- Expand the format of items to surface advanced layouts
+- Include rich information and controls inside of each List Item
+
+**Customize Items with rich information**
+
+- Icons, graphics, complex layouts, other Atoms
+
+**Optional List-level interactions include**
+
+- Basic filtering and sorting across common attributes across Items
+
+**Be careful about placement and positioning**
+
+- Make sure Item controls are visible on the right
+- Place Lists inside main containers to avoid overflow
+- Use a Table if you have a design that’s meant to compare information between items
+
+## Usage
+
+```tsx
+const DataTown = () => {
+  const [selectedRows, setSelectedRows] = useState([]);
+  const [expandedRows, setExpandedRows] = useState([]);
+
+  const queryData = useLocalQuery({
+    idKey: 'name',
+    rows: crew,
+    columns: [
+      { key: 'name', sortable: true, size: 'sm' },
+      { key: 'ship', sortable: true, size: 'sm' },
+    ],
+  });
+
+  return (
+    <DataList
+      id="example"
+      selectedRows={selectedRows}
+      onRowSelect={setSelectedRows}
+      expandedRows={expandedRows}
+      onRowExpand={setExpandedRows}
+      renderExpanded={({ name }) => <>{name}: This is pretty cool</>}
+      {...queryData}
+    />
+  );
+};
+```
+
+<br />
+
+### Full example
+
+<Story name="Full example">
+  <DataListTemplate />
+</Story>
+
+<br />
+
+### Expanded
+
+<Story name="Expanded" args={{ expanded: ['Data'] }}>
+  {(args) => <DataList {...args} />}
+</Story>
+
+### Selected
+
+<Story name="Selected" args={{ selected: ['Data'] }}>
+  {(args) => <DataList {...args} />}
+</Story>
+
+<br />
+
+### Additional column configuration
+
+- `size` - enum which determines how much space the column should take up within the table
+- `fill` - boolean which, when set to true, takes up the remaining space in the table. If more than one column is set to `fill`, the remaining space will be divied up between those items.
+
+### Code playground
+
+<Story name="DataList">{(args) => <DataList {...args} />}</Story>
+
+<br />
+<br />
+<br />
+
+<PropsTable story="DataList" />

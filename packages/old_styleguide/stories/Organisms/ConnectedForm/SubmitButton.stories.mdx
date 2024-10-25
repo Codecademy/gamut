@@ -1,0 +1,64 @@
+import { SubmitButton } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+import { SubmitButtonStates } from './SubmitButton.examples';
+
+<Meta
+  title={title}
+  component={SubmitButton}
+  parameters={{
+    subtitle: 'A submit type button for ConnectedForm',
+    source: 'gamut',
+    status: 'current',
+  }}
+/>
+
+`SubmitButton`: A submit type <LinkTo kind='Atoms/Button'>Button</LinkTo> that uses the context provided by `ConnectedForm` for loading and disabled states. Must be used within <LinkTo kind='Organisms/ConnectedForm/ConnectedForm'>ConnectedForm</LinkTo> .
+
+## States
+
+<SubmitButtonStates />
+
+## Usage
+
+```tsx
+import {
+  ConnectedInput,
+  useConnectedForm,
+  SubmitButton,
+} from '@codecademy/gamut';
+
+export const NiceForm = () => {
+  const {
+    ConnectedFormGroup,
+    ConnectedForm,
+    connectedFormProps,
+  } = useConnectedForm({
+    defaultValues: {
+      inputField: 'default sentence',
+    },
+    validationRules: {
+      inputField: { required: 'you gotta say something' },
+    },
+  });
+
+  return (
+    <ConnectedForm
+      onSubmit={(values) => submit(values)}
+      {...connectedFormProps}
+    >
+      <ConnectedFormGroup
+        name="inputField"
+        label="cool input"
+        field={{
+          component: ConnectedInput,
+          icon: TerminalIcon,
+        }}
+      />
+      <SubmitButton>submit my form!</SubmitButton>
+    </ConnectedForm>
+  );
+};
+```

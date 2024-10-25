@@ -1,0 +1,24 @@
+import { FormGroupDescription } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={FormGroupDescription}
+  parameters={{
+    subtitle:
+      'A description wrapper to format a longer description of a group of inputs.',
+    source: 'gamut',
+    status: 'current',
+  }}
+  args={{ children: 'I am a description' }}
+/>
+
+<Canvas>
+  <Story name="FormGroupDescription">
+    {(args) => <FormGroupDescription {...args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="FormGroupDescription" />
