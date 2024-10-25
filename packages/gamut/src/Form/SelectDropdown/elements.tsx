@@ -28,28 +28,23 @@ import {
   TypedReactSelectProps,
 } from './types';
 
-const {
-  DropdownIndicator,
-  MultiValue,
-  MultiValueRemove,
-  SelectContainer,
-  Option,
-} = SelectDropdownElements;
+const { DropdownIndicator, MultiValue, MultiValueRemove } =
+  SelectDropdownElements;
 
-export const SelectDropdownContext = createContext<SelectDropdownContextValueTypes>(
-  {
+export const SelectDropdownContext =
+  createContext<SelectDropdownContextValueTypes>({
     currentFocusedValue: undefined,
     setCurrentFocusedValue: undefined,
     selectInputRef: undefined,
     removeAllButtonRef: undefined,
-  }
-);
+  });
 
 export const MultiValueWithColorMode = (props: MultiValueProps) => {
   const { currentFocusedValue, setCurrentFocusedValue } = useContext(
     SelectDropdownContext
   );
 
+  // oi
   const { value } = (props?.data as any) ?? undefined;
 
   if (
@@ -193,7 +188,9 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
 export const CustomContainer = ({
   children,
   ...rest
-}: CustomSelectComponentProps<typeof SelectContainer>) => {
+}: CustomSelectComponentProps<
+  typeof SelectDropdownElements.SelectContainer
+>) => {
   const { inputProps, name } = rest.selectProps;
 
   const value = rest.hasValue
@@ -204,22 +201,22 @@ export const CustomContainer = ({
     : '';
 
   return (
-    <SelectContainer {...rest}>
+    <SelectDropdownElements.SelectContainer {...rest}>
       {children}
       <input type="hidden" value={value} name={name} {...inputProps} />
-    </SelectContainer>
+    </SelectDropdownElements.SelectContainer>
   );
 };
 
 export const IconOption = ({
   children,
   ...rest
-}: CustomSelectComponentProps<typeof Option>) => {
+}: CustomSelectComponentProps<typeof SelectDropdownElements.Option>) => {
   const { size } = rest.selectProps;
   const { isFocused, innerProps } = rest;
 
   return (
-    <Option
+    <SelectDropdownElements.Option
       {...rest}
       innerProps={{ ...innerProps, 'aria-selected': isFocused }}
     >
@@ -227,7 +224,7 @@ export const IconOption = ({
       {rest?.isSelected && (
         <CheckIcon size={selectedIconSize[size ?? 'medium']} />
       )}
-    </Option>
+    </SelectDropdownElements.Option>
   );
 };
 
