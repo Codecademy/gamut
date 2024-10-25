@@ -44,7 +44,6 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
     SelectDropdownContext
   );
 
-  // oi
   const { value } = (props?.data as any) ?? undefined;
 
   if (
