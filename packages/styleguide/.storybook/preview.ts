@@ -1,11 +1,11 @@
-import { Preview } from '@storybook/react-webpack5';
+import { Preview } from '@storybook/react';
 
-import { themes } from '@storybook/theming';
+import theme from './GamutTheme';
 
 const preview: Preview = {
   parameters: {
     docs: {
-      theme: themes.dark,
+      theme: theme,
     },
   },
 };

@@ -23,5 +23,6 @@
   "exclude": ["**/node_modules", "tmp"],
   "paths": {
     "@codecademy/variance": ["packages/variance/src/index.ts"],
+    "@codecademy/gamut-styles": ["packages/gamut-styles/src/index.ts"],
   }
 }
