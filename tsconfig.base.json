@@ -20,5 +20,8 @@
     "strict": true,
     "target": "esnext"
   },
-  "exclude": ["**/node_modules", "tmp"]
+  "exclude": ["**/node_modules", "tmp"],
+  "paths": {
+    "@codecademy/variance": ["packages/variance/src/index.ts"],
+  }
 }
