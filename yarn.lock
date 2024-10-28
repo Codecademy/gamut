@@ -3052,6 +3052,11 @@
   dependencies:
     type-fest "^2.19.0"
 
+"@storybook/docs-tools@^8.3.6":
+  version "8.3.6"
+  resolved "https://registry.npmjs.org/@storybook/docs-tools/-/docs-tools-8.3.6.tgz#2714eec88223990aa831b1640b786520fcb5c12f"
+  integrity sha512-/Fw/gX1DYt2RGZYido8fEkcazhxmZ2rXoj3qdVXMXZZ3ah4XIeQwo069lgBYeR7XygK/JE22O6TD38COO4jv/w==
+
 "@storybook/global@^5.0.0":
   version "5.0.0"
   resolved "https://registry.npmjs.org/@storybook/global/-/global-5.0.0.tgz#b793d34b94f572c1d7d9e0f44fac4e0dbc9572ed"

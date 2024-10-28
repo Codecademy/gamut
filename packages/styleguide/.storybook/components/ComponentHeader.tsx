@@ -53,7 +53,7 @@ export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
     return (
       <Text as="strong">
         Status: <StatusIndicator status={status}>{label}</StatusIndicator>
-        <Text fontWeight="normal">
+        <Text variant="title-xs">
           <InfoTip info={tooltip} />
         </Text>
       </Text>

@@ -38,6 +38,7 @@
     "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
     "@storybook/blocks": "^8.3.6",
     "@storybook/core-server": "8.3.6",
+    "@storybook/docs-tools": "^8.3.6",
     "@storybook/icons": "1.2.12",
     "@storybook/manager-api": "^8.3.6",
     "@storybook/react-webpack5": "^8.3.6",
