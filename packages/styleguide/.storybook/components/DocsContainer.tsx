@@ -14,20 +14,20 @@ import {
 import { components as htmlComponents } from '@storybook/components';
 import { ThemeProvider } from '@storybook/theming';
 import * as React from 'react';
+import { Link } from './Markdown';
 import { HelmetProvider } from 'react-helmet-async';
 
 const defaultComponents = {
   ...htmlComponents,
   code: CodeOrSourceMdx,
   ...HeadersMdx,
+  a: Link as any,
 };
 
 export const DocsContainer: React.FC<{
   context: DocsContextProps;
   children: React.ReactNode;
 }> = ({ context, children }, ...rest) => {
-  const allComponents = { ...defaultComponents };
-
   return (
     <StorybookDocsContainer context={context} {...rest}>
       <GamutProvider
@@ -38,7 +38,7 @@ export const DocsContainer: React.FC<{
           <AssetProvider />
         </HelmetProvider>
         <ThemeProvider theme={coreTheme}>
-          <MDXProvider components={allComponents}>{children}</MDXProvider>
+          <MDXProvider components={defaultComponents}>{children}</MDXProvider>
         </ThemeProvider>
       </GamutProvider>
     </StorybookDocsContainer>
