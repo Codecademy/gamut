@@ -1,0 +1,40 @@
+import * as LogoStories from './Logo.stories';
+import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+import {ComponentHeader} from '../../../../.storybook/components/ComponentHeader';
+
+export const parameters = {
+  subtitle: `Our proud logo. There is no a in the middle. Use sparingly, and make sure
+it has a lot of visual distinction to stand out appropriately.`,
+
+design: {
+type: 'figma',
+url:
+'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=465%3A163',
+},
+};
+
+<Meta of={LogoStories} />
+
+<ComponentHeader {...parameters} />
+
+<Canvas withSource="open">
+  <Story of={LogoStories.Default} />
+</Canvas>
+
+<Controls />
+
+## Variants
+
+Variants of the Codecademy logo.
+
+### Pro
+
+<Canvas of={LogoStories.Pro}/>
+
+### Mini
+
+<Canvas of={LogoStories.Mini}/>
+
+### Enterprise
+
+<Canvas of={LogoStories.Enterprise}/>
