@@ -2,7 +2,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "emitDecoratorMetadata": true,
-    "outDir": ""
+    "outDir": "",
+    "moduleResolution": "bundler",
+    "lib": ["dom", "dom.iterable", "ES2021", "ES2021.String"]
   },
   "files": [
     "../../node_modules/@nx/react/typings/styled-jsx.d.ts",
@@ -25,6 +27,7 @@
     "src/**/*.stories.jsx",
     "src/**/*.stories.tsx",
     "src/**/*.stories.mdx",
+    ".storybook/**/*.tsx",
     ".storybook/*.js",
     ".storybook/*.ts",
     "../../packages/gamut-styles/dist/typings/theme.d.ts"
