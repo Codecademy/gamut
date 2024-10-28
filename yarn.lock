@@ -2820,7 +2820,7 @@
   dependencies:
     "@figspec/react" "^1.0.0"
 
-"@storybook/addon-docs@8.3.6":
+"@storybook/addon-docs@8.3.6", "@storybook/addon-docs@^8.3.6":
   version "8.3.6"
   resolved "https://registry.npmjs.org/@storybook/addon-docs/-/addon-docs-8.3.6.tgz#b03ad160475b7920ef03833bd2674ea62f872d23"
   integrity sha512-31Rk1TOhDIzGM2wNCUIB1xKuWtArW0D2Puua9warEXlQ3FtvwmxnPrwbIzw6ufYZDWPwl9phDYTcRh8WqZIoGg==
@@ -12301,7 +12301,7 @@ react-focus-on@^3.5.1:
     use-callback-ref "^1.2.3"
     use-sidecar "^1.0.1"
 
-react-helmet@6.1.0:
+react-helmet@^6.1.0:
   version "6.1.0"
   resolved "https://registry.npmjs.org/react-helmet/-/react-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
   integrity sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==

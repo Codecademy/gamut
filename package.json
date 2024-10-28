@@ -10,7 +10,7 @@
     "lodash": "^4.17.5",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-helmet": "6.1.0"
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "@babel/cli": "7.24.7",
@@ -31,6 +31,7 @@
     "@nx/webpack": "19.3.2",
     "@storybook/addon-controls": "8.3.6",
     "@storybook/addon-designs": "^8.0.3",
+    "@storybook/addon-docs": "^8.3.6",
     "@storybook/addon-essentials": "^8.3.6",
     "@storybook/addon-links": "^8.3.6",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.3",

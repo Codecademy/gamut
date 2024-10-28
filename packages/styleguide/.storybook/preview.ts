@@ -3,10 +3,12 @@ import { Preview } from '@storybook/react';
 import theme from './GamutTheme';
 import { withEmotion } from './theming/GamutThemeProvider';
 import { breakpoints } from 'packages/gamut-styles/src';
+import { CustomDocsContainer } from './components/Docs/CustomDocsContainer';
 
 const preview: Preview = {
   parameters: {
     docs: {
+      container: CustomDocsContainer,
       theme: theme,
     },
     backgrounds: {
