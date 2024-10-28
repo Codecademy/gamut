@@ -1,15 +1,19 @@
 import { Preview } from '@storybook/react';
 
-import theme from './GamutTheme';
+import theme from './theming/GamutTheme';
 import { withEmotion } from './theming/GamutThemeProvider';
 import { breakpoints } from 'packages/gamut-styles/src';
-import { CustomDocsContainer } from './components/Docs/CustomDocsContainer';
+import { DocsContainer } from './components/DocsContainer';
+import { Link } from './components/Markdown';
 
 const preview: Preview = {
   parameters: {
     docs: {
-      container: CustomDocsContainer,
+      container: DocsContainer,
       theme: theme,
+      components: {
+        a: Link,
+      },
     },
     backgrounds: {
       disable: true,

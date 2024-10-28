@@ -5,7 +5,7 @@ import {
   coreSwatches,
 } from '@codecademy/gamut-styles/src';
 
-import logo from './assets/logo.svg';
+import logo from '../assets/logo.svg';
 
 const isLocalhost = globalThis.location?.toString().includes('localhost');
 
