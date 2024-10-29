@@ -1,5 +1,4 @@
-import { Text } from '@codecademy/gamut';
-import { Background } from '@codecademy/gamut-styles';
+import { FlexBox, Text } from '@codecademy/gamut';
 import * as React from 'react';
 
 export interface AboutHeaderProps {
@@ -12,20 +11,11 @@ export const AboutHeader: React.FC<AboutHeaderProps> = ({
   subtitle,
 }) => {
   return (
-    <Background
-      bg="navy-900"
-      borderWidth="10px"
-      borderColor="white-200"
-      borderStyle="solid"
-      borderRadius="md"
-      p={24}
-      display="flex"
-      flexDirection="column"
-    >
-      <Text variant="title-xl" mb={8} smooth>
+    <FlexBox pt={24} pb={12} column>
+      <Text as="h1" variant="title-xl" mb={4}>
         {title}
       </Text>
-      <Text as="code">{subtitle}</Text>
-    </Background>
+      <Text variant="title-xs">{subtitle}</Text>
+    </FlexBox>
   );
 };
