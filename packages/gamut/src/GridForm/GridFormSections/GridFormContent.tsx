@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { useField } from '../../ConnectedForm';
+import { getErrorMessage, useField } from '../../ConnectedForm';
 import { GridFormInputGroup } from '../GridFormInputGroup';
 import { GridFormField } from '../types';
 
@@ -9,17 +9,11 @@ export type GridFormContentProps = {
 };
 
 export const GridFormContent: React.FC<GridFormContentProps> = ({ field }) => {
-  const {
-    error,
-    isFirstError,
-    register,
-    setValue,
-    isDisabled,
-    isSoloField,
-  } = useField({
-    name: field.name,
-    disabled: field.disabled,
-  });
+  const { error, isFirstError, register, setValue, isDisabled, isSoloField } =
+    useField({
+      name: field.name,
+      disabled: field.disabled,
+    });
 
   const requiredBoolean = !!(
     field.type !== 'hidden' &&
@@ -27,9 +21,11 @@ export const GridFormContent: React.FC<GridFormContentProps> = ({ field }) => {
     field.validation?.required
   );
 
+  const textError = getErrorMessage(error);
+
   return (
     <GridFormInputGroup
-      error={error}
+      error={textError}
       isFirstError={isFirstError}
       isDisabled={isDisabled}
       field={field}
