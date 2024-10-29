@@ -88,6 +88,10 @@ export function ConnectedFormGroup<T extends ConnectedField>({
     </FormGroupLabel>
   );
 
+  const textError =
+    ((typeof error === 'string' ? error : error?.message) || customError) ??
+    'An error occurred.';
+
   return (
     <FormGroup spacing={hideLabel ? 'tight' : spacing}>
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
@@ -112,7 +116,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
             }}
             skipDefaultOverrides={{ a: true }}
             inline
-            text={error || customError}
+            text={textError as string}
             spacing="none"
           />
         </FormError>
