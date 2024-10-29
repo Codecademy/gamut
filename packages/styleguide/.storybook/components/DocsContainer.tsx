@@ -16,6 +16,7 @@ import { ThemeProvider } from '@storybook/theming';
 import * as React from 'react';
 import { Link } from './Markdown';
 import { HelmetProvider } from 'react-helmet-async';
+import theme from '../theming/GamutTheme';
 
 const defaultComponents = {
   ...htmlComponents,
@@ -29,7 +30,7 @@ export const DocsContainer: React.FC<{
   children: React.ReactNode;
 }> = ({ context, children }, ...rest) => {
   return (
-    <StorybookDocsContainer context={context} {...rest}>
+    <StorybookDocsContainer theme={theme} context={context} {...rest}>
       <GamutProvider
         cache={createEmotionCache({ speedy: false })}
         theme={coreTheme}
