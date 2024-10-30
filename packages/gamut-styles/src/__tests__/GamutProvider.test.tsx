@@ -32,17 +32,17 @@ describe(GamutProvider, () => {
   });
   it('renders global styles', () => {
     renderView();
-    const allStyles = Array.from(
-      document.querySelectorAll('style')
-    ).filter((el) => Boolean(el.getAttribute('data-emotion')));
+    const allStyles = Array.from(document.querySelectorAll('style')).filter(
+      (el) => Boolean(el.getAttribute('data-emotion'))
+    );
 
     expect(allStyles.length).toBeGreaterThan(0);
   });
   it('does not render global styles when configured', () => {
     renderView({ useGlobals: false });
-    const allStyles = Array.from(
-      document.querySelectorAll('style')
-    ).filter((el) => Boolean(el.getAttribute('data-emotion')));
+    const allStyles = Array.from(document.querySelectorAll('style')).filter(
+      (el) => Boolean(el.getAttribute('data-emotion'))
+    );
 
     expect(allStyles.length).toBe(0);
   });
@@ -64,9 +64,9 @@ describe(GamutProvider, () => {
       children: <GamutProvider theme={theme} />,
     });
 
-    const allStyles = Array.from(
-      document.querySelectorAll('style')
-    ).filter((el) => Boolean(el.getAttribute('data-emotion')));
+    const allStyles = Array.from(document.querySelectorAll('style')).filter(
+      (el) => Boolean(el.getAttribute('data-emotion'))
+    );
 
     expect(createEmotionCache).toHaveBeenCalledTimes(1);
     expect(allStyles.length).toBeGreaterThan(0);
@@ -83,10 +83,11 @@ describe(GamutProvider, () => {
       variables: { cool: { '--cool': 'blue' } },
     });
 
-    const allStyles = Array.from(
-      document.querySelectorAll('style')
-    ).filter((el) => el.innerHTML.includes('--cool'));
+    const rootElement = document.documentElement;
 
-    expect(allStyles.length).toBe(1);
+    const rootStyles = getComputedStyle(rootElement);
+    const blue = rootStyles.getPropertyValue('--cool');
+
+    expect(blue).toBe('blue');
   });
 });
