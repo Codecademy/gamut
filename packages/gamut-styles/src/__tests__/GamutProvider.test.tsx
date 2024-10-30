@@ -84,7 +84,6 @@ describe(GamutProvider, () => {
     });
 
     const rootElement = document.documentElement;
-
     const rootStyles = getComputedStyle(rootElement);
     const blue = rootStyles.getPropertyValue('--cool');
 
