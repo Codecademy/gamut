@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { getErrorMessage, useField } from '../../ConnectedForm';
+import { getErrorMessage, useField } from '../../ConnectedForm/utils';
 import { GridFormInputGroup } from '../GridFormInputGroup';
 import { GridFormField } from '../types';
 
