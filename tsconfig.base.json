@@ -2,7 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
     "declaration": false,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
