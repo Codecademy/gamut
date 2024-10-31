@@ -4,10 +4,5 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {}
-  },
-  "ts-node": {
-    "compilerOptions": {
-      "module": "commonjs"
-    }
   }
 }
