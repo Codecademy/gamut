@@ -2,7 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
     "declaration": false,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
@@ -20,9 +19,5 @@
     "strict": true,
     "target": "esnext"
   },
-  "exclude": ["**/node_modules", "tmp"],
-  "paths": {
-    "@codecademy/variance": ["packages/variance/src/index.ts"],
-    "@codecademy/gamut-styles": ["packages/gamut-styles/src/index.ts"],
-  }
+  "exclude": ["**/node_modules", "tmp"]
 }
