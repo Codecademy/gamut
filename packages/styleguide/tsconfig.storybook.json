@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "emitDecoratorMetadata": true,
     "outDir": "",
     "moduleResolution": "bundler",
@@ -31,5 +32,5 @@
     ".storybook/*.js",
     ".storybook/*.ts",
     "../../packages/gamut-styles/dist/typings/theme.d.ts"
- ]
+  ]
 }

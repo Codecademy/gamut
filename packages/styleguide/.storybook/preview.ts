@@ -2,7 +2,7 @@ import { Preview } from '@storybook/react';
 
 import theme from './theming/GamutTheme';
 import { withEmotion } from './theming/GamutThemeProvider';
-import { breakpoints } from 'packages/gamut-styles/src';
+import { breakpoints } from '@codecademy/gamut-styles';
 import { DocsContainer } from './components/DocsContainer';
 
 const preview: Preview = {
