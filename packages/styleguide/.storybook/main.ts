@@ -30,6 +30,7 @@ const config: StorybookConfig = {
     config.resolve = {
       ...config.resolve,
       alias: {
+        '~styleguide/blocks': resolve(__dirname, './components/'),
         '@codecademy/gamut-styles$': resolve(
           __dirname,
           '../../gamut-styles/src'
