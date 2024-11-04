@@ -9,7 +9,7 @@ import {
 import { OpenIcon } from '@codecademy/gamut-icons';
 import { Background } from '@codecademy/gamut-styles';
 import { Figma } from '@storybook/addon-designs/blocks';
-import { Title as TitleBlock, Subtitle } from '@storybook/blocks';
+import { Title } from '@storybook/blocks';
 import * as React from 'react';
 
 import { StatusIndicator } from './StatusIndicator';
@@ -74,8 +74,8 @@ export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
       mb={24}
     >
       <ContentContainer>
-        {<TitleBlock />}
-        <Subtitle />
+        <Title />
+        <Text mb={16}>{subtitle}</Text>
         {(design?.url || storyStatus !== 'static') && (
           <Background p={16} bg="white" borderRadius="md">
             <GridBox
