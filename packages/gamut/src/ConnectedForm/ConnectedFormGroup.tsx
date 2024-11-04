@@ -14,7 +14,7 @@ import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
 import { ConnectedField, FieldProps, SubmitContextProps } from './types';
-import { useField } from './utils';
+import { getErrorMessage, useField } from './utils';
 
 const ErrorAnchor = styled(Anchor)(
   css({
@@ -88,6 +88,8 @@ export function ConnectedFormGroup<T extends ConnectedField>({
     </FormGroupLabel>
   );
 
+  const textError = customError || getErrorMessage(error);
+
   return (
     <FormGroup spacing={hideLabel ? 'tight' : spacing}>
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
@@ -112,7 +114,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
             }}
             skipDefaultOverrides={{ a: true }}
             inline
-            text={error || customError}
+            text={textError}
             spacing="none"
           />
         </FormError>
