@@ -1,7 +1,6 @@
 import { Source } from '@storybook/blocks';
 import { SourceType } from '@storybook/docs-tools';
 import { ComponentProps } from 'react';
-import React from 'react';
 
 export const StorySource = ({
   of,

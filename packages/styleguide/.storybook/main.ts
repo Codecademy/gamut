@@ -3,8 +3,8 @@ import { resolve, dirname, join } from 'path';
 
 const config: StorybookConfig = {
   stories: [
-    '../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
     '../src/lib/**/*.@(mdx)',
+    '../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
 
   addons: [
@@ -30,6 +30,7 @@ const config: StorybookConfig = {
     config.resolve = {
       ...config.resolve,
       alias: {
+        '~styleguide/blocks': resolve(__dirname, './components/'),
         '@codecademy/gamut-styles$': resolve(
           __dirname,
           '../../gamut-styles/src'
