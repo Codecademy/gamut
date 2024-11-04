@@ -1,11 +1,11 @@
+import { Box, Card, FlexBox, GridBox, Text } from '@codecademy/gamut';
+import { pxRem } from '@codecademy/gamut-styles';
+import { Description } from '@storybook/addon-docs/blocks';
 import * as React from 'react';
 
-import { Description } from '@storybook/addon-docs/blocks';
+import { StatusTab } from '../Docs/StatusIndicator';
 import { Link, Reset } from '../Markdown/Elements';
 import { ContentItem, useNavigation } from '.';
-import { Box, Card, FlexBox, GridBox, Text } from '@codecademy/gamut/src';
-import { pxRem } from '@codecademy/gamut-styles/src';
-import { StatusTab } from '../Docs/StatusIndicator';
 
 export const TableOfContents = () => {
   const { toc } = useNavigation();
@@ -60,7 +60,7 @@ export const Section: React.FC<ContentItem> = ({
       position="relative"
     >
       <GridBox
-        gridTemplateRows={`min-content 4.5rem`}
+        gridTemplateRows="min-content 4.5rem"
         position={hasSubsections ? 'relative' : 'initial'}
         rowGap={8}
         p={24}

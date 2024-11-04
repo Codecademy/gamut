@@ -43,3 +43,5 @@ export const Link: React.FC<LinkProps> = ({ ref, id, variant, ...props }) => {
   }
   return <Anchor {...props} onClick={onClick} variant={variant} />;
 };
+
+export const LinkTo = Link;
