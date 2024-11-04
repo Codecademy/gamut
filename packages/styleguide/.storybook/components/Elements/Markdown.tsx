@@ -1,4 +1,5 @@
 import { Anchor } from '@codecademy/gamut';
+import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { linkTo } from '@storybook/addon-links';
 import { ComponentProps } from 'react';
@@ -45,3 +46,31 @@ export const Link: React.FC<LinkProps> = ({ ref, id, variant, ...props }) => {
 };
 
 export const LinkTo = Link;
+
+export const Code = styled.code`
+  max-width: 100%;
+  overflow-x: auto;
+  line-height: 1;
+  padding: 5px 7px 1px;
+  white-space: nowrap;
+  border-radius: 3px;
+  font-size: 0.8em;
+  border: 1px solid ${themed('colors.gray-200')};
+  color: ${themed('colors.navy-700')};
+  background-color: ${themed('colors.gray-100')};
+  display: inline-block;
+  overflow-x: scroll;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: themed('colors.gray-200');
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+`;

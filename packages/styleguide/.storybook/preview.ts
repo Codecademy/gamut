@@ -3,13 +3,14 @@ import { Preview } from '@storybook/react';
 import theme from './theming/GamutTheme';
 import { withEmotion } from './theming/GamutThemeProvider';
 import { breakpoints } from '@codecademy/gamut-styles';
-import { DocsContainer } from './components/DocsContainer';
+import { DocsContainer } from './components/Elements/DocsContainer';
 
 const preview: Preview = {
   parameters: {
     docs: {
       container: DocsContainer,
       theme: theme,
+      toc: { headingSelector: 'h1, h2, h3' },
     },
     backgrounds: {
       disable: true,

@@ -1,12 +1,12 @@
 import { Box } from '@codecademy/gamut/src';
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, DataTable, LinkTo } from '~styleguide/blocks';
+import { ComponentHeader, DataTable, LinkTo } from '~styleguide/blocks';
 
 export const parameters = {
   title: 'Layout',
   subtitle: 'Design guidelines for overall page layout',
-  status: 'current',
+  status: 'static',
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=464%3A691',
@@ -15,7 +15,7 @@ export const parameters = {
 
 <Meta title="Foundations/Layout" />
 
-<AboutHeader {...parameters} />
+<ComponentHeader {...parameters} />
 
 These are the grids we use for all the screen sizes we design for. We use a 12-column grid approach, meaning every layout can be divided in sections of 2 or 3. It’s important to design with the in mind to create structured and consistent experiences. On smaller screensizes try to avoid using smaller components while using the grid as a guide.
 

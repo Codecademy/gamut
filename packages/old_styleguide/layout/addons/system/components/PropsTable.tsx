@@ -1,25 +1,26 @@
-import { ComponentProps, useMemo } from 'react';
-import * as React from 'react';
-import { PROP_GROUPS } from '../propMeta';
+import {
+  Box,
+  FlexBox,
+  FloatingCard,
+  GridBox,
+  Text,
+  Toggle,
+} from '@codecademy/gamut';
 import { ArgsTable } from '@storybook/addon-docs/blocks';
 import isArray from 'lodash/isArray';
+import { ComponentProps, useMemo } from 'react';
+import * as React from 'react';
 
+import { Link } from '~styleguide/blocks';
+
+import { PROP_GROUPS } from '../propMeta';
 import {
-  PropItem,
-  PropGroupTooltip,
   PropGroupTag,
+  PropGroupTooltip,
+  PropItem,
   ToggleLabel,
 } from './Elements';
 import { useSystemProps } from './useSystemProps';
-import {
-  Box,
-  GridBox,
-  FlexBox,
-  Text,
-  Toggle,
-  FloatingCard,
-} from '@codecademy/gamut/src';
-import { Link } from '~styleguide/blocks';
 
 type PropTagProps = {
   prop: keyof typeof PROP_GROUPS;

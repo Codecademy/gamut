@@ -16,7 +16,7 @@ import { ThemeProvider } from '@storybook/theming';
 import * as React from 'react';
 import { Link } from './Markdown';
 import { HelmetProvider } from 'react-helmet-async';
-import theme from '../theming/GamutTheme';
+import theme from '../../theming/GamutTheme';
 
 const defaultComponents = {
   ...htmlComponents,

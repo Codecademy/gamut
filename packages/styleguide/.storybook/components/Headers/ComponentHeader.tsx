@@ -12,9 +12,10 @@ import { Figma } from '@storybook/addon-designs/blocks';
 import { Title } from '@storybook/blocks';
 import * as React from 'react';
 
-import { StatusIndicator } from '../StatusIndicator';
+import { StatusIndicator } from '../Elements/StatusIndicator';
 
 export interface ComponentHeaderProps {
+  title?: string;
   subtitle?: string;
   status?: 'current' | 'updating' | 'deprecated' | 'static';
   design?: { url?: string };
@@ -42,6 +43,7 @@ const STATUS = {
 } as const;
 
 export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
+  title,
   subtitle,
   status: storyStatus = 'static',
   design,
@@ -72,8 +74,16 @@ export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
       mb={24}
     >
       <ContentContainer>
-        <Title />
-        <Text mb={16}>{subtitle}</Text>
+        {title ? (
+          <Text as="h1" fontSize={28 as any}>
+            {title}
+          </Text>
+        ) : (
+          <Title />
+        )}
+        <Text mt={8} mb={16}>
+          {subtitle}
+        </Text>
         {(design?.url || storyStatus !== 'static') && (
           <Background p={16} bg="white" borderRadius="md">
             <GridBox

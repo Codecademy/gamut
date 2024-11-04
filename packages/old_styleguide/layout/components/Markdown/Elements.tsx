@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import { ComponentProps } from 'react';
 import * as React from 'react';
 import { linkTo } from '@storybook/addon-links';
-import { useComponentLinks } from '../Navigation';
 
 export const Reset = styled.div`
   p:first-of-type {
