@@ -10,5 +10,5 @@ export default meta;
 type Story = StoryObj<typeof SkipToContent>;
 
 export const Default: Story = {
-  args: {},
+  args: { contentId: 'main-content' },
 };
