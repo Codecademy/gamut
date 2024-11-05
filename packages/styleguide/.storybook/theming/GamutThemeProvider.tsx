@@ -49,7 +49,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
   // Wrap all stories in minimal provider
   return (
     <GamutProvider theme={coreTheme}>
-      <Background bg={themeBackground[colorMode]} color={'blue'} ref={storyRef}>
+      <Background bg={themeBackground[colorMode]} ref={storyRef}>
         {Story()}
       </Background>
     </GamutProvider>
