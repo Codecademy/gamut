@@ -1,7 +1,6 @@
 version: 2.1
 orbs:
   queue: eddiewebb/queue@1.5.0
-  nx: nrwl/nx@1.6.2
 
 references:
   default_env: &default_env
@@ -12,8 +11,16 @@ references:
       IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
       NODE_OPTIONS: '--max_old_space_size=8196'
       CIRCLE_TEST_REPORTS: /tmp/test-results
+      NX_CLOUD: false
 
   yarn_cache_key_1: &yarn_cache_key_1 v2-yarn-{{ arch }}-{{ checksum "yarn.lock" }}
+
+  webpack_cache_key_1: &webpack_cache_key_1 v1-webpack-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ .Revision }}
+  webpack_cache_key_2: &webpack_cache_key_2 v1-webpack-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
+
+  nx_cache_key_1: &nx_cache_key_1 v2-nx-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ epoch }}
+  nx_cache_key_2: &nx_cache_key_2 v2-nx-{{ arch }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
+  nx_cache_key_3: &nx_cache_key_3 v2-nx-{{ arch }}-{{ checksum "yarn.lock" }}
 
   restore_yarn_cache: &restore_yarn_cache
     restore_cache:
@@ -25,6 +32,32 @@ references:
       key: *yarn_cache_key_1
       paths:
         - ~/.cache/yarn
+
+  restore_webpack_cache: &restore_webpack_cache
+    restore_cache:
+      keys:
+        - *webpack_cache_key_1
+        - *webpack_cache_key_2
+
+  save_webpack_cache: &save_webpack_cache
+    save_cache:
+      key: *webpack_cache_key_1
+      paths:
+        - node_modules/.cache
+        - packages/styleguide/node_modules/.cache
+
+  save_nx_cache: &save_nx_cache
+    save_cache:
+      key: *nx_cache_key_1
+      paths:
+        - node_modules/.cache/nx
+
+  restore_nx_cache: &restore_nx_cache
+    restore_cache:
+      keys:
+        - *nx_cache_key_1
+        - *nx_cache_key_2
+        - *nx_cache_key_3
 
   save_node_modules: &save_node_modules
     persist_to_workspace:
@@ -91,14 +124,16 @@ jobs:
     steps:
       - checkout
       - *restore_node_modules
-      - nx/set-shas
+      - *restore_nx_cache
+      - *build_all_packages
       - run:
           name: Run test suite
           command: |
-            npx nx run-many --target=test --all --ci --runInBand
+            yarn test --parallel=4 --ci --coverage -- --runInBand
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
             JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
+      - *save_nx_cache
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
@@ -113,9 +148,10 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - nx/set-shas
       - *set_npm_token
+      - *restore_nx_cache
       - *build_all_packages
+      - *save_nx_cache
       - run:
           name: Lerna Publish
           command: yarn lerna publish --yes --exact --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
@@ -128,7 +164,8 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - nx/set-shas
+      - *restore_nx_cache
+      - *restore_webpack_cache
       - *build_all_packages
       - run:
           name: build storybook
@@ -136,6 +173,8 @@ jobs:
       - run:
           name: deploy
           command: yarn deploy
+      - *save_nx_cache
+      - *save_webpack_cache
 
   deploy_alpha:
     <<: *default_env
@@ -146,11 +185,14 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - nx/set-shas
+      - *restore_nx_cache
+      - *restore_webpack_cache
       - *build_all_packages
       - run:
           name: build storybook
           command: yarn build-storybook
+      - *save_nx_cache
+      - *save_webpack_cache
       - run:
           name: deploy
           command: |
@@ -191,9 +233,10 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - nx/set-shas
       - *set_npm_token
+      - *restore_nx_cache
       - *build_all_packages
+      - *save_nx_cache
       - run:
           name: lerna publish (alpha)
           command: yarn lerna publish --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${CIRCLE_SHA1:0:6} --dist-tag=alpha.${CIRCLE_SHA1:0:6}
