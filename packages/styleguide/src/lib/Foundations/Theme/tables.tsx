@@ -1,6 +1,7 @@
 // eslint-disable gamut/import-paths
-import { Box } from '@codecademy/gamut';
+import { Box, DataTable } from '@codecademy/gamut';
 import {
+  Background,
   coreSwatches,
   platformSwatches,
   theme,
@@ -151,7 +152,13 @@ export const rgbaSwatch = {
       key: 'swatch',
       name: 'Swatch',
       size: 'fill',
-      render: ({ hexes }: { hexes: Record<string, string> }) => {
+      render: ({
+        id,
+        hexes,
+      }: {
+        id: string;
+        hexes: Record<string, string>;
+      }) => {
         const {
           100: first,
           200: second,
@@ -161,11 +168,16 @@ export const rgbaSwatch = {
         } = hexes;
 
         const firstHexes = { 100: first, 200: second, 300: third, 400: fourth };
+
         return (
-          <>
+          <Background
+            bg={id === 'white' ? 'navy' : 'white'}
+            p={4}
+            borderRadius="md"
+          >
             <ColorScale colors={firstHexes} />
             <ColorScale colors={rest} />
-          </>
+          </Background>
         );
       },
     },
@@ -371,3 +383,15 @@ export const borderRadii = {
     },
   ],
 };
+
+export const LightModeTable = () => (
+  <Background bg="white">
+    <DataTable {...(lightMode as any)} />
+  </Background>
+);
+
+export const DarkModeTable = () => (
+  <Background bg="navy">
+    <DataTable {...(darkMode as any)} />
+  </Background>
+);
