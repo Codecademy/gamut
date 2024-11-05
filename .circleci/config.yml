@@ -128,7 +128,7 @@ jobs:
       - run:
           name: Run test suite
           command: |
-            yarn test --parallel=4 --ci --coverage -- --runInBand
+            yarn test --ci --coverage -- --runInBand
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
             JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
