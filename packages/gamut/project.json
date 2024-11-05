@@ -19,11 +19,19 @@
       }
     },
     "test": {
+      "dependsOn": ["^build"],
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/gamut"],
       "options": {
         "jestConfig": "packages/gamut/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "rm -rf ./dist"
       }
     }
   },
