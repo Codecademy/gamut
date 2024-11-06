@@ -24,6 +24,13 @@
         "jestConfig": "packages/gamut-tests/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "rm -rf ./dist"
+      }
     }
   },
   "tags": []

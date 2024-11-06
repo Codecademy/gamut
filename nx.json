@@ -11,7 +11,6 @@
           "build-storybook"
         ],
         "parallel": 3,
-        "useDaemonProcess": false,
         "accessToken": "ZmVjZWYxNzctYTdmZC00ODYzLTg4MzEtZTE1YTVmZDdkZmY1fHJlYWQ="
       }
     }
@@ -26,6 +25,10 @@
   },
   "namedInputs": {
     "babelConfig": ["{workspaceRoot}/babel.defaults.js"],
+    "ci": [
+      "{workspaceRoot}/.circleci/config.yml",
+      "{workspaceRoot}/.github/push.yml"
+    ],
     "default": ["{projectRoot}/**/*"],
     "production": [
       "default",
@@ -37,7 +40,7 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production", "babelConfig"]
+      "inputs": ["production", "^production", "babelConfig", "ci"]
     },
     "test": {
       "dependsOn": ["^build"],
@@ -45,7 +48,8 @@
         "default",
         "^production",
         "{workspaceRoot}/jest.preset.js",
-        "babelConfig"
+        "babelConfig",
+        "ci"
       ]
     }
   },
