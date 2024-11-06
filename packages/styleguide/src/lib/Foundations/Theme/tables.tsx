@@ -8,6 +8,7 @@ import {
   trueColors,
 } from '@codecademy/gamut-styles';
 
+// CASS - fix
 import { Code, ColorScale } from '../../../../.storybook/components';
 
 const PROP_COLUMN = {

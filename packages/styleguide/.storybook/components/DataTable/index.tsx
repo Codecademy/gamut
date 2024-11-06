@@ -5,7 +5,7 @@ interface Row {
   [key: string]: unknown;
 }
 interface ColumnConfig<T extends Row> {
-  key: keyof T;
+  key: keyof T extends string ? keyof T : string;
   name?: string;
   size?: ColProps['size'];
   render?: (row: T) => ReactElement<any, any> | null;
