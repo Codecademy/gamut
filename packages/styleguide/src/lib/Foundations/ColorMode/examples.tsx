@@ -32,6 +32,15 @@ import {
 import { ComponentProps, useState } from 'react';
 import * as React from 'react';
 
+const renderText = () => (
+  <Text as="p" color="text" mb={16}>
+    Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et
+    dolore <Anchor>magna aliqua</Anchor>. Ut <Anchor href="#cool">enim</Anchor>{' '}
+    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+    ex ea commodo consequat.
+  </Text>
+);
+
 const renderButtons = (
   variant?: ButtonProps['variant'],
   disabled = false,
@@ -157,15 +166,10 @@ const ColorModeExampleContents = () => {
         <Logo variant="pro" />
         <Logo variant="mini" />
       </GridBox>
-      <Text as="p" fontSize={16} fontFamily="accent" mb={16}>
+      <Text as="p" color="text" fontSize={16} fontFamily="accent" mb={16}>
         Cool Feature
       </Text>
-      <Text as="p" mb={16}>
-        Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore
-        et dolore <Anchor>magna aliqua</Anchor>. Ut <a href="#cool">enim</a> ad
-        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-        ex ea commodo consequat.
-      </Text>
+      {renderText()}
       {renderLinks()}
       {renderButtons('primary', false, true)}
       {renderButtons('primary')}
@@ -184,11 +188,8 @@ export const ColorModeExampleWrapper: React.FC<React.PropsWithChildren> = ({
   return (
     <Box mt={16} mb={32}>
       <FlexBox mb={8} alignItems="center">
-        <Text mr={8} as="strong">
-          Use Dark Mode
-        </Text>
         <Toggle
-          label="color-mode"
+          label="Use Dark Mode"
           size="small"
           variant="hyper"
           checked={isDark}
@@ -197,7 +198,7 @@ export const ColorModeExampleWrapper: React.FC<React.PropsWithChildren> = ({
       </FlexBox>
       <Background bg={isDark ? 'navy' : 'white'}>
         <Box bg="background" p={24} border={1}>
-          <Text as="h3" mb={24}>
+          <Text as="h3" mb={24} color="text">
             {isDark ? 'Dark' : 'Light'} Mode
           </Text>
           {children}
@@ -224,12 +225,7 @@ export const BackgroundExample: React.FC<ComponentProps<typeof Background>> = ({
       <Text variant="title-md" mb={16}>
         {rest.bg}
       </Text>
-      <Text as="p" mb={16}>
-        Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore
-        et dolore <Anchor>magna aliqua</Anchor>. Ut <a href="#cool">enim</a> ad
-        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-        ex ea commodo consequat.
-      </Text>
+      {renderText()}
       {children}
     </Background>
   );
@@ -249,12 +245,7 @@ export const SystemColorModeExample = () => {
             {mode} mode
           </Text>
         </Text>
-        <Text as="p" mb={16}>
-          Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore
-          et dolore <Anchor>magna aliqua</Anchor>. Ut <a href="#cool">enim</a>{' '}
-          ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </Text>
+        {renderText()}
       </Background>
     </ColorMode>
   );
@@ -274,12 +265,7 @@ export const PrefersDarkModeExample = () => {
             {prefersDarkMode.toString()}
           </Text>
         </Text>
-        <Text as="p" mb={16}>
-          Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore
-          et dolore <Anchor>magna aliqua</Anchor>. Ut <a href="#cool">enim</a>{' '}
-          ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </Text>
+        {renderText()}
       </Background>
     </ColorMode>
   );
