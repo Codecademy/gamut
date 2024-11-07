@@ -2,7 +2,7 @@ import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
-import * as AccordionDeprecated from './AccordionDeprecated.stories';
+import * as AccordionDeprecatedStories from './AccordionDeprecated.stories';
 
 export const parameters = {
   subtitle: `A molecule consisting of a "top" section and an expandable body,
@@ -10,7 +10,7 @@ such as a "hint" section in the LE or a list of department jobs on a careers pag
   status: 'deprecated',
 };
 
-<Meta of={AccordionDeprecated} />
+<Meta of={AccordionDeprecatedStories} />
 
 <ComponentHeader {...parameters} />
 
@@ -32,19 +32,18 @@ This Accordion component will fit to `100%` of the the height of their parent co
 
 ### AccordionAreaDeprecated
 
-If you'd like a "controlled" component equivalent, you can manually use the `AccordionAreaDeprecated` and `AccordionButtonDeprecated` sub-components. In these cases, you'll need to manage the state of the `expanded` prop yourself. The example provided always shows the accordion expanded.
+If you'd like a "controlled" component equivalent, you can manually use the `AccordionAreaDeprecated` and `AccordionButtonDeprecated` sub-components. In these cases, you'll need to manage the state of the `expanded` prop yourself.
 
 Most accordions should use an `AccordionButtonDeprecated`; other forms of buttons are acceptable for custom accordions.
 
 
-<Canvas of={AccordionDeprecated.Area} />
+<Canvas of={AccordionDeprecatedStories.AccordionAreaDeprecatedExample} />
 
 
 ## Playground
 
 <Canvas sourceState="shown">
-  <Story of={AccordionDeprecated.Default} />
+  <Story of={AccordionDeprecatedStories.Default} />
 </Canvas>
 
 <Controls />
-

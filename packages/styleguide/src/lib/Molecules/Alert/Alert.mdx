@@ -1,0 +1,84 @@
+import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+import { ImageWrapper } from '@storybook/components';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as AlertStories from './Alert.stories';
+
+export const parameters = {
+  subtitle: `An alert displays an important, succinct message, and provides actions for users to address (or dismiss the alert). It requires a user action to be dismissed.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30186-40358',
+  },
+  status: 'current',
+};
+
+<Meta of={AlertStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use an alert to display an important, succinct message with actions for users to address (or dismiss) the alert. It requires a user action to be dismissed.
+
+### Best practices:
+- [recommendation / best practice for implementation]
+- [recommendation / best practice for implementation]
+
+### When NOT to use:
+- Low priority– for lower priority, decorative, or celebratory user feedback, use the Toast component instead.
+- Non-critical– for informational or promotional content that isn't urgent or doesn't require immediate user action, use the Banner component instead.
+- Passive updates– for non-urgent, passive updates that users can check at their convenience, use the NotificationList component instead.
+- Form field validation– for inline form errors or validation messages, use inline messaging within the form fields instead of an alert.
+
+## Anatomy
+
+<ImageWrapper src="AlertAnatomy.png" alt="Alert Anatomy diagram"/>
+1. Icon
+- Automatically displays for the selected alert type: general, success, error, or subtle
+- Decorative, so no alt-text is needed
+2. Text
+- Explain what happened and, when applicable, what the user can do
+- Write in a conversational style and plain language
+- Front-load the most important information
+3. CTA button (optional)
+- Use to prompt users to take action related to the alert message
+4. Dismiss button (optional)
+- Use to allow users to remove the alert after they've acknowledged it or when it's no longer needed
+- Only exclude when the information must remain visible until specific conditions are met to ensure users don’t miss critical information
+
+## Variants
+
+### [Variant 1 name]
+
+Use the [variant 1 name] to [what it should be used for]
+
+<Canvas of={AlertStories.Default} />
+
+### [Variant 2 name]
+
+Use the [variant 2 name] to [what it should be used for]
+
+<Canvas of={AlertStories.Variant2} />
+
+## Playground
+
+<Canvas sourceState="shown">
+  <Story of={AlertStories.Default} />
+</Canvas>
+
+<Controls />
+
+## Accessibility considerations
+- [Accessibility guidance]
+- [Accessibility guidance]
+- [Accessibility guidance]
+
+## UX writing
+- [content]
+  - [guidance]
+  - [guidance]
+- [content]
+  - [guidance]
+  - [guidance]
