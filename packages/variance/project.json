@@ -24,6 +24,13 @@
       "options": {
         "jestConfig": "packages/variance/jest.config.ts"
       }
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "rm -rf ./dist"
+      }
     }
   }
 }

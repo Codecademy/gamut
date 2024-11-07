@@ -33,6 +33,13 @@
       "options": {
         "jestConfig": "packages/gamut-patterns/jest.config.ts"
       }
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "rm -rf ./dist"
+      }
     }
   }
 }
