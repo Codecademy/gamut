@@ -9,7 +9,7 @@ import {
 } from '@codecademy/gamut-styles';
 
 // CASS - fix
-import { Code, ColorScale } from '../../../../.storybook/components';
+import { Code, ColorScale } from '~styleguide/blocks';
 
 const PROP_COLUMN = {
   key: 'key',

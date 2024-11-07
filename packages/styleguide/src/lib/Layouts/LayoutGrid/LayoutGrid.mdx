@@ -1,0 +1,84 @@
+import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as TemplateStories from './template.stories';
+
+export const parameters = {
+  subtitle: `Template component`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/XXX',
+  },
+};
+
+<Meta of={TemplateStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use [component name] to [what it should be used for]
+
+### Best practices:
+
+- [recommendation / best practice for implementation]
+- [recommendation / best practice for implementation]
+
+### When NOT to use:
+
+- [use case]- for [describe the use case], use the [similar component] component
+- [use case]- for [describe the use case], use the [similar component] component.
+
+## Anatomy
+
+[Insert image exported from Figma]
+
+1. [Element name]
+
+- [description including available options and ux writing if relevant]
+
+2. [Element name] (optional)
+
+- [description of optional element, including when to use]
+
+3. [Element name]
+
+- [description]
+
+## Variants
+
+### [Variant 1 name]
+
+Use the [variant 1 name] to [what it should be used for]
+
+<Canvas of={TemplateStories.Default} />
+
+### [Variant 2 name]
+
+Use the [variant 2 name] to [what it should be used for]
+
+<Canvas of={TemplateStories.Variant2} />
+
+## Playground
+
+<Canvas sourceState="shown">
+  <Story of={TemplateStories.Default} />
+</Canvas>
+
+<Controls />
+
+## Accessibility considerations
+
+- [Accessibility guidance]
+- [Accessibility guidance]
+- [Accessibility guidance]
+
+## UX writing
+
+- [content]
+  - [guidance]
+  - [guidance]
+- [content]
+  - [guidance]
+  - [guidance]./LayoutGrid

@@ -1,0 +1,52 @@
+import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as ContentContainerStories from './ContentContainer.stories';
+
+export const parameters = {
+  subtitle:
+    'A container element meant to hold all content on the page, and provide the correct horizontal padding.',
+  status: 'current',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ZUJ7cfVgyoh1kiQYNN8Hbt',
+  },
+};
+
+<Meta of={ContentContainerStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use ContentContainer twhen creating page layouts to contain content
+within a maximum width, as well as centering that content. By default, it provides responsive padding according to the updated grid system (see figma link above).
+
+### Best practices:
+
+- Use for full-page layouts to contain content within a maximum width and center it.
+
+### When NOT to use:
+
+- `FlexBox`, `GridBox`, or `Box for containing smaller areas of the page.
+
+## Variants
+
+### Size: Medium
+
+<Canvas of={ContentContainerStories.Default} />
+
+### Size: Wide
+
+Use `ContentContainer` to keep page _content_ at a consistent maximum content width across various screen sizes and zooms. See [the Student Center](https://codecademy.com/student-center) for an example.
+
+<Canvas of={ContentContainerStories.Wide} />
+
+## Playground
+
+<Canvas sourceState="shown">
+  <Story of={ContentContainerStories.Default} />
+</Canvas>
+
+<Controls />
