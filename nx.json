@@ -1,4 +1,20 @@
 {
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx-cloud",
+      "options": {
+        "cacheableOperations": [
+          "lint",
+          "build",
+          "test",
+          "verify",
+          "build-storybook"
+        ],
+        "parallel": 3,
+        "accessToken": "ZmVjZWYxNzctYTdmZC00ODYzLTg4MzEtZTE1YTVmZDdkZmY1fHJlYWQ="
+      }
+    }
+  },
   "extends": "nx/presets/npm.json",
   "workspaceLayout": {
     "appsDir": "packages",
@@ -6,6 +22,10 @@
   },
   "namedInputs": {
     "babelConfig": ["{workspaceRoot}/babel.defaults.js"],
+    "ci": [
+      "{workspaceRoot}/.circleci/config.yml",
+      "{workspaceRoot}/.github/push.yml"
+    ],
     "default": ["{projectRoot}/**/*"],
     "production": [
       "default",
@@ -20,8 +40,7 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production", "babelConfig"],
-      "cache": true
+      "inputs": ["production", "^production", "babelConfig", "ci"]
     },
     "verify": {
       "cache": true
@@ -32,26 +51,8 @@
         "default",
         "^production",
         "{workspaceRoot}/jest.preset.js",
-        "babelConfig"
-      ],
-      "cache": true,
-      "options": {
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
-      }
-    },
-    "build-storybook": {
-      "cache": true,
-      "inputs": [
-        "default",
-        "^production",
-        "{projectRoot}/.storybook/**/*",
-        "{projectRoot}/tsconfig.storybook.json"
+        "babelConfig",
+        "ci"
       ]
     }
   },
