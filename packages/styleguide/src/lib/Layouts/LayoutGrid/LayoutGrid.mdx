@@ -2,68 +2,73 @@ import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
-import * as TemplateStories from './template.stories';
+import * as LayoutGridStories from './LayoutGrid.stories';
 
 export const parameters = {
-  subtitle: `Template component`,
+  subtitle: 'A CSS grid based 12 Column grid system using just grid items.',
+  status: 'current',
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/XXX',
   },
 };
 
-<Meta of={TemplateStories} />
+<Meta of={LayoutGridStories} />
 
 <ComponentHeader {...parameters} />
 
 ## Usage
 
-Use [component name] to [what it should be used for]
+`LayoutGrid` is a flexible grid that can support arbitrary rows of content, each of
+which snaps to assuming 12 "units" of width. Cells in the rows are
+stored as a `Column` that have a grid-specified gap
+between them.
+
+Row and column gaps can be configured in a responsive way. For example, you might
+have a particular set of gaps at small viewports and bigger ones on large viewports.
 
 ### Best practices:
 
-- [recommendation / best practice for implementation]
-- [recommendation / best practice for implementation]
+- Use `LayoutGrid` to create a flexible grid for full-page layouts.
 
 ### When NOT to use:
 
-- [use case]- for [describe the use case], use the [similar component] component
-- [use case]- for [describe the use case], use the [similar component] component.
+- Use `FlexBox`, `GridBox`, or `Box` for containing smaller areas of the page.
 
-## Anatomy
+## Props + Variants
 
-[Insert image exported from Figma]
+### Grid gaps
 
-1. [Element name]
+Grid gaps are the space between cells both horizontally and vertically.
+If you would like to adjust the space between columns, set the `columnGap`.
+If you would like to adjust the space between rows, set the `rowGap`.
+Both these properties can take a "CASS TO DO LINK" responsive size, allowing you to define gaps at each breakpoint.
 
-- [description including available options and ux writing if relevant]
+<Canvas of={LayoutGridStories.GridGap} />
 
-2. [Element name] (optional)
+### Row height
 
-- [description of optional element, including when to use]
+You can add row height to you by setting the `rowHeight` prop. This will set the height of each row in the grid.
 
-3. [Element name]
+<Canvas of={LayoutGridStories.RowHeight} />
 
-- [description]
+### Offsets
 
-## Variants
+Columns may be offset from the left by numbers within the [0-12] scale.
+As with column and row gaps, those numbers may be static or responsive.
 
-### [Variant 1 name]
+<Canvas of={LayoutGridStories.Offset} />
 
-Use the [variant 1 name] to [what it should be used for]
+### Rowspans
 
-<Canvas of={TemplateStories.Default} />
+Columns may be span multiple rows. Make sure you have a consistent row height when using rowspans.
 
-### [Variant 2 name]
-
-Use the [variant 2 name] to [what it should be used for]
-
-<Canvas of={TemplateStories.Variant2} />
+<Canvas of={LayoutGridStories.Rowspans} />
 
 ## Playground
 
 <Canvas sourceState="shown">
-  <Story of={TemplateStories.Default} />
+  <Story of={LayoutGridStories.Default} />
 </Canvas>
 
 <Controls />
