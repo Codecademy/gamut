@@ -1,10 +1,6 @@
 import { Text, Toggle } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
-
-import {
-  InteractiveButtonToggle,
-  InteractiveInputToggle,
-} from './Toggle.examples';
+import { useState } from 'react';
 
 const meta: Meta<typeof Toggle> = {
   component: Toggle,
@@ -82,10 +78,33 @@ export const ButtonElement: Story = {
   },
 };
 
-export const InteractiveInput: Story = {
-  render: () => <InteractiveInputToggle />,
+export const InteractiveInputToggle: React.FC = () => {
+  const [checked, setChecked] = useState(false);
+  const changeHandler = () => {
+    setChecked(!checked);
+  };
+
+  return (
+    <Toggle
+      checked={checked}
+      onChange={changeHandler}
+      label="interactive input toggle"
+    />
+  );
 };
 
-export const InteractiveButton: Story = {
-  render: () => <InteractiveButtonToggle />,
+export const InteractiveButtonToggle: React.FC = () => {
+  const [checked, setChecked] = useState(false);
+  const changeHandler = () => {
+    setChecked(!checked);
+  };
+
+  return (
+    <Toggle
+      as="button"
+      checked={checked}
+      onClick={changeHandler}
+      label="interactive button toggle"
+    />
+  );
 };
