@@ -1,0 +1,33 @@
+import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as GridBoxStories from './GridBox.stories';
+
+export const parameters = {
+  status: 'current',
+  source: 'gamut',
+};
+
+<Meta of={GridBoxStories} />
+
+<ComponentHeader {...parameters} />
+
+For Grid layouts we&apos;ve added a specific flex <code>GridBox</code>
+component that extends <LinkTo component="Box">Box</LinkTo> with added flex props.
+
+## Four-column grid Example
+
+<Story of={GridBoxStories.FourColumnGrid} />
+
+## Code playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+## Playground
+
+<Canvas sourceState="shown">
+  <Story of={GridBoxStories.Default} />
+</Canvas>
+
+<Controls />
