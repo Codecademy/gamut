@@ -12,5 +12,7 @@ export default meta;
 type Story = StoryObj<typeof Pattern>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    height: 200,
+  },
 };
