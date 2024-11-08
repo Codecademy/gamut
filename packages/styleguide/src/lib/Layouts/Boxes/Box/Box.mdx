@@ -1,0 +1,58 @@
+import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as BoxStories from './Box.stories';
+
+export const parameters = {
+  subtitle: 'Flexible container component with all system props available',
+  status: 'current',
+  source: 'gamut',
+};
+
+<Meta of={BoxStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+This is our primitive box component that is meant to be a kitchen sink utility component for all basic layouts. This is meant to act as a configurable building block for almost any occasion. It is extremely flexible and has access to nearly all of our `system props`.
+
+### When NOT to use:
+
+- While this can be made to be a `grid` or `flex` container, we also provide two
+  specific components to handle those in addition to everything that Box does! <LinkTo component="GridBox">GridBox</LinkTo> and <LinkTo component="FlexBox">FlexBox</LinkTo>
+
+## Visual examples
+
+While the component really has no default styles or props, it can be hard to imagine what you might be able to achieve with it. So we've come up with some examples on how you might use `<Box />` to solve your own problems.
+
+### Bordered containers
+
+One of the main uses of box is to create bordered containers with their own borders and internal padding. Many times when we want to achieve this kind of bordered container effect it can be tempting to just reinvent the wheel, but as requirements mount and differ between contexts we end up with a lot of variety in implementation. The flexibility of `<Box />` can help limit the amount of redundancy and account for a wild range of possibilities.
+
+<Canvas of={BoxStories.Bordered} />
+
+## Container examples
+
+So far we've covered examples of using `<Box />` as a visual element on its own, but there are many times where we just need a container to provide a specific context for other design elements.
+
+### Positioning
+
+Positioning elements and maintaining stacking contexts can be annoying, especially when upstream affects can be hard to identify (IE: a `position: relative;` container that is ancient ancestor of some `position: absolute` descendent being tricky to debug). With `<Box />` you can configure these contexts in your mark up, and coordinate them easily.
+
+<Canvas of={BoxStories.Positioning} />
+
+### Lists
+
+When presenting multiple boxes as a group, it is often necessary to render them as a list to make the content more accessible. An outer `<Box />` can be rendered as a `<ul />` or `<ol />` element, and its `<Box />` children can be rendered as `<li />` elements. The list styles can also be adjusted via the `listStyle`, `listStyleType`, `listStylePosition`, and `listStyleImage` props.
+
+<Canvas of={BoxStories.Lists} />
+
+## Playground
+
+<Canvas sourceState="shown">
+  <Story of={BoxStories.Default} />
+</Canvas>
+
+<Controls />
