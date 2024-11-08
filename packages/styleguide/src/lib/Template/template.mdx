@@ -6,9 +6,16 @@ import * as TemplateStories from './template.stories';
 
 export const parameters = {
   subtitle: `Template component`,
-    design: {
+  design: {
     type: 'figma',
     url: 'https://www.figma.com/file/XXX',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    // this is easy to find by right clicking on the file in VSCode and clicking "Copy Remote File Url From..." and the selecting 'main' or amending the url path below like so: https://github.com/Codecademy/gamut/blob/main/packages/${package}/src/file/location
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Logo',
   },
 };
 
@@ -21,21 +28,30 @@ export const parameters = {
 Use [component name] to [what it should be used for]
 
 ### Best practices:
+
 - [recommendation / best practice for implementation]
 - [recommendation / best practice for implementation]
 
 ### When NOT to use:
+
 - [use case]- for [describe the use case], use the [similar component] component
 - [use case]- for [describe the use case], use the [similar component] component.
 
 ## Anatomy
+
 [Insert image exported from Figma]
+
 1. [Element name]
-  - [description including available options and ux writing if relevant]
+
+- [description including available options and ux writing if relevant]
+
 2. [Element name] (optional)
-  - [description of optional element, including when to use]
+
+- [description of optional element, including when to use]
+
 3. [Element name]
-  - [description]
+
+- [description]
 
 ## Variants
 
@@ -60,11 +76,13 @@ Use the [variant 2 name] to [what it should be used for]
 <Controls />
 
 ## Accessibility considerations
+
 - [Accessibility guidance]
 - [Accessibility guidance]
 - [Accessibility guidance]
 
 ## UX writing
+
 - [content]
   - [guidance]
   - [guidance]
