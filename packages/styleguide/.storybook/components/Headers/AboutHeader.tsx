@@ -2,6 +2,7 @@ import { FlexBox, Text } from '@codecademy/gamut';
 import * as React from 'react';
 import { ComponentHeaderProps } from './ComponentHeader';
 import { ComponentSource } from '../Elements/ComponentSource';
+import { SourceWrapper } from '../Elements/Wrappers';
 
 export type AboutHeaderProps = {
   title: string;
@@ -32,7 +33,11 @@ export const AboutHeader: React.FC<AboutHeaderProps> = ({
       <Text variant="title-xs" mb={8}>
         {subtitle}
       </Text>
-      {source && <ComponentSource {...source} />}
+      {source && (
+        <SourceWrapper>
+          <ComponentSource {...source} />
+        </SourceWrapper>
+      )}
     </FlexBox>
   );
 };

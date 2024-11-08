@@ -16,6 +16,7 @@ import {
   SourceAnchor,
   sourceAnchorProps,
 } from '../Elements/ComponentSource';
+import { SourceWrapper } from '../Elements/Wrappers';
 
 export type Source = { repo: string; githubLink?: string };
 
@@ -90,7 +91,7 @@ export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
           {subtitle}
         </Text>
         {(design?.url || storyStatus !== 'static') && (
-          <Background bg="white" borderRadius="md" px={24} py={8}>
+          <SourceWrapper>
             <GridBox
               gap={16}
               fontWeight={700}
@@ -105,7 +106,7 @@ export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
                 </SourceAnchor>
               )}
             </GridBox>
-          </Background>
+          </SourceWrapper>
         )}
 
         {design?.url && (
