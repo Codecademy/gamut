@@ -12,18 +12,20 @@ interface ColumnConfig<T extends Row> {
 }
 
 interface DataTableProps<T extends Row> {
+  bg?: boolean;
   idKey: keyof T;
   rows: T[];
   columns: ColumnConfig<T>[];
 }
 
 export const DataTable = <T extends Row>({
+  bg = true,
+  columns,
   idKey = 'id',
   rows,
-  columns,
 }: DataTableProps<T>): ReactElement<any, any> => {
   return (
-    <Table>
+    <Table as="div" bg={bg ? 'white' : undefined}>
       <Row>
         {columns.map(({ key, name, size }) => (
           <Col key={`header-col-${key}`} variant="header" size={size}>

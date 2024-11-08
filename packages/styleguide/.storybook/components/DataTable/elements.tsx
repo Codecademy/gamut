@@ -1,8 +1,11 @@
 import { system, variant } from '@codecademy/gamut-styles/src';
 import styled from '@emotion/styled';
 import { StyleProps } from '@codecademy/variance';
+import { Box } from '@codecademy/gamut';
 
-export const Table = styled.div(system.css({ display: 'grid' }));
+export const Table = styled(Box)(
+  system.css({ borderRadius: 'lg', p: 8, display: 'grid' })
+);
 
 const rowVariants = variant({
   variants: {

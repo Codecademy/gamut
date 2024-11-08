@@ -24,7 +24,7 @@ export const ShadowExample = () => {
       <ShadowBox shadow={boxShadow(2)}>2</ShadowBox>
       <ShadowBox shadow={boxShadow(3)}>3</ShadowBox>
       <ShadowBox shadow={boxShadow(4)}>4</ShadowBox>
-      <ShadowBox shadow={boxShadow(5)}>5</ShadowBox>{' '}
+      <ShadowBox shadow={boxShadow(5)}>5</ShadowBox>
     </GridBox>
   );
 };

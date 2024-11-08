@@ -1,6 +1,8 @@
 import { Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, DataTable } from '~styleguide/blocks';
+
+import * as TABLES from './Theme/tables';
 
 export const parameters = {
   title: 'Typography',
@@ -30,7 +32,7 @@ We use Suisse Int’l Mono in order to accent designs with references to the too
 - Suisse Int’l Mono reads quite large for its point size, and requires extra line-height in order to be readable as text. Styles have been adjusted to account for these features.
 - Text should be left-aligned by default, using centering in some cases for Marketing emphasis or Interface specifics. You should never right-align text under normal circumstances
 
-{/* <Story id="foundations-theme--font-family" /> */}
+<DataTable {...TABLES.fontFamily} />
 
 ### Aperçu Pro
 
@@ -52,14 +54,14 @@ Suisse looks very large for its size, which means that typically you will want t
 
 - We use the term “Title” to distinguish our visual sizing from semantic designations like “H1”
 
-{/* <Story id="foundations-theme--font-size" /> */}
+<DataTable {...TABLES.fontSize} />
 
 ## Line heights
 
 - Line heights are limited to multiples of 4px
 - Type boxes should be placed on the 8px placement grid like all other elements.
 
-{/* <Story id="foundations-theme--line-height" /> */}
+<DataTable {...TABLES.lineHeight} />
 
 ## Line length
 
