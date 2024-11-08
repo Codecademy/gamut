@@ -1,25 +1,30 @@
 import {
-  Anchor,
   Box,
   ContentContainer,
   GridBox,
   InfoTip,
   Text,
 } from '@codecademy/gamut';
-import { OpenIcon } from '@codecademy/gamut-icons';
 import { Background } from '@codecademy/gamut-styles';
 import { Figma } from '@storybook/addon-designs/blocks';
 import { Title } from '@storybook/blocks';
 import * as React from 'react';
 
 import { StatusIndicator } from '../Elements/StatusIndicator';
+import {
+  ComponentSource,
+  SourceAnchor,
+  sourceAnchorProps,
+} from '../Elements/ComponentSource';
+
+export type Source = { repo: string; githubLink?: string };
 
 export interface ComponentHeaderProps {
   title?: string;
   subtitle?: string;
   status?: 'current' | 'updating' | 'deprecated' | 'static';
   design?: { url?: string };
-  source?: { repo: string; githubLink?: string };
+  source?: Source;
 }
 
 const STATUS = {
@@ -64,10 +69,6 @@ export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
     );
   };
 
-  const npmLink =
-    source?.githubLink ??
-    `https://www.npmjs.com/package/@codecademy/${source?.repo}`;
-
   return (
     <Box
       bg="navy-100"
@@ -89,35 +90,19 @@ export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
           {subtitle}
         </Text>
         {(design?.url || storyStatus !== 'static') && (
-          <Background py={16} px={24} bg="white" borderRadius="md">
+          <Background bg="white" borderRadius="md" px={24} py={8}>
             <GridBox
-              gap={8}
+              gap={16}
               fontWeight={700}
               gridAutoFlow={['row', , 'column']}
-              gridTemplateColumns={['1fr', , 'repeat(3, auto)']}
-              justifyContent={'space-between'}
+              gridAutoColumns={'max-content'}
             >
               {renderStatus()}
-              {source && (
-                <Anchor
-                  href={npmLink}
-                  icon={OpenIcon}
-                  iconPosition="right"
-                  target="_blank"
-                >
-                  @codecademy/{source.repo}
-                </Anchor>
-              )}
+              {source && <ComponentSource {...source} />}
               {design?.url && (
-                <Anchor
-                  fontSize={16}
-                  href={design?.url}
-                  icon={OpenIcon}
-                  iconPosition="right"
-                  target="_blank"
-                >
+                <SourceAnchor href={design?.url} {...sourceAnchorProps}>
                   Figma Source File
-                </Anchor>
+                </SourceAnchor>
               )}
             </GridBox>
           </Background>
