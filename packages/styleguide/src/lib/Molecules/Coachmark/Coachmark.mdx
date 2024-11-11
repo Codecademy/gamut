@@ -1,0 +1,49 @@
+import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as CoachmarkStories from './Coachmark.stories';
+
+export const parameters = {
+  subtitle: 'A Coachmark helps bring attention to a CTA by showing a popover around that element.',
+  source: 'gamut',
+  status: 'current',
+  design: {
+    type: 'figma',
+    url:
+      'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1083%3A1134',
+  },
+};
+
+<Meta of={CoachmarkStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use coachmark to guide learners about key functionality on a page or drive new feature adoption.
+
+### Best practices:
+- Provide guidance that introduces a new feature or explains a complex interaction.
+- Use coachmarks sparingly to avoid overwhelming the user.
+
+### When NOT to use:
+- Long-term guidance or instructions should be provided in a more permanent location, such as a help center or documentation.
+
+## Variants
+
+### Customizations
+
+Using the popoverProps, you can customize the look of the coachmark. For example, you can add an outline, beak, and pattern, as shown below.
+
+<Canvas of={CoachmarkStories.Customized} />
+
+
+## Playground
+
+<Canvas sourceState="shown">
+  <Story of={CoachmarkStories.Default} />
+</Canvas>
+
+<Controls />
+
