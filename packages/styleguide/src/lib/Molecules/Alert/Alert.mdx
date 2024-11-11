@@ -1,7 +1,6 @@
 import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
-import { ImageWrapper } from '@storybook/components';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, ImageWrapper } from '~styleguide/blocks';
 
 import * as AlertStories from './Alert.stories';
 
@@ -23,18 +22,19 @@ export const parameters = {
 Use an alert to display an important, succinct message with actions for users to address (or dismiss) the alert. It requires a user action to be dismissed.
 
 ### Best practices:
-- [recommendation / best practice for implementation]
-- [recommendation / best practice for implementation]
+- Choose the alert type that applies most to your case.
+- Only use Feature alert for product/feature announcements that are specific to that page.
+- Alerts should be persistent and non-modal, allowing the user to either ignore them or interact with them at any time.
 
 ### When NOT to use:
-- Low priority– for lower priority, decorative, or celebratory user feedback, use the Toast component instead.
-- Non-critical– for informational or promotional content that isn't urgent or doesn't require immediate user action, use the Banner component instead.
-- Passive updates– for non-urgent, passive updates that users can check at their convenience, use the NotificationList component instead.
+- Low priority– for lower priority, decorative, or celebratory user feedback, use the **Toast** component instead.
+- Non-critical– for informational or promotional content that isn't urgent or doesn't require immediate user action, use the **Banner** component instead.
+- Passive updates– for non-urgent, passive updates that users can check at their convenience, use the **NotificationList** component instead.
 - Form field validation– for inline form errors or validation messages, use inline messaging within the form fields instead of an alert.
 
 ## Anatomy
+<ImageWrapper src="./alertAnatomy.png" alt="Alert Anatomy diagram"/>
 
-<ImageWrapper src="AlertAnatomy.png" alt="Alert Anatomy diagram"/>
 1. Icon
 - Automatically displays for the selected alert type: general, success, error, or subtle
 - Decorative, so no alt-text is needed
@@ -50,35 +50,59 @@ Use an alert to display an important, succinct message with actions for users to
 
 ## Variants
 
-### [Variant 1 name]
+### Alert types
 
-Use the [variant 1 name] to [what it should be used for]
+#### General
 
-<Canvas of={AlertStories.Default} />
+<Canvas of={AlertStories.General} />
 
-### [Variant 2 name]
+#### Success
+<Canvas of={AlertStories.Success} />
 
-Use the [variant 2 name] to [what it should be used for]
+#### Feature
+<Canvas of={AlertStories.Feature} />
 
-<Canvas of={AlertStories.Variant2} />
+#### Notice
+<Canvas of={AlertStories.Notice} />
+
+#### Error
+<Canvas of={AlertStories.Error} />
+
+#### Subtle
+<Canvas of={AlertStories.Subtle} />
+
+### Inline
+
+For inline use you can use these non-stroked versions for the General, Success and Error type. Use the ColorMode toggle to checkout both ColorModes for our `subtle` variant!
+
+#### General
+
+<Canvas of={AlertStories.GeneralInline} />
+
+#### Success
+<Canvas of={AlertStories.SuccessInline} />
+
+#### Feature
+<Canvas of={AlertStories.FeatureInline} />
+
+#### Notice
+<Canvas of={AlertStories.NoticeInline} />
+
+#### Error
+<Canvas of={AlertStories.ErrorInline} />
+
+#### Subtle
+<Canvas of={AlertStories.SubtleInline} />
+
+### Small widths
+
+When the width of the alert is less than 480px, the button automatically stacks below the text.
+<Canvas of={AlertStories.SmallWidth} />
 
 ## Playground
 
 <Canvas sourceState="shown">
-  <Story of={AlertStories.Default} />
+  <Story of={AlertStories.General} />
 </Canvas>
 
 <Controls />
-
-## Accessibility considerations
-- [Accessibility guidance]
-- [Accessibility guidance]
-- [Accessibility guidance]
-
-## UX writing
-- [content]
-  - [guidance]
-  - [guidance]
-- [content]
-  - [guidance]
-  - [guidance]
