@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.33.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.32.1...@codecademy/gamut-icons@9.33.0) (2024-11-11)
+
+### Features
+
+- **Icons:** MoneyBackGuarantee ([0e4f27e](https://github.com/Codecademy/gamut/commit/0e4f27e26e20a00dce388dfa127ad7cab2e5671b))
+
 ### [9.32.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.32.0...@codecademy/gamut-icons@9.32.1) (2024-11-06)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
