@@ -28,19 +28,6 @@ const config: StorybookConfig = {
   },
 
   webpackFinal(config) {
-    config?.module?.rules?.push({
-      test: /\.(png|jpe?g|gif|svg)$/i,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'static', // Customize the output path if needed
-          },
-        },
-      ],
-    });
-
     config.resolve = {
       ...config.resolve,
       alias: {
