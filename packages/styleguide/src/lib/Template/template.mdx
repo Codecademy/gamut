@@ -1,4 +1,4 @@
-import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
@@ -54,9 +54,7 @@ Use the [variant 2 name] to [what it should be used for]
 
 ## Playground
 
-<Canvas sourceState="shown">
-  <Story of={TemplateStories.Default} />
-</Canvas>
+<Canvas sourceState="shown" of={TemplateStories.Default} />
 
 <Controls />
 

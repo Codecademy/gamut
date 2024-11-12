@@ -1,4 +1,4 @@
-import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
@@ -77,8 +77,6 @@ If you use voiceover on either of the below, you will hear the difference this m
 
 ## Playground
 
-<Canvas sourceState="shown">
-  <Story of={ToggleStories.Default} />
-</Canvas>
+<Canvas sourceState="shown" of={ToggleStories.Default} />
 
 <Controls />

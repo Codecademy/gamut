@@ -1,4 +1,4 @@
-import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
@@ -56,8 +56,6 @@ When tag content exceeds the width of its container, it is truncated.
 
 ## Playground
 
-<Canvas sourceState="shown">
-  <Story of={TagStories.Default} />
-</Canvas>
+<Canvas sourceState="shown" of={TagStories.Default} />
 
 <Controls />

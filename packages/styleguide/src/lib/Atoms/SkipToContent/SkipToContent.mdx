@@ -1,4 +1,4 @@
-import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
@@ -39,8 +39,6 @@ To see it, keep tabbing around on this page or visit [the catalog](https://www.c
 
 ## Playground
 
-<Canvas sourceState="shown">
-  <Story of={SkipToContentStories.Default} />
-</Canvas>
+<Canvas sourceState="shown" of={SkipToContentStories.Default} />
 
 <Controls />

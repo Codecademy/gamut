@@ -1,5 +1,5 @@
 import * as patterns from '@codecademy/gamut-patterns';
-import { Canvas, Controls, IconGallery, IconItem,Meta, Story } from '@storybook/blocks';
+import { Canvas, Controls, IconGallery, IconItem, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
@@ -32,8 +32,6 @@ Patterns are intended to be able to take in a color and any system layout, posit
 
 ## Playground
 
-<Canvas sourceState="shown">
-  <Story of={PatternsStories.Default} />
-</Canvas>
+<Canvas sourceState="shown" of={PatternsStories.Default}/>
 
 <Controls />

@@ -1,4 +1,4 @@
-import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
@@ -37,8 +37,6 @@ Check out the video example below.
 
 ## Playground
 
-<Canvas sourceState="shown">
-  <Story of={RadialProgressStories.Default} />
-</Canvas>
+<Canvas of={RadialProgressStories.Default} sourceState="shown"/>
 
 <Controls />
