@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader } from '~styleguide/blocks';
+import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
 export const parameters = {
   id: 'Layouts',
@@ -14,3 +14,24 @@ export const parameters = {
 <AboutHeader {...parameters} />
 
 Pure sizing and padding containers. These position our elements on pages in standard responsive layouts.
+
+<TableOfContents
+  links={[
+    {
+      id: 'Layouts/Boxes/About',
+      subtitle: 'Flexible container component with all system props available.',
+      title: 'Boxes',
+    },
+    {
+      id: 'Layouts/ContentContainer',
+      subtitle:
+        'A container element meant to hold all content on the page, and provide the correct horizontal padding.',
+      title: 'ContentContainer',
+    },
+    {
+      id: 'Layouts/LayoutGrid',
+      subtitle: 'A CSS grid based 12 Column grid system using just grid items.',
+      title: 'LayoutGrid',
+    },
+  ]}
+/>

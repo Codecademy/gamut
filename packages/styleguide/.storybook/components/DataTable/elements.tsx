@@ -4,7 +4,7 @@ import { StyleProps } from '@codecademy/variance';
 import { Box } from '@codecademy/gamut';
 
 export const Table = styled(Box)(
-  system.css({ borderRadius: 'lg', p: 8, display: 'grid' })
+  system.css({ borderRadius: 'lg', p: 8, display: 'grid', mb: 32 })
 );
 
 const rowVariants = variant({
