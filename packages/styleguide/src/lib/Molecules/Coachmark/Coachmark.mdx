@@ -1,4 +1,4 @@
-import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
@@ -6,7 +6,10 @@ import * as CoachmarkStories from './Coachmark.stories';
 
 export const parameters = {
   subtitle: 'A Coachmark helps bring attention to a CTA by showing a popover around that element.',
-  source: 'gamut',
+  source: {
+    repo: 'gamut',
+    githubLink: 'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Coachmark/index.tsx'
+  },
   status: 'current',
   design: {
     type: 'figma',
@@ -41,9 +44,7 @@ Using the popoverProps, you can customize the look of the coachmark. For example
 
 ## Playground
 
-<Canvas sourceState="shown" f>
-  <Story of={CoachmarkStories.Default} />
-</Canvas>
+<Canvas sourceState="shown" of={CoachmarkStories.Default} />
 
 <Controls />
 

@@ -1,4 +1,4 @@
-import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
@@ -6,11 +6,14 @@ import * as BreadcrumbStories from './Breadcrumbs.stories';
 
 export const parameters = {
   subtitle: `Breadcrumb-style links for upwards navigation.`,
-  source: 'gamut',
   status: 'current',
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30186-40570&m=dev',
+  },
+  source: {
+    repo: 'gamut',
+    githubLink: 'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Breadcrumbs/index.tsx'
   },
 };
 
@@ -40,8 +43,6 @@ Breadcrumbs can also have payloads that can be used to pass data to an `onClick`
 
 ## Playground
 
-<Canvas sourceState="shown">
-  <Story of={BreadcrumbStories.Default} />
-</Canvas>
+<Canvas sourceState="shown" of={BreadcrumbStories.Default} />
 
 <Controls />

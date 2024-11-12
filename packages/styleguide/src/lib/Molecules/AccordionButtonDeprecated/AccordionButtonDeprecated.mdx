@@ -1,4 +1,4 @@
-import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
@@ -8,6 +8,10 @@ export const parameters = {
   subtitle: `The standard "top" button for an AccordionDeprecated component.
 Comes in a few standard size and color combinations.`,
   status: 'deprecated',
+  source: {
+    repo: 'gamut',
+    githubLink: 'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/AccordionButtonDeprecated/index.tsx'
+  },
 };
 
 <Meta of={AccordionButtonDeprecatedStories} />
@@ -44,9 +48,7 @@ Yellow AccordionButtonDeprecated tops are used in the "Get a Hint" sections of t
 
 ## Playground
 
-<Canvas sourceState="shown">
-  <Story of={AccordionButtonDeprecatedStories.Blue} />
-</Canvas>
+<Canvas sourceState="shown" of={AccordionButtonDeprecatedStories.Blue} />
 
 <Controls />
 

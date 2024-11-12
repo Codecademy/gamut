@@ -1,4 +1,4 @@
-import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader, ImageWrapper } from '~styleguide/blocks';
 
@@ -11,6 +11,10 @@ export const parameters = {
     url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30186-40358',
   },
   status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink: 'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Alert/Alert.tsx'
+  },
 };
 
 <Meta of={AlertStories} />
@@ -101,8 +105,6 @@ When the width of the alert is less than 480px, the button automatically stacks 
 
 ## Playground
 
-<Canvas sourceState="shown">
-  <Story of={AlertStories.General} />
-</Canvas>
+<Canvas sourceState="shown" of={AlertStories.General} />
 
 <Controls />
