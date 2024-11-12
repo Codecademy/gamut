@@ -76,7 +76,8 @@ export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
       border={1}
       borderColor="navy-300"
       borderRadius="md"
-      py={48}
+      pb={design?.url ? 0 : 24}
+      pt={32}
       mb={24}
     >
       <ContentContainer>
@@ -110,7 +111,7 @@ export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
         )}
 
         {design?.url && (
-          <GridBox mb={32}>
+          <GridBox>
             <Figma height="56.25%" collapsable url={design?.url} />
           </GridBox>
         )}

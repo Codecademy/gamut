@@ -22,8 +22,7 @@ export const AboutHeader: React.FC<AboutHeaderProps> = ({
       borderRadius="md"
       column
       mb={24}
-      pb={24}
-      pt={32}
+      py={32}
       px={40}
     >
       <Text as="h1" variant="title-lg" mb={4} fontWeight={'bold'}>
