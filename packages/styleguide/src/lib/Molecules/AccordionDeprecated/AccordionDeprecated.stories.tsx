@@ -17,12 +17,6 @@ export const Default: Story = {
   },
 };
 
-// export const AccordionAreaDeprecatedExample: Story = {
-//   render: () => <AccordionAreaDeprecated expanded top={<AccordionButtonDeprecated expanded>Finer Control</AccordionButtonDeprecated>}>Expanded Details</AccordionAreaDeprecated>,
-//   name: 'AccordionAreaDeprecatedExample',
-// };
-
-
 export const AccordionAreaDeprecatedExample: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
   return (
