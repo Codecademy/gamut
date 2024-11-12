@@ -2,6 +2,7 @@ import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
+import img from '../../static/cinna.jpg';
 import * as TemplateStories from './template.stories';
 
 export const parameters = {
@@ -22,6 +23,8 @@ export const parameters = {
 <Meta of={TemplateStories} />
 
 <ComponentHeader {...parameters} />
+
+<img src={img.src} alt="cinnamoroll" />
 
 ## Usage
 

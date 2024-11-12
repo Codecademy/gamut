@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     '../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
 
+  staticDirs: ['../src/static'],
   addons: [
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@nx/react/plugins/storybook', ''),
@@ -26,7 +27,20 @@ const config: StorybookConfig = {
   typescript: {
     reactDocgen: 'react-docgen-typescript',
   },
+
   webpackFinal(config) {
+    config?.module?.rules?.push({
+      test: /\.(png|jpe?g|gif|svg)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'static/images', // Customize the output path if needed
+          },
+        },
+      ],
+    });
     config.resolve = {
       ...config.resolve,
       alias: {
