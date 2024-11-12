@@ -31,7 +31,6 @@
     ".storybook/**/*.tsx",
     ".storybook/*.js",
     ".storybook/*.ts",
-    "../../packages/gamut-styles/dist/typings/theme.d.ts",
-    "src/lib/Layouts/LayoutGrid/LayoutGrid.tsx"
+    "../../packages/gamut-styles/dist/typings/theme.d.ts"
   ]
 }
