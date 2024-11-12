@@ -2,7 +2,7 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, DataTable } from '~styleguide/blocks';
 
-import { defaultColumns, getPropRows } from './tables';
+import { defaultColumns, getPropRows } from '../shared/elements';
 
 export const parameters = {
   title: 'Props',
@@ -61,7 +61,7 @@ const Box = styled.div(system.layout);
 <Box display="flex" width="50%" height="300px" verticalAlign="middle" />;
 ```
 
-<DataTable rows={getPropRows('layout')} columns={defaultColumns} />
+{/* <DataTable rows={getPropRows('layout')} columns={defaultColumns} /> */}
 
 ## Space
 
@@ -76,7 +76,7 @@ const Spacer = styled.div(system.space);
 <Spacer p={8} my={[16, 24, 32]} />;
 ```
 
-<DataTable rows={getPropRows('space')} columns={defaultColumns} />
+{/* <DataTable rows={getPropRows('space')} columns={defaultColumns} /> */}
 
 ## Typography
 
@@ -91,7 +91,7 @@ const Text = styled.p(system.typography);
 <Text fontSize={16} fontFamily="accent" textTransform="uppercase" />;
 ```
 
-<DataTable rows={getPropRows('typography')} columns={defaultColumns} />
+{/* <DataTable rows={getPropRows('typography')} columns={defaultColumns} /> */}
 
 ## Color
 
@@ -106,7 +106,7 @@ const Background = styled.div(system.color);
 <Background bg="navy" textColor="gray-100" borderColor="blue" />;
 ```
 
-<DataTable rows={getPropRows('color')} columns={defaultColumns} />
+{/* <DataTable rows={getPropRows('color')} columns={defaultColumns} /> */}
 
 ## Border
 
@@ -126,7 +126,7 @@ const Box = styled.div(system.border);
 />;
 ```
 
-<DataTable rows={getPropRows('border')} columns={defaultColumns} />
+{/* <DataTable rows={getPropRows('border')} columns={defaultColumns} /> */}
 
 ## Flex
 
@@ -141,7 +141,7 @@ const FlexBox = styled.div(system.flex);
 <FlexBox flex={1} justifyContent="center" alignItems="flex-start" />;
 ```
 
-<DataTable rows={getPropRows('flex')} columns={defaultColumns} />
+{/* <DataTable rows={getPropRows('flex')} columns={defaultColumns} /> */}
 
 ## Grid
 
@@ -156,7 +156,7 @@ const GridBox = styled.div(system.grid);
 <GridBox gridTemplateColumns="max-content 1fr max-content" columnGap={32} />;
 ```
 
-<DataTable rows={getPropRows('grid')} columns={defaultColumns} />
+{/* <DataTable rows={getPropRows('grid')} columns={defaultColumns} /> */}
 
 ## Background
 
@@ -172,7 +172,7 @@ const Box = styled.div(system.background);
 <Box background={`url(${myBg}`} backgroundSize="cover" />;
 ```
 
-<DataTable rows={getPropRows('background')} columns={defaultColumns} />
+{/* <DataTable rows={getPropRows('background')} columns={defaultColumns} /> */}
 
 ## Positioning
 
@@ -187,7 +187,7 @@ const Box = styled.div(system.positioning);
 <Box position="absolute" zIndex={2} top="0" left="0" />;
 ```
 
-<DataTable rows={getPropRows('positioning')} columns={defaultColumns} />
+{/* <DataTable rows={getPropRows('positioning')} columns={defaultColumns} /> */}
 
 ## Shadow
 
@@ -205,7 +205,7 @@ const Box = styled.div(system.shadow);
 />;
 ```
 
-<DataTable rows={getPropRows('shadows')} columns={defaultColumns} />
+{/* <DataTable rows={getPropRows('shadows')} columns={defaultColumns} /> */}
 
 ## List
 
