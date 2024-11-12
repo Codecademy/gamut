@@ -1,22 +1,22 @@
-import { Logo } from '@codecademy/gamut';
+import { Box } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Logo> = {
-  component: Logo,
+const meta: Meta<typeof Box> = {
+  component: Box,
   args: {},
 };
 
 export default meta;
-type Story = StoryObj<typeof Logo>;
+type Story = StoryObj<typeof Box>;
 
 export const Default: Story = {
   args: {
-    variant: 'default',
+    children: <img src="./cinna.jpg" alt="jpeg" />,
   },
 };
 
 export const Variant2: Story = {
   args: {
-    variant: 'pro',
+    children: 'pro',
   },
 };

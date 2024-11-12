@@ -6,7 +6,6 @@ const config: StorybookConfig = {
     '../src/lib/**/*.@(mdx)',
     '../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
-
   staticDirs: ['../src/static'],
   addons: [
     getAbsolutePath('@storybook/addon-essentials'),
@@ -36,11 +35,12 @@ const config: StorybookConfig = {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: 'static/images', // Customize the output path if needed
+            outputPath: 'static', // Customize the output path if needed
           },
         },
       ],
     });
+
     config.resolve = {
       ...config.resolve,
       alias: {
