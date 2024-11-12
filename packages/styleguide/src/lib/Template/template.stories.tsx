@@ -10,6 +10,7 @@ export default meta;
 type Story = StoryObj<typeof Box>;
 
 export const Default: Story = {
+  // Testing if imgs work in stories
   args: {
     children: <img src="./cinna.jpg" alt="jpeg" />,
   },
