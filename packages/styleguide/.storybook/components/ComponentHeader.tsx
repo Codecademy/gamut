@@ -18,6 +18,7 @@ export interface ComponentHeaderProps {
   subtitle?: string;
   status?: 'current' | 'updating' | 'deprecated' | 'static';
   design?: { url?: string };
+  source?: { repo: string; githubLink?: string };
 }
 
 const STATUS = {
@@ -42,9 +43,10 @@ const STATUS = {
 } as const;
 
 export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
-  subtitle,
-  status: storyStatus = 'static',
   design,
+  source,
+  status: storyStatus = 'static',
+  subtitle,
 }) => {
   const renderStatus = () => {
     if (storyStatus === 'static') return null;
@@ -60,7 +62,9 @@ export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
     );
   };
 
-  const linkIcon = <OpenIcon size={14} ml={8} />;
+  const npmLink =
+    source?.githubLink ??
+    `https://www.npmjs.com/package/@codecademy/${source?.repo}`;
 
   return (
     <Box
@@ -75,17 +79,34 @@ export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
         <Title />
         <Text mb={16}>{subtitle}</Text>
         {(design?.url || storyStatus !== 'static') && (
-          <Background p={16} bg="white" borderRadius="md">
+          <Background py={16} px={24} bg="white" borderRadius="md">
             <GridBox
-              gap={16}
               fontWeight={700}
+              gap={8}
               gridAutoFlow={['row', , 'column']}
-              gridAutoColumns="max-content"
+              gridTemplateColumns={['1fr', , 'repeat(3, auto)']}
+              justifyContent={'space-between'}
             >
               {renderStatus()}
+              {source && (
+                <Anchor
+                  href={npmLink}
+                  icon={OpenIcon}
+                  iconPosition="right"
+                  target="_blank"
+                >
+                  @codecademy/{source.repo}
+                </Anchor>
+              )}
               {design?.url && (
-                <Anchor fontSize={16} target="_blank" href={design?.url}>
-                  Figma Source File {linkIcon}
+                <Anchor
+                  fontSize={16}
+                  href={design?.url}
+                  icon={OpenIcon}
+                  iconPosition="right"
+                  target="_blank"
+                >
+                  Figma Source File
                 </Anchor>
               )}
             </GridBox>

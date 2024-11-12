@@ -22,7 +22,15 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/gamut-tests"],
       "options": {
-        "jestConfig": "packages/gamut-tests/jest.config.ts"
+        "jestConfig": "packages/gamut-tests/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "rm -rf ./dist"
       }
     }
   }
