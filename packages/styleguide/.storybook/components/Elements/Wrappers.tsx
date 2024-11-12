@@ -1,11 +1,11 @@
-import { Background } from '@codecademy/gamut-styles';
+import { Box } from '@codecademy/gamut';
 
 export const SourceWrapper: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
   return (
-    <Background bg="white" borderRadius="md" px={24} py={8}>
+    <Box bg="white" borderRadius="md" fontWeight={'bold'} px={24} py={8}>
       {children}
-    </Background>
+    </Box>
   );
 };

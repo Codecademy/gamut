@@ -21,16 +21,15 @@ export const AboutHeader: React.FC<AboutHeaderProps> = ({
       borderColor="navy-300"
       borderRadius="md"
       column
-      fontWeight={'bold'}
       mb={24}
       pb={24}
       pt={32}
       px={40}
     >
-      <Text as="h1" variant="title-lg" mb={4}>
+      <Text as="h1" variant="title-lg" mb={4} fontWeight={'bold'}>
         {title}
       </Text>
-      <Text variant="title-xs" mb={16}>
+      <Text fontSize={16} mb={source ? 16 : 0}>
         {subtitle}
       </Text>
       {source && (
