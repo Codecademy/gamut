@@ -36,4 +36,9 @@ export const webFonts = [
     extensions: ['woff', 'woff2'],
     name: 'Suisse',
   },
+  {
+    filePath: `https://static-assets-staging.codecademy.com/test-locales/VideoJS`,
+    extensions: ['woff'],
+    name: 'VideoJS',
+  },
 ];

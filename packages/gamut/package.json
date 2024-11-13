@@ -12,6 +12,7 @@
     "@reach/auto-id": "^0.16.0",
     "@reach/tabs": "^0.16.4",
     "@types/marked": "^4.0.8",
+    "@types/video.js": "^7.3.58",
     "classnames": "^2.2.5",
     "framer-motion": "^6.5.1",
     "html-to-react": "^1.6.0",
@@ -26,7 +27,8 @@
     "react-select": "^5.2.2",
     "react-truncate-markup": "^5.1.2",
     "react-use": "^15.3.8",
-    "sanitize-markdown": "^2.6.7"
+    "sanitize-markdown": "^2.6.7",
+    "video.js": "^8.19.1"
   },
   "files": [
     "dist"

@@ -1,0 +1,33 @@
+import { VideoPlayer } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+import { Videojs } from './Video.examples.tsx';
+
+<Meta
+  title={title}
+  component={VideoPlayer}
+  parameters={{
+    subtitle: `This is an example video.js player`,
+    source: 'gamut',
+    status: 'current',
+  }}
+  args={{
+    videoUrl:
+      'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+  }}
+/>
+
+--
+
+## Example Videojs Player
+
+<Canvas>
+  <Story name="Videojs">
+    {(args) => {
+      return <Videojs {...args} />;
+    }}
+  </Story>
+</Canvas>
