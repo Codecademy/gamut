@@ -1,0 +1,65 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as FloatingCardStories from './FloatingCard.stories';
+
+export const parameters = {
+  subtitle: 'A card with a persistent patterned shadow meant for user feedback or interaction outside the normal flow.',
+  status: 'current',
+};
+
+<Meta of={FloatingCardStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+- They have patterned drop shadow to indicate that are outside the normal document flow.
+- This is a shared component used to create `Toast`, `Dialog`, and `Coachmark`; before using this component directly please check that these components do not cover your use case!
+- `Tooltip` shares many styles with FloatingCards but is used more widely and does not have a shadow as that might detract from the critical functions it serves.
+
+## Beaks
+
+FloatingCards can optionally display a beak. This is used to indicate a point of interest to the user - that the content of the card describes. Beaks are primarily used in `Coachmarks`.
+
+<Canvas of={FloatingCardStories.BeakBottomLeft} />
+<Canvas of={FloatingCardStories.BeakBottomRight} />
+<Canvas of={FloatingCardStories.BeakTopLeft} />
+<Canvas of={FloatingCardStories.BeakTopRight} />
+
+## Shadow direction
+
+There are 2 types of shadow directions. The default shadow offset is bottom left.
+
+<Canvas of={FloatingCardStories.ShadowBottomLeft} />
+<Canvas of={FloatingCardStories.ShadowBottomRight} />
+
+## Shadow pattern
+
+We can specify the pattern of the FloatingCard shadow by providing the `pattern` prop with the imported pattern from `@codecademy/gamut-patterns`.
+
+<Canvas of={FloatingCardStories.ShadowPattern} />
+
+## Card wrapper display
+
+The wrapper display may need to be changed from the default `inline-block`
+
+```tsx
+import { FloatingCard } from '@codecademy/gamut';
+import { DotDense } from '@codecademy/gamut-patterns';
+
+export const MyComponent: React.FC = () => {
+  return (
+    <FloatingCard pattern={DotDense} cardDisplay="block">
+      Take up all the space.
+    </FloatingCard>
+  );
+};
+```
+
+## Playground
+
+<Canvas sourceState="shown" of={FloatingCardStories.Default} />
+
+<Controls />
