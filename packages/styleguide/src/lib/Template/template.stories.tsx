@@ -18,6 +18,6 @@ export const Default: Story = {
 
 export const Variant2: Story = {
   args: {
-    children: 'pro',
+    children: <img src="./Gamut.svg" alt="jpeg" />,
   },
 };
