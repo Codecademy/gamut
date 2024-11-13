@@ -18,7 +18,7 @@ interface DataTableProps<T extends Row> {
   columns: ColumnConfig<T>[];
 }
 
-export const DataTable = <T extends Row>({
+export const TokenTable = <T extends Row>({
   bg = true,
   columns,
   idKey = 'id',

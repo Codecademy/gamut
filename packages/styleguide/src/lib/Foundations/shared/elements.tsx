@@ -1,4 +1,4 @@
-import { Anchor, Box, DataTable } from '@codecademy/gamut';
+import { Anchor, Box } from '@codecademy/gamut';
 import {
   Background,
   coreSwatches,
@@ -11,7 +11,7 @@ import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
 import kebabCase from 'lodash/kebabCase';
 
 // CASS - fix
-import { Code, ColorScale, LinkTo } from '~styleguide/blocks';
+import { Code, ColorScale, LinkTo, TokenTable } from '~styleguide/blocks';
 
 const PROP_COLUMN = {
   key: 'key',
@@ -389,13 +389,13 @@ export const borderRadii = {
 
 export const LightModeTable = () => (
   <Background bg="white">
-    <DataTable {...(lightMode as any)} />
+    <TokenTable bg={false} {...(lightMode as any)} />
   </Background>
 );
 
 export const DarkModeTable = () => (
   <Background bg="navy">
-    <DataTable {...(darkMode as any)} />
+    <TokenTable bg={false} {...(darkMode as any)} />
   </Background>
 );
 /* eslint-disable gamut/import-paths */

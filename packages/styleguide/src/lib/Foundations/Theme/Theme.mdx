@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, DataTable } from '~styleguide/blocks';
+import { AboutHeader, TokenTable } from '~styleguide/blocks';
 
 import * as TABLES from '../shared/elements';
 
@@ -65,13 +65,13 @@ All current visual identity colors are available on the `colors` key on the Them
 
 Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
 
-<DataTable {...TABLES.color} />
+<TokenTable {...TABLES.color} />
 
 ### Solid color swatches
 
 Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a list of all the solid swatches available.
 
-<DataTable {...TABLES.swatch} />
+<TokenTable {...TABLES.swatch} />
 
 ### Navy and white color swatches
 
@@ -79,7 +79,7 @@ With the exception of the `weight-100`, `navy-800`, and `navy-900` color weights
 
 These tokens are also accessible with a dashcase key `theme.colors['${color}-${weight}']`.
 
-<DataTable {...TABLES.rgbaSwatch} />
+<TokenTable {...TABLES.rgbaSwatch} />
 
 ## Color modes
 
@@ -115,25 +115,25 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.fontFamily`
 
-<DataTable {...TABLES.fontFamily} />
+<TokenTable {...TABLES.fontFamily} />
 
 ### Font size
 
 **Key**: `theme.fontSize`
 
-<DataTable {...TABLES.fontSize} />
+<TokenTable {...TABLES.fontSize} />
 
 ### Font weight
 
 **Key**: `theme.fontWeight`
 
-<DataTable {...TABLES.fontWeight} />
+<TokenTable {...TABLES.fontWeight} />
 
 ### Line height
 
 **Key**: `theme.lineHeight`
 
-<DataTable {...TABLES.lineHeight} />
+<TokenTable {...TABLES.lineHeight} />
 
 ## Space
 
@@ -141,7 +141,7 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.spacing`
 
-<DataTable {...TABLES.space} />
+<TokenTable {...TABLES.space} />
 
 ## Layout
 
@@ -149,10 +149,10 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.breakpoints`
 
-<DataTable {...TABLES.breakpoint} />
+<TokenTable {...TABLES.breakpoint} />
 
 ## Border Radius
 
 **Key**: `theme.borderRadii`
 
-<DataTable {...TABLES.borderRadii} />
+<TokenTable {...TABLES.borderRadii} />

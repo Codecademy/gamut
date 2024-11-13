@@ -1,7 +1,7 @@
 import { Box } from '@codecademy/gamut/src';
 import { Meta } from '@storybook/blocks';
 
-import { ComponentHeader, DataTable, LinkTo } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo, TokenTable } from '~styleguide/blocks';
 
 export const parameters = {
   title: 'Layout',
@@ -23,7 +23,7 @@ These are the grids we use for all the screen sizes we design for. We use a 12-c
 
 We have 6 main screensizes we design for, these are not the same thing as `breakpoints` which are used to help us achieve these guidelines. You can checkout our <LinkTo id="Foundations/Theme">Theme</LinkTo>.
 
-<DataTable
+<TokenTable
   rows={[
     {
       id: 'XL',
@@ -115,7 +115,7 @@ This section would be 6 columns at the smallest screen size and 4 columns at any
 
 For spacing between components and sections use these as a guide. Each of these scales is a subset of our `spacing` sizes found on <LinkTo id="foundations-theme--spacing">our theme</LinkTo>. While you will have access to all of them in your code use these sets as a practical guide.
 
-<DataTable
+<TokenTable
   rows={[
     {
       id: 'horizontal',
