@@ -1,11 +1,11 @@
 import cx from 'classnames';
 import * as React from 'react';
 import { useState } from 'react';
-import { Videojs as VideoJSStyle } from './styles/Videojs';
 
 import { useIsMounted } from '../utils';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
+import { Videojs as VideoJSStyle } from './styles/Videojs';
 import VideoJS from './Videojs';
 
 type VideoPlayerProps = {

@@ -41,12 +41,11 @@ export const VideoJS: React.FC<VideoJSProps> = ({options, onReady}) => {
           volumePanel: { inline: false },
           children: [
             'playToggle',
+            'skipBackward',
             'currentTimeDisplay',
             'timeDivider',
             'durationDisplay',
             'progressControl',
-            'liveDisplay',
-            'remainingTimeDisplay',
             'customControlSpacer',
             'playbackRateMenuButton',
             'chaptersButton',
@@ -58,8 +57,8 @@ export const VideoJS: React.FC<VideoJSProps> = ({options, onReady}) => {
           ]
         }      
       }, () => {
-        videojs.log('player is ready');
-        onReady && onReady(player);
+        videojs.log('player is ready', player);
+        onReady?.(player);
       });
 
     } else {
@@ -68,7 +67,7 @@ export const VideoJS: React.FC<VideoJSProps> = ({options, onReady}) => {
       player.autoplay(options.autoplay || false);
       player.src(options.sources || []);
     }
-  }, [options, videoRef]);
+  }, [options, videoRef, onReady]);
 
   React.useEffect(() => {
     const player = playerRef.current;
