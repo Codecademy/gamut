@@ -39,7 +39,7 @@ export const lightMode = {
     hex: value,
   })),
   columns: [
-    PROP_COLUMN,
+    { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
       render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
@@ -65,7 +65,7 @@ export const darkMode = {
     hex: value,
   })),
   columns: [
-    PROP_COLUMN,
+    { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
       render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
