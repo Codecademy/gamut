@@ -6,7 +6,7 @@ const config: StorybookConfig = {
     '../src/lib/**/*.@(mdx)',
     '../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
-
+  staticDirs: ['../src/static'],
   addons: [
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@nx/react/plugins/storybook', ''),
@@ -26,6 +26,7 @@ const config: StorybookConfig = {
   typescript: {
     reactDocgen: 'react-docgen-typescript',
   },
+
   webpackFinal(config) {
     config.resolve = {
       ...config.resolve,
