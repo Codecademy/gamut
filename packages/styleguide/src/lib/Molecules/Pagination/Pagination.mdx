@@ -29,39 +29,45 @@ Use this component to navigate between content that is split across multiple pag
 
 ## Types
 
-## Variants
+We have two types of pagination - `basic` and `includeSkipToButtons`. The `basic` type has number as well as forward and back buttons. The `includeSkipToButtons` type also features an ellipsis button which allows users to quickly jump through page numbers by `chapterSize` as well as the first and last page buttons.
 
-### [Variant 1 name]
+For any pagination that is longer then 10 pages, the `includeSkipToButtons` type is the default.
+
+### `basic`
+<Canvas of={TemplateStories.Default} />
+
+### `includeSkipToButtons`
+<Canvas of={TemplateStories.IncludeSkipToButtons} />
+
+## Variants
+We have two variants of pagination - `stroke` and `text` - that roughly correspond to our **Buttons** with some Pagination-specific style overrides.
+
+### `stroke`
 
 Use the [variant 1 name] to [what it should be used for]
 
-<Canvas of={TemplateStories.Default} />
+<Canvas of={TemplateStories.Stroke} />
 
-### [Variant 2 name]
+### `text`
 
 Use the [variant 2 name] to [what it should be used for]
 
-<Canvas of={TemplateStories.Variant2} />
+<Canvas of={TemplateStories.Text} />
+
+## Pagination navigation
+
+When using pagination as navigation between linked pages, use the `isNavigation` prop. Your `onChange` function should include programmatic navigation.
+
+<Canvas of={TemplateStories.Navigation} />
+
+## Controlled pagination
+
+When `pageNumber` is specified, the component switches to being a controlled component.
+
+<Canvas of={TemplateStories.Controlled} />
+
 
 ## Playground
-
-If you are using a story named 'Default', you can forgo the `of` prop.
-
 <Canvas sourceState="shown" of={TemplateStories.Default} />
 
 <Controls />
-
-## Accessibility considerations
-
-- [Accessibility guidance]
-- [Accessibility guidance]
-- [Accessibility guidance]
-
-## UX writing
-
-- [content]
-  - [guidance]
-  - [guidance]
-- [content]
-  - [guidance]
-  - [guidance]
