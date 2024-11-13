@@ -12,9 +12,7 @@ type VideoPlayerProps = {
   videoUrl: string;
 };
 
-export const VideoPlayer: React.FC<VideoPlayerProps> = ({
-  videoUrl,
-}) => {
+export const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl }) => {
   const [loading, setLoading] = useState(true);
   const isMounted = useIsMounted();
   const playerRef = React.useRef<any>(null);
@@ -24,10 +22,12 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     controls: true,
     responsive: true,
     fluid: true,
-    sources: [{
-      src: videoUrl,
-      type: 'video/mp4'
-    }]
+    sources: [
+      {
+        src: videoUrl,
+        type: 'video/mp4',
+      },
+    ],
   };
 
   const handlePlayerReady = (player: any) => {
@@ -38,9 +38,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   return (
     <>
       <VideoJSStyle />
-      <div
-        className={cx(styles.videoWrapper, loading && styles.loading)}
-      >
+      <div className={cx(styles.videoWrapper, loading && styles.loading)}>
         {isMounted ? (
           <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
         ) : null}
