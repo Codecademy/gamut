@@ -12,8 +12,9 @@ import { useRef, useState } from 'react';
 
 const meta: Meta<typeof Menu> = {
   component: Menu,
-  subcomponents: { MenuItem: MenuItem as React.ComponentType<any>, MenuSeparator: MenuSeparator as React.ComponentType<any> },
-  // subcomponents: { MenuItem, MenuSeparator }
+  // This is a known issue with SB 8, see: https://github.com/storybookjs/storybook/issues/23170
+  // Will fix this casting when the issue is resolved
+  subcomponents: { MenuItem: MenuItem as React.ComponentType<unknown>, MenuSeparator: MenuSeparator as React.ComponentType<unknown> },
   args: {
     spacing: 'normal'
   },

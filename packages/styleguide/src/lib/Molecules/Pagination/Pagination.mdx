@@ -1,0 +1,67 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as TemplateStories from './Pagination.stories';
+
+export const parameters = {
+  subtitle: `Controls for navigating through paginated content.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=8639%3A7128',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    // this is easy to find by right clicking on the file in VSCode and clicking "Copy Remote File Url From..." and the selecting 'main' or amending the url path below like so: https://github.com/Codecademy/gamut/blob/main/packages/${package}/src/file/location
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Pagination/index.tsx',
+  },
+};
+
+<Meta of={TemplateStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use this component to navigate between content that is split across multiple pages.
+
+## Types
+
+## Variants
+
+### [Variant 1 name]
+
+Use the [variant 1 name] to [what it should be used for]
+
+<Canvas of={TemplateStories.Default} />
+
+### [Variant 2 name]
+
+Use the [variant 2 name] to [what it should be used for]
+
+<Canvas of={TemplateStories.Variant2} />
+
+## Playground
+
+If you are using a story named 'Default', you can forgo the `of` prop.
+
+<Canvas sourceState="shown" of={TemplateStories.Default} />
+
+<Controls />
+
+## Accessibility considerations
+
+- [Accessibility guidance]
+- [Accessibility guidance]
+- [Accessibility guidance]
+
+## UX writing
+
+- [content]
+  - [guidance]
+  - [guidance]
+- [content]
+  - [guidance]
+  - [guidance]
