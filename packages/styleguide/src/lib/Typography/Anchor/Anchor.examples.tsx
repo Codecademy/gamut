@@ -3,6 +3,7 @@ import {
   AnchorProps,
   Box,
   Column,
+  FlexBox,
   LayoutGrid,
   Text,
 } from '@codecademy/gamut';
@@ -97,5 +98,19 @@ export const InlineAnchorWithIconAndText: React.FC<AnchorProps> = (args) => {
         Learn more
       </Anchor>
     </Text>
+  );
+};
+
+export const PolymorphicAnchors: React.FC<AnchorProps> = (args) => {
+  return (
+    <FlexBox justifyContent="space-around">
+      <Anchor {...args} variant="standard" onClick={() => null}>
+        I look like an Anchor, but I am a button.
+      </Anchor>
+
+      <Anchor {...args} href="/">
+        I look like a link, and I am one!
+      </Anchor>
+    </FlexBox>
   );
 };

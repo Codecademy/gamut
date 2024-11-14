@@ -1,97 +1,107 @@
+import { FlexBox } from '@codecademy/gamut';
+import { MiniWarningTriangleIcon } from '@codecademy/gamut-icons';
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
-import * as TemplateStories from './template.stories';
+import * as AnchorStories from './Anchor.stories';
 
 export const parameters = {
-  subtitle: `Template component`,
+  subtitle: `A clickable text element that navigates to another page, resource, or location on the same page.`,
   design: {
     type: 'figma',
-    url: 'https://www.figma.com/file/XXX',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=993-0',
   },
   status: 'current',
   source: {
     repo: 'gamut',
-    // this is easy to find by right clicking on the file in VSCode and clicking "Copy Remote File Url From..." and the selecting 'main' or amending the url path below like so: https://github.com/Codecademy/gamut/blob/main/packages/${package}/src/file/location
     githubLink:
-      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Logo',
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Anchor',
   },
 };
 
-<Meta of={TemplateStories} />
+<Meta of={AnchorStories} />
 
 <ComponentHeader {...parameters} />
 
 ## Usage
 
-Use [component name] to [what it should be used for]
+Use an anchor to navigate to another page, resource, or location on the same page.
 
 ### Best practices:
 
-- [recommendation / best practice for implementation]
-- [recommendation / best practice for implementation]
+- Include a leading or trailing icon to clarify the link’s destination or to further distinguish from surrounding text.
+- Consider opening in a new tab when navigating away would interrupt a task or workflow the user is currently engaged in.
 
 ### When NOT to use:
 
-- [use case]- for [describe the use case], use the [similar component] component
-- [use case]- for [describe the use case], use the [similar component] component.
+- **Actions** - when performing an actions, use a <LinkTo component="Atoms/Buttons">Button</LinkTo> component instead.
 
 ## Anatomy
 
-[Insert image exported from Figma]
+<FlexBox center px={24}>
+  <img
+    src="./typography/anchor.png"
+    alt="The anatomy of the Anchor component, detailed below."
+  />
+</FlexBox>
 
-Src formatted like so + testing different file extensions:
+**1. Leading Icon** _(optional)_
 
-<img src="./cinna.jpg" alt="jpeg" />
+- Use to clarify or reinforce the link’s destination
 
-<img src="./test3.png" alt="png" />
+**2. Anchor link label**
 
-1. [Element name]
+- Specify where the link goes
+- Use casing from writing guidelines
+- Aim for 3-5 words
 
-- [description including available options and ux writing if relevant]
+**Trailing icon** _(optional)_
 
-2. [Element name] (optional)
-
-- [description of optional element, including when to use]
-
-3. [Element name]
-
-- [description]
+- Use to reinforce forward movement or navigation to a new page
+- When navigation to an external page, use the <LinkTo component="Atoms/Icons/Mini">MiniOpenIcon</LinkTo>.
 
 ## Variants
 
-### [Variant 1 name]
+### Inline (default)
 
-Use the [variant 1 name] to [what it should be used for]
+Use in paragraphs, styled with color and underline to improve link visibility within text-heavy content.
 
-<Canvas of={TemplateStories.Default} />
+### Interface
 
-### [Variant 2 name]
+Use in menus or in instances where the context of the link makes it clear that it is clickable.
 
-Use the [variant 2 name] to [what it should be used for]
+### Standard
 
-<Canvas of={TemplateStories.Variant2} />
+Use outside of a paragraph or ‘menu’ instance. <MiniWarningTriangleIcon color="blue" size={14}/> Note: When placed inline with other bold text (e.g., headings), standard links not meet a11y standards. Include an icon to ensure the link is distinguishable. When placed alongside non-bold text, bold formatting provides adequate visual distinction.
+
+<Canvas of={AnchorStories.Modes} />
+
+## Icons
+
+Anchors can be rendered with leading and trailing icons to provide additional context or visual distinction.
+
+<Canvas of={AnchorStories.IconAnchorExample} />
+
+Icons are also responsive to ColorMode.
+
+<Canvas of={AnchorStories.IconModes} />
+
+## Polymorphic Anchors
+
+Our Anchors are polymorphic - they can be rendered as a button or a link component. This allows for better accessibility and flexibility as this happens automatically based on the props passed to the Anchor. Please use this sparingly and when appropriate (for example, a `button` that navigates to a new page).
+
+<Canvas of={AnchorStories.PolymorphicAnchor} />
 
 ## Playground
 
-If you are using a story named 'Default', you can forgo the `of` prop.
-
-<Canvas sourceState="shown" of={TemplateStories.Default} />
+<Canvas sourceState="shown" />
 
 <Controls />
 
-## Accessibility considerations
-
-- [Accessibility guidance]
-- [Accessibility guidance]
-- [Accessibility guidance]
-
 ## UX writing
 
-- [content]
-  - [guidance]
-  - [guidance]
-- [content]
-  - [guidance]
-  - [guidance]
+Writing words for a link or button? Above all else, make sure that the words alone make it clear where a button or link will take the user. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="writing-ux-writing-component-guidelines-buttons-and-links--page">writing for buttons and links</LinkTo>.
+
+- Make sure it’s clear where the link or button will take the user.
+- Use sentence case, capitalizing only proper nouns.
