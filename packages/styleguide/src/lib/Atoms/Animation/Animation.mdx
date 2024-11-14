@@ -1,0 +1,30 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as AnimationStories from './Animation.stories';
+
+export const parameters = {
+  subtitle: 'Controlled containers for predictable animations.',
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    // this is easy to find by right clicking on the file in VSCode and clicking "Copy Remote File Url From..." and the selecting 'main' or amending the url path below like so: https://github.com/Codecademy/gamut/blob/main/packages/${package}/src/file/location
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Logo',
+  },
+};
+
+<Meta of={AnimationStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Animations should not be the click target of actions, but rather the container for the content you wish to animate.
+
+## Playground
+
+<Canvas sourceState="shown" of={AnimationStories.Default} />
+
+<Controls />
