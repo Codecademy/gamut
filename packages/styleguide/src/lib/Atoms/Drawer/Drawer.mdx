@@ -1,0 +1,33 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader,  } from '~styleguide/blocks';
+
+import * as DrawerStories from './Drawer.stories';
+
+export const parameters = {
+  subtitle: 'Animated container that expands horizontally to show its contents.',
+  status: 'current',
+};
+
+<Meta of={DrawerStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use [component name] to [what it should be used for]
+
+Drawers animate between having `0` width and having a responsive width:
+
+- Mobile devices (&lt;`sm`): `75vw`
+- Tablet and larger (&gt;=`sm`): `30rem`
+
+An example of a molecule that uses Drawer is the <LinkTo id="molecules-flyout--flyout">Flyout</LinkTo>.
+
+Our Drawers are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded`.
+
+## Playground
+
+<Canvas sourceState="shown" of={DrawerStories.Default} />
+
+<Controls />
