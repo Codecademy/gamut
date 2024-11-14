@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as FloatingCardStories from './FloatingCard.stories';
 
@@ -38,6 +38,8 @@ There are 2 types of shadow directions. The default shadow offset is bottom left
 ## Shadow pattern
 
 We can specify the pattern of the FloatingCard shadow by providing the `pattern` prop with the imported pattern from `@codecademy/gamut-patterns`.
+
+{/* See the <LinkTo component="Atoms/Patterns">`Patterns`</LinkTo> story to view all the possible pattern options. */}
 
 <Canvas of={FloatingCardStories.ShadowPattern} />
 

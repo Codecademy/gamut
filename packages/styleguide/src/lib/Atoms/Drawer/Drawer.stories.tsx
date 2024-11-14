@@ -1,5 +1,6 @@
-import { Drawer } from '@codecademy/gamut';
-import type { Meta, StoryObj } from '@storybook/react';
+import { Drawer, FlexBox, StrokeButton } from '@codecademy/gamut';
+import type { Meta } from '@storybook/react';
+import { useState } from 'react';
 
 const meta: Meta<typeof Drawer> = {
   component: Drawer,
@@ -7,8 +8,17 @@ const meta: Meta<typeof Drawer> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Drawer>;
 
-export const Default: Story = {
-  args: {},
+export const Default: React.FC = () => {
+  const [expanded, setExpanded] = useState(false);
+  return (
+    <FlexBox bg="paleYellow" height="20rem">
+      <Drawer expanded={expanded}>Drawer content in here!</Drawer>
+      <StrokeButton
+        onClick={() => setExpanded((previousExpanded) => !previousExpanded)}
+      >
+        Toggle Drawer
+      </StrokeButton>
+    </FlexBox>
+  );
 };
