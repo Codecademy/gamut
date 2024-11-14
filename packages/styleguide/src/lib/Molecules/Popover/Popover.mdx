@@ -1,0 +1,127 @@
+import { Column, LayoutGrid } from '@codecademy/gamut';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as PopoverStories from './Popover.stories';
+
+export const parameters = {
+  subtitle: `Popover is a surface which takes a target element and shows an overlay positioned around that element.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=31226-41577',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink: 'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Popover/Popover.tsx'
+  },
+};
+
+<Meta of={PopoverStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+Popovers are generally used for interactive contents, such as new and exciting features for users to try.
+
+### When NOT to use:
+- For small, non-interactive contents, use a **LinkTo id=**"atoms-tooltip--tool-tip"**ToolTip**LinkTo**
+
+## Specifications
+
+### Beak
+
+Using the beak prop, you can add a beak to the popover.
+
+<Canvas of={PopoverStories.Beak} />
+
+Tooltips with a _centered_ beak -`center`- are smaller sized and meant for a single small number of words, like keyboard shortcuts. Similar to the center aligned **tooltips**[KENNY: path please]/?path=/docs/atoms-tooltip--smaller-alignment#smaller-alignments
+
+<Canvas of={PopoverStories.BeakCentered} />
+
+### Outline
+
+Using the outline prop, you can add an outline to the popover.
+The outline color is `theme.colors.secondary` so in Dark Mode, the outline will be white. Please swap the ColorMode in the toolbar above to check this out in action!
+
+<Canvas of={PopoverStories.Outline} />
+
+### Position
+
+Using the position prop, you can add a position (`above` or `below`) to the popover. It will be `below` by default.
+
+<LayoutGrid gap={32}>
+
+<Column size={6} variant={false} mx={8}>
+#### Above
+<Canvas of={PopoverStories.Above} />
+</Column>
+
+<Column size={6} variant={false} mx={8}>
+#### Below
+<Canvas of={PopoverStories.Below} />
+</Column>
+
+</LayoutGrid>
+
+### Patterns
+
+Using the pattern prop, you can apply a patterned background to the popover.
+
+<LayoutGrid gap={32}>
+
+<Column size={4} variant={false} mx={8}>
+#### `CheckerDense`
+<Canvas of={PopoverStories.PopoverCheckerDense} />
+</Column>
+
+<Column size={4} variant={false} mx={8}>
+#### `CheckerLoose`
+<Canvas of={PopoverStories.PopoverCheckerLoose} />
+</Column>
+
+<Column size={4} variant={false} mx={8}>
+#### `CheckerRegular`
+<Canvas of={PopoverStories.PopoverCheckerRegular} />
+</Column>
+
+<Column size={4} variant={false} mx={8}>
+#### `DiagonalADense`
+<Canvas of={PopoverStories.PopoverDiagonalADense} />
+</Column>
+
+<Column size={4} variant={false} mx={8}>
+#### `DiagonalALoose`
+<Canvas of={PopoverStories.PopoverDiagonalALoose} />
+</Column>
+
+<Column size={4} variant={false} mx={8}>
+#### `DiagonalARegular`
+<Canvas of={PopoverStories.PopoverDiagonalARegular} />
+</Column>
+
+</LayoutGrid>
+
+### When the popover has no focusable element
+
+When there is no focusable child element in the popover, the popover container will receive focus.
+This is to resolve the error that the focus trap throws when there is no focusable element.
+<Canvas of={PopoverStories.WithoutFocus} />
+
+### Animation
+Adds a 'fade' animation to Popovers - should only be usef when specified within designs.
+
+<Canvas of={PopoverStories.Animation} />
+
+### Variant
+
+Popovers have a secondary, tooltip-esque variant style that have a smaller beak, padding, + base font size, and different background colors. Check it out in light mode and dark mode!
+
+<Canvas of={PopoverStories.Variant} />
+
+## Playground
+<Canvas sourceState="shown" of={PopoverStories.Default} />
+
+<Controls />
+
