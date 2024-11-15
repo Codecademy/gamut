@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Molecules/Modal',
+  title: 'Modal',
+  subtitle:
+    'The abstract concepts our system is built on: colors, spacing, responsive layouts, and the like.',
+};
+
+<Meta title="Molecules/Modal/About" />
+
+<AboutHeader {...parameters} />
+
+Use a modal to focus a user’s attention on an important piece of information or quick task.
+
+<TableOfContents
+  links={[
+    {
+      id: 'Molecules/Modal/Dialog',
+      subtitle: 'Structured dialog modals with binary options.',
+      title: 'Dialog',
+    },
+  ]}
+/>
+
+
+
