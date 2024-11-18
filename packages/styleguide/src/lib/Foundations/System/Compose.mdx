@@ -1,19 +1,23 @@
-import title from '@codecademy/macros/lib/title.macro';
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/blocks';
 
-import { LinkTo } from '~styleguide/blocks';
+import { AboutHeader, LinkTo } from '~styleguide/blocks';
 
-<Meta
-  title={title}
-  parameters={{
-    subtitle:
-      'The compose function lets you combine many system props into one to improve performance and reusability',
-    source: 'variance',
-    status: 'updating',
-  }}
-/>
+export const parameters = {
+  title: 'Compose',
+  subtitle:
+    'The compose function lets you combine many system props into one to improve performance and reusability',
+  source: {
+    repo: 'variance',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/af5be6e39cccca5d5d8a1f811c77a7a0b618c914/packages/variance/src/core.ts',
+  },
+};
 
-When using custom properties or our standard <LinkTo id="foundations-system-props--page">system props</LinkTo> it can be useful to combine them into a single function using `variance.compose`.
+<Meta title="Foundations/System/Compose" />
+
+<AboutHeader {...parameters} />
+
+When using custom properties or our standard <LinkTo id="Foundations/System/Props">system props</LinkTo> it can be useful to combine them into a single function using `variance.compose`.
 
 Composing functions has several benefits:
 
