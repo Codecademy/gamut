@@ -1,28 +1,29 @@
 import { Box } from '@codecademy/gamut/src';
-import title from '@codecademy/macros/lib/title.macro';
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/blocks';
 
-import { DataTable, LinkTo } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo, TokenTable } from '~styleguide/blocks';
 
-<Meta
-  title={title}
-  parameters={{
-    subtitle: 'Design Guidelines for overall page layout',
-    status: 'current',
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=464%3A691',
-    },
-  }}
-/>
+export const parameters = {
+  title: 'Layout',
+  subtitle: 'Design guidelines for overall page layout',
+  status: 'static',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=464%3A691',
+  },
+};
+
+<Meta title="Foundations/Layout" />
+
+<ComponentHeader {...parameters} />
 
 These are the grids we use for all the screen sizes we design for. We use a 12-column grid approach, meaning every layout can be divided in sections of 2 or 3. It’s important to design with the in mind to create structured and consistent experiences. On smaller screensizes try to avoid using smaller components while using the grid as a guide.
 
 ## Screensizes
 
-We have 6 main screensizes we design for, these are not the same thing as `breakpoints` which are used to help us achieve these guidelines. You can checkout our <LinkTo id="foundations-theme--breakpoints">Theme</LinkTo>
+We have 6 main screensizes we design for, these are not the same thing as `breakpoints` which are used to help us achieve these guidelines. You can checkout our <LinkTo id="Foundations/Theme">Theme</LinkTo>.
 
-<DataTable
+<TokenTable
   rows={[
     {
       id: 'XL',
@@ -114,7 +115,7 @@ This section would be 6 columns at the smallest screen size and 4 columns at any
 
 For spacing between components and sections use these as a guide. Each of these scales is a subset of our `spacing` sizes found on <LinkTo id="foundations-theme--spacing">our theme</LinkTo>. While you will have access to all of them in your code use these sets as a practical guide.
 
-<DataTable
+<TokenTable
   rows={[
     {
       id: 'horizontal',

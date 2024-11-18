@@ -2,6 +2,7 @@ import {
   AssetProvider,
   coreTheme,
   createEmotionCache,
+  css,
   GamutProvider,
 } from '@codecademy/gamut-styles';
 import { MDXProvider } from '@mdx-js/react';
@@ -10,17 +11,26 @@ import {
   DocsContainer as StorybookDocsContainer,
   DocsContextProps,
   HeadersMdx,
+  SourceContainer,
 } from '@storybook/blocks';
 import { components as htmlComponents } from '@storybook/components';
-import { ThemeProvider } from '@storybook/theming';
+import { styled, ThemeProvider } from '@storybook/theming';
 import * as React from 'react';
 import { Link } from './Markdown';
 import { HelmetProvider } from 'react-helmet-async';
-import theme from '../theming/GamutTheme';
+import theme from '../../theming/GamutTheme';
+
+const WrappedPre = styled(htmlComponents.pre)(
+  // gives the source block a white background - pretty fragile but easy to change if needed
+  css({
+    '.docblock-source, .css-5owncf': { backgroundColor: 'background' },
+  })
+);
 
 const defaultComponents = {
   ...htmlComponents,
   code: CodeOrSourceMdx,
+  pre: WrappedPre,
   ...HeadersMdx,
   a: Link as any,
 };
@@ -38,9 +48,11 @@ export const DocsContainer: React.FC<{
         <HelmetProvider>
           <AssetProvider />
         </HelmetProvider>
-        <ThemeProvider theme={coreTheme}>
-          <MDXProvider components={defaultComponents}>{children}</MDXProvider>
-        </ThemeProvider>
+        <SourceContainer channel={context.channel}>
+          <ThemeProvider theme={coreTheme}>
+            <MDXProvider components={defaultComponents}>{children}</MDXProvider>
+          </ThemeProvider>
+        </SourceContainer>
       </GamutProvider>
     </StorybookDocsContainer>
   );

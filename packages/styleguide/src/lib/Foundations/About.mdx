@@ -1,0 +1,52 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Foundations',
+  title: 'Foundations',
+  subtitle:
+    'The abstract concepts our system is built on: colors, spacing, responsive layouts, and the like.',
+};
+
+<Meta title="Foundations/About" />
+
+<AboutHeader {...parameters} />
+
+Foundations make up the smallest scale design values that comprise a design system.
+Sometimes referred to elsewhere as "tokens", they are the abstract units that comprise and stitch together our atoms, molecules, and organisms.
+
+<TableOfContents
+  links={[
+    {
+      id: 'Foundations/ColorMode',
+      subtitle: 'Semantic color palette configuration.',
+      title: 'ColorMode',
+    },
+    {
+      id: 'Foundations/Layout',
+      subtitle: 'Design guidelines for overall page layout.',
+      title: 'Layout',
+    },
+    {
+      id: 'Foundations/System',
+      subtitle: 'System properties and style functions',
+      title: 'System',
+    },
+    {
+      id: 'Foundations/Theme',
+      subtitle: 'The Emotion theme for codecademy.',
+      title: 'Theme',
+    },
+    {
+      id: 'Foundations/Typography',
+      subtitle: 'Typography design guidelines and token scales.',
+      title: 'Typography',
+    },
+    {
+      id: 'Foundations/Utilities',
+      subtitle: 'Style utilities for both SCSS and Emotion.',
+      title: 'Utilities',
+    },
+  ]}
+/>
