@@ -1,0 +1,30 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as HiddenText from './HiddenText.stories';
+
+export const parameters = {
+  subtitle: `Visually hidden text that should still be narrated by screenreaders.`,
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/cass-gm-843/packages/gamut/src/HiddenText/index.tsx#',
+  },
+};
+
+<Meta of={HiddenText} />
+
+<ComponentHeader {...parameters} />
+
+Previously, this was useful for cases where we visually indicate something not easily conveyed through semantic HTML.
+Ideally those cases should be exceedingly rare; unfortunately, some of our older pages aren't set up well for this.
+
+For newer pages, use <LinkTo component="Typography/HiddenText">Text component</LinkTo> and set `screenreader="true"`.
+
+See https://wdn.unl.edu/page-title-h1-best-practices for more information.
+
+<Canvas withSource="open" />
+
+<Controls />
