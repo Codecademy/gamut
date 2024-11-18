@@ -75,7 +75,7 @@ export const Default: Story = {
   render: (args) => <TabsExample {...args} />,
 };
 
-export const TabsControlledExample = () => {
+const TabsControlledExample = () => {
   const [controlledIndex, setControlledIndex] = useState(0);
 
   const maxTabIndex = 2;
@@ -175,7 +175,7 @@ export const TabsNav: Story = {
   render: () => <TabsNavExample />,
 }
 
-export const TabsInteractiveContentExample = (args: TabsWithoutChildren) => {
+const TabsInteractiveContentExample = (args: TabsWithoutChildren) => {
   return (
     <>
       <Tabs {...args}>
