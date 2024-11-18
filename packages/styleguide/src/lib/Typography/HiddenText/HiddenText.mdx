@@ -2,7 +2,7 @@ import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
-import * as HiddenText from './HiddenText.stories';
+import * as HiddenTextStories from './HiddenText.stories';
 
 export const parameters = {
   subtitle: `Visually hidden text that should still be narrated by screenreaders.`,
@@ -14,7 +14,7 @@ export const parameters = {
   },
 };
 
-<Meta of={HiddenText} />
+<Meta of={HiddenTextStories} />
 
 <ComponentHeader {...parameters} />
 

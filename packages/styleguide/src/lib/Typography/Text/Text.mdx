@@ -2,7 +2,7 @@ import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
-import * as TemplateStories from './template.stories';
+import * as TextStories from './Text.stories';
 
 export const parameters = {
   subtitle:
@@ -16,83 +16,94 @@ export const parameters = {
     repo: 'gamut',
     // this is easy to find by right clicking on the file in VSCode and clicking "Copy Remote File Url From..." and the selecting 'main' or amending the url path below like so: https://github.com/Codecademy/gamut/blob/main/packages/${package}/src/file/location
     githubLink:
-      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Logo',
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Typography/Text',
   },
 };
 
-<Meta of={TemplateStories} />
+<Meta of={TextStories} />
 
 <ComponentHeader {...parameters} />
 
 ## Usage
 
-Use [component name] to [what it should be used for]
+This is the preferred component for customizing typography. The API is progressively specific. In order to achieve the effect you are looking for there are 3 levels of precedence.
+
+1. `as` Any HTML tag that might have semantic meaning and imply specific style `h1` - `h6` and `strong`. These have default styles that will match up with the tag in normative circumstances. For example an `h1` will be the largest type style etc.
+2. `variant` In many cases we use heading tags in different ways than a text document might to maintain semantic and accessible HTML structure. In cases where this is required, you may specify a variant to overwrite the default tag styles. For example if you had an `h1` that needed to look like an `h4` you can specify `<Text as="h1" variant="title-md" />` to achieve the effect.
+3. `props` In all other cases where we might need to change typography related styles you can use system props to change behavior.
 
 ### Best practices:
 
-- [recommendation / best practice for implementation]
-- [recommendation / best practice for implementation]
+- Use for any HTML text elements
 
 ### When NOT to use:
 
-- [use case]- for [describe the use case], use the [similar component] component
-- [use case]- for [describe the use case], use the [similar component] component.
+- _List items_ - for items in a list, use the List + ListRow component.
+- _Anchors + Links_- for links, use the [Anchor component].
 
-## Anatomy
+## HTML Element variants
 
-[Insert image exported from Figma]
+When you use a specific element `Text` will style it with overridable defaults as our best guess behavior. These styles take lowest priority as they are merely meant to act as a useful default, both `variant` and any system prop will override the styles specified here.
 
-Src formatted like so + testing different file extensions:
+### Usage
 
-<img src="./cinna.jpg" alt="jpeg" />
+```tsx
+import { Text } from '@codecademy/gamut';
 
-<img src="./test3.png" alt="png" />
+// Regular h1
+<Text as="h1" />
 
-1. [Element name]
+// An extra large h4
+<Text as="h4" variant="title-xxl" />
 
-- [description including available options and ux writing if relevant]
+// An extra small subheading
+<Text as="h2" fontSize={14} fontFamily="accent" />
+```
 
-2. [Element name] (optional)
+<Canvas of={TextStories.Elements} />
 
-- [description of optional element, including when to use]
+## Style variants
 
-3. [Element name]
+These are our base semantic font scales. These apply directly to the typography scales in figma and can be used with any arbitrary tag. These take precedence over any element based variants if configured. If none of these specifically match your need you can also override behavior with any system prop (such as `lineHeight` and `fontSize`).
 
-- [description]
+### Usage
 
-## Variants
+```tsx
+import { Text } from '@codecademy/gamut';
 
-### [Variant 1 name]
+<Text as="h4" variant="title-xxl" />;
+```
 
-Use the [variant 1 name] to [what it should be used for]
+<Canvas of={TextStories.Variants} />
 
-<Canvas of={TemplateStories.Default} />
+## Utilities
 
-### [Variant 2 name]
+Text has some special props with common use cases to make your life easier.
 
-Use the [variant 2 name] to [what it should be used for]
+### Truncation
 
-<Canvas of={TemplateStories.Variant2} />
+<Canvas of={TextStories.Truncation} />
+
+### Font smoothing (default: false)
+
+<Canvas of={TextStories.FontSmoothing} />
+
+### Screenreader (default: false)
+
+<Canvas of={TextStories.Screenreader} />
+
+### Highlight
+
+<Canvas of={TextStories.Highlight} />
 
 ## Playground
 
 If you are using a story named 'Default', you can forgo the `of` prop.
 
-<Canvas sourceState="shown" of={TemplateStories.Default} />
+<Canvas sourceState="shown" />
 
 <Controls />
 
 ## Accessibility considerations
 
-- [Accessibility guidance]
-- [Accessibility guidance]
-- [Accessibility guidance]
-
-## UX writing
-
-- [content]
-  - [guidance]
-  - [guidance]
-- [content]
-  - [guidance]
-  - [guidance]./Text.stories
+- Make sure to use the right semantic HTML element for the content you are displaying and respecting header order. If you're not sure, you can check out HTML elements at MDN [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#content_sectioning).
