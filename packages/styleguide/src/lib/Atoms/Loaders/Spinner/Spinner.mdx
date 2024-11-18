@@ -1,0 +1,34 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as SpinnerStories from './Spinner.stories';
+
+export const parameters = {
+  subtitle: 'Perpetually spinning circle, such as for a loading indicator.',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=29975%3A39412&t=nzcwAhSF1DoNC1YO-0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    // this is easy to find by right clicking on the file in VSCode and clicking "Copy Remote File Url From..." and the selecting 'main' or amending the url path below like so: https://github.com/Codecademy/gamut/blob/main/packages/${package}/src/file/location
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Logo',
+  },
+};
+
+<Meta of={SpinnerStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Spinners work best when used inside of components that are already loaded. They are small, compact, and imply elements of feedback.
+
+## Playground
+
+<Canvas sourceState="shown" of={SpinnerStories.Default} />
+
+<Controls />
