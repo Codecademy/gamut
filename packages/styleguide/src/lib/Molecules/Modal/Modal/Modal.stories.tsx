@@ -26,7 +26,7 @@ export const CustomClose: Story = {
   }
 }
 
-// Views are optional why does TS complain about this?
+// This could be a SB issue, where Discriminated Unions are not being handled correctly
 type WithoutViews = Omit<React.ComponentProps<typeof Modal>, 'views'>;
 
 const ClickOutsideExample = (args: WithoutViews) => {
