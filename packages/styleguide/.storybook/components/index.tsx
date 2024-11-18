@@ -1,2 +1,5 @@
-export * from './AboutHeader';
-export * from './ComponentHeader';
+export * from './TokenTable';
+export * from './Headers';
+export * from './Elements/Markdown';
+export * from './Scales/ColorScale';
+export * from './Navigation/TableOfContents';
