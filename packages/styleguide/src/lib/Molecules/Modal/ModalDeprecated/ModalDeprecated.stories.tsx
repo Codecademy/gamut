@@ -10,7 +10,7 @@ const meta: Meta<typeof ModalDeprecated> = {
 export default meta;
 type Story = StoryObj<typeof ModalDeprecated>;
 
-const DefaultExample =(args: React.ComponentProps<typeof ModalDeprecated>) => {
+const DefaultExample =() => {
   const [isOpen, setIsOpen] = useState(false);
     return (
       <>
@@ -25,10 +25,10 @@ const DefaultExample =(args: React.ComponentProps<typeof ModalDeprecated>) => {
     )
 };
 export const Default: Story = {
-  render: (args) => <DefaultExample {...args} />,
+  render: () => <DefaultExample />,
 };
 
-const CustomCloseExample = (args: React.ComponentProps<typeof ModalDeprecated>) => {
+const CustomCloseExample = () => {
   const [isOpen, setIsOpen] = useState(false);
     return (
       <>
@@ -48,10 +48,10 @@ const CustomCloseExample = (args: React.ComponentProps<typeof ModalDeprecated>) 
 }
 
 export const CustomClose: Story = {
-  render: (args) => <CustomCloseExample {...args} />,
+  render: () => <CustomCloseExample  />,
 };
 
-const ClickOutsideExample = (args: React.ComponentProps<typeof ModalDeprecated>) => {
+const ClickOutsideExample = () => {
     const [isOpen, setIsOpen] = useState(false);
       return (
         <>
@@ -71,7 +71,7 @@ const ClickOutsideExample = (args: React.ComponentProps<typeof ModalDeprecated>)
 }
 
 export const ClickOutside: Story = {
-  render: (args) => <ClickOutsideExample {...args} />,
+  render: () => <ClickOutsideExample />,
 };
 
 

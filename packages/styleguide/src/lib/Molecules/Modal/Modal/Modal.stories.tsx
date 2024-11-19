@@ -1,13 +1,13 @@
 import { Box, FillButton, FlexBox, Modal, Text } from '@codecademy/gamut';
 import { CodeCelebration } from '@codecademy/gamut-illustrations';
 import type { Meta, StoryObj } from '@storybook/react';
+import { ReactNode, useState } from 'react';
 
 const meta: Meta<typeof Modal> = {
   component: Modal,
   args: {
     title: 'Modal Modality',
     size: 'small',
-    isOpen: true,
     children: 'Waffles a la modal',
   },
 };
@@ -15,27 +15,48 @@ const meta: Meta<typeof Modal> = {
 export default meta;
 type Story = StoryObj<typeof Modal>;
 
+// This could be a SB issue, where Discriminated Unions are not being handled correctly
+type WithoutViews = Omit<React.ComponentProps<typeof Modal>, 'views'>;
+
+const ModalExample = (args: WithoutViews) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        isOpen={isOpen}
+        {...args}
+        onRequestClose={() => setIsOpen(false)}
+      >
+         Close the Modal!
+      </Modal>
+    </>
+  )
+}
+
 export const Default: Story = {
-  args: {},
+  render: (args) => <ModalExample {...args} />,
 };
 
 
 export const CustomClose: Story = {
   args: {
     hideCloseButton: true
-  }
+  },
+  render: (args) => <ModalExample {...args} />,
 }
 
-// This could be a SB issue, where Discriminated Unions are not being handled correctly
-type WithoutViews = Omit<React.ComponentProps<typeof Modal>, 'views'>;
-
 const ClickOutsideExample = (args: WithoutViews) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <Modal {...args}>
-      <FlexBox center fit>
-        <FillButton>Better remember to put me in!</FillButton>
-      </FlexBox>
-    </Modal>
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal {...args} isOpen={isOpen} onRequestClose={() => setIsOpen(false)} hideCloseButton>
+        <FlexBox center fit>
+          <FillButton onClick={() => setIsOpen(false)}>You can also control the state with this button</FillButton>
+        </FlexBox>
+      </Modal>
+    </>
   );
 };
 
@@ -57,41 +78,99 @@ const GridContentPlaceholder = ({height = 'auto', width = 'auto'}: {height: Stri
   )
 }
 
+const FluidExample = (args: WithoutViews) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        isOpen={isOpen}
+        {...args}
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <GridContentPlaceholder height="350px" width="540px" />
+      </Modal>
+    </>
+  )
+}
+
 export const Fluid: Story = {
-  render: (args: WithoutViews) => (
-    <Modal {...args} size="fluid">
-      <GridContentPlaceholder height="350px" width="540px" />
-    </Modal>
+  args: {size: "fluid"},
+  render: (args) => <FluidExample {...args} />,
+}
+
+const LargeExample = (args: WithoutViews) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        isOpen={isOpen}
+        {...args}
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <GridContentPlaceholder height="300px" width="auto" />
+      </Modal>
+    </>
   )
 }
 
 export const Large: Story = {
-  render: (args: WithoutViews) => (
-    <Modal {...args} size="large">
-      <GridContentPlaceholder height="300px" width="auto" />
-    </Modal>
+  args: {size: "large"},
+  render: (args) => ( <LargeExample {...args} />
+  )
+}
+
+const MediumExample = (args: WithoutViews) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        isOpen={isOpen}
+        {...args}
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <GridContentPlaceholder height="240px" width="auto" />
+      </Modal>
+    </>
   )
 }
 
 export const Medium: Story = {
-  render: (args: WithoutViews) => (
-    <Modal {...args} size="medium">
-      <GridContentPlaceholder height="240px" width="auto" />
-    </Modal>
+  args: {size: "medium"},
+  render: (args) => ( <MediumExample {...args} />
+  )
+}
+
+const SmallExample = (args: WithoutViews) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        isOpen={isOpen}
+        {...args}
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <GridContentPlaceholder height="240px" width="auto" />
+      </Modal>
+    </>
   )
 }
 
 export const Small: Story = {
-  render: (args: WithoutViews) => (
-    <Modal {...args}>
-      <GridContentPlaceholder height="170px" width="auto" />
-    </Modal>
+  args: {size: "small"},
+  render: (args) => ( <SmallExample {...args} />
   )
 }
 
 const ScrollableExample = (args: WithoutViews) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <Modal {...args} title={undefined} hideCloseButton size='medium' scrollable >
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal {...args} title={undefined} hideCloseButton size='medium' isOpen={isOpen} scrollable onRequestClose={() => setIsOpen(false)} >
         <FlexBox flexDirection="column">
           <Box height="600px">
             Hello, I&apos;m a very large box... Try zooming in and you&apos;ll be able to
@@ -100,6 +179,7 @@ const ScrollableExample = (args: WithoutViews) => {
           <FillButton>Better remember to put me in!</FillButton>
         </FlexBox>
       </Modal>
+    </>
   )
 }
 
@@ -107,11 +187,10 @@ export const Scrollable: Story = {
   render: (args) => <ScrollableExample {...args} />
 }
 
-export const MultipleViews: Story = {
-  args: {
+const multipleViewsArgs = {
     title: undefined,
     hideCloseButton: false,
-    size: 'medium',
+    size: 'medium' as const,
     scrollable: true,
     views: [
       {
@@ -134,6 +213,25 @@ export const MultipleViews: Story = {
       },
     ],
   }
+
+
+const MultipleViewsExample = (args: React.ComponentProps<typeof Modal>) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return(
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        isOpen={isOpen}
+        {...args}
+        onRequestClose={() => setIsOpen(false)}
+      />
+    </>
+  )
+}
+
+export const MultipleViews: Story = {
+  args: multipleViewsArgs,
+  render: (args) => <MultipleViewsExample {...args} />
 }
 
 const ImageComponent = () => {
@@ -151,13 +249,21 @@ const ImageComponent = () => {
 }
 
 const WithImageExample = (args: WithoutViews) => {
-  return (
-    <Modal {...args}>
-      <Text smooth fontSize={14} my={12}>
-        Optional 1-2 lines of explanation that provides relevant details.
-        Lorem ipsum cras nulla massa odio ligula.
-      </Text>
-    </Modal>
+  const [isOpen, setIsOpen] = useState(false);
+  return(
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        isOpen={isOpen}
+        {...args}
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <Text smooth fontSize={14} my={12}>
+          Optional 1-2 lines of explanation that provides relevant details.
+          Lorem ipsum cras nulla massa odio ligula.
+        </Text>
+      </Modal>
+    </>
   )
 }
 
