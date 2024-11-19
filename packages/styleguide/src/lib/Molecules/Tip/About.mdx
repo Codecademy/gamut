@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+
+import { TipTable } from './TipTable';
+
+export const parameters = {
+  id: 'Molecules/Tip',
+  title: 'Tip',
+  subtitle:
+    'Use tips to reveal non-essential information upon interaction.',
+};
+
+<Meta title="Molecules/Tip/About" />
+
+<AboutHeader {...parameters} />
+
+Tips come in the form of ToolTip or InfoTips (and eventually link PreviewTip). These represent distinct use cases and should not be interchanged. If you're unsure, reference the comparison table below.
+
+<TipTable />
+<br />
+
+<TableOfContents
+  links={[
+    {
+      id: 'Molecules/Tip/DeprecatedToolTip',
+      subtitle: 'Deprecated: A teeny floating text component that positions itself relative to its target. Currently being replaced by the new InfoTip + upcoming LinkPreview components.',
+      title: 'DeprecatedToolTip',
+      status: 'deprecated',
+    },
+    {
+      id: 'Molecules/Tip/InfoTip',
+      subtitle: 'A tip triggered by clicking on an information icon button. Use an infotip to provide additional info about a nearby element or content.',
+      title: 'InfoTip',
+      status: 'current',
+    },
+    {
+      id: 'Molecules/Tip/PreviewTip',
+      subtitle: 'An Anchor that provides a snippet of relevant information from the link destination.',
+      title: 'PreviewTip',
+      status: 'current',
+    },
+    {
+      id: 'Molecules/Tip/ToolTip',
+      subtitle: "A short tip triggered on hover and focus of an interactive element. Use a tooltip to further explain an element’s primary action, a disabled button state, or to display a label for an icon-only button.",
+      title: 'ToolTip',
+      status: 'current',
+    },
+  ]}
+/>
+
+
+
