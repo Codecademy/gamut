@@ -1,0 +1,76 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as ConnectedFormStories from './ConnectedForm.stories';
+
+export const parameters = {
+  subtitle: `A flexible way to build forms.`,
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/ConnectedForm/ConnectedForm.tsx',
+  },
+};
+
+<Meta of={ConnectedFormStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+`ConnectedForm` is an organism designed to create flexible forms with all of the reliability of <LinkTo kind='Organisms/GridForm'>GridForm</LinkTo> but without the strict grid structure.
+
+### Components
+
+- `ConnectedForm`: A <LinkTo kind='Atoms/Form'>Form</LinkTo> that provides context to all `Connected` components.
+- `ConnectedFormGroup`: <LinkTo kind='Atoms/FormGroups'>FormGroups</LinkTo> that use the context provided by `ConnectedForm` for error and disabled states.
+- `ConnectedFormInputs`: <LinkTo kind='Atoms/FormInputs'>FormInputs</LinkTo> the use the context provided by `ConnectedForm` for field registration and validation as well as required and disabled states. Should be used through `ConnectedFormGroup`.
+- `SubmitButton`: A submit type <LinkTo kind='Atoms/Button'>Button</LinkTo> that uses the context provided by `ConnectedForm` for loading and disabled states.
+
+### Utilities
+
+The primary access pattern of `ConnectedForm` is the `useConnectedForm` hook which composes a typesafe version of `ConnectedForm` + `ConnectedFormGroup` from the `defaultValues` passed to it - catching errors before the development enviroment is even started.
+
+Each of your fields' names must correspond with the appropriate `defaultValue` key. `validationRules` operates similarly - each key must correspond to a key in `defaultValue` and must follow [react-hook-form's](https://react-hook-form.com) [validation patterns](https://react-hook-form.com/v6/api#register).
+
+This hook also returns the `FormRequiredText` component - include this before your form unless all of your form fields are optional.
+
+
+## Variants
+
+### [Variant 1 name]
+
+Use the [variant 1 name] to [what it should be used for]
+
+<Canvas of={ConnectedFormStories.Default} />
+
+### [Variant 2 name]
+
+Use the [variant 2 name] to [what it should be used for]
+
+<Canvas of={ConnectedFormStories.Variant2} />
+
+## Playground
+
+If you are using a story named 'Default', you can forgo the `of` prop.
+
+<Canvas sourceState="shown" of={ConnectedFormStories.Default} />
+
+<Controls />
+
+## Accessibility considerations
+
+- [Accessibility guidance]
+- [Accessibility guidance]
+- [Accessibility guidance]
+
+## UX writing
+
+- [content]
+  - [guidance]
+  - [guidance]
+- [content]
+  - [guidance]
+  - [guidance]
