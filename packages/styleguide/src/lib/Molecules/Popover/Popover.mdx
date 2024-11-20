@@ -1,7 +1,7 @@
 import { Column, LayoutGrid } from '@codecademy/gamut';
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as PopoverStories from './Popover.stories';
 
@@ -26,7 +26,7 @@ export const parameters = {
 Popovers are generally used for interactive contents, such as new and exciting features for users to try.
 
 ### When NOT to use:
-- For small, non-interactive contents, use a **LinkTo id=**"atoms-tooltip--tool-tip"**ToolTip**LinkTo**
+- For small, non-interactive contents, use a <LinkTo id="atoms-tooltip">ToolTip</LinkTo>
 
 ## Specifications
 
@@ -36,7 +36,7 @@ Using the beak prop, you can add a beak to the popover.
 
 <Canvas of={PopoverStories.Beak} />
 
-Tooltips with a _centered_ beak -`center`- are smaller sized and meant for a single small number of words, like keyboard shortcuts. Similar to the center aligned **tooltips**[KENNY: path please]/?path=/docs/atoms-tooltip--smaller-alignment#smaller-alignments
+Tooltips with a _centered_ beak -`center`- are smaller sized and meant for a single small number of words, like keyboard shortcuts. Similar to the center aligned <LinkTo id="atoms-tooltip">ToolTip</LinkTo>
 
 <Canvas of={PopoverStories.BeakCentered} />
 
