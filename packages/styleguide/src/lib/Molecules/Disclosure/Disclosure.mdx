@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as DisclosureStories from './Disclosure.stories';
 
@@ -32,7 +32,7 @@ Use a Disclosure to progressively reveal information, giving users the option to
 
 
 ### When NOT to use:
-- If you need to use multiple Disclosures, use the List component with `<ExpandableRowClick>` for the time being.
+- If you need to use multiple Disclosures, use the <LinkTo id="organisms-disclosure">List</LinkTo> component component with `<ExpandableRowClick>` for the time being.
 
 ## Variants
 Disclosure has 3 variants for background color (`'default'`, `'subtle', 'transparent'`), a state of `hasBorder` to render a 1px solid black border, and 3 spacing options (`'normal'`, `'condensed'`, `'compact'`). Check the Figma design to apply the correct styling.

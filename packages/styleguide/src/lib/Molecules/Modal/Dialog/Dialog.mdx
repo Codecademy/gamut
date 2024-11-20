@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as DialogStories from './Dialog.stories';
 
@@ -28,7 +28,7 @@ export const parameters = {
   - The Medium size is suitable for Dialogs that require more content or explanation.
   - The `fluid` option fits to the maximum size of the components inside of it. This is useful when you want to incorporate elements beyond standard typography inside of your Dialog.
 - Dialog height changes depending on the body-text length.
-- Dialog has light and dark theme variants that respond to the appropriate **LinkTo id="foundations-color-mode--page"**Color Mode**LinkTo**.
+- Dialog has light and dark theme variants that respond to the appropriate <LinkTo id="foundations-color-mode--page">Color Mode</LinkTo>.
 
 
 ### Best practices:
@@ -36,7 +36,7 @@ export const parameters = {
 - Dialogs should be centered inside of the window.
 - Dialogs appear unprompted and require confirmation before the user can continue.
 - Use the modal component sparingly. This is the most dispruptive tool in our arsenal. We should only have a small handful of these in our system at any given time.
-- Dialogs should always be displayed over an **LinkTo id="molecules-modals-overlay--overlay"**Overlay**LinkTo**. Use the Overlay component in Gamut (and Figma) to capture the appropriate background opacity.
+- Dialogs should always be displayed over an <LinkTo id="molecules-modal-overlay">Overlay</LinkTo>. Use the Overlay component in Gamut (and Figma) to capture the appropriate background opacity.
   - The overlay in light mode should be white at 95% opacity, the overlay in dark mode should be black at 75% opacity.
 
 ## Variants
@@ -55,7 +55,7 @@ Use the `danger` variant to create warning Dialogs to warn the user of the conse
 
 ## Color modes
 
-Dialog components respond to the current **LinkTo id="foundations-color-mode--page"**Color Mode**LinkTo** they are used in. Each component inside of dialog will correctly display for the current color mode without any extra configuration.
+Dialog components respond to the current <LinkTo id="foundations-color-mode--page">Color Mode</LinkTo> they are used in. Each component inside of dialog will correctly display for the current color mode without any extra configuration.
 Check it out:
 
 ### Light
@@ -63,8 +63,6 @@ Check it out:
 
 ### Dark
 <Canvas of={DialogStories.DarkMode} />
-
-##
 
 ## Playground
 
@@ -76,45 +74,13 @@ If you are using a story named 'Default', you can forgo the `of` prop.
 
 ## UX writing
 
-Simplify the language, prioritize the message, and make sure the implication of what learners are saying “Yes” (or “No”) to is crystal clear. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about **LinkTo id="ux-writing-component-guidelines-confirmation-dialogs--page"**writing for confirmation dialogs**LinkTo**.
+Simplify the language, prioritize the message, and make sure the implication of what learners are saying “Yes” (or “No”) to is crystal clear. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="ux-writing-component-guidelines-confirmation-dialogs--page">writing for confirmation dialogs</LinkTo>.
 
-**CustomCheckbox
-  htmlFor="dialog-1"
-  label="Keep the language consistent between buttons, headlines, and explanations."
-  spacing="tight"
-**
-**CustomCheckbox
-  htmlFor="dialog-2"
-  label="Make sure the action is clear from the headline."
-  spacing="tight"
-**
-**CustomCheckbox
-  htmlFor="dialog-3"
-  label="Frame the headline as a question, if possible."
-  spacing="tight"
-**
-**CustomCheckbox
-  htmlFor="dialog-4"
-  label="Provide all relevant details and consequences."
-  spacing="tight"
-**
-**CustomCheckbox
-  htmlFor="dialog-5"
-  label="Keep explanation text to 1-2 lines, if possible."
-  spacing="tight"
-**
-**CustomCheckbox
-  htmlFor="dialog-6"
-  label="Ensure that buttons are clear and distinct, with context to reaffirm the action."
-  spacing="tight"
-**
-**CustomCheckbox
-  htmlFor="dialog-7"
-  label="Keep copy at a reading level of grade 7 or below. Test with [Hemingway App](https://hemingwayapp.com/)."
-  spacing="tight"
-**
-**CustomCheckbox
-  htmlFor="dialog-8"
-  label="Ask someone unrelated to the project to read the message to see if it makes sense."
-  spacing="tight"
-**
+* Keep the language consistent between buttons, headlines, and explanations.
+* Make sure the action is clear from the headline.
+* Frame the headline as a question, if possible.
+* Provide all relevant details and consequences.
+* Keep explanation text to 1-2 lines, if possible.
+* Ensure that buttons are clear and distinct, with context to reaffirm the action.
+* Keep copy at a reading level of grade 7 or below. Test with [Hemingway App](https://hemingwayapp.com/).
+* Ask someone unrelated to the project to read the message to see if it makes sense.
