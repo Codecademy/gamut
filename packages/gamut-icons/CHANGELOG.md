@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.34.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.33.0...@codecademy/gamut-icons@9.34.0) (2024-11-20)
+
+### Features
+
+- **Icons:** Add ArrowDashRightIcon, ArrowChevronRightBoldIcon, and RankingWinnerIcon ([#2976](https://github.com/Codecademy/gamut/issues/2976)) ([bdbf3de](https://github.com/Codecademy/gamut/commit/bdbf3de725622d2786242a2f9db4f801bcd6a9d4))
+
 ## [9.33.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.32.1...@codecademy/gamut-icons@9.33.0) (2024-11-11)
 
 ### Features
