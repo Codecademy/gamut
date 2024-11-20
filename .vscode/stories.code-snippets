@@ -73,7 +73,7 @@
       " - [guidance]",
       " - [guidance]"
     ],
-    "description": "Default Component Story Structure."
+    "description": "Default Component Doc Structure."
   },
   "Table of Contents Story": {
     "prefix": "toc-story",
@@ -132,6 +132,6 @@
       " }",
       "};"
     ],
-    "description": "Deafult TSX story structure."
+    "description": "Default TSX story structure."
   }
 }
