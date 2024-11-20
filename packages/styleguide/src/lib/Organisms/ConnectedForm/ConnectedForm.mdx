@@ -38,19 +38,87 @@ Each of your fields' names must correspond with the appropriate `defaultValue` k
 This hook also returns the `FormRequiredText` component - include this before your form unless all of your form fields are optional.
 
 
+### Example code
+```tsx
+import {
+  ConnectedCheckbox,
+  ConnectedInput,
+  ConnectedSelect,
+  useConnectedForm,
+} from '@codecademy/gamut';
+
+import { TerminalIcon } from '@codecademy/gamut-icons';
+
+export const GoodForm = () => {
+  const {
+    ConnectedFormGroup,
+    ConnectedForm,
+    connectedFormProps,
+    FormRequiredText,
+  } = useConnectedForm({
+    defaultValues: {
+      thisField: true,
+      thatField: 'zero',
+      anotherField: 'state your name.',
+    },
+    validationRules: {
+      thisField: { required: 'you need to check this.' },
+      thatField: {
+        pattern: {
+          value: /^(?:(?!zero).)*$/,
+          message: 'literally anything but zero',
+        },
+      },
+    },
+  });
+
+  return (
+    <ConnectedForm
+      onSubmit={({ thisField }) => console.log(thisField)}
+      resetOnSubmit
+      {...connectedFormProps}
+    >
+      <SubmitButton>submit this form.</SubmitButton>
+      <ConnectedFormGroup
+        name="thisField"
+        label="cool checkbox bruh"
+        field={{
+          component: ConnectedCheckbox,
+          label: 'check it ouuut',
+        }}
+      />
+      <ConnectedFormGroup
+        name="thatField"
+        label="cool select dude"
+        field={{
+          component: ConnectedSelect,
+          options: ['one', 'two', 'zero'],
+        }}
+      />
+      <ConnectedFormGroup
+        name="anotherField"
+        label="cool input"
+        field={{
+          component: ConnectedInput,
+          icon: TerminalIcon,
+        }}
+      />
+      <FormRequiredText />
+    </ConnectedForm>
+  );
+};
+```
+
+
 ## Variants
 
-### [Variant 1 name]
+### `watchedFields`
 
-Use the [variant 1 name] to [what it should be used for]
+If you need the values of your inputs before submission, for something like conditionally generating different inputs, you can also pass in a `watchedFields` object. This takes in an array of names of fields to watch and a `watchHandler ` function which will be run `onChange` of your watchedField. This function should take an array of the return values of the inputs in the order the names are passed in to the `fields` props.
 
-<Canvas of={ConnectedFormStories.Default} />
+Watched fields aren't usually great for performance, so only use these fields when you need to.
 
-### [Variant 2 name]
-
-Use the [variant 2 name] to [what it should be used for]
-
-<Canvas of={ConnectedFormStories.Variant2} />
+<Canvas of={ConnectedFormStories.WatchedFields} />
 
 ## Playground
 
