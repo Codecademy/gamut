@@ -108,7 +108,7 @@ const FeatureRow = ({
   );
 };
 
-export const TipTable = () => {
+export const TipsTable = () => {
   return (
     <List variant="table" spacing="condensed">
       <ComponentRow array={colTitles} />
