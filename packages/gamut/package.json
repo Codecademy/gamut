@@ -12,7 +12,6 @@
     "@reach/auto-id": "^0.16.0",
     "@reach/tabs": "^0.16.4",
     "@types/marked": "^4.0.8",
-    "@types/video.js": "^7.3.58",
     "classnames": "^2.2.5",
     "framer-motion": "^6.5.1",
     "html-to-react": "^1.6.0",

@@ -1,11 +1,9 @@
 import cx from 'classnames';
 import * as React from 'react';
 import { useState } from 'react';
-
 import { useIsMounted } from '../utils';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
-import { Videojs as VideoJSStyle } from './styles/Videojs';
 import VideoJS from './Videojs';
 
 type VideoPlayerProps = {
@@ -37,7 +35,6 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl }) => {
 
   return (
     <>
-      <VideoJSStyle />
       <div className={cx(styles.videoWrapper, loading && styles.loading)}>
         {isMounted ? (
           <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
