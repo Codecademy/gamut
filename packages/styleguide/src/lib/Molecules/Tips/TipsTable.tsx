@@ -1,18 +1,7 @@
-import {
-  Alert,
-  Badge,
-  FlexBox,
-  IconButton,
-  InfoTip,
-  List,
-  ListCol,
-  ListRow,
-  PreviewTip,
-  Text,
-} from '@codecademy/gamut';
-import { MiniStarIcon } from '@codecademy/gamut-icons';
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { Badge, FlexBox, IconButton, InfoTip, List, ListCol, ListRow, PreviewTip, Text } from "@codecademy/gamut";
+import { MiniStarIcon } from "@codecademy/gamut-icons";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 
 const components = {
   ToolTip: {
@@ -119,7 +108,7 @@ const FeatureRow = ({
   );
 };
 
-export const TipTable = () => {
+export const TipsTable = () => {
   return (
     <List variant="table" spacing="condensed">
       <ComponentRow array={colTitles} />
@@ -144,3 +133,4 @@ export const TipTable = () => {
     </List>
   );
 };
+

@@ -1,3 +1,4 @@
+export * from './ImageWrapper';
 export * from './TokenTable';
 export * from './Headers';
 export * from './Elements/Markdown';
