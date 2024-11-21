@@ -22,6 +22,14 @@ export const parameters = {
 
 Patterns are intended to be able to take in a color and any system layout, positioning, and spacing props.
 
+## Playground
+
+<Canvas sourceState="shown" of={PatternsStories.Default}/>
+
+<Controls />
+
+## Patterns
+
 <IconGallery>
   {Object.entries(patterns).map(([patternName, Pattern]) => (
     <IconItem key={patternName} name={patternName}>
@@ -29,9 +37,3 @@ Patterns are intended to be able to take in a color and any system layout, posit
     </IconItem>
   ))}
 </IconGallery>
-
-## Playground
-
-<Canvas sourceState="shown" of={PatternsStories.Default}/>
-
-<Controls />

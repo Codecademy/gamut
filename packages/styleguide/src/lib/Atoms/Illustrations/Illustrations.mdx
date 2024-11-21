@@ -18,14 +18,6 @@ export const parameters = {
 
 Illustrations are intended to be able to take in props for variants such as color, so despite being SVG-based, they're stored in our code as regular React components.
 
-<IconGallery>
-  {Object.entries(illustrations).map(([illustrationName, Illustration]) => (
-    <IconItem key={illustrationName} name={illustrationName}>
-      <Illustration aria-hidden width="128px" />
-    </IconItem>
-  ))}
-</IconGallery>
-
 ## Adding an illustration
 
 If you cannot find the Illustration you would like in the ones that we have specified here, please follow these steps to add one.
@@ -43,3 +35,13 @@ If you cannot find the Illustration you would like in the ones that we have spec
 <Canvas sourceState="shown" of={IllustrationsStories.Default}/>
 
 <Controls />
+
+## Illustrations
+
+<IconGallery>
+  {Object.entries(illustrations).map(([illustrationName, Illustration]) => (
+    <IconItem key={illustrationName} name={illustrationName}>
+      <Illustration aria-hidden width="128px" />
+    </IconItem>
+  ))}
+</IconGallery>
