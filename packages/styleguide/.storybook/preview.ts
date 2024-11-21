@@ -19,7 +19,15 @@ const preview: Preview = {
       storySort: {
         method: 'configure',
         includeNames: true,
-        order: ['Meta', 'Foundations', 'Layouts', 'Typography', 'Atoms', '*'],
+        order: [
+          'Meta',
+          ['About', 'Best Practices', 'Contributing', 'FAQs', 'Stories'],
+          'Foundations',
+          'Layouts',
+          'Typography',
+          'Atoms',
+          '*',
+        ],
       },
     },
     viewport: {
