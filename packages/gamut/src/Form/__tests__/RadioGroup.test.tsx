@@ -9,8 +9,13 @@ const renderView = setupRtl(RadioGroup, {
   name: 'what-salad-maker-do-you-prefer',
   'data-testid': 'my-test-id',
   children: [
-    <Radio label="Sweet Green" value="sweet-green" data-testid="firstInput" />,
-    <Radio label="Chopt" value="chopt" />,
+    <Radio
+      label="Sweet Green"
+      value="sweet-green"
+      data-testid="firstInput"
+      key="sweet-green"
+    />,
+    <Radio label="Chopt" value="chopt" key="chopt" />,
   ],
 });
 
