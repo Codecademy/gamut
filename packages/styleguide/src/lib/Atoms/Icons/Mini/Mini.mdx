@@ -1,0 +1,49 @@
+import * as MINI from '@codecademy/gamut-icons/src/icons/mini';
+import { Canvas, Controls, IconGallery, IconItem, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as MiniIconStories from './Mini.stories';
+
+export const parameters = {
+  subtitle: 'A subset of [Streamline Mini Bold](https://app.streamlinehq.com/streamline-mini-bold). These are a smaller set of icons that are bolder and work well in smaller resolutions.',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1883-1795',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut-icons',
+    // this is easy to find by right clicking on the file in VSCode and clicking "Copy Remote File Url From..." and the selecting 'main' or amending the url path below like so: https://github.com/Codecademy/gamut/blob/main/packages/${package}/src/file/location
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Logo',
+  },
+};
+
+<Meta of={MiniIconStories} />
+
+<ComponentHeader {...parameters} />
+
+## General infomation
+
+For mini icons, we use a subset of [Streamline's "Core Solid" icons](https://www.streamlinehq.com/icons/core-solid).
+
+Our icons by using standardized with a viewBox size of `"0 0 16 16"`. Icons should be centered and take up the entirety of this viewBox.
+
+All of our Icons are not minified by default, and optimized by [SVGO](https://github.com/svg/svgo) before build time. We like to preserve the source URL as well as any relevent comments or metadata within these SVGs.
+
+## Playground
+
+<Canvas sourceState="shown" of={MiniIconStories.Default} />
+
+<Controls />
+
+## Icons
+
+<IconGallery>
+  {Object.entries(MINI).map(([iconName, Icon]) => (
+    <IconItem key={iconName} name={iconName}>
+      <Icon size={16} />
+    </IconItem>
+  ))}
+</IconGallery>

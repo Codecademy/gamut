@@ -1,0 +1,107 @@
+import { Canvas, Controls, IconGallery, IconItem, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import {
+  LE_ICONS,
+  SKILLS_ICONS,
+  UI_ICONS,
+  VENDOR_ICONS,
+} from '../constants';
+import * as RegularIconStories from './Regular.stories';
+
+export const parameters = {
+  subtitle: 'A regular sized Icon set primarily from [Streamline Regular](https://app.streamlinehq.com/streamline-regular).',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1883-1795',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut-icons',
+    // this is easy to find by right clicking on the file in VSCode and clicking "Copy Remote File Url From..." and the selecting 'main' or amending the url path below like so: https://github.com/Codecademy/gamut/blob/main/packages/${package}/src/file/location
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Logo',
+  },
+};
+
+<Meta of={RegularIconStories} />
+
+<ComponentHeader {...parameters} />
+
+## General infomation
+
+For regular icons, we use a subset of [Streamline's "Ultimate Regular" icons](https://www.streamlinehq.com/icons/streamline-regular).
+
+Our icons are standardized with a viewBox size of `"0 0 24 24"`. Icons should be centered and take up the entirety of this viewBox.
+
+All of our Icons are not minified by default, and optimized by [SVGO](https://github.com/svg/svgo) before build time. We like to preserve the source URL as well as any relevent comments or metadata within these SVGs.
+
+## Adding an icon
+
+If you cannot find the Icon you would like in the ones that we have specified here, please follow these steps to add one.
+
+1. With design's approval pick an Icon ideally from `Streamline Regular`, if you need a filled icon you may pick from `Streamline Bold` but we would prefer the former.
+   If you need something at exists in neither please consult design to create a custom one.
+2. Select the Outline version of the icon as opposed to stroke. You will not be able to get this from the App, and you must find the icon's outline version in our assets.
+   you can check to see if an Icon is stroke by if it has any `stoke-width: 1.5px` rules in it's markup, outline will not have this.
+3. If it doesn't already have it add the streamline slug (IE: `delete-1`) as the SVG title if it does not already exist and ensure the viewBox is set to `viewBox="0 0 24 24"`. Preserve the source URL, add any relevent comments, and disregard the asset size.
+4. Add the svg asset to [packages/gamut-icons/src/svg](https://github.com/Codecademy/gamut/tree/main/packages/gamut-icons) with the following naming convention `<ICON_NAME>-icon.svg`.
+5. Run `yarn build-all && yarn start` to see it be added to Storybook. It will by default be added to the `Interface` section alphabetically, however you may change this in the config.
+6. Make a PR describing where you got the Icon, what its use is and a description of its naming choice.
+
+## Playground
+
+<Canvas sourceState="shown" of={RegularIconStories.Default} />
+
+<Controls />
+
+## Icons
+
+### Interface
+
+General user interface icons with affordances
+
+<IconGallery>
+  {Object.entries(UI_ICONS).map(([iconName, Icon]) => (
+    <IconItem key={iconName} name={iconName}>
+      <Icon size={64} color='black'/>
+    </IconItem>
+  ))}
+</IconGallery>
+
+### Learning environment
+
+Icons that have specific meanings relative to our course content.
+
+<IconGallery>
+  {Object.entries(LE_ICONS).map(([iconName, Icon]) => (
+    <IconItem key={iconName} name={iconName}>
+      <Icon size={64} color='black'/>
+    </IconItem>
+  ))}
+</IconGallery>
+
+### Vendor
+
+Vendor specific icons.
+
+<IconGallery>
+  {Object.entries(VENDOR_ICONS).map(([iconName, Icon]) => (
+    <IconItem key={iconName} name={iconName}>
+      <Icon size={64} color='black'/>
+    </IconItem>
+  ))}
+</IconGallery>
+
+### Skills
+
+Icons for the languages and subjects that we teach.
+
+<IconGallery>
+  {Object.entries(SKILLS_ICONS).map(([iconName, Icon]) => (
+    <IconItem key={iconName} name={iconName}>
+      <Icon size={64} color='black'/>
+    </IconItem>
+  ))}
+</IconGallery>
