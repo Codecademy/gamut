@@ -35,10 +35,5 @@ export const webFonts = [
     filePath: `${FONT_ASSET_PATH}/SuisseIntlMono-Regular-WebS`,
     extensions: ['woff', 'woff2'],
     name: 'Suisse',
-  },
-  {
-    filePath: `https://static-assets-staging.codecademy.com/test-locales/VideoJS`,
-    extensions: ['woff'],
-    name: 'VideoJS',
-  },
+  }
 ];
