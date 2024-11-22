@@ -1,6 +1,17 @@
-import { Anchor, Box, Checkbox, FlexBox, Text } from '@codecademy/gamut';
+import {
+  Anchor,
+  Box,
+  Checkbox,
+  CheckboxProps,
+  Column,
+  FlexBox,
+  LayoutGrid,
+  Text,
+} from '@codecademy/gamut';
 import { MiniStarIcon } from '@codecademy/gamut-icons';
+import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
@@ -129,4 +140,65 @@ export const LabelsAsReactNodes: Story = {
       />
     </>
   ),
+};
+
+type CustomCheckboxProps = Omit<CheckboxProps, 'checked'> & {
+  defaultChecked?: boolean;
+};
+
+export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
+  htmlFor,
+  label,
+  defaultChecked = false,
+  disabled,
+  ...rest
+}) => {
+  const [currentChecked, setCurrentChecked] = useState(defaultChecked);
+
+  const changeHandler = () => {
+    setCurrentChecked(!currentChecked);
+  };
+
+  return (
+    <Checkbox
+      htmlFor={htmlFor}
+      onChange={changeHandler}
+      label={label}
+      disabled={disabled}
+      checked={currentChecked}
+      {...rest}
+    />
+  );
+};
+
+export const ControlledCheckbox: React.FC = () => {
+  return (
+    <Box border={1} p={16}>
+      <LayoutGrid>
+        <Column size={4}>
+          <CustomCheckbox
+            htmlFor="a-custom-checkbox"
+            label="a fancy custom checkbox made with the example below, isn't it so so nice?"
+            multiline
+          />
+        </Column>
+        <Column size={4}>
+          <CustomCheckbox
+            htmlFor="a-custom-checkbox-again"
+            label="disabled custom checkbox"
+            defaultChecked
+            disabled
+          />
+        </Column>
+        <Column size={4}>
+          <Background bg="black" pl={8}>
+            <CustomCheckbox
+              htmlFor="a-custom-checkbox-the-third"
+              label="a dark mode fancy checkbox"
+            />
+          </Background>
+        </Column>
+      </LayoutGrid>
+    </Box>
+  );
 };
