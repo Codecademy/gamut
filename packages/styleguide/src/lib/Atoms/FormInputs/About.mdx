@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, LinkTo, TableOfContents } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'FormInputs',
+  title: 'Form Inputs',
+  subtitle: 'Various input types that allow a user to make a selection or enter information.',
+};
+
+<Meta title="Atoms/FormInputs/About" />
+
+<AboutHeader {...parameters} />
+
+In most cases you should not need to use these directly and you should use the component <LinkTo id='Organisms/GridForm'>GridForm</LinkTo> or <LinkTo id='Organisms/ConnectedForm'>ConnectedForm</LinkTo>. These are meant to be used as API and design references for end states.
+
+<TableOfContents
+  links={[
+    {
+      id: 'FormInputs/Checkbox',
+      subtitle: 'A `<input type="checkbox" />` element for handling boolean values.',
+      title: 'Checkbox',
+    },
+  ]}
+/>
