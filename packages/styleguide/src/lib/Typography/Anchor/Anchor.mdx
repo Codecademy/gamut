@@ -1,0 +1,110 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import {
+  Callout,
+  ComponentHeader,
+  ImageWrapper,
+  LinkTo,
+} from '~styleguide/blocks';
+
+import * as AnchorStories from './Anchor.stories';
+
+export const parameters = {
+  subtitle: `A clickable text element that navigates to another page, resource, or location on the same page.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=993-0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Anchor',
+  },
+};
+
+<Meta of={AnchorStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use an anchor to navigate to another page, resource, or location on the same page.
+
+### Best practices:
+
+- Include a leading or trailing icon to clarify the link’s destination or to further distinguish from surrounding text.
+- Consider opening in a new tab when navigating away would interrupt a task or workflow the user is currently engaged in.
+
+### When NOT to use:
+
+- **Actions** - when performing an actions, use a <LinkTo component="Atoms/Buttons">Button</LinkTo> component instead.
+
+## Anatomy
+
+<ImageWrapper
+  src="./typography/anchor.png"
+  alt="The anatomy of the Anchor component, detailed below."
+/>
+
+**1. Leading Icon** _(optional)_
+
+- Use to clarify or reinforce the link’s destination
+
+**2. Anchor link label**
+
+- Specify where the link goes
+- Use casing from writing guidelines
+- Aim for 3-5 words
+
+**3. Trailing icon** _(optional)_
+
+- Use to reinforce forward movement or navigation to a new page
+- When navigation to an external page, use the <LinkTo component="Atoms/Icons/Mini">MiniOpenIcon</LinkTo>.
+
+## Variants
+
+### Inline (default)
+
+Use in paragraphs, styled with color and underline to improve link visibility within text-heavy content.
+
+### Interface
+
+Use in menus or in instances where the context of the link makes it clear that it is clickable.
+
+### Standard
+
+Use outside of a paragraph or ‘menu’ instance.
+
+<Callout text="When placed inline with other bold text (e.g., headings), standard links not meet a11y standards. Include an icon to ensure the link is distinguishable. When placed alongside non-bold text, bold formatting provides adequate visual distinction." />
+
+<Canvas of={AnchorStories.Modes} />
+
+## Icons
+
+Anchors can be rendered with leading and trailing icons to provide additional context or visual distinction.
+
+<Canvas of={AnchorStories.IconAnchorExample} />
+
+Icons are also responsive to ColorMode.
+
+<Canvas of={AnchorStories.IconModes} />
+
+## Polymorphic Anchors
+
+Our Anchors are polymorphic - they can be rendered as a button or a link component. This allows for better accessibility and flexibility as this happens automatically based on the props passed to the Anchor. Please use this sparingly and when appropriate (for example, a `button` that navigates to a new page).
+
+<Canvas of={AnchorStories.PolymorphicAnchor} />
+
+## Playground
+
+<Canvas sourceState="shown" />
+
+<Controls />
+
+## UX writing
+
+Writing words for a link or button? Above all else, make sure that the words alone make it clear where a button or link will take the user. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="writing-ux-writing-component-guidelines-buttons-and-links--page">writing for buttons and links</LinkTo>.
+
+- Make sure it’s clear where the link or button will take the user.
+- Use sentence case, capitalizing only proper nouns.

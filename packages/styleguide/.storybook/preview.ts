@@ -7,13 +7,28 @@ import { DocsContainer } from './components/Elements/DocsContainer';
 
 const preview: Preview = {
   parameters: {
+    backgrounds: {
+      disable: true,
+    },
     docs: {
       container: DocsContainer,
       theme: theme,
       toc: { headingSelector: 'h1, h2, h3' },
     },
-    backgrounds: {
-      disable: true,
+    options: {
+      storySort: {
+        method: 'configure',
+        includeNames: true,
+        order: [
+          'Meta',
+          ['About', 'Best Practices', 'Contributing', 'FAQs', 'Stories'],
+          'Foundations',
+          'Layouts',
+          'Typography',
+          'Atoms',
+          '*',
+        ],
+      },
     },
     viewport: {
       defaultViewport: 'responsive',
