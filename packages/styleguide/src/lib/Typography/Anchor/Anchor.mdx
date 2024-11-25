@@ -1,8 +1,7 @@
-import { FlexBox } from '@codecademy/gamut';
 import { MiniWarningTriangleIcon } from '@codecademy/gamut-icons';
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { ComponentHeader, ImageWrapper, LinkTo } from '~styleguide/blocks';
 
 import * as AnchorStories from './Anchor.stories';
 
@@ -39,12 +38,10 @@ Use an anchor to navigate to another page, resource, or location on the same pag
 
 ## Anatomy
 
-<FlexBox center px={24}>
-  <img
-    src="./typography/anchor.png"
-    alt="The anatomy of the Anchor component, detailed below."
-  />
-</FlexBox>
+<ImageWrapper
+  src="./typography/anchor.png"
+  alt="The anatomy of the Anchor component, detailed below."
+/>
 
 **1. Leading Icon** _(optional)_
 
@@ -56,7 +53,7 @@ Use an anchor to navigate to another page, resource, or location on the same pag
 - Use casing from writing guidelines
 - Aim for 3-5 words
 
-**Trailing icon** _(optional)_
+**3. Trailing icon** _(optional)_
 
 - Use to reinforce forward movement or navigation to a new page
 - When navigation to an external page, use the <LinkTo component="Atoms/Icons/Mini">MiniOpenIcon</LinkTo>.

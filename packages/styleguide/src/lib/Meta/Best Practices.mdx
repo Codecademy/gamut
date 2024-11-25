@@ -1,7 +1,6 @@
-import { Box, Text } from '@codecademy/gamut';
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader } from '~styleguide/blocks';
+import { AboutHeader, Callout } from '~styleguide/blocks';
 
 export const parameters = {
   id: 'Best Practices',
@@ -76,11 +75,7 @@ const UtilityBox = styled.div(
 <UtilityBox disabled center />;
 ```
 
-<Box bg="navy-400" border={1} color="white" mx={16} p={16}>
-  <Text smooth>
-    Share your css methods easily with `StyleProps` from `gamut-styles`!
-  </Text>
-</Box>
+<Callout text="Share your css methods easily with StyleProps from gamut-styles!" />
 
 ```tsx
 import { states } from '@codecademy/gamut-styles';
@@ -171,12 +166,10 @@ import { Box } from '@codecademy/gamut';
 <Box width={["100%", ,"50%"]} />
 ```
 
-<Box bg="navy-400" border={1} color="white" mx={16} p={16} mb={32}>
-  <Text smooth>
-    <Text as="strong">Tip:</Text> If you wish to skip a breakpoint in using the
-    array shorthand you may specify undefined at the index.
-  </Text>
-</Box>
+<Callout
+  text="If you wish to skip a breakpoint in using the
+    array shorthand you may specify undefined at the index."
+/>
 
 ## Real-world use cases
 
@@ -234,14 +227,13 @@ Nested selectors can cause a huge amount of side effects unwittingly and make it
 //❌ Don't do this❌
 const App = styled.main`
   * {
-		box-sizing: content-box;
+    box-sizing: content-box;
   }
 `;
 
 //❌ Don't do this❌
 const App = styled.main`
   display: flex;
-
   ${Box} {
     align-self: start;
   }
