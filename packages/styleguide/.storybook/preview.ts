@@ -26,6 +26,7 @@ const preview: Preview = {
           'Layouts',
           'Typography',
           'Atoms',
+          'Molecules',
           '*',
         ],
       },
