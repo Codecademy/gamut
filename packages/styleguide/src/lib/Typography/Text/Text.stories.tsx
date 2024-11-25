@@ -2,6 +2,7 @@ import { Column, LayoutGrid, Text } from '@codecademy/gamut';
 // eslint-disable-next-line gamut/import-paths
 import {
   typographyElementVariants,
+  typographyStyleVariants,
   typographyUtilities,
 } from '@codecademy/gamut/src/Typography/variants';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -21,9 +22,11 @@ export const Default: Story = {
   args: {},
 };
 
+const layoutGridStyles = { gap: 32, ml: 4 } as const;
+
 export const Elements: Story = {
   render: () => (
-    <LayoutGrid gap={32}>
+    <LayoutGrid {...layoutGridStyles}>
       {Object.keys(typographyElementVariants).map((tag) => (
         <Fragment key={tag}>
           <Column size={2} alignItems="center">
@@ -42,16 +45,18 @@ export const Elements: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <LayoutGrid gap={32} my={48}>
-      {Object.keys(typographyElementVariants).map((tag) => (
-        <Fragment key={tag}>
+    <LayoutGrid {...layoutGridStyles}>
+      {Object.keys(typographyStyleVariants).map((variant) => (
+        <Fragment key={variant}>
           <Column size={1} alignItems="center">
             <Text as="code" fontSize={14}>
-              {tag}
+              {typographyStyleVariants[variant].fontSize}
             </Text>
           </Column>
           <Column size={11}>
-            <Text as={tag as any}>Lorem Ipsum Dolor</Text>
+            <Text as="span" variant={variant}>
+              {variant}
+            </Text>
           </Column>
         </Fragment>
       ))}
@@ -61,7 +66,7 @@ export const Variants: Story = {
 
 export const Truncation: Story = {
   render: () => (
-    <LayoutGrid gap={32}>
+    <LayoutGrid {...layoutGridStyles}>
       {typographyUtilities.truncation.map((truncateType) =>
         typographyUtilities.truncateLines.map((lines) => (
           <Fragment key={lines}>
@@ -91,7 +96,7 @@ export const Truncation: Story = {
 
 export const FontSmoothing: Story = {
   render: () => (
-    <LayoutGrid gap={32} mt={24} mb={48}>
+    <LayoutGrid {...layoutGridStyles}>
       {typographyUtilities.smoothing.map((variant) => (
         <Fragment key={variant}>
           <Column size={3} alignItems="center">
@@ -112,7 +117,7 @@ export const FontSmoothing: Story = {
 
 export const Screenreader: Story = {
   render: () => (
-    <LayoutGrid gap={32} mt={24} mb={48}>
+    <LayoutGrid {...layoutGridStyles}>
       {typographyUtilities.screenreader.map((variant) => (
         <Fragment key={variant}>
           <Column size={3} alignItems="center">
@@ -135,7 +140,7 @@ export const Screenreader: Story = {
 
 export const Highlight: Story = {
   render: () => (
-    <LayoutGrid gap={32} mt={24} mb={48}>
+    <LayoutGrid {...layoutGridStyles}>
       <Column size={3} alignItems="center">
         <Text as="code" fontSize={14}>
           {`highlight="true"`}

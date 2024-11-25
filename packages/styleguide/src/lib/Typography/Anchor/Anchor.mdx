@@ -1,7 +1,11 @@
-import { MiniWarningTriangleIcon } from '@codecademy/gamut-icons';
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, ImageWrapper, LinkTo } from '~styleguide/blocks';
+import {
+  Callout,
+  ComponentHeader,
+  ImageWrapper,
+  LinkTo,
+} from '~styleguide/blocks';
 
 import * as AnchorStories from './Anchor.stories';
 
@@ -70,7 +74,9 @@ Use in menus or in instances where the context of the link makes it clear that i
 
 ### Standard
 
-Use outside of a paragraph or ‘menu’ instance. <MiniWarningTriangleIcon color="blue" size={14}/> Note: When placed inline with other bold text (e.g., headings), standard links not meet a11y standards. Include an icon to ensure the link is distinguishable. When placed alongside non-bold text, bold formatting provides adequate visual distinction.
+Use outside of a paragraph or ‘menu’ instance.
+
+<Callout text="When placed inline with other bold text (e.g., headings), standard links not meet a11y standards. Include an icon to ensure the link is distinguishable. When placed alongside non-bold text, bold formatting provides adequate visual distinction." />
 
 <Canvas of={AnchorStories.Modes} />
 

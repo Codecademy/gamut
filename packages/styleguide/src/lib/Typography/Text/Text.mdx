@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as TextStories from './Text.stories';
 
@@ -38,14 +38,16 @@ This is the preferred component for customizing typography. The API is progressi
 
 ### When NOT to use:
 
-- _List items_ - for items in a list, use the List + ListRow component.
-- _Anchors + Links_- for links, use the [Anchor component].
+- **List items** - for items in a list, use the List + ListRow component.
+- **Anchors + Links** - for links, use the <LinkTo component="Typography/Anchor"/>.
 
 ## HTML Element variants
 
 When you use a specific element `Text` will style it with overridable defaults as our best guess behavior. These styles take lowest priority as they are merely meant to act as a useful default, both `variant` and any system prop will override the styles specified here.
 
 ### Usage
+
+Below you can see how the Text component can display text in different sizes and as different HTML elements:
 
 ```tsx
 import { Text } from '@codecademy/gamut';
@@ -60,6 +62,8 @@ import { Text } from '@codecademy/gamut';
 <Text as="h2" fontSize={14} fontFamily="accent" />
 ```
 
+Here is how text would look like if only using the as prop and their specified values:
+
 <Canvas of={TextStories.Elements} />
 
 ## Style variants
@@ -71,7 +75,7 @@ These are our base semantic font scales. These apply directly to the typography 
 ```tsx
 import { Text } from '@codecademy/gamut';
 
-<Text as="h4" variant="title-xxl" />;
+<Text as="h4" fontSize={16} />;
 ```
 
 <Canvas of={TextStories.Variants} />

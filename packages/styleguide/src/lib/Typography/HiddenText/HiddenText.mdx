@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as HiddenTextStories from './HiddenText.stories';
 
@@ -21,9 +21,15 @@ export const parameters = {
 Previously, this was useful for cases where we visually indicate something not easily conveyed through semantic HTML.
 Ideally those cases should be exceedingly rare; unfortunately, some of our older pages aren't set up well for this.
 
-For newer pages, use <LinkTo component="Typography/HiddenText">Text component</LinkTo> and set `screenreader="true"`.
-
-See https://wdn.unl.edu/page-title-h1-best-practices for more information.
+<Callout
+  text={
+    <>
+      For newer pages, use the{' '}
+      <LinkTo component="Typography/HiddenText">Text component</LinkTo> and set{' '}
+      <code>screenreader="true"</code>.
+    </>
+  }
+/>
 
 <Canvas withSource="open" />
 
