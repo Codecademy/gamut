@@ -1,0 +1,159 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as ListStories from './List.stories';
+
+export const parameters = {
+  subtitle: `The elements, APIs, and technical operations that support List and Table designs.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=32521-43421&m=dev',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/List/List.tsx',
+  },
+};
+
+<Meta of={ListStories} />
+
+<ComponentHeader {...parameters} />
+
+## Design principles
+
+Recommended for engaging with individual Items
+
+- Manage and open Items inside your List
+- Expand the format of items to surface advanced layouts
+- Include rich information and controls inside of each List Item
+
+Customize Items with rich information
+
+- Icons, graphics, complex layouts, other Atoms
+
+Optional List-level interactions include
+
+- Basic filtering and sorting across common attributes across Items
+
+Be careful about placement and positioning
+
+- Make sure Item controls are visible on the right
+- Place Lists inside main containers to avoid overflow
+- Use a Table if you have a design that’s meant to compare information between items
+
+## Usage
+
+Lists are one of the main design tools for displaying information in a structured / repeated way which are visually distinct from cards and functionally distinct from tables.
+
+- Lists can function like tables, but aren't exclusively for displaying table data.
+- Lists are distinct from Tables in that they have mixed column content (interactive elements / metrics) whereas tables have only metrics. If you plan on having row controls or options in your table, use a List.
+- When presenting repetitive content prefer using a List view over a Card view.
+
+### Sample code
+
+```tsx
+import { List, ListRow, ListCol } from '@codecademy/gamut';
+
+<List variant="default" spacing="condensed">
+  <ListRow>
+    <ListCol size="md">Worf</ListCol>
+    <ListCol size="md">Lieutenant Commander</ListCol>
+  </ListRow>
+  <ListRow>
+    <ListCol size="md">Deanna Troi</ListCol>
+    <ListCol size="lg">Commander</ListCol>
+  </ListRow>
+</List>;
+```
+
+## Spacing
+
+Lists come with 3 spacing variants `normal`, `condensed`, and `compact`. For example:
+
+```tsx
+<List spacing="condensed" />
+```
+
+### Normal
+For mixed content use the normal size to ensure that there is enough space for components.
+<Canvas of={ListStories.NormalSpacing} />
+
+### Condensed
+To decrease the amount of spacing between rows, use the condensed spacing.
+
+<Canvas of={ListStories.CondensedSpacing} />
+
+### Compact
+To provide the least amount of spacing between rows, use the compact spacing.
+
+<Canvas of={ListStories.CompactSpacing} />
+
+
+## Variants
+
+Lists have several style variants for different use cases:
+
+- `table`: Alternating backgrounds for visually separated rows of text.
+- `default`: Bordered rows for mixed content with no vertical gutter.
+- `card`: Bordered rows with a vertical gutter.
+- `block`: Unbordered rows for mixed content with a vertical gutter..
+
+```tsx
+<List variant="default" />
+```
+
+
+
+### Default
+For displaying things with more abstract row contents (like buttons or custom rendered components) use the `default` variant. This structure denotes borders between rows and separates interactive elements with more clarity than tables.
+
+<Canvas of={ListStories.Default} />
+
+### Card
+
+For content that doesn't need to be compared or visually adjacent to other items in a list (like current curriculum progress) use the `card` variant.
+
+<Canvas of={ListStories.Card} />
+
+### Block
+
+For making feature-forward designs (like our Dashboard), or to use as page sections + scaffolding (like our syllabus pages). The `block` variant should always be used on a colored background.
+
+### Table
+
+For a table like view for content that has more metrics or actionable data use the `table` variant.
+
+<Canvas of={ListStories.Table} />
+
+#### Ordered List
+Our `List`s by default are the `ul` HTML element or unordered list. All of the above configurations works with ordered lists as well. Passing `ol` to the `as` prop will render an ordered list and add numbering to the rows.
+
+Ordered lists should always have a one column with a `header` type row to ensure that the numbering is rendered correctly.
+
+<Canvas of={ListStories.OrderedList} />
+
+## Playground
+
+If you are using a story named 'Default', you can forgo the `of` prop.
+
+<Canvas sourceState="shown" of={ListStories.Default} />
+
+<Controls />
+
+## Accessibility considerations
+
+- [Accessibility guidance]
+- [Accessibility guidance]
+- [Accessibility guidance]
+
+## UX writing
+
+- [content]
+  - [guidance]
+  - [guidance]
+- [content]
+  - [guidance]
+  - [guidance]
