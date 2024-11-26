@@ -24,7 +24,9 @@ export const Link: React.FC<LinkProps> = ({ ref, id, variant, ...props }) => {
   if (variant === 'area') {
     return <Anchor {...props} onClick={onClick} variant="interface" />;
   }
-  return <Anchor {...props} onClick={onClick} variant={variant} />;
+  return (
+    <Anchor {...props} onClick={onClick} target="_blank" variant={variant} />
+  );
 };
 
 export const LinkTo = Link;

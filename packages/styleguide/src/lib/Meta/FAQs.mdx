@@ -1,0 +1,58 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'FAQs',
+  title: 'FAQs',
+  subtitle:
+    "Please let us know if there are questions you'd like answered here!",
+  status: 'static',
+};
+
+<Meta title="Meta/FAQs" />
+
+<AboutHeader {...parameters} />
+
+## How can I contribute?
+
+Thanks for your interest! 🙌
+
+We are prepared to accept contributions from Codecademy employees only at this time, but we are working on a process to accept contributions from the wider community. Watch this space!
+
+## To Gamut or not to Gamut?
+
+> When should we create a general component in Gamut instead of a specific one in another application?
+
+In general, we prefer Gamut components to be those that are commonly shared across multiple experiences in the monolith.
+If something can be easily built from the existing primitives _without_ adding logic, we generally wouldn't make a special component for it.
+
+Some examples of things we'd generally include in Gamut are:
+
+- Common visually identifiable atoms, such as buttons or form inputs
+- Atoms linked together with client logic, such as an Alert bar
+
+Some examples of things we generally wouldn't include are:
+
+- Customized atoms specially designed for a particular use case, such as promotional "cards"
+- Groups of components that could be recreated easily, such as a particular button and grid combination
+
+Consider referencing other design systems such as [Fluent](https://www.microsoft.com/design/fluent) and [Material Design](https://material.io/design) to see what they choose to turn into generic components.
+
+### Implementation strategy?
+
+> Should we implement components in separate repositories or in Gamut?
+
+As general rules of thumb:
+
+1. If a component is being written for the first time or used for a second time:
+
+   - If the designer thinks it might belong in Gamut, feel free to implement it in the separate repository
+     - Consider making its API simple and flexible _(e.g. passing props to it instead of hooking it up to Redux)_
+   - If the designer doesn't intend for it to be in the design system, never mind Gamut
+
+2. If a component is being used for a third time or more, please discuss moving it to Gamut
+
+## What's going on with accessibility?
+
+Codecademy is committed to becoming [WCAG 2.1 accessible](https://www.w3.org/WAI/standards-guidelines/wcag), and technical accessibility is a must-have in our design system.Components added here are expected to be fully AA compliant.

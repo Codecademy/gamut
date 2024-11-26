@@ -1,0 +1,73 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as InfoTipStories from './InfoTip.stories';
+
+export const parameters = {
+  subtitle: `A tip triggered by clicking on an information icon button. Use an infotip to provide additional info about a nearby element or content.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/branch/ayKNSg6QvZUjsgw0FFysW4/%F0%9F%93%90-Gamut?type=design&node-id=41538-55277&mode=design&t=fGkWf5GSl5cj5fQo-0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Tip/InfoTip/index.tsx',
+  },
+};
+
+<Meta of={InfoTipStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+A tip is triggered by clicking on an information icon button and can be closed by clicking outside, pressing <kbd>Esc</kbd>, or clicking the info button again.
+
+Use an infotip to provide additional info about a nearby element or content.
+
+Infotip consists of an icon button and the .tip-bg subcomponent. The info button has low and high emphasis variants and the `.tip` has 4 alignment variants.
+
+## Variants
+
+### Emphasis
+
+The InfoTip has high and low emphasis variants.
+
+
+<Canvas of={InfoTipStories.Emphasis} />
+
+### Alignments
+
+InfoTips have four different alignment options: `top-right`, `top-left`, `bottom-right`, and `bottom-left`. They have a consistent size and are meant for longer content. If you need a smaller, more concise component checkout (the upcoming) ToolTip or Link Preview components to see if they fit your use case.
+
+<Canvas of={InfoTipStories.Alignments} />
+
+### Placement
+
+InfoTips sometimes need to be in used in a way that they need to escape the confines of their parent container. The `floating` variant of the `placement` prop allows InfoTips do just this. (Notice how this section doesn't need as much padding because the InfoTips are able to escape their context!)
+
+This `floating` variant should only be used as needed.
+
+<Canvas of={InfoTipStories.Placement} />
+
+## InfoTips with links or buttons
+
+Links or buttons within InfoTips should be used sparingly and only when the information is critical to the user's understanding of the content. If an infotip _absolutely requires_ a link or button, it needs to provide a programmatic focus by way of the `onClick` prop. The `onClick` prop accepts a function that calls the object `{isTipHidden}` and should focus when the tip is visible.
+
+<Canvas of={InfoTipStories.WithLinksOrButtons} />
+
+## InfoTips and zIndex
+
+You can change the zIndex of your `InfoTip` with the zIndex property.
+
+<Canvas of={InfoTipStories.ZIndex} />
+
+## Playground
+
+<Canvas sourceState="shown" of={InfoTipStories.Default} />
+
+<Controls />
+

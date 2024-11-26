@@ -144,9 +144,3 @@ export const TipTable = () => {
     </List>
   );
 };
-
-export const DeprecatedWarning = () => (
-  <Alert type="error">
-    This component is deprecated and should not be used in new designs.
-  </Alert>
-);

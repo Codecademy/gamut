@@ -5,7 +5,6 @@ import {
   InfoTip,
   Text,
 } from '@codecademy/gamut';
-import { Background } from '@codecademy/gamut-styles';
 import { Figma } from '@storybook/addon-designs/blocks';
 import { Title } from '@storybook/blocks';
 import * as React from 'react';
