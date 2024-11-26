@@ -1,0 +1,97 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as TemplateStories from './template.stories';
+
+export const parameters = {
+  subtitle:
+    'Badges are generally used as a standard way to highlight a short piece of text, likely a single word.',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?type=design&node-id=29959-39721&mode=design&t=27y0ZBTRsAgBmZ9z-0',
+  },
+  status: 'updating',
+  source: {
+    repo: 'gamut',
+    // this is easy to find by right clicking on the file in VSCode and clicking "Copy Remote File Url From..." and the selecting 'main' or amending the url path below like so: https://github.com/Codecademy/gamut/blob/main/packages/${package}/src/file/location
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Badge',
+  },
+};
+
+<Meta of={TemplateStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use `Badge`s to display read-only information like statuses, attributes, and other empathsized information.
+
+### Best practices:
+
+- Use badges sparingly, as too many can dilute their effectiveness.
+
+### When NOT to use:
+
+- **Interactivity**- when text is meant to be clickable, use the <LinkTo component="Atoms/Button">Button</LinkTo> or <LinkTo component="Typography/Anchor">Anchor</LinkTo> (link) components instead.
+- **Categorization**- for ///
+
+## Anatomy
+
+[Insert image exported from Figma]
+
+Src formatted like so + testing different file extensions:
+
+<img src="./alertAnatomy.jpg" alt="jpeg" />
+
+<img src="./test3.png" alt="png" />
+
+1. [Element name]
+
+- [description including available options and ux writing if relevant]
+
+2. [Element name] (optional)
+
+- [description of optional element, including when to use]
+
+3. [Element name]
+
+- [description]
+
+## Variants
+
+### [Variant 1 name]
+
+Use the [variant 1 name] to [what it should be used for]
+
+<Canvas of={TemplateStories.Default} />
+
+### [Variant 2 name]
+
+Use the [variant 2 name] to [what it should be used for]
+
+<Canvas of={TemplateStories.Variant2} />
+
+## Playground
+
+If you are using a story named 'Default', you can forgo the `of` prop.
+
+<Canvas sourceState="shown" of={TemplateStories.Default} />
+
+<Controls />
+
+## Accessibility considerations
+
+- [Accessibility guidance]
+- [Accessibility guidance]
+- [Accessibility guidance]
+
+## UX writing
+
+- [content]
+  - [guidance]
+  - [guidance]
+- [content]
+  - [guidance]
+  - [guidance]./Badge.stories
