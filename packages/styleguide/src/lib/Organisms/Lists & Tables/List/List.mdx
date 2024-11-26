@@ -122,6 +122,8 @@ For content that doesn't need to be compared or visually adjacent to other items
 
 For making feature-forward designs (like our Dashboard), or to use as page sections + scaffolding (like our syllabus pages). The `block` variant should always be used on a colored background.
 
+<Canvas of={ListStories.Block} />
+
 ### Table
 
 For a table like view for content that has more metrics or actionable data use the `table` variant.
@@ -135,25 +137,160 @@ Ordered lists should always have a one column with a `header` type row to ensure
 
 <Canvas of={ListStories.OrderedList} />
 
+## Columns
+### Sizing
+
+Column size can either be a fixed value (outline of the prop aliases `xs`, `sm`, etc.) or by the columns content width.
+It is recommended that you use the aliases for any content that may have variable length to ensure that column sizing is consistent between each row. For column children that are static between each row - like buttons or truncated text you can specify `content` to remove white space and still render consistently between rows.
+
+```tsx
+// For example:
+<ListCol size="md" />
+```
+
+Below is a List displaying the different sizes columns can be.
+<Canvas of={ListStories.ColumnSizing} />
+
+### Filling empty space
+
+You can specify a column to expand or collapse beyond its normal flex basis. These modifiers can be used in conjunction with any size specification:
+
+- `fill`: This fills any available space and pushes all other columns to the end of the row when specified.
+
+<Canvas of={ListStories.FillingEmptySpace} />
+
+### Justification
+
+You can align the content to the right of each column using the `justify` prop on `ListCol`.
+
+- Alternating between left and right justifications is not recommended, once you've switched to a right alignment any additional columns should also align to the right.
+- You may want to also specify `fill` on one of the border columns to give space to the transition or use a larger column size.
+
+<Canvas of={ListStories.Justification} />
+
+## Layouts
+
+### Horizontal scrolling
+
+If you have a list with many columns and would like to avoid collapsing any columns information you can use the `scrollable` prop which will lock the row header to the left hand side and expand all columns to the their minimum flex-basis. All rows and columns scroll along the X axis in tandem to ensure that you may compare data or take multiple actions between each row.
+
+
+<Canvas of={ListStories.HorizontalScrolling} />
+
+### Responsive
+
+List rows will switch to a mobile layout at screen widths less than smallest breakpoint (480px). This layout is built for smaller screens and is restructured to a card like structure. There is no extra configuration needed for this to take effect pending you've configured a few named column types:
+
+- `header`: The column of the row with any critical identifying information goes at the top of the view. This is especially important for ordered lists as this is where the numbering will render.
+- `control`: A column for buttons or other interactive elements. Typically these may be icon buttons with expandable menus with more options for controlling anything represented in the row.
+- `content`: All other columns in the row are treated as content and will render in order they were specified.
+
+Optionally, you can pass a `breakpoint` prop to the List to alter this behavior.
+
+Adjust the size of your window to see how the List changes at different breakpoints.
+<Canvas of={ListStories.ResponsiveAnatomy} />
+<Canvas of={ListStories.Responsive} />
+
+### Example configuration
+
+```tsx
+<List>
+  <ListRow>
+    <ListCol type="header">Header</ListCol>
+    <ListCol>Content</ListCol>
+    <ListCol type="control">
+      <IconButton />
+    </ListCol>
+  </ListRow>
+</List>
+```
+### Collapsible row content
+
+You can define collapsible content by passing an `expanded` prop and the `React.Node` to the `renderExpanded` prop of your `ListRow` components.
+
+#### Expand on button click
+
+```tsx
+export const ExpandableRow: React.FC<{
+  header: string;
+  content: string;
+  key: string;
+}> = ({ header, content, key }) => {
+  const [isExpanded, setExpanded] = useState(false);
+
+  return (
+    <ListRow
+      key={key}
+      expanded={isExpanded}
+      renderExpanded={() => <Text>Surprise</Text>}
+    >
+      <ListCol type="header">{header}</ListCol>
+      <ListCol type="content">{content}</ListCol>
+      <ListCol type="control">
+        <IconButton onClick={() => setExpanded(!isExpanded)}>
+          <Rotation rotated={isExpanded}>
+            <MiniChevronDownIcon />
+          </Rotation>
+        </IconButton>
+      </ListCol>
+    </ListRow>
+  );
+};
+```
+
+#### Expand on row click
+
+```tsx
+export const ExpandableRow: React.FC<{
+  header: string;
+  content: string;
+  key: string;
+}> = ({ header, content, key }) => {
+  const [isExpanded, setExpanded] = useState(false);
+
+  return (
+    <ListRow
+      key={key}
+      expanded={isExpanded}
+      onClick={() => setExpanded(!isExpanded)}
+      renderExpanded={() => <Text>Surprise</Text>}
+    >
+      <ListCol type="header">{header}</ListCol>
+      <ListCol type="content">{content}</ListCol>
+      <ListCol type="control">
+        <Rotation rotated={isExpanded}>
+          <ArrowChevronDownIcon color="text-disabled" />
+        </Rotation>
+      </ListCol>
+    </ListRow>
+  );
+};
+```
+
+## Examples
+
+Here's some examples of Lists to use as guides.
+
+### Normal spacing
+<Canvas of={ListStories.NormalSpacingGuide} />
+
+### Condensed spacing
+<Canvas of={ListStories.CondensedSpacingGuide} />
+
+### Condensed table variant
+You can combine variants and spacing to your needs.
+<Canvas of={ListStories.CondensedTableGuide} />
+
+### Expandable buttom
+Buttons can be configured to expand the row content.
+<Canvas of={ListStories.ExpandableButtonGuide} />
+
+### Expanded row
+An entire row can be made interactive to expand the row content.
+<Canvas of={ListStories.ExpandedRowGuide} />
+
+
 ## Playground
-
-If you are using a story named 'Default', you can forgo the `of` prop.
-
 <Canvas sourceState="shown" of={ListStories.Default} />
 
 <Controls />
-
-## Accessibility considerations
-
-- [Accessibility guidance]
-- [Accessibility guidance]
-- [Accessibility guidance]
-
-## UX writing
-
-- [content]
-  - [guidance]
-  - [guidance]
-- [content]
-  - [guidance]
-  - [guidance]
