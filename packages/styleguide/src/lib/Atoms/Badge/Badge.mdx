@@ -1,8 +1,13 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import {
+  Callout,
+  ComponentHeader,
+  ImageWrapper,
+  LinkTo,
+} from '~styleguide/blocks';
 
-import * as TemplateStories from './template.stories';
+import * as BadgeStories from './Badge.stories';
 
 export const parameters = {
   subtitle:
@@ -11,7 +16,7 @@ export const parameters = {
     type: 'figma',
     url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?type=design&node-id=29959-39721&mode=design&t=27y0ZBTRsAgBmZ9z-0',
   },
-  status: 'updating',
+  status: 'current',
   source: {
     repo: 'gamut',
     // this is easy to find by right clicking on the file in VSCode and clicking "Copy Remote File Url From..." and the selecting 'main' or amending the url path below like so: https://github.com/Codecademy/gamut/blob/main/packages/${package}/src/file/location
@@ -20,7 +25,7 @@ export const parameters = {
   },
 };
 
-<Meta of={TemplateStories} />
+<Meta of={BadgeStories} />
 
 <ComponentHeader {...parameters} />
 
@@ -35,63 +40,60 @@ Use `Badge`s to display read-only information like statuses, attributes, and oth
 ### When NOT to use:
 
 - **Interactivity**- when text is meant to be clickable, use the <LinkTo component="Atoms/Button">Button</LinkTo> or <LinkTo component="Typography/Anchor">Anchor</LinkTo> (link) components instead.
-- **Categorization**- for ///
+- **Categorization**- for labeling or catgorizing content, use the <LinkTo component="Atoms/Tag">Tag</LinkTo> component instead.
 
 ## Anatomy
 
-[Insert image exported from Figma]
+<ImageWrapper
+  src="./atoms/badge.png"
+  alt="The anatomy of the Badge component, detailed below."
+/>
 
-Src formatted like so + testing different file extensions:
+1. **Leading icon** _(optional)_
 
-<img src="./alertAnatomy.jpg" alt="jpeg" />
+- Use to reinforce the badge's message and improve scannability
 
-<img src="./test3.png" alt="png" />
+2. **Badge label**
 
-1. [Element name]
-
-- [description including available options and ux writing if relevant]
-
-2. [Element name] (optional)
-
-- [description of optional element, including when to use]
-
-3. [Element name]
-
-- [description]
+- Limit 1-2 words
+- Display read-only information like statuses, attributes, and other emphasized information
 
 ## Variants
 
-### [Variant 1 name]
+### Primary
 
-Use the [variant 1 name] to [what it should be used for]
+Use the primary variant to highlight important information or statuses that need to be noticed.
 
-<Canvas of={TemplateStories.Default} />
+<Canvas of={BadgeStories.Default} />
 
-### [Variant 2 name]
+### Secondary
 
-Use the [variant 2 name] to [what it should be used for]
+Use the secondary variant to display supporting information or less critical statuses.
 
-<Canvas of={TemplateStories.Variant2} />
+<Canvas of={BadgeStories.Secondary} />
+
+### Tertiary
+
+Use the tertiary variant to indicate background or supplementary information with minimal emphasis.
+
+<Canvas of={BadgeStories.Tertiary} />
+
+### Tertiary-fill
+
+Use the tertiary-fill variant when a tertiary badge needs to sit above other content. This variant includes a bg-color that can overlap color modes and unpredictable content.
+
+<Canvas of={BadgeStories.TertiaryFill} />
+
+### Accent
+
+Use the accent variant to draw attention to important details or statuses with a noticeable but less dominant emphasis than the primary badge.
+
+<Callout text="The accent variant does not respond to Color Mode." />
+
+<Canvas of={BadgeStories.Accent} />
 
 ## Playground
 
-If you are using a story named 'Default', you can forgo the `of` prop.
-
-<Canvas sourceState="shown" of={TemplateStories.Default} />
+<Canvas sourceState="shown" of={BadgeStories.Default} />
 
 <Controls />
-
-## Accessibility considerations
-
-- [Accessibility guidance]
-- [Accessibility guidance]
-- [Accessibility guidance]
-
-## UX writing
-
-- [content]
-  - [guidance]
-  - [guidance]
-- [content]
-  - [guidance]
-  - [guidance]./Badge.stories

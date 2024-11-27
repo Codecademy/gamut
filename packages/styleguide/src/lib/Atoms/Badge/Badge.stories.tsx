@@ -1,20 +1,40 @@
-import { Box } from '@codecademy/gamut';
+import { Badge } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Box> = {
-  component: Box,
-  args: {},
+import { TertiaryFillExample } from './examples';
+
+const meta: Meta<typeof Badge> = {
+  component: Badge,
+  args: { children: 'Badge' },
 };
 
 export default meta;
-type Story = StoryObj<typeof Box>;
+type Story = StoryObj<typeof Badge>;
 
 export const Default: Story = {
   args: {},
 };
 
-export const Variant2: Story = {
+export const Secondary: Story = {
   args: {
-    children: 'pro',
+    variant: 'secondary',
+  },
+};
+
+export const Tertiary: Story = {
+  args: {
+    variant: 'tertiary',
+  },
+};
+
+export const TertiaryFill: Story = {
+  render: () => {
+    return <TertiaryFillExample />;
+  },
+};
+
+export const Accent: Story = {
+  args: {
+    variant: 'accent',
   },
 };
