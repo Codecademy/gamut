@@ -78,7 +78,7 @@ export const PopoverPortal: React.FC<
     <BodyPortal {...rest} />
   );
 
-type PopoverContainerProps = Pick<PopoverProps, 'position' | 'align'>;
+export type PopoverContainerProps = Pick<PopoverProps, 'position' | 'align'>;
 
 export const PopoverContainer = styled.div<PopoverContainerProps>`
   position: fixed;
