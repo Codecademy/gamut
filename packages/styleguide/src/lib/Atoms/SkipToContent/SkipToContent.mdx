@@ -6,7 +6,12 @@ import * as SkipToContentStories from './SkipToContent.stories';
 
 export const parameters = {
   subtitle: `An invisible component to make pages more keyboard accessible.`,
-  status: 'current'
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/SkipToContent',
+  },
 };
 
 <Meta of={SkipToContentStories} />
@@ -23,18 +28,20 @@ to the page's main content (like navigations).
 
 For this element to work properly, there must be a `<SkipToContentTarget />` component with the id passed into this component for the `contentId` prop. The `<SkipToContentTarget />` component by default has a `tabIndex` of -1.
 Example:
+
 ```jsx
-    <div>
-      <div>
-        <SkipToContent contentId="main-content" />
-        <a href="/">Link 1</a>
-        <a href="/">Link 2</a>
-        <a href="/">Link 3</a>
-      </div>
-      <SkipToContentTarget id="main-content" />
-      <FillButton>I should have focus after skip to content</FillButton>
-    </div>
+<div>
+  <div>
+    <SkipToContent contentId="main-content" />
+    <a href="/">Link 1</a>
+    <a href="/">Link 2</a>
+    <a href="/">Link 3</a>
+  </div>
+  <SkipToContentTarget id="main-content" />
+  <FillButton>I should have focus after skip to content</FillButton>
+</div>
 ```
+
 To see it, keep tabbing around on this page or visit [the catalog](https://www.codecademy.com/catalog/language/javascript) and navigate via tab to see it in action.
 
 ## Playground
