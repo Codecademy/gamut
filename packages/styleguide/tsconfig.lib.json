@@ -29,5 +29,5 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "../../packages/gamut-styles/dist/typings/theme.d.ts"
-  ]
+, "src/lib/Organisms/Markdown/example.md"  ]
 }
