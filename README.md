@@ -62,8 +62,8 @@ We provide a single package to manage the versions of a few core dependencies: `
 
 ### Running the storybook styleguide
 
-1.  Run `yarn start` to start the storybook server
-1.  Add new stories to `packages/styleguide/stories`
+1.  Run `yarn nx storybook styleguide` to start the storybook server
+1.  Add new stories to `packages/styleguide/src/lib/`
 1.  Stories are written using storybook's [Component Story Format](https://storybook.js.org/docs/formats/component-story-format/)
 
 ### Publishing Modules
