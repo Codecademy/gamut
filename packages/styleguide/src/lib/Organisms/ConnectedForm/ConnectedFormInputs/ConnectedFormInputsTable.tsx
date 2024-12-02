@@ -1,10 +1,7 @@
 import { Box, List , ListCol, ListRow, Text } from "@codecademy/gamut"
-import LinkTo from '@storybook/addon-links/react';
 import * as React from 'react';
 
-// reported open Storybook issue, see https://github.com/storybookjs/storybook/issues/14539
-// without casting, TS will show an error for the `id` prop
-const StorybookLink = LinkTo as any;
+import { LinkTo } from "~styleguide/blocks";
 
 interface ListRowRendererProps {
   inputs: { name: string; counterpart: string }[];
@@ -22,12 +19,12 @@ const ListRowRenderer: React.FC<ListRowRendererProps> = ({ inputs }) => {
               </Text>
             </ListCol>
             <ListCol size="lg" fill>
-              <StorybookLink
-                id={`Atoms/FormInputs/${counterpart}`}
-                kind={`Atoms/FormInputs/${counterpart}`}
+              <LinkTo
+               id={`Atoms/FormInputs/${counterpart}`}
+               kind={`Atoms/FormInputs/${counterpart}`}
               >
                 {counterpart}
-              </StorybookLink>
+              </LinkTo>
             </ListCol>
           </ListRow>
         );

@@ -28,6 +28,7 @@ import React, { useState } from 'react';
 
 const meta: Meta<typeof List> = {
   component: List,
+  subcomponents: { ListRow: ListRow as React.ComponentType<unknown>},
   args: {},
 };
 
