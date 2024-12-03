@@ -1,0 +1,32 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as IconButtonStories from './IconButton.stories';
+
+export const parameters = {
+  subtitle: `A button that displays a clickable icon.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Button/IconButton.tsx',
+  },
+};
+
+<Meta of={IconButtonStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+Use icons from our regular set for normal size buttons and use icons from our mini set for small size icon buttons. Icon buttons must include an aria-label which will also be surfaced in the button’s tooltip on hover and focus.
+
+
+## Playground
+<Canvas sourceState="shown" of={IconButtonStories.Default} />
+
+<Controls />

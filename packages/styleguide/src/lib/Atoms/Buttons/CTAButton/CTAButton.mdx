@@ -1,0 +1,33 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as CTAButtonStories from './CTAButton.stories';
+
+export const parameters = {
+  subtitle: `A "Call to Action" button that is used to prompt users to take a specific action.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Button/CTAButton.tsx',
+  },
+};
+
+<Meta of={CTAButtonStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use to prompt users to do something specific, like "Sign up" or "Get started".
+
+## Playground
+<Canvas sourceState="shown" of={CTAButtonStories.Default} />
+
+<Controls />
+
