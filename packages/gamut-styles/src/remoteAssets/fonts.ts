@@ -35,5 +35,5 @@ export const webFonts = [
     filePath: `${FONT_ASSET_PATH}/SuisseIntlMono-Regular-WebS`,
     extensions: ['woff', 'woff2'],
     name: 'Suisse',
-  },
+  }
 ];
