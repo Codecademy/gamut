@@ -10,7 +10,7 @@
     "@codecademy/gamut-styles": "17.1.2",
     "@codecademy/variance": "0.21.4",
     "@reach/auto-id": "^0.16.0",
-    "@reach/tabs": "^0.16.4",
+    "@reach/tabs": "^0.18.0",
     "@types/marked": "^4.0.8",
     "classnames": "^2.2.5",
     "framer-motion": "^6.5.1",
