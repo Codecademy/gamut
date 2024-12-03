@@ -14,6 +14,7 @@
     "@emotion/jest": "^11.11.0",
     "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
+    "@figma/code-connect": "^1.0.1",
     "@nx/jest": "16.8.1",
     "@nx/react": "16.8.1",
     "@svgr/cli": "5.5.0",
@@ -75,7 +76,7 @@
     "webpack": "4.46.0"
   },
   "engines": {
-    "node": "^16.17",
+    "node": "^18.0",
     "yarn": "^1.21.1"
   },
   "license": "MIT",
@@ -102,6 +103,8 @@
     "clean-builds": "nx run-many --target=clean --all",
     "clear-modules": "yarn clean-builds && lerna clean -y && rm -rf node_modules",
     "deploy": "cp -r ./dist/static/* ./dist/docs && gh-pages -b gh-pages -d dist",
+    "figma:publish": "npx figma connect publish",
+    "figma:create": "npx figma connect create",
     "format": "yarn lint:fix && yarn prettier --write",
     "format:verify": "yarn prettier --check",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\" --max-warnings 0",
