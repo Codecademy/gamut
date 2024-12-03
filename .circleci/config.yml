@@ -169,7 +169,7 @@ jobs:
       - *build_all_packages
       - run:
           name: build storybook
-          command: yarn build-storybook
+          command: yarn nx run styleguide:build-storybook
       - run:
           name: deploy
           command: yarn deploy
