@@ -5,11 +5,17 @@ import { ComponentHeader } from '~styleguide/blocks';
 import * as TagStories from './Tag.stories';
 
 export const parameters = {
-  subtitle: 'Compact, dynamic elements that support user inputs, selections, and actions.',
+  subtitle:
+    'Compact, dynamic elements that support user inputs, selections, and actions.',
   status: 'updating',
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=46539-40954',
+  },
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Tag',
   },
 };
 
@@ -22,10 +28,12 @@ export const parameters = {
 Use a tag to categorize content, represent user inputs, or guide users to related actions. Tags can either be dismissable individually, or read-only when paired with other controls.
 
 ### Best practices:
+
 - Choose the tag variant that aligns most with your use case.
 - When displaying multiple tags, arrange them inline in a row. Allow overflow chips to wrap to the next line.
 
 ### When NOT to use:
+
 - Primary actions - for performing critical or primary actions, use the Button component instead.
 - Prominent navigation - for standalone, high-priority navigation (e.g., links to key pages or sections), use an Anchor link instead.
 - Emphasizing statuses or attributes - for highlighting statuses or attributes, use the Badge component instead.
