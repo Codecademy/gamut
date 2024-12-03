@@ -1,4 +1,5 @@
-import { Input } from '@codecademy/gamut';
+import { FormGroup, Input } from '@codecademy/gamut';
+import { ViewIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Input> = {
@@ -83,4 +84,72 @@ export const Disabled: Story = {
     disabled: true,
     defaultValue: undefined,
   },
+};
+
+export const CustomIcon: Story = {
+  args: {
+    htmlFor: 'example-icon',
+    name: 'example-icon',
+    defaultValue: 'Hello...',
+    icon: ViewIcon,
+  },
+};
+
+export const FormGroupDefault: Story = {
+  args: {
+    htmlFor: 'example-123',
+    defaultValue: '123',
+    name: 'example-123',
+  },
+  render: (args) => (
+    <FormGroup label="i am a smol label">
+      <Input {...args} />
+    </FormGroup>
+  ),
+};
+
+export const FormGroupError: Story = {
+  args: {
+    htmlFor: 'example-123',
+    defaultValue: '123',
+    name: 'example-123',
+    error: true,
+  },
+  render: (args) => (
+    <FormGroup label="i am a smol label" error="this is not updog.">
+      <Input {...args} />
+    </FormGroup>
+  ),
+};
+
+export const FormGroupLarge: Story = {
+  args: {
+    htmlFor: 'example-123',
+    defaultValue: '123',
+    name: 'example-123',
+    placeholder: 'Placeholder',
+  },
+  render: (args) => (
+    <FormGroup label="i am a large disabled label" labelSize="large" disabled>
+      <Input {...args} />
+    </FormGroup>
+  ),
+};
+
+export const FormGroupErrorLarge: Story = {
+  args: {
+    htmlFor: 'example-123',
+    defaultValue: '123',
+    name: 'example-123',
+    error: true,
+  },
+  render: (args) => (
+    <FormGroup
+      label="i am also large label, but something is wrong."
+      error="this is still not updog..."
+      labelSize="large"
+    >
+      <Input {...args} />
+    </FormGroup>
+  ),
 };
