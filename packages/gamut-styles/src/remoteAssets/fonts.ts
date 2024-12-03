@@ -1,4 +1,4 @@
-export const FONT_ASSET_PATH = `https://static-assets.codecademy.com/gamut`;
+export const FONT_ASSET_PATH = `https://www.codecademy.com/gamut`;
 
 export const webFonts = [
   {
