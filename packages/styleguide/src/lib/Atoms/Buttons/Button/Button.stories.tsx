@@ -1,4 +1,4 @@
-import { Box, FillButton, GridBox, IconButton, StrokeButton, TextButton } from '@codecademy/gamut';
+import { Box, ButtonProps, FillButton, GridBox, IconButton, StrokeButton, TextButton } from '@codecademy/gamut';
 import { MiniArrowLeftIcon, MiniArrowRightIcon,MiniDeleteIcon,MiniRibbonIcon, SearchIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -51,7 +51,7 @@ export const InlineIcons: Story = {
 }
 
 
-const buttons = [FillButton, IconButton, StrokeButton, TextButton];
+const buttons = [FillButton, IconButton, StrokeButton, TextButton] as const;
 const variants = ['primary', 'secondary'] as const;
 const sizes = ['normal', 'small', 'large'] as const;
 
@@ -67,6 +67,8 @@ const ButtonScale = ({ mode }: { mode: 'dark' | 'light' }) => {
           mode,
           variant,
           size,
+          icon: MiniDeleteIcon,
+          tip: 'n/a',
         };
         if (Component.displayName === 'IconButton') {
           return grid.push(
