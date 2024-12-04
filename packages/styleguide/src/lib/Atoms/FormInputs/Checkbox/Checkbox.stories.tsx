@@ -41,6 +41,15 @@ export const Unchecked: Story = {
   },
 };
 
+export const Checked: Story = {
+  args: {
+    htmlFor: 'example-checked',
+    label: 'checked',
+    name: 'example-checked',
+    checked: true,
+  },
+};
+
 export const Disabled: Story = {
   args: {
     htmlFor: 'example-disabled',

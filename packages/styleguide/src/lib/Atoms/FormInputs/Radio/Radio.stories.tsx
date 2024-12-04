@@ -17,6 +17,24 @@ export const Default: Story = {
   args: {},
 };
 
+export const RadioGroupComponent: Story = {
+  render: () => (
+    <RadioGroup htmlForPrefix="example-radio">
+      <Radio htmlFor="example-radio" name="example-radio-1" label="Radio 1" />
+      <Radio htmlFor="example-radio" name="example-radio-2" label="Radio 2" />
+    </RadioGroup>
+  ),
+};
+
+export const Checked: Story = {
+  args: {
+    htmlFor: 'example-checked',
+    name: 'example-checked',
+    label: 'Checked',
+    checked: true,
+  },
+};
+
 export const Disabled: Story = {
   args: {
     htmlFor: 'example-disabled',
@@ -56,13 +74,4 @@ export const CustomLabel: Story = {
     name: 'example-custom',
     label: 'Option with infotip',
   },
-};
-
-export const RadioGroupComponent: Story = {
-  render: () => (
-    <RadioGroup htmlForPrefix="example-radio">
-      <Radio htmlFor="example-radio" name="example-radio-1" label="Radio 1" />
-      <Radio htmlFor="example-radio" name="example-radio-2" label="Radio 2" />
-    </RadioGroup>
-  ),
 };
