@@ -1,4 +1,4 @@
-import { FormState } from 'react-hook-form';
+import { FieldValues, FormState } from 'react-hook-form';
 
 import {
   ConnectedCheckbox,
@@ -21,7 +21,7 @@ export interface FieldProps<FieldComponent extends ConnectedField>
   component: FieldComponent;
 }
 
-export type FormStateCallback<Values = {}> = (
+export type FormStateCallback<Values extends FieldValues = {}> = (
   formState: FormState<Values>
 ) => boolean;
 
