@@ -1,0 +1,111 @@
+import { FloatingCard, GridBox } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { LinkTo, PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={FloatingCard}
+  parameters={{
+    subtitle:
+      'A card with a persistent patterned shadow meant for user feedback or interaction outside the normal flow.',
+    source: 'gamut',
+    status: 'current',
+  }}
+  args={{
+    children: "Yakety Yak don't don't talk back!",
+  }}
+/>
+
+<br />
+
+## Usage guidelines
+
+- They have patterned drop shadow to indicate that are outside the normal document flow.
+- This is a shared component for `Toast`, `Dialog`, and `Coachmark`; before using this component directly please check that these components do not cover your use case!
+- `Tooltip` shares many styles with FloatingCards but is used more widely and does not have a shadow as that might detract from the critical functions it serves.
+
+<Story name="Basic">
+  <FloatingCard p={32}>We'll float on all right!</FloatingCard>
+</Story>
+
+<br />
+
+## Beaks
+
+FloatingCards can optionally display a beak. This is used to indicate a point of interest to the user - that the content of the card describes. Beaks are primarily used in `Coachmarks`.
+
+<Story name="Beaks">
+  {() => (
+    <GridBox gridAutoFlow="column" columnGap={24} py={16}>
+      {['bottom-left', 'bottom-right', 'top-left', 'top-right'].map((beak) => (
+        <FloatingCard beak={beak}>{beak}</FloatingCard>
+      ))}
+    </GridBox>
+  )}
+</Story>
+
+<br />
+
+## Shadow direction
+
+There are 2 types of shadow directions. By default, FloatingCards is set with a shadow offset to the bottom-left.
+
+<Canvas>
+  <Story name="FloatingCard shadow">
+    {() => (
+      <GridBox gridAutoFlow="column" columnGap={24} py={16}>
+        {['bottomLeft', 'bottomRight'].map((shadow) => (
+          <FloatingCard shadow={shadow}>{shadow}</FloatingCard>
+        ))}
+      </GridBox>
+    )}
+  </Story>
+</Canvas>
+
+## Shadow pattern
+
+We can specify the pattern of the FloatingCard shadow by providing the `pattern` prop with the imported pattern from `@codecademy/gamut-patterns`.
+
+See the <LinkTo id="atoms-patterns--pattern">`Patterns`</LinkTo> story to view all the possible pattern options.
+
+```tsx
+import { FloatingCard } from '@codecademy/gamut';
+import { DotDense } from '@codecademy/gamut-patterns';
+
+export const MyComponent: React.FC = () => {
+  return (
+    <FloatingCard shadow="bottomRight" pattern={DotDense}>
+      We all float down here.
+    </FloatingCard>
+  );
+};
+```
+
+## Card wrapper display
+
+The wrapper display may need to be changed from the default `inline-block`
+
+```tsx
+import { FloatingCard } from '@codecademy/gamut';
+import { DotDense } from '@codecademy/gamut-patterns';
+
+export const MyComponent: React.FC = () => {
+  return (
+    <FloatingCard pattern={DotDense} cardDisplay="block">
+      Take up all the space.
+    </FloatingCard>
+  );
+};
+```
+
+## Code playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
+<Canvas>
+  <Story name="FloatingCard">{(args) => <FloatingCard {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="FloatingCard" />

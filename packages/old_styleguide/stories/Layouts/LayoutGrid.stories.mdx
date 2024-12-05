@@ -1,0 +1,151 @@
+import { Column, LayoutGrid } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { LinkTo, PropsTable } from '~styleguide/blocks';
+
+import { Example } from './Elements';
+
+<Meta
+  title={title}
+  component={LayoutGrid}
+  subcomponents={{ Column }}
+  parameters={{
+    subtitle: 'A CSS grid based 12 Column grid system using just grid items.',
+    status: 'current',
+    source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=464%3A691',
+    },
+  }}
+  args={{
+    gap: 24,
+  }}
+/>
+
+A flexible grid that can support arbitrary rows of content, each of
+which snaps to assuming 12 "units" of width. Cells in the rows are
+stored as a `Column` that have a grid-specified gap
+between them.
+
+Row and column gaps can be configured in a responsive way. For example, you might
+have a particular set of gaps at small viewports and bigger ones on large viewports.
+
+export const columns = [
+  { size: 12 },
+  ...new Array(2).fill({ size: 6 }),
+  ...new Array(3).fill({ size: 4 }),
+  ...new Array(4).fill({ size: 3 }),
+  ...new Array(6).fill({ size: 2 }),
+  ...new Array(12).fill({ size: 1 }),
+];
+
+<Canvas>
+  <Story name="LayoutGrid">
+    {(args) => {
+      const children = columns.map((props, i) => (
+        <Column key={`rowspan-${i * 1}`} {...props}>
+          <Example>{props.size}</Example>
+        </Column>
+      ));
+      return <LayoutGrid {...args}>{children}</LayoutGrid>;
+    }}
+  </Story>
+</Canvas>
+
+<PropsTable story="LayoutGrid" />
+
+## Grid gaps
+
+Grid gaps are the space between cells both horizontally and vertically.
+If you would like to adjust the space between columns, set the `columnGap`.
+If you would like to adjust the space between rows, set the `rowGap`.
+Both these properties can take a <LinkTo id="foundations-system-responsive-properties--page">responsive size</LinkTo>,allowing you to define gaps at each breakpoint.
+
+<Canvas>
+  <Story name="Grid gaps">
+    {(args) => (
+      <LayoutGrid {...args}>
+        {[
+          { size: 12 },
+          ...new Array(2).fill({ size: 6 }),
+          ...new Array(3).fill({ size: 4 }),
+        ].map((props, i) => (
+          <Column key={`gap-${i * 1}`} {...props}>
+            <Example />
+          </Column>
+        ))}
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>
+
+## Row height
+
+<Canvas>
+  <Story name="Row height" args={{ rowHeight: 75 }}>
+    {(args) => (
+      <LayoutGrid {...args}>
+        {new Array(12).fill({ size: 3 }).map((props, i) => (
+          <Column key={`rowHeight-${i * 1}`} {...props}>
+            <Example />
+          </Column>
+        ))}
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>
+
+## Offsets
+
+Columns may be offset from the left by numbers within the [0-12] scale.
+As with column and row gaps, those numbers may be static or responsive.
+
+<Canvas>
+  <Story name="Column offsets">
+    {(args) => (
+      <LayoutGrid {...args}>
+        {[
+          { offset: 2, size: 4 },
+          { size: 2 },
+          { size: 2 },
+          { size: 4 },
+          { size: 8 },
+          { offset: { _: 6, md: 4, lg: 2 }, size: 6 },
+          { offset: { _: 0, md: 4 }, size: 6 },
+        ].map((props, i) => (
+          <Column key={`rowspan-${i * 1}`} {...props}>
+            <Example />
+          </Column>
+        ))}
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>
+
+## Rowspans
+
+Columns may be span multiple rows. Make sure you have a consistent row height when using rowspans.
+
+<Canvas>
+  <Story name="Column rowspans" args={{ rowHeight: 48 }}>
+    {(args) => {
+      const children = new Array(12).fill({ size: 3 }).map((props, i) => {
+        const span = {
+          3: 3,
+          2: 2,
+          4: 3,
+          0: 4,
+        };
+        return (
+          <Column key={`rowspan-${i * 1}`} {...props} rowspan={span[i]}>
+            <Example>{}</Example>
+          </Column>
+        );
+      });
+      return <LayoutGrid {...args}>{children}</LayoutGrid>;
+    }}
+  </Story>
+</Canvas>

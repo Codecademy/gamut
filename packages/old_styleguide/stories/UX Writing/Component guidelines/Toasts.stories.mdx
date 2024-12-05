@@ -1,0 +1,55 @@
+import { Anchor, Toast } from '@codecademy/gamut/src';
+import { MegaphoneIcon } from '@codecademy/gamut-icons';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+
+import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
+
+<Meta
+  title={title}
+  parameters={{
+    subtitle:
+      'Keep it brief, ensure the message is personal and relevant, and avoid distracting from the learning experience.',
+  }}
+/>
+
+Toasts are small messages that show up in a box at the bottom right corner of the screen to notify the user about something. It’s most commonly used when immediate feedback is needed for learners upon completing a learning task in LE (such as unlocking an achievement).
+
+Toasts may also be used outside of the LE to communicate information relevant to a learner’s personal experience (such as announcing the launch of a Codecademy Chromebook app to Chromebook users).
+
+Toasts may contain any or all of the following: a title, a description, and/or an icon (in line with the title or left-justified). Here’s what a toast looks like with all three. The megaphone icon is used for announcements.
+
+<Canvas>
+  <Toast
+    title={
+      <>
+        <MegaphoneIcon verticalAlign="middle" mr={4} /> Calling all Chromebook
+        users!
+      </>
+    }
+  >
+    You can now install Codecademy as a free app directly on your Chromebook.{' '}
+    <Anchor>Get the app.</Anchor>
+  </Toast>
+</Canvas>
+
+<br />
+
+## Best practices
+
+- **Keep it brief.** Keep the copy to 3 lines (including the optional title). For a title and 2-line description, aim for keeping the title to 30 characters and the description to 70 characters.
+- **Make it personal and relevant.** The information shared should be relevant to a learner’s personal experience. For instance, the Chromebook example above would only be shared with learners that are using Codecademy on a Chromebook.
+- **Avoid distracting from learning.** Be cautious with using toasts in the Learning Environment (LE). If the message is not something that is pertinent to the learning experience, it should be communicated outside of the LE.
+
+## Checklist
+
+<CustomCheckbox
+  htmlFor="toasts-1"
+  label="Is the toast copy a minimum of 3 lines (including the title)?"
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="toasts-2"
+  label="Is the toast message relevant to all learners that will see it?"
+  spacing="tight"
+/>
