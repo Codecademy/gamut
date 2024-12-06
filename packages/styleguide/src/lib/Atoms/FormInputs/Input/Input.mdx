@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as InputStories from './Input.stories';
 
@@ -65,6 +65,8 @@ You can use a custom icon (from gamut-icons) in your Input elements. The error a
 <Canvas of={InputStories.CustomIcon} />
 
 ## FormGroup + Input
+
+`Input` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `Input` for maximum accessibility. See <LinkTo id="Atoms/FormElements/FormGroup">FormGroup</LinkTo> story for the customizations available.
 
 <Canvas of={InputStories.FormGroupDefault} />
 <Canvas of={InputStories.FormGroupError} />

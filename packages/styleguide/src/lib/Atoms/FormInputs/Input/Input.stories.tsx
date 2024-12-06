@@ -97,12 +97,11 @@ export const CustomIcon: Story = {
 
 export const FormGroupDefault: Story = {
   args: {
-    htmlFor: 'example-123',
     defaultValue: '123',
     name: 'example-123',
   },
   render: (args) => (
-    <FormGroup label="i am a smol label" isSoloField>
+    <FormGroup label="i am a smol label" isSoloField htmlFor="example-123">
       <Input {...args} />
     </FormGroup>
   ),
@@ -110,13 +109,17 @@ export const FormGroupDefault: Story = {
 
 export const FormGroupError: Story = {
   args: {
-    htmlFor: 'example-123',
     defaultValue: '123',
     name: 'example-123',
     error: true,
   },
   render: (args) => (
-    <FormGroup label="i am a smol label" error="this is not updog." isSoloField>
+    <FormGroup
+      label="i am a smol label"
+      error="this is not updog."
+      isSoloField
+      htmlFor="example-123"
+    >
       <Input {...args} />
     </FormGroup>
   ),
@@ -124,7 +127,6 @@ export const FormGroupError: Story = {
 
 export const FormGroupLarge: Story = {
   args: {
-    htmlFor: 'example-123',
     defaultValue: '123',
     name: 'example-123',
     placeholder: 'Placeholder',
@@ -135,6 +137,7 @@ export const FormGroupLarge: Story = {
       labelSize="large"
       disabled
       isSoloField
+      htmlFor="example-123"
     >
       <Input {...args} />
     </FormGroup>
@@ -143,7 +146,6 @@ export const FormGroupLarge: Story = {
 
 export const FormGroupErrorLarge: Story = {
   args: {
-    htmlFor: 'example-123',
     defaultValue: '123',
     name: 'example-123',
     error: true,
@@ -154,6 +156,7 @@ export const FormGroupErrorLarge: Story = {
       error="this is still not updog..."
       labelSize="large"
       isSoloField
+      htmlFor="example-123"
     >
       <Input {...args} />
     </FormGroup>

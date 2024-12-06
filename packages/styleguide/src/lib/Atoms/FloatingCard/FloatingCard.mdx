@@ -49,13 +49,13 @@ There are 2 types of shadow directions. The default shadow offset is bottom left
 
 We can specify the pattern of the FloatingCard shadow by providing the `pattern` prop with the imported pattern from `@codecademy/gamut-patterns`.
 
-{/* See the <LinkTo component="Atoms/Patterns">`Patterns`</LinkTo> story to view all the possible pattern options. */}
+See the <LinkTo id="Atoms/Patterns">`Patterns`</LinkTo> story to view all the possible pattern options.
 
 <Canvas of={FloatingCardStories.ShadowPattern} />
 
 ## Card wrapper display
 
-The wrapper display may need to be changed from the default `inline-block`
+By default a `FloatingCard` has a wrapper with a display of `inline-block`. However, if you need to you can set the `containerDisplay` to `block`, as shown below:
 
 ```tsx
 import { FloatingCard } from '@codecademy/gamut';
@@ -63,7 +63,7 @@ import { DotDense } from '@codecademy/gamut-patterns';
 
 export const MyComponent: React.FC = () => {
   return (
-    <FloatingCard pattern={DotDense} cardDisplay="block">
+    <FloatingCard pattern={DotDense} containerDisplay="block">
       Take up all the space.
     </FloatingCard>
   );

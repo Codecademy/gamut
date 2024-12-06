@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as SelectStories from './Select.stories';
 
@@ -47,6 +47,8 @@ Use Select to handle single selection within a group of options.
 <Canvas of={SelectStories.Error} />
 
 ## FormGroup + Select
+
+`Select` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `Select` for maximum accessibility. See <LinkTo id="Atoms/FormElements/FormGroup">FormGroup</LinkTo> story for the customizations available.
 
 <Canvas of={SelectStories.FormGroupBase} />
 <Canvas of={SelectStories.FormGroupSmall} />

@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as CardStories from './Card.stories';
 
@@ -72,7 +72,7 @@ The outline color will inherit the color of the card.
 
 ## ColorMode as default
 
-Card elements respond to the current **ColorMode** [TODO: link to colormode page] they are used in. Note that their background color will match the background of their context and secondary colors are used for their hover effect. As these are not the typical inverse effects we utilize in color mode, please check with your design team before use.
+Card elements respond to the current <LinkTo id="Foundations/ColorMode">ColorMode</LinkTo> they are used in. Note that their background color will match the background of their context and secondary colors are used for their hover effect. As these are not the typical inverse effects we utilize in color mode, please check with your design team before use.
 
 <Canvas of={CardStories.Dynamic} />
 

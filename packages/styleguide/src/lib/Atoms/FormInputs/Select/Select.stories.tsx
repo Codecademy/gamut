@@ -3,17 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 const fruitOptions = ['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant'];
 
-const fruitObjects = {
-  month: 'Pro Monthly - $39.99 a month',
-  annual: 'Pro Annual - $19.99 a month',
-};
-
-const selectObject = {
-  red: 'red',
-  yellow: 'yellow',
-  green: 'green',
-};
-
 const meta: Meta<typeof Select> = {
   component: Select,
   args: {
@@ -74,6 +63,7 @@ export const FormGroupBase: Story = {
   args: {
     options: ['Error', 'oh no', ':('],
     defaultValue: 'oh no',
+    name: 'form-group-base',
   },
   render: (args) => (
     <FormGroup
@@ -81,6 +71,7 @@ export const FormGroupBase: Story = {
       labelSize="large"
       error="error!"
       isSoloField
+      htmlFor="form-group-base"
     >
       <Select error {...args} />
     </FormGroup>
@@ -92,9 +83,14 @@ export const FormGroupSmall: Story = {
     options: ['Small', 'Quite little'],
     value: 'Small',
     sizeVariant: 'small',
+    name: 'form-group-small',
   },
   render: (args) => (
-    <FormGroup label="i am small and have a label" isSoloField>
+    <FormGroup
+      label="i am small and have a label"
+      isSoloField
+      htmlFor="form-group-small"
+    >
       <Select {...args} />
     </FormGroup>
   ),
