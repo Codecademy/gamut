@@ -1,7 +1,8 @@
-import { Alert, Box } from '@codecademy/gamut';
+import { Alert, Box, StrokeButton } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ALERTS } from './constants'
+import { useState } from 'react';
 
 
 const meta: Meta<typeof Alert> = {
@@ -105,3 +106,19 @@ export const SmallWidth: Story= {
   render: () => <SmallWidthExample />,
 }
 
+const TestingWithButtonComponent: React.FC = () => {
+  const [isHidden, setIsHidden] = useState(false);
+  const toggle = () => setIsHidden(!isHidden);
+  return (
+    <>
+      <StrokeButton onClick={toggle}>Toggle Alert</StrokeButton>
+      <Alert type="general" hidden={isHidden} onClose={toggle}>
+        Testing with button
+      </Alert>
+    </>
+  );
+};
+
+export const TestingWithButton: Story = {
+  render: () => <TestingWithButtonComponent />,
+}
