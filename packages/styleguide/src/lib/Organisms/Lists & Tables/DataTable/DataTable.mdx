@@ -1,0 +1,114 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as DataTableStories from './DataTable.stories';
+
+export const parameters = {
+  subtitle: `Compare large amounts of data and perform bulk actions on Table Rows.`,
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/DataList/DataTable.tsx',
+  },
+};
+
+<Meta of={DataTableStories} />
+
+<ComponentHeader {...parameters} />
+
+## Design principles
+
+**Design principles**
+
+- Recommended for bulk analysis across Rows
+- Tables best support information that needs sorting, filtering, pagination, and querying
+- Prioritize data and information that’s meant to be compared up front, then surface secondary information on external surfaces
+
+**Use table affordances for best information design**
+
+- Design and arrange table metrics to encourage finding, scanning, and comparing information
+
+**Use cell-level interactions to activate specific data**
+
+- Use Coachmarks, Tooltips, Modals, and Flyovers to augment information
+- Use Anchors and Links to direct users to another surface
+
+**Be careful about information overload**
+
+- Determine what’s helpful to see en-masse, versus what info should be drilled down into
+- Be mindful about the horizontal spacing between columns and headers
+- Order metrics based on priority, and consider collapsing extraneous metrics on smaller sizes
+
+
+## Usage
+
+Use a `DataTable` to display a table of items that contain a lot of information. The top row of the table is the header, and each row below is a list item. Rows can be customized to show a loading state, scrollability, filtering, and sorting.
+
+### Sample code
+
+```tsx
+const DataTown = () => {
+  const [selectedRows, setSelectedRows] = useState([]);
+  const [expandedRows, setExpandedRows] = useState([]);
+  const columns = [
+    { key: 'name', sortable: true, size: 'sm' },
+    { key: 'ship', sortable: true, size: 'sm' },
+  ];
+
+  const queryData = useLocalQuery({
+    idKey: 'name',
+    rows: crew,
+    columns,
+  });
+
+  return (
+    <DataTable
+      id="example"
+      columns={columns}
+      selectedRows={selectedRows}
+      onRowSelect={setSelectedRows}
+      expandedRows={expandedRows}
+      onRowExpand={setExpandedRows}
+      renderExpanded={({ name }) => <>{name}: This is pretty cool</>}
+      {...queryData}
+    />
+  );
+};
+```
+
+## Configurations
+
+### Sorting and filtering
+
+Each column takes a `sortable` and `filters` prop - this is will determine if the column should be sortable and which filters should appear in the dropdown menu of the column.
+
+<Canvas of={DataTableStories.FullDataTable} />
+
+### Empty state
+When a DataTable has no data to display, it should show an empty state message.
+
+<Canvas of={DataTableStories.EmptyState} />
+
+### Loading rows
+
+Replaces content of current rows with <LinkTo kind="Atoms/Loaders/Shimmer">Shimmer</LinkTo>.
+
+
+<Canvas of={DataTableStories.LoadingRows} />
+
+### Scrollable indicators
+
+You can set the `shadow` prop to `true` to add a shadow to the DataTable when it is scrollable.
+
+<Canvas of={DataTableStories.Scrollable} />
+
+
+## Playground
+
+If you are using a story named 'Default', you can forgo the `of` prop.
+
+<Canvas sourceState="shown" of={DataTableStories.Default} />
+
+<Controls />
