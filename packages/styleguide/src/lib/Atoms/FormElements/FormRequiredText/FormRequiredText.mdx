@@ -1,0 +1,28 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as FormRequiredTextStories from './FormRequiredText.stories';
+
+export const parameters = {
+  subtitle: `A Text element that renders our required field explanation, should be included in all forms with required fields.`,
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/elements/FormRequiredText.tsx',
+  },
+};
+
+<Meta of={FormRequiredTextStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+`FormRequiredText` should be included in all forms with required fields. Accepts all props of <LinkTo id="typography-text">our existing `Text`</LinkTo> component.
+
+## Playground
+<Canvas sourceState="shown" of={FormRequiredTextStories.Default} />
+
+<Controls />
