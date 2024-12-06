@@ -2,8 +2,11 @@ import type { StorybookConfig } from '@storybook/react-webpack5';
 import { resolve, dirname, join } from 'path';
 
 const config: StorybookConfig = {
-  stories: ['../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-
+  stories: [
+    '../src/lib/**/*.@(mdx)',
+    '../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+  ],
+  staticDirs: ['../src/static'],
   addons: [
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@nx/react/plugins/storybook', ''),
@@ -23,10 +26,12 @@ const config: StorybookConfig = {
   typescript: {
     reactDocgen: 'react-docgen-typescript',
   },
+
   webpackFinal(config) {
     config.resolve = {
       ...config.resolve,
       alias: {
+        '~styleguide/blocks': resolve(__dirname, './components/'),
         '@codecademy/gamut-styles$': resolve(
           __dirname,
           '../../gamut-styles/src'

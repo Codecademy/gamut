@@ -2,8 +2,8 @@ import cx from 'classnames';
 import { HTMLProps, ReactNode } from 'react';
 import * as React from 'react';
 
-import { ChildComponentDescriptor } from '@codecademy/gamut/src/typings/react';
-import { omitProps } from '@codecademy/gamut/src/utils/omitProps';
+import { ChildComponentDescriptor } from '../../typings/react';
+import { omitProps } from '../../utils';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles.module.scss';
 

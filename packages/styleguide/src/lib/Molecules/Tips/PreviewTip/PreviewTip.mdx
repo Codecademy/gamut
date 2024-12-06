@@ -1,0 +1,65 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader , LinkTo } from '~styleguide/blocks';
+
+import * as PreviewTipStories from './PreviewTip.stories';
+
+export const parameters = {
+  subtitle: `An Anchor that provides a snippet of relevant information from the link destination.`,
+  design: {
+    type: 'figma',
+    url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/branch/ayKNSg6QvZUjsgw0FFysW4/%F0%9F%93%90-Gamut?type=design&node-id=41538-55277&mode=design&t=fGkWf5GSl5cj5fQo-0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Tip/PreviewTip/index.tsx',
+  },
+};
+
+<Meta of={PreviewTipStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+A tip triggered on hover and focus of a link element. Use a `PreviewTip` to provide a snippet of information from a link’s destination without leaving the page.
+
+## Variants
+
+### Avatar PreviewTip
+
+Providing a `ReactNode` to the `avatar` prop will render the avatar variant. This should also have a `username` prop for the user.
+
+<Canvas of={PreviewTipStories.AvatarTip} />
+
+### Floating
+
+`PreviewTip`s sometimes need to be in used in a way that they need to escape the confines of their parent container. The `floating` variant of the `placement` prop allows this. (Notice how this section doesn't need as much padding because the `PreviewTip`s are able to escape their context!)
+
+This `floating` variant should only be used as needed.
+
+<Canvas of={PreviewTipStories.FloatingPreviewTip} />
+
+### Loading
+
+The `loading` prop will render a <LinkTo component="Shimmer">`Shimmer`</LinkTo> loading state. See an example below! The first `PreviewTip` is perpetually in the loading state and the second simulates loading on focus.
+
+<Canvas of={PreviewTipStories.LoadingTip} />
+
+### Truncation
+
+The `truncateLines` prop allows you to set the maximum number of lines that the `PreviewTip` will display before truncating. The default is 4 lines.
+
+<Canvas of={PreviewTipStories.Truncation} />
+
+
+## Playground
+
+If you are using a story named 'Default', you can forgo the `of` prop.
+
+<Canvas sourceState="shown" of={PreviewTipStories.Default} />
+
+<Controls />

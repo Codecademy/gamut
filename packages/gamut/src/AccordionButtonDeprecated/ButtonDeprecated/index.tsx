@@ -4,7 +4,7 @@ import hasIn from 'lodash/hasIn';
 import { ReactNode } from 'react';
 import * as React from 'react';
 
-import { omitProps } from '@codecademy/gamut/src/utils/omitProps';
+import { omitProps } from '../../utils';
 import {
   ButtonDeprecatedBase,
   ButtonDeprecatedBaseProps,

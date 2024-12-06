@@ -1,0 +1,104 @@
+import { Column, LayoutGrid } from '@codecademy/gamut';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as MenuStories from './Menu.stories';
+
+export const parameters = {
+  subtitle: `The Menu component with MenuItem and MenuSeparator subcomponents.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30420-41119&m=dev',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Menu/Menu.tsx',
+  },
+};
+
+<Meta of={MenuStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+While most Menus are used as layout elements, Menus can also be used as popover elements within components like Selects.
+
+### Components
+
+- `Menu`: An unordered list that defines the structure and style of its constituents. Menus are nestable and keep track of their configuration and depth through the MenuContext.
+- `MenuItem`: A clickable list item that renders as a link or a clickable `li` element if a href is specified.
+- `MenuSeparator`: A semantic element for separating `li` items visually. This element will not display if used outside of `action` menus.
+
+### Best practices:
+
+- A `Menu` should only have the `menu` role when it is a list of actions or functions a user can evoke.
+  - For example - a popover menu that allows the user to copy text, paste text, or reset a workspace.
+- If your `Menu` is simply a list of links it should not have the `menu` role.
+- Adding the role of `menu` to the menu component will programmatically set the correct roles on its `MenuItem`s and `MenuSeparator`s.
+
+If you would like to know more about the `menu` role - check out the MDN web docs [here](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role).
+
+## Variants
+
+<LayoutGrid gap={32} py={24}>
+
+<Column size={4} variant={false} mx={8}>
+### Select
+<Canvas of={MenuStories.Default} />
+A general purpose menu type that can be used for actions or navigation.
+</Column>
+
+<Column size={4} variant={false}>
+### Action
+<Canvas of={MenuStories.Action} />
+These should be populated with MenuItems typed as buttons that execute some action.
+</Column>
+
+<Column size={4} variant={false}>
+### Navigation
+<Canvas of={MenuStories.Navigation} />
+These should be populated with MenuItems typed as links.
+</Column>
+
+</LayoutGrid>
+
+## Spacing variants
+Setting the Menu's `spacing` to `'condensed'` will reduce the padding around the MenuItems.
+
+<LayoutGrid gap={32} py={24}>
+
+<Column size={4} variant={false} mx={8}>
+### Select condensed
+<Canvas of={MenuStories.SelectCondensed} />
+</Column>
+
+<Column size={4} variant={false}>
+### Action condensed
+<Canvas of={MenuStories.ActionCondensed} />
+</Column>
+
+<Column size={4} variant={false}>
+### Navigation condensed
+<Canvas of={MenuStories.NavigationCondensed} />
+</Column>
+
+</LayoutGrid>
+
+## Popover menus
+
+You can create popover menus by utilizing our **PopoverContainer**. Once you have your base positioning, you just need to adjust the `y` axis by `48` for the `normal` spacing or `32` for the `condensed` spacing for each of the `MenuItem`s. You may also need to change the `alignment` of the `PopoverContainer` to ensure correct positioning.
+
+Popover Menus that have complex functionalities or actions, like the example below, should have the `menu` role.
+
+Click through each item to see how the `Menu`s appear (and disappear when the item is clicked again, or another item is selected.)
+
+<Canvas of={MenuStories.Popover} />
+
+
+## Playground
+<Canvas sourceState="shown" of={MenuStories.Default} />
+
+<Controls />

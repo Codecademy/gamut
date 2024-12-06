@@ -1,0 +1,92 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, Callout, LinkTo } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Contributing',
+  title: 'Contributing',
+  subtitle: `Thanks so much for being interested in contributing to Gamut!
+We love working with Codecademy employees across all our teams.`,
+  status: 'static',
+};
+
+<Meta title="Meta/Contributing" />
+
+<AboutHeader {...parameters} />
+
+## Prework
+
+We track planned work for Gamut components in the [Gamut Board](https://skillsoftdev.atlassian.net/jira/software/projects/GM/boards/784) on JIRA.
+
+- If there's a ticket there you want to take on, send a Slack to #gamut-team or come to Gamut Office hours and lets talk about it!
+- If the work you'd like to do isn't captured in a JIRA ticket, talk to us and we can work with you to create that ticket.
+- If you would like to make a request for work to be done, please discuss with us on Slack or during Gamut Office Hours.
+- If you'd like to pitch a change to the design system, please attend Gamut Crit, come to Gamut Office Hours, or send a Slack message to #gamut-team.
+
+## Writing components
+
+### Component structure
+
+Create your component as an `index.tsx` file in a PascalCase-named folder within its package directory, such as `packages/gamut/src/ProgressBar/index.tsx`.
+Consider saving this recommended format as an editor snippet:
+
+```tsx
+import React from 'react';
+
+export type MyComponentProps = {
+  /* ... */
+};
+
+export const MyComponent: React.FC<MyComponentProps> = (
+  {
+    /* ... */
+  }
+) => {
+  // ...
+};
+```
+
+#### Props documentation
+
+With the exception of widespread, self-documenting props such as `onClick`, please include a sentence cased description of the prop's intent.
+React props on the component will be picked up by Storybook and added to the component's documentation story.
+We prefer these be full sentences.
+
+```ts
+/**
+ * Number of lines to limit the message to.
+ */
+limit: number;
+```
+
+- If your comment purely restartes the name and type of variable, please either elaborate on it or remove the comment altogether.
+- Consider starting comments for booleans with _"Whether "_.
+
+### Unit tests
+
+Your component should have unit tests in a `__tests__/MyComponent-test.tsx` file within its directory.
+Use Enzyme's `mount` to test it.
+
+We generally try to unit test all component logic, with the exception of class names in components that contain other logic.
+
+### Stories
+
+All components must have Storybook stories showing their use. See <LinkTo id='Meta/Stories'>Stories</LinkTo> for documentation.
+
+## Pull requests
+
+Please fill out the pull request template, including links to the corresponding Abstract design and JIRA ticket.
+
+<Callout text="You can use a [Draft PR](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests#draft-pull-requests) to just run CI jobs. That includes deploying a Netlify preview and publishing alpha package versions to npm. 😉" />
+
+### Publishing updates
+
+If you know your PR has breaking changes in at least one downstream repository, such as the [codecademy-engineering/mono](https://github.com/codecademy-engineering/mono):
+
+1. Before merging it, create PRs in those downstream repositories using your PR's published alpha package versions
+2. Verify those PRs work as expected and get them signed off normally
+3. Merge your Gamut PR
+4. Wait until the new Gamut package is published, then update the downstream repository PRs to use it
+5. Merge and deploy those PRs as soon as possible
+
+If your PR contains breaking changes that might affect other users, please mention them in the `#frontend` Slack channel.
