@@ -347,4 +347,17 @@ Use the `printf()` function.
 
 ### Iframes
 
-<iframe src="https://player.vimeo.com/video/145702525?byline=0&portrait=0&badge=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+Vimeo and Youtube video iframes will be rendered by our Video component, otherwise they'll render the original code.
+
+<iframe src="https://player.vimeo.com/video/188237476?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Studio Ghibli in Real Life"></iframe>
+
+<br/>
+
+<iframe width="1094" height="842" src="https://www.youtube.com/embed/zhDwjnYZiCo" title="Ghibli Coffee Shop ☕️ Music to put you in a better mood 🌿 lofi hip hop - lofi songs | study / relax" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+### Video
+
+`video`s with an `src` or a `source` video file will be rendered by our Video component, otherwise they'll render the original code. Videos with a `style` prop or another restricted prop will be stripped of that property.
+
+<video width="100%" height="100%" align="middle" controls> <source src="https://content.codecademy.com/articles/db-browser/open-database.mp4" type="video/mp4"> Your browser does not support the video tag. </video>

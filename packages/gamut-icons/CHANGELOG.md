@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.34.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.34.0...@codecademy/gamut-icons@9.34.1) (2024-12-03)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.34.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.33.0...@codecademy/gamut-icons@9.34.0) (2024-11-20)
+
+### Features
+
+- **Icons:** Add ArrowDashRightIcon, ArrowChevronRightBoldIcon, and RankingWinnerIcon ([#2976](https://github.com/Codecademy/gamut/issues/2976)) ([bdbf3de](https://github.com/Codecademy/gamut/commit/bdbf3de725622d2786242a2f9db4f801bcd6a9d4))
+
+## [9.33.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.32.1...@codecademy/gamut-icons@9.33.0) (2024-11-11)
+
+### Features
+
+- **Icons:** MoneyBackGuarantee ([0e4f27e](https://github.com/Codecademy/gamut/commit/0e4f27e26e20a00dce388dfa127ad7cab2e5671b))
+
+### [9.32.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.32.0...@codecademy/gamut-icons@9.32.1) (2024-11-06)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.32.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.31.1...@codecademy/gamut-icons@9.32.0) (2024-10-09)
+
+### Features
+
+- **Icons:** add UnlockIcon ([9776de5](https://github.com/Codecademy/gamut/commit/9776de5abe41c7a472fe8fe919a66514c10292dc))
+
+### [9.31.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.31.0...@codecademy/gamut-icons@9.31.1) (2024-10-01)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.31.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.30.1...@codecademy/gamut-icons@9.31.0) (2024-09-23)
+
+### Features
+
+- **Icons:** add AssessmentsIcon ([#2937](https://github.com/Codecademy/gamut/issues/2937)) ([f7780f8](https://github.com/Codecademy/gamut/commit/f7780f8e13262f2e0bfaa6d84df68ebb46e413f1))
+
 ### [9.30.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.30.0...@codecademy/gamut-icons@9.30.1) (2024-08-27)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

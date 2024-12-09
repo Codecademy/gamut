@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [68.2.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.2.6...@codecademy/styleguide@68.2.7) (2024-12-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [68.2.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.2.5...@codecademy/styleguide@68.2.6) (2024-11-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [68.2.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.2.4...@codecademy/styleguide@68.2.5) (2024-11-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [68.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.2.3...@codecademy/styleguide@68.2.4) (2024-11-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [68.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.2.2...@codecademy/styleguide@68.2.3) (2024-10-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [68.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.2.1...@codecademy/styleguide@68.2.2) (2024-10-16)
+
+### Bug Fixes
+
+- **Alert:** Update alert to be based on component width ([9367531](https://github.com/Codecademy/gamut/commit/936753191363a9e3f822e12d37bb279d9d55ded4))
+
+### [68.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.2.0...@codecademy/styleguide@68.2.1) (2024-10-16)
+
+### Bug Fixes
+
+- **Markdown:** filter styles from video ([51e34e4](https://github.com/Codecademy/gamut/commit/51e34e407221feb4ca3bca44f3b9ef0ef0a3d474))
+
+## [68.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.1.3...@codecademy/styleguide@68.2.0) (2024-10-15)
+
+### Features
+
+- **Video + Markdown:** update react player + put videos in markdown ([4170f40](https://github.com/Codecademy/gamut/commit/4170f401374295ae0cbbc4f52c1cf612fe1239f8))
+
+### [68.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.1.2...@codecademy/styleguide@68.1.3) (2024-10-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [68.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.1.1...@codecademy/styleguide@68.1.2) (2024-10-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [68.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.1.0...@codecademy/styleguide@68.1.1) (2024-10-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [68.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.0.4...@codecademy/styleguide@68.1.0) (2024-10-01)
+
+### Features
+
+- **PreviewTip:** add preview tip ([fc90775](https://github.com/Codecademy/gamut/commit/fc90775bdfead2cc5e9b6dbc36fef3796403a109))
+
+### [68.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.0.3...@codecademy/styleguide@68.0.4) (2024-09-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [68.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.0.2...@codecademy/styleguide@68.0.3) (2024-09-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [68.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.0.1...@codecademy/styleguide@68.0.2) (2024-09-12)
 
 **Note:** Version bump only for package @codecademy/styleguide

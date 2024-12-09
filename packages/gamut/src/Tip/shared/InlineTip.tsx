@@ -1,4 +1,5 @@
 import { InfoTipContainer } from '../InfoTip/styles';
+import { PreviewTipContents, PreviewTipShadow } from '../PreviewTip/elements';
 import { ToolTipContainer } from '../ToolTip/elements';
 import {
   InfoTipWrapper,
@@ -7,25 +8,34 @@ import {
   ToolTipWrapper,
 } from './elements';
 import { narrowWidth } from './styles';
-import { TipPlacementComponentProps } from './types';
+import { TipWrapperProps } from './types';
+import { getAlignmentWidths } from './utils';
 
-export const InlineTip: React.FC<TipPlacementComponentProps> = ({
+export const InlineTip: React.FC<TipWrapperProps> = ({
   alignment,
+  avatar,
   children,
   escapeKeyPressHandler,
   id,
   info,
   isTipHidden,
-  type,
+  loading,
   narrow,
+  overline,
+  truncateLines,
+  type,
+  username,
   wrapperRef,
   zIndex,
 }) => {
-  const isToolType = type === 'tool';
+  const isHoverType = type === 'tool' || type === 'preview';
 
-  const InlineTipWrapper = isToolType ? ToolTipWrapper : InfoTipWrapper;
-  const InlineTipBodyWrapper = isToolType ? ToolTipContainer : InfoTipContainer;
-  const InlineWrapperProps = isToolType ? {} : { hideTip: isTipHidden };
+  const InlineTipWrapper = isHoverType ? ToolTipWrapper : InfoTipWrapper;
+  const InlineTipBodyWrapper = isHoverType
+    ? ToolTipContainer
+    : InfoTipContainer;
+  const InlineWrapperProps = isHoverType ? {} : { hideTip: isTipHidden };
+  const tipBodyAlignment = getAlignmentWidths({ alignment, avatar, type });
 
   const target = (
     <TargetContainer
@@ -42,17 +52,32 @@ export const InlineTip: React.FC<TipPlacementComponentProps> = ({
     <InlineTipBodyWrapper
       alignment={alignment}
       zIndex={zIndex ?? 1}
+      isToolTip={type === 'tool'}
       {...InlineWrapperProps}
     >
       <TipBody
-        alignment={alignment.includes('center') ? 'centered' : 'aligned'}
+        alignment={tipBodyAlignment}
         color="currentColor"
         id={id}
         width={narrow ? narrowWidth : undefined}
         zIndex="auto"
-        aria-hidden={isToolType}
+        aria-hidden={isHoverType}
       >
-        {info}
+        {type === 'preview' ? (
+          <>
+            <PreviewTipContents
+              avatar={avatar}
+              info={info}
+              loading={loading}
+              overline={overline}
+              truncateLines={truncateLines}
+              username={username}
+            />
+            <PreviewTipShadow alignment={alignment} zIndex={zIndex} />
+          </>
+        ) : (
+          info
+        )}
       </TipBody>
     </InlineTipBodyWrapper>
   );

@@ -2739,10 +2739,10 @@
   resolved "https://registry.npmjs.org/@codecademy/prettier-config/-/prettier-config-0.2.0.tgz#15a13a04c08d21fac7c88c2983258c1bdaf8152f"
   integrity sha512-WRaYl9urRIbT3D3UAehGXFi0lreG6VxwMQlJt39Ov/1amYjzQpM2V9Gm+FHQrHmIqff3H/fNxSNqy4ImrqFOjw==
 
-"@codecademy/tsconfig@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.npmjs.org/@codecademy/tsconfig/-/tsconfig-0.2.0.tgz#995047e64b53f91bd708f3849b9ec7d53c8022c2"
-  integrity sha512-8lVLeEkFGP/M0quAr/oMiMQtQkODLIwcxj+oEZ3kl7OtNc5y0km/XWd/2M9H8wCQmpOw2xn1iSZGhmfB+sRO5Q==
+"@codecademy/tsconfig@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/@codecademy/tsconfig/-/tsconfig-0.3.0.tgz#dc463a3e668bbf1ad3c3d13d9f8b825e8bc31442"
+  integrity sha512-NbSXNdZaGvo+t4GW/ucCKNgAyYY5GMxKgsbYanek7tqbQgdX3hwAsbPkd1G5QR82+ARfsjNfWi7Yss4WTSybrA==
 
 "@codecademy/webpack-config@6.4.0":
   version "6.4.0"
@@ -16747,10 +16747,10 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-player@^2.3.1:
-  version "2.8.2"
-  resolved "https://registry.npmjs.org/react-player/-/react-player-2.8.2.tgz#20fb5c4bcbf304ad719ca5566551ddb3ddefcd93"
-  integrity sha512-AiCvWJGpFxgxjwMxDMiaeTyL2IgDaKuPZfERzNULGPx7X67Mh9D0UqKZG6YHqJQ1KbpbCdE0VBtICrzRxr28pg==
+react-player@^2.16.0:
+  version "2.16.0"
+  resolved "https://registry.npmjs.org/react-player/-/react-player-2.16.0.tgz#89070700b03f5a5ded9f0b3165d4717390796481"
+  integrity sha512-mAIPHfioD7yxO0GNYVFD1303QFtI3lyyQZLY229UEAp/a10cSW+hPcakg0Keq8uWJxT2OiT/4Gt+Lc9bD6bJmQ==
   dependencies:
     deepmerge "^4.0.0"
     load-script "^1.0.0"

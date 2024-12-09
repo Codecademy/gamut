@@ -1,11 +1,11 @@
 {
   "name": "@codecademy/gamut-illustrations",
   "description": "Illustrations library for Codecademy",
-  "version": "0.47.1",
+  "version": "0.49.2",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "bugs": "https://github.com/Codecademy/gamut/issues",
   "dependencies": {
-    "@codecademy/gamut-styles": "17.0.0",
+    "@codecademy/gamut-styles": "17.1.2",
     "classnames": "^2.2.5"
   },
   "files": [
