@@ -1,0 +1,105 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as InputStories from './Input.stories';
+
+export const parameters = {
+  subtitle: 'A general `<input />` element for handling "text", "number" and "file" input types',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/inputs/Input.tsx',
+  },
+};
+
+<Meta of={InputStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use Input to handle text, number, and file input types within forms.
+
+## Input types
+
+### Text
+
+<Canvas of={InputStories.Text} />
+
+### Number
+
+<Canvas of={InputStories.Number} />
+
+### File
+
+<Canvas of={InputStories.File} />
+
+## Input states
+
+### Error
+
+<Canvas of={InputStories.Error} />
+
+### Validated
+
+<Canvas of={InputStories.Validated} />
+
+### Placeholder
+
+<Canvas of={InputStories.Placeholder} />
+
+### Disabled
+
+<Canvas of={InputStories.Disabled} />
+
+## Custom icons
+
+You can use a custom icon (from gamut-icons) in your Input elements. The error and valid icons will overwrite the custom icon if those states are applied to the element.
+
+<Canvas of={InputStories.CustomIcon} />
+
+## FormGroup + Input
+
+`Input` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `Input` for maximum accessibility. See <LinkTo id="Atoms/FormElements/FormGroup">FormGroup</LinkTo> story for the customizations available.
+
+<Canvas of={InputStories.FormGroupDefault} />
+<Canvas of={InputStories.FormGroupError} />
+<Canvas of={InputStories.FormGroupLarge} />
+<Canvas of={InputStories.FormGroupErrorLarge} />
+
+## iFrame + Input
+
+In order to style iframe Inputs, we leverage the [withComponent](https://styled-components.com/docs/api) API from styled-components and our iFrameWrapper. You will need to do some further work with the iframe to make it behave but this will get you most of the way there.
+
+```tsx
+import { Input, iFrameWrapper, FormGroup } from '@codecademy/gamut';
+import { GnarlyiFrame } from './constants';
+
+const StylediFrame = iFrameWrapper.withComponent(GnarlyiFrame);
+
+export const CustomFormGroup: React.FC = ({ errorMessaged, disabled }) => {
+  return (
+    <FormGroup error={errorMessage} disabled={disabled}>
+      <Input
+        as={StylediFrame}
+        onChange={() => {}}
+        onBlur={() => {}}
+        placeholder="Placeholder"
+        error={!!errorMessage}
+      />
+    </FormGroup>
+  );
+};
+```
+
+## Playground
+
+<Canvas sourceState="shown" of={InputStories.Default} />
+
+<Controls />
