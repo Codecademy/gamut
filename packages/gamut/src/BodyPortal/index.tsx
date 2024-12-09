@@ -18,7 +18,7 @@ const PortalWrapper = styled
   )
   .withComponent(ColorMode);
 
-export const BodyPortal = ({ children }: React.PropsWithChildren) => {
+export const BodyPortal: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [ready, setReady] = useState(false);
   const mode = useCurrentMode();
 

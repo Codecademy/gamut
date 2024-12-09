@@ -11,6 +11,9 @@ import {
   useState,
 } from 'react';
 import {
+  FieldError,
+  FieldErrorsImpl,
+  Merge,
   RegisterOptions,
   useFieldArray,
   useFormContext,
@@ -65,7 +68,8 @@ export const useConnectedForm = <
 }: UseConnectedFormProps<Values, Partial<ValidationRules>>) => {
   return useMemo(
     () => ({
-      ConnectedFormGroup: ConnectedFormGroup as ConnectedGroupStrictProps<Values>,
+      ConnectedFormGroup:
+        ConnectedFormGroup as ConnectedGroupStrictProps<Values>,
       ConnectedForm: ConnectedForm as ConnectedFormStrictProps<
         Values,
         ValidationRules
@@ -246,11 +250,12 @@ export const useGetInitialFormValue = ({
   // For some reason including `updated` trips a lint error about unnecessary deps
   // but it doesn't throw anything in the editor :shrug:
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const initialValue: string | null = useMemo(() => getValues(name), [
-    name,
-    getValues,
-    updated,
-  ]);
+  const initialValue: string | null = useMemo(
+    () => getValues(name),
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [name, getValues, updated]
+  );
 
   useEffect(() => {
     if (!(isNull(initialValue) || isUndefined(initialValue))) {
@@ -391,3 +396,19 @@ export function useDebouncedField<T extends InputTypes>({
     value: localValue as T extends 'checkbox' ? boolean : string,
   };
 }
+
+export const getErrorMessage = (
+  error:
+    | string
+    | FieldError
+    | Merge<FieldError, FieldErrorsImpl<any>>
+    | undefined
+) => {
+  if (error) {
+    if (typeof error === 'string') return error;
+    if ('message' in error && typeof error?.message === 'string')
+      return error.message;
+    return 'An error has occurred';
+  }
+  return undefined;
+};

@@ -1,0 +1,44 @@
+{
+  "extends": ".../../babel.defaults.js",
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "modules": false,
+        "targets": "defaults"
+      }
+    ],
+    [
+      "@babel/react",
+      {
+        "runtime": "automatic"
+      }
+    ],
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    [
+      "@emotion/babel-plugin",
+      {
+        "sourceMap": true,
+        "autoLabel": "always",
+        "labelFormat": "[local]"
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "modules": "commonjs",
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ]
+    }
+  }
+}

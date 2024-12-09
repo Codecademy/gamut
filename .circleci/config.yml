@@ -169,7 +169,7 @@ jobs:
       - *build_all_packages
       - run:
           name: build storybook
-          command: yarn build-storybook
+          command: yarn nx run styleguide:build-storybook
       - run:
           name: deploy
           command: yarn deploy
@@ -190,14 +190,14 @@ jobs:
       - *build_all_packages
       - run:
           name: build storybook
-          command: yarn build-storybook
+          command: yarn nx run styleguide:build-storybook
       - *save_nx_cache
       - *save_webpack_cache
       - run:
           name: deploy
           command: |
             DEPLOY_MESSAGE="User: ${CIRCLE_USERNAME} Project: ${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} Pull Request: ${CIRCLE_PULL_REQUEST}"
-            npx netlify-cli@2.37.0 deploy --message="${DEPLOY_MESSAGE}" --dir=dist/docs --json > .deploy-output
+            npx netlify-cli@17.37.1 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --filter @codecademy/styleguide > .deploy-output
       - setup_remote_docker
       - run: docker pull cloudposse/github-commenter:0.5.0-58
       - run:
