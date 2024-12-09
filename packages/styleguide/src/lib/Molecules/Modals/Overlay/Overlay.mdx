@@ -1,0 +1,36 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as OverlayStories from './Overlay.stories';
+
+export const parameters = {
+  subtitle: `Overlay primitives are controlled components that are told whether they're open by their parent. They're very basic and don't have animations defined.`,
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Overlay/index.tsx',
+  },
+};
+
+<Meta of={OverlayStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use this overlay only for actual 'overlay' content that takes up the full screen. Do not use it for dropdowns or other small interactive items.
+
+Unlike the legacy `Modal` implementations in the monolith, this:
+- always assumes viewport is locked, by making content `position: fixed`
+- cannot override contentProps, animation, or shouldFocusOnMount.
+
+
+### When NOT to use:
+- If you need styles such as a background behind content, see `Modal` for general modals and `Dialog` for confirmation flows.
+
+## Playground
+<Canvas sourceState="shown" of={OverlayStories.Default} />
+
+<Controls />

@@ -1,93 +1,55 @@
-const path = require('path');
-const { configs } = require('@codecademy/webpack-config');
+import type { StorybookConfig } from '@storybook/react-webpack5';
+import { resolve, dirname, join } from 'path';
 
-// https://github.com/storybookjs/storybook/issues/12262#issuecomment-681953346
-// make a shallow copy of an object, rejecting keys that match /emotion/
-function emotionless<T extends Record<string, unknown>>(object: T) {
-  let result = {} as T;
-  for (let key in object) {
-    if (!/emotion/.test(key)) {
-      result[key] = object[key];
-    }
-  }
-  return result;
-}
-
-module.exports = {
-  addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-a11y',
-    '@storybook/addon-links',
-    './addons/system/preset',
-    'storybook-addon-designs',
+const config: StorybookConfig = {
+  stories: [
+    '../src/lib/**/*.@(mdx)',
+    '../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
   ],
-  stories: ['../stories/**/*.stories.@(mdx|tsx)'],
-  typescript: {
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      shouldRemoveUndefinedFromOptional: true,
-      propFilter: (prop: any) => {
-        // allow reach-ui types
-        if (prop.parent && /@reach/.test(prop.parent.fileName)) {
-          return true;
-        }
-        return prop.parent ? !/node_modules/.test(prop.parent.fileName) : true;
-      },
+  staticDirs: ['../src/static'],
+  addons: [
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@nx/react/plugins/storybook', ''),
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-designs'),
+  ],
+
+  framework: {
+    name: getAbsolutePath('@storybook/react-webpack5'),
+    options: {
+      builder: {},
     },
   },
-  babel: async (options: { presets: any }) => {
-    return {
-      ...options,
-      presets: [
-        ...options.presets,
-        [
-          '@babel/preset-react',
-          {
-            runtime: 'automatic',
-          },
-          'preset-react-jsx-transform', // Can name this anything, just an arbitrary alias to avoid duplicate presets'
-        ],
-      ],
-    };
+
+  docs: {},
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
   },
 
-  webpackFinal: (config: any) => {
-    config.module.rules = config.module.rules.concat(
-      configs.css().module.rules
-    );
-
-    config.module.rules.push({
-      test: /\.mjs$/,
-      include: /node_modules/,
-      type: 'javascript/auto',
-    });
-
+  webpackFinal(config) {
     config.resolve = {
       ...config.resolve,
       alias: {
-        ...emotionless(config.resolve.alias),
-        // Prevent usage of ESM version of htmlparser2
-        htmlparser2$: 'htmlparser2/lib/index.js',
-        '~styleguide/blocks': path.resolve(__dirname, './components/'),
-        '@codecademy/storybook-addon-variance': path.resolve(
-          __dirname,
-          './addons/system/components/'
-        ),
-        '@codecademy/gamut-styles$': path.resolve(
+        '~styleguide/blocks': resolve(__dirname, './components/'),
+        '@codecademy/gamut-styles$': resolve(
           __dirname,
           '../../gamut-styles/src'
         ),
-
-        '@codecademy/gamut$': path.resolve(__dirname, '../../gamut/src'),
-        '@codecademy/gamut-illustrations$': path.resolve(
+        '@codecademy/gamut$': resolve(__dirname, '../../gamut/src'),
+        '@codecademy/gamut-illustrations$': resolve(
           __dirname,
           '../../gamut-illustrations/src'
         ),
-        '@codecademy/variance$': path.resolve(__dirname, '../../variance/src'),
+        '@codecademy/variance$': resolve(__dirname, '../../variance/src'),
       },
     };
-
     return config;
   },
 };
+
+export default config;
+
+function getAbsolutePath(value: string, root = 'package.json'): string {
+  return dirname(require.resolve(join(value, root)));
+}

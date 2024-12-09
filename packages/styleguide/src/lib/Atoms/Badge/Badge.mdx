@@ -1,0 +1,119 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import {
+  Callout,
+  ComponentHeader,
+  ImageWrapper,
+  LinkTo,
+} from '~styleguide/blocks';
+
+import * as BadgeStories from './Badge.stories';
+
+export const parameters = {
+  subtitle:
+    'Badges are generally used as a standard way to highlight a short piece of text, likely a single word.',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?type=design&node-id=29959-39721&mode=design&t=27y0ZBTRsAgBmZ9z-0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Badge',
+  },
+};
+
+<Meta of={BadgeStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use `Badge`s to display read-only information like statuses, attributes, and other empathsized information.
+
+### Best practices:
+
+- Use badges sparingly, as too many can dilute their effectiveness.
+
+### When NOT to use:
+
+- **Interactivity**- when text is meant to be clickable, use the <LinkTo component="Atoms/Button">Button</LinkTo> or <LinkTo component="Typography/Anchor">Anchor</LinkTo> (link) components instead.
+- **Categorization**- for labeling or catgorizing content, use the <LinkTo component="Atoms/Tag">Tag</LinkTo> component instead.
+
+## Anatomy
+
+<ImageWrapper
+  src="./atoms/badge.png"
+  alt="The anatomy of the Badge component, detailed below."
+/>
+
+1. **Leading icon** _(optional)_
+
+- Use to reinforce the badge's message and improve scannability
+
+2. **Badge label**
+
+- Limit 1-2 words
+- Display read-only information like statuses, attributes, and other emphasized information
+
+## Variants
+
+### Primary
+
+Use the primary variant to highlight important information or statuses that need to be noticed.
+
+<Canvas of={BadgeStories.Default} />
+
+### Secondary
+
+Use the secondary variant to display supporting information or less critical statuses.
+
+<Canvas of={BadgeStories.Secondary} />
+
+### Tertiary
+
+Use the tertiary variant to indicate background or supplementary information with minimal emphasis.
+
+<Canvas of={BadgeStories.Tertiary} />
+
+### Tertiary-fill
+
+Use the tertiary-fill variant when a tertiary badge needs to sit above other content. This variant includes a bg-color that can overlap color modes and unpredictable content.
+
+<Canvas of={BadgeStories.TertiaryFill} />
+
+### Accent
+
+Use the accent variant to draw attention to important details or statuses with a noticeable but less dominant emphasis than the primary badge.
+
+<Callout text="The accent variant does not respond to Color Mode." />
+
+<Canvas of={BadgeStories.Accent} />
+
+## Sizes
+We have two `size` options, which should be used according to their context.
+
+### Default size
+Use `primary` when the `Badge` is a standalone entitity.
+<Canvas of={BadgeStories.DefaultSize} />
+
+
+### Small size
+Use `sm` when the `Badge` is inline with other components such as <LinkTo kind='Typography/Text'>Text</LinkTo>.
+<Canvas of={BadgeStories.SmallSize} />
+
+## Leading icon
+Include the `icon` property when the icon reinforces the badge’s message and improves scannability. Since badges are inherently small, it's recommended to use Gamut's mini icons. Below are examples of using icons with the different `Badge` sizes.
+
+### Default size with icon
+<Canvas of={BadgeStories.DefaultSizeWithIcon} />
+
+### Small size with icon
+<Canvas of={BadgeStories.SmallSizeWithIcon} />
+
+## Playground
+
+<Canvas sourceState="shown" of={BadgeStories.Default} />
+
+<Controls />

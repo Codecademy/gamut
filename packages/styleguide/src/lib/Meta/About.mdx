@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Meta',
+  title: 'Meta',
+  subtitle:
+    'Documentation and associated links explaining our in-progress approach to a design system.',
+};
+
+<Meta title="Meta/About" />
+
+<AboutHeader {...parameters} />
+
+<TableOfContents
+  links={[
+    {
+      id: 'Meta/Best Practices',
+      subtitle: 'Current best practices for using the Gamut Design System',
+      title: 'Best Practices',
+      status: 'current',
+    },
+    {
+      id: 'Meta/Contributing',
+      subtitle: `Thanks so much for being interested in contributing to Gamut! We love working with Codecademy employees across all our teams.`,
+      title: 'Contributing',
+    },
+    {
+      id: 'Meta/FAQs',
+      subtitle: `Please let us know if there are questions you'd like answered here!`,
+      title: 'FAQ',
+    },
+    {
+      id: 'Meta/Stories',
+      subtitle: `We're still building these opinions out, so don't expect all stories to adhere just yet!`,
+      title: 'Stories',
+    },
+  ]}
+/>

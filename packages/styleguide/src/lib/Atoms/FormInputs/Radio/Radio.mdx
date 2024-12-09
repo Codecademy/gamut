@@ -1,0 +1,63 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as RadioStories from './Radio.stories';
+
+export const parameters = {
+  subtitle: 'A `<input type="radio" />` element to be used with a `<RadioGroup />` component',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/inputs/Radio.tsx',
+  },
+};
+
+<Meta of={RadioStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use Radio to handle single selection within a group of options. Use RadioGroup to group multiple Radio components together semantically.
+
+## Radio Group
+
+`RadioGroup` is a helper element for grouping multiple `Radio` components semantically.
+
+<Canvas of={RadioStories.RadioGroupComponent} />
+
+## Input states
+
+### Checked
+
+<Canvas of={RadioStories.Checked} />
+
+### Disabled
+
+<Canvas of={RadioStories.Disabled} />
+
+### Disabled + Checked
+
+<Canvas of={RadioStories.DisabledChecked} />
+
+### Error
+
+<Canvas of={RadioStories.Error} />
+
+## Custom labels + InfoTip
+
+The `label` is a `ReactNode`, making it customizable outside of a standard text label. If you are including an <LinkTo id="Molecules/Tips/InfoTip">`InfoTip`</LinkTo>, you should include it as the infotip prop to ensure it isn't repeated by screen readers.
+
+<Canvas of={RadioStories.CustomLabel} />
+
+## Playground
+
+<Canvas sourceState="shown" of={RadioStories.Default} />
+
+<Controls />

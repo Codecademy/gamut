@@ -1,6 +1,6 @@
 import { ComponentType } from 'react';
 import * as React from 'react';
-import { FormState } from 'react-hook-form';
+import { FieldValues, FormState } from 'react-hook-form';
 
 import { Box, FlexBox } from '../Box';
 import { ButtonProps, FillButton } from '../Button';
@@ -9,17 +9,17 @@ import { Spinner } from '../Loading/Spinner';
 import { useSubmitState } from './utils';
 
 export interface SubmitContextProps {
-  loading?: FormStateCallback | boolean;
-  disabled?: FormStateCallback | boolean;
+  loading?: FormStateCallback<FieldValues> | boolean;
+  disabled?: FormStateCallback<FieldValues> | boolean;
 }
 
-export type FormStateCallback<Values = {}> = (
+export type FormStateCallback<Values extends FieldValues = {}> = (
   formState: FormState<Values>
 ) => boolean;
 
 export interface SubmitContextProps {
-  loading?: FormStateCallback | boolean;
-  disabled?: FormStateCallback | boolean;
+  loading?: FormStateCallback<FieldValues> | boolean;
+  disabled?: FormStateCallback<FieldValues> | boolean;
 }
 export type SubmitButtonProps = Omit<ButtonProps, 'as' | 'disabled'> &
   SubmitContextProps & {

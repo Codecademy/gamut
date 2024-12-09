@@ -1,0 +1,75 @@
+import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as LayoutGridStories from './LayoutGrid.stories';
+
+export const parameters = {
+  subtitle: 'A CSS grid based 12 Column grid system using just grid items.',
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Layout/index.tsx',
+  },
+};
+
+<Meta of={LayoutGridStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+`LayoutGrid` is a flexible grid that can support arbitrary rows of content, each of
+which snaps to assuming 12 "units" of width. Cells in the rows are
+stored as a `Column` that have a grid-specified gap
+between them.
+
+Row and column gaps can be configured in a responsive way. For example, you might
+have a particular set of gaps at small viewports and bigger ones on large viewports.
+
+### Best practices:
+
+- Use `LayoutGrid` to create a flexible grid for full-page layouts.
+
+### When NOT to use:
+
+- Use `FlexBox`, `GridBox`, or `Box` for containing smaller areas of the page.
+
+## Props + Variants
+
+### Grid gaps
+
+Grid gaps are the space between cells both horizontally and vertically.
+If you would like to adjust the space between columns, set the `columnGap`.
+If you would like to adjust the space between rows, set the `rowGap`.
+Both these properties can take a "CASS TO DO LINK" responsive size, allowing you to define gaps at each breakpoint.
+
+<Canvas of={LayoutGridStories.GridGap} />
+
+### Row height
+
+You can add row height to you by setting the `rowHeight` prop. This will set the height of each row in the grid.
+
+<Canvas of={LayoutGridStories.RowHeight} />
+
+### Offsets
+
+Columns may be offset from the left by numbers within the [0-12] scale.
+As with column and row gaps, those numbers may be static or responsive.
+
+<Canvas of={LayoutGridStories.Offset} />
+
+### Rowspans
+
+Columns may be span multiple rows. Make sure you have a consistent row height when using rowspans.
+
+<Canvas of={LayoutGridStories.Rowspans} />
+
+## Playground
+
+<Canvas sourceState="shown">
+  <Story of={LayoutGridStories.Default} />
+</Canvas>
+
+<Controls />

@@ -1,0 +1,38 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as FlyoutStories from './Flyout.stories';
+
+export const parameters = {
+  subtitle: `Flyout is a general purpose container that animates into view.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30420-40034',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Flyout/index.tsx',
+  },
+};
+
+<Meta of={FlyoutStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+On button click, a container animates in from the left or right side of the window. Flyout can be configured to close by pressing the “X” close icon, pressing they “esc” key, and/or clicking outside of the container.
+
+An example of an organism that uses Flyout is the <LinkTo id="organisms-layoutmenu">LayoutMenu</LinkTo>.
+Internally, Flyout is a combination of <LinkTo id="molecules-modals-overlay">Overlay</LinkTo> and <LinkTo id="atoms-drawer--drawer">Drawer</LinkTo>.
+
+Our Flyouts are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded` and `onChange`:
+
+
+## Playground
+<Canvas sourceState="shown" of={FlyoutStories.FlyoutExample} />
+
+<Controls />
