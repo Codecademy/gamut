@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from 'react';
 import {
   Background,
   corePalette,
-  enterpriseTheme,
+  coreTheme,
   ColorModes,
   GamutProvider,
 } from '@codecademy/gamut-styles/src';
@@ -38,11 +38,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
   // Always give iframes the full provider
   if (process.env.NODE_ENV === 'test') {
     return (
-      <GamutProvider
-        useCache={false}
-        useGlobals={false}
-        theme={enterpriseTheme}
-      >
+      <GamutProvider useCache={false} useGlobals={false} theme={coreTheme}>
         <Background bg={themeBackground[colorMode]} ref={storyRef}>
           {Story()}
         </Background>
@@ -52,7 +48,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
 
   // Wrap all stories in minimal provider
   return (
-    <GamutProvider theme={enterpriseTheme}>
+    <GamutProvider theme={coreTheme}>
       <Background bg={themeBackground[colorMode]} ref={storyRef}>
         {Story()}
       </Background>

@@ -83,7 +83,11 @@ export const DocsPage: React.FC = ({ children }) => {
 
   const linkIcon = <OpenIcon size={14} ml={8} />;
   return (
-    <Background minHeight="100vh" bg="gray-50" py={48}>
+    <Background
+      minHeight="100vh"
+      bg={isLocalhost ? 'beige' : 'paleBlue'}
+      py={48}
+    >
       <ContentContainer>
         <BreadCrumbs />
         <Title>{title}</Title>
