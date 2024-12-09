@@ -1,0 +1,83 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as CardStories from './Card.stories';
+
+export const parameters = {
+  subtitle:
+    'A card with multiple background combinations for presenting different types of information.',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=29975-39392&node-type=frame&t=SgphNxlCwEFrcv0X-0',
+  },
+  status: 'updating',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Card',
+  },
+};
+
+<Meta of={CardStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use Card to present different types of information in a visually appealing way.
+
+## Variants
+
+### White
+
+<Canvas of={CardStories.White} />
+
+### Yellow
+
+<Canvas of={CardStories.Yellow} />
+
+### Navy
+
+<Canvas of={CardStories.Navy} />
+
+### Hyper
+
+<Canvas of={CardStories.Hyper} />
+
+### Beige
+
+<Canvas of={CardStories.Beige} />
+
+## Shadow variants
+
+### Small
+
+<Canvas of={CardStories.SmallShadow} />
+
+### Medium
+
+<Canvas of={CardStories.MediumShadow} />
+
+### Outline
+
+The outline color will inherit the color of the card.
+
+<Canvas of={CardStories.OutlineShadow} />
+<Canvas of={CardStories.OutlineShadowColor} />
+
+## As link
+
+<Canvas of={CardStories.Link} />
+
+## ColorMode as default
+
+Card elements respond to the current <LinkTo id="Foundations/ColorMode">ColorMode</LinkTo> they are used in. Note that their background color will match the background of their context and secondary colors are used for their hover effect. As these are not the typical inverse effects we utilize in color mode, please check with your design team before use.
+
+<Canvas of={CardStories.Dynamic} />
+
+## Playground
+
+<Canvas sourceState="shown" of={CardStories.Default} />
+
+<Controls />

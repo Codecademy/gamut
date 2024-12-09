@@ -1,0 +1,101 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as ProgressBarStories from './ProgressBar.stories';
+
+export const parameters = {
+  subtitle: 'A horizontal bar for displaying progress.',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=18448-19639&node-type=frame&t=zRqgxQkQhUaLzOe7-0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/ProgressBar',
+},
+};
+
+<Meta of={ProgressBarStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use ProgressBar to indicate a known or somewhat-known amount of progress along a fixed course. For example, you
+might show one on a quiz page indicating how many questions have been
+completed.
+
+## Variants
+
+### Default
+
+The default variant has a transparent background and bordered look with colors based on the current color mode.
+
+<Canvas of={ProgressBarStories.Default} />
+
+### Blue
+
+<Canvas of={ProgressBarStories.Blue} />
+
+### Yellow
+
+<Canvas of={ProgressBarStories.Yellow} />
+
+## Sizes
+
+Bars with the `large` and `xl` sizes are thicker and will display a
+percentage label.
+
+### Small
+
+<Canvas of={ProgressBarStories.Small} />
+
+### Medium
+
+<Canvas of={ProgressBarStories.Medium} />
+
+### Large
+
+<Canvas of={ProgressBarStories.Large} />
+
+### XL
+
+<Canvas of={ProgressBarStories.XL} />
+
+## Minimum percent
+
+Some bars (generally small ones) should display at least a little bit of
+progress, even if the technical progress number is zero. You can use the
+`minimumPercent` prop for a minimum visual width percentage.
+
+<Canvas of={ProgressBarStories.MinimumPercent} />
+
+## Pattern background
+
+Use components from `@codecademy/gamut-patterns` for a pattern background.
+Here we are using the `DiagonalARegular` pattern in navy in the large ProgressBar and the `DiagonalADense` pattern in the smaller ProgressBar.
+
+<Canvas of={ProgressBarStories.PatternBackgroundStripesRegular} />
+
+<Canvas of={ProgressBarStories.PatternBackgroundStripesDense} />
+
+## Flat
+
+The flat prop allows the progress bar to be on top or bottom of a Card.
+
+### Flat Top
+
+<Canvas of={ProgressBarStories.FlatTop} />
+
+### Flat Bottom
+
+<Canvas of={ProgressBarStories.FlatBottom} />
+
+## Playground
+
+<Canvas sourceState="shown" of={ProgressBarStories.Default} />
+
+<Controls />

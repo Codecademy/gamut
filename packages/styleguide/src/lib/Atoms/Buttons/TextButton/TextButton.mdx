@@ -1,0 +1,37 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as TextButtonStories from './TextButton.stories';
+
+export const parameters = {
+  subtitle: `A button that usually only has text and is used for tertiary actions.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Button/TextButton.tsx',
+  },
+};
+
+<Meta of={TextButtonStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+Use this for tertiary actions. Include a leading or trailing icons from our mini icon set to clarify an action or to distinguish the button from other bold text.
+
+### Best practices:
+
+Our text buttons use bold formatting to differentiate themselves from normal text, as color alone does not meet the 3:1 contrast ratio required for accessibility. However, bold formatting may not be sufficient in all contexts, such as when placed alongside a bold heading.
+- In these cases, we recommend including a leading or trailing icon to further distinguish the button from other bold text. This additional visual cue ensures that the text button is easily identifiable and accessible to all users.
+
+
+## Playground
+<Canvas sourceState="shown" of={TextButtonStories.Default} />
+
+<Controls />
