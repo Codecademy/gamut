@@ -1,0 +1,184 @@
+import { DataTable } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+import { DataTableTemplate } from './examples.tsx';
+
+<Meta
+  title={title}
+  component={DataTable}
+  parameters={{
+    subtitle:
+      'Compare large amounts of data and perform bulk actions on Table Rows',
+    source: 'gamut',
+    status: 'current',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/MkQYGsGhMCCUls9TK0pn4U/Lists?node-id=304%3A8428',
+    },
+  }}
+  args={{
+    id: 'crew',
+    idKey: 'name',
+    query: { sort: { name: 'desc', role: 'asc' } },
+    rows: [
+      {
+        name: 'Jean Luc Picard',
+        'a very important role': 'Captain',
+        ship: 'USS Enterprise',
+      },
+      {
+        name: 'Wesley Crusher',
+        'a very important role': 'Deus Ex Machina',
+        ship: 'USS Enterprise',
+      },
+      {
+        name: 'Geordie LaForge',
+        'a very important role': 'Chief Engineer / Rascal',
+        ship: 'Borg Cube',
+      },
+      {
+        name: 'Data',
+        'a very important role': 'Lt. Commander / Scamp',
+        ship: 'He is a ship',
+      },
+      {
+        name: `Miles Edward O'Brien, 24th Century Man`,
+        'a very important role': 'Command Master Chief',
+        ship: 'Deep Space 9',
+      },
+    ],
+    columns: [
+      {
+        label: 'Name',
+        key: 'name',
+        size: 'lg',
+        type: 'header',
+        sortable: true,
+      },
+      {
+        label: 'Rank',
+        key: 'a very important role',
+        size: 'lg',
+        sortable: true,
+      },
+      { label: 'Ship', key: 'ship', size: 'lg', sortable: true, fill: true },
+    ],
+    spacing: 'condensed',
+    onRowExpand: undefined,
+    onRowSelect: undefined,
+  }}
+/>
+
+## Design principles
+
+**Design principles**
+
+- Recommended for bulk analysis across Rows
+- Tables best support information that needs sorting, filtering, pagination, and querying
+- Prioritize data and information that’s meant to be compared up front, then surface secondary information on external surfaces
+
+**Use table affordances for best information design**
+
+- Design and arrange table metrics to encourage finding, scanning, and comparing information
+
+**Use cell-level interactions to activate specific data**
+
+- Use Coachmarks, Tooltips, Modals, and Flyovers to augment information
+- Use Anchors and Links to direct users to another surface
+
+**Be careful about information overload**
+
+- Determine what’s helpful to see en-masse, versus what info should be drilled down into
+- Be mindful about the horizontal spacing between columns and headers
+- Order metrics based on priority, and consider collapsing extraneous metrics on smaller sizes
+
+## Usage
+
+```tsx
+const DataTown = () => {
+  const [selectedRows, setSelectedRows] = useState([]);
+  const [expandedRows, setExpandedRows] = useState([]);
+  const columns = [
+    { key: 'name', sortable: true, size: 'sm' },
+    { key: 'ship', sortable: true, size: 'sm' },
+  ];
+
+  const queryData = useLocalQuery({
+    idKey: 'name',
+    rows: crew,
+    columns,
+  });
+
+  return (
+    <DataTable
+      id="example"
+      columns={columns}
+      selectedRows={selectedRows}
+      onRowSelect={setSelectedRows}
+      expandedRows={expandedRows}
+      onRowExpand={setExpandedRows}
+      renderExpanded={({ name }) => <>{name}: This is pretty cool</>}
+      {...queryData}
+    />
+  );
+};
+```
+
+<br />
+
+### Sorting and filtering
+
+Each column takes a `sortable` and `filters` prop - this is will determine if the column should be sortable and which filters should appear in the dropdown menu of the column.
+
+<Story name="Full example">
+  <DataTableTemplate />
+</Story>
+
+<br />
+
+### Empty state
+
+<Story name="Empty state" args={{ rows: [], shadow: true }}>
+  {(args) => <DataTable {...args} scrollable />}
+</Story>
+
+<br />
+
+### Loading rows
+
+Replaces content of current rows with <LinkTo kind="Atoms/Loaders/Shimmer">Shimmer</LinkTo>.
+
+<Story name="Loading rows" args={{ loading: true, shadow: true }}>
+  {(args) => <DataTable {...args} />}
+</Story>
+
+<br />
+
+### Scrollable indicators
+
+<Story name="Scrollable indicators" args={{ shadow: true }}>
+  {(args) => <DataTable {...args} />}
+</Story>
+
+<br />
+
+### Additional column configuration
+
+- `size` - enum which determines how much space the column should take up within the table
+- `fill` - boolean which, when set to true, takes up the remaining space in the table. Each `DataTable` should only have one `fill` column.
+
+<br />
+
+### Code playground
+
+<Story name="DataTable">{(args) => <DataTable {...args} />}</Story>
+
+<br />
+<br />
+<br />
+
+<PropsTable story="DataTable" />

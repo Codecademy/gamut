@@ -1,0 +1,222 @@
+import {
+  Box,
+  DeprecatedToolTip,
+  FillButton,
+  FlexBox,
+  GridBox,
+  Text,
+} from '@codecademy/gamut/src';
+import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import upperFirst from 'lodash/upperFirst';
+
+import { LinkTo } from '~styleguide/blocks';
+
+import { CustomCheckbox } from '../../Atoms/FormInputs/examples';
+
+<Meta
+  title={title}
+  component={DeprecatedToolTip}
+  parameters={{
+    subtitle:
+      'Deprecated: A teeny floating text component that positions itself relative to its target. Currently being replaced by the new InfoTip + upcoming LinkPreview components',
+    source: 'gamut',
+    design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1111%3A0',
+    },
+    status: 'deprecated',
+  }}
+  args={{
+    children: `I am helpful text related to this target`,
+    target: <InfoCircleIcon size={16} />,
+    id: 'my-unique-id',
+  }}
+/>
+
+**Note:** This component is deprecated and should not be used in new designs.
+
+_Small_ piece of extra information triggered on the focus or hover of a button or icon, such as extra requirements for a form surfaced from an informative (i) icon.
+
+Tooltip contents are generally small pieces of text or other non-interactive information.
+They disappear when the focus or hover are no longer active.
+Great for surfacing additional information that may or may not be relevant _without_ cluttering the core interface.
+
+> If you'd like interactive contents, use a <LinkTo id="molecules-popover--popover">Popover</LinkTo>.
+
+<Canvas>
+  <Story name="DeprecatedToolTip">
+    {(args) => (
+      <FlexBox center py={64} m={24}>
+        <Text aria-describedby={args.id}> Hello! &nbsp;</Text>
+        <DeprecatedToolTip {...args} target={<InfoCircleIcon size={16} />} />
+      </FlexBox>
+    )}
+  </Story>
+</Canvas>
+
+<PropsTable exclude={['target']} story="ToolTip" />
+
+## Writing Tips
+
+Writing a tooltip? Keep it short, useful, and avoid sharing information that’s vital for learners to complete tasks. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="ux-writing-component-guidelines-tooltips--page">writing for tooltips</LinkTo>.
+
+<CustomCheckbox
+  htmlFor="tooltip-1"
+  label="Only add a tooltip if the information is actually useful."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="tooltip-2"
+  label="Avoid redundancy to information already available on screen."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="tooltip-3"
+  label="Don’t hide information learners need to complete a task in a tooltip."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="tooltip-4"
+  label="Don’t include links in tooltips. They aren’t accessible to screen readers."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="tooltip-5"
+  label="Keep copy at a reading level of grade 7 or below. Test with [Hemingway App](https://hemingwayapp.com/)."
+  spacing="tight"
+/>
+<CustomCheckbox
+  htmlFor="tooltip-6"
+  label="Ask someone unrelated to the project to read the message to see if it makes sense."
+  spacing="tight"
+/>
+
+## Alignment
+
+Tooltips can be aligned both horizontally and vertically relative to their target.
+The caret tip will be centered horizontally on the target.
+
+### Smaller Alignments
+
+Tooltips with _centered_ alignments -`bottom-center` or `top-center`- are smaller sized and meant for a single small number of words, like keyboard shortcuts.
+
+_Note:_ Because of the size of these ToolTips, they should never overflow their container so are not applicable to Tooltips with the 'floating' `placement`.
+
+<Canvas>
+  <Story name="Smaller alignment">
+    {(args) => {
+      return (
+        <FlexBox py={48} justifyContent="space-around">
+          {['bottom-center', 'top-center'].map((alignment) => {
+            return (
+              <Box key={alignment}>
+                <DeprecatedToolTip
+                  {...args}
+                  alignment={alignment}
+                  target={
+                    <FillButton>
+                      {alignment.split('-').map(upperFirst).join(' ')}
+                    </FillButton>
+                  }
+                >
+                  Hi!
+                </DeprecatedToolTip>
+              </Box>
+            );
+          })}
+        </FlexBox>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Larger Alignments
+
+Tooltips with _corner_ alignments -`*-left` or `*-right`- are larger sized and meant for the occasional longer explanation, like form field validation explainers.
+
+<Canvas>
+  <Story name="Larger alignment">
+    {(args) => {
+      return (
+        <GridBox gap={24} py={64} ml={8} gridTemplateColumns="1fr 1fr">
+          {['top-right', 'top-left', 'bottom-right', 'bottom-left'].map(
+            (alignment) => {
+              return (
+                <Box key={alignment}>
+                  <DeprecatedToolTip
+                    {...args}
+                    alignment={alignment}
+                    target={
+                      <FillButton>
+                        {alignment.split('-').map(upperFirst).join(' ')}
+                      </FillButton>
+                    }
+                  />
+                </Box>
+              );
+            }
+          )}
+        </GridBox>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Focusable
+
+ToolTip targets are often buttons or other natively focusable elements.
+
+If the target is not focusable, such as for plain text or icons, use the `focusable` prop so keyboard users can still trigger the ToolTip.
+
+<Canvas>
+  <Story name="Focusable">
+    {(args) => {
+      return (
+        <Box pt={64} pl={12}>
+          <DeprecatedToolTip {...args} focusable target="Information!" />
+        </Box>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Placement
+
+Tooltips sometimes need to be in used in a way that they need to escape the confines of their parents container. The `floating` variant of the `placement` prop allows ToolTips to do just this. (Notice how this section doesn't need as much padding because the ToolTips are able to escape their context!)
+
+<Canvas>
+  <Story name="Placement">
+    {() => {
+      return (
+        <FlexBox alignItems="center" justifyContent="space-around" p={4}>
+          <DeprecatedToolTip
+            id="floating-focusable-id"
+            placement="floating"
+            target={<FillButton> Hey! </FillButton>}
+          >
+            I am a floating Tooltip who has a focusable target
+          </DeprecatedToolTip>
+          <Box>
+            Some cool info
+            <DeprecatedToolTip
+              id="floating-focusable-id"
+              focusable
+              placement="floating"
+              target={<InfoCircleIcon size={20} />}
+            >
+              I am a floating Tooltip who does not have a focusable target
+            </DeprecatedToolTip>
+          </Box>
+        </FlexBox>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Mode
+
+Tooltips can be of a `dark` or `light` visual mode. Swap the ColorMode in our toolbar at the top of the page to see them in action!

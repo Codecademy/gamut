@@ -1,0 +1,66 @@
+import { AccordionButtonDeprecated } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '@codecademy/storybook-addon-variance';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title={title}
+  component={AccordionButtonDeprecated}
+  parameters={{
+    subtitle: `
+The standard "top" button for an \`AccordionDeprecated\`.
+Comes in a few standard size and color combinations.
+`,
+    source: 'gamut',
+    status: 'deprecated',
+  }}
+  args={{
+    children: 'Click me!',
+    expanded: false,
+    size: 'normal',
+    theme: 'plain',
+  }}
+/>
+
+<Canvas>
+  <Story name="AccordionButtonDeprecated">
+    {(args) => <AccordionButtonDeprecated {...args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="AccordionButtonDeprecated" />
+
+## Themes
+
+### Blue
+
+Blue AccordionButtonDeprecated tops are only usable in dark contexts, such as the LE's
+Help Menu.
+
+<Canvas className="dark">
+  <Story name="Blue" args={{ expanded: true, theme: 'blue' }}>
+    {(args) => <AccordionButtonDeprecated {...args} />}
+  </Story>
+</Canvas>
+
+### Plain
+
+Plain AccordionButtonDeprecated tops are best applied in plain pages such as marketing pages
+where we haven't been able to invest yet in a more solid theme.
+
+<Canvas>
+  <Story name="Plain" args={{ expanded: true, theme: 'plain' }}>
+    {(args) => <AccordionButtonDeprecated {...args} />}
+  </Story>
+</Canvas>
+
+### Yellow
+
+Yellow AccordionButtonDeprecated tops are used in the "Get a Hint" sections of the LE's
+narrative pane.
+
+<Canvas>
+  <Story name="Yellow" args={{ expanded: true, theme: 'yellow' }}>
+    {(args) => <AccordionButtonDeprecated {...args} />}
+  </Story>
+</Canvas>
