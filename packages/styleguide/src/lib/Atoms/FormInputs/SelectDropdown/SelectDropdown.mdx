@@ -1,0 +1,153 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as SelectDropdownStories from './SelectDropdown.stories';
+
+export const parameters = {
+  subtitle: 'A variant of our `Select` component with a styled dropdown menu.',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/inputs/SelectDropdown.tsx',
+  },
+};
+
+<Meta of={SelectDropdownStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use SelectDropdown to pick from exclusive options within a styled dropdown.
+
+`SelectDropdown` has a larger JavaScript dependency size than our standard `Select` component so should not be used unless specified in designs. These dropdowns are optionally searchable through the `isSearchable` prop.
+
+If you are using this in a standard form, `SelectDropdown` must be provided an `aria-label` and a `name`. The `aria-label` must match the `htmlFor` of the FormGroupLabel or `<label>` of the SelectDropdown.
+
+## Events and controlled components
+
+Instead of a standard HTML Select event return, SelectDropdown returns the selected option. This is formatted as `{label: 'labelText', value: 'valueText' }`. Your event functions should be formatted as `(event) => changeHandler(event.value)` instead of `(event) => changeHandler(event.target.value)`.
+
+SelectDropdown does not take a defaultValue prop. If you wish to define a default value, you must format `SelectDropdown` as a [controlled component](https://reactjs.org/docs/forms.html#controlled-components), like so:
+
+```tsx
+import { Box, SelectDropdown } from '@codecademy/gamut';
+import React, { useState } from 'react';
+
+export const CustomDropdown: React.FC = ({
+  errorMessage,
+  disabled,
+  defaultValue,
+  options,
+}) => {
+  const [currentValue, setCurrentValue] = useState(defaultValue);
+
+  const changeHandler = (newValue) => {
+    setCurrentValue(newValue);
+  };
+
+  return (
+    <FormGroup error={errorMessage} disabled={disabled}>
+      <SelectDropdown
+        options={options}
+        onChange={(e) => changeHandler(e.value)}
+        placeholder="Placeholder"
+        error={!!errorMessage}
+        disabled={disabled}
+        value={currentValue}
+      />
+    </FormGroup>
+  );
+};
+```
+
+## SelectDropdown states
+
+### Base
+
+<Canvas of={SelectDropdownStories.Base} />
+
+### Searchable
+
+<Canvas of={SelectDropdownStories.Searchable} />
+
+### Disabled
+
+<Canvas of={SelectDropdownStories.Disabled} />
+
+### Error
+
+<Canvas of={SelectDropdownStories.Error} />
+
+## Size variant
+
+We have a smaller SelectDropdown for more compact spaces.
+
+<Canvas of={SelectDropdownStories.Small} />
+<Canvas of={SelectDropdownStories.SmallSearchable} />
+
+## Option variants
+
+You may need to add additional info to your dropdowns, like disabled options, option subtitles, group dividers, or controlling the number of options shown at once.
+
+### Number of shown options
+
+You can chose how options will be shown in the dropdown with the `shownOptionsLimit` prop. 6 is the default limit and the maximum number of options you can show in the dropdown at once.
+
+<Canvas of={SelectDropdownStories.ShownOptionsDefault} />
+<Canvas of={SelectDropdownStories.ShownOptionsThree} />
+
+### Disabled options
+
+<Canvas of={SelectDropdownStories.DisabledOptions} />
+
+### Subtitles
+
+<Canvas of={SelectDropdownStories.Subtitles} />
+
+### Right labels
+
+<Canvas of={SelectDropdownStories.RightLabels} />
+
+### Group dividers
+
+<Canvas of={SelectDropdownStories.GroupDividers} />
+
+### Group labels
+
+<Canvas of={SelectDropdownStories.GroupLabels} />
+
+### Icons
+
+To add some pizzazz to your dropdown, you can add any of our <LinkTo id='Atoms/Icons'>gamut-icons</LinkTo> to your options.
+
+<Canvas of={SelectDropdownStories.Icons} />
+
+### Custom input props
+
+Some of our forms require special props be passed directly onto the `<input/>` component. We can do that by passing an object, formatted `{propName: value}`, into our inputProps prop.
+
+<Canvas of={SelectDropdownStories.CustomInputProps} />
+
+## Multiple select
+
+<Canvas of={SelectDropdownStories.MultipleSelect} />
+
+## FormGroup + SelectDropdown
+
+`SelectDropdown` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `SelectDropdown` for maximum accessibility. See <LinkTo id="Atoms/FormElements/FormGroup">FormGroup</LinkTo> story for the customizations available.
+
+<Canvas of={SelectDropdownStories.FormGroupSelectDropdown} />
+<Canvas of={SelectDropdownStories.FormGroupError} />
+
+## Playground
+
+<Canvas sourceState="shown" of={SelectDropdownStories.Default} />
+
+<Controls />
