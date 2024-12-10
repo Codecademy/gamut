@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Box, FlexBox, Flyout, StrokeButton } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
