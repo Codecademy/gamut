@@ -77,19 +77,19 @@ export const Truncation: Story = {
           <Fragment key={lines}>
             <Column size={3} alignItems="center">
               <Text as="code" fontSize={14}>
-                truncate="{truncateType}"
+                truncate=&quot;{truncateType}&quot;
                 <br />
                 truncateLines={lines}
               </Text>
             </Column>
             <Column size={9}>
               <Text truncateLines={lines} truncate={truncateType} width="400px">
-                This is a very long text thingy that we want to truncate it's
-                very long indeed. This is a very long text thingy that we want
-                to truncate it's very long indeed. This is a very long text
-                thingy that we want to truncate it's very long indeed. This is a
-                very long text thingy that we want to truncate it's very long
-                indeed.
+                This is a very long text thingy that we want to truncate
+                it&#39;s very long indeed. This is a very long text thingy that
+                we want to truncate it&#39;s very long indeed. This is a very
+                long text thingy that we want to truncate it&#39;s very long
+                indeed. This is a very long text thingy that we want to truncate
+                it&#39;s very long indeed.
               </Text>
             </Column>
           </Fragment>
