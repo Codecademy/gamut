@@ -1244,7 +1244,7 @@ export const FormLoadingExample = () => {
             validation: {
               required: 'pls fill this out',
               pattern: {
-                value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
+                value: /^(?:[a-zA-Z0-9_]+(?:[.-]?[a-zA-Z0-9_]+)*)@\w+([.-]?\w+)*(\.\w{2,})+$/,
                 message: 'that is not an email 😔',
               },
             },
