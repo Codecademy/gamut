@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FocusOn } from 'react-focus-on';
 import { ReactFocusOnProps } from 'react-focus-on/dist/es5/types';
 
-import { WithChildrenProp } from '..';
+import { WithChildrenProp } from '../utils';
 
 const focusOnStyles = {
   /**

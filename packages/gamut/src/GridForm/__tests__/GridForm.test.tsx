@@ -3,7 +3,8 @@ import { fireEvent, queries } from '@testing-library/dom';
 import { act, RenderResult, waitFor } from '@testing-library/react';
 
 import { createPromise } from '../../utils';
-import { GridForm, GridFormField } from '..';
+import { GridForm } from '../GridForm';
+import { GridFormField } from '../types';
 import {
   stubCheckboxField,
   stubFieldCases,

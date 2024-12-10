@@ -50,11 +50,16 @@ export const Variants: Story = {
         <Fragment key={variant}>
           <Column size={1} alignItems="center">
             <Text as="code" fontSize={14}>
-              {typographyStyleVariants[variant].fontSize}
+              {typographyStyleVariants[
+                variant as keyof typeof typographyStyleVariants
+              ].fontSize.toString()}
             </Text>
           </Column>
           <Column size={11}>
-            <Text as="span" variant={variant}>
+            <Text
+              as="span"
+              variant={variant as keyof typeof typographyStyleVariants}
+            >
               {variant}
             </Text>
           </Column>
@@ -98,10 +103,10 @@ export const FontSmoothing: Story = {
   render: () => (
     <LayoutGrid {...layoutGridStyles}>
       {typographyUtilities.smoothing.map((variant) => (
-        <Fragment key={variant}>
+        <Fragment key={variant.toString()}>
           <Column size={3} alignItems="center">
             <Text as="code" fontSize={14}>
-              smooth="{variant.toString()}"
+              smooth=&quot;{variant.toString()}&quot;
             </Text>
           </Column>
           <Column size={9}>
@@ -119,10 +124,10 @@ export const Screenreader: Story = {
   render: () => (
     <LayoutGrid {...layoutGridStyles}>
       {typographyUtilities.screenreader.map((variant) => (
-        <Fragment key={variant}>
+        <Fragment key={variant.toString()}>
           <Column size={3} alignItems="center">
             <Text as="code" fontSize={14}>
-              screenreader="{variant.toString()}"
+              screenreader=&quot;{variant.toString()}&quot;
             </Text>
           </Column>
           <Column size={9}>

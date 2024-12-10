@@ -9,8 +9,7 @@ const meta: Meta<typeof PreviewTip> = {
     alignment: 'top-left',
     children: 'PreviewTip Anchor',
     linkDescription: `Include a relevant snippet from the links destination on hover and focus, on click navigates to the page for more details. By default, the snippet will truncate after 4 lines, but the max lines can be set to any number lines fourty three`,
-    href:
-      'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExamp6NDVlZzNpam01NnlhaGRreWMwZGlzZ3Z6bWd2dmtneTJrN3pnZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/X5Lta1bjuULTubmGzR/giphy.webp',
+    href: 'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExamp6NDVlZzNpam01NnlhaGRreWMwZGlzZ3Z6bWd2dmtneTJrN3pnZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/X5Lta1bjuULTubmGzR/giphy.webp',
   },
 };
 
@@ -22,14 +21,14 @@ const DefaultExample = (args: React.ComponentProps<typeof PreviewTip>) => {
     <FlexBox center py={96}>
       <PreviewTip {...args} />
     </FlexBox>
-  )
-}
+  );
+};
 
 export const Default: Story = {
   render: (args) => <DefaultExample {...args} />,
 };
 
-const AvatarExample = (args: React.ComponentProps<typeof PreviewTip>) => {
+const AvatarExample = () => {
   return (
     <FlexBox center py={96} mt={16}>
       <PreviewTip
@@ -47,20 +46,20 @@ const AvatarExample = (args: React.ComponentProps<typeof PreviewTip>) => {
       />
     </FlexBox>
   );
-}
+};
 
 export const AvatarTip: Story = {
   render: (args) => <AvatarExample {...args} />,
-}
+};
 
 export const FloatingPreviewTip: Story = {
   args: {
-    placement:"floating",
-    alignment:"top-right",
-  }
-}
+    placement: 'floating',
+    alignment: 'top-right',
+  },
+};
 
-const LoadingExample = (args: React.ComponentProps<typeof PreviewTip>) => {
+const LoadingExample = () => {
   const [load, setIsTempLoad] = useState(true);
 
   const onFocus = () => {
@@ -69,45 +68,45 @@ const LoadingExample = (args: React.ComponentProps<typeof PreviewTip>) => {
 
   return (
     <FlexBox center py={96}>
-    <FlexBox justifyContent="space-between" py={96} mt={16} width="100%">
-      <PreviewTip linkDescription="loading..." loading href="/test">
-        I am a perpetually loading preview.
-      </PreviewTip>
-      <PreviewTip
-        alignment="bottom-left"
-        height={32}
-        href="/test"
-        linkDescription={load ? 'loading...' : 'test'}
-        loading={load}
-        onFocus={onFocus}
-        truncateLines={1}
-        width={32}
-      >
-        I will show loading for a few seconds on keyboard focus.
-      </PreviewTip>
-    </FlexBox>
+      <FlexBox justifyContent="space-between" py={96} mt={16} width="100%">
+        <PreviewTip linkDescription="loading..." loading href="/test">
+          I am a perpetually loading preview.
+        </PreviewTip>
+        <PreviewTip
+          alignment="bottom-left"
+          height={32}
+          href="/test"
+          linkDescription={load ? 'loading...' : 'test'}
+          loading={load}
+          onFocus={onFocus}
+          truncateLines={1}
+          width={32}
+        >
+          I will show loading for a few seconds on keyboard focus.
+        </PreviewTip>
+      </FlexBox>
     </FlexBox>
   );
-}
+};
 
 export const LoadingTip: Story = {
   render: (args) => <LoadingExample {...args} />,
-}
+};
 
 const TruncationExample = (args: React.ComponentProps<typeof PreviewTip>) => {
   return (
     <FlexBox py={96} width="100%" justifyContent="space-around">
-        <PreviewTip {...args} truncateLines={2} alignment="top-right" />
-        <PreviewTip
-          {...args}
-          truncateLines={5}
-          alignment="bottom-left"
-          linkDescription="This is a long link description. There is nothing fun or funny in this PreviewTip, and this definitely is way too long to be a 'summary' of anything at all. No one wants to read a preview that's as long as the article, its like a trailer that gives away the whole movie. Be better than that. Be a serious person."
-        />
-      </FlexBox>
-  )
-}
+      <PreviewTip {...args} truncateLines={2} alignment="top-right" />
+      <PreviewTip
+        {...args}
+        truncateLines={5}
+        alignment="bottom-left"
+        linkDescription="This is a long link description. There is nothing fun or funny in this PreviewTip, and this definitely is way too long to be a 'summary' of anything at all. No one wants to read a preview that's as long as the article, its like a trailer that gives away the whole movie. Be better than that. Be a serious person."
+      />
+    </FlexBox>
+  );
+};
 
 export const Truncation: Story = {
   render: (args) => <TruncationExample {...args} />,
-}
+};

@@ -1,4 +1,10 @@
-import { Box, DeprecatedToolTip , FillButton,FlexBox, GridBox } from '@codecademy/gamut';
+import {
+  Box,
+  DeprecatedToolTip,
+  FillButton,
+  FlexBox,
+  GridBox,
+} from '@codecademy/gamut';
 import { InfoCircleIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import upperFirst from 'lodash/upperFirst';
@@ -16,7 +22,13 @@ export default meta;
 type Story = StoryObj<typeof DeprecatedToolTip>;
 
 interface TipBaseAlignmentProps {
-  alignment?: 'bottom-center' | 'top-center' | 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
+  alignment?:
+    | 'bottom-center'
+    | 'top-center'
+    | 'top-right'
+    | 'top-left'
+    | 'bottom-right'
+    | 'bottom-left';
   target?: React.ReactNode;
   children?: React.ReactNode;
   id?: string;
@@ -47,10 +59,9 @@ const SmallAligmentExample: React.FC<TipBaseAlignmentProps> = (args) => {
   );
 };
 
-
 export const SmallAlignments: Story = {
   render: (args) => <SmallAligmentExample {...args} />,
-}
+};
 
 const LargerAlignmentExample: React.FC<TipBaseAlignmentProps> = (args) => {
   return (
@@ -75,25 +86,30 @@ const LargerAlignmentExample: React.FC<TipBaseAlignmentProps> = (args) => {
       )}
     </GridBox>
   );
-  }
+};
 
 export const LargerAlignments: Story = {
   render: (args) => <LargerAlignmentExample {...args} />,
-}
+};
 
 const FocusableExample: React.FC<TipBaseAlignmentProps> = (args) => {
   return (
     <Box pt={64} pl={12}>
-      <DeprecatedToolTip {...args} focusable id={args.id || 'default-id'} target="Information!" />
+      <DeprecatedToolTip
+        {...args}
+        focusable
+        id={args.id || 'default-id'}
+        target="Information!"
+      />
     </Box>
   );
-}
+};
 
 export const Focusable: Story = {
   render: (args) => <FocusableExample {...args} />,
-}
+};
 
-const PlacementExample: React.FC<TipBaseAlignmentProps> = (args) => {
+const PlacementExample: React.FC<TipBaseAlignmentProps> = () => {
   return (
     <FlexBox alignItems="center" justifyContent="space-around" p={4}>
       <DeprecatedToolTip
@@ -116,8 +132,8 @@ const PlacementExample: React.FC<TipBaseAlignmentProps> = (args) => {
       </Box>
     </FlexBox>
   );
-}
+};
 
 export const Placement: Story = {
   render: (args) => <PlacementExample {...args} />,
-}
+};

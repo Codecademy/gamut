@@ -1,6 +1,6 @@
 import { RefObject } from 'react';
 
-import { WithChildrenProp } from '..';
+import { WithChildrenProp } from '../utils';
 
 export type Alignments =
   | 'top-left'

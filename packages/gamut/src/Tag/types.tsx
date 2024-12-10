@@ -1,7 +1,7 @@
 import { StyleProps } from '@codecademy/variance';
 import { ComponentProps } from 'react';
 
-import { WithChildrenProp } from '..';
+import { WithChildrenProp } from '../utils';
 import { DismissButton, tagProps } from './elements';
 import { colorVariants, tagWrapperStates } from './styles';
 
