@@ -2,15 +2,12 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 import * as React from 'react';
 import { act } from 'react-dom/test-utils';
+import { useFormState } from 'react-hook-form';
 
-import {
-  Checkbox,
-  ConnectedForm,
-  Input,
-  useDebouncedField,
-  useFormState,
-  WithChildrenProp,
-} from '../..';
+import { Checkbox, Input } from '../../Form';
+import { WithChildrenProp } from '../../utils';
+import { ConnectedForm } from '../ConnectedForm';
+import { useDebouncedField } from '../utils';
 
 const mockedSetValue = jest.fn();
 

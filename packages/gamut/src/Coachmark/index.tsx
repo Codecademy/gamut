@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import * as React from 'react';
 
-import { WithChildrenProp } from '..';
 import { Popover, PopoverProps } from '../Popover';
+import { WithChildrenProp } from '../utils';
 
 export interface CoachmarkProps extends WithChildrenProp {
   /**
