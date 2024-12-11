@@ -2,7 +2,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ComponentProps, forwardRef, MouseEvent } from 'react';
 import * as React from 'react';
 
-import { Box, WithChildrenProp } from '..';
+import { Box } from '../Box';
+import { WithChildrenProp } from '../utils';
 import { RowEl } from './elements';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
@@ -58,13 +59,8 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     },
     ref
   ) => {
-    const {
-      isOl,
-      rowBreakpoint,
-      scrollable,
-      variant,
-      ...rowConfig
-    } = useListContext();
+    const { isOl, rowBreakpoint, scrollable, variant, ...rowConfig } =
+      useListContext();
     const { onClick, role, tabIndex, ...rowProps } = rest;
     const wrapperProps =
       !renderExpanded && !onClick
@@ -84,7 +80,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           onClick={onClick}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && onClick) {
-              onClick((e as unknown) as MouseEvent<HTMLLIElement>);
+              onClick(e as unknown as MouseEvent<HTMLLIElement>);
             }
           }}
           role={onClick ? 'button' : role}

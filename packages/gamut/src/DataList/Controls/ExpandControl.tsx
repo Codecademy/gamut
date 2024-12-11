@@ -4,11 +4,12 @@ import * as React from 'react';
 import { Rotation } from '../../Animation';
 import { FlexBox } from '../../Box/FlexBox';
 import { TextButton } from '../../Button/TextButton';
-import { RowChange } from '..';
+import { RowChange } from '../types';
 
 export interface ExpandColProps {
   expanded?: boolean;
   onExpand?: RowChange<any>;
+  // eslint-disable-next-line react/no-unused-prop-types
   ghost?: boolean;
   disabled?: boolean;
   id?: any;

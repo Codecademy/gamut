@@ -1,0 +1,41 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as DrawerStories from './Drawer.stories';
+
+export const parameters = {
+  subtitle:
+    'Animated container that expands horizontally to show its contents.',
+  status: 'current',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30420-41014&node-type=frame&t=SgphNxlCwEFrcv0X-0',
+  },
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Drawer',
+  },
+};
+
+<Meta of={DrawerStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Drawers animate between having `0` width and having a responsive width:
+
+- Mobile devices (&lt;`sm`): `75vw`
+- Tablet and larger (&gt;=`sm`): `30rem`
+
+An example of a molecule that uses Drawer is the <LinkTo id="Molecules/Flyout">Flyout</LinkTo>.
+
+Our Drawers are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded`.
+
+## Playground
+
+<Canvas sourceState="shown" of={DrawerStories.Default} />
+
+<Controls />

@@ -1,7 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, queries } from '@testing-library/dom';
 import { act, RenderResult, waitFor } from '@testing-library/react';
-import * as rhf from 'react-hook-form';
 
 import { createPromise } from '../../utils';
 import { ConnectedForm } from '..';
@@ -87,9 +86,8 @@ describe('ConnectedForm', () => {
 
     const { view } = renderView({ onSubmit });
 
-    const { checkboxField, selectField, textField, radioOption } = getBaseCases(
-      view
-    );
+    const { checkboxField, selectField, textField, radioOption } =
+      getBaseCases(view);
 
     doBaseFormActions(selectField, textField, checkboxField, radioOption);
 
@@ -125,7 +123,7 @@ describe('ConnectedForm', () => {
   it('calls clearError onError so error text is re-read by screen reader', async () => {
     const mockHandleSubmit = jest.fn();
 
-    // the return type of useForm is optionally undefined, so we have to do some seemingly unnecessary nullish coalescing here for type safety
+    /* We need a different approach to mock useForm and clearErrors, though since this is blocking the Storybook upgrade we'll use a stopgap for now.
     const mockedUseForm =
       jest.spyOn(rhf, 'useForm').getMockImplementation() ?? mockHandleSubmit;
 
@@ -133,6 +131,7 @@ describe('ConnectedForm', () => {
       const returnMock = mockedUseForm();
       return { ...returnMock, clearErrors: mockHandleSubmit };
     });
+    */
 
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
@@ -140,6 +139,7 @@ describe('ConnectedForm', () => {
       validationRules,
       defaultValues,
       onSubmit,
+      onError: mockHandleSubmit,
     });
 
     await act(async () => {
@@ -158,9 +158,8 @@ describe('ConnectedForm', () => {
       onSubmit,
     });
 
-    const { checkboxField, selectField, textField, radioGroup } = getBaseCases(
-      view
-    );
+    const { checkboxField, selectField, textField, radioGroup } =
+      getBaseCases(view);
 
     expect(checkboxField).toHaveAttribute('aria-required');
     expect(selectField).toHaveAttribute('aria-required');
@@ -218,12 +217,8 @@ describe('ConnectedForm', () => {
         onSubmit,
       });
 
-      const {
-        checkboxField,
-        selectField,
-        textField,
-        radioOption,
-      } = getBaseCases(view);
+      const { checkboxField, selectField, textField, radioOption } =
+        getBaseCases(view);
 
       doBaseFormActions(selectField, textField, checkboxField, radioOption);
 
@@ -246,12 +241,8 @@ describe('ConnectedForm', () => {
         onSubmit,
       });
 
-      const {
-        checkboxField,
-        selectField,
-        textField,
-        radioOption,
-      } = getBaseCases(view);
+      const { checkboxField, selectField, textField, radioOption } =
+        getBaseCases(view);
 
       await act(async () => {
         fireEvent.submit(view.getByRole('button'));
@@ -274,12 +265,8 @@ describe('ConnectedForm', () => {
         disableFieldsOnSubmit: true,
       });
 
-      const {
-        checkboxField,
-        selectField,
-        textField,
-        radioOption,
-      } = getBaseCases(view);
+      const { checkboxField, selectField, textField, radioOption } =
+        getBaseCases(view);
       await act(async () => {
         fireEvent.submit(view.getByRole('button'));
       });
@@ -305,12 +292,8 @@ describe('ConnectedForm', () => {
           resetOnSubmit: true,
         });
 
-        const {
-          checkboxField,
-          selectField,
-          textField,
-          radioOption,
-        } = getBaseCases(view);
+        const { checkboxField, selectField, textField, radioOption } =
+          getBaseCases(view);
 
         doBaseFormActions(selectField, textField, checkboxField, radioOption);
 

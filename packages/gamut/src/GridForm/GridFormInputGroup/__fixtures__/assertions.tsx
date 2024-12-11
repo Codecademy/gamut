@@ -73,7 +73,12 @@ export const additionalRadioGroupTests = ({
         field: {
           ...defaultFieldProps,
           id: 'id',
-          options: [{ label: <img alt="" src="" />, value: '' }],
+          options: [
+            {
+              label: <img alt="Test" src="/assets/test.png" />,
+              value: '',
+            },
+          ],
           name: 'name',
         },
       });
@@ -81,7 +86,7 @@ export const additionalRadioGroupTests = ({
       expect(view.getByRole('img'));
     });
 
-    it('renders an infotip in the radio', () => {
+    it('renders an infotip in the radio', async () => {
       const info = 'info';
 
       const { view } = renderField({
@@ -101,7 +106,7 @@ export const additionalRadioGroupTests = ({
 
       const tip = view.getByText(info);
       expect(tip).not.toBeVisible();
-      userEvent.click(view.getByRole('button'));
+      await userEvent.click(view.getByRole('button'));
       expect(tip).toBeVisible();
     });
 

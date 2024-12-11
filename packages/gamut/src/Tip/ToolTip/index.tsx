@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { WithChildrenProp } from '../..';
 import { Text } from '../../Typography';
+import { WithChildrenProp } from '../../utils';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {

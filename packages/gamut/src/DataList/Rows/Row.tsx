@@ -1,13 +1,12 @@
-import { memo, ReactElement, useCallback } from 'react';
+import { memo, ReactElement, ReactNode, useCallback } from 'react';
 
 import { Text } from '../..';
 import { ListCol, ListRow } from '../../List';
 import { ColProps } from '../../List/elements';
 import { Shimmer } from '../../Loading/Shimmer';
-import { IdentifiableKeys } from '..';
 import { ExpandControl, SelectControl } from '../Controls';
 import { useControlContext } from '../hooks/useListControls';
-import { ColumnConfig } from '../types';
+import { ColumnConfig, IdentifiableKeys } from '../types';
 
 export type MarshaledColProps = Partial<Pick<ColProps, 'showOverflow'>>;
 
@@ -103,7 +102,7 @@ export const Row: DataRow = ({
                   truncateLines={1}
                   textAlign={justify ?? 'left'}
                 >
-                  {row[key]}
+                  {row[key] as ReactNode}
                 </Text>
               ) : (
                 row[key]

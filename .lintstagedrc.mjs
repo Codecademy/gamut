@@ -9,9 +9,9 @@ export default {
       commands.push(`yarn syncpack format`);
     }
 
-    // if (micromatch.some(allChanges, 'yarn.lock')) {
-    //   commands.push(`npx yarn-deduplicate`);
-    // }
+    if (micromatch.some(allChanges, 'yarn.lock')) {
+      commands.push(`npx yarn-deduplicate`);
+    }
 
     const eslintExtensions = `{mdx,ts,tsx,js,jsx,json}`;
     const eslintFiles = micromatch(

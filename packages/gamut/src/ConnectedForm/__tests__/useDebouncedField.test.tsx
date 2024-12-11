@@ -3,14 +3,10 @@ import { fireEvent } from '@testing-library/dom';
 import * as React from 'react';
 import { act } from 'react-dom/test-utils';
 
-import {
-  Checkbox,
-  ConnectedForm,
-  Input,
-  useDebouncedField,
-  useFormState,
-  WithChildrenProp,
-} from '../..';
+import { Checkbox, Input } from '../../Form';
+import { WithChildrenProp } from '../../utils';
+import { ConnectedForm } from '../ConnectedForm';
+import { useDebouncedField, useFormState } from '../utils';
 
 const mockedSetValue = jest.fn();
 

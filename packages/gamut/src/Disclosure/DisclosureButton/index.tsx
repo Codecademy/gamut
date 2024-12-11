@@ -4,8 +4,9 @@ import {
 } from '@codecademy/gamut-icons';
 import * as React from 'react';
 
-import { Rotation, Text } from '../..';
+import { Rotation } from '../../Animation';
 import { Box, FlexBox } from '../../Box';
+import { Text } from '../../Typography';
 import { DisclosureButtonWrapper } from '../elements';
 import { getRotationSize, getSpacing, getTitleSize } from '../helpers';
 import { DisclosureButtonProps } from '../types';

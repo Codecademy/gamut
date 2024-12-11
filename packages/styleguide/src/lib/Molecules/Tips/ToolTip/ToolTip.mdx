@@ -1,0 +1,52 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as ToolTipStories from './ToolTip.stories';
+
+export const parameters = {
+  subtitle: `A short tip triggered on hover and focus of an interactive element. Use a tooltip to further explain an element’s primary action, a disabled button state, or to display a label for an icon-only button.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/branch/ayKNSg6QvZUjsgw0FFysW4/%F0%9F%93%90-Gamut?type=design&node-id=41538-55279&mode=design&t=fGkWf5GSl5cj5fQo-0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/08e8b6ad26b8ea8e84b15a363c4229b21eb7f7ff/packages/gamut/src/Tip/ToolTip/index.tsx',
+  },
+};
+
+<Meta of={ToolTipStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+When using the ToolTip component, the `id` prop is required to associate the tooltip with the interactive element and the interactive element's `aria-describedby` prop must be set to the `id` of the tooltip.
+
+When a Button is disabled with a tooltip, you must use the `aria-disabled` prop instead of `disabled` prop so the user can still focus the button and view the tooltip.
+
+## Variants
+
+### IconButton + ToolTip
+
+When using an icon-only button, a tooltip displaying the label is required to provide context for the button's action. This is accessible directly through the `IconButton`'s required `tip` prop. You can adjust positioning and alignment of the tooltip by using the tipProps prop. An additional label that is different from the tip should also be provided.
+
+If your `IconButton` doesn't require `aria-describedby` text, you can set the `hideAriaToolTip` tipProp to `true` to hide the `aria-describedby` text. When using the `hideAriaToolTip` prop, the `aria-label` should always be identical to the `tip` prop.
+
+<Canvas of={ToolTipStories.WithIconButton} />
+
+## Floating placement
+
+ToolTips sometimes need to be in used in a way that they need to escape the confines of their parents container. The `floating` variant of the `placement` prop allows ToolTips do just this. (Notice how this section doesn't need as much padding because the ToolTips are able to escape their context!)
+
+This `floating` variant should only be used when it as needed.
+
+
+<Canvas of={ToolTipStories.Floating} />
+
+## Playground
+<Canvas sourceState="shown" of={ToolTipStories.Default} />
+
+<Controls />

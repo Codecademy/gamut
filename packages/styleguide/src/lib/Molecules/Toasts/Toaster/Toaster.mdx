@@ -1,0 +1,34 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as ToasterStories from './Toaster.stories';
+
+export const parameters = {
+  subtitle: `A toaster component that applies motion and renders toasts.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1086-0&m=dev',
+  },
+  status: 'updating',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Toaster/index.tsx',
+  },
+};
+
+<Meta of={ToasterStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use Toaster as a container to display multiple Toasts.
+
+
+## Playground
+
+<Canvas sourceState="shown" of={ToasterStories.Default} />
+
+<Controls />

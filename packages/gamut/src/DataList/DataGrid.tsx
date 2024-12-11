@@ -1,13 +1,12 @@
 import { ComponentProps, useMemo } from 'react';
 
 import { List } from '../List';
-import { DataListControls, IdentifiableKeys } from '.';
 import { EmptyRows } from './EmptyRows';
 import { ListControlContext, useListControls } from './hooks/useListControls';
 import { ListStateContext } from './hooks/useListState';
 import { HeaderRow } from './Rows/HeaderRow';
 import { DataRow, MarshaledColProps } from './Rows/Row';
-import { ColumnConfig } from './types';
+import { ColumnConfig, DataListControls, IdentifiableKeys } from './types';
 
 export interface DataGridProps<
   Row,

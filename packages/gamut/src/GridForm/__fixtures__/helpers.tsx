@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { ConnectedForm, WithChildrenProp } from '../..';
+import { ConnectedForm } from '../../ConnectedForm';
+import { WithChildrenProp } from '../../utils';
 
 interface FormContextProps extends WithChildrenProp {
   mode?: 'onChange' | 'onSubmit';

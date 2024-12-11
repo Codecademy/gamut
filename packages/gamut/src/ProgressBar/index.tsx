@@ -7,8 +7,6 @@ import { Box } from '../Box';
 import { Text } from '../Typography';
 
 export type ProgressBarProps = {
-  className?: string;
-
   /**
    * Whether to increase size and display the percentage as text.
    */

@@ -1,0 +1,74 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as TabStories from './Tabs.stories';
+
+export const parameters = {
+  subtitle: 'Tabs organize content into multiple sections, with only one section visible at a time.',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=31226-41459',
+  },
+  status: 'updating',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Tabs/Tabs.tsx',
+  },
+};
+
+<Meta of={TabStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use tabs when you have multiple potential sections to show, but only one should be visible at a time.
+The set of tabs should be sections of related content that share the same structure and are of equal importance.
+
+
+## Variants
+
+### Uncontrolled
+By default, the tabs component is uncontrolled, meaning it will maintain it's own state and switch between the different `TabPanel` components without passing any data to the component. This is good for basic use-cases where you don't need to do anything "extra" when switching tabs.
+
+<Canvas of={TabStories.Default} />
+
+### Controlled
+
+When `index` is specified, the component switches to being a controlled component. It won't change its own tab state, but will instead notify of a request to change using `onChange`.
+
+<Canvas of={TabStories.Controlled} />
+
+### Adding a Badge
+
+Tabs can use the Badge component to display a status, e.g. indicate new or updated content.
+
+<Canvas of={TabStories.TabsBadge} />
+
+### Block variant
+
+If you pass in the variant 'block', you will get a slim, dark mode version of tabs.
+
+<Canvas of={TabStories.TabsBlock} />
+
+### Tab navigation
+
+You can also use tabs as standard link-based navigation. To do this, you can use the `TabNav` and `TabNavLink` components.
+
+It is recommended to add a unique `aria-label` to the `TabNav` component, to differentiate it from other navigation elements on the page.
+
+<Canvas of={TabStories.TabsNav} />
+
+### Tabs with interactive content
+
+If you have tabs with interactive content within them (such as a button or link), you need to add `tabindex={-1}` to the TabPanel so that the interactive content, rather than the TabPanel itself, become focused.
+
+<Canvas of={TabStories.TabsInteractiveContent} />
+
+## Playground
+
+<Canvas sourceState="shown" of={TabStories.Default} />
+
+<Controls />

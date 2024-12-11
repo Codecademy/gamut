@@ -1,7 +1,7 @@
 import orderBy from 'lodash/orderBy';
 import { useCallback, useMemo, useState } from 'react';
 
-import { ColumnConfig, IdentifiableKeys, OnQueryChange, Query } from '..';
+import { ColumnConfig, IdentifiableKeys, OnQueryChange, Query } from '../types';
 
 export interface LocalQueryShape<
   Row,
@@ -77,8 +77,10 @@ export const useLocalQuery = <
 
       computedRows = orderBy(
         computedRows,
-        dimensions.map((key) => ({ [key]: val }: Row) =>
-          typeof val === 'string' ? val.toLowerCase() : val
+        dimensions.map(
+          (key) =>
+            ({ [key]: val }: Row) =>
+              typeof val === 'string' ? val.toLowerCase() : val
         ),
         directions as []
       );
