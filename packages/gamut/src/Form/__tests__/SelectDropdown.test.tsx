@@ -5,7 +5,6 @@ import {
 } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, queryByAttribute } from '@testing-library/dom';
-import { waitFor } from '@testing-library/react';
 import { act } from 'react';
 
 import { SelectDropdown } from '../SelectDropdown';
@@ -74,11 +73,6 @@ const openDropdown = async (view: ReturnType<typeof renderView>['view']) => {
   });
 };
 
-const getById = queryByAttribute.bind(null, 'id');
-
-const getMenuList = (view: ReturnType<typeof renderView>['view']) =>
-  getById(view.container, /listbox/)?.firstChild;
-
 describe('SelectDropdown', () => {
   it('sets the id prop on the select tag', () => {
     const { view } = renderView();
@@ -112,20 +106,14 @@ describe('SelectDropdown', () => {
     view.getByTitle('Arrow Chevron Down Icon');
   });
 
-  // TO-DO: Fix these tests
-
-  it.skip('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', async () => {
+  it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', async () => {
     const { view } = renderView({ shownOptionsLimit: 4 });
 
     await openDropdown(view);
 
-    const menuList = getMenuList(view);
-
-    expect(menuList).toHaveStyle('');
+    expect(view.getByRole('listbox')).toHaveStyle({ maxHeight: '12rem' });
   });
-
-  // TO-DO: Fix these test
-  it.skip('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified + size is "small"', async () => {
+  it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified + size is "small"', async () => {
     const { view } = renderView({
       size: 'small',
       shownOptionsLimit: 4,
@@ -133,9 +121,7 @@ describe('SelectDropdown', () => {
 
     await openDropdown(view);
 
-    const menuList = getMenuList(view);
-
-    expect(menuList).toHaveStyle({ maxHeight: '8rem' });
+    expect(view.getByRole('listbox')).toHaveStyle({ maxHeight: '8rem' });
   });
 
   it('renders a dropdown with icons', async () => {
@@ -157,7 +143,7 @@ describe('SelectDropdown', () => {
     expect(onInputChange).toHaveBeenCalled();
   });
 
-  it.skip('renders selected & multiple items when passed multiple: true', async () => {
+  it('renders selected & multiple items when passed multiple: true', async () => {
     const { view } = renderView({ multiple: true });
 
     const numSelectedItems = 2;
@@ -165,9 +151,9 @@ describe('SelectDropdown', () => {
     const multiple = selectOptions.map(async (opt) => {
       await openDropdown(view);
 
-      await waitFor(() => view.getByText(opt));
+      const option = await view.findByText(opt);
       await act(() => {
-        fireEvent.click(view.getByText(opt));
+        fireEvent.click(option);
         return Promise.resolve();
       });
     });
