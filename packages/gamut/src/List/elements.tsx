@@ -351,7 +351,7 @@ export interface ColProps
     StyleProps<typeof columnType>,
     StyleProps<typeof columnStates>,
     StyleProps<typeof columnJustify>,
-    StyleProps<typeof system['layout']> {}
+    StyleProps<(typeof system)['layout']> {}
 
 export const ColEl = styled(
   'div',
@@ -381,7 +381,7 @@ export const ColEl = styled(
   system.layout
 );
 
-export const StickyColumnWrapper = styled.div(
+export const StickyColumnWrapper = styled.th(
   css({
     '&:before': {
       content: '""',

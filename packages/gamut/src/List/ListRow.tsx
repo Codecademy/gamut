@@ -59,17 +59,20 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     },
     ref
   ) => {
-    const { isOl, rowBreakpoint, scrollable, variant, ...rowConfig } =
+    const { listType, rowBreakpoint, scrollable, variant, ...rowConfig } =
       useListContext();
+    const isOl = listType === 'ol';
+    const isTable = listType === 'table';
     const { onClick, role, tabIndex, ...rowProps } = rest;
     const wrapperProps =
-      !renderExpanded && !onClick
+      (!renderExpanded && !onClick) || isTable
         ? { ...rowConfig, ...rowProps }
         : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
     let content = children;
     const renderNumbering = isOl && renderExpanded === undefined && !onClick;
 
-    if (renderExpanded || Boolean(onClick)) {
+    // do we need render expanded here? this should only be for clickable rows
+    if (renderExpanded || Boolean(onClick) || !isTable) {
       content = (
         <RowEl
           as="div"
