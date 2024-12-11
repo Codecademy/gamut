@@ -71,6 +71,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     let content = children;
     const renderNumbering = isOl && renderExpanded === undefined && !onClick;
 
+    // do we need render expanded here? this should only be for clickable rows
     if (renderExpanded || Boolean(onClick) || !isTable) {
       content = (
         <RowEl
