@@ -6,9 +6,11 @@ import * as React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
 import { useMeasure } from 'react-use';
 
-import { Rotation, ToolTip, WithChildrenProp } from '..';
+import { Rotation } from '../Animation';
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
+import { ToolTip } from '../Tip/ToolTip';
+import { WithChildrenProp } from '../utils';
 import {
   AlertBanner,
   AlertBox,

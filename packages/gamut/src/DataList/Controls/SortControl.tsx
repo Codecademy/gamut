@@ -5,8 +5,8 @@ import * as React from 'react';
 
 import { Anchor } from '../..';
 import { FlexBox } from '../../Box';
-import { OnSort, SortDirection, SortOrder } from '..';
 import { useListState } from '../hooks/useListState';
+import { OnSort, SortDirection, SortOrder } from '../types';
 
 const SortAnchor = styled(Anchor)(
   css({
