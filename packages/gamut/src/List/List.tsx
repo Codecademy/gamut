@@ -8,8 +8,8 @@ import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
 export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
-  /** Whether List should be an ol or ul element */
-  as?: 'ol' | 'ul';
+  /** Whether List should be an ol, ul element, or table */
+  as?: 'ol' | 'ul' | 'table';
   /** Whether a placeholder width should be set when loading */
   loading?: boolean;
   /** Should only be used internally to Gamut */
@@ -58,7 +58,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     const [isEnd, setIsEnd] = useState(false);
     const showShadow = shadow && scrollable && !isEnd;
     const value = useList({
-      isOl: as === 'ol',
+      listType: as,
       rowBreakpoint,
       scrollable,
       spacing,
@@ -66,7 +66,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     });
 
     const topOfTable = useRef<HTMLDivElement>(null);
-
+    const isTable = as === 'table';
     useEffect(() => {
       if (scrollToTopOnUpdate && topOfTable.current !== null) {
         topOfTable.current.scrollTo({ top: 0 });
@@ -74,7 +74,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     });
 
     const listContent = (
-      <ListEl as={as} ref={ref} variant={value.variant}>
+      <ListEl as={isTable ? 'tbody' : as} ref={ref} variant={value.variant}>
         {children}
       </ListEl>
     );
@@ -113,6 +113,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
           id={id}
         >
           <Box
+            as={isTable ? 'table' : 'div'}
             data-testid={`scrollable-${id}`}
             maxHeight={height}
             maxWidth={1}

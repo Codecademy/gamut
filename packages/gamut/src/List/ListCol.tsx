@@ -9,9 +9,14 @@ export interface ListColProps
 
 export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
   ({ type, ...rest }, ref) => {
-    const { isOl, scrollable, ...activeVariants } = useListContext();
-    const sticky = type === 'header' && scrollable;
-    const isOrderedHeader = isOl && type === 'header';
+    const { listType, scrollable, ...activeVariants } = useListContext();
+    const isOl = listType === 'ol';
+    const isTable = listType === 'table';
+    const isHeader = type === 'header';
+    const sticky = isHeader && scrollable;
+    const isOrderedHeader = isOl && isHeader;
+    const colEl =
+      isTable && !sticky && isHeader ? 'th' : !isTable || sticky ? 'div' : 'td';
 
     const col = (
       <ColEl
@@ -21,6 +26,7 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
         type={isOrderedHeader ? 'orderedHeader' : type}
         sticky={sticky}
         ref={ref}
+        as={colEl}
       />
     );
     if (sticky) {
