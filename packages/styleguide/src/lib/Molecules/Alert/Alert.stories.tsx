@@ -1,8 +1,8 @@
 import { Alert, Box, StrokeButton } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
 import { ALERTS } from './constants'
-import { useState } from 'react';
 
 
 const meta: Meta<typeof Alert> = {
@@ -95,7 +95,7 @@ export const SubtleInline: Story = {
 export const SmallWidthExample: React.FC = () => {
   return (
     <Box width="400px">
-      <Alert type="general" cta={{children: 'Add your name'}} >
+      <Alert hidden type="general" cta={{children: 'Add your name'}} >
         Small Width
       </Alert>
     </Box>
@@ -112,9 +112,10 @@ const TestingWithButtonComponent: React.FC = () => {
   return (
     <>
       <StrokeButton onClick={toggle}>Toggle Alert</StrokeButton>
-      <Alert type="general" hidden={isHidden} onClose={toggle}>
+      { isHidden && <Alert type="general" role="alert"  onClose={toggle}>
         Testing with button
-      </Alert>
+      </Alert>}
+
     </>
   );
 };
