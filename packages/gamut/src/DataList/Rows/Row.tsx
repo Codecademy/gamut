@@ -51,7 +51,7 @@ export const Row: DataRow = ({
   }, [onExpand, expandedContent, id, row]);
 
   return (
-    <ListRow expanded={expanded} renderExpanded={renderExpandedContent}>
+    <ListRow as="tr" expanded={expanded} renderExpanded={renderExpandedContent}>
       {selectable && (
         <ListCol
           {...listColProps}

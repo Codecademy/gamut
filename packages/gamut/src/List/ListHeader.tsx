@@ -9,7 +9,7 @@ export interface ListHeaderProps
 
 export const ListHeader = forwardRef<HTMLDivElement, ListHeaderProps>(
   ({ children, ...rest }, ref) => {
-    const { spacing, scrollable, variant } = useListContext();
+    const { spacing, scrollable, variant, listType } = useListContext();
     return (
       <HeaderEl
         {...rest}
@@ -17,6 +17,7 @@ export const ListHeader = forwardRef<HTMLDivElement, ListHeaderProps>(
         variant={variant}
         scrollable={scrollable}
         ref={ref}
+        as={listType === 'table' ? 'thead' : 'div'}
       >
         {children}
       </HeaderEl>

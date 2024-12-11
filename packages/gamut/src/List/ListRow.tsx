@@ -59,8 +59,9 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     },
     ref
   ) => {
-    const { isOl, rowBreakpoint, scrollable, variant, ...rowConfig } =
+    const { listType, rowBreakpoint, scrollable, variant, ...rowConfig } =
       useListContext();
+    const isOl = listType === 'ol';
     const { onClick, role, tabIndex, ...rowProps } = rest;
     const wrapperProps =
       !renderExpanded && !onClick
