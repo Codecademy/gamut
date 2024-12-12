@@ -1,7 +1,6 @@
-import { Column, LayoutGrid } from '@codecademy/gamut';
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, ImageWrapper, LinkTo } from '~styleguide/blocks';
 
 import * as MenuStories from './Menu.stories';
 
@@ -24,7 +23,8 @@ export const parameters = {
 <ComponentHeader {...parameters} />
 
 ## Usage
-While most Menus are used as layout elements, Menus can also be used as popover elements within components like Selects.
+
+Use a Menu to organize and present a list of actions, options, or navigation links.
 
 ### Components
 
@@ -34,71 +34,70 @@ While most Menus are used as layout elements, Menus can also be used as popover 
 
 ### Best practices:
 
-- A `Menu` should only have the `menu` role when it is a list of actions or functions a user can evoke.
-  - For example - a popover menu that allows the user to copy text, paste text, or reset a workspace.
-- If your `Menu` is simply a list of links it should not have the `menu` role.
-- Adding the role of `menu` to the menu component will programmatically set the correct roles on its `MenuItem`s and `MenuSeparator`s.
+- The Popover menu has the `menu` role by default, which is intended for presenting actions or options. However, if it contains only navigation links, it should use the `<nav>` element for semantic and accessible navigation.
+- You can create popover menus by utilizing our <LinkTo id="Atoms/PopoverContainer">PopoverContainer</LinkTo>. Once you have your base positioning, you just need to adjust the y axis by 48 for the normal spacing or 32 for the condensed spacing for each of the MenuItems. You may also need to change the alignment of the PopoverContainer to ensure correct positioning.
 
-If you would like to know more about the `menu` role - check out the MDN web docs [here](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role).
+### When NOT to use:
+
+- Form Inputs - For selecting from a predefined set of choices within a form, use the SelectDropdown component.
+- Expandable Menus - For organizing multiple collapsible sections of navigation links in a structured layout, use the LayoutMenu component.
+- Switching between content - For toggling between multiple related views or content sections within the same context, use the Tabs component.
+
+## Anatomy
+
+<ImageWrapper src="./molecules/menuAnatomy.png" alt="Menu Anatomy diagram"/>
+
+1. Leading Icon (optional)
+
+- Use to visually reinforce the purpose of a menu item, improve scannability, or differentiate between actions.
+
+2. Label
+
+- Limit to 1-3 words.
+- For actions, use a verb that clearly explains what will happen.
+- For navigation to information, use a noun.
+- Keep the same word form for each grouping. (For example, all nouns or all verbs.)
+- Order and group by meaning or alphabetically.
+- Avoid placing words that look the same (for example, that start with the exact same letters) adjacent to one another.
+
+3. Menu separator (optional)
+
+- Use to group menu items into sections when there is a significant number of items, making lengthy menus easier to scan and navigate.
 
 ## Variants
 
-<LayoutGrid gap={32} py={24}>
+### Popover
 
-<Column size={4} variant={false} mx={8}>
-### Select
-<Canvas of={MenuStories.Default} />
-A general purpose menu type that can be used for actions or navigation.
-</Column>
-
-<Column size={4} variant={false}>
-### Action
-<Canvas of={MenuStories.Action} />
-These should be populated with MenuItems typed as buttons that execute some action.
-</Column>
-
-<Column size={4} variant={false}>
-### Navigation
-<Canvas of={MenuStories.Navigation} />
-These should be populated with MenuItems typed as links.
-</Column>
-
-</LayoutGrid>
-
-## Spacing variants
-Setting the Menu's `spacing` to `'condensed'` will reduce the padding around the MenuItems.
-
-<LayoutGrid gap={32} py={24}>
-
-<Column size={4} variant={false} mx={8}>
-### Select condensed
-<Canvas of={MenuStories.SelectCondensed} />
-</Column>
-
-<Column size={4} variant={false}>
-### Action condensed
-<Canvas of={MenuStories.ActionCondensed} />
-</Column>
-
-<Column size={4} variant={false}>
-### Navigation condensed
-<Canvas of={MenuStories.NavigationCondensed} />
-</Column>
-
-</LayoutGrid>
-
-## Popover menus
-
-You can create popover menus by utilizing our **PopoverContainer**. Once you have your base positioning, you just need to adjust the `y` axis by `48` for the `normal` spacing or `32` for the `condensed` spacing for each of the `MenuItem`s. You may also need to change the `alignment` of the `PopoverContainer` to ensure correct positioning.
-
-Popover Menus that have complex functionalities or actions, like the example below, should have the `menu` role.
-
-Click through each item to see how the `Menu`s appear (and disappear when the item is clicked again, or another item is selected.)
+Use the Poopover menu to present a temporary surface for actions, options, or links, ensuring access only when needed while keeping the interface clean and focused. The Popover menu has the menu role by default, but if it contains only a list of navigation links, it should use the `<nav>` element, which implicitly includes the navigation role.
 
 <Canvas of={MenuStories.Popover} />
 
+### Fixed
+
+Use the Fixed menu to provide persistent access to navigation links, allowing users to seamlessly move between sections of the interface without opening additional surfaces. Fixed menus should always use the `<nav>` element to ensure semantic and accessible navigation.
+
+<Canvas of={MenuStories.Fixed} />
+
+## Spacing variants
+
+Setting the Menu's `spacing` to `'condensed'` will reduce the padding around the MenuItems.
+
+### Popover condensed
+
+<Canvas of={MenuStories.PopoverCondensed} />
+
+### Fixed condensed
+
+<Canvas of={MenuStories.FixedCondensed} />
+
+## Popover menus
+
+Click through each item to see how the `Menu`s appear (and disappear when the item is clicked again, or another item is selected.)
+
+{/* <Canvas of={MenuStories.Popover} /> */}
 
 ## Playground
+
 <Canvas sourceState="shown" of={MenuStories.Default} />
 
 <Controls />
