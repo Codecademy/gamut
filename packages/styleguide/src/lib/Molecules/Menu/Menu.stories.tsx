@@ -14,9 +14,12 @@ const meta: Meta<typeof Menu> = {
   component: Menu,
   // This is a known issue with SB 8, see: https://github.com/storybookjs/storybook/issues/23170
   // Will fix this casting when the issue is resolved
-  subcomponents: { MenuItem: MenuItem as React.ComponentType<unknown>, MenuSeparator: MenuSeparator as React.ComponentType<unknown> },
+  subcomponents: {
+    MenuItem: MenuItem as React.ComponentType<unknown>,
+    MenuSeparator: MenuSeparator as React.ComponentType<unknown>,
+  },
   args: {
-    spacing: 'normal'
+    spacing: 'normal',
   },
 };
 
@@ -47,7 +50,6 @@ const MenuItemsExample: React.FC<{
   );
 };
 
-
 export const Default: Story = {
   args: {
     variant: 'select',
@@ -55,44 +57,35 @@ export const Default: Story = {
   },
 };
 
-export const Action: Story = {
+export const Popover: Story = {
   args: {
-    variant: 'action',
+    variant: 'popover',
     children: <MenuItemsExample type="button" />,
   },
 };
 
-export const Navigation: Story = {
+export const Fixed: Story = {
   args: {
-    variant: 'navigation',
+    variant: 'fixed',
     children: <MenuItemsExample type="link" />,
   },
 };
 
-export const SelectCondensed: Story = {
+export const PopoverCondensed: Story = {
   args: {
-    variant: 'select',
-    children: <MenuItemsExample type="default" />,
-    spacing: 'condensed'
-  },
-};
-
-export const ActionCondensed: Story = {
-  args: {
-    variant: 'action',
+    variant: 'popover',
     children: <MenuItemsExample type="button" />,
-    spacing: 'condensed'
+    spacing: 'condensed',
   },
 };
 
-export const NavigationCondensed: Story = {
+export const FixedCondensed: Story = {
   args: {
-    variant: 'navigation',
+    variant: 'fixed',
     children: <MenuItemsExample type="link" />,
-    spacing: 'condensed'
+    spacing: 'condensed',
   },
 };
-
 
 export const PopoverMenuExample: React.FC = () => {
   const target = useRef<HTMLDivElement>(null);
@@ -188,7 +181,6 @@ export const PopoverMenuExample: React.FC = () => {
   );
 };
 
-export const Popover: Story = {
-  render: () => <PopoverMenuExample />,
-}
-
+// export const Popover: Story = {
+//   render: () => <PopoverMenuExample />,
+// };
