@@ -2,11 +2,12 @@ import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Background, Colors } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
-import { FlexBox, WithChildrenProp } from '..';
+import { FlexBox } from '../Box';
 import { IconButton } from '../Button';
 import { Drawer } from '../Drawer';
 import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
+import { WithChildrenProp } from '../utils';
 
 export interface FlyoutProps extends WithChildrenProp {
   /**

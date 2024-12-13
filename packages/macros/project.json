@@ -9,8 +9,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/macros"],
       "options": {
-        "jestConfig": "packages/macros/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "packages/macros/jest.config.ts"
       }
     }
   }

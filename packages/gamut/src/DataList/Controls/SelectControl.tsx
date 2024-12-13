@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Checkbox } from '../../Form/inputs/Checkbox';
 import { Text } from '../../Typography/Text';
-import { RowChange } from '..';
+import { RowChange } from '../types';
 
 export const SelectControl: React.FC<{
   disabled?: boolean;

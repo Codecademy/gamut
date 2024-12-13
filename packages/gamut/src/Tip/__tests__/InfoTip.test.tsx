@@ -10,14 +10,14 @@ const renderView = setupRtl(InfoTip, {
 
 describe('InfoTip', () => {
   describe('inline placement', () => {
-    it('shows the tip when it is clicked on', () => {
+    it('shows the tip when it is clicked on', async () => {
       const { view } = renderView({});
 
       const tip = view.getByText(info);
 
       expect(tip).not.toBeVisible();
 
-      userEvent.click(view.getByRole('button'));
+      await userEvent.click(view.getByRole('button'));
 
       expect(tip.parentElement).not.toHaveStyle({
         visibility: 'hidden',
@@ -29,14 +29,14 @@ describe('InfoTip', () => {
   });
 
   describe('floating placement', () => {
-    it('shows the tip when it is clicked on', () => {
+    it('shows the tip when it is clicked on', async () => {
       const { view } = renderView({
         placement: 'floating',
       });
 
       expect(view.queryByText(info)).toBeNull();
 
-      userEvent.click(view.getByRole('button'));
+      await userEvent.click(view.getByRole('button'));
 
       // The first get by text result is the a11y text, the second is the actual tip text
       expect(view.queryAllByText(info).length).toBe(2);

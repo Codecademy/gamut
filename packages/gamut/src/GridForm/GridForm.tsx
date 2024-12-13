@@ -2,6 +2,7 @@ import { Fragment, useMemo } from 'react';
 import * as React from 'react';
 import {
   DeepPartial,
+  DefaultValues,
   Mode,
   SubmitHandler,
   UnpackNestedValue,
@@ -9,7 +10,7 @@ import {
 
 import { ButtonProps } from '../Button';
 import { ConnectedForm, FormContextProps } from '../ConnectedForm';
-import { FormRequiredText } from '../Form';
+import { FormRequiredText } from '../Form/elements/FormRequiredText';
 import { FormValues } from '../Form/types';
 import { Column, LayoutGrid, LayoutGridProps } from '../Layout';
 import { GridFormButtons, GridFormSubmitProps } from './GridFormButtons';
@@ -139,7 +140,7 @@ export function GridForm<Values extends FormValues<Values>>({
   return (
     <ConnectedForm<Values>
       validation={validation}
-      defaultValues={defaultValues}
+      defaultValues={defaultValues as DefaultValues<Values>}
       display="flex"
       flexDirection="column"
       isSoloField={hasComputedSoloField}

@@ -4,10 +4,10 @@ import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
 import * as React from 'react';
 
-import { WithChildrenProp } from '..';
 import { BodyPortal } from '../BodyPortal';
 import { Box } from '../Box';
 import { popoverToolTipBodyAlignments } from '../Tip/shared/styles';
+import { WithChildrenProp } from '../utils';
 import {
   beakSize,
   beakVariants,
@@ -78,7 +78,7 @@ export const PopoverPortal: React.FC<
     <BodyPortal {...rest} />
   );
 
-type PopoverContainerProps = Pick<PopoverProps, 'position' | 'align'>;
+export type PopoverContainerProps = Pick<PopoverProps, 'position' | 'align'>;
 
 export const PopoverContainer = styled.div<PopoverContainerProps>`
   position: fixed;
