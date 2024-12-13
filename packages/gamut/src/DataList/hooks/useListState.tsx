@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 
-import { Query } from '..';
+import { Query } from '../types';
 
 interface ListState {
   query?: Query<any>;

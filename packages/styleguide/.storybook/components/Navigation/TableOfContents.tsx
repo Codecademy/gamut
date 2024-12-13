@@ -1,15 +1,18 @@
+import { Box, Card, GridBox, Text } from '@codecademy/gamut';
+import { pxRem } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
-import { Description } from '@storybook/addon-docs/blocks';
-import { Link, Reset } from '../Markdown/Elements';
-import { ContentItem, useNavigation } from '.';
-import { Box, Card, FlexBox, GridBox, Text } from '@codecademy/gamut/src';
-import { pxRem } from '@codecademy/gamut-styles/src';
-import { StatusTab } from '../Docs/StatusIndicator';
+import { StatusTab } from '../Elements/StatusIndicator';
+import { Link } from '../Elements/Markdown';
 
-export const TableOfContents = () => {
-  const { toc } = useNavigation();
+type PageLink = {
+  id: string;
+  status?: 'current' | 'updating' | 'deprecated' | 'static';
+  subtitle: string;
+  title: string;
+};
 
+export const TableOfContents: React.FC<{ links: PageLink[] }> = ({ links }) => {
   return (
     <GridBox
       pt={16}
@@ -21,72 +24,47 @@ export const TableOfContents = () => {
       }}
       gap={32}
     >
-      {toc.children.map((link: ContentItem) => (
-        <Section {...link} key={`toc-item-${link.id}`} />
+      {links.map((link) => (
+        <TopicCard {...link} key={`toc-item-${link?.href}`} />
       ))}
     </GridBox>
   );
 };
 
-export const Section: React.FC<ContentItem> = ({
-  title,
-  subtitle,
+export const TopicCard: React.FC<PageLink> = ({
   id,
   status,
-  links,
+  subtitle,
+  title,
 }) => {
-  const renderSubsection = () =>
-    links.map(({ title, id }) => (
-      <Link
-        fontSize={14}
-        fontWeight="title"
-        variant="standard"
-        key={`section_${title}-${id}`}
-        id={id}
-      >
-        {title}
-      </Link>
-    ));
-
-  const hasSubsections = links.length >= 1;
-
   return (
-    <Card
-      shadow="medium"
-      p={0}
-      rowGap={8}
-      display="grid"
-      gridTemplateRows={`max-content ${pxRem(14 * 1.5 + 24)}`}
-      position="relative"
-    >
-      <GridBox
-        gridTemplateRows={`min-content 4.5rem`}
-        position={hasSubsections ? 'relative' : 'initial'}
+    <Link variant="area" id={id} tabIndex={0}>
+      <Card
+        shadow="medium"
+        p={0}
         rowGap={8}
-        p={24}
+        display="grid"
+        gridTemplateRows={`max-content ${pxRem(14 * 1.5 + 24)}`}
+        position="relative"
       >
-        <Link variant="area" id={id}>
+        <GridBox
+          gridTemplateRows="min-content 4.5rem"
+          p={24}
+          position={'relative'}
+          rowGap={8}
+          textAlign={'left'}
+        >
           <Box position="relative">
             <Text as="h2" fontSize={22}>
               {title}
               {status && <StatusTab status={status} />}
             </Text>
           </Box>
-        </Link>
-        <Box overflowY="hidden">
-          <Reset>{subtitle && <Description>{subtitle}</Description>}</Reset>
-        </Box>
-      </GridBox>
-      <FlexBox borderTop={hasSubsections ? 1 : 'none'} px={24} py={12}>
-        <FlexBox
-          flexWrap="wrap"
-          overflow="hidden"
-          maxHeight={pxRem(14 * 1.5)}
-          columnGap={16}
-        >
-          {hasSubsections && renderSubsection()}
-        </FlexBox>
-      </FlexBox>
-    </Card>
+          <Box overflowY="hidden">
+            <Text>{subtitle}</Text>
+          </Box>
+        </GridBox>
+      </Card>
+    </Link>
   );
 };

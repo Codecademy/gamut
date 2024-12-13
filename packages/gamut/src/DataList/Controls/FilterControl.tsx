@@ -8,9 +8,9 @@ import * as React from 'react';
 import { Checkbox, FlexBox, Menu, MenuItem, Text } from '../..';
 import { Anchor } from '../../Anchor';
 import { PopoverContainer } from '../../PopoverContainer';
-import { FilterOption, OnFilter } from '..';
 import { useControlContext } from '../hooks/useListControls';
 import { useListState } from '../hooks/useListState';
+import { FilterOption, OnFilter } from '../types';
 
 export interface FilterProps {
   columnKey: string;

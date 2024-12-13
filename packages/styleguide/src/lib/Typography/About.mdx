@@ -1,0 +1,43 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Typography/About',
+  title: 'Typography',
+  subtitle:
+    'These are basic primitives for displaying text components in configurable ways.',
+};
+
+<Meta title="Typography/About" />
+
+<AboutHeader {...parameters} />
+
+Foundations make up the smallest scale design values that comprise a design system.
+Sometimes referred to elsewhere as "tokens", they are the abstract units that comprise and stitch together our atoms, molecules, and organisms.
+
+<TableOfContents
+  links={[
+    {
+      id: 'Typography/Anchor',
+      subtitle:
+        'A clickable text element that navigates to another page, resource, or location on the same page.',
+      title: 'Anchor',
+      status: `current`,
+    },
+    {
+      id: 'Typography/HiddenText',
+      subtitle:
+        'Deprecated visually hidden text that should still be narrated by screenreaders.',
+      title: 'Anchor',
+      status: 'deprecated',
+    },
+    {
+      id: 'Typography/Text',
+      subtitle:
+        'This component is a specific primitive for handling UI Text in predictable and flexible ways.',
+      title: 'Text',
+      status: 'current',
+    },
+  ]}
+/>

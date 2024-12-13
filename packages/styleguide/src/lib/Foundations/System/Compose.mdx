@@ -1,0 +1,132 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, LinkTo } from '~styleguide/blocks';
+
+export const parameters = {
+  title: 'Compose',
+  subtitle:
+    'The compose function lets you combine many system props into one to improve performance and reusability',
+  source: {
+    repo: 'variance',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/af5be6e39cccca5d5d8a1f811c77a7a0b618c914/packages/variance/src/core.ts',
+  },
+};
+
+<Meta title="Foundations/System/Compose" />
+
+<AboutHeader {...parameters} />
+
+When using custom properties or our standard <LinkTo id="Foundations/System/Props">system props</LinkTo> it can be useful to combine them into a single function using `variance.compose`.
+
+Composing functions has several benefits:
+
+1. Predictable CSS - Guard against possible bugs and unexpected behavior.
+1. Type Simplification - Less typescript boiler plate and better type inference
+
+## Usage
+
+Using `variance.compose()` will take any number of system prop functions and merge them left to right (the last argument takes precedence if props conflict) and returns a new prop function with the intersection of these pieces.
+
+```tsx
+import { system } from '@codecademy/gamut-styles';
+import { variance } from '@codecademy/variance';
+import styled from '@emotion/styled';
+
+const Grid = styled.div(variance.compose(system.layout, system.grid));
+
+<Grid width="100%" gridTemplateColumns="1fr 1fr" />;
+```
+
+## Why compose?
+
+There are a few benefits to composition:
+
+### Predictable CSS
+
+When Emotion serializes styles it does not attempt to merge styles and allows all styles to exist and be progressively overriden. This can create issues with styles that might conflict between scopes.
+
+With uncombined props this can produce multiple sets of media queries that are not ordered, or in cases where 2 style functions template the same property unmerged styles.
+
+```tsx
+// non composed style functions
+<Grid width={['100%', '80%']} justifyContent={{ xs: 'center' }} />
+```
+
+This outputs several media queries:
+
+```css
+.Grid {
+  width: '100%';
+}
+
+@media (min-width: 480px) {
+  .Grid {
+    width: 80%;
+  }
+}
+
+@media (min-width: 480px) {
+  .Grid {
+    justify-content: center;
+  }
+}
+```
+
+However if we've composed these functions our scopes will be combined preventing unexpected behavior.
+
+```css
+.Grid {
+  width: '100%';
+}
+
+@media (min-width: 480px) {
+  .Grid {
+    width: 80%;
+    justify-content: center;
+  }
+}
+```
+
+This is important, as some props and shorthands depend on order to ensure they apply. IE `border` and `borderColor`.
+
+```css
+/** uncomposed */
+.Box {
+  border-color: blue; /** this never applies */
+  border: 1px solid navy;
+}
+
+/** composed */
+.Box {
+  border: 1px solid navy;
+  border-color: blue; /** props are correctly ordered */
+}
+```
+
+### Type simplification
+
+Composing style functions handles the type inference for you. This makes your styled components easier to read and write.
+
+If you pass more than a single function to `styled`, Emotion is unable to infer the intersection of these functions on its own forcing you to pass the type manually.
+
+```tsx
+import { system } from '@codecademy/gamut-styles';
+import { StyleProps, variance } from '@codecademy/variance';
+import styled from '@emotion/styled';
+
+// plain inference
+const Grid = styled.div(layout, grid);
+<Grid width="100%" justifyContent="center" />; // TypeError: justifyContent is not a prop
+
+// manual inference
+type GridProps = StyleProps<typeof grid> & StyleProps<typeof layout>;
+const Grid = styled.div<GridProps>(system.layout, system.grid);
+
+<Grid width="100%" justifyContent="center" />; // works but we did it manually :(
+
+// composition inference
+const Grid = styled.div(variance.compose(system.layout, system.grid));
+
+<Grid width="100%" justifyContent="center" />; // works with no manual config :)
+```
