@@ -20,6 +20,7 @@ const preview: Preview = {
         method: 'configure',
         includeNames: true,
         order: [
+          'Gamut',
           'Meta',
           ['About', 'Best Practices', 'Contributing', 'FAQs', 'Stories'],
           'Foundations',
