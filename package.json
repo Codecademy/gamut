@@ -119,7 +119,7 @@
     "build:graph": "nx graph",
     "clean-builds": "nx run-many --target=clean --all",
     "clear-modules": "yarn clean-builds && lerna clean -y && rm -rf node_modules",
-    "deploy": "cp -r ./dist/static/* ./dist/docs && gh-pages -b gh-pages -d dist",
+    "deploy": "cp -r ./dist/storybook/styleguide && gh-pages -b gh-pages -d dist",
     "format": "yarn lint:fix && yarn prettier --write",
     "format:verify": "yarn prettier --check",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\" --max-warnings 0",
