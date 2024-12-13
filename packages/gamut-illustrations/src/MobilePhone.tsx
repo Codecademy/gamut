@@ -15,7 +15,7 @@ export const MobilePhone: React.FC<IllustrationProps> = ({
     viewBox="0 0 108 203"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden={ariaHidden}
-    class-name={className}
+    className={className}
   >
     <g clipPath="url(#a)">
       <rect

@@ -20,435 +20,349 @@ export default meta;
 type Story = StoryObj<typeof GridForm>;
 
 type DefaultExampleProps = {
-  validation?: "onChange" | "onSubmit" | "all" | "onTouched";
+  validation?: 'onChange' | 'onSubmit' | 'all' | 'onTouched';
   onSubmit?: (values: any) => void;
-}
+};
 
 const DefaultExample = (args: DefaultExampleProps) => {
   return (
-      <GridForm
-        {...args}
-        fields={[
-          {
-            label: 'Simple text',
-            name: 'simple-text',
-            size: 3,
-            type: 'text',
-          },
-          {
-            defaultValue: 'yeet',
-            label: 'Text with default value',
-            name: 'text-with-default',
-            size: 4,
-            type: 'text',
-          },
-          {
-            label: 'Simple select',
-            name: 'simple-select',
-            options: ['', 'One fish', 'Two fish', 'Red fish', 'Blue fish'],
-            size: 5,
-            type: 'select',
-            validation: {
-              required: 'Please select an option',
-            },
-          },
-          {
-            label: 'Upload a cat image (we support pdf, jpeg, or png files)',
-            name: 'file-input',
-            size: 4,
-            type: 'file',
-            validation: {
-              required: true,
-              validate: (files) => {
-                const { type } = files.item(0);
-                const allowedTypes = [
-                  'application/pdf',
-                  'image/jpeg',
-                  'image/png',
-                ];
-                if (!allowedTypes.includes(type))
-                  return 'Please upload a pdf, jpeg, or png file.';
-                return true;
-              },
-            },
-          },
-          {
-            label: 'Write a paragraph about penguins',
-            name: 'textarea-input',
-            size: 6,
-            type: 'textarea',
-            validation: {
-              required: 'Please write something about penguins!',
-            },
-          },
-          {
-            label:
-              "Validated, required text that must contain the word 'swag' twice",
-            name: 'validated-required-text',
-            size: 5,
-            type: 'text',
-            validation: {
-              required: true,
-              pattern: {
-                value: /swag(.*)swag/,
-                message: 'Not enough swag',
-              },
-            },
-          },
-          {
-            description: 'I have swag',
-            label: 'Swag levels',
-            name: 'enough-swag',
-            size: 3,
-            type: 'checkbox',
-            id: 'my-super-cool-id',
-            defaultValue: true,
-          },
-          {
-            label: 'Preferred Modern Artist',
-            name: 'artist',
-            options: [
-              {
-                label: 'Cardi B',
-                value: 'cardi',
-                infotip: { info: 'This is super important.' },
-              },
-              {
-                label: 'Nicki Minaj',
-                value: 'nicki',
-              },
-            ],
-            size: 4,
-            type: 'radio-group',
-            validation: {
-              required: 'You gotta pick one!',
-            },
-          },
-          {
-            label: 'End User License Agreement',
-            description:
-              'I accept the terms and conditions (required or else!!!)',
-            name: 'eula-checkbox-required',
-            type: 'checkbox',
-            validation: {
-              required: 'Please check the box to agree to the terms.',
-            },
-            size: 4,
-          },
-        ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
-        submit={{
-          contents: 'Submit Me!?',
+    <GridForm
+      {...args}
+      fields={[
+        {
+          label: 'Simple text',
+          name: 'simple-text',
+          size: 3,
+          type: 'text',
+        },
+        {
+          defaultValue: 'yeet',
+          label: 'Text with default value',
+          name: 'text-with-default',
           size: 4,
-        }}
-      />
-  )
-}
+          type: 'text',
+        },
+        {
+          label: 'Simple select',
+          name: 'simple-select',
+          options: ['', 'One fish', 'Two fish', 'Red fish', 'Blue fish'],
+          size: 5,
+          type: 'select',
+          validation: {
+            required: 'Please select an option',
+          },
+        },
+        {
+          label: 'Upload a cat image (we support pdf, jpeg, or png files)',
+          name: 'file-input',
+          size: 4,
+          type: 'file',
+          validation: {
+            required: true,
+            validate: (files) => {
+              const { type } = files.item(0);
+              const allowedTypes = [
+                'application/pdf',
+                'image/jpeg',
+                'image/png',
+              ];
+              if (!allowedTypes.includes(type))
+                return 'Please upload a pdf, jpeg, or png file.';
+              return true;
+            },
+          },
+        },
+        {
+          label: 'Write a paragraph about penguins',
+          name: 'textarea-input',
+          size: 6,
+          type: 'textarea',
+          validation: {
+            required: 'Please write something about penguins!',
+          },
+        },
+        {
+          label:
+            "Validated, required text that must contain the word 'swag' twice",
+          name: 'validated-required-text',
+          size: 5,
+          type: 'text',
+          validation: {
+            required: true,
+            pattern: {
+              value: /swag(.*)swag/,
+              message: 'Not enough swag',
+            },
+          },
+        },
+        {
+          description: 'I have swag',
+          label: 'Swag levels',
+          name: 'enough-swag',
+          size: 3,
+          type: 'checkbox',
+          id: 'my-super-cool-id',
+          defaultValue: true,
+        },
+        {
+          label: 'Preferred Modern Artist',
+          name: 'artist',
+          options: [
+            {
+              label: 'Cardi B',
+              value: 'cardi',
+              infotip: { info: 'This is super important.' },
+            },
+            {
+              label: 'Nicki Minaj',
+              value: 'nicki',
+            },
+          ],
+          size: 4,
+          type: 'radio-group',
+          validation: {
+            required: 'You gotta pick one!',
+          },
+        },
+        {
+          label: 'End User License Agreement',
+          description:
+            'I accept the terms and conditions (required or else!!!)',
+          name: 'eula-checkbox-required',
+          type: 'checkbox',
+          validation: {
+            required: 'Please check the box to agree to the terms.',
+          },
+          size: 4,
+        },
+      ]}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Submit Me!?',
+        size: 4,
+      }}
+    />
+  );
+};
 
 export const Default: Story = {
   args: {
-    validation: 'onSubmit', resetOnSubmit: true,
+    validation: 'onSubmit',
+    resetOnSubmit: true,
   },
-  render: (args) => <DefaultExample {...args} />
+  render: (args) => <DefaultExample {...args} />,
 };
 
 const DisabledInputsExample = () => {
   return (
     <GridForm
-        hideRequiredText
-        fields={[
-          {
-            disabled: true,
-            label: 'Disabled text',
-            name: 'disabled-text',
-            type: 'text',
-            size: 6,
-          },
-          {
-            label: 'Enabled text',
-            name: 'enabled-text',
-            type: 'text',
-            size: 6,
-          },
-        ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
-        submit={{
-          contents: 'Right Submit!?',
-          position: 'right',
-          size: 12
-        }}
-      />
-  )
-}
+      hideRequiredText
+      fields={[
+        {
+          disabled: true,
+          label: 'Disabled text',
+          name: 'disabled-text',
+          type: 'text',
+          size: 6,
+        },
+        {
+          label: 'Enabled text',
+          name: 'enabled-text',
+          type: 'text',
+          size: 6,
+        },
+      ]}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Right Submit!?',
+        position: 'right',
+        size: 12,
+      }}
+    />
+  );
+};
 
 export const DisabledInputs: Story = {
-  render: () => <DisabledInputsExample />
+  render: () => <DisabledInputsExample />,
 };
 
 const FormattedExample = () => {
   return (
     <GridForm
-        requiredTextProps={{ color: 'danger', variant: 'title-xs' }}
-        fields={[
-          {
-            label: 'Fave Gamut Component',
-            name: 'rowspan-radiogroup',
-            options: [
-              {
-                label: 'FlexBox',
-                value: 'flex',
-              },
-              {
-                label: 'GridForm',
-                value: 'grid',
-              },
-              {
-                label: 'Text',
-                value: 'text',
-              },
-            ],
-            size: 3,
-            rowspan: 3,
-            type: 'radio-group',
-            validation: {
-              required: 'You gotta pick one!',
+      requiredTextProps={{ color: 'danger', variant: 'title-xs' }}
+      fields={[
+        {
+          label: 'Fave Gamut Component',
+          name: 'rowspan-radiogroup',
+          options: [
+            {
+              label: 'FlexBox',
+              value: 'flex',
             },
-          },
-          {
-            label: 'Simple text',
-            name: 'rowspan-simple-text',
-            size: 3,
-            type: 'text',
-          },
-          {
-            defaultValue: 'yeet',
-            label: 'Text with default value',
-            name: 'text-with-default-formatting',
-            size: 4,
-            type: 'text',
-          },
-          {
-            label: 'Simple select (required)',
-            name: 'simple-select-formatting',
-            options: ['', 'One fish', 'Two fish', 'Red fish', 'Blue fish'],
-            size: 5,
-            type: 'select',
-            validation: {
-              required: 'Please select an option',
+            {
+              label: 'GridForm',
+              value: 'grid',
             },
+            {
+              label: 'Text',
+              value: 'text',
+            },
+          ],
+          size: 3,
+          rowspan: 3,
+          type: 'radio-group',
+          validation: {
+            required: 'You gotta pick one!',
           },
-        ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
-        submit={{
-          contents: 'Submit',
-          size: 12,
-        }}
-      />
-  )
-}
-
-export const Formatted: Story = {
-  render: () => <FormattedExample />
+        },
+        {
+          label: 'Simple text',
+          name: 'rowspan-simple-text',
+          size: 3,
+          type: 'text',
+        },
+        {
+          defaultValue: 'yeet',
+          label: 'Text with default value',
+          name: 'text-with-default-formatting',
+          size: 4,
+          type: 'text',
+        },
+        {
+          label: 'Simple select (required)',
+          name: 'simple-select-formatting',
+          options: ['', 'One fish', 'Two fish', 'Red fish', 'Blue fish'],
+          size: 5,
+          type: 'select',
+          validation: {
+            required: 'Please select an option',
+          },
+        },
+      ]}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Submit',
+        size: 12,
+      }}
+    />
+  );
 };
 
+export const Formatted: Story = {
+  render: () => <FormattedExample />,
+};
 
 const SubmitButtonPositionExample = () => {
   return (
     <LayoutGrid gap={8}>
-        <Column size={6}>
-          <GridForm
-            hideRequiredText
-            fields={[
-              {
-                label: 'Simple text',
-                name: 'right-sub-simple-text',
-                type: 'text',
-                size: 12,
-              },
-            ]}
-            onSubmit={(values) => {
-              action('Form Submitted')(values);
-            }}
-            submit={{
-              contents: 'Right Submit!?',
-              position: 'right',
+      <Column size={6}>
+        <GridForm
+          hideRequiredText
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'right-sub-simple-text',
+              type: 'text',
               size: 12,
-            }}
-          />
-        </Column>
-        <Column size={6}>
-          <GridForm
-            hideRequiredText
-            fields={[
-              {
-                label: 'Simple text',
-                name: 'center-sub-simple-text',
-                type: 'text',
-                size: 12,
-              },
-            ]}
-            onSubmit={(values) => {
-              action('Form Submitted')(values);
-            }}
-            submit={{
-              contents: 'Center Submit!?',
-              position: 'center',
+            },
+          ]}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Right Submit!?',
+            position: 'right',
+            size: 12,
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          hideRequiredText
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'center-sub-simple-text',
+              type: 'text',
               size: 12,
-            }}
-          />
-        </Column>
-        <Column size={6}>
-          <GridForm
-            hideRequiredText
-            fields={[
-              {
-                label: 'Simple text',
-                name: 'left-sub-simple-text',
-                type: 'text',
-                size: 12,
-              },
-            ]}
-            onSubmit={(values) => {
-              action('Form Submitted')(values);
-            }}
-            submit={{
-              contents: 'Left Submit!?',
-              position: 'left',
+            },
+          ]}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Center Submit!?',
+            position: 'center',
+            size: 12,
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          hideRequiredText
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'left-sub-simple-text',
+              type: 'text',
               size: 12,
-            }}
-          />
-        </Column>
-        <Column size={6}>
-          <GridForm
-            hideRequiredText
-            fields={[
-              {
-                label: 'Simple text',
-                name: 'stretch-sub-simple-text',
-                type: 'text',
-                size: 12,
-              },
-            ]}
-            onSubmit={(values) => {
-              action('Form Submitted')(values);
-            }}
-            submit={{
-              contents: 'Stretch Submit!?',
-              position: 'stretch',
+            },
+          ]}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Left Submit!?',
+            position: 'left',
+            size: 12,
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          hideRequiredText
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'stretch-sub-simple-text',
+              type: 'text',
               size: 12,
-            }}
-          />
-        </Column>
-      </LayoutGrid>
-  )
-}
+            },
+          ]}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Stretch Submit!?',
+            position: 'stretch',
+            size: 12,
+          }}
+        />
+      </Column>
+    </LayoutGrid>
+  );
+};
 
 export const SubmitButtonPosition: Story = {
-  render: () => <SubmitButtonPositionExample />
+  render: () => <SubmitButtonPositionExample />,
 };
 
 const SubmitButtonOptionsExample = () => {
   return (
     <>
-        <GridForm
-          hideRequiredText
-          fields={[
-            {
-              label: 'Simple text',
-              name: 'fill-button-simple-text',
-              size: 6,
-              type: 'text',
-            },
-          ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            contents: 'Fill Button',
-            size: 12,
-          }}
-        />
-        <GridForm
-          hideRequiredText
-          fields={[
-            {
-              label: 'Simple text',
-              name: 'cta-button-simple-text',
-              size: 6,
-              type: 'text',
-            },
-          ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            type: 'cta',
-            contents: 'CTA Button',
-            size: 12,
-          }}
-        />
-        <GridForm
-          hideRequiredText
-          fields={[
-            {
-              label: 'Simple text',
-              name: 'fill-dark-mode-simple-text',
-              size: 6,
-              type: 'text',
-            },
-          ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            contents: 'Fill Button Dark Mode',
-            size: 12,
-            mode: 'dark',
-          }}
-        />
-        <GridForm
-          hideRequiredText
-          fields={[
-            {
-              label: 'Simple text',
-              name: 'cta-dark-mode-simple-text',
-              size: 6,
-              type: 'text',
-            },
-          ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            type: 'cta',
-            contents: 'CTA Button Dark Mode',
-            size: 12,
-            mode: 'dark',
-          }}
-        />
-      </>
-  )
-}
-
-export const SubmitButtonOptions: Story = {
-  render: () => <SubmitButtonOptionsExample />
-};
-
-const InlineExample = () => {
-  return (
-    <GridForm
+      <GridForm
+        hideRequiredText
         fields={[
           {
-            hideLabel: true,
-            label: 'Label',
-            name: 'email',
-            size: 8,
+            label: 'Simple text',
+            name: 'fill-button-simple-text',
+            size: 6,
             type: 'text',
           },
         ]}
@@ -456,16 +370,102 @@ const InlineExample = () => {
           action('Form Submitted')(values);
         }}
         submit={{
-          contents: 'Inline Submit!?',
-          size: 4,
-          position: 'right',
+          contents: 'Fill Button',
+          size: 12,
         }}
       />
-  )
-}
+      <GridForm
+        hideRequiredText
+        fields={[
+          {
+            label: 'Simple text',
+            name: 'cta-button-simple-text',
+            size: 6,
+            type: 'text',
+          },
+        ]}
+        onSubmit={(values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          type: 'cta',
+          contents: 'CTA Button',
+          size: 12,
+        }}
+      />
+      <GridForm
+        hideRequiredText
+        fields={[
+          {
+            label: 'Simple text',
+            name: 'fill-dark-mode-simple-text',
+            size: 6,
+            type: 'text',
+          },
+        ]}
+        onSubmit={(values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Fill Button Dark Mode',
+          size: 12,
+          mode: 'dark',
+        }}
+      />
+      <GridForm
+        hideRequiredText
+        fields={[
+          {
+            label: 'Simple text',
+            name: 'cta-dark-mode-simple-text',
+            size: 6,
+            type: 'text',
+          },
+        ]}
+        onSubmit={(values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          type: 'cta',
+          contents: 'CTA Button Dark Mode',
+          size: 12,
+          mode: 'dark',
+        }}
+      />
+    </>
+  );
+};
+
+export const SubmitButtonOptions: Story = {
+  render: () => <SubmitButtonOptionsExample />,
+};
+
+const InlineExample = () => {
+  return (
+    <GridForm
+      fields={[
+        {
+          hideLabel: true,
+          label: 'Label',
+          name: 'email',
+          size: 8,
+          type: 'text',
+        },
+      ]}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Inline Submit!?',
+        size: 4,
+        position: 'right',
+      }}
+    />
+  );
+};
 
 export const InlineSubmit: Story = {
-  render: () => <InlineExample />
+  render: () => <InlineExample />,
 };
 
 const CancelButtonExample = () => {
@@ -493,108 +493,106 @@ const CancelButtonExample = () => {
         size: 12,
       }}
     />
-  )
-}
-
-export const CancelButton: Story = {
-  render: () => <CancelButtonExample />
+  );
 };
 
+export const CancelButton: Story = {
+  render: () => <CancelButtonExample />,
+};
 
 const CustomInputsExample = () => {
   return (
     <GridForm
-        fields={[
-          {
-            render: ({ error, setValue }) => (
-              <>
-                <Input
-                  error={!!error}
-                  id="custom-text-input"
-                  type="text"
-                  onChange={(event) => setValue(event.target.value)}
-                />
-                🕺
-              </>
-            ),
-            label: 'Gimme two more swags',
-            name: 'custom-input',
-            size: 12,
-            validation: {
-              required: true,
-              pattern: {
-                value: /swag(.*)swag/,
-                message: 'Still not enough swag, what are you doing... 💢',
-              },
-            },
-            type: 'custom',
-          },
-          {
-            render: ({ error, setValue }) => (
-              <FormGroup label="updog" width="100%">
-                <Input
-                  error={!!error}
-                  id="custom-text-group-input"
-                  type="text"
-                  onChange={(event) => setValue(event.target.value)}
-                />
-              </FormGroup>
-            ),
-            size: 12,
-            label: 'Gimme two more swags',
-            name: 'custom-input-group',
-            validation: {
-              required: true,
-              pattern: {
-                value: /swag(.*)swag/,
-                message: 'Still not enough swag, what are you doing... 💢',
-              },
-            },
-            type: 'custom-group',
-          },
-        ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
-        submit={{
-          contents: 'Submit Me!?',
+      fields={[
+        {
+          render: ({ error, setValue }) => (
+            <>
+              <Input
+                error={!!error}
+                id="custom-text-input"
+                type="text"
+                onChange={(event) => setValue(event.target.value)}
+              />
+              🕺
+            </>
+          ),
+          label: 'Gimme two more swags',
+          name: 'custom-input',
           size: 12,
-        }}
-      />
-  )
-}
-
-export const CustomInputs: Story = {
-  render: () => <CustomInputsExample />
+          validation: {
+            required: true,
+            pattern: {
+              value: /swag(.*)swag/,
+              message: 'Still not enough swag, what are you doing... 💢',
+            },
+          },
+          type: 'custom',
+        },
+        {
+          render: ({ error, setValue }) => (
+            <FormGroup label="updog" width="100%">
+              <Input
+                error={!!error}
+                id="custom-text-group-input"
+                type="text"
+                onChange={(event) => setValue(event.target.value)}
+              />
+            </FormGroup>
+          ),
+          size: 12,
+          label: 'Gimme two more swags',
+          name: 'custom-input-group',
+          validation: {
+            required: true,
+            pattern: {
+              value: /swag(.*)swag/,
+              message: 'Still not enough swag, what are you doing... 💢',
+            },
+          },
+          type: 'custom-group',
+        },
+      ]}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Submit Me!?',
+        size: 12,
+      }}
+    />
+  );
 };
 
+export const CustomInputs: Story = {
+  render: () => <CustomInputsExample />,
+};
 
 const PlaceholderTextExample = () => {
   return (
     <GridForm
-        hideRequiredText
-        fields={[
-          {
-            label: 'Email',
-            placeholder: 'Your email',
-            name: 'placeholder',
-            type: 'email',
-            size: 12,
-          },
-        ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
-        submit={{
-          contents: 'Submit Me!?',
-          size: 6,
-        }}
-      />
-  )
-}
+      hideRequiredText
+      fields={[
+        {
+          label: 'Email',
+          placeholder: 'Your email',
+          name: 'placeholder',
+          type: 'email',
+          size: 12,
+        },
+      ]}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Submit Me!?',
+        size: 6,
+      }}
+    />
+  );
+};
 
 export const PlaceholderText: Story = {
-  render: () => <PlaceholderTextExample />
+  render: () => <PlaceholderTextExample />,
 };
 
 const OnFieldUpdateExample = () => {
@@ -622,599 +620,595 @@ const OnFieldUpdateExample = () => {
         }}
       />
     </>
-  )
-}
+  );
+};
 
 export const OnFieldUpdate: Story = {
-  render: () => <OnFieldUpdateExample />
+  render: () => <OnFieldUpdateExample />,
 };
 
 const InfoTipExample = () => {
   return (
-      <>
-        <GridForm
-          fields={[
-            {
-              infotip: {
-                info:
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                alignment: 'bottom-left',
-              },
-              label: 'Tool input',
-              name: 'input-field',
-              size: 6,
-              type: 'text',
+    <>
+      <GridForm
+        fields={[
+          {
+            infotip: {
+              info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              alignment: 'bottom-left',
             },
-            {
-              infotip: {
-                info: (
-                  <Markdown text="My grandmother used to tell me stories..." />
-                ),
-                alignment: 'bottom-right',
-              },
-              label: 'Select with infotip',
-              options: ['', 'Water', 'Earth', 'Fire', 'Air', 'Boomerang'],
-              size: 3,
-              type: 'select',
-              validation: {
-                required: 'Please select an option',
-              },
-              name: 'select-field',
+            label: 'Tool input',
+            name: 'input-field',
+            size: 6,
+            type: 'text',
+          },
+          {
+            infotip: {
+              info: (
+                <Markdown text="My grandmother used to tell me stories..." />
+              ),
+              alignment: 'bottom-right',
             },
-            {
-              infotip: {
-                info:
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-              },
-              label: 'Write a paragraph about infotips',
-              name: 'textarea-field',
-              size: 6,
-              type: 'textarea',
-              rows: 6,
-              placeholder: 'Check out my infotip',
-              validation: {
-                required: 'Please write something about infotips!',
-              },
+            label: 'Select with infotip',
+            options: ['', 'Water', 'Earth', 'Fire', 'Air', 'Boomerang'],
+            size: 3,
+            type: 'select',
+            validation: {
+              required: 'Please select an option',
             },
-            {
-              infotip: {
-                info:
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-              },
-              label: 'Preferred Modern Artist',
-              name: 'modern-artist',
-              options: [
-                {
-                  label: 'Taylor Swift',
-                  value: 'taylor-swift',
-                },
-                {
-                  label: 'Beyonce',
-                  value: 'beyonce',
-                },
-              ],
-              size: 3,
-              type: 'radio-group',
-              validation: {
-                required: 'You gotta pick one!',
-              },
+            name: 'select-field',
+          },
+          {
+            infotip: {
+              info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             },
-            {
-              infotip: {
-                info:
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                alignment: 'bottom-right',
-              },
-              label: 'End User License Agreement',
-              description: 'I promise that I read it',
-              name: 'eula-checkbox-required-agreement',
-              size: 4,
-              type: 'checkbox',
-              validation: {
-                required: 'Please check the box to agree to the terms.',
-              },
+            label: 'Write a paragraph about infotips',
+            name: 'textarea-field',
+            size: 6,
+            type: 'textarea',
+            rows: 6,
+            placeholder: 'Check out my infotip',
+            validation: {
+              required: 'Please write something about infotips!',
             },
-          ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            contents: 'Submit',
-            size: 12,
-          }}
-        />
-      </>
-  )
-}
+          },
+          {
+            infotip: {
+              info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            },
+            label: 'Preferred Modern Artist',
+            name: 'modern-artist',
+            options: [
+              {
+                label: 'Taylor Swift',
+                value: 'taylor-swift',
+              },
+              {
+                label: 'Beyonce',
+                value: 'beyonce',
+              },
+            ],
+            size: 3,
+            type: 'radio-group',
+            validation: {
+              required: 'You gotta pick one!',
+            },
+          },
+          {
+            infotip: {
+              info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              alignment: 'bottom-right',
+            },
+            label: 'End User License Agreement',
+            description: 'I promise that I read it',
+            name: 'eula-checkbox-required-agreement',
+            size: 4,
+            type: 'checkbox',
+            validation: {
+              required: 'Please check the box to agree to the terms.',
+            },
+          },
+        ]}
+        onSubmit={(values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit',
+          size: 12,
+        }}
+      />
+    </>
+  );
+};
 
 export const InfoTip: Story = {
-  render: () => <InfoTipExample />
-}
+  render: () => <InfoTipExample />,
+};
 
 const SectionsExample = () => {
   return (
     <GridForm
-          requiredTextProps={{ color: 'primary', fontStyle: 'italic' }}
-          fields={[
+      requiredTextProps={{ color: 'primary', fontStyle: 'italic' }}
+      fields={[
+        {
+          title: 'first section',
+          layout: 'left',
+          variant: 'title-xs',
+          titleWrapperProps: {
+            color: 'danger',
+          },
+          fields: [
             {
-              title: 'first section',
-              layout: 'left',
-              variant: 'title-xs',
-              titleWrapperProps: {
-                color: 'danger',
+              label: 'hi?',
+              name: 'text01-left-section',
+              size: 4,
+              type: 'text',
+              validation: {
+                required: true,
               },
-              fields: [
-                {
-                  label: 'hi?',
-                  name: 'text01-left-section',
-                  size: 4,
-                  type: 'text',
-                  validation: {
-                    required: true,
-                  },
-                },
-                {
-                  label: 'hello?',
-                  name: 'text02-left-section',
-                  size: 4,
-                  type: 'text',
-                  validation: {
-                    required: true,
-                  },
-                },
-                {
-                  label: 'Write a paragraph.',
-                  name: 'paragraph01-left-section',
-                  size: 8,
-                  type: 'textarea',
-                  validation: {
-                    required: 'Please write something about penguins!',
-                  },
-                },
-                {
-                  label: 'howdy?',
-                  name: 'text03-left-section',
-                  size: 4,
-                  type: 'text',
-                  validation: {
-                    required: true,
-                  },
-                },
-                {
-                  label: 'whats up?',
-                  name: 'text04--left-section',
-                  size: 4,
-                  type: 'text',
-                  validation: {
-                    required: true,
-                  },
-                },
-                {
-                  label: 'Write another long paragraph',
-                  name: 'paragraph02-left-section',
-                  size: 8,
-                  type: 'textarea',
-                  validation: {
-                    required: 'Please write something about penguins!',
-                  },
-                },
-              ],
             },
             {
-              title: 'hi there... again',
-              as: 'h3',
-              fields: [
-                {
-                  label: 'hello....',
-                  name: 'text01-center-section',
-                  size: 5,
-                  type: 'text',
-                  validation: {
-                    required: true,
-                  },
-                },
-              ],
+              label: 'hello?',
+              name: 'text02-left-section',
+              size: 4,
+              type: 'text',
+              validation: {
+                required: true,
+              },
             },
-          ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            contents: 'Submit me',
-            size: 12,
-          }}
-          validation="onSubmit"
-        />
-  )
-}
+            {
+              label: 'Write a paragraph.',
+              name: 'paragraph01-left-section',
+              size: 8,
+              type: 'textarea',
+              validation: {
+                required: 'Please write something about penguins!',
+              },
+            },
+            {
+              label: 'howdy?',
+              name: 'text03-left-section',
+              size: 4,
+              type: 'text',
+              validation: {
+                required: true,
+              },
+            },
+            {
+              label: 'whats up?',
+              name: 'text04--left-section',
+              size: 4,
+              type: 'text',
+              validation: {
+                required: true,
+              },
+            },
+            {
+              label: 'Write another long paragraph',
+              name: 'paragraph02-left-section',
+              size: 8,
+              type: 'textarea',
+              validation: {
+                required: 'Please write something about penguins!',
+              },
+            },
+          ],
+        },
+        {
+          title: 'hi there... again',
+          as: 'h3',
+          fields: [
+            {
+              label: 'hello....',
+              name: 'text01-center-section',
+              size: 5,
+              type: 'text',
+              validation: {
+                required: true,
+              },
+            },
+          ],
+        },
+      ]}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Submit me',
+        size: 12,
+      }}
+      validation="onSubmit"
+    />
+  );
+};
 
 export const Sections: Story = {
-  render: () => <SectionsExample />
-}
+  render: () => <SectionsExample />,
+};
 
 const CustomErrorExample = () => {
   return (
     <GridForm
+      fields={[
+        {
+          label: 'Who is the best at bending?',
+          name: 'custom-error',
+          size: 5,
+          type: 'text',
+          customError: 'NOT Flexo.',
+          validation: {
+            required: true,
+            pattern: {
+              value: /Bender/,
+              message: 'Just type Bender...',
+            },
+          },
+        },
+      ]}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Submit Me!?',
+        size: 12,
+      }}
+    />
+  );
+};
+
+export const CustomError: Story = {
+  render: () => <CustomErrorExample />,
+};
+
+const HiddenInputExample = () => {
+  return (
+    <GridForm
+      fields={[
+        {
+          type: 'hidden',
+          name: 'secret-stuff',
+          defaultValue: "I'm invisible!",
+        },
+        {
+          label: "There's more than one field here!",
+          name: 'custom-hidden-input',
+          type: 'email',
+          size: 12,
+        },
+      ]}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Submit',
+        size: 12,
+      }}
+    />
+  );
+};
+
+export const HiddenInput: Story = {
+  render: () => <HiddenInputExample />,
+};
+
+const SweetContainerExample = () => {
+  return (
+    <GridForm
+      hideRequiredText
+      fields={[
+        {
+          label: 'This is our sticky sweet label',
+          name: 'sweet-container',
+          type: 'sweet-container',
+        },
+        {
+          label: "There's something sticky and sweet here!",
+          name: 'custom-input',
+          type: 'email',
+          size: 12,
+        },
+      ]}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Submit',
+        size: 12,
+      }}
+    />
+  );
+};
+
+export const SweetContainer: Story = {
+  render: () => <SweetContainerExample />,
+};
+
+const MarkdownErrorsExample = () => {
+  return (
+    <GridForm
+      fields={[
+        {
+          label: 'there is a markdown error here!',
+          name: 'markdown-error',
+          type: 'email',
+          validation: {
+            required:
+              'This is [an example](https://www.youtube.com/watch?v=5IuRzJRrRpQ) error link.',
+          },
+          size: 12,
+        },
+      ]}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Submit',
+        size: 12,
+      }}
+    />
+  );
+};
+
+export const MarkdownErrors: Story = {
+  render: () => <MarkdownErrorsExample />,
+};
+
+const CheckboxSpacingExample = () => {
+  return (
+    <GridForm
+      fields={[
+        {
+          description: 'i am cozy',
+          name: 'cozy-check-0',
+          size: 6,
+          type: 'checkbox',
+          id: 'cozy-check-0',
+          defaultValue: true,
+          spacing: 'tight',
+          label: 'must check',
+          validation: {
+            required: 'sos',
+          },
+        },
+        {
+          description: 'i am also cozy',
+          name: 'cozy-check-1',
+          size: 6,
+          type: 'checkbox',
+          id: 'cozy-check-1',
+          defaultValue: true,
+          spacing: 'tight',
+          label: 'must check',
+          validation: {
+            required: 'pls help',
+          },
+        },
+        {
+          description: 'i am cozy as well',
+          name: 'cozy-check-2',
+          size: 6,
+          type: 'checkbox',
+          id: 'cozy-check-2',
+          defaultValue: true,
+          label: 'you do not have to check this',
+          spacing: 'tight',
+        },
+        {
+          description: 'i am cozy too',
+          name: 'cozy-check-3',
+          size: 6,
+          type: 'checkbox',
+          id: 'cozy-check-3',
+          defaultValue: true,
+          label: 'you do not have to check this',
+          spacing: 'tight',
+        },
+      ]}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Submit',
+        position: 'right',
+        size: 12,
+      }}
+    />
+  );
+};
+
+export const CheckboxSpacing: Story = {
+  render: () => <CheckboxSpacingExample />,
+};
+
+const LoadingAndDisabledExample = () => {
+  return (
+    <>
+      <Background bg="beige" p={32}>
+        <GridForm
+          hideRequiredText
           fields={[
             {
-              label: 'Who is the best at bending?',
-              name: 'custom-error',
-              size: 5,
-              type: 'text',
-              customError: 'NOT Flexo.',
-              validation: {
-                required: true,
-                pattern: {
-                  value: /Bender/,
-                  message: 'Just type Bender...',
-                },
-              },
+              label: 'Email',
+              placeholder: 'Your email',
+              name: 'loading-beige',
+              type: 'email',
+              size: 12,
             },
           ]}
           onSubmit={(values) => {
             action('Form Submitted')(values);
           }}
           submit={{
+            loading: true,
             contents: 'Submit Me!?',
             size: 12,
           }}
         />
-  )
-}
-
-export const CustomError: Story = {
-  render: () => <CustomErrorExample />
-}
-
-const HiddenInputExample = () => {
-  return (
-    <GridForm
-        fields={[
-          {
-            type: 'hidden',
-            name: 'secret-stuff',
-            defaultValue: "I'm invisible!",
-          },
-          {
-            label: "There's more than one field here!",
-            name: 'custom-hidden-input',
-            type: 'email',
-            size: 12,
-          },
-        ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
-        submit={{
-          contents: 'Submit',
-          size: 12,
-        }}
-      />
-  )
-}
-
-export const HiddenInput: Story = {
-  render: () => <HiddenInputExample />
-}
-
-const SweetContainerExample = () => {
-  return (
-    <GridForm
-        hideRequiredText
-        fields={[
-          {
-            label: 'This is our sticky sweet label',
-            name: 'sweet-container',
-            type: 'sweet-container',
-          },
-          {
-            label: "There's something sticky and sweet here!",
-            name: 'custom-input',
-            type: 'email',
-            size: 12,
-          },
-        ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
-        submit={{
-          contents: 'Submit',
-          size: 12,
-        }}
-      />
-  )
-}
-
-export const SweetContainer: Story = {
-  render: () => <SweetContainerExample />
-}
-
-const MarkdownErrorsExample = () => {
-  return (
-    <GridForm
-        fields={[
-          {
-            label: 'there is a markdown error here!',
-            name: 'markdown-error',
-            type: 'email',
-            validation: {
-              required:
-                'This is [an example](https://www.youtube.com/watch?v=5IuRzJRrRpQ) error link.',
-            },
-            size: 12,
-          },
-        ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
-        submit={{
-          contents: 'Submit',
-          size: 12,
-        }}
-      />
-  )
-}
-
-export const MarkdownErrors: Story = {
-  render: () => <MarkdownErrorsExample />
-}
-
-const CheckboxSpacingExample = () => {
-  return (
-    <GridForm
-        fields={[
-          {
-            description: 'i am cozy',
-            name: 'cozy-check-0',
-            size: 6,
-            type: 'checkbox',
-            id: 'cozy-check-0',
-            defaultValue: true,
-            spacing: 'tight',
-            label: 'must check',
-            validation: {
-              required: 'sos',
-            },
-          },
-          {
-            description: 'i am also cozy',
-            name: 'cozy-check-1',
-            size: 6,
-            type: 'checkbox',
-            id: 'cozy-check-1',
-            defaultValue: true,
-            spacing: 'tight',
-            label: 'must check',
-            validation: {
-              required: 'pls help',
-            },
-          },
-          {
-            description: 'i am cozy as well',
-            name: 'cozy-check-2',
-            size: 6,
-            type: 'checkbox',
-            id: 'cozy-check-2',
-            defaultValue: true,
-            label: 'you do not have to check this',
-            spacing: 'tight',
-          },
-          {
-            description: 'i am cozy too',
-            name: 'cozy-check-3',
-            size: 6,
-            type: 'checkbox',
-            id: 'cozy-check-3',
-            defaultValue: true,
-            label: 'you do not have to check this',
-            spacing: 'tight',
-          },
-        ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
-        submit={{
-          contents: 'Submit',
-          position: 'right',
-          size: 12,
-        }}
-      />
-  )
-}
-
-export const CheckboxSpacing: Story = {
-  render: () => <CheckboxSpacingExample />
-}
-
-const LoadingAndDisabledExample = () => {
-  return (
-    <>
-        <Background bg="beige" p={32}>
-          <GridForm
-            hideRequiredText
-            fields={[
-              {
-                label: 'Email',
-                placeholder: 'Your email',
-                name: 'loading-beige',
-                type: 'email',
-                size: 12,
-              },
-            ]}
-            onSubmit={(values) => {
-              action('Form Submitted')(values);
-            }}
-            submit={{
-              loading: true,
-              contents: 'Submit Me!?',
+      </Background>
+      <Background bg="navy" p={32}>
+        <GridForm
+          hideRequiredText
+          fields={[
+            {
+              label: 'Email',
+              placeholder: 'Your email',
+              name: 'loading-navy',
+              type: 'email',
               size: 12,
-            }}
-          />
-        </Background>
-        <Background bg="navy" p={32}>
-          <GridForm
-            hideRequiredText
-            fields={[
-              {
-                label: 'Email',
-                placeholder: 'Your email',
-                name: 'loading-navy',
-                type: 'email',
-                size: 12,
-              },
-            ]}
-            onSubmit={(values) => {
-              action('Form Submitted')(values);
-            }}
-            submit={{
-              disabled: true,
-              contents: 'Submit Me!?',
-              size: 12,
-            }}
-          />
-        </Background>
-      </>
-  )
-}
+            },
+          ]}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            disabled: true,
+            contents: 'Submit Me!?',
+            size: 12,
+          }}
+        />
+      </Background>
+    </>
+  );
+};
 
 export const LoadingAndDisabled: Story = {
-  render: () => <LoadingAndDisabledExample />
-}
+  render: () => <LoadingAndDisabledExample />,
+};
 
 const DisabledFieldsOnSubmitExample = () => {
   return (
     <>
-        <Background bg="palePink" p={32}>
-          <GridForm
-            hideRequiredText
-            disableFieldsOnSubmit
-            fields={[
-              {
-                label: 'Email',
-                placeholder: 'i will disable on correct submission!',
-                name: 'disabled-fields-on-submit',
-                type: 'email',
-                validation: {
-                  required: 'pls fill this out',
-                  pattern: {
-                    value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
-                    message: 'that is not an email 😔',
-                  },
+      <Background bg="palePink" p={32}>
+        <GridForm
+          hideRequiredText
+          disableFieldsOnSubmit
+          fields={[
+            {
+              label: 'Email',
+              placeholder: 'i will disable on correct submission!',
+              name: 'disabled-fields-on-submit',
+              type: 'email',
+              validation: {
+                required: 'pls fill this out',
+                pattern: {
+                  value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
+                  message: 'that is not an email 😔',
                 },
-                size: 12,
               },
-            ]}
-            onSubmit={(values) => {
-              action('Form Submitted')(values);
-            }}
-            submit={{
-              contents: 'Submit Me 💖',
               size: 12,
-            }}
-          />
-        </Background>
-        <Background bg="black" p={32}>
-          <GridForm
-            hideRequiredText
-            disableFieldsOnSubmit
-            wasSubmitSuccessful={false}
-            fields={[
-              {
-                label: 'Email',
-                placeholder: 'i will NEVER disable.',
-                name: 'disabled-fields-on-submit-ii',
-                type: 'email',
-                validation: {
-                  required: 'pls fill this out',
+            },
+          ]}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Submit Me 💖',
+            size: 12,
+          }}
+        />
+      </Background>
+      <Background bg="black" p={32}>
+        <GridForm
+          hideRequiredText
+          disableFieldsOnSubmit
+          wasSubmitSuccessful={false}
+          fields={[
+            {
+              label: 'Email',
+              placeholder: 'i will NEVER disable.',
+              name: 'disabled-fields-on-submit-ii',
+              type: 'email',
+              validation: {
+                required: 'pls fill this out',
+              },
+              size: 12,
+            },
+          ]}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Submit Me 😈',
+            size: 12,
+          }}
+        />
+      </Background>
+      <Background bg="paleBlue" p={32}>
+        <GridForm
+          hideRequiredText
+          disableFieldsOnSubmit
+          fields={[
+            {
+              label: 'Email',
+              placeholder: 'i will also never disable...',
+              name: 'disabled-fields-on-submit-iii',
+              type: 'email',
+              validation: {
+                required: 'pls fill this out',
+                validate: {
+                  checkValue: () =>
+                    false || "It's never gonna work out between us",
                 },
-                size: 12,
               },
-            ]}
-            onSubmit={(values) => {
-              action('Form Submitted')(values);
-            }}
-            submit={{
-              contents: 'Submit Me 😈',
               size: 12,
-            }}
-          />
-        </Background>
-        <Background bg="paleBlue" p={32}>
-          <GridForm
-            hideRequiredText
-            disableFieldsOnSubmit
-            fields={[
-              {
-                label: 'Email',
-                placeholder: 'i will also never disable...',
-                name: 'disabled-fields-on-submit-iii',
-                type: 'email',
-                validation: {
-                  required: 'pls fill this out',
-                  validate: {
-                    checkValue: () =>
-                      false || "It's never gonna work out between us",
-                  },
-                },
-                size: 12,
-              },
-            ]}
-            onSubmit={(values) => {
-              action('Form Submitted')(values);
-            }}
-            submit={{
-              contents: 'Submit Me 🤷🏻',
-              size: 12,
-            }}
-          />
-        </Background>
-      </>
-  )
-}
+            },
+          ]}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Submit Me 🤷🏻',
+            size: 12,
+          }}
+        />
+      </Background>
+    </>
+  );
+};
 
 export const DisabledFieldsOnSubmit: Story = {
-  render: () => <DisabledFieldsOnSubmitExample />
-}
+  render: () => <DisabledFieldsOnSubmitExample />,
+};
 
 const ResetOnSubmitExample = () => {
   return (
     <>
-        <Background bg="beige" p={32}>
-          <GridForm
-            hideRequiredText
-            resetOnSubmit
-            fields={[
-              {
-                label: 'Email',
-                placeholder: 'i will reset on correct submission!',
-                name: 'reset-on-submit',
-                type: 'email',
-                validation: {
-                  required: 'pls fill this out',
-                  pattern: {
-                    value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
-                    message: 'that is not an email 😔',
-                  },
+      <Background bg="beige" p={32}>
+        <GridForm
+          hideRequiredText
+          resetOnSubmit
+          fields={[
+            {
+              label: 'Email',
+              placeholder: 'i will reset on correct submission!',
+              name: 'reset-on-submit',
+              type: 'email',
+              validation: {
+                required: 'pls fill this out',
+                pattern: {
+                  value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
+                  message: 'that is not an email 😔',
                 },
-                size: 12,
               },
-            ]}
-            onSubmit={(values) => {
-              action('Form Submitted')(values);
-            }}
-            submit={{
-              contents: 'Submit Me 💖',
               size: 12,
-            }}
-          />
-        </Background>
-      </>
-  )
-}
+            },
+          ]}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Submit Me 💖',
+            size: 12,
+          }}
+        />
+      </Background>
+    </>
+  );
+};
 
 export const ResetOnSubmit: Story = {
-  render: () => <ResetOnSubmitExample />
-}
+  render: () => <ResetOnSubmitExample />,
+};
 
 export const FormLoadingExample = () => {
   const [loading, setLoading] = useState(false);
@@ -1244,7 +1238,8 @@ export const FormLoadingExample = () => {
             validation: {
               required: 'pls fill this out',
               pattern: {
-                value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
+                value:
+                  /^(?:[a-zA-Z0-9_]+(?:[.-]?[a-zA-Z0-9_]+)*)@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/,
                 message: 'that is not an email 😔',
               },
             },
@@ -1263,7 +1258,7 @@ export const FormLoadingExample = () => {
 };
 
 export const FormLoading: Story = {
-  render: () => <FormLoadingExample />
+  render: () => <FormLoadingExample />,
 };
 
 const HideRequiredTextExample = () => {
@@ -1298,43 +1293,43 @@ const HideRequiredTextExample = () => {
         />
       </Background>
     </>
-  )
-}
+  );
+};
 
 export const HideRequiredText: Story = {
-  render: () => <HideRequiredTextExample />
+  render: () => <HideRequiredTextExample />,
 };
 
 const SoloFieldExample = () => {
   return (
     <>
-        <Background bg="paleBlue" p={32}>
-          <GridForm
-            fields={[
-              {
-                label: 'A field',
-                placeholder: 'I am a required solo field',
-                name: 'so-required',
-                type: 'text',
-                size: 12,
-                validation: {
-                  required: 'I am required',
-                },
-              },
-            ]}
-            onSubmit={(values) => {
-              action('Form Submitted')(values);
-            }}
-            submit={{
-              contents: 'Submit Me 💖',
+      <Background bg="paleBlue" p={32}>
+        <GridForm
+          fields={[
+            {
+              label: 'A field',
+              placeholder: 'I am a required solo field',
+              name: 'so-required',
+              type: 'text',
               size: 12,
-            }}
-          />
-        </Background>
-      </>
-  )
-}
+              validation: {
+                required: 'I am required',
+              },
+            },
+          ]}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Submit Me 💖',
+            size: 12,
+          }}
+        />
+      </Background>
+    </>
+  );
+};
 
 export const SoloField: Story = {
-  render: () => <SoloFieldExample />
+  render: () => <SoloFieldExample />,
 };

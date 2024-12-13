@@ -1,5 +1,18 @@
-import { Box, ButtonProps, FillButton, GridBox, IconButton, StrokeButton, TextButton } from '@codecademy/gamut';
-import { MiniArrowLeftIcon, MiniArrowRightIcon,MiniDeleteIcon,MiniRibbonIcon, SearchIcon } from '@codecademy/gamut-icons';
+import {
+  Box,
+  FillButton,
+  GridBox,
+  IconButton,
+  StrokeButton,
+  TextButton,
+} from '@codecademy/gamut';
+import {
+  MiniArrowLeftIcon,
+  MiniArrowRightIcon,
+  MiniDeleteIcon,
+  MiniRibbonIcon,
+  SearchIcon,
+} from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 // Using FillButton here to show the difference between primary and secondary variants
@@ -15,41 +28,40 @@ type Story = StoryObj<typeof FillButton>;
 export const Primary: Story = {
   args: {
     variant: 'primary',
-    children: 'Submit'
+    children: 'Submit',
   },
 };
 
 export const Secondary: Story = {
   args: {
-     variant: 'secondary',
-     children: 'Cancel'
+    variant: 'secondary',
+    children: 'Cancel',
   },
 };
 
 const InlineIconsExample = () => {
   return (
     <GridBox gridTemplateColumns="1fr 1fr 1fr 3fr">
-        <FillButton maxWidth="fit-content" icon={MiniArrowLeftIcon}>
-          FillButton
-        </FillButton>
-        <StrokeButton maxWidth="fit-content" icon={MiniRibbonIcon}>
-          Leading icon
-        </StrokeButton>
-        <TextButton
-          maxWidth="fit-content"
-          icon={MiniArrowRightIcon}
-          iconPosition="right"
-        >
-          TextButton
-        </TextButton>
-      </GridBox>
-  )
-}
+      <FillButton maxWidth="fit-content" icon={MiniArrowLeftIcon}>
+        FillButton
+      </FillButton>
+      <StrokeButton maxWidth="fit-content" icon={MiniRibbonIcon}>
+        Leading icon
+      </StrokeButton>
+      <TextButton
+        maxWidth="fit-content"
+        icon={MiniArrowRightIcon}
+        iconPosition="right"
+      >
+        TextButton
+      </TextButton>
+    </GridBox>
+  );
+};
 
 export const InlineIcons: Story = {
-  render: () => <InlineIconsExample />
-}
-
+  render: () => <InlineIconsExample />,
+};
 
 const buttons = [FillButton, IconButton, StrokeButton, TextButton] as const;
 const variants = ['primary', 'secondary'] as const;
@@ -59,7 +71,7 @@ const ButtonScale = ({ mode }: { mode: 'dark' | 'light' }) => {
   const grid = buttons.map(({ displayName }) => (
     <Box key={`${displayName}-key`}>{displayName}</Box>
   ));
-  variants.forEach((variant: typeof variants[number]) => {
+  variants.forEach((variant: (typeof variants)[number]) => {
     sizes.forEach((size) => {
       buttons.forEach((Component) => {
         const props = {
@@ -102,9 +114,9 @@ const ButtonScale = ({ mode }: { mode: 'dark' | 'light' }) => {
 };
 
 export const ButtonsLightMode: Story = {
-  render: () => <ButtonScale mode="light" />
+  render: () => <ButtonScale mode="light" />,
 };
 
 export const ButtonsDarkMode: Story = {
-  render: () => <ButtonScale mode="dark" />
+  render: () => <ButtonScale mode="dark" />,
 };

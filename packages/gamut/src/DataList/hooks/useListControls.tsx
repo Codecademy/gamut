@@ -9,7 +9,7 @@ import {
   OnFilter,
   OnSort,
   RowChange,
-} from '..';
+} from '../types';
 
 export function useListControls<
   Row,
