@@ -48,9 +48,9 @@ describe('GridFormSections', () => {
     const { view } = renderView();
 
     const textLabel = view.getByLabelText('Stub Text (optional)');
-    const textField = view.getByRole('textbox', { name: 'Stub Text' });
+    const textField = view.getByRole('textbox', { name: /Stub Text/ });
     const radioLabel = view.getByLabelText('Stub Select (optional)');
-    const radioField = view.getByRole('combobox', { name: 'Stub Select' });
+    const radioField = view.getByRole('combobox', { name: /Stub Select/ });
 
     expect(textLabel).toBeTruthy();
     expect(textField).toBeTruthy();
