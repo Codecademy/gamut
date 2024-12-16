@@ -74,7 +74,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
       >
         {children}
         {!isSoloField && (
-          <Text as="span" aria-hidden>
+          <Text as="span" aria-hidden={required}>
             {required ? '*' : ' \u00A0(optional)'}
           </Text>
         )}
