@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-styles/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "outputs": ["{projectRoot}/dist"],
@@ -34,6 +35,5 @@
         "command": "rm -rf ./dist"
       }
     }
-  },
-  "tags": []
+  }
 }

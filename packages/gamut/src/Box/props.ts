@@ -1,7 +1,7 @@
 import { system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 
-import { WithChildrenProp } from '..';
+import { WithChildrenProp } from '../utils';
 
 export const boxProps = variance.compose(
   system.space,

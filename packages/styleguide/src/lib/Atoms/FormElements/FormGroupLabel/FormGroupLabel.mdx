@@ -1,0 +1,60 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as FormGroupLabelStories from './FormGroupLabel.stories';
+
+export const parameters = {
+  subtitle: `A label element to be tied to a group of elements.`,
+  design: {
+      type: 'figma',
+      url:
+        'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0',
+    },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/elements/FormGroupLabel.tsx',
+  },
+};
+
+<Meta of={FormGroupLabelStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Provide a label to a group of form elements.
+
+## Variants
+A `FormGroupLabel` can come in different variants:
+* default, which without any additional styling
+* `size='large'` to include a label with larger text
+* `disabled` to render the label in a disabled state
+
+### Default
+<Canvas of={FormGroupLabelStories.Default} />
+
+### Large size
+Setting the `size` prop to `'large'` will render the label with larger text.
+
+<Canvas of={FormGroupLabelStories.LargeSize} />
+
+### Disabled
+<Canvas of={FormGroupLabelStories.Disabled} />
+
+## Including `htmlFor`
+
+It is best to provide `htmlFor` to both the FormGroup + inner form element to make it super accessible. If this is not provided, the FormLabel will default to `<div>`. If an `htmlFor` is provided, it will be a `<label>`. You can inspect the elements in the browser to see the difference.
+
+With `htmlFor`:
+<Canvas of={FormGroupLabelStories.WithHtmlFor} />
+
+Without `htmlFor`:
+<Canvas of={FormGroupLabelStories.WithoutHtmlFor} />
+
+## Playground
+<Canvas sourceState="shown" of={FormGroupLabelStories.Default} />
+
+<Controls />

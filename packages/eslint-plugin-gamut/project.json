@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/eslint-plugin-gamut/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "nx:run-commands",
@@ -16,10 +17,8 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/eslint-plugin-gamut"],
       "options": {
-        "jestConfig": "packages/eslint-plugin-gamut/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "packages/eslint-plugin-gamut/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }

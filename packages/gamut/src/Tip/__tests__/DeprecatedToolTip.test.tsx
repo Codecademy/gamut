@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
+import { act } from '@testing-library/react';
 
 import { DeprecatedToolTip } from '../DeprecatedToolTip';
 
@@ -49,14 +50,17 @@ describe('ToolTip', () => {
       expect(view.queryByText('Hello')).toBeNull();
     });
 
-    it('renders the children on mouseover', () => {
+    it('renders the children on mouseover', async () => {
       const { view } = renderView({
         placement: 'floating',
       });
 
       const target = view.getByText('Target');
 
-      fireEvent.mouseOver(target);
+      await act(() => {
+        fireEvent.mouseOver(target);
+        return Promise.resolve();
+      });
 
       expect(view.getByText('Hello'));
     });

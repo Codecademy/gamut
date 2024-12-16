@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.0](https://github.com/Codecademy/gamut/compare/eslint-plugin-gamut@2.2.0...eslint-plugin-gamut@2.3.0) (2024-12-13)
+
+### Features
+
+- Storybook 8 Feature Branch ([300ef37](https://github.com/Codecademy/gamut/commit/300ef37da570c8425f7ac1aed52e87392b44fadf))
+
 ## [2.2.0](https://github.com/Codecademy/gamut/compare/eslint-plugin-gamut@2.1.0...eslint-plugin-gamut@2.2.0) (2024-05-29)
 
 ### Features
