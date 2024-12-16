@@ -29,14 +29,14 @@ export const parameters = {
   - The Medium size is suitable for Dialogs that require more content or explanation.
   - The `fluid` option fits to the maximum size of the components inside of it. This is useful when you want to incorporate elements beyond standard typography inside of your Dialog.
 - Dialog height changes depending on the body-text length.
-- Dialog has light and dark theme variants that respond to the appropriate <LinkTo component="Foundations/ColorMode">Color Mode</LinkTo>.
+- Dialog has light and dark theme variants that respond to the appropriate <LinkTo id="Foundations/ColorMode">Color Mode</LinkTo>.
 
 ### Best practices:
 
 - Dialogs should be centered inside of the window.
 - Dialogs appear unprompted and require confirmation before the user can continue.
 - Use the modal component sparingly. This is the most dispruptive tool in our arsenal. We should only have a small handful of these in our system at any given time.
-- Dialogs should always be displayed over an <LinkTo component="Molecules/Modals/Overlay">Overlay</LinkTo>. Use the Overlay component in Gamut (and Figma) to capture the appropriate background opacity.
+- Dialogs should always be displayed over an <LinkTo id="Molecules/Modals/Overlay">Overlay</LinkTo>. Use the Overlay component in Gamut (and Figma) to capture the appropriate background opacity.
   - The overlay in light mode should be white at 95% opacity, the overlay in dark mode should be black at 75% opacity.
 
 ## Variants
@@ -57,7 +57,7 @@ Use the `danger` variant to create warning Dialogs to warn the user of the conse
 
 ## Color modes
 
-Dialog components respond to the current <LinkTo component="Foundations/ColorMode">Color Mode</LinkTo> they are used in. Each component inside of dialog will correctly display for the current color mode without any extra configuration.
+Dialog components respond to the current <LinkTo id="Foundations/ColorMode">Color Mode</LinkTo> they are used in. Each component inside of dialog will correctly display for the current color mode without any extra configuration.
 Check it out:
 
 ### Light

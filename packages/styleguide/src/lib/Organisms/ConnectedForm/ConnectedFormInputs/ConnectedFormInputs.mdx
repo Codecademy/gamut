@@ -21,7 +21,7 @@ export const parameters = {
 
 ## Input types
 
-We have a selection of `ConnectedInput` components that are visually identical to their un-connected <LinkTo component='Atoms/FormInputs'>FormInput</LinkTo> counterparts. Please reference the links below for component-specific prop and styling configuration:
+We have a selection of `ConnectedInput` components that are visually identical to their un-connected <LinkTo id='Atoms/FormInputs'>FormInput</LinkTo> counterparts. Please reference the links below for component-specific prop and styling configuration:
 
 <ConnectedFormInputsTable />
 
@@ -29,13 +29,13 @@ We have a selection of `ConnectedInput` components that are visually identical t
 
 `ConnectedRadioGroupInput` is the exception to the rule, and has some props that differ, particularly `options` — which takes an array of `ConnectedBaseRadioInputProps` components.
 
-For further styling configurations, check out <LinkTo component="Atoms/FormInputs/RadioGroup">RadioGroup</LinkTo>.
+For further styling configurations, check out <LinkTo id="Atoms/FormInputs/RadioGroup">RadioGroup</LinkTo>.
 
 `ConnectedRadioGroup` and `ConnectedRadio` should rarely, if ever, be used outside of `ConnectedRadioGroupInput`.
 
 ## Usage
 
-The components are engineered to be passed into the component prop of <LinkTo component="Organisms/ConnectedForm/ConnectedFormGroup">ConnectedFormGroup</LinkTo>, like so:
+The components are engineered to be passed into the component prop of <LinkTo id="Organisms/ConnectedForm/ConnectedFormGroup">ConnectedFormGroup</LinkTo>, like so:
 
 ```tsx
 <ConnectedFormGroup
