@@ -1,17 +1,11 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "68.3.0",
+  "version": "68.3.1",
   "author": "Codecademy Engineering",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
-  "repository": "git@github.com:Codecademy/gamut.git",
-  "scripts": {
-    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ./dist",
-    "copy-storybook": "rm -rf ../../dist/docs && cp -r ./dist ../../dist/docs",
-    "start": "yarn storybook",
-    "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet"
-  }
+  "repository": "git@github.com:Codecademy/gamut.git"
 }
