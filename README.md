@@ -63,8 +63,8 @@ We provide a single package to manage the versions of a few core dependencies: `
 ### Running the storybook styleguide
 
 1.  Run `yarn nx storybook styleguide` to start the storybook server
-1.  Add new stories to `packages/styleguide/src`
-1.  Stories are written using storybook's [Component Story Format](https://storybook.js.org/docs/formats/component-story-format/) and [MDX](https://storybook.js.org/docs/writing-docs/mdx#basic-example).
+2.  Add new stories to `packages/styleguide/src`
+3.  Stories are written using storybook's [Component Story Format](https://storybook.js.org/docs/formats/component-story-format/) and [MDX](https://storybook.js.org/docs/writing-docs/mdx#basic-example). Check out our comprehensive guide on writing stories here: [Storybook Docs](https://storybook.js.org/docs/react/get-started/introduction).
 
 ### Publishing Modules
 
