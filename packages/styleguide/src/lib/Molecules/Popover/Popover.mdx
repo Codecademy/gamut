@@ -14,7 +14,8 @@ export const parameters = {
   status: 'current',
   source: {
     repo: 'gamut',
-    githubLink: 'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Popover/Popover.tsx'
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Popover/Popover.tsx',
   },
 };
 
@@ -23,10 +24,12 @@ export const parameters = {
 <ComponentHeader {...parameters} />
 
 ## Usage
+
 Popovers are generally used for interactive contents, such as new and exciting features for users to try.
 
 ### When NOT to use:
-- For small, non-interactive contents, use a <LinkTo id="atoms-tooltip">ToolTip</LinkTo>
+
+- For small, non-interactive contents, use a <LinkTo id="Molecules/Tips/ToolTip">ToolTip</LinkTo>
 
 ## Specifications
 
@@ -36,7 +39,7 @@ Using the beak prop, you can add a beak to the popover.
 
 <Canvas of={PopoverStories.Beak} />
 
-Tooltips with a _centered_ beak -`center`- are smaller sized and meant for a single small number of words, like keyboard shortcuts. Similar to the center aligned <LinkTo id="atoms-tooltip">ToolTip</LinkTo>
+Tooltips with a _centered_ beak -`center`- are smaller sized and meant for a single small number of words, like keyboard shortcuts. Similar to the center aligned <LinkTo id="Molecules/Tips/ToolTip">ToolTip</LinkTo>
 
 <Canvas of={PopoverStories.BeakCentered} />
 
@@ -54,13 +57,13 @@ Using the position prop, you can add a position (`above` or `below`) to the popo
 <LayoutGrid gap={32}>
 
 <Column size={6} variant={false} mx={8}>
-#### Above
-<Canvas of={PopoverStories.Above} />
+  #### Above
+  <Canvas of={PopoverStories.Above} />
 </Column>
 
 <Column size={6} variant={false} mx={8}>
-#### Below
-<Canvas of={PopoverStories.Below} />
+  #### Below
+  <Canvas of={PopoverStories.Below} />
 </Column>
 
 </LayoutGrid>
@@ -72,33 +75,33 @@ Using the pattern prop, you can apply a patterned background to the popover.
 <LayoutGrid gap={32}>
 
 <Column size={4} variant={false} mx={8}>
-#### `CheckerDense`
-<Canvas of={PopoverStories.PopoverCheckerDense} />
+  #### `CheckerDense`
+  <Canvas of={PopoverStories.PopoverCheckerDense} />
 </Column>
 
 <Column size={4} variant={false} mx={8}>
-#### `CheckerLoose`
-<Canvas of={PopoverStories.PopoverCheckerLoose} />
+  #### `CheckerLoose`
+  <Canvas of={PopoverStories.PopoverCheckerLoose} />
 </Column>
 
 <Column size={4} variant={false} mx={8}>
-#### `CheckerRegular`
-<Canvas of={PopoverStories.PopoverCheckerRegular} />
+  #### `CheckerRegular`
+  <Canvas of={PopoverStories.PopoverCheckerRegular} />
 </Column>
 
 <Column size={4} variant={false} mx={8}>
-#### `DiagonalADense`
-<Canvas of={PopoverStories.PopoverDiagonalADense} />
+  #### `DiagonalADense`
+  <Canvas of={PopoverStories.PopoverDiagonalADense} />
 </Column>
 
 <Column size={4} variant={false} mx={8}>
-#### `DiagonalALoose`
-<Canvas of={PopoverStories.PopoverDiagonalALoose} />
+  #### `DiagonalALoose`
+  <Canvas of={PopoverStories.PopoverDiagonalALoose} />
 </Column>
 
 <Column size={4} variant={false} mx={8}>
-#### `DiagonalARegular`
-<Canvas of={PopoverStories.PopoverDiagonalARegular} />
+  #### `DiagonalARegular`
+  <Canvas of={PopoverStories.PopoverDiagonalARegular} />
 </Column>
 
 </LayoutGrid>
@@ -107,9 +110,11 @@ Using the pattern prop, you can apply a patterned background to the popover.
 
 When there is no focusable child element in the popover, the popover container will receive focus.
 This is to resolve the error that the focus trap throws when there is no focusable element.
+
 <Canvas of={PopoverStories.WithoutFocus} />
 
 ### Animation
+
 Adds a 'fade' animation to Popovers - should only be usef when specified within designs.
 
 <Canvas of={PopoverStories.Animation} />
@@ -121,7 +126,7 @@ Popovers have a secondary, tooltip-esque variant style that have a smaller beak,
 <Canvas of={PopoverStories.Variant} />
 
 ## Playground
+
 <Canvas sourceState="shown" of={PopoverStories.Default} />
 
 <Controls />
-

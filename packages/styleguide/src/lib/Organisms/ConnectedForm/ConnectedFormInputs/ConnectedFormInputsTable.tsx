@@ -1,7 +1,7 @@
-import { Box, List , ListCol, ListRow, Text } from "@codecademy/gamut"
+import { Box, List, ListCol, ListRow, Text } from '@codecademy/gamut';
 import * as React from 'react';
 
-import { LinkTo } from "~styleguide/blocks";
+import { LinkTo } from '~styleguide/blocks';
 
 interface ListRowRendererProps {
   inputs: { name: string; counterpart: string }[];
@@ -19,10 +19,7 @@ const ListRowRenderer: React.FC<ListRowRendererProps> = ({ inputs }) => {
               </Text>
             </ListCol>
             <ListCol size="lg" fill>
-              <LinkTo
-               id={`Atoms/FormInputs/${counterpart}`}
-               kind={`Atoms/FormInputs/${counterpart}`}
-              >
+              <LinkTo id={`Atoms/FormInputs/${counterpart}`}>
                 {counterpart}
               </LinkTo>
             </ListCol>
@@ -32,7 +29,6 @@ const ListRowRenderer: React.FC<ListRowRendererProps> = ({ inputs }) => {
     </>
   );
 };
-
 
 export const ConnectedFormInputsTable = () => {
   return (
@@ -48,5 +44,5 @@ export const ConnectedFormInputsTable = () => {
         />
       </List>
     </Box>
-  )
-}
+  );
+};
