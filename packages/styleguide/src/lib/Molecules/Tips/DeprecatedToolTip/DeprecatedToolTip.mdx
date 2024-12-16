@@ -19,6 +19,7 @@ export const parameters = {
 <ComponentHeader {...parameters} />
 
 ## Usage
+
 **Note:** This component is deprecated and should not be used in new designs.
 
 Display a small piece of extra information triggered on the focus or hover of a button or icon, such as extra requirements for a form surfaced from an informative (i) icon.
@@ -26,16 +27,15 @@ Display a small piece of extra information triggered on the focus or hover of a 
 Tooltip contents are generally small pieces of text or other non-interactive information.
 They disappear when the focus or hover are no longer active.
 
-> If you'd like interactive contents, use a <LinkTo id="molecules-popover">Popover</LinkTo>.
-
+> If you'd like interactive contents, use a <LinkTo component="Molecules/Popover">Popover</LinkTo>.
 
 ### Best practices:
-- Great for surfacing additional information that may or may not be relevant _without_ cluttering the core interface.
 
+- Great for surfacing additional information that may or may not be relevant _without_ cluttering the core interface.
 
 ### When NOT to use:
 
-- If you'd like interactive contents, use a <LinkTo id="molecules-popover">Popover</LinkTo>
+- If you'd like interactive contents, use a <LinkTo component="Molecules/Popover">Popover</LinkTo>
 - [use case]- for [describe the use case], use the [similar component] component.
 
 ## Alignment
@@ -71,8 +71,8 @@ Tooltips sometimes need to be in used in a way that they need to escape the conf
 
 <Canvas of={DeprecatedToolTipStories.Placement} />
 
-
 ## Playground
+
 Tooltips can be of a `dark` or `light` visual mode. Swap the ColorMode in our toolbar at the top of the page to see them in action!
 
 <Canvas sourceState="shown" of={DeprecatedToolTipStories.SmallAlignments} />
@@ -80,11 +80,12 @@ Tooltips can be of a `dark` or `light` visual mode. Swap the ColorMode in our to
 <Controls />
 
 ## UX writing
+
 Writing a tooltip? Keep it short, useful, and avoid sharing information that’s vital for learners to complete tasks. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="ux-writing-component-guidelines-tooltip">writing for tooltips</LinkTo>.
 
-* Only add a tooltip if the information is actually useful.
-* Avoid redundancy to information already available on screen.
-* Don’t hide information learners need to complete a task in a tooltip.
-* Don’t include links in tooltips. They aren’t accessible to screen readers.
-* Keep copy at a reading level of grade 7 or below. Test with [Hemingway App](https://hemingwayapp.com/).
-* Ask someone unrelated to the project to read the message to see if it makes sense.
+- Only add a tooltip if the information is actually useful.
+- Avoid redundancy to information already available on screen.
+- Don’t hide information learners need to complete a task in a tooltip.
+- Don’t include links in tooltips. They aren’t accessible to screen readers.
+- Keep copy at a reading level of grade 7 or below. Test with [Hemingway App](https://hemingwayapp.com/).
+- Ask someone unrelated to the project to read the message to see if it makes sense.

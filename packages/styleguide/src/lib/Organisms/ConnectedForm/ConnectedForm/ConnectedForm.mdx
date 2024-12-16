@@ -20,14 +20,14 @@ export const parameters = {
 
 ## Usage
 
-`ConnectedForm` is an organism designed to create flexible forms with all of the reliability of <LinkTo kind='Organisms/GridForm'>GridForm</LinkTo> but without the strict grid structure.
+`ConnectedForm` is an organism designed to create flexible forms with all of the reliability of <LinkTo component='Organisms/GridForm'>GridForm</LinkTo> but without the strict grid structure.
 
 ### Components
 
-- `ConnectedForm`: A <LinkTo kind='Atoms/Form'>Form</LinkTo> that provides context to all `Connected` components.
-- `ConnectedFormGroup`: <LinkTo kind='Atoms/FormGroups'>FormGroups</LinkTo> that use the context provided by `ConnectedForm` for error and disabled states.
-- `ConnectedFormInputs`: <LinkTo kind='Atoms/FormInputs'>FormInputs</LinkTo> the use the context provided by `ConnectedForm` for field registration and validation as well as required and disabled states. Should be used through `ConnectedFormGroup`.
-- `SubmitButton`: A submit type <LinkTo kind='Atoms/Button'>Button</LinkTo> that uses the context provided by `ConnectedForm` for loading and disabled states.
+- `ConnectedForm`: A <LinkTo component='Atoms/Form'>Form</LinkTo> that provides context to all `Connected` components.
+- `ConnectedFormGroup`: <LinkTo component='Atoms/FormGroups'>FormGroups</LinkTo> that use the context provided by `ConnectedForm` for error and disabled states.
+- `ConnectedFormInputs`: <LinkTo component='Atoms/FormInputs'>FormInputs</LinkTo> the use the context provided by `ConnectedForm` for field registration and validation as well as required and disabled states. Should be used through `ConnectedFormGroup`.
+- `SubmitButton`: A submit type <LinkTo component='Atoms/Button'>Button</LinkTo> that uses the context provided by `ConnectedForm` for loading and disabled states.
 
 ### Utilities
 
@@ -37,8 +37,8 @@ Each of your fields' names must correspond with the appropriate `defaultValue` k
 
 This hook also returns the `FormRequiredText` component - include this before your form unless all of your form fields are optional.
 
-
 ### Example code
+
 ```tsx
 import {
   ConnectedCheckbox,
@@ -108,7 +108,6 @@ export const GoodForm = () => {
   );
 };
 ```
-
 
 ## Variants
 
