@@ -106,10 +106,10 @@ const getBaseCases = (view: RenderResult<typeof queries, HTMLElement>) => {
     name: 'Check me!',
   }) as HTMLInputElement;
   const selectField = view.getByRole('combobox', {
-    name: 'Stub Select',
+    name: /Stub Select/,
   }) as HTMLInputElement;
   const textField = view.getByRole('textbox', {
-    name: 'Stub Text',
+    name: /Stub Text/,
   }) as HTMLInputElement;
   return { checkboxField, selectField, textField };
 };
