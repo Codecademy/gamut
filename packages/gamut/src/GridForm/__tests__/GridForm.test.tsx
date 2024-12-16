@@ -257,7 +257,7 @@ describe('GridForm', () => {
         },
       });
 
-      const textField = view.getByRole('textbox', { name: 'Stub Text' });
+      const textField = view.getByRole('textbox', { name: /Stub Text/ });
 
       await act(async () => {
         fireEvent.input(textField, {
@@ -284,7 +284,7 @@ describe('GridForm', () => {
         validation: 'onChange',
       });
 
-      const textField = view.getByRole('textbox', { name: 'Stub Text' });
+      const textField = view.getByRole('textbox', { name: /Stub Text/ });
 
       await act(async () => {
         fireEvent.input(textField, {
