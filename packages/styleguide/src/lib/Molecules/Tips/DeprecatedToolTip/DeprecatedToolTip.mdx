@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as DeprecatedToolTipStories from './DeprecatedToolTip.stories';
 
@@ -18,16 +18,14 @@ export const parameters = {
 
 <ComponentHeader {...parameters} />
 
-## Usage
+<Callout text="This component is deprecated and should not be used in new designs." />
 
-**Note:** This component is deprecated and should not be used in new designs.
+## Usage
 
 Display a small piece of extra information triggered on the focus or hover of a button or icon, such as extra requirements for a form surfaced from an informative (i) icon.
 
 Tooltip contents are generally small pieces of text or other non-interactive information.
 They disappear when the focus or hover are no longer active.
-
-> If you'd like interactive contents, use a <LinkTo id="Molecules/Popover">Popover</LinkTo>.
 
 ### Best practices:
 
@@ -36,7 +34,6 @@ They disappear when the focus or hover are no longer active.
 ### When NOT to use:
 
 - If you'd like interactive contents, use a <LinkTo id="Molecules/Popover">Popover</LinkTo>
-- [use case]- for [describe the use case], use the [similar component] component.
 
 ## Alignment
 
