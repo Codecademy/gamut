@@ -38,8 +38,8 @@ Use `Badge`s to display read-only information like statuses, attributes, and oth
 
 ### When NOT to use:
 
-- **Interactivity**- when text is meant to be clickable, use the <LinkTo component="Atoms/Button">Button</LinkTo> or <LinkTo component="Typography/Anchor">Anchor</LinkTo> (link) components instead.
-- **Categorization**- for labeling or catgorizing content, use the <LinkTo component="Atoms/Tag">Tag</LinkTo> component instead.
+- **Interactivity**- when text is meant to be clickable, use the <LinkTo id="Atoms/Buttons">Button</LinkTo> or <LinkTo id="Typography/Anchor">Anchor</LinkTo> components instead.
+- **Categorization**- for labeling or catgorizing content, use the <LinkTo id="Atoms/Tag">Tag</LinkTo> component instead.
 
 ## Anatomy
 
@@ -92,24 +92,31 @@ Use the accent variant to draw attention to important details or statuses with a
 <Canvas of={BadgeStories.Accent} />
 
 ## Sizes
+
 We have two `size` options, which should be used according to their context.
 
 ### Default size
+
 Use `primary` when the `Badge` is a standalone entitity.
+
 <Canvas of={BadgeStories.DefaultSize} />
 
-
 ### Small size
-Use `sm` when the `Badge` is inline with other components such as <LinkTo kind='Typography/Text'>Text</LinkTo>.
+
+Use `sm` when the `Badge` is inline with other components such as <LinkTo id='Typography/Text'>Text</LinkTo>.
+
 <Canvas of={BadgeStories.SmallSize} />
 
 ## Leading icon
+
 Include the `icon` property when the icon reinforces the badge’s message and improves scannability. Since badges are inherently small, it's recommended to use Gamut's mini icons. Below are examples of using icons with the different `Badge` sizes.
 
 ### Default size with icon
+
 <Canvas of={BadgeStories.DefaultSizeWithIcon} />
 
 ### Small size with icon
+
 <Canvas of={BadgeStories.SmallSizeWithIcon} />
 
 ## Playground
