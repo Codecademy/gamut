@@ -1,5 +1,8 @@
-import { Shimmer } from '@codecademy/gamut';
+import { Box, Shimmer } from '@codecademy/gamut';
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import type { Meta, StoryObj } from '@storybook/react';
+
 
 const meta: Meta<typeof Shimmer> = {
   component: Shimmer,
@@ -14,3 +17,16 @@ export const Default: Story = {
     height: 200,
   },
 };
+
+const RoundedShimmer = styled(Shimmer)(
+  css({
+    borderRadius: 'md',
+    overflow: 'hidden',
+  })
+)
+
+export const RoundedShimmerExample: Story = {
+  render: () => (
+      <RoundedShimmer height={200} />
+  ),
+}
