@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.36.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.35.0...@codecademy/gamut-icons@9.36.0) (2024-12-17)
+
+### Features
+
+- **Icons:** Add ClubsSealIcon ([50bb6ce](https://github.com/Codecademy/gamut/commit/50bb6cef37fb4f0a14c2a929c172adc2e37c65a1))
+
 ## [9.35.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.34.1...@codecademy/gamut-icons@9.35.0) (2024-12-13)
 
 ### Features
