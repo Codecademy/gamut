@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { Callout, ComponentHeader } from '~styleguide/blocks';
 
 import * as AccordionButtonDeprecatedStories from './AccordionButtonDeprecated.stories';
 
@@ -19,9 +19,9 @@ Comes in a few standard size and color combinations.`,
 
 <ComponentHeader {...parameters} />
 
-## Usage
+<Callout text="This component is deprecated. For similar functionality, consider using the Disclosure component." />
 
-**Note**: This component is deprecated. For similar functionality, consider using <LinkTo id="Molecules/Disclosure" >Disclosure</LinkTo> or a <LinkTo id="Organisms/Lists & Tables/List">List</LinkTo> component.
+## Usage
 
 Use AccordionButtonDeprecated in conjunction with the AccordionDeprecated component to create an accordion-style interface.
 
