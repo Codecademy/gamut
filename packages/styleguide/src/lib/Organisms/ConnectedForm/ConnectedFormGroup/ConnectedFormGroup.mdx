@@ -20,7 +20,7 @@ export const parameters = {
 
 ## Usage
 
-`ConnectedFormGroup` is a <LinkTo kind='Atoms/FormElements/FormGroup'>FormGroup</LinkTo> that uses the context provided by `ConnectedForm` for error and disabled states. This component ensures that every field has proper error handling and accessibility. It also will type its `field` to the proper `ConnectedFormInput` passed into `component`.
+`ConnectedFormGroup` is a <LinkTo id='Atoms/FormElements/FormGroup'>FormGroup</LinkTo> that uses the context provided by `ConnectedForm` for error and disabled states. This component ensures that every field has proper error handling and accessibility. It also will type its `field` to the proper `ConnectedFormInput` passed into `component`.
 
 `ConnectedFormGroup` should primarly be used with the `useConnectedForm` hook. Below is an example, notice that the `options` prop should have elements in its array that contain both a `label` and `value` property:
 
@@ -51,15 +51,18 @@ export const parameters = {
 ```
 
 ## Variants
+
 A `ConnectedFormGroup` can be in one of three states: `default`, `error`, or `disabled`.
 
 ### States
-* `default` being a standard group that can be interacted with.
-* `error` being a group that has an error message displayed.
-* `disabled` being a group that is disabled and therefore not interactable.
+
+- `default` being a standard group that can be interacted with.
+- `error` being a group that has an error message displayed.
+- `disabled` being a group that is disabled and therefore not interactable.
 
 ## Playground
-To see how a `ConnectedFormGroup` can be used in a `ConnectedForm`, check out the <LinkTo id="organisms-connectedform"> `ConnectedForm`</LinkTo> page. Below is
+
+To see how a `ConnectedFormGroup` can be used in a `ConnectedForm`, check out the <LinkTo id="Organisms/ConnectedForm/ConnectedForm">ConnectedForm</LinkTo> page.
 
 <Canvas sourceState="shown" of={ConnectedFormGroupStories.Default} />
 
