@@ -25,7 +25,7 @@ describe('FormGroup', () => {
       const { view } = renderView({ label });
 
       expect(view.queryByLabelText(optionalLabelText)).toBeNull();
-      view.getByText(label);
+      view.getByText(/up dog/);
     });
   });
 
