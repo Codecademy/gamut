@@ -1,4 +1,4 @@
-import { Box, Shimmer } from '@codecademy/gamut';
+import { Shimmer } from '@codecademy/gamut';
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import type { Meta, StoryObj } from '@storybook/react';
