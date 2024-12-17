@@ -2,7 +2,7 @@ import { styledOptions } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { tabElementBaseProps, TabElementStyleProps } from "./props";
+import { tabElementBaseProps, TabElementStyleProps } from './props';
 import { tabContainerStates, tabContainerVariants } from './styles';
 
 export interface TabNavProps

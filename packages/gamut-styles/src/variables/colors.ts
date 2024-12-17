@@ -154,3 +154,80 @@ export const platformPalette = {
   ...flattenScale(platformSwatches),
   ...truePlatformColors,
 } as const;
+
+/**
+ * Enterprise Colors
+ */
+
+const enterpriseBlack = '#000C14';
+
+export const enterpriseSwatches = {
+  blue: {
+    '50': '#F0F8FE',
+    '100': '#E0F2FE',
+    '200': '#B7DDF8',
+    '300': '#78BAE9',
+    '400': '#3498DF',
+    '500': '#0073C4',
+    '600': '#005998',
+    '700': '#00406C',
+    '800': '#002640',
+    '900': '#001626',
+  },
+  gray: {
+    '50': '#F3F5F7',
+    '100': '#E1E6EA',
+    '200': '#CAD4DC',
+    '300': '#AAB8C1',
+    '400': '#80919C',
+    '500': '#6B7B85',
+    '600': '#56646E',
+    '700': '#404E58',
+    '800': '#2B3841',
+    '900': '#15222B',
+  },
+  skyBlue: {
+    '100': '#E6FAFF',
+    '500': '#21B9E8',
+  },
+  green: {
+    '0': '#EBF6E4',
+    '400': '#6EAB49',
+    '500': '#42811A',
+    '700': '#1D4C12',
+  },
+  pink: {
+    '100': '#FEE7F2',
+    '400': '#DF659E',
+    '500': '#CD397E',
+  },
+  yellow: {
+    '0': '#FEFAE8',
+    '500': '#E8C427',
+  },
+  orange: {
+    '500': '#F2A036',
+  },
+  red: {
+    '0': '#FBE8E8',
+    '100': '#F4C7C7',
+    '500': '#BE3636',
+    '600': '#932729',
+  },
+} as const;
+
+const trueEnterpriseColors = {
+  mulberryPink: enterpriseSwatches.pink[500],
+  blue: enterpriseSwatches.blue[400],
+  green: enterpriseSwatches.green[500],
+  skyBlue: enterpriseSwatches.skyBlue[500],
+  yellow: enterpriseSwatches.yellow[500],
+  red: enterpriseSwatches.red[500],
+  gray: enterpriseSwatches.gray[500],
+  black: enterpriseBlack,
+} as const;
+
+export const enterprisePalette = {
+  ...flattenScale(enterpriseSwatches),
+  ...trueEnterpriseColors,
+} as const;
