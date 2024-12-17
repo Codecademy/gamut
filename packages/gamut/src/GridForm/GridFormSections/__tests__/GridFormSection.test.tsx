@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
+import { act } from 'react';
 
 import {
   stubFileField,
@@ -8,7 +9,6 @@ import {
 } from '../../__tests__/stubs';
 import { GridFormTextField } from '../../types';
 import { GridFormSectionTestComponent } from '../__fixtures__/renderers';
-import { act } from 'react';
 
 const fields = [stubTextField, stubSelectField, stubFileField];
 
