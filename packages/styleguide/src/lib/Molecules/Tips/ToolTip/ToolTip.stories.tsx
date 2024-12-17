@@ -14,8 +14,8 @@ const meta: Meta<typeof ToolTip> = {
 export default meta;
 type Story = StoryObj<typeof ToolTip>;
 
-const DefaultExample = () => {
-  return (
+export const Default: Story = {
+  render: () => (
     <FlexBox center py={64} m={24}>
       <ToolTip id="fill-id" info="Tooltip">
         <FillButton aria-describedby="fill-id" aria-disabled icon={SparkleIcon}>
@@ -23,15 +23,11 @@ const DefaultExample = () => {
         </FillButton>
       </ToolTip>
     </FlexBox>
-  );
+  ),
 };
 
-export const Default: Story = {
-  render: () => <DefaultExample />,
-};
-
-const IconButtonExample = () => {
-  return (
+export const WithIconButton: Story = {
+  render: () => (
     <FlexBox justifyContent="space-around" m={24} width="95%">
       <IconButton
         tip="Beautify your code"
@@ -46,24 +42,16 @@ const IconButtonExample = () => {
         tipProps={{ alignment: 'bottom-center', hideAriaToolTip: true }}
       />
     </FlexBox>
-  );
+  ),
 };
 
-export const WithIconButton: Story = {
-  render: () => <IconButtonExample />,
-};
-
-const FloatingExample = () => {
-  return (
+export const Floating: Story = {
+  render: () => (
     <IconButton
       aria-label="Wonder"
       tip="Wonder at the majesty of the universe"
       icon={SmileyStarEyesIcon}
       tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
     />
-  );
-};
-
-export const Floating: Story = {
-  render: () => <FloatingExample />,
+  ),
 };

@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { Callout, ComponentHeader } from '~styleguide/blocks';
 
 import * as AccordionDeprecatedStories from './AccordionDeprecated.stories';
 
@@ -10,7 +10,8 @@ such as a "hint" section in the LE or a list of department jobs on a careers pag
   status: 'deprecated',
   source: {
     repo: 'gamut',
-    githubLink: 'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/AccordionDeprecated/index.tsx'
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/AccordionDeprecated/index.tsx',
   },
 };
 
@@ -18,17 +19,20 @@ such as a "hint" section in the LE or a list of department jobs on a careers pag
 
 <ComponentHeader {...parameters} />
 
+<Callout text="Note: This component is deprecated. For similar functionality, consider using Disclosure or a List component." />
+
 ## Usage
-**Note**: This component is deprecated. For similar functionality, consider using <LinkTo id="molecules-disclosure" >Disclosure</LinkTo> or a <LinkTo id="organisms-disclosure">List</LinkTo> component.
 
 Use in conjunction with the AccordionButtonDeprecated component to create an accordion-style interface.
 
 This Accordion component will fit to `100%` of the the height of their parent container. If you need a fixed height container, wrap the accordion in a `<div>`.
 
 ### Best practices:
+
 - Avoid unless necessary for legacy pages that rely on this component. Check with a designer to ensure that styling is consistent or if it could be upgraded to use an updated component.
 
 ### When NOT to use:
+
 - [Having a button that reveals additional information]- for creating a single "Accordion", similar to an HTML [details](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) element, use the Disclosure component instead.
 - Creating a "Accordion" with many rows — akin to an FAQ that lists out questions and reveals an answer when clicked, use the List component with expandable rows.
 
@@ -40,9 +44,7 @@ If you'd like a "controlled" component equivalent, you can manually use the `Acc
 
 Most accordions should use an `AccordionButtonDeprecated`; other forms of buttons are acceptable for custom accordions.
 
-
 <Canvas of={AccordionDeprecatedStories.AccordionAreaDeprecatedExample} />
-
 
 ## Playground
 

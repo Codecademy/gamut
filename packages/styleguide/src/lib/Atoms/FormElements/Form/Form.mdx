@@ -5,12 +5,13 @@ import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 import * as FormStories from './Form.stories';
 
 export const parameters = {
-  subtitle: 'A customizable `<form />` element for wrapping other form elements',
+  subtitle:
+    'A customizable `<form />` element for wrapping other form elements',
   status: 'current',
   source: {
     repo: 'gamut',
     githubLink:
-      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/elements/Form.tsx'
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/elements/Form.tsx',
   },
 };
 
@@ -20,14 +21,14 @@ export const parameters = {
 
 ## Usage
 
-This is `Form` atom is the base component for other forms like the organisms: <LinkTo kind='Atoms/GridForm'>GridForm</LinkTo> and <LinkTo kind='Atoms/ConnectedForm'>ConnectedForm</LinkTo>.
-
+This is `Form` atom is the base component for other forms like the organisms: <LinkTo id='Organisms/GridForm'>GridForm</LinkTo> and <LinkTo id='Organisms/ConnectedForm'>ConnectedForm</LinkTo>.
 
 ### Best practices:
-- You should not use this component directly, instead use <LinkTo kind='Atoms/GridForm'>GridForm</LinkTo> or <LinkTo kind='Atoms/ConnectedForm'>ConnectedForm</LinkTo> depending on your needs.
+
+- You should not use this component directly, instead use <LinkTo id='Organisms/GridForm'>GridForm</LinkTo> or <LinkTo id='Organisms/ConnectedForm'>ConnectedForm</LinkTo> depending on your needs.
 
 ## Playground
+
 <Canvas sourceState="shown" of={FormStories.Default} />
 
 <Controls />
-
