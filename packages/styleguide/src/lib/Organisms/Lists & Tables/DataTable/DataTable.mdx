@@ -1,6 +1,6 @@
-import { Canvas, Controls, Meta } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { ComponentHeader } from '~styleguide/blocks';
 
 import * as DataTableStories from './DataTable.stories';
 
@@ -40,7 +40,6 @@ export const parameters = {
 - Determine what’s helpful to see en-masse, versus what info should be drilled down into
 - Be mindful about the horizontal spacing between columns and headers
 - Order metrics based on priority, and consider collapsing extraneous metrics on smaller sizes
-
 
 ## Usage
 
@@ -85,30 +84,3 @@ const DataTown = () => {
 Each column takes a `sortable` and `filters` prop - this is will determine if the column should be sortable and which filters should appear in the dropdown menu of the column.
 
 <Canvas of={DataTableStories.FullDataTable} />
-
-### Empty state
-When a DataTable has no data to display, it should show an empty state message.
-
-<Canvas of={DataTableStories.EmptyState} />
-
-### Loading rows
-
-Replaces content of current rows with <LinkTo kind="Atoms/Loaders/Shimmer">Shimmer</LinkTo>.
-
-
-<Canvas of={DataTableStories.LoadingRows} />
-
-### Scrollable indicators
-
-You can set the `shadow` prop to `true` to add a shadow to the DataTable when it is scrollable.
-
-<Canvas of={DataTableStories.Scrollable} />
-
-
-## Playground
-
-If you are using a story named 'Default', you can forgo the `of` prop.
-
-<Canvas sourceState="shown" of={DataTableStories.Default} />
-
-<Controls />

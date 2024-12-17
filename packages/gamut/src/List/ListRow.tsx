@@ -71,10 +71,11 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     let content = children;
     const renderNumbering = isOl && renderExpanded === undefined && !onClick;
 
-    console.log('rowProps', rowProps, 'wrapperProps', wrapperProps);
+    // This works on DataGrid + DataTable, minus the expanded rows in DataTable. Need to look into renderExpanded.
+    const newProps = { ...rowConfig, ...rowProps };
 
     // do we need render expanded here? this should only be for clickable rows
-    if (renderExpanded || Boolean(onClick) || !isTable) {
+    if ((renderExpanded || Boolean(onClick)) && !isTable) {
       content = (
         <RowEl
           as="div"
@@ -102,13 +103,13 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       <RowEl
         aria-live={renderExpanded ? 'polite' : undefined}
         variant={variant}
-        expanded={!!renderExpanded}
+        expanded={isTable ? undefined : !!renderExpanded}
         scrollable={scrollable}
         rowBreakpoint={rowBreakpoint}
         isOl={renderNumbering}
         role={role}
         tabIndex={tabIndex}
-        {...wrapperProps}
+        {...newProps}
       >
         <>
           {content}
