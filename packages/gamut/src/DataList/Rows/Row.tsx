@@ -50,8 +50,15 @@ export const Row: DataRow = ({
     });
   }, [onExpand, expandedContent, id, row]);
 
+  const listRowProps = expandable
+    ? {
+        expanded,
+        renderExpanded: renderExpandedContent,
+      }
+    : {};
+
   return (
-    <ListRow expanded={expanded} renderExpanded={renderExpandedContent}>
+    <ListRow as="tr" {...listRowProps}>
       {selectable && (
         <ListCol
           {...listColProps}
@@ -70,18 +77,18 @@ export const Row: DataRow = ({
         </ListCol>
       )}
       {columns.map(({ key, render, size, justify, fill, type }) => {
+        const newKey = prefixId(`${id}-col-${String(key)}`);
         const colProps = {
           ...listColProps,
           size,
           justify,
           fill,
           type,
-          key: prefixId(`${id}-col-${String(key)}`),
         };
 
         if (loading) {
           return (
-            <ListCol {...colProps}>
+            <ListCol {...colProps} key={newKey}>
               <Shimmer
                 minHeight={24}
                 height="calc(100% - 1rem)"
@@ -92,7 +99,7 @@ export const Row: DataRow = ({
         }
 
         return (
-          <ListCol {...colProps}>
+          <ListCol {...colProps} key={newKey}>
             <>
               {render ? (
                 render(row)

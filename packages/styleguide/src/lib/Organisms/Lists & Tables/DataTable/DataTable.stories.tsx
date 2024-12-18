@@ -56,8 +56,6 @@ const meta: Meta<typeof DataTable> = {
       { label: 'Ship', key: 'ship', size: 'lg', sortable: true, fill: true },
     ],
     spacing: 'condensed',
-    onRowExpand: undefined,
-    onRowSelect: undefined,
   },
 };
 
@@ -66,20 +64,4 @@ type Story = StoryObj<typeof DataTable>;
 
 export const FullDataTable: Story = {
   render: () => <DataTableTemplate />,
-};
-
-export const EmptyState: Story = {
-  args: { rows: [], shadow: true, scrollable: true }
-}
-
-export const LoadingRows: Story = {
-  args: { loading: true, shadow: true }
-}
-
-export const Scrollable: Story = {
-  args: { shadow: true }
-}
-
-export const Default: Story = {
-  args: {},
 };

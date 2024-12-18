@@ -35,7 +35,7 @@ const ExpandInCollapseOut: React.FC<WithChildrenProp> = ({ children }) => {
       initial="collapsed"
       exit="collapsed"
       animate="expanded"
-      style={{ overflow: 'hidden' }}
+      style={{ overflow: 'hidden', gridColumn: 'span 12' }}
       variants={{
         expanded: { height: 'auto' },
         collapsed: { height: 0 },
@@ -59,17 +59,23 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     },
     ref
   ) => {
-    const { isOl, rowBreakpoint, scrollable, variant, ...rowConfig } =
+    const { listType, rowBreakpoint, scrollable, variant, ...rowConfig } =
       useListContext();
+    const isOl = listType === 'ol';
+    const isTable = listType === 'table';
     const { onClick, role, tabIndex, ...rowProps } = rest;
     const wrapperProps =
-      !renderExpanded && !onClick
+      (!renderExpanded && !onClick) || isTable
         ? { ...rowConfig, ...rowProps }
         : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
     let content = children;
     const renderNumbering = isOl && renderExpanded === undefined && !onClick;
 
-    if (renderExpanded || Boolean(onClick)) {
+    // This works on DataGrid + DataTable, minus the expanded rows in DataTable. Need to look into renderExpanded.
+    const newProps = { ...rowConfig, ...rowProps };
+
+    // do we need render expanded here? this should only be for clickable rows
+    if ((renderExpanded || Boolean(onClick)) && !isTable) {
       content = (
         <RowEl
           as="div"
@@ -97,12 +103,14 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       <RowEl
         aria-live={renderExpanded ? 'polite' : undefined}
         variant={variant}
-        expanded={!!renderExpanded}
+        expanded={isTable ? undefined : !!renderExpanded}
         scrollable={scrollable}
         rowBreakpoint={rowBreakpoint}
         isOl={renderNumbering}
         role={role}
         tabIndex={tabIndex}
+        gridAutoRows="minmax(1.5rem, max-content)"
+        gridTemplateColumns="minmax(0, 1fr) max-content"
         {...wrapperProps}
       >
         <>
