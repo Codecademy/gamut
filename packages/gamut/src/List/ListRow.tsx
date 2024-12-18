@@ -109,7 +109,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         isOl={renderNumbering}
         role={role}
         tabIndex={tabIndex}
-        {...newProps}
+        {...wrapperProps}
       >
         <>
           {content}
