@@ -56,9 +56,6 @@ const meta: Meta<typeof DataTable> = {
       { label: 'Ship', key: 'ship', size: 'lg', sortable: true, fill: true },
     ],
     spacing: 'condensed',
-    // double check this
-    onRowExpand: undefined,
-    onRowSelect: undefined,
   },
 };
 

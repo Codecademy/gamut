@@ -50,9 +50,7 @@ export const Row: DataRow = ({
     });
   }, [onExpand, expandedContent, id, row]);
 
-  console.log('hi', expandedContent);
-
-  const listRowProps = expandedContent
+  const listRowProps = expandable
     ? {
         expanded,
         renderExpanded: renderExpandedContent,
