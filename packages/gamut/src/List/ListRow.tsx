@@ -35,7 +35,7 @@ const ExpandInCollapseOut: React.FC<WithChildrenProp> = ({ children }) => {
       initial="collapsed"
       exit="collapsed"
       animate="expanded"
-      style={{ overflow: 'hidden' }}
+      style={{ overflow: 'hidden', gridColumn: 'span 12' }}
       variants={{
         expanded: { height: 'auto' },
         collapsed: { height: 0 },
@@ -109,6 +109,8 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         isOl={renderNumbering}
         role={role}
         tabIndex={tabIndex}
+        gridAutoRows="minmax(1.5rem, max-content)"
+        gridTemplateColumns="minmax(0, 1fr) max-content"
         {...wrapperProps}
       >
         <>
