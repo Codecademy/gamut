@@ -1,4 +1,4 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
@@ -77,3 +77,28 @@ const DataTown = () => {
 ### Full example
 
 <Canvas of={DataListStories.FullDataList} />
+
+## Configurations
+
+### Expanded
+
+Rows in a DataList can be expanded to show more information. You can set the `expanded` prop to an array of row keys to expand them by default.
+
+<Canvas of={DataListStories.Expanded} />
+
+### Selected
+
+Rows in a DataList can also be selected. You can set the `selected` prop to an array of row keys to select them by default.
+
+<Canvas of={DataListStories.Selected} />
+
+### Additional column configurations
+
+- `size` - enum which determines how much space the column should take up within the table
+- `fill` - boolean which, when set to true, takes up the remaining space in the table. If more than one column is set to `fill`, the remaining space will be divied up between those items.
+
+## Playground
+
+<Canvas sourceState="shown" of={DataListStories.Default} />
+
+<Controls />./export const Default: Story = {   args: {}, };  export const Expanded: Story = {   args: {     expanded: ['Data']   } }  export const Selected: Story = {   args: {     selected: ['Data']   } }

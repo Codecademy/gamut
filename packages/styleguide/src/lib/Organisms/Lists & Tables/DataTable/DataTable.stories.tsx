@@ -65,3 +65,19 @@ type Story = StoryObj<typeof DataTable>;
 export const FullDataTable: Story = {
   render: () => <DataTableTemplate />,
 };
+
+export const EmptyState: Story = {
+  args: { rows: [], shadow: true, scrollable: true },
+};
+
+export const LoadingRows: Story = {
+  args: { loading: true, shadow: true },
+};
+
+export const Scrollable: Story = {
+  args: { shadow: true },
+};
+
+export const Default: Story = {
+  args: {},
+};

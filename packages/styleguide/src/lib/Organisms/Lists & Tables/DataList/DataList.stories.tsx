@@ -72,3 +72,19 @@ type Story = StoryObj<typeof DataList>;
 export const FullDataList: Story = {
   render: () => <DataListTemplate />,
 };
+
+export const Default: Story = {
+  args: {},
+};
+
+export const Expanded: Story = {
+  args: {
+    expanded: ['Data'],
+  },
+};
+
+export const Selected: Story = {
+  args: {
+    selected: ['Data'],
+  },
+};
