@@ -93,7 +93,7 @@ export function DataGrid<
   const renderedRows = loading && empty ? loadingRows : rows;
 
   return (
-    <ListStateContext.Provider value={{ query }} as="table">
+    <ListStateContext.Provider value={{ query }}>
       <ListControlContext.Provider value={listControls}>
         <List
           {...rest}
