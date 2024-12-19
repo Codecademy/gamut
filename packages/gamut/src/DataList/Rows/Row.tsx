@@ -1,4 +1,4 @@
-import { memo, ReactElement, ReactNode, useCallback } from 'react';
+import { memo, ReactElement, ReactNode, useCallback, useMemo } from 'react';
 
 import { Text } from '../..';
 import { ListCol, ListRow } from '../../List';
@@ -50,6 +50,12 @@ export const Row: DataRow = ({
     });
   }, [onExpand, expandedContent, id, row]);
 
+  const numberOfColumns = useMemo(() => {
+    const selectableCount = selectable ? 1 : 0;
+
+    return columns.length + selectableCount;
+  }, [columns, selectable]);
+
   const listRowProps = expandable
     ? {
         expanded,
@@ -58,7 +64,7 @@ export const Row: DataRow = ({
     : {};
 
   return (
-    <ListRow as="tr" {...listRowProps}>
+    <ListRow as="tr" numOfColumns={numberOfColumns} {...listRowProps}>
       {selectable && (
         <ListCol
           {...listColProps}

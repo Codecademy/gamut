@@ -149,6 +149,7 @@ const rowBreakpointVariants = variant({
       display: { _: 'grid', md: 'flex' },
       flexDirection: { _: 'column', md: 'row' },
     },
+    grid: { display: 'grid' },
   },
 });
 
@@ -204,7 +205,7 @@ export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
   headerVariants
 );
 
-const headerStyles = { gridColumn: 1 } as const;
+const headerStyles = { gridColumn: undefined } as const;
 const columnType = variant({
   prop: 'type',
   defaultVariant: 'content',
@@ -226,11 +227,11 @@ const columnType = variant({
     },
     control: {
       minWidth: 'min-content',
-      alignItems: {
-        _: 'flex-start',
-        xs: 'center',
-      },
-      gridColumn: 2,
+      // alignItems: {
+      //   _: 'flex-start',
+      //   xs: 'center',
+      // },
+      gridColumn: 1,
       gridRow: 1,
     },
     expand: {

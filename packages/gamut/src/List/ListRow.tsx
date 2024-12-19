@@ -8,9 +8,12 @@ import { RowEl } from './elements';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
 
+// IF Expandable ++ Table => special styling option
 export interface RowProps
   extends Partial<PublicListProps<ComponentProps<typeof RowEl>>> {
   header?: boolean;
+  // This is an internal prop that is largely only used for the DataTable component
+  numOfColumns?: number;
 }
 
 export interface ExpandableRowProps extends RowProps {
@@ -55,6 +58,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       expandedRowAriaLabel,
       renderExpanded,
       keepSpacingWhileExpanded,
+      numOfColumns,
       ...rest
     },
     ref
@@ -105,12 +109,16 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         variant={variant}
         expanded={isTable ? undefined : !!renderExpanded}
         scrollable={scrollable}
-        rowBreakpoint={rowBreakpoint}
+        rowBreakpoint={isTable && renderExpanded ? 'grid' : rowBreakpoint}
         isOl={renderNumbering}
         role={role}
         tabIndex={tabIndex}
-        gridAutoRows="minmax(1.5rem, max-content)"
-        gridTemplateColumns="minmax(0, 1fr) max-content"
+        gridAutoRows="minmax(1.5rem, max-content) 6fr"
+        gridTemplateColumns={
+          isTable && renderExpanded
+            ? `min-content repeat(5, minmax(0, 1fr) max-content) min-content`
+            : 'minmax(0, 1fr) max-content'
+        }
         {...wrapperProps}
       >
         <>
