@@ -4,7 +4,7 @@
 import { DataList, DataTable, FlexBox } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { DataListTemplate } from '../examples'
+import { DataListTemplate } from '../examples';
 
 const meta: Meta<typeof DataList> = {
   component: DataList,
@@ -63,7 +63,7 @@ const meta: Meta<typeof DataList> = {
         />
       </FlexBox>
     ),
-  }
+  },
 };
 
 export default meta;
@@ -71,7 +71,7 @@ type Story = StoryObj<typeof DataList>;
 
 export const FullDataList: Story = {
   render: () => <DataListTemplate />,
-}
+};
 
 export const Default: Story = {
   args: {},
@@ -79,12 +79,12 @@ export const Default: Story = {
 
 export const Expanded: Story = {
   args: {
-    expanded: ['Data']
-  }
-}
+    expanded: ['Data'],
+  },
+};
 
 export const Selected: Story = {
   args: {
-    selected: ['Data']
-  }
-}
+    selected: ['Data'],
+  },
+};

@@ -26,9 +26,6 @@ export const EmptyRows = () => {
         <Text variant="p-base">Remove filters to view</Text>
         <FillButton onClick={onResetQuery}>Reset Filters</FillButton>
       </FlexBox>
-      <FlexBox height={409} center width={1}>
-        <DotLoose position="absolute" inset={0} top={-2} />
-      </FlexBox>
     </>
   );
 };

@@ -1,15 +1,16 @@
+import { DotLoose } from '@codecademy/gamut-patterns';
 import isArray from 'lodash/isArray';
 import { ComponentProps, forwardRef, useEffect, useRef, useState } from 'react';
 import * as React from 'react';
 
-import { Box, BoxProps } from '../Box';
+import { Box, BoxProps, FlexBox } from '../Box';
 import { ListEl } from './elements';
 import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
 export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
-  /** Whether List should be an ol or ul element */
-  as?: 'ol' | 'ul';
+  /** Whether List should be an ol, ul element, or table */
+  as?: 'ol' | 'ul' | 'table';
   /** Whether a placeholder width should be set when loading */
   loading?: boolean;
   /** Should only be used internally to Gamut */
@@ -58,7 +59,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     const [isEnd, setIsEnd] = useState(false);
     const showShadow = shadow && scrollable && !isEnd;
     const value = useList({
-      isOl: as === 'ol',
+      listType: as,
       rowBreakpoint,
       scrollable,
       spacing,
@@ -66,7 +67,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     });
 
     const topOfTable = useRef<HTMLDivElement>(null);
-
+    const isTable = as === 'table';
     useEffect(() => {
       if (scrollToTopOnUpdate && topOfTable.current !== null) {
         topOfTable.current.scrollTo({ top: 0 });
@@ -74,7 +75,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     });
 
     const listContent = (
-      <ListEl as={as} ref={ref} variant={value.variant}>
+      <ListEl as={isTable ? 'tbody' : as} ref={ref} variant={value.variant}>
         {children}
       </ListEl>
     );
@@ -93,6 +94,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     const content =
       isEmpty || loading ? (
         <Box
+          as="table"
           minWidth="min-content"
           width="100%"
           position="relative"
@@ -108,11 +110,12 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       <ListProvider value={value}>
         <Box
           position="relative"
-          overflow={overflowHidden ? 'hidden' : overflow}
+          overflow={overflowHidden || isEmpty || loading ? 'hidden' : overflow}
           width={1}
           id={id}
         >
           <Box
+            as={isTable && !isEmpty && !loading ? 'table' : 'div'}
             data-testid={`scrollable-${id}`}
             maxHeight={height}
             maxWidth={1}
@@ -133,6 +136,11 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
               width={10}
               boxShadow="0 0 48px black, 0 0 24px black"
             />
+          )}
+          {isEmpty && (
+            <FlexBox center width={1}>
+              <DotLoose position="absolute" inset={0} top={-2} />
+            </FlexBox>
           )}
         </Box>
       </ListProvider>

@@ -6,7 +6,7 @@ import {
   theme,
   variant,
 } from '@codecademy/gamut-styles';
-import { StyleProps } from '@codecademy/variance';
+import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
 const olStyles = {
@@ -132,8 +132,8 @@ const rowVariants = variant({
 const rowBreakpointVariants = variant({
   prop: 'rowBreakpoint',
   base: {
-    gridAutoRows: 'minmax(1.5rem, max-content)',
-    gridTemplateColumns: 'minmax(0, 1fr) max-content',
+    // gridAutoRows: 'minmax(1.5rem, max-content)',
+    // gridTemplateColumns: 'minmax(0, 1fr) max-content',
   },
   defaultVariant: 'xs',
   variants: {
@@ -149,6 +149,7 @@ const rowBreakpointVariants = variant({
       display: { _: 'grid', md: 'flex' },
       flexDirection: { _: 'column', md: 'row' },
     },
+    grid: { display: 'grid' },
   },
 });
 
@@ -156,13 +157,15 @@ export interface RowProps
   extends StyleProps<typeof rowVariants>,
     StyleProps<typeof rowBreakpointVariants>,
     StyleProps<typeof spacingVariants>,
-    StyleProps<typeof rowStates> {}
+    StyleProps<typeof rowStates>,
+    StyleProps<typeof system.grid> {}
 
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 8, xs: 0 },
     bg: 'inherit',
   }),
+  variance.compose(system.grid),
   rowBreakpointVariants,
   rowVariants,
   spacingVariants,
@@ -202,7 +205,7 @@ export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
   headerVariants
 );
 
-const headerStyles = { gridColumn: 1 } as const;
+const headerStyles = { gridColumn: undefined } as const;
 const columnType = variant({
   prop: 'type',
   defaultVariant: 'content',
@@ -224,11 +227,11 @@ const columnType = variant({
     },
     control: {
       minWidth: 'min-content',
-      alignItems: {
-        _: 'flex-start',
-        xs: 'center',
-      },
-      gridColumn: 2,
+      // alignItems: {
+      //   _: 'flex-start',
+      //   xs: 'center',
+      // },
+      gridColumn: 1,
       gridRow: 1,
     },
     expand: {
@@ -351,7 +354,7 @@ export interface ColProps
     StyleProps<typeof columnType>,
     StyleProps<typeof columnStates>,
     StyleProps<typeof columnJustify>,
-    StyleProps<typeof system['layout']> {}
+    StyleProps<(typeof system)['layout']> {}
 
 export const ColEl = styled(
   'div',
@@ -381,7 +384,7 @@ export const ColEl = styled(
   system.layout
 );
 
-export const StickyColumnWrapper = styled.div(
+export const StickyColumnWrapper = styled.th(
   css({
     '&:before': {
       content: '""',
