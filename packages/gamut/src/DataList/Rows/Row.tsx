@@ -51,10 +51,8 @@ export const Row: DataRow = ({
   }, [onExpand, expandedContent, id, row]);
 
   const numberOfColumns = useMemo(() => {
-    const selectableCount = selectable ? 1 : 0;
-
-    return columns.length + selectableCount;
-  }, [columns, selectable]);
+    return columns.length;
+  }, [columns]);
 
   const listRowProps = expandable
     ? {
@@ -64,7 +62,12 @@ export const Row: DataRow = ({
     : {};
 
   return (
-    <ListRow as="tr" numOfColumns={numberOfColumns} {...listRowProps}>
+    <ListRow
+      as="tr"
+      numOfColumns={numberOfColumns}
+      selectable={selectable}
+      {...listRowProps}
+    >
       {selectable && (
         <ListCol
           {...listColProps}

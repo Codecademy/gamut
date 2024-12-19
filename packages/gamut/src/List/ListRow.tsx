@@ -7,6 +7,7 @@ import { WithChildrenProp } from '../utils';
 import { RowEl } from './elements';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
+import { getGridTemplateColumns } from './utils';
 
 // IF Expandable ++ Table => special styling option
 export interface RowProps
@@ -14,6 +15,8 @@ export interface RowProps
   header?: boolean;
   // This is an internal prop that is largely only used for the DataTable component
   numOfColumns?: number;
+  // This is an internal prop that is largely only used for the DataTable component
+  selectable?: boolean;
 }
 
 export interface ExpandableRowProps extends RowProps {
@@ -59,6 +62,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       renderExpanded,
       keepSpacingWhileExpanded,
       numOfColumns,
+      selectable,
       ...rest
     },
     ref
@@ -75,8 +79,10 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     let content = children;
     const renderNumbering = isOl && renderExpanded === undefined && !onClick;
 
-    // This works on DataGrid + DataTable, minus the expanded rows in DataTable. Need to look into renderExpanded.
-    const newProps = { ...rowConfig, ...rowProps };
+    const gridTemplateColumns =
+      isTable && renderExpanded
+        ? getGridTemplateColumns({ numOfColumns, selectable })
+        : 'minmax(0, 1fr) max-content';
 
     // do we need render expanded here? this should only be for clickable rows
     if ((renderExpanded || Boolean(onClick)) && !isTable) {
@@ -114,11 +120,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         role={role}
         tabIndex={tabIndex}
         gridAutoRows="minmax(1.5rem, max-content) 6fr"
-        gridTemplateColumns={
-          isTable && renderExpanded
-            ? `min-content repeat(5, minmax(0, 1fr) max-content) min-content`
-            : 'minmax(0, 1fr) max-content'
-        }
+        gridTemplateColumns={gridTemplateColumns}
         {...wrapperProps}
       >
         <>
