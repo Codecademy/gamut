@@ -1,7 +1,7 @@
 // Added because SB and TS don't play nice with each other at the moment
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { DataTable } from '@codecademy/gamut';
+import { Box, DataTable } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { DataTableTemplate } from '../examples';
@@ -67,7 +67,17 @@ export const FullDataTable: Story = {
 };
 
 export const EmptyState: Story = {
-  args: { rows: [], shadow: true, scrollable: true },
+  args: {
+    rows: [],
+    shadow: true,
+    scrollable: true,
+    minHeight: '100%',
+  },
+  render: (args) => (
+    <Box bg="beige" height="750px" minHeight="100%" p={8}>
+      <DataTable {...args} />
+    </Box>
+  ),
 };
 
 export const LoadingRows: Story = {

@@ -11,6 +11,7 @@ export const EmptyRows = () => {
   return (
     <>
       <FlexBox
+        as="tr"
         bg="background-current"
         center
         column
@@ -22,9 +23,15 @@ export const EmptyRows = () => {
         width="320px"
         zIndex={1}
       >
-        <Text variant="title-sm">No Results Found</Text>
-        <Text variant="p-base">Remove filters to view</Text>
-        <FillButton onClick={onResetQuery}>Reset Filters</FillButton>
+        <th>
+          <Text variant="title-sm">No Results Found</Text>
+        </th>
+        <th>
+          <Text variant="p-base">Remove filters to view</Text>
+        </th>
+        <th>
+          <FillButton onClick={onResetQuery}>Reset Filters</FillButton>
+        </th>
       </FlexBox>
     </>
   );
