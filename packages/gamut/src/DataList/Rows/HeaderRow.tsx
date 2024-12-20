@@ -27,14 +27,8 @@ export const Header: HeaderComponent = ({
   empty = false,
   hideSelectAll,
 }) => {
-  const {
-    expandable,
-    selectable,
-    onSelect,
-    onFilter,
-    onSort,
-    prefixId,
-  } = useControlContext();
+  const { expandable, selectable, onSelect, onFilter, onSort, prefixId } =
+    useControlContext();
 
   return (
     <ListHeader>

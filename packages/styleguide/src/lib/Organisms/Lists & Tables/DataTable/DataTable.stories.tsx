@@ -2,6 +2,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { DataTable } from '@codecademy/gamut';
+import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { DataTableTemplate } from '../examples';
@@ -56,8 +57,6 @@ const meta: Meta<typeof DataTable> = {
       { label: 'Ship', key: 'ship', size: 'lg', sortable: true, fill: true },
     ],
     spacing: 'condensed',
-    onRowExpand: undefined,
-    onRowSelect: undefined,
   },
 };
 
@@ -69,16 +68,26 @@ export const FullDataTable: Story = {
 };
 
 export const EmptyState: Story = {
-  args: { rows: [], shadow: true, scrollable: true }
-}
+  args: {
+    rows: [],
+    shadow: true,
+    scrollable: true,
+    minHeight: '100%',
+  },
+  render: (args) => (
+    <Background bg="beige" height="750px" minHeight="100%" p={8}>
+      <DataTable {...args} />
+    </Background>
+  ),
+};
 
 export const LoadingRows: Story = {
-  args: { loading: true, shadow: true }
-}
+  args: { loading: true, shadow: true },
+};
 
 export const Scrollable: Story = {
-  args: { shadow: true }
-}
+  args: { shadow: true },
+};
 
 export const Default: Story = {
   args: {},
