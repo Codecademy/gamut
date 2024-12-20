@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, LinkTo } from '~styleguide/blocks';
+
+export const parameters = {
+  title: "Error messages",
+  subtitle: 'Above all else, error messages should explain and resolve. Inform learners of what went wrong and let them know how to proceed.',
+  status: 'static',
+  design: {
+    type: 'figma',
+    url:
+      'https://www.figma.com/file/P3dOOeVfZGjIfjupKdrZ7j/UX-Writing-Best-Practices?node-id=306%3A2426',
+  },
+};
+
+<Meta title="UX Writing/Component guidelines/Error messages" />
+
+<AboutHeader {...parameters} />
+
+
+Error messages help learners get where they're going. If a learner hits a snag when trying to do something — whether it's because of something they did or a problem on our end — an error message informs them of **what went wrong** and **how to proceed.**
+
+Here at Codecademy, we primarily use two components for error messages. <LinkTo id="Atoms/FormInputs">Red text below a form</LinkTo> to indicate that something in the form has been filled out incorrectly or an <LinkTo id="Molecules/Alert">error alert banner</LinkTo>.
+
+## Best practices
+
+- **Start with the full context in mind.** Your goal is to help the learner get through the issue without frustration. That's why, before you start writing, you'll need to know answers to the following questions:
+  1. What will a learner be trying to do when this error appears?
+  2. Why might the system respond with an error?
+  3. What can the learner do to overcome the error and finish what they set out to do?
+  4. If there's nothing they can do to fix it, what alternative action might we offer (such as contacting support or reading an FAQ to learn more)?
+- **Explain and resolve.** Above all else, error messages should explain and resolve. Inform learners of what went wrong (explain) and let them know how to proceed (resolve). If there is no way for them to proceed, don't just leave them hanging. If more information is needed, prompt them to contact customer support or share a link to an FAQ where they can learn more.
+- **Write in a conversational style.** Oftentimes, error messages end up sounding robotic. Instead of writing like a computer, write like a human. Before you start writing, try explaining what went wrong and how to resolve it to yourself or someone else out loud. This practice can help you figure out how to write about the error in a more human way.
+- **Don't blame the learner.** Even if the error is the learner's fault, avoid language that assigns blame to them. "You entered an invalid username" assigns blame. Try an alternative like, "We couldn't find an account with that username."
+- **Avoid the words "error" or "failure".** Nobody likes an error message and seeing the words ERROR or FAILURE can be jarring. So try to avoid using them. Focus on what went wrong, rather than the fact that an error occurred.
+
+## Checklist
+- Does the error message explain what went wrong?
+- Does the error message explain the steps the learner can take to resolve the issue?
+- Does the error message help the learner move forward or make it clear that they can't?
+- Does your message avoid using the words "error" or "failure"?
+- Have you asked someone unrelated to the project to read the message and did they understand it?
