@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, LinkTo } from '~styleguide/blocks';
+
+export const parameters = {
+  title: "Confirmation dialogs",
+  subtitle: 'Simplify the language, prioritize the message, and make sure the implication of what learners are saying "Yes" (or "No") to is crystal clear.',
+  status: 'static',
+  design: {
+    type: 'figma',
+    url:
+      'https://www.figma.com/file/P3dOOeVfZGjIfjupKdrZ7j/UX-Writing-Best-Practices?node-id=306%3A2425',
+  },
+};
+
+<Meta title="UX Writing/Component guidelines/Confirmation dialogs" />
+
+<AboutHeader {...parameters} />
+
+Confirmation dialog boxes are used to verify that a learner wants to take a specific action. They are generally used for actions that are irreversible, may result in critical consequences or loss of data, have other severe consequences, or happen infrequently.
+
+They use the <LinkTo id="Molecules/Modals/Dialog">Dialog component in Gamut</LinkTo> and, for actions with serious or irreversible consequences, the `Danger` variant should be used.
+
+## Best practices
+
+### Headline
+
+- **Ask or inform about one main action**, clearly and simply.
+- **Frame your headline as a binary question**, when possible, with 2 unambiguous answers (i.e. Yes/No, Stay/Leave).
+- **Be specific.** Instead of "Are you sure?" focus on what you want to ensure they're sure about (i.e. "Reset your progress?" or "Delete the file?").
+
+### Explanation
+
+- **Share only relevant information** that may help the learner make their decision.
+- **Avoid redundancy.** If you've already set the stage in your headline, there's no need to re-ask the same question in your explanation. If the explanation doesn't add anything new, leave it out (i.e. "Permanently delete this item? Yes/No").
+- **Avoid filler.** Questions like "Are you sure you want to \_\_\_?" take up space, increase cognitive load, and may undermine users' confidence or be interpreted as patronizing.
+- **Keep to 1-2 lines**, unless more is required to get all the information across.
+
+### Button copy
+
+- **Options should be clear and distinct.** Each option should be distinctly different and there should be no opportunity for learners to mix them up (i.e. "Delete" and "Cancel" are ambiguous choices whereas "Yes, remove" and "Cancel" clear up the confusion.
+- **Add context to reaffirm the action.** Instead of "Yes," use "Yes, reset progress."
+- **Match the verb in your headline.** If you use "Save" in your headline, use "Save" in your button copy, rather than keep. Consistency helps keep the message clear. All of this should also match whatever the learner clicked on that triggered the confirmation dialog.
+
+## Checklist
+- Is the language consistent from the wording on the button that opened the confirmation box, to the headline,
+- Does the headline make the action clear?
+- Is the headline framed as a question, if possible?
+- Does the explanation provide relevant details and consequences of the action?
+- Is the explanation 1-2 lines long?
+- Are the words on the buttons clear and distinct?
+- Do the buttons include context to reaffirm the action?
+- Is your copy at a reading level of grade 7 or below? Test with [Hemingway App](https://hemingwayapp.com).
+- Have you asked someone unrelated to the project to read the message and did they understand it?

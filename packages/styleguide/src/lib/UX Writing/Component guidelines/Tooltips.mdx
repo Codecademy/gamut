@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader } from '~styleguide/blocks';
+
+export const parameters = {
+  title: "Tooltips",
+  subtitle: "Keep tooltips short and useful. Avoid using them to share information that's vital for learners to complete tasks.",
+  status: 'static',
+  design: {
+    type: 'figma',
+    url:
+      'https://www.figma.com/file/P3dOOeVfZGjIfjupKdrZ7j/UX-Writing-Best-Practices?node-id=306%3A2427',
+  },
+};
+
+<Meta title="UX Writing/Component guidelines/Tooltips" />
+
+<AboutHeader {...parameters} />
+
+Tooltips are short, helpful messages that appear when learners hover over informative "i" icons, buttons, or icons to provide additional context. They may be used to provide extra information or explain things (such as why we ask learners to provide certain information). They should not be used to share information necessary for learners to complete a task.
+
+## Best practices
+
+- **Don't hide vital information in a tooltip.** Is the information in the tooltip necessary for a learner to complete a task? If so, find a different solution. Vital information should be included clearly on the page — not where learners have to go searching for it.
+- **Provide useful information.** Don't include tooltips just for the sake of it. The information should be useful and provide additional context. Avoid reiterating information that's already available on the screen.
+- **Keep it short.** Use just enough words to get the important information across.
+  - Keep informational tooltips under 90 characters, if possible, and no more than 135 characters.
+  - Keep tooltips defining icons to 1 to 2 words.
+- **Provide tooltips for unlabeled icons.** This will help learners understand what will happen when they click on an icon.
+- **Don't include links.** Tooltips give you the opportunity to provide learners with more information without taking them to a new screen. If you're planning to use the tooltip to share a link, try finding a way to incorporate the link in a different way.
+
+## Checklist
+- Is the information included in the tooltip useful?
+- Does the information avoid redundancy to information available on screen?
+- Is all vital information learners need to complete a task visible _outside_ of the tooltip?
+- Does the tooltip meet the length requirements outlined above?
+- Is your tooltip text-only, without links out to other pages?
+- Is your copy at a reading level of grade 7 or below? Test with[Hemingway App](https://hemingwayapp.com)
+- Have you asked someone unrelated to the project to read the message and did they understand it?

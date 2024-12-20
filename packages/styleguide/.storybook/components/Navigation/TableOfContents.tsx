@@ -10,6 +10,7 @@ type PageLink = {
   status?: 'current' | 'updating' | 'deprecated' | 'static';
   subtitle: string;
   title: string;
+  href: string;
 };
 
 export const TableOfContents: React.FC<{ links: PageLink[] }> = ({ links }) => {
