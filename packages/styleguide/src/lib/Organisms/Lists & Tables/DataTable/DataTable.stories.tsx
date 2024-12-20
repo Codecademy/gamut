@@ -1,7 +1,8 @@
 // Added because SB and TS don't play nice with each other at the moment
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { Box, DataTable } from '@codecademy/gamut';
+import { DataTable } from '@codecademy/gamut';
+import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { DataTableTemplate } from '../examples';
@@ -74,9 +75,9 @@ export const EmptyState: Story = {
     minHeight: '100%',
   },
   render: (args) => (
-    <Box bg="beige" height="750px" minHeight="100%" p={8}>
+    <Background bg="beige" height="750px" minHeight="100%" p={8}>
       <DataTable {...args} />
-    </Box>
+    </Background>
   ),
 };
 
