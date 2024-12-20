@@ -127,6 +127,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             as={isTable && !isEmpty && !loading ? 'table' : 'div'}
             data-testid={`scrollable-${id}`}
             maxHeight="inherit"
+            height="inherit"
             maxWidth={1}
             minHeight="inherit"
             onScroll={scrollable ? scrollHandler : undefined}
