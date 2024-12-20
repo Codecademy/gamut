@@ -1,0 +1,58 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'UX Writing',
+  title: 'UX Writing',
+  subtitle: 'Help learners find success by surfacing the right copy and content to the right people at the right time.',
+  }
+
+<Meta title='UX Writing/About' />
+
+<AboutHeader {...parameters} />
+
+Words are powerful tools that can help us achieve our mission of empowering inspiring careers in technology. When we surface the right words and content to the right people at the right time, we help learners reach their goals. When our learners are successful, so are we.
+
+In the following pages, you’ll find a collection of tips and tools for writing effective product copy on your own. Need a little help? [Submit a UX writing request here.](https://skillsoftdev.atlassian.net/jira/software/c/projects/WRITE/boards/685)
+
+
+<TableOfContents
+ links={[
+   {
+     id: 'Alerts',
+     subtitle: 'Make clear what you’re alerting the user to. Then, clarify any next steps they need to take or inform them about the timing of a resolution on our end.',
+     title: 'Alerts',
+   },
+   {
+     id: 'Bell notification',
+     subtitle: 'Keep it brief (<86 characters), make it actionable, and ensure the messaging is in support of the learner’s journey.',
+     title: 'Bell notification',
+   },
+   {
+     id: 'Button and links',
+     subtitle: 'Be specific, use action-oriented language, and emphasize value. Keep to 3 words or less (unless necessary for clarity), and use sentence case.',
+     title: 'Button and links',
+   },
+   {
+     id: 'Confirmation dialogs',
+     subtitle: 'Simplify the language, prioritize the message, and make sure the implication of what learners are saying "Yes" (or "No") to is crystal clear.',
+     title: 'Confirmation dialogs',
+   },
+   {
+     id: 'Error messages',
+     subtitle: 'Above all else, error messages should explain and resolve. Inform learners of what went wrong and let them know how to proceed.',
+     title: 'Error messages',
+   },
+   {
+     id: 'Toasts',
+     subtitle: 'Keep it brief, ensure the message is personal and relevant, and avoid distracting from the learning experience.',
+     title: 'Toasts',
+   },
+   {
+     id: 'Tooltips',
+     subtitle: `Keep tooltips short and useful. Avoid using them to share information that's vital for learners to complete tasks.`,
+     title: 'Tooltips',
+   },
+ ]}
+/>
