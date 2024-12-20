@@ -1,5 +1,3 @@
-import { DotLoose } from '@codecademy/gamut-patterns';
-
 import { FlexBox } from '../Box';
 import { FillButton } from '../Button';
 import { Text } from '../Typography';
