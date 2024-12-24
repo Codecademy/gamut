@@ -128,6 +128,7 @@ export const Row: DataRow = ({
         );
       })}
       {expandable && (
+        // TO-DO: Need to do something here for xs view expandable DataList
         <ListCol {...listColProps} size="content" order={[1000, 'initial']}>
           <ExpandControl
             id={id}

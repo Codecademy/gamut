@@ -1,3 +1,5 @@
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ComponentProps, forwardRef, MouseEvent } from 'react';
 import * as React from 'react';
@@ -35,13 +37,19 @@ export interface SimpleRowProps extends RowProps {
 
 export type ListRowProps = ExpandableRowProps | SimpleRowProps;
 
+const ResponsiveExpand = styled(motion.td)(
+  css({
+    overflow: 'hidden',
+    gridColumn: { _: 'span 2', xs: 'span 12' },
+  })
+);
 const ExpandInCollapseOut: React.FC<WithChildrenProp> = ({ children }) => {
+  /// TO-DO: Needs to be a td for DataList and a div for LIst
   return (
-    <motion.div
+    <ResponsiveExpand
       initial="collapsed"
       exit="collapsed"
       animate="expanded"
-      style={{ overflow: 'hidden', gridColumn: 'span 12' }}
       variants={{
         expanded: { height: 'auto' },
         collapsed: { height: 0 },
@@ -49,7 +57,7 @@ const ExpandInCollapseOut: React.FC<WithChildrenProp> = ({ children }) => {
       transition={{ duration: 0.2, ease: 'easeInOut' }}
     >
       {children}
-    </motion.div>
+    </ResponsiveExpand>
   );
 };
 
@@ -120,7 +128,10 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         role={role}
         tabIndex={tabIndex}
         gridAutoRows="minmax(1.5rem, max-content) 6fr"
-        gridTemplateColumns={gridTemplateColumns}
+        gridTemplateColumns={{
+          _: 'minmax(0, 1fr) max-content',
+          xs: gridTemplateColumns,
+        }}
         {...wrapperProps}
       >
         <>

@@ -194,7 +194,7 @@ export interface HeaderProps
 
 export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
   css({
-    display: { _: 'none', xs: 'flex' },
+    display: 'flex',
     position: { _: 'initial', xs: 'sticky' },
     flexDirection: ['column', 'row'],
     top: 0,
@@ -229,11 +229,16 @@ const columnType = variant({
     },
     control: {
       minWidth: 'min-content',
-      // alignItems: {
-      //   _: 'flex-start',
-      //   xs: 'center',
-      // },
-      gridColumn: 1,
+      alignItems: {
+        _: 'flex-start',
+        xs: 'center',
+      },
+      justifyItems: {
+        _: 'end',
+        xs: undefined,
+      },
+
+      gridColumn: { _: 2, xs: 1 },
       gridRow: 1,
     },
     expand: {
@@ -430,6 +435,8 @@ export const StickyColumnWrapper = styled.th(
 
 export const ListWrapper = styled(Box)(
   states({
-    scrollable: { boxShadow: 'inset -24px 0 24px -24px black' },
+    scrollable: {
+      boxShadow: { _: undefined, xs: 'inset -24px 0 24px -24px black' },
+    },
   })
 );
