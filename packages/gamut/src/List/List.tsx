@@ -4,7 +4,7 @@ import { ComponentProps, forwardRef, useEffect, useRef, useState } from 'react';
 import * as React from 'react';
 
 import { Box, BoxProps, FlexBox } from '../Box';
-import { ListEl } from './elements';
+import { ListEl, ListWrapper } from './elements';
 import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
@@ -21,7 +21,6 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
   header?: React.ReactNode;
   height?: BoxProps['height'];
   minHeight?: BoxProps['minHeight'];
-  maxHeight?: BoxProps['maxHeight'];
   /** If the list should render a right-side shadow when rows are scrollable to indicate more horizontal content */
   shadow?: boolean;
   /** A custom message to override the default empty message  */
@@ -47,7 +46,6 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       shadow = false,
       height,
       minHeight,
-      maxHeight,
       children,
       header,
       emptyMessage,
@@ -68,11 +66,21 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       variant,
     });
 
-    const topOfTable = useRef<HTMLDivElement>(null);
+    const wrapperRef = useRef<HTMLDivElement>(null);
+    const tableRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      const wrapperWidth =
+        wrapperRef?.current?.getBoundingClientRect()?.width ?? 0;
+      const tableWidth = tableRef?.current?.getBoundingClientRect().width ?? 0;
+
+      setIsEnd(tableWidth < wrapperWidth);
+    }, []);
+
     const isTable = as === 'table';
     useEffect(() => {
-      if (scrollToTopOnUpdate && topOfTable.current !== null) {
-        topOfTable.current.scrollTo({ top: 0 });
+      if (scrollToTopOnUpdate && tableRef.current !== null) {
+        tableRef.current.scrollTo({ top: 0 });
       }
     });
 
@@ -84,7 +92,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
 
     const scrollHandler = (event: React.UIEvent<HTMLDivElement>) => {
       const { offsetWidth, scrollLeft, scrollWidth } = event.currentTarget;
-      setIsEnd(offsetWidth + scrollLeft >= scrollWidth);
+      setIsEnd(offsetWidth + Math.ceil(scrollLeft) >= scrollWidth);
     };
 
     const listContents = (
@@ -103,7 +111,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
           minWidth="min-content"
           position="relative"
           overflow="inherit"
-          ref={topOfTable}
+          ref={tableRef}
           width="100%"
         >
           {listContents}
@@ -114,32 +122,30 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
 
     return (
       <ListProvider value={value}>
-        <Box
+        <ListWrapper
           id={id}
-          maxHeight={maxHeight}
-          height={height}
-          minHeight={minHeight}
+          onScroll={scrollable ? scrollHandler : undefined}
           overflow={overflowHidden ? 'hidden' : overflow}
           position="relative"
+          ref={wrapperRef}
+          scrollable={!isEmpty && showShadow}
           width={1}
         >
           <Box
             as={isTable && !isEmpty && !loading ? 'table' : 'div'}
             data-testid={`scrollable-${id}`}
-            maxHeight="inherit"
-            height="inherit"
+            maxHeight={height}
             maxWidth={1}
-            minHeight="inherit"
-            onScroll={scrollable ? scrollHandler : undefined}
+            minHeight={minHeight}
             overflow="inherit"
             position="relative"
-            ref={!isEmpty ? topOfTable : undefined}
+            ref={!isEmpty ? tableRef : undefined}
           >
             {content}
           </Box>
-          {showShadow && (
+          {true && (
             <Box
-              position="absolute"
+              position="sticky"
               right={-10}
               top={0}
               bottom={0}
@@ -152,7 +158,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
               <DotLoose position="absolute" inset={0} top={-2} />
             </FlexBox>
           )}
-        </Box>
+        </ListWrapper>
       </ListProvider>
     );
   }

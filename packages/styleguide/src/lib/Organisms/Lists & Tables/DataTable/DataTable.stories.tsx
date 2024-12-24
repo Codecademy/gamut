@@ -72,7 +72,7 @@ export const EmptyState: Story = {
     rows: [],
     shadow: true,
     scrollable: true,
-    minHeight: '100%',
+    minHeight: '750px',
   },
   render: (args) => (
     <Background bg="beige" height="750px" minHeight="100%" p={8}>

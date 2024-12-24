@@ -7,20 +7,17 @@ export const EmptyRows = () => {
   const { onResetQuery } = useControlContext();
 
   return (
-    <>
-      <FlexBox
-        as="tr"
-        bg="background-current"
-        center
-        column
-        gap={16}
-        left="calc(50% - 160px)"
-        p={32}
-        position="sticky"
-        top="calc(50% - 92px)"
-        width="320px"
-        zIndex={1}
-      >
+    <FlexBox
+      as="tbody"
+      bg="background-current"
+      left="calc(50% - 160px)"
+      p={32}
+      position="sticky"
+      top="calc(50% - 92px)"
+      width="320px"
+      zIndex={1}
+    >
+      <FlexBox as="tr" center column gap={16} width="100%">
         <th>
           <Text variant="title-sm">No Results Found</Text>
         </th>
@@ -31,6 +28,6 @@ export const EmptyRows = () => {
           <FillButton onClick={onResetQuery}>Reset Filters</FillButton>
         </th>
       </FlexBox>
-    </>
+    </FlexBox>
   );
 };

@@ -9,6 +9,8 @@ import {
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
+import { Box } from '../Box';
+
 const olStyles = {
   alignItems: 'center',
   content: 'counters(section, ".") "."',
@@ -423,5 +425,11 @@ export const StickyColumnWrapper = styled.th(
       width: 16,
       position: 'absolute',
     },
+  })
+);
+
+export const ListWrapper = styled(Box)(
+  states({
+    scrollable: { boxShadow: 'inset -24px 0 24px -24px black' },
   })
 );
