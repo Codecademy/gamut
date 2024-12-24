@@ -127,7 +127,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         isOl={renderNumbering}
         role={role}
         tabIndex={tabIndex}
-        gridAutoRows="minmax(1.5rem, max-content) 6fr"
+        gridAutoRows={{ _: undefined, xs: 'minmax(1.5rem, max-content) 6fr' }}
         gridTemplateColumns={{
           _: 'minmax(0, 1fr) max-content',
           xs: gridTemplateColumns,
