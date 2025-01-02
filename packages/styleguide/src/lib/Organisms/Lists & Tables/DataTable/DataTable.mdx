@@ -41,7 +41,6 @@ export const parameters = {
 - Be mindful about the horizontal spacing between columns and headers
 - Order metrics based on priority, and consider collapsing extraneous metrics on smaller sizes
 
-
 ## Usage
 
 Use a `DataTable` to display a table of items that contain a lot of information. The top row of the table is the header, and each row below is a list item. Rows can be customized to show a loading state, scrollability, filtering, and sorting.
@@ -87,14 +86,14 @@ Each column takes a `sortable` and `filters` prop - this is will determine if th
 <Canvas of={DataTableStories.FullDataTable} />
 
 ### Empty state
+
 When a DataTable has no data to display, it should show an empty state message.
 
 <Canvas of={DataTableStories.EmptyState} />
 
 ### Loading rows
 
-Replaces content of current rows with <LinkTo kind="Atoms/Loaders/Shimmer">Shimmer</LinkTo>.
-
+Replaces content of current rows with <LinkTo id="Atoms/Loaders/Shimmer">Shimmer</LinkTo>.
 
 <Canvas of={DataTableStories.LoadingRows} />
 
@@ -103,7 +102,6 @@ Replaces content of current rows with <LinkTo kind="Atoms/Loaders/Shimmer">Shimm
 You can set the `shadow` prop to `true` to add a shadow to the DataTable when it is scrollable.
 
 <Canvas of={DataTableStories.Scrollable} />
-
 
 ## Playground
 

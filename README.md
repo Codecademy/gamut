@@ -58,13 +58,13 @@ We provide a single package to manage the versions of a few core dependencies: `
 ## Local development
 
 1.  Run `yarn` in the root directory
-1.  Run `yarn build` to build all of the packages (certain packages like `gamut-icons` need to be built to function in storybook).
+2.  Run `yarn build` to build all of the packages (certain packages like `gamut-icons` need to be built to function in storybook).
 
 ### Running the storybook styleguide
 
-1.  Run `yarn start` to start the storybook server
-1.  Add new stories to `packages/styleguide/stories`
-1.  Stories are written using storybook's [Component Story Format](https://storybook.js.org/docs/formats/component-story-format/)
+1.  Run `yarn nx storybook styleguide` to start the storybook server
+2.  Add new stories to `packages/styleguide/src`
+3.  Stories are written using storybook's [Component Story Format](https://storybook.js.org/docs/formats/component-story-format/) and [MDX](https://storybook.js.org/docs/writing-docs/mdx#basic-example). Check out our comprehensive guide on writing stories [here](https://gamut.codecademy.com/?path=/docs/meta-stories--docs#quick-start).
 
 ### Publishing Modules
 
