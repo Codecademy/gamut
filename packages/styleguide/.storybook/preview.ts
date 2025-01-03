@@ -30,8 +30,8 @@ const preview: Preview = {
           'Molecules',
           'Organisms',
           'UX Writing',
-          ['About', 'UI copy checklist', 'Accessibility guidelines', 'Component guidelines',
-            ['About', 'Alerts', 'Bell notification', 'Buttons and links', 'Confirmation dialogs', 'Error messages', 'Toasts', 'Tooltips',]
+          ['About', 'DIY UX writing in 8 steps', 'Accessibility guidelines', 'Component guidelines',
+            ['About', 'Alerts', 'Alternative text', 'Buttons', 'Confirmation dialogs', 'Error messages', 'Notifications',  'Toasts', 'Tooltips',]
           ],
           '*',
         ],
