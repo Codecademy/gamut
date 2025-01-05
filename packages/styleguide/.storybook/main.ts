@@ -1,5 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
-import { resolve, dirname, join } from 'path';
+import { dirname, join, resolve } from 'path';
 
 const config: StorybookConfig = {
   stories: [

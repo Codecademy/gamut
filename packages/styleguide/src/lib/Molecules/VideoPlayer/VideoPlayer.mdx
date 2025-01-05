@@ -1,0 +1,59 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as VideoStories from './VideoPlayer.stories';
+
+export const parameters = {
+  subtitle: `A video player that can play both youtube and vimeo videos
+given a video URL.`,
+  design: {
+    type: 'figma',
+    url:
+      'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=31226-41393',
+  },
+  status: 'updating',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Video/index.tsx',
+  },
+};
+
+<Meta of={VideoStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use the Video component to embed a YouTube or Vimeo video using a URL.
+
+### Best practices:
+
+- Some videos might have settings where you cannot share/embed them, make sure to check the video URL before making the Video go live.
+
+## Variants
+
+### Custom Video Link
+
+Here is an example with a custom video and placeholder.
+
+<Canvas of={VideoStories.VideoWithPlaceholder} />
+
+### Youtube link
+
+The following video has a YouTube URL.
+
+<Canvas of={VideoStories.Default} />
+
+### Vimeo
+
+Here is an example with a Vimeo URL.
+
+<Canvas of={VideoStories.Vimeo} />
+
+## Playground
+
+<Canvas sourceState="shown" of={VideoStories.Default} />
+
+<Controls />
