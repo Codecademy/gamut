@@ -26,55 +26,58 @@ const meta: Meta<typeof Menu> = {
 export default meta;
 type Story = StoryObj<typeof Menu>;
 
-const MenuItemsExample: React.FC<{
-  type?: 'button' | 'link' | 'default';
-}> = ({ type }) => {
-  const menuItemProps =
-    type === 'button'
-      ? { onClick: () => null }
-      : type === 'link'
-      ? { href: '#' }
-      : {};
-  return (
-    <>
-      <MenuItem {...menuItemProps}>Menu Item</MenuItem>
-      <MenuItem active {...menuItemProps}>
-        Active Item
-      </MenuItem>
-      <MenuSeparator />
-      <MenuItem icon={MultipleUsersIcon} {...menuItemProps}>
-        Icon Item
-      </MenuItem>
-      <MenuItem {...menuItemProps}>Menu Item</MenuItem>
-    </>
-  );
-};
-
 export const Default: Story = {
   args: {
-    variant: 'select',
-    children: <MenuItemsExample type="default" />,
+    children: (
+      <>
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem active>Active Item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+      </>
+    ),
   },
 };
 
 export const Popover: Story = {
   args: {
     variant: 'popover',
-    children: <MenuItemsExample type="button" />,
+    children: (
+      <>
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem active>Active Item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+      </>
+    ),
   },
 };
 
 export const Fixed: Story = {
   args: {
     variant: 'fixed',
-    children: <MenuItemsExample type="link" />,
+    children: (
+      <>
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem active>Active Item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+      </>
+    ),
   },
 };
 
 export const PopoverCondensed: Story = {
   args: {
     variant: 'popover',
-    children: <MenuItemsExample type="button" />,
+    children: (
+      <>
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem active>Active Item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+      </>
+    ),
     spacing: 'condensed',
   },
 };
@@ -82,8 +85,45 @@ export const PopoverCondensed: Story = {
 export const FixedCondensed: Story = {
   args: {
     variant: 'fixed',
-    children: <MenuItemsExample type="link" />,
+    children: (
+      <>
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem active>Active Item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+      </>
+    ),
     spacing: 'condensed',
+  },
+};
+
+export const PopoverMenuSeparator: Story = {
+  args: {
+    variant: 'popover',
+    children: (
+      <>
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem active>Active Item</MenuItem>
+        <MenuSeparator />
+        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+      </>
+    ),
+  },
+};
+
+export const FixedMenuSeparator: Story = {
+  args: {
+    variant: 'fixed',
+    children: (
+      <>
+        <MenuItem>Menu Item</MenuItem>
+        <MenuItem active>Active Item</MenuItem>
+        <MenuSeparator my={4} />
+        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
+        <MenuItem>Menu Item</MenuItem>
+      </>
+    ),
   },
 };
 
@@ -110,7 +150,7 @@ export const PopoverMenuExample: React.FC = () => {
   };
 
   return (
-    <FlexBox minHeight="30px" width={1} position="relative" m={48}>
+    <FlexBox minHeight="30px" position="relative" m={48}>
       <FlexBox flex={1}>
         <Background bg="black" height="100%" pl={48} borderRadius="lg">
           <FlexBox
@@ -121,7 +161,7 @@ export const PopoverMenuExample: React.FC = () => {
             height="100%"
             ref={target}
           >
-            <Menu border="none" variant="navigation" role="menu">
+            <Menu variant="fixed">
               <MenuItem
                 active={activeIndex === 0}
                 onClick={() => clickHandler(-68, 0)}
@@ -134,7 +174,6 @@ export const PopoverMenuExample: React.FC = () => {
               >
                 Active Item
               </MenuItem>
-              <MenuSeparator />
               <MenuItem
                 active={activeIndex === 2}
                 onClick={() => clickHandler(-164, 2)}
@@ -156,19 +195,16 @@ export const PopoverMenuExample: React.FC = () => {
             targetRef={target}
           >
             <Background bg="white" borderRadius="lg">
-              <Menu variant="select" role="menu">
+              <Menu variant="popover">
                 {activeIndex % 2 === 0 ? (
                   <>
                     <MenuItem>i am a side menu!</MenuItem>
-                    <MenuSeparator />
                     <MenuItem href="cool">cool link</MenuItem>
                   </>
                 ) : (
                   <>
                     <MenuItem>i am a DIFFERENT menu!</MenuItem>
-                    <MenuSeparator />
                     <MenuItem href="cool-too"> another cool link</MenuItem>
-                    <MenuSeparator />
                     <MenuItem>an action</MenuItem>
                   </>
                 )}
@@ -180,7 +216,3 @@ export const PopoverMenuExample: React.FC = () => {
     </FlexBox>
   );
 };
-
-// export const Popover: Story = {
-//   render: () => <PopoverMenuExample />,
-// };
