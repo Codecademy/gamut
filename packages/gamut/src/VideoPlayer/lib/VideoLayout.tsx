@@ -1,4 +1,5 @@
 import { ViewIcon, ViewOffIcon } from '@codecademy/gamut-icons';
+import { useColorModes } from '@codecademy/gamut-styles';
 import { useMediaRemote } from '@vidstack/react';
 import { DefaultVideoLayout } from '@vidstack/react/player/layouts/default';
 import { ThumbnailSrc } from '@vidstack/react/types/vidstack';
@@ -21,9 +22,11 @@ export const VideoLayout: React.FC<VideoLayoutProps> = ({
     setAdActive,
 }) => {
     const playerRemote = useMediaRemote();
+    const [mode] = useColorModes();
 
     return (
         <DefaultVideoLayout
+            colorScheme={mode}
             hidden={controls}
             icons={customIcons}
             // smallLayoutWhen={false}
