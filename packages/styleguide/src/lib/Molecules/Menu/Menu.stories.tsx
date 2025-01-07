@@ -44,10 +44,14 @@ export const Popover: Story = {
     variant: 'popover',
     children: (
       <>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem active>Active Item</MenuItem>
-        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem onClick={() => null}>Menu Item</MenuItem>
+        <MenuItem active onClick={() => null}>
+          Active Item
+        </MenuItem>
+        <MenuItem icon={MultipleUsersIcon} onClick={() => null}>
+          Icon Item
+        </MenuItem>
+        <MenuItem onClick={() => null}>Menu Item</MenuItem>
       </>
     ),
   },
@@ -58,10 +62,14 @@ export const Fixed: Story = {
     variant: 'fixed',
     children: (
       <>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem active>Active Item</MenuItem>
-        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem href="#">Menu Item</MenuItem>
+        <MenuItem active href="#">
+          Active Item
+        </MenuItem>
+        <MenuItem icon={MultipleUsersIcon} href="#">
+          Icon Item
+        </MenuItem>
+        <MenuItem href="#">Menu Item</MenuItem>
       </>
     ),
   },
