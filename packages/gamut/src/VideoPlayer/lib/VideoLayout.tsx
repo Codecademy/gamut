@@ -16,7 +16,7 @@ export type VideoLayoutProps = {
   };
   
 export const VideoLayout: React.FC<VideoLayoutProps> = ({
-    controls = false,
+    controls,
     thumbnails,
     adActive,
     setAdActive,
@@ -27,7 +27,7 @@ export const VideoLayout: React.FC<VideoLayoutProps> = ({
     return (
         <DefaultVideoLayout
             colorScheme={mode}
-            hidden={controls}
+            hidden={!controls}
             icons={customIcons}
             // smallLayoutWhen={false}
             playbackRates={[0.5, 1, 1.5, 2]}

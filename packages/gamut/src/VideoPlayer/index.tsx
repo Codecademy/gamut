@@ -31,7 +31,7 @@ export type VideoPlayerProps = {
 export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   autoplay = false,
   className,
-  controls = false,
+  controls = true,
   loop = false,
   muted = false,
   onPlay,
@@ -40,7 +40,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   videoTitle,
   videoUrl,
   textTracks,
-  thumbnails
+  thumbnails,
 }) => {
   const [loading, setLoading] = useState(true);
   const [adActive, setAdActive] = useState(false);

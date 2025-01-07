@@ -28,10 +28,6 @@ export const VideoWithPlaceholder: Story = {
     videoUrl: "https://files.vidstack.io/sprite-fight/720p.mp4",
     videoTitle: "Sprite Fight",
     placeholderImage: "https://files.vidstack.io/sprite-fight/poster.webp",
-    autoplay: false,
-    controls: false,
-    loop: false,
-    muted: false,
     textTracks: [{
       "src": "https://files.vidstack.io/sprite-fight/subs/english.vtt",
       "label": "English",
