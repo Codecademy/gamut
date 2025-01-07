@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [57.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.6.2...@codecademy/gamut@57.6.3) (2025-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [57.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.6.1...@codecademy/gamut@57.6.2) (2025-01-06)
+
+### Bug Fixes
+
+- **selectdropdown:** fixes tests with fresh git history ([753eaec](https://github.com/Codecademy/gamut/commit/753eaec7f15167b1359a67b25077be94e770dc2d))
+
+### [57.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.6.0...@codecademy/gamut@57.6.1) (2024-12-17)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [57.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.5.2...@codecademy/gamut@57.6.0) (2024-12-13)
+
+### Features
+
+- Storybook 8 Feature Branch ([300ef37](https://github.com/Codecademy/gamut/commit/300ef37da570c8425f7ac1aed52e87392b44fadf))
+
 ### [57.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.5.1...@codecademy/gamut@57.5.2) (2024-12-03)
 
 **Note:** Version bump only for package @codecademy/gamut

@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as IconButtonStories from './IconButton.stories';
 
@@ -23,9 +23,13 @@ export const parameters = {
 <ComponentHeader {...parameters} />
 
 ## Usage
-Use for secondary or space-constrained actions with recognizable icons. Use regular icons for normal buttons and mini icons for small buttons. Icon-only buttons must include an aria-label, which will also appear in the tooltip on hover and focus.
+
+Use for secondary or space-constrained actions with recognizable icons. Use regular icons for normal buttons and mini icons for small buttons. Icon-only buttons must include a `tip` prop, which will also appear in the tooltip on hover and focus.
+
+For more detailed information on `IconButton` tooltips, take a look at the <LinkTo id='Molecules/Tips/ToolTip'>ToolTip</LinkTo> story.
 
 ## Playground
+
 <Canvas sourceState="shown" of={IconButtonStories.Default} />
 
 <Controls />
