@@ -36,14 +36,14 @@ export const customLayoutSlots: DefaultVideoLayoutSlots | DefaultVideoLayoutProp
   smallLayout: {
     beforeCaptionButton: (
       <SeekButton className="vds-button" seconds={-10}>
-      <ArrowLeftIcon className="vds-icon" />
+        <ArrowLeftIcon className="vds-icon" />
       </SeekButton>
     )
   },
   largeLayout: {
     afterPlayButton: (
       <SeekButton className="vds-button" seconds={-10}>
-      <ArrowLeftIcon className="vds-icon" />
+        <ArrowLeftIcon className="vds-icon" />
       </SeekButton>
     ),
   },
