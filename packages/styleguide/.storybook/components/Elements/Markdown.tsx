@@ -1,4 +1,4 @@
-import { Anchor, AnchorBase } from '@codecademy/gamut';
+import { Anchor } from '@codecademy/gamut';
 import { themed } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { linkTo } from '@storybook/addon-links';

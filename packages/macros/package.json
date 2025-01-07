@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/macros",
   "description": "Babel Utility Macros",
-  "version": "3.0.4",
+  "version": "3.1.0",
   "author": "codecademy",
   "bugs": "https://github.com/Codecademy/gamut/issues",
   "dependencies": {
