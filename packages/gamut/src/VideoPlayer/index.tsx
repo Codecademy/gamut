@@ -2,7 +2,7 @@
 import './styles/_vds-variables.scss';
 
 import { MediaPlayer, MediaPlayerInstance, MediaProvider, Poster, Track, TrackProps } from '@vidstack/react';
-import { ThumbnailSrc } from '@vidstack/react/types/vidstack';
+import { PlayerSrc, ThumbnailSrc } from '@vidstack/react/types/vidstack';
 import cx from 'classnames';
 import * as React from 'react';
 import { useState } from 'react';
@@ -22,9 +22,9 @@ export type VideoPlayerProps = {
   onReady?: (player: any) => void;
   placeholderImage?: string;
   videoTitle?: string;
-  videoUrl: string;
+  videoUrl: PlayerSrc;
   width?: number;
-  textTracks: TrackProps[];
+  textTracks?: TrackProps[];
   thumbnails?: ThumbnailSrc;
 };
 
@@ -66,10 +66,13 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           onCanPlay={onReady}
         >
           <MediaProvider>
-            <Poster
-              className="vds-poster"
-              src={placeholderImage || null}
-            />
+            {placeholderImage && (
+              <Poster
+                className="vds-poster"
+                alt={videoTitle}
+                src={placeholderImage}
+              />
+            )}
             {textTracks?.map((track) => (
               <Track {...track} key={track.src} />
             ))}
