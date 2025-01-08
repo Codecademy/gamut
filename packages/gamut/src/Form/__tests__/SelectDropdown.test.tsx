@@ -4,7 +4,7 @@ import {
   EarthIcon,
 } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
-import { fireEvent, queryByAttribute } from '@testing-library/dom';
+import { fireEvent } from '@testing-library/dom';
 import { act } from 'react';
 
 import { SelectDropdown } from '../SelectDropdown';
