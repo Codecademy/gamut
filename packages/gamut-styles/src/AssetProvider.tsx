@@ -1,18 +1,21 @@
 import { webFonts } from './remoteAssets/fonts';
 
+/*
+ * Only preload woff2 fonts, since woff1 are only included as fallbacks.
+ */
 export const createFontLinks = () =>
-  webFonts.flatMap(({ filePath, extensions }) =>
-    extensions.map((ext) => (
+  webFonts
+    .filter((f) => f.extensions.includes('woff2'))
+    .map(({ filePath }) => (
       <link
-        key={`${filePath}-${ext}`}
+        key={filePath}
         rel="preload"
-        href={`${filePath}.${ext}`}
+        href={`${filePath}.woff2`}
         crossOrigin="anonymous"
         as="font"
-        type={`font/${ext}`}
+        type="font/woff2"
       />
-    ))
-  );
+    ));
 
 export const AssetProvider = () => {
   return <>{createFontLinks()}</>;
