@@ -1,22 +1,54 @@
 import { PlayIcon } from '@codecademy/gamut-icons';
-import cx from 'classnames';
+import { theme } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import { useState } from 'react';
 import * as React from 'react';
 import ReactPlayer from 'react-player';
 
+import { Box, FlexBox } from '../Box';
 import { useIsMounted } from '../utils';
-// eslint-disable-next-line gamut/no-css-standalone
-import styles from './styles/index.module.scss';
+
+const ReactVideoPlayer = styled(ReactPlayer)`
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  & :focus-visible {
+    outline-offset: 3px;
+  }
+  video::-webkit-media-controls-panel {
+    background-image: linear-gradient(
+      transparent 15%,
+      ${theme.colors['navy-900']} 55%
+    );
+  }
+`;
 
 const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
   return (
-    <div
-      className={styles.overlay}
+    <FlexBox
       role="button"
       aria-label={`play video${videoTitle ? `: ${videoTitle}` : ''}`}
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      position="relative"
+      color="white"
+      width="100%"
+      height="100%"
+      opacity="0.5"
     >
-      <PlayIcon className={styles.hoverButton} />
-    </div>
+      <PlayIcon
+        width="15%"
+        height="26.7%"
+        minWidth="75px"
+        minHeight="75px"
+        color="white"
+      />
+    </FlexBox>
   );
 };
 
@@ -43,7 +75,6 @@ export type VideoProps = {
 
 export const Video: React.FC<VideoProps> = ({
   autoplay,
-  className,
   controls,
   height,
   loop,
@@ -68,12 +99,16 @@ export const Video: React.FC<VideoProps> = ({
   };
 
   return (
-    <div
-      className={cx(styles.videoWrapper, loading && styles.loading, className)}
+    <Box
+      position="relative"
+      width="100%"
+      pt={'56.25%' as any}
+      borderRadius="md"
+      overflow="hidden"
+      bg={loading ? 'black' : undefined}
     >
       {isMounted ? (
-        <ReactPlayer
-          className={styles.iframe}
+        <ReactVideoPlayer
           config={config}
           controls={controls === undefined ? true : controls}
           height={height}
@@ -92,6 +127,6 @@ export const Video: React.FC<VideoProps> = ({
           onPlay={onPlay}
         />
       ) : null}
-    </div>
+    </Box>
   );
 };
