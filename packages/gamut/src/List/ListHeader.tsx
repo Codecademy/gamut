@@ -1,5 +1,6 @@
 import { ComponentProps, forwardRef } from 'react';
 
+import { Box } from '../Box';
 import { HeaderEl } from './elements';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
@@ -9,17 +10,20 @@ export interface ListHeaderProps
 
 export const ListHeader = forwardRef<HTMLDivElement, ListHeaderProps>(
   ({ children, ...rest }, ref) => {
-    const { spacing, scrollable, variant } = useListContext();
+    const { spacing, scrollable, variant, listType } = useListContext();
     return (
-      <HeaderEl
-        {...rest}
-        spacing={spacing}
-        variant={variant}
-        scrollable={scrollable}
-        ref={ref}
-      >
-        {children}
-      </HeaderEl>
+      <Box as="thead" display="block">
+        <HeaderEl
+          {...rest}
+          spacing={spacing}
+          variant={variant}
+          scrollable={scrollable}
+          ref={ref}
+          as={listType === 'table' ? 'tr' : 'div'}
+        >
+          {children}
+        </HeaderEl>
+      </Box>
     );
   }
 );

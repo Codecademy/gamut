@@ -97,6 +97,7 @@ export function DataGrid<
       <ListControlContext.Provider value={listControls}>
         <List
           {...rest}
+          as="table"
           emptyMessage={emptyMessage ?? <EmptyRows />}
           header={
             header ? (

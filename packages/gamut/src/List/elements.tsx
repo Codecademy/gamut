@@ -6,8 +6,10 @@ import {
   theme,
   variant,
 } from '@codecademy/gamut-styles';
-import { StyleProps } from '@codecademy/variance';
+import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+
+import { Box } from '../Box';
 
 const olStyles = {
   alignItems: 'center',
@@ -132,8 +134,8 @@ const rowVariants = variant({
 const rowBreakpointVariants = variant({
   prop: 'rowBreakpoint',
   base: {
-    gridAutoRows: 'minmax(1.5rem, max-content)',
-    gridTemplateColumns: 'minmax(0, 1fr) max-content',
+    // gridAutoRows: 'minmax(1.5rem, max-content)',
+    // gridTemplateColumns: 'minmax(0, 1fr) max-content',
   },
   defaultVariant: 'xs',
   variants: {
@@ -149,6 +151,7 @@ const rowBreakpointVariants = variant({
       display: { _: 'grid', md: 'flex' },
       flexDirection: { _: 'column', md: 'row' },
     },
+    grid: { display: 'grid' },
   },
 });
 
@@ -156,13 +159,15 @@ export interface RowProps
   extends StyleProps<typeof rowVariants>,
     StyleProps<typeof rowBreakpointVariants>,
     StyleProps<typeof spacingVariants>,
-    StyleProps<typeof rowStates> {}
+    StyleProps<typeof rowStates>,
+    StyleProps<typeof system.grid> {}
 
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 8, xs: 0 },
     bg: 'inherit',
   }),
+  variance.compose(system.grid),
   rowBreakpointVariants,
   rowVariants,
   spacingVariants,
@@ -189,7 +194,7 @@ export interface HeaderProps
 
 export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
   css({
-    display: { _: 'none', xs: 'flex' },
+    display: 'flex',
     position: { _: 'initial', xs: 'sticky' },
     flexDirection: ['column', 'row'],
     top: 0,
@@ -202,7 +207,7 @@ export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
   headerVariants
 );
 
-const headerStyles = { gridColumn: 1 } as const;
+const headerStyles = { gridColumn: undefined } as const;
 const columnType = variant({
   prop: 'type',
   defaultVariant: 'content',
@@ -228,7 +233,12 @@ const columnType = variant({
         _: 'flex-start',
         xs: 'center',
       },
-      gridColumn: 2,
+      justifyItems: {
+        _: 'end',
+        xs: undefined,
+      },
+
+      gridColumn: { _: 2, xs: 1 },
       gridRow: 1,
     },
     expand: {
@@ -351,7 +361,7 @@ export interface ColProps
     StyleProps<typeof columnType>,
     StyleProps<typeof columnStates>,
     StyleProps<typeof columnJustify>,
-    StyleProps<typeof system['layout']> {}
+    StyleProps<(typeof system)['layout']> {}
 
 export const ColEl = styled(
   'div',
@@ -381,7 +391,7 @@ export const ColEl = styled(
   system.layout
 );
 
-export const StickyColumnWrapper = styled.div(
+export const StickyColumnWrapper = styled.th(
   css({
     '&:before': {
       content: '""',
@@ -419,6 +429,14 @@ export const StickyColumnWrapper = styled.div(
       height: 1,
       width: 16,
       position: 'absolute',
+    },
+  })
+);
+
+export const ListWrapper = styled(Box)(
+  states({
+    scrollable: {
+      boxShadow: { _: undefined, xs: 'inset -24px 0 24px -24px black' },
     },
   })
 );
