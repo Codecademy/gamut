@@ -18,7 +18,7 @@ export const AboutHeader: React.FC<AboutHeaderProps> = ({
     <FlexBox
       bg="navy-100"
       border={1}
-      borderColor="navy-300"
+      borderColor="border-tertiary"
       borderRadius="md"
       column
       mb={24}

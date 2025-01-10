@@ -17,7 +17,7 @@ const paginationBaseStyles = {
     color: 'text-disabled',
     bg: 'transparent',
   },
-  [ButtonSelectors.OUTLINE]: { borderColor: 'text' },
+  [ButtonSelectors.OUTLINE]: { borderColor: 'border-primary' },
   [ButtonSelectors.SHADOW_ACTIVE]: { opacity: 0 },
   [ButtonSelectors.SHADOW_HOVER]: { opacity: 0 },
 } as const;

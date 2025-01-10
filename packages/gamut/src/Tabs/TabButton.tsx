@@ -58,7 +58,7 @@ const tabVariants = variant({
   variants: {
     standard: {
       background: 'none',
-      borderColor: 'text',
+      borderColor: 'border-primary',
       borderLeft: 'none',
       borderRight: 'none',
       borderTop: 'none',

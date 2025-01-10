@@ -73,7 +73,7 @@ export const ComponentHeader: React.FC<ComponentHeaderProps> = ({
     <Box
       bg="navy-100"
       border={1}
-      borderColor="navy-300"
+      borderColor="border-tertiary"
       borderRadius="md"
       pb={design?.url ? 0 : 24}
       pt={32}

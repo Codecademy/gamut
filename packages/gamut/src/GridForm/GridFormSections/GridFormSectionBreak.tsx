@@ -18,7 +18,7 @@ export const GridFormSectionBreak: React.FC = () => {
         borderTop="none"
         borderX="none"
         border={1}
-        borderColorBottom="text"
+        borderColorBottom="border-primary"
         data-testid="form-section-break"
         width="100%"
       />
