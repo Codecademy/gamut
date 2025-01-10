@@ -39,17 +39,17 @@ describe('Menu', () => {
     screen.getByRole('button');
     expect(screen.queryByRole('menuitem')).toBeNull();
   });
-  it('renders menu separators when the variant is action', () => {
+  it('renders menu separators when variant is popover', () => {
     renderView({
-      variant: 'action',
+      variant: 'popover',
       children: <MenuSeparator />,
     });
 
     screen.getByRole('separator');
   });
-  it('renders deep menu separators while the parent variant is action', () => {
+  it('renders deep menu separators', () => {
     renderView({
-      variant: 'action',
+      variant: 'popover',
       children: (
         <Menu>
           <MenuSeparator />
@@ -59,20 +59,13 @@ describe('Menu', () => {
 
     screen.getByRole('separator');
   });
-  it('does not render separators when the variant is select + navigation', () => {
+  it('renders menu separators when variant is fixed', () => {
     renderView({
-      variant: 'select',
+      variant: 'fixed',
       children: <MenuSeparator />,
     });
 
-    expect(screen.queryByRole('separator')).toBeNull();
-
-    renderView({
-      variant: 'navigation',
-      children: <MenuSeparator />,
-    });
-
-    expect(screen.queryByRole('separator')).toBeNull();
+    screen.getByRole('separator');
   });
   it('renders and icon only when specified', () => {
     renderView({

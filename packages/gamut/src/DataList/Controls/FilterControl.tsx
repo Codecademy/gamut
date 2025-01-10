@@ -75,7 +75,7 @@ export const FilterControl: React.FC<FilterProps> = ({
             maxHeight={300}
             overflowY="auto"
             width="max-content"
-            variant="action"
+            variant="popover"
           >
             {[SELECT_ALL, ...options].map((opt) => {
               const { text, value } = formatOption(opt);

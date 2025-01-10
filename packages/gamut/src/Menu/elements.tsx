@@ -32,11 +32,12 @@ export interface ListProps extends ListStyleProps, StyleStateProps {
   /** How offset spacing should be */
   spacing?: 'normal' | 'condensed';
   /** Menu variants for specific use cases and styles */
-  variant?: 'select' | 'navigation' | 'action';
+  variant?: 'popover' | 'fixed';
   /** is root menu */
   root?: boolean;
   /** bordered */
   as?: 'ul' | 'ol';
+  showBorder?: boolean;
 }
 
 const StyledList = styled('ul', styledOptions<'ul'>())<ListProps>(
@@ -54,6 +55,8 @@ const StyledList = styled('ul', styledOptions<'ul'>())<ListProps>(
       minWidth: 192,
       bg: 'background',
       p: 0,
+    },
+    showBorder: {
       border: 1,
       borderRadius: 'sm',
     },
@@ -65,8 +68,16 @@ const StyledList = styled('ul', styledOptions<'ul'>())<ListProps>(
 export const List = forwardRef<
   HTMLUListElement,
   ComponentProps<typeof StyledList>
->(({ context = true, m = 0, root = true, ...rest }, ref) => (
-  <StyledList context={context} m={m} root={root} ref={ref} {...rest} />
+>(({ context = true, m = 0, root = true, variant, ...rest }, ref) => (
+  <StyledList
+    context={context}
+    m={m}
+    root={root}
+    showBorder={variant !== 'fixed'}
+    ref={ref}
+    variant={variant}
+    {...rest}
+  />
 ));
 
 const interactiveVariants = system.variant({
