@@ -1,0 +1,113 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, LinkTo } from '~styleguide/blocks';
+
+
+export const parameters = {
+  title: "Accessibility guidelines",
+  subtitle: 'In order for content to be accessible, it must be perceivable, operable, understandable, and robust.',
+  status: 'static',
+};
+
+<Meta title="UX Writing/Accessibility guidelines" />
+
+<AboutHeader {...parameters} />
+
+## The 4 principles of accessibility
+
+The World Wide Web Consortium (W3C) is the Internet's main international standards organization. W3C maintains a set of guidelines for web accessibility. The most up-to-date version of W3C's Web Content Accessibility Guidelines is [WCAG 2.2](https://www.w3.org/TR/WCAG22/).
+
+The Web Content Accessibility Guidelines contain 4 principles for creating accessible content. Understanding these 4 principles is key to understanding how to write accessible content.
+
+### 1. Perceivable
+
+Information on-screen must be perceivable to blind, deaf, low-vision, or color-blind learners.
+
+- Include meaningful and unique alt text for all non-decorative images or icons
+- Don't rely on visuals for words to make sense
+- If text is meant to be read, include it as text and not an image
+- Include captions for video and audio content
+
+### 2. Operable
+
+Content should be easy for users to navigate and find what they're looking for. Touch and click targets should be easy to hit and content should be accessible with a screen reader.
+
+- Make hyperlink text long enough that it's easy to hover over and click
+- Use meaningful, unique, and descriptive CTAs
+- Avoid ambiguous link text like "Click here" or "Read more"
+- If more than one label contains the same text, clarify with screen-reader-only text
+- Write so that labels, tooltips, and input fields appear in a logical order
+- Avoid directional language like "above" or "below"
+- Ensure users have enough time to read text
+
+### 3. Understandable
+
+Content should be easy to understand. Plus, it should appear and operate in predictable ways.
+
+- Use H1, H2, H3 headings correctly and consistently
+- Check to ensure copy is at a 7th-grade reading level or below
+- Use short, clear sentences and paragraphs
+- Avoid jargon, slang, and idioms
+- Expand acronyms on first use
+- Use list formatting when appropriate
+
+### 4. Robust
+
+- Write in a way that's platform-agnostic (i.e. select or choose vs. tap or click)
+
+### Bonus: Meaningful
+
+You'll find the word "meaningful" used a lot in guidance for writing for accessibility. So we're taking the opportunity to throw in a quick definition of what we mean when we use it.
+
+Meaningful text is useful text. It provides the full context a user needs to understand a situation.
+
+Meaningful alt text describes what's important about an image a user can't see. Meaningful button text clearly where a link will go. It avoids ambiguous standalone phrases like "click here" or "read more."
+
+## Accessible content checklist
+
+### Alt text
+- Is alt text included for all non-decorative images on the page?
+- Does your alt text provide all the information a user needs to understand what the image is being used to convey?
+
+### Buttons
+- Is the CTA meaningful? Is it clear where clicking will take the user?
+- If there is more than one button on the page, is the text for each button unique?
+- If each button is not unique, have you provided screen-reader-only text to clarify?
+
+### Headings
+- Does your page include a single, unique H1 title?
+- Are H2 and H3 headings used correctly and consistently?
+
+
+### Hyperlinks
+- Is link text meaningful? Is it clear where clicking will take the user?
+- Are hyperlinks long enough (2-3 words) to be easy to click on?
+- If there is more than one hyperlink on the page, is the text for each link unique?
+- If each hyperlink is not unique, have you provided screen-reader-only text to clarify?
+
+
+### Imagery
+- Do all non-decorative images or icons contain <LinkTo id="UX Writing/Component guidelines/Alternative text" > alt text</LinkTo>?
+- Does the alt text provide all the information a user needs to understand what the image is being used to convey?
+- Are all words understandable without reliance on imagery?
+
+
+### Readability
+- Do users have enough time to read the text?
+- Is the reading level grade 7 or below? Use [Hemingway App](https://hemingwayapp.com) to check.
+- Are sentences and paragraphs short and clear?
+- Is your content free of jargon, slang, and idioms?
+- Have you used list formatting when appropriate?
+- Do users have enough time to read the text?
+
+### Screenreader compatibility
+- Does text appear in chronological order?
+- Are headings used correctly and appropriately?
+- Have you avoided directional language (i.e. "the form on the right" or "in the section below")?
+- Is the language platform-agnostic?
+- Have you passed the buttons, headings, hyperlinks, imagery, and readability checklists?
+
+
+### Video and audio content
+- Are captions included for all audio and video content?
+- For video, do the captions match what's happening on-screen?
