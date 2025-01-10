@@ -130,8 +130,8 @@ export const coreTheme = createTheme({
     },
   })
   .addScale('borders', ({ colors }) => ({
-    1: `1px solid ${colors.secondary}`,
-    2: `2px solid ${colors.secondary}`,
+    1: `1px solid ${colors['border-secondary']}`,
+    2: `2px solid ${colors['border-secondary']}`,
   }))
   .createScaleVariables('elements')
   .build();
