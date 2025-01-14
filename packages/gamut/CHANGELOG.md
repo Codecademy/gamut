@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [57.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.6.4...@codecademy/gamut@57.7.0) (2025-01-14)
+
+### Features
+
+- **borderColors:** adding semantic and colormode compatible colors for borderColor ([5e61c28](https://github.com/Codecademy/gamut/commit/5e61c289ce2eec83ef23d83633aca062247f1f61))
+
 ### [57.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.6.3...@codecademy/gamut@57.6.4) (2025-01-09)
 
 **Note:** Version bump only for package @codecademy/gamut
