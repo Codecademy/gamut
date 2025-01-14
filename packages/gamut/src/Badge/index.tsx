@@ -34,11 +34,13 @@ const colorVariants = variant({
     },
     tertiary: {
       border: 1,
+      borderColor: 'border-secondary',
       color: 'text-secondary',
       bg: 'transparent',
     },
     tertiaryFill: {
       border: 1,
+      borderColor: 'border-secondary',
       color: 'text-secondary',
       bg: 'background',
     },
