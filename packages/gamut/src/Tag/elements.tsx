@@ -36,6 +36,7 @@ export const Outline = styled(Box)(
   })
 );
 
+// probably need to add a size variant here
 export const TagLabelWrapper = styled(Box)<BaseTagProps>(
   tagProps,
   colorVariants,
@@ -44,6 +45,8 @@ export const TagLabelWrapper = styled(Box)<BaseTagProps>(
 
 const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}`;
 
+// Don't need this to be a variant anymore, maybe it's a state thing though?
+// might need to alter with sizing
 export const DismissButton = styled(IconButton)(
   variant({
     defaultVariant: 'default',
@@ -72,6 +75,7 @@ export const DismissButton = styled(IconButton)(
   })
 );
 
+// Also have to think about size here
 export const StyledMiniDeleteIcon = styled(MiniDeleteIcon)(
   css({
     width: 12,

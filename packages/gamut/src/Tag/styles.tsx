@@ -1,4 +1,5 @@
 import { states, variant } from '@codecademy/gamut-styles';
+import { background } from '@codecademy/gamut-styles/dist/variance/props';
 
 import { ButtonSelectors } from '../ButtonBase/ButtonBase';
 
@@ -7,9 +8,7 @@ export const tagLabelFontSize = 14;
 
 export const tagBaseStyles = {
   alignItems: 'center',
-
   display: 'flex',
-  height: '24px',
   justifyContent: 'center',
   maxWidth: '100%',
   width: 'fit-content',
@@ -19,18 +18,37 @@ export const colorVariants = variant({
   defaultVariant: 'default',
   base: {
     ...tagBaseStyles,
-    color: 'background',
-    borderRadiusLeft: 'md',
+    color: 'text',
+    borderRadius: 'md',
   },
   variants: {
     default: {
-      bg: 'secondary',
+      bg: 'text-secondary',
+      color: 'background',
+      borderRadius: 'none',
     },
     grey: {
       bg: 'text-secondary',
     },
   },
 });
+
+export const sizeVariants = variant({
+  defaultVariant: 'default',
+  prop: 'size',
+  base: {
+    px: 8,
+  },
+  variants: {
+    default: {
+      height: 24,
+    },
+    large: {
+      height: 32,
+      py: 4,
+    },
+  },
+})
 
 export const tagWrapperStates = states({
   readOnly: {
