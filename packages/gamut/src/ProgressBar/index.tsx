@@ -1,5 +1,5 @@
 import { PatternProps } from '@codecademy/gamut-patterns';
-import { theme, variant } from '@codecademy/gamut-styles';
+import { css, theme, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
 
@@ -149,7 +149,7 @@ const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
   ${progressBarBackgroundVariants};
   ${progressBarSizeVariants};
   ${progressBarBackgroundOverride};
-  ${progressBarFlatVariants}
+  ${progressBarFlatVariants};
 `;
 
 const Bar = styled(Box)(progressBarForegroundVariants);
@@ -172,13 +172,15 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   const showBarBorder = percent > 0 || minimumPercent > 0;
   return (
     <ProgressBarWrapper
+      aria-label={`Progress: ${percent}%`}
       aria-live="polite"
+      // role="figure"
       flat={flat}
       size={size}
       variant={variant}
       backgroundOverride={Pattern ? 'pattern' : 'none'}
     >
-      <Text as="label" screenreader>{`Progress: ${percent}%`}</Text>
+      {/* <Text as="label" screenreader>{`Progress: ${percent}%`}</Text> */}
       {Pattern && <Pattern width="100%" position="absolute" zIndex={0} />}
       <Bar
         variant={variant}
