@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
+import { act } from 'react';
 
 import {
   stubFileField,
@@ -48,9 +49,9 @@ describe('GridFormSections', () => {
     const { view } = renderView();
 
     const textLabel = view.getByLabelText('Stub Text (optional)');
-    const textField = view.getByRole('textbox', { name: 'Stub Text' });
+    const textField = view.getByRole('textbox', { name: /Stub Text/ });
     const radioLabel = view.getByLabelText('Stub Select (optional)');
-    const radioField = view.getByRole('combobox', { name: 'Stub Select' });
+    const radioField = view.getByRole('combobox', { name: /Stub Select/ });
 
     expect(textLabel).toBeTruthy();
     expect(textField).toBeTruthy();
@@ -64,18 +65,22 @@ describe('GridFormSections', () => {
       mode: 'onChange',
     });
 
-    fireEvent.input(view.getByRole('textbox', { name: 'Stub Text' }), {
-      target: {
-        value:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      },
+    await act(async () => {
+      fireEvent.input(view.getByRole('textbox', { name: 'Stub Text' }), {
+        target: {
+          value:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        },
+      });
     });
 
-    fireEvent.input(view.getByRole('textbox', { name: 'Stub Text Again' }), {
-      target: {
-        value: 'Do you know what that is?',
-      },
-    });
+    await act(async () => {
+      fireEvent.input(view.getByRole('textbox', { name: 'Stub Text Again' }), {
+        target: {
+          value: 'Do you know what that is?',
+        },
+      });
+    })
 
     await view.findByText('what is it?');
     await view.findByText('not enough updog');
@@ -87,17 +92,21 @@ describe('GridFormSections', () => {
       mode: 'onChange',
     });
 
-    fireEvent.input(view.getByRole('textbox', { name: 'Stub Text' }), {
-      target: {
-        value:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      },
+    await act(async () => {
+      fireEvent.input(view.getByRole('textbox', { name: 'Stub Text' }), {
+        target: {
+          value:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        },
+      });
     });
 
-    fireEvent.input(view.getByRole('textbox', { name: 'Stub Text Again' }), {
-      target: {
-        value: 'Do you know what that is?',
-      },
+    await act(async () => {
+      fireEvent.input(view.getByRole('textbox', { name: 'Stub Text Again' }), {
+        target: {
+          value: 'Do you know what that is?',
+        },
+      });
     });
 
     expect(await view.findAllByRole('alert')).toHaveLength(1);

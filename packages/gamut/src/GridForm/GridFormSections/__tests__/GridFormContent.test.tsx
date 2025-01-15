@@ -25,7 +25,7 @@ describe('GridFormContent', () => {
     const { view } = renderView();
 
     view.getByLabelText('Stub Text (optional)');
-    view.getByRole('textbox', { name: 'Stub Text' });
+    view.getByRole('textbox', { name: /Stub Text/ });
   });
 
   it('gives the field access to form context and validation', async () => {
@@ -34,7 +34,7 @@ describe('GridFormContent', () => {
       mode: 'onChange',
     });
 
-    fireEvent.input(view.getByRole('textbox', { name: 'Stub Text' }), {
+    fireEvent.input(view.getByRole('textbox', { name: /Stub Text/ }), {
       target: {
         value:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
