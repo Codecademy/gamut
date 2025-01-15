@@ -1,5 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { css, system, theme, variant } from '@codecademy/gamut-styles';
+import { css, states,system, theme  } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -10,6 +10,7 @@ import {
   colorVariants,
   dismissSharedStyles,
   iconButtonOverrides,
+  sizeVariants,
   tagWrapperStates,
 } from './styles';
 import { BaseTagProps } from './types';
@@ -36,49 +37,45 @@ export const Outline = styled(Box)(
   })
 );
 
-// probably need to add a size variant here
 export const TagLabelWrapper = styled(Box)<BaseTagProps>(
   tagProps,
   colorVariants,
+  sizeVariants,
   tagWrapperStates
 );
 
 const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}`;
 
-// Don't need this to be a variant anymore, maybe it's a state thing though?
+
 // might need to alter with sizing
+// consider adding all the CSS here instead? there's no shared aspect anymore
 export const DismissButton = styled(IconButton)(
-  variant({
-    defaultVariant: 'default',
-    prop: 'tagType',
-    base: {
-      ...dismissSharedStyles,
-      ...iconButtonOverrides,
+  css({
+    ...dismissSharedStyles,
+    ...iconButtonOverrides,
+    color: 'background',
+    bg: 'text-secondary',
+    border: 'none',
+    borderRadiusRight: 'md',
+    borderRadiusLeft: 'none',
+    width: 12,
+    [hoverAndFocus]: {
       color: 'background',
-      border: 'none',
-      borderRadiusRight: 'md',
-      borderRadiusLeft: 'none',
-      width: 12,
-      [hoverAndFocus]: {
-        color: 'background',
-        bg: 'secondary-hover',
-      },
-    },
-    variants: {
-      default: {
-        bg: 'secondary',
-      },
-      grey: {
-        bg: 'text-secondary',
-      },
+      bg: 'secondary-hover',
     },
   })
 );
 
-// Also have to think about size here
-export const StyledMiniDeleteIcon = styled(MiniDeleteIcon)(
+export const DefaultMiniDeleteIcon = styled(MiniDeleteIcon)(
   css({
     width: 12,
+    color: 'inherit',
+  })
+);
+
+export const LargeMiniDeleteIcon = styled(MiniDeleteIcon)(
+  css({
+    width: 16,
     color: 'inherit',
   })
 );

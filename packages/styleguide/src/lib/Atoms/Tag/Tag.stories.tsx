@@ -13,19 +13,45 @@ type Story = StoryObj<typeof Tag>;
 
 export const Default: Story = {
   args: {
-    variant: 'default',
+    variant: 'readOnly',
   },
 };
 
-export const Grey: Story = {
+export const ReadOnlyLarge: Story = {
   args: {
-    variant: 'grey',
+    size: 'large',
+  }
+}
+
+export const Selection: Story = {
+  args: {
+    variant: 'selection',
+  },
+};
+
+export const SelectionLarge: Story = {
+  args: {
+    variant: 'selection',
+    size: 'large',
+  },
+};
+
+export const Navigation: Story = {
+  args: {
+    variant: 'navigation',
+  },
+};
+
+export const Suggestion: Story = {
+  args: {
+    variant: 'suggestion',
   },
 };
 
 export const ReadOnly: Story = {
   args: {
     readonly: true,
+    size: 'large',
   },
 };
 

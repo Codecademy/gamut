@@ -3,11 +3,12 @@ import { ComponentProps } from 'react';
 
 import { WithChildrenProp } from '../utils';
 import { DismissButton, tagProps } from './elements';
-import { colorVariants, tagWrapperStates } from './styles';
+import { colorVariants, sizeVariants, tagWrapperStates } from './styles';
 
 export interface BaseTagProps
   extends StyleProps<typeof tagProps>,
     StyleProps<typeof colorVariants>,
+    StyleProps<typeof sizeVariants>,
     StyleProps<typeof tagWrapperStates>,
     WithChildrenProp {}
 export interface ReadOnlyTagProps extends BaseTagProps {

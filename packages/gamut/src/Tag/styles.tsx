@@ -1,9 +1,8 @@
 import { states, variant } from '@codecademy/gamut-styles';
-import { background } from '@codecademy/gamut-styles/dist/variance/props';
 
 import { ButtonSelectors } from '../ButtonBase/ButtonBase';
 
-export const tagLabelPadding = 8;
+
 export const tagLabelFontSize = 14;
 
 export const tagBaseStyles = {
@@ -15,21 +14,30 @@ export const tagBaseStyles = {
 };
 
 export const colorVariants = variant({
-  defaultVariant: 'default',
+  defaultVariant: 'readOnly',
   base: {
     ...tagBaseStyles,
-    color: 'text',
     borderRadius: 'md',
   },
   variants: {
-    default: {
+    readOnly: {
       bg: 'text-secondary',
       color: 'background',
       borderRadius: 'none',
     },
-    grey: {
+    selection: {
       bg: 'text-secondary',
+      color: 'background',
+      borderRadiusRight: 'none',
     },
+    navigation: {
+      border: 1,
+      borderColor: 'border-secondary',
+    },
+    suggestion: {
+      border: 1,
+      borderColor: 'primary',
+    }
   },
 });
 
@@ -41,10 +49,10 @@ export const sizeVariants = variant({
   },
   variants: {
     default: {
-      height: 24,
+      minHeight: 24,
     },
     large: {
-      height: 32,
+      minHeight: 32,
       py: 4,
     },
   },
