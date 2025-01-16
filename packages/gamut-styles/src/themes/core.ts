@@ -72,6 +72,12 @@ export const coreTheme = createTheme({
         _: 'hyper-500',
         hover: 'hyper-400',
       },
+      border: {
+        primary: 'navy-800',
+        secondary: 'navy-600',
+        tertiary: 'navy-300',
+        disabled: 'navy-500',
+      }
     },
     dark: {
       text: {
@@ -115,11 +121,17 @@ export const coreTheme = createTheme({
         _: 'yellow-500',
         hover: 'yellow-400',
       },
+      border: {
+        primary: 'white',
+        secondary: 'white-600',
+        tertiary: 'white-300',
+        disabled: 'white-500',
+      }
     },
   })
   .addScale('borders', ({ colors }) => ({
-    1: `1px solid ${colors.secondary}`,
-    2: `2px solid ${colors.secondary}`,
+    1: `1px solid ${colors['border-primary']}`,
+    2: `2px solid ${colors['border-primary']}`,
   }))
   .createScaleVariables('elements')
   .build();
