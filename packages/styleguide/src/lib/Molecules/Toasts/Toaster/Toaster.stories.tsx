@@ -18,8 +18,7 @@ type Story = StoryObj<typeof Toaster>;
 const exampleToasts = [
   {
     id: 'toast-1',
-    icon:
-      'https://static-assets.codecademy.com/assets/achievements/weekly-streak-4.svg',
+    icon: 'https://static-assets.codecademy.com/assets/achievements/weekly-streak-4.svg',
     title: 'I have a toast!',
     children: "Here's to us :)",
   },
@@ -71,8 +70,6 @@ const ToasterExample: React.FC = () => {
   );
 };
 
-
 export const Default: Story = {
-  render: () => <ToasterExample />
+  render: () => <ToasterExample />,
 };
-

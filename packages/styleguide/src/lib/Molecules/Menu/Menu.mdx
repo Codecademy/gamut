@@ -24,6 +24,7 @@ export const parameters = {
 <ComponentHeader {...parameters} />
 
 ## Usage
+
 While most Menus are used as layout elements, Menus can also be used as popover elements within components like Selects.
 
 ### Components
@@ -46,43 +47,45 @@ If you would like to know more about the `menu` role - check out the MDN web doc
 <LayoutGrid gap={32} py={24}>
 
 <Column size={4} variant={false} mx={8}>
-### Select
-<Canvas of={MenuStories.Default} />
-A general purpose menu type that can be used for actions or navigation.
+  ### Select
+  <Canvas of={MenuStories.Default} />A general purpose menu type that can be
+  used for actions or navigation.
 </Column>
 
 <Column size={4} variant={false}>
-### Action
-<Canvas of={MenuStories.Action} />
-These should be populated with MenuItems typed as buttons that execute some action.
+  ### Action
+  <Canvas of={MenuStories.Action} />
+  These should be populated with MenuItems typed as buttons that execute some
+  action.
 </Column>
 
 <Column size={4} variant={false}>
-### Navigation
-<Canvas of={MenuStories.Navigation} />
-These should be populated with MenuItems typed as links.
+  ### Navigation
+  <Canvas of={MenuStories.Navigation} />
+  These should be populated with MenuItems typed as links.
 </Column>
 
 </LayoutGrid>
 
 ## Spacing variants
+
 Setting the Menu's `spacing` to `'condensed'` will reduce the padding around the MenuItems.
 
 <LayoutGrid gap={32} py={24}>
 
 <Column size={4} variant={false} mx={8}>
-### Select condensed
-<Canvas of={MenuStories.SelectCondensed} />
+  ### Select condensed
+  <Canvas of={MenuStories.SelectCondensed} />
 </Column>
 
 <Column size={4} variant={false}>
-### Action condensed
-<Canvas of={MenuStories.ActionCondensed} />
+  ### Action condensed
+  <Canvas of={MenuStories.ActionCondensed} />
 </Column>
 
 <Column size={4} variant={false}>
-### Navigation condensed
-<Canvas of={MenuStories.NavigationCondensed} />
+  ### Navigation condensed
+  <Canvas of={MenuStories.NavigationCondensed} />
 </Column>
 
 </LayoutGrid>
@@ -97,8 +100,8 @@ Click through each item to see how the `Menu`s appear (and disappear when the it
 
 <Canvas of={MenuStories.Popover} />
 
-
 ## Playground
+
 <Canvas sourceState="shown" of={MenuStories.Default} />
 
 <Controls />

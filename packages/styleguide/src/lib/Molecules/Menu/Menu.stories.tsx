@@ -14,9 +14,12 @@ const meta: Meta<typeof Menu> = {
   component: Menu,
   // This is a known issue with SB 8, see: https://github.com/storybookjs/storybook/issues/23170
   // Will fix this casting when the issue is resolved
-  subcomponents: { MenuItem: MenuItem as React.ComponentType<unknown>, MenuSeparator: MenuSeparator as React.ComponentType<unknown> },
+  subcomponents: {
+    MenuItem: MenuItem as React.ComponentType<unknown>,
+    MenuSeparator: MenuSeparator as React.ComponentType<unknown>,
+  },
   args: {
-    spacing: 'normal'
+    spacing: 'normal',
   },
 };
 
@@ -47,7 +50,6 @@ const MenuItemsExample: React.FC<{
   );
 };
 
-
 export const Default: Story = {
   args: {
     variant: 'select',
@@ -73,7 +75,7 @@ export const SelectCondensed: Story = {
   args: {
     variant: 'select',
     children: <MenuItemsExample type="default" />,
-    spacing: 'condensed'
+    spacing: 'condensed',
   },
 };
 
@@ -81,7 +83,7 @@ export const ActionCondensed: Story = {
   args: {
     variant: 'action',
     children: <MenuItemsExample type="button" />,
-    spacing: 'condensed'
+    spacing: 'condensed',
   },
 };
 
@@ -89,10 +91,9 @@ export const NavigationCondensed: Story = {
   args: {
     variant: 'navigation',
     children: <MenuItemsExample type="link" />,
-    spacing: 'condensed'
+    spacing: 'condensed',
   },
 };
-
 
 export const PopoverMenuExample: React.FC = () => {
   const target = useRef<HTMLDivElement>(null);
@@ -190,5 +191,4 @@ export const PopoverMenuExample: React.FC = () => {
 
 export const Popover: Story = {
   render: () => <PopoverMenuExample />,
-}
-
+};

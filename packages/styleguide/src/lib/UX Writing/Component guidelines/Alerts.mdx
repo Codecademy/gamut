@@ -3,19 +3,16 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, LinkTo } from '~styleguide/blocks';
 
-
 export const parameters = {
-  title: "Alerts",
-  subtitle: 'Make clear what you’re alerting the user to. Then, clarify any next steps they need to take or inform them about the timing of a resolution on our end.',
+  title: 'Alerts',
+  subtitle:
+    'Make clear what you’re alerting the user to. Then, clarify any next steps they need to take or inform them about the timing of a resolution on our end.',
   status: 'static',
 };
 
 <Meta title="UX Writing/Component guidelines/Alerts" />
 
 <AboutHeader {...parameters} />
-
-
-
 
 Alerts are used to display important information and, if relevant, provide relevant actions the learner needs to take to resolve the alert.
 
@@ -27,9 +24,12 @@ Alerts should make clear **what the issue or information is** and **how to proce
 
 <br />
 
-<Alert type="general" cta={{ children: 'Resend verification' }} mx={0} >
-  <Text> Please verify your email so we can make sure your account is secure. A link
-  has been sent to name@email.com. </Text>
+<Alert type="general" cta={{ children: 'Resend verification' }} mx={0}>
+  <Text>
+    {' '}
+    Please verify your email so we can make sure your account is secure. A link has
+    been sent to name@email.com.{' '}
+  </Text>
 </Alert>
 
 <br />
@@ -41,7 +41,10 @@ Alerts should make clear **what the issue or information is** and **how to proce
 <br />
 
 <Alert type="error" cta={{ children: '' }}>
-  <Text>We were unable to add this team member. Please refresh the page and try again.</Text>
+  <Text>
+    We were unable to add this team member. Please refresh the page and try
+    again.
+  </Text>
 </Alert>
 
 <br />
@@ -53,7 +56,10 @@ Alerts should make clear **what the issue or information is** and **how to proce
 <br />
 
 <Alert type="feature" cta={{ children: 'Add your name' }}>
-  <Text>Update your profile with your name to help your team with account management.</Text>
+  <Text>
+    Update your profile with your name to help your team with account
+    management.
+  </Text>
 </Alert>
 
 <br />
@@ -70,6 +76,7 @@ Alerts should make clear **what the issue or information is** and **how to proce
 - **Front-load the most important information.** While our alert component allows for multiple lines of text, we truncate after the first line and users can expand to see the full message.
 
 ## Checklist
+
 - Does the alert explain the information or issue clearly?
 - If relevant, have you explained what the user can do to resolve the alert or what we're doing on our end?
 - Is important information front-loaded?

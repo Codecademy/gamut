@@ -69,16 +69,16 @@ export const FullDataTable: Story = {
 };
 
 export const EmptyState: Story = {
-  args: { rows: [], shadow: true, scrollable: true }
-}
+  args: { rows: [], shadow: true, scrollable: true },
+};
 
 export const LoadingRows: Story = {
-  args: { loading: true, shadow: true }
-}
+  args: { loading: true, shadow: true },
+};
 
 export const Scrollable: Story = {
-  args: { shadow: true }
-}
+  args: { shadow: true },
+};
 
 export const Default: Story = {
   args: {},
