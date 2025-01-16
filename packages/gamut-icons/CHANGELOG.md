@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.37.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.37.1...@codecademy/gamut-icons@9.37.2) (2025-01-14)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.37.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.37.0...@codecademy/gamut-icons@9.37.1) (2025-01-09)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.37.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.36.0...@codecademy/gamut-icons@9.37.0) (2025-01-06)
+
+### Features
+
+- **Icon:** Add AlertFilledIcon ([098bb46](https://github.com/Codecademy/gamut/commit/098bb46acb10e3a293f2b7ed6956c5619cc419dc))
+
 ## [9.36.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.35.0...@codecademy/gamut-icons@9.36.0) (2024-12-17)
 
 ### Features
