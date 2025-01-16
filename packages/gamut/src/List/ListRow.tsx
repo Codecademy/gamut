@@ -37,14 +37,19 @@ export interface SimpleRowProps extends RowProps {
 
 export type ListRowProps = ExpandableRowProps | SimpleRowProps;
 
-const ResponsiveExpand = styled(motion.td)(
-  css({
-    overflow: 'hidden',
-    gridColumn: { _: 'span 2', xs: 'span 12' },
-  })
-);
-const ExpandInCollapseOut: React.FC<WithChildrenProp> = ({ children }) => {
-  /// TO-DO: Needs to be a td for DataList and a div for LIst
+const expandStyles = css({
+  overflow: 'hidden',
+  gridColumn: { _: 'span 2', xs: 'span 12' },
+});
+
+const DivExpand = styled(motion.div)(expandStyles);
+const TDExpand = styled(motion.td)(expandStyles);
+
+const ExpandInCollapseOut: React.FC<
+  WithChildrenProp & { as: 'td' | 'div' }
+> = ({ as, children }) => {
+  const ResponsiveExpand = as === 'td' ? TDExpand : DivExpand;
+
   return (
     <ResponsiveExpand
       initial="collapsed"
@@ -138,7 +143,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           {content}
           <AnimatePresence>
             {expanded && (
-              <ExpandInCollapseOut>
+              <ExpandInCollapseOut as={isTable ? 'td' : 'div'}>
                 <Box role="region" aria-label={expandedRowAriaLabel}>
                   {renderExpanded?.()}
                 </Box>
