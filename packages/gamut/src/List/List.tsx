@@ -44,7 +44,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       rowBreakpoint = 'xs',
       scrollable = false,
       shadow = false,
-      height = '100%',
+      height,
       minHeight,
       children,
       header,
@@ -130,13 +130,12 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
           position="relative"
           ref={wrapperRef}
           scrollable={!isEmpty && showShadow}
-          maxHeight={height}
           width={1}
         >
           <Box
             as={isTable && !isEmpty && !loading ? 'table' : 'div'}
             data-testid={`scrollable-${id}`}
-            height={height}
+            maxHeight={height}
             maxWidth={1}
             minHeight={minHeight}
             overflow="inherit"
