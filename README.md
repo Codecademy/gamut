@@ -1,6 +1,6 @@
 # Gamut
 
-_The component library & design system for Codecademy._ ✨
+_The component library & design system for Codecademy dot com_ ✨
 
 ---
 
