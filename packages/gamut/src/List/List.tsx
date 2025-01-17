@@ -97,7 +97,8 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
 
     const listContents = (
       <>
-        {header} {isEmpty ? emptyMessage : listContent}
+        {header}
+        {isEmpty ? emptyMessage : listContent}
       </>
     );
 
