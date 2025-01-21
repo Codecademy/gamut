@@ -145,16 +145,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
           >
             {content}
           </Box>
-          {true && (
-            <Box
-              position="sticky"
-              right={-10}
-              top={0}
-              bottom={0}
-              width={10}
-              boxShadow="0 0 48px black, 0 0 24px black"
-            />
-          )}
+
           {isEmpty && (
             <FlexBox center width={1}>
               <DotLoose position="absolute" inset={0} top={-2} />
