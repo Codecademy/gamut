@@ -5,10 +5,10 @@ import { HeaderEl } from './elements';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
 
-export interface ListHeaderProps
+export interface TableHeaderProps
   extends Partial<PublicListProps<ComponentProps<typeof HeaderEl>>> {}
 
-export const TableHeader = forwardRef<HTMLDivElement, ListHeaderProps>(
+export const TableHeader = forwardRef<HTMLDivElement, TableHeaderProps>(
   ({ children, ...rest }, ref) => {
     const { spacing, scrollable, variant } = useListContext();
     return (
