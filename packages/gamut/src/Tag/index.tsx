@@ -16,21 +16,23 @@ import { TagProps } from './types';
 export const Tag: React.FC<TagProps> = ({
   children,
   variant = 'readOnly',
-  readonly,
   onDismiss,
   href = undefined,
   onClick,
-  disabled=true,
+  disabled=false,
   size,
   ...rest
 }) => {
   const isSelectionVariant = variant === 'selection';
   const isSuggestionVariant = variant === 'suggestion';
   const isNavigationVariant = variant === 'navigation';
+  const isReadOnly = variant === 'readOnly'
   const isInteractive = isSuggestionVariant || isNavigationVariant;
 
+// KENNY: change outlines to inherit???
+
   return (
-    <Outline disabled={disabled} {...rest}>
+    <Outline disabled={disabled} {...rest} readOnly={isReadOnly}>
       <FlexBox
         flexDirection="row"
         {...rest}
@@ -38,7 +40,7 @@ export const Tag: React.FC<TagProps> = ({
         width={isSelectionVariant ? 'calc(100% - 24px)' : 'fit-content' }
 
       >
-        <TagLabelWrapper variant={variant} size={size} overflow={isInteractive ? 'hidden' : 'visible'} disabled={disabled}>
+        <TagLabelWrapper readOnly={variant === 'readOnly'} variant={variant} size={size} overflow={isInteractive ? 'hidden' : 'visible'} disabled={disabled}>
           {/* KENNY: would need to add some icon logic here (and props as well)  */}
           {variant && (variant === 'navigation' || variant === 'suggestion') ?
             <TagAnchor interactiveType={variant} onClick={onClick} href={!disabled ? href : ''} disabled={disabled}>
@@ -51,8 +53,6 @@ export const Tag: React.FC<TagProps> = ({
               px={8}
               // Would this be some state now?
               // maybe Text will have to be a separate element as well that
-              truncate="ellipsis"
-              truncateLines={1}
             >
               {children}
             </Text>

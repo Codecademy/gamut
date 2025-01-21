@@ -72,6 +72,9 @@ export const sizeVariants = variant({
 // KENNY: might have to be interactiveTagWrapperStates
 // seems to mess up suggestions as it is currently
 export const tagWrapperStates = states({
+  readOnly: {
+    borderRadius: 'none'
+  },
   disabled: {
     borderColor: 'border-disabled',
     bg: 'background-primary',

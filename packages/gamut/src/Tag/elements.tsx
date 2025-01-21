@@ -41,6 +41,9 @@ export const Outline = styled(Box)(
     disabled: {
       cursor: 'not-allowed',
       userSelect: 'none',
+    },
+    readOnly: {
+      borderRadius: 'none',
     }
   })
 );
