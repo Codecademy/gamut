@@ -12,7 +12,7 @@ export const ListHeader = forwardRef<HTMLDivElement, ListHeaderProps>(
   ({ children, ...rest }, ref) => {
     const { spacing, scrollable, variant, listType } = useListContext();
     return (
-      <Box as="thead" display="block">
+      <Box as="thead" display="block" position="sticky" top={0}>
         <HeaderEl
           {...rest}
           spacing={spacing}
