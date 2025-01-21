@@ -61,6 +61,7 @@ export type MarkdownProps = {
    * Callback when a markdown anchor tag is clicked
    */
   onAnchorClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
+  screenreader?: 'off' | 'assertive' | 'polite';
 };
 
 export class Markdown extends PureComponent<MarkdownProps> {
@@ -74,6 +75,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       inline = false,
       headerIds = true,
       onAnchorClick,
+      screenreader = 'off',
     } = this.props;
 
     if (!text) return null;
@@ -178,6 +180,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       <Wrapper
         {...omitProps(Object.keys(this.props), this.props)}
         className={classes}
+        aria-live={screenreader}
       >
         {react}
       </Wrapper>
