@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { IllustrationProps } from './types';
 
-export const TagCelebation: React.FC<IllustrationProps> = ({
+export const TagCelebration: React.FC<IllustrationProps> = ({
   'aria-hidden': ariaHidden,
   className,
   height,
