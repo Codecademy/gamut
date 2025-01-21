@@ -20,7 +20,6 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
   /** A header node, rendered above the row content */
   header?: React.ReactNode;
   height?: BoxProps['height'];
-  maxHeight?: BoxProps['maxHeight'];
   minHeight?: BoxProps['minHeight'];
   /** If the list should render a right-side shadow when rows are scrollable to indicate more horizontal content */
   shadow?: boolean;
@@ -46,7 +45,6 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       scrollable = false,
       shadow = false,
       height,
-      maxHeight,
       minHeight,
       children,
       header,
@@ -133,12 +131,12 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
           ref={wrapperRef}
           scrollable={!isEmpty && showShadow}
           width={1}
+          maxHeight={height}
         >
           <Box
             as={isTable && !isEmpty && !loading ? 'table' : 'div'}
             data-testid={`scrollable-${id}`}
-            height={height}
-            maxHeight={maxHeight}
+            height="fit-content"
             maxWidth={1}
             minHeight={minHeight}
             overflow="inherit"
