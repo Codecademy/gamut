@@ -1,11 +1,12 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { css, states,system, theme  } from '@codecademy/gamut-styles';
+import { css, states, system, theme, variant  } from '@codecademy/gamut-styles';
 import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
+import { Anchor } from '../Anchor';
 import { Box } from '../Box';
 import { IconButton } from '../Button';
-import { Selectors } from '../ButtonBase/ButtonBase';
+import { ButtonSelectors, Selectors } from '../ButtonBase/ButtonBase';
 import {
   colorVariants,
   dismissSharedStyles,
@@ -27,6 +28,7 @@ export const Outline = styled(Box)(
     borderRadius: 'md',
     width: '100%',
     maxWidth: 'fit-content',
+    overflow: 'hidden',
     '&:focus-within': {
       outline: `2px solid ${theme.colors.primary}`,
       outlineOffset: '2px',
@@ -34,6 +36,12 @@ export const Outline = styled(Box)(
     '&:active': {
       outlineColor: `transparent`,
     },
+  }),
+  states({
+    disabled: {
+      cursor: 'not-allowed',
+      userSelect: 'none',
+    }
   })
 );
 
@@ -41,12 +49,15 @@ export const TagLabelWrapper = styled(Box)<BaseTagProps>(
   tagProps,
   colorVariants,
   sizeVariants,
-  tagWrapperStates
+  tagWrapperStates,
+  states({
+    disabled: {
+      borderColor: 'border-disabled'
+    }
+  })
 );
 
 const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}`;
-
-
 // might need to alter with sizing
 // consider adding all the CSS here instead? there's no shared aspect anymore
 export const DismissButton = styled(IconButton)(
@@ -79,3 +90,63 @@ export const LargeMiniDeleteIcon = styled(MiniDeleteIcon)(
     color: 'inherit',
   })
 );
+
+export const TagAnchor = styled(Anchor)(
+  // css({
+  //   px: 8,
+  //   color: 'text',
+  //   // KENNY: do we really need this anymore? there was some thing that jut out that didn't look good
+  //   // '&:before': {
+  //   //   display: 'none',
+  //   // },
+  //   [ButtonSelectors.FOCUS_VISIBLE]: {
+  //     outline: 'none',
+  //   },
+  //   [ButtonSelectors.ACTIVE]: {
+  //     bg: 'background-hover',
+  //     color: 'background'
+  //   },
+  // }),
+  variant({
+    base: {
+      // might go back to original padding stored as a variable and values used depending on variant
+      px: 8,
+      // otherwise there's an outline around the inner button
+      // also adds a height that goes beyond the parent
+      // '&:before': {
+      //   display: 'none',
+      // },
+      textDecoration: 'none',
+      [ButtonSelectors.FOCUS_VISIBLE]: {
+        outline: 'none',
+        border: 'none',
+      },
+    },
+    prop: 'interactiveType',
+    variants: {
+      navigation: {
+        color: 'text',
+        [ButtonSelectors.ACTIVE]: {
+          bg: 'secondary',
+          color: 'background',
+          textDecoration: 'none',
+        },
+        [ButtonSelectors.FOCUS]: {
+          textDecoration: 'none',
+        },
+        [ButtonSelectors.DISABLED]: {
+          bg: 'background-primary',
+          color: 'text-disabled',
+        }
+      },
+      suggestion: {
+        bg: 'background-hover',
+        color: 'text',
+        // [ButtonSelectors.FOCUS_VISIBLE]: {
+        //   outline: 'none',
+        //   border: 'none',
+        // }
+      },
+    }
+  })
+)

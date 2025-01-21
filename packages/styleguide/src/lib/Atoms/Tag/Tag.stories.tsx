@@ -39,6 +39,7 @@ export const SelectionLarge: Story = {
 export const Navigation: Story = {
   args: {
     variant: 'navigation',
+    href: 'https://www.codecademy.com',
   },
 };
 

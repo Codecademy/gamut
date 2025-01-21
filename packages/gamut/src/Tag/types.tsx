@@ -11,6 +11,10 @@ export interface BaseTagProps
     StyleProps<typeof sizeVariants>,
     StyleProps<typeof tagWrapperStates>,
     WithChildrenProp {}
+    //  will need AppendIconProps here
+
+// Would I need a discriminated union here?
+// need to remove readonly here and add in onClick and href
 export interface ReadOnlyTagProps extends BaseTagProps {
   /**
    * If the DismissButton should be shown.
@@ -19,7 +23,10 @@ export interface ReadOnlyTagProps extends BaseTagProps {
   /**
    * ClickHandler for the DismissButton.
    */
+  disabled?: never;
   onDismiss?: never;
+  onClick?: never;
+  href?: never;
 }
 export interface DismissableTagProps extends BaseTagProps {
   /**
@@ -30,6 +37,9 @@ export interface DismissableTagProps extends BaseTagProps {
    * ClickHandler for the DismissButton.
    */
   onDismiss: ComponentProps<typeof DismissButton>['onClick'];
+  onClick?: never;
+  href?: never;
+  disabled: boolean;
 }
 
 export type TagProps = ReadOnlyTagProps | DismissableTagProps;

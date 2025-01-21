@@ -1,4 +1,4 @@
-import { states, variant } from '@codecademy/gamut-styles';
+import { states, theme, variant } from '@codecademy/gamut-styles';
 
 import { ButtonSelectors } from '../ButtonBase/ButtonBase';
 
@@ -33,10 +33,27 @@ export const colorVariants = variant({
     navigation: {
       border: 1,
       borderColor: 'border-secondary',
+      [ButtonSelectors.HOVER]: {
+        // backgroundColor: `${theme.colors['background-hover']}`,
+        bg: 'background-hover',
+      },
+      // ACTIVE is probs on the variant code
+      [ButtonSelectors.ACTIVE]: {
+        bg: 'background-hover',
+        color: 'background'
+      },
     },
     suggestion: {
       border: 1,
       borderColor: 'primary',
+      // outline: 'none',
+      [ButtonSelectors.HOVER]: {
+        bg: 'background-hover',
+      },
+      // '::hover': {
+      //   backgroundColor: 'hover',
+      //   border: 'red'
+      // }
     }
   },
 });
@@ -44,9 +61,6 @@ export const colorVariants = variant({
 export const sizeVariants = variant({
   defaultVariant: 'default',
   prop: 'size',
-  base: {
-    px: 8,
-  },
   variants: {
     default: {
       minHeight: 24,

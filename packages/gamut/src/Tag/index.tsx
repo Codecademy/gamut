@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { Anchor } from '../Anchor';
 import { FlexBox } from '../Box';
 import { Text } from '../Typography';
 import {
@@ -8,6 +7,7 @@ import {
   DismissButton,
   LargeMiniDeleteIcon,
   Outline,
+  TagAnchor,
   TagLabelWrapper,
 } from './elements';
 import { tagLabelFontSize } from './styles';
@@ -15,32 +15,40 @@ import { TagProps } from './types';
 
 export const Tag: React.FC<TagProps> = ({
   children,
-  variant,
+  variant = 'readOnly',
   readonly,
   onDismiss,
+  href = undefined,
+  onClick,
+  disabled=true,
   size,
   ...rest
 }) => {
   const isSelectionVariant = variant === 'selection';
+  const isSuggestionVariant = variant === 'suggestion';
+  const isNavigationVariant = variant === 'navigation';
+  const isInteractive = isSuggestionVariant || isNavigationVariant;
 
   return (
-    <Outline {...rest}>
+    <Outline disabled={disabled} {...rest}>
       <FlexBox
         flexDirection="row"
         {...rest}
+        // KENNY: this needs some guidance, what should the width be for truncation or overflow?
         width={isSelectionVariant ? 'calc(100% - 24px)' : 'fit-content' }
+
       >
-        <TagLabelWrapper variant={variant} readOnly={readonly} size={size}>
+        <TagLabelWrapper variant={variant} readOnly={readonly} size={size} overflow={isInteractive ? 'hidden' : 'visible'} >
           {/* KENNY: would need to add some icon logic here (and props as well)  */}
-          {variant === 'navigation' || variant === 'suggestion' ?
-            <Anchor variant="interface">
+          {variant && (variant === 'navigation' || variant === 'suggestion') ?
+            <TagAnchor interactiveType={variant} onClick={onClick} href={!disabled ? href : ''} disabled={disabled}>
               {children}
-            </Anchor> :
+            </TagAnchor> :
             <Text
               as="span"
               fontSize={tagLabelFontSize}
               lineHeight={1 as any}
-              // px={tagLabelPadding}
+              px={8}
               // Would this be some state now?
               // maybe Text will have to be a separate element as well that
               truncate="ellipsis"
@@ -53,12 +61,16 @@ export const Tag: React.FC<TagProps> = ({
         </TagLabelWrapper>
         {isSelectionVariant && (
           <DismissButton
-            aria-label={`Dismiss ${children} Tag`}
+          // KENNY: check VO on these tips, esp for disabled
+            aria-label={disabled ? '' : `Dismiss ${children} Tag`}
             onClick={onDismiss || undefined}
             tip="Remove"
             tipProps={{ placement: 'floating' }}
             icon={size === 'large' ? LargeMiniDeleteIcon : DefaultMiniDeleteIcon}
             width="100%"
+            disabled={disabled}
+            aria-disabled={disabled}
+          // KENNY: include aria-disabled - this should remove
           />
         )}
       </FlexBox>
