@@ -417,6 +417,7 @@ export const StickyColumnWrapper = styled.th(
     left: 0,
     zIndex: 1,
     bg: 'inherit',
+    fontWeight: 400,
     '&:not(:first-of-type)': {
       left: { xs: 16 },
       overflow: 'visible',
