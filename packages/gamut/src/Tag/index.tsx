@@ -38,7 +38,7 @@ export const Tag: React.FC<TagProps> = ({
         width={isSelectionVariant ? 'calc(100% - 24px)' : 'fit-content' }
 
       >
-        <TagLabelWrapper variant={variant} readOnly={readonly} size={size} overflow={isInteractive ? 'hidden' : 'visible'} >
+        <TagLabelWrapper variant={variant} size={size} overflow={isInteractive ? 'hidden' : 'visible'} disabled={disabled}>
           {/* KENNY: would need to add some icon logic here (and props as well)  */}
           {variant && (variant === 'navigation' || variant === 'suggestion') ?
             <TagAnchor interactiveType={variant} onClick={onClick} href={!disabled ? href : ''} disabled={disabled}>

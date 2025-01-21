@@ -50,11 +50,6 @@ export const TagLabelWrapper = styled(Box)<BaseTagProps>(
   colorVariants,
   sizeVariants,
   tagWrapperStates,
-  states({
-    disabled: {
-      borderColor: 'border-disabled'
-    }
-  })
 );
 
 const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}`;
@@ -121,6 +116,13 @@ export const TagAnchor = styled(Anchor)(
         outline: 'none',
         border: 'none',
       },
+      [ButtonSelectors.DISABLED]: {
+        bg: 'background-primary',
+        color: 'text-disabled',
+      },
+      [ButtonSelectors.FOCUS]: {
+        textDecoration: 'none',
+      },
     },
     prop: 'interactiveType',
     variants: {
@@ -131,21 +133,30 @@ export const TagAnchor = styled(Anchor)(
           color: 'background',
           textDecoration: 'none',
         },
-        [ButtonSelectors.FOCUS]: {
-          textDecoration: 'none',
-        },
-        [ButtonSelectors.DISABLED]: {
-          bg: 'background-primary',
-          color: 'text-disabled',
-        }
       },
       suggestion: {
-        bg: 'background-hover',
+        bg: 'background-primary',
         color: 'text',
         // [ButtonSelectors.FOCUS_VISIBLE]: {
         //   outline: 'none',
         //   border: 'none',
         // }
+        [ButtonSelectors.HOVER]: {
+          bg: 'background-hover',
+        },
+        [ButtonSelectors.ACTIVE]: {
+          bg: 'primary',
+          color: 'background',
+          textDecoration: 'none',
+        },
+        [ButtonSelectors.DISABLED]: {
+
+          // color: 'text-disabled',
+          // borderColor: 'border-disabled',
+          ':hover': {
+            backgroundColor: `${theme.colors['background-primary']}`
+          }
+        },
       },
     }
   })

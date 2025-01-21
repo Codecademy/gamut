@@ -33,8 +33,8 @@ export const colorVariants = variant({
     navigation: {
       border: 1,
       borderColor: 'border-secondary',
+      // KENNY: maybe bg can go here instead
       [ButtonSelectors.HOVER]: {
-        // backgroundColor: `${theme.colors['background-hover']}`,
         bg: 'background-hover',
       },
       // ACTIVE is probs on the variant code
@@ -47,13 +47,10 @@ export const colorVariants = variant({
       border: 1,
       borderColor: 'primary',
       // outline: 'none',
-      [ButtonSelectors.HOVER]: {
-        bg: 'background-hover',
+      [ButtonSelectors.DISABLED]: {
+        // bg: 'background-hover',
+        borderColor: 'border-disabled',
       },
-      // '::hover': {
-      //   backgroundColor: 'hover',
-      //   border: 'red'
-      // }
     }
   },
 });
@@ -72,10 +69,16 @@ export const sizeVariants = variant({
   },
 })
 
+// KENNY: might have to be interactiveTagWrapperStates
+// seems to mess up suggestions as it is currently
 export const tagWrapperStates = states({
-  readOnly: {
-    borderRadius: 'md',
-  },
+  disabled: {
+    borderColor: 'border-disabled',
+    bg: 'background-primary',
+    '&:hover': {
+      backgroundColor: `${theme.colors['background-primary']}`
+    }
+  }
 });
 
 export const dismissSharedStyles = {
