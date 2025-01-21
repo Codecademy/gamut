@@ -1,7 +1,7 @@
 import { memo, ReactElement } from 'react';
 
 import { FlexBox } from '../..';
-import { ListCol, ListHeader } from '../../List';
+import { ListCol, TableHeader } from '../../List';
 import {
   ExpandControl,
   FilterControl,
@@ -31,7 +31,7 @@ export const Header: HeaderComponent = ({
     useControlContext();
 
   return (
-    <ListHeader>
+    <TableHeader>
       <>
         {selectable && (
           <ListCol size="content">
@@ -80,7 +80,7 @@ export const Header: HeaderComponent = ({
           </ListCol>
         )}
       </>
-    </ListHeader>
+    </TableHeader>
   );
 };
 
