@@ -133,10 +133,6 @@ const rowVariants = variant({
 
 const rowBreakpointVariants = variant({
   prop: 'rowBreakpoint',
-  base: {
-    // gridAutoRows: 'minmax(1.5rem, max-content)',
-    // gridTemplateColumns: 'minmax(0, 1fr) max-content',
-  },
   defaultVariant: 'xs',
   variants: {
     xs: {
@@ -207,16 +203,13 @@ export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
   headerVariants
 );
 
-const headerStyles = { gridColumn: undefined } as const;
 const columnType = variant({
   prop: 'type',
   defaultVariant: 'content',
   variants: {
-    header: {
-      ...headerStyles,
-    },
+    // Keeping this within variants for typing purposes, we we use this behaviorally despite it not needing specific styling
+    header: {},
     orderedHeader: {
-      ...headerStyles,
       '&::before': {
         ...olStyles,
         display: { _: 'flex', xs: 'none' },

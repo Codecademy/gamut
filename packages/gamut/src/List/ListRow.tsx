@@ -11,13 +11,12 @@ import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
 import { getGridTemplateColumns } from './utils';
 
-// IF Expandable ++ Table => special styling option
 export interface RowProps
   extends Partial<PublicListProps<ComponentProps<typeof RowEl>>> {
   header?: boolean;
-  // This is an internal prop that is largely only used for the DataTable component
+  /** This is an internal prop that is largely only used for the DataTable component */
   numOfColumns?: number;
-  // This is an internal prop that is largely only used for the DataTable component
+  /**  This is an internal prop that is largely only used for the DataTable component */
   selectable?: boolean;
 }
 
@@ -97,7 +96,6 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         ? getGridTemplateColumns({ numOfColumns, selectable })
         : 'minmax(0, 1fr) max-content';
 
-    // do we need render expanded here? this should only be for clickable rows
     if ((renderExpanded || Boolean(onClick)) && !isTable) {
       content = (
         <RowEl
