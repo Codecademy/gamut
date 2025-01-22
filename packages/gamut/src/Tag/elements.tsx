@@ -96,7 +96,7 @@ export const TagAnchor = styled(Anchor)(
       px: 8,
       // KENNY: do we really need this anymore? there was some thing that jut out that didn't look good
       // otherwise there's an outline around the inner button
-      // also adds a height that goes beyond the parent
+      // also adds a height that goes beyond the parent (might be solved by the focus_visible selector)
       // '&:before': {
       //   display: 'none',
       // },
@@ -116,7 +116,7 @@ export const TagAnchor = styled(Anchor)(
     prop: 'interactiveType',
     variants: {
       navigation: {
-        color: 'text',
+        // color: 'text',
         [ButtonSelectors.ACTIVE]: {
           bg: 'secondary',
           color: 'background',
@@ -124,7 +124,7 @@ export const TagAnchor = styled(Anchor)(
         },
       },
       suggestion: {
-        bg: 'background-current',
+        // bg: 'background-current',
         color: 'text',
         // [ButtonSelectors.FOCUS_VISIBLE]: {
         //   outline: 'none',
@@ -144,12 +144,8 @@ export const TagAnchor = styled(Anchor)(
           textDecoration: 'none',
         },
         [ButtonSelectors.DISABLED]: {
-          // color: 'text-disabled',
-          // borderColor: 'border-disabled',
           bg: 'background-current',
-          // [ButtonSelectors.HOVER]: {
-          //   backgroundColor: `${theme.colors['background-current']}`
-          // },
+          borderColor: 'border-disabled',
           '&:hover': {
             backgroundColor: `${theme.colors['background-current']}`
           }

@@ -13,6 +13,7 @@ export const tagBaseStyles = {
   width: 'fit-content',
 };
 
+// KENNY: rename to usageVariants? 
 export const colorVariants = variant({
   defaultVariant: 'readOnly',
   base: {
@@ -34,7 +35,7 @@ export const colorVariants = variant({
       border: 1,
       borderColor: 'border-secondary',
       bg: 'background-current',
-      // KENNY: maybe bg can go here instead
+      color: 'text',
       [ButtonSelectors.HOVER]: {
         bg: 'background-hover',
       },
@@ -47,11 +48,7 @@ export const colorVariants = variant({
     suggestion: {
       border: 1,
       borderColor: 'primary',
-      // outline: 'none',
-      [ButtonSelectors.DISABLED]: {
-        // bg: 'background-hover',
-        borderColor: 'border-disabled',
-      },
+      bg: 'background-current',
     }
   },
 });
@@ -77,11 +74,8 @@ export const tagWrapperStates = states({
     borderRadius: 'none'
   },
   disabled: {
+    // KENNY: need this for suggestion's bordercolor
     borderColor: 'border-disabled',
-    bg: 'background-current',
-    '&:hover': {
-      backgroundColor: `${theme.colors['background-current']}`
-    }
   }
 });
 

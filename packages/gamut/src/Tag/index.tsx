@@ -19,7 +19,7 @@ export const Tag: React.FC<TagProps> = ({
   onDismiss,
   href = undefined,
   onClick,
-  disabled=false,
+  disabled=true,
   size,
   ...rest
 }) => {
