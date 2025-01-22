@@ -13,7 +13,7 @@
     "@reach/tabs": "^0.16.4",
     "@types/marked": "^4.0.8",
     "classnames": "^2.2.5",
-    "framer-motion": "^6.5.1",
+    "framer-motion": "^7.10.3",
     "html-to-react": "^1.6.0",
     "invariant": "^2.2.4",
     "lodash": "^4.17.5",
