@@ -305,7 +305,7 @@ const columnStates = states({
       bg: 'background-current',
       right: -4,
       top: 0,
-      bottom: -2,
+      bottom: -3,
       width: 4,
       position: 'absolute',
     },
@@ -320,6 +320,7 @@ const columnStates = states({
     overflow: 'visible',
     whiteSpace: 'normal',
     alignItems: 'flex-end',
+    color: 'red',
   },
   wrap: {
     whiteSpace: 'normal',
@@ -377,6 +378,7 @@ export const ColEl = styled(
   ])
 )<ColProps>(
   css({
+    fontWeight: 400,
     display: 'inline-flex',
     alignItems: 'center',
     whiteSpace: 'nowrap',
@@ -406,7 +408,7 @@ export const StickyColumnWrapper = styled.th(
     '&:after': {
       content: '""',
       position: 'absolute',
-      bg: 'inherit',
+      bg: 'background-current',
       width: '100%',
       height: '100%',
       top: 0,
@@ -417,7 +419,7 @@ export const StickyColumnWrapper = styled.th(
     left: 0,
     zIndex: 1,
     bg: 'inherit',
-    fontWeight: 400,
+
     '&:not(:first-of-type)': {
       left: { xs: 16 },
       overflow: 'visible',
