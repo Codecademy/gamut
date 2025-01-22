@@ -135,7 +135,7 @@ export const FixedMenuSeparator: Story = {
   },
 };
 
-export const PopoverMenuExample: React.FC = () => {
+export const FloatingMenuExample: React.FC = () => {
   const target = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [currentTarget, setCurrentTarget] = useState(0);

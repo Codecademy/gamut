@@ -35,7 +35,7 @@ Use a Menu to organize and present a list of actions, options, or navigation lin
 ### Best practices:
 
 - The Popover menu has the `menu` role by default, which is intended for presenting actions or options. However, if it contains only navigation links, it should use the `<nav>` element for semantic and accessible navigation.
-- You can create popover menus by utilizing our <LinkTo id="Atoms/PopoverContainer">PopoverContainer</LinkTo>. Once you have your base positioning, you just need to adjust the y axis by 48 for the normal spacing or 32 for the condensed spacing for each of the MenuItems. You may also need to change the alignment of the PopoverContainer to ensure correct positioning.
+- You can create floating menus by utilizing our <LinkTo id="Atoms/PopoverContainer">PopoverContainer</LinkTo>. Once you have your base positioning, you just need to adjust the y axis by 48 for the normal spacing or 32 for the condensed spacing for each of the MenuItems. You may also need to change the alignment of the PopoverContainer to ensure correct positioning.
 
 ### When NOT to use:
 
@@ -68,17 +68,13 @@ Use a Menu to organize and present a list of actions, options, or navigation lin
 
 ### Popover
 
-Use the Popover menu to present a temporary surface for actions, options, or links, ensuring access only when needed while keeping the interface clean and focused. The Popover menu has the menu role by default, but if it contains only a list of navigation links, it should use the `<nav>` element, which implicitly includes the navigation role.
-
-This menu variant should be populated with MenuItems typed as buttons that execute some action.
+Use the Popover menu to present a temporary surface for actions, options, or links, ensuring access only when needed while keeping the interface clean and focused. The Popover menu has the `menu` role by default.  But, if the menu contains only a list of navigation links, it should be nested in a `<nav>` element, which implicitly includes the `navigation` role.
 
 <Canvas of={MenuStories.Popover} />
 
 ### Fixed
 
 Use the Fixed menu to provide persistent access to navigation links, allowing users to seamlessly move between sections of the interface without opening additional surfaces. Fixed menus should always use the `<nav>` element to ensure semantic and accessible navigation.
-
-This menu variant should be populated with MenuItems typed as links.
 
 <Canvas of={MenuStories.Fixed} />
 
@@ -101,15 +97,15 @@ Use the `MenuSeparator` component to group menu items into sections when there i
 <Canvas of={MenuStories.PopoverMenuSeparator} />
 <Canvas of={MenuStories.FixedMenuSeparator} />
 
-## Popover menus
+## Floating menus
 
-You can create popover menus by utilizing our <LinkTo id="Atoms/PopoverContainer">PopoverContainer</LinkTo>. Once you have your base positioning, you just need to adjust the y axis by 48 for the normal spacing or 32 for the condensed spacing for each of the MenuItems. You may also need to change the alignment of the PopoverContainer to ensure correct positioning.
+You can create floating menus by utilizing our <LinkTo id="Atoms/PopoverContainer">PopoverContainer</LinkTo>. Once you have your base positioning, you just need to adjust the y axis by 48 for the normal spacing or 32 for the condensed spacing for each of the MenuItems. You may also need to change the alignment of the PopoverContainer to ensure correct positioning.
 
-Popover Menus that have complex functionalities or actions, like the example below, should have the menu role.
+Floating menus that have complex functionalities or actions, like the example below, should have the menu role.
 
 Click through each item to see how the `Menu`s appear (and disappear when the item is clicked again, or another item is selected.)
 
-<Canvas of={MenuStories.PopoverMenuExample} />
+<Canvas of={MenuStories.FloatingrMenuExample} />
 
 ## Playground
 
