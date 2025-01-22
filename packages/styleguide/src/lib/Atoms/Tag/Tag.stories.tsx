@@ -26,6 +26,7 @@ export const ReadOnlyLarge: Story = {
 export const Selection: Story = {
   args: {
     variant: 'selection',
+    onDismiss: () => {console.log('yo')}
   },
 };
 

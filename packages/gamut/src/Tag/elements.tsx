@@ -72,6 +72,12 @@ export const DismissButton = styled(IconButton)(
       color: 'background',
       bg: 'secondary-hover',
     },
+    [ButtonSelectors.DISABLED]: {
+      bg: 'background-disabled',
+      '&:hover': {
+        color: `${theme.colors['text-disabled']}`
+      }
+    }
   })
 );
 

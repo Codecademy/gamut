@@ -72,6 +72,10 @@ export const tagWrapperStates = states({
   disabled: {
     // KENNY: need this for suggestion's bordercolor
     borderColor: 'border-disabled',
+  },
+  selectionDisabled: {
+    color: 'text-disabled',
+    bg: 'background-disabled'
   }
 });
 

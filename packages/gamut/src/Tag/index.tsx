@@ -19,7 +19,7 @@ export const Tag: React.FC<TagProps> = ({
   onDismiss,
   href = undefined,
   onClick,
-  disabled=false,
+  disabled=true,
   size,
   ...rest
 }) => {
@@ -39,7 +39,7 @@ export const Tag: React.FC<TagProps> = ({
         width={isSelectionVariant ? 'calc(100% - 24px)' : 'fit-content' }
 
       >
-        <TagLabelWrapper readOnly={variant === 'readOnly'} variant={variant} size={size} overflow={isInteractive ? 'hidden' : 'visible'} disabled={disabled}>
+        <TagLabelWrapper readOnly={variant === 'readOnly'} variant={variant} size={size} overflow={isInteractive ? 'hidden' : 'visible'} selectionDisabled={isSelectionVariant && disabled} disabled={disabled}>
           {/* KENNY: would need to add some icon logic here (and props as well)  */}
           {/* probs need to add Text as its own element and add it to the appendIcon function call, maybe add a Text variant with css props?  */}
           {variant && (variant === 'navigation' || variant === 'suggestion') ?
@@ -64,13 +64,12 @@ export const Tag: React.FC<TagProps> = ({
           // KENNY: check VO on these tips, esp for disabled
             aria-label={disabled ? '' : `Dismiss ${children} Tag`}
             onClick={onDismiss || undefined}
-            tip="Remove"
-            tipProps={{ placement: 'floating' }}
+            tip={disabled ? '' : "Remove"}
+            tipProps={{ placement: disabled ? undefined : 'floating' }}
             icon={size === 'large' ? LargeMiniDeleteIcon : DefaultMiniDeleteIcon}
             width="100%"
             disabled={disabled}
             aria-disabled={disabled}
-          // KENNY: include aria-disabled - this should remove
           />
         )}
       </FlexBox>
