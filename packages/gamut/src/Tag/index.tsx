@@ -19,8 +19,9 @@ export const Tag: React.FC<TagProps> = ({
   onDismiss,
   href = undefined,
   onClick,
-  disabled=true,
+  disabled=false,
   size,
+  // isLarge = false,
   ...rest
 }) => {
   const isSelectionVariant = variant === 'selection';
@@ -31,15 +32,15 @@ export const Tag: React.FC<TagProps> = ({
 
 // KENNY: change outlines to inherit???
   return (
-    <Outline disabled={disabled} {...rest} readOnly={isReadOnly}>
+    <Outline disabled={disabled} readOnly={isReadOnly} {...rest} >
       <FlexBox
         flexDirection="row"
         {...rest}
         // KENNY: this needs some guidance, what should the width be for truncation or overflow?
         width={isSelectionVariant ? 'calc(100% - 24px)' : 'fit-content' }
-
+        height='100%'
       >
-        <TagLabelWrapper readOnly={variant === 'readOnly'} variant={variant} size={size} overflow={isInteractive ? 'hidden' : 'visible'} selectionDisabled={isSelectionVariant && disabled} disabled={disabled}>
+        <TagLabelWrapper readOnly={variant === 'readOnly'} variant={variant} size={size} overflow={isInteractive ? 'hidden' : 'visible'} selectionDisabled={isSelectionVariant && disabled} disabled={!isReadOnly && disabled}>
           {/* KENNY: would need to add some icon logic here (and props as well)  */}
           {/* probs need to add Text as its own element and add it to the appendIcon function call, maybe add a Text variant with css props?  */}
           {variant && (variant === 'navigation' || variant === 'suggestion') ?
@@ -47,10 +48,10 @@ export const Tag: React.FC<TagProps> = ({
               {children}
             </TagAnchor> :
             <Text
-              as="span"
               fontSize={tagLabelFontSize}
-              lineHeight={1 as any}
+              lineHeight={1.5 as any}
               px={8}
+              py={}
               // Would this be some state now?
               // maybe Text will have to be a separate element as well that
             >

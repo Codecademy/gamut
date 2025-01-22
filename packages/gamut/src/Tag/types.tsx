@@ -11,9 +11,9 @@ export interface BaseTagProps
     StyleProps<typeof sizeVariants>,
     StyleProps<typeof tagWrapperStates>,
     WithChildrenProp {}
-    //  will need AppendIconProps here
+    //  KENNY: will need AppendIconProps here
 
-// Would I need a discriminated union here?
+//  KENNY:  Would I need a discriminated union here?
 // need to remove readonly here and add in onClick and href
 export interface ReadOnlyTagProps extends BaseTagProps {
   /**

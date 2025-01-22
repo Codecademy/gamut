@@ -55,7 +55,8 @@ export const TagLabelWrapper = styled(Box)<BaseTagProps>(
   tagWrapperStates,
 );
 
-const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}`;
+const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}` as const;
+const hoverAndDisabled = `${Selectors.HOVER}, ${Selectors.DISABLED}` as const;
 // might need to alter with sizing
 // consider adding all the CSS here instead? there's no shared aspect anymore
 export const DismissButton = styled(IconButton)(
@@ -74,9 +75,9 @@ export const DismissButton = styled(IconButton)(
     },
     [ButtonSelectors.DISABLED]: {
       bg: 'background-disabled',
-      '&:hover': {
-        color: `${theme.colors['text-disabled']}`
-      }
+    },
+    [hoverAndDisabled]: {
+       color: 'text-disabled'
     }
   })
 );
@@ -101,27 +102,27 @@ export const TagAnchor = styled(Anchor)(
     base: {
       // might go back to original padding stored as a variable and values used depending on variant
       px: 8,
+      py: 1.5 as any,
       textDecoration: 'none',
+      ":before": {
+        display: 'none'
+      },
+      // color: 'text',
       [ButtonSelectors.FOCUS_VISIBLE]: {
         outline: 'none',
         border: 'none',
       },
       [ButtonSelectors.DISABLED]: {
         borderColor: 'border-disabled',
-        '&:hover': {
-          backgroundColor: `${theme.colors['background-current']}`
-        }
       },
       [ButtonSelectors.FOCUS]: {
         textDecoration: 'none',
       },
       [ButtonSelectors.HOVER]: {
-         // KENNY: this can also work to set the hover + disabled bg color
-          // but still gives a TS error
-          // ':disabled': {
-          //   backgroundColor: `${theme.colors['background-current']}`
-          // }
         bg: 'background-hover',
+      },
+      [hoverAndDisabled]: {
+        bg: 'background-current'
       },
     },
     variants: {
@@ -141,5 +142,10 @@ export const TagAnchor = styled(Anchor)(
         },
       },
     }
-  })
+  }),
+  states({
+    isLarge : {
+      py: 5.5 as any
+    }
+  }),
 )

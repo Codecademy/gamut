@@ -49,22 +49,21 @@ export const colorVariants = variant({
   },
 });
 
+// change to state b.c. buttons need this to be their margin!!
 export const sizeVariants = variant({
   defaultVariant: 'default',
   prop: 'size',
   variants: {
     default: {
-      minHeight: 24,
+      py: 1.5 as any
     },
     large: {
-      minHeight: 32,
-      py: 4,
+      py: 5.5 as any
     },
   },
 })
 
-// KENNY: might have to be interactiveTagWrapperStates
-// seems to mess up suggestions as it is currently
+
 export const tagWrapperStates = states({
   readOnly: {
     borderRadius: 'none'

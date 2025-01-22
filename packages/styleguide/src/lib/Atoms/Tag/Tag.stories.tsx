@@ -58,9 +58,12 @@ export const ReadOnly: Story = {
 };
 
 export const Truncated: Story = {
+  args: {
+    variant: 'selection'
+  },
   render: (args) => (
     <Box width="12rem">
-      <Tag {...args}>I am long tag yes I am much am a very long tag</Tag>
+      <Tag {...args}>I am long tag yes I am much am a very long tag I am long tag yes I am much am a very long tag I am long tag yes I am much am a very long tag I am long tag yes I am much am a very long tag</Tag>
     </Box>
   ),
 };
