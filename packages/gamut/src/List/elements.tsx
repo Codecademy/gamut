@@ -313,7 +313,6 @@ const columnStates = states({
     overflow: 'visible',
     whiteSpace: 'normal',
     alignItems: 'flex-end',
-    color: 'red',
   },
   wrap: {
     whiteSpace: 'normal',
