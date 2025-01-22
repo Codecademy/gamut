@@ -13,7 +13,7 @@ export const EmptyRows = () => {
       left="calc(50% - 160px)"
       p={32}
       position="sticky"
-      top="calc(50% - 92px)"
+      top="calc(50% - 66px)"
       width="320px"
       zIndex={1}
     >

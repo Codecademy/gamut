@@ -72,13 +72,9 @@ export const EmptyState: Story = {
     rows: [],
     shadow: true,
     scrollable: true,
-    minHeight: '750px',
+    minHeight: '45vh',
   },
-  render: (args) => (
-    <Background bg="beige" height="750px" minHeight="100%" p={8}>
-      <DataTable {...args} />
-    </Background>
-  ),
+  render: (args) => <DataTable {...args} />,
 };
 
 export const LoadingRows: Story = {
