@@ -49,20 +49,6 @@ export const Text: Story = {
   },
 };
 
-export const Navigation: Story = {
-  args: {
-    chapterSize: 5,
-    totalPages: 27,
-    isNavigation: true,
-    onChange: (pageNumber) => {
-      window.open(
-        `https://giphy.com/search/hamtaro-page-${pageNumber}`,
-        '_blank'
-      );
-    }
-  },
-};
-
 export const PaginationControlledExample: React.FC<PaginationProps> = (
   props
 ) => {
