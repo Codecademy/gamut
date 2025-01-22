@@ -91,64 +91,47 @@ export const LargeMiniDeleteIcon = styled(MiniDeleteIcon)(
 
 export const TagAnchor = styled(Anchor)(
   variant({
+    prop: 'interactiveType',
     base: {
       // might go back to original padding stored as a variable and values used depending on variant
       px: 8,
-      // KENNY: do we really need this anymore? there was some thing that jut out that didn't look good
-      // otherwise there's an outline around the inner button
-      // also adds a height that goes beyond the parent (might be solved by the focus_visible selector)
-      // '&:before': {
-      //   display: 'none',
-      // },
       textDecoration: 'none',
       [ButtonSelectors.FOCUS_VISIBLE]: {
         outline: 'none',
         border: 'none',
       },
       [ButtonSelectors.DISABLED]: {
-        bg: 'background-current',
-        color: 'text-disabled',
+        borderColor: 'border-disabled',
+        '&:hover': {
+          backgroundColor: `${theme.colors['background-current']}`
+        }
       },
       [ButtonSelectors.FOCUS]: {
         textDecoration: 'none',
       },
+      [ButtonSelectors.HOVER]: {
+         // KENNY: this can also work to set the hover + disabled bg color
+          // but still gives a TS error
+          // ':disabled': {
+          //   backgroundColor: `${theme.colors['background-current']}`
+          // }
+        bg: 'background-hover',
+      },
     },
-    prop: 'interactiveType',
     variants: {
       navigation: {
-        // color: 'text',
+        color: 'text',
         [ButtonSelectors.ACTIVE]: {
-          bg: 'secondary',
           color: 'background',
           textDecoration: 'none',
         },
       },
       suggestion: {
-        // bg: 'background-current',
         color: 'text',
-        // [ButtonSelectors.FOCUS_VISIBLE]: {
-        //   outline: 'none',
-        //   border: 'none',
-        // }
-        [ButtonSelectors.HOVER]: {
-          bg: 'background-hover',
-          // KENNY: this can also work to set the hover + disabled bg color
-          // but still gives a TS error
-          // ':disabled': {
-          //   backgroundColor: `${theme.colors['background-current']}`
-          // }
-        },
         [ButtonSelectors.ACTIVE]: {
           bg: 'primary',
           color: 'background',
           textDecoration: 'none',
-        },
-        [ButtonSelectors.DISABLED]: {
-          bg: 'background-current',
-          borderColor: 'border-disabled',
-          '&:hover': {
-            backgroundColor: `${theme.colors['background-current']}`
-          }
         },
       },
     }

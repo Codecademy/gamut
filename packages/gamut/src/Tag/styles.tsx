@@ -13,7 +13,7 @@ export const tagBaseStyles = {
   width: 'fit-content',
 };
 
-// KENNY: rename to usageVariants? 
+// KENNY: rename to usageVariants?
 export const colorVariants = variant({
   defaultVariant: 'readOnly',
   base: {
@@ -35,17 +35,13 @@ export const colorVariants = variant({
       border: 1,
       borderColor: 'border-secondary',
       bg: 'background-current',
-      color: 'text',
-      [ButtonSelectors.HOVER]: {
-        bg: 'background-hover',
-      },
-      // ACTIVE is probs on the variant code
       [ButtonSelectors.ACTIVE]: {
-        bg: 'background-hover',
-        color: 'background'
+        // Not sure why, but the TagAnchor variant won't accept bg to change the active color
+        bg: 'secondary',
       },
     },
     suggestion: {
+      color: 'text',
       border: 1,
       borderColor: 'primary',
       bg: 'background-current',
