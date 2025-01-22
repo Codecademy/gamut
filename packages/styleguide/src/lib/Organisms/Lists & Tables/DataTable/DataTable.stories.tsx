@@ -72,7 +72,8 @@ export const EmptyState: Story = {
     rows: [],
     shadow: true,
     scrollable: true,
-    minHeight: '45vh',
+    height: '45vh',
+    minHeight: '300px',
   },
   render: (args) => <DataTable {...args} />,
 };

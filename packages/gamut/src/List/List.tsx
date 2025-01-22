@@ -136,7 +136,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
           <Box
             as={isTable && !isEmpty && !loading ? 'table' : 'div'}
             data-testid={`scrollable-${id}`}
-            height="fit-content"
+            height={isEmpty ? height : 'fit-content'}
             maxWidth={1}
             minHeight={minHeight}
             overflow="inherit"
