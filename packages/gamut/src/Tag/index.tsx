@@ -30,7 +30,6 @@ export const Tag: React.FC<TagProps> = ({
   const isInteractive = isSuggestionVariant || isNavigationVariant;
 
 // KENNY: change outlines to inherit???
-
   return (
     <Outline disabled={disabled} {...rest} readOnly={isReadOnly}>
       <FlexBox

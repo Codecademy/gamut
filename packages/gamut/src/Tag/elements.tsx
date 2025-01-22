@@ -90,25 +90,11 @@ export const LargeMiniDeleteIcon = styled(MiniDeleteIcon)(
 );
 
 export const TagAnchor = styled(Anchor)(
-  // css({
-  //   px: 8,
-  //   color: 'text',
-  //   // KENNY: do we really need this anymore? there was some thing that jut out that didn't look good
-  //   // '&:before': {
-  //   //   display: 'none',
-  //   // },
-  //   [ButtonSelectors.FOCUS_VISIBLE]: {
-  //     outline: 'none',
-  //   },
-  //   [ButtonSelectors.ACTIVE]: {
-  //     bg: 'background-hover',
-  //     color: 'background'
-  //   },
-  // }),
   variant({
     base: {
       // might go back to original padding stored as a variable and values used depending on variant
       px: 8,
+      // KENNY: do we really need this anymore? there was some thing that jut out that didn't look good
       // otherwise there's an outline around the inner button
       // also adds a height that goes beyond the parent
       // '&:before': {
@@ -120,7 +106,7 @@ export const TagAnchor = styled(Anchor)(
         border: 'none',
       },
       [ButtonSelectors.DISABLED]: {
-        bg: 'background-primary',
+        bg: 'background-current',
         color: 'text-disabled',
       },
       [ButtonSelectors.FOCUS]: {
@@ -138,7 +124,7 @@ export const TagAnchor = styled(Anchor)(
         },
       },
       suggestion: {
-        bg: 'background-primary',
+        bg: 'background-current',
         color: 'text',
         // [ButtonSelectors.FOCUS_VISIBLE]: {
         //   outline: 'none',
@@ -146,6 +132,11 @@ export const TagAnchor = styled(Anchor)(
         // }
         [ButtonSelectors.HOVER]: {
           bg: 'background-hover',
+          // KENNY: this can also work to set the hover + disabled bg color
+          // but still gives a TS error
+          // ':disabled': {
+          //   backgroundColor: `${theme.colors['background-current']}`
+          // }
         },
         [ButtonSelectors.ACTIVE]: {
           bg: 'primary',
@@ -153,11 +144,14 @@ export const TagAnchor = styled(Anchor)(
           textDecoration: 'none',
         },
         [ButtonSelectors.DISABLED]: {
-
           // color: 'text-disabled',
           // borderColor: 'border-disabled',
-          ':hover': {
-            backgroundColor: `${theme.colors['background-primary']}`
+          bg: 'background-current',
+          // [ButtonSelectors.HOVER]: {
+          //   backgroundColor: `${theme.colors['background-current']}`
+          // },
+          '&:hover': {
+            backgroundColor: `${theme.colors['background-current']}`
           }
         },
       },

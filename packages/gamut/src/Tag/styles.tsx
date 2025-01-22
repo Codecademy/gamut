@@ -33,6 +33,7 @@ export const colorVariants = variant({
     navigation: {
       border: 1,
       borderColor: 'border-secondary',
+      bg: 'background-current',
       // KENNY: maybe bg can go here instead
       [ButtonSelectors.HOVER]: {
         bg: 'background-hover',
@@ -77,9 +78,9 @@ export const tagWrapperStates = states({
   },
   disabled: {
     borderColor: 'border-disabled',
-    bg: 'background-primary',
+    bg: 'background-current',
     '&:hover': {
-      backgroundColor: `${theme.colors['background-primary']}`
+      backgroundColor: `${theme.colors['background-current']}`
     }
   }
 });
