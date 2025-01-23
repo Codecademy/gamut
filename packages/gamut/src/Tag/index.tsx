@@ -1,16 +1,15 @@
 import * as React from 'react';
 
 import { FlexBox } from '../Box';
-import { Text } from '../Typography';
+import { appendIconToContent } from '../helpers';
 import {
-  DefaultMiniDeleteIcon,
   DismissButton,
-  LargeMiniDeleteIcon,
   Outline,
+  StyledMiniDeleteIcon,
   TagAnchor,
   TagLabelWrapper,
+  TagText,
 } from './elements';
-import { tagLabelFontSize } from './styles';
 import { TagProps } from './types';
 
 export const Tag: React.FC<TagProps> = ({
@@ -21,7 +20,7 @@ export const Tag: React.FC<TagProps> = ({
   onClick,
   disabled=false,
   size,
-  // isLarge = false,
+  icon,
   ...rest
 }) => {
   const isSelectionVariant = variant === 'selection';
@@ -30,49 +29,53 @@ export const Tag: React.FC<TagProps> = ({
   const isReadOnly = variant === 'readOnly'
   const isInteractive = isSuggestionVariant || isNavigationVariant;
 
-// KENNY: change outlines to inherit???
-  return (
-    <Outline disabled={disabled} readOnly={isReadOnly} {...rest} >
-      <FlexBox
-        flexDirection="row"
-        {...rest}
-        // KENNY: this needs some guidance, what should the width be for truncation or overflow?
-        width={isSelectionVariant ? 'calc(100% - 24px)' : 'fit-content' }
-        height='100%'
-      >
-        <TagLabelWrapper readOnly={variant === 'readOnly'} variant={variant} overflow={isInteractive ? 'hidden' : 'visible'} selectionDisabled={isSelectionVariant && disabled} disabled={!isReadOnly && disabled}>
-          {/* KENNY: would need to add some icon logic here (and props as well)  */}
-          {/* probs need to add Text as its own element and add it to the appendIcon function call, maybe add a Text variant with css props?  */}
-          {variant && (variant === 'navigation' || variant === 'suggestion') ?
-            <TagAnchor size={size} interactiveType={variant} onClick={onClick} href={!disabled ? href : ''} disabled={disabled}>
-              {children}
-            </TagAnchor> :
-            <Text
-              fontSize={tagLabelFontSize}
-              lineHeight={1.5 as any}
-              px={8}
-              // Would this be some state now?
-              // maybe Text will have to be a separate element as well that
-            >
-              {children}
-            </Text>
-          }
+  const DeleteIcon: React.FC = () => <StyledMiniDeleteIcon size={size} aria-hidden />;
+  const content = appendIconToContent({
+    children,
+    icon,
+    iconAndTextGap: 8,
+    iconPosition: 'left',
+    iconSize: 16,
+  });
 
-        </TagLabelWrapper>
-        {isSelectionVariant && (
-          <DismissButton
-          // KENNY: check VO on these tips, esp for disabled
-            aria-label={disabled ? '' : `Dismiss ${children} Tag`}
-            onClick={onDismiss || undefined}
-            tip={disabled ? '' : "Remove"}
-            tipProps={{ placement: disabled ? undefined : 'floating' }}
-            icon={size === 'large' ? LargeMiniDeleteIcon : DefaultMiniDeleteIcon}
-            width="100%"
+  // KENNY: change outlines to inherit???
+  return (
+    <Outline disabled={disabled} readOnly={isReadOnly} flexDirection="row" {...rest} >
+      <TagLabelWrapper
+        readOnly={isReadOnly}
+        variant={variant}
+        overflow={isInteractive ? 'hidden' : 'visible'}
+        selectionDisabled={isSelectionVariant && disabled}
+        disabled={!isReadOnly && disabled}
+      >
+        {variant && isInteractive ?
+          <TagAnchor
+            size={size}
+            interactiveType={variant}
+            onClick={onClick}
+            href={!disabled ? href : ''}
             disabled={disabled}
-            aria-disabled={disabled}
-          />
-        )}
-      </FlexBox>
+          >
+            {content}
+          </TagAnchor> :
+          <TagText size={size}>
+            {content}
+          </TagText>
+        }
+      </TagLabelWrapper>
+      {isSelectionVariant && (
+        <DismissButton
+        // KENNY: check VO on these tips, esp for disabled
+          aria-label={disabled ? '' : `Dismiss ${children} Tag`}
+          onClick={onDismiss || undefined}
+          tip={disabled ? '' : "Remove"}
+          tipProps={{ placement: disabled ? undefined : 'floating' }}
+          icon={DeleteIcon}
+          width="100%"
+          disabled={disabled}
+          aria-disabled={disabled}
+        />
+      )}
     </Outline>
   );
 };

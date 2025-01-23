@@ -1,15 +1,23 @@
-import { StyleProps } from '@codecademy/variance';
+import { system } from '@codecademy/gamut-styles';
+import { StyleProps , variance } from '@codecademy/variance';
 import { ComponentProps } from 'react';
 
-import { WithChildrenProp } from '../utils';
-import { DismissButton, tagProps } from './elements';
-import { colorVariants, sizeVariants, tagWrapperStates } from './styles';
+import { IconComponentType, WithChildrenProp } from '../utils';
+import { DismissButton } from './elements';
+import { anchorVariants, sizeVariants, tagUsageVariants,tagWrapperStates } from './styles';
+
+export const tagProps = variance.compose(
+  system.space,
+  system.layout,
+  system.typography
+);
 
 export interface BaseTagProps
   extends StyleProps<typeof tagProps>,
-    StyleProps<typeof colorVariants>,
+    StyleProps<typeof tagUsageVariants>,
     StyleProps<typeof sizeVariants>,
     StyleProps<typeof tagWrapperStates>,
+    Partial<IconComponentType>,
     WithChildrenProp {}
     //  KENNY: will need AppendIconProps here
 
@@ -43,3 +51,10 @@ export interface DismissableTagProps extends BaseTagProps {
 }
 
 export type TagProps = ReadOnlyTagProps | DismissableTagProps;
+
+export interface TagAnchorProps
+  extends StyleProps<typeof anchorVariants>,
+    StyleProps<typeof sizeVariants> {}
+
+export interface TagTextProps
+  extends StyleProps<typeof sizeVariants> {}

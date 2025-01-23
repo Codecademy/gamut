@@ -1,23 +1,48 @@
-import { states, variant } from '@codecademy/gamut-styles';
+import { css, states, theme, variant } from '@codecademy/gamut-styles';
 
 import { ButtonSelectors, Selectors } from '../ButtonBase/ButtonBase';
 
 
 export const tagLabelFontSize = 14;
+export const tagLabelPadding = 8;
+const anchorDefaultVerticalPadding =  1.5;
+const anchorLargeVerticalPadding =  5.5;
+const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}` as const;
+const hoverAndDisabled = `${Selectors.HOVER}, ${Selectors.DISABLED}` as const;
 
-export const tagBaseStyles = {
-  alignItems: 'center',
-  display: 'flex',
-  justifyContent: 'center',
-  maxWidth: '100%',
-  width: 'fit-content',
-};
+export const outlineStyling = css({
+  // this is a bit of a hack as we don't have access to focus-visible from this component.  if you are not properly dismissing your tags you may see this primary colored outline after clicking X, but otherwise you should never hit this behavior.
+  borderRadius: 'md',
+  width: '100%',
+  maxWidth: 'fit-content',
+  overflow: 'hidden',
+  '&:focus-within': {
+    outline: `2px solid ${theme.colors.primary}`,
+    outlineOffset: '2px',
+  },
+  '&:active': {
+    outlineColor: `transparent`,
+  },
+})
 
-// KENNY: rename to usageVariants?
-export const colorVariants = variant({
+export const outlineStates = states({
+  disabled: {
+    cursor: 'not-allowed',
+    userSelect: 'none',
+  },
+  readOnly: {
+    borderRadius: 'none',
+  }
+})
+
+export const tagUsageVariants = variant({
   defaultVariant: 'readOnly',
   base: {
-    ...tagBaseStyles,
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    maxWidth: '100%',
+    width: 'fit-content',
     borderRadius: 'md',
   },
   variants: {
@@ -36,7 +61,7 @@ export const colorVariants = variant({
       borderColor: 'border-secondary',
       bg: 'background-current',
       [ButtonSelectors.ACTIVE]: {
-        // Not sure why, but the TagAnchor variant won't accept bg to change the active color
+        // TagAnchor variant won't accept bg to change the active color
         bg: 'secondary',
       },
     },
@@ -54,14 +79,13 @@ export const sizeVariants = variant({
   prop: 'size',
   variants: {
     default: {
-      py: 1.5 as any
+      py: anchorDefaultVerticalPadding as any
     },
     large: {
-      py: 5.5 as any
+      py: anchorLargeVerticalPadding as any
     },
   },
 })
-
 
 export const tagWrapperStates = states({
   readOnly: {
@@ -77,33 +101,17 @@ export const tagWrapperStates = states({
   }
 });
 
-export const dismissSharedStyles = {
-  alignItems: 'center',
-  display: 'flex',
-  height: '100%',
-  justifyContent: 'center',
-  minWidth: '24px',
-};
-
-export const iconButtonOverrides = {
-  // These pseudo elements add an extra slightly opaque border on hover/focus
-  '::before, ::after': {
-    display: 'none',
-  },
-  // This removes a black solid outline on focus
-  [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
-    opacity: 0,
-  },
-};
-
-const hoverAndDisabled = `${Selectors.HOVER}, ${Selectors.DISABLED}` as const;
+export const tagTextStyling = css({
+  fontSize: tagLabelFontSize,
+  lineHeight: 1.5 as any,
+  px: tagLabelPadding
+})
 
 export const anchorVariants = variant({
   prop: 'interactiveType',
   base: {
     // might go back to original padding stored as a variable and values used depending on variant
-    px: 8,
-    py: 1.5 as any,
+    px: tagLabelPadding,
     textDecoration: 'none',
     ":before": {
       display: 'none'
@@ -144,4 +152,56 @@ export const anchorVariants = variant({
       },
     },
   }
+})
+
+export const dismissButtonOverrides = {
+  // These pseudo elements add an extra slightly opaque border on hover/focus
+  '::before, ::after': {
+    display: 'none',
+  },
+  // This removes a black solid outline on focus
+  [ButtonSelectors.OUTLINE_FOCUS_VISIBLE]: {
+    opacity: 0,
+  },
+};
+
+export const dismissButtonStyling = css({
+  alignItems: 'center',
+  display: 'flex',
+  height: '100%',
+  justifyContent: 'center',
+  minWidth: '24px',
+  color: 'background',
+  bg: 'text-secondary',
+  border: 'none',
+  borderRadiusRight: 'md',
+  borderRadiusLeft: 'none',
+  width: 12,
+  ...dismissButtonOverrides,
+  [hoverAndFocus]: {
+    color: 'background',
+    bg: 'secondary-hover',
+  },
+  [ButtonSelectors.DISABLED]: {
+    bg: 'background-disabled',
+  },
+  [hoverAndDisabled]: {
+     color: 'text-disabled'
+  }
+})
+
+export const miniDeleteIconVariants = variant({
+  defaultVariant: 'default',
+  prop: 'size',
+  base: {
+    color: 'inherit',
+  },
+  variants: {
+    default: {
+      width: 12
+    },
+    large: {
+      width: 16
+    },
+  },
 })

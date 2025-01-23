@@ -1,4 +1,5 @@
 import { Box, Tag } from '@codecademy/gamut';
+import { MiniStarIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Tag> = {
@@ -52,8 +53,9 @@ export const Suggestion: Story = {
 
 export const ReadOnly: Story = {
   args: {
-    readonly: true,
+    variant: 'selection',
     size: 'large',
+    icon: MiniStarIcon,
   },
 };
 
