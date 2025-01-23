@@ -105,7 +105,7 @@ export const tagTextStyling = css({
   fontSize: tagLabelFontSize,
   lineHeight: 1.5 as any,
   px: tagLabelPadding
-})
+});
 
 export const anchorVariants = variant({
   prop: 'interactiveType',
@@ -152,7 +152,7 @@ export const anchorVariants = variant({
       },
     },
   }
-})
+});
 
 export const dismissButtonOverrides = {
   // These pseudo elements add an extra slightly opaque border on hover/focus
@@ -187,7 +187,10 @@ export const dismissButtonStyling = css({
   },
   [hoverAndDisabled]: {
      color: 'text-disabled'
-  }
+  },
+  [ButtonSelectors.HOVER]: {
+    color: 'background',
+  },
 })
 
 export const miniDeleteIconVariants = variant({
