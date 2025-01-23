@@ -40,18 +40,17 @@ export const Tag: React.FC<TagProps> = ({
         width={isSelectionVariant ? 'calc(100% - 24px)' : 'fit-content' }
         height='100%'
       >
-        <TagLabelWrapper readOnly={variant === 'readOnly'} variant={variant} size={size} overflow={isInteractive ? 'hidden' : 'visible'} selectionDisabled={isSelectionVariant && disabled} disabled={!isReadOnly && disabled}>
+        <TagLabelWrapper readOnly={variant === 'readOnly'} variant={variant} overflow={isInteractive ? 'hidden' : 'visible'} selectionDisabled={isSelectionVariant && disabled} disabled={!isReadOnly && disabled}>
           {/* KENNY: would need to add some icon logic here (and props as well)  */}
           {/* probs need to add Text as its own element and add it to the appendIcon function call, maybe add a Text variant with css props?  */}
           {variant && (variant === 'navigation' || variant === 'suggestion') ?
-            <TagAnchor interactiveType={variant} onClick={onClick} href={!disabled ? href : ''} disabled={disabled}>
+            <TagAnchor size={size} interactiveType={variant} onClick={onClick} href={!disabled ? href : ''} disabled={disabled}>
               {children}
             </TagAnchor> :
             <Text
               fontSize={tagLabelFontSize}
               lineHeight={1.5 as any}
               px={8}
-              py={}
               // Would this be some state now?
               // maybe Text will have to be a separate element as well that
             >

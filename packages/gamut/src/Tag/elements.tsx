@@ -8,6 +8,7 @@ import { Box } from '../Box';
 import { IconButton } from '../Button';
 import { ButtonSelectors, Selectors } from '../ButtonBase/ButtonBase';
 import {
+  anchorVariants,
   colorVariants,
   dismissSharedStyles,
   iconButtonOverrides,
@@ -51,7 +52,7 @@ export const Outline = styled(Box)(
 export const TagLabelWrapper = styled(Box)<BaseTagProps>(
   tagProps,
   colorVariants,
-  sizeVariants,
+  // sizeVariants,
   tagWrapperStates,
 );
 
@@ -82,6 +83,7 @@ export const DismissButton = styled(IconButton)(
   })
 );
 
+// KENNY: this can also be a variant
 export const DefaultMiniDeleteIcon = styled(MiniDeleteIcon)(
   css({
     width: 12,
@@ -96,56 +98,10 @@ export const LargeMiniDeleteIcon = styled(MiniDeleteIcon)(
   })
 );
 
+
+
+// need to add the types here too, the `<>` stuff from types, see TagLabelWrapper
 export const TagAnchor = styled(Anchor)(
-  variant({
-    prop: 'interactiveType',
-    base: {
-      // might go back to original padding stored as a variable and values used depending on variant
-      px: 8,
-      py: 1.5 as any,
-      textDecoration: 'none',
-      ":before": {
-        display: 'none'
-      },
-      // color: 'text',
-      [ButtonSelectors.FOCUS_VISIBLE]: {
-        outline: 'none',
-        border: 'none',
-      },
-      [ButtonSelectors.DISABLED]: {
-        borderColor: 'border-disabled',
-      },
-      [ButtonSelectors.FOCUS]: {
-        textDecoration: 'none',
-      },
-      [ButtonSelectors.HOVER]: {
-        bg: 'background-hover',
-      },
-      [hoverAndDisabled]: {
-        bg: 'background-current'
-      },
-    },
-    variants: {
-      navigation: {
-        color: 'text',
-        [ButtonSelectors.ACTIVE]: {
-          color: 'background',
-          textDecoration: 'none',
-        },
-      },
-      suggestion: {
-        color: 'text',
-        [ButtonSelectors.ACTIVE]: {
-          bg: 'primary',
-          color: 'background',
-          textDecoration: 'none',
-        },
-      },
-    }
-  }),
-  states({
-    isLarge : {
-      py: 5.5 as any
-    }
-  }),
+  anchorVariants,
+  sizeVariants,
 )

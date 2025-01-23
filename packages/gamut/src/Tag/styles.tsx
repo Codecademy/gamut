@@ -1,6 +1,6 @@
-import { states, theme, variant } from '@codecademy/gamut-styles';
+import { states, variant } from '@codecademy/gamut-styles';
 
-import { ButtonSelectors } from '../ButtonBase/ButtonBase';
+import { ButtonSelectors, Selectors } from '../ButtonBase/ButtonBase';
 
 
 export const tagLabelFontSize = 14;
@@ -49,7 +49,6 @@ export const colorVariants = variant({
   },
 });
 
-// change to state b.c. buttons need this to be their margin!!
 export const sizeVariants = variant({
   defaultVariant: 'default',
   prop: 'size',
@@ -96,3 +95,53 @@ export const iconButtonOverrides = {
     opacity: 0,
   },
 };
+
+const hoverAndDisabled = `${Selectors.HOVER}, ${Selectors.DISABLED}` as const;
+
+export const anchorVariants = variant({
+  prop: 'interactiveType',
+  base: {
+    // might go back to original padding stored as a variable and values used depending on variant
+    px: 8,
+    py: 1.5 as any,
+    textDecoration: 'none',
+    ":before": {
+      display: 'none'
+    },
+    // color: 'text',
+    [ButtonSelectors.FOCUS_VISIBLE]: {
+      outline: 'none',
+      border: 'none',
+    },
+    [ButtonSelectors.DISABLED]: {
+      borderColor: 'border-disabled',
+    },
+    [ButtonSelectors.FOCUS]: {
+      textDecoration: 'none',
+    },
+    [ButtonSelectors.HOVER]: {
+      bg: 'background-hover',
+    },
+    [hoverAndDisabled]: {
+      bg: 'background-current'
+    },
+  },
+  variants: {
+    navigation: {
+      color: 'text',
+      [ButtonSelectors.ACTIVE]: {
+        color: 'background',
+        bg: 'secondary',
+        textDecoration: 'none',
+      },
+    },
+    suggestion: {
+      color: 'text',
+      [ButtonSelectors.ACTIVE]: {
+        bg: 'primary',
+        color: 'background',
+        textDecoration: 'none',
+      },
+    },
+  }
+})
