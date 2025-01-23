@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { FlexBox } from '../Box';
 import { appendIconToContent } from '../helpers';
 import {
   DismissButton,
@@ -16,7 +15,7 @@ export const Tag: React.FC<TagProps> = ({
   children,
   variant = 'readOnly',
   onDismiss,
-  href = undefined,
+  href = '',
   onClick,
   disabled=false,
   size,
@@ -38,7 +37,29 @@ export const Tag: React.FC<TagProps> = ({
     iconSize: 16,
   });
 
-  // KENNY: change outlines to inherit???
+  const sharedInteractiveProps = {
+    size,
+    disabled,
+  }
+
+  const CorrectLabel = (
+    () => {
+      if(variant === 'readOnly' ) {
+        return <TagText onClick={() => console.log('hi')} size={size}>{content}</TagText>;
+      }
+      if(isSelectionVariant) {
+        return <TagText {...sharedInteractiveProps}>{content}</TagText>;
+      }
+      if (isSuggestionVariant){
+        return <TagAnchor interactiveType='suggestion'
+        onClick={onClick} {...sharedInteractiveProps}>{content}</TagAnchor>
+      }
+      if (isNavigationVariant){
+        return <TagAnchor interactiveType='navigation' href={disabled ? '' : href} {...sharedInteractiveProps}>{content}</TagAnchor>
+      }
+    }
+  )()
+
   return (
     <Outline disabled={disabled} readOnly={isReadOnly} flexDirection="row" {...rest} >
       <TagLabelWrapper
@@ -48,20 +69,7 @@ export const Tag: React.FC<TagProps> = ({
         selectionDisabled={isSelectionVariant && disabled}
         disabled={!isReadOnly && disabled}
       >
-        {variant && isInteractive ?
-          <TagAnchor
-            size={size}
-            interactiveType={variant}
-            onClick={onClick}
-            href={!disabled ? href : ''}
-            disabled={disabled}
-          >
-            {content}
-          </TagAnchor> :
-          <TagText size={size}>
-            {content}
-          </TagText>
-        }
+        { CorrectLabel }
       </TagLabelWrapper>
       {isSelectionVariant && (
         <DismissButton

@@ -1,10 +1,10 @@
 import { system } from '@codecademy/gamut-styles';
 import { StyleProps , variance } from '@codecademy/variance';
-import { ComponentProps } from 'react';
+import { ComponentProps, HTMLProps } from 'react';
 
 import { IconComponentType, WithChildrenProp } from '../utils';
 import { DismissButton } from './elements';
-import { anchorVariants, sizeVariants, tagUsageVariants,tagWrapperStates } from './styles';
+import { anchorVariants, sizeVariants, tagUsageVariants, tagWrapperStates } from './styles';
 
 export const tagProps = variance.compose(
   system.space,
@@ -19,15 +19,8 @@ export interface BaseTagProps
     StyleProps<typeof tagWrapperStates>,
     Partial<IconComponentType>,
     WithChildrenProp {}
-    //  KENNY: will need AppendIconProps here
 
-//  KENNY:  Would I need a discriminated union here?
-// need to remove readonly here and add in onClick and href
 export interface ReadOnlyTagProps extends BaseTagProps {
-  /**
-   * If the DismissButton should be shown.
-   */
-  readonly: true;
   /**
    * ClickHandler for the DismissButton.
    */
@@ -35,12 +28,9 @@ export interface ReadOnlyTagProps extends BaseTagProps {
   onDismiss?: never;
   onClick?: never;
   href?: never;
+  variant: 'readOnly';
 }
-export interface DismissableTagProps extends BaseTagProps {
-  /**
-   * If the DismissButton should be shown.
-   */
-  readonly?: false;
+export interface SelectionTagProps extends BaseTagProps {
   /**
    * ClickHandler for the DismissButton.
    */
@@ -48,13 +38,51 @@ export interface DismissableTagProps extends BaseTagProps {
   onClick?: never;
   href?: never;
   disabled: boolean;
+  variant: 'selection';
 }
 
-export type TagProps = ReadOnlyTagProps | DismissableTagProps;
+export interface InteractiveTagProps extends BaseTagProps {
+  onDismiss?: never;
+  href?: string;
+  onClick?: HTMLProps<HTMLAnchorElement>['onClick'];
+  disabled: boolean;
+  interactiveType: 'suggestion' | 'navigation';
+}
 
-export interface TagAnchorProps
+export type TagProps = ReadOnlyTagProps | SelectionTagProps | InteractiveTagProps
+
+export interface BaseTagAnchorProps
   extends StyleProps<typeof anchorVariants>,
-    StyleProps<typeof sizeVariants> {}
+    StyleProps<typeof sizeVariants> {
+      disabled: boolean;
+    }
+
+export interface NavigationAnchorProps extends BaseTagAnchorProps {
+  onClick?: never;
+  href: string;
+}
+
+
+export interface SuggestionAnchorProps extends BaseTagAnchorProps {
+  onClick: HTMLProps<HTMLAnchorElement>['onClick'];
+  href?: never;
+}
+
+export type TagAnchorProps = SuggestionAnchorProps | NavigationAnchorProps
 
 export interface TagTextProps
   extends StyleProps<typeof sizeVariants> {}
+
+  // export interface BaseTagTextProps
+//   extends StyleProps<typeof sizeVariants> {}
+
+// export interface ReadOnlyTagPropsV2 extends BaseTagTextProps {
+//   disabled?: never;
+// }
+
+// export interface SuggestionPropsV2 extends BaseTagTextProps {
+//   disabled: boolean;
+// }
+
+
+// export type TagTextProps = ReadOnlyTagPropsV2 | SuggestionPropsV2
