@@ -142,6 +142,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             overflow="inherit"
             position="relative"
             ref={!isEmpty ? tableRef : undefined}
+            width="inherit"
           >
             {content}
           </Box>
