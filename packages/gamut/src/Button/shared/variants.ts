@@ -21,7 +21,7 @@ export const fillButtonVariants = templateVariants(
       transition: hoverBackgroundTransition,
     },
     [ButtonSelectors.ACTIVE]: {
-      borderColor: 'text',
+      borderColor: 'border-primary',
       bg: variant,
       color: 'background',
     },

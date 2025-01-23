@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.3.0...@codecademy/gamut-styles@17.4.0) (2025-01-14)
+
+### Features
+
+- **borderColors:** adding semantic and colormode compatible colors for borderColor ([5e61c28](https://github.com/Codecademy/gamut/commit/5e61c289ce2eec83ef23d83633aca062247f1f61))
+
+## [17.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.2.0...@codecademy/gamut-styles@17.3.0) (2025-01-09)
+
+### Features
+
+- **fonts:** Prioritize woff2 ([#3003](https://github.com/Codecademy/gamut/issues/3003)) ([4c319c6](https://github.com/Codecademy/gamut/commit/4c319c655dbd473f3db214a812b26860d82986f2))
+
 ## [17.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.1.2...@codecademy/gamut-styles@17.2.0) (2024-12-13)
 
 ### Features
