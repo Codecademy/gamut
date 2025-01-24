@@ -10,23 +10,24 @@ import {
   Poster,
   Track,
 } from '@vidstack/react';
+import cx from 'classnames';
 import React from 'react';
 
 import { VideoProps } from '..';
+import styles from '../styles/index.module.scss';
 import { keyboardShortcuts } from './utils/keyboardShortcuts';
 import { vdsVariables } from './utils/variables';
 import { VideoLayout } from './VideoLayout';
 
-const VariableProvider = styled(
-  'div',
-  styledOptions(['variables'])
-)<{ variables?: CSSObject }>(({ variables }) => variables);
+const VariableProvider = styled('div', styledOptions(['variables']))<{
+  variables?: CSSObject;
+}>(({ variables }) => variables, { width: '100%' });
 
-type PlayerProps = VideoProps & {
+type VidstackPlayerProps = VideoProps & {
   onLoad: () => void;
 };
 
-export const Player: React.FC<PlayerProps> = ({
+export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
   autoplay,
   controls,
   loop,
@@ -40,11 +41,18 @@ export const Player: React.FC<PlayerProps> = ({
   textTracks,
   thumbnails,
   translations,
+  width,
+  height,
+  className,
 }) => {
   const player = React.useRef<MediaPlayerInstance>(null);
 
   return (
-    <VariableProvider variables={vdsVariables}>
+    <VariableProvider
+      variables={vdsVariables}
+      className={cx(styles.vdsWrapper, className)}
+      style={{ width, height }}
+    >
       <MediaPlayer
         title={videoTitle}
         src={videoUrl}
@@ -55,7 +63,9 @@ export const Player: React.FC<PlayerProps> = ({
         muted={muted}
         onLoad={onLoad}
         onPlay={onPlay}
-        onCanPlay={onReady}
+        onCanPlay={() => {
+          if (player?.current) onReady?.(player.current);
+        }}
         keyShortcuts={keyboardShortcuts}
       >
         <MediaProvider>

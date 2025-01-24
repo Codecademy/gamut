@@ -1,5 +1,5 @@
 import { PlayIcon } from '@codecademy/gamut-icons';
-import { TrackProps } from '@vidstack/react';
+import { MediaPlayerInstance, PlayerSrc, TrackProps } from '@vidstack/react';
 import {
   DefaultLayoutTranslations,
   ThumbnailSrc,
@@ -10,7 +10,7 @@ import { useState } from 'react';
 import ReactPlayer from 'react-player';
 
 import { useIsMounted } from '../utils';
-import { Player as MediaPlayer } from './lib/Player';
+import { VidstackPlayer } from './lib/Player';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
@@ -40,10 +40,10 @@ export type VideoProps = {
   loop?: boolean;
   muted?: boolean;
   onPlay?: () => void;
-  onReady?: (player: any) => void;
+  onReady?: (player: ReactPlayerWithWrapper | MediaPlayerInstance) => void;
   placeholderImage?: string | boolean;
   videoTitle?: string;
-  videoUrl: string;
+  videoUrl: PlayerSrc;
   width?: number;
   textTracks?: TrackProps[];
   thumbnails?: ThumbnailSrc;
@@ -83,6 +83,7 @@ export const Video: React.FC<VideoProps> = ({
 
   const hasExternallyHostedVideoAndEmbedEnabled =
     videoUrl &&
+    typeof videoUrl === 'string' &&
     showPlayerEmbed &&
     (videoUrl.match(/youtu(be\.com|\.be)/) || videoUrl.match(/vimeo.com/));
 
@@ -126,12 +127,9 @@ export const Video: React.FC<VideoProps> = ({
   }
 
   return (
-    <div
-      className={cx(styles.vdsWrapper, loading && styles.loading, className)}
-      style={{ width, height }}
-    >
+    <>
       {isMounted && (
-        <MediaPlayer
+        <VidstackPlayer
           autoplay={autoplay}
           controls={controls}
           loop={loop}
@@ -145,8 +143,11 @@ export const Video: React.FC<VideoProps> = ({
           thumbnails={thumbnails}
           translations={translations}
           onLoad={() => setLoading(false)}
+          width={width}
+          height={height}
+          className={className}
         />
       )}
-    </div>
+    </>
   );
 };

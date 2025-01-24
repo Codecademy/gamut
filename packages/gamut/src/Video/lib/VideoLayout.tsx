@@ -14,6 +14,14 @@ export type VideoLayoutProps = {
   translations?: Partial<DefaultLayoutTranslations>;
 };
 
+/**
+ * VideoLayout component
+ *
+ * This component is responsible for rendering the layout of the video player.
+ * It uses the DefaultVideoLayout component from the vidstack library and applies
+ * custom icons, slots, and other configurations.
+ * For more info see: https://vidstack.io/docs/player/components/layouts/default-layout
+ */
 export const VideoLayout: React.FC<VideoLayoutProps> = ({
   controls,
   thumbnails,

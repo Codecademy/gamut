@@ -5,6 +5,13 @@ import {
 
 import { CaptionToggle } from './CaptionToggle';
 
+/**
+ * Custom layout slots for the video player
+ *
+ * This defines custom slots for the DefaultVideoLayout component and
+ * overrides certain default slots with custom components or null values.
+ * For more info see: https://vidstack.io/docs/player/components/layouts/default-layout/?styling=default-theme#slots
+ */
 export const customLayoutSlots:
   | DefaultVideoLayoutSlots
   | DefaultVideoLayoutProps = {
