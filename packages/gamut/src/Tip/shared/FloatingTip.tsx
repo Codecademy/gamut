@@ -126,7 +126,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         animation="fade"
         dims={dims}
         horizontalOffset={offset}
-        isOpen={isHoverType ? isOpen : !isTipHidden}
+        isOpen
         outline
         pattern={isPreviewType ? CheckerDense : undefined}
         skipFocusTrap
@@ -139,6 +139,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
           flexDirection="column"
           ref={childRef}
           width={narrow ? narrowWidth : undefined}
+          bg="red"
         >
           {contents}
         </FlexBox>

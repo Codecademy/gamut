@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import * as React from 'react';
 
 import { BodyPortal } from '../BodyPortal';
-import { Box } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { popoverToolTipBodyAlignments } from '../Tip/shared/styles';
 import { WithChildrenProp } from '../utils';
 import {
@@ -44,14 +44,16 @@ export const Beak = styled(Box)<
     StyleProps<typeof beakSize>
 >(beakVariants, beakSize);
 
-export const BeakBox = styled(Box)(
+export const BeakBox = styled(FlexBox)(
   css({
+    alignItems: 'flex-end',
     position: 'absolute',
     height: '3rem',
     width: '100%',
     top: -24,
     left: 0,
-    bg: 'red',
+    bg: 'transparent',
+    px: 8,
   })
 );
 
