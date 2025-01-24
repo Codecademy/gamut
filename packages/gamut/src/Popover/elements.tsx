@@ -1,4 +1,4 @@
-import { timingValues, variant } from '@codecademy/gamut-styles';
+import { css, timingValues, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -43,6 +43,17 @@ export const Beak = styled(Box)<
     StyleProps<typeof beakVariants> &
     StyleProps<typeof beakSize>
 >(beakVariants, beakSize);
+
+export const BeakBox = styled(Box)(
+  css({
+    position: 'absolute',
+    height: '3rem',
+    width: '100%',
+    top: -24,
+    left: 0,
+    bg: 'red',
+  })
+);
 
 export const PatternContainer = styled.div(
   variant({

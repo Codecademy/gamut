@@ -35,6 +35,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   const [offset, setOffset] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [isProcessingOpenEvent, setIsProcessingOpenEvent] = useState(false);
 
   useLayoutEffect(() => {
     const isCentered = alignment.includes('center');
