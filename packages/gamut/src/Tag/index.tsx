@@ -45,6 +45,7 @@ export const Tag: React.FC<TagProps> = ({
   const CorrectLabel = (
     () => {
       if(variant === 'readOnly' ) {
+        // Q: is it possible to type this where onClck throws an error?
         return <TagText onClick={() => console.log('hi')} size={size}>{content}</TagText>;
       }
       if(isSelectionVariant) {
