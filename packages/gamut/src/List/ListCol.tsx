@@ -1,6 +1,6 @@
 import { ComponentProps, forwardRef } from 'react';
 
-import { ColEl, StickyColumnWrapper } from './elements';
+import { ColEl, StickyHeaderColWrapper } from './elements';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
 
@@ -31,9 +31,9 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
     );
     if (sticky) {
       return (
-        <StickyColumnWrapper data-testid="header-container">
+        <StickyHeaderColWrapper data-testid="header-container">
           {col}
-        </StickyColumnWrapper>
+        </StickyHeaderColWrapper>
       );
     }
     return <>{col}</>;

@@ -4,8 +4,8 @@ import { List } from '../List';
 import { EmptyRows } from './EmptyRows';
 import { ListControlContext, useListControls } from './hooks/useListControls';
 import { ListStateContext } from './hooks/useListState';
-import { HeaderRow } from './Rows/HeaderRow';
-import { DataRow, MarshaledColProps } from './Rows/Row';
+import { HeaderRow } from './Tables/Rows/TableHeaderRow';
+import { DataRow, MarshaledColProps } from './Tables/Rows/TableRow';
 import { ColumnConfig, DataListControls, IdentifiableKeys } from './types';
 
 export interface DataGridProps<

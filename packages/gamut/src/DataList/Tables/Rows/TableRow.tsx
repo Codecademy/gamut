@@ -1,12 +1,18 @@
-import { memo, ReactElement, ReactNode, useCallback, useMemo } from 'react';
+import {
+  isValidElement,
+  memo,
+  ReactElement,
+  useCallback,
+  useMemo,
+} from 'react';
 
-import { Text } from '../..';
-import { ListCol, ListRow } from '../../List';
-import { ColProps } from '../../List/elements';
-import { Shimmer } from '../../Loading/Shimmer';
-import { ExpandControl, SelectControl } from '../Controls';
-import { useControlContext } from '../hooks/useListControls';
-import { ColumnConfig, IdentifiableKeys } from '../types';
+import { Box, Text } from '../../..';
+import { ListCol, ListRow } from '../../../List';
+import { ColProps } from '../../../List/elements';
+import { Shimmer } from '../../../Loading/Shimmer';
+import { ExpandControl, SelectControl } from '../../Controls';
+import { useControlContext } from '../../hooks/useListControls';
+import { ColumnConfig, IdentifiableKeys } from '../../types';
 
 export type MarshaledColProps = Partial<Pick<ColProps, 'showOverflow'>>;
 
@@ -23,7 +29,7 @@ interface DataRow {
   ): ReactElement<any, any>;
 }
 
-export const Row: DataRow = ({
+export const TableRow: DataRow = ({
   id,
   columns,
   row,
@@ -108,23 +114,24 @@ export const Row: DataRow = ({
         }
 
         return (
-          // TO-DO: Fix type issues
           <ListCol {...colProps} key={newKey}>
-            <>
-              {render ? (
-                render(row)
-              ) : typeof row[key] === 'string' ? (
-                <Text
-                  truncate="ellipsis"
-                  truncateLines={1}
-                  textAlign={justify ?? 'left'}
-                >
-                  {row[key] as ReactNode}
-                </Text>
-              ) : (
-                row[key]
-              )}
-            </>
+            {!row ? (
+              ''
+            ) : render ? (
+              render(row)
+            ) : typeof row[key] === 'string' || typeof row[key] === 'number' ? (
+              <Text
+                truncate="ellipsis"
+                truncateLines={1}
+                textAlign={justify ?? 'left'}
+              >
+                {row[key]}
+              </Text>
+            ) : isValidElement(row[key]) ? (
+              row[key]
+            ) : (
+              'Data type error'
+            )}
           </ListCol>
         );
       })}
@@ -142,4 +149,4 @@ export const Row: DataRow = ({
   );
 };
 
-export const DataRow = memo(Row) as DataRow;
+export const DataRow = memo(TableRow) as DataRow;

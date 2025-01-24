@@ -385,7 +385,7 @@ export const ColEl = styled(
   system.layout
 );
 
-export const StickyColumnWrapper = styled.th(
+export const StickyHeaderColWrapper = styled.th(
   css({
     '&:before': {
       content: '""',

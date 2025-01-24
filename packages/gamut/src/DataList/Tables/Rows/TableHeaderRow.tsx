@@ -1,15 +1,15 @@
 import { memo, ReactElement } from 'react';
 
-import { FlexBox } from '../..';
-import { ListCol, TableHeader } from '../../List';
+import { FlexBox } from '../../..';
+import { ListCol, TableHeader } from '../../../List';
 import {
   ExpandControl,
   FilterControl,
   SelectControl,
   SortControl,
-} from '../Controls';
-import { useControlContext } from '../hooks/useListControls';
-import { ColumnConfig, Query } from '../types';
+} from '../../Controls';
+import { useControlContext } from '../../hooks/useListControls';
+import { ColumnConfig, Query } from '../../types';
 
 interface HeaderComponent {
   <Row>(props: {
@@ -21,7 +21,7 @@ interface HeaderComponent {
   }): ReactElement<any, any>;
 }
 
-export const Header: HeaderComponent = ({
+export const TableHeaderRow: HeaderComponent = ({
   columns,
   selected = false,
   empty = false,
@@ -84,4 +84,4 @@ export const Header: HeaderComponent = ({
   );
 };
 
-export const HeaderRow = memo(Header) as HeaderComponent;
+export const HeaderRow = memo(TableHeaderRow) as HeaderComponent;
