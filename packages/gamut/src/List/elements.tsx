@@ -188,7 +188,7 @@ export interface HeaderProps
     StyleProps<typeof rowStates>,
     StyleProps<typeof listVariants> {}
 
-export const HeaderEl = styled('div', styledOptions)<HeaderProps>(
+export const HeaderEl = styled('tr', styledOptions)<HeaderProps>(
   css({
     display: 'flex',
     position: { _: 'initial', xs: 'sticky' },
@@ -207,7 +207,7 @@ const columnType = variant({
   prop: 'type',
   defaultVariant: 'content',
   variants: {
-    // Keeping this within variants for typing purposes, we we use this behaviorally despite it not needing specific styling
+    // Keeping this within variants for typing purposes, we use this behaviorally despite it not needing specific styling
     header: {},
     orderedHeader: {
       '&::before': {

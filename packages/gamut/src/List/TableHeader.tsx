@@ -8,7 +8,7 @@ import { PublicListProps } from './types';
 export interface TableHeaderProps
   extends Partial<PublicListProps<ComponentProps<typeof HeaderEl>>> {}
 
-export const TableHeader = forwardRef<HTMLDivElement, TableHeaderProps>(
+export const TableHeader = forwardRef<HTMLTableRowElement, TableHeaderProps>(
   ({ children, ...rest }, ref) => {
     const { spacing, scrollable, variant } = useListContext();
     return (
@@ -19,7 +19,6 @@ export const TableHeader = forwardRef<HTMLDivElement, TableHeaderProps>(
           variant={variant}
           scrollable={scrollable}
           ref={ref}
-          as="tr"
         >
           {children}
         </HeaderEl>
