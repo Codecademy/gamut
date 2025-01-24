@@ -6,7 +6,7 @@ import {
   useMemo,
 } from 'react';
 
-import { Box, Text } from '../../..';
+import { Text } from '../../..';
 import { ListCol, ListRow } from '../../../List';
 import { ColProps } from '../../../List/elements';
 import { Shimmer } from '../../../Loading/Shimmer';
@@ -115,9 +115,7 @@ export const TableRow: DataRow = ({
 
         return (
           <ListCol {...colProps} key={newKey}>
-            {!row ? (
-              ''
-            ) : render ? (
+            {render ? (
               render(row)
             ) : typeof row[key] === 'string' || typeof row[key] === 'number' ? (
               <Text
@@ -125,12 +123,14 @@ export const TableRow: DataRow = ({
                 truncateLines={1}
                 textAlign={justify ?? 'left'}
               >
-                {row[key]}
+                {row[key] as string}
               </Text>
             ) : isValidElement(row[key]) ? (
-              row[key]
+              (row[key] as ReactElement)
+            ) : !row[key] ? (
+              ''
             ) : (
-              'Data type error'
+              'Invalid data type'
             )}
           </ListCol>
         );
