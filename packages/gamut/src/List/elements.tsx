@@ -188,7 +188,7 @@ export interface HeaderProps
     StyleProps<typeof rowStates>,
     StyleProps<typeof listVariants> {}
 
-export const HeaderEl = styled('tr', styledOptions)<HeaderProps>(
+export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
   css({
     display: 'flex',
     position: { _: 'initial', xs: 'sticky' },
