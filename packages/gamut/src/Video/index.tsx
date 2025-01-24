@@ -1,5 +1,5 @@
 import { PlayIcon } from '@codecademy/gamut-icons';
-import { MediaPlayerInstance, PlayerSrc, TrackProps } from '@vidstack/react';
+import { PlayerSrc, TrackProps } from '@vidstack/react';
 import {
   DefaultLayoutTranslations,
   ThumbnailSrc,
@@ -40,7 +40,7 @@ export type VideoProps = {
   loop?: boolean;
   muted?: boolean;
   onPlay?: () => void;
-  onReady?: (player: ReactPlayerWithWrapper | MediaPlayerInstance) => void;
+  onReady?: (player?: ReactPlayerWithWrapper) => void;
   placeholderImage?: string | boolean;
   videoTitle?: string;
   videoUrl: PlayerSrc;
