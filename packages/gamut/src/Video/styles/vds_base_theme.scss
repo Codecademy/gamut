@@ -1,0 +1,11 @@
+@import "@vidstack/react/player/styles/default/theme.css";
+@import "@vidstack/react/player/styles/default/layouts/video.css";
+@import "@vidstack/react/player/styles/default/layouts/audio.css";
+
+.vds-controls button {
+    border-radius: 4px;
+}
+
+.vds-video-layout .vds-time-slider .vds-slider-value {
+    border: unset;
+}

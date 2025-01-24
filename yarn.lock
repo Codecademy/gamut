@@ -1965,11 +1965,6 @@
   dependencies:
     "@lit-labs/ssr-dom-shim" "^1.0.0"
 
-"@maverick-js/signals@^5.10.3":
-  version "5.11.5"
-  resolved "https://registry.npmjs.org/@maverick-js/signals/-/signals-5.11.5.tgz#747490ad174320236378d791600e6fadf2c3072b"
-  integrity sha512-/GO94awrwN9ROYZDMTeByordjvbhcm3CMvB/2aL/sEUy9Va8nM/2GmNgOOe+rrooTGnz8/DzO73xomuBRrnYWw==
-
 "@mdx-js/react@^3.0.0", "@mdx-js/react@^3.1.0":
   version "3.1.0"
   resolved "https://registry.npmjs.org/@mdx-js/react/-/react-3.1.0.tgz#c4522e335b3897b9a845db1dbdd2f966ae8fb0ed"
@@ -10359,14 +10354,6 @@ marked@^4.3.0:
   resolved "https://registry.npmjs.org/marked/-/marked-4.3.0.tgz#796362821b019f734054582038b116481b456cf3"
   integrity sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==
 
-maverick.js@0.37.0:
-  version "0.37.0"
-  resolved "https://registry.npmjs.org/maverick.js/-/maverick.js-0.37.0.tgz#3dc371786540ba5cc327179a268b60c165a317d8"
-  integrity sha512-1Dk/9rienLiihlktVvH04ADC2UJTMflC1fOMVQCCaQAaz7hgzDI5i0p/arFbDM52hFFiIcq4RdXtYz47SgsLgw==
-  dependencies:
-    "@maverick-js/signals" "^5.10.3"
-    type-fest "^3.8.0"
-
 mdast-util-compact@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/mdast-util-compact/-/mdast-util-compact-2.0.1.tgz#cabc69a2f43103628326f35b1acf735d55c99490"
@@ -10393,11 +10380,6 @@ mdn-data@2.0.4:
   version "2.0.4"
   resolved "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.4.tgz#699b3c38ac6f1d728091a64650b65d388502fd5b"
   integrity sha512-iV3XNKw06j5Q7mi6h+9vbx23Tv7JkjEVgKHW4pimwyDGWm0OIQntJJ+u1C6mg6mK1EaTv42XQ7w76yuzH7M2cA==
-
-media-captions@0.0.18:
-  version "0.0.18"
-  resolved "https://registry.npmjs.org/media-captions/-/media-captions-0.0.18.tgz#ad2de78b06d6d222407057279a1595f8b0408a7e"
-  integrity sha512-JW18P6FuHdyLSGwC4TQ0kF3WdNj/+wMw2cKOb8BnmY6vSJGtnwJ+vkYj+IjHOV34j3XMc70HDeB/QYKR7E7fuQ==
 
 media-captions@^1.0.4:
   version "1.0.4"
@@ -14402,11 +14384,6 @@ type-fest@^2.19.0, type-fest@~2.19:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-2.19.0.tgz#88068015bb33036a598b952e55e9311a60fd3a9b"
   integrity sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==
 
-type-fest@^3.8.0:
-  version "3.13.1"
-  resolved "https://registry.npmjs.org/type-fest/-/type-fest-3.13.1.tgz#bb744c1f0678bea7543a2d1ec24e83e68e8c8706"
-  integrity sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==
-
 type-is@~1.6.18:
   version "1.6.18"
   resolved "https://registry.npmjs.org/type-is/-/type-is-1.6.18.tgz#4e552cd05df09467dcbc4ef739de89f2cf37c131"
@@ -14877,15 +14854,6 @@ vfile@^4.0.0:
     is-buffer "^2.0.0"
     unist-util-stringify-position "^2.0.0"
     vfile-message "^2.0.0"
-
-vidstack@^0.6.15:
-  version "0.6.15"
-  resolved "https://registry.npmjs.org/vidstack/-/vidstack-0.6.15.tgz#478ce7f6f93615002e4ef10e70eec42078578437"
-  integrity sha512-pI2aixBuOpu/LSnRgNJ40tU/KFW+x1X+O2bW1hz946ZZShDM5oqRXF9pavDOuckHAHPgUN9HYUr9vUNTBUPF1Q==
-  dependencies:
-    maverick.js "0.37.0"
-    media-captions "0.0.18"
-    type-fest "^3.8.0"
 
 w3c-xmlserializer@^4.0.0:
   version "4.0.0"

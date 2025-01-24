@@ -1,0 +1,36 @@
+import { useCurrentMode } from '@codecademy/gamut-styles';
+import { DefaultVideoLayout } from '@vidstack/react/player/layouts/default';
+import {
+  DefaultLayoutTranslations,
+  ThumbnailSrc,
+} from '@vidstack/react/types/vidstack';
+
+import { customLayoutSlots } from './slotOverrides';
+import { customIcons } from './utils/icons';
+
+export type VideoLayoutProps = {
+  controls?: boolean;
+  thumbnails?: ThumbnailSrc;
+  translations?: Partial<DefaultLayoutTranslations>;
+};
+
+export const VideoLayout: React.FC<VideoLayoutProps> = ({
+  controls,
+  thumbnails,
+  translations,
+}) => {
+  const mode = useCurrentMode();
+
+  return (
+    <DefaultVideoLayout
+      translations={translations}
+      colorScheme={mode}
+      hidden={!controls}
+      icons={customIcons}
+      smallLayoutWhen={false}
+      thumbnails={thumbnails}
+      slots={customLayoutSlots}
+      noAudioGain
+    />
+  );
+};

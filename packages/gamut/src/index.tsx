@@ -57,4 +57,3 @@ export * from './Typography/Text';
 export type { HeadingTags } from './Typography/types';
 export * from './utils';
 export * from './Video';
-export * from './VideoPlayer';

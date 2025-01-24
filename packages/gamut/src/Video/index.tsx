@@ -1,10 +1,16 @@
 import { PlayIcon } from '@codecademy/gamut-icons';
+import { TrackProps } from '@vidstack/react';
+import {
+  DefaultLayoutTranslations,
+  ThumbnailSrc,
+} from '@vidstack/react/types/vidstack';
 import cx from 'classnames';
-import { useState } from 'react';
 import * as React from 'react';
+import { useState } from 'react';
 import ReactPlayer from 'react-player';
 
 import { useIsMounted } from '../utils';
+import { Player as MediaPlayer } from './lib/Player';
 // eslint-disable-next-line gamut/no-css-standalone
 import styles from './styles/index.module.scss';
 
@@ -34,26 +40,34 @@ export type VideoProps = {
   loop?: boolean;
   muted?: boolean;
   onPlay?: () => void;
-  onReady?: (player: ReactPlayerWithWrapper) => void;
+  onReady?: (player: any) => void;
   placeholderImage?: string | boolean;
   videoTitle?: string;
   videoUrl: string;
   width?: number;
+  textTracks?: TrackProps[];
+  thumbnails?: ThumbnailSrc;
+  translations?: Partial<DefaultLayoutTranslations>;
+  showPlayerEmbed?: boolean;
 };
 
 export const Video: React.FC<VideoProps> = ({
-  autoplay,
+  autoplay = false,
   className,
-  controls,
+  controls = true,
   height,
-  loop,
-  muted,
+  loop = false,
+  muted = false,
   onPlay,
   onReady,
   placeholderImage,
   videoTitle,
   videoUrl,
   width,
+  textTracks,
+  thumbnails,
+  translations,
+  showPlayerEmbed,
 }) => {
   const [loading, setLoading] = useState(true);
   const isMounted = useIsMounted();
@@ -67,31 +81,72 @@ export const Video: React.FC<VideoProps> = ({
     },
   };
 
+  const hasExternallyHostedVideoAndEmbedEnabled =
+    videoUrl &&
+    showPlayerEmbed &&
+    (videoUrl.match(/youtu(be\.com|\.be)/) || videoUrl.match(/vimeo.com/));
+
+  /**
+   * If the video is externally hosted and showPlayerEmbed is true, use ReactPlayer to render the video
+   * Otherwise, use the Vidstack MediaPlayer. This is because currently vidstack player has an issue with
+   * youtube iframe embeds where it keeps pausing (only in case if yt iframe is used i.e with native yt controls)
+   */
+  if (hasExternallyHostedVideoAndEmbedEnabled) {
+    return (
+      <div
+        className={cx(
+          styles.videoWrapper,
+          loading && styles.loading,
+          className
+        )}
+      >
+        {isMounted ? (
+          <ReactPlayer
+            className={styles.iframe}
+            config={config}
+            controls={controls === undefined ? true : controls}
+            height={height}
+            light={placeholderImage}
+            loop={loop}
+            muted={muted}
+            playIcon={<OverlayPlayButton videoTitle={videoTitle} />}
+            playing={autoplay}
+            title={videoTitle}
+            url={videoUrl}
+            width={width}
+            onReady={(player: ReactPlayerWithWrapper) => {
+              onReady?.(player);
+              setLoading(false);
+            }}
+            onPlay={onPlay}
+          />
+        ) : null}
+      </div>
+    );
+  }
+
   return (
     <div
-      className={cx(styles.videoWrapper, loading && styles.loading, className)}
+      className={cx(styles.vdsWrapper, loading && styles.loading, className)}
+      style={{ width, height }}
     >
-      {isMounted ? (
-        <ReactPlayer
-          className={styles.iframe}
-          config={config}
-          controls={controls === undefined ? true : controls}
-          height={height}
-          light={placeholderImage}
+      {isMounted && (
+        <MediaPlayer
+          autoplay={autoplay}
+          controls={controls}
           loop={loop}
           muted={muted}
-          playIcon={<OverlayPlayButton videoTitle={videoTitle} />}
-          playing={autoplay}
-          title={videoTitle}
-          url={videoUrl}
-          width={width}
-          onReady={(player: ReactPlayerWithWrapper) => {
-            onReady?.(player);
-            setLoading(false);
-          }}
           onPlay={onPlay}
+          onReady={onReady}
+          placeholderImage={placeholderImage}
+          videoTitle={videoTitle}
+          videoUrl={videoUrl}
+          textTracks={textTracks}
+          thumbnails={thumbnails}
+          translations={translations}
+          onLoad={() => setLoading(false)}
         />
-      ) : null}
+      )}
     </div>
   );
 };
