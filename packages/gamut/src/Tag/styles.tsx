@@ -106,7 +106,7 @@ export const tagWrapperStates = states({
     borderRadius: 'none'
   },
   disabled: {
-    // KENNY: need this for suggestion's bordercolor
+    // Needed for suggestion's bordercolor since the text element won't have the correct style
     borderColor: 'border-disabled',
   },
   selectionDisabled: {
@@ -124,7 +124,6 @@ export const tagTextStyling = css({
 export const anchorVariants = variant({
   prop: 'interactiveType',
   base: {
-    // might go back to original padding stored as a variable and values used depending on variant
     px: tagLabelPadding,
     textDecoration: 'none',
     ":before": {

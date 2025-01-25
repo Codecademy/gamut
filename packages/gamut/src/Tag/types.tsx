@@ -24,11 +24,11 @@ export interface ReadOnlyTagProps extends BaseTagProps {
   /**
    * ClickHandler for the DismissButton.
    */
-  disabled?: never;
   onDismiss?: never;
   onClick?: never;
   href?: never;
   variant: 'readOnly';
+  disabled: never;
 }
 export interface SelectionTagProps extends BaseTagProps {
   /**
@@ -62,7 +62,6 @@ export interface NavigationAnchorProps extends BaseTagAnchorProps {
   href: string;
 }
 
-
 export interface SuggestionAnchorProps extends BaseTagAnchorProps {
   onClick: HTMLProps<HTMLAnchorElement>['onClick'];
   href?: never;
@@ -72,17 +71,3 @@ export type TagAnchorProps = SuggestionAnchorProps | NavigationAnchorProps
 
 export interface TagTextProps
   extends StyleProps<typeof sizeVariants> {}
-
-  // export interface BaseTagTextProps
-//   extends StyleProps<typeof sizeVariants> {}
-
-// export interface ReadOnlyTagPropsV2 extends BaseTagTextProps {
-//   disabled?: never;
-// }
-
-// export interface SuggestionPropsV2 extends BaseTagTextProps {
-//   disabled: boolean;
-// }
-
-
-// export type TagTextProps = ReadOnlyTagPropsV2 | SuggestionPropsV2

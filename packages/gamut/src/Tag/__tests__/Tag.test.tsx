@@ -3,11 +3,8 @@ import { fireEvent } from '@testing-library/dom';
 
 import { Tag } from '..';
 
-// Might test this for suggestion
-
 const tagText = 'Tag Text';
 const renderView = setupRtl(Tag, { children: <>{tagText}</> });
-// const renderView = setupRtl(Tag, { children: <>{tagText}</> });
 
 describe('Tag', () => {
   it('renders correct text for the `readOnly` variant', () => {
