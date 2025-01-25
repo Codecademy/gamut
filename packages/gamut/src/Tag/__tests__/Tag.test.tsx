@@ -50,6 +50,12 @@ describe('Tag', () => {
 
     expect(view.getByRole('button')).toBeDisabled();
   });
+
+  it('renders correct text for the `navigation` variant', () => {
+    const { view } = renderView({variant: 'navigation'});
+
+    view.getByText(tagText)
+  });
 });
 
 
