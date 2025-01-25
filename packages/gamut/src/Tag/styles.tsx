@@ -5,13 +5,28 @@ import { ButtonSelectors, Selectors } from '../ButtonBase/ButtonBase';
 
 export const tagLabelFontSize = 14;
 export const tagLabelPadding = 8;
+export const tagBaseStyles = {
+  alignItems: 'center',
+  display: 'flex',
+  justifyContent: 'center',
+  maxWidth: '100%',
+  width: 'fit-content',
+};
+export const dismissSharedStyles = {
+  alignItems: 'center',
+  display: 'flex',
+  height: '100%',
+  justifyContent: 'center',
+  minWidth: '24px',
+};
+
 const anchorDefaultVerticalPadding =  1.5;
 const anchorLargeVerticalPadding =  5.5;
 const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}` as const;
 const hoverAndDisabled = `${Selectors.HOVER}, ${Selectors.DISABLED}` as const;
 
 export const outlineStyling = css({
-  // this is a bit of a hack as we don't have access to focus-visible from this component.  if you are not properly dismissing your tags you may see this primary colored outline after clicking X, but otherwise you should never hit this behavior.
+  // This is a bit of a hack as we don't have access to focus-visible from this component. If you are not properly dismissing your tags you may see this primary colored outline after clicking X, but otherwise you should never hit this behavior.
   borderRadius: 'md',
   width: '100%',
   maxWidth: 'fit-content',
@@ -61,7 +76,6 @@ export const tagUsageVariants = variant({
       borderColor: 'border-secondary',
       bg: 'background-current',
       [ButtonSelectors.ACTIVE]: {
-        // TagAnchor variant won't accept bg to change the active color
         bg: 'secondary',
       },
     },
@@ -166,11 +180,7 @@ export const dismissButtonOverrides = {
 };
 
 export const dismissButtonStyling = css({
-  alignItems: 'center',
-  display: 'flex',
-  height: '100%',
-  justifyContent: 'center',
-  minWidth: '24px',
+  ...dismissSharedStyles,
   color: 'background',
   bg: 'text-secondary',
   border: 'none',
