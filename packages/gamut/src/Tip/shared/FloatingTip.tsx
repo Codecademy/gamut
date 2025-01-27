@@ -59,27 +59,29 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   let focusDelay: NodeJS.Timeout | undefined;
 
   const handleShowHideAction = ({ type }: FocusOrMouseEvent) => {
-    if (type === 'focus' && !isOpen) {
+    if (type === 'focus' && !isOpen && !isProcessingOpenEvent) {
+      setIsProcessingOpenEvent(true);
       focusDelay = runWithDelay(() => {
         setIsOpen(true);
         setIsFocused(true);
+        setIsProcessingOpenEvent(false);
       });
     }
     if (type === 'blur') {
       if (focusDelay) clearTimeout(focusDelay);
-      if (isOpen) {
-        setIsOpen(false);
-        setIsFocused(false);
-      }
+      setIsOpen(false);
+      setIsFocused(false);
     }
-    if (type === 'mouseenter' && !isOpen) {
-      hoverDelay = runWithDelay(() => setIsOpen(true));
+    if (type === 'mouseenter' && !isOpen && !isProcessingOpenEvent) {
+      setIsProcessingOpenEvent(true);
+      hoverDelay = runWithDelay(() => {
+        setIsOpen(true);
+        setIsProcessingOpenEvent(false);
+      });
     }
     if (type === 'mouseleave') {
       if (hoverDelay) clearTimeout(hoverDelay);
-      if (isOpen && !isFocused) {
-        setIsOpen(false);
-      }
+      setIsOpen(false);
     }
   };
 
