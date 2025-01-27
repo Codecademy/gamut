@@ -13,20 +13,23 @@ import {
   defaultLayoutIcons,
 } from '@vidstack/react/player/layouts/default';
 
+const IconWrapper = (Icon: DefaultLayoutIcon) => (props: any) =>
+  <Icon {...props} width={18} height={18} />;
+
 export const customIcons: DefaultLayoutIcons = {
   ...defaultLayoutIcons,
   PlayButton: {
-    Play: PlayIcon as DefaultLayoutIcon,
-    Pause: PauseIcon as DefaultLayoutIcon,
-    Replay: RefreshIcon as DefaultLayoutIcon,
+    Play: IconWrapper(PlayIcon as DefaultLayoutIcon),
+    Pause: IconWrapper(PauseIcon as DefaultLayoutIcon),
+    Replay: IconWrapper(RefreshIcon as DefaultLayoutIcon),
   },
   Menu: {
     ...defaultLayoutIcons.Menu,
-    Chapters: ListIcon as DefaultLayoutIcon,
-    Settings: GearIcon as DefaultLayoutIcon,
+    Chapters: IconWrapper(ListIcon as DefaultLayoutIcon),
+    Settings: IconWrapper(GearIcon as DefaultLayoutIcon),
   },
   FullscreenButton: {
-    Enter: FullscreenIcon as DefaultLayoutIcon,
-    Exit: MinimizeIcon as DefaultLayoutIcon,
+    Enter: IconWrapper(FullscreenIcon as DefaultLayoutIcon),
+    Exit: IconWrapper(MinimizeIcon as DefaultLayoutIcon),
   },
 };
