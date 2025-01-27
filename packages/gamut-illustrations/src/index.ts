@@ -26,6 +26,7 @@ export * from './Interest';
 export * from './Interview';
 export * from './Keyhole';
 export * from './Knowledge';
+export * from './LearningGoals';
 export * from './LightBulbAndGears';
 export * from './MagnifyingGlass';
 export * from './Maze';
