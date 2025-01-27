@@ -47,13 +47,14 @@ export const Beak = styled(Box)<
 export const BeakBox = styled(FlexBox)(
   css({
     alignItems: 'flex-end',
-    position: 'absolute',
-    height: '3rem',
-    width: '100%',
-    top: -24,
+    bg: 'blue',
+    height: '15px',
+    justifyContent: 'center',
     left: 0,
-    bg: 'transparent',
+    position: 'absolute',
     px: 8,
+    top: -15,
+    width: '100%',
   })
 );
 

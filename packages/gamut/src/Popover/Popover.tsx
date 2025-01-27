@@ -174,7 +174,6 @@ export const Popover: React.FC<PopoverProps> = ({
       >
         {beak && (
           <BeakBox>
-            ayo?
             <Beak
               outline={outline ? 'outline' : 'boxShadow'}
               beak={`${position}-${beak}${

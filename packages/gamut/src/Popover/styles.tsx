@@ -72,11 +72,10 @@ const beakVariantStyles = createVariantsFromAlignments(
 
 export const beakVariants = variant({
   base: {
-    // position: 'absolute',
     transform: 'rotate(45deg)',
-    background: 'orange',
-    border: 1,
+    background: 'transparent',
     zIndex: 1,
+    position: 'fixed',
   },
   prop: 'beak',
   variants: beakVariantStyles,
