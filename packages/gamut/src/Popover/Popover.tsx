@@ -173,14 +173,14 @@ export const Popover: React.FC<PopoverProps> = ({
         widthRestricted={widthRestricted}
       >
         {beak && (
-          <BeakBox>
+          <BeakBox variant={position}>
             <Beak
-              outline={outline ? 'outline' : 'boxShadow'}
               beak={`${position}-${beak}${
                 variant === 'secondary' ? '-sml' : ''
               }`}
               data-testid="popover-beak"
               size={variant === 'secondary' ? 'sml' : 'lrg'}
+              hasBorder={outline || variant === 'secondary'}
             />
           </BeakBox>
         )}

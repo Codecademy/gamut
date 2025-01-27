@@ -1,4 +1,4 @@
-import { css, timingValues, variant } from '@codecademy/gamut-styles';
+import { timingValues, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -9,6 +9,8 @@ import { Box, FlexBox } from '../Box';
 import { popoverToolTipBodyAlignments } from '../Tip/shared/styles';
 import { WithChildrenProp } from '../utils';
 import {
+  beakBorderStates,
+  beakBoxVariants,
   beakSize,
   beakVariants,
   outlineVariants,
@@ -39,24 +41,14 @@ export const RaisedDiv = styled.div<
 
 export const Beak = styled(Box)<
   StyleProps<typeof popoverStates> &
-    StyleProps<typeof outlineVariants> &
     StyleProps<typeof beakVariants> &
-    StyleProps<typeof beakSize>
->(beakVariants, beakSize);
+    StyleProps<typeof beakSize> &
+    StyleProps<typeof beakBorderStates>
+>(beakBorderStates, beakVariants, beakSize);
 
-export const BeakBox = styled(FlexBox)(
-  css({
-    alignItems: 'flex-end',
-    bg: 'blue',
-    height: '15px',
-    justifyContent: 'center',
-    left: 0,
-    position: 'absolute',
-    px: 8,
-    top: -15,
-    width: '100%',
-  })
-);
+// TODO: Create this for 'above' styles for popover
+export const BeakBox =
+  styled(FlexBox)<StyleProps<typeof beakBoxVariants>>(beakBoxVariants);
 
 export const PatternContainer = styled.div(
   variant({
