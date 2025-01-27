@@ -1,11 +1,24 @@
-@import "@vidstack/react/player/styles/default/theme.css";
-@import "@vidstack/react/player/styles/default/layouts/video.css";
-@import "@vidstack/react/player/styles/default/layouts/audio.css";
+@import "~@vidstack/react/player/styles/default/theme.css";
+@import "~@vidstack/react/player/styles/default/layouts/video.css";
+@import "~@vidstack/react/player/styles/default/layouts/audio.css";
 
 .vds-controls button {
-    border-radius: 4px;
+    border-radius: var(--media-button-border-radius);
 }
 
 .vds-video-layout .vds-time-slider .vds-slider-value {
     border: unset;
+    color: white;
+}
+
+iframe.vds-youtube[data-no-controls] {
+    height: 100%;
+}
+
+[data-started] iframe.vds-youtube[data-no-controls] {
+    height: 1000%;
+}
+
+:where(.vds-button .vds-icon) {
+    border-radius: unset;
 }

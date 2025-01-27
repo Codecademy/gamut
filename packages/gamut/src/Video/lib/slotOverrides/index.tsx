@@ -4,6 +4,7 @@ import {
 } from '@vidstack/react/types/vidstack-react';
 
 import { CaptionToggle } from './CaptionToggle';
+import { SeekBackwardsButton } from './SeekBackwards';
 
 /**
  * Custom layout slots for the video player
@@ -17,6 +18,7 @@ export const customLayoutSlots:
   | DefaultVideoLayoutProps = {
   googleCastButton: null,
   airPlayButton: null,
-  pipButton: null,
+  downloadButton: null,
   settingsMenuStartItems: <CaptionToggle />,
+  afterPlayButton: <SeekBackwardsButton />,
 };
