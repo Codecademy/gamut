@@ -35,7 +35,6 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   const [offset, setOffset] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-  const [isProcessingOpenEvent, setIsProcessingOpenEvent] = useState(false);
 
   useLayoutEffect(() => {
     const isCentered = alignment.includes('center');
@@ -59,29 +58,27 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   let focusDelay: NodeJS.Timeout | undefined;
 
   const handleShowHideAction = ({ type }: FocusOrMouseEvent) => {
-    if (type === 'focus' && !isOpen && !isProcessingOpenEvent) {
-      setIsProcessingOpenEvent(true);
+    if (type === 'focus' && !isOpen) {
       focusDelay = runWithDelay(() => {
         setIsOpen(true);
         setIsFocused(true);
-        setIsProcessingOpenEvent(false);
       });
     }
     if (type === 'blur') {
       if (focusDelay) clearTimeout(focusDelay);
-      setIsOpen(false);
-      setIsFocused(false);
+      if (isOpen) {
+        setIsOpen(false);
+        setIsFocused(false);
+      }
     }
-    if (type === 'mouseenter' && !isOpen && !isProcessingOpenEvent) {
-      setIsProcessingOpenEvent(true);
-      hoverDelay = runWithDelay(() => {
-        setIsOpen(true);
-        setIsProcessingOpenEvent(false);
-      });
+    if (type === 'mouseenter' && !isOpen) {
+      hoverDelay = runWithDelay(() => setIsOpen(true));
     }
     if (type === 'mouseleave') {
       if (hoverDelay) clearTimeout(hoverDelay);
-      setIsOpen(false);
+      if (isOpen && !isFocused) {
+        setIsOpen(false);
+      }
     }
   };
 
@@ -141,7 +138,6 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
           flexDirection="column"
           ref={childRef}
           width={narrow ? narrowWidth : undefined}
-          bg="red"
         >
           {contents}
         </FlexBox>
