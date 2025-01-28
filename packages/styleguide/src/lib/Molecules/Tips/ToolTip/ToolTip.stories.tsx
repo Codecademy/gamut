@@ -54,7 +54,7 @@ export const Floating: Story = {
       tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
       onClick={() => {
         console.log(
-          'This is a test, and will be deleted before the PR is merged.'
+          'This is a test, and will be deleted before the PR is merged'
         );
       }}
     />
