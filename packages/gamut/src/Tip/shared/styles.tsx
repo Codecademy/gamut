@@ -4,7 +4,6 @@ import {
   theme,
   variant,
 } from '@codecademy/gamut-styles';
-import { background } from '@codecademy/gamut-styles/dist/variance/props';
 
 import { tipAlignmentArray } from './types';
 import {
