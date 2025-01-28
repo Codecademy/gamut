@@ -4,6 +4,7 @@ import {
   theme,
   variant,
 } from '@codecademy/gamut-styles';
+import { background } from '@codecademy/gamut-styles/dist/variance/props';
 
 import { tipAlignmentArray } from './types';
 import {
@@ -31,6 +32,14 @@ export const topStyles = {
   pb: containerOffsetVertical,
 } as const;
 
+const beforeStyles = {
+  content: '""',
+  position: 'absolute',
+  width: '100%',
+};
+
+export const topStylesBefore = { ...beforeStyles, height: 16, bottom: '-4px' };
+
 export const topStylesAfter = {
   borderColor: 'currentColor',
   borderWidth: '0 1px 1px 0',
@@ -41,6 +50,12 @@ export const bottomStyles = {
   top: 'calc(100% + 4px)',
   pt: containerOffsetVertical,
 } as const;
+
+export const bottomStylesBefore = {
+  ...beforeStyles,
+  height: 24,
+  top: '-8px',
+};
 
 export const bottomStylesAfter = {
   borderColor: 'currentColor',
@@ -104,6 +119,7 @@ export const toolTipAlignmentVariants = variant({
     opacity: 0,
     position: 'absolute',
     visibility: 'hidden',
+
     '&::after': {
       content: '""',
       display: 'block',
