@@ -58,6 +58,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   let focusDelay: NodeJS.Timeout | undefined;
 
   const handleShowHideAction = ({ type }: FocusOrMouseEvent) => {
+    console.log('handleShowHideAction', type);
     if (type === 'focus' && !isOpen) {
       focusDelay = runWithDelay(() => {
         setIsOpen(true);
@@ -113,6 +114,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         onFocus={toolOnlyEventFunc}
         onBlur={toolOnlyEventFunc}
         onMouseEnter={toolOnlyEventFunc}
+        onMouseDown={(e) => e.preventDefault()}
         onKeyDown={
           escapeKeyPressHandler ? (e) => escapeKeyPressHandler(e) : undefined
         }

@@ -52,6 +52,11 @@ export const Floating: Story = {
       tip="Wonder at the majesty of the universe"
       icon={SmileyStarEyesIcon}
       tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
+      onClick={() => {
+        console.log(
+          'This is a test, and will be deleted before the PR is merged.'
+        );
+      }}
     />
   ),
 };
