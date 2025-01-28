@@ -46,7 +46,6 @@ export const Beak = styled(Box)<
     StyleProps<typeof beakBorderStates>
 >(beakBorderStates, beakVariants, beakSize);
 
-// TODO: Create this for 'above' styles for popover
 export const BeakBox =
   styled(FlexBox)<StyleProps<typeof beakBoxVariants>>(beakBoxVariants);
 
