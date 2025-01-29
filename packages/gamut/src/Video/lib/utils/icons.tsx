@@ -1,11 +1,21 @@
 import {
+  ClosedCaptionDisabledIcon,
+  ClosedCaptionIcon,
   FullscreenIcon,
   GearIcon,
   ListIcon,
+  MiniAccessibilityIcon,
+  MiniCloseCaptioningIcon,
+  MiniLiveVideoIcon,
   MinimizeIcon,
   PauseIcon,
+  PipExitIcon,
+  PipIcon,
   PlayIcon,
   RefreshIcon,
+  VolumeControlFullIcon,
+  VolumeControlMediumIcon,
+  VolumeControlMuteIcon,
 } from '@codecademy/gamut-icons';
 import {
   DefaultLayoutIcon,
@@ -14,22 +24,38 @@ import {
 } from '@vidstack/react/player/layouts/default';
 
 const IconWrapper = (Icon: DefaultLayoutIcon) => (props: any) =>
-  <Icon {...props} width={18} height={18} />;
+  <Icon {...props} width={20} height={20} />;
 
 export const customIcons: DefaultLayoutIcons = {
   ...defaultLayoutIcons,
   PlayButton: {
-    Play: IconWrapper(PlayIcon as DefaultLayoutIcon),
-    Pause: IconWrapper(PauseIcon as DefaultLayoutIcon),
-    Replay: IconWrapper(RefreshIcon as DefaultLayoutIcon),
+    Play: PlayIcon as DefaultLayoutIcon,
+    Pause: PauseIcon as DefaultLayoutIcon,
+    Replay: RefreshIcon as DefaultLayoutIcon,
+  },
+  MuteButton: {
+    Mute: IconWrapper(VolumeControlMuteIcon as DefaultLayoutIcon),
+    VolumeHigh: IconWrapper(VolumeControlFullIcon as DefaultLayoutIcon),
+    VolumeLow: IconWrapper(VolumeControlMediumIcon as DefaultLayoutIcon),
+  },
+  CaptionButton: {
+    Off: IconWrapper(ClosedCaptionDisabledIcon as DefaultLayoutIcon),
+    On: IconWrapper(ClosedCaptionIcon as DefaultLayoutIcon),
+  },
+  PIPButton: {
+    Enter: IconWrapper(PipIcon as DefaultLayoutIcon),
+    Exit: IconWrapper(PipExitIcon as DefaultLayoutIcon),
   },
   Menu: {
     ...defaultLayoutIcons.Menu,
-    Chapters: IconWrapper(ListIcon as DefaultLayoutIcon),
-    Settings: IconWrapper(GearIcon as DefaultLayoutIcon),
+    Accessibility: MiniAccessibilityIcon as DefaultLayoutIcon,
+    Playback: MiniLiveVideoIcon as DefaultLayoutIcon,
+    Captions: MiniCloseCaptioningIcon as DefaultLayoutIcon,
+    Chapters: ListIcon as DefaultLayoutIcon,
+    Settings: GearIcon as DefaultLayoutIcon,
   },
   FullscreenButton: {
-    Enter: IconWrapper(FullscreenIcon as DefaultLayoutIcon),
-    Exit: IconWrapper(MinimizeIcon as DefaultLayoutIcon),
+    Enter: FullscreenIcon as DefaultLayoutIcon,
+    Exit: MinimizeIcon as DefaultLayoutIcon,
   },
 };

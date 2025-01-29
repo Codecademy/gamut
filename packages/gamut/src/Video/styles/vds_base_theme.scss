@@ -22,3 +22,21 @@ iframe.vds-youtube[data-no-controls] {
 :where(.vds-button .vds-icon) {
     border-radius: unset;
 }
+
+.vds-tooltip-content::after {
+    content: "";
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border-style: solid;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    border-width: 0 1px 1px 0;
+    border-color: currentColor;
+    bottom: -0.5rem;
+    left: calc(50% - 0.5rem);
+    background-image: linear-gradient(to top left, var(--color-background-contrast) 55%, rgba(0, 0, 0, 0) 20%);
+}

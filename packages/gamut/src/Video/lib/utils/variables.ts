@@ -19,6 +19,7 @@ export const vdsVariables: Variables = {
     '--video-border-radius': theme.borderRadii.md,
     // Media/Control Variables
     '--media-button-border-radius': theme.borderRadii.md,
+    '--media-button-padding': `0px ${theme.spacing[8]}`,
     '--media-tooltip-bg-color': theme.colors['background-contrast'],
     '--media-tooltip-border-radius': theme.borderRadii.sm,
     '--media-tooltip-border': `1px solid ${theme.colors['border-primary']}`,

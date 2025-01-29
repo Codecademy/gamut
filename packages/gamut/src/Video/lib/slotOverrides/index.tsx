@@ -3,7 +3,6 @@ import {
   DefaultVideoLayoutSlots,
 } from '@vidstack/react/types/vidstack-react';
 
-import { CaptionToggle } from './CaptionToggle';
 import { SeekBackwardsButton } from './SeekBackwards';
 
 /**
@@ -16,9 +15,13 @@ import { SeekBackwardsButton } from './SeekBackwards';
 export const customLayoutSlots:
   | DefaultVideoLayoutSlots
   | DefaultVideoLayoutProps = {
+  smallLayout: {
+    beforeCaptionButton: <SeekBackwardsButton />,
+  },
+  largeLayout: {
+    afterPlayButton: <SeekBackwardsButton />,
+  },
   googleCastButton: null,
   airPlayButton: null,
   downloadButton: null,
-  settingsMenuStartItems: <CaptionToggle />,
-  afterPlayButton: <SeekBackwardsButton />,
 };
