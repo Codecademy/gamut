@@ -22,11 +22,11 @@ export const Tag: React.FC<TagProps> = ({
   icon,
   ...rest
 }) => {
-  const isSelectionVariant = variant === 'selection';
-  const isSuggestionVariant = variant === 'suggestion';
-  const isNavigationVariant = variant === 'navigation';
   const isReadOnly = variant === 'readOnly'
-  const isInteractive = isSuggestionVariant || isNavigationVariant;
+  const isSelection = variant === 'selection';
+  const isNavigation = variant === 'navigation';
+  const isSuggestion = variant === 'suggestion';
+  const isInteractive = isNavigation || isSuggestion;
 
   const DeleteIcon: React.FC = () => <StyledMiniDeleteIcon size={size} aria-hidden />;
   const content = appendIconToContent({
@@ -45,17 +45,17 @@ export const Tag: React.FC<TagProps> = ({
   const CorrectLabel = (
     () => {
       if(variant === 'readOnly' ) {
-        // Q: is it possible to type this where onClck throws an error?
-        return <TagText onClick={() => console.log('hi')} size={size}>{content}</TagText>;
+        // Q: is it possible to type this where onClick throws an error?
+        return <TagText size={size}>{content}</TagText>;
       }
-      if(isSelectionVariant) {
+      if(isSelection) {
         return <TagText {...sharedInteractiveProps}>{content}</TagText>;
       }
-      if (isSuggestionVariant){
+      if (isSuggestion){
         return <TagAnchor interactiveType='suggestion'
         onClick={onClick} {...sharedInteractiveProps}>{content}</TagAnchor>
       }
-      if (isNavigationVariant){
+      if (isNavigation){
         return <TagAnchor interactiveType='navigation' href={disabled ? '' : href} {...sharedInteractiveProps}>{content}</TagAnchor>
       }
     }
@@ -67,14 +67,13 @@ export const Tag: React.FC<TagProps> = ({
         readOnly={isReadOnly}
         variant={variant}
         overflow={isInteractive ? 'hidden' : 'visible'}
-        selectionDisabled={isSelectionVariant && disabled}
+        selectionDisabled={isSelection && disabled}
         disabled={!isReadOnly && disabled}
       >
         { CorrectLabel }
       </TagLabelWrapper>
-      {isSelectionVariant && (
+      {isSelection && (
         <DismissButton
-        // KENNY: check VO on these tips, esp for disabled
           aria-label={disabled ? '' : `Dismiss ${children} Tag`}
           onClick={onDismiss || undefined}
           tip={disabled ? '' : "Remove"}

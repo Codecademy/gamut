@@ -56,7 +56,7 @@ export const Navigation: Story = {
   args: {
     variant: 'navigation',
     children: 'Navigation',
-    href: 'https://www.codecademy.com',
+    href: '/',
   },
 };
 
@@ -64,7 +64,7 @@ export const NavigationLarge: Story = {
   args: {
     variant: 'navigation',
     children: 'Large navigation',
-    href: 'https://www.codecademy.com',
+    href: '/',
     size: 'large',
   },
 };
@@ -73,7 +73,7 @@ export const NavigationDisabled: Story = {
   args: {
     variant: 'navigation',
     children: 'Navigation disabled',
-    href: 'https://www.codecademy.com',
+    href: '/',
     disabled: true,
   },
 };
@@ -148,7 +148,7 @@ export const Overflow: Story = {
   },
   render: (args) => (
     <Box width="12rem">
-      <Tag {...args}>I am long tag yes I am much am a very long tag I am long tag yes I am much am a very long tag I am long tag yes I am much am a very long tag I am long tag yes I am much am a very long tag</Tag>
+      <Tag {...args}>I am long tag yes I am much am a very long tag</Tag>
     </Box>
   ),
 };
