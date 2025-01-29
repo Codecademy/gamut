@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { ComponentHeader, ImageWrapper, LinkTo } from '~styleguide/blocks';
 
 import * as TagStories from './Tag.stories';
 
@@ -38,6 +38,26 @@ Use a tag to categorize content, represent user inputs, or guide users to relate
 - Primary actions - for performing critical or primary actions, use the <LinkTo id="Atoms/Buttons">Button</LinkTo> component instead.
 - Prominent navigation - for standalone, high-priority navigation (e.g., links to key pages or sections), use an <LinkTo id="Typography/Anchor">Anchor</LinkTo> link instead.
 - Emphasizing statuses or attributes - for highlighting statuses or attributes, use the <LinkTo id="Atoms/Badge">Badge</LinkTo> component instead.
+
+## Anatomy
+
+<ImageWrapper
+  src="./atoms/tag.png"
+  alt="The anatomy of the Tag component, detailed below."
+/>
+
+1. **Leading icon** _(optional)_
+
+- Use to further clarify the tag meaning
+
+2. **Badge label**
+
+- Limit to 1–2 keywords that help to label, categorize, or organize
+- _Exception_: For the Suggestion variant, can be a short phrase
+- Do not truncate text to keep the information easily scannable and understandable
+
+3. **Remove button** (_selection tags only_)
+- Allows users to remove a selection
 
 ## Variants
 
