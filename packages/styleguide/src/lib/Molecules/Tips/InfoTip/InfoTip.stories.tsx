@@ -13,7 +13,7 @@ const meta: Meta<typeof InfoTip> = {
   component: InfoTip,
   args: {
     alignment: 'top-left',
-    info: `I am additional information about a nearby element or content.`,
+    info: `I just saw a really scary ghost! Ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ah ahh!!`,
   },
 };
 

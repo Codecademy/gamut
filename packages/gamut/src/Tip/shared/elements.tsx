@@ -14,6 +14,7 @@ import {
 const tipWrapperStyles = {
   position: 'relative',
   display: 'inline-flex',
+  overflowWrap: 'break-word',
 } as const;
 
 export const ToolTipWrapper = styled.div(

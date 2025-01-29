@@ -30,7 +30,7 @@ export const WithIconButton: Story = {
   render: () => (
     <FlexBox justifyContent="space-around" m={24} width="95%">
       <IconButton
-        tip="Beautify your code"
+        tip="I just saw a really scary ghost! Ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh ah ahh!!"
         icon={SparkleIcon}
         tipProps={{ alignment: 'bottom-center' }}
       />
