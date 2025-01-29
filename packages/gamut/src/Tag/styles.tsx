@@ -24,8 +24,7 @@ const textDefaultVerticalPadding =  1.5;
 const textLargeVerticalPadding =  5.5;
 const anchorDefaultVerticalPadding =  0.5;
 const anchorLargeVerticalPadding =  4.5;
-const hoverAndFocus = `${Selectors.HOVER}:${Selectors.FOCUS}` as const;
-const hoverAndDisabled = `&:hover:[disabled], &:hover:disabled` as const;
+const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}` as const;
 
 export const outlineStyling = css({
   // This is a bit of a hack as we don't have access to focus-visible from this component. If you are not properly dismissing your tags you may see this primary colored outline after clicking X, but otherwise you should never hit this behavior.
@@ -151,17 +150,15 @@ export const anchorVariants = variant({
       outline: 'none',
       border: 'none',
     },
-    [ButtonSelectors.DISABLED]: {
-      borderColor: 'border-disabled',
-    },
     [ButtonSelectors.FOCUS]: {
       textDecoration: 'none',
     },
     [ButtonSelectors.HOVER]: {
       bg: 'background-hover',
     },
-    [hoverAndDisabled]: {
-      bg: 'background-current'
+    [ButtonSelectors.DISABLED]: {
+      borderColor: 'border-disabled',
+      bg: 'background-current',
     },
   },
   variants: {
@@ -206,13 +203,8 @@ export const dismissButtonStyling = css({
   },
   [ButtonSelectors.DISABLED]: {
     bg: 'background-disabled',
+    color: 'text-disabled',
   },
-  [ButtonSelectors.HOVER]: {
-    color: 'background',
-  },
-  [hoverAndDisabled]: {
-    color: 'text-disabled'
- },
   ...dismissSharedStyles,
   ...dismissButtonOverrides,
 })
@@ -222,9 +214,6 @@ export const miniDeleteIconVariants = variant({
   prop: 'size',
   base: {
     color: 'inherit',
-    [ButtonSelectors.HOVER]: {
-      color: 'background',
-    }
   },
   variants: {
     default: {

@@ -142,7 +142,7 @@ export const WithIcon: Story = {
   )
 };
 
-export const Truncated: Story = {
+export const Overflow: Story = {
   args: {
     variant: 'selection'
   },
