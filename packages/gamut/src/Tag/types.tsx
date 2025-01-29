@@ -4,7 +4,7 @@ import { ComponentProps, HTMLProps } from 'react';
 
 import { IconComponentType, WithChildrenProp } from '../utils';
 import { DismissButton } from './elements';
-import { anchorVariants, sizeVariants, tagUsageVariants, tagWrapperStates } from './styles';
+import { anchorSizeVariants, anchorVariants, tagUsageVariants, tagWrapperStates,textSizeVariants } from './styles';
 
 export const tagProps = variance.compose(
   system.space,
@@ -15,7 +15,7 @@ export const tagProps = variance.compose(
 export interface BaseTagProps
   extends StyleProps<typeof tagProps>,
     StyleProps<typeof tagUsageVariants>,
-    StyleProps<typeof sizeVariants>,
+    StyleProps<typeof textSizeVariants>,
     StyleProps<typeof tagWrapperStates>,
     Partial<IconComponentType>,
     WithChildrenProp {}
@@ -53,7 +53,7 @@ export type TagProps = ReadOnlyTagProps | SelectionTagProps | InteractiveTagProp
 
 export interface BaseTagAnchorProps
   extends StyleProps<typeof anchorVariants>,
-    StyleProps<typeof sizeVariants> {
+    StyleProps<typeof anchorSizeVariants> {
       disabled: boolean;
     }
 
@@ -70,4 +70,4 @@ export interface SuggestionAnchorProps extends BaseTagAnchorProps {
 export type TagAnchorProps = SuggestionAnchorProps | NavigationAnchorProps
 
 export interface TagTextProps
-  extends StyleProps<typeof sizeVariants> {}
+  extends StyleProps<typeof textSizeVariants> {}
