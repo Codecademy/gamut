@@ -51,11 +51,11 @@ export const Tag: React.FC<TagProps> = ({
       if(isSelection) {
         return <TagText {...sharedInteractiveProps}>{content}</TagText>;
       }
-      if (isSuggestion){
+      if(isSuggestion){
         return <TagAnchor interactiveType='suggestion'
         onClick={onClick} {...sharedInteractiveProps}>{content}</TagAnchor>
       }
-      if (isNavigation){
+      if(isNavigation){
         return <TagAnchor interactiveType='navigation' href={disabled ? '' : href} {...sharedInteractiveProps}>{content}</TagAnchor>
       }
     }

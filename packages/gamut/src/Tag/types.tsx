@@ -37,8 +37,7 @@ export interface SelectionTagProps extends BaseTagProps {
   onDismiss: ComponentProps<typeof DismissButton>['onClick'];
   onClick?: never;
   href?: never;
-  // Should I make disabled optional?
-  disabled: boolean;
+  disabled?: boolean;
   variant: 'selection';
 }
 
@@ -46,7 +45,7 @@ export interface InteractiveTagProps extends BaseTagProps {
   onDismiss?: never;
   href?: string;
   onClick?: HTMLProps<HTMLAnchorElement>['onClick'];
-  disabled: boolean;
+  disabled?: boolean;
   interactiveType: 'suggestion' | 'navigation';
 }
 
@@ -59,16 +58,27 @@ export interface BaseTagAnchorProps
     }
 
 export interface NavigationAnchorProps extends BaseTagAnchorProps {
-  onClick?: never;
   href: string;
 }
 
 export interface SuggestionAnchorProps extends BaseTagAnchorProps {
-  onClick: HTMLProps<HTMLAnchorElement>['onClick'];
   href?: never;
 }
 
 export type TagAnchorProps = SuggestionAnchorProps | NavigationAnchorProps
 
-export interface TagTextProps
-  extends StyleProps<typeof textSizeVariants> {}
+export interface BaseTagTextProps
+  extends StyleProps<typeof textSizeVariants> {
+    onClick?: never;
+    href?: never;
+  }
+
+export interface TagTextReadOnlyProps extends BaseTagTextProps {
+  disabled?: never;
+}
+
+export interface TagTextSelectionProps extends BaseTagTextProps {
+  disabled?: boolean;
+}
+
+export type TagTextProps = TagTextReadOnlyProps | TagTextSelectionProps
