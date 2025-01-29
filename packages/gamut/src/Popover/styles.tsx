@@ -28,7 +28,7 @@ export const raisedDivVariants = variant({
   },
 });
 
-const borderStyles = { borderColor: 'secondary', border: 1 } as const;
+const borderStyles = { border: 1 } as const;
 export const outlineVariants = variant({
   defaultVariant: 'boxShadow',
   prop: 'outline',
