@@ -1,5 +1,5 @@
 import { Box, FlexBox, Tag } from '@codecademy/gamut';
-import { MiniStarIcon } from '@codecademy/gamut-icons';
+import { MiniCheckCircleIcon, MiniChevronDownIcon, MiniChevronUpIcon,MiniKebabMenuIcon, MiniPinIcon,MiniRemoveCircleIcon, MiniStarIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Tag> = {
@@ -19,37 +19,43 @@ export const Default: Story = {
   },
 };
 
-export const ReadOnlyLarge: Story = {
+export const ReadOnly: Story = {
   args: {
-    children: 'Large read-only',
-    size: 'large',
-  }
+    variant: 'readOnly',
+  },
+  render: (args) => (
+    <FlexBox gap={24}>
+      <Box>
+        <Tag {...args}>Read-only</Tag>
+      </Box>
+      <Box>
+        <Tag size="large" {...args}>Large read-only</Tag>
+      </Box>
+    </FlexBox>
+  ),
 }
 
 export const Selection: Story = {
   args: {
     variant: 'selection',
-    children: 'Selection',
     onDismiss: () => {}
   },
-};
-
-export const SelectionLarge: Story = {
-  args: {
-    variant: 'selection',
-    children: 'Large selection',
-    size: 'large',
-    onDismiss: () => {}
-  },
-};
-
-export const SelectionDisabled: Story = {
-  args: {
-    variant: 'selection',
-    children: 'Disabled selection',
-    onDismiss: () => {},
-    disabled: true,
-  },
+  render: (args) => (
+    <FlexBox gap={24}>
+      <Box>
+        <Tag {...args}>Selection</Tag>
+      </Box>
+      <Box>
+        <Tag size="large" {...args}>Large selection</Tag>
+      </Box>
+      <Box>
+        <Tag disabled {...args}>Selection disabled</Tag>
+      </Box>
+      <Box>
+        <Tag disabled size="large" {...args}>Large selection disabled</Tag>
+      </Box>
+    </FlexBox>
+  ),
 };
 
 export const Navigation: Story = {
@@ -58,84 +64,81 @@ export const Navigation: Story = {
     children: 'Navigation',
     href: '/',
   },
+  render: (args) => (
+    <FlexBox gap={24}>
+      <Box>
+        <Tag {...args}>Navigation</Tag>
+      </Box>
+      <Box>
+        <Tag size="large" {...args}>Large navigation</Tag>
+      </Box>
+      <Box>
+        <Tag disabled {...args}>Navigation disabled</Tag>
+      </Box>
+      <Box>
+        <Tag disabled size="large" {...args}>Large navigation disabled</Tag>
+      </Box>
+    </FlexBox>
+  ),
 };
 
-export const NavigationLarge: Story = {
-  args: {
-    variant: 'navigation',
-    children: 'Large navigation',
-    href: '/',
-    size: 'large',
-  },
-};
-
-export const NavigationDisabled: Story = {
-  args: {
-    variant: 'navigation',
-    children: 'Navigation disabled',
-    href: '/',
-    disabled: true,
-  },
-};
 
 export const Suggestion: Story = {
   args: {
     variant: 'suggestion',
-    children: 'Suggestion',
     onClick: () => {},
   },
+  render: (args) => (
+    <FlexBox gap={24}>
+      <Box>
+        <Tag {...args}>Suggestion</Tag>
+      </Box>
+      <Box>
+        <Tag size="large" {...args}>Large suggestion</Tag>
+      </Box>
+      <Box>
+        <Tag disabled {...args}>Suggestion disabled</Tag>
+      </Box>
+      <Box>
+        <Tag disabled size="large" {...args}>Large suggestion disabled</Tag>
+      </Box>
+    </FlexBox>
+  ),
 };
 
-export const SuggestionLarge: Story = {
-  args: {
-    variant: 'suggestion',
-    children: 'Large suggestion',
-    onClick: () => {},
-    size: 'large',
-  },
-};
-
-export const SuggestionDisabled: Story = {
-  args: {
-    variant: 'suggestion',
-    children: 'Suggestion disabled',
-    onClick: () => {},
-    disabled: true,
-  },
-};
 
 export const WithIcon: Story = {
   args: {
-    icon: MiniStarIcon,
+
   },
-  render: (args) => (
+  render: () => (
     <FlexBox column>
       <FlexBox row>
         <Box mx={2}>
-          <Tag variant='readOnly' {...args}>Gotcha!</Tag>
+          <Tag variant='readOnly' icon={MiniStarIcon} >Gotcha!</Tag>
         </Box>
         <Box mx={2}>
-          <Tag variant='selection' {...args}>Tag!</Tag>
+          <Tag variant='selection' icon={MiniPinIcon} >Tag!</Tag>
         </Box>
         <Box mx={2}>
-          <Tag variant='suggestion' {...args}>You&apos;re it!</Tag>
+          <Tag variant='suggestion' icon={MiniCheckCircleIcon} >You&apos;re it!</Tag>
         </Box>
         <Box mx={2}>
-          <Tag variant='navigation' href="" {...args}>No tagbacks!</Tag>
+          <Tag variant='navigation' icon={MiniRemoveCircleIcon} href="" >No tagbacks!</Tag>
         </Box>
       </FlexBox>
       <FlexBox row mt={10}>
         <Box mx={2}>
-          <Tag size="large" variant='readOnly' {...args}>Duck,</Tag>
+          <Tag size="large" variant='readOnly' icon={MiniChevronDownIcon}>Duck,</Tag>
         </Box>
         <Box mx={2}>
-          <Tag size="large" variant='selection' {...args}>Duck,</Tag>
+          <Tag size="large" variant='selection' icon={MiniChevronDownIcon}>Duck,</Tag>
         </Box>
         <Box mx={2}>
-          <Tag size="large" variant='suggestion' {...args}>Duck...</Tag>
+          <Tag size="large" variant='suggestion' icon={MiniKebabMenuIcon}>Duck...</Tag>
         </Box>
         <Box mx={2}>
-          <Tag size="large" variant='navigation' href="" {...args}>Goose!</Tag>
+          <Tag size="large" variant='navigation' href="" icon={MiniChevronUpIcon}>Goose!</Tag>
         </Box>
     </FlexBox>
   </FlexBox>

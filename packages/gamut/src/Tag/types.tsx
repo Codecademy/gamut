@@ -37,6 +37,7 @@ export interface SelectionTagProps extends BaseTagProps {
   onDismiss: ComponentProps<typeof DismissButton>['onClick'];
   onClick?: never;
   href?: never;
+  // Should I make disabled optional?
   disabled: boolean;
   variant: 'selection';
 }

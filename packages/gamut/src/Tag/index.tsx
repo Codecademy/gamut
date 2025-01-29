@@ -17,7 +17,7 @@ export const Tag: React.FC<TagProps> = ({
   onDismiss,
   href = '',
   onClick,
-  disabled=false,
+  disabled = false,
   size,
   icon,
   ...rest
