@@ -28,7 +28,7 @@ export interface ReadOnlyTagProps extends BaseTagProps {
   onClick?: never;
   href?: never;
   variant: 'readOnly';
-  disabled: never;
+  disabled?: never;
 }
 export interface SelectionTagProps extends BaseTagProps {
   /**

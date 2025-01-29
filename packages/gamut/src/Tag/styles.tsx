@@ -20,10 +20,12 @@ export const dismissSharedStyles = {
   minWidth: '24px',
 };
 
-const anchorDefaultVerticalPadding =  1.5;
-const anchorLargeVerticalPadding =  5.5;
-const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}` as const;
-const hoverAndDisabled = `${Selectors.HOVER}, ${Selectors.DISABLED}` as const;
+const textDefaultVerticalPadding =  1.5;
+const textLargeVerticalPadding =  5.5;
+const anchorDefaultVerticalPadding =  0.5;
+const anchorLargeVerticalPadding =  4.5;
+const hoverAndFocus = `${Selectors.HOVER}:${Selectors.FOCUS}` as const;
+const hoverAndDisabled = `&:hover:[disabled], &:hover:disabled` as const;
 
 export const outlineStyling = css({
   // This is a bit of a hack as we don't have access to focus-visible from this component. If you are not properly dismissing your tags you may see this primary colored outline after clicking X, but otherwise you should never hit this behavior.
@@ -88,7 +90,20 @@ export const tagUsageVariants = variant({
   },
 });
 
-export const sizeVariants = variant({
+export const textSizeVariants = variant({
+  defaultVariant: 'default',
+  prop: 'size',
+  variants: {
+    default: {
+      py: textDefaultVerticalPadding as any
+    },
+    large: {
+      py: textLargeVerticalPadding as any
+    },
+  },
+})
+
+export const anchorSizeVariants = variant({
   defaultVariant: 'default',
   prop: 'size',
   variants: {
@@ -125,11 +140,13 @@ export const anchorVariants = variant({
   prop: 'interactiveType',
   base: {
     px: tagLabelPadding,
+    lineHeight: 1.5 as any,
+    fontSize: 14,
     textDecoration: 'none',
     ":before": {
       display: 'none'
     },
-    // color: 'text',
+    color: 'text',
     [ButtonSelectors.FOCUS_VISIBLE]: {
       outline: 'none',
       border: 'none',
@@ -149,7 +166,6 @@ export const anchorVariants = variant({
   },
   variants: {
     navigation: {
-      color: 'text',
       [ButtonSelectors.ACTIVE]: {
         color: 'background',
         bg: 'secondary',
@@ -157,7 +173,6 @@ export const anchorVariants = variant({
       },
     },
     suggestion: {
-      color: 'text',
       [ButtonSelectors.ACTIVE]: {
         bg: 'primary',
         color: 'background',
@@ -179,14 +194,12 @@ export const dismissButtonOverrides = {
 };
 
 export const dismissButtonStyling = css({
-  ...dismissSharedStyles,
   color: 'background',
   bg: 'text-secondary',
   border: 'none',
   borderRadiusRight: 'md',
   borderRadiusLeft: 'none',
   width: 12,
-  ...dismissButtonOverrides,
   [hoverAndFocus]: {
     color: 'background',
     bg: 'secondary-hover',
@@ -194,12 +207,14 @@ export const dismissButtonStyling = css({
   [ButtonSelectors.DISABLED]: {
     bg: 'background-disabled',
   },
-  [hoverAndDisabled]: {
-     color: 'text-disabled'
-  },
   [ButtonSelectors.HOVER]: {
     color: 'background',
   },
+  [hoverAndDisabled]: {
+    color: 'text-disabled'
+ },
+  ...dismissSharedStyles,
+  ...dismissButtonOverrides,
 })
 
 export const miniDeleteIconVariants = variant({
@@ -207,6 +222,9 @@ export const miniDeleteIconVariants = variant({
   prop: 'size',
   base: {
     color: 'inherit',
+    [ButtonSelectors.HOVER]: {
+      color: 'background',
+    }
   },
   variants: {
     default: {

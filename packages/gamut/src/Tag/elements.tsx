@@ -6,15 +6,16 @@ import { Box, FlexBox } from '../Box';
 import { IconButton } from '../Button';
 import { Text } from '../Typography';
 import {
+  anchorSizeVariants,
   anchorVariants,
   dismissButtonStyling,
   miniDeleteIconVariants,
   outlineStates,
   outlineStyling,
-  sizeVariants,
   tagTextStyling,
   tagUsageVariants,
   tagWrapperStates,
+  textSizeVariants,
 } from './styles';
 import { BaseTagProps, TagAnchorProps, tagProps, TagTextProps } from './types';
 
@@ -39,10 +40,10 @@ export const StyledMiniDeleteIcon = styled(MiniDeleteIcon)(
 
 export const TagAnchor = styled(Anchor)<TagAnchorProps>(
   anchorVariants,
-  sizeVariants,
+  anchorSizeVariants,
 )
 
 export const TagText = styled(Text)<TagTextProps>(
   tagTextStyling,
-  sizeVariants
+  textSizeVariants
 )
