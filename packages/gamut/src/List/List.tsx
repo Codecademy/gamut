@@ -1,15 +1,16 @@
+import { DotLoose } from '@codecademy/gamut-patterns';
 import isArray from 'lodash/isArray';
 import { ComponentProps, forwardRef, useEffect, useRef, useState } from 'react';
 import * as React from 'react';
 
-import { Box, BoxProps } from '../Box';
-import { ListEl } from './elements';
+import { Box, BoxProps, FlexBox } from '../Box';
+import { ListEl, ListWrapper } from './elements';
 import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
 export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
-  /** Whether List should be an ol or ul element */
-  as?: 'ol' | 'ul';
+  /** Whether List should be an ol, ul element, or table */
+  as?: 'ol' | 'ul' | 'table';
   /** Whether a placeholder width should be set when loading */
   loading?: boolean;
   /** Should only be used internally to Gamut */
@@ -58,45 +59,61 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     const [isEnd, setIsEnd] = useState(false);
     const showShadow = shadow && scrollable && !isEnd;
     const value = useList({
-      isOl: as === 'ol',
+      listType: as,
       rowBreakpoint,
       scrollable,
       spacing,
       variant,
     });
 
-    const topOfTable = useRef<HTMLDivElement>(null);
+    const wrapperRef = useRef<HTMLDivElement>(null);
+    const tableRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-      if (scrollToTopOnUpdate && topOfTable.current !== null) {
-        topOfTable.current.scrollTo({ top: 0 });
+      const wrapperWidth =
+        wrapperRef?.current?.getBoundingClientRect()?.width ?? 0;
+      const tableWidth = tableRef?.current?.getBoundingClientRect().width ?? 0;
+
+      setIsEnd(tableWidth < wrapperWidth);
+    }, []);
+
+    const isTable = as === 'table';
+    useEffect(() => {
+      if (scrollToTopOnUpdate && tableRef.current !== null) {
+        tableRef.current.scrollTo({ top: 0 });
       }
     });
 
     const listContent = (
-      <ListEl as={as} ref={ref} variant={value.variant}>
+      <ListEl as={isTable ? 'tbody' : as} ref={ref} variant={value.variant}>
         {children}
       </ListEl>
     );
 
     const scrollHandler = (event: React.UIEvent<HTMLDivElement>) => {
       const { offsetWidth, scrollLeft, scrollWidth } = event.currentTarget;
-      setIsEnd(offsetWidth + scrollLeft >= scrollWidth);
+      setIsEnd(offsetWidth + Math.ceil(scrollLeft) >= scrollWidth);
     };
 
     const listContents = (
       <>
-        {header} {isEmpty ? emptyMessage : listContent}
+        {header}
+        {isEmpty ? emptyMessage : listContent}
       </>
     );
 
     const content =
       isEmpty || loading ? (
         <Box
+          as="table"
+          maxHeight="inherit"
+          height="inherit"
+          minHeight="inherit"
           minWidth="min-content"
-          width="100%"
           position="relative"
-          ref={topOfTable}
+          overflow="inherit"
+          ref={tableRef}
+          width="100%"
         >
           {listContents}
         </Box>
@@ -106,35 +123,36 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
 
     return (
       <ListProvider value={value}>
-        <Box
-          position="relative"
-          overflow={overflowHidden ? 'hidden' : overflow}
-          width={1}
+        <ListWrapper
           id={id}
+          onScroll={scrollable ? scrollHandler : undefined}
+          overflow={overflowHidden ? 'hidden' : overflow}
+          position="relative"
+          ref={wrapperRef}
+          scrollable={!isEmpty && showShadow}
+          width={1}
+          maxHeight={height}
         >
           <Box
+            as={isTable && !isEmpty && !loading ? 'table' : 'div'}
             data-testid={`scrollable-${id}`}
-            maxHeight={height}
+            height={isEmpty ? height : 'fit-content'}
             maxWidth={1}
             minHeight={minHeight}
-            onScroll={scrollable ? scrollHandler : undefined}
             overflow="inherit"
             position="relative"
-            ref={!isEmpty ? topOfTable : undefined}
+            ref={!isEmpty ? tableRef : undefined}
+            width="inherit"
           >
             {content}
           </Box>
-          {showShadow && (
-            <Box
-              position="absolute"
-              right={-10}
-              top={0}
-              bottom={0}
-              width={10}
-              boxShadow="0 0 48px black, 0 0 24px black"
-            />
+
+          {isEmpty && (
+            <FlexBox center width={1}>
+              <DotLoose position="absolute" inset={0} top={-2} />
+            </FlexBox>
           )}
-        </Box>
+        </ListWrapper>
       </ListProvider>
     );
   }
