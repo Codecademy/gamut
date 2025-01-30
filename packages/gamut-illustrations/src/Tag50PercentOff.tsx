@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { IllustrationProps } from './types';
 
-export const TagFiftyPercentOff: React.FC<IllustrationProps> = ({
+export const Tag50PercentOff: React.FC<IllustrationProps> = ({
   'aria-hidden': ariaHidden,
   className,
   height,
