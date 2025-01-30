@@ -28,6 +28,11 @@ const preview: Preview = {
           'Typography',
           'Atoms',
           'Molecules',
+          'Organisms',
+          'UX Writing',
+          ['About', 'DIY UX writing in 8 steps', 'Accessibility guidelines', 'Component guidelines',
+            ['About', 'Alerts', 'Alternative text', 'Buttons', 'Confirmation dialogs', 'Error messages', 'Notifications',  'Toasts', 'Tooltips',]
+          ],
           '*',
         ],
       },

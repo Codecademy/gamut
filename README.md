@@ -1,7 +1,5 @@
 # Gamut
 
-// Storybook 8 branch
-
 _The component library & design system for Codecademy._ ✨
 
 ---

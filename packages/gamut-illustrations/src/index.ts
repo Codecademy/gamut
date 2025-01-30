@@ -48,6 +48,7 @@ export * from './Python';
 export * from './SevenDayTrial';
 export * from './Sun';
 export * from './Syllabus';
+export * from './TagCelebration';
 export * from './Target';
 export * from './TinyBlocks';
 export * from './types';
