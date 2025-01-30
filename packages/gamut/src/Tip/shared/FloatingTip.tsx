@@ -3,10 +3,13 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
 import { useMeasure } from 'react-use';
 
-import { Box, FlexBox } from '../../Box';
+import { Box } from '../../Box';
 import { PreviewTipContents } from '../PreviewTip/elements';
-import { FloatingTipBody, TargetContainer } from './elements';
-import { narrowWidth } from './styles';
+import {
+  FloatingTipBody,
+  FloatingTipTextWrapper,
+  TargetContainer,
+} from './elements';
 import { TipWrapperProps } from './types';
 import { getAlignmentWidths, getPopoverAlignment, runWithDelay } from './utils';
 
@@ -134,14 +137,14 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         variant="secondary"
         widthRestricted={false}
       >
-        <FlexBox
-          alignItems={isHoverType ? undefined : 'flex-start'}
-          flexDirection="column"
+        <FloatingTipTextWrapper
           ref={childRef}
-          width={narrow ? narrowWidth : undefined}
+          isHoverType={isHoverType}
+          narrow={narrow}
+          centered={alignment.includes('center')}
         >
           {contents}
-        </FlexBox>
+        </FloatingTipTextWrapper>
       </FloatingTipBody>
     </Box>
   );

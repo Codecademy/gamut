@@ -1,12 +1,14 @@
-import { css, timing } from '@codecademy/gamut-styles';
+import { css, states, timing } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { Box } from '../../Box';
+import { Box, FlexBox } from '../../Box';
 import { Selectors } from '../../ButtonBase/ButtonBase';
 import { Popover } from '../../Popover';
 import {
+  centerWidths,
   inlineToolTipBodyAlignments,
+  narrowWidth,
   toolTipBodyCss,
   toolTipWidthRestrictions,
 } from './styles';
@@ -16,6 +18,21 @@ const tipWrapperStyles = {
   display: 'inline-flex',
   overflowWrap: 'break-word',
 } as const;
+
+const floatingTipTextStates = states({
+  isHoverType: { alignItems: 'flexStart' },
+  narrow: { width: narrowWidth },
+  centered: {
+    ...centerWidths,
+  },
+});
+
+export const FloatingTipTextWrapper = styled(FlexBox)<
+  StyleProps<typeof floatingTipTextStates>
+>(
+  css({ flexDirection: 'column', overflowWrap: 'break-word' }),
+  floatingTipTextStates
+);
 
 export const ToolTipWrapper = styled.div(
   css({
