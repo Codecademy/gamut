@@ -1,5 +1,7 @@
+import { ListProps } from './List';
+
 export interface PrivateListProps {
-  isOl?: boolean;
+  listType?: ListProps['as'];
   rowBreakpoint?: 'xs' | 'sm' | 'md';
   scrollable?: boolean;
   spacing?: 'normal' | 'condensed' | 'compact';

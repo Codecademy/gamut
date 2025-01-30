@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [57.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.2...@codecademy/gamut@57.7.3) (2025-01-29)
+
+### Bug Fixes
+
+- DataGrid reformatted to `table` and aria-sort added ([9903099](https://github.com/Codecademy/gamut/commit/99030998cba981215a56ce260c588385f78b398a))
+
+### [57.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.1...@codecademy/gamut@57.7.2) (2025-01-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [57.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.0...@codecademy/gamut@57.7.1) (2025-01-15)
+
+### Bug Fixes
+
+- **FormGroupLabel:** enable screenreaders to read a label's "optional" text ([3b1a3a5](https://github.com/Codecademy/gamut/commit/3b1a3a5f48be3291de25267bb436d0f446f84e8f))
+
+## [57.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.6.4...@codecademy/gamut@57.7.0) (2025-01-14)
+
+### Features
+
+- **borderColors:** adding semantic and colormode compatible colors for borderColor ([5e61c28](https://github.com/Codecademy/gamut/commit/5e61c289ce2eec83ef23d83633aca062247f1f61))
+
+### [57.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.6.3...@codecademy/gamut@57.6.4) (2025-01-09)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ### [57.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.6.2...@codecademy/gamut@57.6.3) (2025-01-06)
 
 **Note:** Version bump only for package @codecademy/gamut

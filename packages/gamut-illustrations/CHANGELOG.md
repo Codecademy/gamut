@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.51.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.50.2...@codecademy/gamut-illustrations@0.51.0) (2025-01-22)
+
+### Features
+
+- **TagCelebration:** :sparkles: A new illustration for the upcoming trial cancellation incentive ([89f18d4](https://github.com/Codecademy/gamut/commit/89f18d429521ddd6e339e7fbd13fe9f1e0292b9c))
+
+### [0.50.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.50.1...@codecademy/gamut-illustrations@0.50.2) (2025-01-14)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.50.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.50.0...@codecademy/gamut-illustrations@0.50.1) (2025-01-09)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
 ## [0.50.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.49.2...@codecademy/gamut-illustrations@0.50.0) (2024-12-13)
 
 ### Features
