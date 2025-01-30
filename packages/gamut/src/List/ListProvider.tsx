@@ -20,7 +20,7 @@ export function useListContext() {
 }
 
 export function useList({
-  isOl,
+  listType,
   rowBreakpoint,
   scrollable,
   spacing,
@@ -37,13 +37,13 @@ export function useList({
   return useMemo(
     () => ({
       depth: depth + 1,
-      isOl,
+      listType,
       root: depth === 0,
       rowBreakpoint,
       scrollable,
       spacing: activeSpacing,
       variant: activeVariant,
     }),
-    [isOl, scrollable, activeVariant, activeSpacing, depth, rowBreakpoint]
+    [listType, scrollable, activeVariant, activeSpacing, depth, rowBreakpoint]
   );
 }

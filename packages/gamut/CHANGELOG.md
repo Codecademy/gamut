@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [57.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.2...@codecademy/gamut@57.7.3) (2025-01-29)
+
+### Bug Fixes
+
+- DataGrid reformatted to `table` and aria-sort added ([9903099](https://github.com/Codecademy/gamut/commit/99030998cba981215a56ce260c588385f78b398a))
+
 ### [57.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.1...@codecademy/gamut@57.7.2) (2025-01-22)
 
 **Note:** Version bump only for package @codecademy/gamut

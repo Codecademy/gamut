@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "68.4.0",
+  "version": "68.4.1",
   "author": "Codecademy Engineering",
   "license": "MIT",
   "publishConfig": {
