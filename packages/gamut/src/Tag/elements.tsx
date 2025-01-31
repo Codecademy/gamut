@@ -8,8 +8,10 @@ import { Text } from '../Typography';
 import {
   anchorSizeVariants,
   anchorVariants,
+  defaultminiDeleteIconStyling,
+  dismissButtonLargeStyling,
   dismissButtonStyling,
-  miniDeleteIconVariants,
+  largeMiniDeleteIconStyling,
   outlineStates,
   outlineStyling,
   tagTextStyling,
@@ -17,7 +19,7 @@ import {
   tagWrapperStates,
   textSizeVariants,
 } from './styles';
-import { BaseTagProps, TagAnchorProps, tagProps, TagTextProps } from './types';
+import { BaseTagProps, DismissButtonProps, TagAnchorProps, tagProps, TagTextProps } from './types';
 
 export const Outline = styled(FlexBox)(
   outlineStyling,
@@ -30,12 +32,9 @@ export const TagLabelWrapper = styled(Box)<BaseTagProps>(
   tagWrapperStates,
 );
 
-export const DismissButton = styled(IconButton)(
-  dismissButtonStyling
-);
-
-export const StyledMiniDeleteIcon = styled(MiniDeleteIcon)(
-  miniDeleteIconVariants
+export const DismissButton = styled(IconButton)<DismissButtonProps>(
+  dismissButtonStyling,
+  dismissButtonLargeStyling
 );
 
 export const TagAnchor = styled(Anchor)<TagAnchorProps>(
@@ -47,3 +46,10 @@ export const TagText = styled(Text)<TagTextProps>(
   tagTextStyling,
   textSizeVariants
 )
+
+export const DefaultMiniDeleteIcon = styled(MiniDeleteIcon)(
+  defaultminiDeleteIconStyling
+);
+export const LargeMiniDeleteIcon = styled(MiniDeleteIcon)(
+  largeMiniDeleteIconStyling
+);

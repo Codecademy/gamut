@@ -194,13 +194,19 @@ export const dismissButtonOverrides = {
   },
 };
 
+export const dismissButtonLargeStyling = states({
+  isLarge: {
+    minWidth: 32,
+  }
+})
+
 export const dismissButtonStyling = css({
   color: 'background',
   bg: 'text-secondary',
   border: 'none',
   borderRadiusRight: 'md',
   borderRadiusLeft: 'none',
-  width: 12,
+  width: "100%",
   [hoverAndFocus]: {
     color: 'background',
     bg: 'secondary-hover',
@@ -213,18 +219,12 @@ export const dismissButtonStyling = css({
   ...dismissButtonOverrides,
 })
 
-export const miniDeleteIconVariants = variant({
-  defaultVariant: 'default',
-  prop: 'size',
-  base: {
-    color: 'inherit',
-  },
-  variants: {
-    default: {
-      width: 12
-    },
-    large: {
-      width: 16
-    },
-  },
+export const defaultminiDeleteIconStyling = css({
+  width: 12,
+  color: 'inherit',
+})
+
+export const largeMiniDeleteIconStyling = css({
+  width: 16,
+  color: 'inherit',
 })

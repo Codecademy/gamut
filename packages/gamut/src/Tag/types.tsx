@@ -4,7 +4,7 @@ import { ComponentProps, HTMLProps } from 'react';
 
 import { IconComponentType, WithChildrenProp } from '../utils';
 import { DismissButton } from './elements';
-import { anchorSizeVariants, anchorVariants, tagUsageVariants, tagWrapperStates,textSizeVariants } from './styles';
+import { anchorSizeVariants, anchorVariants, dismissButtonLargeStyling,dismissButtonStyling, tagUsageVariants, tagWrapperStates,textSizeVariants } from './styles';
 
 export const tagProps = variance.compose(
   system.space,
@@ -29,6 +29,7 @@ export interface ReadOnlyTagProps extends BaseTagProps {
   href?: never;
   variant: 'readOnly';
   disabled?: never;
+  // interactiveType?: never;
 }
 export interface SelectionTagProps extends BaseTagProps {
   /**
@@ -39,6 +40,7 @@ export interface SelectionTagProps extends BaseTagProps {
   href?: never;
   disabled?: boolean;
   variant: 'selection';
+  // interactiveType?: never;
 }
 
 export interface InteractiveTagProps extends BaseTagProps {
@@ -46,7 +48,7 @@ export interface InteractiveTagProps extends BaseTagProps {
   href?: string;
   onClick?: HTMLProps<HTMLAnchorElement>['onClick'];
   disabled?: boolean;
-  interactiveType: 'suggestion' | 'navigation';
+  variant: 'navigation' | 'suggestion';
 }
 
 export type TagProps = ReadOnlyTagProps | SelectionTagProps | InteractiveTagProps
@@ -54,7 +56,7 @@ export type TagProps = ReadOnlyTagProps | SelectionTagProps | InteractiveTagProp
 export interface BaseTagAnchorProps
   extends StyleProps<typeof anchorVariants>,
     StyleProps<typeof anchorSizeVariants> {
-      disabled: boolean;
+      disabled?: boolean;
     }
 
 export interface NavigationAnchorProps extends BaseTagAnchorProps {
@@ -82,3 +84,7 @@ export interface TagTextSelectionProps extends BaseTagTextProps {
 }
 
 export type TagTextProps = TagTextReadOnlyProps | TagTextSelectionProps
+
+export interface DismissButtonProps
+  extends StyleProps<typeof dismissButtonStyling>,
+  StyleProps<typeof dismissButtonLargeStyling> {}

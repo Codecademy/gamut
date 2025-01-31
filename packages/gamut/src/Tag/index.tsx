@@ -2,9 +2,10 @@ import * as React from 'react';
 
 import { appendIconToContent } from '../helpers';
 import {
+  DefaultMiniDeleteIcon,
   DismissButton,
+  LargeMiniDeleteIcon,
   Outline,
-  StyledMiniDeleteIcon,
   TagAnchor,
   TagLabelWrapper,
   TagText,
@@ -27,8 +28,9 @@ export const Tag: React.FC<TagProps> = ({
   const isNavigation = variant === 'navigation';
   const isSuggestion = variant === 'suggestion';
   const isInteractive = isNavigation || isSuggestion;
+  const isLarge = size === 'large';
 
-  const DeleteIcon: React.FC = () => <StyledMiniDeleteIcon size={size} aria-hidden />;
+
   const content = appendIconToContent({
     children,
     icon,
@@ -44,8 +46,7 @@ export const Tag: React.FC<TagProps> = ({
 
   const CorrectLabel = (
     () => {
-      if(variant === 'readOnly' ) {
-        // Q: is it possible to type this where onClick throws an error?
+      if(isReadOnly) {
         return <TagText size={size}>{content}</TagText>;
       }
       if(isSelection) {
@@ -78,10 +79,10 @@ export const Tag: React.FC<TagProps> = ({
           onClick={onDismiss || undefined}
           tip={disabled ? '' : "Remove"}
           tipProps={{ placement: disabled ? undefined : 'floating' }}
-          icon={DeleteIcon}
-          width="100%"
+          icon={isLarge ? LargeMiniDeleteIcon : DefaultMiniDeleteIcon}
           disabled={disabled}
           aria-disabled={disabled}
+          isLarge={isLarge}
         />
       )}
     </Outline>

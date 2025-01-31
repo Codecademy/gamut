@@ -48,17 +48,15 @@ export const Selection: Story = {
       <Box>
         <Tag size="large" {...args}>Large selection</Tag>
       </Box>
-
+      <Box>
+        <Tag disabled {...args}>Selection disabled</Tag>
+      </Box>
+      <Box>
+        <Tag disabled size="large" {...args}>Large selection disabled</Tag>
+      </Box>
     </FlexBox>
   ),
 };
-
-const saving = {/* <Box>
-  <Tag disabled {...args}>Selection disabled</Tag>
-</Box>
-<Box>
-  <Tag disabled size="large" {...args}>Large selection disabled</Tag>
-</Box> */}
 
 export const Navigation: Story = {
   args: {
@@ -116,31 +114,31 @@ export const WithIcon: Story = {
   render: () => (
     <FlexBox column>
       <FlexBox row>
-        <Box mx={2}>
+        <Box mx={4}>
           <Tag variant='readOnly' icon={MiniStarIcon} >Gotcha!</Tag>
         </Box>
-        <Box mx={2}>
+        <Box mx={4}>
           <Tag variant='selection' icon={MiniPinIcon} >Tag!</Tag>
         </Box>
-        <Box mx={2}>
-          <Tag variant='suggestion' icon={MiniCheckCircleIcon} >You&apos;re it!</Tag>
+        <Box mx={4}>
+          <Tag variant='navigation' icon={MiniRemoveCircleIcon} href="" >You&apos;re it!</Tag>
         </Box>
-        <Box mx={2}>
-          <Tag variant='navigation' icon={MiniRemoveCircleIcon} href="" >No tagbacks!</Tag>
+        <Box mx={4}>
+          <Tag variant='suggestion' icon={MiniCheckCircleIcon} >No tagbacks!</Tag>
         </Box>
       </FlexBox>
-      <FlexBox row mt={10}>
-        <Box mx={2}>
+      <FlexBox row mt={12}>
+        <Box mx={4}>
           <Tag size="large" variant='readOnly' icon={MiniChevronDownIcon}>Duck,</Tag>
         </Box>
-        <Box mx={2}>
+        <Box mx={4}>
           <Tag size="large" variant='selection' icon={MiniChevronDownIcon}>Duck,</Tag>
         </Box>
-        <Box mx={2}>
-          <Tag size="large" variant='suggestion' icon={MiniKebabMenuIcon}>Duck...</Tag>
+        <Box mx={4}>
+          <Tag size="large" variant='navigation' href="" icon={MiniChevronUpIcon}>Duck...</Tag>
         </Box>
-        <Box mx={2}>
-          <Tag size="large" variant='navigation' href="" icon={MiniChevronUpIcon}>Goose!</Tag>
+        <Box mx={4}>
+          <Tag size="large" variant='suggestion' icon={MiniKebabMenuIcon}>Goose!</Tag>
         </Box>
     </FlexBox>
   </FlexBox>
