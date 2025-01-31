@@ -22,37 +22,79 @@ export interface BaseTagProps
 
 export interface ReadOnlyTagProps extends BaseTagProps {
   /**
-   * ClickHandler for the DismissButton.
+   * ClickHandler for the DismissButton on Selection tags.
    */
   onDismiss?: never;
+  /**
+   * ClickHandler for the Navigation and Suggestion tags.
+   */
   onClick?: never;
+  /**
+   * URL for Navigation tags.
+   */
   href?: never;
   variant: 'readOnly';
+  /**
+   * Provides disabled styling for Selection, Navigation, and Suggestion tags.
+   */
   disabled?: never;
 }
 export interface SelectionTagProps extends BaseTagProps {
   /**
-   * ClickHandler for the DismissButton.
+   * ClickHandler for the DismissButton on Selection tags.
    */
   onDismiss: ComponentProps<typeof DismissButton>['onClick'];
+  /**
+   * ClickHandler for the Navigation and Suggestion tags.
+   */
   onClick?: never;
+  /**
+   * URL for Navigation tags.
+   */
   href?: never;
+  /**
+   * Provides disabled styling for Selection, Navigation, and Suggestion tags.
+   */
   disabled?: boolean;
   variant: 'selection';
 }
 
 export interface NavigationTagProps extends BaseTagProps {
+  /**
+   * ClickHandler for the DismissButton on Selection tags.
+   */
   onDismiss?: never;
+  /**
+   * URL for Navigation tags.
+   */
   href: string;
+  /**
+   * ClickHandler for the Navigation and Suggestion tags.
+   */
   onClick?: HTMLProps<HTMLAnchorElement>['onClick'];
+  /**
+   * Provides disabled styling for Selection, Navigation, and Suggestion tags.
+   */
   disabled?: boolean;
   variant: 'navigation';
 }
 
 export interface SuggestionTagProps extends BaseTagProps {
+  /**
+   * ClickHandler for the DismissButton on Selection tags.
+   */
   onDismiss?: never;
+  /**
+   * URL for Navigation tags.
+   */
   href?: never;
+  /**
+   * ClickHandler for the Navigation and Suggestion tags.
+   */
   onClick: HTMLProps<HTMLAnchorElement>['onClick'];
+  /**
+   * Provides disabled styling for Selection, Navigation, and Suggestion tags.
+   */
   disabled?: boolean;
   variant: 'suggestion';
 }
@@ -67,11 +109,17 @@ export interface BaseTagAnchorProps
 
 export interface NavigationAnchorProps extends BaseTagAnchorProps {
   href: string;
+  /**
+   * ClickHandler for the Navigation and Suggestion tags.
+   */
   onClick?: HTMLProps<HTMLAnchorElement>['onClick'];
 }
 
 export interface SuggestionAnchorProps extends BaseTagAnchorProps {
   href?: never;
+  /**
+   * ClickHandler for the Navigation and Suggestion tags.
+   */
   onClick: HTMLProps<HTMLAnchorElement>['onClick'];
 }
 
