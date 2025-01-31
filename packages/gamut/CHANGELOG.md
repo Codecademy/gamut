@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [57.7.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.3...@codecademy/gamut@57.7.4) (2025-01-31)
+
+### Bug Fixes
+
+- **Tip:** Fixes hover gap and click issues with ToolTips and PreviewTips ([84030ff](https://github.com/Codecademy/gamut/commit/84030ff4b4cd1f676a706e8961a4dd95b242445c))
+
 ### [57.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.2...@codecademy/gamut@57.7.3) (2025-01-29)
 
 ### Bug Fixes
