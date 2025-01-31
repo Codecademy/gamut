@@ -18,9 +18,7 @@ export interface BaseTagProps
     StyleProps<typeof textSizeVariants>,
     StyleProps<typeof tagWrapperStates>,
     Partial<IconComponentType>,
-    WithChildrenProp {
-      // size: 'default' | 'large';
-    }
+    WithChildrenProp {}
 
 export interface ReadOnlyTagProps extends BaseTagProps {
   /**
@@ -31,7 +29,6 @@ export interface ReadOnlyTagProps extends BaseTagProps {
   href?: never;
   variant: 'readOnly';
   disabled?: never;
-  interactiveType?: never;
 }
 export interface SelectionTagProps extends BaseTagProps {
   /**
@@ -42,7 +39,6 @@ export interface SelectionTagProps extends BaseTagProps {
   href?: never;
   disabled?: boolean;
   variant: 'selection';
-  interactiveType?: never;
 }
 
 export interface NavigationTagProps extends BaseTagProps {

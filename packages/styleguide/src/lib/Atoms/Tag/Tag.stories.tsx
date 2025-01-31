@@ -114,16 +114,16 @@ export const WithIcon: Story = {
     <FlexBox column>
       <FlexBox row>
         <Box mx={4}>
-          <Tag variant='readOnly' icon={MiniStarIcon} >Gotcha!</Tag>
+          <Tag  variant='readOnly' icon={MiniStarIcon} >Gotcha!</Tag>
         </Box>
         <Box mx={4}>
-          <Tag variant='selection' icon={MiniPinIcon} >Tag!</Tag>
+          <Tag onDismiss={() => null} variant='selection' icon={MiniPinIcon} >Tag!</Tag>
         </Box>
         <Box mx={4}>
           <Tag variant='navigation' href="" icon={MiniCheckCircleIcon} >You&apos;re it!</Tag>
         </Box>
         <Box mx={4}>
-          <Tag variant='suggestion' icon={MiniRemoveCircleIcon}>No tagbacks!</Tag>
+          <Tag onClick={() => null} variant='suggestion' icon={MiniRemoveCircleIcon}>No tagbacks!</Tag>
         </Box>
       </FlexBox>
       <FlexBox row mt={12}>
@@ -131,13 +131,13 @@ export const WithIcon: Story = {
           <Tag size="large" variant='readOnly' icon={MiniChevronDownIcon}>Duck,</Tag>
         </Box>
         <Box mx={4}>
-          <Tag size="large" variant='selection' icon={MiniChevronDownIcon}>Duck,</Tag>
+          <Tag onDismiss={() => null} size="large" variant='selection' icon={MiniChevronDownIcon}>Duck,</Tag>
         </Box>
         <Box mx={4}>
           <Tag size="large" variant='navigation' href="" icon={MiniKebabMenuIcon}>Duck...</Tag>
         </Box>
         <Box mx={4}>
-          <Tag size="large" variant='suggestion'  icon={MiniChevronUpIcon}>Goose!</Tag>
+          <Tag onClick={() => null} size="large" variant='suggestion'  icon={MiniChevronUpIcon}>Goose!</Tag>
         </Box>
     </FlexBox>
   </FlexBox>
