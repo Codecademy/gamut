@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [58.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.4...@codecademy/gamut@58.0.0) (2025-01-31)
+
+### ⚠ BREAKING CHANGES
+
+- **Menu:** updates menu variants and usage guidance
+
+### Features
+
+- **Menu:** updates menu variants and usage guidance ([3b3e1f6](https://github.com/Codecademy/gamut/commit/3b3e1f662f457f9200b1377b095455874d3f7123))
+
 ### [57.7.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.3...@codecademy/gamut@57.7.4) (2025-01-31)
 
 ### Bug Fixes
