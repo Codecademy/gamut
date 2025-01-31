@@ -28,6 +28,7 @@ export const raisedDivVariants = variant({
   },
 });
 
+const borderStyles = { border: 1 } as const;
 export const outlineVariants = variant({
   defaultVariant: 'boxShadow',
   prop: 'outline',
@@ -36,8 +37,7 @@ export const outlineVariants = variant({
       boxShadow: '0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15)',
     },
     outline: {
-      borderColor: 'secondary',
-      border: 1,
+      ...borderStyles,
       boxShadow: 'none',
     },
   },
@@ -50,6 +50,28 @@ export const widthStates = states({
   },
 });
 
+export const beakBorderStates = states({
+  hasBorder: borderStyles,
+});
+
+export const beakBoxVariants = variant({
+  base: {
+    alignItems: 'flex-end',
+    height: '15px',
+    justifyContent: 'center',
+    left: 0,
+    position: 'absolute',
+    width: '100%',
+  },
+  variants: {
+    above: {
+      bottom: -15,
+    },
+    below: {
+      top: -15,
+    },
+  },
+});
 const beakVariantsArray = [
   'below-left',
   'below-right',
@@ -72,8 +94,10 @@ const beakVariantStyles = createVariantsFromAlignments(
 
 export const beakVariants = variant({
   base: {
-    position: 'absolute',
     transform: 'rotate(45deg)',
+    background: 'transparent',
+    zIndex: 1,
+    position: 'fixed',
   },
   prop: 'beak',
   variants: beakVariantStyles,

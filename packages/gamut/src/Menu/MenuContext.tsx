@@ -4,14 +4,14 @@ import { ListProps } from '../List';
 
 export interface MenuContextProps {
   spacing: 'normal' | 'condensed';
-  variant: 'select' | 'navigation' | 'action';
+  variant: 'popover' | 'fixed';
   depth: number;
   role: ListProps['role'];
 }
 
 export const MenuContext = createContext<MenuContextProps>({
   spacing: 'normal',
-  variant: 'select',
+  variant: 'popover',
   depth: 0,
   role: undefined,
 });
