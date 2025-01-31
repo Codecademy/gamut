@@ -5,6 +5,7 @@ import {
   bottomCenterStylesAfter,
   bottomStyles,
   bottomStylesAfter,
+  bottomStylesBefore,
   centerStyles,
   centerStylesAfter,
   leftStyles,
@@ -14,6 +15,7 @@ import {
   topCenterStylesAfter,
   topStyles,
   topStylesAfter,
+  topStylesBefore,
 } from './styles';
 import { TipPlacementComponentProps, TipWrapperProps } from './types';
 
@@ -62,13 +64,16 @@ export const getPopoverAlignment = ({
 export const createToolTipVariantFromAlignment = (alignment: string) => {
   let styleObject = {};
   let styleObjectAfter = {};
+  let styleObjectBefore = {};
 
   if (alignment.includes('top')) {
     styleObject = { ...topStyles };
     styleObjectAfter = { ...topStylesAfter };
+    styleObjectBefore = { ...topStylesBefore };
   } else {
     styleObject = { ...bottomStyles };
     styleObjectAfter = { ...bottomStylesAfter };
+    styleObjectBefore = { ...bottomStylesBefore };
   }
 
   if (alignment.includes('center')) {
@@ -87,7 +92,11 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
     styleObjectAfter = { ...styleObjectAfter, ...leftStylesAfter };
   }
 
-  return { ...styleObject, '&::after': styleObjectAfter };
+  return {
+    ...styleObject,
+    '&::after': styleObjectAfter,
+    '&::before': styleObjectBefore,
+  };
 };
 
 export const createVariantsFromAlignments = (
