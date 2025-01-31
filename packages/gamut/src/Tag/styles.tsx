@@ -94,10 +94,12 @@ export const textSizeVariants = variant({
   prop: 'size',
   variants: {
     default: {
-      py: textDefaultVerticalPadding as any
+      pt: textDefaultVerticalPadding + 1 as any,
+      pb: textDefaultVerticalPadding - 1 as any
     },
     large: {
-      py: textLargeVerticalPadding as any
+      pt: textLargeVerticalPadding + 1 as any,
+      pb: textLargeVerticalPadding - 1 as any,
     },
   },
 })
@@ -132,8 +134,10 @@ export const tagWrapperStates = states({
 export const tagTextStyling = css({
   fontSize: tagLabelFontSize,
   lineHeight: 1.5 as any,
-  px: tagLabelPadding
+  px: tagLabelPadding,
 });
+
+
 
 export const anchorVariants = variant({
   prop: 'interactiveType',

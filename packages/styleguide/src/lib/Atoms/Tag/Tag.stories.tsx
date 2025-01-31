@@ -48,15 +48,17 @@ export const Selection: Story = {
       <Box>
         <Tag size="large" {...args}>Large selection</Tag>
       </Box>
-      <Box>
-        <Tag disabled {...args}>Selection disabled</Tag>
-      </Box>
-      <Box>
-        <Tag disabled size="large" {...args}>Large selection disabled</Tag>
-      </Box>
+
     </FlexBox>
   ),
 };
+
+const saving = {/* <Box>
+  <Tag disabled {...args}>Selection disabled</Tag>
+</Box>
+<Box>
+  <Tag disabled size="large" {...args}>Large selection disabled</Tag>
+</Box> */}
 
 export const Navigation: Story = {
   args: {
