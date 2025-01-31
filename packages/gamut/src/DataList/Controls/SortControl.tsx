@@ -61,6 +61,13 @@ export const SortControl: React.FC<SortControlProps> = ({
 
   return (
     <SortAnchor
+      aria-sort={
+        direction === 'none'
+          ? 'none'
+          : direction === 'asc'
+          ? 'ascending'
+          : 'descending'
+      }
       variant="interface"
       onClick={() =>
         onSort?.({

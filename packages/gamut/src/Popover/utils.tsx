@@ -3,14 +3,14 @@ import { theme } from '@codecademy/gamut-styles';
 import { tooltipBackgroundColor } from '../Tip/shared/styles';
 
 const popoverAbove = {
-  borderRight: 'inherit',
-  borderBottom: 'inherit',
+  borderLeft: 'none',
+  borderTop: 'none',
   top: 'calc(100% - 10px)',
 } as const;
 
 const popoverBelow = {
-  borderLeft: 'inherit',
-  borderTop: 'inherit',
+  borderRight: 'none',
+  borderBottom: 'none',
   top: '-10px',
 } as const;
 
@@ -27,14 +27,14 @@ const beakCenter = {
 };
 
 const popoverAboveSml = {
-  borderRight: 'inherit',
-  borderBottom: 'inherit',
+  borderLeft: 'none',
+  borderTop: 'none',
   top: 'calc(100% - 8px)',
 } as const;
 
 const popoverBelowSml = {
-  borderLeft: 'inherit',
-  borderTop: 'inherit',
+  borderRight: 'none',
+  borderBottom: 'none',
   top: '-8px',
 } as const;
 

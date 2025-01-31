@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [58.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.4...@codecademy/gamut@58.0.0) (2025-01-31)
+
+### ⚠ BREAKING CHANGES
+
+- **Menu:** updates menu variants and usage guidance
+
+### Features
+
+- **Menu:** updates menu variants and usage guidance ([3b3e1f6](https://github.com/Codecademy/gamut/commit/3b3e1f662f457f9200b1377b095455874d3f7123))
+
+### [57.7.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.3...@codecademy/gamut@57.7.4) (2025-01-31)
+
+### Bug Fixes
+
+- **Tip:** Fixes hover gap and click issues with ToolTips and PreviewTips ([84030ff](https://github.com/Codecademy/gamut/commit/84030ff4b4cd1f676a706e8961a4dd95b242445c))
+
+### [57.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.2...@codecademy/gamut@57.7.3) (2025-01-29)
+
+### Bug Fixes
+
+- DataGrid reformatted to `table` and aria-sort added ([9903099](https://github.com/Codecademy/gamut/commit/99030998cba981215a56ce260c588385f78b398a))
+
 ### [57.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.1...@codecademy/gamut@57.7.2) (2025-01-22)
 
 **Note:** Version bump only for package @codecademy/gamut

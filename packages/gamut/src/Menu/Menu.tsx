@@ -8,7 +8,7 @@ export const Menu = forwardRef<
   Omit<ComponentProps<typeof List>, 'root'>
 >(
   (
-    { children, variant = 'select', spacing = 'normal', role, ...rest },
+    { children, variant = 'popover', spacing = 'normal', role, ...rest },
     ref
   ) => {
     const currentContext = useMenu({ variant, role, spacing });
