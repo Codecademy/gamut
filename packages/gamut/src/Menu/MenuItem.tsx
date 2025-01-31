@@ -15,9 +15,8 @@ const getListItemType = (href: boolean, onClick: boolean) =>
   href ? 'link' : onClick ? 'button' : 'item';
 
 const activePropnames = {
-  navigation: 'active-navlink',
-  action: 'active',
-  select: 'selected',
+  fixed: 'active-navlink',
+  popover: 'active',
 };
 
 const currentItemText = {
@@ -41,7 +40,7 @@ export const MenuItem = forwardRef<
   const computed = {
     ...props,
     ...rest,
-    variant: variant === 'select' ? 'select' : 'link',
+    variant: 'link',
     role: role === 'menu' ? 'menuitem' : undefined,
     [activeProp]: active,
   } as ListItemProps;
