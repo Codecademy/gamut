@@ -18,7 +18,9 @@ export interface BaseTagProps
     StyleProps<typeof textSizeVariants>,
     StyleProps<typeof tagWrapperStates>,
     Partial<IconComponentType>,
-    WithChildrenProp {}
+    WithChildrenProp {
+      // size: 'default' | 'large';
+    }
 
 export interface ReadOnlyTagProps extends BaseTagProps {
   /**
@@ -29,7 +31,7 @@ export interface ReadOnlyTagProps extends BaseTagProps {
   href?: never;
   variant: 'readOnly';
   disabled?: never;
-  // interactiveType?: never;
+  interactiveType?: never;
 }
 export interface SelectionTagProps extends BaseTagProps {
   /**
@@ -40,18 +42,26 @@ export interface SelectionTagProps extends BaseTagProps {
   href?: never;
   disabled?: boolean;
   variant: 'selection';
-  // interactiveType?: never;
+  interactiveType?: never;
 }
 
-export interface InteractiveTagProps extends BaseTagProps {
+export interface NavigationTagProps extends BaseTagProps {
   onDismiss?: never;
-  href?: string;
+  href: string;
   onClick?: HTMLProps<HTMLAnchorElement>['onClick'];
   disabled?: boolean;
-  variant: 'navigation' | 'suggestion';
+  variant: 'navigation';
 }
 
-export type TagProps = ReadOnlyTagProps | SelectionTagProps | InteractiveTagProps
+export interface SuggestionTagProps extends BaseTagProps {
+  onDismiss?: never;
+  href?: never;
+  onClick: HTMLProps<HTMLAnchorElement>['onClick'];
+  disabled?: boolean;
+  variant: 'suggestion';
+}
+
+export type TagProps = ReadOnlyTagProps | SelectionTagProps | NavigationTagProps | SuggestionTagProps;
 
 export interface BaseTagAnchorProps
   extends StyleProps<typeof anchorVariants>,
@@ -61,10 +71,12 @@ export interface BaseTagAnchorProps
 
 export interface NavigationAnchorProps extends BaseTagAnchorProps {
   href: string;
+  onClick?: HTMLProps<HTMLAnchorElement>['onClick'];
 }
 
 export interface SuggestionAnchorProps extends BaseTagAnchorProps {
   href?: never;
+  onClick: HTMLProps<HTMLAnchorElement>['onClick'];
 }
 
 export type TagAnchorProps = SuggestionAnchorProps | NavigationAnchorProps

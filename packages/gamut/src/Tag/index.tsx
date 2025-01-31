@@ -52,18 +52,18 @@ export const Tag: React.FC<TagProps> = ({
       if(isSelection) {
         return <TagText {...sharedInteractiveProps}>{content}</TagText>;
       }
+      if(isNavigation){
+        return <TagAnchor interactiveType='navigation' href={disabled ? '' : href} onClick={onClick} {...sharedInteractiveProps}>{content}</TagAnchor>
+      }
       if(isSuggestion){
         return <TagAnchor interactiveType='suggestion'
         onClick={onClick} {...sharedInteractiveProps}>{content}</TagAnchor>
-      }
-      if(isNavigation){
-        return <TagAnchor interactiveType='navigation' href={disabled ? '' : href} {...sharedInteractiveProps}>{content}</TagAnchor>
       }
     }
   )()
 
   return (
-    <Outline disabled={disabled} readOnly={isReadOnly} flexDirection="row" {...rest} >
+    <Outline disabled={disabled} readOnly={isReadOnly} {...rest} >
       <TagLabelWrapper
         readOnly={isReadOnly}
         variant={variant}

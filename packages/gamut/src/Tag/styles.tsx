@@ -2,7 +2,6 @@ import { css, states, theme, variant } from '@codecademy/gamut-styles';
 
 import { ButtonSelectors, Selectors } from '../ButtonBase/ButtonBase';
 
-
 export const tagLabelFontSize = 14;
 export const tagLabelPadding = 8;
 export const tagBaseStyles = {
@@ -29,6 +28,7 @@ const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}` as const;
 export const outlineStyling = css({
   // This is a bit of a hack as we don't have access to focus-visible from this component. If you are not properly dismissing your tags you may see this primary colored outline after clicking X, but otherwise you should never hit this behavior.
   borderRadius: 'md',
+  flexDirection: 'row',
   width: '100%',
   maxWidth: 'fit-content',
   overflow: 'hidden',
@@ -136,8 +136,6 @@ export const tagTextStyling = css({
   lineHeight: 1.5 as any,
   px: tagLabelPadding,
 });
-
-
 
 export const anchorVariants = variant({
   prop: 'interactiveType',

@@ -61,7 +61,6 @@ export const Selection: Story = {
 export const Navigation: Story = {
   args: {
     variant: 'navigation',
-    children: 'Navigation',
     href: '/',
   },
   render: (args) => (
@@ -121,10 +120,10 @@ export const WithIcon: Story = {
           <Tag variant='selection' icon={MiniPinIcon} >Tag!</Tag>
         </Box>
         <Box mx={4}>
-          <Tag variant='navigation' icon={MiniRemoveCircleIcon} href="" >You&apos;re it!</Tag>
+          <Tag variant='navigation' href="" icon={MiniCheckCircleIcon} >You&apos;re it!</Tag>
         </Box>
         <Box mx={4}>
-          <Tag variant='suggestion' icon={MiniCheckCircleIcon} >No tagbacks!</Tag>
+          <Tag variant='suggestion' icon={MiniRemoveCircleIcon}>No tagbacks!</Tag>
         </Box>
       </FlexBox>
       <FlexBox row mt={12}>
@@ -135,10 +134,10 @@ export const WithIcon: Story = {
           <Tag size="large" variant='selection' icon={MiniChevronDownIcon}>Duck,</Tag>
         </Box>
         <Box mx={4}>
-          <Tag size="large" variant='navigation' href="" icon={MiniChevronUpIcon}>Duck...</Tag>
+          <Tag size="large" variant='navigation' href="" icon={MiniKebabMenuIcon}>Duck...</Tag>
         </Box>
         <Box mx={4}>
-          <Tag size="large" variant='suggestion' icon={MiniKebabMenuIcon}>Goose!</Tag>
+          <Tag size="large" variant='suggestion'  icon={MiniChevronUpIcon}>Goose!</Tag>
         </Box>
     </FlexBox>
   </FlexBox>
