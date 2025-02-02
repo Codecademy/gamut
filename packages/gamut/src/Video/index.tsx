@@ -33,21 +33,49 @@ const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
 export type ReactPlayerWithWrapper = ReactPlayer & { wrapper: HTMLElement };
 
 export type VideoProps = {
-  autoplay?: boolean;
   className?: string;
+  autoplay?: boolean;
   controls?: boolean;
-  height?: number;
   loop?: boolean;
   muted?: boolean;
   onPlay?: () => void;
   onReady?: (player?: ReactPlayerWithWrapper) => void;
-  placeholderImage?: string | boolean;
-  videoTitle?: string;
-  videoUrl: PlayerSrc;
   width?: number;
+  height?: number;
+  videoTitle?: string;
+  /**
+   * Placeholder image for a poster/thumbnail.
+   */
+  placeholderImage?: string | boolean;
+  /**
+   * The main source for the video file or streaming URL.
+   * @example
+   * <Video videoUrl='https://example.com/video.mp4' />
+   * Or with type
+   * <Video videoUrl={{ src: 'https://example.com/video.mp4', type: 'video/mp4' }} />
+   */
+  videoUrl: PlayerSrc;
+  /**
+   * Optional text track data (subtitles, captions or chapters).
+   * @example
+   * <Video textTracks={[{ label: 'English', src: '/eng.vtt', kind: 'subtitles', language: 'en-US', }]} />
+   *
+   * @see https://vidstack.io/docs/player/api/text-tracks/?styling=default-theme#managing-tracks
+   */
   textTracks?: TrackProps[];
+  /**
+   * Preview images for different time segments.
+   */
   thumbnails?: ThumbnailSrc;
+  /**
+   * Translations for the player's default layout labels.
+   * @example
+   * <Video translations={{ Play: 'Play Video' }} />
+   */
   translations?: Partial<DefaultLayoutTranslations>;
+  /**
+   * Determines if an embedded player view is shown for youtube/vimeo.
+   */
   showPlayerEmbed?: boolean;
 };
 

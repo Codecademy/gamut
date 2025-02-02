@@ -2,15 +2,8 @@
 @import "~@vidstack/react/player/styles/default/layouts/video.css";
 @import "~@vidstack/react/player/styles/default/layouts/audio.css";
 
-.vds-controls button {
-    border-radius: var(--media-button-border-radius);
-}
 
-.vds-video-layout .vds-time-slider .vds-slider-value {
-    border: unset;
-    color: white;
-}
-
+// Youtube overlay
 iframe.vds-youtube[data-no-controls] {
     height: 100%;
 }
@@ -19,10 +12,28 @@ iframe.vds-youtube[data-no-controls] {
     height: 1000%;
 }
 
+// Control buttons
 :where(.vds-button .vds-icon) {
     border-radius: unset;
 }
 
+.vds-controls button {
+    border-radius: var(--media-button-border-radius);
+}
+
+// Small layout volume / time slider
+:where(.vds-video-layout[data-sm] .vds-volume-slider .vds-slider-track) {
+    background-color: var(--color-gray-600);
+}
+:where(.vds-video-layout[data-sm] .vds-volume-slider .vds-slider-track-fill) {
+    background-color: var(--color-secondary);
+}
+.vds-video-layout .vds-time-slider .vds-slider-value {
+    border: unset;
+    color: white;
+}
+
+// Tooltip
 .vds-tooltip-content::after {
     content: "";
     -webkit-transform: rotate(45deg);
@@ -58,26 +69,11 @@ iframe.vds-youtube[data-no-controls] {
     right: calc(0% + .5rem);
 }
 
-:where(.vds-video-layout[data-sm] .vds-volume-slider .vds-slider-track) {
-    background-color: var(--color-gray-600);
+@keyframes vds-tooltip-exit{
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }
-:where(.vds-video-layout[data-sm] .vds-volume-slider .vds-slider-track-fill) {
-    background-color: var(--color-secondary);
-}
-
-@keyframes vds-tooltip-exit {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
 @keyframes vds-tooltip-enter {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+    0% { opacity: 0; }
+    100% { opacity: 1;}
+}

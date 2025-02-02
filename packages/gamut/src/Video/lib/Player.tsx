@@ -21,7 +21,7 @@ import { VideoLayout } from './VideoLayout';
 
 const VariableProvider = styled('div', styledOptions(['variables']))<{
   variables?: CSSObject;
-}>(({ variables }) => variables, { width: '100%' });
+}>(({ variables }) => variables, { width: '100%', height: '100%' });
 
 type VidstackPlayerProps = VideoProps & {
   onLoad: () => void;

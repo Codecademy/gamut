@@ -39,5 +39,9 @@ export const vdsVariables: Variables = {
     '--media-slider-value-padding': theme.spacing[4],
     '--media-tooltip-exit-animation': 'vds-tooltip-exit 0s',
     '--media-tooltip-enter-animation': 'vds-tooltip-enter 0s',
-    // '--media-menu-bg': theme.colors['background-contrast'],
+    '--media-menu-bg': theme.colors.background,
+    '--media-menu-top-bar-bg': theme.colors.background,
+    '--media-menu-section-bg': theme.colors["background-selected"],
+    '--media-menu-border': `1px solid ${theme.colors['border-primary']}`,
+    '--media-menu-border-radius': theme.borderRadii.sm,
 }
