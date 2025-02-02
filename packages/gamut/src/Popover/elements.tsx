@@ -5,10 +5,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import * as React from 'react';
 
 import { BodyPortal } from '../BodyPortal';
-import { Box } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { popoverToolTipBodyAlignments } from '../Tip/shared/styles';
 import { WithChildrenProp } from '../utils';
 import {
+  beakBorderStates,
+  beakBoxVariants,
   beakSize,
   beakVariants,
   outlineVariants,
@@ -39,10 +41,13 @@ export const RaisedDiv = styled.div<
 
 export const Beak = styled(Box)<
   StyleProps<typeof popoverStates> &
-    StyleProps<typeof outlineVariants> &
     StyleProps<typeof beakVariants> &
-    StyleProps<typeof beakSize>
->(beakVariants, beakSize);
+    StyleProps<typeof beakSize> &
+    StyleProps<typeof beakBorderStates>
+>(beakBorderStates, beakVariants, beakSize);
+
+export const BeakBox =
+  styled(FlexBox)<StyleProps<typeof beakBoxVariants>>(beakBoxVariants);
 
 export const PatternContainer = styled.div(
   variant({
