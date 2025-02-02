@@ -3,9 +3,15 @@ import '../styles/vds_base_theme.scss';
 
 import { styledOptions } from '@codecademy/gamut-styles';
 import styled, { CSSObject } from '@emotion/styled';
-import { MediaPlayer, MediaProvider, Poster, Track } from '@vidstack/react';
+import {
+  MediaPlayer,
+  MediaPlayerInstance,
+  MediaProvider,
+  Poster,
+  Track,
+} from '@vidstack/react';
 import cx from 'classnames';
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { VideoProps } from '..';
 import styles from '../styles/index.module.scss';
@@ -20,7 +26,6 @@ const VariableProvider = styled('div', styledOptions(['variables']))<{
 type VidstackPlayerProps = VideoProps & {
   onLoad: () => void;
 };
-
 export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
   autoplay,
   controls,
@@ -38,43 +43,48 @@ export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
   width,
   height,
   className,
-}) => (
-  <VariableProvider
-    variables={vdsVariables}
-    className={cx(styles.vdsWrapper, className)}
-    style={{ width, height }}
-  >
-    <MediaPlayer
-      title={videoTitle}
-      src={videoUrl}
-      playsInline
-      autoPlay={autoplay}
-      loop={loop}
-      muted={muted}
-      onLoad={onLoad}
-      onPlay={onPlay}
-      onCanPlay={() => {
-        onReady?.();
-      }}
-      keyShortcuts={keyboardShortcuts}
+}) => {
+  const player = useRef<MediaPlayerInstance>(null);
+
+  return (
+    <VariableProvider
+      variables={vdsVariables}
+      className={cx(styles.vdsWrapper, className)}
+      style={{ width, height }}
     >
-      <MediaProvider>
-        {placeholderImage && (
-          <Poster
-            className="vds-poster"
-            alt={videoTitle}
-            src={placeholderImage as string}
-          />
-        )}
-        {textTracks?.map((track) => (
-          <Track {...track} key={track.src} />
-        ))}
-      </MediaProvider>
-      <VideoLayout
-        controls={controls}
-        thumbnails={thumbnails}
-        translations={translations}
-      />
-    </MediaPlayer>
-  </VariableProvider>
-);
+      <MediaPlayer
+        ref={player}
+        title={videoTitle}
+        src={videoUrl}
+        playsInline
+        autoPlay={autoplay}
+        loop={loop}
+        muted={muted}
+        onLoad={onLoad}
+        onPlay={onPlay}
+        onCanPlay={() => {
+          onReady?.();
+        }}
+        keyShortcuts={keyboardShortcuts}
+      >
+        <MediaProvider>
+          {placeholderImage && (
+            <Poster
+              className="vds-poster"
+              alt={videoTitle}
+              src={placeholderImage as string}
+            />
+          )}
+          {textTracks?.map((track) => (
+            <Track {...track} key={track.src} />
+          ))}
+        </MediaProvider>
+        <VideoLayout
+          controls={controls}
+          thumbnails={thumbnails}
+          translations={translations}
+        />
+      </MediaPlayer>
+    </VariableProvider>
+  );
+};

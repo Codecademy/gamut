@@ -37,4 +37,7 @@ export const vdsVariables: Variables = {
     '--media-slider-value-border': `1px solid ${theme.colors['border-primary']}`,
     '--media-slider-value-color': theme.colors.text,
     '--media-slider-value-padding': theme.spacing[4],
+    '--media-tooltip-exit-animation': 'vds-tooltip-exit 0s',
+    '--media-tooltip-enter-animation': 'vds-tooltip-enter 0s',
+    // '--media-menu-bg': theme.colors['background-contrast'],
 }

@@ -35,10 +35,10 @@ export const VideoLayout: React.FC<VideoLayoutProps> = ({
       colorScheme={mode}
       hidden={!controls}
       icons={customIcons}
-      smallLayoutWhen={false}
       thumbnails={thumbnails}
       slots={customLayoutSlots}
       noAudioGain
+      noModal
     />
   );
 };
