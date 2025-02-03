@@ -12,9 +12,10 @@ type GridFormSectionTestComponentProps = GridFormSectionProps & {
   mode?: 'onSubmit' | 'onChange';
 };
 
-export const GridFormContentTestComponent: React.FC<
-  GridFormContentTestComponentProps
-> = ({ field, mode = 'onSubmit' }) => {
+export const GridFormContentTestComponent: React.FC<GridFormContentTestComponentProps> = ({
+  field,
+  mode = 'onSubmit',
+}) => {
   return (
     <FormContext mode={mode}>
       <GridFormContent field={field} key={field.name} />
@@ -22,9 +23,10 @@ export const GridFormContentTestComponent: React.FC<
   );
 };
 
-export const GridFormSectionTestComponent: React.FC<
-  GridFormSectionTestComponentProps
-> = ({ fields, mode = 'onSubmit' }) => {
+export const GridFormSectionTestComponent: React.FC<GridFormSectionTestComponentProps> = ({
+  fields,
+  mode = 'onSubmit',
+}) => {
   return (
     <FormContext mode={mode}>
       <GridFormSection fields={fields} />

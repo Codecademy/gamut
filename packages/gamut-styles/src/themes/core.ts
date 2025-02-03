@@ -77,7 +77,7 @@ export const coreTheme = createTheme({
         secondary: 'navy-600',
         tertiary: 'navy-300',
         disabled: 'navy-500',
-      },
+      }
     },
     dark: {
       text: {
@@ -126,7 +126,7 @@ export const coreTheme = createTheme({
         secondary: 'white-600',
         tertiary: 'white-300',
         disabled: 'white-500',
-      },
+      }
     },
   })
   .addScale('borders', ({ colors }) => ({

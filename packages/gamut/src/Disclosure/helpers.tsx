@@ -46,8 +46,13 @@ export const renderButton = (buttonProps: {
   ctaText: string;
   href?: string | undefined;
 }) => {
-  const { buttonPlacement, buttonType, ctaCallback, ctaText, href } =
-    buttonProps;
+  const {
+    buttonPlacement,
+    buttonType,
+    ctaCallback,
+    ctaText,
+    href,
+  } = buttonProps;
   const sharedProps = {
     mt: 8 as const,
     lineHeight: 'normal',

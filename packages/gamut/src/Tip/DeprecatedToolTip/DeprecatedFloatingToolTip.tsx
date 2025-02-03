@@ -11,9 +11,7 @@ import {
 } from './types';
 import { getDeprecatedAccessibilityProps } from './utils';
 
-export const DeprecatedFloatingToolTip: React.FC<
-  DeprecatedToolTipPlacementComponentProps
-> = ({
+export const DeprecatedFloatingToolTip: React.FC<DeprecatedToolTipPlacementComponentProps> = ({
   alignment = deprecatedTooltipDefaultProps.alignment,
   children,
   focusable,

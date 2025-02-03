@@ -11,9 +11,15 @@ export interface GridFormRadioGroupInputProps extends BaseFormInputProps {
   setValue: (name: string, value: string) => void;
 }
 
-export const GridFormRadioGroupInput: React.FC<
-  GridFormRadioGroupInputProps
-> = ({ className, disabled, field, register, setValue, required, error }) => {
+export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = ({
+  className,
+  disabled,
+  field,
+  register,
+  setValue,
+  required,
+  error,
+}) => {
   const ariaLabel: string | undefined =
     field.ariaLabel ?? (isString(field.label) ? field.label : undefined);
 

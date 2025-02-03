@@ -47,14 +47,15 @@ export type PropertyValues<
   All extends true ? never : object | any[]
 >;
 
-export type ScaleValue<Config extends Prop> =
-  Config['scale'] extends keyof Theme
-    ? keyof Theme[Config['scale']] | PropertyValues<Config['property']>
-    : Config['scale'] extends MapScale
-    ? keyof Config['scale'] | PropertyValues<Config['property']>
-    : Config['scale'] extends ArrayScale
-    ? Config['scale'][number] | PropertyValues<Config['property']>
-    : PropertyValues<Config['property'], true>;
+export type ScaleValue<
+  Config extends Prop
+> = Config['scale'] extends keyof Theme
+  ? keyof Theme[Config['scale']] | PropertyValues<Config['property']>
+  : Config['scale'] extends MapScale
+  ? keyof Config['scale'] | PropertyValues<Config['property']>
+  : Config['scale'] extends ArrayScale
+  ? Config['scale'][number] | PropertyValues<Config['property']>
+  : PropertyValues<Config['property'], true>;
 
 export type Scale<Config extends Prop> = ResponsiveProp<
   ScaleValue<Config> | ((theme: Theme) => ScaleValue<Config>)
@@ -120,9 +121,13 @@ export interface CSS<P extends AbstractParser> {
 
 export type ParserProps<
   Config extends Record<string, AbstractPropTransformer>
-> = ThemeProps<{
-  [P in keyof Config]?: Parameters<Config[P]['styleFn']>[2][Config[P]['prop']];
-}>;
+> = ThemeProps<
+  {
+    [P in keyof Config]?: Parameters<
+      Config[P]['styleFn']
+    >[2][Config[P]['prop']];
+  }
+>;
 
 export type SystemProps<P extends AbstractParser> = {
   [K in keyof Omit<Parameters<P>[0], 'theme'>]: Omit<

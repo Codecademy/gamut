@@ -1,13 +1,12 @@
-import { Anchor, Toast } from '@codecademy/gamut';
+import { Anchor,Toast } from '@codecademy/gamut';
 import { MegaphoneIcon } from '@codecademy/gamut-icons';
 import { Meta } from '@storybook/blocks';
 
 import { AboutHeader } from '~styleguide/blocks';
 
 export const parameters = {
-  title: 'Toasts',
-  subtitle:
-    'Keep it brief, ensure the message is personal and relevant, and avoid distracting from the learning experience.',
+  title: "Toasts",
+  subtitle: 'Keep it brief, ensure the message is personal and relevant, and avoid distracting from the learning experience.',
   status: 'static',
 };
 
@@ -21,18 +20,19 @@ Toasts may also be used outside of the LE to communicate information relevant to
 
 Toasts may contain any or all of the following: a title, a description, and/or an icon (in line with the title or left-justified). Here’s what a toast looks like with all three. The megaphone icon is used for announcements.
 
-{' '}
-<Toast
-  title={
-    <>
-      <MegaphoneIcon verticalAlign="middle" mr={4} /> Calling all Chromebook
-      users!
-    </>
-  }
->
-  You can now install Codecademy as a free app directly on your Chromebook.{' '}
-  <Anchor>Get the app.</Anchor>
-</Toast>
+
+  <Toast
+    title={
+      <>
+        <MegaphoneIcon verticalAlign="middle" mr={4} /> Calling all Chromebook
+        users!
+      </>
+    }
+  >
+    You can now install Codecademy as a free app directly on your Chromebook.{' '}
+    <Anchor>Get the app.</Anchor>
+  </Toast>
+
 
 <br />
 <br />
@@ -44,6 +44,5 @@ Toasts may contain any or all of the following: a title, a description, and/or a
 - **Avoid distracting from learning.** Be cautious with using toasts in the Learning Environment (LE). If the message is not something that is pertinent to the learning experience, it should be communicated outside of the LE.
 
 ## Checklist
-
 - Is the toast copy a minimum of 3 lines (including the title)?
 - Is the toast message relevant to all learners that will see it?

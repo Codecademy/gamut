@@ -13,7 +13,7 @@ import { buttonProps, buttonVariants } from './styles';
 
 export interface ButtonBaseProps extends StyleProps<typeof buttonProps> {
   onClick?: HTMLProps<HTMLButtonElement>['onClick'];
-  variant?: (typeof buttonVariants)[number];
+  variant?: typeof buttonVariants[number];
   size?: 'normal' | 'small' | 'large';
   as?: never;
   mode?: ColorModes;

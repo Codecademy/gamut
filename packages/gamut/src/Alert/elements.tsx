@@ -7,8 +7,9 @@ import { Box } from '../Box';
 import { AlertProps } from './Alert';
 import { placementVariants } from './variants';
 
-const StyledAlertBanner =
-  styled(Background)<Pick<AlertProps, 'type' | 'placement'>>(placementVariants);
+const StyledAlertBanner = styled(Background)<
+  Pick<AlertProps, 'type' | 'placement'>
+>(placementVariants);
 
 export const AlertBanner = forwardRef<
   HTMLDivElement,
@@ -33,8 +34,9 @@ export const AlertBanner = forwardRef<
   )
 );
 
-const StyledAlertBox =
-  styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(placementVariants);
+const StyledAlertBox = styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(
+  placementVariants
+);
 
 export const AlertBox = forwardRef<
   HTMLDivElement,

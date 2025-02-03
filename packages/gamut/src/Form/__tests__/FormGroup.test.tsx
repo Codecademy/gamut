@@ -18,6 +18,7 @@ describe('FormGroup', () => {
 
       view.getByLabelText(optionalLabelText);
     });
+
   });
   describe('when htmlFor is not provided', () => {
     it('renders Label as a div', () => {

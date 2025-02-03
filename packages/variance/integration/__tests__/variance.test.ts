@@ -27,7 +27,7 @@ describe('style props', () => {
   describe('parsers', () => {
     it('has the correct config', () => {
       const propNamesRestricted: Assert<
-        (typeof space)['propNames'],
+        typeof space['propNames'],
         ('margin' | 'padding')[]
       > = true;
 

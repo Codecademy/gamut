@@ -85,9 +85,11 @@ type GridFormInputGroupTestComponentProps = GridFormInputGroupProps & {
   mode?: 'onSubmit' | 'onChange';
 };
 
-export const GridFormInputGroupTestComponent: React.FC<
-  GridFormInputGroupTestComponentProps
-> = ({ field, mode = 'onSubmit', ...rest }) => {
+export const GridFormInputGroupTestComponent: React.FC<GridFormInputGroupTestComponentProps> = ({
+  field,
+  mode = 'onSubmit',
+  ...rest
+}) => {
   return (
     <FormContext mode={mode}>
       <GridFormInputGroup field={field} {...rest} />

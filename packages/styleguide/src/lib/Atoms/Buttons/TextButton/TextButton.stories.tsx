@@ -30,7 +30,7 @@ const meta: Meta<typeof TextButton> = {
         options: [SearchIcon],
       },
     },
-  },
+  }
 };
 
 export default meta;
@@ -39,3 +39,4 @@ type Story = StoryObj<typeof TextButton>;
 export const Default: Story = {
   args: {},
 };
+

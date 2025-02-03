@@ -5,8 +5,7 @@ import { ComponentHeader } from '~styleguide/blocks';
 import * as TabStories from './Tabs.stories';
 
 export const parameters = {
-  subtitle:
-    'Tabs organize content into multiple sections, with only one section visible at a time.',
+  subtitle: 'Tabs organize content into multiple sections, with only one section visible at a time.',
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=31226-41459',
@@ -28,10 +27,10 @@ export const parameters = {
 Use tabs when you have multiple potential sections to show, but only one should be visible at a time.
 The set of tabs should be sections of related content that share the same structure and are of equal importance.
 
+
 ## Variants
 
 ### Uncontrolled
-
 By default, the tabs component is uncontrolled, meaning it will maintain it's own state and switch between the different `TabPanel` components without passing any data to the component. This is good for basic use-cases where you don't need to do anything "extra" when switching tabs.
 
 <Canvas of={TabStories.Default} />

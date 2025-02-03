@@ -30,7 +30,7 @@ const meta: Meta<typeof FillButton> = {
         options: [SearchIcon],
       },
     },
-  },
+  }
 };
 
 export default meta;
@@ -39,3 +39,4 @@ type Story = StoryObj<typeof FillButton>;
 export const Default: Story = {
   args: {},
 };
+

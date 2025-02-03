@@ -78,22 +78,19 @@ Lists come with 3 spacing variants `normal`, `condensed`, and `compact`. For exa
 ```
 
 ### Normal
-
 For mixed content use the normal size to ensure that there is enough space for components.
-
 <Canvas of={ListStories.NormalSpacing} />
 
 ### Condensed
-
 To decrease the amount of spacing between rows, use the condensed spacing.
 
 <Canvas of={ListStories.CondensedSpacing} />
 
 ### Compact
-
 To provide the least amount of spacing between rows, use the compact spacing.
 
 <Canvas of={ListStories.CompactSpacing} />
+
 
 ## Variants
 
@@ -108,8 +105,9 @@ Lists have several style variants for different use cases:
 <List variant="default" />
 ```
 
-### Default
 
+
+### Default
 For displaying things with more abstract row contents (like buttons or custom rendered components) use the `default` variant. This structure denotes borders between rows and separates interactive elements with more clarity than tables.
 
 <Canvas of={ListStories.Default} />
@@ -133,7 +131,6 @@ For a table like view for content that has more metrics or actionable data use t
 <Canvas of={ListStories.Table} />
 
 #### Ordered List
-
 Our `List`s by default are the `ul` HTML element or unordered list. All of the above configurations works with ordered lists as well. Passing `ol` to the `as` prop will render an ordered list and add numbering to the rows.
 
 Ordered lists should always have a one column with a `header` type row to ensure that the numbering is rendered correctly.
@@ -141,7 +138,6 @@ Ordered lists should always have a one column with a `header` type row to ensure
 <Canvas of={ListStories.OrderedList} />
 
 ## Columns
-
 ### Sizing
 
 Column size can either be a fixed value (outline of the prop aliases `xs`, `sm`, etc.) or by the columns content width.
@@ -153,7 +149,6 @@ It is recommended that you use the aliases for any content that may have variabl
 ```
 
 Below is a List displaying the different sizes columns can be.
-
 <Canvas of={ListStories.ColumnSizing} />
 
 ### Filling empty space
@@ -179,6 +174,7 @@ You can align the content to the right of each column using the `justify` prop o
 
 If you have a list with many columns and would like to avoid collapsing any columns information you can use the `scrollable` prop which will lock the row header to the left hand side and expand all columns to the their minimum flex-basis. All rows and columns scroll along the X axis in tandem to ensure that you may compare data or take multiple actions between each row.
 
+
 <Canvas of={ListStories.HorizontalScrolling} />
 
 ### Responsive
@@ -192,7 +188,6 @@ List rows will switch to a mobile layout at screen widths less than smallest bre
 Optionally, you can pass a `breakpoint` prop to the List to alter this behavior.
 
 Adjust the size of your window to see how the List changes at different breakpoints.
-
 <Canvas of={ListStories.ResponsiveAnatomy} />
 <Canvas of={ListStories.Responsive} />
 
@@ -209,7 +204,6 @@ Adjust the size of your window to see how the List changes at different breakpoi
   </ListRow>
 </List>
 ```
-
 ### Collapsible row content
 
 You can define collapsible content by passing an `expanded` prop and the `React.Node` to the `renderExpanded` prop of your `ListRow` components.
@@ -278,33 +272,25 @@ export const ExpandableRow: React.FC<{
 Here's some examples of Lists to use as guides.
 
 ### Normal spacing
-
 <Canvas of={ListStories.NormalSpacingGuide} />
 
 ### Condensed spacing
-
 <Canvas of={ListStories.CondensedSpacingGuide} />
 
 ### Condensed table variant
-
 You can combine variants and spacing to your needs.
-
 <Canvas of={ListStories.CondensedTableGuide} />
 
 ### Expandable buttom
-
 Buttons can be configured to expand the row content.
-
 <Canvas of={ListStories.ExpandableButtonGuide} />
 
 ### Expanded row
-
 An entire row can be made interactive to expand the row content.
-
 <Canvas of={ListStories.ExpandedRowGuide} />
 
-## Playground
 
+## Playground
 <Canvas sourceState="shown" of={ListStories.Default} />
 
 <Controls />

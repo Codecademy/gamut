@@ -23,7 +23,6 @@ export const parameters = {
 <ComponentHeader {...parameters} />
 
 ## Usage
-
 When using the ToolTip component, the `id` prop is required to associate the tooltip with the interactive element and the interactive element's `aria-describedby` prop must be set to the `id` of the tooltip.
 
 When a Button is disabled with a tooltip, you must use the `aria-disabled` prop instead of `disabled` prop so the user can still focus the button and view the tooltip.
@@ -44,10 +43,10 @@ ToolTips sometimes need to be in used in a way that they need to escape the conf
 
 This `floating` variant should only be used when it as needed.
 
+
 <Canvas of={ToolTipStories.Floating} />
 
 ## Playground
-
 <Canvas sourceState="shown" of={ToolTipStories.Default} />
 
 <Controls />

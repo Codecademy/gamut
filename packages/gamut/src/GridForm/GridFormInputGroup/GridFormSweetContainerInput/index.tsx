@@ -11,9 +11,11 @@ export type GridFormSweetContainerInputProps = {
   label: string;
 };
 
-export const GridFormSweetContainerInput: React.FC<
-  GridFormSweetContainerInputProps
-> = ({ register, field: { name }, label }) => {
+export const GridFormSweetContainerInput: React.FC<GridFormSweetContainerInputProps> = ({
+  register,
+  field: { name },
+  label,
+}) => {
   return (
     <Box
       height="1px"

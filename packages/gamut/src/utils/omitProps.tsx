@@ -30,7 +30,7 @@ export function omitProps<TOmittedProps extends {}, TProps extends {}>(
   const dataProps = propsToOmit.filter((p) => /^data-.*/.exec(p));
 
   return omit(
-    props as unknown as Record<string | number, unknown>,
+    (props as unknown) as Record<string | number, unknown>,
     without(propsToOmit, 'children', 'className', ...dataProps)
   ) as RemoveFrom<TOmittedProps, TProps>;
 }

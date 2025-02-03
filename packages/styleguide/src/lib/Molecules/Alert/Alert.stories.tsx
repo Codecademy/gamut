@@ -1,7 +1,8 @@
 import { Alert, Box } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ALERTS } from './constants';
+import { ALERTS } from './constants'
+
 
 const meta: Meta<typeof Alert> = {
   component: Alert,
@@ -45,7 +46,7 @@ export const Subtle: Story = {
   args: {
     ...ALERTS.subtle,
   },
-};
+}
 
 export const GeneralInline: Story = {
   args: {
@@ -87,18 +88,20 @@ export const SubtleInline: Story = {
     ...ALERTS.subtle,
     placement: 'inline',
   },
-};
+}
+
 
 export const SmallWidthExample: React.FC = () => {
   return (
     <Box width="400px">
-      <Alert type="general" cta={{ children: 'Add your name' }}>
+      <Alert type="general" cta={{children: 'Add your name'}} >
         Small Width
       </Alert>
     </Box>
-  );
-};
+  )
+}
 
-export const SmallWidth: Story = {
+export const SmallWidth: Story= {
   render: () => <SmallWidthExample />,
-};
+}
+

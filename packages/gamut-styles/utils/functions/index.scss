@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 
 @function strip-units($number) {
   @return math.div($number, ($number * 0 + 1));

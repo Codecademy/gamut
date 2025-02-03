@@ -25,6 +25,7 @@ export const Yellow: Story = {
   },
 };
 
+
 export const Blue: Story = {
   args: {
     theme: 'blue',

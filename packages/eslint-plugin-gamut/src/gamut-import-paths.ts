@@ -5,54 +5,49 @@ import { createRule } from './createRule';
 export default createRule({
   create(context) {
     return {
-      'ImportDeclaration[source.value=/(^@)codecademy(\\u002F)gamut/]':
-        function (node: TSESTree.ImportDeclaration) {
-          const filename = context.getFilename();
-          const importPath = node.source.value;
+      'ImportDeclaration[source.value=/(^@)codecademy(\\u002F)gamut/]': function (
+        node: TSESTree.ImportDeclaration
+      ) {
+        const filename = context.getFilename();
+        const importPath = node.source.value;
 
-          const fileDirectory = filename.split('/packages/')[1].split('/')[0];
-          const importPackage = importPath
-            .split('@codecademy/')[1]
-            .split('/')[0];
+        const fileDirectory = filename.split('/packages/')[1].split('/')[0];
+        const importPackage = importPath.split('@codecademy/')[1].split('/')[0];
 
-          if (fileDirectory === importPackage) {
-            context.report({
-              messageId: 'useRelativeImport',
-              node,
-            });
-            return;
-          }
+        if (fileDirectory === importPackage) {
+          context.report({
+            messageId: 'useRelativeImport',
+            node,
+          });
+          return;
+        }
 
-          if (importPath.includes('/src')) {
-            const indexOfSrc = node.source.range[0] + importPath.search('/src');
-            context.report({
-              ...(importPath.endsWith('/src') && {
-                fix: (fixer) => {
-                  return fixer.removeRange([indexOfSrc + 1, node.range[1] - 2]);
-                },
-              }),
-              messageId: 'removeSrc',
-              node,
-            });
-            return;
-          }
-          if (importPath.includes('/dist')) {
-            const indexOfDist =
-              node.source.range[0] + importPath.search('/dist');
-            context.report({
-              ...(importPath.endsWith('/dist') && {
-                fix: (fixer) => {
-                  return fixer.removeRange([
-                    indexOfDist + 1,
-                    node.range[1] - 2,
-                  ]);
-                },
-              }),
-              messageId: 'removeDist',
-              node,
-            });
-          }
-        },
+        if (importPath.includes('/src')) {
+          const indexOfSrc = node.source.range[0] + importPath.search('/src');
+          context.report({
+            ...(importPath.endsWith('/src') && {
+              fix: (fixer) => {
+                return fixer.removeRange([indexOfSrc + 1, node.range[1] - 2]);
+              },
+            }),
+            messageId: 'removeSrc',
+            node,
+          });
+          return;
+        }
+        if (importPath.includes('/dist')) {
+          const indexOfDist = node.source.range[0] + importPath.search('/dist');
+          context.report({
+            ...(importPath.endsWith('/dist') && {
+              fix: (fixer) => {
+                return fixer.removeRange([indexOfDist + 1, node.range[1] - 2]);
+              },
+            }),
+            messageId: 'removeDist',
+            node,
+          });
+        }
+      },
     };
   },
   defaultOptions: [],

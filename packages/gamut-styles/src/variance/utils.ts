@@ -15,7 +15,7 @@ const allPropnames = ['mode', 'variant', ...Object.keys(allProps)] as [
  */
 const validPropnames = allPropnames.filter(isPropValid);
 
-export type SystemPropNames = (typeof allPropnames)[number];
+export type SystemPropNames = typeof allPropnames[number];
 
 export type ElementOrProps = keyof JSX.IntrinsicElements | ThemeProps;
 export type ForwardableProps<El extends ElementOrProps, Additional> = Exclude<

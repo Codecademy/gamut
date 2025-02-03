@@ -1,12 +1,7 @@
-import {
-  Coachmark,
-  CoachmarkProps,
-  FillButton,
-  FlexBox,
-  Text,
-} from '@codecademy/gamut';
+import { Coachmark, CoachmarkProps, FillButton, FlexBox, Text } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+
 
 const meta: Meta<typeof Coachmark> = {
   component: Coachmark,
@@ -47,19 +42,17 @@ export const CoachmarkExample = (args: CoachmarkProps) => {
   );
 };
 
+
 export const Default: Story = {
-  render: (props) => <CoachmarkExample {...props} />,
+  render: (props) => <CoachmarkExample {...props} />
 };
 
 export const Customized: Story = {
-  render: (props) => (
-    <CoachmarkExample
-      {...props}
-      popoverProps={{
-        beak: 'left',
-        outline: true,
-        pattern: 'checkerDense' as any,
-      }}
-    />
-  ),
+  render: (props) => <CoachmarkExample {...props} popoverProps={{
+    beak: 'left',
+    outline: true,
+    pattern: 'checkerDense' as any,
+  }}/>
 };
+
+

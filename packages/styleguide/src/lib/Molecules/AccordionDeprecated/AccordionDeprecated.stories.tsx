@@ -1,10 +1,7 @@
-import {
-  AccordionAreaDeprecated,
-  AccordionButtonDeprecated,
-  AccordionDeprecated,
-} from '@codecademy/gamut';
+import { AccordionAreaDeprecated,AccordionButtonDeprecated, AccordionDeprecated } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+
 
 const meta: Meta<typeof AccordionDeprecated> = {
   component: AccordionDeprecated,
@@ -15,7 +12,7 @@ type Story = StoryObj<typeof AccordionDeprecated>;
 
 export const Default: Story = {
   args: {
-    top: 'Click me!',
+    top: "Click me!",
     children: 'Hidden treasure!',
   },
 };
@@ -23,22 +20,12 @@ export const Default: Story = {
 export const AccordionAreaDeprecatedExample: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
   return (
-    <AccordionAreaDeprecated
-      expanded={expanded}
-      top={
-        <AccordionButtonDeprecated
-          expanded={expanded}
-          onClick={() => setExpanded(!expanded)}
-        >
-          Finer control!
-        </AccordionButtonDeprecated>
-      }
-    >
+    <AccordionAreaDeprecated expanded={expanded} top={<AccordionButtonDeprecated expanded={expanded} onClick={() => setExpanded(!expanded)}>Finer control!</AccordionButtonDeprecated>}>
       Expanded Details
     </AccordionAreaDeprecated>
   );
-};
+}
 
-export const AccordionAreaDeprecatedClickable: Story = {
+export const AccordionAreaDeprecatedClickable: Story= {
   render: () => <AccordionAreaDeprecatedExample />,
-};
+}

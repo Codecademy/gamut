@@ -9,8 +9,8 @@ const meta: Meta<typeof IconButton> = {
     disabled: false,
     size: 'normal',
     icon: SearchIcon,
-    tip: 'ToolTip',
-    tipProps: { placement: 'floating' },
+    tip: "ToolTip",
+    tipProps: { placement: 'floating' }
   },
   argTypes: {
     href: {
@@ -28,7 +28,7 @@ const meta: Meta<typeof IconButton> = {
         options: ['normal', 'small', 'large'],
       },
     },
-  },
+  }
 };
 
 export default meta;
@@ -37,3 +37,4 @@ type Story = StoryObj<typeof IconButton>;
 export const Default: Story = {
   args: {},
 };
+

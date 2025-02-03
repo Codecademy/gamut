@@ -73,14 +73,13 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         as={htmlFor ? 'label' : 'div'}
       >
         {children}
-        {!isSoloField &&
-          (required ? (
-            <Text as="span" aria-hidden>
-              *
-            </Text>
+        {!isSoloField && (
+          required ? (
+            <Text as="span" aria-hidden>*</Text>
           ) : (
             '\u00A0(optional)'
-          ))}
+          )
+        )}
       </Label>
       {infotip && <InfoTip {...infotip} />}
     </FlexBox>

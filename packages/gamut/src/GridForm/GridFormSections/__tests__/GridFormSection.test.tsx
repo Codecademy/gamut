@@ -80,7 +80,7 @@ describe('GridFormSections', () => {
           value: 'Do you know what that is?',
         },
       });
-    });
+    })
 
     await view.findByText('what is it?');
     await view.findByText('not enough updog');

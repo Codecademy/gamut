@@ -59,7 +59,7 @@ export const Navigation: Story = {
         `https://giphy.com/search/hamtaro-page-${pageNumber}`,
         '_blank'
       );
-    },
+    }
   },
 };
 
@@ -125,5 +125,5 @@ export const Controlled: Story = {
     chapterSize: 5,
     totalPages: 27,
   },
-  render: (args) => <PaginationControlledExample {...args} />,
+  render: (args) => <PaginationControlledExample {...args} />
 };

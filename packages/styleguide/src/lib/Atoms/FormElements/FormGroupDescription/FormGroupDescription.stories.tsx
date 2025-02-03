@@ -12,3 +12,4 @@ type Story = StoryObj<typeof FormGroupDescription>;
 export const Default: Story = {
   args: { children: 'I am a description' },
 };
+
