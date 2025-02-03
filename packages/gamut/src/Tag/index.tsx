@@ -14,13 +14,13 @@ import { TagProps } from './types';
 
 export const Tag: React.FC<TagProps> = ({
   children,
-  variant = 'readOnly',
-  onDismiss,
-  href = '',
-  onClick,
   disabled = false,
-  size,
+  href = '',
   icon,
+  onClick,
+  onDismiss,
+  size,
+  variant = 'readOnly',
   ...rest
 }) => {
   const isReadOnly = variant === 'readOnly'
@@ -40,8 +40,8 @@ export const Tag: React.FC<TagProps> = ({
   });
 
   const sharedInteractiveProps = {
-    size,
     disabled,
+    size,
   }
 
   const CorrectLabel = (
@@ -65,24 +65,24 @@ export const Tag: React.FC<TagProps> = ({
   return (
     <Outline disabled={disabled} readOnly={isReadOnly} {...rest} >
       <TagLabelWrapper
-        readOnly={isReadOnly}
-        variant={variant}
-        overflow={isInteractive ? 'hidden' : 'visible'}
-        selectionDisabled={isSelection && disabled}
         disabled={!isReadOnly && disabled}
+        overflow={isInteractive ? 'hidden' : 'visible'}
+        readOnly={isReadOnly}
+        selectionDisabled={isSelection && disabled}
+        variant={variant}
       >
         { CorrectLabel }
       </TagLabelWrapper>
       {isSelection && (
         <DismissButton
+          aria-disabled={disabled}
           aria-label={disabled ? '' : `Dismiss ${children} Tag`}
+          disabled={disabled}
+          icon={isLarge ? LargeMiniDeleteIcon : DefaultMiniDeleteIcon}
+          isLarge={isLarge}
           onClick={onDismiss || undefined}
           tip={disabled ? '' : "Remove"}
           tipProps={{ placement: disabled ? undefined : 'floating' }}
-          icon={isLarge ? LargeMiniDeleteIcon : DefaultMiniDeleteIcon}
-          disabled={disabled}
-          aria-disabled={disabled}
-          isLarge={isLarge}
         />
       )}
     </Outline>

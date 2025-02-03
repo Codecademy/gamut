@@ -8,7 +8,7 @@ import { Text } from '../Typography';
 import {
   anchorSizeVariants,
   anchorVariants,
-  defaultminiDeleteIconStyling,
+  defaultMiniDeleteIconStyling,
   dismissButtonLargeStyling,
   dismissButtonStyling,
   largeMiniDeleteIconStyling,
@@ -33,13 +33,13 @@ export const TagLabelWrapper = styled(Box)<BaseTagProps>(
 );
 
 export const DismissButton = styled(IconButton)<DismissButtonProps>(
+  dismissButtonLargeStyling,
   dismissButtonStyling,
-  dismissButtonLargeStyling
 );
 
 export const TagAnchor = styled(Anchor)<TagAnchorProps>(
-  anchorVariants,
   anchorSizeVariants,
+  anchorVariants,
 )
 
 export const TagText = styled(Text)<TagTextProps>(
@@ -48,7 +48,7 @@ export const TagText = styled(Text)<TagTextProps>(
 )
 
 export const DefaultMiniDeleteIcon = styled(MiniDeleteIcon)(
-  defaultminiDeleteIconStyling
+  defaultMiniDeleteIconStyling
 );
 export const LargeMiniDeleteIcon = styled(MiniDeleteIcon)(
   largeMiniDeleteIconStyling

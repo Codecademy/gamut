@@ -29,9 +29,9 @@ export const outlineStyling = css({
   // This is a bit of a hack as we don't have access to focus-visible from this component. If you are not properly dismissing your tags you may see this primary colored outline after clicking X, but otherwise you should never hit this behavior.
   borderRadius: 'md',
   flexDirection: 'row',
-  width: '100%',
   maxWidth: 'fit-content',
   overflow: 'hidden',
+  width: '100%',
   '&:focus-within': {
     outline: `2px solid ${theme.colors.primary}`,
     outlineOffset: '2px',
@@ -55,36 +55,36 @@ export const tagUsageVariants = variant({
   defaultVariant: 'readOnly',
   base: {
     alignItems: 'center',
+    borderRadius: 'md',
     display: 'flex',
     justifyContent: 'center',
     maxWidth: '100%',
     width: 'fit-content',
-    borderRadius: 'md',
   },
   variants: {
     readOnly: {
       bg: 'text-secondary',
-      color: 'background',
       borderRadius: 'none',
+      color: 'background',
     },
     selection: {
       bg: 'text-secondary',
-      color: 'background',
       borderRadiusRight: 'none',
+      color: 'background',
     },
     navigation: {
+      bg: 'background-current',
       border: 1,
       borderColor: 'border-secondary',
-      bg: 'background-current',
       [ButtonSelectors.ACTIVE]: {
         bg: 'secondary',
       },
     },
     suggestion: {
-      color: 'text',
+      bg: 'background-current',
       border: 1,
       borderColor: 'primary',
-      bg: 'background-current',
+      color: 'text',
     }
   },
 });
@@ -95,7 +95,7 @@ export const textSizeVariants = variant({
   variants: {
     default: {
       pt: textDefaultVerticalPadding + 1 as any,
-      pb: textDefaultVerticalPadding - 1 as any
+      pb: textDefaultVerticalPadding - 1 as any,
     },
     large: {
       pt: textLargeVerticalPadding + 1 as any,
@@ -126,8 +126,8 @@ export const tagWrapperStates = states({
     borderColor: 'border-disabled',
   },
   selectionDisabled: {
+    bg: 'background-disabled',
     color: 'text-disabled',
-    bg: 'background-disabled'
   }
 });
 
@@ -140,9 +140,9 @@ export const tagTextStyling = css({
 export const anchorVariants = variant({
   prop: 'interactiveType',
   base: {
-    px: tagLabelPadding,
-    lineHeight: 1.5 as any,
     fontSize: 14,
+    lineHeight: 1.5 as any,
+    px: tagLabelPadding,
     textDecoration: 'none',
     ":before": {
       display: 'none'
@@ -199,11 +199,11 @@ export const dismissButtonLargeStyling = states({
 })
 
 export const dismissButtonStyling = css({
-  color: 'background',
   bg: 'text-secondary',
   border: 'none',
-  borderRadiusRight: 'md',
   borderRadiusLeft: 'none',
+  borderRadiusRight: 'md',
+  color: 'background',
   width: "100%",
   [hoverAndFocus]: {
     color: 'background',
@@ -217,12 +217,12 @@ export const dismissButtonStyling = css({
   ...dismissButtonOverrides,
 })
 
-export const defaultminiDeleteIconStyling = css({
-  width: 12,
+export const defaultMiniDeleteIconStyling = css({
   color: 'inherit',
+  width: 12,
 })
 
 export const largeMiniDeleteIconStyling = css({
-  width: 16,
   color: 'inherit',
+  width: 16,
 })
