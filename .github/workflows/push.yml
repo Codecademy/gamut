@@ -22,15 +22,6 @@ jobs:
           command: build
       - run: yarn ${{ matrix.command }}
 
-
-    runs-on: ubuntu-latest
-    steps:
-      - uses: Codecademy/run-on-yarn@v3.0.0
-        with:
-          node-version: 16
-          command: build
-      - run: yarn ${{ matrix.command }}
-
 on:
   push:
     branches:
