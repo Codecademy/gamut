@@ -41,21 +41,20 @@ export interface AbstractParser {
 
 export type PropertyValues<
   Property extends keyof PropertyTypes,
-  All extends boolean = false
+  All extends boolean = false,
 > = Exclude<
   PropertyTypes<All extends true ? DefaultCSSPropertyValue : never>[Property],
   All extends true ? never : object | any[]
 >;
 
-export type ScaleValue<
-  Config extends Prop
-> = Config['scale'] extends keyof Theme
-  ? keyof Theme[Config['scale']] | PropertyValues<Config['property']>
-  : Config['scale'] extends MapScale
-  ? keyof Config['scale'] | PropertyValues<Config['property']>
-  : Config['scale'] extends ArrayScale
-  ? Config['scale'][number] | PropertyValues<Config['property']>
-  : PropertyValues<Config['property'], true>;
+export type ScaleValue<Config extends Prop> =
+  Config['scale'] extends keyof Theme
+    ? keyof Theme[Config['scale']] | PropertyValues<Config['property']>
+    : Config['scale'] extends MapScale
+      ? keyof Config['scale'] | PropertyValues<Config['property']>
+      : Config['scale'] extends ArrayScale
+        ? Config['scale'][number] | PropertyValues<Config['property']>
+        : PropertyValues<Config['property'], true>;
 
 export type Scale<Config extends Prop> = ResponsiveProp<
   ScaleValue<Config> | ((theme: Theme) => ScaleValue<Config>)
@@ -80,7 +79,7 @@ export type TransformerMap<Config extends Record<string, Prop>> = {
   [P in Key<keyof Config>]: PropTransformer<Key<P>, Config[P]>;
 };
 export interface Parser<
-  Config extends Record<string, AbstractPropTransformer>
+  Config extends Record<string, AbstractPropTransformer>,
 > {
   (props: ParserProps<Config>): CSSObject;
   propNames: (keyof Config)[];
@@ -98,7 +97,7 @@ export interface Variant<P extends AbstractParser> {
     Keys extends keyof Props,
     Base extends AbstractProps,
     Props extends Record<Keys, AbstractProps>,
-    PropKey extends Readonly<string> = 'variant'
+    PropKey extends Readonly<string> = 'variant',
   >(options: {
     prop?: PropKey;
     defaultVariant?: keyof Props;
@@ -114,20 +113,16 @@ export interface States<P extends AbstractParser> {
 }
 
 export interface CSS<P extends AbstractParser> {
-  <Props extends AbstractProps>(config: CSSProps<Props, SystemProps<P>>): (
-    props: ThemeProps
-  ) => CSSObject;
+  <Props extends AbstractProps>(
+    config: CSSProps<Props, SystemProps<P>>
+  ): (props: ThemeProps) => CSSObject;
 }
 
 export type ParserProps<
-  Config extends Record<string, AbstractPropTransformer>
-> = ThemeProps<
-  {
-    [P in keyof Config]?: Parameters<
-      Config[P]['styleFn']
-    >[2][Config[P]['prop']];
-  }
->;
+  Config extends Record<string, AbstractPropTransformer>,
+> = ThemeProps<{
+  [P in keyof Config]?: Parameters<Config[P]['styleFn']>[2][Config[P]['prop']];
+}>;
 
 export type SystemProps<P extends AbstractParser> = {
   [K in keyof Omit<Parameters<P>[0], 'theme'>]: Omit<

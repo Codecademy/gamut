@@ -14,7 +14,9 @@ const fade = keyframes({
 });
 
 const ShimmerForeground = styled(Box)`
-  animation: ${slide} 2s linear infinite, ${fade} 1s linear infinite alternate;
+  animation:
+    ${slide} 2s linear infinite,
+    ${fade} 1s linear infinite alternate;
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 0) 20%,

@@ -293,7 +293,7 @@ export const formatGroupLabel = ({ label, divider }: SelectDropdownGroup) => {
 export function TypedReactSelect<
   OptionType,
   IsMulti extends boolean = false,
-  GroupType extends GroupBase<OptionType> = GroupBase<OptionType>
+  GroupType extends GroupBase<OptionType> = GroupBase<OptionType>,
 >({
   selectRef,
   ...props

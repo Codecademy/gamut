@@ -136,7 +136,7 @@ export type SizedIndicatorProps = DropdownIndicatorProps<
   InternalSelectProps;
 
 export type CustomSelectComponentProps<
-  T extends React.JSXElementConstructor<unknown>
+  T extends React.JSXElementConstructor<unknown>,
 > = React.ComponentProps<T> & InternalSelectProps;
 
 export interface TypedReactSelectProps extends ReactSelectAdditionalProps {

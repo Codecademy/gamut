@@ -39,7 +39,7 @@ interface ConnectedGroupStrictProps<Values extends {}> {
 
 interface UseConnectedFormProps<
   Values,
-  Rules extends { [Key in keyof Values]?: RegisterOptions }
+  Rules extends { [Key in keyof Values]?: RegisterOptions },
 > {
   defaultValues: Values;
   validationRules: Partial<Rules>;
@@ -51,7 +51,7 @@ interface UseConnectedFormProps<
 
 interface ConnectedFormStrictProps<
   Values extends {},
-  Rules extends { [Key in keyof Values]?: RegisterOptions }
+  Rules extends { [Key in keyof Values]?: RegisterOptions },
 > extends UseConnectedFormProps<Values, Rules> {
   (
     props: UseConnectedFormProps<Values, Rules> & ConnectedFormProps<Values>
@@ -60,7 +60,7 @@ interface ConnectedFormStrictProps<
 
 export const useConnectedForm = <
   Values extends {},
-  ValidationRules extends { [K in keyof Values]: RegisterOptions }
+  ValidationRules extends { [K in keyof Values]: RegisterOptions },
 >({
   defaultValues,
   validationRules,
@@ -211,8 +211,8 @@ export const useSubmitState = ({ loading, disabled }: SubmitContextProps) => {
     typeof disabled === 'function'
       ? disabled(formState)
       : disabled === undefined
-      ? formState.isValid
-      : disabled;
+        ? formState.isValid
+        : disabled;
 
   return { isLoading, isDisabled };
 };

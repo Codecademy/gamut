@@ -13,7 +13,7 @@ import { AbstractTheme } from '../types/theme';
 export type MergeTheme<
   Base extends AbstractTheme,
   Next,
-  Unmergable = Record<'breakpoints', Base['breakpoints']>
+  Unmergable = Record<'breakpoints', Base['breakpoints']>,
 > = Unmergable & Merge<Base, Next>;
 
 /** This merges at 2 levels of depth */
@@ -23,8 +23,8 @@ export type Merge<A, B> = {
       ? AssignValueIfUnmergable<A[K], B[K]>
       : B[K]
     : K extends keyof A
-    ? A[K]
-    : never;
+      ? A[K]
+      : never;
 };
 
 /** Extract mergable objects */
@@ -34,19 +34,16 @@ export type Mergable<T> = Exclude<
 >;
 
 /** Return B if either A or B is unmergable */
-export type AssignValueIfUnmergable<A, B> = Mergable<A> extends never
-  ? B
-  : Mergable<B> extends never
-  ? B
-  : Assign<A, B>;
+export type AssignValueIfUnmergable<A, B> =
+  Mergable<A> extends never ? B : Mergable<B> extends never ? B : Assign<A, B>;
 
 /** Prefer all values from B */
 export type Assign<A, B> = {
   [K in keyof A | keyof B]: K extends keyof B
     ? B[K]
     : K extends keyof A
-    ? A[K]
-    : never;
+      ? A[K]
+      : never;
 };
 
 /** These are keys that are consistent for all theme builds - they are loosely typed as they are not meant to be accessed directly */

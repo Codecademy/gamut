@@ -46,7 +46,7 @@ const mockTargetRef = (
       }),
       ...target,
     },
-  } as PopoverContainerProps['targetRef']);
+  }) as PopoverContainerProps['targetRef'];
 
 const defaultProps = {
   isOpen: true,

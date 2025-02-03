@@ -14,7 +14,7 @@ import {
 export function useListControls<
   Row,
   IdKey extends IdentifiableKeys<Row>,
-  Cols extends ColumnConfig<Row>[]
+  Cols extends ColumnConfig<Row>[],
 >({
   idKey,
   id,

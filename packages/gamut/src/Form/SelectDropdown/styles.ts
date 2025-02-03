@@ -74,8 +74,8 @@ const getOptionBackground = (isSelected: boolean, isFocused: boolean) =>
     bg: isFocused
       ? 'background-hover'
       : isSelected
-      ? 'background-selected'
-      : 'transparent',
+        ? 'background-selected'
+        : 'transparent',
   });
 
 const textColor = css({

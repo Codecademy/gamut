@@ -52,15 +52,14 @@ export type CSSProps<Props, System> = {
   [K in keyof Props]?: K extends keyof System
     ? System[K]
     : K extends keyof CSSPropertyTypes
-    ? CSSPropertyTypes[K]
-    : Omit<CSSPropertyTypes, keyof System> & Omit<System, 'theme'>;
+      ? CSSPropertyTypes[K]
+      : Omit<CSSPropertyTypes, keyof System> & Omit<System, 'theme'>;
 };
 
-export type StyleProps<
-  T extends (args: AbstractProps) => CSSObject
-> = Parameters<T>[0];
+export type StyleProps<T extends (args: AbstractProps) => CSSObject> =
+  Parameters<T>[0];
 
 export type ScaleValue<
   P extends AbstractParser,
-  Prop extends keyof P['config']
+  Prop extends keyof P['config'],
 > = Scale<P['config'][Prop]>;

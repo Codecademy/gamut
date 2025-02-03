@@ -6,7 +6,7 @@ import { all as allProps } from './config';
 const allPropnames = ['mode', 'variant', ...Object.keys(allProps)] as [
   'mode',
   'variant',
-  ...[keyof typeof allProps]
+  ...[keyof typeof allProps],
 ];
 
 /**
@@ -15,7 +15,7 @@ const allPropnames = ['mode', 'variant', ...Object.keys(allProps)] as [
  */
 const validPropnames = allPropnames.filter(isPropValid);
 
-export type SystemPropNames = typeof allPropnames[number];
+export type SystemPropNames = (typeof allPropnames)[number];
 
 export type ElementOrProps = keyof JSX.IntrinsicElements | ThemeProps;
 export type ForwardableProps<El extends ElementOrProps, Additional> = Exclude<
@@ -27,7 +27,7 @@ export type ForwardableProps<El extends ElementOrProps, Additional> = Exclude<
 
 export function createStyledOptions<
   El extends ElementOrProps = 'div',
-  Additional extends string = never
+  Additional extends string = never,
 >(additional: readonly Additional[] = []) {
   // Cache possible valid prop names to prevent searching a larger list.
   const additionalExclusions = additional.filter(isPropValid);

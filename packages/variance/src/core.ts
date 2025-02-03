@@ -167,7 +167,7 @@ export const variance = {
   },
   createCss<
     Config extends Record<string, Prop>,
-    P extends Parser<TransformerMap<Config>>
+    P extends Parser<TransformerMap<Config>>,
   >(config: Config): CSS<P> {
     const parser = this.create(config);
     const filteredProps: string[] = parser.propNames;
@@ -209,7 +209,7 @@ export const variance = {
   },
   createVariant<
     Config extends Record<string, Prop>,
-    P extends Parser<TransformerMap<Config>>
+    P extends Parser<TransformerMap<Config>>,
   >(config: Config): Variant<P> {
     const css: CSS<P> = this.createCss(config);
 
@@ -239,7 +239,7 @@ export const variance = {
   },
   createStates<
     Config extends Record<string, Prop>,
-    P extends Parser<TransformerMap<Config>>
+    P extends Parser<TransformerMap<Config>>,
   >(config: Config): States<P> {
     const css: CSS<P> = this.createCss(config);
 

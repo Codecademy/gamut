@@ -29,7 +29,7 @@ const props = {
 } as Props;
 
 const renderView = setupRtl(DataGrid, props as any) as <
-  T extends Partial<Props>
+  T extends Partial<Props>,
 >(
   props?: T
 ) => { view: RenderResult };

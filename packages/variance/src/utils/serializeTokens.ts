@@ -9,7 +9,7 @@ import { CSSObject } from '../types/props';
  */
 export type KeyAsVariable<
   T extends Record<string, any>,
-  Prefix extends string
+  Prefix extends string,
 > = {
   [V in keyof T]: `var(--${Prefix}-${Extract<V, string>})`;
 };
@@ -51,7 +51,7 @@ interface SerializedTokensInputRecursive {
 
 export const serializeTokens = <
   T extends SerializedTokensInput,
-  Prefix extends string
+  Prefix extends string,
 >(
   tokens: T,
   prefix: Prefix,

@@ -2,8 +2,8 @@
   font-family: "Nunito Sans";
   font-display: swap;
   src: url("../fonts/Nunito_Sans/nunitosans-regular-webfont.eot");
-  src: url("../fonts/Nunito_Sans/nunitosans-regular-webfont.woff2")
-      format("woff2"),
+  src:
+    url("../fonts/Nunito_Sans/nunitosans-regular-webfont.woff2") format("woff2"),
     url("../fonts/Nunito_Sans/nunitosans-regular-webfont.woff") format("woff"),
     url("../fonts/Nunito_Sans/nunitosans-regular-webfont.ttf") format("ttf");
   font-weight: normal;
@@ -13,7 +13,8 @@
   font-family: "Nunito Sans";
   font-display: swap;
   src: url("../fonts/Nunito_Sans/nunitosans-bold-webfont.eot");
-  src: url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff2") format("woff2"),
+  src:
+    url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff2") format("woff2"),
     url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff") format("woff"),
     url("../fonts/Nunito_Sans/nunitosans-bold-webfont.ttf") format("ttf");
   font-weight: bold;
@@ -23,7 +24,8 @@
   font-family: "Regular Bold";
   font-display: swap;
   src: url("../fonts/Regular_Bold/Regular-BoldWEB.eot");
-  src: url("../fonts/Regular_Bold/Regular-BoldWEB.woff2") format("woff2"),
+  src:
+    url("../fonts/Regular_Bold/Regular-BoldWEB.woff2") format("woff2"),
     url("../fonts/Regular_Bold/Regular-BoldWEB.woff") format("woff"),
     url("../fonts/Regular_Bold/Regular-BoldWEB.svg") format("svg");
 }
@@ -32,7 +34,8 @@
 @font-face {
   font-family: "Regular Patch";
   src: url("../fonts/Nunito_Sans/nunitosans-bold-webfont.eot");
-  src: url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff2") format("woff2"),
+  src:
+    url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff2") format("woff2"),
     url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff") format("woff"),
     url("../fonts/Nunito_Sans/nunitosans-bold-webfont.ttf") format("ttf");
   unicode-range: U+003C, U+003E;
@@ -43,7 +46,8 @@
   font-family: "Apercu";
   font-style: normal;
   font-weight: normal;
-  src: url("../fonts/Apercu/apercu-regular-pro.woff2") format("woff2"),
+  src:
+    url("../fonts/Apercu/apercu-regular-pro.woff2") format("woff2"),
     url("../fonts/Apercu/apercu-regular-pro.woff") format("woff");
 }
 
@@ -52,7 +56,8 @@
   font-family: "Apercu";
   font-style: normal;
   font-weight: bold;
-  src: url("../fonts/Apercu/apercu-bold-pro.woff2") format("woff2"),
+  src:
+    url("../fonts/Apercu/apercu-bold-pro.woff2") format("woff2"),
     url("../fonts/Apercu/apercu-bold-pro.woff") format("woff");
 }
 
@@ -61,7 +66,8 @@
   font-family: "Apercu";
   font-style: italic;
   font-weight: normal;
-  src: url("../fonts/Apercu/apercu-italic-pro.woff2") format("woff2"),
+  src:
+    url("../fonts/Apercu/apercu-italic-pro.woff2") format("woff2"),
     url("../fonts/Apercu/apercu-italic-pro.woff") format("woff");
 }
 
@@ -70,7 +76,8 @@
   font-family: "Apercu";
   font-style: italic;
   font-weight: bold;
-  src: url("../fonts/Apercu/apercu-bold-italic-pro.woff2") format("woff2"),
+  src:
+    url("../fonts/Apercu/apercu-bold-italic-pro.woff2") format("woff2"),
     url("../fonts/Apercu/apercu-bold-italic-pro.woff") format("woff");
 }
 
@@ -78,7 +85,8 @@
   font-display: swap;
   font-family: "Suisse";
   font-weight: normal;
-  src: url("../fonts/Suisse/SuisseIntlMono-Regular-WebS.woff2") format("woff2"),
+  src:
+    url("../fonts/Suisse/SuisseIntlMono-Regular-WebS.woff2") format("woff2"),
     url("../fonts/Suisse/SuisseIntlMono-Regular-WebS.woff") format("woff");
 }
 
@@ -86,6 +94,7 @@
   font-display: swap;
   font-family: "Suisse";
   font-weight: bold;
-  src: url("../fonts/Suisse/SuisseIntlMono-Bold-WebS.woff2") format("woff2"),
+  src:
+    url("../fonts/Suisse/SuisseIntlMono-Bold-WebS.woff2") format("woff2"),
     url("../fonts/Suisse/SuisseIntlMono-Bold-WebS.woff") format("woff");
 }

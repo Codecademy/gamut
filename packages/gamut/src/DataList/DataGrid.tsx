@@ -11,7 +11,7 @@ import { ColumnConfig, DataListControls, IdentifiableKeys } from './types';
 export interface DataGridProps<
   Row,
   IdKey extends IdentifiableKeys<Row>,
-  Cols extends ColumnConfig<Row>[]
+  Cols extends ColumnConfig<Row>[],
 > extends MarshaledColProps,
     DataListControls<Row, IdKey, Cols>,
     Omit<ComponentProps<typeof List>, 'header' | 'id'> {
@@ -26,7 +26,7 @@ export interface DataGridProps<
 export function DataGrid<
   Row,
   IdKey extends IdentifiableKeys<Row>,
-  Cols extends ColumnConfig<Row>[]
+  Cols extends ColumnConfig<Row>[],
 >(props: DataGridProps<Row, IdKey, Cols>) {
   const listControls = useListControls(props);
 

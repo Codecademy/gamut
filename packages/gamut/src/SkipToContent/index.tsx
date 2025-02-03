@@ -30,7 +30,8 @@ const SkipToContentLink = styled.a`
   left: 50%;
   z-index: calc(${themed('elements.headerZ')} + 1);
   width: 12rem;
-  transition: opacity ${timing.fast} ${animateFunction},
+  transition:
+    opacity ${timing.fast} ${animateFunction},
     transform ${timing.fast} ${animateFunction};
 
   &:hover {

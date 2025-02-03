@@ -6,7 +6,7 @@ import { ColumnConfig, IdentifiableKeys, OnQueryChange, Query } from '../types';
 export interface LocalQueryShape<
   Row,
   IdKey extends IdentifiableKeys<Row>,
-  Cols extends ColumnConfig<Row>[]
+  Cols extends ColumnConfig<Row>[],
 > {
   rows: Row[];
   idKey: IdKey;
@@ -16,7 +16,7 @@ export interface LocalQueryShape<
 export const useLocalQuery = <
   Row,
   Cols extends ColumnConfig<Row>[],
-  IdKey extends IdentifiableKeys<Row>
+  IdKey extends IdentifiableKeys<Row>,
 >({
   idKey,
   rows,
@@ -55,7 +55,7 @@ export const useLocalQuery = <
     if (filter) {
       const filterDimensions = Object.entries(filter) as [
         keyof Row,
-        Row[keyof Row][]
+        Row[keyof Row][],
       ][];
 
       computedRows = rows.filter((row) => {

@@ -109,7 +109,7 @@ export interface ExpandRow<Row> {
 export interface DataListControls<
   Row,
   IdKey extends IdentifiableKeys<Row>,
-  Cols extends ColumnConfig<Row>[]
+  Cols extends ColumnConfig<Row>[],
 > {
   id: string;
   idKey: IdKey;

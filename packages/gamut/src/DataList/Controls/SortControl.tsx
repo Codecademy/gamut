@@ -65,8 +65,8 @@ export const SortControl: React.FC<SortControlProps> = ({
         direction === 'none'
           ? 'none'
           : direction === 'asc'
-          ? 'ascending'
-          : 'descending'
+            ? 'ascending'
+            : 'descending'
       }
       variant="interface"
       onClick={() =>
