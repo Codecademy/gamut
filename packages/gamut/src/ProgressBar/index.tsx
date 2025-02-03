@@ -1,5 +1,5 @@
 import { PatternProps } from '@codecademy/gamut-patterns';
-import { css, theme, variant } from '@codecademy/gamut-styles';
+import { theme, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
 
