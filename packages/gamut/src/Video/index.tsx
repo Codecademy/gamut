@@ -1,28 +1,57 @@
 import { PlayIcon } from '@codecademy/gamut-icons';
+import { theme } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import { PlayerSrc, TrackProps } from '@vidstack/react';
 import {
   DefaultLayoutTranslations,
   ThumbnailSrc,
 } from '@vidstack/react/types/vidstack';
-import cx from 'classnames';
 import * as React from 'react';
 import { useState } from 'react';
 import ReactPlayer from 'react-player';
+import { BaseReactPlayerProps } from 'react-player/base';
 
+import { Box, FlexBox } from '../Box';
 import { useIsMounted } from '../utils';
 import { VidstackPlayer } from './lib/Player';
 // eslint-disable-next-line gamut/no-css-standalone
-import styles from './styles/index.module.scss';
+
+const ReactVideoPlayer = styled(ReactPlayer)`
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  & :focus-visible {
+    outline-offset: 3px;
+  }
+  video::-webkit-media-controls-panel {
+    background-image: linear-gradient(
+      transparent 15%,
+      ${theme.colors['navy-900']} 55%
+    );
+  }
+`;
 
 const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
   return (
-    <div
-      className={styles.overlay}
+    <FlexBox
       role="button"
       aria-label={`play video${videoTitle ? `: ${videoTitle}` : ''}`}
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      position="relative"
+      color="white"
+      width="100%"
+      height="100%"
+      opacity="0.5"
+      bg="black"
     >
-      <PlayIcon className={styles.hoverButton} />
-    </div>
+      <PlayIcon minWidth="75px" minHeight="75px" color="white" />
+    </FlexBox>
   );
 };
 
@@ -35,7 +64,6 @@ export type ReactPlayerWithWrapper = ReactPlayer & { wrapper: HTMLElement };
 export type VideoProps = {
   className?: string;
   autoplay?: boolean;
-  controls?: boolean;
   loop?: boolean;
   muted?: boolean;
   onPlay?: () => void;
@@ -43,6 +71,7 @@ export type VideoProps = {
   width?: number;
   height?: number;
   videoTitle?: string;
+  controls?: boolean;
   /**
    * Placeholder image for a poster/thumbnail.
    */
@@ -109,29 +138,24 @@ export const Video: React.FC<VideoProps> = ({
     },
   };
 
-  const hasExternallyHostedVideoAndEmbedEnabled =
-    videoUrl &&
-    typeof videoUrl === 'string' &&
-    showPlayerEmbed &&
-    (videoUrl.match(/youtu(be\.com|\.be)/) || videoUrl.match(/vimeo.com/));
-
   /**
-   * If the video is externally hosted and showPlayerEmbed is true, use ReactPlayer to render the video
+   * If showPlayerEmbed is true and Video Url is a string, use ReactPlayer to render the video
    * Otherwise, use the Vidstack MediaPlayer. This is because currently vidstack player has an issue with
    * youtube iframe embeds where it keeps pausing (only in case if yt iframe is used i.e with native yt controls)
    */
-  if (hasExternallyHostedVideoAndEmbedEnabled) {
+  if (showPlayerEmbed) {
     return (
-      <div
-        className={cx(
-          styles.videoWrapper,
-          loading && styles.loading,
-          className
-        )}
+      <Box
+        position="relative"
+        width="100%"
+        pt={'56.25%' as any}
+        borderRadius="md"
+        overflow="hidden"
+        bg={loading ? 'black' : undefined}
+        className={className}
       >
         {isMounted ? (
-          <ReactPlayer
-            className={styles.iframe}
+          <ReactVideoPlayer
             config={config}
             controls={controls === undefined ? true : controls}
             height={height}
@@ -141,7 +165,7 @@ export const Video: React.FC<VideoProps> = ({
             playIcon={<OverlayPlayButton videoTitle={videoTitle} />}
             playing={autoplay}
             title={videoTitle}
-            url={videoUrl}
+            url={videoUrl as BaseReactPlayerProps['url']}
             width={width}
             onReady={(player: ReactPlayerWithWrapper) => {
               onReady?.(player);
@@ -150,7 +174,7 @@ export const Video: React.FC<VideoProps> = ({
             onPlay={onPlay}
           />
         ) : null}
-      </div>
+      </Box>
     );
   }
 

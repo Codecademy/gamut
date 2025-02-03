@@ -10,18 +10,21 @@ import {
   Poster,
   Track,
 } from '@vidstack/react';
-import cx from 'classnames';
 import React, { useRef } from 'react';
 
+import { Box } from '../../Box';
 import { VideoProps } from '..';
-import styles from '../styles/index.module.scss';
 import { keyboardShortcuts } from './utils/keyboardShortcuts';
 import { vdsVariables } from './utils/variables';
 import { VideoLayout } from './VideoLayout';
 
-const VariableProvider = styled('div', styledOptions(['variables']))<{
+const VariableProvider = styled(Box, styledOptions(['variables']))<{
   variables?: CSSObject;
-}>(({ variables }) => variables, { width: '100%', height: '100%' });
+}>(({ variables }) => variables, {
+  width: '100%',
+  height: '100%',
+  position: 'relative',
+});
 
 type VidstackPlayerProps = VideoProps & {
   onLoad: () => void;
@@ -49,7 +52,7 @@ export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
   return (
     <VariableProvider
       variables={vdsVariables}
-      className={cx(styles.vdsWrapper, className)}
+      className={className}
       style={{ width, height }}
     >
       <MediaPlayer
