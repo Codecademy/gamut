@@ -1,4 +1,8 @@
-import { ConnectedFormGroup, ConnectedRadioGroupInput, useConnectedForm } from '@codecademy/gamut';
+import {
+  ConnectedFormGroup,
+  ConnectedRadioGroupInput,
+  useConnectedForm,
+} from '@codecademy/gamut';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -11,22 +15,19 @@ export default meta;
 type Story = StoryObj<typeof ConnectedFormGroup>;
 
 const FormGroupStates = () => {
-  const {
-    ConnectedFormGroup,
-    ConnectedForm,
-    connectedFormProps,
-  } = useConnectedForm({
-    defaultValues: {
-      radioGroup: undefined,
-      radioGroupError: undefined,
-      radioGroupDisabled: undefined,
-    },
-    validationRules: {
-      radioGroup: {
-        required: 'please fill this out.',
+  const { ConnectedFormGroup, ConnectedForm, connectedFormProps } =
+    useConnectedForm({
+      defaultValues: {
+        radioGroup: undefined,
+        radioGroupError: undefined,
+        radioGroupDisabled: undefined,
       },
-    },
-  });
+      validationRules: {
+        radioGroup: {
+          required: 'please fill this out.',
+        },
+      },
+    });
 
   return (
     <ConnectedForm
@@ -79,8 +80,6 @@ const FormGroupStates = () => {
     </ConnectedForm>
   );
 };
-
-
 
 export const Default: Story = {
   render: () => <FormGroupStates />,
