@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.53.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.52.0...@codecademy/gamut-illustrations@0.53.0) (2025-02-03)
+
+### Features
+
+- **Illustration:** added new stackedPagesVariantIllustration ([39c8dbd](https://github.com/Codecademy/gamut/commit/39c8dbd5bcd8060293f1d1e9f6e6c838da228fa5))
+
+## [0.52.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.51.0...@codecademy/gamut-illustrations@0.52.0) (2025-02-03)
+
+### Features
+
+- **Illustration:** Discount tag illustrations ([1065431](https://github.com/Codecademy/gamut/commit/106543146262bdb16383ba840658f2c5208b440a))
+
 ## [0.51.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.50.2...@codecademy/gamut-illustrations@0.51.0) (2025-01-22)
 
 ### Features
