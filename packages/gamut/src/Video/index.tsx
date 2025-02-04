@@ -1,6 +1,3 @@
-import { PlayIcon } from '@codecademy/gamut-icons';
-import { theme } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import { PlayerSrc, TrackProps } from '@vidstack/react';
 import {
   DefaultLayoutTranslations,
@@ -8,58 +5,16 @@ import {
 } from '@vidstack/react/types/vidstack';
 import * as React from 'react';
 import { useState } from 'react';
-import ReactPlayer from 'react-player';
 import { BaseReactPlayerProps } from 'react-player/base';
 
-import { Box, FlexBox } from '../Box';
+import { Box } from '../Box';
 import { useIsMounted } from '../utils';
 import { VidstackPlayer } from './lib/Player';
-// eslint-disable-next-line gamut/no-css-standalone
-
-const ReactVideoPlayer = styled(ReactPlayer)`
-  width: 100% !important;
-  height: 100% !important;
-  border: 0;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  & :focus-visible {
-    outline-offset: 3px;
-  }
-  video::-webkit-media-controls-panel {
-    background-image: linear-gradient(
-      transparent 15%,
-      ${theme.colors['navy-900']} 55%
-    );
-  }
-`;
-
-const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
-  return (
-    <FlexBox
-      role="button"
-      aria-label={`play video${videoTitle ? `: ${videoTitle}` : ''}`}
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      position="relative"
-      color="white"
-      width="100%"
-      height="100%"
-      opacity="0.5"
-      bg="black"
-    >
-      <PlayIcon minWidth="75px" minHeight="75px" color="white" />
-    </FlexBox>
-  );
-};
-
-/**
- * @remarks ReactPlayer has optional key 'wrapper' that we require for the onReady callback
- */
-
-export type ReactPlayerWithWrapper = ReactPlayer & { wrapper: HTMLElement };
+import {
+  OverlayPlayButton,
+  ReactPlayerWithWrapper,
+  ReactVideoPlayer,
+} from './lib/ReactPlayer';
 
 export type VideoProps = {
   className?: string;
@@ -103,9 +58,14 @@ export type VideoProps = {
    */
   translations?: Partial<DefaultLayoutTranslations>;
   /**
-   * Determines if an embedded player view is shown for youtube/vimeo.
+   * @TEMPORARY
+   * Determines if an embedded player view is shown.
    */
   showPlayerEmbed?: boolean;
+  /**
+   * Determines if the default provider/browser controls are shown.
+   */
+  showDefaultProviderControls?: boolean;
 };
 
 export const Video: React.FC<VideoProps> = ({
@@ -125,6 +85,7 @@ export const Video: React.FC<VideoProps> = ({
   thumbnails,
   translations,
   showPlayerEmbed,
+  showDefaultProviderControls,
 }) => {
   const [loading, setLoading] = useState(true);
   const isMounted = useIsMounted();
@@ -139,9 +100,8 @@ export const Video: React.FC<VideoProps> = ({
   };
 
   /**
-   * If showPlayerEmbed is true and Video Url is a string, use ReactPlayer to render the video
-   * Otherwise, use the Vidstack MediaPlayer. This is because currently vidstack player has an issue with
-   * youtube iframe embeds where it keeps pausing (only in case if yt iframe is used i.e with native yt controls)
+   * If showPlayerEmbed is true use ReactPlayer to render the video
+   * Otherwise, use the Vidstack MediaPlayer. This is because
    */
   if (showPlayerEmbed) {
     return (
@@ -158,7 +118,6 @@ export const Video: React.FC<VideoProps> = ({
           <ReactVideoPlayer
             config={config}
             controls={controls === undefined ? true : controls}
-            height={height}
             light={placeholderImage}
             loop={loop}
             muted={muted}
@@ -166,7 +125,8 @@ export const Video: React.FC<VideoProps> = ({
             playing={autoplay}
             title={videoTitle}
             url={videoUrl as BaseReactPlayerProps['url']}
-            width={width}
+            height="100%"
+            width="100%"
             onReady={(player: ReactPlayerWithWrapper) => {
               onReady?.(player);
               setLoading(false);
@@ -182,22 +142,23 @@ export const Video: React.FC<VideoProps> = ({
     <>
       {isMounted && (
         <VidstackPlayer
-          autoplay={autoplay}
-          controls={controls}
           loop={loop}
           muted={muted}
+          width={width}
+          height={height}
           onPlay={onPlay}
           onReady={onReady}
-          placeholderImage={placeholderImage}
-          videoTitle={videoTitle}
           videoUrl={videoUrl}
+          controls={controls}
+          autoplay={autoplay}
+          className={className}
+          videoTitle={videoTitle}
           textTracks={textTracks}
           thumbnails={thumbnails}
           translations={translations}
           onLoad={() => setLoading(false)}
-          width={width}
-          height={height}
-          className={className}
+          placeholderImage={placeholderImage}
+          showDefaultProviderControls={showDefaultProviderControls}
         />
       )}
     </>

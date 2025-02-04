@@ -6,6 +6,7 @@ import {
 } from '@vidstack/react/types/vidstack';
 
 import { customLayoutSlots } from './slotOverrides';
+import { defaultTranslations } from './utils/constants';
 import { customIcons } from './utils/icons';
 
 export type VideoLayoutProps = {
@@ -25,13 +26,16 @@ export type VideoLayoutProps = {
 export const VideoLayout: React.FC<VideoLayoutProps> = ({
   controls,
   thumbnails,
-  translations,
+  translations = {},
 }) => {
   const mode = useCurrentMode();
 
   return (
     <DefaultVideoLayout
-      translations={translations}
+      translations={{
+        ...defaultTranslations,
+        ...translations,
+      }}
       colorScheme={mode}
       hidden={!controls}
       icons={customIcons}
