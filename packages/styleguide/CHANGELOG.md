@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [70.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@69.0.0...@codecademy/styleguide@70.0.0) (2025-02-04)
+
+### ⚠ BREAKING CHANGES
+
+- **Tag:** Creating new Tag variants and removing old variants
+
+### Features
+
+- **Tag:** Creating new Tag variants and removing old variants ([fede875](https://github.com/Codecademy/gamut/commit/fede875ee64ede926f8c65eeae6096ac8a4d8fe1))
+
 ## [69.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.4.1...@codecademy/styleguide@69.0.0) (2025-01-31)
 
 ### ⚠ BREAKING CHANGES
