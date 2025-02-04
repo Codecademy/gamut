@@ -123,7 +123,7 @@ export const Card: React.FC<CardProps> = ({ variant, ...rest }) => {
     <CardWrapper
       bg={variant}
       border={1}
-      borderColor="navy"
+      borderColor="border-primary"
       borderRadius="md"
       p={16}
       outline={variant === 'navy'}
