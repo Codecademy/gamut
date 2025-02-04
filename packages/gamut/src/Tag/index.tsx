@@ -44,23 +44,37 @@ export const Tag: React.FC<TagProps> = ({
     size,
   }
 
-  const CorrectLabel = (
-    () => {
-      if(isReadOnly) {
+  const CorrectLabel = (() => {
+    switch (variant) {
+      case 'readOnly':
         return <TagText size={size}>{content}</TagText>;
-      }
-      if(isSelection) {
+      case 'selection':
         return <TagText {...sharedInteractiveProps}>{content}</TagText>;
-      }
-      if(isNavigation){
-        return <TagAnchor interactiveType='navigation' href={disabled ? '' : href} onClick={onClick} {...sharedInteractiveProps}>{content}</TagAnchor>
-      }
-      if(isSuggestion){
-        return <TagAnchor interactiveType='suggestion'
-        onClick={onClick} {...sharedInteractiveProps}>{content}</TagAnchor>
-      }
+      case 'navigation':
+        return (
+          <TagAnchor
+            interactiveType="navigation"
+            href={disabled ? '' : href}
+            onClick={onClick}
+            {...sharedInteractiveProps}
+          >
+            {content}
+          </TagAnchor>
+        );
+      case 'suggestion':
+        return (
+          <TagAnchor
+            interactiveType="suggestion"
+            onClick={onClick}
+            {...sharedInteractiveProps}
+          >
+            {content}
+          </TagAnchor>
+        );
+      default:
+        return null;
     }
-  )()
+  })();
 
   return (
     <Outline disabled={disabled} readOnly={isReadOnly} {...rest} >
