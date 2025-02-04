@@ -97,6 +97,11 @@ export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
         onPlay={() => {
           onPlay?.();
         }}
+        onPlaying={() => {
+          if (autoplay && player.current?.muted && !muted) {
+            mediaRemote?.unmute();
+          }
+        }}
         onCanPlay={() => {
           onReady?.();
         }}
