@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [70.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@69.0.0...@codecademy/styleguide@70.0.0) (2025-02-04)
+
+### ⚠ BREAKING CHANGES
+
+- **Tag:** Creating new Tag variants and removing old variants
+
+### Features
+
+- **Tag:** Creating new Tag variants and removing old variants ([fede875](https://github.com/Codecademy/gamut/commit/fede875ee64ede926f8c65eeae6096ac8a4d8fe1))
+
+## [69.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.4.1...@codecademy/styleguide@69.0.0) (2025-01-31)
+
+### ⚠ BREAKING CHANGES
+
+- **Menu:** updates menu variants and usage guidance
+
+### Features
+
+- **Menu:** updates menu variants and usage guidance ([3b3e1f6](https://github.com/Codecademy/gamut/commit/3b3e1f662f457f9200b1377b095455874d3f7123))
+
+### [68.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.4.0...@codecademy/styleguide@68.4.1) (2025-01-29)
+
+### Bug Fixes
+
+- DataGrid reformatted to `table` and aria-sort added ([9903099](https://github.com/Codecademy/gamut/commit/99030998cba981215a56ce260c588385f78b398a))
+
 ## [68.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@68.3.3...@codecademy/styleguide@68.4.0) (2025-01-14)
 
 ### Features
