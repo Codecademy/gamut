@@ -11,6 +11,6 @@ type Story = StoryObj<typeof AlertIcon>;
 
 export const Default: Story = {
   args: {
-    size: 40,
+    size: 60,
   },
 };
