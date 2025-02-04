@@ -87,10 +87,15 @@ export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
         playsInline
         autoPlay={autoplay}
         loop={loop}
-        muted={muted}
+        muted={autoplay ? true : muted}
         keyShortcuts={keyboardShortcuts}
         onLoad={onLoad}
-        onPlay={onPlay}
+        onPlay={() => {
+          onPlay?.();
+          if (autoplay && player.current?.muted && !muted) {
+            mediaRemote?.unmute();
+          }
+        }}
         onCanPlay={() => {
           onReady?.();
         }}
