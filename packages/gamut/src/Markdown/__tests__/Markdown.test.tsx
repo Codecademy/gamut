@@ -19,6 +19,8 @@ jest.mock('@vidstack/react', () => ({
   MediaProvider: () => <div />,
   Poster: jest.fn(),
   Track: jest.fn(),
+  useMediaState: jest.fn(),
+  useMediaRemote: jest.fn(),
 }));
 
 const basicMarkdown = `

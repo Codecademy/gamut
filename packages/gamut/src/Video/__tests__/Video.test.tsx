@@ -7,6 +7,8 @@ jest.mock('@vidstack/react', () => ({
   MediaProvider: jest.fn(),
   Poster: jest.fn(),
   Track: jest.fn(),
+  useMediaState: jest.fn(),
+  useMediaRemote: jest.fn(),
 }));
 
 const renderView = setupRtl(Video, {});
