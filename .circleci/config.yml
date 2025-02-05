@@ -190,7 +190,7 @@ jobs:
       - *build_all_packages
       - run:
           name: build storybook
-          command: yarn nx run styleguide:build-storybook --skip-nx-cache
+          command: yarn nx run styleguide:build-storybook
       - *save_nx_cache
       - *save_webpack_cache
       - run:
