@@ -131,77 +131,94 @@ const cols = [
     sortable: true,
     filters: ['Human'],
   },
-] as ColumnConfig<typeof crew[number]>[];
+] as ColumnConfig<(typeof crew)[number]>[];
 
-export const createDemoTable = (Component: any, overrides = {}) => () => {
-  const [selectedRows, setSelectedRows] = useState<
-    typeof crew[number]['name'][]
-  >([]);
-  const [expandedRows, setExpandedRows] = useState<
-    typeof crew[number]['name'][]
-  >([]);
+export const createDemoTable =
+  (Component: any, overrides = {}) =>
+  () => {
+    const [selectedRows, setSelectedRows] = useState<
+      (typeof crew)[number]['name'][]
+    >([]);
+    const [expandedRows, setExpandedRows] = useState<
+      (typeof crew)[number]['name'][]
+    >([]);
 
-  const { idKey, query, rows, onQueryChange } = useLocalQuery({
-    idKey: 'name',
-    rows: crew,
-    columns: cols,
-  });
+    const { idKey, query, rows, onQueryChange } = useLocalQuery({
+      idKey: 'name',
+      rows: crew,
+      columns: cols,
+    });
 
-  const allIds = useMemo(() => crew.map(({ [idKey]: id }) => id), [idKey]);
+    const allIds = useMemo(() => crew.map(({ [idKey]: id }) => id), [idKey]);
 
-  const onRowSelect = useCallback(
-    ({ type, payload: { toggle, rowId } }: { type: string; payload: { toggle: boolean; rowId: string } }) => {
-      if (type === 'select') {
-        return setSelectedRows((prev = []) => {
+    const onRowSelect = useCallback(
+      ({
+        type,
+        payload: { toggle, rowId },
+      }: {
+        type: string;
+        payload: { toggle: boolean; rowId: string };
+      }) => {
+        if (type === 'select') {
+          return setSelectedRows((prev = []) => {
+            return toggle
+              ? prev?.filter((id) => id !== rowId)
+              : [...prev, rowId];
+          });
+        }
+        if (type === 'select-all') {
+          return setSelectedRows(toggle ? [] : allIds);
+        }
+      },
+      [setSelectedRows, allIds]
+    );
+
+    const onRowExpand = useCallback(
+      ({
+        payload: { toggle, rowId },
+      }: {
+        payload: { toggle: boolean; rowId: string };
+      }) => {
+        return setExpandedRows((prev = []) => {
           return toggle ? prev?.filter((id) => id !== rowId) : [...prev, rowId];
         });
-      }
-      if (type === 'select-all') {
-        return setSelectedRows(toggle ? [] : allIds);
-      }
-    },
-    [setSelectedRows, allIds]
-  );
+      },
+      []
+    );
 
-  const onRowExpand = useCallback(({ payload: { toggle, rowId } }: { payload: { toggle: boolean; rowId: string } }) => {
-    return setExpandedRows((prev = []) => {
-      return toggle ? prev?.filter((id) => id !== rowId) : [...prev, rowId];
-    });
-  }, []);
-
-  const expandedContent = useCallback(
+    const expandedContent = useCallback(
       ({ onCollapse }: { onCollapse: () => void }) => (
-      <FlexBox column flex={1}>
-        <FlexBox borderTop={1} opacity={0.5} />
-        <FlexBox center column p={32} gap={16}>
-          <Text variant="title-md">Nothing to see here</Text>
-          <FillButton onClick={onCollapse} size="small">
-            Get me out of here!
-          </FillButton>
+        <FlexBox column flex={1}>
+          <FlexBox borderTop={1} opacity={0.5} />
+          <FlexBox center column p={32} gap={16}>
+            <Text variant="title-md">Nothing to see here</Text>
+            <FillButton onClick={onCollapse} size="small">
+              Get me out of here!
+            </FillButton>
+          </FlexBox>
         </FlexBox>
-      </FlexBox>
-    ),
-    []
-  );
+      ),
+      []
+    );
 
-  return (
-    <Component
-      height={500}
-      id="example"
-      idKey={idKey}
-      rows={rows}
-      columns={cols}
-      selected={selectedRows}
-      onRowSelect={onRowSelect}
-      expanded={expandedRows}
-      onRowExpand={onRowExpand}
-      expandedContent={expandedContent}
-      query={query}
-      onQueryChange={onQueryChange}
-      {...overrides}
-    />
-  );
-};
+    return (
+      <Component
+        height={500}
+        id="example"
+        idKey={idKey}
+        rows={rows}
+        columns={cols}
+        selected={selectedRows}
+        onRowSelect={onRowSelect}
+        expanded={expandedRows}
+        onRowExpand={onRowExpand}
+        expandedContent={expandedContent}
+        query={query}
+        onQueryChange={onQueryChange}
+        {...overrides}
+      />
+    );
+  };
 
 export const DataTableTemplate = createDemoTable(DataTable, {
   onRowSelect: undefined,

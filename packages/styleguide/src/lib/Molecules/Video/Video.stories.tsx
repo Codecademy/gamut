@@ -18,16 +18,16 @@ export const Default: Story = {
 
 export const Vimeo: Story = {
   args: {
-    videoUrl:"https://vimeo.com/773539409",
-    videoTitle:"CODECADEMY | Develop Yourself",
+    videoUrl: 'https://vimeo.com/773539409',
+    videoTitle: 'CODECADEMY | Develop Yourself',
   },
 };
 
 export const VideoWithPlaceholder: Story = {
   args: {
-    videoUrl: "https://player.vimeo.com/video/188237476",
-    videoTitle: "A Dream Within a Dream",
-    placeholderImage: "https://placekitten.com/400/300",
-    autoplay: true
+    videoUrl: 'https://player.vimeo.com/video/188237476',
+    videoTitle: 'A Dream Within a Dream',
+    placeholderImage: 'https://placekitten.com/400/300',
+    autoplay: true,
   },
 };

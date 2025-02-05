@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.10.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-patterns@0.10.2...@codecademy/gamut-patterns@0.10.3) (2025-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut-patterns
+
 ### [0.10.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-patterns@0.10.1...@codecademy/gamut-patterns@0.10.2) (2025-01-14)
 
 **Note:** Version bump only for package @codecademy/gamut-patterns

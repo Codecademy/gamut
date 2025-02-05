@@ -1,4 +1,4 @@
-import { Markdown , Text, TextProps } from '@codecademy/gamut';
+import { Markdown, Text, TextProps } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import exampleMarkdown from './example.md';
@@ -24,9 +24,9 @@ This is markdown
 export const FullExample: Story = {
   args: {
     // Not sure why there's a type mismatch, but the story renders
-    text: exampleMarkdown as any
-  }
-}
+    text: exampleMarkdown as any,
+  },
+};
 
 const elements = {
   CodeBlock: {
@@ -50,8 +50,8 @@ export const Overrides: Story = {
     text: `"## Hello World
         <CodeBlock>Span inside a custom code block element</CodeBlock>
         <CustomElement title='A Custom Component' />"`,
-  }
-}
+  },
+};
 
 const tags = {
   h3: {
@@ -62,8 +62,8 @@ const tags = {
 };
 
 export const HeaderOverride: Story = {
-  args:{ overrides: tags, text: '### Smaller H3' }
-}
+  args: { overrides: tags, text: '### Smaller H3' },
+};
 
 export const LinkOverride: Story = {
   args: {
@@ -73,8 +73,8 @@ export const LinkOverride: Story = {
         component: (props) => <Text {...props} as="span" color="blue-500" />,
       },
     },
-  }
-}
+  },
+};
 
 export const InlineMarkdown: Story = {
   args: { text: `this is an inline markdown component`, inline: true },
@@ -90,7 +90,6 @@ export const InlineMarkdown: Story = {
         pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
         qui officia deserunt mollit anim id est laborum.
       </>
-    )
-  }
-
-}
+    );
+  },
+};
