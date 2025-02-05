@@ -1,5 +1,13 @@
 import { Box, FlexBox, Tag } from '@codecademy/gamut';
-import { MiniCheckCircleIcon, MiniChevronDownIcon, MiniChevronUpIcon,MiniKebabMenuIcon, MiniPinIcon,MiniRemoveCircleIcon, MiniStarIcon } from '@codecademy/gamut-icons';
+import {
+  MiniCheckCircleIcon,
+  MiniChevronDownIcon,
+  MiniChevronUpIcon,
+  MiniKebabMenuIcon,
+  MiniPinIcon,
+  MiniRemoveCircleIcon,
+  MiniStarIcon,
+} from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Tag> = {
@@ -29,16 +37,18 @@ export const ReadOnly: Story = {
         <Tag {...args}>Read-only</Tag>
       </Box>
       <Box>
-        <Tag size="large" {...args}>Large read-only</Tag>
+        <Tag size="large" {...args}>
+          Large read-only
+        </Tag>
       </Box>
     </FlexBox>
   ),
-}
+};
 
 export const Selection: Story = {
   args: {
     variant: 'selection',
-    onDismiss: () => {}
+    onDismiss: () => {},
   },
   render: (args) => (
     <FlexBox gap={24}>
@@ -46,13 +56,19 @@ export const Selection: Story = {
         <Tag {...args}>Selection</Tag>
       </Box>
       <Box>
-        <Tag size="large" {...args}>Large selection</Tag>
+        <Tag size="large" {...args}>
+          Large selection
+        </Tag>
       </Box>
       <Box>
-        <Tag disabled {...args}>Selection disabled</Tag>
+        <Tag disabled {...args}>
+          Selection disabled
+        </Tag>
       </Box>
       <Box>
-        <Tag disabled size="large" {...args}>Large selection disabled</Tag>
+        <Tag disabled size="large" {...args}>
+          Large selection disabled
+        </Tag>
       </Box>
     </FlexBox>
   ),
@@ -69,18 +85,23 @@ export const Navigation: Story = {
         <Tag {...args}>Navigation</Tag>
       </Box>
       <Box>
-        <Tag size="large" {...args}>Large navigation</Tag>
+        <Tag size="large" {...args}>
+          Large navigation
+        </Tag>
       </Box>
       <Box>
-        <Tag disabled {...args}>Navigation disabled</Tag>
+        <Tag disabled {...args}>
+          Navigation disabled
+        </Tag>
       </Box>
       <Box>
-        <Tag disabled size="large" {...args}>Large navigation disabled</Tag>
+        <Tag disabled size="large" {...args}>
+          Large navigation disabled
+        </Tag>
       </Box>
     </FlexBox>
   ),
 };
-
 
 export const Suggestion: Story = {
   args: {
@@ -93,60 +114,98 @@ export const Suggestion: Story = {
         <Tag {...args}>Suggestion</Tag>
       </Box>
       <Box>
-        <Tag size="large" {...args}>Large suggestion</Tag>
+        <Tag size="large" {...args}>
+          Large suggestion
+        </Tag>
       </Box>
       <Box>
-        <Tag disabled {...args}>Suggestion disabled</Tag>
+        <Tag disabled {...args}>
+          Suggestion disabled
+        </Tag>
       </Box>
       <Box>
-        <Tag disabled size="large" {...args}>Large suggestion disabled</Tag>
+        <Tag disabled size="large" {...args}>
+          Large suggestion disabled
+        </Tag>
       </Box>
     </FlexBox>
   ),
 };
 
-
 export const WithIcon: Story = {
-  args: {
-
-  },
+  args: {},
   render: () => (
     <FlexBox column>
       <FlexBox row>
         <Box mx={4}>
-          <Tag  variant='readOnly' icon={MiniStarIcon} >Gotcha!</Tag>
+          <Tag variant="readOnly" icon={MiniStarIcon}>
+            Gotcha!
+          </Tag>
         </Box>
         <Box mx={4}>
-          <Tag onDismiss={() => null} variant='selection' icon={MiniPinIcon} >Tag!</Tag>
+          <Tag onDismiss={() => null} variant="selection" icon={MiniPinIcon}>
+            Tag!
+          </Tag>
         </Box>
         <Box mx={4}>
-          <Tag variant='navigation' href="" icon={MiniCheckCircleIcon} >You&apos;re it!</Tag>
+          <Tag variant="navigation" href="" icon={MiniCheckCircleIcon}>
+            You&apos;re it!
+          </Tag>
         </Box>
         <Box mx={4}>
-          <Tag onClick={() => null} variant='suggestion' icon={MiniRemoveCircleIcon}>No tagbacks!</Tag>
+          <Tag
+            onClick={() => null}
+            variant="suggestion"
+            icon={MiniRemoveCircleIcon}
+          >
+            No tagbacks!
+          </Tag>
         </Box>
       </FlexBox>
       <FlexBox row mt={12}>
         <Box mx={4}>
-          <Tag size="large" variant='readOnly' icon={MiniChevronDownIcon}>Duck,</Tag>
+          <Tag size="large" variant="readOnly" icon={MiniChevronDownIcon}>
+            Duck,
+          </Tag>
         </Box>
         <Box mx={4}>
-          <Tag onDismiss={() => null} size="large" variant='selection' icon={MiniChevronDownIcon}>Duck,</Tag>
+          <Tag
+            onDismiss={() => null}
+            size="large"
+            variant="selection"
+            icon={MiniChevronDownIcon}
+          >
+            Duck,
+          </Tag>
         </Box>
         <Box mx={4}>
-          <Tag size="large" variant='navigation' href="" icon={MiniKebabMenuIcon}>Duck...</Tag>
+          <Tag
+            size="large"
+            variant="navigation"
+            href=""
+            icon={MiniKebabMenuIcon}
+          >
+            Duck...
+          </Tag>
         </Box>
         <Box mx={4}>
-          <Tag onClick={() => null} size="large" variant='suggestion'  icon={MiniChevronUpIcon}>Goose!</Tag>
+          <Tag
+            onClick={() => null}
+            size="large"
+            variant="suggestion"
+            icon={MiniChevronUpIcon}
+          >
+            Goose!
+          </Tag>
         </Box>
+      </FlexBox>
     </FlexBox>
-  </FlexBox>
-  )
+  ),
 };
 
 export const Overflow: Story = {
   args: {
-    variant: 'selection'
+    variant: 'selection',
   },
   render: (args) => (
     <Box width="12rem">

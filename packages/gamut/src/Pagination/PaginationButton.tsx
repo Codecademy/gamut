@@ -15,15 +15,17 @@ export interface BasePaginationButtonProps {
   showButton?: 'shown' | 'hidden';
 }
 
-export const PaginationTextButtonInner = createButtonComponent<BasePaginationButtonProps>(
-  paginationTextButtonStates,
-  paginationTextVariant
-);
+export const PaginationTextButtonInner =
+  createButtonComponent<BasePaginationButtonProps>(
+    paginationTextButtonStates,
+    paginationTextVariant
+  );
 
-export const PaginationStrokeButtonInner = createButtonComponent<BasePaginationButtonProps>(
-  paginationStrokeButtonStates,
-  paginationStrokeVariant
-);
+export const PaginationStrokeButtonInner =
+  createButtonComponent<BasePaginationButtonProps>(
+    paginationStrokeButtonStates,
+    paginationStrokeVariant
+  );
 
 export type PaginationButtonProps = ComponentProps<
   typeof PaginationStrokeButtonInner

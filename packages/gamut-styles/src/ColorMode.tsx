@@ -71,11 +71,10 @@ interface BackgroundCurrentContextInterface {
   'background-current'?: keyof typeof GamutTheme.colors;
 }
 
-const BackgroundCurrentContext = createContext<BackgroundCurrentContextInterface>(
-  {
+const BackgroundCurrentContext =
+  createContext<BackgroundCurrentContextInterface>({
     'background-current': undefined,
-  }
-);
+  });
 
 export function useColorModes(): [
   ColorModes,

@@ -45,7 +45,6 @@ const SubmitButtonStates = () => {
   );
 };
 
-
 export const Default: Story = {
   render: () => <SubmitButtonStates />,
 };

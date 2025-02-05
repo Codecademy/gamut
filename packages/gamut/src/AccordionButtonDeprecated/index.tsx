@@ -59,7 +59,9 @@ const buttonThemes = {
  * Check the [Gamut Board](https://www.notion.so/codecademy/Gamut-Status-Timeline-dd3c135d3848464ea6eb1b48e68fbb1d) for component status
  */
 
-export const AccordionButtonDeprecated: React.FC<AccordionButtonDeprecatedProps> = ({
+export const AccordionButtonDeprecated: React.FC<
+  AccordionButtonDeprecatedProps
+> = ({
   children,
   className,
   expanded,
