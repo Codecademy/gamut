@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.38.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.37.3...@codecademy/gamut-icons@9.38.0) (2025-02-05)
+
+### Features
+
+- **Icons:** add InteractiveCursor and Report icons ([#3028](https://github.com/Codecademy/gamut/issues/3028)) ([d894070](https://github.com/Codecademy/gamut/commit/d8940706d40878e79424aa77fa58031406961570))
+
 ### [9.37.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.37.2...@codecademy/gamut-icons@9.37.3) (2025-02-05)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
