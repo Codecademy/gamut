@@ -8,9 +8,10 @@ import {
   ConnectedSelect,
   ConnectedTextArea,
   FormRequiredText,
-  SubmitButton ,
+  SubmitButton,
   Text,
-  useConnectedForm} from '@codecademy/gamut';
+  useConnectedForm,
+} from '@codecademy/gamut';
 import { MiniArrowRightIcon, TerminalIcon } from '@codecademy/gamut-icons';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -37,25 +38,22 @@ export const RadioWatchExample = () => {
     return checkbox ? setShowRadio(true) : setShowRadio(false);
   };
 
-  const {
-    ConnectedFormGroup,
-    ConnectedForm,
-    connectedFormProps,
-  } = useConnectedForm({
-    defaultValues: {
-      checkbox: false,
-      radioGroup: undefined,
-    },
-    validationRules: {
-      radioGroup: {
-        required: 'please fill this out.',
+  const { ConnectedFormGroup, ConnectedForm, connectedFormProps } =
+    useConnectedForm({
+      defaultValues: {
+        checkbox: false,
+        radioGroup: undefined,
       },
-    },
-    watchedFields: {
-      fields: ['checkbox', 'radioGroup'],
-      watchHandler: handleWatch,
-    },
-  });
+      validationRules: {
+        radioGroup: {
+          required: 'please fill this out.',
+        },
+      },
+      watchedFields: {
+        fields: ['checkbox', 'radioGroup'],
+        watchHandler: handleWatch,
+      },
+    });
 
   return (
     <ConnectedForm
@@ -121,33 +119,30 @@ const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
   connectedForm,
   connectedFormGroup,
 }) => {
-  const {
-    ConnectedFormGroup,
-    ConnectedForm,
-    connectedFormProps,
-  } = useConnectedForm({
-    defaultValues: {
-      checkboxField: false,
-      selectField: 'zero',
-      inputField: '',
-      radioGroupField: undefined,
-      textAreaField: '',
-    },
-    validationRules: {
-      checkboxField: { required: 'you need to check this.' },
-      selectField: {
-        pattern: {
-          value: /^(?:(?!zero).)*$/,
-          message: 'literally anything but zero',
+  const { ConnectedFormGroup, ConnectedForm, connectedFormProps } =
+    useConnectedForm({
+      defaultValues: {
+        checkboxField: false,
+        selectField: 'zero',
+        inputField: '',
+        radioGroupField: undefined,
+        textAreaField: '',
+      },
+      validationRules: {
+        checkboxField: { required: 'you need to check this.' },
+        selectField: {
+          pattern: {
+            value: /^(?:(?!zero).)*$/,
+            message: 'literally anything but zero',
+          },
+        },
+        inputField: { required: 'we need this info, bud' },
+        radioGroupField: { required: 'we need this info too, bud' },
+        textAreaField: {
+          required: 'you just have to fill out the whole thing, okay?',
         },
       },
-      inputField: { required: 'we need this info, bud' },
-      radioGroupField: { required: 'we need this info too, bud' },
-      textAreaField: {
-        required: 'you just have to fill out the whole thing, okay?',
-      },
-    },
-  });
+    });
 
   return (
     <ConnectedForm
@@ -248,9 +243,6 @@ const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
 
 export const Default: Story = {
   render: () => (
-    <ConnectedFormPlayground
-      connectedForm={{}}
-      connectedFormGroup={{}}
-    />
+    <ConnectedFormPlayground connectedForm={{}} connectedFormGroup={{}} />
   ),
 };

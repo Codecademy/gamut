@@ -21,16 +21,12 @@ const DialogExample = (args: React.ComponentProps<typeof Dialog>) => {
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Dialog</FillButton>
-      <Dialog
-        isOpen={isOpen}
-        {...args}
-        onRequestClose={() => setIsOpen(false)}
-      >
+      <Dialog isOpen={isOpen} {...args} onRequestClose={() => setIsOpen(false)}>
         Close the Dialog!
       </Dialog>
     </>
-  )
-}
+  );
+};
 
 export const Default: Story = {
   render: (args) => <DialogExample {...args} />,
@@ -45,17 +41,16 @@ export const Danger: Story = {
 
 export const LightMode: Story = {
   render: (args) => <DialogExample {...args} />,
-}
+};
 
 const DarkModeExample = (args: React.ComponentProps<typeof Dialog>) => {
   return (
     <ColorMode mode="dark">
       <DialogExample {...args} />
     </ColorMode>
-  )
-}
-
+  );
+};
 
 export const DarkMode: Story = {
-  render: (args) => <DarkModeExample {...args} />
-}
+  render: (args) => <DarkModeExample {...args} />,
+};

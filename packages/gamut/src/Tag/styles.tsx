@@ -19,10 +19,10 @@ export const dismissSharedStyles = {
   minWidth: '24px',
 };
 
-const textDefaultVerticalPadding =  1.5;
-const textLargeVerticalPadding =  5.5;
-const anchorDefaultVerticalPadding =  0.5;
-const anchorLargeVerticalPadding =  4.5;
+const textDefaultVerticalPadding = 1.5;
+const textLargeVerticalPadding = 5.5;
+const anchorDefaultVerticalPadding = 0.5;
+const anchorLargeVerticalPadding = 4.5;
 const hoverAndFocus = `${Selectors.HOVER}, ${Selectors.FOCUS}` as const;
 
 export const outlineStyling = css({
@@ -39,7 +39,7 @@ export const outlineStyling = css({
   '&:active': {
     outlineColor: `transparent`,
   },
-})
+});
 
 export const outlineStates = states({
   disabled: {
@@ -48,8 +48,8 @@ export const outlineStates = states({
   },
   readOnly: {
     borderRadius: 'none',
-  }
-})
+  },
+});
 
 export const tagUsageVariants = variant({
   defaultVariant: 'readOnly',
@@ -85,7 +85,7 @@ export const tagUsageVariants = variant({
       border: 1,
       borderColor: 'primary',
       color: 'text',
-    }
+    },
   },
 });
 
@@ -94,32 +94,32 @@ export const textSizeVariants = variant({
   prop: 'size',
   variants: {
     default: {
-      pt: textDefaultVerticalPadding + 1 as any,
-      pb: textDefaultVerticalPadding - 1 as any,
+      pt: (textDefaultVerticalPadding + 1) as any,
+      pb: (textDefaultVerticalPadding - 1) as any,
     },
     large: {
-      pt: textLargeVerticalPadding + 1 as any,
-      pb: textLargeVerticalPadding - 1 as any,
+      pt: (textLargeVerticalPadding + 1) as any,
+      pb: (textLargeVerticalPadding - 1) as any,
     },
   },
-})
+});
 
 export const anchorSizeVariants = variant({
   defaultVariant: 'default',
   prop: 'size',
   variants: {
     default: {
-      py: anchorDefaultVerticalPadding as any
+      py: anchorDefaultVerticalPadding as any,
     },
     large: {
-      py: anchorLargeVerticalPadding as any
+      py: anchorLargeVerticalPadding as any,
     },
   },
-})
+});
 
 export const tagWrapperStates = states({
   readOnly: {
-    borderRadius: 'none'
+    borderRadius: 'none',
   },
   disabled: {
     // Needed for suggestion's bordercolor since the text element won't have the correct style
@@ -128,7 +128,7 @@ export const tagWrapperStates = states({
   selectionDisabled: {
     bg: 'background-disabled',
     color: 'text-disabled',
-  }
+  },
 });
 
 export const tagTextStyling = css({
@@ -144,8 +144,8 @@ export const anchorVariants = variant({
     lineHeight: 1.5 as any,
     px: tagLabelPadding,
     textDecoration: 'none',
-    ":before": {
-      display: 'none'
+    ':before': {
+      display: 'none',
     },
     color: 'text',
     [ButtonSelectors.FOCUS_VISIBLE]: {
@@ -178,7 +178,7 @@ export const anchorVariants = variant({
         textDecoration: 'none',
       },
     },
-  }
+  },
 });
 
 export const dismissButtonOverrides = {
@@ -195,8 +195,8 @@ export const dismissButtonOverrides = {
 export const dismissButtonLargeStyling = states({
   isLarge: {
     minWidth: 32,
-  }
-})
+  },
+});
 
 export const dismissButtonStyling = css({
   bg: 'text-secondary',
@@ -204,7 +204,7 @@ export const dismissButtonStyling = css({
   borderRadiusLeft: 'none',
   borderRadiusRight: 'md',
   color: 'background',
-  width: "100%",
+  width: '100%',
   [hoverAndFocus]: {
     color: 'background',
     bg: 'secondary-hover',
@@ -215,14 +215,14 @@ export const dismissButtonStyling = css({
   },
   ...dismissSharedStyles,
   ...dismissButtonOverrides,
-})
+});
 
 export const defaultMiniDeleteIconStyling = css({
   color: 'inherit',
   width: 12,
-})
+});
 
 export const largeMiniDeleteIconStyling = css({
   color: 'inherit',
   width: 16,
-})
+});

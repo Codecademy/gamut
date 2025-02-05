@@ -30,7 +30,7 @@ const meta: Meta<typeof StrokeButton> = {
         options: [SearchIcon],
       },
     },
-  }
+  },
 };
 
 export default meta;
@@ -39,4 +39,3 @@ type Story = StoryObj<typeof StrokeButton>;
 export const Default: Story = {
   args: {},
 };
-
