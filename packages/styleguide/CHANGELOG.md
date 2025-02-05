@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [70.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.0.0...@codecademy/styleguide@70.0.1) (2025-02-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ## [70.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@69.0.0...@codecademy/styleguide@70.0.0) (2025-02-04)
 
 ### ⚠ BREAKING CHANGES

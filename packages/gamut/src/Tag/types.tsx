@@ -1,10 +1,18 @@
 import { system } from '@codecademy/gamut-styles';
-import { StyleProps , variance } from '@codecademy/variance';
+import { StyleProps, variance } from '@codecademy/variance';
 import { ComponentProps, HTMLProps } from 'react';
 
 import { IconComponentType, WithChildrenProp } from '../utils';
 import { DismissButton } from './elements';
-import { anchorSizeVariants, anchorVariants, dismissButtonLargeStyling,dismissButtonStyling, tagUsageVariants, tagWrapperStates,textSizeVariants } from './styles';
+import {
+  anchorSizeVariants,
+  anchorVariants,
+  dismissButtonLargeStyling,
+  dismissButtonStyling,
+  tagUsageVariants,
+  tagWrapperStates,
+  textSizeVariants,
+} from './styles';
 
 export const tagProps = variance.compose(
   system.space,
@@ -99,13 +107,17 @@ export interface SuggestionTagProps extends BaseTagProps {
   variant: 'suggestion';
 }
 
-export type TagProps = ReadOnlyTagProps | SelectionTagProps | NavigationTagProps | SuggestionTagProps;
+export type TagProps =
+  | ReadOnlyTagProps
+  | SelectionTagProps
+  | NavigationTagProps
+  | SuggestionTagProps;
 
 export interface BaseTagAnchorProps
   extends StyleProps<typeof anchorVariants>,
     StyleProps<typeof anchorSizeVariants> {
-      disabled?: boolean;
-    }
+  disabled?: boolean;
+}
 
 export interface NavigationAnchorProps extends BaseTagAnchorProps {
   href: string;
@@ -123,13 +135,12 @@ export interface SuggestionAnchorProps extends BaseTagAnchorProps {
   onClick: HTMLProps<HTMLAnchorElement>['onClick'];
 }
 
-export type TagAnchorProps = SuggestionAnchorProps | NavigationAnchorProps
+export type TagAnchorProps = SuggestionAnchorProps | NavigationAnchorProps;
 
-export interface BaseTagTextProps
-  extends StyleProps<typeof textSizeVariants> {
-    onClick?: never;
-    href?: never;
-  }
+export interface BaseTagTextProps extends StyleProps<typeof textSizeVariants> {
+  onClick?: never;
+  href?: never;
+}
 
 export interface TagTextReadOnlyProps extends BaseTagTextProps {
   disabled?: never;
@@ -139,8 +150,8 @@ export interface TagTextSelectionProps extends BaseTagTextProps {
   disabled?: boolean;
 }
 
-export type TagTextProps = TagTextReadOnlyProps | TagTextSelectionProps
+export type TagTextProps = TagTextReadOnlyProps | TagTextSelectionProps;
 
 export interface DismissButtonProps
   extends StyleProps<typeof dismissButtonStyling>,
-  StyleProps<typeof dismissButtonLargeStyling> {}
+    StyleProps<typeof dismissButtonLargeStyling> {}

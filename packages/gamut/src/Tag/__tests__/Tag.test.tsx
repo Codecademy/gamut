@@ -10,7 +10,7 @@ describe('Tag', () => {
   it('renders correct text for the `readOnly` variant', () => {
     const { view } = renderView({ variant: 'readOnly' });
 
-    view.getByText(tagText)
+    view.getByText(tagText);
   });
 
   it('excludes any buttons for the `readOnly` variant', () => {
@@ -22,7 +22,7 @@ describe('Tag', () => {
   it('renders correct text for the `selection` variant', () => {
     const { view } = renderView({ variant: 'selection' });
 
-    view.getByText(tagText)
+    view.getByText(tagText);
   });
 
   it('includes a button for the `selection` variant', () => {
@@ -51,23 +51,33 @@ describe('Tag', () => {
   it('renders correct text for the `navigation` variant', () => {
     const { view } = renderView({ variant: 'navigation' });
 
-    view.getByText(tagText)
+    view.getByText(tagText);
   });
 
   it('renders the text in an anchor element for the `navigation` variant', () => {
-    const { view } = renderView({ variant: 'navigation', href: 'www.tagteam.com' });
+    const { view } = renderView({
+      variant: 'navigation',
+      href: 'www.tagteam.com',
+    });
 
-    view.getByRole('link', { name: tagText })
+    view.getByRole('link', { name: tagText });
   });
 
   it('contains the correct href for the `navigation` variant', () => {
-    const { view } = renderView({ variant: 'navigation', href: 'www.tagteam.com' });
+    const { view } = renderView({
+      variant: 'navigation',
+      href: 'www.tagteam.com',
+    });
 
-    expect(view.getByRole('link')).toHaveAttribute('href', 'www.tagteam.com')
+    expect(view.getByRole('link')).toHaveAttribute('href', 'www.tagteam.com');
   });
 
   it('is in a disabled state when provided a `disabled: true` prop for the `navigation` variant', () => {
-    const { view } = renderView({ variant: 'navigation', href: 'www.tagteam.com',  disabled: true });
+    const { view } = renderView({
+      variant: 'navigation',
+      href: 'www.tagteam.com',
+      disabled: true,
+    });
 
     expect(view.getByRole('button')).toBeDisabled();
   });
@@ -76,21 +86,21 @@ describe('Tag', () => {
     const onClick = jest.fn();
     const { view } = renderView({ variant: 'suggestion', onClick });
 
-    view.getByText(tagText)
+    view.getByText(tagText);
   });
 
   it('renders the text in a button for the `suggestion` variant', () => {
     const onClick = jest.fn();
     const { view } = renderView({ variant: 'suggestion', onClick });
 
-    view.getByRole('button', { name: tagText })
+    view.getByRole('button', { name: tagText });
   });
 
   it('executes the onClick function passed in as a prop for the `suggestion` variant', () => {
     const onClick = jest.fn();
     const { view } = renderView({ variant: 'suggestion', onClick });
 
-    const suggestionTag = view.getByRole('button')
+    const suggestionTag = view.getByRole('button');
 
     fireEvent.click(suggestionTag);
 
@@ -99,7 +109,11 @@ describe('Tag', () => {
 
   it('is in a disabled state when provided a `disabled: true` prop for the `suggestion` variant', () => {
     const onClick = jest.fn();
-    const { view } = renderView({ variant: 'suggestion', onClick, disabled: true });
+    const { view } = renderView({
+      variant: 'suggestion',
+      onClick,
+      disabled: true,
+    });
 
     expect(view.getByRole('button')).toBeDisabled();
   });

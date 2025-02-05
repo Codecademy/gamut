@@ -23,13 +23,12 @@ export const Tag: React.FC<TagProps> = ({
   variant = 'readOnly',
   ...rest
 }) => {
-  const isReadOnly = variant === 'readOnly'
+  const isReadOnly = variant === 'readOnly';
   const isSelection = variant === 'selection';
   const isNavigation = variant === 'navigation';
   const isSuggestion = variant === 'suggestion';
   const isInteractive = isNavigation || isSuggestion;
   const isLarge = size === 'large';
-
 
   const content = appendIconToContent({
     children,
@@ -42,7 +41,7 @@ export const Tag: React.FC<TagProps> = ({
   const sharedInteractiveProps = {
     disabled,
     size,
-  }
+  };
 
   const CorrectLabel = (() => {
     switch (variant) {
@@ -77,7 +76,7 @@ export const Tag: React.FC<TagProps> = ({
   })();
 
   return (
-    <Outline disabled={disabled} readOnly={isReadOnly} {...rest} >
+    <Outline disabled={disabled} readOnly={isReadOnly} {...rest}>
       <TagLabelWrapper
         disabled={!isReadOnly && disabled}
         overflow={isInteractive ? 'hidden' : 'visible'}
@@ -85,7 +84,7 @@ export const Tag: React.FC<TagProps> = ({
         selectionDisabled={isSelection && disabled}
         variant={variant}
       >
-        { CorrectLabel }
+        {CorrectLabel}
       </TagLabelWrapper>
       {isSelection && (
         <DismissButton
@@ -95,7 +94,7 @@ export const Tag: React.FC<TagProps> = ({
           icon={isLarge ? LargeMiniDeleteIcon : DefaultMiniDeleteIcon}
           isLarge={isLarge}
           onClick={onDismiss || undefined}
-          tip={disabled ? '' : "Remove"}
+          tip={disabled ? '' : 'Remove'}
           tipProps={{ placement: disabled ? undefined : 'floating' }}
         />
       )}
