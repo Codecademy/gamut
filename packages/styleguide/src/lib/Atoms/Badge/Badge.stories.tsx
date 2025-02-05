@@ -42,25 +42,25 @@ export const Accent: Story = {
 
 export const DefaultSize: Story = {
   args: {
-    children: 'default size'
+    children: 'default size',
   },
-}
+};
 
 export const SmallSize: Story = {
   args: {
     children: 'sm size',
     size: 'sm',
-    variant: 'tertiary'
+    variant: 'tertiary',
   },
-}
+};
 
 export const DefaultSizeWithIcon: Story = {
   args: {
     children: 'sample icon',
     variant: 'tertiaryFill',
     icon: MiniStarIcon,
-  }
-}
+  },
+};
 
 export const SmallSizeWithIcon: Story = {
   args: {
@@ -68,5 +68,5 @@ export const SmallSizeWithIcon: Story = {
     size: 'sm',
     variant: 'accent',
     icon: MiniWarningTriangleIcon,
-  }
-}
+  },
+};

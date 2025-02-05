@@ -1,11 +1,10 @@
-import { theme } from '@codecademy/gamut-styles';
-import cx from 'classnames';
+import { css, theme } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import { SVGProps } from 'react';
 import * as React from 'react';
 
+import { FlexBox } from '../Box';
 import { Text } from '../Typography';
-// eslint-disable-next-line gamut/no-css-standalone
-import styles from './styles.module.scss';
 
 export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
   size?: number | string;
@@ -24,6 +23,15 @@ const offsetDelta = offsetForEmptyProgress - offsetForFullProgress;
 
 const convertPercentToOffset = (percent: number) =>
   offsetForEmptyProgress - Math.floor(offsetDelta * (percent / 100));
+
+const RadialProgressWrapper = styled.figure<{ size: number | string }>(
+  ({ size }) =>
+    css({
+      position: 'relative',
+      height: size,
+      width: size,
+    })
+);
 
 /**
  * @deprecated
@@ -89,10 +97,7 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
   const svgViewBoxStr = `${viewBox.minX} ${viewBox.minY} ${viewBox.width} ${viewBox.height}`;
 
   return (
-    <figure
-      className={cx(styles.radialProgress, className)}
-      style={{ height: size, width: size }}
-    >
+    <RadialProgressWrapper size={size} className={className}>
       <Text as="figcaption" screenreader>{`${labelPercent}% progress`}</Text>
       <svg viewBox={svgViewBoxStr} height={size} width={size} {...props}>
         <circle
@@ -157,7 +162,19 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
           )}
         </circle>
       </svg>
-      {children && <div className={styles.children}>{children}</div>}
-    </figure>
+      {children && (
+        <FlexBox
+          alignItems="center"
+          justifyContent="center"
+          position="absolute"
+          height={1}
+          width={1}
+          left={0}
+          top={0}
+        >
+          {children}
+        </FlexBox>
+      )}
+    </RadialProgressWrapper>
   );
 };

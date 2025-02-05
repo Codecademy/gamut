@@ -18,11 +18,11 @@ export const tipAlignmentArray = [
 
 export type TipPlacements = 'inline' | 'floating';
 
-export type TipBaseAlignment = typeof tipBaseAlignmentArray[number];
+export type TipBaseAlignment = (typeof tipBaseAlignmentArray)[number];
 
-export type TipCenterAlignment = typeof tipCenterAlignmentArray[number];
+export type TipCenterAlignment = (typeof tipCenterAlignmentArray)[number];
 
-export type TipStaticAlignment = typeof tipAlignmentArray[number];
+export type TipStaticAlignment = (typeof tipAlignmentArray)[number];
 
 export type PreviewTipContent = {
   /**
