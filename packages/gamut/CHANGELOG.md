@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [59.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.0...@codecademy/gamut@59.0.1) (2025-02-05)
+
+### Bug Fixes
+
+- **ProgressBar:** adds focus outline ([d12d013](https://github.com/Codecademy/gamut/commit/d12d013eeae847678f06e992ac9be20d46fd8be2))
+
 ## [59.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@58.0.2...@codecademy/gamut@59.0.0) (2025-02-04)
 
 ### ⚠ BREAKING CHANGES
