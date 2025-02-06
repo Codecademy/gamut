@@ -1,0 +1,32 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as FeatureShimmerStories from './FeatureShimmer.stories';
+
+export const parameters = {
+  subtitle:
+    'Shimmer effect for boxes — generic styles that apply to our Skeleton elements.',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=61818-3459&m=dev',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/FeatureShimmer',
+  },
+};
+
+<Meta of={FeatureShimmerStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+## Playground
+
+<Canvas sourceState="shown" of={FeatureShimmerStories.Default} />
+
+<Controls />
