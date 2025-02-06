@@ -1,5 +1,4 @@
 import { useTheme } from '@emotion/react';
-import { useId } from '@reach/auto-id';
 import {
   KeyboardEvent,
   useCallback,
@@ -66,7 +65,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   shownOptionsLimit = 6,
   ...rest
 }) => {
-  const rawInputId = useId();
+  const rawInputId = React.useId();
   const inputId = name ?? `${id}-select-dropdown-${rawInputId}`;
 
   const [activated, setActivated] = useState(false);

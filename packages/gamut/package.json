@@ -9,7 +9,6 @@
     "@codecademy/gamut-patterns": "0.10.3",
     "@codecademy/gamut-styles": "17.4.1",
     "@codecademy/variance": "0.22.1",
-    "@reach/auto-id": "^0.16.0",
     "@reach/tabs": "^0.16.4",
     "@types/marked": "^4.0.8",
     "classnames": "^2.2.5",
