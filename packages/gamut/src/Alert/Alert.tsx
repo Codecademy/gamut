@@ -15,7 +15,7 @@ import {
   AlertBanner,
   AlertBox,
   alertContentProps,
-  CollapsableContent,
+  CollapsibleContent,
 } from './elements';
 import {
   alertVariants,
@@ -69,6 +69,7 @@ export const Alert: React.FC<AlertProps> = ({
   const { icon: Icon, bg } = activeAlert;
 
   const tipId = useId();
+  const collapsibleContentId = useId();
 
   const currentColorMode = useCurrentMode();
   const isSubtleVariant = type === 'subtle';
@@ -145,7 +146,9 @@ export const Alert: React.FC<AlertProps> = ({
         hasRepetitiveLabel
       >
         <TextButton
+          aria-controls={collapsibleContentId}
           aria-describedby={ariaId}
+          aria-expanded={expanded}
           tabIndex={tabIndex}
           variant="secondary"
           size="small"
@@ -191,9 +194,9 @@ export const Alert: React.FC<AlertProps> = ({
       {...props}
     >
       <Icon size={32} aria-hidden p={8} />
-      <CollapsableContent
+      <CollapsibleContent
+        id={collapsibleContentId}
         animate={toggleState}
-        aria-expanded={expanded}
         initial={toggleState}
         transition={{
           duration: 0.2,
@@ -205,7 +208,7 @@ export const Alert: React.FC<AlertProps> = ({
         }}
       >
         {isInline ? children : floatingContent}
-      </CollapsableContent>
+      </CollapsibleContent>
       {expandButton}
       {ctaButton}
       {onClose && (

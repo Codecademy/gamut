@@ -65,7 +65,7 @@ export const alertContentProps = {
   width: '100%',
 } as const;
 
-export const CollapsableContent = styled(motion.div)(
+export const CollapsibleContent = styled(motion.div)(
   css({
     py: 4,
     overflowY: 'hidden',
