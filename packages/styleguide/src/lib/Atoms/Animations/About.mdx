@@ -3,7 +3,7 @@ import { Meta } from '@storybook/blocks';
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
 export const parameters = {
-  id: 'Atoms/Animation',
+  id: 'Atoms/Animations',
   title: 'Animations',
   subtitle: 'Controlled containers for predictable animations.',
 }
@@ -18,8 +18,13 @@ Animations should not be the click target of actions, but rather the container f
  links={[
    {
      id: '/Atoms/Animations/Rotation',
-     subtitle: 'Short description',
-     title: 'Category',
+     subtitle: 'A container that can rotate its children.',
+     title: 'Rotation',
+   },
+   {
+     id: '/Atoms/Animations/ExpandInCollapseOut',
+     subtitle: 'A container that applies an expand and collapse animation to its children.',
+     title: 'ExpandInCollapseOut',
    }
  ]}
 />
