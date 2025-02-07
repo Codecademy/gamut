@@ -1,0 +1,30 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as ExpandInCollapseOut from './ExpandInCollapseOut.stories';
+
+export const parameters = {
+  subtitle: `Template component`,
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink: 'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Animation/ExpandInCollapseOut.tsx',
+  },
+};
+
+<Meta of={ExpandInCollapseOut}/>
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+This animation uses [Framer Motion](https://motion.dev/) to animate the expansion and collapse of a component. The initial and exit state is `"collapsed"` and the animation is `"expanded"`.
+
+Wrap the `ExpandInCollapseOut` component with an `AnimatePresence` and use a state to control whether or not the children of the ExpandInCollapseOut component are rendered.
+
+## Playground
+<Canvas sourceState='shown' of={ExpandInCollapseOut.Default} />
+
+<Controls />
+
