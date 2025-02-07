@@ -25,7 +25,7 @@ export const defaultSanitizationConfig = {
       'muted',
       'src',
       'width',
-      'showplayerembed'
+      'showplayerembed',
     ],
     iframe: [
       'src',
@@ -35,7 +35,7 @@ export const defaultSanitizationConfig = {
       'gesture',
       'allow',
       'allowfullscreen',
-      'showplayerembed'
+      'showplayerembed',
     ],
   },
   allowedClasses: {
