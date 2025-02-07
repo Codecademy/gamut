@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Atoms/Animation',
+  title: 'Animations',
+  subtitle: 'Controlled containers for predictable animations.',
+  }
+
+<Meta title='Atoms/Animations/About' />
+
+<AboutHeader {...parameters} />
+
+Animations should not be the click target of actions, but rather the container for the content you wish to animate.
+
+<TableOfContents
+ links={[
+   {
+     id: '/Atoms/Animations/Rotation',
+     subtitle: 'Short description',
+     title: 'Category',
+   }
+ ]}
+/>
+
