@@ -18,37 +18,41 @@ export const Default: Story = {
 
 export const Vimeo: Story = {
   args: {
-    videoUrl:"https://vimeo.com/773539409",
-    videoTitle:"CODECADEMY | Develop Yourself",
+    videoUrl: 'https://vimeo.com/773539409',
+    videoTitle: 'CODECADEMY | Develop Yourself',
   },
 };
 
 export const VideoWithPlaceholder: Story = {
   args: {
-    videoUrl: "https://files.vidstack.io/sprite-fight/hls/stream.m3u8",
-    videoTitle: "Sprite Fight",
-    placeholderImage: "https://files.vidstack.io/sprite-fight/poster.webp",
+    videoUrl: 'https://files.vidstack.io/sprite-fight/hls/stream.m3u8',
+    videoTitle: 'Sprite Fight',
+    placeholderImage: 'https://files.vidstack.io/sprite-fight/poster.webp',
     autoplay: false,
 
-    textTracks: [{
-      "src": "https://files.vidstack.io/sprite-fight/subs/english.vtt",
-      "label": "English",
-      "language": "en-US",
-      "kind": "subtitles"
-    }, {
-      "src": "https://files.vidstack.io/sprite-fight/subs/spanish.vtt",
-      "label": "Spanish",
-      "language": "es-ES",
-      "kind": "subtitles",
-      "default": true
-    }, {
-      "src": "https://files.vidstack.io/sprite-fight/chapters.vtt",
-      "language": "en-US",
-      "kind": "chapters",
-      "type": "vtt",
-      "default": true
-    }],
+    textTracks: [
+      {
+        src: 'https://files.vidstack.io/sprite-fight/subs/english.vtt',
+        label: 'English',
+        language: 'en-US',
+        kind: 'subtitles',
+      },
+      {
+        src: 'https://files.vidstack.io/sprite-fight/subs/spanish.vtt',
+        label: 'Spanish',
+        language: 'es-ES',
+        kind: 'subtitles',
+        default: true,
+      },
+      {
+        src: 'https://files.vidstack.io/sprite-fight/chapters.vtt',
+        language: 'en-US',
+        kind: 'chapters',
+        type: 'vtt',
+        default: true,
+      },
+    ],
 
-    thumbnails: "https://files.vidstack.io/sprite-fight/thumbnails.vtt"
+    thumbnails: 'https://files.vidstack.io/sprite-fight/thumbnails.vtt',
   },
 };

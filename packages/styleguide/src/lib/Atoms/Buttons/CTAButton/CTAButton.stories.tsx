@@ -23,8 +23,8 @@ const meta: Meta<typeof CTAButton> = {
         type: 'select',
         options: ['normal', 'small', 'large'],
       },
-    }
-  }
+    },
+  },
 };
 
 export default meta;
@@ -33,4 +33,3 @@ type Story = StoryObj<typeof CTAButton>;
 export const Default: Story = {
   args: {},
 };
-

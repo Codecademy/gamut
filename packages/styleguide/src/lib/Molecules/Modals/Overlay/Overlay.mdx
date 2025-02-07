@@ -23,14 +23,16 @@ export const parameters = {
 Use this overlay only for actual 'overlay' content that takes up the full screen. Do not use it for dropdowns or other small interactive items.
 
 Unlike the legacy `Modal` implementations in the monolith, this:
+
 - always assumes viewport is locked, by making content `position: fixed`
 - cannot override contentProps, animation, or shouldFocusOnMount.
 
-
 ### When NOT to use:
+
 - If you need styles such as a background behind content, see `Modal` for general modals and `Dialog` for confirmation flows.
 
 ## Playground
+
 <Canvas sourceState="shown" of={OverlayStories.Default} />
 
 <Controls />

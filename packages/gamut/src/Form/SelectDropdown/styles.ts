@@ -171,6 +171,7 @@ export const getMemoizedStyles = (
     multiValue: (provided) => ({
       ...provided,
       ...tagBaseStyles,
+      height: '24px',
       cursor: 'pointer',
       background: theme.colors.background,
       borderRadius: 'md',
@@ -187,8 +188,7 @@ export const getMemoizedStyles = (
       ...provided,
       ...dismissSharedStyles,
       cursor: 'pointer',
-      borderRadiusTopRight: 'md',
-      borderRadiusBottomRight: 'md',
+      borderRadiusRight: 'md',
       padding: 0, // default remove has padding left and right that we don't need
       ':hover': {
         backgroundColor: theme.colors['background-hover'],
