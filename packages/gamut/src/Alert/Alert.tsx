@@ -1,7 +1,6 @@
 import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { breakpoints, useCurrentMode } from '@codecademy/gamut-styles';
-import { useId } from '@reach/auto-id';
-import { isValidElement, useMemo, useState } from 'react';
+import { isValidElement, useId, useMemo, useState } from 'react';
 import * as React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
 import { useMeasure } from 'react-use';
