@@ -56,9 +56,8 @@ export type CSSProps<Props, System> = {
     : Omit<CSSPropertyTypes, keyof System> & Omit<System, 'theme'>;
 };
 
-export type StyleProps<
-  T extends (args: AbstractProps) => CSSObject
-> = Parameters<T>[0];
+export type StyleProps<T extends (args: AbstractProps) => CSSObject> =
+  Parameters<T>[0];
 
 export type ScaleValue<
   P extends AbstractParser,

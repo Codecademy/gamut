@@ -52,8 +52,8 @@ const TabsPanelCollection: React.FC = () => {
         <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
       </TabPanel>
     </TabPanels>
-  )
-}
+  );
+};
 
 // Question: is this ok? for some reason TabsProps required children??
 type TabsWithoutChildren = Omit<TabsProps, 'children'>;
@@ -80,7 +80,7 @@ const TabsControlledExample = () => {
 
   const maxTabIndex = 2;
   const setIndex = useCallback(
-    (value: string|number) => {
+    (value: string | number) => {
       const val = Number(value);
       if (val > maxTabIndex) return setControlledIndex(0);
       if (val < 0) return setControlledIndex(maxTabIndex);
@@ -173,7 +173,7 @@ const TabsNavExample = (args: TabNavProps) => {
 
 export const TabsNav: Story = {
   render: () => <TabsNavExample />,
-}
+};
 
 const TabsInteractiveContentExample = (args: TabsWithoutChildren) => {
   return (
@@ -206,7 +206,6 @@ const TabsInteractiveContentExample = (args: TabsWithoutChildren) => {
     </>
   );
 };
-
 
 export const TabsInteractiveContent: Story = {
   render: () => <TabsInteractiveContentExample />,

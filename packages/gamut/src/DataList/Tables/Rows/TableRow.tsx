@@ -1,12 +1,18 @@
-import { memo, ReactElement, ReactNode, useCallback } from 'react';
+import {
+  isValidElement,
+  memo,
+  ReactElement,
+  useCallback,
+  useMemo,
+} from 'react';
 
-import { Text } from '../..';
-import { ListCol, ListRow } from '../../List';
-import { ColProps } from '../../List/elements';
-import { Shimmer } from '../../Loading/Shimmer';
-import { ExpandControl, SelectControl } from '../Controls';
-import { useControlContext } from '../hooks/useListControls';
-import { ColumnConfig, IdentifiableKeys } from '../types';
+import { Text } from '../../..';
+import { ListCol, ListRow } from '../../../List';
+import { ColProps } from '../../../List/elements';
+import { Shimmer } from '../../../Loading/Shimmer';
+import { ExpandControl, SelectControl } from '../../Controls';
+import { useControlContext } from '../../hooks/useListControls';
+import { ColumnConfig, IdentifiableKeys } from '../../types';
 
 export type MarshaledColProps = Partial<Pick<ColProps, 'showOverflow'>>;
 
@@ -23,7 +29,7 @@ interface DataRow {
   ): ReactElement<any, any>;
 }
 
-export const Row: DataRow = ({
+export const TableRow: DataRow = ({
   id,
   columns,
   row,
@@ -50,8 +56,24 @@ export const Row: DataRow = ({
     });
   }, [onExpand, expandedContent, id, row]);
 
+  const numberOfColumns = useMemo(() => {
+    return columns.length;
+  }, [columns]);
+
+  const listRowProps = expandable
+    ? {
+        expanded,
+        renderExpanded: renderExpandedContent,
+      }
+    : {};
+
   return (
-    <ListRow expanded={expanded} renderExpanded={renderExpandedContent}>
+    <ListRow
+      as="tr"
+      numOfColumns={numberOfColumns}
+      selectable={selectable}
+      {...listRowProps}
+    >
       {selectable && (
         <ListCol
           {...listColProps}
@@ -70,18 +92,18 @@ export const Row: DataRow = ({
         </ListCol>
       )}
       {columns.map(({ key, render, size, justify, fill, type }) => {
+        const newKey = prefixId(`${id}-col-${String(key)}`);
         const colProps = {
           ...listColProps,
           size,
           justify,
           fill,
           type,
-          key: prefixId(`${id}-col-${String(key)}`),
         };
 
         if (loading) {
           return (
-            <ListCol {...colProps}>
+            <ListCol {...colProps} key={newKey}>
               <Shimmer
                 minHeight={24}
                 height="calc(100% - 1rem)"
@@ -92,22 +114,24 @@ export const Row: DataRow = ({
         }
 
         return (
-          <ListCol {...colProps}>
-            <>
-              {render ? (
-                render(row)
-              ) : typeof row[key] === 'string' ? (
-                <Text
-                  truncate="ellipsis"
-                  truncateLines={1}
-                  textAlign={justify ?? 'left'}
-                >
-                  {row[key] as ReactNode}
-                </Text>
-              ) : (
-                row[key]
-              )}
-            </>
+          <ListCol {...colProps} key={newKey}>
+            {render ? (
+              render(row)
+            ) : typeof row[key] === 'string' || typeof row[key] === 'number' ? (
+              <Text
+                truncate="ellipsis"
+                truncateLines={1}
+                textAlign={justify ?? 'left'}
+              >
+                {row[key] as string}
+              </Text>
+            ) : isValidElement(row[key]) ? (
+              (row[key] as ReactElement)
+            ) : !row[key] ? (
+              ''
+            ) : (
+              'Invalid data type'
+            )}
           </ListCol>
         );
       })}
@@ -125,4 +149,4 @@ export const Row: DataRow = ({
   );
 };
 
-export const DataRow = memo(Row) as DataRow;
+export const DataRow = memo(TableRow) as DataRow;

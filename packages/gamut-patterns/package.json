@@ -1,12 +1,12 @@
 {
   "name": "@codecademy/gamut-patterns",
   "description": "Pattern library for Codecademy",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "bugs": "https://github.com/Codecademy/gamut/issues",
   "dependencies": {
-    "@codecademy/gamut-styles": "17.4.0",
-    "@codecademy/variance": "0.22.0",
+    "@codecademy/gamut-styles": "17.4.1",
+    "@codecademy/variance": "0.22.1",
     "classnames": "^2.2.5"
   },
   "files": [

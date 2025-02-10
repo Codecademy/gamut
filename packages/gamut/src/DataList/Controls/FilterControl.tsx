@@ -64,7 +64,6 @@ export const FilterControl: React.FC<FilterProps> = ({
       {menuOpen && (
         <PopoverContainer
           isOpen
-          inline
           targetRef={target as any}
           offset={0}
           alignment={justify === 'left' ? 'bottom-right' : 'bottom-left'}
@@ -75,7 +74,7 @@ export const FilterControl: React.FC<FilterProps> = ({
             maxHeight={300}
             overflowY="auto"
             width="max-content"
-            variant="action"
+            variant="popover"
           >
             {[SELECT_ALL, ...options].map((opt) => {
               const { text, value } = formatOption(opt);
