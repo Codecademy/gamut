@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.4.1...@codecademy/gamut-styles@17.5.0) (2025-02-10)
+
+### Features
+
+- **Colors:** Add new orange weight to colors ([c52cc0e](https://github.com/Codecademy/gamut/commit/c52cc0e774fc64e2b4cbf412e41ca5c4c36792b5))
+
 ### [17.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.4.0...@codecademy/gamut-styles@17.4.1) (2025-02-05)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
