@@ -3,6 +3,7 @@ import {
   KeyboardEvent,
   useCallback,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
@@ -46,7 +47,6 @@ const defaultProps = {
     Option: IconOption,
   },
 };
-
 const onChangeAction = 'select-option';
 
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
@@ -65,7 +65,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   shownOptionsLimit = 6,
   ...rest
 }) => {
-  const rawInputId = React.useId();
+  const rawInputId = useId();
   const inputId = name ?? `${id}-select-dropdown-${rawInputId}`;
 
   const [activated, setActivated] = useState(false);

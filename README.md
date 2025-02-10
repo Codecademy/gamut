@@ -16,8 +16,6 @@ We provide a single package to manage the versions of a few core dependencies: `
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-kit.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-kit)
 
-test
-
 1. Run `yarn add @codecademy/gamut-kit`
 2. Add each of the managed packages to your peer dependencies (this is required for enabling intellisense for these packages and does not have any effect on version resolution)
 
