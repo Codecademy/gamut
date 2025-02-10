@@ -79,7 +79,7 @@ export const CleanFillButton = styled(FillButton)(
   css({
     // Otherwise VO annouces the button's text twice
     '::before': {
-      display: 'none'
-    }
+      display: 'none',
+    },
   })
-)
+);
