@@ -15,6 +15,7 @@ import {
   AlertBanner,
   AlertBox,
   alertContentProps,
+  CleanFillButton,
   CollapsibleContent,
 } from './elements';
 import {
@@ -171,7 +172,7 @@ export const Alert: React.FC<AlertProps> = ({
       gridRow={gridButtonOrder}
       pb={ctaButtonPadding}
     >
-      <FillButton
+      <CleanFillButton
         {...cta}
         mode={buttonColorMode}
         variant="secondary"
@@ -179,7 +180,7 @@ export const Alert: React.FC<AlertProps> = ({
         tabIndex={tabIndex}
       >
         {cta.children ?? cta.text}
-      </FillButton>
+      </CleanFillButton>
     </Box>
   );
 

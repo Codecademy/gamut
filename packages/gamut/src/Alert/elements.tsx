@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ComponentProps, forwardRef } from 'react';
 
 import { Box } from '../Box';
+import { FillButton } from '../Button';
 import { AlertProps } from './Alert';
 import { placementVariants } from './variants';
 
@@ -73,3 +74,12 @@ export const CollapsibleContent = styled(motion.div)(
     MozOsxFontSmoothing: 'grayscale',
   })
 );
+
+export const CleanFillButton = styled(FillButton)(
+  css({
+    // Otherwise VO annouces the button's text twice
+    '::before': {
+      display: 'none'
+    }
+  })
+)
