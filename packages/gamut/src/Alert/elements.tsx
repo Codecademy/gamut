@@ -77,7 +77,7 @@ export const CollapsibleContent = styled(motion.div)(
 
 export const CleanFillButton = styled(FillButton)(
   css({
-    // Otherwise VO annouces the button's text twice
+    // Otherwise VoiceOver annouces the button's text twice
     '::before': {
       display: 'none',
     },
