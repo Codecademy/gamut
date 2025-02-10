@@ -13,16 +13,17 @@ const Shimmer = styled(BaseContainer)(
     transform: 'rotate(30deg)',
     filter: 'blur(25px)',
     left: '-100%',
-    background: 'blue',
+    bg: 'blue',
   })
 );
 
 export const FeatureShimmer: React.FC<BoxProps> = ({ children, ...rest }) => {
   return (
-    <Box {...rest}>
+    <Box {...rest} bg="beige">
       <BaseContainer
         width={1}
         height={1}
+        overflow="hidden"
         border={1}
         borderColor="border-tertiary"
         bg="background-selected"
