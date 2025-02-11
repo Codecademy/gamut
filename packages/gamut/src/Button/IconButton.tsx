@@ -1,5 +1,4 @@
-import { useId } from '@reach/auto-id';
-import { ComponentProps, forwardRef } from 'react';
+import { ComponentProps, forwardRef, useId } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ToolTip, ToolTipProps } from '../Tip/ToolTip';
