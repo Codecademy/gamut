@@ -1,5 +1,4 @@
-import { useId } from '@reach/auto-id';
-import { useMemo } from 'react';
+import { useId, useMemo } from 'react';
 
 export function usePatternId(id: string) {
   const generatedId = useId();
