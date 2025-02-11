@@ -14,7 +14,7 @@ export const Default: Story = {
     crumbs: [
       {
         title: 'Catalog',
-        href: '/'
+        href: '/',
       },
       {
         title: 'Web Development',
@@ -27,7 +27,7 @@ export const Default: Story = {
       {
         title: 'Current Page',
       },
-    ]
+    ],
   },
 };
 

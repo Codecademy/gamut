@@ -28,7 +28,7 @@ import React, { useState } from 'react';
 
 const meta: Meta<typeof List> = {
   component: List,
-  subcomponents: { ListRow: ListRow as React.ComponentType<unknown>},
+  subcomponents: { ListRow: ListRow as React.ComponentType<unknown> },
   args: {},
 };
 
@@ -68,26 +68,26 @@ const ListExample: React.FC = (args) => {
 export const NormalSpacing: Story = {
   args: { spacing: 'normal' },
   render: (args) => <ListExample {...args} />,
-}
+};
 
 export const CondensedSpacing: Story = {
   args: { spacing: 'condensed' },
   render: (args) => <ListExample {...args} />,
-}
+};
 
 export const CompactSpacing: Story = {
   args: { spacing: 'compact' },
   render: (args) => <ListExample {...args} />,
-}
+};
 
 export const Table: Story = {
   args: { spacing: 'condensed', variant: 'table' },
   render: (args) => <ListExample {...args} />,
-}
+};
 
 export const Default: Story = {
   args: {
-    spacing: 'condensed'
+    spacing: 'condensed',
   },
   render: (args) => <ListExample {...args} />,
 };
@@ -129,7 +129,7 @@ const ListCardExample: React.FC = (args) => {
 
 export const Card: Story = {
   args: {
-    variant: 'card'
+    variant: 'card',
   },
   render: (args) => <ListCardExample {...args} />,
 };
@@ -137,7 +137,7 @@ export const Card: Story = {
 export const Block: Story = {
   args: {
     variant: 'block',
-    spacing: 'condensed'
+    spacing: 'condensed',
   },
   render: (args) => <ListExample {...args} />,
 };
@@ -166,8 +166,8 @@ const ColumnExample: React.FC<ListProps> = (args) => {
         </ListRow>
       ))}
     </List>
-  )
-}
+  );
+};
 
 export const ColumnSizing: Story = {
   render: (args) => <ColumnExample {...args} />,
@@ -204,12 +204,12 @@ const FillingEmptySpaceExample: React.FC<ListProps> = (args) => {
         </ListCol>
       </ListRow>
     </List>
-  )
-}
+  );
+};
 
 export const FillingEmptySpace: Story = {
   render: (args) => <FillingEmptySpaceExample {...args} />,
-}
+};
 
 const JustificationExample: React.FC<ListProps> = (args) => {
   return (
@@ -224,11 +224,11 @@ const JustificationExample: React.FC<ListProps> = (args) => {
       </ListRow>
     </List>
   );
-}
+};
 
 export const Justification: Story = {
   render: (args) => <JustificationExample {...args} />,
-}
+};
 
 const HorizontalScrollingExample: React.FC<ListProps> = (args) => {
   return (
@@ -298,14 +298,13 @@ const HorizontalScrollingExample: React.FC<ListProps> = (args) => {
         </ListRow>
       ))}
     </List>
-  )
-}
+  );
+};
 
 export const HorizontalScrolling: Story = {
   args: { spacing: 'condensed', scrollable: true },
   render: (args) => <HorizontalScrollingExample {...args} />,
-}
-
+};
 
 const ResponsiveAnatomyExample: React.FC<ListProps> = (args) => {
   return (
@@ -389,10 +388,10 @@ const ResponsiveExample: React.FC<ListProps> = (args) => {
       </ListRow>
     </List>
   );
-}
+};
 
 export const Responsive: Story = {
-  args: { as: 'ol'},
+  args: { as: 'ol' },
   parameters: {
     docs: {
       inlineStories: false,
@@ -400,7 +399,7 @@ export const Responsive: Story = {
     },
   },
   render: (args) => <ResponsiveExample {...args} />,
-}
+};
 
 const NormalSpacingGuideExample: React.FC<ListProps> = (args) => (
   <List {...args}>
@@ -475,7 +474,7 @@ const NormalSpacingGuideExample: React.FC<ListProps> = (args) => (
 export const NormalSpacingGuide: Story = {
   args: { spacing: 'normal' },
   render: (args) => <NormalSpacingGuideExample {...args} />,
-}
+};
 
 const CondensedSpacingGuideExample: React.FC<ListProps> = (args) => (
   <List {...args}>
@@ -549,13 +548,12 @@ const CondensedSpacingGuideExample: React.FC<ListProps> = (args) => (
 export const CondensedSpacingGuide: Story = {
   args: { spacing: 'condensed' },
   render: (args) => <CondensedSpacingGuideExample {...args} />,
-}
-
+};
 
 export const CondensedTableGuide: Story = {
-  args: { spacing: 'condensed', variant: 'table'},
-  render: (args) => <CondensedSpacingGuideExample {...args} />
-}
+  args: { spacing: 'condensed', variant: 'table' },
+  render: (args) => <CondensedSpacingGuideExample {...args} />,
+};
 
 interface ExpandableRowProps {
   name: string;
@@ -667,9 +665,7 @@ const ExpandableButtonClickRow: React.FC<{
   );
 };
 
-const ExpandedTemplateButtonClick: React.FC<ListProps> = ({
-  variant,
-}) => (
+const ExpandedTemplateButtonClick: React.FC<ListProps> = ({ variant }) => (
   <Background bg="black">
     <Box p={8}>
       <List variant={variant}>
@@ -688,7 +684,7 @@ const ExpandedTemplateButtonClick: React.FC<ListProps> = ({
 
 export const ExpandableButtonGuide: Story = {
   render: (args) => <ExpandedTemplateButtonClick {...args} />,
-}
+};
 
 export const ExpandableRowClick: React.FC<ExpandableRowProps> = ({
   name,
@@ -717,10 +713,7 @@ export const ExpandableRowClick: React.FC<ExpandableRowProps> = ({
   );
 };
 
-const ExpandedTemplateRowClick: React.FC<ListProps> = ({
-  as,
-  variant,
-}) => (
+const ExpandedTemplateRowClick: React.FC<ListProps> = ({ as, variant }) => (
   <Background bg="black">
     <Box p={8}>
       <List as={as} variant={variant}>
@@ -734,4 +727,4 @@ const ExpandedTemplateRowClick: React.FC<ListProps> = ({
 
 export const ExpandedRowGuide: Story = {
   render: (args) => <ExpandedTemplateRowClick {...args} />,
-}
+};

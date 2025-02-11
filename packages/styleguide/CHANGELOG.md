@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [70.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.1.0...@codecademy/styleguide@70.1.1) (2025-02-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [70.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.0.1...@codecademy/styleguide@70.1.0) (2025-02-05)
+
+### Features
+
+- **Icons:** add InteractiveCursor and Report icons ([#3028](https://github.com/Codecademy/gamut/issues/3028)) ([d894070](https://github.com/Codecademy/gamut/commit/d8940706d40878e79424aa77fa58031406961570))
+
+### [70.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.0.0...@codecademy/styleguide@70.0.1) (2025-02-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ## [70.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@69.0.0...@codecademy/styleguide@70.0.0) (2025-02-04)
 
 ### ⚠ BREAKING CHANGES

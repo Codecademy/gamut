@@ -5,16 +5,17 @@ import { ComponentHeader } from '~styleguide/blocks';
 import * as CoachmarkStories from './Coachmark.stories';
 
 export const parameters = {
-  subtitle: 'A Coachmark helps bring attention to a CTA by showing a popover around that element.',
+  subtitle:
+    'A Coachmark helps bring attention to a CTA by showing a popover around that element.',
   source: {
     repo: 'gamut',
-    githubLink: 'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Coachmark/index.tsx'
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Coachmark/index.tsx',
   },
   status: 'current',
   design: {
     type: 'figma',
-    url:
-      'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1083%3A1134',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1083%3A1134',
   },
 };
 
@@ -27,10 +28,12 @@ export const parameters = {
 Use coachmark to guide learners about key functionality on a page or drive new feature adoption.
 
 ### Best practices:
+
 - Provide guidance that introduces a new feature or explains a complex interaction.
 - Use coachmarks sparingly to avoid overwhelming the user.
 
 ### When NOT to use:
+
 - Long-term guidance or instructions should be provided in a more permanent location, such as a help center or documentation.
 
 ## Variants
@@ -41,10 +44,8 @@ Using the popoverProps, you can customize the look of the coachmark. For example
 
 <Canvas of={CoachmarkStories.Customized} />
 
-
 ## Playground
 
 <Canvas sourceState="shown" of={CoachmarkStories.Default} />
 
 <Controls />
-

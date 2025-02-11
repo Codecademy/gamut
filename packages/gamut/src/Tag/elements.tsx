@@ -19,33 +19,36 @@ import {
   tagWrapperStates,
   textSizeVariants,
 } from './styles';
-import { BaseTagProps, DismissButtonProps, TagAnchorProps, tagProps, TagTextProps } from './types';
+import {
+  BaseTagProps,
+  DismissButtonProps,
+  TagAnchorProps,
+  tagProps,
+  TagTextProps,
+} from './types';
 
-export const Outline = styled(FlexBox)(
-  outlineStyling,
-  outlineStates
-);
+export const Outline = styled(FlexBox)(outlineStyling, outlineStates);
 
 export const TagLabelWrapper = styled(Box)<BaseTagProps>(
   tagProps,
   tagUsageVariants,
-  tagWrapperStates,
+  tagWrapperStates
 );
 
 export const DismissButton = styled(IconButton)<DismissButtonProps>(
   dismissButtonLargeStyling,
-  dismissButtonStyling,
+  dismissButtonStyling
 );
 
 export const TagAnchor = styled(Anchor)<TagAnchorProps>(
   anchorSizeVariants,
-  anchorVariants,
-)
+  anchorVariants
+);
 
 export const TagText = styled(Text)<TagTextProps>(
   tagTextStyling,
   textSizeVariants
-)
+);
 
 export const DefaultMiniDeleteIcon = styled(MiniDeleteIcon)(
   defaultMiniDeleteIconStyling
