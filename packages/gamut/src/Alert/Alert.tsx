@@ -1,6 +1,6 @@
 import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { breakpoints, useCurrentMode } from '@codecademy/gamut-styles';
-import { isValidElement, useId, useMemo, useState } from 'react';
+import { Children, isValidElement, useId, useMemo, useState } from 'react';
 import TruncateMarkup from 'react-truncate-markup';
 import { useMeasure } from 'react-use';
 
@@ -119,7 +119,7 @@ export const Alert: React.FC<AlertProps> = ({
     >
       {/** Truncate markup expects a single child element */}
       <Box {...alertContentProps}>
-        {React.Children.map(children, (child) =>
+        {Children.map(children, (child) =>
           isValidElement(child) || typeof child === 'string' ? (
             child
           ) : (
