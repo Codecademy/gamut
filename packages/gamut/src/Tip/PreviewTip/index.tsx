@@ -1,8 +1,8 @@
-import { useId } from '@reach/auto-id';
 import {
   ComponentProps,
   FocusEvent,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
