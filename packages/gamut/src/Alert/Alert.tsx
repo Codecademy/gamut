@@ -1,7 +1,6 @@
 import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { breakpoints, useCurrentMode } from '@codecademy/gamut-styles';
-import { isValidElement, useMemo, useState } from 'react';
-import * as React from 'react';
+import { isValidElement, useId, useMemo, useState } from 'react';
 import TruncateMarkup from 'react-truncate-markup';
 import { useMeasure } from 'react-use';
 
@@ -67,7 +66,7 @@ export const Alert: React.FC<AlertProps> = ({
   const activeAlert = alertVariants?.[type] ?? alertVariants.general;
   const { icon: Icon, bg } = activeAlert;
 
-  const tipId = React.useId();
+  const tipId = useId();
 
   const currentColorMode = useCurrentMode();
   const isSubtleVariant = type === 'subtle';
