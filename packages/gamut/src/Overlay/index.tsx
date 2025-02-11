@@ -38,7 +38,7 @@ export type OverlayProps = {
 const OverlayContainer = styled(FlexBox)(
   states({
     shroud: {
-      bg: 'shadow-transparent',
+      bg: 'shadow-secondary',
     },
     inline: {
       position: 'absolute',
