@@ -19,7 +19,7 @@ const CardShell = styled.div(
   css({
     background: 'white',
     borderRadius: 'sm',
-    boxShadow: `0 2px 8px 0 ${theme.colors['shadow-transparent']}`,
+    boxShadow: `0 2px 8px 0 ${theme.colors['shadow-secondary']}`,
     position: 'relative',
     transition: 'box-shadow 250ms ease-in',
   })
