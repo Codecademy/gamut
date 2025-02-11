@@ -17,7 +17,7 @@ const outlineStyles = (mode: ColorModes) => ({
   '&:hover': {
     transform: 'translate(4px, -4px)',
     boxShadow: `-8px 8px 0 ${
-      mode === 'dark' ? theme.colors['background-current'] : 'currentColor'
+      mode === 'dark' ? theme.colors['shadow-solid'] : 'currentColor'
     }`,
   },
 });
@@ -28,20 +28,20 @@ const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
       prop: 'shadow',
       base: {
         position: 'relative',
-        boxShadow: `0px 0px 0 currentColor`,
+        boxShadow: `0px 0px 0 ${theme.colors['shadow-solid']}`,
         transition: 'box-shadow 200ms ease, transform 200ms ease',
       },
       variants: {
         small: {
           '&:hover': {
             transform: 'translate(2px, -2px)',
-            boxShadow: `-4px 4px 0 currentColor`,
+            boxShadow: `-4px 4px 0 ${theme.colors['shadow-solid']}`,
           },
         },
         medium: {
           '&:hover': {
             transform: 'translate(4px, -4px)',
-            boxShadow: `-8px 8px 0 currentColor`,
+            boxShadow: `-8px 8px 0 ${theme.colors['shadow-solid']}`,
           },
         },
         outline: outlineStyles(mode),
@@ -54,20 +54,20 @@ const shadowVariants = (mode: ColorModes) =>
     prop: 'shadow',
     base: {
       position: 'relative',
-      boxShadow: `0px 0px 0 currentColor`,
+      boxShadow: `0px 0px 0 ${theme.colors['shadow-solid']}`,
       transition: 'box-shadow 200ms ease, transform 200ms ease',
     },
     variants: {
       small: {
         '&:hover': {
           transform: 'translate(2px, -2px)',
-          boxShadow: `-4px 4px 0 ${mode === 'dark' ? 'white' : 'currentColor'}`,
+          boxShadow: `-4px 4px ${theme.colors['shadow-solid']}`,
         },
       },
       medium: {
         '&:hover': {
           transform: 'translate(4px, -4px)',
-          boxShadow: `-8px 8px 0 ${mode === 'dark' ? 'white' : 'currentColor'}`,
+          boxShadow: `-8px 8px 0 ${theme.colors['shadow-solid']}`,
         },
       },
       outline: outlineStyles(mode),
