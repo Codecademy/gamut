@@ -33,6 +33,7 @@ export type PaginationButtonProps = ComponentProps<
   StyleProps<typeof paginationStrokeButtonStates> & {
     icon?: ComponentType<GamutIconProps>;
     buttonType?: 'stroke' | 'text';
+    href?: string;
   };
 
 export const PaginationButton = forwardRef<
