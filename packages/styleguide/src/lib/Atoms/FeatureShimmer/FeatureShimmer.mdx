@@ -1,6 +1,7 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import {
+ ComponentHeader,  LinkTo } from '~styleguide/blocks';
 
 import * as FeatureShimmerStories from './FeatureShimmer.stories';
 
@@ -24,6 +25,19 @@ export const parameters = {
 <ComponentHeader {...parameters} />
 
 ## Usage
+
+Use `FeatureShimmer` to subtly draw attention to secondary new features or elements that are are important for the user to notice, though not the primary focus of the page.
+
+### Best practices:
+
+- Only apply `FeatureShimmer` to a single element at a time to avoid overwhelming the user.
+- Set a reasonable limit for how often the shimmer appears, such as up to 3 times or until the user interacts with the element.
+- Disable for users with reduced motion settings enabled.
+
+### When NOT to use:
+
+- Primary Features — For main features or critical updates, use more prominent indicators like the <LinkTo id="Molecules/Coachmark">Coachmark</LinkTo> or <LinkTo id="Atoms/Badge">Badge</LinkTo> components.
+- Critical Alerts — For errors or urgent notifications that require immediate user attention, use the <LinkTo id="Molecules/Alert">Alert</LinkTo> component.
 
 ## Playground
 

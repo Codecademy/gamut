@@ -19,7 +19,7 @@ const Shimmer = styled(BaseContainer)(
 
 export const FeatureShimmer: React.FC<BoxProps> = ({ children, ...rest }) => {
   return (
-    <Box {...rest} bg="beige">
+    <Box {...rest}>
       <BaseContainer
         width={1}
         height={1}
