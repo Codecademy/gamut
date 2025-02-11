@@ -52,8 +52,8 @@ export const coreTheme = createTheme({
         hover: 'navy-200',
       },
       shadow: {
-        opaque: 'shadow-white-heavy',
-        solid: 'gray-200',
+        transparent: 'navy-600',
+        solid: 'navy-800',
       },
       primary: {
         _: 'hyper-500',
@@ -101,8 +101,8 @@ export const coreTheme = createTheme({
         hover: 'white-200',
       },
       shadow: {
-        opaque: 'shadow-black-heavy',
-        solid: 'black',
+        transparent: 'white-600',
+        solid: 'white',
       },
       primary: {
         _: 'yellow-500',
