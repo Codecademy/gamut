@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [59.0.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.7...@codecademy/gamut@59.0.8) (2025-02-12)
+
+### Bug Fixes
+
+- **Alert:** aria-expanded on the wrong element ([e9a87a1](https://github.com/Codecademy/gamut/commit/e9a87a1878144137bf9c3579f4406501b11af51b))
+
 ### [59.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.6...@codecademy/gamut@59.0.7) (2025-02-12)
 
 **Note:** Version bump only for package @codecademy/gamut
