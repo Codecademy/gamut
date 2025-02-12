@@ -66,6 +66,7 @@ export const coreSwatches = {
     '600': '#BE1809',
   },
   orange: {
+    '100': '#FFE8CC',
     '500': '#FF8C00',
   },
   hyper: {
