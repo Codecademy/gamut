@@ -13,7 +13,7 @@ const Shimmer = styled(BaseContainer)(
     transform: 'rotate(30deg)',
     filter: 'blur(25px)',
     left: '-100%',
-    bg: 'blue',
+    bg: 'white-400',
   })
 );
 
