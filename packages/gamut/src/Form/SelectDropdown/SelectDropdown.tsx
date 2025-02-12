@@ -1,9 +1,9 @@
 import { useTheme } from '@emotion/react';
-import { useId } from '@reach/auto-id';
 import {
   KeyboardEvent,
   useCallback,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
@@ -47,7 +47,6 @@ const defaultProps = {
     Option: IconOption,
   },
 };
-
 const onChangeAction = 'select-option';
 
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({

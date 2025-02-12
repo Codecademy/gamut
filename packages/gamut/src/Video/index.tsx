@@ -101,7 +101,7 @@ export const Video: React.FC<VideoProps> = ({
 
   /**
    * If showPlayerEmbed is true use ReactPlayer to render the video
-   * Otherwise, use the Vidstack MediaPlayer. @TEMPOARY_FALLBACK
+   * Otherwise, use the Vidstack MediaPlayer. @TEMPORARY_FALLBACK
    */
   if (showPlayerEmbed) {
     return (

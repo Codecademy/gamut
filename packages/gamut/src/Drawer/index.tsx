@@ -8,7 +8,7 @@ import { Box, BoxProps } from '../Box';
 import { focusVisibleStyle } from '../utils';
 
 const drawerVisibleStyle = focusVisibleStyle('-3px');
-const DrawerBase = styled(motion(Box))(css(drawerVisibleStyle));
+const DrawerBase = styled(motion.create(Box))(css(drawerVisibleStyle));
 
 export interface DrawerProps extends Omit<BoxProps, 'width'> {
   /**
