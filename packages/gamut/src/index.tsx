@@ -4,6 +4,7 @@ export * from './AccordionButtonDeprecated';
 export * from './Alert';
 export * from './Anchor';
 export * from './Animation';
+export * from './AppBar';
 export * from './AppWrapper';
 export * from './Badge';
 export * from './BodyPortal';

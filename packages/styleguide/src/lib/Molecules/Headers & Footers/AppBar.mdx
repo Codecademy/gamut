@@ -1,0 +1,33 @@
+import * as AppBarStories from './AppBar.stories';
+import { ComponentHeader } from '../../../.storybook/components';
+
+import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
+
+export const parameters = {
+  subtitle: `Components that provide spacing and layout help that you can use for something like a footer or header`,
+  status: 'updating',
+};
+
+<Meta of={AppBarStories} />
+
+<ComponentHeader {...parameters} />
+
+This is an example of an AppBar component that contains one left-oriented AppBarSection that holds one AppBar Tab.
+
+<Canvas>
+  <Story of={AppBarStories.Default} />
+</Canvas>
+
+<Controls />
+
+## Header
+
+This is an example of how our headers use the AppBar component to format various sections in a bar (left, center, and right). The AppBar can hold as many AppBarSections as you'd like.
+
+<Canvas>
+  <Story of={AppBarStories.Header} />
+</Canvas>
+
+### Note
+
+This AppBar is an updated version of AppBarDeprecated, which relies on `.scss` and `classNames` for styling.
