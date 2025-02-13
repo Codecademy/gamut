@@ -1,11 +1,12 @@
 import { Canvas, Controls, Meta, Story } from '@storybook/blocks';
 
-import { ComponentHeader } from '../../../.storybook/components';
+import { ComponentHeader } from '~styleguide/blocks';
+
 import * as AppBarStories from './AppBar.stories';
 
 export const parameters = {
   subtitle: `Components that provide spacing and layout help that you can use for something like a footer or header`,
-  status: 'updating',
+  status: 'current',
 };
 
 <Meta of={AppBarStories} />
@@ -27,7 +28,3 @@ This is an example of how our headers use the AppBar component to format various
 <Canvas>
   <Story of={AppBarStories.Header} />
 </Canvas>
-
-### Note
-
-This AppBar is an updated version of AppBarDeprecated, which relies on `.scss` and `classNames` for styling.
