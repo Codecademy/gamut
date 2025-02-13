@@ -138,7 +138,10 @@ describe('SelectDropdown', () => {
 
     await openDropdown(view);
 
-    fireEvent.click(view.getByText('red'));
+    await act(() => {
+      fireEvent.click(view.getByText('red'));
+      return Promise.resolve();
+    });
 
     expect(onInputChange).toHaveBeenCalled();
   });
