@@ -24,6 +24,7 @@ export * from './Flyout';
 export * from './FocusTrap';
 export * from './Form';
 export * from './GridForm';
+export * from './Header';
 export * from './HiddenText';
 export * from './Layout/Column';
 export * from './Layout/LayoutGrid';
