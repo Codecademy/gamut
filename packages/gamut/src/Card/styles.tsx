@@ -1,4 +1,4 @@
-import { states, variant } from "@codecademy/gamut-styles";
+import { states, theme, variant } from "@codecademy/gamut-styles";
 
 export const cardVariants = variant({
   defaultVariant: 'default',
@@ -7,25 +7,27 @@ export const cardVariants = variant({
     borderRadius: 'md',
     p: 16,
     color: 'text',
+    maxWidth: "100%",
+    position: "relative"
   },
   variants: {
     default: {
       bg: 'background',
     },
-    navy: {
-      bg: 'navy'
-    },
     white: {
       bg: 'white'
-    },
-    hyper: {
-      bg: 'hyper'
     },
     yellow: {
       bg: 'yellow'
     },
     beige: {
       bg: 'beige'
+    },
+    navy: {
+      bg: 'navy',
+    },
+    hyper: {
+      bg: 'hyper',
     },
   }
 })
@@ -38,8 +40,7 @@ export const shadowVariants = variant({
     patternLeft: {},
     patternRight: {},
     outline: {
-      position: 'relative',
-      boxShadow: `0px 0px 0 currentColor`,
+      boxShadow: `-6px 6px ${theme.colors['background-current']}, -6px 6px 0 1px ${theme.colors['border-primary']}`,
       transition: 'box-shadow 200ms ease, transform 200ms ease',
     }
   }
@@ -50,6 +51,12 @@ export const hoverState = states({
     '&:hover': {
       transform: 'translate(4px, -4px)',
       boxShadow: `-8px 8px 0 currentColor`,
+    },
+  },
+  isInteractiveRight: {
+    '&:hover': {
+      transform: 'translate(4px, 4px)',
+      boxShadow: `8px 8px 0 currentColor`,
     },
   }
 })

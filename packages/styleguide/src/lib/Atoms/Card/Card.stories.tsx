@@ -47,15 +47,15 @@ export const Beige: Story = {
   },
 };
 
-export const SmallShadow: Story = {
+export const PatternLeftShadow: Story = {
   args: {
-    shadow: 'small',
+    shadow: 'patternLeft',
   },
 };
 
-export const MediumShadow: Story = {
+export const PatternRightShadow: Story = {
   args: {
-    shadow: 'medium',
+    shadow: 'patternRight',
   },
 };
 
@@ -69,6 +69,7 @@ export const OutlineShadowColor: Story = {
   args: {
     shadow: 'outline',
     variant: 'yellow',
+    isInteractive: true,
   },
 };
 
@@ -80,6 +81,7 @@ export const Link: Story = {
   ),
   args: {
     shadow: 'medium',
+    isInteractive: true,
   },
 };
 
