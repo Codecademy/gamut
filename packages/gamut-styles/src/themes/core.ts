@@ -52,8 +52,8 @@ export const coreTheme = createTheme({
         hover: 'navy-200',
       },
       shadow: {
-        opaque: 'shadow-white-heavy',
-        solid: 'gray-200',
+        primary: 'navy-800',
+        secondary: 'navy-600',
       },
       primary: {
         _: 'hyper-500',
@@ -101,8 +101,8 @@ export const coreTheme = createTheme({
         hover: 'white-200',
       },
       shadow: {
-        opaque: 'shadow-black-heavy',
-        solid: 'black',
+        primary: 'white',
+        secondary: 'white-600',
       },
       primary: {
         _: 'yellow-500',
@@ -129,7 +129,7 @@ export const coreTheme = createTheme({
       },
     },
   })
-  .addScale('borders', ({ colors }) => ({
+  .addScale('borders', ({ colors }: { colors: Record<string, string> }) => ({
     1: `1px solid ${colors['border-primary']}`,
     2: `2px solid ${colors['border-primary']}`,
   }))
