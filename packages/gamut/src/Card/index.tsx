@@ -28,7 +28,6 @@ const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
       prop: 'shadow',
       base: {
         position: 'relative',
-        boxShadow: `0px 0px 0 ${theme.colors['shadow-primary']}`,
         transition: 'box-shadow 200ms ease, transform 200ms ease',
       },
       variants: {
@@ -54,7 +53,6 @@ const shadowVariants = (mode: ColorModes) =>
     prop: 'shadow',
     base: {
       position: 'relative',
-      boxShadow: `0px 0px 0 ${theme.colors['shadow-primary']}`,
       transition: 'box-shadow 200ms ease, transform 200ms ease',
     },
     variants: {
