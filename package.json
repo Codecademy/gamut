@@ -96,7 +96,7 @@
     "typescript": "5.1.3"
   },
   "engines": {
-    "node": "^18.18.2",
+    "node": "^22.13.1",
     "yarn": "^1.21.1"
   },
   "license": "MIT",
@@ -129,7 +129,7 @@
     "lint:fix": "yarn lint --fix",
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
     "start": "yarn && yarn start:storybook",
-    "start:storybook": "cd ./packages/styleguide && yarn start",
+    "start:storybook": "nx storybook styleguide",
     "test": "nx run-many --target=test --all",
     "verify": "nx run-many --target=verify --parallel=3 --all",
     "verify-all": "yarn verify"
