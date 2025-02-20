@@ -13,6 +13,15 @@ jest.mock('react-player', () => ({
   __esModule: true,
   default: () => <iframe title={mockTitle} />,
 }));
+jest.mock('@vidstack/react', () => ({
+  __esModule: true,
+  MediaPlayer: () => <iframe title={mockTitle} />,
+  MediaProvider: () => <div />,
+  Poster: jest.fn(),
+  Track: jest.fn(),
+  useMediaState: jest.fn(),
+  useMediaRemote: jest.fn(),
+}));
 
 const basicMarkdown = `
 # Heading 1

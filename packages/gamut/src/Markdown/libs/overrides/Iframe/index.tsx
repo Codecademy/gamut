@@ -9,6 +9,7 @@ export interface IframeProps extends HTMLAttributes<HTMLIFrameElement> {
   title?: string;
   width?: number;
   height?: number;
+  showPlayerEmbed?: boolean;
 }
 
 const YOUTUBE_PATTERN = /youtu(be\.com|\.be)/;
@@ -25,6 +26,7 @@ export const Iframe: FunctionComponent<IframeProps> = (props) => {
         width={props?.width}
         videoUrl={props?.src}
         videoTitle={props?.title}
+        showPlayerEmbed={props?.showPlayerEmbed}
       />
     );
   }

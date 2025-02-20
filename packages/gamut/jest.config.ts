@@ -8,4 +8,5 @@ export default base('gamut', {
   setupFiles: ['<rootDir>/../../script/jest/base-setup.js'],
   setupFilesAfterEnv: ['<rootDir>/../../script/jest/rtl-setup.js'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  transformIgnorePatterns: ['node_modules/(?!(@vidstack/react)/)'],
 });
