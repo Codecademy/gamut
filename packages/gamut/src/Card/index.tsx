@@ -5,7 +5,6 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps } from 'react';
 import * as React from 'react';
 
 import { Box } from '../Box';
