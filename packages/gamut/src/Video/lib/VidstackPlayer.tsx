@@ -34,10 +34,10 @@ type VidstackPlayerProps = VideoProps & {
   onLoad: () => void;
 };
 export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
-  autoplay,
-  controls,
-  loop,
-  muted,
+  autoplay = false,
+  controls = true,
+  loop = false,
+  muted = false,
   onPlay,
   onReady,
   onLoad,
@@ -94,17 +94,13 @@ export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
         }
         keyShortcuts={keyboardShortcuts}
         onLoad={onLoad}
-        onPlay={() => {
-          onPlay?.();
-        }}
+        onPlay={onPlay}
         onPlaying={() => {
           if (autoplay && player.current?.muted && !muted) {
             mediaRemote?.unmute();
           }
         }}
-        onCanPlay={() => {
-          onReady?.();
-        }}
+        onCanPlay={onReady}
         onProviderChange={onProviderChange}
         onWaiting={onPlayerWaiting}
       >

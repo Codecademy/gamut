@@ -9,12 +9,8 @@ import { BaseReactPlayerProps } from 'react-player/base';
 
 import { Box } from '../Box';
 import { useIsMounted } from '../utils';
-import { VidstackPlayer } from './lib/Player';
-import {
-  OverlayPlayButton,
-  ReactPlayerWithWrapper,
-  ReactVideoPlayer,
-} from './lib/ReactPlayer';
+import { OverlayPlayButton, ReactVideoPlayer } from './lib/ReactPlayer';
+import { VidstackPlayer } from './lib/VidstackPlayer';
 
 export type VideoProps = {
   className?: string;
@@ -22,7 +18,7 @@ export type VideoProps = {
   loop?: boolean;
   muted?: boolean;
   onPlay?: () => void;
-  onReady?: (player?: ReactPlayerWithWrapper) => void;
+  onReady?: () => void;
   width?: number;
   height?: number;
   videoTitle?: string;
@@ -68,25 +64,20 @@ export type VideoProps = {
   showDefaultProviderControls?: boolean;
 };
 
-export const Video: React.FC<VideoProps> = ({
-  autoplay = false,
-  className,
-  controls = true,
-  height,
-  loop = false,
-  muted = false,
-  onPlay,
-  onReady,
-  placeholderImage,
-  videoTitle,
-  videoUrl,
-  width,
-  textTracks,
-  thumbnails,
-  translations,
-  showPlayerEmbed,
-  showDefaultProviderControls,
-}) => {
+export const Video: React.FC<VideoProps> = (props) => {
+  const {
+    autoplay = false,
+    className,
+    controls = true,
+    loop = false,
+    muted = false,
+    onPlay,
+    onReady,
+    placeholderImage,
+    videoTitle,
+    videoUrl,
+    showPlayerEmbed,
+  } = props;
   const [loading, setLoading] = useState(true);
   const isMounted = useIsMounted();
 
@@ -102,6 +93,8 @@ export const Video: React.FC<VideoProps> = ({
   /**
    * If showPlayerEmbed is true use ReactPlayer to render the video
    * Otherwise, use the Vidstack MediaPlayer. @TEMPORARY_FALLBACK
+   * @TODO [https://skillsoftdev.atlassian.net/browse/GM-998]
+   * Remove ReactPlayer once Vidstack is validated.
    */
   if (showPlayerEmbed) {
     return (
@@ -127,8 +120,8 @@ export const Video: React.FC<VideoProps> = ({
             url={videoUrl as BaseReactPlayerProps['url']}
             height="100%"
             width="100%"
-            onReady={(player: ReactPlayerWithWrapper) => {
-              onReady?.(player);
+            onReady={() => {
+              onReady?.();
               setLoading(false);
             }}
             onPlay={onPlay}
@@ -141,25 +134,7 @@ export const Video: React.FC<VideoProps> = ({
   return (
     <>
       {isMounted && (
-        <VidstackPlayer
-          loop={loop}
-          muted={muted}
-          width={width}
-          height={height}
-          onPlay={onPlay}
-          onReady={onReady}
-          videoUrl={videoUrl}
-          controls={controls}
-          autoplay={autoplay}
-          className={className}
-          videoTitle={videoTitle}
-          textTracks={textTracks}
-          thumbnails={thumbnails}
-          translations={translations}
-          onLoad={() => setLoading(false)}
-          placeholderImage={placeholderImage}
-          showDefaultProviderControls={showDefaultProviderControls}
-        />
+        <VidstackPlayer {...props} onLoad={() => setLoading(false)} />
       )}
     </>
   );
