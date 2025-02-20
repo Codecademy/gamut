@@ -56,6 +56,7 @@ export const PatternLeftShadow: Story = {
 export const PatternRightShadow: Story = {
   args: {
     shadow: 'patternRight',
+    href: 'https://www.codecademy.com',
   },
 };
 
@@ -69,7 +70,7 @@ export const OutlineShadowColor: Story = {
   args: {
     shadow: 'outline',
     variant: 'yellow',
-    isInteractive: true,
+    href: 'https://www.codecademy.com',
   },
 };
 

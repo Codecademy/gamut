@@ -42,6 +42,10 @@ export const shadowVariants = variant({
     outline: {
       boxShadow: `-6px 6px ${theme.colors['background-current']}, -6px 6px 0 1px ${theme.colors['border-primary']}`,
       transition: 'box-shadow 200ms ease, transform 200ms ease',
+      // '&:hover': {
+      //   // transform: 'translate(4px, -4px)',
+      //   boxShadow: `0 0 0 ${theme.colors['shadow-primary']}`,
+      // },
     }
   }
 })
@@ -49,14 +53,14 @@ export const shadowVariants = variant({
 export const hoverState = states({
   isInteractive: {
     '&:hover': {
-      transform: 'translate(4px, -4px)',
-      boxShadow: `-8px 8px 0 currentColor`,
+      // transform: 'translate(4px, -4px)',
+      boxShadow: `0 0 0 ${theme.colors['shadow-primary']}`,
     },
   },
-  isInteractiveRight: {
-    '&:hover': {
-      transform: 'translate(4px, 4px)',
-      boxShadow: `8px 8px 0 currentColor`,
-    },
-  }
+  // isInteractiveRight: {
+  //   '&:hover': {
+  //     // transform: 'translate(4px, 4px)',
+  //     boxShadow: `8px 8px 0 currentColor`,
+  //   },
+  // }
 })

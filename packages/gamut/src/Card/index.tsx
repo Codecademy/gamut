@@ -1,13 +1,17 @@
 import { CheckerDense, PatternProps } from '@codecademy/gamut-patterns';
 import {
   Background,
-  Colors
+  Colors,
+  theme,
+  variant
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import * as React from 'react';
 
+import { Anchor } from '../Anchor';
 import { Box } from '../Box';
+import { ButtonSelectors } from '../ButtonBase/ButtonBase';
 import { WithChildrenProp } from '../utils';
 import { cardVariants, hoverState, shadowVariants } from './styles';
 
@@ -73,9 +77,9 @@ import { cardVariants, hoverState, shadowVariants } from './styles';
 //     },
 //   });
 
-export interface CardProps {
-  variant?: 'navy' | 'white' | 'hyper' | 'yellow' | 'beige';
-}
+// export interface CardProps {
+//   variant?: 'navy' | 'white' | 'hyper' | 'yellow' | 'beige';
+// }
 
 // interface CardWrapperProps {
 //   outline?: boolean;
@@ -96,12 +100,36 @@ export interface CardProps {
 //   })
 // );
 
+const AnchorWrapper = styled(Anchor)(
+  variant({
+    prop: 'hoverState',
+    base: {
+      color: 'text',
+      width: 1,
+      borderRadius: 'md',
+    },
+    variants: {
+      default: {
+        [ButtonSelectors.HOVER]: {
+          transform: 'translate(4px, -4px)',
+          boxShadow: `-8px 8px 0 ${theme.colors['shadow-primary']}`,
+        },
+      },
+      hoverRight: {
+        [ButtonSelectors.HOVER]: {
+          transform: 'translate(4px, 4px)',
+          boxShadow: `8px 8px 0 ${theme.colors['shadow-primary']}`,
+        },
+      }
+    }
+  })
+)
+
 export interface CardContentProps
   extends StyleProps<typeof cardVariants>,
   StyleProps<typeof shadowVariants>,
   StyleProps<typeof hoverState>,
   WithChildrenProp {
-    bg?: Colors;
     pattern?: React.ComponentType<PatternProps>;
   }
 
@@ -117,8 +145,7 @@ const StaticCardContent = styled(Background)<CardContentProps>(
   hoverState
 );
 
-
-export const Card: React.FC<CardContentProps> = ({
+export const CardWrapper: React.FC<CardContentProps> = ({
   children,
   variant='default',
   shadow ='none',
@@ -151,3 +178,40 @@ export const Card: React.FC<CardContentProps> = ({
     </CardContent>
   );
 };
+
+export interface CardProps extends CardContentProps {
+  href?: string;
+  onClick?: () => void;
+}
+
+export const Card: React.FC<CardProps> = ({
+  href = "",
+  onClick,
+  children,
+  variant='default',
+  shadow ='none',
+  pattern: Pattern = CheckerDense,
+}) => {
+//   const CardContent = <CardWrapper variant={variant} shadow={shadow} isInteractive={Boolean(href)} pattern={Pattern} >
+//   {children}
+// </CardWrapper>
+  const isInteractive = Boolean(href);
+  if(href) {
+    return (
+      <AnchorWrapper
+        variant='interface'
+        href={href}
+        onClick={onClick}
+        hoverState={shadow === 'patternRight' ? 'hoverRight' : 'default'}
+        // hoverState='hoverRight'
+      >
+         <CardWrapper variant={variant} shadow={shadow} isInteractive={isInteractive} pattern={Pattern}>
+          {children}
+        </CardWrapper>
+      </AnchorWrapper>
+    )
+  }
+  return ( <CardWrapper variant={variant} shadow={shadow} isInteractive={Boolean(href)} pattern={Pattern} >
+  {children}
+</CardWrapper>)
+}
