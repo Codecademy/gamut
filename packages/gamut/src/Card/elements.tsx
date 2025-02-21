@@ -37,7 +37,6 @@ export const CardWrapper: React.FC<CardWrapperProps> = ({
   shadow = 'none',
   isInteractive = false,
   pattern: Pattern = CheckerDense,
-  // isHovering,
   ...rest
 }) => {
   const CardWrapper =

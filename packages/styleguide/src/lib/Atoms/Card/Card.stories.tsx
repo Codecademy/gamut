@@ -1,4 +1,4 @@
-import { Anchor, Box, Card, FlexBox } from '@codecademy/gamut';
+import { Box, Card, FlexBox } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -217,17 +217,17 @@ export const CardLink: Story = {
       <FlexBox row gap={16} p={24} border={1}>
         <Box flexGrow={1}>
           <Card variant="white" shadow="none" href="/">
-            White with patternRight
+            Has a Link and no shadow
           </Card>
         </Box>
         <Box flexGrow={1}>
           <Card variant="yellow" shadow="patternLeft" href="/">
-            Yellow with patternRight
+            Has a Link and patternLeft
           </Card>
         </Box>
         <Box flexGrow={1}>
           <Card variant="beige" shadow="outline" href="/">
-            Beige with patternRight
+            Has a Link and outline
           </Card>
         </Box>
       </FlexBox>
@@ -235,81 +235,18 @@ export const CardLink: Story = {
         <FlexBox row gap={16} p={24} border={1}>
           <Box flexGrow={1}>
             <Card variant="navy" shadow="patternLeft" href="/">
-              Navy with patternRight
+              Has a Link and patternLeft
             </Card>
           </Box>
           <Box flexGrow={1}>
             <Card variant="hyper" shadow="patternRight" href="/">
-              Hyper with patternRight
+              Has a Link and patternRight
             </Card>
           </Box>
         </FlexBox>
       </Background>
     </FlexBox>
   ),
-};
-
-export const Yellow: Story = {
-  args: {
-    variant: 'yellow',
-  },
-};
-
-export const Navy: Story = {
-  args: {
-    variant: 'navy',
-  },
-};
-
-export const Hyper: Story = {
-  args: {
-    variant: 'hyper',
-  },
-};
-
-export const Beige: Story = {
-  args: {
-    variant: 'beige',
-  },
-};
-
-export const PatternLeftShadow: Story = {
-  args: {
-    shadow: 'patternLeft',
-  },
-};
-
-export const PatternRightShadow: Story = {
-  args: {
-    shadow: 'patternRight',
-    href: 'https://www.codecademy.com',
-  },
-};
-
-export const OutlineShadow: Story = {
-  args: {
-    shadow: 'outline',
-  },
-};
-
-export const OutlineShadowColor: Story = {
-  args: {
-    shadow: 'outline',
-    variant: 'yellow',
-    href: 'https://www.codecademy.com',
-  },
-};
-
-export const Link: Story = {
-  render: (args) => (
-    <Anchor variant="interface">
-      <Card {...args} />
-    </Anchor>
-  ),
-  args: {
-    shadow: 'medium',
-    isInteractive: true,
-  },
 };
 
 export const Dynamic: Story = {
