@@ -23,21 +23,51 @@ export const parameters = {
 
 <ComponentHeader {...parameters} />
 
+#### PatternLeft
+Setting `shadow = "patternLeft"` will apply a pattern bottom and left sides of the Card. By default, the pattern used is `CheckerDense`, but you can pass in a different pattern using the `pattern` prop.
+
+<Canvas of={CardStories.ShadowPatternLeft} />
+
 ## Usage
 
 Use Card to present different types of information in a visually appealing way.
 
 ## Variants
 
-### White
+### Backgrounds
 
-<Canvas of={CardStories.White} />
+#### Default
+When a Card is not provided a `variant`, i.e. it uses the `'default'` variant and it will use the `'background'` color token — this color token is <LinkTo id="Foundations/ColorMode">ColorMode</LinkTo> responsive.
 
-### Yellow
+<Canvas of={CardStories.Dynamic} />
 
-<Canvas of={CardStories.Yellow} />
+#### White, Yellow, and Biege
+The `'white'`, `'yellow'`, and `'beige'` variants are used to apply static background colors to the Card. These colors are intended to work when the Card is used inside a "light mode" background.
 
-### Navy
+<Canvas of={CardStories.StaticLight} />
+
+### Navy and Hyper
+The `'navy'` and `'hyper'` variants are used to apply static background colors to the Card. These colors are intended to work when the Card is used inside a "dark mode" background.
+
+<Canvas of={CardStories.StaticDark} />
+
+### Shadow
+Cards can also take on a `shadow` variant that applies an additional styling to the bottom and left/right sides of the card.
+
+
+#### None
+By default, or when setting `shadow = "none"`, there is no shadow/pattern applied to the card.
+
+<Canvas of={CardStories.ShadowNone} />
+
+#### Outline
+Setting `shadow = "outline"` will apply a shadow to the bottom and left sides of the Card that takes on the color and border color of the Card.
+
+<Canvas of={CardStories.ShadowOutline} />
+
+
+
+#### PatternRight
 
 <Canvas of={CardStories.Navy} />
 

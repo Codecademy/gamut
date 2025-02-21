@@ -33,6 +33,8 @@ export const CardWrapper: React.FC<CardWrapperProps> = ({
   pattern: Pattern = CheckerDense,
   ...rest
 }) => {
+  console.log('pattern is', Pattern);
+  console.log('shadow is', shadow);
   const CardWrapper = variant === 'default' ? DynamicCardWrapper : StaticCardWrapper;
   return (
     <CardWrapper
@@ -40,9 +42,10 @@ export const CardWrapper: React.FC<CardWrapperProps> = ({
       variant={variant}
       shadow={shadow}
       isInteractive={isInteractive}
+      position='relative'
+      zIndex={1}
       {...rest}
     >
-      {children}
       { (shadow === 'patternLeft' || shadow === 'patternRight') &&
         <Pattern
           dimensions={1}
@@ -50,9 +53,10 @@ export const CardWrapper: React.FC<CardWrapperProps> = ({
           top=".5rem"
           left={shadow === 'patternLeft' ? '-0.5rem' : undefined}
           right={shadow === 'patternRight' ? '-0.5rem' : undefined}
-          zIndex={-1}
+          // zIndex={-1}
         />
       }
+      {children}
     </CardWrapper>
   );
 };

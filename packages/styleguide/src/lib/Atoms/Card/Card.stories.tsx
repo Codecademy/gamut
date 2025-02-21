@@ -1,4 +1,4 @@
-import { Anchor, Card, Column, LayoutGrid } from '@codecademy/gamut';
+import { Anchor, Box, Card, FlexBox } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -16,11 +16,184 @@ export const Default: Story = {
   args: {},
 };
 
-export const White: Story = {
-  args: {
-    variant: 'white',
-  },
-};
+
+export const StaticLight: Story = {
+  render: () => (
+    <Background bg="white">
+      <FlexBox row gap={16} p={16} border={1}>
+        <Box flexGrow={1}>
+          <Card variant="white">
+            White variant
+          </Card>
+        </Box>
+        <Box flexGrow={1}>
+          <Card variant="yellow">
+            Yellow variant
+          </Card>
+        </Box>
+        <Box flexGrow={1}>
+          <Card variant="beige">
+            Beige variant
+          </Card>
+        </Box>
+      </FlexBox>
+    </Background>
+  ),
+}
+
+export const StaticDark: Story = {
+  render: () => (
+    <Background bg="navy">
+      <FlexBox row gap={16} p={16} border={1}>
+        <Box flexGrow={1}>
+          <Card variant="navy">
+            Navy variant
+          </Card>
+        </Box>
+        <Box flexGrow={1}>
+          <Card variant="hyper">
+            Hyper variant
+          </Card>
+        </Box>
+      </FlexBox>
+    </Background>
+  ),
+}
+
+export const ShadowNone: Story = {
+  render: () => (
+    <FlexBox column>
+      <FlexBox p={16} border={1}>
+        <Box flexGrow={1}>
+          <Card>
+            Default variant
+          </Card>
+        </Box>
+      </FlexBox>
+      <FlexBox row gap={16} p={16} border={1}>
+        <Box flexGrow={1}>
+          <Card variant="white">
+            White variant
+          </Card>
+        </Box>
+        <Box flexGrow={1}>
+          <Card variant="yellow">
+            Yellow variant
+          </Card>
+        </Box>
+        <Box flexGrow={1}>
+          <Card variant="beige">
+            Beige variant
+          </Card>
+        </Box>
+      </FlexBox>
+      <Background bg="navy">
+        <FlexBox row gap={16} p={16} border={1}>
+          <Box flexGrow={1}>
+            <Card variant="navy">
+              Navy variant
+            </Card>
+          </Box>
+          <Box flexGrow={1}>
+            <Card variant="hyper">
+              Hyper variant
+            </Card>
+          </Box>
+        </FlexBox>
+      </Background>
+    </FlexBox>
+  ),
+}
+
+export const ShadowOutline: Story = {
+  render: () => (
+    <FlexBox column>
+      <FlexBox p={24} border={1}>
+        <Box flexGrow={1}>
+          <Card shadow="outline">
+            Default with outline
+          </Card>
+        </Box>
+      </FlexBox>
+      <FlexBox row gap={16} p={24} border={1}>
+        <Box flexGrow={1}>
+          <Card variant="white" shadow="outline">
+            White with outline
+          </Card>
+        </Box>
+        <Box flexGrow={1}>
+          <Card variant="yellow" shadow="outline">
+            Yellow with outline
+          </Card>
+        </Box>
+        <Box flexGrow={1}>
+          <Card variant="beige" shadow="outline">
+            Beige with outline
+          </Card>
+        </Box>
+      </FlexBox>
+      <Background bg="navy">
+        <FlexBox row gap={16} p={24} border={1}>
+          <Box flexGrow={1}>
+            <Card variant="navy" shadow="outline">
+              Navy with outline
+            </Card>
+          </Box>
+          <Box flexGrow={1}>
+            <Card variant="hyper" shadow="outline">
+              Hyper with outline
+            </Card>
+          </Box>
+        </FlexBox>
+      </Background>
+    </FlexBox>
+  ),
+}
+
+export const ShadowPatternLeft: Story = {
+  render: () => (
+    <FlexBox column>
+      <FlexBox p={24} border={1}>
+        <Box flexGrow={1}>
+          <Card shadow="patternLeft">
+            Default with patternLeft
+          </Card>
+        </Box>
+      </FlexBox>
+      <FlexBox row gap={16} p={24} border={1}>
+        <Box flexGrow={1}>
+          <Card variant="white" shadow="patternLeft">
+            White with patternLeft
+          </Card>
+        </Box>
+        <Box flexGrow={1}>
+          <Card variant="yellow" shadow="patternLeft">
+            Yellow with patternLeft
+          </Card>
+        </Box>
+        <Box flexGrow={1}>
+          <Card variant="beige" shadow="patternLeft">
+            Beige with patternLeft
+          </Card>
+        </Box>
+      </FlexBox>
+      <Background bg="navy">
+        <FlexBox row gap={16} p={24} border={1}>
+          <Box flexGrow={1}>
+            <Card variant="navy" shadow="patternLeft">
+              Navy with patternLeft
+            </Card>
+          </Box>
+          <Box flexGrow={1}>
+            <Card variant="hyper" shadow="patternLeft">
+              Hyper with patternLeft
+            </Card>
+          </Box>
+        </FlexBox>
+      </Background>
+    </FlexBox>
+  ),
+}
 
 export const Yellow: Story = {
   args: {
@@ -87,35 +260,26 @@ export const Link: Story = {
 
 export const Dynamic: Story = {
   render: () => (
-    <LayoutGrid>
-      <Column size={6}>
-        <Background
-          p={32}
-          bg="navy"
-          borderColor="black"
-          border={1}
-          display="grid"
-          gridTemplateColumns="repeat(3, 1fr)"
-        >
-          <Card height="100%" shadow="small">
-            <Anchor variant={false}>Click Me!</Anchor>
-          </Card>
-        </Background>
-      </Column>
-      <Column size={6}>
-        <Background
-          p={32}
-          bg="white"
-          borderColor="black"
-          border={1}
-          display="grid"
-          gridTemplateColumns="repeat(3, 1fr)"
-        >
-          <Card height="100%" shadow="small">
-            <Anchor variant={false}>Click Me!</Anchor>
-          </Card>
-        </Background>
-      </Column>
-    </LayoutGrid>
+    <FlexBox row>
+      <Background
+        p={32}
+        bg="white"
+        border={1}
+        flexGrow={1}
+      >
+        <Card>
+          Lookie here, a default variant in light mode!
+        </Card>
+      </Background>
+      <Background
+        p={32}
+        bg="navy"
+        flexGrow={1}
+      >
+        <Card>
+          Lookie here, a default variant in dark mode!
+        </Card>
+      </Background>
+    </FlexBox>
   ),
 };
