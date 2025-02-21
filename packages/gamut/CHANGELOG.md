@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [59.0.10](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.9...@codecademy/gamut@59.0.10) (2025-02-20)
+
+### Bug Fixes
+
+- **Overlay:** updating shroud to be a static color ([f3bebc8](https://github.com/Codecademy/gamut/commit/f3bebc834aa781376ac571b636e155923c486832))
+
 ### [59.0.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.8...@codecademy/gamut@59.0.9) (2025-02-19)
 
 **Note:** Version bump only for package @codecademy/gamut
