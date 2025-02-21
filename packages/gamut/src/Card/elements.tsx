@@ -3,10 +3,11 @@ import { Background ,
   Colors,
 } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import { useEffect, useState } from 'react';
 
 import { Anchor } from '../Anchor';
 import { Box } from '../Box';
-import { cardAnchorVariants, cardVariants, hoverState, shadowVariants } from './styles';
+import { cardAnchorVariants, cardVariants, hoverState, patternHoverState, shadowVariants } from './styles';
 import { CardAnchorProps, CardWrapperProps } from './types';
 
 export const AnchorWrapper = styled(Anchor)<CardAnchorProps>(
@@ -25,39 +26,57 @@ export const StaticCardWrapper = styled(Background)<CardWrapperProps>(
   hoverState
 );
 
+export const PatternWrapper = styled(Box)(
+  patternHoverState
+)
+
 export const CardWrapper: React.FC<CardWrapperProps> = ({
   children,
   variant='default',
   shadow ='none',
   isInteractive=false,
   pattern: Pattern = CheckerDense,
+  // isHovering,
   ...rest
 }) => {
-  console.log('pattern is', Pattern);
-  console.log('shadow is', shadow);
   const CardWrapper = variant === 'default' ? DynamicCardWrapper : StaticCardWrapper;
+
+  const [isHovering, setIsHovering] = useState(false);
+  const handleMouseOver = () => {
+    setTimeout(() => {
+      setIsHovering(true);
+    }, 100);
+  }
+  const handleMouseLeave = () => {
+    setTimeout(() => {
+      setIsHovering(false);
+    }, 100);
+  }
+
+  const hasPattern = shadow === 'patternLeft' || shadow === 'patternRight'
+  const showPattern = hasPattern && (isInteractive && !isHovering);
   return (
-    <CardWrapper
-      bg={variant !== 'default' ? variant as Colors : 'white'}
-      variant={variant}
-      shadow={shadow}
-      isInteractive={isInteractive}
-      position='relative'
-      zIndex={1}
-      {...rest}
-    >
-      { (shadow === 'patternLeft' || shadow === 'patternRight') &&
+    <Box dimensions={1} position='relative' onMouseOver={handleMouseOver}
+    onMouseLeave={handleMouseLeave}>
+      { showPattern &&
         <Pattern
           dimensions={1}
           position="absolute"
           top=".5rem"
           left={shadow === 'patternLeft' ? '-0.5rem' : undefined}
           right={shadow === 'patternRight' ? '-0.5rem' : undefined}
-          // zIndex={-1}
         />
       }
-      {children}
-    </CardWrapper>
+      <CardWrapper
+        bg={variant !== 'default' ? variant as Colors : 'white'}
+        variant={variant}
+        shadow={shadow}
+        isInteractive={isInteractive}
+        {...rest}
+      >
+        {children}
+      </CardWrapper>
+    </Box>
   );
 };
 

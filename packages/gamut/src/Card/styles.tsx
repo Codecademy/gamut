@@ -51,10 +51,18 @@ export const shadowVariants = variant({
 export const hoverState = states({
   isInteractive: {
     '&:hover': {
-      transition: 'box-shadow 200ms ease, ',
-      boxShadow: `0px 0px 0px ${theme.colors['shadow-primary']}`,
+      transition: 'box-shadow 200ms ease',
+      boxShadow: `0px 0px ${theme.colors['shadow-primary']}`,
     },
   },
+})
+
+export const patternHoverState = states({
+  hidePattern: {
+    [ButtonSelectors.HOVER]: {
+      display: 'none'
+    }
+  }
 })
 
 export const cardAnchorVariants = variant({
@@ -74,7 +82,7 @@ export const cardAnchorVariants = variant({
     },
     hoverRight: {
       [ButtonSelectors.HOVER]: {
-        transform: 'translate(4px, 4px)',
+        transform: 'translate(-4px, -4px)',
         boxShadow: `8px 8px 0 ${theme.colors['shadow-primary']}`,
         transition: 'box-shadow 200ms ease, transform 200ms ease',
       },

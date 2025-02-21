@@ -10,6 +10,7 @@ export interface CardWrapperProps
   StyleProps<typeof hoverState>,
   WithChildrenProp {
     pattern?: React.ComponentType<PatternProps>;
+    isHovering?: boolean;
   }
 
 export interface CardProps extends CardWrapperProps {

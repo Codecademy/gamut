@@ -195,6 +195,90 @@ export const ShadowPatternLeft: Story = {
   ),
 }
 
+export const ShadowPatternRight: Story = {
+  render: () => (
+    <FlexBox column>
+      <FlexBox p={24} border={1}>
+        <Box flexGrow={1}>
+          <Card shadow="patternRight">
+            Default with patternRight
+          </Card>
+        </Box>
+      </FlexBox>
+      <FlexBox row gap={16} p={24} border={1}>
+        <Box flexGrow={1}>
+          <Card variant="white" shadow="patternRight">
+            White with patternRight
+          </Card>
+        </Box>
+        <Box flexGrow={1}>
+          <Card variant="yellow" shadow="patternRight">
+            Yellow with patternRight
+          </Card>
+        </Box>
+        <Box flexGrow={1}>
+          <Card variant="beige" shadow="patternRight">
+            Beige with patternRight
+          </Card>
+        </Box>
+      </FlexBox>
+      <Background bg="navy">
+        <FlexBox row gap={16} p={24} border={1}>
+          <Box flexGrow={1}>
+            <Card variant="navy" shadow="patternRight">
+              Navy with patternRight
+            </Card>
+          </Box>
+          <Box flexGrow={1}>
+            <Card variant="hyper" shadow="patternRight">
+              Hyper with patternRight
+            </Card>
+          </Box>
+        </FlexBox>
+      </Background>
+    </FlexBox>
+  ),
+}
+
+export const CardLink: Story = {
+  render: () => (
+    <FlexBox column>
+      <FlexBox row gap={16} p={24} border={1}>
+        <Box flexGrow={1}>
+          <Card variant="white" shadow="none" href="/">
+            White with patternRight
+          </Card>
+        </Box>
+        <Box flexGrow={1}>
+          <Card variant="yellow" shadow="patternLeft" href="/">
+            Yellow with patternRight
+          </Card>
+        </Box>
+        <Box flexGrow={1}>
+          <Card variant="beige" shadow="outline" href="/">
+            Beige with patternRight
+          </Card>
+        </Box>
+      </FlexBox>
+      <Background bg="navy">
+        <FlexBox row gap={16} p={24} border={1}>
+          <Box flexGrow={1}>
+            <Card variant="navy" shadow="patternLeft" href="/">
+              Navy with patternRight
+            </Card>
+          </Box>
+          <Box flexGrow={1}>
+            <Card variant="hyper" shadow="patternRight" href="/">
+              Hyper with patternRight
+            </Card>
+          </Box>
+        </FlexBox>
+      </Background>
+    </FlexBox>
+  ),
+}
+
+
 export const Yellow: Story = {
   args: {
     variant: 'yellow',

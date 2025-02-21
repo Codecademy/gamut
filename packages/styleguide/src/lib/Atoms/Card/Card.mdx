@@ -23,11 +23,6 @@ export const parameters = {
 
 <ComponentHeader {...parameters} />
 
-#### PatternLeft
-Setting `shadow = "patternLeft"` will apply a pattern bottom and left sides of the Card. By default, the pattern used is `CheckerDense`, but you can pass in a different pattern using the `pattern` prop.
-
-<Canvas of={CardStories.ShadowPatternLeft} />
-
 ## Usage
 
 Use Card to present different types of information in a visually appealing way.
@@ -37,7 +32,7 @@ Use Card to present different types of information in a visually appealing way.
 ### Backgrounds
 
 #### Default
-When a Card is not provided a `variant`, i.e. it uses the `'default'` variant and it will use the `'background'` color token — this color token is <LinkTo id="Foundations/ColorMode">ColorMode</LinkTo> responsive.
+When a Card's `variant` prop isn't set, or it's set to `'default'` it will use the `'background'` color token — this color token is <LinkTo id="Foundations/ColorMode">ColorMode</LinkTo> responsive.
 
 <Canvas of={CardStories.Dynamic} />
 
@@ -65,46 +60,22 @@ Setting `shadow = "outline"` will apply a shadow to the bottom and left sides of
 
 <Canvas of={CardStories.ShadowOutline} />
 
+#### PatternLeft
+Setting `shadow = "patternLeft"` will apply a pattern bottom and left sides of the Card. By default, the pattern used is `CheckerDense`, but you can pass in a different pattern using the `pattern` prop.
 
+<Canvas of={CardStories.ShadowPatternLeft} />
 
 #### PatternRight
+Setting `shadow = "patternRight"` works like `"patternLeft"` but applies the pattern to the bottom and right sides of the Card. You may also change the `pattern` used.
 
-<Canvas of={CardStories.Navy} />
+<Canvas of={CardStories.ShadowPatternRight} />
 
-### Hyper
+### As a link
+Cards can be used as links by providing an `href` prop. These Cards can also accept an `onClick` prop that accepts a function. Stylistically, these Cards will have a hover effect that adds a shadow to the card.
 
-<Canvas of={CardStories.Hyper} />
 
-### Beige
+<Canvas of={CardStories.CardLink} />
 
-<Canvas of={CardStories.Beige} />
-
-## Shadow variants
-
-### Small
-
-<Canvas of={CardStories.PatternLeftShadow} />
-
-### Medium
-
-<Canvas of={CardStories.PatternRightShadow} />
-
-### Outline
-
-The outline color will inherit the color of the card.
-
-<Canvas of={CardStories.OutlineShadow} />
-<Canvas of={CardStories.OutlineShadowColor} />
-
-## As link
-
-<Canvas of={CardStories.Link} />
-
-## ColorMode as default
-
-Card elements respond to the current <LinkTo id="Foundations/ColorMode">ColorMode</LinkTo> they are used in. Note that their background color will match the background of their context and secondary colors are used for their hover effect. As these are not the typical inverse effects we utilize in color mode, please check with your design team before use.
-
-<Canvas of={CardStories.Dynamic} />
 
 ## Playground
 
