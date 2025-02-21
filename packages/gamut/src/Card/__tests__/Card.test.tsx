@@ -15,6 +15,6 @@ describe('Card', () => {
   it('renders as a link when given an href', () => {
     const { view } = renderView({ href: 'https://www.codecademy.com' });
 
-    view.getByRole('link', { name: cardText })
+    view.getByRole('link', { name: cardText });
   });
 });
