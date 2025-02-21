@@ -54,7 +54,7 @@ export const CardWrapper: React.FC<CardWrapperProps> = ({
   }
 
   const hasPattern = shadow === 'patternLeft' || shadow === 'patternRight'
-  const showPattern = hasPattern && (isInteractive && !isHovering);
+  const showPattern = (hasPattern && !isInteractive) || hasPattern && (isInteractive && !isHovering);
   return (
     <Box dimensions={1} position='relative' onMouseOver={handleMouseOver}
     onMouseLeave={handleMouseLeave}>
