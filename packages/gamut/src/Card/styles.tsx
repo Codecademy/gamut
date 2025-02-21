@@ -1,4 +1,4 @@
-import { states, theme, variant } from "@codecademy/gamut-styles";
+import { states, theme, variant } from '@codecademy/gamut-styles';
 
 import { ButtonSelectors } from '../ButtonBase/ButtonBase';
 
@@ -9,21 +9,21 @@ export const cardVariants = variant({
     borderRadius: 'md',
     p: 16,
     color: 'text',
-    maxWidth: "100%",
-    position: "relative"
+    maxWidth: '100%',
+    position: 'relative',
   },
   variants: {
     default: {
       bg: 'background',
     },
     white: {
-      bg: 'white'
+      bg: 'white',
     },
     yellow: {
-      bg: 'yellow'
+      bg: 'yellow',
     },
     beige: {
-      bg: 'beige'
+      bg: 'beige',
     },
     navy: {
       bg: 'navy',
@@ -31,8 +31,8 @@ export const cardVariants = variant({
     hyper: {
       bg: 'hyper',
     },
-  }
-})
+  },
+});
 
 export const shadowVariants = variant({
   defaultVariant: 'none',
@@ -44,9 +44,9 @@ export const shadowVariants = variant({
     outline: {
       boxShadow: `-6px 6px ${theme.colors['background-current']}, -6px 6px 0 1px ${theme.colors['border-primary']}`,
       transition: 'box-shadow 200ms ease, transform 200ms ease',
-    }
-  }
-})
+    },
+  },
+});
 
 export const hoverState = states({
   isInteractive: {
@@ -55,15 +55,15 @@ export const hoverState = states({
       boxShadow: `0px 0px ${theme.colors['shadow-primary']}`,
     },
   },
-})
+});
 
 export const patternHoverState = states({
   hidePattern: {
     [ButtonSelectors.HOVER]: {
-      display: 'none'
-    }
-  }
-})
+      display: 'none',
+    },
+  },
+});
 
 export const cardAnchorVariants = variant({
   prop: 'hoverState',
@@ -86,6 +86,6 @@ export const cardAnchorVariants = variant({
         boxShadow: `8px 8px 0 ${theme.colors['shadow-primary']}`,
         transition: 'box-shadow 200ms ease, transform 200ms ease',
       },
-    }
-  }
-})
+    },
+  },
+});

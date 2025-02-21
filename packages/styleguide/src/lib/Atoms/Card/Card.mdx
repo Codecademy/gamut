@@ -32,50 +32,56 @@ Use Card to present different types of information in a visually appealing way.
 ### Backgrounds
 
 #### Default
+
 When a Card's `variant` prop isn't set, or it's set to `'default'` it will use the `'background'` color token — this color token is <LinkTo id="Foundations/ColorMode">ColorMode</LinkTo> responsive.
 
 <Canvas of={CardStories.Dynamic} />
 
 #### White, Yellow, and Biege
+
 The `'white'`, `'yellow'`, and `'beige'` variants are used to apply static background colors to the Card. These colors are intended to work when the Card is used inside a "light mode" background.
 
 <Canvas of={CardStories.StaticLight} />
 
 ### Navy and Hyper
+
 The `'navy'` and `'hyper'` variants are used to apply static background colors to the Card. These colors are intended to work when the Card is used inside a "dark mode" background.
 
 <Canvas of={CardStories.StaticDark} />
 
 ### Shadow
+
 Cards can also take on a `shadow` variant that applies an additional styling to the bottom and left/right sides of the card.
 
-
 #### None
+
 By default, or when setting `shadow = "none"`, there is no shadow/pattern applied to the card.
 
 <Canvas of={CardStories.ShadowNone} />
 
 #### Outline
+
 Setting `shadow = "outline"` will apply a shadow to the bottom and left sides of the Card that takes on the color and border color of the Card.
 
 <Canvas of={CardStories.ShadowOutline} />
 
 #### PatternLeft
+
 Setting `shadow = "patternLeft"` will apply a pattern bottom and left sides of the Card. By default, the pattern used is `CheckerDense`, but you can pass in a different pattern using the `pattern` prop.
 
 <Canvas of={CardStories.ShadowPatternLeft} />
 
 #### PatternRight
+
 Setting `shadow = "patternRight"` works like `"patternLeft"` but applies the pattern to the bottom and right sides of the Card. You may also change the `pattern` used.
 
 <Canvas of={CardStories.ShadowPatternRight} />
 
 ### As a link
+
 Cards can be used as links by providing an `href` prop. These Cards can also accept an `onClick` prop that accepts a function. Stylistically, these Cards will have a hover effect that adds a shadow to the card.
 
-
 <Canvas of={CardStories.CardLink} />
-
 
 ## Playground
 
