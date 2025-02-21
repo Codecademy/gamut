@@ -6,7 +6,6 @@ const meta: Meta<typeof Card> = {
   component: Card,
   args: {
     children: 'Hello world I am a Card',
-    p: 16,
   },
 };
 
