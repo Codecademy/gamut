@@ -55,9 +55,9 @@ export const CardWrapper: React.FC<CardWrapperProps> = ({
   };
 
   const hasPattern = shadow === 'patternLeft' || shadow === 'patternRight';
-  const showPattern =
-    (hasPattern && !isInteractive) ||
-    (hasPattern && isInteractive && !isHovering);
+  const isInteractiveNotHovering = isInteractive && !isHovering
+  const showPattern = hasPattern && (!isInteractive || isInteractiveNotHovering)
+
   return (
     <Box
       dimensions={1}

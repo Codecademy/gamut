@@ -217,17 +217,17 @@ export const CardLink: Story = {
       <FlexBox row gap={16} p={24} border={1}>
         <Box flexGrow={1}>
           <Card variant="white" shadow="none" href="/">
-            Has a Link and no shadow
+            Link and no shadow
           </Card>
         </Box>
         <Box flexGrow={1}>
           <Card variant="yellow" shadow="patternLeft" href="/">
-            Has a Link and patternLeft
+            Link and patternLeft
           </Card>
         </Box>
         <Box flexGrow={1}>
           <Card variant="beige" shadow="outline" href="/">
-            Has a Link and outline
+            Link and outline
           </Card>
         </Box>
       </FlexBox>
@@ -235,12 +235,12 @@ export const CardLink: Story = {
         <FlexBox row gap={16} p={24} border={1}>
           <Box flexGrow={1}>
             <Card variant="navy" shadow="patternLeft" href="/">
-              Has a Link and patternLeft
+              Link and patternLeft
             </Card>
           </Box>
           <Box flexGrow={1}>
             <Card variant="hyper" shadow="patternRight" href="/">
-              Has a Link and patternRight
+              Link and patternRight
             </Card>
           </Box>
         </FlexBox>
