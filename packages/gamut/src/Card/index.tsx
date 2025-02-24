@@ -17,26 +17,7 @@ export const Card: React.FC<CardProps> = ({
 }) => {
   const isInteractive = Boolean(href);
 
-  if (isInteractive) {
-    return (
-      <AnchorWrapper
-        variant="interface"
-        href={href}
-        onClick={onClick}
-        hoverState={shadow === 'patternRight' ? 'hoverRight' : 'default'}
-      >
-        <CardWrapper
-          variant={variant}
-          shadow={shadow}
-          isInteractive={isInteractive}
-          pattern={pattern}
-        >
-          {children}
-        </CardWrapper>
-      </AnchorWrapper>
-    );
-  }
-  return (
+  const cardWrapper = (
     <CardWrapper
       variant={variant}
       shadow={shadow}
@@ -45,5 +26,23 @@ export const Card: React.FC<CardProps> = ({
     >
       {children}
     </CardWrapper>
+  )
+
+  if (isInteractive) {
+    return (
+      <AnchorWrapper
+        variant="interface"
+        href={href}
+        onClick={onClick}
+        hoverState={shadow === 'patternRight' ? 'hoverRight' : 'default'}
+      >
+        {cardWrapper}
+      </AnchorWrapper>
+    );
+  }
+  return (
+    <>
+      {cardWrapper}
+    </>
   );
 };
