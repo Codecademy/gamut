@@ -57,7 +57,7 @@ export const InlineIcons: Story = {
         TextButton
       </TextButton>
     </FlexBox>
-  )
+  ),
 };
 
 const buttons = [FillButton, IconButton, StrokeButton, TextButton] as const;
