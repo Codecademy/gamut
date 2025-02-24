@@ -31,7 +31,12 @@ export const InlineIconButton = forwardRef<
     },
     ref
   ) => {
-    const content = appendIconToContent({ iconPosition, icon, iconSize:16, children });
+    const content = appendIconToContent({
+      iconPosition,
+      icon,
+      iconSize: 16,
+      children,
+    });
     return (
       <Button {...props} variant={variant} ref={ref}>
         {content}
