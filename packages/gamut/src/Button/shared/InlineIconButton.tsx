@@ -34,7 +34,7 @@ export const InlineIconButton = forwardRef<
     const content = appendIconToContent({
       iconPosition,
       icon,
-      iconSize: 16,
+      iconSize: props.size === 'small' ? 12 : 16,
       children,
     });
     return (

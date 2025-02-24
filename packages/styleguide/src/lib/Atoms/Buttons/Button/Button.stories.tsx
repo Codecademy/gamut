@@ -1,6 +1,7 @@
 import {
   Box,
   FillButton,
+  FlexBox,
   GridBox,
   IconButton,
   StrokeButton,
@@ -39,9 +40,9 @@ export const Secondary: Story = {
   },
 };
 
-const InlineIconsExample = () => {
-  return (
-    <GridBox gridTemplateColumns="1fr 1fr 1fr 3fr">
+export const InlineIcons: Story = {
+  render: () => (
+    <FlexBox row gap={16}>
       <FillButton maxWidth="fit-content" icon={MiniArrowLeftIcon}>
         FillButton
       </FillButton>
@@ -55,12 +56,8 @@ const InlineIconsExample = () => {
       >
         TextButton
       </TextButton>
-    </GridBox>
-  );
-};
-
-export const InlineIcons: Story = {
-  render: () => <InlineIconsExample />,
+    </FlexBox>
+  )
 };
 
 const buttons = [FillButton, IconButton, StrokeButton, TextButton] as const;
