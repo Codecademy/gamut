@@ -17,13 +17,13 @@ import { CardAnchorProps, CardWrapperProps } from './types';
 export const AnchorWrapper =
   styled(Anchor)<CardAnchorProps>(cardAnchorVariants);
 
-export const DynamicCardWrapper = styled(Box, styledOptions)<CardWrapperProps>(
+export const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
   cardVariants,
   shadowVariants,
   hoverState
 );
 
-export const StaticCardWrapper = styled(Background, styledOptions)<CardWrapperProps>(
+export const StaticCardWrapper = styled(Background)<CardWrapperProps>(
   cardVariants,
   shadowVariants,
   hoverState
