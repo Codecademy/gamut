@@ -1,9 +1,12 @@
-import { Box, FeatureShimmer } from '@codecademy/gamut';
+import { FeatureShimmer } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof FeatureShimmer> = {
   component: FeatureShimmer,
-  args: {},
+  args: {
+    bg: 'beige',
+    height: '144px',
+  },
 };
 
 export default meta;
@@ -13,9 +16,5 @@ export const Default: Story = {
   args: {
     children: 'This is a test',
   },
-  render: (args) => (
-    <Box bg="beige">
-      <FeatureShimmer {...args} />
-    </Box>
-  ),
+  render: (args) => <FeatureShimmer {...args} />,
 };

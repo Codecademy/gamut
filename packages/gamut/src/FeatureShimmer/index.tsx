@@ -7,13 +7,14 @@ import { Box, BoxProps } from '../Box';
 const BaseContainer = motion.create(Box);
 const Shimmer = styled(BaseContainer)(
   css({
-    width: '100px',
-    height: '144px',
+    height: 'calc(100% + 20px)',
+    width: 'calc(100% / 7)',
     position: 'absolute',
     transform: 'rotate(30deg)',
     filter: 'blur(25px)',
     left: '-100%',
-    bg: 'blue',
+    top: 0,
+    bg: 'white-400',
   })
 );
 
@@ -35,21 +36,21 @@ export const FeatureShimmer: React.FC<BoxProps> = ({ children, ...rest }) => {
         py={16}
         animate={{
           backgroundColor: 'transparent',
-          border: 0,
+          borderColor: 'transparent',
         }}
         transition={{
-          ease: 'fadeOut',
+          ease: 'easeOut',
           duration: 0.3,
-          delay: 3,
+          delay: 4,
         }}
       >
         <Shimmer
           animate={{
-            left: '100%',
+            left: '110%', // extra % to account for rotation
           }}
           transition={{
             ease: 'easeInOut',
-            duration: 1,
+            duration: 2,
             delay: 2,
           }}
         />
