@@ -19,14 +19,13 @@ export const AnchorWrapper =
 export const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
   cardVariants,
   shadowVariants,
-  hoverState,
+  hoverState
 );
 
-export const StaticCardWrapper = styled(Background, styledOptions)<CardWrapperProps>(
-  cardVariants,
-  shadowVariants,
-  hoverState,
-);
+export const StaticCardWrapper = styled(
+  Background,
+  styledOptions
+)<CardWrapperProps>(cardVariants, shadowVariants, hoverState);
 
 // const PatternWrapper = styled(Box)(patternHoverState);
 
@@ -54,8 +53,9 @@ export const CardWrapper: React.FC<CardWrapperProps> = ({
   };
 
   const hasPattern = shadow === 'patternLeft' || shadow === 'patternRight';
-  const isInteractiveNotHovering = isInteractive && !isHovering
-  const showPattern = hasPattern && (!isInteractive || isInteractiveNotHovering)
+  const isInteractiveNotHovering = isInteractive && !isHovering;
+  const showPattern =
+    hasPattern && (!isInteractive || isInteractiveNotHovering);
 
   return (
     <Box

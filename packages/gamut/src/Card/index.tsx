@@ -28,7 +28,7 @@ export const Card: React.FC<CardProps> = ({
     >
       {children}
     </CardWrapper>
-  )
+  );
 
   if (isInteractive) {
     return (
@@ -42,9 +42,5 @@ export const Card: React.FC<CardProps> = ({
       </AnchorWrapper>
     );
   }
-  return (
-    <>
-      {cardWrapper}
-    </>
-  );
+  return <>{cardWrapper}</>;
 };
