@@ -9,7 +9,6 @@ import {
   cardAnchorVariants,
   cardVariants,
   hoverState,
-  patternHoverState,
   shadowVariants,
 } from './styles';
 import { CardAnchorProps, CardWrapperProps } from './types';
@@ -20,16 +19,16 @@ export const AnchorWrapper =
 export const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
   cardVariants,
   shadowVariants,
-  hoverState
+  hoverState,
 );
 
-export const StaticCardWrapper = styled(Background)<CardWrapperProps>(
+export const StaticCardWrapper = styled(Background, styledOptions)<CardWrapperProps>(
   cardVariants,
   shadowVariants,
-  hoverState
+  hoverState,
 );
 
-export const PatternWrapper = styled(Box)(patternHoverState);
+// const PatternWrapper = styled(Box)(patternHoverState);
 
 export const CardWrapper: React.FC<CardWrapperProps> = ({
   children,
@@ -39,7 +38,7 @@ export const CardWrapper: React.FC<CardWrapperProps> = ({
   pattern: Pattern = CheckerDense,
   ...rest
 }) => {
-  const CardWrapper =
+  const SelectedWrapper =
     variant === 'default' ? DynamicCardWrapper : StaticCardWrapper;
 
   const [isHovering, setIsHovering] = useState(false);
@@ -74,7 +73,7 @@ export const CardWrapper: React.FC<CardWrapperProps> = ({
           right={shadow === 'patternRight' ? '-0.5rem' : undefined}
         />
       )}
-      <CardWrapper
+      <SelectedWrapper
         bg={variant !== 'default' ? (variant as Colors) : 'white'}
         variant={variant}
         shadow={shadow}
@@ -82,7 +81,7 @@ export const CardWrapper: React.FC<CardWrapperProps> = ({
         {...rest}
       >
         {children}
-      </CardWrapper>
+      </SelectedWrapper>
     </Box>
   );
 };

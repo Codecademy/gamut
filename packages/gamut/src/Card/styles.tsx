@@ -57,13 +57,13 @@ export const hoverState = states({
   },
 });
 
-export const patternHoverState = states({
-  hidePattern: {
-    [ButtonSelectors.HOVER]: {
-      display: 'none',
-    },
-  },
-});
+// export const patternHoverState = states({
+//   hidePattern: {
+//     [ButtonSelectors.HOVER]: {
+//       display: 'none',
+//     },
+//   },
+// });
 
 export const cardAnchorVariants = variant({
   prop: 'hoverState',
