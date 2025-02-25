@@ -26,7 +26,7 @@ export const StaticCardWrapper = styled(
   Background
 )<CardWrapperProps>(cardVariants, shadowVariants, hoverState);
 
-// const PatternWrapper = styled(Box)(patternHoverState);
+// export const PatternWrapper = styled(Box)(patternHoverState);
 
 export const CardWrapper: React.FC<CardWrapperProps> = ({
   children,
