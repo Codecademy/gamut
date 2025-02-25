@@ -1,5 +1,5 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
-import { Background, Colors } from '@codecademy/gamut-styles';
+import { Background, Colors, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 
@@ -17,13 +17,13 @@ import { CardAnchorProps, CardWrapperProps } from './types';
 export const AnchorWrapper =
   styled(Anchor)<CardAnchorProps>(cardAnchorVariants);
 
-export const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
+export const DynamicCardWrapper = styled(Box, styledOptions)<CardWrapperProps>(
   cardVariants,
   shadowVariants,
   hoverState
 );
 
-export const StaticCardWrapper = styled(Background)<CardWrapperProps>(
+export const StaticCardWrapper = styled(Background, styledOptions)<CardWrapperProps>(
   cardVariants,
   shadowVariants,
   hoverState
