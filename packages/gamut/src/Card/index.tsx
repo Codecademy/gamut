@@ -14,6 +14,7 @@ export const Card: React.FC<CardProps> = ({
   variant = 'default',
   shadow = 'none',
   pattern,
+  ...rest
 }) => {
   const isInteractive = Boolean(href);
 
@@ -23,6 +24,7 @@ export const Card: React.FC<CardProps> = ({
       shadow={shadow}
       isInteractive={isInteractive}
       pattern={pattern}
+      {...rest}
     >
       {children}
     </CardWrapper>
