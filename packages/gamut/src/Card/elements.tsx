@@ -1,5 +1,5 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
-import { Background, Colors, styledOptions } from '@codecademy/gamut-styles';
+import { Background, Colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 
@@ -23,8 +23,7 @@ export const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
 );
 
 export const StaticCardWrapper = styled(
-  Background,
-  styledOptions
+  Background
 )<CardWrapperProps>(cardVariants, shadowVariants, hoverState);
 
 // const PatternWrapper = styled(Box)(patternHoverState);
@@ -74,11 +73,12 @@ export const CardWrapper: React.FC<CardWrapperProps> = ({
         />
       )}
       <SelectedWrapper
+        {...rest}
         bg={variant !== 'default' ? (variant as Colors) : 'white'}
         variant={variant}
         shadow={shadow}
         isInteractive={isInteractive}
-        {...rest}
+
       >
         {children}
       </SelectedWrapper>

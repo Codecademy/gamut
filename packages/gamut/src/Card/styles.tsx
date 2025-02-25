@@ -6,7 +6,7 @@ export const cardVariants = variant({
   defaultVariant: 'default',
   base: {
     border: 1,
-    borderRadius: 'md',
+    borderRadius: 'none',
     p: 16,
     color: 'text',
     maxWidth: '100%',
@@ -50,6 +50,7 @@ export const shadowVariants = variant({
 
 export const hoverState = states({
   isInteractive: {
+    borderRadius: 'md',
     '&:hover': {
       transition: 'box-shadow 200ms ease',
       boxShadow: `0px 0px ${theme.colors['shadow-primary']}`,
