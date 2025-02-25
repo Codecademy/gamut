@@ -18,6 +18,7 @@ export * from './ContentContainer';
 export * from './Disclosure';
 export * from './DataList';
 export * from './Drawer';
+export * from './FloatingCard/FloatingCard';
 export * from './Flyout';
 export * from './FocusTrap';
 export * from './Form';
