@@ -1,0 +1,110 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as CheckboxStories from './Checkbox.stories';
+
+export const parameters = {
+  subtitle:
+    'A `<input type="checkbox" />` element for handling boolean values.',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/inputs/Checkbox.tsx',
+  },
+};
+
+<Meta of={CheckboxStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use Checkbox to handle boolean values within forms.
+
+Our Checkboxes are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state and onChange, for example:
+
+<Canvas of={CheckboxStories.ControlledCheckbox} />
+
+```tsx
+import { Checkbox, CheckboxProps, FormGroup } from '@codecademy/gamut';
+import React, { ChangeEvent, useState } from 'react';
+
+type CustomCheckboxProps = Omit<CheckboxProps, 'checked'> & {
+  defaultChecked?: boolean;
+  errorMessage?: string;
+};
+
+const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
+  htmlFor,
+  label,
+  defaultChecked = false,
+  errorMessage,
+  disabled,
+  ...rest
+}) => {
+  const [currentChecked, setCurrentChecked] = useState(defaultChecked);
+
+  const changeHandler = (event: ChangeEvent<HTMLElement>) => {
+    setCurrentChecked(!currentChecked);
+  };
+
+  return (
+    <FormGroup htmlFor={htmlFor} error={errorMessage} disabled={disabled}>
+      <Checkbox
+        htmlFor={htmlFor}
+        onChange={changeHandler}
+        label={label}
+        disabled={disabled}
+        checked={currentChecked}
+        {...rest}
+      />
+    </FormGroup>
+  );
+};
+```
+
+## Input states
+
+### Unchecked
+
+<Canvas of={CheckboxStories.Unchecked} />
+
+### Checked
+
+<Canvas of={CheckboxStories.Checked} />
+
+### Disabled
+
+<Canvas of={CheckboxStories.Disabled} />
+
+### Checked and Disabled
+
+<Canvas of={CheckboxStories.CheckedAndDisabled} />
+
+### Multiline
+
+<Canvas of={CheckboxStories.Multiline} />
+
+## Spacing variants
+
+If you need to checkboxes to fit into a smaller space, you can use our `tight` spacing prop for checkboxes that are a bit closer together.
+
+<Canvas of={CheckboxStories.SpacingTight} />
+
+## Labels as ReactNodes
+
+To ensure our `Checkboxes` are accessible, we require an `aria-label` be added if a `ReactNode` is set as the label.
+
+<Canvas of={CheckboxStories.LabelsAsReactNodes} />
+
+## Playground
+
+<Canvas sourceState="shown" of={CheckboxStories.Default} />
+
+<Controls />

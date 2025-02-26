@@ -4,7 +4,8 @@ import {
   EarthIcon,
 } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
-import { fireEvent, queryByAttribute } from '@testing-library/dom';
+import { fireEvent } from '@testing-library/dom';
+import { act } from 'react';
 
 import { SelectDropdown } from '../SelectDropdown';
 
@@ -65,13 +66,12 @@ const renderView = setupRtl(SelectDropdown, {
 
 const DOWN_ARROW = { keyCode: 40 };
 
-const openDropdown = (view: ReturnType<typeof renderView>['view']) =>
-  fireEvent.keyDown(view.getByRole('combobox'), DOWN_ARROW);
-
-const getById = queryByAttribute.bind(null, 'id');
-
-const getMenuList = (view: ReturnType<typeof renderView>['view']) =>
-  getById(view.container, /listbox/)?.firstChild;
+const openDropdown = async (view: ReturnType<typeof renderView>['view']) => {
+  await act(() => {
+    fireEvent.keyDown(view.getByRole('combobox'), DOWN_ARROW);
+    return Promise.resolve();
+  });
+};
 
 describe('SelectDropdown', () => {
   it('sets the id prop on the select tag', () => {
@@ -83,10 +83,10 @@ describe('SelectDropdown', () => {
   it.each([
     ['array', selectOptions],
     ['object', selectOptionsObject],
-  ])('renders options when options is an %s', (_, options) => {
+  ])('renders options when options is an %s', async (_, options) => {
     const { view } = renderView({ options });
 
-    openDropdown(view);
+    await openDropdown(view);
 
     view.getByText('green');
   });
@@ -106,59 +106,62 @@ describe('SelectDropdown', () => {
     view.getByTitle('Arrow Chevron Down Icon');
   });
 
-  it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', () => {
+  it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', async () => {
     const { view } = renderView({ shownOptionsLimit: 4 });
 
-    openDropdown(view);
+    await openDropdown(view);
 
-    const menuList = getMenuList(view);
-
-    expect(menuList).toHaveStyle({ maxHeight: '12rem' });
+    expect(view.getByRole('listbox')).toHaveStyle({ maxHeight: '12rem' });
   });
-
-  it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified + size is "small"', () => {
+  it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified + size is "small"', async () => {
     const { view } = renderView({
       size: 'small',
       shownOptionsLimit: 4,
     });
 
-    openDropdown(view);
+    await openDropdown(view);
 
-    const menuList = getMenuList(view);
-
-    expect(menuList).toHaveStyle({ maxHeight: '8rem' });
+    expect(view.getByRole('listbox')).toHaveStyle({ maxHeight: '8rem' });
   });
 
-  it('renders a dropdown with icons', () => {
+  it('renders a dropdown with icons', async () => {
     const { view } = renderView({ options: optionsIconsArray });
 
-    openDropdown(view);
+    await openDropdown(view);
 
     optionsIconsArray.forEach((icon) => expect(view.getByTitle(icon.label)));
   });
 
-  it('function passed to onInputChanges is called on input change', () => {
+  it('function passed to onInputChanges is called on input change', async () => {
     const onInputChange = jest.fn();
     const { view } = renderView({ onInputChange });
 
-    openDropdown(view);
+    await openDropdown(view);
 
-    fireEvent.click(view.getByText('red'));
+    await act(() => {
+      fireEvent.click(view.getByText('red'));
+      return Promise.resolve();
+    });
 
     expect(onInputChange).toHaveBeenCalled();
   });
 
-  it('renders selected & multiple items when passed multiple: true', () => {
+  it('renders selected & multiple items when passed multiple: true', async () => {
     const { view } = renderView({ multiple: true });
 
     const numSelectedItems = 2;
 
-    [...Array(numSelectedItems)].forEach(() => {
-      openDropdown(view);
-      // fireEvent.click(view.getByText('red'));
-      // openDropdown(view);
-      fireEvent.click(view.getByText('green'));
+    const multiple = selectOptions.map(async (opt) => {
+      await openDropdown(view);
+
+      const option = await view.findByText(opt);
+      await act(() => {
+        fireEvent.click(option);
+        return Promise.resolve();
+      });
     });
+
+    await Promise.all(multiple);
 
     selectOptions
       .slice(0, numSelectedItems)

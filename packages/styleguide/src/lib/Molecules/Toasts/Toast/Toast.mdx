@@ -1,0 +1,73 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as ToastStories from './Toast.stories';
+
+export const parameters = {
+  subtitle: `A toast component for asynchronous user feedback containing lower priority, decorative and celebratory user feedback.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1086-0&m=dev',
+  },
+  status: 'updating',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Toast/Toast.tsx',
+  },
+};
+
+<Meta of={ToastStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+- Can be used when an immediate feedback is needed for learners upon completing a learning task. (E.g. unlocking an achievement during learning)
+- Should NOT repeat messages that are recieved in the notification bell.
+- Appears at the bottom right of the screen.
+- Slides in to the screen and when canceled, slides back and leaves the screen.
+
+### Styling
+
+- Has a fixed width
+- Height changes depends on the body-text length.
+- Max. 3 rows of body-text is recommended.
+- Has variants, and colored different for light and dark theme.
+- Uses pattern at 80% opacity to give component depth.
+
+### Best practices:
+
+- Only one should appear at the screen at a time.
+- Toasts shouldn’t distract from learning. Be hesitant to use them in the Learning Environment, especially for messages that can be communicated outside of the LE.
+
+## Variants
+
+### Icons
+
+Icons can either be URLs or React nodes:
+
+- Images will be sized correctly by default and resolved as a background image.
+- If you choose to use a custom element you must cofigure the content to be the correct width (64x64) and fit within the containing circle manually.
+
+<Canvas of={ToastStories.Icons} />
+
+### Content
+
+Toasts can have other content internal to each section like links or icons.
+
+<Canvas of={ToastStories.Content} />
+
+## Playground
+
+<Canvas sourceState="shown" of={ToastStories.Default} />
+
+<Controls />
+
+## UX writing
+
+When writing copy for a toast, Keep it brief, ensure the message is personal and relevant, and avoid distracting from the learning experience. Refer to the checklist below for guidance. To learn more, check out the full <LinkTo id="ux-writing-component-guidelines-toasts--page">writing guide about toasts</LinkTo>.
+
+- Keep toast copy to 3 lines (including the title).
+- Ensure the messaging is relevant to all learners that will see it.

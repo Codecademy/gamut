@@ -8,19 +8,6 @@ const black = '#000000';
 const white = '#ffffff';
 const navy = '#10162F';
 
-const effects = {
-  shadow: {
-    black: {
-      slight: rgba(black, 0.15),
-      heavy: rgba(black, 0.75),
-    },
-    white: {
-      slight: rgba(white, 0.15),
-      heavy: rgba(white, 0.95),
-    },
-  },
-};
-
 export const coreSwatches = {
   beige: {
     '100': '#FFF0E5',
@@ -66,6 +53,7 @@ export const coreSwatches = {
     '600': '#BE1809',
   },
   orange: {
+    '100': '#FFE8CC',
     '500': '#FF8C00',
   },
   hyper: {
@@ -114,7 +102,6 @@ export const trueColors = {
 
 export const corePalette = {
   ...flattenScale(coreSwatches),
-  ...flattenScale(effects),
   ...trueColors,
 } as const;
 

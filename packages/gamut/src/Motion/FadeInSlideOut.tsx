@@ -2,8 +2,8 @@ import { timingValues } from '@codecademy/gamut-styles';
 import { motion } from 'framer-motion';
 import * as React from 'react';
 
-import { WithChildrenProp } from '..';
 import { Box } from '../Box';
+import { WithChildrenProp } from '../utils';
 
 const exitDuration = timingValues.fast / 1000;
 
@@ -25,7 +25,7 @@ const motionVariants = {
   },
 };
 
-const BaseContainer = motion(Box);
+const BaseContainer = motion.create(Box);
 
 export const FadeInSlideOut: React.FC<WithChildrenProp> = ({ children }) => (
   <BaseContainer

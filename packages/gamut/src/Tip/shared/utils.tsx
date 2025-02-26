@@ -1,8 +1,11 @@
+import { timingValues } from '@codecademy/gamut-styles';
+
 import { PopoverProps } from '../../Popover';
 import {
   bottomCenterStylesAfter,
   bottomStyles,
   bottomStylesAfter,
+  bottomStylesBefore,
   centerStyles,
   centerStylesAfter,
   leftStyles,
@@ -12,8 +15,23 @@ import {
   topCenterStylesAfter,
   topStyles,
   topStylesAfter,
+  topStylesBefore,
 } from './styles';
-import { TipPlacementComponentProps } from './types';
+import { TipPlacementComponentProps, TipWrapperProps } from './types';
+
+export const runWithDelay = (func: () => void) => {
+  return setTimeout(func, timingValues?.base);
+};
+
+export const getAlignmentWidths = ({
+  alignment,
+  avatar,
+  type,
+}: Pick<TipWrapperProps, 'alignment' | 'avatar' | 'type'>) => {
+  if (avatar) return 'avatarAligned';
+  if (type === 'preview') return 'previewAligned';
+  return alignment.includes('center') ? 'centered' : 'aligned';
+};
 
 export const getPopoverAlignment = ({
   alignment = 'top-left',
@@ -46,13 +64,16 @@ export const getPopoverAlignment = ({
 export const createToolTipVariantFromAlignment = (alignment: string) => {
   let styleObject = {};
   let styleObjectAfter = {};
+  let styleObjectBefore = {};
 
   if (alignment.includes('top')) {
     styleObject = { ...topStyles };
     styleObjectAfter = { ...topStylesAfter };
+    styleObjectBefore = { ...topStylesBefore };
   } else {
     styleObject = { ...bottomStyles };
     styleObjectAfter = { ...bottomStylesAfter };
+    styleObjectBefore = { ...bottomStylesBefore };
   }
 
   if (alignment.includes('center')) {
@@ -71,7 +92,11 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
     styleObjectAfter = { ...styleObjectAfter, ...leftStylesAfter };
   }
 
-  return { ...styleObject, '&::after': styleObjectAfter };
+  return {
+    ...styleObject,
+    '&::after': styleObjectAfter,
+    '&::before': styleObjectBefore,
+  };
 };
 
 export const createVariantsFromAlignments = (

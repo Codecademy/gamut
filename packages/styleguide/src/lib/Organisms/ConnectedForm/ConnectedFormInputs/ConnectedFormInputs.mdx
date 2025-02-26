@@ -1,0 +1,117 @@
+import { Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as ConnectedFormInputsStories from './ConnectedFormInputs.stories';
+import { ConnectedFormInputsTable } from './ConnectedFormInputsTable';
+
+export const parameters = {
+  subtitle: `Different form inputs for the ConnectedForm component.`,
+  status: 'updating',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/ConnectedForm/ConnectedInputs/index.ts',
+  },
+};
+
+<Meta of={ConnectedFormInputsStories} />
+
+<ComponentHeader {...parameters} />
+
+## Input types
+
+We have a selection of `ConnectedInput` components that are visually identical to their un-connected <LinkTo id='Atoms/FormInputs'>FormInput</LinkTo> counterparts. Please reference the links below for component-specific prop and styling configuration:
+
+<ConnectedFormInputsTable />
+
+### ConnectedRadioGroupInput
+
+`ConnectedRadioGroupInput` is the exception to the rule, and has some props that differ, particularly `options` — which takes an array of `ConnectedBaseRadioInputProps` components.
+
+For further styling configurations, check out <LinkTo id="Atoms/FormInputs/Radio">RadioGroup</LinkTo>.
+
+`ConnectedRadioGroup` and `ConnectedRadio` should rarely, if ever, be used outside of `ConnectedRadioGroupInput`.
+
+## Usage
+
+The components are engineered to be passed into the component prop of <LinkTo id="Organisms/ConnectedForm/ConnectedFormGroup">ConnectedFormGroup</LinkTo>, like so:
+
+```tsx
+<ConnectedFormGroup
+  name="badRadioGroup"
+  label="cool radio group dude"
+  field={{
+    component: ConnectedRadioGroupInput,
+    // Type error, these options are not formatted correctly.
+    options: ['one', 'two', 'zero'],
+  }}
+/>
+
+<ConnectedFormGroup
+  name="goodRadioGroup"
+  label="cool radio group dude"
+  field={{
+    component: ConnectedRadioGroupInput,
+    // Perfection 🙌
+    options: [
+      { label: 'one', value: 'one' },
+      { label: 'two', value: 'two' },
+      { label: 'zero', value: 'zero' },
+    ],
+  }}
+/>
+```
+
+Use outside of `ConnectedFormGroup` removes much of the accessibility and type-safety built into these components.
+
+## Delaying updates to ConnectedForm
+
+On forms with many nested and/or array-like fields, it can be useful for performance reasons to delay updating the form state until the user has finished updating a field (rather than, for example, on every keystroke in a text input).
+
+To faciliate this, developers can use the `useDebouncedField` hook, which connects to `ConnectedForm` the same way that the `useField` hook or a `ConnectedInput` does internally, but delays the `setValue` call until the user has blurred focus on the input.
+
+```tsx
+// DebouncedInput.tsx
+import { Input } from '@codecademy/gamut'
+
+export const DebouncedInput: React.FC<...> = ({ name }) => {
+  const { onChange, onBlur, value } = useDebouncedField({ name, type: 'text' })
+
+  return (
+    <Input
+      name={name}
+      type="text"
+      onChange={onChange}
+      onBlur={onBlur}
+      value={value}
+      htmlFor={name}
+    />
+  )
+}
+
+// FormPage.tsx
+import { ConnectedForm } from '@codecademy/gamut'
+import { DebouncedInput } from './DebouncedInput'
+
+enum FieldNames {
+  favoriteXFilesEpisode = 'favoriteXFilesEpisode'
+}
+
+export const FormPage: React.FC = () => {
+  reutrn (
+    <ConnectedForm
+      defaultValues={{
+        [FieldNames.favoriteXFilesEpisode]: 'Bad Blood'
+      }}
+      onSubmit={() => ...}
+    >
+      <DebouncedInput
+        name={FieldNames.favoriteXFilesEpisode}
+      />
+    </ConnectedForm>
+  )
+}
+```
+
+`useDebouncedField` should not be used with any varaint of the standard `ConnectedInput`, as it will clash with the default `useField` instance used internally by those components.

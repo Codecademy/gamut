@@ -1,0 +1,114 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, ImageWrapper, LinkTo } from '~styleguide/blocks';
+
+import * as MenuStories from './Menu.stories';
+
+export const parameters = {
+  subtitle: `The Menu component with MenuItem and MenuSeparator subcomponents.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=30420-41119&m=dev',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Menu/Menu.tsx',
+  },
+};
+
+<Meta of={MenuStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use a Menu to organize and present a list of actions, options, or navigation links.
+
+### Components
+
+- `Menu`: An unordered list that defines the structure and style of its constituents. Menus are nestable and keep track of their configuration and depth through the MenuContext.
+- `MenuItem`: A clickable list item that renders as a link or a clickable `li` element if a href is specified.
+- `MenuSeparator`: A semantic element for separating `li` items visually. This element will not display if used outside of `action` menus.
+
+### Best practices:
+
+- The Popover menu has the `menu` role by default, which is intended for presenting actions or options. However, if it contains only navigation links, it should use the `<nav>` element for semantic and accessible navigation.
+- You can create floating menus by utilizing our <LinkTo id="Atoms/PopoverContainer">PopoverContainer</LinkTo>. Once you have your base positioning, you just need to adjust the y axis by 48 for the normal spacing or 32 for the condensed spacing for each of the MenuItems. You may also need to change the alignment of the PopoverContainer to ensure correct positioning.
+
+### When NOT to use:
+
+- Form Inputs - For selecting from a predefined set of choices within a form, use the SelectDropdown component.
+- Expandable Menus - For organizing multiple collapsible sections of navigation links in a structured layout, use the LayoutMenu component.
+- Switching between content - For toggling between multiple related views or content sections within the same context, use the Tabs component.
+
+## Anatomy
+
+<ImageWrapper src="./molecules/menuAnatomy.png" alt="Menu Anatomy diagram" />
+
+1. Leading Icon (optional)
+
+- Use to visually reinforce the purpose of a menu item, improve scannability, or differentiate between actions.
+
+2. Label
+
+- Limit to 1-3 words.
+- For actions, use a verb that clearly explains what will happen.
+- When the menu item is linking to information, use a noun.
+- Keep the same word form for each grouping. (For example, all nouns or all verbs.)
+- Order and group by meaning or alphabetically.
+- Avoid placing words that look the same (for example, that start with the exact same letters) adjacent to one another.
+
+3. Menu separator (optional)
+
+- Use to group menu items into sections when there is a significant number of items, making lengthy menus easier to scan and navigate.
+
+## Variants
+
+### Popover
+
+Use the Popover menu to present a temporary surface for actions, options, or links, ensuring access only when needed while keeping the interface clean and focused. The Popover menu has the `menu` role by default. But, if the menu contains only a list of navigation links, it should be nested in a `<nav>` element, which implicitly includes the `navigation` role.
+
+<Canvas of={MenuStories.Popover} />
+
+### Fixed
+
+Use the Fixed menu to provide persistent access to navigation links, allowing users to seamlessly move between sections of the interface without opening additional surfaces. Fixed menus should always use the `<nav>` element to ensure semantic and accessible navigation.
+
+<Canvas of={MenuStories.Fixed} />
+
+## Spacing variants
+
+Setting the Menu's `spacing` to `'condensed'` will reduce the padding around the MenuItems.
+
+### Popover condensed
+
+<Canvas of={MenuStories.PopoverCondensed} />
+
+### Fixed condensed
+
+<Canvas of={MenuStories.FixedCondensed} />
+
+## Menu separator
+
+Use the `MenuSeparator` component to group menu items into sections when there is a significant number of items, making lengthy menus easier to scan and navigate.
+
+<Canvas of={MenuStories.PopoverMenuSeparator} />
+<Canvas of={MenuStories.FixedMenuSeparator} />
+
+## Floating menus
+
+You can create floating menus by utilizing our <LinkTo id="Atoms/PopoverContainer">PopoverContainer</LinkTo>. Once you have your base positioning, you just need to adjust the y axis by 48 for the normal spacing or 32 for the condensed spacing for each of the MenuItems. You may also need to change the alignment of the PopoverContainer to ensure correct positioning.
+
+Floating menus that have complex functionalities or actions, like the example below, should have the menu role.
+
+Click through each item to see how the `Menu`s appear (and disappear when the item is clicked again, or another item is selected.)
+
+<Canvas of={MenuStories.FloatingMenuExample} />
+
+## Playground
+
+<Canvas sourceState="shown" of={MenuStories.Default} />
+
+<Controls />

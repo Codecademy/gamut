@@ -1,0 +1,126 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as ConnectedFormStories from './ConnectedForm.stories';
+
+export const parameters = {
+  subtitle: `A flexible way to build forms.`,
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/ConnectedForm/ConnectedForm.tsx',
+  },
+};
+
+<Meta of={ConnectedFormStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+`ConnectedForm` is an organism designed to create flexible forms with all of the reliability of <LinkTo id='Organisms/GridForm'>GridForm</LinkTo> but without the strict grid structure.
+
+### Components
+
+- `ConnectedForm`: A <LinkTo id='Atoms/FormElements/Form'>Form</LinkTo> that provides context to all `Connected` components.
+- `ConnectedFormGroup`: <LinkTo id='Atoms/FormElements/FormGroup'>FormGroups</LinkTo> that use the context provided by `ConnectedForm` for error and disabled states.
+- `ConnectedFormInputs`: <LinkTo id='Atoms/FormInputs'>FormInputs</LinkTo> the use the context provided by `ConnectedForm` for field registration and validation as well as required and disabled states. Should be used through `ConnectedFormGroup`.
+- `SubmitButton`: A submit type <LinkTo id='Atoms/Buttons'>Button</LinkTo> that uses the context provided by `ConnectedForm` for loading and disabled states.
+
+### Utilities
+
+The primary access pattern of `ConnectedForm` is the `useConnectedForm` hook which composes a typesafe version of `ConnectedForm` + `ConnectedFormGroup` from the `defaultValues` passed to it - catching errors before the development enviroment is even started.
+
+Each of your fields' names must correspond with the appropriate `defaultValue` key. `validationRules` operates similarly - each key must correspond to a key in `defaultValue` and must follow [react-hook-form's](https://react-hook-form.com) [validation patterns](https://react-hook-form.com/v6/api#register).
+
+This hook also returns the `FormRequiredText` component - include this before your form unless all of your form fields are optional.
+
+### Example code
+
+```tsx
+import {
+  ConnectedCheckbox,
+  ConnectedInput,
+  ConnectedSelect,
+  useConnectedForm,
+} from '@codecademy/gamut';
+
+import { TerminalIcon } from '@codecademy/gamut-icons';
+
+export const GoodForm = () => {
+  const {
+    ConnectedFormGroup,
+    ConnectedForm,
+    connectedFormProps,
+    FormRequiredText,
+  } = useConnectedForm({
+    defaultValues: {
+      thisField: true,
+      thatField: 'zero',
+      anotherField: 'state your name.',
+    },
+    validationRules: {
+      thisField: { required: 'you need to check this.' },
+      thatField: {
+        pattern: {
+          value: /^(?:(?!zero).)*$/,
+          message: 'literally anything but zero',
+        },
+      },
+    },
+  });
+
+  return (
+    <ConnectedForm
+      onSubmit={({ thisField }) => console.log(thisField)}
+      resetOnSubmit
+      {...connectedFormProps}
+    >
+      <SubmitButton>submit this form.</SubmitButton>
+      <ConnectedFormGroup
+        name="thisField"
+        label="cool checkbox bruh"
+        field={{
+          component: ConnectedCheckbox,
+          label: 'check it ouuut',
+        }}
+      />
+      <ConnectedFormGroup
+        name="thatField"
+        label="cool select dude"
+        field={{
+          component: ConnectedSelect,
+          options: ['one', 'two', 'zero'],
+        }}
+      />
+      <ConnectedFormGroup
+        name="anotherField"
+        label="cool input"
+        field={{
+          component: ConnectedInput,
+          icon: TerminalIcon,
+        }}
+      />
+      <FormRequiredText />
+    </ConnectedForm>
+  );
+};
+```
+
+## Variants
+
+### `watchedFields`
+
+If you need the values of your inputs before submission, for something like conditionally generating different inputs, you can also pass in a `watchedFields` object. This takes in an array of names of fields to watch and a `watchHandler ` function which will be run `onChange` of your watchedField. This function should take an array of the return values of the inputs in the order the names are passed in to the `fields` props.
+
+Watched fields aren't usually great for performance, so only use these fields when you need to.
+
+<Canvas of={ConnectedFormStories.WatchedFields} />
+
+## Playground
+
+<Canvas sourceState="shown" of={ConnectedFormStories.Default} />
+
+<Controls />

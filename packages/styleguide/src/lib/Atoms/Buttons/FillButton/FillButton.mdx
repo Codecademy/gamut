@@ -1,0 +1,33 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as FillButtonStories from './FillButton.stories';
+
+export const parameters = {
+  subtitle: `A button that has a solid background color and is used for primary actions.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Button/FillButton.tsx',
+  },
+};
+
+<Meta of={FillButtonStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use this for primary actions. Include a leading or trailing icons from our mini icon set to clarify an action.
+
+## Playground
+
+<Canvas sourceState="shown" of={FillButtonStories.Default} />
+
+<Controls />

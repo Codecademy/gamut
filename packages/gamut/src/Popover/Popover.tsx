@@ -5,6 +5,7 @@ import { useWindowScroll, useWindowSize } from 'react-use';
 import { FocusTrap } from '../FocusTrap';
 import {
   Beak,
+  BeakBox,
   PatternContainer,
   PopoverContainer,
   PopoverPortal,
@@ -169,23 +170,19 @@ export const Popover: React.FC<PopoverProps> = ({
         alignment={alignment}
         outline={outline ? 'outline' : 'boxShadow'}
         variant={variant}
-        widthRestricted={
-          variant === 'secondary'
-            ? alignment === 'centered'
-              ? 'centered'
-              : 'aligned'
-            : widthRestricted
-            ? 'popover'
-            : 'default'
-        }
+        widthRestricted={widthRestricted}
       >
         {beak && (
-          <Beak
-            outline={outline ? 'outline' : 'boxShadow'}
-            beak={`${position}-${beak}${variant === 'secondary' ? '-sml' : ''}`}
-            data-testid="popover-beak"
-            size={variant === 'secondary' ? 'sml' : 'lrg'}
-          />
+          <BeakBox variant={position}>
+            <Beak
+              beak={`${position}-${beak}${
+                variant === 'secondary' ? '-sml' : ''
+              }`}
+              data-testid="popover-beak"
+              size={variant === 'secondary' ? 'sml' : 'lrg'}
+              hasBorder={outline || variant === 'secondary'}
+            />
+          </BeakBox>
         )}
         {children}
       </RaisedDiv>

@@ -3,7 +3,8 @@ import { fireEvent, queries } from '@testing-library/dom';
 import { act, RenderResult, waitFor } from '@testing-library/react';
 
 import { createPromise } from '../../utils';
-import { GridForm, GridFormField } from '..';
+import { GridForm } from '../GridForm';
+import { GridFormField } from '../types';
 import {
   stubCheckboxField,
   stubFieldCases,
@@ -105,10 +106,10 @@ const getBaseCases = (view: RenderResult<typeof queries, HTMLElement>) => {
     name: 'Check me!',
   }) as HTMLInputElement;
   const selectField = view.getByRole('combobox', {
-    name: 'Stub Select',
+    name: /Stub Select/,
   }) as HTMLInputElement;
   const textField = view.getByRole('textbox', {
-    name: 'Stub Text',
+    name: /Stub Text/,
   }) as HTMLInputElement;
   return { checkboxField, selectField, textField };
 };
@@ -151,9 +152,8 @@ describe('GridForm', () => {
     const { view } = renderView({ onSubmit });
     const { checkboxField, selectField, textField } = getBaseCases(view);
 
-    doBaseFormActions(selectField, textField, checkboxField);
-
     await act(async () => {
+      doBaseFormActions(selectField, textField, checkboxField);
       fireEvent.submit(view.getByRole('button'));
 
       await api.innerPromise;
@@ -257,7 +257,7 @@ describe('GridForm', () => {
         },
       });
 
-      const textField = view.getByRole('textbox', { name: 'Stub Text' });
+      const textField = view.getByRole('textbox', { name: /Stub Text/ });
 
       await act(async () => {
         fireEvent.input(textField, {
@@ -284,7 +284,7 @@ describe('GridForm', () => {
         validation: 'onChange',
       });
 
-      const textField = view.getByRole('textbox', { name: 'Stub Text' });
+      const textField = view.getByRole('textbox', { name: /Stub Text/ });
 
       await act(async () => {
         fireEvent.input(textField, {
@@ -491,12 +491,14 @@ describe('GridForm', () => {
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
 
-      const { view } = renderView({ onSubmit, disableFieldsOnSubmit: true });
+      const { view } = await asyncRenderView({
+        onSubmit,
+        disableFieldsOnSubmit: true,
+      });
       const { checkboxField, selectField, textField } = getBaseCases(view);
 
-      doBaseFormActions(selectField, textField, checkboxField);
-
       await act(async () => {
+        doBaseFormActions(selectField, textField, checkboxField);
         fireEvent.submit(view.getByRole('button'));
       });
 
@@ -534,12 +536,11 @@ describe('GridForm', () => {
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
 
-      const { view } = renderView({ onSubmit, resetOnSubmit: true });
+      const { view } = await asyncRenderView({ onSubmit, resetOnSubmit: true });
       const { checkboxField, selectField, textField } = getBaseCases(view);
 
-      doBaseFormActions(selectField, textField, checkboxField);
-
       await act(async () => {
+        doBaseFormActions(selectField, textField, checkboxField);
         fireEvent.click(view.getByRole('button'));
       });
       const firstResult = await api.innerPromise;

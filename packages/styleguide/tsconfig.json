@@ -1,25 +1,22 @@
 {
-  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "~styleguide/blocks": [".storybook/components"],
-      "@codecademy/storybook-addon-variance": [
-        ".storybook/addons/system/components"
-      ]
-    },
-    "allowJs": true,
-    "noEmit": true,
-    "declaration": false,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "allowJs": false,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "jsxImportSource": "@emotion/react",
+    "paths": { "~styleguide/blocks": ["./storybook/components/"] }
   },
-  "include": [
-    "../../typings/*.d.ts",
-    "./.storybook/**/*.ts",
-    "./.storybook/**/*.tsx",
-    "./**/*.tsx",
-    "./**/*.ts",
-    "../../packages/gamut-styles/dist/typings/theme.d.ts"
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.storybook.json"
+    }
   ],
-  "exclude": ["jest.config.ts"]
+  "extends": "../../tsconfig.base.json"
 }

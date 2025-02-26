@@ -1,13 +1,12 @@
 import { ComponentProps, useMemo } from 'react';
 
 import { List } from '../List';
-import { DataListControls, IdentifiableKeys } from '.';
 import { EmptyRows } from './EmptyRows';
 import { ListControlContext, useListControls } from './hooks/useListControls';
 import { ListStateContext } from './hooks/useListState';
-import { HeaderRow } from './Rows/HeaderRow';
-import { DataRow, MarshaledColProps } from './Rows/Row';
-import { ColumnConfig } from './types';
+import { HeaderRow } from './Tables/Rows/TableHeaderRow';
+import { DataRow, MarshaledColProps } from './Tables/Rows/TableRow';
+import { ColumnConfig, DataListControls, IdentifiableKeys } from './types';
 
 export interface DataGridProps<
   Row,
@@ -98,6 +97,7 @@ export function DataGrid<
       <ListControlContext.Provider value={listControls}>
         <List
           {...rest}
+          as="table"
           emptyMessage={emptyMessage ?? <EmptyRows />}
           header={
             header ? (

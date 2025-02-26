@@ -7,8 +7,6 @@ import { Box } from '../Box';
 import { Text } from '../Typography';
 
 export type ProgressBarProps = {
-  className?: string;
-
   /**
    * Whether to increase size and display the percentage as text.
    */
@@ -92,11 +90,11 @@ const progressBarBackgroundVariants = variant({
   variants: {
     blue: {
       bg: 'navy',
-      borderColor: 'navy',
+      borderColor: 'border-primary',
     },
     yellow: {
       bg: 'gray-100',
-      borderColor: 'navy',
+      borderColor: 'border-primary',
     },
     default: {},
   },
@@ -151,7 +149,7 @@ const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
   ${progressBarBackgroundVariants};
   ${progressBarSizeVariants};
   ${progressBarBackgroundOverride};
-  ${progressBarFlatVariants}
+  ${progressBarFlatVariants};
 `;
 
 const Bar = styled(Box)(progressBarForegroundVariants);
@@ -172,15 +170,18 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   variant,
 }) => {
   const showBarBorder = percent > 0 || minimumPercent > 0;
+  const id = React.useId();
   return (
     <ProgressBarWrapper
+      aria-labelledby={id}
       aria-live="polite"
+      role="figure"
       flat={flat}
       size={size}
       variant={variant}
       backgroundOverride={Pattern ? 'pattern' : 'none'}
     >
-      <Text as="label" screenreader>{`Progress: ${percent}%`}</Text>
+      <Text as="label" id={id} screenreader>{`Progress: ${percent}%`}</Text>
       {Pattern && <Pattern width="100%" position="absolute" zIndex={0} />}
       <Bar
         variant={variant}

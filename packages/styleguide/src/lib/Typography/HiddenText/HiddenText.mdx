@@ -1,0 +1,36 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as HiddenTextStories from './HiddenText.stories';
+
+export const parameters = {
+  subtitle: `Visually hidden text that should still be narrated by screenreaders.`,
+  status: 'deprecated',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/cass-gm-843/packages/gamut/src/HiddenText/index.tsx#',
+  },
+};
+
+<Meta of={HiddenTextStories} />
+
+<ComponentHeader {...parameters} />
+
+Previously, this was useful for cases where we visually indicate something not easily conveyed through semantic HTML.
+Ideally those cases should be exceedingly rare; unfortunately, some of our older pages aren't set up well for this.
+
+<Callout
+  text={
+    <>
+      For newer pages, use the{' '}
+      <LinkTo id="Typography/Text">Text component</LinkTo> and set{' '}
+      <code>screenreader="true"</code>.
+    </>
+  }
+/>
+
+<Canvas withSource="open" />
+
+<Controls />

@@ -5,7 +5,7 @@ import { HTMLAttributes } from 'react';
 import * as React from 'react';
 
 import { FlexBox } from '../..';
-import { InfoTip, InfoTipProps } from '../../Tip';
+import { InfoTip, InfoTipProps } from '../../Tip/InfoTip';
 import { Text } from '../../Typography/Text';
 import { formBaseStyles, formFieldTextDisabledStyles } from '../styles';
 import { BaseInputProps } from '../types';
@@ -73,11 +73,14 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         as={htmlFor ? 'label' : 'div'}
       >
         {children}
-        {!isSoloField && (
-          <Text as="span" aria-hidden>
-            {required ? '*' : ' \u00A0(optional)'}
-          </Text>
-        )}
+        {!isSoloField &&
+          (required ? (
+            <Text as="span" aria-hidden>
+              *
+            </Text>
+          ) : (
+            '\u00A0(optional)'
+          ))}
       </Label>
       {infotip && <InfoTip {...infotip} />}
     </FlexBox>

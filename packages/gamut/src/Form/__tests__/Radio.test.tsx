@@ -37,7 +37,7 @@ describe('<Radio>', () => {
     view.getByAltText('my cat');
   });
 
-  it('renders an infotip', () => {
+  it('renders an infotip', async () => {
     const info = 'small info';
     const { view } = renderView({
       label: 'label',
@@ -47,7 +47,7 @@ describe('<Radio>', () => {
 
     expect(tip).not.toBeVisible();
 
-    userEvent.click(view.getByRole('button'));
+    await userEvent.click(view.getByRole('button'));
 
     expect(tip).toBeVisible();
   });

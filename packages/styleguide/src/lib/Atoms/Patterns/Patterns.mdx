@@ -1,0 +1,50 @@
+import * as patterns from '@codecademy/gamut-patterns';
+import {
+  Canvas,
+  Controls,
+  IconGallery,
+  IconItem,
+  Meta,
+} from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as PatternsStories from './Patterns.stories';
+
+export const parameters = {
+  subtitle: 'Standard background fill patterns.',
+  status: 'current',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1124%3A1569',
+  },
+  source: {
+    repo: 'gamut-patterns',
+    githubLink:
+      'https://github.com/Codecademy/gamut/tree/main/packages/gamut-patterns/src/svg',
+  },
+};
+
+<Meta of={PatternsStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Patterns are intended to be able to take in a color and any system layout, positioning, and spacing props.
+
+## Playground
+
+<Canvas sourceState="shown" of={PatternsStories.Default} />
+
+<Controls />
+
+## Patterns
+
+<IconGallery>
+  {Object.entries(patterns).map(([patternName, Pattern]) => (
+    <IconItem key={patternName} name={patternName}>
+      <Pattern width="128px" />
+    </IconItem>
+  ))}
+</IconGallery>

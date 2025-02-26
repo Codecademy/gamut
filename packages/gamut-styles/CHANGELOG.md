@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [17.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.5.0...@codecademy/gamut-styles@17.5.1) (2025-02-19)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+## [17.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.4.1...@codecademy/gamut-styles@17.5.0) (2025-02-10)
+
+### Features
+
+- **Colors:** Add new orange weight to colors ([c52cc0e](https://github.com/Codecademy/gamut/commit/c52cc0e774fc64e2b4cbf412e41ca5c4c36792b5))
+
+### [17.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.4.0...@codecademy/gamut-styles@17.4.1) (2025-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+## [17.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.3.0...@codecademy/gamut-styles@17.4.0) (2025-01-14)
+
+### Features
+
+- **borderColors:** adding semantic and colormode compatible colors for borderColor ([5e61c28](https://github.com/Codecademy/gamut/commit/5e61c289ce2eec83ef23d83633aca062247f1f61))
+
+## [17.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.2.0...@codecademy/gamut-styles@17.3.0) (2025-01-09)
+
+### Features
+
+- **fonts:** Prioritize woff2 ([#3003](https://github.com/Codecademy/gamut/issues/3003)) ([4c319c6](https://github.com/Codecademy/gamut/commit/4c319c655dbd473f3db214a812b26860d82986f2))
+
+## [17.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.1.2...@codecademy/gamut-styles@17.2.0) (2024-12-13)
+
+### Features
+
+- Storybook 8 Feature Branch ([300ef37](https://github.com/Codecademy/gamut/commit/300ef37da570c8425f7ac1aed52e87392b44fadf))
+
+### [17.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.1.1...@codecademy/gamut-styles@17.1.2) (2024-12-03)
+
+### Bug Fixes
+
+- **Font:** Load from same origin ([c3b616c](https://github.com/Codecademy/gamut/commit/c3b616ca233e7a08f7f1c861640a2dfdd1d0799d))
+
+### [17.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.1.0...@codecademy/gamut-styles@17.1.1) (2024-11-06)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+## [17.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.0.0...@codecademy/gamut-styles@17.1.0) (2024-10-01)
+
+### Features
+
+- **PreviewTip:** add preview tip ([fc90775](https://github.com/Codecademy/gamut/commit/fc90775bdfead2cc5e9b6dbc36fef3796403a109))
+
 ## [17.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@16.3.0...@codecademy/gamut-styles@17.0.0) (2024-08-27)
 
 ### ⚠ BREAKING CHANGES

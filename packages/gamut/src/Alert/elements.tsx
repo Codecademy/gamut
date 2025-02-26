@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 import { ComponentProps, forwardRef } from 'react';
 
 import { Box } from '../Box';
+import { FillButton } from '../Button';
 import { AlertProps } from './Alert';
 import { placementVariants } from './variants';
 
-const StyledAlertBanner = styled(Background)<
-  Pick<AlertProps, 'type' | 'placement'>
->(placementVariants);
+const StyledAlertBanner =
+  styled(Background)<Pick<AlertProps, 'type' | 'placement'>>(placementVariants);
 
 export const AlertBanner = forwardRef<
   HTMLDivElement,
@@ -34,9 +34,8 @@ export const AlertBanner = forwardRef<
   )
 );
 
-const StyledAlertBox = styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(
-  placementVariants
-);
+const StyledAlertBox =
+  styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(placementVariants);
 
 export const AlertBox = forwardRef<
   HTMLDivElement,
@@ -67,11 +66,20 @@ export const alertContentProps = {
   width: '100%',
 } as const;
 
-export const CollapsableContent = styled(motion.div)(
+export const CollapsibleContent = styled(motion.div)(
   css({
     py: 4,
     overflowY: 'hidden',
     WebkitFontSmoothing: 'antialiased',
     MozOsxFontSmoothing: 'grayscale',
+  })
+);
+
+export const CleanFillButton = styled(FillButton)(
+  css({
+    // Otherwise VoiceOver annouces the button's text twice
+    '::before': {
+      display: 'none',
+    },
   })
 );

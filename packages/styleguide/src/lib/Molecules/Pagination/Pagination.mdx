@@ -1,0 +1,71 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as TemplateStories from './Pagination.stories';
+
+export const parameters = {
+  subtitle: `Controls for navigating through paginated content.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=8639%3A7128',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Pagination/index.tsx',
+  },
+};
+
+<Meta of={TemplateStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use this component to navigate between content that is split across multiple pages.
+
+## Types
+
+We have two types of pagination - `basic` and `includeSkipToButtons`. The `basic` type has number as well as forward and back buttons. The `includeSkipToButtons` type also features an ellipsis button which allows users to quickly jump through page numbers by `chapterSize` as well as the first and last page buttons.
+
+For any pagination that is longer then 10 pages, the `includeSkipToButtons` type is the default.
+
+### `basic`
+
+<Canvas of={TemplateStories.Default} />
+
+### `includeSkipToButtons`
+
+<Canvas of={TemplateStories.IncludeSkipToButtons} />
+
+## Variants
+
+We have two variants of pagination - `stroke` and `text` - that roughly correspond to our **Buttons** with some Pagination-specific style overrides.
+
+### `stroke`
+
+<Canvas of={TemplateStories.Stroke} />
+
+### `text`
+
+<Canvas of={TemplateStories.Text} />
+
+## Pagination navigation
+
+When using pagination as navigation between linked pages, use the `isNavigation` prop. Your `onChange` function should include programmatic navigation.
+
+<Canvas of={TemplateStories.Navigation} />
+
+## Controlled pagination
+
+When `pageNumber` is specified, the component switches to being a controlled component.
+
+<Canvas of={TemplateStories.Controlled} />
+
+## Playground
+
+<Canvas sourceState="shown" of={TemplateStories.Default} />
+
+<Controls />

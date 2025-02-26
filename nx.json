@@ -3,49 +3,50 @@
     "default": {
       "runner": "nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "lint",
-          "build",
-          "test",
-          "verify",
-          "build-storybook"
-        ],
+        "cacheableOperations": ["lint", "build", "test", "verify"],
         "parallel": 3,
-        "useDaemonProcess": false,
         "accessToken": "ZmVjZWYxNzctYTdmZC00ODYzLTg4MzEtZTE1YTVmZDdkZmY1fHJlYWQ="
       }
     }
   },
   "extends": "nx/presets/npm.json",
-  "affected": {
-    "defaultBase": "main"
-  },
   "workspaceLayout": {
     "appsDir": "packages",
     "libsDir": "packages"
   },
   "namedInputs": {
     "babelConfig": ["{workspaceRoot}/babel.defaults.js"],
+    "ci": [
+      "{workspaceRoot}/.circleci/config.yml",
+      "{workspaceRoot}/.github/push.yml"
+    ],
     "default": ["{projectRoot}/**/*"],
     "production": [
       "default",
       "!{projectRoot}/**/*.(test|spec).ts{,.snap}",
       "!{projectRoot}/**/__tests__/**/*",
-      "!{projectRoot}/**/__fixtures__/**/*"
+      "!{projectRoot}/**/__fixtures__/**/*",
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+      "!{projectRoot}/.storybook/**/*",
+      "!{projectRoot}/tsconfig.storybook.json"
     ]
   },
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production", "babelConfig"]
+      "inputs": ["production", "^production", "babelConfig", "ci"]
     },
-    "test": {
+    "verify": {
+      "cache": true
+    },
+    "@nx/jest:jest": {
       "dependsOn": ["^build"],
       "inputs": [
         "default",
         "^production",
         "{workspaceRoot}/jest.preset.js",
-        "babelConfig"
+        "babelConfig",
+        "ci"
       ]
     }
   },
@@ -60,5 +61,10 @@
       "linter": "eslint"
     }
   },
-  "$schema": "./node_modules/nx/schemas/nx-schema.json"
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "useDaemonProcess": false,
+  "nxCloudAccessToken": "ZmVjZWYxNzctYTdmZC00ODYzLTg4MzEtZTE1YTVmZDdkZmY1fHJlYWQ=",
+  "parallel": 3,
+  "useInferencePlugins": false,
+  "defaultBase": "main"
 }

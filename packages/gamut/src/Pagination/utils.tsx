@@ -101,7 +101,7 @@ const fadeAnimationVariants = {
 export const createAnimatedFadeButton = (
   WrappedComponent: typeof PaginationButton
 ) => {
-  const AnimatedButton = motion(WrappedComponent);
+  const AnimatedButton = motion.create(WrappedComponent);
   return (props: React.ComponentProps<typeof AnimatedButton>) => (
     <AnimatedButton
       aria-label={

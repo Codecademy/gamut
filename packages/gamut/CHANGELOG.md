@@ -3,6 +3,208 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [59.0.10](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.9...@codecademy/gamut@59.0.10) (2025-02-20)
+
+### Bug Fixes
+
+- **Overlay:** updating shroud to be a static color ([f3bebc8](https://github.com/Codecademy/gamut/commit/f3bebc834aa781376ac571b636e155923c486832))
+
+### [59.0.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.8...@codecademy/gamut@59.0.9) (2025-02-19)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [59.0.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.7...@codecademy/gamut@59.0.8) (2025-02-12)
+
+### Bug Fixes
+
+- **Alert:** aria-expanded on the wrong element ([e9a87a1](https://github.com/Codecademy/gamut/commit/e9a87a1878144137bf9c3579f4406501b11af51b))
+
+### [59.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.6...@codecademy/gamut@59.0.7) (2025-02-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [59.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.5...@codecademy/gamut@59.0.6) (2025-02-11)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [59.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.4...@codecademy/gamut@59.0.5) (2025-02-11)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [59.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.3...@codecademy/gamut@59.0.4) (2025-02-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [59.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.2...@codecademy/gamut@59.0.3) (2025-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [59.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.1...@codecademy/gamut@59.0.2) (2025-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [59.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.0...@codecademy/gamut@59.0.1) (2025-02-05)
+
+### Bug Fixes
+
+- **ProgressBar:** adds focus outline ([d12d013](https://github.com/Codecademy/gamut/commit/d12d013eeae847678f06e992ac9be20d46fd8be2))
+
+## [59.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@58.0.2...@codecademy/gamut@59.0.0) (2025-02-04)
+
+### ⚠ BREAKING CHANGES
+
+- **Tag:** Creating new Tag variants and removing old variants
+
+### Features
+
+- **Tag:** Creating new Tag variants and removing old variants ([fede875](https://github.com/Codecademy/gamut/commit/fede875ee64ede926f8c65eeae6096ac8a4d8fe1))
+
+### [58.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@58.0.1...@codecademy/gamut@58.0.2) (2025-02-03)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [58.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@58.0.0...@codecademy/gamut@58.0.1) (2025-02-03)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [58.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.4...@codecademy/gamut@58.0.0) (2025-01-31)
+
+### ⚠ BREAKING CHANGES
+
+- **Menu:** updates menu variants and usage guidance
+
+### Features
+
+- **Menu:** updates menu variants and usage guidance ([3b3e1f6](https://github.com/Codecademy/gamut/commit/3b3e1f662f457f9200b1377b095455874d3f7123))
+
+### [57.7.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.3...@codecademy/gamut@57.7.4) (2025-01-31)
+
+### Bug Fixes
+
+- **Tip:** Fixes hover gap and click issues with ToolTips and PreviewTips ([84030ff](https://github.com/Codecademy/gamut/commit/84030ff4b4cd1f676a706e8961a4dd95b242445c))
+
+### [57.7.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.2...@codecademy/gamut@57.7.3) (2025-01-29)
+
+### Bug Fixes
+
+- DataGrid reformatted to `table` and aria-sort added ([9903099](https://github.com/Codecademy/gamut/commit/99030998cba981215a56ce260c588385f78b398a))
+
+### [57.7.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.1...@codecademy/gamut@57.7.2) (2025-01-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [57.7.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.7.0...@codecademy/gamut@57.7.1) (2025-01-15)
+
+### Bug Fixes
+
+- **FormGroupLabel:** enable screenreaders to read a label's "optional" text ([3b1a3a5](https://github.com/Codecademy/gamut/commit/3b1a3a5f48be3291de25267bb436d0f446f84e8f))
+
+## [57.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.6.4...@codecademy/gamut@57.7.0) (2025-01-14)
+
+### Features
+
+- **borderColors:** adding semantic and colormode compatible colors for borderColor ([5e61c28](https://github.com/Codecademy/gamut/commit/5e61c289ce2eec83ef23d83633aca062247f1f61))
+
+### [57.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.6.3...@codecademy/gamut@57.6.4) (2025-01-09)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [57.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.6.2...@codecademy/gamut@57.6.3) (2025-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [57.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.6.1...@codecademy/gamut@57.6.2) (2025-01-06)
+
+### Bug Fixes
+
+- **selectdropdown:** fixes tests with fresh git history ([753eaec](https://github.com/Codecademy/gamut/commit/753eaec7f15167b1359a67b25077be94e770dc2d))
+
+### [57.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.6.0...@codecademy/gamut@57.6.1) (2024-12-17)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [57.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.5.2...@codecademy/gamut@57.6.0) (2024-12-13)
+
+### Features
+
+- Storybook 8 Feature Branch ([300ef37](https://github.com/Codecademy/gamut/commit/300ef37da570c8425f7ac1aed52e87392b44fadf))
+
+### [57.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.5.1...@codecademy/gamut@57.5.2) (2024-12-03)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [57.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.5.0...@codecademy/gamut@57.5.1) (2024-11-20)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [57.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.4.4...@codecademy/gamut@57.5.0) (2024-11-11)
+
+### Features
+
+- **Icons:** MoneyBackGuarantee ([0e4f27e](https://github.com/Codecademy/gamut/commit/0e4f27e26e20a00dce388dfa127ad7cab2e5671b))
+
+### [57.4.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.4.3...@codecademy/gamut@57.4.4) (2024-11-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [57.4.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.4.2...@codecademy/gamut@57.4.3) (2024-10-21)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [57.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.4.1...@codecademy/gamut@57.4.2) (2024-10-16)
+
+### Bug Fixes
+
+- **Alert:** Update alert to be based on component width ([9367531](https://github.com/Codecademy/gamut/commit/936753191363a9e3f822e12d37bb279d9d55ded4))
+
+### [57.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.4.0...@codecademy/gamut@57.4.1) (2024-10-16)
+
+### Bug Fixes
+
+- **Markdown:** filter styles from video ([51e34e4](https://github.com/Codecademy/gamut/commit/51e34e407221feb4ca3bca44f3b9ef0ef0a3d474))
+
+## [57.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.3.3...@codecademy/gamut@57.4.0) (2024-10-15)
+
+### Features
+
+- **Video + Markdown:** update react player + put videos in markdown ([4170f40](https://github.com/Codecademy/gamut/commit/4170f401374295ae0cbbc4f52c1cf612fe1239f8))
+
+### [57.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.3.2...@codecademy/gamut@57.3.3) (2024-10-09)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [57.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.3.1...@codecademy/gamut@57.3.2) (2024-10-07)
+
+### Bug Fixes
+
+- **InfoTip:** background hover ([21686f3](https://github.com/Codecademy/gamut/commit/21686f3cdaaec71fa73cacd559e5afcc4e19ccd4))
+
+### [57.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.3.0...@codecademy/gamut@57.3.1) (2024-10-04)
+
+### Bug Fixes
+
+- **FloatingTip:** fixes delay timeouts for hover + mouseover ([b644cac](https://github.com/Codecademy/gamut/commit/b644cac7b419933e6a20dcab308b050ad2d1d7c0))
+
+## [57.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.2.2...@codecademy/gamut@57.3.0) (2024-10-01)
+
+### Features
+
+- **PreviewTip:** add preview tip ([fc90775](https://github.com/Codecademy/gamut/commit/fc90775bdfead2cc5e9b6dbc36fef3796403a109))
+
+### [57.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.2.1...@codecademy/gamut@57.2.2) (2024-09-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [57.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.2.0...@codecademy/gamut@57.2.1) (2024-09-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [57.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.1.0...@codecademy/gamut@57.2.0) (2024-09-12)
+
+### Features
+
+- **Button:** Update hover background ([38e2b68](https://github.com/Codecademy/gamut/commit/38e2b68e72af94e2a8bb37323c80dad5443fc92d))
+
 ## [57.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@57.0.0...@codecademy/gamut@57.1.0) (2024-09-04)
 
 ### Features

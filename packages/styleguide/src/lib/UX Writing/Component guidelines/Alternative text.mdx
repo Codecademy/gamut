@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader } from '~styleguide/blocks';
+
+export const parameters = {
+  title: 'Alternative text',
+  subtitle:
+    'Alternative text, or alt text, is a brief description of an image for users who cannot view it.',
+  status: 'static',
+};
+
+<Meta title="UX Writing/Component guidelines/Alternative text" />
+
+<AboutHeader {...parameters} />
+
+Alternative text, or alt text, is a short written description of an image that helps users make sense of the image when it can’t be viewed. Alt text is read by screen readers, search engines, and is displayed in browsers upon hover or when an image file is unable to load.
+
+## Best practices
+
+Writing alt text is pretty straightforward, but here are some best practices to keep in mind:
+
+- There's no need to use "picture of" or "image of" language. Screen readers will announce the image as an image.
+- Be descriptive. Alt text should provide all of the information the image is being used to convey.
+- Use alt text for non-decorative images. Decorative image alt text can be left out since they don't add useful context.
+- Images with text should not be used. If it can't be avoided, be sure to use the same text in the alt text as is displayed on the image.
+
+## Checklist
+
+- Is alt text included for all non-decorative images on the page?
+- Does your alt text provide all the information a user needs to understand what the image is being used to convey?

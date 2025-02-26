@@ -4,7 +4,7 @@ import hasIn from 'lodash/hasIn';
 import { ReactNode } from 'react';
 import * as React from 'react';
 
-import { omitProps } from '../../utils/omitProps';
+import { omitProps } from '../../utils';
 import {
   ButtonDeprecatedBase,
   ButtonDeprecatedBaseProps,
@@ -39,7 +39,7 @@ const themes = [
 
 export type ButtonDeprecatedThemes =
   | keyof typeof buttonPresetThemes
-  | typeof themes[number];
+  | (typeof themes)[number];
 
 const propKeys = [
   'theme',

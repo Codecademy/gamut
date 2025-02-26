@@ -1,4 +1,5 @@
 import { StarIcon } from '@codecademy/gamut-icons';
+import { waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { setupRtl } from 'component-test-setup';
 
@@ -23,12 +24,12 @@ const renderView = setupRtl(IconButton, buttonProps);
 const renderFloatingView = setupRtl(IconButtonFloatingMock, buttonProps);
 
 describe('IconButton', () => {
-  it('renders a clickable button', () => {
+  it('renders a clickable button', async () => {
     const { view } = renderView();
 
     const cta = view.getByRole('button', { name: label });
 
-    userEvent.click(cta);
+    await userEvent.click(cta);
 
     expect(onClick).toHaveBeenCalled();
   });
@@ -42,8 +43,11 @@ describe('IconButton', () => {
   it('renders a tip with repetition removed', async () => {
     const { view } = renderView({});
 
-    view.getByRole('button', { name: label });
+    const button = view.getByRole('button', { name: label });
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore: We need to update the rest of the testing suite to use the correct types (which are reliant on upgrading Node)
+    expect(button).toHaveAccessibleDescription(tipText);
     expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
       tipText
     );
@@ -80,8 +84,10 @@ describe('IconButton', () => {
 
     expect(view.queryByText('tooltip')).toBeNull();
 
-    userEvent.hover(cta);
+    await userEvent.hover(cta);
 
-    view.getByText(tip);
+    await waitFor(() => {
+      view.getByText(tip);
+    });
   });
 });

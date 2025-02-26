@@ -52,8 +52,8 @@ export const coreTheme = createTheme({
         hover: 'navy-200',
       },
       shadow: {
-        opaque: 'shadow-white-heavy',
-        solid: 'gray-200',
+        primary: 'navy-800',
+        secondary: 'navy-600',
       },
       primary: {
         _: 'hyper-500',
@@ -71,6 +71,12 @@ export const coreTheme = createTheme({
       interface: {
         _: 'hyper-500',
         hover: 'hyper-400',
+      },
+      border: {
+        primary: 'navy-800',
+        secondary: 'navy-600',
+        tertiary: 'navy-300',
+        disabled: 'navy-500',
       },
     },
     dark: {
@@ -95,8 +101,8 @@ export const coreTheme = createTheme({
         hover: 'white-200',
       },
       shadow: {
-        opaque: 'shadow-black-heavy',
-        solid: 'black',
+        primary: 'white',
+        secondary: 'white-600',
       },
       primary: {
         _: 'yellow-500',
@@ -115,11 +121,17 @@ export const coreTheme = createTheme({
         _: 'yellow-500',
         hover: 'yellow-400',
       },
+      border: {
+        primary: 'white',
+        secondary: 'white-600',
+        tertiary: 'white-300',
+        disabled: 'white-500',
+      },
     },
   })
-  .addScale('borders', ({ colors }) => ({
-    1: `1px solid ${colors.secondary}`,
-    2: `2px solid ${colors.secondary}`,
+  .addScale('borders', ({ colors }: { colors: Record<string, string> }) => ({
+    1: `1px solid ${colors['border-primary']}`,
+    2: `2px solid ${colors['border-primary']}`,
   }))
   .createScaleVariables('elements')
   .build();

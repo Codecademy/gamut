@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-patterns/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "outputs": [
@@ -30,10 +31,15 @@
       "outputs": ["{workspaceRoot}/coverage/packages/gamut-patterns"],
       "dependsOn": ["build"],
       "options": {
-        "jestConfig": "packages/gamut-patterns/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "packages/gamut-patterns/jest.config.ts"
+      }
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "rm -rf ./dist"
       }
     }
-  },
-  "tags": []
+  }
 }

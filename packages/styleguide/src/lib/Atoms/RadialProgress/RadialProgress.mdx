@@ -1,0 +1,48 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as RadialProgressStories from './RadialProgress.stories';
+
+export const parameters = {
+  subtitle:
+    'A circular display of progress meant to convey a percentage out of a whole.',
+  status: 'deprecated',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/RadialProgress',
+  },
+};
+
+<Meta of={RadialProgressStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use RadialProgress to display progress as a percentage of a whole.
+
+## Children
+
+Optionally, children may be provided to be displayed in the center of the circle.
+This is useful for conveying a textual description of progress, such as a percentage of X/Y ratio.
+
+<Canvas of={RadialProgressStories.Children} />
+
+## Animating
+
+Since `value` can be a `number[]`, given an initial value, end value, and duration, these will animate
+smoothly upon being rendered.
+
+Example: `<RadialProgress value={[0, 100]} duration={5000} {...args} />`
+
+Check out the video example below.
+
+<Canvas of={RadialProgressStories.Animating} />
+
+## Playground
+
+<Canvas of={RadialProgressStories.Default} sourceState="shown" />
+
+<Controls />

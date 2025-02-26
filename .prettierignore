@@ -5,3 +5,6 @@ node_modules
 packages/gamut-icons/src/icons
 packages/gamut-styles/**/*.d.ts
 packages/styleguide/stories/Core/Atoms/Markdown/*.md
+
+/.nx/cache
+/.nx/workspace-data

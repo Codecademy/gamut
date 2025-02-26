@@ -1,0 +1,56 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { Callout, ComponentHeader } from '~styleguide/blocks';
+
+import * as AccordionButtonDeprecatedStories from './AccordionButtonDeprecated.stories';
+
+export const parameters = {
+  subtitle: `The standard "top" button for an AccordionDeprecated component.
+Comes in a few standard size and color combinations.`,
+  status: 'deprecated',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/AccordionButtonDeprecated/index.tsx',
+  },
+};
+
+<Meta of={AccordionButtonDeprecatedStories} />
+
+<ComponentHeader {...parameters} />
+
+<Callout text="This component is deprecated. For similar functionality, consider using the Disclosure component." />
+
+## Usage
+
+Use AccordionButtonDeprecated in conjunction with the AccordionDeprecated component to create an accordion-style interface.
+
+### Best practices:
+
+- Avoid unless necessary for legacy pages that rely on this component. Check with a designer to ensure that styling is consistent or if it could be upgraded to use an updated component.
+
+## Variants
+
+### Blue
+
+Blue AccordionButtonDeprecated tops are only usable in dark contexts, such as the LE's Help Menu.
+
+<Canvas of={AccordionButtonDeprecatedStories.Blue} />
+
+### Plain
+
+Plain AccordionButtonDeprecated tops are best applied in plain pages such as marketing pages where we haven't been able to invest yet in a more solid theme.
+
+<Canvas of={AccordionButtonDeprecatedStories.Plain} />
+
+### Yellow
+
+Yellow AccordionButtonDeprecated tops are used in the "Get a Hint" sections of the LE's narrative pane.
+
+<Canvas of={AccordionButtonDeprecatedStories.Yellow} />
+
+## Playground
+
+<Canvas sourceState="shown" of={AccordionButtonDeprecatedStories.Blue} />
+
+<Controls />

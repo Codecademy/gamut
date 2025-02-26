@@ -4,21 +4,22 @@ import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
 import * as React from 'react';
 
-import { WithChildrenProp } from '..';
 import { BodyPortal } from '../BodyPortal';
-import { Box } from '../Box';
+import { Box, FlexBox } from '../Box';
+import { popoverToolTipBodyAlignments } from '../Tip/shared/styles';
+import { WithChildrenProp } from '../utils';
 import {
-  popoverToolTipBodyAlignments,
-  toolTipWidthRestrictions,
-} from '../Tip/shared/styles';
-import {
+  beakBorderStates,
+  beakBoxVariants,
   beakSize,
   beakVariants,
   outlineVariants,
+  patternContainerBaseStyles,
   patternVariantStyles,
   popoverStates,
   raisedDivVariants,
   transformValues,
+  widthStates,
 } from './styles';
 import { PopoverProps } from './types';
 
@@ -27,34 +28,32 @@ export type PopoverVariants = StyleProps<typeof raisedDivVariants> & {
 };
 
 export const RaisedDiv = styled.div<
-  StyleProps<typeof raisedDivVariants> &
+  StyleProps<typeof outlineVariants> &
+    StyleProps<typeof raisedDivVariants> &
     StyleProps<typeof popoverToolTipBodyAlignments> &
-    StyleProps<typeof toolTipWidthRestrictions> &
-    StyleProps<typeof outlineVariants>
+    StyleProps<typeof widthStates>
 >(
-  popoverToolTipBodyAlignments,
-  toolTipWidthRestrictions,
   outlineVariants,
-  raisedDivVariants
+  popoverToolTipBodyAlignments,
+  raisedDivVariants,
+  widthStates
 );
 
-// TO-DO -- prob should use variance compose, only needs left
 export const Beak = styled(Box)<
   StyleProps<typeof popoverStates> &
-    StyleProps<typeof outlineVariants> &
     StyleProps<typeof beakVariants> &
-    StyleProps<typeof beakSize>
->(beakVariants, beakSize);
+    StyleProps<typeof beakSize> &
+    StyleProps<typeof beakBorderStates>
+>(beakBorderStates, beakVariants, beakSize);
+
+export const BeakBox =
+  styled(FlexBox)<StyleProps<typeof beakBoxVariants>>(beakBoxVariants);
 
 export const PatternContainer = styled.div(
   variant({
     base: {
-      width: '100%',
       height: '100%',
-      borderRadius: 'sm',
-      overflow: 'hidden',
-      bg: 'background',
-      position: 'absolute',
+      ...patternContainerBaseStyles,
     },
     variants: patternVariantStyles,
   })
@@ -84,7 +83,7 @@ export const PopoverPortal: React.FC<
     <BodyPortal {...rest} />
   );
 
-type PopoverContainerProps = Pick<PopoverProps, 'position' | 'align'>;
+export type PopoverContainerProps = Pick<PopoverProps, 'position' | 'align'>;
 
 export const PopoverContainer = styled.div<PopoverContainerProps>`
   position: fixed;

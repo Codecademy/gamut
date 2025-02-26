@@ -1,11 +1,18 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
 import { setupRtl } from '@codecademy/gamut-tests';
-import { act, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
 import { Markdown } from '../index';
+
+const mockTitle = 'a fake youtube';
+
+jest.mock('react-player', () => ({
+  __esModule: true,
+  default: () => <iframe title={mockTitle} />,
+}));
 
 const basicMarkdown = `
 # Heading 1
@@ -36,11 +43,34 @@ const youtubeMarkdown = `
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `;
 
+const vimeoMarkdown = `
+<iframe src="https://player.vimeo.com/video/188237476?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+`;
+
+const videoMarkdown = `
+<video src="/example.webm" title="video" />
+`;
+
+const videoSourceMarkdown = `
+<video controls poster="/images/spaceghost.gif">
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+</video>
+`;
+
 const checkboxMarkdown = `
 - [ ] checkbox
 - [x] default checked checkbox
 - [ ] third checkbox
 `;
+
+const table = `
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
+    `;
 
 const renderView = setupRtl(Markdown);
 
@@ -60,13 +90,7 @@ describe('<Markdown />', () => {
   });
 
   it('Renders custom tables in markdown', () => {
-    const table = `
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
-    `;
+    jest.spyOn(console, 'error').mockImplementation(jest.fn());
     renderView({ text: table });
     expect(document.querySelectorAll('div.tableWrapper table').length).toEqual(
       1
@@ -74,13 +98,7 @@ describe('<Markdown />', () => {
   });
 
   it('Skips rendering custom tables in markdown when skipProcessing.table is true', () => {
-    const table = `
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
-    `;
+    jest.spyOn(console, 'error').mockImplementation(jest.fn());
     renderView({
       skipDefaultOverrides: { table: true },
       text: table,
@@ -91,9 +109,28 @@ describe('<Markdown />', () => {
     );
   });
 
-  it('Wraps youtube iframes in a flexible container', () => {
+  it('Renders YouTube iframes using the Video component', () => {
     renderView({ text: youtubeMarkdown });
-    screen.getByTestId('yt-iframe');
+    screen.getByTitle(mockTitle);
+  });
+
+  it('Renders Vimeo iframes using the Video component', () => {
+    renderView({ text: vimeoMarkdown });
+    screen.getByTitle(mockTitle);
+  });
+
+  it('Renders video tags using the Video component if they have an src', () => {
+    renderView({ text: videoMarkdown });
+    screen.getByTitle(mockTitle);
+  });
+
+  it('Renders video tags using the Video component if they have a source', () => {
+    renderView({ text: videoSourceMarkdown });
+    screen.getByTitle(mockTitle);
+  });
+  it('Renders YouTube iframes using the Video component', () => {
+    renderView({ text: youtubeMarkdown });
+    screen.getByTitle(mockTitle);
   });
 
   it('Wraps the markdown in a div by default (block)', () => {
@@ -247,7 +284,7 @@ var test = true;
       expect(document.querySelectorAll('a[target="_blank"]').length).toEqual(0);
     });
 
-    it('Allows onClicks callbacks', () => {
+    it('Allows onClicks callbacks', async () => {
       const onClick = jest.fn();
 
       renderView({
@@ -255,9 +292,7 @@ var test = true;
         text: `<a data-testid="testLink" href="http://google.com">google</a>`,
       });
 
-      act(() => {
-        userEvent.click(screen.getByText('google'));
-      });
+      await userEvent.click(screen.getByText('google'));
 
       expect(onClick).toHaveBeenCalledTimes(1);
     });
@@ -288,6 +323,7 @@ var test = true;
         isCodeBlock?: boolean;
         isWebBrowser?: boolean;
       };
+
       const renderedProps: jest.Mock<RenderedProps> = jest.fn();
 
       beforeEach(() => {
@@ -296,9 +332,10 @@ var test = true;
 
 <TestComponent name="my name" isCodeBlock="true" isWebBrowser />
         `;
+
         const TestComponent = (props: any) => {
           renderedProps(props);
-          return <strong {...props}>attr-testing-component</strong>;
+          return <strong>attr-testing-component</strong>;
         };
 
         const overrides = {

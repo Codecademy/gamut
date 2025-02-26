@@ -1,28 +1,37 @@
 {
   "name": "styleguide",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/styleguide/stories",
-  "projectType": "application",
+  "sourceRoot": "packages/styleguide/src",
+  "projectType": "library",
+  "tags": [],
   "targets": {
-    "build-storybook": {
-      "outputs": ["{projectRoot}/dist"],
-      "executor": "nx:run-commands",
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "storybook": {
+      "executor": "@nx/storybook:storybook",
       "options": {
-        "cwd": "packages/styleguide",
-        "commands": [
-          "NODE_ENV=production ./node_modules/.bin/build-storybook --quiet -c .storybook -o ./dist"
-        ],
-        "parallel": false
+        "port": 6006,
+        "configDir": "packages/styleguide/.storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
       }
     },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/packages/styleguide"],
+    "build-storybook": {
+      "executor": "@nx/storybook:build",
+      "outputs": ["{options.outputDir}"],
       "options": {
-        "jestConfig": "packages/styleguide/jest.config.ts",
-        "passWithNoTests": true
+        "outputDir": "dist/storybook/styleguide",
+        "configDir": "packages/styleguide/.storybook"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
       }
     }
-  },
-  "tags": []
+  }
 }

@@ -1,7 +1,13 @@
-import { theme, variant } from '@codecademy/gamut-styles';
+import { theme, transitionConcat, variant } from '@codecademy/gamut-styles';
 
 import { ButtonSelectors } from '../../ButtonBase/ButtonBase';
 import { buttonVariants, templateVariants } from './styles';
+
+const hoverBackgroundTransition = transitionConcat(
+  ['background-color', 'box-shadow'],
+  'fast',
+  'ease-in'
+);
 
 export const fillButtonVariants = templateVariants(
   buttonVariants,
@@ -12,9 +18,10 @@ export const fillButtonVariants = templateVariants(
     [ButtonSelectors.HOVER]: {
       bg: `${variant}-hover`,
       color: 'background',
+      transition: hoverBackgroundTransition,
     },
     [ButtonSelectors.ACTIVE]: {
-      borderColor: 'text',
+      borderColor: 'border-primary',
       bg: variant,
       color: 'background',
     },
@@ -32,6 +39,8 @@ export const textButtonVariants = templateVariants(
     color: variant === 'interface' ? 'text' : variant,
     [ButtonSelectors.HOVER]: {
       color: variant,
+      bg: 'background-hover',
+      transition: hoverBackgroundTransition,
     },
     [ButtonSelectors.FOCUS_VISIBLE]: {
       color: variant,
@@ -55,6 +64,10 @@ export const strokeButtonVariants = templateVariants(
     borderColor: variant,
     bg: 'transparent',
     color: variant,
+    [ButtonSelectors.HOVER]: {
+      bg: 'background-hover',
+      transition: hoverBackgroundTransition,
+    },
     [ButtonSelectors.OUTLINE]: {
       borderColor: variant,
     },
@@ -85,6 +98,8 @@ export const ctaButtonVariants = templateVariants(['primary'], (variant) => ({
     left: -9,
   },
   [ButtonSelectors.HOVER]: {
+    bg: `${variant}-hover`,
+    transition: hoverBackgroundTransition,
     boxShadow: `-8px 8px 0 0 ${theme.colors.text}`,
   },
   [ButtonSelectors.ACTIVE]: {

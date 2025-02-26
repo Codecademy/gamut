@@ -1,0 +1,57 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as MarkdownStories from './Markdown.stories';
+
+export const parameters = {
+  subtitle: `Markdown renderer for all your markdown needs.`,
+  status: 'updating',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Markdown/index.tsx',
+  },
+};
+
+<Meta of={MarkdownStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use the `Markdown` component to render markdown content.
+
+Below is an example of rendered markdown content to show you what's possible:
+
+<Canvas of={MarkdownStories.FullExample} />
+
+## Overrides
+
+In cases where our default Markdown renderer is not returning exactly what you need, you can override specific tags or custom tags.
+
+<Canvas of={MarkdownStories.Overrides} />
+
+### Header override
+
+A common override may be to change the font size of a Header.
+
+<Canvas of={MarkdownStories.HeaderOverride} />
+
+### `skipDefaultOverides`
+
+If you need to override a link, iframe, or table, you do not need to provide the `skipDefaultOverides` prop. This prop is now only used for removing the default heading, paragraph, and list element overrides.
+
+<Canvas of={MarkdownStories.LinkOverride} />
+
+## Inline Markdown
+
+You can also provide use the Markdown component inline.
+
+<Canvas of={MarkdownStories.InlineMarkdown} />
+
+## Playground
+
+<Canvas sourceState="shown" of={MarkdownStories.Default} />
+
+<Controls />

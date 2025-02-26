@@ -46,6 +46,11 @@ module.exports = {
         '@typescript-eslint/no-unsafe-return': 'off',
         '@typescript-eslint/restrict-plus-operands': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
+        'import/no-cycle': 'off',
+        'react/no-unknown-property': [
+          'error',
+          { ignore: ['mask-type', 'xmlns-x', 'xmlns-i', 'xmlns-graph'] },
+        ],
       },
     },
     {

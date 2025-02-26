@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.2.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.2.4...@codecademy/gamut-tests@5.2.5) (2025-02-19)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+### [5.2.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.2.3...@codecademy/gamut-tests@5.2.4) (2025-02-10)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+### [5.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.2.2...@codecademy/gamut-tests@5.2.3) (2025-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+### [5.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.2.1...@codecademy/gamut-tests@5.2.2) (2025-01-14)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+### [5.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.2.0...@codecademy/gamut-tests@5.2.1) (2025-01-09)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+## [5.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.1.4...@codecademy/gamut-tests@5.2.0) (2024-12-13)
+
+### Features
+
+- Storybook 8 Feature Branch ([300ef37](https://github.com/Codecademy/gamut/commit/300ef37da570c8425f7ac1aed52e87392b44fadf))
+
+### [5.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.1.3...@codecademy/gamut-tests@5.1.4) (2024-12-03)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+### [5.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.1.2...@codecademy/gamut-tests@5.1.3) (2024-11-06)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+### [5.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.1.1...@codecademy/gamut-tests@5.1.2) (2024-10-01)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
 ### [5.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.1.0...@codecademy/gamut-tests@5.1.1) (2024-08-27)
 
 **Note:** Version bump only for package @codecademy/gamut-tests

@@ -3,6 +3,162 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.6.479](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.478...@codecademy/gamut-kit@0.6.479) (2025-02-20)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.478](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.477...@codecademy/gamut-kit@0.6.478) (2025-02-19)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.477](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.476...@codecademy/gamut-kit@0.6.477) (2025-02-12)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.476](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.475...@codecademy/gamut-kit@0.6.476) (2025-02-12)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.475](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.474...@codecademy/gamut-kit@0.6.475) (2025-02-11)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.474](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.473...@codecademy/gamut-kit@0.6.474) (2025-02-11)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.473](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.472...@codecademy/gamut-kit@0.6.473) (2025-02-10)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.472](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.471...@codecademy/gamut-kit@0.6.472) (2025-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.471](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.470...@codecademy/gamut-kit@0.6.471) (2025-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.470](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.469...@codecademy/gamut-kit@0.6.470) (2025-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.469](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.468...@codecademy/gamut-kit@0.6.469) (2025-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.468](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.467...@codecademy/gamut-kit@0.6.468) (2025-02-03)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.467](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.466...@codecademy/gamut-kit@0.6.467) (2025-02-03)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.466](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.465...@codecademy/gamut-kit@0.6.466) (2025-01-31)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.465](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.464...@codecademy/gamut-kit@0.6.465) (2025-01-31)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.464](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.463...@codecademy/gamut-kit@0.6.464) (2025-01-29)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.463](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.462...@codecademy/gamut-kit@0.6.463) (2025-01-22)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.462](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.461...@codecademy/gamut-kit@0.6.462) (2025-01-15)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.461](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.460...@codecademy/gamut-kit@0.6.461) (2025-01-14)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.460](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.459...@codecademy/gamut-kit@0.6.460) (2025-01-09)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.459](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.458...@codecademy/gamut-kit@0.6.459) (2025-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.458](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.457...@codecademy/gamut-kit@0.6.458) (2025-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.457](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.456...@codecademy/gamut-kit@0.6.457) (2024-12-17)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.456](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.455...@codecademy/gamut-kit@0.6.456) (2024-12-13)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.455](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.454...@codecademy/gamut-kit@0.6.455) (2024-12-03)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.454](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.453...@codecademy/gamut-kit@0.6.454) (2024-11-20)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.453](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.452...@codecademy/gamut-kit@0.6.453) (2024-11-11)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.452](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.451...@codecademy/gamut-kit@0.6.452) (2024-11-06)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.451](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.450...@codecademy/gamut-kit@0.6.451) (2024-10-21)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.450](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.449...@codecademy/gamut-kit@0.6.450) (2024-10-16)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.449](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.448...@codecademy/gamut-kit@0.6.449) (2024-10-16)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.448](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.447...@codecademy/gamut-kit@0.6.448) (2024-10-15)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.447](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.446...@codecademy/gamut-kit@0.6.447) (2024-10-09)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.446](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.445...@codecademy/gamut-kit@0.6.446) (2024-10-07)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.445](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.444...@codecademy/gamut-kit@0.6.445) (2024-10-04)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.444](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.443...@codecademy/gamut-kit@0.6.444) (2024-10-01)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.443](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.442...@codecademy/gamut-kit@0.6.443) (2024-09-23)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.442](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.441...@codecademy/gamut-kit@0.6.442) (2024-09-23)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
+### [0.6.441](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.440...@codecademy/gamut-kit@0.6.441) (2024-09-12)
+
+**Note:** Version bump only for package @codecademy/gamut-kit
+
 ### [0.6.440](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-kit@0.6.439...@codecademy/gamut-kit@0.6.440) (2024-09-04)
 
 **Note:** Version bump only for package @codecademy/gamut-kit

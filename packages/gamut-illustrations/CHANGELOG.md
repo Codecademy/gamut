@@ -3,6 +3,74 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.53.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.53.2...@codecademy/gamut-illustrations@0.53.3) (2025-02-19)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.53.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.53.1...@codecademy/gamut-illustrations@0.53.2) (2025-02-10)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.53.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.53.0...@codecademy/gamut-illustrations@0.53.1) (2025-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+## [0.53.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.52.0...@codecademy/gamut-illustrations@0.53.0) (2025-02-03)
+
+### Features
+
+- **Illustration:** added new stackedPagesVariantIllustration ([39c8dbd](https://github.com/Codecademy/gamut/commit/39c8dbd5bcd8060293f1d1e9f6e6c838da228fa5))
+
+## [0.52.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.51.0...@codecademy/gamut-illustrations@0.52.0) (2025-02-03)
+
+### Features
+
+- **Illustration:** Discount tag illustrations ([1065431](https://github.com/Codecademy/gamut/commit/106543146262bdb16383ba840658f2c5208b440a))
+
+## [0.51.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.50.2...@codecademy/gamut-illustrations@0.51.0) (2025-01-22)
+
+### Features
+
+- **TagCelebration:** :sparkles: A new illustration for the upcoming trial cancellation incentive ([89f18d4](https://github.com/Codecademy/gamut/commit/89f18d429521ddd6e339e7fbd13fe9f1e0292b9c))
+
+### [0.50.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.50.1...@codecademy/gamut-illustrations@0.50.2) (2025-01-14)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.50.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.50.0...@codecademy/gamut-illustrations@0.50.1) (2025-01-09)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+## [0.50.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.49.2...@codecademy/gamut-illustrations@0.50.0) (2024-12-13)
+
+### Features
+
+- Storybook 8 Feature Branch ([300ef37](https://github.com/Codecademy/gamut/commit/300ef37da570c8425f7ac1aed52e87392b44fadf))
+
+### [0.49.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.49.1...@codecademy/gamut-illustrations@0.49.2) (2024-12-03)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.49.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.49.0...@codecademy/gamut-illustrations@0.49.1) (2024-11-06)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+## [0.49.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.48.1...@codecademy/gamut-illustrations@0.49.0) (2024-10-21)
+
+### Features
+
+- **Illustration:** adds CustomProject illustration ([70d0b31](https://github.com/Codecademy/gamut/commit/70d0b31c898ba3913cad87d8ea52c2d809df706e))
+
+### [0.48.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.48.0...@codecademy/gamut-illustrations@0.48.1) (2024-10-01)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+## [0.48.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.47.1...@codecademy/gamut-illustrations@0.48.0) (2024-09-23)
+
+### Features
+
+- **Illustration:** added new stackedPagesIllustration ([4173b45](https://github.com/Codecademy/gamut/commit/4173b456aa5a23dc82e852b7f4106731d44b955f))
+
 ### [0.47.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.47.0...@codecademy/gamut-illustrations@0.47.1) (2024-08-27)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations

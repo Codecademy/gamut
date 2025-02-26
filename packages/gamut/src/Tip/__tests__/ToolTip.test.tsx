@@ -1,4 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { waitFor } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 
 import { ToolTipMock } from './mocks';
@@ -46,10 +47,10 @@ describe('ToolTip', () => {
       expect(view.queryByRole('tooltip')).toBeNull();
     });
 
-    it('calls onClick when clicked', () => {
+    it('calls onClick when clicked', async () => {
       const { view } = renderView({});
 
-      userEvent.click(view.getByRole('button'));
+      await userEvent.click(view.getByRole('button'));
 
       expect(onClick).toHaveBeenCalled();
     });
@@ -83,22 +84,22 @@ describe('floating placement', () => {
     view.getByRole('button', { name: 'Click' });
     expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(info);
   });
-  it('shows the tip when it is hovered over', () => {
+  it('shows the tip when it is hovered over', async () => {
     const { view } = renderView({
       placement: 'floating',
     });
 
     expect(view.queryAllByText(info).length).toBe(1);
 
-    userEvent.hover(view.getByRole('button'));
+    await userEvent.hover(view.getByRole('button'));
 
     view.getByRole('tooltip', { hidden: true });
-    expect(view.queryAllByText(info).length).toBe(2);
+    await waitFor(() => expect(view.queryAllByText(info).length).toBe(2));
   });
-  it('calls onClick when clicked', () => {
+  it('calls onClick when clicked', async () => {
     const { view } = renderView({});
 
-    userEvent.click(view.getByRole('button'));
+    await userEvent.click(view.getByRole('button'));
 
     expect(onClick).toHaveBeenCalled();
   });

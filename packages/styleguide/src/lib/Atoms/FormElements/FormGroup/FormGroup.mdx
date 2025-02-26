@@ -1,0 +1,75 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as FormGroupStories from './FormGroup.stories';
+
+export const parameters = {
+  subtitle: `A label and description wrapper for a form element that provides conditional styling.`,
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Form/elements/FormGroup.tsx',
+  },
+};
+
+<Meta of={FormGroupStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use `FormGroup` to provide a label and description for a form element.
+
+## Specifications
+
+### `htmlFor`
+
+It is best to provide `htmlFor` to both the FormGroup + inner form element to make it super accessible. If this is not provided, the FormLabel will default to `<div>`. If an `htmlFor` is provided, it will be a `<label>`.
+
+Below shows how adding an `htmlFor` to both the FormGroup and inner form element will make the FormLabel a `<label>`.
+
+<Canvas of={FormGroupStories.FormGroupHtmlFor} />
+
+This example below omits the `htmlFor` prop on the FormGroup and inner form element, which will make the FormLabel a `<div>`.
+
+<Canvas of={FormGroupStories.FormGroupDiv} />
+
+### States
+
+#### Default state
+
+Here's a `FormGroup` without an error or validation:
+
+<Canvas of={FormGroupStories.DefaultState} />
+
+#### `error`
+
+When including an error message, the `FormGroup` should have an `error` prop with a string that describes the error. The inner element wrapped by the `FormGroup` should also have an `error` prop with a boolean to either display or hide the error message. The `error` prop will add a red border to the form element and display the error message below the form element.
+
+<Canvas of={FormGroupStories.Error} />
+
+#### `valid`
+
+Adding `valid` to a `FormGroup`'s inner element will add a green checkmark to the form element.
+
+<Canvas of={FormGroupStories.Valid} />
+
+### Including InfoTip
+
+A field can include <LinkTo id="Molecules/Tips/InfoTip"> our existing `InfoTip`</LinkTo>
+
+#### Low emphasis
+
+<Canvas of={FormGroupStories.LowEmphasisInfoTip} />
+
+#### High emphasis
+
+<Canvas of={FormGroupStories.HighEmphasisInfoTip} />
+
+## Playground
+
+<Canvas sourceState="shown" of={FormGroupStories.Default} />
+
+<Controls />

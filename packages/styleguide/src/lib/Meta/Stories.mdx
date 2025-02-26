@@ -1,0 +1,169 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Stories',
+  title: 'Stories',
+  subtitle: 'Guidelines and tooling for writing Storybook stories and docs.',
+  status: 'static',
+};
+
+<Meta title="Meta/Stories" />
+
+<AboutHeader {...parameters} />
+
+## Quick start
+
+We've provided a few helpful vscode snippets to help you get through boilerplate. To use these start to type these strings in your editor and pick the template and fill out the tab targets.
+
+- `component-story`: The default TSX story template.
+- `component-doc`: The default component documentation template - each component should have a `.tsx` and `.mdx` file.
+- `toc-story`: A simple template for a Table of Contents category page.
+
+## File structure and naming
+
+When you make a new story theres a few things to keep in mind:
+
+- The folder structure is indicative of our flavor of atomic design.
+- The folder struture is identical to the storybook hierarchy generated.
+
+First find the right folder for your story in `packages/styleguide/stories` (e.g. `Atoms` | `Molecules` | `Organisms`).
+Once you've found it create a new folder with two new files `#{COMPONENT_NAME}.stories.tsx` and `#{COMPONENT_NAME}.mdx`. You can also store examples or other associated utility files in this folder.
+
+In your new files you can use the above snippets to set up your component add:
+
+```tsx
+// For ComponentName.stories.tsx
+
+import { ComponentName } from '@codecademy/gamut';
+import type { Meta, StoryObj } from '@storybook/react';
+
+const meta: Meta<typeof ComponentName> = {
+  component: ComponentName,
+  args: {
+    variant: 'default',
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof ComponentName>;
+
+export const Default: Story = {
+  args: {
+    children: <img src="./cinna.jpg" alt="jpeg" />,
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    children: 'Pro Content',
+    variant: 'secondary',
+  },
+};
+```
+
+```tsx
+// For ComponentName.mdx, more details in the component-doc code snippet
+
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as ComponentStories from './ComponentName.stories';
+
+export const parameters = {
+  subtitle: `Template component`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/XXX',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    // this is easy to find by right clicking on the file in VSCode and clicking "Copy Remote File Url From..." and the selecting 'main' or amending the url path below like so: https://github.com/Codecademy/gamut/blob/main/packages/${package}/src/file/location
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/ComponentName',
+  },
+};
+
+<Meta of={TemplateStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Etc...
+```
+
+## Story structure
+
+In our opinion, a good component story page consists of:
+
+1. **General Information:** Each component should define some key information on the `<Meta />` component
+2. **Flagship Story + Props:** A single default story showing the default state of the component with a connected props table right below it.
+3. **Variation Stories:** Granular subsections that show the discrete varaitions of the component and describe their use cases
+4. **Usage instructions and Guidelines:** A section that describes how to use the component should and shouldn't be used, and any guidelines that should be followed.
+
+### General information
+
+1. `subtitle`: What the component does, and what the component would typically be used for.
+2. `source`: The source package of the component (e.g. `gamut` | `gamut-styles`) and a link to the corresponding code.
+3. `status`: The health of the components API (e.g. `current` | `updating` | `deprecated` | `static`)
+4. `design`: A link to the Figma file that is associated with the component.
+
+```tsx
+import { Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as AnchorStories from './Anchor.stories';
+
+export const parameters = {
+  subtitle: `A clickable text element that navigates to another page, resource, or location on the same page.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=993-0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Anchor',
+  },
+};
+
+<Meta of={AnchorStories} />
+
+<ComponentHeader {...parameters} />
+
+```
+
+### Flagship story
+
+The Flagship story for a component should be intended to give the reader a broad overview of its high-level functionality. Its `Canvas` should automatically display the story's code by setting the prop sourceState="shown".
+
+Try to include the major behaviors for the component that most readers would need to understand its uses.
+
+```tsx
+## Playground
+
+//If your flagship story is named Default, you don't need to specify it for the Playground
+<Canvas sourceState="shown" />
+
+<Controls />
+```
+
+### Granular stories
+
+Each subsequent story should elaborate on an important behavioral feature of the component.
+Try to show a single use of the behavior configurable with args.
+
+```tsx
+## Variant Anchors
+
+A short description should go here, as well as any variant specific usage guidelines.
+
+<Canvas of={AnchorStories.Variant} />
+
+```

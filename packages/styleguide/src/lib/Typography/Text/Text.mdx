@@ -1,0 +1,110 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as TextStories from './Text.stories';
+
+export const parameters = {
+  subtitle:
+    'This component is a specific primitive for handling UI Text in predictable and flexible ways.',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/rNsdbOwlw6L0ea3uAJrrz7',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Typography/Text',
+  },
+};
+
+<Meta of={TextStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+This is the preferred component for customizing typography. The API is progressively specific. In order to achieve the effect you are looking for there are 3 levels of precedence.
+
+1. `as` Any HTML tag that might have semantic meaning and imply specific style `h1` - `h6` and `strong`. These have default styles that will match up with the tag in normative circumstances. For example an `h1` will be the largest type style etc.
+2. `variant` In many cases we use heading tags in different ways than a text document might to maintain semantic and accessible HTML structure. In cases where this is required, you may specify a variant to overwrite the default tag styles. For example if you had an `h1` that needed to look like an `h4` you can specify `<Text as="h1" variant="title-md" />` to achieve the effect.
+3. `props` In all other cases where we might need to change typography related styles you can use system props to change behavior.
+
+### Best practices:
+
+- Use for any HTML text elements
+
+### When NOT to use:
+
+- **List items** - for items in a list, use the List + ListRow component.
+- **Anchors + Links** - for links, use the <LinkTo id="Typography/Anchor">Anchor</LinkTo>.
+
+## HTML Element variants
+
+When you use a specific element `Text` will style it with overridable defaults as our best guess behavior. These styles take lowest priority as they are merely meant to act as a useful default, both `variant` and any system prop will override the styles specified here.
+
+### Usage
+
+Below you can see how the Text component can display text in different sizes and as different HTML elements:
+
+```tsx
+import { Text } from '@codecademy/gamut';
+
+// Regular h1
+<Text as="h1" />
+
+// An extra large h4
+<Text as="h4" variant="title-xxl" />
+
+// An extra small subheading
+<Text as="h2" fontSize={14} fontFamily="accent" />
+```
+
+Here is how text would look like if only using the as prop and their specified values:
+
+<Canvas of={TextStories.Elements} />
+
+## Style variants
+
+These are our base semantic font scales. These apply directly to the typography scales in figma and can be used with any arbitrary tag. These take precedence over any element based variants if configured. If none of these specifically match your need you can also override behavior with any system prop (such as `lineHeight` and `fontSize`).
+
+### Usage
+
+```tsx
+import { Text } from '@codecademy/gamut';
+
+<Text as="h4" fontSize={16} />;
+```
+
+<Canvas of={TextStories.Variants} />
+
+## Utilities
+
+Text has some special props with common use cases to make your life easier.
+
+### Truncation
+
+<Canvas of={TextStories.Truncation} />
+
+### Font smoothing (default: false)
+
+<Canvas of={TextStories.FontSmoothing} />
+
+### Screenreader (default: false)
+
+<Canvas of={TextStories.Screenreader} />
+
+### Highlight
+
+<Canvas of={TextStories.Highlight} />
+
+## Playground
+
+<Canvas sourceState="shown" />
+
+<Controls />
+
+## Accessibility considerations
+
+- Make sure to use the right semantic HTML element for the content you are displaying and respecting header order. If you're not sure, you can check out HTML elements at MDN [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#content_sectioning).

@@ -1,0 +1,88 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as DialogStories from './Dialog.stories';
+
+export const parameters = {
+  subtitle: `Structured dialog modals with binary options.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=2449%3A3770',
+  },
+  status: 'updating',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Modals/Dialog.tsx',
+  },
+};
+
+<Meta of={DialogStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+- Dialogs have a width of 400px in the `small` size, and 540px in `medium`.
+  - Small is the default style, and works best with 1-2 lines of text.
+  - The Medium size is suitable for Dialogs that require more content or explanation.
+  - The `fluid` option fits to the maximum size of the components inside of it. This is useful when you want to incorporate elements beyond standard typography inside of your Dialog.
+- Dialog height changes depending on the body-text length.
+- Dialog has light and dark theme variants that respond to the appropriate <LinkTo id="Foundations/ColorMode">Color Mode</LinkTo>.
+
+### Best practices:
+
+- Dialogs should be centered inside of the window.
+- Dialogs appear unprompted and require confirmation before the user can continue.
+- Use the modal component sparingly. This is the most dispruptive tool in our arsenal. We should only have a small handful of these in our system at any given time.
+- Dialogs should always be displayed over an <LinkTo id="Molecules/Modals/Overlay">Overlay</LinkTo>. Use the Overlay component in Gamut (and Figma) to capture the appropriate background opacity.
+  - The overlay in light mode should be white at 95% opacity, the overlay in dark mode should be black at 75% opacity.
+
+## Variants
+
+### Primary
+
+Use a default Dialogs to have users accept a specific state of the system or force a user to see something.
+
+<Canvas of={DialogStories.Default} />
+
+### Danger
+
+Use the `danger` variant to create warning Dialogs to warn the user of the consequences of the action they may take. This is helpful for cases like "Delete Account" or "Reset Progress" to make sure users confirm those types of actions.
+
+- Warning Dialogs should use the Danger action colors, and will always be paired with a Cancel button.
+
+<Canvas of={DialogStories.Danger} />
+
+## Color modes
+
+Dialog components respond to the current <LinkTo id="Foundations/ColorMode">Color Mode</LinkTo> they are used in. Each component inside of dialog will correctly display for the current color mode without any extra configuration.
+Check it out:
+
+### Light
+
+<Canvas of={DialogStories.LightMode} />
+
+### Dark
+
+<Canvas of={DialogStories.DarkMode} />
+
+## Playground
+
+<Canvas sourceState="shown" of={DialogStories.Default} />
+
+<Controls />
+
+## UX writing
+
+Simplify the language, prioritize the message, and make sure the implication of what learners are saying “Yes” (or “No”) to is crystal clear. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="ux-writing-component-guidelines-confirmation-dialogs--page">writing for confirmation dialogs</LinkTo>.
+
+- Keep the language consistent between buttons, headlines, and explanations.
+- Make sure the action is clear from the headline.
+- Frame the headline as a question, if possible.
+- Provide all relevant details and consequences.
+- Keep explanation text to 1-2 lines, if possible.
+- Ensure that buttons are clear and distinct, with context to reaffirm the action.
+- Keep copy at a reading level of grade 7 or below. Test with [Hemingway App](https://hemingwayapp.com/).
+- Ask someone unrelated to the project to read the message to see if it makes sense.

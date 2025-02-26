@@ -1,19 +1,20 @@
 import { MiniChevronDownIcon, MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { breakpoints, useCurrentMode } from '@codecademy/gamut-styles';
-import { useId } from '@reach/auto-id';
-import { isValidElement, useMemo, useState } from 'react';
-import * as React from 'react';
+import { Children, isValidElement, useId, useMemo, useState } from 'react';
 import TruncateMarkup from 'react-truncate-markup';
-import { useMedia } from 'react-use';
+import { useMeasure } from 'react-use';
 
-import { Rotation, ToolTip, WithChildrenProp } from '..';
+import { Rotation } from '../Animation';
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
+import { ToolTip } from '../Tip/ToolTip';
+import { WithChildrenProp } from '../utils';
 import {
   AlertBanner,
   AlertBox,
   alertContentProps,
-  CollapsableContent,
+  CleanFillButton,
+  CollapsibleContent,
 } from './elements';
 import {
   alertVariants,
@@ -57,11 +58,17 @@ export const Alert: React.FC<AlertProps> = ({
   placement = 'floating',
   ...props
 }) => {
-  const isDesktop = useMedia(`(min-width: ${breakpoints.xs})`);
+  const [ref, { width }] = useMeasure<HTMLDivElement>();
+  const isDesktop = useMemo(() => {
+    if (width === 0) return true; // default to desktop if we don't have a width
+    return width > parseInt(breakpoints.xs, 10);
+  }, [width]);
+
   const activeAlert = alertVariants?.[type] ?? alertVariants.general;
   const { icon: Icon, bg } = activeAlert;
 
   const tipId = useId();
+  const collapsibleContentId = useId();
 
   const currentColorMode = useCurrentMode();
   const isSubtleVariant = type === 'subtle';
@@ -84,7 +91,7 @@ export const Alert: React.FC<AlertProps> = ({
   }, [placement, isDesktop]);
 
   const gridButtonOrder = useMemo(() => {
-    return isDesktop ? undefined : (['2', , 'auto'] as const);
+    return isDesktop ? 'auto' : '2';
   }, [isDesktop]);
 
   const gridTemplateColumns = useMemo(() => {
@@ -114,7 +121,7 @@ export const Alert: React.FC<AlertProps> = ({
     >
       {/** Truncate markup expects a single child element */}
       <Box {...alertContentProps}>
-        {React.Children.map(children, (child) =>
+        {Children.map(children, (child) =>
           isValidElement(child) || typeof child === 'string' ? (
             child
           ) : (
@@ -138,7 +145,9 @@ export const Alert: React.FC<AlertProps> = ({
         hasRepetitiveLabel
       >
         <TextButton
+          aria-controls={collapsibleContentId}
           aria-describedby={ariaId}
+          aria-expanded={expanded}
           tabIndex={tabIndex}
           variant="secondary"
           size="small"
@@ -161,7 +170,7 @@ export const Alert: React.FC<AlertProps> = ({
       gridRow={gridButtonOrder}
       pb={ctaButtonPadding}
     >
-      <FillButton
+      <CleanFillButton
         {...cta}
         mode={buttonColorMode}
         variant="secondary"
@@ -169,7 +178,7 @@ export const Alert: React.FC<AlertProps> = ({
         tabIndex={tabIndex}
       >
         {cta.children ?? cta.text}
-      </FillButton>
+      </CleanFillButton>
     </Box>
   );
 
@@ -180,12 +189,13 @@ export const Alert: React.FC<AlertProps> = ({
       placement={placement}
       gridTemplateColumns={gridTemplateColumns}
       pr={alertRightPadding}
+      ref={ref}
       {...props}
     >
       <Icon size={32} aria-hidden p={8} />
-      <CollapsableContent
+      <CollapsibleContent
+        id={collapsibleContentId}
         animate={toggleState}
-        aria-expanded={expanded}
         initial={toggleState}
         transition={{
           duration: 0.2,
@@ -197,7 +207,7 @@ export const Alert: React.FC<AlertProps> = ({
         }}
       >
         {isInline ? children : floatingContent}
-      </CollapsableContent>
+      </CollapsibleContent>
       {expandButton}
       {ctaButton}
       {onClose && (

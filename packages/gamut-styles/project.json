@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-styles/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "outputs": ["{projectRoot}/dist"],
@@ -20,12 +21,19 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
+      "dependsOn": ["^build"],
       "outputs": ["{workspaceRoot}/coverage/packages/gamut-styles"],
       "options": {
         "jestConfig": "packages/gamut-styles/jest.config.ts",
         "passWithNoTests": false
       }
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "rm -rf ./dist"
+      }
     }
-  },
-  "tags": []
+  }
 }

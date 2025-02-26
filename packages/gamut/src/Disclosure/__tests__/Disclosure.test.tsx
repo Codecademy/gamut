@@ -14,7 +14,7 @@ const defaultProps = {
 const renderView = setupRtl(Disclosure, defaultProps);
 
 describe('Disclosure', () => {
-  it('renders the DisclosureBody when DisclosureButton is clicked', () => {
+  it('renders the DisclosureBody when DisclosureButton is clicked', async () => {
     const { view } = renderView({
       initiallyExpanded: false,
     });
@@ -26,7 +26,7 @@ describe('Disclosure', () => {
     expect(DisclosureBodyText).toBeNull();
     expect(DisclosureButton.getAttribute('aria-expanded')).toBe('false');
 
-    userEvent.click(DisclosureButton);
+    await userEvent.click(DisclosureButton);
 
     DisclosureBodyText = view.getByText('This should render when expanded');
     expect(DisclosureButton.getAttribute('aria-expanded')).toBe('true');
@@ -43,7 +43,7 @@ describe('Disclosure', () => {
     expect(DisclosureButton.getAttribute('aria-expanded')).toBe('true');
   });
 
-  it("renders the DisclosureBody's button when supplied a `cta` and `ctaCallback` argument", () => {
+  it("renders the DisclosureBody's button when supplied a `cta` and `ctaCallback` argument", async () => {
     const { view } = renderView({
       initiallyExpanded: true,
       ctaText: 'click here',
@@ -51,7 +51,7 @@ describe('Disclosure', () => {
     });
 
     const CTAButton = view.getByText('click here');
-    userEvent.click(CTAButton);
+    await userEvent.click(CTAButton);
     expect(ctaCallback).toBeCalled();
   });
 });

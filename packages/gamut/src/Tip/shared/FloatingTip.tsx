@@ -1,27 +1,36 @@
+import { CheckerDense } from '@codecademy/gamut-patterns';
 import { useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
-import { useMeasure } from 'react-use'; // or just 'react-use-measure'
+import { useMeasure } from 'react-use';
 
-import { Box, FlexBox } from '../../Box';
-import { Popover } from '../../Popover';
-import { TargetContainer } from './elements';
-import { narrowWidth } from './styles';
-import { TipPlacementComponentProps } from './types';
-import { getPopoverAlignment } from './utils';
+import { Box } from '../../Box';
+import { PreviewTipContents } from '../PreviewTip/elements';
+import {
+  FloatingTipBody,
+  FloatingTipTextWrapper,
+  TargetContainer,
+} from './elements';
+import { TipWrapperProps } from './types';
+import { getAlignmentWidths, getPopoverAlignment, runWithDelay } from './utils';
 
 type FocusOrMouseEvent =
   | React.FocusEvent<HTMLDivElement, Element>
   | React.MouseEvent<HTMLDivElement, MouseEvent>;
 
-export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
+export const FloatingTip: React.FC<TipWrapperProps> = ({
   alignment,
+  avatar,
   children,
   escapeKeyPressHandler,
   info,
   isTipHidden,
-  wrapperRef,
-  type,
+  loading,
   narrow,
+  overline,
+  truncateLines,
+  type,
+  username,
+  wrapperRef,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [childRef, { width: tipWidth }] = useMeasure<HTMLDivElement>();
@@ -46,28 +55,55 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
   }, [alignment, tipWidth]);
 
   const popoverAlignments = getPopoverAlignment({ alignment, type });
+  const dims = getAlignmentWidths({ avatar, alignment, type });
+
+  let hoverDelay: NodeJS.Timeout | undefined;
+  let focusDelay: NodeJS.Timeout | undefined;
 
   const handleShowHideAction = ({ type }: FocusOrMouseEvent) => {
     if (type === 'focus' && !isOpen) {
-      setIsOpen(true);
-      setIsFocused(true);
+      focusDelay = runWithDelay(() => {
+        setIsOpen(true);
+        setIsFocused(true);
+      });
     }
-    if (type === 'blur' && isOpen) {
-      setIsOpen(false);
-      setIsFocused(false);
+    if (type === 'blur') {
+      if (focusDelay) clearTimeout(focusDelay);
+      if (isOpen) {
+        setIsOpen(false);
+        setIsFocused(false);
+      }
     }
     if (type === 'mouseenter' && !isOpen) {
-      setIsOpen(true);
+      hoverDelay = runWithDelay(() => setIsOpen(true));
     }
-    if (type === 'mouseleave' && isOpen && !isFocused) {
-      setIsOpen(false);
+    if (type === 'mouseleave') {
+      if (hoverDelay) clearTimeout(hoverDelay);
+      if (isOpen && !isFocused) {
+        setIsOpen(false);
+      }
     }
   };
 
-  const isToolType = type === 'tool';
-  const toolOnlyEventFunc = isToolType
+  const isHoverType = type === 'tool' || type === 'preview';
+  const isPreviewType = type === 'preview';
+
+  const toolOnlyEventFunc = isHoverType
     ? (e: FocusOrMouseEvent) => handleShowHideAction(e)
     : undefined;
+
+  const contents = isPreviewType ? (
+    <PreviewTipContents
+      avatar={avatar}
+      info={info}
+      loading={loading}
+      overline={overline}
+      truncateLines={truncateLines}
+      username={username}
+    />
+  ) : (
+    info
+  );
 
   return (
     <Box
@@ -80,6 +116,7 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
         onFocus={toolOnlyEventFunc}
         onBlur={toolOnlyEventFunc}
         onMouseEnter={toolOnlyEventFunc}
+        onMouseDown={(e) => e.preventDefault()}
         onKeyDown={
           escapeKeyPressHandler ? (e) => escapeKeyPressHandler(e) : undefined
         }
@@ -87,25 +124,28 @@ export const FloatingTip: React.FC<TipPlacementComponentProps> = ({
       >
         {children}
       </TargetContainer>
-      <Popover
+      <FloatingTipBody
         {...popoverAlignments}
         animation="fade"
+        dims={dims}
         horizontalOffset={offset}
-        isOpen={isToolType ? isOpen : !isTipHidden}
+        isOpen={isHoverType ? isOpen : !isTipHidden}
         outline
+        pattern={isPreviewType ? CheckerDense : undefined}
         skipFocusTrap
         targetRef={ref}
         variant="secondary"
+        widthRestricted={false}
       >
-        <FlexBox
-          alignItems={isToolType ? undefined : 'flex-start'}
-          flexDirection="column"
+        <FloatingTipTextWrapper
           ref={childRef}
-          width={narrow ? narrowWidth : '100%'}
+          isHoverType={isHoverType}
+          narrow={narrow}
+          centered={alignment.includes('center')}
         >
-          {info}
-        </FlexBox>
-      </Popover>
+          {contents}
+        </FloatingTipTextWrapper>
+      </FloatingTipBody>
     </Box>
   );
 };
