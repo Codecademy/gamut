@@ -3,13 +3,13 @@ import { StyleProps } from '@codecademy/variance';
 import { ComponentProps } from 'react';
 
 import { WithChildrenProp } from '../utils';
+import { CardWrapper } from './elements';
 import {
   cardAnchorVariants,
   cardVariants,
   hoverState,
   shadowVariants,
 } from './styles';
-import { CardWrapper } from './elements';
 
 export interface CardWrapperProps
   extends StyleProps<typeof cardVariants>,
