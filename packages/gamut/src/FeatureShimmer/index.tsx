@@ -19,59 +19,59 @@ const Shimmer = styled(BaseContainer)(
   })
 );
 
-export const FeatureShimmer: React.FC<BoxProps> = ({ children, ...rest }) => {
+export const FeatureShimmer: React.FC<Omit<BoxProps, 'ref'>> = ({
+  children,
+  ...rest
+}) => {
+  const shouldReduceMotion = useReducedMotion();
   const ref = useRef(null);
   const inView = useInView(ref);
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
     if (inView) {
-      console.log('is in view');
       setIsInView(true);
     }
   }, [inView]);
 
-  const shouldReduceMotion = useReducedMotion();
-  if (shouldReduceMotion || !isInView) {
-    console.log('not doing animation');
-    return <Box {...rest}>{children}</Box>;
-  }
-
-  console.log('doing animation');
   return (
     <Box {...rest} ref={ref}>
-      <BaseContainer
-        width={1}
-        height={1}
-        overflow="hidden"
-        border={1}
-        borderColor="border-tertiary"
-        bg="background-selected"
-        px={32}
-        py={16}
-        position="relative"
-        animate={{
-          backgroundColor: 'transparent',
-          borderColor: 'transparent',
-        }}
-        transition={{
-          ease: 'easeOut',
-          duration: 0.3,
-          delay: 4,
-        }}
-      >
-        <Shimmer
+      {shouldReduceMotion || !isInView ? (
+        children
+      ) : (
+        <BaseContainer
+          width={1}
+          height={1}
+          overflow="hidden"
+          border={1}
+          borderColor="border-tertiary"
+          bg="background-selected"
+          px={32}
+          py={16}
+          position="relative"
           animate={{
-            left: '110%', // extra % to account for rotation
+            backgroundColor: 'transparent',
+            borderColor: 'transparent',
           }}
           transition={{
-            ease: 'easeInOut',
-            duration: 2,
-            delay: 2,
+            ease: 'easeOut',
+            duration: 0.3,
+            delay: 4,
           }}
-        />
-        {children}
-      </BaseContainer>
+        >
+          <Shimmer
+            animate={{
+              left: '110%', // extra % to account for rotation
+            }}
+            transition={{
+              ease: 'easeInOut',
+              duration: 2,
+              delay: 2,
+            }}
+          />
+          {children}
+        </BaseContainer>
+      )}
     </Box>
   );
 };
