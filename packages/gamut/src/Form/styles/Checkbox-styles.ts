@@ -53,7 +53,7 @@ export const checkboxElement = system.css({
 });
 
 export const polyline = system.css({
-  color: 'shadow-opaque',
+  color: 'background',
 });
 
 export const checkboxTextStates = system.states({
