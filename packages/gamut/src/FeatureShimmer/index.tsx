@@ -60,6 +60,7 @@ export const FeatureShimmer: React.FC<Omit<BoxProps, 'ref'>> = ({
           }}
         >
           <Shimmer
+            data-testid="feature-shimmer"
             animate={{
               left: '110%', // extra % to account for rotation
             }}
