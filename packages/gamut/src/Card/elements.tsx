@@ -73,12 +73,11 @@ export const CardWrapper: React.FC<CardWrapperProps> = ({
         />
       )}
       <SelectedWrapper
-        {...rest}
         bg={variant !== 'default' ? (variant as Colors) : 'white'}
         variant={variant}
         shadow={shadow}
         isInteractive={isInteractive}
-
+        {...rest}
       >
         {children}
       </SelectedWrapper>
