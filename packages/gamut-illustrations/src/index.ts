@@ -57,3 +57,15 @@ export * from './Target';
 export * from './TinyBlocks';
 export * from './types';
 export * from './Warning';
+export * from './Conversation';
+export * from './ExplodedCube';
+export * from './ExplodedCubeLight';
+export * from './ProgressCharts';
+export * from './ProgressChartsLight';
+export * from './StackedFruits';
+export * from './StackedFruitsLight';
+export * from './StairsToWindow';
+export * from './StairsToWindowLight';
+
+
+
