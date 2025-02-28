@@ -25,7 +25,7 @@ export interface BaseCardProps extends CardWrapperProps {
   onClick?: () => void;
 }
 
-export type CardProps = BaseCardProps & ComponentProps<typeof CardWrapper> ;
+export type CardProps = BaseCardProps & ComponentProps<typeof CardWrapper>;
 
 export type CardAnchorProps = StyleProps<typeof cardAnchorVariants> &
   WithChildrenProp;

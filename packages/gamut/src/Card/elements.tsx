@@ -22,9 +22,11 @@ export const DynamicCardWrapper = styled(Box)<CardWrapperProps>(
   hoverState
 );
 
-export const StaticCardWrapper = styled(
-  Background
-)<CardWrapperProps>(cardVariants, shadowVariants, hoverState);
+export const StaticCardWrapper = styled(Background)<CardWrapperProps>(
+  cardVariants,
+  shadowVariants,
+  hoverState
+);
 
 // export const PatternWrapper = styled(Box)(patternHoverState);
 
