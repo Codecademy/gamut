@@ -120,7 +120,7 @@ export const Anchor = forwardRef<
       icon,
       iconOffset,
       iconPosition = 'left',
-      iconSize = 12,
+      iconSize = 16,
       iconAndTextGap = 8,
       isInlineIcon = true,
       variant = 'inline',
