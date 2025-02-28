@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as FloatingCardStories from './FloatingCard.stories';
 
@@ -22,6 +22,8 @@ export const parameters = {
 <Meta of={FloatingCardStories} />
 
 <ComponentHeader {...parameters} />
+
+<Callout text="The FloatingCard component is strictly for internal Gamut usage. For instance, Modals will use FloatingCard to style its content. However, FloatingCard is no longer exported for use in other libraries. Instead, use Card." />
 
 ## Usage
 
