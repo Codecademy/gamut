@@ -26,7 +26,7 @@ export const FeatureShimmer: React.FC<Omit<BoxProps, 'ref'>> = ({
   const shouldReduceMotion = useReducedMotion();
   const ref = useRef(null);
   const inView = useInView(ref);
-  const [isInView, setIsInView] = useState(false);
+  const [isInView, setIsInView] = useState(true);
 
   useEffect(() => {
     if (inView) {
