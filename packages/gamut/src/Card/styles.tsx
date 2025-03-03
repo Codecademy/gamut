@@ -1,4 +1,4 @@
-import { states, theme, variant } from '@codecademy/gamut-styles';
+import { theme, variant } from '@codecademy/gamut-styles';
 
 import { ButtonSelectors } from '../ButtonBase/ButtonBase';
 
@@ -6,7 +6,6 @@ export const cardVariants = variant({
   defaultVariant: 'default',
   base: {
     border: 1,
-    borderRadius: 'none',
     p: 16,
     color: 'text',
     maxWidth: '100%',
@@ -48,43 +47,24 @@ export const shadowVariants = variant({
   },
 });
 
-export const hoverState = states({
-  isInteractive: {
-    borderRadius: 'md',
-    '&:hover': {
-      transition: 'box-shadow 200ms ease',
-      boxShadow: `0px 0px ${theme.colors['shadow-primary']}`,
-    },
-  },
-});
-
-// export const patternHoverState = states({
-//   hidePattern: {
-//     [ButtonSelectors.HOVER]: {
-//       display: 'none',
-//     },
-//   },
-// });
-
-export const cardAnchorVariants = variant({
-  prop: 'hoverState',
-  base: {
-    color: 'text',
-    width: 1,
-    borderRadius: 'md',
-  },
+export const hoverShadowVariant = variant({
+  defaultVariant: 'default',
+  prop: 'hoverShadow',
   variants: {
-    default: {
+    default: {},
+    shadowLeft: {
       [ButtonSelectors.HOVER]: {
         transform: 'translate(4px, -4px)',
         boxShadow: `-8px 8px 0 ${theme.colors['shadow-primary']}`,
+        // boxShadow: `-8px 8px 0 navy`,
         transition: 'box-shadow 200ms ease, transform 200ms ease',
       },
     },
-    hoverRight: {
+    shadowRight: {
       [ButtonSelectors.HOVER]: {
         transform: 'translate(-4px, -4px)',
         boxShadow: `8px 8px 0 ${theme.colors['shadow-primary']}`,
+        // boxShadow: `-8px 8px 0 navy`,
         transition: 'box-shadow 200ms ease, transform 200ms ease',
       },
     },

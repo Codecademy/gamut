@@ -2,30 +2,20 @@ import { PatternProps } from '@codecademy/gamut-patterns';
 import { StyleProps } from '@codecademy/variance';
 import { ComponentProps } from 'react';
 
+import { Box } from '../Box';
 import { WithChildrenProp } from '../utils';
-import { CardWrapper } from './elements';
 import {
-  cardAnchorVariants,
   cardVariants,
-  hoverState,
+  hoverShadowVariant,
   shadowVariants,
 } from './styles';
 
-export interface CardWrapperProps
+export interface CardProps
   extends StyleProps<typeof cardVariants>,
     StyleProps<typeof shadowVariants>,
-    StyleProps<typeof hoverState>,
+    StyleProps<typeof hoverShadowVariant>,
     WithChildrenProp {
   pattern?: React.ComponentType<PatternProps>;
-  isHovering?: boolean;
+  borderRadius?: ComponentProps<typeof Box>['borderRadius'];
+  isInteractive?: boolean;
 }
-
-export interface BaseCardProps extends CardWrapperProps {
-  href?: string;
-  onClick?: () => void;
-}
-
-export type CardProps = BaseCardProps & ComponentProps<typeof CardWrapper>;
-
-export type CardAnchorProps = StyleProps<typeof cardAnchorVariants> &
-  WithChildrenProp;

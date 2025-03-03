@@ -214,19 +214,26 @@ export const ShadowPatternRight: Story = {
 export const CardLink: Story = {
   render: () => (
     <FlexBox column>
+      <FlexBox p={24} border={1}>
+        <Box flexGrow={1}>
+          <Card shadow="patternRight" isInteractive>
+            Default with patternRight
+          </Card>
+        </Box>
+      </FlexBox>
       <FlexBox row gap={16} p={24} border={1}>
         <Box flexGrow={1}>
-          <Card variant="white" shadow="none" href="/">
+          <Card variant="white" shadow="none" isInteractive>
             Link and no shadow
           </Card>
         </Box>
         <Box flexGrow={1}>
-          <Card variant="yellow" shadow="patternLeft" href="/">
+          <Card variant="yellow" shadow="patternLeft" isInteractive>
             Link and patternLeft
           </Card>
         </Box>
         <Box flexGrow={1}>
-          <Card variant="beige" shadow="outline" href="/">
+          <Card variant="beige" shadow="outline" isInteractive>
             Link and outline
           </Card>
         </Box>
@@ -234,12 +241,12 @@ export const CardLink: Story = {
       <Background bg="navy">
         <FlexBox row gap={16} p={24} border={1}>
           <Box flexGrow={1}>
-            <Card variant="navy" shadow="patternLeft" href="/">
+            <Card variant="navy" shadow="patternLeft" isInteractive>
               Link and patternLeft
             </Card>
           </Box>
           <Box flexGrow={1}>
-            <Card variant="hyper" shadow="patternRight" href="/">
+            <Card variant="hyper" shadow="patternRight" isInteractive>
               Link and patternRight
             </Card>
           </Box>

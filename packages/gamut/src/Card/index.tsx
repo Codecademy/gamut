@@ -1,6 +1,10 @@
+import { CheckerDense } from '@codecademy/gamut-patterns';
+import { Colors } from '@codecademy/gamut-styles';
 import * as React from 'react';
+import { useState } from 'react';
 
-import { AnchorWrapper, CardWrapper } from './elements';
+import { Box } from '../Box';
+import { DynamicCardWrapper, StaticCardWrapper } from './elements';
 import { CardProps } from './types';
 
 // export interface CardProps {
@@ -8,39 +12,76 @@ import { CardProps } from './types';
 // }
 
 export const Card: React.FC<CardProps> = ({
-  href = '',
-  onClick,
   children,
   variant = 'default',
   shadow = 'none',
-  pattern,
+  isInteractive = false,
+  pattern: Pattern = CheckerDense,
+  borderRadius,
   ...rest
 }) => {
-  const isInteractive = Boolean(href);
 
-  const cardWrapper = (
-    <CardWrapper
-      variant={variant}
-      shadow={shadow}
-      isInteractive={isInteractive}
-      pattern={pattern}
-      {...rest}
+  const defaultBorderRadius = isInteractive ? 'md' : 'none';
+  const trueBorderRadius = !borderRadius ? defaultBorderRadius : borderRadius;
+
+  const SelectedWrapper =
+    variant === 'default' ? DynamicCardWrapper : StaticCardWrapper;
+
+  const [isHovering, setIsHovering] = useState(false);
+  const handleMouseOver = () => {
+    setTimeout(() => {
+      setIsHovering(true);
+    }, 100);
+  };
+  const handleMouseLeave = () => {
+    setTimeout(() => {
+      setIsHovering(false);
+    }, 100);
+  };
+
+  const hasPattern = shadow === 'patternLeft' || shadow === 'patternRight';
+  const isInteractiveNotHovering = isInteractive && !isHovering;
+  const showPattern =
+    hasPattern && (!isInteractive || isInteractiveNotHovering);
+
+  const setHoverShadow = !isInteractive ? 'default' : shadow === 'patternRight' ? 'shadowRight' : 'shadowLeft';
+
+  return (
+    <Box
+      dimensions={1}
+      position="relative"
+      onMouseOver={handleMouseOver}
+      onMouseLeave={handleMouseLeave}
     >
-      {children}
-    </CardWrapper>
-  );
+      {showPattern && (
+        <Pattern
+          dimensions={1}
+          position="absolute"
+          top=".5rem"
+          left={shadow === 'patternLeft' ? '-0.5rem' : undefined}
+          right={shadow === 'patternRight' ? '-0.5rem' : undefined}
+          // do it in transition of background to transparent
+          // hover {
+            // transition={'color 0.5s ease-in-out'}
+            // bg={'transparent'}
+          // }
+          // can also check with framermotion to get the fade right
+          // look over checkbox for specificity styles
+        />
+        // </PatternWrapper>
 
-  if (isInteractive) {
-    return (
-      <AnchorWrapper
-        variant="interface"
-        href={href}
-        onClick={onClick}
-        hoverState={shadow === 'patternRight' ? 'hoverRight' : 'default'}
+      )}
+      <SelectedWrapper
+        bg={variant !== 'default' ? (variant as Colors) : 'white'}
+        variant={variant}
+        shadow={shadow}
+        hoverShadow={setHoverShadow}
+        borderRadius={trueBorderRadius}
+        {...rest}
       >
-        {cardWrapper}
-      </AnchorWrapper>
-    );
-  }
-  return <>{cardWrapper}</>;
+        {children}
+      </SelectedWrapper>
+    </Box>
+  );
 };
+
