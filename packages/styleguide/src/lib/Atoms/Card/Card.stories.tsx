@@ -1,4 +1,4 @@
-import { Box, Card, FlexBox } from '@codecademy/gamut';
+import { Anchor, Box, Card, FlexBox } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -216,39 +216,51 @@ export const CardLink: Story = {
     <FlexBox column>
       <FlexBox p={24} border={1}>
         <Box flexGrow={1}>
-          <Card shadow="patternRight" isInteractive>
-            Default with patternRight
-          </Card>
+          <Anchor dimensions={1} href="" variant="interface">
+            <Card shadow="patternRight" isInteractive>
+              Default, patternRight, and isInteractive
+            </Card>
+          </Anchor>
         </Box>
       </FlexBox>
       <FlexBox row gap={16} p={24} border={1}>
         <Box flexGrow={1}>
-          <Card variant="white" shadow="none" isInteractive>
-            Link and no shadow
-          </Card>
+          <Anchor dimensions={1} href="" variant="interface">
+            <Card variant="white" shadow="none" isInteractive>
+              White, no shadow, and isInteractive
+            </Card>
+          </Anchor>
         </Box>
         <Box flexGrow={1}>
-          <Card variant="yellow" shadow="patternLeft" isInteractive>
-            Link and patternLeft
-          </Card>
+          <Anchor dimensions={1} href="" variant="interface">
+            <Card variant="yellow" shadow="patternLeft" isInteractive>
+              Yellow, patternLeft, and isInteractive
+            </Card>
+          </Anchor>
         </Box>
         <Box flexGrow={1}>
-          <Card variant="beige" shadow="outline" isInteractive>
-            Link and outline
-          </Card>
+          <Anchor dimensions={1} href="" variant="interface">
+            <Card variant="beige" shadow="outline" isInteractive>
+              Beige, outline, and isInteractive
+            </Card>
+          </Anchor>
         </Box>
       </FlexBox>
       <Background bg="navy">
         <FlexBox row gap={16} p={24} border={1}>
           <Box flexGrow={1}>
-            <Card variant="navy" shadow="patternLeft" isInteractive>
-              Link and patternLeft
-            </Card>
+            <Anchor dimensions={1} href="" variant="interface">
+              <Card variant="navy" shadow="patternLeft" isInteractive>
+                Navy, patternLeft, and isInteractive
+              </Card>
+            </Anchor>
           </Box>
           <Box flexGrow={1}>
-            <Card variant="hyper" shadow="patternRight" isInteractive>
-              Link and patternRight
-            </Card>
+            <Anchor dimensions={1} href="" variant="interface">
+              <Card variant="hyper" shadow="patternRight" isInteractive>
+                Hyper, patternRight, and isInteractive
+              </Card>
+            </Anchor>
           </Box>
         </FlexBox>
       </Background>
