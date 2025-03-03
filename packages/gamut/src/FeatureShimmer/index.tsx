@@ -49,6 +49,7 @@ export const FeatureShimmer: React.FC<Omit<BoxProps, 'ref'>> = ({
           px={32}
           py={16}
           position="relative"
+          borderRadius={rest.borderRadius}
           animate={{
             backgroundColor: 'transparent',
             borderColor: 'transparent',
