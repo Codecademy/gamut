@@ -1,12 +1,13 @@
 import { Background } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
 import { Box } from '../Box';
 import {
   cardVariants,
   hoverShadowVariant,
-  shadowVariants,
-} from './styles';
+  patternState,
+  shadowVariants} from './styles';
 import { CardProps } from './types';
 
 
@@ -21,5 +22,10 @@ export const StaticCardWrapper = styled(Background)<CardProps>(
   shadowVariants,
   hoverShadowVariant,
 );
+
+export const CardWrapper = motion.create(Box);
+export const PatternWrapper = styled(CardWrapper)(
+  patternState
+)
 
 

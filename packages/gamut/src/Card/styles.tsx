@@ -1,4 +1,4 @@
-import { theme, variant } from '@codecademy/gamut-styles';
+import { states, theme, variant } from '@codecademy/gamut-styles';
 
 import { ButtonSelectors } from '../ButtonBase/ButtonBase';
 
@@ -70,3 +70,9 @@ export const hoverShadowVariant = variant({
     },
   },
 });
+
+export const patternState = states({
+  hidePattern: {
+    display: 'none',
+  }
+})

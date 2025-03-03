@@ -1,10 +1,8 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
-import { Colors } from '@codecademy/gamut-styles';
+import { Colors, timingValues } from '@codecademy/gamut-styles';
 import * as React from 'react';
-import { useState } from 'react';
 
-import { Box } from '../Box';
-import { DynamicCardWrapper, StaticCardWrapper } from './elements';
+import { CardWrapper, DynamicCardWrapper, PatternWrapper, StaticCardWrapper } from './elements';
 import { CardProps } from './types';
 
 // export interface CardProps {
@@ -27,51 +25,45 @@ export const Card: React.FC<CardProps> = ({
   const SelectedWrapper =
     variant === 'default' ? DynamicCardWrapper : StaticCardWrapper;
 
-  const [isHovering, setIsHovering] = useState(false);
-  const handleMouseOver = () => {
-    setTimeout(() => {
-      setIsHovering(true);
-    }, 100);
-  };
-  const handleMouseLeave = () => {
-    setTimeout(() => {
-      setIsHovering(false);
-    }, 100);
-  };
-
   const hasPattern = shadow === 'patternLeft' || shadow === 'patternRight';
-  const isInteractiveNotHovering = isInteractive && !isHovering;
-  const showPattern =
-    hasPattern && (!isInteractive || isInteractiveNotHovering);
 
   const setHoverShadow = !isInteractive ? 'default' : shadow === 'patternRight' ? 'shadowRight' : 'shadowLeft';
 
+  const fade = {
+    initial: {
+      opacity: 100,
+      transition: {
+        duration: timingValues.slow/1000,
+        ease: "easeOut",
+      },
+    },
+    animate: {
+      opacity: 0,
+      transition: {
+        duration: timingValues.slow/1000,
+        ease: "easeIn",
+      },
+    }
+  }
+
   return (
-    <Box
+    <CardWrapper
       dimensions={1}
-      position="relative"
-      onMouseOver={handleMouseOver}
-      onMouseLeave={handleMouseLeave}
+      position= "relative"
+      whileHover={ isInteractive ?  "animate" : ""}
     >
-      {showPattern && (
+      <PatternWrapper variants={fade} hidePattern={!hasPattern}>
         <Pattern
           dimensions={1}
           position="absolute"
           top=".5rem"
           left={shadow === 'patternLeft' ? '-0.5rem' : undefined}
           right={shadow === 'patternRight' ? '-0.5rem' : undefined}
-          // do it in transition of background to transparent
-          // hover {
-            // transition={'color 0.5s ease-in-out'}
-            // bg={'transparent'}
-          // }
-          // can also check with framermotion to get the fade right
-          // look over checkbox for specificity styles
         />
-        // </PatternWrapper>
-
-      )}
+      </PatternWrapper>
       <SelectedWrapper
+        // setting bg here since Background requires a bg prop
+        // the 'white' color doesn't actually get set since the variant overrides it
         bg={variant !== 'default' ? (variant as Colors) : 'white'}
         variant={variant}
         shadow={shadow}
@@ -81,7 +73,7 @@ export const Card: React.FC<CardProps> = ({
       >
         {children}
       </SelectedWrapper>
-    </Box>
+    </CardWrapper>
   );
 };
 
