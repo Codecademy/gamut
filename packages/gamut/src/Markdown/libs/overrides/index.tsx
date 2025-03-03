@@ -139,6 +139,7 @@ export const createVideoOverride = (
     ) as any;
 
     const altVideoSrc = [] as any;
+    const textTracks = [] as any;
 
     if (children) {
       children.forEach((element: any) => {
@@ -150,11 +151,22 @@ export const createVideoOverride = (
             });
           }
         } // Once we enable captions in the Video component, we can add an additional check here - GM-909
+        else if (element.type === 'track') {
+          textTracks.push({
+            src: element?.props.src,
+            language: element?.props.srcLang,
+            default: element?.props.default,
+            kind: element?.props.kind,
+            label: element?.props.label,
+            type: element?.props.type,
+          });
+        }
       });
     }
 
     const props = {
       src: altVideoSrc.length > 0 ? altVideoSrc : src,
+      textTracks,
       ...processedAttributes,
       children,
       key,

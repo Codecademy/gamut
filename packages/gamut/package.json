@@ -25,7 +25,8 @@
     "react-select": "^5.2.2",
     "react-truncate-markup": "^5.1.2",
     "react-use": "^15.3.8",
-    "sanitize-markdown": "^2.6.7"
+    "sanitize-markdown": "^2.6.7",
+    "@vidstack/react": "^1.12.12"
   },
   "files": [
     "dist"

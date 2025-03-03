@@ -347,17 +347,21 @@ Use the `printf()` function.
 
 ### Iframes
 
-Vimeo and Youtube video iframes will be rendered by our Video component, otherwise they'll render the original code.
+Vimeo and Youtube video iframes will be rendered by our Video component (if showPlayerEmbed is true it will be rendered in actual embed), otherwise they'll render the original code.
 
 <iframe src="https://player.vimeo.com/video/188237476?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Studio Ghibli in Real Life"></iframe>
 
 <br/>
 
-<iframe width="1094" height="842" src="https://www.youtube.com/embed/zhDwjnYZiCo" title="Ghibli Coffee Shop ☕️ Music to put you in a better mood 🌿 lofi hip hop - lofi songs | study / relax" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+<iframe width="1094" height="842" showPlayerEmbed src="https://www.youtube.com/embed/zhDwjnYZiCo" title="Ghibli Coffee Shop ☕️ Music to put you in a better mood 🌿 lofi hip hop - lofi songs | study / relax" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### Video
 
 `video`s with an `src` or a `source` video file will be rendered by our Video component, otherwise they'll render the original code. Videos with a `style` prop or another restricted prop will be stripped of that property.
+Insert `track` to add subtitles / captions to the video.
 
-<video width="100%" height="100%" align="middle" controls> <source src="https://content.codecademy.com/articles/db-browser/open-database.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
+<video width="100%" height="100%" align="middle" controls>
+  <source src="https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.mp4" type="video/mp4" />
+  <track src="https://static-assets-staging.codecademy.com/test-locales/how-to-build-a-portfolio.srt" type="srt" label="English" kind="subtitles" srclang="en-US" default="true" />
+  Your browser does not support the video tag. 
+</video>
