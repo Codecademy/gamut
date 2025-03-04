@@ -19,74 +19,77 @@ export const ExplodedCubeLight: React.FC<IllustrationProps> = ({
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
     <path
+      d="M83.7448 16.2144L114.489 33.9646L114.49 69.34L83.7453 51.5898L83.7448 16.2144Z"
       fill="#FF8C00"
       stroke="#10162F"
-      strokeMiterlimit="10"
       strokeWidth="2"
-      d="m83.745 16.214 30.744 17.75.001 35.376-30.745-17.75V16.214Z"
+      strokeMiterlimit="10"
     />
     <path
+      d="M70.3431 20.0535L70.3453 55.4298L39.7074 73.1161L39.7069 37.7407L70.3431 20.0535Z"
       stroke="#10162F"
-      strokeMiterlimit="10"
       strokeWidth="2"
-      d="m70.343 20.053.002 35.377-30.638 17.686V37.741l30.636-17.688Z"
+      strokeMiterlimit="10"
     />
     <path
+      d="M81.0531 65.0315L111.727 82.7413L81.0895 100.428L50.4169 82.7188L81.0531 65.0315Z"
       fill="#F5FCFF"
       stroke="#10162F"
-      strokeMiterlimit="10"
       strokeWidth="2"
-      d="m81.053 65.031 30.674 17.71-30.638 17.687-30.672-17.71 30.636-17.687Z"
+      strokeMiterlimit="10"
     />
     <path
+      d="M70.3431 20.0535L70.3453 55.4298L39.7074 73.1161L39.7069 37.7407L70.3431 20.0535Z"
       stroke="#10162F"
-      strokeMiterlimit="10"
       strokeWidth="2"
-      d="m70.343 20.053.002 35.377-30.638 17.686V37.741l30.636-17.688Z"
+      strokeMiterlimit="10"
     />
     <path
-      fill="#fff"
-      d="M94.265 41.637v35.376L63.63 94.7l-.002-35.376 30.638-17.687Z"
+      d="M94.2652 41.6374L94.2657 77.0128L63.6295 94.7L63.6273 59.3237L94.2652 41.6374Z"
+      fill="white"
     />
     <path
-      fill="url(#a)"
-      d="M94.265 41.637v35.376L63.63 94.7l-.002-35.376 30.638-17.687Z"
+      d="M94.2652 41.6374L94.2657 77.0128L63.6295 94.7L63.6273 59.3237L94.2652 41.6374Z"
+      fill="url(#pattern0_1589_77116)"
     />
     <path
+      d="M94.2652 41.6374L94.2657 77.0128L63.6295 94.7L63.6273 59.3237L94.2652 41.6374Z"
       stroke="#10162F"
-      strokeMiterlimit="10"
       strokeWidth="2"
-      d="M94.265 41.637v35.376L63.63 94.7l-.002-35.376 30.638-17.687Z"
+      strokeMiterlimit="10"
     />
     <path
+      d="M32.8539 41.5571L63.5982 59.3073L63.5987 94.6827L32.8544 76.9325L32.8539 41.5571Z"
       fill="#FF8C00"
       stroke="#10162F"
-      strokeMiterlimit="10"
       strokeWidth="2"
-      d="m32.854 41.557 30.744 17.75v35.376l-30.744-17.75V41.557Z"
+      strokeMiterlimit="10"
     />
     <path
+      d="M73.1883 9.43471L103.863 27.1445L73.2247 44.8308L42.5521 27.122L73.1883 9.43471Z"
       fill="#F5FCFF"
       stroke="#10162F"
-      strokeMiterlimit="10"
       strokeWidth="2"
-      d="m73.188 9.435 30.675 17.71L73.225 44.83 42.552 27.122 73.188 9.435Z"
+      strokeMiterlimit="10"
     />
     <defs>
       <pattern
-        id="a"
-        width="1.045"
-        height="1.809"
+        id="pattern0_1589_77116"
         patternContentUnits="objectBoundingBox"
+        width="1.04453"
+        height="1.80902"
       >
-        <use xlinkHref="#b" transform="scale(.01632 .02827)" />
+        <use
+          xlinkHref="#image0_1589_77116"
+          transform="scale(0.0163208 0.028266)"
+        />
       </pattern>
       <image
-        xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAChSURBVHgB7dgxDoAwDMXQ5P53BoaIARaE2iJa+23p6j81ImKPK9qtk0ugsryKS6CyvIpLoLK8ikugsryKS6CyvIpLoLK8ikugsryKS6CyvIpLoLI8VN4faOW3gLJ8QOXDjSuPWYLlH+5l5csbV37ZJVj+5b2MbLxx5ZdZguUb72ll5xtXftolWL7zPY0cfOPKT7MEyw++fys/vnHlsb/DFwf+rf4QcSN+5wAAAABJRU5ErkJggg=="
-        id="b"
+        id="image0_1589_77116"
         width="64"
         height="64"
         preserveAspectRatio="none"
+        xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAChSURBVHgB7dgxDoAwDMXQ5P53BoaIARaE2iJa+23p6j81ImKPK9qtk0ugsryKS6CyvIpLoLK8ikugsryKS6CyvIpLoLK8ikugsryKS6CyvIpLoLI8VN4faOW3gLJ8QOXDjSuPWYLlH+5l5csbV37ZJVj+5b2MbLxx5ZdZguUb72ll5xtXftolWL7zPY0cfOPKT7MEyw++fys/vnHlsb/DFwf+rf4QcSN+5wAAAABJRU5ErkJggg=="
       />
     </defs>
   </svg>
