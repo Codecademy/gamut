@@ -52,13 +52,14 @@ export const Card: React.FC<CardProps> = ({
       position= "relative"
       whileHover={ isInteractive ?  "animate" : ""}
     >
-      <PatternWrapper variants={fade} hidePattern={!hasPattern}>
+      <PatternWrapper variants={fade} hidePattern={!hasPattern} borderRadius={trueBorderRadius}>
         <Pattern
           dimensions={1}
           position="absolute"
           top=".5rem"
           left={shadow === 'patternLeft' ? '-0.5rem' : undefined}
           right={shadow === 'patternRight' ? '-0.5rem' : undefined}
+          style={{ borderRadius: 'inherit' }}
         />
       </PatternWrapper>
       <SelectedWrapper

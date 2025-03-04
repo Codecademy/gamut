@@ -11,7 +11,7 @@ export const parameters = {
     type: 'figma',
     url: 'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=29975-39392&node-type=frame&t=SgphNxlCwEFrcv0X-0',
   },
-  status: 'updating',
+  status: 'current',
   source: {
     repo: 'gamut',
     githubLink:
@@ -25,7 +25,7 @@ export const parameters = {
 
 ## Usage
 
-Use Card to present different types of information in a visually appealing way.
+Use `Card` to present different types of information in a visually appealing way.
 
 ## Variants
 
@@ -33,55 +33,60 @@ Use Card to present different types of information in a visually appealing way.
 
 #### Default
 
-When a Card's `variant` prop isn't set, or it's set to `'default'` it will use the `'background'` color token — this color token is <LinkTo id="Foundations/ColorMode">ColorMode</LinkTo> responsive.
+When a `Card` is missing a `variant` prop, or it's set to `'default'` it will use the `'background'` color token — this color token is <LinkTo id="Foundations/ColorMode">ColorMode</LinkTo> responsive.
 
 <Canvas of={CardStories.Dynamic} />
 
 #### White, Yellow, and Biege
 
-The `'white'`, `'yellow'`, and `'beige'` variants are used to apply static background colors to the Card. These colors are intended to work when the Card is used inside a "light mode" background.
+The `'white'`, `'yellow'`, and `'beige'` variants are used to apply static background colors to the `Card`. These colors are intended to work when the `Card` is used inside a "light mode" background.
 
 <Canvas of={CardStories.StaticLight} />
 
 ### Navy and Hyper
 
-The `'navy'` and `'hyper'` variants are used to apply static background colors to the Card. These colors are intended to work when the Card is used inside a "dark mode" background.
+The `'navy'` and `'hyper'` variants are used to apply static background colors to the `Card`. These colors are intended to work when the `Card` is used inside a "dark mode" background.
 
 <Canvas of={CardStories.StaticDark} />
 
 ### Shadow
 
-Cards can also take on a `shadow` variant that applies an additional styling to the bottom and left/right sides of the card.
+A `Card` can also take on a `shadow` variant that applies an additional styling to the bottom and left/right sides of the card.
 
 #### None
 
-By default, or when setting `shadow = "none"`, there is no shadow/pattern applied to the card.
+By default, or when setting `shadow = "none"`, there is no shadow/pattern applied to the `Card`.
 
 <Canvas of={CardStories.ShadowNone} />
 
 #### Outline
 
-Setting `shadow = "outline"` will apply a shadow to the bottom and left sides of the Card that takes on the color and border color of the Card.
+Setting `shadow = "outline"` will apply a shadow to the bottom and left sides of the `Card` that takes on the color and its border color.
 
 <Canvas of={CardStories.ShadowOutline} />
 
 #### PatternLeft
 
-Setting `shadow = "patternLeft"` will apply a pattern bottom and left sides of the Card. By default, the pattern used is `CheckerDense`, but you can pass in a different pattern using the `pattern` prop.
+Setting `shadow = "patternLeft"` will apply a pattern bottom and left sides of the `Card`. By default, the pattern used is `CheckerDense`, but you can pass in a different pattern using the `pattern` prop.
 
 <Canvas of={CardStories.ShadowPatternLeft} />
 
 #### PatternRight
 
-Setting `shadow = "patternRight"` works like `"patternLeft"` but applies the pattern to the bottom and right sides of the Card. You may also change the `pattern` used.
+Setting `shadow = "patternRight"` works like `"patternLeft"` but applies the pattern to the bottom and right sides of the `Card`. You may also change the `pattern` used.
 
 <Canvas of={CardStories.ShadowPatternRight} />
 
 ### As a link
 
-Cards can be used as links by providing an `href` prop. These Cards can also accept an `onClick` prop that accepts a function. Stylistically, these Cards will have a hover effect that adds a shadow to the card. Cards that have a pattern will lose their pattern when on hover.
+A `Card` can be used as a link by wrapping it in an <LinkTo id="Typography/Anchor">Anchor</LinkTo> component. When doing so, add the `isInteractive` prop to style the `Card` to gain a `'md'` border-radius and apply a hover effect that adds a shadow — a `Card` with a pattern will lose their pattern while on hover.
 
 <Canvas of={CardStories.CardLink} />
+
+### Border Radius
+By default, a `Card` has a `borderRadius` of `'none'` — which denotes that the `Card` is not clickable. When given the `isInteractive` prop, the `Card` takes on a `borderRadius` of `'md'`. However, the `borderRadius` prop can also be manually overridden to match the required design. The outline or pattern of a `Card` will match the provided `borderRadius`.
+
+<Canvas of={CardStories.BorderRadius} />
 
 ## Playground
 

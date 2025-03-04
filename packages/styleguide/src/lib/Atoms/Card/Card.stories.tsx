@@ -280,3 +280,21 @@ export const Dynamic: Story = {
     </FlexBox>
   ),
 };
+
+
+export const BorderRadius: Story = {
+  render: () => (
+    <FlexBox p={24} border={1} gap={16}>
+      <Box flexGrow={1}>
+        <Card shadow="outline" variant="yellow" borderRadius="sm">
+          Yellow, outline, and borderRadius is &apos;sm&apos;
+        </Card>
+      </Box>
+      <Box flexGrow={1}>
+        <Card shadow="patternLeft" variant="beige" borderRadius="xl">
+          Beige, patternLeft, and borderRadius is &apos;xl&apos;
+        </Card>
+      </Box>
+    </FlexBox>
+  )
+};
