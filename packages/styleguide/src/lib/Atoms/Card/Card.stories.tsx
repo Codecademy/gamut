@@ -211,7 +211,7 @@ export const ShadowPatternRight: Story = {
   ),
 };
 
-export const CardLink: Story = {
+export const IsInteractive: Story = {
   render: () => (
     <FlexBox column>
       <FlexBox p={24} border={1}>
