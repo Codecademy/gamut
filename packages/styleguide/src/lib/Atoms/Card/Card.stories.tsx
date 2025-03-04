@@ -281,7 +281,6 @@ export const Dynamic: Story = {
   ),
 };
 
-
 export const BorderRadius: Story = {
   render: () => (
     <FlexBox p={24} border={1} gap={16}>
@@ -296,5 +295,5 @@ export const BorderRadius: Story = {
         </Card>
       </Box>
     </FlexBox>
-  )
+  ),
 };

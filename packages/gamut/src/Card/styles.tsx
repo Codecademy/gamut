@@ -1,7 +1,5 @@
 import { states, theme, timingValues, variant } from '@codecademy/gamut-styles';
 
-import { ButtonSelectors } from '../ButtonBase/ButtonBase';
-
 export const cardVariants = variant({
   defaultVariant: 'default',
   base: {
@@ -50,59 +48,58 @@ export const shadowVariants = variant({
 export const patternState = states({
   hidePattern: {
     display: 'none',
-  }
-})
-
+  },
+});
 
 export const patternFadeInOut = {
   initial: {
     opacity: 100,
     transition: {
-      duration: timingValues.slow/1000,
-      ease: "easeOut",
+      duration: timingValues.slow / 1000,
+      ease: 'easeOut',
     },
   },
   animate: {
     opacity: 0,
     transition: {
-      duration: timingValues.slow/1000,
-      ease: "easeIn",
+      duration: timingValues.slow / 1000,
+      ease: 'easeIn',
     },
-  }
-}
+  },
+};
 
 export const hoverShadowLeft = {
   initial: {
     boxShadow: `0px 0px 0 ${theme.colors['shadow-primary']}`,
     transition: {
-      duration: timingValues.fast/1000,
-      ease: "easeIn",
+      duration: timingValues.fast / 1000,
+      ease: 'easeIn',
     },
   },
   animate: {
     transform: 'translate(4px, -4px)',
     boxShadow: `-8px 8px 0 ${theme.colors['shadow-primary']}`,
     transition: {
-      duration: timingValues.fast/1000,
-      ease: "easeIn",
+      duration: timingValues.fast / 1000,
+      ease: 'easeIn',
     },
-  }
-}
+  },
+};
 
 export const hoverShadowRight = {
   initial: {
     boxShadow: `0px 0px 0 ${theme.colors['shadow-primary']}`,
     transition: {
-      duration: timingValues.fast/1000,
-      ease: "easeIn",
+      duration: timingValues.fast / 1000,
+      ease: 'easeIn',
     },
   },
   animate: {
     transform: 'translate(-4px, -4px)',
     boxShadow: `8px 8px 0 ${theme.colors['shadow-primary']}`,
     transition: {
-      duration: timingValues.fast/1000,
-      ease: "easeIn",
+      duration: timingValues.fast / 1000,
+      ease: 'easeIn',
     },
-  }
-}
+  },
+};

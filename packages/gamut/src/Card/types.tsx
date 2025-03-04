@@ -4,10 +4,7 @@ import { ComponentProps } from 'react';
 
 import { Box } from '../Box';
 import { WithChildrenProp } from '../utils';
-import {
-  cardVariants,
-  shadowVariants,
-} from './styles';
+import { cardVariants, shadowVariants } from './styles';
 
 export interface CardProps
   extends StyleProps<typeof cardVariants>,

@@ -2,7 +2,12 @@ import { CheckerDense } from '@codecademy/gamut-patterns';
 import { Colors } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
-import { CardContainer, DynamicCardWrapper, PatternWrapper, StaticCardWrapper } from './elements';
+import {
+  CardContainer,
+  DynamicCardWrapper,
+  PatternWrapper,
+  StaticCardWrapper,
+} from './elements';
 import { hoverShadowLeft, hoverShadowRight, patternFadeInOut } from './styles';
 import { CardProps } from './types';
 
@@ -19,7 +24,6 @@ export const Card: React.FC<CardProps> = ({
   borderRadius,
   ...rest
 }) => {
-
   const defaultBorderRadius = isInteractive ? 'md' : 'none';
   const trueBorderRadius = !borderRadius ? defaultBorderRadius : borderRadius;
 
@@ -28,15 +32,20 @@ export const Card: React.FC<CardProps> = ({
 
   const hasPattern = shadow === 'patternLeft' || shadow === 'patternRight';
 
-  const setHoverShadow = shadow === 'patternRight' ? hoverShadowRight : hoverShadowLeft;
+  const setHoverShadow =
+    shadow === 'patternRight' ? hoverShadowRight : hoverShadowLeft;
 
   return (
     <CardContainer
       dimensions={1}
-      position= "relative"
-      whileHover={isInteractive ?  "animate" : ""}
+      position="relative"
+      whileHover={isInteractive ? 'animate' : ''}
     >
-      <PatternWrapper variants={patternFadeInOut} hidePattern={!hasPattern} borderRadius={trueBorderRadius}>
+      <PatternWrapper
+        variants={patternFadeInOut}
+        hidePattern={!hasPattern}
+        borderRadius={trueBorderRadius}
+      >
         <Pattern
           dimensions={1}
           position="absolute"
@@ -61,4 +70,3 @@ export const Card: React.FC<CardProps> = ({
     </CardContainer>
   );
 };
-
