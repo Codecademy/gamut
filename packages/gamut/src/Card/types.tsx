@@ -6,14 +6,12 @@ import { Box } from '../Box';
 import { WithChildrenProp } from '../utils';
 import {
   cardVariants,
-  hoverShadowVariant,
   shadowVariants,
 } from './styles';
 
 export interface CardProps
   extends StyleProps<typeof cardVariants>,
     StyleProps<typeof shadowVariants>,
-    StyleProps<typeof hoverShadowVariant>,
     WithChildrenProp {
   pattern?: React.ComponentType<PatternProps>;
   borderRadius?: ComponentProps<typeof Box>['borderRadius'];

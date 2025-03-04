@@ -286,8 +286,8 @@ export const BorderRadius: Story = {
   render: () => (
     <FlexBox p={24} border={1} gap={16}>
       <Box flexGrow={1}>
-        <Card shadow="outline" variant="yellow" borderRadius="sm">
-          Yellow, outline, and borderRadius is &apos;sm&apos;
+        <Card shadow="outline" variant="yellow" borderRadius="sm" isInteractive>
+          Yellow, isInteractive, outline, and borderRadius is &apos;sm&apos;
         </Card>
       </Box>
       <Box flexGrow={1}>

@@ -5,27 +5,24 @@ import { motion } from 'framer-motion';
 import { Box } from '../Box';
 import {
   cardVariants,
-  hoverShadowVariant,
   patternState,
-  shadowVariants} from './styles';
+  shadowVariants
+} from './styles';
 import { CardProps } from './types';
 
-
-export const DynamicCardWrapper = styled(Box)<CardProps>(
-  cardVariants,
-  shadowVariants,
-  hoverShadowVariant,
-);
-
-export const StaticCardWrapper = styled(Background)<CardProps>(
-  cardVariants,
-  shadowVariants,
-  hoverShadowVariant,
-);
-
-export const CardWrapper = motion.create(Box);
-export const PatternWrapper = styled(CardWrapper)(
+export const CardContainer = motion.create(Box);
+export const PatternWrapper = styled(CardContainer)(
   patternState
 )
 
+export const DynamicCardWrapper = styled(CardContainer)<CardProps>(
+  cardVariants,
+  shadowVariants,
+);
+
+const StaticCard = motion.create(Background)
+export const StaticCardWrapper = styled(StaticCard)<CardProps>(
+  cardVariants,
+  shadowVariants,
+);
 

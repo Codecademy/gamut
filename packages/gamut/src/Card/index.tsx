@@ -1,8 +1,9 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
-import { Colors, timingValues } from '@codecademy/gamut-styles';
+import { Colors } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
-import { CardWrapper, DynamicCardWrapper, PatternWrapper, StaticCardWrapper } from './elements';
+import { CardContainer, DynamicCardWrapper, PatternWrapper, StaticCardWrapper } from './elements';
+import { hoverShadowLeft, hoverShadowRight, patternFadeInOut } from './styles';
 import { CardProps } from './types';
 
 // export interface CardProps {
@@ -27,32 +28,15 @@ export const Card: React.FC<CardProps> = ({
 
   const hasPattern = shadow === 'patternLeft' || shadow === 'patternRight';
 
-  const setHoverShadow = !isInteractive ? 'default' : shadow === 'patternRight' ? 'shadowRight' : 'shadowLeft';
-
-  const fade = {
-    initial: {
-      opacity: 100,
-      transition: {
-        duration: timingValues.slow/1000,
-        ease: "easeOut",
-      },
-    },
-    animate: {
-      opacity: 0,
-      transition: {
-        duration: timingValues.slow/1000,
-        ease: "easeIn",
-      },
-    }
-  }
+  const setHoverShadow = shadow === 'patternRight' ? hoverShadowRight : hoverShadowLeft;
 
   return (
-    <CardWrapper
+    <CardContainer
       dimensions={1}
       position= "relative"
-      whileHover={ isInteractive ?  "animate" : ""}
+      whileHover={isInteractive ?  "animate" : ""}
     >
-      <PatternWrapper variants={fade} hidePattern={!hasPattern} borderRadius={trueBorderRadius}>
+      <PatternWrapper variants={patternFadeInOut} hidePattern={!hasPattern} borderRadius={trueBorderRadius}>
         <Pattern
           dimensions={1}
           position="absolute"
@@ -67,14 +51,14 @@ export const Card: React.FC<CardProps> = ({
         // the 'white' color doesn't actually get set since the variant overrides it
         bg={variant !== 'default' ? (variant as Colors) : 'white'}
         variant={variant}
+        variants={setHoverShadow}
         shadow={shadow}
-        hoverShadow={setHoverShadow}
         borderRadius={trueBorderRadius}
         {...rest}
       >
         {children}
       </SelectedWrapper>
-    </CardWrapper>
+    </CardContainer>
   );
 };
 
