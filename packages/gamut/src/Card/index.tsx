@@ -11,10 +11,6 @@ import {
 import { hoverShadowLeft, hoverShadowRight, patternFadeInOut } from './styles';
 import { CardProps } from './types';
 
-// export interface CardProps {
-//   variant?: 'navy' | 'white' | 'hyper' | 'yellow' | 'beige';
-// }
-
 export const Card: React.FC<CardProps> = ({
   children,
   variant = 'default',

@@ -53,7 +53,7 @@ export const patternState = states({
 
 export const patternFadeInOut = {
   initial: {
-    opacity: 100,
+    opacity: 1,
     transition: {
       duration: timingValues.slow / 1000,
       ease: 'easeOut',
