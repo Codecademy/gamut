@@ -1,7 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 
 import { Box, BoxProps } from '../Box';
 
@@ -19,24 +18,37 @@ const Shimmer = styled(BaseContainer)(
   })
 );
 
+const boxVariants = {
+  inView: {
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    transition: {
+      ease: 'easeOut',
+      duration: 0.3,
+      delay: 4,
+    },
+  },
+};
+
+const shimmerVariants = {
+  inView: {
+    left: '110%', // extra % to account for rotation
+    transition: {
+      ease: 'easeInOut',
+      duration: 2,
+      delay: 2,
+    },
+  },
+};
+
 export const FeatureShimmer: React.FC<Omit<BoxProps, 'ref'>> = ({
   children,
   ...rest
 }) => {
   const shouldReduceMotion = useReducedMotion();
-  const ref = useRef(null);
-  const inView = useInView(ref);
-  const [isInView, setIsInView] = useState(true);
-
-  useEffect(() => {
-    if (inView) {
-      setIsInView(true);
-    }
-  }, [inView]);
-
   return (
-    <Box {...rest} ref={ref}>
-      {shouldReduceMotion || !isInView ? (
+    <Box {...rest}>
+      {shouldReduceMotion ? (
         children
       ) : (
         <BaseContainer
@@ -50,26 +62,14 @@ export const FeatureShimmer: React.FC<Omit<BoxProps, 'ref'>> = ({
           py={16}
           position="relative"
           borderRadius={rest?.borderRadius}
-          animate={{
-            backgroundColor: 'transparent',
-            borderColor: 'transparent',
-          }}
-          transition={{
-            ease: 'easeOut',
-            duration: 0.3,
-            delay: 4,
-          }}
+          variants={boxVariants}
+          whileInView="inView"
+          viewport={{ once: true }}
         >
           <Shimmer
             data-testid="feature-shimmer"
-            animate={{
-              left: '110%', // extra % to account for rotation
-            }}
-            transition={{
-              ease: 'easeInOut',
-              duration: 2,
-              delay: 2,
-            }}
+            variants={shimmerVariants}
+            viewport={{ once: true }}
           />
           {children}
         </BaseContainer>
