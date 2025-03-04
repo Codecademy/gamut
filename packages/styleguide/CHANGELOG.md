@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [70.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.1.2...@codecademy/styleguide@70.2.0) (2025-03-03)
+
+### Features
+
+- add layout + percipio icon ([95d89db](https://github.com/Codecademy/gamut/commit/95d89dbc776738893669e438147ef34a400766b9))
+
+### [70.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.1.1...@codecademy/styleguide@70.1.2) (2025-02-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [70.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.1.0...@codecademy/styleguide@70.1.1) (2025-02-10)
 
 **Note:** Version bump only for package @codecademy/styleguide
