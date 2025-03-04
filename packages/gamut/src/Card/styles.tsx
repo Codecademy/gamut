@@ -73,7 +73,7 @@ export const hoverShadowLeft = {
     boxShadow: `0px 0px 0 ${theme.colors['shadow-primary']}`,
     transition: {
       duration: timingValues.fast / 1000,
-      ease: 'easeIn',
+      ease: 'easeOut',
     },
   },
   animate: {
@@ -91,7 +91,7 @@ export const hoverShadowRight = {
     boxShadow: `0px 0px 0 ${theme.colors['shadow-primary']}`,
     transition: {
       duration: timingValues.fast / 1000,
-      ease: 'easeIn',
+      ease: 'easeOut',
     },
   },
   animate: {
