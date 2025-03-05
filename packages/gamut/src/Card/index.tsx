@@ -59,6 +59,7 @@ export const Card: React.FC<CardProps> = ({
         variants={setHoverShadow}
         shadow={shadow}
         borderRadius={trueBorderRadius}
+        p={16}
         {...rest}
       >
         {children}
