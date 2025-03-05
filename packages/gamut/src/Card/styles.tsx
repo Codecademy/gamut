@@ -5,8 +5,6 @@ export const cardVariants = variant({
   base: {
     border: 1,
     color: 'text',
-    maxWidth: '100%',
-    position: 'relative',
   },
   variants: {
     default: {

@@ -16,4 +16,7 @@ export interface CardWrapperProps
   isInteractive?: boolean;
 }
 
-export type CardProps = Omit<React.ComponentProps<typeof DynamicCardWrapper>, 'bg'>
+export type CardProps = Omit<
+  React.ComponentProps<typeof DynamicCardWrapper>,
+  'bg'
+>;

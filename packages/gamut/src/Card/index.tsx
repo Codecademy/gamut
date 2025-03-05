@@ -60,6 +60,8 @@ export const Card: React.FC<CardProps> = ({
         shadow={shadow}
         borderRadius={trueBorderRadius}
         p={16}
+        maxWidth="100%"
+        position="relative"
         {...rest}
       >
         {children}
