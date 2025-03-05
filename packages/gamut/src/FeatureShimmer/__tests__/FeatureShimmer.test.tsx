@@ -2,13 +2,10 @@ import { setupRtl } from '@codecademy/gamut-tests';
 
 import { FeatureShimmer } from '..';
 
-const mockUseInView = jest.fn();
+const mockIntersectionObserver = jest.fn();
 const mockUseReducedMotion = jest.fn();
 jest.mock('framer-motion', () => ({
   ...jest.requireActual('framer-motion'),
-  get useInView() {
-    return mockUseInView;
-  },
   get useReducedMotion() {
     return mockUseReducedMotion;
   },
@@ -17,9 +14,15 @@ jest.mock('framer-motion', () => ({
 const renderView = setupRtl(FeatureShimmer, { children: 'Testing' });
 
 describe('FeatureShimmer', () => {
+  beforeEach(() => {
+    mockIntersectionObserver.mockReturnValue({
+      observe: jest.fn(),
+      disconnect: jest.fn(),
+    });
+    window.IntersectionObserver = mockIntersectionObserver;
+  });
   it('renders animation when reduced motion is false', () => {
     mockUseReducedMotion.mockReturnValue(false);
-    mockUseInView.mockReturnValue(true);
 
     const { view } = renderView();
 
@@ -38,7 +41,6 @@ describe('FeatureShimmer', () => {
 
   it('does not render animation when element is out of view', () => {
     mockUseReducedMotion.mockReturnValue(false);
-    mockUseInView.mockReturnValue(false);
 
     const { view } = renderView();
 
@@ -48,7 +50,6 @@ describe('FeatureShimmer', () => {
 
   it('renders animation when element is in view', () => {
     mockUseReducedMotion.mockReturnValue(false);
-    mockUseInView.mockReturnValue(true);
 
     const { view } = renderView();
 
