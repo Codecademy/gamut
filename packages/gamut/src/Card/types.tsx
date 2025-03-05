@@ -7,7 +7,7 @@ import { WithChildrenProp } from '../utils';
 import { DynamicCardWrapper } from './elements';
 import { cardVariants, shadowVariants } from './styles';
 
-export interface CardProps
+export interface CardWrapperProps
   extends StyleProps<typeof cardVariants>,
     StyleProps<typeof shadowVariants>,
     WithChildrenProp {
@@ -16,4 +16,4 @@ export interface CardProps
   isInteractive?: boolean;
 }
 
-export type CardContainerProps = Omit<React.ComponentProps<typeof DynamicCardWrapper>, 'bg'>
+export type CardProps = Omit<React.ComponentProps<typeof DynamicCardWrapper>, 'bg'>
