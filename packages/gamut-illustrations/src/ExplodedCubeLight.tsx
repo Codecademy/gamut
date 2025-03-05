@@ -13,60 +13,61 @@ export const ExplodedCubeLight: React.FC<IllustrationProps> = ({
     className={className}
     width={width}
     height={height}
-    viewBox="0 0 151 113"
+    viewBox="0 0 148 102"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
     <path
-      d="M83.7448 16.2144L114.489 33.9646L114.49 69.34L83.7453 51.5898L83.7448 16.2144Z"
+      d="M83.0002 11.7573L113.745 29.5075L113.745 64.8829L83.0007 47.1327L83.0002 11.7573Z"
       fill="#FF8C00"
       stroke="#10162F"
       strokeWidth="2"
       strokeMiterlimit="10"
     />
     <path
-      d="M70.3431 20.0535L70.3453 55.4298L39.7074 73.1161L39.7069 37.7407L70.3431 20.0535Z"
+      d="M69.5985 15.5964L69.6006 50.9727L38.9627 68.659L38.9622 33.2836L69.5985 15.5964Z"
       stroke="#10162F"
       strokeWidth="2"
       strokeMiterlimit="10"
     />
     <path
-      d="M81.0531 65.0315L111.727 82.7413L81.0895 100.428L50.4169 82.7188L81.0531 65.0315Z"
+      d="M80.3084 60.575L110.983 78.2848L80.3447 95.971L49.6721 78.2622L80.3084 60.575Z"
       fill="#F5FCFF"
       stroke="#10162F"
       strokeWidth="2"
       strokeMiterlimit="10"
     />
     <path
-      d="M70.3431 20.0535L70.3453 55.4298L39.7074 73.1161L39.7069 37.7407L70.3431 20.0535Z"
+      d="M69.5985 15.5964L69.6006 50.9727L38.9627 68.659L38.9622 33.2836L69.5985 15.5964Z"
+      fill="#F5FCFF"
       stroke="#10162F"
       strokeWidth="2"
       strokeMiterlimit="10"
     />
     <path
-      d="M94.2652 41.6374L94.2657 77.0128L63.6295 94.7L63.6273 59.3237L94.2652 41.6374Z"
+      d="M93.5205 37.1806L93.521 72.556L62.8848 90.2433L62.8826 54.8669L93.5205 37.1806Z"
       fill="white"
     />
     <path
-      d="M94.2652 41.6374L94.2657 77.0128L63.6295 94.7L63.6273 59.3237L94.2652 41.6374Z"
-      fill="url(#pattern0_1589_77116)"
+      d="M93.5205 37.1806L93.521 72.556L62.8848 90.2433L62.8826 54.8669L93.5205 37.1806Z"
+      fill="url(#pattern0)"
     />
     <path
-      d="M94.2652 41.6374L94.2657 77.0128L63.6295 94.7L63.6273 59.3237L94.2652 41.6374Z"
+      d="M93.5205 37.1806L93.521 72.556L62.8848 90.2433L62.8826 54.8669L93.5205 37.1806Z"
       stroke="#10162F"
       strokeWidth="2"
       strokeMiterlimit="10"
     />
     <path
-      d="M32.8539 41.5571L63.5982 59.3073L63.5987 94.6827L32.8544 76.9325L32.8539 41.5571Z"
+      d="M30.1092 37.1003L60.8535 54.8505L60.854 90.2259L30.1097 72.4757L30.1092 37.1003Z"
       fill="#FF8C00"
       stroke="#10162F"
       strokeWidth="2"
       strokeMiterlimit="10"
     />
     <path
-      d="M73.1883 9.43471L103.863 27.1445L73.2247 44.8308L42.5521 27.122L73.1883 9.43471Z"
+      d="M72.4436 4.97803L103.118 22.6878L72.48 40.3741L41.8074 22.6653L72.4436 4.97803Z"
       fill="#F5FCFF"
       stroke="#10162F"
       strokeWidth="2"
@@ -74,18 +75,15 @@ export const ExplodedCubeLight: React.FC<IllustrationProps> = ({
     />
     <defs>
       <pattern
-        id="pattern0_1589_77116"
+        id="pattern0"
         patternContentUnits="objectBoundingBox"
         width="1.04453"
         height="1.80902"
       >
-        <use
-          xlinkHref="#image0_1589_77116"
-          transform="scale(0.0163208 0.028266)"
-        />
+        <use xlinkHref="#image0" transform="scale(0.0163208 0.028266)" />
       </pattern>
       <image
-        id="image0_1589_77116"
+        id="image0"
         width="64"
         height="64"
         preserveAspectRatio="none"
