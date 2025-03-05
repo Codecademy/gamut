@@ -30,8 +30,7 @@ Use `FeatureShimmer` to subtly draw attention to secondary new features or eleme
 ### Best practices:
 
 - Only apply `FeatureShimmer` to a single element at a time to avoid overwhelming the user.
-- Set a reasonable limit for how often the shimmer appears, such as up to 3 times or until the user interacts with the element.
-- Disable for users with reduced motion settings enabled.
+- To prevent unnecessary distraction, ensure that the shimmer effect is not shown indefinitely. Set a reasonable limit on how many times a user sees it in total (e.g., up to 3 times across separate sessions or page loads), or stop showing it once the user interacts with the element.
 
 ### When NOT to use:
 
