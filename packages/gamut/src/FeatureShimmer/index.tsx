@@ -7,10 +7,11 @@ import { Box, BoxProps } from '../Box';
 const BaseContainer = motion.create(Box);
 const Shimmer = styled(BaseContainer)(
   css({
-    height: 'calc(100% + 20px)',
-    width: 'calc(100% / 8)',
+    height: '150%',
+    width: 'calc(100% / 9)',
     position: 'absolute',
     transform: 'rotate(30deg)',
+    transformOrigin: 'top right',
     filter: 'blur(25px)',
     left: '-100%',
     top: 0,
@@ -32,7 +33,7 @@ const boxVariants = {
 
 const shimmerVariants = {
   inView: {
-    left: '110%', // extra % to account for rotation
+    left: '120%', // extra % to account for rotation
     transition: {
       ease: 'easeInOut',
       duration: 2,
