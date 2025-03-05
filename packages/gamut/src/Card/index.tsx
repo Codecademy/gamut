@@ -9,9 +9,9 @@ import {
   StaticCardWrapper,
 } from './elements';
 import { hoverShadowLeft, hoverShadowRight, patternFadeInOut } from './styles';
-import { CardProps } from './types';
+import { CardContainerProps } from './types';
 
-export const Card: React.FC<CardProps> = ({
+export const Card: React.FC<CardContainerProps> = ({
   children,
   variant = 'default',
   shadow = 'none',

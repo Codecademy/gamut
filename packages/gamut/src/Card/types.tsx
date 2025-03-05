@@ -4,6 +4,7 @@ import { ComponentProps } from 'react';
 
 import { Box } from '../Box';
 import { WithChildrenProp } from '../utils';
+import { DynamicCardWrapper } from './elements';
 import { cardVariants, shadowVariants } from './styles';
 
 export interface CardProps
@@ -14,3 +15,5 @@ export interface CardProps
   borderRadius?: ComponentProps<typeof Box>['borderRadius'];
   isInteractive?: boolean;
 }
+
+export type CardContainerProps = Omit<React.ComponentProps<typeof DynamicCardWrapper>, 'bg'>
