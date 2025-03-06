@@ -21,8 +21,8 @@ const Shimmer = styled(BaseContainer)(
 
 const boxVariants = {
   inView: {
-    backgroundColor: 'transparent',
-    borderColor: 'transparent',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    borderColor: 'rgba(0, 0, 0, 0)',
     transition: {
       ease: 'easeOut',
       duration: 0.3,
@@ -59,8 +59,6 @@ export const FeatureShimmer: React.FC<Omit<BoxProps, 'ref'>> = ({
           border={1}
           borderColor="border-tertiary"
           bg="background-selected"
-          px={32}
-          py={16}
           position="relative"
           borderRadius={rest?.borderRadius}
           variants={boxVariants}

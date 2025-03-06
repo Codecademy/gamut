@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof FeatureShimmer> = {
   component: FeatureShimmer,
   args: {
-    children: <Text>This is a test</Text>,
+    children: <Text p={12}>This is a test</Text>,
     height: '144px',
   },
 };
