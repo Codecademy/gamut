@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [59.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.12...@codecademy/gamut@59.1.0) (2025-03-06)
+
+### Features
+
+- **Video:** Adds Accessible Video Component ([7476fea](https://github.com/Codecademy/gamut/commit/7476feaf7a95452564b613fe1d32f383e453fd5d))
+
 ### [59.0.12](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.0.11...@codecademy/gamut@59.0.12) (2025-03-03)
 
 **Note:** Version bump only for package @codecademy/gamut

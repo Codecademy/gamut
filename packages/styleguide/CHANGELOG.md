@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [70.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.2.0...@codecademy/styleguide@70.3.0) (2025-03-06)
+
+### Features
+
+- **Video:** Adds Accessible Video Component ([7476fea](https://github.com/Codecademy/gamut/commit/7476feaf7a95452564b613fe1d32f383e453fd5d))
+
 ## [70.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.1.2...@codecademy/styleguide@70.2.0) (2025-03-03)
 
 ### Features
