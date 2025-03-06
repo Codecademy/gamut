@@ -3,7 +3,6 @@ import { states, theme, timingValues, variant } from '@codecademy/gamut-styles';
 export const cardVariants = variant({
   defaultVariant: 'default',
   base: {
-    border: 1,
     color: 'text',
   },
   variants: {

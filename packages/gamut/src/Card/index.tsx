@@ -62,6 +62,7 @@ export const Card: React.FC<CardProps> = ({
         p={16}
         maxWidth="100%"
         position="relative"
+        border={1}
         {...rest}
       >
         {children}
