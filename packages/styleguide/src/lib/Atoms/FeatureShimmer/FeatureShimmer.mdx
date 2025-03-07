@@ -1,0 +1,49 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as FeatureShimmerStories from './FeatureShimmer.stories';
+
+export const parameters = {
+  subtitle:
+    'Shimmer effect for boxes — generic styles that apply to our Skeleton elements.',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=61818-3459&m=dev',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/FeatureShimmer',
+  },
+};
+
+<Meta of={FeatureShimmerStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use `FeatureShimmer` to subtly draw attention to secondary new features or elements that are are important for the user to notice, though not the primary focus of the page.
+
+### Best practices:
+
+- Only apply `FeatureShimmer` to a single element at a time to avoid overwhelming the user.
+- To prevent unnecessary distraction, ensure that the shimmer effect is not shown indefinitely. Set a reasonable limit on how many times a user sees it in total (e.g., up to 3 times across separate sessions or page loads), or stop showing it once the user interacts with the element.
+
+### When NOT to use:
+
+- Primary Features — For main features or critical updates, use more prominent indicators like the <LinkTo id="Molecules/Coachmark">Coachmark</LinkTo> or <LinkTo id="Atoms/Badge">Badge</LinkTo> components.
+- Critical Alerts — For errors or urgent notifications that require immediate user attention, use the <LinkTo id="Molecules/Alert">Alert</LinkTo> component.
+
+## Accessibility considerations
+
+- **Respects Reduced Motion Preferences:** The shimmer effect is automatically disabled if the user has reduced motion enabled. This ensures an accessible experience for users who prefer to minimize animations.
+- **Triggers Only When in View:** The shimmer effect activates only when the component enters the viewport. This prevents unnecessary animations and improves performance, especially for screen readers and users navigating via keyboard.
+
+## Playground
+
+<Canvas sourceState="shown" of={FeatureShimmerStories.Default} />
+
+<Controls />
