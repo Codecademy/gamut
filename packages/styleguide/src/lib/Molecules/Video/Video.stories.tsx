@@ -17,6 +17,7 @@ export const Default: Story = {
     translations: {
       Play: 'Play Intro Video',
     },
+    showPlayerEmbed: false,
   },
 };
 
