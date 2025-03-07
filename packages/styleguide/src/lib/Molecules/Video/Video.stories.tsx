@@ -15,8 +15,8 @@ export const Default: Story = {
       'https://static-assets.codecademy.com/skillshorts/introduction-to-quantum-computing/01-Introduction-to-Quantum-Computing.mp4',
     videoTitle: '01: Introduction-to-Quantum-Computing',
     translations: {
-      'Play': 'Play Intro Video'
-    }
+      Play: 'Play Intro Video',
+    },
   },
 };
 
