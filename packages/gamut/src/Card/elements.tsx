@@ -3,13 +3,12 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
 import { Box } from '../Box';
-import { cardVariants, patternState, shadowVariants } from './styles';
+import { cardVariants, shadowVariants } from './styles';
 import { CardWrapperProps } from './types';
 
-export const CardContainer = motion.create(Box);
-export const PatternWrapper = styled(CardContainer)(patternState);
+export const MotionBox = motion.create(Box);
 
-export const DynamicCardWrapper = styled(CardContainer)<CardWrapperProps>(
+export const DynamicCardWrapper = styled(MotionBox)<CardWrapperProps>(
   cardVariants,
   shadowVariants
 );

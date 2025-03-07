@@ -1,4 +1,4 @@
-import { states, theme, timingValues, variant } from '@codecademy/gamut-styles';
+import { theme, timingValues, variant } from '@codecademy/gamut-styles';
 
 export const cardVariants = variant({
   defaultVariant: 'default',
@@ -38,12 +38,6 @@ export const shadowVariants = variant({
       boxShadow: `-6px 6px ${theme.colors['background-current']}, -6px 6px 0 1px ${theme.colors['border-primary']}`,
       transition: 'box-shadow 200ms ease, transform 200ms ease',
     },
-  },
-});
-
-export const patternState = states({
-  hidePattern: {
-    display: 'none',
   },
 });
 

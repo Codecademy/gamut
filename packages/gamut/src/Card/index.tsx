@@ -3,9 +3,8 @@ import { Colors } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 import {
-  CardContainer,
   DynamicCardWrapper,
-  PatternWrapper,
+  MotionBox,
   StaticCardWrapper,
 } from './elements';
 import { hoverShadowLeft, hoverShadowRight, patternFadeInOut } from './styles';
@@ -32,25 +31,28 @@ export const Card: React.FC<CardProps> = ({
     shadow === 'patternRight' ? hoverShadowRight : hoverShadowLeft;
 
   return (
-    <CardContainer
+    <MotionBox
       dimensions={1}
       position="relative"
       whileHover={isInteractive ? 'animate' : ''}
     >
-      <PatternWrapper
-        variants={patternFadeInOut}
-        hidePattern={!hasPattern}
-        borderRadius={trueBorderRadius}
-      >
-        <Pattern
-          dimensions={1}
-          position="absolute"
-          top=".5rem"
-          left={shadow === 'patternLeft' ? '-0.5rem' : undefined}
-          right={shadow === 'patternRight' ? '-0.5rem' : undefined}
-          style={{ borderRadius: 'inherit' }}
-        />
-      </PatternWrapper>
+      {
+        hasPattern && (
+          <MotionBox
+            variants={patternFadeInOut}
+            borderRadius={trueBorderRadius}
+          >
+            <Pattern
+              dimensions={1}
+              position="absolute"
+              top=".5rem"
+              left={shadow === 'patternLeft' ? '-0.5rem' : undefined}
+              right={shadow === 'patternRight' ? '-0.5rem' : undefined}
+              style={{ borderRadius: 'inherit' }}
+            />
+          </MotionBox>
+        )
+      }
       <SelectedWrapper
         // setting bg here since Background requires a bg prop
         // the 'white' color doesn't actually get set since the variant overrides it
@@ -67,6 +69,6 @@ export const Card: React.FC<CardProps> = ({
       >
         {children}
       </SelectedWrapper>
-    </CardContainer>
+    </MotionBox>
   );
 };
