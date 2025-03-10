@@ -1,17 +1,12 @@
 import { createTheme } from '@codecademy/variance';
 
 import {
-  elements,
   fontBase,
   fontMonospace,
-  fontSize,
   fontSystem,
-  fontWeight,
-  lineHeight,
   lxStudioPalette,
-  mediaQueries,
-  spacing,
 } from '../variables';
+import { coreTheme } from './core';
 
 /**
  * @description This is an extended theme for the lx studio with an expanded set of tokens
@@ -35,14 +30,9 @@ export const lxStudioBorderRadii = {
 };
 
 export const lxStudioTheme = createTheme({
-  breakpoints: mediaQueries,
+  ...coreTheme,
   borderRadii: lxStudioBorderRadii,
-  fontSize,
   fontFamily: lxStudioFontFamily,
-  lineHeight,
-  fontWeight,
-  spacing,
-  elements,
 })
   .addColors(lxStudioPalette)
   .addColorModes('light', {
