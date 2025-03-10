@@ -76,7 +76,7 @@ export const Video: React.FC<VideoProps> = (props) => {
     placeholderImage,
     videoTitle,
     videoUrl,
-    showPlayerEmbed,
+    showPlayerEmbed = true,
   } = props;
   const [loading, setLoading] = useState(true);
   const isMounted = useIsMounted();

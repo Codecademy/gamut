@@ -11,6 +11,17 @@ type Story = StoryObj<typeof Video>;
 
 export const Default: Story = {
   args: {
+    videoUrl:
+      'https://static-assets.codecademy.com/skillshorts/introduction-to-quantum-computing/01-Introduction-to-Quantum-Computing.mp4',
+    videoTitle: '01: Introduction-to-Quantum-Computing',
+    translations: {
+      Play: 'Play Intro Video',
+    },
+  },
+};
+
+export const Youtube: Story = {
+  args: {
     videoUrl: 'https://www.youtube.com/watch?v=wxds6MAtUQ0',
     videoTitle: 'Intro to Programming: Loops',
   },
@@ -23,13 +34,12 @@ export const Vimeo: Story = {
   },
 };
 
-export const VideoWithPlaceholder: Story = {
+/* export const VideoWithTracksAndThumbnails: Story = {
   args: {
     videoUrl: 'https://files.vidstack.io/sprite-fight/hls/stream.m3u8',
     videoTitle: 'Sprite Fight',
     placeholderImage: 'https://files.vidstack.io/sprite-fight/poster.webp',
     autoplay: false,
-
     textTracks: [
       {
         src: 'https://files.vidstack.io/sprite-fight/subs/english.vtt',
@@ -52,7 +62,7 @@ export const VideoWithPlaceholder: Story = {
         default: true,
       },
     ],
-
     thumbnails: 'https://files.vidstack.io/sprite-fight/thumbnails.vtt',
   },
 };
+*/
