@@ -54,12 +54,13 @@ export type VideoProps = {
    */
   translations?: Partial<DefaultLayoutTranslations>;
   /**
-   * @TEMPORARY
-   * Determines if an embedded player view is shown.
+   * Determines if ReactPlayer is used to render youtube/vimeo videos.
+   * @default true
    */
   showPlayerEmbed?: boolean;
   /**
    * Determines if the default provider/browser controls are shown.
+   * @default false
    */
   showDefaultProviderControls?: boolean;
 };
@@ -90,13 +91,18 @@ export const Video: React.FC<VideoProps> = (props) => {
     },
   };
 
+  const hasExternallyHostedVideo =
+    videoUrl &&
+    typeof videoUrl === 'string' &&
+    (videoUrl.match(/youtu(be\.com|\.be)/) || videoUrl.match(/vimeo.com/));
+
   /**
    * If showPlayerEmbed is true use ReactPlayer to render the video
    * Otherwise, use the Vidstack MediaPlayer. @TEMPORARY_FALLBACK
    * @TODO [https://skillsoftdev.atlassian.net/browse/GM-998]
    * Remove ReactPlayer once Vidstack is validated.
    */
-  if (showPlayerEmbed) {
+  if (hasExternallyHostedVideo && showPlayerEmbed) {
     return (
       <Box
         position="relative"

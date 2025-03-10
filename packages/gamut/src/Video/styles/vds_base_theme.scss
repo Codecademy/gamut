@@ -3,9 +3,12 @@
 @import "~@vidstack/react/player/styles/default/layouts/audio.css";
 @import "~@codecademy/gamut-styles/utils";
 
-// Youtube overlay
+/**
+  * Youtube overlay
+  * - Why 120% ? hiding yt logo and copy link button which are not accessible.
+  */
 iframe.vds-youtube[data-no-controls] {
-  height: 100%;
+  height: 120%;
 }
 
 [data-started] iframe.vds-youtube[data-no-controls] {
