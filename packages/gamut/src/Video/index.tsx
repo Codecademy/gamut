@@ -91,18 +91,29 @@ export const Video: React.FC<VideoProps> = (props) => {
     },
   };
 
-  const hasExternallyHostedVideo =
+  const isExternallyHostedVideo =
     videoUrl &&
     typeof videoUrl === 'string' &&
     (videoUrl.match(/youtu(be\.com|\.be)/) || videoUrl.match(/vimeo.com/));
 
+  // TextTracks can also have chapters/descriptions/metadata, So we need to specifically check for subtitles/captions
+  const hasTracksWithCaptionOrSubtitle =
+    props.textTracks?.length &&
+    props.textTracks.some(
+      (track) => track.kind === 'subtitles' || track.kind === 'captions'
+    );
+
   /**
-   * If showPlayerEmbed is true use ReactPlayer to render the video
-   * Otherwise, use the Vidstack MediaPlayer. @TEMPORARY_FALLBACK
+   * Render ReactPlayer if video is from youtube/vimeo and has no tracks with caption/subtitle.
+   * Otherwise, use the Vidstack MediaPlayer.
    * @TODO [https://skillsoftdev.atlassian.net/browse/GM-998]
    * Remove ReactPlayer once Vidstack is validated.
    */
-  if (hasExternallyHostedVideo && showPlayerEmbed) {
+  if (
+    isExternallyHostedVideo &&
+    !hasTracksWithCaptionOrSubtitle &&
+    showPlayerEmbed
+  ) {
     return (
       <Box
         position="relative"
