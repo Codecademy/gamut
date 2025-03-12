@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, LinkTo , TokenTable} from '~styleguide/blocks';
+
+import * as TABLES from '../shared/elements';
+
+
+export const parameters = {
+  title: 'LX Studio Theme',
+  subtitle: 'Theme used within the LX Studio',
+  status: 'current',
+  source: {
+    repo: 'gamut-styles',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/themes',
+  },
+};
+
+<Meta title="Foundations/Theme/LXStudioTheme" />
+
+<AboutHeader {...parameters} />
+
+The LX Studio Theme is a theme used within the LX Studio. It is built off of the Core Theme with additional tokens and overrides for the LX Studio. See <LinkTo id="Forundations/Theme/CoreTheme">Core Theme</LinkTo> for more information on the theme object and how to use it.
+
+## Color
+
+**Key**: `theme.colors`
+
+All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches.
+
+### Standard colors
+
+Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
+
+<TokenTable {...TABLES.color} />

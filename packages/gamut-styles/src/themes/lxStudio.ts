@@ -85,6 +85,55 @@ export const lxStudioTheme = createTheme({
         disabled: 'navy-300',
       },
     },
+    dark: {
+      text: {
+        _: 'white',
+        accent: 'beige',
+        disabled: 'white-500',
+        secondary: 'white-600',
+      },
+      feedback: {
+        error: 'red-0',
+        success: 'green-400',
+        warning: 'yellow-0',
+      },
+      background: {
+        _: 'navy-800',
+        contrast: 'black',
+        current: 'navy-800',
+        primary: 'navy-900',
+        selected: 'white-100',
+        disabled: 'white-200',
+        hover: 'white-200',
+      },
+      shadow: {
+        primary: 'white',
+        secondary: 'white-600',
+      },
+      primary: {
+        _: 'yellow-500',
+        hover: 'yellow-400',
+        inverse: 'hyper-500',
+      },
+      secondary: {
+        _: 'white',
+        hover: 'white-700',
+      },
+      danger: {
+        _: 'red-0',
+        hover: 'red-100',
+      },
+      interface: {
+        _: 'yellow-500',
+        hover: 'yellow-400',
+      },
+      border: {
+        primary: 'white',
+        secondary: 'white-600',
+        tertiary: 'white-300',
+        disabled: 'white-500',
+      },
+    },
   })
   .build();
 
