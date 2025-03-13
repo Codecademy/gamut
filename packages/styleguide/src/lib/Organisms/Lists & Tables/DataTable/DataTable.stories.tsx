@@ -86,21 +86,30 @@ export const CustomEmptyState: Story = {
     height: '45vh',
     minHeight: '300px',
     emptyMessage: (
-      <FlexBox
-        as="tbody"
-        bg="paleBlue"
-        center
-        flexDirection="column"
-        left="calc(50% - 160px)"
-        p={32}
-        position="sticky"
-        top="calc(50% - 66px)"
-        width="320px"
-        zIndex={1}
-      >
-        <BlueprintWhite width="200px" />
-        <Text width="fit-content">Nothing to see here!</Text>
-      </FlexBox>
+      <Box as="tbody" width="100%">
+        <Box as="tr" width="inherit">
+          <FlexBox
+            bg="paleBlue"
+            border={2}
+            borderColor="border-tertiary"
+            borderRadius="md"
+            zIndex={1}
+            as="th"
+            center
+            flexDirection="column"
+            left="calc(50% - 160px)"
+            p={16}
+            position="sticky"
+            top="calc(50% - 66px)"
+            width="320px"
+          >
+            <BlueprintWhite aria-hidden width="200px" />
+            <Text fontFamily="monospace" mt={16}>
+              Nothing to see here!
+            </Text>
+          </FlexBox>
+        </Box>
+      </Box>
     ),
   },
   render: (args) => <DataTable {...args} />,
