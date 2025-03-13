@@ -86,22 +86,20 @@ export const CustomEmptyState: Story = {
     height: '45vh',
     minHeight: '300px',
     emptyMessage: (
-      <Box as="tbody" width="100%">
-        <Box as="tr" width="inherit">
+      <Box as="tbody" height="100%" width="100%">
+        <Box as="tr" height="inherit" width="inherit">
           <FlexBox
             bg="paleBlue"
-            border={2}
-            borderColor="border-tertiary"
-            borderRadius="md"
             zIndex={1}
             as="th"
             center
-            flexDirection="column"
+            column
             left="calc(50% - 160px)"
             p={16}
             position="sticky"
             top="calc(50% - 66px)"
-            width="320px"
+            height="inherit"
+            width="inherit"
           >
             <BlueprintWhite aria-hidden width="200px" />
             <Text fontFamily="monospace" mt={16}>
