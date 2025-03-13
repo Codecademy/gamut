@@ -91,6 +91,31 @@ When a DataTable has no data to display, it should show an empty state message.
 
 <Canvas of={DataTableStories.EmptyState} />
 
+This empty state message is customizable through the `emptyState` prop.
+
+<Canvas of={DataTableStories.CustomEmptyState} />
+
+For optimal accessibility, the empty message should match the pattern:
+
+```tsx
+// main container
+<FlexBox as="tbody">
+  // all children of `tbody`should be `tr`
+  <FlexBox as="tr" center column gap={16} width="100%">
+    // each child of `tr` should be `th`
+    <th>
+      <Text variant="title-sm">No Results Found</Text>
+    </th>
+    <th>
+      <Text variant="p-base">Remove filters to view</Text>
+    </th>
+    <th>
+      <FillButton onClick={onResetQuery}>Reset Filters</FillButton>
+    </th>
+  </FlexBox>
+</FlexBox>
+```
+
 ### Loading rows
 
 Replaces content of current rows with <LinkTo id="Atoms/Loaders/Shimmer">Shimmer</LinkTo>.

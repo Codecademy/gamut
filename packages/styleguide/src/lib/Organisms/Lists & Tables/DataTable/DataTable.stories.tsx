@@ -1,7 +1,8 @@
 // Added because SB and TS don't play nice with each other at the moment
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { DataTable } from '@codecademy/gamut';
+import { Box, DataTable, FlexBox, Text } from '@codecademy/gamut';
+import { BlueprintWhite } from '@codecademy/gamut-illustrations';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { DataTableTemplate } from '../examples';
@@ -73,6 +74,34 @@ export const EmptyState: Story = {
     scrollable: true,
     height: '45vh',
     minHeight: '300px',
+  },
+  render: (args) => <DataTable {...args} />,
+};
+
+export const CustomEmptyState: Story = {
+  args: {
+    rows: [],
+    shadow: true,
+    scrollable: true,
+    height: '45vh',
+    minHeight: '300px',
+    emptyMessage: (
+      <FlexBox
+        as="tbody"
+        bg="paleBlue"
+        center
+        flexDirection="column"
+        left="calc(50% - 160px)"
+        p={32}
+        position="sticky"
+        top="calc(50% - 66px)"
+        width="320px"
+        zIndex={1}
+      >
+        <BlueprintWhite width="200px" />
+        <Text width="fit-content">Nothing to see here!</Text>
+      </FlexBox>
+    ),
   },
   render: (args) => <DataTable {...args} />,
 };
