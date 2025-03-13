@@ -1,6 +1,8 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader } from '~styleguide/blocks';
+import { AboutHeader, LinkTo,TokenTable } from '~styleguide/blocks';
+
+import * as TABLES from '../shared/platformElements';
 
 
 export const parameters = {
@@ -18,4 +20,45 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-The Platform Theme
+The Platform Theme is a theme used within the Codecademy Learning Environment. It is built off of the Core Theme with special colors for the Learning Environment. See <LinkTo id="Forundations/Theme/CoreTheme">Core Theme</LinkTo> for more information on the theme object and how to use it.
+
+## Color
+
+**Key**: `platformTheme.colors`
+
+All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches.
+
+### Standard colors
+
+Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
+
+<TokenTable {...TABLES.platformColor} />
+
+### Solid color swatches
+
+Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a list of all the solid swatches available.
+
+<TokenTable {...TABLES.platformSwatch} />
+
+## Color modes
+
+We have 2 core color modes that we support: `light` and `dark`.
+
+Each color mode consists of a set of aliased color tokens. Each alias has semantic meaning for how the color is used throughout our design system:
+
+- `text`: The standard text color for all type.
+- `background`: The base background color.
+- `primary`: The color used for interactive elements with a primary action.
+- `secondary`: The color used for interactive elements with a secondary action.
+
+For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-colormode--page)
+
+### Light mode
+
+<TABLES.PlatformLightModeTable />
+
+**Example**
+
+### Dark mode
+
+<TABLES.PlatformDarkModeTable />

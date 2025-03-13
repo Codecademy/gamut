@@ -2,7 +2,8 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, LinkTo , TokenTable} from '~styleguide/blocks';
 
-import * as TABLES from '../shared/elements';
+import { color, swatch } from '../shared/elements';
+import * as TABLES from '../shared/lxStudioElements';
 
 
 export const parameters = {
@@ -24,7 +25,7 @@ The LX Studio Theme is a theme used within the LX Studio. It is built off of the
 
 ## Color
 
-**Key**: `theme.colors`
+**Key**: `lxStudioTheme.colors`
 
 All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches.
 
@@ -32,4 +33,50 @@ All current visual identity colors are available on the `colors` key on the Them
 
 Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
 
-<TokenTable {...TABLES.color} />
+<TokenTable {...color} />
+
+### Solid color swatches
+
+Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a list of all the solid swatches available.
+
+<TokenTable {...swatch} />
+
+### LX Studio specific colors
+
+<TokenTable {...TABLES.lxStudioColor} />
+
+## Color modes
+
+We have 2 core color modes that we support: `light` and `dark`.
+
+Each color mode consists of a set of aliased color tokens. Each alias has semantic meaning for how the color is used throughout our design system:
+
+- `text`: The standard text color for all type.
+- `background`: The base background color.
+- `primary`: The color used for interactive elements with a primary action.
+- `secondary`: The color used for interactive elements with a secondary action.
+
+For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-colormode--page)
+
+### Light mode
+
+<TABLES.LXStudioLightModeTable />
+
+**Example**
+
+### Dark mode
+
+<TABLES.LXStudioDarkModeTable />
+
+### Font family
+
+**Key**: `theme.fontFamily`
+
+<TokenTable {...TABLES.lxStudioFontFamily} />
+
+
+## Border Radius
+
+**Key**: `theme.borderRadii`
+
+<TokenTable {...TABLES.lxStudioBorderRadii} />

@@ -130,7 +130,7 @@ export const platformSwatches = {
   },
 } as const;
 
-const truePlatformColors = {
+export const truePlatformColors = {
   lightBeige: platformSwatches.beige[0],
   gold: platformSwatches.gold[800],
   teal: platformSwatches.teal[500],
