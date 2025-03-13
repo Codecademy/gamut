@@ -34,10 +34,18 @@ const boxVariants = {
 const shimmerVariants = {
   inView: {
     left: '120%', // extra % to account for rotation
+    backgroundColor: 'rgba(0, 0, 0, 0)',
     transition: {
-      ease: 'easeInOut',
-      duration: 2,
-      delay: 2,
+      left: {
+        ease: 'easeInOut',
+        duration: 2,
+        delay: 2,
+      },
+      backgroundColor: {
+        ease: 'easeOut',
+        duration: 1,
+        delay: 4,
+      },
     },
   },
 };
