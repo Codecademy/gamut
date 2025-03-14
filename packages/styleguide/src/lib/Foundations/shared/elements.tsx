@@ -2,7 +2,7 @@ import { Anchor, Box } from '@codecademy/gamut';
 import {
   Background,
   coreSwatches,
-  platformSwatches,
+  lxStudioColors,
   theme,
   trueColors,
 } from '@codecademy/gamut-styles';
@@ -13,21 +13,21 @@ import kebabCase from 'lodash/kebabCase';
 // CASS - fix
 import { Code, ColorScale, LinkTo, TokenTable } from '~styleguide/blocks';
 
-const PROP_COLUMN = {
+export const PROP_COLUMN = {
   key: 'key',
   name: 'Prop',
   size: 'md',
   render: ({ id }: any) => <Code>{id}</Code>,
 };
 
-const VALUE_COLUMN = {
+export const VALUE_COLUMN = {
   key: 'value',
   name: 'Value',
   size: 'lg',
   render: ({ value }: any) => <Code>{value}</Code>,
 };
 
-const PATH_COLUMN = {
+export const PATH_COLUMN = {
   key: 'path',
   name: 'Path',
   size: 'xl',
@@ -187,33 +187,27 @@ export const rgbaSwatch = {
   ],
 };
 
-export const platformSwatch = {
-  rows: Object.entries(platformSwatches).map(([id, value]) => ({
+export const lxStudioColor = {
+  rows: Object.entries(lxStudioColors).map(([id, value]) => ({
     id,
-    hexes: value,
+    hex: value,
   })),
   columns: [
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ id, hexes }: any) => (
-        <Code>
-          theme.colors[`{id}-{Object.keys(hexes)[0]}`]
-        </Code>
-      ),
+      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
     },
     {
       key: 'swatch',
       name: 'Swatch',
       size: 'fill',
-      render: ({ hexes }: { hexes: Record<string, string> }) => (
-        <ColorScale colors={hexes} />
-      ),
+      render: ({ hex }: any) => <ColorScale colors={{ hex }} />,
     },
   ],
 };
 
-const createExampleColumn = ({
+export const createExampleColumn = ({
   text,
   prop,
 }: {
