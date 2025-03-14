@@ -1,4 +1,5 @@
 import {
+  Box,
   ColumnConfig,
   DataList,
   DataTable,
@@ -7,9 +8,38 @@ import {
   Text,
   useLocalQuery,
 } from '@codecademy/gamut';
+import { BlueprintWhite } from '@codecademy/gamut-illustrations';
 import uniq from 'lodash/uniq';
 import { useCallback, useMemo, useState } from 'react';
 
+export const CustomEmptyState: React.FC = () => (
+  <Box as="tbody" height="100%" width="100%">
+    <Box
+      as="tr"
+      bg="paleBlue"
+      height="inherit"
+      position="absolute"
+      width="inherit"
+      zIndex={1}
+    >
+      <FlexBox
+        as="th"
+        center
+        column
+        left="calc(50% - 115px)"
+        p={16}
+        position="sticky"
+        top="calc(50% - 100px)"
+        width="fit-content"
+      >
+        <BlueprintWhite aria-hidden width="200px" />
+        <Text fontFamily="monospace" mt={16}>
+          Nothing to see here!
+        </Text>
+      </FlexBox>
+    </Box>
+  </Box>
+);
 const crew = [
   {
     name: 'Jean Luc Picard',
@@ -100,7 +130,7 @@ const crew = [
 
 const shipFilters = uniq(crew.map(({ ship }) => ship));
 
-const cols = [
+export const cols = [
   {
     header: 'Name',
     key: 'name',
