@@ -89,6 +89,16 @@ const anchorVariants = variant({
       },
       ...outlineFocusVisible,
     },
+    'standard-secondary': {
+      color: 'text',
+      textDecoration: 'underline',
+      [ButtonSelectors.FOCUS_VISIBLE]: {
+        outline: 'currentColor solid 2px',
+        borderRadius: 'sm',
+        outlineOffset: '1.5px',
+        textDecoration: 'underline',
+      },
+    },
   },
 });
 
