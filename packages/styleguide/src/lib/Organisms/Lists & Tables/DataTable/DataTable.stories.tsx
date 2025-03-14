@@ -5,7 +5,7 @@ import { Box, DataTable, FlexBox, Text } from '@codecademy/gamut';
 import { BlueprintWhite } from '@codecademy/gamut-illustrations';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { DataTableTemplate } from '../examples';
+import { CustomEmptyState, DataTableTemplate } from '../examples';
 
 const meta: Meta<typeof DataTable> = {
   component: DataTable,
@@ -78,37 +78,14 @@ export const EmptyState: Story = {
   render: (args) => <DataTable {...args} />,
 };
 
-export const CustomEmptyState: Story = {
+export const EmptyStateCustom: Story = {
   args: {
     rows: [],
     shadow: true,
     scrollable: true,
     height: '45vh',
     minHeight: '300px',
-    emptyMessage: (
-      <Box as="tbody" height="100%" width="100%">
-        <Box as="tr" height="inherit" width="inherit">
-          <FlexBox
-            bg="paleBlue"
-            zIndex={1}
-            as="th"
-            center
-            column
-            left="calc(50% - 160px)"
-            p={16}
-            position="sticky"
-            top="calc(50% - 66px)"
-            height="inherit"
-            width="inherit"
-          >
-            <BlueprintWhite aria-hidden width="200px" />
-            <Text fontFamily="monospace" mt={16}>
-              Nothing to see here!
-            </Text>
-          </FlexBox>
-        </Box>
-      </Box>
-    ),
+    emptyMessage: <CustomEmptyState />,
   },
   render: (args) => <DataTable {...args} />,
 };
