@@ -1,8 +1,7 @@
 // Added because SB and TS don't play nice with each other at the moment
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { Box, DataTable, FlexBox, Text } from '@codecademy/gamut';
-import { BlueprintWhite } from '@codecademy/gamut-illustrations';
+import { DataTable } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { CustomEmptyState, DataTableTemplate } from '../examples';
