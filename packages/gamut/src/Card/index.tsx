@@ -27,10 +27,7 @@ export const Card: React.FC<CardProps> = ({
     shadow === 'patternRight' ? hoverShadowRight : hoverShadowLeft;
 
   return (
-    <MotionBox
-      position="relative"
-      whileHover={isInteractive ? 'animate' : ''}
-    >
+    <MotionBox position="relative" whileHover={isInteractive ? 'animate' : ''}>
       {hasPattern && (
         <MotionBox variants={patternFadeInOut} borderRadius={trueBorderRadius}>
           <Pattern
