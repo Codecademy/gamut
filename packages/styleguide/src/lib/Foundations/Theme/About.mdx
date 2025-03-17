@@ -12,6 +12,42 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
+All Emotion components we build have access to a typed theme object allowing you to have direct access to all the design tokens without any imports.
+
+These are most easily available through our context and accessed via our `gamut-styles` utility functions.
+
+```tsx
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+
+// Single value using static color
+const Box = styled.div(css({ bg: 'navy-400', p: 4 }));
+
+// Multiple values using ColorMode semantic color
+const OtherCoolThing = styled.div(css({ color: 'primary', p: 4 }));
+```
+
+They can also be accessed directly as the `theme` prop on every styled component.
+
+```tsx
+import styled from '@emotion/styled';
+
+const styles = styled.div`
+  blue: ${({ theme }) => theme.colors.blue};
+`;
+```
+
+Or by importing the object from `@codecademy/gamut-styles` if you are not using a `ThemeProvider` in your app.
+
+```tsx
+import { css } from '@emotion/react';
+import { theme } from '@codecademy/gamut-styles';
+
+const myStyles = css`
+  font-size: ${theme.fontSize[14]};
+`;
+```
+
 <TableOfContents
   links={[
     {
