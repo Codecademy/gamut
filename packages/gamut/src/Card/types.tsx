@@ -11,9 +11,16 @@ export interface CardWrapperProps
   extends StyleProps<typeof cardVariants>,
     StyleProps<typeof shadowVariants>,
     WithChildrenProp {
-  pattern?: React.ComponentType<PatternProps>;
   borderRadius?: ComponentProps<typeof Box>['borderRadius'];
+  /** *
+   * Optional prop to provide a Card with styling to indicate if is interactive
+   * (e.g. a shadow hover effects and 'md' border radius).
+   */
   isInteractive?: boolean;
+  /** *
+   * Optional prop to assign a Pattern other than CheckerDense
+   */
+  pattern?: React.ComponentType<PatternProps>;
 }
 
 export type CardProps = Omit<

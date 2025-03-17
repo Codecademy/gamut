@@ -13,6 +13,8 @@ export const Card: React.FC<CardProps> = ({
   isInteractive = false,
   pattern: Pattern = CheckerDense,
   borderRadius,
+  width = '100%',
+  height = '100%',
   ...rest
 }) => {
   const defaultBorderRadius = isInteractive ? 'md' : 'none';
@@ -28,19 +30,20 @@ export const Card: React.FC<CardProps> = ({
 
   return (
     <MotionBox
-      dimensions={1}
+      height={height}
       position="relative"
       whileHover={isInteractive ? 'animate' : ''}
+      width={width}
     >
       {hasPattern && (
         <MotionBox variants={patternFadeInOut} borderRadius={trueBorderRadius}>
           <Pattern
             dimensions={1}
-            position="absolute"
-            top=".5rem"
             left={shadow === 'patternLeft' ? '-0.5rem' : undefined}
+            position="absolute"
             right={shadow === 'patternRight' ? '-0.5rem' : undefined}
             style={{ borderRadius: 'inherit' }}
+            top=".5rem"
           />
         </MotionBox>
       )}
@@ -48,14 +51,15 @@ export const Card: React.FC<CardProps> = ({
         // setting bg here since Background requires a bg prop
         // the 'white' color doesn't actually get set since the variant overrides it
         bg={variant !== 'default' ? (variant as Colors) : 'white'}
+        border={1}
+        borderRadius={trueBorderRadius}
+        dimensions={1}
+        maxWidth="100%"
+        p={16}
+        position="relative"
+        shadow={shadow}
         variant={variant}
         variants={setHoverShadow}
-        shadow={shadow}
-        borderRadius={trueBorderRadius}
-        p={16}
-        maxWidth="100%"
-        position="relative"
-        border={1}
         {...rest}
       >
         {children}
