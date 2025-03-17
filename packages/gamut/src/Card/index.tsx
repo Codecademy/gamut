@@ -28,7 +28,6 @@ export const Card: React.FC<CardProps> = ({
 
   return (
     <MotionBox
-      dimensions={1}
       position="relative"
       whileHover={isInteractive ? 'animate' : ''}
     >
