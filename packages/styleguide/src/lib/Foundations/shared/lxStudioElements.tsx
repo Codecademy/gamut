@@ -1,6 +1,7 @@
 import { Box } from '@codecademy/gamut';
 import {
   Background,
+  GamutProvider,
   lxStudioColors,
   lxStudioTheme,
 } from '@codecademy/gamut-styles';
@@ -91,15 +92,19 @@ export const lxStudioDarkMode = {
 };
 
 export const LXStudioLightModeTable = () => (
-  <Background bg="white">
-    <TokenTable bg={false} {...(lxStudioLightMode as any)} />
-  </Background>
+  <GamutProvider theme={lxStudioTheme}>
+    <Background bg="white">
+      <TokenTable bg={false} {...(lxStudioLightMode as any)} />
+    </Background>
+  </GamutProvider>
 );
 
 export const LXStudioDarkModeTable = () => (
-  <Background bg="navy">
-    <TokenTable bg={false} {...(lxStudioDarkMode as any)} />
-  </Background>
+  <GamutProvider theme={lxStudioTheme}>
+    <Background bg="navy">
+      <TokenTable bg={false} {...(lxStudioDarkMode as any)} />
+    </Background>
+  </GamutProvider>
 );
 
 export const lxStudioFontFamily = {
