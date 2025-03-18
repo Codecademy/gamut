@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [59.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.2.1...@codecademy/gamut@59.3.0) (2025-03-18)
+
+### Features
+
+- **Anchor:** New standard-secondary variant ([91679c2](https://github.com/Codecademy/gamut/commit/91679c2e24498eefeb34ca539506ce3baa19cfc5))
+
 ### [59.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.2.0...@codecademy/gamut@59.2.1) (2025-03-13)
 
 ### Bug Fixes
