@@ -3,7 +3,9 @@ import { setupRtl } from '@codecademy/gamut-tests';
 
 import { InternalFloatingCard } from '../InternalFloatingCard';
 
-const renderView = setupRtl(InternalFloatingCard, { children: 'Float on okay' });
+const renderView = setupRtl(InternalFloatingCard, {
+  children: 'Float on okay',
+});
 
 describe('InternalFloatingCard', () => {
   it('renders with default props', () => {

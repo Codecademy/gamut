@@ -83,15 +83,18 @@ export type InternalFloatingCardProps = {
   shadow?: 'bottomLeft' | 'bottomRight';
 } & ComponentProps<typeof CardBody>;
 
-export type InternalFloatingCardWithWrapper = InternalFloatingCardProps & InternalFloatingCardWrapper;
-
+export type InternalFloatingCardWithWrapper = InternalFloatingCardProps &
+  InternalFloatingCardWrapper;
 
 /**
  * @deprecated
  * This component is strictly for internal Gamut usage.
  * Please use the `Card` component instead.
  */
-export const InternalFloatingCard = forwardRef<HTMLDivElement, InternalFloatingCardWithWrapper>(
+export const InternalFloatingCard = forwardRef<
+  HTMLDivElement,
+  InternalFloatingCardWithWrapper
+>(
   (
     {
       children,

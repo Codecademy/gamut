@@ -30,7 +30,9 @@ const layoutVariants = system.variant({
   },
 });
 
-const ToastContainer = styled(InternalFloatingCard)<StyleProps<typeof layoutVariants>>(
+const ToastContainer = styled(InternalFloatingCard)<
+  StyleProps<typeof layoutVariants>
+>(
   system.css({
     display: 'grid',
     width: 360,
