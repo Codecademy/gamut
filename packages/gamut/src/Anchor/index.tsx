@@ -29,6 +29,15 @@ const outlineFocusVisible = {
   },
 } as const;
 
+const underlineFocusVisible = {
+  [ButtonSelectors.FOCUS_VISIBLE]: {
+    outline: 'currentColor solid 2px',
+    borderRadius: 'sm',
+    outlineOffset: '1.5px',
+    textDecoration: 'underline',
+  },
+} as const;
+
 const anchorVariants = variant({
   base: {
     display: 'inline-block',
@@ -70,12 +79,7 @@ const anchorVariants = variant({
       display: 'inline',
       whiteSpace: 'initial',
       textDecoration: 'underline',
-      [ButtonSelectors.FOCUS_VISIBLE]: {
-        outline: 'currentColor solid 2px',
-        borderRadius: 'sm',
-        outlineOffset: '1.5px',
-        textDecoration: 'underline',
-      },
+      ...underlineFocusVisible,
     },
     interface: {
       color: 'text',
@@ -88,6 +92,11 @@ const anchorVariants = variant({
         outline: 'none',
       },
       ...outlineFocusVisible,
+    },
+    'standard-secondary': {
+      color: 'text',
+      textDecoration: 'underline',
+      ...underlineFocusVisible,
     },
   },
 });
