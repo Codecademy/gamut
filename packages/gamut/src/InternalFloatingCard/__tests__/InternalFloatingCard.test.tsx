@@ -1,11 +1,13 @@
 import { DotDense } from '@codecademy/gamut-patterns';
 import { setupRtl } from '@codecademy/gamut-tests';
 
-import { FloatingCard } from '../FloatingCard';
+import { InternalFloatingCard } from '../InternalFloatingCard';
 
-const renderView = setupRtl(FloatingCard, { children: 'Float on okay' });
+const renderView = setupRtl(InternalFloatingCard, {
+  children: 'Float on okay',
+});
 
-describe('FloatingCard', () => {
+describe('InternalFloatingCard', () => {
   it('renders with default props', () => {
     const { props, view } = renderView();
     view.getByText('Float on okay');

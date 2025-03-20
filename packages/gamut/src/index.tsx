@@ -19,7 +19,7 @@ export * from './Disclosure';
 export * from './DataList';
 export * from './Drawer';
 export * from './FeatureShimmer';
-export * from './FloatingCard/FloatingCard';
+export * from './InternalFloatingCard/InternalFloatingCard';
 export * from './Flyout';
 export * from './FocusTrap';
 export * from './Form';
