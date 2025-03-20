@@ -14,7 +14,7 @@ export interface CardWrapperProps
   borderRadius?: ComponentProps<typeof Box>['borderRadius'];
   /** *
    * Optional prop to provide a Card with styling to indicate if is interactive
-   * (e.g. a shadow hover effects and 'md' border radius).
+   * (e.g. a shadow hover effect and 'md' border radius).
    */
   isInteractive?: boolean;
   /** *
