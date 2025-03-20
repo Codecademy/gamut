@@ -92,19 +92,15 @@ export const lxStudioDarkMode = {
 };
 
 export const LXStudioLightModeTable = () => (
-  <GamutProvider theme={lxStudioTheme}>
-    <Background bg="white">
-      <TokenTable bg={false} {...(lxStudioLightMode as any)} />
-    </Background>
-  </GamutProvider>
+  <Background bg="white">
+    <TokenTable bg={false} {...(lxStudioLightMode as any)} />
+  </Background>
 );
 
 export const LXStudioDarkModeTable = () => (
-  <GamutProvider theme={lxStudioTheme}>
-    <Background bg="navy">
-      <TokenTable bg={false} {...(lxStudioDarkMode as any)} />
-    </Background>
-  </GamutProvider>
+  <Background bg="navy">
+    <TokenTable bg={false} {...(lxStudioDarkMode as any)} />
+  </Background>
 );
 
 export const lxStudioFontFamily = {

@@ -20,11 +20,11 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-The Platform Theme is a theme used within the Codecademy Learning Environment. It is built off of the Core Theme with special colors for the Learning Environment. See <LinkTo id="Forundations/Theme/CoreTheme">Core Theme</LinkTo> for more information on the theme object and how to use it.
+The Platform Theme is a theme used within the Codecademy Learning Environment. It is built off of the Core Theme with special colors for the Learning Environment. See <LinkTo id="Foundations/Theme/CoreTheme">Core Theme</LinkTo> for more information on the theme object and how to use it.
 
 ## Color
 
-**Key**: `platformTheme.colors`
+**Key**: `colors`
 
 All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches.
 
@@ -44,14 +44,7 @@ Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weigh
 
 We have 2 core color modes that we support: `light` and `dark`.
 
-Each color mode consists of a set of aliased color tokens. Each alias has semantic meaning for how the color is used throughout our design system:
-
-- `text`: The standard text color for all type.
-- `background`: The base background color.
-- `primary`: The color used for interactive elements with a primary action.
-- `secondary`: The color used for interactive elements with a secondary action.
-
-For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-colormode--page)
+Each color mode consists of a set of aliased color tokens that have a semantic meaning for how the color is used throughout our design system. For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-colormode--page).
 
 ### Light mode
 
