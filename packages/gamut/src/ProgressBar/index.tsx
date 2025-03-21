@@ -170,18 +170,21 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   variant,
 }) => {
   const showBarBorder = percent > 0 || minimumPercent > 0;
-  const id = React.useId();
+  // const id = React.useId();
   return (
     <ProgressBarWrapper
-      aria-labelledby={id}
+      // aria-labelledby={id}
+      aria-label="Progress"
       aria-live="polite"
-      role="figure"
+      aria-busy={false}
+      aria-valuenow={percent}
+      role="progressbar"
       flat={flat}
       size={size}
       variant={variant}
       backgroundOverride={Pattern ? 'pattern' : 'none'}
     >
-      <Text as="label" id={id} screenreader>{`Progress: ${percent}%`}</Text>
+      {/* <Text as="label" id={id} screenreader>{`Progress: ${percent}%`}</Text> */}
       {Pattern && <Pattern width="100%" position="absolute" zIndex={0} />}
       <Bar
         variant={variant}
