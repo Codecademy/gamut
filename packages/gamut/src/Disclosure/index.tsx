@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import * as React from 'react';
 
 import { ExpandInCollapseOut } from '../Animation';
@@ -29,36 +29,40 @@ export const Disclosure: React.FC<DisclosureProps> = ({
   variant,
 }) => {
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
+  const bodyId = useId();
   return (
     <DisclosureWrapper
+      as={isListItem ? 'li' : undefined}
       column
-      variant={variant}
       hasBorder={hasBorder}
       onClick={() => onClick?.()}
-      as={isListItem ? 'li' : undefined}
+      variant={variant}
     >
       <DisclosureButton
-        spacing={spacing}
+        aria-controls={bodyId}
+        aria-expanded={isExpanded}
+        disabled={disabled}
         heading={heading}
         headingLevel={headingLevel}
-        overline={overline}
-        subheading={subheading}
         isExpanded={isExpanded}
+        overline={overline}
         setIsExpanded={setIsExpanded}
-        disabled={disabled}
+        spacing={spacing}
+        subheading={subheading}
       />
       <AnimatePresence>
         {isExpanded && (
           <ExpandInCollapseOut>
             <DisclosureBody
               body={body}
-              hasPanelBg={hasPanelBg}
-              ctaText={ctaText}
-              spacing={spacing}
-              ctaCallback={ctaCallback}
               buttonPlacement={buttonPlacement}
-              href={href}
               buttonType={button}
+              ctaCallback={ctaCallback}
+              ctaText={ctaText}
+              hasPanelBg={hasPanelBg}
+              href={href}
+              id={bodyId}
+              spacing={spacing}
             />
           </ExpandInCollapseOut>
         )}
