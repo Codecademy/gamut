@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import * as React from 'react';
 
 import { Box } from '../Box';
-import { Text } from '../Typography';
+// import { Text } from '../Typography';
 
 export type ProgressBarProps = {
   /**
