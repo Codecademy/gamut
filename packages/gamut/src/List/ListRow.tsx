@@ -47,7 +47,7 @@ const DivExpand = styled(motion.div)(expandStyles);
 const TDExpand = styled(motion.td)(expandStyles);
 
 const ExpandInCollapseOut: React.FC<
-  WithChildrenProp & { as: 'td' | 'div', id: string }
+  WithChildrenProp & { as: 'td' | 'div'; id: string }
 > = ({ as, children, id }) => {
   const ResponsiveExpand = as === 'td' ? TDExpand : DivExpand;
 
@@ -147,7 +147,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           <AnimatePresence>
             {expanded && (
               <ExpandInCollapseOut as={isTable ? 'td' : 'div'} id={id ?? ''}>
-                <Box role="region" aria-label={expandedRowAriaLabel} >
+                <Box role="region" aria-label={expandedRowAriaLabel}>
                   {renderExpanded?.()}
                 </Box>
               </ExpandInCollapseOut>
