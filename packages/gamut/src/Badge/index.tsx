@@ -2,6 +2,7 @@ import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
+import { Box } from '../Box';
 import { appendIconToContent } from '../helpers';
 import { IconComponentType, WithChildrenProp } from '../utils';
 import { determineIconSize, determineIconSpacing } from './helpers';
@@ -33,17 +34,20 @@ const colorVariants = variant({
       textColor: 'background',
     },
     tertiary: {
+      bg: 'transparent',
       border: 1,
       borderColor: 'border-secondary',
-      color: 'text-secondary',
-      bg: 'transparent',
+      textColor: 'text-secondary',
     },
     tertiaryFill: {
+      bg: 'background',
       border: 1,
       borderColor: 'border-secondary',
-      color: 'text-secondary',
-      bg: 'background',
+      textColor: 'text-secondary',
     },
+    custom: {
+      textColor: 'text',
+    }
   },
 });
 
@@ -66,7 +70,7 @@ const sizeVariants = variant({
 const badgeProps = variance.compose(
   system.space,
   system.layout,
-  system.typography
+  system.typography,
 );
 export interface BadgeBaseProps
   extends StyleProps<typeof badgeProps>,
@@ -74,7 +78,7 @@ export interface BadgeBaseProps
     StyleProps<typeof sizeVariants>,
     WithChildrenProp {}
 
-const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
+const BadgeBase = styled(Box)<BadgeBaseProps>(
   badgeProps,
   colorVariants,
   sizeVariants

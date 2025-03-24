@@ -1,5 +1,7 @@
 import { Badge } from '@codecademy/gamut';
 import { MiniStarIcon, MiniWarningTriangleIcon } from '@codecademy/gamut-icons';
+import { css, theme } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { TertiaryFillExample } from './examples';
@@ -38,6 +40,13 @@ export const Accent: Story = {
   args: {
     variant: 'accent',
   },
+};
+
+export const Custom: Story = {
+  args: {
+    variant: 'custom',
+    background: `linear-gradient(${theme.colors['background-selected']}, ${theme.colors.yellow})`
+  }
 };
 
 export const DefaultSize: Story = {
