@@ -97,6 +97,51 @@ Rows in a DataList can also be selected. You can set the `selected` prop to an a
 - `size` - enum which determines how much space the column should take up within the table
 - `fill` - boolean which, when set to true, takes up the remaining space in the table. If more than one column is set to `fill`, the remaining space will be divied up between those items.
 
+### Empty state
+
+When a DataList has no data to display, it should show an empty state message.
+
+<Canvas of={DataListStories.EmptyState} />
+
+This empty state message is customizable through the `emptyState` prop.
+
+<Canvas of={DataListStories.EmptyStateCustom} />
+
+For optimal accessibility, the empty message should match the pattern below. This pattern also includes the necessary `sticky` styles if you'd like your custom message to stay in one place while the user scrolls.
+
+```tsx
+// main container
+<Box as="tbody" height="100%" width="100%">
+  // all children of `tbody`should be `tr`
+  <FlexBox
+    as="tr"
+    height="inherit"
+    position="absolute"
+    width="inherit"
+    zIndex={1}
+  >
+    // each child of `tr` should be `th`
+    <FlexBox
+      as="th"
+      center
+      column
+      // the px value should be 1/2 the width of the container to center correctly
+      left="calc(50% - 115px)"
+      p={16}
+      position="sticky"
+      // the px value should be 1/2 the height of the container to center correctly
+      top="calc(50% - 115px)"
+      width="fit-content"
+    >
+      <BlueprintWhite aria-hidden width="200px" />
+      <Text fontFamily="monospace" mt={16}>
+        Nothing to see here!
+      </Text>
+    </FlexBox>
+  </FlexBox>
+</Box>
+```
+
 ## Playground
 
 <Canvas sourceState="shown" of={DataListStories.Default} />
