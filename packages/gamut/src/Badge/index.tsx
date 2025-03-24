@@ -78,6 +78,8 @@ export interface BadgeBaseProps
     StyleProps<typeof sizeVariants>,
     WithChildrenProp {}
 
+// const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
+// test against stylings taht we don't want configured, like border radius
 const BadgeBase = styled(Box)<BadgeBaseProps>(
   badgeProps,
   colorVariants,
