@@ -15,7 +15,12 @@ import {
 import { Background } from '@codecademy/gamut-styles';
 import startCase from 'lodash/startCase';
 
-const variants = ['inline', 'interface', 'standard'] as const;
+const variants = [
+  'inline',
+  'interface',
+  'standard',
+  'standard-secondary',
+] as const;
 
 export const VariantsExample = ({ useIcon }: { useIcon: boolean }) => {
   return (
@@ -25,7 +30,7 @@ export const VariantsExample = ({ useIcon }: { useIcon: boolean }) => {
           p={32}
           bg="white"
           display="grid"
-          gridTemplateColumns="repeat(3, 1fr)"
+          gridTemplateColumns="repeat(4, 1fr)"
         >
           {variants.map((variant) => (
             <Box key={`${variant}-light`}>
@@ -49,7 +54,7 @@ export const VariantsExample = ({ useIcon }: { useIcon: boolean }) => {
           p={32}
           bg="navy"
           display="grid"
-          gridTemplateColumns="repeat(3, 1fr)"
+          gridTemplateColumns="repeat(4, 1fr)"
         >
           {variants.map((variant) => (
             <Box key={`${variant}-dark`}>
