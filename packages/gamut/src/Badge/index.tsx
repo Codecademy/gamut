@@ -47,7 +47,7 @@ const colorVariants = variant({
     },
     custom: {
       textColor: 'text',
-    }
+    },
   },
 });
 
@@ -70,7 +70,7 @@ const sizeVariants = variant({
 const badgeProps = variance.compose(
   system.space,
   system.layout,
-  system.typography,
+  system.typography
 );
 export interface BadgeBaseProps
   extends StyleProps<typeof badgeProps>,

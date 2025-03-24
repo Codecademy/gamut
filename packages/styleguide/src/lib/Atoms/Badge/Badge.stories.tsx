@@ -44,8 +44,8 @@ export const Accent: Story = {
 export const Custom: Story = {
   args: {
     variant: 'custom',
-    background: `linear-gradient(${theme.colors['background-selected']}, ${theme.colors.yellow})`
-  }
+    background: `linear-gradient(${theme.colors['background-selected']}, ${theme.colors.yellow})`,
+  },
 };
 
 export const DefaultSize: Story = {
