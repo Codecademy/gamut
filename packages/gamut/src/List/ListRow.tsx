@@ -14,6 +14,8 @@ import { getGridTemplateColumns } from './utils';
 export interface RowProps
   extends Partial<PublicListProps<ComponentProps<typeof RowEl>>> {
   header?: boolean;
+  /** Used to link expandable content with the component that does the expanding, i.e. it's used to set the value for aria-controls  */
+  id?: string;
   /** This is an internal prop that is largely only used for the DataTable component */
   numOfColumns?: number;
   /**  This is an internal prop that is largely only used for the DataTable component */
@@ -45,12 +47,13 @@ const DivExpand = styled(motion.div)(expandStyles);
 const TDExpand = styled(motion.td)(expandStyles);
 
 const ExpandInCollapseOut: React.FC<
-  WithChildrenProp & { as: 'td' | 'div' }
-> = ({ as, children }) => {
+  WithChildrenProp & { as: 'td' | 'div', id: string }
+> = ({ as, children, id }) => {
   const ResponsiveExpand = as === 'td' ? TDExpand : DivExpand;
 
   return (
     <ResponsiveExpand
+      id={id}
       initial="collapsed"
       exit="collapsed"
       animate="expanded"
@@ -68,6 +71,7 @@ const ExpandInCollapseOut: React.FC<
 export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
   (
     {
+      id,
       children,
       expanded,
       expandedRowAriaLabel,
@@ -101,6 +105,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         <RowEl
           as="div"
           {...rowConfig}
+          aria-controls={onClick ? id : ''}
           aria-expanded={renderExpanded && onClick ? expanded : undefined}
           clickable={Boolean(onClick)}
           isOl={isOl}
@@ -141,8 +146,8 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           {content}
           <AnimatePresence>
             {expanded && (
-              <ExpandInCollapseOut as={isTable ? 'td' : 'div'}>
-                <Box role="region" aria-label={expandedRowAriaLabel}>
+              <ExpandInCollapseOut as={isTable ? 'td' : 'div'} id={id ?? ''}>
+                <Box role="region" aria-label={expandedRowAriaLabel} >
                   {renderExpanded?.()}
                 </Box>
               </ExpandInCollapseOut>

@@ -650,7 +650,8 @@ const ExpandableButtonClickRow: React.FC<{
     <ListRow
       key={key}
       expanded={isExpanded}
-      renderExpanded={() => <ExpandedRow name={name} role={role} ship={ship} />}
+      renderExpanded={() => <ExpandedRow name={name} role={role} ship={ship}
+    />}
     >
       <ExpandedColumns name={name} role={role} ship={ship} />
       <ListCol size="lg" type="control">
@@ -699,7 +700,9 @@ export const ExpandableRowClick: React.FC<ExpandableRowProps> = ({
       expanded={isExpanded}
       key={key}
       onClick={() => setExpanded(!isExpanded)}
-      renderExpanded={() => <ExpandedRow name={name} role={role} ship={ship} />}
+      id={`${name}-row`}
+      renderExpanded={() => <ExpandedRow name={name} role={role} ship={ship}
+      />}
     >
       <ExpandedColumns name={name} role={role} ship={ship} />
       <ListCol size="xl" type="control">
