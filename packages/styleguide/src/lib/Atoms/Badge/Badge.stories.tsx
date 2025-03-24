@@ -1,7 +1,6 @@
 import { Badge } from '@codecademy/gamut';
 import { MiniStarIcon, MiniWarningTriangleIcon } from '@codecademy/gamut-icons';
-import { css, theme } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { theme } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { TertiaryFillExample } from './examples';
