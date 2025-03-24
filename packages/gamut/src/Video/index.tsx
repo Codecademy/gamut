@@ -91,10 +91,24 @@ export const Video: React.FC<VideoProps> = (props) => {
     },
   };
 
-  const isExternallyHostedVideo =
-    videoUrl &&
-    typeof videoUrl === 'string' &&
-    (videoUrl.match(/youtu(be\.com|\.be)/) || videoUrl.match(/vimeo.com/));
+  const isExternallyHostedVideoUrl = (url: string): boolean =>
+    !!(url.match(/youtu(be\.com|\.be)/) || url.match(/vimeo.com/));
+
+  const isExternallyHostedVideo = (videoUrl: PlayerSrc): boolean => {
+    if (!videoUrl) return false;
+
+    if (typeof videoUrl === 'string') {
+      return isExternallyHostedVideoUrl(videoUrl);
+    }
+
+    if (Array.isArray(videoUrl)) {
+      return videoUrl.some(
+        (url) => typeof url === 'string' && isExternallyHostedVideoUrl(url)
+      );
+    }
+
+    return false;
+  };
 
   // TextTracks can also have chapters/descriptions/metadata, So we need to specifically check for subtitles/captions
   const hasTracksWithCaptionOrSubtitle =
@@ -110,7 +124,7 @@ export const Video: React.FC<VideoProps> = (props) => {
    * Remove ReactPlayer once Vidstack is validated.
    */
   if (
-    isExternallyHostedVideo &&
+    isExternallyHostedVideo(videoUrl) &&
     !hasTracksWithCaptionOrSubtitle &&
     showPlayerEmbed
   ) {
