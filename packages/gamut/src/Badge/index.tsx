@@ -70,7 +70,8 @@ const sizeVariants = variant({
 const badgeProps = variance.compose(
   system.space,
   system.layout,
-  system.typography
+  system.typography,
+  system.color,
 );
 export interface BadgeBaseProps
   extends StyleProps<typeof badgeProps>,
