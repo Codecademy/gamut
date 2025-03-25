@@ -135,6 +135,34 @@ export const FixedMenuSeparator: Story = {
   },
 };
 
+export const IconMenu: Story = {
+  args: {
+    variant: 'fixed',
+    children: (
+      <>
+        <MenuItem
+          icon={MultipleUsersIcon}
+          label="oy"
+          onClick={() => console.log()}
+        />
+        <MenuItem active icon={MultipleUsersIcon} href="#whatsup">
+          oy
+        </MenuItem>
+        <MenuSeparator my={4} />
+        <MenuItem icon={MultipleUsersIcon} label=":)" href="#whatsup" />
+        <MenuItem
+          active
+          icon={MultipleUsersIcon}
+          href="#whatsup"
+          label={{
+            info: 'hej',
+          }}
+        />
+      </>
+    ),
+  },
+};
+
 export const FloatingMenuExample: React.FC = () => {
   const target = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);

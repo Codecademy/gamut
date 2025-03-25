@@ -1,6 +1,14 @@
-import { GamutIconProps } from '@codecademy/gamut-icons';
-import { ComponentProps, forwardRef, MutableRefObject } from 'react';
+import { GamutIconProps, MultipleUsersIcon } from '@codecademy/gamut-icons';
+import { isObject, isString } from 'lodash';
+import {
+  ComponentProps,
+  forwardRef,
+  Fragment,
+  MutableRefObject,
+  useId,
+} from 'react';
 
+import { ToolTip, ToolTipProps } from '../Tip/ToolTip';
 import { Text } from '../Typography';
 import {
   ListButton,
@@ -10,6 +18,7 @@ import {
   ListLinkProps,
 } from './elements';
 import { useMenuContext } from './MenuContext';
+import { MenuSeparator } from './MenuSeparator';
 
 const getListItemType = (href: boolean, onClick: boolean) =>
   href ? 'link' : onClick ? 'button' : 'item';
@@ -25,28 +34,57 @@ const currentItemText = {
   item: 'current item',
 };
 
+type HTMLProps = Partial<Pick<HTMLAnchorElement, 'href' | 'target' | 'rel'>>;
+type KeepThisHere = Omit<
+  ComponentProps<typeof ListItem>,
+  'variant' | 'selected' | 'active-navlink' | 'children'
+>;
+
+type ToolTipLabel = string | Omit<ToolTipProps, 'id'>;
+
+interface MenuItemIconOnly extends HTMLProps, KeepThisHere {
+  icon: React.ComponentType<GamutIconProps>;
+  children?: never;
+  label: ToolTipLabel;
+}
+
+interface MenuNotItemIconOnly extends HTMLProps, KeepThisHere {
+  icon?: React.ComponentType<GamutIconProps>;
+  children: React.ReactNode;
+  label?: ToolTipLabel;
+}
+
+type newType = MenuItemIconOnly | MenuNotItemIconOnly;
+
+// TODO - Move wrapper into a separate component
 export const MenuItem = forwardRef<
   HTMLLIElement | HTMLAnchorElement | HTMLButtonElement,
-  Omit<
-    ComponentProps<typeof ListItem>,
-    'variant' | 'selected' | 'active-navlink'
-  > &
-    Partial<Pick<HTMLAnchorElement, 'href' | 'target' | 'rel'>> & {
-      icon?: React.ComponentType<GamutIconProps>;
-    }
->(({ href, target, children, active, icon: Icon, ...props }, ref) => {
+  newType
+>(({ href, target, children, active, icon: Icon, label, ...props }, ref) => {
   const { variant, role, ...rest } = useMenuContext();
+  const tipId = useId();
+
   const activeProp = activePropnames[variant];
+
+  const listItemType = getListItemType(!!href, !!props.onClick);
+  const listItemRole = role === 'menu' ? 'none' : undefined;
+
+  const Wrapper = label ? ToolTip : Fragment;
+  const wrapperProps =
+    label && isString(label)
+      ? ({ info: label, placement: 'floating', id: tipId } as const)
+      : isObject(label)
+      ? { ...label, id: tipId }
+      : {};
+
   const computed = {
     ...props,
     ...rest,
     variant: 'link',
     role: role === 'menu' ? 'menuitem' : undefined,
     [activeProp]: active,
-  } as ListItemProps;
-
-  const listItemType = getListItemType(!!href, !!props.onClick);
-  const listItemRole = role === 'menu' ? 'none' : undefined;
+    'aria-describedby': label ? tipId : undefined,
+  };
 
   const content = (
     <>
@@ -67,14 +105,16 @@ export const MenuItem = forwardRef<
 
     return (
       <ListItem role={listItemRole}>
-        <ListLink
-          {...(computed as ListLinkProps)}
-          href={href}
-          ref={linkRef}
-          target={target}
-        >
-          {content}
-        </ListLink>
+        <Wrapper {...wrapperProps}>
+          <ListLink
+            {...(computed as ListLinkProps)}
+            href={href}
+            ref={linkRef}
+            target={target}
+          >
+            {content}
+          </ListLink>
+        </Wrapper>
       </ListItem>
     );
   }
@@ -84,9 +124,11 @@ export const MenuItem = forwardRef<
 
     return (
       <ListItem role={listItemRole}>
-        <ListButton {...(computed as ListLinkProps)} ref={buttonRef}>
-          {content}
-        </ListButton>
+        <Wrapper {...wrapperProps}>
+          <ListButton {...(computed as ListLinkProps)} ref={buttonRef}>
+            {content}
+          </ListButton>
+        </Wrapper>
       </ListItem>
     );
   }
@@ -94,8 +136,28 @@ export const MenuItem = forwardRef<
   const liRef = ref as MutableRefObject<HTMLLIElement>;
 
   return (
-    <ListItem {...computed} ref={liRef}>
+    <ListItem {...(computed as ListItemProps)} ref={liRef}>
       {content}
     </ListItem>
   );
 });
+
+export const IconOnly = () => {
+  return (
+    <>
+      <MenuItem icon={MultipleUsersIcon} label="oy" />
+      <MenuItem icon={MultipleUsersIcon}> oy</MenuItem>
+      <MenuSeparator my={4} />
+      <MenuItem icon={MultipleUsersIcon} label=":)" />
+      <MenuItem
+        icon={MultipleUsersIcon}
+        label={{
+          info: 'hej',
+          placement: 'inline',
+          narrow: true,
+          alignment: 'bottom-center',
+        }}
+      />
+    </>
+  );
+};
