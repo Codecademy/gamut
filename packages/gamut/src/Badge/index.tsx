@@ -71,7 +71,7 @@ const badgeProps = variance.compose(
   system.space,
   system.layout,
   system.typography,
-  system.color
+  system.background
 );
 export interface BadgeBaseProps
   extends StyleProps<typeof badgeProps>,
