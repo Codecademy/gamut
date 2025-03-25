@@ -23,13 +23,19 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-The LX Studio Theme is a theme used within the LX Studio. It is built off of the Core Theme with additional tokens and overrides for the LX Studio. See <LinkTo id="Foundations/Theme/CoreTheme">Core Theme</LinkTo> for more information on the theme object and how to use it.
+The LX Studio Theme is a theme used within the LX Studio. It is built off of the Core Theme with additional tokens and overrides for the LX Studio. For all other tokens not listed here, refer to the <LinkTo id="Foundations/Theme/CoreTheme">Core Theme</LinkTo>.
+
+Note: if you are using the LX Studio Theme via the `ThemeProvider` in your app, you can access the theme object directly via `theme`. If you are not using a `ThemeProvider`, you can import the `lxStudioTheme` object from `@codecademy/gamut-styles`. See <LinkTo id="Foundations/Theme/About">Theme/About</LinkTo> for more information on the theme object and how to use it.
 
 ## Color
 
 **Key**: `colors`
 
-All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches.
+All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches. The LX Studio Theme contains all the colors from the Core Theme, as well as additional colors for LX Studio.
+
+### LX Studio colors
+
+<TokenTable {...TABLES.lxStudioColor} />
 
 ### Standard colors
 
@@ -43,22 +49,11 @@ Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weigh
 
 <TokenTable {...swatch} />
 
-### LX Studio specific colors
-
-<TokenTable {...TABLES.lxStudioColor} />
-
 ## Color modes
 
 We have 2 core color modes that we support: `light` and `dark`.
 
-Each color mode consists of a set of aliased color tokens. Each alias has semantic meaning for how the color is used throughout our design system:
-
-- `text`: The standard text color for all type.
-- `background`: The base background color.
-- `primary`: The color used for interactive elements with a primary action.
-- `secondary`: The color used for interactive elements with a secondary action.
-
-For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-colormode--page)
+Each color mode consists of a set of aliased color tokens that have a semantic meaning for how the color is used throughout our design system. For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-colormode--page).
 
 ### Light mode
 

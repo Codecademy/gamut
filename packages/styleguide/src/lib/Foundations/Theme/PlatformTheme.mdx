@@ -2,8 +2,8 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, LinkTo,TokenTable } from '~styleguide/blocks';
 
+import { color, swatch } from '../shared/elements';
 import * as TABLES from '../shared/platformElements';
-
 
 export const parameters = {
   title: 'Platform Theme',
@@ -20,25 +20,37 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-The Platform Theme is a theme used within the Codecademy Learning Environment. It is built off of the Core Theme with special colors for the Learning Environment. See <LinkTo id="Foundations/Theme/CoreTheme">Core Theme</LinkTo> for more information on the theme object and how to use it.
+The Platform Theme is a theme used within the Codecademy Learning Environment. It is built off of the Core Theme with special colors for the Learning Environment. For all other tokens not listed here, refer to the <LinkTo id="Foundations/Theme/CoreTheme">Core Theme</LinkTo>.
+
+Note: if you are using the Platform Theme via the `ThemeProvider` in your app, you can access the theme object directly via `theme`. If you are not using a `ThemeProvider`, you can import the `platformTheme` object from `@codecademy/gamut-styles`. See <LinkTo id="Foundations/Theme/About">Theme/About</LinkTo> for more information on the theme object and how to use it.
 
 ## Color
 
 **Key**: `colors`
 
-All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches.
+All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches. The Platform Theme contains all the colors from the Core Theme, as well as additional colors for the Learning Environment.
+
+### Platform colors
+
+<TokenTable {...TABLES.platformColor} />
+
+### Platform color swatches
+
+Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`.
+
+<TokenTable {...TABLES.platformSwatch} />
 
 ### Standard colors
 
 Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
 
-<TokenTable {...TABLES.platformColor} />
+<TokenTable {...color} />
 
 ### Solid color swatches
 
 Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a list of all the solid swatches available.
 
-<TokenTable {...TABLES.platformSwatch} />
+<TokenTable {...swatch} />
 
 ## Color modes
 

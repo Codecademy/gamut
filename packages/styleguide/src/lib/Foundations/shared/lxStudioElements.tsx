@@ -1,7 +1,6 @@
 import { Box } from '@codecademy/gamut';
 import {
   Background,
-  GamutProvider,
   lxStudioColors,
   lxStudioTheme,
 } from '@codecademy/gamut-styles';
