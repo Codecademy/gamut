@@ -1,4 +1,4 @@
-import { system, variant } from '@codecademy/gamut-styles';
+import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -86,7 +86,7 @@ export interface BadgeBaseProps
     StyleProps<typeof sizeVariants>,
     WithChildrenProp {}
 
-const BadgeBase = styled(Box)<BadgeBaseProps>(
+const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
   badgeProps,
   colorVariants,
   sizeVariants
