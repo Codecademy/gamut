@@ -26,6 +26,7 @@ export const VENDOR_ICONS = pick(
     'MediumIcon',
     'OpenAiFullIcon',
     'OpenAiIcon',
+    'PercipioIcon',
     'RailsIcon',
     'ReactIcon',
     'RedditIcon',

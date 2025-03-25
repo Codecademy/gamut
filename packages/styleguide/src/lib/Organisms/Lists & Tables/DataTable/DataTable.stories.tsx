@@ -4,7 +4,7 @@
 import { DataTable } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { DataTableTemplate } from '../examples';
+import { CustomEmptyState, DataTableTemplate } from '../examples';
 
 const meta: Meta<typeof DataTable> = {
   component: DataTable,
@@ -73,6 +73,18 @@ export const EmptyState: Story = {
     scrollable: true,
     height: '45vh',
     minHeight: '300px',
+  },
+  render: (args) => <DataTable {...args} />,
+};
+
+export const EmptyStateCustom: Story = {
+  args: {
+    rows: [],
+    shadow: true,
+    scrollable: true,
+    height: '45vh',
+    minHeight: '300px',
+    emptyMessage: <CustomEmptyState />,
   },
   render: (args) => <DataTable {...args} />,
 };
