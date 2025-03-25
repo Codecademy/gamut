@@ -2,7 +2,6 @@ import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { Box } from '../Box';
 import { appendIconToContent } from '../helpers';
 import { IconComponentType, WithChildrenProp } from '../utils';
 import { determineIconSize, determineIconSpacing } from './helpers';

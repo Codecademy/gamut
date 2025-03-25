@@ -1,10 +1,9 @@
-import { Badge } from '@codecademy/gamut';
+import { Badge, FlexBox } from '@codecademy/gamut';
 import { MiniStarIcon, MiniWarningTriangleIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { TertiaryFillExample } from './examples';
-import { FlexBox } from '@codecademy/gamut/src/Box';
 
 const meta: Meta<typeof Badge> = {
   component: Badge,
@@ -45,12 +44,16 @@ export const Accent: Story = {
 export const Custom: Story = {
   render: (args) => (
     <FlexBox gap={8}>
-      <Badge variant='custom' background={`linear-gradient(${theme.colors['background-selected']}, ${theme.colors.yellow})`} {...args} />
-      <Badge variant='custom' bg="green" {...args} />
-      <Badge variant='custom' bg={`${theme.colors['orange-500']}`} {...args} />
-      <Badge variant='custom' bg="lightBlue" {...args} icon={MiniStarIcon}/>
+      <Badge
+        variant="custom"
+        background={`linear-gradient(${theme.colors['background-selected']}, ${theme.colors['feedback-warning']})`}
+        {...args}
+      />
+      <Badge variant="custom" bg="green" {...args} />
+      <Badge variant="custom" bg={`${theme.colors['orange-500']}`} {...args} />
+      <Badge variant="custom" bg="lightBlue" {...args} icon={MiniStarIcon} />
     </FlexBox>
-  )
+  ),
 };
 
 export const DefaultSize: Story = {
