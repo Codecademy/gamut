@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.40.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.39.0...@codecademy/gamut-icons@9.40.0) (2025-03-06)
+
+### Features
+
+- **Video:** Adds Accessible Video Component ([7476fea](https://github.com/Codecademy/gamut/commit/7476feaf7a95452564b613fe1d32f383e453fd5d))
+
+## [9.39.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.38.3...@codecademy/gamut-icons@9.39.0) (2025-03-03)
+
+### Features
+
+- add layout + percipio icon ([95d89db](https://github.com/Codecademy/gamut/commit/95d89dbc776738893669e438147ef34a400766b9))
+
 ### [9.38.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.38.2...@codecademy/gamut-icons@9.38.3) (2025-02-19)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

@@ -4,7 +4,7 @@
 import { DataList, DataTable, FlexBox } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { DataListTemplate } from '../examples';
+import { cols, CustomEmptyState, DataListTemplate } from '../examples';
 
 const meta: Meta<typeof DataList> = {
   component: DataList,
@@ -86,5 +86,26 @@ export const Expanded: Story = {
 export const Selected: Story = {
   args: {
     selected: ['Data'],
+  },
+};
+
+export const EmptyState: Story = {
+  args: {
+    columns: cols,
+    header: true,
+    rows: [],
+    height: '45vh',
+    minHeight: '300px',
+  },
+};
+
+export const EmptyStateCustom: Story = {
+  args: {
+    columns: cols,
+    header: true,
+    rows: [],
+    height: '45vh',
+    minHeight: '300px',
+    emptyMessage: <CustomEmptyState />,
   },
 };
