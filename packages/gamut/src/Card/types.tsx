@@ -23,7 +23,4 @@ export interface CardWrapperProps
   pattern?: React.ComponentType<PatternProps>;
 }
 
-export type CardProps = Omit<
-  React.ComponentProps<typeof CardWrapper>,
-  'bg'
->;
+export type CardProps = Omit<React.ComponentProps<typeof CardWrapper>, 'bg'>;
