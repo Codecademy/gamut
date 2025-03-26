@@ -10,7 +10,6 @@ import {
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
 import kebabCase from 'lodash/kebabCase';
 
-// CASS - fix
 import { Code, ColorScale, LinkTo, TokenTable } from '~styleguide/blocks';
 
 export const PROP_COLUMN = {
