@@ -4,7 +4,7 @@ import { ComponentProps } from 'react';
 
 import { Box } from '../Box';
 import { WithChildrenProp } from '../utils';
-import { DynamicCardWrapper } from './elements';
+import { CardWrapper } from './elements';
 import { cardVariants, shadowVariants } from './styles';
 
 export interface CardWrapperProps
@@ -24,6 +24,6 @@ export interface CardWrapperProps
 }
 
 export type CardProps = Omit<
-  React.ComponentProps<typeof DynamicCardWrapper>,
+  React.ComponentProps<typeof CardWrapper>,
   'bg'
 >;
