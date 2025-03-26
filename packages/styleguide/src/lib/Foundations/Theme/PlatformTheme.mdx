@@ -22,7 +22,35 @@ export const parameters = {
 
 The Platform Theme is a theme used within the Codecademy Learning Environment. It is built off of the Core Theme with special colors for the Learning Environment. For all other tokens not listed here, refer to the <LinkTo id="Foundations/Theme/CoreTheme">Core Theme</LinkTo>.
 
-Note: if you are using the Platform Theme via the Gamut theme provider in your app, you can access the platform theme object via `theme` using our css-in-js utilities. If you have to import the theme object from `@codecademy/gamut-styles`, you will need to import the `platformTheme` object, as `theme` references the core theme in this case.  See <LinkTo id="Foundations/Theme/About">Theme/About</LinkTo> for more information on the theme object and how to use it.
+## Usage
+
+If you are using the Platform Theme via the Gamut theme provider in your app (i.e. `<GamutProvider theme={platformTheme}>`), you can access the Platform Theme object via `theme` using our css-in-js utilities.
+```tsx
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+
+const Box = styled.div(css({ bg: 'teal', p: 4 })); // our system props inherently use the current theme
+
+const styles = styled.div`
+  blue: ${({ theme }) => theme.colors.teal}; // theme here refers to the current theme, which is the platform theme
+`;
+```
+
+If you have to import the theme object from `@codecademy/gamut-styles`, you will need to import the `platformTheme` object, as `theme` references the Core Theme.
+```tsx
+import { css } from '@emotion/react';
+import { platformTheme, theme } from '@codecademy/gamut-styles';
+
+const myStyles = css`
+  color: ${platformTheme.colors.teal};
+`;
+
+const notWorkingStyles = css`
+  color: ${theme.colors.teal}; // teal does not exist in the Core Theme colors so this does not work
+`;
+```
+
+See <LinkTo id="Foundations/Theme/About">Theme/About</LinkTo> for more information on the theme object and how to use it.
 
 ## Color
 
