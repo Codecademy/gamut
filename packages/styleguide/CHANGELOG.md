@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [70.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.4.1...@codecademy/styleguide@70.5.0) (2025-03-18)
+
+### Features
+
+- **Anchor:** New standard-secondary variant ([91679c2](https://github.com/Codecademy/gamut/commit/91679c2e24498eefeb34ca539506ce3baa19cfc5))
+
+### [70.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.4.0...@codecademy/styleguide@70.4.1) (2025-03-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [70.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.3.2...@codecademy/styleguide@70.4.0) (2025-03-10)
+
+### Features
+
+- **FeatureShimmer:** New FeatureShimmer component ([6c2b47f](https://github.com/Codecademy/gamut/commit/6c2b47ffc1aa2e147e2b2fdf894da4b24fdd254d))
+
+### [70.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.3.1...@codecademy/styleguide@70.3.2) (2025-03-07)
+
+### Bug Fixes
+
+- default to react-player ([85dccc0](https://github.com/Codecademy/gamut/commit/85dccc023e04410102fa28ab9ed6bb87dcf025c0))
+
+### [70.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.3.0...@codecademy/styleguide@70.3.1) (2025-03-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [70.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.2.0...@codecademy/styleguide@70.3.0) (2025-03-06)
+
+### Features
+
+- **Video:** Adds Accessible Video Component ([7476fea](https://github.com/Codecademy/gamut/commit/7476feaf7a95452564b613fe1d32f383e453fd5d))
+
 ## [70.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.1.2...@codecademy/styleguide@70.2.0) (2025-03-03)
 
 ### Features
