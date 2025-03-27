@@ -15,7 +15,6 @@ import {
 import {
   ArrowChevronDownIcon,
   HouseEntranceIcon,
-  MiniChevronDownIcon,
   MiniDeleteIcon,
   MiniKebabMenuIcon,
   StarIcon,
