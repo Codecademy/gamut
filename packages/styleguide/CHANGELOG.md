@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [70.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.5.0...@codecademy/styleguide@70.6.0) (2025-03-27)
+
+### Features
+
+- LX Studio theme ([786cb49](https://github.com/Codecademy/gamut/commit/786cb49676875cbae9f028d6e523a94bfd95ba36))
+
 ## [70.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.4.1...@codecademy/styleguide@70.5.0) (2025-03-18)
 
 ### Features
