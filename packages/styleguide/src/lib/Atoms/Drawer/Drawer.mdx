@@ -34,6 +34,28 @@ An example of a molecule that uses Drawer is the <LinkTo id="Molecules/Flyout">F
 
 Our Drawers are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded`.
 
+The component that expands the `Drawer` should have an `aria-expanded` and `aria-controls` attribute. The `aria-controls` attribute should point to the `id` of the `Drawer`. The `aria-expanded` attribute should be set to the value of the `expanded` prop passed to the `Drawer`.
+
+```tsx
+const ExampleDrawer: React.FC = () => {
+  const [expanded, setExpanded] = useState(false);
+  const drawerId = useId();
+
+  return (
+    <FlexBox >
+      <Drawer expanded={expanded} id={drawerId}>Example Drawer</Drawer>
+      <StrokeButton
+        onClick={() => setExpanded((previousExpanded) => !previousExpanded)}
+        aria-expanded={expanded}
+        aria-controls={drawerId}
+      >
+        Set the proper aria-labels!
+      </StrokeButton>
+    </FlexBox>
+  );
+}
+```
+
 ## Playground
 
 <Canvas sourceState="shown" of={DrawerStories.Default} />

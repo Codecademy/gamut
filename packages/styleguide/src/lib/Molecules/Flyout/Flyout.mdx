@@ -30,6 +30,26 @@ Internally, Flyout is a combination of <LinkTo id="Molecules/Modals/Overlay">Ove
 
 Our Flyouts are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded` and `onChange`:
 
+```tsx
+const ExampleFlyout: React.FC = () => {
+  const [expanded, setExpanded] = useState(false);
+  const flyoutId = useId();
+
+  return (
+    <FlexBox >
+      <Flyout expanded={expanded} id={flyoutId}>Example Flyout</Flyout>
+      <StrokeButton
+        aria-expanded={expanded}
+        aria-controls={FlyoutId}
+        onClick={() => setExpanded((previousExpanded) => !previousExpanded)}
+      >
+        Set the proper aria-labels!
+      </StrokeButton>
+    </FlexBox>
+  );
+}
+```
+
 ## Playground
 
 <Canvas sourceState="shown" of={FlyoutStories.FlyoutExample} />
