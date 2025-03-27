@@ -21,28 +21,38 @@ const colorVariants = variant({
   },
   variants: {
     primary: {
+      // Setting background: 'none' to prevent conflicting background and backgroundColor styles
+      // this way, only the custom variant should be able to set background
+      background: 'none',
       bg: `text`,
       textColor: 'background',
     },
     accent: {
+      background: 'none',
       bg: 'yellow',
       textColor: 'navy',
     },
     secondary: {
+      background: 'none',
       bg: 'text-secondary',
       textColor: 'background',
     },
     tertiary: {
+      background: 'none',
+      bg: 'transparent',
       border: 1,
       borderColor: 'border-secondary',
-      color: 'text-secondary',
-      bg: 'transparent',
+      textColor: 'text-secondary',
     },
     tertiaryFill: {
+      background: 'none',
+      bg: 'background',
       border: 1,
       borderColor: 'border-secondary',
-      color: 'text-secondary',
-      bg: 'background',
+      textColor: 'text-secondary',
+    },
+    custom: {
+      textColor: 'text',
     },
   },
 });
@@ -66,7 +76,9 @@ const sizeVariants = variant({
 const badgeProps = variance.compose(
   system.space,
   system.layout,
-  system.typography
+  system.typography,
+  system.background,
+  system.color
 );
 export interface BadgeBaseProps
   extends StyleProps<typeof badgeProps>,
