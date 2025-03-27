@@ -156,6 +156,7 @@ export const IconMenu: Story = {
           href="#whatsup"
           label={{
             info: 'hej',
+            inheritDims: true,
           }}
         />
       </>

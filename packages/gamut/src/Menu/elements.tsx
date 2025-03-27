@@ -52,7 +52,6 @@ const StyledList = styled('ul', styledOptions<'ul'>())<ListProps>(
   }),
   system.states({
     root: {
-      minWidth: 192,
       bg: 'background',
       p: 0,
     },

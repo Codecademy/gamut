@@ -1,4 +1,6 @@
 import { GamutIconProps, MultipleUsersIcon } from '@codecademy/gamut-icons';
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import { isObject, isString } from 'lodash';
 import {
   ComponentProps,
@@ -60,87 +62,115 @@ type newType = MenuItemIconOnly | MenuNotItemIconOnly;
 export const MenuItem = forwardRef<
   HTMLLIElement | HTMLAnchorElement | HTMLButtonElement,
   newType
->(({ href, target, children, active, icon: Icon, label, ...props }, ref) => {
-  const { variant, role, ...rest } = useMenuContext();
-  const tipId = useId();
+>(
+  (
+    {
+      href,
+      target,
+      children,
+      active,
+      icon: Icon,
+      label,
+      height = 1,
+      width = 1,
+      ...props
+    },
+    ref
+  ) => {
+    const { variant, role, ...rest } = useMenuContext();
+    const tipId = useId();
 
-  const activeProp = activePropnames[variant];
+    const activeProp = activePropnames[variant];
 
-  const listItemType = getListItemType(!!href, !!props.onClick);
-  const listItemRole = role === 'menu' ? 'none' : undefined;
+    const listItemType = getListItemType(!!href, !!props.onClick);
+    const listItemRole = role === 'menu' ? 'none' : undefined;
 
-  const Wrapper = label ? ToolTip : Fragment;
-  const wrapperProps =
-    label && isString(label)
-      ? ({ info: label, placement: 'floating', id: tipId } as const)
-      : isObject(label)
-      ? { ...label, id: tipId }
-      : {};
+    const Wrapper = label ? ToolTip : Fragment;
+    const wrapperProps =
+      label && isString(label)
+        ? ({
+            info: label,
+            placement: 'floating',
+            id: tipId,
+            inheritDims: true,
+          } as const)
+        : isObject(label)
+        ? { ...label, id: tipId }
+        : {};
 
-  const computed = {
-    ...props,
-    ...rest,
-    variant: 'link',
-    role: role === 'menu' ? 'menuitem' : undefined,
-    [activeProp]: active,
-    'aria-describedby': label ? tipId : undefined,
-  };
+    const listItemProps = {
+      role: listItemRole,
+      height,
+      width,
+    } as ListItemProps;
+    const computed = {
+      ...props,
+      height,
+      width,
+      ...rest,
+      variant: 'link',
+      role: role === 'menu' ? 'menuitem' : undefined,
+      [activeProp]: active,
+      'aria-describedby': label ? tipId : undefined,
+    };
 
-  const content = (
-    <>
-      {Icon && (
-        <Icon
-          size={rest.spacing === 'condensed' ? 16 : 24}
-          mr={12}
-          data-testid="menuitem-icon"
-        />
-      )}
-      {active && <Text screenreader>{currentItemText[listItemType]},</Text>}
-      {children}
-    </>
-  );
+    const content = (
+      <>
+        {Icon && (
+          <Icon
+            size={rest.spacing === 'condensed' ? 16 : 24}
+            mr={12}
+            data-testid="menuitem-icon"
+          />
+        )}
+        {active && <Text screenreader>{currentItemText[listItemType]},</Text>}
+        {children}
+      </>
+    );
 
-  if (listItemType === 'link') {
-    const linkRef = ref as MutableRefObject<HTMLAnchorElement>;
+    if (listItemType === 'link') {
+      const linkRef = ref as MutableRefObject<HTMLAnchorElement>;
 
+      return (
+        <ListItem {...listItemProps}>
+          <Wrapper {...wrapperProps}>
+            <ListLink
+              {...(computed as ListLinkProps)}
+              href={href}
+              ref={linkRef}
+              target={target}
+            >
+              {content}
+            </ListLink>
+          </Wrapper>
+        </ListItem>
+      );
+    }
+
+    if (listItemType === 'button') {
+      const buttonRef = ref as MutableRefObject<HTMLButtonElement>;
+
+      return (
+        <ListItem {...listItemProps}>
+          <Wrapper {...wrapperProps}>
+            <ListButton {...(computed as ListLinkProps)} ref={buttonRef}>
+              {content}
+            </ListButton>
+          </Wrapper>
+        </ListItem>
+      );
+    }
+
+    const liRef = ref as MutableRefObject<HTMLLIElement>;
+
+    const combinedProps = { ...computed, ...listItemProps } as ListItemProps;
     return (
-      <ListItem role={listItemRole}>
-        <Wrapper {...wrapperProps}>
-          <ListLink
-            {...(computed as ListLinkProps)}
-            href={href}
-            ref={linkRef}
-            target={target}
-          >
-            {content}
-          </ListLink>
-        </Wrapper>
+      <ListItem {...combinedProps} ref={liRef}>
+        {content}
       </ListItem>
     );
   }
-
-  if (listItemType === 'button') {
-    const buttonRef = ref as MutableRefObject<HTMLButtonElement>;
-
-    return (
-      <ListItem role={listItemRole}>
-        <Wrapper {...wrapperProps}>
-          <ListButton {...(computed as ListLinkProps)} ref={buttonRef}>
-            {content}
-          </ListButton>
-        </Wrapper>
-      </ListItem>
-    );
-  }
-
-  const liRef = ref as MutableRefObject<HTMLLIElement>;
-
-  return (
-    <ListItem {...(computed as ListItemProps)} ref={liRef}>
-      {content}
-    </ListItem>
-  );
-});
+);
 
 export const IconOnly = () => {
   return (
