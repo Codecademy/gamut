@@ -86,8 +86,8 @@ const interactiveVariants = system.variant({
     cursor: 'pointer',
     width: 1,
     zIndex: 1,
-    px: 24,
-    py: 12,
+    // px: 24,
+    // py: 12,
     position: 'relative',
     transition: transitionConcat(
       ['color', 'background-color', 'border-color'],
@@ -158,7 +158,7 @@ const sizeVariants = system.variant({
     condensed: {
       lineHeight: 'title',
       minHeight: 40,
-      py: 8,
+      // py: 8,
       fontSize: 14,
       [Selectors.BEFORE]: {
         minHeight: 40,

@@ -139,7 +139,7 @@ export const IconMenu: Story = {
   args: {
     variant: 'fixed',
     children: (
-      <>
+      <Menu width="75px" spacing="condensed">
         <MenuItem
           icon={MultipleUsersIcon}
           label="oy"
@@ -157,9 +157,10 @@ export const IconMenu: Story = {
           label={{
             info: 'hej',
             inheritDims: true,
+            placement: 'inline',
           }}
         />
-      </>
+      </Menu>
     ),
   },
 };

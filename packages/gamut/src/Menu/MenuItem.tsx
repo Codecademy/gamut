@@ -1,7 +1,6 @@
 import { GamutIconProps, MultipleUsersIcon } from '@codecademy/gamut-icons';
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
-import { isObject, isString } from 'lodash';
+import isObject from 'lodash/isObject';
+import isString from 'lodash/isString';
 import {
   ComponentProps,
   forwardRef,
@@ -119,7 +118,7 @@ export const MenuItem = forwardRef<
         {Icon && (
           <Icon
             size={rest.spacing === 'condensed' ? 16 : 24}
-            mr={12}
+            mr={0}
             data-testid="menuitem-icon"
           />
         )}
