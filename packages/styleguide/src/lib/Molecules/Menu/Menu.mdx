@@ -97,6 +97,12 @@ Use the `MenuSeparator` component to group menu items into sections when there i
 <Canvas of={MenuStories.PopoverMenuSeparator} />
 <Canvas of={MenuStories.FixedMenuSeparator} />
 
+## Icon-Only Menus
+
+Some menus may have only icons, which can be useful for saving space or for actions that are easily recognizable by their icon. Each `MenuItem` must include a `label` prop, which will populate the `ToolTip` and `aria-label`.
+
+<Canvas of={MenuStories.IconMenu} />
+
 ## Floating menus
 
 You can create floating menus by utilizing our <LinkTo id="Atoms/PopoverContainer">PopoverContainer</LinkTo>. Once you have your base positioning, you just need to adjust the y axis by 48 for the normal spacing or 32 for the condensed spacing for each of the MenuItems. You may also need to change the alignment of the PopoverContainer to ensure correct positioning.

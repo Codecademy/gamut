@@ -22,6 +22,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   avatar,
   children,
   escapeKeyPressHandler,
+  inheritDims,
   info,
   isTipHidden,
   loading,
@@ -111,6 +112,8 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
       display="inline-flex"
       ref={wrapperRef}
       onMouseLeave={toolOnlyEventFunc}
+      height={inheritDims ? 'inherit' : undefined}
+      width={inheritDims ? 'inherit' : undefined}
     >
       <TargetContainer
         onFocus={toolOnlyEventFunc}
@@ -121,6 +124,8 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
           escapeKeyPressHandler ? (e) => escapeKeyPressHandler(e) : undefined
         }
         ref={ref}
+        height={inheritDims ? 'inherit' : undefined}
+        width={inheritDims ? 'inherit' : undefined}
       >
         {children}
       </TargetContainer>
