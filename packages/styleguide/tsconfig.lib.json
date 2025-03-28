@@ -29,5 +29,6 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "../../packages/gamut-styles/dist/typings/theme.d.ts"
-  ]
+  ],
+  "composite" : true,
 }

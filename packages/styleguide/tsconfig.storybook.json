@@ -32,5 +32,6 @@
     ".storybook/*.js",
     ".storybook/*.ts",
     "../../packages/gamut-styles/dist/typings/theme.d.ts"
-  ]
+  ],
+  "composite" : true,
 }
