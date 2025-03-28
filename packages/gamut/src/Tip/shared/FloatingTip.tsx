@@ -108,7 +108,6 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
 
   return (
     <Box
-      bg="blue-300"
       position="relative"
       display="inline-flex"
       ref={wrapperRef}

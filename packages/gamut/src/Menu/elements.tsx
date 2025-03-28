@@ -86,8 +86,8 @@ const interactiveVariants = system.variant({
     cursor: 'pointer',
     width: 1,
     zIndex: 1,
-    // px: 24,
-    // py: 12,
+    px: 24,
+    py: 12,
     position: 'relative',
     transition: transitionConcat(
       ['color', 'background-color', 'border-color'],

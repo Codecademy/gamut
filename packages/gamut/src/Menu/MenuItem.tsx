@@ -9,6 +9,7 @@ import {
   useId,
 } from 'react';
 
+import { FlexBox } from '../Box';
 import { ToolTip, ToolTipProps } from '../Tip/ToolTip';
 import { Text } from '../Typography';
 import {
@@ -85,6 +86,12 @@ export const MenuItem = forwardRef<
     const listItemRole = role === 'menu' ? 'none' : undefined;
 
     const Wrapper = label ? ToolTip : Fragment;
+    const defaultTipProps = {
+      info: label,
+      placement: 'floating',
+      id: tipId,
+      inheritDims: true,
+    };
     const wrapperProps =
       label && isString(label)
         ? ({
@@ -94,7 +101,13 @@ export const MenuItem = forwardRef<
             inheritDims: true,
           } as const)
         : isObject(label)
-        ? { ...label, id: tipId }
+        ? {
+            info: label,
+            placement: 'floating',
+            id: tipId,
+            inheritDims: true,
+            ...label,
+          }
         : {};
 
     const listItemProps = {
@@ -116,11 +129,13 @@ export const MenuItem = forwardRef<
     const content = (
       <>
         {Icon && (
-          <Icon
-            size={rest.spacing === 'condensed' ? 16 : 24}
-            mr={0}
-            data-testid="menuitem-icon"
-          />
+          <FlexBox width="fit-content">
+            <Icon
+              size={rest.spacing === 'condensed' ? 16 : 24}
+              mr={children ? 12 : 0}
+              data-testid="menuitem-icon"
+            />
+          </FlexBox>
         )}
         {active && <Text screenreader>{currentItemText[listItemType]},</Text>}
         {children}
@@ -175,7 +190,7 @@ export const IconOnly = () => {
   return (
     <>
       <MenuItem icon={MultipleUsersIcon} label="oy" />
-      <MenuItem icon={MultipleUsersIcon}> oy</MenuItem>
+      <MenuItem> oy</MenuItem>
       <MenuSeparator my={4} />
       <MenuItem icon={MultipleUsersIcon} label=":)" />
       <MenuItem
