@@ -1,7 +1,8 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
+import { Colors } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
-import { CardWrapper, MotionBox } from './elements';
+import { DynamicCardWrapper, MotionBox, StaticCardWrapper } from './elements';
 import { hoverShadowLeft, hoverShadowRight, patternFadeInOut } from './styles';
 import { CardProps } from './types';
 
@@ -19,11 +20,13 @@ export const Card: React.FC<CardProps> = ({
   const defaultBorderRadius = isInteractive ? 'md' : 'none';
   const trueBorderRadius = !borderRadius ? defaultBorderRadius : borderRadius;
 
+  const SelectedWrapper =
+    variant === 'default' ? DynamicCardWrapper : StaticCardWrapper;
+
   const hasPattern = shadow === 'patternLeft' || shadow === 'patternRight';
 
   const setHoverShadow =
     shadow === 'patternRight' ? hoverShadowRight : hoverShadowLeft;
-
   return (
     <MotionBox
       height={height}
@@ -32,18 +35,21 @@ export const Card: React.FC<CardProps> = ({
       width={width}
     >
       {hasPattern && (
-        <MotionBox variants={patternFadeInOut} borderRadius={trueBorderRadius}>
+        <MotionBox color="text" variants={patternFadeInOut} borderRadius={trueBorderRadius}>
           <Pattern
             dimensions={1}
             left={shadow === 'patternLeft' ? '-0.5rem' : undefined}
             position="absolute"
             right={shadow === 'patternRight' ? '-0.5rem' : undefined}
-            style={{ borderRadius: 'inherit' }}
+            style={{ borderRadius: 'inherit', color: 'currentcolor' }}
             top=".5rem"
           />
         </MotionBox>
       )}
-      <CardWrapper
+      <SelectedWrapper
+        // setting bg here since Background requires a bg prop
+        // the 'white' color doesn't actually get set since the variant overrides it
+        bg={variant !== 'default' ? (variant as Colors) : 'white'}
         border={1}
         borderRadius={trueBorderRadius}
         dimensions={1}
@@ -56,7 +62,7 @@ export const Card: React.FC<CardProps> = ({
         {...rest}
       >
         {children}
-      </CardWrapper>
+      </SelectedWrapper>
     </MotionBox>
   );
 };

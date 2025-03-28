@@ -2,30 +2,27 @@ import { theme, timingValues, variant } from '@codecademy/gamut-styles';
 
 export const cardVariants = variant({
   defaultVariant: 'default',
+  base: {
+    color: 'text',
+  },
   variants: {
     default: {
-      textColor: 'text',
       bg: 'background',
     },
     white: {
       bg: 'white',
-      textColor: 'navy-800',
     },
     yellow: {
       bg: 'yellow',
-      textColor: 'navy-800',
     },
     beige: {
       bg: 'beige',
-      textColor: 'navy-800',
     },
     navy: {
       bg: 'navy',
-      textColor: 'white',
     },
     hyper: {
       bg: 'hyper',
-      textColor: 'white',
     },
   },
 });
