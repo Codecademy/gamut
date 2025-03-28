@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.5.1...@codecademy/gamut-styles@17.6.0) (2025-03-27)
+
+### Features
+
+- LX Studio theme ([786cb49](https://github.com/Codecademy/gamut/commit/786cb49676875cbae9f028d6e523a94bfd95ba36))
+
 ### [17.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.5.0...@codecademy/gamut-styles@17.5.1) (2025-02-19)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
