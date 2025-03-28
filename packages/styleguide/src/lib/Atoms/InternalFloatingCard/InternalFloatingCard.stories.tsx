@@ -1,16 +1,16 @@
-import { FloatingCard } from '@codecademy/gamut';
+import { InternalFloatingCard } from '@codecademy/gamut';
 import { DotDense } from '@codecademy/gamut-patterns';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof FloatingCard> = {
-  component: FloatingCard,
+const meta: Meta<typeof InternalFloatingCard> = {
+  component: InternalFloatingCard,
   args: {
     children: "Yakety Yak don't don't talk back!",
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof FloatingCard>;
+type Story = StoryObj<typeof InternalFloatingCard>;
 
 export const Default: Story = {
   args: {},

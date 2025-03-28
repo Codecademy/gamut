@@ -73,19 +73,28 @@ const CardBody = styled('div', styledOptions)<
   cardProps
 );
 
-type FloatingCardWrapper = {
+type InternalFloatingCardWrapper = {
   containerDisplay?: Properties['display'];
 };
 
-export type FloatingCardProps = {
+export type InternalFloatingCardProps = {
   className?: string;
   pattern?: React.ComponentType<PatternProps>;
   shadow?: 'bottomLeft' | 'bottomRight';
 } & ComponentProps<typeof CardBody>;
 
-export type FloatingCardWithWrapper = FloatingCardProps & FloatingCardWrapper;
+export type InternalFloatingCardWithWrapper = InternalFloatingCardProps &
+  InternalFloatingCardWrapper;
 
-export const FloatingCard = forwardRef<HTMLDivElement, FloatingCardWithWrapper>(
+/**
+ * @deprecated
+ * This component is strictly for internal Gamut usage.
+ * Please use the `Card` component instead.
+ */
+export const InternalFloatingCard = forwardRef<
+  HTMLDivElement,
+  InternalFloatingCardWithWrapper
+>(
   (
     {
       children,
