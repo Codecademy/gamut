@@ -57,17 +57,19 @@ export const ShadowNone: Story = {
           <Card>Default variant</Card>
         </Box>
       </FlexBox>
-      <FlexBox row gap={16} p={16} border={1}>
-        <Box flexGrow={1}>
-          <Card variant="white">White variant</Card>
-        </Box>
-        <Box flexGrow={1}>
-          <Card variant="yellow">Yellow variant</Card>
-        </Box>
-        <Box flexGrow={1}>
-          <Card variant="beige">Beige variant</Card>
-        </Box>
-      </FlexBox>
+      <Background bg="white">
+        <FlexBox row gap={16} p={16} border={1}>
+          <Box flexGrow={1}>
+            <Card variant="white">White variant</Card>
+          </Box>
+          <Box flexGrow={1}>
+            <Card variant="yellow">Yellow variant</Card>
+          </Box>
+          <Box flexGrow={1}>
+            <Card variant="beige">Beige variant</Card>
+          </Box>
+        </FlexBox>
+      </Background>
       <Background bg="navy">
         <FlexBox row gap={16} p={16} border={1}>
           <Box flexGrow={1}>
@@ -90,23 +92,25 @@ export const ShadowOutline: Story = {
           <Card shadow="outline">Default with outline</Card>
         </Box>
       </FlexBox>
-      <FlexBox row gap={16} p={24} border={1}>
-        <Box flexGrow={1}>
-          <Card variant="white" shadow="outline">
-            White with outline
-          </Card>
-        </Box>
-        <Box flexGrow={1}>
-          <Card variant="yellow" shadow="outline">
-            Yellow with outline
-          </Card>
-        </Box>
-        <Box flexGrow={1}>
-          <Card variant="beige" shadow="outline">
-            Beige with outline
-          </Card>
-        </Box>
-      </FlexBox>
+      <Background bg="white">
+        <FlexBox row gap={16} p={24} border={1}>
+          <Box flexGrow={1}>
+            <Card variant="white" shadow="outline">
+              White with outline
+            </Card>
+          </Box>
+          <Box flexGrow={1}>
+            <Card variant="yellow" shadow="outline">
+              Yellow with outline
+            </Card>
+          </Box>
+          <Box flexGrow={1}>
+            <Card variant="beige" shadow="outline">
+              Beige with outline
+            </Card>
+          </Box>
+        </FlexBox>
+      </Background>
       <Background bg="navy">
         <FlexBox row gap={16} p={24} border={1}>
           <Box flexGrow={1}>
@@ -133,23 +137,25 @@ export const ShadowPatternLeft: Story = {
           <Card shadow="patternLeft">Default with patternLeft</Card>
         </Box>
       </FlexBox>
-      <FlexBox row gap={16} p={24} border={1}>
-        <Box flexGrow={1}>
-          <Card variant="white" shadow="patternLeft">
-            White with patternLeft
-          </Card>
-        </Box>
-        <Box flexGrow={1}>
-          <Card variant="yellow" shadow="patternLeft">
-            Yellow with patternLeft
-          </Card>
-        </Box>
-        <Box flexGrow={1}>
-          <Card variant="beige" shadow="patternLeft">
-            Beige with patternLeft
-          </Card>
-        </Box>
-      </FlexBox>
+      <Background bg="white">
+        <FlexBox row gap={16} p={24} border={1}>
+          <Box flexGrow={1}>
+            <Card variant="white" shadow="patternLeft">
+              White with patternLeft
+            </Card>
+          </Box>
+          <Box flexGrow={1}>
+            <Card variant="yellow" shadow="patternLeft">
+              Yellow with patternLeft
+            </Card>
+          </Box>
+          <Box flexGrow={1}>
+            <Card variant="beige" shadow="patternLeft">
+              Beige with patternLeft
+            </Card>
+          </Box>
+        </FlexBox>
+      </Background>
       <Background bg="navy">
         <FlexBox row gap={16} p={24} border={1}>
           <Box flexGrow={1}>
@@ -176,23 +182,25 @@ export const ShadowPatternRight: Story = {
           <Card shadow="patternRight">Default with patternRight</Card>
         </Box>
       </FlexBox>
-      <FlexBox row gap={16} p={24} border={1}>
-        <Box flexGrow={1}>
-          <Card variant="white" shadow="patternRight">
-            White with patternRight
-          </Card>
-        </Box>
-        <Box flexGrow={1}>
-          <Card variant="yellow" shadow="patternRight">
-            Yellow with patternRight
-          </Card>
-        </Box>
-        <Box flexGrow={1}>
-          <Card variant="beige" shadow="patternRight">
-            Beige with patternRight
-          </Card>
-        </Box>
-      </FlexBox>
+      <Background bg="white">
+        <FlexBox row gap={16} p={24} border={1}>
+          <Box flexGrow={1}>
+            <Card variant="white" shadow="patternRight">
+              White with patternRight
+            </Card>
+          </Box>
+          <Box flexGrow={1}>
+            <Card variant="yellow" shadow="patternRight">
+              Yellow with patternRight
+            </Card>
+          </Box>
+          <Box flexGrow={1}>
+            <Card variant="beige" shadow="patternRight">
+              Beige with patternRight
+            </Card>
+          </Box>
+        </FlexBox>
+      </Background>
       <Background bg="navy">
         <FlexBox row gap={16} p={24} border={1}>
           <Box flexGrow={1}>
@@ -223,29 +231,31 @@ export const IsInteractive: Story = {
           </Anchor>
         </Box>
       </FlexBox>
-      <FlexBox row gap={16} p={24} border={1}>
-        <Box flexGrow={1}>
-          <Anchor dimensions={1} href="" variant="interface">
-            <Card variant="white" shadow="none" isInteractive>
-              White, no shadow, and isInteractive
-            </Card>
-          </Anchor>
-        </Box>
-        <Box flexGrow={1}>
-          <Anchor dimensions={1} href="" variant="interface">
-            <Card variant="yellow" shadow="patternLeft" isInteractive>
-              Yellow, patternLeft, and isInteractive
-            </Card>
-          </Anchor>
-        </Box>
-        <Box flexGrow={1}>
-          <Anchor dimensions={1} href="" variant="interface">
-            <Card variant="beige" shadow="outline" isInteractive>
-              Beige, outline, and isInteractive
-            </Card>
-          </Anchor>
-        </Box>
-      </FlexBox>
+      <Background bg="white">
+        <FlexBox row gap={16} p={24} border={1}>
+          <Box flexGrow={1}>
+            <Anchor dimensions={1} href="" variant="interface">
+              <Card variant="white" shadow="none" isInteractive>
+                White, no shadow, and isInteractive
+              </Card>
+            </Anchor>
+          </Box>
+          <Box flexGrow={1}>
+            <Anchor dimensions={1} href="" variant="interface">
+              <Card variant="yellow" shadow="patternLeft" isInteractive>
+                Yellow, patternLeft, and isInteractive
+              </Card>
+            </Anchor>
+          </Box>
+          <Box flexGrow={1}>
+            <Anchor dimensions={1} href="" variant="interface">
+              <Card variant="beige" shadow="outline" isInteractive>
+                Beige, outline, and isInteractive
+              </Card>
+            </Anchor>
+          </Box>
+        </FlexBox>
+      </Background>
       <Background bg="navy">
         <FlexBox row gap={16} p={24} border={1}>
           <Box flexGrow={1}>
