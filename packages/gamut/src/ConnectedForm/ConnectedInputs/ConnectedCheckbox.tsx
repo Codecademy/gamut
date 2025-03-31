@@ -39,7 +39,13 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
           }}
           onBlur={onBlur}
           label={label}
-          aria-label={ariaLabel}
+          aria-label={
+            ariaLabel === undefined
+              ? typeof label === 'string'
+                ? label
+                : 'checkbox'
+              : ariaLabel
+          }
           multiline={multiline}
           id={id}
           aria-required={isRequired}
