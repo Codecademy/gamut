@@ -20,11 +20,11 @@ export interface DrawerProps extends Omit<BoxProps, 'width'> {
    * Which edge of the drawer content container is aligned to during the animation.
    */
   alignContentContainer?: 'left' | 'right';
-   /**
+  /**
    * This `id` is used to link the element that expands the Drawer to the Drawer itself.
    * It is needed for the `aria-controls` attribute to work properly for accessibility.
    */
-   id: string;
+  id: string;
 }
 
 export const Drawer: React.FC<DrawerProps> = ({

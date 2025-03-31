@@ -36,8 +36,10 @@ const ExampleFlyout: React.FC = () => {
   const flyoutId = useId();
 
   return (
-    <FlexBox >
-      <Flyout expanded={expanded} id={flyoutId}>Example Flyout</Flyout>
+    <FlexBox>
+      <Flyout expanded={expanded} id={flyoutId}>
+        Example Flyout
+      </Flyout>
       <StrokeButton
         aria-expanded={expanded}
         aria-controls={FlyoutId}
@@ -47,7 +49,7 @@ const ExampleFlyout: React.FC = () => {
       </StrokeButton>
     </FlexBox>
   );
-}
+};
 ```
 
 ## Playground

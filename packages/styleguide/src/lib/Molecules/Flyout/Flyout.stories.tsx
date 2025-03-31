@@ -6,7 +6,7 @@ import { useState } from 'react';
 const meta: Meta<typeof Flyout> = {
   component: Flyout,
   args: {
-    id: 'flyout-example'
+    id: 'flyout-example',
   },
 };
 

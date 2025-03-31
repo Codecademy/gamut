@@ -42,8 +42,10 @@ const ExampleDrawer: React.FC = () => {
   const drawerId = useId();
 
   return (
-    <FlexBox >
-      <Drawer expanded={expanded} id={drawerId}>Example Drawer</Drawer>
+    <FlexBox>
+      <Drawer expanded={expanded} id={drawerId}>
+        Example Drawer
+      </Drawer>
       <StrokeButton
         onClick={() => setExpanded((previousExpanded) => !previousExpanded)}
         aria-expanded={expanded}
@@ -53,7 +55,7 @@ const ExampleDrawer: React.FC = () => {
       </StrokeButton>
     </FlexBox>
   );
-}
+};
 ```
 
 ## Playground

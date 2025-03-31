@@ -14,7 +14,9 @@ export const Default: React.FC = () => {
   const drawerId = useId();
   return (
     <FlexBox bg="paleYellow" height="20rem">
-      <Drawer expanded={expanded} id={drawerId}>Drawer content in here!</Drawer>
+      <Drawer expanded={expanded} id={drawerId}>
+        Drawer content in here!
+      </Drawer>
       <StrokeButton
         aria-expanded={expanded}
         aria-controls={drawerId}
