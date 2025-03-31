@@ -13,7 +13,12 @@ export default meta;
 type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    shadow: 'patternRight',
+    variant: 'default',
+    isInteractive: true,
+    borderRadius: 'md',
+  },
 };
 
 export const StaticLight: Story = {

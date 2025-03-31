@@ -35,7 +35,11 @@ export const Card: React.FC<CardProps> = ({
       width={width}
     >
       {hasPattern && (
-        <MotionBox color="text" variants={patternFadeInOut} borderRadius={trueBorderRadius}>
+        <MotionBox
+          color="text"
+          variants={patternFadeInOut}
+          borderRadius={trueBorderRadius}
+        >
           <Pattern
             dimensions={1}
             left={shadow === 'patternLeft' ? '-0.5rem' : undefined}
@@ -48,8 +52,8 @@ export const Card: React.FC<CardProps> = ({
       )}
       <SelectedWrapper
         // setting bg here since Background requires a bg prop
-        // the 'white' color doesn't actually get set since the variant overrides it
-        bg={variant !== 'default' ? (variant as Colors) : 'white'}
+        // the falsy value of '' will not get set since the variant's bg would override it
+        bg={variant !== 'default' ? (variant as Colors) : '' as Colors}
         border={1}
         borderRadius={trueBorderRadius}
         dimensions={1}
