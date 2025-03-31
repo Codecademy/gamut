@@ -97,9 +97,9 @@ Use the `MenuSeparator` component to group menu items into sections when there i
 <Canvas of={MenuStories.PopoverMenuSeparator} />
 <Canvas of={MenuStories.FixedMenuSeparator} />
 
-## Icon-Only Menus
+## Icon-Only Menus + ToolTips
 
-Some menus may have only icons, which can be useful for saving space or for actions that are easily recognizable by their icon. Each `MenuItem` must include a `label` prop, which will populate the `ToolTip` and `aria-label`.
+Some menus may have only icons, which can be useful for saving space or for actions that are easily recognizable by their icon. Each `MenuItem` must include a `label` prop, which will populate the `ToolTip` and `aria-label`. If the MenuItem is not interactive, the `label` prop will be used to populate the `aria-label` only.
 
 <Canvas of={MenuStories.IconMenu} />
 

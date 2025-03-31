@@ -5,10 +5,13 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import isObject from 'lodash/isObject';
 import { ComponentProps, forwardRef } from 'react';
 
 import { sharedStates } from '../Box/props';
 import { resetStyles, Selectors } from '../ButtonBase/ButtonBase';
+import { ToolTip, ToolTipProps } from '../Tip/ToolTip';
+import { MenuItem } from './MenuItem';
 
 enum MenuItemSelectors {
   OUTLINE = '&:after',
@@ -221,3 +224,32 @@ export const ListButton = styled(
   sharedStates,
   listProps
 );
+
+export const MenuToolTipWrapper: React.FC<
+  Pick<ComponentProps<typeof MenuItem>, 'children' | 'label'> & {
+    tipId: string;
+  }
+> = ({ children, label, tipId }) => {
+  if (!label) {
+    return <>{children}</>;
+  }
+
+  const defaultTipProps = {
+    placement: 'floating',
+    id: tipId,
+    inheritDims: true,
+  };
+
+  const wrapperProps =
+    label && isObject(label)
+      ? {
+          ...defaultTipProps,
+          ...label,
+        }
+      : {
+          info: label,
+          ...defaultTipProps,
+        };
+
+  return <ToolTip {...(wrapperProps as ToolTipProps)}>{children}</ToolTip>;
+};

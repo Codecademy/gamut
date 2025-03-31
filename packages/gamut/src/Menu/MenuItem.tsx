@@ -1,16 +1,9 @@
 import { GamutIconProps, MultipleUsersIcon } from '@codecademy/gamut-icons';
-import isObject from 'lodash/isObject';
 import isString from 'lodash/isString';
-import {
-  ComponentProps,
-  forwardRef,
-  Fragment,
-  MutableRefObject,
-  useId,
-} from 'react';
+import { ComponentProps, forwardRef, MutableRefObject, useId } from 'react';
 
 import { FlexBox } from '../Box';
-import { ToolTip, ToolTipProps } from '../Tip/ToolTip';
+import { ToolTipProps } from '../Tip/ToolTip';
 import { Text } from '../Typography';
 import {
   ListButton,
@@ -18,6 +11,7 @@ import {
   ListItemProps,
   ListLink,
   ListLinkProps,
+  MenuToolTipWrapper,
 } from './elements';
 import { useMenuContext } from './MenuContext';
 import { MenuSeparator } from './MenuSeparator';
@@ -47,6 +41,7 @@ type ToolTipLabel = string | Omit<ToolTipProps, 'id'>;
 interface MenuItemIconOnly extends HTMLProps, KeepThisHere {
   icon: React.ComponentType<GamutIconProps>;
   children?: never;
+  /** ToolTips will only render for interactive items, otherwise the label will be used as a generic aria-label  */
   label: ToolTipLabel;
 }
 
@@ -58,7 +53,6 @@ interface MenuNotItemIconOnly extends HTMLProps, KeepThisHere {
 
 type newType = MenuItemIconOnly | MenuNotItemIconOnly;
 
-// TODO - Move wrapper into a separate component
 export const MenuItem = forwardRef<
   HTMLLIElement | HTMLAnchorElement | HTMLButtonElement,
   newType
@@ -84,31 +78,6 @@ export const MenuItem = forwardRef<
 
     const listItemType = getListItemType(!!href, !!props.onClick);
     const listItemRole = role === 'menu' ? 'none' : undefined;
-
-    const Wrapper = label ? ToolTip : Fragment;
-    const defaultTipProps = {
-      info: label,
-      placement: 'floating',
-      id: tipId,
-      inheritDims: true,
-    };
-    const wrapperProps =
-      label && isString(label)
-        ? ({
-            info: label,
-            placement: 'floating',
-            id: tipId,
-            inheritDims: true,
-          } as const)
-        : isObject(label)
-        ? {
-            info: label,
-            placement: 'floating',
-            id: tipId,
-            inheritDims: true,
-            ...label,
-          }
-        : {};
 
     const listItemProps = {
       role: listItemRole,
@@ -147,7 +116,7 @@ export const MenuItem = forwardRef<
 
       return (
         <ListItem {...listItemProps}>
-          <Wrapper {...wrapperProps}>
+          <MenuToolTipWrapper label={label} tipId={tipId}>
             <ListLink
               {...(computed as ListLinkProps)}
               href={href}
@@ -156,7 +125,7 @@ export const MenuItem = forwardRef<
             >
               {content}
             </ListLink>
-          </Wrapper>
+          </MenuToolTipWrapper>
         </ListItem>
       );
     }
@@ -166,11 +135,11 @@ export const MenuItem = forwardRef<
 
       return (
         <ListItem {...listItemProps}>
-          <Wrapper {...wrapperProps}>
+          <MenuToolTipWrapper label={label} tipId={tipId}>
             <ListButton {...(computed as ListLinkProps)} ref={buttonRef}>
               {content}
             </ListButton>
-          </Wrapper>
+          </MenuToolTipWrapper>
         </ListItem>
       );
     }
@@ -178,8 +147,15 @@ export const MenuItem = forwardRef<
     const liRef = ref as MutableRefObject<HTMLLIElement>;
 
     const combinedProps = { ...computed, ...listItemProps } as ListItemProps;
+    const ariaLabel =
+      typeof label === 'string'
+        ? label
+        : isString(label?.info)
+        ? label.info
+        : undefined;
     return (
-      <ListItem {...combinedProps} ref={liRef}>
+      // There are non-interactive and should never have tooltips
+      <ListItem {...combinedProps} ref={liRef} aria-label={ariaLabel}>
         {content}
       </ListItem>
     );
