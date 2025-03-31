@@ -45,14 +45,14 @@ export const patternFadeInOut = {
   initial: {
     opacity: 1,
     transition: {
-      duration: timingValues.slow / 1000,
+      duration: timingValues.medium / 1000,
       ease: 'easeOut',
     },
   },
   animate: {
     opacity: 0,
     transition: {
-      duration: timingValues.slow / 1000,
+      duration: timingValues.medium / 1000,
       ease: 'easeIn',
     },
   },
