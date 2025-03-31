@@ -147,12 +147,15 @@ export const MenuItem = forwardRef<
     const liRef = ref as MutableRefObject<HTMLLIElement>;
 
     const combinedProps = { ...computed, ...listItemProps } as ListItemProps;
-    const ariaLabel =
-      typeof label === 'string'
+
+    const ariaLabel = label
+      ? typeof label === 'string'
         ? label
         : isString(label?.info)
         ? label.info
-        : undefined;
+        : undefined
+      : undefined;
+
     return (
       // There are non-interactive and should never have tooltips
       <ListItem {...combinedProps} ref={liRef} aria-label={ariaLabel}>
