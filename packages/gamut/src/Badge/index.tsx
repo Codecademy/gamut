@@ -1,4 +1,9 @@
-import { Colors, styledOptions, system, variant } from '@codecademy/gamut-styles';
+import {
+  Colors,
+  styledOptions,
+  system,
+  variant,
+} from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -78,24 +83,27 @@ type StandardBadgeProps = {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'tertiaryFill' | 'accent';
   bg?: never;
   background?: never;
-}
+};
 
 type CustomBadgeBackgroundProps = {
   variant: 'custom';
   background: string;
-}
+};
 
 type CustomBadgeBgProps = {
   variant: 'custom';
   bg: Colors;
-}
+};
 
-type BadgePropsType = StandardBadgeProps | CustomBadgeBackgroundProps | CustomBadgeBgProps;
+type BadgeBgPropsType =
+  | StandardBadgeProps
+  | CustomBadgeBackgroundProps
+  | CustomBadgeBgProps;
 
 export type BadgeBaseProps = StyleProps<typeof badgeProps> &
   StyleProps<typeof colorVariants> &
   StyleProps<typeof sizeVariants> &
-  BadgePropsType &
+  BadgeBgPropsType &
   WithChildrenProp;
 
 const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
