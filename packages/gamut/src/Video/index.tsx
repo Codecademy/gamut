@@ -92,7 +92,7 @@ export const Video: React.FC<VideoProps> = (props) => {
   };
 
   const isExternallyHostedVideoUrl = (url: string): boolean =>
-    !!(url.match(/youtu(be\.com|\.be)/) || url.match(/vimeo.com/));
+    !!(url.match(/youtu(be\.com|\.be)/) || url.match(/vimeo\.com/));
 
   const isExternallyHostedVideo = (videoUrl: PlayerSrc): boolean => {
     if (!videoUrl) return false;
