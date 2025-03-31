@@ -86,7 +86,6 @@ type StandardBadgeProps = {
 };
 
 type CustomBadgeBackgroundProps = {
-
   background: string;
   bg?: never;
   variant: 'custom';
