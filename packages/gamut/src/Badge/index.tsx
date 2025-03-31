@@ -1,4 +1,4 @@
-import { styledOptions, system, variant } from '@codecademy/gamut-styles';
+import { Colors, styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -21,31 +21,24 @@ const colorVariants = variant({
   },
   variants: {
     primary: {
-      // Setting background: 'none' to prevent conflicting background and backgroundColor styles
-      // this way, only the custom variant should be able to set background
-      background: 'none',
       bg: `text`,
       textColor: 'background',
     },
     accent: {
-      background: 'none',
       bg: 'yellow',
       textColor: 'navy',
     },
     secondary: {
-      background: 'none',
       bg: 'text-secondary',
       textColor: 'background',
     },
     tertiary: {
-      background: 'none',
       bg: 'transparent',
       border: 1,
       borderColor: 'border-secondary',
       textColor: 'text-secondary',
     },
     tertiaryFill: {
-      background: 'none',
       bg: 'background',
       border: 1,
       borderColor: 'border-secondary',
@@ -80,11 +73,30 @@ const badgeProps = variance.compose(
   system.background,
   system.color
 );
-export interface BadgeBaseProps
-  extends StyleProps<typeof badgeProps>,
-    StyleProps<typeof colorVariants>,
-    StyleProps<typeof sizeVariants>,
-    WithChildrenProp {}
+
+type StandardBadgeProps = {
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'tertiaryFill' | 'accent';
+  bg?: never;
+  background?: never;
+}
+
+type CustomBadgeBackgroundProps = {
+  variant: 'custom';
+  background: string;
+}
+
+type CustomBadgeBgProps = {
+  variant: 'custom';
+  bg: Colors;
+}
+
+type BadgePropsType = StandardBadgeProps | CustomBadgeBackgroundProps | CustomBadgeBgProps;
+
+export type BadgeBaseProps = StyleProps<typeof badgeProps> &
+  StyleProps<typeof colorVariants> &
+  StyleProps<typeof sizeVariants> &
+  BadgePropsType &
+  WithChildrenProp;
 
 const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
   badgeProps,
@@ -92,9 +104,7 @@ const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
   sizeVariants
 );
 
-export interface BadgeProps
-  extends Partial<IconComponentType>,
-    BadgeBaseProps {}
+export type BadgeProps = Partial<IconComponentType> & BadgeBaseProps;
 
 export const Badge: React.FC<BadgeProps> = ({ icon, children, ...rest }) => {
   const size = rest.size === 'sm' ? 'sm' : 'base';
