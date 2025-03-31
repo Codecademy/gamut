@@ -55,7 +55,6 @@ const TabsPanelCollection: React.FC = () => {
   );
 };
 
-// Question: is this ok? for some reason TabsProps required children??
 type TabsWithoutChildren = Omit<TabsProps, 'children'>;
 
 const TabsExample = (args: TabsWithoutChildren) => {
