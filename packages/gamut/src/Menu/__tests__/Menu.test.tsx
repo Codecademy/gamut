@@ -115,6 +115,29 @@ describe('Menu', () => {
 
     screen.getByText('current item,');
   });
+  it('render a ToolTip for interactive menu items with a label', async () => {
+    const label = 'more people';
+    const { view } = renderView({
+      children: (
+        <MenuItem icon={MultipleUsersIcon} label={label} onClick={() => {}} />
+      ),
+    });
+
+    view.getByLabelText(label);
+    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
+      label
+    );
+  });
+
+  it('render an aria-label for non-interactive menu items with a label', async () => {
+    const label = 'more people';
+    const { view } = renderView({
+      children: <MenuItem icon={MultipleUsersIcon} label={label} />,
+    });
+
+    expect(view.queryByRole('tooltip', { hidden: true })).toBeNull();
+    view.getByLabelText(label);
+  });
   describe('when the role is menu', () => {
     it('renders a list with a role of menu', () => {
       renderView({ role: 'menu' });

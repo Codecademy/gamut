@@ -238,6 +238,7 @@ export const MenuToolTipWrapper: React.FC<
     placement: 'floating',
     id: tipId,
     inheritDims: true,
+    shouldRenderAriaTip: false,
   };
 
   const wrapperProps =

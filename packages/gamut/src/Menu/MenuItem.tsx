@@ -1,4 +1,4 @@
-import { GamutIconProps, MultipleUsersIcon } from '@codecademy/gamut-icons';
+import { GamutIconProps } from '@codecademy/gamut-icons';
 import isString from 'lodash/isString';
 import { ComponentProps, forwardRef, MutableRefObject, useId } from 'react';
 
@@ -14,7 +14,6 @@ import {
   MenuToolTipWrapper,
 } from './elements';
 import { useMenuContext } from './MenuContext';
-import { MenuSeparator } from './MenuSeparator';
 
 const getListItemType = (href: boolean, onClick: boolean) =>
   href ? 'link' : onClick ? 'button' : 'item';
@@ -84,6 +83,15 @@ export const MenuItem = forwardRef<
       height,
       width,
     } as ListItemProps;
+
+    const ariaLabel = label
+      ? typeof label === 'string'
+        ? label
+        : isString(label?.info)
+        ? label.info
+        : undefined
+      : undefined;
+
     const computed = {
       ...props,
       height,
@@ -92,7 +100,7 @@ export const MenuItem = forwardRef<
       variant: 'link',
       role: role === 'menu' ? 'menuitem' : undefined,
       [activeProp]: active,
-      'aria-describedby': label ? tipId : undefined,
+      'aria-label': ariaLabel,
     };
 
     const content = (
@@ -146,19 +154,9 @@ export const MenuItem = forwardRef<
 
     const liRef = ref as MutableRefObject<HTMLLIElement>;
 
-    const combinedProps = { ...computed, ...listItemProps } as ListItemProps;
-
-    const ariaLabel = label
-      ? typeof label === 'string'
-        ? label
-        : isString(label?.info)
-        ? label.info
-        : undefined
-      : undefined;
-
     return (
       // There are non-interactive and should never have tooltips
-      <ListItem {...combinedProps} ref={liRef} aria-label={ariaLabel}>
+      <ListItem {...(computed as ListItemProps)} ref={liRef}>
         {content}
       </ListItem>
     );
