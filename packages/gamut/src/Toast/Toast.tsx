@@ -7,7 +7,7 @@ import * as React from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { IconButton } from '../Button/IconButton';
-import { FloatingCard } from '../FloatingCard/FloatingCard';
+import { InternalFloatingCard } from '../InternalFloatingCard/InternalFloatingCard';
 import { Text } from '../Typography';
 import { WithChildrenProp } from '../utils';
 
@@ -30,7 +30,9 @@ const layoutVariants = system.variant({
   },
 });
 
-const ToastContainer = styled(FloatingCard)<StyleProps<typeof layoutVariants>>(
+const ToastContainer = styled(InternalFloatingCard)<
+  StyleProps<typeof layoutVariants>
+>(
   system.css({
     display: 'grid',
     width: 360,

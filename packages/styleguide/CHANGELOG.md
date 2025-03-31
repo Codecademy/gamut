@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [71.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.6.0...@codecademy/styleguide@71.0.0) (2025-03-31)
+
+### ⚠ BREAKING CHANGES
+
+- **Card + FloatingCard:** changing FloatCard to internal use and refactoring Card
+
+### Code Refactoring
+
+- **Card + FloatingCard:** changing FloatCard to internal use and refactoring Card ([0bb9872](https://github.com/Codecademy/gamut/commit/0bb987253b3fe0201fef375d37ed9460bf941b92))
+
 ## [70.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@70.5.0...@codecademy/styleguide@70.6.0) (2025-03-27)
 
 ### Features
