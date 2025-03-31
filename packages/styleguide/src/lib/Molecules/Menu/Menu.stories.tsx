@@ -6,7 +6,6 @@ import {
   PopoverContainer,
 } from '@codecademy/gamut';
 import {
-  AiChatSparkFilledIcon,
   AiChatSparkIcon,
   BashShellIcon,
   FileIcon,
@@ -148,7 +147,7 @@ export const IconMenu: Story = {
   args: {
     border: 1,
     borderRadius: 'md',
-    width: 'fit-content',
+    width: '88px',
     variant: 'fixed',
     children: (
       <>
@@ -156,12 +155,7 @@ export const IconMenu: Story = {
         <MenuItem icon={BashShellIcon} href="#whatsup" label="Prompt" />
         <MenuItem icon={PeopleIcon} label="People" href="#whatsup-people" />
         <MenuItem active icon={FileIcon} href="#whatsup-1" label="Learn" />
-        <MenuItem
-          aria-disabled
-          icon={RatingStarCircleIcon}
-          href="#whats-2"
-          label="Locked for free users"
-        />
+        <MenuItem icon={RatingStarCircleIcon} href="#whats-2" label="Rubric" />
         <MenuItem icon={InformationalIcon} href="#who-is-3" label="Content" />
       </>
     ),
