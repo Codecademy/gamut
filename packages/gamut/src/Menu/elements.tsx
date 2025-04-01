@@ -161,7 +161,7 @@ const sizeVariants = system.variant({
     condensed: {
       lineHeight: 'title',
       minHeight: 40,
-      // py: 8,
+      py: 8,
       fontSize: 14,
       [Selectors.BEFORE]: {
         minHeight: 40,

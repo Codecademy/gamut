@@ -44,13 +44,13 @@ interface MenuItemIconOnly extends HTMLProps, ForwardListItemProps {
   label: ToolTipLabel;
 }
 
-interface MenuNotItemIconOnly extends HTMLProps, ForwardListItemProps {
+interface MenuTextItem extends HTMLProps, ForwardListItemProps {
   icon?: React.ComponentType<GamutIconProps>;
   children: React.ReactNode;
   label?: ToolTipLabel;
 }
 
-type MenuItemTypes = MenuItemIconOnly | MenuNotItemIconOnly;
+type MenuItemTypes = MenuItemIconOnly | MenuTextItem;
 
 export const MenuItem = forwardRef<
   HTMLLIElement | HTMLAnchorElement | HTMLButtonElement,
