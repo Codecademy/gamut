@@ -288,7 +288,6 @@ const HorizontalScrollingExample: React.FC<ListProps> = (args) => {
               tip="Options"
               tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
             />
-
           </ListCol>
         </ListRow>
       ))}
