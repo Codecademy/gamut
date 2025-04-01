@@ -64,7 +64,7 @@ export interface DisclosureBodyProps extends DisclosureBodyWrapperStyles {
 }
 
 export interface DisclosureProps
-  extends DisclosureButtonProps,
+  extends Omit<DisclosureButtonProps, 'id'>,
     DisclosureBodyProps,
     DisclosureWrapperStyles {
   /**
