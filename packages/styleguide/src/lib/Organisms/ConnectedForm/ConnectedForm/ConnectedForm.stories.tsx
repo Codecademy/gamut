@@ -165,6 +165,7 @@ const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
         field={{
           component: ConnectedCheckbox,
           label: <div>check it ouuut</div>,
+          'aria-label': 'aria label',
         }}
         {...connectedFormGroup}
       />
