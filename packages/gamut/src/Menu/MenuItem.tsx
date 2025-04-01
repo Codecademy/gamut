@@ -30,31 +30,31 @@ const currentItemText = {
 };
 
 type HTMLProps = Partial<Pick<HTMLAnchorElement, 'href' | 'target' | 'rel'>>;
-type KeepThisHere = Omit<
+type ForwardListItemProps = Omit<
   ComponentProps<typeof ListItem>,
   'variant' | 'selected' | 'active-navlink' | 'children'
 >;
 
 type ToolTipLabel = string | Omit<ToolTipProps, 'id'>;
 
-interface MenuItemIconOnly extends HTMLProps, KeepThisHere {
+interface MenuItemIconOnly extends HTMLProps, ForwardListItemProps {
   icon: React.ComponentType<GamutIconProps>;
   children?: never;
   /** ToolTips will only render for interactive items, otherwise the label will be used as a generic aria-label  */
   label: ToolTipLabel;
 }
 
-interface MenuNotItemIconOnly extends HTMLProps, KeepThisHere {
+interface MenuNotItemIconOnly extends HTMLProps, ForwardListItemProps {
   icon?: React.ComponentType<GamutIconProps>;
   children: React.ReactNode;
   label?: ToolTipLabel;
 }
 
-type newType = MenuItemIconOnly | MenuNotItemIconOnly;
+type MenuItemTypes = MenuItemIconOnly | MenuNotItemIconOnly;
 
 export const MenuItem = forwardRef<
   HTMLLIElement | HTMLAnchorElement | HTMLButtonElement,
-  newType
+  MenuItemTypes
 >(
   (
     {
@@ -155,7 +155,7 @@ export const MenuItem = forwardRef<
     const liRef = ref as MutableRefObject<HTMLLIElement>;
 
     return (
-      // There are non-interactive and should never have tooltips
+      // These are non-interactive and will never have tooltips (nor should they).
       <ListItem {...(computed as ListItemProps)} ref={liRef}>
         {content}
       </ListItem>

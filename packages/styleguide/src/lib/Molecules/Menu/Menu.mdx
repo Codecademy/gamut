@@ -99,7 +99,7 @@ Use the `MenuSeparator` component to group menu items into sections when there i
 
 ## Icon-Only Menus + ToolTips
 
-Some menus may have only icons, which can be useful for saving space or for actions that are easily recognizable by their icon. Each `MenuItem` must include a `label` prop, which will populate the `ToolTip` and `aria-label`. If the MenuItem is not interactive, the `label` prop will be used to populate the `aria-label` only.
+Some menus may have only icons, which can be useful for saving space or for actions that are easily recognizable by their icon. Each `MenuItem` must include a `label` prop, which will populate the `ToolTip` and `aria-label`. If the MenuItem is not interactive, the `label` prop will be used to populate the `aria-label` only. If you think you need a `ToolTip` with your non-interactive `MenuItem`, I assure you that you do not and should use a <LinkTo id="Molecules/Tips/ToggleTips">ToggleTip</LinkTo> instead.
 
 <Canvas of={MenuStories.IconMenu} />
 
