@@ -73,14 +73,13 @@ export const Overlay: React.FC<OverlayProps> = ({
 
   const content = (
     <OverlayContainer
-      // position="fixed"
+      position="fixed"
       data-testid="overlay-content-container"
       center
       inset={0}
       className={className}
       inline={inline}
       shroud={shroud}
-      zIndex={8}
     >
       <FocusTrap
         active={!inline}
