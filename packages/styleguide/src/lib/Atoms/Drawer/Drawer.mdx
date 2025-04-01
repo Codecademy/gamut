@@ -34,7 +34,7 @@ An example of a molecule that uses Drawer is the <LinkTo id="Molecules/Flyout">F
 
 Our Drawers are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded`.
 
-The component that expands the `Drawer` should have an `aria-expanded` and `aria-controls` attribute. The `aria-controls` attribute should point to the `id` of the `Drawer`. The `aria-expanded` attribute should be set to the value of the `expanded` prop passed to the `Drawer`.
+The component that toggles the `Drawer` should include both `aria-expanded` and `aria-controls` attributes. The `aria-controls` attribute must reference the `id` of the `Drawer`. The `aria-expanded` attribute should reflect the value of the `expanded` prop passed to the `Drawer`.
 
 ```tsx
 const ExampleDrawer: React.FC = () => {
