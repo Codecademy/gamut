@@ -3506,7 +3506,7 @@ iframe.vds-youtube[data-no-controls] {
   }
 }
 
-iframe.vds-youtube[data-no-controls]{height:100%}
+iframe.vds-youtube[data-no-controls]{height:120%}
 
 [data-started] iframe.vds-youtube[data-no-controls]{height:1000%}
 
