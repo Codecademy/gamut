@@ -34,7 +34,7 @@ export const Vimeo: Story = {
   },
 };
 
-/* export const VideoWithTracksAndThumbnails: Story = {
+export const VideoWithTracksAndThumbnails: Story = {
   args: {
     videoUrl: 'https://files.vidstack.io/sprite-fight/hls/stream.m3u8',
     videoTitle: 'Sprite Fight',
@@ -65,4 +65,3 @@ export const Vimeo: Story = {
     thumbnails: 'https://files.vidstack.io/sprite-fight/thumbnails.vtt',
   },
 };
-*/
