@@ -119,7 +119,7 @@ describe('Menu', () => {
     const label = 'more people';
     const { view } = renderView({
       children: (
-        <MenuItem icon={MultipleUsersIcon} label={label} onClick={() => {}} />
+        <MenuItem icon={MultipleUsersIcon} label={label} onClick={() => null} />
       ),
     });
 
