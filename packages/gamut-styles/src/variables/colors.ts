@@ -24,7 +24,7 @@ export const coreSwatches = {
     '100': rgba(navy, 0.04),
     '200': rgba(navy, 0.12),
     '300': rgba(navy, 0.28),
-    '400': rgba(navy, 0.45),
+    '400': rgba(navy, 0.47),
     '500': rgba(navy, 0.63),
     '600': rgba(navy, 0.75),
     '700': rgba(navy, 0.86),
@@ -72,7 +72,7 @@ export const coreSwatches = {
     '100': rgba(white, 0.04),
     '200': rgba(white, 0.09),
     '300': rgba(white, 0.2),
-    '400': rgba(white, 0.33),
+    '400': rgba(white, 0.35),
     '500': rgba(white, 0.5),
     '600': rgba(white, 0.65),
     '700': rgba(white, 0.8),
@@ -130,7 +130,7 @@ export const platformSwatches = {
   },
 } as const;
 
-const truePlatformColors = {
+export const truePlatformColors = {
   lightBeige: platformSwatches.beige[0],
   gold: platformSwatches.gold[800],
   teal: platformSwatches.teal[500],
@@ -141,3 +141,19 @@ export const platformPalette = {
   ...flattenScale(platformSwatches),
   ...truePlatformColors,
 } as const;
+
+/**
+ * LX Studio Colors
+ */
+
+export const lxStudioColors = {
+  lxStudioSuccess: '#06844F',
+  lxStudioBgPrimary: '#FAFBFC',
+  lxStudioPurple: '#5628FE',
+  lxStudioPurpleHover: '#7955FC',
+} as const;
+
+export const lxStudioPalette = {
+  ...corePalette,
+  ...lxStudioColors,
+};

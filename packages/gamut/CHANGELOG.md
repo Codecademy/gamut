@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [60.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.3.1...@codecademy/gamut@60.0.0) (2025-03-31)
+
+### ⚠ BREAKING CHANGES
+
+- **Card + FloatingCard:** changing FloatCard to internal use and refactoring Card
+
+### Code Refactoring
+
+- **Card + FloatingCard:** changing FloatCard to internal use and refactoring Card ([0bb9872](https://github.com/Codecademy/gamut/commit/0bb987253b3fe0201fef375d37ed9460bf941b92))
+
+### [59.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.3.0...@codecademy/gamut@59.3.1) (2025-03-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ## [59.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@59.2.1...@codecademy/gamut@59.3.0) (2025-03-18)
 
 ### Features
