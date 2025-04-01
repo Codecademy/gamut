@@ -5,6 +5,7 @@ import {
   FlexBox,
   Text,
 } from '@codecademy/gamut';
+import { CheckerDense } from '@codecademy/gamut-patterns';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
@@ -58,7 +59,7 @@ export const Customized: Story = {
       popoverProps={{
         beak: 'left',
         outline: true,
-        pattern: 'checkerDense' as any,
+        pattern: CheckerDense,
       }}
     />
   ),

@@ -54,12 +54,13 @@ export type VideoProps = {
    */
   translations?: Partial<DefaultLayoutTranslations>;
   /**
-   * @TEMPORARY
-   * Determines if an embedded player view is shown.
+   * Determines if ReactPlayer is used to render youtube/vimeo videos.
+   * @default true
    */
   showPlayerEmbed?: boolean;
   /**
    * Determines if the default provider/browser controls are shown.
+   * @default false
    */
   showDefaultProviderControls?: boolean;
 };
@@ -90,13 +91,43 @@ export const Video: React.FC<VideoProps> = (props) => {
     },
   };
 
+  const isExternallyHostedVideoUrl = (url: string): boolean =>
+    !!(url.match(/youtu(be\.com|\.be)/) || url.match(/vimeo\.com/));
+
+  const isExternallyHostedVideo = (videoUrl: PlayerSrc): boolean => {
+    if (!videoUrl) return false;
+
+    if (typeof videoUrl === 'string') {
+      return isExternallyHostedVideoUrl(videoUrl);
+    }
+
+    if (Array.isArray(videoUrl)) {
+      return videoUrl.some(
+        (url) => typeof url === 'string' && isExternallyHostedVideoUrl(url)
+      );
+    }
+
+    return false;
+  };
+
+  // TextTracks can also have chapters/descriptions/metadata, So we need to specifically check for subtitles/captions
+  const hasTracksWithCaptionOrSubtitle =
+    props.textTracks?.length &&
+    props.textTracks.some(
+      (track) => track.kind === 'subtitles' || track.kind === 'captions'
+    );
+
   /**
-   * If showPlayerEmbed is true use ReactPlayer to render the video
-   * Otherwise, use the Vidstack MediaPlayer. @TEMPORARY_FALLBACK
+   * Render ReactPlayer if video is from youtube/vimeo and has no tracks with caption/subtitle.
+   * Otherwise, use the Vidstack MediaPlayer.
    * @TODO [https://skillsoftdev.atlassian.net/browse/GM-998]
    * Remove ReactPlayer once Vidstack is validated.
    */
-  if (showPlayerEmbed) {
+  if (
+    isExternallyHostedVideo(videoUrl) &&
+    !hasTracksWithCaptionOrSubtitle &&
+    showPlayerEmbed
+  ) {
     return (
       <Box
         position="relative"
