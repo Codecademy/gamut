@@ -216,6 +216,9 @@ You can define collapsible content by passing an `expanded` prop and the `React.
 
 #### Expand on button click
 
+The `ListRow` component has access to the `ExpandControl` component which can be used to toggle the expanded state of the row. The `ExpandControl` component will automatically handle the rotation of the icon based on the expanded state.
+Ensure that the `ListRow` has a unique `id` prop to ensure that the `ExpandControl` can set the correct aria attributes.
+
 ```tsx
 export const ExpandableRow: React.FC<{
   header: string;
@@ -226,6 +229,7 @@ export const ExpandableRow: React.FC<{
 
   return (
     <ListRow
+      id={idOfRow}
       key={key}
       expanded={isExpanded}
       renderExpanded={() => <Text>Surprise</Text>}
@@ -233,11 +237,12 @@ export const ExpandableRow: React.FC<{
       <ListCol type="header">{header}</ListCol>
       <ListCol type="content">{content}</ListCol>
       <ListCol type="control">
-        <IconButton onClick={() => setExpanded(!isExpanded)}>
-          <Rotation rotated={isExpanded}>
-            <MiniChevronDownIcon />
-          </Rotation>
-        </IconButton>
+        <ExpandControl
+          expanded={isExpanded}
+          onExpand={() => setExpanded(!isExpanded)}
+          id={idOfRow}
+          disabled={false}
+        />
       </ListCol>
     </ListRow>
   );
@@ -246,6 +251,8 @@ export const ExpandableRow: React.FC<{
 
 #### Expand on row click
 
+Make sure you pass in an `id` prop to the `ListRow` component so that the correct aria attributes are set on the row.
+
 ```tsx
 export const ExpandableRow: React.FC<{
   header: string;
@@ -256,6 +263,7 @@ export const ExpandableRow: React.FC<{
 
   return (
     <ListRow
+      id={idOfRow}
       key={key}
       expanded={isExpanded}
       onClick={() => setExpanded(!isExpanded)}
@@ -293,13 +301,13 @@ You can combine variants and spacing to your needs.
 
 ### Expandable buttom
 
-Buttons can be configured to expand the row content.
+Buttons can be configured to expand the row content. Check over the "Expand on button click" section for more guidance.
 
 <Canvas of={ListStories.ExpandableButtonGuide} />
 
 ### Expanded row
 
-An entire row can be made interactive to expand the row content.
+An entire row can be made interactive to expand the row content. Check over the "Expand on row click" section for more guidance.
 
 <Canvas of={ListStories.ExpandedRowGuide} />
 

@@ -47,7 +47,7 @@ const DivExpand = styled(motion.div)(expandStyles);
 const TDExpand = styled(motion.td)(expandStyles);
 
 const ExpandInCollapseOut: React.FC<
-  WithChildrenProp & { as: 'td' | 'div'; id: string }
+  WithChildrenProp & { as: 'td' | 'div'; id: string | undefined }
 > = ({ as, children, id }) => {
   const ResponsiveExpand = as === 'td' ? TDExpand : DivExpand;
 
@@ -105,7 +105,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         <RowEl
           as="div"
           {...rowConfig}
-          aria-controls={onClick ? id : ''}
+          aria-controls={onClick ? id : undefined}
           aria-expanded={renderExpanded && onClick ? expanded : undefined}
           clickable={Boolean(onClick)}
           isOl={isOl}
@@ -146,7 +146,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           {content}
           <AnimatePresence>
             {expanded && (
-              <ExpandInCollapseOut as={isTable ? 'td' : 'div'} id={id ?? ''}>
+              <ExpandInCollapseOut as={isTable ? 'td' : 'div'} id={id ?? undefined}>
                 <Box role="region" aria-label={expandedRowAriaLabel}>
                   {renderExpanded?.()}
                 </Box>
