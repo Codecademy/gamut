@@ -1,4 +1,4 @@
-import { Badge } from '@codecademy/gamut';
+import { Badge, FlexBox } from '@codecademy/gamut';
 import { MiniStarIcon, MiniWarningTriangleIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -38,6 +38,21 @@ export const Accent: Story = {
   args: {
     variant: 'accent',
   },
+};
+
+export const Custom: Story = {
+  render: (args) => (
+    <FlexBox gap={8}>
+      <Badge
+        variant="custom"
+        background="linear-gradient(91deg, #FFE712 0.08%, #FF9641 100%)"
+        {...args}
+      />
+      <Badge variant="custom" bg="green" {...args} />
+      <Badge variant="custom" bg="orange-500" {...args} />
+      <Badge variant="custom" bg="lightBlue" {...args} icon={MiniStarIcon} />
+    </FlexBox>
+  ),
 };
 
 export const DefaultSize: Story = {
