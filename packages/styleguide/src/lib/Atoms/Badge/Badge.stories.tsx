@@ -1,6 +1,5 @@
 import { Badge, FlexBox } from '@codecademy/gamut';
 import { MiniStarIcon, MiniWarningTriangleIcon } from '@codecademy/gamut-icons';
-import { theme } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { TertiaryFillExample } from './examples';
@@ -50,7 +49,7 @@ export const Custom: Story = {
         {...args}
       />
       <Badge variant="custom" bg="green" {...args} />
-      <Badge variant="custom" bg={`${theme.colors['orange-500']}`} {...args} />
+      <Badge variant="custom" bg="orange-500" {...args} />
       <Badge variant="custom" bg="lightBlue" {...args} icon={MiniStarIcon} />
     </FlexBox>
   ),
