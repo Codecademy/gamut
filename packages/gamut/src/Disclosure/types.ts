@@ -64,8 +64,8 @@ export interface DisclosureBodyProps extends DisclosureBodyWrapperStyles {
 }
 
 export interface DisclosureProps
-  extends Omit<DisclosureButtonProps, 'id'>,
-    DisclosureBodyProps,
+  extends DisclosureButtonProps,
+  Omit<DisclosureBodyProps, 'id'> ,
     DisclosureWrapperStyles {
   /**
    * Determines whether or not the Disclosure is expanded upon load.
