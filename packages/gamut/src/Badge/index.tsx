@@ -1,4 +1,9 @@
-import { styledOptions, system, variant } from '@codecademy/gamut-styles';
+import {
+  Colors,
+  styledOptions,
+  system,
+  variant,
+} from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -33,16 +38,19 @@ const colorVariants = variant({
       textColor: 'background',
     },
     tertiary: {
+      bg: 'transparent',
       border: 1,
       borderColor: 'border-secondary',
-      color: 'text-secondary',
-      bg: 'transparent',
+      textColor: 'text-secondary',
     },
     tertiaryFill: {
+      bg: 'background',
       border: 1,
       borderColor: 'border-secondary',
-      color: 'text-secondary',
-      bg: 'background',
+      textColor: 'text-secondary',
+    },
+    custom: {
+      textColor: 'text',
     },
   },
 });
@@ -66,13 +74,39 @@ const sizeVariants = variant({
 const badgeProps = variance.compose(
   system.space,
   system.layout,
-  system.typography
+  system.typography,
+  system.background,
+  system.color
 );
-export interface BadgeBaseProps
-  extends StyleProps<typeof badgeProps>,
-    StyleProps<typeof colorVariants>,
-    StyleProps<typeof sizeVariants>,
-    WithChildrenProp {}
+
+type StandardBadgeProps = {
+  background?: never;
+  bg?: never;
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'tertiaryFill' | 'accent';
+};
+
+type CustomBadgeBackgroundProps = {
+  background: string;
+  bg?: never;
+  variant: 'custom';
+};
+
+type CustomBadgeBgProps = {
+  background?: never;
+  bg: Colors;
+  variant: 'custom';
+};
+
+type BadgeBgPropsType =
+  | StandardBadgeProps
+  | CustomBadgeBackgroundProps
+  | CustomBadgeBgProps;
+
+export type BadgeBaseProps = StyleProps<typeof badgeProps> &
+  StyleProps<typeof colorVariants> &
+  StyleProps<typeof sizeVariants> &
+  BadgeBgPropsType &
+  WithChildrenProp;
 
 const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
   badgeProps,
@@ -80,9 +114,7 @@ const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
   sizeVariants
 );
 
-export interface BadgeProps
-  extends Partial<IconComponentType>,
-    BadgeBaseProps {}
+export type BadgeProps = Partial<IconComponentType> & BadgeBaseProps;
 
 export const Badge: React.FC<BadgeProps> = ({ icon, children, ...rest }) => {
   const size = rest.size === 'sm' ? 'sm' : 'base';
@@ -98,3 +130,54 @@ export const Badge: React.FC<BadgeProps> = ({ icon, children, ...rest }) => {
   });
   return <BadgeBase {...rest}>{content}</BadgeBase>;
 };
+
+// FOR TESTING PROPS
+/*
+export const TestBadgeCustomBackground = () => (
+  <Badge
+    variant="custom"
+    background="linear-gradient(91deg, #FFE712 0.08%, #FF9641 100%)"
+  >
+    ✅ this works, no TS errors
+  </Badge>
+)
+
+export const TestBadgeCustomBg = () => (
+  <Badge
+    variant="custom"
+    bg="white"
+  >
+    ✅ this works, no TS errors
+  </Badge>
+)
+
+export const TestBadgeIncorrectCustomBg = () => (
+  <Badge
+    variant="custom"
+    bg="white"
+    background="linear-gradient(91deg, #FFE712 0.08%, #FF9641 100%)"
+  >
+    ✅ this works, gets TS errors when both bg and background are used
+  </Badge>
+)
+
+
+export const TestBadgeIncorrectVariantBg = () => (
+  <Badge
+    variant="primary"
+    bg="white"
+  >
+    ✅ this works, gets TS errors when both a variant and bg are used
+  </Badge>
+)
+
+
+export const TestBadgeIncorrectVariantBackground = () => (
+  <Badge
+    variant="primary"
+    background="linear-gradient(91deg, #FFE712 0.08%, #FF9641 100%)"
+  >
+    ✅ this works, gets TS errors when both a variant and background are used
+  </Badge>
+)
+*/
