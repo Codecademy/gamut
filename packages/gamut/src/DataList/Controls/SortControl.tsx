@@ -18,10 +18,10 @@ const SortAnchor = styled(Anchor)(
       color: 'text',
     },
     '> div': {
-      color: 'navy-300',
+      color: 'text-disabled',
     },
     '&:hover div': {
-      color: 'text-disabled',
+      color: 'text-secondary',
     },
   })
 );
