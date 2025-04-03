@@ -35,7 +35,7 @@ The component that toggles the `Flyout` should include both `aria-expanded` and 
 ```tsx
 const ExampleFlyout: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
-  const flyoutId = useId();
+  const flyoutId = 'example-flyout-id';
 
   return (
     <FlexBox>

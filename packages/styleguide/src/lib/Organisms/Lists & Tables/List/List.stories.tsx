@@ -234,7 +234,7 @@ const HorizontalScrollingExample: React.FC<ListProps> = (args) => {
   return (
     <List {...args}>
       {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
-        <ListRow id="test" key={key}>
+        <ListRow key={key}>
           <ListCol size="lg" type="header">
             <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
               {name}
@@ -286,6 +286,12 @@ const HorizontalScrollingExample: React.FC<ListProps> = (args) => {
               icon={MiniKebabMenuIcon}
               size="small"
               tip="Options"
+              tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
+            />
+            <IconButton
+              icon={MiniDeleteIcon}
+              size="small"
+              tip="Delete"
               tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
             />
           </ListCol>
