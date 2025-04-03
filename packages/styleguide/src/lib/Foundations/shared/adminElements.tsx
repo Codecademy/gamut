@@ -14,7 +14,9 @@ export const adminLightMode = {
     { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors{applyCorrectNotation({id})}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',
@@ -40,7 +42,9 @@ export const adminDarkMode = {
     { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors{applyCorrectNotation({id})}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',

@@ -43,7 +43,9 @@ export const lightMode = {
     { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors{applyCorrectNotation({id})}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',
@@ -69,7 +71,9 @@ export const darkMode = {
     { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors{applyCorrectNotation({id})}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',
@@ -93,7 +97,9 @@ export const color = {
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors{applyCorrectNotation({id})}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',
@@ -197,7 +203,9 @@ export const lxStudioColor = {
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors{applyCorrectNotation({id})}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',
