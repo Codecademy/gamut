@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [71.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@71.1.1...@codecademy/styleguide@71.1.2) (2025-04-03)
+
+### Bug Fixes
+
+- **ColorScale:** updated notations for colors that have hyphen in their names ([6470234](https://github.com/Codecademy/gamut/commit/6470234693ca7d422e762b5c369f0f2cc291a971))
+
 ### [71.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@71.1.0...@codecademy/styleguide@71.1.1) (2025-04-03)
 
 ### Bug Fixes
