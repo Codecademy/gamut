@@ -29,7 +29,7 @@ export const Disclosure: React.FC<DisclosureProps> = ({
   variant,
 }) => {
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
-  const bodyId = `disclosure-body-${heading}}`;
+  const bodyId = `disclosure-body-${heading}`;
   return (
     <DisclosureWrapper
       as={isListItem ? 'li' : undefined}
