@@ -12,6 +12,8 @@ import kebabCase from 'lodash/kebabCase';
 
 import { Code, ColorScale, LinkTo, TokenTable } from '~styleguide/blocks';
 
+import { applyCorrectNotation } from './applyCorrectNotation';
+
 export const PROP_COLUMN = {
   key: 'key',
   name: 'Prop',
@@ -41,7 +43,9 @@ export const lightMode = {
     { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',
@@ -67,7 +71,9 @@ export const darkMode = {
     { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',
@@ -91,7 +97,9 @@ export const color = {
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',
@@ -117,7 +125,7 @@ export const swatch = {
       render: ({ id, hexes }: any) => {
         return (
           <Code>
-            theme.colors[`{id}-{Object.keys(hexes)[0]}`]
+            theme.colors[&apos;{id}-{Object.keys(hexes)[0]}&apos;]
           </Code>
         );
       },
@@ -145,7 +153,7 @@ export const rgbaSwatch = {
       render: ({ id, hexes }: any) => {
         return (
           <Code>
-            theme.colors[`{id}-{Object.keys(hexes)[0]}`]
+            theme.colors[&apos;{id}-{Object.keys(hexes)[0]}&apos;]
           </Code>
         );
       },
@@ -195,7 +203,9 @@ export const lxStudioColor = {
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',

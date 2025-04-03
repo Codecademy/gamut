@@ -2,6 +2,7 @@ import { adminTheme, Background } from '@codecademy/gamut-styles';
 
 import { Code, ColorScale, TokenTable } from '~styleguide/blocks';
 
+import { applyCorrectNotation } from './applyCorrectNotation';
 import { PATH_COLUMN, PROP_COLUMN } from './elements';
 
 export const adminLightMode = {
@@ -13,7 +14,9 @@ export const adminLightMode = {
     { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',
@@ -39,7 +42,9 @@ export const adminDarkMode = {
     { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',
