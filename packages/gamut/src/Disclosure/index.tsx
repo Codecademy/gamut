@@ -39,8 +39,7 @@ export const Disclosure: React.FC<DisclosureProps> = ({
       variant={variant}
     >
       <DisclosureButton
-        aria-controls={bodyId}
-        aria-expanded={isExpanded}
+        ariaControlsId={bodyId}
         disabled={disabled}
         heading={heading}
         headingLevel={headingLevel}

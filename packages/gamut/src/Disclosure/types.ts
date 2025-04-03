@@ -5,6 +5,10 @@ import {
 
 export interface DisclosureButtonProps {
   /**
+   * This `id` is used to link the DisclosureButton to the DisclosureBody.
+   */
+  ariaControlsId: string;
+  /**
    * Renders the Disclosure unclickable.
    */
   disabled?: boolean;
@@ -64,7 +68,7 @@ export interface DisclosureBodyProps extends DisclosureBodyWrapperStyles {
 }
 
 export interface DisclosureProps
-  extends DisclosureButtonProps,
+  extends Omit<DisclosureButtonProps, 'ariaControlsId'>,
     Omit<DisclosureBodyProps, 'id'>,
     DisclosureWrapperStyles {
   /**
