@@ -32,7 +32,7 @@ const SortIcon = styled(ArrowChevronDownFilledIcon)(
       transform: 'rotate(180deg)',
     },
     active: {
-      color: 'text',
+      color: 'text-accent',
     },
   })
 );
