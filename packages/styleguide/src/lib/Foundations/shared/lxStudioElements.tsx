@@ -7,6 +7,7 @@ import {
 
 import { Code, ColorScale, TokenTable } from '~styleguide/blocks';
 
+import { applyCorrectNotation } from './applyCorrectNotation';
 import {
   createExampleColumn,
   PATH_COLUMN,
@@ -23,7 +24,7 @@ export const lxStudioColor = {
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => <Code>theme.colors{applyCorrectNotation({id})}</Code>,
     },
     {
       key: 'swatch',
@@ -43,7 +44,7 @@ export const lxStudioLightMode = {
     { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => <Code>theme.colors{applyCorrectNotation({id})}</Code>,
     },
     {
       key: 'swatch',
@@ -71,7 +72,7 @@ export const lxStudioDarkMode = {
     { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => <Code>theme.colors{applyCorrectNotation({id})}</Code>,
     },
     {
       key: 'swatch',

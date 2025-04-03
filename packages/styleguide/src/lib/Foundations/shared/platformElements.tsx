@@ -9,6 +9,8 @@ import { Code, ColorScale, TokenTable } from '~styleguide/blocks';
 
 import { PATH_COLUMN, PROP_COLUMN } from './elements';
 
+import { applyCorrectNotation } from './applyCorrectNotation';
+
 export const platformSwatch = {
   rows: Object.entries(platformSwatches).map(([id, value]) => ({
     id,
@@ -20,7 +22,7 @@ export const platformSwatch = {
       ...PATH_COLUMN,
       render: ({ id, hexes }: any) => (
         <Code>
-          theme.colors[`{id}-{Object.keys(hexes)[0]}`]
+          theme.colors[&apos;{id}-{Object.keys(hexes)[0]}&apos;]
         </Code>
       ),
     },
@@ -44,7 +46,7 @@ export const platformColor = {
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => <Code>theme.colors{applyCorrectNotation({id})}</Code>,
     },
     {
       key: 'swatch',
@@ -64,7 +66,7 @@ export const platformLightMode = {
     { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => <Code>theme.colors{applyCorrectNotation({id})}</Code>,
     },
     {
       key: 'swatch',
@@ -92,7 +94,7 @@ export const platformDarkMode = {
     { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => <Code>theme.colors{applyCorrectNotation({id})}</Code>,
     },
     {
       key: 'swatch',
