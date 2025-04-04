@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [60.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@60.1.0...@codecademy/gamut@60.1.1) (2025-04-04)
+
+### Bug Fixes
+
+- **Tip:** Update InlineTooltip beak border color ([de7ffff](https://github.com/Codecademy/gamut/commit/de7ffffffe7954f9bed022b341ce1be41b9194f1))
+
 ## [60.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@60.0.1...@codecademy/gamut@60.1.0) (2025-04-02)
 
 ### Features
