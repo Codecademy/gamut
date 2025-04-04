@@ -67,7 +67,6 @@ export type ModalProps = SingleViewModalProps | MultiViewModalProps;
 
 export const Modal: React.FC<ModalProps> = ({
   'aria-label': ariaLabel,
-  'aria-live': ariaLive = 'polite',
   children,
   className,
   headingLevel = 'h2',
@@ -83,6 +82,7 @@ export const Modal: React.FC<ModalProps> = ({
   const [currentView, setCurrentView] = useState(0);
   const image = (views?.[currentView].image || rest?.image) ?? null;
 
+  const titleText = title || views?.[currentView].title;
   return (
     <Overlay
       shroud
@@ -98,9 +98,9 @@ export const Modal: React.FC<ModalProps> = ({
         data-autofocus
         className={className}
         aria-modal="true"
-        aria-live={ariaLive}
         aria-label={ariaLabel}
         aria-hidden="false"
+        aria-labelledby={titleText ? String(titleText) : undefined}
       >
         {(title || views?.[currentView].title) && (
           <Text
@@ -108,7 +108,6 @@ export const Modal: React.FC<ModalProps> = ({
             fontSize={20}
             lineHeight="base"
             gridArea="title"
-            aria-live="assertive"
           >
             {title || views?.[currentView].title}
           </Text>
@@ -121,6 +120,7 @@ export const Modal: React.FC<ModalProps> = ({
               onClick={onRequestClose}
               disabled={closeDisabled}
               tip="Close modal"
+              aria-label="Close modal"
             />
           </Box>
         )}
