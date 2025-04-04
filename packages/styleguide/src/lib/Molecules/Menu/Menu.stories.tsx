@@ -5,7 +5,7 @@ import {
   MenuSeparator,
   PopoverContainer,
 } from '@codecademy/gamut';
-import { MultipleUsersIcon } from '@codecademy/gamut-icons';
+import { GearIcon, MultipleUsersIcon } from '@codecademy/gamut-icons';
 import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useRef, useState } from 'react';
@@ -33,6 +33,7 @@ export const Default: Story = {
         <MenuItem>Menu Item</MenuItem>
         <MenuItem active>Active Item</MenuItem>
         <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
+        <MenuItem icon={GearIcon}>Account + Billing</MenuItem>
         <MenuItem>Menu Item</MenuItem>
       </>
     ),
