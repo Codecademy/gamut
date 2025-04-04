@@ -5,7 +5,7 @@ import {
 
 export interface DisclosureButtonProps {
   /**
-   * This `id` is used to link the DisclosureButton to the DisclosureBody.
+   * This is the value of the `id` that is used to link the DisclosureButton to the DisclosureBody.
    */
   ariaControlsId: string;
   /**
