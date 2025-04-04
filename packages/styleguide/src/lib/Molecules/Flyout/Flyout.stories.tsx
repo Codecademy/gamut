@@ -38,9 +38,9 @@ export const FlyoutExample: Story = {
           </Box>
         </Flyout>
         <StrokeButton
-          onClick={() => setExpanded(true)}
+          aria-controls={expanded ? args.id : undefined}
           aria-expanded={expanded}
-          aria-controls={args.id}
+          onClick={() => setExpanded(true)}
         >
           Tell me more?!
         </StrokeButton>

@@ -18,8 +18,8 @@ export const Default: React.FC = () => {
         Drawer content in here!
       </Drawer>
       <StrokeButton
+        aria-controls={expanded ? drawerId : undefined}
         aria-expanded={expanded}
-        aria-controls={drawerId}
         onClick={() => setExpanded((previousExpanded) => !previousExpanded)}
       >
         Toggle Drawer

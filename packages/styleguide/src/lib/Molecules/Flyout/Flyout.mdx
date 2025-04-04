@@ -44,7 +44,7 @@ const ExampleFlyout: React.FC = () => {
       </Flyout>
       <StrokeButton
         aria-expanded={expanded}
-        aria-controls={FlyoutId}
+        aria-controls={expanded ? drawerId : undefined}
         onClick={() => setExpanded((previousExpanded) => !previousExpanded)}
       >
         Set the proper aria-labels!
