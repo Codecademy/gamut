@@ -5,6 +5,10 @@ import {
 
 export interface DisclosureButtonProps {
   /**
+   * This is the value of the `id` that is used to link the DisclosureButton to the DisclosureBody.
+   */
+  ariaControlsId: string;
+  /**
    * Renders the Disclosure unclickable.
    */
   disabled?: boolean;
@@ -53,14 +57,19 @@ export interface DisclosureBodyProps extends DisclosureBodyWrapperStyles {
   ctaText?: string;
   href?: string;
   /**
+   * This `id` is used to link the DisclosureButton to the DisclosureBody.
+   * It is needed for the `aria-controls` attribute to work properly for accessibility.
+   */
+  id: string;
+  /**
    * Determines the size of the heading text and the space between text in the body.
    */
   spacing?: 'normal' | 'condensed' | 'compact';
 }
 
 export interface DisclosureProps
-  extends DisclosureButtonProps,
-    DisclosureBodyProps,
+  extends Omit<DisclosureButtonProps, 'ariaControlsId'>,
+    Omit<DisclosureBodyProps, 'id'>,
     DisclosureWrapperStyles {
   /**
    * Determines whether or not the Disclosure is expanded upon load.
