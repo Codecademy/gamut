@@ -77,7 +77,7 @@ export const Dialog: React.FC<DialogProps> = ({
             icon={MiniDeleteIcon}
             onClick={onCancel}
             tip={closeButtonTipText}
-            aria-label="Close modal"
+            aria-label="Close dialog"
           />
         </Box>
         <Box as="div" gridArea="content" data-testid="dialog-content">

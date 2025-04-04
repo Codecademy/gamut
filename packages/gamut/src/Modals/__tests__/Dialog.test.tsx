@@ -44,7 +44,7 @@ describe('Dialog', () => {
 
   it('requests closing the dialog when the close button is clicked', () => {
     const { view } = renderView();
-    const ariaLabel = defaultProps.closeButtonTipText.split(' ')[0];
+    const ariaLabel = 'Close dialog'
 
     fireEvent.click(view.getByLabelText(ariaLabel));
     expect(onRequestClose.mock.calls.length).toBe(1);
