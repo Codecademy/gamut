@@ -65,6 +65,7 @@ export const Dialog: React.FC<DialogProps> = ({
         tabIndex={-1}
         data-autofocus
         aria-label="dialog"
+        aria-labelledby={String(title)}
       >
         <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
           {title}
@@ -76,6 +77,7 @@ export const Dialog: React.FC<DialogProps> = ({
             icon={MiniDeleteIcon}
             onClick={onCancel}
             tip={closeButtonTipText}
+            aria-label="Close modal"
           />
         </Box>
         <Box as="div" gridArea="content" data-testid="dialog-content">

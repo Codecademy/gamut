@@ -67,7 +67,6 @@ export type ModalProps = SingleViewModalProps | MultiViewModalProps;
 
 export const Modal: React.FC<ModalProps> = ({
   'aria-label': ariaLabel,
-  'aria-live': ariaLive = 'polite',
   children,
   className,
   headingLevel = 'h2',
@@ -83,7 +82,7 @@ export const Modal: React.FC<ModalProps> = ({
   const [currentView, setCurrentView] = useState(0);
   const image = (views?.[currentView].image || rest?.image) ?? null;
 
-  const titleText = title || views?.[currentView].title
+  const titleText = title || views?.[currentView].title;
   return (
     <Overlay
       shroud
