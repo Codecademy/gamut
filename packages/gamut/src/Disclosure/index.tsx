@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import * as React from 'react';
 
 import { ExpandInCollapseOut } from '../Animation';
@@ -29,7 +29,8 @@ export const Disclosure: React.FC<DisclosureProps> = ({
   variant,
 }) => {
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
-  const bodyId = `disclosure-body-${heading}`;
+  // const bodyId = `disclosure-body-${heading}`;
+  const bodyId = useId();
   return (
     <DisclosureWrapper
       as={isListItem ? 'li' : undefined}

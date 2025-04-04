@@ -37,7 +37,7 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
     <FlexBox>
       <DisclosureButtonWrapper
         aria-expanded={isExpanded}
-        aria-controls={ariaControlsId}
+        aria-controls={isExpanded ? ariaControlsId : undefined}
         onClick={handleClick}
         width="100%"
         variant="interface"
