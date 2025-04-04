@@ -38,7 +38,7 @@ export const checkboxElement = system.css({
   width: 22,
   height: 22,
   borderColor: 'currentColor',
-  borderRadius: 'md',
+  borderRadius: '4px' as keyof typeof theme.borderRadii, // hardcoded so that it is not impacted by the theme’s border-radius token
   borderStyle: 'solid',
   borderWidth: '2px',
   transition: transitionConcat(

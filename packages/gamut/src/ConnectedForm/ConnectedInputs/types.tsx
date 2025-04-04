@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import {
+  CheckboxLabelProps,
   CheckboxProps,
   InputWrapperProps,
   RadioGroupProps,
@@ -16,13 +17,20 @@ export interface BaseConnectedFieldProps {
 export interface ConnectedFieldProps extends BaseConnectedFieldProps {
   name: string;
 }
-
-export interface ConnectedCheckboxProps
+export interface BaseConnectedCheckboxProps
   extends Omit<
       CheckboxProps,
-      'defaultValue' | 'name' | 'htmlFor' | 'validation'
+      | 'defaultValue'
+      | 'name'
+      | 'htmlFor'
+      | 'validation'
+      | 'label'
+      | 'aria-label'
     >,
     ConnectedFieldProps {}
+
+export type ConnectedCheckboxProps = BaseConnectedCheckboxProps &
+  CheckboxLabelProps;
 
 type FieldComponent<T> = Omit<T, 'defaultValue' | 'name' | 'validation'>;
 

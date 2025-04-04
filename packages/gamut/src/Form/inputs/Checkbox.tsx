@@ -23,17 +23,27 @@ import { BaseInputProps } from '../types';
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;
 
+export type CheckboxStringLabelProps = {
+  label: string;
+  'aria-label'?: string;
+};
+
+export type CheckboxReactNodeLabelProps = {
+  label: ReactNode;
+  'aria-label': string;
+};
+
+export type CheckboxLabelProps =
+  | CheckboxStringLabelProps
+  | CheckboxReactNodeLabelProps;
+
 export type CheckboxProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'value'
+  'value' | 'label' | 'aria-label'
 > &
+  CheckboxLabelProps &
   CheckboxPaddingProps &
   Pick<BaseInputProps, 'name' | 'required'> & {
-    /**
-     * If the label is a ReactNode, an aria-label must be added.
-     */
-    label: ReactNode | string;
-    'aria-label'?: string;
     multiline?: boolean;
     className?: string;
     /**
@@ -137,7 +147,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             ariaLabel === undefined
               ? typeof label === 'string'
                 ? label
-                : undefined
+                : 'checkbox'
               : ariaLabel
           }
           value={`${value}`}
