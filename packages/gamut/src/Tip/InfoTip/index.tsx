@@ -88,7 +88,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
 
-  const textId = `tooltip-text-${useId()}`;
+  const textId = useId();
 
   const tipProps = {
     alignment,

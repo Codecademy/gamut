@@ -39,7 +39,7 @@ The component that toggles the `Drawer` should include both `aria-expanded` and 
 ```tsx
 const ExampleDrawer: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
-  const drawerId = 'example-drawer-id';
+  const drawerId = useId();
 
   return (
     <FlexBox>
