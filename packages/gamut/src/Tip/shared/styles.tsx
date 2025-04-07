@@ -40,7 +40,7 @@ const beforeStyles = {
 export const topStylesBefore = { ...beforeStyles, height: 16, bottom: '-4px' };
 
 export const topStylesAfter = {
-  borderColor: 'currentColor',
+  borderColor: 'border-primary',
   borderWidth: '0 1px 1px 0',
   bottom: '0.25rem',
 } as const;
@@ -57,7 +57,7 @@ export const bottomStylesBefore = {
 };
 
 export const bottomStylesAfter = {
-  borderColor: 'currentColor',
+  borderColor: 'border-primary',
   borderWidth: '1px 0 0 1px',
   top: '0.25rem',
 } as const;

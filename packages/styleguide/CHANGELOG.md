@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [71.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@71.1.1...@codecademy/styleguide@71.1.2) (2025-04-03)
+
+### Bug Fixes
+
+- **ColorScale:** updated notations for colors that have hyphen in their names ([6470234](https://github.com/Codecademy/gamut/commit/6470234693ca7d422e762b5c369f0f2cc291a971))
+
+### [71.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@71.1.0...@codecademy/styleguide@71.1.1) (2025-04-03)
+
+### Bug Fixes
+
+- **colorscale:** grid display fixed for color swatches ([27e9c87](https://github.com/Codecademy/gamut/commit/27e9c87d2e46da7e2d7dacc898ec2a02952abe17))
+
+## [71.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@71.0.1...@codecademy/styleguide@71.1.0) (2025-04-02)
+
+### Features
+
+- **Badge:** add new custom variant to allow styling of background ([8b2f9fd](https://github.com/Codecademy/gamut/commit/8b2f9fd1f8399b7879f20f2d377b37414c72b640))
+
 ### [71.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@71.0.0...@codecademy/styleguide@71.0.1) (2025-04-01)
 
 **Note:** Version bump only for package @codecademy/styleguide
