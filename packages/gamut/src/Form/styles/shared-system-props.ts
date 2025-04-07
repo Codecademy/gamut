@@ -73,13 +73,11 @@ export const formBaseFieldStylesObject = {
     'ease-in-out'
   ),
   border: 1,
-  borderColor: 'border-disabled',
   borderRadius: 'md',
   [InputSelectors.HOVER]: {
     borderColor: 'primary',
   },
   [InputSelectors.PLACEHOLDER]: {
-    borderColor: 'border-disabled',
     fontStyle: 'italic',
   },
   [InputSelectors.DISABLED]: {
