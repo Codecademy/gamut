@@ -1,7 +1,12 @@
-import { Dialog, FillButton } from '@codecademy/gamut';
+import {   ContentContainer,
+  DataList,
+Dialog, FillButton ,
+  IconButton,
+} from '@codecademy/gamut';
+import { MiniKebabMenuIcon } from '@codecademy/gamut-icons'
 import { ColorMode } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const meta: Meta<typeof Dialog> = {
   component: Dialog,
@@ -54,3 +59,153 @@ const DarkModeExample = (args: React.ComponentProps<typeof Dialog>) => {
 export const DarkMode: Story = {
   render: (args) => <DarkModeExample {...args} />,
 };
+
+export const TestingZindex: Story = {
+  render: () => <TestComponent />,
+}
+
+export const TestingZindexComparison: Story = {
+  render: () => <TestComponentWithoutZIndex />,
+}
+
+const TestComponent = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const rows = [
+    { title: 'Title 1', option: '1' },
+    { title: 'Title 2', option: '2' },
+    { title: 'Title 3', option: '3' },
+    { title: 'Title 4', option: '4' },
+  ]
+
+  const cols = [
+    {
+      header: 'Title',
+      key: 'title' as String,
+      size: 'lg',
+      fill: true,
+      sortable: true,
+      // id: 'testing' as const,
+    },
+    {
+      header: '\xA0',
+      key: 'option' as String,
+      size: 'lg',
+      type: 'control',
+      render: () => (
+        <IconButton
+          icon={MiniKebabMenuIcon}
+          tip="More actions"
+          tipProps={{
+            placement: 'floating',
+            alignment: 'bottom-center',
+          }}
+          dimensions={24}
+          display="flex"
+        />
+      ),
+    },
+  ]
+
+  return (
+    <ContentContainer size="medium">
+      <FillButton onClick={() => setIsOpen(true)}>Open dialog</FillButton>
+      <DataList
+        id="scenario-list"
+        // idKey="id"
+        rows={rows}
+        columns={cols}
+        selected={[]}
+        onRowSelect={undefined}
+        expanded={[]}
+        onRowExpand={undefined}
+        // expandedContent={<Text>Expanded content</Text>}
+        query={{ sort: {}, filter: {} }}
+        onQueryChange={() => {}}
+        scrollable={false}
+        height="auto"
+        spacing="normal"
+      />
+      <Dialog
+        title="Title"
+        isOpen={isOpen}
+        confirmCta={{ children: 'confirm' }}
+        cancelCta={{ children: 'cancel' }}
+        onRequestClose={() => setIsOpen(false)}
+        zIndex={10}
+      >
+        Text
+      </Dialog>
+    </ContentContainer>
+  )
+}
+
+
+const TestComponentWithoutZIndex = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const rows = [
+    { title: 'Title 1', option: '1' },
+    { title: 'Title 2', option: '2' },
+    { title: 'Title 3', option: '3' },
+    { title: 'Title 4', option: '4' },
+  ]
+
+  const cols = [
+    {
+      header: 'Title',
+      key: 'title' as String,
+      size: 'lg',
+      fill: true,
+      sortable: true,
+      // id: 'testing' as const,
+    },
+    {
+      header: '\xA0',
+      key: 'option' as String,
+      size: 'lg',
+      type: 'control',
+      render: () => (
+        <IconButton
+          icon={MiniKebabMenuIcon}
+          tip="More actions"
+          tipProps={{
+            placement: 'floating',
+            alignment: 'bottom-center',
+          }}
+          dimensions={24}
+          display="flex"
+        />
+      ),
+    },
+  ]
+
+  return (
+    <ContentContainer size="medium">
+      <FillButton onClick={() => setIsOpen(true)}>Open dialog</FillButton>
+      <DataList
+        id="scenario-list"
+        // idKey="id"
+        rows={rows}
+        columns={cols}
+        selected={[]}
+        onRowSelect={undefined}
+        expanded={[]}
+        onRowExpand={undefined}
+        // expandedContent={<Text>Expanded content</Text>}
+        query={{ sort: {}, filter: {} }}
+        onQueryChange={() => {}}
+        scrollable={false}
+        height="auto"
+        spacing="normal"
+      />
+      <Dialog
+        title="Title"
+        isOpen={isOpen}
+        confirmCta={{ children: 'confirm' }}
+        cancelCta={{ children: 'cancel' }}
+        onRequestClose={() => setIsOpen(false)}
+      >
+        Text
+      </Dialog>
+    </ContentContainer>
+  )
+}

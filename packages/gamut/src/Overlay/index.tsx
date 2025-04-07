@@ -33,6 +33,11 @@ export type OverlayProps = {
   shroud?: boolean;
   /** Whether the overlay allows scroll */
   allowScroll?: boolean;
+  /**
+   * TEMPORARY: a stopgap solution to avoid zIndex conflicts -
+   * will be reworked with: GM-624
+   */
+  zIndex?: number;
 };
 
 const OverlayContainer = styled(FlexBox)(
@@ -56,6 +61,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
   allowScroll = false,
+  zIndex = 0,
 }) => {
   const handleOutsideClick = useCallback(() => {
     if (clickOutsideCloses) {
@@ -94,5 +100,5 @@ export const Overlay: React.FC<OverlayProps> = ({
 
   if (inline) return content;
 
-  return <BodyPortal>{content}</BodyPortal>;
+  return <BodyPortal zIndex={zIndex}>{content}</BodyPortal>;
 };

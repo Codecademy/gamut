@@ -61,6 +61,11 @@ export interface MultiViewModalProps
    * Whether to disable X button at top right of modal
    */
   closeDisabled?: boolean;
+  /**
+   * TEMPORARY: a stopgap solution to avoid zIndex conflicts -
+   * will be reworked with: GM-624
+   */
+  zIndex?: number;
 }
 
 export type ModalProps = SingleViewModalProps | MultiViewModalProps;
