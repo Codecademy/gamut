@@ -125,7 +125,6 @@ export const Modal: React.FC<ModalProps> = ({
               onClick={onRequestClose}
               disabled={closeDisabled}
               tip="Close modal"
-              aria-label="Close modal"
             />
           </Box>
         )}
