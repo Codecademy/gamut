@@ -1,9 +1,11 @@
-import {   ContentContainer,
+import {
+  ContentContainer,
   DataList,
-Dialog, FillButton ,
+  Dialog,
+  FillButton,
   IconButton,
 } from '@codecademy/gamut';
-import { MiniKebabMenuIcon } from '@codecademy/gamut-icons'
+import { MiniKebabMenuIcon } from '@codecademy/gamut-icons';
 import { ColorMode } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
@@ -62,20 +64,20 @@ export const DarkMode: Story = {
 
 export const TestingZindex: Story = {
   render: () => <TestComponent />,
-}
+};
 
 export const TestingZindexComparison: Story = {
   render: () => <TestComponentWithoutZIndex />,
-}
+};
 
 const TestComponent = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const rows = [
     { title: 'Title 1', option: '1' },
     { title: 'Title 2', option: '2' },
     { title: 'Title 3', option: '3' },
     { title: 'Title 4', option: '4' },
-  ]
+  ];
 
   const cols = [
     {
@@ -104,7 +106,7 @@ const TestComponent = () => {
         />
       ),
     },
-  ]
+  ];
 
   return (
     <ContentContainer size="medium">
@@ -136,18 +138,17 @@ const TestComponent = () => {
         Text
       </Dialog>
     </ContentContainer>
-  )
-}
-
+  );
+};
 
 const TestComponentWithoutZIndex = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const rows = [
     { title: 'Title 1', option: '1' },
     { title: 'Title 2', option: '2' },
     { title: 'Title 3', option: '3' },
     { title: 'Title 4', option: '4' },
-  ]
+  ];
 
   const cols = [
     {
@@ -176,7 +177,7 @@ const TestComponentWithoutZIndex = () => {
         />
       ),
     },
-  ]
+  ];
 
   return (
     <ContentContainer size="medium">
@@ -207,5 +208,5 @@ const TestComponentWithoutZIndex = () => {
         Text
       </Dialog>
     </ContentContainer>
-  )
-}
+  );
+};

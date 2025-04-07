@@ -18,16 +18,19 @@ const PortalWrapper = styled
   .withComponent(ColorMode);
 
 interface BodyPortalProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * TEMPORARY: a stopgap solution to avoid zIndex conflicts -
    * will be reworked with: GM-624
-   * previously, this was set to 1 in the CSS function
+   * previously, zIndex was set to 1 in the CSS function
    */
   zIndex?: number;
 }
 
-export const BodyPortal: React.FC<BodyPortalProps> = ({ children, zIndex = 1 }) => {
+export const BodyPortal: React.FC<BodyPortalProps> = ({
+  children,
+  zIndex = 1,
+}) => {
   const [ready, setReady] = useState(false);
   const mode = useCurrentMode();
 
