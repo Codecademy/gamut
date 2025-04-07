@@ -114,7 +114,7 @@ export const Modal: React.FC<ModalProps> = ({
             lineHeight="base"
             gridArea="title"
           >
-            {title || views?.[currentView].title}
+            {titleText}
           </Text>
         )}
         {!hideCloseButton && (
