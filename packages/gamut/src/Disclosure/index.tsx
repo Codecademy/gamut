@@ -29,7 +29,7 @@ export const Disclosure: React.FC<DisclosureProps> = ({
   variant,
 }) => {
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
-  const bodyId = useId();
+
   return (
     <DisclosureWrapper
       as={isListItem ? 'li' : undefined}
@@ -39,7 +39,6 @@ export const Disclosure: React.FC<DisclosureProps> = ({
       variant={variant}
     >
       <DisclosureButton
-        ariaControlsId={bodyId}
         disabled={disabled}
         heading={heading}
         headingLevel={headingLevel}
@@ -60,7 +59,6 @@ export const Disclosure: React.FC<DisclosureProps> = ({
               ctaText={ctaText}
               hasPanelBg={hasPanelBg}
               href={href}
-              id={bodyId}
               spacing={spacing}
             />
           </ExpandInCollapseOut>

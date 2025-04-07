@@ -12,7 +12,6 @@ import { getRotationSize, getSpacing, getTitleSize } from '../helpers';
 import { DisclosureButtonProps } from '../types';
 
 export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
-  ariaControlsId,
   disabled = false,
   heading,
   headingLevel = 'h3',
@@ -37,7 +36,6 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
     <FlexBox>
       <DisclosureButtonWrapper
         aria-expanded={isExpanded}
-        aria-controls={isExpanded ? ariaControlsId : undefined}
         onClick={handleClick}
         width="100%"
         variant="interface"
