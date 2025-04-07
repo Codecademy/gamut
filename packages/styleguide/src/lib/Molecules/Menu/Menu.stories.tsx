@@ -152,7 +152,7 @@ export const IconMenu: Story = {
     variant: 'fixed',
     children: (
       <>
-        <MenuItem icon={AiChatSparkIcon} label="Chat" />
+        <MenuItem icon={AiChatSparkIcon} label="Chat" onClick={() => {}} />
         <MenuItem icon={BashShellIcon} href="#whatsup" label="Prompt" />
         <MenuItem icon={PeopleIcon} label="People" href="#whatsup-people" />
         <MenuItem active icon={FileIcon} href="#whatsup-1" label="Learn" />
