@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [72.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@71.1.2...@codecademy/styleguide@72.0.0) (2025-04-07)
+
+### ⚠ BREAKING CHANGES
+
+- **Checkbox:** require aria-label when label is ReactNode
+
+### Features
+
+- **Checkbox:** require aria-label when label is ReactNode ([1f628a4](https://github.com/Codecademy/gamut/commit/1f628a40f6df4842a6a1bb12d6447c667aed1a54))
+
 ### [71.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@71.1.1...@codecademy/styleguide@71.1.2) (2025-04-03)
 
 ### Bug Fixes
