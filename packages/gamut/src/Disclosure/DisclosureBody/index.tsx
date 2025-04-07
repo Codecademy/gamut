@@ -13,7 +13,6 @@ export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
   ctaText,
   hasPanelBg = false,
   href,
-  id,
   spacing = 'normal',
 }) => {
   const buttonRequirements = ctaText && ctaCallback;
@@ -27,7 +26,6 @@ export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
       mb={verticalSpacing}
       mt={4}
       mx={horizontalSpacing}
-      id={id}
     >
       <Text width="100%" lineHeight={getLineHeight}>
         {body}
