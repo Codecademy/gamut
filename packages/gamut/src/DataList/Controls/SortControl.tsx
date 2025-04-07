@@ -18,10 +18,10 @@ const SortAnchor = styled(Anchor)(
       color: 'text',
     },
     '> div': {
-      color: 'navy-300',
+      color: 'text-disabled',
     },
     '&:hover div': {
-      color: 'text-disabled',
+      color: 'text-secondary',
     },
   })
 );
@@ -32,7 +32,7 @@ const SortIcon = styled(ArrowChevronDownFilledIcon)(
       transform: 'rotate(180deg)',
     },
     active: {
-      color: 'text',
+      color: 'text-accent',
     },
   })
 );
