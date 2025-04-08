@@ -42,6 +42,10 @@ export interface TipNewBaseProps {
    * Forces the tooltip to be its narrowest width. For use along the edges of the page or other tight spaces.
    */
   narrow?: boolean;
+  /**
+   * If ToolTipWrapper should inherit the dimensions of the parent element. Can only be used for inline tips.
+   */
+  inheritDims?: boolean;
 }
 export interface TipInlineProps extends TipNewBaseProps {
   placement?: 'inline';
@@ -50,6 +54,7 @@ export interface TipInlineProps extends TipNewBaseProps {
 export interface TipFloatingProps extends TipNewBaseProps {
   placement: 'floating';
   zIndex?: never;
+  inheritDims?: never;
 }
 
 export type TipBaseProps = TipInlineProps | TipFloatingProps;
