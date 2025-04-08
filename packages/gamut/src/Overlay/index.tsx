@@ -61,7 +61,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
   allowScroll = false,
-  zIndex = 0,
+  zIndex = 1,
 }) => {
   const handleOutsideClick = useCallback(() => {
     if (clickOutsideCloses) {
