@@ -162,25 +162,3 @@ export const MenuItem = forwardRef<
     );
   }
 );
-
-// Uncomment to test
-//
-// export const IconOnly = () => {
-//   return (
-//     <>
-//       <MenuItem icon={MultipleUsersIcon} label="oy" />
-//       <MenuItem> oy</MenuItem>
-//       <MenuSeparator my={4} />
-//       <MenuItem icon={MultipleUsersIcon} label=":)" />
-//       <MenuItem
-//         icon={MultipleUsersIcon}
-//         label={{
-//           info: 'hej',
-//           placement: 'inline',
-//           narrow: true,
-//           alignment: 'bottom-center',
-//         }}
-//       />
-//     </>
-//   );
-// };
