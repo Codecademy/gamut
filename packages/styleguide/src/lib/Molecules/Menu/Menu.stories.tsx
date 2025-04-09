@@ -4,8 +4,17 @@ import {
   MenuItem,
   MenuSeparator,
   PopoverContainer,
+  Text,
 } from '@codecademy/gamut';
-import { MultipleUsersIcon } from '@codecademy/gamut-icons';
+import {
+  AiChatSparkIcon,
+  BashShellIcon,
+  FileIcon,
+  InformationalIcon,
+  MultipleUsersIcon,
+  PeopleIcon,
+  RatingStarCircleIcon,
+} from '@codecademy/gamut-icons';
 import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useRef, useState } from 'react';
@@ -130,6 +139,33 @@ export const FixedMenuSeparator: Story = {
         <MenuSeparator my={4} />
         <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
         <MenuItem>Menu Item</MenuItem>
+      </>
+    ),
+  },
+};
+
+export const IconMenu: Story = {
+  args: {
+    border: 1,
+    borderRadius: 'md',
+    width: '88px',
+    variant: 'fixed',
+    children: (
+      <>
+        <MenuItem icon={AiChatSparkIcon} label="Chat" onClick={() => {}} />
+        <MenuItem icon={BashShellIcon} href="#whatsup" label="Prompt" />
+        <MenuItem icon={PeopleIcon} label="People" href="#whatsup-people" />
+        <MenuItem active icon={FileIcon} href="#whatsup-1" label="Learn" />
+        <MenuItem
+          aria-label="I am bold and different"
+          icon={RatingStarCircleIcon}
+          href="#whats-2"
+          label={{
+            info: <Text color="hyper">I am bold and different</Text>,
+            narrow: true,
+          }}
+        />
+        <MenuItem icon={InformationalIcon} href="#who-is-3" label="Content" />
       </>
     ),
   },
