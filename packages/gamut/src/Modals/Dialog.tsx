@@ -62,15 +62,15 @@ export const Dialog: React.FC<DialogProps> = ({
   return (
     <Overlay shroud onRequestClose={onCancel as () => void} {...rest}>
       <ModalContainer
-        size={size}
         aria-hidden="false"
-        aria-modal="true"
-        role="dialog"
-        layout="dialog"
-        tabIndex={-1}
-        data-autofocus
         aria-label="dialog"
         aria-labelledby={String(title)}
+        aria-modal="true"
+        data-autofocus
+        layout="dialog"
+        role="dialog"
+        size={size}
+        tabIndex={-1}
       >
         <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
           {title}

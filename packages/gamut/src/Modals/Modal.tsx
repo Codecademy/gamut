@@ -96,18 +96,18 @@ export const Modal: React.FC<ModalProps> = ({
       {...rest}
     >
       <ModalContainer
-        tabIndex={-1}
-        size={size}
-        role="dialog"
-        layout={views && views?.length > 0 ? 'dialog' : 'standard'}
-        data-autofocus
-        className={className}
-        aria-modal="true"
-        aria-label={ariaLabel}
         aria-hidden="false"
+        aria-label={ariaLabel}
         aria-labelledby={titleText ? String(titleText) : undefined}
+        aria-modal="true"
+        className={className}
+        data-autofocus
+        layout={views && views?.length > 0 ? 'dialog' : 'standard'}
+        role="dialog"
+        size={size}
+        tabIndex={-1}
       >
-        {(title || views?.[currentView].title) && (
+        {titleText && (
           <Text
             as={headingLevel}
             fontSize={20}
