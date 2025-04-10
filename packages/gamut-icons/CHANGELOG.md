@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.41.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.40.1...@codecademy/gamut-icons@9.41.0) (2025-04-10)
+
+### Features
+
+- **Icon:** add mini cursor icon ([5aac59c](https://github.com/Codecademy/gamut/commit/5aac59c2c4f35f7ca00f06b78aafcd766c9fa0a2))
+
 ### [9.40.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.40.0...@codecademy/gamut-icons@9.40.1) (2025-03-27)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
