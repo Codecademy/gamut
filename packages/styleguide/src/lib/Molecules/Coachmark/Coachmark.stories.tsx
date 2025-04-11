@@ -43,7 +43,7 @@ export const CoachmarkExample = (args: CoachmarkProps) => {
       renderPopover={renderPopover}
       shouldShow={shouldShow}
     >
-      <FillButton>A Button</FillButton>
+      <FillButton onClick={() => setShouldShow(true)}>A Button</FillButton>
     </Coachmark>
   );
 };
