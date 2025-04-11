@@ -16,13 +16,55 @@ interface DialogButtonProps {
   onClick?: ButtonProps['onClick'];
   disabled?: boolean;
 }
+
+type ModalNextBackProps = {
+  nextCta: DialogButtonProps;
+  backCta: DialogButtonProps;
+  cancelCta?: never;
+  confirmCta?: never;
+};
+
+type ModalNextCancelProps = {
+  nextCta: DialogButtonProps;
+  cancelCta: DialogButtonProps;
+  backCta?: never;
+  confirmCta?: never;
+};
+
+type ModalConfirmCancelProps = {
+  confirmCta: DialogButtonProps;
+  cancelCta?: DialogButtonProps;
+  backCta?: never;
+  nextCta?: never;
+};
+
+type ModalConfirmBackProps = {
+  confirmCta: DialogButtonProps;
+  backCta?: DialogButtonProps;
+  cancelCta?: never;
+  nextCta?: never;
+};
+
+type ModalButtonProps =
+  | ModalNextBackProps
+  | ModalNextCancelProps
+  | ModalConfirmCancelProps
+  | ModalConfirmBackProps;
+
+// const test: ModalButtonProps = {
+//   nextCta: { children: 'Next' },
+//   confirmCta: { children: 'Done' },
+//   cancelCta: { children: 'Close' },
+//   // backCta: { children: 'Back' },
+// };
+
 export interface ModalView
   extends Omit<ModalBaseProps, 'headingLevel' | 'onRequestClose'> {
   children: React.ReactNode;
-  nextCta?: DialogButtonProps;
-  confirmCta?: DialogButtonProps;
-  cancelCta?: DialogButtonProps;
 }
+
+type ModalViewProps = ModalView & ModalButtonProps;
+
 export interface SingleViewModalProps extends ModalBaseProps {
   size?: ComponentProps<typeof ModalContainer>['size'];
   /**
@@ -56,7 +98,7 @@ export interface MultiViewModalProps
   /**
    * Optional array of multiple screens
    */
-  views: ModalView[];
+  views: ModalViewProps[];
   /**
    * Whether to disable X button at top right of modal
    */
@@ -144,10 +186,24 @@ export const Modal: React.FC<ModalProps> = ({
             gridArea="cancel"
           />
         )}
+        {views?.[currentView].backCta && (
+          <TextButton
+            {...views?.[currentView].backCta}
+            variant="secondary"
+            disabled={currentView === 0}
+            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+              setCurrentView(currentView - 1);
+              views?.[currentView].backCta?.onClick?.(e);
+            }}
+            justifySelf="end"
+            gridArea="cancel"
+          />
+        )}
         {views?.[currentView].nextCta && (
           <FillButton
             {...views?.[currentView].nextCta}
             variant="primary"
+            disabled={currentView === views.length - 1}
             onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
               setCurrentView(currentView + 1);
               views?.[currentView].nextCta?.onClick?.(e);
