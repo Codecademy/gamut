@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import * as React from 'react';
 
-import { Popover, PopoverProps } from '../Popover';
+import { Popover, PopoverBaseProps,PopoverProps } from '../Popover';
 import { WithChildrenProp } from '../utils';
 
-export interface CoachmarkProps extends WithChildrenProp {
+export type CoachmarkProps = WithChildrenProp & PopoverBaseProps & {
   /**
    * Applied to the element to which the coachmark points.
    */
@@ -35,6 +35,8 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
   delay = 500,
   renderPopover,
   popoverProps,
+  skipFocusTrap = true,
+  onRequestClose,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -53,12 +55,16 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
     return () => clearTimeout(timer);
   }, [shouldShow, delay]);
 
+  const skipFocusTrapProps = skipFocusTrap
+    ? { skipFocusTrap: true, onRequestClose: undefined } as const
+    : { skipFocusTrap: undefined, onRequestClose } as const;
+
   return (
     <>
       <div ref={activeElRef} className={activeElClassName}>
         {children}
       </div>
-      <Popover {...popoverProps} targetRef={activeElRef} isOpen={isOpen}>
+      <Popover {...popoverProps} targetRef={activeElRef} isOpen={isOpen} {...skipFocusTrapProps}>
         {renderPopover()}
       </Popover>
     </>
