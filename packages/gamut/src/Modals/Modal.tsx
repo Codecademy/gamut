@@ -17,46 +17,29 @@ interface DialogButtonProps {
   disabled?: boolean;
 }
 
-type ModalNextBackProps = {
-  nextCta: DialogButtonProps;
-  backCta: DialogButtonProps;
-  cancelCta?: never;
-  confirmCta?: never;
+type SecondaryDialogButtonProps = DialogButtonProps & {
+  actionType: 'back' | 'cancel';
 };
 
-type ModalNextCancelProps = {
-  nextCta: DialogButtonProps;
-  cancelCta: DialogButtonProps;
-  backCta?: never;
-  confirmCta?: never;
+type ModalNextProps = {
+  primaryCta: DialogButtonProps & {
+    actionType: 'next';
+  };
+  secondaryCta: SecondaryDialogButtonProps;
 };
 
-type ModalConfirmCancelProps = {
-  confirmCta: DialogButtonProps;
-  cancelCta?: DialogButtonProps;
-  backCta?: never;
-  nextCta?: never;
+type ModalConfirmProps = {
+  primaryCta: DialogButtonProps & {
+    actionType: 'confirm';
+    variant?: Extract<
+      ComponentProps<typeof FillButton>['variant'],
+      'primary' | 'danger'
+    >;
+  };
+  secondaryCta?: SecondaryDialogButtonProps;
 };
 
-type ModalConfirmBackProps = {
-  confirmCta: DialogButtonProps;
-  backCta?: DialogButtonProps;
-  cancelCta?: never;
-  nextCta?: never;
-};
-
-type ModalButtonProps =
-  | ModalNextBackProps
-  | ModalNextCancelProps
-  | ModalConfirmCancelProps
-  | ModalConfirmBackProps;
-
-// const test: ModalButtonProps = {
-//   nextCta: { children: 'Next' },
-//   confirmCta: { children: 'Done' },
-//   cancelCta: { children: 'Close' },
-//   // backCta: { children: 'Back' },
-// };
+type ModalButtonProps = ModalNextProps | ModalConfirmProps;
 
 export interface ModalView
   extends Omit<ModalBaseProps, 'headingLevel' | 'onRequestClose'> {
@@ -123,7 +106,8 @@ export const Modal: React.FC<ModalProps> = ({
   ...rest
 }) => {
   const [currentView, setCurrentView] = useState(0);
-  const image = (views?.[currentView].image || rest?.image) ?? null;
+  const view = views?.[currentView];
+  const image = (view?.image || rest?.image) ?? null;
 
   return (
     <Overlay
@@ -144,7 +128,7 @@ export const Modal: React.FC<ModalProps> = ({
         aria-label={ariaLabel}
         aria-hidden="false"
       >
-        {(title || views?.[currentView].title) && (
+        {(title || view?.title) && (
           <Text
             as={headingLevel}
             fontSize={20}
@@ -152,7 +136,7 @@ export const Modal: React.FC<ModalProps> = ({
             gridArea="title"
             aria-live="assertive"
           >
-            {title || views?.[currentView].title}
+            {title || view?.title}
           </Text>
         )}
         {!hideCloseButton && (
@@ -172,51 +156,48 @@ export const Modal: React.FC<ModalProps> = ({
           data-testid="modal-content"
         >
           {image && size && <ImageContainer image={image} size={size} />}
-          {views?.[currentView].children || children}
+          {view?.children || children}
         </Box>
-        {views?.[currentView].cancelCta && (
+        {view?.secondaryCta && (
           <TextButton
-            {...views?.[currentView].cancelCta}
+            {...view?.secondaryCta}
             variant="secondary"
+            disabled={
+              view?.secondaryCta.disabled ||
+              (view?.secondaryCta?.actionType === 'back' && currentView === 0)
+            }
             onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-              views?.[currentView].cancelCta?.onClick?.(e);
-              onRequestClose();
+              if (view?.secondaryCta?.actionType === 'back') {
+                setCurrentView(currentView - 1);
+              }
+              if (view?.secondaryCta?.actionType === 'cancel') {
+                onRequestClose();
+              }
+              view?.secondaryCta?.onClick?.(e);
             }}
             justifySelf="end"
             gridArea="cancel"
           />
         )}
-        {views?.[currentView].backCta && (
-          <TextButton
-            {...views?.[currentView].backCta}
-            variant="secondary"
-            disabled={currentView === 0}
-            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-              setCurrentView(currentView - 1);
-              views?.[currentView].backCta?.onClick?.(e);
-            }}
-            justifySelf="end"
-            gridArea="cancel"
-          />
-        )}
-        {views?.[currentView].nextCta && (
+        {view?.primaryCta && (
           <FillButton
-            {...views?.[currentView].nextCta}
-            variant="primary"
-            disabled={currentView === views.length - 1}
+            {...view?.primaryCta}
+            variant={
+              'variant' in view.primaryCta
+                ? view?.primaryCta?.variant
+                : 'primary'
+            }
+            disabled={
+              view?.primaryCta.disabled ||
+              (view?.primaryCta?.actionType === 'next' &&
+                views &&
+                currentView === views.length - 1)
+            }
             onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-              setCurrentView(currentView + 1);
-              views?.[currentView].nextCta?.onClick?.(e);
-            }}
-            gridArea="confirm"
-          />
-        )}
-        {views?.[currentView].confirmCta && (
-          <FillButton
-            {...views?.[currentView].confirmCta}
-            variant="primary"
-            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-              views?.[currentView].confirmCta?.onClick?.(e);
+              if (view?.primaryCta?.actionType === 'next') {
+                setCurrentView(currentView + 1);
+              }
+              view?.primaryCta?.onClick?.(e);
             }}
             gridArea="confirm"
           />
