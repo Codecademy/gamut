@@ -1,15 +1,23 @@
-import { Box, FillButton, FlexBox, Modal, Text } from '@codecademy/gamut';
+import {
+  Box,
+  Checkbox,
+  FillButton,
+  FlexBox,
+  Modal,
+  Text,
+} from '@codecademy/gamut';
 import { CodeCelebration } from '@codecademy/gamut-illustrations';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
+const defaultProps = {
+  title: 'Modal Modality',
+  size: 'small' as const,
+  children: 'Waffles a la modal',
+};
 const meta: Meta<typeof Modal> = {
   component: Modal,
-  args: {
-    title: 'Modal Modality',
-    size: 'small',
-    children: 'Waffles a la modal',
-  },
+  args: defaultProps,
 };
 
 export default meta;
@@ -34,23 +42,33 @@ export const Default: Story = {
   render: (args) => <ModalExample {...args} />,
 };
 
-export const CustomClose: Story = {
-  args: {
-    hideCloseButton: true,
-  },
-  render: (args) => <ModalExample {...args} />,
-};
-
-const ClickOutsideExample = (args: WithoutViews) => {
+export const CustomClose: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
-        {...args}
+        {...defaultProps}
+        hideCloseButton
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
+      >
+        Close the Modal!
+      </Modal>
+    </>
+  );
+};
+
+export const ClickOutside: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        {...defaultProps}
         hideCloseButton
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
       >
         <FlexBox center fit>
           <FillButton onClick={() => setIsOpen(false)}>
@@ -60,10 +78,6 @@ const ClickOutsideExample = (args: WithoutViews) => {
       </Modal>
     </>
   );
-};
-
-export const ClickOutside: Story = {
-  render: (args) => <ClickOutsideExample {...args} />,
 };
 
 type StringOrNumber = string | number;
@@ -91,81 +105,81 @@ const GridContentPlaceholder = ({
   );
 };
 
-const FluidExample = (args: WithoutViews) => {
+export const Fluid: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
-      <Modal isOpen={isOpen} {...args} onRequestClose={() => setIsOpen(false)}>
+      <Modal
+        {...defaultProps}
+        size="fluid"
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+      >
         <GridContentPlaceholder height="350px" width="540px" />
       </Modal>
     </>
   );
 };
 
-export const Fluid: Story = {
-  args: { size: 'fluid' },
-  render: (args) => <FluidExample {...args} />,
-};
-
-const LargeExample = (args: WithoutViews) => {
+export const Large: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
-      <Modal isOpen={isOpen} {...args} onRequestClose={() => setIsOpen(false)}>
+      <Modal
+        {...defaultProps}
+        size="large"
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+      >
         <GridContentPlaceholder height="300px" width="auto" />
       </Modal>
     </>
   );
 };
 
-export const Large: Story = {
-  args: { size: 'large' },
-  render: (args) => <LargeExample {...args} />,
-};
-
-const MediumExample = (args: WithoutViews) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <>
-      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
-      <Modal isOpen={isOpen} {...args} onRequestClose={() => setIsOpen(false)}>
-        <GridContentPlaceholder height="240px" width="auto" />
-      </Modal>
-    </>
-  );
-};
-
-export const Medium: Story = {
-  args: { size: 'medium' },
-  render: (args) => <MediumExample {...args} />,
-};
-
-const SmallExample = (args: WithoutViews) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <>
-      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
-      <Modal isOpen={isOpen} {...args} onRequestClose={() => setIsOpen(false)}>
-        <GridContentPlaceholder height="240px" width="auto" />
-      </Modal>
-    </>
-  );
-};
-
-export const Small: Story = {
-  args: { size: 'small' },
-  render: (args) => <SmallExample {...args} />,
-};
-
-const ScrollableExample = (args: WithoutViews) => {
+export const Medium: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
-        {...args}
+        {...defaultProps}
+        size="medium"
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <GridContentPlaceholder height="240px" width="auto" />
+      </Modal>
+    </>
+  );
+};
+
+export const Small: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        {...defaultProps}
+        size="small"
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <GridContentPlaceholder height="240px" width="auto" />
+      </Modal>
+    </>
+  );
+};
+
+export const Scrollable: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        {...defaultProps}
         title={undefined}
         hideCloseButton
         size="medium"
@@ -185,56 +199,6 @@ const ScrollableExample = (args: WithoutViews) => {
   );
 };
 
-export const Scrollable: Story = {
-  render: (args) => <ScrollableExample {...args} />,
-};
-
-const multipleViewsArgs = {
-  title: undefined,
-  hideCloseButton: false,
-  size: 'medium' as const,
-  scrollable: true,
-  views: [
-    {
-      title: 'First view',
-      nextCta: { children: 'Next' },
-      cancelCta: { children: 'Close' },
-      children: <>Hey for the first time</>,
-    },
-    {
-      title: 'Second view',
-      nextCta: { children: 'Next' },
-      cancelCta: { children: 'Close' },
-      children: <>Hey for the second time</>,
-    },
-    {
-      title: 'Third view',
-      confirmCta: { children: 'Done' },
-      cancelCta: { children: 'Close' },
-      children: <>Last one</>,
-    },
-  ],
-};
-
-const MultipleViewsExample = (args: React.ComponentProps<typeof Modal>) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <>
-      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
-      <Modal
-        isOpen={isOpen}
-        {...args}
-        onRequestClose={() => setIsOpen(false)}
-      />
-    </>
-  );
-};
-
-export const MultipleViews: Story = {
-  args: multipleViewsArgs,
-  render: (args) => <MultipleViewsExample {...args} />,
-};
-
 const ImageComponent = () => {
   return (
     <FlexBox bg="background-primary" center height="100%" p={4} width="100%">
@@ -243,12 +207,17 @@ const ImageComponent = () => {
   );
 };
 
-const WithImageExample = (args: WithoutViews) => {
+export const WithImage: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
-      <Modal isOpen={isOpen} {...args} onRequestClose={() => setIsOpen(false)}>
+      <Modal
+        {...defaultProps}
+        image={<ImageComponent />}
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+      >
         <Text smooth fontSize={14} my={12}>
           Optional 1-2 lines of explanation that provides relevant details.
           Lorem ipsum cras nulla massa odio ligula.
@@ -258,6 +227,43 @@ const WithImageExample = (args: WithoutViews) => {
   );
 };
 
-export const WithImage: Story = {
-  render: (args) => <WithImageExample {...args} image={<ImageComponent />} />,
+const multipleViewsArgs = {
+  views: [
+    {
+      title: 'First view',
+      primaryCta: {
+        actionType: 'next',
+        children: 'Next',
+      },
+      secondaryCta: { actionType: 'cancel', children: 'Cancel' },
+      children: <>Hey for the first time</>,
+    },
+    {
+      title: 'Second view',
+      primaryCta: { actionType: 'next', children: 'Next' },
+      secondaryCta: { actionType: 'back', children: 'Back' },
+      children: <>Hey for the second time</>,
+    },
+    {
+      title: 'Third view',
+      primaryCta: { actionType: 'done', children: 'Done' },
+      secondaryCta: { actionType: 'back', children: 'Back' },
+      children: <>Last one</>,
+    },
+  ],
+};
+
+export const MultipleViews: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+        {...multipleViewsArgs}
+      />
+    </>
+  );
 };
