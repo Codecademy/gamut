@@ -14213,6 +14213,11 @@ sass-loader@^16.0.4:
   dependencies:
     neo-async "^2.6.2"
 
+sass-migrator@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.npmjs.org/sass-migrator/-/sass-migrator-2.3.1.tgz#c71e0988d153175450d23156a8c39612b9a7b013"
+  integrity sha512-JXXLZfzrnxtUWz/TS4xnbJq4g709wqYFgUb2s32FTDsEQSgPThRWrwT49vxfQK+eUbavJUzoQZ/tR5lq7fFnyA==
+
 sass@^1.85.0:
   version "1.86.3"
   resolved "https://registry.npmjs.org/sass/-/sass-1.86.3.tgz#0a0d9ea97cb6665e73f409639f8533ce057464c9"

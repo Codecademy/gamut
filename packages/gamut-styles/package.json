@@ -20,6 +20,7 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "peerDependencies": {
+    "sass-embedded": "^1.83.4",
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
