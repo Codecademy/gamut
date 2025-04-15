@@ -1,4 +1,4 @@
-@import "~@codecademy/gamut-styles/utils";
+@use "~@codecademy/gamut-styles/utils";
 
 .accordionButton {
   align-items: center;
@@ -8,23 +8,23 @@
   width: 100%;
 
   &.blue {
-    color: $color-blue-200;
+    color: utils.$color-blue-200;
   }
 
   &.yellow {
-    background-color: $color-yellow-200;
-    border: solid $color-yellow-400;
+    background-color: utils.$color-yellow-200;
+    border: solid utils.$color-yellow-400;
     border-width: 1px 0;
     font-weight: normal;
     transition: background-color 0.15s ease-in-out;
 
     &:focus-visible {
-      border-color: $color-yellow-800;
+      border-color: utils.$color-yellow-800;
     }
 
     &:focus,
     &:hover {
-      background-color: $color-yellow-300;
+      background-color: utils.$color-yellow-300;
     }
   }
 
@@ -40,7 +40,7 @@
       margin-left: 1rem;
     }
 
-    @include md-viewport {
+    @include utils.md-viewport {
       font-size: 1.75rem;
     }
   }
