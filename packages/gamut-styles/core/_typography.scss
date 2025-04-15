@@ -1,3 +1,5 @@
+@use "../utils";
+
 // https://raw.githubusercontent.com/twbs/bootstrap/v4-dev/scss/_type.scss
 
 h1,
@@ -6,31 +8,31 @@ h3,
 h4,
 h5,
 h6 {
-  margin-bottom: $margin-bottom-headings;
-  font-weight: $font-weight-headings;
-  line-height: $line-height-headings;
+  margin-bottom: utils.$margin-bottom-headings;
+  font-weight: utils.$font-weight-headings;
+  line-height: utils.$line-height-headings;
 }
 
 h1 {
-  font-size: $font-size-h1;
+  font-size: utils.$font-size-h1;
 }
 h2 {
-  font-size: $font-size-h2;
+  font-size: utils.$font-size-h2;
 }
 h3 {
-  font-size: $font-size-h3;
+  font-size: utils.$font-size-h3;
 }
 h4 {
-  font-size: $font-size-h4;
+  font-size: utils.$font-size-h4;
 }
 h5 {
-  font-size: $font-size-h5;
+  font-size: utils.$font-size-h5;
 }
 h6 {
-  font-size: $font-size-h6;
+  font-size: utils.$font-size-h6;
 }
 
 small {
-  font-size: $font-size-small;
-  font-weight: $font-weight-normal;
+  font-size: utils.$font-size-small;
+  font-weight: utils.$font-weight-normal;
 }

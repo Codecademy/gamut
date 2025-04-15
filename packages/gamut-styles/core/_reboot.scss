@@ -1,3 +1,5 @@
+@use "../utils";
+
 // https://raw.githubusercontent.com/twbs/bootstrap/v4-dev/scss/_reboot.scss
 
 // stylelint-disable at-rule-no-vendor-prefix, declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
@@ -61,12 +63,12 @@ section {
 
 body {
   margin: 0; // 1
-  font-family: $font-family-base;
-  font-weight: $font-weight-base;
-  line-height: $line-height-base;
-  color: $color-body;
+  font-family: utils.$font-family-base;
+  font-weight: utils.$font-weight-base;
+  line-height: utils.$line-height-base;
+  color: utils.$color-body;
   text-align: left; // 3
-  background-color: $bg-body; // 2
+  background-color: utils.$bg-body; // 2
 }
 
 // Suppress the focus outline on elements that cannot be accessed via keyboard.
@@ -105,7 +107,7 @@ h4,
 h5,
 h6 {
   margin-top: 0;
-  margin-bottom: $margin-bottom-headings;
+  margin-bottom: utils.$margin-bottom-headings;
 }
 // stylelint-enable selector-list-comma-newline-after
 
@@ -115,7 +117,7 @@ h6 {
 // bottom margin to use `rem` units instead of `em`.
 p {
   margin-top: 0;
-  margin-bottom: $margin-bottom-paragraph;
+  margin-bottom: utils.$margin-bottom-paragraph;
 }
 
 // Abbreviations
@@ -155,7 +157,7 @@ ul ol {
 }
 
 dt {
-  font-weight: $font-weight-dt;
+  font-weight: utils.$font-weight-dt;
 }
 
 dd {
@@ -174,12 +176,12 @@ dfn {
 // stylelint-disable font-weight-notation
 b,
 strong {
-  font-weight: $font-weight-bold; // Add the correct font weight in Chrome, Edge, and Safari
+  font-weight: utils.$font-weight-bold; // Add the correct font weight in Chrome, Edge, and Safari
 }
 // stylelint-enable font-weight-notation
 
 small {
-  font-size: $font-size-small; // Add the correct font size in all browsers
+  font-size: utils.$font-size-small; // Add the correct font size in all browsers
 }
 
 //
@@ -207,13 +209,13 @@ sup {
 //
 
 a {
-  color: $color-link;
-  text-decoration: $decoration-link;
+  color: utils.$color-link;
+  text-decoration: utils.$decoration-link;
   background-color: transparent; // Remove the gray background on active links in IE 10.
   -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
 
   &:hover {
-    text-decoration: $hover-decoration-link;
+    text-decoration: utils.$hover-decoration-link;
   }
 }
 
@@ -295,9 +297,9 @@ table {
 }
 
 caption {
-  padding-top: $spacer;
-  padding-bottom: $spacer;
-  color: $spacer;
+  padding-top: utils.$spacer;
+  padding-bottom: utils.$spacer;
+  color: utils.$spacer;
   text-align: left;
   caption-side: bottom;
 }
@@ -315,7 +317,7 @@ th {
 label {
   // Allow labels to use `margin` for spacing.
   display: inline-block;
-  margin-bottom: $margin-bottom-label;
+  margin-bottom: utils.$margin-bottom-label;
 }
 
 // Remove the default `border-radius` that macOS Chrome adds.

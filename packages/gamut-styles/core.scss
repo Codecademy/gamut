@@ -1,1 +1,3 @@
-@import "core/index";
+@use "core/index";
+
+@forward "utils";
