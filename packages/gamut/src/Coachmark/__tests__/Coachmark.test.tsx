@@ -1,8 +1,10 @@
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 
 import { Coachmark, CoachmarkProps } from '..';
+
+jest.useFakeTimers();
 
 const renderPopover = () => (
   <div data-testid="coachmark-popover-content">
@@ -13,44 +15,54 @@ const renderPopover = () => (
   </div>
 );
 
-const renderCoachmark = (props?: Partial<CoachmarkProps>) => {
+const renderCoachmark = ({ delay, ...props }: Partial<CoachmarkProps>) => {
   return render(
-    <ThemeProvider theme={theme}>
-      <Coachmark delay={0} shouldShow renderPopover={renderPopover} {...props}>
-        <div data-testid="coachmark-ref">hello</div>
-      </Coachmark>
-    </ThemeProvider>
+    <div>
+      <ThemeProvider theme={theme}>
+        <Coachmark
+          delay={delay}
+          shouldShow
+          renderPopover={renderPopover}
+          {...props}
+        >
+          <div data-testid="coachmark-ref">hello</div>
+        </Coachmark>
+      </ThemeProvider>
+    </div>
   );
 };
 
 describe('Coachmark', () => {
   it('renders children', () => {
-    renderCoachmark();
+    renderCoachmark({ delay: 0 });
     expect(screen.queryByTestId('coachmark-ref')).toBeInTheDocument();
   });
 
   it('does not render Popover when shouldShow is false', () => {
-    renderCoachmark({ shouldShow: false });
-    expect(screen.queryByTestId('popover-content-container')).toBeFalsy();
+    renderCoachmark({ shouldShow: false, delay: 0 });
+    expect(screen.queryByTestId('coachmark-popover-content')).toBeFalsy();
   });
 
   // TODO [EGG-1763]: Enable these again!
-  it.skip('renders Popover when shouldShow is true', () => {
-    renderCoachmark();
-    expect(screen.queryByTestId('popover-content-container')).toBeTruthy();
+  it('renders Popover when shouldShow is true', () => {
+    renderCoachmark({ delay: 0 });
+    expect(screen.queryByTestId('coachmark-popover-content')).toBeTruthy();
   });
 
-  it.skip('renders content provided by renderPopover', () => {
-    renderCoachmark();
+  it('renders content provided by renderPopover', () => {
+    renderCoachmark({ delay: 0 });
     expect(screen.queryByTestId('coachmark-popover-content')).toBeTruthy();
   });
 
   it.skip('renders Popover after the delay', () => {
-    jest.useFakeTimers();
-    renderCoachmark({ shouldShow: false, delay: 5000 });
+    const delayTimer = 1000;
 
-    expect(screen.queryByTestId('popover-content-container')).toBeFalsy();
-    jest.runAllTimers();
-    expect(screen.queryByTestId('popover-content-container')).toBeTruthy();
+    act(() => {
+      renderCoachmark({ shouldShow: true, delay: delayTimer });
+      expect(screen.queryByTestId('coachmark-popover-content')).toBeFalsy();
+
+      jest.advanceTimersByTime(delayTimer);
+      expect(screen.queryByTestId('coachmark-popover-content')).toBeTruthy();
+    });
   });
 });

@@ -7,7 +7,10 @@ interface DelayedRenderWrapperProps extends WithChildrenProp {
   children: React.ReactNode;
 }
 
-export const DelayedRenderWrapper: React.FC<DelayedRenderWrapperProps> = ({ delay, children }) => {
+export const DelayedRenderWrapper: React.FC<DelayedRenderWrapperProps> = ({
+  delay,
+  children,
+}) => {
   const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
@@ -20,4 +23,3 @@ export const DelayedRenderWrapper: React.FC<DelayedRenderWrapperProps> = ({ dela
 
   return shouldRender ? <>{children}</> : null;
 };
-
