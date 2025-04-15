@@ -37,7 +37,7 @@ export type PopoverProps = PopoverBaseProps &
     /**
      * Choice of animation - none by default.
      */
-    animation?: 'fade';
+    animation?: 'fade' | 'none';
     children: React.ReactElement<any>;
     className?: string;
     /**

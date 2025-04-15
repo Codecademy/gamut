@@ -40,6 +40,7 @@ export const CoachmarkExample = (args: CoachmarkProps) => {
     <Coachmark
       {...args}
       // delay={args.delay ?? 0}
+      delay={750}
       renderPopover={renderPopover}
       shouldShow={shouldShow}
     >

@@ -4,7 +4,6 @@ import { WithChildrenProp } from './types';
 
 interface DelayedRenderWrapperProps extends WithChildrenProp {
   delay: number;
-  children: React.ReactNode;
 }
 
 export const DelayedRenderWrapper: React.FC<DelayedRenderWrapperProps> = ({
