@@ -6,8 +6,7 @@
   "dependencies": {
     "@codecademy/variance": "0.22.1",
     "@emotion/is-prop-valid": "^1.1.0",
-    "polished": "^4.1.2",
-    "sass-embedded": "^1.83.4"
+    "polished": "^4.1.2"
   },
   "files": [
     "dist",
@@ -26,6 +25,7 @@
     "@emotion/styled": "^11.3.0",
     "lodash": "^4.17.5",
     "react": "^17.0.2 || ^18.2.0",
+    "sass": "^1.85.0",
     "stylis": "^4.0.7"
   },
   "publishConfig": {

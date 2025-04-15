@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader } from '~styleguide/blocks';
+import { AboutHeader, Callout } from '~styleguide/blocks';
 
 export const parameters = {
   id: 'Installation',
@@ -18,8 +18,10 @@ export const parameters = {
 1. Add gamut-kit and peer dependencies dependencies
 
 ```bash
-yarn add @codecademy/gamut-kit @emotion/react @emotion/styled
+yarn add @codecademy/gamut-kit @emotion/react @emotion/styled sass
 ```
+
+<Callout>sass is currently being removed from the gamut package</Callout>
 
 2. Add peer dependencies (no-op) for intellisense to package.json.
 
