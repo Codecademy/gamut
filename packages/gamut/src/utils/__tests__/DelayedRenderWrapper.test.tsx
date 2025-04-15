@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import DelayedRenderWrapper from '../DelayedRenderWrapper';
+import { DelayedRenderWrapper } from '../DelayedRenderWrapper';
 
 jest.useFakeTimers();
 
