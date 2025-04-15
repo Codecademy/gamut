@@ -54,7 +54,7 @@ describe('Coachmark', () => {
     expect(screen.queryByTestId('coachmark-popover-content')).toBeTruthy();
   });
 
-  it.skip('renders Popover after the delay', () => {
+  it('renders Popover after the delay', () => {
     const delayTimer = 1000;
 
     act(() => {
