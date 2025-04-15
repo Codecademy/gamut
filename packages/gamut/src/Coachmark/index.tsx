@@ -45,31 +45,28 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
     ? ({ skipFocusTrap: true, onRequestClose: undefined } as const)
     : ({ skipFocusTrap: undefined, onRequestClose } as const);
 
+  const PopoverContainer = (
+    <Popover
+      {...popoverProps}
+      targetRef={activeElRef}
+      isOpen={shouldShow}
+      {...skipFocusTrapProps}
+    >
+      {renderPopover()}
+    </Popover>
+  );
+
   return (
     <>
       <div ref={activeElRef} className={activeElClassName}>
         {children}
       </div>
       {delay > 0 ? (
-        <Popover
-          {...popoverProps}
-          targetRef={activeElRef}
-          isOpen={shouldShow}
-          {...skipFocusTrapProps}
-        >
-          <DelayedRenderWrapper delay={delay}>
-            {renderPopover()}
-          </DelayedRenderWrapper>
-        </Popover>
+        <DelayedRenderWrapper delay={delay}>
+          {PopoverContainer}
+        </DelayedRenderWrapper>
       ) : (
-        <Popover
-          {...popoverProps}
-          targetRef={activeElRef}
-          isOpen={shouldShow}
-          {...skipFocusTrapProps}
-        >
-          {renderPopover()}
-        </Popover>
+        { PopoverContainer }
       )}
     </>
   );
