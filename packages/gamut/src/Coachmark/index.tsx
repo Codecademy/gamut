@@ -45,7 +45,7 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
     ? ({ skipFocusTrap: true, onRequestClose: undefined } as const)
     : ({ skipFocusTrap: undefined, onRequestClose } as const);
 
-  const PopoverContainer = (
+  const PopoverContainer = () => (
     <Popover
       {...popoverProps}
       targetRef={activeElRef}
@@ -63,10 +63,10 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
       </div>
       {delay > 0 ? (
         <DelayedRenderWrapper delay={delay}>
-          {PopoverContainer}
+          {PopoverContainer()}
         </DelayedRenderWrapper>
       ) : (
-        { PopoverContainer }
+        PopoverContainer()
       )}
     </>
   );

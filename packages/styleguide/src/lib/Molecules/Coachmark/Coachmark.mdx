@@ -38,19 +38,58 @@ Use `Coachmark` to guide learners about key functionality on a page or drive new
 
 ## Guidance
 
-The `Coachmark` component should be wrapped around the element you want to highlight.
+The `Coachmark` component should be wrapped around the element you want to highlight. What a user sees is comes from `renderPopover` which is a function with an optional `onDismiss` argument that returns a React node. `Coachmark` uses its child element as a target for the `Popover`.
 
 ```jsx
-<Coachmark shouldShow={true} popoverProps={{ title: 'New Feature!' }}>
-  <Button>New feature, with a Coachmark to call it out!</Button>
-</Coachmark>
+const ExampleCoachmark = () => {
+  const [shouldShow, setShouldShow] = useState(true);
+
+  const renderPopover = (onDismiss) => (
+    <Box >
+      <Text mb={8}>You should click the button.</Text>
+      <FillButton
+        onClick={() => {
+          setShouldShow(false);
+          onDismiss();
+        }}
+      >
+        Got it
+      </FillButton>
+    </Box
+  );
+
+  return (
+    <Coachmark
+      renderPopover={renderPopover}
+      shouldShow={shouldShow}
+    >
+      <FillButton onClick={() => setShouldShow(true)}>A Button</FillButton>
+    </Coachmark>
+  );
+};
 ```
 
-### Delay
+### `shouldShow`
 
-### `PopoverProps`
+A `Coachmark` can be set to show or hide based on the `shouldShow` prop. This is useful for controlling when the popover appears. For example, you might want to show the popover only in special circumstances, such as when a user first visits a page or not show again after they click a specific button.
 
-Using the popoverProps, you can customize the look of the coachmark. For example, you can add an outline, beak, and pattern, as shown below.
+<Canvas of={CoachmarkStories.ShouldShow} />
+
+### `delay`
+
+The `delay` prop allows you to control how long the popover will wait before showing. This is useful for ensuring that the user has time to interact with the target element before the popover appears.
+
+This example has a delay of 3000 ms (3 seconds) between clicking the button and the popover appearing.
+
+<Canvas of={CoachmarkStories.Delay} />
+
+### `skipFocusTrap`
+
+The `skipFocusTrap` prop allows you to disable the focus trap that is normally applied to the popover. `skipFocusTrap` defaults to `true`, which means that the popover will not trap focus. However, if you need to to enable the focus trap you can set `skipFocusTrap` to `false` .
+
+### `popoverProps`
+
+Using `popoverProps`, you can customize the look of the rendered popover. For example, you can add an outline, beak, and pattern, as shown below.
 
 <Canvas of={CoachmarkStories.Customized} />
 

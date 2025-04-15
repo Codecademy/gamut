@@ -39,7 +39,7 @@ export const CoachmarkExample = (args: CoachmarkProps) => {
   return (
     <Coachmark
       {...args}
-      delay={0}
+      // delay={args.delay ?? 0}
       renderPopover={renderPopover}
       shouldShow={shouldShow}
     >
@@ -56,6 +56,35 @@ export const Customized: Story = {
   render: (props) => (
     <CoachmarkExample
       {...props}
+      popoverProps={{
+        beak: 'left',
+        outline: true,
+        pattern: CheckerDense,
+      }}
+    />
+  ),
+};
+
+export const ShouldShow: Story = {
+  render: (props) => (
+    <CoachmarkExample
+      {...props}
+      shouldShow={false}
+      popoverProps={{
+        beak: 'left',
+        outline: true,
+        pattern: CheckerDense,
+      }}
+    />
+  ),
+};
+
+export const Delay: Story = {
+  render: (props) => (
+    <CoachmarkExample
+      {...props}
+      delay={3000}
+      shouldShow={false}
       popoverProps={{
         beak: 'left',
         outline: true,
