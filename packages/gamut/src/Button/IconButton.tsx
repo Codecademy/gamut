@@ -40,28 +40,15 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
   ) => {
     const tipId = useId();
 
-    const firstWord = tip?.split(' ')[0] ?? tip;
-
-    const hasRepetitiveLabel =
-      ariaLabel?.toLowerCase() === firstWord?.toLowerCase() || !ariaLabel;
-
-    const trueAriaLabel = ariaLabel ?? firstWord;
-
     const buttonSize = size || 'normal';
 
     const iconSize = iconSizeMapping[buttonSize];
 
     return (
-      <ToolTip
-        info={tip}
-        id={tipId}
-        hasRepetitiveLabel={hasRepetitiveLabel}
-        {...(tipProps as any)}
-      >
+      <ToolTip info={tip} id={tipId} {...(tipProps as any)}>
         <IconButtonBase
           {...props}
-          aria-describedby={tipId}
-          aria-label={trueAriaLabel}
+          aria-label={ariaLabel || tip}
           ref={ref}
           size={size}
           variant={variant}

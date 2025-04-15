@@ -35,11 +35,10 @@ export const WithIconButton: Story = {
         tipProps={{ alignment: 'bottom-center' }}
       />
       <IconButton
-        aria-label="Next Prompt"
         tip="Next Prompt"
         icon={ArrowRightIcon}
         variant="secondary"
-        tipProps={{ alignment: 'bottom-center', hideAriaToolTip: true }}
+        tipProps={{ alignment: 'bottom-center' }}
       />
     </FlexBox>
   ),
@@ -48,7 +47,6 @@ export const WithIconButton: Story = {
 export const Floating: Story = {
   render: () => (
     <IconButton
-      aria-label="Wonder"
       tip="Wonder at the majesty of the universe"
       icon={SmileyStarEyesIcon}
       tipProps={{ alignment: 'bottom-center', placement: 'floating' }}

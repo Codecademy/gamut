@@ -36,7 +36,6 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   const isFloating = placement === 'floating';
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
 
-
   const tipProps = {
     alignment,
     info,
@@ -45,7 +44,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   };
 
   return (
-    <Tip {...tipProps} type="tool">
+    <Tip {...tipProps} type="tool" id={id}>
       {children}
     </Tip>
   );
