@@ -91,7 +91,25 @@ Overflow for images will be cut off, so make sure the image is correctly sized f
 
 A single Modal can be used to navigate between different content within itself by passing an array of `views` including `children`, `primaryCta`, and `secondaryCta`.
 
+`primaryCta` and `secondaryCta` both take an `actionType` prop to determine the action of the button:
+  - `primaryCta` can be `actionType="next"` to move to the next view or `actionType="confirm"` to do some action on the final view.
+  - `secondaryCta` can be `actionType="back"` to move to the previous view or `actionType="cancel"` to close the modal.
+
+Try clicking all the buttons in the example to see them in action:
+
 <Canvas of={ModalStories.MultipleViews} />
+
+### Disabled
+
+The `primaryCta` and `secondaryCta` can be disabled, via the `disabled` prop, based on some logic or until some action has been done. Here the Next button is disabled until the checkbox is checked.
+
+<Canvas of={ModalStories.MultipleViewsDisabled} />
+
+### Danger variant
+
+The `primaryCta` with `actionType="confirm"` can add a `danger` variant, which will change the color of the button to red. This is useful for actions that are destructive or irreversible.
+
+<Canvas of={ModalStories.MultipleViewsDanger} />
 
 ## Playground
 

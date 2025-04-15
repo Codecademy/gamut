@@ -227,32 +227,6 @@ export const WithImage: React.FC = () => {
   );
 };
 
-const multipleViewsArgs = {
-  views: [
-    {
-      title: 'First view',
-      primaryCta: {
-        actionType: 'next',
-        children: 'Next',
-      },
-      secondaryCta: { actionType: 'cancel', children: 'Cancel' },
-      children: <>Hey for the first time</>,
-    },
-    {
-      title: 'Second view',
-      primaryCta: { actionType: 'next', children: 'Next' },
-      secondaryCta: { actionType: 'back', children: 'Back' },
-      children: <>Hey for the second time</>,
-    },
-    {
-      title: 'Third view',
-      primaryCta: { actionType: 'done', children: 'Done' },
-      secondaryCta: { actionType: 'back', children: 'Back' },
-      children: <>Last one</>,
-    },
-  ],
-};
-
 export const MultipleViews: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -262,7 +236,110 @@ export const MultipleViews: React.FC = () => {
       <Modal
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
-        {...multipleViewsArgs}
+        size="medium"
+        views={[
+          {
+            title: 'First view',
+            primaryCta: {
+              actionType: 'next',
+              children: 'Next',
+            },
+            secondaryCta: { actionType: 'cancel', children: 'Cancel' },
+            children: <>Hey for the first time</>,
+          },
+          {
+            title: 'Second view',
+            primaryCta: { actionType: 'next', children: 'Next' },
+            secondaryCta: { actionType: 'back', children: 'Back' },
+            children: <>Hey for the second time</>,
+          },
+          {
+            title: 'Third view',
+            primaryCta: {
+              actionType: 'confirm',
+              children: 'Done',
+              onClick: () => setIsOpen(false),
+            },
+            secondaryCta: { actionType: 'back', children: 'Back' },
+            children: <>Last one</>,
+          },
+        ]}
+      />
+    </>
+  );
+};
+
+export const MultipleViewsDanger: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+        size="medium"
+        views={[
+          {
+            title: 'First view',
+            primaryCta: {
+              actionType: 'confirm',
+              children: 'Delete',
+              variant: 'danger',
+              onClick: () => setIsOpen(false),
+            },
+            secondaryCta: { actionType: 'cancel', children: 'Cancel' },
+            children: <>I use the danger variant for the confirm button</>,
+          },
+        ]}
+      />
+    </>
+  );
+};
+
+export const MultipleViewsDisabled: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+        size="medium"
+        views={[
+          {
+            title: 'First view',
+            primaryCta: {
+              actionType: 'next',
+              children: 'Next',
+              disabled: !isChecked,
+            },
+            secondaryCta: { actionType: 'cancel', children: 'Cancel' },
+            children: (
+              <>
+                <Checkbox
+                  label="Check me to enable the Next button"
+                  aria-label="I am a checkbox"
+                  htmlFor="checkbox"
+                  checked={isChecked}
+                  onChange={() => setIsChecked(!isChecked)}
+                />
+              </>
+            ),
+          },
+          {
+            title: 'Second view',
+            primaryCta: {
+              actionType: 'confirm',
+              children: 'Done',
+              onClick: () => setIsOpen(false),
+            },
+            secondaryCta: { actionType: 'back', children: 'Back' },
+            children: <>Last one</>,
+          },
+        ]}
       />
     </>
   );

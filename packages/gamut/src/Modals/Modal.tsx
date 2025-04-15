@@ -41,12 +41,12 @@ type ModalConfirmProps = {
 
 type ModalButtonProps = ModalNextProps | ModalConfirmProps;
 
-export interface ModalView
+interface ModalView
   extends Omit<ModalBaseProps, 'headingLevel' | 'onRequestClose'> {
   children: React.ReactNode;
 }
 
-type ModalViewProps = ModalView & ModalButtonProps;
+export type ModalViewProps = ModalView & ModalButtonProps;
 
 export interface SingleViewModalProps extends ModalBaseProps {
   size?: ComponentProps<typeof ModalContainer>['size'];
