@@ -47,8 +47,8 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
 
   // If using the 'fade' animation, this causes the popover to flash in the top left corner for a split section before finding its position
   const skipAnimation = {
-    animation: 'none' as const
-  }
+    animation: 'none' as const,
+  };
 
   popoverProps = { ...popoverProps, ...skipAnimation };
 
@@ -69,9 +69,9 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
         {children}
       </div>
       {/* {delay > 0 ? ( */}
-        <DelayedRenderWrapper delay={delay}>
-          {PopoverContainer()}
-        </DelayedRenderWrapper>
+      <DelayedRenderWrapper delay={delay}>
+        {PopoverContainer()}
+      </DelayedRenderWrapper>
       {/* )
       : (
         PopoverContainer()
