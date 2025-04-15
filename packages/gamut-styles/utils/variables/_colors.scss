@@ -238,14 +238,46 @@ $deprecated-gamut-royal-blue-800: color.mix(
 
 $deprecated-gamut-mint-500: #37c3be;
 
-$deprecated-gamut-mint-100: color.mix($color-white, $deprecated-gamut-mint-500, 80%);
-$deprecated-gamut-mint-200: color.mix($color-white, $deprecated-gamut-mint-500, 60%);
-$deprecated-gamut-mint-300: color.mix($color-white, $deprecated-gamut-mint-500, 40%);
-$deprecated-gamut-mint-400: color.mix($color-white, $deprecated-gamut-mint-500, 20%);
-$deprecated-gamut-mint-600: color.mix($color-black, $deprecated-gamut-mint-500, 20%);
-$deprecated-gamut-mint-700: color.mix($color-black, $deprecated-gamut-mint-500, 40%);
-$deprecated-gamut-mint-800: color.mix($color-black, $deprecated-gamut-mint-500, 60%);
-$deprecated-gamut-mint-900: color.mix($color-black, $deprecated-gamut-mint-500, 80%);
+$deprecated-gamut-mint-100: color.mix(
+  $color-white,
+  $deprecated-gamut-mint-500,
+  80%
+);
+$deprecated-gamut-mint-200: color.mix(
+  $color-white,
+  $deprecated-gamut-mint-500,
+  60%
+);
+$deprecated-gamut-mint-300: color.mix(
+  $color-white,
+  $deprecated-gamut-mint-500,
+  40%
+);
+$deprecated-gamut-mint-400: color.mix(
+  $color-white,
+  $deprecated-gamut-mint-500,
+  20%
+);
+$deprecated-gamut-mint-600: color.mix(
+  $color-black,
+  $deprecated-gamut-mint-500,
+  20%
+);
+$deprecated-gamut-mint-700: color.mix(
+  $color-black,
+  $deprecated-gamut-mint-500,
+  40%
+);
+$deprecated-gamut-mint-800: color.mix(
+  $color-black,
+  $deprecated-gamut-mint-500,
+  60%
+);
+$deprecated-gamut-mint-900: color.mix(
+  $color-black,
+  $deprecated-gamut-mint-500,
+  80%
+);
 
 $deprecated-gamut-purple: $deprecated-gamut-purple-500;
 $deprecated-gamut-royal-blue: $deprecated-gamut-royal-blue-500;
