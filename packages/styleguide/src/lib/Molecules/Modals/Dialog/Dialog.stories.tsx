@@ -1,7 +1,7 @@
 import { Dialog, FillButton } from '@codecademy/gamut';
 import { ColorMode } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const meta: Meta<typeof Dialog> = {
   component: Dialog,
