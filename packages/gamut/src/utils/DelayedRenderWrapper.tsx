@@ -17,7 +17,7 @@ export const DelayedRenderWrapper: React.FC<DelayedRenderWrapperProps> = ({
       setShouldRender(true);
     }, delay);
 
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
+    return () => clearTimeout(timer);
   }, [delay]);
 
   return shouldRender ? <>{children}</> : null;
