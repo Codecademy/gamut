@@ -1,10 +1,7 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { act, render, screen } from '@testing-library/react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { act } from '@testing-library/react';
 
-import { Coachmark, CoachmarkProps } from '..';
-
-jest.useFakeTimers();
+import { Coachmark } from '..';
 
 const renderPopover = () => (
   <div data-testid="coachmark-popover-content">
@@ -15,55 +12,48 @@ const renderPopover = () => (
   </div>
 );
 
-const renderCoachmark = ({ delay, ...props }: Partial<CoachmarkProps>) => {
-  return render(
-    <div>
-      <ThemeProvider theme={theme}>
-        <Coachmark
-          delay={delay}
-          shouldShow
-          renderPopover={renderPopover}
-          {...props}
-        >
-          <div data-testid="coachmark-ref">hello</div>
-        </Coachmark>
-      </ThemeProvider>
-    </div>
-  );
-};
+const renderView = setupRtl(Coachmark, { renderPopover, shouldShow: true, children: <div data-testid="coachmark-ref">hello</div>})
 
 describe('Coachmark', () => {
   it('renders children', () => {
-    renderCoachmark({ delay: 0 });
-    expect(screen.queryByTestId('coachmark-ref')).toBeInTheDocument();
+    const { view } = renderView();
+
+    expect(view.queryByTestId('coachmark-ref')).toBeInTheDocument();
+  });
+
+  it("renders children even when the coachmark's popover is not set to show", () => {
+    const { view } = renderView({ shouldShow: false });
+
+    expect(view.queryByTestId('coachmark-ref')).toBeInTheDocument();
   });
 
   it('does not render Popover when shouldShow is false', () => {
-    renderCoachmark({ shouldShow: false, delay: 0 });
-    expect(screen.queryByTestId('coachmark-popover-content')).toBeFalsy();
+    const { view } = renderView({ shouldShow: false });
+    expect(view.queryByTestId('coachmark-popover-content')).toBeFalsy();
   });
 
-  // TODO [EGG-1763]: Enable these again!
-  it('renders Popover when shouldShow is true', () => {
-    renderCoachmark({ delay: 0 });
-    expect(screen.queryByTestId('coachmark-popover-content')).toBeTruthy();
+  it('renders the popover when shouldShow is true', () => {
+    const { view } = renderView({ delay: 0 });
+    expect(view.queryByTestId('coachmark-popover-content')).toBeTruthy();
   });
 
-  it('renders content provided by renderPopover', () => {
-    renderCoachmark({ delay: 0 });
-    expect(screen.queryByTestId('coachmark-popover-content')).toBeTruthy();
+  it('renders the popover immediately if no delay and shouldShow is true', () => {
+    const { view } = renderView({ delay: 0 });
+
+    expect(view.queryByTestId('coachmark-popover-content')).toBeTruthy();
   });
 
-  it('renders Popover after the delay', () => {
+  it('renders the popover after the delay', () => {
+    jest.useFakeTimers();
     const delayTimer = 1000;
+    const { view } = renderView({ shouldShow: true, delay: delayTimer });
 
-    renderCoachmark({ shouldShow: true, delay: delayTimer });
-    expect(screen.queryByTestId('coachmark-popover-content')).toBeFalsy();
+    expect(view.queryByTestId('coachmark-popover-content')).toBeFalsy();
 
     act(() => {
-      jest.advanceTimersByTime(1000);
+      jest.advanceTimersByTime(delayTimer);
     });
 
-    expect(screen.queryByTestId('coachmark-popover-content')).toBeTruthy();
+    expect(view.queryByTestId('coachmark-popover-content')).toBeTruthy();
   });
 });
