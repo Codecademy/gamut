@@ -12,7 +12,11 @@ const renderPopover = () => (
   </div>
 );
 
-const renderView = setupRtl(Coachmark, { renderPopover, shouldShow: true, children: <div data-testid="coachmark-ref">hello</div>})
+const renderView = setupRtl(Coachmark, {
+  renderPopover,
+  shouldShow: true,
+  children: <div data-testid="coachmark-ref">hello</div>,
+});
 
 describe('Coachmark', () => {
   it('renders children', () => {
