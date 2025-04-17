@@ -89,7 +89,9 @@ Overflow for images will be cut off, so make sure the image is correctly sized f
 
 ## Multiple views
 
-A single Modal can be used to navigate between different content within itself by passing an array of `views` including `children`, `primaryCta`, and `secondaryCta`.
+A single `Modal` can be used to navigate between different content within itself by passing an array of `views` including `children`, `primaryCta`, and `secondaryCta`.
+
+Each view can also take a `title` that renders as a heading. However, if the `Modal` already has a `title` prop passed then that value will be the title rendered instead of the view's `title`.
 
 `primaryCta` and `secondaryCta` both take an `actionType` prop to determine the action of the button:
 

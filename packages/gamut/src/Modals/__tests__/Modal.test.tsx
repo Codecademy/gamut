@@ -25,7 +25,7 @@ describe('Modal', () => {
     expect(view.queryByText('Title')).toBe(null);
   });
 
-  it('does not render its close button if hideDefaultCloseButton is true', () => {
+  it('does not render its close button if hideCloseButton is true', () => {
     const { view } = renderView({ hideCloseButton: true });
     expect(view.queryAllByRole('button').length).toBe(0);
   });

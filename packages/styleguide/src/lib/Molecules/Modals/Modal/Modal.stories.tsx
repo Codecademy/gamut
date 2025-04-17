@@ -279,6 +279,7 @@ export const MultipleViewsDanger: React.FC = () => {
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
         size="medium"
+        title="Danger!!"
         views={[
           {
             title: 'First view',
