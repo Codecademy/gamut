@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [61.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@61.1.1...@codecademy/gamut@61.1.2) (2025-04-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [61.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@61.1.0...@codecademy/gamut@61.1.1) (2025-04-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [61.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@61.0.0...@codecademy/gamut@61.1.0) (2025-04-08)
+
+### Features
+
+- icon-only menu items + tooltips ([feb84ff](https://github.com/Codecademy/gamut/commit/feb84ff0499837b47248442b8ff59ef1e842841d))
+
 ## [61.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@60.1.1...@codecademy/gamut@61.0.0) (2025-04-07)
 
 ### ⚠ BREAKING CHANGES
