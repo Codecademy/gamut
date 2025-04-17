@@ -20,5 +20,5 @@ export const DelayedRenderWrapper: React.FC<DelayedRenderWrapperProps> = ({
     return () => clearTimeout(timer);
   }, [delay]);
 
-  return shouldRender ? <>{children}</> : null;
+  return shouldRender ? <>{children}</> : <div>DELAYED</div>;
 };

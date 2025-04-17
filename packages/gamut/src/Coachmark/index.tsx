@@ -46,12 +46,11 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
     : ({ skipFocusTrap: undefined, onRequestClose } as const);
 
   // If using the 'fade' animation, this causes the popover to flash in the top left corner for a split section before finding its position
-  // const skipAnimation = {
-  //   animation: 'none' as const,
-  // };
+  const skipAnimation = {
+    animation: 'none' as const,
+  };
 
-  // popoverProps = { ...popoverProps, ...skipAnimation };
-  popoverProps = { ...popoverProps };
+  popoverProps = { ...popoverProps, ...skipAnimation };
 
   const PopoverContainer = () => (
     <Popover

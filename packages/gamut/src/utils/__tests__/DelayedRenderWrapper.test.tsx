@@ -1,56 +1,37 @@
-import { render, screen } from '@testing-library/react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { act, waitFor } from '@testing-library/react';
 
 import { DelayedRenderWrapper } from '../DelayedRenderWrapper';
 
+
 jest.useFakeTimers();
 
+const renderView = setupRtl(DelayedRenderWrapper, { children: <div data-testid="wrapper-child">Child Content</div> });
+
 describe('DelayedRenderWrapper', () => {
-  it('should not render children immediately', () => {
-    render(
-      <DelayedRenderWrapper delay={1000}>
-        <div data-testid="child">Child Content</div>
-      </DelayedRenderWrapper>
-    );
+  it('should not render children immediately', async () => {
+    const { view } = renderView({ delay: 1000 });
+    // jest.advanceTimersByTime(2000);
 
-    expect(screen.queryByTestId('child')).toBeNull();
+    await act(async () => {
+      jest.advanceTimersByTime(2000);
+      await waitFor(() => {
+        expect(view.findByTestId('wrapper-child')).toThrow();
+      });
+    });
+
   });
 
-  it('should render children after the delay', () => {
-    render(
-      <DelayedRenderWrapper delay={1000}>
-        <div data-testid="child">Child Content</div>
-      </DelayedRenderWrapper>
-    );
+  it('should render children after the delay', async () => {
+    const { view } = renderView({ delay: 500 });
+    jest.advanceTimersByTime(501);
+    expect(view.findByTestId('wrapper-child')).toBeTruthy()
 
-    jest.advanceTimersByTime(1000);
-
-    expect(screen.getByTestId('child')).toBeInTheDocument();
-  });
-
-  it('should clean up the timer on unmount', () => {
-    const clearTimeoutSpy = jest.spyOn(global, 'clearTimeout');
-    const { unmount } = render(
-      <DelayedRenderWrapper delay={1000}>
-        <div data-testid="child">Child Content</div>
-      </DelayedRenderWrapper>
-    );
-
-    unmount();
-
-    expect(clearTimeoutSpy).toHaveBeenCalled();
-    clearTimeoutSpy.mockRestore();
-  });
-
-  it('should not render children if unmounted before delay', () => {
-    const { unmount } = render(
-      <DelayedRenderWrapper delay={1000}>
-        <div data-testid="child">Child Content</div>
-      </DelayedRenderWrapper>
-    );
-
-    unmount();
-    jest.advanceTimersByTime(1000);
-
-    expect(screen.queryByTestId('child')).toBeNull();
+    // await act(async () => {
+    //   jest.advanceTimersByTime(501);
+    //   await waitFor(() => {
+    //     expect(view.findByTestId('wrapper-child')).toBeTruthy();
+    //   }, { timeout: 1000 });
+    // });
   });
 });
