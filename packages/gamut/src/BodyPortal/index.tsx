@@ -17,8 +17,7 @@ const PortalWrapper = styled
   )
   .withComponent(ColorMode);
 
-interface BodyPortalProps {
-  children?: React.ReactNode;
+interface BodyPortalProps{
   /**
    * TEMPORARY: a stopgap solution to avoid zIndex conflicts -
    * will be reworked with: GM-624
@@ -27,7 +26,8 @@ interface BodyPortalProps {
   zIndex?: number;
 }
 
-export const BodyPortal: React.FC<BodyPortalProps> = ({
+export const BodyPortal: React.FC<React.PropsWithChildren<BodyPortalProps>> = ({
+
   children,
   zIndex = 1,
 }) => {
