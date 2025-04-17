@@ -57,12 +57,13 @@ describe('Coachmark', () => {
   it('renders Popover after the delay', () => {
     const delayTimer = 1000;
 
-    act(() => {
-      renderCoachmark({ shouldShow: true, delay: delayTimer });
-      expect(screen.queryByTestId('coachmark-popover-content')).toBeFalsy();
+    renderCoachmark({ shouldShow: true, delay: delayTimer });
+    expect(screen.queryByTestId('coachmark-popover-content')).toBeFalsy();
 
-      jest.advanceTimersByTime(delayTimer);
-      expect(screen.queryByTestId('coachmark-popover-content')).toBeTruthy();
+    act(() => {
+      jest.advanceTimersByTime(1000);
     });
+
+    expect(screen.queryByTestId('coachmark-popover-content')).toBeTruthy();
   });
 });
