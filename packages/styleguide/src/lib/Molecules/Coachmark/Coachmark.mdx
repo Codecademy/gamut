@@ -46,14 +46,14 @@ const ExampleCoachmark = () => {
 
   const renderPopover = (onDismiss) => (
     <Box >
-      <Text mb={8}>You should click the button.</Text>
+      <Text>This is the Popover</Text>
       <FillButton
         onClick={() => {
           setShouldShow(false);
           onDismiss();
         }}
       >
-        Got it
+        Click to un-show the Coachmark's Popover!
       </FillButton>
     </Box
   );
@@ -63,7 +63,7 @@ const ExampleCoachmark = () => {
       renderPopover={renderPopover}
       shouldShow={shouldShow}
     >
-      <FillButton onClick={() => setShouldShow(true)}>A Button</FillButton>
+      <FillButton onClick={() => setShouldShow(true)}>Child element that triggers Coachmark</FillButton>
     </Coachmark>
   );
 };

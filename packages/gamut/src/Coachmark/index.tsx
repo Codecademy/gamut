@@ -12,7 +12,7 @@ export type CoachmarkProps = WithChildrenProp &
     activeElClassName?: string;
     /**
      * Amount of time (in ms) to delay rendering the coachmark.
-     * @default 500
+     * @default 0
      */
     delay?: number;
     /**
@@ -45,19 +45,13 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
     ? ({ skipFocusTrap: true, onRequestClose: undefined } as const)
     : ({ skipFocusTrap: undefined, onRequestClose } as const);
 
-  // If using the 'fade' animation, this causes the popover to flash in the top left corner for a split section before finding its position
-  const skipAnimation = {
-    animation: 'none' as const,
-  };
-
-  popoverProps = { ...popoverProps, ...skipAnimation };
-
   const PopoverContainer = () => (
     <Popover
       {...popoverProps}
       targetRef={activeElRef}
       isOpen={shouldShow}
       {...skipFocusTrapProps}
+      animation='fade'
     >
       {renderPopover()}
     </Popover>
@@ -68,16 +62,11 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
       <div ref={activeElRef} className={activeElClassName}>
         {children}
       </div>
-      {/* {delay > 0 ? ( */}
       {shouldShow && (
         <DelayedRenderWrapper delay={delay}>
           {PopoverContainer()}
         </DelayedRenderWrapper>
       )}
-      {/* )
-      : (
-        PopoverContainer()
-      )} */}
     </>
   );
 };
