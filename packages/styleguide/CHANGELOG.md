@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [73.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.0...@codecademy/styleguide@73.0.1) (2025-04-21)
+
+### Bug Fixes
+
+- **modal + dialog:** updating aria attributes per a11y team feedback ([36b0fd0](https://github.com/Codecademy/gamut/commit/36b0fd0524aba879d2dee23be589933748acde88))
+
 ## [73.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@72.1.0...@codecademy/styleguide@73.0.0) (2025-04-21)
 
 ### ⚠ BREAKING CHANGES
