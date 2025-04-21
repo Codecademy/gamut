@@ -86,13 +86,17 @@ export interface MultiViewModalProps
    * Whether to disable X button at top right of modal
    */
   closeDisabled?: boolean;
+  /**
+   * TEMPORARY: a stopgap solution to avoid zIndex conflicts -
+   * will be reworked with: GM-624
+   */
+  zIndex?: number;
 }
 
 export type ModalProps = SingleViewModalProps | MultiViewModalProps;
 
 export const Modal: React.FC<ModalProps> = ({
   'aria-label': ariaLabel,
-  'aria-live': ariaLive = 'polite',
   children,
   className,
   headingLevel = 'h2',
@@ -109,6 +113,7 @@ export const Modal: React.FC<ModalProps> = ({
   const view = views?.[currentView];
   const image = (view?.image || rest?.image) ?? null;
 
+  const titleText = title || views?.[currentView].title;
   return (
     <Overlay
       shroud
@@ -117,26 +122,25 @@ export const Modal: React.FC<ModalProps> = ({
       {...rest}
     >
       <ModalContainer
-        tabIndex={-1}
-        size={size}
-        role="dialog"
-        layout={views && views?.length > 0 ? 'dialog' : 'standard'}
-        data-autofocus
-        className={className}
-        aria-modal="true"
-        aria-live={ariaLive}
-        aria-label={ariaLabel}
         aria-hidden="false"
+        aria-label={ariaLabel}
+        aria-labelledby={titleText ? String(titleText) : undefined}
+        aria-modal="true"
+        className={className}
+        data-autofocus
+        layout={views && views?.length > 0 ? 'dialog' : 'standard'}
+        role="dialog"
+        size={size}
+        tabIndex={-1}
       >
-        {(title || view?.title) && (
+        {titleText && (
           <Text
             as={headingLevel}
             fontSize={20}
             lineHeight="base"
             gridArea="title"
-            aria-live="assertive"
           >
-            {title || view?.title}
+            {titleText}
           </Text>
         )}
         {!hideCloseButton && (
