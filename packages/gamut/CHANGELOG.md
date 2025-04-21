@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [62.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@61.1.2...@codecademy/gamut@62.0.0) (2025-04-21)
+
+### ⚠ BREAKING CHANGES
+
+- **Modal:** add multiview options for back and danger variant
+
+### Features
+
+- **Modal:** add multiview options for back and danger variant ([567dcac](https://github.com/Codecademy/gamut/commit/567dcacf35a7a3bc9e2b6574693d0eebfabff906))
+
 ### [61.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@61.1.1...@codecademy/gamut@61.1.2) (2025-04-10)
 
 **Note:** Version bump only for package @codecademy/gamut
