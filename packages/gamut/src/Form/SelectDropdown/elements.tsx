@@ -6,7 +6,7 @@ import {
   MiniDeleteIcon,
   SearchIcon,
 } from '@codecademy/gamut-icons';
-import { ColorMode, css, theme, useColorModes } from '@codecademy/gamut-styles';
+import { css, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { createContext, CSSProperties, KeyboardEvent, useContext } from 'react';
 import ReactSelect, {
@@ -62,13 +62,7 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
     setCurrentFocusedValue(undefined);
   }
 
-  const [mode] = useColorModes();
-  return (
-    // we want the tags to be opposite color mode
-    <ColorMode mode={mode === 'light' ? 'dark' : 'light'}>
-      <MultiValue {...props} />
-    </ColorMode>
-  );
+  return <MultiValue {...props} />;
 };
 
 export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {
@@ -280,7 +274,7 @@ export const formatGroupLabel = ({ label, divider }: SelectDropdownGroup) => {
           width="100%"
           fit
           height="1px"
-          bg="text-disabled"
+          // bg="text-disabled"
           borderRadius="md"
           mx={16}
         />
