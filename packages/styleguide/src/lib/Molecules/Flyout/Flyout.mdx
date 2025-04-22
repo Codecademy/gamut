@@ -28,7 +28,33 @@ On button click, a container animates in from the left or right side of the wind
 
 Internally, Flyout is a combination of <LinkTo id="Molecules/Modals/Overlay">Overlay</LinkTo> and <LinkTo id="Atoms/Drawer">Drawer</LinkTo>.
 
-Our Flyouts are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded` and `onChange`:
+Our Flyouts are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded` and `onChange`.
+
+{/* // REVISIT THIS  */}
+The component that toggles the `Flyout` should include both `aria-expanded` and `aria-controls` attributes. The `aria-controls` attribute must reference the `id` of the `Flyout`. The `aria-expanded` attribute should reflect the value of the `expanded` prop passed to the `Flyout`.
+
+```tsx
+const ExampleFlyout: React.FC = () => {
+  const [expanded, setExpanded] = useState(false);
+  const flyoutId = useId();
+
+  return (
+    <FlexBox>
+      <Flyout expanded={expanded} id={flyoutId}>
+        Example Flyout
+      </Flyout>
+      <StrokeButton
+        aria-expanded={expanded}
+        // REVISIT THIS 
+        aria-controls={expanded ? drawerId : undefined}
+        onClick={() => setExpanded((previousExpanded) => !previousExpanded)}
+      >
+        Set the proper aria-labels!
+      </StrokeButton>
+    </FlexBox>
+  );
+};
+```
 
 ## Playground
 

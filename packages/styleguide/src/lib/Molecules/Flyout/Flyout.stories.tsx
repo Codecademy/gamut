@@ -5,7 +5,9 @@ import { useState } from 'react';
 
 const meta: Meta<typeof Flyout> = {
   component: Flyout,
-  args: {},
+  args: {
+    id: 'flyout-example',
+  },
 };
 
 export default meta;
@@ -35,7 +37,12 @@ export const FlyoutExample: Story = {
             hurricane...
           </Box>
         </Flyout>
-        <StrokeButton onClick={() => setExpanded(true)}>
+        <StrokeButton
+          // REVISIT THIS
+          aria-controls={expanded ? args.id : undefined}
+          aria-expanded={expanded}
+          onClick={() => setExpanded(true)}
+        >
           Tell me more?!
         </StrokeButton>
         <FlexBox>

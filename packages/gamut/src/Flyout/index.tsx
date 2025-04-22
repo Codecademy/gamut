@@ -35,16 +35,23 @@ export interface FlyoutProps extends WithChildrenProp {
    */
   title: React.ReactNode;
   bg?: Colors;
+  // REVISIT THIS 
+  /**
+   * This `id` is used to link the element that expands the Drawer to the Drawer itself.
+   * It is needed for the `aria-controls` attribute to work properly for accessibility.
+   */
+  id: string;
 }
 
 export const Flyout: React.FC<FlyoutProps> = ({
+  bg = 'background',
   children,
   closeLabel = 'Close',
+  id,
   expanded,
   openFrom = 'left',
   onClose,
   title,
-  bg = 'background',
 }) => {
   return (
     <Overlay
@@ -56,13 +63,14 @@ export const Flyout: React.FC<FlyoutProps> = ({
     >
       <Background bg={bg}>
         <Drawer
+          alignContentContainer={openFrom === 'left' ? 'right' : 'left'}
           bottom={0}
           display="flex"
           expanded={expanded}
           flexDirection={openFrom === 'left' ? 'row' : 'row-reverse'}
+          id={id}
           position="fixed"
           top={0}
-          alignContentContainer={openFrom === 'left' ? 'right' : 'left'}
           {...{ [openFrom]: 0 }}
         >
           <FlexBox
