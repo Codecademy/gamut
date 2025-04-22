@@ -13,9 +13,7 @@ export const Default: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
   return (
     <FlexBox bg="paleYellow" height="20rem">
-      <Drawer expanded={expanded}>
-        Drawer content in here!
-      </Drawer>
+      <Drawer expanded={expanded}>Drawer content in here!</Drawer>
       <StrokeButton
         aria-expanded={expanded}
         onClick={() => setExpanded((previousExpanded) => !previousExpanded)}

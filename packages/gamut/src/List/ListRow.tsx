@@ -141,9 +141,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           {content}
           <AnimatePresence>
             {expanded && (
-              <ExpandInCollapseOut
-                as={isTable ? 'td' : 'div'}
-              >
+              <ExpandInCollapseOut as={isTable ? 'td' : 'div'}>
                 <Box role="region" aria-label={expandedRowAriaLabel}>
                   {renderExpanded?.()}
                 </Box>
