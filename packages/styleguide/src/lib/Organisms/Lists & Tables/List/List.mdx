@@ -217,7 +217,6 @@ You can define collapsible content by passing an `expanded` prop and the `React.
 #### Expand on button click
 
 The `ListRow` component has access to the `ExpandControl` component which can be used to toggle the expanded state of the row. The `ExpandControl` component will automatically handle the rotation of the icon based on the expanded state.
-Ensure that the `ListRow` has a unique `id` prop to ensure that the `ExpandControl` can set the correct aria attributes.
 
 ```tsx
 export const ExpandableRow: React.FC<{
@@ -229,7 +228,6 @@ export const ExpandableRow: React.FC<{
 
   return (
     <ListRow
-      id={idOfRow}
       key={key}
       expanded={isExpanded}
       renderExpanded={() => <Text>Surprise</Text>}
@@ -240,7 +238,6 @@ export const ExpandableRow: React.FC<{
         <ExpandControl
           expanded={isExpanded}
           onExpand={() => setExpanded(!isExpanded)}
-          id={idOfRow}
           disabled={false}
         />
       </ListCol>
@@ -250,8 +247,6 @@ export const ExpandableRow: React.FC<{
 ```
 
 #### Expand on row click
-
-Make sure you pass in an `id` prop to the `ListRow` component so that the correct aria attributes are set on the row.
 
 ```tsx
 export const ExpandableRow: React.FC<{
@@ -263,7 +258,6 @@ export const ExpandableRow: React.FC<{
 
   return (
     <ListRow
-      id={idOfRow}
       key={key}
       expanded={isExpanded}
       onClick={() => setExpanded(!isExpanded)}
