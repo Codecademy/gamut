@@ -45,7 +45,7 @@ const DivExpand = styled(motion.div)(expandStyles);
 const TDExpand = styled(motion.td)(expandStyles);
 
 const ExpandInCollapseOut: React.FC<
-  WithChildrenProp & { as: 'td' | 'div'; }
+  WithChildrenProp & { as: 'td' | 'div' }
 > = ({ as, children }) => {
   const ResponsiveExpand = as === 'td' ? TDExpand : DivExpand;
 

@@ -1,6 +1,6 @@
 import { Drawer, FlexBox, StrokeButton } from '@codecademy/gamut';
 import type { Meta } from '@storybook/react';
-import { useId, useState } from 'react';
+import { useState } from 'react';
 
 const meta: Meta<typeof Drawer> = {
   component: Drawer,
