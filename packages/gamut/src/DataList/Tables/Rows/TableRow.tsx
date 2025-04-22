@@ -70,7 +70,6 @@ export const TableRow: DataRow = ({
   return (
     <ListRow
       as="tr"
-      id={String(id)}
       numOfColumns={numberOfColumns}
       selectable={selectable}
       {...listRowProps}
