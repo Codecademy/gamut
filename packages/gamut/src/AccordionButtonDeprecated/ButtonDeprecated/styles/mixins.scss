@@ -161,7 +161,8 @@
   @return math.round(
     calc(
       (
-          (color.channel($color, "red", $space: rgb) * 299) + (color.channel($color, "green", $space: rgb) * 587) +
+          (color.channel($color, "red", $space: rgb) * 299) +
+            (color.channel($color, "green", $space: rgb) * 587) +
             (color.channel($color, "blue", $space: rgb) * 114)
         ) / 1000
     )
