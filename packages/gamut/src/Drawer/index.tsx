@@ -15,23 +15,16 @@ export interface DrawerProps extends Omit<BoxProps, 'width'> {
    * Whether the drawer should be open.
    */
   expanded?: boolean;
-
   /**
    * Which edge of the drawer content container is aligned to during the animation.
    */
   alignContentContainer?: 'left' | 'right';
-  /**
-   * This `id` is used to link the element that expands the Drawer to the Drawer itself.
-   * It is needed for the `aria-controls` attribute to work properly for accessibility.
-   */
-  id: string;
 }
 
 export const Drawer: React.FC<DrawerProps> = ({
   alignContentContainer = 'right',
   children,
   expanded,
-  id,
   ...props
 }) => {
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -49,7 +42,6 @@ export const Drawer: React.FC<DrawerProps> = ({
           animate={{ width: fullWidth }}
           bg="background-current"
           exit={{ width: 0 }}
-          id={id}
           initial={{ width: 0 }}
           overflow="clip"
           position="relative"

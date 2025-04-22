@@ -88,8 +88,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
 
-  const textId = useId();
-
   const tipProps = {
     alignment,
     escapeKeyPressHandler,
@@ -103,7 +101,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     <ScreenreaderNavigableText
       aria-hidden={isAriaHidden}
       aria-live="assertive"
-      id={textId}
       screenreader
     >
       {!isTipHidden ? info : `\xa0`}
@@ -112,7 +109,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   const tip = (
     <InfoTipButton
-      aria-controls={textId}
       aria-expanded={!isTipHidden}
       active={!isTipHidden}
       emphasis={emphasis}
