@@ -35,7 +35,7 @@ fieldset[disabled] a.btn {
 @each $name, $color in variables.$btn-swatches {
   @if $name == "brand-yellow" {
     @include mixins.button-variants($name, utils.$color-black, $color);
-  } @else if color.lightness($color) > 68 {
+  } @else if color.channel(color.to-space($color, hsl), "lightness") > 68 {
     @include mixins.button-variants($name, utils.$color-black, $color);
   } @else {
     @include mixins.button-variants($name, utils.$color-white, $color);

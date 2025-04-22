@@ -1,5 +1,5 @@
-@use "colors";
-@use "base";
-@use "grid";
-@use "typography";
-@use "responsive";
+@forward "colors";
+@forward "base";
+@forward "grid";
+@forward "typography";
+@forward "responsive";

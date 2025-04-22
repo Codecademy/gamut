@@ -1,5 +1,5 @@
 // import order is unfortunately important here
 // variables needs to access functions, and mixins needs to access variables
-@use "functions/index";
-@use "variables/index" as index2;
-@use "mixins/index" as index3;
+@forward "functions/index";
+@forward "variables/index";
+@forward "mixins/index";

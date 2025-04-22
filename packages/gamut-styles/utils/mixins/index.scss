@@ -1,6 +1,6 @@
-@use "font-smoothing";
-@use "no-select";
-@use "responsive";
-@use "shadow";
-@use "sr-only";
-@use "legacy";
+@forward "font-smoothing";
+@forward "no-select";
+@forward "responsive";
+@forward "shadow";
+@forward "sr-only";
+@forward "legacy";
