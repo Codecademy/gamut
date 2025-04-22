@@ -32,6 +32,7 @@ export const ExpandControl: React.FC<ExpandColProps> = ({
       }}
       aria-label={`Expand ${id} Row`}
       aria-expanded={expanded}
+      // REVISIT THIS 
       aria-controls={id ?? undefined}
     >
       <Rotation rotated={expanded}>

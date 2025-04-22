@@ -14,10 +14,12 @@ export const Default: React.FC = () => {
   const drawerId = useId();
   return (
     <FlexBox bg="paleYellow" height="20rem">
+      {/* // REVISIT THIS  */}
       <Drawer expanded={expanded} id={drawerId}>
         Drawer content in here!
       </Drawer>
       <StrokeButton
+      // REVISIT THIS
         aria-controls={expanded ? drawerId : undefined}
         aria-expanded={expanded}
         onClick={() => setExpanded((previousExpanded) => !previousExpanded)}

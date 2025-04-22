@@ -110,6 +110,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     </ScreenreaderNavigableText>
   );
 
+  // REVISIT THIS 
   const tip = (
     <InfoTipButton
       aria-controls={textId}

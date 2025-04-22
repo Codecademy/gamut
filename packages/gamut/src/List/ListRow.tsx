@@ -14,6 +14,7 @@ import { getGridTemplateColumns } from './utils';
 export interface RowProps
   extends Partial<PublicListProps<ComponentProps<typeof RowEl>>> {
   header?: boolean;
+  // REVISIT THIS
   /** Used to link expandable content with the component that does the expanding, i.e. it's used to set the value for aria-controls  */
   id?: string;
   /** This is an internal prop that is largely only used for the DataTable component */
@@ -105,6 +106,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         <RowEl
           as="div"
           {...rowConfig}
+          // REVISIT THIS 
           aria-controls={onClick ? id : undefined}
           aria-expanded={renderExpanded && onClick ? expanded : undefined}
           clickable={Boolean(onClick)}
