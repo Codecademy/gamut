@@ -11,8 +11,7 @@
     "lodash": "^4.17.5",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-helmet-async": "^2.0.5",
-    "sass-migrator": "^2.3.1"
+    "react-helmet-async": "^2.0.5"
   },
   "devDependencies": {
     "@babel/cli": "7.24.7",
