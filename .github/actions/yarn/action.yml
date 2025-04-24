@@ -12,4 +12,4 @@ runs:
 
     - name: Install dependencies
       shell: bash
-      run: yarn --production=false --frozen-lockfile
+      run: yarn --production=false --immutable

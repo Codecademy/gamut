@@ -13,6 +13,13 @@
         "parallel": false
       }
     },
+    "verify": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/eslint-plugin-gamut",
+        "command": "tsc --noEmit"
+      }
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/eslint-plugin-gamut"],

@@ -22,9 +22,5 @@
     "access": "public"
   },
   "repository": "Codecademy/gamut.git",
-  "scripts": {
-    "build": "nx build eslint-plugin-gamut",
-    "verify": "tsc --noEmit"
-  },
   "types": "./dist/index.d.ts"
 }
