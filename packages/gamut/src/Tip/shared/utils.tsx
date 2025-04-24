@@ -6,8 +6,7 @@ import {
   bottomStyles,
   bottomStylesAfter,
   bottomStylesBefore,
-  centerStyles,
-  centerStylesAfter,
+  horizontalCenterStyles,
   leftStyles,
   leftStylesAfter,
   rightStyles,
@@ -16,6 +15,8 @@ import {
   topStyles,
   topStylesAfter,
   topStylesBefore,
+  vertCenterStyles,
+  vertCenterStylesAfter,
 } from './styles';
 import { TipPlacementComponentProps, TipWrapperProps } from './types';
 
@@ -70,15 +71,25 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
     styleObject = { ...topStyles };
     styleObjectAfter = { ...topStylesAfter };
     styleObjectBefore = { ...topStylesBefore };
-  } else {
+  } else if (alignment.includes('bottom')) {
     styleObject = { ...bottomStyles };
     styleObjectAfter = { ...bottomStylesAfter };
     styleObjectBefore = { ...bottomStylesBefore };
   }
 
+  if (alignment.includes('-center')) {
+    styleObject = { ...styleObject, ...horizontalCenterStyles };
+    styleObjectAfter = { ...styleObjectAfter };
+    if (alignment.includes('left')) {
+      styleObjectAfter = { ...styleObjectAfter };
+    } else {
+      styleObjectAfter = { ...styleObjectAfter };
+    }
+  }
+
   if (alignment.includes('center')) {
-    styleObject = { ...styleObject, ...centerStyles };
-    styleObjectAfter = { ...styleObjectAfter, ...centerStylesAfter };
+    styleObject = { ...styleObject, ...vertCenterStyles };
+    styleObjectAfter = { ...styleObjectAfter, ...vertCenterStylesAfter };
     if (alignment.includes('top')) {
       styleObjectAfter = { ...styleObjectAfter, ...topCenterStylesAfter };
     } else {

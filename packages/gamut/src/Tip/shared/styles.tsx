@@ -62,12 +62,19 @@ export const bottomStylesAfter = {
   top: '0.25rem',
 } as const;
 
-export const centerStyles = {
+export const vertCenterStyles = {
   ...centerWidths,
   left: 'calc(50% - 4rem)',
 } as const;
 
-export const centerStylesAfter = { left: 'calc(50% - 0.5rem)' } as const;
+export const horizontalCenterStyles = {
+  ...centerWidths,
+  top: '50%',
+  left: '100%',
+} as const;
+
+export const vertCenterStylesAfter = { left: 'calc(50% - 0.5rem)' } as const;
+export const horizontalCenterStylesAfter = { left: '100%' } as const;
 
 // This halfway fills the square we use to create the 'beak' of the tip so it does not overlap the tip text on the 'center' alignments
 export const topCenterStylesAfter = {

@@ -32,14 +32,14 @@ export const WithIconButton: Story = {
       <IconButton
         tip="Beautify your code"
         icon={SparkleIcon}
-        tipProps={{ alignment: 'bottom-center' }}
+        tipProps={{ alignment: 'left-center' }}
       />
       <IconButton
         aria-label="Next Prompt"
         tip="Next Prompt"
         icon={ArrowRightIcon}
         variant="secondary"
-        tipProps={{ alignment: 'bottom-center', hideAriaToolTip: true }}
+        tipProps={{ alignment: 'right-center', hideAriaToolTip: true }}
       />
     </FlexBox>
   ),
