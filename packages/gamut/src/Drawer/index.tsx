@@ -15,7 +15,6 @@ export interface DrawerProps extends Omit<BoxProps, 'width'> {
    * Whether the drawer should be open.
    */
   expanded?: boolean;
-
   /**
    * Which edge of the drawer content container is aligned to during the animation.
    */
@@ -23,9 +22,9 @@ export interface DrawerProps extends Omit<BoxProps, 'width'> {
 }
 
 export const Drawer: React.FC<DrawerProps> = ({
+  alignContentContainer = 'right',
   children,
   expanded,
-  alignContentContainer = 'right',
   ...props
 }) => {
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -41,7 +40,6 @@ export const Drawer: React.FC<DrawerProps> = ({
       {expanded ? (
         <DrawerBase
           animate={{ width: fullWidth }}
-          aria-expanded={expanded}
           bg="background-current"
           exit={{ width: 0 }}
           initial={{ width: 0 }}
