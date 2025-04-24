@@ -63,3 +63,6 @@ report*.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# IDE - Cursor
+.cursor/*
+!.cursor/rules

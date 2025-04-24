@@ -38,13 +38,13 @@ export interface FlyoutProps extends WithChildrenProp {
 }
 
 export const Flyout: React.FC<FlyoutProps> = ({
+  bg = 'background',
   children,
   closeLabel = 'Close',
   expanded,
   openFrom = 'left',
   onClose,
   title,
-  bg = 'background',
 }) => {
   return (
     <Overlay
@@ -56,13 +56,13 @@ export const Flyout: React.FC<FlyoutProps> = ({
     >
       <Background bg={bg}>
         <Drawer
+          alignContentContainer={openFrom === 'left' ? 'right' : 'left'}
           bottom={0}
           display="flex"
           expanded={expanded}
           flexDirection={openFrom === 'left' ? 'row' : 'row-reverse'}
           position="fixed"
           top={0}
-          alignContentContainer={openFrom === 'left' ? 'right' : 'left'}
           {...{ [openFrom]: 0 }}
         >
           <FlexBox

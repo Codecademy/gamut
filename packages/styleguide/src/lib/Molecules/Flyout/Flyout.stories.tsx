@@ -35,7 +35,10 @@ export const FlyoutExample: Story = {
             hurricane...
           </Box>
         </Flyout>
-        <StrokeButton onClick={() => setExpanded(true)}>
+        <StrokeButton
+          aria-expanded={expanded}
+          onClick={() => setExpanded(true)}
+        >
           Tell me more?!
         </StrokeButton>
         <FlexBox>
