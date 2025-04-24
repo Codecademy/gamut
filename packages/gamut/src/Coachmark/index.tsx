@@ -4,34 +4,33 @@ import * as React from 'react';
 import { Popover, PopoverBaseProps, PopoverProps } from '../Popover';
 import { DelayedRenderWrapper } from '../utils';
 
-export type CoachmarkProps = &
-  PopoverBaseProps & {
-    /**
-     * Applied to the element to which the coachmark points.
-     */
-    activeElClassName?: string;
-    /**
-     * A Coachmark should have children since it is a wrapper component.
-    */
-    children: React.ReactNode | React.ReactNode[];
-    /**
-     * Amount of time (in ms) to delay rendering the coachmark.
-     * @default 0
-     */
-    delay?: number;
-    /**
-     * Whether the coachmark is rendered.
-     */
-    shouldShow: boolean;
-    /**
-     * Function that returns the contents of the coachmark.
-     */
-    renderPopover: (onDismiss?: () => void) => JSX.Element;
-    /**
-     * Props to be passed into the popover component.
-     */
-    popoverProps?: Partial<PopoverProps>;
-  };
+export type CoachmarkProps = PopoverBaseProps & {
+  /**
+   * Applied to the element to which the coachmark points.
+   */
+  activeElClassName?: string;
+  /**
+   * A Coachmark should have children since it is a wrapper component.
+   */
+  children: React.ReactNode | React.ReactNode[];
+  /**
+   * Amount of time (in ms) to delay rendering the coachmark.
+   * @default 0
+   */
+  delay?: number;
+  /**
+   * Whether the coachmark is rendered.
+   */
+  shouldShow: boolean;
+  /**
+   * Function that returns the contents of the coachmark.
+   */
+  renderPopover: (onDismiss?: () => void) => JSX.Element;
+  /**
+   * Props to be passed into the popover component.
+   */
+  popoverProps?: Partial<PopoverProps>;
+};
 
 export const Coachmark: React.FC<CoachmarkProps> = ({
   children,
