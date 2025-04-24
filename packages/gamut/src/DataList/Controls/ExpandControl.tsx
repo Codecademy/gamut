@@ -34,7 +34,7 @@ export const ExpandControl: React.FC<ExpandColProps> = ({
       aria-expanded={expanded}
     >
       <Rotation rotated={expanded}>
-        <MiniChevronDownIcon color="secondary"/>
+        <MiniChevronDownIcon color="secondary" />
       </Rotation>
     </TextButton>
   </FlexBox>
