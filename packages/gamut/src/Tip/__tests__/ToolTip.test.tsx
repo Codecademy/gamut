@@ -12,7 +12,6 @@ const renderView = setupRtl(ToolTipMock, {
   info,
   id: 'info-id',
   onClick,
-  hasRepetitiveLabel: false,
 });
 
 describe('ToolTip', () => {
@@ -27,7 +26,6 @@ describe('ToolTip', () => {
     it('removes the label text when hasLabel is true', () => {
       const { view } = renderView({
         'aria-label': ariaLabel,
-        hasRepetitiveLabel: true,
         info: `${ariaLabel}, ${info}`,
       });
 
@@ -39,7 +37,6 @@ describe('ToolTip', () => {
     it('hides ariaTooltip when there is no text other than the aria-label', () => {
       const { view } = renderView({
         'aria-label': ariaLabel,
-        hasRepetitiveLabel: true,
         info: `${ariaLabel}`,
       });
 
@@ -58,7 +55,6 @@ describe('ToolTip', () => {
     it('hides ariaTooltip when there is hideAriaToolTip is true', () => {
       const { view } = renderView({
         'aria-label': ariaLabel,
-        hideAriaToolTip: true,
         info: `${ariaLabel}`,
       });
 
@@ -70,20 +66,10 @@ describe('ToolTip', () => {
 describe('floating placement', () => {
   it('has an accessible tooltip', () => {
     const { view } = renderView({ placement: 'floating' });
-
+    view.debug();
     expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(info);
   });
-  it('removes the label text when hasRepetitiveLabel is true', () => {
-    const { view } = renderView({
-      'aria-label': ariaLabel,
-      placement: 'floating',
-      hasRepetitiveLabel: true,
-      info: `${ariaLabel}, ${info}`,
-    });
 
-    view.getByRole('button', { name: 'Click' });
-    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(info);
-  });
   it('shows the tip when it is hovered over', async () => {
     const { view } = renderView({
       placement: 'floating',
