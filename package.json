@@ -109,7 +109,7 @@
       "prettier --ignore-path .prettierignore --write"
     ]
   },
-  "packageManager": "yarn@1.22.10",
+  "packageManager": "yarn@4.9.1",
   "private": true,
   "repository": "git@github.com:Codecademy/gamut.git",
   "resolutions": {
