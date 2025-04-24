@@ -2,14 +2,18 @@ import { useRef } from 'react';
 import * as React from 'react';
 
 import { Popover, PopoverBaseProps, PopoverProps } from '../Popover';
-import { DelayedRenderWrapper, WithChildrenProp } from '../utils';
+import { DelayedRenderWrapper } from '../utils';
 
-export type CoachmarkProps = WithChildrenProp &
+export type CoachmarkProps = &
   PopoverBaseProps & {
     /**
      * Applied to the element to which the coachmark points.
      */
     activeElClassName?: string;
+    /**
+     * A Coachmark should have children since it is a wrapper component.
+    */
+    children: React.ReactNode | React.ReactNode[];
     /**
      * Amount of time (in ms) to delay rendering the coachmark.
      * @default 0
