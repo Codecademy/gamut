@@ -9,6 +9,8 @@
     "@codecademy/gamut-patterns": "0.10.7",
     "@codecademy/gamut-styles": "17.6.0",
     "@codecademy/variance": "0.22.1",
+    "@react-aria/tabs": "^3.10.2",
+    "@react-stately/tabs": "^3.8.1",
     "@reach/tabs": "^0.18.0",
     "@types/marked": "^4.0.8",
     "@vidstack/react": "^1.12.12",

@@ -1,55 +1,45 @@
 import { Background, styledOptions } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import {
-  Tabs as ReachTabs,
-  TabsKeyboardActivation,
-  TabsProps as ReachTabsProps,
-} from '@reach/tabs';
+import { useTabListState } from '@react-stately/tabs';
 import * as React from 'react';
 
 import { tabElementBaseProps, TabElementStyleProps } from './props';
 import { tabContainerVariants } from './styles';
 import { TabProvider } from './TabProvider';
 
-// Prevent dev-only errors due to excluding react-ui default styles
-if (process.env.NODE_ENV !== 'production' && typeof document !== 'undefined') {
-  document.documentElement.style.setProperty('--reach-tabs', '1');
-}
-
 export interface TabsBaseProps
   extends StyleProps<typeof tabContainerVariants>,
     TabElementStyleProps {}
 
-export interface TabsProps
-  extends TabsBaseProps,
-    Omit<ReachTabsProps, 'orientation' | 'keyboardActivation'> {}
+export interface TabsProps extends TabsBaseProps {}
+
+type TabStateProps = {};
 
 const TabsBase = styled(
   'div',
   styledOptions
 )<TabsBaseProps>(tabElementBaseProps);
 
-export const Tabs: React.FC<TabsProps> = (props) => {
+export const Tabs: React.FC<TabsProps> = ({ variant, props }) => {
+  const state = useTabListState(props);
   return (
-    <TabProvider value={{ variant: props.variant || 'standard' }}>
+    <TabProvider value={{ variant: variant || 'standard', state }}>
       {/* currently only supporting dark mode for the LE variant */}
-      {props.variant === 'block' ? (
+      {variant === 'block' ? (
         <Background bg="navy-800" height="100%">
-          <ReachTabs
-            as={TabsBase}
+          <TabsBase
             position="relative"
             zIndex={0}
-            keyboardActivation={TabsKeyboardActivation.Manual}
+            // keyboardActivation={TabsKeyboardActivation.Manual}
             {...props}
           />
         </Background>
       ) : (
-        <ReachTabs
-          as={TabsBase}
+        <TabsBase
           position="relative"
           zIndex={0}
-          keyboardActivation={TabsKeyboardActivation.Manual}
+          // keyboardActivation={TabsKeyboardActivation.Manual}
           {...props}
         />
       )}

@@ -1,16 +1,22 @@
+import { useTab } from '@react-aria/tabs';
 import * as React from 'react';
-import {
-  Tab as ReactAriaTab,
-  TabProps as ReactAriaTabProps,
-} from 'react-aria-components';
 
 import { TabButton, TabButtonProps } from './TabButton';
-import { useTab } from './TabProvider';
+import { useTabShared } from './TabProvider';
 
-export interface TabProps extends TabButtonProps, ReactAriaTabProps {}
+type Item = {
+  key: string;
+};
 
-export const Tab: React.FC<TabProps> = (props) => {
-  const { variant } = useTab();
+export type TabProps = React.PropsWithChildren &
+  TabButtonProps & {
+    item: Item;
+  };
 
-  return <ReactAriaTab {...props} as={TabButton} variant={variant} />;
+export const Tab: React.FC<TabProps> = ({ item, ...rest }) => {
+  const ref = React.useRef(null);
+  const { variant, state } = useTabShared();
+  const { tabProps } = useTab({ key: item.key }, state, ref);
+
+  return <TabButton {...tabProps} {...rest} variant={variant} ref={ref} />;
 };
