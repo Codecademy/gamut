@@ -65,21 +65,18 @@ describe('ToolTip', () => {
   });
 });
 
-jest.useFakeTimers()
+jest.useFakeTimers();
 describe('floating placement', () => {
   it('has an accessible tooltip', async () => {
     const { view } = renderView({ placement: 'floating' });
 
-
-
     // view.debug();
     // await userEvent.click(view.getByRole('button'));
-
 
     await userEvent.hover(view.getByRole('button'));
     act(() => {
       jest.runAllTimers();
-    })
+    });
     view.debug();
     expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(info);
   });

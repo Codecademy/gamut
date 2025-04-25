@@ -19,10 +19,7 @@ export type IconButtonProps = ComponentProps<typeof IconButtonBase> &
   IconComponentType & {
     'aria-label'?: string;
     tip: string;
-    tipProps?: Omit<
-      ToolTipProps,
-      'info' | 'id' | 'children'
-    >;
+    tipProps?: Omit<ToolTipProps, 'info' | 'id' | 'children'>;
   };
 
 export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
