@@ -18,7 +18,7 @@ export const parameters = {
 1. Add gamut-kit and peer dependencies dependencies
 
 ```bash
-yarn add @codecademy/gamut-kit @emotion/react @emotion/styled sass
+yarn add @codecademy/gamut-kit @emotion/react @emotion/styled
 ```
 
 2. Add peer dependencies (no-op) for intellisense to package.json.
@@ -67,12 +67,6 @@ GamutProvider handles a few critical tasks that need to happen in order for comp
 
 - **Next** `_app.tsx`
 - **Gatsby** `gatsby-ssr.js` `gatsby-browser.js` and use `wrapRootElement` in each.
-
-You may need to add "css-loader", "sass-loader", and/or "sass-embedded" to your package.json depending on your repository's current tooling.
-
-```bash
-yarn add css-loader sass-loader sass-embedded
-```
 
 4. Add required types for your theme, which will determine what props Gamut components allow.
 

@@ -1,7 +1,5 @@
-@use "colors";
-
 $base-unit: 1rem;
 $spacer: $base-unit;
-$box-shadow: 0 1px 4px 0 colors.$color-shadow;
-$box-shadow-hovered: 0 4px 10px 0 colors.$color-shadow;
+$box-shadow: 0 1px 4px 0 $color-shadow;
+$box-shadow-hovered: 0 4px 10px 0 $color-shadow;
 $height-header: 4rem;

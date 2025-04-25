@@ -1,5 +1,3 @@
-@use "responsive";
-
 // Legacy Helper mixins
 
 // these variables should be located in ../variables
@@ -10,19 +8,19 @@ $bp-tablet: 736px;
 $bp-desktop: 960px;
 
 @mixin device-phone {
-  @include responsive.screen-size-between($bp-phone, $bp-tablet - 1) {
+  @include screen-size-between($bp-phone, $bp-tablet - 1) {
     @content;
   }
 }
 
 @mixin device-tablet {
-  @include responsive.screen-size-between($bp-tablet, $bp-desktop - 1) {
+  @include screen-size-between($bp-tablet, $bp-desktop - 1) {
     @content;
   }
 }
 
 @mixin device-desktop {
-  @include responsive.screen-size-gte($bp-desktop) {
+  @include screen-size-gte($bp-desktop) {
     @content;
   }
 }

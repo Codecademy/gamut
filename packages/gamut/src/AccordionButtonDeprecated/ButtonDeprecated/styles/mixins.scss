@@ -1,19 +1,10 @@
-@use "sass:color";
-@use "sass:math";
-@use "~@codecademy/gamut-styles/utils";
-@use "variables";
-
 // Button variants
 //
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
 @mixin button-variant($color, $background, $border: transparent) {
-  $active-background: color.mix(
-    utils.$color-black,
-    $background,
-    variables.$btn-state-modifier
-  );
+  $active-background: mix($color-black, $background, $btn-state-modifier);
 
   @if $border == transparent {
     $active-border: transparent;
@@ -25,11 +16,11 @@
   border-color: $border;
 
   &:hover {
-    box-shadow: 0 2px 4px variables.$btn-box-shadow-color;
+    box-shadow: 0 2px 4px $btn-box-shadow-color;
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 2px utils.$color-white, 0 0 0 4px $background;
+    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $background;
   }
 
   &:focus-visible,
@@ -38,7 +29,7 @@
     color: $color;
 
     &:active {
-      box-shadow: 0 2px 4px variables.$btn-box-shadow-color;
+      box-shadow: 0 2px 4px $btn-box-shadow-color;
     }
   }
 
@@ -47,7 +38,7 @@
   }
 
   &:disabled {
-    background-color: variables.$btn-disabled-color;
+    background-color: $btn-disabled-color;
 
     &:hover {
       box-shadow: none;
@@ -57,11 +48,7 @@
 
 @mixin button-outline-variant($color) {
   $active-contrast-base: text-contrast-color($color);
-  $active-background: color.mix(
-    $active-contrast-base,
-    $color,
-    variables.$btn-state-modifier
-  );
+  $active-background: mix($active-contrast-base, $color, $btn-state-modifier);
   color: $color;
   background-color: transparent;
   border: 1px solid $color;
@@ -79,16 +66,16 @@
   }
 
   &:hover {
-    box-shadow: 0 2px 4px 0 variables.$btn-box-shadow-color;
+    box-shadow: 0 2px 4px 0 $btn-box-shadow-color;
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 2px utils.$color-white, 0 0 0 4px $color;
+    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color;
   }
 
   &:disabled {
-    border-color: variables.$btn-disabled-color;
-    color: variables.$btn-disabled-color;
+    border-color: $btn-disabled-color;
+    color: $btn-disabled-color;
     background-color: transparent;
   }
 }
@@ -103,11 +90,11 @@
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 2px utils.$color-white, 0 0 0 4px $color;
+    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color;
   }
 
   &:disabled {
-    color: variables.$btn-disabled-color;
+    color: $btn-disabled-color;
     background-color: transparent;
   }
 }
@@ -144,12 +131,12 @@
   }
   .link-#{$name} {
     font-weight: bold;
-    @include utils.font-smoothing;
+    @include font-smoothing;
     color: $background;
     text-decoration: underline;
 
     &:disabled {
-      color: variables.$btn-disabled-color;
+      color: $btn-disabled-color;
     }
   }
 }
@@ -158,23 +145,20 @@
 // Adds text color to an element based on what has more contrast with its background
 
 @function color-brightness($color) {
-  @return math.round(
+  @return round(
     calc(
-      (
-          (color.channel($color, "red", $space: rgb) * 299) +
-            (color.channel($color, "green", $space: rgb) * 587) +
-            (color.channel($color, "blue", $space: rgb) * 114)
-        ) / 1000
+      ((red($color) * 299) + (green($color) * 587) + (blue($color) * 114)) /
+        1000
     )
   );
 }
 
-$brightness-threshold: calc(color-brightness(utils.$color-white) / 2);
+$brightness-threshold: calc(color-brightness($color-white) / 2);
 
 @function text-contrast-color($background) {
   $brightness: color-brightness($background);
 
-  @if math.abs($brightness) < $brightness-threshold {
+  @if abs($brightness) < $brightness-threshold {
     @return #fff;
   }
 
