@@ -1,4 +1,5 @@
-@import "~@codecademy/gamut-styles/utils";
+@use "sass:color";
+@use "~@codecademy/gamut-styles/utils";
 
 @mixin markdown-style(
   $font-size: 1.1rem,
@@ -13,7 +14,7 @@
   .h4 {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
-    @include font-smoothing;
+    @include utils.font-smoothing;
   }
 
   .p {
@@ -37,18 +38,18 @@
     .ul,
     .ol {
       // Even out nested lists
-      margin-top: calc($base-unit / 2);
+      margin-top: calc(utils.$base-unit / 2);
       li:last-child {
         margin-bottom: 0;
       }
     }
     .li {
       position: relative;
-      margin-left: $base-unit * 2;
-      margin-bottom: calc($base-unit / 2);
+      margin-left: utils.$base-unit * 2;
+      margin-bottom: calc(utils.$base-unit / 2);
       line-height: $line-height;
       &:last-child {
-        margin-bottom: $base-unit;
+        margin-bottom: utils.$base-unit;
       }
     }
   }
@@ -63,7 +64,7 @@
     line-height: 1.6;
     position: absolute;
     text-align: center;
-    top: (1.6 - $base-unit);
+    top: (1.6 - utils.$base-unit);
     width: 0.5rem;
   }
 
@@ -78,8 +79,8 @@
         content: counter(ordered-list) ".";
         position: absolute;
         top: 0;
-        left: -($base-unit * 2);
-        width: $base-unit * 2;
+        left: -(utils.$base-unit * 2);
+        width: utils.$base-unit * 2;
         text-align: center;
         line-height: inherit;
       }
@@ -92,11 +93,11 @@
     padding: 0 0.25rem;
     margin: 0 0.0625rem;
     border-radius: 0.125rem;
-    color: $deprecated-gamut-purple-900;
-    background-color: mix($color-gray-200, $color-gray-100);
+    color: utils.$deprecated-gamut-purple-900;
+    background-color: color.mix(utils.$color-gray-200, utils.$color-gray-100);
     white-space: normal;
     vertical-align: baseline;
-    font-family: $font-monospace;
+    font-family: utils.$font-monospace;
     font-size: 0.8em;
   }
 
@@ -109,7 +110,7 @@
       margin: 0;
       color: inherit;
       background-color: transparent;
-      font-family: $font-monospace;
+      font-family: utils.$font-monospace;
     }
   }
 
@@ -129,9 +130,9 @@
 
   .blockquote {
     display: block;
-    font-family: $font-family-base;
+    font-family: utils.$font-family-base;
     padding-left: $base-margin;
-    border-left: calc($base-margin / 2) solid $color-gray-200;
+    border-left: calc($base-margin / 2) solid utils.$color-gray-200;
     margin: 0;
     margin-bottom: $base-margin;
     font-style: italic;
