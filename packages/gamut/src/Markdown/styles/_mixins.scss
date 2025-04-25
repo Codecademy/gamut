@@ -1,4 +1,5 @@
-@use "~@codecademy/gamut-styles/utils";
+@use 'sass:color';
+@use "~@codecademy/gamut-styles/utils" as *;
 
 @mixin markdown-style(
   $font-size: 1.1rem,
@@ -93,7 +94,7 @@
     margin: 0 0.0625rem;
     border-radius: 0.125rem;
     color: $deprecated-gamut-purple-900;
-    background-color: mix($color-gray-200, $color-gray-100);
+    background-color: color.mix($color-gray-200, $color-gray-100);
     white-space: normal;
     vertical-align: baseline;
     font-family: $font-monospace;

@@ -1,7 +1,7 @@
 @use "sass:color";
 @use "variables";
 @use "mixins";
-@use "~@codecademy/gamut-styles/utils";
+@use "~@codecademy/gamut-styles/utils" as *;
 //
 // Base styles
 //
@@ -11,16 +11,16 @@
   display: inline-flex;
   justify-content: center;
   font-weight: variables.$btn-font-weight;
-  @include utils.font-smoothing;
+  @include font-smoothing;
   border: 1px solid transparent;
   border-radius: variables.$btn-border-radius;
   user-select: none;
   @include mixins.button-size(
-    $btn-padding-y,
-    $btn-padding-x,
-    $btn-font-size-base,
-    $btn-line-height,
-    $btn-min-width-sm
+    variables.$btn-padding-y,
+    variables.$btn-padding-x,
+    variables.$btn-font-size-base,
+    variables.$btn-line-height,
+    variables.$btn-min-width-sm
   );
   transition: all 0.1s ease-in-out;
 }
@@ -33,16 +33,16 @@ fieldset[disabled] a.btn {
 
 @each $name, $color in variables.$btn-swatches {
   @if $name == "brand-yellow" {
-    @include button-variants($name, utils.$color-black, $color);
-  } @else if lightness($color) > 68 {
-    @include button-variants($name, utils.$color-black, $color);
+    @include mixins.button-variants($name, $color-black, $color);
+  } @else if color.channel(color.to-space($color, hsl), "lightness") > 68 {
+    @include mixins.button-variants($name, $color-black, $color);
   } @else {
-    @include button-variants($name, utils.$color-white, $color);
+    @include mixins.button-variants($name, $color-white, $color);
   }
 }
 
 .round {
-  border-radius: $btn-round-border-radius;
+  border-radius: variables.$btn-round-border-radius;
 }
 
 .square {

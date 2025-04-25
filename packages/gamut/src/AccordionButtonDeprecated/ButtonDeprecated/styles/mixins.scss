@@ -1,10 +1,14 @@
+@use "sass:color";
+@use "~@codecademy/gamut-styles/utils" as *;
+@use "variables";
+
 // Button variants
 //
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
 @mixin button-variant($color, $background, $border: transparent) {
-  $active-background: mix($color-black, $background, $btn-state-modifier);
+  $active-background: color.mix($color-black, $background, );
 
   @if $border == transparent {
     $active-border: transparent;
@@ -16,7 +20,7 @@
   border-color: $border;
 
   &:hover {
-    box-shadow: 0 2px 4px $btn-box-shadow-color;
+    box-shadow: 0 2px 4px variables.$btn-box-shadow-color;
   }
 
   &:focus-visible {
@@ -29,7 +33,7 @@
     color: $color;
 
     &:active {
-      box-shadow: 0 2px 4px $btn-box-shadow-color;
+      box-shadow: 0 2px 4px variables.$btn-box-shadow-color;
     }
   }
 
@@ -38,7 +42,7 @@
   }
 
   &:disabled {
-    background-color: $btn-disabled-color;
+    background-color: variables.$btn-disabled-color;
 
     &:hover {
       box-shadow: none;
@@ -48,7 +52,7 @@
 
 @mixin button-outline-variant($color) {
   $active-contrast-base: text-contrast-color($color);
-  $active-background: mix($active-contrast-base, $color, $btn-state-modifier);
+  $active-background: color.mix($active-contrast-base, $color, variables.$btn-state-modifier);
   color: $color;
   background-color: transparent;
   border: 1px solid $color;
@@ -66,7 +70,7 @@
   }
 
   &:hover {
-    box-shadow: 0 2px 4px 0 $btn-box-shadow-color;
+    box-shadow: 0 2px 4px 0 variables.$btn-box-shadow-color;
   }
 
   &:focus-visible {
@@ -74,8 +78,8 @@
   }
 
   &:disabled {
-    border-color: $btn-disabled-color;
-    color: $btn-disabled-color;
+    border-color: variables.$btn-disabled-color;
+    color: variables.$btn-disabled-color;
     background-color: transparent;
   }
 }
@@ -94,7 +98,7 @@
   }
 
   &:disabled {
-    color: $btn-disabled-color;
+    color: variables.$btn-disabled-color;
     background-color: transparent;
   }
 }
@@ -136,7 +140,7 @@
     text-decoration: underline;
 
     &:disabled {
-      color: $btn-disabled-color;
+      color: variables.$btn-disabled-color;
     }
   }
 }
@@ -147,7 +151,7 @@
 @function color-brightness($color) {
   @return round(
     calc(
-      ((red($color) * 299) + (green($color) * 587) + (blue($color) * 114)) /
+      ((color.channel($color, 'red') * 299) + (color.channel($color, 'green') * 587) + (color.channel($color, 'blue') * 114)) /
         1000
     )
   );
