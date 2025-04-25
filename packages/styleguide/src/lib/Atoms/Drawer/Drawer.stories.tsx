@@ -15,6 +15,7 @@ export const Default: React.FC = () => {
     <FlexBox bg="paleYellow" height="20rem">
       <Drawer expanded={expanded}>Drawer content in here!</Drawer>
       <StrokeButton
+        aria-expanded={expanded}
         onClick={() => setExpanded((previousExpanded) => !previousExpanded)}
       >
         Toggle Drawer

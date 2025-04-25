@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [73.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.1...@codecademy/styleguide@73.0.2) (2025-04-24)
+
+### Bug Fixes
+
+- **expandable components:** Add/update aria attributes to expandable components ([71fd235](https://github.com/Codecademy/gamut/commit/71fd235132575086fa95403678e001926d8f8f3a))
+
 ### [73.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.0...@codecademy/styleguide@73.0.1) (2025-04-21)
 
 ### Bug Fixes
