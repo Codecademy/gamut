@@ -1,7 +1,7 @@
-@import "~@vidstack/react/player/styles/default/theme.css";
-@import "~@vidstack/react/player/styles/default/layouts/video.css";
-@import "~@vidstack/react/player/styles/default/layouts/audio.css";
-@import "~@codecademy/gamut-styles/utils";
+@use "~@vidstack/react/player/styles/default/theme.css";
+@use "~@vidstack/react/player/styles/default/layouts/video.css";
+@use "~@vidstack/react/player/styles/default/layouts/audio.css";
+@use "~@codecademy/gamut-styles/utils";
 
 /**
   * Youtube overlay
