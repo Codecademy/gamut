@@ -1,38 +1,30 @@
 import { styledOptions } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { AriaTabListOptions, useTabList } from '@react-aria/tabs';
 import * as React from 'react';
+import {
+  TabList as ReactAriaTabList,
+  TabListProps as ReactAriaTabListProps,
+  TabProps,
+} from 'react-aria-components';
 
 import { tabElementBaseProps, TabElementStyleProps } from './props';
 import { tabContainerStates, tabContainerVariants } from './styles';
 import { useTabShared } from './TabProvider';
 
-export interface TabListBaseProps
-  extends StyleProps<typeof tabContainerVariants>,
+export interface TabListProps
+  extends ReactAriaTabListProps<TabProps>,
+    StyleProps<typeof tabContainerVariants>,
     StyleProps<typeof tabContainerStates>,
     TabElementStyleProps {}
 
-const TabListBase = styled('div', styledOptions)<TabListBaseProps>(
+const TabListBase = styled(ReactAriaTabList)<TabListProps>(
   tabContainerVariants,
   tabContainerStates,
   tabElementBaseProps
 );
 
-type Item = {
-  key: string;
-};
-
-export type TabListProps = React.PropsWithChildren &
-  TabListBaseProps & {
-    props: AriaTabListOptions<Item>;
-  };
-
-export const TabList: React.FC<TabListProps> = ({ props, ...rest }) => {
-  const ref = React.useRef(null);
-  const { variant, state } = useTabShared();
-  const { tabListProps } = useTabList(props, state, ref);
-  return (
-    <TabListBase {...tabListProps} {...rest} variant={variant} ref={ref} />
-  );
+export const TabList: React.FC<TabListProps> = (props) => {
+  const { variant } = useTabShared();
+  return <TabListBase {...props} variant={variant} />;
 };

@@ -1,8 +1,11 @@
 import { Background, styledOptions } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { useTabListState } from '@react-stately/tabs';
 import * as React from 'react';
+import {
+  Tabs as ReactAriaTabs,
+  TabsProps as ReactAriaTabsProps,
+} from 'react-aria-components';
 
 import { tabElementBaseProps, TabElementStyleProps } from './props';
 import { tabContainerVariants } from './styles';
@@ -12,21 +15,18 @@ export interface TabsBaseProps
   extends StyleProps<typeof tabContainerVariants>,
     TabElementStyleProps {}
 
-export interface TabsProps extends TabsBaseProps {}
-
-type TabStateProps = {};
+export interface TabsProps extends TabsBaseProps, ReactAriaTabsProps {}
 
 const TabsBase = styled(
-  'div',
+  ReactAriaTabs,
   styledOptions
 )<TabsBaseProps>(tabElementBaseProps);
 
-export const Tabs: React.FC<TabsProps> = ({ variant, props }) => {
-  const state = useTabListState(props);
+export const Tabs: React.FC<TabsProps> = (props) => {
   return (
-    <TabProvider value={{ variant: variant || 'standard', state }}>
+    <TabProvider value={{ variant: props.variant || 'standard' }}>
       {/* currently only supporting dark mode for the LE variant */}
-      {variant === 'block' ? (
+      {props.variant === 'block' ? (
         <Background bg="navy-800" height="100%">
           <TabsBase
             position="relative"

@@ -1,10 +1,7 @@
-import { TabListState } from '@react-stately/tabs';
 import { createContext, useContext, useMemo } from 'react';
 
-type Item = {};
 export interface TabContextProps {
   variant: 'standard' | 'block';
-  state: TabListState<Item>;
 }
 
 export const TabContext = createContext<TabContextProps>({} as TabContextProps);
@@ -19,13 +16,12 @@ export function useTabContext() {
 }
 
 export function useTabShared() {
-  const { variant, state } = useTabContext();
+  const { variant } = useTabContext();
 
   return useMemo(
     () => ({
       variant,
-      state,
     }),
-    [variant, state]
+    [variant]
   );
 }

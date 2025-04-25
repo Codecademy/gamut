@@ -1,6 +1,11 @@
+import { styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
-import { Box } from '../Box';
 import { tabElementBaseProps, TabElementStyleProps } from './props';
 
-export const TabPanels = styled(Box)<TabElementStyleProps>(tabElementBaseProps);
+export interface TabPanelsProps extends TabElementStyleProps {}
+
+export const TabPanels = styled(
+  'div',
+  styledOptions
+)<TabPanelsProps>(tabElementBaseProps);
