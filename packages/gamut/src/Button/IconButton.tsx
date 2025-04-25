@@ -21,7 +21,7 @@ export type IconButtonProps = ComponentProps<typeof IconButtonBase> &
     tip: string;
     tipProps?: Omit<
       ToolTipProps,
-      'info' | 'id' | 'children' | 'hasRepetitiveLabel'
+      'info' | 'id' | 'children'
     >;
   };
 
