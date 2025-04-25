@@ -109,6 +109,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   const tip = (
     <InfoTipButton
+      aria-expanded={!isTipHidden}
       active={!isTipHidden}
       emphasis={emphasis}
       onClick={() => clickHandler()}

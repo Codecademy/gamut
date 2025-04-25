@@ -1,5 +1,6 @@
 import {
   Box,
+  ExpandControl,
   FillButton,
   FlexBox,
   IconButton,
@@ -14,7 +15,6 @@ import {
 import {
   ArrowChevronDownIcon,
   HouseEntranceIcon,
-  MiniChevronDownIcon,
   MiniDeleteIcon,
   MiniKebabMenuIcon,
   StarIcon,
@@ -655,11 +655,11 @@ const ExpandableButtonClickRow: React.FC<{
       <ExpandedColumns name={name} role={role} ship={ship} />
       <ListCol size="lg" type="control">
         <TextButton>Hail</TextButton>
-        <TextButton onClick={() => setExpanded(!isExpanded)}>
-          <Rotation rotated={isExpanded}>
-            <MiniChevronDownIcon />
-          </Rotation>
-        </TextButton>
+        <ExpandControl
+          expanded={isExpanded}
+          onExpand={() => setExpanded(!isExpanded)}
+          disabled={false}
+        />
       </ListCol>
     </ListRow>
   );
@@ -705,7 +705,7 @@ export const ExpandableRowClick: React.FC<ExpandableRowProps> = ({
       <ListCol size="xl" type="control">
         <FlexBox mt={{ _: 8, xs: 0 }} pl={{ _: 0, xs: 16 }} width={1} center>
           <Rotation rotated={isExpanded}>
-            <ArrowChevronDownIcon color="text-disabled" />
+            <ArrowChevronDownIcon color="secondary" />
           </Rotation>
         </FlexBox>
       </ListCol>
