@@ -1,7 +1,8 @@
-@use "~@vidstack/react/player/styles/default/theme.css";
-@use "~@vidstack/react/player/styles/default/layouts/video.css";
-@use "~@vidstack/react/player/styles/default/layouts/audio.css";
 @use "~@codecademy/gamut-styles/utils";
+
+@import "~@vidstack/react/player/styles/default/theme.css";
+@import "~@vidstack/react/player/styles/default/layouts/video.css";
+@import "~@vidstack/react/player/styles/default/layouts/audio.css";
 
 /**
   * Youtube overlay
@@ -25,7 +26,7 @@ iframe.vds-youtube[data-no-controls] {
 }
 
 :where(.vds-video-layout[data-sm]) :where(.vds-button) {
-  padding: 0px px-rem(4px) !important;
+  padding: 0px utils.px-rem(4px) !important;
 }
 
 // Small layout volume / time slider
