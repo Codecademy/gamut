@@ -50,44 +50,6 @@
   }
 }
 
-@mixin button-outline-variant($color) {
-  $active-contrast-base: text-contrast-color($color);
-  $active-background: color.mix(
-    $active-contrast-base,
-    $color,
-    variables.$btn-state-modifier
-  );
-  color: $color;
-  background-color: transparent;
-  border: 1px solid $color;
-
-  &:focus-visible,
-  &:hover {
-    background-color: $color;
-    box-shadow: none;
-    color: $active-contrast-base;
-
-    &:active {
-      background-color: $active-background;
-      box-shadow: none;
-    }
-  }
-
-  &:hover {
-    box-shadow: 0 2px 4px 0 variables.$btn-box-shadow-color;
-  }
-
-  &:focus-visible {
-    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color;
-  }
-
-  &:disabled {
-    border-color: variables.$btn-disabled-color;
-    color: variables.$btn-disabled-color;
-    background-color: transparent;
-  }
-}
-
 @mixin button-flat-variant($color) {
   color: $color;
   background-color: transparent;
@@ -129,9 +91,6 @@
 @mixin button-variants($name, $color, $background, $border: transparent) {
   .btn-#{$name} {
     @include button-variant($color, $background, $border);
-    &.outline {
-      @include button-outline-variant($background);
-    }
     &.flat {
       @include button-flat-variant($background);
     }
@@ -149,29 +108,4 @@
   }
 }
 
-// Shamelessly copied from https://codepen.io/davidhalford/pen/wlDxL
-// Adds text color to an element based on what has more contrast with its background
 
-@function color-brightness($color) {
-  @return round(
-    calc(
-      (
-          (color.channel($color, "red") * 299) +
-            (color.channel($color, "green") * 587) +
-            (color.channel($color, "blue") * 114)
-        ) / 1000
-    )
-  );
-}
-
-$brightness-threshold: calc(color-brightness($color-white) / 2);
-
-@function text-contrast-color($background) {
-  $brightness: color-brightness($background);
-
-  @if abs($brightness) < $brightness-threshold {
-    @return #fff;
-  }
-
-  @return #000;
-}
