@@ -12,13 +12,16 @@ import { tabElementBaseProps, TabElementStyleProps } from './props';
 import { tabContainerStates, tabContainerVariants } from './styles';
 import { useTabShared } from './TabProvider';
 
-export interface TabListProps
-  extends ReactAriaTabListProps<TabProps>,
-    StyleProps<typeof tabContainerVariants>,
+export interface TabListBaseProps
+  extends StyleProps<typeof tabContainerVariants>,
     StyleProps<typeof tabContainerStates>,
     TabElementStyleProps {}
 
-const TabListBase = styled(ReactAriaTabList)<TabListProps>(
+export interface TabListProps
+  extends TabListBaseProps,
+    ReactAriaTabListProps<TabProps> {}
+
+const TabListBase = styled(ReactAriaTabList, styledOptions)<TabListProps>(
   tabContainerVariants,
   tabContainerStates,
   tabElementBaseProps

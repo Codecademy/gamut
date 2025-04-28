@@ -31,7 +31,7 @@ export const Tabs: React.FC<TabsProps> = (props) => {
           <TabsBase
             position="relative"
             zIndex={0}
-            // keyboardActivation={TabsKeyboardActivation.Manual}
+            keyboardActivation="manual"
             {...props}
           />
         </Background>
@@ -39,7 +39,7 @@ export const Tabs: React.FC<TabsProps> = (props) => {
         <TabsBase
           position="relative"
           zIndex={0}
-          // keyboardActivation={TabsKeyboardActivation.Manual}
+          keyboardActivation="manual"
           {...props}
         />
       )}

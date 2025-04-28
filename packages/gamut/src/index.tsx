@@ -43,7 +43,7 @@ export * from './RadialProgress';
 export * from './SkipToContent';
 export * from './Loading/Spinner';
 export * from './Tag';
-export * from './Tabs';
+export * from './Tabs copy';
 export * from './theming/VisualTheme';
 export * from './Toast/Toast';
 export * from './Toaster';

@@ -14,4 +14,4 @@ export interface TabPanelProps
 export const TabPanel = styled(
   ReactAriaTabPanel,
   styledOptions
-)(tabElementBaseProps);
+)<TabPanelProps>(tabElementBaseProps);
