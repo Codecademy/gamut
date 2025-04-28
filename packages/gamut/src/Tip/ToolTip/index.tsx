@@ -44,6 +44,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   };
 
   return (
+    // <Text></Text>
     <Tip {...tipProps} type="tool" id={id}>
       {children}
     </Tip>

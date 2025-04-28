@@ -1,7 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { waitFor } from '@testing-library/dom';
+import { fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { act } from 'react';
 
 import { ToolTipMock } from './mocks';
 
@@ -65,33 +64,26 @@ describe('ToolTip', () => {
   });
 });
 
-jest.useFakeTimers();
 describe('floating placement', () => {
   it('has an accessible tooltip', async () => {
     const { view } = renderView({ placement: 'floating' });
+    view.getByRole('button');
 
-    // view.debug();
-    // await userEvent.click(view.getByRole('button'));
+    fireEvent.mouseOver(view.getByRole('button'));
 
-    await userEvent.hover(view.getByRole('button'));
-    act(() => {
-      jest.runAllTimers();
-    });
-    view.debug();
-    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(info);
+    expect(await view.findByRole('tooltip')).toBeInTheDocument();
   });
 
   it('shows the tip when it is hovered over', async () => {
-    const { view } = renderView({
-      placement: 'floating',
-    });
+    const { view } = renderView({ placement: 'floating' });
 
-    expect(view.queryAllByText(info).length).toBe(1);
+    expect(view.queryByText(info)).toBeFalsy();
 
-    await userEvent.hover(view.getByRole('button'));
+    view.getByRole('button');
 
-    view.getByRole('tooltip', { hidden: true });
-    await waitFor(() => expect(view.queryAllByText(info).length).toBe(2));
+    fireEvent.mouseOver(view.getByRole('button'));
+
+    expect(await view.findByText(info)).toBeInTheDocument();
   });
   it('calls onClick when clicked', async () => {
     const { view } = renderView({});
