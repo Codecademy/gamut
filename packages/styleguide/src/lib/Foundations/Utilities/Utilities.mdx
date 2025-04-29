@@ -41,7 +41,7 @@ pxRem('30px'); // => 1.875rem;
 #### SCSS - `px-rem`
 
 ```scss
-@import '@codecademy/gamut-styles/utils';
+@use '@codecademy/gamut-styles/utils';
 
 .heading {
   font-size: px-rem(30);
@@ -71,7 +71,7 @@ const Example = `
 #### SCSS - `box-shadow`
 
 ```scss
-@import '@codecademy/gamut-styles/utils';
+@use '@codecademy/gamut-styles/utils';
 
 .box {
   @include box-shadow(3);
@@ -101,7 +101,7 @@ const Smooth = `
 #### SCSS - `font-smoothing`
 
 ```scss
-@import '@codecademy/gamut-styles/utils';
+@use '@codecademy/gamut-styles/utils';
 
 .smoothed {
   @include font-smoothing();
@@ -129,7 +129,7 @@ const Unselectable = styled.div`
 #### SCSS - `no-select`
 
 ```scss
-@import '@codecademy/gamut-styles/utils';
+@use '@codecademy/gamut-styles/utils';
 
 .unselectable {
   @include font-smoothing();
@@ -162,7 +162,7 @@ const HiddenLabelWithFocus = `
 #### SCSS - `screenreader-only` | `screenreader-only-focusable`
 
 ```scss
-@import '@codecademy/gamut-styles/utils';
+@use '@codecademy/gamut-styles/utils';
 
 .hiddenLabel {
   @include screenreader-only();

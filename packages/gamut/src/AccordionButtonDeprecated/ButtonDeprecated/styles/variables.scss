@@ -1,4 +1,4 @@
-@import "~@codecademy/gamut-styles/utils";
+@use "~@codecademy/gamut-styles/utils" as *;
 
 $btn-padding-x: px-rem(16) !default;
 $btn-padding-y: 0.375rem !default;
