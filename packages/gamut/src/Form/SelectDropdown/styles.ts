@@ -173,13 +173,14 @@ export const getMemoizedStyles = (
       ...tagBaseStyles,
       height: '24px',
       cursor: 'pointer',
-      background: theme.colors.background,
+      color: theme.colors.background,
+      background: theme.colors['text-secondary'],
       borderRadius: theme.borderRadii.md,
     }),
     multiValueLabel: (provided) => ({
       ...provided,
+      color: theme.colors.background,
       fontSize: `${tagLabelFontSize}px`,
-      color: theme.colors.text,
       padding: `0 ${tagLabelPadding}px`,
       paddingLeft: `${tagLabelPadding}px`, // default label has an explicit rule for padding left so we need this to override it
     }),

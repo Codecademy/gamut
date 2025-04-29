@@ -62,13 +62,7 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
     setCurrentFocusedValue(undefined);
   }
 
-  const [mode] = useColorModes();
-  return (
-    // we want the tags to be opposite color mode
-    <ColorMode mode={mode === 'light' ? 'dark' : 'light'}>
-      <MultiValue {...props} />
-    </ColorMode>
-  );
+  return (<MultiValue {...props} />);
 };
 
 export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {
