@@ -11,6 +11,17 @@ import { useState } from 'react';
 const meta: Meta<typeof DelayedRenderWrapper> = {
   component: DelayedRenderWrapper,
   args: {},
+  argTypes: {
+    delay: {
+      control: {
+        type: 'number',
+        min: 0,
+        step: 500,
+      },
+      description: 'Delay in milliseconds before rendering children',
+      defaultValue: 1000,
+    },
+  }
 };
 
 export default meta;
