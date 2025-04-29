@@ -1,0 +1,60 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as DelayedRenderWrapperStories from './DelayedRenderWrapper.stories';
+
+export const parameters = {
+  subtitle: 'A utility component that delays rendering of its children until after a specified delay.',
+  status: 'current',
+  source: {
+    repo: '',
+    // this is easy to find by right clicking on the file in VSCode and clicking 'Copy Remote File Url From...' and the selecting 'main' or amending the url path below like so: https://github.com/Codecademy/gamut/blob/main/packages//src/file/location
+    githubLink:
+      'https: //github.com/Codecademy/gamut/blob/main/packages/gamut/src/Logo',
+  },
+};
+
+<Meta of={DelayedRenderWrapperStories}/>
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use DelayedRenderWrapper to [what it should be used for]
+
+### Best practices:
+
+- [recommendation / best practice for implementation]
+- [recommendation / best practice for implementation]
+
+When NOT to use
+
+- [use case]- for [describe the use case], use the [similar component] component.
+- [use case]- for [describe the use case], use the [similar component] component
+
+## Variants
+
+### [Variant 1 name]
+
+Use the [variant 1 name] to [what it should be used for]
+
+<Canvas of={DelayedRenderWrapperStories.Default} />
+
+## Playground
+
+If you are using a story named 'Default', you can forgo the `of` prop.
+
+<Canvas sourceState='shown' of={DelayedRenderWrapperStories.Default} />
+
+<Controls />
+
+## Accessibility considerations
+
+- [Accessibility guidance]
+
+## UX writing
+
+- [content]
+ - [guidance]
+ - [guidance]

@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'UtilityComponents',
+  title: 'UtilityComponents/About',
+  subtitle: '',
+  status: 'current'
+}
+
+<Meta title='Atoms/UtilityComponents/About' />
+
+<AboutHeader {...parameters} />
+
+A collection of utility components that provide functionality to other components.
+
+<TableOfContents
+ links={[
+   {
+     id: 'Atoms/UtilityComponents/FocusTrap',
+     subtitle: 'Short description',
+     title: 'FocusTrap',
+     status: 'current'
+   },
+   {
+     id: 'Atoms/UtilityComponents/DelayedRenderWrapper',
+     subtitle: 'Short description',
+     title: 'DelayedRenderWrapper',
+     status: 'current'
+   }
+ ]}
+/>

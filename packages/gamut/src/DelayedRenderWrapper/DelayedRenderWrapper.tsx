@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { WithChildrenProp } from './types';
+import { WithChildrenProp } from '../utils/types';
 
 interface DelayedRenderWrapperProps extends WithChildrenProp {
   delay: number;

@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import * as React from 'react';
 
+import { DelayedRenderWrapper } from '../DelayedRenderWrapper';
 import { Popover, PopoverBaseProps, PopoverProps } from '../Popover';
-import { DelayedRenderWrapper } from '../utils';
 
 export type CoachmarkProps = PopoverBaseProps & {
   /**
