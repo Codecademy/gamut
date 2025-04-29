@@ -1,5 +1,5 @@
 // Legacy Helper mixins
-@use "../variables/index.scss" as *;
+@use "../variables/index.scss" as shared;
 
 // these variables should be located in ../variables
 // instead, they're co-located with their legacy functions so they can be removed more easily
@@ -9,19 +9,19 @@ $bp-tablet: 736px;
 $bp-desktop: 960px;
 
 @mixin device-phone {
-  @include screen-size-between($bp-phone, $bp-tablet - 1) {
+  @include shared.screen-size-between($bp-phone, $bp-tablet - 1) {
     @content;
   }
 }
 
 @mixin device-tablet {
-  @include screen-size-between($bp-tablet, $bp-desktop - 1) {
+  @include shared.screen-size-between($bp-tablet, $bp-desktop - 1) {
     @content;
   }
 }
 
 @mixin device-desktop {
-  @include screen-size-gte($bp-desktop) {
+  @include shared.screen-size-gte($bp-desktop) {
     @content;
   }
 }
