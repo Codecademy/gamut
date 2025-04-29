@@ -5,56 +5,42 @@ import { ComponentHeader } from '~styleguide/blocks';
 import * as DelayedRenderWrapperStories from './DelayedRenderWrapper.stories';
 
 export const parameters = {
-  subtitle: 'A utility component that delays rendering of its children until after a specified delay.',
+  subtitle:
+    'A utility component that delays rendering of its children until after a specified delay.',
   status: 'current',
   source: {
-    repo: '',
-    // this is easy to find by right clicking on the file in VSCode and clicking 'Copy Remote File Url From...' and the selecting 'main' or amending the url path below like so: https://github.com/Codecademy/gamut/blob/main/packages//src/file/location
+    repo: 'gamut',
     githubLink:
-      'https: //github.com/Codecademy/gamut/blob/main/packages/gamut/src/Logo',
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/DelayedRenderWrapper/DelayedRenderWrapper.tsx',
   },
 };
 
-<Meta of={DelayedRenderWrapperStories}/>
+<Meta of={DelayedRenderWrapperStories} />
 
 <ComponentHeader {...parameters} />
 
 ## Usage
 
-Use DelayedRenderWrapper to [what it should be used for]
+Use `DelayedRenderWrapper` to wrap around a component that you want to delay rendering for a specified amount of time.
 
-### Best practices:
+The `delay` prop accepts a number in milliseconds. If a `delay` {'>'} 0 is provided, `DelayedRenderWrapper` will use a `setTimeout()` to determine when to render its children. If `delay` is 0 or not provided, it will render its children immediately.
 
-- [recommendation / best practice for implementation]
-- [recommendation / best practice for implementation]
+## Examples
 
-When NOT to use
+### 0 Seconds Delay
 
-- [use case]- for [describe the use case], use the [similar component] component.
-- [use case]- for [describe the use case], use the [similar component] component
+This is an example where a button triggers the rendering of `Text` wrapped in a `DelayedRenderWrapper` with a delay of 0 seconds.
 
-## Variants
+<Canvas of={DelayedRenderWrapperStories.ZeroSecondsDelay} />
 
-### [Variant 1 name]
+### 3 Seconds Delay
 
-Use the [variant 1 name] to [what it should be used for]
+This is an example where a button triggers the rendering of `Text` wrapped in a `DelayedRenderWrapper` with a delay of 3 seconds (3000 milliseconds).
 
-<Canvas of={DelayedRenderWrapperStories.Default} />
+<Canvas of={DelayedRenderWrapperStories.ThreeSecondDelay} />
 
 ## Playground
 
-If you are using a story named 'Default', you can forgo the `of` prop.
-
-<Canvas sourceState='shown' of={DelayedRenderWrapperStories.Default} />
+<Canvas sourceState="shown" of={DelayedRenderWrapperStories.Default} />
 
 <Controls />
-
-## Accessibility considerations
-
-- [Accessibility guidance]
-
-## UX writing
-
-- [content]
- - [guidance]
- - [guidance]

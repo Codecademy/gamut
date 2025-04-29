@@ -4,8 +4,8 @@ import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
 export const parameters = {
   id: 'UtilityComponents',
-  title: 'UtilityComponents/About',
-  subtitle: '',
+  title: 'UtilityComponents',
+  subtitle: 'A collection of utility components that provide functionality to other components.',
   status: 'current'
 }
 
@@ -13,21 +13,19 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-A collection of utility components that provide functionality to other components.
-
 <TableOfContents
  links={[
-   {
-     id: 'Atoms/UtilityComponents/FocusTrap',
-     subtitle: 'Short description',
-     title: 'FocusTrap',
+  {
+     id: 'Atoms/UtilityComponents/DelayedRenderWrapper',
+     subtitle: 'A utility component that delays rendering of its children until after a specified delay.',
+     title: 'DelayedRenderWrapper',
      status: 'current'
    },
    {
-     id: 'Atoms/UtilityComponents/DelayedRenderWrapper',
-     subtitle: 'Short description',
-     title: 'DelayedRenderWrapper',
+     id: 'Atoms/UtilityComponents/FocusTrap',
+      subtitle: 'Manages focus within a specific area for a set duration.',
+     title: 'FocusTrap',
      status: 'current'
-   }
+   },
  ]}
 />

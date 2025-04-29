@@ -1,6 +1,8 @@
-import { InternalFloatingCard } from '@codecademy/gamut';
 import { DotDense } from '@codecademy/gamut-patterns';
 import type { Meta, StoryObj } from '@storybook/react';
+
+// Importing directly from the Gamut to avoid exporting the component from the package and still use the component in this story
+import { InternalFloatingCard } from '../../../../../gamut/src/InternalFloatingCard/InternalFloatingCard';
 
 const meta: Meta<typeof InternalFloatingCard> = {
   component: InternalFloatingCard,

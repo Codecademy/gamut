@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { WithChildrenProp } from '../utils/types';
-
-interface DelayedRenderWrapperProps extends WithChildrenProp {
+interface DelayedRenderWrapperProps {
   delay: number;
+  children: React.ReactNode | React.ReactNode[];
 }
 
 export const DelayedRenderWrapper: React.FC<DelayedRenderWrapperProps> = ({
