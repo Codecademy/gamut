@@ -7,9 +7,17 @@ import {
 
 import { tabElementBaseProps, TabElementStyleProps } from './props';
 
-export interface TabPanelProps
+interface TabPanelBaseProps
   extends ReactAriaTabPanelProps,
     TabElementStyleProps {}
+
+export type TabPanelProps = TabPanelBaseProps &
+  Omit<ReactAriaTabPanelProps, 'id'> & {
+    /**
+     * the id matches up the tab and tab panel
+     */
+    id: string;
+  };
 
 export const TabPanel = styled(
   ReactAriaTabPanel,

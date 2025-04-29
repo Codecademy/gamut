@@ -18,8 +18,8 @@ import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useCallback, useState } from 'react';
 
-const meta: Meta<typeof Tab> = {
-  component: Tab,
+const meta: Meta<typeof Tabs> = {
+  component: Tabs,
   // This is a known issue with SB 8, see: https://github.com/storybookjs/storybook/issues/23170
   // Will fix this casting when the issue is resolved
   subcomponents: {
@@ -34,20 +34,20 @@ const meta: Meta<typeof Tab> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Tab>;
+type Story = StoryObj<typeof Tabs>;
 
 const TabsPanelCollection: React.FC = () => {
   return (
     <TabPanels my={24} className="welcomePanel">
-      <TabPanel>
+      <TabPanel id="1">
         <Text as="h2">Welcome to Tab 1</Text>
         <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
       </TabPanel>
-      <TabPanel>
+      <TabPanel id="2">
         <Text as="h2">Welcome to Tab 2</Text>
         <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
       </TabPanel>
-      <TabPanel>
+      <TabPanel id="3">
         <Text as="h2">Welcome to Tab 3</Text>
         <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
       </TabPanel>
@@ -59,30 +59,65 @@ type TabsWithoutChildren = Omit<TabsProps, 'children'>;
 
 const TabsExample = (args: TabsWithoutChildren) => {
   return (
-    <Tabs {...args}>
+    <Tabs variant="standard">
       <TabList mx={24}>
-        <Tab>Tab 1</Tab>
-        <Tab>Tab 2</Tab>
-        <Tab>Tab 3</Tab>
+        <Tab id="amy">Tab 1</Tab>
+        <Tab id="2">Tab 2</Tab>
+        <Tab id="3">Tab 3</Tab>
       </TabList>
-      <TabsPanelCollection />
+      <TabPanels>
+        <TabPanel id="amy">
+          <Text as="h2">Welcome to Tab 1</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
+        </TabPanel>
+        <TabPanel id="2">
+          <Text as="h2">Welcome to Tab 2</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
+        </TabPanel>
+        <TabPanel id="3">
+          <Text as="h2">Welcome to Tab 3</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
+        </TabPanel>
+      </TabPanels>
     </Tabs>
   );
 };
 
 export const Default: Story = {
-  render: (args) => <TabsExample {...args} />,
+  render: (args) => (
+    <Tabs variant="standard" {...args}>
+      <TabList mx={24}>
+        <Tab id="amy">Tab 1</Tab>
+        <Tab id="2">Tab 2</Tab>
+        <Tab id="3">Tab 3</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel id="amy">
+          <Text as="h2">Welcome to Tab 1</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
+        </TabPanel>
+        <TabPanel id="2">
+          <Text as="h2">Welcome to Tab 2</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
+        </TabPanel>
+        <TabPanel id="3">
+          <Text as="h2">Welcome to Tab 3</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
+  ),
 };
 
 const TabsControlledExample = () => {
-  const [controlledIndex, setControlledIndex] = useState(0);
+  const [controlledIndex, setControlledIndex] = useState(1);
 
-  const maxTabIndex = 2;
+  const maxTabIndex = 3;
   const setIndex = useCallback(
     (value: string | number) => {
       const val = Number(value);
-      if (val > maxTabIndex) return setControlledIndex(0);
-      if (val < 0) return setControlledIndex(maxTabIndex);
+      if (val > maxTabIndex) return setControlledIndex(1);
+      if (val < 1) return setControlledIndex(maxTabIndex);
       setControlledIndex(val);
     },
     [setControlledIndex]
@@ -102,11 +137,11 @@ const TabsControlledExample = () => {
           />
         </FormGroup>
       </Background>
-      <Tabs index={controlledIndex} onChange={setIndex}>
+      <Tabs selectedKey={controlledIndex} onSelectionChange={setIndex}>
         <TabList mx={24}>
-          <Tab>Tab 1</Tab>
-          <Tab>Tab 2</Tab>
-          <Tab>Tab 3</Tab>
+          <Tab id="1">Tab 1</Tab>
+          <Tab id="2">Tab 2</Tab>
+          <Tab id="3">Tab 3</Tab>
         </TabList>
         <TabsPanelCollection />
       </Tabs>
@@ -184,7 +219,7 @@ const TabsInteractiveContentExample = (args: TabsWithoutChildren) => {
           <Tab>Also Interactive Tab 3</Tab>
         </TabList>
         <TabPanels my={24} className="lol">
-          <TabPanel tabIndex={-1}>
+          <TabPanel>
             <Text as="h2">Welcome to Tab 1</Text>
             <FillButton>
               I should come into focus, rather than the panel.
@@ -194,7 +229,7 @@ const TabsInteractiveContentExample = (args: TabsWithoutChildren) => {
             <Text as="h2">Welcome to Tab 2</Text>
             <Text>I am normal. My panel should just focus.</Text>
           </TabPanel>
-          <TabPanel tabIndex={-1}>
+          <TabPanel>
             <Text as="h2">Welcome to Tab 3</Text>
             <FillButton variant="secondary">
               I also should come into focus, rather than the panel.
