@@ -62,34 +62,34 @@ describe('ToolTip', () => {
       expect(view.queryByRole('tooltip')).toBeNull();
     });
   });
+  describe('floating placement', () => {
+    it('has an accessible tooltip', async () => {
+      const { view } = renderView({ placement: 'floating' });
+      view.getByRole('button');
+
+      fireEvent.mouseOver(view.getByRole('button'));
+
+      expect(await view.findByRole('tooltip')).toBeInTheDocument();
+    });
+
+    it('shows the tip when it is hovered over', async () => {
+      const { view } = renderView({ placement: 'floating' });
+
+      expect(view.queryByText(info)).toBeFalsy();
+
+      view.getByRole('button');
+
+      fireEvent.mouseOver(view.getByRole('button'));
+
+      expect(await view.findByText(info)).toBeInTheDocument();
+    });
+    it('calls onClick when clicked', async () => {
+      const { view } = renderView({});
+
+      await userEvent.click(view.getByRole('button'));
+
+      expect(onClick).toHaveBeenCalled();
+    });
+  });
 });
 
-describe('floating placement', () => {
-  it('has an accessible tooltip', async () => {
-    const { view } = renderView({ placement: 'floating' });
-    view.getByRole('button');
-
-    fireEvent.mouseOver(view.getByRole('button'));
-
-    expect(await view.findByRole('tooltip')).toBeInTheDocument();
-  });
-
-  it('shows the tip when it is hovered over', async () => {
-    const { view } = renderView({ placement: 'floating' });
-
-    expect(view.queryByText(info)).toBeFalsy();
-
-    view.getByRole('button');
-
-    fireEvent.mouseOver(view.getByRole('button'));
-
-    expect(await view.findByText(info)).toBeInTheDocument();
-  });
-  it('calls onClick when clicked', async () => {
-    const { view } = renderView({});
-
-    await userEvent.click(view.getByRole('button'));
-
-    expect(onClick).toHaveBeenCalled();
-  });
-});
