@@ -21,7 +21,7 @@ const meta: Meta<typeof DelayedRenderWrapper> = {
       description: 'Delay in milliseconds before rendering children',
       defaultValue: 1000,
     },
-  }
+  },
 };
 
 export default meta;
