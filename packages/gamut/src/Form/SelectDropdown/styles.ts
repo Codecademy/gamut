@@ -188,9 +188,10 @@ export const getMemoizedStyles = (
       ...provided,
       ...dismissSharedStyles,
       cursor: 'pointer',
+      borderRadius: `0 ${theme.borderRadii.md} ${theme.borderRadii.md} 0`,
       padding: 0, // default remove has padding left and right that we don't need
       ':hover': {
-        backgroundColor: theme.colors['background-hover'],
+        backgroundColor: theme.colors['secondary-hover'],
       },
     }),
     valueContainer: (provided) => ({
