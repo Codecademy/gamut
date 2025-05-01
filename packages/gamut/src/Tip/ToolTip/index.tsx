@@ -13,7 +13,7 @@ export type ToolTipProps = TipBaseProps &
   WithChildrenProp & {
     alignment?: TipCenterAlignment;
     /**
-     * Required for accessiblity - the same id needs to be passed to the `aria-describedby` attribute of the element that the tooltip is describing.
+     * Can be used for accessiblity - the same id needs to be passed to the `aria-describedby` attribute of the element that the tooltip is describing.
      */
     id?: string;
   };
@@ -44,7 +44,6 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   };
 
   return (
-    // <Text></Text>
     <Tip {...tipProps} type="tool" id={id}>
       {children}
     </Tip>
