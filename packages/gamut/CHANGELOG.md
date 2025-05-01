@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [62.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@62.0.4...@codecademy/gamut@62.0.5) (2025-05-01)
+
+### Bug Fixes
+
+- **SelectDropdown:** align styling of multi selection tags with Tag component ([31484e6](https://github.com/Codecademy/gamut/commit/31484e64023115021dc1b656a2196497ca1ada40))
+
 ### [62.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@62.0.3...@codecademy/gamut@62.0.4) (2025-04-25)
 
 **Note:** Version bump only for package @codecademy/gamut
