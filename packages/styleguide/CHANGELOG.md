@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [73.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.4...@codecademy/styleguide@73.0.5) (2025-05-01)
+
+### Bug Fixes
+
+- **coachmark:** provide a default for skipfocustrap ([d2508c9](https://github.com/Codecademy/gamut/commit/d2508c9017e35fd6151302292d862d0d267b289a))
+
 ### [73.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.3...@codecademy/styleguide@73.0.4) (2025-04-25)
 
 **Note:** Version bump only for package @codecademy/styleguide
