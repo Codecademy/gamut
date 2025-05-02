@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { Callout, ComponentHeader } from '~styleguide/blocks';
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as AccordionDeprecatedStories from './AccordionDeprecated.stories';
 
@@ -19,7 +19,15 @@ such as a "hint" section in the LE or a list of department jobs on a careers pag
 
 <ComponentHeader {...parameters} />
 
-<Callout text="Note: This component is deprecated. For similar functionality, consider using Disclosure or a List component." />
+<Callout
+  text={
+    <>
+      Note: This component is deprecated. For similar functionality, consider
+      using <LinkTo id="Molecules/Disclosure">Disclosure</LinkTo> or a{' '}
+      <LinkTo id="Organisms/Lists & Tables/List">List </LinkTo> component.
+    </>
+  }
+/>
 
 ## Usage
 
