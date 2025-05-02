@@ -216,6 +216,8 @@ You can define collapsible content by passing an `expanded` prop and the `React.
 
 #### Expand on button click
 
+The `ListRow` component has access to the `ExpandControl` component which can be used to toggle the expanded state of the row. The `ExpandControl` component will automatically handle the rotation of the icon based on the expanded state.
+
 ```tsx
 export const ExpandableRow: React.FC<{
   header: string;
@@ -233,11 +235,11 @@ export const ExpandableRow: React.FC<{
       <ListCol type="header">{header}</ListCol>
       <ListCol type="content">{content}</ListCol>
       <ListCol type="control">
-        <IconButton onClick={() => setExpanded(!isExpanded)}>
-          <Rotation rotated={isExpanded}>
-            <MiniChevronDownIcon />
-          </Rotation>
-        </IconButton>
+        <ExpandControl
+          expanded={isExpanded}
+          onExpand={() => setExpanded(!isExpanded)}
+          disabled={false}
+        />
       </ListCol>
     </ListRow>
   );
@@ -291,15 +293,15 @@ You can combine variants and spacing to your needs.
 
 <Canvas of={ListStories.CondensedTableGuide} />
 
-### Expandable buttom
+### Expandable button
 
-Buttons can be configured to expand the row content.
+Buttons can be configured to expand the row content. Check over the "Expand on button click" section for more guidance.
 
 <Canvas of={ListStories.ExpandableButtonGuide} />
 
 ### Expanded row
 
-An entire row can be made interactive to expand the row content.
+An entire row can be made interactive to expand the row content. Check over the "Expand on row click" section for more guidance.
 
 <Canvas of={ListStories.ExpandedRowGuide} />
 

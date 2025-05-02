@@ -173,25 +173,30 @@ export const getMemoizedStyles = (
       ...tagBaseStyles,
       height: '24px',
       cursor: 'pointer',
-      background: theme.colors.background,
-      borderRadius: 'md',
+      color: theme.colors.background,
+      backgroundColor: 'transparent',
+      borderRadius: theme.borderRadii.md,
     }),
     multiValueLabel: (provided) => ({
       ...provided,
+      color: theme.colors.background,
+      backgroundColor: theme.colors['text-secondary'],
+      borderRadius: `${theme.borderRadii.md} 0 0 ${theme.borderRadii.md}`,
       fontSize: `${tagLabelFontSize}px`,
-      color: theme.colors.text,
-      borderRadius: 'md',
+      height: '100%',
       padding: `0 ${tagLabelPadding}px`,
       paddingLeft: `${tagLabelPadding}px`, // default label has an explicit rule for padding left so we need this to override it
+      paddingTop: '2px', // adding to shift the text down to vertically center it
     }),
     multiValueRemove: (provided) => ({
       ...provided,
       ...dismissSharedStyles,
       cursor: 'pointer',
-      borderRadiusRight: 'md',
+      backgroundColor: theme.colors['text-secondary'],
+      borderRadius: `0 ${theme.borderRadii.md} ${theme.borderRadii.md} 0`,
       padding: 0, // default remove has padding left and right that we don't need
       ':hover': {
-        backgroundColor: theme.colors['background-hover'],
+        backgroundColor: theme.colors['secondary-hover'],
       },
     }),
     valueContainer: (provided) => ({
