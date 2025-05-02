@@ -6,7 +6,7 @@ import {
   bottomStyles,
   bottomStylesAfter,
   bottomStylesBefore,
-  horizontalCenterStyles,
+  horiontalRepCenterStyles,
   leftStyles,
   leftStylesAfter,
   rightStyles,
@@ -78,17 +78,15 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
   }
 
   if (alignment.includes('-center')) {
-    styleObject = { ...styleObject, ...horizontalCenterStyles };
+    styleObject = { ...styleObject, ...vertCenterStyles };
     styleObjectAfter = { ...styleObjectAfter };
     if (alignment.includes('left')) {
       styleObjectAfter = { ...styleObjectAfter };
     } else {
       styleObjectAfter = { ...styleObjectAfter };
     }
-  }
-
-  if (alignment.includes('center')) {
-    styleObject = { ...styleObject, ...vertCenterStyles };
+  } else if (alignment.includes('center')) {
+    styleObject = { ...styleObject, ...horiontalRepCenterStyles };
     styleObjectAfter = { ...styleObjectAfter, ...vertCenterStylesAfter };
     if (alignment.includes('top')) {
       styleObjectAfter = { ...styleObjectAfter, ...topCenterStylesAfter };
