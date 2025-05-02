@@ -1,4 +1,4 @@
-import { ComponentProps, forwardRef, useId } from 'react';
+import { ComponentProps, forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
 import { ToolTip, ToolTipProps } from '../Tip/ToolTip';
