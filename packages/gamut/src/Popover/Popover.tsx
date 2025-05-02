@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import * as React from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
@@ -64,16 +64,30 @@ export const Popover: React.FC<PopoverProps> = ({
   widthRestricted,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
+  const [popoverHeight, setPopoverHeight] = useState<number>(0);
   const [isInViewport, setIsInViewport] = useState(true);
   const { width, height } = useWindowSize();
   const { x, y } = useWindowScroll();
 
+  const getHeightRef = (popover: HTMLDivElement) => {
+    if (popover) {
+      console.log('Element:', popover);
+      const { height } = popover.getBoundingClientRect();
+      setPopoverHeight(height);
+      console.log(height);
+    }
+  };
+
   const getPopoverPosition = useCallback(() => {
     if (!targetRect) return {};
+    // if (!popoverRect) return {};
 
     const positions = {
       above: Math.round(targetRect.top - verticalOffset),
       below: Math.round(targetRect.top + targetRect.height + verticalOffset),
+      center: Math.round(
+        targetRect.top + targetRect.height / 2 - popoverHeight / 2
+      ),
     };
     const alignments = {
       right: Math.round(window.scrollX + targetRect.right + horizontalOffset),
@@ -83,7 +97,14 @@ export const Popover: React.FC<PopoverProps> = ({
       top: positions[position],
       left: alignments[align],
     };
-  }, [targetRect, verticalOffset, horizontalOffset, align, position]);
+  }, [
+    targetRect,
+    popoverHeight,
+    verticalOffset,
+    horizontalOffset,
+    align,
+    position,
+  ]);
 
   useEffect(() => {
     setTargetRect(targetRef?.current?.getBoundingClientRect());
@@ -104,6 +125,40 @@ export const Popover: React.FC<PopoverProps> = ({
     };
     scrollingParent.addEventListener('scroll', handler);
     return () => scrollingParent.removeEventListener('scroll', handler);
+  }, [targetRef]);
+
+  useEffect(() => {
+    // handles movement of target within a clipped container e.g. Drawer
+    if (!targetRef.current || typeof ResizeObserver === 'undefined') {
+      return;
+    }
+    const resizingParent = findResizingParent(targetRef.current as HTMLElement);
+    if (!resizingParent?.addEventListener) {
+      return;
+    }
+    const handler = () => {
+      setTargetRect(targetRef?.current?.getBoundingClientRect());
+    };
+    const ro = new ResizeObserver(handler);
+    ro.observe(resizingParent);
+    return () => ro.unobserve(resizingParent);
+  }, [targetRef]);
+
+  useEffect(() => {
+    // handles movement of target within a clipped container e.g. Drawer
+    if (!targetRef.current || typeof ResizeObserver === 'undefined') {
+      return;
+    }
+    const resizingParent = findResizingParent(targetRef.current as HTMLElement);
+    if (!resizingParent?.addEventListener) {
+      return;
+    }
+    const handler = () => {
+      setTargetRect(targetRef?.current?.getBoundingClientRect());
+    };
+    const ro = new ResizeObserver(handler);
+    ro.observe(resizingParent);
+    return () => ro.unobserve(resizingParent);
   }, [targetRef]);
 
   useEffect(() => {
@@ -171,9 +226,10 @@ export const Popover: React.FC<PopoverProps> = ({
         outline={outline ? 'outline' : 'boxShadow'}
         variant={variant}
         widthRestricted={widthRestricted}
+        ref={getHeightRef}
       >
         {beak && (
-          <BeakBox variant={position}>
+          <BeakBox variant={position === 'center' ? 'above' : position}>
             <Beak
               beak={`${position}-${beak}${
                 variant === 'secondary' ? '-sml' : ''

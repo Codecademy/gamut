@@ -72,11 +72,41 @@ export const Outline: Story = {
 };
 
 export const Above: Story = {
-  render: (args) => <PopoverExample {...args} position="above" />,
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      position="above"
+      align="right"
+      horizontalOffset={0}
+    />
+  ),
 };
 
 export const Below: Story = {
-  render: (args) => <PopoverExample {...args} />,
+  render: (args) => (
+    <PopoverExample {...args} align="left" horizontalOffset={0} />
+  ),
+};
+export const Left: Story = {
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      align="left"
+      position="center"
+      horizontalOffset={0}
+    />
+  ),
+};
+
+export const Right: Story = {
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      align="right"
+      position="center"
+      horizontalOffset={40}
+    />
+  ),
 };
 
 export const PopoverCheckerDense: Story = {
@@ -135,6 +165,6 @@ export const Animation: Story = {
 
 export const Variant: Story = {
   render: (args) => (
-    <PopoverExample variant="secondary" beak="left" {...args} />
+    <PopoverExample align="right" variant="secondary" beak="left" {...args} />
   ),
 };

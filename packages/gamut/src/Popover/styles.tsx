@@ -144,4 +144,5 @@ export const transformValues = {
   left: 'translateX(0%)',
   above: 'translateY(-100%)',
   below: 'translateY(0%)',
+  center: '',
 };

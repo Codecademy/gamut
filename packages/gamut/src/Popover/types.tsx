@@ -57,9 +57,9 @@ export type PopoverProps = PopoverBaseProps &
      */
     outline?: boolean;
     /**
-     * Which horizontal edge of the source componet to align against.
+     * Which horizontal edge of the source componet to align against. Center aligns it centered to the component.
      */
-    position?: 'above' | 'below';
+    position?: 'above' | 'below' | 'center';
     /**
      * Which side to position the beak. If not provided, beak will not be rendered.
      */
