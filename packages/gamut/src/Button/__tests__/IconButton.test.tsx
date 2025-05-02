@@ -43,27 +43,21 @@ describe('IconButton', () => {
 
     view.getByRole('button', { name: label });
 
-    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
-      tip
-    );
+    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(tip);
   });
 
   it('sets the aria-label as the tip when only the tip prop is provided', async () => {
-    const { view } = renderView({'aria-label': ''});
+    const { view } = renderView({ 'aria-label': '' });
 
     view.getByRole('button', { name: tip });
-    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
-      tip
-    );
+    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(tip);
   });
 
   it('sets the aria-label text from the aria-label prop when both the tip and aria-label is provided', async () => {
-    const { view } = renderView({'aria-label': ''});
+    const { view } = renderView({ 'aria-label': '' });
 
     view.getByRole('button', { name: tip });
-    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
-      tip
-    );
+    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(tip);
   });
 
   it('renders a floating tip', async () => {
