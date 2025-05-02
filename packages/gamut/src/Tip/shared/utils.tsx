@@ -6,8 +6,9 @@ import {
   bottomStyles,
   bottomStylesAfter,
   bottomStylesBefore,
-  centerStyles,
-  centerStylesAfter,
+  horizontalCenterStyles,
+  horizontalLeftStyles,
+  horizontalRightStyles,
   leftStyles,
   leftStylesAfter,
   rightStyles,
@@ -16,6 +17,8 @@ import {
   topStyles,
   topStylesAfter,
   topStylesBefore,
+  verticalCenterStyles,
+  verticalCenterStylesAfter,
 } from './styles';
 import { TipPlacementComponentProps, TipWrapperProps } from './types';
 
@@ -76,20 +79,34 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
     styleObjectBefore = { ...bottomStylesBefore };
   }
 
-  if (alignment.includes('center')) {
-    styleObject = { ...styleObject, ...centerStyles };
-    styleObjectAfter = { ...styleObjectAfter, ...centerStylesAfter };
+  const isHorizontallyAligned =
+    alignment.includes('left-') || alignment.includes('right-');
+  const isRightAligned = alignment.includes('right');
+
+  if (alignment.includes('center') && !isHorizontallyAligned) {
+    styleObject = { ...styleObject, ...verticalCenterStyles };
+    styleObjectAfter = { ...styleObjectAfter, ...verticalCenterStylesAfter };
     if (alignment.includes('top')) {
       styleObjectAfter = { ...styleObjectAfter, ...topCenterStylesAfter };
     } else {
       styleObjectAfter = { ...styleObjectAfter, ...bottomCenterStylesAfter };
     }
-  } else if (alignment.includes('right')) {
+  } else if (isRightAligned) {
     styleObject = { ...styleObject, ...rightStyles };
     styleObjectAfter = { ...styleObjectAfter, ...rightStylesAfter };
   } else {
     styleObject = { ...styleObject, ...leftStyles };
     styleObjectAfter = { ...styleObjectAfter, ...leftStylesAfter };
+  }
+
+  if (alignment.includes('center') && isHorizontallyAligned) {
+    styleObject = { ...styleObject, ...horizontalCenterStyles };
+    styleObjectAfter = { ...styleObjectAfter, ...verticalCenterStylesAfter };
+    if (isRightAligned) {
+      styleObject = { ...styleObject, ...horizontalRightStyles };
+    } else {
+      styleObject = { ...styleObject, ...horizontalLeftStyles };
+    }
   }
 
   return {

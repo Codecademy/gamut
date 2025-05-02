@@ -64,10 +64,14 @@ export const bottomStylesAfter = {
 
 export const horizontalCenterStyles = {
   ...centerWidths,
-  top: 'calc(50% + 16px)',
+  top: 'calc(50% - 28px)',
 } as const;
 
 export const horizontalLeftStyles = {
+  right: '100%',
+} as const;
+
+export const horizontalRightStyles = {
   left: '100%',
 } as const;
 
