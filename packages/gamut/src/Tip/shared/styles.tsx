@@ -62,12 +62,23 @@ export const bottomStylesAfter = {
   top: '0.25rem',
 } as const;
 
-export const centerStyles = {
+export const horizontalCenterStyles = {
+  ...centerWidths,
+  top: 'calc(50% + 16px)',
+} as const;
+
+export const horizontalLeftStyles = {
+  left: '100%',
+} as const;
+
+export const verticalCenterStyles = {
   ...centerWidths,
   left: 'calc(50% - 4rem)',
 } as const;
 
-export const centerStylesAfter = { left: 'calc(50% - 0.5rem)' } as const;
+export const verticalCenterStylesAfter = {
+  left: 'calc(50% - 0.5rem)',
+} as const;
 
 // This halfway fills the square we use to create the 'beak' of the tip so it does not overlap the tip text on the 'center' alignments
 export const topCenterStylesAfter = {
@@ -115,9 +126,9 @@ export const toolTipAlignmentVariants = variant({
     display: 'flex',
     fontSmoothPixel,
     maxWidth: '70vw',
-    opacity: 0,
+    opacity: 1,
     position: 'absolute',
-    visibility: 'hidden',
+    visibility: 'visible',
 
     '&::after': {
       content: '""',
