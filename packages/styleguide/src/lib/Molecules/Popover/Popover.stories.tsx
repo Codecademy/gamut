@@ -72,40 +72,19 @@ export const Outline: Story = {
 };
 
 export const Above: Story = {
-  render: (args) => (
-    <PopoverExample
-      {...args}
-      position="above"
-      align="right"
-      horizontalOffset={0}
-    />
-  ),
+  render: (args) => <PopoverExample {...args} position="above" />,
 };
 
 export const Below: Story = {
-  render: (args) => (
-    <PopoverExample {...args} align="left" horizontalOffset={0} />
-  ),
+  render: (args) => <PopoverExample {...args} align="left" />,
 };
 export const Left: Story = {
-  render: (args) => (
-    <PopoverExample
-      {...args}
-      align="left"
-      position="center"
-      horizontalOffset={0}
-    />
-  ),
+  render: (args) => <PopoverExample {...args} align="left" position="center" />,
 };
 
 export const Right: Story = {
   render: (args) => (
-    <PopoverExample
-      {...args}
-      align="right"
-      position="center"
-      horizontalOffset={40}
-    />
+    <PopoverExample {...args} align="right" position="center" />
   ),
 };
 

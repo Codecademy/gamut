@@ -145,40 +145,6 @@ export const Popover: React.FC<PopoverProps> = ({
   }, [targetRef]);
 
   useEffect(() => {
-    // handles movement of target within a clipped container e.g. Drawer
-    if (!targetRef.current || typeof ResizeObserver === 'undefined') {
-      return;
-    }
-    const resizingParent = findResizingParent(targetRef.current as HTMLElement);
-    if (!resizingParent?.addEventListener) {
-      return;
-    }
-    const handler = () => {
-      setTargetRect(targetRef?.current?.getBoundingClientRect());
-    };
-    const ro = new ResizeObserver(handler);
-    ro.observe(resizingParent);
-    return () => ro.unobserve(resizingParent);
-  }, [targetRef]);
-
-  useEffect(() => {
-    // handles movement of target within a clipped container e.g. Drawer
-    if (!targetRef.current || typeof ResizeObserver === 'undefined') {
-      return;
-    }
-    const resizingParent = findResizingParent(targetRef.current as HTMLElement);
-    if (!resizingParent?.addEventListener) {
-      return;
-    }
-    const handler = () => {
-      setTargetRect(targetRef?.current?.getBoundingClientRect());
-    };
-    const ro = new ResizeObserver(handler);
-    ro.observe(resizingParent);
-    return () => ro.unobserve(resizingParent);
-  }, [targetRef]);
-
-  useEffect(() => {
     if (targetRect) {
       const inView =
         targetRect.top >= 0 &&
