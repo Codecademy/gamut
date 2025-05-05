@@ -17,6 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/yarn
+      - run: npx nx build eslint-plugin-gamut
+        if: ${{ matrix.command == 'lint' }}
       - run: yarn ${{ matrix.command }}
 
 on:
