@@ -1,22 +1,18 @@
 import {
   Badge,
   FillButton,
-  FormGroup,
-  Input,
   Tab,
   TabList,
   TabNav,
   TabNavLink,
-  TabNavProps,
   TabPanel,
   TabPanels,
   Tabs,
-  TabsProps,
   Text,
 } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
 const meta: Meta<typeof Tabs> = {
   component: Tabs,
@@ -36,63 +32,16 @@ const meta: Meta<typeof Tabs> = {
 export default meta;
 type Story = StoryObj<typeof Tabs>;
 
-const TabsPanelCollection: React.FC = () => {
-  return (
-    <TabPanels my={24} className="welcomePanel">
-      <TabPanel id="1">
-        <Text as="h2">Welcome to Tab 1</Text>
-        <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
-      </TabPanel>
-      <TabPanel id="2">
-        <Text as="h2">Welcome to Tab 2</Text>
-        <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
-      </TabPanel>
-      <TabPanel id="3">
-        <Text as="h2">Welcome to Tab 3</Text>
-        <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
-      </TabPanel>
-    </TabPanels>
-  );
-};
-
-type TabsWithoutChildren = Omit<TabsProps, 'children'>;
-
-const TabsExample = (args: TabsWithoutChildren) => {
-  return (
-    <Tabs variant="standard">
-      <TabList mx={24}>
-        <Tab id="amy">Tab 1</Tab>
-        <Tab id="2">Tab 2</Tab>
-        <Tab id="3">Tab 3</Tab>
-      </TabList>
-      <TabPanels>
-        <TabPanel id="amy">
-          <Text as="h2">Welcome to Tab 1</Text>
-          <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
-        </TabPanel>
-        <TabPanel id="2">
-          <Text as="h2">Welcome to Tab 2</Text>
-          <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
-        </TabPanel>
-        <TabPanel id="3">
-          <Text as="h2">Welcome to Tab 3</Text>
-          <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
-        </TabPanel>
-      </TabPanels>
-    </Tabs>
-  );
-};
-
 export const Default: Story = {
-  render: (args) => (
-    <Tabs variant="standard" {...args}>
+  render: () => (
+    <Tabs variant="standard" keyboardActivation="manual">
       <TabList mx={24}>
-        <Tab id="amy">Tab 1</Tab>
+        <Tab id="1">Tab 1</Tab>
         <Tab id="2">Tab 2</Tab>
         <Tab id="3">Tab 3</Tab>
       </TabList>
       <TabPanels>
-        <TabPanel id="amy">
+        <TabPanel id="1">
           <Text as="h2">Welcome to Tab 1</Text>
           <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
         </TabPanel>
@@ -109,131 +58,35 @@ export const Default: Story = {
   ),
 };
 
-const TabsControlledExample = () => {
+export const Controlled = () => {
   const [controlledIndex, setControlledIndex] = useState(1);
-
-  const maxTabIndex = 3;
-  const setIndex = useCallback(
-    (value: string | number) => {
-      const val = Number(value);
-      if (val > maxTabIndex) return setControlledIndex(1);
-      if (val < 1) return setControlledIndex(maxTabIndex);
-      setControlledIndex(val);
-    },
-    [setControlledIndex]
-  );
 
   return (
     <>
       <Background bg="yellow" mb={24} p={12}>
-        <FormGroup label="Tab Index" htmlFor="tab-index">
-          <Input
-            label="Tab Index"
-            value={controlledIndex}
-            onChange={(e) => setIndex(e.target.value)}
-            type="number"
-            min={1}
-            htmlFor="tab-index"
-          />
-        </FormGroup>
+        <Text>The currently selected tab is {controlledIndex}</Text>
       </Background>
-      <Tabs selectedKey={controlledIndex} onSelectionChange={setIndex}>
+      <Tabs
+        selectedKey={controlledIndex}
+        onSelectionChange={(val) => setControlledIndex(Number(val))}
+      >
         <TabList mx={24}>
           <Tab id="1">Tab 1</Tab>
           <Tab id="2">Tab 2</Tab>
           <Tab id="3">Tab 3</Tab>
         </TabList>
-        <TabsPanelCollection />
-      </Tabs>
-    </>
-  );
-};
-
-export const Controlled: Story = {
-  render: () => <TabsControlledExample />,
-};
-
-const TabsBadgeExample = (args: TabsWithoutChildren) => {
-  return (
-    <>
-      <Tabs {...args}>
-        <TabList>
-          <Tab>
-            Tab 1 <Badge ml={8}>New!</Badge>
-          </Tab>
-          <Tab>Tab 2</Tab>
-          <Tab>Tab 3</Tab>
-        </TabList>
-        <TabsPanelCollection />
-      </Tabs>
-    </>
-  );
-};
-
-export const TabsBadge: Story = {
-  render: () => <TabsBadgeExample />,
-};
-
-const TabsBlockVariantExample = (args: TabNavProps) => {
-  return (
-    <>
-      <Tabs {...args} variant="block">
-        <TabList>
-          <Tab>Tab 1</Tab>
-          <Tab>Tab 2</Tab>
-          <Tab>Tab 3</Tab>
-        </TabList>
-        <TabsPanelCollection />
-      </Tabs>
-    </>
-  );
-};
-
-export const TabsBlock: Story = {
-  render: () => <TabsBlockVariantExample />,
-};
-
-const TabsNavExample = (args: TabNavProps) => {
-  return (
-    <TabNav {...args} fill aria-label="Secondary Navigation">
-      <TabNavLink selected href="/">
-        Tab Link 1
-      </TabNavLink>
-      <TabNavLink href="/">Tab Link 2</TabNavLink>
-      <TabNavLink href="/">Tab Link 3</TabNavLink>
-    </TabNav>
-  );
-};
-
-export const TabsNav: Story = {
-  render: () => <TabsNavExample />,
-};
-
-const TabsInteractiveContentExample = (args: TabsWithoutChildren) => {
-  return (
-    <>
-      <Tabs {...args}>
-        <TabList mx={24}>
-          <Tab>Interactive Tab 1</Tab>
-          <Tab>Just Plain Tab 2</Tab>
-          <Tab>Also Interactive Tab 3</Tab>
-        </TabList>
-        <TabPanels my={24} className="lol">
-          <TabPanel>
+        <TabPanels my={24}>
+          <TabPanel id="1">
             <Text as="h2">Welcome to Tab 1</Text>
-            <FillButton>
-              I should come into focus, rather than the panel.
-            </FillButton>
+            <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
           </TabPanel>
-          <TabPanel>
+          <TabPanel id="2">
             <Text as="h2">Welcome to Tab 2</Text>
-            <Text>I am normal. My panel should just focus.</Text>
+            <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
           </TabPanel>
-          <TabPanel>
+          <TabPanel id="3">
             <Text as="h2">Welcome to Tab 3</Text>
-            <FillButton variant="secondary">
-              I also should come into focus, rather than the panel.
-            </FillButton>
+            <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
           </TabPanel>
         </TabPanels>
       </Tabs>
@@ -241,6 +94,98 @@ const TabsInteractiveContentExample = (args: TabsWithoutChildren) => {
   );
 };
 
+export const TabsBadge: Story = {
+  render: (args) => (
+    <Tabs {...args}>
+      <TabList>
+        <Tab id="1">
+          Tab 1 <Badge ml={8}>New!</Badge>
+        </Tab>
+        <Tab id="2">Tab 2</Tab>
+        <Tab id="3">Tab 3</Tab>
+      </TabList>
+      <TabPanels my={24}>
+        <TabPanel id="1">
+          <Text as="h2">Welcome to Tab 1</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
+        </TabPanel>
+        <TabPanel id="2">
+          <Text as="h2">Welcome to Tab 2</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
+        </TabPanel>
+        <TabPanel id="3">
+          <Text as="h2">Welcome to Tab 3</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
+  ),
+};
+
+export const TabsBlock: Story = {
+  render: (args) => (
+    <Tabs {...args} variant="block">
+      <TabList>
+        <Tab id="1">Tab 1</Tab>
+        <Tab id="2">Tab 2</Tab>
+        <Tab id="3">Tab 3</Tab>
+      </TabList>
+      <TabPanels my={24}>
+        <TabPanel id="1">
+          <Text as="h2">Welcome to Tab 1</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
+        </TabPanel>
+        <TabPanel id="2">
+          <Text as="h2">Welcome to Tab 2</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
+        </TabPanel>
+        <TabPanel id="3">
+          <Text as="h2">Welcome to Tab 3</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
+  ),
+};
+
+export const TabsNav: Story = {
+  render: () => (
+    <TabNav fill aria-label="Secondary Navigation">
+      <TabNavLink selected href="/">
+        Tab Link 1
+      </TabNavLink>
+      <TabNavLink href="/">Tab Link 2</TabNavLink>
+      <TabNavLink href="/">Tab Link 3</TabNavLink>
+    </TabNav>
+  ),
+};
+
 export const TabsInteractiveContent: Story = {
-  render: () => <TabsInteractiveContentExample />,
+  render: (args) => (
+    <Tabs {...args}>
+      <TabList mx={24}>
+        <Tab id="1">Interactive Tab 1</Tab>
+        <Tab id="2">Just Plain Tab 2</Tab>
+        <Tab id="3">Also Interactive Tab 3</Tab>
+      </TabList>
+      <TabPanels my={24}>
+        <TabPanel id="1">
+          <Text as="h2">Welcome to Tab 1</Text>
+          <FillButton>
+            I should come into focus, rather than the panel.
+          </FillButton>
+        </TabPanel>
+        <TabPanel id="2">
+          <Text as="h2">Welcome to Tab 2</Text>
+          <Text>I am normal. My panel should just focus.</Text>
+        </TabPanel>
+        <TabPanel id="3">
+          <Text as="h2">Welcome to Tab 3</Text>
+          <FillButton variant="secondary">
+            I also should come into focus, rather than the panel.
+          </FillButton>
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
+  ),
 };

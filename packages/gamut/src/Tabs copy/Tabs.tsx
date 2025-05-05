@@ -20,7 +20,7 @@ export interface TabsProps extends TabsBaseProps, ReactAriaTabsProps {}
 const TabsBase = styled(
   ReactAriaTabs,
   styledOptions
-)<TabsBaseProps>(tabElementBaseProps);
+)<TabsProps>(tabElementBaseProps);
 
 export const Tabs: React.FC<TabsProps> = (props) => {
   return (
