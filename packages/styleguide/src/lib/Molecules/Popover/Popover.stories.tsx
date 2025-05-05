@@ -33,7 +33,7 @@ const PopoverExample = ({ p = 16, ...rest }: PopoverExampleProps) => {
   const toggleOpen = () => setOpen(!open);
   return (
     <>
-      <Box ref={activeElRef}>
+      <Box ref={activeElRef} width="fit-content">
         <FillButton onClick={toggleOpen}>Open Popover</FillButton>
       </Box>
       <FlexBox>
@@ -76,15 +76,29 @@ export const Above: Story = {
 };
 
 export const Below: Story = {
-  render: (args) => <PopoverExample {...args} align="left" />,
+  render: (args) => <PopoverExample {...args} />,
 };
-export const Left: Story = {
-  render: (args) => <PopoverExample {...args} align="left" position="center" />,
+export const CenterLeft: Story = {
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      align="left"
+      position="center"
+      horizontalOffset={15}
+      beak="right"
+    />
+  ),
 };
 
-export const Right: Story = {
+export const CenterRight: Story = {
   render: (args) => (
-    <PopoverExample {...args} align="right" position="center" />
+    <PopoverExample
+      {...args}
+      align="right"
+      position="center"
+      horizontalOffset={15}
+      beak="left"
+    />
   ),
 };
 
@@ -144,6 +158,6 @@ export const Animation: Story = {
 
 export const Variant: Story = {
   render: (args) => (
-    <PopoverExample align="right" variant="secondary" beak="left" {...args} />
+    <PopoverExample beak="left" variant="secondary" {...args} />
   ),
 };

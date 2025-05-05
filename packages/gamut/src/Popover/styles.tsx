@@ -54,21 +54,40 @@ export const beakBorderStates = states({
   hasBorder: borderStyles,
 });
 
+const beakBoxAboveBelow = {
+  alignItems: 'flex-end',
+  height: '15px',
+  width: '100%',
+  justifyContent: 'center',
+};
+
+const beakBoxCenterVert = {
+  height: '100%',
+  width: '15px',
+  backgroundColor: 'red',
+};
 export const beakBoxVariants = variant({
   base: {
-    alignItems: 'flex-end',
-    height: '15px',
-    justifyContent: 'center',
-    left: 0,
     position: 'absolute',
-    width: '100%',
   },
   variants: {
     above: {
       bottom: -15,
+      left: 0,
+      ...beakBoxAboveBelow,
     },
     below: {
       top: -15,
+      left: 0,
+      beakBoxAboveBelow,
+    },
+    left: {
+      left: -10,
+      beakBoxCenterVert,
+    },
+    right: {
+      right: -10,
+      beakBoxCenterVert,
     },
   },
 });
@@ -85,6 +104,8 @@ const beakVariantsArray = [
   'above-left-sml',
   'above-right-sml',
   'above-center-sml',
+  'center-left-sml',
+  'center-right-sml',
 ];
 
 const beakVariantStyles = createVariantsFromAlignments(
@@ -95,7 +116,7 @@ const beakVariantStyles = createVariantsFromAlignments(
 export const beakVariants = variant({
   base: {
     transform: 'rotate(45deg)',
-    background: 'transparent',
+    background: 'red',
     zIndex: 1,
     position: 'fixed',
   },

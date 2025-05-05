@@ -52,7 +52,11 @@ The outline color is `theme.colors.secondary` so in Dark Mode, the outline will 
 
 ### Position
 
-Using the position prop, you can add a position (`above` or `below`) to the popover. It will be `below` by default.
+Using the position prop, you can add a position to the popover.
+
+`above` and `below` will position the popover centered to the vertical line of the target element.
+
+`center` will position the popover centered to the horizontal center of the target element and shifted to the aligned side.
 
 <LayoutGrid gap={32}>
 
@@ -66,12 +70,12 @@ Using the position prop, you can add a position (`above` or `below`) to the popo
   <Canvas of={PopoverStories.Below} />
 </Column>
 <Column size={6} variant={false} mx={8}>
-  #### Left
-  <Canvas of={PopoverStories.Left} />
+  #### Center Left
+  <Canvas of={PopoverStories.CenterLeft} />
 </Column>
 <Column size={6} variant={false} mx={8}>
-  #### Right
-  <Canvas of={PopoverStories.Right} />
+  #### Center Right
+  <Canvas of={PopoverStories.CenterRight} />
 </Column>
 
 </LayoutGrid>

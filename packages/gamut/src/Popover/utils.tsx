@@ -1,7 +1,22 @@
 import { theme } from '@codecademy/gamut-styles';
 
 import { tooltipBackgroundColor } from '../Tip/shared/styles';
+import { PopoverProps } from './types';
 
+export const getBeakFromAlignment = ({
+  align = 'left',
+  beak = 'center',
+  position = 'below',
+}: Pick<PopoverProps, 'beak' | 'align' | 'position'>):
+  | 'above'
+  | 'below'
+  | 'left'
+  | 'right' => {
+  if (position === 'center') {
+    return beak === 'center' ? align : beak;
+  }
+  return position;
+};
 const popoverAbove = {
   borderLeft: 'none',
   borderTop: 'none',
@@ -22,8 +37,8 @@ const beakLeft = {
   left: '25px',
 };
 
-const beakCenter = {
-  left: 'calc(50% - 10px)',
+const beakHorizontCenter = {
+  top: 'calc(50% - 10px)',
 };
 
 const popoverAboveSml = {
@@ -52,6 +67,10 @@ const beakCenterSml = {
   left: 'calc(50% - 8px)',
 };
 
+const beakHorizontCenterSml = {
+  top: 'calc(50% - 8px)',
+};
+
 const beakCenterSmlAbove = {
   backgroundImage: `linear-gradient(to top left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
 };
@@ -62,35 +81,44 @@ const beakCenterSmlBelow = {
 
 export const createBeakVariantFromAlignment = (alignment: string) => {
   let styleObject = {};
+  const isAbove = alignment.includes('above');
+  const isBelow = alignment.includes('below');
+  const isRight = alignment.includes('right');
+  const isHorizontCenter = alignment.includes('-center');
+  const isVertCenter = alignment.includes('center-');
 
   if (alignment.includes('sml')) {
-    if (alignment.includes('above')) {
-      styleObject = { ...popoverAboveSml };
+    if (isVertCenter) {
+      styleObject = { ...beakHorizontCenterSml };
     } else {
-      styleObject = { ...popoverBelowSml };
-    }
-    if (alignment.includes('right')) {
-      styleObject = { ...beakRightSml, ...styleObject };
-    } else if (alignment.includes('center')) {
-      styleObject = { ...beakCenterSml, ...styleObject };
-      if (alignment.includes('above')) {
-        styleObject = { ...beakCenterSmlAbove, ...styleObject };
-      } else if (alignment.includes('below')) {
-        styleObject = { ...beakCenterSmlBelow, ...styleObject };
+      if (isAbove) {
+        styleObject = { ...popoverAboveSml };
+      } else {
+        styleObject = { ...popoverBelowSml };
       }
-    } else {
-      styleObject = { ...beakLeftSml, ...styleObject };
+      if (isRight) {
+        styleObject = { ...beakRightSml, ...styleObject };
+      } else if (isHorizontCenter) {
+        styleObject = { ...beakCenterSml, ...styleObject };
+        if (isAbove) {
+          styleObject = { ...beakCenterSmlAbove, ...styleObject };
+        } else if (isBelow) {
+          styleObject = { ...beakCenterSmlBelow, ...styleObject };
+        }
+      } else {
+        styleObject = { ...beakLeftSml, ...styleObject };
+      }
     }
   } else {
-    if (alignment.includes('above')) {
+    if (isAbove) {
       styleObject = { ...popoverAbove };
     } else {
       styleObject = { ...popoverBelow };
     }
-    if (alignment.includes('right')) {
+    if (isRight) {
       styleObject = { ...beakRight, ...styleObject };
-    } else if (alignment.includes('center')) {
-      styleObject = { ...beakCenter, ...styleObject };
+    } else if (isHorizontCenter) {
+      styleObject = { ...beakHorizontCenter, ...styleObject };
     } else {
       styleObject = { ...beakLeft, ...styleObject };
     }

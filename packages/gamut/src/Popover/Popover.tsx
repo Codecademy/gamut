@@ -12,6 +12,7 @@ import {
   RaisedDiv,
 } from './elements';
 import { PopoverProps } from './types';
+import { getBeakFromAlignment } from './utils';
 
 const findScrollingParent = ({
   parentElement,
@@ -63,25 +64,25 @@ export const Popover: React.FC<PopoverProps> = ({
   verticalOffset = variant === 'secondary' ? 15 : 20,
   widthRestricted,
 }) => {
-  const [targetRect, setTargetRect] = useState<DOMRect>();
   const [popoverHeight, setPopoverHeight] = useState<number>(0);
+  const [popoverWidth, setPopoverWidth] = useState<number>(0);
+  const [targetRect, setTargetRect] = useState<DOMRect>();
   const [isInViewport, setIsInViewport] = useState(true);
   const { width, height } = useWindowSize();
   const { x, y } = useWindowScroll();
 
   const getHeightRef = (popover: HTMLDivElement) => {
     if (popover) {
-      console.log('Element:', popover);
-      const { height } = popover.getBoundingClientRect();
+      const { height, width } = popover.getBoundingClientRect();
       setPopoverHeight(height);
-      console.log(height);
+      setPopoverWidth(width);
     }
   };
 
   const getPopoverPosition = useCallback(() => {
     if (!targetRect) return {};
-    // if (!popoverRect) return {};
 
+    const isCentered = position === 'center';
     const positions = {
       above: Math.round(targetRect.top - verticalOffset),
       below: Math.round(targetRect.top + targetRect.height + verticalOffset),
@@ -90,20 +91,25 @@ export const Popover: React.FC<PopoverProps> = ({
       ),
     };
     const alignments = {
-      right: Math.round(window.scrollX + targetRect.right + horizontalOffset),
-      left: Math.round(window.scrollX + targetRect.left - horizontalOffset),
+      right: isCentered
+        ? Math.round(targetRect.right + popoverWidth + horizontalOffset)
+        : Math.round(window.scrollX + targetRect.right + horizontalOffset),
+      left: isCentered
+        ? Math.round(targetRect.left - popoverWidth - horizontalOffset)
+        : Math.round(window.scrollX + targetRect.left - horizontalOffset),
     };
     return {
       top: positions[position],
       left: alignments[align],
     };
   }, [
-    targetRect,
-    popoverHeight,
-    verticalOffset,
-    horizontalOffset,
     align,
+    horizontalOffset,
+    popoverHeight,
+    popoverWidth,
     position,
+    targetRect,
+    verticalOffset,
   ]);
 
   useEffect(() => {
@@ -195,7 +201,7 @@ export const Popover: React.FC<PopoverProps> = ({
         ref={getHeightRef}
       >
         {beak && (
-          <BeakBox variant={position === 'center' ? 'above' : position}>
+          <BeakBox variant={getBeakFromAlignment({ align, beak, position })}>
             <Beak
               beak={`${position}-${beak}${
                 variant === 'secondary' ? '-sml' : ''
