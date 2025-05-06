@@ -75,16 +75,9 @@ const beakCenterSml = {
 };
 
 const beakYSml = {
-  top: 'calc(50% - 8px)',
+  top: 'calc(50% - 75px)',
 };
 
-const beakYLeftSml = {
-  left: '-7px',
-};
-
-const beakYRightSml = {
-  right: '7px',
-};
 const beakCenterSmlAbove = {
   backgroundImage: `linear-gradient(to top left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
 };
@@ -102,7 +95,7 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
   const isYCenter = alignment.includes('center-');
 
   if (alignment.includes('sml')) {
-    if (isYCenter) {
+    if (isYCenter && !isXCenter) {
       styleObject = { ...beakYSml };
     } else {
       if (isAbove) {

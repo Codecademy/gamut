@@ -176,7 +176,6 @@ export const Popover: React.FC<PopoverProps> = ({
     },
     [onRequestClose, targetRef]
   );
-
   if ((!isOpen || !targetRef) && !animation) return null;
   const alignment =
     (variant === 'primary' || beak) && beak !== 'center'

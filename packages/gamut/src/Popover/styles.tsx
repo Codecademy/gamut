@@ -59,6 +59,7 @@ const beakBoxX = {
   height: '15px',
   width: '100%',
   justifyContent: 'center',
+  left: 0,
 };
 
 const beakBoxY = {
@@ -73,12 +74,10 @@ export const beakBoxVariants = variant({
   variants: {
     above: {
       bottom: -15,
-      left: 0,
       ...beakBoxX,
     },
     below: {
       top: -15,
-      left: 0,
       ...beakBoxX,
     },
     right: {
