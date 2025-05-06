@@ -29,6 +29,7 @@ type PopoverExampleProps = PopoverProps & Pick<FlexBoxProps, 'p'>;
 
 const PopoverExample = ({ p = 16, ...rest }: PopoverExampleProps) => {
   const [open, setOpen] = useState(false);
+
   const activeElRef = useRef<HTMLDivElement>(null);
   const toggleOpen = () => setOpen(!open);
   return (
@@ -60,7 +61,7 @@ export const Default: Story = {
 };
 
 export const Beak: Story = {
-  render: (args) => <PopoverExample {...args} beak="left" />,
+  render: (args) => <PopoverExample {...args} position="below" beak="left" />,
 };
 
 export const BeakCentered: Story = {
@@ -72,7 +73,7 @@ export const Outline: Story = {
 };
 
 export const Above: Story = {
-  render: (args) => <PopoverExample {...args} position="above" />,
+  render: (args) => <PopoverExample {...args} position="above" beak="center" />,
 };
 
 export const Below: Story = {
@@ -80,13 +81,16 @@ export const Below: Story = {
 };
 export const CenterLeft: Story = {
   render: (args) => (
-    <PopoverExample
-      {...args}
-      align="left"
-      position="center"
-      horizontalOffset={15}
-      beak="right"
-    />
+    <FlexBox center width="100%" p={48}>
+      <PopoverExample
+        {...args}
+        align="left"
+        beak="top"
+        horizontalOffset={20}
+        position="center"
+        variant="secondary"
+      />
+    </FlexBox>
   ),
 };
 
@@ -95,9 +99,10 @@ export const CenterRight: Story = {
     <PopoverExample
       {...args}
       align="right"
+      beak="top"
+      horizontalOffset={30}
       position="center"
-      horizontalOffset={15}
-      beak="left"
+      variant="secondary"
     />
   ),
 };
@@ -157,7 +162,5 @@ export const Animation: Story = {
 };
 
 export const Variant: Story = {
-  render: (args) => (
-    <PopoverExample beak="left" variant="secondary" {...args} />
-  ),
+  render: (args) => <PopoverExample beak="left" variant="secondary" />,
 };

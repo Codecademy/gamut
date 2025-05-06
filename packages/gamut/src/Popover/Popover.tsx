@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import * as React from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
@@ -201,7 +201,7 @@ export const Popover: React.FC<PopoverProps> = ({
         ref={getHeightRef}
       >
         {beak && (
-          <BeakBox variant={getBeakFromAlignment({ align, beak, position })}>
+          <BeakBox variant={getBeakFromAlignment({ align, position })}>
             <Beak
               beak={`${position}-${beak}${
                 variant === 'secondary' ? '-sml' : ''

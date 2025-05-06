@@ -2,9 +2,14 @@ import { useRef } from 'react';
 import * as React from 'react';
 
 import { DelayedRenderWrapper } from '../DelayedRenderWrapper';
-import { Popover, PopoverBaseProps, PopoverProps } from '../Popover';
+import {
+  Popover,
+  PopoverFocusProps,
+  PopoverProps,
+  PopoverYPositionType,
+} from '../Popover';
 
-export type CoachmarkProps = PopoverBaseProps & {
+export type CoachmarkProps = PopoverFocusProps & {
   /**
    * Applied to the element to which the coachmark points.
    */
@@ -29,7 +34,9 @@ export type CoachmarkProps = PopoverBaseProps & {
   /**
    * Props to be passed into the popover component.
    */
-  popoverProps?: Partial<PopoverProps>;
+  popoverProps?: Partial<
+    Omit<PopoverProps, 'beak' | 'position'> & PopoverYPositionType
+  >;
 };
 
 export const Coachmark: React.FC<CoachmarkProps> = ({

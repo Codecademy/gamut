@@ -27,9 +27,35 @@ export type SkippedFocusTrapPopoverProps = {
   skipFocusTrap: true;
 };
 
-export type PopoverBaseProps =
+export type PopoverFocusProps =
   | FocusTrapPopoverProps
   | SkippedFocusTrapPopoverProps;
+
+export type PopoverYPositionType = {
+  /**
+   * Which horizontal edge of the source componet to align against. Center aligns it centered to the component.
+   */
+  position?: 'above' | 'below';
+  /**
+   * Which side to position the beak. If not provided, beak will not be rendered.
+   */
+  beak?: 'left' | 'right' | 'center';
+};
+
+export type PopoverXPositionType = {
+  /**
+   * Which horizontal edge of the source componet to align against. Center aligns it centered to the component.
+   */
+  position: 'center';
+  /**
+   * Which side to position the beak. If not provided, beak will not be rendered.
+   */
+  beak: 'center';
+};
+
+export type PopoverBaseProps =
+  | (PopoverFocusProps & PopoverYPositionType)
+  | (PopoverFocusProps & PopoverXPositionType);
 
 export type PopoverProps = PopoverBaseProps &
   PopoverVariants &
@@ -56,14 +82,6 @@ export type PopoverProps = PopoverBaseProps &
      * Whether to add outline style (i.e. used for dropdowns and coachmarks).
      */
     outline?: boolean;
-    /**
-     * Which horizontal edge of the source componet to align against. Center aligns it centered to the component.
-     */
-    position?: 'above' | 'below' | 'center';
-    /**
-     * Which side to position the beak. If not provided, beak will not be rendered.
-     */
-    beak?: 'left' | 'right' | 'center';
     /**
      * Whether the popover is rendered.
      */

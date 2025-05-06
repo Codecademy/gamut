@@ -1,11 +1,13 @@
 import { theme } from '@codecademy/gamut-styles';
 
-import { tooltipBackgroundColor } from '../Tip/shared/styles';
+import {
+  alignedStylesAfter,
+  tooltipBackgroundColor,
+} from '../Tip/shared/styles';
 import { PopoverProps } from './types';
 
 export const getBeakFromAlignment = ({
   align = 'left',
-  beak = 'center',
   position = 'below',
 }: Pick<PopoverProps, 'beak' | 'align' | 'position'>):
   | 'above'
@@ -13,10 +15,11 @@ export const getBeakFromAlignment = ({
   | 'left'
   | 'right' => {
   if (position === 'center') {
-    return beak === 'center' ? align : beak;
+    return align;
   }
   return position;
 };
+
 const popoverAbove = {
   borderLeft: 'none',
   borderTop: 'none',
@@ -37,7 +40,11 @@ const beakLeft = {
   left: '25px',
 };
 
-const beakHorizontCenter = {
+const beakXCenter = {
+  left: 'calc(50% - 10px)',
+};
+
+const beakYCenter = {
   top: 'calc(50% - 10px)',
 };
 
@@ -67,10 +74,17 @@ const beakCenterSml = {
   left: 'calc(50% - 8px)',
 };
 
-const beakHorizontCenterSml = {
+const beakYSml = {
   top: 'calc(50% - 8px)',
 };
 
+const beakYLeftSml = {
+  left: '-7px',
+};
+
+const beakYRightSml = {
+  right: '7px',
+};
 const beakCenterSmlAbove = {
   backgroundImage: `linear-gradient(to top left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
 };
@@ -84,12 +98,12 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
   const isAbove = alignment.includes('above');
   const isBelow = alignment.includes('below');
   const isRight = alignment.includes('right');
-  const isHorizontCenter = alignment.includes('-center');
-  const isVertCenter = alignment.includes('center-');
+  const isXCenter = alignment.includes('-center');
+  const isYCenter = alignment.includes('center-');
 
   if (alignment.includes('sml')) {
-    if (isVertCenter) {
-      styleObject = { ...beakHorizontCenterSml };
+    if (isYCenter) {
+      styleObject = { ...beakYSml };
     } else {
       if (isAbove) {
         styleObject = { ...popoverAboveSml };
@@ -98,7 +112,7 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
       }
       if (isRight) {
         styleObject = { ...beakRightSml, ...styleObject };
-      } else if (isHorizontCenter) {
+      } else if (isXCenter) {
         styleObject = { ...beakCenterSml, ...styleObject };
         if (isAbove) {
           styleObject = { ...beakCenterSmlAbove, ...styleObject };
@@ -109,6 +123,8 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
         styleObject = { ...beakLeftSml, ...styleObject };
       }
     }
+  } else if (isYCenter) {
+    styleObject = { ...beakYCenter };
   } else {
     if (isAbove) {
       styleObject = { ...popoverAbove };
@@ -117,8 +133,8 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
     }
     if (isRight) {
       styleObject = { ...beakRight, ...styleObject };
-    } else if (isHorizontCenter) {
-      styleObject = { ...beakHorizontCenter, ...styleObject };
+    } else if (isXCenter) {
+      styleObject = { ...beakXCenter, ...styleObject };
     } else {
       styleObject = { ...beakLeft, ...styleObject };
     }

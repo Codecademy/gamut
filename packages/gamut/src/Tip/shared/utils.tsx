@@ -1,6 +1,10 @@
 import { timingValues } from '@codecademy/gamut-styles';
 
-import { PopoverProps } from '../../Popover';
+import {
+  PopoverProps,
+  PopoverXPositionType,
+  PopoverYPositionType,
+} from '../../Popover';
 import {
   bottomCenterStylesAfter,
   bottomStyles,
@@ -39,8 +43,10 @@ export const getAlignmentWidths = ({
 export const getPopoverAlignment = ({
   alignment = 'top-left',
   type,
-}: Partial<Pick<TipPlacementComponentProps, 'alignment' | 'type'>>) => {
-  const popoverAlignment: Pick<PopoverProps, 'align' | 'beak' | 'position'> = {
+}: Partial<Pick<TipPlacementComponentProps, 'alignment' | 'type'>>):
+  | (PopoverXPositionType & Pick<PopoverProps, 'align'>)
+  | (PopoverYPositionType & Pick<PopoverProps, 'align'>) => {
+  const popoverAlignment: PopoverYPositionType & Pick<PopoverProps, 'align'> = {
     align: 'right',
     beak: 'right',
     position: 'above',
@@ -50,15 +56,28 @@ export const getPopoverAlignment = ({
     popoverAlignment.align = undefined;
   }
 
-  if (alignment.includes('bottom')) popoverAlignment.position = 'below';
-
-  if (alignment.includes('right')) {
-    popoverAlignment.align = 'left';
-    popoverAlignment.beak = 'left';
-  }
-
   if (alignment.includes('center')) {
     popoverAlignment.beak = 'center';
+  }
+
+  if (alignment.includes('-center')) {
+    if (alignment.includes('left-')) {
+      popoverAlignment.align = 'left';
+    } else {
+      popoverAlignment.align = 'right';
+    }
+    return {
+      beak: 'center',
+      position: 'center',
+      align: popoverAlignment.align,
+    };
+  }
+
+  if (alignment.includes('bottom')) popoverAlignment.position = 'below';
+
+  if (alignment.includes('-right')) {
+    popoverAlignment.align = 'left';
+    popoverAlignment.beak = 'left';
   }
 
   return popoverAlignment;

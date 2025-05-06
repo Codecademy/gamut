@@ -54,18 +54,18 @@ export const beakBorderStates = states({
   hasBorder: borderStyles,
 });
 
-const beakBoxAboveBelow = {
+const beakBoxX = {
   alignItems: 'flex-end',
   height: '15px',
   width: '100%',
   justifyContent: 'center',
 };
 
-const beakBoxCenterVert = {
+const beakBoxY = {
   height: '100%',
   width: '15px',
-  backgroundColor: 'red',
 };
+
 export const beakBoxVariants = variant({
   base: {
     position: 'absolute',
@@ -74,23 +74,24 @@ export const beakBoxVariants = variant({
     above: {
       bottom: -15,
       left: 0,
-      ...beakBoxAboveBelow,
+      ...beakBoxX,
     },
     below: {
       top: -15,
       left: 0,
-      beakBoxAboveBelow,
-    },
-    left: {
-      left: -10,
-      beakBoxCenterVert,
+      beakBoxAboveBelow: beakBoxX,
     },
     right: {
-      right: -10,
-      beakBoxCenterVert,
+      left: -7,
+      ...beakBoxY,
+    },
+    left: {
+      right: -7,
+      ...beakBoxY,
     },
   },
 });
+
 const beakVariantsArray = [
   'below-left',
   'below-right',
@@ -98,14 +99,18 @@ const beakVariantsArray = [
   'above-left',
   'above-right',
   'above-center',
+  'center-top',
+  'center-center',
+  'center-bottom',
   'below-left-sml',
   'below-right-sml',
   'below-center-sml',
   'above-left-sml',
   'above-right-sml',
   'above-center-sml',
-  'center-left-sml',
-  'center-right-sml',
+  'center-top-sml',
+  'center-center-sml',
+  'center-bottom-sml',
 ];
 
 const beakVariantStyles = createVariantsFromAlignments(
