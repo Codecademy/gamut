@@ -79,7 +79,7 @@ export const beakBoxVariants = variant({
     below: {
       top: -15,
       left: 0,
-      beakBoxAboveBelow: beakBoxX,
+      ...beakBoxX,
     },
     right: {
       left: -7,
@@ -99,18 +99,12 @@ const beakVariantsArray = [
   'above-left',
   'above-right',
   'above-center',
-  'center-top',
-  'center-center',
-  'center-bottom',
   'below-left-sml',
   'below-right-sml',
   'below-center-sml',
   'above-left-sml',
   'above-right-sml',
   'above-center-sml',
-  'center-top-sml',
-  'center-center-sml',
-  'center-bottom-sml',
 ];
 
 const beakVariantStyles = createVariantsFromAlignments(

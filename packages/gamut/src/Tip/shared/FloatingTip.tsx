@@ -56,6 +56,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   }, [alignment, tipWidth]);
 
   const popoverAlignments = getPopoverAlignment({ alignment, type });
+
   const dims = getAlignmentWidths({ avatar, alignment, type });
 
   let hoverDelay: NodeJS.Timeout | undefined;
@@ -133,8 +134,8 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         {...popoverAlignments}
         animation="fade"
         dims={dims}
-        horizontalOffset={offset}
-        isOpen
+        horizontalOffset={0}
+        isOpen={isOpen}
         outline
         pattern={isPreviewType ? CheckerDense : undefined}
         skipFocusTrap

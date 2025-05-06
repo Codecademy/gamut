@@ -60,7 +60,7 @@ export const getPopoverAlignment = ({
     popoverAlignment.beak = 'center';
   }
 
-  if (alignment.includes('-center')) {
+  if (alignment.includes('right-') || alignment.includes('left-')) {
     if (alignment.includes('left-')) {
       popoverAlignment.align = 'left';
     } else {
