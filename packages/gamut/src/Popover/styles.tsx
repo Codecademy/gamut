@@ -104,6 +104,8 @@ const beakVariantsArray = [
   'above-left-sml',
   'above-right-sml',
   'above-center-sml',
+  'center-center',
+  'center-center-sml',
 ];
 
 const beakVariantStyles = createVariantsFromAlignments(
@@ -114,7 +116,7 @@ const beakVariantStyles = createVariantsFromAlignments(
 export const beakVariants = variant({
   base: {
     transform: 'rotate(45deg)',
-    background: 'red',
+    background: 'transparent',
     zIndex: 1,
     position: 'fixed',
   },

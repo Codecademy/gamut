@@ -1,9 +1,6 @@
 import { theme } from '@codecademy/gamut-styles';
 
-import {
-  alignedStylesAfter,
-  tooltipBackgroundColor,
-} from '../Tip/shared/styles';
+import { tooltipBackgroundColor } from '../Tip/shared/styles';
 import { PopoverProps } from './types';
 
 export const getBeakFromAlignment = ({
@@ -75,7 +72,7 @@ const beakCenterSml = {
 };
 
 const beakYSml = {
-  top: 'calc(50% - 75px)',
+  top: 'calc(50% - 8px)',
 };
 
 const beakCenterSmlAbove = {
@@ -92,10 +89,10 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
   const isBelow = alignment.includes('below');
   const isRight = alignment.includes('right');
   const isXCenter = alignment.includes('-center');
-  const isYCenter = alignment.includes('center-');
+  const isYCenter = alignment.includes('center-center');
 
   if (alignment.includes('sml')) {
-    if (isYCenter && !isXCenter) {
+    if (isYCenter) {
       styleObject = { ...beakYSml };
     } else {
       if (isAbove) {
