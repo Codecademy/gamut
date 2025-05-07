@@ -81,7 +81,7 @@ export const beakBoxVariants = variant({
       ...beakBoxX,
     },
     right: {
-      left: -7,
+      left: -8,
       ...beakBoxY,
     },
     left: {
