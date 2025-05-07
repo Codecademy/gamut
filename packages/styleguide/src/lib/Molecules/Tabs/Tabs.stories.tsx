@@ -1,6 +1,8 @@
 import {
   Badge,
   FillButton,
+  FormGroup,
+  Input,
   Tab,
   TabList,
   TabNav,
@@ -12,7 +14,7 @@ import {
 } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const meta: Meta<typeof Tabs> = {
   component: Tabs,
@@ -26,15 +28,22 @@ const meta: Meta<typeof Tabs> = {
     TabNav: TabNav as React.ComponentType<unknown>,
     TabNavLink: TabNavLink as React.ComponentType<unknown>,
   },
-  args: {},
+  args: {
+    variant: 'standard',
+    defaultSelectedKey: '1',
+    orientation: 'vertical',
+    disabledKeys: [],
+    selectedKey: undefined,
+    onSelectionChange: () => {},
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Tabs>;
 
 export const Default: Story = {
-  render: () => (
-    <Tabs variant="standard" keyboardActivation="manual">
+  render: (args) => (
+    <Tabs {...args}>
       <TabList mx={24}>
         <Tab id="1">Tab 1</Tab>
         <Tab id="2">Tab 2</Tab>
@@ -61,15 +70,32 @@ export const Default: Story = {
 export const Controlled = () => {
   const [controlledIndex, setControlledIndex] = useState(1);
 
+  const maxTabIndex = 3;
+  const setIndex = useCallback(
+    (value: string | number) => {
+      const val = Number(value);
+      if (val > maxTabIndex) return setControlledIndex(1);
+      if (val < 1) return setControlledIndex(maxTabIndex);
+      setControlledIndex(val);
+    },
+    [setControlledIndex]
+  );
+
   return (
     <>
       <Background bg="yellow" mb={24} p={12}>
-        <Text>The currently selected tab is {controlledIndex}</Text>
+        <FormGroup label="Tab Index" htmlFor="tab-index">
+          <Input
+            label="Tab Index"
+            value={controlledIndex}
+            onChange={(e) => setIndex(e.target.value)}
+            type="number"
+            min={1}
+            htmlFor="tab-index"
+          />
+        </FormGroup>
       </Background>
-      <Tabs
-        selectedKey={controlledIndex}
-        onSelectionChange={(val) => setControlledIndex(Number(val))}
-      >
+      <Tabs selectedKey={String(controlledIndex)} onSelectionChange={setIndex}>
         <TabList mx={24}>
           <Tab id="1">Tab 1</Tab>
           <Tab id="2">Tab 2</Tab>
@@ -94,7 +120,7 @@ export const Controlled = () => {
   );
 };
 
-export const TabsBadge: Story = {
+export const WithBage: Story = {
   render: (args) => (
     <Tabs {...args}>
       <TabList>
@@ -122,7 +148,7 @@ export const TabsBadge: Story = {
   ),
 };
 
-export const TabsBlock: Story = {
+export const BlockVariant: Story = {
   render: (args) => (
     <Tabs {...args} variant="block">
       <TabList>
@@ -160,7 +186,7 @@ export const TabsNav: Story = {
   ),
 };
 
-export const TabsInteractiveContent: Story = {
+export const InteractiveContent: Story = {
   render: (args) => (
     <Tabs {...args}>
       <TabList mx={24}>
@@ -184,6 +210,34 @@ export const TabsInteractiveContent: Story = {
           <FillButton variant="secondary">
             I also should come into focus, rather than the panel.
           </FillButton>
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
+  ),
+};
+
+export const Disabled: Story = {
+  render: (args) => (
+    <Tabs {...args}>
+      <TabList>
+        <Tab id="1">Tab 1</Tab>
+        <Tab id="2" isDisabled>
+          Tab 2
+        </Tab>
+        <Tab id="3">Tab 3</Tab>
+      </TabList>
+      <TabPanels my={24}>
+        <TabPanel id="1">
+          <Text as="h2">Welcome to Tab 1</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
+        </TabPanel>
+        <TabPanel id="2">
+          <Text as="h2">Welcome to Tab 2</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
+        </TabPanel>
+        <TabPanel id="3">
+          <Text as="h2">Welcome to Tab 3</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
         </TabPanel>
       </TabPanels>
     </Tabs>

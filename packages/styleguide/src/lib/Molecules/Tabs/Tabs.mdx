@@ -46,13 +46,13 @@ When `selectedKey` is specified, the component switches to being a controlled co
 
 Tabs can use the Badge component to display a status, e.g. indicate new or updated content.
 
-<Canvas of={TabStories.TabsBadge} />
+<Canvas of={TabStories.WithBage} />
 
 ### Block variant
 
 If you pass in the variant 'block', you will get a slim, dark mode version of tabs.
 
-<Canvas of={TabStories.TabsBlock} />
+<Canvas of={TabStories.BlockVariant} />
 
 ### Tab navigation
 
@@ -64,9 +64,15 @@ It is recommended to add a unique `aria-label` to the `TabNav` component, to dif
 
 ### Tabs with interactive content
 
-If you have tabs with interactive content within them (such as a button or link), you need to add `tabindex={-1}` to the TabPanel so that the interactive content, rather than the TabPanel itself, become focused.
+If you have tabs with interactive content within them (such as a button or link), the interactive content, rather than the TabPanel itself, will become focused.
 
-<Canvas of={TabStories.TabsInteractiveContent} />
+<Canvas of={TabStories.InteractiveContent} />
+
+### Disabled
+
+You can disable a tab by passing the `isDisabled` prop to the `Tab` component, or by passing an array of tab keys that should be disabled to the `Tabs` component. This will prevent the tab from being selected and will also grey it out.
+
+<Canvas of={TabStories.Disabled} />
 
 ## Playground
 
