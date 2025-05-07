@@ -53,7 +53,7 @@ export const getPopoverAlignment = ({
   };
 
   if (type === 'tool') {
-    popoverAlignment.align = undefined;
+    popoverAlignment.align = 'center';
   }
 
   if (alignment.includes('center')) {

@@ -105,7 +105,8 @@ const beakVariantsArray = [
   'above-right-sml',
   'above-center-sml',
   'center-center',
-  'center-center-sml',
+  'center-right-sml',
+  'center-left-sml',
 ];
 
 const beakVariantStyles = createVariantsFromAlignments(

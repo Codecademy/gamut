@@ -78,6 +78,7 @@ export const Above: Story = {
       {...args}
       position="above"
       beak="center"
+      align="center"
       variant="secondary"
     />
   ),
@@ -85,7 +86,12 @@ export const Above: Story = {
 
 export const Below: Story = {
   render: (args) => (
-    <PopoverExample {...args} beak="center" variant="secondary" />
+    <PopoverExample
+      {...args}
+      align="center"
+      beak="center"
+      variant="secondary"
+    />
   ),
 };
 export const CenterLeft: Story = {

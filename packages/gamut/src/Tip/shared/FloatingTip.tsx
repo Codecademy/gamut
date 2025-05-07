@@ -34,26 +34,9 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   wrapperRef,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [childRef, { width: tipWidth }] = useMeasure<HTMLDivElement>();
 
-  const [offset, setOffset] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-
-  useLayoutEffect(() => {
-    const isCentered = alignment.includes('center');
-
-    if (ref?.current) {
-      if (!isCentered) {
-        setOffset(-ref.current.clientWidth / 2 + 32);
-      } else {
-        const trueTw = tipWidth + 16;
-        const targetWidth = ref?.current.clientWidth;
-        const diffOs = (trueTw - targetWidth) / 2;
-        setOffset(diffOs);
-      }
-    }
-  }, [alignment, tipWidth]);
 
   const popoverAlignments = getPopoverAlignment({ alignment, type });
 
@@ -106,6 +89,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   ) : (
     info
   );
+  console.log(popoverAlignments);
 
   return (
     <Box
@@ -134,7 +118,6 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         {...popoverAlignments}
         animation="fade"
         dims={dims}
-        horizontalOffset={0}
         isOpen={isOpen}
         outline
         pattern={isPreviewType ? CheckerDense : undefined}
@@ -144,7 +127,6 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         widthRestricted={false}
       >
         <FloatingTipTextWrapper
-          ref={childRef}
           isHoverType={isHoverType}
           narrow={narrow}
           centered={alignment.includes('center')}

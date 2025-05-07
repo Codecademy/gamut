@@ -12,20 +12,26 @@ export const getBeakFromAlignment = ({
   | 'left'
   | 'right' => {
   if (position === 'center') {
-    return align;
+    return align === 'center' ? 'left' : align;
   }
   return position;
 };
 
+export const getBeakVariant = ({
+  align,
+  position,
+  beak,
+  variant,
+}: Pick<PopoverProps, 'align' | 'position' | 'beak' | 'variant'>) => {
+  const beakAlignment = position === 'center' ? align : beak;
+  return `${position}-${beakAlignment}${variant === 'secondary' ? '-sml' : ''}`;
+};
+
 const popoverAbove = {
-  borderLeft: 'none',
-  borderTop: 'none',
   top: 'calc(100% - 10px)',
 } as const;
 
 const popoverBelow = {
-  borderRight: 'none',
-  borderBottom: 'none',
   top: '-10px',
 } as const;
 
@@ -83,17 +89,34 @@ const beakCenterSmlBelow = {
   backgroundImage: `linear-gradient(to bottom right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
 };
 
+const beakCenterRightSml = {
+  backgroundImage: `linear-gradient(to top right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+  borderRight: 'none',
+  borderTop: 'none',
+};
+
+const beakCenterLeftSml = {
+  backgroundImage: `linear-gradient(to bottom left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+  borderLeft: 'none',
+  borderBottom: 'none',
+};
+
 export const createBeakVariantFromAlignment = (alignment: string) => {
   let styleObject = {};
   const isAbove = alignment.includes('above');
   const isBelow = alignment.includes('below');
   const isRight = alignment.includes('right');
   const isXCenter = alignment.includes('-center');
-  const isYCenter = alignment.includes('center-center');
+  const isYCenter = alignment.startsWith('center-');
 
   if (alignment.includes('sml')) {
     if (isYCenter) {
       styleObject = { ...beakYSml };
+      if (isRight) {
+        styleObject = { ...beakCenterRightSml, ...styleObject };
+      } else {
+        styleObject = { ...beakCenterLeftSml, ...styleObject };
+      }
     } else {
       if (isAbove) {
         styleObject = { ...popoverAboveSml };

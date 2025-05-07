@@ -12,7 +12,7 @@ import {
   RaisedDiv,
 } from './elements';
 import { PopoverProps } from './types';
-import { getBeakFromAlignment } from './utils';
+import { getBeakFromAlignment, getBeakVariant } from './utils';
 
 const findScrollingParent = ({
   parentElement,
@@ -82,7 +82,8 @@ export const Popover: React.FC<PopoverProps> = ({
   const getPopoverPosition = useCallback(() => {
     if (!targetRect) return {};
 
-    const isCentered = position === 'center';
+    const isLRCentered = position === 'center';
+
     const positions = {
       above: Math.round(targetRect.top - verticalOffset),
       below: Math.round(targetRect.top + targetRect.height + verticalOffset),
@@ -91,12 +92,15 @@ export const Popover: React.FC<PopoverProps> = ({
       ),
     };
     const alignments = {
-      right: isCentered
+      right: isLRCentered
         ? Math.round(targetRect.right + popoverWidth + horizontalOffset)
         : Math.round(window.scrollX + targetRect.right + horizontalOffset),
-      left: isCentered
+      left: isLRCentered
         ? Math.round(targetRect.left - popoverWidth - horizontalOffset)
         : Math.round(window.scrollX + targetRect.left - horizontalOffset),
+      center: Math.round(
+        targetRect.left + targetRect.width / 2 - popoverWidth / 2
+      ),
     };
     return {
       top: positions[position],
@@ -202,9 +206,7 @@ export const Popover: React.FC<PopoverProps> = ({
         {beak && (
           <BeakBox variant={getBeakFromAlignment({ align, position })}>
             <Beak
-              beak={`${position}-${beak}${
-                variant === 'secondary' ? '-sml' : ''
-              }`}
+              beak={getBeakVariant({ align, position, beak, variant })}
               data-testid="popover-beak"
               size={variant === 'secondary' ? 'sml' : 'lrg'}
               hasBorder={outline || variant === 'secondary'}

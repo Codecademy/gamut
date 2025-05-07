@@ -69,7 +69,7 @@ export type PopoverProps = PopoverBaseProps &
     /**
      * Which vertical edge of the source component to align against.
      */
-    align?: 'left' | 'right';
+    align?: 'left' | 'right' | 'center';
     /**
      * Number of pixels to offset the popover vertically from the source component.
      */
