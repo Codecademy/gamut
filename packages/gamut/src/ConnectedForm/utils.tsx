@@ -121,7 +121,8 @@ export const useFormState = () => {
     isSoloField,
   } = useContext(FormPropsContext);
 
-  const { isSubmitting, isDirty, errors } = formState;
+  const { isSubmitting, isDirty, errors, dirtyFields, touchedFields } =
+    formState;
   const isSubmitSuccessful = submitSuccessStatus(
     wasSubmitSuccessful,
     formState.isSubmitSuccessful
@@ -144,6 +145,8 @@ export const useFormState = () => {
     useFieldArray,
     validationRules,
     watch,
+    dirtyFields,
+    touchedFields,
   };
 };
 
