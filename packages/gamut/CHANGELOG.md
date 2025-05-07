@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [62.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@62.0.5...@codecademy/gamut@62.0.6) (2025-05-01)
+
+### Bug Fixes
+
+- **coachmark:** provide a default for skipfocustrap ([d2508c9](https://github.com/Codecademy/gamut/commit/d2508c9017e35fd6151302292d862d0d267b289a))
+
+### [62.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@62.0.4...@codecademy/gamut@62.0.5) (2025-05-01)
+
+### Bug Fixes
+
+- **SelectDropdown:** align styling of multi selection tags with Tag component ([31484e6](https://github.com/Codecademy/gamut/commit/31484e64023115021dc1b656a2196497ca1ada40))
+
+### [62.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@62.0.3...@codecademy/gamut@62.0.4) (2025-04-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [62.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@62.0.2...@codecademy/gamut@62.0.3) (2025-04-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [62.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@62.0.1...@codecademy/gamut@62.0.2) (2025-04-24)
+
+### Bug Fixes
+
+- **expandable components:** Add/update aria attributes to expandable components ([71fd235](https://github.com/Codecademy/gamut/commit/71fd235132575086fa95403678e001926d8f8f3a))
+
+### [62.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@62.0.0...@codecademy/gamut@62.0.1) (2025-04-21)
+
+### Bug Fixes
+
+- **modal + dialog:** updating aria attributes per a11y team feedback ([36b0fd0](https://github.com/Codecademy/gamut/commit/36b0fd0524aba879d2dee23be589933748acde88))
+
+## [62.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@61.1.2...@codecademy/gamut@62.0.0) (2025-04-21)
+
+### ⚠ BREAKING CHANGES
+
+- **Modal:** add multiview options for back and danger variant
+
+### Features
+
+- **Modal:** add multiview options for back and danger variant ([567dcac](https://github.com/Codecademy/gamut/commit/567dcacf35a7a3bc9e2b6574693d0eebfabff906))
+
+### [61.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@61.1.1...@codecademy/gamut@61.1.2) (2025-04-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [61.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@61.1.0...@codecademy/gamut@61.1.1) (2025-04-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ## [61.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@61.0.0...@codecademy/gamut@61.1.0) (2025-04-08)
 
 ### Features

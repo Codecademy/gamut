@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.42.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.42.1...@codecademy/gamut-icons@9.42.2) (2025-04-25)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.42.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.42.0...@codecademy/gamut-icons@9.42.1) (2025-04-25)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.42.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.41.0...@codecademy/gamut-icons@9.42.0) (2025-04-10)
+
+### Features
+
+- **Icon:** add WebFormProgress and GolfHoleBall icons ([93e0a68](https://github.com/Codecademy/gamut/commit/93e0a68701edc449c3d7fcdde0a3a93d4d384546))
+
+## [9.41.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.40.1...@codecademy/gamut-icons@9.41.0) (2025-04-10)
+
+### Features
+
+- **Icon:** add mini cursor icon ([5aac59c](https://github.com/Codecademy/gamut/commit/5aac59c2c4f35f7ca00f06b78aafcd766c9fa0a2))
+
 ### [9.40.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.40.0...@codecademy/gamut-icons@9.40.1) (2025-03-27)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
