@@ -1,4 +1,3 @@
-import { styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import {
   TabPanel as ReactAriaTabPanel,
@@ -8,8 +7,8 @@ import {
 import { tabElementBaseProps, TabElementStyleProps } from './props';
 
 interface TabPanelBaseProps
-  extends ReactAriaTabPanelProps,
-    TabElementStyleProps {}
+  extends TabElementStyleProps,
+    ReactAriaTabPanelProps {}
 
 export type TabPanelProps = TabPanelBaseProps &
   Omit<ReactAriaTabPanelProps, 'id'> & {
@@ -19,7 +18,5 @@ export type TabPanelProps = TabPanelBaseProps &
     id: string;
   };
 
-export const TabPanel = styled(
-  ReactAriaTabPanel,
-  styledOptions
-)<TabPanelProps>(tabElementBaseProps);
+export const TabPanel =
+  styled(ReactAriaTabPanel)<TabPanelProps>(tabElementBaseProps);

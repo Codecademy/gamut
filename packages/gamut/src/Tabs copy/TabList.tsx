@@ -1,4 +1,3 @@
-import { styledOptions } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import * as React from 'react';
@@ -21,7 +20,7 @@ export interface TabListProps
   extends TabListBaseProps,
     ReactAriaTabListProps<TabProps> {}
 
-const TabListBase = styled(ReactAriaTabList, styledOptions)<TabListProps>(
+const TabListBase = styled(ReactAriaTabList)<TabListProps>(
   tabContainerVariants,
   tabContainerStates,
   tabElementBaseProps

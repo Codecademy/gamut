@@ -1,4 +1,3 @@
-import { styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
 import {
@@ -20,7 +19,7 @@ export type TabProps = TabBaseProps &
     id: string;
   };
 
-export const TabBase = styled(ReactAriaTab, styledOptions)<TabProps>(
+export const TabBase = styled(ReactAriaTab)<TabProps>(
   tabVariants,
   tabStates,
   tabElementBaseProps

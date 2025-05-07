@@ -1,4 +1,4 @@
-import { Background, styledOptions } from '@codecademy/gamut-styles';
+import { Background } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import * as React from 'react';
@@ -17,10 +17,7 @@ export interface TabsBaseProps
 
 export interface TabsProps extends TabsBaseProps, ReactAriaTabsProps {}
 
-const TabsBase = styled(
-  ReactAriaTabs,
-  styledOptions
-)<TabsProps>(tabElementBaseProps);
+const TabsBase = styled(ReactAriaTabs)<TabsProps>(tabElementBaseProps);
 
 export const Tabs: React.FC<TabsProps> = (props) => {
   return (
