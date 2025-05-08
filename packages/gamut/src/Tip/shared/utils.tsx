@@ -34,14 +34,16 @@ export const runWithDelay = (func: () => void) => {
   return setTimeout(func, timingValues?.base);
 };
 
-export const getAlignmentWidths = ({
+export const getAlignmentStyles = ({
   alignment,
   avatar,
   type,
 }: Pick<TipWrapperProps, 'alignment' | 'avatar' | 'type'>) => {
   if (avatar) return 'avatarAligned';
   if (type === 'preview') return 'previewAligned';
-  return alignment.includes('center') ? 'centered' : 'aligned';
+  if (alignment.startsWith('left') || alignment.startsWith('left'))
+    return 'yCentered';
+  return alignment.includes('center') ? 'xCentered' : 'aligned';
 };
 
 export const getPopoverAlignment = ({

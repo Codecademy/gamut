@@ -10,7 +10,7 @@ import {
   TargetContainer,
 } from './elements';
 import { TipWrapperProps } from './types';
-import { getAlignmentWidths, getPopoverAlignment, runWithDelay } from './utils';
+import { getAlignmentStyles, getPopoverAlignment, runWithDelay } from './utils';
 
 type FocusOrMouseEvent =
   | React.FocusEvent<HTMLDivElement, Element>
@@ -39,7 +39,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
 
   const popoverAlignments = getPopoverAlignment({ alignment, type });
 
-  const dims = getAlignmentWidths({ avatar, alignment, type });
+  const dims = getAlignmentStyles({ avatar, alignment, type });
 
   let hoverDelay: NodeJS.Timeout | undefined;
   let focusDelay: NodeJS.Timeout | undefined;

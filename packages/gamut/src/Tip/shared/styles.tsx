@@ -152,7 +152,7 @@ export const tooltipVariantStyles = createVariantsFromAlignments(
   createToolTipVariantFromAlignment
 );
 
-const centeredBodyStyles = { m: 'auto', p: 4, textAlign: 'center' } as const;
+const centeredBodyStyles = { p: 4, textAlign: 'center' } as const;
 
 const alignedBodyStyles = { p: 16 } as const;
 
@@ -187,7 +187,12 @@ export const inlineToolTipState = states({
 export const inlineToolTipBodyAlignments = variant({
   prop: 'alignment',
   variants: {
-    centered: {
+    yCentered: {
+      my: 'auto',
+      minWidth: 8,
+      ...centeredBodyStyles,
+    },
+    xCentered: {
       ...centeredBodyStyles,
       ...centerWidths,
     },
