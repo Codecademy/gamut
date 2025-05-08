@@ -277,6 +277,8 @@ describe('ConnectedForm', () => {
       expect(radioOption).not.toBeDisabled();
     });
 
+    // commit for alpha
+
     describe('resetOnSubmit', () => {
       it('resets fields when form is successfully submitted', async () => {
         let submitCount = 0;
