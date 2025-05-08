@@ -14,6 +14,7 @@ import {
 export const tooltipBackgroundColor = `background-contrast`;
 export const tooltipArrowHeight = `1rem`;
 const containerOffsetVertical = 12;
+const borderColor = 'border-primary';
 
 export const narrowWidth = 64;
 export const centerWidths = { minWidth: 64, maxWidth: 128 } as const;
@@ -31,16 +32,26 @@ export const topStyles = {
   pb: containerOffsetVertical,
 } as const;
 
-const beforeStyles = {
+const beforeStylesVert = {
   content: '""',
   position: 'absolute',
   width: '100%',
 };
 
-export const topStylesBefore = { ...beforeStyles, height: 16, bottom: '-4px' };
+const beforeStylesHorizontal = {
+  content: '""',
+  position: 'absolute',
+  height: '100%',
+};
+
+export const topStylesBefore = {
+  ...beforeStylesVert,
+  height: 16,
+  bottom: '-4px',
+};
 
 export const topStylesAfter = {
-  borderColor: 'border-primary',
+  borderColor,
   borderWidth: '0 1px 1px 0',
   bottom: '0.25rem',
 } as const;
@@ -51,13 +62,31 @@ export const bottomStyles = {
 } as const;
 
 export const bottomStylesBefore = {
-  ...beforeStyles,
+  ...beforeStylesVert,
   height: 24,
   top: '-8px',
 };
 
 export const bottomStylesAfter = {
-  borderColor: 'border-primary',
+  borderColor,
+  borderWidth: '1px 0 0 1px',
+  top: '0.25rem',
+} as const;
+
+export const rightAlignStyles = {
+  top: 'calc(100% + 4px)',
+  pt: containerOffsetVertical,
+} as const;
+
+export const rightAlignStylesBefore = {
+  ...beforeStylesHorizontal,
+  height: 24,
+  left: '-8px',
+  bg: 'red',
+};
+
+export const rightAlignStylesAfter = {
+  borderColor,
   borderWidth: '1px 0 0 1px',
   top: '0.25rem',
 } as const;
@@ -81,6 +110,10 @@ export const verticalCenterStyles = {
 } as const;
 
 export const verticalCenterStylesAfter = {
+  left: 'calc(50% - 0.5rem)',
+} as const;
+
+export const horizontalCenterStylesAfter = {
   left: 'calc(50% - 0.5rem)',
 } as const;
 

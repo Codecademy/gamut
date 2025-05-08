@@ -11,10 +11,14 @@ import {
   bottomStylesAfter,
   bottomStylesBefore,
   horizontalCenterStyles,
+  horizontalCenterStylesAfter,
   horizontalLeftStyles,
   horizontalRightStyles,
   leftStyles,
   leftStylesAfter,
+  rightAlignStyles,
+  rightAlignStylesAfter,
+  rightAlignStylesBefore,
   rightStyles,
   rightStylesAfter,
   topCenterStylesAfter,
@@ -96,17 +100,23 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
     styleObject = { ...topStyles };
     styleObjectAfter = { ...topStylesAfter };
     styleObjectBefore = { ...topStylesBefore };
-  } else {
+  } else if (alignment.includes('bottom')) {
     styleObject = { ...bottomStyles };
     styleObjectAfter = { ...bottomStylesAfter };
     styleObjectBefore = { ...bottomStylesBefore };
+  } else if (alignment.startsWith('right')) {
+    styleObject = { ...rightAlignStyles };
+    styleObjectAfter = { ...rightAlignStylesAfter };
+    styleObjectBefore = { ...rightAlignStylesBefore };
+  } else {
   }
 
-  const isHorizontallyAligned =
-    alignment.includes('left-') || alignment.includes('right-');
+  const isLRAligned =
+    alignment.startsWith('right') || alignment.startsWith('left');
+
   const isRightAligned = alignment.includes('right');
 
-  if (alignment.includes('center') && !isHorizontallyAligned) {
+  if (alignment.includes('center') && !isLRAligned) {
     styleObject = { ...styleObject, ...verticalCenterStyles };
     styleObjectAfter = { ...styleObjectAfter, ...verticalCenterStylesAfter };
     if (alignment.includes('top')) {
@@ -122,9 +132,9 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
     styleObjectAfter = { ...styleObjectAfter, ...leftStylesAfter };
   }
 
-  if (alignment.includes('center') && isHorizontallyAligned) {
+  if (isLRAligned) {
     styleObject = { ...styleObject, ...horizontalCenterStyles };
-    styleObjectAfter = { ...styleObjectAfter, ...verticalCenterStylesAfter };
+    styleObjectAfter = { ...styleObjectAfter, ...horizontalCenterStylesAfter };
     if (isRightAligned) {
       styleObject = { ...styleObject, ...horizontalRightStyles };
     } else {
