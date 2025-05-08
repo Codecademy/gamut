@@ -82,7 +82,11 @@ export const getPopoverAlignment = ({
 
   return popoverAlignment;
 };
-
+/**
+ *
+ * to-do: add l/r center align vars here
+ *
+ */
 export const createToolTipVariantFromAlignment = (alignment: string) => {
   let styleObject = {};
   let styleObjectAfter = {};

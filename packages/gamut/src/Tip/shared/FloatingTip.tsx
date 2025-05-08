@@ -1,7 +1,6 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import * as React from 'react';
-import { useMeasure } from 'react-use';
 
 import { Box } from '../../Box';
 import { PreviewTipContents } from '../PreviewTip/elements';
@@ -89,7 +88,6 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   ) : (
     info
   );
-  console.log(popoverAlignments);
 
   return (
     <Box
@@ -118,7 +116,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         {...popoverAlignments}
         animation="fade"
         dims={dims}
-        isOpen={isOpen}
+        isOpen={isHoverType ? isOpen : !isTipHidden}
         outline
         pattern={isPreviewType ? CheckerDense : undefined}
         skipFocusTrap
