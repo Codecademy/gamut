@@ -124,11 +124,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         variant="secondary"
         widthRestricted={false}
       >
-        <FloatingTipTextWrapper
-          isHoverType={isHoverType}
-          narrow={narrow}
-          centered={alignment.includes('center')}
-        >
+        <FloatingTipTextWrapper isHoverType={isHoverType} narrow={narrow}>
           {contents}
         </FloatingTipTextWrapper>
       </FloatingTipBody>

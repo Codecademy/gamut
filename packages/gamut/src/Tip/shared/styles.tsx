@@ -173,7 +173,6 @@ export const toolTipAlignmentVariants = variant({
     opacity: 1,
     position: 'absolute',
     visibility: 'visible',
-
     '&::after': {
       content: '""',
       display: 'block',
@@ -188,7 +187,7 @@ export const toolTipAlignmentVariants = variant({
 });
 
 export const inlineToolTipState = states({
-  isToolTip: { width: '70vw' },
+  isToolTip: { width: 'max-content' },
 });
 
 export const inlineToolTipBodyAlignments = variant({
@@ -236,9 +235,6 @@ export const toolTipWidthRestrictions = variant({
       ...horizontalCenterWidths,
     },
     vertCenter: {
-      ...verticalCenterWidths,
-    },
-    centered: {
       ...verticalCenterWidths,
     },
     aligned: {

@@ -30,13 +30,12 @@ export const WithIconButton: Story = {
   render: () => (
     <FlexBox justifyContent="space-around" m={24} width="95%">
       <IconButton
-        tip="Beautify your code"
+        tip="Wonder at the majesty of the universe"
         icon={SparkleIcon}
         tipProps={{ alignment: 'left-center' }}
       />
       <IconButton
-        aria-label="Next Prompt"
-        tip="Next Prompt"
+        tip="Next"
         icon={ArrowRightIcon}
         variant="secondary"
         tipProps={{ alignment: 'right-center', hideAriaToolTip: true }}
@@ -49,20 +48,17 @@ export const Floating: Story = {
   render: () => (
     <FlexBox justifyContent="space-around" m={24} width="95%">
       <IconButton
-        aria-label="Wonder"
         tip="Wonder at the majesty of the universe"
         icon={SmileyStarEyesIcon}
         tipProps={{ placement: 'floating' }}
       />
       <IconButton
-        aria-label="Wonder"
         tip="Wonder at the majesty of the universe"
         icon={SmileyStarEyesIcon}
         tipProps={{ alignment: 'left-center', placement: 'floating' }}
       />
       <IconButton
-        aria-label="Wonder"
-        tip="W"
+        tip="Woah"
         icon={SmileyStarEyesIcon}
         tipProps={{ alignment: 'right-center', placement: 'floating' }}
       />
