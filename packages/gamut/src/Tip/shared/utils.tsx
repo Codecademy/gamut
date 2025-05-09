@@ -111,6 +111,7 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
     styleObjectAfter = { ...rightAlignStylesAfter };
     styleObjectBefore = { ...rightAlignStylesBefore };
   } else {
+    styleObject = { ...styleObject, ...horizontalLeftStyles };
   }
 
   const isLRAligned =
@@ -126,22 +127,18 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
     } else {
       styleObjectAfter = { ...styleObjectAfter, ...bottomCenterStylesAfter };
     }
-  } else if (isRightAligned) {
-    styleObject = { ...styleObject, ...rightStyles };
-    styleObjectAfter = { ...styleObjectAfter, ...rightStylesAfter };
-  } else {
-    styleObject = { ...styleObject, ...leftStyles };
-    styleObjectAfter = { ...styleObjectAfter, ...leftStylesAfter };
+    if (isRightAligned) {
+      styleObject = { ...styleObject, ...rightStyles };
+      styleObjectAfter = { ...styleObjectAfter, ...rightStylesAfter };
+    } else {
+      styleObject = { ...styleObject, ...leftStyles };
+      styleObjectAfter = { ...styleObjectAfter, ...leftStylesAfter };
+    }
   }
 
   if (isLRAligned) {
     styleObject = { ...styleObject, ...horizontalCenterStyles };
     styleObjectAfter = { ...styleObjectAfter, ...horizontalCenterStylesAfter };
-    if (isRightAligned) {
-      styleObject = { ...styleObject, ...horizontalRightStyles };
-    } else {
-      styleObject = { ...styleObject, ...horizontalLeftStyles };
-    }
   }
 
   return {

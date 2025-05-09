@@ -18,7 +18,13 @@ const borderColor = 'border-primary';
 
 export const narrowWidth = 64;
 export const verticalCenterWidths = { minWidth: 64, maxWidth: 128 } as const;
-export const horizontalCenterWidths = { minWidth: 4, maxWidth: 128 } as const;
+const centerVert = { left: '0', right: '0', mx: 'auto' } as const;
+export const horizontalCenterWidths = {
+  height: 'fit-content',
+  minWidth: 4,
+  maxWidth: 128,
+} as const;
+const centerHorizontal = { top: '0', bottom: '0', my: 'auto' } as const;
 
 const alignedAvatarWidth = {
   maxWidth: { _: '95vw', xs: '600px' },
@@ -76,48 +82,37 @@ export const bottomStylesAfter = {
 } as const;
 
 export const rightAlignStyles = {
-  top: 'calc(100% + 4px)',
-  pt: containerOffsetVertical,
+  pl: containerOffsetVertical,
+  left: '100%',
 } as const;
 
 export const rightAlignStylesBefore = {
   ...beforeStylesHorizontal,
   height: 24,
-  left: '-8px',
-  bg: 'red',
 };
 
 export const rightAlignStylesAfter = {
-  borderColor,
-  borderWidth: '1px 0 0 1px',
-  top: '0.25rem',
+  left: 5,
+  borderWidth: '0 0 1px 1px',
 } as const;
 
 export const horizontalCenterStyles = {
   ...horizontalCenterWidths,
-  top: 'calc(50% - 28px)',
+  ...centerHorizontal,
 } as const;
 
 export const horizontalLeftStyles = {
   right: '100%',
 } as const;
 
-export const horizontalRightStyles = {
-  left: '100%',
-} as const;
-
 export const verticalCenterStyles = {
   ...verticalCenterWidths,
-  left: 'calc(50% - 4rem)',
+  ...centerVert,
 } as const;
 
-export const verticalCenterStylesAfter = {
-  left: 'calc(50% - 0.5rem)',
-} as const;
+export const verticalCenterStylesAfter = centerVert;
 
-export const horizontalCenterStylesAfter = {
-  left: 'calc(50% - 0.5rem)',
-} as const;
+export const horizontalCenterStylesAfter = centerHorizontal;
 
 // This halfway fills the square we use to create the 'beak' of the tip so it does not overlap the tip text on the 'center' alignments
 export const topCenterStylesAfter = {
@@ -194,11 +189,9 @@ export const inlineToolTipBodyAlignments = variant({
   prop: 'alignment',
   variants: {
     horizontalCenter: {
-      my: 'auto',
       ...centeredBodyStyles,
     },
     vertCenter: {
-      mx: 'auto',
       ...centeredBodyStyles,
     },
     aligned: {

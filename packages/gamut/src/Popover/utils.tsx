@@ -81,6 +81,7 @@ const beakYSml = {
   top: 'calc(50% - 8px)',
 };
 
+// dedupe these
 const beakCenterSmlAbove = {
   backgroundImage: `linear-gradient(to top left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
 };
