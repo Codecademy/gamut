@@ -38,7 +38,7 @@ export const DeprecatedInlineToolTip: React.FC<
         isToolTip
       >
         <TipBody
-          alignment={alignment.includes('center') ? 'xCentered' : 'aligned'}
+          alignment={alignment.includes('center') ? 'vertCenter' : 'aligned'}
           color="currentColor"
           minWidth={widthMode === 'unlimited' ? 'initial' : '4rem'}
         >

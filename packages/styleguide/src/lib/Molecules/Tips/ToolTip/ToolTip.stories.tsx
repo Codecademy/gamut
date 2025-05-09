@@ -62,7 +62,7 @@ export const Floating: Story = {
       />
       <IconButton
         aria-label="Wonder"
-        tip="Wonder at the majesty of the universe"
+        tip="W"
         icon={SmileyStarEyesIcon}
         tipProps={{ alignment: 'right-center', placement: 'floating' }}
       />

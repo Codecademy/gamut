@@ -72,7 +72,7 @@ export const Popover: React.FC<PopoverProps> = ({
   const { x, y } = useWindowScroll();
 
   const getHeightRef = (popover: HTMLDivElement) => {
-    if (popover) {
+    if (popover && popoverHeight === 0 && popoverWidth === 0) {
       const { height, width } = popover.getBoundingClientRect();
       setPopoverHeight(height);
       setPopoverWidth(width);

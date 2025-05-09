@@ -17,7 +17,9 @@ const containerOffsetVertical = 12;
 const borderColor = 'border-primary';
 
 export const narrowWidth = 64;
-export const centerWidths = { minWidth: 64, maxWidth: 128 } as const;
+export const verticalCenterWidths = { minWidth: 64, maxWidth: 128 } as const;
+export const horizontalCenterWidths = { minWidth: 4, maxWidth: 128 } as const;
+
 const alignedAvatarWidth = {
   maxWidth: { _: '95vw', xs: '600px' },
   width: 'max-content',
@@ -92,7 +94,7 @@ export const rightAlignStylesAfter = {
 } as const;
 
 export const horizontalCenterStyles = {
-  ...centerWidths,
+  ...horizontalCenterWidths,
   top: 'calc(50% - 28px)',
 } as const;
 
@@ -105,7 +107,7 @@ export const horizontalRightStyles = {
 } as const;
 
 export const verticalCenterStyles = {
-  ...centerWidths,
+  ...verticalCenterWidths,
   left: 'calc(50% - 4rem)',
 } as const;
 
@@ -152,7 +154,12 @@ export const tooltipVariantStyles = createVariantsFromAlignments(
   createToolTipVariantFromAlignment
 );
 
-const centeredBodyStyles = { p: 4, textAlign: 'center' } as const;
+const centeredBodyStyles = {
+  p: 4,
+  textAlign: 'center',
+  minWidth: 'inherit',
+  maxWidth: 'inherit',
+} as const;
 
 const alignedBodyStyles = { p: 16 } as const;
 
@@ -187,14 +194,13 @@ export const inlineToolTipState = states({
 export const inlineToolTipBodyAlignments = variant({
   prop: 'alignment',
   variants: {
-    yCentered: {
+    horizontalCenter: {
       my: 'auto',
-      minWidth: 8,
       ...centeredBodyStyles,
     },
-    xCentered: {
+    vertCenter: {
+      mx: 'auto',
       ...centeredBodyStyles,
-      ...centerWidths,
     },
     aligned: {
       ...alignedBodyStyles,
@@ -226,8 +232,14 @@ export const popoverToolTipBodyAlignments = variant({
 export const toolTipWidthRestrictions = variant({
   prop: 'dims',
   variants: {
+    horizontalCenter: {
+      ...horizontalCenterWidths,
+    },
+    vertCenter: {
+      ...verticalCenterWidths,
+    },
     centered: {
-      ...centerWidths,
+      ...verticalCenterWidths,
     },
     aligned: {
       ...alignedMaxWidth,

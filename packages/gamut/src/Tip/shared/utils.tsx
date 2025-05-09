@@ -41,9 +41,9 @@ export const getAlignmentStyles = ({
 }: Pick<TipWrapperProps, 'alignment' | 'avatar' | 'type'>) => {
   if (avatar) return 'avatarAligned';
   if (type === 'preview') return 'previewAligned';
-  if (alignment.startsWith('left') || alignment.startsWith('left'))
-    return 'yCentered';
-  return alignment.includes('center') ? 'xCentered' : 'aligned';
+  if (alignment.startsWith('left') || alignment.startsWith('right'))
+    return 'horizontalCenter';
+  return alignment.includes('center') ? 'vertCenter' : 'aligned';
 };
 
 export const getPopoverAlignment = ({

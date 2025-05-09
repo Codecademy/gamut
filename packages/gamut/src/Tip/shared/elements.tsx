@@ -6,11 +6,11 @@ import { Box, FlexBox } from '../../Box';
 import { Selectors } from '../../ButtonBase/ButtonBase';
 import { Popover } from '../../Popover';
 import {
-  centerWidths,
   inlineToolTipBodyAlignments,
   narrowWidth,
   toolTipBodyCss,
   toolTipWidthRestrictions,
+  verticalCenterWidths,
 } from './styles';
 
 const tipWrapperStyles = {
@@ -23,7 +23,7 @@ const floatingTipTextStates = states({
   isHoverType: { alignItems: 'flexStart' },
   narrow: { width: narrowWidth },
   centered: {
-    ...centerWidths,
+    ...verticalCenterWidths,
   },
 });
 
