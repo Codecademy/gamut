@@ -1,8 +1,7 @@
-import { FadeInSlideOut } from '@codecademy/gamut/src/Animation/FadeInSlideOut';
 import { AnimatePresence } from 'framer-motion';
 import type { Meta } from '@storybook/react';
 import { useState } from 'react';
-import { Box, FillButton, FlexBox } from '@codecademy/gamut';
+import { Box, FillButton, FlexBox, FadeInSlideOut } from '@codecademy/gamut';
 
 const meta: Meta<typeof FadeInSlideOut> = {
   component: FadeInSlideOut,
