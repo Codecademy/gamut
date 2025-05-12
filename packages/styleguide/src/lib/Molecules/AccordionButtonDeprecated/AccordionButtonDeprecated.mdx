@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { Callout, ComponentHeader } from '~styleguide/blocks';
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as AccordionButtonDeprecatedStories from './AccordionButtonDeprecated.stories';
 
@@ -19,7 +19,14 @@ Comes in a few standard size and color combinations.`,
 
 <ComponentHeader {...parameters} />
 
-<Callout text="This component is deprecated. For similar functionality, consider using the Disclosure component." />
+<Callout
+  text={
+    <>
+      Note: This component is deprecated. For similar functionality, consider
+      using the <LinkTo id="Molecules/Disclosure">Disclosure</LinkTo> component.
+    </>
+  }
+/>
 
 ## Usage
 
