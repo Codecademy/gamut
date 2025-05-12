@@ -1,6 +1,7 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
-import { useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
+import { useMeasure } from 'react-use';
 
 import { Box } from '../../Box';
 import { PreviewTipContents } from '../PreviewTip/elements';
@@ -38,8 +39,16 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   const [isFocused, setIsFocused] = useState(false);
 
   const popoverAlignments = getPopoverAlignment({ alignment, type });
-
   const dims = getAlignmentStyles({ avatar, alignment, type });
+  const [childRef, { width: tipWidth }] = useMeasure<HTMLDivElement>();
+
+  const [offset, setOffset] = useState(0);
+
+  useLayoutEffect(() => {
+    if (ref?.current?.clientWidth && (type === 'info' || type === 'preview')) {
+      setOffset(-ref.current.clientWidth / 2 + 32);
+    }
+  }, [type, tipWidth]);
 
   let hoverDelay: NodeJS.Timeout | undefined;
   let focusDelay: NodeJS.Timeout | undefined;
@@ -116,6 +125,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         {...popoverAlignments}
         animation="fade"
         dims={dims}
+        horizontalOffset={offset}
         isOpen={isHoverType ? isOpen : !isTipHidden}
         outline
         pattern={isPreviewType ? CheckerDense : undefined}
@@ -124,7 +134,11 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         variant="secondary"
         widthRestricted={false}
       >
-        <FloatingTipTextWrapper isHoverType={isHoverType} narrow={narrow}>
+        <FloatingTipTextWrapper
+          isHoverType={isHoverType}
+          narrow={narrow}
+          ref={childRef}
+        >
           {contents}
         </FloatingTipTextWrapper>
       </FloatingTipBody>
