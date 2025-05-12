@@ -162,7 +162,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
         />
         {!!ShownIcon && (
           <FlexBox
-            pr={IconSvg ? 12 : 16}
+            pr={16}
             position="absolute"
             alignItems="center"
             right="0"
