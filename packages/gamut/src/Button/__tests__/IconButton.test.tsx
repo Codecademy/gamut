@@ -37,7 +37,6 @@ describe('IconButton', () => {
     view.getByRole('img', { hidden: true });
   });
 
-  // TO-DO: When we upgrade jest, we can use `description` in the tests below to make sure they are semantically connected to buttons.
   it('renders the tip text from the tip prop', async () => {
     const { view } = renderView({});
 
