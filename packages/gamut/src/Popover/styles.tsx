@@ -1,11 +1,97 @@
-import { states, variant } from '@codecademy/gamut-styles';
+import { states, theme, variant } from '@codecademy/gamut-styles';
 
-import { tooltipArrowHeight, toolTipBodyCss } from '../Tip/shared/styles';
+import {
+  beakTopCenterStylesAfter,
+  tooltipArrowHeight,
+  tooltipBackgroundColor,
+  toolTipBodyCss,
+} from '../Tip/shared/styles';
 import { createVariantsFromAlignments } from '../Tip/shared/utils';
 import {
   createBeakVariantFromAlignment,
   createPatternVariantFromAlignment,
 } from './utils';
+
+export const transformValues = {
+  right: 'translateX(-100%)',
+  left: 'translateX(0%)',
+  above: 'translateY(-100%)',
+  below: 'translateY(0%)',
+  center: '',
+};
+
+export const popoverAbove = {
+  top: 'calc(100% - 10px)',
+} as const;
+
+export const popoverBelow = {
+  top: '-10px',
+} as const;
+
+export const beakRight = {
+  right: '25px',
+};
+
+export const beakLeft = {
+  left: '25px',
+};
+
+export const beakXCenter = {
+  left: 'calc(50% - 10px)',
+};
+
+export const beakYCenter = {
+  top: 'calc(50% - 10px)',
+};
+
+export const popoverAboveSml = {
+  borderLeft: 'none',
+  borderTop: 'none',
+  top: 'calc(100% - 8px)',
+} as const;
+
+export const popoverBelowSml = {
+  borderRight: 'none',
+  borderBottom: 'none',
+  top: '-8px',
+} as const;
+
+export const beakRightSml = {
+  right: '1.5rem',
+  bg: tooltipBackgroundColor,
+};
+
+export const beakLeftSml = {
+  left: '1.5rem',
+  bg: tooltipBackgroundColor,
+};
+
+export const beakCenterSml = {
+  left: 'calc(50% - 8px)',
+};
+
+export const beakYSml = {
+  top: 'calc(50% - 8px)',
+};
+
+// dedupe these
+export const beakCenterSmlAbove = beakTopCenterStylesAfter;
+
+export const beakCenterSmlBelow = {
+  backgroundImage: `linear-gradient(to bottom right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+};
+
+export const beakCenterRightSml = {
+  backgroundImage: `linear-gradient(to top right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+  borderRight: 'none',
+  borderTop: 'none',
+};
+
+export const beakCenterLeftSml = {
+  backgroundImage: `linear-gradient(to bottom left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+  borderLeft: 'none',
+  borderBottom: 'none',
+};
 
 export const popoverStates = states({
   widthRestricted: {
@@ -156,15 +242,23 @@ const patternVariantArray = [
   'below-right',
 ];
 
+export const patternAbove = {
+  top: '-8px',
+};
+
+export const patternBelow = {
+  top: '8px',
+};
+
+export const patternRight = {
+  left: '-8px',
+};
+
+export const patternLeft = {
+  left: '8px',
+};
+
 export const patternVariantStyles = createVariantsFromAlignments(
   patternVariantArray,
   createPatternVariantFromAlignment
 );
-
-export const transformValues = {
-  right: 'translateX(-100%)',
-  left: 'translateX(0%)',
-  above: 'translateY(-100%)',
-  below: 'translateY(0%)',
-  center: '',
-};

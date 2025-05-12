@@ -35,28 +35,16 @@ const alignedPreviewWidth = { width: 418 } as const;
 
 const previewTipPadding = { p: 16 } as const;
 
-export const topStyles = {
-  bottom: 'calc(100% + 4px)',
-  pb: containerOffsetVertical,
-} as const;
-
 const beforeStylesVert = {
   content: '""',
   position: 'absolute',
   width: '100%',
 };
 
-const beforeStylesHorizontal = {
-  content: '""',
-  position: 'absolute',
-  height: '100%',
-};
-
-export const topStylesBefore = {
-  ...beforeStylesVert,
-  height: 16,
-  bottom: '-4px',
-};
+export const topStyles = {
+  bottom: 'calc(100% + 4px)',
+  pb: containerOffsetVertical,
+} as const;
 
 export const topStylesAfter = {
   borderColor,
@@ -64,10 +52,22 @@ export const topStylesAfter = {
   bottom: '0.25rem',
 } as const;
 
+export const topStylesBefore = {
+  ...beforeStylesVert,
+  height: 16,
+  bottom: '-4px',
+};
+
 export const bottomStyles = {
   top: 'calc(100% + 4px)',
   pt: containerOffsetVertical,
 } as const;
+
+const beforeStylesHorizontal = {
+  content: '""',
+  position: 'absolute',
+  height: '100%',
+};
 
 export const bottomStylesBefore = {
   ...beforeStylesVert,
@@ -91,11 +91,6 @@ export const rightAlignStylesBefore = {
   height: 24,
 };
 
-export const rightAlignStylesAfter = {
-  left: 5,
-  borderWidth: '0 0 1px 1px',
-} as const;
-
 export const horizontalCenterStyles = {
   ...horizontalCenterWidths,
   ...centerHorizontal,
@@ -110,20 +105,24 @@ export const verticalCenterStyles = {
   ...centerVert,
 } as const;
 
-export const verticalCenterStylesAfter = centerVert;
-
-export const horizontalCenterStylesAfter = centerHorizontal;
+export const verticalCenterStylesAfter = { left: 'calc(50% - 0.5rem)' };
 
 // This halfway fills the square we use to create the 'beak' of the tip so it does not overlap the tip text on the 'center' alignments
-export const topCenterStylesAfter = {
+export const beakTopCenterStylesAfter = {
   backgroundImage: `linear-gradient(to top left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
 };
 
-export const bottomCenterStylesAfter = {
+export const beakBottomCenterStylesAfter = {
   backgroundImage: `linear-gradient(to bottom right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
 };
 
-export const alignedStylesAfter = { bg: tooltipBackgroundColor };
+export const beakRightCenterStylesAfter = {
+  backgroundImage: `linear-gradient(to top right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+};
+
+export const beakLeftCenterStylesAfter = {
+  backgroundImage: `linear-gradient(to bottom left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+};
 
 export const leftStyles = {
   justifyContent: 'flex-end',
@@ -132,16 +131,22 @@ export const leftStyles = {
 
 export const leftStylesAfter = {
   right: '1.5rem',
-  ...alignedStylesAfter,
+  borderWidth: '0 0 1px 1px',
 } as const;
 
-export const rightStyles = {
-  left: 'calc(50% - 2rem)',
-} as const;
+// fix
+const alignedStylesAfter = {};
 
-export const rightStylesAfter = {
+export const rightVertStyles = { left: 'calc(50% - 2rem)' } as const;
+export const rightVertStylesAfter = {
   left: '1.5rem',
   ...alignedStylesAfter,
+} as const;
+
+export const rightAlignStylesAfter = {
+  left: '',
+  borderWidth: '0 0 1px 1px',
+  ...beakRightCenterStylesAfter,
 } as const;
 
 export const tooltipVariantStyles = createVariantsFromAlignments(

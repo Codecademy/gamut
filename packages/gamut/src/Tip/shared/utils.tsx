@@ -6,22 +6,20 @@ import {
   PopoverYPositionType,
 } from '../../Popover';
 import {
-  bottomCenterStylesAfter,
+  beakBottomCenterStylesAfter,
+  beakTopCenterStylesAfter,
   bottomStyles,
   bottomStylesAfter,
   bottomStylesBefore,
   horizontalCenterStyles,
-  horizontalCenterStylesAfter,
   horizontalLeftStyles,
-  horizontalRightStyles,
   leftStyles,
   leftStylesAfter,
   rightAlignStyles,
   rightAlignStylesAfter,
   rightAlignStylesBefore,
-  rightStyles,
-  rightStylesAfter,
-  topCenterStylesAfter,
+  rightVertStyles,
+  rightVertStylesAfter,
   topStyles,
   topStylesAfter,
   topStylesBefore,
@@ -98,47 +96,63 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
   let styleObjectAfter = {};
   let styleObjectBefore = {};
 
-  if (alignment.includes('top')) {
+  const isRight = alignment.includes('right');
+  const isTop = alignment.includes('top');
+
+  // top-center, top-right, + top-left styles
+  if (isTop) {
     styleObject = { ...topStyles };
     styleObjectAfter = { ...topStylesAfter };
     styleObjectBefore = { ...topStylesBefore };
+    // bottom-center, bottom-right, + bottom-left styles
   } else if (alignment.includes('bottom')) {
     styleObject = { ...bottomStyles };
     styleObjectAfter = { ...bottomStylesAfter };
     styleObjectBefore = { ...bottomStylesBefore };
-  } else if (alignment.startsWith('right')) {
+    // right-center styles
+  } else if (alignment === 'right-center') {
     styleObject = { ...rightAlignStyles };
     styleObjectAfter = { ...rightAlignStylesAfter };
     styleObjectBefore = { ...rightAlignStylesBefore };
-  } else {
+    // left-center styles
+  } else if (alignment === 'left-center') {
     styleObject = { ...styleObject, ...horizontalLeftStyles };
   }
 
   const isLRAligned =
     alignment.startsWith('right') || alignment.startsWith('left');
 
-  const isRightAligned = alignment.includes('right');
-
+  // top-center + bottom-center styles
   if (alignment.includes('center') && !isLRAligned) {
     styleObject = { ...styleObject, ...verticalCenterStyles };
     styleObjectAfter = { ...styleObjectAfter, ...verticalCenterStylesAfter };
-    if (alignment.includes('top')) {
-      styleObjectAfter = { ...styleObjectAfter, ...topCenterStylesAfter };
+    // top-center
+    if (isTop) {
+      styleObjectAfter = { ...styleObjectAfter, ...beakTopCenterStylesAfter };
+      // bottom-center
     } else {
-      styleObjectAfter = { ...styleObjectAfter, ...bottomCenterStylesAfter };
-    }
-    if (isRightAligned) {
-      styleObject = { ...styleObject, ...rightStyles };
-      styleObjectAfter = { ...styleObjectAfter, ...rightStylesAfter };
-    } else {
-      styleObject = { ...styleObject, ...leftStyles };
-      styleObjectAfter = { ...styleObjectAfter, ...leftStylesAfter };
+      styleObjectAfter = {
+        ...styleObjectAfter,
+        ...beakBottomCenterStylesAfter,
+      };
     }
   }
 
-  if (isLRAligned) {
+  if (!isLRAligned) {
+    // top-right, bottom-right
+    if (isRight) {
+      styleObject = { ...styleObject, ...rightVertStyles };
+      styleObjectAfter = { ...styleObjectAfter, ...rightVertStylesAfter };
+    } else {
+      // top-left, bottom-left
+      styleObjectAfter = {
+        ...styleObjectAfter,
+        ...beakBottomCenterStylesAfter,
+      };
+    }
+  } else {
+    // right-center + left-center
     styleObject = { ...styleObject, ...horizontalCenterStyles };
-    styleObjectAfter = { ...styleObjectAfter, ...horizontalCenterStylesAfter };
   }
 
   return {
