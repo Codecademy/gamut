@@ -36,7 +36,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> &
     /**
      * Adding a small size prop to reduce the padding on the input. If the size prop is not passed, the default size will be used.
      */
-    size?: 'small'
+    size?: 'small';
     type?: string;
     valid?: boolean;
   };
@@ -80,7 +80,10 @@ const InputElement = styled.input<StyledInputProps>`
   ${formFieldStyles}
   ${conditionalStyles}
   text-indent: 0;
-  padding: ${(props) => props.size === 'small' ?  `${formFieldSmallPaddingStyles.py}px ${formFieldSmallPaddingStyles.px}px` : `${formFieldPaddingStyles.py}px ${formFieldPaddingStyles.px}px`};
+  padding: ${(props) =>
+    props.size === 'small'
+      ? `${formFieldSmallPaddingStyles.py}px ${formFieldSmallPaddingStyles.px}px`
+      : `${formFieldPaddingStyles.py}px ${formFieldPaddingStyles.px}px`};
   padding-right: ${(props) => (props.icon ? `2.3rem` : `initial`)};
 `;
 
