@@ -24,7 +24,7 @@ export const horizontalCenterWidths = {
   minWidth: 4,
   maxWidth: 128,
 } as const;
-const centerHorizontal = { top: '0', bottom: '0', my: 'auto' } as const;
+export const centerHorizontal = { top: '0', bottom: '0', my: 'auto' } as const;
 
 const alignedAvatarWidth = {
   maxWidth: { _: '95vw', xs: '600px' },
@@ -63,7 +63,7 @@ export const bottomStyles = {
   pt: containerOffsetVertical,
 } as const;
 
-const beforeStylesHorizontal = {
+export const beforeStylesHorizontal = {
   content: '""',
   position: 'absolute',
   height: '100%',
@@ -86,17 +86,13 @@ export const rightAlignStyles = {
   left: '100%',
 } as const;
 
-export const rightAlignStylesBefore = {
-  ...beforeStylesHorizontal,
-  height: 24,
-};
-
 export const horizontalCenterStyles = {
   ...horizontalCenterWidths,
   ...centerHorizontal,
 } as const;
 
-export const horizontalLeftStyles = {
+export const leftAlignStyles = {
+  pr: containerOffsetVertical,
   right: '100%',
 } as const;
 
@@ -124,14 +120,13 @@ export const beakLeftCenterStylesAfter = {
   backgroundImage: `linear-gradient(to bottom left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
 };
 
-export const leftStyles = {
+export const leftVertStyles = {
   justifyContent: 'flex-end',
   right: 'calc(50% - 2rem)',
 } as const;
 
-export const leftStylesAfter = {
+export const leftVertStylesAfter = {
   right: '1.5rem',
-  borderWidth: '0 0 1px 1px',
 } as const;
 
 // fix
@@ -144,9 +139,15 @@ export const rightVertStylesAfter = {
 } as const;
 
 export const rightAlignStylesAfter = {
-  left: '',
+  left: '4px',
   borderWidth: '0 0 1px 1px',
   ...beakRightCenterStylesAfter,
+} as const;
+
+export const leftAlignStylesAfter = {
+  right: '4px',
+  borderWidth: '1px 1px 0 0',
+  ...beakLeftCenterStylesAfter,
 } as const;
 
 export const tooltipVariantStyles = createVariantsFromAlignments(

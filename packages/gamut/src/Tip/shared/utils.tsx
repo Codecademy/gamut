@@ -8,16 +8,18 @@ import {
 import {
   beakBottomCenterStylesAfter,
   beakTopCenterStylesAfter,
+  beforeStylesHorizontal,
   bottomStyles,
   bottomStylesAfter,
   bottomStylesBefore,
+  centerHorizontal,
   horizontalCenterStyles,
-  horizontalLeftStyles,
-  leftStyles,
-  leftStylesAfter,
+  leftAlignStyles,
+  leftAlignStylesAfter,
+  leftVertStyles,
+  leftVertStylesAfter,
   rightAlignStyles,
   rightAlignStylesAfter,
-  rightAlignStylesBefore,
   rightVertStyles,
   rightVertStylesAfter,
   topStyles,
@@ -98,6 +100,9 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
 
   const isRight = alignment.includes('right');
   const isTop = alignment.includes('top');
+  const isCenter = alignment.includes('center');
+  const isLRAligned =
+    alignment.startsWith('right') || alignment.startsWith('left');
 
   // top-center, top-right, + top-left styles
   if (isTop) {
@@ -109,21 +114,24 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
     styleObject = { ...bottomStyles };
     styleObjectAfter = { ...bottomStylesAfter };
     styleObjectBefore = { ...bottomStylesBefore };
+  } else if (isLRAligned) {
+    // right-center & left-center styles
+    styleObject = { ...horizontalCenterStyles };
+    styleObjectAfter = { ...centerHorizontal };
+    styleObjectBefore = { ...beforeStylesHorizontal };
     // right-center styles
-  } else if (alignment === 'right-center') {
-    styleObject = { ...rightAlignStyles };
-    styleObjectAfter = { ...rightAlignStylesAfter };
-    styleObjectBefore = { ...rightAlignStylesBefore };
-    // left-center styles
-  } else if (alignment === 'left-center') {
-    styleObject = { ...styleObject, ...horizontalLeftStyles };
+    if (isRight) {
+      styleObject = { ...styleObject, ...rightAlignStyles };
+      styleObjectAfter = { ...styleObjectAfter, ...rightAlignStylesAfter };
+      // left-center styles
+    } else {
+      styleObject = { ...styleObject, ...leftAlignStyles };
+      styleObjectAfter = { ...styleObjectAfter, ...leftAlignStylesAfter };
+    }
   }
 
-  const isLRAligned =
-    alignment.startsWith('right') || alignment.startsWith('left');
-
   // top-center + bottom-center styles
-  if (alignment.includes('center') && !isLRAligned) {
+  if (isCenter && !isLRAligned) {
     styleObject = { ...styleObject, ...verticalCenterStyles };
     styleObjectAfter = { ...styleObjectAfter, ...verticalCenterStylesAfter };
     // top-center
@@ -136,23 +144,16 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
         ...beakBottomCenterStylesAfter,
       };
     }
-  }
-
-  if (!isLRAligned) {
+  } else if (!isCenter && !isLRAligned) {
     // top-right, bottom-right
     if (isRight) {
       styleObject = { ...styleObject, ...rightVertStyles };
       styleObjectAfter = { ...styleObjectAfter, ...rightVertStylesAfter };
     } else {
       // top-left, bottom-left
-      styleObjectAfter = {
-        ...styleObjectAfter,
-        ...beakBottomCenterStylesAfter,
-      };
+      styleObject = { ...styleObject, ...leftVertStyles };
+      styleObjectAfter = { ...styleObjectAfter, ...leftVertStylesAfter };
     }
-  } else {
-    // right-center + left-center
-    styleObject = { ...styleObject, ...horizontalCenterStyles };
   }
 
   return {
