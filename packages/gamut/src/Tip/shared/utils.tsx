@@ -6,8 +6,6 @@ import {
   PopoverYPositionType,
 } from '../../Popover';
 import {
-  beakBottomCenterStylesAfter,
-  beakTopCenterStylesAfter,
   beforeStylesHorizontal,
   bottomStyles,
   bottomStylesAfter,
@@ -134,16 +132,6 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
   if (isCenter && !isLRAligned) {
     styleObject = { ...styleObject, ...verticalCenterStyles };
     styleObjectAfter = { ...styleObjectAfter, ...verticalCenterStylesAfter };
-    // top-center
-    if (isTop) {
-      styleObjectAfter = { ...styleObjectAfter, ...beakTopCenterStylesAfter };
-      // bottom-center
-    } else {
-      styleObjectAfter = {
-        ...styleObjectAfter,
-        ...beakBottomCenterStylesAfter,
-      };
-    }
   } else if (!isCenter && !isLRAligned) {
     // top-right, bottom-right
     if (isRight) {

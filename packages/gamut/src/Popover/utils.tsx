@@ -1,10 +1,10 @@
 import {
-  beakBottomCenterStylesAfter,
-  beakTopCenterStylesAfter,
+  beakBottomStylesAfter,
+  beakLeftCenterStylesAfter,
+  beakRightCenterStylesAfter,
+  beakTopStylesAfter,
 } from '../Tip/shared/styles';
 import {
-  beakCenterLeftSml,
-  beakCenterRightSml,
   beakCenterSml,
   beakLeft,
   beakLeftSml,
@@ -60,9 +60,9 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
     if (isYCenter) {
       styleObject = { ...beakYSml };
       if (isRight) {
-        styleObject = { ...beakCenterRightSml, ...styleObject };
+        styleObject = { ...styleObject, ...beakRightCenterStylesAfter };
       } else {
-        styleObject = { ...beakCenterLeftSml, ...styleObject };
+        styleObject = { ...styleObject, ...beakLeftCenterStylesAfter };
       }
     } else {
       if (isAbove) {
@@ -71,16 +71,16 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
         styleObject = { ...popoverBelowSml };
       }
       if (isRight) {
-        styleObject = { ...beakRightSml, ...styleObject };
+        styleObject = { ...styleObject, ...beakRightSml };
       } else if (isXCenter) {
-        styleObject = { ...beakCenterSml, ...styleObject };
+        styleObject = { ...styleObject, ...beakCenterSml };
         if (isAbove) {
-          styleObject = { ...beakTopCenterStylesAfter, ...styleObject };
+          styleObject = { ...styleObject, ...beakTopStylesAfter };
         } else if (isBelow) {
-          styleObject = { ...beakBottomCenterStylesAfter, ...styleObject };
+          styleObject = { ...styleObject, ...beakBottomStylesAfter };
         }
       } else {
-        styleObject = { ...beakLeftSml, ...styleObject };
+        styleObject = { ...styleObject, ...beakLeftSml };
       }
     }
   } else if (isYCenter) {
@@ -92,11 +92,11 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
       styleObject = { ...popoverBelow };
     }
     if (isRight) {
-      styleObject = { ...beakRight, ...styleObject };
+      styleObject = { ...styleObject, ...beakRight };
     } else if (isXCenter) {
-      styleObject = { ...beakXCenter, ...styleObject };
+      styleObject = { ...styleObject, ...beakXCenter };
     } else {
-      styleObject = { ...beakLeft, ...styleObject };
+      styleObject = { ...styleObject, ...beakLeft };
     }
   }
 

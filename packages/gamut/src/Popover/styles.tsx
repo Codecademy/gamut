@@ -1,7 +1,8 @@
-import { states, theme, variant } from '@codecademy/gamut-styles';
+import { states, variant } from '@codecademy/gamut-styles';
 
 import {
-  beakTopCenterStylesAfter,
+  beakBottomStylesAfter,
+  beakTopStylesAfter,
   tooltipArrowHeight,
   tooltipBackgroundColor,
   toolTipBodyCss,
@@ -45,15 +46,13 @@ export const beakYCenter = {
 };
 
 export const popoverAboveSml = {
-  borderLeft: 'none',
-  borderTop: 'none',
   top: 'calc(100% - 8px)',
+  ...beakTopStylesAfter,
 } as const;
 
 export const popoverBelowSml = {
-  borderRight: 'none',
-  borderBottom: 'none',
   top: '-8px',
+  ...beakBottomStylesAfter,
 } as const;
 
 export const beakRightSml = {
@@ -72,25 +71,6 @@ export const beakCenterSml = {
 
 export const beakYSml = {
   top: 'calc(50% - 8px)',
-};
-
-// dedupe these
-export const beakCenterSmlAbove = beakTopCenterStylesAfter;
-
-export const beakCenterSmlBelow = {
-  backgroundImage: `linear-gradient(to bottom right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
-};
-
-export const beakCenterRightSml = {
-  backgroundImage: `linear-gradient(to top right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
-  borderRight: 'none',
-  borderTop: 'none',
-};
-
-export const beakCenterLeftSml = {
-  backgroundImage: `linear-gradient(to bottom left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
-  borderLeft: 'none',
-  borderBottom: 'none',
 };
 
 export const popoverStates = states({
