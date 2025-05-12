@@ -88,7 +88,14 @@ Use the tertiary-fill variant when a tertiary `Badge` needs to sit above other c
 
 Use the accent variant to draw attention to important details or statuses with a noticeable but less dominant emphasis than the primary `Badge`.
 
-<Callout text="The accent variant does not respond to ColorMode." />
+<Callout
+  text={
+    <>
+      The accent variant does not respond to{' '}
+      <LinkTo id="Foundations/ColorMode">ColorMode</LinkTo>.
+    </>
+  }
+/>
 
 <Canvas of={BadgeStories.Accent} />
 
