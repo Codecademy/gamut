@@ -129,13 +129,9 @@ export const leftVertStylesAfter = {
   right: '1.5rem',
 } as const;
 
-// fix
-const alignedStylesAfter = {};
-
 export const rightVertStyles = { left: 'calc(50% - 2rem)' } as const;
 export const rightVertStylesAfter = {
   left: '1.5rem',
-  ...alignedStylesAfter,
 } as const;
 
 export const rightAlignStylesAfter = {
