@@ -45,7 +45,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   const [offset, setOffset] = useState(0);
 
   useLayoutEffect(() => {
-    if (-ref.current.clientWidth) {
+    if (ref?.current?.clientWidth) {
       if (type === 'info' || type === 'preview') {
         setOffset(-ref.current.clientWidth / 2 + 32);
       } else if (
