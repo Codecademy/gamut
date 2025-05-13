@@ -30,13 +30,13 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> &
     activated?: boolean;
     className?: string;
     /**
-     * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
-     */
-    placeholder?: string;
-    /**
      * Setting this prop to 'small' reduces the padding of the input component. If omitted, the default padding will be used.
      */
     inputSize?: 'small';
+    /**
+     * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
+     */
+    placeholder?: string;
     type?: string;
     valid?: boolean;
   };
