@@ -10,15 +10,20 @@ const meta: Meta<typeof Input> = {
     placeholder: 'Placeholder',
     type: 'text',
   },
+  argTypes: {
+    inputSize: {
+      control: {
+        type: 'text',
+      },
+    },
+  }
 };
 
 export default meta;
 type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
-  args: {
-    size: 'small',
-  },
+  args: {},
 };
 
 export const Text: Story = {
@@ -136,7 +141,7 @@ export const FormGroupLarge: Story = {
   render: (args) => (
     <FormGroup
       label="i am a large disabled label"
-      labelSize="large"
+      labelinputSize="large"
       disabled
       isSoloField
       htmlFor="example-123"
@@ -156,7 +161,7 @@ export const FormGroupErrorLarge: Story = {
     <FormGroup
       label="i am also large label, but something is wrong."
       error="this is still not updog..."
-      labelSize="large"
+      labelinputSize="large"
       isSoloField
       htmlFor="example-123"
     >
@@ -172,7 +177,7 @@ export const TextSmall: Story = {
     name: 'example-text',
     type: 'text',
     required: true,
-    size: 'small',
+    inputSize: 'small',
   },
 };
 
@@ -183,7 +188,7 @@ export const TextSmallError: Story = {
     name: 'example-text',
     type: 'text',
     required: true,
-    size: 'small',
+    inputSize: 'small',
     error: true,
   },
 };
@@ -194,7 +199,7 @@ export const NumberSmall: Story = {
     name: 'example-number',
     type: 'number',
     defaultValue: 1,
-    size: 'small',
+    inputSize: 'small',
     icon: ViewIcon,
   },
 };
@@ -206,7 +211,7 @@ export const FileSmall: Story = {
     type: 'file',
     value: '',
     onChange: () => {},
-    size: 'small',
+    inputSize: 'small',
     valid: true,
   },
 };
@@ -218,6 +223,6 @@ export const DisabledSmall: Story = {
     placeholder: 'Disabled',
     disabled: true,
     defaultValue: undefined,
-    size: 'small',
+    inputSize: 'small',
   },
 };
