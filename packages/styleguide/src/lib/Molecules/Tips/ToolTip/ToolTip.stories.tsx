@@ -26,6 +26,29 @@ export const Default: Story = {
   ),
 };
 
+const alignments = [
+  'top-center',
+  'bottom-center',
+  'left-center',
+  'right-center',
+] as const;
+
+export const Alignments: Story = {
+  render: () => (
+    <FlexBox justifyContent="space-around" m={24} width="95%">
+      {alignments.map((alignment) => {
+        return (
+          <IconButton
+            tip={alignment}
+            icon={SparkleIcon}
+            tipProps={{ alignment }}
+          />
+        );
+      })}
+    </FlexBox>
+  ),
+};
+
 export const WithIconButton: Story = {
   render: () => (
     <FlexBox justifyContent="space-around" m={24} width="95%">
