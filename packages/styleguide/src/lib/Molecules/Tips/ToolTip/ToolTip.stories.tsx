@@ -48,7 +48,7 @@ export const Floating: Story = {
   render: () => (
     <FlexBox justifyContent="space-around" m={24} width="95%">
       <IconButton
-        tip="Wonder at the majesty of the universe"
+        tip="Wonder at the"
         icon={SmileyStarEyesIcon}
         tipProps={{ placement: 'floating' }}
       />

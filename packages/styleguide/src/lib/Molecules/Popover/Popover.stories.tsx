@@ -177,5 +177,5 @@ export const Animation: Story = {
 };
 
 export const Variant: Story = {
-  render: (args) => <PopoverExample beak="left" variant="secondary" />,
+  render: (args) => <PopoverExample variant="secondary" {...args} />,
 };

@@ -45,10 +45,17 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   const [offset, setOffset] = useState(0);
 
   useLayoutEffect(() => {
-    if (ref?.current?.clientWidth && (type === 'info' || type === 'preview')) {
-      setOffset(-ref.current.clientWidth / 2 + 32);
+    if (-ref.current.clientWidth) {
+      if (type === 'info' || type === 'preview') {
+        setOffset(-ref.current.clientWidth / 2 + 32);
+      } else if (
+        alignment.startsWith('left') ||
+        alignment.startsWith('right')
+      ) {
+        setOffset(ref.current.clientWidth / 2 - 8);
+      }
     }
-  }, [type, tipWidth]);
+  }, [alignment, tipWidth, type]);
 
   let hoverDelay: NodeJS.Timeout | undefined;
   let focusDelay: NodeJS.Timeout | undefined;

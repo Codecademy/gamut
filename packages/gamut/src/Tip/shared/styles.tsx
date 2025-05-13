@@ -171,9 +171,9 @@ export const toolTipAlignmentVariants = variant({
     display: 'flex',
     fontSmoothPixel,
     maxWidth: '70vw',
-    opacity: 1,
+    opacity: 0,
     position: 'absolute',
-    visibility: 'visible',
+    visibility: 'hidden',
     '&::after': {
       content: '""',
       display: 'block',
