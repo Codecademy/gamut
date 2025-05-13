@@ -34,7 +34,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> &
      */
     placeholder?: string;
     /**
-     * Adding a small size prop to reduce the padding on the input. If the size prop is not passed, the default size will be used.
+     * Setting this prop to 'small' reduces the padding of the input component. If omitted, the default padding will be used.
      */
     inputSize?: 'small';
     type?: string;
