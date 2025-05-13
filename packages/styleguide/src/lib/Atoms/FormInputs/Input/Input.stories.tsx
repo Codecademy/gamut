@@ -16,7 +16,7 @@ const meta: Meta<typeof Input> = {
         type: 'text',
       },
     },
-  }
+  },
 };
 
 export default meta;
