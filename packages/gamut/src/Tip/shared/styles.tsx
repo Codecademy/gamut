@@ -1,9 +1,4 @@
-import {
-  fontSmoothPixel,
-  states,
-  theme,
-  variant,
-} from '@codecademy/gamut-styles';
+import { fontSmoothPixel, theme, variant } from '@codecademy/gamut-styles';
 
 import { tipAlignmentArray } from './types';
 import {
@@ -18,7 +13,6 @@ const borderColor = 'border-primary';
 
 export const narrowWidth = 64;
 export const verticalCenterWidths = { minWidth: 64, maxWidth: 128 } as const;
-const centerVert = { left: '0', right: '0', mx: 'auto' } as const;
 export const horizontalCenterWidths = {
   height: 'fit-content',
   minWidth: 4,
@@ -121,7 +115,8 @@ export const leftAlignStyles = {
 
 export const verticalCenterStyles = {
   ...verticalCenterWidths,
-  ...centerVert,
+  left: 'calc(50% - 4rem)',
+  width: '70vw',
 } as const;
 
 export const verticalCenterStylesAfter = { left: 'calc(50% - 0.5rem)' };
@@ -187,10 +182,6 @@ export const toolTipAlignmentVariants = variant({
   variants: tooltipVariantStyles,
 });
 
-export const inlineToolTipState = states({
-  isToolTip: { width: 'max-content' },
-});
-
 export const inlineToolTipBodyAlignments = variant({
   prop: 'alignment',
   variants: {
@@ -199,6 +190,7 @@ export const inlineToolTipBodyAlignments = variant({
     },
     vertCenter: {
       ...centeredBodyStyles,
+      mx: 'auto',
     },
     aligned: {
       ...alignedBodyStyles,
