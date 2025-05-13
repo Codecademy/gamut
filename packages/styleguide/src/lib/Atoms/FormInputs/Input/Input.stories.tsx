@@ -16,7 +16,9 @@ export default meta;
 type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    size: 'small',
+  },
 };
 
 export const Text: Story = {
