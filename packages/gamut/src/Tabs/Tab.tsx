@@ -7,7 +7,7 @@ import {
 
 import { tabElementBaseProps } from './props';
 import { TabButtonProps, tabStates, tabVariants } from './TabButton';
-import { useTabShared } from './TabProvider';
+import { useTab } from './TabProvider';
 
 interface TabBaseProps extends TabButtonProps, ReactAriaTabProps {}
 
@@ -26,7 +26,7 @@ export const TabBase = styled(ReactAriaTab)<TabProps>(
 );
 
 export const Tab: React.FC<TabProps> = (props) => {
-  const { variant } = useTabShared();
+  const { variant } = useTab();
 
   return <TabBase {...props} variant={variant} />;
 };

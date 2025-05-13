@@ -9,7 +9,7 @@ import {
 
 import { tabElementBaseProps, TabElementStyleProps } from './props';
 import { tabContainerStates, tabContainerVariants } from './styles';
-import { useTabShared } from './TabProvider';
+import { useTab } from './TabProvider';
 
 export interface TabListBaseProps
   extends StyleProps<typeof tabContainerVariants>,
@@ -27,6 +27,6 @@ const TabListBase = styled(ReactAriaTabList)<TabListProps>(
 );
 
 export const TabList: React.FC<TabListProps> = (props) => {
-  const { variant } = useTabShared();
+  const { variant } = useTab();
   return <TabListBase {...props} variant={variant} />;
 };
