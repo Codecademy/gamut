@@ -15,7 +15,7 @@ export function useTabContext() {
   return context;
 }
 
-export function useTab() {
+export function useTabShared() {
   const { variant } = useTabContext();
 
   return useMemo(

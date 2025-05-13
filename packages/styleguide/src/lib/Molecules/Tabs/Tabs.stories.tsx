@@ -120,7 +120,7 @@ export const Controlled = () => {
   );
 };
 
-export const WithBage: Story = {
+export const WithBadge: Story = {
   render: (args) => (
     <Tabs {...args}>
       <TabList>

@@ -2757,40 +2757,6 @@
   resolved "https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
-"@reach/auto-id@0.18.0":
-  version "0.18.0"
-  resolved "https://registry.npmjs.org/@reach/auto-id/-/auto-id-0.18.0.tgz#4b97085cd1cf1360a9bedc6e9c78e97824014f0d"
-  integrity sha512-XwY1IwhM7mkHZFghhjiqjQ6dstbOdpbFLdggeke75u8/8icT8uEHLbovFUgzKjy9qPvYwZIB87rLiR8WdtOXCg==
-  dependencies:
-    "@reach/utils" "0.18.0"
-
-"@reach/descendants@0.18.0":
-  version "0.18.0"
-  resolved "https://registry.npmjs.org/@reach/descendants/-/descendants-0.18.0.tgz#16fe52a5154da262994b0b8768baff4f670922d1"
-  integrity sha512-GXUxnM6CfrX5URdnipPIl3Tlc6geuz4xb4n61y4tVWXQX1278Ra9Jz9DMRN8x4wheHAysvrYwnR/SzAlxQzwtA==
-  dependencies:
-    "@reach/utils" "0.18.0"
-
-"@reach/polymorphic@0.18.0":
-  version "0.18.0"
-  resolved "https://registry.npmjs.org/@reach/polymorphic/-/polymorphic-0.18.0.tgz#2fe42007a774e06cdbc8e13e0d46f2dc30f2f1ed"
-  integrity sha512-N9iAjdMbE//6rryZZxAPLRorzDcGBnluf7YQij6XDLiMtfCj1noa7KyLpEc/5XCIB/EwhX3zCluFAwloBKdblA==
-
-"@reach/tabs@^0.18.0":
-  version "0.18.0"
-  resolved "https://registry.npmjs.org/@reach/tabs/-/tabs-0.18.0.tgz#f2e789d445d61a371eace9415841502729d099c9"
-  integrity sha512-gTRJzStWJJtgMhn9FDEmKogAJMcqNaGZx0i1SGoTdVM+D29DBhVeRdO8qEg+I2l2k32DkmuZxG/Mrh+GZTjczQ==
-  dependencies:
-    "@reach/auto-id" "0.18.0"
-    "@reach/descendants" "0.18.0"
-    "@reach/polymorphic" "0.18.0"
-    "@reach/utils" "0.18.0"
-
-"@reach/utils@0.18.0":
-  version "0.18.0"
-  resolved "https://registry.npmjs.org/@reach/utils/-/utils-0.18.0.tgz#4f3cebe093dd436eeaff633809bf0f68f4f9d2ee"
-  integrity sha512-KdVMdpTgDyK8FzdKO9SCpiibuy/kbv3pwgfXshTI6tEcQT1OOwj7BAksnzGC0rPz0UholwC+AgkqEl3EJX3M1A==
-
 "@react-aria/autocomplete@3.0.0-beta.2":
   version "3.0.0-beta.2"
   resolved "https://registry.npmjs.org/@react-aria/autocomplete/-/autocomplete-3.0.0-beta.2.tgz#61fc21cde05206e9a90f32378f25d13f5424366c"
