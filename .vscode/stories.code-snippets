@@ -80,6 +80,7 @@
     "prefix": "toc-story",
     "body": [
       "import { Meta } from '@storybook/blocks';",
+      "",
       "import { AboutHeader, TableOfContents } from '~styleguide/blocks';",
       "",
       "export const parameters = {",
