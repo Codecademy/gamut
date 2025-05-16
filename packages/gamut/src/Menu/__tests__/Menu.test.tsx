@@ -1,6 +1,7 @@
 import { MultipleUsersIcon } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { Menu } from '../Menu';
 import { MenuItem } from '../MenuItem';
@@ -123,10 +124,12 @@ describe('Menu', () => {
       ),
     });
 
-    view.getByLabelText(label);
-    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
-      label
-    );
+    const menuItem = view.getByLabelText(label);
+    await userEvent.hover(menuItem);
+
+    await waitFor(() => {
+      view.getByText(label);
+    });
   });
 
   it('render an aria-label for non-interactive menu items with a label', async () => {

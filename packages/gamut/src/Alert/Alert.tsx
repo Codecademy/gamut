@@ -142,7 +142,6 @@ export const Alert: React.FC<AlertProps> = ({
         info={buttonLabel}
         alignment="bottom-center"
         placement="floating"
-        hasRepetitiveLabel
       >
         <TextButton
           aria-controls={collapsibleContentId}

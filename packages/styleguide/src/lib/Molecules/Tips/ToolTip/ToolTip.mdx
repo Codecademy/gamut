@@ -24,7 +24,7 @@ export const parameters = {
 
 ## Usage
 
-When using the ToolTip component, the `id` prop is required to associate the tooltip with the interactive element and the interactive element's `aria-describedby` prop must be set to the `id` of the tooltip.
+When using the `ToolTip` component, you can use the `id` prop is to associate the tooltip with an interactive element and the interactive element's `aria-describedby` prop must be set to the `id` of the tooltip.
 
 When a Button is disabled with a tooltip, you must use the `aria-disabled` prop instead of `disabled` prop so the user can still focus the button and view the tooltip.
 
@@ -32,9 +32,7 @@ When a Button is disabled with a tooltip, you must use the `aria-disabled` prop 
 
 ### IconButton + ToolTip
 
-When using an icon-only button, a tooltip displaying the label is required to provide context for the button's action. This is accessible directly through the `IconButton`'s required `tip` prop. You can adjust positioning and alignment of the tooltip by using the tipProps prop. An additional label that is different from the tip should also be provided.
-
-If your `IconButton` doesn't require `aria-describedby` text, you can set the `hideAriaToolTip` tipProp to `true` to hide the `aria-describedby` text. When using the `hideAriaToolTip` prop, the `aria-label` should always be identical to the `tip` prop.
+When using an icon-only button, a tooltip displaying the label is required to provide context for the button's action. This is accessible directly through the `IconButton`'s required `tip` prop. If you do not provide an `aria-label`, the value of the `tip` prop will be used as the `aria-label` for accessibility purposes. You can adjust positioning and alignment of the tooltip by using the `tipProps` prop.
 
 <Canvas of={ToolTipStories.WithIconButton} />
 
