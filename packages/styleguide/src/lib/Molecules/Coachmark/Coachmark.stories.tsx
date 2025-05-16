@@ -60,6 +60,7 @@ export const Customized: Story = {
         beak: 'left',
         outline: true,
         pattern: CheckerDense,
+        position: 'above',
       }}
     />
   ),

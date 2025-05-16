@@ -23,10 +23,12 @@ export const transformValues = {
 
 export const popoverAbove = {
   top: 'calc(100% - 10px)',
+  ...beakTopStylesAfter,
 } as const;
 
 export const popoverBelow = {
   top: '-10px',
+  ...beakBottomStylesAfter,
 } as const;
 
 export const beakRight = {
