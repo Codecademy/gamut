@@ -35,7 +35,7 @@ const focusVisibleStyles = {
   },
 } as const;
 
-const tabVariants = variant({
+export const tabVariants = variant({
   base: {
     position: 'relative',
     display: 'inline-flex',
@@ -88,7 +88,7 @@ const tabVariants = variant({
   },
 });
 
-const tabStates = states({
+export const tabStates = states({
   selected: {
     ...tabSelectedStyles,
   },
