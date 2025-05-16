@@ -21,6 +21,9 @@ export const DeprecatedInlineToolTip: React.FC<
 }) => {
   const accessibilityProps = getDeprecatedAccessibilityProps({ focusable, id });
 
+  /**
+   * Note to all - this entire file is being deleted before this ships - I removed the below so that I can test the rest of the code against mono + monolith
+   */
   return (
     <ToolTipWrapper>
       <TargetContainer
@@ -35,7 +38,6 @@ export const DeprecatedInlineToolTip: React.FC<
         as="div"
         id={id}
         role="tooltip"
-        isToolTip
       >
         <TipBody
           alignment={alignment.includes('center') ? 'vertCenter' : 'aligned'}
