@@ -32,7 +32,9 @@ The set of tabs should be sections of related content that share the same struct
 
 ### Uncontrolled
 
-By default, the tabs component is uncontrolled, meaning it will maintain it's own state and switch between the different `TabPanel` components without passing any data to the component. This is good for basic use-cases where you don't need to do anything "extra" when switching tabs.
+By default, the tabs component is uncontrolled, meaning it will maintain its own state and switch between the different `TabPanel` components without passing any data to the component. This is good for basic use-cases where you don't need to do anything "extra" when switching tabs.
+
+The `Tabs` component will automatically select the first tab if no `defaultSelectedKey` is provided. You can use `onSelectionChange` in uncontrolled tabs for things like click tracking, but if doing so make sure you pass in a `defaultSelectedKey` otherwise the click tracking will run twice.
 
 <Canvas of={TabStories.Default} />
 
