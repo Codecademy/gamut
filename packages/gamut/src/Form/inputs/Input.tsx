@@ -17,6 +17,7 @@ import {
   formBaseFieldStyles,
   formFieldFocusStyles,
   formFieldPaddingStyles,
+  formFieldSmallPaddingStyles,
   formFieldStyles,
 } from '../styles';
 import { BaseInputProps } from '../types';
@@ -28,6 +29,10 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> &
      */
     activated?: boolean;
     className?: string;
+    /**
+     * Setting this prop to 'small' reduces the padding of the input component. If omitted, the default padding will be used.
+     */
+    inputSize?: 'small';
     /**
      * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
      */
@@ -75,6 +80,10 @@ const InputElement = styled.input<StyledInputProps>`
   ${formFieldStyles}
   ${conditionalStyles}
   text-indent: 0;
+  padding: ${(props) =>
+    props.inputSize === 'small'
+      ? `${formFieldSmallPaddingStyles.py}px ${formFieldSmallPaddingStyles.px}px`
+      : `${formFieldPaddingStyles.py}px ${formFieldPaddingStyles.px}px`};
   padding-right: ${(props) => (props.icon ? `2.3rem` : `initial`)};
 `;
 
@@ -109,6 +118,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       as: As,
       icon: IconSvg,
       type = 'text',
+      inputSize,
       ...rest
     },
     ref
@@ -148,10 +158,11 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
             Boolean(error),
             rest.activated !== undefined ? rest.activated : activatedStyle
           )}
+          inputSize={inputSize}
         />
         {!!ShownIcon && (
           <FlexBox
-            pr={IconSvg ? 12 : 16}
+            pr={16}
             position="absolute"
             alignItems="center"
             right="0"
