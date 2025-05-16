@@ -170,7 +170,6 @@ const beakVariantsArray = [
   'above-left-sml',
   'above-right-sml',
   'above-center-sml',
-  'center-center',
   'center-right-sml',
   'center-left-sml',
 ];

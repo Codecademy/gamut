@@ -18,6 +18,7 @@ export const horizontalCenterWidths = {
   minWidth: 4,
   maxWidth: 128,
 } as const;
+
 export const centerHorizontal = { top: '0', bottom: '0', my: 'auto' } as const;
 
 const alignedAvatarWidth = {
