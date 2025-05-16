@@ -32,6 +32,7 @@ exports[`Gamut Exported Keys 1`] = `
   "DataList",
   "DataTable",
   "DelayedRenderWrapper",
+  "DeprecatedToolTip",
   "Dialog",
   "Disclosure",
   "Drawer",
