@@ -141,7 +141,7 @@ export const FormGroupLarge: Story = {
   render: (args) => (
     <FormGroup
       label="i am a large disabled label"
-      labelinputSize="large"
+      labelSize="large"
       disabled
       isSoloField
       htmlFor="example-123"
@@ -161,7 +161,7 @@ export const FormGroupErrorLarge: Story = {
     <FormGroup
       label="i am also large label, but something is wrong."
       error="this is still not updog..."
-      labelinputSize="large"
+      labelSize="large"
       isSoloField
       htmlFor="example-123"
     >
