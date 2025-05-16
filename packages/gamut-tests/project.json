@@ -18,6 +18,13 @@
         "parallel": false
       }
     },
+    "verify": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/gamut-tests",
+        "command": "tsc --noEmit"
+      }
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/gamut-tests"],
