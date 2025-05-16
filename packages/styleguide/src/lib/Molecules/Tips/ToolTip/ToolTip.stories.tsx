@@ -26,20 +26,42 @@ export const Default: Story = {
   ),
 };
 
+const alignments = [
+  'top-center',
+  'bottom-center',
+  'left-center',
+  'right-center',
+] as const;
+
+export const Alignments: Story = {
+  render: () => (
+    <FlexBox justifyContent="space-around" m={24} width="95%">
+      {alignments.map((alignment) => {
+        return (
+          <IconButton
+            tip={alignment}
+            icon={SparkleIcon}
+            tipProps={{ alignment }}
+          />
+        );
+      })}
+    </FlexBox>
+  ),
+};
+
 export const WithIconButton: Story = {
   render: () => (
     <FlexBox justifyContent="space-around" m={24} width="95%">
       <IconButton
-        tip="Beautify your code"
+        tip="Wonder at the majesty of the universe"
         icon={SparkleIcon}
-        tipProps={{ alignment: 'bottom-center' }}
+        tipProps={{ alignment: 'left-center' }}
       />
       <IconButton
-        aria-label="Next Prompt"
-        tip="Next Prompt"
+        tip="Next"
         icon={ArrowRightIcon}
         variant="secondary"
-        tipProps={{ alignment: 'bottom-center', hideAriaToolTip: true }}
+        tipProps={{ alignment: 'right-center', hideAriaToolTip: true }}
       />
     </FlexBox>
   ),
@@ -47,11 +69,22 @@ export const WithIconButton: Story = {
 
 export const Floating: Story = {
   render: () => (
-    <IconButton
-      aria-label="Wonder"
-      tip="Wonder at the majesty of the universe"
-      icon={SmileyStarEyesIcon}
-      tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
-    />
+    <FlexBox justifyContent="space-around" m={24} width="95%">
+      <IconButton
+        tip="Wonder at the"
+        icon={SmileyStarEyesIcon}
+        tipProps={{ placement: 'floating' }}
+      />
+      <IconButton
+        tip="Wonder at the majesty of the universe"
+        icon={SmileyStarEyesIcon}
+        tipProps={{ alignment: 'left-center', placement: 'floating' }}
+      />
+      <IconButton
+        tip="Woah"
+        icon={SmileyStarEyesIcon}
+        tipProps={{ alignment: 'right-center', placement: 'floating' }}
+      />
+    </FlexBox>
   ),
 };
