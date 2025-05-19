@@ -52,7 +52,7 @@ module.exports = {
           { ignore: ['mask-type', 'xmlns-x', 'xmlns-i', 'xmlns-graph'] },
         ],
         'react/jsx-sort-props': [
-          true,
+          1,
           {
             callbacksLast: true,
           },
