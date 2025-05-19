@@ -1,4 +1,10 @@
-import { FillButton, FlexBox, IconButton, StrokeButton, ToolTip } from '@codecademy/gamut';
+import {
+  FillButton,
+  FlexBox,
+  IconButton,
+  StrokeButton,
+  ToolTip,
+} from '@codecademy/gamut';
 import {
   ArrowRightIcon,
   DeleteIcon,
