@@ -15,15 +15,15 @@ export const ToolTipMock: React.FC<
 }) => {
   return (
     <ToolTip
-      info={info}
-      placement={placement}
-      id="tip-id"
       hasRepetitiveLabel={hasRepetitiveLabel}
       hideAriaToolTip={hideAriaToolTip}
+      id="tip-id"
+      info={info}
+      placement={placement}
     >
       <FillButton
-        aria-label={ariaLabel}
         aria-describedby="tip-id"
+        aria-label={ariaLabel}
         onClick={onClick}
       >
         Click me

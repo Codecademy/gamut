@@ -93,15 +93,16 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   return (
     <FormGroup spacing={hideLabel ? 'tight' : spacing}>
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
-      <Component {...(rest as any)} name={name} disabled={disabled} />
+      <Component {...(rest as any)} disabled={disabled} name={name} />
       {children}
       {(error || customError) && !hideLabel && (
         <FormError
-          role={isFirstError ? 'alert' : 'status'}
           aria-live={isFirstError ? 'assertive' : 'off'}
+          role={isFirstError ? 'alert' : 'status'}
           variant={errorType}
         >
           <Markdown
+            inline
             overrides={{
               a: {
                 allowedAttributes: ['href', 'target'],
@@ -113,9 +114,8 @@ export function ConnectedFormGroup<T extends ConnectedField>({
               },
             }}
             skipDefaultOverrides={{ a: true }}
-            inline
-            text={textError}
             spacing="none"
+            text={textError}
           />
         </FormError>
       )}

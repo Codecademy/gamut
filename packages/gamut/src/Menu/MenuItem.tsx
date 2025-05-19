@@ -108,9 +108,9 @@ export const MenuItem = forwardRef<
         {Icon && (
           <FlexBox width="fit-content">
             <Icon
-              size={rest.spacing === 'condensed' ? 16 : 24}
-              mr={children ? 12 : 0}
               data-testid="menuitem-icon"
+              mr={children ? 12 : 0}
+              size={rest.spacing === 'condensed' ? 16 : 24}
             />
           </FlexBox>
         )}

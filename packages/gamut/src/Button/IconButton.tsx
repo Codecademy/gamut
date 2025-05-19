@@ -53,9 +53,9 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
 
     return (
       <ToolTip
-        info={tip}
-        id={tipId}
         hasRepetitiveLabel={hasRepetitiveLabel}
+        id={tipId}
+        info={tip}
         {...(tipProps as any)}
       >
         <IconButtonBase

@@ -114,9 +114,9 @@ export const Alert: React.FC<AlertProps> = ({
     <Box {...alertContentProps}>{children}</Box>
   ) : (
     <TruncateMarkup
-      tokenize="characters"
       ellipsis={<span>...</span>}
       lines={1}
+      tokenize="characters"
       onTruncate={setTruncated}
     >
       {/** Truncate markup expects a single child element */}
@@ -138,21 +138,21 @@ export const Alert: React.FC<AlertProps> = ({
   const expandButton = truncated && !isInline && (
     <Box>
       <ToolTip
+        alignment="bottom-center"
+        hasRepetitiveLabel
         id={ariaId}
         info={buttonLabel}
-        alignment="bottom-center"
         placement="floating"
-        hasRepetitiveLabel
       >
         <TextButton
           aria-controls={collapsibleContentId}
           aria-describedby={ariaId}
           aria-expanded={expanded}
+          aria-label={expanded ? 'Collapse' : 'Expand'}
+          size="small"
           tabIndex={tabIndex}
           variant="secondary"
-          size="small"
           onClick={() => setExpanded(!expanded)}
-          aria-label={expanded ? 'Collapse' : 'Expand'}
         >
           <Rotation rotated={toggleState === 'expanded'}>
             <MiniChevronDownIcon />
@@ -173,9 +173,9 @@ export const Alert: React.FC<AlertProps> = ({
       <CleanFillButton
         {...cta}
         mode={buttonColorMode}
-        variant="secondary"
         size="small"
         tabIndex={tabIndex}
+        variant="secondary"
       >
         {cta.children ?? cta.text}
       </CleanFillButton>
@@ -186,16 +186,16 @@ export const Alert: React.FC<AlertProps> = ({
   return (
     <AlertWrapper
       bg={bg}
-      placement={placement}
       gridTemplateColumns={gridTemplateColumns}
+      placement={placement}
       pr={alertRightPadding}
       ref={ref}
       {...props}
     >
-      <Icon size={32} aria-hidden p={8} />
+      <Icon aria-hidden p={8} size={32} />
       <CollapsibleContent
-        id={collapsibleContentId}
         animate={toggleState}
+        id={collapsibleContentId}
         initial={toggleState}
         transition={{
           duration: 0.2,
@@ -212,13 +212,13 @@ export const Alert: React.FC<AlertProps> = ({
       {ctaButton}
       {onClose && (
         <IconButton
-          tabIndex={tabIndex}
-          variant="secondary"
-          size="small"
-          onClick={onClose}
           icon={MiniDeleteIcon}
+          size="small"
+          tabIndex={tabIndex}
           tip="Close alert"
           tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
+          variant="secondary"
+          onClick={onClose}
         />
       )}
     </AlertWrapper>

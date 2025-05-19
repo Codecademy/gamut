@@ -41,12 +41,12 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
 
   const target = (
     <TargetContainer
+      height={inheritDims ? 'inherit' : undefined}
       ref={wrapperRef}
+      width={inheritDims ? 'inherit' : undefined}
       onKeyDown={
         escapeKeyPressHandler ? (e) => escapeKeyPressHandler(e) : undefined
       }
-      height={inheritDims ? 'inherit' : undefined}
-      width={inheritDims ? 'inherit' : undefined}
     >
       {children}
     </TargetContainer>
@@ -55,17 +55,17 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   const tipBody = (
     <InlineTipBodyWrapper
       alignment={alignment}
-      zIndex={zIndex ?? 1}
       isToolTip={type === 'tool'}
+      zIndex={zIndex ?? 1}
       {...inlineWrapperProps}
     >
       <TipBody
         alignment={tipBodyAlignment}
+        aria-hidden={isHoverType}
         color="currentColor"
         id={id}
         width={narrow ? narrowWidth : undefined}
         zIndex="auto"
-        aria-hidden={isHoverType}
       >
         {type === 'preview' ? (
           <>

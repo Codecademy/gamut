@@ -54,12 +54,12 @@ export const Drawer: React.FC<DrawerProps> = ({
             borderRadius="sm"
             height="100%"
             {...{ [alignContentContainer]: 0 }}
-            position="absolute"
             maxWidth="100%"
             minWidth={fullWidth}
-            overflowY="auto"
             overflowX="hidden"
+            overflowY="auto"
             p={4}
+            position="absolute"
           >
             {children}
           </Box>
