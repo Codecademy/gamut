@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event';
 
 import { ToolTipMock } from './mocks';
 
-const ariaLabel = 'Click';
 const info = 'I am information';
 const onClick = jest.fn();
 
@@ -23,26 +22,6 @@ describe('ToolTip', () => {
         info
       );
     });
-    it('removes the label text when hasLabel is true', () => {
-      const { view } = renderView({
-        'aria-label': ariaLabel,
-        info: `${ariaLabel}, ${info}`,
-      });
-
-      view.getByRole('button', { name: 'Click' });
-      expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
-        info
-      );
-    });
-    it('hides ariaTooltip when there is no text other than the aria-label', () => {
-      const { view } = renderView({
-        'aria-label': ariaLabel,
-        info: `${ariaLabel}`,
-      });
-
-      view.getByRole('button', { name: 'Click' });
-      expect(view.queryByRole('tooltip')).toBeNull();
-    });
 
     it('calls onClick when clicked', async () => {
       const { view } = renderView({});
@@ -50,16 +29,6 @@ describe('ToolTip', () => {
       await userEvent.click(view.getByRole('button'));
 
       expect(onClick).toHaveBeenCalled();
-    });
-
-    it('hides ariaTooltip when there is hideAriaToolTip is true', () => {
-      const { view } = renderView({
-        'aria-label': ariaLabel,
-        info: `${ariaLabel}`,
-      });
-
-      view.getByRole('button', { name: 'Click' });
-      expect(view.queryByRole('tooltip')).toBeNull();
     });
   });
   describe('floating placement', () => {

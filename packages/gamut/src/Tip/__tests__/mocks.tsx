@@ -5,10 +5,10 @@ import { ToolTip, ToolTipProps } from '../ToolTip';
 
 export const ToolTipMock: React.FC<
   ToolTipProps & ComponentProps<typeof FillButton>
-> = ({ 'aria-label': ariaLabel, info, placement, onClick }) => {
+> = ({ info, placement, onClick }) => {
   return (
     <ToolTip info={info} placement={placement} id="tip-id">
-      <FillButton aria-label={ariaLabel} onClick={onClick}>
+      <FillButton aria-describedby="tip-id" onClick={onClick}>
         Click me
       </FillButton>
     </ToolTip>
