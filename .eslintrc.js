@@ -51,11 +51,11 @@ module.exports = {
           'error',
           { ignore: ['mask-type', 'xmlns-x', 'xmlns-i', 'xmlns-graph'] },
         ],
-        "react/jsx-sort-props": [
+        'react/jsx-sort-props': [
           true,
           {
-            "callbacksLast": true
-          }
+            callbacksLast: true,
+          },
         ],
       },
     },
