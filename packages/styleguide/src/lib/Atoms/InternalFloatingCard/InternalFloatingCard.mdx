@@ -23,7 +23,18 @@ export const parameters = {
 
 <ComponentHeader {...parameters} />
 
-<Callout text="The InternalFloatingCard component is strictly for internal Gamut usage. For instance, the Modal component will use InternalFloatingCard to style its content. However, InternalFloatingCard is no longer exported for use in other libraries, in such cases, use Card instead." />
+<Callout
+  text={
+    <>
+      The InternalFloatingCard component is strictly for internal Gamut usage.
+      For instance, the{' '}
+      <LinkTo id="Molecules/Modals/Modal">Modal component</LinkTo> will use
+      InternalFloatingCard to style its content. However, InternalFloatingCard
+      is no longer exported for use in other libraries, in such cases, use{' '}
+      <LinkTo id="Atoms/Card">Card</LinkTo> instead.
+    </>
+  }
+/>
 
 ## Usage
 
