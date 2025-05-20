@@ -10,6 +10,7 @@ import {
   DeleteIcon,
   SmileyStarEyesIcon,
   SparkleIcon,
+  StudyBookIcon,
 } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -53,11 +54,18 @@ export const WithIconButton: Story = {
 
 export const Floating: Story = {
   render: () => (
-    <IconButton
+    <FlexBox center m={24} justifyContent='space-around'>
+      <IconButton
       tip="Wonder at the majesty of the universe"
       icon={SmileyStarEyesIcon}
       tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
     />
+      <ToolTip id="floating-ex" info="Tooltip for a FillButton" placement="floating">
+        <FillButton aria-describedby="floating-ex" icon={StudyBookIcon}>
+          Also floating
+        </FillButton>
+      </ToolTip>
+    </FlexBox>
   ),
 };
 
@@ -76,7 +84,7 @@ export const InteractiveElement: Story = {
 export const Disabled: Story = {
   render: () => (
     <FlexBox center m={24}>
-      <ToolTip id="fill-id" info="Tooltip still shows">
+      <ToolTip id="fill-id" info="Tooltip still shows" placement="floating">
         <FillButton aria-describedby="fill-id" aria-disabled icon={DeleteIcon}>
           Using aria-disabled
         </FillButton>

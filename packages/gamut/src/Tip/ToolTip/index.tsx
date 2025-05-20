@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { Text } from '../../Typography';
 import { WithChildrenProp } from '../../utils';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
@@ -44,8 +45,15 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   };
 
   return (
-    <Tip {...tipProps} type="tool" id={id}>
-      {children}
-    </Tip>
+    <>
+      {isFloating && (
+        <Text aria-hidden screenreader id={id} role="tooltip">
+          {info}
+        </Text>
+      )}
+      <Tip {...tipProps} type="tool" id={!isFloating ? id : undefined}>
+        {children}
+      </Tip>
+    </>
   );
 };
