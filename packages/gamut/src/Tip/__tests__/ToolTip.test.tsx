@@ -1,5 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { fireEvent } from '@testing-library/react';
+import { fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { ToolTipMock } from './mocks';
@@ -32,25 +32,23 @@ describe('ToolTip', () => {
     });
   });
   describe('floating placement', () => {
-    it('has an accessible tooltip', async () => {
+    it('has an accessible tooltip', () => {
       const { view } = renderView({ placement: 'floating' });
-      view.getByRole('button');
 
-      fireEvent.mouseOver(view.getByRole('button'));
-
-      expect(await view.findByRole('tooltip')).toBeInTheDocument();
+      expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
+        info
+      );
     });
 
     it('shows the tip when it is hovered over', async () => {
       const { view } = renderView({ placement: 'floating' });
 
-      expect(view.queryByText(info)).toBeFalsy();
+      expect(view.queryAllByText(info).length).toBe(1);
 
-      view.getByRole('button');
+      await userEvent.hover(view.getByRole('button'));
 
-      fireEvent.mouseOver(view.getByRole('button'));
+      await waitFor(() => expect(view.queryAllByText(info).length).toBe(2));
 
-      expect(await view.findByText(info)).toBeInTheDocument();
     });
     it('calls onClick when clicked', async () => {
       const { view } = renderView({});

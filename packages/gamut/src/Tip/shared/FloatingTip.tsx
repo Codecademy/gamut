@@ -141,7 +141,6 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         targetRef={ref}
         variant="secondary"
         widthRestricted={false}
-        role={type === 'tool' ? 'tooltip' : undefined}
       >
         <FloatingTipTextWrapper
           ref={childRef}

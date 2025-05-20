@@ -22,14 +22,14 @@ describe('Toast', () => {
     renderView();
 
     const toast = screen.getByRole('status');
-    expect(toast.childNodes.length).toBe(2);
+    expect(toast.childNodes.length).toBe(3);
   });
 
   it('renders an image as a background when specified', () => {
     renderView({ icon: './myimg.svg' });
 
     const toast = screen.getByRole('status');
-    expect(toast.childNodes.length).toBe(3);
+    expect(toast.childNodes.length).toBe(4);
     expect(toast.childNodes[0].childNodes.length).toEqual(0);
   });
 
@@ -37,7 +37,7 @@ describe('Toast', () => {
     renderView({ icon: <div /> });
 
     const toast = screen.getByRole('status');
-    expect(toast.childNodes.length).toBe(3);
+    expect(toast.childNodes.length).toBe(4);
     expect(toast.childNodes[0].childNodes.length).toEqual(1);
   });
 });

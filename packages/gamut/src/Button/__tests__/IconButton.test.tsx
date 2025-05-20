@@ -62,16 +62,12 @@ describe('IconButton', () => {
   it('renders a floating tip', async () => {
     const { view } = renderFloatingView({});
 
-    expect(view.queryByText(tip)).toBeNull();
+    expect(view.queryAllByText(tip).length).toBe(1);
 
     const cta = view.getByRole('button', { name: label });
 
-    expect(view.queryByText('tooltip')).toBeNull();
-
     await userEvent.hover(cta);
 
-    await waitFor(() => {
-      view.getByText(tip);
-    });
+    await waitFor(() => expect(view.queryAllByText(tip).length).toBe(2));
   });
 });
