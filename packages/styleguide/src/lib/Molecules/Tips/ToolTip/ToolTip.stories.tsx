@@ -54,13 +54,17 @@ export const WithIconButton: Story = {
 
 export const Floating: Story = {
   render: () => (
-    <FlexBox center m={24} justifyContent='space-around'>
+    <FlexBox center m={24} justifyContent="space-around">
       <IconButton
-      tip="Wonder at the majesty of the universe"
-      icon={SmileyStarEyesIcon}
-      tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
-    />
-      <ToolTip id="floating-ex" info="Tooltip for a FillButton" placement="floating">
+        tip="Wonder at the majesty of the universe"
+        icon={SmileyStarEyesIcon}
+        tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
+      />
+      <ToolTip
+        id="floating-ex"
+        info="Tooltip for a FillButton"
+        placement="floating"
+      >
         <FillButton aria-describedby="floating-ex" icon={StudyBookIcon}>
           Also floating
         </FillButton>
