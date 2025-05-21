@@ -31,8 +31,8 @@ const CustomCloseExample = () => {
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open</FillButton>
       <ModalDeprecated
-        isOpen={isOpen}
         hideDefaultCloseButton
+        isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
       >
         <p>Close the ModalDeprecated...</p>
@@ -54,8 +54,8 @@ const ClickOutsideExample = () => {
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open</FillButton>
       <ModalDeprecated
-        isOpen={isOpen}
         hideDefaultCloseButton
+        isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
       >
         <p>

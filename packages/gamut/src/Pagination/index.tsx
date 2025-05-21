@@ -134,12 +134,12 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <FlexBox
-      as={navigation ? 'nav' : undefined}
       aria-label={
         navigation
           ? `Browse Content By Page, total pages ${totalPages}`
           : `Paginated Navigation, total pages ${totalPages}`
       }
+      as={navigation ? 'nav' : undefined}
       justifyContent="center"
       minWidth={{
         _: 'initial',
@@ -149,33 +149,33 @@ export const Pagination: React.FC<PaginationProps> = ({
       <HiddenText aria-live="polite">{liveText}</HiddenText>
       <AnimatedFadeButton
         aria-label={`Navigate back to page ${currentPage - 1}`}
+        buttonType={variant}
         href={navigation}
         icon={MiniChevronLeftIcon}
-        onClick={() => changeHandler(currentPage - 1)}
         showButton={currentPage === 1 ? 'hidden' : 'shown'}
-        buttonType={variant}
+        onClick={() => changeHandler(currentPage - 1)}
       />
       {showSkipToButtons && (
         <>
           <AnimatedSlideButton
             aria-label="Jump back to page 1"
+            buttonType={variant}
             direction="back"
             display={hideOnMobile}
             href={navigation}
-            onClick={() => changeHandler(1)}
             showButton={shownPageArray[0] === 1 ? 'hidden' : 'shown'}
-            buttonType={variant}
+            onClick={() => changeHandler(1)}
           >
             1
           </AnimatedSlideButton>
           <EllipsisButton
             aria-label={`Jump back to page ${backPageNumber}`}
+            buttonType={variant}
             direction="back"
             display={hideOnMobile}
             href={navigation}
-            onClick={() => changeHandler(backPageNumber)}
-            buttonType={variant}
             showButton={shownPageArray[0] === 1 ? 'hidden' : 'shown'}
+            onClick={() => changeHandler(backPageNumber)}
           />
         </>
       )}
@@ -183,11 +183,11 @@ export const Pagination: React.FC<PaginationProps> = ({
         <PaginationButton
           aria-current={page === currentPage && 'page'}
           aria-label={`${page === totalPages ? 'Last Page, ' : ''}Page ${page}`}
+          buttonType={variant}
           href={navigation}
           key={page}
-          onClick={() => changeHandler(page)}
           selected={page === currentPage}
-          buttonType={variant}
+          onClick={() => changeHandler(page)}
         >
           {page}
         </PaginationButton>
@@ -196,31 +196,31 @@ export const Pagination: React.FC<PaginationProps> = ({
         <>
           <EllipsisButton
             aria-label={`Jump forward to page ${forwardPageNumber}`}
-            display={hideOnMobile}
+            buttonType={variant}
             direction="forward"
+            display={hideOnMobile}
+            href={navigation}
+            showButton={
+              shownPageArray[chapterSize - 1] === totalPages
+                ? 'hidden'
+                : 'shown'
+            }
             onClick={() => {
               changeHandler(forwardPageNumber);
             }}
-            href={navigation}
-            showButton={
-              shownPageArray[chapterSize - 1] === totalPages
-                ? 'hidden'
-                : 'shown'
-            }
-            buttonType={variant}
           />
           <AnimatedSlideButton
             aria-label={`Jump forward to last page, page ${totalPages}`}
+            buttonType={variant}
             direction="forward"
             display={hideOnMobile}
             href={navigation}
-            onClick={() => changeHandler(totalPages)}
             showButton={
               shownPageArray[chapterSize - 1] === totalPages
                 ? 'hidden'
                 : 'shown'
             }
-            buttonType={variant}
+            onClick={() => changeHandler(totalPages)}
           >
             {totalPages}
           </AnimatedSlideButton>
@@ -228,11 +228,11 @@ export const Pagination: React.FC<PaginationProps> = ({
       )}
       <AnimatedFadeButton
         aria-label={`Navigate forward to page ${currentPage + 1}`}
+        buttonType={variant}
         href={navigation}
         icon={MiniChevronRightIcon}
-        onClick={() => changeHandler(currentPage + 1)}
         showButton={currentPage === totalPages ? 'hidden' : 'shown'}
-        buttonType={variant}
+        onClick={() => changeHandler(currentPage + 1)}
       />
     </FlexBox>
   );

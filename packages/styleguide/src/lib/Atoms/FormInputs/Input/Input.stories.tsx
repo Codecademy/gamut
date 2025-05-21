@@ -101,7 +101,7 @@ export const FormGroupDefault: Story = {
     name: 'example-123',
   },
   render: (args) => (
-    <FormGroup label="i am a smol label" isSoloField htmlFor="example-123">
+    <FormGroup htmlFor="example-123" isSoloField label="i am a smol label">
       <Input {...args} />
     </FormGroup>
   ),
@@ -115,10 +115,10 @@ export const FormGroupError: Story = {
   },
   render: (args) => (
     <FormGroup
-      label="i am a smol label"
       error="this is not updog."
-      isSoloField
       htmlFor="example-123"
+      isSoloField
+      label="i am a smol label"
     >
       <Input {...args} />
     </FormGroup>
@@ -133,11 +133,11 @@ export const FormGroupLarge: Story = {
   },
   render: (args) => (
     <FormGroup
+      disabled
+      htmlFor="example-123"
+      isSoloField
       label="i am a large disabled label"
       labelSize="large"
-      disabled
-      isSoloField
-      htmlFor="example-123"
     >
       <Input {...args} />
     </FormGroup>
@@ -152,11 +152,11 @@ export const FormGroupErrorLarge: Story = {
   },
   render: (args) => (
     <FormGroup
-      label="i am also large label, but something is wrong."
       error="this is still not updog..."
-      labelSize="large"
-      isSoloField
       htmlFor="example-123"
+      isSoloField
+      label="i am also large label, but something is wrong."
+      labelSize="large"
     >
       <Input {...args} />
     </FormGroup>

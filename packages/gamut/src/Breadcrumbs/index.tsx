@@ -61,7 +61,7 @@ export const Breadcrumbs = <T extends string | Object>({
   <nav aria-label="breadcrumbs" className={className}>
     <FlexBox as="ol" m={0} p={0}>
       {crumbs.map((crumb, index) => (
-        <BreadcrumbPart key={crumb.title} as="li">
+        <BreadcrumbPart as="li" key={crumb.title}>
           {isClickableCrumb(crumb) ? (
             <BreadcrumbAnchor
               data-testid={`breadcrumb-${crumb.title}`}
@@ -75,12 +75,12 @@ export const Breadcrumbs = <T extends string | Object>({
             </BreadcrumbAnchor>
           ) : (
             <Text
+              aria-current="location"
               as="div"
               display="block"
               fontWeight="bold"
               truncate="ellipsis"
               truncateLines={1}
-              aria-current="location"
             >
               {crumb.title}
             </Text>

@@ -33,15 +33,13 @@ const FormGroupStates = () => {
     <ConnectedForm
       display="flex"
       mt={12}
+      resetOnSubmit
       onSubmit={(values) => {
         action('Form Submitted')(values);
       }}
-      resetOnSubmit
       {...connectedFormProps}
     >
       <ConnectedFormGroup
-        name="radioGroup"
-        label="default state"
         field={{
           component: ConnectedRadioGroupInput,
           options: [
@@ -50,10 +48,10 @@ const FormGroupStates = () => {
             { label: 'zero', value: 'zero' },
           ],
         }}
+        label="default state"
+        name="radioGroup"
       />
       <ConnectedFormGroup
-        name="radioGroupError"
-        label="error state"
         customError="custom error"
         field={{
           component: ConnectedRadioGroupInput,
@@ -63,10 +61,10 @@ const FormGroupStates = () => {
             { label: 'zero', value: 'zero' },
           ],
         }}
+        label="error state"
+        name="radioGroupError"
       />
       <ConnectedFormGroup
-        name="radioGroupDisabled"
-        label="disabled state"
         disabled
         field={{
           component: ConnectedRadioGroupInput,
@@ -76,6 +74,8 @@ const FormGroupStates = () => {
             { label: 'zero', value: 'zero' },
           ],
         }}
+        label="disabled state"
+        name="radioGroupDisabled"
       />
     </ConnectedForm>
   );

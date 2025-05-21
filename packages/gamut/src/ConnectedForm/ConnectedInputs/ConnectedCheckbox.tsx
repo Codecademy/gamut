@@ -23,22 +23,11 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={false}
+      name={name}
       render={({ field: { value, onBlur, onChange, ref } }) => (
         <Checkbox
-          checked={value}
-          className={className}
-          disabled={isDisabled}
-          htmlFor={name}
-          name={name}
-          onChange={(event) => {
-            onUpdate?.(event.target.checked);
-            onChange?.(event.target.checked);
-          }}
-          onBlur={onBlur}
-          label={label}
           aria-label={
             ariaLabel === undefined
               ? typeof label === 'string'
@@ -46,10 +35,21 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
                 : 'checkbox'
               : ariaLabel
           }
-          multiline={multiline}
-          id={id}
           aria-required={isRequired}
+          checked={value}
+          className={className}
+          disabled={isDisabled}
+          htmlFor={name}
+          id={id}
+          label={label}
+          multiline={multiline}
+          name={name}
           spacing={spacing}
+          onBlur={onBlur}
+          onChange={(event) => {
+            onUpdate?.(event.target.checked);
+            onChange?.(event.target.checked);
+          }}
           {...ref}
         />
       )}

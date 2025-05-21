@@ -97,41 +97,41 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
   const svgViewBoxStr = `${viewBox.minX} ${viewBox.minY} ${viewBox.width} ${viewBox.height}`;
 
   return (
-    <RadialProgressWrapper size={size} className={className}>
+    <RadialProgressWrapper className={className} size={size}>
       <Text as="figcaption" screenreader>{`${labelPercent}% progress`}</Text>
-      <svg viewBox={svgViewBoxStr} height={size} width={size} {...props}>
+      <svg height={size} viewBox={svgViewBoxStr} width={size} {...props}>
         <circle
           cx="50"
           cy="50"
+          fill="none"
+          opacity={baseColor ? '1' : '.2'}
           r={`${circleRadius}`}
           stroke={baseColor || 'currentColor'}
           strokeWidth={strokeWidth}
-          fill="none"
-          opacity={baseColor ? '1' : '.2'}
         />
         {progressOutlineSize && strokeWidthForOutline && (
           <circle
             cx="50"
             cy="50"
-            r={`${circleRadius}`}
-            stroke={progressOutlineColor}
-            strokeWidth={strokeWidthForOutline}
-            strokeLinecap={strokeLinecap}
             fill="none"
             opacity="1"
-            strokeDashoffset={finalValue}
+            r={`${circleRadius}`}
+            stroke={progressOutlineColor}
             strokeDasharray={offsetForEmptyProgress}
+            strokeDashoffset={finalValue}
+            strokeLinecap={strokeLinecap}
+            strokeWidth={strokeWidthForOutline}
             transform="rotate(-90 50 50)"
           >
             {startingValue !== finalValue && (
               <animate
-                attributeType="CSS"
                 attributeName="stroke-dashoffset"
+                attributeType="CSS"
+                begin="0"
+                dur={`${duration}ms`}
+                fill="freeze"
                 from={startingValue}
                 to={finalValue}
-                dur={`${duration}ms`}
-                begin="0"
-                fill="freeze"
               />
             )}
           </circle>
@@ -139,25 +139,25 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
         <circle
           cx="50"
           cy="50"
-          r={`${circleRadius}`}
-          stroke="currentColor"
-          strokeWidth={strokeWidth}
-          strokeLinecap={strokeLinecap}
           fill="none"
           opacity="1"
-          strokeDashoffset={finalValue}
+          r={`${circleRadius}`}
+          stroke="currentColor"
           strokeDasharray={offsetForEmptyProgress}
+          strokeDashoffset={finalValue}
+          strokeLinecap={strokeLinecap}
+          strokeWidth={strokeWidth}
           transform="rotate(-90 50 50)"
         >
           {startingValue !== finalValue && (
             <animate
-              attributeType="CSS"
               attributeName="stroke-dashoffset"
+              attributeType="CSS"
+              begin="0"
+              dur={`${duration}ms`}
+              fill="freeze"
               from={startingValue}
               to={finalValue}
-              dur={`${duration}ms`}
-              begin="0"
-              fill="freeze"
             />
           )}
         </circle>
@@ -165,12 +165,12 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
       {children && (
         <FlexBox
           alignItems="center"
-          justifyContent="center"
-          position="absolute"
           height={1}
-          width={1}
+          justifyContent="center"
           left={0}
+          position="absolute"
           top={0}
+          width={1}
         >
           {children}
         </FlexBox>

@@ -116,9 +116,9 @@ export const Modal: React.FC<ModalProps> = ({
   const titleText = title || views?.[currentView].title;
   return (
     <Overlay
+      data-testid="modal"
       shroud
       onRequestClose={onRequestClose}
-      data-testid="modal"
       {...rest}
     >
       <ModalContainer
@@ -137,8 +137,8 @@ export const Modal: React.FC<ModalProps> = ({
           <Text
             as={headingLevel}
             fontSize={20}
-            lineHeight="base"
             gridArea="title"
+            lineHeight="base"
           >
             {titleText}
           </Text>
@@ -146,18 +146,18 @@ export const Modal: React.FC<ModalProps> = ({
         {!hideCloseButton && (
           <Box alignSelf="start" gridArea="close">
             <IconButton
-              size="small"
-              icon={MiniDeleteIcon}
-              onClick={onRequestClose}
               disabled={closeDisabled}
+              icon={MiniDeleteIcon}
+              size="small"
               tip="Close modal"
+              onClick={onRequestClose}
             />
           </Box>
         )}
         <Box
-          overflowY={scrollable ? 'auto' : 'visible'}
-          gridArea="content"
           data-testid="modal-content"
+          gridArea="content"
+          overflowY={scrollable ? 'auto' : 'visible'}
         >
           {image && size && <ImageContainer image={image} size={size} />}
           {view?.children || children}
@@ -165,11 +165,13 @@ export const Modal: React.FC<ModalProps> = ({
         {view?.secondaryCta && (
           <TextButton
             {...view?.secondaryCta}
-            variant="secondary"
             disabled={
               view?.secondaryCta.disabled ||
               (view?.secondaryCta?.actionType === 'back' && currentView === 0)
             }
+            gridArea="cancel"
+            justifySelf="end"
+            variant="secondary"
             onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
               if (view?.secondaryCta?.actionType === 'back') {
                 setCurrentView(currentView - 1);
@@ -179,23 +181,22 @@ export const Modal: React.FC<ModalProps> = ({
               }
               view?.secondaryCta?.onClick?.(e);
             }}
-            justifySelf="end"
-            gridArea="cancel"
           />
         )}
         {view?.primaryCta && (
           <FillButton
             {...view?.primaryCta}
-            variant={
-              'variant' in view.primaryCta
-                ? view?.primaryCta?.variant
-                : 'primary'
-            }
             disabled={
               view?.primaryCta.disabled ||
               (view?.primaryCta?.actionType === 'next' &&
                 views &&
                 currentView === views.length - 1)
+            }
+            gridArea="confirm"
+            variant={
+              'variant' in view.primaryCta
+                ? view?.primaryCta?.variant
+                : 'primary'
             }
             onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
               if (view?.primaryCta?.actionType === 'next') {
@@ -203,7 +204,6 @@ export const Modal: React.FC<ModalProps> = ({
               }
               view?.primaryCta?.onClick?.(e);
             }}
-            gridArea="confirm"
           />
         )}
       </ModalContainer>

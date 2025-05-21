@@ -137,7 +137,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
   if (field.type === 'custom-group') {
     return (
-      <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
+      <Column rowspan={field?.rowspan ?? 1} size={field?.size}>
         {getInput()}
       </Column>
     );
@@ -148,25 +148,26 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       disabled={disabled}
       htmlFor={field.id || field.name}
       infotip={field.infotip}
-      required={rest?.required}
       isSoloField={rest?.isSoloField || field?.isSoloField}
+      required={rest?.required}
     >
       {field.label}
     </FormGroupLabel>
   );
 
   return (
-    <Column size={field?.size} rowspan={field?.rowspan ?? 1}>
+    <Column rowspan={field?.rowspan ?? 1} size={field?.size}>
       <FormGroup spacing={isTightCheckbox ? 'tight' : 'padded'}>
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
         {errorMessage && (
           <FormError
-            role={isFirstError ? 'alert' : 'status'}
             aria-live={isFirstError ? 'assertive' : 'off'}
+            role={isFirstError ? 'alert' : 'status'}
             variant={isTightCheckbox ? 'initial' : 'absolute'}
           >
             <Markdown
+              inline
               overrides={{
                 a: {
                   allowedAttributes: ['href', 'target'],
@@ -178,9 +179,8 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
                 },
               }}
               skipDefaultOverrides={{ a: true }}
-              inline
-              text={errorMessage}
               spacing="none"
+              text={errorMessage}
             />
           </FormError>
         )}

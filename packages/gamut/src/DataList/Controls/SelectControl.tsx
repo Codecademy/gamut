@@ -14,13 +14,13 @@ export const SelectControl: React.FC<{
 }> = ({ disabled, onSelect, rowId, label, selected = false, name }) => {
   return (
     <Checkbox
-      disabled={disabled}
-      spacing="tight"
-      label={<Text screenreader>{label}</Text>}
       aria-label={label}
-      htmlFor={name}
-      name={name}
       checked={selected}
+      disabled={disabled}
+      htmlFor={name}
+      label={<Text screenreader>{label}</Text>}
+      name={name}
+      spacing="tight"
       onChange={() => onSelect?.({ rowId, toggle: selected })}
     />
   );

@@ -87,8 +87,8 @@ export const InteractiveInputToggle: React.FC = () => {
   return (
     <Toggle
       checked={checked}
-      onChange={changeHandler}
       label="interactive input toggle"
+      onChange={changeHandler}
     />
   );
 };
@@ -103,8 +103,8 @@ export const InteractiveButtonToggle: React.FC = () => {
     <Toggle
       as="button"
       checked={checked}
-      onClick={changeHandler}
       label="interactive button toggle"
+      onClick={changeHandler}
     />
   );
 };

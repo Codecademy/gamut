@@ -74,11 +74,11 @@ export const ButtonBase = forwardRef<
     return (
       <ResetElement
         {...filteredProps}
-        ref={ref as MutableRefObject<HTMLButtonElement>}
         as="button"
-        type={type}
-        role={role}
         disabled={!!disabled}
+        ref={ref as MutableRefObject<HTMLButtonElement>}
+        role={role}
+        type={type}
       >
         {children}
       </ResetElement>
@@ -88,9 +88,9 @@ export const ButtonBase = forwardRef<
   return (
     <ResetElementAnchor
       {...rest}
-      ref={ref as MutableRefObject<HTMLAnchorElement>}
       as="a"
       href={rest?.href}
+      ref={ref as MutableRefObject<HTMLAnchorElement>}
       role={role}
     >
       {children}

@@ -106,12 +106,12 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       isEmpty || loading ? (
         <Box
           as="table"
-          maxHeight="inherit"
           height="inherit"
+          maxHeight="inherit"
           minHeight="inherit"
           minWidth="min-content"
-          position="relative"
           overflow="inherit"
+          position="relative"
           ref={tableRef}
           width="100%"
         >
@@ -125,13 +125,13 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       <ListProvider value={value}>
         <ListWrapper
           id={id}
-          onScroll={scrollable ? scrollHandler : undefined}
+          maxHeight={height}
           overflow={overflowHidden ? 'hidden' : overflow}
           position="relative"
           ref={wrapperRef}
           scrollable={!isEmpty && showShadow}
           width={1}
-          maxHeight={height}
+          onScroll={scrollable ? scrollHandler : undefined}
         >
           <Box
             as={isTable && !isEmpty && !loading ? 'table' : 'div'}
@@ -149,7 +149,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
 
           {isEmpty && (
             <FlexBox center width={1}>
-              <DotLoose position="absolute" inset={0} top={-2} />
+              <DotLoose inset={0} position="absolute" top={-2} />
             </FlexBox>
           )}
         </ListWrapper>

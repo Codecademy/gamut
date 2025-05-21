@@ -182,8 +182,8 @@ export const rgbaSwatch = {
         return (
           <Background
             bg={id === 'white' ? 'navy' : 'white'}
-            p={4}
             borderRadius="md"
+            p={4}
           >
             <ColorScale colors={firstHexes} />
             <ColorScale colors={rest} />
@@ -331,7 +331,7 @@ export const space = {
       name: 'Example',
       size: 'fill',
       render: ({ value }: any) => (
-        <Box display="inline-block" width={value} height={value} bg="navy" />
+        <Box bg="navy" display="inline-block" height={value} width={value} />
       ),
     },
   ],
@@ -379,11 +379,11 @@ export const borderRadii = {
       size: 'fill',
       render: ({ value }: any) => (
         <Box
-          display="inline-block"
-          width="6rem"
-          height="4em"
           bg="navy"
           borderRadius={value}
+          display="inline-block"
+          height="4em"
+          width="6rem"
         />
       ),
     },
@@ -417,8 +417,8 @@ const PROPERTIES_COLUMN = {
     properties.map((property) => (
       <Anchor
         href={`https://developer.mozilla.org/en-US/docs/Web/CSS/${property}`}
-        target="_blank"
         rel=""
+        target="_blank"
       >
         <Code key={property}>{kebabCase(property)}</Code>
       </Anchor>

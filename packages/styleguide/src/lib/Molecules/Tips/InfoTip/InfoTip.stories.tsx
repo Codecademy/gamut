@@ -24,7 +24,7 @@ type InfoTipProps = React.ComponentProps<typeof InfoTip>;
 
 const InfoTipExample: React.FC<InfoTipProps> = (args) => {
   return (
-    <FlexBox center py={64} m={24}>
+    <FlexBox center m={24} py={64}>
       <Text mr={4}>Some text that needs info</Text> <InfoTip {...args} />
     </FlexBox>
   );
@@ -36,7 +36,7 @@ export const Default: Story = {
 
 const EmphasisExample: React.FC<InfoTipProps> = (args) => {
   return (
-    <FlexBox center py={64} m={24}>
+    <FlexBox center m={24} py={64}>
       <Text mr={4}>Some text that needs info and its super important</Text>{' '}
       <InfoTip emphasis="high" {...args} />
     </FlexBox>
@@ -49,7 +49,7 @@ export const Emphasis: Story = {
 
 const AlignmentsExample: React.FC<InfoTipProps> = (args) => {
   return (
-    <GridBox gap={24} py={64} ml={8} gridTemplateColumns="1fr 1fr">
+    <GridBox gap={24} gridTemplateColumns="1fr 1fr" ml={8} py={64}>
       {(['top-right', 'top-left', 'bottom-right', 'bottom-left'] as const).map(
         (alignment) => {
           return (
@@ -95,17 +95,17 @@ const WithLinksOrButtonsExample: React.FC<InfoTipProps> = () => {
     <FlexBox center py={64}>
       <Text mr={4}>This text is in a small space and needs info </Text>{' '}
       <InfoTip
-        placement="floating"
-        onClick={onClick}
         info={
           <Text>
             Hey! Here is a{' '}
-            <Anchor ref={ref} href="https://giphy.com/search/nichijou">
+            <Anchor href="https://giphy.com/search/nichijou" ref={ref}>
               cool link
             </Anchor>{' '}
             that is super important.
           </Text>
         }
+        placement="floating"
+        onClick={onClick}
       />
     </FlexBox>
   );
@@ -117,7 +117,7 @@ export const WithLinksOrButtons: Story = {
 
 const ZIndexExample: React.FC<InfoTipProps> = () => {
   return (
-    <FlexBox center flexDirection="column" py={64} m={24}>
+    <FlexBox center flexDirection="column" m={24} py={64}>
       <Box bg="paleBlue" zIndex={3}>
         I will not be behind the infotip, sad + unreadable
       </Box>

@@ -11,11 +11,11 @@ export const Tag50PercentOff: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
+    fill="none"
     height={height}
+    viewBox="0 0 188 120"
     width={width}
     xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 188 120"
   >
     <g clipPath="url(#clip0_1_1833)">
       <path
@@ -26,8 +26,8 @@ export const Tag50PercentOff: React.FC<IllustrationProps> = ({
         d="M151.165 74.2308L25.7353 116.717C24.3031 117.194 22.8113 116.419 22.334 114.987L2.22457 54.5988C1.74719 53.1667 2.52292 51.6749 3.95505 51.1975L129.385 8.77084C130.101 8.53215 130.817 8.59182 131.474 8.94985L171.394 29.5366C172.707 30.193 173.244 31.8042 172.588 33.1169L152.777 72.918C152.418 73.5147 151.881 74.0518 151.165 74.2308Z"
         fill="#FFD300"
         stroke="#10162F"
-        strokeWidth="0.596718"
         strokeMiterlimit="10"
+        strokeWidth="0.596718"
       />
       <path
         d="M4.73103 62.2969C4.67135 62.2969 4.61168 62.2969 4.61168 62.2372C4.55201 62.1776 4.49234 62.1179 4.49234 62.0582L1.98612 54.6589C1.44908 53.1074 2.28448 51.377 3.89562 50.8996L129.326 8.47293C129.624 8.35359 129.982 8.29391 130.28 8.29391C130.758 8.29391 131.235 8.41326 131.653 8.65195L143.349 14.6788C143.468 14.7385 143.528 14.8578 143.528 14.9772C143.528 15.0965 143.468 15.2158 143.349 15.2158L4.7907 62.2969H4.73103Z"
@@ -56,9 +56,9 @@ export const Tag50PercentOff: React.FC<IllustrationProps> = ({
       <path
         d="M170.977 37.2949C171.514 37.5335 171.991 37.8319 172.528 38.0706C182.672 43.6201 188.997 51.4967 186.67 55.6738C184.343 59.8508 174.318 58.7767 164.174 53.2272C154.03 47.6777 147.705 39.8011 150.032 35.624C150.211 35.3257 150.39 35.0273 150.628 34.7886"
         stroke="#10162F"
-        strokeWidth="0.477374"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="0.477374"
       />
       <path
         d="M10.2238 56.7989C10.8654 55.8404 10.6086 54.5432 9.65005 53.9015C8.69153 53.2599 7.39433 53.5167 6.75266 54.4753C6.11099 55.4338 6.36785 56.731 7.32637 57.3727C8.28489 58.0143 9.5821 57.7575 10.2238 56.7989Z"
@@ -103,104 +103,104 @@ export const Tag50PercentOff: React.FC<IllustrationProps> = ({
       <path
         d="M94.179 23.9873L79.7384 40.218L73.9503 46.7223L66.73 16.767"
         stroke="#10162F"
-        strokeWidth="0.477374"
-        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeMiterlimit="10"
+        strokeWidth="0.477374"
       />
       <path
         d="M94.895 22.7938C95.6111 19.8102 89.9423 15.8718 82.1253 13.9027C74.3679 11.9335 67.446 12.7689 66.73 15.6928C66.0139 18.6167 71.6827 22.6147 79.4401 24.5839C87.1974 26.5531 94.179 25.7177 94.895 22.7938Z"
         fill="white"
         stroke="#10162F"
-        strokeWidth="0.477374"
-        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeMiterlimit="10"
+        strokeWidth="0.477374"
       />
       <path
         d="M68.5798 24.4647L66.73 16.767"
         stroke="#10162F"
-        strokeWidth="0.477374"
-        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeMiterlimit="10"
+        strokeWidth="0.477374"
       />
       <path
         d="M86.6007 32.5209L79.7385 40.2186C73.3536 38.6074 70.6087 32.6999 70.6087 32.6999L68.5798 24.4652C68.5798 24.4652 73.2342 29.1793 86.6007 32.5209Z"
         fill="white"
         stroke="#10162F"
-        strokeWidth="0.477374"
-        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeMiterlimit="10"
+        strokeWidth="0.477374"
       />
       <path
         d="M76.5161 20.8255C76.5161 20.8255 77.7692 9.96525 71.623 4.7738"
         stroke="#10162F"
-        strokeWidth="0.477374"
-        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeMiterlimit="10"
+        strokeWidth="0.477374"
       />
       <path
         d="M79.7981 19.6908C79.7981 19.6908 80.0368 12.3512 83.1994 7.69681"
         stroke="#10162F"
-        strokeWidth="0.477374"
-        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeMiterlimit="10"
+        strokeWidth="0.477374"
       />
       <path
         d="M82.4834 20.7651C82.4834 20.7651 84.8106 13.4254 93.821 9.90479"
         stroke="#10162F"
-        strokeWidth="0.477374"
-        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeMiterlimit="10"
+        strokeWidth="0.477374"
       />
       <path
         d="M98.7738 10.4423C99.5495 9.96494 99.7882 8.95052 99.3108 8.17478C98.8335 7.39905 97.8191 7.16036 97.0433 7.63774C96.2676 8.11511 96.0289 9.12953 96.5063 9.90527C96.9836 10.681 97.9981 10.9197 98.7738 10.4423Z"
         fill="#FFD300"
         stroke="#10162F"
-        strokeWidth="0.477374"
-        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeMiterlimit="10"
+        strokeWidth="0.477374"
       />
       <path
         d="M69.8329 3.5199C70.6086 3.04252 70.8473 2.0281 70.3699 1.25237C69.8926 0.476635 68.8781 0.237947 68.1024 0.65565C67.3267 1.07335 67.088 2.14745 67.5653 2.92318C68.0427 3.69891 69.0571 3.99727 69.8329 3.5199Z"
         fill="#FFD300"
         stroke="#10162F"
-        strokeWidth="0.477374"
-        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeMiterlimit="10"
+        strokeWidth="0.477374"
       />
       <path
         d="M85.4072 0.536499L85.8249 2.50567L87.7344 3.2814L85.9442 4.29582L85.7652 6.32466L84.2137 4.95221L82.2446 5.42959L83.08 3.57976L82.0059 1.84928L84.0347 2.02829L85.4072 0.536499Z"
         fill="#FFD300"
         stroke="#10162F"
-        strokeWidth="0.477374"
-        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeMiterlimit="10"
+        strokeWidth="0.477374"
       />
       <path
         d="M87.7939 19.6317C87.7939 19.6317 89.9421 16.4691 94.5965 15.3353"
         stroke="#10162F"
-        strokeWidth="0.477374"
-        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeMiterlimit="10"
+        strokeWidth="0.477374"
       />
     </g>
     <defs>
       <clipPath id="clip0_1_1833">
         <rect
-          width="186.773"
-          height="120"
           fill="white"
+          height="120"
           transform="translate(0.613525)"
+          width="186.773"
         />
       </clipPath>
     </defs>

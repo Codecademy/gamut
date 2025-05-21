@@ -32,9 +32,9 @@ export const GridFormSectionTitle: React.FC<GridFormSectionTitleProps> = ({
 
   return (
     <Column
-      size={{ _: 12, md: size }}
-      gridRowEnd={{ _: `span 1`, md: `span ${rowspan}` }}
       data-testid={dataTestId}
+      gridRowEnd={{ _: `span 1`, md: `span ${rowspan}` }}
+      size={{ _: 12, md: size }}
     >
       <Box {...titleWrapperProps}>
         <Text as={as} variant={variant}>

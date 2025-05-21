@@ -31,12 +31,12 @@ export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
           label={field.description}
           multiline={field.multiline}
           name={name}
+          spacing={field?.spacing}
           onBlur={onBlur}
           onChange={(event) => {
             field.onUpdate?.(event.target.checked);
             onChange?.(event.target.checked);
           }}
-          spacing={field?.spacing}
         />
       )}
       rules={field.validation}

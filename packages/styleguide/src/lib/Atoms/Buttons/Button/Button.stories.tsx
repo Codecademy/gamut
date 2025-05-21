@@ -42,17 +42,17 @@ export const Secondary: Story = {
 
 export const InlineIcons: Story = {
   render: () => (
-    <FlexBox row gap={16}>
-      <FillButton maxWidth="fit-content" icon={MiniArrowLeftIcon}>
+    <FlexBox gap={16} row>
+      <FillButton icon={MiniArrowLeftIcon} maxWidth="fit-content">
         FillButton
       </FillButton>
-      <StrokeButton maxWidth="fit-content" icon={MiniRibbonIcon}>
+      <StrokeButton icon={MiniRibbonIcon} maxWidth="fit-content">
         Leading icon
       </StrokeButton>
       <TextButton
-        maxWidth="fit-content"
         icon={MiniArrowRightIcon}
         iconPosition="right"
+        maxWidth="fit-content"
       >
         TextButton
       </TextButton>
@@ -96,13 +96,13 @@ const ButtonScale = ({ mode }: { mode: 'dark' | 'light' }) => {
   return (
     <GridBox
       alignItems="center"
-      justifyItems="start"
-      gridTemplateColumns="repeat(4, minmax(50px, max-content))"
-      gridAutoRows="3rem"
-      columnGap={32}
-      rowGap={16}
-      p={32}
       bg={mode === 'dark' ? 'navy' : 'white'}
+      columnGap={32}
+      gridAutoRows="3rem"
+      gridTemplateColumns="repeat(4, minmax(50px, max-content))"
+      justifyItems="start"
+      p={32}
+      rowGap={16}
       textColor={mode === 'dark' ? 'white' : 'navy'}
     >
       {grid}

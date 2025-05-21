@@ -22,11 +22,11 @@ export interface ParseOptionProps extends ParseSelectOptionProps {
 }
 const formatAsOptions = ({ label, value, key }: SelectOptionBase) => {
   const option = key ? (
-    <option label={label} key={key} value={value} data-testid={key}>
+    <option data-testid={key} key={key} label={label} value={value}>
       {label}
     </option>
   ) : (
-    <option label={value} key={label} value={value} data-testid={label}>
+    <option data-testid={label} key={label} label={value} value={value}>
       {value}
     </option>
   );

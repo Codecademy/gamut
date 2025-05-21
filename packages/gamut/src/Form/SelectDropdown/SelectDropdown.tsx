@@ -175,10 +175,11 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       <TypedReactSelect
         {...defaultProps}
         activated={activated}
-        error={Boolean(error)}
+        aria-live="assertive"
         ariaLiveMessages={{
           onFocus,
         }}
+        error={Boolean(error)}
         formatGroupLabel={formatGroupLabel}
         formatOptionLabel={formatOptionLabel}
         id={id || rest.htmlFor || rawInputId}
@@ -189,16 +190,15 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         isOptionDisabled={(option) => option.disabled}
         isSearchable={isSearchable}
         name={name}
-        onChange={changeHandler}
-        onKeyDown={multiple ? (e) => keyPressHandler(e) : undefined}
         options={selectOptions}
         placeholder={placeholder}
+        selectRef={selectInputRef}
         shownOptionsLimit={shownOptionsLimit}
         size={size}
         styles={memoizedStyles}
         value={multiple ? multiValues : parsedValue}
-        selectRef={selectInputRef}
-        aria-live="assertive"
+        onChange={changeHandler}
+        onKeyDown={multiple ? (e) => keyPressHandler(e) : undefined}
         {...rest}
       />
     </SelectDropdownContext.Provider>

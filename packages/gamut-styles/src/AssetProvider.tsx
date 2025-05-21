@@ -8,11 +8,11 @@ export const createFontLinks = () =>
     .filter((f) => f.extensions.includes('woff2'))
     .map(({ filePath }) => (
       <link
+        as="font"
+        crossOrigin="anonymous"
+        href={`${filePath}.woff2`}
         key={filePath}
         rel="preload"
-        href={`${filePath}.woff2`}
-        crossOrigin="anonymous"
-        as="font"
         type="font/woff2"
       />
     ));

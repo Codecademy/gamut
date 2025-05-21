@@ -190,7 +190,7 @@ export const ColorMode = forwardRef<
       <BackgroundCurrentContext.Provider
         value={{ 'background-current': bgCurrent }}
       >
-        <VariableProvider {...rest} variables={vars} bg={contextBg} ref={ref} />
+        <VariableProvider {...rest} bg={contextBg} ref={ref} variables={vars} />
       </BackgroundCurrentContext.Provider>
     );
   }
@@ -199,9 +199,9 @@ export const ColorMode = forwardRef<
     <ThemeProvider theme={{ mode }}>
       <VariableProvider
         {...rest}
-        variables={variables}
         bg={contextBg}
         ref={ref}
+        variables={variables}
       />
     </ThemeProvider>
   );

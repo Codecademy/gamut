@@ -92,15 +92,15 @@ const GridContentPlaceholder = ({
   return (
     <FlexBox flexDirection="column">
       <FlexBox
-        mb={12}
-        width="100%"
         height="2rem"
         justifyContent="space-between"
+        mb={12}
+        width="100%"
       >
-        <Box bg="beige" width="85%" height="inherit" />
-        <Box bg="beige" width="10%" height="inherit" />
+        <Box bg="beige" height="inherit" width="85%" />
+        <Box bg="beige" height="inherit" width="10%" />
       </FlexBox>
-      <Box height={height} width={width} bg="beige" />
+      <Box bg="beige" height={height} width={width} />
     </FlexBox>
   );
 };
@@ -112,8 +112,8 @@ export const Fluid: React.FC = () => {
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
         {...defaultProps}
-        size="fluid"
         isOpen={isOpen}
+        size="fluid"
         onRequestClose={() => setIsOpen(false)}
       >
         <GridContentPlaceholder height="350px" width="540px" />
@@ -129,8 +129,8 @@ export const Large: React.FC = () => {
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
         {...defaultProps}
-        size="large"
         isOpen={isOpen}
+        size="large"
         onRequestClose={() => setIsOpen(false)}
       >
         <GridContentPlaceholder height="300px" width="auto" />
@@ -146,8 +146,8 @@ export const Medium: React.FC = () => {
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
         {...defaultProps}
-        size="medium"
         isOpen={isOpen}
+        size="medium"
         onRequestClose={() => setIsOpen(false)}
       >
         <GridContentPlaceholder height="240px" width="auto" />
@@ -163,8 +163,8 @@ export const Small: React.FC = () => {
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
         {...defaultProps}
-        size="small"
         isOpen={isOpen}
+        size="small"
         onRequestClose={() => setIsOpen(false)}
       >
         <GridContentPlaceholder height="240px" width="auto" />
@@ -180,11 +180,11 @@ export const Scrollable: React.FC = () => {
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
         {...defaultProps}
-        title={undefined}
         hideCloseButton
-        size="medium"
         isOpen={isOpen}
         scrollable
+        size="medium"
+        title={undefined}
         onRequestClose={() => setIsOpen(false)}
       >
         <FlexBox flexDirection="column">
@@ -218,7 +218,7 @@ export const WithImage: React.FC = () => {
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
       >
-        <Text smooth fontSize={14} my={12}>
+        <Text fontSize={14} my={12} smooth>
           Optional 1-2 lines of explanation that provides relevant details.
           Lorem ipsum cras nulla massa odio ligula.
         </Text>
@@ -235,7 +235,6 @@ export const MultipleViews: React.FC = () => {
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
         isOpen={isOpen}
-        onRequestClose={() => setIsOpen(false)}
         size="medium"
         views={[
           {
@@ -264,6 +263,7 @@ export const MultipleViews: React.FC = () => {
             children: <>Last one</>,
           },
         ]}
+        onRequestClose={() => setIsOpen(false)}
       />
     </>
   );
@@ -277,7 +277,6 @@ export const MultipleViewsDanger: React.FC = () => {
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
         isOpen={isOpen}
-        onRequestClose={() => setIsOpen(false)}
         size="medium"
         title="Danger!!"
         views={[
@@ -293,6 +292,7 @@ export const MultipleViewsDanger: React.FC = () => {
             children: <>I use the danger variant for the confirm button</>,
           },
         ]}
+        onRequestClose={() => setIsOpen(false)}
       />
     </>
   );
@@ -307,7 +307,6 @@ export const MultipleViewsDisabled: React.FC = () => {
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
         isOpen={isOpen}
-        onRequestClose={() => setIsOpen(false)}
         size="medium"
         views={[
           {
@@ -321,10 +320,10 @@ export const MultipleViewsDisabled: React.FC = () => {
             children: (
               <>
                 <Checkbox
-                  label="Check me to enable the Next button"
                   aria-label="I am a checkbox"
-                  htmlFor="checkbox"
                   checked={isChecked}
+                  htmlFor="checkbox"
+                  label="Check me to enable the Next button"
                   onChange={() => setIsChecked(!isChecked)}
                 />
               </>
@@ -341,6 +340,7 @@ export const MultipleViewsDisabled: React.FC = () => {
             children: <>Last one</>,
           },
         ]}
+        onRequestClose={() => setIsOpen(false)}
       />
     </>
   );

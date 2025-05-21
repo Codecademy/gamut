@@ -103,16 +103,16 @@ export function DataGrid<
             header ? (
               <HeaderRow
                 columns={columns}
-                selected={allSelected}
                 empty={empty}
                 hideSelectAll={hideSelectAll}
+                selected={allSelected}
               />
             ) : null
           }
           height={height}
           minHeight={minHeight}
-          scrollable={scrollable}
           scrollToTopOnUpdate={scrollToTopOnUpdate}
+          scrollable={scrollable}
           shadow={shadow}
           spacing={spacing}
           variant={variant}
@@ -122,13 +122,13 @@ export function DataGrid<
             const key = listControls.prefixId(`${rowId}-row`);
             return (
               <DataRow
-                key={key}
-                id={rowId}
-                row={row}
                 columns={columns}
-                selected={selectedRows?.[rowId as keyof typeof selectedRows]}
                 expanded={expandedRows?.[rowId as keyof typeof expandedRows]}
+                id={rowId}
+                key={key}
                 loading={loading}
+                row={row}
+                selected={selectedRows?.[rowId as keyof typeof selectedRows]}
                 showOverflow={showOverflow}
               />
             );

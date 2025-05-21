@@ -33,11 +33,11 @@ export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
       htmlFor={field.name}
       id={field.id}
       name={field.name}
+      type="file"
       onChange={async (event) => {
         field.onUpdate?.(event.target.files!);
         await onChange(event);
       }}
-      type="file"
     />
   );
 };

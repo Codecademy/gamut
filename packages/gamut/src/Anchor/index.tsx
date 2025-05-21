@@ -150,8 +150,8 @@ export const Anchor = forwardRef<
       return (
         <AnchorBase
           as={ButtonBase}
-          variant={variant}
           ref={ref as RefObject<HTMLAnchorElement>}
+          variant={variant}
           {...rest}
         >
           {content}
@@ -161,8 +161,8 @@ export const Anchor = forwardRef<
 
     return (
       <AnchorBase
-        variant={variant}
         ref={ref as RefObject<HTMLAnchorElement>}
+        variant={variant}
         {...rest}
       >
         {content}

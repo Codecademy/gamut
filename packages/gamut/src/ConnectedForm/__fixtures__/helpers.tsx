@@ -15,38 +15,36 @@ export const PlainConnectedFields: React.FC<{
   return (
     <>
       <ConnectedFormGroup
-        name="checkbox"
-        label="cool-checkbox"
         field={{
           component: ConnectedCheckbox,
           label: 'cool-checkbox',
         }}
+        label="cool-checkbox"
+        name="checkbox"
       />
       <SubmitButton
-        variant="secondary"
-        m={32}
         disabled={onChangeValidation ? ({ isValid }) => !isValid : undefined}
+        m={32}
+        variant="secondary"
       >
         submit this form.
       </SubmitButton>
       <ConnectedFormGroup
-        name="select"
-        label="cool-select"
         field={{
           component: ConnectedSelect,
           options: ['', 'one', 'two', 'zero'],
         }}
+        label="cool-select"
+        name="select"
       />
       <ConnectedFormGroup
-        name="input"
-        label="cool-input"
         field={{
           component: ConnectedInput,
         }}
+        label="cool-input"
+        name="input"
       />
       <ConnectedFormGroup
-        name="radiogroup"
-        label="cool-radiogroup"
         field={{
           component: ConnectedRadioGroupInput,
           options: [
@@ -55,6 +53,8 @@ export const PlainConnectedFields: React.FC<{
             { label: 'three', value: 'three' },
           ],
         }}
+        label="cool-radiogroup"
+        name="radiogroup"
       />
     </>
   );

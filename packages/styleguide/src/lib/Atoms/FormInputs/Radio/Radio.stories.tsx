@@ -20,8 +20,8 @@ export const Default: Story = {
 export const RadioGroupComponent: Story = {
   render: () => (
     <RadioGroup htmlForPrefix="example-radio">
-      <Radio htmlFor="example-radio" name="example-radio-1" label="Radio 1" />
-      <Radio htmlFor="example-radio" name="example-radio-2" label="Radio 2" />
+      <Radio htmlFor="example-radio" label="Radio 1" name="example-radio-1" />
+      <Radio htmlFor="example-radio" label="Radio 2" name="example-radio-2" />
     </RadioGroup>
   ),
 };

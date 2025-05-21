@@ -11,46 +11,46 @@ export const ProgressCharts: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    width={width}
+    fill="none"
     height={height}
     viewBox="0 0 148 100"
-    fill="none"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
     <rect
+      fill="#FF8C00"
+      height="65.2542"
+      width="38.855"
       x="52.1883"
       y="14.238"
-      width="38.855"
-      height="65.2542"
-      fill="#FF8C00"
     />
     <rect
+      fill="#10162F"
+      height="63.5081"
+      stroke="white"
+      strokeWidth="2"
+      width="37.7747"
       x="55.6261"
       y="12.4451"
-      width="37.7747"
-      height="63.5081"
-      fill="#10162F"
-      stroke="white"
-      strokeWidth="2"
     />
     <rect
+      fill="#10162F"
+      height="63.5081"
+      stroke="white"
+      strokeWidth="2"
+      width="37.7747"
       x="99.2002"
       y="20.0623"
-      width="37.7747"
-      height="63.5081"
-      fill="#10162F"
-      stroke="white"
-      strokeWidth="2"
     />
     <rect
-      x="9.55493"
-      y="20.0623"
-      width="37.7747"
-      height="63.5081"
       fill="#10162F"
+      height="63.5081"
       stroke="white"
       strokeWidth="2"
+      width="37.7747"
+      x="9.55493"
+      y="20.0623"
     />
     <path
       d="M41.3786 29.8409C41.3786 31.4405 40.0303 32.7916 38.2991 32.7916C36.5679 32.7916 35.2197 31.4405 35.2197 29.8409C35.2197 28.2412 36.5679 26.8901 38.2991 26.8901C40.0303 26.8901 41.3786 28.2412 41.3786 29.8409Z"
@@ -95,39 +95,39 @@ export const ProgressCharts: React.FC<IllustrationProps> = ({
       strokeWidth="2"
     />
     <rect
+      fill="white"
+      height="2.54913"
+      width="16.2543"
       x="14.5433"
       y="71.7744"
-      width="16.2543"
-      height="2.54913"
-      fill="white"
     />
     <rect
+      fill="white"
+      height="2.54913"
+      width="16.2543"
       x="14.5433"
       y="42.8843"
-      width="16.2543"
-      height="2.54913"
-      fill="white"
     />
     <rect
+      fill="white"
+      height="2.54913"
+      width="16.2543"
       x="104.37"
       y="42.8843"
-      width="16.2543"
-      height="2.54913"
-      fill="white"
     />
     <rect
+      fill="white"
+      height="2.54913"
+      width="16.2543"
       x="14.5433"
       y="28.4395"
-      width="16.2543"
-      height="2.54913"
-      fill="white"
     />
     <rect
+      fill="white"
+      height="2.54913"
+      width="16.2543"
       x="104.37"
       y="28.4395"
-      width="16.2543"
-      height="2.54913"
-      fill="white"
     />
     <path
       d="M87.575 23.0433C87.575 24.6429 86.2268 25.994 84.4956 25.994C82.7644 25.994 81.4161 24.6429 81.4161 23.0433C81.4161 21.4436 82.7644 20.0925 84.4956 20.0925C86.2268 20.0925 87.575 21.4436 87.575 23.0433Z"
@@ -142,32 +142,32 @@ export const ProgressCharts: React.FC<IllustrationProps> = ({
       strokeWidth="2"
     />
     <rect
+      fill="white"
+      height="2.54913"
+      width="16.2543"
       x="60.7399"
       y="36.0867"
-      width="16.2543"
-      height="2.54913"
-      fill="white"
     />
     <rect
+      fill="white"
+      height="2.54913"
+      width="16.2543"
       x="60.7399"
       y="21.6416"
-      width="16.2543"
-      height="2.54913"
-      fill="white"
     />
     <rect
+      fill="white"
+      height="2.54913"
+      width="16.2543"
       x="14.5433"
       y="57.3296"
-      width="16.2543"
-      height="2.54913"
-      fill="white"
     />
     <rect
+      fill="white"
+      height="2.54913"
+      width="16.2543"
       x="104.37"
       y="57.3296"
-      width="16.2543"
-      height="2.54913"
-      fill="white"
     />
   </svg>
 );

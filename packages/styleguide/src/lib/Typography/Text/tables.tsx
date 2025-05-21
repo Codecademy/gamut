@@ -7,7 +7,7 @@ export const Elements: React.FC = () => (
   <LayoutGrid gap={32} my={48}>
     {Object.keys(typographyElementVariants).map((tag) => (
       <Fragment key={tag}>
-        <Column size={1} alignItems="center">
+        <Column alignItems="center" size={1}>
           <Text as="code" fontSize={14}>
             {tag}
           </Text>

@@ -67,11 +67,11 @@ export const FormGroupBase: Story = {
   },
   render: (args) => (
     <FormGroup
+      error="error!"
+      htmlFor="form-group-base"
+      isSoloField
       label="i am a large label"
       labelSize="large"
-      error="error!"
-      isSoloField
-      htmlFor="form-group-base"
     >
       <Select error {...args} />
     </FormGroup>
@@ -87,9 +87,9 @@ export const FormGroupSmall: Story = {
   },
   render: (args) => (
     <FormGroup
-      label="i am small and have a label"
-      isSoloField
       htmlFor="form-group-small"
+      isSoloField
+      label="i am small and have a label"
     >
       <Select {...args} />
     </FormGroup>

@@ -61,6 +61,7 @@ export const SortControl: React.FC<SortControlProps> = ({
 
   return (
     <SortAnchor
+      aria-label={`sort by ${columnKey}`}
       aria-sort={
         direction === 'none'
           ? 'none'
@@ -68,6 +69,7 @@ export const SortControl: React.FC<SortControlProps> = ({
           ? 'ascending'
           : 'descending'
       }
+      display="inline-flex"
       variant="interface"
       onClick={() =>
         onSort?.({
@@ -75,25 +77,23 @@ export const SortControl: React.FC<SortControlProps> = ({
           value: getNextSortDirection(direction),
         })
       }
-      display="inline-flex"
-      aria-label={`sort by ${columnKey}`}
     >
       {children}
-      <FlexBox column width={16} ml={8} mb={4}>
+      <FlexBox column mb={4} ml={8} width={16}>
         <SortIcon
-          aria-hidden={false}
-          asc
           active={direction === 'asc'}
-          size={9}
+          aria-hidden={false}
           aria-label="ascending"
+          asc
           color="currentColor"
+          size={9}
         />
         <SortIcon
-          aria-hidden={false}
-          size={9}
           active={direction === 'desc'}
+          aria-hidden={false}
           aria-label="descending"
           color="currentColor"
+          size={9}
         />
       </FlexBox>
     </SortAnchor>

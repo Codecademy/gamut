@@ -57,7 +57,7 @@ describe('Modal', () => {
 
   it('renders an image if passed in', () => {
     const { view } = renderView({
-      image: <img src="./myimg.svg" alt="test" />,
+      image: <img alt="test" src="./myimg.svg" />,
     });
     view.getByAltText('test');
   });
@@ -393,7 +393,7 @@ describe('Modal', () => {
         views: [
           {
             title: 'Multi view',
-            image: <img src="./myimg.svg" alt="test" />,
+            image: <img alt="test" src="./myimg.svg" />,
             children: <>View 1</>,
             primaryCta: {
               actionType: 'confirm',

@@ -87,12 +87,12 @@ export const PreviewTipContents: React.FC<PreviewTipContentsProps> = ({
     ) : (
       <>
         {overline && (
-          <Text textColor="text-secondary" fontFamily="accent" fontSize={14}>
+          <Text fontFamily="accent" fontSize={14} textColor="text-secondary">
             {overline}
           </Text>
         )}
         {username && (
-          <Text fontWeight="bold" fontSize={16}>
+          <Text fontSize={16} fontWeight="bold">
             {username}
           </Text>
         )}
@@ -115,7 +115,7 @@ export const PreviewTipContents: React.FC<PreviewTipContentsProps> = ({
       rowGap={4}
     >
       {avatar && (
-        <FlexBox center aria-hidden gridArea="avatar" pr={12}>
+        <FlexBox aria-hidden center gridArea="avatar" pr={12}>
           <Box height={40} width={40}>
             {avatar}
           </Box>

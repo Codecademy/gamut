@@ -79,19 +79,19 @@ export const Overlay: React.FC<OverlayProps> = ({
 
   const content = (
     <OverlayContainer
-      position="fixed"
-      data-testid="overlay-content-container"
       center
-      inset={0}
       className={className}
+      data-testid="overlay-content-container"
       inline={inline}
+      inset={0}
+      position="fixed"
       shroud={shroud}
     >
       <FocusTrap
         active={!inline}
+        allowPageInteraction={allowScroll}
         onClickOutside={handleOutsideClick}
         onEscapeKey={handleEscapeKey}
-        allowPageInteraction={allowScroll}
       >
         {children}
       </FocusTrap>

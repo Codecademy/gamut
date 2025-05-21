@@ -179,8 +179,8 @@ export const Popover: React.FC<PopoverProps> = ({
                 variant === 'secondary' ? '-sml' : ''
               }`}
               data-testid="popover-beak"
-              size={variant === 'secondary' ? 'sml' : 'lrg'}
               hasBorder={outline || variant === 'secondary'}
+              size={variant === 'secondary' ? 'sml' : 'lrg'}
             />
           </BeakBox>
         )}

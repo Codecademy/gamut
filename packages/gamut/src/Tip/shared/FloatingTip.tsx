@@ -108,24 +108,24 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
 
   return (
     <Box
-      position="relative"
       display="inline-flex"
-      ref={wrapperRef}
-      onMouseLeave={toolOnlyEventFunc}
       height={inheritDims ? 'inherit' : undefined}
+      position="relative"
+      ref={wrapperRef}
       width={inheritDims ? 'inherit' : undefined}
+      onMouseLeave={toolOnlyEventFunc}
     >
       <TargetContainer
-        onFocus={toolOnlyEventFunc}
+        height={inheritDims ? 'inherit' : undefined}
+        ref={ref}
+        width={inheritDims ? 'inherit' : undefined}
         onBlur={toolOnlyEventFunc}
-        onMouseEnter={toolOnlyEventFunc}
-        onMouseDown={(e) => e.preventDefault()}
+        onFocus={toolOnlyEventFunc}
         onKeyDown={
           escapeKeyPressHandler ? (e) => escapeKeyPressHandler(e) : undefined
         }
-        ref={ref}
-        height={inheritDims ? 'inherit' : undefined}
-        width={inheritDims ? 'inherit' : undefined}
+        onMouseDown={(e) => e.preventDefault()}
+        onMouseEnter={toolOnlyEventFunc}
       >
         {children}
       </TargetContainer>
@@ -143,10 +143,10 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         widthRestricted={false}
       >
         <FloatingTipTextWrapper
-          ref={childRef}
+          centered={alignment.includes('center')}
           isHoverType={isHoverType}
           narrow={narrow}
-          centered={alignment.includes('center')}
+          ref={childRef}
         >
           {contents}
         </FloatingTipTextWrapper>

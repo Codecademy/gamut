@@ -21,15 +21,15 @@ export const Icons: Story = {
 
 const ContentExample = () => {
   return (
-    <GridBox py={24} gap={32} gridTemplateColumns="max-content max-content">
+    <GridBox gap={32} gridTemplateColumns="max-content max-content" py={24}>
       <Box>
         <Toast
-          onClose={() => {}}
           title={
             <>
-              <TrophyIcon verticalAlign="middle" mr={4} /> Congrats you won!
+              <TrophyIcon mr={4} verticalAlign="middle" /> Congrats you won!
             </>
           }
+          onClose={() => {}}
         >
           Some message that informs you where to claim your physical trophy.
         </Toast>
@@ -67,10 +67,10 @@ const exampleToasts = [
 
 const DefaultExample = () => {
   return (
-    <GridBox py={24} gap={32} gridTemplateColumns="max-content max-content">
+    <GridBox gap={32} gridTemplateColumns="max-content max-content" py={24}>
       {exampleToasts.map((toast) => (
         <Box>
-          <Text variant="title-xs" mb={16}>
+          <Text mb={16} variant="title-xs">
             {Object.keys(toast).join(' + ')}
           </Text>
           <Box>

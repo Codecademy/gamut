@@ -43,7 +43,7 @@ const PopoverExample = ({ p = 16, ...rest }: PopoverExampleProps) => {
           targetRef={activeElRef}
           onRequestClose={() => setOpen(false)}
         >
-          <FlexBox flexDirection="column" p={p} alignItems="flex-start">
+          <FlexBox alignItems="flex-start" flexDirection="column" p={p}>
             <Box mb={8}>Hooray!</Box>
             <FillButton size="small" onClick={() => setOpen(false)}>
               Close Popover
@@ -116,7 +116,7 @@ const PopoverWithoutFocus = (args: PopoverProps) => {
           targetRef={activeElRef}
           onRequestClose={() => setOpen(false)}
         >
-          <FlexBox flexDirection="column" p={16} alignItems="flex-start">
+          <FlexBox alignItems="flex-start" flexDirection="column" p={16}>
             Nothing clickable here but the container has fallback focus
           </FlexBox>
         </Popover>
@@ -135,6 +135,6 @@ export const Animation: Story = {
 
 export const Variant: Story = {
   render: (args) => (
-    <PopoverExample variant="secondary" beak="left" {...args} />
+    <PopoverExample beak="left" variant="secondary" {...args} />
   ),
 };

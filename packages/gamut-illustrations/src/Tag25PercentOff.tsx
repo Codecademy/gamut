@@ -11,11 +11,11 @@ export const Tag25PercentOff: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
+    fill="none"
     height={height}
+    viewBox="0 0 202 120"
     width={width}
     xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 202 120"
   >
     <g clipPath="url(#clip0_1_1723)">
       <path
@@ -57,9 +57,9 @@ export const Tag25PercentOff: React.FC<IllustrationProps> = ({
       <path
         d="M183.598 31.3319C184.142 31.6071 184.693 31.8952 185.237 32.1961C196.094 38.1433 202.893 46.6127 200.428 51.1131C197.964 55.6136 187.164 54.4356 176.307 48.4885C165.449 42.5413 158.651 34.0718 161.115 29.5714C161.288 29.2513 161.506 28.9632 161.762 28.7008"
         stroke="#10162F"
-        strokeWidth="0.512137"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="0.512137"
       />
       <path
         d="M11.1604 52.2245C11.8449 51.2021 11.559 49.8104 10.5219 49.1161C9.48478 48.4218 8.08917 48.6878 7.40472 49.7103C6.72026 50.7327 7.00615 52.1244 8.04327 52.8186C9.08038 53.5129 10.476 53.2469 11.1604 52.2245Z"
@@ -101,10 +101,10 @@ export const Tag25PercentOff: React.FC<IllustrationProps> = ({
     <defs>
       <clipPath id="clip0_1_1723">
         <rect
-          width="200.38"
-          height="120"
           fill="white"
+          height="120"
           transform="translate(0.810059)"
+          width="200.38"
         />
       </clipPath>
     </defs>

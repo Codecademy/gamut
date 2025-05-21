@@ -31,7 +31,7 @@ export const FourColumnGrid: Story = {
       p: 16,
     } as const;
     return (
-      <GridBox gridAutoFlow="column" gridAutoColumns="1fr" columnGap={16}>
+      <GridBox columnGap={16} gridAutoColumns="1fr" gridAutoFlow="column">
         <Box {...elProps}>Child Element 1</Box>
         <Box {...elProps}>Child Element 2</Box>
         <Box {...elProps}>Child Element 3</Box>

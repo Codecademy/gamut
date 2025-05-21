@@ -166,12 +166,12 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
   return (
     <CustomStyledRemoveAllDiv
       aria-label="Remove all selected"
-      tabIndex={0}
       role="button"
+      tabIndex={0}
       {...restInnerProps}
+      ref={removeAllButtonRef}
       style={style}
       onKeyDown={onKeyPress}
-      ref={removeAllButtonRef}
     >
       <IndicatorIcon {...iconProps} color="text" />
     </CustomStyledRemoveAllDiv>
@@ -196,7 +196,7 @@ export const CustomContainer = ({
   return (
     <SelectDropdownElements.SelectContainer {...rest}>
       {children}
-      <input type="hidden" value={value} name={name} {...inputProps} />
+      <input name={name} type="hidden" value={value} {...inputProps} />
     </SelectDropdownElements.SelectContainer>
   );
 };
@@ -236,15 +236,15 @@ export const formatOptionLabel = ({
         <FlexBox flexDirection="row">
           {Icon && (
             <FlexBox center>
-              <Icon size={size === 'small' ? 16 : 24} color="text" ml={4} />
+              <Icon color="text" ml={4} size={size === 'small' ? 16 : 24} />
             </FlexBox>
           )}
-          <Box color={textColor} as="span" pl={Icon ? 16 : 0}>
+          <Box as="span" color={textColor} pl={Icon ? 16 : 0}>
             {label}
           </Box>
         </FlexBox>
         {subtitle && (
-          <Box as="span" fontSize={14} color="text-disabled">
+          <Box as="span" color="text-disabled" fontSize={14}>
             {subtitle}
           </Box>
         )}
@@ -252,12 +252,12 @@ export const formatOptionLabel = ({
       {rightLabel && (
         <FlexBox
           alignItems="center"
-          justifyContent="flex-end"
-          flexGrow={1}
-          textAlign="right"
-          fontSize={14}
           aria-label={rightLabel}
+          flexGrow={1}
+          fontSize={14}
+          justifyContent="flex-end"
           pr={16}
+          textAlign="right"
         >
           {rightLabel}
         </FlexBox>
@@ -271,12 +271,12 @@ export const formatGroupLabel = ({ label, divider }: SelectDropdownGroup) => {
     return (
       <Box display="flex" justify-content="center">
         <Box
-          width="100%"
-          fit
-          height="1px"
           bg="text-disabled"
           borderRadius="md"
+          fit
+          height="1px"
           mx={16}
+          width="100%"
         />
       </Box>
     );

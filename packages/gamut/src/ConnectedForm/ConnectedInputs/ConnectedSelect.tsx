@@ -16,9 +16,9 @@ export const ConnectedSelect: React.FC<ConnectedSelectProps> = ({
 
   return (
     <Select
+      aria-required={isRequired}
       disabled={isDisabled}
       error={Boolean(error)}
-      aria-required={isRequired}
       {...ref}
       {...rest}
     />

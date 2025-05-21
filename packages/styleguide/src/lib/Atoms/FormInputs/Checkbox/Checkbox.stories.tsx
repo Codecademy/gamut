@@ -89,25 +89,25 @@ export const SpacingTight: Story = {
     <>
       <Checkbox
         checked
+        htmlFor="spacing-1"
+        label="a small space"
+        name="spacing-1"
         readOnly
         spacing="tight"
-        label="a small space"
-        htmlFor="spacing-1"
-        name="spacing-1"
       />
       <Checkbox
-        spacing="tight"
-        label="with three checkboxes"
         htmlFor="spacing-2"
+        label="with three checkboxes"
         name="spacing-2"
+        spacing="tight"
       />
       <Checkbox
         checked
+        htmlFor="spacing-3"
+        label="neat huh?"
+        name="spacing-3"
         readOnly
         spacing="tight"
-        label="neat huh?"
-        htmlFor="spacing-3"
-        name="spacing-3"
       />
     </>
   ),
@@ -119,26 +119,25 @@ export const LabelsAsReactNodes: Story = {
     <>
       <Checkbox
         checked
-        readOnly
-        label="a string"
         htmlFor="accessible-1"
+        label="a string"
         name="accessible-1"
+        readOnly
       />
       <Checkbox
+        aria-label="a node"
+        htmlFor="accessible-2"
         label={
           <FlexBox alignItems="center">
             <MiniStarIcon mr={4} />a node <MiniStarIcon ml={4} />
           </FlexBox>
         }
-        aria-label="a node"
-        htmlFor="accessible-2"
         name="accessible-2"
       />
       <Checkbox
-        dontAriaHideLabel
         aria-label="Here is a link to click"
+        dontAriaHideLabel
         htmlFor="accessible-3"
-        name="accessible-3"
         label={
           <Box>
             <Text aria-hidden>Here is a link to&nbsp;</Text>
@@ -146,6 +145,7 @@ export const LabelsAsReactNodes: Story = {
             <Text aria-hidden>!</Text>
           </Box>
         }
+        name="accessible-3"
       />
     </>
   ),
@@ -170,11 +170,11 @@ export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
 
   return (
     <Checkbox
-      htmlFor={htmlFor}
-      onChange={changeHandler}
-      label={label}
-      disabled={disabled}
       checked={currentChecked}
+      disabled={disabled}
+      htmlFor={htmlFor}
+      label={label}
+      onChange={changeHandler}
       {...rest}
     />
   );
@@ -193,10 +193,10 @@ export const ControlledCheckbox: React.FC = () => {
         </Column>
         <Column size={4}>
           <CustomCheckbox
-            htmlFor="a-custom-checkbox-again"
-            label="disabled custom checkbox"
             defaultChecked
             disabled
+            htmlFor="a-custom-checkbox-again"
+            label="disabled custom checkbox"
           />
         </Column>
         <Column size={4}>

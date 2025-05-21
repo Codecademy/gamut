@@ -11,28 +11,28 @@ export const LightBulbAndGears: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    width={width}
+    fill="none"
     height={height}
     viewBox="0 0 540 304"
-    fill="none"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
     <g clipPath="url(#clip0_2893_7607)">
-      <rect width="540" height="303.75" fill="#10162F" />
+      <rect fill="#10162F" height="303.75" width="540" />
       <mask
+        height="304"
         id="mask0_2893_7607"
-        style={{ maskType: 'alpha' }}
         maskUnits="userSpaceOnUse"
+        style={{ maskType: 'alpha' }}
+        width="270"
         x="270"
         y="0"
-        width="270"
-        height="304"
       >
-        <rect x="270" width="270" height="304" fill="url(#pattern0)" />
+        <rect fill="url(#pattern0)" height="304" width="270" x="270" />
       </mask>
       <g mask="url(#mask0_2893_7607)">
-        <rect x="270" width="270" height="304" fill="#1D2340" />
+        <rect fill="#1D2340" height="304" width="270" x="270" />
       </g>
       <path
         d="M433.647 141.205C438.267 146.524 458.912 173.782 433.506 210.313"
@@ -244,133 +244,133 @@ export const LightBulbAndGears: React.FC<IllustrationProps> = ({
         strokeWidth="1.77362"
       />
       <mask
+        height="25"
         id="mask1_2893_7607"
-        style={{ maskType: 'alpha' }}
         maskUnits="userSpaceOnUse"
+        style={{ maskType: 'alpha' }}
+        width="26"
         x="90"
         y="60"
-        width="26"
-        height="25"
       >
         <rect
+          fill="url(#pattern1)"
+          height="24.8307"
+          width="24.8307"
           x="90.8799"
           y="60.1423"
-          width="24.8307"
-          height="24.8307"
-          fill="url(#pattern1)"
         />
       </mask>
       <g mask="url(#mask1_2893_7607)">
         <rect
+          fill="#3388FF"
+          height="24.8307"
+          width="24.8307"
           x="90.8799"
           y="60.1423"
-          width="24.8307"
-          height="24.8307"
-          fill="#3388FF"
         />
       </g>
       <mask
+        height="25"
         id="mask2_2893_7607"
-        style={{ maskType: 'alpha' }}
         maskUnits="userSpaceOnUse"
+        style={{ maskType: 'alpha' }}
+        width="26"
         x="120"
         y="60"
-        width="26"
-        height="25"
       >
         <rect
+          fill="url(#pattern2)"
+          height="24.8307"
+          width="24.8307"
           x="120.677"
           y="60.1423"
-          width="24.8307"
-          height="24.8307"
-          fill="url(#pattern2)"
         />
       </mask>
       <g mask="url(#mask2_2893_7607)">
         <rect
+          fill="#3388FF"
+          height="24.8307"
+          width="24.8307"
           x="120.677"
           y="60.1423"
-          width="24.8307"
-          height="24.8307"
-          fill="#3388FF"
         />
       </g>
       <mask
+        height="25"
         id="mask3_2893_7607"
-        style={{ maskType: 'alpha' }}
         maskUnits="userSpaceOnUse"
+        style={{ maskType: 'alpha' }}
+        width="26"
         x="150"
         y="60"
-        width="26"
-        height="25"
       >
         <rect
+          fill="url(#pattern3)"
+          height="24.8307"
+          width="24.8307"
           x="150.474"
           y="60.1423"
-          width="24.8307"
-          height="24.8307"
-          fill="url(#pattern3)"
         />
       </mask>
       <g mask="url(#mask3_2893_7607)">
         <rect
+          fill="#3388FF"
+          height="24.8307"
+          width="24.8307"
           x="150.474"
           y="60.1423"
-          width="24.8307"
-          height="24.8307"
-          fill="#3388FF"
         />
       </g>
     </g>
     <defs>
       <pattern
+        height="0.0131579"
         id="pattern0"
         patternContentUnits="objectBoundingBox"
         width="0.0148148"
-        height="0.0131579"
       >
         <use
-          xlinkHref="#image0_2893_7607"
           transform="scale(0.0037037 0.00328947)"
+          xlinkHref="#image0_2893_7607"
         />
       </pattern>
       <pattern
+        height="0.114286"
         id="pattern1"
         patternContentUnits="objectBoundingBox"
         width="0.114286"
-        height="0.114286"
       >
-        <use xlinkHref="#image1_2893_7607" transform="scale(0.0285714)" />
+        <use transform="scale(0.0285714)" xlinkHref="#image1_2893_7607" />
       </pattern>
       <pattern
+        height="0.114286"
         id="pattern2"
         patternContentUnits="objectBoundingBox"
         width="0.114286"
-        height="0.114286"
       >
-        <use xlinkHref="#image1_2893_7607" transform="scale(0.0285714)" />
+        <use transform="scale(0.0285714)" xlinkHref="#image1_2893_7607" />
       </pattern>
       <pattern
+        height="0.114286"
         id="pattern3"
         patternContentUnits="objectBoundingBox"
         width="0.114286"
-        height="0.114286"
       >
-        <use xlinkHref="#image1_2893_7607" transform="scale(0.0285714)" />
+        <use transform="scale(0.0285714)" xlinkHref="#image1_2893_7607" />
       </pattern>
       <clipPath id="clip0_2893_7607">
-        <rect width="540" height="303.75" fill="white" />
+        <rect fill="white" height="303.75" width="540" />
       </clipPath>
       <image
+        height="4"
         id="image0_2893_7607"
         width="4"
-        height="4"
         xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAeSURBVHgBjcoxEQAAAAFAEUxq6J+OBO78/KAcXOYsc5ICqdLdEKMAAAAASUVORK5CYII="
       />
       <image
+        height="4"
         id="image1_2893_7607"
         width="4"
-        height="4"
         xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAbSURBVHgBpcAxAQAAAAHBj2BSQ/90hHDIKZ8BVc8BValmjmcAAAAASUVORK5CYII="
       />
     </defs>

@@ -51,8 +51,8 @@ export const Flyout: React.FC<FlyoutProps> = ({
       clickOutsideCloses
       escapeCloses
       isOpen={expanded}
-      onRequestClose={onClose}
       shroud
+      onRequestClose={onClose}
     >
       <Background bg={bg}>
         <Drawer
@@ -67,11 +67,11 @@ export const Flyout: React.FC<FlyoutProps> = ({
         >
           <FlexBox
             alignItems="center"
+            justifyContent="space-between"
+            maxWidth="100%"
             mb={8}
             ml={16}
             mt={24}
-            maxWidth="100%"
-            justifyContent="space-between"
           >
             <Text as="h1" fontSize={22}>
               {title}
@@ -79,13 +79,13 @@ export const Flyout: React.FC<FlyoutProps> = ({
             <IconButton
               aria-label="Close"
               icon={MiniDeleteIcon}
-              onClick={onClose}
               mx={16}
               tip={closeLabel}
               tipProps={{
                 alignment: 'bottom-center',
                 placement: 'floating',
               }}
+              onClick={onClose}
             />
           </FlexBox>
           {children}

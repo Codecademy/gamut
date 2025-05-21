@@ -25,22 +25,22 @@ export const GridFormRadioGroupInput: React.FC<
       className={className}
       htmlForPrefix={field.name}
       name={field.name}
+      role="radiogroup"
       onChange={(event) => {
         const { value } = event.target;
         setValue(field.name, value);
         field.onUpdate?.(value);
       }}
-      role="radiogroup"
     >
       {field.options.map(({ label, value, ...rest }) => (
         <Radio
           {...register(field.name, field.validation)}
           disabled={disabled}
+          error={error}
+          id={field.id}
           key={value}
           label={label}
           value={value}
-          id={field.id}
-          error={error}
           {...rest}
         />
       ))}

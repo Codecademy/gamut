@@ -40,11 +40,11 @@ export const Rotation: React.FC<RotationProps> = ({
       height,
       width,
     }}
+    transition={{ duration: timingValues.medium / 1000, ease: 'easeInOut' }}
     variants={{
       rotated: { rotate: degrees },
       normal: { rotate: 0 },
     }}
-    transition={{ duration: timingValues.medium / 1000, ease: 'easeInOut' }}
     {...rest}
   >
     {children}

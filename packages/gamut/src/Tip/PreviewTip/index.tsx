@@ -89,8 +89,8 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
         aria-describedby={descriptionId}
         display={avatar && rest?.display === undefined ? 'flex' : rest?.display}
         tipType={avatar ? 'avatar' : 'anchor'}
-        onFocus={onFocus}
         onBlur={onBlur}
+        onFocus={onFocus}
       >
         {avatar || children}
       </PreviewTipAnchor>

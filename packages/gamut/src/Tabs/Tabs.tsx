@@ -38,18 +38,18 @@ export const Tabs: React.FC<TabsProps> = (props) => {
         <Background bg="navy-800" height="100%">
           <ReachTabs
             as={TabsBase}
+            keyboardActivation={TabsKeyboardActivation.Manual}
             position="relative"
             zIndex={0}
-            keyboardActivation={TabsKeyboardActivation.Manual}
             {...props}
           />
         </Background>
       ) : (
         <ReachTabs
           as={TabsBase}
+          keyboardActivation={TabsKeyboardActivation.Manual}
           position="relative"
           zIndex={0}
-          keyboardActivation={TabsKeyboardActivation.Manual}
           {...props}
         />
       )}

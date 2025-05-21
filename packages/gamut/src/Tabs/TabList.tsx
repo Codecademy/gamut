@@ -25,5 +25,5 @@ const TabListBase = styled('div', styledOptions)<TabListProps>(
 
 export const TabList: React.FC<TabListProps> = (props) => {
   const { variant } = useTab();
-  return <ReachTabList {...props} variant={variant} as={TabListBase} />;
+  return <ReachTabList {...props} as={TabListBase} variant={variant} />;
 };

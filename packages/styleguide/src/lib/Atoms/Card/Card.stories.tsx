@@ -24,7 +24,7 @@ export const Default: Story = {
 export const StaticLight: Story = {
   render: () => (
     <Background bg="white">
-      <FlexBox row gap={16} p={16} border={1}>
+      <FlexBox border={1} gap={16} p={16} row>
         <Box flexGrow={1}>
           <Card variant="white">White variant</Card>
         </Box>
@@ -42,7 +42,7 @@ export const StaticLight: Story = {
 export const StaticDark: Story = {
   render: () => (
     <Background bg="navy">
-      <FlexBox row gap={16} p={16} border={1}>
+      <FlexBox border={1} gap={16} p={16} row>
         <Box flexGrow={1}>
           <Card variant="navy">Navy variant</Card>
         </Box>
@@ -57,13 +57,13 @@ export const StaticDark: Story = {
 export const ShadowNone: Story = {
   render: () => (
     <FlexBox column>
-      <FlexBox p={16} border={1}>
+      <FlexBox border={1} p={16}>
         <Box flexGrow={1}>
           <Card>Default variant</Card>
         </Box>
       </FlexBox>
       <Background bg="white">
-        <FlexBox row gap={16} p={16} border={1}>
+        <FlexBox border={1} gap={16} p={16} row>
           <Box flexGrow={1}>
             <Card variant="white">White variant</Card>
           </Box>
@@ -76,7 +76,7 @@ export const ShadowNone: Story = {
         </FlexBox>
       </Background>
       <Background bg="navy">
-        <FlexBox row gap={16} p={16} border={1}>
+        <FlexBox border={1} gap={16} p={16} row>
           <Box flexGrow={1}>
             <Card variant="navy">Navy variant</Card>
           </Box>
@@ -92,39 +92,39 @@ export const ShadowNone: Story = {
 export const ShadowOutline: Story = {
   render: () => (
     <FlexBox column>
-      <FlexBox p={24} border={1}>
+      <FlexBox border={1} p={24}>
         <Box flexGrow={1}>
           <Card shadow="outline">Default with outline</Card>
         </Box>
       </FlexBox>
       <Background bg="white">
-        <FlexBox row gap={16} p={24} border={1}>
+        <FlexBox border={1} gap={16} p={24} row>
           <Box flexGrow={1}>
-            <Card variant="white" shadow="outline">
+            <Card shadow="outline" variant="white">
               White with outline
             </Card>
           </Box>
           <Box flexGrow={1}>
-            <Card variant="yellow" shadow="outline">
+            <Card shadow="outline" variant="yellow">
               Yellow with outline
             </Card>
           </Box>
           <Box flexGrow={1}>
-            <Card variant="beige" shadow="outline">
+            <Card shadow="outline" variant="beige">
               Beige with outline
             </Card>
           </Box>
         </FlexBox>
       </Background>
       <Background bg="navy">
-        <FlexBox row gap={16} p={24} border={1}>
+        <FlexBox border={1} gap={16} p={24} row>
           <Box flexGrow={1}>
-            <Card variant="navy" shadow="outline">
+            <Card shadow="outline" variant="navy">
               Navy with outline
             </Card>
           </Box>
           <Box flexGrow={1}>
-            <Card variant="hyper" shadow="outline">
+            <Card shadow="outline" variant="hyper">
               Hyper with outline
             </Card>
           </Box>
@@ -137,39 +137,39 @@ export const ShadowOutline: Story = {
 export const ShadowPatternLeft: Story = {
   render: () => (
     <FlexBox column>
-      <FlexBox p={24} border={1}>
+      <FlexBox border={1} p={24}>
         <Box flexGrow={1}>
           <Card shadow="patternLeft">Default with patternLeft</Card>
         </Box>
       </FlexBox>
       <Background bg="white">
-        <FlexBox row gap={16} p={24} border={1}>
+        <FlexBox border={1} gap={16} p={24} row>
           <Box flexGrow={1}>
-            <Card variant="white" shadow="patternLeft">
+            <Card shadow="patternLeft" variant="white">
               White with patternLeft
             </Card>
           </Box>
           <Box flexGrow={1}>
-            <Card variant="yellow" shadow="patternLeft">
+            <Card shadow="patternLeft" variant="yellow">
               Yellow with patternLeft
             </Card>
           </Box>
           <Box flexGrow={1}>
-            <Card variant="beige" shadow="patternLeft">
+            <Card shadow="patternLeft" variant="beige">
               Beige with patternLeft
             </Card>
           </Box>
         </FlexBox>
       </Background>
       <Background bg="navy">
-        <FlexBox row gap={16} p={24} border={1}>
+        <FlexBox border={1} gap={16} p={24} row>
           <Box flexGrow={1}>
-            <Card variant="navy" shadow="patternLeft">
+            <Card shadow="patternLeft" variant="navy">
               Navy with patternLeft
             </Card>
           </Box>
           <Box flexGrow={1}>
-            <Card variant="hyper" shadow="patternLeft">
+            <Card shadow="patternLeft" variant="hyper">
               Hyper with patternLeft
             </Card>
           </Box>
@@ -182,39 +182,39 @@ export const ShadowPatternLeft: Story = {
 export const ShadowPatternRight: Story = {
   render: () => (
     <FlexBox column>
-      <FlexBox p={24} border={1}>
+      <FlexBox border={1} p={24}>
         <Box flexGrow={1}>
           <Card shadow="patternRight">Default with patternRight</Card>
         </Box>
       </FlexBox>
       <Background bg="white">
-        <FlexBox row gap={16} p={24} border={1}>
+        <FlexBox border={1} gap={16} p={24} row>
           <Box flexGrow={1}>
-            <Card variant="white" shadow="patternRight">
+            <Card shadow="patternRight" variant="white">
               White with patternRight
             </Card>
           </Box>
           <Box flexGrow={1}>
-            <Card variant="yellow" shadow="patternRight">
+            <Card shadow="patternRight" variant="yellow">
               Yellow with patternRight
             </Card>
           </Box>
           <Box flexGrow={1}>
-            <Card variant="beige" shadow="patternRight">
+            <Card shadow="patternRight" variant="beige">
               Beige with patternRight
             </Card>
           </Box>
         </FlexBox>
       </Background>
       <Background bg="navy">
-        <FlexBox row gap={16} p={24} border={1}>
+        <FlexBox border={1} gap={16} p={24} row>
           <Box flexGrow={1}>
-            <Card variant="navy" shadow="patternRight">
+            <Card shadow="patternRight" variant="navy">
               Navy with patternRight
             </Card>
           </Box>
           <Box flexGrow={1}>
-            <Card variant="hyper" shadow="patternRight">
+            <Card shadow="patternRight" variant="hyper">
               Hyper with patternRight
             </Card>
           </Box>
@@ -227,34 +227,34 @@ export const ShadowPatternRight: Story = {
 export const IsInteractive: Story = {
   render: () => (
     <FlexBox column>
-      <FlexBox p={24} border={1}>
+      <FlexBox border={1} p={24}>
         <Box flexGrow={1}>
           <Anchor dimensions={1} href="" variant="interface">
-            <Card shadow="patternRight" isInteractive>
+            <Card isInteractive shadow="patternRight">
               Default, patternRight, and isInteractive
             </Card>
           </Anchor>
         </Box>
       </FlexBox>
       <Background bg="white">
-        <FlexBox row gap={16} p={24} border={1}>
+        <FlexBox border={1} gap={16} p={24} row>
           <Box flexGrow={1}>
             <Anchor dimensions={1} href="" variant="interface">
-              <Card variant="white" shadow="none" isInteractive>
+              <Card isInteractive shadow="none" variant="white">
                 White, no shadow, and isInteractive
               </Card>
             </Anchor>
           </Box>
           <Box flexGrow={1}>
             <Anchor dimensions={1} href="" variant="interface">
-              <Card variant="yellow" shadow="patternLeft" isInteractive>
+              <Card isInteractive shadow="patternLeft" variant="yellow">
                 Yellow, patternLeft, and isInteractive
               </Card>
             </Anchor>
           </Box>
           <Box flexGrow={1}>
             <Anchor dimensions={1} href="" variant="interface">
-              <Card variant="beige" shadow="outline" isInteractive>
+              <Card isInteractive shadow="outline" variant="beige">
                 Beige, outline, and isInteractive
               </Card>
             </Anchor>
@@ -262,17 +262,17 @@ export const IsInteractive: Story = {
         </FlexBox>
       </Background>
       <Background bg="navy">
-        <FlexBox row gap={16} p={24} border={1}>
+        <FlexBox border={1} gap={16} p={24} row>
           <Box flexGrow={1}>
             <Anchor dimensions={1} href="" variant="interface">
-              <Card variant="navy" shadow="patternLeft" isInteractive>
+              <Card isInteractive shadow="patternLeft" variant="navy">
                 Navy, patternLeft, and isInteractive
               </Card>
             </Anchor>
           </Box>
           <Box flexGrow={1}>
             <Anchor dimensions={1} href="" variant="interface">
-              <Card variant="hyper" shadow="patternRight" isInteractive>
+              <Card isInteractive shadow="patternRight" variant="hyper">
                 Hyper, patternRight, and isInteractive
               </Card>
             </Anchor>
@@ -286,10 +286,10 @@ export const IsInteractive: Story = {
 export const Dynamic: Story = {
   render: () => (
     <FlexBox row>
-      <Background p={32} bg="white" border={1} flexGrow={1}>
+      <Background bg="white" border={1} flexGrow={1} p={32}>
         <Card>Lookie here, a default variant in light mode!</Card>
       </Background>
-      <Background p={32} bg="navy" flexGrow={1}>
+      <Background bg="navy" flexGrow={1} p={32}>
         <Card>Lookie here, a default variant in dark mode!</Card>
       </Background>
     </FlexBox>
@@ -298,14 +298,14 @@ export const Dynamic: Story = {
 
 export const BorderRadius: Story = {
   render: () => (
-    <FlexBox p={24} border={1} gap={16}>
+    <FlexBox border={1} gap={16} p={24}>
       <Box flexGrow={1}>
-        <Card shadow="outline" variant="yellow" borderRadius="sm" isInteractive>
+        <Card borderRadius="sm" isInteractive shadow="outline" variant="yellow">
           Yellow, isInteractive, outline, and borderRadius is &apos;sm&apos;
         </Card>
       </Box>
       <Box flexGrow={1}>
-        <Card shadow="patternLeft" variant="beige" borderRadius="xl">
+        <Card borderRadius="xl" shadow="patternLeft" variant="beige">
           Beige, patternLeft, and borderRadius is &apos;xl&apos;
         </Card>
       </Box>

@@ -138,11 +138,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <div className={className}>
         <Input
-          id={id || htmlFor}
-          labelled-by={`text-${id || htmlFor}`}
-          type="checkbox"
-          checked={checked}
-          disabled={disabled}
           aria-label={
             ariaLabel === undefined
               ? typeof label === 'string'
@@ -150,36 +145,41 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                 : 'checkbox'
               : ariaLabel
           }
+          checked={checked}
+          disabled={disabled}
+          id={id || htmlFor}
+          labelled-by={`text-${id || htmlFor}`}
+          type="checkbox"
           value={`${value}`}
           {...rest}
           ref={ref}
         />
         <CheckboxLabel
-          htmlFor={id || htmlFor}
           disabled={disabled}
+          htmlFor={id || htmlFor}
           spacing={spacing}
         >
           <CheckboxElement
-            multiline={multiline}
             checked={checked}
             disabled={disabled}
+            multiline={multiline}
           >
             <CheckboxVector
-              width="19px"
+              aria-hidden
+              color={checked ? 'currentColor' : 'transparent'}
               height="19px"
               viewBox="0 0 19 19"
-              color={checked ? 'currentColor' : 'transparent'}
-              aria-hidden
+              width="19px"
             >
-              <path fill="currentColor" d="M1 1h19v19h-19z" />
+              <path d="M1 1h19v19h-19z" fill="currentColor" />
               <Polyline checked={checked} points="4 11 8 15 16 6" />
             </CheckboxVector>
           </CheckboxElement>
           <CheckboxText
+            aria-hidden={dontAriaHideLabel ? 'false' : 'true'}
+            disabled={disabled}
             id={`text-${id || htmlFor}`}
             multiline={multiline}
-            disabled={disabled}
-            aria-hidden={dontAriaHideLabel ? 'false' : 'true'}
           >
             {label}
           </CheckboxText>

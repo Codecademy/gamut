@@ -38,7 +38,7 @@ type Story = StoryObj<typeof Tab>;
 
 const TabsPanelCollection: React.FC = () => {
   return (
-    <TabPanels my={24} className="welcomePanel">
+    <TabPanels className="welcomePanel" my={24}>
       <TabPanel>
         <Text as="h2">Welcome to Tab 1</Text>
         <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
@@ -91,14 +91,14 @@ const TabsControlledExample = () => {
   return (
     <>
       <Background bg="yellow" mb={24} p={12}>
-        <FormGroup label="Tab Index" htmlFor="tab-index">
+        <FormGroup htmlFor="tab-index" label="Tab Index">
           <Input
+            htmlFor="tab-index"
             label="Tab Index"
+            min={1}
+            type="number"
             value={controlledIndex}
             onChange={(e) => setIndex(e.target.value)}
-            type="number"
-            min={1}
-            htmlFor="tab-index"
           />
         </FormGroup>
       </Background>
@@ -160,8 +160,8 @@ export const TabsBlock: Story = {
 
 const TabsNavExample = (args: TabNavProps) => {
   return (
-    <TabNav {...args} fill aria-label="Secondary Navigation">
-      <TabNavLink selected href="/">
+    <TabNav {...args} aria-label="Secondary Navigation" fill>
+      <TabNavLink href="/" selected>
         Tab Link 1
       </TabNavLink>
       <TabNavLink href="/">Tab Link 2</TabNavLink>
@@ -183,7 +183,7 @@ const TabsInteractiveContentExample = (args: TabsWithoutChildren) => {
           <Tab>Just Plain Tab 2</Tab>
           <Tab>Also Interactive Tab 3</Tab>
         </TabList>
-        <TabPanels my={24} className="lol">
+        <TabPanels className="lol" my={24}>
           <TabPanel tabIndex={-1}>
             <Text as="h2">Welcome to Tab 1</Text>
             <FillButton>

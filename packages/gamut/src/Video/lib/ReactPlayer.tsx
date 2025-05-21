@@ -40,10 +40,10 @@ const StyledFlexBox = styled(FlexBox)(
 export const OverlayPlayButton = ({ videoTitle }: { videoTitle?: string }) => {
   return (
     <StyledFlexBox
-      role="button"
       aria-label={`play video${videoTitle ? `: ${videoTitle}` : ''}`}
+      role="button"
     >
-      <PlayIcon minWidth="75px" minHeight="75px" color="white" />
+      <PlayIcon color="white" minHeight="75px" minWidth="75px" />
     </StyledFlexBox>
   );
 };

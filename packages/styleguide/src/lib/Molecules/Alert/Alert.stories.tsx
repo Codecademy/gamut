@@ -92,7 +92,7 @@ export const SubtleInline: Story = {
 export const SmallWidthExample: React.FC = () => {
   return (
     <Box width="400px">
-      <Alert type="general" cta={{ children: 'Add your name' }}>
+      <Alert cta={{ children: 'Add your name' }} type="general">
         Small Width
       </Alert>
     </Box>

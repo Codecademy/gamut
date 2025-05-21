@@ -220,9 +220,9 @@ export const createDemoTable =
       ({ onCollapse }: { onCollapse: () => void }) => (
         <FlexBox column flex={1}>
           <FlexBox borderTop={1} opacity={0.5} />
-          <FlexBox center column p={32} gap={16}>
+          <FlexBox center column gap={16} p={32}>
             <Text variant="title-md">Nothing to see here</Text>
-            <FillButton onClick={onCollapse} size="small">
+            <FillButton size="small" onClick={onCollapse}>
               Get me out of here!
             </FillButton>
           </FlexBox>
@@ -233,18 +233,18 @@ export const createDemoTable =
 
     return (
       <Component
+        columns={cols}
+        expanded={expandedRows}
+        expandedContent={expandedContent}
         height={500}
         id="example"
         idKey={idKey}
-        rows={rows}
-        columns={cols}
-        selected={selectedRows}
-        onRowSelect={onRowSelect}
-        expanded={expandedRows}
-        onRowExpand={onRowExpand}
-        expandedContent={expandedContent}
         query={query}
+        rows={rows}
+        selected={selectedRows}
         onQueryChange={onQueryChange}
+        onRowExpand={onRowExpand}
+        onRowSelect={onRowSelect}
         {...overrides}
       />
     );

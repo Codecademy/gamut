@@ -163,8 +163,8 @@ export const ConnectedForm = forwardRef(
       <PropsProvider value={contextValues}>
         <FormProvider
           clearErrors={clearErrors}
-          handleSubmit={handleSubmit}
           formState={formState}
+          handleSubmit={handleSubmit}
           reset={reset}
           trigger={trigger}
           watch={watch}

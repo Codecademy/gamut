@@ -21,17 +21,17 @@ export const ExpandControl: React.FC<ExpandColProps> = ({
   expanded,
   onExpand,
 }) => (
-  <FlexBox mt={{ _: 8, xs: 0 }} pl={{ _: 0, xs: 16 }} width={1} center>
+  <FlexBox center mt={{ _: 8, xs: 0 }} pl={{ _: 0, xs: 16 }} width={1}>
     <TextButton
+      aria-expanded={expanded}
+      aria-label={`Expand ${id} Row`}
       disabled={disabled}
+      size="small"
       variant="secondary"
       width={{ _: 1, xs: 32 }}
-      size="small"
       onClick={() => {
         onExpand?.({ rowId: id, toggle: expanded });
       }}
-      aria-label={`Expand ${id} Row`}
-      aria-expanded={expanded}
     >
       <Rotation rotated={expanded}>
         <MiniChevronDownIcon color="secondary" />

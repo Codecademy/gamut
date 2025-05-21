@@ -16,9 +16,9 @@ export const ShadowExample = () => {
     <GridBox
       bg="background"
       gap={16}
-      width="100%"
       gridTemplateColumns="repeat(5, 1fr)"
       p={16}
+      width="100%"
     >
       <ShadowBox shadow={boxShadow(1)}>1</ShadowBox>
       <ShadowBox shadow={boxShadow(2)}>2</ShadowBox>

@@ -58,10 +58,10 @@ const ToasterExample: React.FC = () => {
   return (
     <>
       <GridBox width={300}>
-        <FillButton onClick={removeToasts} mb={24} icon={TrashIcon}>
+        <FillButton icon={TrashIcon} mb={24} onClick={removeToasts}>
           Click me to remove all the Toasts
         </FillButton>
-        <FillButton onClick={addToasts} icon={AddIcon}>
+        <FillButton icon={AddIcon} onClick={addToasts}>
           Click me to reveal all the Toasts
         </FillButton>
       </GridBox>

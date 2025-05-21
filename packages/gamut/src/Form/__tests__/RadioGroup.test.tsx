@@ -10,12 +10,12 @@ const renderView = setupRtl(RadioGroup, {
   'data-testid': 'my-test-id',
   children: [
     <Radio
-      label="Sweet Green"
-      value="sweet-green"
       data-testid="firstInput"
       key="sweet-green"
+      label="Sweet Green"
+      value="sweet-green"
     />,
-    <Radio label="Chopt" value="chopt" key="chopt" />,
+    <Radio key="chopt" label="Chopt" value="chopt" />,
   ],
 });
 

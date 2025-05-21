@@ -138,62 +138,62 @@ export const WithIcon: Story = {
     <FlexBox column>
       <FlexBox row>
         <Box mx={4}>
-          <Tag variant="readOnly" icon={MiniStarIcon}>
+          <Tag icon={MiniStarIcon} variant="readOnly">
             Gotcha!
           </Tag>
         </Box>
         <Box mx={4}>
-          <Tag onDismiss={() => null} variant="selection" icon={MiniPinIcon}>
+          <Tag icon={MiniPinIcon} variant="selection" onDismiss={() => null}>
             Tag!
           </Tag>
         </Box>
         <Box mx={4}>
-          <Tag variant="navigation" href="" icon={MiniCheckCircleIcon}>
+          <Tag href="" icon={MiniCheckCircleIcon} variant="navigation">
             You&apos;re it!
           </Tag>
         </Box>
         <Box mx={4}>
           <Tag
-            onClick={() => null}
-            variant="suggestion"
             icon={MiniRemoveCircleIcon}
+            variant="suggestion"
+            onClick={() => null}
           >
             No tagbacks!
           </Tag>
         </Box>
       </FlexBox>
-      <FlexBox row mt={12}>
+      <FlexBox mt={12} row>
         <Box mx={4}>
-          <Tag size="large" variant="readOnly" icon={MiniChevronDownIcon}>
+          <Tag icon={MiniChevronDownIcon} size="large" variant="readOnly">
             Duck,
           </Tag>
         </Box>
         <Box mx={4}>
           <Tag
-            onDismiss={() => null}
+            icon={MiniChevronDownIcon}
             size="large"
             variant="selection"
-            icon={MiniChevronDownIcon}
+            onDismiss={() => null}
           >
             Duck,
           </Tag>
         </Box>
         <Box mx={4}>
           <Tag
-            size="large"
-            variant="navigation"
             href=""
             icon={MiniKebabMenuIcon}
+            size="large"
+            variant="navigation"
           >
             Duck...
           </Tag>
         </Box>
         <Box mx={4}>
           <Tag
-            onClick={() => null}
+            icon={MiniChevronUpIcon}
             size="large"
             variant="suggestion"
-            icon={MiniChevronUpIcon}
+            onClick={() => null}
           >
             Goose!
           </Tag>

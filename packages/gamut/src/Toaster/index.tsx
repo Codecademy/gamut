@@ -28,14 +28,14 @@ export const Toaster: React.FC<ToasterProps> = ({
   return (
     <BodyPortal>
       <ColorMode mode={colorMode}>
-        <Box right={16} bottom={88} position="fixed" aria-live="polite">
+        <Box aria-live="polite" bottom={88} position="fixed" right={16}>
           <AnimatePresence>
             {toasts.map((toast) => (
               <FadeInSlideOut key={toast.id}>
                 <Toast
-                  onClose={() => onClose(toast.id)}
-                  title={toast.title}
                   icon={toast.icon}
+                  title={toast.title}
+                  onClose={() => onClose(toast.id)}
                 >
                   {toast.children}
                 </Toast>

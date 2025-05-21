@@ -164,11 +164,11 @@ export const lxStudioBorderRadii = {
       size: 'fill',
       render: ({ value }: any) => (
         <Box
-          display="inline-block"
-          width="6rem"
-          height="4em"
           bg="navy"
           borderRadius={value}
+          display="inline-block"
+          height="4em"
+          width="6rem"
         />
       ),
     },

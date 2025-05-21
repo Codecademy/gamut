@@ -11,10 +11,10 @@ export const Warning: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    height={height}
-    width={width}
-    viewBox="0 0 300 168"
     fill="none"
+    height={height}
+    viewBox="0 0 300 168"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
     <g clipPath="url(#clip0_1192_39433)">
@@ -43,71 +43,71 @@ export const Warning: React.FC<IllustrationProps> = ({
         strokeWidth="0.663264"
       />
       <path
-        fillRule="evenodd"
         clipRule="evenodd"
         d="M111.889 68.635L118.736 88.4949L102.724 82.8943L111.889 68.635Z"
         fill="#141C3A"
+        fillRule="evenodd"
         stroke="#141C3A"
         strokeWidth="0.663264"
       />
       <path
         d="M116.042 78.4165L212.499 45.2325"
         stroke="#141C3A"
-        strokeWidth="0.663264"
         strokeLinecap="square"
+        strokeWidth="0.663264"
       />
       <path
         d="M204.512 47.6357L208.872 38.7007"
         stroke="#141C3A"
-        strokeWidth="0.663264"
         strokeLinecap="square"
+        strokeWidth="0.663264"
       />
       <path
         d="M198.649 49.5884L203.008 40.6534"
         stroke="#141C3A"
-        strokeWidth="0.663264"
         strokeLinecap="square"
+        strokeWidth="0.663264"
       />
       <path
         d="M192.786 51.541L197.145 42.606"
         stroke="#141C3A"
-        strokeWidth="0.663264"
         strokeLinecap="square"
+        strokeWidth="0.663264"
       />
       <path
         d="M204.663 47.8223L213.606 52.1825"
         stroke="#141C3A"
-        strokeWidth="0.663264"
         strokeLinecap="square"
+        strokeWidth="0.663264"
       />
       <path
         d="M198.8 50.2629L207.743 54.6232"
         stroke="#141C3A"
-        strokeWidth="0.663264"
         strokeLinecap="square"
+        strokeWidth="0.663264"
       />
       <path
         d="M192.938 52.2158L201.88 56.576"
         stroke="#141C3A"
-        strokeWidth="0.663264"
         strokeLinecap="square"
+        strokeWidth="0.663264"
       />
       <path
         d="M220.02 44.0231C238.096 51.5746 256.68 32.8106 248.213 21.0109C243.502 14.4452 233.409 15.5012 234.923 24.6314C236.803 35.9701 258.201 38.2025 264.512 19.7506C265.499 16.8632 266.524 14.7798 266.396 11.6867"
         stroke="#10162F"
-        strokeWidth="0.663264"
+        strokeDasharray="1.33 1.99"
         strokeLinecap="square"
         strokeLinejoin="round"
-        strokeDasharray="1.33 1.99"
+        strokeWidth="0.663264"
       />
     </g>
     <defs>
       <clipPath id="clip0_1192_39433">
         <rect
-          width="243.086"
-          height="145.918"
           fill="white"
+          height="145.918"
           transform="translate(28 11)"
+          width="243.086"
         />
       </clipPath>
     </defs>

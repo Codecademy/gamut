@@ -38,11 +38,11 @@ export const TableHeaderRow: HeaderComponent = ({
             {!hideSelectAll && (
               <SelectControl
                 disabled={empty}
-                rowId="header"
-                name={prefixId('all')}
                 label="Select All"
-                onSelect={onSelect}
+                name={prefixId('all')}
+                rowId="header"
                 selected={selected}
+                onSelect={onSelect}
               />
             )}
           </ListCol>
@@ -54,13 +54,13 @@ export const TableHeaderRow: HeaderComponent = ({
 
           return (
             <ListCol key={renderKey} {...colProps} columnHeader>
-              <FlexBox gap={8} alignItems="flex-end" width="100%">
+              <FlexBox alignItems="flex-end" gap={8} width="100%">
                 {filters && (
                   <FilterControl
                     columnKey={rowProperty}
-                    onFilter={onFilter}
-                    options={filters}
                     justify={colProps.justify}
+                    options={filters}
+                    onFilter={onFilter}
                   />
                 )}
                 {sortable ? (
@@ -75,7 +75,7 @@ export const TableHeaderRow: HeaderComponent = ({
           );
         })}
         {expandable && (
-          <ListCol size="content" ghost>
+          <ListCol ghost size="content">
             <ExpandControl />
           </ListCol>
         )}

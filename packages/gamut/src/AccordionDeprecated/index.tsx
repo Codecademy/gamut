@@ -75,12 +75,12 @@ export const AccordionDeprecated: React.FC<AccordionDeprecatedProps> = ({
       top={
         <AccordionButtonDeprecated
           expanded={expanded}
+          size={size}
+          theme={theme}
           onClick={() => {
             setExpanded(!expanded);
             onClick?.(!expanded);
           }}
-          size={size}
-          theme={theme}
         >
           {expandRenderer(top)}
         </AccordionButtonDeprecated>

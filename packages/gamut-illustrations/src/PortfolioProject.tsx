@@ -11,10 +11,10 @@ export const PortfolioProject: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    width={width}
+    fill="none"
     height={height}
     viewBox="0 0 96 96"
-    fill="none"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
