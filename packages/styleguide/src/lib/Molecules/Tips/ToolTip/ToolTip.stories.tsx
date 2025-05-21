@@ -8,13 +8,28 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof ToolTip> = {
   component: ToolTip,
-  args: {},
+  args: { id: 'fill-id', info: 'Tooltip' },
+  argTypes: {
+    id: { control: 'text' },
+    info: { control: 'text' },
+    alignment: {
+      options: ['bottom-center', 'left-center', 'right-center', 'top-center'],
+      control: { type: 'radio' },
+    },
+    placement: {
+      options: ['inline', 'floating'],
+      control: { type: 'radio' },
+    },
+    zIndex: { control: 'number' },
+    narrow: { control: 'boolean' },
+    inheritDims: { control: 'boolean' },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof ToolTip>;
 
-export const Default: Story = {
+export const AriaDisabled: Story = {
   render: () => (
     <FlexBox center py={64} m={24}>
       <ToolTip id="fill-id" info="Tooltip">
@@ -85,6 +100,18 @@ export const Floating: Story = {
         icon={SmileyStarEyesIcon}
         tipProps={{ alignment: 'right-center', placement: 'floating' }}
       />
+    </FlexBox>
+  ),
+};
+
+export const Default: Story = {
+  render: (args) => (
+    <FlexBox center py={64} m={24}>
+      <ToolTip {...args}>
+        <FillButton aria-describedby="fill-id" icon={SparkleIcon}>
+          Click me
+        </FillButton>
+      </ToolTip>
     </FlexBox>
   ),
 };
