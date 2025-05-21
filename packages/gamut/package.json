@@ -47,8 +47,7 @@
   "scripts": {
     "build": "nx build @codecademy/gamut",
     "build:watch": "yarn build && onchange ./src -- yarn build",
-    "compile": "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
-    "verify": "tsc --noEmit"
+    "compile": "babel ./src --out-dir ./dist --extensions \".ts,.tsx\""
   },
   "sideEffects": [
     "**/*.css",
