@@ -65,6 +65,11 @@ export const formFieldPaddingStyles = {
   px: 8,
 } as const;
 
+export const formFieldSmallPaddingStyles = {
+  py: 2,
+  px: 8,
+} as const;
+
 export const formBaseFieldStylesObject = {
   ...formBaseComponentStyles,
   transition: transitionConcat(

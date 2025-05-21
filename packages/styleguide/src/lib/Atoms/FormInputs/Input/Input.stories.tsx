@@ -10,6 +10,13 @@ const meta: Meta<typeof Input> = {
     placeholder: 'Placeholder',
     type: 'text',
   },
+  argTypes: {
+    inputSize: {
+      control: {
+        type: 'text',
+      },
+    },
+  },
 };
 
 export default meta;
@@ -161,4 +168,61 @@ export const FormGroupErrorLarge: Story = {
       <Input {...args} />
     </FormGroup>
   ),
+};
+
+export const TextSmall: Story = {
+  args: {
+    htmlFor: 'example-text',
+    defaultValue: 'This input has less padding!',
+    name: 'example-text',
+    type: 'text',
+    required: true,
+    inputSize: 'small',
+  },
+};
+
+export const TextSmallError: Story = {
+  args: {
+    htmlFor: 'example-text',
+    defaultValue: 'Still works like a charm!',
+    name: 'example-text',
+    type: 'text',
+    required: true,
+    inputSize: 'small',
+    error: true,
+  },
+};
+
+export const NumberSmall: Story = {
+  args: {
+    htmlFor: 'example-number',
+    name: 'example-number',
+    type: 'number',
+    defaultValue: 1,
+    inputSize: 'small',
+    icon: ViewIcon,
+  },
+};
+
+export const FileSmall: Story = {
+  args: {
+    htmlFor: 'example-file',
+    name: 'example-file',
+    type: 'file',
+    value: '',
+    onChange: () => {},
+    inputSize: 'small',
+    valid: true,
+  },
+};
+
+export const DisabledSmall: Story = {
+  args: {
+    htmlFor: 'example-disabled',
+    name: 'example-disabled',
+    placeholder: 'Disabled',
+    disabled: true,
+    defaultValue: undefined,
+    inputSize: 'small',
+  },
 };
