@@ -9,21 +9,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof ToolTip> = {
   component: ToolTip,
   args: { id: 'fill-id', info: 'Tooltip' },
-  argTypes: {
-    id: { control: 'text' },
-    info: { control: 'text' },
-    alignment: {
-      options: ['bottom-center', 'left-center', 'right-center', 'top-center'],
-      control: { type: 'radio' },
-    },
-    placement: {
-      options: ['inline', 'floating'],
-      control: { type: 'radio' },
-    },
-    zIndex: { control: 'number' },
-    narrow: { control: 'boolean' },
-    inheritDims: { control: 'boolean' },
-  },
 };
 
 export default meta;

@@ -5,6 +5,8 @@ import { withEmotion } from './theming/GamutThemeProvider';
 import { breakpoints } from '@codecademy/gamut-styles';
 import { DocsContainer } from './components/Elements/DocsContainer';
 
+export const parameters = {};
+
 const preview: Preview = {
   parameters: {
     backgrounds: {

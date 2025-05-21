@@ -28,6 +28,8 @@ When using the ToolTip component, the `id` prop is required to associate the too
 
 When a Button is disabled with a tooltip, you must use the `aria-disabled` prop instead of `disabled` prop so the user can still focus the button and view the tooltip.
 
+<Canvas of={ToolTipStories.AriaDisabled} />
+
 ## Variants
 
 ### Alignments
@@ -56,4 +58,4 @@ This `floating` variant should only be used when it as needed.
 
 <Canvas sourceState="shown" of={ToolTipStories.Default} />
 
-<Controls />
+<Controls of={ToolTipStories.Default} />

@@ -52,7 +52,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         alignment.startsWith('left') ||
         alignment.startsWith('right')
       ) {
-        setOffset(ref.current.clientWidth / 2 - 8);
+        setOffset(12);
       }
     }
   }, [alignment, tipWidth, type]);
@@ -132,7 +132,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         {...popoverAlignments}
         animation="fade"
         dims={dims}
-        horizontalOffset={offset}
+        horizontalOffset={12}
         isOpen={isHoverType ? isOpen : !isTipHidden}
         outline
         pattern={isPreviewType ? CheckerDense : undefined}
