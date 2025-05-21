@@ -88,8 +88,8 @@ export const InteractiveElement: Story = {
 export const Disabled: Story = {
   render: () => (
     <FlexBox center m={24}>
-      <ToolTip id="fill-id" info="Tooltip still shows" placement="floating">
-        <FillButton aria-describedby="fill-id" aria-disabled icon={DeleteIcon}>
+      <ToolTip id="disabled-ex" info="Tooltip still shows" placement="floating">
+        <FillButton aria-describedby="disabled-ex" aria-disabled icon={DeleteIcon}>
           Using aria-disabled
         </FillButton>
       </ToolTip>
