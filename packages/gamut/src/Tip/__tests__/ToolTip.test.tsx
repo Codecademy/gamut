@@ -48,7 +48,6 @@ describe('ToolTip', () => {
       await userEvent.hover(view.getByRole('button'));
 
       await waitFor(() => expect(view.queryAllByText(info).length).toBe(2));
-
     });
     it('calls onClick when clicked', async () => {
       const { view } = renderView({});
