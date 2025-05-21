@@ -17,12 +17,14 @@ import {
   HouseEntranceIcon,
   MiniDeleteIcon,
   MiniKebabMenuIcon,
+  MiniStarIcon,
   StarIcon,
   StreakIcon,
   TrophyIcon,
 } from '@codecademy/gamut-icons';
 import { Keyhole } from '@codecademy/gamut-illustrations';
-import { Background } from '@codecademy/gamut-styles';
+import { Background, css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 
@@ -727,4 +729,101 @@ const ExpandedTemplateRowClick: React.FC<ListProps> = ({ as, variant }) => (
 
 export const ExpandedRowGuide: Story = {
   render: (args) => <ExpandedTemplateRowClick {...args} />,
+};
+const skillRows = [
+  {
+    desc: 'Do something in Java',
+    icons: (
+      <>
+        <MiniStarIcon />
+        <MiniStarIcon />
+        <MiniStarIcon />
+        <MiniStarIcon />
+      </>
+    ),
+  },
+  {
+    desc: 'Rest APIS or something like that wrap test wrap text wrap text',
+    icons: (
+      <>
+        <MiniStarIcon />
+        <MiniStarIcon />
+        <MiniStarIcon />
+      </>
+    ),
+  },
+  {
+    desc: 'Develop advanced stuff',
+    icons: (
+      <>
+        <MiniStarIcon />
+        <MiniStarIcon />
+        <MiniStarIcon />
+        <MiniStarIcon />
+        <MiniStarIcon />
+      </>
+    ),
+  },
+  {
+    desc: '{Skill set}',
+    icons: (
+      <>
+        <MiniStarIcon />
+        <MiniStarIcon />
+        <MiniStarIcon />
+      </>
+    ),
+  },
+];
+
+const StyledHeaderListRow = styled(ListRow)(
+  css({
+    bg: 'background-hover',
+    border: 1,
+    borderColor: 'background-hover',
+    borderColorBottom: 'transparent',
+    borderRadiusTop: 'md',
+  })
+);
+const StyledListRow = styled(ListRow)(
+  css({ border: 1, borderColor: 'background-hover' })
+);
+const WrapTest = styled(Text)(
+  css({ whiteSpace: 'break-spaces', width: '100%' })
+);
+
+const ListTableExample: React.FC<ListProps> = () => (
+  <List
+    as="table"
+    variant="plain"
+    header={
+      <StyledHeaderListRow as="thead">
+        <ListCol size="xl" type="header">
+          <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
+            Skill sets
+          </Text>
+        </ListCol>
+        <ListCol size="lg" fill type="control">
+          <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
+            Skills
+          </Text>
+        </ListCol>
+      </StyledHeaderListRow>
+    }
+  >
+    {skillRows.map(({ desc, icons }, i, _, key = `example-skill-${i}`) => (
+      <StyledListRow as="tr" key={key}>
+        <ListCol size="xl" type="header">
+          <WrapTest>{desc}</WrapTest>
+        </ListCol>
+        <ListCol size="content" fill>
+          <FlexBox gap={4}>{icons}</FlexBox>
+        </ListCol>
+      </StyledListRow>
+    ))}
+  </List>
+);
+
+export const ListTableGuide: Story = {
+  render: () => <ListTableExample />,
 };
