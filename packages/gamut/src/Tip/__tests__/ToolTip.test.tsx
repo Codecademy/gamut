@@ -1,5 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { fireEvent, waitFor } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { ToolTipMock } from './mocks';
