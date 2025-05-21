@@ -780,13 +780,13 @@ const StyledHeaderListRow = styled(ListRow)(
   css({
     bg: 'background-hover',
     border: 1,
-    borderColor: 'background-hover',
+    borderColor: 'border-tertiary',
     borderColorBottom: 'transparent',
     borderRadiusTop: 'md',
   })
 );
 const StyledListRow = styled(ListRow)(
-  css({ border: 1, borderColor: 'background-hover' })
+  css({ border: 1, borderColor: 'border-tertiary' })
 );
 const WrapTest = styled(Text)(
   css({ whiteSpace: 'break-spaces', width: '100%' })
@@ -803,7 +803,7 @@ const ListTableExample: React.FC<ListProps> = () => (
             Skill sets
           </Text>
         </ListCol>
-        <ListCol size="lg" fill type="control">
+        <ListCol size="lg" fill>
           <Text fontWeight={700} truncate="ellipsis" truncateLines={1}>
             Skills
           </Text>
