@@ -33,22 +33,22 @@ export type PopoverFocusProps =
 
 export type PopoverYPositionType = {
   /**
-   * Which horizontal edge of the source componet to align against. Center aligns it centered to the component.
+   * Which horizontal edge of the source component to align against. Center aligns it centered to the component.
    */
   position?: 'above' | 'below';
   /**
-   * Which side to position the beak. If not provided, beak will not be rendered.
+   * Which side to position the beak. If not provided, beak will not be rendered. Position `center` Popovers can only be used with `center` beaks.
    */
   beak?: 'left' | 'right' | 'center';
 };
 
 export type PopoverXPositionType = {
   /**
-   * Which horizontal edge of the source componet to align against. Center aligns it centered to the component.
+   * Which horizontal edge of the source component to align against. Center aligns it centered to the component.
    */
   position: 'center';
   /**
-   * Which side to position the beak. If not provided, beak will not be rendered.
+   * Which side to position the beak. If not provided, beak will not be rendered.Position `center` Popovers can only be used with `center` beaks.
    */
   beak: 'center';
 };
