@@ -139,7 +139,6 @@ export const Alert: React.FC<AlertProps> = ({
     <Box>
       <ToolTip
         alignment="bottom-center"
-        hasRepetitiveLabel
         id={ariaId}
         info={buttonLabel}
         placement="floating"
