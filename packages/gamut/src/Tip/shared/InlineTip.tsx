@@ -64,6 +64,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
         aria-hidden={isHoverType}
         color="currentColor"
         id={id}
+        role={type === 'tool' ? 'tooltip' : undefined}
         width={narrow ? narrowWidth : undefined}
         zIndex="auto"
       >

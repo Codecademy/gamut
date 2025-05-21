@@ -5,27 +5,10 @@ import { ToolTip, ToolTipProps } from '../ToolTip';
 
 export const ToolTipMock: React.FC<
   ToolTipProps & ComponentProps<typeof FillButton>
-> = ({
-  'aria-label': ariaLabel,
-  info,
-  placement,
-  onClick,
-  hasRepetitiveLabel,
-  hideAriaToolTip,
-}) => {
+> = ({ info, placement, onClick }) => {
   return (
-    <ToolTip
-      hasRepetitiveLabel={hasRepetitiveLabel}
-      hideAriaToolTip={hideAriaToolTip}
-      id="tip-id"
-      info={info}
-      placement={placement}
-    >
-      <FillButton
-        aria-describedby="tip-id"
-        aria-label={ariaLabel}
-        onClick={onClick}
-      >
+    <ToolTip id="tip-id" info={info} placement={placement}>
+      <FillButton aria-describedby="tip-id" onClick={onClick}>
         Click me
       </FillButton>
     </ToolTip>
