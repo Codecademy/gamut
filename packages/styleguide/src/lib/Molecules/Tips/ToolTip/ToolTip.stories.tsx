@@ -89,7 +89,11 @@ export const Disabled: Story = {
   render: () => (
     <FlexBox center m={24}>
       <ToolTip id="disabled-ex" info="Tooltip still shows" placement="floating">
-        <FillButton aria-describedby="disabled-ex" aria-disabled icon={DeleteIcon}>
+        <FillButton
+          aria-describedby="disabled-ex"
+          aria-disabled
+          icon={DeleteIcon}
+        >
           Using aria-disabled
         </FillButton>
       </ToolTip>
