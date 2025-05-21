@@ -14,7 +14,7 @@ export type ToolTipProps = TipBaseProps &
   WithChildrenProp & {
     alignment?: TipCenterAlignment;
     /**
-     * Can be used for accessiblity - the same id needs to be passed to the `aria-describedby` attribute of the element that the tooltip is describing.
+     * Can be used for accessibility - the same id needs to be passed to the `aria-describedby` attribute of the element that the tooltip is describing.
      */
     id?: string;
   };
