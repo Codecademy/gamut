@@ -153,12 +153,13 @@ export const Text = forwardRef<
   ComponentProps<typeof StyledText>
 >(({ as = 'span', m = 0, ...rest }, ref) => {
   const textId = useId();
+  const trueId = rest.id || textId;
   const { screenreader } = rest;
 
   if (screenreader) {
     return (
-      <Box aria-labelledby={textId} as="div" role="note" width={4}>
-        <StyledText aria-hidden="true" id={textId} m={m} ref={ref} {...rest} />
+      <Box aria-labelledby={trueId} as="div" role="note" width={4}>
+        <StyledText aria-hidden="true" id={trueId} m={m} ref={ref} {...rest} />
       </Box>
     );
   }
