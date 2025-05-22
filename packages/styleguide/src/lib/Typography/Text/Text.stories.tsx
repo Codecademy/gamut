@@ -131,7 +131,7 @@ export const Screenreader: Story = {
             </Text>
           </Column>
           <Column size={9}>
-            <Text screenreader={variant}>
+            <Text screenreader={variant} id={`${variant}-id`}>
               {variant
                 ? 'Visible only to screenreaders'
                 : 'When set to "false", this text is visible to non-screenreaders.'}
