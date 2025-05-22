@@ -157,7 +157,7 @@ export const Text = forwardRef<
 
   if (screenreader) {
     return (
-      <Box aria-labelledby={textId} as='div' width={4} >
+      <Box aria-labelledby={textId} as="div" width={4}>
         <StyledText aria-hidden="true" id={textId} m={m} ref={ref} {...rest} />
       </Box>
     );
