@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [74.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.7...@codecademy/styleguide@74.0.0) (2025-05-21)
+
+### ⚠ BREAKING CHANGES
+
+- **ToolTip:** remove aria-describedby
+
+### Bug Fixes
+
+- **ToolTip:** remove aria-describedby ([1c676f5](https://github.com/Codecademy/gamut/commit/1c676f5b51896cd3703b802c77bff2e6c2d6347f))
+
+### [73.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.6...@codecademy/styleguide@73.0.7) (2025-05-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [73.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.5...@codecademy/styleguide@73.0.6) (2025-05-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [73.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.4...@codecademy/styleguide@73.0.5) (2025-05-01)
 
 ### Bug Fixes

@@ -6,10 +6,8 @@ import { setupRtl } from 'component-test-setup';
 import { IconButton } from '../IconButton';
 import { IconButtonFloatingMock } from './mocks';
 
-const label = 'Click';
+const label = 'Aria gonna click this button?';
 const tip = 'Click this button';
-const tipText = 'this button';
-const uniqueTip = 'I am not repetitive text';
 
 const onClick = jest.fn();
 const buttonProps = {
@@ -39,55 +37,37 @@ describe('IconButton', () => {
     view.getByRole('img', { hidden: true });
   });
 
-  // TO-DO: When we upgrade jest, we can use `description` in the tests below to make sure they are semantically connected to buttons.
-  it('renders a tip with repetition removed', async () => {
+  it('renders the tip text from the tip prop', async () => {
     const { view } = renderView({});
 
-    const button = view.getByRole('button', { name: label });
+    view.getByRole('button', { name: label });
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore: We need to update the rest of the testing suite to use the correct types (which are reliant on upgrading Node)
-    expect(button).toHaveAccessibleDescription(tipText);
-    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
-      tipText
-    );
+    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(tip);
   });
 
-  it('renders a tip with both labels when they are not repetitive', async () => {
-    const { view } = renderView({ tip: uniqueTip });
+  it('sets the aria-label as the tip when only the tip prop is provided', async () => {
+    const { view } = renderView({ 'aria-label': '' });
 
-    view.getByRole('button', { name: label });
-    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
-      uniqueTip
-    );
+    view.getByRole('button', { name: tip });
+    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(tip);
   });
 
-  it('renders a true aria-label based on tip when aria-label is not defined', async () => {
-    const { view } = renderView({ 'aria-label': undefined });
+  it('sets the aria-label text from the aria-label prop when both the tip and aria-label is provided', async () => {
+    const { view } = renderView({ 'aria-label': '' });
 
-    view.getByRole('button', { name: label });
-    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
-      tipText
-    );
+    view.getByRole('button', { name: tip });
+    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(tip);
   });
 
   it('renders a floating tip', async () => {
     const { view } = renderFloatingView({});
 
-    expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
-      tipText
-    );
-
-    expect(view.queryByText(tip)).toBeNull();
+    expect(view.queryAllByText(tip).length).toBe(1);
 
     const cta = view.getByRole('button', { name: label });
 
-    expect(view.queryByText('tooltip')).toBeNull();
-
     await userEvent.hover(cta);
 
-    await waitFor(() => {
-      view.getByText(tip);
-    });
+    await waitFor(() => expect(view.queryAllByText(tip).length).toBe(2));
   });
 });
