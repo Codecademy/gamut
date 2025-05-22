@@ -1,23 +1,26 @@
-import { styledOptions } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import {
-  TabList as ReachTabList,
-  TabListProps as ReachTabListProps,
-} from '@reach/tabs';
 import * as React from 'react';
+import {
+  TabList as ReactAriaTabList,
+  TabListProps as ReactAriaTabListProps,
+  TabProps,
+} from 'react-aria-components';
 
 import { tabElementBaseProps, TabElementStyleProps } from './props';
 import { tabContainerStates, tabContainerVariants } from './styles';
 import { useTab } from './TabProvider';
 
-export interface TabListProps
-  extends ReachTabListProps,
-    StyleProps<typeof tabContainerVariants>,
+export interface TabListBaseProps
+  extends StyleProps<typeof tabContainerVariants>,
     StyleProps<typeof tabContainerStates>,
     TabElementStyleProps {}
 
-const TabListBase = styled('div', styledOptions)<TabListProps>(
+export interface TabListProps
+  extends TabListBaseProps,
+    ReactAriaTabListProps<TabProps> {}
+
+const TabListBase = styled(ReactAriaTabList)<TabListProps>(
   tabContainerVariants,
   tabContainerStates,
   tabElementBaseProps
@@ -25,5 +28,5 @@ const TabListBase = styled('div', styledOptions)<TabListProps>(
 
 export const TabList: React.FC<TabListProps> = (props) => {
   const { variant } = useTab();
-  return <ReachTabList {...props} variant={variant} as={TabListBase} />;
+  return <TabListBase {...props} variant={variant} />;
 };
