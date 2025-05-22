@@ -58,44 +58,60 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
 
   if (alignment.includes('sml')) {
     if (isYCenter) {
+      // center-x-sml
       styleObject = { ...beakYSml };
       if (isRight) {
+        // center-right-sml
         styleObject = { ...styleObject, ...beakRightCenterStylesAfter };
       } else {
+        // center-left-sml
         styleObject = { ...styleObject, ...beakLeftCenterStylesAfter };
       }
     } else {
       if (isAbove) {
+        // above-x-sml
         styleObject = { ...popoverAboveSml };
       } else {
+        // below-x-sml
         styleObject = { ...popoverBelowSml };
       }
       if (isRight) {
+        // above-right-sml + below-right-sml
         styleObject = { ...styleObject, ...beakRightSml };
       } else if (isXCenter) {
+        // above-center-sml + below-center-sml
         styleObject = { ...styleObject, ...beakCenterSml };
         if (isAbove) {
+          // above-center-sml
           styleObject = { ...styleObject, ...beakTopStylesAfter };
         } else if (isBelow) {
+          // below-center-sml
           styleObject = { ...styleObject, ...beakBottomStylesAfter };
         }
       } else {
+        // above-left-sml + below-left-sml
         styleObject = { ...styleObject, ...beakLeftSml };
       }
     }
   } else if (isYCenter) {
+    // center-x
     styleObject = { ...beakYCenter };
   } else {
     if (isAbove) {
+      // above-x
       styleObject = { ...popoverAbove };
     } else {
+      // below-x
       styleObject = { ...popoverBelow };
     }
     if (isRight) {
+      // above-right + below-right
       styleObject = { ...styleObject, ...beakRight };
     } else if (isXCenter) {
+      // above-center + below-center
       styleObject = { ...styleObject, ...beakXCenter };
     } else {
+      // above-left + below-lef
       styleObject = { ...styleObject, ...beakLeft };
     }
   }
