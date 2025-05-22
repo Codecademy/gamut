@@ -1,6 +1,7 @@
 import {
   Badge,
   FillButton,
+  FlexBox,
   FormGroup,
   Input,
   Tab,
@@ -44,11 +45,22 @@ type Story = StoryObj<typeof Tabs>;
 export const Default: Story = {
   render: (args) => (
     <Tabs {...args}>
-      <TabList mx={24}>
-        <Tab id="1">Tab 1</Tab>
-        <Tab id="2">Tab 2</Tab>
-        <Tab id="3">Tab 3</Tab>
-      </TabList>
+      <FlexBox>
+        <TabList>
+          <Tab id="1">Tab 1</Tab>
+          <Tab id="2">Tab 2</Tab>
+          <Tab id="3">Tab 3</Tab>
+        </TabList>
+        <FlexBox
+          alignItems="center"
+          justifyContent="flex-end"
+          width="100%"
+          borderBottom={1}
+          mb={24}
+        >
+          <Text>Tab List</Text>
+        </FlexBox>
+      </FlexBox>
       <TabPanels>
         <TabPanel id="1">
           <Text as="h2">Welcome to Tab 1</Text>

@@ -51,7 +51,7 @@ export const tabVariants = variant({
     zIndex: 1,
     [TabSelectors.DISABLED]: {
       opacity: 0.25,
-      cursor: 'default',
+      cursor: 'not-allowed',
     },
     ...focusVisibleStyles,
   },
