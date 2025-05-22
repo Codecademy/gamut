@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [63.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@62.0.7...@codecademy/gamut@63.0.0) (2025-05-21)
+
+### ⚠ BREAKING CHANGES
+
+- **ToolTip:** remove aria-describedby
+
+### Bug Fixes
+
+- **ToolTip:** remove aria-describedby ([1c676f5](https://github.com/Codecademy/gamut/commit/1c676f5b51896cd3703b802c77bff2e6c2d6347f))
+
 ### [62.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@62.0.6...@codecademy/gamut@62.0.7) (2025-05-16)
 
 **Note:** Version bump only for package @codecademy/gamut
