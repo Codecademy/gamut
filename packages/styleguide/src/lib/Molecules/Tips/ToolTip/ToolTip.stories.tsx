@@ -16,13 +16,13 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof ToolTip> = {
   component: ToolTip,
-  args: {},
+  args: { id: 'fill-id', info: 'Tooltip' },
 };
 
 export default meta;
 type Story = StoryObj<typeof ToolTip>;
 
-export const Default: Story = {
+export const AriaDisabled: Story = {
   render: () => (
     <FlexBox center py={64} m={24}>
       <ToolTip id="fill-id" info="Tooltip">
@@ -34,13 +34,36 @@ export const Default: Story = {
   ),
 };
 
+const alignments = [
+  'top-center',
+  'bottom-center',
+  'left-center',
+  'right-center',
+] as const;
+
+export const Alignments: Story = {
+  render: () => (
+    <FlexBox justifyContent="space-around" m={24} width="95%">
+      {alignments.map((alignment) => {
+        return (
+          <IconButton
+            tip={alignment}
+            icon={SparkleIcon}
+            tipProps={{ alignment }}
+          />
+        );
+      })}
+    </FlexBox>
+  ),
+};
+
 export const WithIconButton: Story = {
   render: () => (
     <FlexBox justifyContent="space-around" m={24} width="95%">
       <IconButton
-        tip="Beautify your code"
+        tip="Wonder at the majesty of the universe"
         icon={SparkleIcon}
-        tipProps={{ alignment: 'bottom-center' }}
+        tipProps={{ alignment: 'left-center' }}
       />
       <IconButton
         tip="Next Prompt"
@@ -95,6 +118,18 @@ export const Disabled: Story = {
           icon={DeleteIcon}
         >
           Using aria-disabled
+        </FillButton>
+      </ToolTip>
+    </FlexBox>
+  ),
+};
+
+export const Default: Story = {
+  render: (args) => (
+    <FlexBox center py={64} m={24}>
+      <ToolTip {...args}>
+        <FillButton aria-describedby="fill-id" icon={SparkleIcon}>
+          Click me
         </FillButton>
       </ToolTip>
     </FlexBox>

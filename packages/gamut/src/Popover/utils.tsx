@@ -1,118 +1,122 @@
-import { theme } from '@codecademy/gamut-styles';
+import {
+  beakBottomStylesAfter,
+  beakLeftCenterStylesAfter,
+  beakRightCenterStylesAfter,
+  beakTopStylesAfter,
+} from '../Tip/shared/styles';
+import {
+  beakCenterSml,
+  beakLeft,
+  beakLeftSml,
+  beakRight,
+  beakRightSml,
+  beakXCenter,
+  beakYCenter,
+  beakYSml,
+  patternAbove,
+  patternBelow,
+  patternLeft,
+  patternRight,
+  popoverAbove,
+  popoverAboveSml,
+  popoverBelow,
+  popoverBelowSml,
+} from './styles';
+import { PopoverProps } from './types';
 
-import { tooltipBackgroundColor } from '../Tip/shared/styles';
-
-const popoverAbove = {
-  borderLeft: 'none',
-  borderTop: 'none',
-  top: 'calc(100% - 10px)',
-} as const;
-
-const popoverBelow = {
-  borderRight: 'none',
-  borderBottom: 'none',
-  top: '-10px',
-} as const;
-
-const beakRight = {
-  right: '25px',
+export const getBeakFromAlignment = ({
+  align = 'left',
+  position = 'below',
+}: Pick<PopoverProps, 'beak' | 'align' | 'position'>):
+  | 'above'
+  | 'below'
+  | 'left'
+  | 'right' => {
+  if (position === 'center') {
+    return align === 'center' ? 'left' : align;
+  }
+  return position;
 };
 
-const beakLeft = {
-  left: '25px',
-};
-
-const beakCenter = {
-  left: 'calc(50% - 10px)',
-};
-
-const popoverAboveSml = {
-  borderLeft: 'none',
-  borderTop: 'none',
-  top: 'calc(100% - 8px)',
-} as const;
-
-const popoverBelowSml = {
-  borderRight: 'none',
-  borderBottom: 'none',
-  top: '-8px',
-} as const;
-
-const beakRightSml = {
-  right: '1.5rem',
-  bg: tooltipBackgroundColor,
-};
-
-const beakLeftSml = {
-  left: '1.5rem',
-  bg: tooltipBackgroundColor,
-};
-
-const beakCenterSml = {
-  left: 'calc(50% - 8px)',
-};
-
-const beakCenterSmlAbove = {
-  backgroundImage: `linear-gradient(to top left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
-};
-
-const beakCenterSmlBelow = {
-  backgroundImage: `linear-gradient(to bottom right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+export const getBeakVariant = ({
+  align,
+  position,
+  beak,
+  variant,
+}: Pick<PopoverProps, 'align' | 'position' | 'beak' | 'variant'>) => {
+  const beakAlignment = position === 'center' ? align : beak;
+  return `${position}-${beakAlignment}${variant === 'secondary' ? '-sml' : ''}`;
 };
 
 export const createBeakVariantFromAlignment = (alignment: string) => {
   let styleObject = {};
+  const isAbove = alignment.includes('above');
+  const isBelow = alignment.includes('below');
+  const isRight = alignment.includes('right');
+  const isXCenter = alignment.includes('-center');
+  const isYCenter = alignment.startsWith('center-');
 
   if (alignment.includes('sml')) {
-    if (alignment.includes('above')) {
-      styleObject = { ...popoverAboveSml };
-    } else {
-      styleObject = { ...popoverBelowSml };
-    }
-    if (alignment.includes('right')) {
-      styleObject = { ...beakRightSml, ...styleObject };
-    } else if (alignment.includes('center')) {
-      styleObject = { ...beakCenterSml, ...styleObject };
-      if (alignment.includes('above')) {
-        styleObject = { ...beakCenterSmlAbove, ...styleObject };
-      } else if (alignment.includes('below')) {
-        styleObject = { ...beakCenterSmlBelow, ...styleObject };
+    if (isYCenter) {
+      // center-x-sml
+      styleObject = { ...beakYSml };
+      if (isRight) {
+        // center-right-sml
+        styleObject = { ...styleObject, ...beakRightCenterStylesAfter };
+      } else {
+        // center-left-sml
+        styleObject = { ...styleObject, ...beakLeftCenterStylesAfter };
       }
     } else {
-      styleObject = { ...beakLeftSml, ...styleObject };
+      if (isAbove) {
+        // above-x-sml
+        styleObject = { ...popoverAboveSml };
+      } else {
+        // below-x-sml
+        styleObject = { ...popoverBelowSml };
+      }
+      if (isRight) {
+        // above-right-sml + below-right-sml
+        styleObject = { ...styleObject, ...beakRightSml };
+      } else if (isXCenter) {
+        // above-center-sml + below-center-sml
+        styleObject = { ...styleObject, ...beakCenterSml };
+        if (isAbove) {
+          // above-center-sml
+          styleObject = { ...styleObject, ...beakTopStylesAfter };
+        } else if (isBelow) {
+          // below-center-sml
+          styleObject = { ...styleObject, ...beakBottomStylesAfter };
+        }
+      } else {
+        // above-left-sml + below-left-sml
+        styleObject = { ...styleObject, ...beakLeftSml };
+      }
     }
+  } else if (isYCenter) {
+    // center-x
+    styleObject = { ...beakYCenter };
   } else {
-    if (alignment.includes('above')) {
+    if (isAbove) {
+      // above-x
       styleObject = { ...popoverAbove };
     } else {
+      // below-x
       styleObject = { ...popoverBelow };
     }
-    if (alignment.includes('right')) {
-      styleObject = { ...beakRight, ...styleObject };
-    } else if (alignment.includes('center')) {
-      styleObject = { ...beakCenter, ...styleObject };
+    if (isRight) {
+      // above-right + below-right
+      styleObject = { ...styleObject, ...beakRight };
+    } else if (isXCenter) {
+      // above-center + below-center
+      styleObject = { ...styleObject, ...beakXCenter };
     } else {
-      styleObject = { ...beakLeft, ...styleObject };
+      // above-left + below-lef
+      styleObject = { ...styleObject, ...beakLeft };
     }
   }
 
   return { ...styleObject };
-};
-
-const patternAbove = {
-  top: '-8px',
-};
-
-const patternBelow = {
-  top: '8px',
-};
-
-const patternRight = {
-  left: '-8px',
-};
-
-const patternLeft = {
-  left: '8px',
 };
 
 export const createPatternVariantFromAlignment = (alignment: string) => {

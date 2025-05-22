@@ -1,11 +1,79 @@
 import { states, variant } from '@codecademy/gamut-styles';
 
-import { tooltipArrowHeight, toolTipBodyCss } from '../Tip/shared/styles';
+import {
+  beakBottomStylesAfter,
+  beakTopStylesAfter,
+  tooltipArrowHeight,
+  tooltipBackgroundColor,
+  toolTipBodyCss,
+} from '../Tip/shared/styles';
 import { createVariantsFromAlignments } from '../Tip/shared/utils';
 import {
   createBeakVariantFromAlignment,
   createPatternVariantFromAlignment,
 } from './utils';
+
+export const transformValues = {
+  right: 'translateX(-100%)',
+  left: 'translateX(0%)',
+  above: 'translateY(-100%)',
+  below: 'translateY(0%)',
+  center: '',
+};
+
+export const popoverAbove = {
+  top: 'calc(100% - 10px)',
+  ...beakTopStylesAfter,
+} as const;
+
+export const popoverBelow = {
+  top: '-10px',
+  ...beakBottomStylesAfter,
+} as const;
+
+export const beakRight = {
+  right: '25px',
+};
+
+export const beakLeft = {
+  left: '25px',
+};
+
+export const beakXCenter = {
+  left: 'calc(50% - 10px)',
+};
+
+export const beakYCenter = {
+  top: 'calc(50% - 10px)',
+};
+
+export const popoverAboveSml = {
+  top: 'calc(100% - 8px)',
+  ...beakTopStylesAfter,
+} as const;
+
+export const popoverBelowSml = {
+  top: '-8px',
+  ...beakBottomStylesAfter,
+} as const;
+
+export const beakRightSml = {
+  right: '1.5rem',
+  bg: tooltipBackgroundColor,
+};
+
+export const beakLeftSml = {
+  left: '1.5rem',
+  bg: tooltipBackgroundColor,
+};
+
+export const beakCenterSml = {
+  left: 'calc(50% - 8px)',
+};
+
+export const beakYSml = {
+  top: 'calc(50% - 8px)',
+};
 
 export const popoverStates = states({
   widthRestricted: {
@@ -54,24 +122,43 @@ export const beakBorderStates = states({
   hasBorder: borderStyles,
 });
 
+const beakBoxX = {
+  alignItems: 'flex-end',
+  height: '15px',
+  width: '100%',
+  justifyContent: 'center',
+  left: 0,
+};
+
+const beakBoxY = {
+  height: '100%',
+  width: '15px',
+};
+
 export const beakBoxVariants = variant({
   base: {
-    alignItems: 'flex-end',
-    height: '15px',
-    justifyContent: 'center',
-    left: 0,
     position: 'absolute',
-    width: '100%',
   },
   variants: {
     above: {
       bottom: -15,
+      ...beakBoxX,
     },
     below: {
       top: -15,
+      ...beakBoxX,
+    },
+    right: {
+      left: -8,
+      ...beakBoxY,
+    },
+    left: {
+      right: -7,
+      ...beakBoxY,
     },
   },
 });
+
 const beakVariantsArray = [
   'below-left',
   'below-right',
@@ -85,6 +172,8 @@ const beakVariantsArray = [
   'above-left-sml',
   'above-right-sml',
   'above-center-sml',
+  'center-right-sml',
+  'center-left-sml',
 ];
 
 const beakVariantStyles = createVariantsFromAlignments(
@@ -134,14 +223,23 @@ const patternVariantArray = [
   'below-right',
 ];
 
+export const patternAbove = {
+  top: '-8px',
+};
+
+export const patternBelow = {
+  top: '8px',
+};
+
+export const patternRight = {
+  left: '-8px',
+};
+
+export const patternLeft = {
+  left: '8px',
+};
+
 export const patternVariantStyles = createVariantsFromAlignments(
   patternVariantArray,
   createPatternVariantFromAlignment
 );
-
-export const transformValues = {
-  right: 'translateX(-100%)',
-  left: 'translateX(0%)',
-  above: 'translateY(-100%)',
-  below: 'translateY(0%)',
-};
