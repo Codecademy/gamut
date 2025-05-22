@@ -101,13 +101,13 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     <ScreenreaderNavigableText
       aria-hidden={isAriaHidden}
       aria-live="assertive"
-      screenreader
+      inlineScreenreader
     >
       {!isTipHidden ? info : `\xa0`}
     </ScreenreaderNavigableText>
   );
 
-  const tip = (
+  const button = (
     <InfoTipButton
       aria-expanded={!isTipHidden}
       active={!isTipHidden}
@@ -125,11 +125,11 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       {isFloating && alignment.includes('top') ? (
         <>
           {text}
-          {tip}
+          {button}
         </>
       ) : (
         <>
-          {tip}
+          {button}
           {text}
         </>
       )}
