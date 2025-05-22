@@ -17,7 +17,7 @@ const infoTipSRState = states({
     m: 0,
     border: 'none',
   },
-})
+});
 
 export const ScreenreaderNavigableText = styled(Text)(
   css({ position: 'absolute' }),

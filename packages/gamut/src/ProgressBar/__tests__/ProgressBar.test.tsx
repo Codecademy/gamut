@@ -35,7 +35,8 @@ describe('ProgressBar', () => {
     /** RTL doesn't differentiate between visible and invisible
      test so this tests that only the screen reader text renders */
 
-    view.getByText('Progress: 50%');
+    view.getByRole('progressbar', { value: { now: 50 } });
+    expect(view.queryByText('50%')).toBeNull();
   });
 
   it('includes percentage visually when size is large', () => {
@@ -43,7 +44,7 @@ describe('ProgressBar', () => {
     /** RTL doesn't differentiate between visible and invisible
      test so this tests that only the screen reader text renders */
 
-    view.getByText('Progress: 50%');
+    view.getByRole('progressbar', { value: { now: 50 } });
     expect(view.getByText('50%')).toHaveAttribute('aria-hidden', 'true');
   });
 
