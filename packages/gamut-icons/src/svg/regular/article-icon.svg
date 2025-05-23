@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>newspaper-fold</title><path class="a" d="M23.25,6V20.25a2.25,2.25,0,0,1-4.5,0V3a1.5,1.5,0,0,0-1.5-1.5h-15A1.5,1.5,0,0,0,.75,3V20.25A2.25,2.25,0,0,0,3,22.5H21"/><line class="a" x1="4.5" y1="15" x2="15" y2="15"/><line class="a" x1="4.5" y1="18" x2="10.5" y2="18"/><rect class="a" x="4.5" y="5.25" width="10.5" height="6" rx="0.75" ry="0.75"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M23.25 6V20.25a2.25 2.25 0 0 1-4.5 0V3a1.5 1.5 0 0 0-1.5-1.5h-15A1.5 1.5 0 0 0 .75 3V20.25A2.25 2.25 0 0 0 3 22.5H21M4.5 15 15 15M4.5 18 10.5 18" class="a"/>
+    <rect width="10.5" height="6" x="4.5" y="5.25" class="a" rx=".75" ry=".75"/>
+</svg>

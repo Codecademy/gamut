@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g transform="matrix(1,0,0,1,0,0)"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>business-ladder</title><line class="a" x1="0.75" y1="23.25" x2="10.5" y2="0.75"></line><line class="a" x1="13.5" y1="23.25" x2="23.25" y2="0.75"></line><line class="a" x1="8.55" y1="5.25" x2="21.3" y2="5.25"></line><line class="a" x1="6.6" y1="9.75" x2="19.35" y2="9.75"></line><line class="a" x1="4.65" y1="14.25" x2="17.4" y2="14.25"></line><line class="a" x1="2.7" y1="18.75" x2="15.45" y2="18.75"></line></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M.75 23.25 10.5.75M13.5 23.25 23.25.75M8.55 5.25 21.3 5.25M6.6 9.75 19.35 9.75M4.65 14.25 17.4 14.25M2.7 18.75 15.45 18.75" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px"/>
+</svg>

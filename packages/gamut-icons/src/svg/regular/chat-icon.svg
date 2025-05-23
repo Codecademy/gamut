@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>conversation-chat-2</title><path class="a" d="M23.25,13.5A5.249,5.249,0,0,0,18,8.25H15a5.25,5.25,0,0,0,0,10.5h.75l4.5,4.5V18.226A5.237,5.237,0,0,0,23.25,13.5Z"/><path class="a" d="M6.75,12.75l-3,3V10.726A5.239,5.239,0,0,1,6,.75H9A5.252,5.252,0,0,1,14.033,4.5"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M23.25 13.5A5.249 5.249 0 0 0 18 8.25H15a5.25 5.25 0 0 0 0 10.5h.75l4.5 4.5V18.226A5.237 5.237 0 0 0 23.25 13.5ZM6.75 12.75l-3 3V10.726A5.239 5.239 0 0 1 6 .75H9A5.252 5.252 0 0 1 14.033 4.5" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px"/>
+</svg>

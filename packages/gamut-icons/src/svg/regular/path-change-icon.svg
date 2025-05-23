@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>flag-1</title><line class="a" x1="0.75" y1="0.75" x2="0.75" y2="23.25"/><path class="a" d="M.75,2.25H22.5a.75.75,0,0,1,.56,1.248L19.055,8a1.5,1.5,0,0,0,0,1.994l4,4.505a.75.75,0,0,1-.56,1.248H.75"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M.75.75.75 23.25M.75 2.25H22.5a.75.75 0 0 1 .56 1.248L19.055 8a1.5 1.5 0 0 0 0 1.994l4 4.505a.75.75 0 0 1-.56 1.248H.75" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px"/>
+</svg>

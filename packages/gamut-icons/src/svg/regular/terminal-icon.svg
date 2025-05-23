@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>programming-code</title><path class="a" d="M2.25,21.75a1.5,1.5,0,0,1-1.5-1.5V3.865A1.62,1.62,0,0,1,2.365,2.25H21.643A1.612,1.612,0,0,1,23.25,3.857V20.135a1.62,1.62,0,0,1-1.615,1.615Z"/><path class="a" d="M4.85,18.75a1.071,1.071,0,0,1-1.1-1.038V6.368A1.156,1.156,0,0,1,4.935,5.25H19.071A1.151,1.151,0,0,1,20.25,6.363V17.632a1.156,1.156,0,0,1-1.185,1.118Z"/><line class="a" x1="13.5" y1="12" x2="16.5" y2="12"/><polyline class="a" points="8.25 9.75 10.5 12 8.25 14.25"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M2.25,21.75a1.5,1.5,0,0,1-1.5-1.5V3.865A1.62,1.62,0,0,1,2.365,2.25H21.643A1.612,1.612,0,0,1,23.25,3.857V20.135a1.62,1.62,0,0,1-1.615,1.615Z" class="a"/>
+    <path d="M4.85 18.75a1.071 1.071 0 0 1-1.1-1.038V6.368A1.156 1.156 0 0 1 4.935 5.25H19.071A1.151 1.151 0 0 1 20.25 6.363V17.632a1.156 1.156 0 0 1-1.185 1.118ZM13.5 12 16.5 12" class="a"/>
+    <path d="M8.25 9.75 10.5 12 8.25 14.25" class="a"/>
+</svg>

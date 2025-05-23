@@ -1,6 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-<defs>
-    <style>.a,.b{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}.b{fill-rule:evenodd;}</style>
-</defs>
-<title>settings-vertical</title>
-<line class="a" x1="15.75" y1="11.265" x2="15.75" y2="5.265"/><line class="a" x1="15.75" y1="18.765" x2="15.75" y2="15.765"/><path class="b" d="M18,13.515a2.25,2.25,0,1,1-2.25-2.25A2.25,2.25,0,0,1,18,13.515Z"/><line class="a" x1="8.25" y1="9.765" x2="8.25" y2="18.765"/><path class="b" d="M10.5,7.515a2.25,2.25,0,1,0-2.25,2.25A2.25,2.25,0,0,0,10.5,7.515Z"/></svg>
+    <defs>
+        <style>
+            .a,.b{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}.b{fill-rule:evenodd}
+        </style>
+    </defs>
+    <path d="M15.75 11.265 15.75 5.265M15.75 18.765 15.75 15.765" class="a"/>
+    <path d="M18,13.515a2.25,2.25,0,1,1-2.25-2.25A2.25,2.25,0,0,1,18,13.515Z" class="b"/>
+    <path d="M8.25 9.765 8.25 18.765" class="a"/>
+    <path d="M10.5,7.515a2.25,2.25,0,1,0-2.25,2.25A2.25,2.25,0,0,0,10.5,7.515Z" class="b"/>
+</svg>

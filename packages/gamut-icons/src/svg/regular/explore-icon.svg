@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>compass-1</title><circle class="a" cx="12" cy="12" r="11.25"/><path class="a" d="M16.648,7.352a.75.75,0,0,0-.768-.181L9.348,9.348,7.171,15.88a.75.75,0,0,0,.949.949l6.532-2.177L16.829,8.12A.75.75,0,0,0,16.648,7.352Z"/><line class="a" x1="12" y1="0.75" x2="12" y2="3"/><line class="a" x1="19.955" y1="4.045" x2="18.364" y2="5.636"/><line class="a" x1="23.25" y1="12" x2="21" y2="12"/><line class="a" x1="19.955" y1="19.955" x2="18.364" y2="18.364"/><line class="a" x1="12" y1="23.25" x2="12" y2="21"/><line class="a" x1="4.045" y1="19.955" x2="5.636" y2="18.364"/><line class="a" x1="0.75" y1="12" x2="3" y2="12"/><line class="a" x1="4.045" y1="4.045" x2="5.636" y2="5.636"/><path class="a" d="M12,11.625a.375.375,0,0,1,.375.375"/><path class="a" d="M11.625,12A.375.375,0,0,1,12,11.625"/><path class="a" d="M12,12.375A.375.375,0,0,1,11.625,12"/><path class="a" d="M12.375,12a.375.375,0,0,1-.375.375"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <circle cx="12" cy="12" r="11.25" class="a"/>
+    <path d="M16.648 7.352a.75.75 0 0 0-.768-.181L9.348 9.348 7.171 15.88a.75.75 0 0 0 .949.949l6.532-2.177L16.829 8.12A.75.75 0 0 0 16.648 7.352ZM12 .75 12 3M19.955 4.045 18.364 5.636M23.25 12 21 12M19.955 19.955 18.364 18.364M12 23.25 12 21M4.045 19.955 5.636 18.364M.75 12 3 12M4.045 4.045 5.636 5.636" class="a"/>
+    <path d="M12 11.625a.375.375 0 0 1 .375.375M11.625 12A.375.375 0 0 1 12 11.625M12 12.375A.375.375 0 0 1 11.625 12M12.375 12a.375.375 0 0 1-.375.375" class="a"/>
+</svg>

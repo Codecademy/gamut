@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>paginate-filter-text</title><rect class="a" x="3.75" y="0.746" width="19.5" height="19.5" rx="1.5" ry="1.5"/><path class="a" d="M20.25,23.246h-18a1.5,1.5,0,0,1-1.5-1.5v-18"/><line class="a" x1="8.25" y1="6.746" x2="18.75" y2="6.746"/><line class="a" x1="8.25" y1="9.746" x2="18.75" y2="9.746"/><line class="a" x1="8.25" y1="12.746" x2="15.75" y2="12.746"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <rect width="19.5" height="19.5" x="3.75" y=".746" class="a" rx="1.5" ry="1.5"/>
+    <path d="M20.25 23.246h-18a1.5 1.5 0 0 1-1.5-1.5v-18M8.25 6.746 18.75 6.746M8.25 9.746 18.75 9.746M8.25 12.746 15.75 12.746" class="a"/>
+</svg>

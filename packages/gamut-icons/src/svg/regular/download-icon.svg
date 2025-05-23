@@ -1,6 +1,3 @@
-<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<title>download</title>
-<path d="M12.001 3.75V15.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-<path d="M7.50098 11.25L12.001 15.75L16.501 11.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-<path d="M23.251 15.75V17.25C23.251 18.0456 22.9349 18.8087 22.3723 19.3713C21.8097 19.9339 21.0466 20.25 20.251 20.25H3.75098C2.95533 20.25 2.19227 19.9339 1.62966 19.3713C1.06705 18.8087 0.750977 18.0456 0.750977 17.25V15.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12.001 3.75V15.75M7.50098 11.25 12.001 15.75 16.501 11.25M23.251 15.75V17.25C23.251 18.0456 22.9349 18.8087 22.3723 19.3713 21.8097 19.9339 21.0466 20.25 20.251 20.25H3.75098C2.95533 20.25 2.19227 19.9339 1.62966 19.3713 1.06705 18.8087.750977 18.0456.750977 17.25V15.75"/>
 </svg>

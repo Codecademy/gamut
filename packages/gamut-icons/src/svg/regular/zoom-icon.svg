@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>zoom-in</title><path class="a" d="M18.875,9.811A9.063,9.063,0,1,1,9.813.749,9.063,9.063,0,0,1,18.875,9.811Z"/><line class="a" x1="5.25" y1="9.749" x2="14.25" y2="9.749"/><line class="a" x1="9.75" y1="14.249" x2="9.75" y2="5.249"/><line class="a" x1="16.221" y1="16.219" x2="23.25" y2="23.249"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M18.875 9.811A9.063 9.063 0 1 1 9.813.749 9.063 9.063 0 0 1 18.875 9.811ZM5.25 9.749 14.25 9.749M9.75 14.249 9.75 5.249M16.221 16.219 23.25 23.249" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px"/>
+</svg>

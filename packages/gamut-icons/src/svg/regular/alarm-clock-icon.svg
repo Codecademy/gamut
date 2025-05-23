@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>alarm-clock</title><circle class="a" cx="12" cy="12.75" r="9"/><line class="a" x1="6" y1="23.25" x2="7.386" y2="20.479"/><line class="a" x1="12" y1="12.75" x2="8.609" y2="12.75"/><line class="a" x1="12" y1="7.5" x2="12" y2="12.75"/><line class="a" x1="1.5" y1="3.75" x2="5.25" y2="0.75"/><line class="a" x1="18" y1="23.25" x2="16.614" y2="20.478"/><line class="a" x1="22.5" y1="3.75" x2="18.75" y2="0.75"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <circle cx="12" cy="12.75" r="9" class="a"/>
+    <path d="M6 23.25 7.386 20.479M12 12.75 8.609 12.75M12 7.5 12 12.75M1.5 3.75 5.25.75M18 23.25 16.614 20.478M22.5 3.75 18.75.75" class="a"/>
+</svg>
