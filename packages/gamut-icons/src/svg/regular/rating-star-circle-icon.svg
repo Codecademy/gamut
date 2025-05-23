@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>rating-star-circle</title><path class="a" d="M12.593,6.8l1.4,2.95h2.377a.651.651,0,0,1,.469,1.114L14.652,12.81l1.209,2.778a.658.658,0,0,1-.938.823L12,14.767,9.077,16.411a.658.658,0,0,1-.938-.823L9.348,12.81,7.165,10.864A.651.651,0,0,1,7.634,9.75h2.377l1.4-2.95A.665.665,0,0,1,12.593,6.8Z"/><circle class="a" cx="12" cy="12" r="11.25"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M12.593,6.8l1.4,2.95h2.377a.651.651,0,0,1,.469,1.114L14.652,12.81l1.209,2.778a.658.658,0,0,1-.938.823L12,14.767,9.077,16.411a.658.658,0,0,1-.938-.823L9.348,12.81,7.165,10.864A.651.651,0,0,1,7.634,9.75h2.377l1.4-2.95A.665.665,0,0,1,12.593,6.8Z" class="a"/>
+    <circle cx="12" cy="12" r="11.25" class="a"/>
+</svg>

@@ -25,7 +25,7 @@
   "repository": "git@github.com:Codecademy/gamut.git",
   "scripts": {
     "build": "nx build @codecademy/gamut-icons",
-    "format": "svgo -f ./src/svg --pretty --config=.svgo.yml"
+    "format": "svgo -rf ./src/svg --pretty --config=svgo.config.mjs"
   },
   "sideEffects": false,
   "types": "dist/index.d.ts"
