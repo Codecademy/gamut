@@ -1,1 +1,10 @@
-<svg id="Regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>diagram-split-horizontal</title><polyline class="cls-1" points="23.25 3.75 20.25 0.75 17.25 3.75"/><path class="cls-1" d="M.75,12H14.262A6,6,0,0,0,20.25,5.947V.75"/><polyline class="cls-1" points="23.25 20.25 20.25 23.25 17.25 20.25"/><path class="cls-1" d="M14.262,12a6,6,0,0,1,5.988,6.053v5.2"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" id="Regular" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M23.25 3.75 20.25.75 17.25 3.75" class="cls-1"/>
+    <path d="M.75 12H14.262A6 6 0 0 0 20.25 5.947V.75M23.25 20.25 20.25 23.25 17.25 20.25" class="cls-1"/>
+    <path d="M14.262,12a6,6,0,0,1,5.988,6.053v5.2" class="cls-1"/>
+</svg>

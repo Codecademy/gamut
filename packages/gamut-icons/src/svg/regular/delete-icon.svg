@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>delete</title><circle class="a" cx="12" cy="12" r="11.25"/><line class="a" x1="4.045" y1="19.955" x2="19.955" y2="4.045"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <circle cx="12" cy="12" r="11.25" class="a"/>
+    <path d="M4.045 19.955 19.955 4.045" class="a"/>
+</svg>

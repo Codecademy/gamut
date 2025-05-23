@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>app-window-type</title><rect class="a" x="1.51" y="2.254" width="21" height="19.5" rx="1.5" ry="1.5"/><line class="a" x1="1.51" y1="6.754" x2="22.51" y2="6.754"/><line class="a" x1="12.01" y1="18.707" x2="12.01" y2="10.48"/><path class="a" d="M16.51,11.98v-.75a.75.75,0,0,0-.75-.75H8.26a.75.75,0,0,0-.75.75v.75"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <rect width="21" height="19.5" x="1.51" y="2.254" class="a" rx="1.5" ry="1.5"/>
+    <path d="M1.51 6.754 22.51 6.754M12.01 18.707 12.01 10.48M16.51 11.98v-.75a.75.75 0 0 0-.75-.75H8.26a.75.75 0 0 0-.75.75v.75" class="a"/>
+</svg>
