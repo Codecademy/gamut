@@ -4,7 +4,6 @@ import { SVGProps } from 'react';
 import * as React from 'react';
 
 import { FlexBox } from '../Box';
-import { Text } from '../Typography';
 
 export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
   size?: number | string;
@@ -32,11 +31,6 @@ const RadialProgressWrapper = styled.figure<{ size: number | string }>(
       width: size,
     })
 );
-
-/**
- * @deprecated
- * This component is deprecated and is no longer supported.
- */
 
 export const RadialProgress: React.FC<RadialProgressProps> = ({
   children,
@@ -97,8 +91,15 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
   const svgViewBoxStr = `${viewBox.minX} ${viewBox.minY} ${viewBox.width} ${viewBox.height}`;
 
   return (
-    <RadialProgressWrapper size={size} className={className}>
-      <Text as="figcaption" screenreader>{`${labelPercent}% progress`}</Text>
+    <RadialProgressWrapper
+      size={size}
+      className={className}
+      aria-label="Progress"
+      aria-live="polite"
+      aria-busy={false}
+      aria-valuenow={labelPercent}
+      role="progressbar"
+    >
       <svg viewBox={svgViewBoxStr} height={size} width={size} {...props}>
         <circle
           cx="50"

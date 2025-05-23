@@ -6,8 +6,9 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps, forwardRef } from 'react';
+import { ComponentProps, forwardRef, useId } from 'react';
 
+import { Box } from '../Box';
 import { typographyElementVariants, typographyStyleVariants } from './variants';
 
 const displayVariants = variant({
@@ -150,6 +151,17 @@ const StyledText = styled('span', styledOptions<'span'>())<TextProps>(
 export const Text = forwardRef<
   HTMLSpanElement,
   ComponentProps<typeof StyledText>
->(({ as = 'span', m = 0, ...rest }, ref) => (
-  <StyledText as={as} m={m} ref={ref} {...rest} />
-));
+>(({ as = 'span', m = 0, ...rest }, ref) => {
+  const textId = useId();
+  const trueId = rest.id || textId;
+  const { screenreader } = rest;
+
+  if (screenreader) {
+    return (
+      <Box aria-labelledby={trueId} as={as} role="note" width={4}>
+        <StyledText aria-hidden="true" id={trueId} m={m} ref={ref} {...rest} />
+      </Box>
+    );
+  }
+  return <StyledText as={as} m={m} ref={ref} {...rest} />;
+});
