@@ -134,7 +134,8 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     const AsComponent = As || InputElement;
     const ShownIcon = IconSvg || icon;
 
-    const correctedInputSize = type === 'file' && inputSize === 'small' ? 'smallFile' : inputSize;
+    const correctedInputSize =
+      type === 'file' && inputSize === 'small' ? 'smallFile' : inputSize;
 
     return (
       <Box
