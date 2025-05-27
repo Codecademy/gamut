@@ -124,11 +124,13 @@ describe('Menu', () => {
       ),
     });
 
-    const menuItem = view.getByLabelText(label);
+    const menuItem = view.getByRole('button', { name: label });
     await userEvent.hover(menuItem);
 
     await waitFor(() => {
-      view.getByText(label);
+      expect(view.getByRole('tooltip', { hidden: true })).toHaveTextContent(
+        label
+      );
     });
   });
 
