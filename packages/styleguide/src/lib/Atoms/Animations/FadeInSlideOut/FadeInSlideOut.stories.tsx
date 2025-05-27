@@ -6,7 +6,7 @@ import { useState } from 'react';
 const meta: Meta<typeof FadeInSlideOut> = {
   component: FadeInSlideOut,
   args: {},
-};
+}
 
 export default meta;
 
@@ -25,8 +25,7 @@ export const Default: React.FC = () => {
           {isVisible && (
             <FadeInSlideOut>
               <Box border={1} p={8}>
-                Even in a stupid, stupid universe where we have hot dogs for
-                fingers, we get very good with our feet.
+              Even in a stupid, stupid universe where we have hot dogs for fingers, we get very good with our feet.
               </Box>
             </FadeInSlideOut>
           )}
