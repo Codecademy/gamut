@@ -17,22 +17,19 @@ import {
   formBaseFieldStyles,
   formFieldFocusStyles,
   formFieldPaddingStyles,
-  formFieldSmallPaddingStyles,
   formFieldStyles,
+  inputSizeStyles,
 } from '../styles';
 import { BaseInputProps } from '../types';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> &
+  StyleProps<typeof inputSizeStyles> &
   BaseInputProps & {
     /**
      * Allows Inputs to manage their own activated style state to account for some edge-cases.
      */
     activated?: boolean;
     className?: string;
-    /**
-     * Setting this prop to 'small' reduces the padding of the input component. If omitted, the default padding will be used.
-     */
-    inputSize?: 'small';
     /**
      * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
      */
@@ -79,11 +76,8 @@ export const iFrameWrapper = styled.div<conditionalStyleProps>`
 const InputElement = styled.input<StyledInputProps>`
   ${formFieldStyles}
   ${conditionalStyles}
+  ${inputSizeStyles}
   text-indent: 0;
-  padding: ${(props) =>
-    props.inputSize === 'small'
-      ? `${formFieldSmallPaddingStyles.py}px ${formFieldSmallPaddingStyles.px}px`
-      : `${formFieldPaddingStyles.py}px ${formFieldPaddingStyles.px}px`};
   padding-right: ${(props) => (props.icon ? `2.3rem` : `initial`)};
 `;
 
@@ -118,7 +112,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       as: As,
       icon: IconSvg,
       type = 'text',
-      inputSize,
+      inputSize = 'default',
       ...rest
     },
     ref
@@ -140,6 +134,8 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     const AsComponent = As || InputElement;
     const ShownIcon = IconSvg || icon;
 
+    const correctedInputSize = type === 'file' && inputSize === 'small' ? 'smallFile' : inputSize;
+
     return (
       <Box
         display={type === 'hidden' ? 'none' : undefined}
@@ -158,7 +154,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
             Boolean(error),
             rest.activated !== undefined ? rest.activated : activatedStyle
           )}
-          inputSize={inputSize}
+          inputSize={correctedInputSize}
         />
         {!!ShownIcon && (
           <FlexBox

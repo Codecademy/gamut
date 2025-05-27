@@ -9,13 +9,7 @@ const meta: Meta<typeof Input> = {
     name: 'example-input',
     placeholder: 'Placeholder',
     type: 'text',
-  },
-  argTypes: {
-    inputSize: {
-      control: {
-        type: 'text',
-      },
-    },
+    inputSize: 'default',
   },
 };
 

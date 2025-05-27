@@ -1,4 +1,4 @@
-import { system, theme, transitionConcat } from '@codecademy/gamut-styles';
+import { system, theme, transitionConcat, variant } from '@codecademy/gamut-styles';
 
 export type conditionalStyleProps = {
   error?: boolean;
@@ -65,10 +65,6 @@ export const formFieldPaddingStyles = {
   px: 8,
 } as const;
 
-export const formFieldSmallPaddingStyles = {
-  py: 2,
-  px: 8,
-} as const;
 
 export const formBaseFieldStylesObject = {
   ...formBaseComponentStyles,
@@ -118,3 +114,21 @@ export const conditionalStyles = system.variant({
 export const conditionalStyleState = (error: boolean, activated: boolean) => {
   return error ? 'error' : activated ? 'activated' : undefined;
 };
+
+export const inputSizeStyles = variant({
+  prop: 'inputSize',
+  base: {
+    px: 8,
+  },
+  variants: {
+    default: {
+      ...formFieldPaddingStyles
+    },
+    small: {
+      py: 3 as any,
+    },
+    smallFile: {
+      py: 2 as any,
+    }
+  }
+})
