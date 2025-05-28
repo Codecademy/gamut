@@ -22,7 +22,7 @@ import {
 } from '../styles';
 import { BaseInputProps } from '../types';
 
-export type InputProps = InputHTMLAttributes<HTMLInputElement> &
+export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>,'size'> &
   StyleProps<typeof inputSizeStyles> &
   BaseInputProps & {
     /**
@@ -34,6 +34,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> &
      * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
      */
     placeholder?: string;
+    size?: 'default' | 'small' | 'smallFile';
     type?: string;
     valid?: boolean;
   };
@@ -112,7 +113,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       as: As,
       icon: IconSvg,
       type = 'text',
-      inputSize,
+      size,
       ...rest
     },
     ref
@@ -134,8 +135,8 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     const AsComponent = As || InputElement;
     const ShownIcon = IconSvg || icon;
 
-    const trueInputSize =
-      type === 'file' && inputSize === 'small' ? 'smallFile' : inputSize;
+    const trueSize =
+      type === 'file' && size === 'small' ? 'smallFile' : size;
 
     return (
       <Box
@@ -155,7 +156,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
             Boolean(error),
             rest.activated !== undefined ? rest.activated : activatedStyle
           )}
-          inputSize={trueInputSize}
+          inputSize={trueSize}
         />
         {!!ShownIcon && (
           <FlexBox

@@ -171,7 +171,7 @@ export const TextSmall: Story = {
     name: 'example-text',
     type: 'text',
     required: true,
-    inputSize: 'small',
+    size: 'small',
   },
 };
 
@@ -182,7 +182,7 @@ export const TextSmallError: Story = {
     name: 'example-text',
     type: 'text',
     required: true,
-    inputSize: 'small',
+    size: 'small',
     error: true,
   },
 };
@@ -193,7 +193,7 @@ export const NumberSmall: Story = {
     name: 'example-number',
     type: 'number',
     defaultValue: 1,
-    inputSize: 'small',
+    size: 'small',
     icon: ViewIcon,
   },
 };
@@ -205,7 +205,7 @@ export const FileSmall: Story = {
     type: 'file',
     value: '',
     onChange: () => {},
-    inputSize: 'small',
+    size: 'small',
     valid: true,
   },
 };
@@ -217,6 +217,6 @@ export const DisabledSmall: Story = {
     placeholder: 'Disabled',
     disabled: true,
     defaultValue: undefined,
-    inputSize: 'small',
+    size: 'small',
   },
 };
