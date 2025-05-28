@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [74.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@74.0.0...@codecademy/styleguide@74.0.1) (2025-05-27)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [74.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.7...@codecademy/styleguide@74.0.0) (2025-05-21)
+
+### ⚠ BREAKING CHANGES
+
+- **ToolTip:** remove aria-describedby
+
+### Bug Fixes
+
+- **ToolTip:** remove aria-describedby ([1c676f5](https://github.com/Codecademy/gamut/commit/1c676f5b51896cd3703b802c77bff2e6c2d6347f))
+
+### [73.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.6...@codecademy/styleguide@73.0.7) (2025-05-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [73.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.5...@codecademy/styleguide@73.0.6) (2025-05-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [73.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.4...@codecademy/styleguide@73.0.5) (2025-05-01)
+
+### Bug Fixes
+
+- **coachmark:** provide a default for skipfocustrap ([d2508c9](https://github.com/Codecademy/gamut/commit/d2508c9017e35fd6151302292d862d0d267b289a))
+
+### [73.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.3...@codecademy/styleguide@73.0.4) (2025-04-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [73.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@73.0.2...@codecademy/styleguide@73.0.3) (2025-04-25)
 
 **Note:** Version bump only for package @codecademy/styleguide
