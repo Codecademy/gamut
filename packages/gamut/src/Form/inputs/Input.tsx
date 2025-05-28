@@ -112,7 +112,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       as: As,
       icon: IconSvg,
       type = 'text',
-      inputSize = 'default',
+      inputSize,
       ...rest
     },
     ref

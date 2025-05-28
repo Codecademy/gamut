@@ -121,6 +121,7 @@ export const conditionalStyleState = (error: boolean, activated: boolean) => {
 
 export const inputSizeStyles = variant({
   prop: 'inputSize',
+  defaultVariant: 'default',
   base: {
     px: 8,
   },
