@@ -1,5 +1,5 @@
 import {
-  system,
+  css,
   theme,
   transitionConcat,
   variant,
@@ -90,16 +90,16 @@ export const formBaseFieldStylesObject = {
   },
 } as const;
 
-export const formBaseFieldStyles = system.css(formBaseFieldStylesObject);
+export const formBaseFieldStyles = css(formBaseFieldStylesObject);
 
-export const formFieldStyles = system.css({
+export const formFieldStyles = css({
   ...formBaseFieldStylesObject,
   ...formFieldPaddingStyles,
   lineHeight: 'base',
   [InputSelectors.FOCUS]: formFieldFocusStyles,
 });
 
-export const conditionalStyles = system.variant({
+export const conditionalStyles = variant({
   variants: {
     error: {
       borderColor: 'feedback-error',

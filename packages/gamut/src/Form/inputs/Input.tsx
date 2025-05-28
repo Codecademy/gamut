@@ -3,7 +3,7 @@ import {
   CheckCircledIcon,
   GamutIconProps,
 } from '@codecademy/gamut-icons';
-import { system } from '@codecademy/gamut-styles';
+import { css } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled, { StyledComponent } from '@emotion/styled';
 import { ChangeEvent, forwardRef, InputHTMLAttributes, useState } from 'react';
@@ -60,26 +60,26 @@ export interface InputWrapperProps extends InputProps {
 /**  We greatly prefer NOT to do this but ReactRecurly has some specific needs around focus-styles + padding that force us to export them seperately. If we ever stop using React-Recurly, this code will be 🔪.
  *tldr: Do not do this unless you have already talked to Web-Plat and have failed to find any alternate (and better) solutions. */
 
-export const reactRecurlyFormFieldFocusStyles =
-  system.css(formFieldFocusStyles);
+export const reactRecurlyFormFieldFocusStyles = css(formFieldFocusStyles);
 
-export const reactRecurlyFormFieldPaddingStyles = system.css(
-  formFieldPaddingStyles
+export const reactRecurlyFormFieldPaddingStyles = css(formFieldPaddingStyles);
+
+export const iFrameWrapper = styled.div<conditionalStyleProps>(
+  formBaseFieldStyles,
+  conditionalStyles,
+  css({ textIndent: 0 })
 );
 
-export const iFrameWrapper = styled.div<conditionalStyleProps>`
-  ${formBaseFieldStyles}
-  ${conditionalStyles}
-  text-indent: 0;
-`;
-
-const InputElement = styled.input<StyledInputProps>`
-  ${formFieldStyles}
-  ${conditionalStyles}
-  ${inputSizeStyles}
-  text-indent: 0;
-  padding-right: ${(props) => (props.icon ? `2.3rem` : `initial`)};
-`;
+const InputElement = styled.input<StyledInputProps>(
+  formFieldStyles,
+  conditionalStyles,
+  inputSizeStyles,
+  (props) =>
+    css({
+      paddingRight: props.icon ? `2.3rem` : `initial`,
+      textIndent: 0,
+    })
+);
 
 const inputStates = {
   error: {
@@ -134,7 +134,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     const AsComponent = As || InputElement;
     const ShownIcon = IconSvg || icon;
 
-    const correctedInputSize =
+    const trueInputSize =
       type === 'file' && inputSize === 'small' ? 'smallFile' : inputSize;
 
     return (
@@ -155,7 +155,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
             Boolean(error),
             rest.activated !== undefined ? rest.activated : activatedStyle
           )}
-          inputSize={correctedInputSize}
+          inputSize={trueInputSize}
         />
         {!!ShownIcon && (
           <FlexBox
