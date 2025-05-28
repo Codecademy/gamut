@@ -22,7 +22,7 @@ import {
 } from '../styles';
 import { BaseInputProps } from '../types';
 
-export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>,'size'> &
+export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
   StyleProps<typeof inputSizeStyles> &
   BaseInputProps & {
     /**
@@ -135,8 +135,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     const AsComponent = As || InputElement;
     const ShownIcon = IconSvg || icon;
 
-    const trueSize =
-      type === 'file' && size === 'small' ? 'smallFile' : size;
+    const trueSize = type === 'file' && size === 'small' ? 'smallFile' : size;
 
     return (
       <Box
