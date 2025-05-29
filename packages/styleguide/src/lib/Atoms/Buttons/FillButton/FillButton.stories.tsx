@@ -8,7 +8,7 @@ const meta: Meta<typeof FillButton> = {
     children: 'Click Me',
     disabled: false,
     size: 'normal',
-    variant: 'primary'
+    variant: 'primary',
   },
   argTypes: {
     href: {
