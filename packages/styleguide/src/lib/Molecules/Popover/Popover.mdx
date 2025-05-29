@@ -35,11 +35,11 @@ Popovers are generally used for interactive contents, such as new and exciting f
 
 ### Beak
 
-Using the beak prop, you can add a beak to the popover. This beak can be aligned to the right, left, or center of the popover.
+Using the `beak` prop, you can add a beak that is right, left, or center aligned a `Popover`.
 
 <Canvas of={PopoverStories.Beak} />
 
-Tooltips with a _centered_ beak -`center`- are smaller sized and meant for a single small number of words, like keyboard shortcuts. Similar to the center aligned <LinkTo id="Molecules/Tips/ToolTip">ToolTip</LinkTo>. Please note that `center` aligned popovers can only accept the `center` beak prop.
+Popovers with a _centered_ beak -`center`- are intended to be smaller sized and meant for a single small number of words. They are similar to our <LinkTo id="Molecules/Tips/ToolTip">ToolTips</LinkTo>. Please note that center aligned `Popover`s `align="center"` can only render a centered beak.
 
 <Canvas of={PopoverStories.BeakCentered} />
 
@@ -52,11 +52,11 @@ The outline color is `theme.colors.secondary` so in Dark Mode, the outline will 
 
 ### Position
 
-Using the position prop, you can add a position to the popover.
+Using the `position` prop, you can add a position to the `Popover`.
 
-`above` and `below` will position the popover centered to the vertical line of the target element.
+`above` and `below` will position the `Popover` centered to the vertical line of the target element.
 
-`center` will position the popover centered to the horizontal center of the target element and shifted to the aligned side.
+`center` will position the `Popover` centered to the horizontal center of the target element and shifted to the aligned side.
 
 <LayoutGrid gap={32}>
 

@@ -95,6 +95,7 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
   const isRight = alignment.includes('right');
   const isTop = alignment.includes('top');
   const isCenter = alignment.includes('center');
+  const isBottom = alignment.includes('bottom');
   const isLRAligned =
     alignment.startsWith('right') || alignment.startsWith('left');
 
@@ -104,7 +105,7 @@ export const createToolTipVariantFromAlignment = (alignment: string) => {
     styleObjectAfter = { ...topStylesAfter };
     styleObjectBefore = { ...topStylesBefore };
     // bottom-center, bottom-right, + bottom-left styles
-  } else if (alignment.includes('bottom')) {
+  } else if (isBottom) {
     styleObject = { ...bottomStyles };
     styleObjectAfter = { ...bottomStylesAfter };
     styleObjectBefore = { ...bottomStylesBefore };

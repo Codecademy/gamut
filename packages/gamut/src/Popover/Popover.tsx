@@ -71,7 +71,7 @@ export const Popover: React.FC<PopoverProps> = ({
   const { width, height } = useWindowSize();
   const { x, y } = useWindowScroll();
 
-  const getHeightRef = (popover: HTMLDivElement) => {
+  const getRaisedDivDimsRef = (popover: HTMLDivElement) => {
     if (popover && popoverHeight === 0 && popoverWidth === 0) {
       const { height, width } = popover.getBoundingClientRect();
       setPopoverHeight(height);
@@ -88,7 +88,10 @@ export const Popover: React.FC<PopoverProps> = ({
       above: Math.round(targetRect.top - verticalOffset),
       below: Math.round(targetRect.top + targetRect.height + verticalOffset),
       center: Math.round(
-        targetRect.top + targetRect.height / 2 - popoverHeight / 2
+        targetRect.top +
+          targetRect.height / 2 -
+          popoverHeight / 2 -
+          verticalOffset
       ),
     };
     const alignments = {
@@ -99,7 +102,10 @@ export const Popover: React.FC<PopoverProps> = ({
         ? Math.round(targetRect.left - popoverWidth - horizontalOffset)
         : Math.round(window.scrollX + targetRect.left - horizontalOffset),
       center: Math.round(
-        targetRect.left + targetRect.width / 2 - popoverWidth / 2
+        targetRect.left +
+          targetRect.width / 2 -
+          popoverWidth / 2 +
+          horizontalOffset
       ),
     };
     return {
@@ -201,7 +207,7 @@ export const Popover: React.FC<PopoverProps> = ({
         outline={outline ? 'outline' : 'boxShadow'}
         variant={variant}
         widthRestricted={widthRestricted}
-        ref={getHeightRef}
+        ref={getRaisedDivDimsRef}
       >
         {beak && (
           <BeakBox variant={getBeakFromAlignment({ align, position })}>

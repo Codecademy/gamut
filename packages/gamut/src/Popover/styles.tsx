@@ -47,12 +47,12 @@ export const beakYCenter = {
   top: 'calc(50% - 10px)',
 };
 
-export const popoverAboveSml = {
+export const positionAboveSml = {
   top: 'calc(100% - 8px)',
   ...beakTopStylesAfter,
 } as const;
 
-export const popoverBelowSml = {
+export const positionBelowSml = {
   top: '-8px',
   ...beakBottomStylesAfter,
 } as const;
@@ -67,11 +67,11 @@ export const beakLeftSml = {
   bg: tooltipBackgroundColor,
 };
 
-export const beakCenterSml = {
+export const beakXCenterSml = {
   left: 'calc(50% - 8px)',
 };
 
-export const beakYSml = {
+export const beakYCenterSml = {
   top: 'calc(50% - 8px)',
 };
 

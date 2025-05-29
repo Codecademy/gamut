@@ -5,22 +5,22 @@ import {
   beakTopStylesAfter,
 } from '../Tip/shared/styles';
 import {
-  beakCenterSml,
   beakLeft,
   beakLeftSml,
   beakRight,
   beakRightSml,
   beakXCenter,
+  beakXCenterSml,
   beakYCenter,
-  beakYSml,
+  beakYCenterSml,
   patternAbove,
   patternBelow,
   patternLeft,
   patternRight,
   popoverAbove,
-  popoverAboveSml,
   popoverBelow,
-  popoverBelowSml,
+  positionAboveSml,
+  positionBelowSml,
 } from './styles';
 import { PopoverProps } from './types';
 
@@ -53,13 +53,13 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
   const isAbove = alignment.includes('above');
   const isBelow = alignment.includes('below');
   const isRight = alignment.includes('right');
-  const isXCenter = alignment.includes('-center');
-  const isYCenter = alignment.startsWith('center-');
+  const isXCentered = alignment.includes('-center');
+  const isYCentered = alignment.startsWith('center-');
 
   if (alignment.includes('sml')) {
-    if (isYCenter) {
+    if (isYCentered) {
       // center-x-sml
-      styleObject = { ...beakYSml };
+      styleObject = { ...beakYCenterSml };
       if (isRight) {
         // center-right-sml
         styleObject = { ...styleObject, ...beakRightCenterStylesAfter };
@@ -70,17 +70,17 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
     } else {
       if (isAbove) {
         // above-x-sml
-        styleObject = { ...popoverAboveSml };
+        styleObject = { ...positionAboveSml };
       } else {
         // below-x-sml
-        styleObject = { ...popoverBelowSml };
+        styleObject = { ...positionBelowSml };
       }
       if (isRight) {
         // above-right-sml + below-right-sml
         styleObject = { ...styleObject, ...beakRightSml };
-      } else if (isXCenter) {
+      } else if (isXCentered) {
         // above-center-sml + below-center-sml
-        styleObject = { ...styleObject, ...beakCenterSml };
+        styleObject = { ...styleObject, ...beakXCenterSml };
         if (isAbove) {
           // above-center-sml
           styleObject = { ...styleObject, ...beakTopStylesAfter };
@@ -93,7 +93,7 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
         styleObject = { ...styleObject, ...beakLeftSml };
       }
     }
-  } else if (isYCenter) {
+  } else if (isYCentered) {
     // center-x
     styleObject = { ...beakYCenter };
   } else {
@@ -107,7 +107,7 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
     if (isRight) {
       // above-right + below-right
       styleObject = { ...styleObject, ...beakRight };
-    } else if (isXCenter) {
+    } else if (isXCentered) {
       // above-center + below-center
       styleObject = { ...styleObject, ...beakXCenter };
     } else {
