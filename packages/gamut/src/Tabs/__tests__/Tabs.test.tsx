@@ -1,7 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useState } from 'react';
+import { act, useState } from 'react';
 
 import { Tab, TabList, TabPanel, TabPanels, Tabs, TabsProps } from '../index';
 
@@ -33,9 +32,10 @@ const FullTabsControlled = (props: TabsProps) => {
   return (
     <Tabs
       {...props}
-      onSelectionChange={() => {
-        props.onSelectionChange?.(activeTab);
-        setActiveTab(activeTab);
+      selectedKey={activeTab}
+      onSelectionChange={(newTab) => {
+        props.onSelectionChange?.(newTab);
+        setActiveTab(newTab);
       }}
     >
       <TabList>
@@ -80,9 +80,9 @@ describe('Tabs', () => {
     it('renders the second tab tab panel and calls onSelectionChange when second tab is clicked', async () => {
       const { view } = renderView();
 
-      await userEvent.click(view.getByText('Tab 2'));
+      await act(() => userEvent.click(view.getByText('Tab 2')));
       view.getByText('tab 2 content');
-      expect(mockOnSelectionChange).toHaveBeenCalled();
+      expect(mockOnSelectionChange).toHaveBeenCalledWith('tab2');
     });
 
     it('renders the default selected key when passed', () => {
@@ -93,26 +93,19 @@ describe('Tabs', () => {
     });
   });
   describe('Controlled', () => {
-    it('renders the first tab and first tab panel when selectedKey is set to "tab1"', () => {
-      const { view } = renderViewControlled({ selectedKey: 'tab1' });
+    it('renders the first tab and first tab panel', () => {
+      const { view } = renderViewControlled();
 
       view.getByText('Tab 1');
       view.getByText('tab 1 content');
     });
 
-    it('renders the second tab and second tab panel when selectedKey is set to "tab2"', () => {
-      const { view } = renderViewControlled({ selectedKey: 'tab2' });
+    it('renders new tab panel and calls onSelectionChange when a tab is clicked', async () => {
+      const { view } = renderViewControlled();
 
-      view.getByText('Tab 2');
+      await act(() => userEvent.click(view.getByText('Tab 2')));
+      expect(mockOnSelectionChange).toHaveBeenCalledWith('tab2');
       view.getByText('tab 2 content');
-    });
-
-    it('calls onSelectionChange when a tab is clicked', async () => {
-      const { view } = renderViewControlled({ selectedKey: 'tab1' });
-
-      await userEvent.click(view.getByText('Tab 2'));
-      await waitFor(() => view.getByText('tab 2 content'));
-      expect(mockOnSelectionChange).toHaveBeenCalled();
     });
   });
   describe('Disabled', () => {
