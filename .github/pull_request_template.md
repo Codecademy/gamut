@@ -33,11 +33,10 @@ Please fill this in with how to test your PR within Gamut and populate it with t
 
 #### PR Links and Envs
 
-| Repository/App   | PR Link                                                  | PR Env                                                   |
+| Repository   | PR Link                                                  |
 | :----------- | :------------------------------------------------------- | :------------------------------------------------------- |
-| Monolith     | [Monolith PR](http://www.google.fr/ 'Named link title')  | [Monolith Env](http://www.google.fr/ 'Named link title') |
-| Portal App       | [Portal Link](http://www.google.fr/ 'Named link title')  | [Portal Env](http://www.google.fr/ 'Named link title')   |
-| Learning Environment | [LE Link](http://www.google.fr/ 'Named link title') | [LE Env](http://www.google.fr/ 'Named link title')  |
+| Monolith     | [Monolith PR](http://www.google.fr/ 'Named link title')
+| Mono       | [Mono PR](http://www.google.fr/ 'Named link title')
 
 <!--
 Merging your changes
