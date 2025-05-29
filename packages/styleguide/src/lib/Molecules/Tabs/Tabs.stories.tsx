@@ -15,7 +15,6 @@ import {
 } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
-import { set } from 'lodash';
 import { useCallback, useState } from 'react';
 
 const meta: Meta<typeof Tabs> = {
