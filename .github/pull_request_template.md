@@ -21,7 +21,7 @@ Please fill this in with how to test your PR within Gamut and populate it with t
 
 [Don't make me tap the sign.](https://i.imgur.com/sy93D9I.png)
 
-1. Go to <story>
+1. Go to story X
 
 2. Do something
 
@@ -34,7 +34,7 @@ Please fill this in with how to test your PR within Gamut and populate it with t
 #### PR Links and Envs
 
 | Repository   | PR Link                                                  |
-| :----------- | :------------------------------------------------------- | :------------------------------------------------------- |
+| :----------- | :------------------------------------------------------- |
 | Monolith     | [Monolith PR](http://www.google.fr/ 'Named link title')
 | Mono       | [Mono PR](http://www.google.fr/ 'Named link title')
 
