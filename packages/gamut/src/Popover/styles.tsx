@@ -21,12 +21,12 @@ export const transformValues = {
   center: '',
 };
 
-export const popoverAbove = {
+export const positionAbove = {
   top: 'calc(100% - 10px)',
   ...beakTopStylesAfter,
 } as const;
 
-export const popoverBelow = {
+export const positionBelow = {
   top: '-10px',
   ...beakBottomStylesAfter,
 } as const;

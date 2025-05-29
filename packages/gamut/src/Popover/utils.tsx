@@ -17,9 +17,9 @@ import {
   patternBelow,
   patternLeft,
   patternRight,
-  popoverAbove,
-  popoverBelow,
+  positionAbove,
   positionAboveSml,
+  positionBelow,
   positionBelowSml,
 } from './styles';
 import { PopoverProps } from './types';
@@ -99,10 +99,10 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
   } else {
     if (isAbove) {
       // above-x
-      styleObject = { ...popoverAbove };
+      styleObject = { ...positionAbove };
     } else {
       // below-x
-      styleObject = { ...popoverBelow };
+      styleObject = { ...positionBelow };
     }
     if (isRight) {
       // above-right + below-right
