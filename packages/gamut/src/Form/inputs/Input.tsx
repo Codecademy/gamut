@@ -23,8 +23,6 @@ import {
 import { BaseInputProps } from '../types';
 
 export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
-  // Omit<StyleProps<typeof inputSizeStyles>, 'inputSize'> &
-  StyleProps<typeof inputSizeStyles> &
   BaseInputProps & {
     /**
      * Allows Inputs to manage their own activated style state to account for some edge-cases.
@@ -35,14 +33,13 @@ export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
      * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
      */
     placeholder?: string;
-    size?: 'default' | 'small' | 'smallFile';
     type?: string;
     valid?: boolean;
   };
 
 export interface StyledInputProps
   extends StyleProps<typeof conditionalStyles>,
-
+    StyleProps<typeof inputSizeStyles>,
     InputProps {
   icon?: boolean;
 }
@@ -58,10 +55,7 @@ export interface InputWrapperProps extends InputProps {
    * A custom icon svg from gamut-icons.
    */
   icon?: React.ComponentType<GamutIconProps>;
-  /**
-   * Adding this as a safeguard to prevent use of both `size` and `inputSize`
-   */
-  inputSize?: never;
+  size?: Extract<StyleProps<typeof inputSizeStyles>, 'default' | 'sm'>;
 }
 
 /**  We greatly prefer NOT to do this but ReactRecurly has some specific needs around focus-styles + padding that force us to export them seperately. If we ever stop using React-Recurly, this code will be 🔪.
@@ -141,7 +135,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     const AsComponent = As || InputElement;
     const ShownIcon = IconSvg || icon;
 
-    const trueSize = type === 'file' && size === 'small' ? 'smallFile' : size;
+    const trueSize = type === 'file' && size === 'sm' ? 'smFile' : size;
 
     return (
       <Box

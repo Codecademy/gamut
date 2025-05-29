@@ -9,7 +9,7 @@ const meta: Meta<typeof Input> = {
     name: 'example-input',
     placeholder: 'Placeholder',
     type: 'text',
-    inputSize: 'default',
+    size: 'default',
   },
 };
 
@@ -171,7 +171,7 @@ export const TextSmall: Story = {
     name: 'example-text',
     type: 'text',
     required: true,
-    size: 'small',
+    size: 'sm',
   },
 };
 
@@ -182,7 +182,7 @@ export const TextSmallError: Story = {
     name: 'example-text',
     type: 'text',
     required: true,
-    size: 'small',
+    size: 'sm',
     error: true,
   },
 };
@@ -193,7 +193,7 @@ export const NumberSmall: Story = {
     name: 'example-number',
     type: 'number',
     defaultValue: 1,
-    size: 'small',
+    size: 'sm',
     icon: ViewIcon,
   },
 };
@@ -205,7 +205,7 @@ export const FileSmall: Story = {
     type: 'file',
     value: '',
     onChange: () => {},
-    size: 'small',
+    size: 'sm',
     valid: true,
   },
 };
@@ -217,6 +217,6 @@ export const DisabledSmall: Story = {
     placeholder: 'Disabled',
     disabled: true,
     defaultValue: undefined,
-    size: 'small',
+    size: 'sm',
   },
 };

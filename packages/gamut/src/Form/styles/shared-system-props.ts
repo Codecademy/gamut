@@ -129,10 +129,10 @@ export const inputSizeStyles = variant({
     default: {
       ...formFieldPaddingStyles,
     },
-    small: {
+    sm: {
       py: 3 as any,
     },
-    smallFile: {
+    smFile: {
       py: 2 as any,
     },
   },
