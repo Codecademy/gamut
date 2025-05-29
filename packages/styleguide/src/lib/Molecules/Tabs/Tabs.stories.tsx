@@ -32,7 +32,7 @@ const meta: Meta<typeof Tabs> = {
   args: {
     variant: 'standard',
     defaultSelectedKey: '1',
-    orientation: 'vertical',
+    orientation: 'horizontal',
     disabledKeys: [],
     selectedKey: undefined,
     onSelectionChange: () => {},
@@ -80,34 +80,34 @@ export const Default: Story = {
 };
 
 export const Controlled = () => {
-  const [controlledIndex, setControlledIndex] = useState(1);
+  const [activeTab, setActiveTab] = useState(1);
 
-  const maxTabIndex = 3;
-  const setIndex = useCallback(
+  const maxTab = 3;
+  const setTab = useCallback(
     (value: string | number) => {
       const val = Number(value);
-      if (val > maxTabIndex) return setControlledIndex(1);
-      if (val < 1) return setControlledIndex(maxTabIndex);
-      setControlledIndex(val);
+      if (val > maxTab) return setActiveTab(1);
+      if (val < 1) return setActiveTab(maxTab);
+      setActiveTab(val);
     },
-    [setControlledIndex]
+    [setActiveTab]
   );
 
   return (
     <>
       <Background bg="yellow" mb={24} p={12}>
-        <FormGroup label="Tab Index" htmlFor="tab-index">
+        <FormGroup label="Active Tab" htmlFor="active-tab">
           <Input
-            label="Tab Index"
-            value={controlledIndex}
-            onChange={(e) => setIndex(e.target.value)}
+            label="Active Tab"
+            value={activeTab}
+            onChange={(e) => setTab(e.target.value)}
             type="number"
             min={1}
-            htmlFor="tab-index"
+            htmlFor="acrive-tab"
           />
         </FormGroup>
       </Background>
-      <Tabs selectedKey={String(controlledIndex)} onSelectionChange={setIndex}>
+      <Tabs selectedKey={String(activeTab)} onSelectionChange={setActiveTab}>
         <TabList mx={24}>
           <Tab id="1">Tab 1</Tab>
           <Tab id="2">Tab 2</Tab>

@@ -19,7 +19,7 @@ export type TabProps = TabBaseProps &
     id: string;
   };
 
-export const TabBase = styled(ReactAriaTab)<TabProps>(
+const TabBase = styled(ReactAriaTab)<TabProps>(
   tabVariants,
   tabStates,
   tabElementBaseProps
