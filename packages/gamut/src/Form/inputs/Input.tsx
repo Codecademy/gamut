@@ -23,6 +23,7 @@ import {
 import { BaseInputProps } from '../types';
 
 export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
+  // Omit<StyleProps<typeof inputSizeStyles>, 'inputSize'> &
   StyleProps<typeof inputSizeStyles> &
   BaseInputProps & {
     /**
@@ -41,6 +42,7 @@ export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
 
 export interface StyledInputProps
   extends StyleProps<typeof conditionalStyles>,
+
     InputProps {
   icon?: boolean;
 }
@@ -56,6 +58,10 @@ export interface InputWrapperProps extends InputProps {
    * A custom icon svg from gamut-icons.
    */
   icon?: React.ComponentType<GamutIconProps>;
+  /**
+   * Adding this as a safeguard to prevent use of both `size` and `inputSize`
+   */
+  inputSize?: never;
 }
 
 /**  We greatly prefer NOT to do this but ReactRecurly has some specific needs around focus-styles + padding that force us to export them seperately. If we ever stop using React-Recurly, this code will be 🔪.
