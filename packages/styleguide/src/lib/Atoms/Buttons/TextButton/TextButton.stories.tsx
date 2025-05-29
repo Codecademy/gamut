@@ -8,6 +8,7 @@ const meta: Meta<typeof TextButton> = {
     children: 'Click Me',
     disabled: false,
     size: 'normal',
+    variant: 'primary',
   },
   argTypes: {
     href: {
