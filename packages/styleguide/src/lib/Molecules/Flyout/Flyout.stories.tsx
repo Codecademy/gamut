@@ -18,12 +18,12 @@ export const FlyoutExample: Story = {
       <Box height="20rem">
         <Flyout
           {...args}
+          closeLabel="close flyout"
           expanded={expanded}
           title="About Baharroth"
           onClose={() => setExpanded(false)}
-          closeLabel="close flyout"
         >
-          <Box textColor="text" m={16}>
+          <Box m={16} textColor="text">
             Baharroth, &quot;the Cry of the Wind,&quot; is the Winged Phoenix,
             the oldest of the Swooping Hawks and the first Exarch of those
             winged Aspect Warriors. Baharroth is the founder of the Eldar

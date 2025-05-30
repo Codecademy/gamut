@@ -12,7 +12,7 @@ export const MockGamutProvider: React.FC<{ children?: React.ReactNode }> = ({
   children,
 }) => {
   return (
-    <GamutProvider useGlobals={false} useCache={false} theme={theme}>
+    <GamutProvider theme={theme} useCache={false} useGlobals={false}>
       {children}
     </GamutProvider>
   );

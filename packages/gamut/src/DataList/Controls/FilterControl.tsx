@@ -60,21 +60,21 @@ export const FilterControl: React.FC<FilterProps> = ({
   const filters = useListState().query?.filter?.[columnKey] ?? [];
 
   return (
-    <FlexBox position="relative" column>
+    <FlexBox column position="relative">
       {menuOpen && (
         <PopoverContainer
-          isOpen
-          targetRef={target as any}
-          offset={0}
           alignment={justify === 'left' ? 'bottom-right' : 'bottom-left'}
+          isOpen
+          offset={0}
+          targetRef={target as any}
           onRequestClose={() => setMenuOpen(false)}
         >
           <Menu
-            spacing="condensed"
             maxHeight={300}
             overflowY="auto"
-            width="max-content"
+            spacing="condensed"
             variant="popover"
+            width="max-content"
           >
             {[SELECT_ALL, ...options].map((opt) => {
               const { text, value } = formatOption(opt);
@@ -89,28 +89,28 @@ export const FilterControl: React.FC<FilterProps> = ({
               return (
                 <MenuItem key={prefixId(`filter-${columnKey}-${value}`)}>
                   <Checkbox
+                    aria-label={isSelectAll ? `${text} ${dimension}` : text}
+                    checked={optionSelected}
                     htmlFor={optionId}
+                    label={
+                      <Text
+                        alignSelf="center"
+                        display="inline-block"
+                        fontFamily="base"
+                        variant="p-small"
+                      >
+                        {text}
+                        {isSelectAll && <Text screenreader> {dimension}</Text>}
+                      </Text>
+                    }
                     name={optionId}
+                    spacing="tight"
                     onChange={() => {
                       onFilter?.({
                         dimension,
                         value: getNextFilters(value, filters),
                       });
                     }}
-                    label={
-                      <Text
-                        variant="p-small"
-                        fontFamily="base"
-                        alignSelf="center"
-                        display="inline-block"
-                      >
-                        {text}
-                        {isSelectAll && <Text screenreader> {dimension}</Text>}
-                      </Text>
-                    }
-                    aria-label={isSelectAll ? `${text} ${dimension}` : text}
-                    spacing="tight"
-                    checked={optionSelected}
                   />
                 </MenuItem>
               );
@@ -119,19 +119,19 @@ export const FilterControl: React.FC<FilterProps> = ({
         </PopoverContainer>
       )}
       <FilterToggle
-        ref={target}
-        open={menuOpen}
+        aria-expanded={menuOpen}
+        aria-haspopup="true"
+        aria-label={`filter by ${columnKey}`}
         display="inline-flex"
+        open={menuOpen}
+        ref={target}
         variant="interface"
         onClick={() => setMenuOpen(true)}
-        aria-haspopup="true"
-        aria-expanded={menuOpen}
-        aria-label={`filter by ${columnKey}`}
       >
         <FlexBox center dimensions={16} mb={4} mr={4}>
           <FilterIcon
-            size={14}
             color={filters.length > 0 ? 'primary' : 'text'}
+            size={14}
           />
         </FlexBox>
       </FilterToggle>

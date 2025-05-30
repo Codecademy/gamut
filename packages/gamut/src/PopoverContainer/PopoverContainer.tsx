@@ -88,11 +88,11 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
       onEscapeKey={onRequestClose}
     >
       <PopoverContent
+        data-testid="popover-content-container"
+        position="absolute"
         ref={popoverRef}
         tabIndex={-1}
         zIndex={inline ? 5 : 'initial'}
-        position="absolute"
-        data-testid="popover-content-container"
         {...popoverPosition}
         {...rest}
       />

@@ -8,7 +8,7 @@ export const SeekBackwardsButton = () => {
     <Tooltip.Root>
       <Tooltip.Trigger asChild>
         <SeekButton className="vds-button" seconds={-10}>
-          <Timer10Icon width={20} height={20} />
+          <Timer10Icon height={20} width={20} />
         </SeekButton>
       </Tooltip.Trigger>
       <Tooltip.Content className="vds-tooltip-content" placement="top">

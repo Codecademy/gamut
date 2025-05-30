@@ -75,7 +75,7 @@ export const Fixed: Story = {
         <MenuItem active href="#">
           Active Item
         </MenuItem>
-        <MenuItem icon={MultipleUsersIcon} href="#">
+        <MenuItem href="#" icon={MultipleUsersIcon}>
           Icon Item
         </MenuItem>
         <MenuItem href="#">Menu Item</MenuItem>
@@ -153,19 +153,19 @@ export const IconMenu: Story = {
     children: (
       <>
         <MenuItem icon={AiChatSparkIcon} label="Chat" onClick={() => {}} />
-        <MenuItem icon={BashShellIcon} href="#whatsup" label="Prompt" />
-        <MenuItem icon={PeopleIcon} label="People" href="#whatsup-people" />
-        <MenuItem active icon={FileIcon} href="#whatsup-1" label="Learn" />
+        <MenuItem href="#whatsup" icon={BashShellIcon} label="Prompt" />
+        <MenuItem href="#whatsup-people" icon={PeopleIcon} label="People" />
+        <MenuItem active href="#whatsup-1" icon={FileIcon} label="Learn" />
         <MenuItem
           aria-label="I am bold and different"
-          icon={RatingStarCircleIcon}
           href="#whats-2"
+          icon={RatingStarCircleIcon}
           label={{
             info: <Text color="hyper">I am bold and different</Text>,
             narrow: true,
           }}
         />
-        <MenuItem icon={InformationalIcon} href="#who-is-3" label="Content" />
+        <MenuItem href="#who-is-3" icon={InformationalIcon} label="Content" />
       </>
     ),
   },
@@ -194,18 +194,18 @@ export const FloatingMenuExample: React.FC = () => {
   };
 
   return (
-    <FlexBox minHeight="30px" position="relative" m={48}>
+    <FlexBox m={48} minHeight="30px" position="relative">
       <FlexBox flex={1}>
-        <Background bg="black" height="100%" pl={48} borderRadius="lg">
+        <Background bg="black" borderRadius="lg" height="100%" pl={48}>
           <FlexBox
-            bg="navy"
-            justifyContent="right"
             alignItems="center"
+            bg="navy"
             dimensions="200px"
             height="100%"
+            justifyContent="right"
             ref={target}
           >
-            <Menu variant="fixed" role="menu">
+            <Menu role="menu" variant="fixed">
               <MenuItem
                 active={activeIndex === 0}
                 onClick={() => clickHandler(-68, 0)}
@@ -220,8 +220,8 @@ export const FloatingMenuExample: React.FC = () => {
               </MenuItem>
               <MenuItem
                 active={activeIndex === 2}
-                onClick={() => clickHandler(-164, 2)}
                 icon={MultipleUsersIcon}
+                onClick={() => clickHandler(-164, 2)}
               >
                 Icon Item
               </MenuItem>
@@ -231,15 +231,15 @@ export const FloatingMenuExample: React.FC = () => {
             </Menu>
           </FlexBox>
           <PopoverContainer
-            isOpen={isOpen}
-            inline
             alignment={alignment}
+            inline
+            isOpen={isOpen}
+            targetRef={target}
             x={-21}
             y={currentTarget}
-            targetRef={target}
           >
             <Background bg="white" borderRadius="lg">
-              <Menu variant="popover" role="menu">
+              <Menu role="menu" variant="popover">
                 {activeIndex % 2 === 0 ? (
                   <>
                     <MenuItem>i am a side menu!</MenuItem>

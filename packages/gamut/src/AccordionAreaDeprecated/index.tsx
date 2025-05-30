@@ -52,10 +52,10 @@ export const AccordionAreaDeprecated: React.FC<
     <div className={className}>
       {top}
       <StyledAccordionBody
-        initial={expanded ? 'expanded' : 'folded'}
         animate={expanded ? 'expanded' : 'folded'}
-        variants={variants}
+        initial={expanded ? 'expanded' : 'folded'}
         transition={{ duration: 0.2, ease: 'easeInOut' }}
+        variants={variants}
       >
         {(expanded || delayExpanded) && children}
       </StyledAccordionBody>

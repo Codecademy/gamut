@@ -49,14 +49,14 @@ export const FocusTrap: React.FC<FocusTrapProps> = ({
 }) => {
   return (
     <FocusOn
+      className={className}
+      data-testid="focus-trap"
       enabled={active}
+      noIsolation={allowPageInteraction}
+      scrollLock={!allowPageInteraction}
+      style={focusOnStyles}
       onClickOutside={onClickOutside}
       onEscapeKey={onEscapeKey}
-      style={focusOnStyles}
-      className={className}
-      scrollLock={!allowPageInteraction}
-      noIsolation={allowPageInteraction}
-      data-testid="focus-trap"
       {...focusOnProps}
     >
       {children}
