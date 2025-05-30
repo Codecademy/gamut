@@ -73,23 +73,23 @@ export const ModalDeprecated: React.FC<ModalDeprecatedProps> = ({
       isOpen={isOpen}
       {...overlayProps}
       className={cx(styles.modal, overlayProps?.className)}
-      onRequestClose={onRequestClose}
       data-testid="modal"
+      onRequestClose={onRequestClose}
     >
       <CardShell
-        className={cx(styles.modalBody, className)}
         aria-hidden="false"
-        aria-modal="true"
-        role="dialog"
         aria-label={ariaLabel}
+        aria-modal="true"
+        className={cx(styles.modalBody, className)}
+        role="dialog"
       >
         {!hideDefaultCloseButton && (
-          <FlexBox justifyContent="flex-end" mt={-8 as any} mr={-8 as any}>
+          <FlexBox justifyContent="flex-end" mr={-8 as any} mt={-8 as any}>
             <IconButton
-              size="small"
               icon={MiniDeleteIcon}
-              onClick={onRequestClose}
+              size="small"
               tip="Close modal"
+              onClick={onRequestClose}
             />
           </FlexBox>
         )}

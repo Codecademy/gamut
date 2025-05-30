@@ -105,8 +105,8 @@ export const TableRow: DataRow = ({
           return (
             <ListCol {...colProps} key={newKey}>
               <Shimmer
-                minHeight={24}
                 height="calc(100% - 1rem)"
+                minHeight={24}
                 width="calc(100% - 0.5rem)"
               />
             </ListCol>
@@ -119,9 +119,9 @@ export const TableRow: DataRow = ({
               render(row)
             ) : typeof row[key] === 'string' || typeof row[key] === 'number' ? (
               <Text
+                textAlign={justify ?? 'left'}
                 truncate="ellipsis"
                 truncateLines={1}
-                textAlign={justify ?? 'left'}
               >
                 {row[key] as string}
               </Text>
@@ -136,12 +136,12 @@ export const TableRow: DataRow = ({
         );
       })}
       {expandable && (
-        <ListCol {...listColProps} size="content" order={[1000, 'initial']}>
+        <ListCol {...listColProps} order={[1000, 'initial']} size="content">
           <ExpandControl
-            id={id}
-            expanded={expanded}
-            onExpand={onExpand}
             disabled={loading}
+            expanded={expanded}
+            id={id}
+            onExpand={onExpand}
           />
         </ListCol>
       )}

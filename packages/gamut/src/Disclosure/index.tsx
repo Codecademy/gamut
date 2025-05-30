@@ -35,8 +35,8 @@ export const Disclosure: React.FC<DisclosureProps> = ({
       as={isListItem ? 'li' : undefined}
       column
       hasBorder={hasBorder}
-      onClick={() => onClick?.()}
       variant={variant}
+      onClick={() => onClick?.()}
     >
       <DisclosureButton
         disabled={disabled}

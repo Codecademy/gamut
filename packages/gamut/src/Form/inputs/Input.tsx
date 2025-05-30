@@ -139,34 +139,34 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
 
     return (
       <Box
+        color={color}
         display={type === 'hidden' ? 'none' : undefined}
         position="relative"
-        color={color}
       >
         <AsComponent
           {...rest}
           className={className}
           icon={error || valid || !!IconSvg}
           id={id || rest.htmlFor}
-          onChange={changeHandler}
+          inputSize={trueSize}
           ref={ref}
           type={type}
           variant={conditionalStyleState(
             Boolean(error),
             rest.activated !== undefined ? rest.activated : activatedStyle
           )}
-          inputSize={trueSize}
+          onChange={changeHandler}
         />
         {!!ShownIcon && (
           <FlexBox
-            pr={16}
-            position="absolute"
             alignItems="center"
+            bottom="0"
+            position="absolute"
+            pr={IconSvg ? 12 : 16}
             right="0"
             top="0"
-            bottom="0"
           >
-            <ShownIcon size={IconSvg ? 24 : 16} aria-hidden />
+            <ShownIcon aria-hidden size={IconSvg ? 24 : 16} />
           </FlexBox>
         )}
       </Box>
