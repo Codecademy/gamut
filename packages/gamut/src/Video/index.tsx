@@ -130,18 +130,19 @@ export const Video: React.FC<VideoProps> = (props) => {
   ) {
     return (
       <Box
-        position="relative"
-        width="100%"
-        pt={'56.25%' as any}
-        borderRadius="md"
-        overflow="hidden"
         bg={loading ? 'black' : undefined}
+        borderRadius="md"
         className={className}
+        overflow="hidden"
+        position="relative"
+        pt={'56.25%' as any}
+        width="100%"
       >
         {isMounted ? (
           <ReactVideoPlayer
             config={config}
             controls={controls === undefined ? true : controls}
+            height="100%"
             light={placeholderImage}
             loop={loop}
             muted={muted}
@@ -149,13 +150,12 @@ export const Video: React.FC<VideoProps> = (props) => {
             playing={autoplay}
             title={videoTitle}
             url={videoUrl as BaseReactPlayerProps['url']}
-            height="100%"
             width="100%"
+            onPlay={onPlay}
             onReady={() => {
               onReady?.();
               setLoading(false);
             }}
-            onPlay={onPlay}
           />
         ) : null}
       </Box>

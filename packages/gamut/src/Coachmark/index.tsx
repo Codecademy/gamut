@@ -51,8 +51,8 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
   const PopoverContainer = () => (
     <Popover
       {...popoverProps}
-      targetRef={activeElRef}
       isOpen={shouldShow}
+      targetRef={activeElRef}
       {...skipFocusTrapProps}
       animation="fade"
     >
@@ -62,7 +62,7 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
 
   return (
     <>
-      <div ref={activeElRef} className={activeElClassName}>
+      <div className={activeElClassName} ref={activeElRef}>
         {children}
       </div>
       {shouldShow && (
