@@ -22,13 +22,9 @@ Please fill this in with how to test your PR within Gamut and populate it with t
 [Don't make me tap the sign.](https://i.imgur.com/sy93D9I.png)
 
 1. Go to story X
-
 2. Do something
-
 3. Do that something in dark mode
-
 4. Check it with VO
-
 5. Finish and do a celebratory dance
 
 #### PR Links and Envs
