@@ -9,7 +9,7 @@
     "@codecademy/gamut-patterns": "0.10.10",
     "@codecademy/gamut-styles": "17.6.3",
     "@codecademy/variance": "0.22.1",
-    "@reach/tabs": "^0.18.0",
+    "react-aria-components": "1.8.0",
     "@types/marked": "^4.0.8",
     "@vidstack/react": "^1.12.12",
     "classnames": "^2.2.5",
