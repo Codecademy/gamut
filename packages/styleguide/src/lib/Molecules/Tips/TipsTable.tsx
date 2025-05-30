@@ -50,7 +50,7 @@ const components = {
         PreviewTip
       </PreviewTip>
     ),
-    status: 'New',
+    status: 'None',
     useCase: 'Preview linked content without leaving page',
     contents: 'Page snippets, textual insights, summaries, etc.',
     triggers: 'On hover and focus',
