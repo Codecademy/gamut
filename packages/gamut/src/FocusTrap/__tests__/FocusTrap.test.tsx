@@ -7,14 +7,14 @@ import { FocusTrap, FocusTrapProps } from '..';
 const FocusTrapContainer: React.FC<Partial<FocusTrapProps>> = (props) => {
   return (
     <div data-testid="focus-trap-outside">
-      <button aria-label="Button" type="button" data-testid="button-outside" />
+      <button aria-label="Button" data-testid="button-outside" type="button" />
       <FocusTrap {...props}>
         <div data-testid="focus-trap-content">
           Howdy!
           <button
             aria-label="Button"
-            type="button"
             data-testid="button-inside"
+            type="button"
           />
         </div>
       </FocusTrap>

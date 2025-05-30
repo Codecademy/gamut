@@ -23,13 +23,13 @@ export const CoachmarkExample = (args: CoachmarkProps) => {
   );
 
   const renderPopover = () => (
-    <FlexBox flexDirection="column" p={16} alignItems="flex-start">
+    <FlexBox alignItems="flex-start" flexDirection="column" p={16}>
       <Text mb={8}>You should click the button.</Text>
       <FillButton
+        size="small"
         onClick={() => {
           setShouldShow(false);
         }}
-        size="small"
       >
         Got it
       </FillButton>
@@ -70,12 +70,12 @@ export const ShouldShow: Story = {
   render: (props) => (
     <CoachmarkExample
       {...props}
-      shouldShow={false}
       popoverProps={{
         beak: 'left',
         outline: true,
         pattern: CheckerDense,
       }}
+      shouldShow={false}
     />
   ),
 };
@@ -85,12 +85,12 @@ export const Delay: Story = {
     <CoachmarkExample
       {...props}
       delay={3000}
-      shouldShow={false}
       popoverProps={{
         beak: 'left',
         outline: true,
         pattern: CheckerDense,
       }}
+      shouldShow={false}
     />
   ),
 };

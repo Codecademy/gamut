@@ -175,23 +175,23 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     <ProgressBarWrapper
       aria-labelledby={id}
       aria-live="polite"
-      role="figure"
+      backgroundOverride={Pattern ? 'pattern' : 'none'}
       flat={flat}
+      role="figure"
       size={size}
       variant={variant}
-      backgroundOverride={Pattern ? 'pattern' : 'none'}
     >
       <Text as="label" id={id} screenreader>{`Progress: ${percent}%`}</Text>
-      {Pattern && <Pattern width="100%" position="absolute" zIndex={0} />}
+      {Pattern && <Pattern position="absolute" width="100%" zIndex={0} />}
       <Bar
-        variant={variant}
+        borderRadiusBottomRight={flat ? 'none' : 'inherit'}
+        borderRadiusTopRight={flat ? 'none' : 'inherit'}
         boxShadow={
           showBarBorder ? `0.5px 0 0 0.5px ${theme.colors.navy}` : 'none'
         }
-        borderRadiusTopRight={flat ? 'none' : 'inherit'}
-        borderRadiusBottomRight={flat ? 'none' : 'inherit'}
-        width={`${Math.max(minimumPercent, percent)}%`}
         data-testid="progress-bar-bar"
+        variant={variant}
+        width={`${Math.max(minimumPercent, percent)}%`}
       >
         {['large', 'xl'].includes(size) && (
           <DisplayedPercent aria-hidden>{percent}%</DisplayedPercent>

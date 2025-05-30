@@ -44,7 +44,7 @@ const PopoverExample = ({ p = 16, ...rest }: PopoverExampleProps) => {
           targetRef={activeElRef}
           onRequestClose={() => setOpen(false)}
         >
-          <FlexBox flexDirection="column" p={p} alignItems="flex-start">
+          <FlexBox alignItems="flex-start" flexDirection="column" p={p}>
             <Box mb={8}>Hooray!</Box>
             <FillButton size="small" onClick={() => setOpen(false)}>
               Close Popover
@@ -61,7 +61,7 @@ export const Default: Story = {
 };
 
 export const Beak: Story = {
-  render: (args) => <PopoverExample {...args} position="below" beak="left" />,
+  render: (args) => <PopoverExample {...args} beak="left" position="below" />,
 };
 
 export const BeakCentered: Story = {
@@ -72,9 +72,9 @@ export const Outline: Story = {
   render: (args) => (
     <PopoverExample
       {...args}
-      outline
       align="right"
       beak="center"
+      outline
       position="center"
     />
   ),
@@ -84,9 +84,9 @@ export const Above: Story = {
   render: (args) => (
     <PopoverExample
       {...args}
-      position="above"
-      beak="center"
       align="center"
+      beak="center"
+      position="above"
       variant="secondary"
     />
   ),
@@ -104,7 +104,7 @@ export const Below: Story = {
 };
 export const CenterLeft: Story = {
   render: (args) => (
-    <FlexBox center width="100%" p={48}>
+    <FlexBox center p={48} width="100%">
       <PopoverExample
         {...args}
         align="left"
@@ -167,7 +167,7 @@ const PopoverWithoutFocus = (args: PopoverProps) => {
           targetRef={activeElRef}
           onRequestClose={() => setOpen(false)}
         >
-          <FlexBox flexDirection="column" p={16} alignItems="flex-start">
+          <FlexBox alignItems="flex-start" flexDirection="column" p={16}>
             Nothing clickable here but the container has fallback focus
           </FlexBox>
         </Popover>
@@ -186,6 +186,6 @@ export const Animation: Story = {
 
 export const Variant: Story = {
   render: (args) => (
-    <PopoverExample variant="secondary" beak="center" {...args} />
+    <PopoverExample beak="left" variant="secondary" {...args} />
   ),
 };

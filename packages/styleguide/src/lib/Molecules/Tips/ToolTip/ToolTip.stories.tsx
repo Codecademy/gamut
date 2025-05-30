@@ -24,7 +24,7 @@ type Story = StoryObj<typeof ToolTip>;
 
 export const AriaDisabled: Story = {
   render: () => (
-    <FlexBox center py={64} m={24}>
+    <FlexBox center m={24} py={64}>
       <ToolTip id="fill-id" info="Tooltip">
         <FillButton aria-describedby="fill-id" aria-disabled icon={SparkleIcon}>
           Click me
@@ -47,8 +47,8 @@ export const Alignments: Story = {
       {alignments.map((alignment) => {
         return (
           <IconButton
-            tip={alignment}
             icon={SparkleIcon}
+            tip={alignment}
             tipProps={{ alignment }}
           />
         );
@@ -61,15 +61,15 @@ export const WithIconButton: Story = {
   render: () => (
     <FlexBox justifyContent="space-around" m={24} width="95%">
       <IconButton
-        tip="Wonder at the majesty of the universe"
         icon={SparkleIcon}
+        tip="Wonder at the majesty of the universe"
         tipProps={{ alignment: 'left-center' }}
       />
       <IconButton
-        tip="Next Prompt"
         icon={ArrowRightIcon}
-        variant="secondary"
+        tip="Next Prompt"
         tipProps={{ alignment: 'bottom-center' }}
+        variant="secondary"
       />
     </FlexBox>
   ),
@@ -77,10 +77,10 @@ export const WithIconButton: Story = {
 
 export const Floating: Story = {
   render: () => (
-    <FlexBox center m={24} justifyContent="space-around">
+    <FlexBox center justifyContent="space-around" m={24}>
       <IconButton
-        tip="Wonder at the majesty of the universe"
         icon={SmileyStarEyesIcon}
+        tip="Wonder at the majesty of the universe"
         tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
       />
       <ToolTip
@@ -93,13 +93,13 @@ export const Floating: Story = {
         </FillButton>
       </ToolTip>
       <IconButton
-        tip="Wonder at the majesty of the universe"
         icon={SmileyStarEyesIcon}
+        tip="Wonder at the majesty of the universe"
         tipProps={{ alignment: 'right-center', placement: 'floating' }}
       />{' '}
       <IconButton
-        tip="Wonder at the majesty of the universe"
         icon={SmileyStarEyesIcon}
+        tip="Wonder at the majesty of the universe"
         tipProps={{ alignment: 'left-center', placement: 'floating' }}
       />
     </FlexBox>
@@ -136,7 +136,7 @@ export const Disabled: Story = {
 
 export const Default: Story = {
   render: (args) => (
-    <FlexBox center py={64} m={24}>
+    <FlexBox center m={24} py={64}>
       <ToolTip {...args}>
         <FillButton aria-describedby="fill-id" icon={SparkleIcon}>
           Click me
