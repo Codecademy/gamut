@@ -1,4 +1,3 @@
-import { CheckerDense } from '@codecademy/gamut-patterns';
 import { useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
 import { useMeasure } from 'react-use';
@@ -10,8 +9,12 @@ import {
   FloatingTipTextWrapper,
   TargetContainer,
 } from './elements';
+import {
+  getAlignmentStyles,
+  getPopoverAlignmentAndPattern,
+} from './styles/createVariantsUtils';
 import { TipWrapperProps } from './types';
-import { getAlignmentStyles, getPopoverAlignment, runWithDelay } from './utils';
+import { runWithDelay } from './utils';
 
 type FocusOrMouseEvent =
   | React.FocusEvent<HTMLDivElement, Element>
@@ -38,7 +41,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
-  const popoverAlignments = getPopoverAlignment({ alignment, type });
+  const commonPopoverProps = getPopoverAlignmentAndPattern({ alignment, type });
   const dims = getAlignmentStyles({ avatar, alignment, type });
   const [childRef, { width: tipWidth }] = useMeasure<HTMLDivElement>();
 
@@ -129,13 +132,12 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         {children}
       </TargetContainer>
       <FloatingTipBody
-        {...popoverAlignments}
+        {...commonPopoverProps}
         animation="fade"
         dims={dims}
         horizontalOffset={offset}
         isOpen={isHoverType ? isOpen : !isTipHidden}
         outline
-        pattern={isPreviewType ? CheckerDense : undefined}
         skipFocusTrap
         targetRef={ref}
         variant="secondary"

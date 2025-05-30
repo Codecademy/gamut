@@ -8,8 +8,8 @@ import {
   ToolTipWrapper,
 } from './elements';
 import { narrowWidth } from './styles';
+import { getAlignmentStyles } from './styles/createVariantsUtils';
 import { TipWrapperProps } from './types';
-import { getAlignmentStyles } from './utils';
 
 export const InlineTip: React.FC<TipWrapperProps> = ({
   alignment,

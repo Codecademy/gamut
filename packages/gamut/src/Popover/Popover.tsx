@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import * as React from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
 import { FocusTrap } from '../FocusTrap';
@@ -11,8 +10,8 @@ import {
   PopoverPortal,
   RaisedDiv,
 } from './elements';
+import { getBeakVariant } from './styles/beak';
 import { PopoverProps } from './types';
-import { getBeakFromAlignment, getBeakVariant } from './utils';
 
 const findScrollingParent = ({
   parentElement,
@@ -204,7 +203,7 @@ export const Popover: React.FC<PopoverProps> = ({
         widthRestricted={widthRestricted}
       >
         {beak && (
-          <BeakBox variant={getBeakFromAlignment({ align, position })}>
+          <BeakBox variant={position}>
             <Beak
               beak={getBeakVariant({ align, position, beak, variant })}
               data-testid="popover-beak"

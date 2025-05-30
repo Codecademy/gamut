@@ -1,10 +1,8 @@
 import { fontSmoothPixel, theme, variant } from '@codecademy/gamut-styles';
 
+import { createVariantsFromAlignments } from './styles/composeVariantsUtils';
+import { createToolTipVariantFromAlignment } from './styles/createVariantsUtils';
 import { tipAlignmentArray } from './types';
-import {
-  createToolTipVariantFromAlignment,
-  createVariantsFromAlignments,
-} from './utils';
 
 export const tooltipBackgroundColor = `background-contrast`;
 export const tooltipArrowHeight = `1rem`;
@@ -251,3 +249,21 @@ export const toolTipBodyCss = {
   fontSize: 14,
   lineHeight: 'base',
 } as const;
+
+export const beakRightCenterStylesAfterSml = {
+  ...beakRightCenterStylesAfter,
+  left: -8,
+};
+export const beakRightCenterStylesAfterLrg = {
+  ...beakRightCenterStylesAfter,
+  left: -10,
+};
+
+export const beakLeftCenterStylesAfterSml = {
+  ...beakLeftCenterStylesAfter,
+  right: -7,
+};
+export const beakLeftCenterStylesAfterLrg = {
+  ...beakLeftCenterStylesAfter,
+  right: -10,
+};

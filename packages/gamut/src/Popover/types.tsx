@@ -40,6 +40,10 @@ export type PopoverYPositionType = {
    * Which side to position the beak. If not provided, beak will not be rendered. Position `center` Popovers can only be used with `center` beaks.
    */
   beak?: 'left' | 'right' | 'center';
+  /**
+   * Pattern component to use as a background.
+   */
+  pattern?: React.ComponentType<PatternProps>;
 };
 
 export type PopoverXPositionType = {
@@ -51,6 +55,10 @@ export type PopoverXPositionType = {
    * Which side to position the beak. If not provided, beak will not be rendered.Position `center` Popovers can only be used with `center` beaks.
    */
   beak?: 'center';
+  /**
+   * Pattern component to use as a background.
+   */
+  pattern?: never;
 };
 
 export type PopoverBaseProps =
@@ -86,10 +94,6 @@ export type PopoverProps = PopoverBaseProps &
      * Whether the popover is rendered.
      */
     isOpen: boolean;
-    /**
-     * Pattern component to use as a background.
-     */
-    pattern?: React.ComponentType<PatternProps>;
 
     /**
      * The target element around which the popover will be positioned.

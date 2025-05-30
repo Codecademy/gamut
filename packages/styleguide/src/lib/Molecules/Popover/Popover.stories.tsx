@@ -29,12 +29,11 @@ type PopoverExampleProps = PopoverProps & Pick<FlexBoxProps, 'p'>;
 
 const PopoverExample = ({ p = 16, ...rest }: PopoverExampleProps) => {
   const [open, setOpen] = useState(false);
-
   const activeElRef = useRef<HTMLDivElement>(null);
   const toggleOpen = () => setOpen(!open);
   return (
     <>
-      <Box ref={activeElRef} width="fit-content">
+      <Box ref={activeElRef}>
         <FillButton onClick={toggleOpen}>Open Popover</FillButton>
       </Box>
       <FlexBox>
@@ -61,7 +60,7 @@ export const Default: Story = {
 };
 
 export const Beak: Story = {
-  render: (args) => <PopoverExample {...args} beak="left" position="below" />,
+  render: (args) => <PopoverExample {...args} beak="left" />,
 };
 
 export const BeakCentered: Story = {
@@ -69,65 +68,15 @@ export const BeakCentered: Story = {
 };
 
 export const Outline: Story = {
-  render: (args) => (
-    <PopoverExample
-      {...args}
-      align="right"
-      beak="center"
-      outline
-      position="center"
-    />
-  ),
+  render: (args) => <PopoverExample {...args} outline />,
 };
 
 export const Above: Story = {
-  render: (args) => (
-    <PopoverExample
-      {...args}
-      align="center"
-      beak="center"
-      position="above"
-      variant="secondary"
-    />
-  ),
+  render: (args) => <PopoverExample {...args} position="above" />,
 };
 
 export const Below: Story = {
-  render: (args) => (
-    <PopoverExample
-      {...args}
-      align="center"
-      beak="center"
-      variant="secondary"
-    />
-  ),
-};
-export const CenterLeft: Story = {
-  render: (args) => (
-    <FlexBox center p={48} width="100%">
-      <PopoverExample
-        {...args}
-        align="left"
-        beak="center"
-        horizontalOffset={20}
-        position="center"
-        variant="secondary"
-      />
-    </FlexBox>
-  ),
-};
-
-export const CenterRight: Story = {
-  render: (args) => (
-    <PopoverExample
-      {...args}
-      align="right"
-      beak="center"
-      horizontalOffset={30}
-      position="center"
-      variant="secondary"
-    />
-  ),
+  render: (args) => <PopoverExample {...args} />,
 };
 
 export const PopoverCheckerDense: Story = {
