@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>color-palette</title><circle class="a" cx="12" cy="8.25" r="6.75"/><circle class="a" cx="7.5" cy="15.75" r="6.75"/><circle class="a" cx="16.5" cy="15.75" r="6.75"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <circle cx="12" cy="8.25" r="6.75" class="a"/>
+    <circle cx="7.5" cy="15.75" r="6.75" class="a"/>
+    <circle cx="16.5" cy="15.75" r="6.75" class="a"/>
+</svg>

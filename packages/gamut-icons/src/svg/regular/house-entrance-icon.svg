@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>house-entrance</title><path class="a" d="M22.868,8.947,12,.747,1.122,8.947a1.177,1.177,0,0,0-.377.8V22.269a.981.981,0,0,0,.978.978H8.245V18a3.75,3.75,0,0,1,7.5,0v5.25h6.521a.982.982,0,0,0,.979-.978V9.747A1.181,1.181,0,0,0,22.868,8.947Z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M22.868,8.947,12,.747,1.122,8.947a1.177,1.177,0,0,0-.377.8V22.269a.981.981,0,0,0,.978.978H8.245V18a3.75,3.75,0,0,1,7.5,0v5.25h6.521a.982.982,0,0,0,.979-.978V9.747A1.181,1.181,0,0,0,22.868,8.947Z" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px"/>
+</svg>

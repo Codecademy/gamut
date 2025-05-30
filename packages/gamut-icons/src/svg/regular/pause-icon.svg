@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>controls-pause</title><rect class="a" x="5.25" y="3.75" width="4.5" height="16.5" rx="1.5" ry="1.5"/><rect class="a" x="14.25" y="3.75" width="4.5" height="16.5" rx="1.5" ry="1.5"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <rect width="4.5" height="16.5" x="5.25" y="3.75" class="a" rx="1.5" ry="1.5"/>
+    <rect width="4.5" height="16.5" x="14.25" y="3.75" class="a" rx="1.5" ry="1.5"/>
+</svg>

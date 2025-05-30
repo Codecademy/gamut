@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>responsive-design-1</title><line class="a" x1="15.75" y1="14.25" x2="16.5" y2="18.75"/><line class="a" x1="15" y1="18.75" x2="18.75" y2="18.75"/><line class="a" x1="15.75" y1="11.25" x2="23.25" y2="11.25"/><path class="a" d="M15.75,14.25h6a1.5,1.5,0,0,0,1.5-1.5V2.25a1.5,1.5,0,0,0-1.5-1.5H5.25a1.5,1.5,0,0,0-1.5,1.5"/><rect class="a" x="0.75" y="11.25" width="7.5" height="12" rx="1.5" ry="1.5"/><line class="a" x1="0.75" y1="20.25" x2="8.25" y2="20.25"/><path class="a" d="M3.75,8.25V6.75a1.5,1.5,0,0,1,1.5-1.5h6a1.5,1.5,0,0,1,1.5,1.5v9a1.5,1.5,0,0,1-1.5,1.5"/><line class="a" x1="11.25" y1="14.25" x2="12.75" y2="14.25"/><line class="a" x1="3.75" y1="8.25" x2="12.75" y2="8.25"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M15.75 14.25 16.5 18.75M15 18.75 18.75 18.75M15.75 11.25 23.25 11.25M15.75 14.25h6a1.5 1.5 0 0 0 1.5-1.5V2.25a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5" class="a"/>
+    <rect width="7.5" height="12" x=".75" y="11.25" class="a" rx="1.5" ry="1.5"/>
+    <path d="M.75 20.25 8.25 20.25M3.75 8.25V6.75a1.5 1.5 0 0 1 1.5-1.5h6a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5M11.25 14.25 12.75 14.25M3.75 8.25 12.75 8.25" class="a"/>
+</svg>

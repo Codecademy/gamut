@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>notes-book</title><line class="a" x1="0.75" y1="4.5" x2="3.75" y2="4.5"/><line class="a" x1="0.75" y1="12" x2="3.75" y2="12"/><line class="a" x1="0.75" y1="18" x2="3.75" y2="18"/><rect class="a" x="2.25" y="0.75" width="17.25" height="22.5" rx="1.5" ry="1.5"/><rect class="a" x="7.501" y="5.25" width="8.249" height="5.25" rx="1.5" ry="1.5"/><path class="a" d="M19.5,2.25v13.5h2.25a1.5,1.5,0,0,0,1.5-1.5V3.75a1.5,1.5,0,0,0-1.5-1.5Z"/><line class="a" x1="19.5" y1="6.75" x2="23.25" y2="6.75"/><line class="a" x1="19.5" y1="11.25" x2="23.25" y2="11.25"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M.75 4.5 3.75 4.5M.75 12 3.75 12M.75 18 3.75 18" class="a"/>
+    <rect width="17.25" height="22.5" x="2.25" y=".75" class="a" rx="1.5" ry="1.5"/>
+    <rect width="8.249" height="5.25" x="7.501" y="5.25" class="a" rx="1.5" ry="1.5"/>
+    <path d="M19.5 2.25v13.5h2.25a1.5 1.5 0 0 0 1.5-1.5V3.75a1.5 1.5 0 0 0-1.5-1.5ZM19.5 6.75 23.25 6.75M19.5 11.25 23.25 11.25" class="a"/>
+</svg>

@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>flag-information</title><line class="a" x1="0.75" y1="23.25" x2="0.75" y2="0.75"/><path class="a" d="M.75,20.293l3.154-.97a9.61,9.61,0,0,1,7.864,1,9.615,9.615,0,0,0,7.679,1.056l2.987-.853a1.126,1.126,0,0,0,.816-1.082V3.637a1.126,1.126,0,0,0-1.434-1.082l-2.369.677a9.615,9.615,0,0,1-7.679-1.056,9.61,9.61,0,0,0-7.864-1L.75,2.145"/><path class="a" d="M14.25,16.5H13.5A1.5,1.5,0,0,1,12,15V11.25a.75.75,0,0,0-.75-.75H10.5"/><line class="a" x1="11.625" y1="6.75" x2="11.625" y2="6.75"/><path class="a" d="M11.625,6.75A.375.375,0,1,0,12,7.125a.375.375,0,0,0-.375-.375"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M.75 23.25.75.75M.75 20.293l3.154-.97a9.61 9.61 0 0 1 7.864 1 9.615 9.615 0 0 0 7.679 1.056l2.987-.853a1.126 1.126 0 0 0 .816-1.082V3.637a1.126 1.126 0 0 0-1.434-1.082l-2.369.677a9.615 9.615 0 0 1-7.679-1.056 9.61 9.61 0 0 0-7.864-1L.75 2.145" class="a"/>
+    <path d="M14.25 16.5H13.5A1.5 1.5 0 0 1 12 15V11.25a.75.75 0 0 0-.75-.75H10.5M11.625 6.75 11.625 6.75M11.625 6.75A.375.375 0 1 0 12 7.125a.375.375 0 0 0-.375-.375" class="a"/>
+</svg>

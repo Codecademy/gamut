@@ -1,1 +1,9 @@
-<svg id="Regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>single-neutral-actions-chat</title><circle class="cls-1" cx="7.5" cy="4.875" r="4.125"/><path class="cls-1" d="M8.25,10.558A6.409,6.409,0,0,0,7.5,10.5,6.75,6.75,0,0,0,.75,17.25"/><path class="cls-1" d="M21.75,20.25h-3l-4.5,3v-3h-1.5a1.5,1.5,0,0,1-1.5-1.5v-6a1.5,1.5,0,0,1,1.5-1.5h9a1.5,1.5,0,0,1,1.5,1.5v6A1.5,1.5,0,0,1,21.75,20.25Z"/><line class="cls-1" x1="14.25" y1="14.25" x2="20.25" y2="14.25"/><line class="cls-1" x1="14.25" y1="17.25" x2="20.25" y2="17.25"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" id="Regular" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <circle cx="7.5" cy="4.875" r="4.125" class="cls-1"/>
+    <path d="M8.25 10.558A6.409 6.409 0 0 0 7.5 10.5 6.75 6.75 0 0 0 .75 17.25M21.75 20.25h-3l-4.5 3v-3h-1.5a1.5 1.5 0 0 1-1.5-1.5v-6a1.5 1.5 0 0 1 1.5-1.5h9a1.5 1.5 0 0 1 1.5 1.5v6A1.5 1.5 0 0 1 21.75 20.25ZM14.25 14.25 20.25 14.25M14.25 17.25 20.25 17.25" class="cls-1"/>
+</svg>
