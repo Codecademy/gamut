@@ -44,7 +44,7 @@
     "@storybook/manager-api": "^8.3.6",
     "@storybook/react-webpack5": "^8.3.6",
     "@storybook/theming": "^8.3.6",
-    "@svgr/cli": "5.5.0",
+    "@svgr/cli": "^8.1.0",
     "@testing-library/dom": "^8.11.1",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "15.0.6",
