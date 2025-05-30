@@ -1,4 +1,3 @@
-import { CheckerDense } from '@codecademy/gamut-patterns';
 import { useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
 import { useMeasure } from 'react-use';
@@ -10,8 +9,12 @@ import {
   FloatingTipTextWrapper,
   TargetContainer,
 } from './elements';
+import {
+  getAlignmentStyles,
+  getPopoverAlignmentAndPattern,
+} from './styles/createVariantsUtils';
 import { TipWrapperProps } from './types';
-import { getAlignmentWidths, getPopoverAlignment, runWithDelay } from './utils';
+import { runWithDelay } from './utils';
 
 type FocusOrMouseEvent =
   | React.FocusEvent<HTMLDivElement, Element>
@@ -34,29 +37,28 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   wrapperRef,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [childRef, { width: tipWidth }] = useMeasure<HTMLDivElement>();
 
-  const [offset, setOffset] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
-  useLayoutEffect(() => {
-    const isCentered = alignment.includes('center');
+  const commonPopoverProps = getPopoverAlignmentAndPattern({ alignment, type });
+  const dims = getAlignmentStyles({ avatar, alignment, type });
+  const [childRef, { width: tipWidth }] = useMeasure<HTMLDivElement>();
 
-    if (ref?.current) {
-      if (!isCentered) {
+  const [offset, setOffset] = useState(0);
+
+  useLayoutEffect(() => {
+    if (ref?.current?.clientWidth) {
+      if (type === 'info' || type === 'preview') {
         setOffset(-ref.current.clientWidth / 2 + 32);
-      } else {
-        const trueTw = tipWidth + 16;
-        const targetWidth = ref?.current.clientWidth;
-        const diffOs = (trueTw - targetWidth) / 2;
-        setOffset(diffOs);
+      } else if (
+        alignment.startsWith('left') ||
+        alignment.startsWith('right')
+      ) {
+        setOffset(12);
       }
     }
-  }, [alignment, tipWidth]);
-
-  const popoverAlignments = getPopoverAlignment({ alignment, type });
-  const dims = getAlignmentWidths({ avatar, alignment, type });
+  }, [alignment, tipWidth, type]);
 
   let hoverDelay: NodeJS.Timeout | undefined;
   let focusDelay: NodeJS.Timeout | undefined;
@@ -130,20 +132,18 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         {children}
       </TargetContainer>
       <FloatingTipBody
-        {...popoverAlignments}
+        {...commonPopoverProps}
         animation="fade"
         dims={dims}
         horizontalOffset={offset}
         isOpen={isHoverType ? isOpen : !isTipHidden}
         outline
-        pattern={isPreviewType ? CheckerDense : undefined}
         skipFocusTrap
         targetRef={ref}
         variant="secondary"
         widthRestricted={false}
       >
         <FloatingTipTextWrapper
-          centered={alignment.includes('center')}
           isHoverType={isHoverType}
           narrow={narrow}
           ref={childRef}

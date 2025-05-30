@@ -16,13 +16,13 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof ToolTip> = {
   component: ToolTip,
-  args: {},
+  args: { id: 'fill-id', info: 'Tooltip' },
 };
 
 export default meta;
 type Story = StoryObj<typeof ToolTip>;
 
-export const Default: Story = {
+export const AriaDisabled: Story = {
   render: () => (
     <FlexBox center m={24} py={64}>
       <ToolTip id="fill-id" info="Tooltip">
@@ -34,13 +34,36 @@ export const Default: Story = {
   ),
 };
 
+const alignments = [
+  'top-center',
+  'bottom-center',
+  'left-center',
+  'right-center',
+] as const;
+
+export const Alignments: Story = {
+  render: () => (
+    <FlexBox justifyContent="space-around" m={24} width="95%">
+      {alignments.map((alignment) => {
+        return (
+          <IconButton
+            icon={SparkleIcon}
+            tip={alignment}
+            tipProps={{ alignment }}
+          />
+        );
+      })}
+    </FlexBox>
+  ),
+};
+
 export const WithIconButton: Story = {
   render: () => (
     <FlexBox justifyContent="space-around" m={24} width="95%">
       <IconButton
         icon={SparkleIcon}
-        tip="Beautify your code"
-        tipProps={{ alignment: 'bottom-center' }}
+        tip="Wonder at the majesty of the universe"
+        tipProps={{ alignment: 'left-center' }}
       />
       <IconButton
         icon={ArrowRightIcon}
@@ -69,6 +92,16 @@ export const Floating: Story = {
           Also floating
         </FillButton>
       </ToolTip>
+      <IconButton
+        icon={SmileyStarEyesIcon}
+        tip="Wonder at the majesty of the universe"
+        tipProps={{ alignment: 'right-center', placement: 'floating' }}
+      />{' '}
+      <IconButton
+        icon={SmileyStarEyesIcon}
+        tip="Wonder at the majesty of the universe"
+        tipProps={{ alignment: 'left-center', placement: 'floating' }}
+      />
     </FlexBox>
   ),
 };
@@ -95,6 +128,18 @@ export const Disabled: Story = {
           icon={DeleteIcon}
         >
           Using aria-disabled
+        </FillButton>
+      </ToolTip>
+    </FlexBox>
+  ),
+};
+
+export const Default: Story = {
+  render: (args) => (
+    <FlexBox center m={24} py={64}>
+      <ToolTip {...args}>
+        <FillButton aria-describedby="fill-id" icon={SparkleIcon}>
+          Click me
         </FillButton>
       </ToolTip>
     </FlexBox>
