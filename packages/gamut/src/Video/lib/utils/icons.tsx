@@ -24,7 +24,7 @@ import {
 } from '@vidstack/react/player/layouts/default';
 
 const IconWrapper = (Icon: DefaultLayoutIcon) => (props: any) =>
-  <Icon {...props} width={20} height={20} />;
+  <Icon {...props} height={20} width={20} />;
 
 export const customIcons: DefaultLayoutIcons = {
   ...defaultLayoutIcons,

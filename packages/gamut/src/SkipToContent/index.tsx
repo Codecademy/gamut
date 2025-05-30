@@ -52,15 +52,15 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
   const onClick = () => document.querySelector<HTMLElement>(href)!.focus();
 
   return (
-    <Box role="region" aria-labelledby="skip-to-content">
+    <Box aria-labelledby="skip-to-content" role="region">
       <SkipToContentLink
-        id="skip-to-content"
         href={href}
+        id="skip-to-content"
         onClick={onClick}
         {...rest}
       >
         Skip to Content
-        <MiniArrowDownIcon ml={8} aria-hidden />
+        <MiniArrowDownIcon aria-hidden ml={8} />
       </SkipToContentLink>
     </Box>
   );

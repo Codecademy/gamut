@@ -24,7 +24,7 @@ const BackgroundWithPadding = ({
 export const Default: Story = {
   render: () => (
     <BackgroundWithPadding bg="background-primary">
-      <Disclosure heading="default" body="Uses `background`" />
+      <Disclosure body="Uses `background`" heading="default" />
     </BackgroundWithPadding>
   ),
 };
@@ -33,9 +33,9 @@ export const SubtleBgBordered: Story = {
   render: () => (
     <BackgroundWithPadding bg="background-primary">
       <Disclosure
-        variant="subtle"
-        heading="subtle"
         body='Uses `background-selected`. For this example there is a `<Background>` set to `"background-primary"`.'
+        heading="subtle"
+        variant="subtle"
       />
     </BackgroundWithPadding>
   ),
@@ -45,9 +45,9 @@ export const Transparent: Story = {
   render: () => (
     <BackgroundWithPadding bg="background-primary">
       <Disclosure
-        variant="transparent"
-        heading="transparent"
         body="Notice the border and it uses `background-current` to inherit the existing background color."
+        heading="transparent"
+        variant="transparent"
       />
     </BackgroundWithPadding>
   ),
@@ -57,9 +57,9 @@ export const HasBorder: Story = {
   render: () => (
     <BackgroundWithPadding bg="background-primary">
       <Disclosure
-        heading="hasBorder (set to false)"
         body="This is a `default` variant without a border."
         hasBorder={false}
+        heading="hasBorder (set to false)"
       />
     </BackgroundWithPadding>
   ),

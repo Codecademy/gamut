@@ -11,28 +11,28 @@ export const Hills: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    height={height}
-    width={width}
-    viewBox="0 0 101 138"
     fill="none"
+    height={height}
+    viewBox="0 0 101 138"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Hills Illustration</title>
     <mask
+      height="136"
       id="mask0"
       mask-type="alpha"
       maskUnits="userSpaceOnUse"
+      width="100"
       x="1"
       y="1"
-      width="100"
-      height="136"
     >
       <path
         d="M2.18262 135.524C2.18262 134.12 2.24105 48.562 2.35466 47.184C3.3909 34.8717 8.96465 23.406 17.9667 15.0689C26.9687 6.73168 38.739 2.13423 50.9352 2.19145C63.1313 2.24866 74.8591 6.95634 83.7845 15.3776C92.71 23.7989 98.1787 35.3163 99.1024 47.6378C99.1932 48.8678 99.2387 134.275 99.2387 135.524H2.18262Z"
         fill="white"
         stroke="#10162F"
-        strokeWidth="2"
         strokeMiterlimit="10"
+        strokeWidth="2"
       />
     </mask>
     <g mask="url(#mask0)">

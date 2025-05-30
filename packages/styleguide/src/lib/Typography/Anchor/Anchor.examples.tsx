@@ -27,10 +27,10 @@ export const VariantsExample = ({ useIcon }: { useIcon: boolean }) => {
     <LayoutGrid>
       <Column size={6}>
         <Background
-          p={32}
           bg="white"
           display="grid"
           gridTemplateColumns="repeat(4, 1fr)"
+          p={32}
         >
           {variants.map((variant) => (
             <Box key={`${variant}-light`}>
@@ -38,10 +38,10 @@ export const VariantsExample = ({ useIcon }: { useIcon: boolean }) => {
                 {startCase(variant)}
               </Text>
               <Anchor
-                mr={8}
-                variant={variant}
                 href={`#${variant}`}
                 icon={useIcon ? MiniStarIcon : undefined}
+                mr={8}
+                variant={variant}
               >
                 Click Me
               </Anchor>
@@ -51,10 +51,10 @@ export const VariantsExample = ({ useIcon }: { useIcon: boolean }) => {
       </Column>
       <Column size={6}>
         <Background
-          p={32}
           bg="navy"
           display="grid"
           gridTemplateColumns="repeat(4, 1fr)"
+          p={32}
         >
           {variants.map((variant) => (
             <Box key={`${variant}-dark`}>
@@ -62,10 +62,10 @@ export const VariantsExample = ({ useIcon }: { useIcon: boolean }) => {
                 {startCase(variant)}
               </Text>{' '}
               <Anchor
-                mr={8}
-                variant={variant}
                 href={`#${variant}`}
                 icon={useIcon ? MiniStarIcon : undefined}
+                mr={8}
+                variant={variant}
               >
                 Click Me
               </Anchor>

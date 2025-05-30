@@ -80,19 +80,19 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     return (
       <RadioWrapper className={className}>
         <RadioInput
-          id={inputId}
-          name={name}
-          required={required}
-          type="radio"
           checked={checked}
           disabled={disabled}
-          onChange={onChange}
+          id={inputId}
+          name={name}
           ref={ref}
+          required={required}
+          type="radio"
           value={value}
           variant={styleState}
+          onChange={onChange}
           {...rest}
         />
-        <RadioLabel htmlFor={htmlFor} disabled={disabled} variant={styleState}>
+        <RadioLabel disabled={disabled} htmlFor={htmlFor} variant={styleState}>
           {label}
         </RadioLabel>
         {infotip && (

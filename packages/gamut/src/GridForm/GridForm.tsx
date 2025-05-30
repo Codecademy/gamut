@@ -139,11 +139,11 @@ export function GridForm<Values extends FormValues<Values>>({
 
   return (
     <ConnectedForm<Values>
-      validation={validation}
       defaultValues={defaultValues as DefaultValues<Values>}
       display="flex"
       flexDirection="column"
       isSoloField={hasComputedSoloField}
+      validation={validation}
       {...rest}
     >
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
@@ -160,17 +160,17 @@ export function GridForm<Values extends FormValues<Values>>({
               return (
                 <Fragment key={title}>
                   <GridFormSectionTitle
-                    title={title}
                     as={as}
                     layout={layout}
                     numberOfFields={fields.length}
-                    variant={variant}
-                    showRequired={index === 0 && showRequiredText}
                     requiredTextProps={
                       index === 0 && showRequiredText
                         ? requiredTextProps
                         : undefined
                     }
+                    showRequired={index === 0 && showRequiredText}
+                    title={title}
+                    variant={variant}
                   />
                   <GridFormSection fields={fields} />
                   {/* don't show break on last section */}

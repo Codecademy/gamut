@@ -19,15 +19,15 @@ const SubmitButtonStates = () => {
         action('Form Submitted')(values);
       }}
     >
-      <FlexBox flexDirection="column" alignItems="center" p={16}>
+      <FlexBox alignItems="center" flexDirection="column" p={16}>
         <Text variant="title-xs">default</Text>
         <SubmitButton m={8}>submit the form, please</SubmitButton>
       </FlexBox>
       <FlexBox
+        alignItems="center"
         borderLeft={1}
         borderRight={1}
         flexDirection="column"
-        alignItems="center"
         p={16}
       >
         <Text variant="title-xs">loading</Text>
@@ -35,7 +35,7 @@ const SubmitButtonStates = () => {
           submit the form, please
         </SubmitButton>
       </FlexBox>
-      <FlexBox flexDirection="column" alignItems="center" p={16}>
+      <FlexBox alignItems="center" flexDirection="column" p={16}>
         <Text variant="title-xs">disabled</Text>
         <SubmitButton disabled m={8}>
           you cannot submit this form
