@@ -199,9 +199,9 @@ export const Popover: React.FC<PopoverProps> = ({
       <RaisedDiv
         alignment={alignment}
         outline={outline ? 'outline' : 'boxShadow'}
+        ref={getRaisedDivDimsRef}
         variant={variant}
         widthRestricted={widthRestricted}
-        ref={getRaisedDivDimsRef}
       >
         {beak && (
           <BeakBox variant={getBeakFromAlignment({ align, position })}>
