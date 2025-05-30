@@ -69,7 +69,15 @@ export const BeakCentered: Story = {
 };
 
 export const Outline: Story = {
-  render: (args) => <PopoverExample {...args} outline />,
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      outline
+      align="right"
+      beak="center"
+      position="center"
+    />
+  ),
 };
 
 export const Above: Story = {

@@ -92,6 +92,16 @@ export const Floating: Story = {
           Also floating
         </FillButton>
       </ToolTip>
+      <IconButton
+        tip="Wonder at the majesty of the universe"
+        icon={SmileyStarEyesIcon}
+        tipProps={{ alignment: 'right-center', placement: 'floating' }}
+      />{' '}
+      <IconButton
+        tip="Wonder at the majesty of the universe"
+        icon={SmileyStarEyesIcon}
+        tipProps={{ alignment: 'left-center', placement: 'floating' }}
+      />
     </FlexBox>
   ),
 };
