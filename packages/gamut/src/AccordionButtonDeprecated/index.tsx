@@ -86,13 +86,13 @@ export const AccordionButtonDeprecated: React.FC<
     >
       <span className={styles.children}>{children}</span>
       <ArrowChevronDownIcon
+        aria-hidden
         className={cx(
           styles.expansionIcon,
           expanded && styles.expansionIconExpanded
         )}
         height={iconSize}
         width={iconSize}
-        aria-hidden
       />
     </ButtonComponent>
   );

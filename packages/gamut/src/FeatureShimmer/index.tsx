@@ -61,17 +61,17 @@ export const FeatureShimmer: React.FC<Omit<BoxProps, 'ref'>> = ({
         children
       ) : (
         <BaseContainer
-          width={1}
-          height={1}
-          overflow="hidden"
+          bg="background-selected"
           border={1}
           borderColor="border-tertiary"
-          bg="background-selected"
-          position="relative"
           borderRadius={rest?.borderRadius}
+          height={1}
+          overflow="hidden"
+          position="relative"
           variants={boxVariants}
-          whileInView="inView"
           viewport={{ once: true }}
+          whileInView="inView"
+          width={1}
         >
           <Shimmer
             data-testid="feature-shimmer"

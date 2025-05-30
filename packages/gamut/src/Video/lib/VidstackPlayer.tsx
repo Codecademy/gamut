@@ -75,24 +75,25 @@ export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
 
   return (
     <VariableProvider
-      variables={vdsVariables}
       className={className}
       style={{ width, height }}
+      variables={vdsVariables}
     >
       <MediaPlayer
-        controls={showDefaultProviderControls}
-        ref={player}
-        title={videoTitle}
-        src={videoUrl}
-        playsInline
         autoPlay={autoplay}
+        controls={showDefaultProviderControls}
+        keyShortcuts={keyboardShortcuts}
         loop={loop}
         muted={
           autoplay && isYouTubeProvider(player?.current?.provider)
             ? true
             : muted
         }
-        keyShortcuts={keyboardShortcuts}
+        playsInline
+        ref={player}
+        src={videoUrl}
+        title={videoTitle}
+        onCanPlay={onReady}
         onLoad={onLoad}
         onPlay={onPlay}
         onPlaying={() => {
@@ -100,15 +101,14 @@ export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
             mediaRemote?.unmute();
           }
         }}
-        onCanPlay={onReady}
         onProviderChange={onProviderChange}
         onWaiting={onPlayerWaiting}
       >
         <MediaProvider>
           {placeholderImage && (
             <Poster
-              className="vds-poster"
               alt={videoTitle}
+              className="vds-poster"
               src={placeholderImage as string}
             />
           )}

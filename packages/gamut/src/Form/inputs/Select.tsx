@@ -101,20 +101,20 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
 
     return (
       <Box
+        className={className}
+        minWidth="7rem"
         position="relative"
         width="100%"
-        minWidth="7rem"
-        className={className}
       >
         <StyledFlexbox
-          pr={12}
-          color={error ? 'feedback-error' : disabled ? 'text-disabled' : 'text'}
           alignItems="center"
+          aria-hidden
+          bottom="0"
+          color={error ? 'feedback-error' : disabled ? 'text-disabled' : 'text'}
           position="absolute"
+          pr={12}
           right="0"
           top="0"
-          bottom="0"
-          aria-hidden
         >
           {sizeVariant === 'small' ? (
             <MiniChevronDownIcon size={12} />
@@ -125,12 +125,12 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
         <SelectBase
           {...rest}
           defaultValue={defaultValue || ''}
+          disabled={disabled}
+          error={error}
           id={id || rest.htmlFor}
           ref={ref}
-          error={error}
           sizeVariant={sizeVariant}
           variant={conditionalStyleState(Boolean(error), activatedStyle)}
-          disabled={disabled}
           onChange={(event) => changeHandler(event)}
         >
           {selectOptions}

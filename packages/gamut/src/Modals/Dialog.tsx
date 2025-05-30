@@ -72,36 +72,36 @@ export const Dialog: React.FC<DialogProps> = ({
         size={size}
         tabIndex={-1}
       >
-        <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
+        <Text as="h2" fontSize={20} gridArea="title" lineHeight="base">
           {title}
         </Text>
         <Box gridArea="close">
           <IconButton
-            size="small"
             alignSelf="start"
             icon={MiniDeleteIcon}
-            onClick={onCancel}
+            size="small"
             tip={closeButtonTipText}
+            onClick={onCancel}
           />
         </Box>
-        <Box as="div" gridArea="content" data-testid="dialog-content">
+        <Box as="div" data-testid="dialog-content" gridArea="content">
           {image && <ImageContainer image={image} size={size} />}
           {children}
         </Box>
         {cancelCta && (
           <TextButton
             {...cancelCta}
+            gridArea="cancel"
+            justifySelf="end"
             variant="secondary"
             onClick={onCancel}
-            justifySelf="end"
-            gridArea="cancel"
           />
         )}
         <FillButton
           {...confirmCta}
+          gridArea="confirm"
           variant={variant}
           onClick={onConfirm}
-          gridArea="confirm"
         />
       </ModalContainer>
     </Overlay>

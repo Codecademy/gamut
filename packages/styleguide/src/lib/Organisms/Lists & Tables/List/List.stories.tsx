@@ -55,7 +55,7 @@ const ListExample: React.FC = (args) => {
     <List {...args}>
       {rows.map(({ name, ship }) => (
         <ListRow>
-          <ListCol type="header" size="md">
+          <ListCol size="md" type="header">
             {name}
           </ListCol>
           <ListCol fill>{ship}</ListCol>
@@ -98,7 +98,7 @@ const ListCardExample: React.FC = (args) => {
       {rows.map(({ name, ship, role }) => (
         <ListRow>
           <ListCol size="xl">
-            <Text variant="title-lg" truncate="ellipsis" truncateLines={1}>
+            <Text truncate="ellipsis" truncateLines={1} variant="title-lg">
               {name}
             </Text>
           </ListCol>
@@ -108,13 +108,13 @@ const ListCardExample: React.FC = (args) => {
               {role}
             </FlexBox>
           </ListCol>
-          <ListCol size="xl" fill>
+          <ListCol fill size="xl">
             <FlexBox
+              alignItems="center"
+              bg="palePink"
               flexDirection="column"
               height="8rem"
-              bg="palePink"
               justifyContent="center"
-              alignItems="center"
               p={8}
             >
               <HouseEntranceIcon size={40} />
@@ -159,7 +159,7 @@ const ColumnExample: React.FC<ListProps> = (args) => {
       {sizes.map((size: 'content' | 'sm' | 'md' | 'lg' | 'xl') => (
         <ListRow>
           <ListCol size={size}>
-            <Box height={1} flex={1} p={8} bg="background-selected">
+            <Box bg="background-selected" flex={1} height={1} p={8}>
               {size}
             </Box>
           </ListCol>
@@ -178,27 +178,27 @@ const FillingEmptySpaceExample: React.FC<ListProps> = (args) => {
     <List {...args}>
       <ListRow>
         <ListCol size="md">
-          <Box height={1} flex={1} p={8} bg="background-selected">
+          <Box bg="background-selected" flex={1} height={1} p={8}>
             Medium
           </Box>
         </ListCol>
-        <ListCol size="md" fill>
-          <Box height={1} flex={1} p={8} bg="background-selected">
+        <ListCol fill size="md">
+          <Box bg="background-selected" flex={1} height={1} p={8}>
             Medium - Fill
           </Box>
         </ListCol>
         <ListCol size="md">
-          <Box height={1} flex={1} p={8} bg="background-selected">
+          <Box bg="background-selected" flex={1} height={1} p={8}>
             Medium
           </Box>
         </ListCol>
-        <ListCol size="md" fill>
-          <Box height={1} flex={1} p={8} bg="background-selected">
+        <ListCol fill size="md">
+          <Box bg="background-selected" flex={1} height={1} p={8}>
             Medium - Fill
           </Box>
         </ListCol>
         <ListCol size="md">
-          <Box height={1} flex={1} p={8} bg="background-selected">
+          <Box bg="background-selected" flex={1} height={1} p={8}>
             Medium
           </Box>
         </ListCol>
@@ -215,10 +215,10 @@ const JustificationExample: React.FC<ListProps> = (args) => {
   return (
     <List {...args}>
       <ListRow>
-        <ListCol size="md" fill>
+        <ListCol fill size="md">
           Left
         </ListCol>
-        <ListCol size="md" justify="right" fill>
+        <ListCol fill justify="right" size="md">
           Right
         </ListCol>
       </ListRow>
@@ -242,39 +242,39 @@ const HorizontalScrollingExample: React.FC<ListProps> = (args) => {
           </ListCol>
           <ListCol size="lg">
             <Text
-              variant="p-small"
               color="text-disabled"
               truncate="ellipsis"
               truncateLines={1}
+              variant="p-small"
             >
               {role}
             </Text>
           </ListCol>
-          <ListCol size="lg" fill>
+          <ListCol fill size="lg">
             <Text
-              variant="p-small"
               color="text-disabled"
               truncate="ellipsis"
               truncateLines={1}
+              variant="p-small"
             >
               {ship}
             </Text>
           </ListCol>
           <ListCol size="sm">
-            <Text variant="p-small" color="text-disabled" lineHeight="title">
-              <StreakIcon verticalAlign="bottom" mr={8} />
+            <Text color="text-disabled" lineHeight="title" variant="p-small">
+              <StreakIcon mr={8} verticalAlign="bottom" />
               87%
             </Text>
           </ListCol>
           <ListCol size="sm">
-            <Text variant="p-small" color="text-disabled" lineHeight="title">
-              <TrophyIcon verticalAlign="bottom" mr={8} />
+            <Text color="text-disabled" lineHeight="title" variant="p-small">
+              <TrophyIcon mr={8} verticalAlign="bottom" />
               48%
             </Text>
           </ListCol>
           <ListCol size="sm">
-            <Text variant="p-small" color="text-disabled" lineHeight="title">
-              <StarIcon verticalAlign="bottom" mr={8} />
+            <Text color="text-disabled" lineHeight="title" variant="p-small">
+              <StarIcon mr={8} verticalAlign="bottom" />
               66%
             </Text>
           </ListCol>
@@ -310,23 +310,23 @@ const ResponsiveAnatomyExample: React.FC<ListProps> = (args) => {
   return (
     <List {...args}>
       <ListRow>
-        <ListCol type="header" size="md">
-          <Box height={1} flex={1} p={8} bg="background-selected">
+        <ListCol size="md" type="header">
+          <Box bg="background-selected" flex={1} height={1} p={8}>
             Header
           </Box>
         </ListCol>
         <ListCol size="md">
-          <Box height={1} flex={1} p={8} bg="background-selected">
+          <Box bg="background-selected" flex={1} height={1} p={8}>
             Content
           </Box>
         </ListCol>
-        <ListCol size="md" fill>
-          <Box height={1} flex={1} p={8} bg="background-selected">
+        <ListCol fill size="md">
+          <Box bg="background-selected" flex={1} height={1} p={8}>
             Content
           </Box>
         </ListCol>
-        <ListCol type="control" size="md">
-          <Box height={1} flex={1} p={8} bg="background-selected">
+        <ListCol size="md" type="control">
+          <Box bg="background-selected" flex={1} height={1} p={8}>
             Controls
           </Box>
         </ListCol>
@@ -353,20 +353,20 @@ const ResponsiveExample: React.FC<ListProps> = (args) => {
         </ListCol>
         <ListCol size="lg">
           <Text
-            variant="p-small"
             color="text-disabled"
             truncate="ellipsis"
             truncateLines={1}
+            variant="p-small"
           >
             Content
           </Text>
         </ListCol>
-        <ListCol size="lg" fill>
+        <ListCol fill size="lg">
           <Text
-            variant="p-small"
             color="text-disabled"
             truncate="ellipsis"
             truncateLines={1}
+            variant="p-small"
           >
             Content
           </Text>
@@ -417,7 +417,7 @@ const NormalSpacingGuideExample: React.FC<ListProps> = (args) => (
             <Text variant="title-xs">{name}</Text>
           </FlexBox>
         </ListCol>
-        <ListCol size="md" fill>
+        <ListCol fill size="md">
           <FlexBox column>
             <Text
               color="text-disabled"
@@ -431,34 +431,34 @@ const NormalSpacingGuideExample: React.FC<ListProps> = (args) => (
         </ListCol>
         <ListCol fill size="sm">
           <Text
-            variant="p-small"
             color="text-disabled"
             lineHeight="title"
             mt={4}
+            variant="p-small"
           >
-            <StreakIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+            <StreakIcon mb={4} mr={8} size={18} verticalAlign="middle" />
             87%
           </Text>
         </ListCol>
         <ListCol fill size="sm">
           <Text
-            variant="p-small"
             color="text-disabled"
             lineHeight="title"
             mt={4}
+            variant="p-small"
           >
-            <TrophyIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+            <TrophyIcon mb={4} mr={8} size={18} verticalAlign="middle" />
             48%
           </Text>
         </ListCol>
         <ListCol fill size="sm">
           <Text
-            variant="p-small"
             color="text-disabled"
             lineHeight="title"
             mt={4}
+            variant="p-small"
           >
-            <StarIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+            <StarIcon mb={4} mr={8} size={18} verticalAlign="middle" />
             66%
           </Text>
         </ListCol>
@@ -487,39 +487,39 @@ const CondensedSpacingGuideExample: React.FC<ListProps> = (args) => (
         </ListCol>
         <ListCol size="lg">
           <Text
-            variant="p-small"
             color="text-disabled"
             truncate="ellipsis"
             truncateLines={1}
+            variant="p-small"
           >
             {role}
           </Text>
         </ListCol>
-        <ListCol size="lg" fill>
+        <ListCol fill size="lg">
           <Text
-            variant="p-small"
             color="text-disabled"
             truncate="ellipsis"
             truncateLines={1}
+            variant="p-small"
           >
             {ship}
           </Text>
         </ListCol>
         <ListCol size="sm">
-          <Text variant="p-small" color="text-disabled" lineHeight="title">
-            <StreakIcon verticalAlign="bottom" mr={8} />
+          <Text color="text-disabled" lineHeight="title" variant="p-small">
+            <StreakIcon mr={8} verticalAlign="bottom" />
             87%
           </Text>
         </ListCol>
         <ListCol size="sm">
-          <Text variant="p-small" color="text-disabled" lineHeight="title">
-            <TrophyIcon verticalAlign="bottom" mr={8} />
+          <Text color="text-disabled" lineHeight="title" variant="p-small">
+            <TrophyIcon mr={8} verticalAlign="bottom" />
             48%
           </Text>
         </ListCol>
         <ListCol size="sm">
-          <Text variant="p-small" color="text-disabled" lineHeight="title">
-            <StarIcon verticalAlign="bottom" mr={8} />
+          <Text color="text-disabled" lineHeight="title" variant="p-small">
+            <StarIcon mr={8} verticalAlign="bottom" />
             66%
           </Text>
         </ListCol>
@@ -570,15 +570,15 @@ const ExpandedRow: React.FC<Omit<ExpandableRowProps, 'key'>> = ({
   <FlexBox bg="background-selected" column m={16} p={16}>
     <Text fontStyle="italic" smooth>
       Oh, were you expecting to find out more about{' '}
-      <Text as="span" fontWeight="bold" color="text-accent">
+      <Text as="span" color="text-accent" fontWeight="bold">
         {name}
       </Text>
       ,{' '}
-      <Text as="span" fontWeight="bold" color="text-accent">
+      <Text as="span" color="text-accent" fontWeight="bold">
         {role}
       </Text>{' '}
       of the{' '}
-      <Text as="span" fontWeight="bold" color="text-accent">
+      <Text as="span" color="text-accent" fontWeight="bold">
         {ship}
       </Text>
       ? I am very sorry but that is{' '}
@@ -609,7 +609,7 @@ const ExpandedColumns: React.FC<Omit<ExpandableRowProps, 'key'>> = ({
         <Text variant="title-xs">{name}</Text>
       </FlexBox>
     </ListCol>
-    <ListCol size="md" fill>
+    <ListCol fill size="md">
       <FlexBox column>
         <Text color="text-disabled" textTransform="uppercase" variant="p-small">
           Rank
@@ -618,20 +618,20 @@ const ExpandedColumns: React.FC<Omit<ExpandableRowProps, 'key'>> = ({
       </FlexBox>
     </ListCol>
     <ListCol fill size="sm">
-      <Text variant="p-small" color="text-disabled" lineHeight="title" mt={4}>
-        <StreakIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+      <Text color="text-disabled" lineHeight="title" mt={4} variant="p-small">
+        <StreakIcon mb={4} mr={8} size={18} verticalAlign="middle" />
         87%
       </Text>
     </ListCol>
     <ListCol fill size="sm">
-      <Text variant="p-small" color="text-disabled" lineHeight="title" mt={4}>
-        <TrophyIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+      <Text color="text-disabled" lineHeight="title" mt={4} variant="p-small">
+        <TrophyIcon mb={4} mr={8} size={18} verticalAlign="middle" />
         48%
       </Text>
     </ListCol>
     <ListCol fill size="sm">
-      <Text variant="p-small" color="text-disabled" lineHeight="title" mt={4}>
-        <StarIcon size={18} verticalAlign="middle" mr={8} mb={4} />
+      <Text color="text-disabled" lineHeight="title" mt={4} variant="p-small">
+        <StarIcon mb={4} mr={8} size={18} verticalAlign="middle" />
         66%
       </Text>
     </ListCol>
@@ -648,17 +648,17 @@ const ExpandableButtonClickRow: React.FC<{
 
   return (
     <ListRow
-      key={key}
       expanded={isExpanded}
+      key={key}
       renderExpanded={() => <ExpandedRow name={name} role={role} ship={ship} />}
     >
       <ExpandedColumns name={name} role={role} ship={ship} />
       <ListCol size="lg" type="control">
         <TextButton>Hail</TextButton>
         <ExpandControl
+          disabled={false}
           expanded={isExpanded}
           onExpand={() => setExpanded(!isExpanded)}
-          disabled={false}
         />
       </ListCol>
     </ListRow>
@@ -671,10 +671,10 @@ const ExpandedTemplateButtonClick: React.FC<ListProps> = ({ variant }) => (
       <List variant={variant}>
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
           <ExpandableButtonClickRow
+            key={key}
             name={name}
             role={role}
             ship={ship}
-            key={key}
           />
         ))}
       </List>
@@ -698,12 +698,12 @@ export const ExpandableRowClick: React.FC<ExpandableRowProps> = ({
     <ListRow
       expanded={isExpanded}
       key={key}
-      onClick={() => setExpanded(!isExpanded)}
       renderExpanded={() => <ExpandedRow name={name} role={role} ship={ship} />}
+      onClick={() => setExpanded(!isExpanded)}
     >
       <ExpandedColumns name={name} role={role} ship={ship} />
       <ListCol size="xl" type="control">
-        <FlexBox mt={{ _: 8, xs: 0 }} pl={{ _: 0, xs: 16 }} width={1} center>
+        <FlexBox center mt={{ _: 8, xs: 0 }} pl={{ _: 0, xs: 16 }} width={1}>
           <Rotation rotated={isExpanded}>
             <ArrowChevronDownIcon color="secondary" />
           </Rotation>
@@ -718,7 +718,7 @@ const ExpandedTemplateRowClick: React.FC<ListProps> = ({ as, variant }) => (
     <Box p={8}>
       <List as={as} variant={variant}>
         {rows.map(({ name, role, ship }, i, _, key = `example-row-${i}`) => (
-          <ExpandableRowClick name={name} role={role} ship={ship} key={key} />
+          <ExpandableRowClick key={key} name={name} role={role} ship={ship} />
         ))}
       </List>
     </Box>
