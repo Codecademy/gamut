@@ -33,12 +33,12 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
       htmlFor={field.name}
       id={field.id}
       name={field.name}
+      placeholder={field.placeholder}
+      rows={field.rows}
       onChange={async (event) => {
         field?.onUpdate?.(event.target.value);
         await onChange(event);
       }}
-      placeholder={field.placeholder}
-      rows={field.rows}
     />
   );
 };

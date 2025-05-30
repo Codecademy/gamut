@@ -11,10 +11,10 @@ export const StackedPagesVariant: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    width={width}
+    fill="none"
     height={height}
     viewBox="0 0 772 742"
-    fill="none"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
@@ -74,8 +74,8 @@ export const StackedPagesVariant: React.FC<IllustrationProps> = ({
       d="M451.33 597.24L2.00098 337.598L320.644 153.492L769.973 413.134L451.33 597.24Z"
       fill="#FFF0E5"
       stroke="#10162F"
-      strokeWidth="2"
       strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <path
       d="M333.284 174.82C333.303 171.682 328.914 169.111 323.48 169.077C318.046 169.043 313.625 171.559 313.605 174.696C313.586 177.834 317.975 180.405 323.409 180.439C328.843 180.473 333.264 177.957 333.284 174.82Z"
@@ -92,8 +92,8 @@ export const StackedPagesVariant: React.FC<IllustrationProps> = ({
     <path
       d="M285.409 173.818L734.738 433.46"
       stroke="#10162F"
-      strokeWidth="2"
       strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <path
       d="M377.368 428.663L139.626 291.309L282.759 208.619L520.5 345.973L377.368 428.663Z"
@@ -107,22 +107,22 @@ export const StackedPagesVariant: React.FC<IllustrationProps> = ({
       d="M321.988 340.082L292.933 323.249C282.127 316.979 283.472 306.08 295.96 298.884C308.575 291.646 327.329 290.889 338.009 297.117L367.064 313.949C377.871 320.177 376.525 331.076 364.037 338.314C351.675 345.552 332.795 346.352 321.988 340.082Z"
       fill="#10162F"
       stroke="#10162F"
-      strokeWidth="2"
       strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <path
       d="M318.877 312.182L331.701 304.775L336.495 314.917L341.246 325.101L323.628 322.365L306.01 319.588L318.877 312.182Z"
       fill="#F5FCFF"
       stroke="#10162F"
-      strokeWidth="2"
       strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <path
       d="M489.967 524.009L402.296 473.511C393.887 468.63 394.938 460.045 404.651 454.406C414.406 448.767 429.291 448.136 437.743 453.018L525.414 503.515C533.824 508.397 532.773 516.981 523.059 522.62C513.304 528.217 498.419 528.722 489.967 524.009Z"
       fill="#10162F"
       stroke="#10162F"
-      strokeWidth="2"
       strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <path
       d="M422.29 451.224C429.217 451.267 435.43 452.933 439.87 455.539C444.336 458.16 446.833 461.608 446.81 465.191C446.788 468.774 444.248 472.191 439.749 474.755C435.277 477.305 429.044 478.892 422.117 478.849C415.189 478.805 408.977 477.14 404.537 474.534C400.071 471.913 397.574 468.464 397.596 464.881C397.619 461.299 400.159 457.882 404.658 455.317C409.13 452.767 415.363 451.18 422.29 451.224Z"
@@ -134,8 +134,8 @@ export const StackedPagesVariant: React.FC<IllustrationProps> = ({
       d="M327.409 448.262L415.08 498.76C423.489 503.641 422.438 512.226 412.725 517.865C402.97 523.504 388.084 524.093 379.633 519.253L291.962 468.756C283.552 463.874 284.603 455.248 294.359 449.651C304.072 444.054 318.957 443.465 327.409 448.262Z"
       fill="#10162F"
       stroke="#10162F"
-      strokeWidth="2"
       strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <path
       d="M394.322 493.062C401.25 493.105 407.462 494.771 411.902 497.376C416.368 499.997 418.865 503.446 418.843 507.029C418.82 510.612 416.28 514.028 411.781 516.593C407.309 519.143 401.076 520.73 394.149 520.686C387.222 520.643 381.009 518.977 376.569 516.372C372.103 513.751 369.606 510.302 369.629 506.719C369.651 503.137 372.191 499.72 376.69 497.155C381.162 494.605 387.395 493.018 394.322 493.062Z"
@@ -159,8 +159,8 @@ export const StackedPagesVariant: React.FC<IllustrationProps> = ({
       d="M451.329 445.748L2 186.106L320.643 2L769.972 261.6L451.329 445.748Z"
       fill="#F5FCFF"
       stroke="#10162F"
-      strokeWidth="2"
       strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <path
       d="M333.286 23.3433C333.305 20.2058 328.916 17.6347 323.482 17.6005C318.048 17.5663 313.627 20.0821 313.607 23.2195C313.588 26.357 317.977 28.9281 323.411 28.9623C328.845 28.9964 333.266 26.4807 333.286 23.3433Z"
@@ -177,8 +177,8 @@ export const StackedPagesVariant: React.FC<IllustrationProps> = ({
     <path
       d="M285.409 22.3242L734.738 281.966"
       stroke="#10162F"
-      strokeWidth="2"
       strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <path
       d="M428.012 367.543L118.707 188.273L289.868 91.834L599.173 271.081L428.012 367.543Z"
@@ -191,14 +191,14 @@ export const StackedPagesVariant: React.FC<IllustrationProps> = ({
     <path
       d="M429.971 371.307L119.149 189.852L295.416 89.3613"
       stroke="#10162F"
-      strokeWidth="2"
       strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <path
       d="M118.853 190.355H350.077L366.896 236.645L544.046 232.689"
       stroke="#10162F"
-      strokeWidth="2"
       strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <path
       d="M541.818 241.148L556.114 232.437L541.439 224.357L541.818 241.148Z"
@@ -206,37 +206,37 @@ export const StackedPagesVariant: React.FC<IllustrationProps> = ({
     />
     <defs>
       <pattern
+        height="0.290852"
         id="pattern0_5203_6616"
         patternContentUnits="objectBoundingBox"
         width="0.168034"
-        height="0.290852"
       >
         <use
-          xlinkHref="#image0_5203_6616"
           transform="scale(0.00262554 0.00454456)"
+          xlinkHref="#image0_5203_6616"
         />
       </pattern>
       <pattern
+        height="0.232129"
         id="pattern1_5203_6616"
         patternContentUnits="objectBoundingBox"
         width="0.133204"
-        height="0.232129"
       >
         <use
-          xlinkHref="#image1_5203_6616"
           transform="scale(0.00208131 0.00362701)"
+          xlinkHref="#image1_5203_6616"
         />
       </pattern>
       <image
+        height="64"
         id="image0_5203_6616"
         width="64"
-        height="64"
         xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACiSURBVHgB7dQxCoNAFEVRp0uRIlXILrL/1RkI6X4EERVn3jlgIzpTvdsez/c8AamaBkA0DYBsGgDZNACyaQBk0wDIpgGQTQMI16Zc7XZ/tdQGzL+HeEkN+G6+vAxpgM2zYOQG/N18+WjQBtg8K43UgFWbLz8N0gCbZ6OeG7Bp8+WQThtg8+ykpwbssvlyaCcNsHkOcuUGHLL5cslFG2DzcI4PilgkjJTX9d4AAAAASUVORK5CYII="
       />
       <image
+        height="64"
         id="image1_5203_6616"
         width="64"
-        height="64"
         xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABaSURBVHgB7dYxFYAwEETBAwWpeLgA/94gUZCkv5tpV8D+aNfTYyH7DgCV6QAAqEsHAEBdOgAA6tIBAFCXDgCAtNr9Hqv9TP/zf/8CAHLa/Xz6Dtj+vA4AgJkB1/FbAh0XTNkAAAAASUVORK5CYII="
       />
     </defs>

@@ -136,12 +136,12 @@ const DefaultExample = (args: DefaultExampleProps) => {
           size: 4,
         },
       ]}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
       submit={{
         contents: 'Submit Me!?',
         size: 4,
+      }}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
       }}
     />
   );
@@ -158,7 +158,6 @@ export const Default: Story = {
 const DisabledInputsExample = () => {
   return (
     <GridForm
-      hideRequiredText
       fields={[
         {
           disabled: true,
@@ -174,13 +173,14 @@ const DisabledInputsExample = () => {
           size: 6,
         },
       ]}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
+      hideRequiredText
       submit={{
         contents: 'Right Submit!?',
         position: 'right',
         size: 12,
+      }}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
       }}
     />
   );
@@ -193,7 +193,6 @@ export const DisabledInputs: Story = {
 const FormattedExample = () => {
   return (
     <GridForm
-      requiredTextProps={{ color: 'danger', variant: 'title-xs' }}
       fields={[
         {
           label: 'Fave Gamut Component',
@@ -243,12 +242,13 @@ const FormattedExample = () => {
           },
         },
       ]}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
+      requiredTextProps={{ color: 'danger', variant: 'title-xs' }}
       submit={{
         contents: 'Submit',
         size: 12,
+      }}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
       }}
     />
   );
@@ -263,7 +263,6 @@ const SubmitButtonPositionExample = () => {
     <LayoutGrid gap={8}>
       <Column size={6}>
         <GridForm
-          hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -272,19 +271,19 @@ const SubmitButtonPositionExample = () => {
               size: 12,
             },
           ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
+          hideRequiredText
           submit={{
             contents: 'Right Submit!?',
             position: 'right',
             size: 12,
           }}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
+          }}
         />
       </Column>
       <Column size={6}>
         <GridForm
-          hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -293,19 +292,19 @@ const SubmitButtonPositionExample = () => {
               size: 12,
             },
           ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
+          hideRequiredText
           submit={{
             contents: 'Center Submit!?',
             position: 'center',
             size: 12,
           }}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
+          }}
         />
       </Column>
       <Column size={6}>
         <GridForm
-          hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -314,19 +313,19 @@ const SubmitButtonPositionExample = () => {
               size: 12,
             },
           ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
+          hideRequiredText
           submit={{
             contents: 'Left Submit!?',
             position: 'left',
             size: 12,
           }}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
+          }}
         />
       </Column>
       <Column size={6}>
         <GridForm
-          hideRequiredText
           fields={[
             {
               label: 'Simple text',
@@ -335,13 +334,14 @@ const SubmitButtonPositionExample = () => {
               size: 12,
             },
           ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
+          hideRequiredText
           submit={{
             contents: 'Stretch Submit!?',
             position: 'stretch',
             size: 12,
+          }}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
           }}
         />
       </Column>
@@ -357,7 +357,6 @@ const SubmitButtonOptionsExample = () => {
   return (
     <>
       <GridForm
-        hideRequiredText
         fields={[
           {
             label: 'Simple text',
@@ -366,16 +365,16 @@ const SubmitButtonOptionsExample = () => {
             type: 'text',
           },
         ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
+        hideRequiredText
         submit={{
           contents: 'Fill Button',
           size: 12,
         }}
+        onSubmit={(values) => {
+          action('Form Submitted')(values);
+        }}
       />
       <GridForm
-        hideRequiredText
         fields={[
           {
             label: 'Simple text',
@@ -384,17 +383,17 @@ const SubmitButtonOptionsExample = () => {
             type: 'text',
           },
         ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
+        hideRequiredText
         submit={{
           type: 'cta',
           contents: 'CTA Button',
           size: 12,
         }}
+        onSubmit={(values) => {
+          action('Form Submitted')(values);
+        }}
       />
       <GridForm
-        hideRequiredText
         fields={[
           {
             label: 'Simple text',
@@ -403,17 +402,17 @@ const SubmitButtonOptionsExample = () => {
             type: 'text',
           },
         ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
+        hideRequiredText
         submit={{
           contents: 'Fill Button Dark Mode',
           size: 12,
           mode: 'dark',
         }}
+        onSubmit={(values) => {
+          action('Form Submitted')(values);
+        }}
       />
       <GridForm
-        hideRequiredText
         fields={[
           {
             label: 'Simple text',
@@ -422,14 +421,15 @@ const SubmitButtonOptionsExample = () => {
             type: 'text',
           },
         ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
+        hideRequiredText
         submit={{
           type: 'cta',
           contents: 'CTA Button Dark Mode',
           size: 12,
           mode: 'dark',
+        }}
+        onSubmit={(values) => {
+          action('Form Submitted')(values);
         }}
       />
     </>
@@ -452,13 +452,13 @@ const InlineExample = () => {
           type: 'text',
         },
       ]}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
       submit={{
         contents: 'Inline Submit!?',
         size: 4,
         position: 'right',
+      }}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
       }}
     />
   );
@@ -471,7 +471,10 @@ export const InlineSubmit: Story = {
 const CancelButtonExample = () => {
   return (
     <GridForm
-      hideRequiredText
+      cancel={{
+        children: 'Cancel',
+        onClick: () => {},
+      }}
       fields={[
         {
           label: 'Simple text',
@@ -480,17 +483,14 @@ const CancelButtonExample = () => {
           size: 12,
         },
       ]}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
-      cancel={{
-        children: 'Cancel',
-        onClick: () => {},
-      }}
+      hideRequiredText
       submit={{
         contents: 'Right Submit!?',
         position: 'right',
         size: 12,
+      }}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
       }}
     />
   );
@@ -552,12 +552,12 @@ const CustomInputsExample = () => {
           type: 'custom-group',
         },
       ]}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
       submit={{
         contents: 'Submit Me!?',
         size: 12,
+      }}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
       }}
     />
   );
@@ -570,7 +570,6 @@ export const CustomInputs: Story = {
 const PlaceholderTextExample = () => {
   return (
     <GridForm
-      hideRequiredText
       fields={[
         {
           label: 'Email',
@@ -580,12 +579,13 @@ const PlaceholderTextExample = () => {
           size: 12,
         },
       ]}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
+      hideRequiredText
       submit={{
         contents: 'Submit Me!?',
         size: 6,
+      }}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
       }}
     />
   );
@@ -601,7 +601,6 @@ const OnFieldUpdateExample = () => {
     <>
       <>The text value is: {text}</>
       <GridForm
-        hideRequiredText
         fields={[
           {
             label: 'Text with onUpdate',
@@ -611,12 +610,13 @@ const OnFieldUpdateExample = () => {
             onUpdate: setText,
           },
         ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
+        hideRequiredText
         submit={{
           contents: 'Submit Me!?',
           size: 12,
+        }}
+        onSubmit={(values) => {
+          action('Form Submitted')(values);
         }}
       />
     </>
@@ -709,12 +709,12 @@ const InfoTipExample = () => {
             },
           },
         ]}
-        onSubmit={(values) => {
-          action('Form Submitted')(values);
-        }}
         submit={{
           contents: 'Submit',
           size: 12,
+        }}
+        onSubmit={(values) => {
+          action('Form Submitted')(values);
         }}
       />
     </>
@@ -728,7 +728,6 @@ export const InfoTip: Story = {
 const SectionsExample = () => {
   return (
     <GridForm
-      requiredTextProps={{ color: 'primary', fontStyle: 'italic' }}
       fields={[
         {
           title: 'first section',
@@ -810,14 +809,15 @@ const SectionsExample = () => {
           ],
         },
       ]}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
+      requiredTextProps={{ color: 'primary', fontStyle: 'italic' }}
       submit={{
         contents: 'Submit me',
         size: 12,
       }}
       validation="onSubmit"
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
     />
   );
 };
@@ -845,12 +845,12 @@ const CustomErrorExample = () => {
           },
         },
       ]}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
       submit={{
         contents: 'Submit Me!?',
         size: 12,
+      }}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
       }}
     />
   );
@@ -876,12 +876,12 @@ const HiddenInputExample = () => {
           size: 12,
         },
       ]}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
       submit={{
         contents: 'Submit',
         size: 12,
+      }}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
       }}
     />
   );
@@ -894,7 +894,6 @@ export const HiddenInput: Story = {
 const SweetContainerExample = () => {
   return (
     <GridForm
-      hideRequiredText
       fields={[
         {
           label: 'This is our sticky sweet label',
@@ -908,12 +907,13 @@ const SweetContainerExample = () => {
           size: 12,
         },
       ]}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
+      hideRequiredText
       submit={{
         contents: 'Submit',
         size: 12,
+      }}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
       }}
     />
   );
@@ -938,12 +938,12 @@ const MarkdownErrorsExample = () => {
           size: 12,
         },
       ]}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
       submit={{
         contents: 'Submit',
         size: 12,
+      }}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
       }}
     />
   );
@@ -1004,13 +1004,13 @@ const CheckboxSpacingExample = () => {
           spacing: 'tight',
         },
       ]}
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
       submit={{
         contents: 'Submit',
         position: 'right',
         size: 12,
+      }}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
       }}
     />
   );
@@ -1025,7 +1025,6 @@ const LoadingAndDisabledExample = () => {
     <>
       <Background bg="beige" p={32}>
         <GridForm
-          hideRequiredText
           fields={[
             {
               label: 'Email',
@@ -1035,19 +1034,19 @@ const LoadingAndDisabledExample = () => {
               size: 12,
             },
           ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
+          hideRequiredText
           submit={{
             loading: true,
             contents: 'Submit Me!?',
             size: 12,
           }}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
+          }}
         />
       </Background>
       <Background bg="navy" p={32}>
         <GridForm
-          hideRequiredText
           fields={[
             {
               label: 'Email',
@@ -1057,13 +1056,14 @@ const LoadingAndDisabledExample = () => {
               size: 12,
             },
           ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
+          hideRequiredText
           submit={{
             disabled: true,
             contents: 'Submit Me!?',
             size: 12,
+          }}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
           }}
         />
       </Background>
@@ -1080,7 +1080,6 @@ const DisabledFieldsOnSubmitExample = () => {
     <>
       <Background bg="palePink" p={32}>
         <GridForm
-          hideRequiredText
           disableFieldsOnSubmit
           fields={[
             {
@@ -1098,20 +1097,19 @@ const DisabledFieldsOnSubmitExample = () => {
               size: 12,
             },
           ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
+          hideRequiredText
           submit={{
             contents: 'Submit Me 💖',
             size: 12,
+          }}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
           }}
         />
       </Background>
       <Background bg="black" p={32}>
         <GridForm
-          hideRequiredText
           disableFieldsOnSubmit
-          wasSubmitSuccessful={false}
           fields={[
             {
               label: 'Email',
@@ -1124,18 +1122,19 @@ const DisabledFieldsOnSubmitExample = () => {
               size: 12,
             },
           ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
+          hideRequiredText
           submit={{
             contents: 'Submit Me 😈',
             size: 12,
+          }}
+          wasSubmitSuccessful={false}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
           }}
         />
       </Background>
       <Background bg="paleBlue" p={32}>
         <GridForm
-          hideRequiredText
           disableFieldsOnSubmit
           fields={[
             {
@@ -1153,12 +1152,13 @@ const DisabledFieldsOnSubmitExample = () => {
               size: 12,
             },
           ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
+          hideRequiredText
           submit={{
             contents: 'Submit Me 🤷🏻',
             size: 12,
+          }}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
           }}
         />
       </Background>
@@ -1175,8 +1175,6 @@ const ResetOnSubmitExample = () => {
     <>
       <Background bg="beige" p={32}>
         <GridForm
-          hideRequiredText
-          resetOnSubmit
           fields={[
             {
               label: 'Email',
@@ -1193,12 +1191,14 @@ const ResetOnSubmitExample = () => {
               size: 12,
             },
           ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
+          hideRequiredText
+          resetOnSubmit
           submit={{
             contents: 'Submit Me 💖',
             size: 12,
+          }}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
           }}
         />
       </Background>
@@ -1225,9 +1225,7 @@ export const FormLoadingExample = () => {
   return (
     <Background bg="navy" p={32}>
       <GridForm
-        hideRequiredText
         disableFieldsOnSubmit
-        resetOnSubmit
         fields={[
           {
             label: 'Email',
@@ -1246,12 +1244,14 @@ export const FormLoadingExample = () => {
             size: 12,
           },
         ]}
-        onSubmit={onSubmit}
+        hideRequiredText
+        resetOnSubmit
         submit={{
           loading,
           contents: 'Submit Me 💖',
           size: 5,
         }}
+        onSubmit={onSubmit}
       />
     </Background>
   );
@@ -1266,7 +1266,6 @@ const HideRequiredTextExample = () => {
     <>
       <Background bg="paleBlue" p={32}>
         <GridForm
-          hideRequiredText
           fields={[
             {
               label: 'A field',
@@ -1283,12 +1282,13 @@ const HideRequiredTextExample = () => {
               size: 12,
             },
           ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
+          hideRequiredText
           submit={{
             contents: 'Submit Me 💖',
             size: 12,
+          }}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
           }}
         />
       </Background>
@@ -1317,12 +1317,12 @@ const SoloFieldExample = () => {
               },
             },
           ]}
-          onSubmit={(values) => {
-            action('Form Submitted')(values);
-          }}
           submit={{
             contents: 'Submit Me 💖',
             size: 12,
+          }}
+          onSubmit={(values) => {
+            action('Form Submitted')(values);
           }}
         />
       </Background>

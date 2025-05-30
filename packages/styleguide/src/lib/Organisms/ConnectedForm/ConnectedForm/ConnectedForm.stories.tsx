@@ -57,14 +57,14 @@ export const RadioWatchExample = () => {
 
   return (
     <ConnectedForm
+      resetOnSubmit
+      onError={(errors) => errors}
       onSubmit={({ checkbox, radioGroup }) => {
         setLastFormValues({
           checkbox: `${checkbox}`,
           radioGroup: `${radioGroup}`,
         });
       }}
-      onError={(errors) => errors}
-      resetOnSubmit
       {...connectedFormProps}
     >
       <Text as="code" lineHeight="base" mb={24}>
@@ -72,19 +72,17 @@ export const RadioWatchExample = () => {
         {lastFormValues.radioGroup}!
       </Text>
       <ConnectedFormGroup
-        name="checkbox"
-        label="a special checkbox"
-        spacing="tight"
         field={{
           component: ConnectedCheckbox,
           label: 'check me to view the radio',
           spacing: 'tight',
         }}
+        label="a special checkbox"
+        name="checkbox"
+        spacing="tight"
       />
       {showRadio && (
         <ConnectedFormGroup
-          name="radioGroup"
-          label="cool radiogroup bruh"
           field={{
             component: ConnectedRadioGroupInput,
             options: [
@@ -93,6 +91,8 @@ export const RadioWatchExample = () => {
               { label: 'zero', value: 'zero' },
             ],
           }}
+          label="cool radiogroup bruh"
+          name="radioGroup"
         />
       )}
       <SubmitButton m={8}>submit the form, please</SubmitButton>
@@ -146,50 +146,48 @@ const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
 
   return (
     <ConnectedForm
+      alignItems="center"
+      display="flex"
+      flexDirection="column"
+      justifyContent="space-between"
+      minHeight="50rem"
       onSubmit={(values) => {
         action('Form Submitted')(values);
       }}
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="space-between"
-      minHeight="50rem"
       {...connectedFormProps}
       {...connectedForm}
     >
       <SubmitButton m={8}>submit this form</SubmitButton>
       <FormRequiredText />
       <ConnectedFormGroup
-        name="checkboxField"
-        label="checkbox field"
         field={{
           component: ConnectedCheckbox,
           label: <div>check it ouuut</div>,
           'aria-label': 'aria label',
         }}
+        label="checkbox field"
+        name="checkboxField"
         {...connectedFormGroup}
       />
       <ConnectedFormGroup
-        name="selectField"
-        label="select field"
         field={{
           component: ConnectedSelect,
           options: ['one', 'two', 'zero'],
         }}
+        label="select field"
+        name="selectField"
         {...connectedFormGroup}
       />
       <ConnectedFormGroup
-        name="inputField"
-        label="input field"
         field={{
           component: ConnectedInput,
           icon: TerminalIcon,
         }}
+        label="input field"
+        name="inputField"
         {...connectedFormGroup}
       />
       <ConnectedFormGroup
-        name="radioGroupField"
-        label="radio group field"
         field={{
           component: ConnectedRadioGroupInput,
           options: [
@@ -228,14 +226,16 @@ const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
             },
           ],
         }}
+        label="radio group field"
+        name="radioGroupField"
         {...connectedFormGroup}
       />
       <ConnectedFormGroup
-        name="textAreaField"
-        label="text area field"
         field={{
           component: ConnectedTextArea,
         }}
+        label="text area field"
+        name="textAreaField"
         {...connectedFormGroup}
       />
     </ConnectedForm>

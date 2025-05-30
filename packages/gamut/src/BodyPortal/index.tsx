@@ -41,7 +41,7 @@ export const BodyPortal: React.FC<React.PropsWithChildren<BodyPortalProps>> = ({
   if (!ready) return null;
 
   return ReactDOM.createPortal(
-    <PortalWrapper mode={mode} alwaysSetVariables zIndex={zIndex}>
+    <PortalWrapper alwaysSetVariables mode={mode} zIndex={zIndex}>
       {children}
     </PortalWrapper>,
     document.body

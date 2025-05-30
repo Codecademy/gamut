@@ -5,59 +5,59 @@ import { IllustrationProps } from './types';
 export const Onboarding: React.FC<IllustrationProps> = (props) => (
   <svg
     aria-hidden={props['aria-hidden']}
-    xmlns-x="ns_extend;"
-    xmlns-i="ns_ai;"
-    xmlns-graph="ns_graphs;"
-    x="0px"
-    y="0px"
-    viewBox="0 0 587.4 387.63"
     style={
       {
         enableBackground: 'new 0 0 587.4 387.63',
       } as any
     }
+    viewBox="0 0 587.4 387.63"
+    x="0px"
     xmlSpace="preserve"
+    xmlns-graph="ns_graphs;"
+    xmlns-i="ns_ai;"
+    xmlns-x="ns_extend;"
+    y="0px"
     {...props}
   >
     <defs>
       <style
-        type="text/css"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html:
             '.st0{fill:none;}.st1{fill:#1557FF;}.st2{fill:#10172E;stroke:#10172E;stroke-miterlimit:10;}.st3{fill:#10172E;}.st4{fill:url(#New_Pattern_2);}.st5{fill:none;stroke:#10172E;stroke-miterlimit:10;}.st6{fill:#F5FCFF;stroke:#10172E;stroke-miterlimit:10;}.st7{fill:#1557FF;stroke:#10172E;stroke-miterlimit:10;}.st8{fill:#65C4FF;stroke:#10172E;stroke-miterlimit:10;}.st9{fill:#FFFFFF;stroke:#10172E;stroke-miterlimit:10;}.st10{stroke:#10172E;stroke-miterlimit:10;}.st11{fill:#65C4FF;}.st12{fill:#89D2FF;}.st13{fill:#ADE0FF;}.st14{fill:#D1EEFF;}.st15{fill:#F5FCFF;}',
         }}
+        type="text/css"
       />
     </defs>
     <switch>
       <g>
         <pattern
-          x={1613.69}
-          y={2044.87}
-          width={4}
           height={4}
-          patternUnits="userSpaceOnUse"
           id="New_Pattern_2"
-          viewBox="0 -4 4 4"
+          patternUnits="userSpaceOnUse"
           style={{
             overflow: 'visible',
           }}
+          viewBox="0 -4 4 4"
+          width={4}
+          x={1613.69}
+          y={2044.87}
         >
           <g>
-            <rect y={-4} className="st0" width={4} height={4} />
-            <rect y={-4} className="st1" width={1} height={1} />
-            <rect x={3} y={-1} className="st0" width={1} height={1} />
-            <rect x={2} y={-2} className="st1" width={1} height={1} />
+            <rect className="st0" height={4} width={4} y={-4} />
+            <rect className="st1" height={1} width={1} y={-4} />
+            <rect className="st0" height={1} width={1} x={3} y={-1} />
+            <rect className="st1" height={1} width={1} x={2} y={-2} />
           </g>
         </pattern>
         <g id="Layer_1">
           <g />
-          <rect x={8395.19} y={-3253.63} className="st2" width={0} height={0} />
+          <rect className="st2" height={0} width={0} x={8395.19} y={-3253.63} />
           <line
             className="st2"
             x1={8395.19}
-            y1={-3253.63}
             x2={8395.19}
+            y1={-3253.63}
             y2={-3253.63}
           />
           <g>
@@ -75,7 +75,7 @@ export const Onboarding: React.FC<IllustrationProps> = (props) => (
               className="st4"
               points="138.99,137.66 377.22,275.21 517.05,194.04 278.27,57.99  "
             />
-            <line className="st5" x1={0.25} y1={219.85} x2={377.15} y2={0.43} />
+            <line className="st5" x1={0.25} x2={377.15} y1={219.85} y2={0.43} />
             <polygon
               className="st6"
               points="75.55,146.85 313.78,284.4 452.74,204.11 214.51,66.55  "
@@ -187,29 +187,29 @@ export const Onboarding: React.FC<IllustrationProps> = (props) => (
             <line
               className="st10"
               x1={186.39}
-              y1={387.19}
               x2={587.15}
+              y1={387.19}
               y2={153.56}
             />
             <line
               className="st5"
               x1={301.89}
-              y1={44.18}
               x2={540.87}
+              y1={44.18}
               y2={181.01}
             />
             <line
               className="st5"
               x1={48.14}
-              y1={192.06}
               x2={287.11}
+              y1={192.06}
               y2={328.88}
             />
             <line
               className="st0"
               x1={278.27}
-              y1={58.18}
               x2={517.24}
+              y1={58.18}
               y2={194.13}
             />
             <g>
@@ -322,9 +322,9 @@ export const Onboarding: React.FC<IllustrationProps> = (props) => (
             </g>
           </g>
           <g>
-            <rect x={607.4} className="st1" width={1} height={1} />
-            <rect x={610.4} y={3} className="st0" width={1} height={1} />
-            <rect x={609.4} y={2} className="st1" width={1} height={1} />
+            <rect className="st1" height={1} width={1} x={607.4} />
+            <rect className="st0" height={1} width={1} x={610.4} y={3} />
+            <rect className="st1" height={1} width={1} x={609.4} y={2} />
           </g>
         </g>
         <g id="Layer_2" />

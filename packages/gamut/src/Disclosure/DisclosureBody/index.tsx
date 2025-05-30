@@ -27,7 +27,7 @@ export const DisclosureBody: React.FC<DisclosureBodyProps> = ({
       mt={4}
       mx={horizontalSpacing}
     >
-      <Text width="100%" lineHeight={getLineHeight}>
+      <Text lineHeight={getLineHeight} width="100%">
         {body}
       </Text>
       {buttonRequirements &&

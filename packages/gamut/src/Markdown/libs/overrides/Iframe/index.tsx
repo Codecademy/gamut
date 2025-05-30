@@ -23,10 +23,10 @@ export const Iframe: FunctionComponent<IframeProps> = (props) => {
     return (
       <Video
         height={props?.height}
-        width={props?.width}
-        videoUrl={props?.src}
-        videoTitle={props?.title}
         showPlayerEmbed={props?.showPlayerEmbed}
+        videoTitle={props?.title}
+        videoUrl={props?.src}
+        width={props?.width}
       />
     );
   }

@@ -147,9 +147,9 @@ export const ShownOptionsDefault: Story = {
   render: (args) => (
     <Box height="22rem">
       <FormGroup
-        label="i have the default shownOptionsLimit"
         htmlFor="shownOptionsLimit01"
         isSoloField
+        label="i have the default shownOptionsLimit"
       >
         <SelectDropdown {...args} />
       </FormGroup>
@@ -179,9 +179,9 @@ export const ShownOptionsThree: Story = {
   render: (args) => (
     <Box height="15rem">
       <FormGroup
-        label="i have three shownOptionsLimit"
         htmlFor="shownOptionsLimit02"
         isSoloField
+        label="i have three shownOptionsLimit"
       >
         <SelectDropdown {...args} />
       </FormGroup>
@@ -212,9 +212,9 @@ export const DisabledOptions: Story = {
   render: (args) => (
     <Box height="15rem">
       <FormGroup
-        label="I might have disabled options"
         htmlFor="disabled-dropdown"
         isSoloField
+        label="I might have disabled options"
       >
         <SelectDropdown {...args} />
       </FormGroup>
@@ -247,9 +247,9 @@ export const Subtitles: Story = {
   render: (args) => (
     <Box height="18rem">
       <FormGroup
-        label="I have subtitle options"
         htmlFor="subtitles-dropdown"
         isSoloField
+        label="I have subtitle options"
       >
         <SelectDropdown {...args} />
       </FormGroup>
@@ -282,9 +282,9 @@ export const RightLabels: Story = {
   render: (args) => (
     <Box height="15rem">
       <FormGroup
-        label="I have right label options"
         htmlFor="right-labels-dropdown"
         isSoloField
+        label="I have right label options"
       >
         <SelectDropdown {...args} />
       </FormGroup>
@@ -340,9 +340,9 @@ export const GroupDividers: Story = {
   render: (args) => (
     <Box height="24rem">
       <FormGroup
-        label="I have group dividers"
         htmlFor="dividers-dropdown"
         isSoloField
+        label="I have group dividers"
       >
         <SelectDropdown {...args} />
       </FormGroup>
@@ -399,9 +399,9 @@ export const GroupLabels: Story = {
   render: (args) => (
     <Box height="24rem">
       <FormGroup
-        label="I have group labels"
         htmlFor="group-labels-dropdown"
         isSoloField
+        label="I have group labels"
       >
         <SelectDropdown {...args} />
       </FormGroup>
@@ -432,7 +432,7 @@ export const Icons: Story = {
   },
   render: (args) => (
     <Box height="15rem">
-      <FormGroup label="i have pizzazz" htmlFor="pizzaz-dropdown" isSoloField>
+      <FormGroup htmlFor="pizzaz-dropdown" isSoloField label="i have pizzazz">
         <SelectDropdown {...args} />
       </FormGroup>
     </Box>
@@ -448,7 +448,7 @@ export const CustomInputProps: Story = {
   },
   render: (args) => (
     <Box height="15rem">
-      <FormGroup label="i am ~styled" htmlFor="what" isSoloField>
+      <FormGroup htmlFor="what" isSoloField label="i am ~styled">
         <SelectDropdown {...args} />
       </FormGroup>
     </Box>
@@ -477,9 +477,9 @@ export const MultipleSelect: Story = {
   render: (args) => (
     <Box height="15rem">
       <FormGroup
-        label="I have multiple select options"
         htmlFor="multi-dropdown"
         isSoloField
+        label="I have multiple select options"
       >
         <SelectDropdown {...args} />
       </FormGroup>
@@ -496,10 +496,10 @@ export const FormGroupSelectDropdown: Story = {
   render: (args) => (
     <Box height="15rem">
       <FormGroup
-        label="i am big label"
-        labelSize="large"
         htmlFor="big-label"
         isSoloField
+        label="i am big label"
+        labelSize="large"
       >
         <SelectDropdown {...args} />
       </FormGroup>
@@ -516,10 +516,10 @@ export const FormGroupError: Story = {
   render: (args) => (
     <Box height="15rem">
       <FormGroup
-        label="i am ~styled... but something is wrong"
         error="error message!! no :'("
         htmlFor="error"
         isSoloField
+        label="i am ~styled... but something is wrong"
       >
         <SelectDropdown error {...args} />
       </FormGroup>
