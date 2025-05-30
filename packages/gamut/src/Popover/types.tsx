@@ -50,7 +50,7 @@ export type PopoverXPositionType = {
   /**
    * Which side to position the beak. If not provided, beak will not be rendered.Position `center` Popovers can only be used with `center` beaks.
    */
-  beak: 'center';
+  beak?: 'center';
 };
 
 export type PopoverBaseProps =
