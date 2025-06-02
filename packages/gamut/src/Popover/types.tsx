@@ -61,9 +61,9 @@ export type PopoverXPositionType = {
   pattern?: never;
 };
 
-export type PopoverBaseProps =
-  | (PopoverFocusProps & PopoverYPositionType)
-  | (PopoverFocusProps & PopoverXPositionType);
+type PopoverPositionType = PopoverYPositionType | PopoverXPositionType;
+
+export type PopoverBaseProps = PopoverPositionType & PopoverFocusProps;
 
 export type PopoverProps = PopoverBaseProps &
   PopoverVariants &

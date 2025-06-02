@@ -60,7 +60,7 @@ export const Default: Story = {
 };
 
 export const Beak: Story = {
-  render: (args) => <PopoverExample {...args} beak="left" />,
+  render: (args) => <PopoverExample {...args} beak="left" position="below" />,
 };
 
 export const BeakCentered: Story = {
@@ -76,26 +76,61 @@ export const Above: Story = {
 };
 
 export const Below: Story = {
-  render: (args) => <PopoverExample {...args} />,
+  render: (args) => <PopoverExample {...args} position="below" />,
+};
+export const CenterLeft: Story = {
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      align="left"
+      beak="center"
+      pattern={undefined}
+      position="center"
+    />
+  ),
+};
+
+export const CenterRight: Story = {
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      align="right"
+      beak="center"
+      pattern={undefined}
+      position="center"
+    />
+  ),
 };
 
 export const PopoverCheckerDense: Story = {
-  render: (args) => <PopoverExample {...args} pattern={CheckerDense} />,
+  render: (args) => (
+    <PopoverExample {...args} pattern={CheckerDense} position="below" />
+  ),
 };
 export const PopoverCheckerLoose: Story = {
-  render: (args) => <PopoverExample {...args} pattern={CheckerLoose} />,
+  render: (args) => (
+    <PopoverExample {...args} pattern={CheckerLoose} position="below" />
+  ),
 };
 export const PopoverCheckerRegular: Story = {
-  render: (args) => <PopoverExample {...args} pattern={CheckerRegular} />,
+  render: (args) => (
+    <PopoverExample {...args} pattern={CheckerRegular} position="below" />
+  ),
 };
 export const PopoverDiagonalADense: Story = {
-  render: (args) => <PopoverExample {...args} pattern={DiagonalADense} />,
+  render: (args) => (
+    <PopoverExample {...args} pattern={DiagonalADense} position="below" />
+  ),
 };
 export const PopoverDiagonalALoose: Story = {
-  render: (args) => <PopoverExample {...args} pattern={DiagonalALoose} />,
+  render: (args) => (
+    <PopoverExample {...args} pattern={DiagonalALoose} position="below" />
+  ),
 };
 export const PopoverDiagonalARegular: Story = {
-  render: (args) => <PopoverExample {...args} pattern={DiagonalARegular} />,
+  render: (args) => (
+    <PopoverExample {...args} pattern={DiagonalARegular} position="below" />
+  ),
 };
 
 const PopoverWithoutFocus = (args: PopoverProps) => {
@@ -135,6 +170,12 @@ export const Animation: Story = {
 
 export const Variant: Story = {
   render: (args) => (
-    <PopoverExample beak="left" variant="secondary" {...args} />
+    <PopoverExample
+      {...args}
+      align="center"
+      beak="left"
+      position="above"
+      variant="secondary"
+    />
   ),
 };
