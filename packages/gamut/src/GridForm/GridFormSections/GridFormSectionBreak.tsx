@@ -13,12 +13,12 @@ export const SectionBreak = styled('hr')<HrProps>(hrProps);
 
 export const GridFormSectionBreak: React.FC = () => {
   return (
-    <Column size={12} aria-hidden>
+    <Column aria-hidden size={12}>
       <SectionBreak
-        borderTop="none"
-        borderX="none"
         border={1}
         borderColorBottom="border-primary"
+        borderTop="none"
+        borderX="none"
         data-testid="form-section-break"
         width="100%"
       />

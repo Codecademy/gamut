@@ -18,7 +18,7 @@ export const Default: Story = {
 
 const FormGroupHtmlForExample = () => {
   return (
-    <FormGroup label="I am a label!!" htmlFor="example1">
+    <FormGroup htmlFor="example1" label="I am a label!!">
       <Input htmlFor="example1" />
     </FormGroup>
   );
@@ -57,7 +57,7 @@ export const Error: Story = {
     description: 'You can tell by the asterisk.',
     error: 'You messed up dude.',
     htmlFor: 'required-error',
-    children: <Input defaultValue=">_>" htmlFor="required-error" error />,
+    children: <Input defaultValue=">_>" error htmlFor="required-error" />,
   },
 };
 

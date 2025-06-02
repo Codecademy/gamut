@@ -27,13 +27,13 @@ export const Shimmer: React.FC<BoxProps> = (props) => {
   return (
     <Box {...props}>
       <Box
-        position="relative"
-        fit
         bg="background-disabled"
+        fit
         opacity={0.5}
         overflow="hidden"
+        position="relative"
       >
-        <ShimmerForeground height={1} width={500} position="absolute" />
+        <ShimmerForeground height={1} position="absolute" width={500} />
       </Box>
     </Box>
   );

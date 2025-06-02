@@ -44,13 +44,13 @@ export const Custom: Story = {
   render: (args) => (
     <FlexBox gap={8}>
       <Badge
-        variant="custom"
         background="linear-gradient(91deg, #FFE712 0.08%, #FF9641 100%)"
+        variant="custom"
         {...args}
       />
-      <Badge variant="custom" bg="green" {...args} />
-      <Badge variant="custom" bg="orange-500" {...args} />
-      <Badge variant="custom" bg="lightBlue" {...args} icon={MiniStarIcon} />
+      <Badge bg="green" variant="custom" {...args} />
+      <Badge bg="orange-500" variant="custom" {...args} />
+      <Badge bg="lightBlue" variant="custom" {...args} icon={MiniStarIcon} />
     </FlexBox>
   ),
 };

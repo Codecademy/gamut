@@ -108,16 +108,16 @@ export const InternalFloatingCard = forwardRef<
   ) => (
     <Box
       display={containerDisplay}
+      maxWidth="100%"
       position="relative"
       zIndex={1}
-      maxWidth="100%"
     >
       <Pattern
         dimensions={1}
-        position="absolute"
-        top="0.5rem"
         left={shadow === 'bottomLeft' ? '-0.5rem' : undefined}
+        position="absolute"
         right={shadow === 'bottomRight' ? '-0.5rem' : undefined}
+        top="0.5rem"
       />
       <CardBody className={className} {...rest} ref={ref}>
         {children}

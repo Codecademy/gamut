@@ -18,7 +18,7 @@ const ListRowRenderer: React.FC<ListRowRendererProps> = ({ inputs }) => {
                 {name}
               </Text>
             </ListCol>
-            <ListCol size="lg" fill>
+            <ListCol fill size="lg">
               <LinkTo id={`Atoms/FormInputs/${counterpart}`}>
                 {counterpart}
               </LinkTo>
@@ -32,7 +32,7 @@ const ListRowRenderer: React.FC<ListRowRendererProps> = ({ inputs }) => {
 
 export const ConnectedFormInputsTable = () => {
   return (
-    <Box mx={40} mt={16} mb={40}>
+    <Box mb={40} mt={16} mx={40}>
       <List variant="table">
         <ListRowRenderer
           inputs={[

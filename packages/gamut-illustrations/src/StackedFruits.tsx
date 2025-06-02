@@ -11,22 +11,22 @@ export const StackedFruits: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    width={width}
+    fill="none"
     height={height}
     viewBox="0 0 169 168"
-    fill="none"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
     <rect
-      x="92.8304"
-      y="25"
-      width="77.1218"
-      height="91.7171"
-      transform="rotate(90 92.8304 25)"
       fill="#FF8C00"
+      height="91.7171"
       stroke="white"
       strokeWidth="2"
+      transform="rotate(90 92.8304 25)"
+      width="77.1218"
+      x="92.8304"
+      y="25"
     />
     <path
       d="M92.8304 38.8269L92.8304 102.122L1.11335 102.122L1.11336 38.8269L92.8304 38.8269Z"
@@ -53,14 +53,14 @@ export const StackedFruits: React.FC<IllustrationProps> = ({
       strokeWidth="2"
     />
     <rect
-      x="167.113"
-      y="71.3538"
-      width="77.1218"
-      height="91.7171"
-      transform="rotate(90 167.113 71.3538)"
       fill="#FF8C00"
+      height="91.7171"
       stroke="white"
       strokeWidth="2"
+      transform="rotate(90 167.113 71.3538)"
+      width="77.1218"
+      x="167.113"
+      y="71.3538"
     />
     <path
       d="M167.113 85.1807L167.113 148.475L75.3961 148.475L75.3961 85.1807L167.113 85.1807Z"
@@ -101,8 +101,8 @@ export const StackedFruits: React.FC<IllustrationProps> = ({
     <circle
       cx="46.7003"
       cy="71.4254"
-      r="19.5023"
       fill="#10162F"
+      r="19.5023"
       stroke="white"
       strokeWidth="2"
     />

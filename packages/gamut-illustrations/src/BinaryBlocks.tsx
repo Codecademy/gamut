@@ -11,10 +11,10 @@ export const BinaryBlocks: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    width={width}
+    fill="none"
     height={height}
     viewBox="0 0 174 121"
-    fill="none"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Binary Blocks Icon</title>
@@ -67,30 +67,30 @@ export const BinaryBlocks: React.FC<IllustrationProps> = ({
       fill="url(#pattern2)"
     />
     <rect
+      fill="#FFF0E5"
+      height="21.198"
+      width="14.132"
       x="52.1115"
       y="90.0914"
-      width="14.132"
-      height="21.198"
-      fill="#FFF0E5"
     />
     <rect
+      fill="#FFF0E5"
+      height="21.198"
+      width="14.132"
       x="52.1115"
       y="9.71582"
-      width="14.132"
-      height="21.198"
-      fill="#FFF0E5"
     />
     <path
       d="M99.2002 53.3768C98.4602 54.9568 97.2802 55.2168 94.8602 55.2768V56.5368H98.5602V66.2968H94.8602V67.8768H103.44V66.2968H100.4V53.3768H99.2002Z"
       fill="#10162F"
     />
     <rect
-      x="134.771"
-      y="87.1473"
-      width="14.132"
+      fill="#FFF0E5"
       height="21.198"
       transform="rotate(-30 134.771 87.1473)"
-      fill="#FFF0E5"
+      width="14.132"
+      x="134.771"
+      y="87.1473"
     />
     <path
       d="M143.937 87.2624C144.086 89.0007 143.194 89.8158 141.128 91.0778L141.758 92.169L144.963 90.319L149.843 98.7714L146.638 100.621L147.428 101.99L154.859 97.6997L154.069 96.3314L151.436 97.8514L144.976 86.6624L143.937 87.2624Z"
@@ -118,33 +118,33 @@ export const BinaryBlocks: React.FC<IllustrationProps> = ({
     />
     <defs>
       <pattern
+        height="0.210043"
         id="pattern0"
         patternContentUnits="objectBoundingBox"
         width="0.215571"
-        height="0.210043"
       >
-        <use xlinkHref="#image0" transform="scale(0.0269463 0.0262554)" />
+        <use transform="scale(0.0269463 0.0262554)" xlinkHref="#image0" />
       </pattern>
       <pattern
+        height="0.210639"
         id="pattern1"
         patternContentUnits="objectBoundingBox"
         width="0.215654"
-        height="0.210639"
       >
-        <use xlinkHref="#image0" transform="scale(0.0269568 0.0263299)" />
+        <use transform="scale(0.0269568 0.0263299)" xlinkHref="#image0" />
       </pattern>
       <pattern
+        height="0.206505"
         id="pattern2"
         patternContentUnits="objectBoundingBox"
         width="0.211965"
-        height="0.206505"
       >
-        <use xlinkHref="#image0" transform="scale(0.0264956 0.0258131)" />
+        <use transform="scale(0.0264956 0.0258131)" xlinkHref="#image0" />
       </pattern>
       <image
+        height="8"
         id="image0"
         width="8"
-        height="8"
         xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAeSURBVHgBzc4xAQAAAAEwEVxq6J+OGCzBQDk4MzgV8D0CqU26KA8AAAAASUVORK5CYII="
       />
     </defs>

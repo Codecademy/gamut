@@ -74,6 +74,16 @@ You can use a custom icon (from gamut-icons) in your Input elements. The error a
 <Canvas of={InputStories.FormGroupLarge} />
 <Canvas of={InputStories.FormGroupErrorLarge} />
 
+## Size
+
+You can also set the `size` of an input to be `'sm'`. If the `size` prop is omitted, then the input field will have its default padding.
+
+<Canvas of={InputStories.TextSmall} />
+<Canvas of={InputStories.TextSmallError} />
+<Canvas of={InputStories.NumberSmall} />
+<Canvas of={InputStories.FileSmall} />
+<Canvas of={InputStories.DisabledSmall} />
+
 ## iFrame + Input
 
 In order to style iframe Inputs, we leverage the [withComponent](https://styled-components.com/docs/api) API from styled-components and our iFrameWrapper. You will need to do some further work with the iframe to make it behave but this will get you most of the way there.
