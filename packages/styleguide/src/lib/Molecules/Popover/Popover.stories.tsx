@@ -33,7 +33,7 @@ const PopoverExample = ({ p = 16, ...rest }: PopoverExampleProps) => {
   const toggleOpen = () => setOpen(!open);
   return (
     <>
-      <Box ref={activeElRef}>
+      <Box ref={activeElRef} width="fit-content">
         <FillButton onClick={toggleOpen}>Open Popover</FillButton>
       </Box>
       <FlexBox>
