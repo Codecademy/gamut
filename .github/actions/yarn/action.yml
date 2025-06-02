@@ -1,0 +1,14 @@
+name: 'Restore Yarn Cache'
+description: 'Setup a NodeJS environment and restore cache if any, given a node version'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: .nvmrc
+        cache: 'yarn'
+    - name: Install Dependencies
+      run: yarn install --immutable
+      shell: bash
