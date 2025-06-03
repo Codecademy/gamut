@@ -131,14 +131,15 @@ export const Screenreader: Story = {
             </Text>
           </Column>
           <Column size={9}>
-            {variant ?
+            {variant ? (
               <Box aria-labelledby="example-sr-text" role="note" width={4}>
-                <Text aria-hidden id="example-sr-text" screenreader>Visible only to screenreaders</Text>
+                <Text aria-hidden id="example-sr-text" screenreader>
+                  Visible only to screenreaders
+                </Text>
               </Box>
-              : <Text>
-                This text is visible to non-screenreaders.
-              </Text>
-            }
+            ) : (
+              <Text>This text is visible to non-screenreaders.</Text>
+            )}
           </Column>
         </Fragment>
       ))}
