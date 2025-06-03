@@ -2,6 +2,7 @@ import { Alert } from '@codecademy/gamut';
 
 import styled from '@emotion/styled';
 import { css } from '@codecademy/gamut-styles';
+import { ReactNode } from 'react';
 
 const StyledAlert = styled(Alert)(
   css({
@@ -9,7 +10,7 @@ const StyledAlert = styled(Alert)(
   })
 );
 
-export const Callout: React.FC<{ text: string }> = ({ text }) => {
+export const Callout: React.FC<{ text: string | ReactNode }> = ({ text }) => {
   return (
     <StyledAlert type="subtle" placement="inline">
       {text}
