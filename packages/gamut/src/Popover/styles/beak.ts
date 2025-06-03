@@ -106,9 +106,9 @@ export const beakVariantsArray = [
   'above-right-sml',
   'above-center-sml',
   'center-right',
+  'center-left',
   'center-left-sml',
   'center-right-sml',
-  'center-left-sml',
 ];
 
 export const getBeakVariant = ({
@@ -180,7 +180,7 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
       styleObject = { ...styleObject, ...beakRightCenterStylesAfterLrg };
     } else {
       // center-left
-      styleObject = { ...styleObject, ...beakLeftCenterStylesAfterLrg };
+      // styleObject = { ...styleObject, ...beakLeftCenterStylesAfterLrg };
     }
   } else {
     if (isAbove) {
