@@ -1,7 +1,7 @@
 import { states, variant } from '@codecademy/gamut-styles';
 
-import { tooltipArrowHeight } from '../../Tip/shared/styles';
-import { createVariantsFromAlignments } from '../../Tip/shared/styles/composeVariantsUtils';
+import { tooltipArrowHeight } from '../../Tip/shared/styles/styles';
+import { createVariantsFromAlignments } from '../../Tip/shared/styles/createVariantsUtils';
 import { borderStyles } from './base';
 import {
   beakBoxX,

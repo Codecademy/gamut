@@ -1,6 +1,6 @@
 import { states, variant } from '@codecademy/gamut-styles';
 
-import { toolTipBodyCss } from '../../Tip/shared/styles';
+import { toolTipBodyCss } from '../../Tip/shared/styles/styles';
 
 export const transformValues = {
   right: 'translateX(-100%)',

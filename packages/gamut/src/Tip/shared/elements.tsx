@@ -10,7 +10,7 @@ import {
   narrowWidth,
   toolTipBodyCss,
   toolTipWidthRestrictions,
-} from './styles';
+} from './styles/styles';
 
 const tipWrapperStyles = {
   position: 'relative',

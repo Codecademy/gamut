@@ -4,7 +4,7 @@ import {
   beakRightCenterStylesAfter,
   beakTopStylesAfter,
   tooltipBackgroundColor,
-} from '../../Tip/shared/styles';
+} from '../../Tip/shared/styles/styles';
 import { PopoverProps } from '../types';
 
 export const positionAbove = {

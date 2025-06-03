@@ -12,7 +12,7 @@ import {
 import {
   getAlignmentStyles,
   getPopoverAlignmentAndPattern,
-} from './styles/createVariantsUtils';
+} from './styles/composeVariantsUtils';
 import { TipWrapperProps } from './types';
 import { runWithDelay } from './utils';
 

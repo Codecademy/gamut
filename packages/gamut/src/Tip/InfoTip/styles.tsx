@@ -14,7 +14,7 @@ import {
   tooltipArrowHeight,
   tooltipBackgroundColor,
   tooltipVariantStyles,
-} from '../shared/styles';
+} from '../shared/styles/styles';
 import { TipPlacementComponentProps } from '../shared/types';
 
 const textColor = 'secondary';
