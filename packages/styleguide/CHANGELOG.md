@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [74.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@74.1.0...@codecademy/styleguide@74.2.0) (2025-06-03)
+
+### Features
+
+- **Icons:** add new icons for LX Studio platform ([935f58f](https://github.com/Codecademy/gamut/commit/935f58f6fefbe62b7ef1248b146bd95783873d0b))
+
 ## [74.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@74.0.2...@codecademy/styleguide@74.1.0) (2025-05-30)
 
 ### Features
