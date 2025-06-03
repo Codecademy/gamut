@@ -22,11 +22,11 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
       <ColEl
         {...activeVariants}
         {...rest}
-        delimiter={sticky && activeVariants.variant === 'table'}
-        type={isOrderedHeader ? 'orderedHeader' : type}
-        sticky={sticky}
-        ref={ref}
         as={colEl}
+        delimiter={sticky && activeVariants.variant === 'table'}
+        ref={ref}
+        sticky={sticky}
+        type={isOrderedHeader ? 'orderedHeader' : type}
       />
     );
     if (sticky) {

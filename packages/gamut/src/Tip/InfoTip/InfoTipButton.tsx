@@ -35,9 +35,9 @@ export const InfoTipButton = forwardRef<ButtonBaseElements, InfoTipButtonProps>(
       >
         {Icon && (
           <Icon
-            width="calc(100% - 4px)"
-            height="calc(100% - 4px)"
             aria-hidden
+            height="calc(100% - 4px)"
+            width="calc(100% - 4px)"
           />
         )}
         {children}

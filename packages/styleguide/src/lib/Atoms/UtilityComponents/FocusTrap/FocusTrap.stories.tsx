@@ -19,10 +19,10 @@ export const Default: React.FC = () => {
         </FillButton>
         <FocusTrap active={trapActive}>
           <Box
-            p={24}
-            my={24}
             border={1}
             borderColor={trapActive ? 'black' : 'gray-200'}
+            my={24}
+            p={24}
           >
             <GridForm
               fields={[
@@ -39,13 +39,13 @@ export const Default: React.FC = () => {
                   type: 'password',
                 },
               ]}
-              onSubmit={() => {
-                setActive(false);
-              }}
               submit={{
                 contents: 'Disable Focus Trap',
                 position: 'right',
                 size: 12,
+              }}
+              onSubmit={() => {
+                setActive(false);
               }}
             />
           </Box>

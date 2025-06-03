@@ -38,7 +38,7 @@ export const InlineIconButton = forwardRef<
       children,
     });
     return (
-      <Button {...props} variant={variant} ref={ref}>
+      <Button {...props} ref={ref} variant={variant}>
         {content}
       </Button>
     );

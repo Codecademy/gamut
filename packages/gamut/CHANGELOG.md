@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [63.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@63.0.2...@codecademy/gamut@63.1.0) (2025-05-30)
+
+### Features
+
+- **input:** add small size prop ([757d7af](https://github.com/Codecademy/gamut/commit/757d7af1b3abed9f4aef396ad1c2af6c64985b84))
+
+### [63.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@63.0.1...@codecademy/gamut@63.0.2) (2025-05-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [63.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@63.0.0...@codecademy/gamut@63.0.1) (2025-05-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [63.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@62.0.7...@codecademy/gamut@63.0.0) (2025-05-21)
+
+### ⚠ BREAKING CHANGES
+
+- **ToolTip:** remove aria-describedby
+
+### Bug Fixes
+
+- **ToolTip:** remove aria-describedby ([1c676f5](https://github.com/Codecademy/gamut/commit/1c676f5b51896cd3703b802c77bff2e6c2d6347f))
+
 ### [62.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@62.0.6...@codecademy/gamut@62.0.7) (2025-05-16)
 
 **Note:** Version bump only for package @codecademy/gamut

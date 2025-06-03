@@ -10,28 +10,28 @@ export const HomeOffice: React.FC<IllustrationProps> = ({
 }) => (
   <svg
     aria-hidden={ariaHidden}
-    width={width}
-    height={height}
     className={className}
-    viewBox="0 0 640 402"
     fill="none"
+    height={height}
+    viewBox="0 0 640 402"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Home Office Illustration</title>
     <mask
+      height="295"
       id="a"
       maskUnits="userSpaceOnUse"
+      width="219"
       x="348"
       y="0"
-      width="219"
-      height="295"
     >
       <path
         d="M349.424 293.5c0-3.08.13-190.773.382-193.796a107.866 107.866 0 01215.034.995c.202 2.699.303 190.06.303 192.801H349.424z"
         fill="#fff"
         stroke="#10162F"
-        strokeWidth="2"
         strokeMiterlimit="10"
+        strokeWidth="2"
       />
     </mask>
     <g mask="url(#a)" stroke="#10162F" strokeWidth="2">
@@ -47,15 +47,15 @@ export const HomeOffice: React.FC<IllustrationProps> = ({
     <path
       d="M349.424 293.5c0-3.08.13-190.773.382-193.796a107.866 107.866 0 01215.034.995c.202 2.699.303 190.06.303 192.801H349.424z"
       stroke="#10162F"
-      strokeWidth="2"
       strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <path
       d="M416.126 361.82l44.529 26.363v10.139H1v-10.139h1.098l44.53-26.363.253-.338V147.709h368.992v213.773l.253.338z"
       fill="#FFF0E5"
       stroke="#10162F"
-      strokeWidth="2"
       strokeLinejoin="round"
+      strokeWidth="2"
     />
     <path
       d="M404.581 158.259H57.075v194.288H404.58V158.259z"
@@ -67,8 +67,8 @@ export const HomeOffice: React.FC<IllustrationProps> = ({
       d="M460.655 388.183H2.099l44.529-26.363h369.498l44.529 26.363z"
       fill="#FFF0E5"
       stroke="#10162F"
-      strokeWidth="2"
       strokeLinejoin="round"
+      strokeWidth="2"
     />
     <path
       d="M77.915 255.88v51.591H26.324V255.88h51.59zM66.253 186.478v51.591h-51.59v-51.591h51.59z"
@@ -92,18 +92,18 @@ export const HomeOffice: React.FC<IllustrationProps> = ({
       stroke="#10162F"
       strokeWidth="2"
     />
-    <mask id="b" fill="#fff">
+    <mask fill="#fff" id="b">
       <path
-        fillRule="evenodd"
         clipRule="evenodd"
         d="M497.293 332.191v40.08c0 16.017 12.983 29 29 29h17.881c16.016 0 29-12.983 29-29v-40.08h-75.881z"
+        fillRule="evenodd"
       />
     </mask>
     <path
-      fillRule="evenodd"
       clipRule="evenodd"
       d="M497.293 332.191v40.08c0 16.017 12.983 29 29 29h17.881c16.016 0 29-12.983 29-29v-40.08h-75.881z"
       fill="#1557FF"
+      fillRule="evenodd"
     />
     <path
       d="M497.293 332.191v-2h-2v2h2zm75.881 0h2v-2h-2v2zm-73.881 40.08v-40.08h-4v40.08h4zm27 27c-14.912 0-27-12.088-27-27h-4c0 17.121 13.879 31 31 31v-4zm17.881 0h-17.881v4h17.881v-4zm27-27c0 14.912-12.088 27-27 27v4c17.121 0 31-13.879 31-31h-4zm0-40.08v40.08h4v-40.08h-4zm2-2h-75.881v4h75.881v-4z"
@@ -112,17 +112,17 @@ export const HomeOffice: React.FC<IllustrationProps> = ({
     />
     <defs>
       <pattern
+        height=".19"
         id="pattern0"
         patternContentUnits="objectBoundingBox"
         width=".19"
-        height=".19"
       >
-        <use xlinkHref="#image0" transform="scale(.00296)" />
+        <use transform="scale(.00296)" xlinkHref="#image0" />
       </pattern>
       <image
+        height="64"
         id="image0"
         width="64"
-        height="64"
         xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAChSURBVHgB7dgxDoAwDMXQ5P53BoaIARaE2iJa+23p6j81ImKPK9qtk0ugsryKS6CyvIpLoLK8ikugsryKS6CyvIpLoLK8ikugsryKS6CyvIpLoLI8VN4faOW3gLJ8QOXDjSuPWYLlH+5l5csbV37ZJVj+5b2MbLxx5ZdZguUb72ll5xtXftolWL7zPY0cfOPKT7MEyw++fys/vnHlsb/DFwf+rf4QcSN+5wAAAABJRU5ErkJggg=="
       />
     </defs>
