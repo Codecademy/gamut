@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [64.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@63.1.0...@codecademy/gamut@64.0.0) (2025-06-03)
+
+### ⚠ BREAKING CHANGES
+
+- **Tabs:** Update Tabs to use react aria tabs
+
+### Features
+
+- **Tabs:** Update Tabs to use react aria tabs ([eb87396](https://github.com/Codecademy/gamut/commit/eb87396b21e5e696359c8fb49b3cd2b01609e14a))
+
 ## [63.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@63.0.2...@codecademy/gamut@63.1.0) (2025-05-30)
 
 ### Features
