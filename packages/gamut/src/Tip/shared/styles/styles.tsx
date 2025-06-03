@@ -1,8 +1,8 @@
 import { fontSmoothPixel, theme, variant } from '@codecademy/gamut-styles';
 
-import { createVariantsFromAlignments } from './createVariantsUtils';
-import { createToolTipVariantFromAlignment } from './composeVariantsUtils';
 import { tipAlignmentArray } from '../types';
+import { createToolTipVariantFromAlignment } from './composeVariantsUtils';
+import { createVariantsFromAlignments } from './createVariantsUtils';
 
 export const tooltipBackgroundColor = `background-contrast`;
 export const tooltipArrowHeight = `1rem`;

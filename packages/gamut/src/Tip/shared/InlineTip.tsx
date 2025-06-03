@@ -7,8 +7,8 @@ import {
   TipBody,
   ToolTipWrapper,
 } from './elements';
-import { narrowWidth } from './styles/styles';
 import { getAlignmentStyles } from './styles/composeVariantsUtils';
+import { narrowWidth } from './styles/styles';
 import { TipWrapperProps } from './types';
 
 export const InlineTip: React.FC<TipWrapperProps> = ({

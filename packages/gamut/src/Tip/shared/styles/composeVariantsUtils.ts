@@ -5,6 +5,7 @@ import {
   PopoverXPositionType,
   PopoverYPositionType,
 } from '../../../Popover';
+import { TipPlacementComponentProps, TipWrapperProps } from '../types';
 import {
   beforeStylesHorizontal,
   bottomStyles,
@@ -26,7 +27,6 @@ import {
   verticalCenterStyles,
   verticalCenterStylesAfter,
 } from './styles';
-import { TipPlacementComponentProps, TipWrapperProps } from '../types';
 
 export const getAlignmentStyles = ({
   alignment,
