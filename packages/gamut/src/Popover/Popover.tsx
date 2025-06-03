@@ -184,6 +184,7 @@ export const Popover: React.FC<PopoverProps> = ({
     (variant === 'primary' || beak) && beak !== 'center'
       ? 'aligned'
       : 'centered';
+  console.log(getBeakVariant({ align, position, beak, variant }));
   const contents = (
     <PopoverContainer
       align={align}

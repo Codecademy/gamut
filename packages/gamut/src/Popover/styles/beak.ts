@@ -180,7 +180,7 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
       styleObject = { ...styleObject, ...beakRightCenterStylesAfterLrg };
     } else {
       // center-left
-      // styleObject = { ...styleObject, ...beakLeftCenterStylesAfterLrg };
+      styleObject = { ...styleObject, ...beakLeftCenterStylesAfterLrg };
     }
   } else {
     if (isAbove) {
