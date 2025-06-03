@@ -5,4 +5,3 @@ export * from './TabPanels';
 export * from './Tabs';
 export * from './TabNav';
 export * from './TabNavLink';
-export * from './TabButton';
