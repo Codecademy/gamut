@@ -1,4 +1,4 @@
-import { Column, LayoutGrid, Text } from '@codecademy/gamut';
+import { Box, Column, LayoutGrid, Text } from '@codecademy/gamut';
 // eslint-disable-next-line gamut/import-paths
 import {
   typographyElementVariants,
@@ -29,7 +29,7 @@ export const Elements: Story = {
     <LayoutGrid {...layoutGridStyles}>
       {Object.keys(typographyElementVariants).map((tag) => (
         <Fragment key={tag}>
-          <Column size={2} alignItems="center">
+          <Column alignItems="center" size={2}>
             <Text as="code" fontSize={14}>
               {tag}
             </Text>
@@ -48,7 +48,7 @@ export const Variants: Story = {
     <LayoutGrid {...layoutGridStyles}>
       {Object.keys(typographyStyleVariants).map((variant) => (
         <Fragment key={variant}>
-          <Column size={1} alignItems="center">
+          <Column alignItems="center" size={1}>
             <Text as="code" fontSize={14}>
               {typographyStyleVariants[
                 variant as keyof typeof typographyStyleVariants
@@ -75,7 +75,7 @@ export const Truncation: Story = {
       {typographyUtilities.truncation.map((truncateType) =>
         typographyUtilities.truncateLines.map((lines) => (
           <Fragment key={lines}>
-            <Column size={3} alignItems="center">
+            <Column alignItems="center" size={3}>
               <Text as="code" fontSize={14}>
                 truncate=&quot;{truncateType}&quot;
                 <br />
@@ -83,7 +83,7 @@ export const Truncation: Story = {
               </Text>
             </Column>
             <Column size={9}>
-              <Text truncateLines={lines} truncate={truncateType} width="400px">
+              <Text truncate={truncateType} truncateLines={lines} width="400px">
                 This is a very long text thingy that we want to truncate
                 it&#39;s very long indeed. This is a very long text thingy that
                 we want to truncate it&#39;s very long indeed. This is a very
@@ -104,13 +104,13 @@ export const FontSmoothing: Story = {
     <LayoutGrid {...layoutGridStyles}>
       {typographyUtilities.smoothing.map((variant) => (
         <Fragment key={variant.toString()}>
-          <Column size={3} alignItems="center">
+          <Column alignItems="center" size={3}>
             <Text as="code" fontSize={14}>
               smooth=&quot;{variant.toString()}&quot;
             </Text>
           </Column>
           <Column size={9}>
-            <Text variant="title-md" smooth={variant}>
+            <Text smooth={variant} variant="title-md">
               Am I smooth?
             </Text>
           </Column>
@@ -125,17 +125,21 @@ export const Screenreader: Story = {
     <LayoutGrid {...layoutGridStyles}>
       {typographyUtilities.screenreader.map((variant) => (
         <Fragment key={variant.toString()}>
-          <Column size={3} alignItems="center">
+          <Column alignItems="center" size={3}>
             <Text as="code" fontSize={14}>
               screenreader=&quot;{variant.toString()}&quot;
             </Text>
           </Column>
           <Column size={9}>
-            <Text screenreader={variant}>
-              {variant
-                ? 'Visible only to screenreaders'
-                : 'When set to "false", this text is visible to non-screenreaders.'}
-            </Text>
+            {variant ? (
+              <Box aria-labelledby="example-sr-text" role="note" width={4}>
+                <Text aria-hidden id="example-sr-text" screenreader>
+                  Visible only to screenreaders
+                </Text>
+              </Box>
+            ) : (
+              <Text>This text is visible to non-screenreaders.</Text>
+            )}
           </Column>
         </Fragment>
       ))}
@@ -146,12 +150,12 @@ export const Screenreader: Story = {
 export const Highlight: Story = {
   render: () => (
     <LayoutGrid {...layoutGridStyles}>
-      <Column size={3} alignItems="center">
+      <Column alignItems="center" size={3}>
         <Text as="code" fontSize={14}>
           {`highlight="true"`}
         </Text>
       </Column>
-      <Column size={3} alignItems="center">
+      <Column alignItems="center" size={3}>
         <Text>
           A{' '}
           <Text as="span" highlight>

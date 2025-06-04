@@ -63,19 +63,19 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   ...rest
 }) => {
   return (
-    <FlexBox mb={4} justifyContent="space-between">
+    <FlexBox justifyContent="space-between" mb={4}>
       <Label
         {...rest}
-        htmlFor={htmlFor}
-        disabled={disabled}
-        className={className}
-        size={size}
         as={htmlFor ? 'label' : 'div'}
+        className={className}
+        disabled={disabled}
+        htmlFor={htmlFor}
+        size={size}
       >
         {children}
         {!isSoloField &&
           (required ? (
-            <Text as="span" aria-hidden>
+            <Text aria-hidden as="span">
               *
             </Text>
           ) : (

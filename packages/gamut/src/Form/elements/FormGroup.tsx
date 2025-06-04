@@ -57,7 +57,7 @@ const StyledFormGroupContainer = styled(Box)<
 const FormGroupContainer: React.FC<
   ComponentProps<typeof StyledFormGroupContainer>
 > = ({ pb = 8, mb = 24, ...rest }) => {
-  return <StyledFormGroupContainer pb={pb} mb={mb} {...rest} />;
+  return <StyledFormGroupContainer mb={mb} pb={pb} {...rest} />;
 };
 
 export const FormGroup: React.FC<FormGroupProps> = ({

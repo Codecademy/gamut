@@ -53,10 +53,10 @@ export const Default: Story = {
         </TabList>
         <FlexBox
           alignItems="center"
-          justifyContent="flex-end"
-          width="100%"
           borderBottom={1}
+          justifyContent="flex-end"
           mb={24}
+          width="100%"
         >
           <Text>Tab List</Text>
         </FlexBox>
@@ -96,14 +96,14 @@ export const Controlled = () => {
   return (
     <>
       <Background bg="yellow" mb={24} p={12}>
-        <FormGroup label="Active Tab" htmlFor="active-tab">
+        <FormGroup htmlFor="active-tab" label="Active Tab">
           <Input
+            htmlFor="acrive-tab"
             label="Active Tab"
+            min={1}
+            type="number"
             value={activeTab}
             onChange={(e) => setTab(e.target.value)}
-            type="number"
-            min={1}
-            htmlFor="acrive-tab"
           />
         </FormGroup>
       </Background>
@@ -188,8 +188,8 @@ export const BlockVariant: Story = {
 
 export const TabsNav: Story = {
   render: () => (
-    <TabNav fill aria-label="Secondary Navigation">
-      <TabNavLink selected href="/">
+    <TabNav aria-label="Secondary Navigation" fill>
+      <TabNavLink href="/" selected>
         Tab Link 1
       </TabNavLink>
       <TabNavLink href="/">Tab Link 2</TabNavLink>

@@ -30,10 +30,10 @@ export const Default: Story = {
 
 const AvatarExample = () => {
   return (
-    <FlexBox center py={96} mt={16}>
+    <FlexBox center mt={16} py={96}>
       <PreviewTip
         avatar={
-          <Box bg="navy" height="100%" borderRadius="full" width="100%">
+          <Box bg="navy" borderRadius="full" height="100%" width="100%">
             <SmileyIndifferentIcon color="yellow" size="100%" />
           </Box>
         }
@@ -68,8 +68,8 @@ const LoadingExample = () => {
 
   return (
     <FlexBox center py={96}>
-      <FlexBox justifyContent="space-between" py={96} mt={16} width="100%">
-        <PreviewTip linkDescription="loading..." loading href="/test">
+      <FlexBox justifyContent="space-between" mt={16} py={96} width="100%">
+        <PreviewTip href="/test" linkDescription="loading..." loading>
           I am a perpetually loading preview.
         </PreviewTip>
         <PreviewTip
@@ -78,9 +78,9 @@ const LoadingExample = () => {
           href="/test"
           linkDescription={load ? 'loading...' : 'test'}
           loading={load}
-          onFocus={onFocus}
           truncateLines={1}
           width={32}
+          onFocus={onFocus}
         >
           I will show loading for a few seconds on keyboard focus.
         </PreviewTip>
@@ -95,13 +95,13 @@ export const LoadingTip: Story = {
 
 const TruncationExample = (args: React.ComponentProps<typeof PreviewTip>) => {
   return (
-    <FlexBox py={96} width="100%" justifyContent="space-around">
-      <PreviewTip {...args} truncateLines={2} alignment="top-right" />
+    <FlexBox justifyContent="space-around" py={96} width="100%">
+      <PreviewTip {...args} alignment="top-right" truncateLines={2} />
       <PreviewTip
         {...args}
-        truncateLines={5}
         alignment="bottom-left"
         linkDescription="This is a long link description. There is nothing fun or funny in this PreviewTip, and this definitely is way too long to be a 'summary' of anything at all. No one wants to read a preview that's as long as the article, its like a trailer that gives away the whole movie. Be better than that. Be a serious person."
+        truncateLines={5}
       />
     </FlexBox>
   );

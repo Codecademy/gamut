@@ -74,9 +74,9 @@ export const List = forwardRef<
   <StyledList
     context={context}
     m={m}
+    ref={ref}
     root={root}
     showBorder={variant !== 'fixed'}
-    ref={ref}
     variant={variant}
     {...rest}
   />
@@ -210,7 +210,7 @@ export const ListLink = forwardRef<
   HTMLAnchorElement,
   ComponentProps<typeof StyledListLink>
 >(({ zIndex = 1, ...rest }, ref) => (
-  <StyledListLink zIndex={zIndex} ref={ref} {...rest} />
+  <StyledListLink ref={ref} zIndex={zIndex} {...rest} />
 ));
 
 export const ListButton = styled(

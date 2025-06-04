@@ -67,9 +67,9 @@ export const PopoverPortal: React.FC<
       {isOpen && (
         <BodyPortal>
           <motion.div
-            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
             transition={{
               delay: timingValues.fast / 1000,
               duration: timingValues.fast / 1000,

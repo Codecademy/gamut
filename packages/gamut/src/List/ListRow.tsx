@@ -51,14 +51,14 @@ const ExpandInCollapseOut: React.FC<
 
   return (
     <ResponsiveExpand
-      initial="collapsed"
-      exit="collapsed"
       animate="expanded"
+      exit="collapsed"
+      initial="collapsed"
+      transition={{ duration: 0.2, ease: 'easeInOut' }}
       variants={{
         expanded: { height: 'auto' },
         collapsed: { height: 0 },
       }}
-      transition={{ duration: 0.2, ease: 'easeInOut' }}
     >
       {children}
     </ResponsiveExpand>
@@ -104,14 +104,14 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           aria-expanded={renderExpanded && onClick ? expanded : undefined}
           clickable={Boolean(onClick)}
           isOl={isOl}
+          role={onClick ? 'button' : role}
+          tabIndex={onClick ? 0 : tabIndex}
           onClick={onClick}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && onClick) {
               onClick(e as unknown as MouseEvent<HTMLLIElement>);
             }
           }}
-          role={onClick ? 'button' : role}
-          tabIndex={onClick ? 0 : tabIndex}
           {...rowProps}
           ref={ref}
         >
@@ -123,18 +123,18 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     return (
       <RowEl
         aria-live={renderExpanded ? 'polite' : undefined}
-        variant={variant}
         expanded={isTable ? undefined : !!renderExpanded}
-        scrollable={scrollable}
-        rowBreakpoint={isTable && renderExpanded ? 'grid' : rowBreakpoint}
-        isOl={renderNumbering}
-        role={role}
-        tabIndex={tabIndex}
         gridAutoRows={{ _: undefined, xs: 'minmax(1.5rem, max-content) 6fr' }}
         gridTemplateColumns={{
           _: 'minmax(0, 1fr) max-content',
           xs: gridTemplateColumns,
         }}
+        isOl={renderNumbering}
+        role={role}
+        rowBreakpoint={isTable && renderExpanded ? 'grid' : rowBreakpoint}
+        scrollable={scrollable}
+        tabIndex={tabIndex}
+        variant={variant}
         {...wrapperProps}
       >
         <>
@@ -142,7 +142,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           <AnimatePresence>
             {expanded && (
               <ExpandInCollapseOut as={isTable ? 'td' : 'div'}>
-                <Box role="region" aria-label={expandedRowAriaLabel}>
+                <Box aria-label={expandedRowAriaLabel} role="region">
                   {renderExpanded?.()}
                 </Box>
               </ExpandInCollapseOut>

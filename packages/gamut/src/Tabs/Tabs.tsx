@@ -26,17 +26,17 @@ export const Tabs: React.FC<TabsProps> = (props) => {
       {props.variant === 'block' ? (
         <Background bg="navy-800" height="100%">
           <TabsBase
+            keyboardActivation="manual"
             position="relative"
             zIndex={0}
-            keyboardActivation="manual"
             {...props}
           />
         </Background>
       ) : (
         <TabsBase
+          keyboardActivation="manual"
           position="relative"
           zIndex={0}
-          keyboardActivation="manual"
           {...props}
         />
       )}

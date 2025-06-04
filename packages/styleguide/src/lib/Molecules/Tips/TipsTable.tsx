@@ -17,8 +17,8 @@ const components = {
   ToolTip: {
     component: (
       <IconButton
-        size="small"
         icon={MiniStarIcon}
+        size="small"
         tip="ToolTip"
         tipProps={{
           placement: 'floating',
@@ -32,7 +32,7 @@ const components = {
     skipTitle: false,
   },
   InfoTip: {
-    component: <InfoTip placement="floating" info="I am an infotip." />,
+    component: <InfoTip info="I am an infotip." placement="floating" />,
     status: 'None',
     useCase: 'Provide context and clarify terms',
     contents: 'Additional details, explanations, definitions',
@@ -43,14 +43,14 @@ const components = {
     component: (
       <PreviewTip
         alignment="top-left"
-        linkDescription="I am a bite-sized summary of the linked content, isn't that neat?  "
         href="https://giphy.com/gifs/yugioh-konami-yugi-4WDKiUenkve2ZvLoTp"
+        linkDescription="I am a bite-sized summary of the linked content, isn't that neat?  "
         placement="floating"
       >
         PreviewTip
       </PreviewTip>
     ),
-    status: 'New',
+    status: 'None',
     useCase: 'Preview linked content without leaving page',
     contents: 'Page snippets, textual insights, summaries, etc.',
     triggers: 'On hover and focus',
@@ -79,11 +79,11 @@ const ComponentRow = ({ array }: { array: typeof colTitles }) => {
         return (
           <BorderRow size="xl">
             <FlexBox alignItems="center" flexWrap="wrap" pl={8}>
-              <Text variant="title-sm" mr={8}>
+              <Text mr={8} variant="title-sm">
                 {!skipTitle && title} {component}
               </Text>
               {status !== 'None' && (
-                <Badge variant={badgeVariant} size="sm">
+                <Badge size="sm" variant={badgeVariant}>
                   {status}
                 </Badge>
               )}
@@ -120,25 +120,25 @@ const FeatureRow = ({
 
 export const TipsTable = () => {
   return (
-    <List variant="table" spacing="condensed">
+    <List spacing="condensed" variant="table">
       <ComponentRow array={colTitles} />
       <FeatureRow
-        title="Use Case"
         features={Object.values(components).map(
           (component) => component.useCase
         )}
+        title="Use Case"
       />
       <FeatureRow
-        title="Contents"
         features={Object.values(components).map(
           (component) => component.contents
         )}
+        title="Contents"
       />
       <FeatureRow
-        title="Triggers"
         features={Object.values(components).map(
           (component) => component.triggers
         )}
+        title="Triggers"
       />
     </List>
   );
