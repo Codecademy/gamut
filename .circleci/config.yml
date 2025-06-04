@@ -75,7 +75,7 @@ references:
       name: Build All Packages
       command: yarn build
 
-  set_git_user: &set_git_user
+  set_git_user: &set_git_user # move to yarn actikon maybe
     run:
       name: Set git user
       command: |

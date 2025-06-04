@@ -1,0 +1,61 @@
+name: Publish Storybook
+
+on:
+  push:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches-ignore:
+      - production
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+  issues: write
+  actions: write
+
+jobs:
+  publish-storybook:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - uses: ./.github/actions/yarn
+
+      - name: Create PR preview
+        shell: bash
+        run: |
+          yarn nx run styleguide:build-storybook
+
+      - name: Deploy PR preview #Replace with GH stuff
+        shell: bash
+        run: |
+          DEPLOY_MESSAGE="User: ${CIRCLE_USERNAME} Project: ${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} Pull Request: ${CIRCLE_PULL_REQUEST}"
+          npx netlify-cli@17.37.1 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --filter @codecademy/styleguide > .deploy-output
+
+      - name: Parse Deploy Output
+        id: preview
+        run: |
+          export DEPLOY_OUTPUT="$(cat .deploy-output)"
+          echo $DEPLOY_OUTPUT
+          DEPLOY_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).deploy_url)" | node -)
+          LOGS_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).logs)" | node -)
+          COMMENT_MSG="<p><a href="${DEPLOY_URL}">${DEPLOY_URL}</a></p><p><a href="${LOGS_URL}">Deploy Logs</a></p>"
+          if [ -z "$DEPLOY_OUTPUT" ]
+          then
+            echo "No deploy output found, will not add PR comment"
+          else
+            echo result="$COMMENT_MSG" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Comment with PR Preview URL
+        uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
+        if: steps.preview.outputs.result
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          header: Storybook PR Preview
+          recreate: true
+          message: ${{ steps.preview.outputs.result }}

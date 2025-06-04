@@ -10,5 +10,5 @@ runs:
         node-version-file: .nvmrc
 
     - name: Install Dependencies If Not Cached
-      run: \[ -d node_modules \] || yarn install --immutable
+      run: \[ -d node_modules \] || yarn --production=false --frozen-lockfile
       shell: bash
