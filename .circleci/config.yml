@@ -6,7 +6,7 @@ references:
   default_env: &default_env
     docker:
       - image: cimg/node:22.13.1
-    working_directory: ~/repo
+    working_directory: ~/repo # not required?
     environment:
       IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
       NODE_OPTIONS: '--max_old_space_size=8196'
@@ -67,7 +67,7 @@ references:
         - packages
 
   restore_node_modules: &restore_node_modules
-    attach_workspace:
+    attach_workspace: #The attach_workspace copies and re-creates the entire workspace content when it runs.
       at: ~/repo
 
   build_all_packages: &build_all_packages
@@ -111,7 +111,7 @@ jobs:
   checkout_code:
     <<: *default_env
     steps:
-      - checkout
+      - checkout # circle keyword
       - *set_npm_token
       - *restore_yarn_cache
       - run: yarn --production=false --frozen-lockfile

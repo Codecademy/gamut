@@ -1,0 +1,89 @@
+name: Publish Alpha
+
+on:
+  pull_request:
+    branches-ignore:
+      - production
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+  issues: write
+  actions: write
+
+jobs:
+  check-affected:
+    uses: ./.github/workflows/check-affected.yml
+    with:
+      target: publish-build
+
+  publish: # do we want to add nx-affected to Gamut?
+    runs-on: ubuntu-22.04
+    needs: check-affected
+    if: needs.check-affected.outputs.affected == 'true'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Set git user
+        run: |
+          git config --global user.email "dev@codecademy.com"
+          git config --global user.name "codecademydev"
+          git config --global push.default current
+
+      - name: Set npm token
+        run: |
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Set Short SHA and PR Number
+        id: sha
+        run: |
+          echo "PR_SHA=$(git rev-parse --short ${{ github.event.pull_request.head.sha }})" >> $GITHUB_ENV
+          echo "PR_NUM=${{ github.event.number }}" >> $GITHUB_ENV
+
+      - uses: ./.github/actions/yarn
+      # The context provided here has the current active EKS cluster name (such as `-blue`) appended in the action.yaml
+      # - uses: ./.github/actions/k8s-setup
+      #   with:
+      #     context: development
+      - uses: ./.github/actions/nx-setup
+
+      - run: npx nx run-many --target=publish-build --parallel=3
+
+      - name: Check version plan
+        run: |
+          if ! npx nx release plan:check; then
+            echo "Run \`yarn nx release plan\` to generate a version plan."
+            exit 1
+          fi
+
+      - name: Publish alpha packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx nx run pkg-publish:publish-affected:alpha
+
+      - name: List alpha packages versions
+        id: published
+        continue-on-error: true
+        run: |
+          shopt -s globstar
+          echo 'result<<EOF' >> $GITHUB_OUTPUT
+          jq -r 'select(.version | contains("alpha")) | .name + "@" + .version' libs/**/package.json >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
+
+      - name: Comment with published alpha packages
+        uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
+        if: steps.published.outputs.result
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          header: Alpha Packages
+          recreate: true
+          message: |
+            ```
+            ${{ steps.published.outputs.result }}
+            ```
