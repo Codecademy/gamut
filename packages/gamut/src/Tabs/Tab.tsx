@@ -1,13 +1,32 @@
-import { Tab as ReachTab, TabProps as ReachTabProps } from '@reach/tabs';
+import styled from '@emotion/styled';
 import * as React from 'react';
+import {
+  Tab as ReactAriaTab,
+  TabProps as ReactAriaTabProps,
+} from 'react-aria-components';
 
-import { TabButton, TabButtonProps } from './TabButton';
+import { tabElementBaseProps } from './props';
+import { TabButtonProps, tabStates, tabVariants } from './TabButton';
 import { useTab } from './TabProvider';
 
-export interface TabProps extends TabButtonProps, ReachTabProps {}
+interface TabBaseProps extends TabButtonProps, ReactAriaTabProps {}
+
+export type TabProps = TabBaseProps &
+  Omit<ReactAriaTabProps, 'id'> & {
+    /**
+     * the id matches up the tab and tab panel
+     */
+    id: string;
+  };
+
+const TabBase = styled(ReactAriaTab)<TabProps>(
+  tabVariants,
+  tabStates,
+  tabElementBaseProps
+);
 
 export const Tab: React.FC<TabProps> = (props) => {
   const { variant } = useTab();
 
-  return <ReachTab {...props} as={TabButton} variant={variant} />;
+  return <TabBase {...props} variant={variant} />;
 };
