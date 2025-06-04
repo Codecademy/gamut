@@ -37,13 +37,6 @@ jobs:
 
       - run: npx nx run-many --target=publish-build --parallel=3
 
-      - name: Check version plan
-        run: |
-          if ! npx nx release plan:check; then
-            echo "Run \`yarn nx release plan\` to generate a version plan."
-            exit 1
-          fi
-
       - name: Publish alpha packages
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
