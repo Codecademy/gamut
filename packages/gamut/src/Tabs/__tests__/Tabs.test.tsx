@@ -80,7 +80,10 @@ describe('Tabs', () => {
     it('renders the second tab tab panel and calls onSelectionChange when second tab is clicked', async () => {
       const { view } = renderView();
 
+      view.getByText('tab 1 content');
+
       await act(() => userEvent.click(view.getByText('Tab 2')));
+
       view.getByText('tab 2 content');
       expect(mockOnSelectionChange).toHaveBeenCalledWith('tab2');
     });
@@ -103,7 +106,10 @@ describe('Tabs', () => {
     it('renders new tab panel and calls onSelectionChange when a tab is clicked', async () => {
       const { view } = renderViewControlled();
 
+      view.getByText('tab 1 content');
+
       await act(() => userEvent.click(view.getByText('Tab 2')));
+
       expect(mockOnSelectionChange).toHaveBeenCalledWith('tab2');
       view.getByText('tab 2 content');
     });
