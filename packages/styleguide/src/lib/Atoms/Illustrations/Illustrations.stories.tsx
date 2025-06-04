@@ -1,15 +1,34 @@
 import * as illustrations from '@codecademy/gamut-illustrations';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const Illustration = illustrations.NumberBlocks;
+type IllustrationComponentProps = illustrations.IllustrationProps & {
+  illustration: keyof typeof illustrations;
+};
+const IllustrationComponent: React.FC<IllustrationComponentProps> = ({
+  illustration: Illustration,
+  ...rest
+}) => {
+  return <Illustration {...rest} />;
+};
 
-const meta: Meta<typeof Illustration> = {
-  component: Illustration,
-  args: {},
+const meta: Meta<IllustrationComponentProps> = {
+  component: IllustrationComponent,
+  argTypes: {
+    illustration: {
+      options: Object.keys(illustrations),
+      mapping: illustrations,
+      control: {
+        type: 'select',
+      },
+    },
+  },
+  args: {
+    illustration: 'NumberBlocks',
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof Illustration>;
+type Story = StoryObj<typeof IllustrationComponent>;
 
 export const Default: Story = {
   args: {
