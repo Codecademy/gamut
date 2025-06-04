@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>award-trophy-star-1</title><path class="a" d="M12.53,4.3l1.249,2.458h2.127a.582.582,0,0,1,.419,1L14.372,9.675l1.082,2.485a.589.589,0,0,1-.839.737L12,11.426,9.385,12.9a.589.589,0,0,1-.839-.737L9.628,9.675,7.675,7.753a.582.582,0,0,1,.419-1h2.127L11.47,4.3A.594.594,0,0,1,12.53,4.3Z"/><path class="a" d="M19.5,4.5c3.365,0,2.756-.452,3.75,7.5"/><path class="a" d="M4.5,4.5C.71,4.5,1.843,3.26.75,12"/><polyline class="a" points="17.616 23.25 12 23.25 6.384 23.25"/><path class="a" d="M4.5,10.5V2.25A1.5,1.5,0,0,1,6,.75H18a1.5,1.5,0,0,1,1.5,1.5V10.5C19.5,19.508,4.5,19.52,4.5,10.5Z"/><line class="a" x1="12" y1="23.25" x2="12" y2="17.25"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="m12.53 4.3 1.249 2.458h2.127a.582.582 0 0 1 .419 1L14.372 9.675l1.082 2.485a.589.589 0 0 1-.839.737L12 11.426 9.385 12.9a.589.589 0 0 1-.839-.737L9.628 9.675 7.675 7.753a.582.582 0 0 1 .419-1h2.127L11.47 4.3A.594.594 0 0 1 12.53 4.3ZM19.5 4.5c3.365 0 2.756-.452 3.75 7.5M4.5 4.5C.71 4.5 1.843 3.26.75 12M17.616 23.25 12 23.25 6.384 23.25" class="a"/>
+    <path d="M4.5 10.5V2.25A1.5 1.5 0 0 1 6 .75H18a1.5 1.5 0 0 1 1.5 1.5V10.5C19.5 19.508 4.5 19.52 4.5 10.5ZM12 23.25 12 17.25" class="a"/>
+</svg>

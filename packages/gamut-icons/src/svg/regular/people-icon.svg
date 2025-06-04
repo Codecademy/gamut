@@ -1,1 +1,10 @@
-<svg id="Regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>multiple-man-woman-2</title><path class="cls-1" d="M14.251,4.416a4.125,4.125,0,1,1,.756,7.305"/><path class="cls-1" d="M15,13.667a6.757,6.757,0,0,1,8.25,6.583"/><path class="cls-1" d="M14.248,6.834a6.807,6.807,0,0,0,3.627,1.041,6.843,6.843,0,0,0,2.712-.558"/><path class="cls-1" d="M.75,20.25a6.75,6.75,0,0,1,13.5,0"/><path class="cls-1" d="M3.388,8.2l-.012.778a5.9,5.9,0,0,1-.859,3.272"/><path class="cls-1" d="M11.623,7.986v1a5.9,5.9,0,0,0,.86,3.272"/><path class="cls-1" d="M3.388,8.2A5.483,5.483,0,0,0,7.5,6.305a5.483,5.483,0,0,0,4.112,1.9"/><circle class="cls-1" cx="7.5" cy="7.875" r="4.125"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" id="Regular" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M14.251 4.416a4.125 4.125 0 1 1 .756 7.305M15 13.667a6.757 6.757 0 0 1 8.25 6.583" class="cls-1"/>
+    <path d="M14.248 6.834a6.807 6.807 0 0 0 3.627 1.041 6.843 6.843 0 0 0 2.712-.558M.75 20.25a6.75 6.75 0 0 1 13.5 0M3.388 8.2l-.012.778a5.9 5.9 0 0 1-.859 3.272M11.623 7.986v1a5.9 5.9 0 0 0 .86 3.272M3.388 8.2A5.483 5.483 0 0 0 7.5 6.305a5.483 5.483 0 0 0 4.112 1.9" class="cls-1"/>
+    <circle cx="7.5" cy="7.875" r="4.125" class="cls-1"/>
+</svg>

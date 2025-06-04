@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>safety-helmet-mine</title><path class="a" d="M21,15.375v-1.5a9,9,0,0,0-18,0v1.5"/><line class="a" x1="8.25" y1="3.375" x2="8.25" y2="10.875"/><line class="a" x1="15.75" y1="3.375" x2="15.75" y2="10.875"/><circle class="a" cx="12" cy="13.875" r="2.25"/><line class="a" x1="16.5" y1="15.375" x2="23.25" y2="15.375"/><line class="a" x1="0.75" y1="15.375" x2="7.5" y2="15.375"/><path class="a" d="M3.75,18.375a2.774,2.774,0,0,1,1.5,2.25h13.5a2.774,2.774,0,0,1,1.5-2.25"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M21 15.375v-1.5a9 9 0 0 0-18 0v1.5M8.25 3.375 8.25 10.875M15.75 3.375 15.75 10.875" class="a"/>
+    <circle cx="12" cy="13.875" r="2.25" class="a"/>
+    <path d="M16.5 15.375 23.25 15.375M.75 15.375 7.5 15.375M3.75 18.375a2.774 2.774 0 0 1 1.5 2.25h13.5a2.774 2.774 0 0 1 1.5-2.25" class="a"/>
+</svg>

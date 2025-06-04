@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>help-wheel</title><circle class="a" cx="12" cy="12" r="3.75"/><line class="a" x1="17.119" y1="20.301" x2="12.529" y2="15.711"/><line class="a" x1="15.711" y1="12.53" x2="20.301" y2="17.119"/><line class="a" x1="3.699" y1="17.119" x2="8.289" y2="12.529"/><line class="a" x1="11.471" y1="15.712" x2="6.881" y2="20.301"/><line class="a" x1="6.881" y1="3.7" x2="11.471" y2="8.289"/><line class="a" x1="8.289" y1="11.471" x2="3.699" y2="6.881"/><line class="a" x1="20.301" y1="6.881" x2="15.711" y2="11.471"/><line class="a" x1="12.529" y1="8.289" x2="17.119" y2="3.7"/><circle class="a" cx="12" cy="12" r="9.75"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <circle cx="12" cy="12" r="3.75" class="a"/>
+    <path d="M17.119 20.301 12.529 15.711M15.711 12.53 20.301 17.119M3.699 17.119 8.289 12.529M11.471 15.712 6.881 20.301M6.881 3.7 11.471 8.289M8.289 11.471 3.699 6.881M20.301 6.881 15.711 11.471M12.529 8.289 17.119 3.7" class="a"/>
+    <circle cx="12" cy="12" r="9.75" class="a"/>
+</svg>

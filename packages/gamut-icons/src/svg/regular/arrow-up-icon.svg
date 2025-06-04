@@ -1,1 +1,4 @@
-<svg id="Regular" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1,.cls-2{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}.cls-2{fill-rule:evenodd;}</style></defs><title>arrow-up</title><line class="cls-1" x1="12" y1="23.25" x2="12" y2="0.75"/><polyline class="cls-2" points="22.5 11.25 12 0.75 1.5 11.25"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" id="Regular" viewBox="0 0 24 24">
+    <path d="M12 23.25 12 .75" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px"/>
+    <path d="M22.5 11.25 12 .75 1.5 11.25" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;fill-rule:evenodd"/>
+</svg>
