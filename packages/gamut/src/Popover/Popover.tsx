@@ -49,7 +49,6 @@ export const Popover: React.FC<PopoverProps> = ({
   beak,
   children,
   className,
-  horizontalOffset = 0,
   isOpen,
   onRequestClose,
   outline = false,
@@ -60,7 +59,16 @@ export const Popover: React.FC<PopoverProps> = ({
   role,
   variant,
   targetRef,
-  verticalOffset = variant === 'secondary' ? 15 : 20,
+  horizontalOffset = position === 'center'
+    ? variant === 'secondary'
+      ? 15
+      : 20
+    : 0,
+  verticalOffset = position !== 'center'
+    ? variant === 'secondary'
+      ? 15
+      : 20
+    : 0,
   widthRestricted,
 }) => {
   const [popoverHeight, setPopoverHeight] = useState<number>(0);
@@ -87,7 +95,10 @@ export const Popover: React.FC<PopoverProps> = ({
       above: Math.round(targetRect.top - verticalOffset),
       below: Math.round(targetRect.top + targetRect.height + verticalOffset),
       center: Math.round(
-        targetRect.top + targetRect.height / 2 - popoverHeight / 2
+        targetRect.top +
+          targetRect.height / 2 -
+          popoverHeight / 2 +
+          verticalOffset
       ),
     };
     const alignments = {
@@ -98,7 +109,10 @@ export const Popover: React.FC<PopoverProps> = ({
         ? Math.round(targetRect.left - popoverWidth - horizontalOffset)
         : Math.round(window.scrollX + targetRect.left - horizontalOffset),
       center: Math.round(
-        targetRect.left + targetRect.width / 2 - popoverWidth / 2
+        targetRect.left +
+          targetRect.width / 2 -
+          popoverWidth / 2 +
+          horizontalOffset
       ),
     };
     return {

@@ -45,18 +45,12 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   const dims = getAlignmentStyles({ avatar, alignment, type });
   const [childRef, { width: tipWidth }] = useMeasure<HTMLDivElement>();
 
-  const [offset, setOffset] = useState(0);
+  const [offset, setOffset] = useState<number | undefined>(undefined);
 
   useLayoutEffect(() => {
     if (ref?.current?.clientWidth) {
-      if (type === 'info' || type === 'preview') {
+      if (type === 'info' || type === 'preview')
         setOffset(-ref.current.clientWidth / 2 + 32);
-      } else if (
-        alignment.startsWith('left') ||
-        alignment.startsWith('right')
-      ) {
-        setOffset(12);
-      }
     }
   }, [alignment, tipWidth, type]);
 
@@ -136,7 +130,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         animation="fade"
         dims={dims}
         horizontalOffset={offset}
-        isOpen={isHoverType ? isOpen : !isTipHidden}
+        isOpen
         outline
         skipFocusTrap
         targetRef={ref}

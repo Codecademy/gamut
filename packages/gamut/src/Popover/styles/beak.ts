@@ -72,7 +72,7 @@ export const beakRightCenterStylesAfterLrg = {
 
 export const beakLeftCenterStylesAfterSml = {
   ...beakLeftCenterStylesAfter,
-  right: -7,
+  right: -8,
 };
 export const beakLeftCenterStylesAfterLrg = {
   ...beakLeftCenterStylesAfter,
