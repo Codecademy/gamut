@@ -48,7 +48,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
     <>
       {isFloating && (
         <Text aria-hidden id={id} role="tooltip" screenreader>
-          {info}
+          {info} I AM A TEST
         </Text>
       )}
       <Tip {...tipProps} id={!isFloating ? id : undefined} type="tool">
