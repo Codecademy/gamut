@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.44.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.43.0...@codecademy/gamut-icons@9.44.0) (2025-06-04)
+
+### Features
+
+- **Icon:** added new OnlineClassStudentIcon ([66d8b51](https://github.com/Codecademy/gamut/commit/66d8b51d4d0bd101e6b08a5453ed687dbdec0d0f))
+
 ## [9.43.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.42.4...@codecademy/gamut-icons@9.43.0) (2025-06-03)
 
 ### Features
