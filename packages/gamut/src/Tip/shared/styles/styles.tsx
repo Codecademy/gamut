@@ -1,10 +1,11 @@
 import { fontSmoothPixel, theme, variant } from '@codecademy/gamut-styles';
 
+import { popoverPrimaryBgColor } from '../../../Popover/styles/base';
 import { tipAlignmentArray } from '../types';
 import { createToolTipVariantFromAlignment } from './composeVariantsUtils';
 import { createVariantsFromAlignments } from './createVariantsUtils';
 
-export const tooltipBackgroundColor = `background-contrast`;
+export const tooltipBgColor = `background-contrast`;
 export const tooltipArrowHeight = `1rem`;
 const containerOffsetVertical = 12;
 const borderColor = 'border-primary';
@@ -28,29 +29,71 @@ const alignedPreviewWidth = { width: 418 } as const;
 
 const previewTipPadding = { p: 16 } as const;
 
-// This halfway fills the square we use to create the 'beak' of the tip so it does not overlap the tip text on the 'center' alignments
-export const beakTopStylesAfter = {
+/*  This halfway fills the square we use to create the 'beak' of the tip so it does not overlap the tip text on the 'center' alignments
+We split the backgroundImage out because we share these styles with Popover * */
+
+const beakBackgroundImageAlignments = {
+  top: 'top left',
+  bottom: 'bottom right',
+  right: 'top right',
+  left: 'bottom left',
+};
+
+const linearAlignmentLeadingString = `linear-gradient(to `;
+const linearAlignmentTrailingString = ` 55%, rgba(0,0,0,0) 20%)`;
+
+type GetBeakBackgroundType = {
+  alignment: keyof typeof beakBackgroundImageAlignments;
+  color: typeof tooltipBgColor | typeof popoverPrimaryBgColor;
+};
+
+export const getBeakBackground = ({
+  alignment,
+  color,
+}: GetBeakBackgroundType) => {
+  return {
+    backgroundImage: `${linearAlignmentLeadingString}${beakBackgroundImageAlignments[alignment]}, ${theme.colors[color]}${linearAlignmentTrailingString}`,
+  };
+};
+
+export const beakTopStylesAfterBase = {
   borderColor,
   borderWidth: '0 1px 1px 0',
-  backgroundImage: `linear-gradient(to top left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+};
+
+export const beakTopStylesAfter = {
+  ...beakTopStylesAfterBase,
+  ...getBeakBackground({ alignment: 'top', color: tooltipBgColor }),
+};
+
+export const beakBottomStylesAfterBase = {
+  borderColor,
+  borderWidth: '1px 0 0 1px',
 };
 
 export const beakBottomStylesAfter = {
+  ...beakBottomStylesAfterBase,
+  ...getBeakBackground({ alignment: 'bottom', color: tooltipBgColor }),
+};
+
+export const beakRightCenterStylesAfterBase = {
   borderColor,
-  borderWidth: '1px 0 0 1px',
-  backgroundImage: `linear-gradient(to bottom right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+  borderWidth: '0 0 1px 1px',
 };
 
 export const beakRightCenterStylesAfter = {
+  ...beakRightCenterStylesAfterBase,
+  ...getBeakBackground({ alignment: 'right', color: tooltipBgColor }),
+};
+
+export const beakLeftCenterStylesAfterBase = {
   borderColor,
-  borderWidth: '0 0 1px 1px',
-  backgroundImage: `linear-gradient(to top right, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+  borderWidth: '1px 1px 0 0',
 };
 
 export const beakLeftCenterStylesAfter = {
-  borderColor,
-  borderWidth: '1px 1px 0 0',
-  backgroundImage: `linear-gradient(to bottom left, ${theme.colors[tooltipBackgroundColor]} 55%, rgba(0,0,0,0) 20%)`,
+  ...beakLeftCenterStylesAfterBase,
+  ...getBeakBackground({ alignment: 'left', color: tooltipBgColor }),
 };
 
 const beforeStylesVert = {
@@ -240,7 +283,7 @@ export const toolTipWidthRestrictions = variant({
 });
 
 export const toolTipBodyCss = {
-  bg: tooltipBackgroundColor,
+  bg: tooltipBgColor,
   color: 'text',
   border: 1,
   boxShadow: 'none',

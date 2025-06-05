@@ -12,7 +12,7 @@ import { Box } from '../../Box';
 import { ButtonSelectors } from '../../ButtonBase/ButtonBase';
 import {
   tooltipArrowHeight,
-  tooltipBackgroundColor,
+  tooltipBgColor,
   tooltipVariantStyles,
 } from '../shared/styles/styles';
 import { TipPlacementComponentProps } from '../shared/types';
@@ -55,7 +55,7 @@ export const newInfoTipAlignmentVariants = variant({
     transitionDelay: `${timing.fast}`,
     position: 'absolute',
     '&::after': {
-      bg: tooltipBackgroundColor,
+      bg: tooltipBgColor,
       content: '""',
       display: 'block',
       height: `${tooltipArrowHeight}`,

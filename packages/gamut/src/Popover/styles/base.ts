@@ -2,6 +2,9 @@ import { states, variant } from '@codecademy/gamut-styles';
 
 import { toolTipBodyCss } from '../../Tip/shared/styles/styles';
 
+export const borderStyles = { border: 1 } as const;
+export const popoverPrimaryBgColor = `background`;
+
 export const transformValues = {
   right: 'translateX(-100%)',
   left: 'translateX(0%)',
@@ -24,11 +27,9 @@ export const raisedDivVariants = variant({
   defaultVariant: 'primary',
   variants: {
     primary: {
-      bg: 'background',
+      bg: popoverPrimaryBgColor,
       borderRadius: 'sm',
     },
     secondary: { ...toolTipBodyCss },
   },
 });
-
-export const borderStyles = { border: 1 } as const;

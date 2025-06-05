@@ -74,11 +74,11 @@ export const Outline: Story = {
 };
 
 export const Above: Story = {
-  render: (args) => <PopoverExample {...args} position="above" />,
+  render: (args) => <PopoverExample {...args} beak="center" position="above" />,
 };
 
 export const Below: Story = {
-  render: (args) => <PopoverExample {...args} position="below" />,
+  render: (args) => <PopoverExample {...args} beak="center" position="below" />,
 };
 export const CenterLeft: Story = {
   render: (args) => (
