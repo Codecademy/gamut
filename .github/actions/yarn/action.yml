@@ -9,12 +9,6 @@ runs:
       with:
         node-version-file: .nvmrc
 
-     - name: Set npm token
-        run: |
-          echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
     - name: Install Dependencies If Not Cached
       run: \[ -d node_modules \] || yarn --production=false --frozen-lockfile
       shell: bash
