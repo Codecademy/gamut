@@ -10,5 +10,7 @@ runs:
         node-version-file: .nvmrc
 
     - name: Install Dependencies If Not Cached
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: \[ -d node_modules \] || yarn --production=false --frozen-lockfile
       shell: bash
