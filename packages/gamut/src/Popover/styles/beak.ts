@@ -69,21 +69,21 @@ export const beakYCenterSml = {
   top: 'calc(50% - 8px)',
 };
 
-export const beakRightCenterStylesAfterSml = {
+export const beakRightCenterStylesSml = {
   ...beakRightCenterStyles,
   left: -8,
 };
-export const beakRightCenterStylesAfterLrg = {
+export const beakRightCenterStylesLrg = {
   ...beakRightCenterStylesBase,
   ...getBeakBackground({ alignment: 'right', color: popoverPrimaryBgColor }),
   left: -10,
 };
 
-export const beakLeftCenterStylesAfterSml = {
+export const beakLeftCenterStylesSml = {
   ...beakLeftCenterStyles,
   right: -8,
 };
-export const beakLeftCenterStylesAfterLrg = {
+export const beakLeftCenterStylesLrg = {
   ...beakLeftCenterStylesBase,
   ...getBeakBackground({ alignment: 'left', color: popoverPrimaryBgColor }),
   right: -10,
@@ -133,13 +133,14 @@ export const getBeakVariant = ({
 
 export const createBeakVariantFromAlignment = (alignment: string) => {
   let styleObject = {};
+  const isSml = alignment.includes('sml');
   const isAbove = alignment.includes('above');
   const isBelow = alignment.includes('below');
   const isRight = alignment.includes('right');
   const isXCentered = alignment.includes('-center');
   const isYCentered = alignment.startsWith('center-');
 
-  if (alignment.includes('sml')) {
+  if (isSml) {
     if (isYCentered) {
       // center-x-sml
       styleObject = { ...beakYCenterSml };
@@ -147,13 +148,13 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
         // center-right-sml
         styleObject = {
           ...styleObject,
-          ...beakRightCenterStylesAfterSml,
+          ...beakRightCenterStylesSml,
         };
       } else {
         // center-left-sml
         styleObject = {
           ...styleObject,
-          ...beakLeftCenterStylesAfterSml,
+          ...beakLeftCenterStylesSml,
         };
       }
     } else {
@@ -187,10 +188,10 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
     styleObject = { ...beakYCenter };
     if (isRight) {
       // center-right
-      styleObject = { ...styleObject, ...beakRightCenterStylesAfterLrg };
+      styleObject = { ...styleObject, ...beakRightCenterStylesLrg };
     } else {
       // center-left
-      styleObject = { ...styleObject, ...beakLeftCenterStylesAfterLrg };
+      styleObject = { ...styleObject, ...beakLeftCenterStylesLrg };
     }
   } else {
     if (isAbove) {

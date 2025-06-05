@@ -5,6 +5,15 @@ import { tipAlignmentArray } from '../types';
 import { createToolTipVariantFromAlignment } from './composeVariantsUtils';
 import { createVariantsFromAlignments } from './createVariantsUtils';
 
+/**
+ * For the Popover + Tooltip style files:
+ *
+ * 'above' + 'below' map to position, 'top' + 'bottom' map to beak alignment
+ *  variants for both follow this formula: `position`-`beakPosition`
+ *  Popovers additionally will have `-sml` added to the end of this string if they are the `secondary` variant`
+ *
+ */
+
 export const tooltipBgColor = `background-contrast`;
 export const tooltipArrowHeight = `1rem`;
 const containerOffsetVertical = 12;
@@ -293,20 +302,20 @@ export const toolTipBodyCss = {
   lineHeight: 'base',
 } as const;
 
-export const beakRightCenterStylesAfterSml = {
+export const beakRightCenterStylesSml = {
   ...beakRightCenterStyles,
   left: -8,
 };
-export const beakRightCenterStylesAfterLrg = {
+export const beakRightCenterStylesLrg = {
   ...beakRightCenterStyles,
   left: -10,
 };
 
-export const beakLeftCenterStylesAfterSml = {
+export const beakLeftCenterStylesSml = {
   ...beakLeftCenterStyles,
   right: -7,
 };
-export const beakLeftCenterStylesAfterLrg = {
+export const beakLeftCenterStylesLrg = {
   ...beakLeftCenterStyles,
   right: -10,
 };
