@@ -26,12 +26,12 @@ jobs:
           git config --global user.email "dev@codecademy.com"
           git config --global user.name "codecademydev"
           git config --global push.default current
-
-      # - name: Set npm token
-      #   run: |
-      #     echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
-      #   env:
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      ## I think there is a problem here with the npm token
+      - name: Set npm token
+        run: |
+          echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - uses: ./.github/actions/yarn
 
@@ -40,7 +40,7 @@ jobs:
       - name: Publish alpha packages
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn lerna publish --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${{github.sha}} --dist-tag=alpha.${{github.sha}}
+        run: yarn lerna publish --no-verify-access  --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${{github.sha}} --dist-tag=alpha.${{github.sha}}
 
       - name: List alpha packages versions
         id: published
