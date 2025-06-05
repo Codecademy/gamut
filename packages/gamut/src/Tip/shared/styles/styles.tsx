@@ -10,7 +10,7 @@ import { createVariantsFromAlignments } from './createVariantsUtils';
  *
  * 'above' + 'below' map to position, 'top' + 'bottom' map to beak alignment
  *  variants for both follow this formula: `position`-`beakPosition`
- *  Popovers additionally will have `-sml` added to the end of this string if they are the `secondary` variant`
+ *  Popovers additionally will have `-sml` added to the end of this string if they are the `secondary` variant
  *
  */
 
