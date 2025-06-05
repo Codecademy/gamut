@@ -2,10 +2,6 @@ import cx from 'classnames';
 
 import { HTMLToReactNode } from './overrides';
 
-type StylesObject = {
-  [className: string]: string;
-};
-
 /**
  * Preprocessing Instructions:
  *
@@ -18,14 +14,14 @@ type StylesObject = {
  * This is done instead of styling the elements directly to prevent styles from interfering
  * with component overrides
  */
-export const createPreprocessingInstructions = (styles: StylesObject) => {
+export const createPreprocessingInstructions = () => {
   return [
     {
       shouldPreprocessNode(node: HTMLToReactNode) {
         return Boolean(node.name);
       },
       preprocessNode(node: HTMLToReactNode) {
-        const classname = cx(styles[node.name!], node.attribs?.class);
+        const classname = cx(`g-md-${node.name}`, node.attribs?.class);
 
         const attrs = { ...node.attribs };
         if (classname) attrs.class = classname;

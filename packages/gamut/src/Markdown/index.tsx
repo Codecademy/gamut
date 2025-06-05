@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import cx from 'classnames';
 import HtmlToReact from 'html-to-react';
 import { marked } from 'marked';
@@ -25,16 +26,22 @@ import { Table } from './libs/overrides/Table';
 import { MarkdownVideo } from './libs/overrides/Video';
 import { createPreprocessingInstructions } from './libs/preprocessing';
 import { defaultSanitizationConfig } from './libs/sanitizationConfig';
-// eslint-disable-next-line gamut/no-css-standalone
-import styles from './styles/index.module.scss';
+import { markdownStyles } from './styles';
 
 const htmlToReactParser = HtmlToReact.Parser({
   xmlMode: true,
 });
 
-const preprocessingInstructions = createPreprocessingInstructions(styles);
+const preprocessingInstructions = createPreprocessingInstructions();
 
 const isValidNode = () => true;
+
+const MarkdownWrapper = styled.div<{ spacing: 'loose' | 'tight' | 'none' }>`
+  ${({ theme, spacing }) => {
+    const spacingStyleFunction = markdownStyles[spacing];
+    return spacingStyleFunction ? spacingStyleFunction(theme) : '';
+  }}
+`;
 
 export type SkipDefaultOverridesSettings = {
   a?: boolean;
@@ -77,11 +84,6 @@ export class Markdown extends PureComponent<MarkdownProps> {
     } = this.props;
 
     if (!text) return null;
-
-    const spacingStyles = styles[`spacing-${spacing}`];
-    const classes = cx(spacingStyles, className);
-
-    const Wrapper = inline ? 'span' : 'div';
 
     const overrides = Object.keys(userOverrides).map((tagName) => {
       if (tagName === 'CodeBlock') {
@@ -175,12 +177,14 @@ export class Markdown extends PureComponent<MarkdownProps> {
     );
 
     return (
-      <Wrapper
+      <MarkdownWrapper
+        as={inline ? 'span' : 'div'}
         {...omitProps(Object.keys(this.props), this.props)}
-        className={classes}
+        className={cx(className)}
+        spacing={spacing}
       >
         {react}
-      </Wrapper>
+      </MarkdownWrapper>
     );
   }
 }
