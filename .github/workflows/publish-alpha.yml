@@ -35,7 +35,7 @@ jobs:
 
       - uses: ./.github/actions/yarn
 
-      - run: npx nx run-many --target=publish-build --parallel=3
+      - run: npx nx run-many --target=publish-build --all
 
       - name: Publish alpha packages
         env:
