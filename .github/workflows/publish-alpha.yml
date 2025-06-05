@@ -27,11 +27,11 @@ jobs:
           git config --global user.name "codecademydev"
           git config --global push.default current
 
-      - name: Set npm token
-        run: |
-          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # - name: Set npm token
+      #   run: |
+      #     echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+      #   env:
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - uses: ./.github/actions/yarn
 
