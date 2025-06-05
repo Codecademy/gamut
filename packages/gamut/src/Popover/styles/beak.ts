@@ -1,12 +1,12 @@
 import {
-  beakBottomStylesAfter,
-  beakBottomStylesAfterBase,
-  beakLeftCenterStylesAfter,
-  beakLeftCenterStylesAfterBase,
-  beakRightCenterStylesAfter,
-  beakRightCenterStylesAfterBase,
-  beakTopStylesAfter,
-  beakTopStylesAfterBase,
+  beakBottomStyles,
+  beakBottomStylesBase,
+  beakLeftCenterStyles,
+  beakLeftCenterStylesBase,
+  beakRightCenterStyles,
+  beakRightCenterStylesBase,
+  beakTopStyles,
+  beakTopStylesBase,
   getBeakBackground,
   tooltipBgColor,
 } from '../../Tip/shared/styles/styles';
@@ -15,13 +15,13 @@ import { popoverPrimaryBgColor } from './base';
 
 export const positionAbove = {
   top: 'calc(100% - 10px)',
-  ...beakTopStylesAfterBase,
+  ...beakTopStylesBase,
   ...getBeakBackground({ alignment: 'top', color: popoverPrimaryBgColor }),
 } as const;
 
 export const positionBelow = {
   top: '-10px',
-  ...beakBottomStylesAfterBase,
+  ...beakBottomStylesBase,
   ...getBeakBackground({ alignment: 'top', color: popoverPrimaryBgColor }),
 } as const;
 
@@ -43,12 +43,12 @@ export const beakYCenter = {
 
 export const positionAboveSml = {
   top: 'calc(100% - 8px)',
-  ...beakTopStylesAfter,
+  ...beakTopStyles,
 } as const;
 
 export const positionBelowSml = {
   top: '-8px',
-  ...beakBottomStylesAfter,
+  ...beakBottomStyles,
 } as const;
 
 export const beakRightSml = {
@@ -70,21 +70,21 @@ export const beakYCenterSml = {
 };
 
 export const beakRightCenterStylesAfterSml = {
-  ...beakRightCenterStylesAfter,
+  ...beakRightCenterStyles,
   left: -8,
 };
 export const beakRightCenterStylesAfterLrg = {
-  ...beakRightCenterStylesAfterBase,
+  ...beakRightCenterStylesBase,
   ...getBeakBackground({ alignment: 'right', color: popoverPrimaryBgColor }),
   left: -10,
 };
 
 export const beakLeftCenterStylesAfterSml = {
-  ...beakLeftCenterStylesAfter,
+  ...beakLeftCenterStyles,
   right: -8,
 };
 export const beakLeftCenterStylesAfterLrg = {
-  ...beakLeftCenterStylesAfterBase,
+  ...beakLeftCenterStylesBase,
   ...getBeakBackground({ alignment: 'left', color: popoverPrimaryBgColor }),
   right: -10,
 };
@@ -172,10 +172,10 @@ export const createBeakVariantFromAlignment = (alignment: string) => {
         styleObject = { ...styleObject, ...beakXCenterSml };
         if (isAbove) {
           // above-center-sml
-          styleObject = { ...styleObject, ...beakTopStylesAfter };
+          styleObject = { ...styleObject, ...beakTopStyles };
         } else if (isBelow) {
           // below-center-sml
-          styleObject = { ...styleObject, ...beakBottomStylesAfter };
+          styleObject = { ...styleObject, ...beakBottomStyles };
         }
       } else {
         // above-left-sml + below-left-sml

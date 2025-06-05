@@ -56,43 +56,43 @@ export const getBeakBackground = ({
   };
 };
 
-export const beakTopStylesAfterBase = {
+export const beakTopStylesBase = {
   borderColor,
   borderWidth: '0 1px 1px 0',
 };
 
-export const beakTopStylesAfter = {
-  ...beakTopStylesAfterBase,
+export const beakTopStyles = {
+  ...beakTopStylesBase,
   ...getBeakBackground({ alignment: 'top', color: tooltipBgColor }),
 };
 
-export const beakBottomStylesAfterBase = {
+export const beakBottomStylesBase = {
   borderColor,
   borderWidth: '1px 0 0 1px',
 };
 
-export const beakBottomStylesAfter = {
-  ...beakBottomStylesAfterBase,
+export const beakBottomStyles = {
+  ...beakBottomStylesBase,
   ...getBeakBackground({ alignment: 'bottom', color: tooltipBgColor }),
 };
 
-export const beakRightCenterStylesAfterBase = {
+export const beakRightCenterStylesBase = {
   borderColor,
   borderWidth: '0 0 1px 1px',
 };
 
-export const beakRightCenterStylesAfter = {
-  ...beakRightCenterStylesAfterBase,
+export const beakRightCenterStyles = {
+  ...beakRightCenterStylesBase,
   ...getBeakBackground({ alignment: 'right', color: tooltipBgColor }),
 };
 
-export const beakLeftCenterStylesAfterBase = {
+export const beakLeftCenterStylesBase = {
   borderColor,
   borderWidth: '1px 1px 0 0',
 };
 
-export const beakLeftCenterStylesAfter = {
-  ...beakLeftCenterStylesAfterBase,
+export const beakLeftCenterStyles = {
+  ...beakLeftCenterStylesBase,
   ...getBeakBackground({ alignment: 'left', color: tooltipBgColor }),
 };
 
@@ -108,7 +108,7 @@ export const topStyles = {
 } as const;
 
 export const topStylesAfter = {
-  ...beakTopStylesAfter,
+  ...beakTopStyles,
   bottom: '0.25rem',
 } as const;
 
@@ -136,7 +136,7 @@ export const bottomStylesBefore = {
 };
 
 export const bottomStylesAfter = {
-  ...beakBottomStylesAfter,
+  ...beakBottomStyles,
   top: '0.25rem',
 } as const;
 
@@ -179,12 +179,12 @@ export const rightVertStylesAfter = {
 
 export const rightAlignStylesAfter = {
   left: '4px',
-  ...beakRightCenterStylesAfter,
+  ...beakRightCenterStyles,
 } as const;
 
 export const leftAlignStylesAfter = {
   right: '4px',
-  ...beakLeftCenterStylesAfter,
+  ...beakLeftCenterStyles,
 } as const;
 
 export const tooltipVariantStyles = createVariantsFromAlignments(
@@ -294,19 +294,19 @@ export const toolTipBodyCss = {
 } as const;
 
 export const beakRightCenterStylesAfterSml = {
-  ...beakRightCenterStylesAfter,
+  ...beakRightCenterStyles,
   left: -8,
 };
 export const beakRightCenterStylesAfterLrg = {
-  ...beakRightCenterStylesAfter,
+  ...beakRightCenterStyles,
   left: -10,
 };
 
 export const beakLeftCenterStylesAfterSml = {
-  ...beakLeftCenterStylesAfter,
+  ...beakLeftCenterStyles,
   right: -7,
 };
 export const beakLeftCenterStylesAfterLrg = {
-  ...beakLeftCenterStylesAfter,
+  ...beakLeftCenterStyles,
   right: -10,
 };
