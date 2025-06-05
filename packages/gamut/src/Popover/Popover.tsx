@@ -12,7 +12,11 @@ import {
 } from './elements';
 import { getBeakVariant } from './styles/beak';
 import { PopoverProps } from './types';
-import { findResizingParent, findScrollingParent } from './utils';
+import {
+  findResizingParent,
+  findScrollingParent,
+  getDefaultOffset,
+} from './utils';
 
 export const Popover: React.FC<PopoverProps> = ({
   animation,
@@ -30,16 +34,13 @@ export const Popover: React.FC<PopoverProps> = ({
   role,
   variant,
   targetRef,
-  horizontalOffset = position === 'center'
-    ? variant === 'secondary'
-      ? 15
-      : 20
-    : 0,
-  verticalOffset = position !== 'center'
-    ? variant === 'secondary'
-      ? 15
-      : 20
-    : 0,
+  horizontalOffset = getDefaultOffset({
+    axis: 'horizontal',
+    position,
+    variant,
+  }),
+  verticalOffset = getDefaultOffset({ axis: 'vertical', position, variant }),
+
   widthRestricted,
 }) => {
   const [popoverHeight, setPopoverHeight] = useState<number>(0);

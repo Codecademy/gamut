@@ -42,11 +42,11 @@ export const getDefaultOffset = ({
 }: Pick<PopoverProps, 'position' | 'variant'> & {
   axis: 'horizontal' | 'vertical';
 }) => {
-  const newPosition = 0;
-  if (position === 'center' && axis === 'horizontal') {
-    position = offsets[variant];
-  } else if (position !== 'center' && axis === 'vertical') {
-    position = offsets[variant];
+  let newPosition = 0;
+  if (position === 'center' && axis === 'horizontal' && variant) {
+    newPosition = offsets[variant];
+  } else if (position !== 'center' && axis === 'vertical' && variant) {
+    newPosition = offsets[variant];
   }
   return newPosition;
 };
