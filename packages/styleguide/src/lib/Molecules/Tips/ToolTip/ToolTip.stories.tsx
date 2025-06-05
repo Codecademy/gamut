@@ -22,18 +22,6 @@ const meta: Meta<typeof ToolTip> = {
 export default meta;
 type Story = StoryObj<typeof ToolTip>;
 
-export const AriaDisabled: Story = {
-  render: () => (
-    <FlexBox center m={24} py={64}>
-      <ToolTip id="fill-id" info="Tooltip">
-        <FillButton aria-describedby="fill-id" aria-disabled icon={SparkleIcon}>
-          Click me
-        </FillButton>
-      </ToolTip>
-    </FlexBox>
-  ),
-};
-
 const alignments = [
   'top-center',
   'bottom-center',
