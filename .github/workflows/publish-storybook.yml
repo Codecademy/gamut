@@ -5,7 +5,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
     branches-ignore:
-      - production
+      - main
 
 permissions:
   id-token: write
@@ -30,7 +30,7 @@ jobs:
         run: |
           yarn nx run styleguide:build-storybook
 
-      - name: Deploy PR preview #Replace with GH stuff
+      - name: Deploy PR preview
         shell: bash
         run: |
           DEPLOY_MESSAGE="User: ${GITHUB_ACTOR} Project: ${GITHUB_REPOSITORY} Pull Request: ${GITHUB_REF}"
