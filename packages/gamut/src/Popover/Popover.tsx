@@ -12,36 +12,7 @@ import {
 } from './elements';
 import { getBeakVariant } from './styles/beak';
 import { PopoverProps } from './types';
-
-const findScrollingParent = ({
-  parentElement,
-}: HTMLElement): HTMLElement | null => {
-  if (parentElement) {
-    const { overflow, overflowY, overflowX } = getComputedStyle(parentElement);
-    if (
-      [overflow, overflowY, overflowX].some((val) =>
-        ['scroll', 'auto'].includes(val)
-      )
-    ) {
-      return parentElement;
-    }
-    return findScrollingParent(parentElement); // parent of this parent is used via prop destructure
-  }
-  return null;
-};
-
-const findResizingParent = ({
-  parentElement,
-}: HTMLElement): HTMLElement | null => {
-  if (parentElement) {
-    const { overflow, overflowY, overflowX } = getComputedStyle(parentElement);
-    if ([overflow, overflowY, overflowX].some((val) => val === 'clip')) {
-      return parentElement;
-    }
-    return findResizingParent(parentElement); // parent of this parent is used via prop destructure
-  }
-  return null;
-};
+import { findResizingParent, findScrollingParent } from './utils';
 
 export const Popover: React.FC<PopoverProps> = ({
   animation,
