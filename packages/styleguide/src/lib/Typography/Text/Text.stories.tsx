@@ -1,4 +1,4 @@
-import { Column, LayoutGrid, Text } from '@codecademy/gamut';
+import { Box, Column, LayoutGrid, Text } from '@codecademy/gamut';
 // eslint-disable-next-line gamut/import-paths
 import {
   typographyElementVariants,
@@ -131,11 +131,15 @@ export const Screenreader: Story = {
             </Text>
           </Column>
           <Column size={9}>
-            <Text screenreader={variant}>
-              {variant
-                ? 'Visible only to screenreaders'
-                : 'When set to "false", this text is visible to non-screenreaders.'}
-            </Text>
+            {variant ? (
+              <Box aria-labelledby="example-sr-text" role="note" width={4}>
+                <Text aria-hidden id="example-sr-text" screenreader>
+                  Visible only to screenreaders
+                </Text>
+              </Box>
+            ) : (
+              <Text>This text is visible to non-screenreaders.</Text>
+            )}
           </Column>
         </Fragment>
       ))}
