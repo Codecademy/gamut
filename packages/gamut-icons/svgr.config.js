@@ -1,5 +1,6 @@
 const emotionPlugin = require('./emotion-plugin');
 const maskPlugin = require('./mask-plugin');
+const strokeWidthPlugin = require('./stroke-width-plugin');
 const template = require('./icon-template');
 const indexTemplate = require('./index-template');
 
@@ -14,6 +15,7 @@ module.exports = {
     'pointer-events': 'none',
     width: '{width}',
     height: '{height}',
+    strokeWidth: '{strokeWidth}',
   },
   prettierConfig: {
     parser: 'typescript',
@@ -26,7 +28,7 @@ module.exports = {
   },
   jsx: {
     babelConfig: {
-      plugins: [maskPlugin, emotionPlugin],
+      plugins: [maskPlugin, emotionPlugin, strokeWidthPlugin],
     },
   },
   indexTemplate,
