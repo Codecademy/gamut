@@ -28,7 +28,12 @@ export const parameters = {
 
 ## Usage
 
-Illustrations are intended to be able to take in props for variants such as color, so despite being SVG-based, they're stored in our code as regular React components.
+Illustrations are intended to be able to take in props for variants such as color, so despite being SVG-based, they're stored in our code as regular React components and can be used like so:
+```jsx
+import { NumberBlocks } from '@codecademy/gamut-illustrations';
+
+<NumberBlocks width="128px" />
+```
 
 ## Adding an illustration
 
@@ -44,7 +49,7 @@ If you cannot find the Illustration you would like in the ones that we have spec
 
 ## Playground
 
-<Canvas sourceState="shown" of={IllustrationsStories.Default} />
+<Canvas of={IllustrationsStories.Default} />
 
 <Controls />
 
