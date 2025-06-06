@@ -53,7 +53,7 @@ type GetBeakBackgroundType = {
   color: typeof tooltipBgColor | typeof popoverPrimaryBgColor;
 };
 
-export const getBeakBackground = ({
+export const getBeakBgAndRotation = ({
   alignment,
   color,
 }: GetBeakBackgroundType) => {
@@ -70,22 +70,22 @@ export const beakStylesBase = {
 
 export const beakTopStyles = {
   ...beakStylesBase,
-  ...getBeakBackground({ alignment: 'above', color: tooltipBgColor }),
+  ...getBeakBgAndRotation({ alignment: 'above', color: tooltipBgColor }),
 };
 
 export const beakBottomStyles = {
   ...beakStylesBase,
-  ...getBeakBackground({ alignment: 'below', color: tooltipBgColor }),
+  ...getBeakBgAndRotation({ alignment: 'below', color: tooltipBgColor }),
 };
 
 export const beakRightCenterStyles = {
   ...beakStylesBase,
-  ...getBeakBackground({ alignment: 'right', color: tooltipBgColor }),
+  ...getBeakBgAndRotation({ alignment: 'right', color: tooltipBgColor }),
 };
 
 export const beakLeftCenterStyles = {
   ...beakStylesBase,
-  ...getBeakBackground({ alignment: 'left', color: tooltipBgColor }),
+  ...getBeakBgAndRotation({ alignment: 'left', color: tooltipBgColor }),
 };
 
 const beforeStylesVert = {

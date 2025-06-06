@@ -4,7 +4,7 @@ import {
   beakRightCenterStyles,
   beakStylesBase,
   beakTopStyles,
-  getBeakBackground,
+  getBeakBgAndRotation,
   tooltipBgColor,
 } from '../../Tip/shared/styles/styles';
 import { PopoverProps } from '../types';
@@ -13,13 +13,13 @@ import { popoverPrimaryBgColor } from './base';
 const positionAbove = {
   top: 'calc(100% - 10px)',
   ...beakStylesBase,
-  ...getBeakBackground({ alignment: 'above', color: popoverPrimaryBgColor }),
+  ...getBeakBgAndRotation({ alignment: 'above', color: popoverPrimaryBgColor }),
 } as const;
 
 const positionBelow = {
   top: '-10px',
   ...beakStylesBase,
-  ...getBeakBackground({ alignment: 'below', color: popoverPrimaryBgColor }),
+  ...getBeakBgAndRotation({ alignment: 'below', color: popoverPrimaryBgColor }),
 } as const;
 
 const beakRight = {
@@ -72,7 +72,7 @@ const beakRightCenterStylesSml = {
 };
 export const beakRightCenterStylesLrg = {
   ...beakStylesBase,
-  ...getBeakBackground({ alignment: 'right', color: popoverPrimaryBgColor }),
+  ...getBeakBgAndRotation({ alignment: 'right', color: popoverPrimaryBgColor }),
   left: -10,
 };
 
@@ -82,7 +82,7 @@ const beakLeftCenterStylesSml = {
 };
 const beakLeftCenterStylesLrg = {
   ...beakStylesBase,
-  ...getBeakBackground({ alignment: 'left', color: popoverPrimaryBgColor }),
+  ...getBeakBgAndRotation({ alignment: 'left', color: popoverPrimaryBgColor }),
   right: -10,
 };
 
