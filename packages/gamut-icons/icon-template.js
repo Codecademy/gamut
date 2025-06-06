@@ -12,7 +12,7 @@ function iconTemplate(api, opts, { jsx }) {
       title,
       titleId,
       size = 16,
-      strokeWidth= 1.5,
+      strokeWidth = 1.5,
       height = size,
       width = size,
       ...props

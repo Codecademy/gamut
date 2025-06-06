@@ -1,5 +1,6 @@
 const emotionPlugin = require('./emotion-plugin');
 const maskPlugin = require('./mask-plugin');
+const strokeWidthPlugin = require('./stroke-width-plugin');
 const template = require('./icon-template');
 const indexTemplate = require('./index-template');
 
@@ -24,11 +25,10 @@ module.exports = {
     '#111': '#fff',
     '#444': '#fff',
     currentColor: '#fff',
-    strokeWidth: '{strokeWidth}',
   },
   jsx: {
     babelConfig: {
-      plugins: [maskPlugin, emotionPlugin],
+      plugins: [maskPlugin, emotionPlugin, strokeWidthPlugin],
     },
   },
   indexTemplate,
