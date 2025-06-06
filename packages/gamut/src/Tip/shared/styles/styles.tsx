@@ -41,18 +41,15 @@ const previewTipPadding = { p: 16 } as const;
 /*  This halfway fills the square we use to create the 'beak' of the tip so it does not overlap the tip text on the 'center' alignments
 We split the backgroundImage out because we share these styles with Popover * */
 
-const beakBackgroundImageAlignments = {
-  top: 'top left',
-  bottom: 'bottom right',
-  right: 'top right',
-  left: 'bottom left',
+const beakBackgroundRotation = {
+  above: 'rotate(45deg)',
+  below: 'rotate(-135deg)',
+  right: 'rotate(135deg)',
+  left: 'rotate(-45deg)',
 };
 
-const linearAlignmentLeadingString = `linear-gradient(to `;
-const linearAlignmentTrailingString = ` 55%, rgba(0,0,0,0) 20%)`;
-
 type GetBeakBackgroundType = {
-  alignment: keyof typeof beakBackgroundImageAlignments;
+  alignment: keyof typeof beakBackgroundRotation;
   color: typeof tooltipBgColor | typeof popoverPrimaryBgColor;
 };
 
@@ -61,47 +58,33 @@ export const getBeakBackground = ({
   color,
 }: GetBeakBackgroundType) => {
   return {
-    backgroundImage: `${linearAlignmentLeadingString}${beakBackgroundImageAlignments[alignment]}, ${theme.colors[color]}${linearAlignmentTrailingString}`,
+    transform: beakBackgroundRotation[alignment],
+    backgroundImage: `linear-gradient(to top left, ${theme.colors[color]} 55%, rgba(0,0,0,0) 20%)`,
   };
 };
 
-export const beakTopStylesBase = {
+export const beakStylesBase = {
   borderColor,
   borderWidth: '0 1px 1px 0',
 };
 
 export const beakTopStyles = {
-  ...beakTopStylesBase,
-  ...getBeakBackground({ alignment: 'top', color: tooltipBgColor }),
-};
-
-export const beakBottomStylesBase = {
-  borderColor,
-  borderWidth: '1px 0 0 1px',
+  ...beakStylesBase,
+  ...getBeakBackground({ alignment: 'above', color: tooltipBgColor }),
 };
 
 export const beakBottomStyles = {
-  ...beakBottomStylesBase,
-  ...getBeakBackground({ alignment: 'bottom', color: tooltipBgColor }),
-};
-
-export const beakRightCenterStylesBase = {
-  borderColor,
-  borderWidth: '0 0 1px 1px',
+  ...beakStylesBase,
+  ...getBeakBackground({ alignment: 'below', color: tooltipBgColor }),
 };
 
 export const beakRightCenterStyles = {
-  ...beakRightCenterStylesBase,
+  ...beakStylesBase,
   ...getBeakBackground({ alignment: 'right', color: tooltipBgColor }),
 };
 
-export const beakLeftCenterStylesBase = {
-  borderColor,
-  borderWidth: '1px 1px 0 0',
-};
-
 export const beakLeftCenterStyles = {
-  ...beakLeftCenterStylesBase,
+  ...beakStylesBase,
   ...getBeakBackground({ alignment: 'left', color: tooltipBgColor }),
 };
 
@@ -225,7 +208,6 @@ export const toolTipAlignmentVariants = variant({
       display: 'block',
       height: `${tooltipArrowHeight}`,
       position: 'absolute',
-      transform: 'rotate(45deg)',
       width: `${tooltipArrowHeight}`,
       borderStyle: 'solid',
     },
@@ -301,21 +283,3 @@ export const toolTipBodyCss = {
   fontSize: 14,
   lineHeight: 'base',
 } as const;
-
-export const beakRightCenterStylesSml = {
-  ...beakRightCenterStyles,
-  left: -8,
-};
-export const beakRightCenterStylesLrg = {
-  ...beakRightCenterStyles,
-  left: -10,
-};
-
-export const beakLeftCenterStylesSml = {
-  ...beakLeftCenterStyles,
-  right: -7,
-};
-export const beakLeftCenterStylesLrg = {
-  ...beakLeftCenterStyles,
-  right: -10,
-};

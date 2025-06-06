@@ -46,7 +46,6 @@ const beakVariantStyles = createVariantsFromAlignments(
 
 export const beakVariants = variant({
   base: {
-    transform: 'rotate(45deg)',
     background: 'transparent',
     zIndex: 1,
     position: 'fixed',

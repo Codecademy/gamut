@@ -45,7 +45,7 @@ export const infoButtonStyles = css({
 
 export type InfoButtonStatesProps = StyleProps<typeof infoButtonStates>;
 
-export const newInfoTipAlignmentVariants = variant({
+export const infoTipAlignmentVariants = variant({
   prop: 'alignment',
   base: {
     bg: 'transparent',
@@ -60,7 +60,6 @@ export const newInfoTipAlignmentVariants = variant({
       display: 'block',
       height: `${tooltipArrowHeight}`,
       position: 'absolute',
-      transform: 'rotate(45deg)',
       width: `${tooltipArrowHeight}`,
       borderStyle: 'solid',
     },
@@ -81,5 +80,5 @@ export const InfoTipContainer = styled(Box)<
     StyleProps<typeof infoVisibilityStates>
 >`
   ${infoVisibilityStates}
-  ${newInfoTipAlignmentVariants}
+  ${infoTipAlignmentVariants}
 `;
