@@ -25,6 +25,7 @@ jobs:
       - uses: actions/checkout@v4 # v4.2.2
         with:
           fetch-depth: 0
+          ref: ${{  github.event.pull_request.head.ref }}
 
       - name: Setup and Build
         id: setup
@@ -50,7 +51,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           SHORT_SHA=${GITHUB_SHA:0:6}
-          yarn lerna publish --no-verify-access --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${SHORT_SHA} --dist-tag=alpha.${SHORT_SHA}
+          yarn lerna publish --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${SHORT_SHA} --dist-tag=alpha.${SHORT_SHA}
 
       - name: List alpha packages versions
         id: published
