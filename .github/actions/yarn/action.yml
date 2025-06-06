@@ -1,14 +1,82 @@
-name: 'Restore Yarn Cache'
-description: 'Setup a NodeJS environment and restore cache if any, given a node version'
+name: 'Setup Node & yarn'
+description: 'Setup a NodeJS environment, install deps, & builds packages'
+
+inputs:
+  npm-token:
+    description: 'NPM authentication token'
+    required: true
+  node-version:
+    description: 'Node.js version to use'
+    required: false
+    default: '22.13.1'
+  ignore-commit-message:
+    description: 'Commit message to ignore for automated commits'
+    required: false
+    default: 'chore(release): publish'
+
+outputs:
+  should-skip:
+    description: 'Whether the build should be skipped due to automated commit'
+    value: ${{ steps.check-commit.outputs.should-skip }}
+  cache-hit:
+    description: 'Whether the node_modules cache was hit'
+    value: ${{ steps.cache-node-modules.outputs.cache-hit }}
 
 runs:
   using: 'composite'
   steps:
-    - name: Setup Node.js
-      uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
-      with:
-        node-version-file: .nvmrc
-
-    - name: Install Dependencies If Not Cached
-      run: \[ -d node_modules \] || yarn --production=false --frozen-lockfile
+    - name: Check for automated commit
+      id: check-commit
       shell: bash
+      run: |
+        COMMIT_MESSAGE=$(git log --format=oneline -n 1 $GITHUB_SHA)
+        echo "Commit message: $COMMIT_MESSAGE"
+        if [[ $COMMIT_MESSAGE == *"${{ inputs.ignore-commit-message }}"* ]]; then
+          echo "should-skip=true" >> $GITHUB_OUTPUT
+          echo "Skipping build due to automated commit"
+        else
+          echo "should-skip=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4 # v3.9.1
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'yarn'
+
+    - name: Set npm token
+      shell: bash
+      run: echo "//registry.npmjs.org/:_authToken=${{ inputs.npm-token }}" > .npmrc
+
+    - name: Cache node_modules
+      id: cache-node-modules
+      uses: actions/cache@v4
+      with:
+        path: |
+          node_modules
+          packages
+        key: node-modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+
+    - name: Install dependencies if not cached
+      if: steps.cache-node-modules.outputs.cache-hit != 'true'
+      shell: bash
+      run: yarn --production=false --frozen-lockfile
+
+    - name: Cache build artifacts
+      uses: actions/cache@v4
+      with:
+        path: |
+          node_modules/.cache/nx
+          node_modules/.cache
+          packages/styleguide/node_modules/.cache
+        key: build-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ github.ref }}-${{ github.sha }}
+        restore-keys: |
+          build-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ github.ref }}
+          build-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+
+    - name: Build all packages
+      shell: bash
+      run: npx nx run-many --target=publish-build --all
+      env:
+        NODE_OPTIONS: '--max_old_space_size=8196'
+        NX_CLOUD: false

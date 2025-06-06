@@ -5,6 +5,12 @@ on:
     branches-ignore:
       - main
 
+env:
+  NODE_VERSION: '22.13.1'
+  NODE_OPTIONS: '--max_old_space_size=8196'
+  NX_CLOUD: false
+  IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
+
 permissions:
   id-token: write
   contents: read
@@ -13,13 +19,26 @@ permissions:
   actions: write
 
 jobs:
-  publish:
+  publish-alpha:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Setup and Build
+        id: setup
+        uses: ./.github/actions/yarn
+        with:
+          npm-token: ${{ secrets.NPM_TOKEN }}
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Skip if automated commit
+        if: steps.setup.outputs.should-skip == 'true'
+        run: |
+          echo "Skipping publish-alpha due to automated commit"
+          exit 0
 
       - name: Set git user
         run: |
@@ -27,20 +46,12 @@ jobs:
           git config --global user.name "codecademydev"
           git config --global push.default current
 
-      - name: Set npm token
-        run: |
-          echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - uses: ./.github/actions/yarn
-
-      - run: npx nx run-many --target=publish-build --all
-
       - name: Publish alpha packages
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn lerna publish --no-verify-access  --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${{github.sha}} --dist-tag=alpha.${{github.sha}}
+        run: |
+          SHORT_SHA=${GITHUB_SHA:0:6}
+          yarn lerna publish --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${SHORT_SHA} --dist-tag=alpha.${SHORT_SHA}
 
       - name: List alpha packages versions
         id: published
