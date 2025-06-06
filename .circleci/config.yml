@@ -243,14 +243,6 @@ workflows:
           filters:
             branches:
               only: main
-      - publish_alpha:
-          filters:
-            branches:
-              ignore:
-                - main
-                - gh-pages
-          requires:
-            - checkout_code
 
   deploy:
     jobs:
