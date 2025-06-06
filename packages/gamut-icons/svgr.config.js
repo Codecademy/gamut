@@ -14,6 +14,7 @@ module.exports = {
     'pointer-events': 'none',
     width: '{width}',
     height: '{height}',
+    strokeWidth: '{strokeWidth}',
   },
   prettierConfig: {
     parser: 'typescript',
@@ -23,6 +24,7 @@ module.exports = {
     '#111': '#fff',
     '#444': '#fff',
     currentColor: '#fff',
+    strokeWidth: '{strokeWidth}',
   },
   jsx: {
     babelConfig: {
