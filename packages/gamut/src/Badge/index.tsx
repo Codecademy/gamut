@@ -128,56 +128,5 @@ export const Badge: React.FC<BadgeProps> = ({ icon, children, ...rest }) => {
     iconPosition: 'left',
     iconSize,
   });
-  return <BadgeBase {...rest}>{content}</BadgeBase>;
+  return <BadgeBase {...rest}>cass wuz here ;3</BadgeBase>;
 };
-
-// FOR TESTING PROPS
-/*
-export const TestBadgeCustomBackground = () => (
-  <Badge
-    variant="custom"
-    background="linear-gradient(91deg, #FFE712 0.08%, #FF9641 100%)"
-  >
-    ✅ this works, no TS errors
-  </Badge>
-)
-
-export const TestBadgeCustomBg = () => (
-  <Badge
-    variant="custom"
-    bg="white"
-  >
-    ✅ this works, no TS errors
-  </Badge>
-)
-
-export const TestBadgeIncorrectCustomBg = () => (
-  <Badge
-    variant="custom"
-    bg="white"
-    background="linear-gradient(91deg, #FFE712 0.08%, #FF9641 100%)"
-  >
-    ✅ this works, gets TS errors when both bg and background are used
-  </Badge>
-)
-
-
-export const TestBadgeIncorrectVariantBg = () => (
-  <Badge
-    variant="primary"
-    bg="white"
-  >
-    ✅ this works, gets TS errors when both a variant and bg are used
-  </Badge>
-)
-
-
-export const TestBadgeIncorrectVariantBackground = () => (
-  <Badge
-    variant="primary"
-    background="linear-gradient(91deg, #FFE712 0.08%, #FF9641 100%)"
-  >
-    ✅ this works, gets TS errors when both a variant and background are used
-  </Badge>
-)
-*/
