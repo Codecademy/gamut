@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [75.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@75.0.0...@codecademy/styleguide@75.0.1) (2025-06-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [75.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@74.1.0...@codecademy/styleguide@75.0.0) (2025-06-03)
+
+### ⚠ BREAKING CHANGES
+
+- **Tabs:** Update Tabs to use react aria tabs
+
+### Features
+
+- **Icons:** add new icons for LX Studio platform ([935f58f](https://github.com/Codecademy/gamut/commit/935f58f6fefbe62b7ef1248b146bd95783873d0b))
+- **Tabs:** Update Tabs to use react aria tabs ([eb87396](https://github.com/Codecademy/gamut/commit/eb87396b21e5e696359c8fb49b3cd2b01609e14a))
+
 ## [74.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@74.0.2...@codecademy/styleguide@74.1.0) (2025-05-30)
 
 ### Features
