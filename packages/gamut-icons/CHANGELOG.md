@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.45.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.44.0...@codecademy/gamut-icons@9.45.0) (2025-06-10)
+
+### Features
+
+- **Icon:** added new MiniQuoteIcon ([4509029](https://github.com/Codecademy/gamut/commit/4509029deb86760157e0e1051dbf849670a95b92))
+
 ## [9.44.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.43.0...@codecademy/gamut-icons@9.44.0) (2025-06-04)
 
 ### Features

@@ -89,15 +89,24 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   );
 
   const textError = customError || getErrorMessage(error);
+  const showError = !!(textError && !hideLabel);
+  const errorId = showError ? `${id || name}_error` : undefined;
 
   return (
     <FormGroup spacing={hideLabel ? 'tight' : spacing}>
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
-      <Component {...(rest as any)} disabled={disabled} name={name} />
+      <Component
+        {...(rest as any)}
+        aria-describedby={errorId}
+        aria-invalid={showError}
+        disabled={disabled}
+        name={name}
+      />
       {children}
-      {(error || customError) && !hideLabel && (
+      {showError && (
         <FormError
           aria-live={isFirstError ? 'assertive' : 'off'}
+          id={errorId}
           role={isFirstError ? 'alert' : 'status'}
           variant={errorType}
         >
