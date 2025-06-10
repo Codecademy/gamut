@@ -25,18 +25,18 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - name: Check for automated commit
-      id: check-commit
-      shell: bash
-      run: |
-        COMMIT_MESSAGE=$(git log --format=oneline -n 1 $GITHUB_SHA)
-        echo "Commit message: $COMMIT_MESSAGE"
-        if [[ $COMMIT_MESSAGE == *"${{ inputs.ignore-commit-message }}"* ]]; then
-          echo "should-skip=true" >> $GITHUB_OUTPUT
-          echo "Skipping build due to automated commit"
-        else
-          echo "should-skip=false" >> $GITHUB_OUTPUT
-        fi
+    # - name: Check for automated commit
+    #   id: check-commit
+    #   shell: bash
+    #   run: |
+    #     COMMIT_MESSAGE=$(git log --format=oneline -n 1 $GITHUB_SHA)
+    #     echo "Commit message: $COMMIT_MESSAGE"
+    #     if [[ $COMMIT_MESSAGE == *"${{ inputs.ignore-commit-message }}"* ]]; then
+    #       echo "should-skip=true" >> $GITHUB_OUTPUT
+    #       echo "Skipping build due to automated commit"
+    #     else
+    #       echo "should-skip=false" >> $GITHUB_OUTPUT
+    #     fi
 
     - name: Setup Node.js
       uses: actions/setup-node@v4 # v3.9.1
