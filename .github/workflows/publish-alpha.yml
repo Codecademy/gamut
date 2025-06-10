@@ -47,11 +47,11 @@ jobs:
           git config --global push.default current
 
       - name: Publish alpha packages
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           SHORT_SHA=${GITHUB_SHA:0:6}
           yarn lerna publish --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${SHORT_SHA} --dist-tag=alpha.${SHORT_SHA}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: List alpha packages versions
         id: published
