@@ -12,9 +12,9 @@ import { Box } from '../../Box';
 import { ButtonSelectors } from '../../ButtonBase/ButtonBase';
 import {
   tooltipArrowHeight,
-  tooltipBackgroundColor,
+  tooltipBgColor,
   tooltipVariantStyles,
-} from '../shared/styles';
+} from '../shared/styles/styles';
 import { TipPlacementComponentProps } from '../shared/types';
 
 const textColor = 'secondary';
@@ -45,7 +45,7 @@ export const infoButtonStyles = css({
 
 export type InfoButtonStatesProps = StyleProps<typeof infoButtonStates>;
 
-export const newInfoTipAlignmentVariants = variant({
+export const infoTipAlignmentVariants = variant({
   prop: 'alignment',
   base: {
     bg: 'transparent',
@@ -55,12 +55,11 @@ export const newInfoTipAlignmentVariants = variant({
     transitionDelay: `${timing.fast}`,
     position: 'absolute',
     '&::after': {
-      bg: tooltipBackgroundColor,
+      bg: tooltipBgColor,
       content: '""',
       display: 'block',
       height: `${tooltipArrowHeight}`,
       position: 'absolute',
-      transform: 'rotate(45deg)',
       width: `${tooltipArrowHeight}`,
       borderStyle: 'solid',
     },
@@ -81,5 +80,5 @@ export const InfoTipContainer = styled(Box)<
     StyleProps<typeof infoVisibilityStates>
 >`
   ${infoVisibilityStates}
-  ${newInfoTipAlignmentVariants}
+  ${infoTipAlignmentVariants}
 `;
