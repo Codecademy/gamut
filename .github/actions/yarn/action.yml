@@ -62,17 +62,17 @@ runs:
       shell: bash
       run: yarn --production=false --frozen-lockfile
 
-    - name: Cache build artifacts
-      uses: actions/cache@v4
-      with:
-        path: |
-          node_modules/.cache/nx
-          node_modules/.cache
-          packages/styleguide/node_modules/.cache
-        key: build-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ github.ref }}-${{ github.sha }}
-        restore-keys: |
-          build-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ github.ref }}
-          build-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+    # - name: Cache build artifacts
+    #   uses: actions/cache@v4
+    #   with:
+    #     path: |
+    #       node_modules/.cache/nx
+    #       node_modules/.cache
+    #       packages/styleguide/node_modules/.cache
+    #     key: build-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ github.ref }}-${{ github.sha }}
+    #     restore-keys: |
+    #       build-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ github.ref }}
+    #       build-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
 
     - name: Build all packages
       shell: bash
