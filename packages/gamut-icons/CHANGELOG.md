@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.45.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.44.0...@codecademy/gamut-icons@9.45.0) (2025-06-10)
+
+### Features
+
+- **Icon:** added new MiniQuoteIcon ([4509029](https://github.com/Codecademy/gamut/commit/4509029deb86760157e0e1051dbf849670a95b92))
+
+## [9.44.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.43.0...@codecademy/gamut-icons@9.44.0) (2025-06-04)
+
+### Features
+
+- **Icon:** added new OnlineClassStudentIcon ([66d8b51](https://github.com/Codecademy/gamut/commit/66d8b51d4d0bd101e6b08a5453ed687dbdec0d0f))
+
+## [9.43.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.42.4...@codecademy/gamut-icons@9.43.0) (2025-06-03)
+
+### Features
+
+- **Icons:** add new icons for LX Studio platform ([935f58f](https://github.com/Codecademy/gamut/commit/935f58f6fefbe62b7ef1248b146bd95783873d0b))
+
 ### [9.42.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.42.3...@codecademy/gamut-icons@9.42.4) (2025-05-30)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
