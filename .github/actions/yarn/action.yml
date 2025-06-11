@@ -2,9 +2,6 @@ name: 'Setup Node & yarn'
 description: 'Setup a NodeJS environment, install deps, & builds packages'
 
 inputs:
-  npm-token:
-    description: 'NPM authentication token'
-    required: true
   node-version:
     description: 'Node.js version to use'
     required: false
@@ -43,10 +40,6 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
         cache: 'yarn'
-
-    - name: Set npm token
-      shell: bash
-      run: echo "//registry.npmjs.org/:_authToken=${{ inputs.npm-token }}" > .npmrc
 
     - name: Cache node_modules
       id: cache-node-modules
