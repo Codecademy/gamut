@@ -49,7 +49,6 @@ jobs:
       - name: Set npm token
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
-          npm whoami
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -59,6 +58,7 @@ jobs:
           yarn lerna publish --no-verify-access --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${SHORT_SHA} --dist-tag=alpha.${SHORT_SHA}
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: List alpha packages versions
         id: published
