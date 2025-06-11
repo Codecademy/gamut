@@ -39,9 +39,6 @@ jobs:
       - name: Build Storybook
         run: yarn build && yarn nx run styleguide:build-storybook
 
-      - name: Install Netlify
-        run: yarn add netlify-cli@17.37.1
-
       - name: Deploy to Netlify
         id: deploy
         run: |
