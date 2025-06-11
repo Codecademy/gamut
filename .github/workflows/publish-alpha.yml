@@ -31,7 +31,6 @@ jobs:
         id: setup
         uses: ./.github/actions/yarn
         with:
-          npm-token: ${{ secrets.NPM_TOKEN }}
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Skip if automated commit
