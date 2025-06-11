@@ -1,0 +1,79 @@
+name: Deploy Storybook Preview
+
+on:
+  pull_request:
+    branches-ignore:
+      - main
+      - gh-pages
+
+env:
+  NODE_VERSION: '22.13.1'
+  NODE_OPTIONS: '--max_old_space_size=8196'
+  NX_CLOUD: false
+  IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  deploy-storybook-preview:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup and Build
+        id: setup
+        uses: ./.github/actions/yarn
+        with:
+          npm-token: ${{ secrets.NPM_TOKEN }}
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Skip if automated commit
+        run: |
+          COMMIT_MESSAGE=$(git log --format=oneline -n 1 $GITHUB_SHA)
+          echo "Build started due to commit with message $COMMIT_MESSAGE, blocking builds started by ${IGNORE_COMMIT_MESSAGE}"
+          if [[ $COMMIT_MESSAGE == *"${IGNORE_COMMIT_MESSAGE}"* ]]; then
+            echo "Skipping deployment due to automated commit"
+            exit 0
+          fi
+
+      - name: Set git user
+        run: |
+          git config --global user.email "dev@codecademy.com"
+          git config --global user.name "codecademydev"
+          git config --global push.default current
+
+      - name: Build Storybook
+        run: yarn nx run styleguide:build-storybook
+
+      - name: Deploy to Netlify
+        id: deploy
+        run: |
+          DEPLOY_MESSAGE="User: ${GITHUB_ACTOR} Project: ${GITHUB_REPOSITORY} Pull Request: ${{ github.event.pull_request.html_url }}"
+          DEPLOY_OUTPUT=$(npx netlify-cli@17.37.1 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --filter @codecademy/styleguide)
+          echo "deploy-output<<EOF" >> $GITHUB_OUTPUT
+          echo "$DEPLOY_OUTPUT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Comment on PR with deployment info
+        if: steps.deploy.outputs.deploy-output
+        uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          header: Storybook Deploy Preview
+          recreate: true
+          message: |
+            🚀 **Styleguide deploy preview ready!**
+
+            **Deploy URL:** ${{ fromJson(steps.deploy.outputs.deploy-output).deploy_url }}
+            **Deploy Logs:** ${{ fromJson(steps.deploy.outputs.deploy-output).logs }}
+
+            <!--ALPHA_DEPLOY_COMMENT-->
