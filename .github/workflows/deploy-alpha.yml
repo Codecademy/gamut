@@ -39,19 +39,12 @@ jobs:
       - name: Build Storybook
         run: yarn build && yarn nx run styleguide:build-storybook
 
-      - name: Install Netlify CLI & link
-        run: |
-          yarn add netlify-cli@22.1.3
-          netlify link --auth=${{ secrets.NETLIFY_AUTH_TOKEN}} --id ${{ secrets.NETLIFY_SITE_ID }}
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-
       - name: Deploy to Netlify
         id: deploy
         run: |
           DEPLOY_MESSAGE="User: ${GITHUB_ACTOR} Project: ${GITHUB_REPOSITORY} Pull Request: ${{ github.event.pull_request.html_url }}"
-          DEPLOY_OUTPUT=$(npx netlify-cli@22.1.3 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --filter @codecademy/styleguide)
+          npx netlify-cli@22.1.3 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --filter @codecademy/styleguide > .deploy-output
+          DEPLOY_OUTPUT="$(cat .deploy-output)"
           echo "$DEPLOY_OUTPUT" >> $GITHUB_OUTPUT
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
