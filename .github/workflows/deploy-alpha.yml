@@ -52,25 +52,33 @@ jobs:
         run: yarn nx run styleguide:build-storybook
 
       - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v3.0
         id: deploy
-        run: |
-          DEPLOY_MESSAGE="User: ${GITHUB_ACTOR} Project: ${GITHUB_REPOSITORY} Pull Request: ${{ github.event.pull_request.html_url }}"
-          DEPLOY_OUTPUT=$(npx netlify-cli@15.11.3 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --filter @codecademy/styleguide)
-          echo "$DEPLOY_OUTPUT" >> $GITHUB_OUTPUT
+        with:
+          publish-dir: './dist/storybook/styleguide'
+          deploy-message: 'Deploy from GitHub Actions - User: ${GITHUB_ACTOR} Project: ${GITHUB_REPOSITORY} Pull Request: ${{ github.event.pull_request.html_url }}'
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          production-deploy: false
+          enable-pull-request-comment: true
+          enable-commit-comment: false
+          overwrites-pull-request-comment: true
+          alias: 'deploy-preview-${{ github.event.number }}'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
-      - name: Comment on PR with deployment info
-        if: steps.deploy.outputs.deploy-output
-        uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          header: Storybook Deploy Preview
-          recreate: true
-          message: |
-            🚀 **Styleguide deploy preview ready!**
+      # - name: Comment on PR with deployment info
+      #   if: steps.deploy.outputs.deploy-url != ''
+      #   uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db
+      #   with:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     header: Storybook Deploy Preview
+      #     recreate: true
+      #     message: |
+      #       🚀 **Styleguide deploy preview ready!**
 
-            **Deploy URL:** ${{ fromJson(steps.deploy.outputs.deploy-output).deploy_url }}
-            **Deploy Logs:** ${{ fromJson(steps.deploy.outputs.deploy-output).logs }}
+      #       **Deploy URL:** ${{ steps.deploy.outputs.deploy-url }}
+      #       **Deploy Logs:** ${{ steps.deploy.outputs.details-url }}
 
-            <!--ALPHA_DEPLOY_COMMENT-->
+      #       <!--ALPHA_DEPLOY_COMMENT-->
