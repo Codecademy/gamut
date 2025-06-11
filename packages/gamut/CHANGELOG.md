@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [64.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.1.0...@codecademy/gamut@64.1.1) (2025-06-10)
+
+### Bug Fixes
+
+- **ConnectedFormGroup:** Have screen reader read form input error ([5d86b54](https://github.com/Codecademy/gamut/commit/5d86b543ed0434d707feab7aad9df53d54a729f7))
+
 ## [64.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.0.3...@codecademy/gamut@64.1.0) (2025-06-10)
 
 ### Features
