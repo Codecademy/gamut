@@ -29,18 +29,6 @@ jobs:
       - name: Setup and Build
         id: setup
         uses: ./.github/actions/yarn
-        with:
-          npm-token: ${{ secrets.NPM_TOKEN }}
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Skip if automated commit
-        run: |
-          COMMIT_MESSAGE=$(git log --format=oneline -n 1 $GITHUB_SHA)
-          echo "Build started due to commit with message $COMMIT_MESSAGE, blocking builds started by ${IGNORE_COMMIT_MESSAGE}"
-          if [[ $COMMIT_MESSAGE == *"${IGNORE_COMMIT_MESSAGE}"* ]]; then
-            echo "Skipping deployment due to automated commit"
-            exit 0
-          fi
 
       - name: Set git user
         run: |
@@ -49,7 +37,7 @@ jobs:
           git config --global push.default current
 
       - name: Build Storybook
-        run: yarn nx run styleguide:build-storybook
+        run: yarn build && yarn nx run styleguide:build-storybooki
 
       - name: Install Netlify
         run: yarn add netlify-cli@17.37.1
