@@ -19,7 +19,7 @@ permissions:
   issues: write
 
 jobs:
-  deploy-storybook-preview:
+  deploy-alpha:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
@@ -55,10 +55,11 @@ jobs:
         id: deploy
         run: |
           DEPLOY_MESSAGE="User: ${GITHUB_ACTOR} Project: ${GITHUB_REPOSITORY} Pull Request: ${{ github.event.pull_request.html_url }}"
-          DEPLOY_OUTPUT=$(npx netlify-cli@15.11.3 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --filter @codecademy/styleguide)
+          DEPLOY_OUTPUT=$(npx netlify-cli@17.37.1 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --filter @codecademy/styleguide)
           echo "$DEPLOY_OUTPUT" >> $GITHUB_OUTPUT
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
       - name: Comment on PR with deployment info
         if: steps.deploy.outputs.deploy-output
