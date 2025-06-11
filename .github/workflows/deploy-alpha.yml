@@ -56,9 +56,7 @@ jobs:
         run: |
           DEPLOY_MESSAGE="User: ${GITHUB_ACTOR} Project: ${GITHUB_REPOSITORY} Pull Request: ${{ github.event.pull_request.html_url }}"
           DEPLOY_OUTPUT=$(npx netlify-cli@17.37.1 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --filter @codecademy/styleguide)
-          echo "deploy-output<<EOF" >> $GITHUB_OUTPUT
           echo "$DEPLOY_OUTPUT" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
