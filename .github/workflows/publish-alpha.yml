@@ -46,8 +46,9 @@ jobs:
           git config --global user.name "codecademydev"
           git config --global push.default current
 
-      - name: Check if able to publish changes
-        run: npm whoami # will throw and exit if npm is not ready to publish
+      - name: Set npm token
+        run: |
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
