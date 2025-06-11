@@ -49,14 +49,14 @@ jobs:
       - name: Check if able to publish changes
         run: npm whoami # will throw and exit if npm is not ready to publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish alpha packages
         run: |
           SHORT_SHA=${GITHUB_SHA:0:6}
           yarn lerna publish --no-verify-access --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${SHORT_SHA} --dist-tag=alpha.${SHORT_SHA}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: List alpha packages versions
         id: published
