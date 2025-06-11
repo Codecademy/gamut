@@ -50,6 +50,7 @@ jobs:
           SHORT_SHA=${GITHUB_SHA:0:6}
           yarn lerna publish --no-verify-access --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${SHORT_SHA} --dist-tag=alpha.${SHORT_SHA}
         env:
+          GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: List alpha packages versions
@@ -67,7 +68,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
         if: steps.published.outputs.result
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           header: Alpha Packages
           recreate: true
           message: |
