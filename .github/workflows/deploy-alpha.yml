@@ -37,7 +37,7 @@ jobs:
           git config --global push.default current
 
       - name: Build Storybook
-        run: yarn build && yarn nx run styleguide:build-storybooki
+        run: yarn build && yarn nx run styleguide:build-storybook
 
       - name: Install Netlify
         run: yarn add netlify-cli@17.37.1
