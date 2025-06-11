@@ -30,14 +30,6 @@ jobs:
       - name: Setup and Build
         id: setup
         uses: ./.github/actions/yarn
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: Skip if automated commit
-        if: steps.setup.outputs.should-skip == 'true'
-        run: |
-          echo "Skipping publish-alpha due to automated commit"
-          exit 0
 
       - name: Set git user
         run: |
@@ -47,16 +39,17 @@ jobs:
 
       - name: Set npm token
         run: |
-          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - run: npx nx run-many --target=publish-build --parallel=3
 
       - name: Publish alpha packages
         run: |
           SHORT_SHA=${GITHUB_SHA:0:6}
           yarn lerna publish --no-verify-access --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${SHORT_SHA} --dist-tag=alpha.${SHORT_SHA}
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: List alpha packages versions
