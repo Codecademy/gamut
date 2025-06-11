@@ -50,7 +50,7 @@ jobs:
           #  when this is added, can't find project id -_- without it we run into main() error!!!
 
       - name: Comment on PR with deployment info
-        if: success()
+        if: steps.deploy.outputs.deploy-output
         uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
