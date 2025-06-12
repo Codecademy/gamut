@@ -8,6 +8,8 @@ exports[`Gamut Exported Keys 1`] = `
   "Alert",
   "Anchor",
   "AnchorBase",
+  "AppBar",
+  "AppBarSection",
   "AppWrapper",
   "Badge",
   "BodyPortal",
