@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>family-home</title><polyline class="a" points="23.25 9.75 12 1.5 0.75 9.75"/><circle class="a" cx="3.375" cy="16.392" r="2.625"/><circle class="a" cx="20.625" cy="16.392" r="2.625"/><circle class="a" cx="12" cy="16.392" r="2.625"/><path class="a" d="M.75,20.613A4.5,4.5,0,0,1,7.514,22.5h.347a4.5,4.5,0,0,1,8.278,0h.347a4.5,4.5,0,0,1,6.764-1.887"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M23.25 9.75 12 1.5.75 9.75" class="a"/>
+    <circle cx="3.375" cy="16.392" r="2.625" class="a"/>
+    <circle cx="20.625" cy="16.392" r="2.625" class="a"/>
+    <circle cx="12" cy="16.392" r="2.625" class="a"/>
+    <path d="M.75,20.613A4.5,4.5,0,0,1,7.514,22.5h.347a4.5,4.5,0,0,1,8.278,0h.347a4.5,4.5,0,0,1,6.764-1.887" class="a"/>
+</svg>

@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>hierarchy-1</title><circle class="a" cx="3" cy="20.998" r="2.25"/><circle class="a" cx="8.25" cy="8.998" r="2.25"/><circle class="a" cx="15.75" cy="14.998" r="2.25"/><circle class="a" cx="21" cy="2.998" r="2.25"/><line class="a" x1="3.902" y1="18.936" x2="7.348" y2="11.06"/><line class="a" x1="10.007" y1="10.404" x2="13.993" y2="13.593"/><line class="a" x1="20.098" y1="5.06" x2="16.652" y2="12.936"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <circle cx="3" cy="20.998" r="2.25" class="a"/>
+    <circle cx="8.25" cy="8.998" r="2.25" class="a"/>
+    <circle cx="15.75" cy="14.998" r="2.25" class="a"/>
+    <circle cx="21" cy="2.998" r="2.25" class="a"/>
+    <path d="M3.902 18.936 7.348 11.06M10.007 10.404 13.993 13.593M20.098 5.06 16.652 12.936" class="a"/>
+</svg>

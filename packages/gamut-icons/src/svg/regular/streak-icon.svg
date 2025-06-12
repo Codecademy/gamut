@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>trends-hot-flame</title><path class="a" d="M16.846,14.222a4.338,4.338,0,0,1-4.154,4.5"/><path class="a" d="M12,23.222c-4.615,0-9-3.358-9-7.5A7.658,7.658,0,0,1,7.94,8.435a.375.375,0,0,1,.515.382A4.814,4.814,0,0,0,10.1,13.1a.749.749,0,0,0,.992-.021c1.32-1.217,4.557-5.237-1.223-11.676a.375.375,0,0,1,.324-.623C15.621,1.447,21,7.571,21,13.472,21,18.472,18,23.222,12,23.222Z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M16.846,14.222a4.338,4.338,0,0,1-4.154,4.5" class="a"/>
+    <path d="M12,23.222c-4.615,0-9-3.358-9-7.5A7.658,7.658,0,0,1,7.94,8.435a.375.375,0,0,1,.515.382A4.814,4.814,0,0,0,10.1,13.1a.749.749,0,0,0,.992-.021c1.32-1.217,4.557-5.237-1.223-11.676a.375.375,0,0,1,.324-.623C15.621,1.447,21,7.571,21,13.472,21,18.472,18,23.222,12,23.222Z" class="a"/>
+</svg>

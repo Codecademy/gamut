@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>common-file-horizontal-image</title><circle class="a" cx="7.08" cy="8.5" r="1.875"/><path class="a" d="M20.2,16.955,15.828,10.4a.844.844,0,0,0-1.393-.015L12.19,13.6,10.8,12.483a.843.843,0,0,0-1.229.191l-2.865,4.3"/><path class="a" d="M2.25,3.023a1.5,1.5,0,0,0-1.5,1.5V19.477a1.5,1.5,0,0,0,1.5,1.5h19.5a1.5,1.5,0,0,0,1.5-1.5v-12a1.5,1.5,0,0,0-.426-1.047L19.941,3.475a1.5,1.5,0,0,0-1.074-.452Z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <circle cx="7.08" cy="8.5" r="1.875" class="a"/>
+    <path d="M20.2,16.955,15.828,10.4a.844.844,0,0,0-1.393-.015L12.19,13.6,10.8,12.483a.843.843,0,0,0-1.229.191l-2.865,4.3" class="a"/>
+    <path d="M2.25,3.023a1.5,1.5,0,0,0-1.5,1.5V19.477a1.5,1.5,0,0,0,1.5,1.5h19.5a1.5,1.5,0,0,0,1.5-1.5v-12a1.5,1.5,0,0,0-.426-1.047L19.941,3.475a1.5,1.5,0,0,0-1.074-.452Z" class="a"/>
+</svg>
