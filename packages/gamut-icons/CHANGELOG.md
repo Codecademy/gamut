@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.46.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.45.0...@codecademy/gamut-icons@9.46.0) (2025-06-12)
+
+### Features
+
+- **Icon:** added new move-left and move-right icons ([50ef4e7](https://github.com/Codecademy/gamut/commit/50ef4e7c510d33558d9b2bf8429a48513d10db42))
+- **Icon:** added new resizable-handle-icon ([cd5fe34](https://github.com/Codecademy/gamut/commit/cd5fe34fdd19dd84d2193763178d3335baa9248f))
+
+## [9.45.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.44.0...@codecademy/gamut-icons@9.45.0) (2025-06-10)
+
+### Features
+
+- **Icon:** added new MiniQuoteIcon ([4509029](https://github.com/Codecademy/gamut/commit/4509029deb86760157e0e1051dbf849670a95b92))
+
+## [9.44.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.43.0...@codecademy/gamut-icons@9.44.0) (2025-06-04)
+
+### Features
+
+- **Icon:** added new OnlineClassStudentIcon ([66d8b51](https://github.com/Codecademy/gamut/commit/66d8b51d4d0bd101e6b08a5453ed687dbdec0d0f))
+
 ## [9.43.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.42.4...@codecademy/gamut-icons@9.43.0) (2025-06-03)
 
 ### Features
