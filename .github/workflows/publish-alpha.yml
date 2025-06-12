@@ -58,12 +58,9 @@ jobs:
         continue-on-error: true
         run: |
           ALPHA_PACKAGES="$(yarn lerna ll --parseable | grep alpha || true)"
-            if [ -z "$ALPHA_PACKAGES" ]
-            then
-              echo "No alpha published packages found, will not add PR comment"
-            else
-              echo result="$ALPHA_PACKAGES" >> $GITHUB_OUTPUT
-            fi
+          echo 'result<<EOF' >> $GITHUB_OUTPUT
+          echo $ALPHA_PACKAGES >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
 
       - name: Comment with published alpha packages
         uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
