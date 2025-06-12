@@ -57,7 +57,7 @@ jobs:
         id: published
         continue-on-error: true
         run: |
-          ALPHA_PACKAGES="$(yarn lerna ll --parseable | grep -Po '@codecademy.*alpha.*' || true)"
+          ALPHA_PACKAGES="$(yarn lerna ll --parseable | grep -Po '@codecademy.*alpha.*' | sed G || true)"
           echo 'result<<EOF' >> $GITHUB_OUTPUT
           echo $ALPHA_PACKAGES >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
