@@ -57,10 +57,11 @@ jobs:
         id: published
         continue-on-error: true
         run: |
-          ALPHA_PACKAGES="$(yarn lerna ll --parseable | grep -Po '@codecademy.*alpha.*' | awk '{print $0"\n"}' || true)"
-          echo 'result<<EOF' >> $GITHUB_OUTPUT
-          echo $ALPHA_PACKAGES >> $GITHUB_OUTPUT
-          echo 'EOF' >> $GITHUB_OUTPUT
+          {
+            echo 'result<<EOF'
+            yarn lerna ll --parseable | grep -Po '@codecademy.*alpha.*' || true
+            echo 'EOF'
+          } >> $GITHUB_OUTPUT
 
       - name: Comment with published alpha packages
         uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
@@ -69,4 +70,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           header: Alpha Packages
           recreate: true
-          message: ${{ steps.published.outputs.result }}
+          message: |
+            ```
+            ${{ steps.published.outputs.result }}
+            ```
