@@ -69,7 +69,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           header: Alpha Packages
           recreate: true
-          message: |
-            ```
-            ${{ steps.published.outputs.result }}
-            ```
+          message: ${{ steps.published.outputs.result }}
