@@ -27,9 +27,43 @@ export type SkippedFocusTrapPopoverProps = {
   skipFocusTrap: true;
 };
 
-export type PopoverBaseProps =
+export type PopoverFocusProps =
   | FocusTrapPopoverProps
   | SkippedFocusTrapPopoverProps;
+
+export type PopoverYPositionType = {
+  /**
+   * Which horizontal edge of the source component to align against. Center aligns it centered to the component.
+   */
+  position?: 'above' | 'below';
+  /**
+   * Which side to position the beak. If not provided, beak will not be rendered. Position `center` Popovers can only be used with `center` beaks.
+   */
+  beak?: 'left' | 'right' | 'center';
+  /**
+   * Pattern component to use as a background.
+   */
+  pattern?: React.ComponentType<PatternProps>;
+};
+
+export type PopoverXPositionType = {
+  /**
+   * Which horizontal edge of the source component to align against. Center aligns it centered to the component.
+   */
+  position: 'center';
+  /**
+   * Which side to position the beak. If not provided, beak will not be rendered.Position `center` Popovers can only be used with `center` beaks.
+   */
+  beak?: 'center';
+  /**
+   * Pattern component to use as a background.
+   */
+  pattern?: never;
+};
+
+type PopoverPositionType = PopoverYPositionType | PopoverXPositionType;
+
+export type PopoverBaseProps = PopoverPositionType & PopoverFocusProps;
 
 export type PopoverProps = PopoverBaseProps &
   PopoverVariants &
@@ -43,7 +77,7 @@ export type PopoverProps = PopoverBaseProps &
     /**
      * Which vertical edge of the source component to align against.
      */
-    align?: 'left' | 'right';
+    align?: 'left' | 'right' | 'center';
     /**
      * Number of pixels to offset the popover vertically from the source component.
      */
@@ -57,21 +91,9 @@ export type PopoverProps = PopoverBaseProps &
      */
     outline?: boolean;
     /**
-     * Which horizontal edge of the source componet to align against.
-     */
-    position?: 'above' | 'below';
-    /**
-     * Which side to position the beak. If not provided, beak will not be rendered.
-     */
-    beak?: 'left' | 'right' | 'center';
-    /**
      * Whether the popover is rendered.
      */
     isOpen: boolean;
-    /**
-     * Pattern component to use as a background.
-     */
-    pattern?: React.ComponentType<PatternProps>;
 
     /**
      * The target element around which the popover will be positioned.
