@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>accounting-coins</title><circle class="a" cx="15.75" cy="8.25" r="7.5"/><path class="a" d="M6.375,14.092a1.341,1.341,0,0,0,.843,1.245l2.064.826a1.342,1.342,0,0,1-.5,2.587H6.75"/><line class="a" x1="8.25" y1="20.25" x2="8.25" y2="18.75"/><path class="a" d="M5.281,8.867a7.5,7.5,0,1,0,9.853,9.852"/><path class="a" d="M17.25,5.25H15.217a1.342,1.342,0,0,0-.5,2.587l2.064.826a1.342,1.342,0,0,1-.5,2.587H14.25"/><line class="a" x1="15.75" y1="5.25" x2="15.75" y2="3.75"/><line class="a" x1="15.75" y1="12.75" x2="15.75" y2="11.25"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <circle cx="15.75" cy="8.25" r="7.5" class="a"/>
+    <path d="M6.375 14.092a1.341 1.341 0 0 0 .843 1.245l2.064.826a1.342 1.342 0 0 1-.5 2.587H6.75M8.25 20.25 8.25 18.75" class="a"/>
+    <path d="M5.281 8.867a7.5 7.5 0 1 0 9.853 9.852M17.25 5.25H15.217a1.342 1.342 0 0 0-.5 2.587l2.064.826a1.342 1.342 0 0 1-.5 2.587H14.25M15.75 5.25 15.75 3.75M15.75 12.75 15.75 11.25" class="a"/>
+</svg>

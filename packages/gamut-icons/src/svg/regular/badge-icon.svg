@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>rating-star-badge</title><path class="a" d="M23.25,9.938A13.5,13.5,0,0,1,12,23.25,13.5,13.5,0,0,1,.75,9.938V.75h22.5Z"/><line class="a" x1="0.75" y1="5.25" x2="23.25" y2="5.25"/><path class="a" d="M12.53,8.792l1.249,2.458h2.127a.582.582,0,0,1,.419,1l-1.953,1.922,1.082,2.485a.589.589,0,0,1-.839.736L12,15.919l-2.615,1.47a.589.589,0,0,1-.839-.736l1.082-2.485L7.675,12.246a.582.582,0,0,1,.419-1h2.127L11.47,8.792A.594.594,0,0,1,12.53,8.792Z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M23.25 9.938A13.5 13.5 0 0 1 12 23.25 13.5 13.5 0 0 1 .75 9.938V.75h22.5ZM.75 5.25 23.25 5.25" class="a"/>
+    <path d="M12.53,8.792l1.249,2.458h2.127a.582.582,0,0,1,.419,1l-1.953,1.922,1.082,2.485a.589.589,0,0,1-.839.736L12,15.919l-2.615,1.47a.589.589,0,0,1-.839-.736l1.082-2.485L7.675,12.246a.582.582,0,0,1,.419-1h2.127L11.47,8.792A.594.594,0,0,1,12.53,8.792Z" class="a"/>
+</svg>

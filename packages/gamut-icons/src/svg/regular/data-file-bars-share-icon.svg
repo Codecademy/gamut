@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>data-file-bars-share</title><circle class="a" cx="13.5" cy="18" r="2.25"/><circle class="a" cx="21" cy="21" r="2.25"/><circle class="a" cx="21" cy="13.5" r="2.25"/><line class="a" x1="15.425" y1="16.845" x2="19.075" y2="14.655"/><line class="a" x1="15.588" y1="18.835" x2="18.912" y2="20.165"/><line class="a" x1="3.75" y1="14.25" x2="8.25" y2="14.25"/><line class="a" x1="8.25" y1="14.25" x2="8.25" y2="6.75"/><line class="a" x1="11.25" y1="12" x2="11.25" y2="8.25"/><line class="a" x1="5.25" y1="14.25" x2="5.25" y2="9.75"/><path class="a" d="M7.5,20.25H2.25a1.5,1.5,0,0,1-1.5-1.5V2.25A1.5,1.5,0,0,1,2.25.75H12.879a1.5,1.5,0,0,1,1.06.439l2.872,2.872a1.5,1.5,0,0,1,.439,1.06V7.5"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <circle cx="13.5" cy="18" r="2.25" class="a"/>
+    <circle cx="21" cy="21" r="2.25" class="a"/>
+    <circle cx="21" cy="13.5" r="2.25" class="a"/>
+    <path d="M15.425 16.845 19.075 14.655M15.588 18.835 18.912 20.165M3.75 14.25 8.25 14.25M8.25 14.25 8.25 6.75M11.25 12 11.25 8.25M5.25 14.25 5.25 9.75M7.5 20.25H2.25a1.5 1.5 0 0 1-1.5-1.5V2.25A1.5 1.5 0 0 1 2.25.75H12.879a1.5 1.5 0 0 1 1.06.439l2.872 2.872a1.5 1.5 0 0 1 .439 1.06V7.5" class="a"/>
+</svg>

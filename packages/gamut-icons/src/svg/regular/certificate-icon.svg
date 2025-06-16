@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>certified-diploma-1</title><polyline class="a" points="11.25 17.25 0.75 17.25 0.75 0.75 23.25 0.75 23.25 5.25"/><line class="a" x1="0.75" y1="9.75" x2="8.25" y2="17.25"/><line class="a" x1="15.75" y1="0.75" x2="20.25" y2="5.25"/><path class="a" d="M16.237,16.483l-.8,5.879a.751.751,0,0,0,1.269.666l2.049-2.05,2.049,2.05a.751.751,0,0,0,1.269-.666l-.8-5.879"/><circle class="a" cx="18.75" cy="12.75" r="4.5"/><line class="a" x1="0.75" y1="8.25" x2="8.25" y2="0.75"/><line class="a" x1="18.75" y1="12.375" x2="18.75" y2="12.375"/><path class="a" d="M18.75,12.375a.375.375,0,1,0,.375.375.375.375,0,0,0-.375-.375"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M11.25 17.25.75 17.25.75.75 23.25.75 23.25 5.25M.75 9.75 8.25 17.25M15.75.75 20.25 5.25M16.237 16.483l-.8 5.879a.751.751 0 0 0 1.269.666l2.049-2.05 2.049 2.05a.751.751 0 0 0 1.269-.666l-.8-5.879" class="a"/>
+    <circle cx="18.75" cy="12.75" r="4.5" class="a"/>
+    <path d="M.75 8.25 8.25.75M18.75 12.375 18.75 12.375M18.75 12.375a.375.375 0 1 0 .375.375.375.375 0 0 0-.375-.375" class="a"/>
+</svg>

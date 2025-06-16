@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <title>growth</title>
-  <defs><style>.cls-1{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}</style></defs>
-  <path class="cls-1" d="M22.252.792a.749.749 0 01.986.84c-.426 2.391-1.764 7.207-5.6 6.9a3.534 3.534 0 11.562-7.047 10.583 10.583 0 004.052-.693z"/>
-  <path class="cls-1" d="M12 23.25V10.8a6 6 0 016-6M1.748.792a.749.749 0 00-.986.84c.426 2.391 1.764 7.207 5.6 6.9A3.534 3.534 0 105.8 1.485 10.583 10.583 0 011.748.792zM12 10.8a6 6 0 00-6-6M15 15h8.25M.75 15H9"/>
-  <path class="cls-1" d="M12 18h.75a3.75 3.75 0 013.75 3.75M12 20.25h-1.5a3 3 0 00-3 3"/>
+    <defs>
+        <style>
+            .cls-1{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M22.252.792a.749.749 0 01.986.84c-.426 2.391-1.764 7.207-5.6 6.9a3.534 3.534 0 11.562-7.047 10.583 10.583 0 004.052-.693z" class="cls-1"/>
+    <path d="M12 23.25V10.8a6 6 0 016-6M1.748.792a.749.749 0 00-.986.84c.426 2.391 1.764 7.207 5.6 6.9A3.534 3.534 0 105.8 1.485 10.583 10.583 0 011.748.792zM12 10.8a6 6 0 00-6-6M15 15h8.25M.75 15H9" class="cls-1"/>
+    <path d="M12 18h.75a3.75 3.75 0 013.75 3.75M12 20.25h-1.5a3 3 0 00-3 3" class="cls-1"/>
 </svg>

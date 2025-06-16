@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>remove-circle</title><line class="a" x1="15.182" y1="8.818" x2="8.818" y2="15.181"/><line class="a" x1="8.818" y1="8.818" x2="15.182" y2="15.181"/><circle class="a" cx="12" cy="12" r="11.25"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M15.182 8.818 8.818 15.181M8.818 8.818 15.182 15.181" class="a"/>
+    <circle cx="12" cy="12" r="11.25" class="a"/>
+</svg>

@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>pie-line-graph</title><path class="a" d="M8.246,19.5l3.97-3.97a.75.75,0,0,1,1.061,0l1.939,1.939a.75.75,0,0,0,1.061,0L20.246,13.5"/><rect class="a" x="0.746" y="0.75" width="22.5" height="22.5" rx="1.5" ry="1.5"/><circle class="a" cx="8.246" cy="8.25" r="4.5"/><polyline class="a" points="8.246 3.75 8.246 8.25 11.428 11.432"/><line class="a" x1="16.496" y1="5.25" x2="19.496" y2="5.25"/><line class="a" x1="16.496" y1="8.25" x2="19.496" y2="8.25"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M8.246,19.5l3.97-3.97a.75.75,0,0,1,1.061,0l1.939,1.939a.75.75,0,0,0,1.061,0L20.246,13.5" class="a"/>
+    <rect width="22.5" height="22.5" x=".746" y=".75" class="a" rx="1.5" ry="1.5"/>
+    <circle cx="8.246" cy="8.25" r="4.5" class="a"/>
+    <path d="M8.246 3.75 8.246 8.25 11.428 11.432M16.496 5.25 19.496 5.25M16.496 8.25 19.496 8.25" class="a"/>
+</svg>

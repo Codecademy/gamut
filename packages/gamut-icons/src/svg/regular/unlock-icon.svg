@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Lock-Unlock--Streamline-Ultimate.svg" height="24" width="24"><desc>Lock Unlock Streamline Icon: https://streamlinehq.com</desc><defs></defs><title>lock-unlock</title><path d="M0.75 9.75V6a5.25 5.25 0 0 1 10.5 0v3.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path><path d="M8.25 9.75h13.5s1.5 0 1.5 1.5v10.5s0 1.5 -1.5 1.5H8.25s-1.5 0 -1.5 -1.5v-10.5s0 -1.5 1.5 -1.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path><path d="m15 15 0 3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+<svg xmlns="http://www.w3.org/2000/svg" id="Lock-Unlock--Streamline-Ultimate.svg" width="24" height="24" viewBox="0 0 24 24">
+    <desc>
+        Lock Unlock Streamline Icon: https://streamlinehq.com
+    </desc>
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M.75 9.75V6a5.25 5.25 0 0 1 10.5 0v3.75M8.25 9.75h13.5s1.5 0 1.5 1.5v10.5s0 1.5-1.5 1.5H8.25s-1.5 0-1.5-1.5v-10.5s0-1.5 1.5-1.5M15 15l0 3"/>
+</svg>

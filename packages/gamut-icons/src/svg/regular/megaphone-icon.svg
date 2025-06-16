@@ -1,1 +1,6 @@
-<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>megaphone</title><g transform="matrix(2.4,0,0,2.4,0,0)"><path d="M9.041,8.536.966,5.7A.7.7,0,0,1,.5,5.031V4.274A.7.7,0,0,1,.966,3.61L9.041.77A.347.347,0,0,1,9.5,1.1V8.2A.347.347,0,0,1,9.041,8.536Z" fill="none" stroke="#000000" stroke-width="0.625" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6.1,7.5a2.336,2.336,0,0,1-4.6-.627,2.389,2.389,0,0,1,.184-.925" fill="none" stroke="#000000" stroke-width="0.625" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 1.487L7 7.818" fill="none" stroke="#000000" stroke-width="0.625" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width=".625">
+        <path d="M9.041,8.536.966,5.7A.7.7,0,0,1,.5,5.031V4.274A.7.7,0,0,1,.966,3.61L9.041.77A.347.347,0,0,1,9.5,1.1V8.2A.347.347,0,0,1,9.041,8.536Z" transform="scale(2.4)"/>
+        <path d="M6.1 7.5a2.336 2.336 0 0 1-4.6-.627 2.389 2.389 0 0 1 .184-.925M7 1.487 7 7.818" transform="scale(2.4)"/>
+    </g>
+</svg>

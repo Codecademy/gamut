@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>programming-browser</title><path class="a" d="M2.25,21.75a1.5,1.5,0,0,1-1.5-1.5V3.865A1.62,1.62,0,0,1,2.365,2.25H21.643A1.612,1.612,0,0,1,23.25,3.857V20.135a1.62,1.62,0,0,1-1.615,1.615Z"/><line class="a" x1="23.25" y1="6.75" x2="0.75" y2="6.75"/><polyline class="a" points="16.5 11.25 19.5 14.25 16.5 17.25"/><polyline class="a" points="7.5 11.25 4.5 14.25 7.5 17.25"/><line class="a" x1="13.5" y1="11.25" x2="10.5" y2="17.25"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <path d="M2.25 21.75a1.5 1.5 0 0 1-1.5-1.5V3.865A1.62 1.62 0 0 1 2.365 2.25H21.643A1.612 1.612 0 0 1 23.25 3.857V20.135a1.62 1.62 0 0 1-1.615 1.615ZM23.25 6.75.75 6.75" class="a"/>
+    <path d="M16.5 11.25 19.5 14.25 16.5 17.25M7.5 11.25 4.5 14.25 7.5 17.25M13.5 11.25 10.5 17.25" class="a"/>
+</svg>

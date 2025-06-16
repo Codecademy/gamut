@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>shrink-horizontal</title><line class="a" x1="0.751" y1="0.748" x2="0.751" y2="23.248"/><line class="a" x1="23.251" y1="0.748" x2="23.251" y2="23.248"/><line class="a" x1="14.251" y1="11.998" x2="23.251" y2="11.998"/><line class="a" x1="0.751" y1="11.998" x2="9.751" y2="11.998"/><polyline class="a" points="18.001 8.248 14.251 11.998 18.001 15.748"/><polyline class="a" points="6.001 8.248 9.751 11.998 6.001 15.748"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M.751.748.751 23.248M23.251.748 23.251 23.248M14.251 11.998 23.251 11.998M.751 11.998 9.751 11.998M18.001 8.248 14.251 11.998 18.001 15.748M6.001 8.248 9.751 11.998 6.001 15.748" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px"/>
+</svg>
