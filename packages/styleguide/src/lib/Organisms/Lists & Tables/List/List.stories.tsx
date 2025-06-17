@@ -56,7 +56,7 @@ const ListExample: React.FC = (args) => {
       {rows.map(({ name, ship }) => (
         <ListRow>
           <ListCol size="md" type="header">
-            {name}
+            Test: {name}
           </ListCol>
           <ListCol fill>{ship}</ListCol>
         </ListRow>
