@@ -1,4 +1,6 @@
 // Legacy Helper mixins
+@use "../variables/index.scss";
+@use "../mixins/responsive" as *;
 
 // these variables should be located in ../variables
 // instead, they're co-located with their legacy functions so they can be removed more easily
