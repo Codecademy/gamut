@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-styles",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "17.6.3",
+  "version": "17.6.4",
   "author": "Jake Hiller <jake@codecademy.com>",
   "dependencies": {
     "@codecademy/variance": "0.22.1",
