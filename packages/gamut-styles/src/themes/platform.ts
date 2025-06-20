@@ -3,6 +3,8 @@ import { createTheme } from '@codecademy/variance';
 import { platformPalette } from '../variables';
 import { coreTheme } from './core';
 
+// KENNY: main branch to update platformTheme 
+
 /**
  * @description This is an extended theme for the learning environment with an expanded set of tokens
  * That are not needed for the rest of the application.
