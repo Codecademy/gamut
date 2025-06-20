@@ -87,7 +87,7 @@ export const coreTheme = createTheme({
         secondary: 'white-600',
       },
       feedback: {
-        error: 'red-0',
+        error: 'red-300',
         success: 'green-400',
         warning: 'yellow-0',
       },
@@ -114,8 +114,8 @@ export const coreTheme = createTheme({
         hover: 'white-700',
       },
       danger: {
-        _: 'red-0',
-        hover: 'red-100',
+        _: 'red-300',
+        hover: 'red-400',
       },
       interface: {
         _: 'yellow-500',
