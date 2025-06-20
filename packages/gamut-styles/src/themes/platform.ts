@@ -15,7 +15,7 @@ export const platformTheme = createTheme(coreTheme)
   .addColorModes('dark', {
     light: {
       background: {
-        primary: 'blue-0'
+        primary: 'blue-0',
       },
       editor: {
         attribute: 'green-700',
