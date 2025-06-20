@@ -14,12 +14,15 @@ export const platformTheme = createTheme(coreTheme)
   .addColors(platformPalette)
   .addColorModes('dark', {
     light: {
+      background: {
+        primary: 'blue-0'
+      },
       editor: {
         attribute: 'green-700',
         annotation: 'red-500',
         atom: 'pink-800',
         basic: 'navy-800',
-        comment: 'navy-300',
+        comment: 'navy-500',
         constant: 'orange-800',
         decoration: 'red-500',
         invalid: 'red-500',
@@ -38,9 +41,9 @@ export const platformTheme = createTheme(coreTheme)
         ui: {
           background: 'white',
           text: 'navy-800',
-          'indent-active': 'navy-900',
-          'indent-inactive': 'navy-600',
-          'line-number': 'navy-300',
+          'indent-active': 'navy-300',
+          'indent-inactive': 'navy-400',
+          'line-number': 'navy-500',
         },
       },
     },
@@ -50,7 +53,7 @@ export const platformTheme = createTheme(coreTheme)
         annotation: 'red-0',
         atom: 'pink-400',
         basic: 'white',
-        comment: 'gray-600',
+        comment: 'white-500',
         constant: 'orange-500',
         decoration: 'red-0',
         invalid: 'red-0',
@@ -69,9 +72,9 @@ export const platformTheme = createTheme(coreTheme)
         ui: {
           background: 'navy-900',
           text: 'white',
-          'indent-active': 'gray-900',
-          'indent-inactive': 'gray-800',
-          'line-number': 'gray-600',
+          'indent-active': 'white-300',
+          'indent-inactive': 'white-400',
+          'line-number': 'white-500',
         },
       },
     },
