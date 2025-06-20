@@ -93,7 +93,7 @@ export const trueColors = {
   palePink: coreSwatches.pink[0],
   paleYellow: coreSwatches.yellow[0],
   pink: coreSwatches.pink[400],
-  paleRed: coreSwatches.red[100],
+  paleRed: coreSwatches.red[400],
   red: coreSwatches.red[500],
   yellow: coreSwatches.yellow[500],
   black,
