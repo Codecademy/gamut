@@ -47,7 +47,7 @@ export const coreSwatches = {
     '400': '#F966FF',
   },
   red: {
-    '0': '##FBF1F0',
+    '0': '#FBF1F0',
     '300': '#E85D7F',
     '400': '#DC5879',
     '500': '#E91C11',
