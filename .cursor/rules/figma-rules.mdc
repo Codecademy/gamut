@@ -16,10 +16,13 @@ alwaysApply: true
   - IMPORTANT: Always use components from `/packages` whenever possible
   - Prioritize using semantic tokens and component props over Figma fidelity 
   - Avoid hardcoded values, use semantic design tokens from Figma whenever possible
+  - Do not use inline styles, use emotion and the css-in-js utilities from `/packages/gamut-styles`
   - Follow WCAG requirements for accessibility
-  - Add component documentation
-  - Place UI components in `/package/gamut`; avoid inline styles unless truly necessary
-  - Add Best Practices blah blah blah
-
+  - Follow best practices in `/packages/styleguide/src/lib/Meta/Best Practices.mdx`
+  - All patterns should come from `/packages/gamut-patterns`
+  - All icons should come from `/packages/gamut-icons`
+  - Check if the Figma component name matches a Gamut component name and use that component
+  - Avoid using the Box component, use more specific components whenever possible.
+  - Use the tokens from `packages/gamut-styles/src/variables` 
 
 
