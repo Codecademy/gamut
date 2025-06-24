@@ -1,6 +1,8 @@
 import { Box } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { FigmaLandingExample } from './FigmaLandingExample';
+
 const meta: Meta<typeof Box> = {
   component: Box,
   args: {},
@@ -57,4 +59,8 @@ export const Lists: Story = {
       </Box>
     </Box>
   ),
+};
+
+export const FigmaLanding: Story = {
+  render: () => <FigmaLandingExample />,
 };
