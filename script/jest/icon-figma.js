@@ -35,6 +35,13 @@ async function generateIcons() {
     .join('\n')}
   } from './packages/gamut-icons/icons/regular'
 
+  const props = {
+  height: figma.string('Height'),
+  width: figma.string('Width'),
+  color
+
+}
+
   ${components
     .map((c) => `figma.connect(${c.name}, '${c.figmaUrl}')`)
     .join('\n')}

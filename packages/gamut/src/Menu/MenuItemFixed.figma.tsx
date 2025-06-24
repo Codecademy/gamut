@@ -18,9 +18,16 @@ figma.connect(
     props: {
       active: figma.boolean('active'),
       hover: figma.boolean('hover'),
-      icon: figma.instance<React.FunctionComponent>('InstanceSwapPropName'),
       label: figma.string('label'),
+      leadingIcon: figma.boolean('leading-icon'),
+      icon: figma.children('icon*'),
     },
-    example: ({ label, ...props }) => <MenuItem {...props}>{label}</MenuItem>,
+    example: ({ label, leadingIcon, icon, ...props }) => {
+      return (
+        <MenuItem {...props} icon={icon}>
+          {label}
+        </MenuItem>
+      );
+    },
   }
 );
