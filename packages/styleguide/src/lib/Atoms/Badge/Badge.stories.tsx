@@ -1,5 +1,5 @@
 import { Badge, FlexBox } from '@codecademy/gamut';
-import { MiniStarIcon, MiniWarningTriangleIcon } from '@codecademy/gamut-icons';
+import { MiniCheckCircleIcon, MiniStarIcon, MiniWarningTriangleIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { TertiaryFillExample } from './examples';
@@ -83,5 +83,28 @@ export const SmallSizeWithIcon: Story = {
     size: 'sm',
     variant: 'accent',
     icon: MiniWarningTriangleIcon,
+  },
+};
+
+export const FigmaPrimaryWithCheckCircle: Story = {
+  render: () => (
+    <Badge icon={MiniCheckCircleIcon} variant="primary">
+      Badge Text
+    </Badge>
+  ),
+};
+
+export const FigmaPrimaryWhiteText: Story = {
+  render: () => (
+    <Badge variant="primary">
+      Badge label
+    </Badge>
+  ),
+};
+
+export const Fun: Story = {
+  args: {
+    variant: 'fun' as any,
+    children: 'Fun Badge',
   },
 };

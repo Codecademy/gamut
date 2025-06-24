@@ -1,8 +1,16 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: true
 ---
+<<<<<<< HEAD
+=======
+---
+description:
+globs:
+alwaysApply: true
+---
+>>>>>>> 1fdf347dc (more examples and disclosure figma)
 
 ---
 description: Figma Dev Mode MCP rules
@@ -13,6 +21,7 @@ alwaysApply: true
   - IMPORTANT: do NOT use or create placeholders if a localhost source is provided
   - IMPORTANT: Always use components from `/packages` whenever possible
   - Prioritize using semantic tokens and component props over Figma fidelity
+<<<<<<< HEAD
   - Avoid hardcoded values, use semantic design tokens whenever possible. The Background component is the exception -  use color token names (i.e, navy, white, etc) and not a semantic token
   - IMPORTANT: Do not use inline styles, whenever possible use emotion and the css-in-js utilities from `/packages/gamut-styles`. Follow the rules from `packages/styleguide/src/lib/Foundations/System`
   - IMPORTANT: Follow WCAG requirements for accessibility
@@ -22,3 +31,16 @@ alwaysApply: true
   - Check if the Figma component name matches a Gamut component name and use that component
   - Use the tokens from `packages/gamut-styles/src/variables`
   - Use the CodeConnect implementation
+=======
+  - Avoid hardcoded values, use semantic design tokens from Figma whenever possible
+  - Do not use inline styles, use emotion and the css-in-js utilities from `/packages/gamut-styles`
+  - Follow WCAG requirements for accessibility
+  - Always follow best practices from `/packages/styleguide/src/lib/Meta/Best Practices.mdx`
+  - All patterns should come from `/packages/gamut-patterns`
+  - All icons should come from `/packages/gamut-icons`
+  - Check if the Figma component name matches a Gamut component name and use that component
+  - Avoid using the `Box` component, use more specific components whenever possible
+  - Use the tokens from `packages/gamut-styles/src/variables`
+  - When creating forms, use ConnectedForm from `packages/gamut/src/ConnectedForm` or GridForm from `packages/gamut/src/GridFrom` whenever possible. Documentation for these components is at `packages/styleguide/src/lib/Organisms/ConnectedForm` and `packages/styleguide/src/lib/Organisms/ConnectedForm`
+  - When designs are on a dark background, use the `Background` component from `packages/gamut-styles/src/Background.tsx`and follow ColorMode documentation from `packages/styleguide/src/lib/Foundations/ColorMode`
+>>>>>>> 1fdf347dc (more examples and disclosure figma)

@@ -102,3 +102,11 @@ export const SmallWidthExample: React.FC = () => {
 export const SmallWidth: Story = {
   render: () => <SmallWidthExample />,
 };
+
+export const FigmaFeatureWithButton: Story = {
+  render: () => (
+    <Alert cta={{ children: 'Learn more' }} placement="inline" type="feature">
+      Alert message
+    </Alert>
+  ),
+};

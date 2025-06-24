@@ -1,11 +1,13 @@
-import { Badge } from '@codecademy/gamut';
-import { MiniCheckmarkIcon } from '@codecademy/gamut-icons';
 import * as React from 'react';
 
+import { Badge } from './index';
+
 export const BadgeFigmaInstanceExample: React.FC = () => (
-  <Badge icon={MiniCheckmarkIcon} variant="tertiaryFill">
-    Badge Text
-  </Badge>
+  <Badge variant="tertiaryFill">Badge Text</Badge>
+);
+
+export const BadgeFunExample: React.FC = () => (
+  <Badge variant="fun">Fun Badge</Badge>
 );
 
 export default BadgeFigmaInstanceExample;

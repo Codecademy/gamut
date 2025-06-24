@@ -52,6 +52,10 @@ const colorVariants = variant({
     custom: {
       textColor: 'text',
     },
+    fun: {
+      bg: 'interface',
+      textColor: 'primary-inverse',
+    },
   },
 });
 
@@ -82,7 +86,7 @@ const badgeProps = variance.compose(
 type StandardBadgeProps = {
   background?: never;
   bg?: never;
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'tertiaryFill' | 'accent';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'tertiaryFill' | 'accent' | 'fun';
 };
 
 type CustomBadgeBackgroundProps = {

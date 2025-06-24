@@ -728,3 +728,32 @@ const ExpandedTemplateRowClick: React.FC<ListProps> = ({ as, variant }) => (
 export const ExpandedRowGuide: Story = {
   render: (args) => <ExpandedTemplateRowClick {...args} />,
 };
+
+export const FigmaListCardWithButtons: Story = {
+  render: () => (
+    <List variant="card">
+      {[1, 2, 3].map((row) => (
+        <ListRow key={row}>
+          <ListCol size="xl">
+            <Text as="h3" color="navy" fontSize={22} fontWeight="title" mb={0}>
+              Title
+            </Text>
+          </ListCol>
+          <ListCol>
+            <FlexBox gap={10}>
+              <Text color="navy" fontSize={16}>Item 1</Text>
+              <Text color="navy" fontSize={16}>Item 2</Text>
+              <Text color="navy" fontSize={16}>Item 3</Text>
+            </FlexBox>
+          </ListCol>
+          <ListCol>
+            <FlexBox gap={4}>
+              <TextButton variant="primary">Button text</TextButton>
+              <FillButton size="small">Button text</FillButton>
+            </FlexBox>
+          </ListCol>
+        </ListRow>
+      ))}
+    </List>
+  ),
+};
