@@ -1,0 +1,74 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as Claude3SonnetStories from './Claude3Sonnet.stories';
+
+export const parameters = {
+  subtitle:
+    'Example showing how to use Figma Dev Mode with MCP to generate production-ready code.',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/XXX', // Replace with actual Figma file URL
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/styleguide/src/lib/Meta/Claude3Sonnet.stories.tsx',
+  },
+};
+
+<Meta of={Claude3SonnetStories} />
+
+<ComponentHeader {...parameters} />
+
+## Overview
+
+This example demonstrates how to use Figma Dev Mode with MCP to automatically generate production-ready code from Figma designs. It showcases:
+
+- Direct mapping between design components and code implementation
+- Use of semantic tokens and design system props
+- Integration with Gamut components
+- Proper accessibility and styling practices
+
+## Example Implementation
+
+The example shows a landing page layout with three main sections:
+
+1. Hero section with a badge, heading, and description
+2. "How it works" section explaining the workflow
+3. Component showcase demonstrating various Gamut components
+
+<Canvas of={Claude3SonnetStories.Example} />
+
+## Best Practices
+
+1. **Use Real Components**
+
+   - Always use components from `/packages` whenever possible
+   - Match Figma component names to Gamut component names
+
+2. **Follow Design System**
+
+   - Use semantic tokens and component props over hardcoded values
+   - Avoid inline styles, use emotion and css-in-js utilities
+   - Maintain consistent spacing and typography
+
+3. **Ensure Accessibility**
+
+   - Follow WCAG requirements
+   - Provide proper labels and ARIA attributes
+   - Maintain sufficient color contrast
+
+4. **Leverage MCP Features**
+   - Use the assets endpoint for images and SVGs
+   - Reference design tokens from Figma
+   - Take advantage of automatic code generation
+
+## Benefits
+
+- **Efficiency**: No manual translation needed between design and code
+- **Consistency**: Direct mapping ensures design system compliance
+- **Quality**: Production-ready code with proper accessibility
+- **Maintainability**: Changes in design system automatically reflected
