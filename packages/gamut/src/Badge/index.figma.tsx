@@ -17,21 +17,19 @@ figma.connect(
   {
     props: {
       label: figma.string("✏️ label"),
-      leadingicon: figma.boolean("leading-icon"),
       icon: figma.instance("↳ icon"),
       variant: figma.enum("variant", {
         primary: "primary",
         secondary: "secondary",
         tertiary: "tertiary",
-        "tertiary-fill": "tertiary-fill",
+        "tertiaryFill": "tertiaryFill",
         accent: "accent",
-        fun: "fun",
       }),
       size: figma.enum("size", {
         base: "base",
         sm: "sm",
       }),
     },
-    example: (props) => <Badge />,
+    example: (props) => <Badge  {...props} />,
   },
 )

@@ -1,5 +1,4 @@
 import figma from '@figma/code-connect';
-import React from 'react';
 
 import { Disclosure } from './index';
 
@@ -28,20 +27,6 @@ figma.connect(
         condensed: 'condensed',
         compact: 'compact',
       }),
-      isExpanded: figma.boolean("isExpanded"),
-      body: figma.children("*"),
-      heading: figma.text("heading"),
-      headingLevel: figma.enum("headingLevel", {
-        h1: "h1",
-        h2: "h2",
-        h3: "h3",
-        h4: "h4",
-      }),
-      overline: figma.text("overline"),
-      subheading: figma.text("subheading"),
-      ctaText: figma.text("ctaText"),
-      href: figma.text("href"),
-      disabled: figma.boolean("disabled"),
     },
     example: (props) => <Disclosure  {...props}/>,
   },
