@@ -4,7 +4,6 @@ globs:
 alwaysApply: true
 ---
 
-	@@ -15,14 +15,12 @@ alwaysApply: true
   - IMPORTANT: do NOT use or create placeholders if a localhost source is provided
   - IMPORTANT: Always use components from `/packages` whenever possible
   - Prioritize using semantic tokens and component props over Figma fidelity
