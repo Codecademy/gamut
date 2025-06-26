@@ -20,6 +20,7 @@ import {
 } from '../styles';
 import { BaseInputProps } from '../types';
 
+/** Something will happen here */
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;
 
