@@ -74,7 +74,6 @@ const PlacementExample: React.FC<InfoTipProps> = (args) => {
       <Text mr={4}>
         This text is in a small space and needs floating placement
       </Text>{' '}
-      {/* @ts-expect-error Storybook is not correctly typing some components */}
       <InfoTip placement="floating" {...args} />
     </FlexBox>
   );
@@ -84,7 +83,7 @@ export const Placement: Story = {
   render: (args) => <PlacementExample {...args} />,
 };
 
-const WithLinksOrButtonsExample: React.FC<InfoTipProps> = () => {
+const WithLinksOrButtonsExample: React.FC<InfoTipProps> = ({ args }) => {
   const ref = useRef<HTMLButtonElement>(null);
 
   const onClick = ({ isTipHidden }: { isTipHidden: boolean }) => {
@@ -106,6 +105,7 @@ const WithLinksOrButtonsExample: React.FC<InfoTipProps> = () => {
         }
         placement="floating"
         onClick={onClick}
+        {...args}
       />
     </FlexBox>
   );
