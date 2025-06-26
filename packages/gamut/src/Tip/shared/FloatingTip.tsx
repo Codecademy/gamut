@@ -130,7 +130,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         animation="fade"
         dims={dims}
         horizontalOffset={offset}
-        isOpen={isHoverType ? isOpen : !isTipHidden}
+        isOpen
         outline
         skipFocusTrap
         targetRef={ref}

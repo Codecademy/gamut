@@ -82,12 +82,12 @@ export const Floating: Story = {
       </ToolTip>
       <IconButton
         icon={SmileyStarEyesIcon}
-        tip="Wonder at the majesty of the universe"
+        tip="Wonder"
         tipProps={{ alignment: 'right-center', placement: 'floating' }}
       />{' '}
       <IconButton
         icon={SmileyStarEyesIcon}
-        tip="Wonder at the majesty of the universe"
+        tip="Wonder more"
         tipProps={{ alignment: 'left-center', placement: 'floating' }}
       />
     </FlexBox>
