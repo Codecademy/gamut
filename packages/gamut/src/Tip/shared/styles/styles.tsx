@@ -150,7 +150,9 @@ export const leftAlignStyles = {
 export const verticalCenterStyles = {
   ...verticalCenterWidths,
   left: 'calc(50% - 4rem)',
-  width: '70vw',
+  // ** This width helps the tooltip center itself to targets
+  //  smaller than it, and makes sure its legible at small screensizes */
+  width: 'min(128px, 70vw)',
 } as const;
 
 export const verticalCenterStylesAfter = { left: 'calc(50% - 0.5rem)' };
@@ -199,7 +201,6 @@ export const toolTipAlignmentVariants = variant({
     bg: 'transparent',
     display: 'flex',
     fontSmoothPixel,
-    maxWidth: '70vw',
     opacity: 0,
     position: 'absolute',
     visibility: 'hidden',
