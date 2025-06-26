@@ -27,7 +27,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   escapeKeyPressHandler,
   inheritDims,
   info,
-  isTipHidden,
+  // isTipHidden,
   loading,
   narrow,
   overline,
