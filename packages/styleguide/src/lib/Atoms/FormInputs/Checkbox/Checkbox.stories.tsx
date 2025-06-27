@@ -224,3 +224,60 @@ export const ControlledCheckbox: React.FC = () => {
     </Box>
   );
 };
+
+const NestedCheckboxExample: React.FC = () => {
+  const [childrenChecked, setChildrenChecked] = useState<boolean[]>([
+    false,
+    false,
+    false,
+  ]);
+
+  const allChecked = childrenChecked.every(Boolean);
+  const someChecked = childrenChecked.some(Boolean);
+
+  const isIndeterminate = !allChecked && someChecked;
+
+  const toggleAll = () => {
+    const next = !allChecked;
+    setChildrenChecked(childrenChecked.map(() => next));
+  };
+
+  const toggleChild = (index: number) => () => {
+    setChildrenChecked((prev) => {
+      const next = [...prev];
+      next[index] = !prev[index];
+      return next;
+    });
+  };
+
+  return (
+    <Box border={1} borderRadius="sm" maxWidth="340px" p={16}>
+      <Checkbox
+        htmlFor="nested-parent"
+        label="My favorite Gamut components"
+        name="nested-parent"
+        onChange={toggleAll}
+        {...(isIndeterminate
+          ? { indeterminate: true as const, checked: false as const }
+          : { checked: allChecked })}
+      />
+
+      <FlexBox column mt={8} pl={24}>
+        {['Boxes', 'ToolTips', 'Pagination'].map((components, i) => (
+          <Checkbox
+            checked={childrenChecked[i]}
+            htmlFor={`nested-child-${i}`}
+            key={components}
+            label={components}
+            name={`nested-child-${i}`}
+            onChange={toggleChild(i)}
+          />
+        ))}
+      </FlexBox>
+    </Box>
+  );
+};
+
+export const NestedCheckboxes: Story = {
+  render: () => <NestedCheckboxExample />,
+};
