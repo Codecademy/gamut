@@ -123,7 +123,7 @@ export const platformSwatches = {
     '800': '#CA00D1',
   },
   teal: {
-    '500': '#027E97',
+    '500': '#006d82',
   },
   purple: {
     '300': '#B3CCFF',
