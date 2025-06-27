@@ -50,6 +50,8 @@ export const coreTheme = createTheme({
         selected: 'navy-100',
         disabled: 'navy-200',
         hover: 'navy-200',
+        success: 'green-0',
+        warning: 'yellow-0',
       },
       shadow: {
         primary: 'navy-800',
@@ -99,6 +101,8 @@ export const coreTheme = createTheme({
         selected: 'white-100',
         disabled: 'white-200',
         hover: 'white-200',
+        success: 'green-900',
+        warning: 'yellow-900',
       },
       shadow: {
         primary: 'white',
