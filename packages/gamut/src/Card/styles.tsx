@@ -36,7 +36,6 @@ export const shadowVariants = variant({
     patternRight: {},
     outline: {
       boxShadow: `-6px 6px ${theme.colors['background-current']}, -6px 6px 0 1px ${theme.colors['border-primary']}`,
-      transition: 'box-shadow 200ms ease, transform 200ms ease',
     },
   },
 });
