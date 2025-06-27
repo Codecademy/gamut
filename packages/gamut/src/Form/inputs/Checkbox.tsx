@@ -6,7 +6,7 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
+import { forwardRef, InputHTMLAttributes, useEffect, useRef } from 'react';
 
 import {
   checkboxElement,
@@ -19,30 +19,18 @@ import {
   polyline,
 } from '../styles';
 import { BaseInputProps } from '../types';
+import { CheckboxCheckedUnion, CheckboxLabelUnion } from './types';
 
 /** Something will happen here */
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;
 
-export type CheckboxStringLabelProps = {
-  label: string;
-  'aria-label'?: string;
-};
-
-export type CheckboxReactNodeLabelProps = {
-  label: ReactNode;
-  'aria-label': string;
-};
-
-export type CheckboxLabelProps =
-  | CheckboxStringLabelProps
-  | CheckboxReactNodeLabelProps;
-
 export type CheckboxProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'value' | 'label' | 'aria-label'
+  'checked' | 'value' | 'label' | 'aria-label'
 > &
-  CheckboxLabelProps &
+  CheckboxLabelUnion &
+  CheckboxCheckedUnion &
   CheckboxPaddingProps &
   Pick<BaseInputProps, 'name' | 'required'> & {
     multiline?: boolean;
@@ -79,6 +67,10 @@ export type CheckboxProps = Omit<
      */
     value?: string | boolean;
     id?: string;
+    /**
+     * Use if you want both the aria-label and text label to be read by voiceover - this component assumes that the aria-label and visual text label are identical.
+     * If you have a link in the Checkbox options, you should set this as true.
+     */
     dontAriaHideLabel?: boolean;
   };
 
@@ -99,7 +91,7 @@ const CheckboxVector = styled.svg`
   left: -1px;
 `;
 
-const Polyline = styled.polyline<Pick<CheckboxProps, 'checked'>>`
+const Checkmark = styled.polyline<Pick<CheckboxProps, 'checked'>>`
   ${polyline}
   fill: none;
   stroke: currentColor;
@@ -108,6 +100,16 @@ const Polyline = styled.polyline<Pick<CheckboxProps, 'checked'>>`
   stroke-linejoin: round;
   stroke-dasharray: 18px;
   stroke-dashoffset: ${({ checked }) => (checked ? 0 : `18px`)};
+  transition: stroke-dashoffset ${timing.fast};
+`;
+
+const Line = styled.line<Pick<CheckboxProps, 'indeterminate'>>`
+  ${polyline}
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-dasharray: 18px;
+  stroke-dashoffset: ${({ indeterminate }) => (indeterminate ? 0 : `18px`)};
   transition: stroke-dashoffset ${timing.fast};
 `;
 
@@ -122,20 +124,40 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
       'aria-label': ariaLabel,
-      className,
-      label,
-      htmlFor,
-      multiline,
-      id,
       checked,
+      indeterminate,
+      className,
       disabled,
+      dontAriaHideLabel,
+      htmlFor,
+      id,
+      label,
+      multiline,
       spacing,
       value,
-      dontAriaHideLabel,
       ...rest
     },
     ref
   ) => {
+    const intRef = useRef<HTMLInputElement | null>(null);
+
+    function syncedRefs(element: HTMLInputElement | null) {
+      intRef.current = element;
+      if (ref) {
+        if (typeof ref === 'object') {
+          ref.current = element;
+        } else {
+          ref(element);
+        }
+      }
+    }
+
+    useEffect(() => {
+      if (intRef.current && indeterminate !== undefined) {
+        intRef.current.indeterminate = indeterminate;
+      }
+    }, [indeterminate]);
+
     return (
       <div className={className}>
         <Input
@@ -153,7 +175,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           type="checkbox"
           value={`${value}`}
           {...rest}
-          ref={ref}
+          ref={syncedRefs}
         />
         <CheckboxLabel
           disabled={disabled}
@@ -167,13 +189,24 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           >
             <CheckboxVector
               aria-hidden
-              color={checked ? 'currentColor' : 'transparent'}
+              color={checked || indeterminate ? 'currentColor' : 'transparent'}
               height="19px"
               viewBox="0 0 19 19"
               width="19px"
             >
               <path d="M1 1h19v19h-19z" fill="currentColor" />
-              <Polyline checked={checked} points="4 11 8 15 16 6" />
+              <Checkmark
+                // This should never happen if the types are working, but is a good back-up.
+                checked={checked && !indeterminate}
+                points="4 11 8 15 16 6"
+              />
+              <Line
+                indeterminate={indeterminate}
+                x1="4"
+                x2="16"
+                y1="10"
+                y2="10"
+              />
             </CheckboxVector>
           </CheckboxElement>
           <CheckboxText

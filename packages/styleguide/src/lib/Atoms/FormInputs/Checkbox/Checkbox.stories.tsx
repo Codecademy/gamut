@@ -37,7 +37,7 @@ export const Unchecked: Story = {
     htmlFor: 'example-unchecked',
     label: 'unchecked',
     name: 'example-unchecked',
-    checked: false,
+    checked: true,
   },
 };
 
@@ -47,6 +47,15 @@ export const Checked: Story = {
     label: 'checked',
     name: 'example-checked',
     checked: true,
+  },
+};
+
+export const Indeterminate: Story = {
+  args: {
+    htmlFor: 'indeterminate',
+    label: 'indeterminate',
+    name: 'example-indeterminate',
+    indeterminate: true,
   },
 };
 
@@ -151,8 +160,12 @@ export const LabelsAsReactNodes: Story = {
   ),
 };
 
-type CustomCheckboxProps = Omit<CheckboxProps, 'checked'> & {
+type CustomCheckboxProps = Omit<
+  CheckboxProps,
+  'checked' | 'indeterminate' | 'label'
+> & {
   defaultChecked?: boolean;
+  label: string;
 };
 
 export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
