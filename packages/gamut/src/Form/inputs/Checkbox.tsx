@@ -81,9 +81,12 @@ const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled' | 'spacing'>>(
   checkboxLabelStates
 );
 
-const CheckboxElement = styled('div', styledOptions)<
-  Pick<CheckboxProps, 'checked' | 'multiline' | 'disabled'>
->(checkboxElement, checkboxElementStates);
+type CheckboxElementProps = StyleProps<typeof checkboxElementStates>;
+
+const CheckboxElement = styled('div', styledOptions)<CheckboxElementProps>(
+  checkboxElement,
+  checkboxElementStates
+);
 
 const CheckboxVector = styled.svg`
   position: absolute;
@@ -158,6 +161,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       }
     }, [indeterminate]);
 
+    const active = checked || indeterminate;
+
     return (
       <div className={className}>
         <Input
@@ -183,13 +188,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           spacing={spacing}
         >
           <CheckboxElement
-            checked={checked}
+            active={active}
             disabled={disabled}
             multiline={multiline}
           >
             <CheckboxVector
               aria-hidden
-              color={checked || indeterminate ? 'currentColor' : 'transparent'}
+              color={active ? 'currentColor' : 'transparent'}
               height="19px"
               viewBox="0 0 19 19"
               width="19px"

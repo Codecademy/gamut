@@ -67,7 +67,7 @@ export const checkboxElementStates = system.states({
   multiline: {
     mt: 4,
   },
-  checked: {
+  active: {
     color: 'primary',
   },
   disabled: {
