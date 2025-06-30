@@ -153,9 +153,22 @@ export const IconMenu: Story = {
     children: (
       <>
         <MenuItem icon={AiChatSparkIcon} label="chat" onClick={() => {}} />
-        <MenuItem href="#whatsup" icon={BashShellIcon} label={{alignment: "right-center", info: "Prompt"}} />
-        <MenuItem href="#whatsup-people" icon={PeopleIcon} label={{alignment: "right-center",info: "People", }} />
-        <MenuItem active href="#whatsup-1" icon={FileIcon} label={{alignment: "right-center",info: "Learn", }} />
+        <MenuItem
+          href="#whatsup"
+          icon={BashShellIcon}
+          label={{ alignment: 'right-center', info: 'Prompt' }}
+        />
+        <MenuItem
+          href="#whatsup-people"
+          icon={PeopleIcon}
+          label={{ alignment: 'right-center', info: 'People' }}
+        />
+        <MenuItem
+          active
+          href="#whatsup-1"
+          icon={FileIcon}
+          label={{ alignment: 'right-center', info: 'Learn' }}
+        />
         <MenuItem
           aria-label="I am bold and different"
           href="#whats-2"
@@ -166,7 +179,11 @@ export const IconMenu: Story = {
             narrow: true,
           }}
         />
-        <MenuItem href="#who-is-3" icon={InformationalIcon} label={{alignment: "right-center",info: "Content" }} />
+        <MenuItem
+          href="#who-is-3"
+          icon={InformationalIcon}
+          label={{ alignment: 'right-center', info: 'Content' }}
+        />
       </>
     ),
   },
