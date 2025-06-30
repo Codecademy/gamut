@@ -101,7 +101,7 @@ Use the `MenuSeparator` component to group menu items into sections when there i
 
 Some menus may have only icons, which can be useful for saving space or for actions that are easily recognizable by their icon. Each `MenuItem` must include a `label` prop, which will populate the `ToolTip` if the `MenuItem` is interactive and `aria-label` if not interactive. Non-interactive `MenuItem` components should NOT have a `ToolTip` — instead, use an <LinkTo id="Molecules/Tips/InfoTip">InfoTip</LinkTo> to provide more context.
 
-If you need fine-tuned control of the `ToolTip`, you can pass a config object to the `label` prop based off of our `ToolTip` props. Notice in the example below, aside from the first `MenuItem`, the rest of the `MenuItem` components set the `alignment` prop is used to set the `ToolTip` to the right.
+If you need fine-tuned control of the `ToolTip`, you can pass a config object to the `label` prop based off of our `ToolTip` props. Notice in the example below, aside from the first options, the rest of the options set the `alignment` prop is used to set the `ToolTip` to the right.
 
 <Canvas of={MenuStories.IconMenu} />
 
