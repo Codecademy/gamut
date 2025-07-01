@@ -88,6 +88,7 @@ export const Table: Story = {
 export const Default: Story = {
   args: {
     spacing: 'condensed',
+    p: 8,
   },
   render: (args) => <ListExample {...args} />,
 };

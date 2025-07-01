@@ -52,6 +52,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       overflowHidden = false,
       overflow = 'auto',
       scrollToTopOnUpdate = false,
+      ...rest
     },
     ref
   ) => {
@@ -85,7 +86,12 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     });
 
     const listContent = (
-      <ListEl as={isTable ? 'tbody' : as} ref={ref} variant={value.variant}>
+      <ListEl
+        as={isTable ? 'tbody' : as}
+        ref={ref}
+        variant={value.variant}
+        {...rest}
+      >
         {children}
       </ListEl>
     );

@@ -47,12 +47,13 @@ const listVariants = variant({
 
 export interface ListProps
   extends StyleProps<typeof listVariants>,
-    StyleProps<typeof spacingVariants> {}
+    StyleProps<typeof spacingVariants>,
+    StyleProps<typeof system.space> {}
 
-export const ListEl = styled(
-  'ul',
-  styledOptions<'ul'>()
-)<ListProps>(listVariants);
+export const ListEl = styled('ul', styledOptions<'ul'>())<ListProps>(
+  listVariants,
+  system.space
+);
 
 const rowStates = states({
   isOl: {
