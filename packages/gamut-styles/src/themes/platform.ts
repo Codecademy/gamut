@@ -3,6 +3,8 @@ import { createTheme } from '@codecademy/variance';
 import { platformPalette } from '../variables';
 import { coreTheme } from './core';
 
+// KENNY: main branch to update color tokens for core + platform themes
+
 /**
  * @description This is an extended theme for the learning environment with an expanded set of tokens
  * That are not needed for the rest of the application.
@@ -12,12 +14,15 @@ export const platformTheme = createTheme(coreTheme)
   .addColors(platformPalette)
   .addColorModes('dark', {
     light: {
+      background: {
+        primary: 'blue-0',
+      },
       editor: {
         attribute: 'green-700',
         annotation: 'red-500',
         atom: 'pink-800',
         basic: 'navy-800',
-        comment: 'navy-300',
+        comment: 'navy-500',
         constant: 'orange-800',
         decoration: 'red-500',
         invalid: 'red-500',
@@ -36,40 +41,40 @@ export const platformTheme = createTheme(coreTheme)
         ui: {
           background: 'white',
           text: 'navy-800',
-          'indent-active': 'navy-900',
-          'indent-inactive': 'navy-600',
-          'line-number': 'navy-300',
+          'indent-active': 'navy-300',
+          'indent-inactive': 'navy-400',
+          'line-number': 'navy-500',
         },
       },
     },
     dark: {
       editor: {
         attribute: 'green-400',
-        annotation: 'red-0',
+        annotation: 'red-300',
         atom: 'pink-400',
         basic: 'white',
-        comment: 'gray-600',
+        comment: 'white-500',
         constant: 'orange-500',
-        decoration: 'red-0',
-        invalid: 'red-0',
+        decoration: 'red-300',
+        invalid: 'red-300',
         key: 'blue-300',
         keyword: 'purple-300',
-        number: 'red-0',
-        operator: 'red-0',
+        number: 'red-300',
+        operator: 'red-300',
         predefined: 'white',
-        property: 'red-0',
+        property: 'red-300',
         regexp: 'green-400',
         string: 'yellow-500',
-        tag: 'red-0',
+        tag: 'red-300',
         text: 'orange-500',
         value: 'yellow-500',
         variable: 'green-400',
         ui: {
           background: 'navy-900',
           text: 'white',
-          'indent-active': 'gray-900',
-          'indent-inactive': 'gray-800',
-          'line-number': 'gray-600',
+          'indent-active': 'white-300',
+          'indent-inactive': 'white-400',
+          'line-number': 'white-500',
         },
       },
     },
