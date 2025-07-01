@@ -10,7 +10,6 @@ import {
   GridBox,
   IconButton,
   Input,
-  Logo,
   Radio,
   RadioGroup,
   StrokeButton,
@@ -157,15 +156,6 @@ const renderInputs = () => {
 const ColorModeExampleContents = () => {
   return (
     <>
-      <GridBox
-        columnGap={16}
-        gridTemplateColumns="max-content max-content max-content"
-        pb={16}
-      >
-        <Logo variant="default" />
-        <Logo variant="pro" />
-        <Logo variant="mini" />
-      </GridBox>
       <Text as="p" color="text" fontFamily="accent" fontSize={16} mb={16}>
         Cool Feature
       </Text>
