@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [75.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@75.1.2...@codecademy/styleguide@75.1.3) (2025-07-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [75.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@75.1.1...@codecademy/styleguide@75.1.2) (2025-06-30)
 
 **Note:** Version bump only for package @codecademy/styleguide
