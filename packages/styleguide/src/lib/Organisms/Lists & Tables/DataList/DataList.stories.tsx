@@ -1,7 +1,7 @@
 // Added because SB and TS don't play nice with each other at the moment
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { DataList, DataTable, FlexBox } from '@codecademy/gamut';
+import { DataList, DataTable, FlexBox, Text } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { cols, CustomEmptyState, DataListTemplate } from '../examples';
@@ -71,6 +71,45 @@ type Story = StoryObj<typeof DataList>;
 
 export const FullDataList: Story = {
   render: () => <DataListTemplate />,
+};
+export const RowBreakpointMd: Story = {
+  args: {
+    columns: [
+      { key: 'name', size: 'md', sortable: true },
+      { key: 'role', size: 'md', sortable: true },
+      { key: 'ship', size: 'md', sortable: true, fill: true },
+    ],
+    header: true,
+    height: 'auto',
+    idKey: 'name',
+    rowBreakpoint: 'md',
+    rows: [
+      {
+        name: 'Jean-Luc Picard',
+        role: 'Captain',
+        ship: 'Enterprise-D',
+      },
+      {
+        name: 'William Riker',
+        role: 'Commander',
+        ship: 'Enterprise-D',
+      },
+      {
+        name: 'Data',
+        role: 'Lt. Commander',
+        ship: 'Enterprise-D',
+      },
+    ],
+    spacing: 'condensed',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This example demonstrates using the `rowBreakpoint` prop set to "md".\nRows will stack vertically on extra-small and small screens (xs–sm) and switch to a horizontal layout at the medium (md) breakpoint and above.',
+      },
+    },
+  },
 };
 
 export const Default: Story = {

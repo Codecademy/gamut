@@ -6,7 +6,7 @@ import * as React from 'react';
 
 import { Box } from '../Box';
 import { WithChildrenProp } from '../utils';
-import { RowEl } from './elements';
+import { condensedSpacing, normalSpacing, RowEl } from './elements';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
 import { getGridTemplateColumns } from './utils';
@@ -79,15 +79,29 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     },
     ref
   ) => {
-    const { listType, rowBreakpoint, scrollable, variant, ...rowConfig } =
-      useListContext();
+    const {
+      listType,
+      rowBreakpoint,
+      scrollable,
+      variant,
+      spacing,
+      ...rowConfig
+    } = useListContext();
     const isOl = listType === 'ol';
     const isTable = listType === 'table';
+    const gap = React.useMemo(() => {
+      const breakpoint = rowBreakpoint ?? 'xs';
+      return spacing === 'condensed'
+        ? condensedSpacing(breakpoint)
+        : spacing === 'normal'
+        ? normalSpacing(breakpoint)
+        : {};
+    }, [rowBreakpoint, spacing]);
     const { onClick, role, tabIndex, ...rowProps } = rest;
     const wrapperProps =
       (!renderExpanded && !onClick) || isTable
         ? { ...rowConfig, ...rowProps }
-        : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
+        : { spacing: keepSpacingWhileExpanded ? spacing : undefined };
     let content = children;
     const renderNumbering = isOl && renderExpanded === undefined && !onClick;
 
@@ -112,6 +126,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
               onClick(e as unknown as MouseEvent<HTMLLIElement>);
             }
           }}
+          {...gap}
           {...rowProps}
           ref={ref}
         >
