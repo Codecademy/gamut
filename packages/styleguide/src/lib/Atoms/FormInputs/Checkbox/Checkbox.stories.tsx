@@ -95,68 +95,82 @@ export const SpacingTight: Story = {
     spacing: 'tight',
   },
   render: () => (
-    <>
-      <Checkbox
-        checked
-        htmlFor="spacing-1"
-        label="a small space"
-        name="spacing-1"
-        readOnly
-        spacing="tight"
-      />
-      <Checkbox
-        htmlFor="spacing-2"
-        label="with three checkboxes"
-        name="spacing-2"
-        spacing="tight"
-      />
-      <Checkbox
-        checked
-        htmlFor="spacing-3"
-        label="neat huh?"
-        name="spacing-3"
-        readOnly
-        spacing="tight"
-      />
-    </>
+    <Box as="fieldset" m={0} p={0}>
+      <legend>Tight Spacing</legend>
+      <FlexBox
+        as="ul"
+        column
+        style={{ listStyle: 'none', margin: 0, padding: 0 }}
+      >
+        {[
+          { id: 'spacing-1', label: 'a small space', checked: true },
+          { id: 'spacing-2', label: 'with three checkboxes', checked: false },
+          { id: 'spacing-3', label: 'neat huh?', checked: true },
+        ].map(({ id, label, checked }) => (
+          <Box as="li" key={id} mt={4}>
+            <Checkbox
+              checked={checked}
+              htmlFor={id}
+              label={label}
+              name={id}
+              readOnly
+              spacing="tight"
+            />
+          </Box>
+        ))}
+      </FlexBox>
+    </Box>
   ),
 };
 
 export const LabelsAsReactNodes: Story = {
   args: {},
   render: () => (
-    <>
-      <Checkbox
-        checked
-        htmlFor="accessible-1"
-        label="a string"
-        name="accessible-1"
-        readOnly
-      />
-      <Checkbox
-        aria-label="a node"
-        htmlFor="accessible-2"
-        label={
-          <FlexBox alignItems="center">
-            <MiniStarIcon mr={4} />a node <MiniStarIcon ml={4} />
-          </FlexBox>
-        }
-        name="accessible-2"
-      />
-      <Checkbox
-        aria-label="Here is a link to click"
-        dontAriaHideLabel
-        htmlFor="accessible-3"
-        label={
-          <Box>
-            <Text aria-hidden>Here is a link to&nbsp;</Text>
-            <Anchor href="/">click</Anchor>
-            <Text aria-hidden>!</Text>
-          </Box>
-        }
-        name="accessible-3"
-      />
-    </>
+    <Box as="fieldset" m={0} p={0}>
+      <legend>Labels as React Nodes</legend>
+      <FlexBox
+        as="ul"
+        column
+        style={{ listStyle: 'none', margin: 0, padding: 0 }}
+      >
+        <Box as="li" mt={4}>
+          <Checkbox
+            checked
+            htmlFor="accessible-1"
+            label="a string"
+            name="accessible-1"
+            readOnly
+          />
+        </Box>
+        <Box as="li" mt={4}>
+          <Checkbox
+            aria-label="a node"
+            htmlFor="accessible-2"
+            label={
+              <FlexBox alignItems="center">
+                <MiniStarIcon mr={4} />a node <MiniStarIcon ml={4} />
+              </FlexBox>
+            }
+            name="accessible-2"
+          />
+        </Box>
+        <Box as="li" mt={4}>
+          <Checkbox
+            aria-label="Here is a link to click"
+            dontAriaHideLabel
+            htmlFor="accessible-3"
+            label={
+              <Box>
+                <Text aria-hidden>Here is a link to&nbsp;</Text>
+                <Anchor href="/">click</Anchor>
+                <Text aria-hidden>!</Text>
+              </Box>
+            }
+            name="accessible-3"
+          />
+        </Box>
+      </FlexBox>
+    </Box>
   ),
 };
 
@@ -251,27 +265,37 @@ const NestedCheckboxExample: React.FC = () => {
   };
 
   return (
-    <Box border={1} borderRadius="sm" maxWidth="340px" p={16}>
-      <Checkbox
-        htmlFor="nested-parent"
-        label="My favorite Gamut components"
-        name="nested-parent"
-        onChange={toggleAll}
-        {...(isIndeterminate
-          ? { indeterminate: true as const, checked: false as const }
-          : { checked: allChecked })}
-      />
-
-      <FlexBox column mt={8} pl={24}>
-        {['Boxes', 'ToolTips', 'Pagination'].map((components, i) => (
+    <Box as="fieldset" border={1} borderRadius="sm" maxWidth="340px" p={16}>
+      <legend>My favorite Gamut components</legend>
+      <FlexBox
+        as="ul"
+        column
+        mt={8}
+        pl={24}
+        style={{ listStyle: 'none', margin: 0, padding: 0 }}
+      >
+        <Box as="li">
           <Checkbox
-            checked={childrenChecked[i]}
-            htmlFor={`nested-child-${i}`}
-            key={components}
-            label={components}
-            name={`nested-child-${i}`}
-            onChange={toggleChild(i)}
+            htmlFor="nested-parent"
+            label="Select all component"
+            name="nested-parent"
+            onChange={toggleAll}
+            {...(isIndeterminate
+              ? { indeterminate: true as const, checked: false as const }
+              : { checked: allChecked })}
           />
+        </Box>
+
+        {['Boxes', 'ToolTips', 'Pagination'].map((component, i) => (
+          <Box as="li" key={component} ml={16} mt={8}>
+            <Checkbox
+              checked={childrenChecked[i]}
+              htmlFor={`nested-child-${i}`}
+              label={component}
+              name={`nested-child-${i}`}
+              onChange={toggleChild(i)}
+            />
+          </Box>
         ))}
       </FlexBox>
     </Box>
