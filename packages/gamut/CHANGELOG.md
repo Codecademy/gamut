@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [64.1.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.1.4...@codecademy/gamut@64.1.5) (2025-07-01)
+
+### Bug Fixes
+
+- **Card:** remove extra transition from shadow variant ([57c04a1](https://github.com/Codecademy/gamut/commit/57c04a1bec8bf2b08a2c9e3d542fa82ee6835c19))
+
 ### [64.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.1.3...@codecademy/gamut@64.1.4) (2025-06-17)
 
 **Note:** Version bump only for package @codecademy/gamut
