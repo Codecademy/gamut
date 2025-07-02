@@ -83,15 +83,20 @@ const rowStates = states({
   },
 });
 
+export const normalSpacing = (breakpoint: 'xs' | 'sm' | 'md' | 'grid') => ({
+  gap: { _: 8, [breakpoint]: 40 },
+});
+
+export const condensedSpacing = (breakpoint: 'xs' | 'sm' | 'md' | 'grid') => ({
+  gap: { _: 8, [breakpoint]: 32 },
+});
+
 const spacingVariants = variant({
   prop: 'spacing',
   variants: {
-    normal: {
-      gap: { _: 8, xs: 40 },
-    },
+    normal: {},
     condensed: {
       fontSize: 16,
-      gap: { _: 8, xs: 32 },
     },
     compact: {
       gap: 0,
@@ -188,11 +193,9 @@ export interface HeaderProps
     StyleProps<typeof rowStates>,
     StyleProps<typeof listVariants> {}
 
-export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
+export const HeaderRowEl = styled(Box)<HeaderProps>(
   css({
     display: 'flex',
-    position: { _: 'initial', xs: 'sticky' },
-    flexDirection: ['column', 'row'],
     top: 0,
     bg: 'background-current',
     zIndex: 2,

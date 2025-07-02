@@ -100,3 +100,50 @@ export const Scrollable: Story = {
 export const Default: Story = {
   args: {},
 };
+
+export const RowBreakpointMd: Story = {
+  args: {
+    columns: [
+      { label: 'Name', key: 'name', size: 'md', sortable: true },
+      {
+        label: 'Rank',
+        key: 'a very important role',
+        size: 'md',
+        sortable: true,
+      },
+      { label: 'Ship', key: 'ship', size: 'md', sortable: true, fill: true },
+    ],
+    header: true,
+    height: 'auto',
+    idKey: 'name',
+    rowBreakpoint: 'md',
+    rows: [
+      {
+        name: 'Jean-Luc Picard',
+        'a very important role': 'Captain',
+        ship: 'Enterprise-D',
+      },
+      {
+        name: 'William Riker',
+        'a very important role': 'Commander',
+        ship: 'Enterprise-D',
+      },
+      {
+        name: 'Data',
+        'a very important role': 'Lt. Commander',
+        ship: 'Enterprise-D',
+      },
+    ],
+    spacing: 'condensed',
+    shadow: true,
+    scrollable: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This example demonstrates using the `rowBreakpoint` prop with `DataTable`.\nRows will be rendered in a stacked (grid) layout on screens smaller than the medium (md) breakpoint and change to a traditional horizontal table row starting at the md breakpoint.',
+      },
+    },
+  },
+};
