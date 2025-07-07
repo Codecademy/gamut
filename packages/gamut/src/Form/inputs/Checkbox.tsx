@@ -8,7 +8,6 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { forwardRef, InputHTMLAttributes, useEffect, useRef } from 'react';
 
-import { Box } from '../../Box';
 import {
   checkboxElement,
   checkboxElementStates,
