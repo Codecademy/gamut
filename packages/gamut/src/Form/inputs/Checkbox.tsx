@@ -8,6 +8,7 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { forwardRef, InputHTMLAttributes, useEffect, useRef } from 'react';
 
+import { Box } from '../../Box';
 import {
   checkboxElement,
   checkboxElementStates,
@@ -190,6 +191,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           <CheckboxElement
             active={active}
             disabled={disabled}
+            hasBg={checked || indeterminate}
+            hideBorder={disabled && (checked || indeterminate)}
             multiline={multiline}
           >
             <CheckboxVector
@@ -199,7 +202,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               viewBox="0 0 19 19"
               width="19px"
             >
-              <path d="M1 1h19v19h-19z" fill="currentColor" />
               <Checkmark
                 // This should never happen if the types are working, but is a good back-up.
                 checked={checked && !indeterminate}

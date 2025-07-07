@@ -76,6 +76,12 @@ export const checkboxElementStates = system.states({
       outline: 'none',
     },
   },
+  hasBg: {
+    bg: 'currentColor',
+  },
+  hideBorder: {
+    borderColor: 'transparent',
+  },
 });
 
 export const checkboxInput = system.css({
