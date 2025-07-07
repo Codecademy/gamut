@@ -266,28 +266,21 @@ const NestedCheckboxExample: React.FC = () => {
 
   return (
     <Box as="fieldset" border={1} borderRadius="sm" maxWidth="340px" p={16}>
-      <legend>My favorite Gamut components</legend>
-      <FlexBox
-        as="ul"
-        column
-        mt={8}
-        pl={24}
-        style={{ listStyle: 'none', margin: 0, padding: 0 }}
-      >
-        <Box as="li">
-          <Checkbox
-            htmlFor="nested-parent"
-            label="Select all component"
-            name="nested-parent"
-            onChange={toggleAll}
-            {...(isIndeterminate
-              ? { indeterminate: true as const, checked: false as const }
-              : { checked: allChecked })}
-          />
-        </Box>
-
+      <legend>My fave Gamut components</legend>
+      <Box ml={8}>
+        <Checkbox
+          htmlFor="nested-parent"
+          label="Select all components"
+          name="nested-parent"
+          onChange={toggleAll}
+          {...(isIndeterminate
+            ? { indeterminate: true as const, checked: false as const }
+            : { checked: allChecked })}
+        />
+      </Box>
+      <Box as="ul" listStyle="none" ml={32} p={0}>
         {['Boxes', 'ToolTips', 'Pagination'].map((component, i) => (
-          <Box as="li" key={component} ml={16} mt={8}>
+          <Box as="li" key={component}>
             <Checkbox
               checked={childrenChecked[i]}
               htmlFor={`nested-child-${i}`}
@@ -297,7 +290,7 @@ const NestedCheckboxExample: React.FC = () => {
             />
           </Box>
         ))}
-      </FlexBox>
+      </Box>
     </Box>
   );
 };

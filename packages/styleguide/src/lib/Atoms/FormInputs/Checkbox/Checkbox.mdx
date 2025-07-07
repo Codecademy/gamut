@@ -3,7 +3,6 @@ import { Canvas, Controls, Meta } from '@storybook/blocks';
 import { ComponentHeader } from '~styleguide/blocks';
 
 import * as CheckboxStories from './Checkbox.stories';
-import { IndeterminateVisualStateTable } from './utils';
 
 export const parameters = {
   subtitle:
@@ -86,9 +85,67 @@ Checkboxes have a third state - `indeterminate` - represented by a dash.
 
 <Canvas of={CheckboxStories.Indeterminate} />
 
-`indeterminate` is used for Checkboxes that are the header of a list of checkboxes. When clicked, all of its child checkboxes will be selected or unselected. Clicking on only some of the child checkboxes will make the header checkbox show the indeterminate state.
+`indeterminate` is used for Checkboxes that are the header of a list of checkboxes. When clicked, all of its child checkboxes should be selected or unselected. Clicking on only some of the child checkboxes should make the header checkbox show the indeterminate state.
 
 <Canvas of={CheckboxStories.NestedCheckboxes} />
+
+```tsx
+const NestedCheckboxExample: React.FC = () => {
+  const [childrenChecked, setChildrenChecked] = useState<boolean[]>([
+    false,
+    false,
+    false,
+  ]);
+
+  const allChecked = childrenChecked.every(Boolean);
+  const someChecked = childrenChecked.some(Boolean);
+
+  const isIndeterminate = !allChecked && someChecked;
+
+  const toggleAll = () => {
+    const next = !allChecked;
+    setChildrenChecked(childrenChecked.map(() => next));
+  };
+
+  const toggleChild = (index: number) => () => {
+    setChildrenChecked((prev) => {
+      const next = [...prev];
+      next[index] = !prev[index];
+      return next;
+    });
+  };
+
+  return (
+    <Box as="fieldset" border={1} borderRadius="sm" maxWidth="340px" p={16}>
+      <legend>My fave Gamut components</legend>
+      <Box ml={8}>
+        <Checkbox
+          htmlFor="nested-parent"
+          label="Select all components"
+          name="nested-parent"
+          onChange={toggleAll}
+          {...(isIndeterminate
+            ? { indeterminate: true as const, checked: false as const }
+            : { checked: allChecked })}
+        />
+      </Box>
+      <Box as="ul" listStyle="none" ml={32} p={0}>
+        {['Boxes', 'ToolTips', 'Pagination'].map((component, i) => (
+          <Box as="li" key={component}>
+            <Checkbox
+              checked={childrenChecked[i]}
+              htmlFor={`nested-child-${i}`}
+              label={component}
+              name={`nested-child-${i}`}
+              onChange={toggleChild(i)}
+            />
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  );
+};
+```
 
 There are several accessibility considerations to take when using indeterminate checkboxes.
 
@@ -98,15 +155,16 @@ There are several accessibility considerations to take when using indeterminate 
   The mixed state is a JavaScript-only property on the native `<input type="checkbox">`. When you set `indeterminate` on the Gamut `Checkbox`, the component applies the underlying DOM property for you, but you must update this prop whenever the selection state of the child checkboxes changes so that assistive technologies receive an accurate announcement.
 
 - **Keep `checked` and `indeterminate` mutually exclusive**
-  Only one of these props should be `true` at any time. Use the following combinations:
-
-  <IndeterminateVisualStateTable />
+  There are Typescript types that guard against this behavior but keep in mind this shouldn't happen.
 
 - **Group related checkboxes with `fieldset` & `legend`**
   Wrapping the parent and its children in a `<fieldset>` with a `<legend>` communicates their relationship to screen-reader users.
 
 - **Use a descriptive label**
   The parent checkbox's label should describe what will be selected, e.g. "Select all lessons", so the purpose is clear when a screen reader announces "mixed".
+
+- **Nested checkboxes should be in a list**
+  The checkboxs should be wrapped in a `ul` and `li` components as shown in the example above.
 
 ### Disabled
 
