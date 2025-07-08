@@ -124,7 +124,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       <RowEl
         aria-live={renderExpanded ? 'polite' : undefined}
         expanded={isTable ? undefined : !!renderExpanded}
-        gridAutoRows={{ _: undefined, xs: 'minmax(1.5rem, max-content) 6fr' }}
+        gridAutoRows={{ _: undefined, c_xs: 'minmax(1.5rem, max-content) 6fr' }}
         gridTemplateColumns={{
           _: 'minmax(0, 1fr) max-content',
           xs: gridTemplateColumns,

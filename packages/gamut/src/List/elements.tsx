@@ -136,8 +136,8 @@ const rowBreakpointVariants = variant({
   defaultVariant: 'xs',
   variants: {
     xs: {
-      display: { _: 'grid', xs: 'flex' },
-      flexDirection: { _: 'column', xs: 'row' },
+      display: { _: 'grid', c_xs: 'flex' },
+      flexDirection: { _: 'column', c_xs: 'row' },
     },
     sm: {
       display: { _: 'grid', sm: 'flex' },
@@ -212,7 +212,7 @@ const columnType = variant({
     orderedHeader: {
       '&::before': {
         ...olStyles,
-        display: { _: 'flex', xs: 'none' },
+        display: { _: 'flex', c_xs: 'none' },
         pl: 8,
       },
     },
@@ -224,14 +224,14 @@ const columnType = variant({
       minWidth: 'min-content',
       alignItems: {
         _: 'flex-start',
-        xs: 'center',
+        c_xs: 'center',
       },
       justifyItems: {
         _: 'end',
-        xs: undefined,
+        c_xs: undefined,
       },
 
-      gridColumn: { _: 2, xs: 1 },
+      gridColumn: { _: 2, c_xs: 1 },
       gridRow: 1,
     },
     expand: {
@@ -245,12 +245,12 @@ const columnJustify = variant({
   defaultVariant: 'left',
   variants: {
     left: {
-      justifyContent: { xs: 'flex-start' },
+      justifyContent: { c_xs: 'flex-start' },
     },
     right: {
-      justifyContent: { xs: 'flex-end' },
+      justifyContent: { c_xs: 'flex-end' },
       '& div': {
-        width: { sm: 'fit-content' },
+        width: { c_sm: 'fit-content' },
       },
     },
   },
@@ -262,20 +262,20 @@ const columnSizes = variant({
   base: { minWidth: 0, maxWidth: 1, flexShrink: 1 },
   variants: {
     sm: {
-      flexBasis: { xs: '6rem' },
-      width: { xs: '6rem' },
+      flexBasis: { c_xs: '6rem' },
+      width: { c_xs: '6rem' },
     },
     md: {
-      flexBasis: { xs: '10rem' },
-      width: { xs: '10rem' },
+      flexBasis: { c_xs: '10rem' },
+      width: { c_xs: '10rem' },
     },
     lg: {
-      flexBasis: { xs: '12rem' },
-      width: { xs: '12rem' },
+      flexBasis: { c_xs: '12rem' },
+      width: { c_xs: '12rem' },
     },
     xl: {
-      flexBasis: { xs: '20rem' },
-      width: { xs: '20rem' },
+      flexBasis: { c_xs: '20rem' },
+      width: { c_xs: '20rem' },
     },
     content: {
       flexShrink: 0,
@@ -284,7 +284,7 @@ const columnSizes = variant({
 });
 
 const columnStates = states({
-  fill: { flexGrow: { xs: 1 } },
+  fill: { flexGrow: { c_xs: 1 } },
   sticky: {
     width: '100%',
     height: '100%',
@@ -293,7 +293,7 @@ const columnStates = states({
   delimiter: {
     overflow: 'visible',
     '&:after': {
-      display: { _: 'none', xs: 'block' },
+      display: { _: 'none', c_xs: 'block' },
       content: '""',
       bg: 'background-current',
       right: -4,
@@ -329,7 +329,7 @@ const columnStates = states({
 const columnSpacing = variant({
   prop: 'spacing',
   base: {
-    px: { _: 16, xs: 0 },
+    px: { _: 16, c_xs: 0 },
     '&:first-of-type': {
       pl: 8,
     },
@@ -339,10 +339,10 @@ const columnSpacing = variant({
   },
   variants: {
     normal: {
-      py: { _: 0, xs: 16 },
+      py: { _: 0, c_xs: 16 },
     },
     condensed: {
-      py: { _: 0, xs: 8 },
+      py: { _: 0, c_xs: 8 },
     },
     compact: {},
   },
@@ -413,11 +413,11 @@ export const StickyHeaderColWrapper = styled.th(
     bg: 'inherit',
 
     '&:not(:first-of-type)': {
-      left: { xs: 16 },
+      left: { c_xs: 16 },
       overflow: 'visible',
     },
     '&:not(:first-of-type):before': {
-      display: { _: 'none', xs: 'block' },
+      display: { _: 'none', c_xs: 'block' },
       content: '""',
       bg: 'inherit',
       left: -16,
@@ -434,7 +434,7 @@ export const ListWrapper = styled(Box)(
   }),
   states({
     scrollable: {
-      boxShadow: { _: undefined, xs: 'inset -24px 0 24px -24px black' },
+      boxShadow: { _: undefined, c_xs: 'inset -24px 0 24px -24px black' },
     },
   })
 );

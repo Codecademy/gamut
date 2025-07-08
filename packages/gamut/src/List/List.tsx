@@ -135,13 +135,11 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
         >
           <Box
             as={isTable && !isEmpty && !loading ? 'table' : 'div'}
-            bg={{ _: 'hyper', c_xs: 'red' }}
             data-testid={`scrollable-${id}`}
             height={isEmpty ? height : 'fit-content'}
             maxWidth={1}
             minHeight={minHeight}
             overflow="inherit"
-            p={16}
             position="relative"
             ref={!isEmpty ? tableRef : undefined}
             width="inherit"
