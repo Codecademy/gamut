@@ -58,7 +58,7 @@ const rowStates = states({
   isOl: {
     '&::before': {
       ...olStyles,
-      display: { _: 'none', xs: 'flex' },
+      display: { _: 'none', c_xs: 'flex' },
       pl: 16,
     },
   },
@@ -68,7 +68,7 @@ const rowStates = states({
   },
   expanded: {
     display: 'flex',
-    flexDirection: { xs: 'column' },
+    flexDirection: { c_xs: 'column' },
   },
   clickable: {
     cursor: 'pointer',
@@ -87,11 +87,11 @@ const spacingVariants = variant({
   prop: 'spacing',
   variants: {
     normal: {
-      gap: { _: 8, xs: 40 },
+      gap: { _: 8, c_xs: 40 },
     },
     condensed: {
       fontSize: 16,
-      gap: { _: 8, xs: 32 },
+      gap: { _: 8, c_xs: 32 },
     },
     compact: {
       gap: 0,
@@ -191,8 +191,8 @@ export interface HeaderProps
 export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
   css({
     display: 'flex',
-    position: { _: 'initial', xs: 'sticky' },
-    flexDirection: ['column', 'row'],
+    position: { _: 'initial', c_xs: 'sticky' },
+    flexDirection: { _: 'column', c_xs: 'row' },
     top: 0,
     bg: 'background-current',
     zIndex: 2,
@@ -429,6 +429,9 @@ export const StickyHeaderColWrapper = styled.th(
 );
 
 export const ListWrapper = styled(Box)(
+  css({
+    containerType: 'inline-size',
+  }),
   states({
     scrollable: {
       boxShadow: { _: undefined, xs: 'inset -24px 0 24px -24px black' },
