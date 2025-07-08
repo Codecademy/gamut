@@ -10,7 +10,19 @@ import {
 } from '../types/props';
 import { Breakpoints } from '../types/theme';
 
-const BREAKPOINT_KEYS = ['_', 'xs', 'sm', 'md', 'lg', 'xl'];
+const BREAKPOINT_KEYS = [
+  '_',
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xl',
+  'c_xs',
+  'c_sm',
+  'c_md',
+  'c_lg',
+  'c_xl',
+];
 
 /**
  * Destructures the themes breakpoints into an ordered structure to traverse
@@ -19,12 +31,13 @@ export const parseBreakpoints = (
   breakpoints?: Breakpoints | undefined
 ): BreakpointCache | null => {
   if (breakpoints === undefined) return null;
-  const { xs, sm, md, lg, xl } = breakpoints ?? {};
+  const { xs, sm, md, lg, xl, c_xs, c_sm, c_md, c_lg, c_xl } =
+    breakpoints ?? {};
 
-  // Ensure order for mapping
+  // Ensure order for mapping - media queries first, then container queries
   return {
     map: breakpoints,
-    array: [xs, sm, md, lg, xl],
+    array: [xs, sm, md, lg, xl, c_xs, c_sm, c_md, c_lg, c_xl],
   };
 };
 

@@ -11,6 +11,11 @@ interface BreakpointKeys<T = string> {
   md: T;
   lg: T;
   xl: T;
+  c_xs: T;
+  c_sm: T;
+  c_md: T;
+  c_lg: T;
+  c_xl: T;
 }
 export interface BreakpointCache {
   map: BreakpointKeys;
@@ -28,6 +33,11 @@ export interface MediaQueryArray<T> {
   3?: T;
   4?: T;
   5?: T;
+  6?: T;
+  7?: T;
+  8?: T;
+  9?: T;
+  10?: T;
 }
 export interface MediaQueryMap<T> {
   _?: T;
@@ -36,6 +46,11 @@ export interface MediaQueryMap<T> {
   md?: T;
   lg?: T;
   xl?: T;
+  c_xs?: T;
+  c_sm?: T;
+  c_md?: T;
+  c_lg?: T;
+  c_xl?: T;
 }
 
 export type ResponsiveProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
