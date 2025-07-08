@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [76.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@75.1.3...@codecademy/styleguide@76.0.0) (2025-07-08)
+
+### ⚠ BREAKING CHANGES
+
+- **Logo:** Remove logo from gamut
+
+### Code Refactoring
+
+- **Logo:** Remove logo from gamut ([cdc47a2](https://github.com/Codecademy/gamut/commit/cdc47a28062f62ff5c9a9093ae33b580d79c1e2c))
+
+### [75.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@75.1.2...@codecademy/styleguide@75.1.3) (2025-07-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [75.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@75.1.1...@codecademy/styleguide@75.1.2) (2025-06-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [75.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@75.1.0...@codecademy/styleguide@75.1.1) (2025-06-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ## [75.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@75.0.2...@codecademy/styleguide@75.1.0) (2025-06-10)
 
 ### Features
