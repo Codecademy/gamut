@@ -244,18 +244,6 @@ exports[`themes admin - theme shape 1`] = `
       "@media only screen and (min-width: 1024px)": {
         "--elements-headerHeight": "5rem",
       },
-      "@media only screen and (min-width: 1200px)": {
-        "--elements-headerHeight": undefined,
-      },
-      "@media only screen and (min-width: 1440px)": {
-        "--elements-headerHeight": undefined,
-      },
-      "@media only screen and (min-width: 480px)": {
-        "--elements-headerHeight": undefined,
-      },
-      "@media only screen and (min-width: 768px)": {
-        "--elements-headerHeight": undefined,
-      },
     },
   },
   "borderRadii": {
@@ -271,6 +259,11 @@ exports[`themes admin - theme shape 1`] = `
     "2": "2px solid var(--color-border-primary)",
   },
   "breakpoints": {
+    "c_lg": "@container (min-width: 1200px)",
+    "c_md": "@container (min-width: 1024px)",
+    "c_sm": "@container (min-width: 768px)",
+    "c_xl": "@container (min-width: 1440px)",
+    "c_xs": "@container (min-width: 480px)",
     "lg": "@media only screen and (min-width: 1200px)",
     "md": "@media only screen and (min-width: 1024px)",
     "sm": "@media only screen and (min-width: 768px)",
@@ -735,18 +728,6 @@ exports[`themes core - theme shape 1`] = `
       "@media only screen and (min-width: 1024px)": {
         "--elements-headerHeight": "5rem",
       },
-      "@media only screen and (min-width: 1200px)": {
-        "--elements-headerHeight": undefined,
-      },
-      "@media only screen and (min-width: 1440px)": {
-        "--elements-headerHeight": undefined,
-      },
-      "@media only screen and (min-width: 480px)": {
-        "--elements-headerHeight": undefined,
-      },
-      "@media only screen and (min-width: 768px)": {
-        "--elements-headerHeight": undefined,
-      },
     },
   },
   "borderRadii": {
@@ -762,6 +743,11 @@ exports[`themes core - theme shape 1`] = `
     "2": "2px solid var(--color-border-primary)",
   },
   "breakpoints": {
+    "c_lg": "@container (min-width: 1200px)",
+    "c_md": "@container (min-width: 1024px)",
+    "c_sm": "@container (min-width: 768px)",
+    "c_xl": "@container (min-width: 1440px)",
+    "c_xs": "@container (min-width: 480px)",
     "lg": "@media only screen and (min-width: 1200px)",
     "md": "@media only screen and (min-width: 1024px)",
     "sm": "@media only screen and (min-width: 768px)",
@@ -1321,18 +1307,6 @@ exports[`themes platform - theme shape 1`] = `
       "@media only screen and (min-width: 1024px)": {
         "--elements-headerHeight": "5rem",
       },
-      "@media only screen and (min-width: 1200px)": {
-        "--elements-headerHeight": undefined,
-      },
-      "@media only screen and (min-width: 1440px)": {
-        "--elements-headerHeight": undefined,
-      },
-      "@media only screen and (min-width: 480px)": {
-        "--elements-headerHeight": undefined,
-      },
-      "@media only screen and (min-width: 768px)": {
-        "--elements-headerHeight": undefined,
-      },
     },
   },
   "borderRadii": {
@@ -1348,6 +1322,11 @@ exports[`themes platform - theme shape 1`] = `
     "2": "2px solid var(--color-border-primary)",
   },
   "breakpoints": {
+    "c_lg": "@container (min-width: 1200px)",
+    "c_md": "@container (min-width: 1024px)",
+    "c_sm": "@container (min-width: 768px)",
+    "c_xl": "@container (min-width: 1440px)",
+    "c_xs": "@container (min-width: 480px)",
     "lg": "@media only screen and (min-width: 1200px)",
     "md": "@media only screen and (min-width: 1024px)",
     "sm": "@media only screen and (min-width: 768px)",
