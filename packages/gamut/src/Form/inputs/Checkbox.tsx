@@ -21,7 +21,6 @@ import {
 import { BaseInputProps } from '../types';
 import { CheckboxCheckedUnion, CheckboxLabelUnion } from './types';
 
-/** Something will happen here */
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;
 
@@ -156,10 +155,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     }
 
     useEffect(() => {
-      if (intRef.current && indeterminate !== undefined) {
+      if (intRef.current && indeterminate !== undefined && !checked) {
         intRef.current.indeterminate = indeterminate;
       }
-    }, [indeterminate]);
+    }, [checked, indeterminate]);
 
     const active = checked || indeterminate;
 
