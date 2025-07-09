@@ -29,7 +29,6 @@ export * from './Layout/Column';
 export * from './Layout/LayoutGrid';
 export * from './List';
 export * from './Loading/Shimmer';
-export * from './Logo';
 export * from './Markdown';
 export * from './Menu';
 export * from './ModalDeprecated';
