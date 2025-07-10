@@ -152,7 +152,6 @@ export const platformEditorColors = {
   'line-number-dark': '#84868d',
 } as const;
 
-
 export const platformPalette = {
   ...flattenScale(platformSwatches),
   ...platformEditorColors,
