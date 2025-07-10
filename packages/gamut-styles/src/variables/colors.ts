@@ -150,7 +150,7 @@ export const platformEditorColors = {
   'indent-inactive-dark': '#5f616b',
   'line-number-light': '#686c7b',
   'line-number-dark': '#84868d',
-}
+} as const;
 
 
 export const platformPalette = {
