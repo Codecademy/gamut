@@ -141,8 +141,21 @@ export const truePlatformColors = {
   purple: platformSwatches.purple[300],
 } as const;
 
+export const platformEditorColors = {
+  'comment-light': '#686c7b',
+  'comment-dark': '#84868d',
+  'indent-active-light': '#bcbdc4',
+  'indent-active-dark': '#3b3d49',
+  'indent-inactive-light': '#8e919d',
+  'indent-inactive-dark': '#5f616b',
+  'line-number-light': '#686c7b',
+  'line-number-dark': '#84868d',
+}
+
+
 export const platformPalette = {
   ...flattenScale(platformSwatches),
+  ...platformEditorColors,
   ...truePlatformColors,
 } as const;
 
