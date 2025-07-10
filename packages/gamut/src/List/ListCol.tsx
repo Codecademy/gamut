@@ -10,6 +10,7 @@ export interface ListColProps
 export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
   ({ type, ...rest }, ref) => {
     const { listType, scrollable, ...activeVariants } = useListContext();
+
     const isOl = listType === 'ol';
     const isTable = listType === 'table';
     const isHeader = type === 'header';

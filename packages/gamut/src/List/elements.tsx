@@ -255,7 +255,6 @@ const columnType = variant({
         pl: 8,
       },
     },
-
     content: {
       gridColumnEnd: 'span 2',
     },
@@ -270,6 +269,33 @@ const columnType = variant({
         c_xs: undefined,
       },
 
+      gridColumn: { _: 2, c_xs: 1 },
+      gridRow: 1,
+    },
+    sm_control: {
+      minWidth: 'min-content',
+      alignItems: {
+        _: 'flex-start',
+        c_sm: 'center',
+      },
+      justifyItems: {
+        _: 'end',
+        c_sm: undefined,
+      },
+
+      gridColumn: { _: 2, c_xs: 1 },
+      gridRow: 1,
+    },
+    md_control: {
+      minWidth: 'min-content',
+      alignItems: {
+        _: 'flex-start',
+        c_md: 'center',
+      },
+      justifyItems: {
+        _: 'end',
+        c_md: undefined,
+      },
       gridColumn: { _: 2, c_xs: 1 },
       gridRow: 1,
     },
@@ -295,6 +321,7 @@ const columnJustify = variant({
   },
 });
 
+// Whats to be done about this?
 const columnSizes = variant({
   prop: 'size',
   defaultVariant: 'content',
@@ -387,10 +414,11 @@ const columnSpacing = variant({
   },
 });
 
+export type ResponsiveColumnTypes = StyleProps<typeof columnType>;
 export interface ColProps
   extends StyleProps<typeof columnSizes>,
     StyleProps<typeof columnSpacing>,
-    StyleProps<typeof columnType>,
+    ResponsiveColumnTypes,
     StyleProps<typeof columnStates>,
     StyleProps<typeof columnJustify>,
     StyleProps<(typeof system)['layout']> {}
