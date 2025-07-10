@@ -45,9 +45,9 @@ const listVariants = variant({
   },
 });
 
-export interface ListProps
-  extends StyleProps<typeof listVariants>,
-    StyleProps<typeof spacingVariants> {}
+export interface ListProps extends StyleProps<typeof listVariants> {
+  spacing?: 'normal' | 'condensed' | 'compact';
+}
 
 export const ListEl = styled(
   'ul',
@@ -93,12 +93,28 @@ const spacingVariants = variant({
       fontSize: 16,
       gap: { _: 8, c_xs: 32 },
     },
+    sm_normal: {
+      gap: { _: 8, c_sm: 40 },
+    },
+    sm_condensed: {
+      fontSize: 16,
+      gap: { _: 8, c_sm: 32 },
+    },
+    md_normal: {
+      gap: { _: 8, c_md: 40 },
+    },
+    md_condensed: {
+      fontSize: 16,
+      gap: { _: 8, c_md: 32 },
+    },
     compact: {
       gap: 0,
       py: 0,
     },
   },
 });
+
+export type ResponsiveSpacing = StyleProps<typeof spacingVariants>;
 
 const rowVariants = variant({
   prop: 'variant',
@@ -138,16 +154,38 @@ const rowBreakpointVariants = variant({
     xs: {
       display: { _: 'grid', c_xs: 'flex' },
       flexDirection: { _: 'column', c_xs: 'row' },
+      gridAutoRows: { _: undefined, c_xs: 'minmax(1.5rem, max-content) 6fr' },
     },
     sm: {
-      display: { _: 'grid', sm: 'flex' },
-      flexDirection: { _: 'column', sm: 'row' },
+      display: { _: 'grid', c_sm: 'flex' },
+      flexDirection: { _: 'column', c_sm: 'row' },
+      gridAutoRows: { _: undefined, c_sm: 'minmax(1.5rem, max-content) 6fr' },
     },
     md: {
-      display: { _: 'grid', md: 'flex' },
-      flexDirection: { _: 'column', md: 'row' },
+      display: { _: 'grid', c_md: 'flex' },
+      flexDirection: { _: 'column', c_md: 'row' },
+      gridAutoRows: { _: undefined, c_md: 'minmax(1.5rem, max-content) 6fr' },
     },
     grid: { display: 'grid' },
+  },
+});
+
+const rowHeaderBreakpointVariants = variant({
+  prop: 'rowBreakpoint',
+  defaultVariant: 'xs',
+  variants: {
+    xs: {
+      display: { _: 'grid', c_xs: 'flex' },
+      flexDirection: { _: 'column', c_xs: 'row' },
+    },
+    sm: {
+      display: { _: 'grid', c_sm: 'flex' },
+      flexDirection: { _: 'column', c_sm: 'row' },
+    },
+    md: {
+      display: { _: 'grid', c_md: 'flex' },
+      flexDirection: { _: 'column', c_md: 'row' },
+    },
   },
 });
 
@@ -185,6 +223,7 @@ const headerVariants = variant({
 
 export interface HeaderProps
   extends StyleProps<typeof spacingVariants>,
+    StyleProps<typeof rowHeaderBreakpointVariants>,
     StyleProps<typeof rowStates>,
     StyleProps<typeof listVariants> {}
 
@@ -192,7 +231,6 @@ export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
   css({
     display: 'flex',
     position: { _: 'initial', c_xs: 'sticky' },
-    flexDirection: { _: 'column', c_xs: 'row' },
     top: 0,
     bg: 'background-current',
     zIndex: 2,
@@ -200,7 +238,8 @@ export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
   }),
   spacingVariants,
   rowStates,
-  headerVariants
+  headerVariants,
+  rowHeaderBreakpointVariants
 );
 
 const columnType = variant({

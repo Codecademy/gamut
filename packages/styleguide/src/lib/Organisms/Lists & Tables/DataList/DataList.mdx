@@ -142,6 +142,12 @@ For optimal accessibility, the empty message should match the pattern below. Thi
 </Box>
 ```
 
+### Row breakpoint
+
+Our `List`, `DataTable`, and `DataList` component all accept a configurable `rowBreakpoint` prop that dictates at what container width the rows swap over to the 'card' view. You can set the `rowBreakpoint` prop to `xs`, `sm` or `md` which will correspond to the `c_xs`, `c_sm`, and `c_md` breakpoints. You can learn more about breakpoints in the [breakpoints documentation](/docs/foundations/breakpoints). TODO: add link to breakpoints
+
+<Canvas of={DataListStories.RowBreakpoint} />
+
 ## Playground
 
 <Canvas sourceState="shown" of={DataListStories.Default} />

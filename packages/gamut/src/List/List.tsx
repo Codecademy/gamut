@@ -1,10 +1,17 @@
 import { DotLoose } from '@codecademy/gamut-patterns';
 import isArray from 'lodash/isArray';
-import { ComponentProps, forwardRef, useEffect, useRef, useState } from 'react';
+import {
+  ComponentProps,
+  forwardRef,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import * as React from 'react';
 
 import { Box, BoxProps, FlexBox } from '../Box';
-import { ListEl, ListWrapper } from './elements';
+import { ListEl, ListWrapper, ResponsiveSpacing } from './elements';
 import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
@@ -58,6 +65,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     const isEmpty = !children || (isArray(children) && children.length === 0);
     const [isEnd, setIsEnd] = useState(false);
     const showShadow = shadow && scrollable && !isEnd;
+
     const value = useList({
       listType: as,
       rowBreakpoint,
