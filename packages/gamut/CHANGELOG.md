@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [65.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@65.0.0...@codecademy/gamut@65.0.1) (2025-07-10)
+
+### Bug Fixes
+
+- **PreviewTip:** move text below anchor in previewtip ([001c6da](https://github.com/Codecademy/gamut/commit/001c6da29b35600f6df5b1f12897d5ed5c03dfef))
+
 ## [65.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.1.5...@codecademy/gamut@65.0.0) (2025-07-08)
 
 ### ⚠ BREAKING CHANGES
