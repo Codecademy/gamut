@@ -85,7 +85,7 @@ Checkboxes have a third state - `indeterminate` - represented by a dash.
 
 <Canvas of={CheckboxStories.Indeterminate} />
 
-`indeterminate` is used for Checkboxes that are the header of a list of checkboxes. When clicked, all of its child checkboxes should be selected or unselected. Clicking on only some of the child checkboxes should make the header checkbox show the indeterminate state.
+`indeterminate` is used for Checkboxes that are the parents of a list of nested checkboxes. When the parent checkbox is checked or blank, all of its child checkboxes should be selected or unselected, respectively. The indeterminate state is shown when only some of the child checkboxes are checked.
 
 <Canvas of={CheckboxStories.NestedCheckboxes} />
 
