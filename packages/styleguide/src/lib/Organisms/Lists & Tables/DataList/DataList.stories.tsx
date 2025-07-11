@@ -109,3 +109,7 @@ export const EmptyStateCustom: Story = {
     emptyMessage: <CustomEmptyState />,
   },
 };
+
+export const RowBreakpoint: Story = {
+  args: { rowBreakpoint: 'md' },
+};

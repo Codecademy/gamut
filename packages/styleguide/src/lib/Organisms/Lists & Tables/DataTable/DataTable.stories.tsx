@@ -100,3 +100,7 @@ export const Scrollable: Story = {
 export const Default: Story = {
   args: {},
 };
+
+export const RowBreakpoint: Story = {
+  args: { rowBreakpoint: 'md' },
+};

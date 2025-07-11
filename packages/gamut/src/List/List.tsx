@@ -58,6 +58,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     const isEmpty = !children || (isArray(children) && children.length === 0);
     const [isEnd, setIsEnd] = useState(false);
     const showShadow = shadow && scrollable && !isEnd;
+
     const value = useList({
       listType: as,
       rowBreakpoint,

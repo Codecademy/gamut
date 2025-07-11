@@ -45,9 +45,9 @@ const listVariants = variant({
   },
 });
 
-export interface ListProps
-  extends StyleProps<typeof listVariants>,
-    StyleProps<typeof spacingVariants> {}
+export interface ListProps extends StyleProps<typeof listVariants> {
+  spacing?: 'normal' | 'condensed' | 'compact';
+}
 
 export const ListEl = styled(
   'ul',
@@ -58,7 +58,7 @@ const rowStates = states({
   isOl: {
     '&::before': {
       ...olStyles,
-      display: { _: 'none', xs: 'flex' },
+      display: { _: 'none', c_xs: 'flex' },
       pl: 16,
     },
   },
@@ -68,7 +68,7 @@ const rowStates = states({
   },
   expanded: {
     display: 'flex',
-    flexDirection: { xs: 'column' },
+    flexDirection: { c_xs: 'column' },
   },
   clickable: {
     cursor: 'pointer',
@@ -87,11 +87,25 @@ const spacingVariants = variant({
   prop: 'spacing',
   variants: {
     normal: {
-      gap: { _: 8, xs: 40 },
+      gap: { _: 8, c_xs: 40 },
     },
     condensed: {
       fontSize: 16,
-      gap: { _: 8, xs: 32 },
+      gap: { _: 8, c_xs: 32 },
+    },
+    sm_normal: {
+      gap: { _: 8, c_sm: 40 },
+    },
+    sm_condensed: {
+      fontSize: 16,
+      gap: { _: 8, c_sm: 32 },
+    },
+    md_normal: {
+      gap: { _: 8, c_md: 40 },
+    },
+    md_condensed: {
+      fontSize: 16,
+      gap: { _: 8, c_md: 32 },
     },
     compact: {
       gap: 0,
@@ -99,6 +113,8 @@ const spacingVariants = variant({
     },
   },
 });
+
+export type ResponsiveSpacing = StyleProps<typeof spacingVariants>;
 
 const rowVariants = variant({
   prop: 'variant',
@@ -136,18 +152,40 @@ const rowBreakpointVariants = variant({
   defaultVariant: 'xs',
   variants: {
     xs: {
-      display: { _: 'grid', xs: 'flex' },
-      flexDirection: { _: 'column', xs: 'row' },
+      display: { _: 'grid', c_xs: 'flex' },
+      flexDirection: { _: 'column', c_xs: 'row' },
+      gridAutoRows: { _: undefined, c_xs: 'minmax(1.5rem, max-content) 6fr' },
     },
     sm: {
-      display: { _: 'grid', sm: 'flex' },
-      flexDirection: { _: 'column', sm: 'row' },
+      display: { _: 'grid', c_sm: 'flex' },
+      flexDirection: { _: 'column', c_sm: 'row' },
+      gridAutoRows: { _: undefined, c_sm: 'minmax(1.5rem, max-content) 6fr' },
     },
     md: {
-      display: { _: 'grid', md: 'flex' },
-      flexDirection: { _: 'column', md: 'row' },
+      display: { _: 'grid', c_md: 'flex' },
+      flexDirection: { _: 'column', c_md: 'row' },
+      gridAutoRows: { _: undefined, c_md: 'minmax(1.5rem, max-content) 6fr' },
     },
     grid: { display: 'grid' },
+  },
+});
+
+const rowHeaderBreakpointVariants = variant({
+  prop: 'rowBreakpoint',
+  defaultVariant: 'xs',
+  variants: {
+    xs: {
+      display: { _: 'grid', c_xs: 'flex' },
+      flexDirection: { _: 'column', c_xs: 'row' },
+    },
+    sm: {
+      display: { _: 'grid', c_sm: 'flex' },
+      flexDirection: { _: 'column', c_sm: 'row' },
+    },
+    md: {
+      display: { _: 'grid', c_md: 'flex' },
+      flexDirection: { _: 'column', c_md: 'row' },
+    },
   },
 });
 
@@ -185,14 +223,14 @@ const headerVariants = variant({
 
 export interface HeaderProps
   extends StyleProps<typeof spacingVariants>,
+    StyleProps<typeof rowHeaderBreakpointVariants>,
     StyleProps<typeof rowStates>,
     StyleProps<typeof listVariants> {}
 
 export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
   css({
     display: 'flex',
-    position: { _: 'initial', xs: 'sticky' },
-    flexDirection: ['column', 'row'],
+    position: { _: 'initial', c_xs: 'sticky' },
     top: 0,
     bg: 'background-current',
     zIndex: 2,
@@ -200,7 +238,8 @@ export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
   }),
   spacingVariants,
   rowStates,
-  headerVariants
+  headerVariants,
+  rowHeaderBreakpointVariants
 );
 
 const columnType = variant({
@@ -212,11 +251,10 @@ const columnType = variant({
     orderedHeader: {
       '&::before': {
         ...olStyles,
-        display: { _: 'flex', xs: 'none' },
+        display: { _: 'flex', c_xs: 'none' },
         pl: 8,
       },
     },
-
     content: {
       gridColumnEnd: 'span 2',
     },
@@ -224,14 +262,41 @@ const columnType = variant({
       minWidth: 'min-content',
       alignItems: {
         _: 'flex-start',
-        xs: 'center',
+        c_xs: 'center',
       },
       justifyItems: {
         _: 'end',
-        xs: undefined,
+        c_xs: undefined,
       },
 
-      gridColumn: { _: 2, xs: 1 },
+      gridColumn: { _: 2, c_xs: 1 },
+      gridRow: 1,
+    },
+    sm_control: {
+      minWidth: 'min-content',
+      alignItems: {
+        _: 'flex-start',
+        c_sm: 'center',
+      },
+      justifyItems: {
+        _: 'end',
+        c_sm: undefined,
+      },
+
+      gridColumn: { _: 2, c_xs: 1 },
+      gridRow: 1,
+    },
+    md_control: {
+      minWidth: 'min-content',
+      alignItems: {
+        _: 'flex-start',
+        c_md: 'center',
+      },
+      justifyItems: {
+        _: 'end',
+        c_md: undefined,
+      },
+      gridColumn: { _: 2, c_xs: 1 },
       gridRow: 1,
     },
     expand: {
@@ -245,37 +310,38 @@ const columnJustify = variant({
   defaultVariant: 'left',
   variants: {
     left: {
-      justifyContent: { xs: 'flex-start' },
+      justifyContent: { c_xs: 'flex-start' },
     },
     right: {
-      justifyContent: { xs: 'flex-end' },
+      justifyContent: { c_xs: 'flex-end' },
       '& div': {
-        width: { sm: 'fit-content' },
+        width: { c_sm: 'fit-content' },
       },
     },
   },
 });
 
+// Whats to be done about this?
 const columnSizes = variant({
   prop: 'size',
   defaultVariant: 'content',
   base: { minWidth: 0, maxWidth: 1, flexShrink: 1 },
   variants: {
     sm: {
-      flexBasis: { xs: '6rem' },
-      width: { xs: '6rem' },
+      flexBasis: { c_xs: '6rem' },
+      width: { c_xs: '6rem' },
     },
     md: {
-      flexBasis: { xs: '10rem' },
-      width: { xs: '10rem' },
+      flexBasis: { c_xs: '10rem' },
+      width: { c_xs: '10rem' },
     },
     lg: {
-      flexBasis: { xs: '12rem' },
-      width: { xs: '12rem' },
+      flexBasis: { c_xs: '12rem' },
+      width: { c_xs: '12rem' },
     },
     xl: {
-      flexBasis: { xs: '20rem' },
-      width: { xs: '20rem' },
+      flexBasis: { c_xs: '20rem' },
+      width: { c_xs: '20rem' },
     },
     content: {
       flexShrink: 0,
@@ -284,7 +350,7 @@ const columnSizes = variant({
 });
 
 const columnStates = states({
-  fill: { flexGrow: { xs: 1 } },
+  fill: { flexGrow: { c_xs: 1 } },
   sticky: {
     width: '100%',
     height: '100%',
@@ -293,7 +359,7 @@ const columnStates = states({
   delimiter: {
     overflow: 'visible',
     '&:after': {
-      display: { _: 'none', xs: 'block' },
+      display: { _: 'none', c_xs: 'block' },
       content: '""',
       bg: 'background-current',
       right: -4,
@@ -329,7 +395,7 @@ const columnStates = states({
 const columnSpacing = variant({
   prop: 'spacing',
   base: {
-    px: { _: 16, xs: 0 },
+    // px: { _: 16, c_xs: 0 },
     '&:first-of-type': {
       pl: 8,
     },
@@ -339,25 +405,26 @@ const columnSpacing = variant({
   },
   variants: {
     normal: {
-      py: { _: 0, xs: 16 },
+      // py: { _: 0, c_xs: 16 },
     },
     condensed: {
-      py: { _: 0, xs: 8 },
+      // py: { _: 0, c_xs: 8 },
     },
     compact: {},
   },
 });
 
+export type ResponsiveColumnTypes = StyleProps<typeof columnType>;
 export interface ColProps
   extends StyleProps<typeof columnSizes>,
     StyleProps<typeof columnSpacing>,
-    StyleProps<typeof columnType>,
+    ResponsiveColumnTypes,
     StyleProps<typeof columnStates>,
     StyleProps<typeof columnJustify>,
     StyleProps<(typeof system)['layout']> {}
 
 export const ColEl = styled(
-  'div',
+  Box,
   styledOptions([
     'fill',
     'ghost',
@@ -385,7 +452,7 @@ export const ColEl = styled(
   system.layout
 );
 
-export const StickyHeaderColWrapper = styled.th(
+export const StickyHeaderColWrapper = styled(Box)(
   css({
     '&:before': {
       content: '""',
@@ -413,11 +480,11 @@ export const StickyHeaderColWrapper = styled.th(
     bg: 'inherit',
 
     '&:not(:first-of-type)': {
-      left: { xs: 16 },
+      left: { c_xs: 16 },
       overflow: 'visible',
     },
     '&:not(:first-of-type):before': {
-      display: { _: 'none', xs: 'block' },
+      display: { _: 'none', c_xs: 'block' },
       content: '""',
       bg: 'inherit',
       left: -16,
@@ -429,9 +496,12 @@ export const StickyHeaderColWrapper = styled.th(
 );
 
 export const ListWrapper = styled(Box)(
+  css({
+    containerType: 'inline-size',
+  }),
   states({
     scrollable: {
-      boxShadow: { _: undefined, xs: 'inset -24px 0 24px -24px black' },
+      boxShadow: { _: undefined, c_xs: 'inset -24px 0 24px -24px black' },
     },
   })
 );
