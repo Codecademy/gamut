@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [65.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@65.0.1...@codecademy/gamut@65.1.0) (2025-07-11)
+
+### Features
+
+- **Checkbox:** indeterminate checkboxes ([66ab4f7](https://github.com/Codecademy/gamut/commit/66ab4f70592bc58d84aab6f2e2d86be30a0945b5))
+
 ### [65.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@65.0.0...@codecademy/gamut@65.0.1) (2025-07-10)
 
 ### Bug Fixes
