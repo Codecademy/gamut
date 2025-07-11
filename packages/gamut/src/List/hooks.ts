@@ -36,7 +36,7 @@ export const useResponsiveColumn = (
     if (rowBreakpoint && columnType === 'control') {
       return `${rowBreakpoint}_${columnType}`;
     }
-    return 'content';
+    return columnType;
   }, [rowBreakpoint, columnType]);
 };
 
