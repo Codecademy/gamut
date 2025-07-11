@@ -46,6 +46,7 @@ const colSizes = {
   lg: '12rem',
   xl: '20rem',
 } as const;
+
 /**
  * Hook that calculates responsive columnType based on rowBreakpoint and columnType props.
  * Returns the appropriate columnType value for the current breakpoint.
@@ -56,14 +57,23 @@ export const useColSize = (
 ) => {
   return useMemo(() => {
     if (!colSize) {
-      return;
+      return {};
     }
     if (colSize === 'content') {
       return { flexShrink: 0 };
     }
-    if (rowBreakpoint) {
-      // TODO: put the rest of the styles here
-      return { flexBasis: { c_xs: colSizes[rowBreakpoint] } };
+
+    if (colSize) {
+      const columnSize = colSizes[colSize];
+      const baseStyleObj = { width: columnSize };
+
+      if (!rowBreakpoint) {
+        return { flexBasis: { c_xs: columnSize }, ...baseStyleObj };
+      }
+      return {
+        flexBasis: { [`c_${rowBreakpoint}`]: columnSize },
+        ...baseStyleObj,
+      };
     }
   }, [rowBreakpoint, colSize]);
 };
