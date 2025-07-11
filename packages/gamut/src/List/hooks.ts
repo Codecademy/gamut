@@ -39,3 +39,31 @@ export const useResponsiveColumn = (
     return 'content';
   }, [rowBreakpoint, columnType]);
 };
+
+const colSizes = {
+  sm: '6rem',
+  md: '10rem',
+  lg: '12rem',
+  xl: '20rem',
+} as const;
+/**
+ * Hook that calculates responsive columnType based on rowBreakpoint and columnType props.
+ * Returns the appropriate columnType value for the current breakpoint.
+ */
+export const useColSize = (
+  rowBreakpoint?: 'sm' | 'md' | 'lg' | 'xl',
+  colSize?: 'sm' | 'md' | 'lg' | 'xl' | 'content'
+) => {
+  return useMemo(() => {
+    if (!colSize) {
+      return;
+    }
+    if (colSize === 'content') {
+      return { flexShrink: 0 };
+    }
+    if (rowBreakpoint) {
+      // TODO: put the rest of the styles here
+      return { flexBasis: { c_xs: colSizes[rowBreakpoint] } };
+    }
+  }, [rowBreakpoint, colSize]);
+};
