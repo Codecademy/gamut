@@ -64,19 +64,19 @@ const colSpacing = {
  */
 export const useColSize = ({
   rowBreakpoint = 'xs',
-  colSize,
+  size,
   spacing,
 }: {
-  rowBreakpoint: 'xs' | 'sm' | 'md';
-  colSize?: 'sm' | 'md' | 'lg' | 'xl';
+  rowBreakpoint?: 'xs' | 'sm' | 'md';
+  size?: 'sm' | 'md' | 'lg' | 'xl' | false | 'content';
   spacing?: 'normal' | 'condensed' | 'compact';
 }) => {
   return useMemo(() => {
     const breakpoint = `c_${rowBreakpoint}`;
     let styleObj: {} = { px: { _: 16, [breakpoint]: 0 } };
 
-    if (colSize) {
-      const columnSize = colSizes[colSize];
+    if (size && size !== 'content') {
+      const columnSize = colSizes[size];
 
       styleObj = {
         ...styleObj,
@@ -91,5 +91,5 @@ export const useColSize = ({
       };
     }
     return styleObj;
-  }, [rowBreakpoint, colSize, spacing]);
+  }, [rowBreakpoint, size, spacing]);
 };

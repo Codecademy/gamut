@@ -1,6 +1,7 @@
 import { ComponentProps, forwardRef } from 'react';
 
 import { ColEl, StickyHeaderColWrapper } from './elements';
+import { useColSize } from './hooks';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
 
@@ -8,9 +9,11 @@ export interface ListColProps
   extends PublicListProps<ComponentProps<typeof ColEl>> {}
 
 export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
-  ({ type, ...rest }, ref) => {
-    const { listType, scrollable, ...activeVariants } = useListContext();
+  ({ size, type, ...rest }, ref) => {
+    const { listType, scrollable, rowBreakpoint, spacing, ...activeVariants } =
+      useListContext();
 
+    const responsiveStyles = useColSize({ rowBreakpoint, size, spacing });
     const isOl = listType === 'ol';
     const isTable = listType === 'table';
     const isHeader = type === 'header';
@@ -23,9 +26,12 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
       <ColEl
         {...activeVariants}
         {...rest}
+        {...responsiveStyles}
         as={colEl}
         delimiter={sticky && activeVariants.variant === 'table'}
         ref={ref}
+        size={size}
+        spacing={spacing}
         sticky={sticky}
         type={isOrderedHeader ? 'orderedHeader' : type}
       />

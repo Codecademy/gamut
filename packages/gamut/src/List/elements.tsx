@@ -395,7 +395,7 @@ const columnStates = states({
 const columnSpacing = variant({
   prop: 'spacing',
   base: {
-    px: { _: 16, c_xs: 0 },
+    // px: { _: 16, c_xs: 0 },
     '&:first-of-type': {
       pl: 8,
     },
@@ -405,10 +405,10 @@ const columnSpacing = variant({
   },
   variants: {
     normal: {
-      py: { _: 0, c_xs: 16 },
+      // py: { _: 0, c_xs: 16 },
     },
     condensed: {
-      py: { _: 0, c_xs: 8 },
+      // py: { _: 0, c_xs: 8 },
     },
     compact: {},
   },
@@ -424,7 +424,7 @@ export interface ColProps
     StyleProps<(typeof system)['layout']> {}
 
 export const ColEl = styled(
-  'div',
+  Box,
   styledOptions([
     'fill',
     'ghost',
