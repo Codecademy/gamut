@@ -36,21 +36,25 @@ export const coreSwatches = {
     '100': '#EAFDC6',
     '400': '#AEE938',
     '700': '#008A27',
+    '900': '#151C07',
   },
   yellow: {
     '0': '#FFFAE5',
     '400': '#CCA900',
     '500': '#FFD300',
+    '900': '#211B00',
   },
   pink: {
     '0': '#FFF5FF',
     '400': '#F966FF',
   },
   red: {
-    '0': '#E85D7F',
-    '100': '#DC5879',
+    '0': '#FBF1F0',
+    '300': '#E85D7F',
+    '400': '#DC5879',
     '500': '#E91C11',
     '600': '#BE1809',
+    '900': '#280503',
   },
   orange: {
     '100': '#FFE8CC',
@@ -93,7 +97,7 @@ export const trueColors = {
   palePink: coreSwatches.pink[0],
   paleYellow: coreSwatches.yellow[0],
   pink: coreSwatches.pink[400],
-  paleRed: coreSwatches.red[100],
+  paleRed: coreSwatches.red[400],
   red: coreSwatches.red[500],
   yellow: coreSwatches.yellow[500],
   black,
@@ -123,7 +127,7 @@ export const platformSwatches = {
     '800': '#CA00D1',
   },
   teal: {
-    '500': '#027E97',
+    '500': '#006d82',
   },
   purple: {
     '300': '#B3CCFF',
@@ -137,8 +141,20 @@ export const truePlatformColors = {
   purple: platformSwatches.purple[300],
 } as const;
 
+export const platformEditorColors = {
+  'comment-light': '#686c7b',
+  'comment-dark': '#84868d',
+  'indent-active-light': '#bcbdc4',
+  'indent-active-dark': '#3b3d49',
+  'indent-inactive-light': '#8e919d',
+  'indent-inactive-dark': '#5f616b',
+  'line-number-light': '#686c7b',
+  'line-number-dark': '#84868d',
+} as const;
+
 export const platformPalette = {
   ...flattenScale(platformSwatches),
+  ...platformEditorColors,
   ...truePlatformColors,
 } as const;
 

@@ -50,6 +50,9 @@ export const coreTheme = createTheme({
         selected: 'navy-100',
         disabled: 'navy-200',
         hover: 'navy-200',
+        success: 'green-0',
+        warning: 'yellow-0',
+        error: 'red-0',
       },
       shadow: {
         primary: 'navy-800',
@@ -87,7 +90,7 @@ export const coreTheme = createTheme({
         secondary: 'white-600',
       },
       feedback: {
-        error: 'red-0',
+        error: 'red-300',
         success: 'green-400',
         warning: 'yellow-0',
       },
@@ -99,6 +102,9 @@ export const coreTheme = createTheme({
         selected: 'white-100',
         disabled: 'white-200',
         hover: 'white-200',
+        success: 'green-900',
+        warning: 'yellow-900',
+        error: 'red-900',
       },
       shadow: {
         primary: 'white',
@@ -114,8 +120,8 @@ export const coreTheme = createTheme({
         hover: 'white-700',
       },
       danger: {
-        _: 'red-0',
-        hover: 'red-100',
+        _: 'red-300',
+        hover: 'red-400',
       },
       interface: {
         _: 'yellow-500',
