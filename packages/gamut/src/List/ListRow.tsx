@@ -89,11 +89,11 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     const isTable = listType === 'table';
     const { onClick, role, tabIndex, ...rowProps } = rest;
 
-    const responsiveSpacing = useResponsiveSpacing(rowBreakpoint, spacing);
+    const responsiveSpacing = useResponsiveSpacing({ rowBreakpoint, spacing });
 
     const wrapperProps =
       (!renderExpanded && !onClick) || isTable
-        ? { ...rowConfig, ...rowProps }
+        ? { ...rowConfig, ...rowProps, spacing: responsiveSpacing }
         : { spacing: keepSpacingWhileExpanded ? responsiveSpacing : undefined };
     let content = children;
     const renderNumbering = isOl && renderExpanded === undefined && !onClick;

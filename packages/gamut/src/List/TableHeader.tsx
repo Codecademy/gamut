@@ -12,7 +12,7 @@ export interface TableHeaderProps
 export const TableHeader = forwardRef<HTMLTableRowElement, TableHeaderProps>(
   ({ children, ...rest }, ref) => {
     const { scrollable, rowBreakpoint, variant, spacing } = useListContext();
-    const responsiveSpacing = useResponsiveSpacing(rowBreakpoint, spacing);
+    const responsiveSpacing = useResponsiveSpacing({ rowBreakpoint, spacing });
 
     return (
       <Box as="thead" display="block" position="sticky" top={0} zIndex={2}>

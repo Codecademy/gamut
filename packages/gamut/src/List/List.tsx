@@ -1,17 +1,10 @@
 import { DotLoose } from '@codecademy/gamut-patterns';
 import isArray from 'lodash/isArray';
-import {
-  ComponentProps,
-  forwardRef,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { ComponentProps, forwardRef, useEffect, useRef, useState } from 'react';
 import * as React from 'react';
 
 import { Box, BoxProps, FlexBox } from '../Box';
-import { ListEl, ListWrapper, ResponsiveSpacing } from './elements';
+import { ListEl, ListWrapper } from './elements';
 import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
