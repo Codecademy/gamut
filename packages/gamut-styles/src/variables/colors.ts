@@ -127,7 +127,7 @@ export const platformSwatches = {
     '800': '#CA00D1',
   },
   teal: {
-    '500': '#006d82',
+    '500': '#006D82',
   },
   purple: {
     '300': '#B3CCFF',
@@ -142,13 +142,13 @@ export const truePlatformColors = {
 } as const;
 
 export const platformEditorColors = {
-  'comment-light': '#686c7b',
+  'comment-light': '#686C7B',
   'comment-dark': '#A9AAB0',
-  'indent-active-light': '#bcbdc4',
-  'indent-active-dark': '#3b3d49',
-  'indent-inactive-light': '#8e919d',
-  'indent-inactive-dark': '#5f616b',
-  'line-number-light': '#686c7b',
+  'indent-active-light': '#BCBDC4',
+  'indent-active-dark': '#3B3D49',
+  'indent-inactive-light': '#8E919D',
+  'indent-inactive-dark': '#5F616B',
+  'line-number-light': '#686C7B',
   'line-number-dark': '#A9AAB0',
 } as const;
 
