@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [65.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@65.0.1...@codecademy/gamut@65.1.0) (2025-07-11)
+
+### Features
+
+- **Checkbox:** indeterminate checkboxes ([66ab4f7](https://github.com/Codecademy/gamut/commit/66ab4f70592bc58d84aab6f2e2d86be30a0945b5))
+
+### [65.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@65.0.0...@codecademy/gamut@65.0.1) (2025-07-10)
+
+### Bug Fixes
+
+- **PreviewTip:** move text below anchor in previewtip ([001c6da](https://github.com/Codecademy/gamut/commit/001c6da29b35600f6df5b1f12897d5ed5c03dfef))
+
 ## [65.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.1.5...@codecademy/gamut@65.0.0) (2025-07-08)
 
 ### ⚠ BREAKING CHANGES
