@@ -1,7 +1,7 @@
 // Added because SB and TS don't play nice with each other at the moment
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { DataList, DataTable, FlexBox } from '@codecademy/gamut';
+import { Box, DataList, DataTable, FlexBox } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { cols, CustomEmptyState, DataListTemplate } from '../examples';
@@ -71,7 +71,11 @@ export default meta;
 type Story = StoryObj<typeof DataList>;
 
 export const FullDataList: Story = {
-  render: () => <DataListTemplate />,
+  render: () => (
+    <Box width="420px">
+      <DataListTemplate />
+    </Box>
+  ),
 };
 
 export const Default: Story = {

@@ -192,7 +192,7 @@ export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
   css({
     display: 'flex',
     position: { _: 'initial', c_xs: 'sticky' },
-    flexDirection: ['column', 'row'],
+    flexDirection: { _: 'column', c_xs: 'row' },
     top: 0,
     bg: 'background-current',
     zIndex: 2,
