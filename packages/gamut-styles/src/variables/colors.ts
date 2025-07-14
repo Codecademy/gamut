@@ -143,13 +143,13 @@ export const truePlatformColors = {
 
 export const platformEditorColors = {
   'comment-light': '#686c7b',
-  'comment-dark': '#84868d',
+  'comment-dark': '#A9AAB0',
   'indent-active-light': '#bcbdc4',
   'indent-active-dark': '#3b3d49',
   'indent-inactive-light': '#8e919d',
   'indent-inactive-dark': '#5f616b',
   'line-number-light': '#686c7b',
-  'line-number-dark': '#84868d',
+  'line-number-dark': '#A9AAB0',
 } as const;
 
 export const platformPalette = {
