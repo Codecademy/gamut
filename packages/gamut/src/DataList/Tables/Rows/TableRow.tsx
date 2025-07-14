@@ -136,7 +136,11 @@ export const TableRow: DataRow = ({
         );
       })}
       {expandable && (
-        <ListCol {...listColProps} order={[1000, 'initial']} size="content">
+        <ListCol
+          {...listColProps}
+          order={{ _: 1000, c_xs: 'initial' }}
+          size="content"
+        >
           <ExpandControl
             disabled={loading}
             expanded={expanded}

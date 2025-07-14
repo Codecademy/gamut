@@ -429,6 +429,9 @@ export const StickyHeaderColWrapper = styled.th(
 );
 
 export const ListWrapper = styled(Box)(
+  css({
+    containerType: 'inline-size',
+  }),
   states({
     scrollable: {
       boxShadow: { _: undefined, c_xs: 'inset -24px 0 24px -24px black' },
