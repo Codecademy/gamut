@@ -1,12 +1,12 @@
-import { css } from '@codecademy/gamut-styles';
+import { containerQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ComponentProps, forwardRef, MouseEvent } from 'react';
-import * as React from 'react';
+import { ComponentProps, forwardRef, MouseEvent, useMemo } from 'react';
 
 import { Box } from '../Box';
 import { WithChildrenProp } from '../utils';
 import { RowEl } from './elements';
+import { useResponsiveSpacing } from './hooks';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
 import { getGridTemplateColumns } from './utils';
@@ -36,24 +36,22 @@ export interface SimpleRowProps extends RowProps {
 
 export type ListRowProps = ExpandableRowProps | SimpleRowProps;
 
-const expandStyles = css({
-  overflow: 'hidden',
-  gridColumn: { _: 'span 2', xs: 'span 12' },
-});
-
-const DivExpand = styled(motion.div)(expandStyles);
-const TDExpand = styled(motion.td)(expandStyles);
+const ResponsiveExpand = styled(motion(Box))();
 
 const ExpandInCollapseOut: React.FC<
-  WithChildrenProp & { as: 'td' | 'div' }
-> = ({ as, children }) => {
-  const ResponsiveExpand = as === 'td' ? TDExpand : DivExpand;
-
+  WithChildrenProp & {
+    as: 'td' | 'div';
+    breakpoint: keyof typeof containerQueries;
+  }
+> = ({ as, children, breakpoint }) => {
   return (
     <ResponsiveExpand
       animate="expanded"
+      as={as}
       exit="collapsed"
+      gridColumn={{ _: 'span 2', [breakpoint]: 'span 12' }}
       initial="collapsed"
+      overflow="hidden"
       transition={{ duration: 0.2, ease: 'easeInOut' }}
       variants={{
         expanded: { height: 'auto' },
@@ -79,15 +77,24 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
     },
     ref
   ) => {
-    const { listType, rowBreakpoint, scrollable, variant, ...rowConfig } =
-      useListContext();
+    const {
+      listType,
+      rowBreakpoint,
+      scrollable,
+      variant,
+      spacing,
+      ...rowConfig
+    } = useListContext();
     const isOl = listType === 'ol';
     const isTable = listType === 'table';
     const { onClick, role, tabIndex, ...rowProps } = rest;
+
+    const responsiveSpacing = useResponsiveSpacing({ rowBreakpoint, spacing });
+
     const wrapperProps =
       (!renderExpanded && !onClick) || isTable
-        ? { ...rowConfig, ...rowProps }
-        : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
+        ? { ...rowConfig, ...rowProps, spacing: responsiveSpacing }
+        : { spacing: keepSpacingWhileExpanded ? responsiveSpacing : undefined };
     let content = children;
     const renderNumbering = isOl && renderExpanded === undefined && !onClick;
 
@@ -95,6 +102,10 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       isTable && renderExpanded
         ? getGridTemplateColumns({ numOfColumns, selectable })
         : 'minmax(0, 1fr) max-content';
+
+    const containerBreakpoint = useMemo(() => {
+      return `c_${rowBreakpoint || 'xs'}` as const;
+    }, [rowBreakpoint]);
 
     if ((renderExpanded || Boolean(onClick)) && !isTable) {
       content = (
@@ -105,6 +116,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           clickable={Boolean(onClick)}
           isOl={isOl}
           role={onClick ? 'button' : role}
+          spacing={responsiveSpacing}
           tabIndex={onClick ? 0 : tabIndex}
           onClick={onClick}
           onKeyDown={(e) => {
@@ -124,10 +136,9 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       <RowEl
         aria-live={renderExpanded ? 'polite' : undefined}
         expanded={isTable ? undefined : !!renderExpanded}
-        gridAutoRows={{ _: undefined, xs: 'minmax(1.5rem, max-content) 6fr' }}
         gridTemplateColumns={{
           _: 'minmax(0, 1fr) max-content',
-          xs: gridTemplateColumns,
+          [containerBreakpoint]: gridTemplateColumns,
         }}
         isOl={renderNumbering}
         role={role}
@@ -141,7 +152,10 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           {content}
           <AnimatePresence>
             {expanded && (
-              <ExpandInCollapseOut as={isTable ? 'td' : 'div'}>
+              <ExpandInCollapseOut
+                as={isTable ? 'td' : 'div'}
+                breakpoint={containerBreakpoint}
+              >
                 <Box aria-label={expandedRowAriaLabel} role="region">
                   {renderExpanded?.()}
                 </Box>

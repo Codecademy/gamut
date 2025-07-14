@@ -142,6 +142,12 @@ You can set the `shadow` prop to `true` to add a shadow to the DataTable when it
 
 <Canvas of={DataTableStories.Scrollable} />
 
+### Row breakpoint
+
+Our `List`, `DataTable`, and `DataList` component all accept a configurable `rowBreakpoint` prop that dictates at what container width the rows swap over to the 'card' view. You can set the `rowBreakpoint` prop to `xs`, `sm` or `md` which will correspond to the `c_xs`, `c_sm`, and `c_md` breakpoints. You can learn more about breakpoints in the [breakpoints documentation](/docs/foundations/breakpoints). TODO: add link to breakpoints
+
+<Canvas of={DataTableStories.RowBreakpoint} />
+
 ## Playground
 
 If you are using a story named 'Default', you can forgo the `of` prop.

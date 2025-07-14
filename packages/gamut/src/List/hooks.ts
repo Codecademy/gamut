@@ -1,0 +1,95 @@
+import { useMemo } from 'react';
+
+import { ResponsiveColumnTypes } from './elements';
+
+/**
+ * Hook that calculates responsive spacing based on rowBreakpoint and spacing props.
+ * Returns the appropriate spacing value for the current breakpoint.
+ */
+export const useResponsiveSpacing = ({
+  rowBreakpoint = 'xs',
+  spacing = 'normal',
+}: {
+  rowBreakpoint?: 'xs' | 'sm' | 'md';
+  spacing?: 'normal' | 'condensed' | 'compact';
+}) => {
+  return useMemo(() => {
+    if (spacing === 'compact' || rowBreakpoint === 'xs') {
+      return spacing;
+    }
+    if (rowBreakpoint && spacing) {
+      return `${rowBreakpoint}_${spacing}` as const;
+    }
+    return 'normal';
+  }, [rowBreakpoint, spacing]);
+};
+
+/**
+ * Hook that calculates responsive columnType based on rowBreakpoint and columnType props.
+ * Returns the appropriate columnType value for the current breakpoint.
+ */
+export const useResponsiveColumn = ({
+  rowBreakpoint = 'xs',
+  columnType,
+}: {
+  rowBreakpoint?: 'xs' | 'sm' | 'md';
+  columnType?: ResponsiveColumnTypes['type'];
+}) => {
+  return useMemo(() => {
+    if (columnType !== 'control' || rowBreakpoint === 'xs') {
+      return columnType;
+    }
+    if (rowBreakpoint && columnType === 'control') {
+      return `${rowBreakpoint}_${columnType}`;
+    }
+    return columnType;
+  }, [rowBreakpoint, columnType]);
+};
+
+const colSizes = {
+  sm: '6rem',
+  md: '10rem',
+  lg: '12rem',
+  xl: '20rem',
+} as const;
+
+const colSpacing = {
+  normal: 16,
+  condensed: 8,
+};
+
+/**
+ * Hook that calculates responsive columnType based on rowBreakpoint and columnType props.
+ * Returns the appropriate columnType value for the current breakpoint.
+ */
+export const useColSize = ({
+  rowBreakpoint = 'xs',
+  size,
+  spacing,
+}: {
+  rowBreakpoint?: 'xs' | 'sm' | 'md';
+  size?: 'sm' | 'md' | 'lg' | 'xl' | false | 'content';
+  spacing?: 'normal' | 'condensed' | 'compact';
+}) => {
+  return useMemo(() => {
+    const breakpoint = `c_${rowBreakpoint}`;
+    let styleObj: {} = { px: { _: 16, [breakpoint]: 0 } };
+
+    if (size && size !== 'content') {
+      const columnSize = colSizes[size];
+
+      styleObj = {
+        ...styleObj,
+        flexBasis: { [breakpoint]: columnSize },
+        width: columnSize,
+      };
+    }
+    if (spacing && spacing !== 'compact') {
+      styleObj = {
+        ...styleObj,
+        py: { _: 0, [breakpoint]: colSpacing[spacing] },
+      };
+    }
+    return styleObj;
+  }, [rowBreakpoint, size, spacing]);
+};
