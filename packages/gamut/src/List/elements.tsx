@@ -58,7 +58,7 @@ const rowStates = states({
   isOl: {
     '&::before': {
       ...olStyles,
-      display: { _: 'none', c_xs: 'flex' },
+      display: { _: 'none', c_sm: 'flex' },
       pl: 16,
     },
   },
@@ -68,7 +68,7 @@ const rowStates = states({
   },
   expanded: {
     display: 'flex',
-    flexDirection: { c_xs: 'column' },
+    flexDirection: { c_sm: 'column' },
   },
   clickable: {
     cursor: 'pointer',
@@ -87,11 +87,11 @@ const spacingVariants = variant({
   prop: 'spacing',
   variants: {
     normal: {
-      gap: { _: 8, c_xs: 40 },
+      gap: { _: 8, c_sm: 40 },
     },
     condensed: {
       fontSize: 16,
-      gap: { _: 8, c_xs: 32 },
+      gap: { _: 8, c_sm: 32 },
     },
     compact: {
       gap: 0,
@@ -136,8 +136,8 @@ const rowBreakpointVariants = variant({
   defaultVariant: 'xs',
   variants: {
     xs: {
-      display: { _: 'grid', c_xs: 'flex' },
-      flexDirection: { _: 'column', c_xs: 'row' },
+      display: { _: 'grid', c_sm: 'flex' },
+      flexDirection: { _: 'column', c_sm: 'row' },
     },
     sm: {
       display: { _: 'grid', sm: 'flex' },
@@ -160,7 +160,7 @@ export interface RowProps
 
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
-    py: { _: 8, c_xs: 0 },
+    py: { _: 8, c_sm: 0 },
     bg: 'inherit',
   }),
   variance.compose(system.grid),
@@ -191,8 +191,8 @@ export interface HeaderProps
 export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
   css({
     display: 'flex',
-    position: { _: 'initial', c_xs: 'sticky' },
-    flexDirection: { _: 'column', c_xs: 'row' },
+    position: { _: 'initial', c_sm: 'sticky' },
+    flexDirection: { _: 'column', c_sm: 'row' },
     top: 0,
     bg: 'background-current',
     zIndex: 2,
@@ -212,7 +212,7 @@ const columnType = variant({
     orderedHeader: {
       '&::before': {
         ...olStyles,
-        display: { _: 'flex', c_xs: 'none' },
+        display: { _: 'flex', c_sm: 'none' },
         pl: 8,
       },
     },
@@ -224,14 +224,14 @@ const columnType = variant({
       minWidth: 'min-content',
       alignItems: {
         _: 'flex-start',
-        c_xs: 'center',
+        c_sm: 'center',
       },
       justifyItems: {
         _: 'end',
-        c_xs: undefined,
+        c_sm: undefined,
       },
 
-      gridColumn: { _: 2, c_xs: 1 },
+      gridColumn: { _: 2, c_sm: 1 },
       gridRow: 1,
     },
     expand: {
@@ -245,10 +245,10 @@ const columnJustify = variant({
   defaultVariant: 'left',
   variants: {
     left: {
-      justifyContent: { c_xs: 'flex-start' },
+      justifyContent: { c_sm: 'flex-start' },
     },
     right: {
-      justifyContent: { c_xs: 'flex-end' },
+      justifyContent: { c_sm: 'flex-end' },
       '& div': {
         width: { sm: 'fit-content' },
       },
@@ -262,20 +262,20 @@ const columnSizes = variant({
   base: { minWidth: 0, maxWidth: 1, flexShrink: 1 },
   variants: {
     sm: {
-      flexBasis: { c_xs: '6rem' },
-      width: { c_xs: '6rem' },
+      flexBasis: { c_sm: '6rem' },
+      width: { c_sm: '6rem' },
     },
     md: {
-      flexBasis: { c_xs: '10rem' },
-      width: { c_xs: '10rem' },
+      flexBasis: { c_sm: '10rem' },
+      width: { c_sm: '10rem' },
     },
     lg: {
-      flexBasis: { c_xs: '12rem' },
-      width: { c_xs: '12rem' },
+      flexBasis: { c_sm: '12rem' },
+      width: { c_sm: '12rem' },
     },
     xl: {
-      flexBasis: { c_xs: '20rem' },
-      width: { c_xs: '20rem' },
+      flexBasis: { c_sm: '20rem' },
+      width: { c_sm: '20rem' },
     },
     content: {
       flexShrink: 0,
@@ -284,7 +284,7 @@ const columnSizes = variant({
 });
 
 const columnStates = states({
-  fill: { flexGrow: { c_xs: 1 } },
+  fill: { flexGrow: { c_sm: 1 } },
   sticky: {
     width: '100%',
     height: '100%',
@@ -293,7 +293,7 @@ const columnStates = states({
   delimiter: {
     overflow: 'visible',
     '&:after': {
-      display: { _: 'none', c_xs: 'block' },
+      display: { _: 'none', c_sm: 'block' },
       content: '""',
       bg: 'background-current',
       right: -4,
@@ -329,7 +329,7 @@ const columnStates = states({
 const columnSpacing = variant({
   prop: 'spacing',
   base: {
-    px: { _: 16, c_xs: 0 },
+    px: { _: 16, c_sm: 0 },
     '&:first-of-type': {
       pl: 8,
     },
@@ -339,10 +339,10 @@ const columnSpacing = variant({
   },
   variants: {
     normal: {
-      py: { _: 0, c_xs: 16 },
+      py: { _: 0, c_sm: 16 },
     },
     condensed: {
-      py: { _: 0, c_xs: 8 },
+      py: { _: 0, c_sm: 8 },
     },
     compact: {},
   },
@@ -413,11 +413,11 @@ export const StickyHeaderColWrapper = styled.th(
     bg: 'inherit',
 
     '&:not(:first-of-type)': {
-      left: { c_xs: 16 },
+      left: { c_sm: 16 },
       overflow: 'visible',
     },
     '&:not(:first-of-type):before': {
-      display: { _: 'none', c_xs: 'block' },
+      display: { _: 'none', c_sm: 'block' },
       content: '""',
       bg: 'inherit',
       left: -16,
@@ -434,7 +434,7 @@ export const ListWrapper = styled(Box)(
   }),
   states({
     scrollable: {
-      boxShadow: { _: undefined, c_xs: 'inset -24px 0 24px -24px black' },
+      boxShadow: { _: undefined, c_sm: 'inset -24px 0 24px -24px black' },
     },
   })
 );

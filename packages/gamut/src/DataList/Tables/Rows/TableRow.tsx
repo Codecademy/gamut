@@ -77,7 +77,7 @@ export const TableRow: DataRow = ({
       {selectable && (
         <ListCol
           {...listColProps}
-          display={{ _: 'flex', c_xs: 'flex' }}
+          display={{ _: 'flex', c_sm: 'flex' }}
           size="content"
           type="control"
         >
@@ -138,7 +138,7 @@ export const TableRow: DataRow = ({
       {expandable && (
         <ListCol
           {...listColProps}
-          order={{ _: 1000, c_xs: 'initial' }}
+          order={{ _: 1000, c_sm: 'initial' }}
           size="content"
         >
           <ExpandControl
