@@ -38,7 +38,7 @@ export type ListRowProps = ExpandableRowProps | SimpleRowProps;
 
 const expandStyles = css({
   overflow: 'hidden',
-  gridColumn: { _: 'span 2', xs: 'span 12' },
+  gridColumn: { _: 'span 2', c_xs: 'span 12' },
 });
 
 const DivExpand = styled(motion.div)(expandStyles);
@@ -124,10 +124,10 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       <RowEl
         aria-live={renderExpanded ? 'polite' : undefined}
         expanded={isTable ? undefined : !!renderExpanded}
-        gridAutoRows={{ _: undefined, xs: 'minmax(1.5rem, max-content) 6fr' }}
+        gridAutoRows={{ _: undefined, c_xs: 'minmax(1.5rem, max-content) 6fr' }}
         gridTemplateColumns={{
           _: 'minmax(0, 1fr) max-content',
-          xs: gridTemplateColumns,
+          c_xs: gridTemplateColumns,
         }}
         isOl={renderNumbering}
         role={role}

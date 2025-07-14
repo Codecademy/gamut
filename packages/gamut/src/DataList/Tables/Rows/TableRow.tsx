@@ -77,7 +77,7 @@ export const TableRow: DataRow = ({
       {selectable && (
         <ListCol
           {...listColProps}
-          display={{ _: 'flex', xs: 'flex' }}
+          display={{ _: 'flex', c_xs: 'flex' }}
           size="content"
           type="control"
         >
