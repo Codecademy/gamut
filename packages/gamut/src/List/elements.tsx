@@ -328,20 +328,20 @@ const columnSizes = variant({
   base: { minWidth: 0, maxWidth: 1, flexShrink: 1 },
   variants: {
     sm: {
-      flexBasis: { c_xs: '6rem' },
-      width: { c_xs: '6rem' },
+      // flexBasis: { c_xs: '6rem' },
+      // width: { c_xs: '6rem' },
     },
     md: {
-      flexBasis: { c_xs: '10rem' },
-      width: { c_xs: '10rem' },
+      // flexBasis: { c_xs: '10rem' },
+      // width: { c_xs: '10rem' },
     },
     lg: {
-      flexBasis: { c_xs: '12rem' },
-      width: { c_xs: '12rem' },
+      // flexBasis: { c_xs: '12rem' },
+      // width: { c_xs: '12rem' },
     },
     xl: {
-      flexBasis: { c_xs: '20rem' },
-      width: { c_xs: '20rem' },
+      // flexBasis: { c_xs: '20rem' },
+      // width: { c_xs: '20rem' },
     },
     content: {
       flexShrink: 0,
