@@ -122,25 +122,14 @@ export const TruncateWithTooltip: React.FC<{
   toolTipString: string;
 }> = ({ text, toolTipString }) => {
   const textRef = useRef<HTMLDivElement>(null);
-  const shouldTruncate = useCallback(() => text.length > 150, [text]);
-
-  const [isTruncated, setIsTruncated] = useState(shouldTruncate());
-
-  useEffect(() => {
-    const el = textRef.current;
-    if (el) {
-      const style = window.getComputedStyle(el);
-      const textOverStyle = style.getPropertyValue('text-overflow');
-      setIsTruncated(textOverStyle === 'ellipsis');
-    }
-  }, [shouldTruncate]);
+  const shouldTruncate = text.length > 150;
 
   return (
     <Box width="500px">
-      {isTruncated ? (
+      {shouldTruncate ? (
         <ToolTip info={toolTipString} placement="floating">
           <AnchorAndText
-            isTruncated={isTruncated}
+            isTruncated={shouldTruncate}
             ref={textRef}
             truncateLines={2}
           >
