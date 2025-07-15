@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [76.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@76.0.1...@codecademy/styleguide@76.1.0) (2025-07-11)
+
+### Features
+
+- **Checkbox:** indeterminate checkboxes ([66ab4f7](https://github.com/Codecademy/gamut/commit/66ab4f70592bc58d84aab6f2e2d86be30a0945b5))
+
+### [76.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@76.0.0...@codecademy/styleguide@76.0.1) (2025-07-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [76.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@75.1.3...@codecademy/styleguide@76.0.0) (2025-07-08)
+
+### ⚠ BREAKING CHANGES
+
+- **Logo:** Remove logo from gamut
+
+### Code Refactoring
+
+- **Logo:** Remove logo from gamut ([cdc47a2](https://github.com/Codecademy/gamut/commit/cdc47a28062f62ff5c9a9093ae33b580d79c1e2c))
+
 ### [75.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@75.1.2...@codecademy/styleguide@75.1.3) (2025-07-01)
 
 **Note:** Version bump only for package @codecademy/styleguide
