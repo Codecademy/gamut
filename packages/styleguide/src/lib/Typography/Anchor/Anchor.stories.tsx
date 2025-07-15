@@ -117,7 +117,10 @@ export const AnchorAndText = React.forwardRef<
   );
 });
 
-export const TruncateWithTooltip: React.FC<{ text: string, toolTipString: string }> = ({ text, toolTipString }) => {
+export const TruncateWithTooltip: React.FC<{
+  text: string;
+  toolTipString: string;
+}> = ({ text, toolTipString }) => {
   const textRef = useRef<HTMLDivElement>(null);
   const shouldTruncate = useCallback(() => text.length > 150, [text]);
 
@@ -135,7 +138,7 @@ export const TruncateWithTooltip: React.FC<{ text: string, toolTipString: string
   return (
     <Box width="500px">
       {isTruncated ? (
-        <ToolTip info="Example tooltip" placement="floating">
+        <ToolTip info={toolTipString} placement="floating">
           <AnchorAndText
             isTruncated={isTruncated}
             ref={textRef}
@@ -153,10 +156,18 @@ export const TruncateWithTooltip: React.FC<{ text: string, toolTipString: string
 
 export const TruncateWithToolTipExample: Story = {
   render: () => (
-    <TruncateWithTooltip text="This is a looooooong text that will be truncated after two lines. Hover to see the tooltip. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." toolTipString="Example tooltip" />
+    <TruncateWithTooltip
+      text="This is a looooooong text that will be truncated after two lines. Hover to see the tooltip. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      toolTipString="Example tooltip"
+    />
   ),
 };
 
 export const TruncateWithNoToolTipExample: Story = {
-  render: () => <TruncateWithTooltip text="No truncation, no tooltip" toolTipString="In case this truncates" />,
+  render: () => (
+    <TruncateWithTooltip
+      text="No truncation, no tooltip"
+      toolTipString="In case this truncates"
+    />
+  ),
 };
