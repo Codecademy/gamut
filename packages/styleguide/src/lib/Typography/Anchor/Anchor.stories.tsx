@@ -11,7 +11,7 @@ import {
   MiniInfoOutlineIcon,
 } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 import { PolymorphicAnchors, VariantsExample } from './Anchor.examples';
 
@@ -121,18 +121,13 @@ export const TruncateWithTooltip: React.FC<{
   text: string;
   toolTipString: string;
 }> = ({ text, toolTipString }) => {
-  const textRef = useRef<HTMLDivElement>(null);
   const shouldTruncate = text.length > 150;
 
   return (
     <Box width="500px">
       {shouldTruncate ? (
         <ToolTip info={toolTipString} placement="floating">
-          <AnchorAndText
-            isTruncated={shouldTruncate}
-            ref={textRef}
-            truncateLines={2}
-          >
+          <AnchorAndText isTruncated={shouldTruncate} truncateLines={2}>
             {text}
           </AnchorAndText>
         </ToolTip>
