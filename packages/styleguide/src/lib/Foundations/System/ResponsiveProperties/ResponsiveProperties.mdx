@@ -2,7 +2,7 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TokenTable } from '~styleguide/blocks';
 
-import { breakpoint } from '../shared/elements';
+import { breakpoint } from '../../shared/elements';
 
 export const parameters = {
   title: 'Responsive Props',
@@ -15,7 +15,7 @@ export const parameters = {
   },
 };
 
-<Meta title="Foundations/System/ReponsiveProps" />
+<Meta title="Foundations/System/ResponsiveProperties" />
 
 <AboutHeader {...parameters} />
 
@@ -228,3 +228,5 @@ To use container queries, the parent element of your responsive component must b
 1. **Opt-in when needed** – use media breakpoints for page-level layout shifts; use container queries for components that must react to their allotted space.
 2. **Declare containers** – add `container-type` to the element whose descendants should listen to container breakpoints.
 3. **Stay readable** – the same guidelines for choosing object vs. array syntax apply. Use object syntax for isolated container breakpoints and the ordered array syntax when specifying every breakpoint.
+
+See the stories in the left sidebar for more examples of responsive props!
