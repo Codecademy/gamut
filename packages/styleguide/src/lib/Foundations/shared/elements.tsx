@@ -2,14 +2,12 @@ import { Anchor, Box } from '@codecademy/gamut';
 import {
   Background,
   coreSwatches,
-  css,
   lxStudioColors,
   theme,
   trueColors,
 } from '@codecademy/gamut-styles';
 // eslint-disable-next-line gamut/import-paths
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
-import styled from '@emotion/styled';
 import kebabCase from 'lodash/kebabCase';
 
 import { Code, ColorScale, LinkTo, TokenTable } from '~styleguide/blocks';
