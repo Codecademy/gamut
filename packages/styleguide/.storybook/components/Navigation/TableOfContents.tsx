@@ -61,7 +61,7 @@ export const TopicCard: React.FC<PageLink> = ({
             </Text>
           </Box>
           <Box>
-            <Text truncate="ellipsis" truncateLines={3}>{subtitle}</Text>
+            <Text truncate="ellipsis" truncateLines={5}>{subtitle}</Text>
           </Box>
         </GridBox>
       </Card>
