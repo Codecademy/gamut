@@ -4,7 +4,7 @@ import {
   MiniInfoOutlineIcon,
 } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { PolymorphicAnchors, VariantsExample } from './Anchor.examples';
 
@@ -91,8 +91,8 @@ export const TruncateWithTooltip: React.FC<{
   text: string;
   toolTipString: string;
 }> = ({ text, toolTipString }) => {
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const [adjustedText, setAdjustedText] = React.useState(text);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [adjustedText, setAdjustedText] = useState(text);
 
   const calculateMaxText = (containerWidth: number) => {
     // Assuming an average character width of 8px, adjust as necessary
@@ -101,9 +101,9 @@ export const TruncateWithTooltip: React.FC<{
     return maxChars;
   };
 
-  const [shouldTruncate, setShouldTruncate] = React.useState(false);
+  const [shouldTruncate, setShouldTruncate] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       if (containerRef.current) {
         const { width } = containerRef.current.getBoundingClientRect();
