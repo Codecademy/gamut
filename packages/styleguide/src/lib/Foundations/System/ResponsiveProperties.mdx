@@ -1,9 +1,8 @@
-import { Meta, Story } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TokenTable } from '~styleguide/blocks';
 
 import { breakpoint } from '../shared/elements';
-import * as ResponsivePropsStories from './ResponsiveProperties.stories';
 
 export const parameters = {
   title: 'Responsive Props',
@@ -223,76 +222,6 @@ These work exactly like the existing media-query keys—you can use them in both
 ### Declaring a Container for Container Queries
 
 To use container queries, the parent element of your responsive component must be a [CSS Container](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries). This is typically done by setting the `container-type` property on the parent. The most common value is `inline-size`, which enables queries based on the element's width. It is good practice to set a fallback media query value for older or unsupported browsers.
-
-### Container breakpoint tokens
-
-<TokenTable
-  {...{
-    ...breakpoint,
-    rows: breakpoint.rows.filter(({ id }) => id.startsWith('c_')),
-  }}
-/>
-
-### Object syntax example
-
-```tsx
-<FlexBox containerType="inline-size">
-  <Box padding={{ _: 16, c_md: 32 }} />
-</Box>
-```
-
-```css
-.Box {
-  padding: 16px;
-  @container (min-width: 1024px) {
-    padding: 32px;
-  }
-}
-```
-
-### Array syntax example
-
-Array indices extend after the viewport breakpoints:
-
-```
-[base, xs, sm, md, lg, xl, c_xs, c_sm, c_md, c_lg, c_xl]
-```
-
-```tsx
-<Box color={['red', , , , , , 'blue', , 'purple']} />
-```
-
-```css
-.Box {
-  color: red;
-  @container (min-width: 480px) {
-    color: blue;
-  }
-  @container (min-width: 1024px) {
-    color: purple;
-  }
-}
-```
-
-### Mixing media & container queries
-
-```tsx
-<Box display={{ _: 'block', lg: 'flex', c_md: 'grid' }} />
-```
-
-```css
-.Box {
-  display: block;
-  @media (min-width: 1200px) {
-    display: flex;
-  }
-  @container (min-width: 1024px) {
-    display: grid;
-  }
-}
-```
-
-<Story of={ResponsivePropsStories.MediaVsContainer} />
 
 ## Best practices
 
