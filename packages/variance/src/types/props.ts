@@ -39,19 +39,24 @@ export interface BreakpointArray<T> {
   9?: T;
   10?: T;
 }
-export interface BreakpointMap<T> {
+
+export interface MediaQueryMap<T> {
   _?: T;
   xs?: T;
   sm?: T;
   md?: T;
   lg?: T;
   xl?: T;
+}
+
+export interface ContainerQueryMap<T> {
   c_xs?: T;
   c_sm?: T;
   c_md?: T;
   c_lg?: T;
   c_xl?: T;
 }
+export type BreakpointMap<T> = ContainerQueryMap<T> & MediaQueryMap<T>;
 
 export type ResponsiveProp<T> = T | BreakpointMap<T> | BreakpointArray<T>;
 
