@@ -455,26 +455,3 @@ export const getPropRows = (key: keyof typeof ALL_PROPS) =>
     id: prop,
     ...config,
   }));
-
-export const GenericContainerQueryExample: React.FC = () => {
-  const StyledSection = styled.section(
-    css({
-      containerType: 'inline-size',
-    })
-  );
-
-  const StyledPara = styled.section(
-    css({
-      fontWeight: { _: 'base', md: 'bold' },
-      color: { _: 'red', md: 'blue' },
-    })
-  );
-
-  return (
-    <StyledSection>
-      <StyledPara>
-        This text becomes bold and blue in medium containers.
-      </StyledPara>
-    </StyledSection>
-  );
-};

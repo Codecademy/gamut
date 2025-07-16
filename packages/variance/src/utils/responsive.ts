@@ -4,8 +4,8 @@ import omit from 'lodash/omit';
 import { AbstractPropTransformer } from '../types/config';
 import {
   BreakpointCache,
+  BreakpointMap,
   CSSObject,
-  MediaQueryMap,
   ThemeProps,
 } from '../types/props';
 import { Breakpoints } from '../types/theme';
@@ -46,11 +46,11 @@ export const isMediaArray = (val: unknown): val is (string | number)[] =>
 
 export const isMediaMap = (
   val: object
-): val is MediaQueryMap<string | number> =>
+): val is BreakpointMap<string | number> =>
   intersection(Object.keys(val), BREAKPOINT_KEYS).length > 0;
 
 interface ResponsiveParser<
-  Bp extends MediaQueryMap<string | number> | (string | number)[]
+  Bp extends BreakpointMap<string | number> | (string | number)[]
 > {
   <C extends AbstractPropTransformer>(
     value: Bp,
@@ -60,7 +60,7 @@ interface ResponsiveParser<
   ): CSSObject;
 }
 
-export const objectParser: ResponsiveParser<MediaQueryMap<string | number>> = (
+export const objectParser: ResponsiveParser<BreakpointMap<string | number>> = (
   value,
   props,
   config,
