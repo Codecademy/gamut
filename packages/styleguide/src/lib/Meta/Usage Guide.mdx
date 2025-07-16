@@ -14,11 +14,9 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-## Usage
+## As a user
 
-### As a user
-
-#### Search
+### Search
 
 The search bar is located at the top right of the page, right below the Gamut icon. It allows you to quickly find stories, components, and documentation. You can search by component name, story name, or relevant keywords.
 
@@ -28,7 +26,7 @@ The search bar is located at the top right of the page, right below the Gamut ic
   height="auto"
 />
 
-#### Toolbar
+### Toolbar
 
 On each page is a toolbar located on the top:
 
@@ -42,7 +40,7 @@ On each page is a toolbar located on the top:
 2. Color mode selector (the circle icon) - toggles between light and dark mode for rendered code examples
 3. Outline (dotted square) - applies outlines to elements in the rendered code examples
 
-#### Showing code
+### Showing code
 
 On the bottom right of each canvas (a rendered code example) is a button to show its code:
 
@@ -64,7 +62,7 @@ If the code shown is obfuscated into a component that doesn't show the entirety 
 
 For instance, you might see a canvas that shows it's rendering `<SuperCoolFillButtonExample />`, but you want to know all the props that go into making this instance of the `FillButton`. In this case, you can navigate to the `FillButton.stories.tsx` file in the Gamut repository to see the code that renders this example. If you need further assistance, you can always reach out to the Gamut team via the Gamut slack channel.
 
-#### Playground + Controls
+### Playground + Controls
 
 At the bottom of a component story is a canvas that shows a robust example of how the component can be used. Connected to this canvas is a set of controls that allow you to change the props of the component in real-time. This is useful for testing different configurations of the component without needing to write any code.
 
@@ -74,7 +72,7 @@ At the bottom of a component story is a canvas that shows a robust example of ho
   height="auto"
 />
 
-#### Individual canvas
+### Individual canvas
 
 All canvases can be isolated by click on the link with the canvas's name in the side bar. For example, here's the canvases for the `Badge` component:
 
@@ -94,9 +92,9 @@ By default you'll be on the "Docs" tab, which shows the component's documentatio
 
 ---
 
-### As a developer
+## As a developer
 
-#### Common errors
+### Common errors
 
 If you see an error in Storybook that says "Error fetching `/index.json`:" — it may be an actual error where the page is trying to render a story that does not exist.
 
@@ -105,11 +103,11 @@ Double check that the name of the story in the `stories.tsx` file matches the na
 If you've confirmed that the story names match up, you can try deleting the `<Canvas of={...} />` line in the `.mdx` file and re-adding it. This will force Storybook to re-render the canvas and may resolve the issue.
 Otherwise, you may need to restart your server to fix the issue.
 
-#### When to `yarn build`
+### When to `yarn build`
 
 When making changes to `/gamut-icons`, `/gamut-illustrations`, or `/gamut-patterns`, you should run `yarn build` to ensure that your changes are reflected in the built output.
 
-#### JSX in `.mdx` files
+### JSX in `.mdx` files
 
 You can use JSX in `.mdx` files, but this is not recommended. If you need to include JSX, you should be adding it to the `.stories.tsx` file and then rendering inside a canvas in the `.mdx` file.
 
@@ -119,11 +117,11 @@ There are several reasons for this:
 - It can make the `.mdx` file harder to read and maintain
 - Storybook can find it difficult to parse, e.g. rogue whitespaces can cause the whole page to not render
 
-#### Adding new stories
+### Adding new stories
 
 Follow the <LinkTo id="Meta/Stories">Stories</LinkTo> page to add new stories to the styleguide. This will ensure that your stories are properly formatted and follow the conventions used in the styleguide.
 
-#### Exposing component code
+### Exposing component code
 
 When writing a story in the `.stories.tsx` file, you can export the component as a `Story` or a `React` component:
 
@@ -158,6 +156,6 @@ Each different export type display code differently in the "Show code" section o
   }
 />
 
-#### When in doubt, ask!
+### When in doubt, ask!
 
 If you're unsure about how to use a component or how to write a story, you can always reach out to the Gamut team via the Gamut slack channel (#gamut-team). There is a schedule of rotating between Gamut team members who are on-call to help answer or triage questions.
