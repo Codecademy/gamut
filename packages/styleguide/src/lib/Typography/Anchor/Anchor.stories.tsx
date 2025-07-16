@@ -1,11 +1,4 @@
-import {
-  Anchor,
-  BaseTextProps,
-  Box,
-  GridBox,
-  Text,
-  ToolTip,
-} from '@codecademy/gamut';
+import { Anchor, Box, GridBox, Text, ToolTip } from '@codecademy/gamut';
 import {
   MiniArrowRightIcon,
   MiniInfoOutlineIcon,
@@ -94,45 +87,59 @@ export const PolymorphicAnchor: Story = {
   render: () => <PolymorphicAnchors />,
 };
 
-type AnchorAndTextProps = {
-  isTruncated: boolean;
-  truncateLines?: BaseTextProps['truncateLines'] | undefined;
-  children: React.ReactNode;
-};
-
-export const AnchorAndText = React.forwardRef<
-  HTMLDivElement,
-  AnchorAndTextProps
->(({ children, isTruncated, truncateLines }, ref) => {
-  return (
-    <Anchor href="/" variant="inline">
-      {isTruncated && truncateLines ? (
-        <Text ref={ref} truncate="ellipsis" truncateLines={truncateLines}>
-          {children}
-        </Text>
-      ) : (
-        children
-      )}
-    </Anchor>
-  );
-});
-
 export const TruncateWithTooltip: React.FC<{
   text: string;
   toolTipString: string;
 }> = ({ text, toolTipString }) => {
-  const shouldTruncate = text.length > 150;
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [adjustedText, setAdjustedText] = React.useState(text);
+
+  const calculateMaxText = (containerWidth: number) => {
+    // Assuming an average character width of 8px, adjust as necessary
+    const averageCharWidth = 8;
+    const maxChars = Math.floor(containerWidth / averageCharWidth);
+    return maxChars;
+  };
+
+  const [shouldTruncate, setShouldTruncate] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (containerRef.current) {
+        const { width } = containerRef.current.getBoundingClientRect();
+        const maxTextLength = calculateMaxText(width);
+        const isTruncated = maxTextLength < text.length;
+        if (isTruncated) {
+          // Adjust the text to fit within the max length
+          const truncatedText = text.slice(0, maxTextLength) + '...';
+          setAdjustedText(truncatedText);
+        } else {
+          setAdjustedText(text);
+        }
+        setShouldTruncate(isTruncated);
+      }
+    };
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  });
+
+  const anchor = (
+    <Anchor href="/" variant="inline">
+      {adjustedText}
+    </Anchor>
+  );
 
   return (
-    <Box width="500px">
+    <Box ref={containerRef} width={{ _: 300, xs: 450, sm: 600, md: 800 }}>
       {shouldTruncate ? (
         <ToolTip info={toolTipString} placement="floating">
-          <AnchorAndText isTruncated={shouldTruncate} truncateLines={2}>
-            {text}
-          </AnchorAndText>
+          {anchor}
         </ToolTip>
       ) : (
-        <AnchorAndText isTruncated={false}>{text}</AnchorAndText>
+        anchor
       )}
     </Box>
   );
@@ -141,7 +148,7 @@ export const TruncateWithTooltip: React.FC<{
 export const TruncateWithToolTipExample: Story = {
   render: () => (
     <TruncateWithTooltip
-      text="This is a looooooong text that will be truncated after two lines. Hover to see the tooltip. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      text="This is a looooooong text that will be truncated after one line. Hover to see the tooltip. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       toolTipString="Example tooltip"
     />
   ),
@@ -150,7 +157,7 @@ export const TruncateWithToolTipExample: Story = {
 export const TruncateWithNoToolTipExample: Story = {
   render: () => (
     <TruncateWithTooltip
-      text="No truncation, no tooltip"
+      text="Maybe a toolTip depending on the screen size. Just a chance? maybe?"
       toolTipString="In case this truncates"
     />
   ),
