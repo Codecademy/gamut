@@ -60,8 +60,8 @@ export const TopicCard: React.FC<PageLink> = ({
               {status && <StatusTab status={status} />}
             </Text>
           </Box>
-          <Box overflowY="hidden">
-            <Text>{subtitle}</Text>
+          <Box>
+            <Text truncate="ellipsis" truncateLines={3}>{subtitle}</Text>
           </Box>
         </GridBox>
       </Card>
