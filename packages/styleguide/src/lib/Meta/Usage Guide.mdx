@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, ImageWrapper, LinkTo } from '~styleguide/blocks';
+import { AboutHeader, Callout, ImageWrapper, LinkTo } from '~styleguide/blocks';
 
 export const parameters = {
   id: 'Usage Guide',
@@ -92,11 +92,13 @@ By default you'll be on the "Docs" tab, which shows the component's documentatio
   height="auto"
 />
 
+---
+
 ### As a developer
 
 #### Common errors
 
-If you see an error in Storybook that says "Error fetching `/index.json`:" -- it may be an actual error where the page is trying to render a story that does not exist.
+If you see an error in Storybook that says "Error fetching `/index.json`:" — it may be an actual error where the page is trying to render a story that does not exist.
 
 Double check that the name of the story in the `stories.tsx` file matches the name of the canvas's `of` prop in the `.mdx` file.
 
@@ -120,6 +122,41 @@ There are several reasons for this:
 #### Adding new stories
 
 Follow the <LinkTo id="Meta/Stories">Stories</LinkTo> page to add new stories to the styleguide. This will ensure that your stories are properly formatted and follow the conventions used in the styleguide.
+
+#### Exposing component code
+
+When writing a story in the `.stories.tsx` file, you can export the component as a `Story` or a `React` component:
+
+```tsx
+export const StoryExample: Story = {
+  args: { ... },
+}
+
+// OR
+
+export const StoryExample: Story = {
+  args: { ... },
+  render: (args) => <ComponentName {...args} />,
+}
+
+// OR
+
+export const ComponentExample: React.FC = (args) => (
+  <ComponentName {...args} />
+);
+```
+
+These exported components can then be used in the `.mdx` file to render the component in a canvas.
+Each different export type display code differently in the "Show code" section of the canvas, so you can choose the one that best fits your needs.
+
+<Callout
+  text={
+    <>
+      If you need to create a complex example and still want to show the code,
+      you might want to export it as a React component.
+    </>
+  }
+/>
 
 #### When in doubt, ask!
 

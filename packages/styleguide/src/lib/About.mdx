@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, LinkTo } from '~styleguide/blocks';
+import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
 export const parameters = {
   id: 'Gamut',
@@ -19,13 +19,43 @@ This storybook represents components found in the Codecademy [Client Modules](ht
 
 Its organization roughly aligns with variations of [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/).
 
-Use the sidebar on the left to explore the different sections:
-
-- <LinkTo id="Meta/About">Meta</LinkTo>
-- <LinkTo id="Foundations/About">Foundations</LinkTo>
-- <LinkTo id="Layouts/About">Layouts</LinkTo>
-- <LinkTo id="Typography/About">Typography</LinkTo>
-- <LinkTo id="Atoms/About">Atoms</LinkTo>
-- <LinkTo id="Molecules/About">Molecules</LinkTo>
-- <LinkTo id="Organisms/About">Organisms</LinkTo>
-- <LinkTo id="UX Writing/About">UX Writing</LinkTo>
+<TableOfContents
+  links={[
+    {
+      id: 'Meta/About',
+      subtitle:
+        'Documentation and associated links explaining our in-progress approach to a design system.',
+      title: 'Meta',
+    },
+    {
+      id: 'Foundations/About',
+      subtitle: `The abstract concepts our system is built on: colors, spacing, responsive layouts, and the like.`,
+      title: 'Foundations',
+    },
+    {
+      id: 'Layouts/About',
+      subtitle: `Layouts are basic building blocks to help you construct layouts on the page via configuration.`,
+      title: 'Layouts',
+    },
+    {
+      id: 'Typography/About',
+      subtitle: `These are basic primitives for displaying text components in configurable ways.`,
+      title: 'Typography',
+    },
+    {
+      id: 'Atoms/About',
+      subtitle: `Atoms are our basic building block components. They are the most granular, low-level visuals in our system.`,
+      title: 'Atoms',
+    },
+    {
+      id: 'Organisms/About',
+      subtitle: `Organisms are groups of molecules joined together to form a relatively complex, distinct section of an interface.`,
+      title: 'Organisms',
+    },
+    {
+      id: 'UX Writing/About',
+      subtitle: `Help learners find success by surfacing the right copy and content to the right people at the right time.`,
+      title: 'UX Writing',
+    },
+  ]}
+/>
