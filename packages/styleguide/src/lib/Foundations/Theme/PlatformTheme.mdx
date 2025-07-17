@@ -73,6 +73,20 @@ Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weigh
 
 <TokenTable {...TABLES.platformSwatch} />
 
+### Platform editor colors
+
+There are some additional colors that are used specifically for the Monaco code editor in the Learning Environment. Since these colors must be in 6 digit hex format, they cannot use the original color tokens with RGBA values. Instead, the original values were converted to 6 digit hex using the respective light and dark mode background colors.
+
+The original colors being:
+
+- comment: `navy-500` (light) and `white-500` (dark)
+- indent-active: `navy-300` (light) and `white-300` (dark)
+- indent-inactive: `navy-400` (light) and `white-400` (dark)
+- line-number-active: `navy-700` (light) and `white-700` (dark)
+- line-number-inactive: `navy-500` (light) and `white-500` (dark)
+
+<TokenTable {...TABLES.platformEditorColor} />
+
 ### Standard colors
 
 Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
