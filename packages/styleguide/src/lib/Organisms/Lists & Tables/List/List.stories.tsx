@@ -728,3 +728,14 @@ const ExpandedTemplateRowClick: React.FC<ListProps> = ({ as, variant }) => (
 export const ExpandedRowGuide: Story = {
   render: (args) => <ExpandedTemplateRowClick {...args} />,
 };
+
+export const SpaceSystemProps: Story = {
+  args: {
+    p: 16,
+  },
+  render: (args) => (
+    <Background bg="beige">
+      <ListExample {...args} />
+    </Background>
+  ),
+};
