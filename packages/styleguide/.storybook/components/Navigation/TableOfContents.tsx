@@ -25,7 +25,7 @@ export const TableOfContents: React.FC<{ links: PageLink[] }> = ({ links }) => {
       gap={32}
     >
       {links.map((link) => (
-        <TopicCard {...link} key={`toc-item-${link?.href}`} />
+        <TopicCard {...link} key={`toc-item-${link?.title}`} />
       ))}
     </GridBox>
   );
@@ -40,7 +40,7 @@ export const TopicCard: React.FC<PageLink> = ({
   return (
     <Link variant="area" id={id} tabIndex={0}>
       <Card
-        shadow="medium"
+        isInteractive
         p={0}
         rowGap={8}
         display="grid"
