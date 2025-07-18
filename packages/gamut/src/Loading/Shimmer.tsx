@@ -1,4 +1,4 @@
-import { useCurrentMode } from '@codecademy/gamut-styles';
+import { css, useCurrentMode } from '@codecademy/gamut-styles';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import * as React from 'react';
@@ -15,28 +15,25 @@ const fade = keyframes({
   to: { opacity: 1 },
 });
 
-const lightModeForegroundBg = `
-  to right,
-  rgba(0, 0, 0, 0) 20%,
-  rgba(0, 0, 0, 0.2) 50%,
-  rgba(0, 0, 0, 0) 80%
-`;
+const lightModeForegroundBg = `0, 0, 0`;
 
-const darkModeForegroundBg = `
-  to right,
-  rgba(255, 255, 255, 0) 20%,
-  rgba(255, 255, 255, 0.2) 50%,
-  rgba(255, 255, 255, 0) 80%
-`;
+const darkModeForegroundBg = `255, 255, 255`;
 
 type ShimmerForegroundProps = {
   foregroundBg: typeof lightModeForegroundBg | typeof darkModeForegroundBg;
 };
 
-const ShimmerForeground = styled(Box)<ShimmerForegroundProps>`
-  animation: ${slide} 2s linear infinite, ${fade} 1s linear infinite alternate;
-  background: linear-gradient(${(props) => props.foregroundBg});
-`;
+const ShimmerForeground = styled(Box)<ShimmerForegroundProps>((props) =>
+  css({
+    animation: `${slide} 2s linear infinite, ${fade} 1s linear infinite alternate`,
+    background: `linear-gradient(
+     to right,
+      rgba(${props.foregroundBg}, 0) 20%,
+      rgba(${props.foregroundBg}, 0.2) 50%,
+      rgba(${props.foregroundBg}, 0) 80%
+    )`,
+  })
+);
 
 export const Shimmer: React.FC<BoxProps> = (props) => {
   const currentMode = useCurrentMode();
