@@ -29,9 +29,11 @@ const darkModeForegroundBg = `
   rgba(255, 255, 255, 0) 80%
 `;
 
-const ShimmerForeground = styled(Box)<{
+type ShimmerForegroundProps = {
   foregroundBg: typeof lightModeForegroundBg | typeof darkModeForegroundBg;
-}>`
+};
+
+const ShimmerForeground = styled(Box)<ShimmerForegroundProps>`
   animation: ${slide} 2s linear infinite, ${fade} 1s linear infinite alternate;
   background: linear-gradient(${(props) => props.foregroundBg});
 `;
