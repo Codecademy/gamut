@@ -6,8 +6,8 @@ import {
   FillButton,
   FlexBox,
   IconButton,
-  LayoutGrid,
   Menu,
+  MenuItem,
   PopoverContainer,
   Text,
   useLocalQuery,
@@ -19,31 +19,36 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 
 const TestDropdownButton = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const projectMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuButtonRef = useRef<HTMLDivElement>(null);
 
   return (
-    <>
+    <Box ref={menuButtonRef} width="fit-content">
       <IconButton
         icon={MiniKebabMenuIcon}
-        ref={projectMenuButtonRef}
         tip="Show options"
-        tipProps={{ placement: 'floating' }}
+        tipProps={{
+          alignment: 'left-center',
+        }}
         variant="secondary"
         onClick={() => setIsOpen(!isOpen)}
       />
 
       <PopoverContainer
         isOpen={isOpen}
-        targetRef={projectMenuButtonRef}
+        targetRef={menuButtonRef}
         x={-50}
         y={-20}
         onRequestClose={() => setIsOpen(false)}
       >
         <Menu borderRadius="md" spacing="normal" variant="popover">
-          Hi
+          <MenuItem onClick={() => setIsOpen(false)}>Edit crew member</MenuItem>
+          <MenuItem onClick={() => setIsOpen(false)}>Fire crew member</MenuItem>
+          <MenuItem onClick={() => setIsOpen(false)}>
+            Clone crew member
+          </MenuItem>
         </Menu>
       </PopoverContainer>
-    </>
+    </Box>
   );
 };
 export const CustomEmptyState: React.FC = () => (
@@ -197,12 +202,12 @@ export const cols = [
   },
   {
     header: '',
-    key: 'collaborators',
+    key: '',
     size: 'md',
     justify: 'right',
     type: 'control',
     sortable: true,
-    render: (row) => <TestDropdownButton />,
+    render: () => <TestDropdownButton />,
   },
 ] as ColumnConfig<(typeof crew)[number]>[];
 
