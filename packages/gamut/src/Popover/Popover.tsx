@@ -10,13 +10,10 @@ import {
   PopoverPortal,
   RaisedDiv,
 } from './elements';
+import { useResizingParentEffect, useScrollingParentEffect } from './hooks';
 import { getBeakVariant } from './styles/beak';
 import { PopoverProps } from './types';
-import {
-  findResizingParent,
-  findScrollingParent,
-  getDefaultOffset,
-} from './utils';
+import { getDefaultOffset } from './utils';
 
 export const Popover: React.FC<PopoverProps> = ({
   animation,
@@ -105,39 +102,9 @@ export const Popover: React.FC<PopoverProps> = ({
     setTargetRect(targetRef?.current?.getBoundingClientRect());
   }, [targetRef, isOpen, width, height, x, y]);
 
-  useEffect(() => {
-    if (!targetRef.current) {
-      return;
-    }
-    const scrollingParent = findScrollingParent(
-      targetRef.current as HTMLElement
-    );
-    if (!scrollingParent?.addEventListener) {
-      return;
-    }
-    const handler = () => {
-      setTargetRect(targetRef?.current?.getBoundingClientRect());
-    };
-    scrollingParent.addEventListener('scroll', handler);
-    return () => scrollingParent.removeEventListener('scroll', handler);
-  }, [targetRef]);
+  useScrollingParentEffect(targetRef, setTargetRect);
 
-  useEffect(() => {
-    // handles movement of target within a clipped container e.g. Drawer
-    if (!targetRef.current || typeof ResizeObserver === 'undefined') {
-      return;
-    }
-    const resizingParent = findResizingParent(targetRef.current as HTMLElement);
-    if (!resizingParent?.addEventListener) {
-      return;
-    }
-    const handler = () => {
-      setTargetRect(targetRef?.current?.getBoundingClientRect());
-    };
-    const ro = new ResizeObserver(handler);
-    ro.observe(resizingParent);
-    return () => ro.unobserve(resizingParent);
-  }, [targetRef]);
+  useResizingParentEffect(targetRef, setTargetRect);
 
   useEffect(() => {
     if (targetRect) {

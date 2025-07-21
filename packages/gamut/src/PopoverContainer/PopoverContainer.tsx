@@ -11,6 +11,10 @@ import {
 
 import { BodyPortal } from '../BodyPortal';
 import { FocusTrap } from '../FocusTrap';
+import {
+  useResizingParentEffect,
+  useScrollingParentEffect,
+} from '../Popover/hooks';
 import { ContainerState, PopoverContainerProps } from './types';
 import { getContainers, getPosition, isInView } from './utils';
 
@@ -38,9 +42,11 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   ...rest
 }) => {
   const popoverRef = useRef<HTMLDivElement>(null);
+  const hasRequestedCloseRef = useRef(false);
   const { width: winW, height: winH } = useWindowSize();
   const { x: winX, y: winY } = useWindowScroll();
   const [containers, setContainers] = useState<ContainerState>();
+  const [targetRect, setTargetRect] = useState<DOMRect>();
   const parent = containers?.parent;
 
   const popoverPosition = useMemo(() => {
@@ -61,11 +67,29 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
     const target = targetRef?.current;
     if (!target) return;
     setContainers(getContainers(target, inline, { x: winX, y: winY }));
-  }, [targetRef, inline, winW, winH, winX, winY]);
+  }, [targetRef, inline, winW, winH, winX, winY, targetRect]);
+
+  // Update target rectangle when window size/scroll changes
+  useEffect(() => {
+    setTargetRect(targetRef?.current?.getBoundingClientRect());
+  }, [targetRef, isOpen, winW, winH, winX, winY]);
+
+  // Handle scrolling parent effects
+  useScrollingParentEffect(targetRef, setTargetRect);
+
+  // Handle resizing parent effects
+  useResizingParentEffect(targetRef, setTargetRect);
 
   useIsomorphicLayoutEffect(() => {
-    if (containers?.viewport && !isInView(containers?.viewport)) {
+    if (
+      containers?.viewport &&
+      !isInView(containers?.viewport) &&
+      !hasRequestedCloseRef.current
+    ) {
+      hasRequestedCloseRef.current = true;
       onRequestClose?.();
+    } else if (containers?.viewport && isInView(containers?.viewport)) {
+      hasRequestedCloseRef.current = false;
     }
   }, [containers?.viewport, onRequestClose]);
 

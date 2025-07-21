@@ -5,13 +5,47 @@ import {
   DataTable,
   FillButton,
   FlexBox,
+  IconButton,
+  LayoutGrid,
+  Menu,
+  PopoverContainer,
   Text,
   useLocalQuery,
 } from '@codecademy/gamut';
+import { MiniKebabMenuIcon } from '@codecademy/gamut-icons';
 import { BlueprintWhite } from '@codecademy/gamut-illustrations';
 import uniq from 'lodash/uniq';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 
+const TestDropdownButton = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const projectMenuButtonRef = useRef<HTMLButtonElement>(null);
+
+  return (
+    <>
+      <IconButton
+        icon={MiniKebabMenuIcon}
+        ref={projectMenuButtonRef}
+        tip="Show options"
+        tipProps={{ placement: 'floating' }}
+        variant="secondary"
+        onClick={() => setIsOpen(!isOpen)}
+      />
+
+      <PopoverContainer
+        isOpen={isOpen}
+        targetRef={projectMenuButtonRef}
+        x={-50}
+        y={-20}
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <Menu borderRadius="md" spacing="normal" variant="popover">
+          Hi
+        </Menu>
+      </PopoverContainer>
+    </>
+  );
+};
 export const CustomEmptyState: React.FC = () => (
   <Box as="tbody" height="100%" width="100%">
     <Box
@@ -160,6 +194,15 @@ export const cols = [
     justify: 'right',
     sortable: true,
     filters: ['Human'],
+  },
+  {
+    header: '',
+    key: 'collaborators',
+    size: 'md',
+    justify: 'right',
+    type: 'control',
+    sortable: true,
+    render: (row) => <TestDropdownButton />,
   },
 ] as ColumnConfig<(typeof crew)[number]>[];
 
