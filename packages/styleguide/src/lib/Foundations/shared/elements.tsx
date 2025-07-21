@@ -2,14 +2,12 @@ import { Anchor, Box } from '@codecademy/gamut';
 import {
   Background,
   coreSwatches,
-  css,
   lxStudioColors,
   theme,
   trueColors,
 } from '@codecademy/gamut-styles';
 // eslint-disable-next-line gamut/import-paths
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
-import styled from '@emotion/styled';
 import kebabCase from 'lodash/kebabCase';
 
 import { Code, ColorScale, LinkTo, TokenTable } from '~styleguide/blocks';
@@ -455,26 +453,3 @@ export const getPropRows = (key: keyof typeof ALL_PROPS) =>
     id: prop,
     ...config,
   }));
-
-export const GenericContainerQueryExample: React.FC = () => {
-  const StyledSection = styled.section(
-    css({
-      containerType: 'inline-size',
-    })
-  );
-
-  const StyledPara = styled.section(
-    css({
-      fontWeight: { _: 'base', md: 'bold' },
-      color: { _: 'red', md: 'blue' },
-    })
-  );
-
-  return (
-    <StyledSection>
-      <StyledPara>
-        This text becomes bold and blue in medium containers.
-      </StyledPara>
-    </StyledSection>
-  );
-};

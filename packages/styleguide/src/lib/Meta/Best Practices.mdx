@@ -17,11 +17,11 @@ For best practices for writing for specific components, like alerts, errors, or 
 
 # Variants + ColorMode
 
-The way we access design tokens is becoming increasingly important as we move away from a single theme and towards a system of themes. The best way to access design tokens is through our semantic colors, which are are tied intrinsically to ColorModes. This means that when you use a semantic color, you are guaranteed to get the right color for the right theme. Using variants and and its related utilities will also guarantee you have access to the right tokens, typings, and _state_ going forward. It is also [safer](https://gamut.codecademy.com/?path=/docs/foundations-system-compose--page)!
+The way we access design tokens is becoming increasingly important as we move away from a single theme and towards a system of themes. The best way to access design tokens is through our semantic colors, which are are tied intrinsically to ColorModes. This means that when you use a semantic color, you are guaranteed to get the right color for the right theme. Using variants and and its related utilities will also guarantee you have access to the right tokens, typings, and _state_ going forward. It is also [safer](https://gamut.codecademy.com/?path=/docs-foundations-system-compose--page)!
 
 Think of our semantic color names as a variable referencing _what the primary use of the color is within each color mode_. For example - an icon set to the `text` color will match _the primary color of text within that color mode._
 
-For specific semantic name to color, please see the [ColorMode](https://gamut.codecademy.com/?path=/docs/foundations-colormode--page) documentation.
+For specific semantic name to color, please see the [ColorMode](https://gamut.codecademy.com/?path=/docs-foundations-colormode--page) documentation.
 
 ### Use the utility functions from `gamut-styles` with ColorMode semantic color names + shorthands
 
@@ -128,30 +128,40 @@ const MyOtherContainer = ({ children }) => (
 
 **Intellisense + Typesafety** - Many system props are tied to specific design token scales. You can be sure that you are using the correct tokens between contexts. All props will autosuggest possible values for the scale that you are in.
 
-**Responsive Syntax** - [**Docs**](https://gamut.codecademy.com/storybook/?path=/docs/foundations-system-responsive-properties--page) All system props accept 2 responsive syntaxes for easily creating responsive layouts. System prop media queries are mobile first (Greater Than or Equal To).
+**Responsive Syntax** - [**Docs**](https://gamut.codecademy.com/storybook/?path=/docs-foundations-system-responsive-properties--page) All system props accept 2 responsive syntaxes for easily creating responsive layouts. System prop media queries are mobile first (Greater Than or Equal To).
 
 **The typings behind the scenes:**
 
 ```tsx
-type MediaQueryMap<T> = {
+type BreakpointMap<T> = {
   _?: T;
   xs?: T;
   sm?: T;
   md?: T;
   lg?: T;
   xl?: T;
+  c_xs?: T;
+  c_sm?: T;
+  c_md?: T;
+  c_lg?: T;
+  c_xl?: T;
 };
 
-type MediaQueryArray<T> = [
+type BreakpointArray<T> = [
   T?, // base
   T?, // xs
   T?, // sm
   T?, // md
   T?, // lg
   T? // xl
+  T?, // c_xs
+  T?, // c_sm
+  T?, // c_md
+  T?, // c_lg
+  T? // c_xl
 ];
 
-type SystemProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
+type SystemProp<T> = T | BreakpointMap<T> | BreakpointArray<T>;
 ```
 
 **Usage:**

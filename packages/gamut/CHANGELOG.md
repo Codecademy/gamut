@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.0...@codecademy/gamut@66.0.1) (2025-07-17)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [66.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@65.1.0...@codecademy/gamut@66.0.0) (2025-07-16)
+
+### ⚠ BREAKING CHANGES
+
+- **List:** Add spacing system props to List & remove deprecated props
+
+### Features
+
+- **List:** Add spacing system props to List & remove deprecated props ([097e9eb](https://github.com/Codecademy/gamut/commit/097e9ebbc0b81f211642372fdbda38aeddfded78))
+
 ## [65.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@65.0.1...@codecademy/gamut@65.1.0) (2025-07-11)
 
 ### Features

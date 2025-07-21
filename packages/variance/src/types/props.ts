@@ -26,7 +26,7 @@ export type ThemeProps<Props = {}> = Props & {
   theme?: Theme;
 };
 
-export interface MediaQueryArray<T> {
+export interface BreakpointArray<T> {
   0?: T;
   1?: T;
   2?: T;
@@ -39,6 +39,7 @@ export interface MediaQueryArray<T> {
   9?: T;
   10?: T;
 }
+
 export interface MediaQueryMap<T> {
   _?: T;
   xs?: T;
@@ -46,14 +47,18 @@ export interface MediaQueryMap<T> {
   md?: T;
   lg?: T;
   xl?: T;
+}
+
+export interface ContainerQueryMap<T> {
   c_xs?: T;
   c_sm?: T;
   c_md?: T;
   c_lg?: T;
   c_xl?: T;
 }
+export type BreakpointMap<T> = ContainerQueryMap<T> & MediaQueryMap<T>;
 
-export type ResponsiveProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
+export type ResponsiveProp<T> = T | BreakpointMap<T> | BreakpointArray<T>;
 
 export interface CSSObject {
   [key: string]: string | number | CSSObject | undefined;

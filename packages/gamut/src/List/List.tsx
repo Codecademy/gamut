@@ -26,10 +26,8 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
   /** A custom message to override the default empty message  */
   emptyMessage?: React.ReactNode;
   /**
-   * @deprecated Use overflow instead!
-   * Whether the List container should have overflow hidden.
+   * How the List container should handle overflow.
    */
-  overflowHidden?: boolean;
   overflow?: BoxProps['overflow'];
 }
 
@@ -49,9 +47,9 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       children,
       header,
       emptyMessage,
-      overflowHidden = false,
       overflow = 'auto',
       scrollToTopOnUpdate = false,
+      ...rest
     },
     ref
   ) => {
@@ -85,7 +83,12 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     });
 
     const listContent = (
-      <ListEl as={isTable ? 'tbody' : as} ref={ref} variant={value.variant}>
+      <ListEl
+        as={isTable ? 'tbody' : as}
+        ref={ref}
+        variant={value.variant}
+        {...rest}
+      >
         {children}
       </ListEl>
     );
@@ -126,7 +129,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
         <ListWrapper
           id={id}
           maxHeight={height}
-          overflow={overflowHidden ? 'hidden' : overflow}
+          overflow={overflow}
           position="relative"
           ref={wrapperRef}
           scrollable={!isEmpty && showShadow}
