@@ -9,6 +9,8 @@ import { ListRow } from '../ListRow';
 // Add the custom matchers provided by '@emotion/jest'
 expect.extend(matchers);
 
+// NOTE: We have removed the query styling tests here, they are to be replaced with visual tests: GM-1240
+
 const renderView = setupRtl(List, {
   children: (
     <ListRow data-testid="row-el">
@@ -44,9 +46,6 @@ describe('List', () => {
 
     expect(rowEl).toHaveStyle({ borderTop: 'none' });
     expect(rowEl).toHaveStyle({ gap: theme.spacing[8] });
-    expect(rowEl).toHaveStyleRule('gap', theme.spacing[40], {
-      media: theme.breakpoints.xs,
-    });
   });
 
   it('configures columns with the correct variants', () => {
@@ -55,12 +54,8 @@ describe('List', () => {
     const colEl = view.getByText('Hello');
 
     expect(colEl).not.toHaveStyle({ py: 16 });
-    expect(colEl).toHaveStyleRule('padding-top', theme.spacing[16], {
-      media: theme.breakpoints.xs,
-    });
-    expect(colEl).toHaveStyleRule('padding-bottom', theme.spacing[16], {
-      media: theme.breakpoints.xs,
-    });
+    expect(colEl).toHaveStyleRule('padding-left', theme.spacing[16]);
+    expect(colEl).toHaveStyleRule('padding-right', theme.spacing[16]);
 
     expect(colEl).not.toHaveStyle({ position: 'sticky' });
   });
