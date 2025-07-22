@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.0](https://github.com/Codecademy/gamut/compare/@codecademy/variance@0.22.1...@codecademy/variance@0.23.0) (2025-07-22)
+
+### Features
+
+- **ContainerQueries:** add container queries to responsive props api ([f29d307](https://github.com/Codecademy/gamut/commit/f29d3071599f9c686b47687787ed44d1e9d826e1))
+
 ### [0.22.1](https://github.com/Codecademy/gamut/compare/@codecademy/variance@0.22.0...@codecademy/variance@0.22.1) (2025-02-05)
 
 **Note:** Version bump only for package @codecademy/variance

@@ -1,10 +1,10 @@
 {
   "name": "@codecademy/gamut-styles",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "17.6.5",
+  "version": "17.7.0",
   "author": "Jake Hiller <jake@codecademy.com>",
   "dependencies": {
-    "@codecademy/variance": "0.22.1",
+    "@codecademy/variance": "0.23.0",
     "@emotion/is-prop-valid": "^1.1.0",
     "polished": "^4.1.2"
   },
