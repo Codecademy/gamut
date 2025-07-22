@@ -1,8 +1,9 @@
-import { Meta } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 
 import { AboutHeader, TokenTable } from '~styleguide/blocks';
 
 import { breakpoint } from '../../shared/elements';
+import * as ResponsivePropertiesStories from './ResponsiveProperties.stories';
 
 export const parameters = {
   title: 'Responsive Props',
@@ -16,7 +17,7 @@ export const parameters = {
 };
 
 <Meta title="Foundations/System/ResponsiveProperties" />
-
+ß
 <AboutHeader {...parameters} />
 
 This API is largely based on [styled-system's responsive styles](https://styled-system.com/responsive-styles), it is not exactly the same however. Their documentation has a lot of great examples of behavior, however please refer to our documentation for our own best practices!
@@ -221,7 +222,15 @@ These work exactly like the existing media-query keys—you can use them in both
 
 ### Declaring a Container for Container Queries
 
-To use container queries, the parent element of your responsive component must be a [CSS Container](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries). This is typically done by setting the `container-type` property on the parent. The most common value is `inline-size`, which enables queries based on the element's width. It is good practice to set a fallback media query value for older or unsupported browsers.
+To use container queries, the parent element of your responsive component must be a [CSS Container](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries). This is typically done by setting the `container-type` property on the parent. The most common value is `inline-size`, which enables queries based on the element's width.
+
+```tsx
+<FlexBox containerType="inline-size">
+  <Box display={{ _: 'none', sm: 'block', c_md: 'flex' }} />
+</FlexBox>
+```
+
+It is good practice to set a fallback media query value for older or unsupported browsers.
 
 ## Best practices
 
@@ -229,4 +238,16 @@ To use container queries, the parent element of your responsive component must b
 2. **Declare containers** – add `container-type` to the element whose descendants should listen to container breakpoints.
 3. **Stay readable** – the same guidelines for choosing object vs. array syntax apply. Use object syntax for isolated container breakpoints and the ordered array syntax when specifying every breakpoint.
 
-Check out the stories in the left sidebar for more examples of responsive props!
+## Examples
+
+### Media Queries
+
+<Canvas of={ResponsivePropertiesStories.MediaQueries} />
+
+### Container Queries
+
+<Canvas of={ResponsivePropertiesStories.ContainerQueries} />
+
+### Combined Queries
+
+<Canvas of={ResponsivePropertiesStories.CombinedQueries} />

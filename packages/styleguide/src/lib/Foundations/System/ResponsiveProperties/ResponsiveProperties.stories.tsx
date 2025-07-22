@@ -49,7 +49,7 @@ export const CombinedQueries: Story = {
     <FlexBox containerType="inline-size" {...args}>
       <Box
         bg={{
-          _: 'primary',
+          _: 'beige',
           md: 'background-disabled',
           c_lg: 'primary-inverse',
         }}
