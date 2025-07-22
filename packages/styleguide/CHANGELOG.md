@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [77.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.0.3...@codecademy/styleguide@77.1.0) (2025-07-22)
+
+### Features
+
+- **ContainerQueries:** add container queries to responsive props api ([f29d307](https://github.com/Codecademy/gamut/commit/f29d3071599f9c686b47687787ed44d1e9d826e1))
+
 ### [77.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.0.2...@codecademy/styleguide@77.0.3) (2025-07-17)
 
 **Note:** Version bump only for package @codecademy/styleguide
