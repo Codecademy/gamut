@@ -2,6 +2,7 @@ import { createTheme } from '@codecademy/variance';
 
 import {
   borderRadii,
+  containerQueries,
   corePalette,
   elements,
   fontFamily,
@@ -19,7 +20,7 @@ import {
  */
 
 export const coreTheme = createTheme({
-  breakpoints: mediaQueries,
+  breakpoints: { ...mediaQueries, ...containerQueries },
   borderRadii,
   fontSize,
   fontFamily,
