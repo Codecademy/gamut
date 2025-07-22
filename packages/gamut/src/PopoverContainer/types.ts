@@ -83,4 +83,8 @@ export interface PopoverContainerProps
    * The target element around which the popover will be positioned.
    */
   targetRef: RefObject<TargetRef>;
+  /**
+   * If true, the focus trap will be skipped.
+   */
+  skipFocusTrap?: boolean;
 }

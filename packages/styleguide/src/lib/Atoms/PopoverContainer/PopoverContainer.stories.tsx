@@ -275,3 +275,48 @@ export const XandY: React.FC<ComponentProps<typeof PopoverContainer>> = ({
     </FlexBox>
   );
 };
+
+export const SkipFocusTrap: React.FC<
+  ComponentProps<typeof PopoverContainer>
+> = (args) => {
+  const target = useRef<HTMLDivElement>(null);
+
+  return (
+    <FlexBox minHeight="480px" position="relative" width={1}>
+      <FlexBox center flex={1}>
+        <PopoverContainer
+          {...args}
+          inline
+          isOpen
+          skipFocusTrap
+          targetRef={target}
+        >
+          <Background
+            alignItems="center"
+            bg="navy"
+            dimensions="100px"
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+          >
+            <Text as="p" color="white" variant="p-small">
+              No Focus Trap
+            </Text>
+            <Text as="p" color="white" variant="p-small">
+              Page interaction allowed
+            </Text>
+          </Background>
+        </PopoverContainer>
+        <FlexBox
+          alignItems="center"
+          border={1}
+          dimensions="200px"
+          justifyContent="center"
+          ref={target}
+        >
+          Target Element
+        </FlexBox>
+      </FlexBox>
+    </FlexBox>
+  );
+};
