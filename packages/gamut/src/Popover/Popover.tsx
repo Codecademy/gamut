@@ -133,18 +133,6 @@ export const Popover: React.FC<PopoverProps> = ({
        */
       if (targetElement.contains(target)) return;
 
-      // // Check if the clicked element itself is a floating element or is within one
-      // const clickedElement = target as Element;
-      // const isFloatingElement = clickedElement.closest(
-      //   '[data-floating="true"]'
-      // );
-      // if (isFloatingElement) {
-      //   // If clicking on our own floating element, close the popover
-      //   onRequestClose?.();
-      //   return;
-      // }
-
-      // Genuine outside click
       onRequestClose?.();
     },
     [onRequestClose, targetRef]
