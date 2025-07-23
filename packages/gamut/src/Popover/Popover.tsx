@@ -133,17 +133,16 @@ export const Popover: React.FC<PopoverProps> = ({
        */
       if (targetElement.contains(target)) return;
 
-      // Check for our own floating element interference
-      const floatingElements = document.querySelectorAll(
-        '[data-floating="true"]'
-      );
-      for (const element of floatingElements) {
-        if (element.contains(target)) {
-          // If clicking on our own floating element, close the popover
-          onRequestClose?.();
-          return;
-        }
-      }
+      // // Check if the clicked element itself is a floating element or is within one
+      // const clickedElement = target as Element;
+      // const isFloatingElement = clickedElement.closest(
+      //   '[data-floating="true"]'
+      // );
+      // if (isFloatingElement) {
+      //   // If clicking on our own floating element, close the popover
+      //   onRequestClose?.();
+      //   return;
+      // }
 
       // Genuine outside click
       onRequestClose?.();
@@ -160,8 +159,8 @@ export const Popover: React.FC<PopoverProps> = ({
     <PopoverContainer
       align={align}
       className={className}
-      data-testid="popover-content-container"
       data-floating="true"
+      data-testid="popover-content-container"
       position={position}
       {...(popoverContainerRef ? { ref: popoverContainerRef } : {})}
       role={role}

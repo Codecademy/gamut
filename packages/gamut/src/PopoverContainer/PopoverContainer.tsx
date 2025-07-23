@@ -112,16 +112,15 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
       // Check if the click target is within the popover content
       if (popoverRef.current?.contains(target)) return;
 
-      // Check for our own floating elements that might be interfering
-      const floatingElements = document.querySelectorAll(
+      // Check if the clicked element itself is a floating element or is within one
+      const clickedElement = target as Element;
+      const isFloatingElement = clickedElement.closest(
         '[data-floating="true"]'
       );
-      for (const element of floatingElements) {
-        if (element.contains(target)) {
-          // If clicking on our own floating element, close the popover
-          onRequestClose?.();
-          return;
-        }
+      if (isFloatingElement) {
+        // If clicking on our own floating element, close the popover
+        onRequestClose?.();
+        return;
       }
 
       // If we get here, it's a genuine outside click
@@ -148,16 +147,15 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
       )
         return;
 
-      // Check for our own floating element interference
-      const floatingElements = document.querySelectorAll(
+      // Check if the clicked element itself is a floating element or is within one
+      const clickedElement = target as Element;
+      const isFloatingElement = clickedElement.closest(
         '[data-floating="true"]'
       );
-      for (const element of floatingElements) {
-        if (element.contains(target)) {
-          // If clicking on our own floating element, close the popover
-          onRequestClose?.();
-          return;
-        }
+      if (isFloatingElement) {
+        // If clicking on our own floating element, close the popover
+        onRequestClose?.();
+        return;
       }
 
       // Genuine outside click
@@ -194,8 +192,8 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
       onEscapeKey={onRequestClose}
     >
       <PopoverContent
-        data-testid="popover-content-container"
         data-floating="true"
+        data-testid="popover-content-container"
         position="absolute"
         ref={popoverRef}
         tabIndex={-1}

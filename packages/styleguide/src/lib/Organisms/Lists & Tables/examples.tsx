@@ -36,11 +36,11 @@ const TestDropdownButton = () => {
 
       <PopoverContainer
         isOpen={isOpen}
+        skipFocusTrap
         targetRef={menuButtonRef}
         x={-50}
         y={-20}
         onRequestClose={() => setIsOpen(false)}
-        skipFocusTrap
       >
         <Menu borderRadius="md" spacing="normal" variant="popover">
           <MenuItem onClick={() => setIsOpen(false)}>Edit crew member</MenuItem>
