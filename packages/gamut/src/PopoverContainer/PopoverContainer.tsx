@@ -97,7 +97,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   /**
    * Allows targetRef to be or contain a button that toggles the popover open and closed.
    * Without this check it would toggle closed then back open immediately.
-   * Also handles edge cases where our own floating elements might interfere with click detection.
+   *
    */
   const handleClickOutside = useCallback(
     (e: MouseEvent | TouchEvent) => {
@@ -105,24 +105,8 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
       const targetElement = targetRef.current;
 
       if (!targetElement) return;
-
-      // Check if the click target is within the target element
       if (targetElement.contains(target)) return;
-
-      // Check if the click target is within the popover content
       if (popoverRef.current?.contains(target)) return;
-
-      // Check if the clicked element itself is a floating element or is within one
-      const clickedElement = target as Element;
-      const isFloatingElement = clickedElement.closest(
-        '[data-floating="true"]'
-      );
-      if (isFloatingElement) {
-        // If clicking on our own floating element, close the popover
-        onRequestClose?.();
-        return;
-      }
-
       // If we get here, it's a genuine outside click
       onRequestClose?.();
     },
@@ -140,31 +124,28 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
       if (!targetElement || !isOpen) return;
 
-      // Check if the click target is within the target element or popover
       if (
         targetElement.contains(target) ||
         popoverRef.current?.contains(target)
       )
         return;
 
-      // Check if the clicked element itself is a floating element or is within one
+      // Checks if the clicked element itself is a floating element or is within one
       const clickedElement = target as Element;
       const isFloatingElement = clickedElement.closest(
         '[data-floating="true"]'
       );
       if (isFloatingElement) {
-        // If clicking on our own floating element, close the popover
         onRequestClose?.();
         return;
       }
 
-      // Genuine outside click
       onRequestClose?.();
     },
     [onRequestClose, targetRef, isOpen]
   );
 
-  // Add global click listener as backup when popover is open
+  // Backup global click listener for when a Popover or PopoverContainer is open
   useEffect(() => {
     if (isOpen) {
       // Use a small delay to ensure this doesn't interfere with the FocusTrap's own detection

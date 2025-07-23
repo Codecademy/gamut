@@ -22,7 +22,7 @@ const TestDropdownButton = () => {
   const menuButtonRef = useRef<HTMLDivElement>(null);
 
   return (
-    <Box ref={menuButtonRef} width="fit-content">
+    <Box p={4} ref={menuButtonRef} width="fit-content">
       <IconButton
         icon={MiniKebabMenuIcon}
         tip="Show options"
