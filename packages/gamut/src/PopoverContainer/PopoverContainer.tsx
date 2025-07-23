@@ -97,12 +97,93 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   /**
    * Allows targetRef to be or contain a button that toggles the popover open and closed.
    * Without this check it would toggle closed then back open immediately.
+   * Also handles edge cases where our own floating elements might interfere with click detection.
    */
   const handleClickOutside = useCallback(
-    (e: MouseEvent | TouchEvent) =>
-      !targetRef.current?.contains(e.target as Node) && onRequestClose?.(),
+    (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Node;
+      const targetElement = targetRef.current;
+
+      if (!targetElement) return;
+
+      // Check if the click target is within the target element
+      if (targetElement.contains(target)) return;
+
+      // Check if the click target is within the popover content
+      if (popoverRef.current?.contains(target)) return;
+
+      // Check for our own floating elements that might be interfering
+      const floatingElements = document.querySelectorAll(
+        '[data-floating="true"]'
+      );
+      for (const element of floatingElements) {
+        if (element.contains(target)) {
+          // If clicking on our own floating element, close the popover
+          onRequestClose?.();
+          return;
+        }
+      }
+
+      // If we get here, it's a genuine outside click
+      onRequestClose?.();
+    },
     [onRequestClose, targetRef]
   );
+
+  /**
+   * Backup click outside handler for cases where FocusTrap detection might be interfered with
+   * by our own floating elements
+   */
+  const handleGlobalClickOutside = useCallback(
+    (e: MouseEvent) => {
+      const target = e.target as Node;
+      const targetElement = targetRef.current;
+
+      if (!targetElement || !isOpen) return;
+
+      // Check if the click target is within the target element or popover
+      if (
+        targetElement.contains(target) ||
+        popoverRef.current?.contains(target)
+      )
+        return;
+
+      // Check for our own floating element interference
+      const floatingElements = document.querySelectorAll(
+        '[data-floating="true"]'
+      );
+      for (const element of floatingElements) {
+        if (element.contains(target)) {
+          // If clicking on our own floating element, close the popover
+          onRequestClose?.();
+          return;
+        }
+      }
+
+      // Genuine outside click
+      onRequestClose?.();
+    },
+    [onRequestClose, targetRef, isOpen]
+  );
+
+  // Add global click listener as backup when popover is open
+  useEffect(() => {
+    if (isOpen) {
+      // Use a small delay to ensure this doesn't interfere with the FocusTrap's own detection
+      const timeoutId = setTimeout(() => {
+        document.addEventListener('mousedown', handleGlobalClickOutside, true);
+      }, 50);
+
+      return () => {
+        clearTimeout(timeoutId);
+        document.removeEventListener(
+          'mousedown',
+          handleGlobalClickOutside,
+          true
+        );
+      };
+    }
+  }, [isOpen, handleGlobalClickOutside]);
 
   if (!isOpen || !targetRef) return null;
 
@@ -114,6 +195,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
     >
       <PopoverContent
         data-testid="popover-content-container"
+        data-floating="true"
         position="absolute"
         ref={popoverRef}
         tabIndex={-1}

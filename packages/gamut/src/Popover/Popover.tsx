@@ -122,12 +122,30 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const handleClickOutside = useCallback(
     (e: MouseEvent) => {
+      const target = e.target as Node;
+      const targetElement = targetRef.current;
+
+      if (!targetElement) return;
+
       /**
        * Allows targetRef to be or contain a button that toggles the popover open and closed.
        * Without this check it would toggle closed then back open immediately.
        */
-      if (targetRef.current?.contains(e.target as Node)) return;
+      if (targetElement.contains(target)) return;
 
+      // Check for our own floating element interference
+      const floatingElements = document.querySelectorAll(
+        '[data-floating="true"]'
+      );
+      for (const element of floatingElements) {
+        if (element.contains(target)) {
+          // If clicking on our own floating element, close the popover
+          onRequestClose?.();
+          return;
+        }
+      }
+
+      // Genuine outside click
       onRequestClose?.();
     },
     [onRequestClose, targetRef]
@@ -143,6 +161,7 @@ export const Popover: React.FC<PopoverProps> = ({
       align={align}
       className={className}
       data-testid="popover-content-container"
+      data-floating="true"
       position={position}
       {...(popoverContainerRef ? { ref: popoverContainerRef } : {})}
       role={role}

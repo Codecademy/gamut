@@ -28,6 +28,7 @@ const TestDropdownButton = () => {
         tip="Show options"
         tipProps={{
           alignment: 'left-center',
+          placement: 'floating',
         }}
         variant="secondary"
         onClick={() => setIsOpen(!isOpen)}
@@ -39,12 +40,19 @@ const TestDropdownButton = () => {
         x={-50}
         y={-20}
         onRequestClose={() => setIsOpen(false)}
+        skipFocusTrap
       >
         <Menu borderRadius="md" spacing="normal" variant="popover">
           <MenuItem onClick={() => setIsOpen(false)}>Edit crew member</MenuItem>
           <MenuItem onClick={() => setIsOpen(false)}>Fire crew member</MenuItem>
           <MenuItem onClick={() => setIsOpen(false)}>
             Clone crew member
+          </MenuItem>
+          <MenuItem onClick={() => setIsOpen(false)}>
+            Disipline crew member
+          </MenuItem>
+          <MenuItem onClick={() => setIsOpen(false)}>
+            Arrest crew member
           </MenuItem>
         </Menu>
       </PopoverContainer>
