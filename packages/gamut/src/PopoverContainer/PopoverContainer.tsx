@@ -39,7 +39,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   isOpen,
   onRequestClose,
   targetRef,
-  skipFocusTrap,
+  allowPageInteraction,
   ...rest
 }) => {
   const popoverRef = useRef<HTMLDivElement>(null);
@@ -174,7 +174,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   const content = (
     <FocusTrap
-      allowPageInteraction={inline || skipFocusTrap}
+      allowPageInteraction={inline || allowPageInteraction}
       onClickOutside={handleClickOutside}
       onEscapeKey={onRequestClose}
     >

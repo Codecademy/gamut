@@ -8,6 +8,7 @@ import {
   IconButton,
   Menu,
   MenuItem,
+  Modal,
   PopoverContainer,
   Text,
   useLocalQuery,
@@ -19,7 +20,13 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 
 const TestDropdownButton = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const menuButtonRef = useRef<HTMLDivElement>(null);
+
+  const handleArrestClick = () => {
+    setIsOpen(false);
+    setIsModalOpen(true);
+  };
 
   return (
     <Box p={4} ref={menuButtonRef} width="fit-content">
@@ -35,7 +42,7 @@ const TestDropdownButton = () => {
       />
 
       <PopoverContainer
-        inline
+        allowPageInteraction
         isOpen={isOpen}
         targetRef={menuButtonRef}
         x={-50}
@@ -51,11 +58,41 @@ const TestDropdownButton = () => {
           <MenuItem onClick={() => setIsOpen(false)}>
             Disipline crew member
           </MenuItem>
-          <MenuItem onClick={() => setIsOpen(false)}>
-            Arrest crew member
-          </MenuItem>
+          <MenuItem onClick={handleArrestClick}>Arrest crew member</MenuItem>
         </Menu>
       </PopoverContainer>
+
+      <Modal
+        isOpen={isModalOpen}
+        size="small"
+        title="Arrest Crew Member"
+        onRequestClose={() => setIsModalOpen(false)}
+      >
+        <FlexBox column gap={16}>
+          <Text>
+            Are you sure you want to arrest this crew member? This action cannot
+            be undone.
+          </Text>
+          <FlexBox gap={8} justifyContent="flex-end">
+            <FillButton
+              variant="secondary"
+              onClick={() => setIsModalOpen(false)}
+            >
+              Cancel
+            </FillButton>
+            <FillButton
+              variant="danger"
+              onClick={() => {
+                console.log('Crew memmber arrested');
+                setIsModalOpen(false);
+                // Add your arrest logic here
+              }}
+            >
+              Arrest
+            </FillButton>
+          </FlexBox>
+        </FlexBox>
+      </Modal>
     </Box>
   );
 };
