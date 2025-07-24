@@ -130,17 +130,23 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
       )
         return;
 
-      // Checks if the clicked element itself is a floating element or is within one
+      // Only close if clicking on a different floating element that's not our popover
       const clickedElement = target as Element;
       const isFloatingElement = clickedElement.closest(
         '[data-floating="true"]'
       );
-      if (isFloatingElement) {
+      if (
+        isFloatingElement &&
+        !popoverRef.current?.contains(isFloatingElement)
+      ) {
         onRequestClose?.();
         return;
       }
 
-      onRequestClose?.();
+      // Close the popover but allow the click event to continue by using setTimeout
+      setTimeout(() => {
+        onRequestClose?.();
+      }, 0);
     },
     [onRequestClose, targetRef, isOpen]
   );

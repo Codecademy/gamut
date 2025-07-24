@@ -35,8 +35,8 @@ const TestDropdownButton = () => {
       />
 
       <PopoverContainer
+        inline
         isOpen={isOpen}
-        skipFocusTrap
         targetRef={menuButtonRef}
         x={-50}
         y={-20}
@@ -314,4 +314,5 @@ export const DataTableTemplate = createDemoTable(DataTable, {
 export const DataListTemplate = createDemoTable(DataList, {
   scrollable: false,
   height: 'auto',
+  showOverflow: true,
 });

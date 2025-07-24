@@ -84,7 +84,7 @@ export interface PopoverContainerProps
    */
   targetRef: RefObject<TargetRef>;
   /**
-   * If true, the focus trap will be skipped.
+   * If true, it will allow outside page interaction. Popover container will still close when clicking outside of the popover or hitting the escape key.
    */
-  skipFocusTrap?: boolean;
+  allowPageInteraction?: boolean;
 }
