@@ -143,12 +143,12 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             as={isTable && !isEmpty && !loading ? 'table' : 'div'}
             data-testid={`scrollable-${id}`}
             height={isEmpty ? height : 'fit-content'}
-            maxWidth={internalWidth || 1}
+            maxWidth={wrapperWidth || 1}
             minHeight={minHeight}
             overflow="inherit"
             position="relative"
             ref={!isEmpty ? tableRef : undefined}
-            width={internalWidth || 'inherit'}
+            width={wrapperWidth || 'inherit'}
           >
             {content}
           </Box>
