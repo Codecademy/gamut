@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [77.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.1.0...@codecademy/styleguide@77.1.1) (2025-07-24)
+
+### Bug Fixes
+
+- **Pagination:** allow for text variant to render ([b5ab3b5](https://github.com/Codecademy/gamut/commit/b5ab3b5792d64ae4d473a1e4ff257de63351a150))
+
 ## [77.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.0.3...@codecademy/styleguide@77.1.0) (2025-07-22)
 
 ### Features
