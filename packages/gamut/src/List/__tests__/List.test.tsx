@@ -123,4 +123,27 @@ describe('List', () => {
     });
     expect(view.queryByText('Surprise!')).toBeNull();
   });
+
+  describe('wrapperWidth prop', () => {
+    it('applies wrapperWidth to the table container when provided', () => {
+      const { view } = renderView({ wrapperWidth: '500px' });
+
+      const tableContainer = view.container.querySelector(
+        '[data-testid="scrollable-list-el"]'
+      );
+      expect(tableContainer).toHaveStyle({ maxWidth: '500px', width: '500px' });
+    });
+
+    it('uses inherit width when wrapperWidth is not provided', () => {
+      const { view } = renderView();
+
+      const tableContainer = view.container.querySelector(
+        '[data-testid="scrollable-list-el"]'
+      );
+      expect(tableContainer).toHaveStyle({
+        maxWidth: '100%',
+        width: 'inherit',
+      });
+    });
+  });
 });

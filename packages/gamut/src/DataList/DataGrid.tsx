@@ -2,7 +2,6 @@ import { system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import { ComponentProps, useMemo } from 'react';
 
-import { BoxProps } from '../Box';
 import { List } from '../List';
 import { EmptyRows } from './EmptyRows';
 import { ListControlContext, useListControls } from './hooks/useListControls';
@@ -27,8 +26,6 @@ export interface DataGridProps<
   header?: boolean;
   /** Whether Select All checkmark should be hidden in the header. Defaults to false */
   hideSelectAll?: boolean;
-  //* * A manual width override */
-  wrapperWidth?: BoxProps['width'];
 }
 
 export function DataGrid<

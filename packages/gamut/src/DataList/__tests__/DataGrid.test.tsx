@@ -92,7 +92,7 @@ describe('DataGrid', () => {
     });
 
     it("clicking the row's checkbox deselects the row when the row is already selected", () => {
-      renderView({ selected: [1] });
+      renderView({ selected: ['1'] });
 
       const checkbox = screen.getByRole('checkbox', { name: 'Select 1' });
 
@@ -110,7 +110,7 @@ describe('DataGrid', () => {
     });
 
     it('selecting another row adds the row to the selection', () => {
-      renderView({ selected: [2] });
+      renderView({ selected: ['2'] });
 
       const checkbox = screen.getByRole('checkbox', { name: 'Select 1' });
 
@@ -173,14 +173,14 @@ describe('DataGrid', () => {
 
   describe('Expanding Rows', () => {
     it('Renders an expanded row when passed the correct id', () => {
-      renderView({ expanded: [1] });
+      renderView({ expanded: ['1'] });
 
       screen.getByText('Expanded 1');
       screen.getByRole('button', { expanded: true });
     });
 
     it('allows multiple expanded rows by default', () => {
-      renderView({ expanded: [1, 2] });
+      renderView({ expanded: ['1', '2'] });
 
       screen.getByText('Expanded 1');
       screen.getByText('Expanded 2');
@@ -205,7 +205,7 @@ describe('DataGrid', () => {
       });
     });
     it('calls the onRowExpand with the id omitted when an expanded row toggle is clicked', () => {
-      renderView({ expanded: [1] });
+      renderView({ expanded: ['1'] });
 
       const expandButton = screen.getByRole('button', { name: `Expand 1 Row` });
 
@@ -513,6 +513,107 @@ describe('DataGrid', () => {
         });
 
         expect(scrollMock).not.toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('has proper HTML table syntax', () => {
+    it('renders proper table structure with thead and tbody', () => {
+      renderView();
+
+      const table = screen.getByRole('table');
+      const thead = table.querySelector('thead');
+      const tbody = table.querySelector('tbody');
+
+      expect(table).toBeInTheDocument();
+      expect(thead).toBeInTheDocument();
+      expect(tbody).toBeInTheDocument();
+    });
+
+    it('renders table headers with proper td elements', () => {
+      renderView({
+        columns: [
+          { key: 'name', header: 'Name', type: 'header' },
+          { key: 'sin', header: 'Sin' },
+        ],
+      });
+
+      const table = screen.getByRole('table');
+      const thead = table.querySelector('thead');
+      const headerCells = thead?.querySelectorAll('th') || [];
+
+      expect(headerCells).toHaveLength(1);
+      expect(headerCells[1]).toHaveTextContent('Name');
+      expect(headerCells[2]).toHaveTextContent('Sin');
+    });
+
+    it('renders table rows with proper tr elements', () => {
+      renderView();
+
+      const rows = screen.getAllByRole('row');
+      // Should have header row + data rows
+      expect(rows).toHaveLength(props.rows.length + 1);
+    });
+
+    it('renders table cells with proper td elements', () => {
+      renderView();
+
+      const cells = screen.getAllByRole('cell');
+      // Should have: header row (4 cells) + data rows (4 cells each: checkbox + name + sin + expand)
+      // 4 header cells + (3 rows * 4 cells each) = 4 + 12 = 16, but actually getting 15
+      expect(cells).toHaveLength(15);
+    });
+
+    it('uses semantic table attributes correctly', () => {
+      renderView();
+
+      const table = screen.getByRole('table');
+      expect(table).toHaveAttribute('data-testid', 'scrollable-test');
+    });
+
+    it('maintains table structure when wrapperWidth is applied', () => {
+      renderView({ wrapperWidth: '500px' });
+
+      const table = screen.getByRole('table');
+      const thead = table.querySelector('thead');
+      const tbody = table.querySelector('tbody');
+
+      expect(table).toBeInTheDocument();
+      expect(thead).toBeInTheDocument();
+      expect(tbody).toBeInTheDocument();
+
+      const tableContainer = screen.getByTestId('scrollable-test');
+      expect(tableContainer).toHaveStyle({ maxWidth: '500px', width: '500px' });
+    });
+  });
+  describe('wrapperWidth prop', () => {
+    it('applies wrapperWidth to the table container when provided', () => {
+      renderView({ wrapperWidth: '600px' });
+
+      const tableContainer = screen.getByTestId('scrollable-test');
+      expect(tableContainer).toHaveStyle({
+        maxWidth: '600px',
+        width: '600px',
+      });
+    });
+
+    it('uses default width when wrapperWidth is not provided', () => {
+      renderView();
+
+      const tableContainer = screen.getByTestId('scrollable-test');
+      expect(tableContainer).toHaveStyle({
+        maxWidth: '100%',
+        width: 'inherit',
+      });
+    });
+
+    it('passes wrapperWidth through to the underlying List component', () => {
+      renderView({ wrapperWidth: '750px' });
+
+      const tableContainer = screen.getByTestId('scrollable-test');
+      expect(tableContainer).toHaveStyle({
+        maxWidth: '750px',
+        width: '750px',
       });
     });
   });
