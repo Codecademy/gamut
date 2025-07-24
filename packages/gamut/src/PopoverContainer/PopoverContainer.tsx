@@ -11,14 +11,9 @@ import {
 
 import { BodyPortal } from '../BodyPortal';
 import { FocusTrap } from '../FocusTrap';
-import { useResizingParentEffect } from '../Popover/hooks';
+import { useResizingParentEffect, useScrollingParentsEffect } from './hooks';
 import { ContainerState, PopoverContainerProps } from './types';
-import {
-  getContainers,
-  getPosition,
-  isInView,
-  useScrollingParentsEffect,
-} from './utils';
+import { getContainers, getPosition, isInView } from './utils';
 
 const PopoverContent = styled.div(
   variance.compose(

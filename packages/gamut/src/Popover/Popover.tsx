@@ -2,7 +2,10 @@ import { useCallback, useEffect, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
 import { FocusTrap } from '../FocusTrap';
-import { useScrollingParentsEffect } from '../PopoverContainer/utils';
+import {
+  useResizingParentEffect,
+  useScrollingParentsEffect,
+} from '../PopoverContainer/hooks';
 import {
   Beak,
   BeakBox,
@@ -11,7 +14,6 @@ import {
   PopoverPortal,
   RaisedDiv,
 } from './elements';
-import { useResizingParentEffect } from './hooks';
 import { getBeakVariant } from './styles/beak';
 import { PopoverProps } from './types';
 import { getDefaultOffset } from './utils';

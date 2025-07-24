@@ -2,11 +2,29 @@ import {
   CSSObject,
   percentageOrAbsolute as percent,
 } from '@codecademy/variance';
-import { useEffect } from 'react';
 
 import { PopoverPositionConfig, TargetRef } from './types';
 
-const findAllScrollingParents = (element: HTMLElement): HTMLElement[] => {
+export const findResizingParent = ({
+  parentElement,
+}: HTMLElement): HTMLElement | null => {
+  if (parentElement) {
+    const { overflow, overflowY, overflowX } = getComputedStyle(parentElement);
+    if ([overflow, overflowY, overflowX].some((val) => val === 'clip')) {
+      return parentElement;
+    }
+    return findResizingParent(parentElement); // parent of this parent is used via prop destructure
+  }
+  return null;
+};
+
+/*
+ * Finds all extra scrolling parents of an element.
+ * This is useful for detecting scroll events on parents that may not be the direct parent, which should be managed by react-use's useWindowScroll.
+ */
+export const findAllAdditionalScrollingParents = (
+  element: HTMLElement
+): HTMLElement[] => {
   const scrollingParents: HTMLElement[] = [];
   let currentElement = element.parentElement;
 
@@ -22,60 +40,7 @@ const findAllScrollingParents = (element: HTMLElement): HTMLElement[] => {
     currentElement = currentElement.parentElement;
   }
 
-  if (
-    scrollingParents.length === 0 ||
-    !scrollingParents.includes(document.documentElement)
-  ) {
-    scrollingParents.push(document.documentElement);
-  }
-
   return scrollingParents;
-};
-
-export const useScrollingParentsEffect = (
-  targetRef: React.RefObject<
-    Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
-  >,
-  setTargetRect: (rect: DOMRect | undefined) => void
-) => {
-  useEffect(() => {
-    if (!targetRef.current) {
-      return;
-    }
-
-    const target = targetRef.current as unknown as HTMLElement;
-    const scrollingParents = findAllScrollingParents(target);
-
-    const updatePosition = () => {
-      setTargetRect(targetRef?.current?.getBoundingClientRect());
-    };
-
-    // For immediate updates during scroll
-    const immediateUpdate = () => {
-      updatePosition();
-    };
-
-    const cleanup: (() => void)[] = [];
-
-    // Add listeners to all scrolling parents
-    scrollingParents.forEach((parent) => {
-      if (parent.addEventListener) {
-        // Use immediate update for smoother experience
-        parent.addEventListener('scroll', immediateUpdate, { passive: true });
-        cleanup.push(() =>
-          parent.removeEventListener('scroll', immediateUpdate)
-        );
-      }
-    });
-
-    // Also listen to window scroll as a fallback
-    window.addEventListener('scroll', immediateUpdate, { passive: true });
-    cleanup.push(() => window.removeEventListener('scroll', immediateUpdate));
-
-    return () => {
-      cleanup.forEach((fn) => fn());
-    };
-  }, [targetRef, setTargetRect]);
 };
 
 export const isInView = ({ top, left, bottom, right }: DOMRect) => {

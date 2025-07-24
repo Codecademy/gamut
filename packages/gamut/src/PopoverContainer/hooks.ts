@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
-import { findResizingParent, findScrollingParent } from './utils';
+import { findAllAdditionalScrollingParents, findResizingParent } from './utils';
 
-export const useScrollingParentEffect = (
+export const useScrollingParentsEffect = (
   targetRef: React.RefObject<
     Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
   >,
@@ -12,17 +12,35 @@ export const useScrollingParentEffect = (
     if (!targetRef.current) {
       return;
     }
-    const scrollingParent = findScrollingParent(
-      targetRef.current as unknown as HTMLElement
-    );
-    if (!scrollingParent?.addEventListener) {
-      return;
-    }
-    const handler = () => {
+
+    const target = targetRef.current as unknown as HTMLElement;
+    const scrollingParents = findAllAdditionalScrollingParents(target);
+
+    const updatePosition = () => {
       setTargetRect(targetRef?.current?.getBoundingClientRect());
     };
-    scrollingParent.addEventListener('scroll', handler);
-    return () => scrollingParent.removeEventListener('scroll', handler);
+
+    // For immediate updates during scroll
+    const immediateUpdate = () => {
+      updatePosition();
+    };
+
+    const cleanup: (() => void)[] = [];
+
+    // Add listeners to all scrolling parents (window scroll handled by useWindowScroll)
+    scrollingParents.forEach((parent) => {
+      if (parent.addEventListener) {
+        // Use immediate update for smoother experience
+        parent.addEventListener('scroll', immediateUpdate, { passive: true });
+        cleanup.push(() =>
+          parent.removeEventListener('scroll', immediateUpdate)
+        );
+      }
+    });
+
+    return () => {
+      cleanup.forEach((fn) => fn());
+    };
   }, [targetRef, setTargetRect]);
 };
 
