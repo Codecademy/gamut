@@ -258,4 +258,6 @@ export const DataTableTemplate = createDemoTable(DataTable, {
 export const DataListTemplate = createDemoTable(DataList, {
   scrollable: false,
   height: 'auto',
+  overflow: 'visible',
+  width: '1000px',
 });

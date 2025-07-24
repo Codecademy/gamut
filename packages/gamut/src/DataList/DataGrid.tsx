@@ -2,6 +2,7 @@ import { system } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import { ComponentProps, useMemo } from 'react';
 
+import { BoxProps } from '../Box';
 import { List } from '../List';
 import { EmptyRows } from './EmptyRows';
 import { ListControlContext, useListControls } from './hooks/useListControls';
@@ -26,6 +27,8 @@ export interface DataGridProps<
   header?: boolean;
   /** Whether Select All checkmark should be hidden in the header. Defaults to false */
   hideSelectAll?: boolean;
+  //* * A manual width override */
+  wrapperWidth?: BoxProps['width'];
 }
 
 export function DataGrid<
@@ -55,6 +58,8 @@ export function DataGrid<
     hideSelectAll = false,
     scrollToTopOnUpdate = false,
     id,
+    wrapperWidth,
+    overflow,
   } = props;
 
   const empty = rows.length === 0;
@@ -117,11 +122,13 @@ export function DataGrid<
           id={id}
           loading={loading}
           minHeight={minHeight}
+          overflow={overflow}
           scrollToTopOnUpdate={scrollToTopOnUpdate}
           scrollable={scrollable}
           shadow={shadow}
           spacing={spacing}
           variant={variant}
+          wrapperWidth={wrapperWidth ?? undefined}
         >
           {renderedRows.map((row) => {
             const rowId = row[idKey];
