@@ -75,10 +75,8 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
     setTargetRect(targetRef?.current?.getBoundingClientRect());
   }, [targetRef, isOpen, winW, winH, winX, winY]);
 
-  // Handle scrolling parent effects
   useScrollingParentEffect(targetRef, setTargetRect);
 
-  // Handle resizing parent effects
   useResizingParentEffect(targetRef, setTargetRect);
 
   useIsomorphicLayoutEffect(() => {
