@@ -62,37 +62,73 @@ const TestDropdownButton = () => {
         </Menu>
       </PopoverContainer>
 
+      {/*
+        Modal with multiple views: 
+        - "confirm" (default): confirmation dialog
+        - "success": after arrest
+        - "error": example error state
+      */}
       <Modal
         isOpen={isModalOpen}
         size="small"
-        title="Arrest Crew Member"
-        onRequestClose={() => setIsModalOpen(false)}
-      >
-        <FlexBox column gap={16}>
-          <Text>
-            Are you sure you want to arrest this crew member? This action cannot
-            be undone.
-          </Text>
-          <FlexBox gap={8} justifyContent="flex-end">
-            <FillButton
-              variant="secondary"
-              onClick={() => setIsModalOpen(false)}
-            >
-              Cancel
-            </FillButton>
-            <FillButton
-              variant="danger"
-              onClick={() => {
-                console.log('Crew memmber arrested');
+        views={[
+          {
+            title: 'Arrest Crew Member',
+            children: (
+              <Text>
+                Are you sure you want to arrest this crew member? This action
+                cannot be undone.
+              </Text>
+            ),
+            primaryCta: {
+              children: 'Arrest',
+              actionType: 'next',
+              onClick: () => {
+                // Simulate arrest logic - this will advance to next view
+              },
+            },
+            secondaryCta: {
+              children: 'Cancel',
+              actionType: 'cancel',
+              onClick: () => {
                 setIsModalOpen(false);
-                // Add your arrest logic here
-              }}
-            >
-              Arrest
-            </FillButton>
-          </FlexBox>
-        </FlexBox>
-      </Modal>
+              },
+            },
+          },
+          {
+            title: 'Crew Member Arrested',
+            children: (
+              <Text>The crew member has been arrested successfully.</Text>
+            ),
+            primaryCta: {
+              children: 'Close',
+              actionType: 'confirm',
+              onClick: () => {
+                setIsModalOpen(false);
+              },
+            },
+          },
+          {
+            title: 'Error',
+            children: (
+              <Text color="danger">
+                Something went wrong while arresting the crew member.
+              </Text>
+            ),
+            primaryCta: {
+              children: 'Back',
+              actionType: 'confirm',
+              onClick: () => {
+                // This will close the modal and reset to first view
+                setIsModalOpen(false);
+              },
+            },
+          },
+        ]}
+        onRequestClose={() => {
+          setIsModalOpen(false);
+        }}
+      />
     </Box>
   );
 };

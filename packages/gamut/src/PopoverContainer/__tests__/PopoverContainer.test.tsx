@@ -145,6 +145,116 @@ describe('Popover', () => {
     expect(onRequestClose).toBeCalledTimes(0);
   });
 
+  describe('deferred click outside behavior', () => {
+    beforeEach(() => {
+      jest.useFakeTimers();
+    });
+
+    afterEach(() => {
+      jest.runOnlyPendingTimers();
+      jest.useRealTimers();
+    });
+
+    it('defers onRequestClose when clicking outside to allow button clicks', () => {
+      const onRequestClose = jest.fn();
+      renderView({
+        inline: false,
+        onRequestClose,
+      });
+
+      // Click outside the popover
+      fireEvent.mouseDown(screen.getByTestId('outside-popover'));
+
+      // onRequestClose should not be called immediately
+      expect(onRequestClose).not.toBeCalled();
+
+      // Fast-forward timers to trigger the deferred call
+      jest.runAllTimers();
+
+      // Now onRequestClose should be called
+      expect(onRequestClose).toBeCalledTimes(1);
+    });
+
+    it('allows button clicks to complete before closing popover', () => {
+      const onRequestClose = jest.fn();
+      const buttonClickHandler = jest.fn();
+
+      const { view } = renderView({
+        inline: false,
+        onRequestClose,
+      });
+
+      // Add a button outside the popover
+      const outsideButton = document.createElement('button');
+      outsideButton.onclick = buttonClickHandler;
+      outsideButton.textContent = 'Outside Button';
+      view.baseElement.appendChild(outsideButton);
+
+      // Click the outside button
+      fireEvent.click(outsideButton);
+
+      // Button click handler should be called immediately
+      expect(buttonClickHandler).toBeCalledTimes(1);
+
+      // onRequestClose should not be called immediately
+      expect(onRequestClose).not.toBeCalled();
+
+      // Fast-forward timers
+      jest.runAllTimers();
+
+      // Now onRequestClose should be called
+      expect(onRequestClose).toBeCalledTimes(1);
+    });
+
+    it('does not defer close when clicking on different floating elements', () => {
+      const onRequestClose = jest.fn();
+      renderView({
+        inline: false,
+        onRequestClose,
+      });
+
+      // Create a different floating element
+      const floatingElement = document.createElement('div');
+      floatingElement.setAttribute('data-floating', 'true');
+      floatingElement.textContent = 'Other Floating Element';
+      document.body.appendChild(floatingElement);
+
+      // Click on the different floating element
+      fireEvent.mouseDown(floatingElement);
+
+      // Should close immediately (no deferral for different floating elements)
+      expect(onRequestClose).toBeCalledTimes(1);
+
+      // Clean up
+      document.body.removeChild(floatingElement);
+    });
+
+    it('does not close when clicking on floating elements within the same popover', () => {
+      const onRequestClose = jest.fn();
+      const { view } = renderView({
+        inline: false,
+        onRequestClose,
+      });
+
+      // Get the popover content and add a floating element inside it
+      const popoverContent = screen.getByTestId('popover-content-container');
+      const innerFloatingElement = document.createElement('div');
+      innerFloatingElement.setAttribute('data-floating', 'true');
+      innerFloatingElement.textContent = 'Inner Floating Element';
+      popoverContent.appendChild(innerFloatingElement);
+
+      // Click on the inner floating element
+      fireEvent.mouseDown(innerFloatingElement);
+
+      // Should not close at all
+      expect(onRequestClose).not.toBeCalled();
+
+      // Even after timers run
+      jest.runAllTimers();
+      expect(onRequestClose).not.toBeCalled();
+    });
+  });
+
   describe('alignments', () => {
     describe('render context', () => {
       describe('portal - viewport', () => {

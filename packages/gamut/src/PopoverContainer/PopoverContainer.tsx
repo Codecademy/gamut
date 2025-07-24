@@ -107,6 +107,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
       if (!targetElement) return;
       if (targetElement.contains(target)) return;
       if (popoverRef.current?.contains(target)) return;
+
       // If we get here, it's a genuine outside click
       onRequestClose?.();
     },
@@ -130,8 +131,13 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
       )
         return;
 
-      // Only close if clicking on a different floating element that's not our popover
+      // Check if the clicked element is within an Overlay component
       const clickedElement = target as Element;
+      if (clickedElement.closest('[data-testid="overlay-content-container"]')) {
+        return;
+      }
+
+      // Check if the clicked elemement is within another Popover or PopoverContainer
       const isFloatingElement = clickedElement.closest(
         '[data-floating="true"]'
       );
@@ -143,10 +149,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
         return;
       }
 
-      // Close the popover but allow the click event to continue by using setTimeout
-      setTimeout(() => {
-        onRequestClose?.();
-      }, 0);
+      onRequestClose?.();
     },
     [onRequestClose, targetRef, isOpen]
   );
