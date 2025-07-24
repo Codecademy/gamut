@@ -389,7 +389,6 @@ export const ColEl = styled(
 
 export const StickyHeaderColWrapper = styled.th(
   css({
-    display: { _: 'none', c_sm: 'block' },
     '&:before': {
       content: '""',
       position: 'absolute',
