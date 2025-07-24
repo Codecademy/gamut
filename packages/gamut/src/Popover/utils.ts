@@ -1,33 +1,37 @@
 import { PopoverProps } from './types';
 
-export const findScrollingParent = ({
-  parentElement,
-}: HTMLElement): HTMLElement | null => {
-  if (parentElement) {
-    const { overflow, overflowY, overflowX } = getComputedStyle(parentElement);
+export const findScrollingParent = (element: HTMLElement): HTMLElement => {
+  let currentElement = element.parentElement;
+
+  while (currentElement && currentElement !== document.documentElement) {
+    const { overflow, overflowY, overflowX } = getComputedStyle(currentElement);
     if (
       [overflow, overflowY, overflowX].some((val) =>
         ['scroll', 'auto'].includes(val)
       )
     ) {
-      return parentElement;
+      return currentElement;
     }
-    return findScrollingParent(parentElement); // parent of this parent is used via prop destructure
+    currentElement = currentElement.parentElement;
   }
-  return null;
+
+  // Fallback to document.documentElement if no scrolling parent is found
+  return document.documentElement;
 };
 
-export const findResizingParent = ({
-  parentElement,
-}: HTMLElement): HTMLElement | null => {
-  if (parentElement) {
-    const { overflow, overflowY, overflowX } = getComputedStyle(parentElement);
+export const findResizingParent = (element: HTMLElement): HTMLElement => {
+  let currentElement = element.parentElement;
+
+  while (currentElement && currentElement !== document.documentElement) {
+    const { overflow, overflowY, overflowX } = getComputedStyle(currentElement);
     if ([overflow, overflowY, overflowX].some((val) => val === 'clip')) {
-      return parentElement;
+      return currentElement;
     }
-    return findResizingParent(parentElement); // parent of this parent is used via prop destructure
+    currentElement = currentElement.parentElement;
   }
-  return null;
+
+  // Fallback to document.documentElement if no resizing parent is found
+  return document.documentElement;
 };
 
 const offsets = {
