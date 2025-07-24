@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.3...@codecademy/gamut@66.0.4) (2025-07-24)
+
+### Bug Fixes
+
+- **Pagination:** allow for text variant to render ([b5ab3b5](https://github.com/Codecademy/gamut/commit/b5ab3b5792d64ae4d473a1e4ff257de63351a150))
+
 ### [66.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.2...@codecademy/gamut@66.0.3) (2025-07-22)
 
 **Note:** Version bump only for package @codecademy/gamut
