@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
 import { FocusTrap } from '../FocusTrap';
+import { useScrollingParentsEffect } from '../PopoverContainer/utils';
 import {
   Beak,
   BeakBox,
@@ -10,7 +11,7 @@ import {
   PopoverPortal,
   RaisedDiv,
 } from './elements';
-import { useResizingParentEffect, useScrollingParentEffect } from './hooks';
+import { useResizingParentEffect } from './hooks';
 import { getBeakVariant } from './styles/beak';
 import { PopoverProps } from './types';
 import { getDefaultOffset } from './utils';
@@ -102,7 +103,20 @@ export const Popover: React.FC<PopoverProps> = ({
     setTargetRect(targetRef?.current?.getBoundingClientRect());
   }, [targetRef, isOpen, width, height, x, y]);
 
-  useScrollingParentEffect(targetRef, setTargetRect);
+  // Update target rectangle when parent size/scroll changes
+  const updateTargetPosition = useCallback(
+    (rect?: DOMRect) => {
+      const target = targetRef?.current;
+      if (!target) return;
+
+      const newRect = rect || target.getBoundingClientRect();
+      setTargetRect(newRect);
+    },
+    [targetRef]
+  );
+
+  useScrollingParentsEffect(targetRef, updateTargetPosition);
+  // useScrollingParentEffect(targetRef, setTargetRect);
 
   useResizingParentEffect(targetRef, setTargetRect);
 
