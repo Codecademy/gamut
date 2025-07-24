@@ -198,6 +198,7 @@ export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
     bg: 'background-current',
     zIndex: 2,
     fontFamily: 'accent',
+    pb: { _: 8, c_sm: 0 },
   }),
   spacingVariants,
   rowStates,
@@ -330,7 +331,7 @@ const columnStates = states({
 const columnSpacing = variant({
   prop: 'spacing',
   base: {
-    px: { _: 16, c_sm: 0 },
+    px: { _: 8, c_sm: 0 },
     '&:first-of-type': {
       pl: 8,
     },

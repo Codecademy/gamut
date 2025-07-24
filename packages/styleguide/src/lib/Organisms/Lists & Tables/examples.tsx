@@ -242,6 +242,7 @@ export const createDemoTable =
         query={query}
         rows={rows}
         selected={selectedRows}
+        variant="card"
         onQueryChange={onQueryChange}
         onRowExpand={onRowExpand}
         onRowSelect={onRowSelect}
