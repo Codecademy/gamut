@@ -133,13 +133,13 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
       // Check if the clicked element is within an Overlay component
       const clickedElement = target as Element;
-      if (clickedElement.closest('[data-testid="overlay-content-container"]')) {
+      if (clickedElement.closest('[data-floating="overlay"]')) {
         return;
       }
 
-      // Check if the clicked elemement is within another Popover or PopoverContainer
+      // Check if the clicked element is within another Popover or PopoverContainer
       const isFloatingElement = clickedElement.closest(
-        '[data-floating="true"]'
+        '[data-floating="popover"]'
       );
       if (
         isFloatingElement &&
@@ -182,7 +182,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
       onEscapeKey={onRequestClose}
     >
       <PopoverContent
-        data-floating="true"
+        data-floating="popover"
         data-testid="popover-content-container"
         position="absolute"
         ref={popoverRef}

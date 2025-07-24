@@ -147,7 +147,7 @@ export const Popover: React.FC<PopoverProps> = ({
     <PopoverContainer
       align={align}
       className={className}
-      data-floating="true"
+      data-floating="popover"
       data-testid="popover-content-container"
       position={position}
       {...(popoverContainerRef ? { ref: popoverContainerRef } : {})}
