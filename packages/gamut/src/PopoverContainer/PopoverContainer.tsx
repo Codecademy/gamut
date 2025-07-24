@@ -75,32 +75,9 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
     setTargetRect(targetRef?.current?.getBoundingClientRect());
   }, [targetRef, isOpen, winW, winH, winX, winY]);
 
-  // Enhanced scroll handling that updates both targetRect and containers
-  const updateTargetPosition = useCallback(
-    (rect?: DOMRect) => {
-      const target = targetRef?.current;
-      if (!target) return;
+  useScrollingParentEffect(targetRef, setTargetRect);
 
-      const newRect = rect || target.getBoundingClientRect();
-      setTargetRect(newRect);
-
-      // Get current scroll position for accurate container calculation
-      const currentScrollX =
-        window.pageXOffset || document.documentElement.scrollLeft;
-      const currentScrollY =
-        window.pageYOffset || document.documentElement.scrollTop;
-
-      // Also update containers to ensure positioning stays in sync
-      setContainers(
-        getContainers(target, inline, { x: currentScrollX, y: currentScrollY })
-      );
-    },
-    [targetRef, inline]
-  );
-
-  useScrollingParentEffect(targetRef, updateTargetPosition);
-
-  useResizingParentEffect(targetRef, updateTargetPosition);
+  useResizingParentEffect(targetRef, setTargetRect);
 
   useIsomorphicLayoutEffect(() => {
     if (
