@@ -16,7 +16,12 @@ import {
   useScrollingParentEffect,
 } from '../Popover/hooks';
 import { ContainerState, PopoverContainerProps } from './types';
-import { getContainers, getPosition, isInView } from './utils';
+import {
+  getContainers,
+  getPosition,
+  isInView,
+  useScrollingParentsEffect,
+} from './utils';
 
 const PopoverContent = styled.div(
   variance.compose(
@@ -75,7 +80,28 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
     setTargetRect(targetRef?.current?.getBoundingClientRect());
   }, [targetRef, isOpen, winW, winH, winX, winY]);
 
-  useScrollingParentEffect(targetRef, setTargetRect);
+  // Update target rectangle when parent size/scroll changes
+  const updateTargetPosition = useCallback(
+    (rect?: DOMRect) => {
+      const target = targetRef?.current;
+      if (!target) return;
+
+      const newRect = rect || target.getBoundingClientRect();
+      setTargetRect(newRect);
+
+      const currentScrollX =
+        window.pageXOffset || document.documentElement.scrollLeft;
+      const currentScrollY =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      setContainers(
+        getContainers(target, inline, { x: currentScrollX, y: currentScrollY })
+      );
+    },
+    [targetRef, inline]
+  );
+
+  useScrollingParentsEffect(targetRef, updateTargetPosition);
 
   useResizingParentEffect(targetRef, setTargetRect);
 
