@@ -11,10 +11,7 @@ import {
 
 import { BodyPortal } from '../BodyPortal';
 import { FocusTrap } from '../FocusTrap';
-import {
-  useResizingParentEffect,
-  useScrollingParentEffect,
-} from '../Popover/hooks';
+import { useResizingParentEffect } from '../Popover/hooks';
 import { ContainerState, PopoverContainerProps } from './types';
 import {
   getContainers,
