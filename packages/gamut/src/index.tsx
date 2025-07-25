@@ -31,7 +31,6 @@ export * from './List';
 export * from './Loading/Shimmer';
 export * from './Markdown';
 export * from './Menu';
-export * from './ModalDeprecated';
 export * from './Modals';
 export * from './Overlay';
 export * from './Pagination';
