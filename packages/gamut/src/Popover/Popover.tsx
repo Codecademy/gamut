@@ -3,6 +3,10 @@ import { useWindowScroll, useWindowSize } from 'react-use';
 
 import { FocusTrap } from '../FocusTrap';
 import {
+  useResizingParentEffect,
+  useScrollingParentsEffect,
+} from '../PopoverContainer/hooks';
+import {
   Beak,
   BeakBox,
   PatternContainer,
@@ -12,11 +16,7 @@ import {
 } from './elements';
 import { getBeakVariant } from './styles/beak';
 import { PopoverProps } from './types';
-import {
-  findResizingParent,
-  findScrollingParent,
-  getDefaultOffset,
-} from './utils';
+import { getDefaultOffset } from './utils';
 
 export const Popover: React.FC<PopoverProps> = ({
   animation,
@@ -105,39 +105,21 @@ export const Popover: React.FC<PopoverProps> = ({
     setTargetRect(targetRef?.current?.getBoundingClientRect());
   }, [targetRef, isOpen, width, height, x, y]);
 
-  useEffect(() => {
-    if (!targetRef.current) {
-      return;
-    }
-    const scrollingParent = findScrollingParent(
-      targetRef.current as HTMLElement
-    );
-    if (!scrollingParent?.addEventListener) {
-      return;
-    }
-    const handler = () => {
-      setTargetRect(targetRef?.current?.getBoundingClientRect());
-    };
-    scrollingParent.addEventListener('scroll', handler);
-    return () => scrollingParent.removeEventListener('scroll', handler);
-  }, [targetRef]);
+  // Update target rectangle when parent size/scroll changes
+  const updateTargetPosition = useCallback(
+    (rect?: DOMRect) => {
+      const target = targetRef?.current;
+      if (!target) return;
 
-  useEffect(() => {
-    // handles movement of target within a clipped container e.g. Drawer
-    if (!targetRef.current || typeof ResizeObserver === 'undefined') {
-      return;
-    }
-    const resizingParent = findResizingParent(targetRef.current as HTMLElement);
-    if (!resizingParent?.addEventListener) {
-      return;
-    }
-    const handler = () => {
-      setTargetRect(targetRef?.current?.getBoundingClientRect());
-    };
-    const ro = new ResizeObserver(handler);
-    ro.observe(resizingParent);
-    return () => ro.unobserve(resizingParent);
-  }, [targetRef]);
+      const newRect = rect || target.getBoundingClientRect();
+      setTargetRect(newRect);
+    },
+    [targetRef]
+  );
+
+  useScrollingParentsEffect(targetRef, updateTargetPosition);
+
+  useResizingParentEffect(targetRef, setTargetRect);
 
   useEffect(() => {
     if (targetRect) {
@@ -155,11 +137,16 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const handleClickOutside = useCallback(
     (e: MouseEvent) => {
+      const target = e.target as Node;
+      const targetElement = targetRef.current;
+
+      if (!targetElement) return;
+
       /**
        * Allows targetRef to be or contain a button that toggles the popover open and closed.
        * Without this check it would toggle closed then back open immediately.
        */
-      if (targetRef.current?.contains(e.target as Node)) return;
+      if (targetElement.contains(target)) return;
 
       onRequestClose?.();
     },
@@ -175,6 +162,7 @@ export const Popover: React.FC<PopoverProps> = ({
     <PopoverContainer
       align={align}
       className={className}
+      data-floating="popover"
       data-testid="popover-content-container"
       position={position}
       {...(popoverContainerRef ? { ref: popoverContainerRef } : {})}
