@@ -29,13 +29,18 @@ export const Default: Story = {
 export const IconAnchor: Story = {
   render: (args) => (
     <GridBox gap={4}>
-      <Anchor {...args} href="/" icon={MiniInfoOutlineIcon} iconPosition="left">
+      <Anchor
+        {...args}
+        href="/"
+        icon={[MiniInfoOutlineIcon, MiniInfoOutlineIcon]}
+        iconPosition="left"
+      >
         Left-aligned icon anchor
       </Anchor>
       <Anchor
         {...args}
         href="/"
-        icon={MiniArrowRightIcon}
+        icon={[MiniArrowRightIcon, MiniArrowRightIcon]}
         iconPosition="right"
         variant="inline"
       >
