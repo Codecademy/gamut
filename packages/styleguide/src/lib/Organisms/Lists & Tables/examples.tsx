@@ -18,15 +18,65 @@ import { BlueprintWhite } from '@codecademy/gamut-illustrations';
 import uniq from 'lodash/uniq';
 import { useCallback, useMemo, useRef, useState } from 'react';
 
-const TestDropdownButton = () => {
+interface MenuItemConfig {
+  action: string;
+  onClick: () => void;
+}
+
+const MenuItemGenerator: React.FC<{
+  items: MenuItemConfig[];
+  name: string;
+}> = ({ items, name }) => {
+  return (
+    <>
+      {items.map((item) => (
+        <MenuItem key={item.action} onClick={item.onClick}>
+          <Text truncate="ellipsis" truncateLines={1}>
+            {`${item.action} ${name}`}
+          </Text>
+        </MenuItem>
+      ))}
+    </>
+  );
+};
+
+const CrewMgmtDropdown: React.FC<{ row: (typeof crew)[1] }> = ({ row }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const menuButtonRef = useRef<HTMLDivElement>(null);
+  const { name } = row;
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
 
   const handleArrestClick = () => {
     setIsOpen(false);
     setIsModalOpen(true);
   };
+
+  const menuItems: MenuItemConfig[] = [
+    {
+      onClick: handleClose,
+      action: 'Edit',
+    },
+    {
+      onClick: handleClose,
+      action: 'Fire',
+    },
+    {
+      onClick: handleClose,
+      action: 'Clone',
+    },
+    {
+      onClick: handleClose,
+      action: 'Disipline',
+    },
+    {
+      onClick: handleArrestClick,
+      action: 'Arrest',
+    },
+  ];
 
   return (
     <Box p={4} ref={menuButtonRef} width="fit-content">
@@ -35,7 +85,6 @@ const TestDropdownButton = () => {
         tip="Show options"
         tipProps={{
           alignment: 'left-center',
-          placement: 'floating',
         }}
         variant="secondary"
         onClick={() => setIsOpen(!isOpen)}
@@ -47,23 +96,15 @@ const TestDropdownButton = () => {
         targetRef={menuButtonRef}
         x={-50}
         y={-20}
-        onRequestClose={() => setIsOpen(false)}
+        onRequestClose={handleClose}
       >
         <Menu borderRadius="md" spacing="normal" variant="popover">
-          <MenuItem onClick={() => setIsOpen(false)}>Edit crew member</MenuItem>
-          <MenuItem onClick={() => setIsOpen(false)}>Fire crew member</MenuItem>
-          <MenuItem onClick={() => setIsOpen(false)}>
-            Clone crew member
-          </MenuItem>
-          <MenuItem onClick={() => setIsOpen(false)}>
-            Disipline crew member
-          </MenuItem>
-          <MenuItem onClick={handleArrestClick}>Arrest crew member</MenuItem>
+          <MenuItemGenerator items={menuItems} name={name} />
         </Menu>
       </PopoverContainer>
 
       {/*
-        Modal with multiple views: 
+        Modal with multiple views:
         - "confirm" (default): confirmation dialog
         - "success": after arrest
         - "error": example error state
@@ -97,9 +138,7 @@ const TestDropdownButton = () => {
           },
           {
             title: 'Crew Member Arrested',
-            children: (
-              <Text>The crew member has been arrested successfully.</Text>
-            ),
+            children: <Text>{name} has been arrested successfully.</Text>,
             primaryCta: {
               children: 'Close',
               actionType: 'confirm',
@@ -112,7 +151,7 @@ const TestDropdownButton = () => {
             title: 'Error',
             children: (
               <Text color="danger">
-                Something went wrong while arresting the crew member.
+                Something went wrong while arresting {name}.
               </Text>
             ),
             primaryCta: {
@@ -132,6 +171,7 @@ const TestDropdownButton = () => {
     </Box>
   );
 };
+
 export const CustomEmptyState: React.FC = () => (
   <Box as="tbody" height="100%" width="100%">
     <Box
@@ -287,8 +327,7 @@ export const cols = [
     size: 'md',
     justify: 'right',
     type: 'control',
-    sortable: true,
-    render: () => <TestDropdownButton />,
+    render: (row) => <CrewMgmtDropdown row={row} />,
   },
 ] as ColumnConfig<(typeof crew)[number]>[];
 
