@@ -69,7 +69,7 @@ const createBaseIconProps = (iconSize: number) =>
 
 // Common helper to render an icon with all styling applied
 const renderStyledIcon = (
-  Component: React.ComponentType<GamutIconProps>,
+  Icon: React.ComponentType<GamutIconProps>,
   baseProps: ReturnType<typeof createBaseIconProps>,
   spacing: 'mr' | 'ml',
   iconAndTextGap: number,
@@ -78,7 +78,7 @@ const renderStyledIcon = (
   heightOffset: string,
   iconSize: number
 ) => (
-  <Component
+  <Icon
     {...baseProps}
     {...{ [spacing]: iconAndTextGap }}
     height={heightOffset}
@@ -94,7 +94,7 @@ const wrapContent = (content: React.ReactNode, isInlineIcon: boolean) =>
   isInlineIcon ? (
     <Box display="inline">{content}</Box>
   ) : (
-    <FlexBox alignItems="center" center height="100%">
+    <FlexBox center height="100%">
       {content}
     </FlexBox>
   );
