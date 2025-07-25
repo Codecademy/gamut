@@ -22,28 +22,18 @@ export const Anchor = forwardRef<
     },
     ref
   ) => {
-    let content;
-    if (icon && Array.isArray(icon)) {
-      content = appendMultiIconsToContent({
-        children,
-        icon,
-        iconOffset,
-        iconSize,
-        iconAndTextGap,
-        isInlineIcon,
-      });
-    } else {
-      // Use appendIconToContent for single icon
-      content = appendIconToContent({
-        children,
-        icon,
-        iconOffset,
-        iconSize,
-        iconAndTextGap,
-        isInlineIcon,
-        iconPosition,
-      });
-    }
+    const commonIconProps = {
+      children,
+      iconOffset,
+      iconSize,
+      iconAndTextGap,
+      isInlineIcon,
+    };
+
+    const content =
+      icon && Array.isArray(icon)
+        ? appendMultiIconsToContent({ ...commonIconProps })
+        : appendIconToContent({ ...commonIconProps, iconPosition });
 
     if (!rest.href) {
       return (
