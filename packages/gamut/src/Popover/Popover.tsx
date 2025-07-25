@@ -118,7 +118,6 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 
   useScrollingParentsEffect(targetRef, updateTargetPosition);
-  // useScrollingParentEffect(targetRef, setTargetRect);
 
   useResizingParentEffect(targetRef, setTargetRect);
 
