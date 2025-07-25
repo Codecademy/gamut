@@ -17,6 +17,7 @@ import { MiniKebabMenuIcon } from '@codecademy/gamut-icons';
 import { BlueprintWhite } from '@codecademy/gamut-illustrations';
 import uniq from 'lodash/uniq';
 import { useCallback, useMemo, useRef, useState } from 'react';
+import { useMedia } from 'react-use';
 
 interface MenuItemConfig {
   action: string;
@@ -40,11 +41,30 @@ const MenuItemGenerator: React.FC<{
   );
 };
 
-const CrewMgmtDropdown: React.FC<{ row: (typeof crew)[1] }> = ({ row }) => {
+const useScreenAlignment = (menuSide: 'left' | 'right') => {
+  const isSmOrLarger = useMedia('(min-width: 768px)');
+
+  const alignment = useMemo((): 'bottom-left' | 'bottom-right' => {
+    // At sm breakpoint (768px) or smaller, always use bottom-left
+    if (!isSmOrLarger) {
+      return 'bottom-left';
+    }
+    // Otherwise use the menuSide prop
+    return menuSide === 'left' ? 'bottom-left' : 'bottom-right';
+  }, [isSmOrLarger, menuSide]);
+
+  return { alignment };
+};
+
+const CrewMgmtDropdown: React.FC<{
+  row: (typeof crew)[1];
+  menuSide: 'left' | 'right';
+}> = ({ row, menuSide }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const menuButtonRef = useRef<HTMLDivElement>(null);
   const { name } = row;
+  const { alignment } = useScreenAlignment(menuSide);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -91,11 +111,11 @@ const CrewMgmtDropdown: React.FC<{ row: (typeof crew)[1] }> = ({ row }) => {
       />
 
       <PopoverContainer
+        alignment={alignment}
         allowPageInteraction
         isOpen={isOpen}
+        offset={0}
         targetRef={menuButtonRef}
-        x={-50}
-        y={-20}
         onRequestClose={handleClose}
       >
         <Menu borderRadius="md" spacing="normal" variant="popover">
@@ -321,18 +341,28 @@ export const cols = [
     sortable: true,
     filters: ['Human'],
   },
-  {
-    header: '',
-    key: '',
-    size: 'md',
-    justify: 'right',
-    type: 'control',
-    render: (row) => <CrewMgmtDropdown row={row} />,
-  },
 ] as ColumnConfig<(typeof crew)[number]>[];
 
+const leftMenu: ColumnConfig<(typeof crew)[number]> = {
+  header: '',
+  key: 'name',
+  size: 'md',
+  justify: 'right',
+  type: 'control',
+  render: (row) => <CrewMgmtDropdown menuSide="left" row={row} />,
+};
+
+const rightMenu: ColumnConfig<(typeof crew)[number]> = {
+  header: '',
+  key: 'name',
+  size: 'md',
+  justify: 'right',
+  type: 'control',
+  render: (row) => <CrewMgmtDropdown menuSide="right" row={row} />,
+};
+
 export const createDemoTable =
-  (Component: any, overrides = {}) =>
+  (Component: any, overrides = {}, menuSide: 'left' | 'right' = 'left') =>
   () => {
     const [selectedRows, setSelectedRows] = useState<
       (typeof crew)[number]['name'][]
@@ -341,10 +371,15 @@ export const createDemoTable =
       (typeof crew)[number]['name'][]
     >([]);
 
+    const columnsWithMenu = useMemo(() => {
+      const menuConfig = menuSide === 'left' ? leftMenu : rightMenu;
+      return [...cols, menuConfig];
+    }, []);
+
     const { idKey, query, rows, onQueryChange } = useLocalQuery({
       idKey: 'name',
       rows: crew,
-      columns: cols,
+      columns: columnsWithMenu,
     });
 
     const allIds = useMemo(() => crew.map(({ [idKey]: id }) => id), [idKey]);
@@ -401,7 +436,7 @@ export const createDemoTable =
 
     return (
       <Component
-        columns={cols}
+        columns={columnsWithMenu}
         expanded={expandedRows}
         expandedContent={expandedContent}
         height={500}
@@ -418,13 +453,21 @@ export const createDemoTable =
     );
   };
 
-export const DataTableTemplate = createDemoTable(DataTable, {
-  onRowSelect: undefined,
-  onRowExpand: undefined,
-});
+export const DataTableTemplate = createDemoTable(
+  DataTable,
+  {
+    onRowSelect: undefined,
+    onRowExpand: undefined,
+  },
+  'left'
+);
 
-export const DataListTemplate = createDemoTable(DataList, {
-  scrollable: false,
-  height: 'auto',
-  showOverflow: true,
-});
+export const DataListTemplate = createDemoTable(
+  DataList,
+  {
+    scrollable: false,
+    height: 'auto',
+    showOverflow: true,
+  },
+  'right'
+);
