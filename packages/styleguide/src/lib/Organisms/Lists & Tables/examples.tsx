@@ -99,12 +99,13 @@ const CrewMgmtDropdown: React.FC<{
   ];
 
   return (
-    <Box p={4} ref={menuButtonRef} width="fit-content">
+    <Box display="inline-block" p={8} ref={menuButtonRef}>
       <IconButton
         icon={MiniKebabMenuIcon}
         tip="Show options"
         tipProps={{
           alignment: 'left-center',
+          placement: 'floating',
         }}
         variant="secondary"
         onClick={() => setIsOpen(!isOpen)}
@@ -344,7 +345,7 @@ export const cols = [
 ] as ColumnConfig<(typeof crew)[number]>[];
 
 const leftMenu: ColumnConfig<(typeof crew)[number]> = {
-  header: '',
+  header: 'Controls',
   key: 'name',
   size: 'md',
   justify: 'right',
@@ -353,7 +354,7 @@ const leftMenu: ColumnConfig<(typeof crew)[number]> = {
 };
 
 const rightMenu: ColumnConfig<(typeof crew)[number]> = {
-  header: '',
+  header: 'Controls',
   key: 'name',
   size: 'md',
   justify: 'right',
