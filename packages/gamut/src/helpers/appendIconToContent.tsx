@@ -42,10 +42,62 @@ export type AppendedIconProps =
   | AppendedSingleIconProps
   | AppendedMultipleIconsProps;
 
-// // Helper to check if a value is a valid React component
+// Helper to check if a value is a valid React component
 const isValidComponent = (Component: any) =>
   typeof Component === 'function' ||
   (typeof Component === 'object' && Component !== null);
+
+// Common helper to calculate icon offsets and create base icon props
+const createIconOffsets = (
+  iconOffset: number | undefined,
+  iconSize: number,
+  isInlineIcon: boolean
+) => {
+  const finalIconOffset = iconOffset ?? (isInlineIcon ? 2 : 4);
+  const iconOffsetInEm = pixelToEm(finalIconOffset);
+  const heightOffset = pixelToEm(iconSize + finalIconOffset);
+
+  return { iconOffsetInEm, heightOffset };
+};
+
+// Common helper to create base icon props
+const createBaseIconProps = (iconSize: number) =>
+  ({
+    'aria-hidden': true,
+    size: iconSize,
+  } as const);
+
+// Common helper to render an icon with all styling applied
+const renderStyledIcon = (
+  Component: React.ComponentType<GamutIconProps>,
+  baseProps: ReturnType<typeof createBaseIconProps>,
+  spacing: 'mr' | 'ml',
+  iconAndTextGap: number,
+  order: number,
+  iconOffsetInEm: string,
+  heightOffset: string,
+  iconSize: number
+) => (
+  <Component
+    {...baseProps}
+    {...{ [spacing]: iconAndTextGap }}
+    height={heightOffset}
+    order={order}
+    pb={iconOffsetInEm as any}
+    verticalAlign="middle"
+    width={iconSize}
+  />
+);
+
+// Common wrapper to handle inline vs flex layout
+const wrapContent = (content: React.ReactNode, isInlineIcon: boolean) =>
+  isInlineIcon ? (
+    <Box display="inline">{content}</Box>
+  ) : (
+    <FlexBox alignItems="center" center height="100%">
+      {content}
+    </FlexBox>
+  );
 
 export const appendIconToContent = ({
   children,
@@ -58,54 +110,41 @@ export const appendIconToContent = ({
 }: AppendedSingleIconProps) => {
   if (!Icon) return <>{children}</>;
 
+  const { iconOffsetInEm, heightOffset } = createIconOffsets(
+    iconOffset,
+    iconSize,
+    isInlineIcon
+  );
+  const baseIconProps = createBaseIconProps(iconSize);
+
   const iconSpacing = iconPosition === 'left' ? 'mr' : 'ml';
-  const iconPositioning = iconPosition === 'left' ? 0 : 1;
+  const iconOrder = iconPosition === 'left' ? 0 : 1;
 
-  if (typeof iconOffset !== 'number') {
-    iconOffset = isInlineIcon ? 2 : 4;
-  }
-
-  const iconOffsetInEm = pixelToEm(iconOffset);
-  const heightOffset = pixelToEm(iconSize + iconOffset);
-
-  const iconProps = {
-    'aria-hidden': true,
-    size: iconSize,
-    [iconSpacing]: iconAndTextGap,
-    order: iconPositioning,
-  } as const;
-
-  const InlineCenteredIcon = (
-    <Icon
-      {...iconProps}
-      height={heightOffset}
-      pb={iconOffsetInEm as any}
-      verticalAlign="middle"
-      width={iconSize}
-    />
+  const styledIcon = renderStyledIcon(
+    Icon,
+    baseIconProps,
+    iconSpacing,
+    iconAndTextGap,
+    iconOrder,
+    iconOffsetInEm,
+    heightOffset,
+    iconSize
   );
 
   const content =
     iconPosition === 'left' ? (
       <>
-        {InlineCenteredIcon}
+        {styledIcon}
         {children}
       </>
     ) : (
       <>
         {children}
-        {InlineCenteredIcon}
+        {styledIcon}
       </>
     );
 
-  return isInlineIcon ? (
-    <Box display="inline">{content}</Box>
-  ) : (
-    <FlexBox alignItems="center" center height="100%">
-      {Icon && <Icon {...iconProps} />}
-      {children}
-    </FlexBox>
-  );
+  return wrapContent(content, isInlineIcon);
 };
 
 export const appendMultiIconsToContent = ({
@@ -117,33 +156,28 @@ export const appendMultiIconsToContent = ({
   isInlineIcon = false,
 }: AppendedMultipleIconsProps) => {
   if (!Icon) return <>{children}</>;
-  // console.log('hi');
+
   const [LeftIcon, RightIcon] = Icon;
-
-  if (typeof iconOffset !== 'number') {
-    iconOffset = isInlineIcon ? 2 : 4;
-  }
-
-  const iconOffsetInEm = pixelToEm(iconOffset);
-  const heightOffset = pixelToEm(iconSize + iconOffset);
-
-  const iconProps = {
-    'aria-hidden': true,
-    size: iconSize,
-  } as const;
+  const { iconOffsetInEm, heightOffset } = createIconOffsets(
+    iconOffset,
+    iconSize,
+    isInlineIcon
+  );
+  const baseIconProps = createBaseIconProps(iconSize);
 
   const renderIcon = (Component: any, spacing: 'mr' | 'ml', order: number) =>
-    isValidComponent(Component) ? (
-      <Component
-        {...iconProps}
-        {...{ [spacing]: iconAndTextGap }}
-        height={heightOffset}
-        order={order}
-        pb={iconOffsetInEm as any}
-        verticalAlign="middle"
-        width={iconSize}
-      />
-    ) : null;
+    isValidComponent(Component)
+      ? renderStyledIcon(
+          Component,
+          baseIconProps,
+          spacing,
+          iconAndTextGap,
+          order,
+          iconOffsetInEm,
+          heightOffset,
+          iconSize
+        )
+      : null;
 
   const content = (
     <>
@@ -153,11 +187,5 @@ export const appendMultiIconsToContent = ({
     </>
   );
 
-  return isInlineIcon ? (
-    <Box display="inline">{content}</Box>
-  ) : (
-    <FlexBox alignItems="center" center height="100%">
-      {content}
-    </FlexBox>
-  );
+  return wrapContent(content, isInlineIcon);
 };
