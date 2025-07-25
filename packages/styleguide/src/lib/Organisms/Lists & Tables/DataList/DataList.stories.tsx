@@ -71,11 +71,7 @@ export default meta;
 type Story = StoryObj<typeof DataList>;
 
 export const FullDataList: Story = {
-  render: () => (
-    <Box width="420px">
-      <DataListTemplate />
-    </Box>
-  ),
+  render: () => <DataListTemplate />,
 };
 
 export const Default: Story = {
