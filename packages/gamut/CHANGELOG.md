@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.5...@codecademy/gamut@66.0.6) (2025-07-25)
+
+### Bug Fixes
+
+- **PopoverContainer:** Give popover better scroll awareness ([58e7b80](https://github.com/Codecademy/gamut/commit/58e7b809cd59c8251852c1d2ea6ca7b1c4b6ad5b))
+
 ### [66.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.4...@codecademy/gamut@66.0.5) (2025-07-25)
 
 **Note:** Version bump only for package @codecademy/gamut

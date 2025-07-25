@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [77.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.1.1...@codecademy/styleguide@77.1.2) (2025-07-25)
+
+### Bug Fixes
+
+- **PopoverContainer:** Give popover better scroll awareness ([58e7b80](https://github.com/Codecademy/gamut/commit/58e7b809cd59c8251852c1d2ea6ca7b1c4b6ad5b))
+
 ### [77.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.1.0...@codecademy/styleguide@77.1.1) (2025-07-24)
 
 ### Bug Fixes
