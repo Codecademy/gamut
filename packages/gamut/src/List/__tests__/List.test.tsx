@@ -54,8 +54,8 @@ describe('List', () => {
     const colEl = view.getByText('Hello');
 
     expect(colEl).not.toHaveStyle({ py: 16 });
-    expect(colEl).toHaveStyleRule('padding-left', theme.spacing[16]);
-    expect(colEl).toHaveStyleRule('padding-right', theme.spacing[16]);
+    expect(colEl).toHaveStyleRule('padding-left', theme.spacing[8]);
+    expect(colEl).toHaveStyleRule('padding-right', theme.spacing[8]);
 
     expect(colEl).not.toHaveStyle({ position: 'sticky' });
   });
