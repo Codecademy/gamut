@@ -55,6 +55,8 @@ export function DataGrid<
     hideSelectAll = false,
     scrollToTopOnUpdate = false,
     id,
+    wrapperWidth,
+    overflow,
   } = props;
 
   const empty = rows.length === 0;
@@ -117,11 +119,13 @@ export function DataGrid<
           id={id}
           loading={loading}
           minHeight={minHeight}
+          overflow={overflow}
           scrollToTopOnUpdate={scrollToTopOnUpdate}
           scrollable={scrollable}
           shadow={shadow}
           spacing={spacing}
           variant={variant}
+          wrapperWidth={wrapperWidth ?? undefined}
         >
           {renderedRows.map((row) => {
             const rowId = row[idKey];
