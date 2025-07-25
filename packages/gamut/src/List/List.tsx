@@ -30,7 +30,7 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
    */
   overflow?: BoxProps['overflow'];
   /**
-   * This is an overrride for the width of the wrapper element that contains the List.
+   * This is an override for the width of the wrapper element that contains the List.
    * It is useful for custom scroll and breakpoint handling. Use with caution.
    */
   wrapperWidth?: BoxProps['width'];
