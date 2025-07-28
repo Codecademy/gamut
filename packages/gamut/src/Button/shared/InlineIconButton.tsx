@@ -41,17 +41,16 @@ export const InlineIconButton = forwardRef<
       children,
     };
 
-    const content =
-      icon && Array.isArray(icon)
-        ? appendMultiIconsToContent({
-            ...commonIconProps,
-            icon,
-          })
-        : appendIconToContent({
-            ...commonIconProps,
-            icon,
-            iconPosition,
-          });
+    const content = Array.isArray(icon)
+      ? appendMultiIconsToContent({
+          ...commonIconProps,
+          icon,
+        })
+      : appendIconToContent({
+          ...commonIconProps,
+          icon,
+          iconPosition,
+        });
 
     return (
       <Button {...props} ref={ref} variant={variant}>

@@ -30,10 +30,9 @@ export const Anchor = forwardRef<
       isInlineIcon,
     };
 
-    const content =
-      icon && Array.isArray(icon)
-        ? appendMultiIconsToContent({ ...commonIconProps, icon })
-        : appendIconToContent({ ...commonIconProps, icon, iconPosition });
+    const content = Array.isArray(icon)
+      ? appendMultiIconsToContent({ ...commonIconProps, icon })
+      : appendIconToContent({ ...commonIconProps, icon, iconPosition });
 
     if (!rest.href) {
       return (
