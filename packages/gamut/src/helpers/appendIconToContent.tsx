@@ -144,10 +144,10 @@ export const appendIconToContent = ({
 export const appendMultiIconsToContent = ({
   children,
   icon: Icon,
-  iconAndTextGap = 8,
+  iconAndTextGap,
   iconOffset,
-  iconSize = 12,
-  isInlineIcon = false,
+  iconSize,
+  isInlineIcon,
 }: AppendedMultipleIconsProps) => {
   if (!Icon) return <>{children}</>;
 
@@ -177,6 +177,7 @@ export const appendMultiIconsToContent = ({
     <>
       {leftIconContent}
       {children}
+
       {rightIconContent}
     </>
   );

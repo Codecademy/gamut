@@ -1,3 +1,4 @@
+import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
 import { forwardRef, RefObject } from 'react';
 
 import { ButtonBase } from '../ButtonBase/ButtonBase';
@@ -32,8 +33,8 @@ export const Anchor = forwardRef<
 
     const content =
       icon && Array.isArray(icon)
-        ? appendMultiIconsToContent({ ...commonIconProps })
-        : appendIconToContent({ ...commonIconProps, iconPosition });
+        ? appendMultiIconsToContent({ ...commonIconProps, icon })
+        : appendIconToContent({ ...commonIconProps, icon, iconPosition });
 
     if (!rest.href) {
       return (
@@ -59,3 +60,19 @@ export const Anchor = forwardRef<
     );
   }
 );
+
+const Test = () => {
+  return (
+    <Anchor
+      href="https://www.codecademy.com"
+      icon={MiniInfoOutlineIcon}
+      iconAndTextGap={8}
+      iconPosition="left"
+      iconSize={16}
+      isInlineIcon
+      variant="inline"
+    >
+      Test Anchor
+    </Anchor>
+  );
+};

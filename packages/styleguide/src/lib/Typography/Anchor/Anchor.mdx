@@ -86,9 +86,15 @@ Use outside of a paragraph or `menu` instance when a lower level of prominence i
 
 ## Icons
 
-Anchors can be rendered with leading and trailing icons to provide additional context or visual distinction.
+Anchors can be rendered with leading, trailing, or icons on both sides to provide additional context or visual distinction.
 
-<Canvas of={AnchorStories.IconAnchorExample} />
+By default the icons will be NOT be inline.
+
+<Canvas of={AnchorStories.IconFlexAnchor} />
+
+You can set `variant="inline"` to render the icons inline with the text. This is useful for links that are part of a paragraph or text-heavy content.
+
+<Canvas of={AnchorStories.IconInlineAnchorExample} />
 
 Icons are also responsive to ColorMode.
 
