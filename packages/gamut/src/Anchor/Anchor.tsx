@@ -60,19 +60,3 @@ export const Anchor = forwardRef<
     );
   }
 );
-
-const Test = () => {
-  return (
-    <Anchor
-      href="https://www.codecademy.com"
-      icon={MiniInfoOutlineIcon}
-      iconAndTextGap={8}
-      iconPosition="left"
-      iconSize={16}
-      isInlineIcon
-      variant="inline"
-    >
-      Test Anchor
-    </Anchor>
-  );
-};

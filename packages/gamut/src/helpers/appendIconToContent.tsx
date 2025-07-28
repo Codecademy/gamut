@@ -147,7 +147,7 @@ export const appendMultiIconsToContent = ({
   iconAndTextGap,
   iconOffset,
   iconSize,
-  isInlineIcon,
+  isInlineIcon = false,
 }: AppendedMultipleIconsProps) => {
   if (!Icon) return <>{children}</>;
 
