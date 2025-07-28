@@ -55,35 +55,47 @@ const createIconOffsets = (
   return { iconOffsetInEm, heightOffset };
 };
 
-// Common helper to create base icon props
 const createBaseIconProps = (iconSize: number) =>
   ({
     'aria-hidden': true,
     size: iconSize,
   } as const);
 
-const renderStyledIcon = (
-  Icon: React.ComponentType<GamutIconProps>,
-  baseProps: ReturnType<typeof createBaseIconProps>,
-  spacing: 'mr' | 'ml',
-  iconAndTextGap: number,
-  order: number,
-  iconOffsetInEm: string,
-  heightOffset: string,
-  iconSize: number
-) => (
-  <Icon
-    {...baseProps}
-    {...{ [spacing]: iconAndTextGap }}
-    height={heightOffset}
-    order={order}
-    pb={iconOffsetInEm as any}
-    verticalAlign="middle"
-    width={iconSize}
-  />
-);
+interface RenderStyledIconProps {
+  Icon: React.ComponentType<GamutIconProps>;
+  spacing: 'mr' | 'ml';
+  iconAndTextGap: number;
+  order: number;
+  iconOffsetInEm: string;
+  heightOffset: string;
+  iconSize: number;
+}
 
-// Common wrapper to handle inline vs flex layout
+const renderStyledIcon = ({
+  Icon,
+  spacing,
+  iconAndTextGap,
+  order,
+  iconOffsetInEm,
+  heightOffset,
+  iconSize,
+}: RenderStyledIconProps) => {
+  const baseProps = createBaseIconProps(iconSize);
+
+  return (
+    <Icon
+      {...baseProps}
+      {...{ [spacing]: iconAndTextGap }}
+      height={heightOffset}
+      order={order}
+      pb={iconOffsetInEm as any}
+      verticalAlign="middle"
+      width={iconSize}
+    />
+  );
+};
+
+// Create a wrapper to handle inline vs flex layout
 const wrapContent = (content: React.ReactNode, isInlineIcon: boolean) =>
   isInlineIcon ? (
     <Box display="inline">{content}</Box>
@@ -109,21 +121,19 @@ export const appendIconToContent = ({
     iconSize,
     isInlineIcon
   );
-  const baseIconProps = createBaseIconProps(iconSize);
 
   const iconSpacing = iconPosition === 'left' ? 'mr' : 'ml';
   const iconOrder = iconPosition === 'left' ? 0 : 1;
 
-  const styledIcon = renderStyledIcon(
+  const styledIcon = renderStyledIcon({
     Icon,
-    baseIconProps,
-    iconSpacing,
+    spacing: iconSpacing,
     iconAndTextGap,
-    iconOrder,
+    order: iconOrder,
     iconOffsetInEm,
     heightOffset,
-    iconSize
-  );
+    iconSize,
+  });
 
   const content =
     iconPosition === 'left' ? (
