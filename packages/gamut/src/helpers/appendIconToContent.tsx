@@ -55,12 +55,6 @@ const createIconOffsets = (
   return { iconOffsetInEm, heightOffset };
 };
 
-const createBaseIconProps = (iconSize: number) =>
-  ({
-    'aria-hidden': true,
-    size: iconSize,
-  } as const);
-
 interface RenderStyledIconProps {
   Icon: React.ComponentType<GamutIconProps>;
   spacing: 'mr' | 'ml';
@@ -79,21 +73,18 @@ const renderStyledIcon = ({
   iconOffsetInEm,
   heightOffset,
   iconSize,
-}: RenderStyledIconProps) => {
-  const baseProps = createBaseIconProps(iconSize);
-
-  return (
-    <Icon
-      {...baseProps}
-      {...{ [spacing]: iconAndTextGap }}
-      height={heightOffset}
-      order={order}
-      pb={iconOffsetInEm as any}
-      verticalAlign="middle"
-      width={iconSize}
-    />
-  );
-};
+}: RenderStyledIconProps) => (
+  <Icon
+    aria-hidden
+    size={iconSize}
+    {...{ [spacing]: iconAndTextGap }}
+    height={heightOffset}
+    order={order}
+    pb={iconOffsetInEm as any}
+    verticalAlign="middle"
+    width={iconSize}
+  />
+);
 
 // Create a wrapper to handle inline vs flex layout
 const wrapContent = (content: React.ReactNode, isInlineIcon: boolean) =>
