@@ -8,7 +8,8 @@ import {
   useState,
 } from 'react';
 
-import { Anchor, Text } from '../..';
+import { Text } from '../..';
+import { Anchor } from '../../Anchor';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
