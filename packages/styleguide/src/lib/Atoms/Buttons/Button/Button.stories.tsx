@@ -43,7 +43,7 @@ export const Secondary: Story = {
 
 export const InlineIcons: Story = {
   render: () => (
-    <FlexBox gap={16} row>
+    <FlexBox flexDirection={{ _: 'column', sm: 'row' }} gap={16}>
       <FillButton icon={MiniArrowLeftIcon} maxWidth="fit-content">
         FillButton
       </FillButton>
