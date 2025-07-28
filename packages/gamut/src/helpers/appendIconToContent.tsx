@@ -59,7 +59,6 @@ interface RenderStyledIconProps {
   Icon: React.ComponentType<GamutIconProps>;
   spacing: 'mr' | 'ml';
   iconAndTextGap: number;
-  order: number;
   iconOffsetInEm: string;
   heightOffset: string;
   iconSize: number;
@@ -69,7 +68,6 @@ const renderStyledIcon = ({
   Icon,
   spacing,
   iconAndTextGap,
-  order,
   iconOffsetInEm,
   heightOffset,
   iconSize,
@@ -79,7 +77,6 @@ const renderStyledIcon = ({
     size={iconSize}
     {...{ [spacing]: iconAndTextGap }}
     height={heightOffset}
-    order={order}
     pb={iconOffsetInEm as any}
     verticalAlign="middle"
     width={iconSize}
@@ -114,13 +111,11 @@ export const appendIconToContent = ({
   );
 
   const iconSpacing = iconPosition === 'left' ? 'mr' : 'ml';
-  const iconOrder = iconPosition === 'left' ? 0 : 1;
 
   const styledIcon = renderStyledIcon({
     Icon,
     spacing: iconSpacing,
     iconAndTextGap,
-    order: iconOrder,
     iconOffsetInEm,
     heightOffset,
     iconSize,
@@ -154,8 +149,8 @@ export const appendMultiIconsToContent = ({
 
   const [LeftIcon, RightIcon] = Icon;
 
-  const leftIconContent = appendIconToContent({
-    children: null,
+  const appendLeftIcon = appendIconToContent({
+    children,
     icon: LeftIcon,
     iconAndTextGap,
     iconOffset,
@@ -164,8 +159,8 @@ export const appendMultiIconsToContent = ({
     iconPosition: 'left',
   });
 
-  const rightIconContent = appendIconToContent({
-    children: null,
+  const appendRightIcon = appendIconToContent({
+    children: appendLeftIcon,
     icon: RightIcon,
     iconAndTextGap,
     iconOffset,
@@ -174,14 +169,5 @@ export const appendMultiIconsToContent = ({
     iconPosition: 'right',
   });
 
-  const content = (
-    <>
-      {leftIconContent}
-      {children}
-
-      {rightIconContent}
-    </>
-  );
-
-  return wrapContent(content, isInlineIcon);
+  return appendRightIcon;
 };
