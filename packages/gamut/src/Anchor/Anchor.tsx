@@ -1,7 +1,7 @@
 import { forwardRef, RefObject } from 'react';
 
 import { ButtonBase } from '../ButtonBase/ButtonBase';
-import { appendIconToContent, appendMultiIconsToContent } from '../helpers';
+import { AppendedIconProps, appendIconToContent } from '../helpers';
 import { AnchorBase, AnchorExtProps } from './types';
 
 export const Anchor = forwardRef<
@@ -22,17 +22,15 @@ export const Anchor = forwardRef<
     },
     ref
   ) => {
-    const commonIconProps = {
+    const content = appendIconToContent({
       children,
       iconOffset,
       iconSize,
       iconAndTextGap,
       isInlineIcon,
-    };
-
-    const content = Array.isArray(icon)
-      ? appendMultiIconsToContent({ ...commonIconProps, icon })
-      : appendIconToContent({ ...commonIconProps, icon, iconPosition });
+      icon,
+      iconPosition,
+    } as AppendedIconProps);
 
     if (!rest.href) {
       return (

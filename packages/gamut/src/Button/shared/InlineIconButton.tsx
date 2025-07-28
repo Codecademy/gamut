@@ -1,11 +1,7 @@
 import { forwardRef } from 'react';
 
 import { ButtonBaseElements } from '../../ButtonBase/ButtonBase';
-import {
-  AppendedIconProps,
-  appendIconToContent,
-  appendMultiIconsToContent,
-} from '../../helpers';
+import { AppendedIconProps, appendIconToContent } from '../../helpers';
 import { FillButtonProps } from '../FillButton';
 import { StrokeButtonProps } from '../StrokeButton';
 import { TextButtonProps } from '../TextButton';
@@ -41,16 +37,11 @@ export const InlineIconButton = forwardRef<
       children,
     };
 
-    const content = Array.isArray(icon)
-      ? appendMultiIconsToContent({
-          ...commonIconProps,
-          icon,
-        })
-      : appendIconToContent({
-          ...commonIconProps,
-          icon,
-          iconPosition,
-        });
+    const content = appendIconToContent({
+      ...commonIconProps,
+      icon,
+      iconPosition,
+    });
 
     return (
       <Button {...props} ref={ref} variant={variant}>

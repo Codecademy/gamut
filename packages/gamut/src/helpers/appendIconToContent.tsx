@@ -31,10 +31,16 @@ export interface AppendedSingleIconProps extends BaseAppendedIconProps {
 }
 
 export interface AppendedMultipleIconsProps extends BaseAppendedIconProps {
+  /**
+   * If there are multiple icons, this prop should be an array of two icon components.
+   */
   icon?: [
     React.ComponentType<GamutIconProps>,
     React.ComponentType<GamutIconProps>
   ];
+  /**
+   * This prop is not needed when there are multiple icons since both icons should be rendered on each side.
+   */
   iconPosition?: never;
 }
 
@@ -55,13 +61,13 @@ const createIconOffsets = (
   return { iconOffsetInEm, heightOffset };
 };
 
-interface RenderStyledIconProps {
+interface RenderStyledIconProps
+  extends Pick<
+    BaseRenderProps,
+    'iconAndTextGap' | 'iconSize' | 'iconOffsetInEm' | 'heightOffset'
+  > {
   Icon: React.ComponentType<GamutIconProps>;
   spacing: 'mr' | 'ml';
-  iconAndTextGap: number;
-  iconOffsetInEm: string;
-  heightOffset: string;
-  iconSize: number;
 }
 
 const renderStyledIcon = ({
@@ -93,23 +99,74 @@ const wrapContent = (content: React.ReactNode, isInlineIcon: boolean) =>
     </FlexBox>
   );
 
-export const appendIconToContent = ({
-  children,
-  icon: Icon,
-  iconAndTextGap = 8,
-  iconOffset,
-  iconPosition,
-  iconSize = 12,
-  isInlineIcon = false,
-}: AppendedSingleIconProps) => {
-  if (!Icon) return <>{children}</>;
+interface BaseRenderProps {
+  children: React.ReactNode;
+  iconAndTextGap: number;
+  iconOffsetInEm: string;
+  heightOffset: string;
+  iconSize: number;
+  isInlineIcon: boolean;
+}
 
-  const { iconOffsetInEm, heightOffset } = createIconOffsets(
-    iconOffset,
+interface RenderMultipleIconsProps extends BaseRenderProps {
+  icon: Required<AppendedMultipleIconsProps>['icon'];
+}
+
+const appendMultipleIcons = ({
+  icon,
+  children,
+  iconAndTextGap,
+  iconOffsetInEm,
+  heightOffset,
+  iconSize,
+  isInlineIcon,
+}: RenderMultipleIconsProps) => {
+  const [LeftIcon, RightIcon] = icon;
+
+  const leftIcon = renderStyledIcon({
+    Icon: LeftIcon,
+    spacing: 'mr',
+    iconAndTextGap,
+    iconOffsetInEm,
+    heightOffset,
     iconSize,
-    isInlineIcon
+  });
+
+  const rightIcon = renderStyledIcon({
+    Icon: RightIcon,
+    spacing: 'ml',
+    iconAndTextGap,
+    iconOffsetInEm,
+    heightOffset,
+    iconSize,
+  });
+
+  const content = (
+    <>
+      {leftIcon}
+      {children}
+      {rightIcon}
+    </>
   );
 
+  return wrapContent(content, isInlineIcon);
+};
+
+interface RenderSingleIconProps extends BaseRenderProps {
+  icon: Required<AppendedSingleIconProps>['icon'];
+  iconPosition?: 'left' | 'right';
+}
+
+const appendSingleIcon = ({
+  icon: Icon,
+  children,
+  iconAndTextGap,
+  iconOffsetInEm,
+  heightOffset,
+  iconSize,
+  isInlineIcon,
+  iconPosition = 'left',
+}: RenderSingleIconProps) => {
   const iconSpacing = iconPosition === 'left' ? 'mr' : 'ml';
 
   const styledIcon = renderStyledIcon({
@@ -137,37 +194,43 @@ export const appendIconToContent = ({
   return wrapContent(content, isInlineIcon);
 };
 
-export const appendMultiIconsToContent = ({
+export const appendIconToContent = ({
   children,
   icon: Icon,
-  iconAndTextGap,
+  iconAndTextGap = 8,
   iconOffset,
-  iconSize,
+  iconPosition,
+  iconSize = 12,
   isInlineIcon = false,
-}: AppendedMultipleIconsProps) => {
+}: AppendedIconProps) => {
   if (!Icon) return <>{children}</>;
 
-  const [LeftIcon, RightIcon] = Icon;
+  const { iconOffsetInEm, heightOffset } = createIconOffsets(
+    iconOffset,
+    iconSize,
+    isInlineIcon
+  );
 
-  const appendLeftIcon = appendIconToContent({
+  if (Array.isArray(Icon)) {
+    return appendMultipleIcons({
+      children,
+      heightOffset,
+      icon: Icon,
+      iconAndTextGap,
+      iconOffsetInEm,
+      iconSize,
+      isInlineIcon,
+    });
+  }
+
+  return appendSingleIcon({
     children,
-    icon: LeftIcon,
+    heightOffset,
+    icon: Icon,
     iconAndTextGap,
-    iconOffset,
+    iconOffsetInEm,
+    iconPosition,
     iconSize,
     isInlineIcon,
-    iconPosition: 'left',
   });
-
-  const appendRightIcon = appendIconToContent({
-    children: appendLeftIcon,
-    icon: RightIcon,
-    iconAndTextGap,
-    iconOffset,
-    iconSize,
-    isInlineIcon,
-    iconPosition: 'right',
-  });
-
-  return appendRightIcon;
 };
