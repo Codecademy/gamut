@@ -86,7 +86,8 @@ Use outside of a paragraph or `menu` instance when a lower level of prominence i
 
 ## Icons
 
-Anchors can be rendered with leading, trailing, or icons on both sides to provide additional context or visual distinction.
+Gamut icons can be added to the `Anchor` component using the `icon` prop. For leading or trailing icons, provide a single icon to the `Icon` prop and set the `iconPosition` prop to either `left` or `right`.
+If you provide `icon` with an array of two icons, the first icon will be rendered in the left position and the second icon will be rendered in the right position — also `iconPosition` should be omitted.
 
 By default the icons will be NOT be inline.
 

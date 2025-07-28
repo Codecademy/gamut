@@ -12,6 +12,7 @@ import {
   MiniArrowRightIcon,
   MiniDeleteIcon,
   MiniRibbonIcon,
+  MiniStarIcon,
   SearchIcon,
 } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -46,8 +47,11 @@ export const InlineIcons: Story = {
       <FillButton icon={MiniArrowLeftIcon} maxWidth="fit-content">
         FillButton
       </FillButton>
-      <StrokeButton icon={MiniRibbonIcon} maxWidth="fit-content">
-        Leading icon
+      <StrokeButton
+        icon={[MiniRibbonIcon, MiniStarIcon]}
+        maxWidth="fit-content"
+      >
+        StrokeButton
       </StrokeButton>
       <TextButton
         icon={MiniArrowRightIcon}

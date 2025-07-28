@@ -1,4 +1,3 @@
-import { MiniInfoOutlineIcon } from '@codecademy/gamut-icons';
 import { forwardRef, RefObject } from 'react';
 
 import { ButtonBase } from '../ButtonBase/ButtonBase';
