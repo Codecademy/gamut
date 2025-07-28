@@ -42,12 +42,7 @@ export type AppendedIconProps =
   | AppendedSingleIconProps
   | AppendedMultipleIconsProps;
 
-// Helper to check if a value is a valid React component
-const isValidComponent = (Component: any) =>
-  typeof Component === 'function' ||
-  (typeof Component === 'object' && Component !== null);
-
-// Common helper to calculate icon offsets and create base icon props
+// Calculate icon offsets for centering and spacing
 const createIconOffsets = (
   iconOffset: number | undefined,
   iconSize: number,
@@ -67,7 +62,6 @@ const createBaseIconProps = (iconSize: number) =>
     size: iconSize,
   } as const);
 
-// Common helper to render an icon with all styling applied
 const renderStyledIcon = (
   Icon: React.ComponentType<GamutIconProps>,
   baseProps: ReturnType<typeof createBaseIconProps>,
@@ -158,32 +152,32 @@ export const appendMultiIconsToContent = ({
   if (!Icon) return <>{children}</>;
 
   const [LeftIcon, RightIcon] = Icon;
-  const { iconOffsetInEm, heightOffset } = createIconOffsets(
+
+  const leftIconContent = appendIconToContent({
+    children: null,
+    icon: LeftIcon,
+    iconAndTextGap,
     iconOffset,
     iconSize,
-    isInlineIcon
-  );
-  const baseIconProps = createBaseIconProps(iconSize);
+    isInlineIcon,
+    iconPosition: 'left',
+  });
 
-  const renderIcon = (Component: any, spacing: 'mr' | 'ml', order: number) =>
-    isValidComponent(Component)
-      ? renderStyledIcon(
-          Component,
-          baseIconProps,
-          spacing,
-          iconAndTextGap,
-          order,
-          iconOffsetInEm,
-          heightOffset,
-          iconSize
-        )
-      : null;
+  const rightIconContent = appendIconToContent({
+    children: null,
+    icon: RightIcon,
+    iconAndTextGap,
+    iconOffset,
+    iconSize,
+    isInlineIcon,
+    iconPosition: 'right',
+  });
 
   const content = (
     <>
-      {renderIcon(LeftIcon, 'mr', 0)}
+      {leftIconContent}
       {children}
-      {renderIcon(RightIcon, 'ml', 1)}
+      {rightIconContent}
     </>
   );
 
