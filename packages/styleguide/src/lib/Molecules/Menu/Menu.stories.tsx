@@ -11,6 +11,7 @@ import {
   BashShellIcon,
   FileIcon,
   InformationalIcon,
+  MiniOpenIcon,
   MultipleUsersIcon,
   PeopleIcon,
   RatingStarCircleIcon,
@@ -42,7 +43,9 @@ export const Default: Story = {
         <MenuItem>Menu Item</MenuItem>
         <MenuItem active>Active Item</MenuItem>
         <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem icon={[RatingStarCircleIcon, MiniOpenIcon]}>
+          Multi Icons
+        </MenuItem>
       </>
     ),
   },
@@ -60,7 +63,12 @@ export const Popover: Story = {
         <MenuItem icon={MultipleUsersIcon} onClick={() => null}>
           Icon Item
         </MenuItem>
-        <MenuItem onClick={() => null}>Menu Item</MenuItem>
+        <MenuItem
+          icon={[RatingStarCircleIcon, MiniOpenIcon]}
+          onClick={() => null}
+        >
+          Multi Icons
+        </MenuItem>
       </>
     ),
   },
@@ -79,6 +87,9 @@ export const Fixed: Story = {
           Icon Item
         </MenuItem>
         <MenuItem href="#">Menu Item</MenuItem>
+        <MenuItem href="#" icon={[RatingStarCircleIcon, MiniOpenIcon]}>
+          Multi Icons
+        </MenuItem>
       </>
     ),
   },
@@ -92,7 +103,9 @@ export const PopoverCondensed: Story = {
         <MenuItem>Menu Item</MenuItem>
         <MenuItem active>Active Item</MenuItem>
         <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem icon={[RatingStarCircleIcon, MiniOpenIcon]}>
+          Multi Icons
+        </MenuItem>
       </>
     ),
     spacing: 'condensed',
@@ -107,7 +120,9 @@ export const FixedCondensed: Story = {
         <MenuItem>Menu Item</MenuItem>
         <MenuItem active>Active Item</MenuItem>
         <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem icon={[RatingStarCircleIcon, MiniOpenIcon]}>
+          Multi Icons
+        </MenuItem>
       </>
     ),
     spacing: 'condensed',
@@ -123,7 +138,9 @@ export const PopoverMenuSeparator: Story = {
         <MenuItem active>Active Item</MenuItem>
         <MenuSeparator />
         <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem icon={[RatingStarCircleIcon, MiniOpenIcon]}>
+          Multi Icons
+        </MenuItem>
       </>
     ),
   },
@@ -138,7 +155,9 @@ export const FixedMenuSeparator: Story = {
         <MenuItem active>Active Item</MenuItem>
         <MenuSeparator my={4} />
         <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem icon={[RatingStarCircleIcon, MiniOpenIcon]}>
+          Multi Icons
+        </MenuItem>
       </>
     ),
   },
@@ -175,7 +194,7 @@ export const IconMenu: Story = {
           icon={RatingStarCircleIcon}
           label={{
             alignment: 'right-center',
-            info: <Text color="hyper">I am bold and different</Text>,
+            info: <Text color="primary">I am bold and different</Text>,
             narrow: true,
           }}
         />
@@ -236,6 +255,7 @@ export const FloatingMenuExample: React.FC = () => {
               >
                 Active Item
               </MenuItem>
+
               <MenuItem
                 active={activeIndex === 2}
                 icon={MultipleUsersIcon}
@@ -243,8 +263,13 @@ export const FloatingMenuExample: React.FC = () => {
               >
                 Icon Item
               </MenuItem>
-              <MenuItem active={activeIndex === 3} onClick={() => null}>
-                A complex action
+
+              <MenuItem
+                active={activeIndex === 3}
+                icon={[RatingStarCircleIcon, MiniOpenIcon]}
+                onClick={() => null}
+              >
+                Multi Icons
               </MenuItem>
             </Menu>
           </FlexBox>
@@ -267,7 +292,9 @@ export const FloatingMenuExample: React.FC = () => {
                   <>
                     <MenuItem>i am a DIFFERENT menu!</MenuItem>
                     <MenuItem href="cool-too"> another cool link</MenuItem>
-                    <MenuItem>an action</MenuItem>
+                    <MenuItem icon={[RatingStarCircleIcon, MiniOpenIcon]}>
+                      Multi Icons
+                    </MenuItem>
                   </>
                 )}
               </Menu>
