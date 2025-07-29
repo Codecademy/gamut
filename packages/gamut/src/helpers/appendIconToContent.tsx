@@ -48,30 +48,34 @@ export type AppendedIconProps =
   | AppendedSingleIconProps
   | AppendedMultipleIconsProps;
 
-// Calculate icon offsets for centering and spacing
-const createIconOffsets = (
-  iconOffset: number | undefined,
-  iconSize: number,
-  isInlineIcon: boolean
-) => {
-  const finalIconOffset = iconOffset ?? (isInlineIcon ? 2 : 4);
-  const iconOffsetInEm = pixelToEm(finalIconOffset);
-  const heightOffset = pixelToEm(iconSize + finalIconOffset);
-
-  return { iconOffsetInEm, heightOffset };
-};
-
 interface RenderStyledIconProps
   extends Pick<
     BaseRenderProps,
     'iconAndTextGap' | 'iconSize' | 'iconOffsetInEm' | 'heightOffset'
   > {
-  Icon: React.ComponentType<GamutIconProps>;
+  icon: React.ComponentType<GamutIconProps>;
   spacing: 'mr' | 'ml';
 }
 
+interface BaseRenderProps {
+  children: React.ReactNode;
+  iconAndTextGap: number;
+  iconOffsetInEm: string;
+  heightOffset: string;
+  iconSize: number;
+  isInlineIcon: boolean;
+}
+
+interface RenderSingleIconProps extends BaseRenderProps {
+  icon: Required<AppendedSingleIconProps>['icon'];
+  iconPosition?: 'left' | 'right';
+}
+interface RenderMultipleIconsProps extends BaseRenderProps {
+  icon: Required<AppendedMultipleIconsProps>['icon'];
+}
+
 const renderStyledIcon = ({
-  Icon,
+  icon: Icon,
   spacing,
   iconAndTextGap,
   iconOffsetInEm,
@@ -99,64 +103,6 @@ const wrapContent = (content: React.ReactNode, isInlineIcon: boolean) =>
     </FlexBox>
   );
 
-interface BaseRenderProps {
-  children: React.ReactNode;
-  iconAndTextGap: number;
-  iconOffsetInEm: string;
-  heightOffset: string;
-  iconSize: number;
-  isInlineIcon: boolean;
-}
-
-interface RenderMultipleIconsProps extends BaseRenderProps {
-  icon: Required<AppendedMultipleIconsProps>['icon'];
-}
-
-const appendMultipleIcons = ({
-  icon,
-  children,
-  iconAndTextGap,
-  iconOffsetInEm,
-  heightOffset,
-  iconSize,
-  isInlineIcon,
-}: RenderMultipleIconsProps) => {
-  const [LeftIcon, RightIcon] = icon;
-
-  const leftIcon = renderStyledIcon({
-    Icon: LeftIcon,
-    spacing: 'mr',
-    iconAndTextGap,
-    iconOffsetInEm,
-    heightOffset,
-    iconSize,
-  });
-
-  const rightIcon = renderStyledIcon({
-    Icon: RightIcon,
-    spacing: 'ml',
-    iconAndTextGap,
-    iconOffsetInEm,
-    heightOffset,
-    iconSize,
-  });
-
-  const content = (
-    <>
-      {leftIcon}
-      {children}
-      {rightIcon}
-    </>
-  );
-
-  return wrapContent(content, isInlineIcon);
-};
-
-interface RenderSingleIconProps extends BaseRenderProps {
-  icon: Required<AppendedSingleIconProps>['icon'];
-  iconPosition?: 'left' | 'right';
-}
-
 const appendSingleIcon = ({
   icon: Icon,
   children,
@@ -170,7 +116,7 @@ const appendSingleIcon = ({
   const iconSpacing = iconPosition === 'left' ? 'mr' : 'ml';
 
   const styledIcon = renderStyledIcon({
-    Icon,
+    icon: Icon,
     spacing: iconSpacing,
     iconAndTextGap,
     iconOffsetInEm,
@@ -194,6 +140,45 @@ const appendSingleIcon = ({
   return wrapContent(content, isInlineIcon);
 };
 
+const appendMultipleIcons = ({
+  icon: Icon,
+  children,
+  iconAndTextGap,
+  iconOffsetInEm,
+  heightOffset,
+  iconSize,
+  isInlineIcon,
+}: RenderMultipleIconsProps) => {
+  const [LeftIcon, RightIcon] = Icon;
+
+  const leftIcon = renderStyledIcon({
+    icon: LeftIcon,
+    spacing: 'mr',
+    iconAndTextGap,
+    iconOffsetInEm,
+    heightOffset,
+    iconSize,
+  });
+
+  const rightIcon = renderStyledIcon({
+    icon: RightIcon,
+    spacing: 'ml',
+    iconAndTextGap,
+    iconOffsetInEm,
+    heightOffset,
+    iconSize,
+  });
+
+  const content = (
+    <>
+      {leftIcon}
+      {children}
+      {rightIcon}
+    </>
+  );
+  return wrapContent(content, isInlineIcon);
+};
+
 export const appendIconToContent = ({
   children,
   icon: Icon,
@@ -205,11 +190,10 @@ export const appendIconToContent = ({
 }: AppendedIconProps) => {
   if (!Icon) return <>{children}</>;
 
-  const { iconOffsetInEm, heightOffset } = createIconOffsets(
-    iconOffset,
-    iconSize,
-    isInlineIcon
-  );
+  // Calculate icon offsets for centering and spacing
+  const finalIconOffset = iconOffset ?? (isInlineIcon ? 2 : 4);
+  const iconOffsetInEm = pixelToEm(finalIconOffset);
+  const heightOffset = pixelToEm(iconSize + finalIconOffset);
 
   if (Array.isArray(Icon)) {
     return appendMultipleIcons({
