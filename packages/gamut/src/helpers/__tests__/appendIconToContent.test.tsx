@@ -13,11 +13,6 @@ const renderView = setupRtl(TestAppendIconToContent, {
   icon: StarIcon,
 });
 
-const renderMultiView = setupRtl(TestAppendIconToContent, {
-  children: <div>Test content</div>,
-  icon: [StarIcon, MiniWarningTriangleIcon],
-});
-
 describe('appendIconToContent', () => {
   describe('when no icon is provided', () => {
     it('returns only children', () => {
@@ -146,7 +141,9 @@ describe('appendIconToContent', () => {
 
   describe('when icons array is provided', () => {
     it('renders both icons with children in between', () => {
-      const { view } = renderMultiView();
+      const { view } = renderView({
+        icon: [StarIcon, MiniWarningTriangleIcon],
+      });
 
       const wrapper = view.getByTestId('wrapper');
       const icons = screen.getAllByRole('img', { hidden: true });
@@ -168,7 +165,7 @@ describe('appendIconToContent', () => {
     });
 
     it('applies custom icon size to both icons', () => {
-      renderMultiView({ iconSize: 20 });
+      renderView({ icon: [StarIcon, MiniWarningTriangleIcon], iconSize: 20 });
 
       const icons = screen.getAllByRole('img', { hidden: true });
       expect(icons).toHaveLength(2);
@@ -179,7 +176,10 @@ describe('appendIconToContent', () => {
     });
 
     it('applies custom icon and text gap to both icons', () => {
-      renderMultiView({ iconAndTextGap: 14 });
+      renderView({
+        icon: [StarIcon, MiniWarningTriangleIcon],
+        iconAndTextGap: 14,
+      });
 
       const icons = screen.getAllByRole('img', { hidden: true });
       expect(icons).toHaveLength(2);
@@ -193,7 +193,10 @@ describe('appendIconToContent', () => {
 
   describe('layout modes for multi icons', () => {
     it('renders inline layout when isInlineIcon is true with multiple icons', () => {
-      const { view } = renderMultiView({ isInlineIcon: true });
+      const { view } = renderView({
+        isInlineIcon: true,
+        icon: [StarIcon, MiniWarningTriangleIcon],
+      });
 
       const wrapper = view.getByTestId('wrapper');
       const layoutWrapper = wrapper.firstElementChild;
@@ -205,7 +208,10 @@ describe('appendIconToContent', () => {
     });
 
     it('renders flex layout when isInlineIcon is false with multiple icons', () => {
-      const { view } = renderMultiView({ isInlineIcon: false });
+      const { view } = renderView({
+        isInlineIcon: false,
+        icon: [StarIcon, MiniWarningTriangleIcon],
+      });
 
       const wrapper = view.getByTestId('wrapper');
       const layoutWrapper = wrapper.firstElementChild;
