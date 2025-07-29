@@ -3,7 +3,7 @@ import { css, states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
 
-import { Anchor } from '../..';
+import { Anchor } from '../../Anchor';
 import { FlexBox } from '../../Box';
 import { useListState } from '../hooks/useListState';
 import { OnSort, SortDirection, SortOrder } from '../types';
