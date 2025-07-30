@@ -2,6 +2,11 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as connectedFormParameters } from './ConnectedForm/About.mdx';
+import { parameters as gridFormParameters } from './GridForm/GridForm.mdx';
+import { parameters as listsTablesParameters } from './Lists & Tables/About.mdx';
+import { parameters as markdownParameters } from './Markdown/Markdown.mdx';
+
 export const parameters = {
   id: 'Organisms',
   title: 'Organisms',
@@ -20,28 +25,28 @@ export const parameters = {
 <TableOfContents
   links={[
     {
-      id: 'Organisms/ConnectedForm',
-      subtitle: `ConnectedForm is a flexible way to build forms.`,
-      title: 'ConnectedForm',
-      status: 'current',
+      id: `${parameters.title}/${connectedFormParameters.title}`,
+      subtitle: connectedFormParameters.subtitle,
+      title: connectedFormParameters.title,
+      status: connectedFormParameters.status || 'current',
     },
     {
-      id: 'Organisms/GridForm',
-      subtitle: `GridForm an efficient way to build and design forms on a grid.`,
-      title: 'GridForm',
-      status: 'current',
+      id: `${parameters.title}/${gridFormParameters.title}`,
+      subtitle: gridFormParameters.subtitle,
+      title: gridFormParameters.title,
+      status: gridFormParameters.status,
     },
     {
-      id: 'Organisms/Lists&Tables/About',
-      subtitle: `Lists & Tables are both organisms that render repeated, interactive information.`,
-      title: 'Lists&Tables',
-      status: 'current',
+      id: `${parameters.title}/${listsTablesParameters.title}/About`,
+      subtitle: listsTablesParameters.subtitle,
+      title: listsTablesParameters.title,
+      status: listsTablesParameters.status || 'current',
     },
     {
-      id: 'Organisms/Markdown',
-      subtitle: `Markdown renderer for all your markdown needs.`,
-      title: 'Markdown',
-      status: 'updating',
+      id: `${parameters.title}/${markdownParameters.title}`,
+      subtitle: markdownParameters.subtitle,
+      title: markdownParameters.title,
+      status: markdownParameters.status,
     },
   ]}
 />

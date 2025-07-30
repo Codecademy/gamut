@@ -2,6 +2,9 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as delayedRenderWrapperParameters } from './DelayedRenderWrapper/DelayedRenderWrapper.mdx';
+import { parameters as focusTrapParameters } from './FocusTrap/FocusTrap.mdx';
+
 export const parameters = {
   id: 'UtilityComponents',
   title: 'UtilityComponents',
@@ -17,17 +20,16 @@ export const parameters = {
 <TableOfContents
   links={[
     {
-      id: 'Atoms/UtilityComponents/DelayedRenderWrapper',
-      subtitle:
-        'A utility component that delays rendering of its children until after a specified delay.',
-      title: 'DelayedRenderWrapper',
-      status: 'current',
+      id: `Atoms/${parameters.title}/${delayedRenderWrapperParameters.title}`,
+      subtitle: delayedRenderWrapperParameters.subtitle,
+      title: delayedRenderWrapperParameters.title,
+      status: delayedRenderWrapperParameters.status,
     },
     {
-      id: 'Atoms/UtilityComponents/FocusTrap',
-      subtitle: 'Manages focus within a specific area for a set duration.',
-      title: 'FocusTrap',
-      status: 'current',
+      id: `Atoms/${parameters.title}/${focusTrapParameters.title}`,
+      subtitle: focusTrapParameters.subtitle,
+      title: focusTrapParameters.title,
+      status: focusTrapParameters.status,
     },
   ]}
 />

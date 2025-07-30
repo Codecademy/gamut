@@ -2,6 +2,10 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as boxParameters } from './Box/Box.mdx';
+import { parameters as flexBoxParameters } from './FlexBox/FlexBox.mdx';
+import { parameters as gridBoxParameters } from './GridBox/GridBox.mdx';
+
 export const parameters = {
   id: 'Boxes',
   title: 'Boxes',
@@ -17,25 +21,22 @@ Primitive box component that are meant to be a kitchen sink utility component fo
 <TableOfContents
   links={[
     {
-      id: 'Layouts/Boxes/Box',
-      status: 'current',
-      subtitle:
-        'Our primitive box component that is meant to be a kitchen sink utility component for all basic layouts',
-      title: 'Box',
+      id: `Layouts/${parameters.title}/${boxParameters.title}`,
+      status: boxParameters.status,
+      subtitle: boxParameters.subtitle,
+      title: boxParameters.title,
     },
     {
-      id: 'Layouts/Boxes/FlexBox',
-      status: 'current',
-      subtitle:
-        'A specific flex component that extends `Box` with extra props for common flex configurations.',
-      title: 'FlexBox',
+      id: `Layouts/${parameters.title}/${flexBoxParameters.title}`,
+      status: flexBoxParameters.status,
+      subtitle: flexBoxParameters.subtitle,
+      title: flexBoxParameters.title,
     },
     {
-      id: 'Layouts/Boxes/GridBox',
-      status: 'current',
-      subtitle:
-        'A specific grid component that extends `Box` with extra props for common grid configurations.',
-      title: 'GridBox',
+      id: `Layouts/${parameters.title}/${gridBoxParameters.title}`,
+      status: gridBoxParameters.status,
+      subtitle: gridBoxParameters.subtitle,
+      title: gridBoxParameters.title,
     },
   ]}
 />

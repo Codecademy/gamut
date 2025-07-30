@@ -2,6 +2,10 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as anchorParameters } from './Anchor/Anchor.mdx';
+import { parameters as hiddenTextParameters } from './HiddenText/HiddenText.mdx';
+import { parameters as textParameters } from './Text/Text.mdx';
+
 export const parameters = {
   id: 'Typography/About',
   title: 'Typography',
@@ -19,25 +23,22 @@ Sometimes referred to elsewhere as "tokens", they are the abstract units that co
 <TableOfContents
   links={[
     {
-      id: 'Typography/Anchor',
-      subtitle:
-        'A clickable text element that navigates to another page, resource, or location on the same page.',
-      title: 'Anchor',
-      status: `current`,
+      id: `${parameters.title}/${anchorParameters.title}`,
+      subtitle: anchorParameters.subtitle,
+      title: anchorParameters.title,
+      status: anchorParameters.status,
     },
     {
-      id: 'Typography/HiddenText',
-      subtitle:
-        'Deprecated visually hidden text that should still be narrated by screenreaders.',
-      title: 'Anchor',
-      status: 'deprecated',
+      id: `${parameters.title}/${hiddenTextParameters.title}`,
+      subtitle: hiddenTextParameters.subtitle,
+      title: hiddenTextParameters.title,
+      status: hiddenTextParameters.status,
     },
     {
-      id: 'Typography/Text',
-      subtitle:
-        'This component is a specific primitive for handling UI Text in predictable and flexible ways.',
-      title: 'Text',
-      status: 'current',
+      id: `${parameters.title}/${textParameters.title}`,
+      subtitle: textParameters.subtitle,
+      title: textParameters.title,
+      status: textParameters.status,
     },
   ]}
 />

@@ -2,8 +2,24 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as accordionButtonDeprecatedParameters } from './AccordionButtonDeprecated/AccordionButtonDeprecated.mdx';
+import { parameters as accordionDeprecatedParameters } from './AccordionDeprecated/AccordionDeprecated.mdx';
+import { parameters as alertParameters } from './Alert/Alert.mdx';
+import { parameters as breadcrumbsParameters } from './Breadcrumbs/Breadcrumbs.mdx';
+import { parameters as coachmarkParameters } from './Coachmark/Coachmark.mdx';
+import { parameters as disclosureParameters } from './Disclosure/Disclosure.mdx';
+import { parameters as flyoutParameters } from './Flyout/Flyout.mdx';
+import { parameters as menuParameters } from './Menu/Menu.mdx';
+import { parameters as modalsParameters } from './Modals/About.mdx';
+import { parameters as paginationParameters } from './Pagination/Pagination.mdx';
+import { parameters as popoverParameters } from './Popover/Popover.mdx';
+import { parameters as tabsParameters } from './Tabs/Tabs.mdx';
+import { parameters as tipsParameters } from './Tips/About.mdx';
+import { parameters as toastsParameters } from './Toasts/About.mdx';
+import { parameters as videoParameters } from './Video/Video.mdx';
+
 export const parameters = {
-  id: 'Molecules/About',
+  id: 'Molecules',
   title: 'Molecules',
   subtitle:
     'Molecules are groups of atoms together. These consist of a few atoms combined for a small, self-contained design.',
@@ -22,95 +38,94 @@ export const parameters = {
 <TableOfContents
   links={[
     {
-      id: 'Molecules/AccordionButtonDeprecated',
-      subtitle: `The standard "top" button for an AccordionDeprecated component.`,
-      title: 'AccordionButtonDeprecated',
-      status: 'deprecated',
+      id: `${parameters.title}/${accordionButtonDeprecatedParameters.title}`,
+      subtitle: accordionButtonDeprecatedParameters.subtitle,
+      title: accordionButtonDeprecatedParameters.title,
+      status: accordionButtonDeprecatedParameters.status,
     },
     {
-      id: 'Molecules/AccordionDeprecated',
-      subtitle: `A molecule consisting of a "top" section and an expandable body.`,
-      title: 'AccordionDeprecated',
-      status: 'deprecated',
+      id: `${parameters.title}/${accordionDeprecatedParameters.title}`,
+      subtitle: accordionDeprecatedParameters.subtitle,
+      title: accordionDeprecatedParameters.title,
+      status: accordionDeprecatedParameters.status,
     },
     {
-      id: 'Molecules/Alert',
-      subtitle: `An alert displays an important, succinct message, and provides actions for users to address (or dismiss the alert).`,
-      title: 'Alert',
-      status: 'current',
+      id: `${parameters.title}/${alertParameters.title}`,
+      subtitle: alertParameters.subtitle,
+      title: alertParameters.title,
+      status: alertParameters.status,
     },
     {
-      id: 'Molecules/Breadcrumbs',
-      subtitle: `Breadcrumb-style links for upwards navigation.`,
-      title: 'Breadcrumbs',
-      status: 'current',
+      id: `${parameters.title}/${breadcrumbsParameters.title}`,
+      subtitle: breadcrumbsParameters.subtitle,
+      title: breadcrumbsParameters.title,
+      status: breadcrumbsParameters.status,
     },
     {
-      id: 'Molecules/Coachmark',
-      subtitle: `A Coachmark helps bring attention to a CTA by showing a popover around that element.`,
-      title: 'Coachmark',
-      status: 'current',
+      id: `${parameters.title}/${coachmarkParameters.title}`,
+      subtitle: coachmarkParameters.subtitle,
+      title: coachmarkParameters.title,
+      status: coachmarkParameters.status,
     },
     {
-      id: 'Molecules/Disclosure',
-      subtitle: `A Disclosure is an expandable container featuring a heading that serves as a toggle to expand or collapse a content section.`,
-      title: 'Disclosure',
-      status: 'current',
+      id: `${parameters.title}/${disclosureParameters.title}`,
+      subtitle: disclosureParameters.subtitle,
+      title: disclosureParameters.title,
+      status: disclosureParameters.status,
     },
     {
-      id: 'Molecules/Flyout',
-      subtitle: `Flyout is a general purpose container that animates into view.`,
-      title: 'Flyout',
-      status: 'current',
+      id: `${parameters.title}/${flyoutParameters.title}`,
+      subtitle: flyoutParameters.subtitle,
+      title: flyoutParameters.title,
+      status: flyoutParameters.status,
     },
     {
-      id: 'Molecules/Menu',
-      subtitle: `The Menu component with MenuItem and MenuSeparator subcomponents.`,
-      title: 'Menu',
-      status: 'current',
+      id: `${parameters.title}/${menuParameters.title}`,
+      subtitle: menuParameters.subtitle,
+      title: menuParameters.title,
+      status: menuParameters.status,
     },
     {
-      id: 'Molecules/Modals',
-      subtitle: `The abstract concepts our system is built on: colors, spacing, responsive layouts, and the like.`,
-      title: 'Modals',
-      status: 'current',
+      id: `${parameters.title}/${modalsParameters.title}`,
+      subtitle: modalsParameters.subtitle,
+      title: modalsParameters.title,
+      status: modalsParameters.status,
     },
     {
-      id: 'Molecules/Pagination',
-      subtitle: `Controls for navigating through paginated content.`,
-      title: 'Pagination',
-      status: 'current',
+      id: `${parameters.title}/${paginationParameters.title}`,
+      subtitle: paginationParameters.subtitle,
+      title: paginationParameters.title,
+      status: paginationParameters.status,
     },
     {
-      id: 'Molecules/Popover',
-      subtitle: `Popover is a surface which takes a target element and shows an overlay positioned around that element.`,
-      title: 'Popover',
-      status: 'current',
+      id: `${parameters.title}/${popoverParameters.title}`,
+      subtitle: popoverParameters.subtitle,
+      title: popoverParameters.title,
+      status: popoverParameters.status,
     },
     {
-      id: 'Molecules/Tabs',
-      subtitle: `Tabs organize content into multiple sections, with only one section visible at a time.`,
-      title: 'Tabs',
-      status: 'current',
+      id: `${parameters.title}/${tabsParameters.title}`,
+      subtitle: tabsParameters.subtitle,
+      title: tabsParameters.title,
+      status: tabsParameters.status,
     },
     {
-      id: 'Molecules/Tips',
-      subtitle: `Tips come in the form of ToolTip or InfoTips (and eventually link PreviewTip).`,
-      title: 'Tips',
-      status: 'current',
+      id: `${parameters.title}/${tipsParameters.title}`,
+      subtitle: tipsParameters.subtitle,
+      title: tipsParameters.title,
+      status: tipsParameters.status,
     },
     {
-      id: 'Molecules/Toasts',
-      subtitle: `Use Toasts to reveal non-essential information upon interaction.`,
-      title: 'Toasts',
-      status: 'current',
+      id: `${parameters.title}/${toastsParameters.title}`,
+      subtitle: toastsParameters.subtitle,
+      title: toastsParameters.title,
+      status: toastsParameters.status,
     },
     {
-      id: 'Molecules/Video',
-      subtitle: `A video player that can play both youtube and vimeo videos
-given a video URL.`,
-      title: 'Video',
-      status: 'updating',
+      id: `${parameters.title}/${videoParameters.title}`,
+      subtitle: videoParameters.subtitle,
+      title: videoParameters.title,
+      status: videoParameters.status,
     },
   ]}
 />

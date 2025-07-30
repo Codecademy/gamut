@@ -2,6 +2,10 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as accessibilityGuidelinesParameters } from './Accessibility guidelines.mdx';
+import { parameters as componentGuidelinesParameters } from './Component guidelines/About.mdx';
+import { parameters as diyUxWritingParameters } from './DIY UX writing in 8 steps.mdx';
+
 export const parameters = {
   id: 'UX Writing',
   title: 'UX Writing',
@@ -22,21 +26,19 @@ In the following pages, you’ll find a collection of tips and tools for writing
 <TableOfContents
   links={[
     {
-      id: 'UX Writing/DIY UX writing in 8 steps',
-      subtitle: 'Follow these steps to write clear, useful UI copy.',
-      title: 'DIY UX writing in 8 steps',
+      id: `${parameters.title}/${diyUxWritingParameters.title}`,
+      subtitle: diyUxWritingParameters.subtitle,
+      title: diyUxWritingParameters.title,
     },
     {
-      id: 'UX Writing/Accessibility guidelines',
-      subtitle:
-        'In order for content to be accessible, it must be perceivable, operable, understandable, and robust.',
-      title: 'Accessibility guidelines',
+      id: `${parameters.title}/${accessibilityGuidelinesParameters.title}`,
+      subtitle: accessibilityGuidelinesParameters.subtitle,
+      title: accessibilityGuidelinesParameters.title,
     },
     {
-      id: 'UX Writing/Component Guidelines/About',
-      subtitle:
-        'Get up to speed on best practices for writing for user interfaces, including guidance for writing for specific components in Gamut.',
-      title: 'Component Guidelines',
+      id: `${parameters.title}/${componentGuidelinesParameters.title}/About`,
+      subtitle: componentGuidelinesParameters.subtitle,
+      title: componentGuidelinesParameters.title,
     },
   ]}
 />

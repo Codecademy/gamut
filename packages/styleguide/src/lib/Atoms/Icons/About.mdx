@@ -3,6 +3,9 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, Callout, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as miniParameters } from './Mini/Mini.mdx';
+import { parameters as regularParameters } from './Regular/Regular.mdx';
+
 export const parameters = {
   id: 'Icons',
   title: 'Icons',
@@ -77,18 +80,16 @@ Our icons all are transformed with a [custom Babel plugin](https://github.com/Co
 <TableOfContents
   links={[
     {
-      id: 'Atoms/Icons/Mini',
-      subtitle:
-        'A subset of [Streamline Mini Bold](https://app.streamlinehq.com/streamline-mini-bold). These are a smaller set of icons that are bolder and work well in smaller resolutions.',
-      title: 'Mini',
-      status: 'current',
+      id: `Atoms/${parameters.title}/${miniParameters.title}`,
+      subtitle: miniParameters.subtitle,
+      title: miniParameters.title,
+      status: miniParameters.status,
     },
     {
-      id: 'Atoms/Icons/Regular',
-      subtitle:
-        'A regular sized Icon set primarily from [Streamline Regular](https://app.streamlinehq.com/streamline-regular).',
-      title: 'Regular',
-      status: 'current',
+      id: `Atoms/${parameters.title}/${regularParameters.title}`,
+      subtitle: regularParameters.subtitle,
+      title: regularParameters.title,
+      status: regularParameters.status,
     },
   ]}
 />
