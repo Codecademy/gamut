@@ -2,6 +2,10 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as boxesParameters } from './Boxes/About.mdx';
+import { parameters as contentContainerParameters } from './ContentContainer/ContentContainer.mdx';
+import { parameters as layoutGridParameters } from './LayoutGrid/LayoutGrid.mdx';
+
 export const parameters = {
   id: 'Layouts',
   title: 'Layouts',
@@ -18,23 +22,22 @@ Pure sizing and padding containers. These position our elements on pages in stan
 <TableOfContents
   links={[
     {
-      id: 'Layouts/Boxes/About',
-      subtitle: 'Flexible container component with all system props available.',
-      title: 'Boxes',
-      status: 'current',
+      id: `${parameters.title}/${boxesParameters.title}`,
+      subtitle: boxesParameters.subtitle,
+      title: boxesParameters.title,
+      status: boxesParameters.status,
     },
     {
-      id: 'Layouts/ContentContainer',
-      subtitle:
-        'A container element meant to hold all content on the page, and provide the correct horizontal padding.',
-      status: 'current',
-      title: 'ContentContainer',
+      id: `${parameters.title}/${contentContainerParameters.title}`,
+      subtitle: contentContainerParameters.subtitle,
+      status: contentContainerParameters.status,
+      title: contentContainerParameters.title,
     },
     {
-      id: 'Layouts/LayoutGrid',
-      subtitle: 'A CSS grid based 12 Column grid system using just grid items.',
-      status: 'current',
-      title: 'LayoutGrid',
+      id: `${parameters.title}/${layoutGridParameters.title}`,
+      subtitle: layoutGridParameters.subtitle,
+      status: layoutGridParameters.status,
+      title: layoutGridParameters.title,
     },
   ]}
 />

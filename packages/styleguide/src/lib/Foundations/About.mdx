@@ -2,6 +2,13 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as colorModeParameters } from './ColorMode/ColorMode.mdx';
+import { parameters as layoutParameters } from './Layout.mdx';
+import { parameters as systemParameters } from './System/About.mdx';
+import { parameters as themeParameters } from './Theme/About.mdx';
+import { parameters as typographyParameters } from './Typography.mdx';
+import { parameters as utilitiesParameters } from './Utilities/Utilities.mdx';
+
 export const parameters = {
   id: 'Foundations',
   title: 'Foundations',
@@ -19,34 +26,34 @@ Sometimes referred to elsewhere as "tokens", they are the abstract units that co
 <TableOfContents
   links={[
     {
-      id: 'Foundations/ColorMode',
-      subtitle: 'Semantic color palette configuration.',
-      title: 'ColorMode',
+      id: `${parameters.title}/${colorModeParameters.title}`,
+      subtitle: colorModeParameters.subtitle,
+      title: colorModeParameters.title,
     },
     {
-      id: 'Foundations/Layout',
-      subtitle: 'Design guidelines for overall page layout.',
-      title: 'Layout',
+      id: `${parameters.title}/${layoutParameters.title}`,
+      subtitle: layoutParameters.subtitle,
+      title: layoutParameters.title,
     },
     {
-      id: 'Foundations/System',
-      subtitle: 'System properties and style functions',
-      title: 'System',
+      id: `${parameters.title}/${systemParameters.title}`,
+      subtitle: systemParameters.subtitle,
+      title: systemParameters.title,
     },
     {
-      id: 'Foundations/Theme',
-      subtitle: 'The Emotion theme for codecademy.',
-      title: 'Theme',
+      id: `${parameters.title}/${themeParameters.title}`,
+      subtitle: themeParameters.subtitle,
+      title: themeParameters.title,
     },
     {
-      id: 'Foundations/Typography',
-      subtitle: 'Typography design guidelines and token scales.',
-      title: 'Typography',
+      id: `${parameters.title}/${typographyParameters.title}`,
+      subtitle: typographyParameters.subtitle,
+      title: typographyParameters.title,
     },
     {
-      id: 'Foundations/Utilities',
-      subtitle: 'Style utilities for both SCSS and Emotion.',
-      title: 'Utilities',
+      id: `${parameters.title}/${utilitiesParameters.title}`,
+      subtitle: utilitiesParameters.subtitle,
+      title: utilitiesParameters.title,
     },
   ]}
 />
