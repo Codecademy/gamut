@@ -2,6 +2,12 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, LinkTo, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as formParameters } from './Form/Form.mdx';
+import { parameters as formGroupParameters } from './FormGroup/FormGroup.mdx';
+import { parameters as formGroupDescriptionParameters } from './FormGroupDescription/FormGroupDescription.mdx';
+import { parameters as formGroupLabelParameters } from './FormGroupLabel/FormGroupLabel.mdx';
+import { parameters as formRequiredTextParameters } from './FormRequiredText/FormRequiredText.mdx';
+
 export const parameters = {
   id: 'Atoms/FormElements',
   title: 'FormElements',
@@ -27,38 +33,34 @@ For everything else, we recommend <LinkTo id='Organisms/ConnectedForm'>Connected
 <TableOfContents
   links={[
     {
-      id: 'Atoms/FormElements/Form',
-      subtitle:
-        'A customizable `<form />` element for wrapping other form elements.',
-      title: 'Form',
-      status: 'current',
+      id: `Atoms/${parameters.title}/${formParameters.title}`,
+      subtitle: formParameters.subtitle,
+      title: formParameters.title,
+      status: formParameters.status,
     },
     {
-      id: 'Atoms/FormElements/FormGroup',
-      subtitle:
-        'A label and description wrapper for a form element that provides conditional styling.',
-      title: 'FormGroup',
-      status: 'current',
+      id: `Atoms/${parameters.title}/${formGroupParameters.title}`,
+      subtitle: formGroupParameters.subtitle,
+      title: formGroupParameters.title,
+      status: formGroupParameters.status,
     },
     {
-      id: 'Atoms/FormElements/FormGroupDescription',
-      subtitle:
-        'A description wrapper to format a longer description of a group of inputs.',
-      title: 'FormGroupDescription',
-      status: 'current',
+      id: `Atoms/${parameters.title}/${formGroupDescriptionParameters.title}`,
+      subtitle: formGroupDescriptionParameters.subtitle,
+      title: formGroupDescriptionParameters.title,
+      status: formGroupDescriptionParameters.status,
     },
     {
-      id: 'Atoms/FormElements/FormGroupLabel',
-      subtitle: 'A label element to be tied to a group of elements.',
-      title: 'FormGroupLabel',
-      status: 'current',
+      id: `Atoms/${parameters.title}/${formGroupLabelParameters.title}`,
+      subtitle: formGroupLabelParameters.subtitle,
+      title: formGroupLabelParameters.title,
+      status: formGroupLabelParameters.status,
     },
     {
-      id: 'Atoms/FormElements/FormRequiredText',
-      subtitle:
-        'A Text element that renders our required field explanation, should be included in all forms with required fields.',
-      title: 'FormRequiredText',
-      status: 'current',
+      id: `Atoms/${parameters.title}/${formRequiredTextParameters.title}`,
+      subtitle: formRequiredTextParameters.subtitle,
+      title: formRequiredTextParameters.title,
+      status: formRequiredTextParameters.status,
     },
   ]}
 />

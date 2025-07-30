@@ -2,6 +2,11 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as adminThemeParameters } from './AdminTheme.mdx';
+import { parameters as coreThemeParameters } from './CoreTheme.mdx';
+import { parameters as lxStudioThemeParameters } from './LXStudioTheme.mdx';
+import { parameters as platformThemeParameters } from './PlatformTheme.mdx';
+
 export const parameters = {
   title: 'Theme',
   subtitle: `Emotion themes used within the Codecademy design system`,
@@ -51,25 +56,24 @@ const myStyles = css`
 <TableOfContents
   links={[
     {
-      id: 'Foundations/Theme/CoreTheme',
-      subtitle: 'The Emotion theme for Codecademy',
-      title: 'Core Theme',
+      id: `Foundations/${parameters.title}/${coreThemeParameters.title}`,
+      subtitle: coreThemeParameters.subtitle,
+      title: coreThemeParameters.title,
     },
     {
-      id: 'Foundations/Theme/PlatformTheme',
-      subtitle:
-        'Codecademy Platform Theme used within the Learning Environment',
-      title: 'Platform Theme',
+      id: `Foundations/${parameters.title}/${platformThemeParameters.title}`,
+      subtitle: platformThemeParameters.subtitle,
+      title: platformThemeParameters.title,
     },
     {
-      id: 'Foundations/Theme/AdminTheme',
-      subtitle: 'Codecademy Admin Theme used within admin tools',
-      title: 'Admin Theme',
+      id: `Foundations/${parameters.title}/${adminThemeParameters.title}`,
+      subtitle: adminThemeParameters.subtitle,
+      title: adminThemeParameters.title,
     },
     {
-      id: 'Foundations/Theme/LXStudioTheme',
-      subtitle: 'Theme used within the LX Studio',
-      title: 'LX Studio Theme',
+      id: `Foundations/${parameters.title}/${lxStudioThemeParameters.title}`,
+      subtitle: lxStudioThemeParameters.subtitle,
+      title: lxStudioThemeParameters.title,
     },
   ]}
 />

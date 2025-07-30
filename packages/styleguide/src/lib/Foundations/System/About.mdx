@@ -2,6 +2,11 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as composeParameters } from './Compose.mdx';
+import { parameters as propsParameters } from './Props.mdx';
+import { parameters as responsivePropertiesParameters } from './ResponsiveProperties/ResponsiveProperties.mdx';
+import { parameters as variantsParameters } from './Variants.mdx';
+
 export const parameters = {
   title: 'System',
   subtitle: `System properties and style functions`,
@@ -19,27 +24,24 @@ These functions are built with [`@codecademy/variance`](https://github.com/Codec
 <TableOfContents
   links={[
     {
-      id: 'Foundations/Compose',
-      subtitle:
-        'The compose function lets you combine many system props into one to improve performance and reusability.',
-      title: 'Compose',
+      id: `Foundations/${parameters.title}/${composeParameters.title}`,
+      subtitle: composeParameters.subtitle,
+      title: composeParameters.title,
     },
     {
-      id: 'Foundations/Props',
-      subtitle:
-        'Reusable CSS-in-JS props with predictable behaviors and a consistent API for responsive CSS.',
-      title: 'Props',
+      id: `Foundations/${parameters.title}/${propsParameters.title}`,
+      subtitle: propsParameters.subtitle,
+      title: propsParameters.title,
     },
     {
-      id: 'Foundations/ResponsiveProperties',
-      subtitle:
-        'All system props accept a syntax to generate responsive styles on a per prop basis',
-      title: 'Responsive Properties',
+      id: `Foundations/${parameters.title}/${responsivePropertiesParameters.title}`,
+      subtitle: responsivePropertiesParameters.subtitle,
+      title: responsivePropertiesParameters.title,
     },
     {
-      id: 'Foundations/Variants',
-      subtitle: 'The style props for more complex CSS combinations.',
-      title: 'Variants',
+      id: `Foundations/${parameters.title}/${variantsParameters.title}`,
+      subtitle: variantsParameters.subtitle,
+      title: variantsParameters.title,
     },
   ]}
 />

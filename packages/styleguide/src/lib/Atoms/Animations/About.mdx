@@ -2,6 +2,9 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as expandInCollapseOutParameters } from './ExpandInCollapseOut/ExpandInCollapseOut.mdx';
+import { parameters as rotationParameters } from './Rotation/Rotation.mdx';
+
 export const parameters = {
   id: 'Atoms/Animations',
   title: 'Animations',
@@ -17,17 +20,16 @@ Animations should not be the click target of actions, but rather the container f
 <TableOfContents
   links={[
     {
-      id: '/Atoms/Animations/Rotation',
-      subtitle: 'A container that can rotate its children.',
-      title: 'Rotation',
-      status: 'current',
+      id: `Atoms/${parameters.title}/${rotationParameters.title}`,
+      subtitle: rotationParameters.subtitle,
+      title: rotationParameters.title,
+      status: rotationParameters.status,
     },
     {
-      id: '/Atoms/Animations/ExpandInCollapseOut',
-      subtitle:
-        'A container that applies an expand and collapse animation to its children.',
-      title: 'ExpandInCollapseOut',
-      status: 'current',
+      id: `Atoms/${parameters.title}/${expandInCollapseOutParameters.title}`,
+      subtitle: expandInCollapseOutParameters.subtitle,
+      title: expandInCollapseOutParameters.title,
+      status: expandInCollapseOutParameters.status,
     },
   ]}
 />
