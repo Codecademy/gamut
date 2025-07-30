@@ -55,7 +55,6 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   id,
   label,
   name,
-  labelSize,
   spacing = 'fit',
   isSoloField,
   infotip,
@@ -82,7 +81,6 @@ export function ConnectedFormGroup<T extends ConnectedField>({
       infotip={infotip}
       isSoloField={isSoloField}
       required={!!validation?.required}
-      size={labelSize}
     >
       {label}
     </FormGroupLabel>
@@ -103,31 +101,36 @@ export function ConnectedFormGroup<T extends ConnectedField>({
         name={name}
       />
       {children}
-      {showError && (
-        <FormError
-          aria-live={isFirstError ? 'assertive' : 'off'}
-          id={errorId}
-          role={isFirstError ? 'alert' : 'status'}
-          variant={errorType}
-        >
+      {/*
+       * For screen readers to read new content, role="alert" and/or
+       * aria-live wrapper elements must be present *before* content is
+       * added. Thus, we need to render the FormError span always,
+       * regardless of whether or not there is an error.
+       */}
+      <FormError
+        aria-live={isFirstError ? 'assertive' : 'off'}
+        id={errorId}
+        role={isFirstError ? 'alert' : 'status'}
+        variant={errorType}
+      >
+        {showError && (
           <Markdown
             inline
             overrides={{
               a: {
                 allowedAttributes: ['href', 'target'],
                 component: ErrorAnchor,
-                processNode: (
-                  node: unknown,
-                  props: { onClick?: () => void }
-                ) => <ErrorAnchor {...props} />,
+                processNode: (_: unknown, props: { onClick?: () => void }) => (
+                  <ErrorAnchor {...props} />
+                ),
               },
             }}
             skipDefaultOverrides={{ a: true }}
             spacing="none"
             text={textError}
           />
-        </FormError>
-      )}
+        )}
+      </FormError>
     </FormGroup>
   );
 }
