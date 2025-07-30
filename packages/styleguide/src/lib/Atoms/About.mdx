@@ -2,6 +2,26 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as animationsParameters } from './Animations/About.mdx';
+import { parameters as badgeParameters } from './Badge/Badge.mdx';
+import { parameters as buttonsParameters } from './Buttons/About.mdx';
+import { parameters as cardParameters } from './Card/Card.mdx';
+import { parameters as drawerParameters } from './Drawer/Drawer.mdx';
+import { parameters as formElementsParameters } from './FormElements/About.mdx';
+import { parameters as formInputsParameters } from './FormInputs/About.mdx';
+import { parameters as iconsParameters } from './Icons/About.mdx';
+import { parameters as illustrationsParameters } from './Illustrations/Illustrations.mdx';
+import { parameters as internalFloatingCardParameters } from './InternalFloatingCard/InternalFloatingCard.mdx';
+import { parameters as loadersParameters } from './Loaders/About.mdx';
+import { parameters as patternsParameters } from './Patterns/Patterns.mdx';
+import { parameters as popoverContainerParameters } from './PopoverContainer/PopoverContainer.mdx';
+import { parameters as progressBarParameters } from './ProgressBar/ProgressBar.mdx';
+import { parameters as radialProgressParameters } from './RadialProgress/RadialProgress.mdx';
+import { parameters as skipToContentParameters } from './SkipToContent/SkipToContent.mdx';
+import { parameters as tagParameters } from './Tag/Tag.mdx';
+import { parameters as toggleParameters } from './Toggle/Toggle.mdx';
+import { parameters as focusTrapParameters } from './UtilityComponents/FocusTrap/FocusTrap.mdx';
+
 export const parameters = {
   id: 'Atoms',
   title: 'Atoms',
@@ -21,127 +41,117 @@ export const parameters = {
   links={[
     {
       id: 'Atoms/Animations',
-      subtitle: `Controlled containers for predictable animations.`,
-      title: 'Animations',
-      status: 'current',
+      subtitle: animationsParameters.subtitle,
+      title: animationsParameters.title,
+      status: animationsParameters.status,
     },
     {
       id: 'Atoms/Badge',
-      subtitle: `Badges are generally used as a standard way to highlight a short piece of text, likely a single word.`,
-      title: 'Badge',
-      status: 'current',
+      subtitle: badgeParameters.subtitle,
+      title: badgeParameters.title,
+      status: badgeParameters.status,
     },
     {
       id: 'Atoms/Buttons',
-      subtitle: `Buttons that provide an element for interaction on a page.`,
-      title: 'Buttons',
-      status: 'current',
+      subtitle: buttonsParameters.subtitle,
+      title: buttonsParameters.title,
+      status: buttonsParameters.status,
     },
     {
       id: 'Atoms/Card',
-      subtitle: `A card with multiple background combinations for presenting different types of information.`,
-      title: 'Card',
-      status: 'updating',
+      subtitle: cardParameters.subtitle,
+      title: cardParameters.title,
+      status: cardParameters.status,
     },
     {
       id: 'Atoms/Drawer',
-      subtitle: `Animated container that expands horizontally to show its contents.`,
-      title: 'Drawer',
-      status: 'current',
+      subtitle: drawerParameters.subtitle,
+      title: drawerParameters.title,
+      status: drawerParameters.status,
     },
     {
       id: 'Atoms/FocusTrap',
-      subtitle:
-        'Used for modal and dialog experiences like `Overlay` and `ModalDeprecated`.',
-      title: 'FocusTrap',
-      status: 'current',
+      subtitle: focusTrapParameters.subtitle,
+      title: focusTrapParameters.title,
+      status: focusTrapParameters.status,
     },
     {
       id: 'Atoms/FormElements',
-      subtitle:
-        'Ancillary descriptions for input atoms tied 1:1 with values to be submitted in a form.',
-      title: 'FormElements',
-      status: 'current',
+      subtitle: formElementsParameters.subtitle,
+      title: formElementsParameters.title,
+      status: formElementsParameters.status,
     },
     {
       id: 'Atoms/FormInputs',
-      subtitle:
-        'Various input types that allow a user to make a selection or enter information.',
-      title: 'FormInputs',
-      status: 'current',
+      subtitle: formInputsParameters.subtitle,
+      title: formInputsParameters.title,
+      status: formInputsParameters.status,
     },
     {
       id: 'Atoms/Icons',
-      subtitle:
-        'SVG Icon components from [Streamline](https://streamlineicons.com/).',
-      title: 'Icons',
-      status: 'current',
+      subtitle: iconsParameters.subtitle,
+      title: iconsParameters.title,
+      status: iconsParameters.status,
     },
     {
       id: 'Atoms/Illustrations',
-      subtitle:
-        'React components that serve up SVGs to provide more control and reusability.',
-      title: 'Illustrations',
-      status: 'current',
+      subtitle: illustrationsParameters.subtitle,
+      title: illustrationsParameters.title,
+      status: illustrationsParameters.status,
     },
     {
       id: 'Atoms/InternalFloatingCard',
-      subtitle: `A card with a persistent patterned shadow meant for user feedback or interaction outside the normal flow for internal use only.`,
-      title: 'InternalFloatingCard',
-      status: 'deprecated',
+      subtitle: internalFloatingCardParameters.subtitle,
+      title: internalFloatingCardParameters.title,
+      status: internalFloatingCardParameters.status,
     },
     {
       id: 'Atoms/Loaders',
-      subtitle: 'Animations that indicate information is currently loading.',
-      title: 'Loaders',
-      status: 'current',
+      subtitle: loadersParameters.subtitle,
+      title: loadersParameters.title,
+      status: loadersParameters.status,
     },
     {
       id: 'Atoms/Patterns',
-      subtitle: 'Standard background fill patterns.',
-      title: 'Patterns',
-      status: 'current',
+      subtitle: patternsParameters.subtitle,
+      title: patternsParameters.title,
+      status: patternsParameters.status,
     },
     {
       id: 'Atoms/PopoverContainer',
-      subtitle:
-        'Utility component for positioning content relative to a target element.',
-      title: 'PopoverContainer',
-      status: 'current',
+      subtitle: popoverContainerParameters.subtitle,
+      title: popoverContainerParameters.title,
+      status: popoverContainerParameters.status,
     },
     {
       id: 'Atoms/ProgressBar',
-      subtitle: 'A horizontal bar for displaying progress.',
-      title: 'ProgressBar',
-      status: 'current',
+      subtitle: progressBarParameters.subtitle,
+      title: progressBarParameters.title,
+      status: progressBarParameters.status,
     },
     {
       id: 'Atoms/RadialProgress',
-      subtitle:
-        'A circular display of progress meant to convey a percentage out of a whole.',
-      title: 'RadialProgress',
-      status: 'deprecated',
+      subtitle: radialProgressParameters.subtitle,
+      title: radialProgressParameters.title,
+      status: radialProgressParameters.status,
     },
     {
       id: 'Atoms/SkipToContent',
-      subtitle:
-        'An invisible component to make pages more keyboard accessible.',
-      title: 'SkipToContent',
-      status: 'current',
+      subtitle: skipToContentParameters.subtitle,
+      title: skipToContentParameters.title,
+      status: skipToContentParameters.status,
     },
     {
       id: 'Atoms/Tag',
-      subtitle:
-        'Compact, dynamic elements that support user inputs, selections, and actions.',
-      title: 'Tag',
-      status: 'updating',
+      subtitle: tagParameters.subtitle,
+      title: tagParameters.title,
+      status: tagParameters.status,
     },
     {
       id: 'Atoms/Toggle',
-      subtitle:
-        'A completely controlled boolean Toggle component that triggers an immediate on/off action.',
-      title: 'Toggle',
-      status: 'current',
+      subtitle: toggleParameters.subtitle,
+      title: toggleParameters.title,
+      status: toggleParameters.status,
     },
   ]}
 />

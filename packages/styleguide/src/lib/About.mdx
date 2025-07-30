@@ -2,6 +2,15 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as atomsParameters } from './Atoms/About.mdx';
+import { parameters as foundationsParameters } from './Foundations/About.mdx';
+import { parameters as layoutsParameters } from './Layouts/About.mdx';
+import { parameters as metaParameters } from './Meta/About.mdx';
+import { parameters as moleculesParameters } from './Molecules/About.mdx';
+import { parameters as organismsParameters } from './Organisms/About.mdx';
+import { parameters as typographyParameters } from './Typography/About.mdx';
+import { parameters as uxWritingParameters } from './UX Writing/About.mdx';
+
 export const parameters = {
   id: 'Gamut',
   title: 'Gamut',
@@ -23,44 +32,43 @@ Its organization roughly aligns with variations of [Atomic Design](https://bradf
   links={[
     {
       id: 'Meta/About',
-      subtitle:
-        'Documentation and associated links explaining our in-progress approach to a design system.',
-      title: 'Meta',
+      subtitle: metaParameters.subtitle,
+      title: metaParameters.title,
     },
     {
       id: 'Foundations/About',
-      subtitle: `The abstract concepts our system is built on: colors, spacing, responsive layouts, and the like.`,
-      title: 'Foundations',
+      subtitle: foundationsParameters.subtitle,
+      title: foundationsParameters.title,
     },
     {
       id: 'Layouts/About',
-      subtitle: `Layouts are basic building blocks to help you construct layouts on the page via configuration.`,
-      title: 'Layouts',
+      subtitle: layoutsParameters.subtitle,
+      title: layoutsParameters.title,
     },
     {
       id: 'Typography/About',
-      subtitle: `These are basic primitives for displaying text components in configurable ways.`,
-      title: 'Typography',
+      subtitle: typographyParameters.subtitle,
+      title: typographyParameters.title,
     },
     {
       id: 'Atoms/About',
-      subtitle: `Atoms are our basic building block components. They are the most granular, low-level visuals in our system.`,
-      title: 'Atoms',
+      subtitle: atomsParameters.subtitle,
+      title: atomsParameters.title,
     },
     {
       id: 'Molecules/About',
-      subtitle: `Molecules are groups of atoms together. These consist of a few atoms combined for a small, self-contained design.`,
-      title: 'Molecules',
+      subtitle: moleculesParameters.subtitle,
+      title: moleculesParameters.title,
     },
     {
       id: 'Organisms/About',
-      subtitle: `Organisms are groups of molecules joined together to form a relatively complex, distinct section of an interface.`,
-      title: 'Organisms',
+      subtitle: organismsParameters.subtitle,
+      title: organismsParameters.title,
     },
     {
       id: 'UX Writing/About',
-      subtitle: `Help learners find success by surfacing the right copy and content to the right people at the right time.`,
-      title: 'UX Writing',
+      subtitle: uxWritingParameters.subtitle,
+      title: uxWritingParameters.title,
     },
   ]}
 />
