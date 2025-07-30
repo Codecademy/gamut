@@ -2,6 +2,10 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as DataListParameters } from './DataList/DataList.mdx';
+import { parameters as DataTableParameters } from './DataTable/DataTable.mdx';
+import { parameters as ListParameters } from './List/List.mdx';
+
 export const parameters = {
   id: 'Organisms/Lists&Tables',
   title: 'Lists & Tables',
@@ -18,25 +22,22 @@ Both `List` and `Table` are commonly used to showcase objects, data, and informa
 <TableOfContents
   links={[
     {
-      id: 'Organisms/Lists&Tables/DataList',
-      subtitle:
-        'Displays rich information and supports visually distinctive formats for individual List Items.',
-      title: 'DataList',
-      status: 'current',
+      id: `Organisms/${parameters.title}/${DataListParameters.title}`,
+      subtitle: DataListParameters.subtitle,
+      title: DataListParameters.title,
+      status: DataListParameters.status,
     },
     {
-      id: 'Organisms/Lists&Tables/DataTable',
-      subtitle:
-        'Compare large amounts of data and perform bulk actions on Table Rows.',
-      title: 'DataTable',
-      status: 'current',
+      id: `Organisms/${parameters.title}/${DataTableParameters.title}`,
+      subtitle: DataTableParameters.subtitle,
+      title: DataTableParameters.title,
+      status: DataTableParameters.status,
     },
     {
-      id: 'Organisms/Lists&Tables/List',
-      subtitle:
-        'The elements, APIs, and technical operations that support List and Table designs.',
-      title: 'List',
-      status: 'current',
+      id: `Organisms/${parameters.title}/${ListParameters.title}`,
+      subtitle: ListParameters.subtitle,
+      title: ListParameters.title,
+      status: ListParameters.status,
     },
   ]}
 />

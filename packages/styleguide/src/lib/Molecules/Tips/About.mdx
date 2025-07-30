@@ -2,7 +2,10 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as InfoTipParameters } from './InfoTip/InfoTip.mdx';
+import { parameters as PreviewTipParameters } from './PreviewTip/PreviewTip.mdx';
 import { TipsTable } from './TipsTable';
+import { parameters as ToolTipParameters } from './ToolTip/ToolTip.mdx';
 
 export const parameters = {
   id: 'Molecules/Tips',
@@ -22,25 +25,22 @@ Tips come in the form of ToolTip or InfoTips (and eventually link PreviewTip). T
 <TableOfContents
   links={[
     {
-      id: 'Molecules/Tips/InfoTip',
-      subtitle:
-        'A tip triggered by clicking on an information icon button. Use an infotip to provide additional info about a nearby element or content.',
-      title: 'InfoTip',
-      status: 'current',
+      id: `Molecules/${parameters.title}/${InfoTipParameters.title}`,
+      subtitle: InfoTipParameters.subtitle,
+      title: InfoTipParameters.title,
+      status: InfoTipParameters.status,
     },
     {
-      id: 'Molecules/Tips/PreviewTip',
-      subtitle:
-        'An Anchor that provides a snippet of relevant information from the link destination.',
-      title: 'PreviewTip',
-      status: 'current',
+      id: `Molecules/${parameters.title}/${PreviewTipParameters.title}`,
+      subtitle: PreviewTipParameters.subtitle,
+      title: PreviewTipParameters.title,
+      status: PreviewTipParameters.status,
     },
     {
-      id: 'Molecules/Tips/ToolTip',
-      subtitle:
-        'A short tip triggered on hover and focus of an interactive element. Use a tooltip to further explain an element’s primary action, a disabled button state, or to display a label for an icon-only button.',
-      title: 'ToolTip',
-      status: 'current',
+      id: `Molecules/${parameters.title}/${ToolTipParameters.title}`,
+      subtitle: ToolTipParameters.subtitle,
+      title: ToolTipParameters.title,
+      status: ToolTipParameters.status,
     },
   ]}
 />

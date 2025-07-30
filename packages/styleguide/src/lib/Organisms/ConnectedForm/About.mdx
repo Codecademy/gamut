@@ -2,6 +2,11 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
+import { parameters as ConnectedFormParameters } from './ConnectedForm/ConnectedForm.mdx';
+import { parameters as ConnectedFormGroupParameters } from './ConnectedFormGroup/ConnectedFormGroup.mdx';
+import { parameters as ConnectedFormInputsParameters } from './ConnectedFormInputs/ConnectedFormInputs.mdx';
+import { parameters as SubmitButtonParameters } from './SubmitButton/SubmitButton.mdx';
+
 export const parameters = {
   id: 'Organisms/ConnectedForm',
   title: 'ConnectedForm',
@@ -17,28 +22,28 @@ Our Connected- and GridForm organisms provide a easy way to implement forms. Whi
 <TableOfContents
   links={[
     {
-      id: 'Organisms/ConnectedForm/ConnectedForm',
-      subtitle: 'A flexible way to build forms.',
-      title: 'ConnectedForm',
-      status: 'current',
+      id: `Organisms/${parameters.title}/${ConnectedFormParameters.title}`,
+      subtitle: ConnectedFormParameters.subtitle,
+      title: ConnectedFormParameters.title,
+      status: ConnectedFormParameters.status,
     },
     {
-      id: 'Organisms/ConnectedForm/ConnectedFormGroup',
-      subtitle: 'A form group for the ConnectedForm component.',
-      title: 'ConnectedFormGroup',
-      status: 'updating',
+      id: `Organisms/${parameters.title}/${ConnectedFormGroupParameters.title}`,
+      subtitle: ConnectedFormGroupParameters.subtitle,
+      title: ConnectedFormGroupParameters.title,
+      status: ConnectedFormGroupParameters.status,
     },
     {
-      id: 'Organisms/ConnectedForm/ConnectedFormInputs',
-      subtitle: 'Different form inputs for the ConnectedForm component.',
-      title: 'ConnectedFormInputs',
-      status: 'updating',
+      id: `Organisms/${parameters.title}/${ConnectedFormInputsParameters.title}`,
+      subtitle: ConnectedFormInputsParameters.subtitle,
+      title: ConnectedFormInputsParameters.title,
+      status: ConnectedFormInputsParameters.status,
     },
     {
-      id: 'Organisms/ConnectedForm/SubmitButton',
-      subtitle: 'A submit type button for ConnectedForm.',
-      title: 'SubmitButton',
-      status: 'current',
+      id: `Organisms/${parameters.title}/${SubmitButtonParameters.title}`,
+      subtitle: SubmitButtonParameters.subtitle,
+      title: SubmitButtonParameters.title,
+      status: SubmitButtonParameters.status,
     },
   ]}
 />
