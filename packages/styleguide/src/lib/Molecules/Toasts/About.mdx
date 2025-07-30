@@ -2,8 +2,8 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
-import { parameters as ToastParameters } from './Toast/Toast.mdx';
-import { parameters as ToasterParameters } from './Toaster/Toaster.mdx';
+import { parameters as toastParameters } from './Toast/Toast.mdx';
+import { parameters as toasterParameters } from './Toaster/Toaster.mdx';
 
 export const parameters = {
   id: 'Molecules/Toasts',
@@ -20,16 +20,16 @@ A Toast and Toaster component for lower priority, decorative and celebratory use
 <TableOfContents
   links={[
     {
-      id: `Molecules/${parameters.title}/${ToastParameters.title}`,
-      subtitle: ToastParameters.subtitle,
-      title: ToastParameters.title,
-      status: ToastParameters.status,
+      id: `Molecules/${parameters.title}/${toastParameters.title}`,
+      subtitle: toastParameters.subtitle,
+      title: toastParameters.title,
+      status: toastParameters.status,
     },
     {
-      id: `Molecules/${parameters.title}/${ToasterParameters.title}`,
-      subtitle: ToasterParameters.subtitle,
-      title: ToasterParameters.title,
-      status: ToasterParameters.status,
+      id: `Molecules/${parameters.title}/${toasterParameters.title}`,
+      subtitle: toasterParameters.subtitle,
+      title: toasterParameters.title,
+      status: toasterParameters.status,
     },
   ]}
 />

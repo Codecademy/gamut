@@ -2,9 +2,9 @@ import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, TableOfContents } from '~styleguide/blocks';
 
-import { parameters as DataListParameters } from './DataList/DataList.mdx';
-import { parameters as DataTableParameters } from './DataTable/DataTable.mdx';
-import { parameters as ListParameters } from './List/List.mdx';
+import { parameters as dataListParameters } from './DataList/DataList.mdx';
+import { parameters as dataTableParameters } from './DataTable/DataTable.mdx';
+import { parameters as listParameters } from './List/List.mdx';
 
 export const parameters = {
   id: 'Organisms/Lists&Tables',
@@ -22,22 +22,22 @@ Both `List` and `Table` are commonly used to showcase objects, data, and informa
 <TableOfContents
   links={[
     {
-      id: `Organisms/${parameters.title}/${DataListParameters.title}`,
-      subtitle: DataListParameters.subtitle,
-      title: DataListParameters.title,
-      status: DataListParameters.status,
+      id: `Organisms/${parameters.title}/${dataListParameters.title}`,
+      subtitle: dataListParameters.subtitle,
+      title: dataListParameters.title,
+      status: dataListParameters.status,
     },
     {
-      id: `Organisms/${parameters.title}/${DataTableParameters.title}`,
-      subtitle: DataTableParameters.subtitle,
-      title: DataTableParameters.title,
-      status: DataTableParameters.status,
+      id: `Organisms/${parameters.title}/${dataTableParameters.title}`,
+      subtitle: dataTableParameters.subtitle,
+      title: dataTableParameters.title,
+      status: dataTableParameters.status,
     },
     {
-      id: `Organisms/${parameters.title}/${ListParameters.title}`,
-      subtitle: ListParameters.subtitle,
-      title: ListParameters.title,
-      status: ListParameters.status,
+      id: `Organisms/${parameters.title}/${listParameters.title}`,
+      subtitle: listParameters.subtitle,
+      title: listParameters.title,
+      status: listParameters.status,
     },
   ]}
 />
