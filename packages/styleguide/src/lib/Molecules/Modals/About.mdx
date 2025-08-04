@@ -1,6 +1,10 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as dialogParameters } from './Dialog/Dialog.mdx';
 import { parameters as modalParameters } from './Modal/Modal.mdx';
@@ -21,30 +25,10 @@ export const parameters = {
 Use a modal to focus a user’s attention on an important piece of information or quick task.
 
 <TableOfContents
-  links={[
-    {
-      id: `Molecules/${parameters.title}/${dialogParameters.title}`,
-      subtitle: dialogParameters.subtitle,
-      title: dialogParameters.title,
-      status: dialogParameters.status,
-    },
-    {
-      id: `Molecules/${parameters.title}/${modalParameters.title}`,
-      subtitle: modalParameters.subtitle,
-      title: modalParameters.title,
-      status: modalParameters.status,
-    },
-    {
-      id: `Molecules/${parameters.title}/${modalDeprecatedParameters.title}`,
-      subtitle: modalDeprecatedParameters.subtitle,
-      title: modalDeprecatedParameters.title,
-      status: modalDeprecatedParameters.status,
-    },
-    {
-      id: `Molecules/${parameters.title}/${overlayParameters.title}`,
-      subtitle: overlayParameters.subtitle,
-      title: overlayParameters.title,
-      status: overlayParameters.status,
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    dialogParameters,
+    modalParameters,
+    modalDeprecatedParameters,
+    overlayParameters,
+  ])}
 />

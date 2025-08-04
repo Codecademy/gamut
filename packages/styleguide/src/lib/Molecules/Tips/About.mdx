@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import { AboutHeader, TableOfContents, addParentPath } from '~styleguide/blocks';
 
 import { parameters as infoTipParameters } from './InfoTip/InfoTip.mdx';
 import { parameters as previewTipParameters } from './PreviewTip/PreviewTip.mdx';
@@ -23,5 +23,5 @@ Tips come in the form of ToolTip or InfoTips (and eventually link PreviewTip). T
 <br />
 
 <TableOfContents
-  links={[infoTipParameters, previewTipParameters, toolTipParameters]}
+  links={addParentPath(parameters.id, [infoTipParameters, previewTipParameters, toolTipParameters])}
 />

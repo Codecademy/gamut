@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, LinkTo, TableOfContents } from '~styleguide/blocks';
+import { AboutHeader, LinkTo, TableOfContents, addParentPath } from '~styleguide/blocks';
 
 import { parameters as alertsParameters } from './Alerts.mdx';
 import { parameters as alternativeTextParameters } from './Alternative text.mdx';
@@ -12,7 +12,7 @@ import { parameters as toastsParameters } from './Toasts.mdx';
 import { parameters as tooltipsParameters } from './Tooltips.mdx';
 
 export const parameters = {
-  id: 'Component guidelines',
+  id: 'UX Writing/Component guidelines',
   title: 'Component guidelines',
   subtitle:
     'Get up to speed on best practices for writing for user interfaces, including guidance for writing for specific components in Gamut.',
@@ -25,7 +25,7 @@ export const parameters = {
 Writing on your own? Use the <LinkTo id="UX Writing/DIY UX writing in 8 steps">step-by-step guide</LinkTo> to ensure the copy is clear and useful.
 
 <TableOfContents
-  links={[
+  links={addParentPath(parameters.id, [
     alertsParameters,
     alternativeTextParameters,
     buttonsParameters,
@@ -34,5 +34,5 @@ Writing on your own? Use the <LinkTo id="UX Writing/DIY UX writing in 8 steps">s
     notificationsParameters,
     toastsParameters,
     tooltipsParameters,
-  ]}
+  ])}
 />

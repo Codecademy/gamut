@@ -1,6 +1,10 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as buttonParameters } from './Button/Button.mdx';
 import { parameters as ctaButtonParameters } from './CTAButton/CTAButton.mdx';
@@ -20,42 +24,12 @@ export const parameters = {
 <AboutHeader {...parameters} />
 
 <TableOfContents
-  links={[
-    {
-      id: `Atoms/${parameters.title}/${buttonParameters.title}`,
-      subtitle: buttonParameters.subtitle,
-      title: buttonParameters.title,
-      status: buttonParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${ctaButtonParameters.title}`,
-      subtitle: ctaButtonParameters.subtitle,
-      title: ctaButtonParameters.title,
-      status: ctaButtonParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${fillButtonParameters.title}`,
-      subtitle: fillButtonParameters.subtitle,
-      title: fillButtonParameters.title,
-      status: fillButtonParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${strokeButtonParameters.title}`,
-      subtitle: strokeButtonParameters.subtitle,
-      title: strokeButtonParameters.title,
-      status: strokeButtonParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${textButtonParameters.title}`,
-      subtitle: textButtonParameters.subtitle,
-      title: textButtonParameters.title,
-      status: textButtonParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${iconButtonParameters.title}`,
-      subtitle: iconButtonParameters.subtitle,
-      title: iconButtonParameters.title,
-      status: iconButtonParameters.status,
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    buttonParameters,
+    ctaButtonParameters,
+    fillButtonParameters,
+    iconButtonParameters,
+    strokeButtonParameters,
+    textButtonParameters,
+  ])}
 />

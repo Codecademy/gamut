@@ -12,7 +12,7 @@ type PageLink = {
   title: string;
 };
 
-// Helper function to add parent path to parameter objects
+// Used in the adapt parameter objects to create a working link inside a TableOfContents `links` array
 export const addParentPath = (parentId: string, links: any[]): PageLink[] => {
   return links.map((link) => {
     const linkId = link.id || link.title;
