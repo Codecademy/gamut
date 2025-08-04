@@ -436,7 +436,10 @@ export const ListWrapper = styled(Box)(
   }),
   states({
     scrollable: {
-      boxShadow: { _: undefined, c_sm: 'inset -24px 0 24px -24px black' },
+      background: `linear-gradient(90deg, transparent 0%, transparent 40%, ${theme.colors['background-selected']} 50%, ${theme.colors['border-tertiary']} 100%)`,
+      backgroundSize: '124px 100%',
+      backgroundPosition: 'right',
+      backgroundRepeat: 'no-repeat',
     },
   })
 );
