@@ -14,10 +14,17 @@ type PageLink = {
 
 // Helper function to add parent path to parameter objects
 export const addParentPath = (parentId: string, links: any[]): PageLink[] => {
-  return links.map((link) => ({
-    ...link,
-    id: `${parentId}/${link.id || link.title}`,
-  }));
+  return links.map((link) => {
+    const linkId = link.id || link.title;
+    // If the link already starts with the parent path, use it as-is
+    // Otherwise, construct the full path
+    const id = linkId.startsWith(parentId) ? linkId : `${parentId}/${linkId}`;
+
+    return {
+      ...link,
+      id,
+    };
+  });
 };
 
 export const TableOfContents: React.FC<{ links: PageLink[] }> = ({ links }) => {

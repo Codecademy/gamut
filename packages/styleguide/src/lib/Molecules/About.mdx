@@ -1,26 +1,8 @@
 import { Meta } from '@storybook/blocks';
 
-import {
-  AboutHeader,
-  addParentPath,
-  TableOfContents,
-} from '~styleguide/blocks';
+import { AboutHeader } from '~styleguide/blocks';
 
-import { parameters as accordionButtonDeprecatedParameters } from './AccordionButtonDeprecated/AccordionButtonDeprecated.mdx';
-import { parameters as accordionDeprecatedParameters } from './AccordionDeprecated/AccordionDeprecated.mdx';
-import { parameters as alertParameters } from './Alert/Alert.mdx';
-import { parameters as breadcrumbsParameters } from './Breadcrumbs/Breadcrumbs.mdx';
-import { parameters as coachmarkParameters } from './Coachmark/Coachmark.mdx';
-import { parameters as disclosureParameters } from './Disclosure/Disclosure.mdx';
-import { parameters as flyoutParameters } from './Flyout/Flyout.mdx';
-import { parameters as menuParameters } from './Menu/Menu.mdx';
-import { parameters as modalsParameters } from './Modals/About.mdx';
-import { parameters as paginationParameters } from './Pagination/Pagination.mdx';
-import { parameters as popoverParameters } from './Popover/Popover.mdx';
-import { parameters as tabsParameters } from './Tabs/Tabs.mdx';
-import { parameters as tipsParameters } from './Tips/About.mdx';
-import { parameters as toastsParameters } from './Toasts/About.mdx';
-import { parameters as videoParameters } from './Video/Video.mdx';
+import { MoleculeAboutToC } from './AboutToC';
 
 export const parameters = {
   id: 'Molecules',
@@ -39,22 +21,4 @@ export const parameters = {
 >
 > [- Brad Frost, author of "Atomic Design"](https://bradfrost.com/blog/post/atomic-web-design/#molecules)
 
-<TableOfContents
-  links={addParentPath(parameters.id, [
-    accordionButtonDeprecatedParameters,
-    accordionDeprecatedParameters,
-    alertParameters,
-    breadcrumbsParameters,
-    coachmarkParameters,
-    disclosureParameters,
-    flyoutParameters,
-    menuParameters,
-    modalsParameters,
-    paginationParameters,
-    popoverParameters,
-    tabsParameters,
-    tipsParameters,
-    toastsParameters,
-    videoParameters,
-  ])}
-/>
+<MoleculeAboutToC />
