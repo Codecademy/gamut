@@ -1,6 +1,10 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents, addParentPath } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as toastParameters } from './Toast/Toast.mdx';
 import { parameters as toasterParameters } from './Toaster/Toaster.mdx';
@@ -18,8 +22,5 @@ export const parameters = {
 A Toast and Toaster component for lower priority, decorative and celebratory user feedback.
 
 <TableOfContents
-  links={addParentPath(parameters.id, [
-    toastParameters,
-    toasterParameters,
-  ])}
+  links={addParentPath(parameters.id, [toastParameters, toasterParameters])}
 />
