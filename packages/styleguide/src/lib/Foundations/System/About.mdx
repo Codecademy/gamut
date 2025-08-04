@@ -1,6 +1,10 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as composeParameters } from './Compose.mdx';
 import { parameters as propsParameters } from './Props.mdx';
@@ -8,6 +12,7 @@ import { parameters as responsivePropertiesParameters } from './ResponsiveProper
 import { parameters as variantsParameters } from './Variants.mdx';
 
 export const parameters = {
+  id: 'Foundations/System',
   title: 'System',
   subtitle: `System properties and style functions`,
   status: 'current',
@@ -22,26 +27,10 @@ Many of our components are written in our CSS in JS library, [Emotion](https://e
 These functions are built with [`@codecademy/variance`](https://github.com/Codecademy/gamut/tree/main/packages/variance): a library inspired by [`styled-system`](https://styled-system.com/) but with a focus on typesafety.
 
 <TableOfContents
-  links={[
-    {
-      id: `Foundations/${parameters.title}/${composeParameters.title}`,
-      subtitle: composeParameters.subtitle,
-      title: composeParameters.title,
-    },
-    {
-      id: `Foundations/${parameters.title}/${propsParameters.title}`,
-      subtitle: propsParameters.subtitle,
-      title: propsParameters.title,
-    },
-    {
-      id: `Foundations/${parameters.title}/${responsivePropertiesParameters.title}`,
-      subtitle: responsivePropertiesParameters.subtitle,
-      title: responsivePropertiesParameters.title,
-    },
-    {
-      id: `Foundations/${parameters.title}/${variantsParameters.title}`,
-      subtitle: variantsParameters.subtitle,
-      title: variantsParameters.title,
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    composeParameters,
+    propsParameters,
+    responsivePropertiesParameters,
+    variantsParameters,
+  ])}
 />

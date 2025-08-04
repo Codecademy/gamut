@@ -1,6 +1,10 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as accessibilityGuidelinesParameters } from './Accessibility guidelines.mdx';
 import { parameters as componentGuidelinesParameters } from './Component guidelines/About.mdx';
@@ -24,23 +28,11 @@ In the following pages, you’ll find a collection of tips and tools for writing
 ## Pages
 
 <TableOfContents
-  links={[
-    {
-      id: `${parameters.title}/${diyUxWritingParameters.title}`,
-      subtitle: diyUxWritingParameters.subtitle,
-      title: diyUxWritingParameters.title,
-    },
-    {
-      id: `${parameters.title}/${accessibilityGuidelinesParameters.title}`,
-      subtitle: accessibilityGuidelinesParameters.subtitle,
-      title: accessibilityGuidelinesParameters.title,
-    },
-    {
-      id: `${parameters.title}/${componentGuidelinesParameters.title}/About`,
-      subtitle: componentGuidelinesParameters.subtitle,
-      title: componentGuidelinesParameters.title,
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    diyUxWritingParameters,
+    accessibilityGuidelinesParameters,
+    componentGuidelinesParameters,
+  ])}
 />
 
 <br />

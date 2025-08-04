@@ -1,6 +1,10 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as connectedFormParameters } from './ConnectedForm/ConnectedForm.mdx';
 import { parameters as connectedFormGroupParameters } from './ConnectedFormGroup/ConnectedFormGroup.mdx';
@@ -20,30 +24,10 @@ export const parameters = {
 Our Connected- and GridForm organisms provide a easy way to implement forms. While our `Form` atoms compose the structure of these forms, we strongly recommend only creating forms with using `GridForm` or `ConnectedForm`. You should only use the form element atoms as individual elements if your interface doesn’t need to support the technical functions of a form.
 
 <TableOfContents
-  links={[
-    {
-      id: `Organisms/${parameters.title}/${connectedFormParameters.title}`,
-      subtitle: connectedFormParameters.subtitle,
-      title: connectedFormParameters.title,
-      status: connectedFormParameters.status,
-    },
-    {
-      id: `Organisms/${parameters.title}/${connectedFormGroupParameters.title}`,
-      subtitle: connectedFormGroupParameters.subtitle,
-      title: connectedFormGroupParameters.title,
-      status: connectedFormGroupParameters.status,
-    },
-    {
-      id: `Organisms/${parameters.title}/${connectedFormInputsParameters.title}`,
-      subtitle: connectedFormInputsParameters.subtitle,
-      title: connectedFormInputsParameters.title,
-      status: connectedFormInputsParameters.status,
-    },
-    {
-      id: `Organisms/${parameters.title}/${submitButtonParameters.title}`,
-      subtitle: submitButtonParameters.subtitle,
-      title: submitButtonParameters.title,
-      status: submitButtonParameters.status,
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    connectedFormParameters,
+    connectedFormGroupParameters,
+    connectedFormInputsParameters,
+    submitButtonParameters,
+  ])}
 />

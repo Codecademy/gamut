@@ -1,6 +1,11 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, LinkTo, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  LinkTo,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as checkboxParameters } from './Checkbox/Checkbox.mdx';
 import { parameters as inputParameters } from './Input/Input.mdx';
@@ -10,7 +15,7 @@ import { parameters as selectDropdownParameters } from './SelectDropdown/SelectD
 import { parameters as textAreaParameters } from './TextArea/TextArea.mdx';
 
 export const parameters = {
-  id: 'FormInputs',
+  id: 'Atoms/FormInputs',
   title: 'Form Inputs',
   subtitle:
     'Various input types that allow a user to make a selection or enter information.',
@@ -28,42 +33,12 @@ export const parameters = {
 In most cases you should not need to use these directly and you should use the component <LinkTo id='Organisms/GridForm'>GridForm</LinkTo> or <LinkTo id='Organisms/ConnectedForm'>ConnectedForm</LinkTo>. These are meant to be used as API and design references for end states.
 
 <TableOfContents
-  links={[
-    {
-      id: `Atoms/${parameters.title}/${checkboxParameters.title}`,
-      subtitle: checkboxParameters.subtitle,
-      title: checkboxParameters.title,
-      status: checkboxParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${inputParameters.title}`,
-      subtitle: inputParameters.subtitle,
-      title: inputParameters.title,
-      status: inputParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${radioParameters.title}`,
-      subtitle: radioParameters.subtitle,
-      title: radioParameters.title,
-      status: radioParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${selectParameters.title}`,
-      subtitle: selectParameters.subtitle,
-      title: selectParameters.title,
-      status: selectParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${selectDropdownParameters.title}`,
-      subtitle: selectDropdownParameters.subtitle,
-      title: selectDropdownParameters.title,
-      status: selectDropdownParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${textAreaParameters.title}`,
-      subtitle: textAreaParameters.subtitle,
-      title: textAreaParameters.title,
-      status: textAreaParameters.status,
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    checkboxParameters,
+    inputParameters,
+    radioParameters,
+    selectParameters,
+    selectDropdownParameters,
+    textAreaParameters,
+  ])}
 />

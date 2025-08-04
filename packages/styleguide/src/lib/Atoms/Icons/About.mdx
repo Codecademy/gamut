@@ -1,13 +1,18 @@
 import { Anchor } from '@codecademy/gamut';
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, Callout, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  Callout,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as miniParameters } from './Mini/Mini.mdx';
 import { parameters as regularParameters } from './Regular/Regular.mdx';
 
 export const parameters = {
-  id: 'Icons',
+  id: 'Atoms/Icons',
   title: 'Icons',
   subtitle:
     'SVG Icon components from [Streamline](https://streamlineicons.com/).',
@@ -78,18 +83,5 @@ Our icons all are transformed with a [custom Babel plugin](https://github.com/Co
 ```
 
 <TableOfContents
-  links={[
-    {
-      id: `Atoms/${parameters.title}/${miniParameters.title}`,
-      subtitle: miniParameters.subtitle,
-      title: miniParameters.title,
-      status: miniParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${regularParameters.title}`,
-      subtitle: regularParameters.subtitle,
-      title: regularParameters.title,
-      status: regularParameters.status,
-    },
-  ]}
+  links={addParentPath(parameters.id, [miniParameters, regularParameters])}
 />

@@ -1,6 +1,10 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as animationsParameters } from './Animations/About.mdx';
 import { parameters as badgeParameters } from './Badge/Badge.mdx';
@@ -38,120 +42,25 @@ export const parameters = {
 > [- Brad Frost, author of "Atomic Design"](https://bradfrost.com/blog/post/atomic-web-design/#atoms)
 
 <TableOfContents
-  links={[
-    {
-      id: `${parameters.title}/${animationsParameters.title}`,
-      subtitle: animationsParameters.subtitle,
-      title: animationsParameters.title,
-      status: animationsParameters.status,
-    },
-    {
-      id: `${parameters.title}/${badgeParameters.title}`,
-      subtitle: badgeParameters.subtitle,
-      title: badgeParameters.title,
-      status: badgeParameters.status,
-    },
-    {
-      id: `${parameters.title}/${buttonsParameters.title}`,
-      subtitle: buttonsParameters.subtitle,
-      title: buttonsParameters.title,
-      status: buttonsParameters.status,
-    },
-    {
-      id: `${parameters.title}/${cardParameters.title}`,
-      subtitle: cardParameters.subtitle,
-      title: cardParameters.title,
-      status: cardParameters.status,
-    },
-    {
-      id: `${parameters.title}/${drawerParameters.title}`,
-      subtitle: drawerParameters.subtitle,
-      title: drawerParameters.title,
-      status: drawerParameters.status,
-    },
-    {
-      id: `${parameters.title}/${focusTrapParameters.title}`,
-      subtitle: focusTrapParameters.subtitle,
-      title: focusTrapParameters.title,
-      status: focusTrapParameters.status,
-    },
-    {
-      id: `${parameters.title}/${formElementsParameters.title}`,
-      subtitle: formElementsParameters.subtitle,
-      title: formElementsParameters.title,
-      status: formElementsParameters.status,
-    },
-    {
-      id: `${parameters.title}/${formInputsParameters.title}`,
-      subtitle: formInputsParameters.subtitle,
-      title: formInputsParameters.title,
-      status: formInputsParameters.status,
-    },
-    {
-      id: `${parameters.title}/${iconsParameters.title}`,
-      subtitle: iconsParameters.subtitle,
-      title: iconsParameters.title,
-      status: iconsParameters.status,
-    },
-    {
-      id: `${parameters.title}/${illustrationsParameters.title}`,
-      subtitle: illustrationsParameters.subtitle,
-      title: illustrationsParameters.title,
-      status: illustrationsParameters.status,
-    },
-    {
-      id: `${parameters.title}/${internalFloatingCardParameters.title}`,
-      subtitle: internalFloatingCardParameters.subtitle,
-      title: internalFloatingCardParameters.title,
-      status: internalFloatingCardParameters.status,
-    },
-    {
-      id: `${parameters.title}/${loadersParameters.title}`,
-      subtitle: loadersParameters.subtitle,
-      title: loadersParameters.title,
-      status: loadersParameters.status,
-    },
-    {
-      id: `${parameters.title}/${patternsParameters.title}`,
-      subtitle: patternsParameters.subtitle,
-      title: patternsParameters.title,
-      status: patternsParameters.status,
-    },
-    {
-      id: `${parameters.title}/${popoverContainerParameters.title}`,
-      subtitle: popoverContainerParameters.subtitle,
-      title: popoverContainerParameters.title,
-      status: popoverContainerParameters.status,
-    },
-    {
-      id: `${parameters.title}/${progressBarParameters.title}`,
-      subtitle: progressBarParameters.subtitle,
-      title: progressBarParameters.title,
-      status: progressBarParameters.status,
-    },
-    {
-      id: `${parameters.title}/${radialProgressParameters.title}`,
-      subtitle: radialProgressParameters.subtitle,
-      title: radialProgressParameters.title,
-      status: radialProgressParameters.status,
-    },
-    {
-      id: `${parameters.title}/${skipToContentParameters.title}`,
-      subtitle: skipToContentParameters.subtitle,
-      title: skipToContentParameters.title,
-      status: skipToContentParameters.status,
-    },
-    {
-      id: `${parameters.title}/${tagParameters.title}`,
-      subtitle: tagParameters.subtitle,
-      title: tagParameters.title,
-      status: tagParameters.status,
-    },
-    {
-      id: `${parameters.title}/${toggleParameters.title}`,
-      subtitle: toggleParameters.subtitle,
-      title: toggleParameters.title,
-      status: toggleParameters.status,
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    animationsParameters,
+    badgeParameters,
+    buttonsParameters,
+    cardParameters,
+    drawerParameters,
+    focusTrapParameters,
+    formElementsParameters,
+    formInputsParameters,
+    iconsParameters,
+    illustrationsParameters,
+    internalFloatingCardParameters,
+    loadersParameters,
+    patternsParameters,
+    popoverContainerParameters,
+    progressBarParameters,
+    radialProgressParameters,
+    skipToContentParameters,
+    tagParameters,
+    toggleParameters,
+  ])}
 />

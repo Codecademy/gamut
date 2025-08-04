@@ -23,24 +23,5 @@ Tips come in the form of ToolTip or InfoTips (and eventually link PreviewTip). T
 <br />
 
 <TableOfContents
-  links={[
-    {
-      id: `Molecules/${parameters.title}/${infoTipParameters.title}`,
-      subtitle: infoTipParameters.subtitle,
-      title: infoTipParameters.title,
-      status: infoTipParameters.status,
-    },
-    {
-      id: `Molecules/${parameters.title}/${previewTipParameters.title}`,
-      subtitle: previewTipParameters.subtitle,
-      title: previewTipParameters.title,
-      status: previewTipParameters.status,
-    },
-    {
-      id: `Molecules/${parameters.title}/${toolTipParameters.title}`,
-      subtitle: toolTipParameters.subtitle,
-      title: toolTipParameters.title,
-      status: toolTipParameters.status,
-    },
-  ]}
+  links={[infoTipParameters, previewTipParameters, toolTipParameters]}
 />

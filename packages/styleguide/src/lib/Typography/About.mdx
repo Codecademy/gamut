@@ -1,6 +1,10 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as anchorParameters } from './Anchor/Anchor.mdx';
 import { parameters as hiddenTextParameters } from './HiddenText/HiddenText.mdx';
@@ -21,24 +25,9 @@ Foundations make up the smallest scale design values that comprise a design syst
 Sometimes referred to elsewhere as "tokens", they are the abstract units that comprise and stitch together our atoms, molecules, and organisms.
 
 <TableOfContents
-  links={[
-    {
-      id: `${parameters.title}/${anchorParameters.title}`,
-      subtitle: anchorParameters.subtitle,
-      title: anchorParameters.title,
-      status: anchorParameters.status,
-    },
-    {
-      id: `${parameters.title}/${hiddenTextParameters.title}`,
-      subtitle: hiddenTextParameters.subtitle,
-      title: hiddenTextParameters.title,
-      status: hiddenTextParameters.status,
-    },
-    {
-      id: `${parameters.title}/${textParameters.title}`,
-      subtitle: textParameters.subtitle,
-      title: textParameters.title,
-      status: textParameters.status,
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    anchorParameters,
+    hiddenTextParameters,
+    textParameters,
+  ])}
 />

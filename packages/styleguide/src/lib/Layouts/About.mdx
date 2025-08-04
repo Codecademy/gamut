@@ -1,6 +1,10 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as boxesParameters } from './Boxes/About.mdx';
 import { parameters as contentContainerParameters } from './ContentContainer/ContentContainer.mdx';
@@ -20,24 +24,9 @@ export const parameters = {
 Pure sizing and padding containers. These position our elements on pages in standard responsive layouts.
 
 <TableOfContents
-  links={[
-    {
-      id: `${parameters.title}/${boxesParameters.title}`,
-      subtitle: boxesParameters.subtitle,
-      title: boxesParameters.title,
-      status: boxesParameters.status,
-    },
-    {
-      id: `${parameters.title}/${contentContainerParameters.title}`,
-      subtitle: contentContainerParameters.subtitle,
-      status: contentContainerParameters.status,
-      title: contentContainerParameters.title,
-    },
-    {
-      id: `${parameters.title}/${layoutGridParameters.title}`,
-      subtitle: layoutGridParameters.subtitle,
-      status: layoutGridParameters.status,
-      title: layoutGridParameters.title,
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    boxesParameters,
+    contentContainerParameters,
+    layoutGridParameters,
+  ])}
 />

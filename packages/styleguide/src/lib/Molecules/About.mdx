@@ -1,6 +1,10 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as accordionButtonDeprecatedParameters } from './AccordionButtonDeprecated/AccordionButtonDeprecated.mdx';
 import { parameters as accordionDeprecatedParameters } from './AccordionDeprecated/AccordionDeprecated.mdx';
@@ -36,96 +40,21 @@ export const parameters = {
 > [- Brad Frost, author of "Atomic Design"](https://bradfrost.com/blog/post/atomic-web-design/#molecules)
 
 <TableOfContents
-  links={[
-    {
-      id: `${parameters.title}/${accordionButtonDeprecatedParameters.title}`,
-      subtitle: accordionButtonDeprecatedParameters.subtitle,
-      title: accordionButtonDeprecatedParameters.title,
-      status: accordionButtonDeprecatedParameters.status,
-    },
-    {
-      id: `${parameters.title}/${accordionDeprecatedParameters.title}`,
-      subtitle: accordionDeprecatedParameters.subtitle,
-      title: accordionDeprecatedParameters.title,
-      status: accordionDeprecatedParameters.status,
-    },
-    {
-      id: `${parameters.title}/${alertParameters.title}`,
-      subtitle: alertParameters.subtitle,
-      title: alertParameters.title,
-      status: alertParameters.status,
-    },
-    {
-      id: `${parameters.title}/${breadcrumbsParameters.title}`,
-      subtitle: breadcrumbsParameters.subtitle,
-      title: breadcrumbsParameters.title,
-      status: breadcrumbsParameters.status,
-    },
-    {
-      id: `${parameters.title}/${coachmarkParameters.title}`,
-      subtitle: coachmarkParameters.subtitle,
-      title: coachmarkParameters.title,
-      status: coachmarkParameters.status,
-    },
-    {
-      id: `${parameters.title}/${disclosureParameters.title}`,
-      subtitle: disclosureParameters.subtitle,
-      title: disclosureParameters.title,
-      status: disclosureParameters.status,
-    },
-    {
-      id: `${parameters.title}/${flyoutParameters.title}`,
-      subtitle: flyoutParameters.subtitle,
-      title: flyoutParameters.title,
-      status: flyoutParameters.status,
-    },
-    {
-      id: `${parameters.title}/${menuParameters.title}`,
-      subtitle: menuParameters.subtitle,
-      title: menuParameters.title,
-      status: menuParameters.status,
-    },
-    {
-      id: `${parameters.title}/${modalsParameters.title}`,
-      subtitle: modalsParameters.subtitle,
-      title: modalsParameters.title,
-      status: modalsParameters.status,
-    },
-    {
-      id: `${parameters.title}/${paginationParameters.title}`,
-      subtitle: paginationParameters.subtitle,
-      title: paginationParameters.title,
-      status: paginationParameters.status,
-    },
-    {
-      id: `${parameters.title}/${popoverParameters.title}`,
-      subtitle: popoverParameters.subtitle,
-      title: popoverParameters.title,
-      status: popoverParameters.status,
-    },
-    {
-      id: `${parameters.title}/${tabsParameters.title}`,
-      subtitle: tabsParameters.subtitle,
-      title: tabsParameters.title,
-      status: tabsParameters.status,
-    },
-    {
-      id: `${parameters.title}/${tipsParameters.title}`,
-      subtitle: tipsParameters.subtitle,
-      title: tipsParameters.title,
-      status: tipsParameters.status,
-    },
-    {
-      id: `${parameters.title}/${toastsParameters.title}`,
-      subtitle: toastsParameters.subtitle,
-      title: toastsParameters.title,
-      status: toastsParameters.status,
-    },
-    {
-      id: `${parameters.title}/${videoParameters.title}`,
-      subtitle: videoParameters.subtitle,
-      title: videoParameters.title,
-      status: videoParameters.status,
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    accordionButtonDeprecatedParameters,
+    accordionDeprecatedParameters,
+    alertParameters,
+    breadcrumbsParameters,
+    coachmarkParameters,
+    disclosureParameters,
+    flyoutParameters,
+    menuParameters,
+    modalsParameters,
+    paginationParameters,
+    popoverParameters,
+    tabsParameters,
+    tipsParameters,
+    toastsParameters,
+    videoParameters,
+  ])}
 />

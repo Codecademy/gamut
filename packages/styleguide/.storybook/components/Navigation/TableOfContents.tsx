@@ -12,6 +12,14 @@ type PageLink = {
   title: string;
 };
 
+// Helper function to add parent path to parameter objects
+export const addParentPath = (parentId: string, links: any[]): PageLink[] => {
+  return links.map((link) => ({
+    ...link,
+    id: `${parentId}/${link.id || link.title}`,
+  }));
+};
+
 export const TableOfContents: React.FC<{ links: PageLink[] }> = ({ links }) => {
   return (
     <GridBox

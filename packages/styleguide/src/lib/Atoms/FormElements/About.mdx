@@ -1,6 +1,11 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, LinkTo, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  LinkTo,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as formParameters } from './Form/Form.mdx';
 import { parameters as formGroupParameters } from './FormGroup/FormGroup.mdx';
@@ -31,36 +36,11 @@ We recommend <LinkTo id='Organisms/GridForm'>GridForm</LinkTo> if you have a for
 For everything else, we recommend <LinkTo id='Organisms/ConnectedForm'>ConnectedForm</LinkTo>.
 
 <TableOfContents
-  links={[
-    {
-      id: `Atoms/${parameters.title}/${formParameters.title}`,
-      subtitle: formParameters.subtitle,
-      title: formParameters.title,
-      status: formParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${formGroupParameters.title}`,
-      subtitle: formGroupParameters.subtitle,
-      title: formGroupParameters.title,
-      status: formGroupParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${formGroupDescriptionParameters.title}`,
-      subtitle: formGroupDescriptionParameters.subtitle,
-      title: formGroupDescriptionParameters.title,
-      status: formGroupDescriptionParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${formGroupLabelParameters.title}`,
-      subtitle: formGroupLabelParameters.subtitle,
-      title: formGroupLabelParameters.title,
-      status: formGroupLabelParameters.status,
-    },
-    {
-      id: `Atoms/${parameters.title}/${formRequiredTextParameters.title}`,
-      subtitle: formRequiredTextParameters.subtitle,
-      title: formRequiredTextParameters.title,
-      status: formRequiredTextParameters.status,
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    formParameters,
+    formGroupParameters,
+    formGroupDescriptionParameters,
+    formGroupLabelParameters,
+    formRequiredTextParameters,
+  ])}
 />

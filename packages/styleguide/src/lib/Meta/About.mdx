@@ -1,6 +1,10 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as bestPracticesParameters } from './Best Practices.mdx';
 import { parameters as brandParameters } from './Brand.mdx';
@@ -22,41 +26,13 @@ export const parameters = {
 <AboutHeader {...parameters} />
 
 <TableOfContents
-  links={[
-    {
-      id: `${parameters.title}/${bestPracticesParameters.title}`,
-      subtitle: bestPracticesParameters.subtitle,
-      title: bestPracticesParameters.title,
-    },
-    {
-      id: `${parameters.title}/${contributingParameters.title}`,
-      subtitle: contributingParameters.subtitle,
-      title: contributingParameters.title,
-    },
-    {
-      id: `${parameters.title}/${faqsParameters.title}`,
-      subtitle: faqsParameters.subtitle,
-      title: faqsParameters.title,
-    },
-    {
-      id: `${parameters.title}/${storiesParameters.title}`,
-      subtitle: storiesParameters.subtitle,
-      title: storiesParameters.title,
-    },
-    {
-      id: `${parameters.title}/${brandParameters.title}`,
-      subtitle: brandParameters.subtitle,
-      title: brandParameters.title,
-    },
-    {
-      id: `${parameters.title}/${installationParameters.title}`,
-      subtitle: installationParameters.subtitle,
-      title: installationParameters.title,
-    },
-    {
-      id: `${parameters.title}/${usageGuideParameters.title}`,
-      subtitle: usageGuideParameters.subtitle,
-      title: usageGuideParameters.title,
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    bestPracticesParameters,
+    contributingParameters,
+    faqsParameters,
+    storiesParameters,
+    brandParameters,
+    installationParameters,
+    usageGuideParameters,
+  ])}
 />

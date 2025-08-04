@@ -1,6 +1,10 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
 
 import { parameters as colorModeParameters } from './ColorMode/ColorMode.mdx';
 import { parameters as layoutParameters } from './Layout.mdx';
@@ -24,36 +28,12 @@ Foundations make up the smallest scale design values that comprise a design syst
 Sometimes referred to elsewhere as "tokens", they are the abstract units that comprise and stitch together our atoms, molecules, and organisms.
 
 <TableOfContents
-  links={[
-    {
-      id: `${parameters.title}/${colorModeParameters.title}`,
-      subtitle: colorModeParameters.subtitle,
-      title: colorModeParameters.title,
-    },
-    {
-      id: `${parameters.title}/${layoutParameters.title}`,
-      subtitle: layoutParameters.subtitle,
-      title: layoutParameters.title,
-    },
-    {
-      id: `${parameters.title}/${systemParameters.title}`,
-      subtitle: systemParameters.subtitle,
-      title: systemParameters.title,
-    },
-    {
-      id: `${parameters.title}/${themeParameters.title}`,
-      subtitle: themeParameters.subtitle,
-      title: themeParameters.title,
-    },
-    {
-      id: `${parameters.title}/${typographyParameters.title}`,
-      subtitle: typographyParameters.subtitle,
-      title: typographyParameters.title,
-    },
-    {
-      id: `${parameters.title}/${utilitiesParameters.title}`,
-      subtitle: utilitiesParameters.subtitle,
-      title: utilitiesParameters.title,
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    colorModeParameters,
+    layoutParameters,
+    systemParameters,
+    themeParameters,
+    typographyParameters,
+    utilitiesParameters,
+  ])}
 />
