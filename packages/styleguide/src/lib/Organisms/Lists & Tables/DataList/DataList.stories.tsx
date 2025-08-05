@@ -64,21 +64,32 @@ const meta: Meta<typeof DataList> = {
     ],
     columns: [
       {
-        label: 'Name',
+        header: 'Name',
         key: 'name',
         size: 'lg',
         type: 'header',
         sortable: true,
       },
-      { label: 'Rank', key: 'role', size: 'lg', sortable: true },
-      { label: 'Ship', key: 'ship', size: 'lg', sortable: true },
-      { label: 'Age', key: 'age', size: 'sm', sortable: true },
-      { label: 'Species', key: 'species', size: 'md', sortable: true },
-      { label: 'Sector', key: 'sector', size: 'md', sortable: true },
-      { label: 'Status', key: 'status', size: 'sm', sortable: true },
-      { label: 'Years of Service', key: 'yearsOfService', size: 'sm', sortable: true },
-      { label: 'Homeworld', key: 'homeworld', size: 'lg', sortable: true },
-      { label: 'Specialization', key: 'specialization', size: 'xl', sortable: true, fill: true },
+      { header: 'Rank', key: 'role', size: 'lg', sortable: true },
+      { header: 'Ship', key: 'ship', size: 'lg', sortable: true },
+      { header: 'Age', key: 'age', size: 'sm', sortable: true },
+      { header: 'Species', key: 'species', size: 'md', sortable: true },
+      { header: 'Sector', key: 'sector', size: 'md', sortable: true },
+      { header: 'Status', key: 'status', size: 'sm', sortable: true },
+      {
+        header: 'Years of service',
+        key: 'yearsOfService',
+        size: 'md',
+        sortable: true,
+      },
+      { header: 'Homeworld', key: 'homeworld', size: 'lg', sortable: true },
+      {
+        header: 'Specialization',
+        key: 'specialization',
+        size: 'xl',
+        sortable: true,
+        fill: true,
+      },
     ],
     header: false,
     spacing: 'condensed',
@@ -156,5 +167,14 @@ export const ScrollableWithShadow: Story = {
     scrollable: true,
     height: '400px',
     wrapperWidth: '800px',
+  },
+};
+
+export const NonSelectable: Story = {
+  args: {
+    onRowSelect: undefined,
+    onRowExpand: undefined,
+    expandedContent: undefined,
+    header: true,
   },
 };

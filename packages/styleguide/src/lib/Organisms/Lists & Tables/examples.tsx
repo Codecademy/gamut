@@ -342,28 +342,18 @@ export const cols = [
     sortable: true,
     filters: ['Human'],
   },
+  {
+    header: 'Controls',
+    key: 'name',
+    size: 'md',
+    justify: 'right',
+    type: 'control',
+    render: (row) => <CrewMgmtDropdown menuSide="left" row={row} />,
+  },
 ] as ColumnConfig<(typeof crew)[number]>[];
 
-const leftMenu: ColumnConfig<(typeof crew)[number]> = {
-  header: 'Controls',
-  key: 'name',
-  size: 'md',
-  justify: 'right',
-  type: 'control',
-  render: (row) => <CrewMgmtDropdown menuSide="left" row={row} />,
-};
-
-const rightMenu: ColumnConfig<(typeof crew)[number]> = {
-  header: 'Controls',
-  key: 'name',
-  size: 'md',
-  justify: 'right',
-  type: 'control',
-  render: (row) => <CrewMgmtDropdown menuSide="right" row={row} />,
-};
-
 export const createDemoTable =
-  (Component: any, overrides = {}, menuSide: 'left' | 'right' = 'left') =>
+  (Component: any, overrides = {}) =>
   () => {
     const [selectedRows, setSelectedRows] = useState<
       (typeof crew)[number]['name'][]
@@ -372,15 +362,10 @@ export const createDemoTable =
       (typeof crew)[number]['name'][]
     >([]);
 
-    const columnsWithMenu = useMemo(() => {
-      const menuConfig = menuSide === 'left' ? leftMenu : rightMenu;
-      return [...cols, menuConfig];
-    }, []);
-
     const { idKey, query, rows, onQueryChange } = useLocalQuery({
       idKey: 'name',
       rows: crew,
-      columns: columnsWithMenu,
+      columns: cols,
     });
 
     const allIds = useMemo(() => crew.map(({ [idKey]: id }) => id), [idKey]);
@@ -437,7 +422,7 @@ export const createDemoTable =
 
     return (
       <Component
-        columns={columnsWithMenu}
+        columns={cols}
         expanded={expandedRows}
         expandedContent={expandedContent}
         height={500}
@@ -454,21 +439,13 @@ export const createDemoTable =
     );
   };
 
-export const DataTableTemplate = createDemoTable(
-  DataTable,
-  {
-    onRowSelect: undefined,
-    onRowExpand: undefined,
-  },
-  'left'
-);
+export const DataTableTemplate = createDemoTable(DataTable, {
+  onRowSelect: undefined,
+  onRowExpand: undefined,
+});
 
-export const DataListTemplate = createDemoTable(
-  DataList,
-  {
-    scrollable: false,
-    height: 'auto',
-    showOverflow: true,
-  },
-  'right'
-);
+export const DataListTemplate = createDemoTable(DataList, {
+  scrollable: false,
+  height: 'auto',
+  showOverflow: true,
+});
