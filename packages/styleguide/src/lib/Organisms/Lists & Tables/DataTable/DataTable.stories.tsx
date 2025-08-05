@@ -159,7 +159,7 @@ export const ShadowTest: Story = {
   args: {
     shadow: true,
     scrollable: true,
-    height: '300px',
+    height: 'auto',
     wrapperWidth: '600px',
     columns: [
       { label: 'Name', key: 'name', size: 'xl', type: 'header' },

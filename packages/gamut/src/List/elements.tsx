@@ -163,7 +163,7 @@ export interface RowProps
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 8, c_sm: 0 },
-    bg: 'inherit',
+    // bg: 'inherit',
   }),
   variance.compose(system.grid),
   rowBreakpointVariants,
@@ -393,7 +393,7 @@ export const StickyHeaderColWrapper = styled.th(
     '&:before': {
       content: '""',
       position: 'absolute',
-      bg: 'background',
+      bg: { _: 'transparent', c_sm: 'background' },
       width: '100%',
       height: '100%',
       top: 0,
@@ -403,7 +403,7 @@ export const StickyHeaderColWrapper = styled.th(
     '&:after': {
       content: '""',
       position: 'absolute',
-      bg: 'background-current',
+      bg: { _: 'inherit', c_sm: 'background-current' },
       width: '100%',
       height: '100%',
       top: 0,
@@ -413,8 +413,7 @@ export const StickyHeaderColWrapper = styled.th(
     position: 'sticky',
     left: 0,
     zIndex: 1,
-    bg: 'inherit',
-
+    bg: { _: 'transparent', c_sm: 'inherit' },
     '&:not(:first-of-type)': {
       left: { c_sm: 16 },
       overflow: 'visible',
@@ -422,7 +421,7 @@ export const StickyHeaderColWrapper = styled.th(
     '&:not(:first-of-type):before': {
       display: { _: 'none', c_sm: 'block' },
       content: '""',
-      bg: 'inherit',
+      bg: 'red',
       left: -16,
       height: 1,
       width: 16,
