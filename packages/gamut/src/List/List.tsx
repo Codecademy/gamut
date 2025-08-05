@@ -1,10 +1,17 @@
 import { DotLoose } from '@codecademy/gamut-patterns';
+import { timingValues } from '@codecademy/gamut-styles';
 import isArray from 'lodash/isArray';
 import { ComponentProps, forwardRef, useEffect, useRef, useState } from 'react';
 import * as React from 'react';
 
 import { Box, BoxProps, FlexBox } from '../Box';
-import { ListEl, ListWrapper } from './elements';
+import {
+  AnimatedListWrapper,
+  hiddenVariant,
+  ListEl,
+  shadowVariant,
+  StaticListWrapper,
+} from './elements';
 import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
@@ -60,8 +67,13 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     ref
   ) => {
     const isEmpty = !children || (isArray(children) && children.length === 0);
+    const isTable = as === 'table';
+
     const [isEnd, setIsEnd] = useState(false);
-    const showShadow = shadow && scrollable && !isEnd;
+    const ListWrapper = shadow ? AnimatedListWrapper : StaticListWrapper;
+    const showShadow = shadow && scrollable && !isEnd && !isEmpty;
+    const animationVar = showShadow ? 'shadow' : 'hidden';
+
     const value = useList({
       listType: as,
       rowBreakpoint,
@@ -81,7 +93,6 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       setIsEnd(tableWidth < wrapperWidth);
     }, []);
 
-    const isTable = as === 'table';
     useEffect(() => {
       if (scrollToTopOnUpdate && tableRef.current !== null) {
         tableRef.current.scrollTo({ top: 0 });
@@ -133,12 +144,19 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     return (
       <ListProvider value={value}>
         <ListWrapper
+          animate={animationVar}
           id={id}
           maxHeight={height}
           overflow={overflow}
           position="relative"
           ref={wrapperRef}
-          scrollable={!isEmpty && showShadow}
+          transition={{
+            background: { duration: timingValues.fast, ease: 'easeInOut' },
+          }}
+          variants={{
+            hidden: hiddenVariant,
+            shadow: shadowVariant,
+          }}
           width={1}
           onScroll={scrollable ? scrollHandler : undefined}
         >
