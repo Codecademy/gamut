@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.6...@codecademy/gamut@66.0.7) (2025-08-06)
+
+### Bug Fixes
+
+- **Popover:** Add ResizeObserver for text reflow bugs ([6308ae2](https://github.com/Codecademy/gamut/commit/6308ae2e6d186d3244aa81d6e37c19c619a2df09))
+
 ### [66.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.5...@codecademy/gamut@66.0.6) (2025-07-25)
 
 ### Bug Fixes
