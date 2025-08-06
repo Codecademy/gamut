@@ -1,8 +1,18 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as composeParameters } from './Compose.mdx';
+import { parameters as propsParameters } from './Props.mdx';
+import { parameters as responsivePropertiesParameters } from './ResponsiveProperties/ResponsiveProperties.mdx';
+import { parameters as variantsParameters } from './Variants.mdx';
 
 export const parameters = {
+  id: 'Foundations/System',
   title: 'System',
   subtitle: `System properties and style functions`,
   status: 'current',
@@ -17,29 +27,10 @@ Many of our components are written in our CSS in JS library, [Emotion](https://e
 These functions are built with [`@codecademy/variance`](https://github.com/Codecademy/gamut/tree/main/packages/variance): a library inspired by [`styled-system`](https://styled-system.com/) but with a focus on typesafety.
 
 <TableOfContents
-  links={[
-    {
-      id: 'Foundations/Compose',
-      subtitle:
-        'The compose function lets you combine many system props into one to improve performance and reusability.',
-      title: 'Compose',
-    },
-    {
-      id: 'Foundations/Props',
-      subtitle:
-        'Reusable CSS-in-JS props with predictable behaviors and a consistent API for responsive CSS.',
-      title: 'Props',
-    },
-    {
-      id: 'Foundations/ResponsiveProperties',
-      subtitle:
-        'All system props accept a syntax to generate responsive styles on a per prop basis',
-      title: 'Responsive Properties',
-    },
-    {
-      id: 'Foundations/Variants',
-      subtitle: 'The style props for more complex CSS combinations.',
-      title: 'Variants',
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    composeParameters,
+    propsParameters,
+    responsivePropertiesParameters,
+    variantsParameters,
+  ])}
 />
