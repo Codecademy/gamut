@@ -1,4 +1,5 @@
 import {
+  Box,
   FillButton,
   FlexBox,
   IconButton,
@@ -65,7 +66,7 @@ export const WithIconButton: Story = {
 
 export const Floating: Story = {
   render: () => (
-    <FlexBox center justifyContent="space-around" m={24}>
+    <FlexBox center justifyContent="space-between">
       <IconButton
         icon={SmileyStarEyesIcon}
         tip="Wonder at the majesty of the universe"
@@ -85,11 +86,19 @@ export const Floating: Story = {
         tip="Wonder at the majesty of the universe"
         tipProps={{ alignment: 'right-center', placement: 'floating' }}
       />{' '}
-      <IconButton
-        icon={SmileyStarEyesIcon}
-        tip="Wonder at the majesty of the universe"
-        tipProps={{ alignment: 'left-center', placement: 'floating' }}
-      />
+      <Box>
+        Only for testing
+        <IconButton
+          icon={SmileyStarEyesIcon}
+          tip="Wonder at the majesty of the universe"
+          tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
+        />
+        <IconButton
+          icon={SmileyStarEyesIcon}
+          tip="Wonder at the majesty of the universe"
+          tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
+        />
+      </Box>
     </FlexBox>
   ),
 };
