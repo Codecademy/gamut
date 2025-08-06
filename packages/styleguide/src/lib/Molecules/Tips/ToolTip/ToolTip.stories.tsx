@@ -65,7 +65,7 @@ export const WithIconButton: Story = {
 
 export const Floating: Story = {
   render: () => (
-    <FlexBox center justifyContent="space-around" m={24}>
+    <FlexBox center justifyContent="space-around">
       <IconButton
         icon={SmileyStarEyesIcon}
         tip="Wonder at the majesty of the universe"
@@ -84,7 +84,7 @@ export const Floating: Story = {
         icon={SmileyStarEyesIcon}
         tip="Wonder at the majesty of the universe"
         tipProps={{ alignment: 'right-center', placement: 'floating' }}
-      />{' '}
+      />
       <IconButton
         icon={SmileyStarEyesIcon}
         tip="Wonder at the majesty of the universe"

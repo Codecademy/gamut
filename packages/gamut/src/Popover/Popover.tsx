@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
 import { FocusTrap } from '../FocusTrap';
@@ -49,14 +49,49 @@ export const Popover: React.FC<PopoverProps> = ({
   const [isInViewport, setIsInViewport] = useState(true);
   const { width, height } = useWindowSize();
   const { x, y } = useWindowScroll();
+  const popoverRef = useRef<HTMLDivElement>(null);
 
-  const getRaisedDivDimsRef = (popover: HTMLDivElement) => {
-    if (popover && popoverHeight === 0 && popoverWidth === 0) {
-      const { height, width } = popover.getBoundingClientRect();
+  const updatePopoverDimensions = useCallback(() => {
+    if (popoverRef.current) {
+      const { height, width } = popoverRef.current.getBoundingClientRect();
       setPopoverHeight(height);
       setPopoverWidth(width);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    const popoverElement = popoverRef.current;
+    if (!popoverElement || !isOpen || typeof ResizeObserver === 'undefined') {
+      return;
+    }
+
+    const resizeObserver = new ResizeObserver(() => {
+      updatePopoverDimensions();
+    });
+
+    resizeObserver.observe(popoverElement);
+
+    updatePopoverDimensions();
+
+    return () => {
+      resizeObserver.unobserve(popoverElement);
+    };
+  }, [isOpen, updatePopoverDimensions, children]);
+
+  /* The popover size can sometimes need to be recalculated after the text overflows.
+   * This combines the initial popover dims and the resize observer to listen for updates.
+   */
+  const combinedRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      (popoverRef as React.MutableRefObject<HTMLDivElement | null>).current =
+        node;
+
+      if (node) {
+        updatePopoverDimensions();
+      }
+    },
+    [updatePopoverDimensions]
+  );
 
   const getPopoverPosition = useCallback(() => {
     if (!targetRect) return {};
@@ -105,7 +140,6 @@ export const Popover: React.FC<PopoverProps> = ({
     setTargetRect(targetRef?.current?.getBoundingClientRect());
   }, [targetRef, isOpen, width, height, x, y]);
 
-  // Update target rectangle when parent size/scroll changes
   const updateTargetPosition = useCallback(
     (rect?: DOMRect) => {
       const target = targetRef?.current;
@@ -173,7 +207,7 @@ export const Popover: React.FC<PopoverProps> = ({
       <RaisedDiv
         alignment={alignment}
         outline={outline ? 'outline' : 'boxShadow'}
-        ref={getRaisedDivDimsRef}
+        ref={combinedRef}
         variant={variant}
         widthRestricted={widthRestricted}
       >
