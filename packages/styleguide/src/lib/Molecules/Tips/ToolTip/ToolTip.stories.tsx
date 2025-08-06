@@ -1,5 +1,4 @@
 import {
-  Box,
   FillButton,
   FlexBox,
   IconButton,
