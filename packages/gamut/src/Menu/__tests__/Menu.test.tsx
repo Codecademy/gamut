@@ -68,18 +68,31 @@ describe('Menu', () => {
 
     screen.getByRole('separator');
   });
-  it('renders and icon only when specified', () => {
+  it('renders an icon only when specified', () => {
     renderView({
       children: <MenuItem>Cool Town</MenuItem>,
     });
 
-    expect(screen.queryByTestId('menuitem-icon')).toBeNull();
+    expect(screen.queryByRole('img', { hidden: true })).toBeNull();
 
     renderView({
       children: <MenuItem icon={MultipleUsersIcon}>Cool Town</MenuItem>,
     });
 
-    screen.getByTestId('menuitem-icon');
+    screen.getByRole('img', { hidden: true });
+  });
+  it('renders two icons when provided an array of two icons', () => {
+    renderView({
+      children: (
+        <MenuItem icon={[MultipleUsersIcon, MultipleUsersIcon]}>
+          Busy Town
+        </MenuItem>
+      ),
+    });
+
+    const icons = screen.getAllByRole('img', { hidden: true });
+    expect(icons).toHaveLength(2);
+    screen.getByText('Busy Town');
   });
   it('renders `current page` screenreader text for active link', () => {
     renderView({
@@ -108,7 +121,7 @@ describe('Menu', () => {
       children: <MenuItem active>Cool Town</MenuItem>,
     });
 
-    expect(screen.queryByTestId('menuitem-icon')).toBeNull();
+    expect(screen.queryByRole('img', { hidden: true })).toBeNull();
 
     renderView({
       children: <MenuItem icon={MultipleUsersIcon}>Cool Town</MenuItem>,
