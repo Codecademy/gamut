@@ -421,7 +421,6 @@ export const StickyHeaderColWrapper = styled.th(
     '&:not(:first-of-type):before': {
       display: { _: 'none', c_sm: 'block' },
       content: '""',
-      bg: 'red',
       left: -16,
       height: 1,
       width: 16,
