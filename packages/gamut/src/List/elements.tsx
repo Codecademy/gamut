@@ -12,6 +12,8 @@ import { motion } from 'framer-motion';
 
 import { Box } from '../Box';
 
+const { space, grid, flex, layout } = system;
+
 const olStyles = {
   alignItems: 'center',
   content: 'counters(section, ".") "."',
@@ -49,11 +51,11 @@ const listVariants = variant({
 export interface ListProps
   extends StyleProps<typeof listVariants>,
     StyleProps<typeof spacingVariants>,
-    StyleProps<typeof system.space> {}
+    StyleProps<typeof space> {}
 
 export const ListEl = styled('ul', styledOptions<'ul'>())<ListProps>(
   listVariants,
-  system.space
+  space
 );
 
 const rowStates = states({
@@ -138,16 +140,15 @@ const rowVariants = variant({
 const rowBreakpointVariants = variant({
   prop: 'rowBreakpoint',
   defaultVariant: 'xs',
+
   variants: {
     xs: {
       display: { _: 'grid', c_sm: 'flex' },
       flexDirection: { _: 'column', c_sm: 'row' },
-      flexWrap: { c_sm: 'wrap' },
     },
     sm: {
       display: { _: 'grid', sm: 'flex' },
       flexDirection: { _: 'column', sm: 'row' },
-      flexWrap: { sm: 'wrap' },
     },
     md: {
       display: { _: 'grid', md: 'flex' },
@@ -163,13 +164,14 @@ export interface RowProps
     StyleProps<typeof rowBreakpointVariants>,
     StyleProps<typeof spacingVariants>,
     StyleProps<typeof rowStates>,
-    StyleProps<typeof system.grid> {}
+    StyleProps<typeof flex>,
+    StyleProps<typeof grid> {}
 
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 8, c_sm: 0 },
   }),
-  variance.compose(system.grid),
+  variance.compose(grid, flex),
   rowBreakpointVariants,
   rowVariants,
   spacingVariants,
@@ -373,7 +375,7 @@ export interface ColProps
     StyleProps<typeof columnType>,
     StyleProps<typeof columnStates>,
     StyleProps<typeof columnJustify>,
-    StyleProps<(typeof system)['layout']> {}
+    StyleProps<typeof layout> {}
 
 export const ColEl = styled(
   'div',
@@ -401,7 +403,7 @@ export const ColEl = styled(
   columnType,
   columnStates,
   columnJustify,
-  system.layout
+  layout
 );
 
 export const StickyHeaderColWrapper = styled.th(

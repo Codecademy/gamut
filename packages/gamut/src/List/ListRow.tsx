@@ -1,5 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import { render } from '@testing-library/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ComponentProps, forwardRef, MouseEvent } from 'react';
 import * as React from 'react';
@@ -113,6 +114,9 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       <RowEl
         aria-live={renderExpanded ? 'polite' : undefined}
         expanded={isTable ? undefined : !!renderExpanded}
+        flexWrap={
+          isTable && renderExpanded ? { _: 'wrap', c_sm: undefined } : undefined
+        }
         gridTemplateColumns={{
           _: 'minmax(0, 1fr) max-content',
           c_sm: undefined,
@@ -130,7 +134,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
             {expanded && (
               <ExpandInCollapseOut as={isTable ? 'td' : 'div'}>
                 <Box aria-label={expandedRowAriaLabel} role="region">
-                  ????!!!
+                  {renderExpanded?.()}
                 </Box>
               </ExpandInCollapseOut>
             )}
