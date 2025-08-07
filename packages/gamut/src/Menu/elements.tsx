@@ -153,6 +153,20 @@ const activeStates = system.states({
       bg: 'secondary',
     },
   },
+  disabled: {
+    cursor: 'not-allowed',
+    textColor: 'text-disabled',
+    fontWeight: 400,
+    bg: 'inherit',
+    [Selectors.HOVER]: {
+      textColor: 'text-disabled',
+      textDecoration: 'none',
+    },
+    [Selectors.BEFORE]: {
+      content: "''",
+      bg: 'inherit',
+    },
+  },
 });
 
 const sizeVariants = system.variant({

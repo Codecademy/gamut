@@ -14,6 +14,7 @@ import {
   MultipleUsersIcon,
   PeopleIcon,
   RatingStarCircleIcon,
+  SparkleIcon,
 } from '@codecademy/gamut-icons';
 import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -53,8 +54,10 @@ export const Popover: Story = {
     variant: 'popover',
     children: (
       <>
-        <MenuItem onClick={() => null}>Menu Item</MenuItem>
-        <MenuItem active onClick={() => null}>
+        <MenuItem onClick={() => null} disabled>
+          Menu Item
+        </MenuItem>
+        <MenuItem active onClick={() => null} disabled>
           Active Item
         </MenuItem>
         <MenuItem icon={MultipleUsersIcon} onClick={() => null}>
@@ -72,7 +75,15 @@ export const Fixed: Story = {
     children: (
       <>
         <MenuItem href="#">Menu Item</MenuItem>
-        <MenuItem active href="#">
+        <MenuItem
+          active
+          href="#"
+          disabled
+          label={{
+            info: 'This is disabled because...',
+            alignment: 'top-center',
+          }}
+        >
           Active Item
         </MenuItem>
         <MenuItem href="#" icon={MultipleUsersIcon}>
