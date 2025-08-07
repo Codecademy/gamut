@@ -79,7 +79,7 @@ export const TableRow: DataRow = ({
           {...listColProps}
           display={{ _: 'flex', c_sm: 'flex' }}
           size="content"
-          type="control"
+          type="select"
         >
           <SelectControl
             disabled={loading}

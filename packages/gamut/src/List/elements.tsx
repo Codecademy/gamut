@@ -89,11 +89,13 @@ const spacingVariants = variant({
   prop: 'spacing',
   variants: {
     normal: {
-      gap: { _: 8, c_sm: 40 },
+      rowGap: { _: 8, c_sm: 0 },
+      columnGap: { _: 8, c_sm: 40 },
     },
     condensed: {
       fontSize: 16,
-      gap: { _: 8, c_sm: 32 },
+      rowGap: { _: 8, c_sm: 0 },
+      columnGap: { _: 8, c_sm: 32 },
     },
     compact: {
       gap: 0,
@@ -163,7 +165,6 @@ export interface RowProps
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 8, c_sm: 0 },
-    // bg: 'inherit',
   }),
   variance.compose(system.grid),
   rowBreakpointVariants,
@@ -223,6 +224,19 @@ const columnType = variant({
     content: {
       gridColumnEnd: 'span 2',
     },
+    select: {
+      minWidth: 'min-content',
+      alignItems: {
+        _: 'flex-start',
+        c_sm: 'center',
+      },
+      justifyItems: {
+        _: 'end',
+        c_sm: undefined,
+      },
+      gridColumn: { _: 2, c_sm: 1 },
+      gridRow: 1,
+    },
     control: {
       minWidth: 'min-content',
       alignItems: {
@@ -233,9 +247,8 @@ const columnType = variant({
         _: 'end',
         c_sm: undefined,
       },
-
-      gridColumn: { _: 2, c_sm: 1 },
-      gridRow: 1,
+      gridRow: { _: 1, c_sm: undefined }, // Row 2 (next to Captain)
+      gridColumn: { _: 3, c_sm: undefined }, // Column 3 (right side)
     },
     expand: {
       minWidth: 'min-content',
