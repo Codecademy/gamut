@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [77.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.1.3...@codecademy/styleguide@77.1.4) (2025-08-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [77.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.1.2...@codecademy/styleguide@77.1.3) (2025-08-06)
+
+### Bug Fixes
+
+- **Popover:** Add ResizeObserver for text reflow bugs ([6308ae2](https://github.com/Codecademy/gamut/commit/6308ae2e6d186d3244aa81d6e37c19c619a2df09))
+
 ### [77.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.1.1...@codecademy/styleguide@77.1.2) (2025-07-25)
 
 ### Bug Fixes
