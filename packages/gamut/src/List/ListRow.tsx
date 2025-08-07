@@ -9,15 +9,10 @@ import { WithChildrenProp } from '../utils';
 import { RowEl } from './elements';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
-import { getGridTemplateColumns } from './utils';
 
 export interface RowProps
   extends Partial<PublicListProps<ComponentProps<typeof RowEl>>> {
   header?: boolean;
-  /** This is an internal prop that is largely only used for the DataTable component */
-  numOfColumns?: number;
-  /**  This is an internal prop that is largely only used for the DataTable component */
-  selectable?: boolean;
 }
 
 export interface ExpandableRowProps extends RowProps {
@@ -38,7 +33,9 @@ export type ListRowProps = ExpandableRowProps | SimpleRowProps;
 
 const expandStyles = css({
   overflow: 'hidden',
-  gridColumn: { _: 'span 2', c_sm: 'span 12' },
+  gridColumn: { _: undefined, c_sm: 'span 12' },
+  flexBasis: { c_sm: '100%' },
+  order: { c_sm: 999 },
 });
 
 const DivExpand = styled(motion.div)(expandStyles);
@@ -73,14 +70,11 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       expandedRowAriaLabel,
       renderExpanded,
       keepSpacingWhileExpanded,
-      numOfColumns,
-      selectable,
       ...rest
     },
     ref
   ) => {
-    const { listType, rowBreakpoint, scrollable, variant, ...rowConfig } =
-      useListContext();
+    const { listType, scrollable, variant, ...rowConfig } = useListContext();
     const isOl = listType === 'ol';
     const isTable = listType === 'table';
     const { onClick, role, tabIndex, ...rowProps } = rest;
@@ -90,11 +84,6 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
     let content = children;
     const renderNumbering = isOl && renderExpanded === undefined && !onClick;
-
-    const gridTemplateColumns =
-      isTable && renderExpanded
-        ? getGridTemplateColumns({ numOfColumns, selectable })
-        : 'minmax(0, 1fr) max-content';
 
     if ((renderExpanded || Boolean(onClick)) && !isTable) {
       content = (
@@ -124,14 +113,12 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       <RowEl
         aria-live={renderExpanded ? 'polite' : undefined}
         expanded={isTable ? undefined : !!renderExpanded}
-        gridAutoRows={{ _: undefined, c_sm: 'minmax(1.5rem, max-content) 6fr' }}
         gridTemplateColumns={{
           _: 'minmax(0, 1fr) max-content',
-          c_sm: gridTemplateColumns,
+          c_sm: undefined,
         }}
         isOl={renderNumbering}
         role={role}
-        rowBreakpoint={isTable && renderExpanded ? 'grid' : rowBreakpoint}
         scrollable={scrollable}
         tabIndex={tabIndex}
         variant={variant}
@@ -143,7 +130,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
             {expanded && (
               <ExpandInCollapseOut as={isTable ? 'td' : 'div'}>
                 <Box aria-label={expandedRowAriaLabel} role="region">
-                  {renderExpanded?.()}
+                  ????!!!
                 </Box>
               </ExpandInCollapseOut>
             )}
