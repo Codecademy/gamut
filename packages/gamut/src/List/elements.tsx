@@ -220,6 +220,7 @@ export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
     zIndex: 2,
     fontFamily: 'accent',
     pb: { _: 8, c_sm: 0 },
+    px: 8,
   }),
   spacingVariants,
   rowStates,
@@ -342,6 +343,7 @@ const columnStates = states({
     visibility: 'hidden',
     pointerEvents: 'none',
     opacity: 0,
+    height: 0,
   },
   columnHeader: {
     fontWeight: 400,
