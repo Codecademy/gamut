@@ -153,7 +153,6 @@ const rowBreakpointVariants = variant({
     md: {
       display: { _: 'grid', md: 'flex' },
       flexDirection: { _: 'column', md: 'row' },
-      flexWrap: { md: 'wrap' },
     },
     grid: { display: 'grid' },
   },

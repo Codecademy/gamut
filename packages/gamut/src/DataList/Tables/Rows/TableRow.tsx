@@ -68,12 +68,7 @@ export const TableRow: DataRow = ({
     : {};
 
   return (
-    <ListRow
-      as="tr"
-      numOfColumns={numberOfColumns}
-      selectable={selectable}
-      {...listRowProps}
-    >
+    <ListRow as="tr" {...listRowProps}>
       {selectable && (
         <ListCol
           {...listColProps}

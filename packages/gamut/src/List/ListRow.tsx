@@ -1,6 +1,5 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { render } from '@testing-library/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ComponentProps, forwardRef, MouseEvent } from 'react';
 import * as React from 'react';
@@ -34,9 +33,10 @@ export type ListRowProps = ExpandableRowProps | SimpleRowProps;
 
 const expandStyles = css({
   overflow: 'hidden',
-  gridColumn: { _: undefined, c_sm: 'span 12' },
+  gridColumn: { _: 'span 2', c_sm: undefined },
   flexBasis: { c_sm: '100%' },
   order: { c_sm: 999 },
+  width: { c_sm: '100%' },
 });
 
 const DivExpand = styled(motion.div)(expandStyles);
@@ -114,9 +114,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       <RowEl
         aria-live={renderExpanded ? 'polite' : undefined}
         expanded={isTable ? undefined : !!renderExpanded}
-        flexWrap={
-          isTable && renderExpanded ? { _: 'wrap', c_sm: undefined } : undefined
-        }
+        flexWrap={isTable && renderExpanded ? { c_sm: 'wrap' } : undefined}
         gridTemplateColumns={{
           _: 'minmax(0, 1fr) max-content',
           c_sm: undefined,
