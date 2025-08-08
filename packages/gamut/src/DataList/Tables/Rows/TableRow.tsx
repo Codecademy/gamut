@@ -1,10 +1,4 @@
-import {
-  isValidElement,
-  memo,
-  ReactElement,
-  useCallback,
-  useMemo,
-} from 'react';
+import { isValidElement, memo, ReactElement, useCallback } from 'react';
 
 import { Text } from '../../..';
 import { ListCol, ListRow } from '../../../List';
@@ -55,10 +49,6 @@ export const TableRow: DataRow = ({
       onCollapse: () => onExpand({ rowId: id, toggle: true }),
     });
   }, [onExpand, expandedContent, id, row]);
-
-  const numberOfColumns = useMemo(() => {
-    return columns.length;
-  }, [columns]);
 
   const listRowProps = expandable
     ? {
