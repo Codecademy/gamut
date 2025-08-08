@@ -182,7 +182,6 @@ export interface RowProps
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 8, c_sm: 0 },
-    // px: 8, // Moved to interaction variants
   }),
   variance.compose(grid, flex),
   rowBreakpointVariants,
@@ -195,10 +194,11 @@ export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
 const headerVariants = variant({
   prop: 'variant',
   variants: {
-    default: {},
-    card: {},
+    default: { px: 8 },
+    card: { px: 8 },
     block: {},
     table: {
+      // px: 8,
       borderBottom: 2,
     },
     plain: {},
@@ -220,7 +220,6 @@ export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
     zIndex: 2,
     fontFamily: 'accent',
     pb: { _: 8, c_sm: 0 },
-    px: 8,
   }),
   spacingVariants,
   rowStates,

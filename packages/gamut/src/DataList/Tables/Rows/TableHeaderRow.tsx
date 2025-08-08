@@ -1,7 +1,8 @@
 import { memo, ReactElement } from 'react';
 
 import { FlexBox } from '../../..';
-import { ListCol, TableHeader } from '../../../List';
+import { ListCol } from '../../../List';
+import { useListContext } from '../../../List/ListProvider';
 import {
   ExpandControl,
   FilterControl,
@@ -32,9 +33,13 @@ export const TableHeaderRow: HeaderComponent = ({
 }) => {
   const { expandable, selectable, onSelect, onFilter, onSort, prefixId } =
     useControlContext();
+  const { variant, listType } = useListContext();
 
   return (
-    <StyledHeaderRow invisible={invisible}>
+    <StyledHeaderRow
+      invisible={invisible}
+      isDataList={listType === 'table' && variant !== 'table'}
+    >
       <>
         {selectable && (
           <ListCol size="content">
