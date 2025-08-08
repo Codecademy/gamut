@@ -153,6 +153,7 @@ const activeStates = system.states({
       bg: 'secondary',
     },
   },
+  // Is named isDisabled to avoid conflicts with the HTML `disabled` attribute
   isDisabled: {
     cursor: 'not-allowed',
     textColor: 'text-disabled',
