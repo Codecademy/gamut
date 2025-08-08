@@ -53,15 +53,24 @@ export const Popover: Story = {
     variant: 'popover',
     children: (
       <FlexBox column width="fit-content">
-        <MenuItem onClick={() => null}>Menu Item</MenuItem>
+        <MenuItem onClick={() => null} label="testing">
+          Menu Item with Tooltip
+        </MenuItem>
         <MenuItem active onClick={() => null}>
           Active Item
         </MenuItem>
-        <MenuItem icon={MultipleUsersIcon} onClick={() => null}>
-          Icon Item
+        <MenuItem
+          icon={MultipleUsersIcon}
+          onClick={() => null}
+          label={{
+            info: 'More info here...',
+            alignment: 'right-center',
+          }}
+        >
+          Icon Item with ToolTip
         </MenuItem>
         <MenuItem disabled onClick={() => null}>
-          Disabled Item
+          Disabled Item no ToolTip
         </MenuItem>
         <MenuItem
           disabled
@@ -74,7 +83,7 @@ export const Popover: Story = {
           Disabled item with ToolTip
         </MenuItem>
         <MenuItem active disabled onClick={() => null}>
-          (TESTING) Active + disabled
+          Active + disabled no ToolTip
         </MenuItem>
       </FlexBox>
     ),
@@ -86,14 +95,25 @@ export const Fixed: Story = {
     variant: 'fixed',
     children: (
       <FlexBox column width="fit-content">
-        <MenuItem href="#">Menu Item</MenuItem>
-        <MenuItem active href="#">
+        <MenuItem onClick={() => null} label="testing">
+          Menu Item with Tooltip
+        </MenuItem>
+        <MenuItem active onClick={() => null}>
           Active Item
         </MenuItem>
-        <MenuItem href="#" icon={MultipleUsersIcon}>
-          Icon Item
+        <MenuItem
+          icon={MultipleUsersIcon}
+          onClick={() => null}
+          label={{
+            info: 'More info here...',
+            alignment: 'right-center',
+          }}
+        >
+          Icon Item with ToolTip
         </MenuItem>
-        <MenuItem disabled>Disabled Item</MenuItem>
+        <MenuItem disabled onClick={() => null}>
+          Disabled Item no ToolTip
+        </MenuItem>
         <MenuItem
           disabled
           label={{
@@ -105,7 +125,7 @@ export const Fixed: Story = {
           Disabled item with ToolTip
         </MenuItem>
         <MenuItem active disabled onClick={() => null}>
-          (TESTING) Active + disabled
+          Active + disabled no ToolTip
         </MenuItem>
       </FlexBox>
     ),

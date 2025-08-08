@@ -76,6 +76,7 @@ export const MenuItem = forwardRef<
   ) => {
     const { variant, role, ...rest } = useMenuContext();
     const tipId = useId();
+    const isIconOnly = !!Icon && !children;
 
     const activeProp = activePropnames[variant];
 
@@ -104,7 +105,10 @@ export const MenuItem = forwardRef<
       variant: 'link',
       role: role === 'menu' ? 'menuitem' : undefined,
       [activeProp]: active,
-      'aria-label': ariaLabel,
+      'aria-label': isIconOnly ? ariaLabel : undefined,
+      'aria-describedby': !isIconOnly ? tipId : undefined,
+      'aria-disabled': disabled,
+      isDisabled: disabled,
     };
 
     const content = (
@@ -131,9 +135,6 @@ export const MenuItem = forwardRef<
           <MenuToolTipWrapper label={label} tipId={tipId}>
             <ListLink
               {...(computed as ListLinkProps)}
-              aria-describedby={disabled ? tipId : undefined}
-              aria-disabled={disabled}
-              isDisabled={disabled}
               href={href}
               ref={linkRef}
               target={target}
@@ -151,13 +152,7 @@ export const MenuItem = forwardRef<
       return (
         <ListItem {...listItemProps}>
           <MenuToolTipWrapper label={label} tipId={tipId}>
-            <ListButton
-              {...(computed as ListLinkProps)}
-              aria-describedby={disabled ? tipId : undefined}
-              aria-disabled={disabled}
-              isDisabled={disabled}
-              ref={buttonRef}
-            >
+            <ListButton {...(computed as ListLinkProps)} ref={buttonRef}>
               {content}
             </ListButton>
           </MenuToolTipWrapper>
