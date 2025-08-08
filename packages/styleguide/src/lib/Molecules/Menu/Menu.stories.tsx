@@ -54,16 +54,29 @@ export const Popover: Story = {
     variant: 'popover',
     children: (
       <>
-        <MenuItem onClick={() => null} disabled>
-          Menu Item
-        </MenuItem>
-        <MenuItem active onClick={() => null} disabled>
+        <MenuItem onClick={() => null}>Menu Item</MenuItem>
+        <MenuItem active onClick={() => null}>
           Active Item
         </MenuItem>
         <MenuItem icon={MultipleUsersIcon} onClick={() => null}>
           Icon Item
         </MenuItem>
-        <MenuItem onClick={() => null}>Menu Item</MenuItem>
+        <MenuItem disabled onClick={() => null}>
+          Disabled Item
+        </MenuItem>
+        <MenuItem
+          disabled
+          label={{
+            info: 'This is disabled because...',
+            alignment: 'left-center',
+          }}
+          onClick={() => null}
+        >
+          Disabled item with ToolTip
+        </MenuItem>
+        <MenuItem active disabled onClick={() => null}>
+          Active Item and disabled FOR TESTING -- will delete after!
+        </MenuItem>
       </>
     ),
   },
@@ -75,21 +88,28 @@ export const Fixed: Story = {
     children: (
       <>
         <MenuItem href="#">Menu Item</MenuItem>
-        <MenuItem
-          active
-          href="#"
-          disabled
-          label={{
-            info: 'This is disabled because...',
-            alignment: 'top-center',
-          }}
-        >
+        <MenuItem href="#" active>
           Active Item
         </MenuItem>
         <MenuItem href="#" icon={MultipleUsersIcon}>
           Icon Item
         </MenuItem>
-        <MenuItem href="#">Menu Item</MenuItem>
+        <MenuItem disabled onClick={() => null}>
+          Disabled Item
+        </MenuItem>
+        <MenuItem
+          disabled
+          label={{
+            info: 'This is disabled because...',
+            alignment: 'left-center',
+          }}
+          onClick={() => null}
+        >
+          Menu Item
+        </MenuItem>
+        <MenuItem active disabled onClick={() => null}>
+          Active Item and disabled FOR TESTING -- will delete after!
+        </MenuItem>
       </>
     ),
   },
