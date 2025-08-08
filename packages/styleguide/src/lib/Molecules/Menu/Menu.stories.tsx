@@ -53,7 +53,7 @@ export const Popover: Story = {
   args: {
     variant: 'popover',
     children: (
-      <>
+      <FlexBox column width="300px">
         <MenuItem onClick={() => null}>Menu Item</MenuItem>
         <MenuItem active onClick={() => null}>
           Active Item
@@ -68,16 +68,16 @@ export const Popover: Story = {
           disabled
           label={{
             info: 'This is disabled because...',
-            alignment: 'left-center',
+            alignment: 'right-center',
           }}
           onClick={() => null}
         >
           Disabled item with ToolTip
         </MenuItem>
         <MenuItem active disabled onClick={() => null}>
-          Active Item and disabled FOR TESTING -- will delete after!
+          (TESTING) Active Item and disabled
         </MenuItem>
-      </>
+      </FlexBox>
     ),
   },
 };
@@ -86,7 +86,7 @@ export const Fixed: Story = {
   args: {
     variant: 'fixed',
     children: (
-      <>
+      <FlexBox column width="300px">
         <MenuItem href="#">Menu Item</MenuItem>
         <MenuItem href="#" active>
           Active Item
@@ -101,16 +101,16 @@ export const Fixed: Story = {
           disabled
           label={{
             info: 'This is disabled because...',
-            alignment: 'left-center',
+            alignment: 'right-center',
           }}
           onClick={() => null}
         >
-          Menu Item
+          Disabled item with ToolTip
         </MenuItem>
         <MenuItem active disabled onClick={() => null}>
-          Active Item and disabled FOR TESTING -- will delete after!
+          (TESTING) Active Item and disabled
         </MenuItem>
-      </>
+      </FlexBox>
     ),
   },
 };
