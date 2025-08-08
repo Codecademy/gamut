@@ -58,13 +58,14 @@ export const MenuItem = forwardRef<
 >(
   (
     {
-      href,
-      target,
-      children,
       active,
-      icon: Icon,
-      label,
+      children,
       height = 1,
+      href,
+      icon: Icon,
+      isDisabled,
+      label,
+      target,
       width = 1,
       ...props
     },
@@ -127,6 +128,9 @@ export const MenuItem = forwardRef<
           <MenuToolTipWrapper label={label} tipId={tipId}>
             <ListLink
               {...(computed as ListLinkProps)}
+              aria-describedby={isDisabled ? tipId : undefined}
+              aria-disabled={isDisabled}
+              isDisabled={isDisabled}
               href={href}
               ref={linkRef}
               target={target}
@@ -144,7 +148,13 @@ export const MenuItem = forwardRef<
       return (
         <ListItem {...listItemProps}>
           <MenuToolTipWrapper label={label} tipId={tipId}>
-            <ListButton {...(computed as ListLinkProps)} ref={buttonRef}>
+            <ListButton
+              {...(computed as ListLinkProps)}
+              aria-describedby={isDisabled ? tipId : undefined}
+              aria-disabled={isDisabled}
+              isDisabled={isDisabled}
+              ref={buttonRef}
+            >
               {content}
             </ListButton>
           </MenuToolTipWrapper>

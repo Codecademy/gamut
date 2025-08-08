@@ -60,11 +60,11 @@ export const Popover: Story = {
         <MenuItem icon={MultipleUsersIcon} onClick={() => null}>
           Icon Item
         </MenuItem>
-        <MenuItem disabled onClick={() => null}>
+        <MenuItem isDisabled onClick={() => null}>
           Disabled Item
         </MenuItem>
         <MenuItem
-          disabled
+          isDisabled
           label={{
             info: 'This is disabled because...',
             alignment: 'right-center',
@@ -73,7 +73,7 @@ export const Popover: Story = {
         >
           Disabled item with ToolTip
         </MenuItem>
-        <MenuItem active disabled onClick={() => null}>
+        <MenuItem active isDisabled onClick={() => null}>
           (TESTING) Active + disabled
         </MenuItem>
       </FlexBox>
@@ -93,11 +93,11 @@ export const Fixed: Story = {
         <MenuItem href="#" icon={MultipleUsersIcon}>
           Icon Item
         </MenuItem>
-        <MenuItem disabled onClick={() => null}>
+        <MenuItem isDisabled>
           Disabled Item
         </MenuItem>
         <MenuItem
-          disabled
+          isDisabled
           label={{
             info: 'This is disabled because...',
             alignment: 'right-center',
@@ -106,7 +106,7 @@ export const Fixed: Story = {
         >
           Disabled item with ToolTip
         </MenuItem>
-        <MenuItem active disabled onClick={() => null}>
+        <MenuItem active isDisabled onClick={() => null}>
           (TESTING) Active + disabled
         </MenuItem>
       </FlexBox>

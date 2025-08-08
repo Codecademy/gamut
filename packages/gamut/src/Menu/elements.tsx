@@ -9,9 +9,14 @@ import isObject from 'lodash/isObject';
 import { ComponentProps, forwardRef } from 'react';
 
 import { sharedStates } from '../Box/props';
-import { resetStyles, Selectors } from '../ButtonBase/ButtonBase';
+import {
+  ButtonSelectors,
+  resetStyles,
+  Selectors,
+} from '../ButtonBase/ButtonBase';
 import { ToolTip, ToolTipProps } from '../Tip/ToolTip';
 import { MenuItem } from './MenuItem';
+import { Button } from 'react-aria-components';
 
 enum MenuItemSelectors {
   OUTLINE = '&:after',
@@ -153,7 +158,7 @@ const activeStates = system.states({
       bg: 'secondary',
     },
   },
-  disabled: {
+  isDisabled: {
     cursor: 'not-allowed',
     textColor: 'text-disabled',
     fontWeight: 400,
