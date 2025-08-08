@@ -23,7 +23,6 @@ export const VENDOR_ICONS = pick(
     'GplusIcon',
     'IbmIcon',
     'InstagramIcon',
-    'InstagramVariantIcon',
     'JiraIcon',
     'LinkedinIcon',
     'LinkedinOutlineIcon',
