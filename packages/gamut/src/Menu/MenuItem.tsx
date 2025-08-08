@@ -42,12 +42,14 @@ interface MenuItemIconOnly extends HTMLProps, ForwardListItemProps {
   children?: never;
   /** ToolTips will only render for interactive items, otherwise the label will be used as a generic aria-label  */
   label: ToolTipLabel;
+  disabled?: boolean;
 }
 
 interface MenuTextItem extends HTMLProps, ForwardListItemProps {
   icon?: React.ComponentType<GamutIconProps>;
   children: React.ReactNode;
   label?: ToolTipLabel;
+  disabled?: boolean;
 }
 
 type MenuItemTypes = MenuItemIconOnly | MenuTextItem;
@@ -60,6 +62,7 @@ export const MenuItem = forwardRef<
     {
       active,
       children,
+      disabled,
       height = 1,
       href,
       icon: Icon,
@@ -128,9 +131,9 @@ export const MenuItem = forwardRef<
           <MenuToolTipWrapper label={label} tipId={tipId}>
             <ListLink
               {...(computed as ListLinkProps)}
-              aria-describedby={isDisabled ? tipId : undefined}
-              aria-disabled={isDisabled}
-              isDisabled={isDisabled}
+              aria-describedby={disabled ? tipId : undefined}
+              aria-disabled={disabled}
+              isDisabled={disabled}
               href={href}
               ref={linkRef}
               target={target}
@@ -150,9 +153,9 @@ export const MenuItem = forwardRef<
           <MenuToolTipWrapper label={label} tipId={tipId}>
             <ListButton
               {...(computed as ListLinkProps)}
-              aria-describedby={isDisabled ? tipId : undefined}
-              aria-disabled={isDisabled}
-              isDisabled={isDisabled}
+              aria-describedby={disabled ? tipId : undefined}
+              aria-disabled={disabled}
+              isDisabled={disabled}
               ref={buttonRef}
             >
               {content}
