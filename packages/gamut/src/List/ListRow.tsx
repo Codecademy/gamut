@@ -114,7 +114,11 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       <RowEl
         aria-live={renderExpanded ? 'polite' : undefined}
         expanded={isTable ? undefined : !!renderExpanded}
-        flexWrap={isTable && renderExpanded ? { c_sm: 'wrap' } : undefined}
+        flexWrap={
+          isTable && renderExpanded && expanded
+            ? { c_sm: 'wrap' }
+            : { c_sm: 'nowrap' }
+        }
         gridTemplateColumns={{
           _: 'minmax(0, 1fr) max-content',
           c_sm: undefined,
