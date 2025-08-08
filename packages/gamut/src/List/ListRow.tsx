@@ -94,7 +94,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           as="div"
           {...rowConfig}
           aria-expanded={renderExpanded && onClick ? expanded : undefined}
-          clickable={Boolean(onClick)}
+          interaction={onClick ? 'interactive' : 'static'}
           isOl={isOl}
           role={onClick ? 'button' : role}
           tabIndex={onClick ? 0 : tabIndex}
@@ -123,6 +123,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           _: 'minmax(0, 1fr) max-content',
           c_sm: undefined,
         }}
+        interaction={onClick ? undefined : 'static'}
         isOl={renderNumbering}
         role={role}
         scrollable={scrollable}
