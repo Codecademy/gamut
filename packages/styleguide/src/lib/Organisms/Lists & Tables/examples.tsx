@@ -5,12 +5,193 @@ import {
   DataTable,
   FillButton,
   FlexBox,
+  IconButton,
+  Menu,
+  MenuItem,
+  Modal,
+  PopoverContainer,
   Text,
   useLocalQuery,
 } from '@codecademy/gamut';
+import { MiniKebabMenuIcon } from '@codecademy/gamut-icons';
 import { BlueprintWhite } from '@codecademy/gamut-illustrations';
 import uniq from 'lodash/uniq';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
+import { useMedia } from 'react-use';
+
+interface MenuItemConfig {
+  action: string;
+  onClick: () => void;
+}
+
+const MenuItemGenerator: React.FC<{
+  items: MenuItemConfig[];
+  name: string;
+}> = ({ items, name }) => {
+  return (
+    <>
+      {items.map((item) => (
+        <MenuItem key={item.action} onClick={item.onClick}>
+          <Text truncate="ellipsis" truncateLines={1}>
+            {`${item.action} ${name}`}
+          </Text>
+        </MenuItem>
+      ))}
+    </>
+  );
+};
+
+const useScreenAlignment = (menuSide: 'left' | 'right') => {
+  const isSmOrLarger = useMedia('(min-width: 768px)');
+
+  const alignment = useMemo((): 'bottom-left' | 'bottom-right' => {
+    // At sm breakpoint (768px) or smaller, always use bottom-left
+    if (!isSmOrLarger) {
+      return 'bottom-left';
+    }
+    // Otherwise use the menuSide prop
+    return menuSide === 'left' ? 'bottom-left' : 'bottom-right';
+  }, [isSmOrLarger, menuSide]);
+
+  return { alignment };
+};
+
+const CrewMgmtDropdown: React.FC<{
+  row: (typeof crew)[1];
+  menuSide: 'left' | 'right';
+}> = ({ row, menuSide }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLDivElement>(null);
+  const { name } = row;
+  const { alignment } = useScreenAlignment(menuSide);
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  const handleArrestClick = () => {
+    setIsOpen(false);
+    setIsModalOpen(true);
+  };
+
+  const menuItems: MenuItemConfig[] = [
+    {
+      onClick: handleClose,
+      action: 'Edit',
+    },
+    {
+      onClick: handleClose,
+      action: 'Fire',
+    },
+    {
+      onClick: handleClose,
+      action: 'Clone',
+    },
+    {
+      onClick: handleClose,
+      action: 'Disipline',
+    },
+    {
+      onClick: handleArrestClick,
+      action: 'Arrest',
+    },
+  ];
+
+  return (
+    <Box display="inline-block" p={8} ref={menuButtonRef}>
+      <IconButton
+        icon={MiniKebabMenuIcon}
+        tip="Show options"
+        tipProps={{
+          alignment: 'left-center',
+          placement: 'floating',
+        }}
+        variant="secondary"
+        onClick={() => setIsOpen(!isOpen)}
+      />
+
+      <PopoverContainer
+        alignment={alignment}
+        allowPageInteraction
+        isOpen={isOpen}
+        offset={0}
+        targetRef={menuButtonRef}
+        onRequestClose={handleClose}
+      >
+        <Menu borderRadius="md" spacing="normal" variant="popover">
+          <MenuItemGenerator items={menuItems} name={name} />
+        </Menu>
+      </PopoverContainer>
+
+      {/*
+        Modal with multiple views:
+        - "confirm" (default): confirmation dialog
+        - "success": after arrest
+        - "error": example error state
+      */}
+      <Modal
+        isOpen={isModalOpen}
+        size="small"
+        views={[
+          {
+            title: 'Arrest Crew Member',
+            children: (
+              <Text>
+                Are you sure you want to arrest this crew member? This action
+                cannot be undone.
+              </Text>
+            ),
+            primaryCta: {
+              children: 'Arrest',
+              actionType: 'next',
+              onClick: () => {
+                // Simulate arrest logic - this will advance to next view
+              },
+            },
+            secondaryCta: {
+              children: 'Cancel',
+              actionType: 'cancel',
+              onClick: () => {
+                setIsModalOpen(false);
+              },
+            },
+          },
+          {
+            title: 'Crew Member Arrested',
+            children: <Text>{name} has been arrested successfully.</Text>,
+            primaryCta: {
+              children: 'Close',
+              actionType: 'confirm',
+              onClick: () => {
+                setIsModalOpen(false);
+              },
+            },
+          },
+          {
+            title: 'Error',
+            children: (
+              <Text color="danger">
+                Something went wrong while arresting {name}.
+              </Text>
+            ),
+            primaryCta: {
+              children: 'Back',
+              actionType: 'confirm',
+              onClick: () => {
+                // This will close the modal and reset to first view
+                setIsModalOpen(false);
+              },
+            },
+          },
+        ]}
+        onRequestClose={() => {
+          setIsModalOpen(false);
+        }}
+      />
+    </Box>
+  );
+};
 
 export const CustomEmptyState: React.FC = () => (
   <Box as="tbody" height="100%" width="100%">
@@ -163,8 +344,26 @@ export const cols = [
   },
 ] as ColumnConfig<(typeof crew)[number]>[];
 
+const leftMenu: ColumnConfig<(typeof crew)[number]> = {
+  header: 'Controls',
+  key: 'name',
+  size: 'md',
+  justify: 'right',
+  type: 'control',
+  render: (row) => <CrewMgmtDropdown menuSide="left" row={row} />,
+};
+
+const rightMenu: ColumnConfig<(typeof crew)[number]> = {
+  header: 'Controls',
+  key: 'name',
+  size: 'md',
+  justify: 'right',
+  type: 'control',
+  render: (row) => <CrewMgmtDropdown menuSide="right" row={row} />,
+};
+
 export const createDemoTable =
-  (Component: any, overrides = {}) =>
+  (Component: any, overrides = {}, menuSide: 'left' | 'right' = 'left') =>
   () => {
     const [selectedRows, setSelectedRows] = useState<
       (typeof crew)[number]['name'][]
@@ -173,10 +372,15 @@ export const createDemoTable =
       (typeof crew)[number]['name'][]
     >([]);
 
+    const columnsWithMenu = useMemo(() => {
+      const menuConfig = menuSide === 'left' ? leftMenu : rightMenu;
+      return [...cols, menuConfig];
+    }, []);
+
     const { idKey, query, rows, onQueryChange } = useLocalQuery({
       idKey: 'name',
       rows: crew,
-      columns: cols,
+      columns: columnsWithMenu,
     });
 
     const allIds = useMemo(() => crew.map(({ [idKey]: id }) => id), [idKey]);
@@ -233,7 +437,7 @@ export const createDemoTable =
 
     return (
       <Component
-        columns={cols}
+        columns={columnsWithMenu}
         expanded={expandedRows}
         expandedContent={expandedContent}
         height={500}
@@ -250,12 +454,21 @@ export const createDemoTable =
     );
   };
 
-export const DataTableTemplate = createDemoTable(DataTable, {
-  onRowSelect: undefined,
-  onRowExpand: undefined,
-});
+export const DataTableTemplate = createDemoTable(
+  DataTable,
+  {
+    onRowSelect: undefined,
+    onRowExpand: undefined,
+  },
+  'left'
+);
 
-export const DataListTemplate = createDemoTable(DataList, {
-  scrollable: false,
-  height: 'auto',
-});
+export const DataListTemplate = createDemoTable(
+  DataList,
+  {
+    scrollable: false,
+    height: 'auto',
+    showOverflow: true,
+  },
+  'right'
+);

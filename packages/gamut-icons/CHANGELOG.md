@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.47.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.46.3...@codecademy/gamut-icons@9.47.0) (2025-08-07)
+
+### Features
+
+- **Icons:** Adds BookLibrary and HammerWrench icons ([36293b1](https://github.com/Codecademy/gamut/commit/36293b17f453314ea507fdec9ef428ce745d7546))
+
 ### [9.46.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.46.2...@codecademy/gamut-icons@9.46.3) (2025-07-22)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader } from '~styleguide/blocks';
+import { AboutHeader, LinkTo } from '~styleguide/blocks';
 
 export const parameters = {
   id: 'Stories',
@@ -73,7 +73,8 @@ import { ComponentHeader } from '~styleguide/blocks';
 import * as ComponentStories from './ComponentName.stories';
 
 export const parameters = {
-  subtitle: `Template component`,
+  title: 'Template component',
+  subtitle: `Template component description...`,
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/XXX',
@@ -107,10 +108,11 @@ In our opinion, a good component story page consists of:
 
 ### General information
 
-1. `subtitle`: What the component does, and what the component would typically be used for.
-2. `source`: The source package of the component (e.g. `gamut` | `gamut-styles`) and a link to the corresponding code.
-3. `status`: The health of the components API (e.g. `current` | `updating` | `deprecated` | `static`)
-4. `design`: A link to the Figma file that is associated with the component.
+1. `title`: The name of the component, this helps with linking to the story.
+2. `subtitle`: What the component does, and what the component would typically be used for.
+3. `source`: The source package of the component (e.g. `gamut` | `gamut-styles`) and a link to the corresponding code.
+4. `status`: The health of the components API (e.g. `current` | `updating` | `deprecated` | `static`)
+5. `design`: A link to the Figma file that is associated with the component.
 
 ```tsx
 import { Meta } from '@storybook/blocks';
@@ -167,3 +169,27 @@ A short description should go here, as well as any variant specific usage guidel
 <Canvas of={AnchorStories.Variant} />
 
 ```
+
+### About pages
+
+An `About.mdx` file should be be included when multiple stories are presented in a folder. E.g. the <LinkTo id="Atoms/Animations/About">Animation</LinkTo> folder which contains an `About.mdx` file with a table of contents that link to specific components -- in this case, the <LinkTo id="Atoms/Animations/ExpandInCollapseOut">ExpandInCollapseOut</LinkTo> component and the <LinkTo id="Atoms/Animations/Rotation">Rotation</LinkTo> component.
+
+Inside the `About.mdx` file, import the `parameters` object from the respective component's `<ComponentName>.mdx` file and pass it to the `<TableOfContents />` component.
+
+```tsx
+import { parameters as componentNameParameters } from './ComponentName.mdx';
+import { parameters as anotherComponentParameters } from './AnotherComponent.mdx';
+
+
+export const parameters = {
+  id: 'ParentDir/FolderName',
+  title: 'FolderName',
+  subtitle: 'Overview of the components in this folder.',
+};
+
+...
+
+<TableOfContents links={addParentPath(parameters.id, [componentNameParameters, anotherComponentParameters]))} />
+```
+
+The `addParentPath` function is used to ensure that the links in the table of contents have the correct IDs, which are derived from the parent path and the component's ID or title.

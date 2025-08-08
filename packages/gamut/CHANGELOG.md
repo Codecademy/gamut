@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.0.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.7...@codecademy/gamut@66.0.8) (2025-08-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.6...@codecademy/gamut@66.0.7) (2025-08-06)
+
+### Bug Fixes
+
+- **Popover:** Add ResizeObserver for text reflow bugs ([6308ae2](https://github.com/Codecademy/gamut/commit/6308ae2e6d186d3244aa81d6e37c19c619a2df09))
+
+### [66.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.5...@codecademy/gamut@66.0.6) (2025-07-25)
+
+### Bug Fixes
+
+- **PopoverContainer:** Give popover better scroll awareness ([58e7b80](https://github.com/Codecademy/gamut/commit/58e7b809cd59c8251852c1d2ea6ca7b1c4b6ad5b))
+
+### [66.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.4...@codecademy/gamut@66.0.5) (2025-07-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.3...@codecademy/gamut@66.0.4) (2025-07-24)
+
+### Bug Fixes
+
+- **Pagination:** allow for text variant to render ([b5ab3b5](https://github.com/Codecademy/gamut/commit/b5ab3b5792d64ae4d473a1e4ff257de63351a150))
+
 ### [66.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.2...@codecademy/gamut@66.0.3) (2025-07-22)
 
 **Note:** Version bump only for package @codecademy/gamut
