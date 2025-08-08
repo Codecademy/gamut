@@ -1,7 +1,8 @@
 import { memo, ReactElement } from 'react';
 
 import { FlexBox } from '../../..';
-import { ListCol, TableHeader } from '../../../List';
+import { ListCol } from '../../../List';
+import { useListContext } from '../../../List/ListProvider';
 import {
   ExpandControl,
   FilterControl,
@@ -10,6 +11,7 @@ import {
 } from '../../Controls';
 import { useControlContext } from '../../hooks/useListControls';
 import { ColumnConfig, Query } from '../../types';
+import { StyledHeaderRow } from './elements';
 
 interface HeaderComponent {
   <Row>(props: {
@@ -18,6 +20,7 @@ interface HeaderComponent {
     selected?: boolean;
     empty?: boolean;
     hideSelectAll?: boolean;
+    invisible?: boolean;
   }): ReactElement<any, any>;
 }
 
@@ -26,16 +29,21 @@ export const TableHeaderRow: HeaderComponent = ({
   selected = false,
   empty = false,
   hideSelectAll,
+  invisible = false,
 }) => {
   const { expandable, selectable, onSelect, onFilter, onSort, prefixId } =
     useControlContext();
+  const { variant, listType } = useListContext();
 
   return (
-    <TableHeader>
+    <StyledHeaderRow
+      invisible={invisible}
+      isDataList={listType === 'table' && variant !== 'table'}
+    >
       <>
         {selectable && (
           <ListCol size="content">
-            {!hideSelectAll && (
+            {!hideSelectAll && !invisible && (
               <SelectControl
                 disabled={empty}
                 label="Select All"
@@ -54,33 +62,35 @@ export const TableHeaderRow: HeaderComponent = ({
 
           return (
             <ListCol key={renderKey} {...colProps} columnHeader>
-              <FlexBox alignItems="flex-end" gap={8} width="100%">
-                {filters && (
-                  <FilterControl
-                    columnKey={rowProperty}
-                    justify={colProps.justify}
-                    options={filters}
-                    onFilter={onFilter}
-                  />
-                )}
-                {sortable ? (
-                  <SortControl columnKey={rowProperty} onSort={onSort}>
-                    {columnText}
-                  </SortControl>
-                ) : (
-                  columnText
-                )}
-              </FlexBox>
+              {!invisible && (
+                <FlexBox alignItems="flex-end" gap={8} width="100%">
+                  {filters && (
+                    <FilterControl
+                      columnKey={rowProperty}
+                      justify={colProps.justify}
+                      options={filters}
+                      onFilter={onFilter}
+                    />
+                  )}
+                  {sortable ? (
+                    <SortControl columnKey={rowProperty} onSort={onSort}>
+                      {columnText}
+                    </SortControl>
+                  ) : (
+                    columnText
+                  )}
+                </FlexBox>
+              )}
             </ListCol>
           );
         })}
         {expandable && (
           <ListCol ghost size="content">
-            <ExpandControl />
+            {!invisible && <ExpandControl />}
           </ListCol>
         )}
       </>
-    </TableHeader>
+    </StyledHeaderRow>
   );
 };
 

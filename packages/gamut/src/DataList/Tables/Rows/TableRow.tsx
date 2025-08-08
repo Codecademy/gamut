@@ -1,10 +1,4 @@
-import {
-  isValidElement,
-  memo,
-  ReactElement,
-  useCallback,
-  useMemo,
-} from 'react';
+import { isValidElement, memo, ReactElement, useCallback } from 'react';
 
 import { Text } from '../../..';
 import { ListCol, ListRow } from '../../../List';
@@ -56,10 +50,6 @@ export const TableRow: DataRow = ({
     });
   }, [onExpand, expandedContent, id, row]);
 
-  const numberOfColumns = useMemo(() => {
-    return columns.length;
-  }, [columns]);
-
   const listRowProps = expandable
     ? {
         expanded,
@@ -68,18 +58,13 @@ export const TableRow: DataRow = ({
     : {};
 
   return (
-    <ListRow
-      as="tr"
-      numOfColumns={numberOfColumns}
-      selectable={selectable}
-      {...listRowProps}
-    >
+    <ListRow as="tr" {...listRowProps}>
       {selectable && (
         <ListCol
           {...listColProps}
           display={{ _: 'flex', c_sm: 'flex' }}
           size="content"
-          type="control"
+          type="select"
         >
           <SelectControl
             disabled={loading}

@@ -8,8 +8,11 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
 import { Box } from '../Box';
+
+const { space, grid, flex, layout } = system;
 
 const olStyles = {
   alignItems: 'center',
@@ -48,11 +51,11 @@ const listVariants = variant({
 export interface ListProps
   extends StyleProps<typeof listVariants>,
     StyleProps<typeof spacingVariants>,
-    StyleProps<typeof system.space> {}
+    StyleProps<typeof space> {}
 
 export const ListEl = styled('ul', styledOptions<'ul'>())<ListProps>(
   listVariants,
-  system.space
+  space
 );
 
 const rowStates = states({
@@ -71,15 +74,27 @@ const rowStates = states({
     display: 'flex',
     flexDirection: { c_sm: 'column' },
   },
-  clickable: {
-    cursor: 'pointer',
-    '&:hover': {
-      bg: 'background-hover',
+});
+
+//
+const interactionVariants = variant({
+  prop: 'interaction',
+  variants: {
+    interactive: {
+      cursor: 'pointer',
+      px: 8,
+
+      '&:hover': {
+        bg: 'background-hover',
+      },
+      '&:focus-visible, &:focus-within': {
+        outline: `1px solid ${theme.colors.primary}`,
+        boxShadow: `0 0 0 1px ${theme.colors.primary} inset`,
+        bg: 'background-selected',
+      },
     },
-    '&:focus-visible, &:focus-within': {
-      outline: `1px solid ${theme.colors.primary}`,
-      boxShadow: `0 0 0 1px ${theme.colors.primary} inset`,
-      bg: 'background-selected',
+    static: {
+      px: 8,
     },
   },
 });
@@ -88,11 +103,13 @@ const spacingVariants = variant({
   prop: 'spacing',
   variants: {
     normal: {
-      gap: { _: 8, c_sm: 40 },
+      rowGap: { _: 8, c_sm: 0 },
+      columnGap: { _: 8, c_sm: 40 },
     },
     condensed: {
       fontSize: 16,
-      gap: { _: 8, c_sm: 32 },
+      rowGap: { _: 8, c_sm: 0 },
+      columnGap: { _: 8, c_sm: 32 },
     },
     compact: {
       gap: 0,
@@ -135,6 +152,7 @@ const rowVariants = variant({
 const rowBreakpointVariants = variant({
   prop: 'rowBreakpoint',
   defaultVariant: 'xs',
+
   variants: {
     xs: {
       display: { _: 'grid', c_sm: 'flex' },
@@ -156,28 +174,31 @@ export interface RowProps
   extends StyleProps<typeof rowVariants>,
     StyleProps<typeof rowBreakpointVariants>,
     StyleProps<typeof spacingVariants>,
+    StyleProps<typeof interactionVariants>,
     StyleProps<typeof rowStates>,
-    StyleProps<typeof system.grid> {}
+    StyleProps<typeof flex>,
+    StyleProps<typeof grid> {}
 
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 8, c_sm: 0 },
-    bg: 'inherit',
   }),
-  variance.compose(system.grid),
+  variance.compose(grid, flex),
   rowBreakpointVariants,
   rowVariants,
   spacingVariants,
+  interactionVariants,
   rowStates
 );
 
 const headerVariants = variant({
   prop: 'variant',
   variants: {
-    default: {},
-    card: {},
+    default: { px: 8 },
+    card: { px: 8 },
     block: {},
     table: {
+      // px: 8,
       borderBottom: 2,
     },
     plain: {},
@@ -222,6 +243,19 @@ const columnType = variant({
     content: {
       gridColumnEnd: 'span 2',
     },
+    select: {
+      minWidth: 'min-content',
+      alignItems: {
+        _: 'flex-start',
+        c_sm: 'center',
+      },
+      justifyItems: {
+        _: 'end',
+        c_sm: undefined,
+      },
+      gridColumn: { _: 2, c_sm: 1 },
+      gridRow: 1,
+    },
     control: {
       minWidth: 'min-content',
       alignItems: {
@@ -232,9 +266,8 @@ const columnType = variant({
         _: 'end',
         c_sm: undefined,
       },
-
-      gridColumn: { _: 2, c_sm: 1 },
-      gridRow: 1,
+      gridRow: { _: 1, c_sm: undefined }, // Row 2 (next to Captain)
+      gridColumn: { _: 3, c_sm: undefined }, // Column 3 (right side)
     },
     expand: {
       minWidth: 'min-content',
@@ -309,6 +342,7 @@ const columnStates = states({
     visibility: 'hidden',
     pointerEvents: 'none',
     opacity: 0,
+    height: 0,
   },
   columnHeader: {
     fontWeight: 400,
@@ -332,12 +366,6 @@ const columnSpacing = variant({
   prop: 'spacing',
   base: {
     px: { _: 8, c_sm: 0 },
-    '&:first-of-type': {
-      pl: 8,
-    },
-    '&:last-of-type': {
-      pr: 8,
-    },
   },
   variants: {
     normal: {
@@ -356,7 +384,7 @@ export interface ColProps
     StyleProps<typeof columnType>,
     StyleProps<typeof columnStates>,
     StyleProps<typeof columnJustify>,
-    StyleProps<(typeof system)['layout']> {}
+    StyleProps<typeof layout> {}
 
 export const ColEl = styled(
   'div',
@@ -384,7 +412,7 @@ export const ColEl = styled(
   columnType,
   columnStates,
   columnJustify,
-  system.layout
+  layout
 );
 
 export const StickyHeaderColWrapper = styled.th(
@@ -392,7 +420,7 @@ export const StickyHeaderColWrapper = styled.th(
     '&:before': {
       content: '""',
       position: 'absolute',
-      bg: 'background',
+      bg: { _: 'transparent', c_sm: 'background' },
       width: '100%',
       height: '100%',
       top: 0,
@@ -402,7 +430,7 @@ export const StickyHeaderColWrapper = styled.th(
     '&:after': {
       content: '""',
       position: 'absolute',
-      bg: 'background-current',
+      bg: { _: 'inherit', c_sm: 'background-current' },
       width: '100%',
       height: '100%',
       top: 0,
@@ -412,8 +440,7 @@ export const StickyHeaderColWrapper = styled.th(
     position: 'sticky',
     left: 0,
     zIndex: 1,
-    bg: 'inherit',
-
+    bg: { _: 'transparent', c_sm: 'inherit' },
     '&:not(:first-of-type)': {
       left: { c_sm: 16 },
       overflow: 'visible',
@@ -421,7 +448,6 @@ export const StickyHeaderColWrapper = styled.th(
     '&:not(:first-of-type):before': {
       display: { _: 'none', c_sm: 'block' },
       content: '""',
-      bg: 'inherit',
       left: -16,
       height: 1,
       width: 16,
@@ -430,13 +456,24 @@ export const StickyHeaderColWrapper = styled.th(
   })
 );
 
-export const ListWrapper = styled(Box)(
-  css({
-    containerType: 'inline-size',
-  }),
-  states({
-    scrollable: {
-      boxShadow: { _: undefined, c_sm: 'inset -24px 0 24px -24px black' },
-    },
-  })
-);
+const listStyles = css({
+  containerType: 'inline-size',
+});
+
+export const StaticListWrapper = styled(Box)(listStyles);
+
+export const AnimatedListWrapper = styled(motion(Box))(listStyles);
+
+export const hiddenVariant = {
+  background: `linear-gradient(90deg, transparent 0%, transparent 40%, ${theme.colors['background-selected']} 50%, ${theme.colors['border-tertiary']} 100%)`,
+  backgroundSize: '0px 100%',
+  backgroundPosition: 'right',
+  backgroundRepeat: 'no-repeat',
+} as const;
+
+export const shadowVariant = {
+  background: `linear-gradient(90deg, transparent 0%, transparent 40%, ${theme.colors['background-selected']} 50%, ${theme.colors['border-tertiary']} 100%)`,
+  backgroundSize: '124px 100%',
+  backgroundPosition: 'right',
+  backgroundRepeat: 'no-repeat',
+};
