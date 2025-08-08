@@ -14,7 +14,6 @@ import {
   MultipleUsersIcon,
   PeopleIcon,
   RatingStarCircleIcon,
-  SparkleIcon,
 } from '@codecademy/gamut-icons';
 import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -53,7 +52,7 @@ export const Popover: Story = {
   args: {
     variant: 'popover',
     children: (
-      <FlexBox column width="300px">
+      <FlexBox column width="fit-content">
         <MenuItem onClick={() => null}>Menu Item</MenuItem>
         <MenuItem active onClick={() => null}>
           Active Item
@@ -75,7 +74,7 @@ export const Popover: Story = {
           Disabled item with ToolTip
         </MenuItem>
         <MenuItem active disabled onClick={() => null}>
-          (TESTING) Active Item and disabled
+          (TESTING) Active + disabled
         </MenuItem>
       </FlexBox>
     ),
@@ -86,9 +85,9 @@ export const Fixed: Story = {
   args: {
     variant: 'fixed',
     children: (
-      <FlexBox column width="300px">
+      <FlexBox column width="fit-content">
         <MenuItem href="#">Menu Item</MenuItem>
-        <MenuItem href="#" active>
+        <MenuItem active href="#">
           Active Item
         </MenuItem>
         <MenuItem href="#" icon={MultipleUsersIcon}>
@@ -108,7 +107,7 @@ export const Fixed: Story = {
           Disabled item with ToolTip
         </MenuItem>
         <MenuItem active disabled onClick={() => null}>
-          (TESTING) Active Item and disabled
+          (TESTING) Active + disabled
         </MenuItem>
       </FlexBox>
     ),
