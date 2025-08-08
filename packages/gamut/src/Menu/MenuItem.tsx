@@ -66,7 +66,6 @@ export const MenuItem = forwardRef<
       height = 1,
       href,
       icon: Icon,
-      isDisabled,
       label,
       target,
       width = 1,
