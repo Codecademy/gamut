@@ -24,7 +24,7 @@ describe('Menu', () => {
     expect(screen.queryByRole('menuitem')).toBeNull();
   });
 
-  it('renders link menuitems as anchors within a li', () => {
+  it('renders link MenuItems as anchors within a li', () => {
     renderView({
       children: <MenuItem href="#link">Cool Town</MenuItem>,
     });
@@ -32,7 +32,7 @@ describe('Menu', () => {
     screen.getByRole('link');
     expect(screen.queryByRole('menuitem')).toBeNull();
   });
-  it('renders menuitems with onClicks as buttons within a li', () => {
+  it('renders MenuItems with onClicks as buttons within a li', () => {
     renderView({
       children: <MenuItem onClick={() => null}>Cool Town</MenuItem>,
     });
@@ -40,7 +40,40 @@ describe('Menu', () => {
     screen.getByRole('button');
     expect(screen.queryByRole('menuitem')).toBeNull();
   });
-  it('renders menu separators when variant is popover', () => {
+
+  it('renders disabled MenuItems with href as buttons', () => {
+    renderView({
+      children: (
+        <MenuItem href="#link" disabled>
+          Cool Town
+        </MenuItem>
+      ),
+    });
+
+    const button = screen.getByRole('button');
+    expect(button).toHaveAttribute('aria-disabled', 'true');
+    expect(screen.queryByRole('link')).toBeNull();
+  });
+
+  it('renders disabled button MenuItems with undefined onClick', async () => {
+    const onClick = jest.fn();
+    renderView({
+      children: (
+        <MenuItem onClick={onClick} disabled>
+          Cool Town
+        </MenuItem>
+      ),
+    });
+
+    const button = screen.getByRole('button');
+    expect(button).toHaveAttribute('aria-disabled', 'true');
+
+    await userEvent.click(button);
+    // Since disabled MenuItems have their onClick overridden to an empty function, the original onClick should not be called
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it('renders MenuSeparators when variant is popover', () => {
     renderView({
       variant: 'popover',
       children: <MenuSeparator />,
@@ -48,7 +81,7 @@ describe('Menu', () => {
 
     screen.getByRole('separator');
   });
-  it('renders deep menu separators', () => {
+  it('renders deep MenuSeparators', () => {
     renderView({
       variant: 'popover',
       children: (
@@ -60,7 +93,7 @@ describe('Menu', () => {
 
     screen.getByRole('separator');
   });
-  it('renders menu separators when variant is fixed', () => {
+  it('renders MenuSeparators when variant is fixed', () => {
     renderView({
       variant: 'fixed',
       children: <MenuSeparator />,
@@ -68,7 +101,7 @@ describe('Menu', () => {
 
     screen.getByRole('separator');
   });
-  it('renders and icon only when specified', () => {
+  it('renders an icon only when specified', () => {
     renderView({
       children: <MenuItem>Cool Town</MenuItem>,
     });
@@ -132,7 +165,49 @@ describe('Menu', () => {
     });
   });
 
-  it('render an aria-label for non-interactive menu items with a label', async () => {
+  it('renders MenuItems with `label: string` has an `aria-describedby` attribute instead of `aria-label`', async () => {
+    const label = 'tooltip text';
+    const { view } = renderView({
+      children: (
+        <MenuItem label={label} onClick={() => null}>
+          Cool Town
+        </MenuItem>
+      ),
+    });
+
+    const button = screen.getByRole('button');
+    expect(button).toHaveAttribute('aria-describedby');
+    expect(button).not.toHaveAttribute('aria-label');
+
+    await userEvent.hover(button);
+
+    await waitFor(() => {
+      view.getByText(label);
+    });
+  });
+
+  it('renders MenuItems with `label: object` has an `aria-describedby` attribute instead of `aria-label`', async () => {
+    const label = { info: 'for example', alignment: 'right-center' as const };
+    const { view } = renderView({
+      children: (
+        <MenuItem label={label} href="#link">
+          Cool Town
+        </MenuItem>
+      ),
+    });
+
+    const button = screen.getByRole('link');
+    expect(button).toHaveAttribute('aria-describedby');
+    expect(button).not.toHaveAttribute('aria-label');
+
+    await userEvent.hover(button);
+
+    await waitFor(() => {
+      view.getByText(label.info);
+    });
+  });
+
+  it('render an `aria-label` for non-interactive menu items with a label', async () => {
     const label = 'more people';
     const { view } = renderView({
       children: <MenuItem icon={MultipleUsersIcon} label={label} />,
@@ -141,6 +216,53 @@ describe('Menu', () => {
     expect(view.queryByRole('tooltip', { hidden: true })).toBeNull();
     view.getByLabelText(label);
   });
+
+  it('renders ToolTip for disabled MenuItems that have an href and a label', async () => {
+    const label = {
+      info: 'disabled link tooltip',
+      placement: 'floating' as const,
+    };
+    const { view } = renderView({
+      children: (
+        <MenuItem href="#link" disabled label={label}>
+          Cool Town
+        </MenuItem>
+      ),
+    });
+
+    const button = screen.getByRole('button');
+    expect(button).toHaveAttribute('aria-disabled', 'true');
+    expect(button).toHaveAttribute('aria-describedby');
+
+    await userEvent.hover(button);
+
+    await waitFor(() => {
+      view.getByText(label.info);
+    });
+  });
+
+  it('renders ToolTip for disabled MenuItems that have an onClick and a label', async () => {
+    const onClick = jest.fn();
+    const label = 'disabled button tooltip';
+    const { view } = renderView({
+      children: (
+        <MenuItem onClick={onClick} disabled label={label}>
+          Cool Town
+        </MenuItem>
+      ),
+    });
+
+    const button = screen.getByRole('button');
+    expect(button).toHaveAttribute('aria-disabled', 'true');
+    expect(button).toHaveAttribute('aria-describedby');
+
+    await userEvent.hover(button);
+
+    await waitFor(() => {
+      view.getByText(label);
+    });
+  });
+
   describe('when the role is menu', () => {
     it('renders a list with a role of menu', () => {
       renderView({ role: 'menu' });
