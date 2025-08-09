@@ -1,6 +1,12 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import isString from 'lodash/isString';
-import { ComponentProps, forwardRef, MutableRefObject, useId } from 'react';
+import {
+  ComponentProps,
+  forwardRef,
+  MouseEventHandler,
+  MutableRefObject,
+  useId,
+} from 'react';
 
 import { FlexBox } from '../Box';
 import { ToolTipProps } from '../Tip/ToolTip';
@@ -105,7 +111,7 @@ export const MenuItem = forwardRef<
       role: role === 'menu' ? 'menuitem' : undefined,
       [activeProp]: active,
       'aria-label': isIconOnly ? ariaLabel : undefined,
-      'aria-describedby': !isIconOnly ? tipId : undefined,
+      'aria-describedby': !isIconOnly && ariaLabel ? tipId : undefined,
       'aria-disabled': disabled,
       isDisabled: disabled,
     };
@@ -126,7 +132,7 @@ export const MenuItem = forwardRef<
       </>
     );
 
-    if (listItemType === 'link') {
+    if (listItemType === 'link' && !disabled) {
       const linkRef = ref as MutableRefObject<HTMLAnchorElement>;
 
       return (
@@ -145,13 +151,20 @@ export const MenuItem = forwardRef<
       );
     }
 
-    if (listItemType === 'button') {
+    if (listItemType === 'button' || (listItemType === 'link' && disabled)) {
       const buttonRef = ref as MutableRefObject<HTMLButtonElement>;
+      const handleClick: MouseEventHandler<HTMLButtonElement> = disabled
+        ? () => {}
+        : (props.onClick as unknown as MouseEventHandler<HTMLButtonElement>);
 
       return (
         <ListItem {...listItemProps}>
           <MenuToolTipWrapper label={label} tipId={tipId}>
-            <ListButton {...(computed as ListLinkProps)} ref={buttonRef}>
+            <ListButton
+              {...(computed as ListLinkProps)}
+              ref={buttonRef}
+              onClick={handleClick}
+            >
               {content}
             </ListButton>
           </MenuToolTipWrapper>

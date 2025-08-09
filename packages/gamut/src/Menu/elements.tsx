@@ -155,10 +155,10 @@ const activeStates = system.states({
   },
   // Is named isDisabled to avoid conflicts with the HTML `disabled` attribute
   isDisabled: {
-    cursor: 'not-allowed',
-    textColor: 'text-disabled',
-    fontWeight: 400,
     bg: 'inherit',
+    cursor: 'not-allowed',
+    fontWeight: 400,
+    textColor: 'text-disabled',
     [Selectors.HOVER]: {
       textColor: 'text-disabled',
       textDecoration: 'none',

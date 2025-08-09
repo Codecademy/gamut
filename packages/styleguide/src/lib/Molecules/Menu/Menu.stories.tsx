@@ -69,8 +69,8 @@ export const Popover: Story = {
         >
           Icon Item with ToolTip
         </MenuItem>
-        <MenuItem disabled onClick={() => null}>
-          Disabled Item no ToolTip
+        <MenuItem disabled href="/">
+          Disabled Link no ToolTip
         </MenuItem>
         <MenuItem
           disabled
@@ -78,9 +78,11 @@ export const Popover: Story = {
             info: 'This is disabled because...',
             alignment: 'right-center',
           }}
-          onClick={() => null}
+          onClick={() =>
+            console.log("hi, but shouldn't say hi b.c. it's disabled")
+          }
         >
-          Disabled item with ToolTip
+          Disabled button with ToolTip
         </MenuItem>
         <MenuItem active disabled onClick={() => null}>
           Active + disabled no ToolTip
