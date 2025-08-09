@@ -52,16 +52,44 @@ export const Popover: Story = {
   args: {
     variant: 'popover',
     children: (
-      <>
-        <MenuItem onClick={() => null}>Menu Item</MenuItem>
+      <FlexBox column width="fit-content">
+        <MenuItem label="testing" onClick={() => null}>
+          Menu Item with Tooltip
+        </MenuItem>
         <MenuItem active onClick={() => null}>
           Active Item
         </MenuItem>
-        <MenuItem icon={MultipleUsersIcon} onClick={() => null}>
-          Icon Item
+        <MenuItem
+          icon={MultipleUsersIcon}
+          label={{
+            info: 'More info here...',
+            alignment: 'right-center',
+          }}
+          onClick={() => null}
+        >
+          Icon Item with ToolTip
         </MenuItem>
-        <MenuItem onClick={() => null}>Menu Item</MenuItem>
-      </>
+        <MenuItem disabled href="/">
+          Disabled Link no ToolTip
+        </MenuItem>
+        <MenuItem
+          disabled
+          label={{
+            info: 'This is disabled because...',
+            alignment: 'right-center',
+          }}
+          // Will change the whole function, this fails the linting test
+          onClick={() =>
+            // eslint-disable-next-line no-console
+            console.log("hi, but shouldn't say hi b.c. it's disabled")
+          }
+        >
+          Disabled button with ToolTip
+        </MenuItem>
+        <MenuItem active disabled onClick={() => null}>
+          Active + disabled no ToolTip
+        </MenuItem>
+      </FlexBox>
     ),
   },
 };
@@ -70,16 +98,40 @@ export const Fixed: Story = {
   args: {
     variant: 'fixed',
     children: (
-      <>
-        <MenuItem href="#">Menu Item</MenuItem>
-        <MenuItem active href="#">
+      <FlexBox column width="fit-content">
+        <MenuItem label="testing" onClick={() => null}>
+          Menu Item with Tooltip
+        </MenuItem>
+        <MenuItem active onClick={() => null}>
           Active Item
         </MenuItem>
-        <MenuItem href="#" icon={MultipleUsersIcon}>
-          Icon Item
+        <MenuItem
+          icon={MultipleUsersIcon}
+          label={{
+            info: 'More info here...',
+            alignment: 'right-center',
+          }}
+          onClick={() => null}
+        >
+          Icon Item with ToolTip
         </MenuItem>
-        <MenuItem href="#">Menu Item</MenuItem>
-      </>
+        <MenuItem disabled onClick={() => null}>
+          Disabled Item no ToolTip
+        </MenuItem>
+        <MenuItem
+          disabled
+          label={{
+            info: 'This is disabled because...',
+            alignment: 'right-center',
+          }}
+          onClick={() => null}
+        >
+          Disabled item with ToolTip
+        </MenuItem>
+        <MenuItem active disabled onClick={() => null}>
+          Active + disabled no ToolTip
+        </MenuItem>
+      </FlexBox>
     ),
   },
 };
