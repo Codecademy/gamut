@@ -44,7 +44,7 @@ describe('Menu', () => {
   it('renders disabled MenuItems with href as buttons', () => {
     renderView({
       children: (
-        <MenuItem href="#link" disabled>
+        <MenuItem disabled href="#link">
           Cool Town
         </MenuItem>
       ),
@@ -59,7 +59,7 @@ describe('Menu', () => {
     const onClick = jest.fn();
     renderView({
       children: (
-        <MenuItem onClick={onClick} disabled>
+        <MenuItem disabled onClick={onClick}>
           Cool Town
         </MenuItem>
       ),
@@ -190,7 +190,7 @@ describe('Menu', () => {
     const label = { info: 'for example', alignment: 'right-center' as const };
     const { view } = renderView({
       children: (
-        <MenuItem label={label} href="#link">
+        <MenuItem href="#link" label={label}>
           Cool Town
         </MenuItem>
       ),
@@ -224,7 +224,7 @@ describe('Menu', () => {
     };
     const { view } = renderView({
       children: (
-        <MenuItem href="#link" disabled label={label}>
+        <MenuItem disabled href="#link" label={label}>
           Cool Town
         </MenuItem>
       ),
@@ -246,7 +246,7 @@ describe('Menu', () => {
     const label = 'disabled button tooltip';
     const { view } = renderView({
       children: (
-        <MenuItem onClick={onClick} disabled label={label}>
+        <MenuItem disabled label={label} onClick={onClick}>
           Cool Town
         </MenuItem>
       ),

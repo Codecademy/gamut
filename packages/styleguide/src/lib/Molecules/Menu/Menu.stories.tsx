@@ -78,7 +78,9 @@ export const Popover: Story = {
             info: 'This is disabled because...',
             alignment: 'right-center',
           }}
+          // Will change the whole function, this fails the linting test
           onClick={() =>
+            // eslint-disable-next-line no-console
             console.log("hi, but shouldn't say hi b.c. it's disabled")
           }
         >

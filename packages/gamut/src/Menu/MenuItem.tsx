@@ -154,8 +154,8 @@ export const MenuItem = forwardRef<
     if (listItemType === 'button' || (listItemType === 'link' && disabled)) {
       const buttonRef = ref as MutableRefObject<HTMLButtonElement>;
       const handleClick: MouseEventHandler<HTMLButtonElement> = disabled
-        ? () => {}
-        : (props.onClick as unknown as MouseEventHandler<HTMLButtonElement>);
+        ? () => null
+        : (props.onClick as any as MouseEventHandler<HTMLButtonElement>);
 
       return (
         <ListItem {...listItemProps}>
