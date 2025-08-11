@@ -7,7 +7,7 @@ export const StyledHeaderRow = styled(TableHeader)(
   states({
     invisible: { visibility: 'hidden', height: 0, overflow: 'hidden' },
     isDataList: {
-      borderX: '1px solid red' as any,
+      borderX: '1px solid transparent' as any,
     },
   })
 );

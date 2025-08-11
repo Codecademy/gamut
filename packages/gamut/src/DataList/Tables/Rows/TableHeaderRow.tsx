@@ -43,7 +43,7 @@ export const TableHeaderRow: HeaderComponent = ({
       <>
         {selectable && (
           <ListCol size="content">
-            {!hideSelectAll && !invisible && (
+            {!hideSelectAll && (
               <SelectControl
                 disabled={empty}
                 label="Select All"
@@ -62,31 +62,29 @@ export const TableHeaderRow: HeaderComponent = ({
 
           return (
             <ListCol key={renderKey} {...colProps} columnHeader>
-              {!invisible && (
-                <FlexBox alignItems="flex-end" gap={8} width="100%">
-                  {filters && (
-                    <FilterControl
-                      columnKey={rowProperty}
-                      justify={colProps.justify}
-                      options={filters}
-                      onFilter={onFilter}
-                    />
-                  )}
-                  {sortable ? (
-                    <SortControl columnKey={rowProperty} onSort={onSort}>
-                      {columnText}
-                    </SortControl>
-                  ) : (
-                    columnText
-                  )}
-                </FlexBox>
-              )}
+              <FlexBox alignItems="flex-end" gap={8} width="100%">
+                {filters && (
+                  <FilterControl
+                    columnKey={rowProperty}
+                    justify={colProps.justify}
+                    options={filters}
+                    onFilter={onFilter}
+                  />
+                )}
+                {sortable ? (
+                  <SortControl columnKey={rowProperty} onSort={onSort}>
+                    {columnText}
+                  </SortControl>
+                ) : (
+                  columnText
+                )}
+              </FlexBox>
             </ListCol>
           );
         })}
         {expandable && (
           <ListCol ghost size="content">
-            {!invisible && <ExpandControl />}
+            <ExpandControl />
           </ListCol>
         )}
       </>
