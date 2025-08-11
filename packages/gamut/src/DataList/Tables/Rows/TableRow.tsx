@@ -101,7 +101,7 @@ export const TableRow: DataRow = ({
         </ListCol>
       )}
       {columns.map(({ key, render, size, justify, fill, type }, index) => {
-        let colConfig = {
+        let colConfig: {} = {
           gridColumn: undefined,
           gridRow: undefined,
         };
@@ -132,7 +132,6 @@ export const TableRow: DataRow = ({
             gridRow,
           };
         }
-        // Don't add grid positioning for main content - let it flow naturally
 
         if (loading) {
           return (
