@@ -1,5 +1,6 @@
 export * from './ConnectedCheckbox';
 export * from './ConnectedInput';
+export * from './ConnectedNestedCheckboxes';
 export * from './ConnectedRadio';
 export * from './ConnectedRadioGroup';
 export * from './ConnectedRadioGroupInput';

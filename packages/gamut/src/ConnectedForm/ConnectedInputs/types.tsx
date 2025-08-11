@@ -70,3 +70,53 @@ export interface ConnectedSelectProps
 export interface ConnectedTextAreaProps
   extends Omit<TextAreaProps, 'defaultValue' | 'name' | 'validation'>,
     ConnectedFieldProps {}
+
+export interface NestedCheckboxOption {
+  /**
+   * Unique identifier for this checkbox option
+   */
+  value: string;
+  /**
+   * Display label for the checkbox
+   */
+  label: ReactNode;
+  /**
+   * Whether this option should be disabled
+   */
+  disabled?: boolean;
+  /**
+   * Child options that are nested under this option
+   */
+  children?: NestedCheckboxOption[];
+  /**
+   * Additional props to pass to the individual Checkbox component
+   */
+  checkboxProps?: Omit<
+    CheckboxProps,
+    'checked' | 'onChange' | 'name' | 'htmlFor' | 'label' | 'disabled'
+  >;
+}
+
+export interface ConnectedNestedCheckboxesProps {
+  /**
+   * Field name for form registration
+   */
+  name: string;
+  /**
+   * Hierarchical structure of checkbox options
+   */
+  options: NestedCheckboxOption[];
+  /**
+   * Whether all checkboxes should be disabled
+   */
+  disabled?: boolean;
+  /**
+   * CSS class name for the container
+   */
+  className?: string;
+  /**
+   * Callback fired when the selection changes
+   * @param selectedValues Array of selected option values
+   */
+  onUpdate?: (selectedValues: string[]) => void;
+}
