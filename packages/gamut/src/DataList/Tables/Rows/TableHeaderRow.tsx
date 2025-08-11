@@ -34,6 +34,7 @@ export const TableHeaderRow: HeaderComponent = ({
   const { expandable, selectable, onSelect, onFilter, onSort, prefixId } =
     useControlContext();
   const { variant, listType } = useListContext();
+  const dataTablePadding = listType === 'table' && variant === 'table';
 
   return (
     <StyledHeaderRow
@@ -61,7 +62,12 @@ export const TableHeaderRow: HeaderComponent = ({
           const columnText = String(header || key);
 
           return (
-            <ListCol key={renderKey} {...colProps} columnHeader>
+            <ListCol
+              key={renderKey}
+              {...colProps}
+              columnHeader
+              dataTablePadding={dataTablePadding}
+            >
               <FlexBox alignItems="flex-end" gap={8} width="100%">
                 {filters && (
                   <FilterControl

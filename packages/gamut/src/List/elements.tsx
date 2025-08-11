@@ -350,6 +350,14 @@ const columnStates = states({
     whiteSpace: 'normal',
     alignItems: 'flex-end',
   },
+  dataTablePadding: {
+    '&:first-of-type': {
+      pl: 8,
+    },
+    '&:last-of-type': {
+      pr: 8,
+    },
+  },
   wrap: {
     whiteSpace: 'normal',
   },

@@ -3,6 +3,7 @@ import { isValidElement, memo, ReactElement, useCallback } from 'react';
 import { Text } from '../../..';
 import { ListCol, ListRow } from '../../../List';
 import { ColProps } from '../../../List/elements';
+import { useListContext } from '../../../List/ListProvider';
 import { Shimmer } from '../../../Loading/Shimmer';
 import { ExpandControl, SelectControl } from '../../Controls';
 import { useControlContext } from '../../hooks/useListControls';
@@ -41,7 +42,10 @@ export const TableRow: DataRow = ({
     prefixId,
   } = useControlContext();
 
-  const listColProps = { showOverflow };
+  const { variant, listType } = useListContext();
+  const dataTablePadding = listType === 'table' && variant === 'table';
+
+  const listColProps = { dataTablePadding, showOverflow };
 
   const renderExpandedContent = useCallback(() => {
     return expandedContent?.({
