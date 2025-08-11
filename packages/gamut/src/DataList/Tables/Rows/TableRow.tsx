@@ -1,4 +1,10 @@
-import { isValidElement, memo, ReactElement, useCallback } from 'react';
+import {
+  isValidElement,
+  memo,
+  ReactElement,
+  useCallback,
+  useMemo,
+} from 'react';
 
 import { Text } from '../../..';
 import { ListCol, ListRow } from '../../../List';
@@ -47,6 +53,20 @@ export const TableRow: DataRow = ({
 
   const listColProps = { dataTablePadding, showOverflow };
 
+  const controlIndices = useMemo(() => {
+    const controlIndices = new Map<number, number>();
+    let controlCount = 0;
+
+    columns.forEach((column, index) => {
+      if (column.type === 'control') {
+        controlIndices.set(index, controlCount);
+        controlCount += 1;
+      }
+    });
+
+    return controlIndices;
+  }, [columns]);
+
   const renderExpandedContent = useCallback(() => {
     return expandedContent?.({
       row,
@@ -80,7 +100,11 @@ export const TableRow: DataRow = ({
           />
         </ListCol>
       )}
-      {columns.map(({ key, render, size, justify, fill, type }) => {
+      {columns.map(({ key, render, size, justify, fill, type }, index) => {
+        let colConfig = {
+          gridColumn: undefined,
+          gridRow: undefined,
+        };
         const newKey = prefixId(`${id}-col-${String(key)}`);
         const colProps = {
           ...listColProps,
@@ -89,6 +113,26 @@ export const TableRow: DataRow = ({
           fill,
           type,
         };
+
+        if (type === 'control') {
+          const controlIndex = controlIndices.get(index) ?? 0;
+
+          /**
+           * Grid equation for filling columns 2-3, row by row:
+           *   Column: 2 + (controlIndex % 2) gives us alternating 2, 3, 2, 3...
+           *   Row: (selectable ? 2 : 1) + Math.floor(controlIndex / 2)
+           *     - When selectable: starts at row 2 (skipping row 1 for SelectControl)
+           *     - When not selectable: starts at row 1
+           */
+          const gridCol = 2 + (controlIndex % 2);
+          const gridRow = (selectable ? 2 : 1) + Math.floor(controlIndex / 2);
+
+          colConfig = {
+            gridColumn: { _: gridCol, c_sm: undefined },
+            gridRow,
+          };
+        }
+        // Don't add grid positioning for main content - let it flow naturally
 
         if (loading) {
           return (
@@ -103,7 +147,7 @@ export const TableRow: DataRow = ({
         }
 
         return (
-          <ListCol {...colProps} key={newKey}>
+          <ListCol {...colProps} key={newKey} {...colConfig}>
             {render ? (
               render(row)
             ) : typeof row[key] === 'string' || typeof row[key] === 'number' ? (
@@ -128,7 +172,7 @@ export const TableRow: DataRow = ({
         <ListCol
           {...listColProps}
           order={{ _: 1000, c_sm: 'initial' }}
-          size="content"
+          type="expandControl"
         >
           <ExpandControl
             disabled={loading}

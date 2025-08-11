@@ -350,6 +350,22 @@ export const cols = [
     type: 'control',
     render: (row) => <CrewMgmtDropdown menuSide="left" row={row} />,
   },
+  {
+    header: 'Controls',
+    key: 'name',
+    size: 'md',
+    justify: 'right',
+    type: 'control',
+    render: (row) => <CrewMgmtDropdown menuSide="left" row={row} />,
+  },
+  {
+    header: 'Controls',
+    key: 'name',
+    size: 'md',
+    justify: 'right',
+    type: 'control',
+    render: (row) => <CrewMgmtDropdown menuSide="left" row={row} />,
+  },
 ] as ColumnConfig<(typeof crew)[number]>[];
 
 export const createDemoTable =

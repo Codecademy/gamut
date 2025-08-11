@@ -34,7 +34,7 @@ export type ListRowProps = ExpandableRowProps | SimpleRowProps;
 const expandStyles = css({
   flexBasis: { c_sm: '100%' },
   flexShrink: { c_sm: 0 },
-  gridColumn: { _: 'span 2', c_sm: undefined },
+  gridColumn: { _: 'span 3', c_sm: undefined },
   minWidth: { c_sm: '100%' },
   order: { c_sm: 999 },
   overflow: 'hidden',

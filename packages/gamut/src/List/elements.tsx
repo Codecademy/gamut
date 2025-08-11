@@ -76,7 +76,6 @@ const rowStates = states({
   },
 });
 
-//
 const interactionVariants = variant({
   prop: 'interaction',
   variants: {
@@ -198,7 +197,6 @@ const headerVariants = variant({
     card: { px: 8 },
     block: {},
     table: {
-      // px: 8,
       borderBottom: 2,
     },
     plain: {},
@@ -239,11 +237,13 @@ const columnType = variant({
         pl: 8,
       },
     },
-
     content: {
-      gridColumnEnd: 'span 2',
+      gridColumn: { _: 1, c_sm: undefined },
+      gridColumnEnd: { _: 'span 1', c_sm: undefined },
     },
     select: {
+      gridColumn: { _: 3, c_sm: 1 },
+      gridRow: 1,
       minWidth: 'min-content',
       alignItems: {
         _: 'flex-start',
@@ -253,8 +253,6 @@ const columnType = variant({
         _: 'end',
         c_sm: undefined,
       },
-      gridColumn: { _: 2, c_sm: 1 },
-      gridRow: 1,
     },
     control: {
       minWidth: 'min-content',
@@ -266,11 +264,12 @@ const columnType = variant({
         _: 'end',
         c_sm: undefined,
       },
-      gridRow: { _: 1, c_sm: undefined }, // Row 2 (next to Captain)
-      gridColumn: { _: 3, c_sm: undefined }, // Column 3 (right side)
     },
     expand: {
       minWidth: 'min-content',
+    },
+    expandControl: {
+      gridColumnEnd: { _: 'span 3', c_sm: undefined },
     },
   },
 });
