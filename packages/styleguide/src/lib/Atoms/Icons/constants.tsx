@@ -109,6 +109,7 @@ export const SKILLS_ICONS = pick(
     'FallbackSkillIcon',
     'FlutterIcon',
     'GameDevelopmentIcon',
+    'GitIcon',
     'GoIcon',
     'HtmlCssIcon',
     'ItIcon',
@@ -116,6 +117,7 @@ export const SKILLS_ICONS = pick(
     'JavascriptIcon',
     'KotlinIcon',
     'MachineLearningIcon',
+    'MarkdownIcon',
     'MathIcon',
     'MobileDevelopmentIcon',
     'PhpIcon',
@@ -124,6 +126,7 @@ export const SKILLS_ICONS = pick(
     'RubyIcon',
     'SqlIcon',
     'SwiftIcon',
+    'TypescriptIcon',
     'WebDesignIcon',
     'WebDevelopmentIcon',
   ].sort()
