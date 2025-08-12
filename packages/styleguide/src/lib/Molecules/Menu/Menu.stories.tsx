@@ -39,10 +39,10 @@ export const Default: Story = {
   args: {
     children: (
       <>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem active>Active Item</MenuItem>
-        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
+        <MenuItem active>Active item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
       </>
     ),
   },
@@ -54,10 +54,10 @@ export const Popover: Story = {
     children: (
       <FlexBox column width="fit-content">
         <MenuItem label="testing" onClick={() => null}>
-          Menu Item with Tooltip
+          Menu item with Tooltip
         </MenuItem>
         <MenuItem active onClick={() => null}>
-          Active Item
+          Active item
         </MenuItem>
         <MenuItem
           icon={MultipleUsersIcon}
@@ -67,10 +67,10 @@ export const Popover: Story = {
           }}
           onClick={() => null}
         >
-          Icon Item with ToolTip
+          Icon item with ToolTip
         </MenuItem>
         <MenuItem disabled href="/">
-          Disabled Link no ToolTip
+          Disabled link no ToolTip
         </MenuItem>
         <MenuItem
           disabled
@@ -100,10 +100,10 @@ export const Fixed: Story = {
     children: (
       <FlexBox column width="fit-content">
         <MenuItem label="testing" onClick={() => null}>
-          Menu Item with Tooltip
+          Menu item with Tooltip
         </MenuItem>
         <MenuItem active onClick={() => null}>
-          Active Item
+          Active item
         </MenuItem>
         <MenuItem
           icon={MultipleUsersIcon}
@@ -113,10 +113,10 @@ export const Fixed: Story = {
           }}
           onClick={() => null}
         >
-          Icon Item with ToolTip
+          Icon item with ToolTip
         </MenuItem>
         <MenuItem disabled onClick={() => null}>
-          Disabled Item no ToolTip
+          Disabled item no ToolTip
         </MenuItem>
         <MenuItem
           disabled
@@ -141,10 +141,10 @@ export const PopoverCondensed: Story = {
     variant: 'popover',
     children: (
       <>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem active>Active Item</MenuItem>
-        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
+        <MenuItem active>Active item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
       </>
     ),
     spacing: 'condensed',
@@ -156,10 +156,10 @@ export const FixedCondensed: Story = {
     variant: 'fixed',
     children: (
       <>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem active>Active Item</MenuItem>
-        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
+        <MenuItem active>Active item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
       </>
     ),
     spacing: 'condensed',
@@ -171,11 +171,11 @@ export const PopoverMenuSeparator: Story = {
     variant: 'popover',
     children: (
       <>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem active>Active Item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
+        <MenuItem active>Active item</MenuItem>
         <MenuSeparator />
-        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
       </>
     ),
   },
@@ -186,11 +186,11 @@ export const FixedMenuSeparator: Story = {
     variant: 'fixed',
     children: (
       <>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem active>Active Item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
+        <MenuItem active>Active item</MenuItem>
         <MenuSeparator my={4} />
-        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem>Menu Item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
       </>
     ),
   },
@@ -280,20 +280,20 @@ export const FloatingMenuExample: React.FC = () => {
                 active={activeIndex === 0}
                 onClick={() => clickHandler(-68, 0)}
               >
-                i have a side menu
+                I have a side menu
               </MenuItem>
               <MenuItem
                 active={activeIndex === 1}
                 onClick={() => clickHandler(-115, 1)}
               >
-                Active Item
+                Active item
               </MenuItem>
               <MenuItem
                 active={activeIndex === 2}
                 icon={MultipleUsersIcon}
                 onClick={() => clickHandler(-164, 2)}
               >
-                Icon Item
+                Icon item
               </MenuItem>
               <MenuItem active={activeIndex === 3} onClick={() => null}>
                 A complex action
@@ -312,14 +312,14 @@ export const FloatingMenuExample: React.FC = () => {
               <Menu role="menu" variant="popover">
                 {activeIndex % 2 === 0 ? (
                   <>
-                    <MenuItem>i am a side menu!</MenuItem>
-                    <MenuItem href="cool">cool link</MenuItem>
+                    <MenuItem>I am a side menu!</MenuItem>
+                    <MenuItem href="cool">Cool link</MenuItem>
                   </>
                 ) : (
                   <>
-                    <MenuItem>i am a DIFFERENT menu!</MenuItem>
-                    <MenuItem href="cool-too"> another cool link</MenuItem>
-                    <MenuItem>an action</MenuItem>
+                    <MenuItem>I am a DIFFERENT menu!</MenuItem>
+                    <MenuItem href="cool-too">Another cool link</MenuItem>
+                    <MenuItem>An action</MenuItem>
                   </>
                 )}
               </Menu>
