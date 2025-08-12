@@ -38,7 +38,6 @@ const expandStyles = css({
   minWidth: { c_sm: '100%' },
   order: { c_sm: 999 },
   overflow: 'hidden',
-  width: { c_sm: '100%' },
 });
 
 const DivExpand = styled(motion.div)(expandStyles);
