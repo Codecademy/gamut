@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [77.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.3.0...@codecademy/styleguide@77.3.1) (2025-08-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [77.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.2.0...@codecademy/styleguide@77.3.0) (2025-08-12)
+
+### Features
+
+- **Icons:** add git, markdown, typescript icons ([4b15f3b](https://github.com/Codecademy/gamut/commit/4b15f3b5826f28c50ec782b3fb9e37e2a0bd797e))
+
+## [77.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.1.4...@codecademy/styleguide@77.2.0) (2025-08-08)
+
+### Features
+
+- Add icons for Apple, EA, Google, IBM, Instagram (rounder variant), Meta, Reddit (solid), Spotify and Windows ([0bdcd8f](https://github.com/Codecademy/gamut/commit/0bdcd8fe41d732414e2e186a1e4afb4eb5189f31))
+
 ### [77.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.1.3...@codecademy/styleguide@77.1.4) (2025-08-06)
 
 **Note:** Version bump only for package @codecademy/styleguide
