@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.48.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.47.0...@codecademy/gamut-icons@9.48.0) (2025-08-08)
+
+### Features
+
+- Add icons for Apple, EA, Google, IBM, Instagram (rounder variant), Meta, Reddit (solid), Spotify and Windows ([0bdcd8f](https://github.com/Codecademy/gamut/commit/0bdcd8fe41d732414e2e186a1e4afb4eb5189f31))
+
 ## [9.47.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.46.3...@codecademy/gamut-icons@9.47.0) (2025-08-07)
 
 ### Features
