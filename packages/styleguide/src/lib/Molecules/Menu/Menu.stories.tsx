@@ -51,8 +51,10 @@ export const Default: Story = {
 export const Popover: Story = {
   args: {
     variant: 'popover',
-    children: (
-      <FlexBox column width="fit-content">
+  },
+  render: (args) => (
+    <FlexBox column width="fit-content">
+      <Menu {...args}>
         <MenuItem label="testing" onClick={() => null}>
           Menu item with Tooltip
         </MenuItem>
@@ -89,51 +91,55 @@ export const Popover: Story = {
         <MenuItem active disabled onClick={() => null}>
           Active + disabled no ToolTip
         </MenuItem>
-      </FlexBox>
-    ),
-  },
+      </Menu>
+    </FlexBox>
+  ),
 };
 
 export const Fixed: Story = {
   args: {
     variant: 'fixed',
-    children: (
-      <FlexBox column width="fit-content">
-        <MenuItem label="testing" onClick={() => null}>
-          Menu item with Tooltip
-        </MenuItem>
-        <MenuItem active onClick={() => null}>
-          Active item
-        </MenuItem>
-        <MenuItem
-          icon={MultipleUsersIcon}
-          label={{
-            info: 'More info here...',
-            alignment: 'right-center',
-          }}
-          onClick={() => null}
-        >
-          Icon item with ToolTip
-        </MenuItem>
-        <MenuItem disabled onClick={() => null}>
-          Disabled item no ToolTip
-        </MenuItem>
-        <MenuItem
-          disabled
-          label={{
-            info: 'This is disabled because...',
-            alignment: 'right-center',
-          }}
-          onClick={() => null}
-        >
-          Disabled item with ToolTip
-        </MenuItem>
-        <MenuItem active disabled onClick={() => null}>
-          Active + disabled no ToolTip
-        </MenuItem>
-      </FlexBox>
-    ),
   },
+  render: (args) => (
+    <FlexBox column width="fit-content">
+      <nav>
+        <Menu {...args}>
+          <MenuItem label="testing" onClick={() => null}>
+            Menu item with Tooltip
+          </MenuItem>
+          <MenuItem active onClick={() => null}>
+            Active item
+          </MenuItem>
+          <MenuItem
+            icon={MultipleUsersIcon}
+            label={{
+              info: 'More info here...',
+              alignment: 'right-center',
+            }}
+            onClick={() => null}
+          >
+            Icon item with ToolTip
+          </MenuItem>
+          <MenuItem disabled onClick={() => null}>
+            Disabled item no ToolTip
+          </MenuItem>
+          <MenuItem
+            disabled
+            label={{
+              info: 'This is disabled because...',
+              alignment: 'right-center',
+            }}
+            onClick={() => null}
+          >
+            Disabled item with ToolTip
+          </MenuItem>
+          <MenuItem active disabled onClick={() => null}>
+            Active + disabled no ToolTip
+          </MenuItem>
+        </Menu>
+      </nav>
+    </FlexBox>
+  ),
 };
 
 export const MenuRole: Story = {
@@ -155,8 +161,10 @@ export const MenuRole: Story = {
 export const NavMenu: Story = {
   args: {
     variant: 'fixed',
-    children: (
-      <>
+  },
+  render: (args) => (
+    <nav>
+      <Menu {...args}>
         <MenuItem href="#link">Link item</MenuItem>
         <MenuItem active href="#link">
           Active link item
@@ -165,9 +173,9 @@ export const NavMenu: Story = {
           Icon link item
         </MenuItem>
         <MenuItem href="#link">Link item</MenuItem>
-      </>
-    ),
-  },
+      </Menu>
+    </nav>
+  ),
 };
 
 export const NoRoleMenu: Story = {
