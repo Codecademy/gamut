@@ -176,7 +176,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
           {/* TODO: Come back to this to fix the central alignment, pattern isn't the right height */}
           {isEmpty && (
             <FlexBox center width={1}>
-              <DotLoose inset={0} position="absolute" top={-2} />
+              <DotLoose inset={0} position="absolute" top={0} />
             </FlexBox>
           )}
         </ListWrapper>
