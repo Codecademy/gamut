@@ -136,6 +136,54 @@ export const Fixed: Story = {
   },
 };
 
+export const MenuRole: Story = {
+  args: {
+    role: 'menu',
+    children: (
+      <>
+        <MenuItem onClick={() => null}>Click action</MenuItem>
+        <MenuItem active>Active click action</MenuItem>
+        <MenuItem icon={MultipleUsersIcon} onClick={() => null}>
+          Icon click action
+        </MenuItem>
+        <MenuItem onClick={() => null}>Menu click action</MenuItem>
+      </>
+    ),
+  },
+};
+
+export const NavMenu: Story = {
+  args: {
+    variant: 'fixed',
+    children: (
+      <>
+        <MenuItem href="#link">Link item</MenuItem>
+        <MenuItem active href="#link">
+          Active link item
+        </MenuItem>
+        <MenuItem href="#link" icon={MultipleUsersIcon}>
+          Icon link item
+        </MenuItem>
+        <MenuItem href="#link">Link item</MenuItem>
+      </>
+    ),
+  },
+};
+
+export const NoRoleMenu: Story = {
+  args: {
+    variant: 'popover',
+    children: (
+      <>
+        <MenuItem>Menu item</MenuItem>
+        <MenuItem active>Active item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
+      </>
+    ),
+  },
+};
+
 export const PopoverCondensed: Story = {
   args: {
     variant: 'popover',
