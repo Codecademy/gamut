@@ -120,12 +120,18 @@ export const TableRow: DataRow = ({
           /**
            * Grid equation for filling columns 2-3, row by row:
            *   Column: 2 + (controlIndex % 2) gives us alternating 2, 3, 2, 3...
-           *   Row: (selectable ? 2 : 1) + Math.floor(controlIndex / 2)
-           *     - When selectable: starts at row 2 (skipping row 1 for SelectControl)
-           *     - When not selectable: starts at row 1
+           *   Row: When selectable, first control fills row 1 (before selected), then continues from row 2
+           *        When not selectable: starts at row 1
            */
           const gridCol = 2 + (controlIndex % 2);
-          const gridRow = (selectable ? 2 : 1) + Math.floor(controlIndex / 2);
+          let gridRow;
+
+          if (selectable) {
+            gridRow =
+              controlIndex === 0 ? 1 : 2 + Math.floor((controlIndex - 1) / 2);
+          } else {
+            gridRow = 1 + Math.floor(controlIndex / 2);
+          }
 
           colConfig = {
             gridColumn: { _: gridCol, c_sm: undefined },
