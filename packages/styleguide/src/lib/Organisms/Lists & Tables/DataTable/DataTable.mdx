@@ -67,8 +67,6 @@ const DataTown = () => {
     <DataTable
       id="example"
       columns={columns}
-      selectedRows={selectedRows}
-      onRowSelect={setSelectedRows}
       expandedRows={expandedRows}
       onRowExpand={setExpandedRows}
       renderExpanded={({ name }) => <>{name}: This is pretty cool</>}
