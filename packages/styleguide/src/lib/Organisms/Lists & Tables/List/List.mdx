@@ -187,7 +187,7 @@ If you have a list with many columns and would like to avoid collapsing any colu
 List rows will switch to a mobile layout at screen widths less than smallest breakpoint (480px). This layout is built for smaller screens and is restructured to a card like structure. There is no extra configuration needed for this to take effect pending you've configured a few named column types:
 
 - `header`: The column of the row with any critical identifying information goes at the top of the view. This is especially important for ordered lists as this is where the numbering will render.
-- `control`: A column for buttons or other interactive elements. Typically these may be icon buttons with expandable menus with more options for controlling anything represented in the row.
+- `control`: A column for buttons or other interactive elements. Typically these may be icon buttons with expandable menus with more options for controlling anything represented in the row. `List`s should only ever have one `control` column to prevent overlap on smaller screens.
 - `content`: All other columns in the row are treated as content and will render in order they were specified.
 
 Optionally, you can pass a `breakpoint` prop to the List to alter this behavior.

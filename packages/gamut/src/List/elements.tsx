@@ -255,6 +255,8 @@ const columnType = variant({
       },
     },
     control: {
+      gridColumn: { _: 3, c_sm: undefined },
+      gridRow: { _: 1, c_sm: undefined },
       minWidth: 'min-content',
       alignItems: {
         _: 'flex-start',
