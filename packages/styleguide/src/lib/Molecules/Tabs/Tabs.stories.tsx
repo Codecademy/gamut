@@ -20,7 +20,7 @@ import { useCallback, useState } from 'react';
 const meta: Meta<typeof Tabs> = {
   component: Tabs,
   // This is a known issue with SB 8, see: https://github.com/storybookjs/storybook/issues/23170
-  // Will fix this casting when the issue is resolved
+  // Will fix this casting when the issue is resolved.
   subcomponents: {
     TabList: TabList as React.ComponentType<unknown>,
     Tab: Tab as React.ComponentType<unknown>,
