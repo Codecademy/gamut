@@ -165,7 +165,7 @@ describe('Menu', () => {
     });
   });
 
-  it('renders MenuItems with `label: string` has an `aria-describedby` attribute instead of `aria-label`', async () => {
+  it('renders MenuItems with `label: string` as an `aria-describedby` attribute instead of `aria-label`', async () => {
     const label = 'tooltip text';
     const { view } = renderView({
       children: (
