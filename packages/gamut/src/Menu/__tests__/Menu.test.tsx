@@ -186,7 +186,7 @@ describe('Menu', () => {
     });
   });
 
-  it('renders MenuItems with `label: object` has an `aria-describedby` attribute instead of `aria-label`', async () => {
+  it('renders MenuItems with `label: object` as an `aria-describedby` attribute instead of `aria-label`', async () => {
     const label = { info: 'for example', alignment: 'right-center' as const };
     const { view } = renderView({
       children: (
