@@ -2,7 +2,7 @@ import { GamutIconProps } from '@codecademy/gamut-icons';
 import isString from 'lodash/isString';
 import { ComponentProps, forwardRef, MutableRefObject, useId } from 'react';
 
-import { FlexBox } from '../Box';
+import { AppendedIconProps, appendIconToContent } from '../helpers';
 import { ToolTipProps } from '../Tip/ToolTip';
 import { Text } from '../Typography';
 import {
@@ -45,7 +45,7 @@ interface MenuItemIconOnly extends HTMLProps, ForwardListItemProps {
 }
 
 interface MenuTextItem extends HTMLProps, ForwardListItemProps {
-  icon?: React.ComponentType<GamutIconProps>;
+  icon?: AppendedIconProps['icon'];
   children: React.ReactNode;
   label?: ToolTipLabel;
 }
@@ -103,21 +103,17 @@ export const MenuItem = forwardRef<
       'aria-label': ariaLabel,
     };
 
-    const content = (
-      <>
-        {Icon && (
-          <FlexBox width="fit-content">
-            <Icon
-              data-testid="menuitem-icon"
-              mr={children ? 12 : 0}
-              size={rest.spacing === 'condensed' ? 16 : 24}
-            />
-          </FlexBox>
-        )}
-        {active && <Text screenreader>{currentItemText[listItemType]},</Text>}
-        {children}
-      </>
-    );
+    const content = appendIconToContent({
+      icon: Icon,
+      iconSize: rest.spacing === 'condensed' ? 16 : 24,
+      iconAndTextGap: children ? 12 : 0,
+      children: (
+        <>
+          {active && <Text screenreader>{currentItemText[listItemType]},</Text>}
+          {children}
+        </>
+      ),
+    } as AppendedIconProps);
 
     if (listItemType === 'link') {
       const linkRef = ref as MutableRefObject<HTMLAnchorElement>;
