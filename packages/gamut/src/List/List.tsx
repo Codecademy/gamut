@@ -41,6 +41,8 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
    * It is useful for custom scroll and breakpoint handling. Use with caution.
    */
   wrapperWidth?: BoxProps['width'];
+  /** Whether to disable container queries on the List wrapper */
+  disableContainerQuery?: boolean;
 }
 
 export const List = forwardRef<HTMLUListElement, ListProps>(
@@ -62,6 +64,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       overflow = 'auto',
       scrollToTopOnUpdate = false,
       wrapperWidth,
+      disableContainerQuery = false,
       ...rest
     },
     ref
@@ -145,6 +148,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       <ListProvider value={value}>
         <ListWrapper
           animate={animationVar}
+          disableContainerQuery={disableContainerQuery}
           id={id}
           maxHeight={height}
           overflow={overflow}

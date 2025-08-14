@@ -4,7 +4,13 @@
 import { DataTable } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { CustomEmptyState, DataTableTemplate } from '../examples';
+import {
+  CustomEmptyState,
+  DataTableTemplate,
+  DisableContainerQueryExample,
+  simpleColumns,
+  simpleRows,
+} from '../examples';
 
 const meta: Meta<typeof DataTable> = {
   component: DataTable,
@@ -204,4 +210,40 @@ export const DebugShadow: Story = {
 
 export const Default: Story = {
   args: {},
+};
+
+const DataTableDisableContainerQueryExample = () => {
+  const defaultComponent = (
+    <DataTable
+      columns={simpleColumns}
+      id="default-table-query"
+      idKey="name"
+      rows={simpleRows}
+      spacing="condensed"
+    />
+  );
+
+  const disabledComponent = (
+    <DataTable
+      columns={simpleColumns}
+      disableContainerQuery
+      id="disabled-table-query"
+      idKey="name"
+      rows={simpleRows}
+      spacing="condensed"
+    />
+  );
+
+  return (
+    <DisableContainerQueryExample
+      componentName="DataTable"
+      defaultComponent={defaultComponent}
+      disabledComponent={disabledComponent}
+    />
+  );
+};
+
+export const DisableContainerQuery: Story = {
+  args: {},
+  render: () => <DataTableDisableContainerQueryExample />,
 };

@@ -146,4 +146,18 @@ describe('List', () => {
       });
     });
   });
+
+  it('applies container query styles by default', () => {
+    const { view } = renderView();
+
+    const wrapper = view.container.querySelector('#list-el');
+    expect(wrapper).toHaveStyleRule('container-type', 'inline-size');
+  });
+
+  it('disables container queries when disableContainerQuery is true', () => {
+    const { view } = renderView({ disableContainerQuery: true });
+
+    const wrapper = view.container.querySelector('#list-el');
+    expect(wrapper).toHaveStyleRule('container-type', 'normal');
+  });
 });

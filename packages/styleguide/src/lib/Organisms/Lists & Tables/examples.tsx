@@ -16,8 +16,7 @@ import {
 import { MiniKebabMenuIcon } from '@codecademy/gamut-icons';
 import { BlueprintWhite } from '@codecademy/gamut-illustrations';
 import uniq from 'lodash/uniq';
-import { useCallback, useMemo, useRef, useState } from 'react';
-import { useMedia } from 'react-use';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 
 interface MenuItemConfig {
   action: string;
@@ -41,30 +40,13 @@ const MenuItemGenerator: React.FC<{
   );
 };
 
-const useScreenAlignment = (menuSide: 'left' | 'right') => {
-  const isSmOrLarger = useMedia('(min-width: 768px)');
-
-  const alignment = useMemo((): 'bottom-left' | 'bottom-right' => {
-    // At sm breakpoint (768px) or smaller, always use bottom-left
-    if (!isSmOrLarger) {
-      return 'bottom-left';
-    }
-    // Otherwise use the menuSide prop
-    return menuSide === 'left' ? 'bottom-left' : 'bottom-right';
-  }, [isSmOrLarger, menuSide]);
-
-  return { alignment };
-};
-
 const CrewMgmtDropdown: React.FC<{
   row: (typeof crew)[1];
-  menuSide: 'left' | 'right';
-}> = ({ row, menuSide }) => {
+}> = ({ row }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const menuButtonRef = useRef<HTMLDivElement>(null);
   const { name } = row;
-  const { alignment } = useScreenAlignment(menuSide);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -112,7 +94,7 @@ const CrewMgmtDropdown: React.FC<{
       />
 
       <PopoverContainer
-        alignment={alignment}
+        alignment="bottom-left"
         allowPageInteraction
         isOpen={isOpen}
         offset={0}
@@ -348,7 +330,7 @@ export const cols = [
     size: 'md',
     justify: 'right',
     type: 'control',
-    render: (row) => <CrewMgmtDropdown menuSide="left" row={row} />,
+    render: (row) => <CrewMgmtDropdown row={row} />,
   },
   {
     header: 'Controls',
@@ -356,7 +338,7 @@ export const cols = [
     size: 'md',
     justify: 'right',
     type: 'control',
-    render: (row) => <CrewMgmtDropdown menuSide="left" row={row} />,
+    render: (row) => <CrewMgmtDropdown row={row} />,
   },
   {
     header: 'Controls',
@@ -364,7 +346,7 @@ export const cols = [
     size: 'md',
     justify: 'right',
     type: 'control',
-    render: (row) => <CrewMgmtDropdown menuSide="left" row={row} />,
+    render: (row) => <CrewMgmtDropdown row={row} />,
   },
 ] as ColumnConfig<(typeof crew)[number]>[];
 
@@ -465,3 +447,53 @@ export const DataListTemplate = createDemoTable(DataList, {
   height: 'auto',
   showOverflow: true,
 });
+
+export interface DisableContainerQueryExampleProps {
+  defaultComponent: React.ReactNode;
+  disabledComponent: React.ReactNode;
+  componentName: string;
+}
+
+export const DisableContainerQueryExample: React.FC<
+  DisableContainerQueryExampleProps
+> = ({ defaultComponent, disabledComponent, componentName }) => {
+  return (
+    <FlexBox flexDirection="column" gap={24}>
+      <Box>
+        <Text mb={8} variant="title-sm">
+          Default (Container Queries Enabled)
+        </Text>
+        <Box border={1} borderColor="border-tertiary" maxWidth="400px" p={16}>
+          {defaultComponent}
+        </Box>
+        <Text color="text-secondary" mt={8} variant="p-small">
+          Container queries apply responsive behavior based on the{' '}
+          {componentName} &apos;s container width
+        </Text>
+      </Box>
+
+      <Box>
+        <Text mb={8} variant="title-sm">
+          With Container Queries Disabled
+        </Text>
+        <Box border={1} borderColor="border-tertiary" maxWidth="400px" p={16}>
+          {disabledComponent}
+        </Box>
+        <Text color="text-secondary" mt={8} variant="p-small">
+          Built in responsive behavior is disabled - custom responsive behavior
+          is required
+        </Text>
+      </Box>
+    </FlexBox>
+  );
+};
+
+export const simpleRows = [
+  { name: 'Jean Luc Picard', role: 'Captain', ship: 'USS Enterprise' },
+  { name: 'Wesley Crusher', role: 'Deus Ex Machina', ship: 'USS Enterprise' },
+];
+
+export const simpleColumns = [
+  { key: 'name', header: 'Name', type: 'header', size: 'md' } as const,
+  { key: 'role', header: 'Role', fill: true, justify: 'right' },
+];
