@@ -1,10 +1,17 @@
 // Added because SB and TS don't play nice with each other at the moment
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { Box, DataList, DataTable, FlexBox, Text } from '@codecademy/gamut';
+import { DataList } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { cols, CustomEmptyState, DataListTemplate } from '../examples';
+import {
+  cols,
+  CustomEmptyState,
+  DataListTemplate,
+  DisableContainerQueryExample,
+  simpleColumns,
+  simpleRows,
+} from '../examples';
 
 const meta: Meta<typeof DataList> = {
   component: DataList,
@@ -111,62 +118,39 @@ export const EmptyStateCustom: Story = {
   },
 };
 
-const DisableContainerQueryExample = (args) => {
-  const simpleRows = [
-    { name: 'Jean Luc Picard', role: 'Captain' },
-    { name: 'Wesley Crusher', role: 'Deus Ex Machina' },
-  ];
+const DataListDisableContainerQueryExample = () => {
+  const defaultComponent = (
+    <DataList
+      columns={simpleColumns}
+      header
+      id="default-container-query"
+      idKey="name"
+      rows={simpleRows}
+      spacing="condensed"
+    />
+  );
 
-  const simpleColumns = [
-    { key: 'name', header: 'Name', type: 'header', size: 'md' },
-    { key: 'role', header: 'Role', fill: true },
-  ];
+  const disabledComponent = (
+    <DataList
+      columns={simpleColumns}
+      disableContainerQuery
+      id="disabled-container-query"
+      idKey="name"
+      rows={simpleRows}
+      spacing="condensed"
+    />
+  );
 
   return (
-    <FlexBox flexDirection="column" gap={24}>
-      <Box>
-        <Text mb={8} variant="title-sm">
-          Default (Container Queries Enabled)
-        </Text>
-        <Box border="1px solid" borderColor="border-tertiary" maxWidth="320px" p={16}>
-          <DataList
-            id="default-container-query"
-            idKey="name"
-            rows={simpleRows}
-            columns={simpleColumns}
-            spacing="condensed"
-            header={true}
-          />
-        </Box>
-        <Text color="text-secondary" mt={8} variant="p-small">
-          Container queries apply responsive behavior based on the container width
-        </Text>
-      </Box>
-
-      <Box>
-        <Text mb={8} variant="title-sm">
-          With Container Queries Disabled
-        </Text>
-        <Box border="1px solid" borderColor="border-tertiary" maxWidth="320px" p={16}>
-          <DataList
-            id="disabled-container-query"
-            idKey="name"
-            rows={simpleRows}
-            columns={simpleColumns}
-            spacing="condensed"
-            header={true}
-            disableContainerQuery={true}
-          />
-        </Box>
-        <Text color="text-secondary" mt={8} variant="p-small">
-          Responsive behavior is based only on viewport width (media queries)
-        </Text>
-      </Box>
-    </FlexBox>
+    <DisableContainerQueryExample
+      componentName="DataList"
+      defaultComponent={defaultComponent}
+      disabledComponent={disabledComponent}
+    />
   );
 };
 
 export const DisableContainerQuery: Story = {
   args: {},
-  render: (args) => <DisableContainerQueryExample {...args} />,
+  render: () => <DataListDisableContainerQueryExample />,
 };

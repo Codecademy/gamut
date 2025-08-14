@@ -1,10 +1,16 @@
 // Added because SB and TS don't play nice with each other at the moment
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { Box, DataTable, FlexBox, Text } from '@codecademy/gamut';
+import { DataTable } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { CustomEmptyState, DataTableTemplate } from '../examples';
+import {
+  CustomEmptyState,
+  DataTableTemplate,
+  DisableContainerQueryExample,
+  simpleColumns,
+  simpleRows,
+} from '../examples';
 
 const meta: Meta<typeof DataTable> = {
   component: DataTable,
@@ -101,60 +107,38 @@ export const Default: Story = {
   args: {},
 };
 
-const DisableContainerQueryExample = (args) => {
-  const simpleRows = [
-    { name: 'Jean Luc Picard', role: 'Captain' },
-    { name: 'Wesley Crusher', role: 'Deus Ex Machina' },
-  ];
+const DataTableDisableContainerQueryExample = () => {
+  const defaultComponent = (
+    <DataTable
+      columns={simpleColumns}
+      id="default-table-query"
+      idKey="name"
+      rows={simpleRows}
+      spacing="condensed"
+    />
+  );
 
-  const simpleColumns = [
-    { key: 'name', header: 'Name', type: 'header', size: 'md' },
-    { key: 'role', header: 'Role', fill: true },
-  ];
+  const disabledComponent = (
+    <DataTable
+      columns={simpleColumns}
+      disableContainerQuery
+      id="disabled-table-query"
+      idKey="name"
+      rows={simpleRows}
+      spacing="condensed"
+    />
+  );
 
   return (
-    <FlexBox flexDirection="column" gap={24}>
-      <Box>
-        <Text mb={8} variant="title-sm">
-          Default (Container Queries Enabled)
-        </Text>
-        <Box border="1px solid" borderColor="border-tertiary" maxWidth="320px" p={16}>
-          <DataTable
-            id="default-table-query"
-            idKey="name"
-            rows={simpleRows}
-            columns={simpleColumns}
-            spacing="condensed"
-          />
-        </Box>
-        <Text color="text-secondary" mt={8} variant="p-small">
-          Container queries apply responsive behavior based on the container width
-        </Text>
-      </Box>
-
-      <Box>
-        <Text mb={8} variant="title-sm">
-          With Container Queries Disabled
-        </Text>
-        <Box border="1px solid" borderColor="border-tertiary" maxWidth="320px" p={16}>
-          <DataTable
-            id="disabled-table-query"
-            idKey="name"
-            rows={simpleRows}
-            columns={simpleColumns}
-            spacing="condensed"
-            disableContainerQuery={true}
-          />
-        </Box>
-        <Text color="text-secondary" mt={8} variant="p-small">
-          Responsive behavior is based only on viewport width (media queries)
-        </Text>
-      </Box>
-    </FlexBox>
+    <DisableContainerQueryExample
+      componentName="DataTable"
+      defaultComponent={defaultComponent}
+      disabledComponent={disabledComponent}
+    />
   );
 };
 
 export const DisableContainerQuery: Story = {
   args: {},
-  render: (args) => <DisableContainerQueryExample {...args} />,
+  render: () => <DataTableDisableContainerQueryExample />,
 };
