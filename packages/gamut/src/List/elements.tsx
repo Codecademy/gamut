@@ -438,5 +438,8 @@ export const ListWrapper = styled(Box)(
     scrollable: {
       boxShadow: { _: undefined, c_sm: 'inset -24px 0 24px -24px black' },
     },
+    disableContainerQuery: {
+      containerType: 'normal',
+    },
   })
 );

@@ -50,6 +50,7 @@ export interface MediaQueryMap<T> {
 }
 
 export interface ContainerQueryMap<T> {
+  c_base?: T;
   c_xs?: T;
   c_sm?: T;
   c_md?: T;

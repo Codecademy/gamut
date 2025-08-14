@@ -739,3 +739,63 @@ export const SpaceSystemProps: Story = {
     </Background>
   ),
 };
+
+const DisableContainerQueryExample: React.FC<ListProps> = (args) => {
+  return (
+    <FlexBox flexDirection="column" gap={24}>
+      <Box>
+        <Text mb={8} variant="title-sm">
+          Default (Container Queries Enabled)
+        </Text>
+        <Box borderColor="border-tertiary" p={16} width="400px">
+          <List spacing="condensed" variant="table">
+            {rows.slice(0, 2).map(({ name, ship }) => (
+              <ListRow key={name}>
+                <ListCol size="md" type="header">
+                  {name}
+                </ListCol>
+                <ListCol fill>{ship}</ListCol>
+                <ListCol justify="right" type="control">
+                  {ship}
+                </ListCol>
+              </ListRow>
+            ))}
+          </List>
+        </Box>
+        <Text color="text-secondary" mt={8} variant="p-small">
+          Container queries apply responsive behavior based on the list's
+          container width
+        </Text>
+      </Box>
+
+      <Box>
+        <Text mb={8} variant="title-sm">
+          With Container Queries Disabled
+        </Text>
+        <Box border={1} borderColor="border-tertiary" maxWidth="400px" p={16}>
+          <List disableContainerQuery spacing="condensed" variant="table">
+            {rows.slice(0, 2).map(({ name, ship }) => (
+              <ListRow key={name}>
+                <ListCol size="md" type="header">
+                  {name}
+                </ListCol>
+                <ListCol fill>{ship}</ListCol>
+                <ListCol justify="right" type="control">
+                  {ship}
+                </ListCol>
+              </ListRow>
+            ))}
+          </List>
+        </Box>
+        <Text color="text-secondary" mt={8} variant="p-small">
+          Responsive behavior is based only on viewport width (media queries)
+        </Text>
+      </Box>
+    </FlexBox>
+  );
+};
+
+export const DisableContainerQuery: Story = {
+  args: {},
+  render: (args) => <DisableContainerQueryExample {...args} />,
+};
