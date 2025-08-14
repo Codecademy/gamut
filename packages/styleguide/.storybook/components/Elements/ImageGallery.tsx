@@ -5,6 +5,7 @@ import { PatternProps } from '@codecademy/gamut-patterns';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import { useState } from 'react';
+import styled from '@emotion/styled';
 
 const MotionGridBox = motion.create(GridBox);
 const MotionFlexBox = motion.create(FlexBox);
@@ -34,6 +35,11 @@ interface ImageGalleryProps {
   showControls?: boolean;
   controls?: Controls;
 }
+
+const StyledText = styled(Text)`
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+`;
 
 export const ImageGallery: React.FC<ImageGalleryProps> = ({
   images = [],
@@ -78,7 +84,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
   );
 
   return (
-    <Box>
+    <Box width="100%">
       {showControls && (
         <FlexBox alignItems="center" gap={12} mb={16} p={16} pb={0}>
           <Text fontSize={14} fontWeight="bold">
@@ -123,17 +129,23 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
       <MotionGridBox
         rowGap={8}
         gridTemplateColumns={`repeat(${columns}, 1fr)`}
-        maxWidth="100vw"
-        // p={8}
         layout
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
         {filteredImages.length === 0 ? (
-          <Box gridColumn="1 / -1" textAlign="center" py={32}>
+          <MotionBox
+            gridColumn="1 / -1"
+            textAlign="center"
+            py={32}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+          >
             <Text fontSize={16} color="text-secondary">
               No images found...
             </Text>
-          </Box>
+          </MotionBox>
         ) : (
           <AnimatePresence mode="popLayout">
             {filteredImages.map(({ name, image: Image }) => (
@@ -144,9 +156,10 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.2, ease: 'easeInOut' }}
-                p={12}
+                p={4}
                 alignItems="center"
-                gap={12}
+                gap={8}
+                flexDirection="column"
               >
                 <MotionBox
                   layout
@@ -162,7 +175,9 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
                 >
                   <Image size={imageSize} />
                 </MotionBox>
-                <Text fontSize={14}>{name}</Text>
+                <StyledText fontSize={14} textAlign="center" width="100%">
+                  {name}
+                </StyledText>
               </MotionFlexBox>
             ))}
           </AnimatePresence>
