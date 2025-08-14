@@ -16,7 +16,10 @@ figma.connect(
   {
     props: {
       children: figma.string('✏️ label'),
-      icon: figma.instance<React.FunctionComponent>('↳ icon'),
+      icon: figma.boolean<React.FunctionComponent>('👁 leading icon', {
+        true: figma.instance('↳ leading icon'),
+        false: undefined,
+      }),
       variant: figma.enum('variant', {
         Inline: 'inline',
         Interface: 'interface',
@@ -24,10 +27,6 @@ figma.connect(
         'Standard-secondary': 'standard-secondary',
       }),
     },
-    example: (props: AnchorProps) => (
-      <Anchor icon={props.icon} variant={props.variant}>
-        {props.children}
-      </Anchor>
-    ),
+    example: (props: AnchorProps) => <Anchor {...props} />,
   }
 );
