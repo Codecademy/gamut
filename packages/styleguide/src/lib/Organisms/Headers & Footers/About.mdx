@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Organisms/Headers & Footers',
+  title: 'Headers & Footers',
+  subtitle:
+    'Components related to header and footers, sometimes used within larger organisms and page layouts.',
+};
+
+<Meta title="Organisms/Headers & Footers/About" />
+
+<AboutHeader {...parameters} />
+
+These are the platform agnostic parts of the page that are used to provide structure and layout to the page. They are not specific to any one page or layout, but are used across the site to provide a consistent look and feel.
+
+<br />
+
+<TableOfContents
+  links={[
+    {
+      id: 'Organisms/Headers & Footers/AppBar',
+      subtitle:
+        'Components that provide spacing and layout help that you can use for something like a footer or header',
+      title: 'AppBar',
+      status: 'current',
+    },
+  ]}
+/>
