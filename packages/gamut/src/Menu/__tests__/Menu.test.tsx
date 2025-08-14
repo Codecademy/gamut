@@ -1,6 +1,6 @@
 import { MultipleUsersIcon } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
-import { screen, waitFor } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Menu } from '../Menu';
@@ -160,7 +160,7 @@ describe('Menu', () => {
     const menuItem = view.getByLabelText(label);
     await userEvent.hover(menuItem);
 
-    await view.findByText(label)
+    await view.findByText(label);
   });
 
   it('renders MenuItems with `label: string` as an `aria-describedby` attribute instead of `aria-label`', async () => {
@@ -179,7 +179,7 @@ describe('Menu', () => {
 
     await userEvent.hover(button);
 
-    await view.findByText(label)
+    await view.findByText(label);
   });
 
   it('renders MenuItems with `label: object` as an `aria-describedby` attribute instead of `aria-label`', async () => {
@@ -198,7 +198,7 @@ describe('Menu', () => {
 
     await userEvent.hover(button);
 
-    await view.findByText(label.info)
+    await view.findByText(label.info);
   });
 
   it('render an `aria-label` for non-interactive menu items with a label', async () => {
@@ -230,7 +230,7 @@ describe('Menu', () => {
 
     await userEvent.hover(button);
 
-    await view.findByText(label.info)
+    await view.findByText(label.info);
   });
 
   it('renders ToolTip for disabled MenuItems that have an onClick and a label', async () => {
@@ -250,7 +250,7 @@ describe('Menu', () => {
 
     await userEvent.hover(button);
 
-    await view.findByText(label)
+    await view.findByText(label);
   });
 
   describe('when the role is menu', () => {
