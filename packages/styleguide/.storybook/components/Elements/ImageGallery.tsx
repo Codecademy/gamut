@@ -1,4 +1,4 @@
-import { Box, Text, Input, FlexBox, GridBox } from '@codecademy/gamut';
+import { Box, Text, Input, FlexBox, GridBox, Toggle } from '@codecademy/gamut';
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { IllustrationProps } from '@codecademy/gamut-illustrations';
 import { PatternProps } from '@codecademy/gamut-patterns';
@@ -51,13 +51,17 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
     minColumns = 2,
     maxColumns = 4,
     imageSize: defaultImageSize = 20,
-    minImageSize = 10,
+    minImageSize = 8,
     maxImageSize = 100,
   } = controls;
 
   const [columns, setColumns] = useState(defaultColumns);
   const [imageSize, setImageSize] = useState(defaultImageSize);
+  const [imageSizeInput, setImageSizeInput] = useState(
+    defaultImageSize.toString()
+  );
   const [filter, setFilter] = useState('');
+  const [alignment, setAlignment] = useState<'center' | 'left'>('center');
 
   const handleColumnsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(event.target.value, 10);
@@ -69,9 +73,23 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
   const handleImageSizeChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const value = parseInt(event.target.value, 10);
-    if (value >= minImageSize && value <= maxImageSize) {
+    const inputValue = event.target.value;
+    setImageSizeInput(inputValue); // Always update the input display
+
+    const value = parseInt(inputValue, 10);
+
+    // Only update the actual imageSize if it's a valid number within range
+    if (!isNaN(value) && value >= minImageSize && value <= maxImageSize) {
       setImageSize(value);
+    }
+  };
+
+  const handleImageSizeBlur = () => {
+    const value = parseInt(imageSizeInput, 10);
+
+    // If the input is invalid or out of range, reset it to the current valid imageSize
+    if (isNaN(value) || value < minImageSize || value > maxImageSize) {
+      setImageSizeInput(imageSize.toString());
     }
   };
 
@@ -85,6 +103,19 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
 
   return (
     <Box width="100%">
+      <FlexBox alignItems="center" gap={12} mb={12} p={16} pb={0}>
+        <Text fontSize={14} fontWeight="bold">
+          Alignment:
+        </Text>
+        <Toggle
+          as="button"
+          checked={alignment === 'center'}
+          onClick={() =>
+            setAlignment(alignment === 'center' ? 'left' : 'center')
+          }
+          label={alignment === 'center' ? 'Center' : 'Left'}
+        />
+      </FlexBox>
       {showControls && (
         <FlexBox alignItems="center" gap={12} mb={16} p={16} pb={0}>
           <Text fontSize={14} fontWeight="bold">
@@ -107,8 +138,9 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
             min={minImageSize}
             max={maxImageSize}
             step="4"
-            value={imageSize}
+            value={imageSizeInput}
             onChange={handleImageSizeChange}
+            onBlur={handleImageSizeBlur}
             size="small"
             width={80}
           />
@@ -157,7 +189,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.2, ease: 'easeInOut' }}
                 p={4}
-                alignItems="center"
+                alignItems={alignment === 'center' ? 'center' : 'flex-start'}
                 gap={8}
                 flexDirection="column"
               >
@@ -175,7 +207,11 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
                 >
                   <Image size={imageSize} />
                 </MotionBox>
-                <StyledText fontSize={14} textAlign="center" width="100%">
+                <StyledText
+                  fontSize={14}
+                  textAlign={alignment === 'center' ? 'center' : 'left'}
+                  width={alignment === 'center' ? '100%' : 'auto'}
+                >
                   {name}
                 </StyledText>
               </MotionFlexBox>
