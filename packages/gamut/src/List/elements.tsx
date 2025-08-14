@@ -137,16 +137,16 @@ const rowBreakpointVariants = variant({
   defaultVariant: 'xs',
   variants: {
     xs: {
-      display: { _: 'grid', c_sm: 'flex' },
-      flexDirection: { _: 'column', c_sm: 'row' },
+      display: { _: 'flex', c_base: 'grid', c_sm: 'flex' },
+      flexDirection: { _: 'row', c_base: 'column', c_sm: 'row' },
     },
     sm: {
-      display: { _: 'grid', sm: 'flex' },
-      flexDirection: { _: 'column', sm: 'row' },
+      display: { _: 'grid', c_md: 'flex', md: 'flex' },
+      flexDirection: { _: 'column', c_md: 'row', md: 'row' },
     },
     md: {
-      display: { _: 'grid', md: 'flex' },
-      flexDirection: { _: 'column', md: 'row' },
+      display: { _: 'grid', c_lg: 'flex', lg: 'flex' },
+      flexDirection: { _: 'column', c_lg: 'row', lg: 'row' },
     },
     grid: { display: 'grid' },
   },
@@ -436,7 +436,11 @@ export const ListWrapper = styled(Box)(
   }),
   states({
     scrollable: {
-      boxShadow: { _: undefined, c_sm: 'inset -24px 0 24px -24px black' },
+      boxShadow: {
+        _: undefined,
+        c_sm: 'inset -24px 0 24px -24px black',
+        sm: 'inset -24px 0 24px -24px black',
+      },
     },
     disableContainerQuery: {
       containerType: 'normal',
