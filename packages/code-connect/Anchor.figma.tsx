@@ -16,7 +16,7 @@ figma.connect(
   {
     props: {
       children: figma.string('✏️ label'),
-      icon: figma.boolean<React.FunctionComponent>('👁 leading icon', {
+      icon: figma.boolean('👁 leading icon', {
         true: figma.instance('↳ leading icon'),
         false: undefined,
       }),
