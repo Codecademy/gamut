@@ -202,9 +202,7 @@ describe('Menu', () => {
 
     await userEvent.hover(button);
 
-    await waitFor(() => {
-      view.getByText(label.info);
-    });
+    await view.findByText(label.info)
   });
 
   it('render an `aria-label` for non-interactive menu items with a label', async () => {
