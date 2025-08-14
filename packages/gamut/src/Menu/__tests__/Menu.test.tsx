@@ -160,9 +160,7 @@ describe('Menu', () => {
     const menuItem = view.getByLabelText(label);
     await userEvent.hover(menuItem);
 
-    await waitFor(() => {
-      view.getByText(label);
-    });
+    await view.findByText(label)
   });
 
   it('renders MenuItems with `label: string` as an `aria-describedby` attribute instead of `aria-label`', async () => {
@@ -181,9 +179,7 @@ describe('Menu', () => {
 
     await userEvent.hover(button);
 
-    await waitFor(() => {
-      view.getByText(label);
-    });
+    await view.findByText(label)
   });
 
   it('renders MenuItems with `label: object` as an `aria-describedby` attribute instead of `aria-label`', async () => {
@@ -234,9 +230,7 @@ describe('Menu', () => {
 
     await userEvent.hover(button);
 
-    await waitFor(() => {
-      view.getByText(label.info);
-    });
+    await view.findByText(label.info)
   });
 
   it('renders ToolTip for disabled MenuItems that have an onClick and a label', async () => {
@@ -256,9 +250,7 @@ describe('Menu', () => {
 
     await userEvent.hover(button);
 
-    await waitFor(() => {
-      view.getByText(label);
-    });
+    await view.findByText(label)
   });
 
   describe('when the role is menu', () => {
