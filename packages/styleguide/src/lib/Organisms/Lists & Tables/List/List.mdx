@@ -23,7 +23,9 @@ export const parameters = {
 
 <ComponentHeader {...parameters} />
 
-## Design principles
+## Overview
+
+### Design principles
 
 Recommended for engaging with individual Items
 
@@ -43,9 +45,9 @@ Be careful about placement and positioning
 
 - Make sure Item controls are visible on the right
 - Place Lists inside main containers to avoid overflow
-- Use a Table if you have a design that’s meant to compare information between items
+- Use a Table if you have a design that's meant to compare information between items
 
-## Usage
+### Usage
 
 Lists are one of the main design tools for displaying information in a structured / repeated way which are visually distinct from cards and functionally distinct from tables.
 
@@ -84,17 +86,31 @@ For mixed content use the normal size to ensure that there is enough space for c
 
 <Canvas of={ListStories.NormalSpacing} />
 
+Here's an example of normal spacing in practice:
+
+<Canvas of={ListStories.NormalSpacingGuide} />
+
 ### Condensed
 
 To decrease the amount of spacing between rows, use the condensed spacing.
 
 <Canvas of={ListStories.CondensedSpacing} />
 
+Here's an example of condensed spacing in practice:
+
+<Canvas of={ListStories.CondensedSpacingGuide} />
+
 ### Compact
 
 To provide the least amount of spacing between rows, use the compact spacing.
 
 <Canvas of={ListStories.CompactSpacing} />
+
+### Combining with variants
+
+You can combine variants and spacing to your needs. For example, here's a condensed table variant:
+
+<Canvas of={ListStories.CondensedTableGuide} />
 
 ## Variants
 
@@ -174,15 +190,17 @@ You can align the content to the right of each column using the `justify` prop o
 
 <Canvas of={ListStories.Justification} />
 
-## Layouts
+## Advanced Features
 
-### Horizontal scrolling
+### Layouts
+
+#### Horizontal scrolling
 
 If you have a list with many columns and would like to avoid collapsing any columns information you can use the `scrollable` prop which will lock the row header to the left hand side and expand all columns to the their minimum flex-basis. All rows and columns scroll along the X axis in tandem to ensure that you may compare data or take multiple actions between each row.
 
 <Canvas of={ListStories.HorizontalScrolling} />
 
-### Responsive
+#### Responsive
 
 List rows will switch to a mobile layout at screen widths less than smallest breakpoint (480px). This layout is built for smaller screens and is restructured to a card like structure. There is no extra configuration needed for this to take effect pending you've configured a few named column types:
 
@@ -197,7 +215,7 @@ Adjust the size of your window to see how the List changes at different breakpoi
 <Canvas of={ListStories.ResponsiveAnatomy} />
 <Canvas of={ListStories.Responsive} />
 
-### Example configuration
+##### Example configuration
 
 ```tsx
 <List>
@@ -211,11 +229,53 @@ Adjust the size of your window to see how the List changes at different breakpoi
 </List>
 ```
 
-### Collapsible row content
+##### Container query control
+
+By default, Lists use CSS container queries to determine responsive behavior based on the List's container width, rather than the viewport width. This allows Lists to adapt appropriately when placed in narrow sidebars or constrained layouts.
+
+However, there are cases where you may want to disable container queries and rely on traditional media queries instead:
+
+###### When to use `disableContainerQuery={true}`
+
+- **Lists in containers already smaller than the breakpoint**: When your List is always rendered in a narrow container (like a 300px sidebar), container queries may not behave as expected
+- **Lists with very few rows**: Short Lists with only 1-2 rows may not benefit from container query responsive behavior
+- **Custom responsive management**: When you're implementing your own media or container query logic and want to avoid conflicts
+- **Performance considerations**: In rare cases where container query support may impact performance
+- **Legacy browser support**: When supporting browsers that don't have full container query support
+
+###### Example usage
+
+```tsx
+// Disable container queries for a List in a narrow sidebar
+<div style={{ width: '280px' }}>
+  <List disableContainerQuery spacing="condensed">
+    <ListRow>
+      <ListCol type="header">Item</ListCol>
+      <ListCol>Details</ListCol>
+    </ListRow>
+  </List>
+</div>
+
+// Use default container query behavior (recommended for most cases)
+<List spacing="condensed">
+  <ListRow>
+    <ListCol type="header">Item</ListCol>
+    <ListCol>Details</ListCol>
+  </ListRow>
+</List>
+```
+
+The example below demonstrates the difference between default container query behavior and disabled container queries:
+
+<Canvas of={ListStories.DisableContainerQuery} />
+
+**Note**: In most cases, you should use the default container query behavior as it provides better responsive design. Only disable container queries when you have specific layout requirements that conflict with the default behavior.
+
+## Expandable
 
 You can define collapsible content by passing an `expanded` prop and the `React.Node` to the `renderExpanded` prop of your `ListRow` components.
 
-#### Expand on button click
+### Expand on button click
 
 The `ListRow` component has access to the `ExpandControl` component which can be used to toggle the expanded state of the row. The `ExpandControl` component will automatically handle the rotation of the icon based on the expanded state.
 
@@ -247,7 +307,11 @@ export const ExpandableRow: React.FC<{
 };
 ```
 
-#### Expand on row click
+<Canvas of={ListStories.ExpandableButtonGuide} />
+
+### Expand on row click
+
+An entire row can be made interactive to expand the row content.
 
 ```tsx
 export const ExpandableRow: React.FC<{
@@ -276,95 +340,7 @@ export const ExpandableRow: React.FC<{
 };
 ```
 
-## Examples
-
-Here's some examples of Lists to use as guides.
-
-### Normal spacing
-
-<Canvas of={ListStories.NormalSpacingGuide} />
-
-### Condensed spacing
-
-<Canvas of={ListStories.CondensedSpacingGuide} />
-
-### Condensed table variant
-
-You can combine variants and spacing to your needs.
-
-<Canvas of={ListStories.CondensedTableGuide} />
-
-### Expandable button
-
-Buttons can be configured to expand the row content. Check over the "Expand on button click" section for more guidance.
-
-<Canvas of={ListStories.ExpandableButtonGuide} />
-
-### Container query control
-
-By default, Lists use CSS container queries to determine responsive behavior based on the List's container width, rather than the viewport width. This allows Lists to adapt appropriately when placed in narrow sidebars or constrained layouts.
-
-However, there are cases where you may want to disable container queries and rely on traditional media queries instead:
-
-#### When to use `disableContainerQuery={true}`
-
-- **Lists in containers already smaller than the breakpoint**: When your List is always rendered in a narrow container (like a 300px sidebar), container queries may not behave as expected
-- **Lists with very few rows**: Short Lists with only 1-2 rows may not benefit from container query responsive behavior
-- **Custom responsive management**: When you're implementing your own media or container query logic and want to avoid conflicts
-- **Performance considerations**: In rare cases where container query support may impact performance
-- **Legacy browser support**: When supporting browsers that don't have full container query support
-
-#### Example usage
-
-```tsx
-// Disable container queries for a List in a narrow sidebar
-<div style={{ width: '280px' }}>
-  <List disableContainerQuery spacing="condensed">
-    <ListRow>
-      <ListCol type="header">Item</ListCol>
-      <ListCol>Details</ListCol>
-    </ListRow>
-  </List>
-</div>
-
-// Use default container query behavior (recommended for most cases)
-<List spacing="condensed">
-  <ListRow>
-    <ListCol type="header">Item</ListCol>
-    <ListCol>Details</ListCol>
-  </ListRow>
-</List>
-```
-
-The example below demonstrates the difference between default container query behavior and disabled container queries:
-
-<Canvas of={ListStories.DisableContainerQuery} />
-
-**Note**: In most cases, you should use the default container query behavior as it provides better responsive design. Only disable container queries when you have specific layout requirements that conflict with the default behavior.
-
-### Expandable row
-
-An entire row can be made interactive to expand the row content. Check over the "Expand on row click" section for more guidance.
-
 <Canvas of={ListStories.ExpandedRowGuide} />
-
-## Examples
-
-Here's some examples of Lists to use as guides.
-
-### Normal spacing
-
-<Canvas of={ListStories.NormalSpacingGuide} />
-
-### Condensed spacing
-
-<Canvas of={ListStories.CondensedSpacingGuide} />
-
-### Condensed table variant
-
-You can combine variants and spacing to your needs.
-
-<Canvas of={ListStories.CondensedTableGuide} />
 
 ## System props
 
