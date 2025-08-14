@@ -121,11 +121,10 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
         </FlexBox>
       )}
       <MotionGridBox
-        columnGap={8}
         rowGap={8}
         gridTemplateColumns={`repeat(${columns}, 1fr)`}
         maxWidth="100vw"
-        p={8}
+        // p={8}
         layout
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >

@@ -3,6 +3,10 @@ import { GamutIconProps } from '@codecademy/gamut-icons';
 import * as icons from '@codecademy/gamut-icons/src/icons/regular';
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { ImageGallery } from '~styleguide/blocks';
+
+import { LE_ICONS, SKILLS_ICONS, UI_ICONS, VENDOR_ICONS } from '../constants';
+
 type IconProps = GamutIconProps & {
   icon: typeof icons.AlertIcon;
 };
@@ -31,5 +35,16 @@ export const Default: Story = {
   args: {
     size: 40,
     icon: icons.AlertIcon,
+  },
+};
+
+export const RegularInterfaceIcons: Story = {
+  render: () => {
+    const icons = Object.entries(UI_ICONS).map(([name, Icon]) => ({
+      name,
+      image: Icon,
+    }));
+
+    return <ImageGallery images={icons} />;
   },
 };
