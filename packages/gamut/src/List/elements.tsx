@@ -294,7 +294,6 @@ const columnSizes = variant({
 const columnStates = states({
   fill: { flexGrow: { _: 1, c_base: 0, c_sm: 1 } },
   sticky: {
-    width: '100%',
     height: '100%',
     bg: 'inherit',
   },
@@ -415,6 +414,8 @@ export const StickyHeaderColWrapper = styled.th(
       left: 0,
       zIndex: -1,
     },
+    display: 'flex',
+    flexShrink: 0,
     position: 'sticky',
     left: 0,
     zIndex: 1,
