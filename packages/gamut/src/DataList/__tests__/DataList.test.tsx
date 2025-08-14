@@ -31,14 +31,14 @@ describe('DataList', () => {
   describe('Container query control', () => {
     it('applies container query styles by default', () => {
       const { view } = renderView();
-      
+
       const wrapper = view.container.querySelector('#datalist-test');
       expect(wrapper).toHaveStyleRule('container-type', 'inline-size');
     });
 
     it('disables container queries when disableContainerQuery is true', () => {
       const { view } = renderView({ disableContainerQuery: true });
-      
+
       const wrapper = view.container.querySelector('#datalist-test');
       expect(wrapper).toHaveStyleRule('container-type', 'normal');
     });
@@ -47,7 +47,7 @@ describe('DataList', () => {
   describe('Basic functionality', () => {
     it('renders DataList with provided data', () => {
       const { view } = renderView();
-      
+
       expect(view.getByText('Jean Luc Picard')).toBeInTheDocument();
       expect(view.getByText('Captain')).toBeInTheDocument();
       expect(view.getByText('Wesley Crusher')).toBeInTheDocument();
@@ -56,7 +56,7 @@ describe('DataList', () => {
 
     it('uses default variant by default', () => {
       const { view } = renderView();
-      
+
       // DataGrid always renders as table element regardless of variant
       const table = view.container.querySelector('table');
       expect(table).toBeInTheDocument();
@@ -64,7 +64,7 @@ describe('DataList', () => {
 
     it('accepts card variant', () => {
       const { view } = renderView({ variant: 'card' });
-      
+
       // DataGrid always renders as table element regardless of variant
       const table = view.container.querySelector('table');
       expect(table).toBeInTheDocument();
