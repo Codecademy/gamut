@@ -6,20 +6,22 @@ import {
   Popover,
   PopoverProps,
 } from '@codecademy/gamut';
-import {
-  CheckerDense,
-  CheckerLoose,
-  CheckerRegular,
-  DiagonalADense,
-  DiagonalALoose,
-  DiagonalARegular,
-} from '@codecademy/gamut-patterns';
+import * as patterns from '@codecademy/gamut-patterns';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useRef, useState } from 'react';
 
 const meta: Meta<typeof Popover> = {
   component: Popover,
   args: { children: undefined },
+  argTypes: {
+    pattern: {
+      control: {
+        type: 'select',
+      },
+      options: Object.keys(patterns),
+      mapping: patterns,
+    },
+  },
 };
 
 export default meta;
@@ -106,32 +108,56 @@ export const CenterRight: Story = {
 
 export const PopoverCheckerDense: Story = {
   render: (args) => (
-    <PopoverExample {...args} pattern={CheckerDense} position="below" />
+    <PopoverExample
+      {...args}
+      pattern={patterns.CheckerDense}
+      position="below"
+    />
   ),
 };
 export const PopoverCheckerLoose: Story = {
   render: (args) => (
-    <PopoverExample {...args} pattern={CheckerLoose} position="below" />
+    <PopoverExample
+      {...args}
+      pattern={patterns.CheckerLoose}
+      position="below"
+    />
   ),
 };
 export const PopoverCheckerRegular: Story = {
   render: (args) => (
-    <PopoverExample {...args} pattern={CheckerRegular} position="below" />
+    <PopoverExample
+      {...args}
+      pattern={patterns.CheckerRegular}
+      position="below"
+    />
   ),
 };
 export const PopoverDiagonalADense: Story = {
   render: (args) => (
-    <PopoverExample {...args} pattern={DiagonalADense} position="below" />
+    <PopoverExample
+      {...args}
+      pattern={patterns.DiagonalADense}
+      position="below"
+    />
   ),
 };
 export const PopoverDiagonalALoose: Story = {
   render: (args) => (
-    <PopoverExample {...args} pattern={DiagonalALoose} position="below" />
+    <PopoverExample
+      {...args}
+      pattern={patterns.DiagonalALoose}
+      position="below"
+    />
   ),
 };
 export const PopoverDiagonalARegular: Story = {
   render: (args) => (
-    <PopoverExample {...args} pattern={DiagonalARegular} position="below" />
+    <PopoverExample
+      {...args}
+      pattern={patterns.DiagonalARegular}
+      position="below"
+    />
   ),
 };
 

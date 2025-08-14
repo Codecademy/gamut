@@ -1,11 +1,20 @@
 import { ProgressBar } from '@codecademy/gamut';
-import { DiagonalADense, DiagonalARegular } from '@codecademy/gamut-patterns';
+import * as patterns from '@codecademy/gamut-patterns';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof ProgressBar> = {
   component: ProgressBar,
   args: {
     percent: 50,
+  },
+  argTypes: {
+    pattern: {
+      control: {
+        type: 'select',
+      },
+      options: Object.keys(patterns),
+      mapping: patterns,
+    },
   },
 };
 
@@ -72,7 +81,7 @@ export const PatternBackgroundStripesRegular: Story = {
   args: {
     size: 'large',
     variant: 'yellow',
-    pattern: DiagonalARegular,
+    pattern: patterns.DiagonalARegular,
     percent: 50,
   },
 };
@@ -81,7 +90,7 @@ export const PatternBackgroundStripesDense: Story = {
   args: {
     size: 'medium',
     variant: 'blue',
-    pattern: DiagonalADense,
+    pattern: patterns.DiagonalADense,
     percent: 33,
   },
 };
@@ -91,7 +100,7 @@ export const FlatTop: Story = {
     flat: 'flat-top',
     variant: 'yellow',
     size: 'xl',
-    pattern: DiagonalADense,
+    pattern: patterns.DiagonalADense,
     percent: 33,
   },
 };
@@ -101,7 +110,7 @@ export const FlatBottom: Story = {
     flat: 'flat-bottom',
     variant: 'yellow',
     size: 'xl',
-    pattern: DiagonalADense,
+    pattern: patterns.DiagonalADense,
     percent: 33,
   },
 };

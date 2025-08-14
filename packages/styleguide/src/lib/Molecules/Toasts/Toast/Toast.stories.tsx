@@ -1,11 +1,20 @@
 import { Anchor, Box, GridBox, Text, Toast } from '@codecademy/gamut';
-import { TrophyIcon } from '@codecademy/gamut-icons';
+import * as icons from '@codecademy/gamut-icons';
 import { Target } from '@codecademy/gamut-illustrations';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Toast> = {
   component: Toast,
   args: {},
+  argTypes: {
+    icon: {
+      control: {
+        type: 'select',
+      },
+      options: Object.keys(icons),
+      mapping: icons,
+    },
+  },
 };
 
 export default meta;
@@ -26,7 +35,8 @@ const ContentExample = () => {
         <Toast
           title={
             <>
-              <TrophyIcon mr={4} verticalAlign="middle" /> Congrats you won!
+              <icons.TrophyIcon mr={4} verticalAlign="middle" /> Congrats you
+              won!
             </>
           }
           onClose={() => {}}
