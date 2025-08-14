@@ -8,7 +8,7 @@ import {
 
 import { ComponentHeader } from '~styleguide/blocks';
 
-import { LE_ICONS, SKILLS_ICONS, UI_ICONS, VENDOR_ICONS } from '../constants';
+import { LE_ICONS, SKILLS_ICONS, VENDOR_ICONS } from '../constants';
 import * as RegularIconStories from './Regular.stories';
 
 export const parameters = {
@@ -58,14 +58,6 @@ import { AlertIcon } from '@codecademy/gamut-icons';
 ### Interface
 
 General user interface icons with affordances
-
-<IconGallery>
-  {Object.entries(UI_ICONS).map(([iconName, Icon]) => (
-    <IconItem key={iconName} name={iconName}>
-      <Icon size={64} color="black" />
-    </IconItem>
-  ))}
-</IconGallery>
 
 <Canvas of={RegularIconStories.RegularInterfaceIcons} sourceState="none" />
 
