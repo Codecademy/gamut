@@ -45,7 +45,7 @@ describe('List', () => {
     const rowEl = view.getByRole('listitem');
 
     expect(rowEl).toHaveStyle({ borderTop: 'none' });
-    expect(rowEl).toHaveStyle({ gap: theme.spacing[8] });
+    expect(rowEl).toHaveStyle({ gap: theme.spacing[40] });
   });
 
   it('configures columns with the correct variants', () => {
@@ -54,8 +54,8 @@ describe('List', () => {
     const colEl = view.getByText('Hello');
 
     expect(colEl).not.toHaveStyle({ py: 16 });
-    expect(colEl).toHaveStyleRule('padding-left', theme.spacing[8]);
-    expect(colEl).toHaveStyleRule('padding-right', theme.spacing[8]);
+    expect(colEl).toHaveStyle({ paddingLeft: theme.spacing[8] });
+    expect(colEl).toHaveStyle({ paddingRight: theme.spacing[8] });
 
     expect(colEl).not.toHaveStyle({ position: 'sticky' });
   });
