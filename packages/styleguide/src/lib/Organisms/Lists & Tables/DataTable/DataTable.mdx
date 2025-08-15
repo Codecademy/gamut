@@ -50,7 +50,6 @@ Use a `DataTable` to display a table of items that contain a lot of information.
 
 ```tsx
 const DataTown = () => {
-  const [selectedRows, setSelectedRows] = useState([]);
   const [expandedRows, setExpandedRows] = useState([]);
   const columns = [
     { key: 'name', sortable: true, size: 'sm' },
@@ -67,8 +66,6 @@ const DataTown = () => {
     <DataTable
       id="example"
       columns={columns}
-      selectedRows={selectedRows}
-      onRowSelect={setSelectedRows}
       expandedRows={expandedRows}
       onRowExpand={setExpandedRows}
       renderExpanded={({ name }) => <>{name}: This is pretty cool</>}
