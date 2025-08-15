@@ -42,11 +42,6 @@ export const Default: Story = {
 
 export const AllMiniIcons: Story = {
   render: () => {
-    const icons = Object.entries(miniIcons).map(([name, Icon]) => ({
-      name,
-      image: Icon,
-    }));
-
-    return <ImageGallery images={icons} />;
+    return <ImageGallery imageType="icon" images={miniIcons} />;
   },
 };

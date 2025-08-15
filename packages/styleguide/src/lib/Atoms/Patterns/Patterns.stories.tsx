@@ -40,16 +40,11 @@ export const Default: Story = {
 
 export const AllPatterns: Story = {
   render: () => {
-    const allPatterns = Object.entries(patterns).map(([name, Pattern]) => ({
-      name,
-      image: Pattern,
-    }));
-
     return (
       <ImageGallery
         controls={{ imageSize: 50, maxImageSize: 200 }}
         imageType="pattern"
-        images={allPatterns}
+        images={patterns}
       />
     );
   },

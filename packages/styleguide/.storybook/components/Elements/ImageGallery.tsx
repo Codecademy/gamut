@@ -32,7 +32,7 @@ interface Controls {
 }
 
 interface ImageGalleryProps {
-  images?: ImageItem[];
+  images: Record<string, React.ComponentType<SupportedComponentProps>>;
   showControls?: boolean;
   controls?: Controls;
   imageType?: 'icon' | 'illustration' | 'pattern';
@@ -57,6 +57,10 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
     minImageSize = 8,
     maxImageSize = 100,
   } = controls;
+
+  const processedImages: ImageItem[] = Object.entries(images).map(
+    ([name, image]) => ({ name, image })
+  );
 
   const [columns, setColumns] = useState(defaultColumns);
   const [imageSize, setImageSize] = useState(defaultImageSize);
@@ -99,7 +103,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
     setFilter(event.target.value);
   };
 
-  const filteredImages = images.filter(({ name }) =>
+  const filteredImages = processedImages.filter(({ name }) =>
     name.toLowerCase().includes(filter.toLowerCase())
   );
 

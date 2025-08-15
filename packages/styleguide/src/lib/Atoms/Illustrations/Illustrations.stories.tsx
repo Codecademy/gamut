@@ -41,13 +41,6 @@ export const Default: Story = {
 
 export const AllIllustrations: Story = {
   render: () => {
-    const allIllustrations = Object.entries(illustrations).map(
-      ([name, Illustration]) => ({
-        name,
-        image: Illustration,
-      })
-    );
-
     return (
       <ImageGallery
         controls={{
@@ -58,7 +51,7 @@ export const AllIllustrations: Story = {
           maxImageSize: 500,
         }}
         imageType="illustration"
-        images={allIllustrations}
+        images={illustrations}
       />
     );
   },
