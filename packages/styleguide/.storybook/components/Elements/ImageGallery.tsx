@@ -105,7 +105,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
   return (
     <Box width="100%">
       {showControls && (
-        <FlexBox alignItems="center" gap={12} mb={16} p={16} pb={0}>
+        <FlexBox center gap={12} mb={16} p={16} pb={0}>
           <Text fontSize={14} fontWeight="bold">
             Columns:
           </Text>
@@ -116,7 +116,6 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
             value={columns}
             onChange={handleColumnsChange}
             size="small"
-            width={80}
           />
           <Text
             fontSize={14}
@@ -135,20 +134,20 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
             onChange={handleImageSizeChange}
             onBlur={handleImageSizeBlur}
             size="small"
-            width={80}
           />
           <Box flex={1} />
-          <Text fontSize={14} fontWeight="bold">
-            Filter:
-          </Text>
-          <Input
-            type="text"
-            placeholder={`Search ${imageType}s...`}
-            value={filter}
-            onChange={handleFilterChange}
-            size="small"
-            width={200}
-          />
+          <FlexBox center row gap={12}>
+            <Text fontSize={14} fontWeight="bold">
+              Filter:
+            </Text>
+            <Input
+              type="text"
+              placeholder={`Search ${imageType}s...`}
+              value={filter}
+              onChange={handleFilterChange}
+              size="small"
+            />
+          </FlexBox>
         </FlexBox>
       )}
       <MotionGridBox

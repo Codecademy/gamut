@@ -48,3 +48,36 @@ export const RegularInterfaceIcons: Story = {
     return <ImageGallery images={icons} />;
   },
 };
+
+export const RegularLearningEnvironmentIcons: Story = {
+  render: () => {
+    const icons = Object.entries(LE_ICONS).map(([name, Icon]) => ({
+      name,
+      image: Icon,
+    }));
+
+    return <ImageGallery images={icons} />;
+  },
+};
+
+export const RegularVendorIcons: Story = {
+  render: () => {
+    const icons = Object.entries(VENDOR_ICONS).map(([name, Icon]) => ({
+      name,
+      image: Icon,
+    }));
+
+    return <ImageGallery images={icons} />;
+  },
+};
+
+export const RegularSkillIcons: Story = {
+  render: () => {
+    const icons = Object.entries(SKILLS_ICONS).map(([name, Icon]) => ({
+      name,
+      image: Icon,
+    }));
+
+    return <ImageGallery images={icons} />;
+  },
+};
