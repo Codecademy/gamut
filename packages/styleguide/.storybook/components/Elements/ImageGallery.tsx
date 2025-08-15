@@ -1,4 +1,4 @@
-import { Box, Text, Input, FlexBox, GridBox, Toggle } from '@codecademy/gamut';
+import { Box, Text, Input, FlexBox, GridBox } from '@codecademy/gamut';
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { IllustrationProps } from '@codecademy/gamut-illustrations';
 import { PatternProps } from '@codecademy/gamut-patterns';
@@ -34,6 +34,7 @@ interface ImageGalleryProps {
   images?: ImageItem[];
   showControls?: boolean;
   controls?: Controls;
+  imageType?: 'icon' | 'illustration' | 'pattern';
 }
 
 const StyledText = styled(Text)`
@@ -45,11 +46,12 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
   images = [],
   showControls = true,
   controls = {},
+  imageType = 'icon',
 }) => {
   const {
-    columns: defaultColumns = 4,
+    columns: defaultColumns = 5,
     minColumns = 2,
-    maxColumns = 4,
+    maxColumns = 5,
     imageSize: defaultImageSize = 20,
     minImageSize = 8,
     maxImageSize = 100,
@@ -61,7 +63,6 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
     defaultImageSize.toString()
   );
   const [filter, setFilter] = useState('');
-  const [alignment, setAlignment] = useState<'center' | 'left'>('center');
 
   const handleColumnsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(event.target.value, 10);
@@ -103,19 +104,6 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
 
   return (
     <Box width="100%">
-      <FlexBox alignItems="center" gap={12} mb={12} p={16} pb={0}>
-        <Text fontSize={14} fontWeight="bold">
-          Alignment:
-        </Text>
-        <Toggle
-          as="button"
-          checked={alignment === 'center'}
-          onClick={() =>
-            setAlignment(alignment === 'center' ? 'left' : 'center')
-          }
-          label={alignment === 'center' ? 'Center' : 'Left'}
-        />
-      </FlexBox>
       {showControls && (
         <FlexBox alignItems="center" gap={12} mb={16} p={16} pb={0}>
           <Text fontSize={14} fontWeight="bold">
@@ -130,8 +118,13 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
             size="small"
             width={80}
           />
-          <Text fontSize={14} fontWeight="bold" ml={16}>
-            Image Size:
+          <Text
+            fontSize={14}
+            fontWeight="bold"
+            ml={16}
+            textTransform="capitalize"
+          >
+            {imageType} size:
           </Text>
           <Input
             type="number"
@@ -150,7 +143,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
           </Text>
           <Input
             type="text"
-            placeholder="Search images..."
+            placeholder={`Search ${imageType}s...`}
             value={filter}
             onChange={handleFilterChange}
             size="small"
@@ -175,7 +168,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
             transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
             <Text fontSize={16} color="text-secondary">
-              No images found...
+              No {imageType} found...
             </Text>
           </MotionBox>
         ) : (
@@ -189,7 +182,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.2, ease: 'easeInOut' }}
                 p={4}
-                alignItems={alignment === 'center' ? 'center' : 'flex-start'}
+                alignItems="flex-start"
                 gap={8}
                 flexDirection="column"
               >
@@ -207,11 +200,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
                 >
                   <Image size={imageSize} />
                 </MotionBox>
-                <StyledText
-                  fontSize={14}
-                  textAlign={alignment === 'center' ? 'center' : 'left'}
-                  width={alignment === 'center' ? '100%' : 'auto'}
-                >
+                <StyledText fontSize={14} textAlign="left" width="auto">
                   {name}
                 </StyledText>
               </MotionFlexBox>

@@ -45,6 +45,6 @@ export const RegularInterfaceIcons: Story = {
       image: Icon,
     }));
 
-    return <ImageGallery controls={{ columns: 5, maxColumns: 6 }} images={icons} />;
+    return <ImageGallery images={icons} />;
   },
 };
