@@ -31,14 +31,14 @@ describe('DataTable', () => {
   describe('Container query control', () => {
     it('applies container query styles by default', () => {
       const { view } = renderView();
-      
+
       const wrapper = view.container.querySelector('#datatable-test');
       expect(wrapper).toHaveStyleRule('container-type', 'inline-size');
     });
 
     it('disables container queries when disableContainerQuery is true', () => {
       const { view } = renderView({ disableContainerQuery: true });
-      
+
       const wrapper = view.container.querySelector('#datatable-test');
       expect(wrapper).toHaveStyleRule('container-type', 'normal');
     });
@@ -47,7 +47,7 @@ describe('DataTable', () => {
   describe('Basic functionality', () => {
     it('renders DataTable with provided data', () => {
       const { view } = renderView();
-      
+
       expect(view.getByText('Jean Luc Picard')).toBeInTheDocument();
       expect(view.getByText('Captain')).toBeInTheDocument();
       expect(view.getByText('Wesley Crusher')).toBeInTheDocument();
@@ -56,14 +56,14 @@ describe('DataTable', () => {
 
     it('uses table variant by default', () => {
       const { view } = renderView();
-      
+
       const table = view.container.querySelector('table');
       expect(table).toBeInTheDocument();
     });
 
     it('renders headers when header prop is true (default)', () => {
       const { view } = renderView();
-      
+
       expect(view.getByText('Name')).toBeInTheDocument();
       expect(view.getByText('Role')).toBeInTheDocument();
     });
