@@ -45,7 +45,7 @@ describe('List', () => {
     const rowEl = view.getByRole('listitem');
 
     expect(rowEl).toHaveStyle({ borderTop: 'none' });
-    expect(rowEl).toHaveStyle({ gap: theme.spacing[40] });
+    expect(rowEl).toHaveStyle({ columnGap: theme.spacing[40] });
   });
 
   it('configures columns with the correct variants', () => {
