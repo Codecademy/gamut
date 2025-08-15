@@ -2,6 +2,7 @@ import { Box, Text, Input, FlexBox, GridBox } from '@codecademy/gamut';
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { IllustrationProps } from '@codecademy/gamut-illustrations';
 import { PatternProps } from '@codecademy/gamut-patterns';
+import { timingValues } from '@codecademy/gamut-styles';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import { useState } from 'react';
@@ -154,7 +155,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
         rowGap={8}
         gridTemplateColumns={`repeat(${columns}, 1fr)`}
         layout
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        transition={{ duration: timingValues.slow / 1000, ease: 'easeInOut' }}
       >
         {filteredImages.length === 0 ? (
           <MotionBox
@@ -164,7 +165,10 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            transition={{
+              duration: timingValues.slow / 1000,
+              ease: 'easeInOut',
+            }}
           >
             <Text fontSize={16} color="text-secondary">
               No {imageType} found...
@@ -179,7 +183,10 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.2, ease: 'easeInOut' }}
+                transition={{
+                  duration: timingValues.fast / 1000,
+                  ease: 'easeInOut',
+                }}
                 p={4}
                 alignItems="flex-start"
                 gap={8}
@@ -187,7 +194,10 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
               >
                 <MotionBox
                   layout
-                  transition={{ duration: 0.2, ease: 'easeInOut' }}
+                  transition={{
+                    duration: timingValues.fast / 1000,
+                    ease: 'easeInOut',
+                  }}
                   display="flex"
                   border={1}
                   borderRadius="md"
