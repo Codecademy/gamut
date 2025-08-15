@@ -2,6 +2,8 @@ import type { PatternProps } from '@codecademy/gamut-patterns';
 import * as patterns from '@codecademy/gamut-patterns';
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { ImageGallery } from '~styleguide/blocks';
+
 type PatternComponentProps = PatternProps & {
   pattern: React.ComponentType<PatternProps>;
 };
@@ -33,5 +35,22 @@ export const Default: Story = {
   args: {
     height: 200,
     pattern: patterns.DotLoose,
+  },
+};
+
+export const AllPatterns: Story = {
+  render: () => {
+    const allPatterns = Object.entries(patterns).map(([name, Pattern]) => ({
+      name,
+      image: Pattern,
+    }));
+
+    return (
+      <ImageGallery
+        controls={{ imageSize: 50, maxImageSize: 200 }}
+        imageType="pattern"
+        images={allPatterns}
+      />
+    );
   },
 };

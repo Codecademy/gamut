@@ -197,7 +197,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
                   width={imageSize + 20}
                   height={imageSize + 20}
                 >
-                  <Image size={imageSize} />
+                  <Image width={imageSize} height={imageSize} />
                 </MotionBox>
                 <StyledText fontSize={14} textAlign="left" width="auto">
                   {name}
