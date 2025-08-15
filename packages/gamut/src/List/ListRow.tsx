@@ -32,11 +32,11 @@ export interface SimpleRowProps extends RowProps {
 export type ListRowProps = ExpandableRowProps | SimpleRowProps;
 
 const expandStyles = css({
-  flexBasis: { c_sm: '100%' },
-  flexShrink: { c_sm: 0 },
-  gridColumn: { _: 'span 3', c_sm: undefined },
-  minWidth: { c_sm: '100%' },
-  order: { c_sm: 999 },
+  flexBasis: { _: '100%', c_base: 'undefined', c_sm: '100%' },
+  flexShrink: { _: 0, c_base: undefined, c_sm: 0 },
+  gridColumn: { _: undefined, c_base: 'span 3', c_sm: undefined },
+  minWidth: { _: '100%', c_base: undefined, c_sm: '100%' },
+  order: { _: 999, c_base: undefined, c_sm: 999 },
   overflow: 'hidden',
 });
 
@@ -117,10 +117,13 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         aria-live={renderExpanded ? 'polite' : undefined}
         expanded={isTable ? undefined : !!renderExpanded}
         flexWrap={
-          isTable && renderExpanded ? { c_sm: 'wrap' } : { c_sm: 'nowrap' }
+          isTable && renderExpanded
+            ? { _: 'wrap', c_base: undefined, c_sm: 'wrap' }
+            : { _: 'nowrap', c_base: undefined, c_sm: 'nowrap' }
         }
         gridTemplateColumns={{
           _: 'minmax(0, 1fr) max-content',
+          c_base: 'minmax(0, 1fr) max-content',
           c_sm: undefined,
         }}
         interaction={onClick || isDataTable ? undefined : 'static'}

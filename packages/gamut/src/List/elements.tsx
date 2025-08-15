@@ -511,20 +511,3 @@ export const shadowVariant = {
   backgroundPosition: 'right',
   backgroundRepeat: 'no-repeat',
 };
-// export const ListWrapper = styled(Box)(
-//   css({
-//     containerType: 'inline-size',
-//   }),
-//   states({
-//     scrollable: {
-//       boxShadow: {
-//         _: undefined,
-//         c_sm: 'inset -24px 0 24px -24px black',
-//         sm: 'inset -24px 0 24px -24px black',
-//       },
-//     },
-//     disableContainerQuery: {
-//       containerType: 'normal',
-//     },
-//   })
-// );
