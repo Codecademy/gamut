@@ -26,6 +26,8 @@ import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 
+import { DisableContainerQueryExample, simpleRows } from '../examples';
+
 const meta: Meta<typeof List> = {
   component: List,
   subcomponents: { ListRow: ListRow as React.ComponentType<unknown> },
@@ -738,4 +740,51 @@ export const SpaceSystemProps: Story = {
       <ListExample {...args} />
     </Background>
   ),
+};
+
+const ListDisableContainerQueryExample: React.FC<ListProps> = () => {
+  const defaultComponent = (
+    <List spacing="condensed" variant="table">
+      {simpleRows.map(({ name, ship }) => (
+        <ListRow key={name}>
+          <ListCol size="md" type="header">
+            {name}
+          </ListCol>
+          <ListCol fill>{ship}</ListCol>
+          <ListCol justify="right" type="control">
+            {ship}
+          </ListCol>
+        </ListRow>
+      ))}
+    </List>
+  );
+
+  const disabledComponent = (
+    <List disableContainerQuery spacing="condensed" variant="table">
+      {simpleRows.map(({ name, ship }) => (
+        <ListRow key={name}>
+          <ListCol size="md" type="header">
+            {name}
+          </ListCol>
+          <ListCol fill>{ship}</ListCol>
+          <ListCol justify="right" type="control">
+            {ship}
+          </ListCol>
+        </ListRow>
+      ))}
+    </List>
+  );
+
+  return (
+    <DisableContainerQueryExample
+      componentName="List"
+      defaultComponent={defaultComponent}
+      disabledComponent={disabledComponent}
+    />
+  );
+};
+
+export const DisableContainerQuery: Story = {
+  args: {},
+  render: () => <ListDisableContainerQueryExample />,
 };

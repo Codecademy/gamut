@@ -1,8 +1,12 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { matchers } from '@emotion/jest';
 import { act, fireEvent, RenderResult, screen } from '@testing-library/react';
 
 import { DataGrid, DataGridProps } from '../DataGrid';
 import { ColumnConfig } from '../types';
+
+// Add the custom matchers provided by '@emotion/jest'
+expect.extend(matchers);
 
 type Row = { id: string; name: string; sin: string };
 type Columns = ColumnConfig<Row>[];
@@ -546,6 +550,22 @@ describe('DataGrid', () => {
         maxWidth: '750px',
         width: '750px',
       });
+    });
+  });
+
+  describe('Container query control', () => {
+    it('applies container query styles by default', () => {
+      const { view } = renderView();
+
+      const wrapper = view.container.querySelector('#test');
+      expect(wrapper).toHaveStyleRule('container-type', 'inline-size');
+    });
+
+    it('disables container queries when disableContainerQuery is true', () => {
+      const { view } = renderView({ disableContainerQuery: true });
+
+      const wrapper = view.container.querySelector('#test');
+      expect(wrapper).toHaveStyleRule('container-type', 'normal');
     });
   });
 });

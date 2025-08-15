@@ -7,6 +7,7 @@ const theme = {
     md: '@media only screen and (min-width: 1024px)',
     lg: '@media only screen and (min-width: 1200px)',
     xl: '@media only screen and (min-width: 1440px)',
+    c_base: '@container (min-width: 1px)',
     c_xs: '@container (min-width: 480px)',
     c_sm: '@container (min-width: 768px)',
     c_md: '@container (min-width: 1024px)',
@@ -189,13 +190,34 @@ describe('Queries', () => {
       });
     });
 
+    it('should generate c_base container query styles', () => {
+      const css = variance.createCss({
+        color: { property: 'color' },
+        padding: { property: 'padding' },
+      });
+
+      const styles = css({
+        color: { _: 'red', c_base: 'blue' },
+        padding: { _: '8px', c_base: '12px' },
+      })({ theme });
+
+      expect(styles).toEqual({
+        color: 'red',
+        padding: '8px',
+        '@container (min-width: 1px)': {
+          color: 'blue',
+          padding: '12px',
+        },
+      });
+    });
+
     it('should generate container query styles with array syntax', () => {
       const css = variance.createCss({
         color: { property: 'color' },
         fontSize: { property: 'fontSize' },
       });
 
-      // Array indices: 0: base, 1: xs, 2: sm, 3: md, 4: lg, 5: xl, 6: c_xs, 7: c_sm, 8: c_md, 9: c_lg, 10: c_xl
+      // Array indices: 0: base, 1: xs, 2: sm, 3: md, 4: lg, 5: xl, 6: c_base, 7: c_xs, 8: c_sm, 9: c_md, 10: c_lg, 11: c_xl
       const styles = css({
         color: [
           'red', // base
@@ -204,6 +226,7 @@ describe('Queries', () => {
           undefined, // md
           undefined, // lg
           undefined, // xl
+          'yellow', // c_base
           'blue', // c_xs
           'green', // c_sm
           'purple', // c_md
@@ -217,6 +240,7 @@ describe('Queries', () => {
           undefined, // md
           undefined, // lg
           undefined, // xl
+          '13px', // c_base
           '14px', // c_xs
           '16px', // c_sm
           '18px', // c_md
@@ -228,6 +252,10 @@ describe('Queries', () => {
       expect(styles).toEqual({
         color: 'red',
         fontSize: '12px',
+        '@container (min-width: 1px)': {
+          color: 'yellow',
+          fontSize: '13px',
+        },
         '@container (min-width: 480px)': {
           color: 'blue',
           fontSize: '14px',
