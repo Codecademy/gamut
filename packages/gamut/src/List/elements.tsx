@@ -274,7 +274,7 @@ const columnType = variant({
       minWidth: 'min-content',
     },
     expandControl: {
-      gridColumnEnd: { _: 'span 3', c_base: 'span 3', c_sm: undefined },
+      gridColumnEnd: { _: undefined, c_base: 'span 3', c_sm: undefined },
     },
   },
 });
