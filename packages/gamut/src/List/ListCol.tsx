@@ -31,7 +31,10 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
     );
     if (sticky) {
       return (
-        <StickyHeaderColWrapper data-testid="header-container">
+        <StickyHeaderColWrapper
+          as={isTable ? 'th' : 'div'}
+          data-testid="header-container"
+        >
           {col}
         </StickyHeaderColWrapper>
       );

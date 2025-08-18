@@ -14,23 +14,6 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 const components = {
-  ToolTip: {
-    component: (
-      <IconButton
-        icon={MiniStarIcon}
-        size="small"
-        tip="ToolTip"
-        tipProps={{
-          placement: 'floating',
-        }}
-      />
-    ),
-    status: 'None',
-    useCase: 'Clarify function of a UI element',
-    contents: 'Icon labels, shortcuts, quick tips',
-    triggers: 'On hover and focus',
-    skipTitle: false,
-  },
   InfoTip: {
     component: <InfoTip info="I am an infotip." placement="floating" />,
     status: 'None',
@@ -55,6 +38,23 @@ const components = {
     contents: 'Page snippets, textual insights, summaries, etc.',
     triggers: 'On hover and focus',
     skipTitle: true,
+  },
+  ToolTip: {
+    component: (
+      <IconButton
+        icon={MiniStarIcon}
+        size="small"
+        tip="ToolTip"
+        tipProps={{
+          placement: 'floating',
+        }}
+      />
+    ),
+    status: 'None',
+    useCase: 'Clarify function of a UI element',
+    contents: 'Icon labels, shortcuts, quick tips',
+    triggers: 'On hover and focus',
+    skipTitle: false,
   },
 };
 
