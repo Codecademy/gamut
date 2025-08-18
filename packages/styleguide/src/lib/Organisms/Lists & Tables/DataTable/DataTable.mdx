@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as DataTableStories from './DataTable.stories';
 
@@ -143,7 +143,7 @@ You can set the `shadow` prop to `true` to add a shadow to the DataTable when it
 
 <Canvas of={DataTableStories.Scrollable} />
 
-## Container query control
+## Container Query Control
 
 DataTable inherits container query functionality from the underlying List component. By default, DataTable uses CSS container queries to determine responsive behavior based on the container width rather than viewport width. This ensures optimal display when DataTable is placed in constrained layouts.
 
@@ -183,7 +183,7 @@ The example below demonstrates the difference between default container query be
 
 <Canvas of={DataTableStories.DisableContainerQuery} />
 
-**Note**: In most cases, you should use the default container query behavior as it provides better responsive design. Only disable container queries when you have specific layout requirements that conflict with the default behavior.
+<Callout text="In most cases, you should use the default container query behavior as it provides better responsive design. **Only** disable container queries when you have specific layout requirements that conflict with the default behavior." />
 
 ## Playground
 

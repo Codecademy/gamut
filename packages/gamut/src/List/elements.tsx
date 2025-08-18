@@ -444,9 +444,9 @@ export const ListWrapper = styled(Box)(
   states({
     scrollable: {
       boxShadow: {
-        _: undefined,
-        c_sm: 'inset -24px 0 24px -24px black',
-        sm: 'inset -24px 0 24px -24px black',
+        _: `inset -24px 0 24px -24px ${theme.colors['border-tertiary']}`,
+        c_base: undefined,
+        c_sm: `inset -24px 0 24px -24px ${theme.colors['border-tertiary']}`,
       },
     },
     disableContainerQuery: {
