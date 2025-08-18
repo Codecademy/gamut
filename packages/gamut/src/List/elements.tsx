@@ -255,8 +255,21 @@ const columnType = variant({
       },
     },
     control: {
-      // gridColumn: { _: 1, c_base: 3, c_sm: 1 },
-      // gridRow: 1,
+      gridColumn: { _: 1, c_base: 3, c_sm: 1 },
+      gridRow: 1,
+      minWidth: 'min-content',
+      alignItems: {
+        _: 'center',
+        c_base: 'flex-start',
+        c_sm: 'center',
+      },
+      justifyItems: {
+        _: undefined,
+        c_base: 'end',
+        c_sm: undefined,
+      },
+    },
+    tableControl: {
       minWidth: 'min-content',
       alignItems: {
         _: 'center',

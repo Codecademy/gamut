@@ -136,6 +136,7 @@ export const TableRow: DataRow = ({
           colConfig = {
             gridColumn: { _: gridCol, c_sm: undefined },
             gridRow,
+            type: 'tableControl',
           };
         }
 
