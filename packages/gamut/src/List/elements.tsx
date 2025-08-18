@@ -255,6 +255,8 @@ const columnType = variant({
       },
     },
     control: {
+      // gridColumn: { _: 1, c_base: 3, c_sm: 1 },
+      // gridRow: 1,
       minWidth: 'min-content',
       alignItems: {
         _: 'center',
@@ -368,7 +370,6 @@ const columnStates = states({
    */
   lastChildPadding: {
     '&:last-of-type': {
-      bg: 'blue',
       pr: 8,
     },
   },

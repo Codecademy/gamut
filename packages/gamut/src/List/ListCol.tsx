@@ -17,7 +17,6 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
     const isOrderedHeader = isOl && isHeader;
     const colEl =
       isTable && !sticky && isHeader ? 'th' : !isTable || sticky ? 'div' : 'td';
-    const isDataList = isTable && activeVariants.variant === 'default';
 
     const col = (
       <ColEl
@@ -25,7 +24,7 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
         {...rest}
         as={colEl}
         delimiter={sticky && activeVariants.variant === 'table'}
-        lastChildPadding={!isDataList}
+        lastChildPadding={!(type === 'expandControl')}
         ref={ref}
         sticky={sticky}
         type={isOrderedHeader ? 'orderedHeader' : type}

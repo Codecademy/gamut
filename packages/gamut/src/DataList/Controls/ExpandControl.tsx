@@ -38,6 +38,7 @@ export const ExpandControl: React.FC<ExpandColProps> = ({
       onClick={() => {
         onExpand?.({ rowId: id, toggle: expanded });
       }}
+      // mr={8}
     >
       <Rotation rotated={expanded}>
         <MiniChevronDownIcon color="secondary" />
