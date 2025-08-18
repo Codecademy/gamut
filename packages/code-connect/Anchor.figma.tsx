@@ -18,7 +18,10 @@ figma.connect(
       children: figma.string('✏️ label'),
       icon: figma.boolean('👁 leading icon', {
         true: figma.instance('↳ leading icon'),
-        false: undefined,
+        false: figma.boolean('👁 trailing icon', {
+          true: figma.instance('↳ trailing icon'),
+          false: undefined,
+        }),
       }),
       variant: figma.enum('variant', {
         Inline: 'inline',
