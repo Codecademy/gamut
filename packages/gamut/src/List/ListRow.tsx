@@ -86,7 +86,6 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
         : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
     let content = children;
     const renderNumbering = isOl && renderExpanded === undefined && !onClick;
-    const isDataTable = variant === 'table' && isTable;
 
     if ((renderExpanded || Boolean(onClick)) && !isTable) {
       content = (
@@ -122,11 +121,10 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
             : { _: 'nowrap', c_base: undefined, c_sm: 'nowrap' }
         }
         gridTemplateColumns={{
-          _: 'minmax(0, 1fr) max-content',
+          _: undefined,
           c_base: 'minmax(0, 1fr) max-content',
           c_sm: undefined,
         }}
-        interaction={onClick || isDataTable ? undefined : 'static'}
         isOl={renderNumbering}
         role={role}
         scrollable={scrollable}

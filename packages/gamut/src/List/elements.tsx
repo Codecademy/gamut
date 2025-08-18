@@ -81,7 +81,6 @@ const interactionVariants = variant({
   variants: {
     interactive: {
       cursor: 'pointer',
-      px: 8,
 
       '&:hover': {
         bg: 'background-hover',
@@ -92,9 +91,7 @@ const interactionVariants = variant({
         bg: 'background-selected',
       },
     },
-    static: {
-      px: 8,
-    },
+    static: {},
   },
 });
 
@@ -196,8 +193,8 @@ export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
 const headerVariants = variant({
   prop: 'variant',
   variants: {
-    default: { px: 8 },
-    card: { px: 8 },
+    default: {},
+    card: {},
     block: {},
     table: {
       borderBottom: 2,
@@ -365,6 +362,16 @@ const columnStates = states({
       pr: 8,
     },
   },
+  /**
+   * We add this to every RowEl except expandable DataList because it causes a layout shift.
+   * In that case, the padding is instead added directly to the Expandable control.
+   */
+  lastChildPadding: {
+    '&:last-of-type': {
+      bg: 'blue',
+      pr: 8,
+    },
+  },
   wrap: {
     whiteSpace: 'normal',
   },
@@ -384,9 +391,9 @@ const columnSpacing = variant({
     '&:first-of-type': {
       pl: 8,
     },
-    '&:last-of-type': {
-      pr: 8,
-    },
+    // '&:last-of-type': {
+    //   pr: 8,
+    // },
   },
   variants: {
     normal: {
