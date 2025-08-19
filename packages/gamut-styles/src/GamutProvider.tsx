@@ -54,7 +54,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
 
   // Do not initialize a new cache if one has been provided as props
   const activeCache = useRef<EmotionCache | false>(
-    cache ?? createEmotionCache(nonce ? { nonce } : {})
+    shouldCreateCache && (cache ?? createEmotionCache(nonce ? { nonce } : {}))
   );
 
   const contextValue = {
