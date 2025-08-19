@@ -1,4 +1,4 @@
-import { ButtonProps, FillButton } from '@codecademy/gamut';
+import { ButtonProps, TextButton } from '@codecademy/gamut';
 import figma from '@figma/code-connect';
 
 /**
@@ -10,10 +10,11 @@ import figma from '@figma/code-connect';
  */
 
 figma.connect(
-  FillButton,
-  'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A7',
+  TextButton,
+  'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1106%3A69',
   {
     props: {
+      children: figma.string('✏️ label'),
       icon: figma.boolean('👁 leading icon', {
         true: figma.instance('↳ leading icon'),
         false: figma.boolean('👁 trailing icon', {
@@ -21,18 +22,12 @@ figma.connect(
           false: undefined,
         }),
       }),
-      children: figma.string('✏️ label'),
-      variant: figma.enum('variant', {
-        primary: 'primary',
-        secondary: 'secondary',
-        danger: 'danger',
-      }),
       size: figma.enum('size', {
-        normal: 'normal',
         small: 'small',
+        normal: 'normal',
         large: 'large',
       }),
     },
-    example: (props: ButtonProps) => <FillButton {...props} />,
+    example: (props: ButtonProps) => <TextButton {...props} />,
   }
 );
