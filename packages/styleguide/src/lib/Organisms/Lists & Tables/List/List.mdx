@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { Callout, ComponentHeader } from '~styleguide/blocks';
 
 import * as ListStories from './List.stories';
 
@@ -215,27 +215,13 @@ Adjust the size of your window to see how the List changes at different breakpoi
 <Canvas of={ListStories.ResponsiveAnatomy} />
 <Canvas of={ListStories.Responsive} />
 
-##### Example configuration
-
-```tsx
-<List>
-  <ListRow>
-    <ListCol type="header">Header</ListCol>
-    <ListCol>Content</ListCol>
-    <ListCol type="control">
-      <IconButton />
-    </ListCol>
-  </ListRow>
-</List>
-```
-
-##### Container query control
+## Container Query Control
 
 By default, Lists use CSS container queries to determine responsive behavior based on the List's container width, rather than the viewport width. This allows Lists to adapt appropriately when placed in narrow sidebars or constrained layouts.
 
 However, there are cases where you may want to disable container queries and rely on traditional media queries instead:
 
-###### When to use `disableContainerQuery={true}`
+### When to use `disableContainerQuery={true}`
 
 - **Lists in containers already smaller than the breakpoint**: When your List is always rendered in a narrow container (like a 300px sidebar), container queries may not behave as expected
 - **Lists with very few rows**: Short Lists with only 1-2 rows may not benefit from container query responsive behavior
@@ -243,7 +229,7 @@ However, there are cases where you may want to disable container queries and rel
 - **Performance considerations**: In rare cases where container query support may impact performance
 - **Legacy browser support**: When supporting browsers that don't have full container query support
 
-###### Example usage
+### Example usage
 
 ```tsx
 // Disable container queries for a List in a narrow sidebar
@@ -269,7 +255,7 @@ The example below demonstrates the difference between default container query be
 
 <Canvas of={ListStories.DisableContainerQuery} />
 
-**Note**: In most cases, you should use the default container query behavior as it provides better responsive design. Only disable container queries when you have specific layout requirements that conflict with the default behavior.
+<Callout text="In most cases, you should use the default container query behavior as it provides better responsive design. **Only** disable container queries when you have specific layout requirements that conflict with the default behavior." />
 
 ## Expandable
 

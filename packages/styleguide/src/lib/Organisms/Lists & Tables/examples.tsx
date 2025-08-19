@@ -13,7 +13,11 @@ import {
   Text,
   useLocalQuery,
 } from '@codecademy/gamut';
-import { MiniKebabMenuIcon } from '@codecademy/gamut-icons';
+import {
+  MiniKebabMenuIcon,
+  RocketIcon,
+  SparkleOutlineIcon,
+} from '@codecademy/gamut-icons';
 import { BlueprintWhite } from '@codecademy/gamut-illustrations';
 import uniq from 'lodash/uniq';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
@@ -496,4 +500,25 @@ export const simpleRows = [
 export const simpleColumns = [
   { key: 'name', header: 'Name', type: 'header', size: 'md' } as const,
   { key: 'role', header: 'Role', fill: true, justify: 'right' },
+  {
+    header: 'Controls',
+    key: 'name',
+    size: 'xs',
+    type: 'control',
+    render: () => (
+      <>
+        <IconButton
+          icon={SparkleOutlineIcon}
+          tip="Warp back home"
+          tipProps={{ alignment: 'left-center', placement: 'floating' }}
+        />{' '}
+        <IconButton
+          icon={RocketIcon}
+          tip="Send on a mission"
+          tipProps={{ alignment: 'right-center', placement: 'floating' }}
+        />
+      </>
+    ),
+  },
+  ,
 ];
