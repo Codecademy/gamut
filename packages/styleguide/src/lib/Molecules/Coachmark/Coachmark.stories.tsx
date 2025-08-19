@@ -94,30 +94,3 @@ export const Delay: Story = {
     />
   ),
 };
-
-export const FigmaFeatureBelowBeakRight: Story = {
-  render: () => {
-    const [shouldShow, setShouldShow] = useState(true);
-    return (
-      <Coachmark
-        popoverProps={{ beak: 'right', position: 'below' }}
-        renderPopover={() => (
-          <FlexBox alignItems="flex-start" flexDirection="column" gap={4} p={16}>
-            <Text as="h3" color="navy" fontSize={20} fontWeight="title" mb={0}>
-              New feature
-            </Text>
-            <Text color="navy" fontSize={14}>
-              Information about the new feature can go here. Here's an extra sentence if you really need it.
-            </Text>
-            <FillButton size="small" onClick={() => setShouldShow(false)}>
-              Button text
-            </FillButton>
-          </FlexBox>
-        )}
-        shouldShow={shouldShow}
-      >
-        <FillButton onClick={() => setShouldShow(true)}>Target Button</FillButton>
-      </Coachmark>
-    );
-  },
-};

@@ -1,6 +1,4 @@
 import figma from '@figma/code-connect';
-import React from 'react';
-import { JSX } from 'react/jsx-runtime';
 
 import { Badge, BadgeProps } from '../gamut/src/Badge/index';
 

@@ -1,5 +1,9 @@
 import { Badge, FlexBox } from '@codecademy/gamut';
-import { MiniCheckCircleIcon, MiniStarIcon, MiniWarningTriangleIcon } from '@codecademy/gamut-icons';
+import {
+  MiniCheckCircleIcon,
+  MiniStarIcon,
+  MiniWarningTriangleIcon,
+} from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { TertiaryFillExample } from './examples';
@@ -95,11 +99,7 @@ export const FigmaPrimaryWithCheckCircle: Story = {
 };
 
 export const FigmaPrimaryWhiteText: Story = {
-  render: () => (
-    <Badge variant="primary">
-      Badge label
-    </Badge>
-  ),
+  render: () => <Badge variant="primary">Badge label</Badge>,
 };
 
 export const Fun: Story = {
