@@ -397,7 +397,6 @@ export const StickyHeaderColWrapper = styled.th(
     '&:before': {
       content: '""',
       position: 'absolute',
-      bg: 'background',
       width: '100%',
       height: '100%',
       top: 0,
@@ -407,7 +406,7 @@ export const StickyHeaderColWrapper = styled.th(
     '&:after': {
       content: '""',
       position: 'absolute',
-      bg: 'background-current',
+      bg: 'inherit',
       width: '100%',
       height: '100%',
       top: 0,
@@ -419,7 +418,6 @@ export const StickyHeaderColWrapper = styled.th(
     position: 'sticky',
     left: 0,
     zIndex: 1,
-    bg: 'inherit',
 
     '&:not(:first-of-type)': {
       left: { _: 16, c_base: 0, c_sm: 16 },
