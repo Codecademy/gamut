@@ -19,6 +19,14 @@
       "options": {
         "jestConfig": "packages/eslint-plugin-gamut/jest.config.ts"
       }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/eslint-plugin-gamut/**/*.{ts,tsx,js,jsx,json,mdx}"
+        ]
+      }
     }
   }
 }

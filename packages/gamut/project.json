@@ -33,6 +33,14 @@
         "cwd": "{projectRoot}",
         "command": "rm -rf ./dist"
       }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/gamut/**/*.{ts,tsx,js,jsx,json,mdx}"
+        ]
+      }
     }
   }
 }

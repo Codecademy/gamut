@@ -3,5 +3,15 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/gamut-kit",
   "projectType": "library",
-  "tags": []
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/gamut-kit/**/*.{ts,tsx,js,jsx,json,mdx}"
+        ]
+      }
+    }
+  }
 }

@@ -28,8 +28,12 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/packages/gamut-patterns"],
-      "dependsOn": ["build"],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/gamut-patterns"
+      ],
+      "dependsOn": [
+        "build"
+      ],
       "options": {
         "jestConfig": "packages/gamut-patterns/jest.config.ts"
       }
@@ -39,6 +43,14 @@
       "options": {
         "cwd": "{projectRoot}",
         "command": "rm -rf ./dist"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/gamut-patterns/**/*.{ts,tsx,js,jsx,json,mdx}"
+        ]
       }
     }
   }

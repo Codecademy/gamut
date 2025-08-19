@@ -6,7 +6,9 @@
   "tags": [],
   "targets": {
     "build": {
-      "outputs": ["{projectRoot}/dist"],
+      "outputs": [
+        "{projectRoot}/dist"
+      ],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/variance",
@@ -20,7 +22,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/packages/variance"],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/variance"
+      ],
       "options": {
         "jestConfig": "packages/variance/jest.config.ts"
       }
@@ -30,6 +34,14 @@
       "options": {
         "cwd": "{projectRoot}",
         "command": "rm -rf ./dist"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/variance/**/*.{ts,tsx,js,jsx,json,mdx}"
+        ]
       }
     }
   }

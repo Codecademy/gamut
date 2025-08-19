@@ -6,7 +6,9 @@
   "tags": [],
   "targets": {
     "build": {
-      "outputs": ["{projectRoot}/dist"],
+      "outputs": [
+        "{projectRoot}/dist"
+      ],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/gamut-styles",
@@ -21,8 +23,12 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "dependsOn": ["^build"],
-      "outputs": ["{workspaceRoot}/coverage/packages/gamut-styles"],
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/gamut-styles"
+      ],
       "options": {
         "jestConfig": "packages/gamut-styles/jest.config.ts",
         "passWithNoTests": false
@@ -33,6 +39,14 @@
       "options": {
         "cwd": "{projectRoot}",
         "command": "rm -rf ./dist"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/gamut-styles/**/*.{ts,tsx,js,jsx,json,mdx}"
+        ]
       }
     }
   }

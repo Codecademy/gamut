@@ -29,8 +29,12 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "dependsOn": ["build"],
-      "outputs": ["{workspaceRoot}/coverage/packages/gamut-icons"],
+      "dependsOn": [
+        "build"
+      ],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/gamut-icons"
+      ],
       "options": {
         "jestConfig": "packages/gamut-icons/jest.config.ts"
       }
@@ -40,6 +44,14 @@
       "options": {
         "cwd": "{projectRoot}",
         "command": "rm -rf ./dist"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/gamut-icons/**/*.{ts,tsx,js,jsx,json,mdx}"
+        ]
       }
     }
   }

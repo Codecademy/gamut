@@ -6,7 +6,9 @@
   "tags": [],
   "targets": {
     "build": {
-      "outputs": ["{projectRoot}/dist"],
+      "outputs": [
+        "{projectRoot}/dist"
+      ],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/gamut-illustrations",
@@ -20,7 +22,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/packages/gamut-illustrations"],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/gamut-illustrations"
+      ],
       "options": {
         "jestConfig": "packages/gamut-illustrations/jest.config.ts"
       }
@@ -30,6 +34,14 @@
       "options": {
         "cwd": "{projectRoot}",
         "command": "rm -rf ./dist"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/gamut-illustrations/**/*.{ts,tsx,js,jsx,json,mdx}"
+        ]
       }
     }
   }

@@ -48,6 +48,14 @@
         "babelConfig",
         "ci"
       ]
+    },
+    "@nx/eslint:lint": {
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.js",
+        "{workspaceRoot}/.eslintignore"
+      ],
+      "cache": true
     }
   },
   "generators": {

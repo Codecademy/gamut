@@ -7,9 +7,19 @@
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/packages/macros"],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/macros"
+      ],
       "options": {
         "jestConfig": "packages/macros/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/macros/**/*.{ts,tsx,js,jsx,json,mdx}"
+        ]
       }
     }
   }
