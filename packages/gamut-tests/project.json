@@ -6,9 +6,7 @@
   "tags": [],
   "targets": {
     "build": {
-      "outputs": [
-        "{projectRoot}/dist"
-      ],
+      "outputs": ["{projectRoot}/dist"],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/gamut-tests",
@@ -22,9 +20,7 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/packages/gamut-tests"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/packages/gamut-tests"],
       "options": {
         "jestConfig": "packages/gamut-tests/jest.config.ts",
         "passWithNoTests": true

@@ -29,12 +29,8 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "dependsOn": [
-        "build"
-      ],
-      "outputs": [
-        "{workspaceRoot}/coverage/packages/gamut-icons"
-      ],
+      "dependsOn": ["build"],
+      "outputs": ["{workspaceRoot}/coverage/packages/gamut-icons"],
       "options": {
         "jestConfig": "packages/gamut-icons/jest.config.ts"
       }
