@@ -35,10 +35,10 @@ figma.connect(
       //   heading: figma.boolean('heading', {
       //     true: figma.boolean('description', {
       //       true: figma.children(['↳ heading', '↳ description']),
-      //       false: figma.string('↳ heading'),
+      //       false: figma.children('↳ heading'),
       //     }),
       //     false: figma.boolean('description', {
-      //       true: figma.string('↳ description'),
+      //       true: figma.children('↳ description'),
       //       false: undefined,
       //     }),
       //   }),
