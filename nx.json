@@ -1,14 +1,4 @@
 {
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx-cloud",
-      "options": {
-        "cacheableOperations": ["lint", "build", "test", "verify"],
-        "parallel": 3,
-        "accessToken": "ZmVjZWYxNzctYTdmZC00ODYzLTg4MzEtZTE1YTVmZDdkZmY1fHJlYWQ="
-      }
-    }
-  },
   "extends": "nx/presets/npm.json",
   "workspaceLayout": {
     "appsDir": "packages",
@@ -34,7 +24,8 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production", "babelConfig", "ci"]
+      "inputs": ["production", "^production", "babelConfig", "ci"],
+      "cache": true
     },
     "verify": {
       "cache": true
@@ -55,6 +46,12 @@
         "{workspaceRoot}/.eslintrc.js",
         "{workspaceRoot}/.eslintignore"
       ],
+      "cache": true
+    },
+    "lint": {
+      "cache": true
+    },
+    "test": {
       "cache": true
     }
   },
