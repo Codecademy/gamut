@@ -11,9 +11,6 @@
       "options": {
         "jestConfig": "packages/macros/jest.config.ts"
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint"
     }
   }
 }

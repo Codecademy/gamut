@@ -1,5 +1,4 @@
 module.exports = {
-  extends: ['../../.eslintrc.js'],
-  root: false,
-  ignorePatterns: ['!**/*'],
+  extends: ['../../.eslintrc.json'],
+  ignorePatterns: ['!**/*', 'dist'],
 };

@@ -4,6 +4,14 @@
     "appsDir": "packages",
     "libsDir": "packages"
   },
+  "plugins": [
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
+  ],
   "namedInputs": {
     "babelConfig": ["{workspaceRoot}/babel.defaults.js"],
     "ci": [
@@ -43,7 +51,7 @@
     "@nx/eslint:lint": {
       "inputs": [
         "default",
-        "{workspaceRoot}/.eslintrc.js",
+        "{workspaceRoot}/.eslintrc.json",
         "{workspaceRoot}/.eslintignore"
       ],
       "cache": true

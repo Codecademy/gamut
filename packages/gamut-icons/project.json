@@ -41,9 +41,6 @@
         "cwd": "{projectRoot}",
         "command": "rm -rf ./dist"
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint"
     }
   }
 }
