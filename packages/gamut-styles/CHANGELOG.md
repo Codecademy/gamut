@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.7.0...@codecademy/gamut-styles@17.8.0) (2025-08-20)
+
+### Features
+
+- add nonce property to GamutProvider [FCORE-5007] ([190e36f](https://github.com/Codecademy/gamut/commit/190e36f98de6543515bb32f68054d5a26526d863))
+
 ## [17.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.6.5...@codecademy/gamut-styles@17.7.0) (2025-07-22)
 
 ### Features
