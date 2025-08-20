@@ -26,6 +26,7 @@
     "@emotion/jest": "^11.11.0",
     "@mdx-js/react": "^3.1.0",
     "@nx/eslint": "^20.5.0",
+    "@nx/eslint-plugin": "20.5.0",
     "@nx/jest": "20.5.0",
     "@nx/js": "20.5.0",
     "@nx/react": "20.5.0",

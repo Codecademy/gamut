@@ -21,12 +21,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "packages/eslint-plugin-gamut/**/*.{ts,tsx,js,jsx,json,mdx}"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
   }
 }

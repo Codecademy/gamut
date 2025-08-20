@@ -6,10 +6,7 @@
   "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["packages/gamut-kit/**/*.{ts,tsx,js,jsx,json,mdx}"]
-      }
+      "executor": "@nx/eslint:lint"
     }
   }
 }

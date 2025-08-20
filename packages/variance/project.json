@@ -33,10 +33,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["packages/variance/**/*.{ts,tsx,js,jsx,json,mdx}"]
-      }
+      "executor": "@nx/eslint:lint"
     }
   }
 }

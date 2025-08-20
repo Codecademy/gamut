@@ -13,10 +13,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["packages/macros/**/*.{ts,tsx,js,jsx,json,mdx}"]
-      }
+      "executor": "@nx/eslint:lint"
     }
   }
 }

@@ -1,12 +1,12 @@
 module.exports = {
   root: true,
-
+  ignorePatterns: ['**/*'],
   extends: [
     require.resolve('@codecademy/eslint-config'),
     'plugin:react/jsx-runtime',
   ],
 
-  plugins: ['eslint-plugin-gamut'],
+  plugins: ['@nx', 'eslint-plugin-gamut'],
 
   rules: {
     'gamut/prefer-themed': 'error',

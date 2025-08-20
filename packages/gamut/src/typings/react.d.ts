@@ -1,4 +1,3 @@
-import { Attributes, ReactHTML } from 'react';
 import * as React from 'react';
 
 /**
