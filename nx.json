@@ -77,6 +77,5 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "nxCloudAccessToken": "ZmVjZWYxNzctYTdmZC00ODYzLTg4MzEtZTE1YTVmZDdkZmY1fHJlYWQ=",
   "parallel": 3,
-  "useInferencePlugins": false,
   "defaultBase": "main"
 }
