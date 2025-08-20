@@ -40,7 +40,7 @@ const PopoverExample = ({ p = 16, ...rest }: PopoverExampleProps) => {
       </Box>
       <FlexBox>
         <Popover
-          {...rest}
+          {...(rest as any)}
           isOpen={open}
           targetRef={activeElRef}
           onRequestClose={() => setOpen(false)}

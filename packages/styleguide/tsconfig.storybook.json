@@ -28,9 +28,10 @@
     "src/**/*.stories.jsx",
     "src/**/*.stories.tsx",
     "src/**/*.stories.mdx",
+    ".storybook/**/*.ts",
     ".storybook/**/*.tsx",
-    ".storybook/*.js",
-    ".storybook/*.ts",
+    ".storybook/**/*.js",
+    ".storybook/**/*.jsx",
     "../../packages/gamut-styles/dist/typings/theme.d.ts"
   ]
 }

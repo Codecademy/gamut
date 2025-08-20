@@ -1,6 +1,7 @@
 {
-  "ignorePatterns": ["**/*"],
   "root": true,
+  "reportUnusedDisableDirectives": true,
+  "ignorePatterns": ["**/*"],
   "extends": ["@codecademy/eslint-config", "plugin:react/jsx-runtime"],
   "plugins": ["@nx", "eslint-plugin-gamut"],
 
@@ -16,12 +17,6 @@
       "files": ["**/typings/*", "*.d.ts"],
       "rules": {
         "@typescript-eslint/no-namespace": "off"
-      }
-    },
-    {
-      "files": ["*.mdx"],
-      "rules": {
-        "gamut/import-paths": "off"
       }
     },
     {
