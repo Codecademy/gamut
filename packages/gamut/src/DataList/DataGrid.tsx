@@ -1,3 +1,5 @@
+import { system } from '@codecademy/gamut-styles';
+import { StyleProps } from '@codecademy/variance';
 import { ComponentProps, useMemo } from 'react';
 
 import { List } from '../List';
@@ -14,7 +16,10 @@ export interface DataGridProps<
   Cols extends ColumnConfig<Row>[]
 > extends MarshaledColProps,
     DataListControls<Row, IdKey, Cols>,
-    Omit<ComponentProps<typeof List>, 'header' | 'id'> {
+    Omit<
+      ComponentProps<typeof List>,
+      'header' | 'id' | 'rowBreakpoint' | keyof StyleProps<typeof system.space>
+    > {
   /** Whether the data inside is loading and should be indicated to the user somehow */
   loading?: boolean;
   /** Whether an additional header element should be added */
@@ -49,7 +54,9 @@ export function DataGrid<
     emptyMessage,
     hideSelectAll = false,
     scrollToTopOnUpdate = false,
-    ...rest
+    id,
+    wrapperWidth,
+    overflow,
   } = props;
 
   const empty = rows.length === 0;
@@ -96,7 +103,6 @@ export function DataGrid<
     <ListStateContext.Provider value={{ query }}>
       <ListControlContext.Provider value={listControls}>
         <List
-          {...rest}
           as="table"
           emptyMessage={emptyMessage ?? <EmptyRows />}
           header={
@@ -110,12 +116,16 @@ export function DataGrid<
             ) : null
           }
           height={height}
+          id={id}
+          loading={loading}
           minHeight={minHeight}
+          overflow={overflow}
           scrollToTopOnUpdate={scrollToTopOnUpdate}
           scrollable={scrollable}
           shadow={shadow}
           spacing={spacing}
           variant={variant}
+          wrapperWidth={wrapperWidth ?? undefined}
         >
           {renderedRows.map((row) => {
             const rowId = row[idKey];

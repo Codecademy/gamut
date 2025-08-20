@@ -14849,7 +14849,7 @@ react-focus-lock@^2.13.6:
     use-callback-ref "^1.3.3"
     use-sidecar "^1.1.3"
 
-react-focus-on@^3.5.1:
+react-focus-on@^3.10.0:
   version "3.10.0"
   resolved "https://registry.npmjs.org/react-focus-on/-/react-focus-on-3.10.0.tgz#60f6af03b59be5a0901f86cf9e24799c33e90327"
   integrity sha512-r2yQchO6QfV5zB3J4Gj6cTYBoxD369vkt0oKj1NJLA5ChQzxjko6V/dqQ7nvmaUBm5pHC+pa8tzHT9jtsVRFMQ==

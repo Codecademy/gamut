@@ -1,9 +1,16 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as shimmerParameters } from './Shimmer/Shimmer.mdx';
+import { parameters as spinnerParameters } from './Spinner/Spinner.mdx';
 
 export const parameters = {
-  id: 'Loaders',
+  id: 'Atoms/Loaders',
   title: 'Loaders',
   subtitle: 'Animations that indicate information is currently loading.',
 };
@@ -13,19 +20,5 @@ export const parameters = {
 <AboutHeader {...parameters} />
 
 <TableOfContents
-  links={[
-    {
-      id: 'Atoms/Loaders/Shimmer',
-      subtitle:
-        'Shimmer effect for boxes — generic styles that apply to our Skeleton elements.',
-      title: 'Shimmer',
-      status: 'updating',
-    },
-    {
-      id: 'Atoms/Loaders/Spinner',
-      subtitle: 'A spinner that indicates information is loading.',
-      title: 'Spinner',
-      status: 'current',
-    },
-  ]}
+  links={addParentPath(parameters.id, [shimmerParameters, spinnerParameters])}
 />

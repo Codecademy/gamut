@@ -3,6 +3,108 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [77.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.3.1...@codecademy/styleguide@77.3.2) (2025-08-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [77.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.3.0...@codecademy/styleguide@77.3.1) (2025-08-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [77.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.2.0...@codecademy/styleguide@77.3.0) (2025-08-12)
+
+### Features
+
+- **Icons:** add git, markdown, typescript icons ([4b15f3b](https://github.com/Codecademy/gamut/commit/4b15f3b5826f28c50ec782b3fb9e37e2a0bd797e))
+
+## [77.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.1.4...@codecademy/styleguide@77.2.0) (2025-08-08)
+
+### Features
+
+- Add icons for Apple, EA, Google, IBM, Instagram (rounder variant), Meta, Reddit (solid), Spotify and Windows ([0bdcd8f](https://github.com/Codecademy/gamut/commit/0bdcd8fe41d732414e2e186a1e4afb4eb5189f31))
+
+### [77.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.1.3...@codecademy/styleguide@77.1.4) (2025-08-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [77.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.1.2...@codecademy/styleguide@77.1.3) (2025-08-06)
+
+### Bug Fixes
+
+- **Popover:** Add ResizeObserver for text reflow bugs ([6308ae2](https://github.com/Codecademy/gamut/commit/6308ae2e6d186d3244aa81d6e37c19c619a2df09))
+
+### [77.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.1.1...@codecademy/styleguide@77.1.2) (2025-07-25)
+
+### Bug Fixes
+
+- **PopoverContainer:** Give popover better scroll awareness ([58e7b80](https://github.com/Codecademy/gamut/commit/58e7b809cd59c8251852c1d2ea6ca7b1c4b6ad5b))
+
+### [77.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.1.0...@codecademy/styleguide@77.1.1) (2025-07-24)
+
+### Bug Fixes
+
+- **Pagination:** allow for text variant to render ([b5ab3b5](https://github.com/Codecademy/gamut/commit/b5ab3b5792d64ae4d473a1e4ff257de63351a150))
+
+## [77.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.0.3...@codecademy/styleguide@77.1.0) (2025-07-22)
+
+### Features
+
+- **ContainerQueries:** add container queries to responsive props api ([f29d307](https://github.com/Codecademy/gamut/commit/f29d3071599f9c686b47687787ed44d1e9d826e1))
+
+### [77.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.0.2...@codecademy/styleguide@77.0.3) (2025-07-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [77.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.0.1...@codecademy/styleguide@77.0.2) (2025-07-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [77.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.0.0...@codecademy/styleguide@77.0.1) (2025-07-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [77.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@76.1.1...@codecademy/styleguide@77.0.0) (2025-07-16)
+
+### ⚠ BREAKING CHANGES
+
+- **List:** Add spacing system props to List & remove deprecated props
+
+### Features
+
+- **List:** Add spacing system props to List & remove deprecated props ([097e9eb](https://github.com/Codecademy/gamut/commit/097e9ebbc0b81f211642372fdbda38aeddfded78))
+
+### [76.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@76.1.0...@codecademy/styleguide@76.1.1) (2025-07-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [76.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@76.0.1...@codecademy/styleguide@76.1.0) (2025-07-11)
+
+### Features
+
+- **Checkbox:** indeterminate checkboxes ([66ab4f7](https://github.com/Codecademy/gamut/commit/66ab4f70592bc58d84aab6f2e2d86be30a0945b5))
+
+### [76.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@76.0.0...@codecademy/styleguide@76.0.1) (2025-07-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [76.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@75.1.3...@codecademy/styleguide@76.0.0) (2025-07-08)
+
+### ⚠ BREAKING CHANGES
+
+- **Logo:** Remove logo from gamut
+
+### Code Refactoring
+
+- **Logo:** Remove logo from gamut ([cdc47a2](https://github.com/Codecademy/gamut/commit/cdc47a28062f62ff5c9a9093ae33b580d79c1e2c))
+
+### [75.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@75.1.2...@codecademy/styleguide@75.1.3) (2025-07-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [75.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@75.1.1...@codecademy/styleguide@75.1.2) (2025-06-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [75.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@75.1.0...@codecademy/styleguide@75.1.1) (2025-06-17)
 
 **Note:** Version bump only for package @codecademy/styleguide

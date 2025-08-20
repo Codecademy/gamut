@@ -5,6 +5,7 @@ import { ComponentHeader } from '~styleguide/blocks';
 import * as ListStories from './List.stories';
 
 export const parameters = {
+  title: 'List',
   subtitle: `The elements, APIs, and technical operations that support List and Table designs.`,
   design: {
     type: 'figma',
@@ -310,6 +311,12 @@ Buttons can be configured to expand the row content. Check over the "Expand on b
 An entire row can be made interactive to expand the row content. Check over the "Expand on row click" section for more guidance.
 
 <Canvas of={ListStories.ExpandedRowGuide} />
+
+## System props
+
+List has access to the [space system props](https://gamut.codecademy.com/?path=/docs/foundations-system-props--docs#space) for controlling the spacing around the List component. These props can be used to control the margin and padding of the List.
+
+<Canvas of={ListStories.SpaceSystemProps} />
 
 ## Playground
 

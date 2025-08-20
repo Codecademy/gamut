@@ -1,9 +1,11 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import { AboutHeader } from '~styleguide/blocks';
+
+import { MoleculeAboutToC } from './AboutToC';
 
 export const parameters = {
-  id: 'Molecules/About',
+  id: 'Molecules',
   title: 'Molecules',
   subtitle:
     'Molecules are groups of atoms together. These consist of a few atoms combined for a small, self-contained design.',
@@ -19,98 +21,4 @@ export const parameters = {
 >
 > [- Brad Frost, author of "Atomic Design"](https://bradfrost.com/blog/post/atomic-web-design/#molecules)
 
-<TableOfContents
-  links={[
-    {
-      id: 'Molecules/AccordionButtonDeprecated',
-      subtitle: `The standard "top" button for an AccordionDeprecated component.`,
-      title: 'AccordionButtonDeprecated',
-      status: 'deprecated',
-    },
-    {
-      id: 'Molecules/AccordionDeprecated',
-      subtitle: `A molecule consisting of a "top" section and an expandable body.`,
-      title: 'AccordionDeprecated',
-      status: 'deprecated',
-    },
-    {
-      id: 'Molecules/Alert',
-      subtitle: `An alert displays an important, succinct message, and provides actions for users to address (or dismiss the alert).`,
-      title: 'Alert',
-      status: 'current',
-    },
-    {
-      id: 'Molecules/Breadcrumbs',
-      subtitle: `Breadcrumb-style links for upwards navigation.`,
-      title: 'Breadcrumbs',
-      status: 'current',
-    },
-    {
-      id: 'Molecules/Coachmark',
-      subtitle: `A Coachmark helps bring attention to a CTA by showing a popover around that element.`,
-      title: 'Coachmark',
-      status: 'current',
-    },
-    {
-      id: 'Molecules/Disclosure',
-      subtitle: `A Disclosure is an expandable container featuring a heading that serves as a toggle to expand or collapse a content section.`,
-      title: 'Disclosure',
-      status: 'current',
-    },
-    {
-      id: 'Molecules/Flyout',
-      subtitle: `Flyout is a general purpose container that animates into view.`,
-      title: 'Flyout',
-      status: 'current',
-    },
-    {
-      id: 'Molecules/Menu',
-      subtitle: `The Menu component with MenuItem and MenuSeparator subcomponents.`,
-      title: 'Menu',
-      status: 'current',
-    },
-    {
-      id: 'Molecules/Modals',
-      subtitle: `The abstract concepts our system is built on: colors, spacing, responsive layouts, and the like.`,
-      title: 'Modals',
-      status: 'current',
-    },
-    {
-      id: 'Molecules/Pagination',
-      subtitle: `Controls for navigating through paginated content.`,
-      title: 'Pagination',
-      status: 'current',
-    },
-    {
-      id: 'Molecules/Popover',
-      subtitle: `Popover is a surface which takes a target element and shows an overlay positioned around that element.`,
-      title: 'Popover',
-      status: 'current',
-    },
-    {
-      id: 'Molecules/Tabs',
-      subtitle: `Tabs organize content into multiple sections, with only one section visible at a time.`,
-      title: 'Tabs',
-      status: 'updating',
-    },
-    {
-      id: 'Molecules/Tips',
-      subtitle: `Tips come in the form of ToolTip or InfoTips (and eventually link PreviewTip).`,
-      title: 'Tips',
-      status: 'current',
-    },
-    {
-      id: 'Molecules/Toasts',
-      subtitle: `Use Toasts to reveal non-essential information upon interaction.`,
-      title: 'Toasts',
-      status: 'current',
-    },
-    {
-      id: 'Molecules/Video',
-      subtitle: `A video player that can play both youtube and vimeo videos
-given a video URL.`,
-      title: 'Video',
-      status: 'updating',
-    },
-  ]}
-/>
+<MoleculeAboutToC />

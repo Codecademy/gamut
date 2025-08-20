@@ -1,6 +1,15 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as connectedFormParameters } from './ConnectedForm/ConnectedForm.mdx';
+import { parameters as connectedFormGroupParameters } from './ConnectedFormGroup/ConnectedFormGroup.mdx';
+import { parameters as connectedFormInputsParameters } from './ConnectedFormInputs/ConnectedFormInputs.mdx';
+import { parameters as submitButtonParameters } from './SubmitButton/SubmitButton.mdx';
 
 export const parameters = {
   id: 'Organisms/ConnectedForm',
@@ -15,30 +24,10 @@ export const parameters = {
 Our Connected- and GridForm organisms provide a easy way to implement forms. While our `Form` atoms compose the structure of these forms, we strongly recommend only creating forms with using `GridForm` or `ConnectedForm`. You should only use the form element atoms as individual elements if your interface doesn’t need to support the technical functions of a form.
 
 <TableOfContents
-  links={[
-    {
-      id: 'Organisms/ConnectedForm/ConnectedForm',
-      subtitle: 'A flexible way to build forms.',
-      title: 'ConnectedForm',
-      status: 'current',
-    },
-    {
-      id: 'Organisms/ConnectedForm/ConnectedFormGroup',
-      subtitle: 'A form group for the ConnectedForm component.',
-      title: 'ConnectedFormGroup',
-      status: 'updating',
-    },
-    {
-      id: 'Organisms/ConnectedForm/ConnectedFormInputs',
-      subtitle: 'Different form inputs for the ConnectedForm component.',
-      title: 'ConnectedFormInputs',
-      status: 'updating',
-    },
-    {
-      id: 'Organisms/ConnectedForm/SubmitButton',
-      subtitle: 'A submit type button for ConnectedForm.',
-      title: 'SubmitButton',
-      status: 'current',
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    connectedFormParameters,
+    connectedFormGroupParameters,
+    connectedFormInputsParameters,
+    submitButtonParameters,
+  ])}
 />

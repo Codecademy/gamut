@@ -26,11 +26,14 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
   /** A custom message to override the default empty message  */
   emptyMessage?: React.ReactNode;
   /**
-   * @deprecated Use overflow instead!
-   * Whether the List container should have overflow hidden.
+   * How the List container should handle overflow.
    */
-  overflowHidden?: boolean;
   overflow?: BoxProps['overflow'];
+  /**
+   * This is an override for the width of the wrapper element that contains the List.
+   * It is useful for custom scroll and breakpoint handling. Use with caution.
+   */
+  wrapperWidth?: BoxProps['width'];
 }
 
 export const List = forwardRef<HTMLUListElement, ListProps>(
@@ -49,9 +52,10 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       children,
       header,
       emptyMessage,
-      overflowHidden = false,
       overflow = 'auto',
       scrollToTopOnUpdate = false,
+      wrapperWidth,
+      ...rest
     },
     ref
   ) => {
@@ -85,7 +89,12 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     });
 
     const listContent = (
-      <ListEl as={isTable ? 'tbody' : as} ref={ref} variant={value.variant}>
+      <ListEl
+        as={isTable ? 'tbody' : as}
+        ref={ref}
+        variant={value.variant}
+        {...rest}
+      >
         {children}
       </ListEl>
     );
@@ -126,7 +135,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
         <ListWrapper
           id={id}
           maxHeight={height}
-          overflow={overflowHidden ? 'hidden' : overflow}
+          overflow={overflow}
           position="relative"
           ref={wrapperRef}
           scrollable={!isEmpty && showShadow}
@@ -137,12 +146,12 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             as={isTable && !isEmpty && !loading ? 'table' : 'div'}
             data-testid={`scrollable-${id}`}
             height={isEmpty ? height : 'fit-content'}
-            maxWidth={1}
+            maxWidth={wrapperWidth || 1}
             minHeight={minHeight}
             overflow="inherit"
             position="relative"
             ref={!isEmpty ? tableRef : undefined}
-            width="inherit"
+            width={wrapperWidth || 'inherit'}
           >
             {content}
           </Box>
