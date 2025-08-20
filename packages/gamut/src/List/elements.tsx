@@ -59,7 +59,7 @@ const rowStates = states({
   isOl: {
     '&::before': {
       ...olStyles,
-      display: { _: 'none', c_sm: 'flex' },
+      display: { _: 'flex', c_base: 'none', c_sm: 'flex' },
       pl: 16,
     },
   },
@@ -69,7 +69,7 @@ const rowStates = states({
   },
   expanded: {
     display: 'flex',
-    flexDirection: { c_sm: 'column' },
+    flexDirection: { _: 'column', c_base: 'row', c_sm: 'column' },
   },
   clickable: {
     cursor: 'pointer',
@@ -88,11 +88,11 @@ const spacingVariants = variant({
   prop: 'spacing',
   variants: {
     normal: {
-      gap: { _: 8, c_sm: 40 },
+      gap: { _: 40, c_base: 8, c_sm: 40 },
     },
     condensed: {
       fontSize: 16,
-      gap: { _: 8, c_sm: 32 },
+      gap: { _: 32, c_base: 8, c_sm: 32 },
     },
     compact: {
       gap: 0,
@@ -137,16 +137,16 @@ const rowBreakpointVariants = variant({
   defaultVariant: 'xs',
   variants: {
     xs: {
-      display: { _: 'grid', c_sm: 'flex' },
-      flexDirection: { _: 'column', c_sm: 'row' },
+      display: { _: 'flex', c_base: 'grid', c_sm: 'flex' },
+      flexDirection: { _: 'row', c_base: 'column', c_sm: 'row' },
     },
     sm: {
-      display: { _: 'grid', sm: 'flex' },
-      flexDirection: { _: 'column', sm: 'row' },
+      display: { _: 'grid', c_md: 'flex', md: 'flex' },
+      flexDirection: { _: 'column', c_md: 'row', md: 'row' },
     },
     md: {
-      display: { _: 'grid', md: 'flex' },
-      flexDirection: { _: 'column', md: 'row' },
+      display: { _: 'grid', c_lg: 'flex', lg: 'flex' },
+      flexDirection: { _: 'column', c_lg: 'row', lg: 'row' },
     },
     grid: { display: 'grid' },
   },
@@ -161,7 +161,7 @@ export interface RowProps
 
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
-    py: { _: 8, c_sm: 0 },
+    py: { _: 0, c_base: 8, c_sm: 0 },
     bg: 'inherit',
   }),
   variance.compose(system.grid),
@@ -192,13 +192,13 @@ export interface HeaderProps
 export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
   css({
     display: 'flex',
-    position: { _: 'initial', c_sm: 'sticky' },
-    flexDirection: { _: 'column', c_sm: 'row' },
+    position: { _: 'sticky', c_base: 'initial', c_sm: 'sticky' },
+    flexDirection: { _: 'row', c_base: 'column', c_sm: 'row' },
     top: 0,
     bg: 'background-current',
     zIndex: 2,
     fontFamily: 'accent',
-    pb: { _: 8, c_sm: 0 },
+    pb: { _: 0, c_base: 8, c_sm: 0 },
   }),
   spacingVariants,
   rowStates,
@@ -214,7 +214,7 @@ const columnType = variant({
     orderedHeader: {
       '&::before': {
         ...olStyles,
-        display: { _: 'flex', c_sm: 'none' },
+        display: { _: 'none', c_base: 'flex', c_sm: 'none' },
         pl: 8,
       },
     },
@@ -225,15 +225,17 @@ const columnType = variant({
     control: {
       minWidth: 'min-content',
       alignItems: {
-        _: 'flex-start',
+        _: 'center',
+        c_base: 'flex-start',
         c_sm: 'center',
       },
       justifyItems: {
-        _: 'end',
+        _: undefined,
+        c_base: 'end',
         c_sm: undefined,
       },
 
-      gridColumn: { _: 2, c_sm: 1 },
+      gridColumn: { _: 1, c_base: 2, c_sm: 1 },
       gridRow: 1,
     },
     expand: {
@@ -247,10 +249,14 @@ const columnJustify = variant({
   defaultVariant: 'left',
   variants: {
     left: {
-      justifyContent: { c_sm: 'flex-start' },
+      justifyContent: {
+        _: 'flex-start',
+        c_base: 'initial',
+        c_sm: 'flex-start',
+      },
     },
     right: {
-      justifyContent: { c_sm: 'flex-end' },
+      justifyContent: { _: 'flex-end', c_base: 'initial', c_sm: 'flex-end' },
       '& div': {
         width: { sm: 'fit-content' },
       },
@@ -264,20 +270,20 @@ const columnSizes = variant({
   base: { minWidth: 0, maxWidth: 1, flexShrink: 1 },
   variants: {
     sm: {
-      flexBasis: { c_sm: '6rem' },
-      width: { c_sm: '6rem' },
+      flexBasis: { _: '6rem', c_base: 'auto', c_sm: '6rem' },
+      width: { _: '6rem', c_base: 'auto', c_sm: '6rem' },
     },
     md: {
-      flexBasis: { c_sm: '10rem' },
-      width: { c_sm: '10rem' },
+      flexBasis: { _: '10rem', c_base: 'auto', c_sm: '10rem' },
+      width: { _: '10rem', c_base: 'auto', c_sm: '10rem' },
     },
     lg: {
-      flexBasis: { c_sm: '12rem' },
-      width: { c_sm: '12rem' },
+      flexBasis: { _: '12rem', c_base: 'auto', c_sm: '12rem' },
+      width: { _: '12rem', c_base: 'auto', c_sm: '12rem' },
     },
     xl: {
-      flexBasis: { c_sm: '20rem' },
-      width: { c_sm: '20rem' },
+      flexBasis: { _: '20rem', c_base: 'auto', c_sm: '20rem' },
+      width: { _: '20rem', c_base: 'auto', c_sm: '20rem' },
     },
     content: {
       flexShrink: 0,
@@ -286,16 +292,15 @@ const columnSizes = variant({
 });
 
 const columnStates = states({
-  fill: { flexGrow: { c_sm: 1 } },
+  fill: { flexGrow: { _: 1, c_base: 0, c_sm: 1 } },
   sticky: {
-    width: '100%',
     height: '100%',
     bg: 'inherit',
   },
   delimiter: {
     overflow: 'visible',
     '&:after': {
-      display: { _: 'none', c_sm: 'block' },
+      display: { _: 'block', c_base: 'none', c_sm: 'block' },
       content: '""',
       bg: 'background-current',
       right: -4,
@@ -331,7 +336,7 @@ const columnStates = states({
 const columnSpacing = variant({
   prop: 'spacing',
   base: {
-    px: { _: 8, c_sm: 0 },
+    px: { _: 0, c_base: 8, c_sm: 0 },
     '&:first-of-type': {
       pl: 8,
     },
@@ -341,10 +346,10 @@ const columnSpacing = variant({
   },
   variants: {
     normal: {
-      py: { _: 0, c_sm: 16 },
+      py: { _: 16, c_base: 0, c_sm: 16 },
     },
     condensed: {
-      py: { _: 0, c_sm: 8 },
+      py: { _: 8, c_base: 0, c_sm: 8 },
     },
     compact: {},
   },
@@ -392,7 +397,6 @@ export const StickyHeaderColWrapper = styled.th(
     '&:before': {
       content: '""',
       position: 'absolute',
-      bg: 'background',
       width: '100%',
       height: '100%',
       top: 0,
@@ -402,24 +406,25 @@ export const StickyHeaderColWrapper = styled.th(
     '&:after': {
       content: '""',
       position: 'absolute',
-      bg: 'background-current',
+      bg: 'inherit',
       width: '100%',
       height: '100%',
       top: 0,
       left: 0,
       zIndex: -1,
     },
+    display: 'flex',
+    flexShrink: 0,
     position: 'sticky',
     left: 0,
     zIndex: 1,
-    bg: 'inherit',
 
     '&:not(:first-of-type)': {
-      left: { c_sm: 16 },
+      left: { _: 16, c_base: 0, c_sm: 16 },
       overflow: 'visible',
     },
     '&:not(:first-of-type):before': {
-      display: { _: 'none', c_sm: 'block' },
+      display: { _: 'block', c_base: 'none', c_sm: 'block' },
       content: '""',
       bg: 'inherit',
       left: -16,
@@ -436,7 +441,14 @@ export const ListWrapper = styled(Box)(
   }),
   states({
     scrollable: {
-      boxShadow: { _: undefined, c_sm: 'inset -24px 0 24px -24px black' },
+      boxShadow: {
+        _: `inset -24px 0 24px -24px ${theme.colors['border-tertiary']}`,
+        c_base: undefined,
+        c_sm: `inset -24px 0 24px -24px ${theme.colors['border-tertiary']}`,
+      },
+    },
+    disableContainerQuery: {
+      containerType: 'normal',
     },
   })
 );

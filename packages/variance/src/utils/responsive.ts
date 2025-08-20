@@ -17,6 +17,7 @@ const BREAKPOINT_KEYS = [
   'md',
   'lg',
   'xl',
+  'c_base',
   'c_xs',
   'c_sm',
   'c_md',
@@ -31,13 +32,13 @@ export const parseBreakpoints = (
   breakpoints?: Breakpoints | undefined
 ): BreakpointCache | null => {
   if (breakpoints === undefined) return null;
-  const { xs, sm, md, lg, xl, c_xs, c_sm, c_md, c_lg, c_xl } =
+  const { xs, sm, md, lg, xl, c_base, c_xs, c_sm, c_md, c_lg, c_xl } =
     breakpoints ?? {};
 
   // Ensure order for mapping - media queries first, then container queries
   return {
     map: breakpoints,
-    array: [xs, sm, md, lg, xl, c_xs, c_sm, c_md, c_lg, c_xl],
+    array: [xs, sm, md, lg, xl, c_base, c_xs, c_sm, c_md, c_lg, c_xl],
   };
 };
 
