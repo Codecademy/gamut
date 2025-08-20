@@ -246,11 +246,13 @@ const columnType = variant({
       gridRow: 1,
       minWidth: 'min-content',
       alignItems: {
-        _: 'flex-start',
+        _: 'center',
+        c_base: 'flex-start',
         c_sm: 'center',
       },
       justifyItems: {
-        _: 'end',
+        _: undefined,
+        c_base: 'end',
         c_sm: undefined,
       },
     },
@@ -405,9 +407,6 @@ const columnSpacing = variant({
     '&:first-of-type': {
       pl: 8,
     },
-    // '&:last-of-type': {
-    //   pr: 8,
-    // },
   },
   variants: {
     normal: {
