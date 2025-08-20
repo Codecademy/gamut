@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.49.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.49.1...@codecademy/gamut-icons@9.49.2) (2025-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
 ### [9.49.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.49.0...@codecademy/gamut-icons@9.49.1) (2025-08-20)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
