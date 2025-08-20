@@ -18,10 +18,16 @@ figma.connect(
       checked: figma.enum('checked', {
         true: 'true',
         false: 'false',
-        Indeterminate: 'indeterminate',
+        Indeterminate: 'false',
       }),
-      'aria-label': figma.string('✏️ label'),
+      indeterminate: figma.enum('checked', {
+        true: 'false',
+        false: 'false',
+        Indeterminate: 'true',
+      }),
+      // 'aria-label': figma.string('✏️ label'),
     },
+    // @ts-expect-error figma doesn't support hyphenated props
     example: (props) => <Checkbox {...props} />,
   }
 );
