@@ -76,22 +76,18 @@ const rowStates = states({
   },
 });
 
-const interactionVariants = variant({
-  prop: 'interaction',
-  variants: {
-    interactive: {
-      cursor: 'pointer',
+const interactiveState = states({
+  interactive: {
+    cursor: 'pointer',
 
-      '&:hover': {
-        bg: 'background-hover',
-      },
-      '&:focus-visible, &:focus-within': {
-        outline: `1px solid ${theme.colors.primary}`,
-        boxShadow: `0 0 0 1px ${theme.colors.primary} inset`,
-        bg: 'background-selected',
-      },
+    '&:hover': {
+      bg: 'background-hover',
     },
-    static: {},
+    '&:focus-visible, &:focus-within': {
+      outline: `1px solid ${theme.colors.primary}`,
+      boxShadow: `0 0 0 1px ${theme.colors.primary} inset`,
+      bg: 'background-selected',
+    },
   },
 });
 
@@ -172,7 +168,7 @@ export interface RowProps
   extends StyleProps<typeof rowVariants>,
     StyleProps<typeof rowBreakpointVariants>,
     StyleProps<typeof spacingVariants>,
-    StyleProps<typeof interactionVariants>,
+    StyleProps<typeof interactiveState>,
     StyleProps<typeof rowStates>,
     StyleProps<typeof flex>,
     StyleProps<typeof grid> {}
@@ -181,12 +177,13 @@ export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 0, c_base: 8, c_sm: 0 },
     bg: 'inherit',
+    width: 1,
   }),
   variance.compose(grid, flex),
   rowBreakpointVariants,
   rowVariants,
   spacingVariants,
-  interactionVariants,
+  interactiveState,
   rowStates
 );
 

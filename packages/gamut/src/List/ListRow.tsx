@@ -93,7 +93,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           as="div"
           {...rowConfig}
           aria-expanded={renderExpanded && onClick ? expanded : undefined}
-          interaction={onClick ? 'interactive' : 'static'}
+          interactive={Boolean(onClick)}
           isOl={isOl}
           role={onClick ? 'button' : role}
           tabIndex={onClick ? 0 : tabIndex}
