@@ -1,0 +1,19 @@
+{
+  "root": true,
+  "reportUnusedDisableDirectives": true,
+  "ignorePatterns": ["**/*"],
+  "extends": ["@codecademy/eslint-config", ".eslintrc.base.json"],
+
+  "rules": {
+    "gamut/prefer-themed": "error",
+    "gamut/no-css-standalone": "error",
+    "gamut/import-paths": "error",
+    "import/no-extraneous-dependencies": "off"
+  },
+  "overrides": [
+    {
+      "files": ["*.tsx", "*.jsx"],
+      "extends": ["plugin:react/jsx-runtime"]
+    }
+  ]
+}

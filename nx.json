@@ -1,19 +1,17 @@
 {
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx-cloud",
-      "options": {
-        "cacheableOperations": ["lint", "build", "test", "verify"],
-        "parallel": 3,
-        "accessToken": "ZmVjZWYxNzctYTdmZC00ODYzLTg4MzEtZTE1YTVmZDdkZmY1fHJlYWQ="
-      }
-    }
-  },
   "extends": "nx/presets/npm.json",
   "workspaceLayout": {
     "appsDir": "packages",
     "libsDir": "packages"
   },
+  "plugins": [
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
+  ],
   "namedInputs": {
     "babelConfig": ["{workspaceRoot}/babel.defaults.js"],
     "ci": [
@@ -34,7 +32,8 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production", "babelConfig", "ci"]
+      "inputs": ["production", "^production", "babelConfig", "ci"],
+      "cache": true
     },
     "verify": {
       "cache": true
@@ -48,6 +47,20 @@
         "babelConfig",
         "ci"
       ]
+    },
+    "@nx/eslint:lint": {
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/.eslintignore"
+      ],
+      "cache": true
+    },
+    "lint": {
+      "cache": true
+    },
+    "test": {
+      "cache": true
     }
   },
   "generators": {
@@ -64,6 +77,5 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "nxCloudAccessToken": "ZmVjZWYxNzctYTdmZC00ODYzLTg4MzEtZTE1YTVmZDdkZmY1fHJlYWQ=",
   "parallel": 3,
-  "useInferencePlugins": false,
   "defaultBase": "main"
 }

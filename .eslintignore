@@ -1,11 +1,1 @@
 node_modules
-**/node_modules
-*.json
-**/*.json
-docs
-**/*.d.ts
-**/dist
-**/tmp
-packages/gamut-icons/src/icons
-packages/gamut-patterns/src/patterns
-.nx
