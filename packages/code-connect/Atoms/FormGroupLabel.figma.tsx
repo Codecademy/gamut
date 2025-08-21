@@ -17,12 +17,19 @@ figma.connect(
       label: figma.string('✏️ label'),
       infoTip: figma.boolean('infoTip'),
       required: figma.boolean('required'),
-      size: figma.enum('size', {
+      labelSize: figma.enum('size', {
         small: 'small',
         large: 'large',
       }),
-      hasEmphasis: figma.nestedProps('infotip', {
+      infoTipData: figma.nestedProps('infotip', {
         emphasis: figma.enum('emphasis', { low: 'low', high: 'high' }),
+        disabled: figma.enum('state', {
+          default: false,
+          hover: false,
+          active: false,
+          focus: false,
+          disabled: true,
+        }),
       }),
       toolTipInfo: figma.nestedProps('.infotip-alignment', {
         alignment: figma.enum('alignment', {
@@ -37,8 +44,9 @@ figma.connect(
     example: (props) => (
       <FormGroupLabel
         {...props}
+        disabled={props.infoTipData?.disabled}
         infotip={{
-          emphasis: props.hasEmphasis?.emphasis,
+          emphasis: props.infoTipData?.emphasis,
           info: props.toolTipInfo?.info,
           alignment: props.toolTipInfo?.alignment,
         }}
