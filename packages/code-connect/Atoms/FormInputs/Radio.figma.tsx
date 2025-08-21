@@ -32,26 +32,32 @@ figma.connect(
         error: true,
         disabled: false,
       }),
-      infotip: figma.boolean('infoTip', {
-        true: {
-          emphasis: figma.nestedProps(
-            'infotip',
-            figma.enum('emphasis', { low: 'low', high: 'high' })
-          ),
-          alignment: figma.nestedProps(
-            '.infotip-alignment',
-            figma.enum('alignment', {
-              'top-left': 'top-left',
-              'top-right': 'top-right',
-              'bottom-left': 'bottom-left',
-              'bottom-right': 'bottom-right',
-            })
-          ),
-          info: figma.string('✏️ info tip'),
-        },
-        false: undefined,
+      hasInfotip: figma.boolean('infoTip', {
+        true: true,
+        false: false,
+      }),
+      hasEmphasis: figma.nestedProps('infotip', {
+        emphasis: figma.enum('emphasis', { low: 'low', high: 'high' }),
+      }),
+      toolTipInfo: figma.nestedProps('.infotip-alignment', {
+        alignment: figma.enum('alignment', {
+          'top-left': 'top-left',
+          'top-right': 'top-right',
+          'bottom-left': 'bottom-left',
+          'bottom-right': 'bottom-right',
+        }),
+        info: figma.string('✏️ info tip'),
       }),
     },
-    example: (props) => <Radio {...props} />,
+    example: (props) => (
+      <Radio
+        {...props}
+        infotip={{
+          emphasis: props.hasEmphasis?.emphasis,
+          info: props.toolTipInfo?.info,
+          alignment: props.toolTipInfo?.alignment,
+        }}
+      />
+    ),
   }
 );
