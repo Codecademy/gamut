@@ -99,22 +99,3 @@ export const SmallSizeWithIcon: Story = {
     icon: icons.MiniWarningTriangleIcon,
   },
 };
-
-export const FigmaPrimaryWithCheckCircle: Story = {
-  render: () => (
-    <Badge icon={MiniCheckCircleIcon} variant="primary">
-      Badge Text
-    </Badge>
-  ),
-};
-
-export const FigmaPrimaryWhiteText: Story = {
-  render: () => <Badge variant="primary">Badge label</Badge>,
-};
-
-export const Fun: Story = {
-  args: {
-    variant: 'fun' as any,
-    children: 'Fun Badge',
-  },
-};
