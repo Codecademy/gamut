@@ -1,6 +1,7 @@
 import {
   Box,
   Checkbox,
+  Dialog,
   FillButton,
   FlexBox,
   Modal,
