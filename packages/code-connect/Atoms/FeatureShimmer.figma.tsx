@@ -14,9 +14,9 @@ figma.connect(
   FeatureShimmer,
   'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=61568%3A44253',
   {
-    props: {},
-    example: (props: ComponentProps<typeof FeatureShimmer>) => (
-      <FeatureShimmer>{props.children}</FeatureShimmer>
-    ),
+    props: {
+      children: '{children}',
+    },
+    example: (props) => <FeatureShimmer>{props.children}</FeatureShimmer>,
   }
 );
