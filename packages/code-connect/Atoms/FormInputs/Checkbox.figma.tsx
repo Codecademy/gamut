@@ -25,9 +25,10 @@ figma.connect(
         false: 'false',
         Indeterminate: 'true',
       }),
-      // 'aria-label': figma.string('✏️ label'),
+      ariaLabel: figma.string('✏️ label'),
     },
-    // @ts-expect-error figma doesn't support hyphenated props
-    example: (props) => <Checkbox {...props} />,
+    example: ({ ariaLabel, ...props }: any) => (
+      <Checkbox {...props} aria-label={ariaLabel} />
+    ),
   }
 );

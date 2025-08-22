@@ -22,7 +22,7 @@ figma.connect(
         true: true,
         false: false,
       }),
-      children: figma.children('Content'),
+      children: figma.textContent('text'),
     },
     example: ({ children, ...props }: any) => (
       <Drawer {...props}>{children}</Drawer>
