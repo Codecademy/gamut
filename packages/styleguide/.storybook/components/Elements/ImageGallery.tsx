@@ -2,7 +2,7 @@ import { Box, Text, Input, FlexBox, GridBox } from '@codecademy/gamut';
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { IllustrationProps } from '@codecademy/gamut-illustrations';
 import { PatternProps } from '@codecademy/gamut-patterns';
-import { timingValues } from '@codecademy/gamut-styles';
+import { css, timingValues } from '@codecademy/gamut-styles';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import { useState } from 'react';
@@ -38,10 +38,12 @@ interface ImageGalleryProps {
   imageType?: 'icon' | 'illustration' | 'pattern';
 }
 
-const StyledText = styled(Text)`
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-`;
+const StyledText = styled(Text)(
+  css({
+    wordWrap: 'break-word',
+    overflowWrap: 'break-word',
+  })
+);
 
 export const ImageGallery: React.FC<ImageGalleryProps> = ({
   images = [],
@@ -80,11 +82,10 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const inputValue = event.target.value;
-    setImageSizeInput(inputValue); // Always update the input display
+    setImageSizeInput(inputValue);
 
     const value = parseInt(inputValue, 10);
 
-    // Only update the actual imageSize if it's a valid number within range
     if (!isNaN(value) && value >= minImageSize && value <= maxImageSize) {
       setImageSize(value);
     }
@@ -93,7 +94,6 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
   const handleImageSizeBlur = () => {
     const value = parseInt(imageSizeInput, 10);
 
-    // If the input is invalid or out of range, reset it to the current valid imageSize
     if (isNaN(value) || value < minImageSize || value > maxImageSize) {
       setImageSizeInput(imageSize.toString());
     }
