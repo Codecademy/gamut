@@ -39,7 +39,7 @@ export function DataGrid<
     variant = 'table',
     spacing = 'condensed',
     scrollable = true,
-    shadow = false,
+    shadow,
     height = scrollable ? '100%' : 'initial',
     columns,
     idKey,
@@ -61,6 +61,8 @@ export function DataGrid<
   } = props;
 
   const empty = rows.length === 0;
+
+  const defaultShadow = scrollable && shadow === undefined ? true : shadow;
 
   const allSelected = useMemo(() => {
     if (empty) return false;
@@ -132,7 +134,7 @@ export function DataGrid<
           overflow={overflow}
           scrollToTopOnUpdate={scrollToTopOnUpdate}
           scrollable={scrollable}
-          shadow={shadow}
+          shadow={defaultShadow}
           spacing={spacing}
           variant={variant}
           wrapperWidth={wrapperWidth ?? undefined}

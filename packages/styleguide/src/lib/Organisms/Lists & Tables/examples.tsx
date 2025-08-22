@@ -330,23 +330,7 @@ export const cols = [
   },
   {
     header: 'Controls',
-    key: 'name',
-    size: 'md',
-    justify: 'right',
-    type: 'control',
-    render: (row) => <CrewMgmtDropdown row={row} />,
-  },
-  {
-    header: 'Controls',
-    key: 'name',
-    size: 'md',
-    justify: 'right',
-    type: 'control',
-    render: (row) => <CrewMgmtDropdown row={row} />,
-  },
-  {
-    header: 'Controls',
-    key: 'name',
+    key: 'name-control',
     size: 'md',
     justify: 'right',
     type: 'control',
@@ -447,7 +431,7 @@ export const DataTableTemplate = createDemoTable(DataTable, {
 });
 
 export const DataListTemplate = createDemoTable(DataList, {
-  scrollable: false,
+  scrollable: true,
   height: 'auto',
   showOverflow: true,
 });
