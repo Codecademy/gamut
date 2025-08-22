@@ -1,9 +1,6 @@
 import { Box } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { FigmaLandingExample } from './FigmaLandingExample';
-import { FigmaMcpLandingPage } from './FigmaMcpLandingPage';
-
 const meta: Meta<typeof Box> = {
   component: Box,
   args: {},
