@@ -52,6 +52,8 @@ figma.connect(
         false: undefined,
       }),
     },
-    example: (props) => <RadialProgress {...props} />,
+    example: ({ children, ...props }: any) => (
+      <RadialProgress {...props}>{children}</RadialProgress>
+    ),
   }
 );

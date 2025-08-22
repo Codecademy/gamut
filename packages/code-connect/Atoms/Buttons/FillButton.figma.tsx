@@ -1,4 +1,4 @@
-import { ButtonProps, FillButton } from '@codecademy/gamut';
+import { FillButton } from '@codecademy/gamut';
 import figma from '@figma/code-connect';
 
 /**
@@ -33,6 +33,8 @@ figma.connect(
         large: 'large',
       }),
     },
-    example: (props: ButtonProps) => <FillButton {...props} />,
+    example: ({ children, ...props }: any) => (
+      <FillButton {...props}>{children}</FillButton>
+    ),
   }
 );

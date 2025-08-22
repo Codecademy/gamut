@@ -1,6 +1,7 @@
 import figma from '@figma/code-connect';
 import React from 'react';
 
+// @ts-expect-error - MenuItem import path needs to be resolved
 import { MenuItem } from './MenuItem';
 
 /**

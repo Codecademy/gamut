@@ -52,6 +52,8 @@ figma.connect(
         none: undefined,
       }),
     },
-    example: (props: any) => <Card {...props} />,
+    example: ({ children, ...props }: any) => (
+      <Card {...props}>{children}</Card>
+    ),
   }
 );

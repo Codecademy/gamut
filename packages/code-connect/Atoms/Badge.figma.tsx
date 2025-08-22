@@ -1,4 +1,4 @@
-import { Badge, BadgeProps } from '@codecademy/gamut';
+import { Badge } from '@codecademy/gamut';
 import figma from '@figma/code-connect';
 
 /**
@@ -28,6 +28,8 @@ figma.connect(
         sm: 'sm',
       }),
     },
-    example: (props: BadgeProps) => <Badge {...props} />,
+    example: ({ children, ...props }: any) => (
+      <Badge {...props}>{children}</Badge>
+    ),
   }
 );

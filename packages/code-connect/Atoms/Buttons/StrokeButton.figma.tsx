@@ -1,4 +1,4 @@
-import { ButtonProps, StrokeButton } from '@codecademy/gamut';
+import { StrokeButton } from '@codecademy/gamut';
 import figma from '@figma/code-connect';
 
 /**
@@ -33,6 +33,8 @@ figma.connect(
         large: 'large',
       }),
     },
-    example: (props: ButtonProps) => <StrokeButton {...props} />,
+    example: ({ children, ...props }: any) => (
+      <StrokeButton {...props}>{children}</StrokeButton>
+    ),
   }
 );

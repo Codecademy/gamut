@@ -1,4 +1,4 @@
-import { ButtonProps, TextButton } from '@codecademy/gamut';
+import { TextButton } from '@codecademy/gamut';
 import figma from '@figma/code-connect';
 
 /**
@@ -28,6 +28,8 @@ figma.connect(
         large: 'large',
       }),
     },
-    example: (props: ButtonProps) => <TextButton {...props} />,
+    example: ({ children, ...props }: any) => (
+      <TextButton {...props}>{children}</TextButton>
+    ),
   }
 );

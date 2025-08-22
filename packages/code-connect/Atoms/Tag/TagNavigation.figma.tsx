@@ -25,7 +25,6 @@ figma.connect(
         large: 'large',
       }),
     },
-    // @ts-expect-error - readOnly variant has complex type requirements for onClick
-    example: (props) => <Tag {...props} />,
+    example: ({ children, ...props }: any) => <Tag {...props}>{children}</Tag>,
   }
 );
