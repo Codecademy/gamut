@@ -1,7 +1,22 @@
-import { Badge , Box, Checkbox , FillButton, FlexBox, GridBox , IconButton , Input, Menu , MenuItem , Radio , Text  } from '@codecademy/gamut';
+import {
+  Badge,
+  Box,
+  Checkbox,
+  FillButton,
+  FlexBox,
+  GridBox,
+  IconButton,
+  Input,
+  Menu,
+  MenuItem,
+  Radio,
+  Text,
+} from '@codecademy/gamut';
 import { MiniAddIcon } from '@codecademy/gamut-icons';
 import * as React from 'react';
 
+// Made during Hackathon
+// Modal unknown
 export const FigmaLandingExample: React.FC = () => (
   <Box background="background" fontFamily="base" width="100%">
     {/* Hero Section */}
@@ -34,7 +49,8 @@ export const FigmaLandingExample: React.FC = () => (
           From canvas to code—automagically.
         </Text>
         <Text color="navy" fontSize={18} maxWidth={624}>
-          You can now inspect a Figma file and get back real, usable code thanks to MCP.
+          You can now inspect a Figma file and get back real, usable code thanks
+          to MCP.
         </Text>
       </Box>
       {/* You can add a Box here for the pattern fill background if you want */}
@@ -45,19 +61,15 @@ export const FigmaLandingExample: React.FC = () => (
       <Text as="h2" color="navy" fontSize={44} fontWeight="title" mb={32}>
         How it works
       </Text>
-      <GridBox
-        gap={32}
-        gridTemplateColumns="1fr 1fr"
-        mb={32}
-        width="100%"
-      >
+      <GridBox gap={32} gridTemplateColumns="1fr 1fr" mb={32} width="100%">
         {/* Step 1 */}
         <Box>
           <Text as="h3" color="navy" fontSize={26} fontWeight="title">
             1. Design with real components
           </Text>
           <Text color="navy" fontSize={18} mt={8}>
-            Use components from your design system directly in Figma. Each one is mapped to a real implementation in code—no need to fake it.
+            Use components from your design system directly in Figma. Each one
+            is mapped to a real implementation in code—no need to fake it.
           </Text>
         </Box>
         <Box
@@ -79,7 +91,9 @@ export const FigmaLandingExample: React.FC = () => (
             2. Inspect in Dev Mode
           </Text>
           <Text color="navy" fontSize={18} mt={8}>
-            With the MCP server running, Figma Dev Mode shows the actual component name, available props, and design tokens used (like spacing, color, and typography).
+            With the MCP server running, Figma Dev Mode shows the actual
+            component name, available props, and design tokens used (like
+            spacing, color, and typography).
           </Text>
         </Box>
         <Box
@@ -101,7 +115,8 @@ export const FigmaLandingExample: React.FC = () => (
             3. Copy usable code
           </Text>
           <Text color="navy" fontSize={18} mt={8}>
-            Developers get production-ready code they can copy straight from the design—no guessing, no redlining, no translation.
+            Developers get production-ready code they can copy straight from the
+            design—no guessing, no redlining, no translation.
           </Text>
         </Box>
         <Box
@@ -126,7 +141,8 @@ export const FigmaLandingExample: React.FC = () => (
         Inspectable components
       </Text>
       <Text color="navy" fontSize={18} mb={32}>
-        Each of these elements below are real Gamut components. Open Dev Mode to view props, tokens, and usable code.
+        Each of these elements below are real Gamut components. Open Dev Mode to
+        view props, tokens, and usable code.
       </Text>
       <FlexBox flexWrap="wrap" gap={48}>
         <FillButton>Button text</FillButton>
