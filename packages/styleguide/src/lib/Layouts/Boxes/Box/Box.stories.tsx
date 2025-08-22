@@ -61,11 +61,3 @@ export const Lists: Story = {
     </Box>
   ),
 };
-
-export const FigmaLanding: Story = {
-  render: () => <FigmaLandingExample />,
-};
-
-export const FigmaMcpLanding: Story = {
-  render: () => <FigmaMcpLandingPage />,
-};
