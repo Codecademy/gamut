@@ -1,13 +1,5 @@
-import { Anchor, FlexBox, Text } from '@codecademy/gamut';
-import {
-  BulbIcon,
-  MiniArrowLeftIcon,
-  MiniArrowRightIcon,
-  MiniInfoOutlineIcon,
-  MiniOpenIcon,
-  SmileySadIcon,
-  StudyBookIcon,
-} from '@codecademy/gamut-icons';
+import { Anchor, GridBox, Text } from '@codecademy/gamut';
+import * as icons from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { PolymorphicAnchors, VariantsExample } from './Anchor.examples';
@@ -17,10 +9,19 @@ const meta: Meta<typeof Anchor> = {
   args: {
     children: 'Click me',
     href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    icon: MiniInfoOutlineIcon,
+    icon: icons.MiniInfoOutlineIcon,
     iconPosition: 'left',
     target: '_blank',
     variant: 'inline',
+  },
+  argTypes: {
+    icon: {
+      control: {
+        type: 'select',
+      },
+      options: Object.keys(icons),
+      mapping: icons,
+    },
   },
 };
 
@@ -33,24 +34,19 @@ export const Default: Story = {
 
 export const IconFlexAnchor: Story = {
   render: (args) => (
-    <FlexBox alignItems="center" column gap={4}>
-      <Text>These anchors with icons are in a FlexBox:</Text>
-      <Anchor {...args} href="/" icon={MiniArrowLeftIcon} iconPosition="left">
+    <GridBox gap={4}>
+      <Anchor
+        {...args}
+        href="/"
+        icon={icons.MiniInfoOutlineIcon}
+        iconPosition="left"
+      >
         Left-aligned icon anchor
       </Anchor>
       <Anchor
         {...args}
         href="/"
-        icon={[MiniArrowLeftIcon, MiniArrowRightIcon]}
-        iconPosition="right"
-        variant="inline"
-      >
-        Has both left and right-aligned icons
-      </Anchor>
-      <Anchor
-        {...args}
-        href="/"
-        icon={MiniArrowRightIcon}
+        icon={icons.MiniArrowRightIcon}
         iconPosition="right"
         variant="inline"
       >
@@ -67,7 +63,7 @@ export const IconInlineAnchorExample: Story = {
       <Anchor
         {...args}
         href="/"
-        icon={SmileySadIcon}
+        icon={icons.MiniInfoOutlineIcon}
         iconPosition="left"
         variant="inline"
       >
@@ -88,7 +84,7 @@ export const IconInlineAnchorExample: Story = {
       <Anchor
         {...args}
         href="/"
-        icon={[StudyBookIcon, MiniOpenIcon]}
+        icon={icons.MiniArrowRightIcon}
         iconPosition="right"
         variant="inline"
       >

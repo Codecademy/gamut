@@ -1,17 +1,11 @@
-import {
-  Canvas,
-  Controls,
-  IconGallery,
-  IconItem,
-  Meta,
-} from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
-import { LE_ICONS, SKILLS_ICONS, UI_ICONS, VENDOR_ICONS } from '../constants';
 import * as RegularIconStories from './Regular.stories';
 
 export const parameters = {
+  title: 'Regular',
   subtitle:
     'A regular sized Icon set primarily from [Streamline Regular](https://app.streamlinehq.com/streamline-regular).',
   design: {
@@ -58,46 +52,25 @@ import { AlertIcon } from '@codecademy/gamut-icons';
 
 General user interface icons with affordances
 
-<IconGallery>
-  {Object.entries(UI_ICONS).map(([iconName, Icon]) => (
-    <IconItem key={iconName} name={iconName}>
-      <Icon size={64} color="black" />
-    </IconItem>
-  ))}
-</IconGallery>
+<Canvas of={RegularIconStories.RegularInterfaceIcons} sourceState="none" />
 
 ### Learning environment
 
 Icons that have specific meanings relative to our course content.
 
-<IconGallery>
-  {Object.entries(LE_ICONS).map(([iconName, Icon]) => (
-    <IconItem key={iconName} name={iconName}>
-      <Icon size={64} color="black" />
-    </IconItem>
-  ))}
-</IconGallery>
+<Canvas
+  of={RegularIconStories.RegularLearningEnvironmentIcons}
+  sourceState="none"
+/>
 
 ### Vendor
 
 Vendor specific icons.
 
-<IconGallery>
-  {Object.entries(VENDOR_ICONS).map(([iconName, Icon]) => (
-    <IconItem key={iconName} name={iconName}>
-      <Icon size={64} color="black" />
-    </IconItem>
-  ))}
-</IconGallery>
+<Canvas of={RegularIconStories.RegularVendorIcons} sourceState="none" />
 
 ### Skills
 
 Icons for the languages and subjects that we teach.
 
-<IconGallery>
-  {Object.entries(SKILLS_ICONS).map(([iconName, Icon]) => (
-    <IconItem key={iconName} name={iconName}>
-      <Icon size={64} color="black" />
-    </IconItem>
-  ))}
-</IconGallery>
+<Canvas of={RegularIconStories.RegularSkillIcons} sourceState="none" />

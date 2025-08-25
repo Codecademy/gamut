@@ -1,17 +1,11 @@
-import * as illustrations from '@codecademy/gamut-illustrations';
-import {
-  Canvas,
-  Controls,
-  IconGallery,
-  IconItem,
-  Meta,
-} from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
 import * as IllustrationsStories from './Illustrations.stories';
 
 export const parameters = {
+  title: 'Illustrations',
   subtitle:
     'React components that serve up SVGs to provide more control and reusability.',
   status: 'current',
@@ -56,10 +50,4 @@ If you cannot find the Illustration you would like in the ones that we have spec
 
 ## Illustrations
 
-<IconGallery>
-  {Object.entries(illustrations).map(([illustrationName, Illustration]) => (
-    <IconItem key={illustrationName} name={illustrationName}>
-      <Illustration aria-hidden width="128px" />
-    </IconItem>
-  ))}
-</IconGallery>
+<Canvas of={IllustrationsStories.AllIllustrations} sourceState="none" />

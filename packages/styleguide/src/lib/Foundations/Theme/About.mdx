@@ -1,8 +1,18 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as adminThemeParameters } from './AdminTheme.mdx';
+import { parameters as coreThemeParameters } from './CoreTheme.mdx';
+import { parameters as lxStudioThemeParameters } from './LXStudioTheme.mdx';
+import { parameters as platformThemeParameters } from './PlatformTheme.mdx';
 
 export const parameters = {
+  id: 'Foundations/Theme',
   title: 'Theme',
   subtitle: `Emotion themes used within the Codecademy design system`,
   status: 'current',
@@ -49,27 +59,10 @@ const myStyles = css`
 ```
 
 <TableOfContents
-  links={[
-    {
-      id: 'Foundations/Theme/CoreTheme',
-      subtitle: 'The Emotion theme for Codecademy',
-      title: 'Core Theme',
-    },
-    {
-      id: 'Foundations/Theme/PlatformTheme',
-      subtitle:
-        'Codecademy Platform Theme used within the Learning Environment',
-      title: 'Platform Theme',
-    },
-    {
-      id: 'Foundations/Theme/AdminTheme',
-      subtitle: 'Codecademy Admin Theme used within admin tools',
-      title: 'Admin Theme',
-    },
-    {
-      id: 'Foundations/Theme/LXStudioTheme',
-      subtitle: 'Theme used within the LX Studio',
-      title: 'LX Studio Theme',
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    coreThemeParameters,
+    platformThemeParameters,
+    adminThemeParameters,
+    lxStudioThemeParameters,
+  ])}
 />

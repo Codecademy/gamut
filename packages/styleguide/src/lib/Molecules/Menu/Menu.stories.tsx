@@ -40,12 +40,12 @@ export const Default: Story = {
   args: {
     children: (
       <>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem active>Active Item</MenuItem>
-        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
+        <MenuItem active>Active item</MenuItem>
         <MenuItem icon={[RatingStarCircleIcon, MiniOpenIcon]}>
-          Multi Icons
+          Multi icons
         </MenuItem>
+        <MenuItem>Menu item</MenuItem>
       </>
     ),
   },
@@ -54,42 +54,138 @@ export const Default: Story = {
 export const Popover: Story = {
   args: {
     variant: 'popover',
-    children: (
-      <>
-        <MenuItem onClick={() => null}>Menu Item</MenuItem>
-        <MenuItem active onClick={() => null}>
-          Active Item
+  },
+  render: (args) => (
+    <FlexBox column width="fit-content">
+      <Menu {...args}>
+        <MenuItem label="testing" onClick={() => null}>
+          Menu item with Tooltip
         </MenuItem>
-        <MenuItem icon={MultipleUsersIcon} onClick={() => null}>
-          Icon Item
+        <MenuItem active onClick={() => null}>
+          Active item
+        </MenuItem>
+        <MenuItem
+          icon={MultipleUsersIcon}
+          label={{
+            info: 'More info here...',
+            alignment: 'right-center',
+          }}
+          onClick={() => null}
+        >
+          Icon item with ToolTip
+        </MenuItem>
+        <MenuItem disabled href="/">
+          Disabled link no ToolTip
+        </MenuItem>
+        <MenuItem
+          disabled
+          label={{
+            info: 'This is disabled because...',
+            alignment: 'right-center',
+          }}
+          onClick={() => null}
+        >
+          Disabled button with ToolTip
         </MenuItem>
         <MenuItem
           icon={[RatingStarCircleIcon, MiniOpenIcon]}
           onClick={() => null}
         >
-          Multi Icons
+          Multi icons
         </MenuItem>
-      </>
-    ),
-  },
+      </Menu>
+    </FlexBox>
+  ),
 };
 
 export const Fixed: Story = {
   args: {
     variant: 'fixed',
+  },
+  render: (args) => (
+    <FlexBox column width="fit-content">
+      <nav>
+        <Menu {...args}>
+          <MenuItem label="testing" onClick={() => null}>
+            Menu item with Tooltip
+          </MenuItem>
+          <MenuItem active onClick={() => null}>
+            Active item
+          </MenuItem>
+          <MenuItem
+            icon={MultipleUsersIcon}
+            label={{
+              info: 'More info here...',
+              alignment: 'right-center',
+            }}
+            onClick={() => null}
+          >
+            Icon item with ToolTip
+          </MenuItem>
+          <MenuItem disabled onClick={() => null}>
+            Disabled item no ToolTip
+          </MenuItem>
+          <MenuItem
+            disabled
+            label={{
+              info: 'This is disabled because...',
+              alignment: 'right-center',
+            }}
+            onClick={() => null}
+          >
+            Disabled item with ToolTip
+          </MenuItem>
+        </Menu>
+      </nav>
+    </FlexBox>
+  ),
+};
+
+export const MenuRole: Story = {
+  args: {
+    role: 'menu',
     children: (
       <>
-        <MenuItem href="#">Menu Item</MenuItem>
-        <MenuItem active href="#">
-          Active Item
+        <MenuItem onClick={() => null}>Click action</MenuItem>
+        <MenuItem active>Active click action</MenuItem>
+        <MenuItem icon={MultipleUsersIcon} onClick={() => null}>
+          Icon click action
         </MenuItem>
-        <MenuItem href="#" icon={MultipleUsersIcon}>
-          Icon Item
+        <MenuItem onClick={() => null}>Menu click action</MenuItem>
+      </>
+    ),
+  },
+};
+
+export const NavMenu: Story = {
+  args: {
+    variant: 'fixed',
+  },
+  render: (args) => (
+    <nav>
+      <Menu {...args}>
+        <MenuItem href="#link">Link item</MenuItem>
+        <MenuItem active href="#link">
+          Active link item
         </MenuItem>
-        <MenuItem href="#">Menu Item</MenuItem>
-        <MenuItem href="#" icon={[RatingStarCircleIcon, MiniOpenIcon]}>
-          Multi Icons
+        <MenuItem href="#link" icon={MultipleUsersIcon}>
+          Icon link item
         </MenuItem>
+        <MenuItem href="#link">Link item</MenuItem>
+      </Menu>
+    </nav>
+  ),
+};
+
+export const NoRoleMenu: Story = {
+  args: {
+    variant: 'popover',
+    children: (
+      <>
+        <MenuItem>Menu item</MenuItem>
+        <MenuItem active>Active item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
       </>
     ),
   },
@@ -100,12 +196,10 @@ export const PopoverCondensed: Story = {
     variant: 'popover',
     children: (
       <>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem active>Active Item</MenuItem>
-        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem icon={[RatingStarCircleIcon, MiniOpenIcon]}>
-          Multi Icons
-        </MenuItem>
+        <MenuItem>Menu item</MenuItem>
+        <MenuItem active>Active item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
       </>
     ),
     spacing: 'condensed',
@@ -117,12 +211,10 @@ export const FixedCondensed: Story = {
     variant: 'fixed',
     children: (
       <>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem active>Active Item</MenuItem>
-        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem icon={[RatingStarCircleIcon, MiniOpenIcon]}>
-          Multi Icons
-        </MenuItem>
+        <MenuItem>Menu item</MenuItem>
+        <MenuItem active>Active item</MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
       </>
     ),
     spacing: 'condensed',
@@ -134,13 +226,11 @@ export const PopoverMenuSeparator: Story = {
     variant: 'popover',
     children: (
       <>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem active>Active Item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
+        <MenuItem active>Active item</MenuItem>
         <MenuSeparator />
-        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem icon={[RatingStarCircleIcon, MiniOpenIcon]}>
-          Multi Icons
-        </MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
       </>
     ),
   },
@@ -151,13 +241,11 @@ export const FixedMenuSeparator: Story = {
     variant: 'fixed',
     children: (
       <>
-        <MenuItem>Menu Item</MenuItem>
-        <MenuItem active>Active Item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
+        <MenuItem active>Active item</MenuItem>
         <MenuSeparator my={4} />
-        <MenuItem icon={MultipleUsersIcon}>Icon Item</MenuItem>
-        <MenuItem icon={[RatingStarCircleIcon, MiniOpenIcon]}>
-          Multi Icons
-        </MenuItem>
+        <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
+        <MenuItem>Menu item</MenuItem>
       </>
     ),
   },
@@ -247,13 +335,13 @@ export const FloatingMenuExample: React.FC = () => {
                 active={activeIndex === 0}
                 onClick={() => clickHandler(-68, 0)}
               >
-                i have a side menu
+                I have a side menu
               </MenuItem>
               <MenuItem
                 active={activeIndex === 1}
                 onClick={() => clickHandler(-115, 1)}
               >
-                Active Item
+                Active item
               </MenuItem>
 
               <MenuItem
@@ -261,7 +349,7 @@ export const FloatingMenuExample: React.FC = () => {
                 icon={MultipleUsersIcon}
                 onClick={() => clickHandler(-164, 2)}
               >
-                Icon Item
+                Icon item
               </MenuItem>
 
               <MenuItem
@@ -285,16 +373,14 @@ export const FloatingMenuExample: React.FC = () => {
               <Menu role="menu" variant="popover">
                 {activeIndex % 2 === 0 ? (
                   <>
-                    <MenuItem>i am a side menu!</MenuItem>
-                    <MenuItem href="cool">cool link</MenuItem>
+                    <MenuItem>I am a side menu!</MenuItem>
+                    <MenuItem href="cool">Cool link</MenuItem>
                   </>
                 ) : (
                   <>
-                    <MenuItem>i am a DIFFERENT menu!</MenuItem>
-                    <MenuItem href="cool-too"> another cool link</MenuItem>
-                    <MenuItem icon={[RatingStarCircleIcon, MiniOpenIcon]}>
-                      Multi Icons
-                    </MenuItem>
+                    <MenuItem>I am a DIFFERENT menu!</MenuItem>
+                    <MenuItem href="cool-too">Another cool link</MenuItem>
+                    <MenuItem>An action</MenuItem>
                   </>
                 )}
               </Menu>
