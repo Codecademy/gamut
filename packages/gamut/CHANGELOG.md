@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.2.0...@codecademy/gamut@66.2.1) (2025-08-21)
+
+### Bug Fixes
+
+- **MenuItem:** add disabled state ([015f486](https://github.com/Codecademy/gamut/commit/015f48699ab74ca030d5b13e54eb7656bad37969))
+
+## [66.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.1.1...@codecademy/gamut@66.2.0) (2025-08-20)
+
+### Features
+
+- **List, DataTable, DataList, + SystemProps:** add new base container query and List/DataGrid prop ([caae6ac](https://github.com/Codecademy/gamut/commit/caae6acdb9cc1d9a0fea0afd3d9204067fa8764b))
+
+### [66.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.1.0...@codecademy/gamut@66.1.1) (2025-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ## [66.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.11...@codecademy/gamut@66.1.0) (2025-08-14)
 
 ### Features
