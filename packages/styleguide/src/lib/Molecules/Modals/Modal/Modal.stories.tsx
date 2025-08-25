@@ -1,6 +1,7 @@
 import {
   Box,
   Checkbox,
+  Dialog,
   FillButton,
   FlexBox,
   Modal,
@@ -342,6 +343,55 @@ export const MultipleViewsDisabled: React.FC = () => {
         ]}
         onRequestClose={() => setIsOpen(false)}
       />
+    </>
+  );
+};
+
+const ImagePlaceholder = () => {
+  return (
+    <FlexBox
+      alignItems="center"
+      bg="background-primary"
+      center
+      flexDirection="column"
+      height="200px"
+      justifyContent="center"
+      width="100%"
+    >
+      <Text fontSize={16} fontWeight="bold" mb={8}>
+        Replace with any image
+      </Text>
+      <Text fontSize={14}>16:9</Text>
+    </FlexBox>
+  );
+};
+
+export const ARobotMadeThis: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Figma Dialog</FillButton>
+      <Dialog
+        cancelCta={{
+          children: 'Cancel',
+          onClick: () => setIsOpen(false),
+        }}
+        confirmCta={{
+          children: 'Primary action',
+          onClick: () => setIsOpen(false),
+        }}
+        image={<ImagePlaceholder />}
+        isOpen={isOpen}
+        size="small"
+        title="Headline"
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <Text fontSize={14}>
+          Optional 1-2 lines of explanation that provides relevant details.
+          Lorem ipsum cras nulla massa odio ligula.
+        </Text>
+      </Dialog>
     </>
   );
 };
