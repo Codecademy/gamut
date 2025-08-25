@@ -32,7 +32,7 @@ export const Default: Story = {
   args: {},
 };
 
-export const IconAnchor: Story = {
+export const IconFlexAnchor: Story = {
   render: (args) => (
     <GridBox gap={4}>
       <Anchor
@@ -56,11 +56,10 @@ export const IconAnchor: Story = {
   ),
 };
 
-export const IconAnchorExample: Story = {
+export const IconInlineAnchorExample: Story = {
   render: (args) => (
     <Text fontSize={14}>
-      I started painting as a hobby when I was little. I didn&apos;t know I had
-      any talent. I believe talent is just a pursued interest.e{' '}
+      I started painting as a hobby when I was little.{' '}
       <Anchor
         {...args}
         href="/"
@@ -68,10 +67,20 @@ export const IconAnchorExample: Story = {
         iconPosition="left"
         variant="inline"
       >
+        I didn&apos;t know I had any talent.
+      </Anchor>{' '}
+      I believe talent is just a pursued interest.{' '}
+      <Anchor
+        {...args}
+        href="/"
+        icon={BulbIcon}
+        iconPosition="right"
+        variant="inline"
+      >
         Anybody can do what I do.
       </Anchor>{' '}
       Just go back and put one little more happy tree in there. Everybody&apos;s
-      different.{' '}
+      different. <br />
       <Anchor
         {...args}
         href="/"

@@ -11,6 +11,7 @@ import {
   BashShellIcon,
   FileIcon,
   InformationalIcon,
+  MiniOpenIcon,
   MultipleUsersIcon,
   PeopleIcon,
   RatingStarCircleIcon,
@@ -41,7 +42,9 @@ export const Default: Story = {
       <>
         <MenuItem>Menu item</MenuItem>
         <MenuItem active>Active item</MenuItem>
-        <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
+        <MenuItem icon={[RatingStarCircleIcon, MiniOpenIcon]}>
+          Multi icons
+        </MenuItem>
         <MenuItem>Menu item</MenuItem>
       </>
     ),
@@ -83,6 +86,12 @@ export const Popover: Story = {
           onClick={() => null}
         >
           Disabled button with ToolTip
+        </MenuItem>
+        <MenuItem
+          icon={[RatingStarCircleIcon, MiniOpenIcon]}
+          onClick={() => null}
+        >
+          Multi icons
         </MenuItem>
       </Menu>
     </FlexBox>
@@ -273,7 +282,7 @@ export const IconMenu: Story = {
           icon={RatingStarCircleIcon}
           label={{
             alignment: 'right-center',
-            info: <Text color="hyper">I am bold and different</Text>,
+            info: <Text color="primary">I am bold and different</Text>,
             narrow: true,
           }}
         />
@@ -334,6 +343,7 @@ export const FloatingMenuExample: React.FC = () => {
               >
                 Active item
               </MenuItem>
+
               <MenuItem
                 active={activeIndex === 2}
                 icon={MultipleUsersIcon}
@@ -341,8 +351,13 @@ export const FloatingMenuExample: React.FC = () => {
               >
                 Icon item
               </MenuItem>
-              <MenuItem active={activeIndex === 3} onClick={() => null}>
-                A complex action
+
+              <MenuItem
+                active={activeIndex === 3}
+                icon={[RatingStarCircleIcon, MiniOpenIcon]}
+                onClick={() => null}
+              >
+                Multi Icons
               </MenuItem>
             </Menu>
           </FlexBox>
