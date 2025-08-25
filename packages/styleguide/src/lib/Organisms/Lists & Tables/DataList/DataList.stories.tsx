@@ -168,15 +168,6 @@ export const EmptyStateCustom: Story = {
   },
 };
 
-export const ScrollableWithShadow: Story = {
-  args: {
-    shadow: true,
-    scrollable: true,
-    height: '400px',
-    wrapperWidth: '800px',
-  },
-};
-
 export const NonSelectable: Story = {
   args: {
     onRowSelect: undefined,
