@@ -102,7 +102,7 @@ const ConstrainedText = () => {
 export const Playground: Story = {
   args: {
     heading: 'All the options',
-    body: <ConstrainedText />,
+    body: '<ConstrainedText />',
     overline: 'overline is text-secondary and fontFamily: accent',
     subheading: 'subheading is text-secondary',
     ctaText: 'Optional button - must include a callback!',

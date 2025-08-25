@@ -1,56 +1,71 @@
 import { Dialog, FillButton } from '@codecademy/gamut';
 import { ColorMode } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { ComponentProps, useEffect, useState } from 'react';
 
-const meta: Meta<typeof Dialog> = {
-  component: Dialog,
+export const DialogExample: React.FC<ComponentProps<typeof Dialog>> = (
+  args
+) => {
+  const [isOpen, setIsOpen] = useState(args.isOpen);
+
+  useEffect(() => {
+    setIsOpen(args.isOpen);
+  }, [args.isOpen]);
+
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Dialog</FillButton>
+      <Dialog
+        {...args}
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+      />
+    </>
+  );
+};
+
+const meta: Meta<typeof DialogExample> = {
+  component: DialogExample,
   args: {
     title: 'Depeche Modal',
     children: 'All I ever wanted, all I ever needed is here in my',
     confirmCta: { children: 'Arms!' },
     cancelCta: { children: 'Heart?' },
+    variant: 'primary',
+  },
+  argTypes: {
+    variant: {
+      control: {
+        type: 'select',
+        options: ['primary', 'danger'],
+      },
+      description: 'The visual style variant for the confirm button',
+      table: {
+        type: { summary: "'primary' | 'danger'" },
+        defaultValue: { summary: 'primary' },
+      },
+    },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Dialog>;
-
-const DialogExample = (args: React.ComponentProps<typeof Dialog>) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <>
-      <FillButton onClick={() => setIsOpen(true)}>Open Dialog</FillButton>
-      <Dialog isOpen={isOpen} {...args} onRequestClose={() => setIsOpen(false)}>
-        Close the Dialog!
-      </Dialog>
-    </>
-  );
-};
-
-export const Default: Story = {
-  render: (args) => <DialogExample {...args} />,
-};
+type Story = StoryObj<typeof DialogExample>;
 
 export const Danger: Story = {
   args: {
     variant: 'danger',
   },
-  render: (args) => <DialogExample {...args} />,
 };
 
 export const LightMode: Story = {
-  render: (args) => <DialogExample {...args} />,
-};
-
-const DarkModeExample = (args: React.ComponentProps<typeof Dialog>) => {
-  return (
-    <ColorMode mode="dark">
-      <DialogExample {...args} />
-    </ColorMode>
-  );
+  args: {},
 };
 
 export const DarkMode: Story = {
-  render: (args) => <DarkModeExample {...args} />,
+  args: {},
+  render: (args) => (
+    <ColorMode mode="dark">
+      <DialogExample {...args} />
+    </ColorMode>
+  ),
 };

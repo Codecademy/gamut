@@ -1,23 +1,28 @@
 import { Box, FillButton, FocusTrap, GridForm } from '@codecademy/gamut';
 import type { Meta } from '@storybook/react';
-import { useState } from 'react';
+import { ComponentProps, useEffect, useState } from 'react';
 
 const meta: Meta<typeof FocusTrap> = {
   component: FocusTrap,
-  args: {},
+  args: {
+    active: false,
+  },
 };
 
 export default meta;
 
-export const Default: React.FC = () => {
-  const [trapActive, setActive] = useState(false);
+export const Default: React.FC<ComponentProps<typeof FocusTrap>> = (args) => {
+  const [trapActive, setActive] = useState(args.active);
+  useEffect(() => {
+    setActive(args.active);
+  }, [args.active]);
   return (
     <>
       <Box>
         <FillButton onClick={() => setActive(true)}>
           Enable Focus Trap
         </FillButton>
-        <FocusTrap active={trapActive}>
+        <FocusTrap {...args} active={trapActive}>
           <Box
             border={1}
             borderColor={trapActive ? 'black' : 'gray-200'}
