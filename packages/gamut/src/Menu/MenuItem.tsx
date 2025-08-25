@@ -53,6 +53,7 @@ interface MenuItemIconOnly extends HTMLProps, ForwardListItemProps {
 
 interface MenuTextItem extends HTMLProps, ForwardListItemProps {
   icon?: AppendedIconProps['icon'];
+  iconPosition?: 'left' | 'right';
   children: React.ReactNode;
   label?: ToolTipLabel;
   disabled?: boolean;
@@ -72,6 +73,7 @@ export const MenuItem = forwardRef<
       height = 1,
       href,
       icon: Icon,
+      iconPosition = 'left',
       label,
       target,
       width = 1,
@@ -120,6 +122,7 @@ export const MenuItem = forwardRef<
       icon: Icon,
       iconSize: rest.spacing === 'condensed' ? 16 : 24,
       iconAndTextGap: children ? 12 : 0,
+      iconPosition,
       children: (
         <>
           {active && <Text screenreader>{currentItemText[listItemType]},</Text>}
