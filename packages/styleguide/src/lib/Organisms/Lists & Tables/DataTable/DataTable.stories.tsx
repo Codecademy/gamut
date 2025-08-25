@@ -161,53 +161,6 @@ export const Scrollable: Story = {
   },
 };
 
-export const ShadowTest: Story = {
-  args: {
-    shadow: true,
-    scrollable: true,
-    height: 'auto',
-    wrapperWidth: '600px',
-    columns: [
-      { label: 'Name', key: 'name', size: 'xl', type: 'header' },
-      { label: 'Rank', key: 'a very important role', size: 'xl' },
-      { label: 'Ship', key: 'ship', size: 'xl' },
-      { label: 'Age', key: 'age', size: 'xl' },
-      { label: 'Species', key: 'species', size: 'xl' },
-      { label: 'Sector', key: 'sector', size: 'xl' },
-      { label: 'Status', key: 'status', size: 'xl' },
-      { label: 'Years of Service', key: 'yearsOfService', size: 'xl' },
-      { label: 'Homeworld', key: 'homeworld', size: 'xl' },
-      { label: 'Specialization', key: 'specialization', size: 'xl' },
-    ],
-  },
-};
-
-export const DebugShadow: Story = {
-  args: {
-    shadow: true,
-    scrollable: true,
-    height: '200px',
-    wrapperWidth: '400px',
-    spacing: 'condensed',
-    columns: [
-      {
-        label: 'Very Long Column Name 1',
-        key: 'name',
-        size: 'xl',
-        type: 'header',
-      },
-      {
-        label: 'Very Long Column Name 2',
-        key: 'a very important role',
-        size: 'xl',
-      },
-      { label: 'Very Long Column Name 3', key: 'ship', size: 'xl' },
-      { label: 'Very Long Column Name 4', key: 'age', size: 'xl' },
-      { label: 'Very Long Column Name 5', key: 'species', size: 'xl' },
-    ],
-  },
-};
-
 export const Default: Story = {
   args: {},
 };
