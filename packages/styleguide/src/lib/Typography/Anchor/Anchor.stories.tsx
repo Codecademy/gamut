@@ -52,7 +52,7 @@ export const IconFlexAnchor: Story = {
       >
         Right-aligned icon anchor
       </Anchor>
-    </FlexBox>
+    </GridBox>
   ),
 };
 
