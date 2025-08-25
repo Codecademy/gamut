@@ -13,11 +13,14 @@ import {
   Text,
   useLocalQuery,
 } from '@codecademy/gamut';
-import { MiniKebabMenuIcon } from '@codecademy/gamut-icons';
+import {
+  MiniKebabMenuIcon,
+  RocketIcon,
+  SparkleOutlineIcon,
+} from '@codecademy/gamut-icons';
 import { BlueprintWhite } from '@codecademy/gamut-illustrations';
 import uniq from 'lodash/uniq';
-import { useCallback, useMemo, useRef, useState } from 'react';
-import { useMedia } from 'react-use';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 
 interface MenuItemConfig {
   action: string;
@@ -41,30 +44,13 @@ const MenuItemGenerator: React.FC<{
   );
 };
 
-const useScreenAlignment = (menuSide: 'left' | 'right') => {
-  const isSmOrLarger = useMedia('(min-width: 768px)');
-
-  const alignment = useMemo((): 'bottom-left' | 'bottom-right' => {
-    // At sm breakpoint (768px) or smaller, always use bottom-left
-    if (!isSmOrLarger) {
-      return 'bottom-left';
-    }
-    // Otherwise use the menuSide prop
-    return menuSide === 'left' ? 'bottom-left' : 'bottom-right';
-  }, [isSmOrLarger, menuSide]);
-
-  return { alignment };
-};
-
 const CrewMgmtDropdown: React.FC<{
   row: (typeof crew)[1];
-  menuSide: 'left' | 'right';
-}> = ({ row, menuSide }) => {
+}> = ({ row }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const menuButtonRef = useRef<HTMLDivElement>(null);
   const { name } = row;
-  const { alignment } = useScreenAlignment(menuSide);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -112,7 +98,7 @@ const CrewMgmtDropdown: React.FC<{
       />
 
       <PopoverContainer
-        alignment={alignment}
+        alignment="bottom-left"
         allowPageInteraction
         isOpen={isOpen}
         offset={0}
@@ -342,28 +328,18 @@ export const cols = [
     sortable: true,
     filters: ['Human'],
   },
+  {
+    header: 'Controls',
+    key: 'name',
+    size: 'md',
+    justify: 'right',
+    type: 'control',
+    render: (row) => <CrewMgmtDropdown row={row} />,
+  },
 ] as ColumnConfig<(typeof crew)[number]>[];
 
-const leftMenu: ColumnConfig<(typeof crew)[number]> = {
-  header: 'Controls',
-  key: 'name',
-  size: 'md',
-  justify: 'right',
-  type: 'control',
-  render: (row) => <CrewMgmtDropdown menuSide="left" row={row} />,
-};
-
-const rightMenu: ColumnConfig<(typeof crew)[number]> = {
-  header: 'Controls',
-  key: 'name',
-  size: 'md',
-  justify: 'right',
-  type: 'control',
-  render: (row) => <CrewMgmtDropdown menuSide="right" row={row} />,
-};
-
 export const createDemoTable =
-  (Component: any, overrides = {}, menuSide: 'left' | 'right' = 'left') =>
+  (Component: any, overrides = {}) =>
   () => {
     const [selectedRows, setSelectedRows] = useState<
       (typeof crew)[number]['name'][]
@@ -372,15 +348,10 @@ export const createDemoTable =
       (typeof crew)[number]['name'][]
     >([]);
 
-    const columnsWithMenu = useMemo(() => {
-      const menuConfig = menuSide === 'left' ? leftMenu : rightMenu;
-      return [...cols, menuConfig];
-    }, []);
-
     const { idKey, query, rows, onQueryChange } = useLocalQuery({
       idKey: 'name',
       rows: crew,
-      columns: columnsWithMenu,
+      columns: cols,
     });
 
     const allIds = useMemo(() => crew.map(({ [idKey]: id }) => id), [idKey]);
@@ -437,7 +408,7 @@ export const createDemoTable =
 
     return (
       <Component
-        columns={columnsWithMenu}
+        columns={cols}
         expanded={expandedRows}
         expandedContent={expandedContent}
         height={500}
@@ -454,21 +425,84 @@ export const createDemoTable =
     );
   };
 
-export const DataTableTemplate = createDemoTable(
-  DataTable,
-  {
-    onRowSelect: undefined,
-    onRowExpand: undefined,
-  },
-  'left'
-);
+export const DataTableTemplate = createDemoTable(DataTable, {
+  onRowSelect: undefined,
+  onRowExpand: undefined,
+});
 
-export const DataListTemplate = createDemoTable(
-  DataList,
+export const DataListTemplate = createDemoTable(DataList, {
+  scrollable: false,
+  height: 'auto',
+  showOverflow: true,
+});
+
+export interface DisableContainerQueryExampleProps {
+  defaultComponent: React.ReactNode;
+  disabledComponent: React.ReactNode;
+  componentName: string;
+}
+
+export const DisableContainerQueryExample: React.FC<
+  DisableContainerQueryExampleProps
+> = ({ defaultComponent, disabledComponent, componentName }) => {
+  return (
+    <FlexBox flexDirection="column" gap={24}>
+      <Box>
+        <Text mb={8} variant="title-sm">
+          Default (Container Queries Enabled)
+        </Text>
+        <Box border={1} borderColor="border-tertiary" maxWidth="400px" p={16}>
+          {defaultComponent}
+        </Box>
+        <Text color="text-secondary" mt={8} variant="p-small">
+          Container queries apply responsive behavior based on the{' '}
+          {componentName} &apos;s container width
+        </Text>
+      </Box>
+
+      <Box>
+        <Text mb={8} variant="title-sm">
+          With Container Queries Disabled
+        </Text>
+        <Box border={1} borderColor="border-tertiary" maxWidth="400px" p={16}>
+          {disabledComponent}
+        </Box>
+        <Text color="text-secondary" mt={8} variant="p-small">
+          Built in responsive behavior is disabled - custom responsive behavior
+          is required
+        </Text>
+      </Box>
+    </FlexBox>
+  );
+};
+
+export const simpleRows = [
+  { name: 'Jean Luc Picard', role: 'Captain', ship: 'USS Enterprise' },
+  { name: 'Wesley Crusher', role: 'Deus Ex Machina', ship: 'USS Enterprise' },
+];
+
+export const simpleColumns = [
+  { key: 'name', header: 'Name', type: 'header', size: 'md' } as const,
+  { key: 'role', header: 'Role', fill: true, justify: 'right' },
   {
-    scrollable: false,
-    height: 'auto',
-    showOverflow: true,
+    header: 'Controls',
+    key: 'name',
+    size: 'xs',
+    type: 'control',
+    render: () => (
+      <>
+        <IconButton
+          icon={SparkleOutlineIcon}
+          tip="Warp back home"
+          tipProps={{ alignment: 'left-center', placement: 'floating' }}
+        />{' '}
+        <IconButton
+          icon={RocketIcon}
+          tip="Send on a mission"
+          tipProps={{ alignment: 'right-center', placement: 'floating' }}
+        />
+      </>
+    ),
   },
-  'right'
-);
+  ,
+];

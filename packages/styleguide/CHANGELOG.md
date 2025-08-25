@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [77.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.4.0...@codecademy/styleguide@77.4.1) (2025-08-21)
+
+### Bug Fixes
+
+- **MenuItem:** add disabled state ([015f486](https://github.com/Codecademy/gamut/commit/015f48699ab74ca030d5b13e54eb7656bad37969))
+
+## [77.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.3.2...@codecademy/styleguide@77.4.0) (2025-08-20)
+
+### Features
+
+- **List, DataTable, DataList, + SystemProps:** add new base container query and List/DataGrid prop ([caae6ac](https://github.com/Codecademy/gamut/commit/caae6acdb9cc1d9a0fea0afd3d9204067fa8764b))
+
 ### [77.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.3.1...@codecademy/styleguide@77.3.2) (2025-08-18)
 
 **Note:** Version bump only for package @codecademy/styleguide

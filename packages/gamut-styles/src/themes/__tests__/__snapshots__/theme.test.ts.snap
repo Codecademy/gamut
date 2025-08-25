@@ -276,6 +276,7 @@ exports[`themes admin - theme shape 1`] = `
     "2": "2px solid var(--color-border-primary)",
   },
   "breakpoints": {
+    "c_base": "@container (min-width: 1px)",
     "c_lg": "@container (min-width: 1200px)",
     "c_md": "@container (min-width: 1024px)",
     "c_sm": "@container (min-width: 768px)",
@@ -790,6 +791,7 @@ exports[`themes core - theme shape 1`] = `
     "2": "2px solid var(--color-border-primary)",
   },
   "breakpoints": {
+    "c_base": "@container (min-width: 1px)",
     "c_lg": "@container (min-width: 1200px)",
     "c_md": "@container (min-width: 1024px)",
     "c_sm": "@container (min-width: 768px)",
@@ -1422,6 +1424,7 @@ exports[`themes platform - theme shape 1`] = `
     "2": "2px solid var(--color-border-primary)",
   },
   "breakpoints": {
+    "c_base": "@container (min-width: 1px)",
     "c_lg": "@container (min-width: 1200px)",
     "c_md": "@container (min-width: 1024px)",
     "c_sm": "@container (min-width: 768px)",
