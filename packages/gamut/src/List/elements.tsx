@@ -235,8 +235,8 @@ const columnType = variant({
       },
     },
     content: {
-      gridColumn: { _: undefined, c_base: 1, c_sm: undefined },
-      gridColumnEnd: { _: undefined, c_base: 'span 1', c_sm: undefined },
+      gridColumn: { _: 'auto', c_base: 1, c_sm: 'auto' },
+      gridColumnEnd: { _: 'auto', c_base: 'span 1', c_sm: 'auto' },
     },
     select: {
       gridColumn: { _: 1, c_base: 3, c_sm: 1 },
@@ -248,9 +248,9 @@ const columnType = variant({
         c_sm: 'center',
       },
       justifyItems: {
-        _: undefined,
+        _: 'auto',
         c_base: 'end',
-        c_sm: undefined,
+        c_sm: 'auto',
       },
     },
     control: {
@@ -263,9 +263,9 @@ const columnType = variant({
         c_sm: 'center',
       },
       justifyItems: {
-        _: undefined,
+        _: 'auto',
         c_base: 'end',
-        c_sm: undefined,
+        c_sm: 'auto',
       },
     },
     tableControl: {
@@ -276,16 +276,16 @@ const columnType = variant({
         c_sm: 'center',
       },
       justifyItems: {
-        _: undefined,
+        _: 'auto',
         c_base: 'end',
-        c_sm: undefined,
+        c_sm: 'auto',
       },
     },
     expand: {
       minWidth: 'min-content',
     },
     expandControl: {
-      gridColumnEnd: { _: undefined, c_base: 'span 3', c_sm: undefined },
+      gridColumnEnd: { _: 'auto', c_base: 'span 3', c_sm: 'auto' },
     },
   },
 });

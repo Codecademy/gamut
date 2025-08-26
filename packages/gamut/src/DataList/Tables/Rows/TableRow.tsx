@@ -134,7 +134,7 @@ export const TableRow: DataRow = ({
           }
 
           colConfig = {
-            gridColumn: { _: gridCol, c_sm: undefined },
+            gridColumn: { _: 'auto', c_base: gridCol, c_sm: 'auto' },
             gridRow,
             type: 'tableControl',
           };
