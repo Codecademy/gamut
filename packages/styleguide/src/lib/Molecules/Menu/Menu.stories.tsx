@@ -58,7 +58,7 @@ export const Popover: Story = {
   render: (args) => (
     <FlexBox column width="fit-content">
       <Menu {...args}>
-        <MenuItem label="testing" onClick={() => null}>
+        <MenuItem label="Extra extra!" onClick={() => null}>
           Menu item with Tooltip
         </MenuItem>
         <MenuItem active onClick={() => null}>
@@ -106,7 +106,7 @@ export const Fixed: Story = {
     <FlexBox column width="fit-content">
       <nav>
         <Menu {...args}>
-          <MenuItem label="testing" onClick={() => null}>
+          <MenuItem label="Read all about it" onClick={() => null}>
             Menu item with Tooltip
           </MenuItem>
           <MenuItem active onClick={() => null}>
@@ -185,7 +185,9 @@ export const NoRoleMenu: Story = {
         <MenuItem>Menu item</MenuItem>
         <MenuItem active>Active item</MenuItem>
         <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
-        <MenuItem>Menu item</MenuItem>
+        <MenuItem icon={MiniOpenIcon} iconPosition="right">
+          Menu item
+        </MenuItem>
       </>
     ),
   },

@@ -49,6 +49,7 @@ interface MenuItemIconOnly extends HTMLProps, ForwardListItemProps {
   /** ToolTips will only render for interactive items, otherwise the label will be used as a generic aria-label  */
   label: ToolTipLabel;
   disabled?: boolean;
+  iconPosition?: never;
 }
 
 interface MenuTextItem extends HTMLProps, ForwardListItemProps {
