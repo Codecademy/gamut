@@ -73,7 +73,7 @@ export const IconInlineAnchorExample: Story = {
       <Anchor
         {...args}
         href="/"
-        icon={BulbIcon}
+        icon={icons.BulbIcon}
         iconPosition="right"
         variant="inline"
       >
