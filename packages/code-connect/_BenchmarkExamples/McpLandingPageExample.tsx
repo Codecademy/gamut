@@ -16,6 +16,9 @@ import {
 import { SearchIcon } from '@codecademy/gamut-icons';
 import React from 'react';
 
+// Generated after adding rules to github copilot
+// using claude 4
+
 export const McpLandingPageExample: React.FC = () => {
   return (
     <Box width="100%">
