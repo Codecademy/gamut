@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.8.0...@codecademy/gamut-styles@17.9.0) (2025-08-20)
+
+### Features
+
+- **List, DataTable, DataList, + SystemProps:** add new base container query and List/DataGrid prop ([caae6ac](https://github.com/Codecademy/gamut/commit/caae6acdb9cc1d9a0fea0afd3d9204067fa8764b))
+
 ## [17.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.7.0...@codecademy/gamut-styles@17.8.0) (2025-08-20)
 
 ### Features
