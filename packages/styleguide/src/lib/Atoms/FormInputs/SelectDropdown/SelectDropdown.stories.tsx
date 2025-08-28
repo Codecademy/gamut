@@ -2,27 +2,16 @@ import { Box, FormGroup, SelectDropdown } from '@codecademy/gamut';
 import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
-export const fruitOptions = [
-  'Apple',
-  'Banana',
-  'Cherry',
-  'Dragonfruit',
-  'Eggplant',
-];
+const fruitOptions = ['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant'];
 
 const meta: Meta<typeof SelectDropdown> = {
   component: SelectDropdown,
   args: {
     htmlFor: 'example-select',
     options: fruitOptions,
-  },
-  argTypes: {
-    value: {
-      control: {
-        type: 'select',
-        options: fruitOptions,
-      },
-    },
+    disabled: false,
+    isSearchable: false,
+    value: '',
   },
 };
 
