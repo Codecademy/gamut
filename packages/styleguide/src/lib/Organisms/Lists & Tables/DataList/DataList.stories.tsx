@@ -4,7 +4,14 @@
 import { DataList, DataTable, FlexBox } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { cols, CustomEmptyState, DataListTemplate } from '../examples';
+import {
+  cols,
+  CustomEmptyState,
+  DataListTemplate,
+  DisableContainerQueryExample,
+  simpleColumns,
+  simpleRows,
+} from '../examples';
 
 const meta: Meta<typeof DataList> = {
   component: DataList,
@@ -109,4 +116,41 @@ export const EmptyStateCustom: Story = {
     minHeight: '300px',
     emptyMessage: <CustomEmptyState />,
   },
+};
+
+const DataListDisableContainerQueryExample = () => {
+  const defaultComponent = (
+    <DataList
+      columns={simpleColumns}
+      header
+      id="default-container-query"
+      idKey="name"
+      rows={simpleRows}
+      spacing="condensed"
+    />
+  );
+
+  const disabledComponent = (
+    <DataList
+      columns={simpleColumns}
+      disableContainerQuery
+      id="disabled-container-query"
+      idKey="name"
+      rows={simpleRows}
+      spacing="condensed"
+    />
+  );
+
+  return (
+    <DisableContainerQueryExample
+      componentName="DataList"
+      defaultComponent={defaultComponent}
+      disabledComponent={disabledComponent}
+    />
+  );
+};
+
+export const DisableContainerQuery: Story = {
+  args: {},
+  render: () => <DataListDisableContainerQueryExample />,
 };

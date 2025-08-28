@@ -29,6 +29,13 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
    * How the List container should handle overflow.
    */
   overflow?: BoxProps['overflow'];
+  /**
+   * This is an override for the width of the wrapper element that contains the List.
+   * It is useful for custom scroll and breakpoint handling. Use with caution.
+   */
+  wrapperWidth?: BoxProps['width'];
+  /** Whether to disable container queries on the List wrapper */
+  disableContainerQuery?: boolean;
 }
 
 export const List = forwardRef<HTMLUListElement, ListProps>(
@@ -49,6 +56,8 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       emptyMessage,
       overflow = 'auto',
       scrollToTopOnUpdate = false,
+      wrapperWidth,
+      disableContainerQuery = false,
       ...rest
     },
     ref
@@ -127,6 +136,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     return (
       <ListProvider value={value}>
         <ListWrapper
+          disableContainerQuery={disableContainerQuery}
           id={id}
           maxHeight={height}
           overflow={overflow}
@@ -140,12 +150,12 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             as={isTable && !isEmpty && !loading ? 'table' : 'div'}
             data-testid={`scrollable-${id}`}
             height={isEmpty ? height : 'fit-content'}
-            maxWidth={1}
+            maxWidth={wrapperWidth || 1}
             minHeight={minHeight}
             overflow="inherit"
             position="relative"
             ref={!isEmpty ? tableRef : undefined}
-            width="inherit"
+            width={wrapperWidth || 'inherit'}
           >
             {content}
           </Box>

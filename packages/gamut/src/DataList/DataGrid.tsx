@@ -55,6 +55,9 @@ export function DataGrid<
     hideSelectAll = false,
     scrollToTopOnUpdate = false,
     id,
+    wrapperWidth,
+    overflow,
+    disableContainerQuery = false,
   } = props;
 
   const empty = rows.length === 0;
@@ -102,6 +105,7 @@ export function DataGrid<
       <ListControlContext.Provider value={listControls}>
         <List
           as="table"
+          disableContainerQuery={disableContainerQuery}
           emptyMessage={emptyMessage ?? <EmptyRows />}
           header={
             header ? (
@@ -117,11 +121,13 @@ export function DataGrid<
           id={id}
           loading={loading}
           minHeight={minHeight}
+          overflow={overflow}
           scrollToTopOnUpdate={scrollToTopOnUpdate}
           scrollable={scrollable}
           shadow={shadow}
           spacing={spacing}
           variant={variant}
+          wrapperWidth={wrapperWidth ?? undefined}
         >
           {renderedRows.map((row) => {
             const rowId = row[idKey];

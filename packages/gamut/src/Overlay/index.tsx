@@ -81,6 +81,7 @@ export const Overlay: React.FC<OverlayProps> = ({
     <OverlayContainer
       center
       className={className}
+      data-floating="overlay"
       data-testid="overlay-content-container"
       inline={inline}
       inset={0}

@@ -24,6 +24,7 @@ export const mediaQueries = {
 };
 
 export const containerQueries = {
+  c_base: '@container (min-width: 1px)',
   c_xs: createContainerQuery('xs', 'min'),
   c_sm: createContainerQuery('sm', 'min'),
   c_md: createContainerQuery('md', 'min'),

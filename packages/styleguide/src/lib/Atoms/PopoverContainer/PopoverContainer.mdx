@@ -5,6 +5,7 @@ import { ComponentHeader } from '~styleguide/blocks';
 import * as PopoverContainerStories from './PopoverContainer.stories';
 
 export const parameters = {
+  title: 'PopoverContainer',
   subtitle:
     'Utility component for positioning content relative to a target element.',
   status: 'current',
@@ -77,6 +78,10 @@ Addition pixel offset from center in the direction of the alignment (e.g. top-le
 Absolute offset values irrespective of the relative position. (e.g. x={-4} will be 4 pixels to the left in every position unlike offset).
 
 <Canvas of={PopoverContainerStories.XandY} />
+
+### `allowPageInteraction`
+
+When `allowPageInteraction` is set to `true`, the page interaction is allowed. This is useful when the parent component is handling focus management and accessibility.
 
 ## Playground
 
