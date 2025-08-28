@@ -16,9 +16,7 @@ const meta: Meta<typeof Coachmark> = {
 export default meta;
 type Story = StoryObj<typeof Coachmark>;
 
-export const CoachmarkExample: React.FC<ComponentProps<typeof Coachmark>> = (
-  args
-) => {
+export const Default: React.FC<ComponentProps<typeof Coachmark>> = (args) => {
   const [shouldShow, setShouldShow] = useState(args.shouldShow);
 
   useEffect(() => {
@@ -50,7 +48,7 @@ export const CoachmarkExample: React.FC<ComponentProps<typeof Coachmark>> = (
 
 export const Customized: Story = {
   render: (props) => (
-    <CoachmarkExample
+    <Default
       {...props}
       popoverProps={{
         beak: 'left',
@@ -64,7 +62,7 @@ export const Customized: Story = {
 
 export const ShouldShow: Story = {
   render: (props) => (
-    <CoachmarkExample
+    <Default
       {...props}
       popoverProps={{
         beak: 'left',
@@ -78,7 +76,7 @@ export const ShouldShow: Story = {
 
 export const Delay: Story = {
   render: (props) => (
-    <CoachmarkExample
+    <Default
       {...props}
       delay={3000}
       popoverProps={{

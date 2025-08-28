@@ -13,9 +13,7 @@ const meta: Meta<typeof Flyout> = {
 
 export default meta;
 
-export const FlyoutExample: React.FC<ComponentProps<typeof Flyout>> = (
-  args
-) => {
+export const Default: React.FC<ComponentProps<typeof Flyout>> = (args) => {
   const [expanded, setExpanded] = useState(args.expanded);
 
   useEffect(() => {

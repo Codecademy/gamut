@@ -27,6 +27,11 @@ const meta: Meta<typeof DelayedRenderWrapper> = {
 export default meta;
 type Story = StoryObj<typeof DelayedRenderWrapper>;
 
+export const Default: Story = {
+  args: { delay: 1000 },
+  render: (args) => <DelayedRenderExample delay={args.delay} />,
+};
+
 const DelayedRenderExample = ({ delay }: { delay: number }) => {
   const [showChildren, setShowChildren] = useState(false);
   return (
@@ -56,9 +61,4 @@ export const ZeroSecondsDelay: Story = {
 
 export const ThreeSecondDelay: Story = {
   render: () => <DelayedRenderExample delay={3000} />,
-};
-
-export const Default: Story = {
-  args: { delay: 1000 },
-  render: (args) => <DelayedRenderExample delay={args.delay} />,
 };

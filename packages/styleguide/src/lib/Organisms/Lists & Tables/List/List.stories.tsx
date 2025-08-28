@@ -35,6 +35,13 @@ const meta: Meta<typeof List> = {
 export default meta;
 type Story = StoryObj<typeof List>;
 
+export const Default: Story = {
+  args: {
+    spacing: 'condensed',
+  },
+  render: (args) => <ListExample {...args} />,
+};
+
 const rows = [
   { name: 'Jean Luc Picard', role: 'Captain', ship: 'USS Enterprise' },
   { name: 'Wesley Crusher', role: 'Deus Ex Machina', ship: 'USS Enterprise' },
@@ -82,13 +89,6 @@ export const CompactSpacing: Story = {
 
 export const Table: Story = {
   args: { spacing: 'condensed', variant: 'table' },
-  render: (args) => <ListExample {...args} />,
-};
-
-export const Default: Story = {
-  args: {
-    spacing: 'condensed',
-  },
   render: (args) => <ListExample {...args} />,
 };
 

@@ -62,6 +62,10 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
+export const Default: Story = {
+  args: {},
+};
+
 export const FullDataTable: Story = {
   render: () => <DataTableTemplate />,
 };
@@ -95,8 +99,4 @@ export const LoadingRows: Story = {
 
 export const Scrollable: Story = {
   args: { shadow: true },
-};
-
-export const Default: Story = {
-  args: {},
 };
