@@ -44,7 +44,6 @@ const meta: Meta<typeof ConnectedForm> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ConnectedForm>;
 
 export const Default: React.FC<ComponentProps<typeof ConnectedForm>> = (
   args
