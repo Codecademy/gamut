@@ -9,101 +9,92 @@ export const parameters = {
   status: 'updating',
 };
 
-<Meta title="Meta/Figma MCP" />
+<Meta title="Meta/MCP/Figma MCP" />
 
 <AboutHeader {...parameters} />
 
 <Callout text="You must have a Dev or Full account to be able to be able to use the Figma MCP." />
 
-# Figma Dev Mode MCP Server Setup
+Much of the following information is extracted from the [Figma Dev Mode MCP documentation](https://www.figma.com/dev-mode/mcp/getting-started/) — it's been adapted to fit the context of this repository.
 
-This repository is configured to use the Figma Dev Mode MCP server locally. This allows you to extract designs, code, and assets directly from Figma within Cursor.
+## Installing the Code Connect command line tool
 
-## Setup Instructions
-
-### 1. Install Dependencies
+To install the Code Connect command line tool, run the following command:
 
 ```bash
-yarn install
+npm install --global @figma/code-connect@latest
 ```
 
-This will install the `@figma/mcp-server` package that's configured in the `devDependencies`.
+## Figma (desktop client app)
 
-### 2. Get Your Figma Access Token
+If you haven't already, download the Figma desktop client app appropriate for your OS by going to https://www.figma.com/downloads/.
 
-1. Go to [Figma Settings > Personal Access Tokens](https://www.figma.com/developers/api#access-tokens)
-2. Click "Create new personal access token"
-3. Give it a descriptive name (e.g., "Gamut Repository MCP")
-4. Copy the generated token
+### Start up local Figma MCP server
 
-### 3. Configure the Token
+1. Click on the Figma icon in the top left-hand corner
+2. Preferences > Enable local MCP server
 
-You have two options to provide your Figma access token:
+More information visit [Figma's local MCP server documentation](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Dev-Mode-MCP-Server).
 
-#### Option A: Environment Variable (Recommended)
+## Set up MCP Client for your text editor/IDE
 
-Set the environment variable in your shell:
+We currently support MCP for VSCode and Cursor. Please let the Gamut team know if you'd like support for other editors.
 
-```bash
-export FIGMA_ACCESS_TOKEN="your_figma_access_token_here"
+### VSCode
+
+There is an `mcp.json` file that is already configured, you do not need to do anything else.
+
+### Cursor
+
+Instructions were taken from Figma's documentation to [set up your MCP client section](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Dev-Mode-MCP-Server).
+
+1. Open Cursor → Settings → Cursor Settings.
+2. Go to the MCP tab (might be called MCP & Integrations) from the left-hand sidebar.
+3. Under "MCP Tools", click "+ Add MCP server".
+4. Enter the following configuration and save:
+
 ```
-
-Or add it to your shell profile (`~/.zshrc`, `~/.bashrc`, etc.):
-
-```bash
-echo 'export FIGMA_ACCESS_TOKEN="your_figma_access_token_here"' >> ~/.zshrc
-source ~/.zshrc
-```
-
-#### Option B: Update MCP Configuration
-
-Edit `.cursor/mcp.json` and replace the empty token:
-
-```json
 {
   "mcpServers": {
-    "figma": {
-      "command": "npx",
-      "args": ["@figma/mcp-server"],
-      "env": {
-        "FIGMA_ACCESS_TOKEN": "your_figma_access_token_here"
-      }
+    "Figma": {
+      "url": "http://127.0.0.1:3845/mcp"
     }
   }
 }
 ```
 
-### 4. Restart Cursor
+To check if your MCP server is running, you can visit the endpoint: `http://127.0.0.1:3845/mcp`. You should see a response, e.g.: `{"jsonrpc":"2.0","error":{"code":-32001,"message":"Invalid sessionId"},"id":null}`
+Otherwise if it's not running you'll see an error "This site can’t be reached" on the page.
 
-After configuring the token, restart Cursor to load the MCP server.
+Similarly you can test the end point using:
 
-## Usage
+```bash
+curl http://127.0.0.1:3845/mcp
+```
 
-Once configured, you can:
+## (Optional) Check the rules
 
-1. **Extract designs from Figma**: Select elements in Figma and use the MCP tools to get code
-2. **Get design specifications**: Extract colors, spacing, typography from Figma designs
-3. **Generate components**: Create React components based on Figma designs
+In this repo, there are rules for Copilot (VScode) and Cursor to use the Figma MCP server. You can find them in `.github/instructions/figma.instructions.md` and `.cursor/rules/figma-rules.mdc` respectively.
 
-The MCP server will be available in Cursor's chat interface when working in this repository.
+## Prompt your MCP client
 
-## Troubleshooting
+You can prompt the MCP in two main ways:
 
-### MCP Server Not Loading
+1. Provide a link to the node of the design you'd like to generate code for, e.g.:
 
-- Ensure your Figma access token is valid
-- Check that the token has the necessary permissions
-- Restart Cursor after making configuration changes
+   > Generate the code for this node: https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=79202-13690&m=dev
 
-### Token Issues
+2. Selecting the node in the Figma interface, e.g.:
+   > Generate the code for the current selection
 
-- Verify the token is correctly set in the environment or configuration
-- Make sure there are no extra spaces or quotes in the token
-- Generate a new token if the current one isn't working
+In the chat, you may be prompted to allow the Figma commands of `get_code()` to run.
 
-## Configuration Files
+## Feedback for the Gamut team
 
-- `.cursor/mcp.json` - Local MCP server configuration for this repository
-- `package.json` - Contains the `@figma/mcp-server` dependency
+Please let the Gamut team of any feedback you have, things like:
 
-This setup is local to this repository and won't affect your global Cursor configuration.
+- If you find that a new rule that you'd like implemented in this repo, please let the Gamut team know.
+- Support for another text editor/IDE.
+- Incorrect code generation
+
+If you have any other feedback or suggestions, feel free to share those as well!

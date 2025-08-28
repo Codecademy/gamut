@@ -1,0 +1,71 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, Callout } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Code Connect',
+  title: 'Code Connect',
+  subtitle:
+    'Set up the Code Connect locally to enable design to code generation.',
+  status: 'updating',
+};
+
+<Meta title="Meta/MCP/Code Connect" />
+
+<AboutHeader {...parameters} />
+
+<Callout text="Code connect files, `*.figma.tsx` files are already created for Gamut components, you should NOT need the CLI to help generate these files." />
+
+Much of the following information is extracted from the [Figma Code Connect documentation](https://www.figma.com/code-connect-docs/) — it's been adapted to fit the context of this repository.
+
+Code Connect provides Figma with the actual code for Figma components. In providing accurate code, this helps the Figma MCP generate accurate code snippets for designs that use these components.
+
+## Installing the Code Connect command line tool
+
+To install the Code Connect command line tool, run the following command:
+
+```bash
+npm install --global @figma/code-connect@latest
+```
+
+## Download the Figma desktop client app
+
+If you haven't already, download the Figma desktop client app appropriate for your OS by going to https://www.figma.com/downloads/.
+
+### Generate your personal access token
+
+Through the desktop app:
+
+1. Click on the Figma icon in the top left-hand corner
+2. Select "Help and Account" > "Account Settings" — this should open a modal
+3. In the modal, select the "Security" tab
+4. Locate the section "Personal access tokens" and click "Generate a new token" and provide a descriptive name (e.g., "Gamut Repository MCP")
+
+This token should have permissions for:
+
+- Code Connect: "Write"
+- File content: "Read-only"
+
+After your token is generated, copy it somewhere safe. Upon closing the modal, you won't be able to see it again.
+
+More information can be found in [Figma's access token documentation](https://help.figma.com/hc/en-us/articles/8085703771159-Manage-personal-access-tokens).
+
+## Editing Code Connect files
+
+In `packages/code-connect`, you'll find `*.figma.tsx` files. These files are Code Connect files that map Figma components to Gamut components.
+
+If you are creating a new Gamut component, you should create a new `*.figma.tsx` file in this directory and follow the existing patterns to map your component.
+
+Use the [Code Connect CLI documentation](https://www.figma.com/code-connect-docs/) to help you understand how to map Figma properties to React props.
+
+### Publishing
+
+<Callout text="The publish command will publish ALL of the *.figma.tsx files in the packages/code-connect directory to Figma. There is currently no way to publish individual files. So use your discretion and communicate with team members before publishing." />
+
+Use the command to publish:
+
+```
+npx figma connect publish --token=PERSONAL_ACCESS_TOKEN
+```
+
+There are future plans to eliminate the need for individuals to publish these files and use GitHub Actions instead. Stay tuned!
