@@ -15,6 +15,6 @@ figma.connect(
   'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=29492%3A37582',
   {
     props: {},
-    example: (props) => <ImageContainer />,
+    example: (props) => <ImageContainer {...props} />,
   }
 );

@@ -25,6 +25,8 @@ figma.connect(
       //   "Instructions": "instructions"
       // })
     },
-    example: (props) => <GridForm submit={/* TODO */} onSubmit={/* TODO */} />,
+    example: (props) => (
+      <GridForm submit={/* TODO */} onSubmit={/* TODO */} {...props} />
+    ),
   }
 );

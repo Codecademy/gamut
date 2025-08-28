@@ -24,6 +24,6 @@ figma.connect(
       }),
       hover: figma.boolean('hover'),
     },
-    example: (props) => <Tab />,
+    example: (props) => <Tab {...props} />,
   }
 );

@@ -24,6 +24,6 @@ figma.connect(
         includeSkipToButtons: 'includeskiptobuttons',
       }),
     },
-    example: (props) => <Pagination />,
+    example: (props) => <Pagination {...props} />,
   }
 );

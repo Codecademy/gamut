@@ -28,7 +28,11 @@ figma.connect(
       // })
     },
     example: (props) => (
-      <Coachmark renderPopover={/* TODO */} shouldShow={/* TODO */} />
+      <Coachmark
+        renderPopover={/* TODO */}
+        shouldShow={/* TODO */}
+        {...props}
+      />
     ),
   }
 );

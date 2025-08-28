@@ -19,6 +19,6 @@ figma.connect(
         Default: 'default',
       }),
     },
-    example: (props) => <Modal />,
+    example: (props) => <Modal {...props} />,
   }
 );

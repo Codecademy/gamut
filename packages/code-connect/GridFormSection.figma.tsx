@@ -37,6 +37,6 @@ figma.connect(
       // "item20": figma.boolean('.item-20'),
       // "expanded": figma.boolean('expanded')
     },
-    example: (props) => <GridFormSection fields={/* TODO */} />,
+    example: (props) => <GridFormSection fields={/* TODO */} {...props} />,
   }
 );

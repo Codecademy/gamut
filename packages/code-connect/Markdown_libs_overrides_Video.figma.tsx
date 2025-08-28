@@ -21,6 +21,6 @@ figma.connect(
       //   "<676px": "-676px"
       // })
     },
-    example: (props) => <MarkdownVideo />,
+    example: (props) => <MarkdownVideo {...props} />,
   }
 );

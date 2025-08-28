@@ -21,6 +21,6 @@ figma.connect(
       bordered: figma.boolean('Bordered'),
       beak: figma.boolean('Beak'),
     },
-    example: (props) => <Popover />,
+    example: (props) => <Popover {...props} />,
   }
 );

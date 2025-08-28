@@ -16,7 +16,12 @@ figma.connect(
   {
     props: {},
     example: (props) => (
-      <FloatingTip alignment={/* TODO */} info={/* TODO */} type={/* TODO */} />
+      <FloatingTip
+        alignment={/* TODO */}
+        info={/* TODO */}
+        type={/* TODO */}
+        {...props}
+      />
     ),
   }
 );

@@ -15,6 +15,6 @@ figma.connect(
   'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=65117%3A20356',
   {
     props: {},
-    example: (props) => <MenuSeparator />,
+    example: (props) => <MenuSeparator {...props} />,
   }
 );

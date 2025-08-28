@@ -22,6 +22,8 @@ figma.connect(
       // "toast": figma.boolean('Toast '),
       // "toast": figma.boolean('Toast ')
     },
-    example: (props) => <Toaster toasts={/* TODO */} onClose={/* TODO */} />,
+    example: (props) => (
+      <Toaster toasts={/* TODO */} onClose={/* TODO */} {...props} />
+    ),
   }
 );
