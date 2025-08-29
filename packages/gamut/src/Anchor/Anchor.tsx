@@ -15,7 +15,6 @@ export const Anchor = forwardRef<
       iconOffset,
       iconPosition = 'left',
       iconSize = 16,
-      iconAndTextGap = 8,
       isInlineIcon = true,
       variant = 'inline',
       ...rest
@@ -26,7 +25,7 @@ export const Anchor = forwardRef<
       children,
       iconOffset,
       iconSize,
-      iconAndTextGap,
+      iconAndTextGap: 8,
       isInlineIcon,
       icon,
       iconPosition,

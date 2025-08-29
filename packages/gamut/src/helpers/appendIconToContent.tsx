@@ -55,6 +55,7 @@ interface RenderStyledIconProps
   > {
   icon: React.ComponentType<GamutIconProps>;
   spacing: 'mr' | 'ml';
+  isInlineIcon: boolean;
 }
 
 interface BaseRenderProps {
@@ -81,17 +82,29 @@ const renderStyledIcon = ({
   iconOffsetInEm,
   heightOffset,
   iconSize,
-}: RenderStyledIconProps) => (
-  <Icon
-    aria-hidden
-    size={iconSize}
-    {...{ [spacing]: iconAndTextGap }}
-    height={heightOffset}
-    pb={iconOffsetInEm as any}
-    verticalAlign="middle"
-    width={iconSize}
-  />
-);
+  isInlineIcon,
+}: RenderStyledIconProps) => {
+  const baseIconProps = {
+    'aria-hidden': true,
+    size: iconSize,
+    [spacing]: iconAndTextGap,
+  } as const;
+
+  // Only apply vertical adjustments for inline icons
+  if (isInlineIcon) {
+    return (
+      <Icon
+        {...baseIconProps}
+        height={heightOffset}
+        pb={iconOffsetInEm as any}
+        verticalAlign="middle"
+        width={iconSize}
+      />
+    );
+  }
+
+  return <Icon {...baseIconProps} />;
+};
 
 // Create a wrapper to handle inline vs flex layout
 const wrapContent = (content: React.ReactNode, isInlineIcon: boolean) =>
@@ -122,6 +135,7 @@ const appendSingleIcon = ({
     iconOffsetInEm,
     heightOffset,
     iconSize,
+    isInlineIcon,
   });
 
   const content =
@@ -158,6 +172,7 @@ const appendMultipleIcons = ({
     iconOffsetInEm,
     heightOffset,
     iconSize,
+    isInlineIcon,
   });
 
   const rightIcon = renderStyledIcon({
@@ -167,6 +182,7 @@ const appendMultipleIcons = ({
     iconOffsetInEm,
     heightOffset,
     iconSize,
+    isInlineIcon,
   });
 
   const content = (

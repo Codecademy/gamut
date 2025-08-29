@@ -41,6 +41,7 @@ export const InlineIconButton = forwardRef<
       ...commonIconProps,
       icon,
       iconPosition,
+      isInlineIcon: true,
     });
 
     return (
