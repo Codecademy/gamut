@@ -1,4 +1,4 @@
-import { ButtonProps, IconButton } from '@codecademy/gamut';
+import { IconButton } from '@codecademy/gamut';
 import figma from '@figma/code-connect';
 
 /**
@@ -20,7 +20,11 @@ figma.connect(
         small: 'small',
         large: 'large',
       }),
+      toolTipInfo: figma.nestedProps('tooltip', {
+        tip: figma.textContent('✏️ tooltip'),
+      }),
     },
-    example: (props: ButtonProps) => <IconButton {...props} />,
+    // @ts-expect-error - props doesn't full align with code implementation
+    example: (props) => <IconButton {...props} tip={props.toolTipInfo?.tip} />,
   }
 );

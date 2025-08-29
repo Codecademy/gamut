@@ -29,28 +29,7 @@ figma.connect(
         none: 'none',
       }),
       isInteractive: figma.boolean('isInteractive'),
-      // not sure why this isn't working rn, maybe it's not recognizing the nested prop
-      // children: figma.nestedProp('.Card Content', {
-      //   heading: figma.boolean('heading', {
-      //     true: figma.boolean('description', {
-      //       true: figma.children(['↳ heading', '↳ description']),
-      //       false: figma.children('↳ heading'),
-      //     }),
-      //     false: figma.boolean('description', {
-      //       true: figma.children('↳ description'),
-      //       false: undefined,
-      //     }),
-      //   }),
-      // }),
-      // simplified version works:
       children: figma.children('.Card Content'),
-      // currently errors, but at least shows the `pattern` prop
-      pattern: figma.enum('shadow', {
-        'pattern-right': figma.instance('Pattern Fills'),
-        'pattern-left': figma.instance('Pattern Fills'),
-        outline: undefined,
-        none: undefined,
-      }),
     },
     example: ({ children, ...props }: any) => (
       <Card {...props}>{children}</Card>
