@@ -115,6 +115,14 @@ export function DataGrid<
                 hideSelectAll={hideSelectAll}
                 selected={allSelected}
               />
+            ) : listControls.expandable ? (
+              <HeaderRow
+                columns={columns}
+                empty={empty}
+                hideSelectAll={hideSelectAll}
+                invisible
+                selected={allSelected}
+              />
             ) : null
           }
           height={height}
