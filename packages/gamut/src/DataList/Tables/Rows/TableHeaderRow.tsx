@@ -1,7 +1,8 @@
 import { memo, ReactElement } from 'react';
 
 import { FlexBox } from '../../..';
-import { ListCol, TableHeader } from '../../../List';
+import { ListCol } from '../../../List';
+import { useListContext } from '../../../List/ListProvider';
 import {
   ExpandControl,
   FilterControl,
@@ -10,6 +11,7 @@ import {
 } from '../../Controls';
 import { useControlContext } from '../../hooks/useListControls';
 import { ColumnConfig, Query } from '../../types';
+import { StyledHeaderRow } from './elements';
 
 interface HeaderComponent {
   <Row>(props: {
@@ -18,6 +20,7 @@ interface HeaderComponent {
     selected?: boolean;
     empty?: boolean;
     hideSelectAll?: boolean;
+    invisible?: boolean;
   }): ReactElement<any, any>;
 }
 
@@ -26,12 +29,18 @@ export const TableHeaderRow: HeaderComponent = ({
   selected = false,
   empty = false,
   hideSelectAll,
+  invisible = false,
 }) => {
   const { expandable, selectable, onSelect, onFilter, onSort, prefixId } =
     useControlContext();
+  const { variant, listType } = useListContext();
+  const dataTablePadding = listType === 'table' && variant === 'table';
 
   return (
-    <TableHeader>
+    <StyledHeaderRow
+      invisible={invisible}
+      isDataList={listType === 'table' && variant !== 'table'}
+    >
       <>
         {selectable && (
           <ListCol size="content">
@@ -53,7 +62,12 @@ export const TableHeaderRow: HeaderComponent = ({
           const columnText = String(header || key);
 
           return (
-            <ListCol key={renderKey} {...colProps} columnHeader>
+            <ListCol
+              key={renderKey}
+              {...colProps}
+              columnHeader
+              dataTablePadding={dataTablePadding}
+            >
               <FlexBox alignItems="flex-end" gap={8} width="100%">
                 {filters && (
                   <FilterControl
@@ -80,7 +94,7 @@ export const TableHeaderRow: HeaderComponent = ({
           </ListCol>
         )}
       </>
-    </TableHeader>
+    </StyledHeaderRow>
   );
 };
 
