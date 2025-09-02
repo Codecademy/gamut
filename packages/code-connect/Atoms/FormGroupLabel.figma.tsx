@@ -41,7 +41,7 @@ figma.connect(
         info: figma.textContent('✏️ tip'),
       }),
     },
-    example: (props) => (
+    example: (props: any) => (
       <FormGroupLabel
         {...props}
         disabled={props.infoTipData?.disabled}

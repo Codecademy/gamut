@@ -36,10 +36,9 @@ figma.connect(
         children: figma.textContent('text'),
       }),
     },
-    // @ts-expect-error - props doesn't full align with code implementation
-    example: ({ alertBase, ...props }) => (
+    example: ({ alertBase, ...props }: any) => (
       <Alert {...props} placement="floating">
-        {alertBase?.children}
+        {alertBase.children}
       </Alert>
     ),
   }

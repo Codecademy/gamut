@@ -32,8 +32,7 @@ figma.connect(
       }),
       children: figma.textContent('text'),
     },
-    // @ts-expect-error - props doesn't full align with code implementation
-    example: ({ children, ...props }: {}) => (
+    example: ({ children, ...props }: any) => (
       <Alert {...props} placement="inline">
         {children}
       </Alert>
