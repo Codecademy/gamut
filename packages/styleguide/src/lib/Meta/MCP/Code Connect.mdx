@@ -20,6 +20,8 @@ Much of the following information is extracted from the [Figma Code Connect docu
 
 Code Connect provides Figma with the actual code for Figma components. In providing accurate code, this helps the Figma MCP generate accurate code snippets for designs that use these components.
 
+<Callout text="Any changes to Code Connect files should be requested through the Gamut team and NOT done on an individual or a separate team." />
+
 ## Installing the Code Connect command line tool
 
 To install the Code Connect command line tool, run the following command:
@@ -57,15 +59,3 @@ In `packages/code-connect`, you'll find `*.figma.tsx` files. These files are Cod
 If you are creating a new Gamut component, you should create a new `*.figma.tsx` file in this directory and follow the existing patterns to map your component.
 
 Use the [Code Connect CLI documentation](https://www.figma.com/code-connect-docs/) to help you understand how to map Figma properties to React props.
-
-### Publishing
-
-<Callout text="The publish command will publish ALL of the *.figma.tsx files in the packages/code-connect directory to Figma. There is currently no way to publish individual files. So use your discretion and communicate with team members before publishing." />
-
-Use the command to publish:
-
-```
-npx figma connect publish --token=PERSONAL_ACCESS_TOKEN
-```
-
-There are future plans to eliminate the need for individuals to publish these files and use GitHub Actions instead. Stay tuned!

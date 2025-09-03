@@ -93,6 +93,12 @@ Rows in a DataList can also be selected. You can set the `selected` prop to an a
 
 <Canvas of={DataListStories.Selected} />
 
+## Non-selectable rows
+
+A DataList can have non-selectable rows by setting the `selectable` prop to `false`. This will hide the leftmost column that contains the selection checkboxes.
+
+<Canvas of={DataListStories.NonSelectable} />
+
 ### Additional column configurations
 
 - `size` - enum which determines how much space the column should take up within the table

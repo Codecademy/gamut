@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.2.2...@codecademy/gamut@66.2.3) (2025-09-02)
+
+### Bug Fixes
+
+- **DataGrid:** misc layout fixes and visual bugs ([55f28e9](https://github.com/Codecademy/gamut/commit/55f28e9e719c38eae2755d0bd492fb09e992f005))
+
 ### [66.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.2.1...@codecademy/gamut@66.2.2) (2025-08-25)
 
 **Note:** Version bump only for package @codecademy/gamut
