@@ -122,7 +122,7 @@ export const globalTypes = {
   theme: {
     name: 'Theme',
     description: 'Global theme for components',
-    defaultValue: 'core',
+    defaultValue: 'percipio',
     toolbar: {
       icon: 'paintbrush',
       items: [
