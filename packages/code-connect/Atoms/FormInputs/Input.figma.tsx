@@ -47,10 +47,6 @@ figma.connect(
         'error+focus': false,
         disabled: false,
       }),
-      // placeholder: figma.nestedProps('placeholder', {
-      //   true: 'Placeholder text',
-      //   false: undefined,
-      // }),
       defaultValue: figma.enum('type', {
         text: 'Input text',
         number: '0',

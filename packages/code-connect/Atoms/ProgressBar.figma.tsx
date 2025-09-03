@@ -14,31 +14,6 @@ figma.connect(
   'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=18640%3A20613',
   {
     props: {
-      // No matching props could be found for these Figma properties:
-      // "size": figma.enum('size', {
-      //   "Large": "large",
-      //   "Medium": "medium",
-      //   "Small": "small",
-      //   "XL": "xl"
-      // }),
-      // "variant": figma.enum('variant', {
-      //   "default": "default",
-      //   "yellow": "yellow",
-      //   "blue": "blue"
-      // }),
-      // "percent": figma.enum('percent', {
-      //   "0%": "0-",
-      //   "25%": "25-",
-      //   "50%": "50-",
-      //   "75%": "75-",
-      //   "100%": "100-"
-      // }),
-      // "pattern": figma.boolean('pattern'),
-      // "flat": figma.enum('flat', {
-      //   "n/a": "n-a",
-      //   "flat-top": "flat-top",
-      //   "flat-bottom": "flat-bottom"
-      // })
       variant: figma.enum('variant', {
         default: 'default',
         yellow: 'yellow',
