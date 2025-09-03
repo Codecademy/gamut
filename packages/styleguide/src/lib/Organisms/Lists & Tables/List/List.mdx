@@ -119,7 +119,8 @@ Lists have several style variants for different use cases:
 - `table`: Alternating backgrounds for visually separated rows of text.
 - `default`: Bordered rows for mixed content with no vertical gutter.
 - `card`: Bordered rows with a vertical gutter.
-- `block`: Unbordered rows for mixed content with a vertical gutter..
+- `block`: Unbordered rows for mixed content with a vertical gutter.
+- `plain`: Minimal styling with no borders, backgrounds, or special styling - just the basic list structure.
 
 ```tsx
 <List variant="default" />
@@ -148,6 +149,25 @@ For making feature-forward designs (like our Dashboard), or to use as page secti
 For a table like view for content that has more metrics or actionable data use the `table` variant.
 
 <Canvas of={ListStories.Table} />
+
+### Plain
+
+For minimal, clean styling with no borders, backgrounds, or special styling, use the `plain` variant. This variant provides just the basic list structure and is ideal for simple content that doesn't need visual separation or emphasis.
+
+<Canvas of={ListStories.Plain} />
+
+#### Styling ListRow components with plain variant
+
+When using the `plain` variant, you can still apply custom styling to individual `ListRow` components to achieve the visual hierarchy you need:
+
+<Canvas of={ListStories.PlainStyled} />
+
+The `plain` variant is particularly useful when you want to:
+
+- Create custom visual designs without the default list styling
+- Build complex layouts where you control the appearance of each row
+- Maintain consistency with custom design systems
+- Reduce visual noise in minimalist interfaces
 
 #### Ordered List
 
@@ -205,7 +225,7 @@ If you have a list with many columns and would like to avoid collapsing any colu
 List rows will switch to a mobile layout at screen widths less than smallest breakpoint (480px). This layout is built for smaller screens and is restructured to a card like structure. There is no extra configuration needed for this to take effect pending you've configured a few named column types:
 
 - `header`: The column of the row with any critical identifying information goes at the top of the view. This is especially important for ordered lists as this is where the numbering will render.
-- `control`: A column for buttons or other interactive elements. Typically these may be icon buttons with expandable menus with more options for controlling anything represented in the row.
+- `control`: A column for buttons or other interactive elements. Typically these may be icon buttons with expandable menus with more options for controlling anything represented in the row. `List`s should only ever have one `control` column to prevent overlap on smaller screens.
 - `content`: All other columns in the row are treated as content and will render in order they were specified.
 
 Optionally, you can pass a `breakpoint` prop to the List to alter this behavior.
