@@ -119,6 +119,21 @@ export const globalTypes = {
       showName: true,
     },
   },
+  theme: {
+    name: 'Theme',
+    description: 'Global theme for components',
+    defaultValue: 'core',
+    toolbar: {
+      icon: 'paintbrush',
+      items: [
+        { value: 'core', title: 'Core' },
+        { value: 'admin', title: 'Admin' },
+        { value: 'lxStudio', title: 'LX Studio' },
+        { value: 'percipio', title: 'Percipio' },
+      ],
+      showName: true,
+    },
+  },
 };
 
 export const decorators = [withEmotion];

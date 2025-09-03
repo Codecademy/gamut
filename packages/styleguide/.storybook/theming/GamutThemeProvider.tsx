@@ -4,6 +4,9 @@ import {
   corePalette,
   ColorModes,
   GamutProvider,
+  coreTheme,
+  adminTheme,
+  lxStudioTheme,
   percipioTheme,
 } from '@codecademy/gamut-styles/src';
 import { Theme } from '@emotion/react';
@@ -18,16 +21,30 @@ const themeBackground: Record<ColorModes, 'white' | 'navy'> = {
   dark: 'navy',
 };
 
+/**
+ * Platform is a sub-theme of core, so it is not included in the theme switcher tool
+ */
+
+const themeMap = {
+  core: coreTheme,
+  admin: adminTheme,
+  lxStudio: lxStudioTheme,
+  percipio: percipioTheme,
+} as const;
+
 type GlobalsContext = {
   globals: {
     colorMode: 'light' | 'dark';
+    theme: keyof typeof themeMap;
   };
 };
 
 export const withEmotion = (Story: any, context: GlobalsContext) => {
   const colorMode = context.globals.colorMode;
+  const selectedTheme = context.globals.theme;
   const background = corePalette[themeBackground[colorMode]];
   const storyRef = useRef<HTMLDivElement>(null);
+  const currentTheme = themeMap[selectedTheme];
 
   useLayoutEffect(() => {
     const storyEl = storyRef.current?.closest(
@@ -42,7 +59,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
       <GamutProvider
         useCache={false}
         useGlobals={false}
-        theme={percipioTheme as unknown as Theme}
+        theme={currentTheme as unknown as Theme}
       >
         <Background bg={themeBackground[colorMode]} ref={storyRef}>
           {Story()}
@@ -53,7 +70,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
 
   // Wrap all stories in minimal provider
   return (
-    <GamutProvider theme={percipioTheme as unknown as Theme}>
+    <GamutProvider theme={currentTheme as unknown as Theme}>
       <Background bg={themeBackground[colorMode]} ref={storyRef}>
         {Story()}
       </Background>
