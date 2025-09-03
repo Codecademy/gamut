@@ -1,8 +1,6 @@
 import {
   ConnectedCheckbox,
   ConnectedForm,
-  ConnectedFormGroupProps,
-  ConnectedFormProps,
   ConnectedInput,
   ConnectedRadioGroupInput,
   ConnectedSelect,
@@ -16,7 +14,6 @@ import { MiniArrowRightIcon, TerminalIcon } from '@codecademy/gamut-icons';
 import { action } from '@storybook/addon-actions';
 import type { Meta } from '@storybook/react';
 import { useState } from 'react';
-import * as React from 'react';
 
 const meta: Meta<typeof ConnectedForm> = {
   component: ConnectedForm,
