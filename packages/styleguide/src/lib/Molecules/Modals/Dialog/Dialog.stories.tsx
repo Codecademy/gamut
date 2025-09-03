@@ -1,6 +1,6 @@
 import { Dialog, FillButton } from '@codecademy/gamut';
 import { ColorMode } from '@codecademy/gamut-styles';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { ComponentProps, useEffect, useState } from 'react';
 
 const meta: Meta<typeof Dialog> = {
@@ -10,7 +10,6 @@ const meta: Meta<typeof Dialog> = {
     children: 'All I ever wanted, all I ever needed is here in my',
     confirmCta: { children: 'Arms!' },
     cancelCta: { children: 'Heart?' },
-    variant: 'primary',
   },
   argTypes: {
     variant: {
@@ -21,7 +20,6 @@ const meta: Meta<typeof Dialog> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Dialog>;
 
 export const Default: React.FC<ComponentProps<typeof Dialog>> = (args) => {
   const [isOpen, setIsOpen] = useState(args.isOpen);
@@ -42,21 +40,41 @@ export const Default: React.FC<ComponentProps<typeof Dialog>> = (args) => {
   );
 };
 
-export const Danger: Story = {
-  args: {
-    variant: 'danger',
-  },
-  render: (args) => <Default {...args} />,
+export const Danger: React.FC<ComponentProps<typeof Dialog>> = (args) => {
+  const [isOpen, setIsOpen] = useState(args.isOpen);
+
+  useEffect(() => {
+    setIsOpen(args.isOpen);
+  }, [args.isOpen]);
+
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Dialog</FillButton>
+      <Dialog
+        variant="danger"
+        {...args}
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+      />
+    </>
+  );
 };
 
-export const LightMode: Story = {
-  render: (args) => <Default {...args} />,
-};
+export const DarkMode: React.FC<ComponentProps<typeof Dialog>> = (args) => {
+  const [isOpen, setIsOpen] = useState(args.isOpen);
 
-export const DarkMode: Story = {
-  render: (args) => (
+  useEffect(() => {
+    setIsOpen(args.isOpen);
+  }, [args.isOpen]);
+
+  return (
     <ColorMode mode="dark">
-      <Default {...args} />
+      <FillButton onClick={() => setIsOpen(true)}>Open Dialog</FillButton>
+      <Dialog
+        {...args}
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+      />
     </ColorMode>
-  ),
+  );
 };
