@@ -46,14 +46,14 @@ export const Danger: Story = {
   args: {
     variant: 'danger',
   },
+  render: (args) => <Default {...args} />,
 };
 
 export const LightMode: Story = {
-  args: {},
+  render: (args) => <Default {...args} />,
 };
 
 export const DarkMode: Story = {
-  args: {},
   render: (args) => (
     <ColorMode mode="dark">
       <Default {...args} />
