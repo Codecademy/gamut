@@ -188,30 +188,14 @@ export const percipioColors = {
   percipioTextAccent: '#222325',
 
   // Background colors
-  percipioBgDefault: '#FFFFFF',
   percipioBgPrimary: '#FAFBFC',
-  percipioBgContrast: '#FFFFFF',
-  percipioBgHover: 'rgba(16, 22, 47, 0.12)',
-  percipioBgSelected: 'rgba(16, 22, 47, 0.04)',
-  percipioBgDisabled: 'rgba(16, 22, 47, 0.12)',
   percipioBgSuccess: '#EEF7F3',
   percipioBgWarning: '#FFF7E0',
   percipioBgError: '#FFF1F5',
 
-  // Border colors
-  percipioBorderPrimary: 'rgba(16, 22, 47, 0.47)',
-  percipioBorderSecondary: 'rgba(16, 22, 47, 0.12)',
-  percipioBorderTertiary: '#10162F',
-  percipioBorderDisabled: 'rgba(16, 22, 47, 0.28)',
-
-  // Shadow colors
-  percipioShadowPrimary: 'rgba(16, 22, 47, 0.12)',
-  percipioShadowSecondary: 'rgba(16, 22, 47, 0.47)',
-
   // Action colors
   percipioActionPrimary: '#0073C4',
   percipioActionPrimaryHover: '#141C36',
-  percipioActionPrimaryInverse: '#FFFFFF',
   percipioActionSecondary: '#6A6E75',
   percipioActionSecondaryHover: 'rgba(106, 110, 117, 0.86)',
   percipioActionDanger: '#B83C3C',

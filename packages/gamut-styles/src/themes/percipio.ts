@@ -28,25 +28,19 @@ export const percipioTheme = createTheme({
         warning: 'percipioFeedbackWarning',
       },
       background: {
-        _: 'percipioBgDefault',
-        contrast: 'percipioBgContrast',
-        current: 'percipioBgDefault',
         primary: 'percipioBgPrimary',
-        selected: 'percipioBgSelected',
-        disabled: 'percipioBgDisabled',
-        hover: 'percipioBgHover',
         success: 'percipioBgSuccess',
         warning: 'percipioBgWarning',
         error: 'percipioBgError',
       },
       shadow: {
-        primary: 'percipioShadowPrimary',
-        secondary: 'percipioShadowSecondary',
+        primary: 'navy-200',
+        secondary: 'navy-400',
       },
       primary: {
         _: 'percipioActionPrimary',
         hover: 'percipioActionPrimaryHover',
-        inverse: 'percipioActionPrimaryInverse',
+        inverse: 'white',
       },
       secondary: {
         _: 'percipioActionSecondary',
@@ -61,10 +55,10 @@ export const percipioTheme = createTheme({
         hover: 'percipioActionPrimaryHover',
       },
       border: {
-        primary: 'percipioBorderPrimary',
-        secondary: 'percipioBorderSecondary',
-        tertiary: 'percipioBorderTertiary',
-        disabled: 'percipioBorderDisabled',
+        primary: 'navy-400',
+        secondary: 'navy-200',
+        tertiary: 'navy-800',
+        disabled: 'navy-300',
       },
     },
   })
