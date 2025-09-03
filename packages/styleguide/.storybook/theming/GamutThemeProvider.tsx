@@ -1,11 +1,12 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import {
   Background,
   corePalette,
-  coreTheme,
   ColorModes,
   GamutProvider,
+  percipioTheme,
 } from '@codecademy/gamut-styles/src';
+import { Theme } from '@emotion/react';
 
 /**
  * Story functions must be called as a regular function to avoid full-remounts
@@ -38,7 +39,11 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
   // Always give iframes the full provider
   if (process.env.NODE_ENV === 'test') {
     return (
-      <GamutProvider useCache={false} useGlobals={false} theme={coreTheme}>
+      <GamutProvider
+        useCache={false}
+        useGlobals={false}
+        theme={percipioTheme as unknown as Theme}
+      >
         <Background bg={themeBackground[colorMode]} ref={storyRef}>
           {Story()}
         </Background>
@@ -48,7 +53,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
 
   // Wrap all stories in minimal provider
   return (
-    <GamutProvider theme={coreTheme}>
+    <GamutProvider theme={percipioTheme as unknown as Theme}>
       <Background bg={themeBackground[colorMode]} ref={storyRef}>
         {Story()}
       </Background>

@@ -45,3 +45,10 @@ export const fontWeight = {
   700: 700,
   400: 400,
 } as const;
+
+export const percipioFontFamily = {
+  accent: '"Roboto", sans-serif',
+  base: '"Roboto", sans-serif',
+  monospace: '"Roboto Mono", monospace',
+  system: '"Roboto", sans-serif',
+} as const;
