@@ -57,6 +57,7 @@ export function DataGrid<
     id,
     wrapperWidth,
     overflow,
+    disableContainerQuery = false,
   } = props;
 
   const empty = rows.length === 0;
@@ -104,6 +105,7 @@ export function DataGrid<
       <ListControlContext.Provider value={listControls}>
         <List
           as="table"
+          disableContainerQuery={disableContainerQuery}
           emptyMessage={emptyMessage ?? <EmptyRows />}
           header={
             header ? (
@@ -111,6 +113,14 @@ export function DataGrid<
                 columns={columns}
                 empty={empty}
                 hideSelectAll={hideSelectAll}
+                selected={allSelected}
+              />
+            ) : listControls.expandable ? (
+              <HeaderRow
+                columns={columns}
+                empty={empty}
+                hideSelectAll={hideSelectAll}
+                invisible
                 selected={allSelected}
               />
             ) : null

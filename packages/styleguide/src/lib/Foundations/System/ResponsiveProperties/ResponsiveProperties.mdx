@@ -6,7 +6,7 @@ import { breakpoint } from '../../shared/elements';
 import * as ResponsivePropertiesStories from './ResponsiveProperties.stories';
 
 export const parameters = {
-  title: 'Responsive Props',
+  title: 'Responsive Properties',
   subtitle:
     'All system props accept a syntax to generate responsive styles on a per prop basis',
   source: {
@@ -16,7 +16,7 @@ export const parameters = {
   },
 };
 
-<Meta title="Foundations/System/ResponsiveProperties" />
+<Meta title="Foundations/System/Responsive Properties" />
 
 <AboutHeader {...parameters} />
 
@@ -81,6 +81,7 @@ export interface BreakpointMap<T> {
   md?: T; // `md` media query
   lg?: T; // `lg` media query
   xl?: T; // `xl` media query
+  c_base?: T; // `c_base` container query
   c_xs?: T; // `c_xs` container query
   c_sm?: T; // `c_sm` container query
   c_md?: T; // `c_md` container query
@@ -101,11 +102,12 @@ export interface BreakpointArray<T> {
   3?: T; // `md` media query
   4?: T; // `lg` media query
   5?: T; // `xl` media query
-  6?: T; // `c_xs` container query
-  7?: T; // `c_sm` container query
-  8?: T; // `c_md` container query
-  9?: T; // `c_lg` container query
-  10?: T; // `c_xl` container query
+  6?: T; // `c_base` container query
+  7?: T; // `c_xs` container query
+  8?: T; // `c_sm` container query
+  9?: T; // `c_md` container query
+  10?: T; // `c_lg` container query
+  11?: T; // `c_xl` container query
 }
 ```
 
@@ -212,6 +214,7 @@ Container queries allow components to adapt based on the _size of their parent c
 
 Our responsive prop API provides a parallel set of breakpoint keys that resolve to `@container` rules:
 
+- `c_base` `@container (min-width: 1px)`
 - `c_xs` `@container (min-width: 480px)`
 - `c_sm` `@container (min-width: 768px)`
 - `c_md` `@container (min-width: 1024px)`
