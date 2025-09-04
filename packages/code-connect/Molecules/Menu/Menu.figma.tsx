@@ -1,4 +1,5 @@
 import { Menu } from '@codecademy/gamut';
+import { HomeIcon } from '@codecademy/gamut-icons';
 import figma from '@figma/code-connect';
 
 /**
@@ -14,7 +15,6 @@ figma.connect(
   'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1971%3A2562',
   {
     props: {
-      menuSeparator: figma.boolean('menuSeparator'),
       variant: figma.enum('Variant', {
         popover: 'popover',
         fixed: 'fixed',
