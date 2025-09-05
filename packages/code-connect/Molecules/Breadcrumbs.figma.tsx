@@ -15,14 +15,35 @@ figma.connect(
   {
     props: {
       currenttitle: figma.string('current-title'),
-      crumb2: figma.boolean('crumb-2'),
-      crumb1: figma.boolean('crumb-1'),
-      crumb3: figma.boolean('crumb-3'),
-      anchorVariant: figma.enum('anchor variant', {
-        interface: 'interface',
-        standard: 'standard',
+      crumb1: figma.boolean('crumb-1', {
+        true: {
+          href: '/crumb-1',
+          title: 'Crumb 1',
+        },
+      }),
+      crumb2: figma.boolean('crumb-2', {
+        true: {
+          href: '/crumb-2',
+          title: 'Crumb 2',
+        },
+      }),
+
+      crumb3: figma.boolean('crumb-3', {
+        true: {
+          href: '/crumb-3',
+          title: 'Crumb 3',
+        },
       }),
     },
-    example: (props) => <Breadcrumbs {...props} />,
+    example: (props) => {
+      <Breadcrumbs
+        crumbs={[
+          props.crumb1,
+          props.crumb2,
+          props.crumb3,
+          { href: '/current-page', title: props.currenttitle },
+        ]}
+      />;
+    },
   }
 );
