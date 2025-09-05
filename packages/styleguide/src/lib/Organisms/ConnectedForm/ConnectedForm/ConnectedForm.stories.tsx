@@ -4,6 +4,7 @@ import {
   ConnectedFormGroupProps,
   ConnectedFormProps,
   ConnectedInput,
+  ConnectedNestedCheckboxes,
   ConnectedRadioGroupInput,
   ConnectedSelect,
   ConnectedTextArea,
@@ -237,6 +238,37 @@ const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
         label="text area field"
         name="textAreaField"
         {...connectedFormGroup}
+      />
+      <ConnectedNestedCheckboxes
+        name="technologies"
+        options={[
+          {
+            value: 'frontend',
+            label: 'Frontend Technologies',
+            children: [
+              { value: 'react', label: 'React' },
+              {
+                value: 'vue',
+                label: 'Vue.js',
+                children: [
+                  { value: 'test', label: 'Test' },
+                  { value: 'test2', label: 'Test2' },
+                ],
+              },
+              { value: 'angular', label: 'Angular' },
+            ],
+          },
+          {
+            value: 'backend',
+            label: 'Backend Technologies',
+            children: [
+              { value: 'node', label: 'Node.js' },
+              { value: 'python', label: 'Python' },
+              { value: 'java', label: 'Java' },
+            ],
+          },
+        ]}
+        onUpdate={(selectedValues) => console.log('Selected:', selectedValues)}
       />
     </ConnectedForm>
   );
