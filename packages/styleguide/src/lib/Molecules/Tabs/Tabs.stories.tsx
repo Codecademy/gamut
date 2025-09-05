@@ -32,7 +32,7 @@ const meta: Meta<typeof Tabs> = {
   args: {
     variant: 'standard',
     defaultSelectedKey: '1',
-    orientation: 'horizontal',
+    orientation: 'vertical',
     disabledKeys: [],
     selectedKey: undefined,
     onSelectionChange: () => {},
@@ -45,22 +45,21 @@ type Story = StoryObj<typeof Tabs>;
 export const Default: Story = {
   render: (args) => (
     <Tabs {...args}>
-      <FlexBox>
-        <TabList>
-          <Tab id="1">Tab 1</Tab>
-          <Tab id="2">Tab 2</Tab>
-          <Tab id="3">Tab 3</Tab>
-        </TabList>
-        <FlexBox
-          alignItems="center"
-          borderBottom={1}
-          justifyContent="flex-end"
-          mb={24}
-          width="100%"
-        >
-          <Text>Tab List</Text>
-        </FlexBox>
+      <TabList>
+        <Tab id="1">Tab 1</Tab>
+        <Tab id="2">Tab 2</Tab>
+        <Tab id="3">Tab 3</Tab>
+      </TabList>
+      <FlexBox
+        alignItems="center"
+        borderBottom={1}
+        justifyContent="flex-end"
+        mb={24}
+        width="100%"
+      >
+        <Text>Tab List</Text>
       </FlexBox>
+
       <TabPanels>
         <TabPanel id="1">
           <Text as="h2">Welcome to Tab 1</Text>
