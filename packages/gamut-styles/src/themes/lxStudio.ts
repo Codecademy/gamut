@@ -62,6 +62,7 @@ export const lxStudioTheme = createTheme({
       },
     },
   })
+  .addName('lxStudio')
   .build();
 
 export type LxStudioThemeShape = typeof lxStudioTheme;

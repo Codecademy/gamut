@@ -1,8 +1,7 @@
 export const FONT_ASSET_PATH = `https://www.codecademy.com/gamut`;
 
 // woff2 should precede woff so that browsers try woff2 first.
-
-export const webFonts = [
+export const core = [
   {
     filePath: `${FONT_ASSET_PATH}/apercu-regular-pro`,
     extensions: ['woff2', 'woff'],
@@ -38,4 +37,44 @@ export const webFonts = [
     extensions: ['woff2', 'woff'],
     name: 'Suisse',
   },
-];
+] as const;
+
+export const percipio = [
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-regular`,
+    extensions: ['woff2', 'woff'],
+    name: 'Roboto',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-italic`,
+    extensions: ['woff2', 'woff'],
+    name: 'Roboto',
+    style: 'italic',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-bold`,
+    extensions: ['woff2', 'woff'],
+    name: 'Roboto',
+    weight: 'bold',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-bold-italic`,
+    extensions: ['woff2', 'woff'],
+    name: 'Roboto',
+    weight: 'bold',
+    style: 'italic',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-mono-regular`,
+    extensions: ['woff2', 'woff'],
+    name: 'Roboto Mono',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-mono-bold`,
+    extensions: ['woff2', 'woff'],
+    name: 'Roboto Mono',
+    weight: 'bold',
+  },
+] as const;
+
+export const webFonts = { core, percipio } as const;
