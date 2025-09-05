@@ -19,6 +19,13 @@ import {
   formFieldPaddingStyles,
   InputSelectors,
 } from '../styles';
+import {
+  ContainerState,
+  ControlState,
+  MenuListState,
+  MenuState,
+  OptionState,
+} from './types';
 
 const selectDropdownStyles = css({
   ...formBaseFieldStylesObject,
@@ -93,14 +100,17 @@ export const getMemoizedStyles = (
     clearIndicator: (provided) => ({
       ...provided,
     }),
-    container: (provided, state) => ({
-      ...provided,
-      pointerEvents: 'visible',
-      cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
-      width: '100%',
-      minWidth: '7rem',
-    }),
-    control: (provided, state: any) => {
+    container: (provided, state: ContainerState) => {
+      const { inputWidth } = state.selectProps;
+      return {
+        ...provided,
+        pointerEvents: 'visible',
+        cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
+        width: inputWidth || '100%',
+        minWidth: '7rem',
+      };
+    },
+    control: (provided, state: ControlState) => {
       const { isMulti, size } = state.selectProps;
       const getSize = size ?? 'medium';
       const getPadding =
@@ -132,15 +142,30 @@ export const getMemoizedStyles = (
       padding: '0',
       margin: '0',
     }),
-    menu: (provided, state: any) => ({
-      ...provided,
-      ...dropdownBorderStyles({ theme }),
-      ...dropdownBorderStates({ error: state.selectProps.error, theme }),
-    }),
-    menuList: (provided, state: any) => {
+    menu: (provided, state: MenuState) => {
+      const { dropdownWidth } = state.selectProps;
+      return {
+        ...provided,
+        ...dropdownBorderStyles({ theme }),
+        ...dropdownBorderStates({ error: state.selectProps.error, theme }),
+        ...(dropdownWidth
+          ? {
+              width:
+                typeof dropdownWidth === 'number'
+                  ? `${dropdownWidth}px`
+                  : dropdownWidth,
+              minWidth:
+                typeof dropdownWidth === 'number'
+                  ? `${dropdownWidth}px`
+                  : dropdownWidth,
+            }
+          : {}),
+      };
+    },
+    menuList: (provided, state: MenuListState) => {
       const sizeInteger = state.selectProps.size === 'small' ? 2 : 3;
       const maxHeight = `${
-        state.selectProps.shownOptionsLimit * sizeInteger
+        (state.selectProps.shownOptionsLimit ?? 6) * sizeInteger
       }rem`;
       return {
         ...provided,
@@ -150,8 +175,11 @@ export const getMemoizedStyles = (
     placeholder: (provided) => ({
       ...provided,
       ...placeholderColor({ theme }),
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
     }),
-    option: (provided, state: any) => {
+    option: (provided, state: OptionState) => {
       return {
         padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
         cursor: state.isDisabled ? 'not-allowed' : 'pointer',

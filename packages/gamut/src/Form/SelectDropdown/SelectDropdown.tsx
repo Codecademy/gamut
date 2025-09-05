@@ -13,6 +13,7 @@ import { Options as OptionsType, StylesConfig } from 'react-select';
 
 import { parseOptions } from '../utils';
 import {
+  AbbreviatedSingleValue,
   CustomContainer,
   DropdownButton,
   formatGroupLabel,
@@ -45,24 +46,27 @@ const defaultProps = {
     MultiValue: MultiValueWithColorMode,
     MultiValueRemove: MultiValueRemoveButton,
     Option: IconOption,
+    SingleValue: AbbreviatedSingleValue,
   },
 };
 const onChangeAction = 'select-option';
 
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
-  options,
-  id,
-  size,
-  error,
   disabled,
-  onChange,
-  value,
-  name,
-  placeholder = 'Select an option',
+  dropdownWidth,
+  error,
+  id,
   inputProps,
-  multiple,
+  inputWidth,
   isSearchable = false,
+  multiple,
+  name,
+  onChange,
+  options,
+  placeholder = 'Select an option',
   shownOptionsLimit = 6,
+  size,
+  value,
   ...rest
 }) => {
   const rawInputId = useId();
@@ -160,7 +164,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
   const theme = useTheme();
   const memoizedStyles = useMemo((): StylesConfig<any, false> => {
-    return getMemoizedStyles(theme);
+    return getMemoizedStyles(theme as any);
   }, [theme]);
 
   return (
@@ -179,12 +183,14 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         ariaLiveMessages={{
           onFocus,
         }}
+        dropdownWidth={dropdownWidth}
         error={Boolean(error)}
         formatGroupLabel={formatGroupLabel}
         formatOptionLabel={formatOptionLabel}
         id={id || rest.htmlFor || rawInputId}
         inputId={inputId}
         inputProps={{ ...inputProps, name }}
+        inputWidth={inputWidth}
         isDisabled={disabled}
         isMulti={multiple}
         isOptionDisabled={(option) => option.disabled}

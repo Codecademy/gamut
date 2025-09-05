@@ -12,40 +12,30 @@ import { SelectComponentProps, SelectOptions } from '../inputs/Select';
 import { SelectOptionBase } from '../utils';
 import { conditionalBorderStates } from './styles';
 
-export interface SharedProps {
-  inputProps?: Record<string, string | number | boolean>;
-  shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
+/*
+ * ============================================================================
+ * Option types
+ * ============================================================================
+ */
+
+export interface OptionStrict {
+  label: string;
+  value: string;
 }
-
-export interface SelectDropdownGroup extends GroupBase<ExtendedOption> {
-  divider?: boolean;
-}
-
-export interface WrapperStyleProps
-  extends Pick<
-    StyleProps<typeof conditionalBorderStates>,
-    'activated' | 'error'
-  > {}
-
-export interface SelectDropdownSizes {
-  size?: 'small' | 'medium';
-}
-
-export interface ReactSelectAdditionalProps
-  extends WrapperStyleProps,
-    SharedProps,
-    SelectDropdownSizes {}
 
 export interface IconOption {
   label: string;
   value: string;
   icon?: React.ComponentType<GamutIconProps>;
 }
+
 export interface ExtendedOption extends IconOption {
   subtitle?: string;
   disabled?: boolean;
   rightLabel?: string;
   size?: string;
+  /** The abbreviated text shown in the input when selected */
+  abbreviation?: string;
 }
 
 export interface ExtendedOptions {
@@ -54,16 +44,48 @@ export interface ExtendedOptions {
   icon?: React.ComponentType<GamutIconProps>;
 }
 
-export type SelectDropdownBaseProps = Omit<
-  SelectComponentProps,
-  'onChange' | 'defaultValue' | 'options'
-> &
-  SelectDropdownSizes;
+export interface SelectDropdownGroup extends GroupBase<ExtendedOption> {
+  divider?: boolean;
+}
 
 export type SelectDropdownOptions =
   | SelectOptions
   | IconOption[]
   | ExtendedOption[];
+
+/*
+ * ============================================================================
+ * Component props types
+ * ============================================================================
+ */
+
+export interface SharedProps {
+  inputProps?: Record<string, string | number | boolean>;
+  shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
+  inputWidth?: string | number;
+  dropdownWidth?: string | number;
+}
+
+export interface SelectDropdownSizes {
+  size?: 'small' | 'medium';
+}
+
+export interface WrapperStyleProps
+  extends Pick<
+    StyleProps<typeof conditionalBorderStates>,
+    'activated' | 'error'
+  > {}
+
+export interface ReactSelectAdditionalProps
+  extends WrapperStyleProps,
+    SharedProps,
+    SelectDropdownSizes {}
+
+export type SelectDropdownBaseProps = Omit<
+  SelectComponentProps,
+  'onChange' | 'defaultValue' | 'options'
+> &
+  SelectDropdownSizes;
 
 export interface SelectDropdownCoreProps
   extends SelectDropdownBaseProps,
@@ -110,24 +132,31 @@ export interface BaseOnChangeProps {
     | MultiSelectDropdownProps['onChange'];
 }
 
+export interface TypedReactSelectProps extends ReactSelectAdditionalProps {
+  selectRef?: Ref<any>;
+}
+
+/*
+ * ============================================================================
+ * Internal component types
+ * ============================================================================
+ */
+
 export type InternalSelectProps = {
   selectProps: Pick<SharedProps, 'inputProps'> & SelectDropdownSizes;
 };
 
-export interface OptionStrict {
-  label: string;
-  value: string;
-}
-
 export type ProgramaticFocusRef =
   | React.MutableRefObject<HTMLDivElement>
   | React.MutableRefObject<null>;
+
 export interface SelectDropdownContextValueTypes {
   currentFocusedValue?: SelectOptionBase['value'];
   setCurrentFocusedValue?: React.Dispatch<React.SetStateAction<unknown>>;
   selectInputRef?: ProgramaticFocusRef;
   removeAllButtonRef?: ProgramaticFocusRef;
 }
+
 export type SizedIndicatorProps = DropdownIndicatorProps<
   unknown,
   false,
@@ -139,6 +168,45 @@ export type CustomSelectComponentProps<
   T extends React.JSXElementConstructor<unknown>
 > = React.ComponentProps<T> & InternalSelectProps;
 
-export interface TypedReactSelectProps extends ReactSelectAdditionalProps {
-  selectRef?: Ref<any>;
-}
+/*
+ * ============================================================================
+ * Style types
+ * ============================================================================
+ */
+
+export type BaseSelectProps = {
+  size?: 'small' | 'medium';
+  isMulti?: boolean;
+  isSearchable?: boolean;
+  error?: boolean;
+  activated?: boolean;
+  inputWidth?: string | number;
+  dropdownWidth?: string | number;
+  shownOptionsLimit?: number;
+};
+
+export type ContainerState = {
+  selectProps: BaseSelectProps;
+};
+
+export type ControlState = {
+  isFocused: boolean;
+  isDisabled: boolean;
+  hasValue: boolean;
+  selectProps: BaseSelectProps;
+};
+
+export type MenuState = {
+  selectProps: BaseSelectProps;
+};
+
+export type MenuListState = {
+  selectProps: BaseSelectProps;
+};
+
+export type OptionState = {
+  isFocused: boolean;
+  isDisabled: boolean;
+  isSelected: boolean;
+  selectProps: BaseSelectProps;
+};

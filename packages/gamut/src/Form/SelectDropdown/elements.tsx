@@ -16,6 +16,7 @@ import ReactSelect, {
   MultiValueProps,
   MultiValueRemoveProps,
   Props,
+  SingleValueProps,
 } from 'react-select';
 
 import { Box, FlexBox } from '../../Box';
@@ -28,8 +29,14 @@ import {
   TypedReactSelectProps,
 } from './types';
 
-const { DropdownIndicator, MultiValue, MultiValueRemove } =
+const { DropdownIndicator, MultiValue, MultiValueRemove, SingleValue } =
   SelectDropdownElements;
+
+/*
+ * ============================================================================
+ * Context and constants
+ * ============================================================================
+ */
 
 export const SelectDropdownContext =
   createContext<SelectDropdownContextValueTypes>({
@@ -38,6 +45,42 @@ export const SelectDropdownContext =
     selectInputRef: undefined,
     removeAllButtonRef: undefined,
   });
+
+const iconSize = { small: 12, medium: 16 };
+const selectedIconSize = { small: 16, medium: 24 };
+
+const indicatorIcons = {
+  smallChevron: {
+    size: iconSize.small,
+    icon: MiniChevronDownIcon,
+  },
+  mediumChevron: {
+    size: iconSize.medium,
+    icon: ArrowChevronDownIcon,
+  },
+  smallSearchable: {
+    size: iconSize.small,
+    icon: SearchIcon,
+  },
+  mediumSearchable: {
+    size: iconSize.medium,
+    icon: SearchIcon,
+  },
+  smallRemove: {
+    size: iconSize.small,
+    icon: MiniDeleteIcon,
+  },
+  mediumRemove: {
+    size: iconSize.medium,
+    icon: CloseIcon,
+  },
+};
+
+/*
+ * ============================================================================
+ * Multi-value components
+ * ============================================================================
+ */
 
 export const MultiValueWithColorMode = (props: MultiValueProps) => {
   const { currentFocusedValue, setCurrentFocusedValue } = useContext(
@@ -77,35 +120,11 @@ export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {
   );
 };
 
-const iconSize = { small: 12, medium: 16 };
-const selectedIconSize = { small: 16, medium: 24 };
-
-const indicatorIcons = {
-  smallChevron: {
-    size: iconSize.small,
-    icon: MiniChevronDownIcon,
-  },
-  mediumChevron: {
-    size: iconSize.medium,
-    icon: ArrowChevronDownIcon,
-  },
-  smallSearchable: {
-    size: iconSize.small,
-    icon: SearchIcon,
-  },
-  mediumSearchable: {
-    size: iconSize.medium,
-    icon: SearchIcon,
-  },
-  smallRemove: {
-    size: iconSize.small,
-    icon: MiniDeleteIcon,
-  },
-  mediumRemove: {
-    size: iconSize.medium,
-    icon: CloseIcon,
-  },
-};
+/*
+ * ============================================================================
+ * Indicator components
+ * ============================================================================
+ */
 
 export const DropdownButton = (props: SizedIndicatorProps) => {
   const { size, isSearchable } = props.selectProps;
@@ -178,6 +197,12 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
   );
 };
 
+/*
+ * ============================================================================
+ * Container components
+ * ============================================================================
+ */
+
 export const CustomContainer = ({
   children,
   ...rest
@@ -201,6 +226,23 @@ export const CustomContainer = ({
   );
 };
 
+export function TypedReactSelect<
+  OptionType,
+  IsMulti extends boolean = false,
+  GroupType extends GroupBase<OptionType> = GroupBase<OptionType>
+>({
+  selectRef,
+  ...props
+}: Props<OptionType, IsMulti, GroupType> & TypedReactSelectProps) {
+  return <ReactSelect {...props} ref={selectRef} />;
+}
+
+/*
+ * ============================================================================
+ * Option components
+ * ============================================================================
+ */
+
 export const IconOption = ({
   children,
   ...rest
@@ -220,6 +262,24 @@ export const IconOption = ({
     </SelectDropdownElements.Option>
   );
 };
+
+export const AbbreviatedSingleValue = (
+  props: SingleValueProps<ExtendedOption, false>
+) => {
+  const { data } = props;
+
+  const displayText = data?.abbreviation
+    ? data.abbreviation
+    : data?.label || '';
+
+  return <SingleValue {...props}>{displayText}</SingleValue>;
+};
+
+/*
+ * ============================================================================
+ * Utility functions
+ * ============================================================================
+ */
 
 export const formatOptionLabel = ({
   label,
@@ -283,17 +343,6 @@ export const formatGroupLabel = ({ label, divider }: SelectDropdownGroup) => {
   }
   return label;
 };
-
-export function TypedReactSelect<
-  OptionType,
-  IsMulti extends boolean = false,
-  GroupType extends GroupBase<OptionType> = GroupBase<OptionType>
->({
-  selectRef,
-  ...props
-}: Props<OptionType, IsMulti, GroupType> & TypedReactSelectProps) {
-  return <ReactSelect {...props} ref={selectRef} />;
-}
 
 export const onFocus: AriaOnFocus<ExtendedOption> = ({
   focused: { label, subtitle, rightLabel, disabled },
