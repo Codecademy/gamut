@@ -168,6 +168,9 @@ export const getMemoizedStyles = (
     placeholder: (provided) => ({
       ...provided,
       ...placeholderColor({ theme }),
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
     }),
     option: (provided, state: any) => {
       return {

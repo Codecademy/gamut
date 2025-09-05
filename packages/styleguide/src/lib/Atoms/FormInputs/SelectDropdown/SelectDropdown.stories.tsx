@@ -619,7 +619,7 @@ export const IndependentWidths: Story = {
       >
         <SelectDropdown {...args} />
       </FormGroup>
-      <Box color="text-secondary" fontSize="sm" mt={2}>
+      <Box color="text-secondary" mt={4}>
         Input is 150px wide, dropdown is 350px wide
       </Box>
     </Box>
@@ -659,9 +659,7 @@ export const SmallWithAbbreviations: Story = {
     size: 'small',
     inputWidth: '80px',
     dropdownWidth: '200px',
-    expandDropdown: true,
-    showAbbreviation: true,
-    placeholder: 'Select language',
+    placeholder: 'Select JScript',
   },
   render: (args) => (
     <Box height="15rem">
@@ -672,7 +670,7 @@ export const SmallWithAbbreviations: Story = {
       >
         <SelectDropdown {...args} />
       </FormGroup>
-      <Box color="text-secondary" fontSize="sm" mt={2}>
+      <Box color="text-secondary" mt={4}>
         Small size, input shows "JS" but dropdown shows "JavaScript"
       </Box>
     </Box>
@@ -712,10 +710,8 @@ export const ComplexAbbreviatedOptions: Story = {
         rightLabel: 'Distinguished',
       },
     ],
-    inputWidth: '180px',
+    inputWidth: '80px',
     dropdownWidth: '400px',
-    expandDropdown: true,
-    showAbbreviation: true,
     placeholder: 'Select seniority level',
   },
   render: (args) => (
@@ -727,7 +723,7 @@ export const ComplexAbbreviatedOptions: Story = {
       >
         <SelectDropdown {...args} />
       </FormGroup>
-      <Box color="text-secondary" fontSize="sm" mt={2}>
+      <Box color="text-secondary" mt={4}>
         Shows abbreviated text in input, full details in dropdown
       </Box>
     </Box>
