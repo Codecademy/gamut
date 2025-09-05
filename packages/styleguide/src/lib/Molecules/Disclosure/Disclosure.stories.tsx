@@ -22,6 +22,26 @@ const BackgroundWithPadding = ({
 };
 
 export const Default: Story = {
+  args: {
+    heading: 'All the options',
+    body: (
+      <Text maxWidth="600px">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis tempore
+        voluptatum, hic ipsum cum commodi laudantium? Mollitia quod totam
+        consequuntur facere, praesentium cumque nesciunt debitis officiis, ipsa
+        sapiente recusandae iusto.
+      </Text>
+    ),
+    overline: 'overline is text-secondary and fontFamily: accent',
+    subheading: 'subheading is text-secondary',
+    ctaText: 'Optional button - must include a callback!',
+    ctaCallback: () => {},
+    hasPanelBg: true,
+    initiallyExpanded: true,
+  },
+};
+
+export const DefaultBackground: Story = {
   render: () => (
     <BackgroundWithPadding bg="background-primary">
       <Disclosure body="Uses `background`" heading="default" />
@@ -85,29 +105,5 @@ export const Compact: Story = {
     heading: 'Compact spacing',
     body: 'Lorem ipsum dolor sit amet consectetur. Ut consectetur adipiscing a donec sed volutpat. Tempor risus rhoncus quisque vel sit mattis. Accumsan vel posuere tortor sit mattis augue congue sit.',
     spacing: 'compact',
-  },
-};
-
-const ConstrainedText = () => {
-  return (
-    <Text maxWidth="600px">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis tempore
-      voluptatum, hic ipsum cum commodi laudantium? Mollitia quod totam
-      consequuntur facere, praesentium cumque nesciunt debitis officiis, ipsa
-      sapiente recusandae iusto.
-    </Text>
-  );
-};
-
-export const Playground: Story = {
-  args: {
-    heading: 'All the options',
-    body: <ConstrainedText />,
-    overline: 'overline is text-secondary and fontFamily: accent',
-    subheading: 'subheading is text-secondary',
-    ctaText: 'Optional button - must include a callback!',
-    ctaCallback: () => {},
-    hasPanelBg: true,
-    initiallyExpanded: true,
   },
 };

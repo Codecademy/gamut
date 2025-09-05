@@ -127,12 +127,12 @@ const meta: Meta<typeof DataList> = {
 export default meta;
 type Story = StoryObj<typeof DataList>;
 
-export const FullDataList: Story = {
-  render: () => <DataListTemplate />,
-};
-
 export const Default: Story = {
   args: {},
+};
+
+export const FullDataList: Story = {
+  render: () => <DataListTemplate />,
 };
 
 export const Expanded: Story = {

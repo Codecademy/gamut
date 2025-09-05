@@ -11,6 +11,12 @@ const meta: Meta<typeof Alert> = {
 export default meta;
 type Story = StoryObj<typeof Alert>;
 
+export const Default: Story = {
+  args: {
+    children: 'This is an alert',
+  },
+};
+
 export const General: Story = {
   args: {
     ...ALERTS.general,

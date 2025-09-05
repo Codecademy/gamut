@@ -121,6 +121,10 @@ const meta: Meta<typeof DataTable> = {
 export default meta;
 type Story = StoryObj<typeof DataTable>;
 
+export const Default: Story = {
+  args: {},
+};
+
 export const FullDataTable: Story = {
   render: () => <DataTableTemplate />,
 };
@@ -159,10 +163,6 @@ export const Scrollable: Story = {
     height: '400px',
     wrapperWidth: '800px',
   },
-};
-
-export const Default: Story = {
-  args: {},
 };
 
 const DataTableDisableContainerQueryExample = () => {

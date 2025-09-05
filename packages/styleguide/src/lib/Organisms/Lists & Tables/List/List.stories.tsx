@@ -39,6 +39,13 @@ const meta: Meta<typeof List> = {
 export default meta;
 type Story = StoryObj<typeof List>;
 
+export const Default: Story = {
+  args: {
+    spacing: 'condensed',
+  },
+  render: (args) => <ListExample {...args} />,
+};
+
 const rows = [
   { name: 'Jean Luc Picard', role: 'Captain', ship: 'USS Enterprise' },
   { name: 'Wesley Crusher', role: 'Deus Ex Machina', ship: 'USS Enterprise' },
@@ -144,13 +151,6 @@ const PlainStyledExample: React.FC = () => {
 
 export const PlainStyled: Story = {
   render: () => <PlainStyledExample />,
-};
-
-export const Default: Story = {
-  args: {
-    spacing: 'condensed',
-  },
-  render: (args) => <ListExample {...args} />,
 };
 
 const ListCardExample: React.FC = (args) => {
