@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/blocks';
+
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as codeConnectParameters } from './Code Connect.mdx';
+import { parameters as figmaMCP } from './Figma MCP.mdx';
+
+export const parameters = {
+  id: 'Meta/MCP',
+  title: 'MCP',
+  subtitle: 'Documentation related to the Figma Model Context Protocol.',
+  status: 'updating',
+};
+
+<Meta title="Meta/MCP/About" />
+
+<AboutHeader {...parameters} />
+
+<TableOfContents
+  links={addParentPath(parameters.id, [codeConnectParameters, figmaMCP])}
+/>
