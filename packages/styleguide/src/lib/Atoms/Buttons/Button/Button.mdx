@@ -54,7 +54,9 @@ The examples below use `FillButton` to showcase the `primary` and `secondary` bu
 
 ## Inline icons
 
-Our <LinkTo id="Atoms/Buttons/FillButton">FillButton </LinkTo>, <LinkTo id="Atoms/Buttons/StrokeButton">StrokeButton </LinkTo>, and <LinkTo id="Atoms/Buttons/TextButton">TextButton</LinkTo> all support a single inline icon. You can align the icon to the left or right of the button text using the `iconPosition` prop. These icons should be from the mini set to be legible at a smaller size.
+Our <LinkTo id="Atoms/Buttons/FillButton">FillButton </LinkTo>, <LinkTo id="Atoms/Buttons/StrokeButton">StrokeButton </LinkTo>, and <LinkTo id="Atoms/Buttons/TextButton">TextButton</LinkTo> components all support leading and trailing inline icons. These icons should be from the mini set to be legible at a smaller size.
+
+If you want a single icon, provide the `icon` prop with a single Gamut icon and specify the `iconPosition` prop as either `left` or `right`. If you want to use multiple icons, pass an array of two Gamut icons to the `icon` prop and omit the `iconPosition`.
 
 <Canvas of={ButtonStories.InlineIcons} />
 
