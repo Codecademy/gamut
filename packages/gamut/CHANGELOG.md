@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.2.3...@codecademy/gamut@66.3.0) (2025-09-05)
+
+### Features
+
+- fix Checkbox + Radio color tokens ([3df9da8](https://github.com/Codecademy/gamut/commit/3df9da8377cb517f3bd17a30565259e46ac80a13))
+
 ### [66.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.2.2...@codecademy/gamut@66.2.3) (2025-09-02)
 
 ### Bug Fixes
