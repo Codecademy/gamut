@@ -16,6 +16,7 @@ import ReactSelect, {
   MultiValueProps,
   MultiValueRemoveProps,
   Props,
+  SingleValueProps,
 } from 'react-select';
 
 import { Box, FlexBox } from '../../Box';
@@ -28,7 +29,7 @@ import {
   TypedReactSelectProps,
 } from './types';
 
-const { DropdownIndicator, MultiValue, MultiValueRemove } =
+const { DropdownIndicator, MultiValue, MultiValueRemove, SingleValue } =
   SelectDropdownElements;
 
 export const SelectDropdownContext =
@@ -282,6 +283,18 @@ export const formatGroupLabel = ({ label, divider }: SelectDropdownGroup) => {
     );
   }
   return label;
+};
+
+export const AbbreviatedSingleValue = (
+  props: SingleValueProps<ExtendedOption>
+) => {
+  const { data } = props;
+
+  const displayText = data?.abbreviation
+    ? data.abbreviation
+    : data?.label || '';
+
+  return <SingleValue {...props}>{displayText}</SingleValue>;
 };
 
 export function TypedReactSelect<

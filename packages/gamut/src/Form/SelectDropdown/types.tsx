@@ -15,6 +15,8 @@ import { conditionalBorderStates } from './styles';
 export interface SharedProps {
   inputProps?: Record<string, string | number | boolean>;
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
+  inputWidth?: string | number;
+  dropdownWidth?: string | number;
 }
 
 export interface SelectDropdownGroup extends GroupBase<ExtendedOption> {
@@ -46,6 +48,8 @@ export interface ExtendedOption extends IconOption {
   disabled?: boolean;
   rightLabel?: string;
   size?: string;
+  /** The abbreviated text shown in the input when selected */
+  abbreviation?: string;
 }
 
 export interface ExtendedOptions {

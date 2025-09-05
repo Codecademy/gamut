@@ -526,3 +526,210 @@ export const FormGroupError: Story = {
     </Box>
   ),
 };
+
+// New stories for enhanced functionality
+export const AbbreviatedInput: Story = {
+  args: {
+    name: 'abbreviated-dropdown',
+    options: [
+      {
+        label: 'United States of America',
+        abbreviation: 'USA',
+        value: 'us',
+      },
+      {
+        label: 'United Kingdom',
+        abbreviation: 'UK',
+        value: 'uk',
+      },
+      {
+        label: 'Canada',
+        abbreviation: 'CA',
+        value: 'ca',
+      },
+      {
+        label: 'Australia',
+        abbreviation: 'AU',
+        value: 'au',
+      },
+      {
+        label: 'Germany',
+        abbreviation: 'DE',
+        value: 'de',
+      },
+    ],
+    placeholder: 'Select a country',
+  },
+  render: (args) => (
+    <Box height="18rem">
+      <FormGroup
+        htmlFor="abbreviated-dropdown"
+        isSoloField
+        label="Abbreviated Input Display"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+      <Box color="text-secondary" fontSize="sm" mt={2}>
+        Input shows "USA" but dropdown shows "United States of America"
+      </Box>
+    </Box>
+  ),
+};
+
+export const IndependentWidths: Story = {
+  args: {
+    name: 'width-dropdown',
+    options: [
+      {
+        label: 'Machine Learning Engineer',
+        abbreviation: 'ML Eng',
+        value: 'ml-engineer',
+        subtitle: 'Build AI/ML systems',
+      },
+      {
+        label: 'Frontend Developer',
+        abbreviation: 'FE Dev',
+        value: 'frontend-dev',
+        subtitle: 'React, Vue, Angular',
+      },
+      {
+        label: 'Backend Developer',
+        abbreviation: 'BE Dev',
+        value: 'backend-dev',
+        subtitle: 'Node.js, Python, Java',
+      },
+      {
+        label: 'Full Stack Developer',
+        abbreviation: 'FS Dev',
+        value: 'fullstack-dev',
+        subtitle: 'End-to-end development',
+      },
+    ],
+    inputWidth: '150px',
+    dropdownWidth: '350px',
+
+    placeholder: 'Select a role',
+  },
+  render: (args) => (
+    <Box height="20rem">
+      <FormGroup
+        htmlFor="width-dropdown"
+        isSoloField
+        label="Independent Width Control"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+      <Box color="text-secondary" fontSize="sm" mt={2}>
+        Input is 150px wide, dropdown is 350px wide
+      </Box>
+    </Box>
+  ),
+};
+
+export const SmallWithAbbreviations: Story = {
+  args: {
+    name: 'small-abbreviated-dropdown',
+    options: [
+      {
+        label: 'JavaScript',
+        abbreviation: 'JS',
+        value: 'javascript',
+      },
+      {
+        label: 'TypeScript',
+        abbreviation: 'TS',
+        value: 'typescript',
+      },
+      {
+        label: 'Python',
+        abbreviation: 'PY',
+        value: 'python',
+      },
+      {
+        label: 'Java',
+        abbreviation: 'Java',
+        value: 'java',
+      },
+      {
+        label: 'C++',
+        abbreviation: 'C++',
+        value: 'cpp',
+      },
+    ],
+    size: 'small',
+    inputWidth: '80px',
+    dropdownWidth: '200px',
+    expandDropdown: true,
+    showAbbreviation: true,
+    placeholder: 'Select language',
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="small-abbreviated-dropdown"
+        isSoloField
+        label="Small Size with Abbreviations"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+      <Box color="text-secondary" fontSize="sm" mt={2}>
+        Small size, input shows "JS" but dropdown shows "JavaScript"
+      </Box>
+    </Box>
+  ),
+};
+
+export const ComplexAbbreviatedOptions: Story = {
+  args: {
+    name: 'complex-abbreviated-dropdown',
+    options: [
+      {
+        label: 'Senior Software Engineer',
+        abbreviation: 'Sr SWE',
+        value: 'senior-swe',
+        subtitle: '5+ years experience',
+        rightLabel: 'Senior',
+      },
+      {
+        label: 'Principal Software Engineer',
+        abbreviation: 'Principal SWE',
+        value: 'principal-swe',
+        subtitle: '10+ years experience',
+        rightLabel: 'Principal',
+      },
+      {
+        label: 'Staff Software Engineer',
+        abbreviation: 'Staff SWE',
+        value: 'staff-swe',
+        subtitle: '8+ years experience',
+        rightLabel: 'Staff',
+      },
+      {
+        label: 'Distinguished Engineer',
+        abbreviation: 'Distinguished Eng',
+        value: 'distinguished-eng',
+        subtitle: '15+ years experience',
+        rightLabel: 'Distinguished',
+      },
+    ],
+    inputWidth: '180px',
+    dropdownWidth: '400px',
+    expandDropdown: true,
+    showAbbreviation: true,
+    placeholder: 'Select seniority level',
+  },
+  render: (args) => (
+    <Box height="22rem">
+      <FormGroup
+        htmlFor="complex-abbreviated-dropdown"
+        isSoloField
+        label="Complex Options with Abbreviations"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+      <Box color="text-secondary" fontSize="sm" mt={2}>
+        Shows abbreviated text in input, full details in dropdown
+      </Box>
+    </Box>
+  ),
+};

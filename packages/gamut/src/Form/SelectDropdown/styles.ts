@@ -93,13 +93,16 @@ export const getMemoizedStyles = (
     clearIndicator: (provided) => ({
       ...provided,
     }),
-    container: (provided, state) => ({
-      ...provided,
-      pointerEvents: 'visible',
-      cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
-      width: '100%',
-      minWidth: '7rem',
-    }),
+    container: (provided, state) => {
+      const { inputWidth } = state.selectProps;
+      return {
+        ...provided,
+        pointerEvents: 'visible',
+        cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
+        width: inputWidth || '100%',
+        minWidth: '7rem',
+      };
+    },
     control: (provided, state: any) => {
       const { isMulti, size } = state.selectProps;
       const getSize = size ?? 'medium';
@@ -132,11 +135,26 @@ export const getMemoizedStyles = (
       padding: '0',
       margin: '0',
     }),
-    menu: (provided, state: any) => ({
-      ...provided,
-      ...dropdownBorderStyles({ theme }),
-      ...dropdownBorderStates({ error: state.selectProps.error, theme }),
-    }),
+    menu: (provided, state: any) => {
+      const { dropdownWidth } = state.selectProps;
+      return {
+        ...provided,
+        ...dropdownBorderStyles({ theme }),
+        ...dropdownBorderStates({ error: state.selectProps.error, theme }),
+        ...(dropdownWidth
+          ? {
+              width:
+                typeof dropdownWidth === 'number'
+                  ? `${dropdownWidth}px`
+                  : dropdownWidth,
+              minWidth:
+                typeof dropdownWidth === 'number'
+                  ? `${dropdownWidth}px`
+                  : dropdownWidth,
+            }
+          : {}),
+      };
+    },
     menuList: (provided, state: any) => {
       const sizeInteger = state.selectProps.size === 'small' ? 2 : 3;
       const maxHeight = `${
