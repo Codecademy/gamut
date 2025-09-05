@@ -191,5 +191,11 @@ describe('createTheme', () => {
         light: { 'primary-cool': '#666666', 'primary-cool-town': '#000000' },
       });
     });
+
+    it('adds a name to the theme', () => {
+      const theme = createTheme(base).addName('scoobyDoo').build();
+
+      expect(theme.name).toEqual('scoobyDoo');
+    });
   });
 });

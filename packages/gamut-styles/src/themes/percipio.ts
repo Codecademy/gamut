@@ -62,6 +62,7 @@ export const percipioTheme = createTheme({
       },
     },
   })
+  .addName('percipio')
   .build();
 
 export type PercipioThemeShape = typeof percipioTheme;

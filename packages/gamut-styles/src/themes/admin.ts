@@ -16,6 +16,7 @@ export const adminTheme = createTheme(coreTheme)
       },
     },
   })
+  .addName('admin')
   .build();
 
 export type AdminThemeShape = typeof adminTheme;

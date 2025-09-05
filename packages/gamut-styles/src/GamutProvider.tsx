@@ -8,6 +8,7 @@ import {
 import { useContext, useRef } from 'react';
 import * as React from 'react';
 
+import { AssetProvider } from './AssetProvider';
 import { createEmotionCache } from './cache';
 import { Reboot, Typography } from './globals';
 import { Variables } from './globals/Variables';
@@ -64,7 +65,8 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
 
   const globals = shouldInsertGlobals && (
     <>
-      <Typography />
+      <AssetProvider theme={theme} />
+      <Typography theme={theme} />
       <Reboot theme={theme} />
       <Variables variables={theme._variables} />
       {variables && <Variables variables={variables} />}

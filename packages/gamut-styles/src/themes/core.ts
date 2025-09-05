@@ -141,6 +141,7 @@ export const coreTheme = createTheme({
     2: `2px solid ${colors['border-primary']}`,
   }))
   .createScaleVariables('elements')
+  .addName('core')
   .build();
 
 export type CoreThemeShape = typeof coreTheme;
