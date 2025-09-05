@@ -52,23 +52,21 @@ const defaultProps = {
 const onChangeAction = 'select-option';
 
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
-  options,
-  id,
-  size,
-  error,
   disabled,
-  onChange,
-  value,
-  name,
-  placeholder = 'Select an option',
-  inputProps,
-  multiple,
-  isSearchable = false,
-  shownOptionsLimit = 6,
-  inputWidth,
   dropdownWidth,
-  expandDropdown = false,
-  showAbbreviation = false,
+  error,
+  id,
+  inputProps,
+  inputWidth,
+  isSearchable = false,
+  multiple,
+  name,
+  onChange,
+  options,
+  placeholder = 'Select an option',
+  shownOptionsLimit = 6,
+  size,
+  value,
   ...rest
 }) => {
   const rawInputId = useId();
@@ -187,7 +185,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         }}
         dropdownWidth={dropdownWidth}
         error={Boolean(error)}
-        expandDropdown={expandDropdown}
         formatGroupLabel={formatGroupLabel}
         formatOptionLabel={formatOptionLabel}
         id={id || rest.htmlFor || rawInputId}
@@ -202,7 +199,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         options={selectOptions}
         placeholder={placeholder}
         selectRef={selectInputRef}
-        showAbbreviation={showAbbreviation}
         shownOptionsLimit={shownOptionsLimit}
         size={size}
         styles={memoizedStyles}

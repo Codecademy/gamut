@@ -146,3 +146,41 @@ export type CustomSelectComponentProps<
 export interface TypedReactSelectProps extends ReactSelectAdditionalProps {
   selectRef?: Ref<any>;
 }
+
+// Style types
+export type BaseSelectProps = {
+  size?: 'small' | 'medium';
+  isMulti?: boolean;
+  isSearchable?: boolean;
+  error?: boolean;
+  activated?: boolean;
+  inputWidth?: string | number;
+  dropdownWidth?: string | number;
+  shownOptionsLimit?: number;
+};
+
+export type ContainerState = {
+  selectProps: BaseSelectProps;
+};
+
+export type ControlState = {
+  isFocused: boolean;
+  isDisabled: boolean;
+  hasValue: boolean;
+  selectProps: BaseSelectProps;
+};
+
+export type MenuState = {
+  selectProps: BaseSelectProps;
+};
+
+export type MenuListState = {
+  selectProps: BaseSelectProps;
+};
+
+export type OptionState = {
+  isFocused: boolean;
+  isDisabled: boolean;
+  isSelected: boolean;
+  selectProps: BaseSelectProps;
+};

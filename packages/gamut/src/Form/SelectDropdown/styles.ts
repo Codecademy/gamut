@@ -19,6 +19,13 @@ import {
   formFieldPaddingStyles,
   InputSelectors,
 } from '../styles';
+import {
+  ContainerState,
+  ControlState,
+  MenuListState,
+  MenuState,
+  OptionState,
+} from './types';
 
 const selectDropdownStyles = css({
   ...formBaseFieldStylesObject,
@@ -93,7 +100,7 @@ export const getMemoizedStyles = (
     clearIndicator: (provided) => ({
       ...provided,
     }),
-    container: (provided, state) => {
+    container: (provided, state: ContainerState) => {
       const { inputWidth } = state.selectProps;
       return {
         ...provided,
@@ -103,7 +110,7 @@ export const getMemoizedStyles = (
         minWidth: '7rem',
       };
     },
-    control: (provided, state: any) => {
+    control: (provided, state: ControlState) => {
       const { isMulti, size } = state.selectProps;
       const getSize = size ?? 'medium';
       const getPadding =
@@ -135,7 +142,7 @@ export const getMemoizedStyles = (
       padding: '0',
       margin: '0',
     }),
-    menu: (provided, state: any) => {
+    menu: (provided, state: MenuState) => {
       const { dropdownWidth } = state.selectProps;
       return {
         ...provided,
@@ -155,10 +162,10 @@ export const getMemoizedStyles = (
           : {}),
       };
     },
-    menuList: (provided, state: any) => {
+    menuList: (provided, state: MenuListState) => {
       const sizeInteger = state.selectProps.size === 'small' ? 2 : 3;
       const maxHeight = `${
-        state.selectProps.shownOptionsLimit * sizeInteger
+        (state.selectProps.shownOptionsLimit ?? 6) * sizeInteger
       }rem`;
       return {
         ...provided,
@@ -172,7 +179,7 @@ export const getMemoizedStyles = (
       overflow: 'hidden',
       textOverflow: 'ellipsis',
     }),
-    option: (provided, state: any) => {
+    option: (provided, state: OptionState) => {
       return {
         padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
         cursor: state.isDisabled ? 'not-allowed' : 'pointer',
