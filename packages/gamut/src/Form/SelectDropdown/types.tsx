@@ -51,7 +51,8 @@ export interface SelectDropdownGroup extends GroupBase<ExtendedOption> {
 export type SelectDropdownOptions =
   | SelectOptions
   | IconOption[]
-  | ExtendedOption[];
+  | ExtendedOption[]
+  | SelectDropdownGroup[];
 
 /*
  * ============================================================================
