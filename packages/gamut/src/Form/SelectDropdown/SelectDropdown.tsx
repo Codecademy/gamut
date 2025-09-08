@@ -11,7 +11,7 @@ import {
 import * as React from 'react';
 import { Options as OptionsType, StylesConfig } from 'react-select';
 
-import { parseOptions } from '../utils';
+import { parseOptions, SelectOptionBase } from '../utils';
 import {
   AbbreviatedSingleValue,
   CustomContainer,
@@ -27,11 +27,15 @@ import {
   TypedReactSelect,
 } from './elements';
 import { getMemoizedStyles } from './styles';
-import { OptionStrict, SelectDropdownProps } from './types';
+import {
+  OptionStrict,
+  SelectDropdownGroup,
+  SelectDropdownProps,
+} from './types';
 import {
   filterValueFromOptions,
   isMultipleSelectProps,
-  isOptionGroup,
+  isOptionsGrouped,
   isSingleSelectProps,
   removeValueFromSelectedOptions,
 } from './utils';
@@ -79,37 +83,43 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   const removeAllButtonRef = useRef<HTMLDivElement>(null);
   const selectInputRef = useRef<HTMLDivElement>(null);
 
-  const optionsAreGrouped = useMemo(() => {
-    if (options?.length) {
-      return (options as any)?.some((option: any) => isOptionGroup(option));
+  const selectOptions = useMemo(():
+    | SelectOptionBase[]
+    | SelectDropdownGroup[] => {
+    if (!options || (Array.isArray(options) && !options.length)) {
+      return [];
     }
-    return false;
-  }, [options]);
 
-  const selectOptions = useMemo(() => {
-    return parseOptions({ options: options as any, id, size });
+    if (isOptionsGrouped(options)) {
+      return options;
+    }
+
+    return parseOptions({ options, id, size });
   }, [options, id, size]);
 
   const parsedValue = useMemo(() => {
-    if (optionsAreGrouped) {
-      // For grouped options, search through all groups to find the matching option
-      for (const group of selectOptions as any[]) {
+    if (isOptionsGrouped(selectOptions)) {
+      for (const group of selectOptions) {
         if (group.options) {
           const foundOption = group.options.find(
-            (option: any) => option.value === value
+            (option) => option.value === value
           );
           if (foundOption) return foundOption;
         }
       }
       return undefined;
     }
-    // For flat options, use the original logic
+
     return selectOptions.find((option) => option.value === value);
-  }, [selectOptions, value, optionsAreGrouped]);
+  }, [selectOptions, value]);
 
   const [multiValues, setMultiValues] = useState(
     multiple && // To keep this efficient for non-multiSelect
-      filterValueFromOptions(selectOptions, value, optionsAreGrouped)
+      filterValueFromOptions(
+        selectOptions,
+        value,
+        isOptionsGrouped(selectOptions)
+      )
   );
 
   // If the caller changes the initial value, let's update our value to match.
@@ -117,7 +127,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     const newMultiValues = filterValueFromOptions(
       selectOptions,
       value,
-      optionsAreGrouped
+      isOptionsGrouped(selectOptions)
     );
     if (newMultiValues !== multiValues) setMultiValues(newMultiValues);
 

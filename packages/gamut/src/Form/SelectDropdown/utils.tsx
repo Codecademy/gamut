@@ -17,7 +17,12 @@ export const isSingleSelectProps = (
 ): props is SingleSelectDropdownProps => !props.multiple;
 
 export const isOptionGroup = (obj: any): obj is SelectDropdownGroup =>
-  obj.options !== undefined;
+  obj != null && typeof obj === 'object' && obj.options !== undefined;
+
+export const isOptionsGrouped = (
+  options: any
+): options is SelectDropdownGroup[] =>
+  Array.isArray(options) && options.some((option) => isOptionGroup(option));
 
 export const filterValueFromOptions = (
   options: SelectOptionBase[] | SelectDropdownGroup[],
@@ -46,7 +51,11 @@ export const removeValueFromSelectedOptions = (
   value: SelectDropdownProps['value']
 ) => {
   return (selectedOptions as SelectOptionBase[]).filter(
-    (option: SelectOptionBase) =>
-      option.value !== value || !value?.includes(option.value)
+    (option: SelectOptionBase) => {
+      if (Array.isArray(value)) {
+        return !value.includes(option.value);
+      }
+      return option.value !== value;
+    }
   );
 };
