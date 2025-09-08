@@ -136,16 +136,117 @@ Some of our forms require special props be passed directly onto the `<input/>` c
 
 <Canvas of={SelectDropdownStories.CustomInputProps} />
 
+### Abbreviated options
+
+For space-constrained layouts or when you need to display long option names in a compact way, you can use the abbreviated feature. This allows you to show a short abbreviation in the input field while displaying the full label in the dropdown.
+
+#### How it works
+
+- **Input Display**: Shows the abbreviated text (e.g., "USA")
+- **Dropdown Display**: Shows the full label (e.g., "United States of America")
+- **Accessibility**: Screen readers announce the full label, not the abbreviation
+- **Implementation**: Add an `abbreviation` property to your option objects
+
+<Canvas of={SelectDropdownStories.AbbreviatedInput} />
+
+#### Small size with abbreviations
+
+The abbreviated feature works particularly well with the small size variant, providing space-efficient layouts for compact interfaces.
+
+<Canvas of={SelectDropdownStories.AbbreviatedSmallSize} />
+
+#### Implementation example
+
+```tsx
+const options = [
+  {
+    label: 'United States of America',
+    abbreviation: 'USA',
+    value: 'us',
+    subtitle: 'North America',
+    rightLabel: '50 states',
+  },
+  {
+    label: 'United Kingdom',
+    abbreviation: 'UK',
+    value: 'uk',
+    subtitle: 'Europe',
+    rightLabel: '4 countries',
+  },
+];
+
+<SelectDropdown options={options} />;
+```
+
+#### Advanced options
+
+You can combine abbreviations with other option features like subtitles, right labels, and icons for rich, informative dropdowns.
+
+<Canvas of={SelectDropdownStories.AbbreviatedWithSubtitleAndRightLabel} />
+
+### Independent width control
+
+You can control the width of the input field and dropdown independently using the `inputWidth` and `dropdownWidth` props. This is particularly useful when you need a compact input but want to show more detailed information in the dropdown.
+
+#### How it works
+
+- **inputWidth**: Controls the width of the input field (can be a string like "150px" or a number)
+- **dropdownWidth**: Controls the width of the dropdown menu (can be a string like "350px" or a number)
+- **Independent sizing**: The input and dropdown can have completely different widths
+- **Responsive**: Works with both small and medium size variants
+
+<Canvas of={SelectDropdownStories.IndependentWidths} />
+
+#### Use cases
+
+- **Compact inputs**: Keep the input narrow while showing full details in the dropdown
+- **Data-heavy options**: Show abbreviated text in input, full details in dropdown
+- **Mobile optimization**: Narrow inputs on mobile, wider dropdowns for readability
+- **Form layouts**: Maintain consistent input widths while allowing flexible dropdown content
+
+#### Implementation example
+
+```tsx
+const options = [
+  {
+    label: 'Machine Learning Engineer',
+    abbreviation: 'ML Eng',
+    value: 'ml-engineer',
+    subtitle: 'Build AI/ML systems',
+  },
+  {
+    label: 'Frontend Developer',
+    abbreviation: 'FE Dev',
+    value: 'frontend-dev',
+    subtitle: 'React, Vue, Angular',
+  },
+];
+
+<SelectDropdown options={options} inputWidth="150px" dropdownWidth="350px" />;
+```
+
+#### Small size with independent widths
+
+The independent width feature works particularly well with the small size variant, allowing for very compact inputs while maintaining readable dropdown content.
+
+<Canvas of={SelectDropdownStories.SmallWithAbbreviations} />
+
 ## Multiple select
 
 <Canvas of={SelectDropdownStories.MultipleSelect} />
 
-## FormGroup + SelectDropdown
+## Accessibility
+
+### FormGroup + SelectDropdown
 
 `SelectDropdown` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `SelectDropdown` for maximum accessibility. See <LinkTo id="Atoms/FormElements/FormGroup">FormGroup</LinkTo> story for the customizations available.
 
 <Canvas of={SelectDropdownStories.FormGroupSelectDropdown} />
 <Canvas of={SelectDropdownStories.FormGroupError} />
+
+### Placeholder text guidance
+
+Placeholder text is not recommended for accessibility. If you need to use placeholder text, please make sure the placeholder text doesn't add any new information to the input. I.e - if the placeholder text describes an action you'd like the user to take, please use a label instead.
 
 ## Playground
 

@@ -2,13 +2,7 @@ import { Box, FormGroup, SelectDropdown } from '@codecademy/gamut';
 import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
-export const fruitOptions = [
-  'Apple',
-  'Banana',
-  'Cherry',
-  'Dragonfruit',
-  'Eggplant',
-];
+const fruitOptions = ['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant'];
 
 const meta: Meta<typeof SelectDropdown> = {
   component: SelectDropdown,
@@ -527,7 +521,6 @@ export const FormGroupError: Story = {
   ),
 };
 
-// New stories for enhanced functionality
 export const AbbreviatedInput: Story = {
   args: {
     name: 'abbreviated-dropdown',
@@ -558,7 +551,6 @@ export const AbbreviatedInput: Story = {
         value: 'de',
       },
     ],
-    placeholder: 'Select a country',
   },
   render: (args) => (
     <Box height="18rem">
@@ -726,6 +718,88 @@ export const ComplexAbbreviatedOptions: Story = {
       <Box color="text-secondary" mt={4}>
         Shows abbreviated text in input, full details in dropdown
       </Box>
+    </Box>
+  ),
+};
+
+export const AbbreviatedWithSubtitleAndRightLabel: Story = {
+  args: {
+    name: 'abbreviated-detailed',
+    options: [
+      {
+        label: 'Senior Software Engineer',
+        abbreviation: 'Sr SWE',
+        value: 'senior-swe',
+        subtitle: '5+ years experience',
+        rightLabel: 'Senior',
+      },
+      {
+        label: 'Principal Software Engineer',
+        abbreviation: 'Principal SWE',
+        value: 'principal-swe',
+        subtitle: '10+ years experience',
+        rightLabel: 'Principal',
+      },
+      {
+        label: 'Staff Software Engineer',
+        abbreviation: 'Staff SWE',
+        value: 'staff-swe',
+        subtitle: '8+ years experience',
+        rightLabel: 'Staff',
+      },
+    ],
+  },
+  render: (args) => (
+    <Box height="22rem">
+      <FormGroup
+        htmlFor="abbreviated-detailed"
+        isSoloField
+        label="Abbreviated with Additional Details"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
+export const AbbreviatedSmallSize: Story = {
+  args: {
+    name: 'abbreviated-small',
+    options: [
+      {
+        label: 'JavaScript',
+        abbreviation: 'JS',
+        value: 'javascript',
+      },
+      {
+        label: 'TypeScript',
+        abbreviation: 'TS',
+        value: 'typescript',
+      },
+      {
+        label: 'Python',
+        abbreviation: 'PY',
+        value: 'python',
+      },
+      {
+        label: 'Java',
+        abbreviation: 'Java',
+        value: 'java',
+      },
+    ],
+    size: 'small',
+    inputWidth: '80px',
+    dropdownWidth: '200px',
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="abbreviated-small"
+        isSoloField
+        label="Small Size with Abbreviations"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
     </Box>
   ),
 };
