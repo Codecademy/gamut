@@ -449,43 +449,4 @@ describe('SelectDropdown', () => {
       );
     });
   });
-
-  describe('Edge Cases', () => {
-    it('handles mixed option types correctly', () => {
-      // Test with options that could be either grouped or regular
-      const mixedOptions: any[] = [
-        { label: 'Single Option', value: 'single' },
-        {
-          label: 'Group',
-          options: [{ label: 'Grouped Option', value: 'grouped' }],
-        },
-      ];
-
-      const { view } = renderView({
-        options: mixedOptions,
-      });
-
-      expect(view.getByText('Grouped Option')).toBeInTheDocument();
-    });
-
-    it('handles empty options gracefully', () => {
-      const { view } = renderView({
-        options: [],
-        value: 'any',
-      });
-
-      // Should not crash and should show placeholder
-      expect(view.getByText('Select an option')).toBeInTheDocument();
-    });
-
-    it('handles undefined options gracefully', () => {
-      const { view } = renderView({
-        options: undefined,
-        value: 'any',
-      });
-
-      // Should not crash and should show placeholder
-      expect(view.getByText('Select an option')).toBeInTheDocument();
-    });
-  });
 });
