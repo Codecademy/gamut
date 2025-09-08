@@ -210,6 +210,7 @@ export const CustomContainer = ({
   typeof SelectDropdownElements.SelectContainer
 >) => {
   const { inputProps, name } = rest.selectProps;
+  const hasInputProps = inputProps && Object.keys(inputProps).length > 0;
 
   const value = rest.hasValue
     ? rest
@@ -221,7 +222,9 @@ export const CustomContainer = ({
   return (
     <SelectDropdownElements.SelectContainer {...rest}>
       {children}
-      <input name={name} type="hidden" value={value} {...inputProps} />
+      {hasInputProps && (
+        <input name={name} type="hidden" value={value} {...inputProps} />
+      )}
     </SelectDropdownElements.SelectContainer>
   );
 };

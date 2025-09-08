@@ -27,7 +27,7 @@ import {
   TypedReactSelect,
 } from './elements';
 import { getMemoizedStyles } from './styles';
-import { ExtendedOption, OptionStrict, SelectDropdownProps } from './types';
+import { OptionStrict, SelectDropdownProps } from './types';
 import {
   filterValueFromOptions,
   isMultipleSelectProps,
@@ -201,7 +201,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         formatOptionLabel={formatOptionLabel}
         id={id || rest.htmlFor || rawInputId}
         inputId={inputId}
-        inputProps={{ ...inputProps, name }}
+        inputProps={{ ...inputProps }}
         inputWidth={inputWidth}
         isDisabled={disabled}
         isMulti={multiple}
