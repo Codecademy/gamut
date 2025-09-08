@@ -86,7 +86,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   const selectOptions = useMemo(():
     | SelectOptionBase[]
     | SelectDropdownGroup[] => {
-    if (!options || (Array.isArray(options) && !options.length)) {
+    if (!options || (Array.isArray(options) && !options.length) || (typeof options === 'object' && !Array.isArray(options) && Object.keys(options).length === 0)) {
       return [];
     }
 
