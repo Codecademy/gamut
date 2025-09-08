@@ -87,7 +87,7 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
     SelectDropdownContext
   );
 
-  const { value } = (props?.data as any) ?? undefined;
+  const { value, label } = (props?.data as any) ?? undefined;
 
   if (
     props.isFocused &&
@@ -105,7 +105,7 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
     setCurrentFocusedValue(undefined);
   }
 
-  return <MultiValue {...props} />;
+  return <MultiValue {...props}>{label}</MultiValue>;
 };
 
 export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {

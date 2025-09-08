@@ -8,7 +8,7 @@ const meta: Meta<typeof SelectDropdown> = {
   component: SelectDropdown,
   args: {
     htmlFor: 'example-select',
-    options: fruitOptions,
+    options: [],
   },
   argTypes: {
     value: {
@@ -347,6 +347,7 @@ export const GroupDividers: Story = {
 export const GroupLabels: Story = {
   args: {
     name: 'group-labels-dropdown',
+    multiple: true,
     options: [
       {
         label: 'Group 1',
@@ -395,7 +396,7 @@ export const GroupLabels: Story = {
       <FormGroup
         htmlFor="group-labels-dropdown"
         isSoloField
-        label="I have group labels"
+        label="I have group labels + multiple select"
       >
         <SelectDropdown {...args} />
       </FormGroup>
@@ -561,8 +562,9 @@ export const AbbreviatedInput: Story = {
       >
         <SelectDropdown {...args} />
       </FormGroup>
-      <Box color="text-secondary" fontSize="sm" mt={2}>
-        Input shows "USA" but dropdown shows "United States of America"
+      <Box color="text-secondary" mt={4}>
+        Input shows &quot;USA&quot; but dropdown shows &quot;United States of
+        America&quot;
       </Box>
     </Box>
   ),
