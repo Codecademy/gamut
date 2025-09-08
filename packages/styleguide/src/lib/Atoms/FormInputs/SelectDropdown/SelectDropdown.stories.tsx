@@ -663,7 +663,8 @@ export const SmallWithAbbreviations: Story = {
         <SelectDropdown {...args} />
       </FormGroup>
       <Box color="text-secondary" mt={4}>
-        Small size, input shows "JS" but dropdown shows "JavaScript"
+        Small size, input shows &quot;JS&quot; but dropdown shows
+        &quot;JavaScript&quot;
       </Box>
     </Box>
   ),
