@@ -1,5 +1,4 @@
 import { Menu } from '@codecademy/gamut';
-import { HomeIcon } from '@codecademy/gamut-icons';
 import figma from '@figma/code-connect';
 
 /**
