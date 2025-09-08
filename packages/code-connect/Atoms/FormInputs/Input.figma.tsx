@@ -47,12 +47,32 @@ figma.connect(
         'error+focus': false,
         disabled: false,
       }),
+      // defaultValue: figma.enum('type', {
+      //   text: 'Input text',
+      //   number: '0',
+      //   file: undefined,
+      // }),
       defaultValue: figma.enum('type', {
-        text: 'Input text',
+        text: figma.enum('text', {
+          // '◇ .input': figma.string('.input'),
+          '.input': 'testtttt',
+        }),
         number: '0',
         file: undefined,
       }),
+      // inputValueInfo: figma.nestedProps('.input', {
+      //   input: figma.enum('text', {
+      //     '.input': figma.textContent('input')
+      //   }),
+      // placeholder: figma.textContent('placeholder'),
+      // }),
     },
-    example: (props) => <Input {...props} />,
+    example: (props) => (
+      <Input
+        {...props}
+        // defaultValue={inputValueInfo.input}
+        // placeholder={inputValueInfo.placeholder}
+      />
+    ),
   }
 );

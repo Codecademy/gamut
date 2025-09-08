@@ -30,8 +30,26 @@ figma.connect(
         Error: true,
         Disabled: false,
       }),
-      placeholder: figma.textContent('✏️ Input text'),
-      rows: 4,
+      defaultValue: figma.enum('state', {
+        filled: figma.textContent('input'),
+        'filled + hover': figma.textContent('input'),
+        'filled + focus': figma.textContent('input'),
+        error: figma.textContent('input'),
+        'error + focus': figma.textContent('input'),
+      }),
+      placeholder: figma.enum('state', {
+        enabled: figma.textContent('placeholder'),
+        hover: figma.textContent('placeholder'),
+        focus: figma.textContent('placeholder'),
+        disabled: figma.textContent('placeholder'),
+      }),
+      rows: figma.enum('rows', {
+        '2': 2,
+        '3': 3,
+        '4': 4,
+        '5': 5,
+        '6': 6,
+      }),
     },
     example: (props) => <TextArea {...props} />,
   }
