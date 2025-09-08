@@ -13,11 +13,6 @@ import {
 export interface BaseConnectedFieldProps {
   onUpdate?: (value: boolean) => void;
 }
-
-export interface BaseConnectedNestedCheckboxFieldProps {
-  onUpdate?: (values: string[]) => void;
-}
-
 export interface ConnectedFieldProps extends BaseConnectedFieldProps {
   name: string;
 }
@@ -80,14 +75,7 @@ export type NestedCheckboxOption = ConnectedCheckboxProps & {
 };
 
 export interface ConnectedNestedCheckboxesProps
-  extends BaseConnectedNestedCheckboxFieldProps {
-  name: string;
-  /**
-   * Hierarchical structure of checkbox options
-   */
+  extends Pick<BaseConnectedCheckboxProps, 'name' | 'disabled'> {
   options: NestedCheckboxOption[];
-  /**
-   * Disable all checkboxes
-   */
-  disabled?: boolean;
+  onUpdate?: (values: string[]) => void;
 }

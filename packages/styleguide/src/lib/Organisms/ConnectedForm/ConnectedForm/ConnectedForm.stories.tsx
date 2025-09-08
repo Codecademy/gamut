@@ -153,6 +153,7 @@ const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
       justifyContent="space-between"
       minHeight="50rem"
       onSubmit={(values) => {
+        console.log('values', values);
         action('Form Submitted')(values);
       }}
       {...connectedFormProps}
