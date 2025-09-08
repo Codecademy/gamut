@@ -24,7 +24,20 @@ figma.connect(
         medium: 'medium',
       }),
       options: figma.children('option-*'),
-      defaultValue: figma.string('✏️ selection'),
+      placeholder: figma.enum('state', {
+        Enabled: figma.textContent('placeholder'),
+        Hover: figma.textContent('placeholder'),
+        Focus: figma.textContent('placeholder'),
+        Active: figma.textContent('placeholder'),
+      }),
+      defaultValue: figma.enum('state', {
+        Filled: figma.textContent('selection'),
+        'Filled + Hover': figma.textContent('selection'),
+        'Filled + Focus': figma.textContent('selection'),
+        'Filled + Active': figma.textContent('selection'),
+        Error: figma.textContent('selection'),
+        Disabled: figma.textContent('selection'),
+      }),
     },
     // @ts-expect-error - figma.children() returns JSX elements but SelectDropdown expects Record<string, string>
     example: (props) => <SelectDropdown {...props} />,
