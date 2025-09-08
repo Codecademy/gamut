@@ -41,8 +41,25 @@ export const parseOptions = ({
 }: ParseOptionProps) => {
   const parsedOptions: SelectOptionBase[] = [];
   if (Array.isArray(options)) {
-    options.forEach((value: string | ExtendedOption) => {
-      if (isObject(value)) {
+    options.forEach((value: string | ExtendedOption | any) => {
+      // Parses option groups
+      if (isObject(value) && value.options && Array.isArray(value.options)) {
+        const processedGroupOptions = value.options.map(
+          (option: ExtendedOption) => {
+            if (isObject(option)) {
+              const key = id ? `${id}-${option?.value}` : option?.value;
+              return { ...option, key, size };
+            }
+            const label = id && labelAsKey ? `${id}-${option}` : option;
+            return { label, value: option };
+          }
+        );
+        parsedOptions.push({
+          ...value,
+          options: processedGroupOptions,
+        });
+        // Parses regular options
+      } else if (isObject(value)) {
         const key = id ? `${id}-${value?.value}` : value?.value;
         parsedOptions.push({ ...value, key, size });
       } else {

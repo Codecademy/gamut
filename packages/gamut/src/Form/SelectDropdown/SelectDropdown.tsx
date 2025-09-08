@@ -87,13 +87,25 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   }, [options]);
 
   const selectOptions = useMemo(() => {
-    return parseOptions({ options: options as ExtendedOption[], id, size });
+    return parseOptions({ options: options as any, id, size });
   }, [options, id, size]);
 
-  const parsedValue = useMemo(
-    () => selectOptions.find((option) => option.value === value),
-    [selectOptions, value]
-  );
+  const parsedValue = useMemo(() => {
+    if (optionsAreGrouped) {
+      // For grouped options, search through all groups to find the matching option
+      for (const group of selectOptions as any[]) {
+        if (group.options) {
+          const foundOption = group.options.find(
+            (option: any) => option.value === value
+          );
+          if (foundOption) return foundOption;
+        }
+      }
+      return undefined;
+    }
+    // For flat options, use the original logic
+    return selectOptions.find((option) => option.value === value);
+  }, [selectOptions, value, optionsAreGrouped]);
 
   const [multiValues, setMultiValues] = useState(
     multiple && // To keep this efficient for non-multiSelect
