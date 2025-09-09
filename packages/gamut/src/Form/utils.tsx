@@ -20,8 +20,7 @@ export type NonGroupedOptions =
 
 export interface ParseSelectOptionProps extends SelectDropdownSizes {
   id?: string | number;
-  options?: NonGroupedOptions; 
-;
+  options?: NonGroupedOptions;
 }
 
 export interface ParseOptionProps extends ParseSelectOptionProps {
