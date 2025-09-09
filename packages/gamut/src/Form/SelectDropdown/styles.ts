@@ -150,14 +150,8 @@ export const getMemoizedStyles = (
         ...dropdownBorderStates({ error: state.selectProps.error, theme }),
         ...(dropdownWidth
           ? {
-              width:
-                typeof dropdownWidth === 'number'
-                  ? `${dropdownWidth}px`
-                  : dropdownWidth,
-              minWidth:
-                typeof dropdownWidth === 'number'
-                  ? `${dropdownWidth}px`
-                  : dropdownWidth,
+              width: dropdownWidth,
+              minWidth: dropdownWidth,
             }
           : {}),
       };

@@ -38,6 +38,10 @@ const { DropdownIndicator, MultiValue, MultiValueRemove, SingleValue } =
  * ============================================================================
  */
 
+/**
+ * React context for sharing state between SelectDropdown components.
+ * Provides access to focus state and refs for keyboard navigation.
+ */
 export const SelectDropdownContext =
   createContext<SelectDropdownContextValueTypes>({
     currentFocusedValue: undefined,
@@ -82,6 +86,10 @@ const indicatorIcons = {
  * ============================================================================
  */
 
+/**
+ * Custom multi-value component that manages focus state for keyboard navigation.
+ * Tracks which multi-value is currently focused and updates the context accordingly.
+ */
 export const MultiValueWithColorMode = (props: MultiValueProps) => {
   const { currentFocusedValue, setCurrentFocusedValue } = useContext(
     SelectDropdownContext
@@ -108,6 +116,10 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
   return <MultiValue {...props}>{label}</MultiValue>;
 };
 
+/**
+ * Custom remove button for multi-value items.
+ * Provides accessible removal functionality with proper ARIA labels.
+ */
 export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {
   const { label } = (props?.data as any) ?? '';
 
@@ -126,6 +138,10 @@ export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {
  * ============================================================================
  */
 
+/**
+ * Custom dropdown indicator that shows either a chevron or search icon.
+ * The icon type depends on whether the select is searchable or not.
+ */
 export const DropdownButton = (props: SizedIndicatorProps) => {
   const { size, isSearchable } = props.selectProps;
   const color = props.isDisabled ? 'text-disabled' : 'text';
@@ -152,6 +168,10 @@ const CustomStyledRemoveAllDiv = styled('div')(
   })
 );
 
+/**
+ * Custom remove all button for multi-select mode.
+ * Provides keyboard navigation and accessible removal of all selected values.
+ */
 export const RemoveAllButton = (props: SizedIndicatorProps) => {
   const {
     getStyles,
@@ -203,6 +223,10 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
  * ============================================================================
  */
 
+/**
+ * Custom container component that adds a hidden input for form submission.
+ * Renders the selected values as a comma-separated string in the hidden input.
+ */
 export const CustomContainer = ({
   children,
   ...rest
@@ -229,6 +253,10 @@ export const CustomContainer = ({
   );
 };
 
+/**
+ * Typed wrapper around react-select component.
+ * Provides type safety for the underlying react-select implementation.
+ */
 export function TypedReactSelect<
   OptionType,
   IsMulti extends boolean = false,
@@ -246,6 +274,10 @@ export function TypedReactSelect<
  * ============================================================================
  */
 
+/**
+ * Custom option component that displays a check icon for selected items.
+ * Also manages ARIA attributes for accessibility.
+ */
 export const IconOption = ({
   children,
   ...rest
@@ -266,6 +298,10 @@ export const IconOption = ({
   );
 };
 
+/**
+ * Custom single value component that displays abbreviated text when available.
+ * Falls back to the full label if no abbreviation is provided.
+ */
 export const AbbreviatedSingleValue = (
   props: SingleValueProps<ExtendedOption, false>
 ) => {
@@ -284,6 +320,13 @@ export const AbbreviatedSingleValue = (
  * ============================================================================
  */
 
+/**
+ * Formats an option label with icon, subtitle, and right label support.
+ * Handles disabled state styling and responsive layout.
+ *
+ * @param option - The extended option to format
+ * @returns JSX element representing the formatted option
+ */
 export const formatOptionLabel = ({
   label,
   icon: Icon,
@@ -329,6 +372,12 @@ export const formatOptionLabel = ({
   );
 };
 
+/**
+ * Formats a group label, optionally rendering a visual divider.
+ *
+ * @param group - The group to format
+ * @returns JSX element representing the formatted group label or divider
+ */
 export const formatGroupLabel = ({ label, divider }: SelectDropdownGroup) => {
   if (divider) {
     return (
@@ -347,6 +396,13 @@ export const formatGroupLabel = ({ label, divider }: SelectDropdownGroup) => {
   return label;
 };
 
+/**
+ * Generates accessible focus messages for screen readers.
+ * Provides detailed information about the currently focused option.
+ *
+ * @param params - Object containing the focused option details
+ * @returns Formatted accessibility message
+ */
 export const onFocus: AriaOnFocus<ExtendedOption> = ({
   focused: { label, subtitle, rightLabel, disabled },
 }) => {

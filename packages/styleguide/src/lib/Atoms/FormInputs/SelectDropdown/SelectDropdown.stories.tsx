@@ -7,7 +7,7 @@ const fruitOptions = ['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant'];
 const meta: Meta<typeof SelectDropdown> = {
   component: SelectDropdown,
   args: {
-    htmlFor: 'example-select',
+    name: 'example-select',
     options: [],
   },
   argTypes: {
@@ -34,6 +34,7 @@ export const Default: Story = {
 
 export const Base: Story = {
   args: {
+    name: 'base-dropdown',
     options: ['Based', 'Regular Size', 'Normal'],
     placeholder: 'all about that',
   },
@@ -46,10 +47,10 @@ export const Base: Story = {
 
 export const Searchable: Story = {
   args: {
+    name: 'searchable-dropdown',
     isSearchable: true,
     options: ['wow', 'wowee', 'wooooooow'],
     placeholder: 'i am searchable, it is cool',
-    id: 'searchable-dropdown',
   },
   render: (args) => (
     <Box height="12rem">
@@ -60,6 +61,7 @@ export const Searchable: Story = {
 
 export const Disabled: Story = {
   args: {
+    name: 'disabled-dropdown-standalone',
     options: ['Disabled'],
     disabled: true,
     placeholder: 'Disabled',
@@ -68,6 +70,7 @@ export const Disabled: Story = {
 
 export const Error: Story = {
   args: {
+    name: 'error-dropdown-standalone',
     options: ['Small', 'Quite little'],
     value: 'Quite little',
     error: true,
@@ -505,14 +508,14 @@ export const FormGroupSelectDropdown: Story = {
 export const FormGroupError: Story = {
   args: {
     options: ['Error', 'oh no', ':('],
+    name: 'error-example-unique',
     placeholder: 'cry cry cry',
-    name: 'error',
   },
   render: (args) => (
     <Box height="15rem">
       <FormGroup
         error="error message!! no :'("
-        htmlFor="error"
+        htmlFor="error-example-unique"
         isSoloField
         label="i am ~styled... but something is wrong"
       >

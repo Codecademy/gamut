@@ -55,6 +55,51 @@ const defaultProps = {
 };
 const onChangeAction = 'select-option';
 
+/**
+ * A flexible dropdown select component built on top of react-select.
+ *
+ * Supports both single and multi-select modes with customizable options including
+ * icons, subtitles, right labels, and abbreviations. The component provides
+ * accessibility features, keyboard navigation, and responsive styling.
+ *
+ * @example
+ * ```tsx
+ * // Basic single select
+ * <SelectDropdown
+ *   name="country"
+ *   options={[
+ *     { label: 'United States', value: 'us' },
+ *     { label: 'Canada', value: 'ca' }
+ *   ]}
+ *   onChange={(option) => console.log(option)}
+ * />
+ *
+ * // Multi-select with icons
+ * <SelectDropdown
+ *   name="skills"
+ *   multiple
+ *   options={[
+ *     { label: 'React', value: 'react', icon: ReactIcon },
+ *     { label: 'TypeScript', value: 'ts', icon: TypeScriptIcon }
+ *   ]}
+ *   onChange={(options) => console.log(options)}
+ * />
+ *
+ * // Grouped options with extended features
+ * <SelectDropdown
+ *   name="category"
+ *   options={[
+ *     {
+ *       label: 'Frontend',
+ *       options: [
+ *         { label: 'React', value: 'react', subtitle: 'UI Library' },
+ *         { label: 'Vue', value: 'vue', subtitle: 'Progressive Framework' }
+ *       ]
+ *     }
+ *   ]}
+ * />
+ * ```
+ */
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   disabled,
   dropdownWidth,
@@ -192,7 +237,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
   const theme = useTheme();
   const memoizedStyles = useMemo((): StylesConfig<any, false> => {
-    return getMemoizedStyles(theme as any);
+    return getMemoizedStyles(theme);
   }, [theme]);
 
   return (

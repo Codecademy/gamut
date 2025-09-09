@@ -16,14 +16,27 @@ export const isSingleSelectProps = (
   props: BaseOnChangeProps
 ): props is SingleSelectDropdownProps => !props.multiple;
 
-export const isOptionGroup = (obj: any): obj is SelectDropdownGroup =>
-  obj != null && typeof obj === 'object' && obj.options !== undefined;
+const isOptionGroup = (obj: any): obj is SelectDropdownGroup =>
+  obj != null &&
+  typeof obj === 'object' &&
+  'options' in obj &&
+  obj.options !== undefined;
 
 export const isOptionsGrouped = (
   options: any
 ): options is SelectDropdownGroup[] =>
   Array.isArray(options) && options.some((option) => isOptionGroup(option));
 
+/**
+ * Filters options based on the selected value(s).
+ * Handles both single values and arrays of values, and works with both
+ * flat option arrays and grouped options.
+ *
+ * @param options - The options to filter from
+ * @param value - The value or values to filter by
+ * @param optionsAreGrouped - Whether the options are grouped
+ * @returns Array of matching options
+ */
 export const filterValueFromOptions = (
   options: SelectOptionBase[] | SelectDropdownGroup[],
   value: SelectDropdownProps['value'],
@@ -46,6 +59,14 @@ export const filterValueFromOptions = (
   );
 };
 
+/**
+ * Removes a value from the selected options array.
+ * Handles both single values and arrays of values to remove.
+ *
+ * @param selectedOptions - The currently selected options
+ * @param value - The value or values to remove
+ * @returns New array with the specified values removed
+ */
 export const removeValueFromSelectedOptions = (
   selectedOptions: ExtendedOption[] | SelectOptionBase[],
   value: SelectDropdownProps['value']
