@@ -128,6 +128,7 @@ const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
         inputField: '',
         radioGroupField: undefined,
         textAreaField: '',
+        nestedCheckboxesField: [],
       },
       validationRules: {
         checkboxField: { required: 'you need to check this.' },
@@ -240,36 +241,41 @@ const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
         name="textAreaField"
         {...connectedFormGroup}
       />
-      <ConnectedNestedCheckboxes
-        name="technologies"
-        options={[
-          {
-            value: 'frontend',
-            label: 'Frontend Technologies',
-            children: [
-              { value: 'react', label: 'React' },
-              {
-                value: 'vue',
-                label: 'Vue.js',
-                children: [
-                  { value: 'test', label: 'Test' },
-                  { value: 'test2', label: 'Test2' },
-                ],
-              },
-              { value: 'angular', label: 'Angular' },
-            ],
-          },
-          {
-            value: 'backend',
-            label: 'Backend Technologies',
-            children: [
-              { value: 'node', label: 'Node.js' },
-              { value: 'python', label: 'Python' },
-              { value: 'java', label: 'Java' },
-            ],
-          },
-        ]}
-        onUpdate={(selectedValues) => console.log('Selected:', selectedValues)}
+      <ConnectedFormGroup
+        field={{
+          component: ConnectedNestedCheckboxes,
+          options: [
+            {
+              value: 'frontend',
+              label: 'Frontend Technologies',
+              children: [
+                { value: 'react', label: 'React' },
+                {
+                  value: 'vue',
+                  label: 'Vue.js',
+                  children: [
+                    { value: 'test', label: 'Test' },
+                    { value: 'test2', label: 'Test2' },
+                  ],
+                },
+                { value: 'angular', label: 'Angular' },
+              ],
+            },
+            {
+              value: 'backend',
+              label: 'Backend Technologies',
+              children: [
+                { value: 'node', label: 'Node.js' },
+                { value: 'python', label: 'Python' },
+                { value: 'java', label: 'Java' },
+              ],
+            },
+          ],
+          onUpdate: (selectedValues) =>
+            console.log('Selected:', selectedValues),
+        }}
+        label="nested checkboxes field"
+        name="nestedCheckboxesField"
       />
     </ConnectedForm>
   );
