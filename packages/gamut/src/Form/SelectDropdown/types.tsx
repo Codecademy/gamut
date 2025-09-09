@@ -59,18 +59,6 @@ export interface ExtendedOption extends IconOption {
   abbreviation?: string;
 }
 
-/**
- * Legacy interface for extended options.
- * @deprecated Use ExtendedOption instead
- */
-export interface ExtendedOptions {
-  /** The display text for the option */
-  label: string;
-  /** The unique value for the option */
-  value: string;
-  /** Optional icon component to display alongside the label */
-  icon?: React.ComponentType<GamutIconProps>;
-}
 
 /**
  * Group structure for organizing options into categories.
