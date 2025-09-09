@@ -59,7 +59,6 @@ export interface ExtendedOption extends IconOption {
   abbreviation?: string;
 }
 
-
 /**
  * Group structure for organizing options into categories.
  * Extends react-select's GroupBase with optional divider support.
@@ -157,7 +156,10 @@ export interface SelectDropdownCoreProps
     SharedProps {
   /** Required name attribute for the select input */
   name: string;
-  /** Placeholder text shown when no option is selected */
+  /** Placeholder text shown when no option is selected.
+   * Placeholder text is not recommended for accessibility. If you need to use placeholder text,
+   * please make sure the placeholder text doesn't add any new information to the input.
+   * I.e - if the placeholder text describes an action you'd like the user to take, please use a label instead. */
   placeholder?: string;
   /** Array of options or option groups to display in the dropdown */
   options?: SelectDropdownOptions | SelectDropdownGroup[];
