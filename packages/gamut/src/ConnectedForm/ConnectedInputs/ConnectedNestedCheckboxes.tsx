@@ -183,16 +183,23 @@ export const ConnectedNestedCheckboxes: React.FC<
       if (state.checked) {
         checkedProps = {
           checked: true,
+          'aria-checked': true,
         };
       } else if (state.indeterminate) {
         checkedProps = {
           indeterminate: true,
           checked: false,
+          'aria-checked': 'mixed',
+        };
+      } else {
+        checkedProps = {
+          checked: false,
+          'aria-checked': false,
         };
       }
 
       return (
-        <Box key={String(option.value)} mb={8} ml={(option.level * 24) as any}>
+        <Box key={String(option.value)} ml={(option.level * 24) as any}>
           <Checkbox
             aria-label={
               state['aria-label'] === undefined
