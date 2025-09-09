@@ -1,6 +1,12 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import isString from 'lodash/isString';
-import { ComponentProps, forwardRef, MutableRefObject, useId } from 'react';
+import {
+  ComponentProps,
+  forwardRef,
+  MouseEventHandler,
+  MutableRefObject,
+  useId,
+} from 'react';
 
 import { FlexBox } from '../Box';
 import { ToolTipProps } from '../Tip/ToolTip';
@@ -42,12 +48,14 @@ interface MenuItemIconOnly extends HTMLProps, ForwardListItemProps {
   children?: never;
   /** ToolTips will only render for interactive items, otherwise the label will be used as a generic aria-label  */
   label: ToolTipLabel;
+  disabled?: boolean;
 }
 
 interface MenuTextItem extends HTMLProps, ForwardListItemProps {
   icon?: React.ComponentType<GamutIconProps>;
   children: React.ReactNode;
   label?: ToolTipLabel;
+  disabled?: boolean;
 }
 
 type MenuItemTypes = MenuItemIconOnly | MenuTextItem;
@@ -58,13 +66,14 @@ export const MenuItem = forwardRef<
 >(
   (
     {
-      href,
-      target,
-      children,
       active,
+      children,
+      disabled,
+      height = 1,
+      href,
       icon: Icon,
       label,
-      height = 1,
+      target,
       width = 1,
       ...props
     },
@@ -72,6 +81,7 @@ export const MenuItem = forwardRef<
   ) => {
     const { variant, role, ...rest } = useMenuContext();
     const tipId = useId();
+    const isIconOnly = !!Icon && !children;
 
     const activeProp = activePropnames[variant];
 
@@ -100,7 +110,10 @@ export const MenuItem = forwardRef<
       variant: 'link',
       role: role === 'menu' ? 'menuitem' : undefined,
       [activeProp]: active,
-      'aria-label': ariaLabel,
+      'aria-label': isIconOnly ? ariaLabel : undefined,
+      'aria-describedby': !isIconOnly && ariaLabel ? tipId : undefined,
+      'aria-disabled': disabled,
+      isDisabled: disabled,
     };
 
     const content = (
@@ -119,7 +132,7 @@ export const MenuItem = forwardRef<
       </>
     );
 
-    if (listItemType === 'link') {
+    if (listItemType === 'link' && !disabled) {
       const linkRef = ref as MutableRefObject<HTMLAnchorElement>;
 
       return (
@@ -138,13 +151,20 @@ export const MenuItem = forwardRef<
       );
     }
 
-    if (listItemType === 'button') {
+    if (listItemType === 'button' || (listItemType === 'link' && disabled)) {
       const buttonRef = ref as MutableRefObject<HTMLButtonElement>;
+      const handleClick: MouseEventHandler<HTMLButtonElement> = disabled
+        ? () => null
+        : (props.onClick as any as MouseEventHandler<HTMLButtonElement>);
 
       return (
         <ListItem {...listItemProps}>
           <MenuToolTipWrapper label={label} tipId={tipId}>
-            <ListButton {...(computed as ListLinkProps)} ref={buttonRef}>
+            <ListButton
+              {...(computed as ListLinkProps)}
+              ref={buttonRef}
+              onClick={handleClick}
+            >
               {content}
             </ListButton>
           </MenuToolTipWrapper>

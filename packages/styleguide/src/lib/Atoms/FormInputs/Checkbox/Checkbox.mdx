@@ -5,6 +5,7 @@ import { ComponentHeader } from '~styleguide/blocks';
 import * as CheckboxStories from './Checkbox.stories';
 
 export const parameters = {
+  title: 'Checkbox',
   subtitle:
     'A `<input type="checkbox" />` element for handling boolean values.',
   design: {
@@ -78,6 +79,35 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
 ### Checked
 
 <Canvas of={CheckboxStories.Checked} />
+
+### Indeterminate
+
+Checkboxes have a third state - `indeterminate` - represented by a dash.
+
+<Canvas of={CheckboxStories.Indeterminate} />
+
+`indeterminate` is used for Checkboxes that are the parents of a list of nested checkboxes. When the parent checkbox is checked or blank, all of its child checkboxes should be selected or unselected, respectively. The indeterminate state is shown when only some of the child checkboxes are checked.
+
+<Canvas of={CheckboxStories.NestedCheckboxes} />
+
+There are several accessibility considerations to take when using indeterminate checkboxes.
+
+#### Accessibility considerations
+
+- **Programmatically set the `indeterminate` property**\
+  The mixed state is a JavaScript-only property on the native `<input type="checkbox">`. When you set `indeterminate` on the Gamut `Checkbox`, the component applies the underlying DOM property for you, but you must update this prop whenever the selection state of the child checkboxes changes so that assistive technologies receive an accurate announcement.
+
+- **Keep `checked` and `indeterminate` mutually exclusive**
+  There are Typescript types that guard against this behavior but keep in mind this shouldn't happen.
+
+- **Group related checkboxes with `fieldset` & `legend`**
+  Wrapping the parent and its children in a `<fieldset>` with a `<legend>` communicates their relationship to screen-reader users.
+
+- **Use a descriptive label**
+  The parent checkbox's label should describe what will be selected, e.g. "Select all lessons", so the purpose is clear when a screen reader announces "mixed".
+
+- **Nested checkboxes should be in a list**
+  The checkboxes should be wrapped in a `ul` and `li` components as shown in the example above.
 
 ### Disabled
 

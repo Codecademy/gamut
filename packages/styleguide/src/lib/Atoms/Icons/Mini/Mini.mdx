@@ -1,17 +1,11 @@
-import * as MINI from '@codecademy/gamut-icons/src/icons/mini';
-import {
-  Canvas,
-  Controls,
-  IconGallery,
-  IconItem,
-  Meta,
-} from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
 import * as MiniIconStories from './Mini.stories';
 
 export const parameters = {
+  title: 'Mini',
   subtitle:
     'A subset of [Streamline Mini Bold](https://app.streamlinehq.com/streamline-mini-bold). These are a smaller set of icons that are bolder and work well in smaller resolutions.',
   design: {
@@ -54,10 +48,4 @@ import { MiniStarIcon } from '@codecademy/gamut-icons';
 
 ## Icons
 
-<IconGallery>
-  {Object.entries(MINI).map(([iconName, Icon]) => (
-    <IconItem key={iconName} name={iconName}>
-      <Icon size={16} />
-    </IconItem>
-  ))}
-</IconGallery>
+<Canvas of={MiniIconStories.AllMiniIcons} sourceState="none" />

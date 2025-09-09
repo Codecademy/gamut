@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
 import { useMeasure } from 'react-use';
 
@@ -41,6 +41,10 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
+  // Use refs to store timeouts to prevent race conditions
+  const hoverDelayRef = useRef<NodeJS.Timeout | undefined>();
+  const focusDelayRef = useRef<NodeJS.Timeout | undefined>();
+
   const commonPopoverProps = getPopoverAlignmentAndPattern({ alignment, type });
   const dims = getAlignmentStyles({ avatar, alignment, type });
   const [childRef, { width: tipWidth }] = useMeasure<HTMLDivElement>();
@@ -54,33 +58,60 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
     }
   }, [alignment, tipWidth, type]);
 
-  let hoverDelay: NodeJS.Timeout | undefined;
-  let focusDelay: NodeJS.Timeout | undefined;
+  // Clear timeouts on unmount
+  useLayoutEffect(() => {
+    return () => {
+      if (hoverDelayRef.current) clearTimeout(hoverDelayRef.current);
+      if (focusDelayRef.current) clearTimeout(focusDelayRef.current);
+    };
+  }, []);
 
-  const handleShowHideAction = ({ type }: FocusOrMouseEvent) => {
-    if (type === 'focus' && !isOpen) {
-      focusDelay = runWithDelay(() => {
-        setIsOpen(true);
-        setIsFocused(true);
-      });
-    }
-    if (type === 'blur') {
-      if (focusDelay) clearTimeout(focusDelay);
-      if (isOpen) {
-        setIsOpen(false);
-        setIsFocused(false);
+  const handleShowHideAction = useCallback(
+    ({ type }: FocusOrMouseEvent) => {
+      if (type === 'focus' && !isOpen) {
+        if (hoverDelayRef.current) {
+          clearTimeout(hoverDelayRef.current);
+          hoverDelayRef.current = undefined;
+        }
+
+        focusDelayRef.current = runWithDelay(() => {
+          setIsOpen(true);
+          setIsFocused(true);
+        });
       }
-    }
-    if (type === 'mouseenter' && !isOpen) {
-      hoverDelay = runWithDelay(() => setIsOpen(true));
-    }
-    if (type === 'mouseleave') {
-      if (hoverDelay) clearTimeout(hoverDelay);
-      if (isOpen && !isFocused) {
-        setIsOpen(false);
+
+      if (type === 'blur') {
+        if (focusDelayRef.current) {
+          clearTimeout(focusDelayRef.current);
+          focusDelayRef.current = undefined;
+        }
+        if (isOpen) {
+          setIsOpen(false);
+          setIsFocused(false);
+        }
       }
-    }
-  };
+
+      if (type === 'mouseenter' && !isOpen && !isFocused) {
+        if (focusDelayRef.current) {
+          clearTimeout(focusDelayRef.current);
+          focusDelayRef.current = undefined;
+        }
+
+        hoverDelayRef.current = runWithDelay(() => setIsOpen(true));
+      }
+
+      if (type === 'mouseleave') {
+        if (hoverDelayRef.current) {
+          clearTimeout(hoverDelayRef.current);
+          hoverDelayRef.current = undefined;
+        }
+        if (isOpen && !isFocused) {
+          setIsOpen(false);
+        }
+      }
+    },
+    [isOpen, isFocused]
+  );
 
   const isHoverType = type === 'tool' || type === 'preview';
   const isPreviewType = type === 'preview';

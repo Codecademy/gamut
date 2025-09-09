@@ -24,6 +24,7 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
         {...rest}
         as={colEl}
         delimiter={sticky && activeVariants.variant === 'table'}
+        lastChildPadding={!(type === 'expandControl')}
         ref={ref}
         sticky={sticky}
         type={isOrderedHeader ? 'orderedHeader' : type}
@@ -31,7 +32,10 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
     );
     if (sticky) {
       return (
-        <StickyHeaderColWrapper data-testid="header-container">
+        <StickyHeaderColWrapper
+          as={isTable ? 'th' : 'div'}
+          data-testid="header-container"
+        >
           {col}
         </StickyHeaderColWrapper>
       );

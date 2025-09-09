@@ -4,13 +4,26 @@ import omit from 'lodash/omit';
 import { AbstractPropTransformer } from '../types/config';
 import {
   BreakpointCache,
+  BreakpointMap,
   CSSObject,
-  MediaQueryMap,
   ThemeProps,
 } from '../types/props';
 import { Breakpoints } from '../types/theme';
 
-const BREAKPOINT_KEYS = ['_', 'xs', 'sm', 'md', 'lg', 'xl'];
+const BREAKPOINT_KEYS = [
+  '_',
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xl',
+  'c_base',
+  'c_xs',
+  'c_sm',
+  'c_md',
+  'c_lg',
+  'c_xl',
+];
 
 /**
  * Destructures the themes breakpoints into an ordered structure to traverse
@@ -19,12 +32,13 @@ export const parseBreakpoints = (
   breakpoints?: Breakpoints | undefined
 ): BreakpointCache | null => {
   if (breakpoints === undefined) return null;
-  const { xs, sm, md, lg, xl } = breakpoints ?? {};
+  const { xs, sm, md, lg, xl, c_base, c_xs, c_sm, c_md, c_lg, c_xl } =
+    breakpoints ?? {};
 
-  // Ensure order for mapping
+  // Ensure order for mapping - media queries first, then container queries
   return {
     map: breakpoints,
-    array: [xs, sm, md, lg, xl],
+    array: [xs, sm, md, lg, xl, c_base, c_xs, c_sm, c_md, c_lg, c_xl],
   };
 };
 
@@ -33,11 +47,11 @@ export const isMediaArray = (val: unknown): val is (string | number)[] =>
 
 export const isMediaMap = (
   val: object
-): val is MediaQueryMap<string | number> =>
+): val is BreakpointMap<string | number> =>
   intersection(Object.keys(val), BREAKPOINT_KEYS).length > 0;
 
 interface ResponsiveParser<
-  Bp extends MediaQueryMap<string | number> | (string | number)[]
+  Bp extends BreakpointMap<string | number> | (string | number)[]
 > {
   <C extends AbstractPropTransformer>(
     value: Bp,
@@ -47,7 +61,7 @@ interface ResponsiveParser<
   ): CSSObject;
 }
 
-export const objectParser: ResponsiveParser<MediaQueryMap<string | number>> = (
+export const objectParser: ResponsiveParser<BreakpointMap<string | number>> = (
   value,
   props,
   config,

@@ -9,6 +9,7 @@ import {
 import { Text } from '../../..';
 import { ListCol, ListRow } from '../../../List';
 import { ColProps } from '../../../List/elements';
+import { useListContext } from '../../../List/ListProvider';
 import { Shimmer } from '../../../Loading/Shimmer';
 import { ExpandControl, SelectControl } from '../../Controls';
 import { useControlContext } from '../../hooks/useListControls';
@@ -47,7 +48,24 @@ export const TableRow: DataRow = ({
     prefixId,
   } = useControlContext();
 
-  const listColProps = { showOverflow };
+  const { variant, listType } = useListContext();
+  const dataTablePadding = listType === 'table' && variant === 'table';
+
+  const listColProps = { dataTablePadding, showOverflow };
+
+  const controlIndices = useMemo(() => {
+    const controlIndices = new Map<number, number>();
+    let controlCount = 0;
+
+    columns.forEach((column, index) => {
+      if (column.type === 'control') {
+        controlIndices.set(index, controlCount);
+        controlCount += 1;
+      }
+    });
+
+    return controlIndices;
+  }, [columns]);
 
   const renderExpandedContent = useCallback(() => {
     return expandedContent?.({
@@ -55,10 +73,6 @@ export const TableRow: DataRow = ({
       onCollapse: () => onExpand({ rowId: id, toggle: true }),
     });
   }, [onExpand, expandedContent, id, row]);
-
-  const numberOfColumns = useMemo(() => {
-    return columns.length;
-  }, [columns]);
 
   const listRowProps = expandable
     ? {
@@ -68,18 +82,13 @@ export const TableRow: DataRow = ({
     : {};
 
   return (
-    <ListRow
-      as="tr"
-      numOfColumns={numberOfColumns}
-      selectable={selectable}
-      {...listRowProps}
-    >
+    <ListRow as="tr" {...listRowProps}>
       {selectable && (
         <ListCol
           {...listColProps}
-          display={{ _: 'flex', xs: 'flex' }}
+          display={{ _: 'flex', c_sm: 'flex' }}
           size="content"
-          type="control"
+          type="select"
         >
           <SelectControl
             disabled={loading}
@@ -91,7 +100,11 @@ export const TableRow: DataRow = ({
           />
         </ListCol>
       )}
-      {columns.map(({ key, render, size, justify, fill, type }) => {
+      {columns.map(({ key, render, size, justify, fill, type }, index) => {
+        let colConfig: {} = {
+          gridColumn: undefined,
+          gridRow: undefined,
+        };
         const newKey = prefixId(`${id}-col-${String(key)}`);
         const colProps = {
           ...listColProps,
@@ -100,6 +113,32 @@ export const TableRow: DataRow = ({
           fill,
           type,
         };
+
+        if (type === 'control') {
+          const controlIndex = controlIndices.get(index) ?? 0;
+
+          /**
+           * Grid equation for filling columns 2-3, row by row:
+           *   Column: 2 + (controlIndex % 2) gives us alternating 2, 3, 2, 3...
+           *   Row: When selectable, first control fills row 1 (before selected), then continues from row 2
+           *        When not selectable: starts at row 1
+           */
+          const gridCol = 2 + (controlIndex % 2);
+          let gridRow;
+
+          if (selectable) {
+            gridRow =
+              controlIndex === 0 ? 1 : 2 + Math.floor((controlIndex - 1) / 2);
+          } else {
+            gridRow = 1 + Math.floor(controlIndex / 2);
+          }
+
+          colConfig = {
+            gridColumn: { _: 'auto', c_base: gridCol, c_sm: 'auto' },
+            gridRow,
+            type: 'tableControl',
+          };
+        }
 
         if (loading) {
           return (
@@ -114,7 +153,7 @@ export const TableRow: DataRow = ({
         }
 
         return (
-          <ListCol {...colProps} key={newKey}>
+          <ListCol {...colProps} key={newKey} {...colConfig}>
             {render ? (
               render(row)
             ) : typeof row[key] === 'string' || typeof row[key] === 'number' ? (
@@ -136,7 +175,11 @@ export const TableRow: DataRow = ({
         );
       })}
       {expandable && (
-        <ListCol {...listColProps} order={[1000, 'initial']} size="content">
+        <ListCol
+          {...listColProps}
+          order={{ _: 1000, c_sm: 'initial' }}
+          type="expandControl"
+        >
           <ExpandControl
             disabled={loading}
             expanded={expanded}

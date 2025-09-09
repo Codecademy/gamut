@@ -5,6 +5,7 @@ import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 import * as ButtonStories from './Button.stories';
 
 export const parameters = {
+  title: 'Button',
   subtitle: `Button atoms for specfic use cases.`,
   design: {
     type: 'figma',
@@ -69,11 +70,11 @@ Below are examples of how buttons could look in their respective light and dark 
 
 <Canvas of={ButtonStories.ButtonsDarkMode} />
 
-## UX writing
+## UX writing checklist for button labels
 
-Writing words for a link or button? Above all else, make sure that the words alone make it clear where a button or link will take the user. Refer to the checklist below for guidance. For more tips and best practices, check out the full guide about <LinkTo id="ux-writing-component-guidelines-buttons-and-links--page">writing for buttons and links</LinkTo>.
+- Does the copy make it clear where the button will take learners?
+- Does the button lead with an actionable verb?
+- Is the microcopy 3 words or less (especially for the primary button)?
+- Have you used sentence case, only capitalizing [proper nouns in the **Codecademy glossary**](https://skillsoftdev.atlassian.net/wiki/spaces/UXW/database/4447175693?savedViewId=9b4c57a9-0cfb-42b0-97c5-08a87e8a2c84)?
 
-- Make sure it is clear where the link or button will take the user.
-- Use sentence case, capitalizing only proper nouns.
-- For buttons, start with an action-oriented verb (like “explore” or “view”).
-- For buttons, use 3 words or less (unless more words are necessary for clarity).
+For more tips and best practices, check out the full guide about <LinkTo id="UX Writing/Component guidelines/Buttons">writing for buttons</LinkTo>.
