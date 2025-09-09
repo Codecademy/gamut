@@ -7,16 +7,11 @@ const fruitOptions = ['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant'];
 const meta: Meta<typeof SelectDropdown> = {
   component: SelectDropdown,
   args: {
-    name: 'example-select',
-    options: [],
-  },
-  argTypes: {
-    value: {
-      control: {
-        type: 'select',
-        options: fruitOptions,
-      },
-    },
+    htmlFor: 'example-select',
+    options: fruitOptions,
+    disabled: false,
+    isSearchable: false,
+    value: '',
   },
 };
 
