@@ -804,3 +804,95 @@ export const AbbreviatedSmallSize: Story = {
     </Box>
   ),
 };
+
+// These are for testing, I will delete before shipping
+
+export const DisabledMultiValue: Story = {
+  args: {
+    name: 'disabled-small-multi',
+    options: [
+      {
+        label: 'JavaScript',
+        abbreviation: 'JS',
+        value: 'javascript',
+      },
+      {
+        label: 'TypeScript',
+        abbreviation: 'TS',
+        value: 'typescript',
+      },
+      {
+        label: 'Python',
+        abbreviation: 'PY',
+        value: 'python',
+      },
+      {
+        label: 'Java',
+        abbreviation: 'Java',
+        value: 'java',
+      },
+    ],
+    placeholder: 'Long truncated placeholder',
+    size: 'small',
+    inputWidth: '80px',
+    dropdownWidth: '200px',
+    multiple: true,
+    value: ['python', 'java'],
+    disabled: true,
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="abbreviated-small"
+        isSoloField
+        label="Small Size with Abbreviations"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
+export const LongPlaceholder: Story = {
+  args: {
+    name: 'long-placeholder',
+    options: [
+      {
+        label: 'JavaScript',
+        abbreviation: 'JS',
+        value: 'javascript',
+      },
+      {
+        label: 'TypeScript',
+        abbreviation: 'TS',
+        value: 'typescript',
+      },
+      {
+        label: 'Python',
+        abbreviation: 'PY',
+        value: 'python',
+      },
+      {
+        label: 'Java',
+        abbreviation: 'Java',
+        value: 'java',
+      },
+    ],
+    placeholder: 'Long truncated placeholder',
+    size: 'small',
+    inputWidth: '80px',
+    dropdownWidth: '200px',
+    multiple: true,
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="long-placeholder"
+        isSoloField
+        label="Small Size with Abbreviations"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};

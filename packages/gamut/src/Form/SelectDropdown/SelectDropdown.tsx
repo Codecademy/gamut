@@ -182,10 +182,10 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     );
     if (newMultiValues !== multiValues) setMultiValues(newMultiValues);
 
-    // For now, only handle the "change the value" case.
-    // Changing the options can be looked into when this component is fleshed out (GM-354)
+    //
+    // We only update this when our passed in options or value changes, not multiValues.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value]);
+  }, [options, value]);
 
   const changeHandler = useCallback(
     (optionEvent: OptionStrict | OptionsType<OptionStrict>) => {

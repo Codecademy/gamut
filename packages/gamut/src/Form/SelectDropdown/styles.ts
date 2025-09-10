@@ -58,7 +58,7 @@ const sizeVariants = variant({
   variants: {
     medium: formFieldPaddingStyles,
     mediumIsMultiSelected: { px: 8, py: 8 },
-    small: { height: '2rem', px: 8, py: 0 },
+    small: { minHeight: '2rem', px: 8, py: 0 },
   },
 });
 
@@ -190,11 +190,11 @@ export const getMemoizedStyles = (
       alignItems: 'center',
       marginLeft: 0,
     }),
-    multiValue: (provided) => ({
+    multiValue: (provided, state) => ({
       ...provided,
       ...tagBaseStyles,
       height: '24px',
-      cursor: 'pointer',
+      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
       color: theme.colors.background,
       backgroundColor: 'transparent',
       borderRadius: theme.borderRadii.md,
@@ -210,10 +210,11 @@ export const getMemoizedStyles = (
       paddingLeft: `${tagLabelPadding}px`, // default label has an explicit rule for padding left so we need this to override it
       paddingTop: '2px', // adding to shift the text down to vertically center it
     }),
-    multiValueRemove: (provided) => ({
+    multiValueRemove: (provided, state) => ({
       ...provided,
       ...dismissSharedStyles,
-      cursor: 'pointer',
+      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+      pointerEvents: state.isDisabled ? 'none' : 'visible',
       backgroundColor: theme.colors['text-secondary'],
       borderRadius: `0 ${theme.borderRadii.md} ${theme.borderRadii.md} 0`,
       padding: 0, // default remove has padding left and right that we don't need
