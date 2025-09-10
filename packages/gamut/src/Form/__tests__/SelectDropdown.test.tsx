@@ -10,6 +10,10 @@ import {
 } from '../__fixtures__/utils';
 import { SelectDropdown } from '../SelectDropdown';
 
+/** There is a state pollution issue with SelectDropdown and jest which is why these are broken up into their own file.
+ *  Ticket to fix: https://skillsoftdev.atlassian.net/browse/GM-1297
+ */
+
 jest.mock('@codecademy/gamut-icons', () => ({
   ...jest.requireActual<{}>('@codecademy/gamut-icons'),
   MiniChevronDownIcon: () => (
@@ -39,14 +43,14 @@ jest.mock('@codecademy/gamut-icons', () => ({
   ),
 }));
 
-const renderSingleView = setupRtl(SelectDropdown, {
+const renderView = setupRtl(SelectDropdown, {
   options: selectOptions,
   name: 'colors',
 });
 
 describe('SelectDropdown', () => {
   it('sets the id prop on the select tag', () => {
-    const { view } = renderSingleView();
+    const { view } = renderView();
 
     expect(view.getByRole('combobox')).toHaveAttribute('id', 'colors');
   });
@@ -55,7 +59,7 @@ describe('SelectDropdown', () => {
     ['array', selectOptions],
     ['object', selectOptionsObject],
   ])('renders options when options is an %s', async (_, options) => {
-    const { view } = renderSingleView({ options });
+    const { view } = renderView({ options });
 
     await openDropdown(view);
 
@@ -63,29 +67,29 @@ describe('SelectDropdown', () => {
   });
 
   it('renders a small dropdown when size is "small"', () => {
-    const { view } = renderSingleView({ size: 'small' });
+    const { view } = renderView({ size: 'small' });
     view.getByTitle('Mini Chevron Down Icon');
   });
 
   it('renders a medium dropdown when size is "medium"', () => {
-    const { view } = renderSingleView({ size: 'medium' });
+    const { view } = renderView({ size: 'medium' });
     view.getByTitle('Arrow Chevron Down Icon');
   });
 
   it('renders a medium dropdown by default', () => {
-    const { view } = renderSingleView();
+    const { view } = renderView();
     view.getByTitle('Arrow Chevron Down Icon');
   });
 
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', async () => {
-    const { view } = renderSingleView({ shownOptionsLimit: 4 });
+    const { view } = renderView({ shownOptionsLimit: 4 });
 
     await openDropdown(view);
 
     expect(view.getByRole('listbox')).toHaveStyle({ maxHeight: '12rem' });
   });
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified + size is "small"', async () => {
-    const { view } = renderSingleView({
+    const { view } = renderView({
       size: 'small',
       shownOptionsLimit: 4,
     });
@@ -96,7 +100,7 @@ describe('SelectDropdown', () => {
   });
 
   it('renders a dropdown with icons', async () => {
-    const { view } = renderSingleView({ options: optionsIconsArray });
+    const { view } = renderView({ options: optionsIconsArray });
 
     await openDropdown(view);
 
@@ -105,7 +109,7 @@ describe('SelectDropdown', () => {
 
   it('function passed to onInputChanges is called on input change', async () => {
     const onInputChange = jest.fn();
-    const { view } = renderSingleView({ onInputChange });
+    const { view } = renderView({ onInputChange });
 
     await openDropdown(view);
 
@@ -118,7 +122,7 @@ describe('SelectDropdown', () => {
   });
 
   it('renders selected & multiple items when passed multiple: true', async () => {
-    const { view } = renderSingleView({ multiple: true });
+    const { view } = renderView({ multiple: true });
 
     const numSelectedItems = 2;
 

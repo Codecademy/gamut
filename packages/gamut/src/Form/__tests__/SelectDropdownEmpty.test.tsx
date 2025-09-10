@@ -7,6 +7,10 @@ const renderView = setupRtl(SelectDropdown, {
   name: 'colors',
 });
 
+/** There is a state pollution issue with SelectDropdown and jest which is why these are broken up into their own file.
+ *  Ticket to fix: https://skillsoftdev.atlassian.net/browse/GM-1297
+ */
+
 describe('SelectDropdown edge cases', () => {
   it('handles empty options gracefully', () => {
     const { view } = renderView({

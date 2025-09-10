@@ -10,6 +10,10 @@ import {
 } from '../__fixtures__/utils';
 import { SelectDropdown } from '../SelectDropdown';
 
+/** There is a state pollution issue with SelectDropdown and jest which is why these are broken up into their own file.
+ *  Ticket to fix: https://skillsoftdev.atlassian.net/browse/GM-1297
+ */
+
 jest.mock('@codecademy/gamut-icons', () => ({
   ...jest.requireActual<{}>('@codecademy/gamut-icons'),
   MiniChevronDownIcon: () => (
