@@ -13,15 +13,10 @@ figma.connect(
   'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1115%3A195',
   {
     props: {
-      // These props were automatically mapped based on your linked code:
-      title: figma.enum('Title', {
-        true: figma.string('title'),
+      title: figma.boolean('Title', {
+        true: figma.textContent('Title'),
         false: undefined,
       }),
-      // No matching props could be found for these Figma properties:
-      // "cta": figma.boolean('cta'),
-      // "title": figma.string('title'),
-      // "description": figma.string('description'),
       iconProps: figma.nestedProps('📐 Content', {
         icon: figma.boolean('Image', {
           true: 'test',
@@ -32,11 +27,11 @@ figma.connect(
         true: figma.children('*'),
         false: undefined,
       }),
-      body: figma.string('description'),
+      children: figma.string('description'),
     },
-    example: ({ body, title, iconProps, ...props }) => (
+    example: ({ children, iconProps, ...props }) => (
       <Toast icon={iconProps.icon} {...props}>
-        {title} {body}
+        {children}
       </Toast>
     ),
   }
