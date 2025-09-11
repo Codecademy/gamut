@@ -144,7 +144,6 @@ For space-constrained layouts or when you need to display long option names in a
 
 - **Input Display**: Shows the abbreviated text (e.g., "USA")
 - **Dropdown Display**: Shows the full label (e.g., "United States of America")
-- **Accessibility**: Screen readers announce the full label, not the abbreviation
 - **Implementation**: Add an `abbreviation` property to your option objects
 
 <Canvas of={SelectDropdownStories.AbbreviatedInput} />
@@ -170,8 +169,6 @@ You can control the width of the input field and dropdown independently using th
 
 - **`inputWidth`**: Controls the width of the input field (can be a string like "150px" or a number)
 - **`dropdownWidth`**: Controls the width of the dropdown menu (can be a string like "350px" or a number)
-- **Independent sizing**: The input and dropdown can have completely different widths
-- **Responsive**: Works with both small and medium size variants
 
 <Canvas of={SelectDropdownStories.IndependentWidths} />
 
