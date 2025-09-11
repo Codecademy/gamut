@@ -32,7 +32,6 @@ const meta: Meta<typeof Tabs> = {
   args: {
     variant: 'standard',
     defaultSelectedKey: '1',
-    orientation: 'vertical',
     disabledKeys: [],
     selectedKey: undefined,
     onSelectionChange: () => {},
