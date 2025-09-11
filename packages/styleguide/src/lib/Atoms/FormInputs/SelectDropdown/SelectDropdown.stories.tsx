@@ -826,12 +826,6 @@ export const MenuAlignmentRight: Story = {
         value: 'fullstack-dev',
         subtitle: 'End-to-end development',
       },
-      {
-        label: 'DevOps Engineer',
-        abbreviation: 'DevOps',
-        value: 'devops-engineer',
-        subtitle: 'Infrastructure and deployment',
-      },
     ],
     inputWidth: '150px',
     dropdownWidth: '300px',
