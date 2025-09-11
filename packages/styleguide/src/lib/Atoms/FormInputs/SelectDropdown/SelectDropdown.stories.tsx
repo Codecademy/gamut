@@ -834,10 +834,9 @@ export const MenuAlignmentRight: Story = {
   },
   render: (args) => (
     <FlexBox
-      alignItems="flex-end"
+      alignItems="center"
       flexDirection="column"
       height="20rem"
-      justifyContent="right"
       width={1}
     >
       <FormGroup
