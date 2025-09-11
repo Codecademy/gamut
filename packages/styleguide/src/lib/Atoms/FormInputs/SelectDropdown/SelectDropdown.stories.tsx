@@ -1,4 +1,4 @@
-import { Box, FormGroup, SelectDropdown } from '@codecademy/gamut';
+import { Box, FlexBox, FormGroup, SelectDropdown } from '@codecademy/gamut';
 import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -839,18 +839,25 @@ export const MenuAlignmentRight: Story = {
     placeholder: 'Select a role',
   },
   render: (args) => (
-    <Box height="20rem" ml={8}>
+    <FlexBox
+      alignItems="flex-end"
+      flexDirection="column"
+      height="20rem"
+      justifyContent="right"
+      width={1}
+    >
       <FormGroup
         htmlFor="menu-alignment-right"
         isSoloField
         label="Menu Alignment: Right"
+        width="150px"
       >
         <SelectDropdown {...args} />
       </FormGroup>
       <Box color="text-secondary" mt={4}>
         Dropdown aligns to the right edge of the input
       </Box>
-    </Box>
+    </FlexBox>
   ),
 };
 
