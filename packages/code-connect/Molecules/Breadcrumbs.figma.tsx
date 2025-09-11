@@ -18,20 +18,20 @@ figma.connect(
       crumb1: figma.boolean('crumb-1', {
         true: {
           href: '/crumb-1',
-          title: 'Crumb 1',
+          title: 'Home',
         },
       }),
       crumb2: figma.boolean('crumb-2', {
         true: {
           href: '/crumb-2',
-          title: 'Crumb 2',
+          title: 'There',
         },
       }),
 
       crumb3: figma.boolean('crumb-3', {
         true: {
           href: '/crumb-3',
-          title: 'Crumb 3',
+          title: 'There',
         },
       }),
     },
