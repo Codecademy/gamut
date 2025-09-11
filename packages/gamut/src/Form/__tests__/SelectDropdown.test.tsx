@@ -106,6 +106,19 @@ describe('SelectDropdown', () => {
     optionsIconsArray.forEach((icon) => expect(view.getByTitle(icon.label)));
   });
 
+  it('displays icon in selected value when option has icon', async () => {
+    const { view } = renderView({
+      options: optionsIconsArray,
+      value: 'one',
+    });
+
+    expect(view.getByTitle('Data Transfer Vertical Icon')).toBeInTheDocument();
+    const selectedValueContainer = view.getByRole('combobox').closest('div');
+    expect(selectedValueContainer).toHaveTextContent(
+      'Data Transfer Vertical Icon'
+    );
+  });
+
   it('function passed to onInputChanges is called on input change', async () => {
     const onInputChange = jest.fn();
     const { view } = renderView({ onInputChange });

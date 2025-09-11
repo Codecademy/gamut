@@ -274,6 +274,35 @@ export function TypedReactSelect<
  * ============================================================================
  */
 
+const OptionWrapper: React.FC<
+  Pick<ExtendedOption, 'disabled'> & React.PropsWithChildren
+> = ({ children, disabled }) => {
+  const textColor = disabled ? 'text-disabled' : 'inherit';
+
+  return (
+    <FlexBox color={textColor} justifyContent="space-between" width="100%">
+      {children}
+    </FlexBox>
+  );
+};
+
+const IconOptionLabel: React.FC<
+  Pick<ExtendedOption, 'label' | 'icon' | 'size'>
+> = ({ label, icon: Icon, size }) => {
+  return (
+    <FlexBox flexDirection="row">
+      {Icon && (
+        <FlexBox center>
+          <Icon color="text" ml={4} size={size === 'small' ? 16 : 24} />
+        </FlexBox>
+      )}
+      <Box as="span" color="currentColor" pl={Icon ? 16 : 0}>
+        {label}
+      </Box>
+    </FlexBox>
+  );
+};
+
 /**
  * Custom option component that displays a check icon for selected items.
  * Also manages ARIA attributes for accessibility.
@@ -300,18 +329,24 @@ export const IconOption = ({
 
 /**
  * Custom single value component that displays abbreviated text when available.
+ * This is only for selected single values - we notablely do not want rightLabel or subtitle here.
  * Falls back to the full label if no abbreviation is provided.
  */
 export const AbbreviatedSingleValue = (
   props: SingleValueProps<ExtendedOption, false>
 ) => {
+  const { isDisabled } = props;
   const { data } = props;
+  const { label, icon, size } = data;
+  const displayText = data?.abbreviation ? data.abbreviation : label || '';
 
-  const displayText = data?.abbreviation
-    ? data.abbreviation
-    : data?.label || '';
-
-  return <SingleValue {...props}>{displayText}</SingleValue>;
+  return (
+    <SingleValue {...props}>
+      <OptionWrapper disabled={isDisabled}>
+        <IconOptionLabel icon={icon} label={displayText} size={size} />
+      </OptionWrapper>
+    </SingleValue>
+  );
 };
 
 /*
@@ -327,6 +362,7 @@ export const AbbreviatedSingleValue = (
  * @param option - The extended option to format
  * @returns JSX element representing the formatted option
  */
+
 export const formatOptionLabel = ({
   label,
   icon: Icon,
@@ -335,20 +371,10 @@ export const formatOptionLabel = ({
   rightLabel,
   disabled,
 }: ExtendedOption) => {
-  const textColor = disabled ? 'text-disabled' : 'inherit';
   return (
-    <FlexBox color={textColor} justifyContent="space-between" width="100%">
+    <OptionWrapper disabled={disabled}>
       <FlexBox flexDirection="column">
-        <FlexBox flexDirection="row">
-          {Icon && (
-            <FlexBox center>
-              <Icon color="text" ml={4} size={size === 'small' ? 16 : 24} />
-            </FlexBox>
-          )}
-          <Box as="span" color={textColor} pl={Icon ? 16 : 0}>
-            {label}
-          </Box>
-        </FlexBox>
+        <IconOptionLabel icon={Icon} label={label} size={size} />
         {subtitle && (
           <Box as="span" color="text-disabled" fontSize={14}>
             {subtitle}
@@ -368,7 +394,7 @@ export const formatOptionLabel = ({
           {rightLabel}
         </FlexBox>
       )}
-    </FlexBox>
+    </OptionWrapper>
   );
 };
 
