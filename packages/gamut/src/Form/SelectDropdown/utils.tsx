@@ -4,6 +4,7 @@ import {
   ExtendedOption,
   MultiSelectDropdownProps,
   SelectDropdownGroup,
+  SelectDropdownOptions,
   SelectDropdownProps,
   SingleSelectDropdownProps,
 } from './types';
@@ -23,7 +24,7 @@ export const isOptionGroup = (obj: any): obj is SelectDropdownGroup =>
   obj.options !== undefined;
 
 export const isOptionsGrouped = (
-  options: any
+  options: SelectDropdownOptions
 ): options is SelectDropdownGroup[] =>
   Array.isArray(options) && options.some((option) => isOptionGroup(option));
 

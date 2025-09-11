@@ -1,6 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { fireEvent } from '@testing-library/dom';
-import { act } from 'react';
+import userEvent from '@testing-library/user-event';
 
 import {
   groupedOptions,
@@ -54,16 +53,16 @@ describe('SelectDropdown Grouped Options', () => {
 
     await openDropdown(view);
 
-    expect(view.getByText('Fruits')).toBeInTheDocument();
-    expect(view.getByText('Vegetables')).toBeInTheDocument();
+    view.getByText('Fruits');
+    view.getByText('Vegetables');
 
     // Check that options within groups are rendered
-    expect(view.getByText('Apple')).toBeInTheDocument();
-    expect(view.getByText('Banana')).toBeInTheDocument();
-    expect(view.getByText('Orange')).toBeInTheDocument();
-    expect(view.getByText('Carrot')).toBeInTheDocument();
-    expect(view.getByText('Broccoli')).toBeInTheDocument();
-    expect(view.getByText('Spinach')).toBeInTheDocument();
+    const fruitOptions = ['Apple', 'Banana', 'Orange'];
+    const vegetableOptions = ['Carrot', 'Broccoli', 'Spinach'];
+
+    [...fruitOptions, ...vegetableOptions].forEach((option) => {
+      view.getByText(option);
+    });
   });
 
   it('allows selection of options from grouped options', async () => {
@@ -75,10 +74,7 @@ describe('SelectDropdown Grouped Options', () => {
 
     await openDropdown(view);
 
-    await act(() => {
-      fireEvent.click(view.getByText('Apple'));
-      return Promise.resolve();
-    });
+    await userEvent.click(view.getByText('Apple'));
 
     expect(onChange).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -87,6 +83,7 @@ describe('SelectDropdown Grouped Options', () => {
       }),
       expect.objectContaining({
         action: 'select-option',
+        option: { label: 'Apple', value: 'apple' },
       })
     );
   });
@@ -100,10 +97,7 @@ describe('SelectDropdown Grouped Options', () => {
 
     await openDropdown(view);
 
-    await act(() => {
-      fireEvent.click(view.getByText('Carrot'));
-      return Promise.resolve();
-    });
+    await userEvent.click(view.getByText('Carrot'));
 
     expect(onChange).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -112,6 +106,7 @@ describe('SelectDropdown Grouped Options', () => {
       }),
       expect.objectContaining({
         action: 'select-option',
+        option: { label: 'Carrot', value: 'carrot' },
       })
     );
   });
@@ -122,7 +117,7 @@ describe('SelectDropdown Grouped Options', () => {
       value: 'banana',
     });
 
-    expect(view.getByText('Banana')).toBeInTheDocument();
+    view.getByText('Banana');
   });
 
   it('renders grouped options with icons', async () => {
@@ -130,12 +125,18 @@ describe('SelectDropdown Grouped Options', () => {
 
     await openDropdown(view);
 
-    expect(view.getByText('Data Icons')).toBeInTheDocument();
-    expect(view.getByText('Navigation Icons')).toBeInTheDocument();
+    view.getByText('Data Icons');
+    view.getByText('Navigation Icons');
 
-    expect(view.getAllByText('Data Transfer Vertical Icon')).toHaveLength(2); // title and span
-    expect(view.getAllByText('Calendar Icon')).toHaveLength(2); // title and span
-    expect(view.getAllByText('Earth Icon')).toHaveLength(2); // title and span
+    const iconOptions = [
+      'Data Transfer Vertical Icon',
+      'Calendar Icon',
+      'Earth Icon',
+    ];
+
+    iconOptions.forEach((icon) => {
+      expect(view.getAllByText(icon)).toHaveLength(2); // title and span
+    });
   });
 
   it('allows selection of options with icons from grouped options', async () => {
@@ -147,22 +148,25 @@ describe('SelectDropdown Grouped Options', () => {
 
     await openDropdown(view);
 
-    await act(() => {
-      fireEvent.click(
-        view.getByRole('option', {
-          name: 'Data Transfer Vertical Icon Data Transfer Vertical Icon',
-        })
-      );
-      return Promise.resolve();
-    });
+    await userEvent.click(
+      view.getByRole('option', {
+        name: /Data Transfer Vertical Icon/,
+      })
+    );
 
     expect(onChange).toHaveBeenCalledWith(
       expect.objectContaining({
         label: 'Data Transfer Vertical Icon',
         value: 'data-transfer',
+        icon: expect.any(Function),
       }),
       expect.objectContaining({
         action: 'select-option',
+        option: {
+          label: 'Data Transfer Vertical Icon',
+          value: 'data-transfer',
+          icon: expect.any(Function),
+        },
       })
     );
   });
@@ -172,15 +176,23 @@ describe('SelectDropdown Grouped Options', () => {
 
     await openDropdown(view);
 
-    expect(view.getByText('Fruits')).toBeInTheDocument();
-    expect(view.getByText('Vegetables')).toBeInTheDocument();
+    view.getByText('Fruits');
+    view.getByText('Vegetables');
 
-    expect(view.getByText('Apple')).toBeInTheDocument();
-    expect(view.getByText('Red and crunchy')).toBeInTheDocument();
-    expect(view.getByText('Banana')).toBeInTheDocument();
-    expect(view.getByText('Yellow and sweet')).toBeInTheDocument();
-    expect(view.getByText('Carrot')).toBeInTheDocument();
-    expect(view.getByText('Orange and healthy')).toBeInTheDocument();
+    const fruitOptionsWithSubtitles = [
+      { option: 'Apple', subtitle: 'Red and crunchy' },
+      { option: 'Banana', subtitle: 'Yellow and sweet' },
+    ];
+    const vegetableOptionsWithSubtitles = [
+      { option: 'Carrot', subtitle: 'Orange and healthy' },
+    ];
+
+    [...fruitOptionsWithSubtitles, ...vegetableOptionsWithSubtitles].forEach(
+      ({ option, subtitle }) => {
+        view.getByText(option);
+        view.getByText(subtitle);
+      }
+    );
   });
 
   it('allows selection of options with subtitles from grouped options', async () => {
@@ -192,10 +204,7 @@ describe('SelectDropdown Grouped Options', () => {
 
     await openDropdown(view);
 
-    await act(() => {
-      fireEvent.click(view.getByText('Apple'));
-      return Promise.resolve();
-    });
+    await userEvent.click(view.getByText('Apple'));
 
     expect(onChange).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -205,6 +214,7 @@ describe('SelectDropdown Grouped Options', () => {
       }),
       expect.objectContaining({
         action: 'select-option',
+        option: { label: 'Apple', value: 'apple', subtitle: 'Red and crunchy' },
       })
     );
   });
@@ -218,21 +228,43 @@ describe('SelectDropdown Grouped Options', () => {
     });
 
     await openDropdown(view);
-    await act(() => {
-      fireEvent.click(view.getByText('Apple'));
-      return Promise.resolve();
-    });
+    await userEvent.click(view.getByText('Apple'));
 
     await openDropdown(view);
-    await act(() => {
-      fireEvent.click(view.getByText('Carrot'));
-      return Promise.resolve();
-    });
+    await userEvent.click(view.getByText('Carrot'));
 
-    expect(view.getByText('Apple')).toBeInTheDocument();
-    expect(view.getByText('Carrot')).toBeInTheDocument();
+    view.getByText('Apple');
+    view.getByText('Carrot');
 
     expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange).toHaveBeenNthCalledWith(
+      1,
+      [
+        {
+          label: 'Apple',
+          value: 'apple',
+        },
+      ],
+      {
+        action: 'select-option',
+      }
+    );
+    expect(onChange).toHaveBeenNthCalledWith(
+      2,
+      [
+        {
+          label: 'Apple',
+          value: 'apple',
+        },
+        {
+          label: 'Carrot',
+          value: 'carrot',
+        },
+      ],
+      {
+        action: 'select-option',
+      }
+    );
   });
 
   it('handles disabled options in grouped options', async () => {
@@ -252,7 +284,6 @@ describe('SelectDropdown Grouped Options', () => {
     await openDropdown(view);
 
     const disabledOption = view.getByText('Banana');
-    expect(disabledOption).toBeInTheDocument();
     expect(disabledOption.closest('[role="option"]')).toHaveAttribute(
       'aria-disabled',
       'true'

@@ -1,6 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { fireEvent } from '@testing-library/dom';
-import { act } from 'react';
+import userEvent from '@testing-library/user-event';
 
 import {
   openDropdown,
@@ -113,33 +112,55 @@ describe('SelectDropdown', () => {
 
     await openDropdown(view);
 
-    await act(() => {
-      fireEvent.click(view.getByText('red'));
-      return Promise.resolve();
-    });
+    await userEvent.click(view.getByText('red'));
 
     expect(onInputChange).toHaveBeenCalled();
   });
 
-  it('renders selected & multiple items when passed multiple: true', async () => {
-    const { view } = renderView({ multiple: true });
-
-    const numSelectedItems = 2;
-
-    const multiple = selectOptions.map(async (opt) => {
-      await openDropdown(view);
-
-      const option = await view.findByText(opt);
-      await act(() => {
-        fireEvent.click(option);
-        return Promise.resolve();
-      });
+  it('works with multiple selection', async () => {
+    const onChange = jest.fn();
+    const { view } = renderView({
+      multiple: true,
+      onChange,
     });
 
-    await Promise.all(multiple);
+    await openDropdown(view);
+    await userEvent.click(view.getByText('red'));
 
-    selectOptions
-      .slice(0, numSelectedItems)
-      .forEach((value) => view.getByText(value));
+    await openDropdown(view);
+    await userEvent.click(view.getByText('green'));
+
+    view.getByText('red');
+    view.getByText('green');
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange).toHaveBeenNthCalledWith(
+      1,
+      [
+        {
+          label: 'red',
+          value: 'red',
+        },
+      ],
+      {
+        action: 'select-option',
+      }
+    );
+    expect(onChange).toHaveBeenNthCalledWith(
+      2,
+      [
+        {
+          label: 'red',
+          value: 'red',
+        },
+        {
+          label: 'green',
+          value: 'green',
+        },
+      ],
+      {
+        action: 'select-option',
+      }
+    );
   });
 });
