@@ -17,7 +17,7 @@ export const isSingleSelectProps = (
   props: BaseOnChangeProps
 ): props is SingleSelectDropdownProps => !props.multiple;
 
-export const isOptionGroup = (obj: any): obj is SelectDropdownGroup =>
+export const isOptionGroup = (obj: unknown): obj is SelectDropdownGroup =>
   obj != null &&
   typeof obj === 'object' &&
   'options' in obj &&
