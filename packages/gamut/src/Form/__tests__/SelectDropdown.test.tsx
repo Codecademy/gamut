@@ -142,4 +142,25 @@ describe('SelectDropdown', () => {
       .slice(0, numSelectedItems)
       .forEach((value) => view.getByText(value));
   });
+
+  it('should apply combobox and hidden props to the respective input elements', () => {
+    const { view } = renderView({
+      inputProps: {
+        hidden: {
+          'data-form-field': 'test-field',
+        },
+        combobox: {
+          'data-testid': 'combobox-input',
+        },
+      },
+    });
+
+    const comboboxInput = view.getByRole('combobox');
+    expect(comboboxInput).toHaveAttribute('data-testid', 'combobox-input');
+
+    const hiddenInput = view.getByDisplayValue('', {
+      selector: 'input[type="hidden"][data-form-field]',
+    });
+    expect(hiddenInput).toHaveAttribute('data-form-field', 'test-field');
+  });
 });

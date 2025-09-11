@@ -15,6 +15,7 @@ import { parseOptions, SelectOptionBase } from '../utils';
 import {
   AbbreviatedSingleValue,
   CustomContainer,
+  CustomInput,
   DropdownButton,
   formatGroupLabel,
   formatOptionLabel,
@@ -51,6 +52,7 @@ const defaultProps = {
     MultiValueRemove: MultiValueRemoveButton,
     Option: IconOption,
     SingleValue: AbbreviatedSingleValue,
+    Input: CustomInput,
   },
 };
 const onChangeAction = 'select-option';

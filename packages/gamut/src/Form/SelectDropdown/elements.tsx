@@ -234,7 +234,9 @@ export const CustomContainer = ({
   typeof SelectDropdownElements.SelectContainer
 >) => {
   const { inputProps, name } = rest.selectProps;
-  const hasInputProps = inputProps && Object.keys(inputProps).length > 0;
+  const hiddenProps = inputProps?.hidden || {};
+  const hasHiddenProps =
+    inputProps?.hidden && Object.keys(inputProps.hidden).length > 0;
 
   const value = rest.hasValue
     ? rest
@@ -246,11 +248,24 @@ export const CustomContainer = ({
   return (
     <SelectDropdownElements.SelectContainer {...rest}>
       {children}
-      {hasInputProps && (
-        <input name={name} type="hidden" value={value} {...inputProps} />
+      {hasHiddenProps && (
+        <input name={name} type="hidden" value={value} {...hiddenProps} />
       )}
     </SelectDropdownElements.SelectContainer>
   );
+};
+
+/**
+ * Custom Input component that passes combobox props to the react-select input.
+ * This allows data-* attributes and other props to be applied to the visible input element.
+ */
+export const CustomInput = ({
+  ...rest
+}: CustomSelectComponentProps<typeof SelectDropdownElements.Input>) => {
+  const { inputProps } = rest.selectProps;
+  const comboboxProps = inputProps?.combobox || {};
+
+  return <SelectDropdownElements.Input {...comboboxProps} {...rest} />;
 };
 
 /**
