@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import {
   openDropdown,
   optionsIconsArray,
+  optionsWithAbbreviations,
   selectOptions,
   selectOptionsObject,
 } from '../__fixtures__/utils';
@@ -173,6 +174,66 @@ describe('SelectDropdown', () => {
       ],
       {
         action: 'select-option',
+      }
+    );
+  });
+
+  it('displays abbreviations in multiselect mode', async () => {
+    const onChange = jest.fn();
+    const { view } = renderView({
+      multiple: true,
+      options: optionsWithAbbreviations,
+      onChange,
+    });
+
+    await openDropdown(view);
+    await userEvent.click(view.getByText('United States of America'));
+
+    await openDropdown(view);
+    await userEvent.click(view.getByText('United Kingdom'));
+
+    // Check that abbreviations are displayed in the selected values
+    view.getByText('USA');
+    view.getByText('UK');
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange).toHaveBeenNthCalledWith(
+      1,
+      [
+        {
+          label: 'United States of America',
+          value: 'usa',
+          abbreviation: 'USA',
+          key: 'usa',
+          size: undefined,
+        },
+      ],
+      {
+        action: 'select-option',
+        option: undefined,
+      }
+    );
+    expect(onChange).toHaveBeenNthCalledWith(
+      2,
+      [
+        {
+          label: 'United States of America',
+          value: 'usa',
+          abbreviation: 'USA',
+          key: 'usa',
+          size: undefined,
+        },
+        {
+          label: 'United Kingdom',
+          value: 'uk',
+          abbreviation: 'UK',
+          key: 'uk',
+          size: undefined,
+        },
+      ],
+      {
+        action: 'select-option',
+        option: undefined,
       }
     );
   });

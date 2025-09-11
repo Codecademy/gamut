@@ -834,7 +834,7 @@ export const DisabledMultiValue: Story = {
     ],
     placeholder: 'Long truncated placeholder',
     size: 'small',
-    inputWidth: '80px',
+    inputWidth: '100px',
     dropdownWidth: '200px',
     multiple: true,
     value: ['python', 'java'],

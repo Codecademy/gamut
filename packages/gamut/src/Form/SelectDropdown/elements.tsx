@@ -90,12 +90,16 @@ const indicatorIcons = {
  * Custom multi-value component that manages focus state for keyboard navigation.
  * Tracks which multi-value is currently focused and updates the context accordingly.
  */
-export const MultiValueWithColorMode = (props: MultiValueProps) => {
+export const MultiValueWithColorMode = (
+  props: MultiValueProps<ExtendedOption, true, GroupBase<ExtendedOption>>
+) => {
   const { currentFocusedValue, setCurrentFocusedValue } = useContext(
     SelectDropdownContext
   );
 
-  const { value, label } = (props?.data as any) ?? undefined;
+  const { data } = props;
+
+  const { value, label } = data;
 
   if (
     props.isFocused &&
@@ -112,16 +116,19 @@ export const MultiValueWithColorMode = (props: MultiValueProps) => {
   ) {
     setCurrentFocusedValue(undefined);
   }
+  const displayText = data?.abbreviation ? data.abbreviation : label || '';
 
-  return <MultiValue {...props}>{label}</MultiValue>;
+  return <MultiValue {...props}>{displayText}</MultiValue>;
 };
 
 /**
  * Custom remove button for multi-value items.
  * Provides accessible removal functionality with proper ARIA labels.
  */
-export const MultiValueRemoveButton = (props: MultiValueRemoveProps) => {
-  const { label } = (props?.data as any) ?? '';
+export const MultiValueRemoveButton = (
+  props: MultiValueRemoveProps<ExtendedOption, true, GroupBase<ExtendedOption>>
+) => {
+  const { label } = props?.data ?? { label: '' };
 
   props.innerProps['aria-label'] = `Remove ${label}`;
 
