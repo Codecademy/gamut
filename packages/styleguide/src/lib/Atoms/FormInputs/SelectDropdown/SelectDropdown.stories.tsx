@@ -804,6 +804,55 @@ export const AbbreviatedSmallSize: Story = {
     </Box>
   ),
 };
+export const MenuAlignmentRight: Story = {
+  args: {
+    name: 'menu-alignment-right',
+    options: [
+      {
+        label: 'Frontend Developer',
+        abbreviation: 'FE Dev',
+        value: 'frontend-dev',
+        subtitle: 'React, Vue, Angular',
+      },
+      {
+        label: 'Backend Developer',
+        abbreviation: 'BE Dev',
+        value: 'backend-dev',
+        subtitle: 'Node.js, Python, Java',
+      },
+      {
+        label: 'Full Stack Developer',
+        abbreviation: 'FS Dev',
+        value: 'fullstack-dev',
+        subtitle: 'End-to-end development',
+      },
+      {
+        label: 'DevOps Engineer',
+        abbreviation: 'DevOps',
+        value: 'devops-engineer',
+        subtitle: 'Infrastructure and deployment',
+      },
+    ],
+    inputWidth: '150px',
+    dropdownWidth: '300px',
+    menuAlignment: 'right',
+    placeholder: 'Select a role',
+  },
+  render: (args) => (
+    <Box height="20rem" ml={8}>
+      <FormGroup
+        htmlFor="menu-alignment-right"
+        isSoloField
+        label="Menu Alignment: Right"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+      <Box color="text-secondary" mt={4}>
+        Dropdown aligns to the right edge of the input
+      </Box>
+    </Box>
+  ),
+};
 
 // These are for testing, I will delete before shipping
 
@@ -880,14 +929,59 @@ export const LongPlaceholder: Story = {
     ],
     placeholder: 'Long truncated placeholder',
     size: 'small',
-    inputWidth: '80px',
+    inputWidth: '300px',
+    dropdownWidth: '400px',
+    multiple: true,
+    menuAlignment: 'right',
+  },
+  render: (args) => (
+    <Box height="15rem" ml={8}>
+      <FormGroup
+        htmlFor="long-placeholder"
+        isSoloField
+        label="Small Size with Abbreviations"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+export const LongPlaceholderAgain: Story = {
+  args: {
+    name: 'long-placeholder-again',
+    options: [
+      {
+        label: 'JavaScript',
+        abbreviation: 'JS',
+        value: 'javascript',
+      },
+      {
+        label: 'TypeScript',
+        abbreviation: 'TS',
+        value: 'typescript',
+      },
+      {
+        label: 'Python',
+        abbreviation: 'PY',
+        value: 'python',
+      },
+      {
+        label: 'Java',
+        abbreviation: 'Java',
+        value: 'java',
+      },
+    ],
+    placeholder: 'Long truncated placeholder',
+    size: 'small',
+    inputWidth: '400px',
     dropdownWidth: '200px',
     multiple: true,
+    menuAlignment: 'right',
   },
   render: (args) => (
     <Box height="15rem">
       <FormGroup
-        htmlFor="long-placeholder"
+        htmlFor="long-placeholder-again"
         isSoloField
         label="Small Size with Abbreviations"
       >

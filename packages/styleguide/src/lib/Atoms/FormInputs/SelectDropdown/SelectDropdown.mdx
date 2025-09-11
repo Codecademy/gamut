@@ -181,6 +181,19 @@ The independent width feature works particularly well with the small size varian
 
 <Canvas of={SelectDropdownStories.SmallWithAbbreviations} />
 
+### Menu alignment
+
+When using different widths for the input and dropdown, you can control how the dropdown aligns relative to the input using the `menuAlignment` prop.
+
+#### How it works
+
+- **menuAlignment**: Controls the horizontal alignment of the dropdown menu relative to the input
+- **'left'** (default): Aligns the dropdown to the left edge of the input
+- **'right'**: Aligns the dropdown to the right edge of the input
+- **Use cases**: Useful when the dropdown is wider or narrower than the input, or when you need to prevent the dropdown from extending beyond the viewport
+
+<Canvas of={SelectDropdownStories.MenuAlignmentRight} />
+
 ## Multiple select
 
 <Canvas of={SelectDropdownStories.MultipleSelect} />

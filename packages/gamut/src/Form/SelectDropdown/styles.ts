@@ -143,7 +143,8 @@ export const getMemoizedStyles = (
       margin: '0',
     }),
     menu: (provided, state: MenuState) => {
-      const { dropdownWidth } = state.selectProps;
+      const { dropdownWidth, menuAlignment } = state.selectProps;
+
       return {
         ...provided,
         ...dropdownBorderStyles({ theme }),
@@ -152,6 +153,12 @@ export const getMemoizedStyles = (
           ? {
               width: dropdownWidth,
               minWidth: dropdownWidth,
+            }
+          : {}),
+        ...(menuAlignment === 'right'
+          ? {
+              left: 'auto',
+              right: 0,
             }
           : {}),
       };

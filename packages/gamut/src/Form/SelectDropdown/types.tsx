@@ -93,6 +93,10 @@ export interface SharedProps {
   inputWidth?: string | number;
   /** Width of the dropdown menu */
   dropdownWidth?: string | number;
+  /** Alignment of the dropdown menu relative to the input
+   * This is only relevant when the dropdown width is set to be larger or smaller than the input width.
+   */
+  menuAlignment?: 'left' | 'right';
 }
 
 /**
@@ -302,6 +306,8 @@ export type BaseSelectProps = {
    * Computedmax height of the dropdown menu
    */
   shownOptionsLimit?: number;
+  /** Alignment of the dropdown menu relative to the input */
+  menuAlignment?: 'left' | 'right';
 };
 
 /**
