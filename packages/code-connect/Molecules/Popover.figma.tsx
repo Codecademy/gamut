@@ -38,6 +38,7 @@ figma.connect(
       widthRestricted: figma.boolean('widthRestricted'),
       pattern: figma.children('Pattern Fills'),
       children: figma.textContent('text'),
+      isOpen: true,
     },
     example: ({ children, ...props }) => (
       <Popover {...props}>{children}</Popover>

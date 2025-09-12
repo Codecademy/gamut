@@ -30,9 +30,18 @@ figma.connect(
         danger: 'danger',
       }),
       title: figma.textContent('✏️ title'),
+      isOpen: true,
+      confirmCta: 'Primary action',
+      cancelCta: 'Cancel',
     },
-    example: ({ children, ...props }: any) => (
-      <Dialog {...props}>{children}</Dialog>
+    example: ({ children, confirmCta, cancelCta, ...props }: any) => (
+      <Dialog
+        cancelCta={{ children: cancelCta }}
+        confirmCta={{ children: confirmCta }}
+        {...props}
+      >
+        {children}
+      </Dialog>
     ),
   }
 );

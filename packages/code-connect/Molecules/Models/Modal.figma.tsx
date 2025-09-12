@@ -38,6 +38,7 @@ figma.connect(
         image={modalProps.image}
         size={modalProps.size}
         title={modalProps.title}
+        variant={modalProps.variant}
       >
         {modalProps.children}
       </Modal>
