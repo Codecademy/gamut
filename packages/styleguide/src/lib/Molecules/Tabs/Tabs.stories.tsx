@@ -1,7 +1,6 @@
 import {
   Badge,
   FillButton,
-  FlexBox,
   FormGroup,
   Input,
   Tab,
@@ -35,6 +34,27 @@ const meta: Meta<typeof Tabs> = {
     disabledKeys: [],
     selectedKey: undefined,
     onSelectionChange: () => {},
+    isDisabled: false,
+  },
+  argTypes: {
+    defaultSelectedKey: {
+      description: 'The initial selected key in the collection (uncontrolled).',
+    },
+    disabledKeys: {
+      description:
+        'The item keys that are disabled. These items cannot be selected, focused, or otherwise interacted with.',
+    },
+    selectedKey: {
+      description: 'The currently selected key in the collection (controlled).',
+      type: 'string',
+    },
+    onSelectionChange: {
+      description: 'Handler that is called when the selection changes.',
+    },
+    isDisabled: {
+      description:
+        'Whether the TabList is disabled. Shows that a selection exists, but is not available in that circumstance.',
+    },
   },
 };
 
@@ -49,16 +69,6 @@ export const Default: Story = {
         <Tab id="2">Tab 2</Tab>
         <Tab id="3">Tab 3</Tab>
       </TabList>
-      <FlexBox
-        alignItems="center"
-        borderBottom={1}
-        justifyContent="flex-end"
-        mb={24}
-        width="100%"
-      >
-        <Text>Tab List</Text>
-      </FlexBox>
-
       <TabPanels>
         <TabPanel id="1">
           <Text as="h2">Welcome to Tab 1</Text>

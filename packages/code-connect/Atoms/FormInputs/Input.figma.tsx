@@ -24,55 +24,100 @@ figma.connect(
         small: 'small',
       }),
       error: figma.enum('state', {
-        enabled: false,
-        hover: false,
-        focus: false,
-        valid: false,
-        'valid+hover': false,
-        'valid+focus': false,
         error: true,
-        'error+hover': true,
-        'error+focus': true,
-        disabled: false,
+        'error + hover': true,
+        'error + focus': true,
+        'filled + error': true,
+        'filled + error + hover': true,
+        'filled + error + focus': true,
       }),
       valid: figma.enum('state', {
-        enabled: false,
-        hover: false,
-        focus: false,
         valid: true,
-        'valid+hover': true,
-        'valid+focus': true,
-        error: false,
-        'error+hover': false,
-        'error+focus': false,
-        disabled: false,
+        'valid + hover': true,
+        'valid + focus': true,
+        'filled + valid': true,
+        'filled + valid + focus': true,
+        'filled + valid + hover': true,
       }),
-      // defaultValue: figma.enum('type', {
-      //   text: 'Input text',
-      //   number: '0',
-      //   file: undefined,
-      // }),
-      defaultValue: figma.enum('type', {
-        text: figma.enum('text', {
-          // '◇ .input': figma.string('.input'),
-          '.input': 'testtttt',
+      disabled: figma.enum('state', {
+        disabled: true,
+        'filled + disabled': true,
+      }),
+      placeholder: figma.boolean('placeholder', {
+        true: figma.enum('state', {
+          enabled: figma.enum('type', {
+            text: figma.textContent('placeholder'),
+            number: figma.textContent('placeholder'),
+          }),
+          hover: figma.enum('type', {
+            text: figma.textContent('placeholder'),
+            number: figma.textContent('placeholder'),
+          }),
+          focus: figma.enum('type', {
+            text: figma.textContent('placeholder'),
+            number: figma.textContent('placeholder'),
+          }),
+          error: figma.enum('type', {
+            text: figma.textContent('placeholder'),
+            number: figma.textContent('placeholder'),
+          }),
+          'error + hover': figma.enum('type', {
+            text: figma.textContent('placeholder'),
+            number: figma.textContent('placeholder'),
+          }),
+          'error + focus': figma.enum('type', {
+            text: figma.textContent('placeholder'),
+            number: figma.textContent('placeholder'),
+          }),
+          disabled: figma.enum('type', {
+            text: figma.textContent('placeholder'),
+            number: figma.textContent('placeholder'),
+          }),
         }),
-        number: '0',
-        file: undefined,
       }),
-      // inputValueInfo: figma.nestedProps('.input', {
-      //   input: figma.enum('text', {
-      //     '.input': figma.textContent('input')
-      //   }),
-      // placeholder: figma.textContent('placeholder'),
-      // }),
+      defaultValue: figma.enum('state', {
+        filled: figma.enum('type', {
+          text: figma.string('input'),
+          number: figma.string('number'),
+        }),
+        'filled + hover': figma.enum('type', {
+          text: figma.string('input'),
+          number: figma.string('number'),
+        }),
+        'filled + focus': figma.enum('type', {
+          text: figma.string('input'),
+          number: figma.string('number'),
+        }),
+        'filled + valid': figma.enum('type', {
+          text: figma.string('input'),
+          number: figma.string('number'),
+        }),
+        'filled + valid + hover': figma.enum('type', {
+          text: figma.string('input'),
+          number: figma.string('number'),
+        }),
+        'filled + valid + focus': figma.enum('type', {
+          text: figma.string('input'),
+          number: figma.string('number'),
+        }),
+        'filled + error': figma.enum('type', {
+          text: figma.string('input'),
+          number: figma.string('number'),
+        }),
+        'filled + error + hover': figma.enum('type', {
+          text: figma.string('input'),
+          number: figma.string('number'),
+        }),
+        'filled + error + focus': figma.enum('type', {
+          text: figma.string('input'),
+          number: figma.string('number'),
+        }),
+        'filled + disabled': figma.enum('type', {
+          text: figma.string('input'),
+          number: figma.string('number'),
+        }),
+      }),
     },
-    example: (props) => (
-      <Input
-        {...props}
-        // defaultValue={inputValueInfo.input}
-        // placeholder={inputValueInfo.placeholder}
-      />
-    ),
+    example: (props) => <Input {...props} />,
   }
 );
