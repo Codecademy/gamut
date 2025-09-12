@@ -1,4 +1,3 @@
-// Option types
 export {
   OptionStrict,
   IconOption,
@@ -7,7 +6,6 @@ export {
   SelectDropdownOptions,
 } from './options';
 
-// Component props types
 export {
   SharedProps,
   SelectDropdownSizes,
@@ -22,7 +20,6 @@ export {
   TypedReactSelectProps,
 } from './component-props';
 
-// Internal component types
 export {
   InternalSelectProps,
   ProgramaticFocusRef,
@@ -31,7 +28,6 @@ export {
   CustomSelectComponentProps,
 } from './internal';
 
-// Style types
 export {
   BaseSelectProps,
   ContainerState,
