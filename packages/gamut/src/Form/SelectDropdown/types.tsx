@@ -86,7 +86,10 @@ export type SelectDropdownOptions =
  */
 export interface SharedProps {
   /** Additional props to pass to the hidden input element */
-  inputProps?: Record<string, string | number | boolean>;
+  inputProps?: {
+    hidden?: Record<string, string | number | boolean>;
+    combobox?: Record<string, string | number | boolean>;
+  };
   /** Maximum number of options to display in the dropdown before scrolling */
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Width of the input field */

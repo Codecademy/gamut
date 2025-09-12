@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import {
   openDropdown,
@@ -126,7 +127,9 @@ describe('SelectDropdown', () => {
 
     await openDropdown(view);
 
-    await userEvent.click(view.getByText('red'));
+    await act(async () => {
+      await userEvent.click(view.getByText('red'));
+    });
 
     expect(onInputChange).toHaveBeenCalled();
   });
@@ -139,10 +142,14 @@ describe('SelectDropdown', () => {
     });
 
     await openDropdown(view);
-    await userEvent.click(view.getByText('red'));
+    await act(async () => {
+      await userEvent.click(view.getByText('red'));
+    });
 
     await openDropdown(view);
-    await userEvent.click(view.getByText('green'));
+    await act(async () => {
+      await userEvent.click(view.getByText('green'));
+    });
 
     view.getByText('red');
     view.getByText('green');
@@ -187,10 +194,14 @@ describe('SelectDropdown', () => {
     });
 
     await openDropdown(view);
-    await userEvent.click(view.getByText('United States of America'));
+    await act(async () => {
+      await userEvent.click(view.getByText('United States of America'));
+    });
 
     await openDropdown(view);
-    await userEvent.click(view.getByText('United Kingdom'));
+    await act(async () => {
+      await userEvent.click(view.getByText('United Kingdom'));
+    });
 
     // Check that abbreviations are displayed in the selected values
     view.getByText('USA');
@@ -240,6 +251,7 @@ describe('SelectDropdown', () => {
 
   it('should apply combobox and hidden props to the respective input elements', () => {
     const { view } = renderView({
+      isSearchable: true, // Make it searchable so CustomInput is used
       inputProps: {
         hidden: {
           'data-form-field': 'test-field',
@@ -253,9 +265,9 @@ describe('SelectDropdown', () => {
     const comboboxInput = view.getByRole('combobox');
     expect(comboboxInput).toHaveAttribute('data-testid', 'combobox-input');
 
-    const hiddenInput = view.getByDisplayValue('', {
-      selector: 'input[type="hidden"][data-form-field]',
-    });
+    const hiddenInput = view.container.querySelector(
+      'input[type="hidden"][data-form-field="test-field"]'
+    );
     expect(hiddenInput).toHaveAttribute('data-form-field', 'test-field');
   });
 });
