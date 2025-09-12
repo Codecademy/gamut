@@ -85,31 +85,18 @@ export type SelectDropdownOptions =
  * These props control common behavior and styling across single and multi-select modes.
  */
 export interface SharedProps {
-<<<<<<< HEAD
-  /** Additional props to pass to input elements */
-  inputProps?: {
-    /** Props to pass to the hidden input element (for form submission) */
-    hidden?: Record<string, string | number | boolean>;
-    /** Props to pass to the combobox input element (the visible react-select input) */
-    combobox?: Record<string, string | number | boolean>;
-  };
-=======
   /** Additional props to pass to the hidden input element */
   inputProps?: Record<string, string | number | boolean>;
->>>>>>> origin
   /** Maximum number of options to display in the dropdown before scrolling */
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Width of the input field */
   inputWidth?: string | number;
   /** Width of the dropdown menu */
   dropdownWidth?: string | number;
-<<<<<<< HEAD
-=======
   /** Alignment of the dropdown menu relative to the input
    * This is only relevant when the dropdown width is set to be larger or smaller than the input width.
    */
   menuAlignment?: 'left' | 'right';
->>>>>>> origin
 }
 
 /**
