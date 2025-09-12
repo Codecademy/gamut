@@ -14,36 +14,149 @@ figma.connect(
   'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=54229%3A24977',
   {
     props: {
-      currenttitle: figma.string('current-title'),
-      crumb1: figma.boolean('crumb-1', {
-        true: {
-          href: '/crumb-1',
-          title: 'Home',
-        },
-      }),
-      crumb2: figma.boolean('crumb-2', {
-        true: {
-          href: '/crumb-2',
-          title: 'There',
-        },
-      }),
-
-      crumb3: figma.boolean('crumb-3', {
-        true: {
-          href: '/crumb-3',
-          title: 'There',
-        },
+      crumbs: figma.boolean('crumb-1', {
+        true: figma.boolean('crumb-2', {
+          true: figma.boolean('crumb-3', {
+            true: [
+              {
+                href: '/homepage',
+                title: 'Home',
+              },
+              {
+                href: '/crumb-1',
+                title: 'There',
+              },
+              {
+                href: '/crumb-2',
+                title: 'There',
+              },
+              {
+                href: '/crumb-3',
+                title: 'There',
+              },
+              {
+                href: '/current-page',
+                title: 'Here',
+              },
+            ],
+            false: [
+              {
+                href: '/homepage',
+                title: 'Home',
+              },
+              {
+                href: '/crumb-1',
+                title: 'There',
+              },
+              {
+                href: '/crumb-2',
+                title: 'There',
+              },
+              {
+                href: '/current-page',
+                title: 'Here',
+              },
+            ],
+          }),
+          false: figma.boolean('crumb-3', {
+            true: [
+              {
+                href: '/homepage',
+                title: 'Home',
+              },
+              {
+                href: '/crumb-1',
+                title: 'There',
+              },
+              {
+                href: '/crumb-3',
+                title: 'There',
+              },
+              {
+                href: '/current-page',
+                title: 'Here',
+              },
+            ],
+            false: [
+              {
+                href: '/homepage',
+                title: 'Home',
+              },
+              {
+                href: '/crumb-1',
+                title: 'There',
+              },
+              {
+                href: '/current-page',
+                title: 'Here',
+              },
+            ],
+          }),
+        }),
+        false: figma.boolean('crumb-2', {
+          true: figma.boolean('crumb-3', {
+            true: [
+              {
+                href: '/homepage',
+                title: 'Home',
+              },
+              {
+                href: '/crumb-2',
+                title: 'There',
+              },
+              {
+                href: '/crumb-3',
+                title: 'There',
+              },
+              {
+                href: '/current-page',
+                title: 'Here',
+              },
+            ],
+            false: [
+              {
+                href: '/homepage',
+                title: 'Home',
+              },
+              {
+                href: '/crumb-2',
+                title: 'There',
+              },
+              {
+                href: '/current-page',
+                title: 'Here',
+              },
+            ],
+          }),
+          false: figma.boolean('crumb-3', {
+            true: [
+              {
+                href: '/homepage',
+                title: 'Home',
+              },
+              {
+                href: '/crumb-3',
+                title: 'There',
+              },
+              {
+                href: '/current-page',
+                title: 'Here',
+              },
+            ],
+            false: [
+              {
+                href: '/homepage',
+                title: 'Home',
+              },
+              {
+                href: '/current-page',
+                title: 'Here',
+              },
+            ],
+          }),
+        }),
       }),
     },
-    example: (props) => {
-      <Breadcrumbs
-        crumbs={[
-          props.crumb1,
-          props.crumb2,
-          props.crumb3,
-          { href: '/current-page', title: props.currenttitle },
-        ]}
-      />;
-    },
+    example: (props) => <Breadcrumbs crumbs={props.crumbs} />,
   }
 );
