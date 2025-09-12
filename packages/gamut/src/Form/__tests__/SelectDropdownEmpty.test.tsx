@@ -18,7 +18,7 @@ describe('SelectDropdown edge cases', () => {
     });
 
     // Should not crash and should show placeholder
-    expect(view.getByText('Select an option')).toBeInTheDocument();
+    view.getByText('Select an option');
   });
 
   it('handles undefined options gracefully', () => {
@@ -28,6 +28,6 @@ describe('SelectDropdown edge cases', () => {
     });
 
     // Should not crash and should show placeholder
-    expect(view.getByText('Select an option')).toBeInTheDocument();
+    view.getByText('Select an option');
   });
 });

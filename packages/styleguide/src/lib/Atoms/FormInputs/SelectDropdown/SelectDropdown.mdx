@@ -147,7 +147,6 @@ For space-constrained layouts or when you need to display long option names in a
 
 - **Input Display**: Shows the abbreviated text (e.g., "USA")
 - **Dropdown Display**: Shows the full label (e.g., "United States of America")
-- **Accessibility**: Screen readers announce the full label, not the abbreviation
 - **Implementation**: Add an `abbreviation` property to your option objects
 
 <Canvas of={SelectDropdownStories.AbbreviatedInput} />
@@ -163,6 +162,7 @@ The abbreviated feature works particularly well with the small size variant, pro
 You can combine abbreviations with other option features like subtitles, right labels, and icons for rich, informative dropdowns.
 
 <Canvas of={SelectDropdownStories.AbbreviatedWithSubtitleAndRightLabel} />
+<Canvas of={SelectDropdownStories.ComplexAbbreviatedOptions} />
 
 ### Independent width control
 
@@ -170,10 +170,8 @@ You can control the width of the input field and dropdown independently using th
 
 #### How it works
 
-- **inputWidth**: Controls the width of the input field (can be a string like "150px" or a number)
-- **dropdownWidth**: Controls the width of the dropdown menu (can be a string like "350px" or a number)
-- **Independent sizing**: The input and dropdown can have completely different widths
-- **Responsive**: Works with both small and medium size variants
+- **`inputWidth`**: Controls the width of the input field (can be a string like "150px" or a number)
+- **`dropdownWidth`**: Controls the width of the dropdown menu (can be a string like "350px" or a number)
 
 <Canvas of={SelectDropdownStories.IndependentWidths} />
 
@@ -182,6 +180,19 @@ You can control the width of the input field and dropdown independently using th
 The independent width feature works particularly well with the small size variant, allowing for very compact inputs while maintaining readable dropdown content.
 
 <Canvas of={SelectDropdownStories.SmallWithAbbreviations} />
+
+### Menu alignment
+
+When using different widths for the input and dropdown, you can control how the dropdown aligns relative to the input using the `menuAlignment` prop.
+
+#### How it works
+
+- **`menuAlignment`**: Controls the horizontal alignment of the dropdown menu relative to the input
+  - **`'left'`** (default): Aligns the dropdown to the left edge of the input
+  - **`'right'`**: Aligns the dropdown to the right edge of the input
+- **Use cases**: Useful when the dropdown is wider or narrower than the input, or when you need to prevent the dropdown from extending beyond the viewport
+
+<Canvas of={SelectDropdownStories.MenuAlignmentRight} />
 
 ## Multiple select
 

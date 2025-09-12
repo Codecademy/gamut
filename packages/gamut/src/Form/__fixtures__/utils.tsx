@@ -99,6 +99,29 @@ export const groupedOptionsWithTitles = [
   },
 ];
 
+export const optionsWithAbbreviations = [
+  {
+    label: 'United States of America',
+    value: 'usa',
+    abbreviation: 'USA',
+  },
+  {
+    label: 'United Kingdom',
+    value: 'uk',
+    abbreviation: 'UK',
+  },
+  {
+    label: 'Canada',
+    value: 'canada',
+    abbreviation: 'CA',
+  },
+  {
+    label: 'Australia',
+    value: 'australia',
+    abbreviation: 'AU',
+  },
+];
+
 export const openDropdown = async (view: any) => {
   await act(() => {
     fireEvent.keyDown(view.getByRole('combobox'), DOWN_ARROW);
