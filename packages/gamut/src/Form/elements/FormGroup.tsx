@@ -50,7 +50,6 @@ const StyledFormGroupContainer = styled(Box)<
 >`
   ${formGroupSpacing}
   position: relative;
-  width: 100%;
   height: max-content;
 `;
 
@@ -94,7 +93,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   ) : null;
 
   return (
-    <FormGroupContainer {...rest} className={className}>
+    <FormGroupContainer width={1} {...rest} className={className}>
       {labelComponent}
       {descriptionComponent}
       {children}
