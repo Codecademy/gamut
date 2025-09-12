@@ -38,6 +38,12 @@ figma.connect(
       }),
       body: figma.children('.disclosureBody'),
       isExpanded: figma.boolean('isExpanded'),
+      panelInfo: figma.nestedProps('.disclosureBody', {
+        hasPanelBg: figma.boolean('body-bg'),
+        ctaText: figma.boolean('cta', {
+          true: 'Button Text',
+        }),
+      }),
     },
     example: ({
       headingInfo,
@@ -46,10 +52,13 @@ figma.connect(
       hasBorder,
       spacing,
       isExpanded,
+      panelInfo,
     }) => (
       <Disclosure
         body={body}
+        ctaText={panelInfo.ctaText}
         hasBorder={hasBorder}
+        hasPanelBg={panelInfo.hasPanelBg}
         heading={headingInfo.heading}
         isExpanded={isExpanded}
         overline={headingInfo.overline}

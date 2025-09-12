@@ -23,7 +23,7 @@ figma.connect(
         above: 'above',
       }),
       renderPopover: '<Box>{Content goes here}</Box>',
-      children: '{children}',
+      children: figma.children('.Card Content Title'),
     },
     example: ({ children, beak, position, ...props }) => (
       <Coachmark

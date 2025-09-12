@@ -22,9 +22,11 @@ figma.connect(
         children: figma.textContent('text'),
       }),
       closeLabel: 'Close',
+      bg: 'background',
     },
-    example: ({ drawerInfo, openFrom, closeLabel }) => (
+    example: ({ drawerInfo, openFrom, closeLabel, bg }) => (
       <Flyout
+        bg={bg}
         closeLabel={closeLabel}
         expanded
         openFrom={openFrom}
