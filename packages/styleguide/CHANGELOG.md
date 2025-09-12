@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [77.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.4.5...@codecademy/styleguide@77.5.0) (2025-09-12)
+
+### Features
+
+- add abbreviations to SelectDropdown, fixed grouped select + formatting issues ([1f01312](https://github.com/Codecademy/gamut/commit/1f013125d104d24d7b9f9b1fca275a49812ebda0))
+
 ### [77.4.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.4.4...@codecademy/styleguide@77.4.5) (2025-09-09)
 
 **Note:** Version bump only for package @codecademy/styleguide
