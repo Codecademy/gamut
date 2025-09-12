@@ -6,8 +6,8 @@ import { SelectComponentProps } from '../../inputs/Select';
 import { conditionalBorderStates } from '../styles';
 import {
   OptionStrict,
-  SelectDropdownOptions,
   SelectDropdownGroup,
+  SelectDropdownOptions,
 } from './options';
 
 /**
