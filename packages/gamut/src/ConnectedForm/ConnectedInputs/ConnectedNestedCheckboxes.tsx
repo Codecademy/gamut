@@ -18,7 +18,7 @@ type FlatCheckboxState = ConnectedCheckboxProps & {
 
 export const ConnectedNestedCheckboxes: React.FC<
   ConnectedNestedCheckboxesProps
-> = ({ name, options, disabled, onUpdate }) => {
+> = ({ name, options, disabled, onUpdate, spacing }) => {
   const { isDisabled, control, validation, isRequired } = useField({
     name,
     disabled,
@@ -38,6 +38,7 @@ export const ConnectedNestedCheckboxes: React.FC<
 
         result.push({
           ...option,
+          spacing,
           value: optionValue,
           level,
           parentValue,
@@ -53,7 +54,7 @@ export const ConnectedNestedCheckboxes: React.FC<
 
       return result;
     },
-    []
+    [spacing]
   );
 
   const flatOptions = useMemo(
@@ -173,7 +174,9 @@ export const ConnectedNestedCheckboxes: React.FC<
     (
       option: FlatCheckboxState,
       selectedValues: string[],
-      onChange: (values: string[]) => void
+      onChange: (values: string[]) => void,
+      onBlur: () => void,
+      ref: React.RefCallback<HTMLInputElement>
     ) => {
       const states = calculateStates(selectedValues);
       const state = states.get(String(option.value))!;
@@ -213,7 +216,10 @@ export const ConnectedNestedCheckboxes: React.FC<
             htmlFor={checkboxId}
             id={checkboxId}
             label={state.label}
+            multiline={state.multiline}
             name={`${name}-${option.value}`}
+            spacing={state.spacing}
+            onBlur={onBlur}
             onChange={(event) => {
               handleCheckboxChange(
                 String(option.value),
@@ -223,6 +229,7 @@ export const ConnectedNestedCheckboxes: React.FC<
               );
             }}
             {...checkedProps}
+            {...ref}
           />
         </Box>
       );
@@ -235,10 +242,10 @@ export const ConnectedNestedCheckboxes: React.FC<
       control={control}
       defaultValue={[]}
       name={name}
-      render={({ field: { value, onChange } }) => (
+      render={({ field: { value, onChange, onBlur, ref } }) => (
         <Box>
           {flatOptions.map((option) =>
-            renderCheckbox(option, value || [], onChange)
+            renderCheckbox(option, value || [], onChange, onBlur, ref)
           )}
         </Box>
       )}

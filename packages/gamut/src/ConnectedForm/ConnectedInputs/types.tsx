@@ -70,12 +70,13 @@ export interface ConnectedTextAreaProps
   extends Omit<TextAreaProps, 'defaultValue' | 'name' | 'validation'>,
     ConnectedFieldProps {}
 
-export type NestedCheckboxOption = ConnectedCheckboxProps & {
-  children?: NestedCheckboxOption[];
-};
+export type NestedCheckboxOption = Omit<BaseConnectedCheckboxProps, 'spacing'> &
+  CheckboxLabelUnion & {
+    children?: NestedCheckboxOption[];
+  };
 
 export interface ConnectedNestedCheckboxesProps
-  extends Pick<BaseConnectedCheckboxProps, 'name' | 'disabled'> {
+  extends Pick<BaseConnectedCheckboxProps, 'name' | 'disabled' | 'spacing'> {
   options: NestedCheckboxOption[];
   onUpdate?: (values: string[]) => void;
 }
