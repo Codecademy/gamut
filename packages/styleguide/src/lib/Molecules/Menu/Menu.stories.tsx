@@ -31,6 +31,16 @@ const meta: Meta<typeof Menu> = {
   args: {
     spacing: 'normal',
   },
+  argTypes: {
+    spacing: {
+      control: 'radio',
+      options: ['normal', 'condensed'],
+    },
+    variant: {
+      control: 'radio',
+      options: ['popover', 'fixed'],
+    },
+  },
 };
 
 export default meta;
