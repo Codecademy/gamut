@@ -28,10 +28,8 @@ type AnchorAsAnchor = ComponentProps<typeof AnchorBase> & {
   disabled?: never;
 };
 
-type AnchorAsButton = Omit<ComponentProps<typeof AnchorBase>, 'href'> &
-  ComponentProps<typeof ButtonBase> & {
-    href?: never;
-  };
+type AnchorAsButton = Exclude<ComponentProps<typeof AnchorBase>, 'ref'> &
+  ComponentProps<typeof ButtonBase>
 
 type AnchorBaseProps = AnchorAsAnchor | AnchorAsButton;
 
