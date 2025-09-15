@@ -11,14 +11,22 @@ import {
 } from './options';
 
 /**
+ * Safe props that can be passed to the combobox input element.
+ * These props are filtered to only include data-*, and aria-* attributes.
+ */
+export type SafeInternalInputProps = {
+  [K in `data-${string}` | `aria-${string}`]: string;
+};
+
+/**
  * Shared properties available to all SelectDropdown variants.
  * These props control common behavior and styling across single and multi-select modes.
  */
 export interface SharedProps {
   /** Additional props to pass to the hidden input element */
   inputProps?: {
-    hidden?: Record<string, string | number | boolean>;
-    combobox?: Record<string, string | number | boolean>;
+    hidden?: SafeInternalInputProps;
+    combobox?: SafeInternalInputProps;
   };
   /** Maximum number of options to display in the dropdown before scrolling */
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;

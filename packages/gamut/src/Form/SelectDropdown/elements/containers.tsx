@@ -63,7 +63,7 @@ export const CustomContainer = ({
 export const CustomValueContainer = forwardRef<
   HTMLDivElement,
   CustomSelectComponentProps<typeof SelectDropdownElements.ValueContainer>
->(({ ...rest }, ref) => {
+>(({ ...rest }, _ref) => {
   const { inputProps, isSearchable } = rest.selectProps;
   const comboboxProps = inputProps?.combobox || {};
 
@@ -75,7 +75,7 @@ export const CustomValueContainer = forwardRef<
         const inputElement = document.getElementById(inputId);
         if (inputElement && inputElement.getAttribute('role') === 'combobox') {
           Object.entries(comboboxProps).forEach(([key, value]) => {
-            inputElement.setAttribute(key, value as string);
+            inputElement.setAttribute(key, value);
           });
         }
       }
@@ -112,26 +112,7 @@ export const CustomInput = ({
   const { inputProps } = rest.selectProps;
   const comboboxProps = inputProps?.combobox || {};
 
-  console.log('input');
-  // Only merge data attributes and non-conflicting props from comboboxProps
-  // Avoid overriding core input functionality like value, onChange, etc.
-  const safeComboboxProps = Object.entries(comboboxProps).reduce(
-    (acc, [key, value]) => {
-      // Only include data-* attributes, aria-* attributes, and other safe attributes
-      if (
-        key.startsWith('data-') ||
-        key.startsWith('aria-') ||
-        key === 'className' ||
-        key === 'id'
-      ) {
-        acc[key] = value;
-      }
-      return acc;
-    },
-    {} as Record<string, any>
-  );
-
-  const mergedProps = { ...rest, ...safeComboboxProps };
+  const mergedProps = { ...rest, ...comboboxProps };
 
   return <SelectDropdownElements.Input {...mergedProps} />;
 };

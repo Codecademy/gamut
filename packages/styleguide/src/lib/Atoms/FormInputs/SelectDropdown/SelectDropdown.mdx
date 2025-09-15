@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as SelectDropdownStories from './SelectDropdown.stories';
 
@@ -137,10 +137,16 @@ Some of our forms require special props be passed directly onto the input compon
 - `hidden`: Props passed to the hidden input element (used for form submission)
 - `combobox`: Props passed to the visible react-select input element (useful for data-\* attributes, testing, etc.)
 
+<Callout
+  text="  These props are passed directly to the underlying elements, so they only
+  accept `data-*` and `aria-*` attributes to ensure validity."
+/>
+
 <Canvas of={SelectDropdownStories.CustomInputProps} />
 
 ### Abbreviated options
 
+⚠️
 For space-constrained layouts or when you need to display long option names in a compact way, you can use the abbreviated feature. This allows you to show a short abbreviation in the input field while displaying the full label in the dropdown.
 
 #### How it works

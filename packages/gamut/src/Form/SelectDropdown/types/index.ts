@@ -7,6 +7,7 @@ export {
 } from './options';
 
 export {
+  SafeInternalInputProps,
   SharedProps,
   SelectDropdownSizes,
   WrapperStyleProps,
