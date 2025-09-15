@@ -1,13 +1,18 @@
 export { iconSize, selectedIconSize, indicatorIcons } from './constants';
 
-export { MultiValueWithColorMode, MultiValueRemoveButton } from './multi-value';
+export {
+  MultiValueWithColorMode,
+  MultiValueRemoveButton,
+  RemoveAllButton,
+} from './multi-value';
 
-export { DropdownButton, RemoveAllButton, onFocus } from './controls';
+export { DropdownButton, onFocus } from './controls';
 
 export {
   SelectDropdownContext,
   CustomContainer,
   CustomInput,
+  CustomValueContainer,
   TypedReactSelect,
 } from './containers';
 

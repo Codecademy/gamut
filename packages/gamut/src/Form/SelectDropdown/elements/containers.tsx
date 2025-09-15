@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, forwardRef, useLayoutEffect } from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   GroupBase,
@@ -56,8 +56,55 @@ export const CustomContainer = ({
 };
 
 /**
+ * Custom ValueContainer component that applies combobox props when isSearchable is false.
+ * When isSearchable is false, react-select renders a dummy input (div) that doesn't accept
+ * custom props, so we apply the combobox data attributes to the ValueContainer's innerProps.
+ */
+export const CustomValueContainer = forwardRef<
+  HTMLDivElement,
+  CustomSelectComponentProps<typeof SelectDropdownElements.ValueContainer>
+>(({ ...rest }, ref) => {
+  const { inputProps, isSearchable } = rest.selectProps;
+  const comboboxProps = inputProps?.combobox || {};
+
+  useLayoutEffect(() => {
+    if (isSearchable === false && Object.keys(comboboxProps).length > 0) {
+      // Find the input element by inputId since we can't use a ref on ValueContainer
+      const { inputId } = rest.selectProps;
+      if (inputId) {
+        const inputElement = document.getElementById(inputId);
+        if (inputElement && inputElement.getAttribute('role') === 'combobox') {
+          Object.entries(comboboxProps).forEach(([key, value]) => {
+            inputElement.setAttribute(key, value as string);
+          });
+        }
+      }
+    }
+    // We only want to run this effect when isSearchable or comboboxProps change
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSearchable, comboboxProps, rest.selectProps.inputId]);
+
+  // When isSearchable is false, apply combobox props to ValueContainer's innerProps
+  // since the dummy input doesn't accept custom props
+  if (isSearchable === false && Object.keys(comboboxProps).length > 0) {
+    const { innerProps, ...otherProps } = rest;
+    const mergedInnerProps = { ...innerProps, ...comboboxProps };
+
+    return (
+      <SelectDropdownElements.ValueContainer
+        {...otherProps}
+        innerProps={mergedInnerProps}
+      />
+    );
+  }
+
+  return <SelectDropdownElements.ValueContainer {...rest} />;
+});
+
+/**
  * Custom Input component that passes combobox props to the react-select input.
  * This allows data-* attributes and other props to be applied to the visible input element.
+ * Works for both searchable and non-searchable modes by using the react-select Input component.
  */
 export const CustomInput = ({
   ...rest
@@ -65,7 +112,28 @@ export const CustomInput = ({
   const { inputProps } = rest.selectProps;
   const comboboxProps = inputProps?.combobox || {};
 
-  return <SelectDropdownElements.Input {...comboboxProps} {...rest} />;
+  console.log('input');
+  // Only merge data attributes and non-conflicting props from comboboxProps
+  // Avoid overriding core input functionality like value, onChange, etc.
+  const safeComboboxProps = Object.entries(comboboxProps).reduce(
+    (acc, [key, value]) => {
+      // Only include data-* attributes, aria-* attributes, and other safe attributes
+      if (
+        key.startsWith('data-') ||
+        key.startsWith('aria-') ||
+        key === 'className' ||
+        key === 'id'
+      ) {
+        acc[key] = value;
+      }
+      return acc;
+    },
+    {} as Record<string, any>
+  );
+
+  const mergedProps = { ...rest, ...safeComboboxProps };
+
+  return <SelectDropdownElements.Input {...mergedProps} />;
 };
 
 /**

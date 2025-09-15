@@ -1,5 +1,8 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { useContext } from 'react';
+import { theme } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { KeyboardEvent, useContext } from 'react';
 import {
   components as SelectDropdownElements,
   GroupBase,
@@ -7,7 +10,8 @@ import {
   MultiValueRemoveProps,
 } from 'react-select';
 
-import { ExtendedOption } from '../types';
+import { ExtendedOption, SizedIndicatorProps } from '../types';
+import { indicatorIcons } from './constants';
 import { SelectDropdownContext } from './containers';
 
 const { MultiValue, MultiValueRemove } = SelectDropdownElements;
@@ -62,5 +66,66 @@ export const MultiValueRemoveButton = (
     <MultiValueRemove {...props}>
       <MiniDeleteIcon size={12} />
     </MultiValueRemove>
+  );
+};
+
+/**
+ * Custom remove all button for multi-select mode.
+ * Provides keyboard navigation and accessible removal of all selected values.
+ */
+
+const CustomStyledRemoveAllDiv = styled('div')(
+  css({
+    '&:focus': {
+      outline: `2px solid ${theme.colors.primary}`,
+    },
+    '&:focus-visible': {
+      outline: `2px solid ${theme.colors.primary}`,
+    },
+  })
+);
+
+export const RemoveAllButton = (props: SizedIndicatorProps) => {
+  const {
+    getStyles,
+    innerProps: { ...restInnerProps },
+    selectProps: { size },
+  } = props;
+
+  const { removeAllButtonRef, selectInputRef } = useContext(
+    SelectDropdownContext
+  );
+
+  const iconSize = size ?? 'medium';
+  const { ...iconProps } = indicatorIcons[`${iconSize}Remove`];
+  const { icon: IndicatorIcon } = iconProps;
+
+  const onKeyPress = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter' && restInnerProps.onMouseDown) {
+      restInnerProps.onMouseDown(e as any);
+    }
+
+    if (
+      selectInputRef?.current &&
+      (e.key === 'ArrowRight' || e.key === 'ArrowLeft' || e.key === 'ArrowDown')
+    ) {
+      selectInputRef?.current.focus();
+    }
+  };
+
+  const style = getStyles('clearIndicator', props) as React.CSSProperties;
+
+  return (
+    <CustomStyledRemoveAllDiv
+      aria-label="Remove all selected"
+      role="button"
+      tabIndex={0}
+      {...restInnerProps}
+      ref={removeAllButtonRef}
+      style={style}
+      onKeyDown={onKeyPress}
+    >
+      <IndicatorIcon {...iconProps} color="text" />
+    </CustomStyledRemoveAllDiv>
   );
 };

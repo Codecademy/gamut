@@ -443,7 +443,6 @@ export const CustomInputProps: Story = {
       },
     },
     name: 'what',
-    isSearchable: true,
   },
   render: (args) => (
     <Box height="15rem">
