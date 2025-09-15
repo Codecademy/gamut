@@ -1,4 +1,4 @@
-import { createContext, forwardRef, useLayoutEffect } from 'react';
+import { createContext, useLayoutEffect } from 'react';
 import ReactSelect, {
   components as SelectDropdownElements,
   GroupBase,
@@ -60,10 +60,11 @@ export const CustomContainer = ({
  * When isSearchable is false, react-select renders a dummy input (div) that doesn't accept
  * custom props, so we apply the combobox data attributes to the ValueContainer's innerProps.
  */
-export const CustomValueContainer = forwardRef<
-  HTMLDivElement,
-  CustomSelectComponentProps<typeof SelectDropdownElements.ValueContainer>
->(({ ...rest }, _ref) => {
+export const CustomValueContainer = ({
+  ...rest
+}: CustomSelectComponentProps<
+  typeof SelectDropdownElements.ValueContainer
+>) => {
   const { inputProps, isSearchable } = rest.selectProps;
   const comboboxProps = inputProps?.combobox || {};
 
@@ -99,7 +100,7 @@ export const CustomValueContainer = forwardRef<
   }
 
   return <SelectDropdownElements.ValueContainer {...rest} />;
-});
+};
 
 /**
  * Custom Input component that passes combobox props to the react-select input.
