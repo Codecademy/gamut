@@ -169,6 +169,7 @@ export const Default = () => {
             },
           ],
           onUpdate: (selectedValues) =>
+            // eslint-disable-next-line no-console
             console.log('Selected:', selectedValues),
         }}
         label="nested checkboxes field"
