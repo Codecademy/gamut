@@ -90,7 +90,6 @@ const renderStyledIcon = ({
     [spacing]: iconAndTextGap,
   } as const;
 
-  // Only apply vertical adjustments for inline icons
   if (isInlineIcon) {
     return (
       <Icon
@@ -106,7 +105,6 @@ const renderStyledIcon = ({
   return <Icon {...baseIconProps} />;
 };
 
-// Create a wrapper to handle inline vs flex layout
 const wrapContent = (content: React.ReactNode, isInlineIcon: boolean) =>
   isInlineIcon ? (
     <Box display="inline">{content}</Box>
@@ -206,7 +204,6 @@ export const appendIconToContent = ({
 }: AppendedIconProps) => {
   if (!Icon) return <>{children}</>;
 
-  // Calculate icon offsets for centering and spacing
   const finalIconOffset = iconOffset ?? (isInlineIcon ? 2 : 4);
   const iconOffsetInEm = pixelToEm(finalIconOffset);
   const heightOffset = pixelToEm(iconSize + finalIconOffset);

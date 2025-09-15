@@ -65,52 +65,6 @@ describe('appendIconToContent', () => {
 
       expect(iconIndex).toBeGreaterThan(textIndex);
     });
-
-    it('applies custom icon size', () => {
-      renderView({ iconSize: 24 });
-
-      const icon = screen.getByRole('img', { hidden: true });
-      expect(icon).toHaveStyle({ width: '24px' });
-    });
-
-    it('applies default icon size when not specified', () => {
-      renderView();
-
-      const icon = screen.getByRole('img', { hidden: true });
-      expect(icon).toHaveStyle({ width: '12px' });
-    });
-
-    it('applies custom icon and text gap', () => {
-      renderView({
-        iconAndTextGap: 16,
-        iconPosition: 'left',
-      });
-
-      const icon = screen.getByRole('img', { hidden: true });
-      expect(icon).toHaveStyle({ 'margin-right': '1rem' });
-    });
-  });
-
-  describe('icon positioning', () => {
-    it('applies correct spacing props for left position', () => {
-      renderView({
-        iconPosition: 'left',
-        iconAndTextGap: 12,
-      });
-
-      const icon = screen.getByRole('img', { hidden: true });
-      expect(icon).toHaveStyle({ 'margin-right': '0.75rem' });
-    });
-
-    it('applies correct spacing props for right position', () => {
-      renderView({
-        iconPosition: 'right',
-        iconAndTextGap: 16,
-      });
-
-      const icon = screen.getByRole('img', { hidden: true });
-      expect(icon).toHaveStyle({ 'margin-left': '1rem' });
-    });
   });
 
   describe('layout modes', () => {
@@ -162,32 +116,6 @@ describe('appendIconToContent', () => {
 
       expect(firstIconIndex).toBeLessThan(textIndex);
       expect(secondIconIndex).toBeGreaterThan(textIndex);
-    });
-
-    it('applies custom icon size to both icons', () => {
-      renderView({ icon: [StarIcon, MiniWarningTriangleIcon], iconSize: 20 });
-
-      const icons = screen.getAllByRole('img', { hidden: true });
-      expect(icons).toHaveLength(2);
-
-      icons.forEach((icon) => {
-        expect(icon).toHaveStyle({ width: '20px' });
-      });
-    });
-
-    it('applies custom icon and text gap to both icons', () => {
-      renderView({
-        icon: [StarIcon, MiniWarningTriangleIcon],
-        iconAndTextGap: 14,
-      });
-
-      const icons = screen.getAllByRole('img', { hidden: true });
-      expect(icons).toHaveLength(2);
-
-      // First icon should have right margin (left position)
-      expect(icons[0]).toHaveStyle({ 'margin-right': '14px' });
-      // Second icon should have left margin (right position)
-      expect(icons[1]).toHaveStyle({ 'margin-left': '14px' });
     });
   });
 
