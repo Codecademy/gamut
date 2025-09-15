@@ -32,6 +32,7 @@ export const Default = () => {
         inputField: '',
         radioGroupField: undefined,
         textAreaField: '',
+        nestedCheckboxesField: [],
       },
       validationRules: {
         checkboxField: { required: 'you need to check this.' },
@@ -136,6 +137,42 @@ export const Default = () => {
         }}
         label="text area field"
         name="textAreaField"
+      />
+      <ConnectedFormGroup
+        field={{
+          component: ConnectedNestedCheckboxes,
+          options: [
+            {
+              value: 'frontend',
+              label: 'Frontend Technologies',
+              options: [
+                { value: 'react', label: 'React' },
+                {
+                  value: 'vue',
+                  label: 'Vue.js',
+                  options: [
+                    { value: 'test', label: 'Test' },
+                    { value: 'test2', label: 'Test2' },
+                  ],
+                },
+                { value: 'angular', label: 'Angular' },
+              ],
+            },
+            {
+              value: 'backend',
+              label: 'Backend Technologies',
+              options: [
+                { value: 'node', label: 'Node.js' },
+                { value: 'python', label: 'Python' },
+                { value: 'java', label: 'Java' },
+              ],
+            },
+          ],
+          onUpdate: (selectedValues) =>
+            console.log('Selected:', selectedValues),
+        }}
+        label="nested checkboxes field"
+        name="nestedCheckboxesField"
       />
     </ConnectedForm>
   );

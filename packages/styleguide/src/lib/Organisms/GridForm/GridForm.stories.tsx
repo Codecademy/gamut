@@ -116,6 +116,39 @@ const meta: Meta<typeof GridForm> = {
         },
         size: 4,
       },
+      {
+        label: 'Nested checkboxes',
+        name: 'nested-checkboxes',
+        type: 'nested-checkboxes',
+        options: [
+          {
+            value: 'frontend',
+            label: 'Frontend Technologies',
+            options: [
+              { value: 'react', label: 'React' },
+              {
+                value: 'vue',
+                label: 'Vue.js',
+                options: [
+                  { value: 'test', label: 'Test' },
+                  { value: 'test2', label: 'Test2' },
+                ],
+              },
+              { value: 'angular', label: 'Angular' },
+            ],
+          },
+          {
+            value: 'backend',
+            label: 'Backend Technologies',
+            options: [
+              { value: 'node', label: 'Node.js' },
+              { value: 'python', label: 'Python' },
+              { value: 'java', label: 'Java' },
+            ],
+          },
+        ],
+        size: 12,
+      },
     ],
     submit: {
       contents: 'Submit Me!?',
