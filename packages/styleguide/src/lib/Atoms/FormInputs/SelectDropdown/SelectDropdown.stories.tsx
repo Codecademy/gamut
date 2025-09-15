@@ -1,4 +1,4 @@
-import { Box, FormGroup, SelectDropdown } from '@codecademy/gamut';
+import { Box, FlexBox, FormGroup, SelectDropdown } from '@codecademy/gamut';
 import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -29,6 +29,7 @@ export const Default: Story = {
 
 export const Base: Story = {
   args: {
+    name: 'base-dropdown',
     options: ['Based', 'Regular Size', 'Normal'],
     placeholder: 'all about that',
   },
@@ -41,10 +42,10 @@ export const Base: Story = {
 
 export const Searchable: Story = {
   args: {
+    name: 'searchable-dropdown',
     isSearchable: true,
     options: ['wow', 'wowee', 'wooooooow'],
     placeholder: 'i am searchable, it is cool',
-    id: 'searchable-dropdown',
   },
   render: (args) => (
     <Box height="12rem">
@@ -55,6 +56,7 @@ export const Searchable: Story = {
 
 export const Disabled: Story = {
   args: {
+    name: 'disabled-dropdown-standalone',
     options: ['Disabled'],
     disabled: true,
     placeholder: 'Disabled',
@@ -63,6 +65,7 @@ export const Disabled: Story = {
 
 export const Error: Story = {
   args: {
+    name: 'error-dropdown-standalone',
     options: ['Small', 'Quite little'],
     value: 'Quite little',
     error: true,
@@ -342,6 +345,7 @@ export const GroupDividers: Story = {
 export const GroupLabels: Story = {
   args: {
     name: 'group-labels-dropdown',
+    multiple: true,
     options: [
       {
         label: 'Group 1',
@@ -390,7 +394,7 @@ export const GroupLabels: Story = {
       <FormGroup
         htmlFor="group-labels-dropdown"
         isSoloField
-        label="I have group labels"
+        label="I have group labels + multiple select"
       >
         <SelectDropdown {...args} />
       </FormGroup>
@@ -499,18 +503,489 @@ export const FormGroupSelectDropdown: Story = {
 export const FormGroupError: Story = {
   args: {
     options: ['Error', 'oh no', ':('],
+    name: 'error-example-unique',
     placeholder: 'cry cry cry',
-    name: 'error',
   },
   render: (args) => (
     <Box height="15rem">
       <FormGroup
         error="error message!! no :'("
-        htmlFor="error"
+        htmlFor="error-example-unique"
         isSoloField
         label="i am ~styled... but something is wrong"
       >
         <SelectDropdown error {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
+export const AbbreviatedInput: Story = {
+  args: {
+    name: 'abbreviated-dropdown',
+    options: [
+      {
+        label: 'United States of America',
+        abbreviation: 'USA',
+        value: 'us',
+      },
+      {
+        label: 'United Kingdom',
+        abbreviation: 'UK',
+        value: 'uk',
+      },
+      {
+        label: 'Canada',
+        abbreviation: 'CA',
+        value: 'ca',
+      },
+      {
+        label: 'Australia',
+        abbreviation: 'AU',
+        value: 'au',
+      },
+      {
+        label: 'Germany',
+        abbreviation: 'DE',
+        value: 'de',
+      },
+    ],
+  },
+  render: (args) => (
+    <Box height="18rem">
+      <FormGroup
+        htmlFor="abbreviated-dropdown"
+        isSoloField
+        label="Abbreviated Input Display"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+      <Box color="text-secondary" mt={4}>
+        Input shows &quot;USA&quot; but dropdown shows &quot;United States of
+        America&quot;
+      </Box>
+    </Box>
+  ),
+};
+
+export const IndependentWidths: Story = {
+  args: {
+    name: 'width-dropdown',
+    options: [
+      {
+        label: 'Machine Learning Engineer',
+        abbreviation: 'ML Eng',
+        value: 'ml-engineer',
+        subtitle: 'Build AI/ML systems',
+      },
+      {
+        label: 'Frontend Developer',
+        abbreviation: 'FE Dev',
+        value: 'frontend-dev',
+        subtitle: 'React, Vue, Angular',
+      },
+      {
+        label: 'Backend Developer',
+        abbreviation: 'BE Dev',
+        value: 'backend-dev',
+        subtitle: 'Node.js, Python, Java',
+      },
+      {
+        label: 'Full Stack Developer',
+        abbreviation: 'FS Dev',
+        value: 'fullstack-dev',
+        subtitle: 'End-to-end development',
+      },
+    ],
+    inputWidth: '150px',
+    dropdownWidth: '350px',
+
+    placeholder: 'Select a role',
+  },
+  render: (args) => (
+    <Box height="20rem">
+      <FormGroup
+        htmlFor="width-dropdown"
+        isSoloField
+        label="Independent Width Control"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+      <Box color="text-secondary" mt={4}>
+        Input is 150px wide, dropdown is 350px wide
+      </Box>
+    </Box>
+  ),
+};
+
+export const SmallWithAbbreviations: Story = {
+  args: {
+    name: 'small-abbreviated-dropdown',
+    options: [
+      {
+        label: 'JavaScript',
+        abbreviation: 'JS',
+        value: 'javascript',
+      },
+      {
+        label: 'TypeScript',
+        abbreviation: 'TS',
+        value: 'typescript',
+      },
+      {
+        label: 'Python',
+        abbreviation: 'PY',
+        value: 'python',
+      },
+      {
+        label: 'Java',
+        abbreviation: 'Java',
+        value: 'java',
+      },
+      {
+        label: 'C++',
+        abbreviation: 'C++',
+        value: 'cpp',
+      },
+    ],
+    size: 'small',
+    inputWidth: '80px',
+    dropdownWidth: '200px',
+    placeholder: 'Select JScript',
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="small-abbreviated-dropdown"
+        isSoloField
+        label="Small Size with Abbreviations"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+      <Box color="text-secondary" mt={4}>
+        Small size, input shows &quot;JS&quot; but dropdown shows
+        &quot;JavaScript&quot;
+      </Box>
+    </Box>
+  ),
+};
+
+export const ComplexAbbreviatedOptions: Story = {
+  args: {
+    name: 'complex-abbreviated-dropdown',
+    options: [
+      {
+        label: 'Senior Software Engineer',
+        abbreviation: 'Sr SWE',
+        value: 'senior-swe',
+        subtitle: '5+ years experience',
+        rightLabel: 'Senior',
+      },
+      {
+        label: 'Principal Software Engineer',
+        abbreviation: 'Principal SWE',
+        value: 'principal-swe',
+        subtitle: '10+ years experience',
+        rightLabel: 'Principal',
+      },
+      {
+        label: 'Staff Software Engineer',
+        abbreviation: 'Staff SWE',
+        value: 'staff-swe',
+        subtitle: '8+ years experience',
+        rightLabel: 'Staff',
+      },
+      {
+        label: 'Distinguished Engineer',
+        abbreviation: 'Distinguished Eng',
+        value: 'distinguished-eng',
+        subtitle: '15+ years experience',
+        rightLabel: 'Distinguished',
+      },
+    ],
+    inputWidth: '80px',
+    dropdownWidth: '400px',
+    placeholder: 'Select seniority level',
+  },
+  render: (args) => (
+    <Box height="22rem">
+      <FormGroup
+        htmlFor="complex-abbreviated-dropdown"
+        isSoloField
+        label="Complex Options with Abbreviations"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+      <Box color="text-secondary" mt={4}>
+        Shows abbreviated text in input, full details in dropdown
+      </Box>
+    </Box>
+  ),
+};
+
+export const AbbreviatedWithSubtitleAndRightLabel: Story = {
+  args: {
+    name: 'abbreviated-detailed',
+    options: [
+      {
+        label: 'Senior Software Engineer',
+        abbreviation: 'Sr SWE',
+        value: 'senior-swe',
+        subtitle: '5+ years experience',
+        rightLabel: 'Senior',
+      },
+      {
+        label: 'Principal Software Engineer',
+        abbreviation: 'Principal SWE',
+        value: 'principal-swe',
+        subtitle: '10+ years experience',
+        rightLabel: 'Principal',
+      },
+      {
+        label: 'Staff Software Engineer',
+        abbreviation: 'Staff SWE',
+        value: 'staff-swe',
+        subtitle: '8+ years experience',
+        rightLabel: 'Staff',
+      },
+    ],
+  },
+  render: (args) => (
+    <Box height="22rem">
+      <FormGroup
+        htmlFor="abbreviated-detailed"
+        isSoloField
+        label="Abbreviated with Additional Details"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
+export const AbbreviatedSmallSize: Story = {
+  args: {
+    name: 'abbreviated-small',
+    options: [
+      {
+        label: 'JavaScript',
+        abbreviation: 'JS',
+        value: 'javascript',
+      },
+      {
+        label: 'TypeScript',
+        abbreviation: 'TS',
+        value: 'typescript',
+      },
+      {
+        label: 'Python',
+        abbreviation: 'PY',
+        value: 'python',
+      },
+      {
+        label: 'Java',
+        abbreviation: 'Java',
+        value: 'java',
+      },
+    ],
+    size: 'small',
+    inputWidth: '80px',
+    dropdownWidth: '200px',
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="abbreviated-small"
+        isSoloField
+        label="Small Size with Abbreviations"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+export const MenuAlignmentRight: Story = {
+  args: {
+    name: 'menu-alignment-right',
+    options: [
+      {
+        label: 'Frontend Developer',
+        abbreviation: 'FE Dev',
+        value: 'frontend-dev',
+        subtitle: 'React, Vue, Angular',
+      },
+      {
+        label: 'Backend Developer',
+        abbreviation: 'BE Dev',
+        value: 'backend-dev',
+        subtitle: 'Node.js, Python, Java',
+      },
+      {
+        label: 'Full Stack Developer',
+        abbreviation: 'FS Dev',
+        value: 'fullstack-dev',
+        subtitle: 'End-to-end development',
+      },
+    ],
+    inputWidth: '150px',
+    dropdownWidth: '300px',
+    menuAlignment: 'right',
+    placeholder: 'Select a role',
+  },
+  render: (args) => (
+    <FlexBox
+      alignItems="center"
+      flexDirection="column"
+      height="20rem"
+      width={1}
+    >
+      <FormGroup
+        htmlFor="menu-alignment-right"
+        isSoloField
+        label="Menu Alignment: Right"
+        width="150px"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+      <Box color="text-secondary" mt={4}>
+        Dropdown aligns to the right edge of the input
+      </Box>
+    </FlexBox>
+  ),
+};
+
+// These are for testing, I will delete before shipping
+
+export const DisabledMultiValue: Story = {
+  args: {
+    name: 'disabled-small-multi',
+    options: [
+      {
+        label: 'JavaScript',
+        abbreviation: 'JS',
+        value: 'javascript',
+      },
+      {
+        label: 'TypeScript',
+        abbreviation: 'TS',
+        value: 'typescript',
+      },
+      {
+        label: 'Python',
+        abbreviation: 'PY',
+        value: 'python',
+      },
+      {
+        label: 'Java',
+        abbreviation: 'Java',
+        value: 'java',
+      },
+    ],
+    placeholder: 'Long truncated placeholder',
+    size: 'small',
+    inputWidth: '100px',
+    dropdownWidth: '200px',
+    multiple: true,
+    value: ['python', 'java'],
+    disabled: true,
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="abbreviated-small"
+        isSoloField
+        label="Small Size with Abbreviations"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+
+export const LongPlaceholder: Story = {
+  args: {
+    name: 'long-placeholder',
+    options: [
+      {
+        label: 'JavaScript',
+        abbreviation: 'JS',
+        value: 'javascript',
+      },
+      {
+        label: 'TypeScript',
+        abbreviation: 'TS',
+        value: 'typescript',
+      },
+      {
+        label: 'Python',
+        abbreviation: 'PY',
+        value: 'python',
+      },
+      {
+        label: 'Java',
+        abbreviation: 'Java',
+        value: 'java',
+      },
+    ],
+    placeholder: 'Long truncated placeholder',
+    size: 'small',
+    inputWidth: '300px',
+    dropdownWidth: '400px',
+    multiple: true,
+    menuAlignment: 'right',
+  },
+  render: (args) => (
+    <Box height="15rem" ml={8}>
+      <FormGroup
+        htmlFor="long-placeholder"
+        isSoloField
+        label="Small Size with Abbreviations"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
+  ),
+};
+export const LongPlaceholderAgain: Story = {
+  args: {
+    name: 'long-placeholder-again',
+    options: [
+      {
+        label: 'JavaScript',
+        abbreviation: 'JS',
+        value: 'javascript',
+      },
+      {
+        label: 'TypeScript',
+        abbreviation: 'TS',
+        value: 'typescript',
+      },
+      {
+        label: 'Python',
+        abbreviation: 'PY',
+        value: 'python',
+      },
+      {
+        label: 'Java',
+        abbreviation: 'Java',
+        value: 'java',
+      },
+    ],
+    placeholder: 'Long truncated placeholder',
+    size: 'small',
+    inputWidth: '400px',
+    dropdownWidth: '200px',
+    multiple: true,
+    menuAlignment: 'right',
+  },
+  render: (args) => (
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="long-placeholder-again"
+        isSoloField
+        label="Small Size with Abbreviations"
+      >
+        <SelectDropdown {...args} />
       </FormGroup>
     </Box>
   ),

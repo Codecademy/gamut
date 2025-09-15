@@ -1,34 +1,18 @@
-import {
-  CalendarIcon,
-  DataTransferVerticalIcon,
-  EarthIcon,
-} from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
-import { fireEvent } from '@testing-library/dom';
-import { act } from 'react';
+import userEvent from '@testing-library/user-event';
 
+import {
+  openDropdown,
+  optionsIconsArray,
+  optionsWithAbbreviations,
+  selectOptions,
+  selectOptionsObject,
+} from '../__fixtures__/utils';
 import { SelectDropdown } from '../SelectDropdown';
 
-const selectOptions = ['red', 'yellow', 'green'];
-
-const selectOptionsObject = {
-  red: 'red',
-  yellow: 'yellow',
-  green: 'green',
-  blue: 'blue',
-  teal: 'teal',
-  orange: 'orange',
-};
-
-const optionsIconsArray = [
-  {
-    label: 'Data Transfer Vertical Icon',
-    value: 'one',
-    icon: DataTransferVerticalIcon,
-  },
-  { label: 'Calendar Icon', value: 'two', icon: CalendarIcon },
-  { label: 'Earth Icon', value: 'three', icon: EarthIcon },
-];
+/** There is a state pollution issue with SelectDropdown and jest which is why these are broken up into their own file.
+ *  Ticket to fix: https://skillsoftdev.atlassian.net/browse/GM-1297
+ */
 
 jest.mock('@codecademy/gamut-icons', () => ({
   ...jest.requireActual<{}>('@codecademy/gamut-icons'),
@@ -63,15 +47,6 @@ const renderView = setupRtl(SelectDropdown, {
   options: selectOptions,
   name: 'colors',
 });
-
-const DOWN_ARROW = { keyCode: 40 };
-
-const openDropdown = async (view: ReturnType<typeof renderView>['view']) => {
-  await act(() => {
-    fireEvent.keyDown(view.getByRole('combobox'), DOWN_ARROW);
-    return Promise.resolve();
-  });
-};
 
 describe('SelectDropdown', () => {
   it('sets the id prop on the select tag', () => {
@@ -132,39 +107,134 @@ describe('SelectDropdown', () => {
     optionsIconsArray.forEach((icon) => expect(view.getByTitle(icon.label)));
   });
 
+  it('displays icon in selected value when option has icon', async () => {
+    const { view } = renderView({
+      options: optionsIconsArray,
+      value: 'one',
+    });
+
+    expect(view.getByTitle('Data Transfer Vertical Icon')).toBeInTheDocument();
+    const selectedValueContainer = view.getByRole('combobox').closest('div');
+    expect(selectedValueContainer).toHaveTextContent(
+      'Data Transfer Vertical Icon'
+    );
+  });
+
   it('function passed to onInputChanges is called on input change', async () => {
     const onInputChange = jest.fn();
     const { view } = renderView({ onInputChange });
 
     await openDropdown(view);
 
-    await act(() => {
-      fireEvent.click(view.getByText('red'));
-      return Promise.resolve();
-    });
+    await userEvent.click(view.getByText('red'));
 
     expect(onInputChange).toHaveBeenCalled();
   });
 
-  it('renders selected & multiple items when passed multiple: true', async () => {
-    const { view } = renderView({ multiple: true });
-
-    const numSelectedItems = 2;
-
-    const multiple = selectOptions.map(async (opt) => {
-      await openDropdown(view);
-
-      const option = await view.findByText(opt);
-      await act(() => {
-        fireEvent.click(option);
-        return Promise.resolve();
-      });
+  it('works with multiple selection', async () => {
+    const onChange = jest.fn();
+    const { view } = renderView({
+      multiple: true,
+      onChange,
     });
 
-    await Promise.all(multiple);
+    await openDropdown(view);
+    await userEvent.click(view.getByText('red'));
 
-    selectOptions
-      .slice(0, numSelectedItems)
-      .forEach((value) => view.getByText(value));
+    await openDropdown(view);
+    await userEvent.click(view.getByText('green'));
+
+    view.getByText('red');
+    view.getByText('green');
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange).toHaveBeenNthCalledWith(
+      1,
+      [
+        {
+          label: 'red',
+          value: 'red',
+        },
+      ],
+      {
+        action: 'select-option',
+      }
+    );
+    expect(onChange).toHaveBeenNthCalledWith(
+      2,
+      [
+        {
+          label: 'red',
+          value: 'red',
+        },
+        {
+          label: 'green',
+          value: 'green',
+        },
+      ],
+      {
+        action: 'select-option',
+      }
+    );
+  });
+
+  it('displays abbreviations in multiselect mode', async () => {
+    const onChange = jest.fn();
+    const { view } = renderView({
+      multiple: true,
+      options: optionsWithAbbreviations,
+      onChange,
+    });
+
+    await openDropdown(view);
+    await userEvent.click(view.getByText('United States of America'));
+
+    await openDropdown(view);
+    await userEvent.click(view.getByText('United Kingdom'));
+
+    // Check that abbreviations are displayed in the selected values
+    view.getByText('USA');
+    view.getByText('UK');
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange).toHaveBeenNthCalledWith(
+      1,
+      [
+        {
+          label: 'United States of America',
+          value: 'usa',
+          abbreviation: 'USA',
+          key: 'usa',
+          size: undefined,
+        },
+      ],
+      {
+        action: 'select-option',
+        option: undefined,
+      }
+    );
+    expect(onChange).toHaveBeenNthCalledWith(
+      2,
+      [
+        {
+          label: 'United States of America',
+          value: 'usa',
+          abbreviation: 'USA',
+          key: 'usa',
+          size: undefined,
+        },
+        {
+          label: 'United Kingdom',
+          value: 'uk',
+          abbreviation: 'UK',
+          key: 'uk',
+          size: undefined,
+        },
+      ],
+      {
+        action: 'select-option',
+        option: undefined,
+      }
+    );
   });
 });
