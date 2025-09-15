@@ -108,6 +108,12 @@ Our Anchors are polymorphic - they can be rendered as a button or a link compone
 
 <Canvas of={AnchorStories.PolymorphicAnchor} />
 
+### Disabled Anchor
+
+The `Anchor` component can be disabled by passing the `disabled` prop. Since `<a>` elements do not support the `disabled` attribute, the `Anchor` component will render as a `<button>` when disabled.
+
+<Canvas of={AnchorStories.DisabledAnchor} />
+
 ## Playground
 
 <Canvas sourceState="shown" />

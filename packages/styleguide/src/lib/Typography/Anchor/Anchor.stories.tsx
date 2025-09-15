@@ -8,7 +8,7 @@ const meta: Meta<typeof Anchor> = {
   component: Anchor,
   args: {
     children: 'Click me',
-    href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    // href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     icon: icons.MiniInfoOutlineIcon,
     iconPosition: 'left',
     target: '_blank',
@@ -104,4 +104,8 @@ export const IconModes: Story = {
 
 export const PolymorphicAnchor: Story = {
   render: () => <PolymorphicAnchors />,
+};
+
+export const DisabledAnchor: Story = {
+  render: () => <Anchor disabled> This is disabled, inspect me! </Anchor>,
 };

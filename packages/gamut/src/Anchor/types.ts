@@ -24,9 +24,15 @@ export const AnchorBase = styled('a', styledOptions<'a'>())<AnchorProps>(
   anchorProps
 );
 
-type AnchorBaseProps =
-  | ComponentProps<typeof AnchorBase>
-  | (Exclude<ComponentProps<typeof AnchorBase>, 'ref'> &
-      ComponentProps<typeof ButtonBase>);
+type AnchorAsAnchor = ComponentProps<typeof AnchorBase> & {
+  disabled?: never;
+};
+
+type AnchorAsButton = Omit<ComponentProps<typeof AnchorBase>, 'href'> &
+  ComponentProps<typeof ButtonBase> & {
+    href?: never;
+  };
+
+type AnchorBaseProps = AnchorAsAnchor | AnchorAsButton;
 
 export type AnchorExtProps = Partial<AppendedIconProps> & AnchorBaseProps;

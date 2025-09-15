@@ -31,7 +31,7 @@ export const Anchor = forwardRef<
       iconPosition,
     } as AppendedIconProps);
 
-    if (!rest.href) {
+    if (!rest.href || rest.disabled) {
       return (
         <AnchorBase
           as={ButtonBase}
