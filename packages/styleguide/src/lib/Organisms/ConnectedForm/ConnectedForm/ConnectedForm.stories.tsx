@@ -248,12 +248,12 @@ const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
             {
               value: 'frontend',
               label: 'Frontend Technologies',
-              children: [
+              options: [
                 { value: 'react', label: 'React' },
                 {
                   value: 'vue',
                   label: 'Vue.js',
-                  children: [
+                  options: [
                     { value: 'test', label: 'Test' },
                     { value: 'test2', label: 'Test2' },
                   ],
@@ -264,7 +264,7 @@ const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
             {
               value: 'backend',
               label: 'Backend Technologies',
-              children: [
+              options: [
                 { value: 'node', label: 'Node.js' },
                 { value: 'python', label: 'Python' },
                 { value: 'java', label: 'Java' },

@@ -16,16 +16,14 @@ export interface BaseConnectedFieldProps {
 export interface ConnectedFieldProps extends BaseConnectedFieldProps {
   name: string;
 }
-export interface BaseConnectedCheckboxProps
+
+export interface MinimalCheckboxProps
   extends Omit<
-      CheckboxProps,
-      | 'defaultValue'
-      | 'name'
-      | 'htmlFor'
-      | 'validation'
-      | 'label'
-      | 'aria-label'
-    >,
+    CheckboxProps,
+    'defaultValue' | 'name' | 'htmlFor' | 'validation' | 'label' | 'aria-label'
+  > {}
+export interface BaseConnectedCheckboxProps
+  extends MinimalCheckboxProps,
     ConnectedFieldProps {}
 
 export type ConnectedCheckboxProps = BaseConnectedCheckboxProps &
@@ -70,13 +68,16 @@ export interface ConnectedTextAreaProps
   extends Omit<TextAreaProps, 'defaultValue' | 'name' | 'validation'>,
     ConnectedFieldProps {}
 
-export type NestedCheckboxOption = Omit<BaseConnectedCheckboxProps, 'spacing'> &
+export type NestedConnectedCheckboxOption = Omit<
+  MinimalCheckboxProps,
+  'spacing'
+> &
   CheckboxLabelUnion & {
-    children?: NestedCheckboxOption[];
+    options?: NestedConnectedCheckboxOption[];
   };
 
 export interface ConnectedNestedCheckboxesProps
   extends Pick<BaseConnectedCheckboxProps, 'name' | 'disabled' | 'spacing'> {
-  options: NestedCheckboxOption[];
+  options: NestedConnectedCheckboxOption[];
   onUpdate?: (values: string[]) => void;
 }

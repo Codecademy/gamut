@@ -2,36 +2,32 @@ import * as React from 'react';
 import { useCallback, useMemo } from 'react';
 import { Controller } from 'react-hook-form';
 
-import { Box, Checkbox, CheckboxLabelUnion } from '../..';
-import { useField } from '..';
+import { Box, Checkbox, CheckboxPaddingProps } from '../../..';
 import {
-  ConnectedNestedCheckboxesProps,
-  MinimalCheckboxProps,
-  NestedConnectedCheckboxOption,
-} from './types';
+  BaseFormInputProps,
+  GridFormNestedCheckboxField,
+  NestedGridFormCheckboxOption,
+} from '../../types';
 
-type FlatCheckboxState = MinimalCheckboxProps &
-  CheckboxLabelUnion & {
+export interface GridFormNestedCheckboxInputProps extends BaseFormInputProps {
+  field: GridFormNestedCheckboxField;
+}
+
+type FlatCheckboxState = Omit<NestedGridFormCheckboxOption, 'options'> &
+  CheckboxPaddingProps & {
     level: number;
     parentValue?: string;
     options: string[];
   };
 
-export const ConnectedNestedCheckboxes: React.FC<
-  ConnectedNestedCheckboxesProps
-> = ({ name, options, disabled, onUpdate, spacing }) => {
-  const { isDisabled, control, validation, isRequired } = useField({
-    name,
-    disabled,
-  });
+export const GridFormNestedCheckboxInput: React.FC<
+  GridFormNestedCheckboxInputProps
+> = ({ field, required, disabled, error }) => {
+  const isDisabled = disabled || field.disabled;
 
   // Flatten the nested structure for easier state management
   const flattenOptions = useCallback(
-    (
-      opts: NestedConnectedCheckboxOption[],
-      level = 0,
-      parentValue?: string
-    ) => {
+    (opts: NestedGridFormCheckboxOption[], level = 0, parentValue?: string) => {
       const result: FlatCheckboxState[] = [];
 
       opts.forEach((option) => {
@@ -43,7 +39,7 @@ export const ConnectedNestedCheckboxes: React.FC<
 
         result.push({
           ...option,
-          spacing,
+          spacing: field.spacing,
           value: optionValue,
           level,
           parentValue,
@@ -59,12 +55,12 @@ export const ConnectedNestedCheckboxes: React.FC<
 
       return result;
     },
-    [spacing]
+    [field.spacing]
   );
 
   const flatOptions = useMemo(
-    () => flattenOptions(options),
-    [options, flattenOptions]
+    () => flattenOptions(field.options),
+    [field.options, flattenOptions]
   );
 
   // Helper function to get all descendants of a given option
@@ -170,9 +166,9 @@ export const ConnectedNestedCheckboxes: React.FC<
       }
 
       onChange(newSelectedValues);
-      onUpdate?.(newSelectedValues);
+      field.onUpdate?.(newSelectedValues);
     },
-    [flatOptions, onUpdate, getAllDescendants]
+    [flatOptions, field, getAllDescendants]
   );
 
   const renderCheckbox = useCallback(
@@ -180,12 +176,11 @@ export const ConnectedNestedCheckboxes: React.FC<
       option: FlatCheckboxState,
       selectedValues: string[],
       onChange: (values: string[]) => void,
-      onBlur: () => void,
-      ref: React.RefCallback<HTMLInputElement>
+      onBlur: () => void
     ) => {
       const states = calculateStates(selectedValues);
       const state = states.get(String(option.value))!;
-      const checkboxId = `${name}-${option.value}`;
+      const checkboxId = field.id || `${field.name}-${option.value}`;
 
       let checkedProps = {};
       if (state.checked) {
@@ -214,6 +209,7 @@ export const ConnectedNestedCheckboxes: React.FC<
           ml={(option.level * 24) as any}
         >
           <Checkbox
+            aria-invalid={error}
             aria-label={
               state['aria-label'] === undefined
                 ? typeof state.label === 'string'
@@ -221,13 +217,13 @@ export const ConnectedNestedCheckboxes: React.FC<
                   : 'checkbox'
                 : state['aria-label']
             }
-            aria-required={isRequired}
+            aria-required={required}
             disabled={isDisabled || state.disabled}
             htmlFor={checkboxId}
             id={checkboxId}
             label={state.label}
             multiline={state.multiline}
-            name={`${name}-${option.value}`}
+            name={`${field.name}-${option.value}`}
             spacing={state.spacing}
             onBlur={onBlur}
             onChange={(event) => {
@@ -239,27 +235,33 @@ export const ConnectedNestedCheckboxes: React.FC<
               );
             }}
             {...checkedProps}
-            {...ref}
           />
         </Box>
       );
     },
-    [calculateStates, name, isRequired, isDisabled, handleCheckboxChange]
+    [
+      calculateStates,
+      field.name,
+      field.id,
+      required,
+      isDisabled,
+      handleCheckboxChange,
+      error,
+    ]
   );
 
   return (
     <Controller
-      control={control}
-      defaultValue={[]}
-      name={name}
-      render={({ field: { value, onChange, onBlur, ref } }) => (
+      defaultValue={field.defaultValue || []}
+      name={field.name}
+      render={({ field: { value, onChange, onBlur } }) => (
         <Box as="ul" m={0} p={0}>
           {flatOptions.map((option) =>
-            renderCheckbox(option, value || [], onChange, onBlur, ref)
+            renderCheckbox(option, value || [], onChange, onBlur)
           )}
         </Box>
       )}
-      rules={validation}
+      rules={field.validation}
     />
   );
 };
