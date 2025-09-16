@@ -23,7 +23,11 @@ export * from './FeatureShimmer';
 export * from './Flyout';
 export * from './FocusTrap';
 export * from './Form';
-export type { OptionStrict, ExtendedOption, SelectDropdownGroup } from './Form/SelectDropdown/types';
+export type {
+  OptionStrict,
+  ExtendedOption,
+  SelectDropdownGroup,
+} from './Form/SelectDropdown/types';
 export * from './GridForm';
 export * from './HiddenText';
 export * from './Layout/Column';
