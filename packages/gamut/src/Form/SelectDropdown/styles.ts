@@ -136,6 +136,10 @@ export const getMemoizedStyles = (
       padding: '0',
       pointerEvents: 'none',
     }),
+    groupHeading: (provided) => ({
+      ...provided,
+      color: theme.colors['text-disabled'],
+    }),
     input: (provided) => ({
       ...provided,
       ...textColor({ theme }),
@@ -173,30 +177,6 @@ export const getMemoizedStyles = (
         maxHeight,
       };
     },
-    placeholder: (provided) => ({
-      ...provided,
-      ...placeholderColor({ theme }),
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-    }),
-    option: (provided, state: OptionState) => {
-      return {
-        padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
-        cursor: state.isDisabled ? 'not-allowed' : 'pointer',
-        ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
-        display: 'flex',
-        alignItems: 'center',
-        color: state.isDisabled ? 'text-disabled' : 'default',
-      };
-    },
-    singleValue: (provided) => ({
-      ...provided,
-      ...textColor({ theme }),
-      display: 'flex',
-      alignItems: 'center',
-      marginLeft: 0,
-    }),
     multiValue: (provided, state) => ({
       ...provided,
       ...tagBaseStyles,
@@ -229,13 +209,33 @@ export const getMemoizedStyles = (
         backgroundColor: theme.colors['secondary-hover'],
       },
     }),
+    option: (provided, state: OptionState) => {
+      return {
+        padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
+        cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+        ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
+        display: 'flex',
+        alignItems: 'center',
+        color: state.isDisabled ? 'text-disabled' : 'default',
+      };
+    },
+    placeholder: (provided) => ({
+      ...provided,
+      ...placeholderColor({ theme }),
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      ...textColor({ theme }),
+      display: 'flex',
+      alignItems: 'center',
+      marginLeft: 0,
+    }),
     valueContainer: (provided) => ({
       ...provided,
       padding: 0,
-    }),
-    groupHeading: (provided) => ({
-      ...provided,
-      color: theme.colors['text-disabled'],
     }),
   };
 };
