@@ -92,6 +92,7 @@ const onChangeAction = 'select-option';
  * // Grouped options with extended features
  * <SelectDropdown
  *   name="category"
+ *  placeholder="Default placeholder text"
  *   options={[
  *     {
  *       label: 'Frontend',
