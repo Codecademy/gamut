@@ -118,6 +118,7 @@ figma.connect(
           contents: 'Submit form',
           position: 'right',
           size: 12,
+          type: 'cta',
         },
         'Inline Submit': {
           contents: 'Submit Form',
