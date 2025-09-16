@@ -27,7 +27,7 @@ export type {
   OptionStrict,
   ExtendedOption,
   SelectDropdownGroup,
-} from './Form/SelectDropdown/types';
+} from './Form/SelectDropdown';
 export * from './GridForm';
 export * from './HiddenText';
 export * from './Layout/Column';
