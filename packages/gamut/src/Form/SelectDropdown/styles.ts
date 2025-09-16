@@ -233,5 +233,9 @@ export const getMemoizedStyles = (
       ...provided,
       padding: 0,
     }),
+    groupHeading: (provided) => ({
+      ...provided,
+      color: theme.colors['text-disabled'],
+    }),
   };
 };
