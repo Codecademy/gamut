@@ -16,7 +16,7 @@ figma.connect(
   {
     props: {
       fields: figma.enum('Template', {
-        Instructions: [
+        Starter: [
           {
             label: 'Form element label',
             name: 'form-element-label',
@@ -65,7 +65,7 @@ figma.connect(
           {
             title: 'Section Header',
             layout: 'left',
-            variant: 'title-lg',
+            variant: 'title-md',
             fields: [
               {
                 label: 'Form element label',
@@ -86,7 +86,7 @@ figma.connect(
           {
             title: 'Section Header',
             layout: 'left',
-            variant: 'title-lg',
+            variant: 'title-md',
             fields: [
               {
                 label: 'Form element label',
@@ -99,9 +99,17 @@ figma.connect(
             ],
           },
         ],
+        'Inline Submit': [
+          {
+            label: 'Form element label',
+            name: 'form-element-label',
+            size: 8,
+            type: 'text',
+          },
+        ],
       }),
       submit: figma.enum('Template', {
-        Instructions: {
+        Starter: {
           contents: 'Submit form',
           position: 'left',
           size: 12,
@@ -110,6 +118,11 @@ figma.connect(
           contents: 'Submit form',
           position: 'right',
           size: 12,
+        },
+        'Inline Submit': {
+          contents: 'Submit Form',
+          size: 4,
+          position: 'right',
         },
       }),
       cancel: figma.enum('Template', {
