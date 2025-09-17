@@ -92,6 +92,7 @@ const meta: Meta<typeof DataTable> = {
         header: 'Rank',
         key: 'a very important role',
         size: 'lg',
+        sortable: true,
       },
       { header: 'Ship', key: 'ship', size: 'lg', sortable: true },
       { header: 'Age', key: 'age', size: 'sm', sortable: true },
