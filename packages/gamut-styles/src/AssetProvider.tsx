@@ -13,8 +13,8 @@ export const createFontLinks = (fonts?: readonly FontConfig[]) => {
   const currentFonts = fonts ?? webFonts.core;
 
   return currentFonts
-    .filter((f: FontConfig) => f.extensions.includes('woff2'))
-    .map(({ filePath }: FontConfig) => (
+    .filter((f) => f.extensions.includes('woff2'))
+    .map(({ filePath }) => (
       <link
         as="font"
         crossOrigin="anonymous"
