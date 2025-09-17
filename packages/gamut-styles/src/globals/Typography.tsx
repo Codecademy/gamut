@@ -1,14 +1,10 @@
 import { css, Global, Theme } from '@emotion/react';
 import * as React from 'react';
 
-import { webFonts } from '../remoteAssets/fonts';
+import { FontConfig, getFonts } from '../utils/fontUtils';
 
 export const Typography: React.FC<{ theme: Theme }> = ({ theme }) => {
-  // Determine which fonts to use based on theme name
-  const fonts =
-    !theme?.name || !(theme.name in webFonts)
-      ? webFonts.core
-      : webFonts[theme.name as keyof typeof webFonts];
+  const fonts = getFonts(theme?.name);
 
   const typographyGlobals = css`
     ${fonts.map(
@@ -18,7 +14,7 @@ export const Typography: React.FC<{ theme: Theme }> = ({ theme }) => {
         weight = 'normal',
         extensions,
         filePath,
-      }) => css`
+      }: FontConfig) => css`
         @font-face {
           font-display: swap;
           font-family: '${name}';

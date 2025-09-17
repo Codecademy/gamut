@@ -1,17 +1,17 @@
 import { Theme } from '@emotion/react';
 import * as React from 'react';
 
-import { webFonts } from './remoteAssets/fonts';
+import { FontConfig, getFonts } from './utils/fontUtils';
+
+type NamedTheme = Theme & { name?: string };
 
 /*
  * Only preload woff2 fonts, since woff1 are only included as fallbacks.
  */
-export const createFontLinks = (
-  fonts: typeof webFonts.core | typeof webFonts.percipio
-) =>
+export const createFontLinks = (fonts: readonly FontConfig[]) =>
   fonts
-    .filter((f) => f.extensions.includes('woff2'))
-    .map(({ filePath }) => (
+    .filter((f: FontConfig) => f.extensions.includes('woff2'))
+    .map(({ filePath }: FontConfig) => (
       <link
         as="font"
         crossOrigin="anonymous"
@@ -22,12 +22,8 @@ export const createFontLinks = (
       />
     ));
 
-export const AssetProvider: React.FC<{ theme: Theme }> = ({ theme }) => {
-  // Determine which fonts to use based on theme name
-  const fonts =
-    !theme?.name || !(theme.name in webFonts)
-      ? webFonts.core
-      : webFonts[theme.name as keyof typeof webFonts];
+export const AssetProvider: React.FC<{ theme: NamedTheme }> = ({ theme }) => {
+  const fonts = getFonts(theme?.name);
 
   return <>{createFontLinks(fonts)}</>;
 };
