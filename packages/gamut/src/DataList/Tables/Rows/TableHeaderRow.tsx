@@ -63,18 +63,18 @@ export const TableHeaderRow: HeaderComponent = ({
           const renderKey = prefixId(`header-col-${rowProperty}`);
           const columnText = String(header || key);
           const sortDirection = headerRowDirections?.[rowProperty] ?? 'none';
+          const ariaSortDirection =
+            sortDirection === 'none'
+              ? 'none'
+              : sortDirection === 'asc'
+              ? 'ascending'
+              : 'descending';
 
           return (
             <ListCol
               key={renderKey}
               {...colProps}
-              aria-sort={
-                !sortable || sortDirection === 'none'
-                  ? 'none'
-                  : sortDirection === 'asc'
-                  ? 'ascending'
-                  : 'descending'
-              }
+              aria-sort={sortable ? ariaSortDirection : undefined}
               columnHeader
               dataTablePadding={dataTablePadding}
             >

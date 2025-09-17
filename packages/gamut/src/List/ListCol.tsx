@@ -27,7 +27,7 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
       <ColEl
         {...activeVariants}
         {...rest}
-        aria-sort={!sticky && ariaSort ? ariaSort : undefined}
+        aria-sort={!sticky ? ariaSort : undefined}
         as={colEl}
         columnHeader={columnHeader}
         delimiter={sticky && activeVariants.variant === 'table'}

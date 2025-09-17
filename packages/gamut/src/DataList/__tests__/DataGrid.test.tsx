@@ -232,10 +232,10 @@ describe('DataGrid', () => {
       it('renders the column header with an ascending label when sorted', () => {
         renderView({
           columns: [{ key: 'name', sortable: true }],
-          query: { sort: {} },
+          query: { sort: { name: 'asc' } },
         });
 
-        expect(screen.queryByText('ascending')).toBeNull();
+        screen.getByLabelText('ascending');
       });
       it('renders the column header with an descending label when sorted', () => {
         renderView({
@@ -327,6 +327,68 @@ describe('DataGrid', () => {
             value: 'desc',
           },
         });
+      });
+
+      it('sets aria-sort="ascending" on column header when sorted ascending', () => {
+        renderView({
+          columns: [{ key: 'name', sortable: true }],
+          query: { sort: { name: 'asc' } },
+        });
+
+        const nameHeader = screen.getByRole('columnheader', { name: /name/i });
+        expect(nameHeader.tagName).toBe('TH');
+        expect(nameHeader).toHaveAttribute('aria-sort', 'ascending');
+      });
+
+      it('sets aria-sort="descending" on column header when sorted descending', () => {
+        renderView({
+          columns: [{ key: 'name', sortable: true }],
+          query: { sort: { name: 'desc' } },
+        });
+
+        const nameHeader = screen.getByRole('columnheader', { name: /name/i });
+        expect(nameHeader.tagName).toBe('TH');
+        expect(nameHeader).toHaveAttribute('aria-sort', 'descending');
+      });
+
+      it('sets aria-sort="none" on column header when not sorted', () => {
+        renderView({
+          columns: [{ key: 'name', sortable: true }],
+          query: { sort: {} },
+        });
+
+        const nameHeader = screen.getByRole('columnheader', { name: /name/i });
+        expect(nameHeader.tagName).toBe('TH');
+        expect(nameHeader).toHaveAttribute('aria-sort', 'none');
+      });
+
+      it('does not set aria-sort attribute on non-sortable column headers', () => {
+        renderView({
+          columns: [{ key: 'name', sortable: false }],
+          query: { sort: {} },
+        });
+
+        const nameHeader = screen.getByRole('columnheader', { name: /name/i });
+        expect(nameHeader.tagName).toBe('TH');
+        expect(nameHeader).not.toHaveAttribute('aria-sort');
+      });
+
+      it('sets correct aria-sort values on multiple sortable columns', () => {
+        renderView({
+          columns: [
+            { key: 'name', sortable: true },
+            { key: 'sin', sortable: true },
+          ],
+          query: { sort: { name: 'asc', sin: 'desc' } },
+        });
+
+        const nameHeader = screen.getByRole('columnheader', { name: /name/i });
+        const sinHeader = screen.getByRole('columnheader', { name: /sin/i });
+
+        expect(nameHeader.tagName).toBe('TH');
+        expect(sinHeader.tagName).toBe('TH');
+        expect(nameHeader).toHaveAttribute('aria-sort', 'ascending');
+        expect(sinHeader).toHaveAttribute('aria-sort', 'descending');
       });
     });
 
