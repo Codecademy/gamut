@@ -5,6 +5,7 @@ import {
   css,
   GamutProvider,
   lxStudioPalette,
+  percipioPalette,
   platformPalette,
 } from '@codecademy/gamut-styles';
 import { MDXProvider } from '@mdx-js/react';
@@ -25,8 +26,9 @@ import { createTheme } from '@codecademy/variance';
 
 // this theme gives us access to the platform and lx studio tokens for the storybook
 export const storybookTheme = createTheme(coreTheme)
-  .addColors(platformPalette)
   .addColors(lxStudioPalette)
+  .addColors(percipioPalette)
+  .addColors(platformPalette)
   .build();
 
 const WrappedPre = styled(htmlComponents.pre)(
