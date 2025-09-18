@@ -1,6 +1,6 @@
 import { create } from '@storybook/theming';
 import {
-  percipioTheme,
+  theme as gamutTheme,
   trueColors,
   coreSwatches,
 } from '@codecademy/gamut-styles/src';
@@ -14,7 +14,7 @@ export default create({
   brandTitle: isLocalhost ? 'Gamut Local' : 'Gamut',
   brandImage: logo,
   brandUrl: '/',
-  fontBase: percipioTheme.fontFamily.base,
+  fontBase: gamutTheme.fontFamily.base,
 
   //
   colorPrimary: trueColors.hyper,

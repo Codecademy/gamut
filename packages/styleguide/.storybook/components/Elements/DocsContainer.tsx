@@ -6,7 +6,6 @@ import {
   GamutProvider,
   lxStudioPalette,
   platformPalette,
-  percipioTheme,
 } from '@codecademy/gamut-styles';
 import { MDXProvider } from '@mdx-js/react';
 import {
@@ -24,8 +23,11 @@ import { HelmetProvider } from 'react-helmet-async';
 import theme from '../../theming/GamutTheme';
 import { createTheme } from '@codecademy/variance';
 
-// this theme gives us access to the percipio tokens for the storybook
-export const storybookTheme = percipioTheme;
+// this theme gives us access to the platform and lx studio tokens for the storybook
+export const storybookTheme = createTheme(coreTheme)
+  .addColors(platformPalette)
+  .addColors(lxStudioPalette)
+  .build();
 
 const WrappedPre = styled(htmlComponents.pre)(
   // gives the source block a white background - pretty fragile but easy to change if needed
