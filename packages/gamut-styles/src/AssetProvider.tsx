@@ -1,10 +1,7 @@
-import { Theme } from '@emotion/react';
 import * as React from 'react';
 
 import { webFonts } from './remoteAssets/fonts';
-import { FontConfig, getFonts } from './utils/fontUtils';
-
-type NamedTheme = Theme & { name?: string };
+import { FontConfig, getFonts, NamedTheme } from './utils/fontUtils';
 
 /*
  * Only preload woff2 fonts, since woff1 are only included as fallbacks.

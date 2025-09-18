@@ -181,7 +181,8 @@ class ThemeBuilder<T extends AbstractTheme> {
 
   /**
    *
-   * @param name Adds an accessible name to the theme
+   * @param name Adds a name to the theme
+   * This is used for referencing the theme for replacing default fonts.
    * @example .addName('core')
    */
   addName(

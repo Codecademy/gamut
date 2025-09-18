@@ -1,9 +1,30 @@
-import { css, Global, Theme } from '@emotion/react';
+import { css, Global } from '@emotion/react';
 import * as React from 'react';
 
+import { coreTheme } from '../themes';
 import { FontConfig, getFonts } from '../utils/fontUtils';
 
-export const Typography: React.FC<{ theme: Theme }> = ({ theme }) => {
+/**
+ * Typography component that applies global typography styles to the application.
+ *
+ * This component generates CSS-in-JS styles for:
+ * - Font face declarations for all configured fonts
+ * - Global heading styles (h1-h6) with theme-based sizing and spacing
+ * - Small text styling
+ *
+ * @param props - Component props
+ * @param props.theme - Emotion theme object containing typography configuration and an optional name
+ * @returns JSX element with global typography styles applied
+ *
+ * @example
+ * ```tsx
+ * <Typography theme={myTheme} />
+ * ```
+ */
+
+export const Typography: React.FC<{ theme: typeof coreTheme }> = ({
+  theme,
+}) => {
   const fonts = getFonts(theme?.name);
 
   const typographyGlobals = css`
