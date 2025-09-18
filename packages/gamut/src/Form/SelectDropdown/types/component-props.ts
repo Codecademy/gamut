@@ -7,7 +7,11 @@ import {
   SelectDropdownGroup,
   SelectDropdownOptions,
 } from './options';
-import { ReactSelectAdditionalProps } from './styles';
+import {
+  ReactSelectAdditionalProps,
+  SelectDropdownSizes,
+  SharedProps,
+} from './styles';
 
 /**
  * Safe props that can be passed to the combobox input element.
@@ -26,29 +30,6 @@ export type InternalInputsProps = {
     combobox?: SafeInternalInputProps;
   };
 };
-/**
- * Shared properties available to all SelectDropdown variants.
- * These props control common behavior and styling across single and multi-select modes.
- */
-export interface SharedProps extends InternalInputsProps {
-  /** Maximum number of options to display in the dropdown before scrolling */
-  shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
-  /** Width of the input field */
-  inputWidth?: string | number;
-  /** Width of the dropdown menu */
-  dropdownWidth?: string | number;
-  /** Alignment of the dropdown menu relative to the input
-   * This is only relevant when the dropdown width is set to be larger or smaller than the input width.
-   */
-  menuAlignment?: 'left' | 'right';
-  /** Visual size of the component */
-  size?: 'small' | 'medium';
-}
-
-/**
- * Size variants for the SelectDropdown component.
- */
-export type SelectDropdownSizes = Pick<SharedProps, 'size'>;
 
 /**
  * Base props for SelectDropdown, excluding props that are handled internally.

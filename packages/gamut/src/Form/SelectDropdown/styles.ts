@@ -204,16 +204,14 @@ export const getMemoizedStyles = (
         backgroundColor: theme.colors['secondary-hover'],
       },
     }),
-    option: (provided, state: OptionState) => {
-      return {
-        padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
-        cursor: state.isDisabled ? 'not-allowed' : 'pointer',
-        ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
-        display: 'flex',
-        alignItems: 'center',
-        color: state.isDisabled ? 'text-disabled' : 'default',
-      };
-    },
+    option: (provided, state: OptionState) => ({
+      padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
+      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+      ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
+      display: 'flex',
+      alignItems: 'center',
+      color: state.isDisabled ? 'text-disabled' : 'default',
+    }),
     placeholder: (provided) => ({
       ...provided,
       ...placeholderColor({ theme }),

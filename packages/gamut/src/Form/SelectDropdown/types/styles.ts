@@ -1,7 +1,30 @@
 import { StyleProps } from '@codecademy/variance';
 
 import { conditionalBorderStates } from '../styles';
-import { SharedProps } from './component-props';
+import { InternalInputsProps } from './component-props';
+
+/**
+ * Size variants for the SelectDropdown component.
+ */
+export type SelectDropdownSizes = { size?: 'small' | 'medium' };
+
+/**
+ * Shared properties available to all SelectDropdown variants.
+ * These props control common behavior and styling across single and multi-select modes.
+ */
+export interface SharedProps extends InternalInputsProps, SelectDropdownSizes {
+  /** Maximum number of options to display in the dropdown before scrolling */
+  shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
+  /** Width of the input field */
+  inputWidth?: string | number;
+  /** Width of the dropdown menu */
+  dropdownWidth?: string | number;
+  /** Alignment of the dropdown menu relative to the input
+   * This is only relevant when the dropdown width is set to be larger or smaller than the input width.
+   */
+  menuAlignment?: 'left' | 'right';
+  /** Visual size of the component */
+}
 
 /**
  * Style props for wrapper states like activation and error states.

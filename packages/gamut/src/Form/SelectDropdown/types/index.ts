@@ -7,7 +7,6 @@ export {
 } from './options';
 
 export {
-  SelectDropdownSizes,
   SingleSelectDropdownProps,
   MultiSelectDropdownProps,
   SelectDropdownProps,
@@ -21,4 +20,4 @@ export {
   CustomSelectComponentProps,
 } from './internal';
 
-export { ControlState, OptionState } from './styles';
+export { ControlState, OptionState, SelectDropdownSizes } from './styles';

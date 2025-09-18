@@ -3,7 +3,7 @@ import * as React from 'react';
 import { GroupBase } from 'react-select';
 
 import { SelectOptions } from '../../inputs/Select';
-import { SelectDropdownSizes } from './component-props';
+import { SelectDropdownSizes } from './styles';
 
 /**
  * Basic option structure with required label and value properties.
