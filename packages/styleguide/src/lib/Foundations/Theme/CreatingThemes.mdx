@@ -217,7 +217,7 @@ const myTheme = createTheme({
   }));
 ```
 
-### Step 5: Create CSS Variables (Optional)
+### Step 5: Create CSS Variables
 
 Convert scales to CSS variables for better performance and theming:
 
@@ -366,91 +366,7 @@ export interface CustomTheme extends CustomThemeShape {}
 
 ## Using Your Custom Theme
 
-### 1. TypeScript Declaration
-
-Create a theme declaration file:
-
-```tsx
-// theme.d.ts
-import '@emotion/react';
-import { CustomTheme } from './themes/custom';
-
-declare module '@emotion/react' {
-  export interface Theme extends CustomTheme {}
-}
-```
-
-### 2. Provider Setup
-
-Use your theme with the GamutProvider:
-
-```tsx
-import { GamutProvider } from '@codecademy/gamut-styles';
-import { customTheme } from './themes/custom';
-
-function App() {
-  return (
-    <GamutProvider theme={customTheme}>
-      {/* Your app components */}
-    </GamutProvider>
-  );
-}
-```
-
-### 3. Using in Components
-
-Your custom theme will be available in all Gamut components and styled components:
-
-```tsx
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
-
-// Using system props
-const Card = styled.div(
-  css({
-    bg: 'background-primary',
-    p: 4,
-    borderRadius: 'md',
-    boxShadow: 'md',
-    border: '1px solid',
-    borderColor: 'border-primary',
-  })
-);
-```
-
-## Theme Builder API Reference
-
-### `createTheme(baseTheme)`
-
-Creates a new theme builder instance.
-
-### `.addColors(colors)`
-
-Adds color tokens to the theme. Colors are automatically converted to CSS variables.
-
-### `.addColorModes(initialMode, modeConfig)`
-
-Configures color modes (light/dark) with semantic color mappings.
-
-### `.addScale(key, createScale)`
-
-Adds a new scale to the theme. The `createScale` function receives the current theme as a parameter.
-
-### `.updateScale(key, updateFn)`
-
-Updates an existing scale with new or computed values.
-
-### `.createScaleVariables(key)`
-
-Converts a scale to CSS variables for better performance.
-
-### `.addName(name)`
-
-Adds a name to the theme for identification.
-
-### `.build()`
-
-Finalizes the theme and returns the complete theme object.
+Follow the instructions detailed in <LinkTo id="Meta/Installation">Installation docs</LinkTo> to use your new custom theme with Gamut.
 
 ## Best Practices
 
@@ -460,6 +376,39 @@ Finalizes the theme and returns the complete theme object.
 4. **Use CSS variables for performance**: Convert frequently used scales to CSS variables
 5. **Keep color palettes organized**: Group related colors together (brand, neutral, feedback, etc.)
 6. **Test with Gamut components**: Ensure your theme works well with existing components
+
+If you'd like to test your theme with components locally, you can add it the Storybook `GamutThemeProvider.tsx` and `preview.ts` to see it in the theme switcher tool.
+
+```tsx
+// packages/styleguide/.storybook/theming/GamutThemeProvider.tsx
+    const themeMap = {
+      core: coreTheme,
+      admin: adminTheme,
+      lxStudio: lxStudioTheme,
+      percipio: percipioTheme,
+      your-theme-here: yourCustomTheme,
+    } as const;
+```
+
+```tsx
+// .storybook/preview.ts
+  theme: {
+    name: 'Theme',
+    description: 'Global theme for components',
+    defaultValue: 'percipio',
+    toolbar: {
+      icon: 'paintbrush',
+      items: [
+        { value: 'core', title: 'Core' },
+        { value: 'admin', title: 'Admin' },
+        { value: 'lxStudio', title: 'LX Studio' },
+        { value: 'percipio', title: 'Percipio' },
+        { value: 'your-theme-here', title: 'Custom Theme' },
+      ],
+      showName: true,
+    },
+  },
+```
 
 ## Integration with Gamut Components
 
