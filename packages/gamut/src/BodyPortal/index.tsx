@@ -26,10 +26,10 @@ interface BodyPortalProps {
   zIndex?: number;
 }
 
-export const BodyPortal: React.FC<React.PropsWithChildren<BodyPortalProps>> = ({
+export const BodyPortal = ({
   children,
   zIndex = 1,
-}) => {
+}: React.PropsWithChildren<BodyPortalProps>): React.ReactPortal | null => {
   const [ready, setReady] = useState(false);
   const mode = useCurrentMode();
 
@@ -45,5 +45,5 @@ export const BodyPortal: React.FC<React.PropsWithChildren<BodyPortalProps>> = ({
       {children}
     </PortalWrapper>,
     document.body
-  );
+  ) as React.ReactPortal;
 };

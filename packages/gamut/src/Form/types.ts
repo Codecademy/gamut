@@ -1,7 +1,5 @@
-import { UnpackNestedValue } from 'react-hook-form';
-
 export type FormValues<T> = {
-  [key in keyof T]?: UnpackNestedValue<T[key]>;
+  [key in keyof T]?: T[key];
 };
 export { CheckboxPaddingProps } from './inputs/Checkbox';
 
