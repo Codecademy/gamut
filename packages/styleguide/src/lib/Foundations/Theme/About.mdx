@@ -8,6 +8,7 @@ import {
 
 import { parameters as adminThemeParameters } from './AdminTheme.mdx';
 import { parameters as coreThemeParameters } from './CoreTheme.mdx';
+import { parameters as creatingThemesParameters } from './CreatingThemes.mdx';
 import { parameters as lxStudioThemeParameters } from './LXStudioTheme.mdx';
 import { parameters as percipioThemeParameters } from './PercipioTheme.mdx';
 import { parameters as platformThemeParameters } from './PlatformTheme.mdx';
@@ -69,6 +70,8 @@ const myStyles = css`
 `;
 ```
 
+## Themes
+
 <TableOfContents
   links={addParentPath(parameters.id, [
     coreThemeParameters,
@@ -77,4 +80,10 @@ const myStyles = css`
     percipioThemeParameters,
     platformThemeParameters,
   ])}
+/>
+
+## Meta
+
+<TableOfContents
+  links={addParentPath(parameters.id, [creatingThemesParameters])}
 />

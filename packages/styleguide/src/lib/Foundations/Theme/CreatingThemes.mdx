@@ -1,0 +1,473 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, LinkTo } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Foundations/Theme/Creating Themes',
+  title: 'Creating Themes',
+  subtitle: `How to create custom themes using gamut-styles and the createTheme builder`,
+  status: 'current',
+};
+
+<Meta title="Foundations/Theme/Creating Themes" />
+
+<AboutHeader {...parameters} />
+
+The gamut-styles theme system is built on top of `@codecademy/variance` and provides a powerful, type-safe way to create custom themes. This guide will walk you through creating your own themes and understanding how they integrate with Gamut components.
+
+## Overview
+
+Themes in gamut-styles are created using the `createTheme` builder pattern, which provides:
+
+- **Type Safety**: Full TypeScript support with autocomplete and type checking
+- **CSS Variables**: Automatic generation of CSS custom properties
+- **Color Modes**: Built-in support for light/dark mode switching
+- **Composability**: Easy theme inheritance and customization
+- **Component Integration**: Seamless integration with gamut components
+
+## Basic Theme Structure
+
+All themes extend from a base theme and can be customized using the builder pattern:
+
+```tsx
+import { createTheme } from '@codecademy/variance';
+
+const myTheme = createTheme(baseTheme)
+  .addColors(colorPalette)
+  .addColorModes('light', colorModeConfig)
+  .addScale('customProperty', scaleFunction)
+  .addName('my-theme')
+  .build();
+```
+
+## Creating a Custom Theme
+
+### Step 1: Start with a Base Theme
+
+It's best to start with the `coreTheme` as your foundation unless you are _sure_ you have a full replacement for all the tokens:
+
+```tsx
+import { createTheme } from '@codecademy/variance';
+import { coreTheme } from '@codecademy/gamut-styles';
+
+const myCustomTheme = createTheme({
+  ...coreTheme,
+  // Your custom overrides here
+});
+```
+
+### Step 2: Define Your Color Palette
+
+Create a color palette object with your brand colors:
+
+```tsx
+const myColorPalette = {
+  // Brand colors
+  brand: {
+    primary: '#004C54',
+    secondary: '#A5ACAF',
+    accent: '#FFD700',
+    black: '#000000',
+    white: '#FFFFFF',
+  },
+  // Emerald-based neutral scale
+  emerald: {
+    50: '#F0FDF4',
+    100: '#DCFCE7',
+    200: '#BBF7D0',
+    300: '#86EFAC',
+    400: '#4ADE80',
+    500: '#22C55E',
+    600: '#16A34A',
+    700: '#15803D',
+    800: '#166534',
+    900: '#14532D',
+  },
+  // Accent colors
+  accent: {
+    gold: '#FFD700',
+    silver: '#C0C0C0',
+    copper: '#B87333',
+  },
+
+  success: '#28A745',
+  warning: '#FFC107',
+  error: '#DC3545',
+  info: '#17A2B8',
+};
+
+const myTheme = createTheme({
+  ...coreTheme,
+}).addColors(myColorPalette);
+```
+
+### Step 3: Configure Color Modes
+
+Define how your colors map to semantic tokens in different modes. For more information about color modes, see the <LinkTo id="Foundations/ColorMode">ColorMode documentation</LinkTo>.
+
+```tsx
+const myTheme = createTheme({
+  ...coreTheme,
+})
+  .addColors(myColorPalette)
+  .addColorModes('light', {
+    light: {
+      text: {
+        _: 'brand-black',
+        accent: 'brand-primary',
+        disabled: 'emerald-400',
+        secondary: 'emerald-600',
+      },
+      background: {
+        _: 'brand-white',
+        primary: 'emerald-50',
+        selected: 'brand-primary',
+        hover: 'brand-secondary',
+      },
+      primary: {
+        _: 'brand-primary',
+        hover: 'brand-black',
+        inverse: 'brand-white',
+      },
+      secondary: {
+        _: 'brand-secondary',
+        hover: 'brand-black',
+      },
+      feedback: {
+        success: 'success',
+        warning: 'warning',
+        error: 'error',
+      },
+      border: {
+        primary: 'brand-secondary',
+        secondary: 'emerald-200',
+        tertiary: 'emerald-100',
+        disabled: 'emerald-400',
+      },
+    },
+    dark: {
+      text: {
+        _: 'brand-white',
+        accent: 'accent-gold',
+        disabled: 'emerald-500',
+        secondary: 'brand-secondary',
+      },
+      background: {
+        _: 'brand-black',
+        primary: 'emerald-800',
+        selected: 'brand-primary',
+        hover: 'emerald-700',
+      },
+      primary: {
+        _: 'accent-gold',
+        hover: 'accent-silver',
+        inverse: 'brand-black',
+      },
+      secondary: {
+        _: 'brand-secondary',
+        hover: 'accent-gold',
+      },
+      feedback: {
+        success: 'success',
+        warning: 'warning',
+        error: 'error',
+      },
+      border: {
+        primary: 'brand-primary',
+        secondary: 'emerald-700',
+        tertiary: 'emerald-800',
+        disabled: 'emerald-500',
+      },
+    },
+  });
+```
+
+### Step 4: Add Custom Scales
+
+Add custom design tokens using the `addScale` method:
+
+```tsx
+const myTheme = createTheme({
+  ...coreTheme,
+})
+  .addColors(myColorPalette)
+  .addColorModes('light', colorModeConfig)
+  .addScale('shadows', ({ colors }) => ({
+    sm: `0 1px 2px ${colors['emerald-200']}`,
+    md: `0 4px 6px ${colors['emerald-300']}`,
+    lg: `0 10px 15px ${colors['emerald-400']}`,
+    xl: `0 20px 25px ${colors['emerald-500']}`,
+  }))
+  .addScale('borderRadius', () => ({
+    none: '0',
+    sm: '4px',
+    md: '8px',
+    lg: '12px',
+    xl: '16px',
+    full: '9999px',
+  }))
+  .addScale('spacing', () => ({
+    xs: '4px',
+    sm: '8px',
+    md: '16px',
+    lg: '24px',
+    xl: '32px',
+    '2xl': '48px',
+    '3xl': '64px',
+  }));
+```
+
+### Step 5: Create CSS Variables (Optional)
+
+Convert scales to CSS variables for better performance and theming:
+
+```tsx
+const myTheme = createTheme({
+  ...coreTheme,
+})
+  .addColors(myColorPalette)
+  .addColorModes('light', colorModeConfig)
+  .addScale('shadows', shadowConfig)
+  .createScaleVariables('shadows') // Creates --shadow-sm, --shadow-md, etc.
+  .createScaleVariables('borderRadius') // Creates --border-radius-sm, etc.
+  .addName('my-custom-theme')
+  .build();
+```
+
+## Complete Example
+
+Here's a complete example of creating a custom theme:
+
+```tsx
+import { createTheme } from '@codecademy/variance';
+import { coreTheme } from '@codecademy/gamut-styles';
+
+// Define your color palette
+const customPalette = {
+  brand: {
+    primary: '#004C54',
+    secondary: '#A5ACAF',
+    accent: '#FFD700',
+    black: '#000000',
+    white: '#FFFFFF',
+  },
+  emerald: {
+    50: '#F0FDF4',
+    100: '#DCFCE7',
+    200: '#BBF7D0',
+    300: '#86EFAC',
+    400: '#4ADE80',
+    500: '#22C55E',
+    600: '#16A34A',
+    700: '#15803D',
+    800: '#166534',
+    900: '#14532D',
+  },
+  accent: {
+    gold: '#FFD700',
+    silver: '#C0C0C0',
+    copper: '#B87333',
+  },
+};
+
+// Create the theme
+export const customTheme = createTheme({
+  ...coreTheme,
+  // Override font family for this theme
+  fontFamily: {
+    ...coreTheme.fontFamily,
+    heading: 'Inter, system-ui, sans-serif',
+  },
+})
+  .addColors(customPalette)
+  .addColorModes('light', {
+    light: {
+      text: {
+        _: 'brand-black',
+        accent: 'brand-primary',
+        disabled: 'emerald-400',
+        secondary: 'emerald-600',
+      },
+      background: {
+        _: 'brand-white',
+        primary: 'emerald-50',
+        selected: 'brand-primary',
+        hover: 'brand-secondary',
+      },
+      primary: {
+        _: 'brand-primary',
+        hover: 'brand-black',
+        inverse: 'brand-white',
+      },
+      secondary: {
+        _: 'brand-secondary',
+        hover: 'brand-black',
+      },
+      feedback: {
+        success: 'success',
+        warning: 'warning',
+        error: 'error',
+      },
+      border: {
+        primary: 'brand-secondary',
+        secondary: 'emerald-200',
+        tertiary: 'emerald-100',
+        disabled: 'emerald-400',
+      },
+    },
+    dark: {
+      text: {
+        _: 'brand-white',
+        accent: 'accent-gold',
+        disabled: 'emerald-500',
+        secondary: 'brand-secondary',
+      },
+      background: {
+        _: 'brand-black',
+        primary: 'emerald-800',
+        selected: 'brand-primary',
+        hover: 'emerald-700',
+      },
+      primary: {
+        _: 'accent-gold',
+        hover: 'accent-silver',
+        inverse: 'brand-black',
+      },
+      secondary: {
+        _: 'brand-secondary',
+        hover: 'accent-gold',
+      },
+      feedback: {
+        success: 'success',
+        warning: 'warning',
+        error: 'error',
+      },
+      border: {
+        primary: 'brand-primary',
+        secondary: 'emerald-700',
+        tertiary: 'emerald-800',
+        disabled: 'emerald-500',
+      },
+    },
+  })
+  .addScale('shadows', ({ colors }) => ({
+    sm: `0 1px 2px ${colors['brand-secondary']}`,
+    md: `0 4px 6px ${colors['brand-primary']}`,
+    lg: `0 10px 15px ${colors['brand-black']}`,
+    xl: `0 20px 25px ${colors['brand-black']}`,
+  }))
+  .createScaleVariables('shadows')
+  .addName('custom-theme')
+  .build();
+
+export type CustomThemeShape = typeof customTheme;
+export interface CustomTheme extends CustomThemeShape {}
+```
+
+## Using Your Custom Theme
+
+### 1. TypeScript Declaration
+
+Create a theme declaration file:
+
+```tsx
+// theme.d.ts
+import '@emotion/react';
+import { CustomTheme } from './themes/custom';
+
+declare module '@emotion/react' {
+  export interface Theme extends CustomTheme {}
+}
+```
+
+### 2. Provider Setup
+
+Use your theme with the GamutProvider:
+
+```tsx
+import { GamutProvider } from '@codecademy/gamut-styles';
+import { customTheme } from './themes/custom';
+
+function App() {
+  return (
+    <GamutProvider theme={customTheme}>
+      {/* Your app components */}
+    </GamutProvider>
+  );
+}
+```
+
+### 3. Using in Components
+
+Your custom theme will be available in all Gamut components and styled components:
+
+```tsx
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+
+// Using system props
+const Card = styled.div(
+  css({
+    bg: 'background-primary',
+    p: 4,
+    borderRadius: 'md',
+    boxShadow: 'md',
+    border: '1px solid',
+    borderColor: 'border-primary',
+  })
+);
+```
+
+## Theme Builder API Reference
+
+### `createTheme(baseTheme)`
+
+Creates a new theme builder instance.
+
+### `.addColors(colors)`
+
+Adds color tokens to the theme. Colors are automatically converted to CSS variables.
+
+### `.addColorModes(initialMode, modeConfig)`
+
+Configures color modes (light/dark) with semantic color mappings.
+
+### `.addScale(key, createScale)`
+
+Adds a new scale to the theme. The `createScale` function receives the current theme as a parameter.
+
+### `.updateScale(key, updateFn)`
+
+Updates an existing scale with new or computed values.
+
+### `.createScaleVariables(key)`
+
+Converts a scale to CSS variables for better performance.
+
+### `.addName(name)`
+
+Adds a name to the theme for identification.
+
+### `.build()`
+
+Finalizes the theme and returns the complete theme object.
+
+## Best Practices
+
+1. **Always extend from coreTheme**: This ensures compatibility with Gamut components-
+2. **Use semantic color names**: Map your brand colors to semantic tokens (primary, secondary, etc.)
+3. **Provide both light and dark modes**: This ensures your theme works in all contexts
+4. **Use CSS variables for performance**: Convert frequently used scales to CSS variables
+5. **Keep color palettes organized**: Group related colors together (brand, neutral, feedback, etc.)
+6. **Test with Gamut components**: Ensure your theme works well with existing components
+
+## Integration with Gamut Components
+
+All Gamut components automatically use your custom theme through the theme context. The components will:
+
+- Use your custom colors for semantic tokens
+- Apply your custom spacing, typography, and other design tokens
+- Support your color modes (light/dark switching)
+- Maintain type safety with your theme structure
+
+This means you can create a completely custom look and feel while maintaining full compatibility with the Gamut component library.
