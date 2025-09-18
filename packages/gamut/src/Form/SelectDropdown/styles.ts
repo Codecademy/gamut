@@ -19,13 +19,8 @@ import {
   formFieldPaddingStyles,
   InputSelectors,
 } from '../styles';
-import {
-  ContainerState,
-  ControlState,
-  MenuListState,
-  MenuState,
-  OptionState,
-} from './types';
+import { ControlState, OptionState } from './types';
+import { BaseSelectComponentProps } from './types/styles';
 
 const selectDropdownStyles = css({
   ...formBaseFieldStylesObject,
@@ -100,7 +95,7 @@ export const getMemoizedStyles = (
     clearIndicator: (provided) => ({
       ...provided,
     }),
-    container: (provided, state: ContainerState) => {
+    container: (provided, state: BaseSelectComponentProps) => {
       const { inputWidth } = state.selectProps;
       return {
         ...provided,
@@ -146,7 +141,7 @@ export const getMemoizedStyles = (
       padding: '0',
       margin: '0',
     }),
-    menu: (provided, state: MenuState) => {
+    menu: (provided, state: BaseSelectComponentProps) => {
       const { dropdownWidth, menuAlignment } = state.selectProps;
 
       return {
@@ -167,7 +162,7 @@ export const getMemoizedStyles = (
           : {}),
       };
     },
-    menuList: (provided, state: MenuListState) => {
+    menuList: (provided, state: BaseSelectComponentProps) => {
       const sizeInteger = state.selectProps.size === 'small' ? 2 : 3;
       const maxHeight = `${
         (state.selectProps.shownOptionsLimit ?? 6) * sizeInteger

@@ -1,14 +1,13 @@
-import { StyleProps } from '@codecademy/variance';
 import { Ref, SelectHTMLAttributes } from 'react';
 import { Props as NamedProps } from 'react-select';
 
 import { SelectComponentProps } from '../../inputs/Select';
-import { conditionalBorderStates } from '../styles';
 import {
   OptionStrict,
   SelectDropdownGroup,
   SelectDropdownOptions,
 } from './options';
+import { ReactSelectAdditionalProps } from './styles';
 
 /**
  * Safe props that can be passed to the combobox input element.
@@ -19,15 +18,19 @@ export type SafeInternalInputProps = {
 };
 
 /**
- * Shared properties available to all SelectDropdown variants.
- * These props control common behavior and styling across single and multi-select modes.
+ * These props target the internal hidden + combobox components
  */
-export interface SharedProps {
-  /** Additional props to pass to the hidden input element */
+export type InternalInputsProps = {
   inputProps?: {
     hidden?: SafeInternalInputProps;
     combobox?: SafeInternalInputProps;
   };
+};
+/**
+ * Shared properties available to all SelectDropdown variants.
+ * These props control common behavior and styling across single and multi-select modes.
+ */
+export interface SharedProps extends InternalInputsProps {
   /** Maximum number of options to display in the dropdown before scrolling */
   shownOptionsLimit?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Width of the input field */
@@ -38,33 +41,14 @@ export interface SharedProps {
    * This is only relevant when the dropdown width is set to be larger or smaller than the input width.
    */
   menuAlignment?: 'left' | 'right';
-}
-
-/**
- * Size variants for the SelectDropdown component.
- */
-export interface SelectDropdownSizes {
   /** Visual size of the component */
   size?: 'small' | 'medium';
 }
 
 /**
- * Style props for wrapper states like activation and error states.
+ * Size variants for the SelectDropdown component.
  */
-export interface WrapperStyleProps
-  extends Pick<
-    StyleProps<typeof conditionalBorderStates>,
-    'activated' | 'error'
-  > {}
-
-/**
- * Additional props passed to the underlying react-select component.
- * Combines wrapper styles, shared props, and size variants.
- */
-export interface ReactSelectAdditionalProps
-  extends WrapperStyleProps,
-    SharedProps,
-    SelectDropdownSizes {}
+export type SelectDropdownSizes = Pick<SharedProps, 'size'>;
 
 /**
  * Base props for SelectDropdown, excluding props that are handled internally.

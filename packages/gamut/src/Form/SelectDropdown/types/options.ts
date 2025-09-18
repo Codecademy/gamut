@@ -3,6 +3,7 @@ import * as React from 'react';
 import { GroupBase } from 'react-select';
 
 import { SelectOptions } from '../../inputs/Select';
+import { SelectDropdownSizes } from './component-props';
 
 /**
  * Basic option structure with required label and value properties.
@@ -19,11 +20,7 @@ export interface OptionStrict {
  * Option with optional icon support.
  * Extends the basic option structure to include an icon component.
  */
-export interface IconOption {
-  /** The display text for the option */
-  label: string;
-  /** The unique value for the option */
-  value: string;
+export interface IconOption extends OptionStrict {
   /** Optional icon component to display alongside the label */
   icon?: React.ComponentType<GamutIconProps>;
 }
@@ -32,15 +29,13 @@ export interface IconOption {
  * Extended option with additional display features.
  * Supports icons, subtitles, right labels, abbreviations, and disabled state.
  */
-export interface ExtendedOption extends IconOption {
+export interface ExtendedOption extends IconOption, SelectDropdownSizes {
   /** Optional subtitle text displayed below the main label */
   subtitle?: string;
   /** Whether the option is disabled and cannot be selected */
   disabled?: boolean;
   /** Optional text displayed on the right side of the option */
   rightLabel?: string;
-  /** Size specification for the option (typically 'small' or 'medium') */
-  size?: string;
   /** The abbreviated text shown in the input when selected */
   abbreviation?: string;
 }

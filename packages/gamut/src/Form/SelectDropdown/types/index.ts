@@ -7,13 +7,7 @@ export {
 } from './options';
 
 export {
-  SafeInternalInputProps,
-  SharedProps,
   SelectDropdownSizes,
-  WrapperStyleProps,
-  ReactSelectAdditionalProps,
-  SelectDropdownBaseProps,
-  SelectDropdownCoreProps,
   SingleSelectDropdownProps,
   MultiSelectDropdownProps,
   SelectDropdownProps,
@@ -22,18 +16,9 @@ export {
 } from './component-props';
 
 export {
-  InternalSelectProps,
-  ProgramaticFocusRef,
   SelectDropdownContextValueTypes,
   SizedIndicatorProps,
   CustomSelectComponentProps,
 } from './internal';
 
-export {
-  BaseSelectProps,
-  ContainerState,
-  ControlState,
-  MenuState,
-  MenuListState,
-  OptionState,
-} from './styles';
+export { ControlState, OptionState } from './styles';
