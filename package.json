@@ -113,7 +113,8 @@
   "private": true,
   "repository": "git@github.com:Codecademy/gamut.git",
   "resolutions": {
-    "@typescript-eslint/utils": "^5.15.0"
+    "@typescript-eslint/utils": "^5.15.0",
+    "error-ex": "1.3.4"
   },
   "scripts": {
     "build": "nx run-many --target=build --all",
