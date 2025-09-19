@@ -3,26 +3,26 @@ import { useMemo } from 'react';
 import { Controller } from 'react-hook-form';
 
 import { Box } from '../../..';
+import { useField } from '../..';
+import { ConnectedNestedCheckboxesProps } from '../types';
 import {
   calculateStates,
   flattenOptions,
   handleCheckboxChange,
   renderCheckbox,
-} from '../../../ConnectedForm/ConnectedInputs/ConnectedNestedCheckboxes/utils';
-import { BaseFormInputProps, GridFormNestedCheckboxField } from '../../types';
+} from './utils';
 
-export interface GridFormNestedCheckboxInputProps extends BaseFormInputProps {
-  field: GridFormNestedCheckboxField;
-}
+export const ConnectedNestedCheckboxes: React.FC<
+  ConnectedNestedCheckboxesProps
+> = ({ name, options, disabled, onUpdate, spacing }) => {
+  const { isDisabled, control, validation, isRequired } = useField({
+    name,
+    disabled,
+  });
 
-export const GridFormNestedCheckboxInput: React.FC<
-  GridFormNestedCheckboxInputProps
-> = ({ field, required, disabled, error }) => {
-  const isDisabled = disabled || field.disabled;
-
-  const optionsWithSpacing = field.options.map((option) => ({
+  const optionsWithSpacing = options.map((option) => ({
     ...option,
-    spacing: field.spacing,
+    spacing,
   }));
 
   const flatOptions = useMemo(
@@ -32,8 +32,9 @@ export const GridFormNestedCheckboxInput: React.FC<
 
   return (
     <Controller
-      defaultValue={field.defaultValue || []}
-      name={field.name}
+      control={control}
+      defaultValue={[]}
+      name={name}
       render={({ field: { value = [], onChange, onBlur, ref } }) => (
         <Box as="ul" m={0} p={0}>
           {flatOptions.map((option) => {
@@ -42,9 +43,9 @@ export const GridFormNestedCheckboxInput: React.FC<
             return renderCheckbox(
               option,
               state,
-              `${field.name}-${option.value}`,
-              !!required,
-              !!isDisabled,
+              `${name}-${option.value}`,
+              isRequired,
+              isDisabled,
               onBlur,
               (event) => {
                 handleCheckboxChange(
@@ -53,16 +54,15 @@ export const GridFormNestedCheckboxInput: React.FC<
                   value,
                   flatOptions,
                   onChange,
-                  field.onUpdate
+                  onUpdate
                 );
               },
-              ref,
-              error
+              ref
             );
           })}
         </Box>
       )}
-      rules={field.validation}
+      rules={validation}
     />
   );
 };
