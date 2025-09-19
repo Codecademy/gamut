@@ -146,14 +146,17 @@ export const Default = () => {
               value: 'frontend',
               label: 'Frontend Technologies',
               options: [
-                { value: 'react', label: 'React' },
+                {
+                  value: 'react',
+                  label: 'React',
+                  options: [
+                    { value: 'nextjs', label: 'Next.js' },
+                    { value: 'typescript', label: 'TypeScript' },
+                  ],
+                },
                 {
                   value: 'vue',
                   label: 'Vue.js',
-                  options: [
-                    { value: 'test', label: 'Test' },
-                    { value: 'test2', label: 'Test2' },
-                  ],
                 },
                 { value: 'angular', label: 'Angular' },
               ],

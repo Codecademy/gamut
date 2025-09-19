@@ -49,14 +49,17 @@ For further styling configurations, check out <LinkTo id="Atoms/FormInputs/Radio
         value: 'frontend',
         label: 'Frontend Technologies',
         children: [
-          { value: 'react', label: 'React' },
+          {
+            value: 'react',
+            label: 'React',
+            options: [
+              { value: 'nextjs', label: 'Next.js' },
+              { value: 'typescript', label: 'TypeScript' },
+            ],
+          },
           {
             value: 'vue',
             label: 'Vue.js',
-            children: [
-              { value: 'test', label: 'Test' },
-              { value: 'test2', label: 'Test2' },
-            ],
           },
           { value: 'angular', label: 'Angular' },
         ],
