@@ -11,8 +11,20 @@ import { FontConfig, getFonts } from './utils/fontUtils';
 export const createFontLinks = (fonts?: readonly FontConfig[]) => {
   const currentFonts = fonts ?? webFonts.core;
 
+  // Handle cases where fonts is not an array
+  if (!Array.isArray(currentFonts)) {
+    return [];
+  }
+
   return currentFonts
-    .filter((f) => f.extensions.includes('woff2'))
+    .filter(
+      (f) =>
+        f?.extensions &&
+        Array.isArray(f.extensions) &&
+        f.extensions.includes('woff2') &&
+        f.filePath &&
+        f.filePath.trim() !== ''
+    )
     .map(({ filePath }) => (
       <link
         as="font"
@@ -26,8 +38,16 @@ export const createFontLinks = (fonts?: readonly FontConfig[]) => {
 };
 
 export const AssetProvider: React.FC<{ theme?: Theme }> = ({ theme }) => {
-  const defaultTheme = theme ?? coreTheme;
-  const fonts = getFonts(defaultTheme?.name);
+  try {
+    const defaultTheme = theme ?? coreTheme;
+    const themeName = defaultTheme?.name || 'core';
+    const fonts = getFonts(themeName);
 
-  return <>{createFontLinks(fonts)}</>;
+    return <>{createFontLinks(fonts)}</>;
+  } catch (error) {
+    // Handle font loading errors gracefully
+    // eslint-disable-next-line no-console
+    console.warn('Font loading failed:', error);
+    return null;
+  }
 };

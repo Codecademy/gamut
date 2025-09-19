@@ -1,0 +1,282 @@
+import { render } from '@testing-library/react';
+
+import { AssetProvider } from '../AssetProvider';
+import { coreTheme, percipioTheme } from '../themes';
+
+// Mock the fontUtils module
+jest.mock('../utils/fontUtils', () => ({
+  getFonts: jest.fn(),
+}));
+
+// Mock the remoteAssets/fonts module
+jest.mock('../remoteAssets/fonts', () => ({
+  webFonts: {
+    core: [
+      {
+        filePath: 'https://www.codecademy.com/gamut/apercu-regular-pro',
+        extensions: ['woff2', 'woff'],
+        name: 'Apercu',
+      },
+    ],
+    percipio: [
+      {
+        filePath: 'https://www.codecademy.com/gamut/roboto-regular',
+        extensions: ['woff2', 'woff'],
+        name: 'Roboto',
+      },
+    ],
+  },
+}));
+
+const mockGetFonts = require('../utils/fontUtils').getFonts;
+
+// Mock the document.fonts API for testing font loading
+const mockDocumentFonts = {
+  load: jest.fn(),
+  ready: Promise.resolve(),
+  check: jest.fn(),
+  addEventListener: jest.fn(),
+  removeEventListener: jest.fn(),
+};
+
+// Mock the document.fonts property
+Object.defineProperty(document, 'fonts', {
+  value: mockDocumentFonts,
+  writable: true,
+});
+
+// Mock the window.fetch for testing network failures
+const mockFetch = jest.fn();
+global.fetch = mockFetch;
+
+describe('Font Loading and Error Handling', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockDocumentFonts.load.mockClear();
+    mockDocumentFonts.check.mockClear();
+    mockFetch.mockClear();
+  });
+
+  describe('Font Preloading', () => {
+    it('should create preload links for fonts', () => {
+      mockGetFonts.mockReturnValue([
+        {
+          filePath: 'https://www.codecademy.com/gamut/test-font',
+          extensions: ['woff2', 'woff'],
+          name: 'Test Font',
+        },
+      ]);
+
+      const { container } = render(<AssetProvider theme={coreTheme} />);
+
+      const links = container.querySelectorAll('link[rel="preload"]');
+      expect(links).toHaveLength(1);
+      expect(links[0]).toHaveAttribute(
+        'href',
+        'https://www.codecademy.com/gamut/test-font.woff2'
+      );
+      expect(links[0]).toHaveAttribute('type', 'font/woff2');
+      expect(links[0]).toHaveAttribute('as', 'font');
+    });
+
+    it('should handle multiple fonts preloading', () => {
+      mockGetFonts.mockReturnValue([
+        {
+          filePath: 'https://www.codecademy.com/gamut/font1',
+          extensions: ['woff2'],
+          name: 'Font 1',
+        },
+        {
+          filePath: 'https://www.codecademy.com/gamut/font2',
+          extensions: ['woff2'],
+          name: 'Font 2',
+        },
+      ]);
+
+      const { container } = render(<AssetProvider theme={coreTheme} />);
+
+      const links = container.querySelectorAll('link[rel="preload"]');
+      expect(links).toHaveLength(2);
+      expect(links[0]).toHaveAttribute(
+        'href',
+        'https://www.codecademy.com/gamut/font1.woff2'
+      );
+      expect(links[1]).toHaveAttribute(
+        'href',
+        'https://www.codecademy.com/gamut/font2.woff2'
+      );
+    });
+  });
+
+  describe('Font Loading Failures', () => {
+    it('should handle getFonts throwing an error', () => {
+      mockGetFonts.mockImplementation(() => {
+        throw new Error('Font loading failed');
+      });
+
+      const { container } = render(<AssetProvider theme={coreTheme} />);
+
+      // Should not render any links when getFonts fails
+      const links = container.querySelectorAll('link[rel="preload"]');
+      expect(links).toHaveLength(0);
+    });
+
+    it('should handle malformed font configurations', () => {
+      mockGetFonts.mockReturnValue([
+        {
+          filePath: 'https://www.codecademy.com/gamut/valid-font',
+          extensions: ['woff2'],
+          name: 'Valid Font',
+        },
+        {
+          // Malformed font config
+          filePath: '',
+          extensions: ['woff2'],
+          name: 'Invalid Font',
+        } as any,
+        {
+          filePath: 'https://www.codecademy.com/gamut/another-valid-font',
+          extensions: ['woff2'],
+          name: 'Another Valid Font',
+        },
+      ]);
+
+      const { container } = render(<AssetProvider theme={coreTheme} />);
+
+      // Should only render valid fonts
+      const links = container.querySelectorAll('link[rel="preload"]');
+      expect(links).toHaveLength(2);
+    });
+  });
+
+  describe('Font Fallback Behavior', () => {
+    it('should create preload links for all valid fonts', () => {
+      mockGetFonts.mockReturnValue([
+        {
+          filePath: 'https://www.codecademy.com/gamut/font1',
+          extensions: ['woff2'],
+          name: 'Font 1',
+        },
+        {
+          filePath: 'https://www.codecademy.com/gamut/font2',
+          extensions: ['woff2'],
+          name: 'Font 2',
+        },
+      ]);
+
+      const { container } = render(<AssetProvider theme={coreTheme} />);
+
+      // Should render preload links for all fonts
+      const links = container.querySelectorAll('link[rel="preload"]');
+      expect(links).toHaveLength(2);
+      expect(links[0]).toHaveAttribute(
+        'href',
+        'https://www.codecademy.com/gamut/font1.woff2'
+      );
+      expect(links[1]).toHaveAttribute(
+        'href',
+        'https://www.codecademy.com/gamut/font2.woff2'
+      );
+    });
+  });
+
+  describe('Browser Compatibility', () => {
+    it('should handle browsers without document.fonts API', () => {
+      // Mock document.fonts as undefined
+      const originalFonts = document.fonts;
+      Object.defineProperty(document, 'fonts', {
+        value: undefined,
+        writable: true,
+      });
+
+      mockGetFonts.mockReturnValue([
+        {
+          filePath: 'https://www.codecademy.com/gamut/test-font',
+          extensions: ['woff2'],
+          name: 'Test Font',
+        },
+      ]);
+
+      const { container } = render(<AssetProvider theme={coreTheme} />);
+
+      // Should still render the preload links
+      const links = container.querySelectorAll('link[rel="preload"]');
+      expect(links).toHaveLength(1);
+
+      // Restore original fonts
+      Object.defineProperty(document, 'fonts', {
+        value: originalFonts,
+        writable: true,
+      });
+    });
+
+    it('should handle browsers without fetch API', () => {
+      // Mock fetch as undefined
+      const originalFetch = global.fetch;
+      global.fetch = undefined as any;
+
+      mockGetFonts.mockReturnValue([
+        {
+          filePath: 'https://www.codecademy.com/gamut/test-font',
+          extensions: ['woff2'],
+          name: 'Test Font',
+        },
+      ]);
+
+      const { container } = render(<AssetProvider theme={coreTheme} />);
+
+      // Should still render the preload links
+      const links = container.querySelectorAll('link[rel="preload"]');
+      expect(links).toHaveLength(1);
+
+      // Restore original fetch
+      global.fetch = originalFetch;
+    });
+  });
+
+  describe('Performance and Memory', () => {
+    it('should not cause memory leaks with repeated rendering', () => {
+      mockGetFonts.mockReturnValue([
+        {
+          filePath: 'https://www.codecademy.com/gamut/test-font',
+          extensions: ['woff2'],
+          name: 'Test Font',
+        },
+      ]);
+
+      // Render and unmount multiple times
+      for (let i = 0; i < 10; i += 1) {
+        const { unmount } = render(<AssetProvider theme={coreTheme} />);
+        unmount();
+      }
+
+      // Should not throw any errors
+      expect(() => {
+        render(<AssetProvider theme={coreTheme} />);
+      }).not.toThrow();
+    });
+
+    it('should handle rapid theme changes without errors', () => {
+      mockGetFonts.mockReturnValue([
+        {
+          filePath: 'https://www.codecademy.com/gamut/test-font',
+          extensions: ['woff2'],
+          name: 'Test Font',
+        },
+      ]);
+
+      // Rapidly switch between themes
+      const { rerender } = render(<AssetProvider theme={coreTheme} />);
+
+      for (let i = 0; i < 5; i += 1) {
+        rerender(<AssetProvider theme={percipioTheme} />);
+        rerender(<AssetProvider theme={coreTheme} />);
+      }
+
+      // Should not throw any errors
+      expect(() => {
+        rerender(<AssetProvider theme={percipioTheme} />);
+      }).not.toThrow();
+    });
+  });
+});
