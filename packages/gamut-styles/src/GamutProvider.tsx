@@ -65,7 +65,6 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
 
   const globals = shouldInsertGlobals && (
     <>
-      <AssetProvider theme={theme} />
       <Typography theme={theme} />
       <Reboot theme={theme} />
       <Variables variables={theme._variables} />
