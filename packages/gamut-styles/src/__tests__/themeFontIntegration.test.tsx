@@ -245,7 +245,7 @@ describe('Theme Font Integration', () => {
 
       for (let i = 0; i < 10; i += 1) {
         rerender(
-          <GamutProvider theme={lxStudioTheme as any}>
+          <GamutProvider theme={lxStudioTheme}>
             <div>Test content</div>
           </GamutProvider>
         );

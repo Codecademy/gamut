@@ -184,7 +184,7 @@ describe('AssetProvider', () => {
     });
 
     it('should handle theme without name property', () => {
-      const themeWithoutName = { ...coreTheme, name: undefined } as any;
+      const themeWithoutName = { ...coreTheme, name: undefined };
       mockGetFonts.mockReturnValue([]);
 
       render(<AssetProvider theme={themeWithoutName} />);

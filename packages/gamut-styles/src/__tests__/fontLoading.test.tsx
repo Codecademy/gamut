@@ -192,7 +192,7 @@ describe('Font Loading and Error Handling', () => {
 
       const { container } = render(<AssetProvider theme={coreTheme} />);
 
-=      const links = container.querySelectorAll('link[rel="preload"]');
+      const links = container.querySelectorAll('link[rel="preload"]');
       expect(links).toHaveLength(1);
 
       // Restore original fonts
