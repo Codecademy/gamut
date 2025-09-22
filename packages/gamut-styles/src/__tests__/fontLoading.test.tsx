@@ -3,6 +3,9 @@ import { render } from '@testing-library/react';
 import { AssetProvider } from '../AssetProvider';
 import { coreTheme, percipioTheme } from '../themes';
 
+// Type assertion to satisfy Theme interface in GamutProvider from theme.d.ts - this lib is type to the CoreTheme interface
+const typedPercipioTheme = percipioTheme as any;
+
 jest.mock('../utils/fontUtils', () => ({
   getFonts: jest.fn(),
 }));
@@ -257,12 +260,12 @@ describe('Font Loading and Error Handling', () => {
       const { rerender } = render(<AssetProvider theme={coreTheme} />);
 
       for (let i = 0; i < 5; i += 1) {
-        rerender(<AssetProvider theme={percipioTheme} />);
+        rerender(<AssetProvider theme={typedPercipioTheme} />);
         rerender(<AssetProvider theme={coreTheme} />);
       }
 
       expect(() => {
-        rerender(<AssetProvider theme={percipioTheme} />);
+        rerender(<AssetProvider theme={typedPercipioTheme} />);
       }).not.toThrow();
     });
   });
