@@ -7,6 +7,9 @@ import {
   lxStudioPalette,
   percipioPalette,
   platformPalette,
+  adminTheme,
+  lxStudioTheme,
+  percipioTheme,
 } from '@codecademy/gamut-styles';
 import { MDXProvider } from '@mdx-js/react';
 import {
@@ -24,12 +27,18 @@ import { HelmetProvider } from 'react-helmet-async';
 import theme from '../../theming/GamutTheme';
 import { createTheme } from '@codecademy/variance';
 
-// this theme gives us access to the platform and lx studio tokens for the storybook
 export const storybookTheme = createTheme(coreTheme)
   .addColors(lxStudioPalette)
   .addColors(percipioPalette)
   .addColors(platformPalette)
   .build();
+
+const themeMap = {
+  core: coreTheme,
+  admin: adminTheme,
+  lxStudio: lxStudioTheme,
+  percipio: percipioTheme,
+} as const;
 
 const WrappedPre = styled(htmlComponents.pre)(
   // gives the source block a white background - pretty fragile but easy to change if needed
@@ -50,17 +59,25 @@ export const DocsContainer: React.FC<{
   context: DocsContextProps;
   children: React.ReactNode;
 }> = ({ context, children }, ...rest) => {
+  /** Select the docs theme based on the global toolbar item
+   *  a bit fragile - when updating Storybook this likely will need to be changed
+   */
+  const selectedTheme =
+    (context as any).store.userGlobals?.globals?.theme || 'core';
+  const currentTheme =
+    themeMap[selectedTheme as keyof typeof themeMap] || coreTheme;
+
   return (
     <StorybookDocsContainer theme={theme} context={context} {...rest}>
       <GamutProvider
         cache={createEmotionCache({ speedy: false })}
-        theme={storybookTheme}
+        theme={currentTheme as any}
       >
         <HelmetProvider>
           <AssetProvider />
         </HelmetProvider>
         <SourceContainer channel={context.channel}>
-          <ThemeProvider theme={coreTheme}>
+          <ThemeProvider theme={currentTheme as any}>
             <MDXProvider components={defaultComponents}>{children}</MDXProvider>
           </ThemeProvider>
         </SourceContainer>
