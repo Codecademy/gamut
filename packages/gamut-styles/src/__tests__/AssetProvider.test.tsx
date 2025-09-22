@@ -85,7 +85,7 @@ describe('AssetProvider', () => {
     it('should handle undefined fonts parameter', () => {
       const { container } = render(<>{createFontLinks(undefined)}</>);
       const links = container.querySelectorAll('link[rel="preload"]');
-      expect(links).toHaveLength(2); // Should use core fonts
+      expect(links).toHaveLength(2);
     });
 
     it('should filter out fonts without woff2 extension', () => {
@@ -138,7 +138,6 @@ describe('AssetProvider', () => {
 
       const { container } = render(<>{createFontLinks(fonts)}</>);
       const links = container.querySelectorAll('link[rel="preload"]');
-      // Should filter out malformed fonts
       expect(links).toHaveLength(2);
     });
   });
@@ -205,31 +204,28 @@ describe('AssetProvider', () => {
         throw new Error('Font loading failed');
       });
 
-      // Should not throw, but should handle gracefully
       const { container } = render(<AssetProvider />);
       const links = container.querySelectorAll('link[rel="preload"]');
       expect(links).toHaveLength(0);
     });
 
-    it('should handle getFonts returning undefined', () => {
+    it('should fallback to core fonts when getFonts returns undefined', () => {
       mockGetFonts.mockReturnValue(undefined);
 
       const { container } = render(<AssetProvider />);
       const links = container.querySelectorAll('link[rel="preload"]');
-      // Should fallback to core fonts
       expect(links).toHaveLength(2);
     });
 
-    it('should handle getFonts returning null', () => {
+    it('should fallback to core fonts when getFonts returns null', () => {
       mockGetFonts.mockReturnValue(null);
 
       const { container } = render(<AssetProvider />);
       const links = container.querySelectorAll('link[rel="preload"]');
-      // Should fallback to core fonts
       expect(links).toHaveLength(2);
     });
 
-    it('should handle getFonts returning non-array', () => {
+    it('should fallback to core fonts when getFonts returns non-array', () => {
       mockGetFonts.mockReturnValue('not-an-array');
 
       const { container } = render(<AssetProvider />);
@@ -274,7 +270,7 @@ describe('AssetProvider', () => {
       );
     });
 
-    it('should handle font configurations with missing filePath', () => {
+    it('should only rnder valid font configurations ', () => {
       mockGetFonts.mockReturnValue([
         {
           filePath: 'https://www.codecademy.com/gamut/valid-font',
@@ -296,7 +292,6 @@ describe('AssetProvider', () => {
       const { container } = render(<AssetProvider />);
       const links = container.querySelectorAll('link[rel="preload"]');
 
-      // Should only render the valid font
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
         'href',
@@ -326,7 +321,6 @@ describe('AssetProvider', () => {
       const { container } = render(<AssetProvider />);
       const links = container.querySelectorAll('link[rel="preload"]');
 
-      // Should only render the font with woff2 extension
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
         'href',

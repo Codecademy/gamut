@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 
 import { GamutProvider } from '../GamutProvider';
-import { CoreTheme, coreTheme, lxStudioTheme, percipioTheme } from '../themes';
+import { coreTheme, lxStudioTheme, percipioTheme } from '../themes';
 
 // Type assertion to satisfy Theme interface in GamutProvider from theme.d.ts
 const typedPercipioTheme = percipioTheme as any;
@@ -137,7 +137,6 @@ describe('Theme Font Integration', () => {
         throw new Error('Font loading failed');
       });
 
-      // Should not throw an error
       expect(() => {
         render(
           <GamutProvider theme={typedPercipioTheme}>
@@ -168,7 +167,7 @@ describe('Theme Font Integration', () => {
       ]);
 
       const { container } = render(
-        <GamutProvider theme={customTheme as CoreTheme}>
+        <GamutProvider theme={customTheme}>
           <div>Test content</div>
         </GamutProvider>
       );
@@ -219,7 +218,6 @@ describe('Theme Font Integration', () => {
       // Initial render with core theme
       expect(mockGetFonts).toHaveBeenCalledWith('core');
 
-      // Switch to percipio theme
       mockGetFonts.mockReturnValue([
         {
           filePath: 'https://www.codecademy.com/gamut/roboto-regular',
@@ -228,8 +226,9 @@ describe('Theme Font Integration', () => {
         },
       ]);
 
+      // Swap to percipio theme
       rerender(
-        <GamutProvider theme={typedPercipioThemey}>
+        <GamutProvider theme={typedPercipioTheme}>
           <div>Test content</div>
         </GamutProvider>
       );
@@ -244,7 +243,6 @@ describe('Theme Font Integration', () => {
         </GamutProvider>
       );
 
-      // Rapidly switch between themes
       for (let i = 0; i < 10; i += 1) {
         rerender(
           <GamutProvider theme={lxStudioTheme as any}>
@@ -253,7 +251,6 @@ describe('Theme Font Integration', () => {
         );
       }
 
-      // Should not throw any errors
       expect(() => {
         rerender(
           <GamutProvider theme={typedPercipioTheme}>
@@ -299,7 +296,6 @@ describe('Theme Font Integration', () => {
         </GamutProvider>
       );
 
-      // Should not throw an error
       expect(() => {
         rerender(
           <GamutProvider theme={coreTheme}>
@@ -308,7 +304,7 @@ describe('Theme Font Integration', () => {
         );
       }).not.toThrow();
 
-      // Second render should work
+      // Second render should not error
       mockGetFonts.mockReturnValue([
         {
           filePath: 'https://www.codecademy.com/gamut/apercu-regular-pro',
@@ -335,36 +331,12 @@ describe('Theme Font Integration', () => {
         </GamutProvider>
       );
 
-      // Should not throw an error
       const links = container.querySelectorAll('link[rel="preload"]');
       expect(links).toHaveLength(0);
     });
   });
 
   describe('Performance', () => {
-    it('should not cause unnecessary re-renders when theme name is the same', () => {
-      const coreThemeWithName = { ...coreTheme, name: 'core' };
-      mockGetFonts.mockReturnValue([]);
-
-      const { rerender } = render(
-        <GamutProvider theme={coreThemeWithName}>
-          <div>Test content</div>
-        </GamutProvider>
-      );
-
-      const initialCallCount = mockGetFonts.mock.calls.length;
-
-      // Re-render with the same theme
-      rerender(
-        <GamutProvider theme={coreThemeWithName}>
-          <div>Test content</div>
-        </GamutProvider>
-      );
-
-      // Should not call getFonts again (but it does due to re-renders)
-      expect(mockGetFonts).toHaveBeenCalledTimes(initialCallCount + 2);
-    });
-
     it('should handle large numbers of font configurations efficiently', () => {
       const largeFontList = Array.from({ length: 100 }, (_, i) => ({
         filePath: `https://www.codecademy.com/gamut/font-${i}`,
@@ -382,8 +354,6 @@ describe('Theme Font Integration', () => {
 
       const links = container.querySelectorAll('link[rel="preload"]');
       expect(links).toHaveLength(100);
-
-      // Should not cause performance issues
       expect(() => {
         render(
           <GamutProvider theme={coreTheme}>

@@ -94,7 +94,6 @@ describe('fontUtils', () => {
 
   describe('error handling', () => {
     it('should handle webFonts being undefined', () => {
-      // Mock webFonts as undefined
       const originalWebFonts = require('../../remoteAssets/fonts').webFonts;
       jest.doMock('../../remoteAssets/fonts', () => ({
         webFonts: undefined,
@@ -106,7 +105,6 @@ describe('fontUtils', () => {
 
       expect(() => getFontsWithUndefined('core')).toThrow();
 
-      // Restore original mock
       jest.doMock('../../remoteAssets/fonts', () => ({
         webFonts: originalWebFonts,
       }));
@@ -126,7 +124,6 @@ describe('fontUtils', () => {
 
       expect(() => getFontsWithUndefinedCore('core')).not.toThrow();
 
-      // Restore original mock
       jest.doMock('../../remoteAssets/fonts', () => ({
         webFonts: originalWebFonts,
       }));

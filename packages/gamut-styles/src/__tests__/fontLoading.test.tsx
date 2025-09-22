@@ -3,12 +3,10 @@ import { render } from '@testing-library/react';
 import { AssetProvider } from '../AssetProvider';
 import { coreTheme, percipioTheme } from '../themes';
 
-// Mock the fontUtils module
 jest.mock('../utils/fontUtils', () => ({
   getFonts: jest.fn(),
 }));
 
-// Mock the remoteAssets/fonts module
 jest.mock('../remoteAssets/fonts', () => ({
   webFonts: {
     core: [
@@ -30,7 +28,6 @@ jest.mock('../remoteAssets/fonts', () => ({
 
 const mockGetFonts = require('../utils/fontUtils').getFonts;
 
-// Mock the document.fonts API for testing font loading
 const mockDocumentFonts = {
   load: jest.fn(),
   ready: Promise.resolve(),
@@ -39,13 +36,11 @@ const mockDocumentFonts = {
   removeEventListener: jest.fn(),
 };
 
-// Mock the document.fonts property
 Object.defineProperty(document, 'fonts', {
   value: mockDocumentFonts,
   writable: true,
 });
 
-// Mock the window.fetch for testing network failures
 const mockFetch = jest.fn();
 global.fetch = mockFetch;
 
@@ -143,7 +138,6 @@ describe('Font Loading and Error Handling', () => {
 
       const { container } = render(<AssetProvider theme={coreTheme} />);
 
-      // Should only render valid fonts
       const links = container.querySelectorAll('link[rel="preload"]');
       expect(links).toHaveLength(2);
     });
@@ -182,7 +176,6 @@ describe('Font Loading and Error Handling', () => {
 
   describe('Browser Compatibility', () => {
     it('should handle browsers without document.fonts API', () => {
-      // Mock document.fonts as undefined
       const originalFonts = document.fonts;
       Object.defineProperty(document, 'fonts', {
         value: undefined,
@@ -199,8 +192,7 @@ describe('Font Loading and Error Handling', () => {
 
       const { container } = render(<AssetProvider theme={coreTheme} />);
 
-      // Should still render the preload links
-      const links = container.querySelectorAll('link[rel="preload"]');
+=      const links = container.querySelectorAll('link[rel="preload"]');
       expect(links).toHaveLength(1);
 
       // Restore original fonts
@@ -211,7 +203,6 @@ describe('Font Loading and Error Handling', () => {
     });
 
     it('should handle browsers without fetch API', () => {
-      // Mock fetch as undefined
       const originalFetch = global.fetch;
       global.fetch = undefined as any;
 
@@ -225,7 +216,6 @@ describe('Font Loading and Error Handling', () => {
 
       const { container } = render(<AssetProvider theme={coreTheme} />);
 
-      // Should still render the preload links
       const links = container.querySelectorAll('link[rel="preload"]');
       expect(links).toHaveLength(1);
 
@@ -244,13 +234,11 @@ describe('Font Loading and Error Handling', () => {
         },
       ]);
 
-      // Render and unmount multiple times
       for (let i = 0; i < 10; i += 1) {
         const { unmount } = render(<AssetProvider theme={coreTheme} />);
         unmount();
       }
 
-      // Should not throw any errors
       expect(() => {
         render(<AssetProvider theme={coreTheme} />);
       }).not.toThrow();
@@ -273,7 +261,6 @@ describe('Font Loading and Error Handling', () => {
         rerender(<AssetProvider theme={coreTheme} />);
       }
 
-      // Should not throw any errors
       expect(() => {
         rerender(<AssetProvider theme={percipioTheme} />);
       }).not.toThrow();
