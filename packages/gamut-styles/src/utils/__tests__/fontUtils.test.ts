@@ -1,7 +1,6 @@
-import { getFonts } from '../fontUtils';
 import { webFonts } from '../../remoteAssets/fonts';
+import { getFonts } from '../fontUtils';
 
-// Mock the webFonts module
 jest.mock('../../remoteAssets/fonts', () => ({
   webFonts: {
     core: [
@@ -34,8 +33,6 @@ jest.mock('../../remoteAssets/fonts', () => ({
 }));
 
 describe('fontUtils', () => {
-  // Note: isThemeName is not exported, so we test it indirectly through getFonts
-
   describe('getFonts', () => {
     it('should return core fonts when themeName is undefined', () => {
       const fonts = getFonts(undefined);
@@ -74,12 +71,11 @@ describe('fontUtils', () => {
 
     it('should handle case sensitivity', () => {
       const fonts = getFonts('PERCIPIO');
-      expect(fonts).toBe(webFonts.core); // Should fallback to core for case mismatch
+      expect(fonts).toBe(webFonts.core);
     });
 
     it('should return a readonly array', () => {
       const fonts = getFonts('percipio');
-      // The array is readonly by TypeScript definition, but may not be frozen at runtime
       expect(Array.isArray(fonts)).toBe(true);
     });
 
@@ -128,7 +124,6 @@ describe('fontUtils', () => {
       jest.resetModules();
       const { getFonts: getFontsWithUndefinedCore } = require('../fontUtils');
 
-      // Should fallback gracefully instead of throwing
       expect(() => getFontsWithUndefinedCore('core')).not.toThrow();
 
       // Restore original mock
