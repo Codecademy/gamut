@@ -70,10 +70,12 @@ export const DocsContainer: React.FC<{
   /** Select the docs theme based on the global toolbar item unless it is a theme specific story
    *  a bit fragile - when updating Storybook this likely will need to be changed
    */
-  const findThemeStory: keyof typeof themeSpecificStories =
-    context?.channel?.data?.storySpecified[0]?.storyId;
+  const findThemeStory: keyof typeof themeSpecificStories | undefined = (
+    context?.channel as any
+  )?.data?.storySpecified[0]?.storyId;
 
   const isThemeStory =
+    findThemeStory &&
     Object.keys(themeSpecificStories).includes(findThemeStory);
 
   const selectedTheme = isThemeStory
