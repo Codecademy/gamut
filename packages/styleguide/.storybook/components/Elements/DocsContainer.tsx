@@ -4,8 +4,6 @@ import {
   createEmotionCache,
   css,
   GamutProvider,
-  lxStudioPalette,
-  percipioPalette,
   platformPalette,
   adminTheme,
   lxStudioTheme,
@@ -28,8 +26,6 @@ import theme from '../../theming/GamutTheme';
 import { createTheme } from '@codecademy/variance';
 
 export const storybookTheme = createTheme(coreTheme)
-  .addColors(lxStudioPalette)
-  .addColors(percipioPalette)
   .addColors(platformPalette)
   .build();
 
@@ -38,6 +34,11 @@ const themeMap = {
   admin: adminTheme,
   lxStudio: lxStudioTheme,
   percipio: percipioTheme,
+  /* The Platform theme is a sub-theme of the Core theme, so it doesn't work as a standalone.
+   * This is a workaround so that the Platform colors show up in the Platform theme story but keep
+   * the main Core theme.
+   */
+  platform: storybookTheme,
 } as const;
 
 const WrappedPre = styled(htmlComponents.pre)(
@@ -55,17 +56,34 @@ const defaultComponents = {
   a: Link as any,
 };
 
+const themeSpecificStories = {
+  'foundations-theme-lx-studio-theme--docs': 'lxStudio',
+  'foundations-theme-percipio-theme--docs': 'percipio',
+  'foundations-theme-platform-theme--docs': 'platform',
+  'foundations-theme-admin-theme--docs': 'admin',
+  'foundations-theme-core-theme--docs': 'core',
+};
 export const DocsContainer: React.FC<{
   context: DocsContextProps;
   children: React.ReactNode;
 }> = ({ context, children }, ...rest) => {
-  /** Select the docs theme based on the global toolbar item
+  /** Select the docs theme based on the global toolbar item unless it is a theme specific story
    *  a bit fragile - when updating Storybook this likely will need to be changed
    */
-  const selectedTheme =
-    (context as any).store.userGlobals?.globals?.theme || 'core';
-  const currentTheme =
-    themeMap[selectedTheme as keyof typeof themeMap] || coreTheme;
+  const findThemeStory: keyof typeof themeSpecificStories =
+    context?.channel?.data?.storySpecified[0]?.storyId;
+
+  const isThemeStory =
+    Object.keys(themeSpecificStories).includes(findThemeStory);
+
+  const selectedTheme = isThemeStory
+    ? themeSpecificStories[findThemeStory]
+    : (context as any).store.userGlobals?.globals?.theme || 'core';
+
+  const currentTheme = themeMap[selectedTheme as keyof typeof themeMap];
+
+  console.log(selectedTheme);
+  console.log(isThemeStory);
 
   return (
     <StorybookDocsContainer theme={theme} context={context} {...rest}>
