@@ -68,7 +68,7 @@ export const DocsContainer: React.FC<{
   children: React.ReactNode;
 }> = ({ context, children }, ...rest) => {
   /** Select the docs theme based on the global toolbar item unless it is a theme specific story
-   *  a bit fragile - when updating Storybook this likely will need to be changed
+   *  This is admittedly a bit fragile - when updating Storybook this likely will need to be changed
    */
   const findThemeStory: keyof typeof themeSpecificStories | undefined = (
     context?.channel as any
