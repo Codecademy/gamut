@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import {
   openDropdown,
@@ -126,7 +127,9 @@ describe('SelectDropdown', () => {
 
     await openDropdown(view);
 
-    await userEvent.click(view.getByText('red'));
+    await act(async () => {
+      await userEvent.click(view.getByText('red'));
+    });
 
     expect(onInputChange).toHaveBeenCalled();
   });
@@ -139,10 +142,14 @@ describe('SelectDropdown', () => {
     });
 
     await openDropdown(view);
-    await userEvent.click(view.getByText('red'));
+    await act(async () => {
+      await userEvent.click(view.getByText('red'));
+    });
 
     await openDropdown(view);
-    await userEvent.click(view.getByText('green'));
+    await act(async () => {
+      await userEvent.click(view.getByText('green'));
+    });
 
     view.getByText('red');
     view.getByText('green');
@@ -187,12 +194,15 @@ describe('SelectDropdown', () => {
     });
 
     await openDropdown(view);
-    await userEvent.click(view.getByText('United States of America'));
+    await act(async () => {
+      await userEvent.click(view.getByText('United States of America'));
+    });
 
     await openDropdown(view);
-    await userEvent.click(view.getByText('United Kingdom'));
+    await act(async () => {
+      await userEvent.click(view.getByText('United Kingdom'));
+    });
 
-    // Check that abbreviations are displayed in the selected values
     view.getByText('USA');
     view.getByText('UK');
 
@@ -236,5 +246,163 @@ describe('SelectDropdown', () => {
         option: undefined,
       }
     );
+  });
+
+  describe('inputProps functionality', () => {
+    it('should apply combobox and hidden props in non-searchable mode (default)', () => {
+      const { view } = renderView({
+        isSearchable: false,
+        inputProps: {
+          hidden: {
+            'data-form-field': 'test-field',
+            'data-hidden-attr': 'hidden-value',
+          },
+          combobox: {
+            'data-testid': 'non-searchable-combobox',
+            'data-custom-attr': 'custom-value',
+          },
+        },
+      });
+
+      const comboboxInput = view.getByRole('combobox');
+      expect(comboboxInput).toHaveAttribute(
+        'data-testid',
+        'non-searchable-combobox'
+      );
+      expect(comboboxInput).toHaveAttribute('data-custom-attr', 'custom-value');
+
+      const hiddenInput = view.container.querySelector(
+        'input[type="hidden"][data-form-field="test-field"]'
+      );
+      expect(hiddenInput).toHaveAttribute('data-form-field', 'test-field');
+      expect(hiddenInput).toHaveAttribute('data-hidden-attr', 'hidden-value');
+    });
+
+    it('should apply combobox and hidden props in searchable mode', () => {
+      const { view } = renderView({
+        isSearchable: true,
+        inputProps: {
+          hidden: {
+            'data-form-field': 'searchable-field',
+            'data-hidden-attr': 'searchable-hidden-value',
+          },
+          combobox: {
+            'data-testid': 'searchable-combobox',
+            'data-custom-attr': 'searchable-custom-value',
+          },
+        },
+      });
+
+      const comboboxInput = view.getByRole('combobox');
+      expect(comboboxInput).toHaveAttribute(
+        'data-testid',
+        'searchable-combobox'
+      );
+      expect(comboboxInput).toHaveAttribute(
+        'data-custom-attr',
+        'searchable-custom-value'
+      );
+
+      const hiddenInput = view.container.querySelector(
+        'input[type="hidden"][data-form-field="searchable-field"]'
+      );
+      expect(hiddenInput).toHaveAttribute(
+        'data-form-field',
+        'searchable-field'
+      );
+      expect(hiddenInput).toHaveAttribute(
+        'data-hidden-attr',
+        'searchable-hidden-value'
+      );
+    });
+
+    it('should work with only combobox props (no hidden props)', () => {
+      const { view } = renderView({
+        isSearchable: false,
+        inputProps: {
+          combobox: {
+            'data-testid': 'combobox-only',
+            'data-aria-label': 'Custom combobox label',
+          },
+        },
+      });
+
+      const comboboxInput = view.getByRole('combobox');
+      expect(comboboxInput).toHaveAttribute('data-testid', 'combobox-only');
+      expect(comboboxInput).toHaveAttribute(
+        'data-aria-label',
+        'Custom combobox label'
+      );
+    });
+
+    it('should work with only hidden props (no combobox props)', () => {
+      const { view } = renderView({
+        isSearchable: true,
+        inputProps: {
+          hidden: {
+            'data-form-field': 'hidden-only',
+            'data-validation': 'required',
+          },
+        },
+      });
+
+      const comboboxInput = view.getByRole('combobox');
+      // Should not have any combobox-specific attributes
+      expect(comboboxInput).not.toHaveAttribute('data-form-field');
+      expect(comboboxInput).not.toHaveAttribute('data-validation');
+
+      const hiddenInput = view.container.querySelector(
+        'input[type="hidden"][data-form-field="hidden-only"]'
+      );
+      expect(hiddenInput).toHaveAttribute('data-form-field', 'hidden-only');
+      expect(hiddenInput).toHaveAttribute('data-validation', 'required');
+    });
+
+    it('should handle multiple data attributes in combobox props', () => {
+      const { view } = renderView({
+        isSearchable: false,
+        inputProps: {
+          combobox: {
+            'data-testid': 'multi-attr-test',
+            'data-cy': 'combobox-element',
+            'data-analytics': 'user-interaction',
+            'data-tracking': 'form-field',
+            'aria-describedby': 'help-text',
+          },
+        },
+      });
+
+      const comboboxInput = view.getByRole('combobox');
+      expect(comboboxInput).toHaveAttribute('data-testid', 'multi-attr-test');
+      expect(comboboxInput).toHaveAttribute('data-cy', 'combobox-element');
+      expect(comboboxInput).toHaveAttribute(
+        'data-analytics',
+        'user-interaction'
+      );
+      expect(comboboxInput).toHaveAttribute('data-tracking', 'form-field');
+      expect(comboboxInput).toHaveAttribute('aria-describedby', 'help-text');
+    });
+
+    it('should handle boolean and number values in combobox props', () => {
+      const { view } = renderView({
+        isSearchable: true,
+        inputProps: {
+          combobox: {
+            'data-testid': 'type-test',
+            'data-boolean-true': true,
+            'data-boolean-false': false,
+            'data-number': 42,
+            'data-zero': 0,
+          },
+        },
+      });
+
+      const comboboxInput = view.getByRole('combobox');
+      expect(comboboxInput).toHaveAttribute('data-testid', 'type-test');
+      expect(comboboxInput).toHaveAttribute('data-boolean-true', 'true');
+      expect(comboboxInput).toHaveAttribute('data-boolean-false', 'false');
+      expect(comboboxInput).toHaveAttribute('data-number', '42');
+      expect(comboboxInput).toHaveAttribute('data-zero', '0');
+    });
   });
 });
