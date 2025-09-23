@@ -17,11 +17,7 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
     const isOrderedHeader = isOl && isHeader;
 
     const colEl =
-      isTable && !sticky && (isHeader || columnHeader)
-        ? 'th'
-        : !isTable || sticky
-        ? 'div'
-        : 'td';
+      !isTable || sticky ? 'div' : isHeader || columnHeader ? 'th' : 'td';
 
     const col = (
       <ColEl
@@ -41,7 +37,7 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
     if (sticky) {
       return (
         <StickyHeaderColWrapper
-          aria-sort={ariaSort}
+          aria-sort={isTable ? ariaSort : undefined}
           as={isTable ? 'th' : 'div'}
           data-testid="header-container"
         >
