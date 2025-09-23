@@ -120,6 +120,7 @@ const meta: Meta<typeof GridForm> = {
         label: 'Nested checkboxes',
         name: 'nested-checkboxes',
         type: 'nested-checkboxes',
+        defaultValue: ['backend', 'react', 'vue'],
         options: [
           {
             value: 'frontend',

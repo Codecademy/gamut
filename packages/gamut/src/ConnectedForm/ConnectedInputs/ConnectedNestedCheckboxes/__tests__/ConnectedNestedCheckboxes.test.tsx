@@ -170,6 +170,56 @@ describe('ConnectedNestedCheckboxes', () => {
       expect(nodeCheckbox).toBeChecked(); // all children selected
       expect(backendCheckbox.indeterminate).toBe(true); // only some children selected
     });
+
+    it('should automatically check all children when parent is in default values', () => {
+      const { view } = renderView({
+        defaultValues: { skills: ['backend'] }, // parent selected by default
+      });
+
+      // Parent should be checked
+      const backendCheckbox = view.getByLabelText('Backend Technologies');
+      expect(backendCheckbox).toBeChecked();
+
+      // All children should be automatically checked
+      expect(view.getByLabelText('Node.js')).toBeChecked();
+      expect(view.getByLabelText('Python')).toBeChecked();
+
+      // Deeply nested children should also be checked
+      expect(view.getByLabelText('Express.js')).toBeChecked();
+      expect(view.getByLabelText('Fastify')).toBeChecked();
+    });
+
+    it('should allow unchecking children that were auto-checked by default parent selection', async () => {
+      const { view } = renderView({
+        defaultValues: { skills: ['backend'] }, // parent selected by default
+      });
+
+      // Initially all should be checked due to parent selection
+      const backendCheckbox = view.getByLabelText(
+        'Backend Technologies'
+      ) as HTMLInputElement;
+      const pythonCheckbox = view.getByLabelText('Python');
+
+      expect(backendCheckbox).toBeChecked();
+      expect(pythonCheckbox).toBeChecked();
+
+      // User should be able to uncheck a child
+      await act(async () => {
+        fireEvent.click(pythonCheckbox);
+      });
+
+      // Python should now be unchecked
+      expect(pythonCheckbox).not.toBeChecked();
+
+      // Parent should now be indeterminate since not all children are checked
+      expect(backendCheckbox.indeterminate).toBe(true);
+      expect(backendCheckbox).not.toBeChecked();
+
+      // Other children should remain checked
+      expect(view.getByLabelText('Node.js')).toBeChecked();
+      expect(view.getByLabelText('Express.js')).toBeChecked();
+      expect(view.getByLabelText('Fastify')).toBeChecked();
+    });
   });
 
   describe('user interactions', () => {

@@ -66,6 +66,21 @@ export const calculateStates = (
 ) => {
   const states = new Map<string, FlatCheckboxState>();
 
+  // const expandedValues = [...selectedValues];
+
+  // // For each selected value, if it's a parent, add all its descendants
+  // selectedValues.forEach((selectedValue: string) => {
+  //   const option = flatOptions.find((opt) => opt.value === selectedValue);
+  //   if (option && option.options.length > 0) {
+  //     const allDescendants = getAllDescendants(selectedValue, flatOptions);
+  //     allDescendants.forEach((descendantValue) => {
+  //       if (!expandedValues.includes(descendantValue)) {
+  //         expandedValues.push(descendantValue);
+  //       }
+  //     });
+  //   }
+  // });
+
   // Initialize all states
   flatOptions.forEach((option) => {
     states.set(option.value, {
@@ -94,6 +109,7 @@ export const calculateStates = (
     }
   });
 
+  console.log(states);
   return states;
 };
 
@@ -106,6 +122,7 @@ export const handleCheckboxChange = (
   onUpdate?: (values: string[]) => void
 ) => {
   const currentValue = option.value;
+  // console.log(currentValue);
 
   let newSelectedValues = [...selectedValues];
 
@@ -128,6 +145,9 @@ export const handleCheckboxChange = (
     }
   }
 
+  console.log(newSelectedValues);
+  console.log(currentValue);
+  console.log(isChecked);
   // Handle the current checkbox itself (for leaf nodes or when toggling individual items)
   if (isChecked) {
     if (!newSelectedValues.includes(currentValue)) {
@@ -137,6 +157,7 @@ export const handleCheckboxChange = (
     newSelectedValues = newSelectedValues.filter(
       (value) => value !== currentValue
     );
+    console.log(newSelectedValues);
   }
 
   onChange(newSelectedValues);
