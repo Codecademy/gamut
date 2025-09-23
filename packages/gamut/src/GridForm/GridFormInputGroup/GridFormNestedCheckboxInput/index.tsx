@@ -28,33 +28,27 @@ export const GridFormNestedCheckboxInput: React.FC<
 
   const flatOptions = useMemo(() => {
     const flattened = flattenOptions(optionsWithSpacing);
-    console.log('flatOptions computed:', flattened);
     return flattened;
   }, [optionsWithSpacing]);
 
   // Helper function to expand values to include descendants of selected parents
   const expandValues = React.useCallback(
     (values: string[]): string[] => {
-      console.log('expandValues called with:', values);
       const expandedValues = [...values];
 
       // For each selected value, if it's a parent, add all its descendants
       values.forEach((selectedValue: string) => {
         const option = flatOptions.find((opt) => opt.value === selectedValue);
-        console.log(`Checking value ${selectedValue}:`, option);
         if (option && option.options.length > 0) {
           const allDescendants = getAllDescendants(selectedValue, flatOptions);
-          console.log(`Descendants for ${selectedValue}:`, allDescendants);
           allDescendants.forEach((descendantValue) => {
             if (!expandedValues.includes(descendantValue)) {
               expandedValues.push(descendantValue);
-              console.log(`Added descendant: ${descendantValue}`);
             }
           });
         }
       });
 
-      console.log('expandValues result:', expandedValues);
       return expandedValues;
     },
     [flatOptions]
@@ -75,11 +69,6 @@ export const GridFormNestedCheckboxInput: React.FC<
 
     // Get current form value
     const currentFormValue = fieldDefaultValue || [];
-    console.log('useEffect expansion check:', {
-      fieldName,
-      currentFormValue,
-      flatOptionsLength: flatOptions.length,
-    });
 
     if (currentFormValue.length > 0) {
       const needsExpansion = currentFormValue.some((selectedValue: string) => {
@@ -89,10 +78,6 @@ export const GridFormNestedCheckboxInput: React.FC<
           const hasAllDescendants = allDescendants.every((descendant) =>
             currentFormValue.includes(descendant)
           );
-          console.log(
-            `Value ${selectedValue} needs expansion:`,
-            !hasAllDescendants
-          );
           return !hasAllDescendants;
         }
         return false;
@@ -100,10 +85,6 @@ export const GridFormNestedCheckboxInput: React.FC<
 
       if (needsExpansion) {
         const expandedValues = expandValues(currentFormValue);
-        console.log('useEffect EXPANDING:', {
-          original: currentFormValue,
-          expanded: expandedValues,
-        });
 
         // Use setValue to update the form state
         setValue(fieldName, expandedValues);
@@ -124,11 +105,6 @@ export const GridFormNestedCheckboxInput: React.FC<
     <Controller
       name={field.name}
       render={({ field: { value = [], onChange, onBlur, ref } }) => {
-        console.log('GridForm render:', {
-          fieldName: field.name,
-          value,
-        });
-
         const states = calculateStates(value, flatOptions);
         return (
           <Box as="ul" m={0} p={0}>
