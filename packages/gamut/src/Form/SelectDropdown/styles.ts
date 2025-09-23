@@ -89,7 +89,8 @@ const placeholderColor = css({
 });
 
 export const getMemoizedStyles = (
-  theme: typeof GamutTheme
+  theme: typeof GamutTheme,
+  zIndex: number | 'auto'
 ): StylesConfig<any, false> => {
   return {
     clearIndicator: (provided) => ({
@@ -160,6 +161,7 @@ export const getMemoizedStyles = (
               right: 0,
             }
           : {}),
+          zIndex,
       };
     },
     menuList: (provided, state: BaseSelectComponentProps) => {

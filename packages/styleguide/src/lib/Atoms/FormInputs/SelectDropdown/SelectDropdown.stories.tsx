@@ -1,4 +1,11 @@
-import { Box, FlexBox, FormGroup, SelectDropdown } from '@codecademy/gamut';
+import {
+  Box,
+  FlexBox,
+  FormGroup,
+  SelectDropdown,
+  Input,
+  DataList,
+} from '@codecademy/gamut';
 import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -202,15 +209,80 @@ export const DisabledOptions: Story = {
     ],
   },
   render: (args) => (
-    <Box height="15rem">
-      <FormGroup
-        htmlFor="disabled-dropdown"
-        isSoloField
-        label="I might have disabled options"
-      >
-        <SelectDropdown {...args} />
-      </FormGroup>
-    </Box>
+    // <Box height="15rem">
+    //   <FormGroup
+    //     htmlFor="disabled-dropdown"
+    //     isSoloField
+    //     label="I might have disabled options"
+    //   >
+    //     <SelectDropdown {...args} />
+    //   </FormGroup>
+    // </Box>
+
+    <FlexBox
+      width="65%"
+      column
+      data-testid="org-scope-org-sprecific-outer-container"
+    >
+      <FlexBox gap={16} data-testid="search-container">
+        <FormGroup
+          data-testid="search-dropDown-form-group"
+          htmlFor="orgScopeSearch"
+          isSoloField
+          label="just testing"
+        >
+          <SelectDropdown
+            data-testid="search-dropDown"
+            htmlFor="orgScopeSearch-select"
+            name="orgScopeSearchDrpDwn"
+            options={args.options}
+            zIndex={5}
+          />
+        </FormGroup>
+        <FormGroup
+          htmlFor="orgScopeSearchInput"
+          isSoloField
+          label="&nbsp;"
+          data-testid="search-input-form-group"
+        >
+          <Input
+            data-testid="search-input"
+            htmlFor="orgScopeSearch-input"
+            name="orgScopeSearchInput"
+            placeholder="Search by domain or UUID"
+            size="base"
+            type="text"
+            // value={orgScopeSearchInput}
+            // onChange={handleInputChange}
+            // icon={SearchIcon}
+          />
+        </FormGroup>
+      </FlexBox>
+      <DataList
+        id="crew"
+        idKey="name"
+        rows={[
+          {
+            name: 'Jean Luc Picard',
+            role: 'Captain',
+          },
+          {
+            name: 'Wesley Crusher',
+            role: 'Deus Ex Machina',
+          },
+        ]}
+        columns={[
+          {
+            header: 'Name',
+            key: 'name',
+            size: 'lg',
+            type: 'header',
+            sortable: true,
+          },
+          { header: 'Rank', key: 'role', size: 'lg', sortable: true },
+        ]}
+      />
+    </FlexBox>
   ),
 };
 
