@@ -20,7 +20,7 @@ export const Default: React.FC = () => {
           {isVisible ? 'Thanks!' : 'Click me.'}
         </FillButton>
       </Box>
-      <Box mt={8} height="50px">
+      <Box height="50px" mt={8}>
         <AnimatePresence>
           {isVisible && (
             <FadeInSlideOut>
