@@ -69,7 +69,13 @@ export const DocsContainer: React.FC<{
   /** Select the docs theme based on the global toolbar item unless it is a theme specific story
    *  This is admittedly a bit fragile - when updating Storybook this likely will need to be changed
    */
-  const storyId = (context?.channel as any)?.data?.storySpecified?.[0]?.storyId;
+  // Try multiple sources for storyId since it can be in different places depending on environment
+  const storyIdFromSpecified = (context?.channel as any)?.data
+    ?.storySpecified?.[0]?.storyId;
+  const storyIdFromCurrent = (context?.channel as any)?.data
+    ?.currentStoryWasSet?.[0]?.storyId;
+  const storyId = storyIdFromSpecified || storyIdFromCurrent;
+
   const globalTheme =
     (context as any).store.userGlobals?.globals?.theme || 'core';
 
@@ -92,21 +98,10 @@ export const DocsContainer: React.FC<{
   }, [storyId, globalTheme]);
 
   // Debug logging
-  console.log('Full context:', context);
-  console.log('Context channel:', context?.channel);
-  console.log('Context channel data:', (context?.channel as any)?.data);
-  console.log(
-    'Story specified:',
-    (context?.channel as any)?.data?.storySpecified
-  );
-  console.log('storyId:', storyId);
-  console.log('globalTheme:', globalTheme);
+  console.log('storyIdFromSpecified:', storyIdFromSpecified);
+  console.log('storyIdFromCurrent:', storyIdFromCurrent);
+  console.log('final storyId:', storyId);
   console.log('selectedTheme:', selectedTheme);
-  console.log(
-    'isThemeStory:',
-    !!storyId && Object.keys(themeSpecificStories).includes(storyId)
-  );
-  console.log('available theme stories:', Object.keys(themeSpecificStories));
 
   return (
     <StorybookDocsContainer theme={theme} context={context} {...rest}>
