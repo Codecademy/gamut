@@ -69,8 +69,6 @@ export const DocsContainer: React.FC<{
   /** Select the docs theme based on the global toolbar item unless it is a theme specific story
    *  This is admittedly a bit fragile - when updating Storybook this likely will need to be changed
    */
-  // Try multiple sources for storyId since it can be in different places depending on environment
-
   const storyId = (context?.channel as any)?.data?.currentStoryWasSet?.[0]
     ?.storyId;
 
@@ -94,8 +92,6 @@ export const DocsContainer: React.FC<{
       currentTheme: themeMap[theme as keyof typeof themeMap],
     };
   }, [storyId, globalTheme]);
-
-  // Debuglogging
 
   return (
     <StorybookDocsContainer theme={theme} context={context} {...rest}>
