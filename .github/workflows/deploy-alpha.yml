@@ -30,16 +30,31 @@ jobs:
         id: setup
         uses: ./.github/actions/yarn
 
+      - name: Check if commit is automated
+        id: check-commit
+        run: |
+          COMMIT_MESSAGE=$(git log --format=oneline -n 1 ${{ github.sha }})
+          echo "Build started due to commit with message $COMMIT_MESSAGE, blocking builds started by ${IGNORE_COMMIT_MESSAGE}"
+          if [[ $COMMIT_MESSAGE == *"${IGNORE_COMMIT_MESSAGE}"* ]]; then
+            echo "is-automated=true" >> $GITHUB_OUTPUT
+            echo "Skipping build due to automated commit"
+          else
+            echo "is-automated=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Set git user
+        if: steps.check-commit.outputs.is-automated == 'false'
         run: |
           git config --global user.email "dev@codecademy.com"
           git config --global user.name "codecademydev"
           git config --global push.default current
 
       - name: Build Storybook
+        if: steps.check-commit.outputs.is-automated == 'false'
         run: yarn build && yarn nx run styleguide:build-storybook
 
       - name: Deploy to Netlify
+        if: steps.check-commit.outputs.is-automated == 'false'
         id: deploy
         run: |
           DEPLOY_MESSAGE="User: ${{ github.actor }} Project: ${{ github.repository }} Pull Request: ${{ github.event.pull_request.html_url }}"
@@ -50,7 +65,7 @@ jobs:
           #  when this is added, can't find project id -_- without it we run into main() error!!!
 
       - name: Comment on PR with deployment info
-        if: steps.deploy.outputs.deploy-output
+        if: steps.check-commit.outputs.is-automated == 'false' && steps.deploy.outputs.deploy-output
         uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
