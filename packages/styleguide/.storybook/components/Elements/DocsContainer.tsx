@@ -70,16 +70,14 @@ export const DocsContainer: React.FC<{
    *  This is admittedly a bit fragile - when updating Storybook this likely will need to be changed
    */
   // Try multiple sources for storyId since it can be in different places depending on environment
-  const storyIdFromSpecified = (context?.channel as any)?.data
-    ?.storySpecified?.[0]?.storyId;
-  const storyIdFromCurrent = (context?.channel as any)?.data
-    ?.currentStoryWasSet?.[0]?.storyId;
-  const storyId = storyIdFromSpecified || storyIdFromCurrent;
+
+  const storyId = (context?.channel as any)?.data?.currentStoryWasSet?.[0]
+    ?.storyId;
 
   const globalTheme =
     (context as any).store.userGlobals?.globals?.theme || 'core';
 
-  const { selectedTheme, currentTheme } = useMemo(() => {
+  const { currentTheme } = useMemo(() => {
     const findThemeStory: keyof typeof themeSpecificStories | undefined =
       storyId;
 
@@ -97,11 +95,7 @@ export const DocsContainer: React.FC<{
     };
   }, [storyId, globalTheme]);
 
-  // Debug logging
-  console.log('storyIdFromSpecified:', storyIdFromSpecified);
-  console.log('storyIdFromCurrent:', storyIdFromCurrent);
-  console.log('final storyId:', storyId);
-  console.log('selectedTheme:', selectedTheme);
+  // Debuglogging
 
   return (
     <StorybookDocsContainer theme={theme} context={context} {...rest}>
