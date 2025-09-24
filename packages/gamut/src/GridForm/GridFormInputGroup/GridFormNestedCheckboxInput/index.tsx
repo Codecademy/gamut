@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useEffect, useMemo, useRef } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import { useEffect, useMemo, useState } from 'react';
+import { Controller } from 'react-hook-form';
 
 import { Box } from '../../..';
 import {
@@ -11,14 +11,16 @@ import {
   renderCheckbox,
 } from '../../../ConnectedForm/ConnectedInputs/ConnectedNestedCheckboxes/utils';
 import { BaseFormInputProps, GridFormNestedCheckboxField } from '../../types';
+import { GridFormInputGroupProps } from '..';
 
 export interface GridFormNestedCheckboxInputProps extends BaseFormInputProps {
   field: GridFormNestedCheckboxField;
+  setValue: GridFormInputGroupProps['setValue'];
 }
 
 export const GridFormNestedCheckboxInput: React.FC<
   GridFormNestedCheckboxInputProps
-> = ({ field, required, disabled, error }) => {
+> = ({ field, required, disabled, error, setValue }) => {
   const isDisabled = disabled || field.disabled;
 
   const optionsWithSpacing = field.options.map((option) => ({
@@ -31,75 +33,25 @@ export const GridFormNestedCheckboxInput: React.FC<
     return flattened;
   }, [optionsWithSpacing]);
 
-  // Helper function to expand values to include descendants of selected parents
-  const expandValues = React.useCallback(
-    (values: string[]): string[] => {
-      const expandedValues = [...values];
+  const [hasExpandedInitially, setHasExpandedInitially] = useState(false);
 
-      // For each selected value, if it's a parent, add all its descendants
-      values.forEach((selectedValue: string) => {
-        const option = flatOptions.find((opt) => opt.value === selectedValue);
-        if (option && option.options.length > 0) {
-          const allDescendants = getAllDescendants(selectedValue, flatOptions);
-          allDescendants.forEach((descendantValue) => {
-            if (!expandedValues.includes(descendantValue)) {
-              expandedValues.push(descendantValue);
-            }
-          });
-        }
-      });
-
-      return expandedValues;
-    },
-    [flatOptions]
-  );
-
-  // Track if we've done initial expansion
-  const hasExpandedInitially = useRef(false);
-  const { setValue } = useFormContext();
-
-  // Extract field properties for stable dependencies
-  const fieldName = field.name;
-  const fieldDefaultValue = field.defaultValue;
-  const fieldOnUpdate = field.onUpdate;
-
-  // Handle expansion in useEffect instead of render function
   useEffect(() => {
-    if (hasExpandedInitially.current) return;
+    if (
+      hasExpandedInitially ||
+      !field.defaultValue ||
+      field.defaultValue.length === 0
+    )
+      return;
 
-    // Get current form value
-    const currentFormValue = fieldDefaultValue || [];
+    const expandedValues = [...field.defaultValue];
+    field.defaultValue.forEach((value) =>
+      expandedValues.push(...getAllDescendants(value, flatOptions))
+    );
 
-    if (currentFormValue.length > 0) {
-      const needsExpansion = currentFormValue.some((selectedValue: string) => {
-        const option = flatOptions.find((opt) => opt.value === selectedValue);
-        if (option && option.options.length > 0) {
-          const allDescendants = getAllDescendants(selectedValue, flatOptions);
-          const hasAllDescendants = allDescendants.every((descendant) =>
-            currentFormValue.includes(descendant)
-          );
-          return !hasAllDescendants;
-        }
-        return false;
-      });
-
-      if (needsExpansion) {
-        const expandedValues = expandValues(currentFormValue);
-
-        // Use setValue to update the form state
-        setValue(fieldName, expandedValues);
-        fieldOnUpdate?.(expandedValues);
-        hasExpandedInitially.current = true;
-      }
-    }
-  }, [
-    fieldName,
-    fieldDefaultValue,
-    fieldOnUpdate,
-    flatOptions,
-    expandValues,
-    setValue,
-  ]);
+    setValue(field.name, expandedValues);
+    field.onUpdate?.(expandedValues); // do we want to do this?
+    setHasExpandedInitially(true);
+  }, [hasExpandedInitially, field, flatOptions, setValue]);
 
   return (
     <Controller
