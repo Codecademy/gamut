@@ -58,8 +58,18 @@ jobs:
         id: deploy
         run: |
           DEPLOY_MESSAGE="User: ${{ github.actor }} Project: ${{ github.repository }} Pull Request: ${{ github.event.pull_request.html_url }}"
-          # Run from root directory as recommended for Nx monorepos
-          echo "deploy-output=$(npx netlify-cli@latest deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --site ${{ secrets.NETLIFY_SITE_ID }} --filter @codecademy/styleguide --json)" >> $GITHUB_OUTPUT
+          # Try CLI first, fallback to API if it fails
+          if ! npx netlify-cli@latest deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --site ${{ secrets.NETLIFY_SITE_ID }} --json > deploy-output.json 2>&1; then
+            echo "CLI failed, trying API approach..."
+            cd dist/storybook/styleguide
+            zip -r deploy.zip . > /dev/null 2>&1
+            curl -X POST \
+              -H "Authorization: Bearer ${{ secrets.NETLIFY_AUTH_TOKEN }}" \
+              -H "Content-Type: application/zip" \
+              --data-binary @deploy.zip \
+              "https://api.netlify.com/api/v1/sites/${{ secrets.NETLIFY_SITE_ID }}/deploys" > deploy-output.json
+          fi
+          echo "deploy-output=$(cat deploy-output.json)" >> $GITHUB_OUTPUT
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
