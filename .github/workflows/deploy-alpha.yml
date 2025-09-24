@@ -58,9 +58,8 @@ jobs:
         id: deploy
         run: |
           DEPLOY_MESSAGE="User: ${{ github.actor }} Project: ${{ github.repository }} Pull Request: ${{ github.event.pull_request.html_url }}"
-          # Try using netlify CLI with environment variables to bypass project detection
-          export NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID }}"
-          echo "deploy-output=$(npx netlify-cli@latest deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json)" >> $GITHUB_OUTPUT
+          # Run from root directory as recommended for Nx monorepos
+          echo "deploy-output=$(npx netlify-cli@latest deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --site ${{ secrets.NETLIFY_SITE_ID }} --filter @codecademy/styleguide --json)" >> $GITHUB_OUTPUT
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
