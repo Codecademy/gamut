@@ -1,5 +1,5 @@
 import { IconButton } from '@codecademy/gamut';
-import { SearchIcon } from '@codecademy/gamut-icons';
+import * as icons from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof IconButton> = {
@@ -8,7 +8,7 @@ const meta: Meta<typeof IconButton> = {
     children: 'Click Me',
     disabled: false,
     size: 'normal',
-    icon: SearchIcon,
+    icon: icons.SearchIcon,
     tip: 'ToolTip',
     tipProps: { placement: 'floating' },
   },
@@ -27,6 +27,13 @@ const meta: Meta<typeof IconButton> = {
         type: 'select',
         options: ['normal', 'small', 'large'],
       },
+    },
+    icon: {
+      control: {
+        type: 'select',
+      },
+      options: Object.keys(icons),
+      mapping: icons,
     },
   },
 };

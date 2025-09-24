@@ -16,7 +16,7 @@ export const parameters = {
   },
 };
 
-<Meta title="Foundations/Theme/PlatformTheme" />
+<Meta title="Foundations/Theme/Platform Theme" />
 
 <AboutHeader {...parameters} />
 
@@ -72,6 +72,20 @@ All current visual identity colors are available on the `colors` key on the Them
 Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`.
 
 <TokenTable {...TABLES.platformSwatch} />
+
+### Platform editor colors
+
+There are some additional colors that are used specifically for the Monaco code editor in the Learning Environment. Since these colors must be in 6 digit hex format, they cannot use the original color tokens with RGBA values. Instead, the original values were converted to 6 digit hex using the respective light and dark mode background colors.
+
+The original colors being:
+
+- comment: `navy-500` (light) and `white-500` (dark)
+- indent-active: `navy-300` (light) and `white-300` (dark)
+- indent-inactive: `navy-400` (light) and `white-400` (dark)
+- line-number-active: `navy-700` (light) and `white-700` (dark)
+- line-number-inactive: `navy-500` (light) and `white-500` (dark)
+
+<TokenTable {...TABLES.platformEditorColor} />
 
 ### Standard colors
 

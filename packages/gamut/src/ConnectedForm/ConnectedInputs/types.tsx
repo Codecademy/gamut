@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 import {
-  CheckboxLabelProps,
+  CheckboxLabelUnion,
   CheckboxProps,
   InputWrapperProps,
   RadioGroupProps,
@@ -30,7 +30,7 @@ export interface BaseConnectedCheckboxProps
     ConnectedFieldProps {}
 
 export type ConnectedCheckboxProps = BaseConnectedCheckboxProps &
-  CheckboxLabelProps;
+  CheckboxLabelUnion;
 
 type FieldComponent<T> = Omit<T, 'defaultValue' | 'name' | 'validation'>;
 

@@ -5,6 +5,44 @@ import {
 
 import { PopoverPositionConfig, TargetRef } from './types';
 
+export const findResizingParent = ({
+  parentElement,
+}: HTMLElement): HTMLElement | null => {
+  if (parentElement) {
+    const { overflow, overflowY, overflowX } = getComputedStyle(parentElement);
+    if ([overflow, overflowY, overflowX].some((val) => val === 'clip')) {
+      return parentElement;
+    }
+    return findResizingParent(parentElement); // parent of this parent is used via prop destructure
+  }
+  return null;
+};
+
+/*
+ * Finds all extra scrolling parents of an element.
+ * This is useful for detecting scroll events on parents that may not be the direct parent, which should be managed by react-use's useWindowScroll.
+ */
+export const findAllAdditionalScrollingParents = (
+  element: HTMLElement
+): HTMLElement[] => {
+  const scrollingParents: HTMLElement[] = [];
+  let currentElement = element.parentElement;
+
+  while (currentElement && currentElement !== document.body) {
+    const { overflow, overflowY, overflowX } = getComputedStyle(currentElement);
+    if (
+      [overflow, overflowY, overflowX].some((val) =>
+        ['scroll', 'auto'].includes(val)
+      )
+    ) {
+      scrollingParents.push(currentElement);
+    }
+    currentElement = currentElement.parentElement;
+  }
+
+  return scrollingParents;
+};
+
 export const isInView = ({ top, left, bottom, right }: DOMRect) => {
   const windowHeight =
     window.innerHeight || document.documentElement.clientHeight;

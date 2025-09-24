@@ -1,6 +1,15 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader } from '~styleguide/blocks';
+import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+
+import { parameters as atomsParameters } from './Atoms/About.mdx';
+import { parameters as foundationsParameters } from './Foundations/About.mdx';
+import { parameters as layoutsParameters } from './Layouts/About.mdx';
+import { parameters as metaParameters } from './Meta/About.mdx';
+import { parameters as moleculesParameters } from './Molecules/About.mdx';
+import { parameters as organismsParameters } from './Organisms/About.mdx';
+import { parameters as typographyParameters } from './Typography/About.mdx';
+import { parameters as uxWritingParameters } from './UX Writing/About.mdx';
 
 export const parameters = {
   id: 'Gamut',
@@ -18,3 +27,16 @@ They're most notably used on [codecademy.com](https://codecademy.com) but are al
 This storybook represents components found in the Codecademy [Client Modules](https://github.com/Codecademy/gamut) repo.
 
 Its organization roughly aligns with variations of [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/).
+
+<TableOfContents
+  links={[
+    metaParameters,
+    foundationsParameters,
+    layoutsParameters,
+    typographyParameters,
+    atomsParameters,
+    moleculesParameters,
+    organismsParameters,
+    uxWritingParameters,
+  ]}
+/>

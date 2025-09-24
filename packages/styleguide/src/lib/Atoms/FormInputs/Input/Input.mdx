@@ -5,6 +5,7 @@ import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 import * as InputStories from './Input.stories';
 
 export const parameters = {
+  title: 'Input',
   subtitle:
     'A general `<input />` element for handling "text", "number" and "file" input types',
   design: {
@@ -76,7 +77,7 @@ You can use a custom icon (from gamut-icons) in your Input elements. The error a
 
 ## Size
 
-You can also set the `size` of an input to be `'sm'`. If the `size` prop is omitted, then the input field will have its default padding.
+You can also set the `size` of an input to be `'small'`. If the `size` prop is omitted, then the input field will have its default padding.
 
 <Canvas of={InputStories.TextSmall} />
 <Canvas of={InputStories.TextSmallError} />

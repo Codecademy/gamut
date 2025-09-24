@@ -1,6 +1,14 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as anchorParameters } from './Anchor/Anchor.mdx';
+import { parameters as hiddenTextParameters } from './HiddenText/HiddenText.mdx';
+import { parameters as textParameters } from './Text/Text.mdx';
 
 export const parameters = {
   id: 'Typography/About',
@@ -17,27 +25,9 @@ Foundations make up the smallest scale design values that comprise a design syst
 Sometimes referred to elsewhere as "tokens", they are the abstract units that comprise and stitch together our atoms, molecules, and organisms.
 
 <TableOfContents
-  links={[
-    {
-      id: 'Typography/Anchor',
-      subtitle:
-        'A clickable text element that navigates to another page, resource, or location on the same page.',
-      title: 'Anchor',
-      status: `current`,
-    },
-    {
-      id: 'Typography/HiddenText',
-      subtitle:
-        'Deprecated visually hidden text that should still be narrated by screenreaders.',
-      title: 'Anchor',
-      status: 'deprecated',
-    },
-    {
-      id: 'Typography/Text',
-      subtitle:
-        'This component is a specific primitive for handling UI Text in predictable and flexible ways.',
-      title: 'Text',
-      status: 'current',
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    anchorParameters,
+    hiddenTextParameters,
+    textParameters,
+  ])}
 />

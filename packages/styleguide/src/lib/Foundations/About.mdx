@@ -1,6 +1,17 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as colorModeParameters } from './ColorMode/ColorMode.mdx';
+import { parameters as layoutParameters } from './Layout.mdx';
+import { parameters as systemParameters } from './System/About.mdx';
+import { parameters as themeParameters } from './Theme/About.mdx';
+import { parameters as typographyParameters } from './Typography.mdx';
+import { parameters as utilitiesParameters } from './Utilities/Utilities.mdx';
 
 export const parameters = {
   id: 'Foundations',
@@ -17,36 +28,12 @@ Foundations make up the smallest scale design values that comprise a design syst
 Sometimes referred to elsewhere as "tokens", they are the abstract units that comprise and stitch together our atoms, molecules, and organisms.
 
 <TableOfContents
-  links={[
-    {
-      id: 'Foundations/ColorMode',
-      subtitle: 'Semantic color palette configuration.',
-      title: 'ColorMode',
-    },
-    {
-      id: 'Foundations/Layout',
-      subtitle: 'Design guidelines for overall page layout.',
-      title: 'Layout',
-    },
-    {
-      id: 'Foundations/System',
-      subtitle: 'System properties and style functions',
-      title: 'System',
-    },
-    {
-      id: 'Foundations/Theme',
-      subtitle: 'The Emotion theme for codecademy.',
-      title: 'Theme',
-    },
-    {
-      id: 'Foundations/Typography',
-      subtitle: 'Typography design guidelines and token scales.',
-      title: 'Typography',
-    },
-    {
-      id: 'Foundations/Utilities',
-      subtitle: 'Style utilities for both SCSS and Emotion.',
-      title: 'Utilities',
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    colorModeParameters,
+    layoutParameters,
+    systemParameters,
+    themeParameters,
+    typographyParameters,
+    utilitiesParameters,
+  ])}
 />

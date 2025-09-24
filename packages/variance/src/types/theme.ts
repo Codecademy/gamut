@@ -4,6 +4,12 @@ export interface Breakpoints<T = string> {
   md: T;
   lg: T;
   xl: T;
+  c_base: T;
+  c_xs: T;
+  c_sm: T;
+  c_md: T;
+  c_lg: T;
+  c_xl: T;
 }
 
 export interface BaseTheme {

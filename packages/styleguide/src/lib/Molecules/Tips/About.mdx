@@ -1,8 +1,15 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
 
+import { parameters as infoTipParameters } from './InfoTip/InfoTip.mdx';
+import { parameters as previewTipParameters } from './PreviewTip/PreviewTip.mdx';
 import { TipsTable } from './TipsTable';
+import { parameters as toolTipParameters } from './ToolTip/ToolTip.mdx';
 
 export const parameters = {
   id: 'Molecules/Tips',
@@ -22,27 +29,9 @@ This is a test.
 <br />
 
 <TableOfContents
-  links={[
-    {
-      id: 'Molecules/Tips/InfoTip',
-      subtitle:
-        'A tip triggered by clicking on an information icon button. Use an infotip to provide additional info about a nearby element or content.',
-      title: 'InfoTip',
-      status: 'current',
-    },
-    {
-      id: 'Molecules/Tips/PreviewTip',
-      subtitle:
-        'An Anchor that provides a snippet of relevant information from the link destination.',
-      title: 'PreviewTip',
-      status: 'current',
-    },
-    {
-      id: 'Molecules/Tips/ToolTip',
-      subtitle:
-        'A short tip triggered on hover and focus of an interactive element. Use a tooltip to further explain an element’s primary action, a disabled button state, or to display a label for an icon-only button.',
-      title: 'ToolTip',
-      status: 'current',
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    infoTipParameters,
+    previewTipParameters,
+    toolTipParameters,
+  ])}
 />

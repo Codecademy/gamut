@@ -153,6 +153,21 @@ const activeStates = system.states({
       bg: 'secondary',
     },
   },
+  // Is named isDisabled to avoid conflicts with the HTML `disabled` attribute
+  isDisabled: {
+    bg: 'inherit',
+    cursor: 'not-allowed',
+    fontWeight: 400,
+    textColor: 'text-disabled',
+    [Selectors.HOVER]: {
+      textColor: 'text-disabled',
+      textDecoration: 'none',
+    },
+    [Selectors.BEFORE]: {
+      content: "''",
+      bg: 'inherit',
+    },
+  },
 });
 
 const sizeVariants = system.variant({

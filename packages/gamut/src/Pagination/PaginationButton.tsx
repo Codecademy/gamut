@@ -45,17 +45,17 @@ export const PaginationButton = forwardRef<
     {
       children,
       icon: Icon,
-      variant = 'stroke',
+      buttonType = 'stroke',
       showButton = 'shown',
       ...props
     },
     ref
   ) => {
     const ButtonStyleWrapper = useMemo(() => {
-      return variant === 'stroke'
+      return buttonType === 'stroke'
         ? PaginationStrokeButtonInner
         : PaginationTextButtonInner;
-    }, [variant]);
+    }, [buttonType]);
 
     return (
       <ButtonStyleWrapper

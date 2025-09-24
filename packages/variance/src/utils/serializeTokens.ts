@@ -28,9 +28,13 @@ const templateBreakpoints = (
     if (theme) {
       const { breakpoints } = theme;
       Object.keys(breakpoints).forEach((key) => {
-        css[breakpoints[key as keyof typeof breakpoints]] = {
-          [alias]: rest[key],
-        };
+        const breakpointValue = rest[key];
+        // Only create CSS rules for breakpoints that have defined values
+        if (breakpointValue !== undefined) {
+          css[breakpoints[key as keyof typeof breakpoints]] = {
+            [alias]: breakpointValue,
+          };
+        }
       });
     }
 

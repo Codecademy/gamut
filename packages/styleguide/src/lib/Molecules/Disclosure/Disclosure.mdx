@@ -5,6 +5,7 @@ import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 import * as DisclosureStories from './Disclosure.stories';
 
 export const parameters = {
+  title: 'Disclosure',
   subtitle:
     'A Disclosure is an expandable container featuring a heading that serves as a toggle to expand or collapse a content section.',
   source: {
@@ -41,14 +42,14 @@ Use a `Disclosure` to progressively reveal information, giving users the option 
 
 ### Background and border variants
 
-<Canvas of={DisclosureStories.Default} />
+<Canvas of={DisclosureStories.DefaultBackground} />
 <Canvas of={DisclosureStories.SubtleBgBordered} />
 <Canvas of={DisclosureStories.Transparent} />
 <Canvas of={DisclosureStories.HasBorder} />
 
 ### Spacing options
 
-`spacing` is an optional prop you can pass to `Disclosure`. By default it's set to `"normal"`, though you can set it to `"condensed"` or `"compact"` as well. Spacing will determine the height of the heading, the size of the chevron icon, as well as the padding of both the heading and the body.
+`spacing` is an optional prop that controls the height of the heading, the size of the chevron icon, as well as the padding of both the heading and the body. By default it's set to `"normal"` — though you can set it to `"condensed"` or `"compact"` as well.
 
 <Canvas of={DisclosureStories.Normal} />
 <Canvas of={DisclosureStories.Condensed} />
@@ -56,6 +57,6 @@ Use a `Disclosure` to progressively reveal information, giving users the option 
 
 ## Playground
 
-<Canvas sourceState="shown" of={DisclosureStories.Playground} />
+<Canvas sourceState="shown" of={DisclosureStories.Default} />
 
 <Controls />

@@ -11,9 +11,12 @@ import {
 import * as React from 'react';
 import { Options as OptionsType, StylesConfig } from 'react-select';
 
-import { parseOptions } from '../utils';
+import { parseOptions, SelectOptionBase } from '../utils';
 import {
+  AbbreviatedSingleValue,
   CustomContainer,
+  CustomInput,
+  CustomValueContainer,
   DropdownButton,
   formatGroupLabel,
   formatOptionLabel,
@@ -26,11 +29,15 @@ import {
   TypedReactSelect,
 } from './elements';
 import { getMemoizedStyles } from './styles';
-import { ExtendedOption, OptionStrict, SelectDropdownProps } from './types';
+import {
+  OptionStrict,
+  SelectDropdownGroup,
+  SelectDropdownProps,
+} from './types';
 import {
   filterValueFromOptions,
   isMultipleSelectProps,
-  isOptionGroup,
+  isOptionsGrouped,
   isSingleSelectProps,
   removeValueFromSelectedOptions,
 } from './utils';
@@ -42,27 +49,79 @@ const defaultProps = {
     IndicatorSeparator: () => null,
     ClearIndicator: RemoveAllButton,
     SelectContainer: CustomContainer,
+    ValueContainer: CustomValueContainer,
     MultiValue: MultiValueWithColorMode,
     MultiValueRemove: MultiValueRemoveButton,
     Option: IconOption,
+    SingleValue: AbbreviatedSingleValue,
+    Input: CustomInput,
   },
 };
 const onChangeAction = 'select-option';
 
+/**
+ * A flexible dropdown select component built on top of react-select.
+ *
+ * Supports both single and multi-select modes with customizable options including
+ * icons, subtitles, right labels, and abbreviations. The component provides
+ * accessibility features, keyboard navigation, and responsive styling.
+ *
+ * @example
+ * ```tsx
+ * // Basic single select
+ * <SelectDropdown
+ *   name="country"
+ *   options={[
+ *     { label: 'United States', value: 'us' },
+ *     { label: 'Canada', value: 'ca' }
+ *   ]}
+ *   onChange={(option) => console.log(option)}
+ * />
+ *
+ * // Multi-select with icons
+ * <SelectDropdown
+ *   name="skills"
+ *   multiple
+ *   options={[
+ *     { label: 'React', value: 'react', icon: ReactIcon },
+ *     { label: 'TypeScript', value: 'ts', icon: TypeScriptIcon }
+ *   ]}
+ *   onChange={(options) => console.log(options)}
+ * />
+ *
+ * // Grouped options with extended features
+ * <SelectDropdown
+ *   name="category"
+ *   placeholder="Default placeholder text"
+ *   options={[
+ *     {
+ *       label: 'Frontend',
+ *       options: [
+ *         { label: 'React', value: 'react', subtitle: 'UI Library' },
+ *         { label: 'Vue', value: 'vue', subtitle: 'Progressive Framework' }
+ *       ]
+ *     }
+ *   ]}
+ * />
+ * ```
+ */
 export const SelectDropdown: React.FC<SelectDropdownProps> = ({
-  options,
-  id,
-  size,
-  error,
   disabled,
-  onChange,
-  value,
-  name,
-  placeholder = 'Select an option',
+  dropdownWidth,
+  error,
+  id,
   inputProps,
-  multiple,
+  inputWidth,
   isSearchable = false,
+  menuAlignment = 'left',
+  multiple,
+  name,
+  onChange,
+  options,
+  placeholder = 'Select an option',
   shownOptionsLimit = 6,
+  size,
+  value,
   ...rest
 }) => {
   const rawInputId = useId();
@@ -75,25 +134,49 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   const removeAllButtonRef = useRef<HTMLDivElement>(null);
   const selectInputRef = useRef<HTMLDivElement>(null);
 
-  const optionsAreGrouped = useMemo(() => {
-    if (options?.length) {
-      return (options as any)?.some((option: any) => isOptionGroup(option));
+  const selectOptions = useMemo(():
+    | SelectOptionBase[]
+    | SelectDropdownGroup[] => {
+    if (
+      !options ||
+      (Array.isArray(options) && !options.length) ||
+      (typeof options === 'object' &&
+        !Array.isArray(options) &&
+        Object.keys(options).length === 0)
+    ) {
+      return [];
     }
-    return false;
-  }, [options]);
 
-  const selectOptions = useMemo(() => {
-    return parseOptions({ options: options as ExtendedOption[], id, size });
+    if (isOptionsGrouped(options)) {
+      return options;
+    }
+
+    return parseOptions({ options, id, size });
   }, [options, id, size]);
 
-  const parsedValue = useMemo(
-    () => selectOptions.find((option) => option.value === value),
-    [selectOptions, value]
-  );
+  const parsedValue = useMemo(() => {
+    if (isOptionsGrouped(selectOptions)) {
+      for (const group of selectOptions) {
+        if (group.options) {
+          const foundOption = group.options.find(
+            (option) => option.value === value
+          );
+          if (foundOption) return foundOption;
+        }
+      }
+      return undefined;
+    }
+
+    return selectOptions.find((option) => option.value === value);
+  }, [selectOptions, value]);
 
   const [multiValues, setMultiValues] = useState(
     multiple && // To keep this efficient for non-multiSelect
-      filterValueFromOptions(selectOptions, value, optionsAreGrouped)
+      filterValueFromOptions(
+        selectOptions,
+        value,
+        isOptionsGrouped(selectOptions)
+      )
   );
 
   // If the caller changes the initial value, let's update our value to match.
@@ -101,14 +184,14 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     const newMultiValues = filterValueFromOptions(
       selectOptions,
       value,
-      optionsAreGrouped
+      isOptionsGrouped(selectOptions)
     );
     if (newMultiValues !== multiValues) setMultiValues(newMultiValues);
 
-    // For now, only handle the "change the value" case.
-    // Changing the options can be looked into when this component is fleshed out (GM-354)
+    //
+    // We only update this when our passed in options or value changes, not multiValues.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value]);
+  }, [options, value]);
 
   const changeHandler = useCallback(
     (optionEvent: OptionStrict | OptionsType<OptionStrict>) => {
@@ -179,16 +262,19 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         ariaLiveMessages={{
           onFocus,
         }}
+        dropdownWidth={dropdownWidth}
         error={Boolean(error)}
         formatGroupLabel={formatGroupLabel}
         formatOptionLabel={formatOptionLabel}
         id={id || rest.htmlFor || rawInputId}
         inputId={inputId}
-        inputProps={{ ...inputProps, name }}
+        inputProps={{ ...inputProps }}
+        inputWidth={inputWidth}
         isDisabled={disabled}
         isMulti={multiple}
         isOptionDisabled={(option) => option.disabled}
         isSearchable={isSearchable}
+        menuAlignment={menuAlignment}
         name={name}
         options={selectOptions}
         placeholder={placeholder}

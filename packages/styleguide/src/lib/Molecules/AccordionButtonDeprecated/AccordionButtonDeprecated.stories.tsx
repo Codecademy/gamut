@@ -13,6 +13,10 @@ const meta: Meta<typeof AccordionButtonDeprecated> = {
 export default meta;
 type Story = StoryObj<typeof AccordionButtonDeprecated>;
 
+export const Default: Story = {
+  args: {},
+};
+
 export const Plain: Story = {
   args: {
     theme: 'plain',

@@ -1,10 +1,11 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as SelectDropdownStories from './SelectDropdown.stories';
 
 export const parameters = {
+  title: 'SelectDropdown',
   subtitle: 'A variant of our `Select` component with a styled dropdown menu.',
   design: {
     type: 'figma',
@@ -131,15 +132,80 @@ To add some pizzazz to your dropdown, you can add any of our <LinkTo id='Atoms/I
 
 ### Custom input props
 
-Some of our forms require special props be passed directly onto the `<input/>` component. We can do that by passing an object, formatted `{propName: value}`, into our inputProps prop.
+Some of our forms require special props be passed directly onto the input components. We can do that by passing an object with `hidden` and `combobox` properties into our inputProps prop.
+
+- `hidden`: Props passed to the hidden input element (used for form submission)
+- `combobox`: Props passed to the visible react-select input element (useful for data-\* attributes, testing, etc.)
+
+<Callout
+  text="  These props are passed directly to the underlying elements, so they only
+  accept `data-*` and `aria-*` attributes to ensure validity."
+/>
 
 <Canvas of={SelectDropdownStories.CustomInputProps} />
+
+### Abbreviated options
+
+For space-constrained layouts or when you need to display long option names in a compact way, you can use the abbreviated feature. This allows you to show a short abbreviation in the input field while displaying the full label in the dropdown.
+
+#### How it works
+
+- **Input Display**: Shows the abbreviated text (e.g., "USA")
+- **Dropdown Display**: Shows the full label (e.g., "United States of America")
+- **Implementation**: Add an `abbreviation` property to your option objects
+
+<Canvas of={SelectDropdownStories.AbbreviatedInput} />
+
+#### Small size with abbreviations
+
+The abbreviated feature works particularly well with the small size variant, providing space-efficient layouts for compact interfaces.
+
+<Canvas of={SelectDropdownStories.AbbreviatedSmallSize} />
+
+#### Advanced options
+
+You can combine abbreviations with other option features like subtitles, right labels, and icons for rich, informative dropdowns.
+
+<Canvas of={SelectDropdownStories.AbbreviatedWithSubtitleAndRightLabel} />
+<Canvas of={SelectDropdownStories.ComplexAbbreviatedOptions} />
+
+### Independent width control
+
+You can control the width of the input field and dropdown independently using the `inputWidth` and `dropdownWidth` props. This is particularly useful when you need a compact input but want to show more detailed information in the dropdown.
+
+#### How it works
+
+- **`inputWidth`**: Controls the width of the input field (can be a string like "150px" or a number)
+- **`dropdownWidth`**: Controls the width of the dropdown menu (can be a string like "350px" or a number)
+
+<Canvas of={SelectDropdownStories.IndependentWidths} />
+
+#### Small size with independent widths
+
+The independent width feature works particularly well with the small size variant, allowing for very compact inputs while maintaining readable dropdown content.
+
+<Canvas of={SelectDropdownStories.SmallWithAbbreviations} />
+
+### Menu alignment
+
+When using different widths for the input and dropdown, you can control how the dropdown aligns relative to the input using the `menuAlignment` prop.
+
+#### How it works
+
+- **`menuAlignment`**: Controls the horizontal alignment of the dropdown menu relative to the input
+  - **`'left'`** (default): Aligns the dropdown to the left edge of the input
+  - **`'right'`**: Aligns the dropdown to the right edge of the input
+- **Use cases**: Useful when the dropdown is wider or narrower than the input, or when you need to prevent the dropdown from extending beyond the viewport
+
+<Canvas of={SelectDropdownStories.MenuAlignmentRight} />
 
 ## Multiple select
 
 <Canvas of={SelectDropdownStories.MultipleSelect} />
 
-## FormGroup + SelectDropdown
+## Accessibility
+
+### FormGroup + SelectDropdown
 
 `SelectDropdown` formats nicely in FormGroups and reflects error states. Make sure you provide an htmlFor to the `FormGroup` and a `name` to the `SelectDropdown` for maximum accessibility. See <LinkTo id="Atoms/FormElements/FormGroup">FormGroup</LinkTo> story for the customizations available.
 

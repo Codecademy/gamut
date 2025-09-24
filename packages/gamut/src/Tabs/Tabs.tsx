@@ -22,23 +22,13 @@ const TabsBase = styled(ReactAriaTabs)<TabsProps>(tabElementBaseProps);
 export const Tabs: React.FC<TabsProps> = (props) => {
   return (
     <TabProvider value={{ variant: props.variant || 'standard' }}>
-      {/* currently only supporting dark mode for the LE variant */}
+      {/* currently only supporting dark mode for the LE variant. */}
       {props.variant === 'block' ? (
         <Background bg="navy-800" height="100%">
-          <TabsBase
-            keyboardActivation="manual"
-            position="relative"
-            zIndex={0}
-            {...props}
-          />
+          <TabsBase position="relative" zIndex={0} {...props} />
         </Background>
       ) : (
-        <TabsBase
-          keyboardActivation="manual"
-          position="relative"
-          zIndex={0}
-          {...props}
-        />
+        <TabsBase position="relative" zIndex={0} {...props} />
       )}
     </TabProvider>
   );
