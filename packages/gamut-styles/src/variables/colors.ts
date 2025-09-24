@@ -198,13 +198,14 @@ export const percipioColors = {
   percipioActionPrimaryHover: '#141C36',
   percipioActionSecondary: '#6A6E75',
   percipioActionSecondaryHover: 'rgba(106, 110, 117, 0.86)',
-  percipioActionDanger: '#B83C3C',
   percipioActionDangerHover: '#A52020',
 
   // Feedback colors
   percipioFeedbackSuccess: '#1B8057',
   percipioFeedbackWarning: '#EF5B0D',
-  percipioFeedbackError: '#A52020',
+
+  // Multiuse colors
+  percipioDanger: '#B83C3C',
 } as const;
 
 export const percipioPalette = {
