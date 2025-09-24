@@ -1,6 +1,18 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as bestPracticesParameters } from './Best Practices.mdx';
+import { parameters as brandParameters } from './Brand.mdx';
+import { parameters as contributingParameters } from './Contributing.mdx';
+import { parameters as faqsParameters } from './FAQs.mdx';
+import { parameters as installationParameters } from './Installation.mdx';
+import { parameters as storiesParameters } from './Stories.mdx';
+import { parameters as usageGuideParameters } from './Usage Guide.mdx';
 
 export const parameters = {
   id: 'Meta',
@@ -14,27 +26,13 @@ export const parameters = {
 <AboutHeader {...parameters} />
 
 <TableOfContents
-  links={[
-    {
-      id: 'Meta/Best Practices',
-      subtitle: 'Current best practices for using the Gamut Design System',
-      title: 'Best Practices',
-      status: 'current',
-    },
-    {
-      id: 'Meta/Contributing',
-      subtitle: `Thanks so much for being interested in contributing to Gamut! We love working with Codecademy employees across all our teams.`,
-      title: 'Contributing',
-    },
-    {
-      id: 'Meta/FAQs',
-      subtitle: `Please let us know if there are questions you'd like answered here!`,
-      title: 'FAQ',
-    },
-    {
-      id: 'Meta/Stories',
-      subtitle: `We're still building these opinions out, so don't expect all stories to adhere just yet!`,
-      title: 'Stories',
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    bestPracticesParameters,
+    contributingParameters,
+    faqsParameters,
+    storiesParameters,
+    brandParameters,
+    installationParameters,
+    usageGuideParameters,
+  ])}
 />

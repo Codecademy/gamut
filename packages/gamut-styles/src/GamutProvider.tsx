@@ -19,7 +19,14 @@ export interface GamutProviderProps {
   useCache?: boolean;
   theme: Theme;
   variables?: Record<string, CSSObject>;
+  /**
+   * Pass a cache to the provider to override the default cache
+   */
   cache?: EmotionCache;
+  /**
+   * Pass a nonce to the cache to prevent CSP errors
+   */
+  nonce?: string;
 }
 
 export const GamutContext = React.createContext<{
@@ -39,6 +46,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   variables,
   useGlobals = true,
   useCache = true,
+  nonce,
 }) => {
   const { hasGlobals, hasCache } = useContext(GamutContext);
   const shouldCreateCache = useCache && !hasCache;
@@ -46,7 +54,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
 
   // Do not initialize a new cache if one has been provided as props
   const activeCache = useRef<EmotionCache | false>(
-    shouldCreateCache && (cache ?? createEmotionCache())
+    shouldCreateCache && (cache ?? createEmotionCache(nonce ? { nonce } : {}))
   );
 
   const contextValue = {

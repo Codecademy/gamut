@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.2.14](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.2.13...@codecademy/gamut-tests@5.2.14) (2025-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+### [5.2.13](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.2.12...@codecademy/gamut-tests@5.2.13) (2025-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+### [5.2.12](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.2.11...@codecademy/gamut-tests@5.2.12) (2025-07-22)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
+### [5.2.11](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.2.10...@codecademy/gamut-tests@5.2.11) (2025-07-17)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
 ### [5.2.10](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.2.9...@codecademy/gamut-tests@5.2.10) (2025-06-17)
 
 **Note:** Version bump only for package @codecademy/gamut-tests

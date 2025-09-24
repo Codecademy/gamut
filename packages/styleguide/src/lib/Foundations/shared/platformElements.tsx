@@ -1,5 +1,6 @@
 import {
   Background,
+  platformEditorColors,
   platformSwatches,
   platformTheme,
   truePlatformColors,
@@ -43,6 +44,28 @@ export const platformColor = {
   })),
   columns: [
     PROP_COLUMN,
+    {
+      ...PATH_COLUMN,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
+    },
+    {
+      key: 'swatch',
+      name: 'Swatch',
+      size: 'fill',
+      render: ({ hex }: any) => <ColorScale colors={{ hex }} />,
+    },
+  ],
+};
+
+export const platformEditorColor = {
+  rows: Object.entries(platformEditorColors).map(([id, value]) => ({
+    id,
+    hex: value,
+  })),
+  columns: [
+    { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
       render: ({ id }: any) => (

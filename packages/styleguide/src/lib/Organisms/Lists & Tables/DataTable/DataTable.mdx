@@ -1,10 +1,11 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as DataTableStories from './DataTable.stories';
 
 export const parameters = {
+  title: 'DataTable',
   subtitle: `Compare large amounts of data and perform bulk actions on Table Rows.`,
   status: 'current',
   source: {
@@ -49,7 +50,6 @@ Use a `DataTable` to display a table of items that contain a lot of information.
 
 ```tsx
 const DataTown = () => {
-  const [selectedRows, setSelectedRows] = useState([]);
   const [expandedRows, setExpandedRows] = useState([]);
   const columns = [
     { key: 'name', sortable: true, size: 'sm' },
@@ -66,8 +66,6 @@ const DataTown = () => {
     <DataTable
       id="example"
       columns={columns}
-      selectedRows={selectedRows}
-      onRowSelect={setSelectedRows}
       expandedRows={expandedRows}
       onRowExpand={setExpandedRows}
       renderExpanded={({ name }) => <>{name}: This is pretty cool</>}
@@ -141,6 +139,48 @@ Replaces content of current rows with <LinkTo id="Atoms/Loaders/Shimmer">Shimmer
 You can set the `shadow` prop to `true` to add a shadow to the DataTable when it is scrollable.
 
 <Canvas of={DataTableStories.Scrollable} />
+
+## Container Query Control
+
+DataTable inherits container query functionality from the underlying List component. By default, DataTable uses CSS container queries to determine responsive behavior based on the container width rather than viewport width. This ensures optimal display when DataTable is placed in constrained layouts.
+
+### When to use `disableContainerQuery={true}`
+
+- **DataTable in narrow containers**: When your DataTable is always rendered in a constrained space (like a 300px sidebar)
+- **Dense data tables**: When you have many columns that need consistent behavior regardless of container width
+- **Custom responsive management**: When implementing your own responsive logic and want to avoid conflicts
+- **Performance considerations**: In rare cases where container query support may impact performance
+
+### Example usage
+
+```tsx
+// Disable container queries for a DataTable in a narrow container
+<div style={{ width: '280px' }}>
+  <DataTable
+    disableContainerQuery
+    id="sidebar-table"
+    idKey="id"
+    rows={data}
+    columns={columns}
+    spacing="condensed"
+  />
+</div>
+
+// Use default container query behavior (recommended for most cases)
+<DataTable
+  id="main-table"
+  idKey="id"
+  rows={data}
+  columns={columns}
+  spacing="condensed"
+/>
+```
+
+The example below demonstrates the difference between default container query behavior and disabled container queries:
+
+<Canvas of={DataTableStories.DisableContainerQuery} />
+
+<Callout text="In most cases, you should use the default container query behavior as it provides better responsive design. Only disable container queries when you have specific layout requirements that conflict with the default behavior." />
 
 ## Playground
 

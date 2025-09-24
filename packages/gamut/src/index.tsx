@@ -23,16 +23,19 @@ export * from './FeatureShimmer';
 export * from './Flyout';
 export * from './FocusTrap';
 export * from './Form';
+export type {
+  OptionStrict,
+  ExtendedOption,
+  SelectDropdownGroup,
+} from './Form/SelectDropdown';
 export * from './GridForm';
 export * from './HiddenText';
 export * from './Layout/Column';
 export * from './Layout/LayoutGrid';
 export * from './List';
 export * from './Loading/Shimmer';
-export * from './Logo';
 export * from './Markdown';
 export * from './Menu';
-export * from './ModalDeprecated';
 export * from './Modals';
 export * from './Overlay';
 export * from './Pagination';

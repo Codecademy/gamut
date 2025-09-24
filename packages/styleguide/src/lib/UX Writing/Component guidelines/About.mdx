@@ -1,9 +1,23 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, LinkTo, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  LinkTo,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as alertsParameters } from './Alerts.mdx';
+import { parameters as alternativeTextParameters } from './Alternative text.mdx';
+import { parameters as buttonsParameters } from './Buttons.mdx';
+import { parameters as confirmationDialogsParameters } from './Confirmation dialogs.mdx';
+import { parameters as errorMessagesParameters } from './Error messages.mdx';
+import { parameters as notificationsParameters } from './Notifications.mdx';
+import { parameters as toastsParameters } from './Toasts.mdx';
+import { parameters as tooltipsParameters } from './Tooltips.mdx';
 
 export const parameters = {
-  id: 'Component guidelines',
+  id: 'UX Writing/Component guidelines',
   title: 'Component guidelines',
   subtitle:
     'Get up to speed on best practices for writing for user interfaces, including guidance for writing for specific components in Gamut.',
@@ -16,53 +30,14 @@ export const parameters = {
 Writing on your own? Use the <LinkTo id="UX Writing/DIY UX writing in 8 steps">step-by-step guide</LinkTo> to ensure the copy is clear and useful.
 
 <TableOfContents
-  links={[
-    {
-      id: 'UX Writing/Component guidelines/Alerts',
-      subtitle:
-        'Make clear what you’re alerting the user to. Then, clarify any next steps they need to take or inform them about the timing of a resolution on our end.',
-      title: 'Alerts',
-    },
-    {
-      id: 'UX Writing/Component guidelines/Alternative text',
-      title: 'Alternative text',
-      subtitle:
-        'Alternative text, or alt text, is a brief description of an image for users who cannot view it.',
-    },
-    {
-      id: 'UX Writing/Component guidelines/Buttons',
-      subtitle:
-        'Be specific, use action-oriented language, and emphasize value. Keep to 3 words or less (unless necessary for clarity), and use sentence case.',
-      title: 'Buttons',
-    },
-    {
-      id: 'UX Writing/Component guidelines/Confirmation dialogs',
-      subtitle:
-        'Simplify the language, prioritize the message, and make sure the implication of what learners are saying "Yes" (or "No") to is crystal clear.',
-      title: 'Confirmation dialogs',
-    },
-    {
-      id: 'UX Writing/Component guidelines/Error messages',
-      subtitle:
-        'Above all else, error messages should explain and resolve. Inform learners of what went wrong and let them know how to proceed.',
-      title: 'Error messages',
-    },
-    {
-      id: 'UX Writing/Component guidelines/Notifications',
-      subtitle:
-        'Keep it brief (<86 characters), make it actionable, and ensure the messaging is in support of the learner’s journey.',
-      title: 'Notifications',
-    },
-    {
-      id: 'UX Writing/Component guidelines/Toasts',
-      subtitle:
-        'Keep it brief, ensure the message is personal and relevant, and avoid distracting from the learning experience.',
-      title: 'Toasts',
-    },
-    {
-      id: 'UX Writing/Component guidelines/Tooltips',
-      subtitle: `Keep tooltips short and useful. Avoid using them to share information that's vital for learners to complete tasks.`,
-      title: 'Tooltips',
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    alertsParameters,
+    alternativeTextParameters,
+    buttonsParameters,
+    confirmationDialogsParameters,
+    errorMessagesParameters,
+    notificationsParameters,
+    toastsParameters,
+    tooltipsParameters,
+  ])}
 />

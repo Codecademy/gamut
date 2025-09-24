@@ -18,13 +18,17 @@ import {
   MiniDeleteIcon,
   MiniKebabMenuIcon,
   StarIcon,
+  StopSignIcon,
   StreakIcon,
   TrophyIcon,
 } from '@codecademy/gamut-icons';
 import { Keyhole } from '@codecademy/gamut-illustrations';
-import { Background } from '@codecademy/gamut-styles';
+import { Background, css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
+
+import { DisableContainerQueryExample, simpleRows } from '../examples';
 
 const meta: Meta<typeof List> = {
   component: List,
@@ -34,6 +38,13 @@ const meta: Meta<typeof List> = {
 
 export default meta;
 type Story = StoryObj<typeof List>;
+
+export const Default: Story = {
+  args: {
+    spacing: 'condensed',
+  },
+  render: (args) => <ListExample {...args} />,
+};
 
 const rows = [
   { name: 'Jean Luc Picard', role: 'Captain', ship: 'USS Enterprise' },
@@ -85,11 +96,61 @@ export const Table: Story = {
   render: (args) => <ListExample {...args} />,
 };
 
-export const Default: Story = {
-  args: {
-    spacing: 'condensed',
-  },
-  render: (args) => <ListExample {...args} />,
+export const Plain: Story = {
+  args: { spacing: 'condensed', variant: 'plain' },
+  render: (args) => (
+    <Box bg="red" width={1}>
+      <ListExample {...args} />
+    </Box>
+  ),
+};
+
+const DangerousListRow = styled(ListRow)(
+  css({
+    bg: 'background-error',
+    color: 'feedback-error',
+    fontWeight: 'bold',
+    borderRadius: 'sm',
+  })
+);
+
+const BorderedListRow = styled(ListRow)(
+  css({
+    border: 1,
+    borderColor: 'primary',
+    borderRadius: 'md',
+  })
+);
+
+const PlainStyledExample: React.FC = () => {
+  return (
+    <List variant="plain">
+      <ListRow>
+        <ListCol size="xl">A List item</ListCol>
+        <ListCol size="md">Some normal content</ListCol>
+      </ListRow>
+      {/* eslint-disable-next-line no-alert */}
+      <DangerousListRow onClick={() => alert('Danger!')}>
+        <ListCol size="xl">A dangerous styled item</ListCol>
+        <ListCol size="md">More styled content</ListCol>
+        <ListCol fill justify="right" size="sm">
+          <StopSignIcon size={24} />
+        </ListCol>
+      </DangerousListRow>
+      <ListRow>
+        <ListCol size="xl">Another List item</ListCol>
+        <ListCol size="md">Standard content</ListCol>
+      </ListRow>
+      <BorderedListRow>
+        <ListCol size="xl">A Custom Bordered Item</ListCol>
+        <ListCol size="md">With custom border</ListCol>
+      </BorderedListRow>
+    </List>
+  );
+};
+
+export const PlainStyled: Story = {
+  render: () => <PlainStyledExample />,
 };
 
 const ListCardExample: React.FC = (args) => {
@@ -97,7 +158,7 @@ const ListCardExample: React.FC = (args) => {
     <List {...args}>
       {rows.map(({ name, ship, role }) => (
         <ListRow>
-          <ListCol size="xl">
+          <ListCol fill>
             <Text truncate="ellipsis" truncateLines={1} variant="title-lg">
               {name}
             </Text>
@@ -108,7 +169,7 @@ const ListCardExample: React.FC = (args) => {
               {role}
             </FlexBox>
           </ListCol>
-          <ListCol fill size="xl">
+          <ListCol size="xl">
             <FlexBox
               alignItems="center"
               bg="palePink"
@@ -727,4 +788,62 @@ const ExpandedTemplateRowClick: React.FC<ListProps> = ({ as, variant }) => (
 
 export const ExpandedRowGuide: Story = {
   render: (args) => <ExpandedTemplateRowClick {...args} />,
+};
+
+export const SpaceSystemProps: Story = {
+  args: {
+    p: 16,
+  },
+  render: (args) => (
+    <Background bg="beige">
+      <ListExample {...args} />
+    </Background>
+  ),
+};
+
+const ListDisableContainerQueryExample: React.FC<ListProps> = () => {
+  const defaultComponent = (
+    <List spacing="condensed" variant="table">
+      {simpleRows.map(({ name, ship }) => (
+        <ListRow key={name}>
+          <ListCol size="md" type="header">
+            {name}
+          </ListCol>
+          <ListCol fill>{ship}</ListCol>
+          <ListCol justify="right" type="control">
+            {ship}
+          </ListCol>
+        </ListRow>
+      ))}
+    </List>
+  );
+
+  const disabledComponent = (
+    <List disableContainerQuery spacing="condensed" variant="table">
+      {simpleRows.map(({ name, ship }) => (
+        <ListRow key={name}>
+          <ListCol size="md" type="header">
+            {name}
+          </ListCol>
+          <ListCol fill>{ship}</ListCol>
+          <ListCol justify="right" type="control">
+            {ship}
+          </ListCol>
+        </ListRow>
+      ))}
+    </List>
+  );
+
+  return (
+    <DisableContainerQueryExample
+      componentName="List"
+      defaultComponent={defaultComponent}
+      disabledComponent={disabledComponent}
+    />
+  );
+};
+
+export const DisableContainerQuery: Story = {
+  args: {},
+  render: () => <ListDisableContainerQueryExample />,
 };

@@ -5,6 +5,7 @@ import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 import * as DialogStories from './Dialog.stories';
 
 export const parameters = {
+  title: 'Dialog',
   subtitle: `Structured dialog modals with binary options.`,
   design: {
     type: 'figma',
@@ -43,7 +44,7 @@ export const parameters = {
 
 ### Primary
 
-Use a default Dialogs to have users accept a specific state of the system or force a user to see something.
+Use a default Dialog to have users accept a specific state of the system or force a user to see something.
 
 <Canvas of={DialogStories.Default} />
 
@@ -62,7 +63,7 @@ Check it out:
 
 ### Light
 
-<Canvas of={DialogStories.LightMode} />
+<Canvas of={DialogStories.Default} />
 
 ### Dark
 

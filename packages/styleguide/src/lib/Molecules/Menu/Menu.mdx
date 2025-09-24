@@ -1,10 +1,16 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, ImageWrapper, LinkTo } from '~styleguide/blocks';
+import {
+  Callout,
+  ComponentHeader,
+  ImageWrapper,
+  LinkTo,
+} from '~styleguide/blocks';
 
 import * as MenuStories from './Menu.stories';
 
 export const parameters = {
+  title: 'Menu',
   subtitle: `The Menu component with MenuItem and MenuSeparator subcomponents.`,
   design: {
     type: 'figma',
@@ -34,7 +40,8 @@ Use a Menu to organize and present a list of actions, options, or navigation lin
 
 ### Best practices:
 
-- The Popover menu has the `menu` role by default, which is intended for presenting actions or options. However, if it contains only navigation links, it should use the `<nav>` element for semantic and accessible navigation.
+- If a `Menu` is presenting actions or options, you should assign `role="menu"`.
+- If the menu only contains a list of navigation links, then wrap a `<nav>` element around the `Menu` component for semantic and accessible navigation — the `nav` element implicitly includes the `navigation` role.
 - You can create floating menus by utilizing our <LinkTo id="Atoms/PopoverContainer">PopoverContainer</LinkTo>. Once you have your base positioning, you just need to adjust the y axis by 48 for the normal spacing or 32 for the condensed spacing for each of the MenuItems. You may also need to change the alignment of the PopoverContainer to ensure correct positioning.
 
 ### When NOT to use:
@@ -66,9 +73,21 @@ Use a Menu to organize and present a list of actions, options, or navigation lin
 
 ## Variants
 
+In both `popover` and `fixed` variants of `Menu`, you can set the `active` and `disabled` states on the `MenuItem` children. The `active` state indicates the currently selected item, while the `disabled` state indicates that an item is unavailable for interaction. You can optionally use the `label` prop to render a ToolTip explaining why a `MenuItem` is disabled — see the "Icon-Only Menus + ToolTips" section for more details.
+
+<Callout
+  text={
+    <>
+      The <code>Menu</code> component is stateless, you'll need to implement the
+      logic to manage the <code>active</code> and <code>disabled</code> states
+      of <code>MenuItem</code> components.
+    </>
+  }
+/>
+
 ### Popover
 
-Use the Popover menu to present a temporary surface for actions, options, or links, ensuring access only when needed while keeping the interface clean and focused. The Popover menu has the `menu` role by default. But, if the menu contains only a list of navigation links, it should be nested in a `<nav>` element, which implicitly includes the `navigation` role.
+Use the Popover menu to present a temporary surface for actions, options, or links, ensuring access only when needed while keeping the interface clean and focused.
 
 <Canvas of={MenuStories.Popover} />
 
@@ -77,6 +96,26 @@ Use the Popover menu to present a temporary surface for actions, options, or lin
 Use the Fixed menu to provide persistent access to navigation links, allowing users to seamlessly move between sections of the interface without opening additional surfaces. Fixed menus should always use the `<nav>` element to ensure semantic and accessible navigation.
 
 <Canvas of={MenuStories.Fixed} />
+
+## Roles
+
+The `Menu` component can be used with different roles depending on its purpose:
+
+- presenting actions or options, you should assign `role="menu"`.
+- containing a list of navigation links, then wrap a `<nav>` element around the `Menu` component for semantic and accessible navigation — the `nav` element implicitly includes the `navigation` role.
+- if no role is specified and the `Menu` is not wrapped in a `<nav>`, it will render with no role as a `<ul>` and its `MenuItem` children will be `<li>`.
+
+### Menu role
+
+<Canvas of={MenuStories.MenuRole} />
+
+### Navigation
+
+<Canvas of={MenuStories.NavMenu} />
+
+### No role
+
+<Canvas of={MenuStories.NoRoleMenu} />
 
 ## Spacing variants
 
@@ -99,9 +138,9 @@ Use the `MenuSeparator` component to group menu items into sections when there i
 
 ## Icon-Only Menus + ToolTips
 
-Some menus may have only icons, which can be useful for saving space or for actions that are easily recognizable by their icon. Each `MenuItem` must include a `label` prop, which will populate the `ToolTip` if the `MenuItem` is interactive and `aria-label` if not interactive. If you think you need a `ToolTip` with your non-interactive `MenuItem`, I assure you that you do not and should use a <LinkTo id="Molecules/Tips/ToggleTips">ToggleTip</LinkTo> instead.
+Some menus may have only icons, which can be useful for saving space or for actions that are easily recognizable by their icon. Each `MenuItem` must include a `label` prop, which will populate the `ToolTip` if the `MenuItem` is interactive and `aria-label` if not interactive. Non-interactive `MenuItem` components should NOT have a `ToolTip` — instead, use an <LinkTo id="Molecules/Tips/InfoTip">InfoTip</LinkTo> to provide more context.
 
-If you need fine-tuned control of the `ToolTip`, you can pass a config object to the `label` prop based off of our `ToolTip` props.
+If you need fine-tuned control of the `ToolTip`, you can pass a config object to the `label` prop based off of our `ToolTip` props. Notice in the example below, aside from the first option, the rest of the options use the `alignment` prop to set the `ToolTip` to the right of their respective icon.
 
 <Canvas of={MenuStories.IconMenu} />
 

@@ -22,6 +22,18 @@ const meta: Meta<typeof ToolTip> = {
 export default meta;
 type Story = StoryObj<typeof ToolTip>;
 
+export const Default: Story = {
+  render: (args) => (
+    <FlexBox center m={24} py={64}>
+      <ToolTip {...args}>
+        <FillButton aria-describedby="fill-id" icon={SparkleIcon}>
+          Click me
+        </FillButton>
+      </ToolTip>
+    </FlexBox>
+  ),
+};
+
 const alignments = [
   'top-center',
   'bottom-center',
@@ -65,7 +77,7 @@ export const WithIconButton: Story = {
 
 export const Floating: Story = {
   render: () => (
-    <FlexBox center justifyContent="space-around" m={24}>
+    <FlexBox center justifyContent="space-around">
       <IconButton
         icon={SmileyStarEyesIcon}
         tip="Wonder at the majesty of the universe"
@@ -84,7 +96,7 @@ export const Floating: Story = {
         icon={SmileyStarEyesIcon}
         tip="Wonder at the majesty of the universe"
         tipProps={{ alignment: 'right-center', placement: 'floating' }}
-      />{' '}
+      />
       <IconButton
         icon={SmileyStarEyesIcon}
         tip="Wonder at the majesty of the universe"
@@ -116,18 +128,6 @@ export const Disabled: Story = {
           icon={DeleteIcon}
         >
           Using aria-disabled
-        </FillButton>
-      </ToolTip>
-    </FlexBox>
-  ),
-};
-
-export const Default: Story = {
-  render: (args) => (
-    <FlexBox center m={24} py={64}>
-      <ToolTip {...args}>
-        <FillButton aria-describedby="fill-id" icon={SparkleIcon}>
-          Click me
         </FillButton>
       </ToolTip>
     </FlexBox>

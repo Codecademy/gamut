@@ -1,0 +1,256 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import { AboutHeader, TokenTable } from '~styleguide/blocks';
+
+import { breakpoint } from '../../shared/elements';
+import * as ResponsivePropertiesStories from './ResponsiveProperties.stories';
+
+export const parameters = {
+  title: 'Responsive Properties',
+  subtitle:
+    'All system props accept a syntax to generate responsive styles on a per prop basis',
+  source: {
+    repo: 'variance',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/cass-gm-842/packages/variance/src/utils/responsive.ts',
+  },
+};
+
+<Meta title="Foundations/System/Responsive Properties" />
+
+<AboutHeader {...parameters} />
+
+This API is largely based on [styled-system's responsive styles](https://styled-system.com/responsive-styles), it is not exactly the same however. Their documentation has a lot of great examples of behavior, however please refer to our documentation for our own best practices!
+
+## Purpose
+
+Creating components that handle many screensizes can be tricky. Often we need to change specific CSS properties at different breakpoints to ensure that a component does not render in a way that will break the page or make it unusable. This leads to a problem for maintainers and reviewers:
+
+1. There is no way to tell that a component is going to adapt to the viewport or container at a glance.
+2. Hidden interactions are hard to discover.
+
+Traditional (S)CSS strategies have approached this in various ways:
+
+- Mobile First Media Queries: This ensures that the smallest layouts will always behave appropriately. Such that any changes to larger screens, the screen size we almost always design and develop for, must override the styles that work for everything, not the other way around.
+- Declarative Classnames: Imposing a naming structure that allows you to see intended behavior from the name itself.
+
+We've taken these two core values to heart by adopting a responsive property syntax that ensures that:
+
+1. Behavior can be determined at a glance at the level of configuration.
+2. Breakpoints are always correctly ordered and consistently rendered.
+
+Here is an example:
+
+```tsx
+<FlexBox containerType="inline-size">
+  <Box display={{ _: 'none', sm: 'block', c_md: 'flex' }} />
+</FlexBox>
+```
+
+Output styles:
+
+```css
+.Box {
+  display: 'none';
+
+  @media (min-width: 480px) {
+    display: 'block';
+  }
+
+  @container (min-width: 1024px) {
+    display: 'flex';
+  }
+}
+```
+
+## Responsive syntax
+
+We've matched this syntax to each of our named breakpoints:
+
+<TokenTable {...breakpoint} />
+
+### Object
+
+This syntax is declarative and unstructured e.g. `padding={{ xl: 64 }}`
+
+```tsx
+export interface BreakpointMap<T> {
+  _?: T; // No media query
+  xs?: T; // `xs` media query
+  sm?: T; // `sm` media query
+  md?: T; // `md` media query
+  lg?: T; // `lg` media query
+  xl?: T; // `xl` media query
+  c_base?: T; // `c_base` container query
+  c_xs?: T; // `c_xs` container query
+  c_sm?: T; // `c_sm` container query
+  c_md?: T; // `c_md` container query
+  c_lg?: T; // `c_lg` container query
+  c_xl?: T; // `c_xl` container query
+}
+```
+
+### Array
+
+This structure is implicit but ordered e.g. `padding={[16, 24, 32, 48]}`
+
+```tsx
+export interface BreakpointArray<T> {
+  0?: T; // No media query
+  1?: T; // `xs` media query
+  2?: T; // `sm` media query
+  3?: T; // `md` media query
+  4?: T; // `lg` media query
+  5?: T; // `xl` media query
+  6?: T; // `c_base` container query
+  7?: T; // `c_xs` container query
+  8?: T; // `c_sm` container query
+  9?: T; // `c_md` container query
+  10?: T; // `c_lg` container query
+  11?: T; // `c_xl` container query
+}
+```
+
+Both are valid syntaxes for all stystem props:
+
+```tsx
+export type ResponsiveProp<T> = T | BreakpointMap<T> | BreakpointArray<T>;
+```
+
+Here are some examples of what the expected output will be for certain configurations:
+
+```tsx
+// 1
+<Box p={[16, 24]} py={12} />
+// 2
+<Box width={{ _: '100%', xl: '50%' }} />
+// 3
+<Box display={{ lg: 'none' }} />
+```
+
+```css
+/** 1 */
+.Box {
+  padding: 12px 16px;
+  @media (min-width: 480px) {
+    padding: 12px 24px;
+  }
+}
+/** 2 */
+.Box {
+  width: 100%;
+  @media (min-width: 1440px) {
+    width: 50%;
+  }
+}
+/** 3 */
+.Box {
+  @media (min-width: 1200px) {
+    display: none;
+  }
+}
+```
+
+### What syntax should I use?
+
+Since both syntaxes perform the same task it can be unclear which syntax is preferrable to another, heres some best practices for picking the syntax that will be most readable.
+
+#### When to use object syntax
+
+1. Single Breakpoint Styles - Sometimes you need only change a property value at a single breakpoint. This is far easier in the object syntax than in the array.
+
+```tsx
+// Simple
+<Text fontSize={{ lg: 26 }} />
+
+// Unreadable because there are no values for everything preceding `lg`
+<Text fontSize={[ , , , 26]} />
+```
+
+2. Skipping Breakpoints - Since the object syntax is unordered it makes setting disparate behavior far easier to read and understand than the array.
+
+```tsx
+// 14 at the smallest size and 64 at the largest
+<Text fontSize={{ _: 14, xl: 64 }} />
+
+// When does 64 even get applied here?
+<Text fontSize={[14, , , ,64]} />
+```
+
+#### When to use the array syntax
+
+1. When specifying values at every breakpoint - Since array props are ordered we can always read the behavior left to right.
+
+```tsx
+// Order and readable
+<Text fontSize={[14, 16, 18, 20, 26, 64]} />
+
+// Unordered and verbose
+<Text
+  fontSize={{
+    md: 20,
+    _:14,
+    xs: 16,
+    xl: 64,
+    sm: 18,
+    lg: 26
+  }}
+/>
+```
+
+2. When default values matter - There are some cases where not having a base style set to a property will cause uninteded behavior, object lets you omit these without being explicit potentially causing bugs.
+
+```tsx
+// looks safe but will render as 1 column at smallest screen size
+<Column size={{ xs: 12, sm: 6 }} />
+
+// this will not as we must explicity declare the breakpoint value as undefined
+<Column size={[12, ,6]} />
+```
+
+## Container Queries
+
+Container queries allow components to adapt based on the _size of their parent container_ instead of the viewport. This empowers true component-level responsiveness—widgets can live anywhere in a layout and still look correct.
+
+Our responsive prop API provides a parallel set of breakpoint keys that resolve to `@container` rules:
+
+- `c_base` `@container (min-width: 1px)`
+- `c_xs` `@container (min-width: 480px)`
+- `c_sm` `@container (min-width: 768px)`
+- `c_md` `@container (min-width: 1024px)`
+- `c_lg` `@container (min-width: 1200px)`
+- `c_xl` `@container (min-width: 1440px)`
+
+These work exactly like the existing media-query keys—you can use them in both _object_ and _array_ syntaxes and freely mix them with standard media breakpoints. The only caveat is **you must declare a container for container queries to work.**
+
+### Declaring a Container for Container Queries
+
+To use container queries, the parent element of your responsive component must be a [CSS Container](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries). This is typically done by setting the `container-type` property on the parent. The most common value is `inline-size`, which enables queries based on the element's width.
+
+```tsx
+<FlexBox containerType="inline-size">
+  <Box display={{ _: 'none', sm: 'block', c_md: 'flex' }} />
+</FlexBox>
+```
+
+It is good practice to set a fallback media query value for older or unsupported browsers.
+
+## Best practices
+
+1. **Opt-in when needed** – use media breakpoints for page-level layout shifts; use container queries for components that must react to their allotted space.
+2. **Declare containers** – add `container-type` to the element whose descendants should listen to container breakpoints.
+3. **Stay readable** – the same guidelines for choosing object vs. array syntax apply. Use object syntax for isolated container breakpoints and the ordered array syntax when specifying every breakpoint.
+
+## Examples
+
+### Media Queries
+
+<Canvas of={ResponsivePropertiesStories.MediaQueries} />
+
+### Container Queries
+
+<Canvas of={ResponsivePropertiesStories.ContainerQueries} />
+
+### Combined Queries
+
+<Canvas of={ResponsivePropertiesStories.CombinedQueries} />

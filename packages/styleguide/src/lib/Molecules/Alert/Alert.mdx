@@ -5,6 +5,7 @@ import { ComponentHeader, ImageWrapper } from '~styleguide/blocks';
 import * as AlertStories from './Alert.stories';
 
 export const parameters = {
+  title: 'Alert',
   subtitle: `An alert displays an important, succinct message, and provides actions for users to address (or dismiss the alert). It requires a user action to be dismissed.`,
   design: {
     type: 'figma',
@@ -127,6 +128,6 @@ When the width of the alert is less than 480px, the button automatically stacks 
 
 ## Playground
 
-<Canvas sourceState="shown" of={AlertStories.General} />
+<Canvas sourceState="shown" of={AlertStories.Default} />
 
 <Controls />

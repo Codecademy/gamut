@@ -103,16 +103,16 @@ export const StyledFillButton = styled(FillButton)(
   })
 );
 
-export type DisclosureBodyWrapperStyles = StyleProps<
-  typeof disclosureBodyWrapperStates
->;
-
 const disclosureBodyWrapperStates = states({
   hasPanelBg: {
     bg: 'background-selected',
     p: 8,
   },
 });
+
+export type DisclosureBodyWrapperStyles = StyleProps<
+  typeof disclosureBodyWrapperStates
+>;
 
 export const DisclosureBodyWrapper = styled(
   FlexBox

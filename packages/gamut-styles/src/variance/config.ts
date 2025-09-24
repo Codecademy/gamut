@@ -187,6 +187,7 @@ export const shadows = {
 } as const;
 
 export const layout = {
+  containerType: { property: 'containerType' },
   display: { property: 'display' },
   overflow: { property: 'overflow' },
   overflowX: { property: 'overflowX' },

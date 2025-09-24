@@ -1,5 +1,5 @@
 import { Badge, FlexBox } from '@codecademy/gamut';
-import { MiniStarIcon, MiniWarningTriangleIcon } from '@codecademy/gamut-icons';
+import * as icons from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { TertiaryFillExample } from './examples';
@@ -7,6 +7,15 @@ import { TertiaryFillExample } from './examples';
 const meta: Meta<typeof Badge> = {
   component: Badge,
   args: { children: 'Badge' },
+  argTypes: {
+    icon: {
+      control: {
+        type: 'select',
+      },
+      options: Object.keys(icons),
+      mapping: icons,
+    },
+  },
 };
 
 export default meta;
@@ -50,7 +59,12 @@ export const Custom: Story = {
       />
       <Badge bg="green" variant="custom" {...args} />
       <Badge bg="orange-500" variant="custom" {...args} />
-      <Badge bg="lightBlue" variant="custom" {...args} icon={MiniStarIcon} />
+      <Badge
+        bg="lightBlue"
+        variant="custom"
+        {...args}
+        icon={icons.MiniStarIcon}
+      />
     </FlexBox>
   ),
 };
@@ -73,7 +87,7 @@ export const DefaultSizeWithIcon: Story = {
   args: {
     children: 'sample icon',
     variant: 'tertiaryFill',
-    icon: MiniStarIcon,
+    icon: icons.MiniStarIcon,
   },
 };
 
@@ -82,6 +96,6 @@ export const SmallSizeWithIcon: Story = {
     children: 'sm icon',
     size: 'sm',
     variant: 'accent',
-    icon: MiniWarningTriangleIcon,
+    icon: icons.MiniWarningTriangleIcon,
   },
 };
