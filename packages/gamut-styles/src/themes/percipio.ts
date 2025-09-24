@@ -18,7 +18,7 @@ export const percipioTheme = createTheme({
         secondary: 'percipioTextSecondary',
       },
       feedback: {
-        error: 'percipioFeedbackError',
+        error: 'percipioDanger',
         success: 'percipioFeedbackSuccess',
         warning: 'percipioFeedbackWarning',
       },
@@ -42,7 +42,7 @@ export const percipioTheme = createTheme({
         hover: 'percipioActionSecondaryHover',
       },
       danger: {
-        _: 'percipioActionDanger',
+        _: 'percipioDanger',
         hover: 'percipioActionDangerHover',
       },
       interface: {
