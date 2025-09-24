@@ -58,14 +58,9 @@ jobs:
         id: deploy
         run: |
           DEPLOY_MESSAGE="User: ${{ github.actor }} Project: ${{ github.repository }} Pull Request: ${{ github.event.pull_request.html_url }}"
-          # Use Netlify API directly to bypass CLI project detection issues
-          cd dist/storybook/styleguide
-          zip -r deploy.zip .
-          DEPLOY_RESPONSE=$(curl -H "Content-Type: application/zip" \
-            -H "Authorization: Bearer ${{ secrets.NETLIFY_AUTH_TOKEN }}" \
-            --data-binary @deploy.zip \
-            "https://api.netlify.com/api/v1/sites/${{ secrets.NETLIFY_SITE_ID }}/deploys")
-          echo "deploy-output=$DEPLOY_RESPONSE" >> $GITHUB_OUTPUT
+          # Try using netlify CLI with environment variables to bypass project detection
+          export NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID }}"
+          echo "deploy-output=$(npx netlify-cli@latest deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json)" >> $GITHUB_OUTPUT
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
