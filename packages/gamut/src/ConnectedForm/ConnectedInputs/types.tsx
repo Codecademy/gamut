@@ -42,10 +42,7 @@ export interface ConnectedRadioProps
 export interface ConnectedBaseRadioGroupProps
   extends FieldComponent<RadioGroupProps> {}
 
-export type ConnectedBaseRadioInputProps = Omit<
-  RadioProps,
-  'defaultValue' | 'name' | 'validation'
-> & {
+export type ConnectedBaseRadioInputProps = FieldComponent<RadioProps> & {
   label: ReactNode;
   value: string | number;
 };
@@ -61,11 +58,11 @@ export interface ConnectedRadioGroupInputProps
 }
 
 export interface ConnectedSelectProps
-  extends Omit<SelectProps, 'defaultValue' | 'name' | 'validation'>,
+  extends FieldComponent<SelectProps>,
     ConnectedFieldProps {}
 
 export interface ConnectedTextAreaProps
-  extends Omit<TextAreaProps, 'defaultValue' | 'name' | 'validation'>,
+  extends FieldComponent<TextAreaProps>,
     ConnectedFieldProps {}
 
 export type NestedConnectedCheckboxOption = Omit<
