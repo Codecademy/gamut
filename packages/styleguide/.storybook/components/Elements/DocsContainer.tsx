@@ -19,12 +19,11 @@ import {
 } from '@storybook/blocks';
 import { components as htmlComponents } from '@storybook/components';
 import { styled, ThemeProvider } from '@storybook/theming';
-import * as React from 'react';
+import { useMemo } from 'react';
 import { Link } from './Markdown';
 import { HelmetProvider } from 'react-helmet-async';
 import theme from '../../theming/GamutTheme';
 import { createTheme } from '@codecademy/variance';
-
 export const storybookTheme = createTheme(coreTheme)
   .addColors(platformPalette)
   .build();
@@ -70,22 +69,30 @@ export const DocsContainer: React.FC<{
   /** Select the docs theme based on the global toolbar item unless it is a theme specific story
    *  This is admittedly a bit fragile - when updating Storybook this likely will need to be changed
    */
-  const findThemeStory: keyof typeof themeSpecificStories | undefined = (
-    context?.channel as any
-  )?.data?.storySpecified[0]?.storyId;
+  const storyId = (context?.channel as any)?.data?.storySpecified[0]?.storyId;
+  const globalTheme =
+    (context as any).store.userGlobals?.globals?.theme || 'core';
 
-  const isThemeStory =
-    findThemeStory &&
-    Object.keys(themeSpecificStories).includes(findThemeStory);
+  const { selectedTheme, currentTheme } = useMemo(() => {
+    const findThemeStory: keyof typeof themeSpecificStories | undefined =
+      storyId;
 
-  const selectedTheme = isThemeStory
-    ? themeSpecificStories[findThemeStory]
-    : (context as any).store.userGlobals?.globals?.theme || 'core';
+    const isThemeStory =
+      findThemeStory &&
+      Object.keys(themeSpecificStories).includes(findThemeStory);
 
-  const currentTheme = themeMap[selectedTheme as keyof typeof themeMap];
+    const theme = isThemeStory
+      ? themeSpecificStories[findThemeStory]
+      : globalTheme;
+
+    return {
+      selectedTheme: theme,
+      currentTheme: themeMap[theme as keyof typeof themeMap],
+    };
+  }, [storyId, globalTheme]);
 
   console.log(selectedTheme);
-  console.log(isThemeStory);
+  console.log(!!storyId && Object.keys(themeSpecificStories).includes(storyId));
 
   return (
     <StorybookDocsContainer theme={theme} context={context} {...rest}>
