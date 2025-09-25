@@ -19,6 +19,13 @@ import {
   formFieldPaddingStyles,
   InputSelectors,
 } from '../styles';
+import {
+  ContainerState,
+  ControlState,
+  MenuListState,
+  MenuState,
+  OptionState,
+} from './types';
 
 const selectDropdownStyles = css({
   ...formBaseFieldStylesObject,
@@ -51,7 +58,7 @@ const sizeVariants = variant({
   variants: {
     medium: formFieldPaddingStyles,
     mediumIsMultiSelected: { px: 8, py: 8 },
-    small: { height: '2rem', px: 8, py: 0 },
+    small: { minHeight: '2rem', px: 8, py: 0 },
   },
 });
 
@@ -93,14 +100,17 @@ export const getMemoizedStyles = (
     clearIndicator: (provided) => ({
       ...provided,
     }),
-    container: (provided, state) => ({
-      ...provided,
-      pointerEvents: 'visible',
-      cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
-      width: '100%',
-      minWidth: '7rem',
-    }),
-    control: (provided, state: any) => {
+    container: (provided, state: ContainerState) => {
+      const { inputWidth } = state.selectProps;
+      return {
+        ...provided,
+        pointerEvents: 'visible',
+        cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
+        width: inputWidth || '100%',
+        minWidth: '7rem',
+      };
+    },
+    control: (provided, state: ControlState) => {
       const { isMulti, size } = state.selectProps;
       const getSize = size ?? 'medium';
       const getPadding =
@@ -132,15 +142,31 @@ export const getMemoizedStyles = (
       padding: '0',
       margin: '0',
     }),
-    menu: (provided, state: any) => ({
-      ...provided,
-      ...dropdownBorderStyles({ theme }),
-      ...dropdownBorderStates({ error: state.selectProps.error, theme }),
-    }),
-    menuList: (provided, state: any) => {
+    menu: (provided, state: MenuState) => {
+      const { dropdownWidth, menuAlignment } = state.selectProps;
+
+      return {
+        ...provided,
+        ...dropdownBorderStyles({ theme }),
+        ...dropdownBorderStates({ error: state.selectProps.error, theme }),
+        ...(dropdownWidth
+          ? {
+              width: dropdownWidth,
+              minWidth: dropdownWidth,
+            }
+          : {}),
+        ...(menuAlignment === 'right'
+          ? {
+              left: 'auto',
+              right: 0,
+            }
+          : {}),
+      };
+    },
+    menuList: (provided, state: MenuListState) => {
       const sizeInteger = state.selectProps.size === 'small' ? 2 : 3;
       const maxHeight = `${
-        state.selectProps.shownOptionsLimit * sizeInteger
+        (state.selectProps.shownOptionsLimit ?? 6) * sizeInteger
       }rem`;
       return {
         ...provided,
@@ -150,8 +176,11 @@ export const getMemoizedStyles = (
     placeholder: (provided) => ({
       ...provided,
       ...placeholderColor({ theme }),
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
     }),
-    option: (provided, state: any) => {
+    option: (provided, state: OptionState) => {
       return {
         padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
         cursor: state.isDisabled ? 'not-allowed' : 'pointer',
@@ -168,11 +197,11 @@ export const getMemoizedStyles = (
       alignItems: 'center',
       marginLeft: 0,
     }),
-    multiValue: (provided) => ({
+    multiValue: (provided, state) => ({
       ...provided,
       ...tagBaseStyles,
       height: '24px',
-      cursor: 'pointer',
+      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
       color: theme.colors.background,
       backgroundColor: 'transparent',
       borderRadius: theme.borderRadii.md,
@@ -188,10 +217,11 @@ export const getMemoizedStyles = (
       paddingLeft: `${tagLabelPadding}px`, // default label has an explicit rule for padding left so we need this to override it
       paddingTop: '2px', // adding to shift the text down to vertically center it
     }),
-    multiValueRemove: (provided) => ({
+    multiValueRemove: (provided, state) => ({
       ...provided,
       ...dismissSharedStyles,
-      cursor: 'pointer',
+      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+      pointerEvents: state.isDisabled ? 'none' : 'visible',
       backgroundColor: theme.colors['text-secondary'],
       borderRadius: `0 ${theme.borderRadii.md} ${theme.borderRadii.md} 0`,
       padding: 0, // default remove has padding left and right that we don't need

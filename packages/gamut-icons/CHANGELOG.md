@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.50.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.49.2...@codecademy/gamut-icons@9.50.0) (2025-09-15)
+
+### Features
+
+- **Icon:** added new file-text-info icon. ([a06aeb4](https://github.com/Codecademy/gamut/commit/a06aeb44d6a9429eac7bc28d3483a690dbabf3bd))
+
 ### [9.49.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.49.1...@codecademy/gamut-icons@9.49.2) (2025-08-20)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
