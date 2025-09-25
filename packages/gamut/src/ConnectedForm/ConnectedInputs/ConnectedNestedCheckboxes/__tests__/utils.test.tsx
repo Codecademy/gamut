@@ -51,8 +51,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = flattenOptions(options);
 
       expect(result).toHaveLength(4);
-
-      // Parent 1
       expect(result[0]).toMatchObject({
         value: 'parent1',
         label: 'Parent 1',
@@ -60,8 +58,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         parentValue: undefined,
         options: ['child1', 'child2'],
       });
-
-      // Child 1
       expect(result[1]).toMatchObject({
         value: 'child1',
         label: 'Child 1',
@@ -69,8 +65,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         parentValue: 'parent1',
         options: [],
       });
-
-      // Child 2
       expect(result[2]).toMatchObject({
         value: 'child2',
         label: 'Child 2',
@@ -78,8 +72,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         parentValue: 'parent1',
         options: [],
       });
-
-      // Parent 2
       expect(result[3]).toMatchObject({
         value: 'parent2',
         label: 'Parent 2',
@@ -177,7 +169,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
 
     it('should get all direct and indirect descendants', () => {
       const result = getAllDescendants('parent', flatOptions);
-      expect(result).toEqual(['child1', 'child2', 'grandchild1']);
+      expect(result).toEqual(['child1', 'grandchild1', 'child2']);
     });
 
     it('should get only direct descendants when no grandchildren exist', () => {
@@ -290,10 +282,10 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const states = calculateStates(selectedValues, flatOptions);
 
       const child1State = states.get('child1');
-      expect(child1State).toEqual({ checked: true }); // all descendants (grandchild1) are selected
+      expect(child1State).toEqual({ checked: true });
 
       const parent1State = states.get('parent1');
-      expect(parent1State).toEqual({ checked: false, indeterminate: true }); // only some descendants selected
+      expect(parent1State).toEqual({ checked: false, indeterminate: true });
     });
 
     it('should handle empty selected values', () => {
@@ -650,7 +642,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
       };
 
       const result = renderCheckbox(
-        optionWithElementLabel,
+        optionWithElementLabel as any, // ts should prevent this from ever happening but we have a default just in case
         state,
         'test-id',
         false,

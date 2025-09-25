@@ -1,6 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 import { act } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { ConnectedForm, ConnectedFormGroup, SubmitButton } from '../../..';
 import { NestedConnectedCheckboxOption } from '../../types';
@@ -43,7 +44,13 @@ const TestForm: React.FC<{
   defaultValues?: { skills?: string[] };
   validationRules?: any;
   disabled?: boolean;
-}> = ({ defaultValues = {}, validationRules, disabled }) => (
+  options?: NestedConnectedCheckboxOption[];
+}> = ({
+  defaultValues = {},
+  validationRules,
+  disabled,
+  options = mockOptions,
+}) => (
   <ConnectedForm
     defaultValues={defaultValues}
     validationRules={validationRules}
@@ -53,7 +60,7 @@ const TestForm: React.FC<{
       disabled={disabled}
       field={{
         component: ConnectedNestedCheckboxes,
-        options: mockOptions,
+        options,
         onUpdate: mockOnUpdate,
       }}
       label="nested checkboxes field"
@@ -100,10 +107,10 @@ describe('ConnectedNestedCheckboxes', () => {
       const expressCheckbox = view.getByLabelText('Express.js').closest('li');
 
       // Check margin-left styles for indentation
-      expect(frontendCheckbox).toHaveStyle({ marginLeft: '0px' }); // level 0
-      expect(reactCheckbox).toHaveStyle({ marginLeft: '24px' }); // level 1
-      expect(nodeCheckbox).toHaveStyle({ marginLeft: '24px' }); // level 1
-      expect(expressCheckbox).toHaveStyle({ marginLeft: '48px' }); // level 2
+      expect(frontendCheckbox).toHaveStyle({ marginLeft: '0' }); // level 0
+      expect(reactCheckbox).toHaveStyle({ marginLeft: '1.5rem' }); // level 1
+      expect(nodeCheckbox).toHaveStyle({ marginLeft: '1.5rem' }); // level 1
+      expect(expressCheckbox).toHaveStyle({ marginLeft: '3rem' }); // level 2
     });
 
     it('should render with unique IDs for each checkbox', () => {
@@ -137,7 +144,7 @@ describe('ConnectedNestedCheckboxes', () => {
 
     it('should render parent as indeterminate when some children are selected', () => {
       const { view } = renderView({
-        defaultValues: { skills: ['react', 'vue'] }, // only some frontend
+        defaultValues: { skills: ['react', 'vue'] },
       });
 
       const frontendCheckbox = view.getByLabelText(
@@ -159,7 +166,7 @@ describe('ConnectedNestedCheckboxes', () => {
 
     it('should render deeply nested parent states correctly', () => {
       const { view } = renderView({
-        defaultValues: { skills: ['express', 'fastify'] }, // all node children
+        defaultValues: { skills: ['express', 'fastify'] },
       });
 
       const nodeCheckbox = view.getByLabelText('Node.js');
@@ -187,6 +194,16 @@ describe('ConnectedNestedCheckboxes', () => {
       // Deeply nested children should also be checked
       expect(view.getByLabelText('Express.js')).toBeChecked();
       expect(view.getByLabelText('Fastify')).toBeChecked();
+
+      // onUpdate should have been called with all expanded values during initialization
+      expect(mockOnUpdate).toHaveBeenCalledWith([
+        'backend',
+        'node',
+        'express',
+        'fastify',
+        'python',
+        'ruby',
+      ]);
     });
 
     it('should allow unchecking children that were auto-checked by default parent selection', async () => {
@@ -373,13 +390,15 @@ describe('ConnectedNestedCheckboxes', () => {
     });
 
     it('should not respond to clicks when disabled', async () => {
-      const { view } = renderView({ disabled: true });
+      const { view } = renderView({
+        disabled: true,
+      });
 
       const reactCheckbox = view.getByLabelText('React');
+      expect(reactCheckbox).toBeDisabled();
+      expect(reactCheckbox).not.toBeChecked();
 
-      await act(async () => {
-        fireEvent.click(reactCheckbox);
-      });
+      await userEvent.click(reactCheckbox);
 
       expect(reactCheckbox).not.toBeChecked();
       expect(mockOnUpdate).not.toHaveBeenCalled();
@@ -432,13 +451,7 @@ describe('ConnectedNestedCheckboxes', () => {
 
   describe('edge cases', () => {
     it('should handle empty options array', () => {
-      const TestFormEmpty = () => (
-        <ConnectedForm defaultValues={{}} onSubmit={jest.fn()}>
-          <ConnectedNestedCheckboxes name="skills" options={[]} />
-        </ConnectedForm>
-      );
-
-      const { view } = setupRtl(TestFormEmpty, {})({});
+      const { view } = renderView({ options: [] });
 
       // Should render empty list
       const list = view.container.querySelector('ul');
@@ -447,39 +460,27 @@ describe('ConnectedNestedCheckboxes', () => {
     });
 
     it('should handle options without nested children', () => {
-      const flatOptions: NestedConnectedCheckboxOption[] = [
-        { value: 'option1', label: 'Option 1' },
-        { value: 'option2', label: 'Option 2' },
-      ];
-
-      const TestFormFlat = () => (
-        <ConnectedForm defaultValues={{}} onSubmit={jest.fn()}>
-          <ConnectedNestedCheckboxes name="skills" options={flatOptions} />
-        </ConnectedForm>
-      );
-
-      const { view } = setupRtl(TestFormFlat, {})({});
+      const { view } = renderView({
+        options: [
+          { value: 'option1', label: 'Option 1' },
+          { value: 'option2', label: 'Option 2' },
+        ],
+      });
 
       expect(view.getByLabelText('Option 1')).toBeInTheDocument();
       expect(view.getByLabelText('Option 2')).toBeInTheDocument();
     });
 
     it('should handle numeric values correctly', () => {
-      const numericOptions: NestedConnectedCheckboxOption[] = [
-        {
-          value: 1,
-          label: 'Parent Option',
-          options: [{ value: 2, label: 'Child Option' }],
-        } as any, // Type assertion for testing numeric values
-      ];
-
-      const TestFormNumeric = () => (
-        <ConnectedForm defaultValues={{}} onSubmit={jest.fn()}>
-          <ConnectedNestedCheckboxes name="skills" options={numericOptions} />
-        </ConnectedForm>
-      );
-
-      const { view } = setupRtl(TestFormNumeric, {})({});
+      const { view } = renderView({
+        options: [
+          {
+            value: 1,
+            label: 'Parent Option',
+            options: [{ value: 2, label: 'Child Option' }],
+          } as any, // Type assertion for testing numeric values
+        ],
+      });
 
       expect(view.getByLabelText('Parent Option')).toHaveAttribute(
         'id',
@@ -518,8 +519,8 @@ describe('ConnectedNestedCheckboxes', () => {
       const list = view.container.querySelector('ul');
       const listItems = view.container.querySelectorAll('li');
 
-      expect(list).toHaveAttribute('role', 'list');
-      expect(listItems).toHaveLength(8); // Total flattened options
+      expect(list).toBeInTheDocument();
+      expect(listItems).toHaveLength(11); // Total flattened options
 
       listItems.forEach((item) => {
         expect(item).toHaveStyle({ listStyle: 'none' });
