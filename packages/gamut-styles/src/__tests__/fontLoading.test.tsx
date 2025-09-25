@@ -198,7 +198,6 @@ describe('Font Loading and Error Handling', () => {
       const links = container.querySelectorAll('link[rel="preload"]');
       expect(links).toHaveLength(1);
 
-      // Restore original fonts
       Object.defineProperty(document, 'fonts', {
         value: originalFonts,
         writable: true,
@@ -222,7 +221,6 @@ describe('Font Loading and Error Handling', () => {
       const links = container.querySelectorAll('link[rel="preload"]');
       expect(links).toHaveLength(1);
 
-      // Restore original fetch
       global.fetch = originalFetch;
     });
   });
@@ -256,7 +254,6 @@ describe('Font Loading and Error Handling', () => {
         },
       ]);
 
-      // Rapidly switch between themes
       const { rerender } = render(<AssetProvider theme={coreTheme} />);
 
       for (let i = 0; i < 5; i += 1) {

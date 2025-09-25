@@ -29,6 +29,7 @@ export const Typography: React.FC<{ theme: typeof coreTheme }> = ({
     const fonts = getFonts(theme?.name);
 
     if (!Array.isArray(fonts)) {
+      // Error if the fonts are not an array
       // eslint-disable-next-line no-console
       console.warn('Typography: Invalid fonts data received');
       return null;

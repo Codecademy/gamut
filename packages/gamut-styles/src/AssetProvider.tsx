@@ -11,7 +11,6 @@ import { FontConfig, getFonts } from './utils/fontUtils';
 export const createFontLinks = (fonts?: readonly FontConfig[]) => {
   const currentFonts = fonts ?? webFonts.core;
 
-  // Handle cases where fonts is not an array
   if (!Array.isArray(currentFonts)) {
     return [];
   }

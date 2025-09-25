@@ -8,6 +8,7 @@ import {
   adminTheme,
   lxStudioTheme,
   percipioTheme,
+  CoreTheme,
 } from '@codecademy/gamut-styles';
 import { MDXProvider } from '@mdx-js/react';
 import {
@@ -18,7 +19,7 @@ import {
   SourceContainer,
 } from '@storybook/blocks';
 import { components as htmlComponents } from '@storybook/components';
-import { styled, ThemeProvider } from '@storybook/theming';
+import { styled, Theme, ThemeProvider } from '@storybook/theming';
 import { useMemo } from 'react';
 import { Link } from './Markdown';
 import { HelmetProvider } from 'react-helmet-async';
@@ -97,13 +98,14 @@ export const DocsContainer: React.FC<{
     <StorybookDocsContainer theme={theme} context={context} {...rest}>
       <GamutProvider
         cache={createEmotionCache({ speedy: false })}
-        theme={currentTheme as any}
+        // This is typed to the CoreTheme in theme.d.ts
+        theme={currentTheme as unknown as CoreTheme}
       >
         <HelmetProvider>
           <AssetProvider />
         </HelmetProvider>
         <SourceContainer channel={context.channel}>
-          <ThemeProvider theme={currentTheme as any}>
+          <ThemeProvider theme={currentTheme as unknown as Theme}>
             <MDXProvider components={defaultComponents}>{children}</MDXProvider>
           </ThemeProvider>
         </SourceContainer>
