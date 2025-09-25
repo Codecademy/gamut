@@ -1,5 +1,5 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
-import { ComponentProps, useState } from 'react';
+import { ComponentProps, Ref, useState } from 'react';
 import * as React from 'react';
 
 import { Box } from '../Box';
@@ -48,32 +48,44 @@ interface ModalView
 
 export type ModalViewProps = ModalView & ModalButtonProps;
 
-export interface SingleViewModalProps extends ModalBaseProps {
-  size?: ComponentProps<typeof ModalContainer>['size'];
-  /**
-   * Whether to hide the default close button and pass your own through children
-   */
-  hideCloseButton?: boolean;
+/**
+ * Props thats are passed to the default close button
+ */
+type CloseButtonProps = {
+  closeButtonProps?: {
+    /**
+     * Whether to hide the default close button and pass your own through children to close the modal
+     */
+    hidden?: boolean;
+    /**
+     * An optional ref to be passed to the close button
+     */
+    ref?: Ref<HTMLButtonElement>;
+    /**
+     * The close button tooltip text. Defaults to "Close modal"
+     */
+    tip?: string;
+    /**
+     * Whether to disable the default close button
+     */
+    disabled?: boolean;
+  };
+};
+
+export interface SingleViewModalProps extends ModalBaseProps, CloseButtonProps {
   /**
    * Whether to show scrollbar on content overflow
    */
   scrollable?: boolean;
   views?: never;
-  /**
-   * Whether to disable X button at top right of modal
-   */
-  closeDisabled?: boolean;
 }
 
 export interface MultiViewModalProps
-  extends Omit<ModalBaseProps, 'children' | 'image'> {
+  extends Omit<ModalBaseProps, 'children' | 'image'>,
+    CloseButtonProps {
   children?: never;
   image?: never;
   size?: ComponentProps<typeof ModalContainer>['size'];
-  /**
-   * Whether to hide the default close button and pass your own through children
-   */
-  hideCloseButton?: boolean;
   /**
    * Whether to show scrollbar on content overflow
    */
@@ -82,10 +94,6 @@ export interface MultiViewModalProps
    * Optional array of multiple screens
    */
   views: ModalViewProps[];
-  /**
-   * Whether to disable X button at top right of modal
-   */
-  closeDisabled?: boolean;
   /**
    * TEMPORARY: a stopgap solution to avoid zIndex conflicts -
    * will be reworked with: GM-624
@@ -99,14 +107,19 @@ export const Modal: React.FC<ModalProps> = ({
   'aria-label': ariaLabel,
   children,
   className,
+  closeButtonProps: {
+    hidden: hideCloseButton,
+    disabled: disableCloseButton,
+    ref: closeButtonRef,
+    tip: closeButtonTip = 'Close modal',
+  } = {},
   headingLevel = 'h2',
-  hideCloseButton = false,
   onRequestClose,
   scrollable = false,
   size = 'fluid',
+  modalFocusRef,
   title,
   views,
-  closeDisabled,
   ...rest
 }) => {
   const [currentView, setCurrentView] = useState(0);
@@ -129,6 +142,7 @@ export const Modal: React.FC<ModalProps> = ({
         className={className}
         data-autofocus
         layout={views && views?.length > 0 ? 'dialog' : 'standard'}
+        ref={modalFocusRef}
         role="dialog"
         size={size}
         tabIndex={-1}
@@ -146,10 +160,11 @@ export const Modal: React.FC<ModalProps> = ({
         {!hideCloseButton && (
           <Box alignSelf="start" gridArea="close">
             <IconButton
-              disabled={closeDisabled}
+              disabled={disableCloseButton}
               icon={MiniDeleteIcon}
+              ref={closeButtonRef}
               size="small"
-              tip="Close modal"
+              tip={closeButtonTip}
               onClick={onRequestClose}
             />
           </Box>

@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react';
+import { ComponentProps, Ref } from 'react';
 import * as React from 'react';
 
 import { OverlayProps } from '../Overlay';
@@ -23,4 +23,11 @@ export interface ModalBaseProps
    */
   headingLevel?: 'h1' | 'h2';
   image?: React.ReactNode;
+  /**
+   * An optional ref to be passed to the modal container for programmatic focus management.
+   * This is useful for when you want to focus the modal container when the modal programmatically.
+   * Otherwise, the ModalWrapper does has data-autofocus which will gain focus when the Modal is opened.
+
+   */
+  modalFocusRef?: Ref<HTMLDivElement>;
 }
