@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
+import { act } from 'react';
 
 import {
   groupedOptions,
@@ -74,7 +75,9 @@ describe('SelectDropdown Grouped Options', () => {
 
     await openDropdown(view);
 
-    await userEvent.click(view.getByText('Apple'));
+    await act(async () => {
+      await userEvent.click(view.getByText('Apple'));
+    });
 
     expect(onChange).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -97,7 +100,9 @@ describe('SelectDropdown Grouped Options', () => {
 
     await openDropdown(view);
 
-    await userEvent.click(view.getByText('Carrot'));
+    await act(async () => {
+      await userEvent.click(view.getByText('Carrot'));
+    });
 
     expect(onChange).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -148,11 +153,13 @@ describe('SelectDropdown Grouped Options', () => {
 
     await openDropdown(view);
 
-    await userEvent.click(
-      view.getByRole('option', {
-        name: /Data Transfer Vertical Icon/,
-      })
-    );
+    await act(async () => {
+      await userEvent.click(
+        view.getByRole('option', {
+          name: /Data Transfer Vertical Icon/,
+        })
+      );
+    });
 
     expect(onChange).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -204,7 +211,9 @@ describe('SelectDropdown Grouped Options', () => {
 
     await openDropdown(view);
 
-    await userEvent.click(view.getByText('Apple'));
+    await act(async () => {
+      await userEvent.click(view.getByText('Apple'));
+    });
 
     expect(onChange).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -228,10 +237,14 @@ describe('SelectDropdown Grouped Options', () => {
     });
 
     await openDropdown(view);
-    await userEvent.click(view.getByText('Apple'));
+    await act(async () => {
+      await userEvent.click(view.getByText('Apple'));
+    });
 
     await openDropdown(view);
-    await userEvent.click(view.getByText('Carrot'));
+    await act(async () => {
+      await userEvent.click(view.getByText('Carrot'));
+    });
 
     view.getByText('Apple');
     view.getByText('Carrot');
