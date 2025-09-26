@@ -77,21 +77,14 @@ describe('ConnectedNestedCheckboxes', () => {
     it('should render all checkbox options in a flat list', () => {
       const { view } = renderView();
 
-      // Top-level options
       view.getByLabelText('Frontend Technologies');
       view.getByLabelText('Backend Technologies');
       view.getByLabelText('Databases');
-
-      // Frontend children
       view.getByLabelText('React');
       view.getByLabelText('Vue');
       view.getByLabelText('Angular');
-
-      // Backend children
       view.getByLabelText('Node.js');
       view.getByLabelText('Python');
-
-      // Deeply nested options
       view.getByLabelText('Express.js');
       view.getByLabelText('Fastify');
     });
@@ -106,11 +99,10 @@ describe('ConnectedNestedCheckboxes', () => {
       const nodeCheckbox = view.getByLabelText('Node.js').closest('li');
       const expressCheckbox = view.getByLabelText('Express.js').closest('li');
 
-      // Check margin-left styles for indentation
-      expect(frontendCheckbox).toHaveStyle({ marginLeft: '0' }); // level 0
-      expect(reactCheckbox).toHaveStyle({ marginLeft: '1.5rem' }); // level 1
-      expect(nodeCheckbox).toHaveStyle({ marginLeft: '1.5rem' }); // level 1
-      expect(expressCheckbox).toHaveStyle({ marginLeft: '3rem' }); // level 2
+      expect(frontendCheckbox).toHaveStyle({ marginLeft: '0' });
+      expect(reactCheckbox).toHaveStyle({ marginLeft: '1.5rem' });
+      expect(nodeCheckbox).toHaveStyle({ marginLeft: '1.5rem' });
+      expect(expressCheckbox).toHaveStyle({ marginLeft: '3rem' });
     });
 
     it('should render with unique IDs for each checkbox', () => {
@@ -157,7 +149,7 @@ describe('ConnectedNestedCheckboxes', () => {
 
     it('should render parent as checked when all children are selected', () => {
       const { view } = renderView({
-        defaultValues: { skills: ['react', 'vue', 'angular'] }, // all frontend
+        defaultValues: { skills: ['react', 'vue', 'angular'] },
       });
 
       const frontendCheckbox = view.getByLabelText('Frontend Technologies');
@@ -169,33 +161,30 @@ describe('ConnectedNestedCheckboxes', () => {
         defaultValues: { skills: ['express', 'fastify'] },
       });
 
-      const nodeCheckbox = view.getByLabelText('Node.js');
+      const nodeCheckbox = view.getByLabelText('Node.js') as HTMLInputElement;
       const backendCheckbox = view.getByLabelText(
         'Backend Technologies'
       ) as HTMLInputElement;
 
-      expect(nodeCheckbox).toBeChecked(); // all children selected
-      expect(backendCheckbox.indeterminate).toBe(true); // only some children selected
+      expect(nodeCheckbox).toBeChecked();
+      expect(nodeCheckbox.indeterminate).toBe(false);
+      expect(backendCheckbox).not.toBeChecked();
+      expect(backendCheckbox.indeterminate).toBe(true);
     });
 
     it('should automatically check all children when parent is in default values', () => {
       const { view } = renderView({
-        defaultValues: { skills: ['backend'] }, // parent selected by default
+        defaultValues: { skills: ['backend'] },
       });
 
-      // Parent should be checked
       const backendCheckbox = view.getByLabelText('Backend Technologies');
       expect(backendCheckbox).toBeChecked();
 
-      // All children should be automatically checked
       expect(view.getByLabelText('Node.js')).toBeChecked();
       expect(view.getByLabelText('Python')).toBeChecked();
-
-      // Deeply nested children should also be checked
       expect(view.getByLabelText('Express.js')).toBeChecked();
       expect(view.getByLabelText('Fastify')).toBeChecked();
 
-      // onUpdate should have been called with all expanded values during initialization
       expect(mockOnUpdate).toHaveBeenCalledWith([
         'backend',
         'node',
@@ -206,12 +195,55 @@ describe('ConnectedNestedCheckboxes', () => {
       ]);
     });
 
-    it('should allow unchecking children that were auto-checked by default parent selection', async () => {
+    it('should handle multiple parent defaults correctly', async () => {
       const { view } = renderView({
-        defaultValues: { skills: ['backend'] }, // parent selected by default
+        defaultValues: { skills: ['frontend', 'backend'] },
       });
 
-      // Initially all should be checked due to parent selection
+      expect(view.getByLabelText('Frontend Technologies')).toBeChecked();
+      expect(view.getByLabelText('Backend Technologies')).toBeChecked();
+
+      expect(view.getByLabelText('React')).toBeChecked();
+      expect(view.getByLabelText('Vue')).toBeChecked();
+      expect(view.getByLabelText('Angular')).toBeChecked();
+      expect(view.getByLabelText('Node.js')).toBeChecked();
+      expect(view.getByLabelText('Express.js')).toBeChecked();
+      expect(view.getByLabelText('Fastify')).toBeChecked();
+      expect(view.getByLabelText('Python')).toBeChecked();
+      expect(view.getByLabelText('Ruby')).toBeChecked();
+    });
+
+    it('should preserve individual child selections in default values', () => {
+      const { view } = renderView({
+        defaultValues: { skills: ['react', 'python'] },
+      });
+
+      expect(view.getByLabelText('React')).toBeChecked();
+      expect(view.getByLabelText('Python')).toBeChecked();
+
+      const frontendCheckbox = view.getByLabelText(
+        'Frontend Technologies'
+      ) as HTMLInputElement;
+      const backendCheckbox = view.getByLabelText(
+        'Backend Technologies'
+      ) as HTMLInputElement;
+
+      expect(frontendCheckbox.indeterminate).toBe(true);
+      expect(backendCheckbox.indeterminate).toBe(true);
+
+      expect(view.getByLabelText('Vue')).not.toBeChecked();
+      expect(view.getByLabelText('Angular')).not.toBeChecked();
+      expect(view.getByLabelText('Node.js')).not.toBeChecked();
+      expect(view.getByLabelText('Express.js')).not.toBeChecked();
+      expect(view.getByLabelText('Fastify')).not.toBeChecked();
+      expect(view.getByLabelText('Ruby')).not.toBeChecked();
+    });
+
+    it('should allow unchecking children that were auto-checked by default parent selection', async () => {
+      const { view } = renderView({
+        defaultValues: { skills: ['backend'] },
+      });
+
       const backendCheckbox = view.getByLabelText(
         'Backend Technologies'
       ) as HTMLInputElement;
@@ -220,19 +252,15 @@ describe('ConnectedNestedCheckboxes', () => {
       expect(backendCheckbox).toBeChecked();
       expect(pythonCheckbox).toBeChecked();
 
-      // User should be able to uncheck a child
       await act(async () => {
         fireEvent.click(pythonCheckbox);
       });
 
-      // Python should now be unchecked
       expect(pythonCheckbox).not.toBeChecked();
 
-      // Parent should now be indeterminate since not all children are checked
       expect(backendCheckbox.indeterminate).toBe(true);
       expect(backendCheckbox).not.toBeChecked();
 
-      // Other children should remain checked
       expect(view.getByLabelText('Node.js')).toBeChecked();
       expect(view.getByLabelText('Express.js')).toBeChecked();
       expect(view.getByLabelText('Fastify')).toBeChecked();
@@ -251,7 +279,6 @@ describe('ConnectedNestedCheckboxes', () => {
 
       expect(reactCheckbox).toBeChecked();
 
-      // Verify parent state updates
       const frontendCheckbox = view.getByLabelText(
         'Frontend Technologies'
       ) as HTMLInputElement;
@@ -259,7 +286,7 @@ describe('ConnectedNestedCheckboxes', () => {
     });
 
     it('should select all children when parent checkbox is clicked', async () => {
-      const { view } = renderView({});
+      const { view } = renderView();
 
       const frontendCheckbox = view.getByLabelText('Frontend Technologies');
 
@@ -271,6 +298,13 @@ describe('ConnectedNestedCheckboxes', () => {
       expect(view.getByLabelText('React')).toBeChecked();
       expect(view.getByLabelText('Vue')).toBeChecked();
       expect(view.getByLabelText('Angular')).toBeChecked();
+
+      expect(mockOnUpdate).toHaveBeenCalledWith([
+        'react',
+        'vue',
+        'angular',
+        'frontend',
+      ]);
     });
 
     it('should deselect all children when checked parent is clicked', async () => {
@@ -294,7 +328,6 @@ describe('ConnectedNestedCheckboxes', () => {
     it('should handle deeply nested selections correctly', async () => {
       const { view } = renderView();
 
-      // Click Node.js parent (should select all its children)
       const nodeCheckbox = view.getByLabelText('Node.js');
 
       await act(async () => {
@@ -305,11 +338,12 @@ describe('ConnectedNestedCheckboxes', () => {
       expect(view.getByLabelText('Express.js')).toBeChecked();
       expect(view.getByLabelText('Fastify')).toBeChecked();
 
-      // Backend should be indeterminate (only Node.js selected, not Python)
       const backendCheckbox = view.getByLabelText(
         'Backend Technologies'
       ) as HTMLInputElement;
       expect(backendCheckbox.indeterminate).toBe(true);
+
+      expect(mockOnUpdate).toHaveBeenCalledWith(['express', 'fastify', 'node']);
     });
 
     it('should handle individual child deselection affecting parent state', async () => {
@@ -317,13 +351,11 @@ describe('ConnectedNestedCheckboxes', () => {
         defaultValues: { skills: ['react', 'vue', 'angular'] },
       });
 
-      // Frontend should be fully checked
       const frontendCheckbox = view.getByLabelText(
         'Frontend Technologies'
       ) as HTMLInputElement;
       expect(frontendCheckbox).toBeChecked();
 
-      // Deselect one child
       const reactCheckbox = view.getByLabelText('React');
       await act(async () => {
         fireEvent.click(reactCheckbox);
@@ -420,11 +452,6 @@ describe('ConnectedNestedCheckboxes', () => {
 
       const { view } = renderView({ validationRules });
 
-      await act(async () => {
-        fireEvent.click(view.getByRole('button'));
-      });
-
-      // Check if checkboxes have required attribute
       expect(view.getByLabelText('Frontend Technologies')).toHaveAttribute(
         'aria-required',
         'true'
@@ -453,7 +480,6 @@ describe('ConnectedNestedCheckboxes', () => {
     it('should handle empty options array', () => {
       const { view } = renderView({ options: [] });
 
-      // Should render empty list
       const list = view.container.querySelector('ul');
       expect(list).toBeInTheDocument();
       expect(list?.children).toHaveLength(0);
@@ -467,8 +493,8 @@ describe('ConnectedNestedCheckboxes', () => {
         ],
       });
 
-      expect(view.getByLabelText('Option 1')).toBeInTheDocument();
-      expect(view.getByLabelText('Option 2')).toBeInTheDocument();
+      view.getByLabelText('Option 1');
+      view.getByLabelText('Option 2');
     });
 
     it('should handle numeric values correctly', () => {
@@ -495,7 +521,7 @@ describe('ConnectedNestedCheckboxes', () => {
 
   describe('accessibility', () => {
     it('should have proper aria attributes', () => {
-      const { view } = renderView({});
+      const { view } = renderView();
 
       const checkbox = view.getByLabelText('Frontend Technologies');
 
@@ -505,7 +531,7 @@ describe('ConnectedNestedCheckboxes', () => {
 
     it('should have proper aria-checked states for indeterminate checkboxes', () => {
       const { view } = renderView({
-        defaultValues: { skills: ['react'] }, // partial selection
+        defaultValues: { skills: ['react'] },
       });
 
       const frontendCheckbox = view.getByLabelText('Frontend Technologies');
