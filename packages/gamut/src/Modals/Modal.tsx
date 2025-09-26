@@ -8,7 +8,7 @@ import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer } from './elements';
 import { ImageContainer } from './ImageContainer';
-import { ModalBaseProps } from './types';
+import { CloseButtonProps, ModalBaseProps } from './types';
 
 interface DialogButtonProps {
   children: React.ReactNode;
@@ -48,30 +48,6 @@ interface ModalView
 
 export type ModalViewProps = ModalView & ModalButtonProps;
 
-/**
- * Props thats are passed to the default close button
- */
-type CloseButtonProps = {
-  closeButtonProps?: {
-    /**
-     * Whether to hide the default close button and pass your own through children to close the modal
-     */
-    hidden?: boolean;
-    /**
-     * An optional ref to be passed to the close button
-     */
-    ref?: Ref<HTMLButtonElement>;
-    /**
-     * The close button tooltip text. Defaults to "Close modal"
-     */
-    tip?: string;
-    /**
-     * Whether to disable the default close button
-     */
-    disabled?: boolean;
-  };
-};
-
 export interface SingleViewModalProps extends ModalBaseProps, CloseButtonProps {
   /**
    * Whether to show scrollbar on content overflow
@@ -108,10 +84,11 @@ export const Modal: React.FC<ModalProps> = ({
   children,
   className,
   closeButtonProps: {
-    hidden: hideCloseButton,
     disabled: disableCloseButton,
+    hidden: hideCloseButton,
     ref: closeButtonRef,
     tip: closeButtonTip = 'Close modal',
+    tipAlignment = 'top-center' as const,
   } = {},
   headingLevel = 'h2',
   onRequestClose,
@@ -165,6 +142,7 @@ export const Modal: React.FC<ModalProps> = ({
               ref={closeButtonRef}
               size="small"
               tip={closeButtonTip}
+              tipProps={{ alignment: tipAlignment }}
               onClick={onRequestClose}
             />
           </Box>

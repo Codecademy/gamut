@@ -1,6 +1,7 @@
 import { theme } from '@codecademy/gamut-styles';
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/react';
+import * as React from 'react';
 
 import { Modal } from '..';
 
@@ -25,13 +26,13 @@ describe('Modal', () => {
     expect(view.queryByText('Title')).toBe(null);
   });
 
-  it('does not render its close button if hideCloseButton is true', () => {
-    const { view } = renderView({ hideCloseButton: true });
+  it('does not render its close button if closeButtonProps.hidden is true', () => {
+    const { view } = renderView({ closeButtonProps: { hidden: true } });
     expect(view.queryAllByRole('button').length).toBe(0);
   });
 
-  it('renders its close button if hideCloseButton is false', () => {
-    const { view } = renderView({ hideCloseButton: false });
+  it('renders its close button if closeButtonProps.hidden is false', () => {
+    const { view } = renderView({ closeButtonProps: { hidden: false } });
     view.getByRole('button');
   });
 
@@ -60,6 +61,72 @@ describe('Modal', () => {
       image: <img alt="test" src="./myimg.svg" />,
     });
     view.getByAltText('test');
+  });
+
+  describe('closeButtonProps functionality', () => {
+    it('applies a ref to the close button when closeButtonProps.ref is provided', () => {
+      const closeButtonRef = React.createRef<HTMLButtonElement>();
+      const { view } = renderView({
+        closeButtonProps: { ref: closeButtonRef },
+      });
+
+      const closeButton = view.getByRole('button');
+      expect(closeButtonRef.current).toBe(closeButton);
+    });
+
+    it('uses custom tooltip text when closeButtonProps.tip is provided', () => {
+      const customTip = 'Custom close tooltip';
+      const { view } = renderView({
+        closeButtonProps: { tip: customTip },
+      });
+
+      const closeButton = view.getByRole('button');
+      expect(closeButton).toHaveAttribute('aria-label', customTip);
+    });
+
+    it('uses default tooltip text when closeButtonProps.tip is not provided', () => {
+      const { view } = renderView();
+
+      const closeButton = view.getByRole('button');
+      expect(closeButton).toHaveAttribute('aria-label', 'Close modal');
+    });
+
+    it('disables the close button when closeButtonProps.disabled is true', () => {
+      const { view } = renderView({
+        closeButtonProps: { disabled: true },
+      });
+
+      const closeButton = view.getByRole('button');
+      expect(closeButton).toBeDisabled();
+    });
+
+    it('enables the close button when closeButtonProps.disabled is false', () => {
+      const { view } = renderView({
+        closeButtonProps: { disabled: false },
+      });
+
+      const closeButton = view.getByRole('button');
+      expect(closeButton).not.toBeDisabled();
+    });
+
+    it('enables the close button by default when closeButtonProps.disabled is not provided', () => {
+      const { view } = renderView();
+
+      const closeButton = view.getByRole('button');
+      expect(closeButton).not.toBeDisabled();
+    });
+  });
+
+  describe('modalFocusRef functionality', () => {
+    it('applies a ref to the modal container when modalFocusRef is provided', () => {
+      const modalFocusRef = React.createRef<HTMLDivElement>();
+      const { view } = renderView({
+        modalFocusRef,
+      });
+
+      const modalContainer = view.getByRole('dialog');
+      expect(modalFocusRef.current).toBe(modalContainer);
+    });
   });
 
   describe('Multi view', () => {

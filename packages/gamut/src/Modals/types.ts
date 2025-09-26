@@ -2,6 +2,7 @@ import { ComponentProps, Ref } from 'react';
 import * as React from 'react';
 
 import { OverlayProps } from '../Overlay';
+import { TipCenterAlignment } from '../Tip/shared/types';
 import { ModalContainer } from './elements';
 
 export interface ModalOverlayProps
@@ -31,3 +32,31 @@ export interface ModalBaseProps
    */
   modalFocusRef?: Ref<HTMLDivElement>;
 }
+
+/**
+ * Props thats are passed to the default close button
+ */
+export type CloseButtonProps = {
+  closeButtonProps?: {
+    /**
+     * Whether to hide the default close button and pass your own through children to close the modal
+     */
+    hidden?: boolean;
+    /**
+     * An optional ref to be passed to the close button
+     */
+    ref?: Ref<HTMLButtonElement>;
+    /**
+     * The close button tooltip text. Defaults to "Close modal"
+     */
+    tip?: string;
+    /**
+     * The default close button tooltip alignment. Defaults to "top-center"
+     */
+    tipAlignment?: TipCenterAlignment;
+    /**
+     * Whether to disable the default close button
+     */
+    disabled?: boolean;
+  };
+};
