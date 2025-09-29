@@ -481,7 +481,7 @@ export const ConfirmationOnClose: React.FC = () => {
           Toggle the unsaved state and try closing the modal to see the
           confirmation behavior. <br />
           Current state:{' '}
-            {hasUnsavedChanges ? 'Has unsaved changes' : 'All saved'}
+          {hasUnsavedChanges ? 'Has unsaved changes' : 'All saved'}
         </Text>
       </FlexBox>
       <Modal
@@ -569,9 +569,12 @@ export const DocumentUploadStyle: React.FC = () => {
               Upload your documents here. This step allows closing the modal.
             </Text>
             <FillButton onClick={() => setHasUploadedDocuments(true)}>
-              { hasUploadedDocuments ? 'Uploaded!' : 'Simulate Upload' }
+              {hasUploadedDocuments ? 'Uploaded!' : 'Simulate Upload'}
             </FillButton>
-            <FillButton disabled={!hasUploadedDocuments} onClick={() => setCurrentStep('processing')}>
+            <FillButton
+              disabled={!hasUploadedDocuments}
+              onClick={() => setCurrentStep('processing')}
+            >
               Go to Processing
             </FillButton>
           </FlexBox>
