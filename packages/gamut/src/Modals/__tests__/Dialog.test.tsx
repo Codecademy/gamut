@@ -21,7 +21,6 @@ const defaultProps = {
     children: 'Cancel',
     onClick: onCancel,
   },
-  closeButtonTipText: 'Close Dialog',
 };
 
 const renderView = setupRtl(Dialog, defaultProps);
@@ -45,7 +44,7 @@ describe('Dialog', () => {
 
   it('requests closing the dialog when the close button is clicked', () => {
     const { view } = renderView();
-    const ariaLabel = defaultProps.closeButtonTipText;
+    const ariaLabel = 'Close dialog';
 
     fireEvent.click(view.getByLabelText(ariaLabel));
     expect(onRequestClose.mock.calls.length).toBe(1);
