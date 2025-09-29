@@ -173,7 +173,7 @@ export const CloseButtonCustomization: React.FC = () => {
             Focus Close Button
           </FillButton>
           <FillButton onClick={() => setIsDisabled(!isDisabled)}>
-            {isDisabled ? 'Enable' : 'Disable'} Close Button
+            {isDisabled ? 'Enable' : 'Disable'} Focus Close Button
           </FillButton>
         </FlexBox>
       </Modal>
@@ -442,7 +442,7 @@ export const MultipleViewsDanger: React.FC = () => {
 
 export const ConfirmationOnClose: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(true);
   const [showConfirmClose, setShowConfirmClose] = useState(false);
 
   const handleClose = () => {
@@ -474,12 +474,14 @@ export const ConfirmationOnClose: React.FC = () => {
             variant="secondary"
             onClick={() => setHasUnsavedChanges(!hasUnsavedChanges)}
           >
-            {hasUnsavedChanges ? 'Mark as Saved' : 'Mark as Unsaved'}
+            {hasUnsavedChanges ? 'Mark as Unsaved' : 'Mark as Saved'}
           </FillButton>
         </FlexBox>
         <Text color="text-disabled" fontSize={14}>
           Toggle the unsaved state and try closing the modal to see the
-          confirmation behavior.
+          confirmation behavior. <br />
+          Current state:{' '}
+            {hasUnsavedChanges ? 'Has unsaved changes' : 'All saved'}
         </Text>
       </FlexBox>
       <Modal
@@ -534,13 +536,10 @@ export const DocumentUploadStyle: React.FC = () => {
 
   const handleClose = () => {
     if (currentStep === 'exit' || !hasUploadedDocuments) {
-      // Close immediately if on exit step or no documents uploaded
       setIsOpen(false);
       setCurrentStep('upload');
       setHasUploadedDocuments(false);
     } else {
-      // @Cass - here
-      // Show exit confirmation step
       setCurrentStep('exit');
       closeButtonRef.current?.blur();
     }
@@ -570,9 +569,9 @@ export const DocumentUploadStyle: React.FC = () => {
               Upload your documents here. This step allows closing the modal.
             </Text>
             <FillButton onClick={() => setHasUploadedDocuments(true)}>
-              Simulate Upload
+              { hasUploadedDocuments ? 'Uploaded!' : 'Simulate Upload' }
             </FillButton>
-            <FillButton onClick={() => setCurrentStep('processing')}>
+            <FillButton disabled={!hasUploadedDocuments} onClick={() => setCurrentStep('processing')}>
               Go to Processing
             </FillButton>
           </FlexBox>
@@ -590,7 +589,7 @@ export const DocumentUploadStyle: React.FC = () => {
         );
       case 'exit':
         return (
-          <FlexBox flexDirection="column" gap={16}>
+          <FlexBox flexDirection="column" gap={16} p={8}>
             <Text>
               Are you sure you want to exit? You have uploaded documents that
               will be lost.
