@@ -126,6 +126,29 @@ When the width of the alert is less than 480px, the button automatically stacks 
 
 <Canvas of={AlertStories.SmallWidth} />
 
+## Close button props
+
+If an `Alert` has an `onClose` prop, it will render a close button on the top right corner of the alert.
+
+<Canvas of={AlertStories.WithCloseButton} />
+
+### Interactive dismissal
+
+This example demonstrates how to handle alert dismissal using the `onClose` callback:
+
+<Canvas of={AlertStories.Dismissible} />
+
+### Close button customization
+
+The Alert's close button can be customized through the `closeButtonProps` object:
+
+- `disabled?: boolean` - Disables the close button
+- `ref?: React.Ref<HTMLButtonElement>` - A ref to the close button element
+- `tip?: string` - The close button tooltip text (defaults to "Close alert")
+- `tipAlignment?: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'` - The alignment of the tooltip (defaults to "bottom-center")
+
+<Canvas of={AlertStories.CloseButtonCustomization} />
+
 ## Playground
 
 <Canvas sourceState="shown" of={AlertStories.Default} />

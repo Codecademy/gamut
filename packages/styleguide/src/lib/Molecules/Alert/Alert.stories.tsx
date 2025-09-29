@@ -1,5 +1,6 @@
 import { Alert, Box } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 
 import { ALERTS } from './constants';
 
@@ -95,16 +96,66 @@ export const SubtleInline: Story = {
   },
 };
 
-export const SmallWidthExample: React.FC = () => {
-  return (
+export const SmallWidth: Story = {
+  render: () => (
     <Box width="400px">
       <Alert cta={{ children: 'Add your name' }} type="general">
         Small Width
       </Alert>
     </Box>
-  );
+  ),
 };
 
-export const SmallWidth: Story = {
-  render: () => <SmallWidthExample />,
+export const WithCloseButton: Story = {
+  args: {
+    children: 'This is an alert',
+    type: 'general',
+    onClose: () => {},
+  },
+};
+
+export const Dismissible: Story = {
+  render: () => {
+    const [isVisible, setIsVisible] = useState(true);
+
+    if (!isVisible) {
+      return (
+        <Box p={16}>
+          <p>Alert has been dismissed!</p>
+          <button
+            onClick={() => setIsVisible(true)}
+            style={{
+              padding: '8px 16px',
+              backgroundColor: '#1557FF',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
+          >
+            Show Alert Again
+          </button>
+        </Box>
+      );
+    }
+
+    return (
+      <Alert onClose={() => setIsVisible(false)}>
+        This is a dismissible alert. Click the X button to dismiss it!
+      </Alert>
+    );
+  },
+};
+
+export const CloseButtonCustomization: Story = {
+  args: {
+    onClose: () => {},
+    closeButtonProps: {
+      tip: 'Close this important alert',
+      tipAlignment: 'left-center' as const,
+    },
+    type: 'notice',
+    children:
+      'Close button can be customized with different tip text and alignment',
+  },
 };

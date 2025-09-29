@@ -16,6 +16,7 @@ import {
   CleanFillButton,
   CollapsibleContent,
 } from './elements';
+import { CloseButtonProps } from '../Modals/types';
 import {
   alertVariants,
   getAlertRightPadding,
@@ -38,6 +39,7 @@ type AlertPlacementType =
 
 export type AlertProps = WithChildrenProp &
   AlertPlacementType & {
+    /** Sets the tabIndex of the Alert's Button component(s) to -1 */
     hidden?: boolean;
     className?: string;
     /** Callback to be called when the close icon is clicked */
@@ -47,11 +49,22 @@ export type AlertProps = WithChildrenProp &
       React.ComponentProps<typeof FillButton>,
       'variant' | 'mode' | 'size'
     > & { text?: string };
+    /** Props for customizing the close button */
+    closeButtonProps?: Omit<
+      NonNullable<CloseButtonProps['closeButtonProps']>,
+      'hidden'
+    >;
   };
 
 export const Alert: React.FC<AlertProps> = ({
   children,
   cta,
+  closeButtonProps: {
+    disabled: disableCloseButton,
+    ref: closeButtonRef,
+    tip: closeButtonTip = 'Close alert',
+    tipAlignment = 'bottom-center' as const,
+  } = {},
   onClose,
   hidden,
   type = 'general',
@@ -211,11 +224,13 @@ export const Alert: React.FC<AlertProps> = ({
       {ctaButton}
       {onClose && (
         <IconButton
+          disabled={disableCloseButton}
           icon={MiniDeleteIcon}
+          ref={closeButtonRef}
           size="small"
           tabIndex={tabIndex}
-          tip="Close alert"
-          tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
+          tip={closeButtonTip}
+          tipProps={{ alignment: tipAlignment, placement: 'floating' }}
           variant="secondary"
           onClick={onClose}
         />
