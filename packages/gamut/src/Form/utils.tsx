@@ -6,7 +6,7 @@ import {
   IconOption,
   OptionStrict,
   SelectDropdownSizes,
-} from './SelectDropdown';
+} from './SelectDropdown/types';
 
 export interface SelectOptionBase extends OptionStrict, SelectDropdownSizes {
   key?: string;

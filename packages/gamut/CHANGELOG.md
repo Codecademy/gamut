@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.4.2...@codecademy/gamut@66.5.0) (2025-09-23)
+
+### Features
+
+- add attrs to combobox ([0e49416](https://github.com/Codecademy/gamut/commit/0e49416a19c958874dbbee6ac9d3ba8c40c27c6c))
+
+### [66.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.4.1...@codecademy/gamut@66.4.2) (2025-09-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ### [66.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.4.0...@codecademy/gamut@66.4.1) (2025-09-15)
 
 **Note:** Version bump only for package @codecademy/gamut
