@@ -69,6 +69,21 @@ Check it out:
 
 <Canvas of={DialogStories.DarkMode} />
 
+## Close behavior
+
+### Close button customization
+
+Similar to `Modal`, the `Dialog` component's close button can be customized through the `closeButtonProps` object:
+
+- `hidden?: boolean` - Whether to hide the default close button and pass your own through children to close the modal
+- `ref?: Ref<HTMLButtonElement>` - An optional ref to be passed to the close button for programmatic access
+- `tip?: string` - The close button tooltip text (defaults to "Close dialog")
+- `disabled?: boolean` - Whether to disable the default close button
+
+This is useful when you need to programmatically interact with the close button, such as blurring focus or checking its state.
+
+<Canvas of={DialogStories.CloseButtonDialogCustomization} />
+
 ## Playground
 
 <Canvas sourceState="shown" of={DialogStories.Default} />
