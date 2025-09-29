@@ -1,7 +1,7 @@
 import { Dialog, FillButton, FlexBox, Text } from '@codecademy/gamut';
 import { ColorMode } from '@codecademy/gamut-styles';
 import type { Meta } from '@storybook/react';
-import { ComponentProps, useEffect, useState, useRef } from 'react';
+import { ComponentProps, useEffect, useRef, useState } from 'react';
 
 const meta: Meta<typeof Dialog> = {
   component: Dialog,
@@ -98,17 +98,17 @@ export const CloseButtonDialogCustomization: React.FC = () => {
         </FlexBox>
       </FlexBox>
       <Dialog
+        cancelCta={{ children: 'Cancel' }}
         closeButtonProps={{
           ref: closeButtonRef,
           tip: 'Close this very important Dialog',
           disabled: isDisabled,
         }}
+        confirmCta={{ children: 'Confirm' }}
         isOpen={isOpen}
         size="medium"
         title="Close Button Customization Demo"
         onRequestClose={() => setIsOpen(false)}
-        confirmCta={{ children: 'Confirm' }}
-        cancelCta={{ children: 'Cancel' }}
       >
         <FlexBox flexDirection="column" gap={16} p={16}>
           <Text>

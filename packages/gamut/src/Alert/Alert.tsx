@@ -7,6 +7,7 @@ import { useMeasure } from 'react-use';
 import { Rotation } from '../Animation';
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
+import { CloseButtonProps } from '../Modals/types';
 import { ToolTip } from '../Tip/ToolTip';
 import { WithChildrenProp } from '../utils';
 import {
@@ -16,7 +17,6 @@ import {
   CleanFillButton,
   CollapsibleContent,
 } from './elements';
-import { CloseButtonProps } from '../Modals/types';
 import {
   alertVariants,
   getAlertRightPadding,
