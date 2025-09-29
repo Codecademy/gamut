@@ -12,6 +12,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@nx/react/plugins/storybook', ''),
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-designs'),
+    getAbsolutePath('storybook-addon-deep-controls'),
   ],
 
   framework: {
