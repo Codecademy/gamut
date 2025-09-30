@@ -13,9 +13,7 @@ const meta: Meta<typeof InternalFloatingCard> = {
   },
   argTypes: {
     pattern: {
-      control: {
-        type: 'select',
-      },
+      control: 'select',
       options: Object.keys(patterns),
       mapping: patterns,
     },

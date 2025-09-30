@@ -24,14 +24,10 @@ const meta: Meta<typeof ConnectedFormGroup> = {
   },
   argTypes: {
     loading: {
-      control: {
-        type: 'boolean',
-      },
+      control: 'boolean',
     },
     disabled: {
-      control: {
-        type: 'boolean',
-      },
+      control: 'boolean',
     },
   },
 };
