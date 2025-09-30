@@ -1,4 +1,4 @@
-import { Alert, Box, FillButton } from '@codecademy/gamut';
+import { Alert, Box, FillButton, Text } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
@@ -120,7 +120,7 @@ export const Dismissible = () => {
   if (!isVisible) {
     return (
       <Box p={16}>
-        <p>Alert has been dismissed!</p>
+        <Text>Alert has been dismissed!</Text>
         <FillButton onClick={() => setIsVisible(true)}>
           Show Alert Again
         </FillButton>
