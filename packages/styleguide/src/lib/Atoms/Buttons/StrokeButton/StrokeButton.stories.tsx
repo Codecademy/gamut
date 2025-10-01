@@ -12,18 +12,11 @@ const meta: Meta<typeof StrokeButton> = {
   argTypes: {
     href: {
       description: 'If defined, component will use an anchor tag',
-    },
-    mode: {
-      control: {
-        type: 'select',
-        options: ['dark', 'light'],
-      },
+      type: 'string',
     },
     size: {
-      control: {
-        type: 'select',
-        options: ['normal', 'small', 'large'],
-      },
+      control: 'radio',
+      options: ['normal', 'small', 'large'],
     },
     icon: {
       control: {
