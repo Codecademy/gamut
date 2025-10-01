@@ -175,3 +175,40 @@ export const lxStudioPalette = {
   ...corePalette,
   ...lxStudioColors,
 };
+
+/**
+ * Percipio Colors
+ */
+
+export const percipioColors = {
+  // Text colors
+  percipioTextPrimary: '#222325',
+  percipioTextSecondary: 'rgba(34, 35, 37, 0.75)',
+  percipioTextDisabled: '#AFB6C2',
+  percipioTextAccent: '#222325',
+
+  // Background colors
+  percipioBgPrimary: '#FAFBFC',
+  percipioBgSuccess: '#EEF7F3',
+  percipioBgWarning: '#FFF7E0',
+  percipioBgError: '#FFF1F5',
+
+  // Action colors
+  percipioActionPrimary: '#0073C4',
+  percipioActionPrimaryHover: '#141C36',
+  percipioActionSecondary: '#6A6E75',
+  percipioActionSecondaryHover: 'rgba(106, 110, 117, 0.86)',
+  percipioActionDangerHover: '#A52020',
+
+  // Feedback colors
+  percipioFeedbackSuccess: '#1B8057',
+  percipioFeedbackWarning: '#EF5B0D',
+
+  // Multiuse colors
+  percipioDanger: '#B83C3C',
+} as const;
+
+export const percipioPalette = {
+  ...corePalette,
+  ...percipioColors,
+};

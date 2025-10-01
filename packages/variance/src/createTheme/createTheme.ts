@@ -180,6 +180,22 @@ class ThemeBuilder<T extends AbstractTheme> {
   }
 
   /**
+   *
+   * @param name Adds a name to the theme
+   * This is used for referencing the theme for replacing default fonts.
+   * @example .addName('core')
+   */
+  addName(
+    name: string
+  ): ThemeBuilder<MergeTheme<T & PrivateThemeKeys, Record<'name', string>>> {
+    this.#theme = merge({}, this.#theme, {
+      name,
+    });
+
+    return this;
+  }
+
+  /**
    * This finalizes the theme build and returns the final theme and variables to be provided.
    */
   build(): T & PrivateThemeKeys {
