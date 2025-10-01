@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [77.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.6.0...@codecademy/styleguide@77.6.1) (2025-09-30)
+
+### Bug Fixes
+
+- **DataList:** move aria-sort to th ([d872073](https://github.com/Codecademy/gamut/commit/d872073d27daa12d17135dc7c938b906575570ae))
+
 ## [77.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.5.1...@codecademy/styleguide@77.6.0) (2025-09-23)
 
 ### Features
