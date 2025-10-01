@@ -1,10 +1,10 @@
 import {
   Box,
+  DataList,
   FlexBox,
   FormGroup,
-  SelectDropdown,
   Input,
-  DataList,
+  SelectDropdown,
 } from '@codecademy/gamut';
 import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -209,80 +209,15 @@ export const DisabledOptions: Story = {
     ],
   },
   render: (args) => (
-    // <Box height="15rem">
-    //   <FormGroup
-    //     htmlFor="disabled-dropdown"
-    //     isSoloField
-    //     label="I might have disabled options"
-    //   >
-    //     <SelectDropdown {...args} />
-    //   </FormGroup>
-    // </Box>
-
-    <FlexBox
-      width="65%"
-      column
-      data-testid="org-scope-org-sprecific-outer-container"
-    >
-      <FlexBox gap={16} data-testid="search-container">
-        <FormGroup
-          data-testid="search-dropDown-form-group"
-          htmlFor="orgScopeSearch"
-          isSoloField
-          label="just testing"
-        >
-          <SelectDropdown
-            data-testid="search-dropDown"
-            htmlFor="orgScopeSearch-select"
-            name="orgScopeSearchDrpDwn"
-            options={args.options}
-            zIndex={5}
-          />
-        </FormGroup>
-        <FormGroup
-          htmlFor="orgScopeSearchInput"
-          isSoloField
-          label="&nbsp;"
-          data-testid="search-input-form-group"
-        >
-          <Input
-            data-testid="search-input"
-            htmlFor="orgScopeSearch-input"
-            name="orgScopeSearchInput"
-            placeholder="Search by domain or UUID"
-            size="base"
-            type="text"
-            // value={orgScopeSearchInput}
-            // onChange={handleInputChange}
-            // icon={SearchIcon}
-          />
-        </FormGroup>
-      </FlexBox>
-      <DataList
-        id="crew"
-        idKey="name"
-        rows={[
-          {
-            name: 'Jean Luc Picard',
-            role: 'Captain',
-          },
-          {
-            name: 'Wesley Crusher',
-            role: 'Deus Ex Machina',
-          },
-        ]}
-        columns={[
-          {
-            header: 'Name',
-            key: 'name',
-            size: 'lg',
-            type: 'header',
-            sortable: true,
-          },
-          { header: 'Rank', key: 'role', size: 'lg', sortable: true },
-        ]}
-      />
-    </FlexBox>
+    <Box height="15rem">
+      <FormGroup
+        htmlFor="disabled-dropdown"
+        isSoloField
+        label="I might have disabled options"
+      >
+        <SelectDropdown {...args} />
+      </FormGroup>
+    </Box>
   ),
 };
 
@@ -1065,5 +1000,71 @@ export const LongPlaceholderAgain: Story = {
         <SelectDropdown {...args} />
       </FormGroup>
     </Box>
+  ),
+};
+
+export const TemporaryZIndexExample: Story = {
+  render: (args) => (
+    <FlexBox
+      column
+      data-testid="org-scope-org-sprecific-outer-container"
+      width="65%"
+    >
+      <FlexBox data-testid="search-container" gap={16}>
+        <FormGroup
+          data-testid="search-dropDown-form-group"
+          htmlFor="orgScopeSearch"
+          isSoloField
+          label="just testing, will delete after PR approval"
+        >
+          <SelectDropdown
+            data-testid="search-dropDown"
+            htmlFor="orgScopeSearch-select"
+            name="orgScopeSearchDrpDwn"
+            options={args.options}
+            placeholder="Has no zIndex arg, uses default"
+          />
+        </FormGroup>
+        <FormGroup
+          data-testid="search-input-form-group"
+          htmlFor="orgScopeSearchInput"
+          isSoloField
+          label="&nbsp;"
+        >
+          <SelectDropdown
+            data-testid="search-dropDown"
+            htmlFor="orgScopeSearch-select"
+            name="orgScopeSearchDrpDwn"
+            options={args.options}
+            placeholder="has a zIndex of 5"
+            zIndex={5}
+          />
+        </FormGroup>
+      </FlexBox>
+      <DataList
+        columns={[
+          {
+            header: 'Name',
+            key: 'name',
+            size: 'lg',
+            type: 'header',
+            sortable: true,
+          },
+          { header: 'Rank', key: 'role', size: 'lg', sortable: true },
+        ]}
+        id="crew"
+        idKey="name"
+        rows={[
+          {
+            name: 'Jean Luc Picard',
+            role: 'Captain',
+          },
+          {
+            name: 'Wesley Crusher',
+            role: 'Deus Ex Machina',
+          },
+        ]}
+      />
+    </FlexBox>
   ),
 };
