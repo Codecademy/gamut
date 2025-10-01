@@ -3,7 +3,6 @@ import {
   DataList,
   FlexBox,
   FormGroup,
-  Input,
   SelectDropdown,
 } from '@codecademy/gamut';
 import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';

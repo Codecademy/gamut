@@ -161,7 +161,7 @@ export const getMemoizedStyles = (
               right: 0,
             }
           : {}),
-          zIndex,
+        zIndex,
       };
     },
     menuList: (provided, state: BaseSelectComponentProps) => {
