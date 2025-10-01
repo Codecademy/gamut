@@ -14,6 +14,7 @@ import {
   FieldError,
   FieldErrorsImpl,
   Merge,
+  Path,
   RegisterOptions,
   useFieldArray,
   useFormContext,
@@ -44,8 +45,8 @@ interface UseConnectedFormProps<
   defaultValues: Values;
   validationRules: Partial<Rules>;
   watchedFields?: {
-    fields: (keyof Values)[];
-    watchHandler: (arg0: (keyof Values)[]) => void;
+    fields: Path<Values>[];
+    watchHandler: (arg0: Path<Values>[]) => void;
   };
 }
 
@@ -159,9 +160,10 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
   const {
     control,
     errors,
-    register,
+    getValues,
     isDisabled: formStateDisabled,
     isSoloField,
+    register,
     setError,
     setValue,
     validationRules,
@@ -184,6 +186,7 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
   return {
     control,
     error,
+    getValues,
     isDisabled,
     /**
      * Keep track of the first error in this form.
