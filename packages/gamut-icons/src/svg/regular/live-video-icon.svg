@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-<g id="surface1">
-<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 8 13.313125 C 10.658854 13.313125 12.8125 11.158906 12.8125 8.5 C 12.8125 5.841094 10.658854 3.686875 8 3.686875 C 5.341146 3.686875 3.1875 5.841094 3.1875 8.5 C 3.1875 11.158906 5.341146 13.313125 8 13.313125 Z M 8 13.313125 " transform="matrix(1.5,0,0,1.470588,0,0)"/>
-<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 1.148438 8.5 C 1.148438 7.689844 1.289062 6.911562 1.546875 6.189062 M 1.546875 10.810937 C 2.494792 13.459219 5.026042 15.353125 8 15.353125 C 11.783854 15.353125 14.851562 12.285156 14.851562 8.5 C 14.851562 5.939375 13.445312 3.705469 11.364583 2.52875 M 2.739583 4.111875 C 3.236979 3.514219 3.835938 3.004219 4.507812 2.605781 M 6.809896 1.750469 C 7.197917 1.684062 7.59375 1.649531 8 1.649531 C 8.40625 1.649531 8.804688 1.684062 9.190104 1.750469 " transform="matrix(1.5,0,0,1.470588,0,0)"/>
-<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:4;" d="M 6.458333 10.253125 L 6.458333 6.746875 C 6.458333 6.255469 7 5.957969 7.416667 6.218281 L 10.205729 7.971406 C 10.596354 8.215781 10.596354 8.784219 10.205729 9.028594 L 7.416667 10.781719 C 7 11.044687 6.458333 10.744531 6.458333 10.253125 Z M 6.458333 10.253125 " transform="matrix(1.5,0,0,1.470588,0,0)"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="Live-Video--Streamline-Ultimate" height="24" width="24">
+  <desc>
+    Live Video Streamline Icon: https://streamlinehq.com
+  </desc>
+  <path fill="transparent" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M12 19.7012c4.2532 0 7.7012 -3.448 7.7012 -7.7012 0 -4.25324 -3.448 -7.70117 -7.7012 -7.70117 -4.25324 0 -7.70117 3.44793 -7.70117 7.70117 0 4.2532 3.44793 7.7012 7.70117 7.7012Z" stroke-width="1.5"></path>
+  <path fill="transparent" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M1.03711 12c0 -1.2971 0.22527 -2.54162 0.63883 -3.69652m0 7.39302C3.19277 19.9324 7.24248 22.9629 12 22.9629c6.0546 0 10.9629 -4.9083 10.9629 -10.9629 0 -4.09892 -2.2495 -7.67243 -5.5813 -9.55334M3.58161 4.97706c0.7973 -0.95468 1.75395 -1.77168 2.82908 -2.41009m3.68581 -1.36519c0.6182 -0.10824 1.2543 -0.16467 1.9035 -0.16467s1.2853 0.05643 1.9035 0.16467" stroke-width="1.5"></path>
+  <path fill="transparent" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m9.53287 14.8042 0 -5.60839c0 -0.78645 0.86593 -1.26512 1.53193 -0.84679l4.4641 2.80418c0.6241 0.3921 0.6241 1.3016 0 1.6936l-4.4641 2.8042c-0.666 0.4184 -1.53193 -0.0603 -1.53193 -0.8468Z" stroke-width="1.5"></path>
 </svg>
