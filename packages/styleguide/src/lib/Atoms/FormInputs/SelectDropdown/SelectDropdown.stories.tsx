@@ -1007,6 +1007,7 @@ export const TemporaryZIndexExample: Story = {
     <FlexBox
       column
       data-testid="org-scope-org-sprecific-outer-container"
+      height="500px"
       width="65%"
     >
       <FlexBox data-testid="search-container" gap={16}>
@@ -1050,17 +1051,21 @@ export const TemporaryZIndexExample: Story = {
             sortable: true,
           },
           { header: 'Rank', key: 'role', size: 'lg', sortable: true },
+          { header: 'Additional Info', key: 'info', size: 'lg', sortable: true },
         ]}
+        disableContainerQuery
         id="crew"
         idKey="name"
         rows={[
           {
             name: 'Jean Luc Picard',
             role: 'Captain',
+            info: 'Starfleet'
           },
           {
             name: 'Wesley Crusher',
             role: 'Deus Ex Machina',
+            info: 'Starfleet'
           },
         ]}
       />
