@@ -1051,7 +1051,12 @@ export const TemporaryZIndexExample: Story = {
             sortable: true,
           },
           { header: 'Rank', key: 'role', size: 'lg', sortable: true },
-          { header: 'Additional Info', key: 'info', size: 'lg', sortable: true },
+          {
+            header: 'Additional Info',
+            key: 'info',
+            size: 'lg',
+            sortable: true,
+          },
         ]}
         disableContainerQuery
         id="crew"
@@ -1060,12 +1065,12 @@ export const TemporaryZIndexExample: Story = {
           {
             name: 'Jean Luc Picard',
             role: 'Captain',
-            info: 'Starfleet'
+            info: 'Starfleet',
           },
           {
             name: 'Wesley Crusher',
             role: 'Deus Ex Machina',
-            info: 'Starfleet'
+            info: 'Starfleet',
           },
         ]}
       />
