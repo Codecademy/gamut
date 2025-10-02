@@ -22,7 +22,7 @@ export const parameters = {
 <Meta of={SelectDropdownStories} />
 <ComponentHeader {...parameters} />
 
-<Canvas of={SelectDropdownStories.TemporaryZIndexExample} />
+
 
 ## Usage
 
@@ -199,6 +199,14 @@ When using different widths for the input and dropdown, you can control how the 
 - **Use cases**: Useful when the dropdown is wider or narrower than the input, or when you need to prevent the dropdown from extending beyond the viewport
 
 <Canvas of={SelectDropdownStories.MenuAlignmentRight} />
+
+### Menu z-index
+
+You can control the z-index of the dropdown menu using the `zIndex` prop. This is useful when you have other elements on the page that might overlap with the dropdown.
+
+In the example below, the z-index menu is configured to the default value (`auto`) and `5` respectively. The DataTable below the `SelectDropdown` has a z-index of `2` since it's sticky and intended to float above other content.
+
+<Canvas of={SelectDropdownStories.zIndexOnMenu} />
 
 ## Multiple select
 

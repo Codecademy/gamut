@@ -4,6 +4,7 @@ import {
   FlexBox,
   FormGroup,
   SelectDropdown,
+  Text,
 } from '@codecademy/gamut';
 import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -1002,39 +1003,29 @@ export const LongPlaceholderAgain: Story = {
   ),
 };
 
-export const TemporaryZIndexExample: Story = {
+export const zIndexOnMenu: Story = {
   render: (args) => (
-    <FlexBox
-      column
-      data-testid="org-scope-org-sprecific-outer-container"
-      height="500px"
-      width="65%"
-    >
-      <FlexBox data-testid="search-container" gap={16}>
+    <FlexBox column height="500px">
+      <Text mb={16}>Notice how the menu renders based on using zIndex</Text>
+      <FlexBox gap={16}>
         <FormGroup
-          data-testid="search-dropDown-form-group"
-          htmlFor="orgScopeSearch"
+          htmlFor="hasNoZIndex"
           isSoloField
-          label="just testing, will delete after PR approval"
+          label="This menu is rendered behind the header"
         >
           <SelectDropdown
-            data-testid="search-dropDown"
-            htmlFor="orgScopeSearch-select"
-            name="orgScopeSearchDrpDwn"
+            name="hasNoZIndex"
             options={args.options}
             placeholder="Has no zIndex arg, uses default"
           />
         </FormGroup>
         <FormGroup
-          data-testid="search-input-form-group"
-          htmlFor="orgScopeSearchInput"
+          htmlFor="hasSetZIndex"
           isSoloField
-          label="&nbsp;"
+          label="This menu floats above the table's header"
         >
           <SelectDropdown
-            data-testid="search-dropDown"
-            htmlFor="orgScopeSearch-select"
-            name="orgScopeSearchDrpDwn"
+            name="hasSetZIndex"
             options={args.options}
             placeholder="has a zIndex of 5"
             zIndex={5}
@@ -1051,12 +1042,7 @@ export const TemporaryZIndexExample: Story = {
             sortable: true,
           },
           { header: 'Rank', key: 'role', size: 'lg', sortable: true },
-          {
-            header: 'Additional Info',
-            key: 'info',
-            size: 'lg',
-            sortable: true,
-          },
+          { header: 'Ship', key: 'ship', size: 'lg', sortable: true },
         ]}
         disableContainerQuery
         id="crew"
@@ -1065,12 +1051,12 @@ export const TemporaryZIndexExample: Story = {
           {
             name: 'Jean Luc Picard',
             role: 'Captain',
-            info: 'Starfleet',
+            ship: 'USS Enterprise',
           },
           {
             name: 'Wesley Crusher',
             role: 'Deus Ex Machina',
-            info: 'Starfleet',
+            ship: 'USS Enterprise',
           },
         ]}
       />
