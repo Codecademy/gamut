@@ -8,8 +8,22 @@ const meta: Meta<typeof Dialog> = {
   args: {
     title: 'Depeche Modal',
     children: 'All I ever wanted, all I ever needed is here in my',
-    confirmCta: { children: 'Arms!' },
-    cancelCta: { children: 'Heart?' },
+    confirmCta: {
+      children: 'Arms!',
+      href: '#',
+      onClick: () => {
+        // eslint-disable-next-line no-console
+        console.log('confirm');
+      },
+    },
+    cancelCta: {
+      children: 'Heart?',
+      href: '#',
+      onClick: () => {
+        // eslint-disable-next-line no-console
+        console.log('cancel');
+      },
+    },
   },
   argTypes: {
     variant: {
