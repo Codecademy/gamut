@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent, screen } from '@testing-library/dom';
+import * as React from 'react';
 
 import { Dialog } from '../Dialog';
 
@@ -20,7 +21,6 @@ const defaultProps = {
     children: 'Cancel',
     onClick: onCancel,
   },
-  closeButtonTipText: 'Close Dialog',
 };
 
 const renderView = setupRtl(Dialog, defaultProps);
@@ -44,7 +44,7 @@ describe('Dialog', () => {
 
   it('requests closing the dialog when the close button is clicked', () => {
     const { view } = renderView();
-    const ariaLabel = defaultProps.closeButtonTipText;
+    const ariaLabel = 'Close dialog';
 
     fireEvent.click(view.getByLabelText(ariaLabel));
     expect(onRequestClose.mock.calls.length).toBe(1);
@@ -74,5 +74,69 @@ describe('Dialog', () => {
 
     fireEvent.mouseDown(screen.getByRole('dialog'));
     expect(onRequestClose.mock.calls.length).toBe(0);
+  });
+
+  describe('closeButtonProps functionality', () => {
+    it('uses default tooltip text when closeButtonProps.tip is not provided', () => {
+      const { view } = renderView();
+
+      view.getByRole('button', { name: 'Close dialog' });
+    });
+
+    it('applies a ref to the close button when closeButtonProps.ref is provided', () => {
+      const closeButtonRef = React.createRef<HTMLButtonElement>();
+      const { view } = renderView({
+        closeButtonProps: { ref: closeButtonRef },
+      });
+
+      const closeButton = view.getByRole('button', { name: 'Close dialog' });
+      expect(closeButtonRef.current).toBe(closeButton);
+    });
+
+    it('uses custom tooltip text when closeButtonProps.tip is provided', () => {
+      const customTip = 'Custom close tooltip';
+      const { view } = renderView({
+        closeButtonProps: { tip: customTip },
+      });
+
+      const closeButton = view.getByRole('button', { name: customTip });
+      expect(closeButton).toHaveAttribute('aria-label', customTip);
+    });
+
+    it('disables the close button when closeButtonProps.disabled is true', () => {
+      const { view } = renderView({
+        closeButtonProps: { disabled: true },
+      });
+
+      const closeButton = view.getByRole('button', { name: 'Close dialog' });
+      expect(closeButton).toBeDisabled();
+    });
+
+    it('enables the close button when closeButtonProps.disabled is false', () => {
+      const { view } = renderView({
+        closeButtonProps: { disabled: false },
+      });
+
+      const closeButton = view.getByRole('button', { name: 'Close dialog' });
+      expect(closeButton).not.toBeDisabled();
+    });
+
+    it('enables the close button by default when closeButtonProps.disabled is not provided', () => {
+      const { view } = renderView();
+
+      const closeButton = view.getByRole('button', { name: 'Close dialog' });
+      expect(closeButton).not.toBeDisabled();
+    });
+  });
+  describe('containerFocusRef functionality', () => {
+    it('applies a ref to the dialog container when containerFocusRef is provided', () => {
+      const containerFocusRef = React.createRef<HTMLDivElement>();
+      const { view } = renderView({
+        containerFocusRef,
+      });
+
+      const dialogContainer = view.getByRole('dialog');
+      expect(containerFocusRef.current).toBe(dialogContainer);
+    });
   });
 });
