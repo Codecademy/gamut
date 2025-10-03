@@ -459,7 +459,7 @@ export const DisableContainerQueryExample: React.FC<
         <Text mb={8} variant="title-sm">
           Default (Container Queries Enabled)
         </Text>
-        <Box border={1} borderColor="border-tertiary"  p={16}>
+        <Box border={1} borderColor="border-tertiary" maxWidth="400px" p={16}>
           {defaultComponent}
         </Box>
         <Text color="text-secondary" mt={8} variant="p-small">
@@ -472,7 +472,7 @@ export const DisableContainerQueryExample: React.FC<
         <Text mb={8} variant="title-sm">
           With Container Queries Disabled
         </Text>
-        <Box border={1} borderColor="border-tertiary" p={16}>
+        <Box border={1} borderColor="border-tertiary" maxWidth="400px" p={16}>
           {disabledComponent}
         </Box>
         <Text color="text-secondary" mt={8} variant="p-small">

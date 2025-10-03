@@ -1,7 +1,7 @@
 // Added because SB and TS don't play nice with each other at the moment
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { DataTable, Box, Text, FlexBox, StrokeButton } from '@codecademy/gamut';
+import { DataTable } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import {
@@ -166,128 +166,24 @@ export const Scrollable: Story = {
 };
 
 const DataTableDisableContainerQueryExample = () => {
-  const columns = [
-    {
-      key: 'fixedColumn',
-      header: 'Fixed Column',
-      size: 'lg',
-      sortable: true,
-    },
-    {
-      key: 'description1',
-      header: 'Description',
-      size: 'sm',
-      sortable: true,
-    },
-    {
-      key: 'row1',
-      header: 'Row #',
-      size: 'sm',
-      sortable: true,
-    },
-    {
-      key: 'description2',
-      header: 'Description',
-      size: 'sm',
-      sortable: true,
-    },
-    {
-      key: 'row2',
-      header: 'Row #',
-      size: 'sm',
-      sortable: true,
-    },
-    {
-      key: 'description3',
-      header: 'Description',
-      size: 'sm',
-      sortable: true,
-    },
-  ];
-
-  const rows = [];
-
-  const defaultComponent = <DataTable columns={columns} rows={rows} />;
+  const defaultComponent = (
+    <DataTable
+      columns={simpleColumns}
+      id="default-table-query"
+      idKey="name"
+      rows={simpleRows}
+      spacing="condensed"
+    />
+  );
 
   const disabledComponent = (
     <DataTable
-      shadow={true}
-      size="normal"
-      columns={[
-        {
-          key: 'name',
-          header: 'Name',
-          size: 'lg',
-          type: 'header',
-          sortable: true,
-        },
-        {
-          key: 'row1',
-          header: 'Row #',
-          size: 'sm',
-          type: 'header',
-          sortable: true,
-        },
-        {
-          key: 'row2',
-          header: 'Row #',
-          size: 'sm',
-          type: 'header',
-          sortable: true,
-        },
-      ]}
-      rows={[
-        {
-          name: 'Text Content',
-          row1: '1',
-          row2: '1',
-        },
-        {
-          name: 'Text Content',
-          row1: '2',
-          row2: '2',
-        },
-        {
-          name: 'Text Content',
-          row1: '3',
-          row2: '3',
-        },
-        {
-          name: 'Text Content',
-          row1: '4',
-          row2: '4',
-        },
-        {
-          name: 'Text Content',
-          row1: '5',
-          row2: '5',
-        },
-        {
-          name: 'Text Content',
-          row1: '6',
-          row2: '6',
-        },
-        {
-          name: 'Text Content',
-          row1: '7',
-          row2: '7',
-        },
-        {
-          name: 'Text Content',
-          row1: '8',
-          row2: '8',
-        },
-        {
-          name: 'Text Content',
-          row1: '9',
-          row2: '9',
-        },
-        {
-          name: 'Text Content',
-          row1: '10',
-          row2: '10',
-        },
-      ]}
+      columns={simpleColumns}
+      disableContainerQuery
+      id="disabled-table-query"
+      idKey="name"
+      rows={simpleRows}
+      spacing="condensed"
     />
   );
 
