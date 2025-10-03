@@ -12,10 +12,8 @@ const meta: Meta<typeof Select> = {
   },
   argTypes: {
     value: {
-      control: {
-        type: 'select',
-        options: fruitOptions,
-      },
+      control: 'select',
+      options: fruitOptions,
     },
   },
 };
