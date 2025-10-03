@@ -8,7 +8,7 @@ import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer } from './elements';
 import { ImageContainer } from './ImageContainer';
-import { CloseButtonProps, ModalBaseProps } from './types';
+import { CloseButtonProps, DialogBaseProps } from './types';
 
 interface DialogButtonProps {
   children: React.ReactNode;
@@ -42,13 +42,15 @@ type ModalConfirmProps = {
 type ModalButtonProps = ModalNextProps | ModalConfirmProps;
 
 interface ModalView
-  extends Omit<ModalBaseProps, 'headingLevel' | 'onRequestClose'> {
+  extends Omit<DialogBaseProps, 'headingLevel' | 'onRequestClose'> {
   children: React.ReactNode;
 }
 
 export type ModalViewProps = ModalView & ModalButtonProps;
 
-export interface SingleViewModalProps extends ModalBaseProps, CloseButtonProps {
+export interface SingleViewModalProps
+  extends DialogBaseProps,
+    CloseButtonProps {
   /**
    * Whether to show scrollbar on content overflow
    */
@@ -57,7 +59,7 @@ export interface SingleViewModalProps extends ModalBaseProps, CloseButtonProps {
 }
 
 export interface MultiViewModalProps
-  extends Omit<ModalBaseProps, 'children' | 'image'>,
+  extends Omit<DialogBaseProps, 'children' | 'image'>,
     CloseButtonProps {
   children?: never;
   image?: never;
@@ -94,7 +96,7 @@ export const Modal: React.FC<ModalProps> = ({
   onRequestClose,
   scrollable = false,
   size = 'fluid',
-  modalFocusRef,
+  containerFocusRef,
   title,
   views,
   ...rest
@@ -119,7 +121,7 @@ export const Modal: React.FC<ModalProps> = ({
         className={className}
         data-autofocus
         layout={views && views?.length > 0 ? 'dialog' : 'standard'}
-        ref={modalFocusRef}
+        ref={containerFocusRef}
         role="dialog"
         size={size}
         tabIndex={-1}

@@ -1,4 +1,11 @@
-import { Dialog, FillButton, FlexBox, Text } from '@codecademy/gamut';
+import {
+  Box,
+  Dialog,
+  FillButton,
+  FlexBox,
+  StrokeButton,
+  Text,
+} from '@codecademy/gamut';
 import { ColorMode } from '@codecademy/gamut-styles';
 import type { Meta } from '@storybook/react';
 import { ComponentProps, useEffect, useRef, useState } from 'react';
@@ -79,7 +86,7 @@ export const DarkMode: React.FC<ComponentProps<typeof Dialog>> = (args) => {
   );
 };
 
-export const CloseButtonDialogCustomization: React.FC = () => {
+export const CloseButtonCustomization: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -122,6 +129,83 @@ export const CloseButtonDialogCustomization: React.FC = () => {
           <FillButton onClick={() => setIsDisabled(!isDisabled)}>
             {isDisabled ? 'Enable' : 'Disable'} Focus Close Button
           </FillButton>
+        </FlexBox>
+      </Dialog>
+    </>
+  );
+};
+
+export const CustomClose: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Dialog</FillButton>
+      <Dialog
+        cancelCta={{ children: 'Cancel' }}
+        closeButtonProps={{ hidden: true }}
+        confirmCta={{ children: 'Agree' }}
+        isOpen={isOpen}
+        title="Custom Close"
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <FlexBox column gap={16} m={16}>
+          <Box>
+            <Text>Missing a close button?</Text>
+          </Box>
+          <Box>
+            <StrokeButton onClick={() => setIsOpen(false)}>
+              No problem, click me!
+            </StrokeButton>
+          </Box>
+        </FlexBox>
+      </Dialog>
+    </>
+  );
+};
+
+export const FocusManagement: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerFocusRef = useRef<HTMLDivElement>(null);
+
+  const handleFocusDialog = () => {
+    containerFocusRef.current?.focus();
+  };
+
+  const handleBlurDialog = () => {
+    containerFocusRef.current?.blur();
+  };
+
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>
+        Open Modal with Focus Control
+      </FillButton>
+      <Dialog
+        cancelCta={{ children: 'Cancel' }}
+        confirmCta={{ children: 'Agree' }}
+        containerFocusRef={containerFocusRef}
+        isOpen={isOpen}
+        size="medium"
+        title="Focus Management Demo"
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <FlexBox flexDirection="column" gap={16}>
+          <Text>
+            This dialog container has a ref that you can interact with
+            programmatically.
+          </Text>
+          <FlexBox gap={8}>
+            <FillButton onClick={handleFocusDialog}>
+              Focus Dialog Container
+            </FillButton>
+            <FillButton variant="secondary" onClick={handleBlurDialog}>
+              Blur Dialog Container
+            </FillButton>
+          </FlexBox>
+          <Text color="text-disabled" fontSize={14}>
+            Try tabbing through the page - the dialog container will maintain
+            focus when you click the &quot;Focus Dialog Container&quot; button.
+          </Text>
         </FlexBox>
       </Dialog>
     </>

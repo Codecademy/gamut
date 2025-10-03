@@ -15,7 +15,7 @@ export interface ModalOverlayProps
     | 'shroud'
   > {}
 
-export interface ModalBaseProps
+export interface DialogBaseProps
   extends ModalOverlayProps,
     Omit<ComponentProps<typeof ModalContainer>, 'title'> {
   title?: React.ReactNode;
@@ -30,7 +30,7 @@ export interface ModalBaseProps
    * Otherwise, the ModalWrapper does has data-autofocus which will gain focus when the Modal is opened.
 
    */
-  modalFocusRef?: Ref<HTMLDivElement>;
+  containerFocusRef?: Ref<HTMLDivElement>;
 }
 
 /**

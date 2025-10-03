@@ -2,9 +2,9 @@ import { ComponentProps } from 'react';
 
 import { Box } from '../Box';
 import { ModalContainer } from './elements';
-import { ModalBaseProps } from './types';
+import { DialogBaseProps } from './types';
 
-interface ImageProps extends Pick<ModalBaseProps, 'image'> {
+interface ImageProps extends Pick<DialogBaseProps, 'image'> {
   size: Exclude<
     ComponentProps<typeof ModalContainer>['size'],
     false | undefined

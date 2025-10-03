@@ -4,6 +4,7 @@ import {
   FillButton,
   FlexBox,
   Modal,
+  StrokeButton,
   Text,
 } from '@codecademy/gamut';
 import { CodeCelebration } from '@codecademy/gamut-illustrations';
@@ -193,6 +194,7 @@ export const CustomClose: React.FC = () => {
         onRequestClose={() => setIsOpen(false)}
       >
         Close the Modal!
+        <StrokeButton onClick={() => setIsOpen(false)}>Close</StrokeButton>
       </Modal>
     </>
   );
@@ -247,14 +249,14 @@ export const Scrollable: React.FC = () => {
 
 export const FocusManagement: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const modalFocusRef = useRef<HTMLDivElement>(null);
+  const containerFocusRef = useRef<HTMLDivElement>(null);
 
   const handleFocusModal = () => {
-    modalFocusRef.current?.focus();
+    containerFocusRef.current?.focus();
   };
 
   const handleBlurModal = () => {
-    modalFocusRef.current?.blur();
+    containerFocusRef.current?.blur();
   };
 
   return (
@@ -263,8 +265,8 @@ export const FocusManagement: React.FC = () => {
         Open Modal with Focus Control
       </FillButton>
       <Modal
+        containerFocusRef={containerFocusRef}
         isOpen={isOpen}
-        modalFocusRef={modalFocusRef}
         size="medium"
         title="Focus Management Demo"
         onRequestClose={() => setIsOpen(false)}
@@ -474,7 +476,7 @@ export const ConfirmationOnClose: React.FC = () => {
             variant="secondary"
             onClick={() => setHasUnsavedChanges(!hasUnsavedChanges)}
           >
-            {hasUnsavedChanges ? 'Mark as Unsaved' : 'Mark as Saved'}
+            {hasUnsavedChanges ? 'Mark as Saved' : 'Mark as Unsaved'}
           </FillButton>
         </FlexBox>
         <Text color="text-disabled" fontSize={14}>
