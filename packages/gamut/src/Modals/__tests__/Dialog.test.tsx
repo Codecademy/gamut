@@ -139,5 +139,4 @@ describe('Dialog', () => {
       expect(containerFocusRef.current).toBe(dialogContainer);
     });
   });
-
 });
