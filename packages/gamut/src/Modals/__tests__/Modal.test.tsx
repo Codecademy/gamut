@@ -117,15 +117,15 @@ describe('Modal', () => {
     });
   });
 
-  describe('modalFocusRef functionality', () => {
-    it('applies a ref to the modal container when modalFocusRef is provided', () => {
-      const modalFocusRef = React.createRef<HTMLDivElement>();
+  describe('containerFocusRef functionality', () => {
+    it('applies a ref to the modal container when containerFocusRef is provided', () => {
+      const containerFocusRef = React.createRef<HTMLDivElement>();
       const { view } = renderView({
-        modalFocusRef,
+        containerFocusRef,
       });
 
       const modalContainer = view.getByRole('dialog');
-      expect(modalFocusRef.current).toBe(modalContainer);
+      expect(containerFocusRef.current).toBe(modalContainer);
     });
   });
 

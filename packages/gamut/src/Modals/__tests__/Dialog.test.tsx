@@ -128,4 +128,16 @@ describe('Dialog', () => {
       expect(closeButton).not.toBeDisabled();
     });
   });
+  describe('containerFocusRef functionality', () => {
+    it('applies a ref to the dialog container when containerFocusRef is provided', () => {
+      const containerFocusRef = React.createRef<HTMLDivElement>();
+      const { view } = renderView({
+        containerFocusRef,
+      });
+
+      const dialogContainer = view.getByRole('dialog');
+      expect(containerFocusRef.current).toBe(dialogContainer);
+    });
+  });
+
 });
