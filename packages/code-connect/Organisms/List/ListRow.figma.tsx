@@ -1,9 +1,9 @@
 import {
-  ListRow,
-  ListCol,
   Box,
-  Rotation,
   FillButton,
+  ListCol,
+  ListRow,
+  Rotation,
   TextButton,
 } from '@codecademy/gamut';
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';

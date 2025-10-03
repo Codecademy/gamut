@@ -128,6 +128,7 @@ figma.connect(
       cancel: figma.enum('Template', {
         Sections: {
           children: 'Cancel',
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           onClick: () => {},
         },
       }),
