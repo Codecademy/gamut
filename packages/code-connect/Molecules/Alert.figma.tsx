@@ -14,13 +14,15 @@ figma.connect(
   'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=27627-31065',
   {
     props: {
-      type: figma.enum('Type', {
-        General: 'info',
-        Success: 'success',
-        Error: 'error',
-        Subtle: 'subtle',
+      type: figma.enum('type', {
+        general: 'info',
+        success: 'success',
+        error: 'error',
+        subtle: 'subtle',
+        warning: 'warning',
+        feature: 'feature',
       }),
-      onClose: figma.boolean('Dismissable', {
+      onClose: figma.boolean('dismissible', {
         true: () => {
           // Dismiss logic goes here
         },
@@ -31,9 +33,13 @@ figma.connect(
         false: undefined,
       }),
       children: figma.textContent('text'),
+      placement: figma.enum('placement', {
+        inline: 'inline',
+        floating: 'floating',
+      }),
     },
     example: ({ children, ...props }: any) => (
-      <Alert {...props} placement="inline">
+      <Alert {...props} >
         {children}
       </Alert>
     ),

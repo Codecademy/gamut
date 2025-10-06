@@ -1,4 +1,4 @@
-import { Coachmark } from '@codecademy/gamut';
+import { Box, Coachmark, Text, TextButton, FlexBox } from '@codecademy/gamut';
 import figma from '@figma/code-connect';
 
 /**
@@ -11,7 +11,7 @@ import figma from '@figma/code-connect';
 
 figma.connect(
   Coachmark,
-  'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=19366%3A27764',
+  'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=19366-27764',
   {
     props: {
       beak: figma.enum('beak', {
@@ -22,8 +22,20 @@ figma.connect(
         below: 'below',
         above: 'above',
       }),
-      renderPopover: '<Box>{Content goes here}</Box>',
-      children: figma.children('.Card Content Title'),
+      renderPopover: <FlexBox flexDirection="column" gap={8} alignItems="flex-start">
+        <Text as="h3" variant="title-xs" m={0}>
+          New feature
+        </Text>
+        <Text variant="p-small" color="text">
+          Information about the new feature can go here. Here’s an extra sentence if you really need it.
+        </Text>
+        <Box alignSelf="flex-end">
+          <TextButton size="normal" onClick={() => {}}>
+            Button text
+          </TextButton>
+        </Box>
+      </FlexBox>,
+      children: <ExampleComponent>Coachmark wraps around this component</ExampleComponent>,
     },
     example: ({ children, beak, position, ...props }) => (
       <Coachmark
