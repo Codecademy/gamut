@@ -31,7 +31,7 @@ figma.connect(
         true: figma.boolean('↳ Expanded', {
           true: (
             <ListCol type="control">
-              <Rotation rotated={true}>
+              <Rotation rotated>
                 <ArrowChevronDownIcon color="text-disabled" />
               </Rotation>
             </ListCol>
