@@ -193,8 +193,14 @@ export const CustomClose: React.FC = () => {
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
       >
-        Close the Modal!
-        <StrokeButton onClick={() => setIsOpen(false)}>Close</StrokeButton>
+        <FlexBox flexDirection="column" gap={16}>
+          <Box>
+            <Text>Close the Modal!</Text>
+          </Box>
+          <Box>
+            <StrokeButton onClick={() => setIsOpen(false)}>Close</StrokeButton>
+          </Box>
+        </FlexBox>
       </Modal>
     </>
   );
