@@ -55,6 +55,7 @@ export const percipio: readonly FontConfig[] = [
     name: 'Roboto',
     style: 'italic',
   },
+  // The default weight for bold fonts is 700, Percipio uses 500 for the base bold
   {
     filePath: `${FONT_ASSET_PATH}/roboto-bold`,
     extensions,
@@ -62,10 +63,23 @@ export const percipio: readonly FontConfig[] = [
     weight: 'bold',
   },
   {
+    filePath: `${FONT_ASSET_PATH}/roboto-bold`,
+    extensions,
+    name: 'Roboto',
+    weight: 500,
+  },
+  {
     filePath: `${FONT_ASSET_PATH}/roboto-bold-italic`,
     extensions,
     name: 'Roboto',
     weight: 'bold',
+    style: 'italic',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/roboto-bold-italic`,
+    extensions,
+    name: 'Roboto',
+    weight: 500,
     style: 'italic',
   },
   {
