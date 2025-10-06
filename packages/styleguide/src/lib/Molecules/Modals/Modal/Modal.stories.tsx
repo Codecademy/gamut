@@ -548,8 +548,9 @@ export const DocumentUploadStyle: React.FC = () => {
       setCurrentStep('upload');
       setHasUploadedDocuments(false);
     } else {
-      setCurrentStep('exit');
       closeButtonRef.current?.blur();
+      setCurrentStep('exit');
+      modalWrapperRef.current?.focus();
     }
   };
 
@@ -635,9 +636,9 @@ export const DocumentUploadStyle: React.FC = () => {
       <Modal
         clickOutsideCloses={!isPostProcessingStep}
         closeButtonProps={{ hidden: isPostProcessingStep, ref: closeButtonRef }}
+        containerFocusRef={modalWrapperRef}
         escapeCloses={!isPostProcessingStep}
         isOpen={isOpen}
-        modalFocusRef={modalWrapperRef}
         scrollable
         size={getModalSize()}
         title={steps[currentStep as keyof typeof steps]}
