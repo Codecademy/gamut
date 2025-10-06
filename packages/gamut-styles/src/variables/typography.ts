@@ -1,6 +1,6 @@
 import { pxRem } from '../styles/pxRem';
 
-export const fontAccent = `"Suisse", "Apercu", -apple-system, BlinkMacSystemFont,
+export const fontAccent = `"Suisse", "Work Sans", -apple-system, BlinkMacSystemFont,
 "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
 "Helvetica Neue", sans-serif`;
 
