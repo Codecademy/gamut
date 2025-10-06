@@ -4,7 +4,7 @@ export const fontAccent = `"Suisse", "Apercu", -apple-system, BlinkMacSystemFont
 "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
 "Helvetica Neue", sans-serif`;
 
-export const fontBase = `"Apercu", -apple-system, BlinkMacSystemFont, "Segoe UI",
+export const fontBase = `"Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
 "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
 sans-serif`;
 
