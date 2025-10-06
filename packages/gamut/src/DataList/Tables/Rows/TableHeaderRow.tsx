@@ -10,6 +10,7 @@ import {
   SortControl,
 } from '../../Controls';
 import { useControlContext } from '../../hooks/useListControls';
+import { useListState } from '../../hooks/useListState';
 import { ColumnConfig, Query } from '../../types';
 import { StyledHeaderRow } from './elements';
 
@@ -35,6 +36,7 @@ export const TableHeaderRow: HeaderComponent = ({
     useControlContext();
   const { variant, listType } = useListContext();
   const dataTablePadding = listType === 'table' && variant === 'table';
+  const headerRowDirections = useListState().query?.sort;
 
   return (
     <StyledHeaderRow
@@ -60,11 +62,19 @@ export const TableHeaderRow: HeaderComponent = ({
           const rowProperty = key as string;
           const renderKey = prefixId(`header-col-${rowProperty}`);
           const columnText = String(header || key);
+          const sortDirection = headerRowDirections?.[rowProperty] ?? 'none';
+          const ariaSortDirection =
+            sortDirection === 'none'
+              ? 'none'
+              : sortDirection === 'asc'
+              ? 'ascending'
+              : 'descending';
 
           return (
             <ListCol
               key={renderKey}
               {...colProps}
+              aria-sort={sortable ? ariaSortDirection : undefined}
               columnHeader
               dataTablePadding={dataTablePadding}
             >
