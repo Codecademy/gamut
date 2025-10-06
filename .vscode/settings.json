@@ -41,5 +41,15 @@
   },
   "storyExplorer.storiesGlobs": "packages/styleguide/stories/**/*.stories.mdx",
   "jest.jestCommandLine": "node_modules/.bin/jest",
-  "nxConsole.generateAiAgentRules": true
+  "nxConsole.generateAiAgentRules": true,
+  "chat.mcp.discovery.enabled": true
+  // "mcp": {
+  //   "servers": {
+  //     "Figma Dev Mode MCP": {
+  //       "type": "sse",
+  //       "url": "http://127.0.0.1:3845/sse"
+  //     }
+  //   }
+  // },
+  // "chat.agent.enabled": true
 }
