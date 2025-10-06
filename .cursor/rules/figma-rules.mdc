@@ -17,10 +17,13 @@ When generating code from Figma designs, follow these rules:
 
 ## Component Usage
 
+## Component Usage
+
 - **IMPORTANT**: Always use components from `/packages` whenever possible
 - Check if the Figma component name matches a Gamut component name and use that component
-- **IMPORTANT**: All patterns should come from `/packages/gamut-patterns` - match the Figma component name to the pattern component
-- **IMPORTANT**: All icons should come from `/packages/gamut-icons` - match the Figma component name to the icon component
+- **IMPORTANT**: All patterns should come from `/packages/gamut-patterns` - use the design's metadata to match the Figma component name to the pattern component
+- **IMPORTANT**: All illustrations should come from `/packages/gamut-illustrations` - use the design's metadata to match the Figma component name to the illustration component
+- **IMPORTANT**: All icons should come from `/packages/gamut-icons` - use the design's metadata to find the Figma component's icon's name and find the matching Gamut icon component
 
 ## Styling Guidelines
 
