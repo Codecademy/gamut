@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [77.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.5.1...@codecademy/styleguide@77.6.0) (2025-09-23)
+
+### Features
+
+- add attrs to combobox ([0e49416](https://github.com/Codecademy/gamut/commit/0e49416a19c958874dbbee6ac9d3ba8c40c27c6c))
+
+### [77.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.5.0...@codecademy/styleguide@77.5.1) (2025-09-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ## [77.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.4.5...@codecademy/styleguide@77.5.0) (2025-09-12)
 
 ### Features
