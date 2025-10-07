@@ -74,6 +74,44 @@
     url("../fonts/Apercu/apercu-bold-italic-pro.woff") format("woff");
 }
 
+//
+
+@font-face {
+  font-display: swap;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/Work_Sans/work-sans-regular.woff2") format("woff2"),
+    url("../fonts/Work_San/work-sans-regular.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: bold;
+  src: url("../fonts/Work_Sans/work-sans-bold.woff2") format("woff2"),
+      url("../fonts/Work_San/work-sans-bold.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Work Sans";
+  font-style: italic;
+  font-weight: normal;
+  src: url("../fonts/Work_Sans/work-sans-italic.woff2") format("woff2"),
+      url("../fonts/Work_San/work-sans-italic.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Work Sans";
+  font-style: italic;
+  font-weight: bold;
+  src: url("../fonts/Work_Sans/work-sans-bold-italic.woff2") format("woff2"),
+      url("../fonts/Work_San/work-sans-bold-italic.woff") format("woff");
+}
+
 @font-face {
   font-display: swap;
   font-family: "Suisse";
