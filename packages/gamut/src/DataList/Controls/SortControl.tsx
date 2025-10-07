@@ -62,13 +62,6 @@ export const SortControl: React.FC<SortControlProps> = ({
   return (
     <SortAnchor
       aria-label={`sort by ${columnKey}`}
-      aria-sort={
-        direction === 'none'
-          ? 'none'
-          : direction === 'asc'
-          ? 'ascending'
-          : 'descending'
-      }
       display="inline-flex"
       variant="interface"
       onClick={() =>
