@@ -67,11 +67,6 @@ jobs:
       - name: Build Storybook
         run: yarn nx run styleguide:build-storybook
 
-      - name: Configure Netlify project
-        run: |
-          echo "Attempting to link project..."
-          npx netlify-cli@latest link --id ${{ secrets.NETLIFY_SITE_ID }} --filter @codecademy/styleguide --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
-
       - name: Deploy to Netlify
         id: deploy
         run: |
