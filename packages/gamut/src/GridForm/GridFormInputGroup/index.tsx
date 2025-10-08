@@ -17,6 +17,7 @@ import { GridFormCheckboxInput } from './GridFormCheckboxInput';
 import { GridFormCustomInput } from './GridFormCustomInput';
 import { GridFormFileInput } from './GridFormFileInput';
 import { GridFormHiddenInput } from './GridFormHiddenInput';
+import { GridFormNestedCheckboxInput } from './GridFormNestedCheckboxInput';
 import { GridFormRadioGroupInput } from './GridFormRadioGroupInput';
 import { GridFormSelectInput } from './GridFormSelectInput';
 import { GridFormSweetContainerInput } from './GridFormSweetContainerInput';
@@ -57,6 +58,15 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     switch (field.type) {
       case 'checkbox':
         return <GridFormCheckboxInput field={field} {...defaultProps} />;
+
+      case 'nested-checkboxes':
+        return (
+          <GridFormNestedCheckboxInput
+            error={!!errorMessage}
+            field={field}
+            {...defaultProps}
+          />
+        );
 
       case 'custom':
       case 'custom-group':
