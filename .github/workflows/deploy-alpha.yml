@@ -101,7 +101,7 @@ jobs:
 
           # Try to list sites to see what's available
           echo "Listing available sites..."
-          npx netlify-cli@22.1.3 sites:list --json || true
+          npx netlify-cli@22.1.3 sites:list -- --filter @codecademy/styleguide --json || true
 
           # Link to the Netlify site with filter
           echo "Linking to Netlify site: $NETLIFY_SITE_ID"
