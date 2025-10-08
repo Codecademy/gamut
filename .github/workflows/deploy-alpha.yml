@@ -7,7 +7,7 @@ on:
       - gh-pages
 
 env:
-  NODE_VERSION: '22.13.1'
+  NODE_VERSION: '18.20.4'
   NODE_OPTIONS: '--max_old_space_size=8196'
   NX_CLOUD: false
   IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
