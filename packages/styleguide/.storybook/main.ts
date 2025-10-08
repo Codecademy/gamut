@@ -25,6 +25,21 @@ const config: StorybookConfig = {
 
   typescript: {
     reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      skipChildrenPropWithoutDoc: false,
+      shouldRemoveUndefinedFromOptional: true,
+      propFilter: (prop) => {
+        // Return false if fileName contains node_modules
+        if (prop.parent && /node_modules/.test(prop.parent.fileName)) {
+          return false;
+        }
+        // Return false if prop name is as, mode, or theme
+        if (['as', 'mode', 'theme'].includes(prop.name)) {
+          return false;
+        }
+        return true;
+      },
+    },
   },
 
   webpackFinal(config) {
