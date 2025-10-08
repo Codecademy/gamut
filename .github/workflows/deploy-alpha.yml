@@ -95,11 +95,15 @@ jobs:
           export NETLIFY_AUTH_TOKEN="${{ secrets.NETLIFY_AUTH_TOKEN }}"
           export NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID }}"
 
-          # Link to the Netlify site first
-          echo "Linking to Netlify site: $NETLIFY_SITE_ID"
-          npx netlify-cli@22.1.3 link --id $NETLIFY_SITE_ID --filter @codecademy/styleguide
+          # Unlink any existing project first
+          echo "Unlinking any existing project..."
+          npx netlify-cli@22.1.3 unlink || true
 
-          # Deploy to Netlify (matching CircleCI exactly)
+          # Link to the Netlify site (without filter first)
+          echo "Linking to Netlify site: $NETLIFY_SITE_ID"
+          npx netlify-cli@22.1.3 link --id $NETLIFY_SITE_ID
+
+          # Deploy to Netlify with filter
           echo "Deploying to Netlify..."
           npx netlify-cli@22.1.3 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --filter @codecademy/styleguide > .deploy-output
           echo "deploy-output=$(cat .deploy-output)" >> $GITHUB_OUTPUT
