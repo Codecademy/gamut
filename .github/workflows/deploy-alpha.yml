@@ -58,21 +58,49 @@ jobs:
         id: deploy
         run: |
           DEPLOY_MESSAGE="User: ${{ github.actor }} Project: ${{ github.repository }} Pull Request: ${{ github.event.pull_request.html_url }}"
+          echo "Attempting deployment with message: ${DEPLOY_MESSAGE}"
+
           # Try CLI first, fallback to API if it fails
-          if ! npx netlify-cli@22.1.3 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --site ${{ secrets.NETLIFY_SITE_ID }} --json --filter @codecademy/styleguide > deploy-output.json 2>&1; then
+          if ! npx netlify-cli@22.1.3 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --site ${{ secrets.NETLIFY_SITE_ID }} --json > deploy-output.json 2>&1; then
             echo "CLI failed, trying API approach..."
+            echo "CLI error output:"
+            cat deploy-output.json
+            echo ""
+            
             cd dist/storybook/styleguide
             zip -r deploy.zip . > /dev/null 2>&1
+            echo "Created deploy.zip, size: $(ls -lh deploy.zip | awk '{print $5}')"
+            
             # Use HTTP/1.1 to avoid HTTP/2 protocol errors
-            curl --http1.1 -X POST \
+            API_RESPONSE=$(curl --http1.1 -X POST \
               -H "Authorization: Bearer ${{ secrets.NETLIFY_AUTH_TOKEN }}" \
               -H "Content-Type: application/zip" \
               -H "Accept: application/json" \
               --data-binary @deploy.zip \
               --retry 3 \
               --retry-delay 5 \
-              "https://api.netlify.com/api/v1/sites/${{ secrets.NETLIFY_SITE_ID }}/deploys" > deploy-output.json
+              --write-out "HTTPSTATUS:%{http_code}" \
+              "https://api.netlify.com/api/v1/sites/${{ secrets.NETLIFY_SITE_ID }}/deploys")
+            
+            # Extract HTTP status and response body
+            HTTP_STATUS=$(echo $API_RESPONSE | tr -d '\n' | sed -e 's/.*HTTPSTATUS://')
+            API_BODY=$(echo $API_RESPONSE | sed -e 's/HTTPSTATUS:.*//g')
+            
+            echo "API Response Status: $HTTP_STATUS"
+            echo "API Response Body: $API_BODY"
+            
+            if [ "$HTTP_STATUS" -eq 200 ] || [ "$HTTP_STATUS" -eq 201 ]; then
+              echo "$API_BODY" > deploy-output.json
+            else
+              echo "API deployment failed with status $HTTP_STATUS"
+              echo '{"error": "API deployment failed", "status": '$HTTP_STATUS', "message": "'$API_BODY'"}' > deploy-output.json
+            fi
+          else
+            echo "CLI deployment successful"
+            echo "Deploy output:"
+            cat deploy-output.json
           fi
+
           echo "deploy-output=$(cat deploy-output.json)" >> $GITHUB_OUTPUT
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
