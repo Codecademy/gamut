@@ -24,7 +24,7 @@ export interface SharedProps extends InternalInputsProps, SelectDropdownSizes {
    */
   menuAlignment?: 'left' | 'right';
   /** Z-index for the dropdown menu */
-  zIndex?: number | 'auto';
+  zIndex?: number;
 }
 
 /**

@@ -122,7 +122,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   shownOptionsLimit = 6,
   size,
   value,
-  zIndex = 'auto',
+  zIndex,
   ...rest
 }) => {
   const rawInputId = useId();

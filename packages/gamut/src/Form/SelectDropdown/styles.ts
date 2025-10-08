@@ -22,10 +22,10 @@ import {
 import { ControlState, OptionState } from './types';
 import { BaseSelectComponentProps } from './types/styles';
 
-const selectDropdownStyles = css({
+const selectDropdownStyles = (zIndex: number = 3) => css({
   ...formBaseFieldStylesObject,
   display: 'flex',
-  zIndex: 3,
+  zIndex,
 });
 
 const selectFocusStyles = {
@@ -90,7 +90,7 @@ const placeholderColor = css({
 
 export const getMemoizedStyles = (
   theme: typeof GamutTheme,
-  zIndex: number | 'auto'
+  zIndex?: number
 ): StylesConfig<any, false> => {
   return {
     clearIndicator: (provided) => ({
@@ -115,7 +115,7 @@ export const getMemoizedStyles = (
           : getSize;
 
       return {
-        ...selectDropdownStyles({ theme }),
+        ...selectDropdownStyles(zIndex)({ theme }),
         ...sizeVariants({ size: getPadding, theme }),
         ...conditionalBorderStates({
           isFocused: state.isFocused,
@@ -161,7 +161,7 @@ export const getMemoizedStyles = (
               right: 0,
             }
           : {}),
-        zIndex,
+          zIndex: zIndex
       };
     },
     menuList: (provided, state: BaseSelectComponentProps) => {
