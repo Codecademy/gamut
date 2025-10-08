@@ -97,7 +97,7 @@ jobs:
 
           # Link to the Netlify site using the site ID
           echo "Linking to Netlify site: $NETLIFY_SITE_ID"
-          npx netlify-cli@22.1.3 link --id $NETLIFY_SITE_ID
+          npx netlify-cli@22.1.3 link --id $NETLIFY_SITE_ID --filter @codecademy/styleguide
 
           # Deploy to Netlify
           echo "Deploying to Netlify..."
