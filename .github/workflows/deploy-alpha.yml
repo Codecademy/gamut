@@ -104,19 +104,33 @@ jobs:
               echo "✅ API deployment successful!"
               echo "Deploy URL: $(echo $API_BODY | jq -r '.deploy_ssl_url')"
               
-              # Wait a moment for the deployment to process
-              echo "Waiting for deployment to process..."
-              sleep 10
-              
-              # Check if the deployment is ready
+              # Wait for the deployment to process and check status
               DEPLOY_ID=$(echo $API_BODY | jq -r '.id')
-              echo "Checking deployment status for ID: $DEPLOY_ID"
+              echo "Deployment created with ID: $DEPLOY_ID"
+              echo "Waiting for deployment to process..."
               
-              # Get deployment status
-              STATUS_RESPONSE=$(curl --http1.1 -H "Authorization: Bearer ${{ secrets.NETLIFY_AUTH_TOKEN }}" \
-                "https://api.netlify.com/api/v1/deploys/$DEPLOY_ID")
-              
-              echo "Deployment status: $(echo $STATUS_RESPONSE | jq -r '.state')"
+              # Wait and check deployment status multiple times
+              for i in {1..6}; do
+                sleep 10
+                echo "Checking deployment status (attempt $i/6)..."
+                
+                STATUS_RESPONSE=$(curl --http1.1 -H "Authorization: Bearer ${{ secrets.NETLIFY_AUTH_TOKEN }}" \
+                  "https://api.netlify.com/api/v1/deploys/$DEPLOY_ID")
+                
+                DEPLOY_STATE=$(echo $STATUS_RESPONSE | jq -r '.state')
+                echo "Deployment status: $DEPLOY_STATE"
+                
+                if [ "$DEPLOY_STATE" = "ready" ]; then
+                  echo "✅ Deployment is ready!"
+                  break
+                elif [ "$DEPLOY_STATE" = "error" ]; then
+                  echo "❌ Deployment failed!"
+                  echo "Error details: $(echo $STATUS_RESPONSE | jq -r '.error_message')"
+                  break
+                elif [ "$i" -eq 6 ]; then
+                  echo "⚠️ Deployment still processing after 60 seconds, but continuing..."
+                fi
+              done
             else
               echo "❌ API deployment failed with status $HTTP_STATUS"
               echo "Response: $API_BODY"
