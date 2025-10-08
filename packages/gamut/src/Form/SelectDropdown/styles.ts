@@ -22,12 +22,11 @@ import {
 import { ControlState, OptionState } from './types';
 import { BaseSelectComponentProps } from './types/styles';
 
-const selectDropdownStyles =
-  css({
-    ...formBaseFieldStylesObject,
-    display: 'flex',
-    zIndex: 3,
-  });
+const selectDropdownStyles = css({
+  ...formBaseFieldStylesObject,
+  display: 'flex',
+  zIndex: 3,
+});
 
 const selectFocusStyles = {
   color: 'primary',
@@ -62,15 +61,16 @@ const dropdownBorderStates = states({
   error: { borderColorTop: 'feedback-error' },
 });
 
-const dropdownBorderStyles = (zIndex: number = 2) => css({
-  ...formBaseComponentStyles,
-  border: 1,
-  borderColor: 'currentColor',
-  position: 'absolute',
-  marginTop: 0,
-  borderRadius: 'none',
-  zIndex,
-});
+const dropdownBorderStyles = (zIndex = 2) =>
+  css({
+    ...formBaseComponentStyles,
+    border: 1,
+    borderColor: 'currentColor',
+    position: 'absolute',
+    marginTop: 0,
+    borderRadius: 'none',
+    zIndex,
+  });
 
 const getOptionBackground = (isSelected: boolean, isFocused: boolean) =>
   css({
@@ -91,7 +91,7 @@ const placeholderColor = css({
 
 export const getMemoizedStyles = (
   theme: typeof GamutTheme,
-  zIndex?: number,
+  zIndex?: number
 ): StylesConfig<any, false> => {
   return {
     clearIndicator: (provided) => ({

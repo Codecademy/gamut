@@ -1022,7 +1022,6 @@ export const zIndexOnMenu: Story = {
         <FormGroup
           htmlFor="hasSetZIndex"
           isSoloField
-
           label="This menu floats above the table's header"
         >
           <SelectDropdown
