@@ -74,6 +74,13 @@ jobs:
           export NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID }}"
 
           echo "Checking Netlify authentication status..."
+          echo "Site ID: $NETLIFY_SITE_ID"
+
+          # Clean the token (remove any newlines or extra spaces)
+          NETLIFY_AUTH_TOKEN=$(echo "$NETLIFY_AUTH_TOKEN" | tr -d '\n\r' | xargs)
+          export NETLIFY_AUTH_TOKEN
+
+          # Try to authenticate with Netlify CLI
           npx netlify-cli@22.1.3 status
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
