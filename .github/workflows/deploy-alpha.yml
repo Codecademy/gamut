@@ -76,7 +76,7 @@ jobs:
         id: deploy
         run: |
           DEPLOY_MESSAGE="User: ${{ github.actor }} Project: ${{ github.repository }} Pull Request: ${{ github.event.pull_request.html_url }}"
-          npx netlify-cli@latest deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --json > .deploy-output
+          npx netlify-cli@latest deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --filter @codecademy/styleguide --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --json > .deploy-output
           DEPLOY_OUTPUT=$(cat .deploy-output)
           echo "deploy-output=$DEPLOY_OUTPUT" >> $GITHUB_OUTPUT
 
