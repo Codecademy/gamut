@@ -71,8 +71,8 @@ jobs:
         id: deploy
         run: |
           DEPLOY_MESSAGE="User: ${{ github.actor }} Project: ${{ github.repository }} Pull Request: ${{ github.event.pull_request.html_url }}"
-          # Use a more stable approach with error handling
-          if npx netlify-cli@22.0.0 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --filter @codecademy/styleguide --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --json > .deploy-output 2>&1; then
+          # Use a more stable approach with error handling and site ID
+          if npx netlify-cli@22.0.0 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --site ${{ secrets.NETLIFY_SITE_ID }} --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --json > .deploy-output 2>&1; then
             DEPLOY_OUTPUT=$(cat .deploy-output)
             echo "deploy-output=$DEPLOY_OUTPUT" >> $GITHUB_OUTPUT
           else
