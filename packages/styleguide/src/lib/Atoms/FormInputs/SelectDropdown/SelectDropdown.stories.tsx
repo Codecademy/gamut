@@ -1009,26 +1009,26 @@ export const zIndexOnMenu: Story = {
       <Text mb={16}>Notice how the menu renders based on using zIndex</Text>
       <FlexBox gap={16}>
         <FormGroup
-          htmlFor="hasNoZIndex"
-          isSoloField
-          label="This menu is rendered behind the header"
-        >
-          <SelectDropdown
-            name="hasNoZIndex"
-            options={args.options}
-            placeholder="Has no zIndex arg, uses default"
-          />
-        </FormGroup>
-        <FormGroup
-          htmlFor="hasSetZIndex"
+          htmlFor="usesDefaultZIndex"
           isSoloField
           label="This menu floats above the table's header"
         >
           <SelectDropdown
-            name="hasSetZIndex"
+            name="usesDefaultZIndex"
             options={args.options}
-            placeholder="has a zIndex of 5"
-            zIndex={5}
+            placeholder="Uses the default zIndex of 3"
+          />
+        </FormGroup>
+        <FormGroup
+          htmlFor="hasSmallZIndex"
+          isSoloField
+          label="This menu is rendered behind the header"
+        >
+          <SelectDropdown
+            name="hasSmallZIndex"
+            options={args.options}
+            placeholder="Has a zIndex of 1"
+            zIndex={1}
           />
         </FormGroup>
       </FlexBox>
