@@ -64,13 +64,16 @@ jobs:
           export NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID }}"
           export NETLIFY_AUTH_TOKEN="${{ secrets.NETLIFY_AUTH_TOKEN }}"
 
-          # Try CLI deployment first
+          # Link the site first to avoid project detection issues
+          npx netlify-cli@22.1.3 link --id ${{ secrets.NETLIFY_SITE_ID }} || echo "Site linking failed, continuing..."
+
+          # Try CLI deployment with explicit site ID
           if npx netlify-cli@22.1.3 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --site ${{ secrets.NETLIFY_SITE_ID }} --json > deploy-output.json 2>&1; then
             echo "✅ CLI deployment successful!"
             echo "Deploy output:"
             cat deploy-output.json
           else
-            echo "CLI failed, trying API approach..."
+            echo "CLI failed, trying API approach with proper site association..."
             echo "CLI error output:"
             cat deploy-output.json
             echo ""
@@ -79,7 +82,7 @@ jobs:
             zip -r deploy.zip . > /dev/null 2>&1
             echo "Created deploy.zip, size: $(ls -lh deploy.zip | awk '{print $5}')"
             
-            # Deploy using Netlify API
+            # Deploy using Netlify API with proper site association
             API_RESPONSE=$(curl --http1.1 -X POST \
               -H "Authorization: Bearer ${{ secrets.NETLIFY_AUTH_TOKEN }}" \
               -H "Content-Type: application/zip" \
@@ -100,6 +103,20 @@ jobs:
               echo "$API_BODY" > deploy-output.json
               echo "✅ API deployment successful!"
               echo "Deploy URL: $(echo $API_BODY | jq -r '.deploy_ssl_url')"
+              
+              # Wait a moment for the deployment to process
+              echo "Waiting for deployment to process..."
+              sleep 10
+              
+              # Check if the deployment is ready
+              DEPLOY_ID=$(echo $API_BODY | jq -r '.id')
+              echo "Checking deployment status for ID: $DEPLOY_ID"
+              
+              # Get deployment status
+              STATUS_RESPONSE=$(curl --http1.1 -H "Authorization: Bearer ${{ secrets.NETLIFY_AUTH_TOKEN }}" \
+                "https://api.netlify.com/api/v1/deploys/$DEPLOY_ID")
+              
+              echo "Deployment status: $(echo $STATUS_RESPONSE | jq -r '.state')"
             else
               echo "❌ API deployment failed with status $HTTP_STATUS"
               echo "Response: $API_BODY"
