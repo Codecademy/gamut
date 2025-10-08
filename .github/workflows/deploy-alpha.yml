@@ -67,31 +67,18 @@ jobs:
       - name: Build Storybook
         run: yarn nx run styleguide:build-storybook
 
-      - name: Debug Netlify configuration
-        run: |
-          echo "Testing CLI version:"
-          npx netlify-cli@latest --version
-          echo "Token is set: $([ -n "$NETLIFY_AUTH_TOKEN" ] && echo "yes" || echo "no")"
-          echo "Site ID is set: $([ -n "${{ secrets.NETLIFY_SITE_ID }}" ] && echo "yes" || echo "no")"
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-
       - name: Configure Netlify project
         run: |
           echo "Attempting to link project..."
-          npx netlify-cli@latest link --id ${{ secrets.NETLIFY_SITE_ID }} --filter @codecademy/styleguide
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          npx netlify-cli@latest link --id ${{ secrets.NETLIFY_SITE_ID }} --filter @codecademy/styleguide --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
       - name: Deploy to Netlify
         id: deploy
         run: |
           DEPLOY_MESSAGE="User: ${{ github.actor }} Project: ${{ github.repository }} Pull Request: ${{ github.event.pull_request.html_url }}"
-          npx netlify-cli@latest deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json > .deploy-output
+          npx netlify-cli@latest deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} --json > .deploy-output
           DEPLOY_OUTPUT=$(cat .deploy-output)
           echo "deploy-output=$DEPLOY_OUTPUT" >> $GITHUB_OUTPUT
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
       - name: Comment on PR with deployment info
         if: steps.deploy.outputs.deploy-output
