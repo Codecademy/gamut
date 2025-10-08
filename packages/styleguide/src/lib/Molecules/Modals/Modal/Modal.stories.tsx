@@ -7,65 +7,62 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { CodeCelebration } from '@codecademy/gamut-illustrations';
-import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import type { Meta } from '@storybook/react';
+import React, { ComponentProps, useEffect, useState } from 'react';
 
-const defaultProps = {
-  title: 'Modal Modality',
-  size: 'small' as const,
-  children: 'Waffles a la modal',
-};
 const meta: Meta<typeof Modal> = {
   component: Modal,
-  args: defaultProps,
+  args: {
+    title: 'Modal Modality',
+    size: 'small',
+    children: 'Close the Modal!',
+    isOpen: false,
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof Modal>;
 
-// This could be a SB issue, where Discriminated Unions are not being handled correctly
-type WithoutViews = Omit<React.ComponentProps<typeof Modal>, 'views'>;
+export const Default: React.FC<ComponentProps<typeof Modal>> = (args) => {
+  const [isOpen, setIsOpen] = useState(args.isOpen);
 
-const ModalExample = (args: WithoutViews) => {
-  const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    setIsOpen(args.isOpen);
+  }, [args.isOpen]);
+
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
-      <Modal isOpen={isOpen} {...args} onRequestClose={() => setIsOpen(false)}>
-        Close the Modal!
-      </Modal>
+      <Modal
+        {...args}
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+      />
     </>
   );
 };
 
-export const Default: Story = {
-  render: (args) => <ModalExample {...args} />,
-};
-
-export const CustomClose: React.FC = () => {
+export const CustomClose: React.FC = (args) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
-        {...defaultProps}
+        {...args}
         hideCloseButton
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
-      >
-        Close the Modal!
-      </Modal>
+      />
     </>
   );
 };
 
-export const ClickOutside: React.FC = () => {
+export const ClickOutside: React.FC = (args) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
-        {...defaultProps}
+        {...args}
         hideCloseButton
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
@@ -105,13 +102,13 @@ const GridContentPlaceholder = ({
   );
 };
 
-export const Fluid: React.FC = () => {
+export const Fluid: React.FC = (args) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
-        {...defaultProps}
+        {...args}
         isOpen={isOpen}
         size="fluid"
         onRequestClose={() => setIsOpen(false)}
@@ -122,13 +119,13 @@ export const Fluid: React.FC = () => {
   );
 };
 
-export const Large: React.FC = () => {
+export const Large: React.FC = (args) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
-        {...defaultProps}
+        {...args}
         isOpen={isOpen}
         size="large"
         onRequestClose={() => setIsOpen(false)}
@@ -139,13 +136,13 @@ export const Large: React.FC = () => {
   );
 };
 
-export const Medium: React.FC = () => {
+export const Medium: React.FC = (args) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
-        {...defaultProps}
+        {...args}
         isOpen={isOpen}
         size="medium"
         onRequestClose={() => setIsOpen(false)}
@@ -156,13 +153,13 @@ export const Medium: React.FC = () => {
   );
 };
 
-export const Small: React.FC = () => {
+export const Small: React.FC = (args) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
-        {...defaultProps}
+        {...args}
         isOpen={isOpen}
         size="small"
         onRequestClose={() => setIsOpen(false)}
@@ -173,13 +170,13 @@ export const Small: React.FC = () => {
   );
 };
 
-export const Scrollable: React.FC = () => {
+export const Scrollable: React.FC = (args) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
-        {...defaultProps}
+        {...args}
         hideCloseButton
         isOpen={isOpen}
         scrollable
@@ -207,13 +204,13 @@ const ImageComponent = () => {
   );
 };
 
-export const WithImage: React.FC = () => {
+export const WithImage: React.FC = (args) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
-        {...defaultProps}
+        {...args}
         image={<ImageComponent />}
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}

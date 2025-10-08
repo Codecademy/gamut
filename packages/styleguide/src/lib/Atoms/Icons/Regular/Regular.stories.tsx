@@ -21,9 +21,7 @@ const meta: Meta<typeof IconComponent> = {
     icon: {
       options: Object.keys(icons),
       mapping: icons,
-      control: {
-        type: 'select',
-      },
+      control: 'select',
     },
   },
 };

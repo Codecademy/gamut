@@ -9,9 +9,7 @@ const meta: Meta<typeof Badge> = {
   args: { children: 'Badge' },
   argTypes: {
     icon: {
-      control: {
-        type: 'select',
-      },
+      control: 'select',
       options: Object.keys(icons),
       mapping: icons,
     },
