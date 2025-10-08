@@ -1011,24 +1011,25 @@ export const zIndexOnMenu: Story = {
         <FormGroup
           htmlFor="usesDefaultZIndex"
           isSoloField
-          label="This menu floats above the table's header"
+          label="This menu is rendered behind the header"
         >
           <SelectDropdown
             name="usesDefaultZIndex"
             options={args.options}
-            placeholder="Uses the default zIndex of 3"
+            placeholder="Uses the default zIndex of 2"
           />
         </FormGroup>
         <FormGroup
-          htmlFor="hasSmallZIndex"
+          htmlFor="hasSetZIndex"
           isSoloField
-          label="This menu is rendered behind the header"
+
+          label="This menu floats above the table's header"
         >
           <SelectDropdown
-            name="hasSmallZIndex"
+            name="hasSetZIndex"
             options={args.options}
-            placeholder="Has a zIndex of 1"
-            zIndex={1}
+            placeholder="Has a zIndex of 5"
+            zIndex={5}
           />
         </FormGroup>
       </FlexBox>
