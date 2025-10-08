@@ -1,5 +1,5 @@
 import { FillButton } from '@codecademy/gamut';
-import { SearchIcon } from '@codecademy/gamut-icons';
+import * as icons from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof FillButton> = {
@@ -19,9 +19,9 @@ const meta: Meta<typeof FillButton> = {
       options: ['normal', 'small', 'large'],
     },
     icon: {
-      control: {
-        options: [SearchIcon], // what is this
-      },
+      control: 'select',
+      options: Object.keys(icons),
+      mapping: icons,
     },
   },
 };

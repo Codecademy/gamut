@@ -1,5 +1,5 @@
 import { TextButton } from '@codecademy/gamut';
-import { SearchIcon } from '@codecademy/gamut-icons';
+import * as icons from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof TextButton> = {
@@ -19,9 +19,9 @@ const meta: Meta<typeof TextButton> = {
       options: ['normal', 'small', 'large'],
     },
     icon: {
-      control: {
-        options: [SearchIcon],
-      },
+      control: 'select',
+      options: Object.keys(icons),
+      mapping: icons,
     },
   },
 };
