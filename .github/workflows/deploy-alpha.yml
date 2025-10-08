@@ -71,12 +71,11 @@ jobs:
         id: deploy
         run: |
           DEPLOY_MESSAGE="User: ${{ github.actor }} Project: ${{ github.repository }} Pull Request: ${{ github.event.pull_request.html_url }}"
-          npx netlify-cli@22.1.3 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --filter @codecademy/styleguide > .deploy-output
+          npx netlify-cli@22.1.3 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --site ${{ secrets.NETLIFY_SITE_ID }} --json > .deploy-output
           DEPLOY_OUTPUT=$(cat .deploy-output)
           echo "deploy-output=$DEPLOY_OUTPUT" >> $GITHUB_OUTPUT
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
       - name: Comment on PR with deployment info
         if: steps.deploy.outputs.deploy-output
