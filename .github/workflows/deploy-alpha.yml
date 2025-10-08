@@ -95,13 +95,9 @@ jobs:
           export NETLIFY_AUTH_TOKEN="${{ secrets.NETLIFY_AUTH_TOKEN }}"
           export NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID }}"
 
-          # Link to the Netlify site using the site ID
-          echo "Linking to Netlify site: $NETLIFY_SITE_ID"
-          npx netlify-cli@22.1.3 link --id $NETLIFY_SITE_ID --filter @codecademy/styleguide
-
-          # Deploy to Netlify
-          echo "Deploying to Netlify..."
-          npx netlify-cli@22.1.3 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --filter @codecademy/styleguide > .deploy-output
+          # Deploy to Netlify directly with site ID
+          echo "Deploying to Netlify site: $NETLIFY_SITE_ID"
+          npx netlify-cli@22.1.3 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --site $NETLIFY_SITE_ID > .deploy-output
           echo "deploy-output=$(cat .deploy-output)" >> $GITHUB_OUTPUT
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
