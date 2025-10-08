@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [66.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.5.1...@codecademy/gamut@66.5.2) (2025-10-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.5.0...@codecademy/gamut@66.5.1) (2025-09-30)
+
+### Bug Fixes
+
+- **DataList:** move aria-sort to th ([d872073](https://github.com/Codecademy/gamut/commit/d872073d27daa12d17135dc7c938b906575570ae))
+
 ## [66.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.4.2...@codecademy/gamut@66.5.0) (2025-09-23)
 
 ### Features
