@@ -19,13 +19,8 @@ import {
   formFieldPaddingStyles,
   InputSelectors,
 } from '../styles';
-import {
-  ContainerState,
-  ControlState,
-  MenuListState,
-  MenuState,
-  OptionState,
-} from './types';
+import { ControlState, OptionState } from './types';
+import { BaseSelectComponentProps } from './types/styles';
 
 const selectDropdownStyles = css({
   ...formBaseFieldStylesObject,
@@ -100,7 +95,7 @@ export const getMemoizedStyles = (
     clearIndicator: (provided) => ({
       ...provided,
     }),
-    container: (provided, state: ContainerState) => {
+    container: (provided, state: BaseSelectComponentProps) => {
       const { inputWidth } = state.selectProps;
       return {
         ...provided,
@@ -136,13 +131,17 @@ export const getMemoizedStyles = (
       padding: '0',
       pointerEvents: 'none',
     }),
+    groupHeading: (provided) => ({
+      ...provided,
+      color: theme.colors['text-disabled'],
+    }),
     input: (provided) => ({
       ...provided,
       ...textColor({ theme }),
       padding: '0',
       margin: '0',
     }),
-    menu: (provided, state: MenuState) => {
+    menu: (provided, state: BaseSelectComponentProps) => {
       const { dropdownWidth, menuAlignment } = state.selectProps;
 
       return {
@@ -163,7 +162,7 @@ export const getMemoizedStyles = (
           : {}),
       };
     },
-    menuList: (provided, state: MenuListState) => {
+    menuList: (provided, state: BaseSelectComponentProps) => {
       const sizeInteger = state.selectProps.size === 'small' ? 2 : 3;
       const maxHeight = `${
         (state.selectProps.shownOptionsLimit ?? 6) * sizeInteger
@@ -173,30 +172,6 @@ export const getMemoizedStyles = (
         maxHeight,
       };
     },
-    placeholder: (provided) => ({
-      ...provided,
-      ...placeholderColor({ theme }),
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-    }),
-    option: (provided, state: OptionState) => {
-      return {
-        padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
-        cursor: state.isDisabled ? 'not-allowed' : 'pointer',
-        ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
-        display: 'flex',
-        alignItems: 'center',
-        color: state.isDisabled ? 'text-disabled' : 'default',
-      };
-    },
-    singleValue: (provided) => ({
-      ...provided,
-      ...textColor({ theme }),
-      display: 'flex',
-      alignItems: 'center',
-      marginLeft: 0,
-    }),
     multiValue: (provided, state) => ({
       ...provided,
       ...tagBaseStyles,
@@ -228,6 +203,28 @@ export const getMemoizedStyles = (
       ':hover': {
         backgroundColor: theme.colors['secondary-hover'],
       },
+    }),
+    option: (provided, state: OptionState) => ({
+      padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
+      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+      ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
+      display: 'flex',
+      alignItems: 'center',
+      color: state.isDisabled ? 'text-disabled' : 'default',
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      ...placeholderColor({ theme }),
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      ...textColor({ theme }),
+      display: 'flex',
+      alignItems: 'center',
+      marginLeft: 0,
     }),
     valueContainer: (provided) => ({
       ...provided,
