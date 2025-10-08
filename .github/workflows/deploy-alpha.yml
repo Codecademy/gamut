@@ -26,135 +26,77 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup and Build
-        id: setup
-        uses: ./.github/actions/yarn
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
 
-      - name: Check if commit is automated
+      - name: Add NPM auth token file
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+
+      - name: Install dependencies
+        run: yarn --production=false --frozen-lockfile
+
+      - name: Ensure workflow is associated with a pull request
+        run: |
+          if [[ -z "${{ github.event.pull_request.number }}" ]]; then
+            echo "This workflow is not associated with a pull request; exiting"
+            exit 1
+          fi
+
+      - name: Skip build from automated commit
         id: check-commit
         run: |
           COMMIT_MESSAGE=$(git log --format=oneline -n 1 ${{ github.sha }})
           echo "Build started due to commit with message $COMMIT_MESSAGE, blocking builds started by ${IGNORE_COMMIT_MESSAGE}"
           if [[ $COMMIT_MESSAGE == *"${IGNORE_COMMIT_MESSAGE}"* ]]; then
-            echo "is-automated=true" >> $GITHUB_OUTPUT
             echo "Skipping build due to automated commit"
-          else
-            echo "is-automated=false" >> $GITHUB_OUTPUT
+            exit 0
           fi
 
       - name: Set git user
-        if: steps.check-commit.outputs.is-automated == 'false'
         run: |
           git config --global user.email "dev@codecademy.com"
           git config --global user.name "codecademydev"
           git config --global push.default current
 
+      - name: Build All Packages
+        run: yarn build
+
       - name: Build Storybook
-        if: steps.check-commit.outputs.is-automated == 'false'
-        run: yarn build && yarn nx run styleguide:build-storybook
+        run: yarn nx run styleguide:build-storybook
 
       - name: Deploy to Netlify
-        if: steps.check-commit.outputs.is-automated == 'false'
         id: deploy
         run: |
           DEPLOY_MESSAGE="User: ${{ github.actor }} Project: ${{ github.repository }} Pull Request: ${{ github.event.pull_request.html_url }}"
-          echo "Deploying to Netlify with message: ${DEPLOY_MESSAGE}"
-
-          # Set up Netlify CLI with the correct site
-          export NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID }}"
-          export NETLIFY_AUTH_TOKEN="${{ secrets.NETLIFY_AUTH_TOKEN }}"
-
-          # Link the site first to avoid project detection issues
-          npx netlify-cli@22.1.3 link --id ${{ secrets.NETLIFY_SITE_ID }} || echo "Site linking failed, continuing..."
-
-          # Try CLI deployment with explicit site ID
-          if npx netlify-cli@22.1.3 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --site ${{ secrets.NETLIFY_SITE_ID }} --json > deploy-output.json 2>&1; then
-            echo "✅ CLI deployment successful!"
-            echo "Deploy output:"
-            cat deploy-output.json
-          else
-            echo "CLI failed, trying API approach with proper site association..."
-            echo "CLI error output:"
-            cat deploy-output.json
-            echo ""
-            
-            cd dist/storybook/styleguide
-            zip -r deploy.zip . > /dev/null 2>&1
-            echo "Created deploy.zip, size: $(ls -lh deploy.zip | awk '{print $5}')"
-            
-            # Deploy using Netlify API with proper site association
-            API_RESPONSE=$(curl --http1.1 -X POST \
-              -H "Authorization: Bearer ${{ secrets.NETLIFY_AUTH_TOKEN }}" \
-              -H "Content-Type: application/zip" \
-              -H "Accept: application/json" \
-              --data-binary @deploy.zip \
-              --retry 3 \
-              --retry-delay 5 \
-              --write-out "HTTPSTATUS:%{http_code}" \
-              "https://api.netlify.com/api/v1/sites/${{ secrets.NETLIFY_SITE_ID }}/deploys")
-            
-            # Extract HTTP status and response body
-            HTTP_STATUS=$(echo $API_RESPONSE | tr -d '\n' | sed -e 's/.*HTTPSTATUS://')
-            API_BODY=$(echo $API_RESPONSE | sed -e 's/HTTPSTATUS:.*//g')
-            
-            echo "API Response Status: $HTTP_STATUS"
-            
-            if [ "$HTTP_STATUS" -eq 200 ] || [ "$HTTP_STATUS" -eq 201 ]; then
-              echo "$API_BODY" > deploy-output.json
-              echo "✅ API deployment successful!"
-              echo "Deploy URL: $(echo $API_BODY | jq -r '.deploy_ssl_url')"
-              
-              # Wait for the deployment to process and check status
-              DEPLOY_ID=$(echo $API_BODY | jq -r '.id')
-              echo "Deployment created with ID: $DEPLOY_ID"
-              echo "Waiting for deployment to process..."
-              
-              # Wait and check deployment status multiple times
-              for i in {1..6}; do
-                sleep 10
-                echo "Checking deployment status (attempt $i/6)..."
-                
-                STATUS_RESPONSE=$(curl --http1.1 -H "Authorization: Bearer ${{ secrets.NETLIFY_AUTH_TOKEN }}" \
-                  "https://api.netlify.com/api/v1/deploys/$DEPLOY_ID")
-                
-                DEPLOY_STATE=$(echo $STATUS_RESPONSE | jq -r '.state')
-                echo "Deployment status: $DEPLOY_STATE"
-                
-                if [ "$DEPLOY_STATE" = "ready" ]; then
-                  echo "✅ Deployment is ready!"
-                  break
-                elif [ "$DEPLOY_STATE" = "error" ]; then
-                  echo "❌ Deployment failed!"
-                  echo "Error details: $(echo $STATUS_RESPONSE | jq -r '.error_message')"
-                  break
-                elif [ "$i" -eq 6 ]; then
-                  echo "⚠️ Deployment still processing after 60 seconds, but continuing..."
-                fi
-              done
-            else
-              echo "❌ API deployment failed with status $HTTP_STATUS"
-              echo "Response: $API_BODY"
-              echo '{"error": "API deployment failed", "status": '$HTTP_STATUS', "message": "'$API_BODY'"}' > deploy-output.json
-              exit 1
-            fi
-          fi
-
-          echo "deploy-output=$(cat deploy-output.json)" >> $GITHUB_OUTPUT
+          npx netlify-cli@22.1.3 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --filter @codecademy/styleguide > .deploy-output
+          echo "deploy-output=$(cat .deploy-output)" >> $GITHUB_OUTPUT
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
       - name: Comment on PR with deployment info
-        if: steps.check-commit.outputs.is-automated == 'false' && steps.deploy.outputs.deploy-output
-        uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          header: Storybook Deploy Preview
-          recreate: true
-          message: |
-            🚀 **Styleguide deploy preview ready!**
-
-            **Deploy URL:** ${{ fromJson(steps.deploy.outputs.deploy-output).deploy_url }}
-            **Deploy Logs:** ${{ fromJson(steps.deploy.outputs.deploy-output).logs }}
-
-            <!--ALPHA_DEPLOY_COMMENT-->
+        if: steps.deploy.outputs.deploy-output
+        run: |
+          export DEPLOY_OUTPUT="${{ steps.deploy.outputs.deploy-output }}"
+          echo $DEPLOY_OUTPUT
+          DEPLOY_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).deploy_url)" | node -)
+          LOGS_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).logs)" | node -)
+          COMMENT_MSG="<p><a href=\"${DEPLOY_URL}\">${DEPLOY_URL}</a></p><p><a href=\"${LOGS_URL}\">Deploy Logs</a></p>"
+          if [ -z "$DEPLOY_OUTPUT" ]
+          then
+            echo "No deploy output found, will not add PR comment"
+          else
+            docker run --rm \
+                    -e GITHUB_TOKEN \
+                    -e GITHUB_OWNER="${{ github.repository_owner }}" \
+                    -e GITHUB_REPO="${{ github.event.repository.name }}" \
+                    -e GITHUB_COMMENT_TYPE=pr \
+                    -e GITHUB_PR_ISSUE_NUMBER="${{ github.event.pull_request.number }}" \
+                    -e GITHUB_COMMENT_TEMPLATE='<p>🚀 Styleguide deploy preview ready!</p>{{.}}<!--ALPHA_DEPLOY_COMMENT-->' \
+                    -e GITHUB_DELETE_COMMENT_REGEX="ALPHA_DEPLOY_COMMENT" \
+                    -e GITHUB_COMMENT="${COMMENT_MSG}" \
+                    cloudposse/github-commenter:0.5.0-58
+          fi
