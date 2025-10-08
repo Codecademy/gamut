@@ -95,10 +95,6 @@ jobs:
           export NETLIFY_AUTH_TOKEN="${{ secrets.NETLIFY_AUTH_TOKEN }}"
           export NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID }}"
 
-          # Unlink any existing project first
-          echo "Unlinking any existing project..."
-          npx netlify-cli@22.1.3 unlink --filter @codecademy/styleguide || true
-
           # Try to list sites to see what's available
           echo "Listing available sites..."
           npx netlify-cli@22.1.3 sites:list -- --filter @codecademy/styleguide --json || true
