@@ -1,4 +1,11 @@
-import { Box, FlexBox, FormGroup, SelectDropdown } from '@codecademy/gamut';
+import {
+  Box,
+  DataList,
+  FlexBox,
+  FormGroup,
+  SelectDropdown,
+  Text,
+} from '@codecademy/gamut';
 import { RadarIcon, ResponsiveIcon, RocketIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -993,5 +1000,66 @@ export const LongPlaceholderAgain: Story = {
         <SelectDropdown {...args} />
       </FormGroup>
     </Box>
+  ),
+};
+
+export const zIndexOnMenu: Story = {
+  render: (args) => (
+    <FlexBox column height="500px">
+      <Text mb={16}>Notice how the menu renders based on using zIndex</Text>
+      <FlexBox gap={16}>
+        <FormGroup
+          htmlFor="usesDefaultZIndex"
+          isSoloField
+          label="This menu is rendered behind the header"
+        >
+          <SelectDropdown
+            name="usesDefaultZIndex"
+            options={args.options}
+            placeholder="Uses the default zIndex of 2"
+          />
+        </FormGroup>
+        <FormGroup
+          htmlFor="hasSetZIndex"
+          isSoloField
+          label="This menu floats above the table's header"
+        >
+          <SelectDropdown
+            name="hasSetZIndex"
+            options={args.options}
+            placeholder="Has a zIndex of 5"
+            zIndex={5}
+          />
+        </FormGroup>
+      </FlexBox>
+      <DataList
+        columns={[
+          {
+            header: 'Name',
+            key: 'name',
+            size: 'lg',
+            type: 'header',
+            sortable: true,
+          },
+          { header: 'Rank', key: 'role', size: 'lg', sortable: true },
+          { header: 'Ship', key: 'ship', size: 'lg', sortable: true },
+        ]}
+        disableContainerQuery
+        id="crew"
+        idKey="name"
+        rows={[
+          {
+            name: 'Jean Luc Picard',
+            role: 'Captain',
+            ship: 'USS Enterprise',
+          },
+          {
+            name: 'Wesley Crusher',
+            role: 'Deus Ex Machina',
+            ship: 'USS Enterprise',
+          },
+        ]}
+      />
+    </FlexBox>
   ),
 };

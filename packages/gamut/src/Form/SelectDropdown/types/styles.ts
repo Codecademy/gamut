@@ -23,6 +23,8 @@ export interface SharedProps extends InternalInputsProps, SelectDropdownSizes {
    * This is only relevant when the dropdown width is set to be larger or smaller than the input width.
    */
   menuAlignment?: 'left' | 'right';
+  /** Z-index for the dropdown menu */
+  zIndex?: number;
 }
 
 /**

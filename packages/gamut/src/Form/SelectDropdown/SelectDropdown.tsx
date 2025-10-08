@@ -122,6 +122,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   shownOptionsLimit = 6,
   size,
   value,
+  zIndex,
   ...rest
 }) => {
   const rawInputId = useId();
@@ -243,8 +244,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
   const theme = useTheme();
   const memoizedStyles = useMemo((): StylesConfig<any, false> => {
-    return getMemoizedStyles(theme);
-  }, [theme]);
+    return getMemoizedStyles(theme, zIndex);
+  }, [theme, zIndex]);
 
   return (
     <SelectDropdownContext.Provider

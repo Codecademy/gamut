@@ -61,15 +61,16 @@ const dropdownBorderStates = states({
   error: { borderColorTop: 'feedback-error' },
 });
 
-const dropdownBorderStyles = css({
-  ...formBaseComponentStyles,
-  border: 1,
-  borderColor: 'currentColor',
-  position: 'absolute',
-  marginTop: 0,
-  borderRadius: 'none',
-  zIndex: 2,
-});
+const dropdownBorderStyles = (zIndex = 2) =>
+  css({
+    ...formBaseComponentStyles,
+    border: 1,
+    borderColor: 'currentColor',
+    position: 'absolute',
+    marginTop: 0,
+    borderRadius: 'none',
+    zIndex,
+  });
 
 const getOptionBackground = (isSelected: boolean, isFocused: boolean) =>
   css({
@@ -89,7 +90,8 @@ const placeholderColor = css({
 });
 
 export const getMemoizedStyles = (
-  theme: typeof GamutTheme
+  theme: typeof GamutTheme,
+  zIndex?: number
 ): StylesConfig<any, false> => {
   return {
     clearIndicator: (provided) => ({
@@ -146,7 +148,7 @@ export const getMemoizedStyles = (
 
       return {
         ...provided,
-        ...dropdownBorderStyles({ theme }),
+        ...dropdownBorderStyles(zIndex)({ theme }),
         ...dropdownBorderStates({ error: state.selectProps.error, theme }),
         ...(dropdownWidth
           ? {
