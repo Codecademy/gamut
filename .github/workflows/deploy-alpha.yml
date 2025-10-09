@@ -84,7 +84,11 @@ jobs:
           # Deploy using filter approach
           if npx netlify-cli@22.0.0 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --filter @codecademy/styleguide --json > .deploy-output 2>&1; then
             DEPLOY_OUTPUT=$(cat .deploy-output)
-            echo "deploy-output=$DEPLOY_OUTPUT" >> $GITHUB_OUTPUT
+            # Escape the output for GitHub Actions
+            DEPLOY_OUTPUT_ESCAPED=$(echo "$DEPLOY_OUTPUT" | sed 's/"/\\"/g' | tr '\n' ' ')
+            echo "deploy-output<<EOF" >> $GITHUB_OUTPUT
+            echo "$DEPLOY_OUTPUT" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
           else
             echo "Deploy failed. Output:"
             cat .deploy-output
