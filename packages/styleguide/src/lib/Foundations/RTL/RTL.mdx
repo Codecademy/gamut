@@ -1,0 +1,95 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import { AboutHeader } from '~styleguide/blocks';
+
+import * as RTLStories from './RTL.stories';
+
+export const parameters = {
+  id: 'RTL',
+  title: 'RTL',
+  subtitle:
+    'Right-to-Left language support for Arabic and other RTL languages.',
+  status: 'static',
+};
+
+<Meta of={RTLStories} />
+
+<AboutHeader {...parameters} />
+
+## Overview
+
+Gamut components support Right-to-Left (RTL) languages like Arabic, Hebrew, and Persian. This page demonstrates how various Gamut components handle RTL text and layout.
+
+## Implementation
+
+To enable RTL support, wrap your content with `dir="rtl"`:
+
+```tsx
+<Box dir="rtl">
+  <Text>مرحباً بك في منصة Codecademy</Text>
+</Box>
+```
+
+## Typography
+
+<Canvas of={RTLStories.Typography} />
+
+The Text and Heading components automatically handle RTL text direction and proper text alignment.
+
+## Buttons
+
+<Canvas of={RTLStories.Buttons} />
+
+Button components work seamlessly with Arabic text, maintaining proper spacing and alignment.
+
+## Lists
+
+<Canvas of={RTLStories.Lists} />
+
+List components properly handle RTL text with correct bullet positioning and text alignment.
+
+## Cards
+
+<Canvas of={RTLStories.Cards} />
+
+Card components maintain proper layout and spacing with Arabic content.
+
+## Alerts
+
+<Canvas of={RTLStories.Alerts} />
+
+Alert components display Arabic text correctly with proper alignment and spacing.
+
+## Layouts
+
+<Canvas of={RTLStories.Layouts} />
+
+FlexBox and GridBox components work seamlessly with RTL content, maintaining proper layout flow.
+
+## Markdown
+
+<Canvas of={RTLStories.MarkdownExample} />
+
+The Markdown component supports Arabic text in headers, lists, links, and blockquotes.
+
+## Mixed Content
+
+<Canvas of={RTLStories.MixedContent} />
+
+Gamut components handle mixed Arabic and English content gracefully, with proper text direction handling.
+
+## Complete Example
+
+<Canvas of={RTLStories.CompleteExample} />
+
+A comprehensive example showing how multiple Gamut components work together to create a complete Arabic interface.
+
+## Browser Support
+
+RTL support works in all modern browsers. The `dir` attribute is well-supported and has been part of HTML since HTML 4.0.
+
+## Related Components
+
+- [Typography](/docs/foundations-typography--docs)
+- [Layout](/docs/foundations-layout--docs)
+- [Buttons](/docs/atoms-buttons-button--docs)
