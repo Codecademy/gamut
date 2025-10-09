@@ -1,6 +1,6 @@
-import { Alert, Box, FillButton, Text } from '@codecademy/gamut';
+import { Alert, Box, FillButton, FlexBox, Text } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { ALERTS } from './constants';
 
@@ -135,15 +135,58 @@ export const Dismissible = () => {
   );
 };
 
-export const CloseButtonCustomization: Story = {
-  args: {
-    children:
-      'Close button can be customized with different tip text and alignment',
-    closeButtonProps: {
-      tip: 'Close this important alert',
-      tipAlignment: 'left-center' as const,
-    },
-    type: 'notice',
-    onClose: () => {},
-  },
+export const CloseButtonCustomization: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  const handleFocusCloseButton = () => {
+    closeButtonRef.current?.focus();
+  };
+
+  const handleShowAlert = () => {
+    setIsVisible(true);
+  };
+
+  return (
+    <>
+      <FlexBox flexDirection="column" gap={16}>
+        <FlexBox gap={8}>
+          {!isVisible && (
+            <FillButton onClick={handleShowAlert}>
+              Show Alert with Custom Close Button
+            </FillButton>
+          )}
+        </FlexBox>
+      </FlexBox>
+      {isVisible && (
+        <Alert
+          closeButtonProps={{
+            tip: 'Wow, a left-aligned tooltip!',
+            ref: closeButtonRef,
+            tipAlignment: 'left-center' as const,
+          }}
+          type="feature"
+          onClose={() => setIsVisible(false)}
+        >
+          <FlexBox flexDirection="column" gap={16}>
+            <Text>
+              Expand this Alert to see focus controls
+            </Text>
+            <FlexBox gap={8}>
+              <FillButton
+                disabled={isDisabled}
+                onClick={handleFocusCloseButton}
+              >
+                Focus Close Button
+              </FillButton>
+              <FillButton onClick={() => setIsDisabled(!isDisabled)}>
+                {isDisabled ? 'Enable' : 'Disable'} Focus Button
+              </FillButton>
+            </FlexBox>
+          </FlexBox>
+        </Alert>
+      )}
+    </>
+  );
 };
