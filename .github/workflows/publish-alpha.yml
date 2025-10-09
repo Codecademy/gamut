@@ -4,6 +4,7 @@ on:
   pull_request:
     branches-ignore:
       - main
+      - gh-pages
 
 env:
   NODE_VERSION: '22.13.1'
@@ -32,10 +33,7 @@ jobs:
         uses: ./.github/actions/yarn
 
       - name: Set git user
-        run: |
-          git config --global user.email "dev@codecademy.com"
-          git config --global user.name "codecademydev"
-          git config --global push.default current
+        uses: ./.github/actions/set-git-user
 
       - name: Set npm token
         run: |
@@ -64,12 +62,11 @@ jobs:
           } >> $GITHUB_OUTPUT
 
       - name: Comment with published alpha packages
-        uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
+        uses: ./.github/actions/sticky-comment
         if: steps.published.outputs.result
         with:
-          GITHUB_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          github-token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           header: Alpha Packages
-          recreate: true
           message: |
             📬 Published Alpha Packages:
             ```
