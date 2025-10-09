@@ -103,8 +103,8 @@ jobs:
           echo "Raw deploy output: $DEPLOY_OUTPUT"
 
           # Extract URLs using a more robust method that handles malformed JSON
-          DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | sed -n 's/.*deploy_url: \([^,]*\).*/\1/p')
-          LOGS_URL=$(echo "$DEPLOY_OUTPUT" | sed -n 's/.*logs: \([^,]*\).*/\1/p')
+          DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep -o 'deploy_url: [^,]*' | sed 's/deploy_url: //')
+          LOGS_URL=$(echo "$DEPLOY_OUTPUT" | grep -o 'logs: [^,]*' | sed 's/logs: //')
 
           echo "Deploy URL: $DEPLOY_URL"
           echo "Logs URL: $LOGS_URL"
