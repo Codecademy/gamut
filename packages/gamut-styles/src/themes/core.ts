@@ -122,7 +122,7 @@ export const coreTheme = createTheme({
       },
       danger: {
         _: 'red-300',
-        hover: 'red-400',
+        hover: 'red-900',
       },
       interface: {
         _: 'yellow-500',
