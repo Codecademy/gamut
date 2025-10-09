@@ -95,7 +95,8 @@ jobs:
             exit 1
           fi
 
-      - name: Comment on PR with deployment info
+      - name: Extract deployment URLs
+        id: extract-urls
         if: steps.deploy.outputs.deploy-output
         run: |
           export DEPLOY_OUTPUT="${{ steps.deploy.outputs.deploy-output }}"
@@ -108,19 +109,19 @@ jobs:
           echo "Deploy URL: $DEPLOY_URL"
           echo "Logs URL: $LOGS_URL"
 
-          if [ -z "$DEPLOY_OUTPUT" ]
-          then
-            echo "No deploy output found, will not add PR comment"
-          else
-            COMMENT_MSG="<p><a href=\"${DEPLOY_URL}\">${DEPLOY_URL}</a></p><p><a href=\"${LOGS_URL}\">Deploy Logs</a></p>"
-            docker run --rm \
-                    -e GITHUB_TOKEN \
-                    -e GITHUB_OWNER="${{ github.repository_owner }}" \
-                    -e GITHUB_REPO="${{ github.event.repository.name }}" \
-                    -e GITHUB_COMMENT_TYPE=pr \
-                    -e GITHUB_PR_ISSUE_NUMBER="${{ github.event.pull_request.number }}" \
-                    -e GITHUB_COMMENT_TEMPLATE='<p>🚀 Styleguide deploy preview ready!</p>{{.}}<!--ALPHA_DEPLOY_COMMENT-->' \
-                    -e GITHUB_DELETE_COMMENT_REGEX="ALPHA_DEPLOY_COMMENT" \
-                    -e GITHUB_COMMENT="${COMMENT_MSG}" \
-                    cloudposse/github-commenter:0.5.0-58
-          fi
+          # Set outputs for the comment step
+          echo "deploy-url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+          echo "logs-url=$LOGS_URL" >> $GITHUB_OUTPUT
+
+      - name: Comment with deployment preview
+        uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
+        if: steps.extract-urls.outputs.deploy-url
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          header: Styleguide Deploy Preview
+          recreate: true
+          message: |
+            🚀 Styleguide deploy preview ready!
+
+            **Preview URL:** [${{ steps.extract-urls.outputs.deploy-url }}](${{ steps.extract-urls.outputs.deploy-url }})
+            **Deploy Logs:** [${{ steps.extract-urls.outputs.logs-url }}](${{ steps.extract-urls.outputs.logs-url }})
