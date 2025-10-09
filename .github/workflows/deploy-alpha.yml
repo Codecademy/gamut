@@ -26,17 +26,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'yarn'
+      - name: Setup and Build
+        id: setup
+        uses: ./.github/actions/yarn
 
       - name: Add NPM auth token file
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-
-      - name: Install dependencies
-        run: yarn --production=false --frozen-lockfile
+        uses: ./.github/actions/set-npm-token
+        with:
+          token-secret: ${{ secrets.NPM_TOKEN }}
 
       - name: Ensure workflow is associated with a pull request
         run: |
