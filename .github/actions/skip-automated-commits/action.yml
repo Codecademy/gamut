@@ -1,0 +1,21 @@
+name: 'Skip Automated Commits'
+description: 'Skip workflow execution if triggered by automated commit messages'
+
+inputs:
+  ignore-commit-message:
+    description: 'Commit message pattern to ignore (e.g., chore(release): publish)'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Skip build from automated commit
+      id: check-commit
+      shell: bash
+      run: |
+        COMMIT_MESSAGE=$(git log --format=oneline -n 1 ${{ github.sha }})
+        echo "Build started due to commit with message $COMMIT_MESSAGE, blocking builds started by ${{ inputs.ignore-commit-message }}"
+        if [[ $COMMIT_MESSAGE == *"${{ inputs.ignore-commit-message }}"* ]]; then
+          echo "Skipping build due to automated commit"
+          exit 0
+        fi
