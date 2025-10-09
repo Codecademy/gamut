@@ -99,14 +99,20 @@ jobs:
         if: steps.deploy.outputs.deploy-output
         run: |
           export DEPLOY_OUTPUT="${{ steps.deploy.outputs.deploy-output }}"
-          echo $DEPLOY_OUTPUT
-          DEPLOY_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).deploy_url)" | node -)
-          LOGS_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).logs)" | node -)
-          COMMENT_MSG="<p><a href=\"${DEPLOY_URL}\">${DEPLOY_URL}</a></p><p><a href=\"${LOGS_URL}\">Deploy Logs</a></p>"
+          echo "Raw deploy output: $DEPLOY_OUTPUT"
+
+          # Extract URLs using a more robust method
+          DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep -o '"deploy_url":"[^"]*"' | cut -d'"' -f4)
+          LOGS_URL=$(echo "$DEPLOY_OUTPUT" | grep -o '"logs":"[^"]*"' | cut -d'"' -f4)
+
+          echo "Deploy URL: $DEPLOY_URL"
+          echo "Logs URL: $LOGS_URL"
+
           if [ -z "$DEPLOY_OUTPUT" ]
           then
             echo "No deploy output found, will not add PR comment"
           else
+            COMMENT_MSG="<p><a href=\"${DEPLOY_URL}\">${DEPLOY_URL}</a></p><p><a href=\"${LOGS_URL}\">Deploy Logs</a></p>"
             docker run --rm \
                     -e GITHUB_TOKEN \
                     -e GITHUB_OWNER="${{ github.repository_owner }}" \
