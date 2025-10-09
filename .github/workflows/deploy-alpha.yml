@@ -36,11 +36,7 @@ jobs:
           token-secret: ${{ secrets.NPM_TOKEN }}
 
       - name: Ensure workflow is associated with a pull request
-        run: |
-          if [[ -z "${{ github.event.pull_request.number }}" ]]; then
-            echo "This workflow is not associated with a pull request; exiting"
-            exit 1
-          fi
+        uses: ./.github/actions/validate-pr-context
 
       - name: Skip build from automated commit
         id: check-commit
