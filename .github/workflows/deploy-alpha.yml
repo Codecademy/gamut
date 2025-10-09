@@ -56,10 +56,7 @@ jobs:
           fi
 
       - name: Set git user
-        run: |
-          git config --global user.email "dev@codecademy.com"
-          git config --global user.name "codecademydev"
-          git config --global push.default current
+        uses: ./.github/actions/set-git-user
 
       - name: Build All Packages
         run: yarn build
@@ -114,12 +111,11 @@ jobs:
           echo "logs-url=$LOGS_URL" >> $GITHUB_OUTPUT
 
       - name: Comment with deployment preview
-        uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db
+        uses: ./.github/actions/sticky-comment
         if: steps.extract-urls.outputs.deploy-url
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           header: Styleguide Deploy Preview
-          recreate: true
           message: |
             🚀 Styleguide deploy preview ready!
 
