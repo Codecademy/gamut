@@ -36,21 +36,12 @@ jobs:
           token-secret: ${{ secrets.NPM_TOKEN }}
 
       - name: Ensure workflow is associated with a pull request
-        run: |
-          if [[ -z "${{ github.event.pull_request.number }}" ]]; then
-            echo "This workflow is not associated with a pull request; exiting"
-            exit 1
-          fi
+        uses: ./.github/actions/validate-pr-context
 
       - name: Skip build from automated commit
-        id: check-commit
-        run: |
-          COMMIT_MESSAGE=$(git log --format=oneline -n 1 ${{ github.sha }})
-          echo "Build started due to commit with message $COMMIT_MESSAGE, blocking builds started by ${IGNORE_COMMIT_MESSAGE}"
-          if [[ $COMMIT_MESSAGE == *"${IGNORE_COMMIT_MESSAGE}"* ]]; then
-            echo "Skipping build due to automated commit"
-            exit 0
-          fi
+        uses: ./.github/actions/skip-automated-commits
+        with:
+          ignore-commit-message: ${{ env.IGNORE_COMMIT_MESSAGE }}
 
       - name: Set git user
         uses: ./.github/actions/set-git-user
