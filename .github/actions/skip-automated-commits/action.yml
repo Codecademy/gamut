@@ -13,7 +13,7 @@ runs:
       id: check-commit
       shell: bash
       run: |
-        COMMIT_MESSAGE=$(git log --format=oneline -n 1 ${{ github.sha }})
+        COMMIT_MESSAGE=$(git log --format=oneline -n 1 HEAD)
         echo "Build started due to commit with message $COMMIT_MESSAGE, blocking builds started by ${{ inputs.ignore-commit-message }}"
         if [[ $COMMIT_MESSAGE == *"${{ inputs.ignore-commit-message }}"* ]]; then
           echo "Skipping build due to automated commit"
