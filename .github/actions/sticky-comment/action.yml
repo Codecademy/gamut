@@ -1,0 +1,28 @@
+name: 'Sticky Pull Request Comment'
+description: 'Post a sticky comment to a pull request with customizable content'
+
+inputs:
+  github-token:
+    description: 'GitHub token for authentication'
+    required: true
+  header:
+    description: 'Header text for the comment'
+    required: true
+  message:
+    description: 'Message content for the comment'
+    required: true
+  recreate:
+    description: 'Whether to recreate the comment on each run'
+    required: false
+    default: 'true'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Comment with sticky pull request comment
+      uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db
+      with:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        header: ${{ inputs.header }}
+        recreate: ${{ inputs.recreate }}
+        message: ${{ inputs.message }}
