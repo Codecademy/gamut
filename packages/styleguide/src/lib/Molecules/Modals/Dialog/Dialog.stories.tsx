@@ -171,10 +171,6 @@ export const FocusManagement: React.FC = () => {
     containerFocusRef.current?.focus();
   };
 
-  const handleBlurDialog = () => {
-    containerFocusRef.current?.blur();
-  };
-
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>
@@ -197,9 +193,6 @@ export const FocusManagement: React.FC = () => {
           <FlexBox gap={8}>
             <FillButton onClick={handleFocusDialog}>
               Focus Dialog Container
-            </FillButton>
-            <FillButton variant="secondary" onClick={handleBlurDialog}>
-              Blur Dialog Container
             </FillButton>
           </FlexBox>
           <Text color="text-disabled" fontSize={14}>

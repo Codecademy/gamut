@@ -5,7 +5,7 @@ import { OverlayProps } from '../Overlay';
 import { TipCenterAlignment } from '../Tip/shared/types';
 import { ModalContainer } from './elements';
 
-export interface ModalOverlayProps
+export interface DialogOverlayProps
   extends Pick<
     OverlayProps,
     | 'isOpen'
@@ -16,7 +16,7 @@ export interface ModalOverlayProps
   > {}
 
 export interface DialogBaseProps
-  extends ModalOverlayProps,
+  extends DialogOverlayProps,
     Omit<ComponentProps<typeof ModalContainer>, 'title'> {
   title?: React.ReactNode;
   /**
