@@ -1,0 +1,77 @@
+name: Publish Alpha
+
+on:
+  pull_request:
+    branches-ignore:
+      - main
+
+env:
+  NODE_VERSION: '22.13.1'
+  NODE_OPTIONS: '--max_old_space_size=8196'
+  NX_CLOUD: false
+  IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+  issues: write
+  actions: write
+
+jobs:
+  publish-alpha:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4 # v4.2.2
+        with:
+          fetch-depth: 0
+          ref: ${{  github.event.pull_request.head.ref }}
+
+      - name: Setup and Build
+        id: setup
+        uses: ./.github/actions/yarn
+
+      - name: Set git user
+        run: |
+          git config --global user.email "dev@codecademy.com"
+          git config --global user.name "codecademydev"
+          git config --global push.default current
+
+      - name: Set npm token
+        run: |
+          echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" > .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+
+      - run: npx nx run-many --target=publish-build --parallel=3
+
+      - name: Publish alpha packages
+        run: |
+          SHORT_SHA=${GITHUB_SHA:0:6}
+          yarn lerna publish --no-verify-access --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${SHORT_SHA} --dist-tag=alpha.${SHORT_SHA}
+        env:
+          GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN  }}
+
+      - name: List alpha packages versions
+        id: published
+        continue-on-error: true
+        run: |
+          {
+            echo 'result<<EOF'
+            yarn lerna ll --parseable | grep -Po '@codecademy.*alpha.*' | sed 's/:/@/g' || true
+            echo 'EOF'
+          } >> $GITHUB_OUTPUT
+
+      - name: Comment with published alpha packages
+        uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
+        if: steps.published.outputs.result
+        with:
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          header: Alpha Packages
+          recreate: true
+          message: |
+            📬 Published Alpha Packages:
+            ```
+            ${{ steps.published.outputs.result }}
+            ```
