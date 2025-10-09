@@ -4,6 +4,7 @@ on:
   pull_request:
     branches-ignore:
       - main
+      - gh-pages
 
 env:
   NODE_VERSION: '22.13.1'

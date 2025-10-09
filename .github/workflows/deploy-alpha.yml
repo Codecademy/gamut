@@ -78,11 +78,8 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
           DEPLOY_MESSAGE="User: ${{ github.actor }} Project: ${{ github.repository }} Pull Request: ${{ github.event.pull_request.html_url }}"
-          # Deploy using filter approach
           if npx netlify-cli@22.0.0 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --filter @codecademy/styleguide --json > .deploy-output 2>&1; then
             DEPLOY_OUTPUT=$(cat .deploy-output)
-            # Escape the output for GitHub Actions
-            DEPLOY_OUTPUT_ESCAPED=$(echo "$DEPLOY_OUTPUT" | sed 's/"/\\"/g' | tr '\n' ' ')
             echo "deploy-output<<EOF" >> $GITHUB_OUTPUT
             echo "$DEPLOY_OUTPUT" >> $GITHUB_OUTPUT
             echo "EOF" >> $GITHUB_OUTPUT
@@ -96,17 +93,9 @@ jobs:
         id: extract-urls
         if: steps.deploy.outputs.deploy-output
         run: |
-          export DEPLOY_OUTPUT="${{ steps.deploy.outputs.deploy-output }}"
-          echo "Raw deploy output: $DEPLOY_OUTPUT"
-
-          # Extract URLs using a more robust method that handles malformed JSON
+          DEPLOY_OUTPUT="${{ steps.deploy.outputs.deploy-output }}"
           DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep -o 'deploy_url: [^,]*' | sed 's/deploy_url: //')
           LOGS_URL=$(echo "$DEPLOY_OUTPUT" | grep -o 'logs: [^,]*' | sed 's/logs: //')
-
-          echo "Deploy URL: $DEPLOY_URL"
-          echo "Logs URL: $LOGS_URL"
-
-          # Set outputs for the comment step
           echo "deploy-url=$DEPLOY_URL" >> $GITHUB_OUTPUT
           echo "logs-url=$LOGS_URL" >> $GITHUB_OUTPUT
 
