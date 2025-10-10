@@ -10,6 +10,8 @@ export default base('gamut-icons', {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
-    '!src/icons/**/*', // Excludes generated icon TSX files from coverage
+    '!src/svg/**/*',
+    '!src/icons/**/*', // Excludes generated icon TSX files
+    '!dist/**/*', // Excludes compiled dist files
   ],
 });
