@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
+import { act } from '@testing-library/react';
 
 import { stubTextField } from '../../__tests__/stubs';
 import { GridFormContentTestComponent } from '../__fixtures__/renderers';
@@ -34,11 +35,13 @@ describe('GridFormContent', () => {
       mode: 'onChange',
     });
 
-    fireEvent.input(view.getByRole('textbox', { name: /Stub Text/ }), {
-      target: {
-        value:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      },
+    act(() => {
+      fireEvent.input(view.getByRole('textbox', { name: /Stub Text/ }), {
+        target: {
+          value:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        },
+      });
     });
     expect(await view.findAllByRole('alert')).toHaveLength(1);
   });

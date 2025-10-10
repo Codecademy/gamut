@@ -1,4 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Disclosure } from '..';
@@ -26,7 +27,9 @@ describe('Disclosure', () => {
     expect(DisclosureBodyText).toBeNull();
     expect(DisclosureButton.getAttribute('aria-expanded')).toBe('false');
 
-    await userEvent.click(DisclosureButton);
+    await act(async () => {
+      await userEvent.click(DisclosureButton);
+    });
 
     DisclosureBodyText = view.getByText('This should render when expanded');
     expect(DisclosureButton.getAttribute('aria-expanded')).toBe('true');
@@ -51,7 +54,9 @@ describe('Disclosure', () => {
     });
 
     const CTAButton = view.getByText('click here');
-    await userEvent.click(CTAButton);
+    await act(async () => {
+      await userEvent.click(CTAButton);
+    });
     expect(ctaCallback).toBeCalled();
   });
 });

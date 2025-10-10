@@ -105,7 +105,6 @@ export const createTagOverride = (
     const props = {
       ...processAttributes(node.attribs),
       children,
-      key,
     };
 
     if (Override.processNode) {
@@ -114,7 +113,7 @@ export const createTagOverride = (
 
     if (!Override.component) return null;
 
-    return <Override.component {...props} />;
+    return <Override.component key={key} {...props} />;
   },
 });
 
@@ -205,8 +204,10 @@ export const createCodeBlockOverride = (
 
       if (!Override.component) return null;
 
+      const { key, ...rest } = props;
+
       return (
-        <Override.component {...props} language={language}>
+        <Override.component key={key} {...rest} language={language}>
           {props.children?.[0]}
         </Override.component>
       );
@@ -232,13 +233,15 @@ export const createInputOverride = (
 
       if (!Override.component) return null;
 
+      const { key, ...rest } = props;
+
       if (isCheckboxParent(node, type)) {
-        return <CheckboxParentLi {...props} />;
+        return <CheckboxParentLi key={key} {...rest} />;
       }
 
       if (isLabelText(node, type)) return null;
 
-      return <Override.component label={label} {...props} />;
+      return <Override.component key={key} label={label} {...rest} />;
     },
     ...Override,
   });

@@ -46,16 +46,18 @@ const doBaseFormActions = (
     [textField, textValue],
   ] as const;
 
-  fireEvent.click(checkboxField);
-  fireEvent.click(radioOption);
+  act(() => {
+    fireEvent.click(checkboxField);
+    fireEvent.click(radioOption);
 
-  for (const [selector, value] of newValues) {
-    fireEvent.change(selector, {
-      target: {
-        value,
-      },
-    });
-  }
+    for (const [selector, value] of newValues) {
+      fireEvent.change(selector, {
+        target: {
+          value,
+        },
+      });
+    }
+  });
 };
 
 const baseResults = {

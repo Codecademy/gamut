@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 
 import { setupRtl } from '@codecademy/gamut-tests';
 import { queryByAttribute } from '@testing-library/dom';
+import { act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { getComponent } from './renderers';
@@ -106,7 +107,9 @@ export const additionalRadioGroupTests = ({
 
       const tip = view.getByText(info);
       expect(tip).not.toBeVisible();
-      await userEvent.click(view.getByRole('button'));
+      await act(async () => {
+        await userEvent.click(view.getByRole('button'));
+      });
       expect(tip).toBeVisible();
     });
 
