@@ -10,6 +10,8 @@ export default base('gamut-patterns', {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
+    '!src/svg/**/*',
     '!src/patterns/**/*', // Excludes generated pattern TSX files
+    '!dist/**/*', // Excludes compiled dist files
   ],
 });

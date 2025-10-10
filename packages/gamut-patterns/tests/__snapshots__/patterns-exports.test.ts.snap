@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Patterns Exported Keys`] = `
+[
+  "CheckerDense",
+  "CheckerLoose",
+  "CheckerRegular",
+  "DiagonalADense",
+  "DiagonalALoose",
+  "DiagonalARegular",
+  "DiagonalBDense",
+  "DiagonalBLoose",
+  "DiagonalBRegular",
+  "DotDense",
+  "DotLoose",
+  "DotRegular",
+  "ExDense",
+  "ExLoose",
+  "ExRegular",
+  "FlowerDense",
+  "FlowerLoose",
+  "FlowerRegular",
+  "GridDense",
+  "GridLoose",
+  "GridRegular",
+  "Herringbone",
+  "RainDense",
+  "RainLoose",
+  "RainRegular",
+  "StripeDense",
+  "StripeLoose",
+  "StripeRegular",
+]
+`;
