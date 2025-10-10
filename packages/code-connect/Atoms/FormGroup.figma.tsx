@@ -1,4 +1,4 @@
-import { FormGroupLabel } from '@codecademy/gamut';
+import { FormGroup } from '@codecademy/gamut';
 import figma from '@figma/code-connect';
 
 /**
@@ -10,7 +10,7 @@ import figma from '@figma/code-connect';
  */
 
 figma.connect(
-  FormGroupLabel,
+  FormGroup,
   'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=47031%3A18018',
   {
     props: {
@@ -31,6 +31,9 @@ figma.connect(
           disabled: true,
         }),
       }),
+      description: figma.boolean('description', {
+        true: figma.textContent('description'),
+      }),
       toolTipInfo: figma.nestedProps('.infotip-alignment', {
         alignment: figma.enum('alignment', {
           'top-left': 'top-left',
@@ -42,7 +45,7 @@ figma.connect(
       }),
     },
     example: (props: any) => (
-      <FormGroupLabel
+      <FormGroup
         {...props}
         disabled={props.infoTipData?.disabled}
         infotip={{

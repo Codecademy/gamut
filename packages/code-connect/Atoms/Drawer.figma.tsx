@@ -11,17 +11,14 @@ import figma from '@figma/code-connect';
 
 figma.connect(
   Drawer,
-  'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=6329%3A5480',
+  'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=115820-91241',
   {
     props: {
-      alignContentContainer: figma.enum('openFrom', {
+      alignContentContainer: figma.enum('alignContentContainer', {
         left: 'left',
         right: 'right',
       }),
-      expanded: figma.boolean('openFrom', {
-        true: true,
-        false: false,
-      }),
+      expanded: true,
       children: figma.textContent('text'),
     },
     example: ({ children, ...props }: any) => (
