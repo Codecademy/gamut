@@ -8,7 +8,7 @@ import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer } from './elements';
 import { ImageContainer } from './ImageContainer';
-import { CloseButtonProps, DialogBaseProps } from './types';
+import { CloseButtonProps, ModalBaseProps } from './types';
 
 interface DialogButtonProps {
   children: React.ReactNode;
@@ -42,14 +42,14 @@ type ModalConfirmProps = {
 type ModalButtonProps = ModalNextProps | ModalConfirmProps;
 
 interface ModalView
-  extends Omit<DialogBaseProps, 'headingLevel' | 'onRequestClose'> {
+  extends Omit<ModalBaseProps, 'headingLevel' | 'onRequestClose'> {
   children: React.ReactNode;
 }
 
 export type ModalViewProps = ModalView & ModalButtonProps;
 
 export interface SingleViewModalProps
-  extends DialogBaseProps,
+  extends ModalBaseProps,
     CloseButtonProps {
   /**
    * Whether to show scrollbar on content overflow
@@ -59,7 +59,7 @@ export interface SingleViewModalProps
 }
 
 export interface MultiViewModalProps
-  extends Omit<DialogBaseProps, 'children' | 'image'>,
+  extends Omit<ModalBaseProps, 'children' | 'image'>,
     CloseButtonProps {
   children?: never;
   image?: never;

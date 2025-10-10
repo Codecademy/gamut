@@ -174,7 +174,7 @@ export const FocusManagement: React.FC = () => {
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>
-        Open Modal with Focus Control
+        Open Dialog with Focus Control
       </FillButton>
       <Dialog
         cancelCta={{ children: 'Cancel' }}

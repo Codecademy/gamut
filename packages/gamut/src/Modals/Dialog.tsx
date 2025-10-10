@@ -8,7 +8,7 @@ import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer, ModalContainerProps } from './elements';
 import { ImageContainer } from './ImageContainer';
-import { CloseButtonProps, DialogBaseProps } from './types';
+import { CloseButtonProps, ModalBaseProps } from './types';
 
 interface DialogButtonProps {
   children: React.ReactNode;
@@ -16,8 +16,8 @@ interface DialogButtonProps {
   onClick?: ComponentProps<typeof FillButton>['onClick'];
 }
 
-export interface DialogProps extends DialogBaseProps, CloseButtonProps {
-  title: DialogBaseProps['title'];
+export interface DialogProps extends ModalBaseProps, CloseButtonProps {
+  title: ModalBaseProps['title'];
   size?: Exclude<ModalContainerProps['size'], 'fluid' | false>;
   variant?: Extract<
     ComponentProps<typeof FillButton>['variant'],
