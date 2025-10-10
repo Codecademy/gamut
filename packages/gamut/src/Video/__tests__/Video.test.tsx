@@ -3,12 +3,22 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import { Video } from '..';
 
 jest.mock('@vidstack/react', () => ({
-  MediaPlayer: jest.fn(({ src, title }) => <iframe src={src} title={title} />),
-  MediaProvider: jest.fn(),
-  Poster: jest.fn(),
-  Track: jest.fn(),
-  useMediaState: jest.fn(),
-  useMediaRemote: jest.fn(),
+  MediaPlayer: ({
+    src,
+    title,
+    ref,
+  }: {
+    src: string;
+    title: string;
+    ref: React.Ref<HTMLIFrameElement>;
+  }) => <iframe ref={ref} src={src} title={title} />,
+  MediaProvider: ({ children }: { children: React.ReactNode }) => children,
+  Poster: ({ src, alt }: { src: string; alt: string }) => (
+    <img alt={alt} src={src} />
+  ),
+  Track: () => null,
+  useMediaState: () => false,
+  useMediaRemote: () => ({}),
 }));
 
 const renderView = setupRtl(Video, {});

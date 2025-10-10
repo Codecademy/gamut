@@ -1,4 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { act } from '@testing-library/react';
 import { fireEvent, queryByAttribute } from '@testing-library/dom';
 
 import {
@@ -113,7 +114,9 @@ describe('GridFormInputGroup', () => {
 
     const input = view.getByRole('textbox');
 
-    fireEvent.change(input, { target: { value: newVal } });
+    act(() => {
+      fireEvent.change(input, { target: { value: newVal } });
+    });
 
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
   });
@@ -128,7 +131,9 @@ describe('GridFormInputGroup', () => {
 
     const input = view.getByRole('textbox');
 
-    fireEvent.change(input, { target: { value: newVal } });
+    act(() => {
+      fireEvent.change(input, { target: { value: newVal } });
+    });
 
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
   });
@@ -143,7 +148,9 @@ describe('GridFormInputGroup', () => {
 
     const select = view.getByRole('combobox');
 
-    fireEvent.change(select, { target: { value: newVal } });
+    act(() => {
+      fireEvent.change(select, { target: { value: newVal } });
+    });
 
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
   });
@@ -158,7 +165,9 @@ describe('GridFormInputGroup', () => {
 
     const checkbox = view.getByRole('checkbox');
 
-    fireEvent.click(checkbox);
+    act(() => {
+      fireEvent.click(checkbox);
+    });
 
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
   });
@@ -173,7 +182,9 @@ describe('GridFormInputGroup', () => {
 
     const input = view.getByLabelText('Stub File (optional)');
 
-    fireEvent.change(input, { target: { files: newVal } });
+    act(() => {
+      fireEvent.change(input, { target: { files: newVal } });
+    });
 
     expect(view.container).toContainHTML('Column');
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);

@@ -1,4 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { act } from '@testing-library/react';
 import { fireEvent } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 
@@ -47,7 +48,9 @@ describe('<Radio>', () => {
 
     expect(tip).not.toBeVisible();
 
-    await userEvent.click(view.getByRole('button'));
+    await act(async () => {
+      await userEvent.click(view.getByRole('button'));
+    });
 
     expect(tip).toBeVisible();
   });
