@@ -1,4 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { act } from '@testing-library/react';
 import { waitFor } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 
@@ -41,7 +42,9 @@ describe('PreviewTip', () => {
   it('calls onClick when clicked', async () => {
     const { view } = renderView({});
 
-    await userEvent.click(view.getByRole('link'));
+    await act(async () => {
+      await userEvent.click(view.getByRole('link'));
+    });
 
     expect(onClick).toHaveBeenCalled();
   });
@@ -64,7 +67,9 @@ describe('PreviewTip', () => {
 
       expect(view.queryAllByText(info).length).toBe(0);
 
-      await userEvent.hover(view.getByRole('link'));
+      await act(async () => {
+        await userEvent.hover(view.getByRole('link'));
+      });
 
       await waitFor(() => {
         expect(view.queryAllByText(info).length).toBe(1);
@@ -74,7 +79,9 @@ describe('PreviewTip', () => {
     it('calls onClick when clicked', async () => {
       const { view } = renderView({});
 
-      await userEvent.click(view.getByRole('link'));
+      await act(async () => {
+        await userEvent.click(view.getByRole('link'));
+      });
 
       expect(onClick).toHaveBeenCalled();
     });
