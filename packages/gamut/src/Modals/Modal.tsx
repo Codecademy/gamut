@@ -48,9 +48,7 @@ interface ModalView
 
 export type ModalViewProps = ModalView & ModalButtonProps;
 
-export interface SingleViewModalProps
-  extends ModalBaseProps,
-    CloseButtonProps {
+export interface SingleViewModalProps extends ModalBaseProps, CloseButtonProps {
   /**
    * Whether to show scrollbar on content overflow
    */

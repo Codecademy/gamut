@@ -170,9 +170,7 @@ export const CloseButtonCustomization: React.FC = () => {
           onClose={() => setIsVisible(false)}
         >
           <FlexBox flexDirection="column" gap={16}>
-            <Text>
-              Expand this Alert to see focus controls
-            </Text>
+            <Text>Expand this Alert to see focus controls</Text>
             <FlexBox gap={8}>
               <FillButton
                 disabled={isDisabled}
