@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { act } from '@testing-library/react';
 import { waitFor } from '@testing-library/dom';
+import { act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { PreviewTip } from '../PreviewTip';
