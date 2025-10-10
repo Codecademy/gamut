@@ -30,10 +30,8 @@ jobs:
         with:
           fetch-depth: 0
       - uses: ./.github/actions/yarn
-      - name: Add NPM auth token file
-        uses: ./.github/actions/set-npm-token
-        with:
-          token-secret: ${{ secrets.NPM_TOKEN }}
+      - name: Fetch main branch
+        run: git fetch origin main:main
       - name: Ensure workflow is associated with a pull request
         uses: ./.github/actions/validate-pr-context
       - name: Skip build from automated commit
