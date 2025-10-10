@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { act } from '@testing-library/react';
 import { fireEvent } from '@testing-library/dom';
+import { act } from '@testing-library/react';
 import * as React from 'react';
 
 import { Checkbox, Input } from '../../Form';

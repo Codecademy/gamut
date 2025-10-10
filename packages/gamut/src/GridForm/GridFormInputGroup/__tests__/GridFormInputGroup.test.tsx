@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { act } from '@testing-library/react';
 import { fireEvent, queryByAttribute } from '@testing-library/dom';
+import { act } from '@testing-library/react';
 
 import {
   stubCheckboxField,

@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { act } from '@testing-library/react';
 import { fireEvent } from '@testing-library/dom';
+import { act } from '@testing-library/react';
 
 import { stubTextField } from '../../__tests__/stubs';
 import { GridFormContentTestComponent } from '../__fixtures__/renderers';
