@@ -8,6 +8,7 @@ import {
   adminTheme,
   lxStudioTheme,
   percipioTheme,
+  platformTheme,
 } from '@codecademy/gamut-styles/src';
 import { Theme } from '@emotion/react';
 
@@ -30,6 +31,7 @@ const themeMap = {
   admin: adminTheme,
   lxStudio: lxStudioTheme,
   percipio: percipioTheme,
+  platform: platformTheme,
 } as const;
 
 type GlobalsContext = {

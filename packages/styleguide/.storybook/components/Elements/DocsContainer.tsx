@@ -9,6 +9,8 @@ import {
   lxStudioTheme,
   percipioTheme,
   CoreTheme,
+  platformTheme,
+  ColorMode,
 } from '@codecademy/gamut-styles';
 import { MDXProvider } from '@mdx-js/react';
 import {
@@ -19,7 +21,7 @@ import {
   SourceContainer,
 } from '@storybook/blocks';
 import { components as htmlComponents } from '@storybook/components';
-import { styled, Theme, ThemeProvider } from '@storybook/theming';
+import { styled, ThemeProvider } from '@storybook/theming';
 import { useMemo } from 'react';
 import { Link } from './Markdown';
 import { HelmetProvider } from 'react-helmet-async';
@@ -34,11 +36,7 @@ const themeMap = {
   admin: adminTheme,
   lxStudio: lxStudioTheme,
   percipio: percipioTheme,
-  /* The Platform theme is a sub-theme of the Core theme, so it doesn't work as a standalone.
-   * This is a workaround so that the Platform colors show up in the Platform theme story but keep
-   * the main Core theme.
-   */
-  platform: storybookTheme,
+  platform: platformTheme,
 } as const;
 
 const WrappedPre = styled(htmlComponents.pre)(
@@ -101,14 +99,18 @@ export const DocsContainer: React.FC<{
         // This is typed to the CoreTheme in theme.d.ts
         theme={currentTheme as unknown as CoreTheme}
       >
-        <HelmetProvider>
-          <AssetProvider />
-        </HelmetProvider>
-        <SourceContainer channel={context.channel}>
-          <ThemeProvider theme={currentTheme as unknown as Theme}>
-            <MDXProvider components={defaultComponents}>{children}</MDXProvider>
-          </ThemeProvider>
-        </SourceContainer>
+        <ColorMode mode="light">
+          <HelmetProvider>
+            <AssetProvider />
+          </HelmetProvider>
+          <SourceContainer channel={context.channel}>
+            <ThemeProvider theme={currentTheme}>
+              <MDXProvider components={defaultComponents}>
+                {children}
+              </MDXProvider>
+            </ThemeProvider>
+          </SourceContainer>
+        </ColorMode>
       </GamutProvider>
     </StorybookDocsContainer>
   );
