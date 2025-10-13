@@ -8,10 +8,4 @@ export default base('gamut-patterns', {
   setupFiles: ['<rootDir>/../../script/jest/base-setup.js'],
   setupFilesAfterEnv: ['<rootDir>/../../script/jest/rtl-setup.js'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  collectCoverageFrom: [
-    'src/**/*.{ts,tsx}',
-    '!src/svg/**/*',
-    '!src/patterns/**/*', // Excludes generated pattern TSX files
-    '!dist/**/*', // Excludes compiled dist files
-  ],
 });
