@@ -18,6 +18,12 @@ const meta: Meta<typeof Modal> = {
     children: 'Close the Modal!',
     isOpen: false,
   },
+  argTypes: {
+    size: {
+      control: 'radio',
+      options: ['small', 'medium', 'large', 'fluid'],
+    },
+  },
 };
 
 export default meta;

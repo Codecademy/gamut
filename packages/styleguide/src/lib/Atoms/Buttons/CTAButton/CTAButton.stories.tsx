@@ -6,16 +6,11 @@ const meta: Meta<typeof CTAButton> = {
   args: {
     children: 'Click Me',
     disabled: false,
-    size: 'normal',
   },
   argTypes: {
     href: {
       description: 'If defined, component will use an anchor tag',
       type: 'string',
-    },
-    size: {
-      control: 'radio',
-      options: ['normal', 'small', 'large'],
     },
   },
 };

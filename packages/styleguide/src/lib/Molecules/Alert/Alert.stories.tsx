@@ -1,9 +1,10 @@
 import { Alert, Box } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
+import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
 import { ALERTS } from './constants';
 
-const meta: Meta<typeof Alert> = {
+const meta: TypeWithDeepControls<Meta<typeof Alert>> = {
   component: Alert,
   args: {},
 };
@@ -11,10 +12,11 @@ const meta: Meta<typeof Alert> = {
 export default meta;
 type Story = StoryObj<typeof Alert>;
 
-export const Default: Story = {
+export const Default: TypeWithDeepControls<Story> = {
   args: {
     children: 'This is an alert',
-    cta: { children: 'Click Me', text: 'Hello' },
+    cta: { children: 'Click Me' },
+    onClose: () => {},
   },
 };
 
