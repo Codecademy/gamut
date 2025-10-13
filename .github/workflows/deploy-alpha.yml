@@ -2,9 +2,7 @@ name: Deploy Storybook Preview
 
 on:
   pull_request:
-    branches-ignore:
-      - main
-      - gh-pages
+    types: [opened, synchronize, reopened]
 
 env:
   NODE_VERSION: '22.13.1'
