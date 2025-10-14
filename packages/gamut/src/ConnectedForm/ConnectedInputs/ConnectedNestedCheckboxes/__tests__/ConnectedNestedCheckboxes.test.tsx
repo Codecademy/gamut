@@ -40,6 +40,7 @@ const mockOptions: NestedConnectedCheckboxOption[] = [
 ];
 
 const mockOnUpdate = jest.fn();
+const mockOnSubmit = jest.fn();
 const TestForm: React.FC<{
   defaultValues?: { skills?: string[] };
   validationRules?: any;
@@ -54,7 +55,7 @@ const TestForm: React.FC<{
   <ConnectedForm
     defaultValues={defaultValues}
     validationRules={validationRules}
-    onSubmit={jest.fn()}
+    onSubmit={mockOnSubmit}
   >
     <ConnectedFormGroup
       disabled={disabled}
@@ -184,15 +185,6 @@ describe('ConnectedNestedCheckboxes', () => {
       expect(view.getByLabelText('Python')).toBeChecked();
       expect(view.getByLabelText('Express.js')).toBeChecked();
       expect(view.getByLabelText('Fastify')).toBeChecked();
-
-      expect(mockOnUpdate).toHaveBeenCalledWith([
-        'backend',
-        'node',
-        'express',
-        'fastify',
-        'python',
-        'ruby',
-      ]);
     });
 
     it('should handle multiple parent defaults correctly', async () => {
@@ -458,7 +450,7 @@ describe('ConnectedNestedCheckboxes', () => {
       );
     });
 
-    it('should pass validation when items are selected', async () => {
+    it('should submit successfully when validation passes', async () => {
       const validationRules = {
         skills: { required: 'At least one skill is required' },
       };
@@ -471,8 +463,31 @@ describe('ConnectedNestedCheckboxes', () => {
         fireEvent.click(reactCheckbox);
       });
 
-      expect(reactCheckbox).toBeChecked();
-      expect(reactCheckbox).toHaveAttribute('aria-required', 'true');
+      const submitButton = view.getByRole('button');
+      await act(async () => {
+        fireEvent.click(submitButton);
+      });
+
+      expect(mockOnSubmit).toHaveBeenCalledWith(
+        { skills: ['react'] },
+        expect.any(Object)
+      );
+    });
+
+    it('should show validation errors and not submit when validation fails', async () => {
+      const validationRules = {
+        skills: { required: 'At least one skill is required' },
+      };
+
+      const { view } = renderView({ validationRules });
+
+      const submitButton = view.getByRole('button');
+      await act(async () => {
+        fireEvent.click(submitButton);
+      });
+
+      expect(mockOnSubmit).not.toHaveBeenCalled();
+      view.getByText('At least one skill is required');
     });
   });
 
@@ -543,13 +558,12 @@ describe('ConnectedNestedCheckboxes', () => {
       const { view } = renderView({});
 
       const list = view.container.querySelector('ul');
-      const listItems = view.container.querySelectorAll('li');
-
       expect(list).toBeInTheDocument();
-      expect(listItems).toHaveLength(11); // Total flattened options
 
-      listItems.forEach((item) => {
-        expect(item).toHaveStyle({ listStyle: 'none' });
+      expect(list?.children).toHaveLength(11); // Total flattened options
+      Array.from(list?.children || []).forEach((item) => {
+        // each child of the ul should be an li
+        expect(item).toBeInstanceOf(HTMLLIElement);
       });
     });
   });

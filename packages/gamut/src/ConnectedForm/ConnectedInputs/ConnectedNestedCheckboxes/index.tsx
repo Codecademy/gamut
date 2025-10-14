@@ -46,7 +46,6 @@ export const ConnectedNestedCheckboxes: React.FC<
     );
 
     setValue(name, expandedValues);
-    onUpdate?.(expandedValues); // do we want to do this?
     setHasExpandedInitially(true);
   }, [
     hasExpandedInitially,
@@ -67,25 +66,25 @@ export const ConnectedNestedCheckboxes: React.FC<
           <Box as="ul" m={0} p={0}>
             {flatOptions.map((option) => {
               const state = states.get(option.value)!;
-              return renderCheckbox(
+              return renderCheckbox({
                 option,
                 state,
-                `${name}-${option.value}`,
+                checkboxId: `${name}-${option.value}`,
                 isRequired,
                 isDisabled,
                 onBlur,
-                (event) => {
-                  handleCheckboxChange(
+                onChange: (event) => {
+                  handleCheckboxChange({
                     option,
-                    event.target.checked,
-                    value,
+                    isChecked: event.target.checked,
+                    selectedValues: value,
                     flatOptions,
                     onChange,
-                    onUpdate
-                  );
+                    onUpdate,
+                  });
                 },
-                ref
-              );
+                ref,
+              });
             })}
           </Box>
         );

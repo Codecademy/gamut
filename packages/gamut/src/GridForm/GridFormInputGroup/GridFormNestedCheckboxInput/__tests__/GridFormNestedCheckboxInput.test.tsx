@@ -39,6 +39,7 @@ const mockOptions: NestedGridFormCheckboxOption[] = [
 ];
 
 const mockOnUpdate = jest.fn();
+const mockOnSubmit = jest.fn();
 const TestForm: React.FC<{
   defaultValue?: string[];
   disabled?: boolean;
@@ -57,7 +58,7 @@ const TestForm: React.FC<{
         defaultValue,
         disabled,
         customError,
-        validation: { required: 'Please check the box to agree to the terms.' },
+        validation: { required: 'Please check at least one option' },
       },
     ]}
     submit={{
@@ -65,7 +66,7 @@ const TestForm: React.FC<{
       size: 4,
     }}
     validation="onSubmit"
-    onSubmit={jest.fn()}
+    onSubmit={mockOnSubmit}
   />
 );
 
@@ -198,15 +199,6 @@ describe('GridFormNestedCheckboxInput', () => {
       expect(view.getByLabelText('Frontend Technologies')).not.toBeChecked();
       expect(view.getByLabelText('React')).not.toBeChecked();
       expect(view.getByLabelText('Vue.js')).not.toBeChecked();
-
-      expect(mockOnUpdate).toHaveBeenCalledWith([
-        'backend',
-        'node',
-        'express',
-        'fastify',
-        'python',
-        'java',
-      ]);
     });
 
     it('should handle multiple parent defaults correctly', async () => {
@@ -482,6 +474,38 @@ describe('GridFormNestedCheckboxInput', () => {
         expect(checkbox).toHaveAttribute('aria-invalid', 'true');
       });
     });
+
+    it('should submit successfully when validation passes', async () => {
+      const { view } = renderView();
+
+      const reactCheckbox = view.getByLabelText('React');
+
+      await act(async () => {
+        fireEvent.click(reactCheckbox);
+      });
+
+      const submitButton = view.getByRole('button');
+      await act(async () => {
+        fireEvent.click(submitButton);
+      });
+
+      expect(mockOnSubmit).toHaveBeenCalledWith(
+        { technologies: ['react'] },
+        expect.any(Object)
+      );
+    });
+
+    it('should show validation errors and not submit when validation fails', async () => {
+      const { view } = renderView();
+
+      const submitButton = view.getByRole('button');
+      await act(async () => {
+        fireEvent.click(submitButton);
+      });
+
+      expect(mockOnSubmit).not.toHaveBeenCalled();
+      view.getByText('Please check at least one option');
+    });
   });
 
   describe('accessibility', () => {
@@ -508,13 +532,12 @@ describe('GridFormNestedCheckboxInput', () => {
       const { view } = renderView();
 
       const list = view.container.querySelector('ul');
-      const listItems = view.container.querySelectorAll('li');
-
       expect(list).toBeInTheDocument();
-      expect(listItems).toHaveLength(11); // Total flattened options
 
-      listItems.forEach((item) => {
-        expect(item).toHaveStyle({ listStyle: 'none' });
+      expect(list?.children).toHaveLength(11); // Total flattened options
+      Array.from(list?.children || []).forEach((item) => {
+        // each child of the ul should be an li
+        expect(item).toBeInstanceOf(HTMLLIElement);
       });
     });
   });

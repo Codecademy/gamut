@@ -49,7 +49,6 @@ export const GridFormNestedCheckboxInput: React.FC<
     );
 
     setValue(field.name, expandedValues);
-    field.onUpdate?.(expandedValues); // do we want to do this?
     setHasExpandedInitially(true);
   }, [hasExpandedInitially, field, flatOptions, setValue]);
 
@@ -62,26 +61,26 @@ export const GridFormNestedCheckboxInput: React.FC<
           <Box as="ul" m={0} p={0}>
             {flatOptions.map((option) => {
               const state = states.get(option.value)!;
-              return renderCheckbox(
+              return renderCheckbox({
                 option,
                 state,
-                `${field.name}-${option.value}`,
-                !!required,
-                !!isDisabled,
+                checkboxId: `${field.name}-${option.value}`,
+                isRequired: !!required,
+                isDisabled: !!isDisabled,
                 onBlur,
-                (event) => {
-                  handleCheckboxChange(
+                onChange: (event) => {
+                  handleCheckboxChange({
                     option,
-                    event.target.checked,
-                    value,
+                    isChecked: event.target.checked,
+                    selectedValues: value,
                     flatOptions,
                     onChange,
-                    field.onUpdate
-                  );
+                    onUpdate: field.onUpdate,
+                  });
                 },
                 ref,
-                error
-              );
+                error,
+              });
             })}
           </Box>
         );

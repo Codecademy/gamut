@@ -349,14 +349,14 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const onUpdate = jest.fn();
       const parentOption = flatOptions[0];
 
-      handleCheckboxChange(
-        parentOption,
-        true,
-        [],
+      handleCheckboxChange({
+        option: parentOption,
+        isChecked: true,
+        selectedValues: [],
         flatOptions,
         onChange,
-        onUpdate
-      );
+        onUpdate,
+      });
 
       expect(onChange).toHaveBeenCalledWith(['child1', 'child2', 'parent']);
       expect(onUpdate).toHaveBeenCalledWith(['child1', 'child2', 'parent']);
@@ -368,14 +368,14 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const parentOption = flatOptions[0];
       const initialValues = ['parent', 'child1', 'child2', 'standalone'];
 
-      handleCheckboxChange(
-        parentOption,
-        false,
-        initialValues,
+      handleCheckboxChange({
+        option: parentOption,
+        isChecked: false,
+        selectedValues: initialValues,
         flatOptions,
         onChange,
-        onUpdate
-      );
+        onUpdate,
+      });
 
       expect(onChange).toHaveBeenCalledWith(['standalone']);
       expect(onUpdate).toHaveBeenCalledWith(['standalone']);
@@ -385,7 +385,13 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const onChange = jest.fn();
       const childOption = flatOptions[1];
 
-      handleCheckboxChange(childOption, true, [], flatOptions, onChange);
+      handleCheckboxChange({
+        option: childOption,
+        isChecked: true,
+        selectedValues: [],
+        flatOptions,
+        onChange,
+      });
 
       expect(onChange).toHaveBeenCalledWith(['child1']);
     });
@@ -395,13 +401,13 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const childOption = flatOptions[1];
       const initialValues = ['child1', 'child2'];
 
-      handleCheckboxChange(
-        childOption,
-        false,
-        initialValues,
+      handleCheckboxChange({
+        option: childOption,
+        isChecked: false,
+        selectedValues: initialValues,
         flatOptions,
-        onChange
-      );
+        onChange,
+      });
 
       expect(onChange).toHaveBeenCalledWith(['child2']);
     });
@@ -411,13 +417,13 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const parentOption = flatOptions[0];
       const initialValues = ['child1'];
 
-      handleCheckboxChange(
-        parentOption,
-        true,
-        initialValues,
+      handleCheckboxChange({
+        option: parentOption,
+        isChecked: true,
+        selectedValues: initialValues,
         flatOptions,
-        onChange
-      );
+        onChange,
+      });
 
       expect(onChange).toHaveBeenCalledWith(['child1', 'child2', 'parent']);
     });
@@ -427,7 +433,13 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const childOption = flatOptions[1];
 
       expect(() => {
-        handleCheckboxChange(childOption, true, [], flatOptions, onChange);
+        handleCheckboxChange({
+          option: childOption,
+          isChecked: true,
+          selectedValues: [],
+          flatOptions,
+          onChange,
+        });
       }).not.toThrow();
 
       expect(onChange).toHaveBeenCalledWith(['child1']);
@@ -437,13 +449,13 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const onChange = jest.fn();
       const standaloneOption = flatOptions[3];
 
-      handleCheckboxChange(
-        standaloneOption,
-        true,
-        ['child1'],
+      handleCheckboxChange({
+        option: standaloneOption,
+        isChecked: true,
+        selectedValues: ['child1'],
         flatOptions,
-        onChange
-      );
+        onChange,
+      });
 
       expect(onChange).toHaveBeenCalledWith(['child1', 'standalone']);
     });
@@ -465,16 +477,16 @@ describe('ConnectedNestedCheckboxes utils', () => {
     it('should render a checked checkbox with correct props', () => {
       const state = { checked: true };
 
-      const result = renderCheckbox(
-        mockOption,
+      const result = renderCheckbox({
+        option: mockOption,
         state,
-        'test-id',
-        true, // isRequired
-        false, // isDisabled
-        mockOnBlur,
-        mockOnChange,
-        mockRef
-      );
+        checkboxId: 'test-id',
+        isRequired: true,
+        isDisabled: false,
+        onBlur: mockOnBlur,
+        onChange: mockOnChange,
+        ref: mockRef,
+      });
 
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
@@ -488,16 +500,16 @@ describe('ConnectedNestedCheckboxes utils', () => {
     it('should render an indeterminate checkbox with correct props', () => {
       const state = { checked: false, indeterminate: true };
 
-      const result = renderCheckbox(
-        mockOption,
+      const result = renderCheckbox({
+        option: mockOption,
         state,
-        'test-id',
-        false, // isRequired
-        false, // isDisabled
-        mockOnBlur,
-        mockOnChange,
-        mockRef
-      );
+        checkboxId: 'test-id',
+        isRequired: false,
+        isDisabled: false,
+        onBlur: mockOnBlur,
+        onChange: mockOnChange,
+        ref: mockRef,
+      });
 
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
@@ -510,16 +522,16 @@ describe('ConnectedNestedCheckboxes utils', () => {
     it('should render an unchecked checkbox with correct props', () => {
       const state = { checked: false };
 
-      const result = renderCheckbox(
-        mockOption,
+      const result = renderCheckbox({
+        option: mockOption,
         state,
-        'test-id',
-        false, // isRequired
-        false, // isDisabled
-        mockOnBlur,
-        mockOnChange,
-        mockRef
-      );
+        checkboxId: 'test-id',
+        isRequired: false,
+        isDisabled: false,
+        onBlur: mockOnBlur,
+        onChange: mockOnChange,
+        ref: mockRef,
+      });
 
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
@@ -532,16 +544,16 @@ describe('ConnectedNestedCheckboxes utils', () => {
     it('should apply correct margin based on level', () => {
       const state = { checked: false };
 
-      const result = renderCheckbox(
-        { ...mockOption, level: 2 },
+      const result = renderCheckbox({
+        option: { ...mockOption, level: 2 },
         state,
-        'test-id',
-        false,
-        false,
-        mockOnBlur,
-        mockOnChange,
-        mockRef
-      );
+        checkboxId: 'test-id',
+        isRequired: false,
+        isDisabled: false,
+        onBlur: mockOnBlur,
+        onChange: mockOnChange,
+        ref: mockRef,
+      });
 
       const { container } = render(result);
       const listItem = container.querySelector('li');
@@ -552,16 +564,16 @@ describe('ConnectedNestedCheckboxes utils', () => {
     it('should handle disabled state', () => {
       const state = { checked: false };
 
-      const result = renderCheckbox(
-        { ...mockOption, disabled: true },
+      const result = renderCheckbox({
+        option: { ...mockOption, disabled: true },
         state,
-        'test-id',
-        false,
-        true, // isDisabled
-        mockOnBlur,
-        mockOnChange,
-        mockRef
-      );
+        checkboxId: 'test-id',
+        isRequired: false,
+        isDisabled: true,
+        onBlur: mockOnBlur,
+        onChange: mockOnChange,
+        ref: mockRef,
+      });
 
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
@@ -572,17 +584,17 @@ describe('ConnectedNestedCheckboxes utils', () => {
     it('should handle error state', () => {
       const state = { checked: false };
 
-      const result = renderCheckbox(
-        mockOption,
+      const result = renderCheckbox({
+        option: mockOption,
         state,
-        'test-id',
-        false,
-        false,
-        mockOnBlur,
-        mockOnChange,
-        mockRef,
-        true // error
-      );
+        checkboxId: 'test-id',
+        isRequired: false,
+        isDisabled: false,
+        onBlur: mockOnBlur,
+        onChange: mockOnChange,
+        ref: mockRef,
+        error: true,
+      });
 
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
@@ -597,16 +609,16 @@ describe('ConnectedNestedCheckboxes utils', () => {
         'aria-label': 'Custom aria label',
       };
 
-      const result = renderCheckbox(
-        optionWithAriaLabel,
+      const result = renderCheckbox({
+        option: optionWithAriaLabel,
         state,
-        'test-id',
-        false,
-        false,
-        mockOnBlur,
-        mockOnChange,
-        mockRef
-      );
+        checkboxId: 'test-id',
+        isRequired: false,
+        isDisabled: false,
+        onBlur: mockOnBlur,
+        onChange: mockOnChange,
+        ref: mockRef,
+      });
 
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
@@ -617,16 +629,16 @@ describe('ConnectedNestedCheckboxes utils', () => {
     it('should fallback to label text for aria-label when label is string', () => {
       const state = { checked: false };
 
-      const result = renderCheckbox(
-        mockOption,
+      const result = renderCheckbox({
+        option: mockOption,
         state,
-        'test-id',
-        false,
-        false,
-        mockOnBlur,
-        mockOnChange,
-        mockRef
-      );
+        checkboxId: 'test-id',
+        isRequired: false,
+        isDisabled: false,
+        onBlur: mockOnBlur,
+        onChange: mockOnChange,
+        ref: mockRef,
+      });
 
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
@@ -641,16 +653,16 @@ describe('ConnectedNestedCheckboxes utils', () => {
         label: <span>Element Label</span>,
       };
 
-      const result = renderCheckbox(
-        optionWithElementLabel as any, // ts should prevent this from ever happening but we have a default just in case
+      const result = renderCheckbox({
+        option: optionWithElementLabel as any, // ts should prevent this from ever happening but we have a default just in case
         state,
-        'test-id',
-        false,
-        false,
-        mockOnBlur,
-        mockOnChange,
-        mockRef
-      );
+        checkboxId: 'test-id',
+        isRequired: false,
+        isDisabled: false,
+        onBlur: mockOnBlur,
+        onChange: mockOnChange,
+        ref: mockRef,
+      });
 
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');

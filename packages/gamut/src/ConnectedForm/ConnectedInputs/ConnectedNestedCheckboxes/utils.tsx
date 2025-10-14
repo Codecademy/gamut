@@ -97,14 +97,23 @@ export const calculateStates = (
   return states;
 };
 
-export const handleCheckboxChange = (
-  option: FlatCheckbox,
-  isChecked: boolean,
-  selectedValues: string[],
-  flatOptions: FlatCheckbox[],
-  onChange: (values: string[]) => void,
-  onUpdate?: (values: string[]) => void
-) => {
+interface HandleCheckboxChangeParams {
+  option: FlatCheckbox;
+  isChecked: boolean;
+  selectedValues: string[];
+  flatOptions: FlatCheckbox[];
+  onChange: (values: string[]) => void;
+  onUpdate?: (values: string[]) => void;
+}
+
+export const handleCheckboxChange = ({
+  option,
+  isChecked,
+  selectedValues,
+  flatOptions,
+  onChange,
+  onUpdate,
+}: HandleCheckboxChangeParams) => {
   const currentValue = option.value;
   let newSelectedValues = [...selectedValues];
 
@@ -142,17 +151,29 @@ export const handleCheckboxChange = (
   onUpdate?.(newSelectedValues);
 };
 
-export const renderCheckbox = (
-  option: FlatCheckbox,
-  state: FlatCheckboxState,
-  checkboxId: string,
-  isRequired: boolean,
-  isDisabled: boolean,
-  onBlur: () => void,
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-  ref: React.RefCallback<HTMLInputElement>,
-  error?: boolean
-) => {
+interface RenderCheckboxParams {
+  option: FlatCheckbox;
+  state: FlatCheckboxState;
+  checkboxId: string;
+  isRequired: boolean;
+  isDisabled: boolean;
+  onBlur: () => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  ref: React.RefCallback<HTMLInputElement>;
+  error?: boolean;
+}
+
+export const renderCheckbox = ({
+  option,
+  state,
+  checkboxId,
+  isRequired,
+  isDisabled,
+  onBlur,
+  onChange,
+  ref,
+  error,
+}: RenderCheckboxParams) => {
   let checkedProps = {};
   if (state.checked) {
     checkedProps = {
