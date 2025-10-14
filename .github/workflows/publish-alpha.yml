@@ -62,7 +62,7 @@ jobs:
         run: |
           {
             echo 'result<<EOF'
-            yarn lerna ll --parseable | grep -Po '@codecademy.*alpha.*' | sed 's/:/@/g' || true
+            yarn lerna ll --parseable | grep alpha | sed 's/:/@/g' || true
             echo 'EOF'
           } >> $GITHUB_OUTPUT
 
