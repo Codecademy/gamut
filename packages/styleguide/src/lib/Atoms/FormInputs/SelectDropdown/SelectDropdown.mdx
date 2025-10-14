@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as SelectDropdownStories from './SelectDropdown.stories';
 
@@ -132,7 +132,15 @@ To add some pizzazz to your dropdown, you can add any of our <LinkTo id='Atoms/I
 
 ### Custom input props
 
-Some of our forms require special props be passed directly onto the `<input/>` component. We can do that by passing an object, formatted `{propName: value}`, into our inputProps prop.
+Some of our forms require special props be passed directly onto the input components. We can do that by passing an object with `hidden` and `combobox` properties into our inputProps prop.
+
+- `hidden`: Props passed to the hidden input element (used for form submission)
+- `combobox`: Props passed to the visible react-select input element (useful for data-\* attributes, testing, etc.)
+
+<Callout
+  text="  These props are passed directly to the underlying elements, so they only
+  accept `data-*` and `aria-*` attributes to ensure validity."
+/>
 
 <Canvas of={SelectDropdownStories.CustomInputProps} />
 

@@ -15,6 +15,8 @@ import { parseOptions, SelectOptionBase } from '../utils';
 import {
   AbbreviatedSingleValue,
   CustomContainer,
+  CustomInput,
+  CustomValueContainer,
   DropdownButton,
   formatGroupLabel,
   formatOptionLabel,
@@ -47,10 +49,12 @@ const defaultProps = {
     IndicatorSeparator: () => null,
     ClearIndicator: RemoveAllButton,
     SelectContainer: CustomContainer,
+    ValueContainer: CustomValueContainer,
     MultiValue: MultiValueWithColorMode,
     MultiValueRemove: MultiValueRemoveButton,
     Option: IconOption,
     SingleValue: AbbreviatedSingleValue,
+    Input: CustomInput,
   },
 };
 const onChangeAction = 'select-option';
@@ -88,6 +92,7 @@ const onChangeAction = 'select-option';
  * // Grouped options with extended features
  * <SelectDropdown
  *   name="category"
+ *   placeholder="Default placeholder text"
  *   options={[
  *     {
  *       label: 'Frontend',

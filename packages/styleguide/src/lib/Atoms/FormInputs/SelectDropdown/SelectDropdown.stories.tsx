@@ -435,9 +435,14 @@ export const Icons: Story = {
 export const CustomInputProps: Story = {
   args: {
     options: ['inspect me to see my inputProps', 'yes I am!', ':)'],
-    inputProps: { hello: 'updog' },
+    inputProps: {
+      hidden: { 'data-form-field': 'what' },
+      combobox: {
+        'data-testid': 'custom-select',
+        'data-cy': 'custom-dropdown',
+      },
+    },
     name: 'what',
-    isSearchable: true,
   },
   render: (args) => (
     <Box height="15rem">
