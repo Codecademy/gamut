@@ -47,7 +47,7 @@ const myTheme = createTheme({
 
 ### Step 1: Start with a Base Theme
 
-It's best to start with the `coreTheme` as your foundation unless you are _sure_ you have a full replacement for all the tokens:
+It's best to start with the `coreTheme` as your foundation unless you are _sure_ you have a full replacement for all the tokens. You can refer to the Core Theme documentation for a full list of essential tokens.
 
 ```tsx
 import { createTheme } from '@codecademy/variance';
@@ -65,7 +65,6 @@ Create a color palette object with your brand colors:
 
 ```tsx
 const myColorPalette = {
-  // Brand colors
   brand: {
     primary: '#004C54',
     kelly: '#00B388',
@@ -75,7 +74,6 @@ const myColorPalette = {
     white: '#FFFFFF',
     charcoal: '#565A5C',
   },
-  // Kelly Green scale for light mode
   kelly: {
     50: '#E6FFF7',
     100: '#CCFFEF',
@@ -88,7 +86,6 @@ const myColorPalette = {
     800: '#006650',
     900: '#004D3D',
   },
-  // Midnight Green scale for dark mode
   midnight: {
     50: '#E6F4F5',
     100: '#CCE9EB',
@@ -101,7 +98,6 @@ const myColorPalette = {
     800: '#004C54',
     900: '#003D4D',
   },
-  // Silver/Gray scale
   silver: {
     50: '#F7F8F8',
     100: '#ECEEED',
@@ -114,7 +110,6 @@ const myColorPalette = {
     800: '#565A5C',
     900: '#3D4041',
   },
-  // Accent colors
   accent: {
     kelly: '#00B388',
     midnight: '#004C54',
@@ -537,7 +532,7 @@ Follow the instructions detailed in <LinkTo id="Meta/Installation">Installation 
 
 ## Best Practices
 
-1. **Always extend from coreTheme**: This ensures compatibility with Gamut components
+1. **Replace all tokens or extend from coreTheme**: This ensures compatibility with Gamut components
 2. **Override vs Add scales**: Override existing scales (like `spacing`, `borderRadii`, `fontFamily`) in the initial `createTheme()` object. Only use `.addScale()` for truly new scales that don't exist in `coreTheme`
 3. **Use semantic color names**: Map your brand colors to semantic tokens (primary, secondary, etc.)
 4. **Provide both light and dark modes**: This ensures your theme works in all contexts
