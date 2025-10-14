@@ -54,7 +54,6 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
-          # Configure Netlify CLI to work with the styleguide project
           cd packages/styleguide
           npx netlify-cli@22.0.0 link --id ${{ secrets.NETLIFY_SITE_ID }}
 
