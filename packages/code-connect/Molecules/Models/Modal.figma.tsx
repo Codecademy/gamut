@@ -33,7 +33,7 @@ figma.connect(
         title: figma.textContent('✏️ title'),
       }),
     },
-    example: ({ modalProps }: any) => (
+    example: ({ modalProps }) => (
       <Modal
         image={modalProps.image}
         size={modalProps.size}

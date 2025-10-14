@@ -24,7 +24,6 @@ figma.connect(
         tip: figma.textContent('✏️ tooltip'),
       }),
     },
-    // @ts-expect-error - props doesn't full align with code implementation
     example: (props) => <IconButton {...props} tip={props.toolTipInfo?.tip} />,
   }
 );

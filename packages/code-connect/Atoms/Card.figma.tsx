@@ -31,7 +31,7 @@ figma.connect(
       isInteractive: figma.boolean('isInteractive'),
       children: figma.children('.Card Content'),
     },
-    example: ({ children, ...props }: any) => (
+    example: ({ children, ...props }) => (
       <Card {...props}>{children}</Card>
     ),
   }

@@ -25,6 +25,6 @@ figma.connect(
         large: 'large',
       }),
     },
-    example: ({ children, ...props }: any) => <Tag {...props}>{children}</Tag>,
+    example: ({ children, ...props }) => <Tag {...props}>{children}</Tag>,
   }
 );

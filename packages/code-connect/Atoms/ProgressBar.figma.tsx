@@ -41,7 +41,6 @@ figma.connect(
         false: undefined,
       }),
     },
-    // @ts-expect-error - figma.children() returns JSX elements but ProgressBar expects ComponentType
     example: (props) => <ProgressBar {...props} />,
   }
 );

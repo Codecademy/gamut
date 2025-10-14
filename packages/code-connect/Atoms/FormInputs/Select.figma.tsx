@@ -45,7 +45,6 @@ figma.connect(
       options: figma.children('*'),
       defaultValue: figma.string('selection'),
     },
-    // @ts-expect-error - figma.children() returns JSX elements but Select expects Record<string, string>
     example: (props) => <Select {...props} />,
   }
 );

@@ -27,7 +27,7 @@ figma.connect(
         info: figma.textContent('✏️ tip'),
       }),
     },
-    example: (props: any) => (
+    example: (props) => (
       <InfoTip
         {...props}
         alignment={props.toolTipInfo?.alignment}

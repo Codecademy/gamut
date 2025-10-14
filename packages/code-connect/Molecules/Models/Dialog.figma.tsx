@@ -34,7 +34,7 @@ figma.connect(
       confirmCta: 'Primary action',
       cancelCta: 'Cancel',
     },
-    example: ({ children, confirmCta, cancelCta, ...props }: any) => (
+    example: ({ children, confirmCta, cancelCta, ...props }) => (
       <Dialog
         cancelCta={{ children: cancelCta }}
         confirmCta={{ children: confirmCta }}

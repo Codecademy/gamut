@@ -28,7 +28,7 @@ figma.connect(
         large: 'large',
       }),
     },
-    example: ({ children, ...props }: any) => (
+    example: ({ children, ...props }) => (
       <TextButton {...props}>{children}</TextButton>
     ),
   }

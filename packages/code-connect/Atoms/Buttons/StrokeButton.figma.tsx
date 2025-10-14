@@ -33,7 +33,7 @@ figma.connect(
         large: 'large',
       }),
     },
-    example: ({ children, ...props }: any) => (
+    example: ({ children, ...props }) => (
       <StrokeButton {...props}>{children}</StrokeButton>
     ),
   }

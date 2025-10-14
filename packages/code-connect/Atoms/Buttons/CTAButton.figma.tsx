@@ -23,7 +23,7 @@ figma.connect(
         }),
       }),
     },
-    example: ({ children, ...props }: any) => (
+    example: ({ children, ...props }) => (
       <CTAButton {...props}>{children}</CTAButton>
     ),
   }

@@ -39,7 +39,6 @@ figma.connect(
         Disabled: figma.textContent('selection'),
       }),
     },
-    // @ts-expect-error - figma.children() returns JSX elements but SelectDropdown expects Record<string, string>
     example: (props) => <SelectDropdown {...props} />,
   }
 );

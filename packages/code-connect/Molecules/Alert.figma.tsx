@@ -38,7 +38,7 @@ figma.connect(
         floating: 'floating',
       }),
     },
-    example: ({ children, ...props }: any) => (
+    example: ({ children, ...props }) => (
       <Alert {...props} >
         {children}
       </Alert>

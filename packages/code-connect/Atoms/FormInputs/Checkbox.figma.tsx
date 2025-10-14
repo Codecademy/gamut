@@ -27,7 +27,7 @@ figma.connect(
       }),
       ariaLabel: figma.string('✏️ label'),
     },
-    example: ({ ariaLabel, ...props }: any) => (
+    example: ({ ariaLabel, ...props }) => (
       <Checkbox {...props} aria-label={ariaLabel} />
     ),
   }

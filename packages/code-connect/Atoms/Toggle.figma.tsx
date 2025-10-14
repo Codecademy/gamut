@@ -21,7 +21,6 @@ figma.connect(
       checked: figma.boolean('checked'),
       disabled: figma.boolean('disabled'),
     },
-    // @ts-expect-error - Toggle requires label prop but no label field exists in Figma
     example: (props) => <Toggle {...props} />,
   }
 );
