@@ -59,6 +59,8 @@ export const Default = () => {
       minHeight="50rem"
       onSubmit={(values) => {
         action('Form Submitted')(values);
+        // eslint-disable-next-line no-console
+        console.log('Form Submitted', values);
       }}
       {...connectedFormProps}
     >

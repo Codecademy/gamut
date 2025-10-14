@@ -160,6 +160,8 @@ const meta: Meta<typeof GridForm> = {
     },
     onSubmit: (values) => {
       action('Form Submitted')(values);
+      // eslint-disable-next-line no-console
+      console.log('Form Submitted', values);
     },
     validation: 'onSubmit',
     resetOnSubmit: true,
