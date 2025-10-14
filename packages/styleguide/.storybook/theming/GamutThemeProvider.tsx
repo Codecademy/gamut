@@ -42,7 +42,7 @@ type GlobalsContext = {
 };
 
 export const withEmotion = (Story: any, context: GlobalsContext) => {
-  const colorMode = context.globals.colorMode;
+  const colorMode = context.globals.colorMode ?? 'light';
   const selectedTheme = context.globals.theme;
   const background = corePalette[themeBackground[colorMode]];
   const storyRef = useRef<HTMLDivElement>(null);
@@ -63,7 +63,11 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
         useGlobals={false}
         theme={currentTheme as unknown as Theme}
       >
-        <Background bg={themeBackground[colorMode]} ref={storyRef}>
+        <Background
+          alwaysSetVariables
+          bg={themeBackground[colorMode]}
+          ref={storyRef}
+        >
           {Story()}
         </Background>
       </GamutProvider>
@@ -73,7 +77,11 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
   // Wrap all stories in minimal provider
   return (
     <GamutProvider theme={currentTheme as unknown as Theme}>
-      <Background bg={themeBackground[colorMode]} ref={storyRef}>
+      <Background
+        alwaysSetVariables
+        bg={themeBackground[colorMode]}
+        ref={storyRef}
+      >
         {Story()}
       </Background>
     </GamutProvider>
