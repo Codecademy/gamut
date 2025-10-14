@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.5.3...@codecademy/gamut@67.0.0) (2025-10-14)
+
+### ⚠ BREAKING CHANGES
+
+- **Modal, Dialog, and Alert:** add new accessibility props to Modal, Dialog, and Alert's close Button
+
+### Features
+
+- **Modal, Dialog, and Alert:** add new accessibility props to Modal, Dialog, and Alert's close Button ([c10b4e5](https://github.com/Codecademy/gamut/commit/c10b4e5124ca75eae9e3d1b19ff40a67e6b34388))
+
+### [66.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.5.2...@codecademy/gamut@66.5.3) (2025-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ### [66.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.5.1...@codecademy/gamut@66.5.2) (2025-10-01)
 
 **Note:** Version bump only for package @codecademy/gamut
