@@ -1,3 +1,4 @@
+import React from 'react';
 import { Tab } from '@codecademy/gamut';
 import figma from '@figma/code-connect';
 

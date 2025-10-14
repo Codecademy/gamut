@@ -1,3 +1,4 @@
+import React from 'react';
 import { FormGroup } from '@codecademy/gamut';
 import figma from '@figma/code-connect';
 

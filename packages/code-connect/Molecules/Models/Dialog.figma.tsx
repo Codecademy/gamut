@@ -1,3 +1,4 @@
+import React from 'react';
 import { Dialog } from '@codecademy/gamut';
 import figma from '@figma/code-connect';
 

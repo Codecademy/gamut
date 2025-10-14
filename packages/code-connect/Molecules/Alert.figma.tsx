@@ -1,3 +1,4 @@
+import React from 'react';
 import { Alert } from '@codecademy/gamut';
 import figma from '@figma/code-connect';
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { MenuItem } from '@codecademy/gamut';
 import figma from '@figma/code-connect';
 

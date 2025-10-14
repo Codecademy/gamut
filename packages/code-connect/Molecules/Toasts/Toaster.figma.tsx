@@ -1,3 +1,4 @@
+import React from 'react';
 import { Toaster } from '@codecademy/gamut';
 import { Bee } from '@codecademy/gamut-illustrations';
 import figma from '@figma/code-connect';
