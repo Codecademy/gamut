@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
+import { act } from '@testing-library/react';
 import * as React from 'react';
-import { act } from 'react-dom/test-utils';
 
 import { Checkbox, Input } from '../../Form';
 import { WithChildrenProp } from '../../utils';
@@ -114,7 +114,9 @@ describe('ConnectedForm - useDebouncedField', () => {
   it('should allow users to change the value', async () => {
     const { view } = renderView();
     const input = view.getByRole('textbox') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: mockChangeValue } });
+    act(() => {
+      fireEvent.change(input, { target: { value: mockChangeValue } });
+    });
 
     expect(input.value).toEqual(mockChangeValue);
   });

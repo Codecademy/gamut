@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { screen } from '@testing-library/react';
 
-import { AddIcon } from '../dist/index';
+import { AddIcon } from '../src/index';
 
 const renderView = setupRtl(AddIcon);
 
