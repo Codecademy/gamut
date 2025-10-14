@@ -1,0 +1,12 @@
+name: 'Set Git User'
+description: 'Set git user configuration for automated commits'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set git user
+      shell: bash
+      run: |
+        git config --global user.email "dev@codecademy.com"
+        git config --global user.name "codecademydev"
+        git config --global push.default current

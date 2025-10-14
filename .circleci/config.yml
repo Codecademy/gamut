@@ -67,7 +67,7 @@ references:
         - packages
 
   restore_node_modules: &restore_node_modules
-    attach_workspace:
+    attach_workspace: #The attach_workspace copies and re-creates the entire workspace content when it runs.
       at: ~/repo
 
   build_all_packages: &build_all_packages
@@ -75,7 +75,7 @@ references:
       name: Build All Packages
       command: yarn build
 
-  set_git_user: &set_git_user
+  set_git_user: &set_git_user # move to yarn action maybe
     run:
       name: Set git user
       command: |
@@ -111,7 +111,7 @@ jobs:
   checkout_code:
     <<: *default_env
     steps:
-      - checkout
+      - checkout # circle keyword
       - *set_npm_token
       - *restore_yarn_cache
       - run: yarn --production=false --frozen-lockfile
@@ -176,92 +176,6 @@ jobs:
       - *save_nx_cache
       - *save_webpack_cache
 
-  deploy_alpha:
-    <<: *default_env
-    resource_class: large
-    steps:
-      - *skip_if_not_pr
-      - *skip_on_automated_commit
-      - *set_git_user
-      - checkout
-      - *restore_node_modules
-      - *restore_nx_cache
-      - *restore_webpack_cache
-      - *build_all_packages
-      - run:
-          name: build storybook
-          command: yarn nx run styleguide:build-storybook
-      - *save_nx_cache
-      - *save_webpack_cache
-      - run:
-          name: deploy
-          command: |
-            DEPLOY_MESSAGE="User: ${CIRCLE_USERNAME} Project: ${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} Pull Request: ${CIRCLE_PULL_REQUEST}"
-            npx netlify-cli@17.37.1 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --json --filter @codecademy/styleguide > .deploy-output
-      - setup_remote_docker
-      - run: docker pull cloudposse/github-commenter:0.5.0-58
-      - run:
-          name: comment
-          command: |
-            export DEPLOY_OUTPUT="$(cat .deploy-output)"
-            echo $DEPLOY_OUTPUT
-            DEPLOY_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).deploy_url)" | node -)
-            LOGS_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).logs)" | node -)
-            COMMENT_MSG="<p><a href="${DEPLOY_URL}">${DEPLOY_URL}</a></p><p><a href="${LOGS_URL}">Deploy Logs</a></p>"
-            if [ -z "$DEPLOY_OUTPUT" ]
-            then
-              echo "No deploy output found, will not add PR comment"
-            else
-              docker run --rm \
-                      -e GITHUB_TOKEN \
-                      -e GITHUB_OWNER="${CIRCLE_PROJECT_USERNAME}" \
-                      -e GITHUB_REPO="${CIRCLE_PROJECT_REPONAME}" \
-                      -e GITHUB_COMMENT_TYPE=pr \
-                      -e GITHUB_PR_ISSUE_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}" \
-                      -e GITHUB_COMMENT_TEMPLATE='<p>🚀 Styleguide deploy preview ready!</p>{{.}}<!--ALPHA_DEPLOY_COMMENT-->' \
-                      -e GITHUB_DELETE_COMMENT_REGEX="ALPHA_DEPLOY_COMMENT" \
-                      -e GITHUB_COMMENT="${COMMENT_MSG}" \
-                      cloudposse/github-commenter:0.5.0-58
-            fi
-
-  publish_alpha:
-    <<: *default_env
-    resource_class: large
-    steps:
-      - *skip_if_not_pr
-      - *skip_on_automated_commit
-      - *set_git_user
-      - checkout
-      - *restore_node_modules
-      - *set_npm_token
-      - *restore_nx_cache
-      - *build_all_packages
-      - *save_nx_cache
-      - run:
-          name: lerna publish (alpha)
-          command: yarn lerna publish --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${CIRCLE_SHA1:0:6} --dist-tag=alpha.${CIRCLE_SHA1:0:6}
-      - setup_remote_docker
-      - run: docker pull cloudposse/github-commenter:0.5.0-58
-      - run:
-          name: Comment
-          command: |
-            ALPHA_PACKAGES="$(yarn lerna ll --parseable | grep alpha || true)"
-            if [ -z "$ALPHA_PACKAGES" ]
-            then
-              echo "No alpha published packages found, will not add PR comment"
-            else
-              docker run --rm \
-                      -e GITHUB_TOKEN \
-                      -e GITHUB_OWNER="${CIRCLE_PROJECT_USERNAME}" \
-                      -e GITHUB_REPO="${CIRCLE_PROJECT_REPONAME}" \
-                      -e GITHUB_COMMENT_TYPE=pr \
-                      -e GITHUB_PR_ISSUE_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}" \
-                      -e GITHUB_COMMENT_TEMPLATE='<h3>📬Published Alpha Packages:</h3><pre>{{$x := splitList "\n" .}}{{range $x}}{{$y := split ":" .}}{{printf "%s@%v<br/>" $y._1 $y._2}}{{end}}</pre><!--LERNA_VERSION_COMMENT-->' \
-                      -e GITHUB_DELETE_COMMENT_REGEX="LERNA_VERSION_COMMENT" \
-                      -e GITHUB_COMMENT="${ALPHA_PACKAGES}" \
-                      cloudposse/github-commenter:0.5.0-58
-            fi
-
 workflows:
   version: 2
   build-test:
@@ -281,14 +195,6 @@ workflows:
           filters:
             branches:
               only: main
-      - publish_alpha:
-          filters:
-            branches:
-              ignore:
-                - main
-                - gh-pages
-          requires:
-            - checkout_code
 
   deploy:
     jobs:
@@ -304,11 +210,3 @@ workflows:
           filters:
             branches:
               only: main
-      - deploy_alpha:
-          filters:
-            branches:
-              ignore:
-                - main
-                - gh-pages
-          requires:
-            - checkout_code
