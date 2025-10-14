@@ -20,7 +20,7 @@
         "jestConfig": "packages/eslint-plugin-gamut/jest.config.ts"
       }
     },
-     "publish-build": {
+    "publish-build": {
       "executor": "nx:run-commands",
       "dependsOn": ["build"],
       "options": {
