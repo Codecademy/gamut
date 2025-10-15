@@ -18,6 +18,17 @@ const renderView = setupRtl(PreviewTip, {
 });
 
 describe('PreviewTip', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    // Run any pending timers and clean up
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+    jest.useRealTimers();
+  });
   describe('inline placement', () => {
     it('renders a link desc, user name, and overline', () => {
       const { view } = renderView({
@@ -40,10 +51,11 @@ describe('PreviewTip', () => {
   });
 
   it('calls onClick when clicked', async () => {
+    const user = userEvent.setup({ delay: null });
     const { view } = renderView({});
 
     await act(async () => {
-      await userEvent.click(view.getByRole('link'));
+      await user.click(view.getByRole('link'));
     });
 
     expect(onClick).toHaveBeenCalled();
@@ -61,6 +73,7 @@ describe('PreviewTip', () => {
     });
 
     it('shows the tip when it is hovered over', async () => {
+      const user = userEvent.setup({ delay: null });
       const { view } = renderView({
         placement: 'floating',
       });
@@ -68,7 +81,9 @@ describe('PreviewTip', () => {
       expect(view.queryAllByText(info).length).toBe(0);
 
       await act(async () => {
-        await userEvent.hover(view.getByRole('link'));
+        await user.hover(view.getByRole('link'));
+        // Advance timers to trigger the tooltip show delay (300ms)
+        jest.advanceTimersByTime(300);
       });
 
       await waitFor(() => {
@@ -77,10 +92,11 @@ describe('PreviewTip', () => {
     });
 
     it('calls onClick when clicked', async () => {
+      const user = userEvent.setup({ delay: null });
       const { view } = renderView({});
 
       await act(async () => {
-        await userEvent.click(view.getByRole('link'));
+        await user.click(view.getByRole('link'));
       });
 
       expect(onClick).toHaveBeenCalled();
