@@ -52,7 +52,8 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   const errorMessage = error || field.customError;
   const defaultProps = { disabled, ...rest };
   const isTightCheckbox =
-    field.type === 'checkbox' && field?.spacing === 'tight';
+    (field.type === 'checkbox' || field.type === 'nested-checkboxes') &&
+    field?.spacing === 'tight';
 
   const getInput = () => {
     switch (field.type) {
