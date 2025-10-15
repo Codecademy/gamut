@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [67.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.0.1...@codecademy/gamut@67.0.2) (2025-10-15)
+
+### Bug Fixes
+
+- **SelectDropdown:** adding optional zIndex prop ([36b13fc](https://github.com/Codecademy/gamut/commit/36b13fc397fec852d59924433420ffcf4a3a6c17))
+
 ### [67.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.0.0...@codecademy/gamut@67.0.1) (2025-10-15)
 
 **Note:** Version bump only for package @codecademy/gamut
