@@ -189,7 +189,7 @@ describe('AssetProvider', () => {
       const themeWithoutName = { ...coreTheme, name: undefined };
       mockGetFonts.mockReturnValue([]);
 
-      renderView({ theme: themeWithoutName  });
+      renderView({ theme: themeWithoutName });
       expect(mockGetFonts).toHaveBeenCalledWith('core');
     });
 
@@ -197,7 +197,7 @@ describe('AssetProvider', () => {
       const themeWithInvalidName = { ...coreTheme, name: 'invalid-theme' };
       mockGetFonts.mockReturnValue([]);
 
-      renderView({ theme: themeWithInvalidName  });
+      renderView({ theme: themeWithInvalidName });
       expect(mockGetFonts).toHaveBeenCalledWith('invalid-theme');
     });
 
