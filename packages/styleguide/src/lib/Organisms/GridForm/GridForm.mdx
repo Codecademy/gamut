@@ -56,62 +56,21 @@ The [GridForm page in Gamut](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%
 - Customize `🚥 GridFormButtons`
   - Submit button style (Fill/CTA), position, cancel button
 
-## Customizations
+## Fields
 
-### Disabled inputs
+GridForm supports a comprehensive set of field types to cover various form input needs. Each field type has specific properties and validation options.
 
-If an input is not meant to be usable, such as when a portion of a form is disabled pending user action, you can make it visually disabled with a `disabled` field member.
+### Text inputs
 
-<Canvas of={GridFormStories.DisabledInputs} />
+Text inputs support various HTML input types including `text`, `email`, `password`, `number`, `tel`, `url`, `search`, `date`, `time`, and more. All text inputs share the same basic properties but may have different validation patterns.
 
-### GridForm-atting
+<Canvas of={GridFormStories.TextField} />
 
-We can use the `size` and `rowspan` props (borrowed from <LinkTo id="layouts-layoutgrid--layout-grid">LayoutGrid</LinkTo>) to customize the layouts of our GridForms. You can also customize the `FormRequiredText` using the `requiredTextProps`. `FormRequiredText` should be spaced apart from or be stylistically different from the text element above it.
+#### Default value
 
-<Canvas of={GridFormStories.Formatted} />
+<Canvas of={GridFormStories.DefaultTextField} />
 
-### Submit button position
-
-We can position the submit button by passing the `position` prop with a
-value of `'left'`, `'center'`, `'right'`, or `'stretch'`.
-
-<Canvas of={GridFormStories.SubmitButtonPosition} />
-
-### Submit button options
-
-We can specify the version of our button by passing the type prop. We can choose between
-the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="atoms-button--cta-button">`CTAButton`</LinkTo>.
-
-<Canvas of={GridFormStories.SubmitButtonOptions} />
-
-### Inline submit button
-
-We can make the Submit button inline with an input by setting the column
-sizes so they fit on the same row (e.g size 8 for an input and size 4 for
-the submit).
-
-We can additionally remove the label from text inputs and checkbox inputs.
-Use the `hideLabel` prop to remove the label, allowing the submit button to
-align nicely with the input. **However**, if using `hideLabel` to remove the default label, you should provide an `aria-label` and/or include another label to the right/left of the input to ensure the input is accessible.
-
-<Canvas of={GridFormStories.InlineSubmit} />
-
-### Cancel button
-
-Optionally, include a cancel button.
-
-<Canvas of={GridFormStories.CancelButton} />
-
-### Custom inputs
-
-Some forms, such as the checkout flows that use Recurly, need to define
-their own inputs. We can specify a 'custom' field type to with a [render prop](https://reactjs.org/docs/render-props.html).
-
-We also have a 'custom-group' type for when you are passing in a custom FormGroup - including a label. If you do not want GridForm to surface errors for your field, you should likely use a 'custom-group'. If you chose to go this route, please be aware of [accessibility best practices](https://www.deque.com/blog/anatomy-of-accessible-forms-best-practices/) for forms.
-
-<Canvas of={GridFormStories.CustomInputs} />
-
-### Placeholder text
+#### Placeholder text
 
 Text inputs are allowed to have traditional `placeholder` text.
 This is a somewhat dangerous behavior for accessibility, as browsers
@@ -124,41 +83,50 @@ information to the form -- it should really only rephrase the text label.
 See [this article](https://www.nngroup.com/articles/form-design-placeholders/) or
 more details on why using placeholders is often bad.
 
-<Canvas of={GridFormStories.PlaceholderText} />
+<Canvas of={GridFormStories.PlaceholderTextField} />
 
-### On field update
+### Textarea input
 
-A field can take an onUpdate callback. This callback will fire when the
-field's value changes. This could be useful if you need to use the
-field's value in a parent component before onSubmit gets triggered.
+<Canvas of={GridFormStories.TextareaField} />
 
-<Canvas of={GridFormStories.OnFieldUpdate} />
+### Select input
 
-### InfoTip + GridForm
+<Canvas of={GridFormStories.SelectField} />
 
-A field can include our existing `InfoTip`. The position of the infotip on each field is always set to the bottom-right.
+### Radio group input
 
-See the <LinkTo id="atoms-forminputs-radio--radio">`Radio`</LinkTo> story for an example of how to add a infotip to a radio option.
+<Canvas of={GridFormStories.RadioGroupField} />
 
-<Canvas of={GridFormStories.InfoTip} />
+### File upload input
 
-### Sections
+File upload fields allow users to select and upload files. You can add custom validation to restrict file types and sizes.
 
-Our `GridForm`s optionally take an array of sections that have left and center-aligned variants.
+<Canvas of={GridFormStories.FileUploadField} />
 
-Each sections should have a title that correctly follows [heading ranks](https://usability.yale.edu/web-accessibility/articles/headings). You can set the text type of this title though the `as` prop on that section -- the default is `h2`. You can only set the `as` prop to a heading.
+### Checkbox input
 
-You can set the <LinkTo id="typography-text--variants">Text variant</LinkTo> prop for the section title the same way. Only title variants are reccomended, but if you need more granular control of the Text component, you can pass them into `titleWrapperProps`.
+<Canvas of={GridFormStories.CheckboxField} />
 
-When using the left-aligned layout, please note that the `title` takes up 3 columns, so any field size over 9 may cause inconsistent behavior!
+#### Spacing
 
-<Canvas of={GridFormStories.Sections} />
+Checkboxes can use tight spacing when you need them to fit in smaller areas:
 
-### Custom error
+<Canvas of={GridFormStories.CheckboxSpacing} />
 
-A field can take a custom error in addition to validation errors. The validation error will always take precedence to the custom error.
+### Nested checkboxes input
 
-<Canvas of={GridFormStories.CustomError} />
+Nested checkboxes allow for hierarchical selection with parent-child relationships between options. Infinite levels of nesting are supported. Clicking a parent checkbox toggles all its children accordingly. Individual child checkboxes can be toggled independently. Checkbox states are `checked` if all children are checked, `indeterminate` if some children are checked, or `unchecked` if no children are checked. The values returned by the form on submit or update are an array of all selected values, including all children.
+
+<Canvas of={GridFormStories.NestedCheckboxesField} />
+
+### Custom inputs
+
+Some forms, such as the checkout flows that use Recurly, need to define
+their own inputs. We can specify a 'custom' field type to with a [render prop](https://reactjs.org/docs/render-props.html).
+
+We also have a 'custom-group' type for when you are passing in a custom FormGroup - including a label. If you do not want GridForm to surface errors for your field, you should likely use a 'custom-group'. If you chose to go this route, please be aware of [accessibility best practices](https://www.deque.com/blog/anatomy-of-accessible-forms-best-practices/) for forms.
+
+<Canvas of={GridFormStories.CustomInputs} />
 
 ### Hidden input
 
@@ -174,23 +142,200 @@ We call it a "sweet container" so that bots do not immediately detect it as a ho
 
 <Canvas of={GridFormStories.SweetContainer} />
 
-### Markdown errors
+## Form Action Buttons
 
-GridForm renders errors through our <LinkTo id="atoms-markdown--basics">Markdown</LinkTo> component so we can optionally add markdown to our validation messages.
+### Submit button position
 
-<Canvas of={GridFormStories.MarkdownErrors} />
+We can position the submit button by passing the `position` prop within `submit` with a
+value of `'left'`, `'center'`, `'right'`, or `'stretch'`. The default is `'left'`.
 
-### `<ColorMode />`
+<Canvas of={GridFormStories.SubmitButtonRight} />
 
-By toggling dark mode you can see all the colors map to a new color that is accessible for the mode by default. Please use the ColorMode control on the top of this page and navigating to the Playground example to check it out!
+<Canvas of={GridFormStories.SubmitButtonLeft} />
 
-**Note**: you **cannot** use the deprecated 'business' button type with `ColorMode`.
+<Canvas of={GridFormStories.SubmitButtonCenter} />
 
-### Checkbox spacing
+<Canvas of={GridFormStories.SubmitButtonStretch} />
 
-If you need to checkboxes to fit into a smaller space, you can use our our `tight` spacing prop for checkboxes that are a bit closer together.
+### Submit button type
 
-<Canvas of={GridFormStories.CheckboxSpacing} />
+We can specify the type submit button by passing the `type` prop within `submit`. We can choose between
+the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="atoms-button--cta-button">`CTAButton`</LinkTo>. The default is `'fill'`.
+
+<Canvas of={GridFormStories.SubmitButtonFill} />
+
+<Canvas of={GridFormStories.SubmitButtonCTA} />
+
+### Inline submit button
+
+We can make the Submit button inline with an input by setting the column
+sizes so they fit on the same row (e.g size 8 for an input and size 4 for
+the submit).
+
+We can additionally remove the label from text inputs and checkbox inputs.
+Use the `hideLabel` prop to remove the label, allowing the submit button to
+align nicely with the input. **However**, if using `hideLabel` to remove the default label, you should provide an `aria-label` and/or include another label to the right/left of the input to ensure the input is accessible.
+
+<Canvas of={GridFormStories.SubmitButtonInline} />
+
+### Cancel button
+
+Optionally, include a cancel button.
+
+<Canvas of={GridFormStories.CancelButton} />
+
+## Validation
+
+GridForm uses [react-hook-form](https://react-hook-form.com) for validation, providing a robust and flexible validation system. All validation rules are applied to individual fields through the `validation` property.
+
+You can control when validation occurs by setting the `validation` prop on the GridForm:
+
+- `'onSubmit'` (default) - Validate only when the form is submitted
+- `'onChange'` - Validate on every change, submit button is disabled until all required fields are valid
+- `'onTouched'` - Validate when a field loses focus
+
+### Required Fields
+
+The most common validation is making fields required. You can specify required validation as a boolean or with a custom error message:
+
+```tsx
+// Simple required validation
+validation: {
+  required: true
+}
+
+// Required with custom error message
+validation: {
+  required: 'Please enter your email address'
+}
+```
+
+### Pattern Validation
+
+Use regular expressions to validate field formats like email addresses, phone numbers, or custom patterns:
+
+```tsx
+validation: {
+  required: 'Email is required',
+  pattern: {
+    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    message: 'Please enter a valid email address'
+  }
+}
+```
+
+### Custom Validation
+
+For complex validation logic, use custom validation functions. These functions receive the field value and can return `true` for valid input or an error message string:
+
+```tsx
+validation: {
+  required: 'Please select a file',
+  validate: (files) => {
+    const file = files.item(0);
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    if (!allowedTypes.includes(file.type)) {
+      return 'Please upload a JPEG, PNG, or GIF image';
+    }
+    if (file.size > 2 * 1024 * 1024) {
+      return 'File size must be less than 2MB';
+    }
+    return true;
+  }
+}
+```
+
+### String Length Validation
+
+Validate minimum and maximum string lengths:
+
+```tsx
+validation: {
+  required: 'Message is required',
+  minLength: {
+    value: 10,
+    message: 'Message must be at least 10 characters'
+  },
+  maxLength: {
+    value: 500,
+    message: 'Message cannot exceed 500 characters'
+  }
+}
+```
+
+### Number Range Validation
+
+For number inputs, validate minimum and maximum values:
+
+```tsx
+validation: {
+  required: 'Age is required',
+  min: {
+    value: 18,
+    message: 'Must be at least 18 years old'
+  },
+  max: {
+    value: 99,
+    message: 'Age cannot exceed 99'
+  }
+}
+```
+
+## Layout & Visual Styling
+
+### GridForm-atting
+
+We can use the `size` and `rowspan` props (borrowed from <LinkTo id="layouts-layoutgrid--layout-grid">LayoutGrid</LinkTo>) to customize the layouts of our GridForms. You can also customize the `FormRequiredText` using the `requiredTextProps`. `FormRequiredText` should be spaced apart from or be stylistically different from the text element above it.
+
+<Canvas of={GridFormStories.Formatted} />
+
+### `hideRequiredText`
+
+`hideRequiredText` will hide the '\* Required' text that appears at the top of our forms. This should only be hidden if the form has no required fields.
+
+<Canvas of={GridFormStories.HideRequiredText} />
+
+### Solo field form
+
+Solo field form should always have their solo input be required. They should automagically not have the required/optional text - if you have a custom rendered hidden input, you may have to use the `hasSoloField` prop.
+
+<Canvas of={GridFormStories.SoloField} />
+
+### InfoTips
+
+A field can include our existing `InfoTip`. See the <LinkTo id="molecules-tips-infotip">InfoTip</LinkTo> story for more information on what props are available.
+
+See the <LinkTo id="atoms-forminputs-radio--radio">Radio</LinkTo> story for an example of how to add a infotip to a radio option.
+
+<Canvas of={GridFormStories.InfoTip} />
+
+### Sections
+
+Our `GridForm`s optionally take an array of sections that have left and center-aligned variants.
+
+Each sections should have a title that correctly follows [heading ranks](https://usability.yale.edu/web-accessibility/articles/headings). You can set the text type of this title though the `as` prop on that section -- the default is `h2`. You can only set the `as` prop to a heading.
+
+You can set the <LinkTo id="typography-text--variants">Text variant</LinkTo> prop for the section title the same way. Only title variants are reccomended, but if you need more granular control of the Text component, you can pass them into `titleWrapperProps`.
+
+When using the left-aligned layout, please note that the `title` takes up 3 columns, so any field size over 9 may cause inconsistent behavior!
+
+<Canvas of={GridFormStories.Sections} />
+
+## Field Behavior & State Management
+
+### Disabled inputs
+
+If an input is not meant to be usable, such as when a portion of a form is disabled pending user action, you can make it visually disabled with a `disabled` field member.
+
+<Canvas of={GridFormStories.DisabledInputs} />
+
+### On field update
+
+A field can take an onUpdate callback. This callback will fire when the
+field's value changes. This could be useful if you need to use the
+field's value in a parent component before onSubmit gets triggered.
+
+<Canvas of={GridFormStories.OnFieldUpdate} />
 
 ### Loading and disabled states
 
@@ -215,17 +360,17 @@ We can combine these together to create some pretty cool forms which have a load
 
 <Canvas of={GridFormStories.FormLoading} />
 
-### `hideRequiredText`
+### Custom error
 
-`hideRequiredText` will hide the '\* Required' text that appears at the top of our forms. This should only be hidden if the form has no required fields.
+A field can take a custom error in addition to validation errors. The validation error will always take precedence to the custom error.
 
-<Canvas of={GridFormStories.HideRequiredText} />
+<Canvas of={GridFormStories.CustomError} />
 
-### Solo field form
+### Markdown errors
 
-Solo field form should always have their solo input be required. They should automagically not have the required/optional text - if you have a custom rendered hidden input, you may have to use the `hasSoloField` prop.
+GridForm renders errors through our <LinkTo id="atoms-markdown--basics">Markdown</LinkTo> component so we can optionally add markdown to our validation messages.
 
-<Canvas of={GridFormStories.SoloField} />
+<Canvas of={GridFormStories.MarkdownErrors} />
 
 ## Playground
 
