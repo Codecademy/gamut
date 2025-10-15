@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
+import * as React from 'react';
 
 import { Alert } from '../Alert';
 
@@ -76,5 +77,59 @@ describe('Alert', () => {
 
     expect(view.queryByRole('button', { name: 'Expand' })).toBeNull();
     expect(view.findByText(children));
+  });
+
+  describe('closeButtonProps functionality', () => {
+    it('applies a ref to the close button when closeButtonProps.ref is provided', () => {
+      const closeButtonRef = React.createRef<HTMLButtonElement>();
+      const { view } = renderView({
+        closeButtonProps: { ref: closeButtonRef },
+      });
+
+      const closeButton = view.getByRole('button', { name: 'Close alert' });
+      expect(closeButtonRef.current).toBe(closeButton);
+    });
+
+    it('uses custom tooltip text when closeButtonProps.tip is provided', () => {
+      const customTip = 'Custom close tooltip';
+      const { view } = renderView({
+        closeButtonProps: { tip: customTip },
+      });
+
+      const closeButton = view.getByRole('button', { name: customTip });
+      expect(closeButton).toHaveAttribute('aria-label', customTip);
+    });
+
+    it('uses default tooltip text when closeButtonProps.tip is not provided', () => {
+      const { view } = renderView();
+
+      const closeButton = view.getByRole('button', { name: 'Close alert' });
+      expect(closeButton).toHaveAttribute('aria-label', 'Close alert');
+    });
+
+    it('disables the close button when closeButtonProps.disabled is true', () => {
+      const { view } = renderView({
+        closeButtonProps: { disabled: true },
+      });
+
+      const closeButton = view.getByRole('button', { name: 'Close alert' });
+      expect(closeButton).toBeDisabled();
+    });
+
+    it('enables the close button when closeButtonProps.disabled is false', () => {
+      const { view } = renderView({
+        closeButtonProps: { disabled: false },
+      });
+
+      const closeButton = view.getByRole('button', { name: 'Close alert' });
+      expect(closeButton).not.toBeDisabled();
+    });
+
+    it('enables the close button by default when closeButtonProps.disabled is not provided', () => {
+      const { view } = renderView();
+
+      const closeButton = view.getByRole('button', { name: 'Close alert' });
+      expect(closeButton).not.toBeDisabled();
+    });
   });
 });
