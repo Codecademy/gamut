@@ -22,10 +22,6 @@ const themeBackground: Record<ColorModes, 'white' | 'navy'> = {
   dark: 'navy',
 };
 
-/**
- * Platform is a sub-theme of core, so it is not included in the theme switcher tool
- */
-
 const themeMap = {
   core: coreTheme,
   admin: adminTheme,
