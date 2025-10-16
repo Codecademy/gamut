@@ -1,6 +1,6 @@
-import { ImageWrapper, Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, Callout } from '~styleguide/blocks';
+import { AboutHeader, Callout, ImageWrapper } from '~styleguide/blocks';
 
 export const parameters = {
   id: 'Code Connect',
@@ -13,11 +13,10 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-<Callout text="Code connect files, `*.figma.tsx` files are already created for Gamut components, you should NOT need the CLI to help generate these files." />
-
-Much of the following information is extracted from the [Figma Code Connect documentation](https://www.figma.com/code-connect-docs/) — it's been adapted to fit the context of this repository.
 
 Code Connect provides Figma with the actual code for Figma components. In providing accurate code, this helps the Figma MCP generate accurate code snippets for designs that use these components.
+
+More information can be found at [Figma Code Connect documentation](https://www.figma.com/code-connect-docs/)
 
 <Callout text="Any changes to Code Connect files should be requested through the Gamut team and NOT done on an individual or a separate team." />
 
