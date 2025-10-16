@@ -2,6 +2,7 @@ import {
   ConnectedCheckbox,
   ConnectedForm,
   ConnectedInput,
+  ConnectedNestedCheckboxes,
   ConnectedRadioGroupInput,
   ConnectedSelect,
   ConnectedTextArea,
@@ -31,6 +32,7 @@ export const Default = () => {
         inputField: '',
         radioGroupField: undefined,
         textAreaField: '',
+        nestedCheckboxesField: ['react', 'typescript', 'backend'],
       },
       validationRules: {
         checkboxField: { required: 'you need to check this.' },
@@ -57,6 +59,8 @@ export const Default = () => {
       minHeight="50rem"
       onSubmit={(values) => {
         action('Form Submitted')(values);
+        // eslint-disable-next-line no-console
+        console.log('Form Submitted', values);
       }}
       {...connectedFormProps}
     >
@@ -135,6 +139,46 @@ export const Default = () => {
         }}
         label="text area field"
         name="textAreaField"
+      />
+      <ConnectedFormGroup
+        field={{
+          component: ConnectedNestedCheckboxes,
+          options: [
+            {
+              value: 'frontend',
+              label: 'Frontend Technologies',
+              options: [
+                {
+                  value: 'react',
+                  label: 'React',
+                  options: [
+                    { value: 'nextjs', label: 'Next.js' },
+                    { value: 'typescript', label: 'TypeScript' },
+                  ],
+                },
+                {
+                  value: 'vue',
+                  label: 'Vue.js',
+                },
+                { value: 'angular', label: 'Angular' },
+              ],
+            },
+            {
+              value: 'backend',
+              label: 'Backend Technologies',
+              options: [
+                { value: 'node', label: 'Node.js' },
+                { value: 'python', label: 'Python' },
+                { value: 'java', label: 'Java' },
+              ],
+            },
+          ],
+          onUpdate: (selectedValues) =>
+            // eslint-disable-next-line no-console
+            console.log('Selected:', selectedValues),
+        }}
+        label="nested checkboxes field"
+        name="nestedCheckboxesField"
       />
     </ConnectedForm>
   );

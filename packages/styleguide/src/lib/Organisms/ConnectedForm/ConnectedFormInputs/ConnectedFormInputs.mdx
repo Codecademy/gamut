@@ -28,11 +28,55 @@ We have a selection of `ConnectedInput` components that are visually identical t
 
 ### ConnectedRadioGroupInput
 
-`ConnectedRadioGroupInput` is the exception to the rule, and has some props that differ, particularly `options` — which takes an array of `ConnectedBaseRadioInputProps` components.
+`ConnectedRadioGroupInput` is an exception to the rule, and has some props that differ, particularly `options` — which takes an array of `ConnectedBaseRadioInputProps` components.
 
 For further styling configurations, check out <LinkTo id="Atoms/FormInputs/Radio">RadioGroup</LinkTo>.
 
 `ConnectedRadioGroup` and `ConnectedRadio` should rarely, if ever, be used outside of `ConnectedRadioGroupInput`.
+
+### ConnectedNestedCheckboxes
+
+`ConnectedNestedCheckboxes` is a component that allows you to create a nested checkbox group. It is a wrapper around the `ConnectedCheckbox` component and takes in an array `NestedCheckboxOption`s. Infinite levels of nesting are supported. Clicking a parent checkbox toggles all its children accordingly. Individual child checkboxes can be toggled independently. Checkbox states are `checked` if all children are checked, `indeterminate` if some children are checked, or `unchecked` if no children are checked. The values returned by the form on submit or update are an array of all selected values, including all children.
+
+```tsx
+<ConnectedFormGroup
+  label="nested checkboxes field"
+  name="nestedCheckboxesField"
+  field={{
+    component: ConnectedNestedCheckboxes,
+    options: [
+      {
+        value: 'frontend',
+        label: 'Frontend Technologies',
+        children: [
+          {
+            value: 'react',
+            label: 'React',
+            options: [
+              { value: 'nextjs', label: 'Next.js' },
+              { value: 'typescript', label: 'TypeScript' },
+            ],
+          },
+          {
+            value: 'vue',
+            label: 'Vue.js',
+          },
+          { value: 'angular', label: 'Angular' },
+        ],
+      },
+      {
+        value: 'backend',
+        label: 'Backend Technologies',
+        children: [
+          { value: 'node', label: 'Node.js' },
+          { value: 'python', label: 'Python' },
+          { value: 'java', label: 'Java' },
+        ],
+      },
+    ],
+  }}
+/>
+```
 
 ## Usage
 
