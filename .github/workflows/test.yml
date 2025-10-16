@@ -3,11 +3,6 @@ name: Test Suite
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-    branches-ignore:
-      - main
-      - gh-pages
-  merge_group:
-    types: [checks_requested]
 
 env:
   NODE_VERSION: '22.13.1'
