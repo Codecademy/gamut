@@ -24,15 +24,7 @@ export const ConnectedNestedCheckboxes: React.FC<
 
   const defaultValue: string[] = getValues()[name];
 
-  const optionsWithSpacing = options.map((option) => ({
-    ...option,
-    spacing,
-  }));
-
-  const flatOptions = useMemo(
-    () => flattenOptions(optionsWithSpacing),
-    [optionsWithSpacing]
-  );
+  const flatOptions = useMemo(() => flattenOptions(options), [options]);
 
   const [hasExpandedInitially, setHasExpandedInitially] = useState(false);
 
@@ -67,7 +59,7 @@ export const ConnectedNestedCheckboxes: React.FC<
             {flatOptions.map((option) => {
               const state = states.get(option.value)!;
               return renderCheckbox({
-                option,
+                option: { ...option, spacing },
                 state,
                 checkboxId: `${name}-${option.value}`,
                 isRequired,
