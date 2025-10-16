@@ -7,26 +7,26 @@ const extensions = ['woff2', 'woff'];
 
 export const core: readonly FontConfig[] = [
   {
-    filePath: `${FONT_ASSET_PATH}/apercu-regular-pro`,
+    filePath: `${FONT_ASSET_PATH}/hanken-grotesk-regular`,
     extensions,
-    name: 'Apercu',
+    name: 'Hanken Grotesk',
   },
   {
-    filePath: `${FONT_ASSET_PATH}/apercu-italic-pro`,
+    filePath: `${FONT_ASSET_PATH}/hanken-grotesk-italic`,
     extensions,
-    name: 'Apercu',
+    name: 'Hanken Grotesk',
     style: 'italic',
   },
   {
-    filePath: `${FONT_ASSET_PATH}/apercu-bold-pro`,
+    filePath: `${FONT_ASSET_PATH}/hanken-grotesk-bold`,
     extensions,
-    name: 'Apercu',
+    name: 'Hanken Grotesk',
     weight: 'bold',
   },
   {
-    filePath: `${FONT_ASSET_PATH}/apercu-bold-italic-pro`,
+    filePath: `${FONT_ASSET_PATH}/hanken-grotesk-bold-italic`,
     extensions,
-    name: 'Apercu',
+    name: 'Hanken Grotesk',
     weight: 'bold',
     style: 'italic',
   },

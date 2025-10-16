@@ -14,9 +14,9 @@ jest.mock('../remoteAssets/fonts', () => ({
   webFonts: {
     core: [
       {
-        filePath: 'https://www.codecademy.com/gamut/apercu-regular-pro',
+        filePath: 'https://www.codecademy.com/gamut/hanken-grotesk-regular',
         extensions: ['woff2', 'woff'],
-        name: 'Apercu',
+        name: 'Hanken Grotesk',
       },
     ],
     percipio: [
