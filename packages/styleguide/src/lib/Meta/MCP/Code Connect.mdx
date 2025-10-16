@@ -1,12 +1,11 @@
-import { Meta } from '@storybook/blocks';
+import { ImageWrapper, Meta } from '@storybook/blocks';
 
 import { AboutHeader, Callout } from '~styleguide/blocks';
 
 export const parameters = {
   id: 'Code Connect',
   title: 'Code Connect',
-  subtitle:
-    'Set up the Code Connect locally to enable design to code generation.',
+  subtitle: 'Exploring Code Connect features in Figma.',
   status: 'updating',
 };
 
@@ -22,40 +21,20 @@ Code Connect provides Figma with the actual code for Figma components. In provid
 
 <Callout text="Any changes to Code Connect files should be requested through the Gamut team and NOT done on an individual or a separate team." />
 
-## Installing the Code Connect command line tool
+## Code Connected components
 
-To install the Code Connect command line tool, run the following command:
+When visiting the Figma file, you'll know if a component is set up with Code Connect if you select the component and see the sidebar includes a "Code Connect" section.
 
-```bash
-npm install --global @figma/code-connect@latest
-```
+<ImageWrapper
+  src="./mcp/component_with_code_connect.png"
+  alt="A Figma component, Badge, with the Code Connect sidebar open."
+/>
 
-## Download the Figma desktop client app
+### Exploring behavior
 
-If you haven't already, download the Figma desktop client app appropriate for your OS by going to https://www.figma.com/downloads/.
+For components with Code Connect, you can also click on the "Explore behavior" button to open a modal that allows you to edit the component's props. Editing these props will automatically update the code in the modal's Code Connect section to give you a sense of how to adapt your component accordingly.
 
-### Generate your personal access token
-
-Through the desktop app:
-
-1. Click on the Figma icon in the top left-hand corner
-2. Select "Help and Account" > "Account Settings" — this should open a modal
-3. In the modal, select the "Security" tab
-4. Locate the section "Personal access tokens" and click "Generate a new token" and provide a descriptive name (e.g., "Gamut Repository MCP")
-
-This token should have permissions for:
-
-- Code Connect: "Write"
-- File content: "Read-only"
-
-After your token is generated, copy it somewhere safe. Upon closing the modal, you won't be able to see it again.
-
-More information can be found in [Figma's access token documentation](https://help.figma.com/hc/en-us/articles/8085703771159-Manage-personal-access-tokens).
-
-## Editing Code Connect files
-
-In `packages/code-connect`, you'll find `*.figma.tsx` files. These files are Code Connect files that map Figma components to Gamut components.
-
-If you are creating a new Gamut component, you should create a new `*.figma.tsx` file in this directory and follow the existing patterns to map your component.
-
-Use the [Code Connect CLI documentation](https://www.figma.com/code-connect-docs/) to help you understand how to map Figma properties to React props.
+<ImageWrapper
+  src="./mcp/component_playground.png"
+  alt="The 'Component playground' modal, with the Badge component's props editable."
+/>
