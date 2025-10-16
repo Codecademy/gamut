@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [78.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.1.0...@codecademy/styleguide@78.1.1) (2025-10-15)
+
+### Bug Fixes
+
+- **SelectDropdown:** adding optional zIndex prop ([36b13fc](https://github.com/Codecademy/gamut/commit/36b13fc397fec852d59924433420ffcf4a3a6c17))
+
+## [78.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.0.0...@codecademy/styleguide@78.1.0) (2025-10-15)
+
+### Features
+
+- Percipio theme + theme switcher tool ([4307902](https://github.com/Codecademy/gamut/commit/4307902838509a83024781ad70d3bdb77850afdb))
+
 ## [78.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.6.2...@codecademy/styleguide@78.0.0) (2025-10-14)
 
 ### ⚠ BREAKING CHANGES
