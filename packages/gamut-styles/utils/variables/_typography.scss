@@ -3,13 +3,13 @@
 
 // Font Families:
 
-$font-family-accent: "Suisse", "Hanken Grotesk", -apple-system, BlinkMacSystemFont,
+$font-family-accent: "Suisse", "Hanken Grotesk", -apple-system,
+  BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+
+$font-family-base: "Hanken Grotesk", -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
   "Helvetica Neue", sans-serif;
-
-$font-family-base: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
-  "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-  sans-serif;
 
 $font-monospace: Monaco, Menlo, "Ubuntu Mono", "Droid Sans Mono", Consolas,
   monospace;
