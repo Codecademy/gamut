@@ -16,7 +16,8 @@ const baseConfig = (packageName: string, overrides: any) => {
     displayName: packageName,
     preset: '../../jest.preset.js',
     clearMocks: true,
-    coverageDirectory: process.env.CI
+    coverageDirectory: process.env.CI,
+    reporters: process.env.CI ? ['github-actions', 'summary'] : ['default'],
       ? `/tmp/test-results/jest/${packageName}`
       : `../../coverage/packages/${packageName}`,
     moduleNameMapper: {
