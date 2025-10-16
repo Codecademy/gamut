@@ -8,5 +8,12 @@ export default base('gamut-icons', {
   setupFiles: ['<rootDir>/../../script/jest/base-setup.js'],
   setupFilesAfterEnv: ['<rootDir>/../../script/jest/rtl-setup.js'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  // coveragePathIgnorePatterns: ['<rootDir>/src/icons/'],
+  coveragePathIgnorePatterns: ['<rootDir>/src/icons/'],
+  collectCoverageFrom: [
+    'src/**/*.{ts,tsx}',
+    '!src/icons/**',
+    '!src/**/*.d.ts',
+    '!src/**/__tests__/**',
+    '!tests/**',
+  ],
 });
