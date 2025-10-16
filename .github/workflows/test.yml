@@ -41,7 +41,7 @@ jobs:
       - name: Build All Packages
         run: yarn build
       - name: Run test suite on affected projects
-        run: npx nx affected --target=test --parallel=4 --ci --coverage
+        run: npx nx affected --target=test --parallel=4 --ci --coverage --runInBand
         env:
           JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
           JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
