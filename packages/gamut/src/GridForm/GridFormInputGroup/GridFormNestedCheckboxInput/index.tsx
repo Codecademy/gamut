@@ -23,15 +23,10 @@ export const GridFormNestedCheckboxInput: React.FC<
 > = ({ field, required, disabled, error, setValue }) => {
   const isDisabled = disabled || field.disabled;
 
-  const optionsWithSpacing = field.options.map((option) => ({
-    ...option,
-    spacing: field.spacing,
-  }));
-
-  const flatOptions = useMemo(() => {
-    const flattened = flattenOptions(optionsWithSpacing);
-    return flattened;
-  }, [optionsWithSpacing]);
+  const flatOptions = useMemo(
+    () => flattenOptions(field.options),
+    [field.options]
+  );
 
   const [hasExpandedInitially, setHasExpandedInitially] = useState(false);
 
@@ -62,7 +57,7 @@ export const GridFormNestedCheckboxInput: React.FC<
             {flatOptions.map((option) => {
               const state = states.get(option.value)!;
               return renderCheckbox({
-                option,
+                option: { ...option, spacing: field.spacing },
                 state,
                 checkboxId: `${field.name}-${option.value}`,
                 isRequired: !!required,
