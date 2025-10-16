@@ -16,14 +16,14 @@ jest.mock('../remoteAssets/fonts', () => ({
   webFonts: {
     core: [
       {
-        filePath: 'https://www.codecademy.com/gamut/apercu-regular-pro',
+        filePath: 'https://www.codecademy.com/gamut/hanken-grotesk-regular',
         extensions: ['woff2', 'woff'],
-        name: 'Apercu',
+        name: 'Hanken Grotesk',
       },
       {
-        filePath: 'https://www.codecademy.com/gamut/apercu-bold-pro',
+        filePath: 'https://www.codecademy.com/gamut/hanken-grotesk-bold',
         extensions: ['woff2', 'woff'],
-        name: 'Apercu',
+        name: 'Hanken Grotesk',
         weight: 'bold',
       },
     ],
@@ -148,9 +148,9 @@ describe('AssetProvider', () => {
     it('should render font links for core theme by default', () => {
       mockGetFonts.mockReturnValue([
         {
-          filePath: 'https://www.codecademy.com/gamut/apercu-regular-pro',
+          filePath: 'https://www.codecademy.com/gamut/hanken-grotesk-regular',
           extensions: ['woff2', 'woff'],
-          name: 'Apercu',
+          name: 'Hanken Grotesk',
         },
       ]);
 
@@ -160,7 +160,7 @@ describe('AssetProvider', () => {
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
         'href',
-        'https://www.codecademy.com/gamut/apercu-regular-pro.woff2'
+        'https://www.codecademy.com/gamut/hanken-grotesk-regular.woff2'
       );
       expect(mockGetFonts).toHaveBeenCalledWith('core');
     });
