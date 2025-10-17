@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [67.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.0.1...@codecademy/gamut@67.0.2) (2025-10-15)
+
+### Bug Fixes
+
+- **SelectDropdown:** adding optional zIndex prop ([36b13fc](https://github.com/Codecademy/gamut/commit/36b13fc397fec852d59924433420ffcf4a3a6c17))
+
+### [67.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.0.0...@codecademy/gamut@67.0.1) (2025-10-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [67.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.5.3...@codecademy/gamut@67.0.0) (2025-10-14)
+
+### ⚠ BREAKING CHANGES
+
+- **Modal, Dialog, and Alert:** add new accessibility props to Modal, Dialog, and Alert's close Button
+
+### Features
+
+- **Modal, Dialog, and Alert:** add new accessibility props to Modal, Dialog, and Alert's close Button ([c10b4e5](https://github.com/Codecademy/gamut/commit/c10b4e5124ca75eae9e3d1b19ff40a67e6b34388))
+
+### [66.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.5.2...@codecademy/gamut@66.5.3) (2025-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.5.1...@codecademy/gamut@66.5.2) (2025-10-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.5.0...@codecademy/gamut@66.5.1) (2025-09-30)
+
+### Bug Fixes
+
+- **DataList:** move aria-sort to th ([d872073](https://github.com/Codecademy/gamut/commit/d872073d27daa12d17135dc7c938b906575570ae))
+
 ## [66.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.4.2...@codecademy/gamut@66.5.0) (2025-09-23)
 
 ### Features

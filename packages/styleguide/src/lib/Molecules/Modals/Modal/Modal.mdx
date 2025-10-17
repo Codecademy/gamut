@@ -55,11 +55,20 @@ A Modal with `size` `'small'` has a width of `400px` and a minimum height of `17
 
 ## Close behavior
 
-### Creating a custom close button
+### Close button customization
 
-By default, the Modal will render a close button.
-You can disable the default close button with the `hideCloseButton` prop by setting it to false.
-You can then use the `isOpen` prop to create other controls that toggle the Modal on and off.
+The Modal's close button can be customized through the `closeButtonProps` object:
+
+- `hidden?: boolean` - Whether to hide the default close button and pass your own through children to close the modal
+- `ref?: Ref<HTMLButtonElement>` - An optional ref to be passed to the close button for programmatic access
+- `tip?: string` - The close button tooltip text (defaults to "Close modal")
+- `disabled?: boolean` - Whether to disable the default close button
+
+This is useful when you need to programmatically interact with the close button, such as blurring focus or checking its state.
+
+<Canvas of={ModalStories.CloseButtonCustomization} />
+
+If the close button is hidden, you will need to create a custom way to close the modal. You can then use the `isOpen` prop to create other controls that toggle the Modal on and off.
 
 <Canvas of={ModalStories.CustomClose} />
 
@@ -79,6 +88,16 @@ All of these methods default to `true` for accessibility reasons, and rely on se
 A Modal can be made scrollable by including large content inside.
 
 <Canvas of={ModalStories.Scrollable} />
+
+## Focus management
+
+The `containerFocusRef` prop allows you to programmatically control focus on the Modal container. This is useful for advanced focus management scenarios where you need to override the default focus behavior (the Modal has `data-autofocus` by default).
+
+<Canvas of={ModalStories.FocusManagement} />
+
+Here are examples of how a `Modal` can use the `containerFocusRef` prop to control focus programmatically. This can be useful for accessibility or advanced focus scenarios.
+
+<Canvas of={ModalStories.ConfirmationOnClose} />
 
 ## Adding an image
 

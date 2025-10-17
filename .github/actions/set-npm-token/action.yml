@@ -1,0 +1,15 @@
+name: 'Set NPM Token'
+description: 'Set NPM authentication token in .npmrc file'
+
+inputs:
+  token-secret:
+    description: 'Name of the GitHub secret containing the NPM token'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set npm token
+      shell: bash
+      run: |
+        echo "//registry.npmjs.org/:_authToken=${{ inputs.token-secret }}" > .npmrc

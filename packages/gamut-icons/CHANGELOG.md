@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.51.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.51.1...@codecademy/gamut-icons@9.51.2) (2025-10-15)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.51.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.51.0...@codecademy/gamut-icons@9.51.1) (2025-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.51.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.50.0...@codecademy/gamut-icons@9.51.0) (2025-10-01)
+
+### Features
+
+- **Icons:** add live video regular icon ([#3179](https://github.com/Codecademy/gamut/issues/3179)) ([393d36a](https://github.com/Codecademy/gamut/commit/393d36a8fafbd7d56da10357bcde578dcc66a350))
+
 ## [9.50.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.49.2...@codecademy/gamut-icons@9.50.0) (2025-09-15)
 
 ### Features

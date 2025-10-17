@@ -79,6 +79,7 @@ export const platformTheme = createTheme(coreTheme)
       },
     },
   })
+  .addName('platform')
   .build();
 
 export type PlatformThemeShape = typeof platformTheme;
