@@ -141,7 +141,7 @@ export const Small: React.FC = (args) => {
   );
 };
 
-export const CloseButtonCustomization: React.FC = (args) => {
+export const CloseButtonCustomization: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -232,13 +232,12 @@ export const ClickOutside: React.FC = (args) => {
   );
 };
 
-export const Scrollable: React.FC = (args) => {
+export const Scrollable: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
-        {...args}
         closeButtonProps={{ hidden: true }}
         isOpen={isOpen}
         scrollable
@@ -258,7 +257,7 @@ export const Scrollable: React.FC = (args) => {
   );
 };
 
-export const FocusManagement: React.FC = (args) => {
+export const FocusManagement: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const containerFocusRef = useRef<HTMLDivElement>(null);
 
