@@ -1,11 +1,16 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import {
   Background,
   corePalette,
-  coreTheme,
   ColorModes,
   GamutProvider,
+  coreTheme,
+  adminTheme,
+  lxStudioTheme,
+  percipioTheme,
+  platformTheme,
 } from '@codecademy/gamut-styles/src';
+import { Theme } from '@emotion/react';
 
 /**
  * Story functions must be called as a regular function to avoid full-remounts
@@ -17,16 +22,27 @@ const themeBackground: Record<ColorModes, 'white' | 'navy'> = {
   dark: 'navy',
 };
 
+const themeMap = {
+  core: coreTheme,
+  admin: adminTheme,
+  lxStudio: lxStudioTheme,
+  percipio: percipioTheme,
+  platform: platformTheme,
+} as const;
+
 type GlobalsContext = {
   globals: {
     colorMode: 'light' | 'dark';
+    theme: keyof typeof themeMap;
   };
 };
 
 export const withEmotion = (Story: any, context: GlobalsContext) => {
-  const colorMode = context.globals.colorMode;
+  const colorMode = context.globals.colorMode ?? 'light';
+  const selectedTheme = context.globals.theme;
   const background = corePalette[themeBackground[colorMode]];
   const storyRef = useRef<HTMLDivElement>(null);
+  const currentTheme = themeMap[selectedTheme];
 
   useLayoutEffect(() => {
     const storyEl = storyRef.current?.closest(
@@ -38,8 +54,16 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
   // Always give iframes the full provider
   if (process.env.NODE_ENV === 'test') {
     return (
-      <GamutProvider useCache={false} useGlobals={false} theme={coreTheme}>
-        <Background bg={themeBackground[colorMode]} ref={storyRef}>
+      <GamutProvider
+        useCache={false}
+        useGlobals={false}
+        theme={currentTheme as unknown as Theme}
+      >
+        <Background
+          alwaysSetVariables
+          bg={themeBackground[colorMode]}
+          ref={storyRef}
+        >
           {Story()}
         </Background>
       </GamutProvider>
@@ -48,8 +72,12 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
 
   // Wrap all stories in minimal provider
   return (
-    <GamutProvider theme={coreTheme}>
-      <Background bg={themeBackground[colorMode]} ref={storyRef}>
+    <GamutProvider theme={currentTheme as unknown as Theme}>
+      <Background
+        alwaysSetVariables
+        bg={themeBackground[colorMode]}
+        ref={storyRef}
+      >
         {Story()}
       </Background>
     </GamutProvider>

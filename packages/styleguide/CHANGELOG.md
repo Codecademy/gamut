@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [78.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.1.0...@codecademy/styleguide@78.1.1) (2025-10-15)
+
+### Bug Fixes
+
+- **SelectDropdown:** adding optional zIndex prop ([36b13fc](https://github.com/Codecademy/gamut/commit/36b13fc397fec852d59924433420ffcf4a3a6c17))
+
+## [78.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.0.0...@codecademy/styleguide@78.1.0) (2025-10-15)
+
+### Features
+
+- Percipio theme + theme switcher tool ([4307902](https://github.com/Codecademy/gamut/commit/4307902838509a83024781ad70d3bdb77850afdb))
+
+## [78.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.6.2...@codecademy/styleguide@78.0.0) (2025-10-14)
+
+### ⚠ BREAKING CHANGES
+
+- **Modal, Dialog, and Alert:** add new accessibility props to Modal, Dialog, and Alert's close Button
+
+### Features
+
+- **Modal, Dialog, and Alert:** add new accessibility props to Modal, Dialog, and Alert's close Button ([c10b4e5](https://github.com/Codecademy/gamut/commit/c10b4e5124ca75eae9e3d1b19ff40a67e6b34388))
+
+### [77.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.6.1...@codecademy/styleguide@77.6.2) (2025-10-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
 ### [77.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@77.6.0...@codecademy/styleguide@77.6.1) (2025-09-30)
 
 ### Bug Fixes
