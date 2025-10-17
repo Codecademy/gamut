@@ -103,25 +103,27 @@ export const Default: React.FC<ComponentProps<typeof Coachmark>> = (args) => {
   }, [args.shouldShow]);
 
   return (
-    <Coachmark
-      {...args}
-      renderPopover={() => (
-        <FlexBox alignItems="flex-start" flexDirection="column" p={16}>
-          <Text mb={8}>You should click the button.</Text>
-          <FillButton
-            size="small"
-            onClick={() => {
-              setShouldShow(false);
-            }}
-          >
-            Got it
-          </FillButton>
-        </FlexBox>
-      )}
-      shouldShow={shouldShow}
-    >
-      <FillButton onClick={() => setShouldShow(true)}>A Button</FillButton>
-    </Coachmark>
+    <FlexBox width="min-content">
+      <Coachmark
+        {...args}
+        renderPopover={() => (
+          <FlexBox alignItems="flex-start" flexDirection="column" p={16}>
+            <Text mb={8}>You should click the button.</Text>
+            <FillButton
+              size="small"
+              onClick={() => {
+                setShouldShow(false);
+              }}
+            >
+              Got it
+            </FillButton>
+          </FlexBox>
+        )}
+        shouldShow={shouldShow}
+      >
+        <FillButton onClick={() => setShouldShow(true)}>A Button</FillButton>
+      </Coachmark>
+    </FlexBox>
   );
 };
 
