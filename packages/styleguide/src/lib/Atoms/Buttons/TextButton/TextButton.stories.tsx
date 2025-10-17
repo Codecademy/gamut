@@ -30,6 +30,11 @@ const meta: Meta<typeof TextButton> = {
         options: [SearchIcon],
       },
     },
+    as: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 

@@ -30,6 +30,11 @@ const meta: Meta<typeof StrokeButton> = {
         options: [SearchIcon],
       },
     },
+    as: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 

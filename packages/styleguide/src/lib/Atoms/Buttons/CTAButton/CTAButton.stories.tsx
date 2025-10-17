@@ -24,6 +24,11 @@ const meta: Meta<typeof CTAButton> = {
         options: ['normal', 'small', 'large'],
       },
     },
+    as: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 

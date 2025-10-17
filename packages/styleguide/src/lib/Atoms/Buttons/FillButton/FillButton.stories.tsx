@@ -30,6 +30,11 @@ const meta: Meta<typeof FillButton> = {
         options: [SearchIcon],
       },
     },
+    as: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 

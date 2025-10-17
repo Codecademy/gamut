@@ -34,7 +34,7 @@ const config: StorybookConfig = {
           return false;
         }
         // Return false if prop name is as, mode, or theme
-        if (['as', 'mode', 'theme'].includes(prop.name)) {
+        if (['mode', 'theme'].includes(prop.name)) {
           return false;
         }
         return true;

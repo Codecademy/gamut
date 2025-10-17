@@ -35,6 +35,11 @@ const meta: Meta<typeof IconButton> = {
       options: Object.keys(icons),
       mapping: icons,
     },
+    as: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 
