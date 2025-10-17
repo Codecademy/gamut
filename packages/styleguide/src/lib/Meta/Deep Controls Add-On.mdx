@@ -2,7 +2,6 @@ import { Meta } from '@storybook/blocks';
 
 import { ImageWrapper, LinkTo } from '~styleguide/blocks';
 
-
 <Meta title="Meta/Deep Controls Add-On" />
 
 # Deep Controls Add-On
@@ -50,6 +49,7 @@ type Story = StoryObj<typeof MyComponent>;
 ```
 
 That's it! The add-on will automatically generate controls for `popoverProps.beak`, `popoverProps.outline`, and `popoverProps.position` based on their inferred types:
+
 <ImageWrapper
   src="./meta/deep_controls_default.png"
   alt="The Deep Controls add-on in action, with default args for popoverProps."
@@ -95,6 +95,7 @@ type Story = StoryObj<typeof MyComponent>;
 ```
 
 The controls panel will now show the following:
+
 <ImageWrapper
   src="./meta/deep_controls_argTypes.png"
   alt="The Deep Controls add-on in action, with nested properties exposed as separate controls."
@@ -156,6 +157,7 @@ argTypes: {
 ```
 
 This will display:
+
 - `infotip` (the entire object)
 - `infotip.info` (individual property)
 - `infotip.emphasis` (individual property)
@@ -251,11 +253,15 @@ export default meta;
 
 ### Components Using Deep Controls
 
-- <LinkTo id="Atoms/Feedback/Alert">**Alert**</LinkTo> Demonstrates deep controls with default args for `cta`.
+- <LinkTo id="Atoms/Feedback/Alert">**Alert**</LinkTo> Demonstrates deep controls
+  with default args for `cta`.
 
-- <LinkTo id="Molecules/Coachmark">**Coachmark**</LinkTo> Demonstrates deep controls with custom `argTypes` for `popoverProps` with multiple nested properties like `beak`, `position`, `align`, and offsets.
+- <LinkTo id="Molecules/Coachmark">**Coachmark**</LinkTo> Demonstrates deep controls
+  with custom `argTypes` for `popoverProps` with multiple nested properties like
+  `beak`, `position`, `align`, and offsets.
 
-- <LinkTo id="Atoms/FormElements/FormGroup">**FormGroup**</LinkTo> Uses the reusable `infotipNestedArgTypes` to expose infotip configuration.
+- <LinkTo id="Atoms/FormElements/FormGroup">**FormGroup**</LinkTo> Uses the reusable
+  `infotipNestedArgTypes` to expose infotip configuration.
 
 ### Reusable ArgType Modules
 
