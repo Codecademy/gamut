@@ -6,7 +6,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "jsxImportSource": "@emotion/react",
-    "paths": { "~styleguide/blocks": ["./storybook/components/"] }
+    "paths": { "~styleguide/blocks": ["./storybook/components/"], "~styleguide/argTypes": ["./storybook/argTypes/"] }
   },
   "files": [],
   "include": [],
