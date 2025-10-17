@@ -1,8 +1,9 @@
 import { IconButton } from '@codecademy/gamut';
 import * as icons from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
+import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
-const meta: Meta<typeof IconButton> = {
+const meta: TypeWithDeepControls<Meta<typeof IconButton>> = {
   component: IconButton,
   args: {
     children: 'Click Me',
@@ -10,30 +11,29 @@ const meta: Meta<typeof IconButton> = {
     size: 'normal',
     icon: icons.SearchIcon,
     tip: 'ToolTip',
-    tipProps: { placement: 'floating' },
+    tipProps: { placement: 'floating', alignment: 'top-center' },
   },
   argTypes: {
     href: {
       description: 'If defined, component will use an anchor tag',
-    },
-    mode: {
-      control: {
-        type: 'select',
-        options: ['dark', 'light'],
-      },
+      type: 'string',
     },
     size: {
-      control: {
-        type: 'select',
-        options: ['normal', 'small', 'large'],
-      },
+      control: 'radio',
+      options: ['normal', 'small', 'large'],
     },
     icon: {
-      control: {
-        type: 'select',
-      },
+      control: 'select',
       options: Object.keys(icons),
       mapping: icons,
+    },
+    'tipProps.placement': {
+      control: 'radio',
+      options: ['floating', 'inline'],
+    },
+    'tipProps.alignment': {
+      control: 'radio',
+      options: ['top-center', 'bottom-center', 'left-center', 'right-center'],
     },
   },
 };

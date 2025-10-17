@@ -15,6 +15,8 @@ type Story = StoryObj<typeof Alert>;
 export const Default: Story = {
   args: {
     children: 'This is an alert',
+    cta: { children: 'Click Me' },
+    onClose: () => {},
   },
 };
 

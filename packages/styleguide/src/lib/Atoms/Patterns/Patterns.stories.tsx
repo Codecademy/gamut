@@ -21,9 +21,7 @@ const meta: Meta<typeof PatternComponent> = {
     pattern: {
       options: Object.keys(patterns),
       mapping: patterns,
-      control: {
-        type: 'select',
-      },
+      control: 'select',
     },
   },
 };

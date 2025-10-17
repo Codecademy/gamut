@@ -20,6 +20,12 @@ const meta: Meta<typeof SelectDropdown> = {
     isSearchable: false,
     value: '',
   },
+  argTypes: {
+    value: {
+      control: 'select',
+      options: fruitOptions,
+    },
+  },
 };
 
 export default meta;

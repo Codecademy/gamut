@@ -21,9 +21,7 @@ const meta: Meta<typeof IllustrationComponent> = {
     illustration: {
       options: Object.keys(illustrations),
       mapping: illustrations,
-      control: {
-        type: 'select',
-      },
+      control: 'select',
     },
   },
 };

@@ -15,9 +15,7 @@ const meta: Meta<typeof Popover> = {
   args: { children: undefined },
   argTypes: {
     pattern: {
-      control: {
-        type: 'select',
-      },
+      control: 'select',
       options: Object.keys(patterns),
       mapping: patterns,
     },

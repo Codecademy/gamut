@@ -16,9 +16,7 @@ const meta: Meta<typeof Anchor> = {
   },
   argTypes: {
     icon: {
-      control: {
-        type: 'select',
-      },
+      control: 'select',
       options: Object.keys(icons),
       mapping: icons,
     },

@@ -7,8 +7,11 @@ import {
 } from '@codecademy/gamut';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
+import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
-const meta: Meta<typeof ConnectedFormGroup> = {
+import { infotipNestedArgTypes } from '~styleguide/argTypes';
+
+const meta: TypeWithDeepControls<Meta<typeof ConnectedFormGroup>> = {
   component: ConnectedFormGroup,
   args: {
     field: {
@@ -24,15 +27,12 @@ const meta: Meta<typeof ConnectedFormGroup> = {
   },
   argTypes: {
     loading: {
-      control: {
-        type: 'boolean',
-      },
+      control: 'boolean',
     },
     disabled: {
-      control: {
-        type: 'boolean',
-      },
+      control: 'boolean',
     },
+    ...infotipNestedArgTypes,
   },
 };
 

@@ -10,6 +10,7 @@ const preview: Preview = {
     backgrounds: {
       disable: true,
     },
+    deepControls: { enabled: true },
     docs: {
       container: DocsContainer,
       theme: theme,
