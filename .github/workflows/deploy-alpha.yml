@@ -1,0 +1,97 @@
+name: Deploy Storybook Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+env:
+  NODE_VERSION: '22.13.1'
+  NODE_OPTIONS: '--max_old_space_size=8196'
+  NX_CLOUD: false
+  IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  deploy-alpha:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup and Build
+        id: setup
+        uses: ./.github/actions/yarn
+
+      - name: Add NPM auth token file
+        uses: ./.github/actions/set-npm-token
+        with:
+          token-secret: ${{ secrets.NPM_TOKEN }}
+
+      - name: Ensure workflow is associated with a pull request
+        uses: ./.github/actions/validate-pr-context
+
+      - name: Skip build from automated commit
+        uses: ./.github/actions/skip-automated-commits
+        with:
+          ignore-commit-message: ${{ env.IGNORE_COMMIT_MESSAGE }}
+
+      - name: Set git user
+        uses: ./.github/actions/set-git-user
+
+      - name: Build All Packages
+        run: yarn build
+
+      - name: Build Storybook
+        run: yarn nx run styleguide:build-storybook
+
+      - name: Configure Netlify CLI
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          cd packages/styleguide
+          npx netlify-cli@22.0.0 link --id ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Deploy to Netlify
+        id: deploy
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          DEPLOY_MESSAGE="User: ${{ github.actor }} Project: ${{ github.repository }} Pull Request: ${{ github.event.pull_request.html_url }}"
+          if npx netlify-cli@22.0.0 deploy --message "${DEPLOY_MESSAGE}" --dir dist/storybook/styleguide --filter @codecademy/styleguide --json > .deploy-output 2>&1; then
+            DEPLOY_OUTPUT=$(cat .deploy-output)
+            echo "deploy-output<<EOF" >> $GITHUB_OUTPUT
+            echo "$DEPLOY_OUTPUT" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "Deploy failed. Output:"
+            cat .deploy-output
+            exit 1
+          fi
+
+      - name: Extract deployment URLs
+        id: extract-urls
+        if: steps.deploy.outputs.deploy-output
+        run: |
+          DEPLOY_OUTPUT="${{ steps.deploy.outputs.deploy-output }}"
+          DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep -o 'deploy_url: [^,]*' | sed 's/deploy_url: //')
+          LOGS_URL=$(echo "$DEPLOY_OUTPUT" | grep -o 'logs: [^,]*' | sed 's/logs: //')
+          echo "deploy-url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+          echo "logs-url=$LOGS_URL" >> $GITHUB_OUTPUT
+
+      - name: Comment with deployment preview
+        uses: ./.github/actions/sticky-comment
+        if: steps.extract-urls.outputs.deploy-url
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          header: Styleguide Deploy Preview
+          message: |
+            🚀 Styleguide deploy preview ready!
+
+            **Preview URL:** [${{ steps.extract-urls.outputs.deploy-url }}](${{ steps.extract-urls.outputs.deploy-url }})
+            **Deploy Logs:** [${{ steps.extract-urls.outputs.logs-url }}](${{ steps.extract-urls.outputs.logs-url }})
