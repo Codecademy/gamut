@@ -1,5 +1,8 @@
 import { Meta } from '@storybook/blocks';
 
+import { ImageWrapper, LinkTo } from '~styleguide/blocks';
+
+
 <Meta title="Meta/Deep Controls Add-On" />
 
 # Deep Controls Add-On
@@ -10,13 +13,13 @@ The Deep Controls add-on enables Storybook controls for nested component propert
 
 By default, Storybook's Controls panel displays object-type props as a single collapsible JSON editor. The Deep Controls add-on extends this functionality by exposing individual nested properties as separate, dedicated controls with their own type-specific inputs (radio buttons, checkboxes, text fields, etc.).
 
-**Key Point:** Simply adding nested args to your stories will automatically create controls for them. You only need to define argTypes when you want to customize the controls, add descriptions, or restrict options.
+**Key Point:** Simply adding nested args to your stories will automatically create controls for them. You only need to define `argTypes` when you want to customize the controls, add descriptions, or restrict options.
 
 ## Benefits
 
 - **Better UX**: Users can modify nested props with intuitive controls instead of editing raw JSON
 - **Type Safety**: Each nested property gets its own strongly-typed control
-- **Reusability**: Extract common nested argTypes to shared modules for consistency across stories
+- **Reusability**: Extract common nested `argTypes` to shared modules for consistency across stories
 - **Documentation**: Individual controls can have descriptions and default values in the table
 - **Discoverability**: Makes deeply nested props more visible and accessible to users
 
@@ -46,13 +49,18 @@ export default meta;
 type Story = StoryObj<typeof MyComponent>;
 ```
 
-That's it! The add-on will automatically generate controls for `popoverProps.beak`, `popoverProps.outline`, and `popoverProps.position` based on their inferred types.
+That's it! The add-on will automatically generate controls for `popoverProps.beak`, `popoverProps.outline`, and `popoverProps.position` based on their inferred types:
+<ImageWrapper
+  src="./meta/deep_controls_default.png"
+  alt="The Deep Controls add-on in action, with default args for popoverProps."
+  height="auto"
+/>
 
 ### Customizing Controls
 
-You only need to define argTypes if you want to customize the controls, types, or add descriptions. Otherwise, the default behavior works automatically.
+You only need to define `argTypes` if you want to customize the controls, types, or add descriptions. Otherwise, the default behavior works automatically.
 
-To customize controls, use dot notation in argTypes:
+To customize controls, use dot notation in `argTypes`:
 
 ```typescript
 const meta: TypeWithDeepControls<Meta<typeof MyComponent>> = {
@@ -86,9 +94,16 @@ export default meta;
 type Story = StoryObj<typeof MyComponent>;
 ```
 
+The controls panel will now show the following:
+<ImageWrapper
+  src="./meta/deep_controls_argTypes.png"
+  alt="The Deep Controls add-on in action, with nested properties exposed as separate controls."
+  height="auto"
+/>
+
 ### Typescript Errors
 
-If you see TypeScript errors when using dot notation in `argTypes`, you may need to add the `TypeWithDeepControls` type to your story and wrap your `Meta` type in it (or `Story` type if you're using a story-level argTypes).
+If you see TypeScript errors when using dot notation in `argTypes`, you may need to add the `TypeWithDeepControls` type to your story and wrap your `Meta` type in it (or `Story` type if you're using a story-level `argTypes`).
 
 ```typescript
 import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
@@ -107,7 +122,7 @@ const meta: TypeWithDeepControls<Meta<typeof MyComponent>> = {
 
 ### When to Use ArgTypes
 
-Define argTypes for nested properties when you want to:
+Define `argTypes` for nested properties when you want to:
 
 - **Restrict options**: Use `radio` or `select` controls with specific options instead of free-form text
 - **Add descriptions**: Provide helpful documentation for each property
@@ -118,7 +133,7 @@ Define argTypes for nested properties when you want to:
 
 ### Hiding the Parent Object
 
-When you DO NOT provide default args for a nested object but are setting the argTypes for the nested properties, the controls panel will show both the parent object AND the individual nested properties. For example:
+When you DO NOT provide default args for a nested object but are setting the `argTypes` for the nested properties, the controls panel will show both the parent object AND the individual nested properties. For example:
 
 ```typescript
 args: {},
@@ -145,7 +160,7 @@ This will display:
 - `infotip.info` (individual property)
 - `infotip.emphasis` (individual property)
 
-To avoid this redundancy and keep your controls panel clean, disable the parent object in argTypes:
+To avoid this redundancy and keep your controls panel clean, disable the parent object in `argTypes`:
 
 ```typescript
 argTypes: {
@@ -163,7 +178,7 @@ argTypes: {
 
 ### Reusable ArgTypes
 
-For props that are reused across multiple components (like `infotip`), extract the argTypes to a shared module:
+For props that are reused across multiple components (like `infotip`), extract the `argTypes` to a shared module:
 
 **`.storybook/argTypes/infotip.tsx`**
 
@@ -236,11 +251,11 @@ export default meta;
 
 ### Components Using Deep Controls
 
-- **Alert** ([`Alert.stories.tsx`](/story/atoms-feedback-alert--default)): Demonstrates deep controls with default args for `cta`.
+- <LinkTo id="Atoms/Feedback/Alert">**Alert**</LinkTo> Demonstrates deep controls with default args for `cta`.
 
-- **Coachmark** ([`Coachmark.stories.tsx`](/story/molecules-coachmark--default)): Demonstrates deep controls withcustom argTypes for `popoverProps` with multiple nested properties like `beak`, `position`, `align`, and offsets.
+- <LinkTo id="Molecules/Coachmark">**Coachmark**</LinkTo> Demonstrates deep controls with custom `argTypes` for `popoverProps` with multiple nested properties like `beak`, `position`, `align`, and offsets.
 
-- **FormGroup** ([`FormGroup.stories.tsx`](/story/atoms-form-elements-form-group--default)): Uses the reusable `infotipNestedArgTypes` to expose infotip configuration.
+- <LinkTo id="Atoms/FormElements/FormGroup">**FormGroup**</LinkTo> Uses the reusable `infotipNestedArgTypes` to expose infotip configuration.
 
 ### Reusable ArgType Modules
 
