@@ -13,12 +13,6 @@ const meta: Meta<typeof FillButton> = {
     href: {
       description: 'If defined, component will use an anchor tag',
     },
-    mode: {
-      control: {
-        type: 'select',
-        options: ['dark', 'light'],
-      },
-    },
     size: {
       control: {
         type: 'select',
@@ -28,6 +22,11 @@ const meta: Meta<typeof FillButton> = {
     icon: {
       control: {
         options: [SearchIcon],
+      },
+    },
+    as: {
+      table: {
+        disable: true,
       },
     },
   },

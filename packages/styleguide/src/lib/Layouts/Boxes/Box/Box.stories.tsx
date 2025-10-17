@@ -11,7 +11,6 @@ type Story = StoryObj<typeof Box>;
 
 export const Default: Story = {
   args: {
-    as: 'div',
     children: 'Hello work, I am a box!',
   },
 };
