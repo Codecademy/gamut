@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.9.1...@codecademy/gamut-styles@17.10.0) (2025-10-15)
+
+### Features
+
+- Percipio theme + theme switcher tool ([4307902](https://github.com/Codecademy/gamut/commit/4307902838509a83024781ad70d3bdb77850afdb))
+
 ### [17.9.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.9.0...@codecademy/gamut-styles@17.9.1) (2025-10-14)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
