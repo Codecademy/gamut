@@ -128,5 +128,5 @@ export const Badge: React.FC<BadgeProps> = ({ icon, children, ...rest }) => {
     iconPosition: 'left',
     iconSize,
   });
-  return <BadgeBase {...rest}>{content} fail here</BadgeBase>;
+  return <BadgeBase {...rest}>{content}</BadgeBase>;
 };
