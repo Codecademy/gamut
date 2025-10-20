@@ -1,12 +1,21 @@
 import { Alert, Box, FillButton, FlexBox, Text } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useRef, useState } from 'react';
+import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
+
+import { closeButtonPropsArgTypes } from '~styleguide/argTypes';
 
 import { ALERTS } from './constants';
 
-const meta: Meta<typeof Alert> = {
+const meta: TypeWithDeepControls<Meta<typeof Alert>> = {
   component: Alert,
   args: {},
+  argTypes: {
+    ...closeButtonPropsArgTypes({
+      defaultTipText: 'Close alert',
+      defaultTipAlignment: 'bottom-center',
+    }),
+  },
 };
 
 export default meta;

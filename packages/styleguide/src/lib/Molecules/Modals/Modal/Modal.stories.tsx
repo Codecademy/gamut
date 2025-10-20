@@ -10,8 +10,11 @@ import {
 import { CodeCelebration } from '@codecademy/gamut-illustrations';
 import type { Meta } from '@storybook/react';
 import React, { ComponentProps, useEffect, useRef, useState } from 'react';
+import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
-const meta: Meta<typeof Modal> = {
+import { closeButtonPropsArgTypes } from '~styleguide/argTypes';
+
+const meta: TypeWithDeepControls<Meta<typeof Modal>> = {
   component: Modal,
   args: {
     title: 'Modal Modality',
@@ -24,6 +27,10 @@ const meta: Meta<typeof Modal> = {
       control: 'radio',
       options: ['small', 'medium', 'large', 'fluid'],
     },
+    ...closeButtonPropsArgTypes({
+      defaultTipText: 'Close modal',
+      defaultTipAlignment: 'top-center',
+    }),
   },
 };
 

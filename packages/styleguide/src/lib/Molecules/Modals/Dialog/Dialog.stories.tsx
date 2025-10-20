@@ -9,8 +9,11 @@ import {
 import { ColorMode } from '@codecademy/gamut-styles';
 import type { Meta } from '@storybook/react';
 import { ComponentProps, useEffect, useRef, useState } from 'react';
+import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
-const meta: Meta<typeof Dialog> = {
+import { closeButtonPropsArgTypes } from '~styleguide/argTypes';
+
+const meta: TypeWithDeepControls<Meta<typeof Dialog>> = {
   component: Dialog,
   args: {
     title: 'Depeche Modal',
@@ -37,6 +40,10 @@ const meta: Meta<typeof Dialog> = {
       control: 'radio',
       options: ['primary', 'danger'],
     },
+    ...closeButtonPropsArgTypes({
+      defaultTipText: 'Close dialog',
+      defaultTipAlignment: 'top-center',
+    }),
   },
 };
 
