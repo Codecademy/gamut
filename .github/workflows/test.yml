@@ -2,7 +2,7 @@ name: Test Suite
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize, reopened] 
 
 env:
   NODE_VERSION: '22.13.1'
