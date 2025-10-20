@@ -133,6 +133,23 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
     info
   );
 
+  const isPopoverOpen = isHoverType ? isOpen : !isTipHidden;
+  let focusTrapProps = {};
+  // For info tips that are open, we need focus trapping to handle escape key and tab navigation
+  if (type === 'info' && isPopoverOpen) {
+    focusTrapProps = {
+      onRequestClose: (e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (escapeKeyPressHandler) {
+          escapeKeyPressHandler(e);
+        }
+      },
+    };
+  } else {
+    focusTrapProps = {
+      skipFocusTrap: true,
+    };
+  }
+
   return (
     <Box
       display="inline-flex"
@@ -158,12 +175,12 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
       </TargetContainer>
       <FloatingTipBody
         {...commonPopoverProps}
+        {...focusTrapProps}
         animation="fade"
         dims={dims}
         horizontalOffset={offset}
-        isOpen={isHoverType ? isOpen : !isTipHidden}
+        isOpen={isPopoverOpen}
         outline
-        skipFocusTrap
         targetRef={ref}
         variant="secondary"
         widthRestricted={false}
