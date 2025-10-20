@@ -12,15 +12,7 @@ The Deep Controls add-on enables Storybook controls for nested component propert
 
 By default, Storybook's Controls panel displays object-type props as a single collapsible JSON editor. The Deep Controls add-on extends this functionality by exposing individual nested properties as separate, dedicated controls with their own type-specific inputs (radio buttons, checkboxes, text fields, etc.).
 
-**Key Point:** Simply adding nested args to your stories will automatically create controls for them. You only need to define `argTypes` when you want to customize the controls, add descriptions, or restrict options.
-
-## Benefits
-
-- **Better UX**: Users can modify nested props with intuitive controls instead of editing raw JSON
-- **Type Safety**: Each nested property gets its own strongly-typed control
-- **Reusability**: Extract common nested `argTypes` to shared modules for consistency across stories
-- **Documentation**: Individual controls can have descriptions and default values in the table
-- **Discoverability**: Makes deeply nested props more visible and accessible to users
+<Callout text="Simply adding nested args to your stories will automatically create controls for them. You only need to define `argTypes` when you want to customize the controls, add descriptions, or restrict options." />
 
 ## Basic usage
 

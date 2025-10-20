@@ -6,7 +6,6 @@ import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 const meta: TypeWithDeepControls<Meta<typeof IconButton>> = {
   component: IconButton,
   args: {
-    children: 'Click Me',
     disabled: false,
     size: 'normal',
     icon: icons.SearchIcon,

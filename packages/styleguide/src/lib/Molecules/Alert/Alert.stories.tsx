@@ -15,6 +15,11 @@ const meta: TypeWithDeepControls<Meta<typeof Alert>> = {
       defaultTipText: 'Close alert',
       defaultTipAlignment: 'bottom-center',
     }),
+    'closeButtonProps.hidden': {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 

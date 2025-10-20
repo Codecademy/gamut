@@ -27,7 +27,6 @@ export const closeButtonPropsArgTypes = ({
         'Whether to hide the default close button and pass your own through children to close the modal',
     },
     'closeButtonProps.ref': {
-      control: 'text',
       table: {
         type: { summary: 'React.Ref<HTMLButtonElement>' },
       },
