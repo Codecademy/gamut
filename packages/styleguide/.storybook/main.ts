@@ -29,11 +29,9 @@ const config: StorybookConfig = {
       skipChildrenPropWithoutDoc: false,
       shouldRemoveUndefinedFromOptional: true,
       propFilter: (prop) => {
-        // Return false if fileName contains node_modules
         if (prop.parent && /node_modules/.test(prop.parent.fileName)) {
           return false;
         }
-        // Return false if prop name is mode or theme
         if (['mode', 'theme'].includes(prop.name)) {
           return false;
         }
