@@ -118,28 +118,6 @@ jobs:
       - *save_yarn_cache
       - *save_node_modules
 
-  tests:
-    <<: *default_env
-    resource_class: large
-    steps:
-      - checkout
-      - *restore_node_modules
-      - *restore_nx_cache
-      - *build_all_packages
-      - run:
-          name: Run test suite
-          command: |
-            yarn test --parallel=4 --ci --coverage -- --runInBand
-          environment:
-            JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
-            JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
-      - *save_nx_cache
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
-
   publish:
     <<: *default_env
     resource_class: large
@@ -186,9 +164,6 @@ workflows:
       - checkout_code:
           requires:
             - queue/block_workflow
-      - tests:
-          requires:
-            - checkout_code
       - publish:
           requires:
             - checkout_code

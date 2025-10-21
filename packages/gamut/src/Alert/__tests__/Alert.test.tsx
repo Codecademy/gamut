@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
+import { act } from '@testing-library/react';
 import * as React from 'react';
 
 import { Alert } from '../Alert';
@@ -31,7 +32,9 @@ describe('Alert', () => {
 
     expect(buttons.length).toBe(2);
 
-    fireEvent.click(buttons[1]);
+    act(() => {
+      fireEvent.click(buttons[1]);
+    });
     expect(onClose).toHaveBeenCalled();
   });
 
@@ -40,7 +43,9 @@ describe('Alert', () => {
 
     const cta = view.getByRole('button', { name: 'Click Me!' });
 
-    fireEvent.click(cta);
+    act(() => {
+      fireEvent.click(cta);
+    });
 
     expect(onClick).toHaveBeenCalled();
   });
@@ -52,7 +57,9 @@ describe('Alert', () => {
 
     const cta = view.getByRole('link');
 
-    fireEvent.click(cta);
+    act(() => {
+      fireEvent.click(cta);
+    });
 
     expect(cta).toHaveAttribute('href', '/hello');
     expect(onClick).toHaveBeenCalled();
@@ -65,7 +72,9 @@ describe('Alert', () => {
 
     expect(view.queryByText(children)).toBeNull();
 
-    fireEvent.click(expandButton);
+    act(() => {
+      fireEvent.click(expandButton);
+    });
 
     expect(view.findByText(children));
   });
