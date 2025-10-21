@@ -95,4 +95,42 @@ export const percipio: readonly FontConfig[] = [
   },
 ];
 
-export const webFonts = { core, percipio } as const;
+export const lxStudio: readonly FontConfig[] = [
+  {
+    filePath: `${FONT_ASSET_PATH}/hanken-grotesk-regular`,
+    extensions,
+    name: 'Hanken Grotesk',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/hanken-grotesk-italic`,
+    extensions,
+    name: 'Hanken Grotesk',
+    style: 'italic',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/hanken-grotesk-bold`,
+    extensions,
+    name: 'Hanken Grotesk',
+    weight: 'bold',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/hanken-grotesk-bold-italic`,
+    extensions,
+    name: 'Hanken Grotesk',
+    weight: 'bold',
+    style: 'italic',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/SuisseIntlMono-Bold-WebS`,
+    extensions,
+    name: 'Suisse',
+    weight: 'bold',
+  },
+  {
+    filePath: `${FONT_ASSET_PATH}/SuisseIntlMono-Regular-WebS`,
+    extensions,
+    name: 'Suisse',
+  },
+];
+
+export const webFonts = { core, percipio, lxStudio } as const;
