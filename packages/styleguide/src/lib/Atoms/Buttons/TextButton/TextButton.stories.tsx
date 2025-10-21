@@ -1,5 +1,5 @@
 import { TextButton } from '@codecademy/gamut';
-import { SearchIcon } from '@codecademy/gamut-icons';
+import * as icons from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof TextButton> = {
@@ -12,22 +12,20 @@ const meta: Meta<typeof TextButton> = {
   argTypes: {
     href: {
       description: 'If defined, component will use an anchor tag',
-    },
-    mode: {
-      control: {
-        type: 'select',
-        options: ['dark', 'light'],
-      },
+      type: 'string',
     },
     size: {
-      control: {
-        type: 'select',
-        options: ['normal', 'small', 'large'],
-      },
+      control: 'radio',
+      options: ['normal', 'small', 'large'],
     },
     icon: {
-      control: {
-        options: [SearchIcon],
+      control: 'select',
+      options: Object.keys(icons),
+      mapping: icons,
+    },
+    as: {
+      table: {
+        disable: true,
       },
     },
   },

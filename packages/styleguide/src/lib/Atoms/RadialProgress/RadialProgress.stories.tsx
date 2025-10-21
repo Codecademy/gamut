@@ -8,6 +8,7 @@ const meta: Meta<typeof RadialProgress> = {
     strokeWidth: 10,
     value: 30,
     size: 120,
+    children: '',
   },
 };
 
