@@ -16,6 +16,11 @@ const meta: Meta<typeof SubmitButton> = {
         type: 'boolean',
       },
     },
+    as: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 

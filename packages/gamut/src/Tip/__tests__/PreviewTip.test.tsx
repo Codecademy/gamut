@@ -1,5 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { waitFor } from '@testing-library/dom';
+import { act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { PreviewTip } from '../PreviewTip';
@@ -17,6 +18,17 @@ const renderView = setupRtl(PreviewTip, {
 });
 
 describe('PreviewTip', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    // Run any pending timers and clean up
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
+    jest.useRealTimers();
+  });
   describe('inline placement', () => {
     it('renders a link desc, user name, and overline', () => {
       const { view } = renderView({
@@ -39,9 +51,12 @@ describe('PreviewTip', () => {
   });
 
   it('calls onClick when clicked', async () => {
+    const user = userEvent.setup({ delay: null });
     const { view } = renderView({});
 
-    await userEvent.click(view.getByRole('link'));
+    await act(async () => {
+      await user.click(view.getByRole('link'));
+    });
 
     expect(onClick).toHaveBeenCalled();
   });
@@ -58,13 +73,18 @@ describe('PreviewTip', () => {
     });
 
     it('shows the tip when it is hovered over', async () => {
+      const user = userEvent.setup({ delay: null });
       const { view } = renderView({
         placement: 'floating',
       });
 
       expect(view.queryAllByText(info).length).toBe(0);
 
-      await userEvent.hover(view.getByRole('link'));
+      await act(async () => {
+        await user.hover(view.getByRole('link'));
+        // Advance timers to trigger the tooltip show delay (300ms)
+        jest.advanceTimersByTime(300);
+      });
 
       await waitFor(() => {
         expect(view.queryAllByText(info).length).toBe(1);
@@ -72,9 +92,12 @@ describe('PreviewTip', () => {
     });
 
     it('calls onClick when clicked', async () => {
+      const user = userEvent.setup({ delay: null });
       const { view } = renderView({});
 
-      await userEvent.click(view.getByRole('link'));
+      await act(async () => {
+        await user.click(view.getByRole('link'));
+      });
 
       expect(onClick).toHaveBeenCalled();
     });

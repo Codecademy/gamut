@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 
 import { AccordionDeprecated } from '..';
 
@@ -27,7 +27,9 @@ describe('AccordionDeprecated', () => {
   it('expands when its button is clicked', () => {
     const { view } = renderView({ initiallyExpanded: true });
 
-    fireEvent.click(view.getByRole('button'));
+    act(() => {
+      fireEvent.click(view.getByRole('button'));
+    });
 
     view.getByTestId('contents');
   });
