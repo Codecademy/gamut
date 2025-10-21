@@ -120,17 +120,6 @@ export const lxStudio: readonly FontConfig[] = [
     weight: 'bold',
     style: 'italic',
   },
-  {
-    filePath: `${FONT_ASSET_PATH}/SuisseIntlMono-Bold-WebS`,
-    extensions,
-    name: 'Suisse',
-    weight: 'bold',
-  },
-  {
-    filePath: `${FONT_ASSET_PATH}/SuisseIntlMono-Regular-WebS`,
-    extensions,
-    name: 'Suisse',
-  },
 ];
 
 export const webFonts = { core, percipio, lxStudio } as const;
