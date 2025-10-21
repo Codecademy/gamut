@@ -23,6 +23,11 @@ const meta: Meta<typeof FillButton> = {
       options: Object.keys(icons),
       mapping: icons,
     },
+    as: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 
