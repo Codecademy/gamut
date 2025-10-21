@@ -61,7 +61,7 @@ There is an `mcp.json` file that is already configured, you do not need to do an
 ```
 
 To check if your MCP server is running, you can visit the endpoint: `http://127.0.0.1:3845/mcp`. You should see a response, e.g.: `{"jsonrpc":"2.0","error":{"code":-32001,"message":"Invalid sessionId"},"id":null}`.
-Otherwise if it's not running you'll see an error "This site can’t be reached" on the page.
+Yes, it's an odd response, but it indicates that the MCP server is running — otherwise if it's not running you'll see an error "This site can’t be reached" on the page.
 
 Similarly you can test the end point using:
 
@@ -84,7 +84,7 @@ You can prompt the MCP in two main ways:
 2. Selecting the node in the Figma interface, e.g.:
    > Generate the code for the current selection
 
-In the chat, you may be prompted to allow the Figma commands of `get_code()` to run.
+In the chat, you may be prompted to allow the Figma commands like `get_code()` to run.
 
 ## Feedback for the Gamut team
 
