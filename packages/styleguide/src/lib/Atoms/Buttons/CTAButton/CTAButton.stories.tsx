@@ -12,16 +12,15 @@ const meta: Meta<typeof CTAButton> = {
     href: {
       description: 'If defined, component will use an anchor tag',
     },
-    mode: {
-      control: {
-        type: 'select',
-        options: ['dark', 'light'],
-      },
-    },
     size: {
       control: {
         type: 'select',
         options: ['normal', 'small', 'large'],
+      },
+    },
+    as: {
+      table: {
+        disable: true,
       },
     },
   },
