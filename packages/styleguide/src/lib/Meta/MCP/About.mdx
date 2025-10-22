@@ -7,7 +7,7 @@ import {
 } from '~styleguide/blocks';
 
 import { parameters as codeConnectParameters } from './Code Connect.mdx';
-import { parameters as figmaMCP } from './Figma MCP.mdx';
+import { parameters as figmaMcpParameters } from './Figma MCP.mdx';
 
 export const parameters = {
   id: 'Meta/MCP',
@@ -21,5 +21,8 @@ export const parameters = {
 <AboutHeader {...parameters} />
 
 <TableOfContents
-  links={addParentPath(parameters.id, [codeConnectParameters, figmaMCP])}
+  links={addParentPath(parameters.id, [
+    codeConnectParameters,
+    figmaMcpParameters,
+  ])}
 />
