@@ -1,0 +1,57 @@
+name: Publish Production
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  NODE_VERSION: '22.13.1'
+  NODE_OPTIONS: '--max_old_space_size=8196'
+  NX_CLOUD: false
+  IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
+
+permissions:
+  id-token: write
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: publish-production
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+
+      - name: Skip build from automated commit
+        uses: ./.github/actions/skip-automated-commits
+        with:
+          ignore-commit-message: ${{ env.IGNORE_COMMIT_MESSAGE }}
+
+      - name: Setup and Build
+        uses: ./.github/actions/yarn
+
+      - name: Set git user
+        uses: ./.github/actions/set-git-user
+
+      - name: Set npm token
+        uses: ./.github/actions/set-npm-token
+        with:
+          token-secret: ${{ secrets.NODE_AUTH_TOKEN }}
+
+      - name: Build All Packages
+        run: yarn build
+
+      - name: Lerna Publish
+        run: yarn lerna publish --yes --exact --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
+        env:
+          GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
