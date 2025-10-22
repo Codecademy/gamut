@@ -39,6 +39,16 @@ jobs:
       - name: Setup and Build
         uses: ./.github/actions/yarn
 
+      - name: Cache Nx
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.cache/nx
+          key: nx-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            nx-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ github.ref_name }}-
+            nx-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-
+            nx-${{ runner.os }}-
+
       - name: Set git user
         uses: ./.github/actions/set-git-user
 

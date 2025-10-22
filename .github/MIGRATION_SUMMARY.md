@@ -89,7 +89,38 @@ Followed patterns established in existing workflows:
 - Same timeout settings (30 minutes)
 - Same permissions structure
 
-### 4. **Security Best Practices**
+### 4. **Caching Strategy**
+
+All workflows include comprehensive caching to speed up builds, matching CircleCI's strategy:
+
+**Yarn dependencies** (via `yarn` action):
+
+- Cached automatically by `setup-node` action using `cache: 'yarn'`
+- Cache key based on `yarn.lock` hash
+- Equivalent to CircleCI's yarn cache
+
+**Nx build cache** (in production workflows):
+
+- Path: `node_modules/.cache/nx`
+- Primary key: `nx-{OS}-{yarn.lock}-{branch}-{run_id}` (similar to CircleCI's epoch-based key)
+- Restore keys fall back progressively: branch → yarn.lock → OS
+- Uses standard `actions/cache@v4` which automatically saves on success
+
+**Webpack cache** (in deploy workflow):
+
+- Paths: `node_modules/.cache` and `packages/styleguide/node_modules/.cache`
+- Primary key: `webpack-{OS}-{yarn.lock}-{branch}-{commit_sha}` (matches CircleCI's revision-based key)
+- Restore keys fall back to branch and yarn.lock levels
+- Only included in deploy workflow since it's specifically needed for Storybook builds
+
+**Key improvements over CircleCI:**
+
+- Uses GitHub Actions' native `actions/cache@v4` (simpler than separate restore/save)
+- Automatic cache saving (no need for `if: always()` conditions)
+- `github.run_id` for Nx provides unique per-run keys similar to CircleCI's `{{ epoch }}`
+- `github.sha` for webpack matches CircleCI's `{{ .Revision }}`
+
+### 5. **Security Best Practices**
 
 - Minimal permissions using principle of least privilege
 - Separate tokens for different purposes (`ACTIONS_GITHUB_TOKEN` vs `NODE_AUTH_TOKEN`)
