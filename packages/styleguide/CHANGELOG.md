@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [78.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.1.3...@codecademy/styleguide@78.2.0) (2025-10-22)
+
+### Features
+
+- **GridForm, ConnectedForm:** Add nested checkboxes ([1ea044e](https://github.com/Codecademy/gamut/commit/1ea044e94cf587c83f8f01ab4aadc2bf0303b36a))
+
 ### [78.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.1.2...@codecademy/styleguide@78.1.3) (2025-10-21)
 
 **Note:** Version bump only for package @codecademy/styleguide
