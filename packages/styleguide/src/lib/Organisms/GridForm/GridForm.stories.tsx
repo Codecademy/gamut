@@ -117,6 +117,43 @@ const meta: TypeWithDeepControls<Meta<typeof GridForm>> = {
         },
         size: 4,
       },
+      {
+        label: 'Nested checkboxes',
+        name: 'nested-checkboxes',
+        type: 'nested-checkboxes',
+        defaultValue: ['backend', 'react', 'vue'],
+        options: [
+          {
+            value: 'frontend',
+            label: 'Frontend Technologies',
+            options: [
+              {
+                value: 'react',
+                label: 'React',
+                options: [
+                  { value: 'nextjs', label: 'Next.js' },
+                  { value: 'typescript', label: 'TypeScript' },
+                ],
+              },
+              {
+                value: 'vue',
+                label: 'Vue.js',
+              },
+              { value: 'angular', label: 'Angular' },
+            ],
+          },
+          {
+            value: 'backend',
+            label: 'Backend Technologies',
+            options: [
+              { value: 'node', label: 'Node.js' },
+              { value: 'python', label: 'Python' },
+              { value: 'java', label: 'Java' },
+            ],
+          },
+        ],
+        size: 12,
+      },
     ],
     submit: {
       contents: 'Submit Me!?',
@@ -128,6 +165,8 @@ const meta: TypeWithDeepControls<Meta<typeof GridForm>> = {
     },
     onSubmit: (values) => {
       action('Form Submitted')(values);
+      // eslint-disable-next-line no-console
+      console.log('Form Submitted', values);
     },
     validation: 'onSubmit',
     resetOnSubmit: true,
