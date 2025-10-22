@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
@@ -36,20 +36,23 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     setLoaded(true);
   }, []);
 
-  const setTipIsHidden = (nextTipState: boolean) => {
-    if (!nextTipState) {
-      setHideTip(nextTipState);
-      if (placement !== 'floating') {
-        // on inline component - stops text from being able to be navigated through, instead user can nav through visible text
-        setTimeout(() => {
-          setIsAriaHidden(true);
-        }, 1000);
+  const setTipIsHidden = useCallback(
+    (nextTipState: boolean) => {
+      if (!nextTipState) {
+        setHideTip(nextTipState);
+        if (placement !== 'floating') {
+          // on inline component - stops text from being able to be navigated through, instead user can nav through visible text
+          setTimeout(() => {
+            setIsAriaHidden(true);
+          }, 1000);
+        }
+      } else {
+        if (isAriaHidden) setIsAriaHidden(false);
+        setHideTip(nextTipState);
       }
-    } else {
-      if (isAriaHidden) setIsAriaHidden(false);
-      setHideTip(nextTipState);
-    }
-  };
+    },
+    [isAriaHidden, placement]
+  );
 
   const escapeKeyPressHandler = (
     event: React.KeyboardEvent<HTMLDivElement>
@@ -83,6 +86,21 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       document.removeEventListener('mousedown', handleOutsideClick);
     };
   });
+
+  useEffect(() => {
+    if (!isTipHidden && placement === 'floating') {
+      const handleGlobalEscapeKey = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          setTipIsHidden(true);
+        }
+      };
+
+      document.addEventListener('keydown', handleGlobalEscapeKey);
+      return () => {
+        document.removeEventListener('keydown', handleGlobalEscapeKey);
+      };
+    }
+  }, [isTipHidden, placement, setTipIsHidden]);
 
   const isFloating = placement === 'floating';
 
