@@ -14,7 +14,7 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-<Callout text="You must have a Dev or Full account to be able to be able to use the Figma MCP." />
+<Callout text="Any MCP generated code is EXPERIMENTAL! You should always validate the code generated and adapt it to your own needs. Additionally, you must have a Dev or Full account to be able to be able to use the Figma MCP." />
 
 Much of the following information is extracted from the [Figma Dev Mode MCP documentation](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Dev-Mode-MCP-Server) — it's been adapted to fit the context of this repository.
 
@@ -37,11 +37,7 @@ If you haven't already, download the Figma desktop client app appropriate for yo
 
 ## Set up MCP Client for your text editor/IDE
 
-We currently support MCP for VSCode and Cursor. Please let the Gamut team know if you'd like support for other editors.
-
-### VSCode
-
-There is an `mcp.json` file that is already configured, you do not need to do anything else.
+We currently support Figma MCP for Cursor. Please let the Gamut team know if you'd like support for other editors.
 
 ### Cursor
 
@@ -59,6 +55,8 @@ There is an `mcp.json` file that is already configured, you do not need to do an
   }
 }
 ```
+
+### Verify your MCP server is running
 
 To check if your MCP server is running, you can visit the endpoint: `http://127.0.0.1:3845/mcp`. You should see a response, e.g.: `{"jsonrpc":"2.0","error":{"code":-32001,"message":"Invalid sessionId"},"id":null}`.
 Yes, it's an odd response, but it indicates that the MCP server is running — otherwise if it's not running you'll see an error "This site can’t be reached" on the page.

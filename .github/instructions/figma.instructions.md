@@ -18,39 +18,54 @@ When generating code from Figma designs, follow these rules:
 - "generate from figma" or similar requests
 - MCP Figma server is being used
 
-## MANDATORY Pre-Generation Steps
+## MANDATORY Pre-Generation Steps - MUST BE COMPLETED IN ORDER
 
-**BEFORE generating ANY code from Figma, you MUST:**
+**Step 1: Figma Inspection (REQUIRED)**
 
-1. **Inspect the Figma layer hierarchy**:
+- [ ] Call `get_metadata` WITH nodeId
+- [ ] Call `get_metadata` WITHOUT nodeId
+- **IMPORTANT**: Current limitation - `get_metadata` may not return nested child layer names (icons, nested components, etc.)
+  - **If child layer names are not available from tooling:**
+    - Analyze the screenshot and make your best guess about which icons/nested components are used
+    - Look for visual clues (user icon, gear icon, etc.) and match them to likely Gamut icon names
+    - Search the codebase to verify the icon exists (e.g., check for `PersonIcon`, `GearIcon`, etc. in `/packages/gamut-icons/src`)
+    - Generate the code using your best guess
+    - **AFTER generating the code**, ask the user to confirm the icons are correct
+    - Example: "I've generated the code using PersonIcon and GearIcon based on what I see in the screenshot. Can you confirm these are the correct icons from the Figma layers?"
+  - Map icon layer names to components in the codebase (e.g., "Regular/Interface/PersonIcon" → `PersonIcon`, "Mini/MiniCheckCircleIcon" → `MiniCheckCircleIcon`)
+- [ ] Call `get_image` to get screenshot FOR CONFIRMATION ONLY
+- [ ] **Validate that screenshot matches metadata understanding**
 
-   - Call `get_metadata` WITH the nodeId to get parent component info
-   - Call `get_metadata` WITHOUT nodeId (empty string) to attempt to get CHILD layers
-   - **IMPORTANT**: Current limitation - `get_metadata` may not return nested child layer names (icons, nested components, etc.)
-   - **If child layer names are not available from tooling:**
-     - Analyze the screenshot and make your best guess about which icons/nested components are used
-     - Look for visual clues (user icon, gear icon, etc.) and match them to likely Gamut icon names
-     - Search the codebase to verify the icon exists (e.g., check for `PersonIcon`, `GearIcon`, etc. in `/packages/gamut-icons/src`)
-     - Generate the code using your best guess
-     - **AFTER generating the code**, ask the user to confirm the icons are correct
-     - Example: "I've generated the code using PersonIcon and GearIcon based on what I see in the screenshot. Can you confirm these are the correct icons from the Figma layers?"
-   - Map icon layer names to components in the codebase (e.g., "Regular/Interface/PersonIcon" → `PersonIcon`, "Mini/MiniCheckCircleIcon" → `MiniCheckCircleIcon`)
+**Step 1.5: Metadata Analysis (NEW - REQUIRED)**
 
-2. **Read token files** (use read_file tool on ALL of these):
+- [ ] **PRIMARY SOURCE**: Use Figma metadata to determine:
+  - Component name and type
+  - Layer structure and nested components
+  - Any CodeConnect implementations mentioned
+- [ ] **SECONDARY SOURCE**: Use screenshot only to:
+  - Confirm visual styling details
+  - Identify icons if not available in metadata
+  - Validate layout and spacing
+- [ ] **If metadata says "Badge" but screenshot looks different, trust the metadata**
 
-   - `/packages/gamut-styles/src/variables/spacing.ts`
-   - `/packages/gamut-styles/src/variables/colors.ts`
-   - `/packages/gamut-styles/src/variables/typography.ts`
-   - `/packages/gamut-styles/src/variables/borderRadii.ts`
+**Step 2: Token Analysis (REQUIRED)**
 
-3. **Search for existing components** (use codebase_search):
+- [ ] Read `/packages/gamut-styles/src/variables/spacing.ts`
+- [ ] Read `/packages/gamut-styles/src/variables/colors.ts`
+- [ ] Read `/packages/gamut-styles/src/variables/typography.ts`
+- [ ] Read `/packages/gamut-styles/src/variables/borderRadii.ts`
 
-   - Check if similar component exists in `/packages/gamut/src`
-   - If exists, extend it instead of creating new one
+**Step 3: Component Research (REQUIRED)**
 
-4. **Understand the design system patterns**:
-   - Read example components like Badge, Tag, or Button
-   - Follow variance, system props, and styledOptions patterns
+- [ ] Search for existing components in `/packages/gamut/src`
+- [ ] Read existing component if found
+- [ ] Determine if extending existing vs creating new
+
+**Step 4: Generate Code**
+
+- [ ] Use existing components when possible
+- [ ] Follow token mapping rules strictly
+- [ ] Validate against post-generation checklist
 
 ## Asset Management
 
