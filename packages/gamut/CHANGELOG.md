@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.0.3...@codecademy/gamut@67.1.0) (2025-10-22)
+
+### Features
+
+- **GridForm, ConnectedForm:** Add nested checkboxes ([1ea044e](https://github.com/Codecademy/gamut/commit/1ea044e94cf587c83f8f01ab4aadc2bf0303b36a))
+
+### [67.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.0.2...@codecademy/gamut@67.0.3) (2025-10-21)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ### [67.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.0.1...@codecademy/gamut@67.0.2) (2025-10-15)
 
 ### Bug Fixes

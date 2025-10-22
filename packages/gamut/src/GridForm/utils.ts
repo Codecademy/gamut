@@ -14,6 +14,8 @@ export const assignDefaultValue = (field: GridFormField) => {
     case 'text':
     case 'textarea':
       return '';
+    case 'nested-checkboxes':
+      return [];
     default:
       break;
   }
