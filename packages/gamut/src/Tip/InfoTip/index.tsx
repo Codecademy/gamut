@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
@@ -30,26 +30,31 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const [isTipHidden, setHideTip] = useState(true);
   const [isAriaHidden, setIsAriaHidden] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const popoverContentRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     setLoaded(true);
   }, []);
 
-  const setTipIsHidden = (nextTipState: boolean) => {
-    if (!nextTipState) {
-      setHideTip(nextTipState);
-      if (placement !== 'floating') {
-        // on inline component - stops text from being able to be navigated through, instead user can nav through visible text
-        setTimeout(() => {
-          setIsAriaHidden(true);
-        }, 1000);
+  const setTipIsHidden = useCallback(
+    (nextTipState: boolean) => {
+      if (!nextTipState) {
+        setHideTip(nextTipState);
+        if (placement !== 'floating') {
+          // on inline component - stops text from being able to be navigated through, instead user can nav through visible text
+          setTimeout(() => {
+            setIsAriaHidden(true);
+          }, 1000);
+        }
+      } else {
+        if (isAriaHidden) setIsAriaHidden(false);
+        setHideTip(nextTipState);
       }
-    } else {
-      if (isAriaHidden) setIsAriaHidden(false);
-      setHideTip(nextTipState);
-    }
-  };
+    },
+    [isAriaHidden, placement]
+  );
 
   const escapeKeyPressHandler = (
     event: React.KeyboardEvent<HTMLDivElement>
@@ -84,6 +89,65 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     };
   });
 
+  useEffect(() => {
+    if (!isTipHidden && placement === 'floating') {
+      const handleGlobalEscapeKey = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          setTipIsHidden(true);
+          buttonRef.current?.focus();
+        }
+      };
+
+      const handleFocusOut = (event: FocusEvent) => {
+        const popoverContent = popoverContentRef.current;
+        const button = buttonRef.current;
+        const wrapper = wrapperRef.current;
+
+        const { relatedTarget } = event;
+
+        if (relatedTarget instanceof Node) {
+          // If focus is moving back to the button or wrapper, allow it
+          const movingToButton =
+            button?.contains(relatedTarget) || wrapper?.contains(relatedTarget);
+
+          if (movingToButton) return;
+
+          // If focus is staying within the popover content, allow it
+          if (popoverContent?.contains(relatedTarget)) return;
+
+          // Focus is leaving the InfoTip system entirely (via Tab, arrow keys, or any navigation)
+          // Return it to the button to maintain logical focus order
+          buttonRef.current?.focus();
+        } else if (relatedTarget === null) {
+          // Focus is being removed entirely (e.g., clicking elsewhere or navigating)
+          // Return focus to button to maintain logical tab order
+          setTimeout(() => {
+            buttonRef.current?.focus();
+          }, 0);
+        }
+      };
+
+      // Wait for the popover ref to be set before attaching the listener
+      let popoverContent: HTMLDivElement | null = null;
+      const timeoutId = setTimeout(() => {
+        popoverContent = popoverContentRef.current;
+        if (popoverContent) {
+          popoverContent.addEventListener('focusout', handleFocusOut);
+        }
+      }, 0);
+
+      document.addEventListener('keydown', handleGlobalEscapeKey);
+
+      return () => {
+        clearTimeout(timeoutId);
+        if (popoverContent) {
+          popoverContent.removeEventListener('focusout', handleFocusOut);
+        }
+        document.removeEventListener('keydown', handleGlobalEscapeKey);
+      };
+    }
+  }, [isTipHidden, placement, setTipIsHidden]);
+
   const isFloating = placement === 'floating';
 
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
@@ -93,6 +157,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     escapeKeyPressHandler,
     info,
     isTipHidden,
+    popoverContentRef,
     wrapperRef,
     ...rest,
   };
@@ -112,6 +177,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       active={!isTipHidden}
       aria-expanded={!isTipHidden}
       emphasis={emphasis}
+      ref={buttonRef}
       onClick={() => clickHandler()}
     />
   );
