@@ -30,6 +30,8 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const [isTipHidden, setHideTip] = useState(true);
   const [isAriaHidden, setIsAriaHidden] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const popoverContentRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -92,11 +94,55 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       const handleGlobalEscapeKey = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
           setTipIsHidden(true);
+          buttonRef.current?.focus();
         }
       };
 
+      const handleFocusOut = (event: FocusEvent) => {
+        const popoverContent = popoverContentRef.current;
+        const button = buttonRef.current;
+        const wrapper = wrapperRef.current;
+
+        const { relatedTarget } = event;
+
+        if (relatedTarget instanceof Node) {
+          // If focus is moving back to the button or wrapper, allow it
+          const movingToButton =
+            button?.contains(relatedTarget) || wrapper?.contains(relatedTarget);
+
+          if (movingToButton) return;
+
+          // If focus is staying within the popover content, allow it
+          if (popoverContent?.contains(relatedTarget)) return;
+
+          // Focus is leaving the InfoTip system entirely (via Tab, arrow keys, or any navigation)
+          // Return it to the button to maintain logical focus order
+          buttonRef.current?.focus();
+        } else if (relatedTarget === null) {
+          // Focus is being removed entirely (e.g., clicking elsewhere or navigating)
+          // Return focus to button to maintain logical tab order
+          setTimeout(() => {
+            buttonRef.current?.focus();
+          }, 0);
+        }
+      };
+
+      // Wait for the popover ref to be set before attaching the listener
+      let popoverContent: HTMLDivElement | null = null;
+      const timeoutId = setTimeout(() => {
+        popoverContent = popoverContentRef.current;
+        if (popoverContent) {
+          popoverContent.addEventListener('focusout', handleFocusOut);
+        }
+      }, 0);
+
       document.addEventListener('keydown', handleGlobalEscapeKey);
+
       return () => {
+        clearTimeout(timeoutId);
+        if (popoverContent) {
+          popoverContent.removeEventListener('focusout', handleFocusOut);
+        }
         document.removeEventListener('keydown', handleGlobalEscapeKey);
       };
     }
@@ -111,6 +157,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     escapeKeyPressHandler,
     info,
     isTipHidden,
+    popoverContentRef,
     wrapperRef,
     ...rest,
   };
@@ -130,6 +177,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       active={!isTipHidden}
       aria-expanded={!isTipHidden}
       emphasis={emphasis}
+      ref={buttonRef}
       onClick={() => clickHandler()}
     />
   );
