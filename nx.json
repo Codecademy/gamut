@@ -17,8 +17,8 @@
   "namedInputs": {
     "babelConfig": ["{workspaceRoot}/babel.defaults.js"],
     "ci": [
-      "{workspaceRoot}/.circleci/config.yml",
-      "{workspaceRoot}/.github/push.yml"
+      "{workspaceRoot}/.github/workflows/**/*.yml",
+      "{workspaceRoot}/.github/actions/**/*.yml"
     ],
     "default": ["{projectRoot}/**/*"],
     "production": [

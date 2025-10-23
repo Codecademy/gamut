@@ -4,7 +4,7 @@ _The component library & design system for Codecademy._ ✨
 
 ---
 
-[![CircleCI](https://circleci.com/gh/Codecademy/gamut.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/Codecademy/gamut)
+[![GitHub Actions](https://github.com/Codecademy/gamut/workflows/Test%20Suite/badge.svg)](https://github.com/Codecademy/gamut/actions)
 
 This repository is a monorepo that we manage using [Lerna](https://lerna.js.org/). That means that we publish several packages to npm from the same codebase, including:
 
@@ -70,7 +70,7 @@ We provide a single package to manage the versions of a few core dependencies: `
 1.  After your code has been reviewed and tested, you can merge your branch into main.
 1.  Make sure to update your PR title and add a short description of your changes for the changelog (see the [PR Title Guide](https://github.com/Codecademy/gamut#pr-title-guide))
 1.  To merge your changes, add the `Ship It` label to your Pull Request.
-1.  Once your branch is merged into main, it will be published automatically by CircleCI.
+1.  Once your branch is merged into main, it will be published automatically by GitHub Actions.
 1.  You can find the new version number on npmjs.com/package/<package-name>, or find it in that package's `package.json` on the `main` branch
 
 ### Publishing an alpha version of a module
