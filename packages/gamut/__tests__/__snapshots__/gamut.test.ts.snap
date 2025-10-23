@@ -21,6 +21,7 @@ exports[`Gamut Exported Keys 1`] = `
   "ConnectedForm",
   "ConnectedFormGroup",
   "ConnectedInput",
+  "ConnectedNestedCheckboxes",
   "ConnectedRadio",
   "ConnectedRadioGroup",
   "ConnectedRadioGroupInput",

@@ -1,0 +1,98 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, LinkTo, TokenTable } from '~styleguide/blocks';
+
+import { color, swatch } from '../shared/elements';
+import * as TABLES from '../shared/percipioElements';
+
+export const parameters = {
+  title: 'Percipio Theme',
+  subtitle: 'Theme used within the Percipio application',
+  status: 'current',
+  source: {
+    repo: 'gamut-styles',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/themes',
+  },
+};
+
+<Meta title="Foundations/Theme/Percipio Theme" />
+
+<AboutHeader {...parameters} />
+
+The Percipio Theme is a theme used within the Percipio application. It is built off of the Core Theme with additional tokens and overrides for Percipio. For all other tokens not listed here, refer to the <LinkTo id="Foundations/Theme/Core Theme">Core Theme</LinkTo>.
+
+## Usage
+
+If you are using the Percipio Theme via the Gamut theme provider in your app (i.e. `<GamutProvider theme={percipioTheme}>`), you can access the Percipio Theme object via `theme` using our css-in-js utilities.
+
+```tsx
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+
+const Box = styled.div(css({ bg: 'percipioActionPrimary', p: 4 })); // our system props inherently use the current theme
+
+const styles = styled.div`
+  color: ${({ theme }) =>
+    theme.colors
+      .percipioActionPrimary}; // theme here refers to the current theme, which is the Percipio theme
+`;
+```
+
+If you have to import the theme object from `@codecademy/gamut-styles`, you will need to import the `percipioTheme` object, as `theme` references the Core Theme.
+
+```tsx
+import { css } from '@emotion/react';
+import { percipioTheme, theme } from '@codecademy/gamut-styles';
+
+const myStyles = css`
+  color: ${percipioTheme.colors.percipioActionPrimary};
+`;
+
+const notWorkingStyles = css`
+  color: ${theme.colors
+    .percipioActionPrimary}; // percipioActionPrimary does not exist in the Core Theme colors so this does not work
+`;
+```
+
+See <LinkTo id="Foundations/Theme/About">Theme/About</LinkTo> for more information on the theme object and how to use it.
+
+## Color
+
+**Key**: `colors`
+
+All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches. The Percipio Theme contains all the colors from the Core Theme, as well as additional colors for Percipio.
+
+### Percipio colors
+
+<TokenTable {...TABLES.percipioColor} />
+
+### Standard colors
+
+Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
+
+<TokenTable {...color} />
+
+### Solid color swatches
+
+Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a list of all the solid swatches available.
+
+<TokenTable {...swatch} />
+
+## Color modes
+
+Each color mode consists of a set of aliased color tokens that have a semantic meaning for how the color is used throughout our design system. For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-colormode--page).
+
+Percipio currently only supports `light` mode.
+
+### Light mode
+
+<TABLES.PercipioLightModeTable />
+
+## Font family
+
+**Key**: `fontFamily`
+
+The Percipio theme uses Roboto fonts for all font families to provide a consistent typography experience.
+
+<TokenTable {...TABLES.percipioFontFamily} />

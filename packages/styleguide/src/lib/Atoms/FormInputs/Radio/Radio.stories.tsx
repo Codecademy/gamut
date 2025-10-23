@@ -1,12 +1,18 @@
 import { Radio, RadioGroup } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
+import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
-const meta: Meta<typeof Radio> = {
+import { infotipNestedArgTypes } from '~styleguide/argTypes';
+
+const meta: TypeWithDeepControls<Meta<typeof Radio>> = {
   component: Radio,
   args: {
     htmlFor: 'example-radio',
     label: 'Option 1',
     name: 'example-radio',
+  },
+  argTypes: {
+    ...infotipNestedArgTypes,
   },
 };
 
