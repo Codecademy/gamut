@@ -5,8 +5,8 @@ import { IllustrationProps } from './types';
 export const Achievement: React.FC<IllustrationProps> = ({
   'aria-hidden': ariaHidden,
   className,
-  height = '225',
-  width = '400',
+  height = '206',
+  width = '407',
 }) => (
   <svg
     aria-hidden={ariaHidden}
