@@ -25,7 +25,7 @@ const variants = [
 export const VariantsExample = ({ useIcon }: { useIcon: boolean }) => {
   return (
     <LayoutGrid>
-      <Column size={6}>
+      <Column size={{ _: 12, md: 6 }}>
         <Background
           bg="white"
           display="grid"
@@ -49,7 +49,7 @@ export const VariantsExample = ({ useIcon }: { useIcon: boolean }) => {
           ))}
         </Background>
       </Column>
-      <Column size={6}>
+      <Column size={{ _: 12, md: 6 }}>
         <Background
           bg="navy"
           display="grid"
