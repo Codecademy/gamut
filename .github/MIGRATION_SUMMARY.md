@@ -28,21 +28,29 @@ This document summarizes the migration from CircleCI to GitHub Actions completed
 
 ### 1. `.github/workflows/automerge.yml`
 
-- **Change**: Updated CircleCI check reference from `build-test` to `test`
-- **Reason**: The test suite is now run via GitHub Actions workflow named "Test Suite" with job name "test"
+- **Changes**:
+  - Updated CircleCI check reference from `build-test` to `test`
+  - Removed redundant `wait-for-check` step
+- **Reason**: The `pascalgn/automerge-action` automatically waits for all required status checks configured in branch protection rules, making the explicit wait step unnecessary
 
-### 2. `README.md`
+### 2. `.github/actions/yarn/action.yml`
+
+- **Change**: Added `cache: 'yarn'` to `setup-node` action
+- **Reason**: Enables automatic caching of Yarn dependencies using GitHub Actions' built-in caching
+
+### 3. `README.md`
 
 - **Changes**:
   - Replaced CircleCI badge with GitHub Actions badge
   - Updated publishing documentation to reference GitHub Actions instead of CircleCI
 
-### 3. `nx.json`
+### 4. `nx.json`
 
 - **Change**: Updated `ci` named input to reference GitHub Actions workflows
-- **Before**: Referenced `.circleci/config.yml` and `.github/push.yml`
+- **Before**: Referenced `.circleci/config.yml` and `.github/push.yml` (both incorrect/non-existent)
 - **After**: References `.github/workflows/**/*.yml` and `.github/actions/**/*.yml`
 - **Impact**: Nx will now properly invalidate caches when any GitHub Actions workflow or action changes
+- **Documentation**: [Nx Named Inputs](https://nx.dev/concepts/more-concepts/customizing-inputs#named-inputs)
 
 ## Files Deleted
 
@@ -130,12 +138,15 @@ All workflows include comprehensive caching to speed up builds, matching CircleC
 
 Before considering this migration complete, verify:
 
+- [ ] Verify required secrets are configured (`ACTIONS_GITHUB_TOKEN`, `NODE_AUTH_TOKEN`)
+- [ ] Confirm branch protection rules require: `test`, `format`, `lint (lint)`, `lint (verify)`
 - [ ] Merge a PR to main and confirm packages are published correctly
 - [ ] Verify GitHub releases are created with proper changelog
 - [ ] Confirm Storybook deploys to GitHub Pages successfully
-- [ ] Check that automerge still works with the new test check name
+- [ ] Check that automerge waits for all required checks before merging
 - [ ] Verify concurrency controls prevent overlapping publishes/deploys
 - [ ] Ensure skip-automated-commits properly prevents circular builds
+- [ ] Confirm Yarn/Nx/webpack caches are working (check workflow run times)
 
 ## Secrets Required
 
@@ -145,12 +156,31 @@ Ensure the following secrets are configured in GitHub:
 - `NODE_AUTH_TOKEN` - For publishing to npm
 - Other existing secrets used by other workflows
 
+## Summary of All Changes
+
+**New files (3):**
+
+- `.github/workflows/publish-production.yml` - Publishes production packages to npm
+- `.github/workflows/deploy-production.yml` - Deploys production Storybook to GitHub Pages
+- `.github/MIGRATION_SUMMARY.md` - This documentation file
+
+**Modified files (4):**
+
+- `.github/workflows/automerge.yml` - Updated check name and removed redundant wait step
+- `.github/actions/yarn/action.yml` - Added Yarn caching via setup-node
+- `README.md` - Updated badge and documentation
+- `nx.json` - Updated CI input references to GitHub Actions
+
+**Deleted:**
+
+- `.circleci/` directory - Entire CircleCI configuration removed
+
 ## Rollback Plan
 
 If issues arise, you can temporarily:
 
 1. Restore `.circleci/config.yml` from git history
 2. Re-enable CircleCI in the repository settings
-3. Update the automerge workflow to reference `build-test` again
+3. Disable the new production workflows
 
 However, this should only be done as a last resort. Most issues can be fixed by updating the new workflows.
