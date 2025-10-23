@@ -20,15 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/main'
     steps:
-      - name: Wait for CI build
-        uses: fountainhead/action-wait-for-check@v1.0.0
-        id: wait-for-build
-        with:
-          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
-          checkName: test
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
-          timeoutSeconds: 1200
-          intervalSeconds: 30
       - name: automerge
         uses: pascalgn/automerge-action@v0.13.0
         env:
