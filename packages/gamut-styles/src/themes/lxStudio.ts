@@ -1,7 +1,7 @@
 import { createTheme } from '@codecademy/variance';
 
 import {
-  fontBase,
+  fontLxStudio,
   fontMonospace,
   fontSystem,
   lxStudioPalette,
@@ -14,8 +14,8 @@ import { coreTheme } from './core';
  */
 
 const lxStudioFontFamily = {
-  accent: fontBase,
-  base: fontBase,
+  accent: fontLxStudio,
+  base: fontLxStudio,
   monospace: fontMonospace,
   system: fontSystem,
 } as const;
