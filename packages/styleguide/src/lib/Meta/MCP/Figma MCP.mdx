@@ -1,0 +1,95 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, Callout } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Figma MCP [BETA]',
+  title: 'Figma MCP [BETA]',
+  subtitle:
+    'Set up the Figma MCP locally to enable design to code generation, exclusive to Codecademy + Skillsoft employees.',
+  status: 'updating',
+};
+
+<Meta title="Meta/MCP/Figma MCP [BETA]" />
+
+<AboutHeader {...parameters} />
+
+<Callout text="Any MCP generated code is EXPERIMENTAL! You should always validate the code generated and adapt it to your own needs. Additionally, you must have a Dev or Full account to be able to be able to use the Figma MCP." />
+
+Much of the following information is extracted from the [Figma Dev Mode MCP documentation](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Dev-Mode-MCP-Server) — it's been adapted to fit the context of this repository.
+
+## Installing the Code Connect command line tool
+
+To install the Code Connect command line tool, run the following command:
+
+```bash
+npm install --global @figma/code-connect@latest
+```
+
+## Figma (desktop client app)
+
+If you haven't already, download the Figma desktop client app appropriate for your OS by going to [Figma's download page](https://www.figma.com/downloads/).
+
+### Start up local Figma MCP server
+
+1. Click on the Figma icon in the top left-hand corner
+2. Preferences > Enable local MCP server
+
+## Set up MCP Client for your text editor/IDE
+
+We currently support Figma MCP for Cursor. Please let the Gamut team know if you'd like support for other editors.
+
+### Cursor
+
+1. Open Cursor → Settings → Cursor Settings.
+2. Go to the MCP tab (might be called MCP & Integrations) from the left-hand sidebar.
+3. Under "MCP Tools", click "+ Add MCP server".
+4. Enter the following configuration and save:
+
+```
+{
+  "mcpServers": {
+    "Figma": {
+      "url": "http://127.0.0.1:3845/mcp"
+    }
+  }
+}
+```
+
+### Verify your MCP server is running
+
+To check if your MCP server is running, you can visit the endpoint: `http://127.0.0.1:3845/mcp`. You should see a response, e.g.: `{"jsonrpc":"2.0","error":{"code":-32001,"message":"Invalid sessionId"},"id":null}`.
+Yes, it's an odd response, but it indicates that the MCP server is running — otherwise if it's not running you'll see an error "This site can’t be reached" on the page.
+
+Similarly you can test the end point using:
+
+```bash
+curl http://127.0.0.1:3845/mcp
+```
+
+## (Optional) Check the rules
+
+In this repo, there are rules for Copilot (VScode) and Cursor to use the Figma MCP server. You can find them in `.github/instructions/figma.instructions.md` and `.cursor/rules/figma-rules.mdc` respectively.
+
+## Prompt your MCP client
+
+You can prompt the MCP in two main ways:
+
+1. Provide a link to the node of the design you'd like to generate code for, e.g.:
+
+   > Generate the code for this node: https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=79202-13690&m=dev
+
+2. Selecting the node in the Figma interface, e.g.:
+   > Generate the code for the current selection
+
+In the chat, you may be prompted to allow the Figma commands like `get_code()` to run.
+
+## Feedback for the Gamut team
+
+Please let the Gamut team of any feedback you have, things like:
+
+- If you find that a new rule that you'd like implemented in this repo, please let the Gamut team know.
+- Support for another text editor/IDE.
+- Incorrect code generation
+
+If you have any other feedback or suggestions, feel free to share those as well!
