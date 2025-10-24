@@ -1,15 +1,8 @@
-import {
-  Column,
-  FormGroup,
-  GridForm,
-  Input,
-  LayoutGrid,
-  Markdown,
-} from '@codecademy/gamut';
+import { FormGroup, GridForm, Input, Markdown } from '@codecademy/gamut';
 import { Background } from '@codecademy/gamut-styles';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
-import { ComponentProps, useState } from 'react';
+import { useState } from 'react';
 import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
 const meta: TypeWithDeepControls<Meta<typeof GridForm>> = {
