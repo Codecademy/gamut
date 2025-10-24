@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+export const parameters = {
+  title: 'Usage',
+  subtitle: 'How to use and design with GridForm.',
+};
+
+<Meta title="Organisms/GridForm/Usage" />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+The GridForm organism provides an easy, out-of-the-box way to implement forms from a list of fields. When provided a list of fields, GridForm strings together the appropriate <LinkTo id="Atoms/FormElements/About">Form Elements</LinkTo> inside a <LinkTo id="Layouts/LayoutGrid">LayoutGrid</LinkTo>.
+
+GridForm provides the following benefits:
+
+1. **Simplicity**: This organism takes in plain JSON-like props and uses them to string together a validated form
+2. **Accessibility**: All GridForms handle accessibility styling and behaviors, passing tests out-of-the-box
+3. **Functionality**: Validation and submission logic is handled by the [react-hook-form](https://react-hook-form.com) library
+4. **Visual Consistency**: Aligns all input elements with the correct vertical rhythms and grid spacing
+
+## Designing with GridForm
+
+All [Form Input](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1189%3A0) components in the Figma library are consistent with their implementations in code. By setting the form inputs within the component's layout grid, we can design forms that are compatible with Gamut.
+
+The [GridForm page in Gamut](https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1689%3A3910) also contains several starter templates for incorporating this organism in your designs.
+
+- **Starter**: Contains sample components to begin creating your own form
+- **Sections**: Contains the headers and dividers that are rendered in the optional Sections modules
+- **Inline Submit**: A form incorporating the Inline Submit Button style of GridForm
+- **Instructions**: Contains suggestions for modifying the Figma component for your own designs
+
+### Figma component instructions
+
+- Enable Layout Grid (^G)
+- Select a `❖ GridForm` variant as a template
+  - Starter, Sections, Inline Submit
+- Detatch the component to modify the `📐 LayoutGrid`
+- Add, remove, and edit `⬦ Form Inputs`
+  - Input Field, TextArea, Checkbox, Radio Button, Select
+- Customize `🚥 GridFormButtons`
+  - Submit button style (Fill/CTA), position, cancel button
+
