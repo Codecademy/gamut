@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.52.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.51.3...@codecademy/gamut-icons@9.52.0) (2025-10-22)
+
+### Features
+
+- add media library icon - regular ([06e9161](https://github.com/Codecademy/gamut/commit/06e916101ddfb0ebdfade70fcceaa5354a1d15a6))
+
+### [9.51.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.51.2...@codecademy/gamut-icons@9.51.3) (2025-10-21)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
 ### [9.51.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.51.1...@codecademy/gamut-icons@9.51.2) (2025-10-15)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
