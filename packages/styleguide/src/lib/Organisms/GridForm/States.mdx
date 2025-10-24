@@ -1,0 +1,66 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as StatesStories from './States.stories';
+
+export const parameters = {
+  title: 'States',
+  subtitle: 'Manage field behavior and form state.',
+};
+
+<Meta title="Organisms/GridForm/States" />
+
+<ComponentHeader {...parameters} />
+
+## Field Behavior & State Management
+
+### Disabled inputs
+
+If an input is not meant to be usable, such as when a portion of a form is disabled pending user action, you can make it visually disabled with a `disabled` field member.
+
+<Canvas of={StatesStories.DisabledInputs} />
+
+### On field update
+
+A field can take an onUpdate callback. This callback will fire when the
+field's value changes. This could be useful if you need to use the
+field's value in a parent component before onSubmit gets triggered.
+
+<Canvas of={StatesStories.OnFieldUpdate} />
+
+### Loading and disabled states
+
+You can set the state of the submit button to `loading` as `true` to show a loading spinner. This is useful when you need to show the user that the form is submitting.
+You can also set `disabled` to `true` to disable submission.
+
+<Canvas of={StatesStories.LoadingAndDisabled} />
+
+### Disabled fields on submit
+
+`disableFieldsOnSubmit` will disable all form fields once the form has been successfully submitted. If you have any server-side validation that needs to happen, we recommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
+
+<Canvas of={StatesStories.DisabledFieldsOnSubmit} />
+
+### Reset form on submit
+
+`resetOnSubmit` will reset the form once the GridForm has been successfully submitted. If you have any server validation that needs to happen, we recommend using the `wasSubmitSuccessful` prop, but submission will also fail if a promise is rejected within your `onSubmit` or if a field does not pass validation.
+
+<Canvas of={StatesStories.ResetOnSubmit} />
+
+We can combine these together to create some pretty cool forms which have a loading state, disable their fields while submitting, and reset the form when the submit was successful.
+
+<Canvas of={StatesStories.FormLoading} />
+
+### Custom error
+
+A field can take a custom error in addition to validation errors. The validation error will always take precedence to the custom error.
+
+<Canvas of={StatesStories.CustomError} />
+
+### Markdown errors
+
+GridForm renders errors through our <LinkTo id="atoms-markdown--basics">Markdown</LinkTo> component so we can optionally add markdown to our validation messages.
+
+<Canvas of={StatesStories.MarkdownErrors} />
+
