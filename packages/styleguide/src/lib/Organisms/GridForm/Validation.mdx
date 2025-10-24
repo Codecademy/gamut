@@ -21,7 +21,7 @@ You can control when validation occurs by setting the `validation` prop on the G
 - `'onChange'` - Validate on every change, submit button is disabled until all required fields are valid
 - `'onTouched'` - Validate when a field loses focus
 
-### Required Fields
+## Required Fields
 
 The most common validation is making fields required. You can specify required validation as a boolean or with a custom error message:
 
@@ -37,7 +37,7 @@ validation: {
 }
 ```
 
-### Pattern Validation
+## Pattern Validation
 
 Use regular expressions to validate field formats like email addresses, phone numbers, or custom patterns:
 
@@ -51,7 +51,7 @@ validation: {
 }
 ```
 
-### Custom Validation
+## Custom Validation
 
 For complex validation logic, use custom validation functions. These functions receive the field value and can return `true` for valid input or an error message string:
 
@@ -72,7 +72,7 @@ validation: {
 }
 ```
 
-### String Length Validation
+## String Length Validation
 
 Validate minimum and maximum string lengths:
 
@@ -90,7 +90,7 @@ validation: {
 }
 ```
 
-### Number Range Validation
+## Number Range Validation
 
 For number inputs, validate minimum and maximum values:
 

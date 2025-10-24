@@ -13,9 +13,7 @@ export const parameters = {
 
 <ComponentHeader {...parameters} />
 
-## Form Action Buttons
-
-### Submit button position
+## Submit button position
 
 We can position the submit button by passing the `position` prop within `submit` with a
 value of `'left'`, `'center'`, `'right'`, or `'stretch'`. The default is `'left'`.
@@ -28,7 +26,7 @@ value of `'left'`, `'center'`, `'right'`, or `'stretch'`. The default is `'left'
 
 <Canvas of={ButtonsStories.SubmitButtonStretch} />
 
-### Submit button type
+## Submit button type
 
 We can specify the type submit button by passing the `type` prop within `submit`. We can choose between
 the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="atoms-button--cta-button">`CTAButton`</LinkTo>. The default is `'fill'`.
@@ -37,7 +35,7 @@ the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="
 
 <Canvas of={ButtonsStories.SubmitButtonCTA} />
 
-### Inline submit button
+## Inline submit button
 
 We can make the Submit button inline with an input by setting the column
 sizes so they fit on the same row (e.g size 8 for an input and size 4 for
@@ -49,9 +47,22 @@ align nicely with the input. **However**, if using `hideLabel` to remove the def
 
 <Canvas of={ButtonsStories.SubmitButtonInline} />
 
-### Cancel button
+## Cancel button
 
 Optionally, include a cancel button.
 
 <Canvas of={ButtonsStories.CancelButton} />
 
+## Button states
+
+### Loading
+
+We can set the state of the submit button to `loading` as `true` to show a loading spinner. This is useful when you need to show the user that the form is submitting.
+
+<Canvas of={ButtonsStories.Loading} />
+
+### Disabled
+
+You can also set `disabled` to `true` to disable submission.
+
+<Canvas of={ButtonsStories.Disabled} />

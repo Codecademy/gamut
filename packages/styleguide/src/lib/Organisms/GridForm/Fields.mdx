@@ -6,28 +6,24 @@ import * as FieldsStories from './Fields.stories';
 
 export const parameters = {
   title: 'Fields',
-  subtitle: 'Comprehensive field types supported by GridForm.',
+  subtitle: 'Comprehensive GridFormfield types to cover various input needs.',
 };
 
 <Meta title="Organisms/GridForm/Fields" />
 
 <ComponentHeader {...parameters} />
 
-## Fields
-
-GridForm supports a comprehensive set of field types to cover various form input needs. Each field type has specific properties and validation options.
-
-### Text inputs
+## Text inputs
 
 Text inputs support various HTML input types including `text`, `email`, `password`, `number`, `tel`, `url`, `search`, `date`, `time`, and more. All text inputs share the same basic properties but may have different validation patterns.
 
 <Canvas of={FieldsStories.TextField} />
 
-#### Default value
+### Default value
 
 <Canvas of={FieldsStories.DefaultTextField} />
 
-#### Placeholder text
+### Placeholder text
 
 Text inputs are allowed to have traditional `placeholder` text.
 This is a somewhat dangerous behavior for accessibility, as browsers
@@ -42,41 +38,41 @@ more details on why using placeholders is often bad.
 
 <Canvas of={FieldsStories.PlaceholderTextField} />
 
-### Textarea input
+## Textarea input
 
 <Canvas of={FieldsStories.TextareaField} />
 
-### Select input
+## Select input
 
 <Canvas of={FieldsStories.SelectField} />
 
-### Radio group input
+## Radio group input
 
 <Canvas of={FieldsStories.RadioGroupField} />
 
-### File upload input
+## File upload input
 
 File upload fields allow users to select and upload files. You can add custom validation to restrict file types and sizes.
 
 <Canvas of={FieldsStories.FileUploadField} />
 
-### Checkbox input
+## Checkbox input
 
 <Canvas of={FieldsStories.CheckboxField} />
 
-#### Spacing
+### Spacing
 
 Checkboxes can use tight spacing when you need them to fit in smaller areas:
 
 <Canvas of={FieldsStories.CheckboxSpacing} />
 
-### Nested checkboxes input
+## Nested checkboxes input
 
 Nested checkboxes allow for hierarchical selection with parent-child relationships between options. Infinite levels of nesting are supported. Clicking a parent checkbox toggles all its children accordingly. Individual child checkboxes can be toggled independently. Checkbox states are `checked` if all children are checked, `indeterminate` if some children are checked, or `unchecked` if no children are checked. The values returned by the form on submit or update are an array of all selected values, including all children.
 
 <Canvas of={FieldsStories.NestedCheckboxesField} />
 
-### Custom inputs
+## Custom inputs
 
 Some forms, such as the checkout flows that use Recurly, need to define
 their own inputs. We can specify a 'custom' field type to with a [render prop](https://reactjs.org/docs/render-props.html).
@@ -85,13 +81,13 @@ We also have a 'custom-group' type for when you are passing in a custom FormGrou
 
 <Canvas of={FieldsStories.CustomInputs} />
 
-### Hidden input
+## Hidden input
 
 Hidden inputs can be used to include data that users can't see or modify with the submission. For this implementation you can set the `defaultValue` in the object and it will be submitted with the regular form data.
 
 <Canvas of={FieldsStories.HiddenInput} />
 
-### Sweet container input
+## Sweet container input
 
 "Sweet container" ([honeypot](<https://en.wikipedia.org/wiki/Honeypot_(computing)>)) inputs can be used to detect bots by providing a field that would not generally be clicked by human users, but might be triggered automatically by bots.
 

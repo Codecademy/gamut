@@ -26,14 +26,6 @@ type Story = StoryObj<typeof GridForm>;
 
 export const SubmitButtonRight: Story = {
   args: {
-    fields: [
-      {
-        label: 'Simple text',
-        name: 'right-sub-simple-text',
-        type: 'text',
-        size: 12,
-      },
-    ],
     submit: {
       contents: 'Right Submit!?',
       position: 'right',
@@ -44,14 +36,6 @@ export const SubmitButtonRight: Story = {
 
 export const SubmitButtonLeft: Story = {
   args: {
-    fields: [
-      {
-        label: 'Simple text',
-        name: 'left-sub-simple-text',
-        type: 'text',
-        size: 12,
-      },
-    ],
     submit: {
       contents: 'Left Submit!?',
       position: 'left',
@@ -62,14 +46,6 @@ export const SubmitButtonLeft: Story = {
 
 export const SubmitButtonCenter: Story = {
   args: {
-    fields: [
-      {
-        label: 'Simple text',
-        name: 'center-sub-simple-text',
-        type: 'text',
-        size: 12,
-      },
-    ],
     submit: {
       contents: 'Center Submit!?',
       position: 'center',
@@ -80,14 +56,6 @@ export const SubmitButtonCenter: Story = {
 
 export const SubmitButtonStretch: Story = {
   args: {
-    fields: [
-      {
-        label: 'Simple text',
-        name: 'stretch-sub-simple-text',
-        type: 'text',
-        size: 12,
-      },
-    ],
     submit: {
       contents: 'Stretch Submit!?',
       position: 'stretch',
@@ -98,14 +66,6 @@ export const SubmitButtonStretch: Story = {
 
 export const SubmitButtonFill: Story = {
   args: {
-    fields: [
-      {
-        label: 'Simple text',
-        name: 'fill-sub-simple-text',
-        type: 'text',
-        size: 12,
-      },
-    ],
     submit: {
       contents: 'Fill Submit!?',
       type: 'fill',
@@ -116,14 +76,6 @@ export const SubmitButtonFill: Story = {
 
 export const SubmitButtonCTA: Story = {
   args: {
-    fields: [
-      {
-        label: 'Simple text',
-        name: 'cta-sub-simple-text',
-        type: 'text',
-        size: 12,
-      },
-    ],
     submit: {
       contents: 'CTA Submit!?',
       type: 'cta',
@@ -136,11 +88,10 @@ export const SubmitButtonInline: Story = {
   args: {
     fields: [
       {
-        hideLabel: true,
-        label: 'Label',
-        name: 'email',
-        size: 8,
+        label: 'Simple text',
+        name: 'simple-text',
         type: 'text',
+        size: 6,
       },
     ],
     submit: {
@@ -153,14 +104,6 @@ export const SubmitButtonInline: Story = {
 
 export const CancelButton: Story = {
   args: {
-    fields: [
-      {
-        label: 'Simple text',
-        name: 'cancel-sub-simple-text',
-        type: 'text',
-        size: 12,
-      },
-    ],
     cancel: {
       children: 'Cancel',
       onClick: () => {},
@@ -168,6 +111,26 @@ export const CancelButton: Story = {
     submit: {
       contents: 'Submit!?',
       position: 'right',
+      size: 12,
+    },
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    submit: {
+      contents: 'Loading Submit!?',
+      loading: true,
+      size: 12,
+    },
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    submit: {
+      contents: 'Disabled Submit!?',
+      disabled: true,
       size: 12,
     },
   },

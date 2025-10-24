@@ -13,27 +13,25 @@ export const parameters = {
 
 <ComponentHeader {...parameters} />
 
-## Layout & Visual Styling
-
-### GridForm-atting
+## GridForm-atting
 
 We can use the `size` and `rowspan` props (borrowed from <LinkTo id="layouts-layoutgrid--layout-grid">LayoutGrid</LinkTo>) to customize the layouts of our GridForms. You can also customize the `FormRequiredText` using the `requiredTextProps`. `FormRequiredText` should be spaced apart from or be stylistically different from the text element above it.
 
 <Canvas of={LayoutStories.Formatted} />
 
-### `hideRequiredText`
+## `hideRequiredText`
 
 `hideRequiredText` will hide the '\* Required' text that appears at the top of our forms. This should only be hidden if the form has no required fields.
 
 <Canvas of={LayoutStories.HideRequiredText} />
 
-### Solo field form
+## Solo field form
 
 Solo field form should always have their solo input be required. They should automagically not have the required/optional text - if you have a custom rendered hidden input, you may have to use the `hasSoloField` prop.
 
 <Canvas of={LayoutStories.SoloField} />
 
-### InfoTips
+## InfoTips
 
 A field can include our existing `InfoTip`. See the <LinkTo id="molecules-tips-infotip">InfoTip</LinkTo> story for more information on what props are available.
 
@@ -41,7 +39,7 @@ See the <LinkTo id="atoms-forminputs-radio--radio">Radio</LinkTo> story for an e
 
 <Canvas of={LayoutStories.InfoTip} />
 
-### Sections
+## Sections
 
 Our `GridForm`s optionally take an array of sections that have left and center-aligned variants.
 
