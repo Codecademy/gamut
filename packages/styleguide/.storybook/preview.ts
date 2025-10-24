@@ -23,7 +23,14 @@ const preview: Preview = {
         order: [
           'Gamut',
           'Meta',
-          ['About', 'Best Practices', 'Contributing', 'FAQs', 'Stories'],
+          [
+            'About',
+            'Best Practices',
+            'Contributing',
+            'FAQs',
+            'Stories',
+            'Style Guide',
+          ],
           'Foundations',
           'Layouts',
           'Typography',

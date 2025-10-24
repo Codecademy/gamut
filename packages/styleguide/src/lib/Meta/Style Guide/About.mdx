@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/blocks';
+
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as codeExamplesParameters } from './Code Examples.mdx';
+import { parameters as componentPagesParameters } from './Component Pages.mdx';
+import { parameters as computerInterfacesParameters } from './Computer Interfaces.mdx';
+import { parameters as formattingParameters } from './Formatting.mdx';
+import { parameters as generalPrinciplesParameters } from './General Principles.mdx';
+import { parameters as languageAndGrammerParameters } from './Language and Grammer.mdx';
+import { parameters as linkingParameters } from './Linking.mdx';
+
+export const parameters = {
+  id: 'Meta/Style Guide',
+  title: 'Style Guide',
+  subtitle:
+    'Guidelines and standards for creating consistent, clear, and effective documentation.',
+};
+
+<Meta title="Meta/Style Guide/About" />
+
+<AboutHeader {...parameters} />
+
+<TableOfContents
+  links={addParentPath(parameters.id, [
+    generalPrinciplesParameters,
+    languageAndGrammerParameters,
+    formattingParameters,
+    linkingParameters,
+    computerInterfacesParameters,
+    codeExamplesParameters,
+    componentPagesParameters,
+  ])}
+/>
