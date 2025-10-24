@@ -21,6 +21,7 @@ const tipWrapperStyles = {
 const floatingTipTextStates = states({
   isHoverType: { alignItems: 'flexStart' },
   narrow: { width: narrowWidth },
+  horizNarrow: { minWidth: '64px' },
 });
 
 const inlineTipStates = states({

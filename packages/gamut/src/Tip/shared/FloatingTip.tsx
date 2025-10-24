@@ -47,6 +47,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
 
   const commonPopoverProps = getPopoverAlignmentAndPattern({ alignment, type });
   const dims = getAlignmentStyles({ avatar, alignment, type });
+  const isHorizontalCenter = dims === 'horizontalCenter';
   const [childRef, { width: tipWidth }] = useMeasure<HTMLDivElement>();
 
   const [offset, setOffset] = useState<number | undefined>(undefined);
@@ -169,8 +170,9 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         widthRestricted={false}
       >
         <FloatingTipTextWrapper
+          horizNarrow={narrow && isHorizontalCenter}
           isHoverType={isHoverType}
-          narrow={narrow}
+          narrow={narrow && !isHorizontalCenter}
           ref={childRef}
         >
           {contents}
