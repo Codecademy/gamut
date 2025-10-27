@@ -7,14 +7,10 @@ const meta: Meta<typeof SubmitButton> = {
   args: {},
   argTypes: {
     loading: {
-      control: {
-        type: 'boolean',
-      },
+      control: 'boolean',
     },
     disabled: {
-      control: {
-        type: 'boolean',
-      },
+      control: 'boolean',
     },
     as: {
       table: {

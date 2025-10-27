@@ -23,9 +23,7 @@ const meta: Meta<typeof MiniIconComponent> = {
     icon: {
       options: Object.keys(miniIcons),
       mapping: miniIcons,
-      control: {
-        type: 'select',
-      },
+      control: 'select',
     },
   },
 };

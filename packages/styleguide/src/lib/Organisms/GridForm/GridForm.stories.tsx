@@ -10,8 +10,9 @@ import { Background } from '@codecademy/gamut-styles';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps, useState } from 'react';
+import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
-const meta: Meta<typeof GridForm> = {
+const meta: TypeWithDeepControls<Meta<typeof GridForm>> = {
   component: GridForm,
   args: {
     fields: [
@@ -116,16 +117,118 @@ const meta: Meta<typeof GridForm> = {
         },
         size: 4,
       },
+      {
+        label: 'Nested checkboxes',
+        name: 'nested-checkboxes',
+        type: 'nested-checkboxes',
+        defaultValue: ['backend', 'react', 'vue'],
+        options: [
+          {
+            value: 'frontend',
+            label: 'Frontend Technologies',
+            options: [
+              {
+                value: 'react',
+                label: 'React',
+                options: [
+                  { value: 'nextjs', label: 'Next.js' },
+                  { value: 'typescript', label: 'TypeScript' },
+                ],
+              },
+              {
+                value: 'vue',
+                label: 'Vue.js',
+              },
+              { value: 'angular', label: 'Angular' },
+            ],
+          },
+          {
+            value: 'backend',
+            label: 'Backend Technologies',
+            options: [
+              { value: 'node', label: 'Node.js' },
+              { value: 'python', label: 'Python' },
+              { value: 'java', label: 'Java' },
+            ],
+          },
+        ],
+        size: 12,
+      },
     ],
     submit: {
       contents: 'Submit Me!?',
       size: 4,
+      position: 'left',
+      disabled: false,
+      loading: false,
+      type: 'fill',
     },
     onSubmit: (values) => {
       action('Form Submitted')(values);
+      // eslint-disable-next-line no-console
+      console.log('Form Submitted', values);
     },
     validation: 'onSubmit',
     resetOnSubmit: true,
+  },
+  argTypes: {
+    'submit.type': {
+      control: 'radio',
+      options: ['fill', 'cta'],
+      table: {
+        defaultValue: { summary: 'fill' },
+        type: { summary: 'fill | cta' },
+      },
+      description: 'The type of the submit button.',
+    },
+    'submit.position': {
+      control: 'radio',
+      options: ['left', 'center', 'right', 'stretch'],
+      table: {
+        defaultValue: { summary: 'left' },
+        type: { summary: 'left | center | right | stretch' },
+      },
+      description: 'The position of the submit button.',
+    },
+    'submit.size': {
+      control: {
+        type: 'number',
+        min: 1,
+        max: 12,
+        step: 1,
+      },
+      description: 'The column size of the submit button.',
+    },
+    'submit.contents': {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+      description: 'The text of the submit button.',
+    },
+    cancel: {
+      table: {
+        disable: true,
+      },
+    },
+    'cancel.children': {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+      description: 'The text of the cancel button.',
+    },
+    'cancel.onClick': {
+      table: {
+        type: { summary: 'function' },
+      },
+    },
+    'cancel.href': {
+      control: 'text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
   },
 };
 
