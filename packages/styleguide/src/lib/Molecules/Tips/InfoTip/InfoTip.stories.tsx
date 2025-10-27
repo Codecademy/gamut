@@ -92,8 +92,6 @@ const WithLinksOrButtonsExample: React.FC<InfoTipProps> = ({ args }) => {
 
   return (
     <FlexBox center py={64}>
-      <Text mr={4}>This text is in a small space and needs info </Text>
-      <InfoTip info="I am cool" placement="floating" {...args} />
       <Text mr={4}>This text is in a small space and needs info </Text>{' '}
       <InfoTip
         info={
