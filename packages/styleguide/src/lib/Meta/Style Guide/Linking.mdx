@@ -13,6 +13,62 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-# Linking
+## Internal Links
 
-Content coming soon.
+Use the `LinkTo` component from ‘~styleguide/blocks' and set the id prop as the story’s id value.
+
+```tsx
+import { LinkTo } from '~styleguide/blocks';
+<LinkTo id="Meta/Stories">Stories</LinkTo>
+<LinkTo id="Atoms/Animations/About">Animation</LinkTo>
+```
+
+### Guidelines:
+
+- Use descriptive link text: "See the Stories page" not "Click here"
+- Link text should make sense out of context
+- Link component names to their documentation
+- Check to see that the link works accordingly
+
+## External Links
+
+### Anchor Component:
+
+```tsx
+<Anchor target="_" href="https://github.com/Codecademy/gamut">
+  Gamut Repository
+</Anchor>
+```
+
+### URL Guidelines:
+
+- Use full URLs for external resources
+- Open external links in new tabs: target="\_"
+- Prefer HTTPS over HTTP
+- Link to official documentation when referencing tools
+
+## MDX file parameters
+
+For a component's `.mdx` file, add the following to the `parameters` object. Use the `main` branch for the `githubLink`.
+
+```tsx
+source: {
+  repo: 'gamut',
+  githubLink: 'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Button'
+}
+```
+
+```tsx
+design: {
+  type: 'figma',
+  url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=993-0'
+}
+
+```
+
+## Link Text Guidelines
+
+- 2-3 words minimum for easy clicking
+- Unique link text when multiple links on page
+- Meaningful and descriptive: conveys destination
+- Action-oriented when appropriate: "View the component"
