@@ -5,6 +5,19 @@ import { useState } from 'react';
 
 const meta: Meta<typeof GridForm> = {
   component: GridForm,
+  args: {
+    onSubmit: (values) => {
+      action('Form Submitted')(values);
+      // eslint-disable-next-line no-console
+      console.log('Form Submitted', values);
+    },
+    submit: {
+      contents: 'Submit',
+      size: 4,
+      position: 'left',
+    },
+    hideRequiredText: true,
+  },
 };
 
 export default meta;
@@ -27,29 +40,10 @@ export const DisabledInputs: Story = {
         size: 6,
       },
     ],
-    hideRequiredText: true,
-    submit: {
-      contents: 'Right Submit!?',
-      position: 'right',
-      size: 12,
-    },
-    onSubmit: (values) => {
-      action('Form Submitted')(values);
-    },
   },
 };
 
 export const OnFieldUpdate: Story = {
-  args: {
-    hideRequiredText: true,
-    submit: {
-      contents: 'Submit Me!?',
-      size: 12,
-    },
-    onSubmit: (values) => {
-      action('Form Submitted')(values);
-    },
-  },
   render: function OnFieldUpdate(args) {
     const [text, setText] = useState('');
     return (
@@ -61,7 +55,7 @@ export const OnFieldUpdate: Story = {
             {
               label: 'Text with onUpdate',
               name: 'onUpdate-simple-text',
-              size: 3,
+              size: 9,
               type: 'text',
               onUpdate: setText,
             },
@@ -88,17 +82,9 @@ export const DisabledFieldsOnSubmit: Story = {
             message: 'that is not an email 😔',
           },
         },
-        size: 12,
+        size: 9,
       },
     ],
-    hideRequiredText: true,
-    submit: {
-      contents: 'Submit Me 💖',
-      size: 12,
-    },
-    onSubmit: (values) => {
-      action('Form Submitted')(values);
-    },
   },
 };
 
@@ -117,18 +103,10 @@ export const ResetOnSubmit: Story = {
             message: 'that is not an email 😔',
           },
         },
-        size: 12,
+        size: 9,
       },
     ],
-    hideRequiredText: true,
     resetOnSubmit: true,
-    submit: {
-      contents: 'Submit Me 💖',
-      size: 12,
-    },
-    onSubmit: (values) => {
-      action('Form Submitted')(values);
-    },
   },
 };
 
@@ -150,15 +128,10 @@ export const FormLoading: Story = {
             message: 'that is not an email 😔',
           },
         },
-        size: 12,
+        size: 9,
       },
     ],
-    hideRequiredText: true,
     resetOnSubmit: true,
-    submit: {
-      contents: 'Submit Me 💖',
-      size: 5,
-    },
   },
   render: function FormLoading(args) {
     const [loading, setLoading] = useState(false);
@@ -191,7 +164,7 @@ export const CustomError: Story = {
       {
         label: 'Who is the best at bending?',
         name: 'custom-error',
-        size: 5,
+        size: 9,
         type: 'text',
         customError: 'NOT Flexo.',
         validation: {
@@ -203,13 +176,6 @@ export const CustomError: Story = {
         },
       },
     ],
-    submit: {
-      contents: 'Submit Me!?',
-      size: 12,
-    },
-    onSubmit: (values) => {
-      action('Form Submitted')(values);
-    },
   },
 };
 
@@ -224,15 +190,8 @@ export const MarkdownErrors: Story = {
           required:
             'This is [an example](https://www.youtube.com/watch?v=5IuRzJRrRpQ) error link.',
         },
-        size: 12,
+        size: 9,
       },
     ],
-    submit: {
-      contents: 'Submit',
-      size: 12,
-    },
-    onSubmit: (values) => {
-      action('Form Submitted')(values);
-    },
   },
 };
