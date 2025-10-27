@@ -1,9 +1,15 @@
 import { FormGroupLabel } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
+import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
-const meta: Meta<typeof FormGroupLabel> = {
+import { infotipNestedArgTypes } from '~styleguide/argTypes';
+
+const meta: TypeWithDeepControls<Meta<typeof FormGroupLabel>> = {
   component: FormGroupLabel,
   args: { children: 'I am a label' },
+  argTypes: {
+    ...infotipNestedArgTypes,
+  },
 };
 
 export default meta;

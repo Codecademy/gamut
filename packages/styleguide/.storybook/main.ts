@@ -12,6 +12,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@nx/react/plugins/storybook', ''),
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-designs'),
+    getAbsolutePath('storybook-addon-deep-controls'),
   ],
 
   framework: {
@@ -45,6 +46,7 @@ const config: StorybookConfig = {
       ...config.resolve,
       alias: {
         '~styleguide/blocks': resolve(__dirname, './components/'),
+        '~styleguide/argTypes': resolve(__dirname, './argTypes/'),
         '@codecademy/gamut-styles$': resolve(
           __dirname,
           '../../gamut-styles/src'
