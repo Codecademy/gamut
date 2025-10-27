@@ -24,7 +24,7 @@ export const parameters = {
 
 - Use standard units: px, rem, em, %
 - Include space between number and unit in prose: "16 pixels"
-- No space in code: 16px, 2rem
+- No space in code: `16px`, `2rem`
 
 ## Lists
 
@@ -42,14 +42,17 @@ export const parameters = {
 
 ## Code Blocks
 
-- Use triple backticks with language identifier:
-
-\`\`\`tsx
-\<Button onClick=\{handleClick\} \/\>
-\`\`\`
-
+- Use triple backticks (` ``` `) with language identifier (e.g., `tsx`, `javascript`, `css`)
 - Include comments for complex examples
 - Keep examples concise and focused
+
+Example:
+
+````
+```tsx
+<TextButton onClick={handleClick}> Click me </TextButton>
+```
+````
 
 ## Headings Hierarchy
 
