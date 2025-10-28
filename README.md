@@ -80,7 +80,7 @@ Every PR that changes files in a package publishes alpha releases that you can u
 > NOTE: in case an alpha build is not published upon opening of the PR or Draft PR, re-run the `build-test` check and that will re-run the alpha build publishing flows
 
 1.  Create a PR or Draft PR.
-    - This will kickoff a Circle-CI workflow which will publish an alpha build. (This will appear in Github as the "Deploy")
+    - This will kickoff a Github Action workflow which will publish an alpha build. (This will appear in Github as the "Deploy")
 1.  After the alpha build is published, the `codecademydev` bot should comment on your PR with the names of the published alpha packages. <br/>
     <img width="290" height="auto" src="https://user-images.githubusercontent.com/4298857/114948632-3fa88a80-9e04-11eb-89ef-d016a1c9c572.png">
 1.  Install this version of the package in your application you wish to test your changes on.
