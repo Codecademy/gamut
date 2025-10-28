@@ -567,4 +567,43 @@ describe('ConnectedNestedCheckboxes', () => {
       });
     });
   });
+
+  describe('fieldset and legend semantics', () => {
+    it('should render the form group with a fieldset wrapper', () => {
+      const { view } = renderView();
+
+      const fieldset = view.container.querySelector('fieldset');
+      expect(fieldset).toBeInTheDocument();
+    });
+
+    it('should render the label as a legend element', () => {
+      const { view } = renderView();
+
+      const legend = view.container.querySelector('legend');
+      expect(legend).toBeInTheDocument();
+      expect(legend).toHaveTextContent('nested checkboxes field');
+    });
+
+    it('should render fieldset with no visible border', () => {
+      const { view } = renderView();
+
+      const fieldset = view.container.querySelector('fieldset');
+      expect(fieldset).toHaveStyle({ border: 'none' });
+    });
+
+    it('should not have htmlFor attribute on legend', () => {
+      const { view } = renderView();
+
+      const legend = view.container.querySelector('legend');
+      expect(legend).not.toHaveAttribute('for');
+    });
+
+    it('should render checkboxes inside the fieldset', () => {
+      const { view } = renderView();
+
+      const fieldset = view.container.querySelector('fieldset');
+      const checkboxes = fieldset?.querySelectorAll('input[type="checkbox"]');
+      expect(checkboxes?.length).toBeGreaterThan(0);
+    });
+  });
 });

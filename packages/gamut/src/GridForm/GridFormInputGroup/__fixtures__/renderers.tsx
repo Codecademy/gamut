@@ -5,6 +5,7 @@ import { FormContext } from '../../__fixtures__/helpers';
 import {
   stubCheckboxField,
   stubFileField,
+  stubNestedCheckboxField,
   stubRadioGroupField,
   stubSelectField,
   stubTextareaField,
@@ -13,6 +14,7 @@ import {
 import { GridFormInputGroup, GridFormInputGroupProps } from '..';
 import { GridFormCheckboxInput } from '../GridFormCheckboxInput';
 import { GridFormFileInput } from '../GridFormFileInput';
+import { GridFormNestedCheckboxInput } from '../GridFormNestedCheckboxInput';
 import { GridFormRadioGroupInput } from '../GridFormRadioGroupInput';
 import { GridFormSelectInput } from '../GridFormSelectInput';
 import { GridFormTextArea } from '../GridFormTextArea';
@@ -21,6 +23,7 @@ import { GridFormTextInput } from '../GridFormTextInput';
 type GridFormFieldComponent =
   | typeof GridFormCheckboxInput
   | typeof GridFormFileInput
+  | typeof GridFormNestedCheckboxInput
   | typeof GridFormRadioGroupInput
   | typeof GridFormSelectInput
   | typeof GridFormTextArea
@@ -75,6 +78,11 @@ export const getComponent = (componentName: string) => {
       return createGridFormFieldSetup({
         component: GridFormCheckboxInput,
         defaultFieldProps: stubCheckboxField,
+      });
+    case 'GridFormNestedCheckboxInput':
+      return createGridFormFieldSetup({
+        component: GridFormNestedCheckboxInput,
+        defaultFieldProps: stubNestedCheckboxField,
       });
     default:
       throw new Error(`Unknown component name: ${componentName}`);

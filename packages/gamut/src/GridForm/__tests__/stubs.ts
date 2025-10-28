@@ -2,12 +2,14 @@ import {
   GridFormCheckboxField,
   GridFormFileField,
   GridFormHiddenField,
+  GridFormNestedCheckboxField,
   GridFormRadioGroupField,
   GridFormRadioOption,
   GridFormSelectField,
   GridFormSweetContainerField,
   GridFormTextAreaField,
   GridFormTextField,
+  NestedGridFormCheckboxOption,
 } from '../types';
 
 export const stubCheckboxField: GridFormCheckboxField = {
@@ -80,6 +82,33 @@ export const stubSweetContainerField: GridFormSweetContainerField = {
   type: 'sweet-container',
   label: 'Check this input if you are an automated machine, and not a human',
   defaultValue: false,
+};
+
+export const stubNestedCheckboxOptions: NestedGridFormCheckboxOption[] = [
+  {
+    value: 'frontend',
+    label: 'Frontend Technologies',
+    options: [
+      { value: 'react', label: 'React' },
+      { value: 'vue', label: 'Vue' },
+    ],
+  },
+  {
+    value: 'backend',
+    label: 'Backend Technologies',
+    options: [
+      { value: 'node', label: 'Node.js' },
+      { value: 'python', label: 'Python' },
+    ],
+  },
+];
+
+export const stubNestedCheckboxField: GridFormNestedCheckboxField = {
+  label: 'Stub Nested Checkboxes',
+  name: 'stub-nested-checkboxes',
+  options: stubNestedCheckboxOptions,
+  size: 6,
+  type: 'nested-checkboxes',
 };
 
 export const stubFieldCases = [

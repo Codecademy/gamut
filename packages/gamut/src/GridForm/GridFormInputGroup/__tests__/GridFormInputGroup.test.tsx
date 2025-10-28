@@ -6,6 +6,7 @@ import {
   stubCheckboxField,
   stubFileField,
   stubHiddenField,
+  stubNestedCheckboxField,
   stubRadioGroupField,
   stubSelectField,
   stubSweetContainerField,
@@ -57,6 +58,7 @@ describe('GridFormInputGroup', () => {
         name: 'stub-custom',
         size: 6,
         type: 'custom',
+        label: 'Stub Custom',
       },
     });
 
@@ -237,5 +239,56 @@ describe('GridFormInputGroup', () => {
       field: { ...stubHiddenField },
     });
     expect(view.container).not.toContainHTML('Column');
+  });
+
+  describe('fieldset/legend', () => {
+    it('renders nested checkboxes wrapped in a fieldset', () => {
+      const { view } = renderView({
+        field: stubNestedCheckboxField,
+      });
+
+      const fieldset = view.container.querySelector('fieldset');
+      expect(fieldset).toBeInTheDocument();
+    });
+
+    it('renders the label as a legend for nested checkboxes', () => {
+      const { view } = renderView({
+        field: stubNestedCheckboxField,
+      });
+
+      const legend = view.container.querySelector('legend');
+      expect(legend).toBeInTheDocument();
+      expect(legend).toHaveTextContent('Stub Nested Checkboxes');
+    });
+
+    it('does not add htmlFor attribute to legend for nested checkboxes', () => {
+      const { view } = renderView({
+        field: { ...stubNestedCheckboxField, id: 'my-nested-id' },
+      });
+
+      const legend = view.container.querySelector('legend');
+      expect(legend).not.toHaveAttribute('for');
+    });
+
+    it('renders fieldset with no visible border', () => {
+      const { view } = renderView({
+        field: stubNestedCheckboxField,
+      });
+
+      const fieldset = view.container.querySelector('fieldset');
+      expect(fieldset).toHaveStyle({ border: 'none' });
+    });
+
+    it('renders regular label (not legend) for non-nested checkbox fields', () => {
+      const { view } = renderView({
+        field: stubCheckboxField,
+      });
+
+      const legend = view.container.querySelector('legend');
+      const label = view.container.querySelector('label');
+
+      expect(legend).not.toBeInTheDocument();
+      expect(label).toBeInTheDocument();
+    });
   });
 });
