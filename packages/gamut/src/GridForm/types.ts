@@ -42,8 +42,8 @@ export type BaseFormField<Value> = {
 
 export type GridFormCheckboxField = BaseFormField<boolean> &
   CheckboxPaddingProps & {
-    description: string;
-    label: React.ReactNode;
+    description: string; // checkbox label
+    label?: React.ReactNode; // form group label
     multiline?: boolean;
     validation?: RegisterOptions;
     type: 'checkbox';
@@ -74,14 +74,14 @@ export type GridFormCustomFieldProps = {
 };
 
 export type GridFormCustomField = BaseFormField<any> & {
-  label: React.ReactNode;
+  label?: React.ReactNode;
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
   validation?: RegisterOptions;
   type: 'custom';
 };
 
 export type GridFormCustomGroupField = BaseFormField<any> & {
-  label: React.ReactNode;
+  label?: React.ReactNode;
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
   validation?: RegisterOptions;
   type: 'custom-group';
