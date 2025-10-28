@@ -1,3 +1,4 @@
+export * from './Achievement';
 export * from './Announcement';
 export * from './Bee';
 export * from './Bell';
