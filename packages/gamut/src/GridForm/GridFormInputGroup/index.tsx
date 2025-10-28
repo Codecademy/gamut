@@ -4,6 +4,7 @@ import * as React from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
 import { Anchor } from '../../Anchor';
+import { Box } from '../../Box';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
@@ -154,8 +155,11 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     );
   }
 
+  const useFieldsetLegend = field.type === 'nested-checkboxes';
+
   const label = (
     <FormGroupLabel
+      asLegend={useFieldsetLegend}
       disabled={disabled}
       htmlFor={field.id || field.name}
       infotip={field.infotip}
@@ -166,36 +170,47 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     </FormGroupLabel>
   );
 
+  const renderedInput = (
+    <>
+      {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
+      {getInput()}
+      {errorMessage && (
+        <FormError
+          aria-live={isFirstError ? 'assertive' : 'off'}
+          role={isFirstError ? 'alert' : 'status'}
+          variant={isTightCheckbox ? 'initial' : 'absolute'}
+        >
+          <Markdown
+            inline
+            overrides={{
+              a: {
+                allowedAttributes: ['href', 'target'],
+                component: ErrorAnchor,
+                processNode: (
+                  node: unknown,
+                  props: { onClick?: () => void }
+                ) => <ErrorAnchor {...props} />,
+              },
+            }}
+            skipDefaultOverrides={{ a: true }}
+            spacing="none"
+            text={errorMessage}
+          />
+        </FormError>
+      )}
+    </>
+  );
+
   return (
     <Column rowspan={field?.rowspan ?? 1} size={field?.size}>
-      <FormGroup spacing={isTightCheckbox ? 'tight' : 'padded'}>
-        {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
-        {getInput()}
-        {errorMessage && (
-          <FormError
-            aria-live={isFirstError ? 'assertive' : 'off'}
-            role={isFirstError ? 'alert' : 'status'}
-            variant={isTightCheckbox ? 'initial' : 'absolute'}
-          >
-            <Markdown
-              inline
-              overrides={{
-                a: {
-                  allowedAttributes: ['href', 'target'],
-                  component: ErrorAnchor,
-                  processNode: (
-                    node: unknown,
-                    props: { onClick?: () => void }
-                  ) => <ErrorAnchor {...props} />,
-                },
-              }}
-              skipDefaultOverrides={{ a: true }}
-              spacing="none"
-              text={errorMessage}
-            />
-          </FormError>
-        )}
-      </FormGroup>
+      <FormGroup spacing={isTightCheckbox ? 'tight' : 'padded'} />
+      {useFieldsetLegend ? (
+        <Box as="fieldset" border="none" m={0} p={0}>
+          {renderedInput}
+        </Box>
+      ) : (
+        renderedInput
+      )}
     </Column>
   );
 };

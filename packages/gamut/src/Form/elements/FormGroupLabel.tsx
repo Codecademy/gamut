@@ -47,6 +47,10 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
      * Solo fields should always be required and have no optional/required text
      */
     isSoloField?: boolean;
+    /**
+     * Use a legend instead of a label
+     */
+    asLegend?: boolean;
   };
 
 const Label = styled.label<FormGroupLabelProps>(labelSizeVariants, labelStates);
@@ -58,6 +62,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   htmlFor,
   infotip,
   isSoloField,
+  asLegend,
   required,
   size,
   ...rest
@@ -66,10 +71,10 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
     <FlexBox justifyContent="space-between" mb={4}>
       <Label
         {...rest}
-        as={htmlFor ? 'label' : 'div'}
+        as={asLegend ? 'legend' : htmlFor ? 'label' : 'div'}
         className={className}
         disabled={disabled}
-        htmlFor={htmlFor}
+        htmlFor={asLegend ? undefined : htmlFor}
         size={size}
       >
         {children}

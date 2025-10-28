@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import * as React from 'react';
 
 import {
+  Box,
   FormError,
   FormGroup,
   FormGroupLabel,
@@ -13,6 +14,7 @@ import {
 import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
+import { ConnectedNestedCheckboxes } from './ConnectedInputs/ConnectedNestedCheckboxes';
 import { ConnectedField, FieldProps, SubmitContextProps } from './types';
 import { getErrorMessage, useField } from './utils';
 
@@ -75,8 +77,15 @@ export function ConnectedFormGroup<T extends ConnectedField>({
     }
   }, [customError, name, setError]);
 
+  const textError = customError || getErrorMessage(error);
+  const showError = !!(textError && !hideLabel);
+  const errorId = showError ? `${id || name}_error` : undefined;
+
+  const useFieldsetLegend = Component === ConnectedNestedCheckboxes;
+
   const renderedLabel = (
     <FormGroupLabel
+      asLegend={useFieldsetLegend}
       disabled={isDisabled}
       htmlFor={id || name}
       infotip={infotip}
@@ -88,12 +97,8 @@ export function ConnectedFormGroup<T extends ConnectedField>({
     </FormGroupLabel>
   );
 
-  const textError = customError || getErrorMessage(error);
-  const showError = !!(textError && !hideLabel);
-  const errorId = showError ? `${id || name}_error` : undefined;
-
-  return (
-    <FormGroup spacing={hideLabel ? 'tight' : spacing}>
+  const renderedInput = (
+    <>
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
       <Component
         {...(rest as any)}
@@ -127,6 +132,18 @@ export function ConnectedFormGroup<T extends ConnectedField>({
             text={textError}
           />
         </FormError>
+      )}
+    </>
+  );
+
+  return (
+    <FormGroup spacing={hideLabel ? 'tight' : spacing}>
+      {useFieldsetLegend ? (
+        <Box as="fieldset" border="none" m={0} p={0}>
+          {renderedInput}
+        </Box>
+      ) : (
+        renderedInput
       )}
     </FormGroup>
   );
