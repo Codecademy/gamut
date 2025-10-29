@@ -67,6 +67,8 @@ jobs:
         run: yarn nx run styleguide:build-storybook
 
       - name: Deploy to GitHub Pages
-        run: yarn deploy
+        run: |
+          git remote set-url origin https://${{ secrets.ACTIONS_GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          yarn deploy
         env:
           GITHUB_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
