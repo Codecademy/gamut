@@ -1,0 +1,72 @@
+name: Deploy Production Storybook
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  NODE_OPTIONS: '--max_old_space_size=8196'
+  NX_CLOUD: false
+  IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
+
+permissions:
+  id-token: write
+  contents: write
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+
+      - name: Skip build from automated commit
+        uses: ./.github/actions/skip-automated-commits
+        with:
+          ignore-commit-message: ${{ env.IGNORE_COMMIT_MESSAGE }}
+
+      - name: Setup and Build
+        uses: ./.github/actions/yarn
+
+      - name: Cache Nx
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.cache/nx
+          key: nx-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            nx-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ github.ref_name }}-
+            nx-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-
+            nx-${{ runner.os }}-
+
+      - name: Cache webpack
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules/.cache
+            packages/styleguide/node_modules/.cache
+          key: webpack-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ github.ref_name }}-${{ github.sha }}
+          restore-keys: |
+            webpack-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ github.ref_name }}-
+            webpack-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-
+
+      - name: Set git user
+        uses: ./.github/actions/set-git-user
+
+      - name: Build All Packages
+        run: yarn build
+
+      - name: Build Storybook
+        run: yarn nx run styleguide:build-storybook
+
+      - name: Deploy to GitHub Pages
+        run: yarn deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
