@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.55.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.55.0...@codecademy/gamut-illustrations@0.55.1) (2025-10-28)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
 ## [0.55.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.54.11...@codecademy/gamut-illustrations@0.55.0) (2025-10-23)
 
 ### Features

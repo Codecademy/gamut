@@ -89,3 +89,43 @@
   src: url("../fonts/Suisse/SuisseIntlMono-Bold-WebS.woff2") format("woff2"),
     url("../fonts/Suisse/SuisseIntlMono-Bold-WebS.woff") format("woff");
 }
+
+@font-face {
+  font-display: swap;
+  font-family: "Hanken Grotesk";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/Hanken_Grotesk/hanken-grotesk-regular.woff2")
+      format("woff2"),
+    url("../fonts/Hanken_Grotesk/hanken-grotesk-regular.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Hanken Grotesk";
+  font-style: normal;
+  font-weight: bold;
+  src: url("../fonts/Hanken_Grotesk/hanken-grotesk-bold.woff2") format("woff2"),
+    url("../fonts/Hanken_Grotesk/hanken-grotesk-bold.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Hanken Grotesk";
+  font-style: italic;
+  font-weight: normal;
+  src: url("../fonts/Hanken_Grotesk/hanken-grotesk-italic.woff2")
+      format("woff2"),
+    url("../fonts/Hanken_Grotesk/hanken-grotesk-italic.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Hanken Grotesk";
+  font-style: italic;
+  font-weight: bold;
+  src: url("../fonts/Hanken_Grotesk/hanken-grotesk-bold-italic.woff2")
+      format("woff2"),
+    url("../fonts/Hanken_Grotesk/hanken-grotesk-bold-italic.woff")
+      format("woff");
+}

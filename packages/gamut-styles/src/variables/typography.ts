@@ -14,6 +14,10 @@ monospace`;
 export const fontSystem = `-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu",
 "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif`;
 
+export const fontLxStudio = `"Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
+"Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+sans-serif`;
+
 export const fontFamily = {
   accent: fontAccent,
   base: fontBase,
