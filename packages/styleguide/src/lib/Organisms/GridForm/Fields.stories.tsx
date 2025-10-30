@@ -145,6 +145,9 @@ export const CheckboxField: Story = {
         size: 6,
         type: 'checkbox',
         id: 'my-super-cool-id',
+        validation: {
+          required: true,
+        },
       },
       {
         description: 'I agree to the conditions',
@@ -153,6 +156,9 @@ export const CheckboxField: Story = {
         size: 6,
         type: 'checkbox',
         id: 'my-super-cool-id2',
+        validation: {
+          required: true,
+        },
       },
     ],
   },
@@ -169,6 +175,9 @@ export const CheckboxSpacing: Story = {
         type: 'checkbox',
         id: 'terms-id',
         spacing: 'tight',
+        validation: {
+          required: true,
+        },
       },
       {
         description: 'I agree to the conditions',
@@ -178,6 +187,9 @@ export const CheckboxSpacing: Story = {
         type: 'checkbox',
         id: 'conditions-id',
         spacing: 'tight',
+        validation: {
+          required: true,
+        },
       },
     ],
   },

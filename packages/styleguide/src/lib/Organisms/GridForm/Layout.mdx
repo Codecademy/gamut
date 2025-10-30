@@ -7,6 +7,7 @@ import * as LayoutStories from './Layout.stories';
 export const parameters = {
   title: 'Layout',
   subtitle: 'Customize the visual layout and styling of your forms.',
+  status: 'static',
 };
 
 <Meta title="Organisms/GridForm/Layout" />
@@ -15,7 +16,7 @@ export const parameters = {
 
 ## GridForm-atting
 
-We can use the `size` and `rowspan` props (borrowed from <LinkTo id="layouts-layoutgrid--layout-grid">LayoutGrid</LinkTo>) to customize the layouts of our GridForms. You can also customize the `FormRequiredText` using the `requiredTextProps`. `FormRequiredText` should be spaced apart from or be stylistically different from the text element above it.
+We can use the `size` and `rowspan` props (borrowed from <LinkTo id="Layouts/LayoutGrid">LayoutGrid</LinkTo>) to customize the layouts of our GridForms. You can also customize the `FormRequiredText` using the `requiredTextProps`. `FormRequiredText` should be spaced apart from or be stylistically different from the text element above it.
 
 <Canvas of={LayoutStories.Formatted} />
 
@@ -33,9 +34,9 @@ Solo field form should always have their solo input be required. They should aut
 
 ## InfoTips
 
-A field can include our existing `InfoTip`. See the <LinkTo id="molecules-tips-infotip">InfoTip</LinkTo> story for more information on what props are available.
+A field can include our existing `InfoTip`. See the <LinkTo id="Molecules/Tips/InfoTip">InfoTip</LinkTo> story for more information on what props are available.
 
-See the <LinkTo id="atoms-forminputs-radio--radio">Radio</LinkTo> story for an example of how to add a infotip to a radio option.
+See the <LinkTo id="Atoms/FormInputs/Radio">Radio</LinkTo> story for an example of how to add a infotip to a radio option.
 
 <Canvas of={LayoutStories.InfoTip} />
 
