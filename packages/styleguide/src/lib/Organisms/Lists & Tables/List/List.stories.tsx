@@ -867,8 +867,8 @@ const ExpandableTableExample: React.FC<ListProps> = ({ variant }) => {
         const isExpanded = expandedRows.has(key);
         return (
           <ListRow
-            key={key}
             expanded={isExpanded}
+            key={key}
             renderExpanded={() => <ExpandedRow name={name} role={role} ship={ship} />}
             onClick={() => toggleRow(key)}
           >
