@@ -141,10 +141,10 @@ export const rightAlignStyles = {
 export const horizontalCenterStyles = {
   ...horizontalCenterWidths,
   ...centerHorizontal,
-  /* 
-  * This may seem odd, but since this width includes the beak
-  we need to add the beak width to the max width to get the correct max width
-  */
+  /*
+   * This may seem odd, but since this width includes the beak
+   * we need to add the beak width to the max width to get the correct max width
+   */
   maxWidth: horizontalCenterWidths.maxWidth + tooltipArrowHeightPx,
 } as const;
 
