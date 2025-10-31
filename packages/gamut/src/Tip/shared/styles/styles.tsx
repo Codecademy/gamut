@@ -16,7 +16,7 @@ import { createVariantsFromAlignments } from './createVariantsUtils';
 
 export const tooltipBgColor = `background-contrast`;
 export const tooltipArrowHeight = `1rem`;
-export const tooltipArrowHeightPx = 16;
+export const tooltipArrowHeightPx = 14;
 const containerOffsetVertical = 12;
 const borderColor = 'border-primary';
 
@@ -145,7 +145,7 @@ export const horizontalCenterStyles = {
    * This may seem odd, but since this width includes the beak
    * we need to add the beak width to the max width to get the correct max width
    */
-  maxWidth: horizontalCenterWidths.maxWidth + tooltipArrowHeightPx,
+  maxWidth: 124 + tooltipArrowHeightPx,
 } as const;
 
 export const leftAlignStyles = {
