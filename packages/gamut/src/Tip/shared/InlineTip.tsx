@@ -63,8 +63,8 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
         alignment={tipBodyAlignment}
         aria-hidden={isHoverType}
         color="currentColor"
+        horizNarrow={narrow && isHorizontalCenter}
         id={id}
-        maxWidth={narrow && isHorizontalCenter ? '64px' : undefined}
         role={type === 'tool' ? 'tooltip' : undefined}
         width={narrow && !isHorizontalCenter ? narrowWidth : 'max-content'}
         zIndex="auto"

@@ -9,6 +9,7 @@ import {
   inlineToolTipBodyAlignments,
   narrowWidth,
   toolTipBodyCss,
+  tooltipCenteredPadding,
   toolTipWidthRestrictions,
 } from './styles/styles';
 
@@ -20,8 +21,12 @@ const tipWrapperStyles = {
 
 const floatingTipTextStates = states({
   isHoverType: { alignItems: 'flexStart' },
-  narrow: { width: narrowWidth },
-  horizNarrow: { maxWidth: narrowWidth },
+  /*
+   * Subtract 2x padding to account for the padding within
+   * the tooltip since this is the inner text wrapper
+   */
+  narrow: { width: narrowWidth - tooltipCenteredPadding * 2 },
+  horizNarrow: { maxWidth: narrowWidth - tooltipCenteredPadding * 2 },
 });
 
 const inlineTipStates = states({
@@ -86,9 +91,18 @@ export const TargetContainer = styled(Box)(
   })
 );
 
+const inlineTipBodyStates = states({
+  hideTip: {
+    opacity: 0,
+    visibility: 'hidden',
+  },
+  horizNarrow: { maxWidth: narrowWidth },
+});
+
 export const TipBody = styled(Box)<
-  StyleProps<typeof inlineToolTipBodyAlignments>
->(css({ ...toolTipBodyCss }), inlineToolTipBodyAlignments);
+  StyleProps<typeof inlineToolTipBodyAlignments> &
+    StyleProps<typeof inlineTipBodyStates>
+>(css({ ...toolTipBodyCss }), inlineToolTipBodyAlignments, inlineTipBodyStates);
 
 export const FloatingTipBody = styled(Popover)<
   StyleProps<typeof toolTipWidthRestrictions>
