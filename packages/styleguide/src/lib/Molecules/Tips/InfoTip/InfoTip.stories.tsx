@@ -92,7 +92,11 @@ export const WithLinksOrButtons: Story = {
               <Anchor href="https://giphy.com/search/nichijou" ref={ref}>
                 cool link
               </Anchor>{' '}
-              that is super important.
+              that is super important. This is a
+              <Anchor href="https://giphy.com/search/nichijou">
+                second cool link
+              </Anchor>
+              that is also super important.
             </Text>
           }
           onClick={onClick}

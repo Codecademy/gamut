@@ -109,22 +109,16 @@ export const InfoTip: React.FC<InfoTipProps> = ({
           // If focus is moving back to the button or wrapper, allow it
           const movingToButton =
             button?.contains(relatedTarget) || wrapper?.contains(relatedTarget);
-
           if (movingToButton) return;
 
           // If focus is staying within the popover content, allow it
           if (popoverContent?.contains(relatedTarget)) return;
-
-          // Focus is leaving the InfoTip system entirely (via Tab, arrow keys, or any navigation)
-          // Return it to the button to maintain logical focus order
-          buttonRef.current?.focus();
-        } else if (relatedTarget === null) {
-          // Focus is being removed entirely (e.g., clicking elsewhere or navigating)
-          // Return focus to button to maintain logical tab order
-          setTimeout(() => {
-            buttonRef.current?.focus();
-          }, 0);
         }
+
+        // Return focus to button to maintain logical tab order
+        setTimeout(() => {
+          buttonRef.current?.focus();
+        }, 0);
       };
 
       // Wait for the popover ref to be set before attaching the listener
