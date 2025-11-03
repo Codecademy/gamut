@@ -4,9 +4,11 @@
 import {
   Box,
   DataTable,
+  FillButton,
   IconButton,
   Menu,
   MenuItem,
+  Modal,
   PopoverContainer,
   Text,
 } from '@codecademy/gamut';
@@ -213,10 +215,16 @@ export const DisableContainerQuery: Story = {
 
 const RowMenu: React.FC<{ rowName: string }> = ({ rowName }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const menuButtonRef = useRef<HTMLDivElement>(null);
 
   const handleClose = () => {
     setIsOpen(false);
+  };
+
+  const handleOpenModal = () => {
+    setIsOpen(false);
+    setIsModalOpen(true);
   };
 
   return (
@@ -246,6 +254,11 @@ const RowMenu: React.FC<{ rowName: string }> = ({ rowName }) => {
               Edit {rowName}
             </Text>
           </MenuItem>
+          <MenuItem onClick={handleOpenModal}>
+            <Text truncate="ellipsis" truncateLines={1}>
+              View Details
+            </Text>
+          </MenuItem>
           <MenuItem onClick={handleClose}>
             <Text truncate="ellipsis" truncateLines={1}>
               Delete {rowName}
@@ -258,6 +271,21 @@ const RowMenu: React.FC<{ rowName: string }> = ({ rowName }) => {
           </MenuItem>
         </Menu>
       </PopoverContainer>
+
+      <Modal
+        isOpen={isModalOpen}
+        size="small"
+        title={`Details for ${rowName}`}
+        onRequestClose={() => setIsModalOpen(false)}
+      >
+        <Text>
+          This is a modal opened from the menu for {rowName}. You can use this
+          to show detailed information or perform actions.
+        </Text>
+        <Box mt={16}>
+          <FillButton onClick={() => setIsModalOpen(false)}>Close</FillButton>
+        </Box>
+      </Modal>
     </Box>
   );
 };
@@ -361,7 +389,7 @@ export const WithFloatingMenu: Story = {
         sector: 'Alpha Quadrant',
         status: 'Active',
         yearsOfService: '12',
-        homeworld: 'Qo\'noS',
+        homeworld: "Qo'noS",
         specialization: 'Security & Combat',
       },
       {
