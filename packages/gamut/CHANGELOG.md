@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.5...@codecademy/gamut@67.2.0) (2025-11-03)
+
+### Features
+
+- **Tip:** L/R center narrow maxWidth ([e9b8543](https://github.com/Codecademy/gamut/commit/e9b8543c01d4a07b2926cbb473f1bcfbad8b89cc))
+
 ### [67.1.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.4...@codecademy/gamut@67.1.5) (2025-10-29)
 
 **Note:** Version bump only for package @codecademy/gamut
