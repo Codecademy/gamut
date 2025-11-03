@@ -74,6 +74,12 @@ const rowStates = states({
     display: 'flex',
     flexDirection: { _: 'column', c_base: 'row', c_sm: 'column' },
   },
+  /**
+   * Only the outermost element needs to inherit the background - otherwise it can stack with semitransparent bg colors and look off.
+   */
+  parentEl: {
+    bg: 'inherit',
+  },
 });
 
 const interactiveState = states({
@@ -176,7 +182,6 @@ export interface RowProps
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 0, c_base: 8, c_sm: 0 },
-    bg: 'inherit',
     width: 1,
   }),
   variance.compose(grid, flex),

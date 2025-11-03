@@ -228,10 +228,12 @@ const Content = ({ children }) => (
 
 # ❌ Nested selectors
 
-Nested selectors can cause a huge amount of side effects unwittingly and make it very hard to maintain consistent behavior while making updates. We politely ask (and will shortly lint) that you refrain from using:
+Nested selectors can cause a huge amount of side effects unwittingly and make it very hard to maintain consistent behavior while making updates. We politely ask that you refrain from using:
 
 - **Tag Selectors** - `*` `div` `p` `span`
 - **Component Selectors (From Gamut)** - EG: `Box`
+
+You may still do so, but at your own risk. Please consider alternatives such as using system props, utility functions from `gamut-styles`, or wrapping components in layout components such as `FlexBox` or `GridBox`.
 
 ```tsx
 //❌ Don't do this❌
