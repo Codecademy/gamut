@@ -25,11 +25,6 @@ export interface DialogProps extends ModalBaseProps, CloseButtonProps {
   >;
   confirmCta: DialogButtonProps;
   cancelCta?: DialogButtonProps;
-  /**
-   * TEMPORARY: a stopgap solution to avoid zIndex conflicts -
-   * will be reworked with: GM-624
-   */
-  zIndex?: number;
 }
 
 export const Dialog: React.FC<DialogProps> = ({
