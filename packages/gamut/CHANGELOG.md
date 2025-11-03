@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [67.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.2.0...@codecademy/gamut@67.2.1) (2025-11-03)
+
+### Bug Fixes
+
+- ListRow zebra striping ([85e2bdc](https://github.com/Codecademy/gamut/commit/85e2bdc3a263454f95679dd1fe4a8b49468b7576))
+
 ## [67.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.5...@codecademy/gamut@67.2.0) (2025-11-03)
 
 ### Features
