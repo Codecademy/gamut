@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
@@ -29,11 +29,11 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 }) => {
   const [isTipHidden, setHideTip] = useState(true);
   const [isAriaHidden, setIsAriaHidden] = useState(false);
+  const [shouldAnnounce, setShouldAnnounce] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const popoverContentRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
-  const tipContentId = useId();
 
   useEffect(() => {
     setLoaded(true);
@@ -52,6 +52,8 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       } else {
         if (isAriaHidden) setIsAriaHidden(false);
         setHideTip(nextTipState);
+        // Reset announcement state when closing the tip
+        setShouldAnnounce(false);
       }
     },
     [isAriaHidden, placement]
@@ -79,6 +81,13 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const clickHandler = () => {
     const currentTipState = !isTipHidden;
     setTipIsHidden(currentTipState);
+    // When opening the tip, wait for focus to settle then populate aria-live for announcement
+    if (!currentTipState) {
+      // Delay slightly to ensure focus has settled back on button before announcing
+      setTimeout(() => {
+        setShouldAnnounce(true);
+      }, 0);
+    }
     // we want to call the onClick handler after the tip has mounted
     if (onClick) setTimeout(() => onClick({ isTipHidden: currentTipState }), 0);
   };
@@ -161,17 +170,15 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     <ScreenreaderNavigableText
       aria-hidden={isAriaHidden}
       aria-live="assertive"
-      id={tipContentId}
       screenreader
     >
-      {!isTipHidden ? info : `\xa0`}
+      {shouldAnnounce && !isTipHidden ? info : `\xa0`}
     </ScreenreaderNavigableText>
   );
 
   const tip = (
     <InfoTipButton
       active={!isTipHidden}
-      aria-describedby={!isTipHidden ? tipContentId : undefined}
       aria-expanded={!isTipHidden}
       emphasis={emphasis}
       ref={buttonRef}
