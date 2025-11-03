@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
@@ -33,6 +33,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const buttonRef = useRef<HTMLButtonElement>(null);
   const popoverContentRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
+  const tipContentId = useId();
 
   useEffect(() => {
     setLoaded(true);
@@ -160,6 +161,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     <ScreenreaderNavigableText
       aria-hidden={isAriaHidden}
       aria-live="assertive"
+      id={tipContentId}
       screenreader
     >
       {!isTipHidden ? info : `\xa0`}
@@ -169,6 +171,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const tip = (
     <InfoTipButton
       active={!isTipHidden}
+      aria-describedby={!isTipHidden ? tipContentId : undefined}
       aria-expanded={!isTipHidden}
       emphasis={emphasis}
       ref={buttonRef}
