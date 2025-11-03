@@ -121,10 +121,12 @@ describe('Popover', () => {
   });
 
   it('triggers onRequestClose callback when popover is out of viewport', () => {
-    /* element is inside the viewport if the top and left value is greater than or equal to 0,
-      and right value is less than or equal to window.innerWidth
-      and bottom value is less than or equal to window.innerHeight */
-    const targetRefObj = mockTargetRef({}, { top: -1, x: 41, y: -1 });
+    /* element is completely out of viewport if:
+      - completely above: bottom < 0
+      - completely below: top > windowHeight
+      - completely to the left: right < 0
+      - completely to the right: left > windowWidth */
+    const targetRefObj = mockTargetRef({}, { top: -201, bottom: -1, left: 150, right: 350, x: 150, y: -201 });
 
     const onRequestClose = jest.fn();
     renderView({

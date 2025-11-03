@@ -43,14 +43,47 @@ export const findAllAdditionalScrollingParents = (
   return scrollingParents;
 };
 
-export const isInView = ({ top, left, bottom, right }: DOMRect) => {
+export const isOutOfView = (
+  rect: DOMRect,
+  target?: HTMLElement | null
+): boolean => {
   const windowHeight =
     window.innerHeight || document.documentElement.clientHeight;
   const windowWidth = window.innerWidth || document.documentElement.clientWidth;
 
-  return (
-    top >= 0 && left >= 0 && bottom <= windowHeight && right <= windowWidth
-  );
+  // Check if element is completely out of browser viewport
+  const outOfViewport =
+    rect.bottom < 0 ||
+    rect.top > windowHeight ||
+    rect.right < 0 ||
+    rect.left > windowWidth;
+
+  if (outOfViewport || !target) {
+    return outOfViewport;
+  }
+
+  // Check if element is visible within scrollable parent containers
+  // We need to check if the element intersects with the scrollable parent's visible area
+  const scrollingParents = findAllAdditionalScrollingParents(target);
+  
+  for (const parent of scrollingParents) {
+    const parentRect = parent.getBoundingClientRect();
+    
+    // Check if element intersects with scrollable parent's visible area
+    // The element is out of view if it doesn't overlap with the parent's visible rect
+    const intersects =
+      rect.top < parentRect.bottom &&
+      rect.bottom > parentRect.top &&
+      rect.left < parentRect.right &&
+      rect.right > parentRect.left;
+
+    // If element doesn't intersect with a scrollable parent's visible area, it's out of view
+    if (!intersects) {
+      return true;
+    }
+  }
+
+  return false;
 };
 
 export const ALIGN = {

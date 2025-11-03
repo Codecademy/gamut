@@ -1,7 +1,7 @@
 import { DotLoose } from '@codecademy/gamut-patterns';
 import { timingValues } from '@codecademy/gamut-styles';
 import isArray from 'lodash/isArray';
-import { ComponentProps, forwardRef, useEffect, useRef, useState } from 'react';
+import { ComponentProps, forwardRef, useEffect } from 'react';
 import * as React from 'react';
 
 import { Box, BoxProps, FlexBox } from '../Box';
@@ -12,6 +12,7 @@ import {
   shadowVariant,
   StaticListWrapper,
 } from './elements';
+import { useScrollabilityCheck } from './hooks';
 import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
@@ -72,11 +73,6 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     const isEmpty = !children || (isArray(children) && children.length === 0);
     const isTable = as === 'table';
 
-    const [isEnd, setIsEnd] = useState(false);
-    const ListWrapper = shadow ? AnimatedListWrapper : StaticListWrapper;
-    const showShadow = shadow && scrollable && !isEnd && !isEmpty;
-    const animationVar = showShadow ? 'shadow' : 'hidden';
-
     const value = useList({
       listType: as,
       rowBreakpoint,
@@ -85,16 +81,12 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
       variant,
     });
 
-    const wrapperRef = useRef<HTMLDivElement>(null);
-    const tableRef = useRef<HTMLDivElement>(null);
+    const { isEnd, tableRef, setWrapperRef, handleScroll } =
+      useScrollabilityCheck({ shadow, scrollable, children, loading, isEmpty });
 
-    useEffect(() => {
-      const wrapperWidth =
-        wrapperRef?.current?.getBoundingClientRect()?.width ?? 0;
-      const tableWidth = tableRef?.current?.getBoundingClientRect().width ?? 0;
-
-      setIsEnd(tableWidth < wrapperWidth);
-    }, []);
+    const ListWrapper = shadow ? AnimatedListWrapper : StaticListWrapper;
+    const showShadow = shadow && scrollable && !isEnd && !isEmpty;
+    const animationVar = showShadow ? 'shadow' : 'hidden';
 
     useEffect(() => {
       if (scrollToTopOnUpdate && tableRef.current !== null) {
@@ -112,11 +104,6 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
         {children}
       </ListEl>
     );
-
-    const scrollHandler = (event: React.UIEvent<HTMLDivElement>) => {
-      const { offsetWidth, scrollLeft, scrollWidth } = event.currentTarget;
-      setIsEnd(offsetWidth + Math.ceil(scrollLeft) >= scrollWidth);
-    };
 
     const listContents = (
       <>
@@ -153,7 +140,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
           maxHeight={height}
           overflow={overflow}
           position="relative"
-          ref={wrapperRef}
+          ref={setWrapperRef}
           transition={{
             background: { duration: timingValues.fast, ease: 'easeInOut' },
           }}
@@ -162,7 +149,7 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
             shadow: shadowVariant,
           }}
           width={1}
-          onScroll={scrollable ? scrollHandler : undefined}
+          onScroll={scrollable ? handleScroll : undefined}
         >
           <Box
             as={isTable && !isEmpty && !loading ? 'table' : 'div'}

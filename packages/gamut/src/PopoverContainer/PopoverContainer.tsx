@@ -13,7 +13,7 @@ import { BodyPortal } from '../BodyPortal';
 import { FocusTrap } from '../FocusTrap';
 import { useResizingParentEffect, useScrollingParentsEffect } from './hooks';
 import { ContainerState, PopoverContainerProps } from './types';
-import { getContainers, getPosition, isInView } from './utils';
+import { getContainers, getPosition, isOutOfView } from './utils';
 
 const PopoverContent = styled.div(
   variance.compose(
@@ -100,15 +100,18 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   useIsomorphicLayoutEffect(() => {
     if (
       containers?.viewport &&
-      !isInView(containers?.viewport) &&
+      isOutOfView(containers?.viewport, targetRef?.current as HTMLElement) &&
       !hasRequestedCloseRef.current
     ) {
       hasRequestedCloseRef.current = true;
       onRequestClose?.();
-    } else if (containers?.viewport && isInView(containers?.viewport)) {
+    } else if (
+      containers?.viewport &&
+      !isOutOfView(containers?.viewport, targetRef?.current as HTMLElement)
+    ) {
       hasRequestedCloseRef.current = false;
     }
-  }, [containers?.viewport, onRequestClose]);
+  }, [containers?.viewport, onRequestClose, targetRef]);
 
   /**
    * Allows targetRef to be or contain a button that toggles the popover open and closed.
