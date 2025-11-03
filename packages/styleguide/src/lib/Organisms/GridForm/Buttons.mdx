@@ -1,0 +1,69 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as ButtonsStories from './Buttons.stories';
+
+export const parameters = {
+  title: 'Buttons',
+  subtitle: 'Configure submit and cancel buttons for your forms.',
+  status: 'static',
+};
+
+<Meta title="Organisms/GridForm/Buttons" />
+
+<ComponentHeader {...parameters} />
+
+## Submit button position
+
+We can position the submit button by passing the `position` prop within `submit` with a
+value of `'left'`, `'center'`, `'right'`, or `'stretch'`. The default is `'left'`.
+
+<Canvas of={ButtonsStories.SubmitButtonRight} />
+
+<Canvas of={ButtonsStories.SubmitButtonLeft} />
+
+<Canvas of={ButtonsStories.SubmitButtonCenter} />
+
+<Canvas of={ButtonsStories.SubmitButtonStretch} />
+
+## Submit button type
+
+We can specify the type submit button by passing the `type` prop within `submit`. We can choose between
+the <LinkTo id="atoms-button--fill-button">`FillButton`</LinkTo> or <LinkTo id="atoms-button--cta-button">`CTAButton`</LinkTo>. The default is `'fill'`.
+
+<Canvas of={ButtonsStories.SubmitButtonFill} />
+
+<Canvas of={ButtonsStories.SubmitButtonCTA} />
+
+## Inline submit button
+
+We can make the Submit button inline with an input by setting the column
+sizes so they fit on the same row (e.g size 6 for an input and size 4 for
+the submit).
+
+We can additionally remove the label from text inputs and checkbox inputs.
+Use the `hideLabel` prop to remove the label, allowing the submit button to
+align nicely with the input. **However**, if using `hideLabel` to remove the default label, you should provide an `aria-label` and/or include another label to the right/left of the input to ensure the input is accessible.
+
+<Canvas of={ButtonsStories.SubmitButtonInline} />
+
+## Cancel button
+
+Optionally, include a cancel button.
+
+<Canvas of={ButtonsStories.CancelButton} />
+
+## Button states
+
+### Loading
+
+We can set the state of the submit button to `loading` as `true` to show a loading spinner. This is useful when you need to show the user that the form is submitting.
+
+<Canvas of={ButtonsStories.Loading} />
+
+### Disabled
+
+You can also set `disabled` to `true` to disable submission.
+
+<Canvas of={ButtonsStories.Disabled} />
