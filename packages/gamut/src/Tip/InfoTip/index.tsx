@@ -52,7 +52,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       } else {
         if (isAriaHidden) setIsAriaHidden(false);
         setHideTip(nextTipState);
-        // Reset announcement state when closing the tip
         setShouldAnnounce(false);
       }
     },
@@ -81,7 +80,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const clickHandler = () => {
     const currentTipState = !isTipHidden;
     setTipIsHidden(currentTipState);
-    // When opening the tip, wait for focus to settle then populate aria-live for announcement
     if (!currentTipState) {
       // Delay slightly to ensure focus has settled back on button before announcing
       setTimeout(() => {
