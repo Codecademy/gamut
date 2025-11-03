@@ -92,10 +92,6 @@ export const TargetContainer = styled(Box)(
 );
 
 const inlineTipBodyStates = states({
-  hideTip: {
-    opacity: 0,
-    visibility: 'hidden',
-  },
   horizNarrow: { maxWidth: narrowWidth },
 });
 
