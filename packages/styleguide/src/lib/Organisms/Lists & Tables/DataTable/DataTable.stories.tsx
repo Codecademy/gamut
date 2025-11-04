@@ -4,11 +4,10 @@
 import {
   Box,
   DataTable,
-  FillButton,
+  Dialog,
   IconButton,
   Menu,
   MenuItem,
-  Modal,
   PopoverContainer,
   Text,
 } from '@codecademy/gamut';
@@ -254,17 +253,12 @@ const RowMenu: React.FC<{ rowName: string }> = ({ rowName }) => {
               Edit {rowName}
             </Text>
           </MenuItem>
-          <MenuItem onClick={handleOpenModal}>
-            <Text truncate="ellipsis" truncateLines={1}>
-              View Details
-            </Text>
-          </MenuItem>
           <MenuItem onClick={handleClose}>
             <Text truncate="ellipsis" truncateLines={1}>
               Delete {rowName}
             </Text>
           </MenuItem>
-          <MenuItem onClick={handleClose}>
+          <MenuItem onClick={handleOpenModal}>
             <Text truncate="ellipsis" truncateLines={1}>
               Clone {rowName}
             </Text>
@@ -272,20 +266,29 @@ const RowMenu: React.FC<{ rowName: string }> = ({ rowName }) => {
         </Menu>
       </PopoverContainer>
 
-      <Modal
+      <Dialog
+        cancelCta={{
+          children: 'Cancel',
+          onClick: () => setIsModalOpen(false),
+        }}
+        confirmCta={{
+          children: 'Clone',
+          onClick: () => {
+            // Handle clone action here
+            setIsModalOpen(false);
+          },
+        }}
         isOpen={isModalOpen}
         size="small"
-        title={`Details for ${rowName}`}
+        title={`Clone ${rowName}`}
         onRequestClose={() => setIsModalOpen(false)}
       >
-        <Text>
-          This is a modal opened from the menu for {rowName}. You can use this
-          to show detailed information or perform actions.
+        Are you sure you want to clone{' '}
+        <Text as="span" fontWeight="bold">
+          {rowName}{' '}
         </Text>
-        <Box mt={16}>
-          <FillButton onClick={() => setIsModalOpen(false)}>Close</FillButton>
-        </Box>
-      </Modal>
+        ? This action cannot be undone.
+      </Dialog>
     </Box>
   );
 };
