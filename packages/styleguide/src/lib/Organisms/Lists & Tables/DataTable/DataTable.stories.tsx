@@ -242,6 +242,7 @@ const RowMenu: React.FC<{ rowName: string }> = ({ rowName }) => {
       <PopoverContainer
         alignment="bottom-left"
         allowPageInteraction
+        closeOnViewportExit
         isOpen={isOpen}
         offset={0}
         targetRef={menuButtonRef}
