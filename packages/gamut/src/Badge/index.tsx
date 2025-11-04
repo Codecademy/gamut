@@ -65,7 +65,7 @@ const sizeVariants = variant({
     },
     sm: {
       height: `1rem`,
-      // the powers that be told us this was okay. please don't do this. seriously. - <3 web-plat
+      // The powers that be told us this was okay. Please don't do this. Seriously. - <3 Web-Plat
       fontSize: 10 as any,
     },
   },
