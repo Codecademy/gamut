@@ -148,7 +148,7 @@ You can add interactive menus to DataTable rows using `PopoverContainer` and `Me
 
 **Key features:**
 
-- **Automatic closing**: The PopoverContainer automatically closes when the target row scrolls out of view, even when inside scrollable parent containers
+- **Automatic closing**: The PopoverContainer has the `closeOnViewportExit` prop which automatically closes when the Menu when the target row scrolls out of view, even when inside scrollable parent containers
 - **Integration with Modals**: You can open Modals from menu items, which will appear above the table header with proper z-index stacking
 - **Accessible**: The menu is keyboard accessible and works with screen readers
 
@@ -198,6 +198,7 @@ const RowMenu: React.FC<{ rowName: string }> = ({ rowName }) => {
       <PopoverContainer
         alignment="bottom-left"
         allowPageInteraction
+        closeOnViewportExit
         isOpen={isOpen}
         offset={0}
         targetRef={menuButtonRef}
