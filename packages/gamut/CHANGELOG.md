@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.2.1...@codecademy/gamut@67.3.0) (2025-11-04)
+
+### Features
+
+- **InfoTip:** Add global escape close ([dcffe03](https://github.com/Codecademy/gamut/commit/dcffe0325e42b50b199db7d8015028e44adcc113))
+
 ### [67.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.2.0...@codecademy/gamut@67.2.1) (2025-11-03)
 
 ### Bug Fixes

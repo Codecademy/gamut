@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [78.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.2.2...@codecademy/styleguide@78.3.0) (2025-11-04)
+
+### Features
+
+- **InfoTip:** Add global escape close ([dcffe03](https://github.com/Codecademy/gamut/commit/dcffe0325e42b50b199db7d8015028e44adcc113))
+
 ### [78.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.2.1...@codecademy/styleguide@78.2.2) (2025-11-03)
 
 **Note:** Version bump only for package @codecademy/styleguide
