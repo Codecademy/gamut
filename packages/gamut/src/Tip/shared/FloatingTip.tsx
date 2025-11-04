@@ -31,6 +31,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   loading,
   narrow,
   overline,
+  popoverContentRef,
   truncateLines,
   type,
   username,
@@ -134,6 +135,8 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
     info
   );
 
+  const isPopoverOpen = isHoverType ? isOpen : !isTipHidden;
+
   return (
     <Box
       display="inline-flex"
@@ -162,8 +165,9 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         animation="fade"
         dims={dims}
         horizontalOffset={offset}
-        isOpen={isHoverType ? isOpen : !isTipHidden}
+        isOpen={isPopoverOpen}
         outline
+        popoverContainerRef={popoverContentRef}
         skipFocusTrap
         targetRef={ref}
         variant="secondary"
