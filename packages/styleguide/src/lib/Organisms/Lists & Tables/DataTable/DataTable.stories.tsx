@@ -2,6 +2,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { DataTable } from '@codecademy/gamut';
+import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import {
@@ -123,6 +124,11 @@ type Story = StoryObj<typeof DataTable>;
 
 export const Default: Story = {
   args: {},
+  render: (args) => (
+    <Background bg="paleBlue" p={8}>
+      <DataTable {...args} />
+    </Background>
+  ),
 };
 
 export const FullDataTable: Story = {
@@ -137,7 +143,11 @@ export const EmptyState: Story = {
     height: '45vh',
     minHeight: '300px',
   },
-  render: (args) => <DataTable {...args} />,
+  render: (args) => (
+    <Background bg="black" p={8}>
+      <DataTable {...args} />
+    </Background>
+  ),
 };
 
 export const EmptyStateCustom: Story = {
@@ -149,11 +159,20 @@ export const EmptyStateCustom: Story = {
     minHeight: '300px',
     emptyMessage: <CustomEmptyState />,
   },
-  render: (args) => <DataTable {...args} />,
+  render: (args) => (
+    <Background bg="black" p={8}>
+      <DataTable {...args} />
+    </Background>
+  ),
 };
 
 export const LoadingRows: Story = {
   args: { loading: true, shadow: true },
+  render: (args) => (
+    <Background bg="black" p={8}>
+      <DataTable {...args} />
+    </Background>
+  ),
 };
 
 export const Scrollable: Story = {
@@ -163,28 +182,46 @@ export const Scrollable: Story = {
     height: '400px',
     wrapperWidth: '800px',
   },
+  render: (args) => (
+    <Background bg="black" p={8}>
+      <DataTable {...args} />
+    </Background>
+  ),
+};
+
+export const BackgroundColors: Story = {
+  args: {},
+  render: (args) => (
+    <Background bg="paleBlue" p={8}>
+      <DataTable {...args} />
+    </Background>
+  ),
 };
 
 const DataTableDisableContainerQueryExample = () => {
   const defaultComponent = (
-    <DataTable
-      columns={simpleColumns}
-      id="default-table-query"
-      idKey="name"
-      rows={simpleRows}
-      spacing="condensed"
-    />
+    <Background bg="black" p={8}>
+      <DataTable
+        columns={simpleColumns}
+        id="default-table-query"
+        idKey="name"
+        rows={simpleRows}
+        spacing="condensed"
+      />
+    </Background>
   );
 
   const disabledComponent = (
-    <DataTable
-      columns={simpleColumns}
-      disableContainerQuery
-      id="disabled-table-query"
-      idKey="name"
-      rows={simpleRows}
-      spacing="condensed"
-    />
+    <Background bg="black" p={8}>
+      <DataTable
+        columns={simpleColumns}
+        disableContainerQuery
+        id="disabled-table-query"
+        idKey="name"
+        rows={simpleRows}
+        spacing="condensed"
+      />
+    </Background>
   );
 
   return (

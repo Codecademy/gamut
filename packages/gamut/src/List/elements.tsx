@@ -75,10 +75,10 @@ const rowStates = states({
     flexDirection: { _: 'column', c_base: 'row', c_sm: 'column' },
   },
   /**
-   * Only the outermost element needs to inherit the background - otherwise it can stack with semitransparent bg colors and look off.
+   * Overrides the background of the element to transparent.
    */
-  parentEl: {
-    bg: 'inherit',
+  transparentBg: {
+    bg: 'transparent',
   },
 });
 
@@ -120,11 +120,10 @@ const spacingVariants = variant({
 
 const rowVariants = variant({
   prop: 'variant',
-  base: {
-    bg: 'background',
-  },
+  base: {},
   variants: {
     default: {
+      bg: 'background',
       border: 1,
       borderTop: 'none',
       '&:first-of-type': {
@@ -138,10 +137,12 @@ const rowVariants = variant({
       },
     },
     card: {
+      bg: 'background',
       border: 1,
       borderRadius: 'sm',
     },
     block: {
+      bg: 'background',
       border: 'none',
       borderRadius: 'sm',
     },
