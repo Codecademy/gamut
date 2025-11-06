@@ -35,7 +35,7 @@ export interface FocusTrapProps extends WithChildrenProp {
   /**
    * Passthrough for react-focus-on library props
    */
-  focusOnProps?: ReactFocusOnProps;
+  focusOnProps?: Partial<Omit<ReactFocusOnProps, 'children'>>;
 }
 
 export const FocusTrap: React.FC<FocusTrapProps> = ({

@@ -18,32 +18,36 @@ import { getBeakVariant } from './styles/beak';
 import { PopoverProps } from './types';
 import { getDefaultOffset } from './utils';
 
-export const Popover: React.FC<PopoverProps> = ({
-  animation,
-  align = 'left',
-  beak,
-  children,
-  className,
-  isOpen,
-  onRequestClose,
-  outline = false,
-  skipFocusTrap,
-  focusOnProps,
-  pattern: Pattern,
-  popoverContainerRef,
-  position = 'below',
-  role,
-  variant,
-  targetRef,
-  horizontalOffset = getDefaultOffset({
-    axis: 'horizontal',
-    position,
+export const Popover: React.FC<PopoverProps> = (props) => {
+  const {
+    animation,
+    align = 'left',
+    beak,
+    children,
+    className,
+    isOpen,
+    onRequestClose,
+    outline = false,
+    skipFocusTrap,
+    pattern: Pattern,
+    popoverContainerRef,
+    position = 'below',
+    role,
     variant,
-  }),
-  verticalOffset = getDefaultOffset({ axis: 'vertical', position, variant }),
+    targetRef,
+    horizontalOffset = getDefaultOffset({
+      axis: 'horizontal',
+      position,
+      variant,
+    }),
+    verticalOffset = getDefaultOffset({ axis: 'vertical', position, variant }),
 
-  widthRestricted,
-}) => {
+    widthRestricted,
+  } = props;
+
+  // Type guard: focusOnProps is only available when skipFocusTrap is false
+  const focusOnProps =
+    'focusOnProps' in props && !skipFocusTrap ? props.focusOnProps : undefined;
   const [popoverHeight, setPopoverHeight] = useState<number>(0);
   const [popoverWidth, setPopoverWidth] = useState<number>(0);
   const [targetRect, setTargetRect] = useState<DOMRect>();
@@ -241,7 +245,7 @@ export const Popover: React.FC<PopoverProps> = ({
           allowPageInteraction
           onClickOutside={handleClickOutside}
           onEscapeKey={onRequestClose}
-          focusOnProps={focusOnProps}
+          {...(focusOnProps ? { focusOnProps } : {})}
         >
           {contents}
         </FocusTrap>
