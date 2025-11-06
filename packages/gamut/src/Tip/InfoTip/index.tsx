@@ -106,35 +106,84 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         }
       };
 
+      // Define focusout handler outside timeout so we can clean it up
       const handleFocusOut = (event: FocusEvent) => {
         const popoverContent = popoverContentRef.current;
         const button = buttonRef.current;
         const wrapper = wrapperRef.current;
-
         const { relatedTarget } = event;
 
-        if (relatedTarget instanceof Node) {
-          // If focus is moving back to the button or wrapper, allow it
-          const movingToButton =
-            button?.contains(relatedTarget) || wrapper?.contains(relatedTarget);
-          if (movingToButton) return;
+        if (!popoverContent || !button || isTipHidden) return;
 
-          // If focus is staying within the popover content, allow it
-          if (popoverContent?.contains(relatedTarget)) return;
+        // If relatedTarget is null (common with portals), check activeElement after focus settles
+        if (!relatedTarget) {
+          setTimeout(() => {
+            if (isTipHidden) return;
+            const { activeElement } = document;
+            const currentPopoverContent = popoverContentRef.current;
+            const currentButton = buttonRef.current;
+
+            if (
+              activeElement &&
+              activeElement !== button &&
+              activeElement !== wrapper &&
+              !currentPopoverContent?.contains(activeElement) &&
+              !button.contains(activeElement) &&
+              !wrapper?.contains(activeElement) &&
+              currentButton &&
+              currentButton.isConnected &&
+              currentButton instanceof HTMLElement &&
+              !currentButton.hasAttribute('disabled') &&
+              currentButton.tabIndex !== -1
+            ) {
+              currentButton.focus();
+            }
+          }, 0);
+          return;
         }
 
-        // Return focus to button to maintain logical tab order
+        // Type guard: relatedTarget must be a Node to use contains
+        if (!(relatedTarget instanceof Node)) {
+          return;
+        }
+
+        // If focus is moving to button or wrapper, allow it
+        if (
+          button.contains(relatedTarget) ||
+          wrapper?.contains(relatedTarget)
+        ) {
+          return;
+        }
+
+        // If focus is staying within the popover content, allow it
+        if (popoverContent.contains(relatedTarget)) {
+          return;
+        }
+
+        // Focus is leaving the popover - return to button
+        // Use setTimeout to ensure this happens after the focus change
         setTimeout(() => {
-          buttonRef.current?.focus();
+          if (isTipHidden) return;
+          const currentButton = buttonRef.current;
+          if (
+            currentButton &&
+            currentButton.isConnected &&
+            currentButton instanceof HTMLElement &&
+            !currentButton.hasAttribute('disabled') &&
+            currentButton.tabIndex !== -1
+          ) {
+            currentButton.focus();
+          }
         }, 0);
       };
 
-      // Wait for the popover ref to be set before attaching the listener
+      // Wait for popover ref to be set before attaching focusout listener
       let popoverContent: HTMLDivElement | null = null;
       const timeoutId = setTimeout(() => {
         popoverContent = popoverContentRef.current;
         if (popoverContent) {
-          popoverContent.addEventListener('focusout', handleFocusOut);
+          // Use capture phase to catch focusout events
+          popoverContent.addEventListener('focusout', handleFocusOut, true);
         }
       }, 0);
 
@@ -143,7 +192,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       return () => {
         clearTimeout(timeoutId);
         if (popoverContent) {
-          popoverContent.removeEventListener('focusout', handleFocusOut);
+          popoverContent.removeEventListener('focusout', handleFocusOut, true);
         }
         document.removeEventListener('keydown', handleGlobalEscapeKey);
       };
@@ -156,9 +205,12 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   const tipProps = {
     alignment,
+    buttonRef,
     escapeKeyPressHandler,
     info,
     isTipHidden,
+    onRequestClose:
+      placement === 'floating' ? () => setTipIsHidden(true) : undefined,
     popoverContentRef,
     wrapperRef,
     ...rest,
