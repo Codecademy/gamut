@@ -23,7 +23,6 @@ type FocusOrMouseEvent =
 export const FloatingTip: React.FC<TipWrapperProps> = ({
   alignment,
   avatar,
-  buttonRef,
   children,
   escapeKeyPressHandler,
   inheritDims,
@@ -139,14 +138,13 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
 
   const isPopoverOpen = isHoverType ? isOpen : !isTipHidden;
 
-  const focusOnProps =
-    type === 'info' && buttonRef
-      ? {
-          // Disable focus trapping - we'll handle it manually
-          focusLock: false,
-          returnFocus: buttonRef,
-        }
-      : undefined;
+  // When type is 'info', skip focus trap and don't pass onRequestClose
+  // (InfoTip handles its own focus management and click-outside/escape handling)
+  const popoverFocusProps =
+    type === 'info'
+      ? ({ skipFocusTrap: true, onRequestClose: undefined } as const)
+      : ({ skipFocusTrap: undefined, onRequestClose } as const);
+
   return (
     <Box
       display="inline-flex"
@@ -172,9 +170,9 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
       </TargetContainer>
       <FloatingTipBody
         {...commonPopoverProps}
+        {...popoverFocusProps}
         animation="fade"
         dims={dims}
-        focusOnProps={focusOnProps}
         horizontalOffset={offset}
         isOpen={isPopoverOpen}
         outline
@@ -182,7 +180,6 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         targetRef={ref}
         variant="secondary"
         widthRestricted={false}
-        onRequestClose={onRequestClose}
       >
         <FloatingTipTextWrapper
           horizNarrow={narrow && isHorizontalCenter}

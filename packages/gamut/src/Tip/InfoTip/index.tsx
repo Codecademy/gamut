@@ -115,30 +115,47 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
         if (!popoverContent || !button || isTipHidden) return;
 
-        // If relatedTarget is null (common with portals), check activeElement after focus settles
-        if (!relatedTarget) {
-          setTimeout(() => {
+        // Helper function to return focus to button
+        const returnFocusToButton = () => {
+          // Use requestAnimationFrame to ensure this happens after the focus change
+          requestAnimationFrame(() => {
             if (isTipHidden) return;
-            const { activeElement } = document;
-            const currentPopoverContent = popoverContentRef.current;
             const currentButton = buttonRef.current;
-
             if (
-              activeElement &&
-              activeElement !== button &&
-              activeElement !== wrapper &&
-              !currentPopoverContent?.contains(activeElement) &&
-              !button.contains(activeElement) &&
-              !wrapper?.contains(activeElement) &&
-              currentButton &&
-              currentButton.isConnected &&
+              currentButton?.isConnected &&
               currentButton instanceof HTMLElement &&
               !currentButton.hasAttribute('disabled') &&
               currentButton.tabIndex !== -1
             ) {
               currentButton.focus();
             }
-          }, 0);
+          });
+        };
+
+        // If relatedTarget is null (common with portals or when tabbing to browser UI),
+        // check activeElement after focus settles
+        if (!relatedTarget) {
+          // Use a slightly longer delay to ensure focus has settled
+          setTimeout(() => {
+            if (isTipHidden) return;
+            const { activeElement } = document;
+            const currentPopoverContent = popoverContentRef.current;
+            const currentButton = buttonRef.current;
+            const currentWrapper = wrapperRef.current;
+
+            // If activeElement is not within our component, return focus to button
+            if (
+              activeElement &&
+              currentButton &&
+              activeElement !== currentButton &&
+              activeElement !== currentWrapper &&
+              !currentPopoverContent?.contains(activeElement) &&
+              !currentButton.contains(activeElement) &&
+              !currentWrapper?.contains(activeElement)
+            ) {
+              returnFocusToButton();
+            }
+          }, 10);
           return;
         }
 
@@ -161,20 +178,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         }
 
         // Focus is leaving the popover - return to button
-        // Use setTimeout to ensure this happens after the focus change
-        setTimeout(() => {
-          if (isTipHidden) return;
-          const currentButton = buttonRef.current;
-          if (
-            currentButton &&
-            currentButton.isConnected &&
-            currentButton instanceof HTMLElement &&
-            !currentButton.hasAttribute('disabled') &&
-            currentButton.tabIndex !== -1
-          ) {
-            currentButton.focus();
-          }
-        }, 0);
+        returnFocusToButton();
       };
 
       // Wait for popover ref to be set before attaching focusout listener

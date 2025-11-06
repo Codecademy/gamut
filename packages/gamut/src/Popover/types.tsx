@@ -113,9 +113,4 @@ export type PopoverProps = PopoverBaseProps &
      * Whether to add width restrictions to Popover.
      */
     widthRestricted?: boolean;
-
-    /**
-     * Props to pass through to FocusTrap's focusOnProps (only used when skipFocusTrap is false).
-     */
-    focusOnProps?: import('../FocusTrap').FocusTrapProps['focusOnProps'];
   };

@@ -24,7 +24,6 @@ export const Popover: React.FC<PopoverProps> = ({
   beak,
   children,
   className,
-  focusOnProps,
   isOpen,
   onRequestClose,
   outline = false,
@@ -239,7 +238,6 @@ export const Popover: React.FC<PopoverProps> = ({
       ) : (
         <FocusTrap
           allowPageInteraction
-          focusOnProps={focusOnProps}
           onClickOutside={handleClickOutside}
           onEscapeKey={onRequestClose}
         >
