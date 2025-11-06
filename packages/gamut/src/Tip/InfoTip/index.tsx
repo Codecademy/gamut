@@ -114,6 +114,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
         const { relatedTarget } = event;
 
+        console.log('relatedTarget', relatedTarget);
         if (relatedTarget instanceof Node) {
           // If focus is moving back to the button or wrapper, allow it
           const movingToButton =
