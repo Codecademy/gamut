@@ -135,7 +135,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         setTimeout(() => {
           console.log('in setTimeout');
           buttonRef.current?.focus();
-        }, 1000);
+        }, 0);
       };
 
       // Wait for the popover ref to be set before attaching the listener
