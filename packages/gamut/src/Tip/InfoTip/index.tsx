@@ -107,6 +107,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       };
 
       const handleFocusOut = (event: FocusEvent) => {
+        console.log('in handleFocusOut');
         const popoverContent = popoverContentRef.current;
         const button = buttonRef.current;
         const wrapper = wrapperRef.current;
@@ -117,14 +118,21 @@ export const InfoTip: React.FC<InfoTipProps> = ({
           // If focus is moving back to the button or wrapper, allow it
           const movingToButton =
             button?.contains(relatedTarget) || wrapper?.contains(relatedTarget);
-          if (movingToButton) return;
+          if (movingToButton) {
+            console.log('focus moving to button or wrapper');
+            return;
+          }
 
           // If focus is staying within the popover content, allow it
-          if (popoverContent?.contains(relatedTarget)) return;
+          if (popoverContent?.contains(relatedTarget)) {
+            console.log('focus staying within popover content');
+            return;
+          }
         }
 
         // Return focus to button to maintain logical tab order
         setTimeout(() => {
+          console.log('in setTimeout');
           buttonRef.current?.focus();
         }, 0);
       };
