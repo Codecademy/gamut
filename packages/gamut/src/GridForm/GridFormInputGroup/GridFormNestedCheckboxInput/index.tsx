@@ -75,6 +75,7 @@ export const GridFormNestedCheckboxInput: React.FC<
                 },
                 ref,
                 error,
+                namePrefix: field.name,
               });
             })}
           </Box>

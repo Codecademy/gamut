@@ -76,6 +76,7 @@ export const ConnectedNestedCheckboxes: React.FC<
                   });
                 },
                 ref,
+                namePrefix: name,
               });
             })}
           </Box>

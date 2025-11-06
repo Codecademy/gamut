@@ -161,6 +161,7 @@ interface RenderCheckboxParams {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   ref: React.RefCallback<HTMLInputElement>;
   error?: boolean;
+  namePrefix?: string;
 }
 
 export const renderCheckbox = ({
@@ -173,6 +174,7 @@ export const renderCheckbox = ({
   onChange,
   ref,
   error,
+  namePrefix,
 }: RenderCheckboxParams) => {
   let checkedProps = {};
   if (state.checked) {
@@ -193,6 +195,15 @@ export const renderCheckbox = ({
     };
   }
 
+  // Generate aria-controls for parent checkboxes with immediate children only
+  // Each parent controls only its direct children, not all descendants
+  const ariaControls =
+    option.options.length > 0 && namePrefix
+      ? option.options
+          .map((childValue) => `${namePrefix}-${childValue}`)
+          .join(' ')
+      : undefined;
+
   return (
     <Box
       as="li"
@@ -201,6 +212,7 @@ export const renderCheckbox = ({
       ml={(option.level * 24) as any}
     >
       <Checkbox
+        aria-controls={ariaControls}
         aria-invalid={error}
         aria-label={
           option['aria-label'] === undefined
