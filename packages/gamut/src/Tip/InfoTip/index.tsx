@@ -132,10 +132,8 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         }
 
         // Return focus to button to maintain logical tab order
-        setTimeout(() => {
-          console.log('in setTimeout');
-          buttonRef.current?.focus();
-        }, 300);
+        console.log('focusing on button');
+        buttonRef.current?.focus();
       };
 
       // Wait for the popover ref to be set before attaching the listener
