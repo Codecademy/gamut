@@ -138,8 +138,9 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
 
   const isPopoverOpen = isHoverType ? isOpen : !isTipHidden;
 
-  // When type is 'info', skip focus trap and don't pass onRequestClose
-  // (InfoTip handles its own focus management and click-outside/escape handling)
+  // When type is 'info', skip focus trap entirely since we're handling focus management ourselves
+  // This allows focus to leave freely, and custom logic in InfoTip will catch when focus leaves
+  // and return it to the button
   const popoverFocusProps =
     type === 'info'
       ? ({ skipFocusTrap: true, onRequestClose: undefined } as const)

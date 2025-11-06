@@ -1,5 +1,6 @@
 import { PatternProps } from '@codecademy/gamut-patterns';
 import { HTMLAttributes } from 'react';
+import { ReactFocusOnProps } from 'react-focus-on/dist/es5/types';
 
 import { PopoverVariants } from './elements';
 
@@ -13,6 +14,10 @@ export type FocusTrapPopoverProps = {
    * Whether to include the focus trap - should only be skipped if parent of Popover is handling focus managment and accessibility (as is the case with FloatingToolTip). This also disables you from being to specify FocusTrap specific event handlers.
    */
   skipFocusTrap?: never;
+  /**
+   * Props to pass through to the underlying FocusTrap component's react-focus-on instance.
+   */
+  focusOnProps?: Partial<Omit<ReactFocusOnProps, 'children'>>;
 };
 
 export type SkippedFocusTrapPopoverProps = {

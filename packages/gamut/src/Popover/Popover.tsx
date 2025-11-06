@@ -28,6 +28,7 @@ export const Popover: React.FC<PopoverProps> = ({
   onRequestClose,
   outline = false,
   skipFocusTrap,
+  focusOnProps,
   pattern: Pattern,
   popoverContainerRef,
   position = 'below',
@@ -240,6 +241,7 @@ export const Popover: React.FC<PopoverProps> = ({
           allowPageInteraction
           onClickOutside={handleClickOutside}
           onEscapeKey={onRequestClose}
+          focusOnProps={focusOnProps}
         >
           {contents}
         </FocusTrap>

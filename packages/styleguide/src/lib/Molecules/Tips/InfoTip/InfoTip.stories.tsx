@@ -101,6 +101,9 @@ export const WithLinksOrButtons: Story = {
           }
           onClick={onClick}
         />
+        <button ref={ref} style={{ marginLeft: '16px' }}>
+          I am a button
+        </button>
       </FlexBox>
     );
   },

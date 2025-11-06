@@ -33,7 +33,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const popoverContentRef = useRef<HTMLDivElement>(null);
-  const previousFocusRef = useRef<HTMLElement | null>(null);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -107,18 +106,12 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         }
       };
 
-      // Helper function to check if an element is within our component
-      const isWithinComponent = (element: Node | null): boolean => {
+      // Helper function to check if an element is within the popover content (not the button)
+      const isWithinPopoverContent = (element: Node | null): boolean => {
         if (!element) return false;
         const popoverContent = popoverContentRef.current;
-        const button = buttonRef.current;
-        const wrapper = wrapperRef.current;
-        if (!popoverContent || !button) return false;
-        return (
-          button.contains(element) ||
-          wrapper?.contains(element) ||
-          popoverContent.contains(element)
-        );
+        if (!popoverContent) return false;
+        return popoverContent.contains(element);
       };
 
       // Helper function to return focus to button
@@ -135,80 +128,9 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         }
       };
 
-      // Intercept Tab key presses when focus is in the popover
-      // This catches Tab before focus moves, allowing us to redirect it
-      const handleTabKey = (e: KeyboardEvent) => {
-        if (e.key !== 'Tab' || isTipHidden) return;
-
-        const { activeElement } = document;
-        if (!activeElement) return;
-
-        // Check if focus is currently within the popover content (not the button)
-        const popoverContent = popoverContentRef.current;
-        if (
-          popoverContent?.contains(activeElement) &&
-          activeElement !== buttonRef.current
-        ) {
-          // Focus is in the popover content - we'll check after Tab processes
-          // where focus ends up and redirect if needed
-          // Use a microtask to check immediately after Tab key processing
-          queueMicrotask(() => {
-            if (isTipHidden) return;
-            const newActiveElement = document.activeElement;
-            if (
-              newActiveElement &&
-              !isWithinComponent(newActiveElement) &&
-              newActiveElement !== buttonRef.current
-            ) {
-              // Focus moved outside - return to button immediately
-              returnFocusToButton();
-            }
-          });
-        }
-      };
-
-      // Use focusin on document to catch when focus moves anywhere
-      // This catches focus changes earlier than focusout
-      const handleFocusIn = (event: FocusEvent) => {
-        if (isTipHidden) return;
-        const { target } = event;
-
-        // Check if the previous focus was within our component
-        const wasPreviousFocusInComponent = previousFocusRef.current
-          ? isWithinComponent(previousFocusRef.current)
-          : false;
-
-        // Update previous focus for next time
-        if (target instanceof HTMLElement) {
-          previousFocusRef.current = target;
-        }
-
-        // Only act if previous focus was in our component and new focus is outside
-        if (
-          wasPreviousFocusInComponent &&
-          target &&
-          !isWithinComponent(target as Node)
-        ) {
-          // Check if the target is actually focusable (not just any element)
-          const targetElement = target as HTMLElement;
-          if (
-            targetElement &&
-            (targetElement.tabIndex >= 0 ||
-              targetElement instanceof HTMLAnchorElement ||
-              targetElement instanceof HTMLButtonElement ||
-              targetElement instanceof HTMLInputElement ||
-              targetElement instanceof HTMLSelectElement ||
-              targetElement instanceof HTMLTextAreaElement ||
-              (targetElement instanceof HTMLElement &&
-                targetElement.isContentEditable))
-          ) {
-            // Focus moved outside - return to button immediately
-            returnFocusToButton();
-          }
-        }
-      };
-
-      // Also handle focusout on the popover content as a backup
+      // Handle focusout on the popover content only
+      // This catches when focus leaves the popover content and returns it to the button
+      // But allows focus to leave the button freely
       const handleFocusOut = (event: FocusEvent) => {
         const popoverContent = popoverContentRef.current;
         const button = buttonRef.current;
@@ -222,7 +144,12 @@ export const InfoTip: React.FC<InfoTipProps> = ({
           setTimeout(() => {
             if (isTipHidden) return;
             const { activeElement } = document;
-            if (activeElement && !isWithinComponent(activeElement)) {
+            // Only return focus if it left the popover content and didn't go to the button
+            if (
+              activeElement &&
+              activeElement !== button &&
+              !isWithinPopoverContent(activeElement)
+            ) {
               returnFocusToButton();
             }
           }, 0);
@@ -234,12 +161,18 @@ export const InfoTip: React.FC<InfoTipProps> = ({
           return;
         }
 
-        // If focus is staying within our component, allow it
-        if (isWithinComponent(relatedTarget)) {
+        // If focus is moving to the button, allow it
+        if (button.contains(relatedTarget)) {
           return;
         }
 
-        // Focus is leaving the popover - return to button
+        // If focus is staying within the popover content, allow it
+        if (isWithinPopoverContent(relatedTarget)) {
+          return;
+        }
+
+        // Focus is leaving the popover content - return to button
+        // But don't trap it - user can tab away from button freely
         returnFocusToButton();
       };
 
@@ -253,19 +186,14 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         }
       }, 0);
 
-      // Use capture phase on document to catch focusin events early
-      document.addEventListener('focusin', handleFocusIn, true);
       document.addEventListener('keydown', handleGlobalEscapeKey);
-      document.addEventListener('keydown', handleTabKey, true);
 
       return () => {
         clearTimeout(timeoutId);
         if (popoverContent) {
           popoverContent.removeEventListener('focusout', handleFocusOut, true);
         }
-        document.removeEventListener('focusin', handleFocusIn, true);
         document.removeEventListener('keydown', handleGlobalEscapeKey);
-        document.removeEventListener('keydown', handleTabKey, true);
       };
     }
   }, [isTipHidden, placement, setTipIsHidden]);

@@ -75,6 +75,7 @@ export type TipPlacementComponentProps = Omit<
   'placement' | 'emphasis'
 > & {
   alignment: TipStaticAlignment;
+  buttonRef?: React.RefObject<HTMLButtonElement>;
   escapeKeyPressHandler?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
   id?: string;
   isTipHidden?: boolean;
