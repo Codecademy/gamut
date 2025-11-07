@@ -32,6 +32,101 @@ describe('InfoTip', () => {
 
       expect(tip).toBeVisible();
     });
+
+    it('closes the tip when Escape key is pressed', async () => {
+      const { view } = renderView({});
+
+      const button = view.getByLabelText('Show information');
+      await act(async () => {
+        await userEvent.click(button);
+      });
+
+      const tips = view.getAllByText(info);
+      const tip = tips[0];
+      expect(tip).toBeVisible();
+
+      await act(async () => {
+        await userEvent.keyboard('{Escape}');
+      });
+
+      await waitFor(() => {
+        expect(tip).not.toBeVisible();
+      });
+    });
+
+    it('allows normal tabbing through focusable elements within tip', async () => {
+      const firstLinkText = 'first link';
+      const secondLinkText = 'second link';
+      const firstLinkRef = createRef<HTMLAnchorElement>();
+      const { view } = renderView({
+        info: (
+          <Text>
+            <Anchor href="https://example.com/1" ref={firstLinkRef}>
+              {firstLinkText}
+            </Anchor>{' '}
+            and <Anchor href="https://example.com/2">{secondLinkText}</Anchor>
+          </Text>
+        ),
+        onClick: ({ isTipHidden }: { isTipHidden: boolean }) => {
+          if (!isTipHidden) {
+            firstLinkRef.current?.focus();
+          }
+        },
+      });
+
+      const button = view.getByLabelText('Show information');
+      await act(async () => {
+        await userEvent.click(button);
+      });
+
+      await waitFor(() => {
+        expect(view.getAllByText(firstLinkText)[0]).toBeVisible();
+      });
+
+      const firstLink = view.getAllByRole('link', { name: firstLinkText })[0];
+      expect(firstLink).toHaveFocus();
+
+      await act(async () => {
+        await userEvent.keyboard('{Tab}');
+      });
+
+      const secondLink = view.getAllByRole('link', { name: secondLinkText })[0];
+      expect(secondLink).toHaveFocus();
+      expect(firstLink).not.toHaveFocus();
+    });
+
+    it('allows focus to move to links within the tip', async () => {
+      const linkText = 'cool link';
+      const linkRef = createRef<HTMLAnchorElement>();
+      const { view } = renderView({
+        info: (
+          <Text>
+            Hey! Here is a{' '}
+            <Anchor href="https://example.com" ref={linkRef}>
+              {linkText}
+            </Anchor>{' '}
+            that is super important.
+          </Text>
+        ),
+        onClick: ({ isTipHidden }: { isTipHidden: boolean }) => {
+          if (!isTipHidden) {
+            linkRef.current?.focus();
+          }
+        },
+      });
+
+      const button = view.getByLabelText('Show information');
+      await act(async () => {
+        await userEvent.click(button);
+      });
+
+      await waitFor(() => {
+        expect(view.getAllByText(linkText)[0]).toBeVisible();
+      });
+
+      const link = view.getAllByRole('link', { name: linkText })[0];
+      expect(link).toHaveFocus();
+    });
   });
 
   describe('floating placement', () => {
@@ -98,7 +193,10 @@ describe('InfoTip', () => {
         await userEvent.click(button);
       });
 
-      expect(view.queryAllByText(linkText).length).toBe(2);
+      await waitFor(() => {
+        const links = view.getAllByRole('link', { name: linkText });
+        expect(links.length).toBe(1);
+      });
 
       await act(async () => {
         await userEvent.keyboard('{Escape}');
@@ -112,15 +210,23 @@ describe('InfoTip', () => {
 
     it('wraps focus to button when tabbing forward from last focusable element', async () => {
       const linkText = 'cool link';
+      const linkRef = createRef<HTMLAnchorElement>();
       const { view } = renderView({
         placement: 'floating',
         info: (
           <Text>
             Hey! Here is a{' '}
-            <Anchor href="https://example.com">{linkText}</Anchor> that is super
-            important.
+            <Anchor href="https://example.com" ref={linkRef}>
+              {linkText}
+            </Anchor>{' '}
+            that is super important.
           </Text>
         ),
+        onClick: ({ isTipHidden }: { isTipHidden: boolean }) => {
+          if (!isTipHidden) {
+            linkRef.current?.focus();
+          }
+        },
       });
 
       const button = view.getByLabelText('Show information');
@@ -128,13 +234,26 @@ describe('InfoTip', () => {
         await userEvent.click(button);
       });
 
-      await waitFor(() => {
-        expect(view.queryAllByText(linkText).length).toBe(2);
+      const link = await waitFor(() => {
+        const links = view.getAllByRole('link', { name: linkText });
+        expect(links.length).toBe(1);
+        return links[0];
       });
 
-      const link = view.getAllByRole('link', { name: linkText })[1];
-      link.focus();
-      expect(link).toHaveFocus();
+      await waitFor(
+        () => {
+          expect(linkRef.current).toBeTruthy();
+          expect(linkRef.current).toBe(link);
+        },
+        { timeout: 2000 }
+      );
+
+      await waitFor(
+        () => {
+          expect(link).toHaveFocus();
+        },
+        { timeout: 2000 }
+      );
 
       await act(async () => {
         await userEvent.keyboard('{Tab}');
@@ -145,15 +264,23 @@ describe('InfoTip', () => {
 
     it('wraps focus to button when shift+tabbing backward from first focusable element', async () => {
       const linkText = 'cool link';
+      const linkRef = createRef<HTMLAnchorElement>();
       const { view } = renderView({
         placement: 'floating',
         info: (
           <Text>
             Hey! Here is a{' '}
-            <Anchor href="https://example.com">{linkText}</Anchor> that is super
-            important.
+            <Anchor href="https://example.com" ref={linkRef}>
+              {linkText}
+            </Anchor>{' '}
+            that is super important.
           </Text>
         ),
+        onClick: ({ isTipHidden }: { isTipHidden: boolean }) => {
+          if (!isTipHidden) {
+            linkRef.current?.focus();
+          }
+        },
       });
 
       const button = view.getByLabelText('Show information');
@@ -161,13 +288,27 @@ describe('InfoTip', () => {
         await userEvent.click(button);
       });
 
-      await waitFor(() => {
-        expect(view.queryAllByText(linkText).length).toBe(2);
+      // Wait for popover content to be visible (screenreader text doesn't interfere in real component)
+      const link = await waitFor(() => {
+        const links = view.getAllByRole('link', { name: linkText });
+        expect(links.length).toBe(1);
+        return links[0];
       });
 
-      const link = view.getAllByRole('link', { name: linkText })[1];
-      link.focus();
-      expect(link).toHaveFocus();
+      await waitFor(
+        () => {
+          expect(linkRef.current).toBeTruthy();
+          expect(linkRef.current).toBe(link);
+        },
+        { timeout: 2000 }
+      );
+
+      await waitFor(
+        () => {
+          expect(link).toHaveFocus();
+        },
+        { timeout: 2000 }
+      );
 
       await act(async () => {
         await userEvent.keyboard('{Shift>}{Tab}{/Shift}');
@@ -179,14 +320,22 @@ describe('InfoTip', () => {
     it('allows normal tabbing between focusable elements within popover', async () => {
       const firstLinkText = 'first link';
       const secondLinkText = 'second link';
+      const firstLinkRef = createRef<HTMLAnchorElement>();
       const { view } = renderView({
         placement: 'floating',
         info: (
           <Text>
-            <Anchor href="https://example.com/1">{firstLinkText}</Anchor> and{' '}
-            <Anchor href="https://example.com/2">{secondLinkText}</Anchor>
+            <Anchor href="https://example.com/1" ref={firstLinkRef}>
+              {firstLinkText}
+            </Anchor>{' '}
+            and <Anchor href="https://example.com/2">{secondLinkText}</Anchor>
           </Text>
         ),
+        onClick: ({ isTipHidden }: { isTipHidden: boolean }) => {
+          if (!isTipHidden) {
+            firstLinkRef.current?.focus();
+          }
+        },
       });
 
       const button = view.getByLabelText('Show information');
@@ -194,19 +343,26 @@ describe('InfoTip', () => {
         await userEvent.click(button);
       });
 
-      await waitFor(() => {
-        expect(view.queryAllByText(firstLinkText).length).toBe(2);
+      const firstLink = await waitFor(() => {
+        const links = view.getAllByRole('link', { name: firstLinkText });
+        expect(links.length).toBe(1);
+        return links[0];
       });
 
-      const firstLink = view.getAllByRole('link', { name: firstLinkText })[1];
-      firstLink.focus();
-      expect(firstLink).toHaveFocus();
+      await waitFor(
+        () => {
+          expect(firstLinkRef.current).toBeTruthy();
+          expect(firstLinkRef.current).toBe(firstLink);
+          expect(firstLink).toHaveFocus();
+        },
+        { timeout: 2000 }
+      );
 
       await act(async () => {
         await userEvent.keyboard('{Tab}');
       });
 
-      const secondLink = view.getAllByRole('link', { name: secondLinkText })[1];
+      const secondLink = view.getAllByRole('link', { name: secondLinkText })[0];
       expect(secondLink).toHaveFocus();
       expect(button).not.toHaveFocus();
     });

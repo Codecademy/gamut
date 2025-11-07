@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  isValidElement,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
@@ -87,7 +93,11 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       }, 0);
     }
     // we want to call the onClick handler after the tip has mounted
-    if (onClick) setTimeout(() => onClick({ isTipHidden: currentTipState }), 0);
+    // For floating placement, wait a bit longer to ensure refs are set
+    if (onClick) {
+      const delay = placement === 'floating' ? 10 : 0;
+      setTimeout(() => onClick({ isTipHidden: currentTipState }), delay);
+    }
   };
 
   useEffect(() => {
@@ -168,13 +178,39 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     ...rest,
   };
 
+  // Helper function to recursively extract text content from React elements
+  // Converts everything to plain text for screenreader announcements
+  const extractTextContent = (children: React.ReactNode): string => {
+    if (!children) return '';
+
+    if (typeof children === 'string' || typeof children === 'number') {
+      return String(children);
+    }
+
+    if (Array.isArray(children)) {
+      return children.map((child) => extractTextContent(child)).join(' ');
+    }
+
+    if (isValidElement(children)) {
+      const props = children.props as Record<string, unknown>;
+      if (props.children) {
+        return extractTextContent(props.children as React.ReactNode);
+      }
+    }
+
+    return '';
+  };
+
+  const screenreaderInfo =
+    shouldAnnounce && !isTipHidden ? extractTextContent(info) : `\xa0`;
+
   const text = (
     <ScreenreaderNavigableText
       aria-hidden={isAriaHidden}
       aria-live="assertive"
       screenreader
     >
-      {shouldAnnounce && !isTipHidden ? info : `\xa0`}
+      {screenreaderInfo}
     </ScreenreaderNavigableText>
   );
 
