@@ -3,6 +3,7 @@ import {
   isValidElement,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react';
@@ -179,31 +180,32 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     ...rest,
   };
 
-  // Helper function to recursively extract text content from React elements
-  // Converts everything to plain text for screenreader announcements
   const extractTextContent = (children: React.ReactNode): string => {
-    if (!children) return '';
-
     if (typeof children === 'string' || typeof children === 'number') {
       return String(children);
     }
 
-    if (isValidElement(children)) {
-      const props = children.props as Record<string, unknown>;
-      if (props.children) {
-        return extractTextContent(props.children as React.ReactNode);
-      }
-      return '';
-    }
-
-    // Children.toArray normalizes arrays and fragments automatically
     return Children.toArray(children)
-      .map((child) => extractTextContent(child))
+      .map((child) => {
+        if (typeof child === 'string' || typeof child === 'number') {
+          return String(child);
+        }
+        if (typeof child === 'boolean' || child == null) {
+          return '';
+        }
+        if (isValidElement(child)) {
+          return extractTextContent(child.props.children);
+        }
+        return '';
+      })
+      .filter(Boolean)
       .join(' ');
   };
 
+  const extractedTextContent = useMemo(() => extractTextContent(info), [info]);
+
   const screenreaderInfo =
-    shouldAnnounce && !isTipHidden ? extractTextContent(info) : `\xa0`;
+    shouldAnnounce && !isTipHidden ? extractedTextContent : `\xa0`;
 
   const text = (
     <ScreenreaderNavigableText
