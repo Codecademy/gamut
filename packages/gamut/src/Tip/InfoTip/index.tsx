@@ -74,16 +74,19 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     }
   };
 
-  const handleOutsideClick = (e: MouseEvent) => {
-    if (
-      wrapperRef.current &&
-      (e.target instanceof HTMLElement
-        ? !wrapperRef.current?.contains(e?.target)
-        : true)
-    ) {
-      setTipIsHidden(true);
-    }
-  };
+  const handleOutsideClick = useCallback(
+    (e: MouseEvent) => {
+      if (
+        wrapperRef.current &&
+        (e.target instanceof HTMLElement
+          ? !wrapperRef.current?.contains(e?.target)
+          : true)
+      ) {
+        setTipIsHidden(true);
+      }
+    },
+    [setTipIsHidden]
+  );
 
   const clickHandler = () => {
     const currentTipState = !isTipHidden;
@@ -107,7 +110,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  });
+  }, [handleOutsideClick]);
 
   useEffect(() => {
     if (!isTipHidden && placement === 'floating') {
