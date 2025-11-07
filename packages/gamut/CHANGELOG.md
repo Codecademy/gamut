@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [67.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.3.0...@codecademy/gamut@67.3.1) (2025-11-07)
+
+### Bug Fixes
+
+- **List, DataList, DataTable:** fix background colors + non-interactive table header spacing ([ceb1162](https://github.com/Codecademy/gamut/commit/ceb116292ee92ef716c59a504b2a45c348877602))
+
 ## [67.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.2.1...@codecademy/gamut@67.3.0) (2025-11-04)
 
 ### Features
