@@ -78,7 +78,7 @@ export const TableHeaderRow: HeaderComponent = ({
               columnHeader
               dataTablePadding={dataTablePadding}
             >
-              <FlexBox alignItems="flex-end" gap={8} width="100%">
+              <FlexBox alignItems="flex-end" gap={8} height="100%" width="100%">
                 {filters && (
                   <FilterControl
                     columnKey={rowProperty}
