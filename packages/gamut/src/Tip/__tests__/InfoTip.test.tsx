@@ -109,5 +109,106 @@ describe('InfoTip', () => {
       });
       expect(button).toHaveFocus();
     });
+
+    it('wraps focus to button when tabbing forward from last focusable element', async () => {
+      const linkText = 'cool link';
+      const { view } = renderView({
+        placement: 'floating',
+        info: (
+          <Text>
+            Hey! Here is a{' '}
+            <Anchor href="https://example.com">{linkText}</Anchor> that is super
+            important.
+          </Text>
+        ),
+      });
+
+      const button = view.getByLabelText('Show information');
+      await act(async () => {
+        await userEvent.click(button);
+      });
+
+      await waitFor(() => {
+        expect(view.queryAllByText(linkText).length).toBe(2);
+      });
+
+      const link = view.getAllByRole('link', { name: linkText })[1];
+      link.focus();
+      expect(link).toHaveFocus();
+
+      await act(async () => {
+        await userEvent.keyboard('{Tab}');
+      });
+
+      expect(button).toHaveFocus();
+    });
+
+    it('wraps focus to button when shift+tabbing backward from first focusable element', async () => {
+      const linkText = 'cool link';
+      const { view } = renderView({
+        placement: 'floating',
+        info: (
+          <Text>
+            Hey! Here is a{' '}
+            <Anchor href="https://example.com">{linkText}</Anchor> that is super
+            important.
+          </Text>
+        ),
+      });
+
+      const button = view.getByLabelText('Show information');
+      await act(async () => {
+        await userEvent.click(button);
+      });
+
+      await waitFor(() => {
+        expect(view.queryAllByText(linkText).length).toBe(2);
+      });
+
+      const link = view.getAllByRole('link', { name: linkText })[1];
+      link.focus();
+      expect(link).toHaveFocus();
+
+      await act(async () => {
+        await userEvent.keyboard('{Shift>}{Tab}{/Shift}');
+      });
+
+      expect(button).toHaveFocus();
+    });
+
+    it('allows normal tabbing between focusable elements within popover', async () => {
+      const firstLinkText = 'first link';
+      const secondLinkText = 'second link';
+      const { view } = renderView({
+        placement: 'floating',
+        info: (
+          <Text>
+            <Anchor href="https://example.com/1">{firstLinkText}</Anchor> and{' '}
+            <Anchor href="https://example.com/2">{secondLinkText}</Anchor>
+          </Text>
+        ),
+      });
+
+      const button = view.getByLabelText('Show information');
+      await act(async () => {
+        await userEvent.click(button);
+      });
+
+      await waitFor(() => {
+        expect(view.queryAllByText(firstLinkText).length).toBe(2);
+      });
+
+      const firstLink = view.getAllByRole('link', { name: firstLinkText })[1];
+      firstLink.focus();
+      expect(firstLink).toHaveFocus();
+
+      await act(async () => {
+        await userEvent.keyboard('{Tab}');
+      });
+
+      const secondLink = view.getAllByRole('link', { name: secondLinkText })[1];
+      expect(secondLink).toHaveFocus();
+      expect(button).not.toHaveFocus();
+    });
   });
 });

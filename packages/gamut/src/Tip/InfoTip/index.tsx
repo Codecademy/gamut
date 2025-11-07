@@ -107,31 +107,29 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       };
 
       const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.key === 'Tab') {
-          const popoverContent = popoverContentRef.current;
-          if (!popoverContent) return;
+        if (event.key !== 'Tab') return;
 
-          const focusableElements =
-            popoverContent.querySelectorAll<HTMLElement>(
-              'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
-            );
+        const popoverContent = popoverContentRef.current;
+        if (!popoverContent) return;
 
-          if (focusableElements.length === 0) return;
+        const focusableElements = popoverContent.querySelectorAll<HTMLElement>(
+          'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        );
 
-          const firstElement = focusableElements[0];
-          const lastElement = focusableElements[focusableElements.length - 1];
-          const { activeElement } = document;
+        if (focusableElements.length === 0) return;
 
-          // If tabbing forward from the last element, prevent default and move to button
-          if (!event.shiftKey && activeElement === lastElement) {
-            event.preventDefault();
-            buttonRef.current?.focus();
-          }
-          // If tabbing backward from the first element, prevent default and move to button
-          else if (event.shiftKey && activeElement === firstElement) {
-            event.preventDefault();
-            buttonRef.current?.focus();
-          }
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        const { activeElement } = document;
+
+        const isTabbingForwardFromLast =
+          !event.shiftKey && activeElement === lastElement;
+        const isTabbingBackwardFromFirst =
+          event.shiftKey && activeElement === firstElement;
+
+        if (isTabbingForwardFromLast || isTabbingBackwardFromFirst) {
+          event.preventDefault();
+          buttonRef.current?.focus();
         }
       };
 
