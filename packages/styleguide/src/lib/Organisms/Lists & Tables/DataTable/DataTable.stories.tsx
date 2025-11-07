@@ -124,11 +124,6 @@ type Story = StoryObj<typeof DataTable>;
 
 export const Default: Story = {
   args: {},
-  render: (args) => (
-    <Background bg="paleBlue" p={8}>
-      <DataTable {...args} />
-    </Background>
-  ),
 };
 
 export const FullDataTable: Story = {
@@ -143,11 +138,7 @@ export const EmptyState: Story = {
     height: '45vh',
     minHeight: '300px',
   },
-  render: (args) => (
-    <Background bg="black" p={8}>
-      <DataTable {...args} />
-    </Background>
-  ),
+  render: (args) => <DataTable {...args} />,
 };
 
 export const EmptyStateCustom: Story = {
@@ -159,20 +150,11 @@ export const EmptyStateCustom: Story = {
     minHeight: '300px',
     emptyMessage: <CustomEmptyState />,
   },
-  render: (args) => (
-    <Background bg="black" p={8}>
-      <DataTable {...args} />
-    </Background>
-  ),
+  render: (args) => <DataTable {...args} />,
 };
 
 export const LoadingRows: Story = {
   args: { loading: true, shadow: true },
-  render: (args) => (
-    <Background bg="black" p={8}>
-      <DataTable {...args} />
-    </Background>
-  ),
 };
 
 export const Scrollable: Story = {
@@ -182,11 +164,6 @@ export const Scrollable: Story = {
     height: '400px',
     wrapperWidth: '800px',
   },
-  render: (args) => (
-    <Background bg="black" p={8}>
-      <DataTable {...args} />
-    </Background>
-  ),
 };
 
 export const BackgroundColors: Story = {
@@ -200,28 +177,24 @@ export const BackgroundColors: Story = {
 
 const DataTableDisableContainerQueryExample = () => {
   const defaultComponent = (
-    <Background bg="black" p={8}>
-      <DataTable
-        columns={simpleColumns}
-        id="default-table-query"
-        idKey="name"
-        rows={simpleRows}
-        spacing="condensed"
-      />
-    </Background>
+    <DataTable
+      columns={simpleColumns}
+      id="default-table-query"
+      idKey="name"
+      rows={simpleRows}
+      spacing="condensed"
+    />
   );
 
   const disabledComponent = (
-    <Background bg="black" p={8}>
-      <DataTable
-        columns={simpleColumns}
-        disableContainerQuery
-        id="disabled-table-query"
-        idKey="name"
-        rows={simpleRows}
-        spacing="condensed"
-      />
-    </Background>
+    <DataTable
+      columns={simpleColumns}
+      disableContainerQuery
+      id="disabled-table-query"
+      idKey="name"
+      rows={simpleRows}
+      spacing="condensed"
+    />
   );
 
   return (

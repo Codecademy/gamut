@@ -1,7 +1,7 @@
 // Added because SB and TS don't play nice with each other at the moment
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { Box, DataList, DataTable, FlexBox } from '@codecademy/gamut';
+import { DataList, DataTable, FlexBox } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import {
@@ -129,41 +129,22 @@ type Story = StoryObj<typeof DataList>;
 
 export const Default: Story = {
   args: {},
-  render: (args) => (
-    <Box bg="red" p={8}>
-      <DataList {...args} />
-    </Box>
-  ),
 };
 
 export const FullDataList: Story = {
-  render: () => (
-    <Box bg="red" p={8}>
-      <DataListTemplate />
-    </Box>
-  ),
+  render: () => <DataListTemplate />,
 };
 
 export const Expanded: Story = {
   args: {
     expanded: ['Data'],
   },
-  render: (args) => (
-    <Box bg="red" p={8}>
-      <DataList {...args} />
-    </Box>
-  ),
 };
 
 export const Selected: Story = {
   args: {
     selected: ['Data'],
   },
-  render: (args) => (
-    <Box bg="red" p={8}>
-      <DataList {...args} />
-    </Box>
-  ),
 };
 
 export const EmptyState: Story = {
@@ -174,11 +155,6 @@ export const EmptyState: Story = {
     height: '45vh',
     minHeight: '300px',
   },
-  render: (args) => (
-    <Box bg="red" p={8}>
-      <DataList {...args} />
-    </Box>
-  ),
 };
 
 export const EmptyStateCustom: Story = {
@@ -190,11 +166,6 @@ export const EmptyStateCustom: Story = {
     minHeight: '300px',
     emptyMessage: <CustomEmptyState />,
   },
-  render: (args) => (
-    <Box bg="red" p={8}>
-      <DataList {...args} />
-    </Box>
-  ),
 };
 
 export const NonSelectable: Story = {
@@ -204,38 +175,29 @@ export const NonSelectable: Story = {
     expandedContent: undefined,
     header: true,
   },
-  render: (args) => (
-    <Box bg="red" p={8}>
-      <DataList {...args} />
-    </Box>
-  ),
 };
 
 const DataListDisableContainerQueryExample = () => {
   const defaultComponent = (
-    <Box bg="red" p={8}>
-      <DataList
-        columns={simpleColumns}
-        header
-        id="default-container-query"
-        idKey="name"
-        rows={simpleRows}
-        spacing="condensed"
-      />
-    </Box>
+    <DataList
+      columns={simpleColumns}
+      header
+      id="default-container-query"
+      idKey="name"
+      rows={simpleRows}
+      spacing="condensed"
+    />
   );
 
   const disabledComponent = (
-    <Box bg="red" p={8}>
-      <DataList
-        columns={simpleColumns}
-        disableContainerQuery
-        id="disabled-container-query"
-        idKey="name"
-        rows={simpleRows}
-        spacing="condensed"
-      />
-    </Box>
+    <DataList
+      columns={simpleColumns}
+      disableContainerQuery
+      id="disabled-container-query"
+      idKey="name"
+      rows={simpleRows}
+      spacing="condensed"
+    />
   );
 
   return (
