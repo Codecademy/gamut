@@ -2,6 +2,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { DataTable } from '@codecademy/gamut';
+import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import {
@@ -163,6 +164,15 @@ export const Scrollable: Story = {
     height: '400px',
     wrapperWidth: '800px',
   },
+};
+
+export const BackgroundColors: Story = {
+  args: {},
+  render: (args) => (
+    <Background bg="paleBlue" p={8}>
+      <DataTable {...args} />
+    </Background>
+  ),
 };
 
 const DataTableDisableContainerQueryExample = () => {

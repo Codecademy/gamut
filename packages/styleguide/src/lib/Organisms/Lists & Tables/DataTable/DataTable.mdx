@@ -140,6 +140,29 @@ You can set the `shadow` prop to `true` to add a shadow to the DataTable when it
 
 <Canvas of={DataTableStories.Scrollable} />
 
+## Background colors
+
+DataTable's background is linked to the `current-background` token. You can change the color scheme of a DataTable by wrapping it in a `<Background />` component from `@codecademy/gamut-styles`.
+
+When you wrap a DataTable in `Background`, the component will also automatically adjust its colors to ensure proper contrast and accessibility. For example, using a dark background like `bg="black"` will switch the DataTable to dark mode, making text and UI elements light-colored for better contrast. You can find more information about the `Background` component in the <LinkTo id="Foundations/ColorMode">ColorMode documentation</LinkTo>.
+
+### Usage
+
+```tsx
+import { Background } from '@codecademy/gamut-styles';
+import { DataTable } from '@codecademy/gamut';
+
+const MyDarkDataTable = () => {
+  return (
+    <Background bg="black" p={8}>
+      <DataTable id="dark-table" idKey="id" rows={data} columns={columns} />
+    </Background>
+  );
+};
+```
+
+<Canvas of={DataTableStories.BackgroundColors} />
+
 ## Container Query Control
 
 DataTable inherits container query functionality from the underlying List component. By default, DataTable uses CSS container queries to determine responsive behavior based on the container width rather than viewport width. This ensures optimal display when DataTable is placed in constrained layouts.
