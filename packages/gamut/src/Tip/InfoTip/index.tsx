@@ -1,4 +1,5 @@
 import {
+  Children,
   isValidElement,
   useCallback,
   useEffect,
@@ -187,18 +188,18 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       return String(children);
     }
 
-    if (Array.isArray(children)) {
-      return children.map((child) => extractTextContent(child)).join(' ');
-    }
-
     if (isValidElement(children)) {
       const props = children.props as Record<string, unknown>;
       if (props.children) {
         return extractTextContent(props.children as React.ReactNode);
       }
+      return '';
     }
 
-    return '';
+    // Children.toArray normalizes arrays and fragments automatically
+    return Children.toArray(children)
+      .map((child) => extractTextContent(child))
+      .join(' ');
   };
 
   const screenreaderInfo =
