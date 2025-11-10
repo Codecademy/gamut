@@ -89,7 +89,7 @@ By default, `closeOnViewportExit` is set to `false`, which means the popover wil
 
 If you set `closeOnViewportExit` to `true`, the popover will automatically close when the target element moves completely out of viewport. This can be useful for:
 
-- Tooltips or informational popovers that should disappear when the target is no longer visible
+- Informational popovers that should disappear when the target is no longer visible
 - Preventing orphaned popovers when content scrolls away
 - Notifications or temporary UI elements that should clean up automatically
 
@@ -108,7 +108,7 @@ If you set `closeOnViewportExit` to `true`, the popover will automatically close
   isOpen={isOpen}
   closeOnViewportExit={true}
 >
-  <Tooltip>Helpful information</Tooltip>
+  <Box>Some helpful information</Box>
 </PopoverContainer>
 ```
 
