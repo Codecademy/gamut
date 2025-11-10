@@ -158,9 +158,9 @@ const KnowledgeSourceSelectionComponent = () => {
             <Box pl={28 as any}>
               <Box as="ul" color="text-secondary" fontSize={14}>
                 {option.bullets.map((bullet) => (
-                  <li key={bullet} style={{ marginBottom: 0 }}>
+                  <Box as="li" key={bullet} mb={0}>
                     {bullet}
-                  </li>
+                  </Box>
                 ))}
               </Box>
             </Box>
