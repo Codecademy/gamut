@@ -31,6 +31,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   loading,
   narrow,
   overline,
+  popoverContentRef,
   truncateLines,
   type,
   username,
@@ -47,6 +48,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
 
   const commonPopoverProps = getPopoverAlignmentAndPattern({ alignment, type });
   const dims = getAlignmentStyles({ avatar, alignment, type });
+  const isHorizontalCenter = dims === 'horizontalCenter';
   const [childRef, { width: tipWidth }] = useMeasure<HTMLDivElement>();
 
   const [offset, setOffset] = useState<number | undefined>(undefined);
@@ -133,6 +135,8 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
     info
   );
 
+  const isPopoverOpen = isHoverType ? isOpen : !isTipHidden;
+
   return (
     <Box
       display="inline-flex"
@@ -161,16 +165,18 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         animation="fade"
         dims={dims}
         horizontalOffset={offset}
-        isOpen={isHoverType ? isOpen : !isTipHidden}
+        isOpen={isPopoverOpen}
         outline
+        popoverContainerRef={popoverContentRef}
         skipFocusTrap
         targetRef={ref}
         variant="secondary"
         widthRestricted={false}
       >
         <FloatingTipTextWrapper
+          horizNarrow={narrow && isHorizontalCenter}
           isHoverType={isHoverType}
-          narrow={narrow}
+          narrow={narrow && !isHorizontalCenter}
           ref={childRef}
         >
           {contents}

@@ -13,6 +13,7 @@ export interface ModalOverlayProps
     | 'clickOutsideCloses'
     | 'escapeCloses'
     | 'shroud'
+    | 'zIndex'
   > {}
 
 export interface ModalBaseProps

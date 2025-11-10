@@ -4,7 +4,7 @@ _The component library & design system for Codecademy._ ✨
 
 ---
 
-[![CircleCI](https://circleci.com/gh/Codecademy/gamut.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/Codecademy/gamut)
+[![GitHub Actions](https://github.com/Codecademy/gamut/workflows/Test%20Suite/badge.svg)](https://github.com/Codecademy/gamut/actions)
 
 This repository is a monorepo that we manage using [Lerna](https://lerna.js.org/). That means that we publish several packages to npm from the same codebase, including:
 
@@ -70,7 +70,7 @@ We provide a single package to manage the versions of a few core dependencies: `
 1.  After your code has been reviewed and tested, you can merge your branch into main.
 1.  Make sure to update your PR title and add a short description of your changes for the changelog (see the [PR Title Guide](https://github.com/Codecademy/gamut#pr-title-guide))
 1.  To merge your changes, add the `Ship It` label to your Pull Request.
-1.  Once your branch is merged into main, it will be published automatically by CircleCI.
+1.  Once your branch is merged into main, it will be published automatically by GitHub Actions.
 1.  You can find the new version number on npmjs.com/package/<package-name>, or find it in that package's `package.json` on the `main` branch
 
 ### Publishing an alpha version of a module
@@ -80,7 +80,7 @@ Every PR that changes files in a package publishes alpha releases that you can u
 > NOTE: in case an alpha build is not published upon opening of the PR or Draft PR, re-run the `build-test` check and that will re-run the alpha build publishing flows
 
 1.  Create a PR or Draft PR.
-    - This will kickoff a Circle-CI workflow which will publish an alpha build. (This will appear in Github as the "Deploy")
+    - This will kickoff a Github Action workflow which will publish an alpha build. (This will appear in Github as the "Deploy")
 1.  After the alpha build is published, the `codecademydev` bot should comment on your PR with the names of the published alpha packages. <br/>
     <img width="290" height="auto" src="https://user-images.githubusercontent.com/4298857/114948632-3fa88a80-9e04-11eb-89ef-d016a1c9c572.png">
 1.  Install this version of the package in your application you wish to test your changes on.
