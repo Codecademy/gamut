@@ -100,6 +100,7 @@ const CrewMgmtDropdown: React.FC<{
       <PopoverContainer
         alignment="bottom-left"
         allowPageInteraction
+        closeOnViewportExit
         isOpen={isOpen}
         offset={0}
         targetRef={menuButtonRef}
@@ -327,14 +328,6 @@ export const cols = [
     justify: 'right',
     sortable: true,
     filters: ['Human'],
-  },
-  {
-    header: 'Controls',
-    key: 'name',
-    size: 'md',
-    justify: 'right',
-    type: 'control',
-    render: (row) => <CrewMgmtDropdown row={row} />,
   },
   {
     header: 'Controls',
