@@ -71,11 +71,6 @@ export interface MultiViewModalProps
    * Optional array of multiple screens
    */
   views: ModalViewProps[];
-  /**
-   * TEMPORARY: a stopgap solution to avoid zIndex conflicts -
-   * will be reworked with: GM-624
-   */
-  zIndex?: number;
 }
 
 export type ModalProps = SingleViewModalProps | MultiViewModalProps;

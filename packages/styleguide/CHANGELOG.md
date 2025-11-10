@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [78.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.3.1...@codecademy/styleguide@78.3.2) (2025-11-10)
+
+### Bug Fixes
+
+- **PopoverContainer, Overlay:** out of view close fix + increase default zIndex for Overlay ([957c50e](https://github.com/Codecademy/gamut/commit/957c50edbb5e9da9f0ae904f0613de44c7cf5d3e))
+
 ### [78.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.3.0...@codecademy/styleguide@78.3.1) (2025-11-07)
 
 ### Bug Fixes
