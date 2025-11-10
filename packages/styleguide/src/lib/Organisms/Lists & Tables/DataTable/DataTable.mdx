@@ -140,6 +140,29 @@ You can set the `shadow` prop to `true` to add a shadow to the DataTable when it
 
 <Canvas of={DataTableStories.Scrollable} />
 
+## Background colors
+
+DataTable's background is linked to the `current-background` token. You can change the color scheme of a DataTable by wrapping it in a `<Background />` component from `@codecademy/gamut-styles`.
+
+When you wrap a DataTable in `Background`, the component will also automatically adjust its colors to ensure proper contrast and accessibility. For example, using a dark background like `bg="black"` will switch the DataTable to dark mode, making text and UI elements light-colored for better contrast. You can find more information about the `Background` component in the <LinkTo id="Foundations/ColorMode">ColorMode documentation</LinkTo>.
+
+### Usage
+
+```tsx
+import { Background } from '@codecademy/gamut-styles';
+import { DataTable } from '@codecademy/gamut';
+
+const MyDarkDataTable = () => {
+  return (
+    <Background bg="black" p={8}>
+      <DataTable id="dark-table" idKey="id" rows={data} columns={columns} />
+    </Background>
+  );
+};
+```
+
+<Canvas of={DataTableStories.BackgroundColors} />
+
 ### Floating menus with PopoverContainer
 
 You can add interactive menus to DataTable rows using `PopoverContainer` and `Menu` components. This is useful for row-specific actions like edit, delete, or view details.
@@ -148,8 +171,8 @@ You can add interactive menus to DataTable rows using `PopoverContainer` and `Me
 
 **Key features:**
 
-- **Automatic closing**: The PopoverContainer has the `closeOnViewportExit` prop which automatically closes when the Menu when the target row scrolls out of view, even when inside scrollable parent containers
-- **Integration with Modals**: You can open Modals from menu items, which will appear above the table header with proper z-index stacking
+- **Automatic closing**: The <LinkTo id="Atoms/PopoverContainer">PopoverContainer</LinkTo> has the `closeOnViewportExit` prop which automatically closes when the <LinkTo id="Molecules/Menu">Menu</LinkTo> when the target row scrolls out of view, even when inside scrollable parent containers
+- **Integration with Modals**: You can open <LinkTo id="Molecules/Modals/About">Modals</LinkTo> from menu items, which will appear above the table header with proper z-index stacking
 - **Accessible**: The menu is keyboard accessible and works with screen readers
 
 **Example implementation:**

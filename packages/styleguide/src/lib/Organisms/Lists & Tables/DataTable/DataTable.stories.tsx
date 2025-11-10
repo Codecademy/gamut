@@ -12,6 +12,7 @@ import {
   Text,
 } from '@codecademy/gamut';
 import { MiniKebabMenuIcon } from '@codecademy/gamut-icons';
+import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useRef, useState } from 'react';
 
@@ -174,6 +175,15 @@ export const Scrollable: Story = {
     height: '400px',
     wrapperWidth: '800px',
   },
+};
+
+export const BackgroundColors: Story = {
+  args: {},
+  render: (args) => (
+    <Background bg="paleBlue" p={8}>
+      <DataTable {...args} />
+    </Background>
+  ),
 };
 
 const DataTableDisableContainerQueryExample = () => {

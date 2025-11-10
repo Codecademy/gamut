@@ -126,7 +126,6 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           c_sm: undefined,
         }}
         isOl={renderNumbering}
-        parentEl
         role={role}
         scrollable={scrollable}
         tabIndex={tabIndex}
