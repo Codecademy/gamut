@@ -5,6 +5,31 @@ import {
 
 import { PopoverPositionConfig, TargetRef } from './types';
 
+const getWindowDimensions = () => ({
+  height: window.innerHeight || document.documentElement.clientHeight,
+  width: window.innerWidth || document.documentElement.clientWidth,
+});
+
+const isRectOutOfBounds = (
+  rect: DOMRect,
+  container: { top: number; bottom: number; left: number; right: number }
+): boolean => {
+  const { top, bottom, left, right } = rect;
+  const {
+    top: containerTop,
+    bottom: containerBottom,
+    left: containerLeft,
+    right: containerRight,
+  } = container;
+
+  return (
+    bottom <= containerTop ||
+    top >= containerBottom ||
+    right <= containerLeft ||
+    left >= containerRight
+  );
+};
+
 export const findResizingParent = (
   element: HTMLElement
 ): HTMLElement | null => {
@@ -61,48 +86,55 @@ export const isOutOfView = (
   rect: DOMRect,
   target?: HTMLElement | null
 ): boolean => {
-  const { top, bottom, left, right } = rect;
-  const windowHeight =
-    window.innerHeight || document.documentElement.clientHeight;
-  const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-
-  const outOfViewport =
-    bottom < 0 || top > windowHeight || right < 0 || left > windowWidth;
-
-  if (outOfViewport || !target) {
-    return outOfViewport;
+  if (!target) {
+    // If no target, check window viewport only
+    const { height, width } = getWindowDimensions();
+    const windowRect = {
+      top: 0,
+      left: 0,
+      bottom: height,
+      right: width,
+    };
+    return isRectOutOfBounds(rect, windowRect);
   }
 
+  // Prioritize checking scrollable parents first (more specific to element context)
+  // This handles iframe contexts where the window viewport might not match the actual scrollable container
   const scrollingParents = findAllAdditionalScrollingParents(target);
 
-  for (const parent of scrollingParents) {
-    if (!target || !parent.contains(target)) {
+  // Also check if document.documentElement is scrollable (common in iframe contexts)
+  const { documentElement } = document;
+  const isDocumentScrollable =
+    documentElement.scrollHeight > documentElement.clientHeight ||
+    documentElement.scrollWidth > documentElement.clientWidth;
+
+  // Check all scrollable parents (including document.documentElement if scrollable)
+  const allScrollableContainers = isDocumentScrollable
+    ? [documentElement, ...scrollingParents]
+    : scrollingParents;
+
+  for (const parent of allScrollableContainers) {
+    // Early exit if parent doesn't contain target (performance optimization)
+    if (!parent.contains(target)) {
       continue;
     }
 
-    const {
-      top: visibleTop,
-      bottom: visibleBottom,
-      left: visibleLeft,
-      right: visibleRight,
-    } = parent.getBoundingClientRect();
-
-    const isCompletelyAbove = bottom <= visibleTop;
-    const isCompletelyBelow = top >= visibleBottom;
-    const isCompletelyLeft = right <= visibleLeft;
-    const isCompletelyRight = left >= visibleRight;
-
-    if (
-      isCompletelyAbove ||
-      isCompletelyBelow ||
-      isCompletelyLeft ||
-      isCompletelyRight
-    ) {
+    const parentRect = parent.getBoundingClientRect();
+    if (isRectOutOfBounds(rect, parentRect)) {
       return true;
     }
   }
 
-  return false;
+  // If no scrollable parents found or element is visible in all parents, check window viewport
+  // This handles cases where the element is not in a scrollable container
+  const { height, width } = getWindowDimensions();
+  const windowRect = {
+    top: 0,
+    left: 0,
+    bottom: height,
+    right: width,
+  };
+  return isRectOutOfBounds(rect, windowRect);
 };
 
 export const ALIGN = {

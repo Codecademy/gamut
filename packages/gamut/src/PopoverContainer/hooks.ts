@@ -20,20 +20,14 @@ export const useScrollingParentsEffect = (
       setTargetRect(targetRef?.current?.getBoundingClientRect());
     };
 
-    // For immediate updates during scroll
-    const immediateUpdate = () => {
-      updatePosition();
-    };
-
     const cleanup: (() => void)[] = [];
 
     // Add listeners to all scrolling parents (window scroll handled by useWindowScroll)
     scrollingParents.forEach((parent) => {
       if (parent.addEventListener) {
-        // Use immediate update for smoother experience
-        parent.addEventListener('scroll', immediateUpdate, { passive: true });
+        parent.addEventListener('scroll', updatePosition, { passive: true });
         cleanup.push(() =>
-          parent.removeEventListener('scroll', immediateUpdate)
+          parent.removeEventListener('scroll', updatePosition)
         );
       }
     });
