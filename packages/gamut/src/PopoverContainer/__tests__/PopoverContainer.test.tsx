@@ -120,21 +120,22 @@ describe('Popover', () => {
     expect(onRequestClose).toBeCalledTimes(1);
   });
 
-  it('triggers onRequestClose callback when popover is out of viewport', () => {
-    /* element is inside the viewport if the top and left value is greater than or equal to 0,
-      and right value is less than or equal to window.innerWidth
-      and bottom value is less than or equal to window.innerHeight */
-    const targetRefObj = mockTargetRef({}, { top: -1, x: 41, y: -1 });
+  it('triggers onRequestClose callback when popover is out of viewport and closeOnViewportExit is true', () => {
+    const targetRefObj = mockTargetRef(
+      {},
+      { top: -201, bottom: -1, left: 150, right: 350, x: 150, y: -201 }
+    );
 
     const onRequestClose = jest.fn();
     renderView({
       targetRef: targetRefObj,
       onRequestClose,
+      closeOnViewportExit: true,
     });
     expect(onRequestClose).toBeCalledTimes(1);
   });
 
-  it('does not onRequestClose callback when popover is out of viewport', () => {
+  it('does not trigger onRequestClose callback when popover is in viewport', () => {
     const targetRefObj = mockTargetRef({}, { top: 1, x: 41, y: 1 });
 
     const onRequestClose = jest.fn();
@@ -143,6 +144,35 @@ describe('Popover', () => {
       onRequestClose,
     });
     expect(onRequestClose).toBeCalledTimes(0);
+  });
+
+  it('does not trigger onRequestClose callback when closeOnViewportExit is false (default)', () => {
+    const targetRefObj = mockTargetRef(
+      {},
+      { top: -201, bottom: -1, left: 150, right: 350, x: 150, y: -201 }
+    );
+
+    const onRequestClose = jest.fn();
+    renderView({
+      targetRef: targetRefObj,
+      onRequestClose,
+    });
+    expect(onRequestClose).toBeCalledTimes(0);
+  });
+
+  it('triggers onRequestClose callback when closeOnViewportExit is true', () => {
+    const targetRefObj = mockTargetRef(
+      {},
+      { top: -201, bottom: -1, left: 150, right: 350, x: 150, y: -201 }
+    );
+
+    const onRequestClose = jest.fn();
+    renderView({
+      targetRef: targetRefObj,
+      onRequestClose,
+      closeOnViewportExit: true,
+    });
+    expect(onRequestClose).toBeCalledTimes(1);
   });
 
   describe('alignments', () => {
