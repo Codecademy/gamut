@@ -3,6 +3,91 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.52.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.52.0...@codecademy/gamut-icons@9.52.1) (2025-10-28)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.52.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.51.3...@codecademy/gamut-icons@9.52.0) (2025-10-22)
+
+### Features
+
+- add media library icon - regular ([06e9161](https://github.com/Codecademy/gamut/commit/06e916101ddfb0ebdfade70fcceaa5354a1d15a6))
+
+### [9.51.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.51.2...@codecademy/gamut-icons@9.51.3) (2025-10-21)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.51.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.51.1...@codecademy/gamut-icons@9.51.2) (2025-10-15)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.51.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.51.0...@codecademy/gamut-icons@9.51.1) (2025-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.51.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.50.0...@codecademy/gamut-icons@9.51.0) (2025-10-01)
+
+### Features
+
+- **Icons:** add live video regular icon ([#3179](https://github.com/Codecademy/gamut/issues/3179)) ([393d36a](https://github.com/Codecademy/gamut/commit/393d36a8fafbd7d56da10357bcde578dcc66a350))
+
+## [9.50.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.49.2...@codecademy/gamut-icons@9.50.0) (2025-09-15)
+
+### Features
+
+- **Icon:** added new file-text-info icon. ([a06aeb4](https://github.com/Codecademy/gamut/commit/a06aeb44d6a9429eac7bc28d3483a690dbabf3bd))
+
+### [9.49.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.49.1...@codecademy/gamut-icons@9.49.2) (2025-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.49.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.49.0...@codecademy/gamut-icons@9.49.1) (2025-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.49.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.48.0...@codecademy/gamut-icons@9.49.0) (2025-08-12)
+
+### Features
+
+- **Icons:** add git, markdown, typescript icons ([4b15f3b](https://github.com/Codecademy/gamut/commit/4b15f3b5826f28c50ec782b3fb9e37e2a0bd797e))
+
+## [9.48.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.47.0...@codecademy/gamut-icons@9.48.0) (2025-08-08)
+
+### Features
+
+- Add icons for Apple, EA, Google, IBM, Instagram (rounder variant), Meta, Reddit (solid), Spotify and Windows ([0bdcd8f](https://github.com/Codecademy/gamut/commit/0bdcd8fe41d732414e2e186a1e4afb4eb5189f31))
+
+## [9.47.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.46.3...@codecademy/gamut-icons@9.47.0) (2025-08-07)
+
+### Features
+
+- **Icons:** Adds BookLibrary and HammerWrench icons ([36293b1](https://github.com/Codecademy/gamut/commit/36293b17f453314ea507fdec9ef428ce745d7546))
+
+### [9.46.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.46.2...@codecademy/gamut-icons@9.46.3) (2025-07-22)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.46.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.46.1...@codecademy/gamut-icons@9.46.2) (2025-07-17)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.46.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.46.0...@codecademy/gamut-icons@9.46.1) (2025-06-17)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [9.46.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.45.0...@codecademy/gamut-icons@9.46.0) (2025-06-12)
+
+### Features
+
+- **Icon:** added new move-left and move-right icons ([50ef4e7](https://github.com/Codecademy/gamut/commit/50ef4e7c510d33558d9b2bf8429a48513d10db42))
+- **Icon:** added new resizable-handle-icon ([cd5fe34](https://github.com/Codecademy/gamut/commit/cd5fe34fdd19dd84d2193763178d3335baa9248f))
+
+## [9.45.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.44.0...@codecademy/gamut-icons@9.45.0) (2025-06-10)
+
+### Features
+
+- **Icon:** added new MiniQuoteIcon ([4509029](https://github.com/Codecademy/gamut/commit/4509029deb86760157e0e1051dbf849670a95b92))
+
 ## [9.44.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.43.0...@codecademy/gamut-icons@9.44.0) (2025-06-04)
 
 ### Features

@@ -3,6 +3,282 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [67.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.3.1...@codecademy/gamut@67.3.2) (2025-11-10)
+
+### Bug Fixes
+
+- **PopoverContainer, Overlay:** out of view close fix + increase default zIndex for Overlay ([957c50e](https://github.com/Codecademy/gamut/commit/957c50edbb5e9da9f0ae904f0613de44c7cf5d3e))
+
+### [67.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.3.0...@codecademy/gamut@67.3.1) (2025-11-07)
+
+### Bug Fixes
+
+- **List, DataList, DataTable:** fix background colors + non-interactive table header spacing ([ceb1162](https://github.com/Codecademy/gamut/commit/ceb116292ee92ef716c59a504b2a45c348877602))
+
+## [67.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.2.1...@codecademy/gamut@67.3.0) (2025-11-04)
+
+### Features
+
+- **InfoTip:** Add global escape close ([dcffe03](https://github.com/Codecademy/gamut/commit/dcffe0325e42b50b199db7d8015028e44adcc113))
+
+### [67.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.2.0...@codecademy/gamut@67.2.1) (2025-11-03)
+
+### Bug Fixes
+
+- ListRow zebra striping ([85e2bdc](https://github.com/Codecademy/gamut/commit/85e2bdc3a263454f95679dd1fe4a8b49468b7576))
+
+## [67.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.5...@codecademy/gamut@67.2.0) (2025-11-03)
+
+### Features
+
+- **Tip:** L/R center narrow maxWidth ([e9b8543](https://github.com/Codecademy/gamut/commit/e9b8543c01d4a07b2926cbb473f1bcfbad8b89cc))
+
+### [67.1.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.4...@codecademy/gamut@67.1.5) (2025-10-29)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [67.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.3...@codecademy/gamut@67.1.4) (2025-10-28)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [67.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.2...@codecademy/gamut@67.1.3) (2025-10-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [67.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.1...@codecademy/gamut@67.1.2) (2025-10-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [67.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.0...@codecademy/gamut@67.1.1) (2025-10-22)
+
+### Bug Fixes
+
+- revert Markdown changes ([9f08997](https://github.com/Codecademy/gamut/commit/9f08997ed8766bc97556013de408e33fb1548b42))
+
+## [67.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.0.3...@codecademy/gamut@67.1.0) (2025-10-22)
+
+### Features
+
+- **GridForm, ConnectedForm:** Add nested checkboxes ([1ea044e](https://github.com/Codecademy/gamut/commit/1ea044e94cf587c83f8f01ab4aadc2bf0303b36a))
+
+### [67.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.0.2...@codecademy/gamut@67.0.3) (2025-10-21)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [67.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.0.1...@codecademy/gamut@67.0.2) (2025-10-15)
+
+### Bug Fixes
+
+- **SelectDropdown:** adding optional zIndex prop ([36b13fc](https://github.com/Codecademy/gamut/commit/36b13fc397fec852d59924433420ffcf4a3a6c17))
+
+### [67.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.0.0...@codecademy/gamut@67.0.1) (2025-10-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [67.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.5.3...@codecademy/gamut@67.0.0) (2025-10-14)
+
+### ⚠ BREAKING CHANGES
+
+- **Modal, Dialog, and Alert:** add new accessibility props to Modal, Dialog, and Alert's close Button
+
+### Features
+
+- **Modal, Dialog, and Alert:** add new accessibility props to Modal, Dialog, and Alert's close Button ([c10b4e5](https://github.com/Codecademy/gamut/commit/c10b4e5124ca75eae9e3d1b19ff40a67e6b34388))
+
+### [66.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.5.2...@codecademy/gamut@66.5.3) (2025-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.5.1...@codecademy/gamut@66.5.2) (2025-10-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.5.0...@codecademy/gamut@66.5.1) (2025-09-30)
+
+### Bug Fixes
+
+- **DataList:** move aria-sort to th ([d872073](https://github.com/Codecademy/gamut/commit/d872073d27daa12d17135dc7c938b906575570ae))
+
+## [66.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.4.2...@codecademy/gamut@66.5.0) (2025-09-23)
+
+### Features
+
+- add attrs to combobox ([0e49416](https://github.com/Codecademy/gamut/commit/0e49416a19c958874dbbee6ac9d3ba8c40c27c6c))
+
+### [66.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.4.1...@codecademy/gamut@66.4.2) (2025-09-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.4.0...@codecademy/gamut@66.4.1) (2025-09-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [66.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.3.1...@codecademy/gamut@66.4.0) (2025-09-12)
+
+### Features
+
+- add abbreviations to SelectDropdown, fixed grouped select + formatting issues ([1f01312](https://github.com/Codecademy/gamut/commit/1f013125d104d24d7b9f9b1fca275a49812ebda0))
+
+### [66.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.3.0...@codecademy/gamut@66.3.1) (2025-09-09)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [66.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.2.3...@codecademy/gamut@66.3.0) (2025-09-05)
+
+### Features
+
+- fix Checkbox + Radio color tokens ([3df9da8](https://github.com/Codecademy/gamut/commit/3df9da8377cb517f3bd17a30565259e46ac80a13))
+
+### [66.2.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.2.2...@codecademy/gamut@66.2.3) (2025-09-02)
+
+### Bug Fixes
+
+- **DataGrid:** misc layout fixes and visual bugs ([55f28e9](https://github.com/Codecademy/gamut/commit/55f28e9e719c38eae2755d0bd492fb09e992f005))
+
+### [66.2.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.2.1...@codecademy/gamut@66.2.2) (2025-08-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.2.0...@codecademy/gamut@66.2.1) (2025-08-21)
+
+### Bug Fixes
+
+- **MenuItem:** add disabled state ([015f486](https://github.com/Codecademy/gamut/commit/015f48699ab74ca030d5b13e54eb7656bad37969))
+
+## [66.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.1.1...@codecademy/gamut@66.2.0) (2025-08-20)
+
+### Features
+
+- **List, DataTable, DataList, + SystemProps:** add new base container query and List/DataGrid prop ([caae6ac](https://github.com/Codecademy/gamut/commit/caae6acdb9cc1d9a0fea0afd3d9204067fa8764b))
+
+### [66.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.1.0...@codecademy/gamut@66.1.1) (2025-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [66.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.11...@codecademy/gamut@66.1.0) (2025-08-14)
+
+### Features
+
+- **Tabs:** Remove manual keyboard activation ([440cde1](https://github.com/Codecademy/gamut/commit/440cde1432c134d614a6fa9566fff82b62e0c1d1))
+
+### [66.0.11](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.10...@codecademy/gamut@66.0.11) (2025-08-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.0.10](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.9...@codecademy/gamut@66.0.10) (2025-08-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.0.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.8...@codecademy/gamut@66.0.9) (2025-08-08)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.0.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.7...@codecademy/gamut@66.0.8) (2025-08-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.0.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.6...@codecademy/gamut@66.0.7) (2025-08-06)
+
+### Bug Fixes
+
+- **Popover:** Add ResizeObserver for text reflow bugs ([6308ae2](https://github.com/Codecademy/gamut/commit/6308ae2e6d186d3244aa81d6e37c19c619a2df09))
+
+### [66.0.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.5...@codecademy/gamut@66.0.6) (2025-07-25)
+
+### Bug Fixes
+
+- **PopoverContainer:** Give popover better scroll awareness ([58e7b80](https://github.com/Codecademy/gamut/commit/58e7b809cd59c8251852c1d2ea6ca7b1c4b6ad5b))
+
+### [66.0.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.4...@codecademy/gamut@66.0.5) (2025-07-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.3...@codecademy/gamut@66.0.4) (2025-07-24)
+
+### Bug Fixes
+
+- **Pagination:** allow for text variant to render ([b5ab3b5](https://github.com/Codecademy/gamut/commit/b5ab3b5792d64ae4d473a1e4ff257de63351a150))
+
+### [66.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.2...@codecademy/gamut@66.0.3) (2025-07-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [66.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.1...@codecademy/gamut@66.0.2) (2025-07-21)
+
+### Bug Fixes
+
+- **Shimmer:** make it colormode responsive ([8ee97de](https://github.com/Codecademy/gamut/commit/8ee97deef220670d2972f4cf509ade02b9517eeb))
+
+### [66.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@66.0.0...@codecademy/gamut@66.0.1) (2025-07-17)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [66.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@65.1.0...@codecademy/gamut@66.0.0) (2025-07-16)
+
+### ⚠ BREAKING CHANGES
+
+- **List:** Add spacing system props to List & remove deprecated props
+
+### Features
+
+- **List:** Add spacing system props to List & remove deprecated props ([097e9eb](https://github.com/Codecademy/gamut/commit/097e9ebbc0b81f211642372fdbda38aeddfded78))
+
+## [65.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@65.0.1...@codecademy/gamut@65.1.0) (2025-07-11)
+
+### Features
+
+- **Checkbox:** indeterminate checkboxes ([66ab4f7](https://github.com/Codecademy/gamut/commit/66ab4f70592bc58d84aab6f2e2d86be30a0945b5))
+
+### [65.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@65.0.0...@codecademy/gamut@65.0.1) (2025-07-10)
+
+### Bug Fixes
+
+- **PreviewTip:** move text below anchor in previewtip ([001c6da](https://github.com/Codecademy/gamut/commit/001c6da29b35600f6df5b1f12897d5ed5c03dfef))
+
+## [65.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.1.5...@codecademy/gamut@65.0.0) (2025-07-08)
+
+### ⚠ BREAKING CHANGES
+
+- **Logo:** Remove logo from gamut
+
+### Code Refactoring
+
+- **Logo:** Remove logo from gamut ([cdc47a2](https://github.com/Codecademy/gamut/commit/cdc47a28062f62ff5c9a9093ae33b580d79c1e2c))
+
+### [64.1.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.1.4...@codecademy/gamut@64.1.5) (2025-07-01)
+
+### Bug Fixes
+
+- **Card:** remove extra transition from shadow variant ([57c04a1](https://github.com/Codecademy/gamut/commit/57c04a1bec8bf2b08a2c9e3d542fa82ee6835c19))
+
+### [64.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.1.3...@codecademy/gamut@64.1.4) (2025-06-17)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [64.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.1.2...@codecademy/gamut@64.1.3) (2025-06-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [64.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.1.1...@codecademy/gamut@64.1.2) (2025-06-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [64.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.1.0...@codecademy/gamut@64.1.1) (2025-06-10)
+
+### Bug Fixes
+
+- **ConnectedFormGroup:** Have screen reader read form input error ([5d86b54](https://github.com/Codecademy/gamut/commit/5d86b543ed0434d707feab7aad9df53d54a729f7))
+
+## [64.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.0.3...@codecademy/gamut@64.1.0) (2025-06-10)
+
+### Features
+
+- left/right tooltips ([caaba79](https://github.com/Codecademy/gamut/commit/caaba79f8d1a0de2f4a456d9c9e1609656a9880a))
+
+### [64.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.0.2...@codecademy/gamut@64.0.3) (2025-06-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ### [64.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@64.0.1...@codecademy/gamut@64.0.2) (2025-06-04)
 
 **Note:** Version bump only for package @codecademy/gamut

@@ -1,8 +1,5 @@
 import { Anchor, GridBox, Text } from '@codecademy/gamut';
-import {
-  MiniArrowRightIcon,
-  MiniInfoOutlineIcon,
-} from '@codecademy/gamut-icons';
+import * as icons from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { PolymorphicAnchors, VariantsExample } from './Anchor.examples';
@@ -12,10 +9,17 @@ const meta: Meta<typeof Anchor> = {
   args: {
     children: 'Click me',
     href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    icon: MiniInfoOutlineIcon,
+    icon: icons.MiniInfoOutlineIcon,
     iconPosition: 'left',
     target: '_blank',
     variant: 'inline',
+  },
+  argTypes: {
+    icon: {
+      control: 'select',
+      options: Object.keys(icons),
+      mapping: icons,
+    },
   },
 };
 
@@ -29,13 +33,18 @@ export const Default: Story = {
 export const IconAnchor: Story = {
   render: (args) => (
     <GridBox gap={4}>
-      <Anchor {...args} href="/" icon={MiniInfoOutlineIcon} iconPosition="left">
+      <Anchor
+        {...args}
+        href="/"
+        icon={icons.MiniInfoOutlineIcon}
+        iconPosition="left"
+      >
         Left-aligned icon anchor
       </Anchor>
       <Anchor
         {...args}
         href="/"
-        icon={MiniArrowRightIcon}
+        icon={icons.MiniArrowRightIcon}
         iconPosition="right"
         variant="inline"
       >
@@ -53,7 +62,7 @@ export const IconAnchorExample: Story = {
       <Anchor
         {...args}
         href="/"
-        icon={MiniInfoOutlineIcon}
+        icon={icons.MiniInfoOutlineIcon}
         iconPosition="left"
         variant="inline"
       >
@@ -64,7 +73,7 @@ export const IconAnchorExample: Story = {
       <Anchor
         {...args}
         href="/"
-        icon={MiniArrowRightIcon}
+        icon={icons.MiniArrowRightIcon}
         iconPosition="right"
         variant="inline"
       >

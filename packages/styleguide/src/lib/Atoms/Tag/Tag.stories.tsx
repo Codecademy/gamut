@@ -1,19 +1,18 @@
 import { Box, FlexBox, Tag } from '@codecademy/gamut';
-import {
-  MiniCheckCircleIcon,
-  MiniChevronDownIcon,
-  MiniChevronUpIcon,
-  MiniKebabMenuIcon,
-  MiniPinIcon,
-  MiniRemoveCircleIcon,
-  MiniStarIcon,
-} from '@codecademy/gamut-icons';
+import * as icons from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Tag> = {
   component: Tag,
   args: {
     children: 'Tag',
+  },
+  argTypes: {
+    icon: {
+      control: 'select',
+      options: Object.keys(icons),
+      mapping: icons,
+    },
   },
 };
 
@@ -138,23 +137,27 @@ export const WithIcon: Story = {
     <FlexBox column>
       <FlexBox row>
         <Box mx={4}>
-          <Tag icon={MiniStarIcon} variant="readOnly">
+          <Tag icon={icons.MiniStarIcon} variant="readOnly">
             Gotcha!
           </Tag>
         </Box>
         <Box mx={4}>
-          <Tag icon={MiniPinIcon} variant="selection" onDismiss={() => null}>
+          <Tag
+            icon={icons.MiniPinIcon}
+            variant="selection"
+            onDismiss={() => null}
+          >
             Tag!
           </Tag>
         </Box>
         <Box mx={4}>
-          <Tag href="" icon={MiniCheckCircleIcon} variant="navigation">
+          <Tag href="" icon={icons.MiniCheckCircleIcon} variant="navigation">
             You&apos;re it!
           </Tag>
         </Box>
         <Box mx={4}>
           <Tag
-            icon={MiniRemoveCircleIcon}
+            icon={icons.MiniRemoveCircleIcon}
             variant="suggestion"
             onClick={() => null}
           >
@@ -164,13 +167,13 @@ export const WithIcon: Story = {
       </FlexBox>
       <FlexBox mt={12} row>
         <Box mx={4}>
-          <Tag icon={MiniChevronDownIcon} size="large" variant="readOnly">
+          <Tag icon={icons.MiniChevronDownIcon} size="large" variant="readOnly">
             Duck,
           </Tag>
         </Box>
         <Box mx={4}>
           <Tag
-            icon={MiniChevronDownIcon}
+            icon={icons.MiniChevronDownIcon}
             size="large"
             variant="selection"
             onDismiss={() => null}
@@ -181,7 +184,7 @@ export const WithIcon: Story = {
         <Box mx={4}>
           <Tag
             href=""
-            icon={MiniKebabMenuIcon}
+            icon={icons.MiniKebabMenuIcon}
             size="large"
             variant="navigation"
           >
@@ -190,7 +193,7 @@ export const WithIcon: Story = {
         </Box>
         <Box mx={4}>
           <Tag
-            icon={MiniChevronUpIcon}
+            icon={icons.MiniChevronUpIcon}
             size="large"
             variant="suggestion"
             onClick={() => null}

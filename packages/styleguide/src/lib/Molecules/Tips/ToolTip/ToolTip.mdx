@@ -5,6 +5,7 @@ import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 import * as ToolTipStories from './ToolTip.stories';
 
 export const parameters = {
+  title: 'ToolTip',
   subtitle: `A short tip triggered on hover and focus of an interactive element. Use a tooltip to further explain an element’s primary action, a disabled button state, or to display a label for an icon-only button.`,
   design: {
     type: 'figma',
@@ -28,7 +29,13 @@ export const parameters = {
 
 Tooltips are not meant to be used for long-form content or to replace the need for a label. They should be used sparingly and only when necessary.
 
-## Use Cases
+## Variants
+
+### Alignments
+
+Our `ToolTip` all align to the center of the interactive component they are describing. They can be aligned to the top, bottom, left, or right of the component.
+
+<Canvas of={ToolTipStories.Alignments} />
 
 ### IconButton + ToolTip
 
@@ -60,4 +67,4 @@ When a Button is disabled with a tooltip, you must use the `aria-disabled` prop 
 
 <Canvas sourceState="shown" of={ToolTipStories.Default} />
 
-<Controls />
+<Controls of={ToolTipStories.Default} />

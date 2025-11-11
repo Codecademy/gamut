@@ -83,4 +83,13 @@ export interface PopoverContainerProps
    * The target element around which the popover will be positioned.
    */
   targetRef: RefObject<TargetRef>;
+  /**
+   * If true, it will allow outside page interaction. Popover container will still close when clicking outside of the popover or hitting the escape key.
+   */
+  allowPageInteraction?: boolean;
+  /**
+   * If true, the popover will automatically close when the target element moves out of viewport.
+   * Defaults to false.
+   */
+  closeOnViewportExit?: boolean;
 }

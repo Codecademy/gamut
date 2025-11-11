@@ -65,7 +65,7 @@ const sizeVariants = variant({
     },
     sm: {
       height: `1rem`,
-      // the powers that be told us this was okay. please don't do this. seriously. - <3 web-plat
+      // The powers that be told us this was okay. Please don't do this. Seriously. - <3 Web-Plat
       fontSize: 10 as any,
     },
   },
@@ -130,54 +130,3 @@ export const Badge: React.FC<BadgeProps> = ({ icon, children, ...rest }) => {
   });
   return <BadgeBase {...rest}>{content}</BadgeBase>;
 };
-
-// FOR TESTING PROPS
-/*
-export const TestBadgeCustomBackground = () => (
-  <Badge
-    variant="custom"
-    background="linear-gradient(91deg, #FFE712 0.08%, #FF9641 100%)"
-  >
-    ✅ this works, no TS errors
-  </Badge>
-)
-
-export const TestBadgeCustomBg = () => (
-  <Badge
-    variant="custom"
-    bg="white"
-  >
-    ✅ this works, no TS errors
-  </Badge>
-)
-
-export const TestBadgeIncorrectCustomBg = () => (
-  <Badge
-    variant="custom"
-    bg="white"
-    background="linear-gradient(91deg, #FFE712 0.08%, #FF9641 100%)"
-  >
-    ✅ this works, gets TS errors when both bg and background are used
-  </Badge>
-)
-
-
-export const TestBadgeIncorrectVariantBg = () => (
-  <Badge
-    variant="primary"
-    bg="white"
-  >
-    ✅ this works, gets TS errors when both a variant and bg are used
-  </Badge>
-)
-
-
-export const TestBadgeIncorrectVariantBackground = () => (
-  <Badge
-    variant="primary"
-    background="linear-gradient(91deg, #FFE712 0.08%, #FF9641 100%)"
-  >
-    ✅ this works, gets TS errors when both a variant and background are used
-  </Badge>
-)
-*/

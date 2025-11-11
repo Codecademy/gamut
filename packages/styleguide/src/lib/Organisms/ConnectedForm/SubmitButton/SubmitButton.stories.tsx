@@ -5,12 +5,40 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof SubmitButton> = {
   component: SubmitButton,
   args: {},
+  argTypes: {
+    loading: {
+      control: 'boolean',
+    },
+    disabled: {
+      control: 'boolean',
+    },
+    as: {
+      table: {
+        disable: true,
+      },
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof SubmitButton>;
 
-const SubmitButtonStates = () => {
+export const Default: Story = {
+  render: (args) => (
+    <ConnectedForm
+      my={24}
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+    >
+      <SubmitButton m={8} {...args}>
+        submit the form, please
+      </SubmitButton>
+    </ConnectedForm>
+  ),
+};
+
+export const States = () => {
   return (
     <ConnectedForm
       display="flex"
@@ -43,8 +71,4 @@ const SubmitButtonStates = () => {
       </FlexBox>
     </ConnectedForm>
   );
-};
-
-export const Default: Story = {
-  render: () => <SubmitButtonStates />,
 };

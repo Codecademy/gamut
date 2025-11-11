@@ -9,6 +9,8 @@ import { ListRow } from '../ListRow';
 // Add the custom matchers provided by '@emotion/jest'
 expect.extend(matchers);
 
+// NOTE: We have removed the query styling tests here, they are to be replaced with visual tests: GM-1240
+
 const renderView = setupRtl(List, {
   children: (
     <ListRow data-testid="row-el">
@@ -43,10 +45,7 @@ describe('List', () => {
     const rowEl = view.getByRole('listitem');
 
     expect(rowEl).toHaveStyle({ borderTop: 'none' });
-    expect(rowEl).toHaveStyle({ gap: theme.spacing[8] });
-    expect(rowEl).toHaveStyleRule('gap', theme.spacing[40], {
-      media: theme.breakpoints.xs,
-    });
+    expect(rowEl).toHaveStyle({ columnGap: theme.spacing[40] });
   });
 
   it('configures columns with the correct variants', () => {
@@ -55,12 +54,8 @@ describe('List', () => {
     const colEl = view.getByText('Hello');
 
     expect(colEl).not.toHaveStyle({ py: 16 });
-    expect(colEl).toHaveStyleRule('padding-top', theme.spacing[16], {
-      media: theme.breakpoints.xs,
-    });
-    expect(colEl).toHaveStyleRule('padding-bottom', theme.spacing[16], {
-      media: theme.breakpoints.xs,
-    });
+    expect(colEl).toHaveStyle({ paddingLeft: theme.spacing[8] });
+    expect(colEl).toHaveStyle({ paddingRight: theme.spacing[8] });
 
     expect(colEl).not.toHaveStyle({ position: 'sticky' });
   });
@@ -127,5 +122,42 @@ describe('List', () => {
       ),
     });
     expect(view.queryByText('Surprise!')).toBeNull();
+  });
+
+  describe('wrapperWidth prop', () => {
+    it('applies wrapperWidth to the table container when provided', () => {
+      const { view } = renderView({ wrapperWidth: '500px' });
+
+      const tableContainer = view.container.querySelector(
+        '[data-testid="scrollable-list-el"]'
+      );
+      expect(tableContainer).toHaveStyle({ maxWidth: '500px', width: '500px' });
+    });
+
+    it('uses inherit width when wrapperWidth is not provided', () => {
+      const { view } = renderView();
+
+      const tableContainer = view.container.querySelector(
+        '[data-testid="scrollable-list-el"]'
+      );
+      expect(tableContainer).toHaveStyle({
+        maxWidth: '100%',
+        width: 'inherit',
+      });
+    });
+  });
+
+  it('applies container query styles by default', () => {
+    const { view } = renderView();
+
+    const wrapper = view.container.querySelector('#list-el');
+    expect(wrapper).toHaveStyleRule('container-type', 'inline-size');
+  });
+
+  it('disables container queries when disableContainerQuery is true', () => {
+    const { view } = renderView({ disableContainerQuery: true });
+
+    const wrapper = view.container.querySelector('#list-el');
+    expect(wrapper).toHaveStyleRule('container-type', 'normal');
   });
 });

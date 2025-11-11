@@ -1,5 +1,5 @@
 import { FormGroup, Input } from '@codecademy/gamut';
-import { ViewIcon } from '@codecademy/gamut-icons';
+import * as icons from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Input> = {
@@ -10,6 +10,13 @@ const meta: Meta<typeof Input> = {
     placeholder: 'Placeholder',
     type: 'text',
     size: 'base',
+  },
+  argTypes: {
+    icon: {
+      control: 'select',
+      options: Object.keys(icons),
+      mapping: icons,
+    },
   },
 };
 
@@ -92,7 +99,7 @@ export const CustomIcon: Story = {
     htmlFor: 'example-icon',
     name: 'example-icon',
     defaultValue: 'Hello...',
-    icon: ViewIcon,
+    icon: icons.ViewIcon,
   },
 };
 
@@ -194,7 +201,7 @@ export const NumberSmall: Story = {
     type: 'number',
     defaultValue: 1,
     size: 'small',
-    icon: ViewIcon,
+    icon: icons.ViewIcon,
   },
 };
 

@@ -1,3 +1,6 @@
+@use "base";
+@use "colors";
+
 // Font Families:
 
 $font-family-accent: "Suisse", "Apercu", -apple-system, BlinkMacSystemFont,
@@ -25,25 +28,25 @@ $font-weight-dt: $font-weight-bold;
 
 // Font colors
 
-$color-body: $color-navy;
-$color-headings: $color-gray-900;
-$bg-body: $color-white;
-$color-link: $deprecated-gamut-royal-blue-500;
-$hover-color-link: $deprecated-gamut-royal-blue-600;
+$color-body: colors.$color-navy;
+$color-headings: colors.$color-gray-900;
+$bg-body: colors.$color-white;
+$color-link: colors.$deprecated-gamut-royal-blue-500;
+$hover-color-link: colors.$deprecated-gamut-royal-blue-600;
 $decoration-link: none;
 $hover-decoration-link: underline;
 
 // Font margins
 
-$margin-bottom-paragraph: $spacer;
-$margin-bottom-headings: $spacer;
+$margin-bottom-paragraph: base.$spacer;
+$margin-bottom-headings: base.$spacer;
 $margin-bottom-label: 0;
 $line-height-base: 1.5;
 $line-height-headings: 1.1;
 
 // Font sizes
 
-$font-size-base: $base-unit;
+$font-size-base: base.$base-unit;
 $font-size-h1: px-rem(64);
 $font-size-h2: px-rem(44);
 $font-size-h3: px-rem(34);

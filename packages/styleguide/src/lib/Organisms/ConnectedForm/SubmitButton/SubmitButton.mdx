@@ -5,6 +5,7 @@ import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 import * as SubmitButtonStories from './SubmitButton.stories';
 
 export const parameters = {
+  title: 'SubmitButton',
   subtitle: `A submit type button for ConnectedForm.`,
   status: 'current',
   source: {
@@ -61,15 +62,15 @@ export const NiceForm = () => {
 };
 ```
 
-## Variants
-
-### States
+## States
 
 A `SubmitButton` can have 3 different states:
 
 - `default` being a standard button that can be interacted with.
 - `loading` that displays a spinner inside the button and prevents the button from being clicked.
 - `disabled` being a button that is disabled and therefore not interactable.
+
+<Canvas of={SubmitButtonStories.States} />
 
 ## Playground
 

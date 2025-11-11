@@ -5,6 +5,7 @@ import { ComponentHeader } from '~styleguide/blocks';
 import * as DelayedRenderWrapperStories from './DelayedRenderWrapper.stories';
 
 export const parameters = {
+  title: 'DelayedRenderWrapper',
   subtitle:
     'A utility component that delays rendering of its children until after a specified delay.',
   status: 'current',
@@ -24,20 +25,6 @@ export const parameters = {
 Use `DelayedRenderWrapper` to wrap around a component that you want to delay rendering for a specified amount of time.
 
 The `delay` prop accepts a number in milliseconds. If a `delay` {'>'} 0 is provided, `DelayedRenderWrapper` will use a `setTimeout()` to determine when to render its children. If `delay` is 0 or not provided, it will render its children immediately.
-
-## Examples
-
-### 0 Seconds Delay
-
-This is an example where a button triggers the rendering of `Text` wrapped in a `DelayedRenderWrapper` with a delay of 0 seconds.
-
-<Canvas of={DelayedRenderWrapperStories.ZeroSecondsDelay} />
-
-### 3 Seconds Delay
-
-This is an example where a button triggers the rendering of `Text` wrapped in a `DelayedRenderWrapper` with a delay of 3 seconds (3000 milliseconds).
-
-<Canvas of={DelayedRenderWrapperStories.ThreeSecondDelay} />
 
 ## Playground
 

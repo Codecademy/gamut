@@ -2,6 +2,8 @@ import type { IllustrationProps } from '@codecademy/gamut-illustrations';
 import * as illustrations from '@codecademy/gamut-illustrations';
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { ImageGallery } from '~styleguide/blocks';
+
 type IllustrationComponentProps = IllustrationProps & {
   illustration: React.ComponentType<IllustrationProps>;
 };
@@ -19,9 +21,7 @@ const meta: Meta<typeof IllustrationComponent> = {
     illustration: {
       options: Object.keys(illustrations),
       mapping: illustrations,
-      control: {
-        type: 'select',
-      },
+      control: 'select',
     },
   },
 };
@@ -34,5 +34,23 @@ export const Default: Story = {
     width: 256,
     height: 256,
     illustration: illustrations.NumberBlocks,
+  },
+};
+
+export const AllIllustrations: Story = {
+  render: () => {
+    return (
+      <ImageGallery
+        controls={{
+          minColumns: 1,
+          columns: 4,
+          maxColumns: 5,
+          imageSize: 80,
+          maxImageSize: 500,
+        }}
+        imageType="illustration"
+        images={illustrations}
+      />
+    );
   },
 };

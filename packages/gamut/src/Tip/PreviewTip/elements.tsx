@@ -7,7 +7,7 @@ import { Anchor } from '../../Anchor';
 import { Box, FlexBox, GridBox } from '../../Box';
 import { ButtonSelectors } from '../../ButtonBase/ButtonBase';
 import { Shimmer } from '../../Loading/Shimmer';
-import { patternContainerBaseStyles } from '../../Popover/styles';
+import { patternContainerBaseStyles } from '../../Popover/styles/pattern';
 import { Text } from '../../Typography';
 import { PreviewTipContent, TipPlacementComponentProps } from '../shared/types';
 import {

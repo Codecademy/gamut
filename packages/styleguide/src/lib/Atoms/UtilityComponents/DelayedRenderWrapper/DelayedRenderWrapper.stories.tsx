@@ -5,12 +5,12 @@ import {
   FlexBox,
   Text,
 } from '@codecademy/gamut';
-import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import type { Meta } from '@storybook/react';
+import { ComponentProps, useState } from 'react';
 
 const meta: Meta<typeof DelayedRenderWrapper> = {
   component: DelayedRenderWrapper,
-  args: {},
+  args: { delay: 1000 },
   argTypes: {
     delay: {
       control: {
@@ -25,9 +25,10 @@ const meta: Meta<typeof DelayedRenderWrapper> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof DelayedRenderWrapper>;
 
-const DelayedRenderExample = ({ delay }: { delay: number }) => {
+export const Default: React.FC<ComponentProps<typeof DelayedRenderWrapper>> = ({
+  delay,
+}) => {
   const [showChildren, setShowChildren] = useState(false);
   return (
     <>
@@ -48,17 +49,4 @@ const DelayedRenderExample = ({ delay }: { delay: number }) => {
       </FlexBox>
     </>
   );
-};
-
-export const ZeroSecondsDelay: Story = {
-  render: () => <DelayedRenderExample delay={0} />,
-};
-
-export const ThreeSecondDelay: Story = {
-  render: () => <DelayedRenderExample delay={3000} />,
-};
-
-export const Default: Story = {
-  args: { delay: 1000 },
-  render: (args) => <DelayedRenderExample delay={args.delay} />,
 };

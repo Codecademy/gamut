@@ -19,6 +19,8 @@ import {
   formFieldPaddingStyles,
   InputSelectors,
 } from '../styles';
+import { ControlState, OptionState } from './types';
+import { BaseSelectComponentProps } from './types/styles';
 
 const selectDropdownStyles = css({
   ...formBaseFieldStylesObject,
@@ -51,7 +53,7 @@ const sizeVariants = variant({
   variants: {
     medium: formFieldPaddingStyles,
     mediumIsMultiSelected: { px: 8, py: 8 },
-    small: { height: '2rem', px: 8, py: 0 },
+    small: { minHeight: '2rem', px: 8, py: 0 },
   },
 });
 
@@ -59,15 +61,16 @@ const dropdownBorderStates = states({
   error: { borderColorTop: 'feedback-error' },
 });
 
-const dropdownBorderStyles = css({
-  ...formBaseComponentStyles,
-  border: 1,
-  borderColor: 'currentColor',
-  position: 'absolute',
-  marginTop: 0,
-  borderRadius: 'none',
-  zIndex: 2,
-});
+const dropdownBorderStyles = (zIndex = 2) =>
+  css({
+    ...formBaseComponentStyles,
+    border: 1,
+    borderColor: 'currentColor',
+    position: 'absolute',
+    marginTop: 0,
+    borderRadius: 'none',
+    zIndex,
+  });
 
 const getOptionBackground = (isSelected: boolean, isFocused: boolean) =>
   css({
@@ -87,20 +90,24 @@ const placeholderColor = css({
 });
 
 export const getMemoizedStyles = (
-  theme: typeof GamutTheme
+  theme: typeof GamutTheme,
+  zIndex?: number
 ): StylesConfig<any, false> => {
   return {
     clearIndicator: (provided) => ({
       ...provided,
     }),
-    container: (provided, state) => ({
-      ...provided,
-      pointerEvents: 'visible',
-      cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
-      width: '100%',
-      minWidth: '7rem',
-    }),
-    control: (provided, state: any) => {
+    container: (provided, state: BaseSelectComponentProps) => {
+      const { inputWidth } = state.selectProps;
+      return {
+        ...provided,
+        pointerEvents: 'visible',
+        cursor: state.selectProps.isSearchable ? 'text' : 'pointer',
+        width: inputWidth || '100%',
+        minWidth: '7rem',
+      };
+    },
+    control: (provided, state: ControlState) => {
       const { isMulti, size } = state.selectProps;
       const getSize = size ?? 'medium';
       const getPadding =
@@ -126,53 +133,52 @@ export const getMemoizedStyles = (
       padding: '0',
       pointerEvents: 'none',
     }),
+    groupHeading: (provided) => ({
+      ...provided,
+      color: theme.colors['text-disabled'],
+    }),
     input: (provided) => ({
       ...provided,
       ...textColor({ theme }),
       padding: '0',
       margin: '0',
     }),
-    menu: (provided, state: any) => ({
-      ...provided,
-      ...dropdownBorderStyles({ theme }),
-      ...dropdownBorderStates({ error: state.selectProps.error, theme }),
-    }),
-    menuList: (provided, state: any) => {
+    menu: (provided, state: BaseSelectComponentProps) => {
+      const { dropdownWidth, menuAlignment } = state.selectProps;
+
+      return {
+        ...provided,
+        ...dropdownBorderStyles(zIndex)({ theme }),
+        ...dropdownBorderStates({ error: state.selectProps.error, theme }),
+        ...(dropdownWidth
+          ? {
+              width: dropdownWidth,
+              minWidth: dropdownWidth,
+            }
+          : {}),
+        ...(menuAlignment === 'right'
+          ? {
+              left: 'auto',
+              right: 0,
+            }
+          : {}),
+      };
+    },
+    menuList: (provided, state: BaseSelectComponentProps) => {
       const sizeInteger = state.selectProps.size === 'small' ? 2 : 3;
       const maxHeight = `${
-        state.selectProps.shownOptionsLimit * sizeInteger
+        (state.selectProps.shownOptionsLimit ?? 6) * sizeInteger
       }rem`;
       return {
         ...provided,
         maxHeight,
       };
     },
-    placeholder: (provided) => ({
-      ...provided,
-      ...placeholderColor({ theme }),
-    }),
-    option: (provided, state: any) => {
-      return {
-        padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
-        cursor: state.isDisabled ? 'not-allowed' : 'pointer',
-        ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
-        display: 'flex',
-        alignItems: 'center',
-        color: state.isDisabled ? 'text-disabled' : 'default',
-      };
-    },
-    singleValue: (provided) => ({
-      ...provided,
-      ...textColor({ theme }),
-      display: 'flex',
-      alignItems: 'center',
-      marginLeft: 0,
-    }),
-    multiValue: (provided) => ({
+    multiValue: (provided, state) => ({
       ...provided,
       ...tagBaseStyles,
       height: '24px',
-      cursor: 'pointer',
+      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
       color: theme.colors.background,
       backgroundColor: 'transparent',
       borderRadius: theme.borderRadii.md,
@@ -188,16 +194,39 @@ export const getMemoizedStyles = (
       paddingLeft: `${tagLabelPadding}px`, // default label has an explicit rule for padding left so we need this to override it
       paddingTop: '2px', // adding to shift the text down to vertically center it
     }),
-    multiValueRemove: (provided) => ({
+    multiValueRemove: (provided, state) => ({
       ...provided,
       ...dismissSharedStyles,
-      cursor: 'pointer',
+      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+      pointerEvents: state.isDisabled ? 'none' : 'visible',
       backgroundColor: theme.colors['text-secondary'],
       borderRadius: `0 ${theme.borderRadii.md} ${theme.borderRadii.md} 0`,
       padding: 0, // default remove has padding left and right that we don't need
       ':hover': {
         backgroundColor: theme.colors['secondary-hover'],
       },
+    }),
+    option: (provided, state: OptionState) => ({
+      padding: state.selectProps.size === 'small' ? '3px 14px' : '11px 14px',
+      cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+      ...getOptionBackground(state.isSelected, state.isFocused)({ theme }),
+      display: 'flex',
+      alignItems: 'center',
+      color: state.isDisabled ? 'text-disabled' : 'default',
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      ...placeholderColor({ theme }),
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      ...textColor({ theme }),
+      display: 'flex',
+      alignItems: 'center',
+      marginLeft: 0,
     }),
     valueContainer: (provided) => ({
       ...provided,

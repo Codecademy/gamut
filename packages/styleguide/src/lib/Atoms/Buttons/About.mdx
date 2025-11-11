@@ -1,6 +1,17 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as buttonParameters } from './Button/Button.mdx';
+import { parameters as ctaButtonParameters } from './CTAButton/CTAButton.mdx';
+import { parameters as fillButtonParameters } from './FillButton/FillButton.mdx';
+import { parameters as iconButtonParameters } from './IconButton/IconButton.mdx';
+import { parameters as strokeButtonParameters } from './StrokeButton/StrokeButton.mdx';
+import { parameters as textButtonParameters } from './TextButton/TextButton.mdx';
 
 export const parameters = {
   id: 'Atoms/Buttons',
@@ -13,46 +24,12 @@ export const parameters = {
 <AboutHeader {...parameters} />
 
 <TableOfContents
-  links={[
-    {
-      id: 'Atoms/Buttons/Button',
-      subtitle: 'Button atoms for specfic use cases.',
-      title: 'Button',
-      status: 'current',
-    },
-    {
-      id: 'Atoms/Buttons/CTAButton',
-      subtitle:
-        'A "Call to Action" button that is used to prompt users to take a specific action.',
-      title: 'CTAButton',
-      status: 'current',
-    },
-    {
-      id: 'Atoms/Buttons/FillButton',
-      subtitle:
-        'A button that has a solid background color and is used for primary actions.',
-      title: 'FillButton',
-      status: 'current',
-    },
-    {
-      id: 'Atoms/Buttons/StrokeButton',
-      subtitle:
-        'A button that has a outline around its text and is used for secondary actions.',
-      title: 'StrokeButton',
-      status: 'current',
-    },
-    {
-      id: 'Atoms/Buttons/TextButton',
-      subtitle:
-        'A button that usually only has text and is used for tertiary actions.',
-      title: 'TextButton',
-      status: 'current',
-    },
-    {
-      id: 'Atoms/Buttons/IconButton',
-      subtitle: 'A button that displays a clickable icon.',
-      title: 'IconButton',
-      status: 'current',
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    buttonParameters,
+    ctaButtonParameters,
+    fillButtonParameters,
+    iconButtonParameters,
+    strokeButtonParameters,
+    textButtonParameters,
+  ])}
 />

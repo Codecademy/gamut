@@ -4,6 +4,8 @@ import * as miniIcons from '@codecademy/gamut-icons/src/icons/mini';
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
+import { ImageGallery } from '~styleguide/blocks';
+
 type MiniIconProps = GamutIconProps & {
   icon: typeof miniIcons.MiniStarIcon;
 };
@@ -21,9 +23,7 @@ const meta: Meta<typeof MiniIconComponent> = {
     icon: {
       options: Object.keys(miniIcons),
       mapping: miniIcons,
-      control: {
-        type: 'select',
-      },
+      control: 'select',
     },
   },
 };
@@ -35,5 +35,11 @@ export const Default: Story = {
   args: {
     size: 16,
     icon: miniIcons.MiniStarIcon,
+  },
+};
+
+export const AllMiniIcons: Story = {
+  render: () => {
+    return <ImageGallery imageType="icon" images={miniIcons} />;
   },
 };

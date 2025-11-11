@@ -1,5 +1,4 @@
-import { CheckerDense } from '@codecademy/gamut-patterns';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import * as React from 'react';
 import { useMeasure } from 'react-use';
 
@@ -10,8 +9,12 @@ import {
   FloatingTipTextWrapper,
   TargetContainer,
 } from './elements';
+import {
+  getAlignmentStyles,
+  getPopoverAlignmentAndPattern,
+} from './styles/composeVariantsUtils';
 import { TipWrapperProps } from './types';
-import { getAlignmentWidths, getPopoverAlignment, runWithDelay } from './utils';
+import { runWithDelay } from './utils';
 
 type FocusOrMouseEvent =
   | React.FocusEvent<HTMLDivElement, Element>
@@ -28,63 +31,89 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   loading,
   narrow,
   overline,
+  popoverContentRef,
   truncateLines,
   type,
   username,
   wrapperRef,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [childRef, { width: tipWidth }] = useMeasure<HTMLDivElement>();
 
-  const [offset, setOffset] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
+  // Use refs to store timeouts to prevent race conditions
+  const hoverDelayRef = useRef<NodeJS.Timeout | undefined>();
+  const focusDelayRef = useRef<NodeJS.Timeout | undefined>();
+
+  const commonPopoverProps = getPopoverAlignmentAndPattern({ alignment, type });
+  const dims = getAlignmentStyles({ avatar, alignment, type });
+  const isHorizontalCenter = dims === 'horizontalCenter';
+  const [childRef, { width: tipWidth }] = useMeasure<HTMLDivElement>();
+
+  const [offset, setOffset] = useState<number | undefined>(undefined);
+
   useLayoutEffect(() => {
-    const isCentered = alignment.includes('center');
-
-    if (ref?.current) {
-      if (!isCentered) {
+    if (ref?.current?.clientWidth) {
+      if (type === 'info' || type === 'preview')
         setOffset(-ref.current.clientWidth / 2 + 32);
-      } else {
-        const trueTw = tipWidth + 16;
-        const targetWidth = ref?.current.clientWidth;
-        const diffOs = (trueTw - targetWidth) / 2;
-        setOffset(diffOs);
-      }
     }
-  }, [alignment, tipWidth]);
+  }, [alignment, tipWidth, type]);
 
-  const popoverAlignments = getPopoverAlignment({ alignment, type });
-  const dims = getAlignmentWidths({ avatar, alignment, type });
+  // Clear timeouts on unmount
+  useLayoutEffect(() => {
+    return () => {
+      if (hoverDelayRef.current) clearTimeout(hoverDelayRef.current);
+      if (focusDelayRef.current) clearTimeout(focusDelayRef.current);
+    };
+  }, []);
 
-  let hoverDelay: NodeJS.Timeout | undefined;
-  let focusDelay: NodeJS.Timeout | undefined;
+  const handleShowHideAction = useCallback(
+    ({ type }: FocusOrMouseEvent) => {
+      if (type === 'focus' && !isOpen) {
+        if (hoverDelayRef.current) {
+          clearTimeout(hoverDelayRef.current);
+          hoverDelayRef.current = undefined;
+        }
 
-  const handleShowHideAction = ({ type }: FocusOrMouseEvent) => {
-    if (type === 'focus' && !isOpen) {
-      focusDelay = runWithDelay(() => {
-        setIsOpen(true);
-        setIsFocused(true);
-      });
-    }
-    if (type === 'blur') {
-      if (focusDelay) clearTimeout(focusDelay);
-      if (isOpen) {
-        setIsOpen(false);
-        setIsFocused(false);
+        focusDelayRef.current = runWithDelay(() => {
+          setIsOpen(true);
+          setIsFocused(true);
+        });
       }
-    }
-    if (type === 'mouseenter' && !isOpen) {
-      hoverDelay = runWithDelay(() => setIsOpen(true));
-    }
-    if (type === 'mouseleave') {
-      if (hoverDelay) clearTimeout(hoverDelay);
-      if (isOpen && !isFocused) {
-        setIsOpen(false);
+
+      if (type === 'blur') {
+        if (focusDelayRef.current) {
+          clearTimeout(focusDelayRef.current);
+          focusDelayRef.current = undefined;
+        }
+        if (isOpen) {
+          setIsOpen(false);
+          setIsFocused(false);
+        }
       }
-    }
-  };
+
+      if (type === 'mouseenter' && !isOpen && !isFocused) {
+        if (focusDelayRef.current) {
+          clearTimeout(focusDelayRef.current);
+          focusDelayRef.current = undefined;
+        }
+
+        hoverDelayRef.current = runWithDelay(() => setIsOpen(true));
+      }
+
+      if (type === 'mouseleave') {
+        if (hoverDelayRef.current) {
+          clearTimeout(hoverDelayRef.current);
+          hoverDelayRef.current = undefined;
+        }
+        if (isOpen && !isFocused) {
+          setIsOpen(false);
+        }
+      }
+    },
+    [isOpen, isFocused]
+  );
 
   const isHoverType = type === 'tool' || type === 'preview';
   const isPreviewType = type === 'preview';
@@ -105,6 +134,8 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   ) : (
     info
   );
+
+  const isPopoverOpen = isHoverType ? isOpen : !isTipHidden;
 
   return (
     <Box
@@ -130,22 +161,22 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         {children}
       </TargetContainer>
       <FloatingTipBody
-        {...popoverAlignments}
+        {...commonPopoverProps}
         animation="fade"
         dims={dims}
         horizontalOffset={offset}
-        isOpen={isHoverType ? isOpen : !isTipHidden}
+        isOpen={isPopoverOpen}
         outline
-        pattern={isPreviewType ? CheckerDense : undefined}
+        popoverContainerRef={popoverContentRef}
         skipFocusTrap
         targetRef={ref}
         variant="secondary"
         widthRestricted={false}
       >
         <FloatingTipTextWrapper
-          centered={alignment.includes('center')}
+          horizNarrow={narrow && isHorizontalCenter}
           isHoverType={isHoverType}
-          narrow={narrow}
+          narrow={narrow && !isHorizontalCenter}
           ref={childRef}
         >
           {contents}

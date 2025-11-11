@@ -3,36 +3,30 @@ import isObject from 'lodash/isObject';
 
 import {
   ExtendedOption,
+  IconOption,
   OptionStrict,
-  SelectDropdownOptions,
   SelectDropdownSizes,
-} from './SelectDropdown';
+} from './SelectDropdown/types';
 
 export interface SelectOptionBase extends OptionStrict, SelectDropdownSizes {
   key?: string;
 }
 
+export type NonGroupedOptions =
+  | string[]
+  | IconOption[]
+  | ExtendedOption[]
+  | Record<string, string | number>;
+
 export interface ParseSelectOptionProps extends SelectDropdownSizes {
   id?: string | number;
-  options?: SelectDropdownOptions;
+  options?: NonGroupedOptions;
 }
 
 export interface ParseOptionProps extends ParseSelectOptionProps {
   labelAsKey?: boolean;
 }
-const formatAsOptions = ({ label, value, key }: SelectOptionBase) => {
-  const option = key ? (
-    <option data-testid={key} key={key} label={label} value={value}>
-      {label}
-    </option>
-  ) : (
-    <option data-testid={label} key={label} label={value} value={value}>
-      {value}
-    </option>
-  );
 
-  return option;
-};
 export const parseOptions = ({
   options,
   id,
@@ -57,6 +51,20 @@ export const parseOptions = ({
     });
   }
   return [...parsedOptions];
+};
+
+const formatAsOptions = ({ label, value, key }: SelectOptionBase) => {
+  const option = key ? (
+    <option data-testid={key} key={key} label={label} value={value}>
+      {label}
+    </option>
+  ) : (
+    <option data-testid={label} key={label} label={value} value={value}>
+      {value}
+    </option>
+  );
+
+  return option;
 };
 
 export const parseSelectOptions = (props: ParseSelectOptionProps) => {

@@ -1,10 +1,11 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as DataTableStories from './DataTable.stories';
 
 export const parameters = {
+  title: 'DataTable',
   subtitle: `Compare large amounts of data and perform bulk actions on Table Rows.`,
   status: 'current',
   source: {
@@ -49,7 +50,6 @@ Use a `DataTable` to display a table of items that contain a lot of information.
 
 ```tsx
 const DataTown = () => {
-  const [selectedRows, setSelectedRows] = useState([]);
   const [expandedRows, setExpandedRows] = useState([]);
   const columns = [
     { key: 'name', sortable: true, size: 'sm' },
@@ -66,8 +66,6 @@ const DataTown = () => {
     <DataTable
       id="example"
       columns={columns}
-      selectedRows={selectedRows}
-      onRowSelect={setSelectedRows}
       expandedRows={expandedRows}
       onRowExpand={setExpandedRows}
       renderExpanded={({ name }) => <>{name}: This is pretty cool</>}
@@ -142,9 +140,188 @@ You can set the `shadow` prop to `true` to add a shadow to the DataTable when it
 
 <Canvas of={DataTableStories.Scrollable} />
 
-## Playground
+## Background colors
 
-If you are using a story named 'Default', you can forgo the `of` prop.
+DataTable's background is linked to the `current-background` token. You can change the color scheme of a DataTable by wrapping it in a `<Background />` component from `@codecademy/gamut-styles`.
+
+When you wrap a DataTable in `Background`, the component will also automatically adjust its colors to ensure proper contrast and accessibility. For example, using a dark background like `bg="black"` will switch the DataTable to dark mode, making text and UI elements light-colored for better contrast. You can find more information about the `Background` component in the <LinkTo id="Foundations/ColorMode">ColorMode documentation</LinkTo>.
+
+### Usage
+
+```tsx
+import { Background } from '@codecademy/gamut-styles';
+import { DataTable } from '@codecademy/gamut';
+
+const MyDarkDataTable = () => {
+  return (
+    <Background bg="black" p={8}>
+      <DataTable id="dark-table" idKey="id" rows={data} columns={columns} />
+    </Background>
+  );
+};
+```
+
+<Canvas of={DataTableStories.BackgroundColors} />
+
+### Floating menus with PopoverContainer
+
+You can add interactive menus to DataTable rows using `PopoverContainer` and `Menu` components. This is useful for row-specific actions like edit, delete, or view details.
+
+<Canvas of={DataTableStories.WithFloatingMenu} />
+
+**Key features:**
+
+- **Automatic closing**: The <LinkTo id="Atoms/PopoverContainer">PopoverContainer</LinkTo> has the `closeOnViewportExit` prop which automatically closes when the <LinkTo id="Molecules/Menu">Menu</LinkTo> when the target row scrolls out of view, even when inside scrollable parent containers
+- **Integration with Modals**: You can open <LinkTo id="Molecules/Modals/About">Modals</LinkTo> from menu items, which will appear above the table header with proper z-index stacking
+- **Accessible**: The menu is keyboard accessible and works with screen readers
+
+**Example implementation:**
+
+```tsx
+import {
+  Box,
+  DataTable,
+  IconButton,
+  Menu,
+  MenuItem,
+  Modal,
+  PopoverContainer,
+  Text,
+} from '@codecademy/gamut';
+import { MiniKebabMenuIcon } from '@codecademy/gamut-icons';
+import { useRef, useState } from 'react';
+
+const RowMenu: React.FC<{ rowName: string }> = ({ rowName }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLDivElement>(null);
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  const handleOpenModal = () => {
+    setIsOpen(false);
+    setIsModalOpen(true);
+  };
+
+  return (
+    <Box display="inline-block" p={8} ref={menuButtonRef}>
+      <IconButton
+        icon={MiniKebabMenuIcon}
+        tip="Show options"
+        tipProps={{
+          alignment: 'left-center',
+          placement: 'floating',
+        }}
+        variant="secondary"
+        onClick={() => setIsOpen(!isOpen)}
+      />
+
+      <PopoverContainer
+        alignment="bottom-left"
+        allowPageInteraction
+        closeOnViewportExit
+        isOpen={isOpen}
+        offset={0}
+        targetRef={menuButtonRef}
+        onRequestClose={handleClose}
+      >
+        <Menu borderRadius="md" spacing="normal" variant="popover">
+          <MenuItem onClick={handleClose}>
+            <Text truncate="ellipsis" truncateLines={1}>
+              Edit {rowName}
+            </Text>
+          </MenuItem>
+          <MenuItem onClick={handleOpenModal}>
+            <Text truncate="ellipsis" truncateLines={1}>
+              View Details
+            </Text>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <Text truncate="ellipsis" truncateLines={1}>
+              Delete {rowName}
+            </Text>
+          </MenuItem>
+        </Menu>
+      </PopoverContainer>
+
+      <Modal
+        isOpen={isModalOpen}
+        size="small"
+        title={`Details for ${rowName}`}
+        onRequestClose={() => setIsModalOpen(false)}
+      >
+        <Text>Modal content for {rowName}</Text>
+      </Modal>
+    </Box>
+  );
+};
+
+// Use in DataTable columns
+const columns = [
+  // ... other columns
+  {
+    header: 'Actions',
+    key: 'name',
+    size: 'sm',
+    justify: 'right',
+    type: 'control',
+    render: (row) => <RowMenu rowName={row.name} />,
+  },
+];
+```
+
+**Important considerations:**
+
+- Use a `ref` for the menu trigger element (e.g., IconButton) and pass it to `PopoverContainer`'s `targetRef` prop
+- Set `allowPageInteraction={true}` on PopoverContainer to allow interaction with the table while the menu is open
+- The PopoverContainer will automatically close when the target row scrolls out of view, preventing orphaned menus
+- Modals opened from menu items will use `zIndex={3}` by default to appear above table headers
+
+## Container Query Control
+
+DataTable inherits container query functionality from the underlying List component. By default, DataTable uses CSS container queries to determine responsive behavior based on the container width rather than viewport width. This ensures optimal display when DataTable is placed in constrained layouts.
+
+### When to use `disableContainerQuery={true}`
+
+- **DataTable in narrow containers**: When your DataTable is always rendered in a constrained space (like a 300px sidebar)
+- **Dense data tables**: When you have many columns that need consistent behavior regardless of container width
+- **Custom responsive management**: When implementing your own responsive logic and want to avoid conflicts
+- **Performance considerations**: In rare cases where container query support may impact performance
+
+### Example usage
+
+```tsx
+// Disable container queries for a DataTable in a narrow container
+<div style={{ width: '280px' }}>
+  <DataTable
+    disableContainerQuery
+    id="sidebar-table"
+    idKey="id"
+    rows={data}
+    columns={columns}
+    spacing="condensed"
+  />
+</div>
+
+// Use default container query behavior (recommended for most cases)
+<DataTable
+  id="main-table"
+  idKey="id"
+  rows={data}
+  columns={columns}
+  spacing="condensed"
+/>
+```
+
+The example below demonstrates the difference between default container query behavior and disabled container queries:
+
+<Canvas of={DataTableStories.DisableContainerQuery} />
+
+<Callout text="In most cases, you should use the default container query behavior as it provides better responsive design. Only disable container queries when you have specific layout requirements that conflict with the default behavior." />
+
+## Playground
 
 <Canvas sourceState="shown" of={DataTableStories.Default} />
 

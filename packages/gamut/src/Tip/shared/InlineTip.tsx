@@ -7,9 +7,9 @@ import {
   TipBody,
   ToolTipWrapper,
 } from './elements';
-import { narrowWidth } from './styles';
+import { getAlignmentStyles } from './styles/composeVariantsUtils';
+import { narrowWidth } from './styles/styles';
 import { TipWrapperProps } from './types';
-import { getAlignmentWidths } from './utils';
 
 export const InlineTip: React.FC<TipWrapperProps> = ({
   alignment,
@@ -37,7 +37,8 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
     : InfoTipContainer;
   const inlineWrapperProps = isHoverType ? {} : { hideTip: isTipHidden };
   const tipWrapperProps = isHoverType ? ({ inheritDims } as const) : {};
-  const tipBodyAlignment = getAlignmentWidths({ alignment, avatar, type });
+  const tipBodyAlignment = getAlignmentStyles({ alignment, avatar, type });
+  const isHorizontalCenter = tipBodyAlignment === 'horizontalCenter';
 
   const target = (
     <TargetContainer
@@ -55,7 +56,6 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   const tipBody = (
     <InlineTipBodyWrapper
       alignment={alignment}
-      isToolTip={type === 'tool'}
       zIndex={zIndex ?? 1}
       {...inlineWrapperProps}
     >
@@ -63,9 +63,10 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
         alignment={tipBodyAlignment}
         aria-hidden={isHoverType}
         color="currentColor"
+        horizNarrow={narrow && isHorizontalCenter}
         id={id}
         role={type === 'tool' ? 'tooltip' : undefined}
-        width={narrow ? narrowWidth : undefined}
+        width={narrow && !isHorizontalCenter ? narrowWidth : 'max-content'}
         zIndex="auto"
       >
         {type === 'preview' ? (

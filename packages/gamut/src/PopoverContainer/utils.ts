@@ -5,14 +5,80 @@ import {
 
 import { PopoverPositionConfig, TargetRef } from './types';
 
-export const isInView = ({ top, left, bottom, right }: DOMRect) => {
+export const findResizingParent = ({
+  parentElement,
+}: HTMLElement): HTMLElement | null => {
+  if (parentElement) {
+    const { overflow, overflowY, overflowX } = getComputedStyle(parentElement);
+    if ([overflow, overflowY, overflowX].some((val) => val === 'clip')) {
+      return parentElement;
+    }
+    return findResizingParent(parentElement); // parent of this parent is used via prop destructure
+  }
+  return null;
+};
+
+/*
+ * Finds all extra scrolling parents of an element.
+ * This is useful for detecting scroll events on parents that may not be the direct parent, which should be managed by react-use's useWindowScroll.
+ */
+export const findAllAdditionalScrollingParents = (
+  element: HTMLElement
+): HTMLElement[] => {
+  const scrollingParents: HTMLElement[] = [];
+  let currentElement = element.parentElement;
+
+  while (currentElement && currentElement !== document.body) {
+    const { overflow, overflowY, overflowX } = getComputedStyle(currentElement);
+    if (
+      [overflow, overflowY, overflowX].some((val) =>
+        ['scroll', 'auto'].includes(val)
+      )
+    ) {
+      scrollingParents.push(currentElement);
+    }
+    currentElement = currentElement.parentElement;
+  }
+
+  return scrollingParents;
+};
+
+export const isOutOfView = (
+  rect: DOMRect,
+  target?: HTMLElement | null
+): boolean => {
   const windowHeight =
     window.innerHeight || document.documentElement.clientHeight;
   const windowWidth = window.innerWidth || document.documentElement.clientWidth;
 
-  return (
-    top >= 0 && left >= 0 && bottom <= windowHeight && right <= windowWidth
-  );
+  const outOfViewport =
+    rect.bottom < 0 ||
+    rect.top > windowHeight ||
+    rect.right < 0 ||
+    rect.left > windowWidth;
+
+  if (outOfViewport || !target) {
+    return outOfViewport;
+  }
+
+  const scrollingParents = findAllAdditionalScrollingParents(target);
+
+  for (const parent of scrollingParents) {
+    const parentRect = parent.getBoundingClientRect();
+
+    const intersects =
+      rect.top < parentRect.bottom &&
+      rect.bottom > parentRect.top &&
+      rect.left < parentRect.right &&
+      rect.right > parentRect.left;
+
+    // If element doesn't intersect with a scrollable parent's visible area, it's out of view
+    if (!intersects) {
+      return true;
+    }
+  }
+
+  return false;
 };
 
 export const ALIGN = {

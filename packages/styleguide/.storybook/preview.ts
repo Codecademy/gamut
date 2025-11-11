@@ -10,6 +10,7 @@ const preview: Preview = {
     backgrounds: {
       disable: true,
     },
+    deepControls: { enabled: true },
     docs: {
       container: DocsContainer,
       theme: theme,
@@ -116,6 +117,22 @@ export const globalTypes = {
         { value: 'dark', icon: 'circle', title: 'dark' },
       ],
       // Property that specifies if the name of the item will be displayed
+      showName: true,
+    },
+  },
+  theme: {
+    name: 'Theme',
+    description: 'Global theme for components',
+    defaultValue: 'core',
+    toolbar: {
+      icon: 'paintbrush',
+      items: [
+        { value: 'core', title: 'Core' },
+        { value: 'admin', title: 'Admin' },
+        { value: 'lxStudio', title: 'LX Studio' },
+        { value: 'percipio', title: 'Percipio' },
+        { value: 'platform', title: 'Learning Platform' },
+      ],
       showName: true,
     },
   },

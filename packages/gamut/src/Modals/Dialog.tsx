@@ -8,7 +8,7 @@ import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer, ModalContainerProps } from './elements';
 import { ImageContainer } from './ImageContainer';
-import { ModalBaseProps } from './types';
+import { CloseButtonProps, ModalBaseProps } from './types';
 
 interface DialogButtonProps {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ interface DialogButtonProps {
   onClick?: ComponentProps<typeof FillButton>['onClick'];
 }
 
-export interface DialogProps extends ModalBaseProps {
+export interface DialogProps extends ModalBaseProps, CloseButtonProps {
   title: ModalBaseProps['title'];
   size?: Exclude<ModalContainerProps['size'], 'fluid' | false>;
   variant?: Extract<
@@ -25,12 +25,6 @@ export interface DialogProps extends ModalBaseProps {
   >;
   confirmCta: DialogButtonProps;
   cancelCta?: DialogButtonProps;
-  closeButtonTipText?: string;
-  /**
-   * TEMPORARY: a stopgap solution to avoid zIndex conflicts -
-   * will be reworked with: GM-624
-   */
-  zIndex?: number;
 }
 
 export const Dialog: React.FC<DialogProps> = ({
@@ -39,10 +33,17 @@ export const Dialog: React.FC<DialogProps> = ({
   children,
   confirmCta,
   cancelCta,
+  closeButtonProps: {
+    disabled: disableCloseButton,
+    hidden: hideCloseButton,
+    ref: closeButtonRef,
+    tip: closeButtonTip = 'Close dialog',
+    tipAlignment = 'top-center' as const,
+  } = {},
   onRequestClose,
   image,
+  containerFocusRef,
   size = 'small',
-  closeButtonTipText = 'Close dialog',
   ...rest
 }) => {
   const onConfirm: DialogButtonProps['onClick'] = (
@@ -68,6 +69,7 @@ export const Dialog: React.FC<DialogProps> = ({
         aria-modal="true"
         data-autofocus
         layout="dialog"
+        ref={containerFocusRef}
         role="dialog"
         size={size}
         tabIndex={-1}
@@ -75,15 +77,20 @@ export const Dialog: React.FC<DialogProps> = ({
         <Text as="h2" fontSize={20} gridArea="title" lineHeight="base">
           {title}
         </Text>
-        <Box gridArea="close">
-          <IconButton
-            alignSelf="start"
-            icon={MiniDeleteIcon}
-            size="small"
-            tip={closeButtonTipText}
-            onClick={onCancel}
-          />
-        </Box>
+        {!hideCloseButton && (
+          <Box gridArea="close">
+            <IconButton
+              alignSelf="start"
+              disabled={disableCloseButton}
+              icon={MiniDeleteIcon}
+              ref={closeButtonRef}
+              size="small"
+              tip={closeButtonTip}
+              tipProps={{ alignment: tipAlignment }}
+              onClick={onCancel}
+            />
+          </Box>
+        )}
         <Box as="div" data-testid="dialog-content" gridArea="content">
           {image && <ImageContainer image={image} size={size} />}
           {children}

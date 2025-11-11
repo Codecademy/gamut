@@ -1,6 +1,17 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, LinkTo, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  LinkTo,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as formParameters } from './Form/Form.mdx';
+import { parameters as formGroupParameters } from './FormGroup/FormGroup.mdx';
+import { parameters as formGroupDescriptionParameters } from './FormGroupDescription/FormGroupDescription.mdx';
+import { parameters as formGroupLabelParameters } from './FormGroupLabel/FormGroupLabel.mdx';
+import { parameters as formRequiredTextParameters } from './FormRequiredText/FormRequiredText.mdx';
 
 export const parameters = {
   id: 'Atoms/FormElements',
@@ -25,40 +36,11 @@ We recommend <LinkTo id='Organisms/GridForm'>GridForm</LinkTo> if you have a for
 For everything else, we recommend <LinkTo id='Organisms/ConnectedForm'>ConnectedForm</LinkTo>.
 
 <TableOfContents
-  links={[
-    {
-      id: 'Atoms/FormElements/Form',
-      subtitle:
-        'A customizable `<form />` element for wrapping other form elements.',
-      title: 'Form',
-      status: 'current',
-    },
-    {
-      id: 'Atoms/FormElements/FormGroup',
-      subtitle:
-        'A label and description wrapper for a form element that provides conditional styling.',
-      title: 'FormGroup',
-      status: 'current',
-    },
-    {
-      id: 'Atoms/FormElements/FormGroupDescription',
-      subtitle:
-        'A description wrapper to format a longer description of a group of inputs.',
-      title: 'FormGroupDescription',
-      status: 'current',
-    },
-    {
-      id: 'Atoms/FormElements/FormGroupLabel',
-      subtitle: 'A label element to be tied to a group of elements.',
-      title: 'FormGroupLabel',
-      status: 'current',
-    },
-    {
-      id: 'Atoms/FormElements/FormRequiredText',
-      subtitle:
-        'A Text element that renders our required field explanation, should be included in all forms with required fields.',
-      title: 'FormRequiredText',
-      status: 'current',
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    formParameters,
+    formGroupParameters,
+    formGroupDescriptionParameters,
+    formGroupLabelParameters,
+    formRequiredTextParameters,
+  ])}
 />

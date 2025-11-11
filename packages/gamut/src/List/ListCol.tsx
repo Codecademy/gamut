@@ -8,30 +8,39 @@ export interface ListColProps
   extends PublicListProps<ComponentProps<typeof ColEl>> {}
 
 export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
-  ({ type, ...rest }, ref) => {
+  ({ type, columnHeader, 'aria-sort': ariaSort, ...rest }, ref) => {
     const { listType, scrollable, ...activeVariants } = useListContext();
     const isOl = listType === 'ol';
     const isTable = listType === 'table';
     const isHeader = type === 'header';
     const sticky = isHeader && scrollable;
     const isOrderedHeader = isOl && isHeader;
+
     const colEl =
-      isTable && !sticky && isHeader ? 'th' : !isTable || sticky ? 'div' : 'td';
+      !isTable || sticky ? 'div' : isHeader || columnHeader ? 'th' : 'td';
 
     const col = (
       <ColEl
         {...activeVariants}
         {...rest}
+        aria-sort={!sticky ? ariaSort : undefined}
         as={colEl}
+        columnHeader={columnHeader}
         delimiter={sticky && activeVariants.variant === 'table'}
+        lastChildPadding={!(type === 'expandControl')}
         ref={ref}
         sticky={sticky}
         type={isOrderedHeader ? 'orderedHeader' : type}
       />
     );
+
     if (sticky) {
       return (
-        <StickyHeaderColWrapper data-testid="header-container">
+        <StickyHeaderColWrapper
+          aria-sort={isTable ? ariaSort : undefined}
+          as={isTable ? 'th' : 'div'}
+          data-testid="header-container"
+        >
           {col}
         </StickyHeaderColWrapper>
       );

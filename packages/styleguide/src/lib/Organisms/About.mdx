@@ -1,12 +1,21 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as connectedFormParameters } from './ConnectedForm/About.mdx';
+import { parameters as gridFormParameters } from './GridForm/About.mdx';
+import { parameters as listsTablesParameters } from './Lists & Tables/About.mdx';
+import { parameters as markdownParameters } from './Markdown/Markdown.mdx';
 
 export const parameters = {
   id: 'Organisms',
   title: 'Organisms',
   subtitle:
-    'Organisms are groups of molecules joined together to form a relatively complex, distinct section of an interface',
+    'Organisms are groups of molecules joined together to form a relatively complex, distinct section of an interface.',
 };
 
 <Meta title="Organisms/About" />
@@ -18,30 +27,10 @@ export const parameters = {
 > [- Brad Frost, author of "Atomic Design"](https://bradfrost.com/blog/post/atomic-web-design/#organisms)
 
 <TableOfContents
-  links={[
-    {
-      id: 'Organisms/ConnectedForm',
-      subtitle: `ConnectedForm is a flexible way to build forms.`,
-      title: 'ConnectedForm',
-      status: 'current',
-    },
-    {
-      id: 'Organisms/GridForm',
-      subtitle: `GridForm an efficient way to build and design forms on a grid.`,
-      title: 'GridForm',
-      status: 'current',
-    },
-    {
-      id: 'Organisms/Lists&Tables/About',
-      subtitle: `Lists & Tables are both organisms that render repeated, interactive information.`,
-      title: 'Lists&Tables',
-      status: 'current',
-    },
-    {
-      id: 'Organisms/Markdown',
-      subtitle: `Markdown renderer for all your markdown needs.`,
-      title: 'Markdown',
-      status: 'updating',
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    connectedFormParameters,
+    gridFormParameters,
+    listsTablesParameters,
+    markdownParameters,
+  ])}
 />

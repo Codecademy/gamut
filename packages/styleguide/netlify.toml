@@ -1,0 +1,8 @@
+[build]
+  base = "/"
+  command = "yarn nx run styleguide:build-storybook"
+  publish = "dist/storybook/styleguide"
+
+[build.environment]
+  NODE_VERSION = "22.13.1"
+  NODE_OPTIONS = "--max_old_space_size=8196"

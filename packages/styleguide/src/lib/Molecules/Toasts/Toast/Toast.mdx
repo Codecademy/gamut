@@ -5,6 +5,7 @@ import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 import * as ToastStories from './Toast.stories';
 
 export const parameters = {
+  title: 'Toast',
   subtitle: `A toast component for asynchronous user feedback containing lower priority, decorative and celebratory user feedback.`,
   design: {
     type: 'figma',
@@ -42,9 +43,7 @@ export const parameters = {
 - Only one should appear at the screen at a time.
 - Toasts shouldn’t distract from learning. Be hesitant to use them in the Learning Environment, especially for messages that can be communicated outside of the LE.
 
-## Variants
-
-### Icons
+## Icons
 
 Icons can either be URLs or React nodes:
 
@@ -53,11 +52,13 @@ Icons can either be URLs or React nodes:
 
 <Canvas of={ToastStories.Icons} />
 
-### Content
+## Content
 
 Toasts can have other content internal to each section like links or icons.
 
-<Canvas of={ToastStories.Content} />
+<Canvas of={ToastStories.ContentIcon} />
+
+<Canvas of={ToastStories.ContentLink} />
 
 ## Playground
 

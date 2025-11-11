@@ -13,6 +13,7 @@ jest.mock('react-player', () => ({
   __esModule: true,
   default: () => <iframe title={mockTitle} />,
 }));
+
 jest.mock('@vidstack/react', () => ({
   __esModule: true,
   MediaPlayer: () => <iframe title={mockTitle} />,
@@ -101,9 +102,9 @@ describe('<Markdown />', () => {
   it('Renders custom tables in markdown', () => {
     jest.spyOn(console, 'error').mockImplementation(jest.fn());
     renderView({ text: table });
-    expect(document.querySelectorAll('div.tableWrapper table').length).toEqual(
-      1
-    );
+    expect(
+      document.querySelectorAll('div[class*="TableWrapper"]').length
+    ).toEqual(1);
   });
 
   it('Skips rendering custom tables in markdown when skipProcessing.table is true', () => {
@@ -113,9 +114,9 @@ describe('<Markdown />', () => {
       text: table,
     });
     expect(document.querySelectorAll('table').length).toEqual(1);
-    expect(document.querySelectorAll('div.tableWrapper table').length).toEqual(
-      0
-    );
+    expect(
+      document.querySelectorAll('div[class*="TableWrapper"]').length
+    ).toEqual(0);
   });
 
   it('Renders YouTube iframes using the Video component', () => {
@@ -144,12 +145,19 @@ describe('<Markdown />', () => {
 
   it('Wraps the markdown in a div by default (block)', () => {
     renderView({ text: basicMarkdown });
-    expect(document.querySelectorAll('div.spacing-tight').length).toEqual(1);
+    expect(
+      document.querySelectorAll('div[class*="spacingTight"]').length
+    ).toEqual(1);
   });
 
   it('Wraps the markdown in a span when inline', () => {
     renderView({ text: basicMarkdown, inline: true });
-    expect(document.querySelectorAll('span.spacing-tight').length).toEqual(1);
+    expect(
+      document.querySelectorAll('div[class*="spacingTight"]').length
+    ).toEqual(0);
+    expect(
+      document.querySelectorAll('span[class*="spacingTight"]').length
+    ).toEqual(1);
   });
 
   it('does not crash on a value-less attribute', () => {
@@ -406,9 +414,9 @@ var test = true;
 `,
       });
 
-      expect(document.querySelector('li')?.getAttribute('class')).toBe(
-        'checkbox-parent li'
-      );
+      expect(
+        document.querySelectorAll('li[class*="CheckboxParentLi"]').length
+      ).toEqual(1);
     });
 
     it('sets the default checked state correctly', () => {

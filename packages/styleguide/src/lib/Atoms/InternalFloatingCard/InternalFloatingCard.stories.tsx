@@ -1,4 +1,5 @@
 import { DotDense } from '@codecademy/gamut-patterns';
+import * as patterns from '@codecademy/gamut-patterns';
 import type { Meta, StoryObj } from '@storybook/react';
 
 // Importing directly from the Gamut to avoid exporting the component from the package and still use the component in this story
@@ -8,6 +9,14 @@ const meta: Meta<typeof InternalFloatingCard> = {
   component: InternalFloatingCard,
   args: {
     children: "Yakety Yak don't don't talk back!",
+    pattern: undefined,
+  },
+  argTypes: {
+    pattern: {
+      control: 'select',
+      options: Object.keys(patterns),
+      mapping: patterns,
+    },
   },
 };
 

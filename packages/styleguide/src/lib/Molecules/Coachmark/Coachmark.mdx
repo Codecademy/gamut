@@ -5,6 +5,7 @@ import { ComponentHeader } from '~styleguide/blocks';
 import * as CoachmarkStories from './Coachmark.stories';
 
 export const parameters = {
+  title: 'Coachmark',
   subtitle:
     'A Coachmark helps bring attention to a CTA by showing a popover around that element.',
   source: {
@@ -73,7 +74,7 @@ const ExampleCoachmark = () => {
 
 A `Coachmark` can be set to show or hide based on the `shouldShow` prop. This is useful for controlling when the popover appears. For example, you might want to show the popover only in special circumstances, such as when a user first visits a page or not show again after they click a specific button.
 
-<Canvas of={CoachmarkStories.ShouldShow} />
+<Canvas of={CoachmarkStories.Default} />
 
 ### `delay`
 

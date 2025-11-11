@@ -1,20 +1,59 @@
 import {
+  ConnectedForm,
   ConnectedFormGroup,
+  ConnectedFormGroupProps,
   ConnectedRadioGroupInput,
   useConnectedForm,
 } from '@codecademy/gamut';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
+import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
-const meta: Meta<typeof ConnectedFormGroup> = {
+import { infotipNestedArgTypes } from '~styleguide/argTypes';
+
+const meta: TypeWithDeepControls<Meta<typeof ConnectedFormGroup>> = {
   component: ConnectedFormGroup,
-  args: {},
+  args: {
+    field: {
+      component: ConnectedRadioGroupInput,
+      options: [
+        { label: 'one', value: 'one' },
+        { label: 'two', value: 'two' },
+        { label: 'zero', value: 'zero' },
+      ],
+    } as ConnectedFormGroupProps<typeof ConnectedRadioGroupInput>['field'],
+    label: 'i am a label',
+    name: 'radioGroupExample',
+  },
+  argTypes: {
+    loading: {
+      control: 'boolean',
+    },
+    disabled: {
+      control: 'boolean',
+    },
+    ...infotipNestedArgTypes,
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof ConnectedFormGroup>;
 
-const FormGroupStates = () => {
+export const Default: Story = {
+  render: (args) => (
+    <ConnectedForm
+      mt={12}
+      resetOnSubmit
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+      }}
+    >
+      <ConnectedFormGroup {...args} />
+    </ConnectedForm>
+  ),
+};
+
+export const States = () => {
   const { ConnectedFormGroup, ConnectedForm, connectedFormProps } =
     useConnectedForm({
       defaultValues: {
@@ -79,8 +118,4 @@ const FormGroupStates = () => {
       />
     </ConnectedForm>
   );
-};
-
-export const Default: Story = {
-  render: () => <FormGroupStates />,
 };

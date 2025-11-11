@@ -19,5 +19,5 @@ to be used as needed both in Gamut and across the Codecademy app.
 
 The `utils.scss` and `core.scss` just import the index files from their respective folders, to make the syntax to import them from elsewhere easier, e.g.:
 
-`@import "~@codecademy/gamut-styles/utils";`
-`@import "~@codecademy/gamut-styles/core";`
+`@use "~@codecademy/gamut-styles/utils";`
+`@use "~@codecademy/gamut-styles/core";`

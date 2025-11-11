@@ -34,8 +34,8 @@ export type OverlayProps = {
   /** Whether the overlay allows scroll */
   allowScroll?: boolean;
   /**
-   * TEMPORARY: a stopgap solution to avoid zIndex conflicts -
-   * will be reworked with: GM-624
+   * z-index for the Overlay. Defaults to 3 to appear above common UI elements
+   * like headers . Can be overridden when needed for custom stacking orders.
    */
   zIndex?: number;
 };
@@ -61,7 +61,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
   allowScroll = false,
-  zIndex = 1,
+  zIndex = 3,
 }) => {
   const handleOutsideClick = useCallback(() => {
     if (clickOutsideCloses) {
@@ -81,6 +81,7 @@ export const Overlay: React.FC<OverlayProps> = ({
     <OverlayContainer
       center
       className={className}
+      data-floating="overlay"
       data-testid="overlay-content-container"
       inline={inline}
       inset={0}

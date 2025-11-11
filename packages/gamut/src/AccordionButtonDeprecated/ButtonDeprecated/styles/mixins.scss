@@ -1,10 +1,14 @@
+@use "sass:color";
+@use "~@codecademy/gamut-styles/utils" as *;
+@use "variables";
+
 // Button variants
 //
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
 @mixin button-variant($color, $background, $border: transparent) {
-  $active-background: mix($color-black, $background, $btn-state-modifier);
+  $active-background: color.mix($color-black, $background);
 
   @if $border == transparent {
     $active-border: transparent;
@@ -16,7 +20,7 @@
   border-color: $border;
 
   &:hover {
-    box-shadow: 0 2px 4px $btn-box-shadow-color;
+    box-shadow: 0 2px 4px variables.$btn-box-shadow-color;
   }
 
   &:focus-visible {
@@ -29,7 +33,7 @@
     color: $color;
 
     &:active {
-      box-shadow: 0 2px 4px $btn-box-shadow-color;
+      box-shadow: 0 2px 4px variables.$btn-box-shadow-color;
     }
   }
 
@@ -38,45 +42,11 @@
   }
 
   &:disabled {
-    background-color: $btn-disabled-color;
+    background-color: variables.$btn-disabled-color;
 
     &:hover {
       box-shadow: none;
     }
-  }
-}
-
-@mixin button-outline-variant($color) {
-  $active-contrast-base: text-contrast-color($color);
-  $active-background: mix($active-contrast-base, $color, $btn-state-modifier);
-  color: $color;
-  background-color: transparent;
-  border: 1px solid $color;
-
-  &:focus-visible,
-  &:hover {
-    background-color: $color;
-    box-shadow: none;
-    color: $active-contrast-base;
-
-    &:active {
-      background-color: $active-background;
-      box-shadow: none;
-    }
-  }
-
-  &:hover {
-    box-shadow: 0 2px 4px 0 $btn-box-shadow-color;
-  }
-
-  &:focus-visible {
-    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color;
-  }
-
-  &:disabled {
-    border-color: $btn-disabled-color;
-    color: $btn-disabled-color;
-    background-color: transparent;
   }
 }
 
@@ -94,7 +64,7 @@
   }
 
   &:disabled {
-    color: $btn-disabled-color;
+    color: variables.$btn-disabled-color;
     background-color: transparent;
   }
 }
@@ -121,9 +91,6 @@
 @mixin button-variants($name, $color, $background, $border: transparent) {
   .btn-#{$name} {
     @include button-variant($color, $background, $border);
-    &.outline {
-      @include button-outline-variant($background);
-    }
     &.flat {
       @include button-flat-variant($background);
     }
@@ -136,31 +103,7 @@
     text-decoration: underline;
 
     &:disabled {
-      color: $btn-disabled-color;
+      color: variables.$btn-disabled-color;
     }
   }
-}
-
-// Shamelessly copied from https://codepen.io/davidhalford/pen/wlDxL
-// Adds text color to an element based on what has more contrast with its background
-
-@function color-brightness($color) {
-  @return round(
-    calc(
-      ((red($color) * 299) + (green($color) * 587) + (blue($color) * 114)) /
-        1000
-    )
-  );
-}
-
-$brightness-threshold: calc(color-brightness($color-white) / 2);
-
-@function text-contrast-color($background) {
-  $brightness: color-brightness($background);
-
-  @if abs($brightness) < $brightness-threshold {
-    @return #fff;
-  }
-
-  @return #000;
 }

@@ -6,12 +6,12 @@ import { Box, FlexBox } from '../../Box';
 import { Selectors } from '../../ButtonBase/ButtonBase';
 import { Popover } from '../../Popover';
 import {
-  centerWidths,
   inlineToolTipBodyAlignments,
   narrowWidth,
   toolTipBodyCss,
+  tooltipCenteredPadding,
   toolTipWidthRestrictions,
-} from './styles';
+} from './styles/styles';
 
 const tipWrapperStyles = {
   position: 'relative',
@@ -21,10 +21,12 @@ const tipWrapperStyles = {
 
 const floatingTipTextStates = states({
   isHoverType: { alignItems: 'flexStart' },
-  narrow: { width: narrowWidth },
-  centered: {
-    ...centerWidths,
-  },
+  /*
+   * Subtract 2x padding to account for the padding within
+   * the tooltip since this is the inner text wrapper
+   */
+  narrow: { width: narrowWidth - tooltipCenteredPadding * 2 },
+  horizNarrow: { maxWidth: narrowWidth - tooltipCenteredPadding * 2 },
 });
 
 const inlineTipStates = states({
@@ -34,7 +36,10 @@ const inlineTipStates = states({
 export const FloatingTipTextWrapper = styled(FlexBox)<
   StyleProps<typeof floatingTipTextStates>
 >(
-  css({ flexDirection: 'column', overflowWrap: 'break-word' }),
+  css({
+    flexDirection: 'column',
+    overflowWrap: 'break-word',
+  }),
   floatingTipTextStates
 );
 
@@ -86,9 +91,14 @@ export const TargetContainer = styled(Box)(
   })
 );
 
+const inlineTipBodyStates = states({
+  horizNarrow: { maxWidth: narrowWidth },
+});
+
 export const TipBody = styled(Box)<
-  StyleProps<typeof inlineToolTipBodyAlignments>
->(css({ ...toolTipBodyCss }), inlineToolTipBodyAlignments);
+  StyleProps<typeof inlineToolTipBodyAlignments> &
+    StyleProps<typeof inlineTipBodyStates>
+>(css({ ...toolTipBodyCss }), inlineToolTipBodyAlignments, inlineTipBodyStates);
 
 export const FloatingTipBody = styled(Popover)<
   StyleProps<typeof toolTipWidthRestrictions>
