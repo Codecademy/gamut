@@ -29,7 +29,7 @@ const preview: Preview = {
             'Contributing',
             'FAQs',
             'Stories',
-            'Style Guide',
+            'Gamut Writing Guide',
           ],
           'Foundations',
           'Layouts',

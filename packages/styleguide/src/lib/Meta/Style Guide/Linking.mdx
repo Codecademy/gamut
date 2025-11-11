@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader } from '~styleguide/blocks';
+import { AboutHeader, Callout } from '~styleguide/blocks';
 
 export const parameters = {
   id: 'Linking',
@@ -9,9 +9,11 @@ export const parameters = {
   status: 'static',
 };
 
-<Meta title="Meta/Style Guide/Linking" />
+<Meta title="Meta/Gamut Writing Guide/Linking" />
 
 <AboutHeader {...parameters} />
+
+Use links to help users navigate between related components and resources. This guide covers linking within Storybook, to external sites, and writing clear link text.
 
 ## Internal Links
 
@@ -25,26 +27,35 @@ import { LinkTo } from '~styleguide/blocks';
 
 ### Guidelines:
 
-- Use descriptive link text: "See the Stories page" not "Click here"
-- Link text should make sense out of context
+- Link text describes the destination, not the action: "See the [Stories page](#)" not "[See the Stories page](#)"
+- Use descriptive link text that makes sense out of context: "[Stories page](#)" not "[Click here](#)"
 - Link component names to their documentation
-- Check to see that the link works accordingly
+- Verify that the link works correctly
 
 ## External Links
 
+### Markdown Links:
+
+You can use Markdown for external links, the examples below will open in a new tab:
+
+```markdown
+[GitHub Repository](https://github.com/Codecademy/gamut)
+[React Documentation](https://react.dev)
+```
+
 ### Anchor Component:
 
+If you need more control over the link, you can use the Anchor component,the example below will open in the current tab:
+
 ```tsx
-<Anchor target="_" href="https://github.com/Codecademy/gamut">
-  Gamut Repository
-</Anchor>
+<Anchor href="https://github.com/Codecademy/gamut">Gamut Repository</Anchor>
 ```
+
+<Callout text='If you need external links to open in new tabs, use `target="_blank" rel="noreferrer"` together for security. However, avoid forcing this behavior unless necessary—users can choose to open links in new tabs themselves.' />
 
 ### URL Guidelines:
 
 - Use full URLs for external resources
-- Open external links in new tabs: target="\_"
-- Prefer HTTPS over HTTP
 - Link to official documentation when referencing tools
 
 ## MDX file parameters
