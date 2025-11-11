@@ -101,21 +101,24 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   useIsomorphicLayoutEffect(() => {
     if (!closeOnViewportExit) return;
 
-    if (
-      containers?.viewport &&
-      isOutOfView(containers?.viewport, targetRef?.current as HTMLElement) &&
-      !hasRequestedCloseRef.current
-    ) {
+    const rect = targetRect || containers?.viewport;
+    if (!rect) return;
+
+    const isOut = isOutOfView(rect, targetRef?.current as HTMLElement);
+
+    if (isOut && !hasRequestedCloseRef.current) {
       hasRequestedCloseRef.current = true;
       onRequestClose?.();
-    } else if (
-      containers?.viewport &&
-      !isOutOfView(containers?.viewport, targetRef?.current as HTMLElement)
-    ) {
+    } else if (!isOut) {
       hasRequestedCloseRef.current = false;
     }
-  }, [containers?.viewport, onRequestClose, targetRef, closeOnViewportExit]);
-
+  }, [
+    targetRect,
+    containers?.viewport,
+    onRequestClose,
+    targetRef,
+    closeOnViewportExit,
+  ]);
   /**
    * Allows targetRef to be or contain a button that toggles the popover open and closed.
    * Without this check it would toggle closed then back open immediately.

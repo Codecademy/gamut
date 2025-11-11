@@ -18,9 +18,10 @@ export const findResizingParent = ({
   return null;
 };
 
-/*
- * Finds all extra scrolling parents of an element.
- * This is useful for detecting scroll events on parents that may not be the direct parent, which should be managed by react-use's useWindowScroll.
+/**
+ * Finds all scrolling parents of an element.
+ * This is useful for detecting scroll events on parents that may not be the direct parent.
+ * Window scroll is handled separately by react-use's useWindowScroll.
  */
 export const findAllAdditionalScrollingParents = (
   element: HTMLElement
@@ -30,11 +31,15 @@ export const findAllAdditionalScrollingParents = (
 
   while (currentElement && currentElement !== document.body) {
     const { overflow, overflowY, overflowX } = getComputedStyle(currentElement);
-    if (
-      [overflow, overflowY, overflowX].some((val) =>
-        ['scroll', 'auto'].includes(val)
-      )
-    ) {
+    const isScrollable = [overflow, overflowY, overflowX].some((val) =>
+      ['scroll', 'auto'].includes(val)
+    );
+
+    const hasScrollableContent =
+      currentElement.scrollHeight > currentElement.clientHeight ||
+      currentElement.scrollWidth > currentElement.clientWidth;
+
+    if (isScrollable || hasScrollableContent) {
       scrollingParents.push(currentElement);
     }
     currentElement = currentElement.parentElement;
@@ -64,16 +69,28 @@ export const isOutOfView = (
   const scrollingParents = findAllAdditionalScrollingParents(target);
 
   for (const parent of scrollingParents) {
+    if (!target || !parent.contains(target)) {
+      continue;
+    }
+
     const parentRect = parent.getBoundingClientRect();
 
-    const intersects =
-      rect.top < parentRect.bottom &&
-      rect.bottom > parentRect.top &&
-      rect.left < parentRect.right &&
-      rect.right > parentRect.left;
+    const visibleTop = parentRect.top;
+    const visibleBottom = parentRect.top + parent.clientHeight;
+    const visibleLeft = parentRect.left;
+    const visibleRight = parentRect.left + parent.clientWidth;
 
-    // If element doesn't intersect with a scrollable parent's visible area, it's out of view
-    if (!intersects) {
+    const isCompletelyAbove = rect.bottom <= visibleTop;
+    const isCompletelyBelow = rect.top >= visibleBottom;
+    const isCompletelyLeft = rect.right <= visibleLeft;
+    const isCompletelyRight = rect.left >= visibleRight;
+
+    if (
+      isCompletelyAbove ||
+      isCompletelyBelow ||
+      isCompletelyLeft ||
+      isCompletelyRight
+    ) {
       return true;
     }
   }
