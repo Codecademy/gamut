@@ -98,23 +98,21 @@ export const isOutOfView = (
     return isRectOutOfBounds(rect, windowRect);
   }
 
-  // Prioritize checking scrollable parents first (more specific to element context)
-  // This handles iframe contexts where the window viewport might not match the actual scrollable container
   const scrollingParents = findAllAdditionalScrollingParents(target);
 
-  // Also check if document.documentElement is scrollable (common in iframe contexts)
+  /**
+  /* This should only be scrollable if the popover target is in an iframe
+  */
   const { documentElement } = document;
   const isDocumentScrollable =
     documentElement.scrollHeight > documentElement.clientHeight ||
     documentElement.scrollWidth > documentElement.clientWidth;
 
-  // Check all scrollable parents (including document.documentElement if scrollable)
   const allScrollableContainers = isDocumentScrollable
     ? [documentElement, ...scrollingParents]
     : scrollingParents;
 
   for (const parent of allScrollableContainers) {
-    // Early exit if parent doesn't contain target (performance optimization)
     if (!parent.contains(target)) {
       continue;
     }
@@ -126,7 +124,6 @@ export const isOutOfView = (
   }
 
   // If no scrollable parents found or element is visible in all parents, check window viewport
-  // This handles cases where the element is not in a scrollable container
   const { height, width } = getWindowDimensions();
   const windowRect = {
     top: 0,
