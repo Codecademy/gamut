@@ -17,6 +17,7 @@ export const VibeBuilderPromotion: React.FC<IllustrationProps> = ({
     width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
+    <title>Vibe Builder Promotion</title>
     <mask
       height="84"
       id="b"
