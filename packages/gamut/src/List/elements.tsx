@@ -74,6 +74,12 @@ const rowStates = states({
     display: 'flex',
     flexDirection: { _: 'column', c_base: 'row', c_sm: 'column' },
   },
+  /**
+   * Overrides the background of the element to transparent.
+   */
+  transparentBg: {
+    bg: 'transparent',
+  },
 });
 
 const interactiveState = states({
@@ -114,11 +120,10 @@ const spacingVariants = variant({
 
 const rowVariants = variant({
   prop: 'variant',
-  base: {
-    bg: 'background',
-  },
+  base: {},
   variants: {
     default: {
+      bg: 'background',
       border: 1,
       borderTop: 'none',
       '&:first-of-type': {
@@ -132,10 +137,12 @@ const rowVariants = variant({
       },
     },
     card: {
+      bg: 'background',
       border: 1,
       borderRadius: 'sm',
     },
     block: {
+      bg: 'background',
       border: 'none',
       borderRadius: 'sm',
     },
@@ -176,7 +183,6 @@ export interface RowProps
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
     py: { _: 0, c_base: 8, c_sm: 0 },
-    bg: 'inherit',
     width: 1,
   }),
   variance.compose(grid, flex),

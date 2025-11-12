@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [67.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.3.1...@codecademy/gamut@67.3.2) (2025-11-10)
+
+### Bug Fixes
+
+- **PopoverContainer, Overlay:** out of view close fix + increase default zIndex for Overlay ([957c50e](https://github.com/Codecademy/gamut/commit/957c50edbb5e9da9f0ae904f0613de44c7cf5d3e))
+
+### [67.3.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.3.0...@codecademy/gamut@67.3.1) (2025-11-07)
+
+### Bug Fixes
+
+- **List, DataList, DataTable:** fix background colors + non-interactive table header spacing ([ceb1162](https://github.com/Codecademy/gamut/commit/ceb116292ee92ef716c59a504b2a45c348877602))
+
+## [67.3.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.2.1...@codecademy/gamut@67.3.0) (2025-11-04)
+
+### Features
+
+- **InfoTip:** Add global escape close ([dcffe03](https://github.com/Codecademy/gamut/commit/dcffe0325e42b50b199db7d8015028e44adcc113))
+
+### [67.2.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.2.0...@codecademy/gamut@67.2.1) (2025-11-03)
+
+### Bug Fixes
+
+- ListRow zebra striping ([85e2bdc](https://github.com/Codecademy/gamut/commit/85e2bdc3a263454f95679dd1fe4a8b49468b7576))
+
+## [67.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.5...@codecademy/gamut@67.2.0) (2025-11-03)
+
+### Features
+
+- **Tip:** L/R center narrow maxWidth ([e9b8543](https://github.com/Codecademy/gamut/commit/e9b8543c01d4a07b2926cbb473f1bcfbad8b89cc))
+
+### [67.1.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.4...@codecademy/gamut@67.1.5) (2025-10-29)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [67.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.3...@codecademy/gamut@67.1.4) (2025-10-28)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [67.1.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.2...@codecademy/gamut@67.1.3) (2025-10-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [67.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.1...@codecademy/gamut@67.1.2) (2025-10-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [67.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.1.0...@codecademy/gamut@67.1.1) (2025-10-22)
+
+### Bug Fixes
+
+- revert Markdown changes ([9f08997](https://github.com/Codecademy/gamut/commit/9f08997ed8766bc97556013de408e33fb1548b42))
+
+## [67.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.0.3...@codecademy/gamut@67.1.0) (2025-10-22)
+
+### Features
+
+- **GridForm, ConnectedForm:** Add nested checkboxes ([1ea044e](https://github.com/Codecademy/gamut/commit/1ea044e94cf587c83f8f01ab4aadc2bf0303b36a))
+
+### [67.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.0.2...@codecademy/gamut@67.0.3) (2025-10-21)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ### [67.0.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.0.1...@codecademy/gamut@67.0.2) (2025-10-15)
 
 ### Bug Fixes
