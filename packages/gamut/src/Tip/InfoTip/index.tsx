@@ -1,13 +1,6 @@
-import {
-  Children,
-  isValidElement,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
+import { extractTextContent } from '../../utils/react';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
@@ -25,30 +18,6 @@ export type InfoTipProps = TipBaseProps & {
    * Called when the info tip is clicked - intended to be used for programmatic focus in the case of links within the tip.
    */
   onClick?: (arg0: { isTipHidden: boolean }) => void;
-};
-
-// Helper function to recursively extract text content from React elements
-// Converts everything to plain text for screenreader announcements
-const extractTextContent = (children: React.ReactNode): string => {
-  if (typeof children === 'string' || typeof children === 'number') {
-    return String(children);
-  }
-
-  return Children.toArray(children)
-    .map((child) => {
-      if (typeof child === 'string' || typeof child === 'number') {
-        return String(child);
-      }
-      if (typeof child === 'boolean' || child == null) {
-        return '';
-      }
-      if (isValidElement(child)) {
-        return extractTextContent(child.props.children);
-      }
-      return '';
-    })
-    .filter(Boolean)
-    .join(' ');
 };
 
 export const InfoTip: React.FC<InfoTipProps> = ({
