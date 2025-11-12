@@ -44,21 +44,21 @@ export const BarChart: React.FC<BarChartProps> = ({
 
   return (
     <BarChartProvider value={contextValue}>
-      <Box width="100%" position="relative">
+      <Box position="relative" width="100%">
         <ScaleChartHeader
-          minRange={minRange}
           maxRange={maxRange}
-          xScale={xScale}
+          minRange={minRange}
           unit={unit}
+          xScale={xScale}
         />
         <Box
-          as="ul"
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
-          position="relative"
+          as="ul"
+          listStyleType="none"
           m={0}
           p={0}
-          listStyleType="none"
+          position="relative"
         >
           <GridLines />
           {processedBarValues.map((barValue) => (

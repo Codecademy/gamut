@@ -1,9 +1,17 @@
-import { css, styledOptions } from '@codecademy/gamut-styles';
+import { styledOptions, system } from '@codecademy/gamut-styles';
+import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { ComponentProps, forwardRef, MouseEvent } from 'react';
 import * as React from 'react';
 
-const resetStyles = css({
+const resetProps = variance.compose(
+  system.space,
+  system.layout,
+  system.typography,
+  system.color
+);
+
+const resetStyles = {
   appearance: 'none',
   background: 'none',
   border: 'none',
@@ -21,11 +29,14 @@ const resetStyles = css({
   '&:focus': {
     outline: 'none',
   },
-});
+} as const;
 
-const ResetDiv = styled('div', styledOptions<'div'>())(resetStyles);
-const ResetButton = styled('button', styledOptions<'button'>())(resetStyles);
-const ResetAnchor = styled('a', styledOptions<'a'>())(resetStyles);
+const ResetDiv = styled('div', styledOptions<'div'>())(resetStyles, resetProps);
+const ResetButton = styled(
+  'button',
+  styledOptions<'button'>()
+)(resetStyles, resetProps);
+const ResetAnchor = styled('a', styledOptions<'a'>())(resetStyles, resetProps);
 
 type DivProps = ComponentProps<typeof ResetDiv>;
 type ButtonProps = ComponentProps<typeof ResetButton>;
@@ -76,4 +87,3 @@ export const RowBase = forwardRef<
 });
 
 RowBase.displayName = 'RowBase';
-

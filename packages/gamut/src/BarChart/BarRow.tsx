@@ -1,83 +1,17 @@
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import * as React from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { Text } from '../Typography';
 import { useBarChartContext } from './BarChartContext';
+import {
+  BarContainer,
+  BarElement,
+  minBarWidth,
+  RowWrapper,
+} from './elements';
 import { RowBase } from './RowBase';
 import { BarProps } from './types';
 import { formatNumberUS, getPercentagesFilled, getValuesSummary } from './utils';
-
-// Minimum bar width in percentage to ensure visibility
-const minBarWidth = 8;
-
-const StyledListItem = styled('li')(
-  css({
-    listStyle: 'none',
-    margin: 0,
-    padding: 0,
-  })
-);
-
-const RowContent = styled(Box)(
-  css({
-    display: 'flex',
-    alignItems: 'center',
-    gap: 16,
-    py: 12,
-    px: 16,
-    borderRadius: 'sm',
-    transition: 'background-color 0.2s',
-    '&:hover': {
-      bg: 'background-hover',
-    },
-    '&:focus-visible': {
-      outline: `2px solid`,
-      outlineColor: 'primary',
-      outlineOffset: 2,
-    },
-  })
-);
-
-const BarContainer = styled(Box)(
-  css({
-    position: 'relative',
-    height: { _: '8px', sm: '18px' },
-    borderRadius: { _: 'md', sm: 'xl' },
-    overflow: 'hidden',
-    flexGrow: 1,
-    minWidth: 0,
-  })
-);
-
-const BackgroundBar = styled(Box)(
-  css({
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    height: '100%',
-    borderRadius: 'inherit',
-    border: 1,
-    borderColor: 'border-primary',
-    transition: 'width 0.5s ease-out',
-    transitionDelay: '0.1s',
-  })
-);
-
-const ForegroundBar = styled(Box)(
-  css({
-    position: 'absolute',
-    top: 1,
-    left: 0,
-    height: 'calc(100% - 2px)',
-    borderRadius: 'inherit',
-    transition: 'width 0.5s ease-out',
-    borderRightWidth: 1,
-    borderRightStyle: 'solid',
-    borderRightColor: 'border-primary',
-  })
-);
 
 export const BarRow: React.FC<BarProps> = ({
   yLabel,
@@ -118,7 +52,7 @@ export const BarRow: React.FC<BarProps> = ({
   const backgroundColor = styleConfig.backgroundBarColor ?? 'primary';
 
   return (
-    <StyledListItem>
+    <Box as="li" listStyleType="none" m={0} p={0}>
       <RowBase
         onClick={onClick}
         href={href}
@@ -126,7 +60,15 @@ export const BarRow: React.FC<BarProps> = ({
         role={hasInteraction ? undefined : 'listitem'}
         tabIndex={hasInteraction ? 0 : undefined}
       >
-        <RowContent>
+        <RowWrapper
+          display="flex"
+          alignItems="center"
+          gap={16}
+          py={12}
+          px={16}
+          borderRadius="sm"
+          interactive={hasInteraction}
+        >
           {Icon && (
             <FlexBox alignItems="center" flexShrink={0}>
               <Icon size={24} />
@@ -152,20 +94,21 @@ export const BarRow: React.FC<BarProps> = ({
             </Text>
           </FlexBox>
           <BarContainer>
-            <BackgroundBar
+            <BarElement
+              barType="background"
               bg={backgroundColor}
               width={animate ? backgroundWidth : backgroundWidth}
             />
             {endingValue !== undefined && (
-              <ForegroundBar
+              <BarElement
+                barType="foreground"
                 bg={foregroundColor}
                 width={animate ? foregroundWidth : foregroundWidth}
               />
             )}
           </BarContainer>
-        </RowContent>
+        </RowWrapper>
       </RowBase>
-    </StyledListItem>
+    </Box>
   );
 };
-
