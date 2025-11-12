@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { findAllAdditionalScrollingParents, findResizingParent } from './utils';
 
@@ -62,4 +62,21 @@ export const useResizingParentEffect = (
     ro.observe(resizingParent);
     return () => ro.unobserve(resizingParent);
   }, [targetRef, setTargetRect]);
+};
+
+/**
+ * Memoizes the list of scrolling parent elements for a target element.
+ * This avoids expensive DOM traversals and getComputedStyle calls on every render.
+ * Returns an empty array if the target element is not available.
+ */
+export const useScrollingParents = (
+  targetRef: React.RefObject<HTMLElement | null>
+): HTMLElement[] => {
+  return useMemo(() => {
+    if (!targetRef.current) {
+      return [];
+    }
+    return findAllAdditionalScrollingParents(targetRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [targetRef.current]);
 };

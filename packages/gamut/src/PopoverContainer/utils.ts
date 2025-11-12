@@ -81,13 +81,16 @@ export const findAllAdditionalScrollingParents = (
  * and all scrollable parent containers. Returns true if the element is completely
  * outside the visible area of any containing scrollable parent or the window viewport.
  * Used by closeOnViewportExit to detect when the target element has scrolled out of view.
+ * @param rect - The DOMRect of the target element
+ * @param target - The target element (optional)
+ * @param cachedScrollingParents - Pre-computed list of scrolling parents to avoid expensive DOM traversals (optional)
  */
 export const isOutOfView = (
   rect: DOMRect,
-  target?: HTMLElement | null
+  target?: HTMLElement | null,
+  cachedScrollingParents?: HTMLElement[]
 ): boolean => {
   if (!target) {
-    // If no target, check window viewport only
     const { height, width } = getWindowDimensions();
     const windowRect = {
       top: 0,
@@ -98,11 +101,9 @@ export const isOutOfView = (
     return isRectOutOfBounds(rect, windowRect);
   }
 
-  const scrollingParents = findAllAdditionalScrollingParents(target);
+  const scrollingParents =
+    cachedScrollingParents ?? findAllAdditionalScrollingParents(target);
 
-  /**
-  /* This should only be scrollable if the popover target is in an iframe
-  */
   const { documentElement } = document;
   const isDocumentScrollable =
     documentElement.scrollHeight > documentElement.clientHeight ||
@@ -123,7 +124,6 @@ export const isOutOfView = (
     }
   }
 
-  // If no scrollable parents found or element is visible in all parents, check window viewport
   const { height, width } = getWindowDimensions();
   const windowRect = {
     top: 0,
