@@ -4,11 +4,12 @@ import userEvent from '@testing-library/user-event';
 
 import { InfoTip } from '../InfoTip';
 import {
-  clickButton,
   createLinkSetup,
   createMultiLinkSetup,
-  waitForLinkFocus,
-  waitForPopoverLink,
+  openTipAndWaitForLink,
+  testEscapeKeyCloseTip,
+  testFocusWrap,
+  testTabbingBetweenLinks,
 } from './helpers';
 
 const info = 'I am information';
@@ -71,26 +72,12 @@ describe('InfoTip', () => {
       );
       const { view } = renderView({ info, onClick });
 
-      await clickButton(view);
-
-      await waitFor(() => {
-        expect(view.getByText(firstLinkText)).toBeVisible();
-      });
-
-      const firstLink = view.getByRole('link', { name: firstLinkText });
-      await waitFor(() => {
-        expect(firstLink).toHaveFocus();
-      });
-
-      await act(async () => {
-        await userEvent.keyboard('{Tab}');
-      });
-
-      const secondLink = view.getByRole('link', { name: secondLinkText });
-      await waitFor(() => {
-        expect(secondLink).toHaveFocus();
-      });
-      expect(firstLink).not.toHaveFocus();
+      await testTabbingBetweenLinks(
+        view,
+        firstLinkText,
+        secondLinkText,
+        'inline'
+      );
     });
 
     it('allows focus to move to links within the tip', async () => {
@@ -98,13 +85,8 @@ describe('InfoTip', () => {
       const { info, onClick } = createLinkSetup(linkText);
       const { view } = renderView({ info, onClick });
 
-      await clickButton(view);
+      const link = await openTipAndWaitForLink(view, linkText);
 
-      await waitFor(() => {
-        expect(view.getByText(linkText)).toBeVisible();
-      });
-
-      const link = view.getByRole('link', { name: linkText });
       await waitFor(() => {
         expect(link).toHaveFocus();
       });
@@ -132,20 +114,7 @@ describe('InfoTip', () => {
         placement: 'floating',
       });
 
-      const button = await clickButton(view);
-
-      expect(view.queryAllByText(info).length).toBe(2);
-
-      await act(async () => {
-        await userEvent.keyboard('{Escape}');
-      });
-
-      await waitFor(() => {
-        expect(view.queryByText(info)).toBeNull();
-      });
-      await waitFor(() => {
-        expect(button).toHaveFocus();
-      });
+      await testEscapeKeyCloseTip(view, info, true);
     });
 
     it('closes the tip with links when Escape key is pressed and returns focus to the button', async () => {
@@ -160,23 +129,7 @@ describe('InfoTip', () => {
         onClick,
       });
 
-      const button = await clickButton(view);
-
-      await waitFor(() => {
-        const links = view.getAllByRole('link', { name: linkText });
-        expect(links.length).toBe(1);
-      });
-
-      await act(async () => {
-        await userEvent.keyboard('{Escape}');
-      });
-
-      await waitFor(() => {
-        expect(view.queryByText(linkText)).toBeNull();
-      });
-      await waitFor(() => {
-        expect(button).toHaveFocus();
-      });
+      await testEscapeKeyCloseTip(view, linkText, true);
     });
 
     it('wraps focus to button when tabbing forward from last focusable element', async () => {
@@ -188,18 +141,7 @@ describe('InfoTip', () => {
         onClick,
       });
 
-      const button = await clickButton(view);
-
-      const link = await waitForPopoverLink(view, linkText);
-      await waitForLinkFocus(linkRef, link);
-
-      await act(async () => {
-        await userEvent.keyboard('{Tab}');
-      });
-
-      await waitFor(() => {
-        expect(button).toHaveFocus();
-      });
+      await testFocusWrap(view, linkText, linkRef, 'forward');
     });
 
     it('wraps focus to button when shift+tabbing backward from first focusable element', async () => {
@@ -211,24 +153,13 @@ describe('InfoTip', () => {
         onClick,
       });
 
-      const button = await clickButton(view);
-
-      const link = await waitForPopoverLink(view, linkText);
-      await waitForLinkFocus(linkRef, link);
-
-      await act(async () => {
-        await userEvent.keyboard('{Shift>}{Tab}{/Shift}');
-      });
-
-      await waitFor(() => {
-        expect(button).toHaveFocus();
-      });
+      await testFocusWrap(view, linkText, linkRef, 'backward');
     });
 
     it('allows normal tabbing between focusable elements within popover', async () => {
       const firstLinkText = 'first link';
       const secondLinkText = 'second link';
-      const { firstLinkRef, info, onClick } = createMultiLinkSetup(
+      const { info, onClick } = createMultiLinkSetup(
         firstLinkText,
         secondLinkText
       );
@@ -238,28 +169,12 @@ describe('InfoTip', () => {
         onClick,
       });
 
-      await clickButton(view);
-
-      const firstLink = await waitForPopoverLink(view, firstLinkText);
-
-      await waitFor(
-        () => {
-          expect(firstLinkRef.current).toBeTruthy();
-          expect(firstLinkRef.current).toBe(firstLink);
-          expect(firstLink).toHaveFocus();
-        },
-        { timeout: 2000 }
+      await testTabbingBetweenLinks(
+        view,
+        firstLinkText,
+        secondLinkText,
+        'floating'
       );
-
-      await act(async () => {
-        await userEvent.keyboard('{Tab}');
-      });
-
-      const secondLink = view.getByRole('link', { name: secondLinkText });
-      await waitFor(() => {
-        expect(secondLink).toHaveFocus();
-      });
-      expect(view.getByLabelText('Show information')).not.toHaveFocus();
     });
   });
 });

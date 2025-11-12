@@ -90,3 +90,94 @@ export const waitForLinkFocus = async (
     { timeout: 2000 }
   );
 };
+
+export const openTipAndWaitForLink = async (
+  view: ReturnType<ReturnType<typeof setupRtl<typeof InfoTip>>>['view'],
+  linkText: string
+) => {
+  await clickButton(view);
+  await waitFor(() => {
+    expect(view.getByText(linkText)).toBeVisible();
+  });
+  return view.getByRole('link', { name: linkText });
+};
+
+export const testEscapeKeyCloseTip = async (
+  view: ReturnType<ReturnType<typeof setupRtl<typeof InfoTip>>>['view'],
+  contentToCheck: string,
+  shouldReturnFocus = false
+) => {
+  const button = await clickButton(view);
+
+  await waitFor(() => {
+    const elements = view.getAllByText(contentToCheck);
+    expect(elements.length).toBeGreaterThan(0);
+  });
+
+  await act(async () => {
+    await userEvent.keyboard('{Escape}');
+  });
+
+  await waitFor(() => {
+    expect(view.queryByText(contentToCheck)).toBeNull();
+  });
+
+  if (shouldReturnFocus) {
+    await waitFor(() => {
+      expect(button).toHaveFocus();
+    });
+  }
+};
+
+export const testFocusWrap = async (
+  view: ReturnType<ReturnType<typeof setupRtl<typeof InfoTip>>>['view'],
+  linkText: string,
+  linkRef: RefObject<HTMLAnchorElement>,
+  direction: 'forward' | 'backward'
+) => {
+  const button = await clickButton(view);
+  const link = await waitForPopoverLink(view, linkText);
+  await waitForLinkFocus(linkRef, link);
+
+  await act(async () => {
+    const key = direction === 'forward' ? '{Tab}' : '{Shift>}{Tab}{/Shift}';
+    await userEvent.keyboard(key);
+  });
+
+  await waitFor(() => {
+    expect(button).toHaveFocus();
+  });
+};
+
+export const testTabbingBetweenLinks = async (
+  view: ReturnType<ReturnType<typeof setupRtl<typeof InfoTip>>>['view'],
+  firstLinkText: string,
+  secondLinkText: string,
+  placement: 'inline' | 'floating'
+) => {
+  await clickButton(view);
+
+  await waitFor(() => {
+    expect(view.getByText(firstLinkText)).toBeVisible();
+  });
+
+  const firstLink = view.getByRole('link', { name: firstLinkText });
+  await waitFor(() => {
+    expect(firstLink).toHaveFocus();
+  });
+
+  await act(async () => {
+    await userEvent.keyboard('{Tab}');
+  });
+
+  const secondLink = view.getByRole('link', { name: secondLinkText });
+  await waitFor(() => {
+    expect(secondLink).toHaveFocus();
+  });
+
+  expect(firstLink).not.toHaveFocus();
+
+  if (placement === 'floating') {
+    expect(view.getByLabelText('Show information')).not.toHaveFocus();
+  }
+};
