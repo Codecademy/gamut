@@ -1,0 +1,103 @@
+@use "~@codecademy/gamut-styles/utils" as *;
+
+@import "~@vidstack/react/player/styles/default/theme.css";
+@import "~@vidstack/react/player/styles/default/layouts/video.css";
+@import "~@vidstack/react/player/styles/default/layouts/audio.css";
+
+/**
+  * Youtube overlay
+  * - Why 120% ? hiding yt logo and copy link button which are not accessible.
+  */
+iframe.vds-youtube[data-no-controls] {
+  height: 120%;
+}
+
+[data-started] iframe.vds-youtube[data-no-controls] {
+  height: 1000%;
+}
+
+// Control buttons
+:where(.vds-button .vds-icon) {
+  border-radius: unset;
+}
+
+.vds-controls button {
+  border-radius: var(--media-button-border-radius);
+}
+
+:where(.vds-video-layout[data-sm]) :where(.vds-button) {
+  padding: 0px px-rem(4px) !important;
+}
+
+// Small layout volume / time slider
+:where(.vds-video-layout[data-sm] .vds-volume-slider .vds-slider-track) {
+  background-color: var(--color-gray-600);
+}
+:where(.vds-video-layout[data-sm] .vds-volume-slider .vds-slider-track-fill) {
+  background-color: var(--color-secondary);
+}
+.vds-video-layout .vds-time-slider .vds-slider-value {
+  border: unset;
+  color: white;
+}
+
+// Tooltip
+.vds-tooltip-content::after {
+  content: "";
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border-style: solid;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  border-color: currentColor;
+}
+:where(.vds-tooltip-content[data-placement~="top"])::after {
+  border-width: 0 1px 1px 0;
+  bottom: -0.5rem;
+  left: calc(50% - 0.5rem);
+  background-image: linear-gradient(
+    to top left,
+    var(--color-background-contrast) 55%,
+    rgba(0, 0, 0, 0) 20%
+  );
+}
+
+:where(.vds-tooltip-content[data-placement~="bottom"])::after {
+  border-width: 1px 0px 0px 1px;
+  top: -0.5rem;
+  left: calc(50% - 0.5rem);
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-background-contrast) 55%,
+    rgba(0, 0, 0, 0) 20%
+  );
+}
+
+:where(.vds-tooltip-content[data-placement~="start"])::after {
+  left: calc(0% + 0.5rem);
+}
+:where(.vds-tooltip-content[data-placement~="end"])::after {
+  left: unset;
+  right: calc(0% + 0.5rem);
+}
+
+@keyframes vds-tooltip-exit {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes vds-tooltip-enter {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

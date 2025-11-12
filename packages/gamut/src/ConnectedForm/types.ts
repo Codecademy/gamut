@@ -3,6 +3,7 @@ import { FieldValues, FormState } from 'react-hook-form';
 import {
   ConnectedCheckbox,
   ConnectedInput,
+  ConnectedNestedCheckboxes,
   ConnectedRadioGroupInput,
   ConnectedSelect,
   ConnectedTextArea,
@@ -12,6 +13,7 @@ import { BaseConnectedFieldProps } from './ConnectedInputs/types';
 export type ConnectedField =
   | typeof ConnectedCheckbox
   | typeof ConnectedInput
+  | typeof ConnectedNestedCheckboxes
   | typeof ConnectedRadioGroupInput
   | typeof ConnectedSelect
   | typeof ConnectedTextArea;

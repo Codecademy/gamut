@@ -11,10 +11,10 @@ export const Blocks: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    width={width}
+    fill="none"
     height={height}
     viewBox="0 0 50 70"
-    fill="none"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Blocks Illustration</title>
@@ -29,8 +29,8 @@ export const Blocks: React.FC<IllustrationProps> = ({
     <path
       d="M33.5832 61.9706V54.749"
       stroke="#10162F"
-      strokeWidth="0.3"
       strokeMiterlimit="10"
+      strokeWidth="0.3"
     />
     <path
       d="M0.293541 35.4623L20.3437 23.8667L53.6627 43.0949L33.5832 54.6905L0.293541 35.4623Z"
@@ -179,8 +179,8 @@ export const Blocks: React.FC<IllustrationProps> = ({
     <path
       d="M20.3437 38.2802V31.0586"
       stroke="#10162F"
-      strokeWidth="0.3"
       strokeMiterlimit="10"
+      strokeWidth="0.3"
     />
     <path
       d="M0.293541 19.4044L33.5832 0.17627L53.6627 11.7425L20.3437 30.9707L0.293541 19.4044Z"

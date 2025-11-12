@@ -14,7 +14,7 @@ const AbsoluteBadge = styled(Badge)(
 export const TertiaryFillExample = () => {
   return (
     <Box bg="background-primary" height="30px" pt={16}>
-      <AbsoluteBadge variant="tertiaryFill" icon={MiniStarIcon}>
+      <AbsoluteBadge icon={MiniStarIcon} variant="tertiaryFill">
         Badge
       </AbsoluteBadge>
       <Box bg="text" height="100%" width="100%" />

@@ -1,6 +1,14 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as dataListParameters } from './DataList/DataList.mdx';
+import { parameters as dataTableParameters } from './DataTable/DataTable.mdx';
+import { parameters as listParameters } from './List/List.mdx';
 
 export const parameters = {
   id: 'Organisms/Lists&Tables',
@@ -16,27 +24,9 @@ export const parameters = {
 Both `List` and `Table` are commonly used to showcase objects, data, and information in powerful ways. While both Lists and Tables are similar and share the same underlying DataList structure, they both have different presentational templates and design best practices that will help you determine which component to use. Read on to figure out how to choose the best information design for your elements.
 
 <TableOfContents
-  links={[
-    {
-      id: 'Organisms/Lists&Tables/DataList',
-      subtitle:
-        'Displays rich information and supports visually distinctive formats for individual List Items.',
-      title: 'DataList',
-      status: 'current',
-    },
-    {
-      id: 'Organisms/Lists&Tables/DataTable',
-      subtitle:
-        'Compare large amounts of data and perform bulk actions on Table Rows.',
-      title: 'DataTable',
-      status: 'current',
-    },
-    {
-      id: 'Organisms/Lists&Tables/List',
-      subtitle:
-        'The elements, APIs, and technical operations that support List and Table designs.',
-      title: 'List',
-      status: 'current',
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    dataListParameters,
+    dataTableParameters,
+    listParameters,
+  ])}
 />

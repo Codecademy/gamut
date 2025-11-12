@@ -2,7 +2,8 @@ import { ReactNode } from 'react';
 import { RegisterOptions, UseFormReturn } from 'react-hook-form';
 
 import { BoxProps } from '../Box';
-import { TextAreaProps } from '../Form';
+import { MinimalCheckboxProps } from '../ConnectedForm';
+import { CheckboxLabelUnion, TextAreaProps } from '../Form';
 import { CheckboxPaddingProps } from '../Form/types';
 import { ColumnProps } from '../Layout';
 import { InfoTipProps } from '../Tip/InfoTip';
@@ -41,11 +42,27 @@ export type BaseFormField<Value> = {
 
 export type GridFormCheckboxField = BaseFormField<boolean> &
   CheckboxPaddingProps & {
-    description: React.ReactNode;
+    description: string;
     label?: React.ReactNode;
     multiline?: boolean;
     validation?: RegisterOptions;
     type: 'checkbox';
+  };
+
+export type NestedGridFormCheckboxOption = Omit<
+  MinimalCheckboxProps,
+  'spacing'
+> &
+  CheckboxLabelUnion & {
+    options?: NestedGridFormCheckboxOption[];
+  };
+
+export type GridFormNestedCheckboxField = BaseFormField<string[]> &
+  CheckboxPaddingProps & {
+    label?: React.ReactNode;
+    options: NestedGridFormCheckboxOption[];
+    validation?: RegisterOptions;
+    type: 'nested-checkboxes';
   };
 
 export type GridFormCustomFieldProps = {
@@ -140,6 +157,7 @@ export type GridFormField =
   | GridFormCheckboxField
   | GridFormCustomField
   | GridFormCustomGroupField
+  | GridFormNestedCheckboxField
   | GridFormRadioGroupField
   | GridFormTextField
   | GridFormSelectField

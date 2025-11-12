@@ -10,7 +10,6 @@ import {
   GridBox,
   IconButton,
   Input,
-  Logo,
   Radio,
   RadioGroup,
   StrokeButton,
@@ -50,16 +49,16 @@ const renderButtons = (
   const adjacentIcon = icon ? <MiniArrowRightIcon ml={8} /> : null;
   return (
     <GridBox
-      rowGap={16}
+      alignItems="start"
       columnGap={16}
       gridTemplateColumns="150px repeat(4, max-content)"
-      alignItems="start"
       justifyItems="start"
       pt={16}
+      rowGap={16}
     >
       <GridBox gridRowEnd="span 2">
         {variant === 'primary' ? (
-          <CTAButton variant={variant} disabled={disabled}>
+          <CTAButton disabled={disabled} variant={variant}>
             Action {adjacentIcon}
           </CTAButton>
         ) : (
@@ -83,8 +82,8 @@ const renderButtons = (
           </TextButton>
           <IconButton
             {...props}
-            size="small"
             icon={MiniDeleteIcon}
+            size="small"
             tip="Delete"
           />
         </>
@@ -96,9 +95,9 @@ const renderButtons = (
 const renderLinks = () => {
   return (
     <GridBox
-      mt={16}
       columnGap={16}
       gridTemplateColumns="repeat(3, max-content)"
+      mt={16}
     >
       <Anchor>Inline Link</Anchor>
       <Anchor variant="standard">Standard Link</Anchor>
@@ -110,9 +109,9 @@ const renderLinks = () => {
 const renderInputs = () => {
   return (
     <GridBox
-      mt={32}
       columnGap={32}
       gridTemplateColumns="repeat(2, max-content)"
+      mt={32}
     >
       <FormGroup
         error="this is still not updog..."
@@ -135,19 +134,19 @@ const renderInputs = () => {
       </FormGroup>
       <FormGroup label="you can't type here.">
         <Input
-          htmlFor="example-disabled"
-          name="example-disabled"
           defaultValue="Ouch"
           disabled
+          htmlFor="example-disabled"
           icon={StreakIcon}
+          name="example-disabled"
         />
       </FormGroup>
       <FormGroup label="a humble checkbox">
         <Checkbox
+          checked
           htmlFor="example-checkbox"
           label="ain't i neat?"
           name="example-checkbox"
-          checked
         />
       </FormGroup>
     </GridBox>
@@ -157,16 +156,7 @@ const renderInputs = () => {
 const ColorModeExampleContents = () => {
   return (
     <>
-      <GridBox
-        columnGap={16}
-        pb={16}
-        gridTemplateColumns="max-content max-content max-content"
-      >
-        <Logo variant="default" />
-        <Logo variant="pro" />
-        <Logo variant="mini" />
-      </GridBox>
-      <Text as="p" color="text" fontSize={16} fontFamily="accent" mb={16}>
+      <Text as="p" color="text" fontFamily="accent" fontSize={16} mb={16}>
         Cool Feature
       </Text>
       {renderText()}
@@ -186,19 +176,19 @@ export const ColorModeExampleWrapper: React.FC<React.PropsWithChildren> = ({
 }) => {
   const [isDark, setIsDark] = useState(false);
   return (
-    <Box mt={16} mb={32}>
-      <FlexBox mb={8} alignItems="center">
+    <Box mb={32} mt={16}>
+      <FlexBox alignItems="center" mb={8}>
         <Toggle
+          checked={isDark}
           label="Use Dark Mode"
           size="small"
           variant="hyper"
-          checked={isDark}
           onChange={() => setIsDark(!isDark)}
         />
       </FlexBox>
       <Background bg={isDark ? 'navy' : 'white'}>
-        <Box bg="background" p={24} border={1}>
-          <Text as="h3" mb={24} color="text">
+        <Box bg="background" border={1} p={24}>
+          <Text as="h3" color="text" mb={24}>
             {isDark ? 'Dark' : 'Light'} Mode
           </Text>
           {children}
@@ -222,7 +212,7 @@ export const BackgroundExample: React.FC<ComponentProps<typeof Background>> = ({
 }) => {
   return (
     <Background {...rest} p={24}>
-      <Text variant="title-md" mb={16}>
+      <Text mb={16} variant="title-md">
         {rest.bg}
       </Text>
       {renderText()}
@@ -239,7 +229,7 @@ export const SystemColorModeExample = () => {
   return (
     <ColorMode mode="system">
       <Background bg={bg} p={24}>
-        <Text variant="title-md" mb={16}>
+        <Text mb={16} variant="title-md">
           system color mode:{' '}
           <Text color="primary" fontFamily="monospace" ml={8}>
             {mode} mode
@@ -259,7 +249,7 @@ export const PrefersDarkModeExample = () => {
   return (
     <ColorMode mode={mode}>
       <Background bg={bg} p={24}>
-        <Text variant="title-md" mb={16}>
+        <Text mb={16} variant="title-md">
           user prefers dark mode:{' '}
           <Text color="primary" fontFamily="monospace" ml={8}>
             {prefersDarkMode.toString()}

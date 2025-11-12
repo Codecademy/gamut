@@ -8,14 +8,13 @@ import { Box, BoxProps } from '../Box';
 import { focusVisibleStyle } from '../utils';
 
 const drawerVisibleStyle = focusVisibleStyle('-3px');
-const DrawerBase = styled(motion(Box))(css(drawerVisibleStyle));
+const DrawerBase = styled(motion.create(Box))(css(drawerVisibleStyle));
 
 export interface DrawerProps extends Omit<BoxProps, 'width'> {
   /**
    * Whether the drawer should be open.
    */
   expanded?: boolean;
-
   /**
    * Which edge of the drawer content container is aligned to during the animation.
    */
@@ -23,9 +22,9 @@ export interface DrawerProps extends Omit<BoxProps, 'width'> {
 }
 
 export const Drawer: React.FC<DrawerProps> = ({
+  alignContentContainer = 'right',
   children,
   expanded,
-  alignContentContainer = 'right',
   ...props
 }) => {
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -41,7 +40,6 @@ export const Drawer: React.FC<DrawerProps> = ({
       {expanded ? (
         <DrawerBase
           animate={{ width: fullWidth }}
-          aria-expanded={expanded}
           bg="background-current"
           exit={{ width: 0 }}
           initial={{ width: 0 }}
@@ -56,12 +54,12 @@ export const Drawer: React.FC<DrawerProps> = ({
             borderRadius="sm"
             height="100%"
             {...{ [alignContentContainer]: 0 }}
-            position="absolute"
             maxWidth="100%"
             minWidth={fullWidth}
-            overflowY="auto"
             overflowX="hidden"
+            overflowY="auto"
             p={4}
+            position="absolute"
           >
             {children}
           </Box>

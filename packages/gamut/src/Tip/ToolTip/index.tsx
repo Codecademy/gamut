@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Text } from '../../Typography';
 import { WithChildrenProp } from '../../utils';
@@ -14,17 +14,9 @@ export type ToolTipProps = TipBaseProps &
   WithChildrenProp & {
     alignment?: TipCenterAlignment;
     /**
-     * Required for accessiblity - the same id needs to be passed to the `aria-describedby` attribute of the element that the tooltip is describing.
+     * Can be used for accessibility - the same id needs to be passed to the `aria-describedby` attribute of the element that the tooltip is describing.
      */
-    id: string;
-    /**
-     * If your button has a label that is repeated in the first word of the tooltip, you can set this to `true` to avoid repetition. If your info tip is not a string, you cannot do this.
-     */
-    hasRepetitiveLabel?: boolean;
-    /**
-     * If you would like to forgo the aria-describedby attribute set this to `true`. When using this prop, the `aria-label` should always be identical to the `tip`.
-     */
-    hideAriaToolTip?: boolean;
+    id?: string;
   };
 
 export const ToolTip: React.FC<ToolTipProps> = ({
@@ -33,8 +25,6 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   info,
   placement = tipDefaultProps.placement,
   id,
-  hasRepetitiveLabel,
-  hideAriaToolTip,
   ...rest
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -47,18 +37,6 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   const isFloating = placement === 'floating';
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
 
-  const adjustedInfo = useMemo(() => {
-    return hasRepetitiveLabel && typeof info === 'string'
-      ? info.split(' ').slice(1).join(' ')
-      : info;
-  }, [info, hasRepetitiveLabel]);
-
-  // this should only happen if the button has an aria-label that is the same is and ONLY the content of the tooltip
-
-  const shouldRenderAriaTip = useMemo(() => {
-    return hideAriaToolTip ? false : adjustedInfo !== '';
-  }, [hideAriaToolTip, adjustedInfo]);
-
   const tipProps = {
     alignment,
     info,
@@ -68,13 +46,12 @@ export const ToolTip: React.FC<ToolTipProps> = ({
 
   return (
     <>
-      {shouldRenderAriaTip && (
-        // These are aria-hidden to ensure there's no duplication of content for screen readers navigating with CTRL + OPTION + ARROW
-        <Text aria-hidden screenreader id={id} role="tooltip">
-          {adjustedInfo}
+      {isFloating && (
+        <Text aria-hidden id={id} role="tooltip" screenreader>
+          {info}
         </Text>
       )}
-      <Tip {...tipProps} type="tool">
+      <Tip {...tipProps} id={!isFloating ? id : undefined} type="tool">
         {children}
       </Tip>
     </>

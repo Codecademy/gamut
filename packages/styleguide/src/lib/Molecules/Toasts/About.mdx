@@ -1,6 +1,13 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as toastParameters } from './Toast/Toast.mdx';
+import { parameters as toasterParameters } from './Toaster/Toaster.mdx';
 
 export const parameters = {
   id: 'Molecules/Toasts',
@@ -15,19 +22,5 @@ export const parameters = {
 A Toast and Toaster component for lower priority, decorative and celebratory user feedback.
 
 <TableOfContents
-  links={[
-    {
-      id: 'Molecules/Toasts/Toast',
-      subtitle:
-        'A toast component for asynchronous user feedback containing lower priority, decorative and celebratory user feedback.',
-      title: 'Toast',
-      status: 'updating',
-    },
-    {
-      id: 'Molecules/Toasts/Toaster',
-      subtitle: 'A toaster component that applies motion and renders toasts.',
-      title: 'Toaster',
-      status: 'updating',
-    },
-  ]}
+  links={addParentPath(parameters.id, [toastParameters, toasterParameters])}
 />

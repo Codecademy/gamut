@@ -28,6 +28,27 @@ describe('<Checkbox>', () => {
 
     expect(onChange).toHaveBeenCalled();
   });
+  it('sets the input indeterminate state when the prop is passed', () => {
+    const { view } = renderView({ indeterminate: true });
+
+    const checkbox = view.getByRole('checkbox');
+
+    expect(checkbox).toHaveProperty('indeterminate', true);
+  });
+
+  it('checked overrides indeterminate when both are true', () => {
+    const { view } = renderView({ indeterminate: true, checked: true } as any);
+
+    const checkbox = view.getByRole('checkbox', { checked: true });
+    expect(checkbox).toHaveProperty('indeterminate', false);
+  });
+
+  it('does not set indeterminate state when the prop is false', () => {
+    const { view } = renderView({ indeterminate: false });
+
+    const checkbox = view.getByRole('checkbox');
+    expect(checkbox).toHaveProperty('indeterminate', false);
+  });
 
   it('accepts JSX in the label', () => {
     const { view } = renderView({

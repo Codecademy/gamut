@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.55.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.55.0...@codecademy/gamut-illustrations@0.55.1) (2025-10-28)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+## [0.55.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.54.11...@codecademy/gamut-illustrations@0.55.0) (2025-10-23)
+
+### Features
+
+- **Illustration:** added new AchievementIllustration ([ef6e7b7](https://github.com/Codecademy/gamut/commit/ef6e7b7e7f80d5bc49e2880dcd886e054c8a991c))
+
+### [0.54.11](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.54.10...@codecademy/gamut-illustrations@0.54.11) (2025-10-15)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.54.10](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.54.9...@codecademy/gamut-illustrations@0.54.10) (2025-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.54.9](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.54.8...@codecademy/gamut-illustrations@0.54.9) (2025-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.54.8](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.54.7...@codecademy/gamut-illustrations@0.54.8) (2025-08-20)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.54.7](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.54.6...@codecademy/gamut-illustrations@0.54.7) (2025-07-22)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.54.6](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.54.5...@codecademy/gamut-illustrations@0.54.6) (2025-07-17)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.54.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.54.4...@codecademy/gamut-illustrations@0.54.5) (2025-06-17)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.54.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.54.3...@codecademy/gamut-illustrations@0.54.4) (2025-05-30)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.54.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.54.2...@codecademy/gamut-illustrations@0.54.3) (2025-04-25)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.54.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.54.1...@codecademy/gamut-illustrations@0.54.2) (2025-04-25)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.54.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.54.0...@codecademy/gamut-illustrations@0.54.1) (2025-03-27)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+## [0.54.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.53.3...@codecademy/gamut-illustrations@0.54.0) (2025-03-06)
+
+### Features
+
+- add light mode illustrations needed in embedded experience and … ([953bf5d](https://github.com/Codecademy/gamut/commit/953bf5d264c67983765d320a4769665f7901dda5))
+
+### [0.53.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.53.2...@codecademy/gamut-illustrations@0.53.3) (2025-02-19)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
 ### [0.53.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.53.1...@codecademy/gamut-illustrations@0.53.2) (2025-02-10)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations

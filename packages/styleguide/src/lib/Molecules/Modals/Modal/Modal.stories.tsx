@@ -1,48 +1,48 @@
-import { Box, FillButton, FlexBox, Modal, Text } from '@codecademy/gamut';
+import {
+  Box,
+  Checkbox,
+  FillButton,
+  FlexBox,
+  Modal,
+  StrokeButton,
+  Text,
+} from '@codecademy/gamut';
 import { CodeCelebration } from '@codecademy/gamut-illustrations';
-import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import type { Meta } from '@storybook/react';
+import React, { ComponentProps, useEffect, useRef, useState } from 'react';
+import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
-const meta: Meta<typeof Modal> = {
+import { closeButtonPropsArgTypes } from '~styleguide/argTypes';
+
+const meta: TypeWithDeepControls<Meta<typeof Modal>> = {
   component: Modal,
   args: {
     title: 'Modal Modality',
     size: 'small',
-    children: 'Waffles a la modal',
+    children: 'Close the Modal!',
+    isOpen: false,
+  },
+  argTypes: {
+    size: {
+      control: 'radio',
+      options: ['small', 'medium', 'large', 'fluid'],
+    },
+    ...closeButtonPropsArgTypes({
+      defaultTipText: 'Close modal',
+      defaultTipAlignment: 'top-center',
+    }),
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Modal>;
 
-// This could be a SB issue, where Discriminated Unions are not being handled correctly
-type WithoutViews = Omit<React.ComponentProps<typeof Modal>, 'views'>;
+export const Default: React.FC<ComponentProps<typeof Modal>> = (args) => {
+  const [isOpen, setIsOpen] = useState(args.isOpen);
 
-const ModalExample = (args: WithoutViews) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <>
-      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
-      <Modal isOpen={isOpen} {...args} onRequestClose={() => setIsOpen(false)}>
-        Close the Modal!
-      </Modal>
-    </>
-  );
-};
+  useEffect(() => {
+    setIsOpen(args.isOpen);
+  }, [args.isOpen]);
 
-export const Default: Story = {
-  render: (args) => <ModalExample {...args} />,
-};
-
-export const CustomClose: Story = {
-  args: {
-    hideCloseButton: true,
-  },
-  render: (args) => <ModalExample {...args} />,
-};
-
-const ClickOutsideExample = (args: WithoutViews) => {
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
@@ -50,20 +50,9 @@ const ClickOutsideExample = (args: WithoutViews) => {
         {...args}
         isOpen={isOpen}
         onRequestClose={() => setIsOpen(false)}
-        hideCloseButton
-      >
-        <FlexBox center fit>
-          <FillButton onClick={() => setIsOpen(false)}>
-            You can also control the state with this button
-          </FillButton>
-        </FlexBox>
-      </Modal>
+      />
     </>
   );
-};
-
-export const ClickOutside: Story = {
-  render: (args) => <ClickOutsideExample {...args} />,
 };
 
 type StringOrNumber = string | number;
@@ -78,99 +67,189 @@ const GridContentPlaceholder = ({
   return (
     <FlexBox flexDirection="column">
       <FlexBox
-        mb={12}
-        width="100%"
         height="2rem"
         justifyContent="space-between"
+        mb={12}
+        width="100%"
       >
-        <Box bg="beige" width="85%" height="inherit" />
-        <Box bg="beige" width="10%" height="inherit" />
+        <Box bg="beige" height="inherit" width="85%" />
+        <Box bg="beige" height="inherit" width="10%" />
       </FlexBox>
-      <Box height={height} width={width} bg="beige" />
+      <Box bg="beige" height={height} width={width} />
     </FlexBox>
   );
 };
 
-const FluidExample = (args: WithoutViews) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <>
-      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
-      <Modal isOpen={isOpen} {...args} onRequestClose={() => setIsOpen(false)}>
-        <GridContentPlaceholder height="350px" width="540px" />
-      </Modal>
-    </>
-  );
-};
-
-export const Fluid: Story = {
-  args: { size: 'fluid' },
-  render: (args) => <FluidExample {...args} />,
-};
-
-const LargeExample = (args: WithoutViews) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <>
-      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
-      <Modal isOpen={isOpen} {...args} onRequestClose={() => setIsOpen(false)}>
-        <GridContentPlaceholder height="300px" width="auto" />
-      </Modal>
-    </>
-  );
-};
-
-export const Large: Story = {
-  args: { size: 'large' },
-  render: (args) => <LargeExample {...args} />,
-};
-
-const MediumExample = (args: WithoutViews) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <>
-      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
-      <Modal isOpen={isOpen} {...args} onRequestClose={() => setIsOpen(false)}>
-        <GridContentPlaceholder height="240px" width="auto" />
-      </Modal>
-    </>
-  );
-};
-
-export const Medium: Story = {
-  args: { size: 'medium' },
-  render: (args) => <MediumExample {...args} />,
-};
-
-const SmallExample = (args: WithoutViews) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <>
-      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
-      <Modal isOpen={isOpen} {...args} onRequestClose={() => setIsOpen(false)}>
-        <GridContentPlaceholder height="240px" width="auto" />
-      </Modal>
-    </>
-  );
-};
-
-export const Small: Story = {
-  args: { size: 'small' },
-  render: (args) => <SmallExample {...args} />,
-};
-
-const ScrollableExample = (args: WithoutViews) => {
+export const Fluid: React.FC = (args) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
       <Modal
         {...args}
-        title={undefined}
-        hideCloseButton
+        isOpen={isOpen}
+        size="fluid"
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <GridContentPlaceholder height="350px" width="540px" />
+      </Modal>
+    </>
+  );
+};
+
+export const Large: React.FC = (args) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        {...args}
+        isOpen={isOpen}
+        size="large"
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <GridContentPlaceholder height="300px" width="auto" />
+      </Modal>
+    </>
+  );
+};
+
+export const Medium: React.FC = (args) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        {...args}
+        isOpen={isOpen}
         size="medium"
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <GridContentPlaceholder height="240px" width="auto" />
+      </Modal>
+    </>
+  );
+};
+
+export const Small: React.FC = (args) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        {...args}
+        isOpen={isOpen}
+        size="small"
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <GridContentPlaceholder height="240px" width="auto" />
+      </Modal>
+    </>
+  );
+};
+
+export const CloseButtonCustomization: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  const handleFocusCloseButton = () => {
+    closeButtonRef.current?.focus();
+  };
+
+  return (
+    <>
+      <FlexBox flexDirection="column" gap={16}>
+        <FlexBox gap={8}>
+          <FillButton onClick={() => setIsOpen(true)}>
+            Open Modal with Custom Close Button
+          </FillButton>
+        </FlexBox>
+      </FlexBox>
+      <Modal
+        closeButtonProps={{
+          ref: closeButtonRef,
+          tip: 'Close this very important modal',
+          disabled: isDisabled,
+        }}
+        isOpen={isOpen}
+        size="medium"
+        title="Close Button Customization Demo"
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <FlexBox flexDirection="column" gap={16}>
+          <Text>
+            This modal has a customized close button with a ref for programmatic
+            focus management, a custom tooltip, and a disabled state.
+          </Text>
+          <FillButton disabled={isDisabled} onClick={handleFocusCloseButton}>
+            Focus Close Button
+          </FillButton>
+          <FillButton onClick={() => setIsDisabled(!isDisabled)}>
+            {isDisabled ? 'Enable' : 'Disable'} Focus Close Button
+          </FillButton>
+        </FlexBox>
+      </Modal>
+    </>
+  );
+};
+
+export const CustomClose: React.FC = (args) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        {...args}
+        closeButtonProps={{ hidden: true }}
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <FlexBox flexDirection="column" gap={16}>
+          <Box>
+            <Text>Close the Modal!</Text>
+          </Box>
+          <Box>
+            <StrokeButton onClick={() => setIsOpen(false)}>Close</StrokeButton>
+          </Box>
+        </FlexBox>
+      </Modal>
+    </>
+  );
+};
+
+export const ClickOutside: React.FC = (args) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        {...args}
+        closeButtonProps={{ hidden: true }}
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <FlexBox center fit>
+          <FillButton onClick={() => setIsOpen(false)}>
+            You can also control the state with this button
+          </FillButton>
+        </FlexBox>
+      </Modal>
+    </>
+  );
+};
+
+export const Scrollable: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        closeButtonProps={{ hidden: true }}
         isOpen={isOpen}
         scrollable
+        size="medium"
+        title={undefined}
         onRequestClose={() => setIsOpen(false)}
       >
         <FlexBox flexDirection="column">
@@ -185,54 +264,44 @@ const ScrollableExample = (args: WithoutViews) => {
   );
 };
 
-export const Scrollable: Story = {
-  render: (args) => <ScrollableExample {...args} />,
-};
-
-const multipleViewsArgs = {
-  title: undefined,
-  hideCloseButton: false,
-  size: 'medium' as const,
-  scrollable: true,
-  views: [
-    {
-      title: 'First view',
-      nextCta: { children: 'Next' },
-      cancelCta: { children: 'Close' },
-      children: <>Hey for the first time</>,
-    },
-    {
-      title: 'Second view',
-      nextCta: { children: 'Next' },
-      cancelCta: { children: 'Close' },
-      children: <>Hey for the second time</>,
-    },
-    {
-      title: 'Third view',
-      confirmCta: { children: 'Done' },
-      cancelCta: { children: 'Close' },
-      children: <>Last one</>,
-    },
-  ],
-};
-
-const MultipleViewsExample = (args: React.ComponentProps<typeof Modal>) => {
+export const FocusManagement: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const containerFocusRef = useRef<HTMLDivElement>(null);
+
+  const handleFocusModal = () => {
+    containerFocusRef.current?.focus();
+  };
+
   return (
     <>
-      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <FillButton onClick={() => setIsOpen(true)}>
+        Open Modal with Focus Control
+      </FillButton>
       <Modal
+        containerFocusRef={containerFocusRef}
         isOpen={isOpen}
-        {...args}
+        size="medium"
+        title="Focus Management Demo"
         onRequestClose={() => setIsOpen(false)}
-      />
+      >
+        <FlexBox flexDirection="column" gap={16}>
+          <Text>
+            This modal demonstrates programmatic focus control. The modal
+            container has a ref that you can interact with programmatically.
+          </Text>
+          <FlexBox gap={8}>
+            <FillButton onClick={handleFocusModal}>
+              Focus Modal Container
+            </FillButton>
+          </FlexBox>
+          <Text color="text-disabled" fontSize={14}>
+            Try tabbing through the page - the modal container will maintain
+            focus when you click the &quot;Focus Modal Container&quot; button.
+          </Text>
+        </FlexBox>
+      </Modal>
     </>
   );
-};
-
-export const MultipleViews: Story = {
-  args: multipleViewsArgs,
-  render: (args) => <MultipleViewsExample {...args} />,
 };
 
 const ImageComponent = () => {
@@ -243,13 +312,18 @@ const ImageComponent = () => {
   );
 };
 
-const WithImageExample = (args: WithoutViews) => {
+export const WithImage: React.FC = (args) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
-      <Modal isOpen={isOpen} {...args} onRequestClose={() => setIsOpen(false)}>
-        <Text smooth fontSize={14} my={12}>
+      <Modal
+        {...args}
+        image={<ImageComponent />}
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <Text fontSize={14} my={12} smooth>
           Optional 1-2 lines of explanation that provides relevant details.
           Lorem ipsum cras nulla massa odio ligula.
         </Text>
@@ -258,6 +332,203 @@ const WithImageExample = (args: WithoutViews) => {
   );
 };
 
-export const WithImage: Story = {
-  render: (args) => <WithImageExample {...args} image={<ImageComponent />} />,
+export const MultipleViews: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        isOpen={isOpen}
+        size="medium"
+        views={[
+          {
+            title: 'First view',
+            primaryCta: {
+              actionType: 'next',
+              children: 'Next',
+            },
+            secondaryCta: { actionType: 'cancel', children: 'Cancel' },
+            children: <>Hey for the first time</>,
+          },
+          {
+            title: 'Second view',
+            primaryCta: { actionType: 'next', children: 'Next' },
+            secondaryCta: { actionType: 'back', children: 'Back' },
+            children: <>Hey for the second time</>,
+          },
+          {
+            title: 'Third view',
+            primaryCta: {
+              actionType: 'confirm',
+              children: 'Done',
+              onClick: () => setIsOpen(false),
+            },
+            secondaryCta: { actionType: 'back', children: 'Back' },
+            children: <>Last one</>,
+          },
+        ]}
+        onRequestClose={() => setIsOpen(false)}
+      />
+    </>
+  );
+};
+
+export const MultipleViewsDisabled: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        isOpen={isOpen}
+        size="medium"
+        views={[
+          {
+            title: 'First view',
+            primaryCta: {
+              actionType: 'next',
+              children: 'Next',
+              disabled: !isChecked,
+            },
+            secondaryCta: { actionType: 'cancel', children: 'Cancel' },
+            children: (
+              <FlexBox flexDirection="column" gap={16}>
+                <Text>Check the box to enable the Next button</Text>
+                <Checkbox
+                  aria-label="I agree to the terms"
+                  checked={isChecked}
+                  htmlFor="terms-checkbox"
+                  label="I agree to the terms"
+                  onChange={() => setIsChecked(!isChecked)}
+                />
+              </FlexBox>
+            ),
+          },
+          {
+            title: 'Second view',
+            primaryCta: {
+              actionType: 'confirm',
+              children: 'Done',
+              onClick: () => setIsOpen(false),
+            },
+            secondaryCta: { actionType: 'back', children: 'Back' },
+            children: <>You made it!</>,
+          },
+        ]}
+        onRequestClose={() => setIsOpen(false)}
+      />
+    </>
+  );
+};
+
+export const MultipleViewsDanger: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        isOpen={isOpen}
+        size="medium"
+        title="Danger!!"
+        views={[
+          {
+            title: 'First view',
+            primaryCta: {
+              actionType: 'confirm',
+              children: 'Delete',
+              variant: 'danger',
+              onClick: () => setIsOpen(false),
+            },
+            secondaryCta: { actionType: 'cancel', children: 'Cancel' },
+            children: <>I use the danger variant for the confirm button</>,
+          },
+        ]}
+        onRequestClose={() => setIsOpen(false)}
+      />
+    </>
+  );
+};
+
+export const ConfirmationOnClose: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(true);
+  const [showConfirmClose, setShowConfirmClose] = useState(false);
+
+  const handleClose = () => {
+    if (hasUnsavedChanges) {
+      setShowConfirmClose(true);
+    } else {
+      setIsOpen(false);
+    }
+  };
+
+  const handleConfirmClose = () => {
+    setShowConfirmClose(false);
+    setIsOpen(false);
+    setHasUnsavedChanges(false);
+  };
+
+  const handleCancelClose = () => {
+    setShowConfirmClose(false);
+  };
+
+  return (
+    <>
+      <FlexBox flexDirection="column" gap={16}>
+        <FlexBox gap={8}>
+          <FillButton onClick={() => setIsOpen(true)}>
+            Open Modal with Confirmation
+          </FillButton>
+          <FillButton
+            variant="secondary"
+            onClick={() => setHasUnsavedChanges(!hasUnsavedChanges)}
+          >
+            {hasUnsavedChanges ? 'Mark as Saved' : 'Mark as Unsaved'}
+          </FillButton>
+        </FlexBox>
+        <Text color="text-disabled" fontSize={14}>
+          Toggle the unsaved state and try closing the modal to see the
+          confirmation behavior. <br />
+          Current state:{' '}
+          {hasUnsavedChanges ? 'Has unsaved changes' : 'All saved'}
+        </Text>
+      </FlexBox>
+      <Modal
+        isOpen={isOpen}
+        size="medium"
+        title="Confirmation on Close Demo"
+        onRequestClose={handleClose}
+      >
+        <FlexBox flexDirection="column" gap={16}>
+          <Text>
+            This modal shows a confirmation dialog when you try to close it with
+            unsaved changes.
+          </Text>
+          <Text color="text-disabled" fontSize={14}>
+            Current state:{' '}
+            {hasUnsavedChanges ? 'Has unsaved changes' : 'All saved'}
+          </Text>
+        </FlexBox>
+      </Modal>
+      <Modal
+        isOpen={showConfirmClose}
+        size="small"
+        title="Unsaved Changes"
+        onRequestClose={handleCancelClose}
+      >
+        <FlexBox flexDirection="column" gap={16}>
+          <Text>You have unsaved changes. Are you sure you want to close?</Text>
+          <FlexBox gap={8}>
+            <FillButton onClick={handleConfirmClose}>Yes, Close</FillButton>
+            <FillButton variant="secondary" onClick={handleCancelClose}>
+              Cancel
+            </FillButton>
+          </FlexBox>
+        </FlexBox>
+      </Modal>
+    </>
+  );
 };

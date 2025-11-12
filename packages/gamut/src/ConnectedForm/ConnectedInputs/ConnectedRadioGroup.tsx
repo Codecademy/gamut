@@ -13,9 +13,9 @@ export const ConnectedRadioGroup: React.FC<ConnectedRadioGroupProps> = ({
 
   return (
     <RadioGroup
+      aria-required={isRequired}
       htmlForPrefix={name}
       name={name}
-      aria-required={isRequired}
       role="radiogroup"
       onChange={(event) => {
         const { value } = event.target;

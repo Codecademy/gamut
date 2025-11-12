@@ -13,6 +13,7 @@ export const defaultSanitizationConfig = {
     code: ['class'],
     pre: ['class'],
     source: ['src', 'type'],
+    track: ['src', 'label', 'kind', 'srclang', 'default', 'type'],
     img: ['src', 'alt', 'height', 'width', 'title', 'aria-label', 'style'],
     input: ['checked', 'type'],
     video: [
@@ -24,6 +25,7 @@ export const defaultSanitizationConfig = {
       'muted',
       'src',
       'width',
+      'showplayerembed',
     ],
     iframe: [
       'src',
@@ -33,6 +35,7 @@ export const defaultSanitizationConfig = {
       'gesture',
       'allow',
       'allowfullscreen',
+      'showplayerembed',
     ],
   },
   allowedClasses: {
@@ -41,6 +44,7 @@ export const defaultSanitizationConfig = {
   allowedTags: [
     ...sanitizeMarkdown.defaults.allowedTags,
     'video',
+    'track',
     'source',
     'font',
     'pre',

@@ -11,9 +11,9 @@ export const ConnectedRadioGroupInput: React.FC<
       {options.map((elem) => {
         return (
           <ConnectedRadio
-            name={name}
-            key={`${name}-${elem.value}`}
             disabled={disabled}
+            key={`${name}-${elem.value}`}
+            name={name}
             {...elem}
           />
         );

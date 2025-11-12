@@ -5,6 +5,7 @@ import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 import * as DisclosureStories from './Disclosure.stories';
 
 export const parameters = {
+  title: 'Disclosure',
   subtitle:
     'A Disclosure is an expandable container featuring a heading that serves as a toggle to expand or collapse a content section.',
   source: {
@@ -25,30 +26,30 @@ export const parameters = {
 
 ## Usage
 
-Use a Disclosure to progressively reveal information, giving users the option to access additional details as needed. By initially hiding less immediately relevant information, it minimizes cognitive load and boosts content scannability.
+Use a `Disclosure` to progressively reveal information, giving users the option to access additional details as needed. By initially hiding less immediately relevant information, it minimizes cognitive load and boosts content scannability.
 
 ### Best practices:
 
-- When there is large amount of information that all users might not need to see, but some users might want to see, use a Disclosure to hint at the additional information and allow users to expand it.
+- When there is large amount of information that all users might not need to see, but some users might want to see, use a `Disclosure` to hint at the additional information and allow users to expand it.
 
 ### When NOT to use:
 
-- If you need to use multiple Disclosures, use the <LinkTo id="Organisms/Lists & Tables/List">List</LinkTo> component component with `<ExpandableRowClick>` for the time being.
+- If you need to use multiple `Disclosure` components, use the <LinkTo id="Organisms/Lists & Tables/List">List</LinkTo> component component with `<ExpandableRowClick>` for the time being.
 
 ## Variants
 
-Disclosure has 3 variants for background color (`'default'`, `'subtle', 'transparent'`), a state of `hasBorder` to render a 1px solid black border, and 3 spacing options (`'normal'`, `'condensed'`, `'compact'`). Check the Figma design to apply the correct styling.
+`Disclosure` has 3 variants for background color (`'default'`, `'subtle'`, `'transparent'`), a state of `hasBorder` to render a 1px solid black border, and 3 spacing options (`'normal'`, `'condensed'`, `'compact'`). Check the Figma design to apply the correct styling.
 
 ### Background and border variants
 
-<Canvas of={DisclosureStories.Default} />
+<Canvas of={DisclosureStories.DefaultBackground} />
 <Canvas of={DisclosureStories.SubtleBgBordered} />
 <Canvas of={DisclosureStories.Transparent} />
 <Canvas of={DisclosureStories.HasBorder} />
 
 ### Spacing options
 
-`spacing` is an optional prop you can pass to `<Disclosure>`. By default it's set to `"normal"`, though you can set it to `"condensed"` or `"compact"` as well. Spacing will determine the height of the heading, the size of the chevron icon, as well as the padding of both the heading and the body.
+`spacing` is an optional prop that controls the height of the heading, the size of the chevron icon, as well as the padding of both the heading and the body. By default it's set to `"normal"` — though you can set it to `"condensed"` or `"compact"` as well.
 
 <Canvas of={DisclosureStories.Normal} />
 <Canvas of={DisclosureStories.Condensed} />
@@ -56,6 +57,6 @@ Disclosure has 3 variants for background color (`'default'`, `'subtle', 'transpa
 
 ## Playground
 
-<Canvas sourceState="shown" of={DisclosureStories.Playground} />
+<Canvas sourceState="shown" of={DisclosureStories.Default} />
 
 <Controls />

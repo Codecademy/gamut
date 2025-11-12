@@ -17,8 +17,8 @@
   "namedInputs": {
     "babelConfig": ["{workspaceRoot}/babel.defaults.js"],
     "ci": [
-      "{workspaceRoot}/.circleci/config.yml",
-      "{workspaceRoot}/.github/push.yml"
+      "{workspaceRoot}/.github/workflows/**/*.yml",
+      "{workspaceRoot}/.github/actions/**/*.yml"
     ],
     "default": ["{projectRoot}/**/*"],
     "production": [
@@ -62,7 +62,6 @@
     }
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "useDaemonProcess": false,
   "nxCloudAccessToken": "ZmVjZWYxNzctYTdmZC00ODYzLTg4MzEtZTE1YTVmZDdkZmY1fHJlYWQ=",
   "parallel": 3,
   "useInferencePlugins": false,

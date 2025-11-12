@@ -3,7 +3,7 @@ import {
   CheckCircledIcon,
   GamutIconProps,
 } from '@codecademy/gamut-icons';
-import { system } from '@codecademy/gamut-styles';
+import { css } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled, { StyledComponent } from '@emotion/styled';
 import { ChangeEvent, forwardRef, InputHTMLAttributes, useState } from 'react';
@@ -18,10 +18,11 @@ import {
   formFieldFocusStyles,
   formFieldPaddingStyles,
   formFieldStyles,
+  inputSizeStyles,
 } from '../styles';
 import { BaseInputProps } from '../types';
 
-export type InputProps = InputHTMLAttributes<HTMLInputElement> &
+export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> &
   BaseInputProps & {
     /**
      * Allows Inputs to manage their own activated style state to account for some edge-cases.
@@ -38,6 +39,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> &
 
 export interface StyledInputProps
   extends StyleProps<typeof conditionalStyles>,
+    StyleProps<typeof inputSizeStyles>,
     InputProps {
   icon?: boolean;
 }
@@ -53,30 +55,32 @@ export interface InputWrapperProps extends InputProps {
    * A custom icon svg from gamut-icons.
    */
   icon?: React.ComponentType<GamutIconProps>;
+  size?: 'base' | 'small';
 }
 
 /**  We greatly prefer NOT to do this but ReactRecurly has some specific needs around focus-styles + padding that force us to export them seperately. If we ever stop using React-Recurly, this code will be 🔪.
  *tldr: Do not do this unless you have already talked to Web-Plat and have failed to find any alternate (and better) solutions. */
 
-export const reactRecurlyFormFieldFocusStyles =
-  system.css(formFieldFocusStyles);
+export const reactRecurlyFormFieldFocusStyles = css(formFieldFocusStyles);
 
-export const reactRecurlyFormFieldPaddingStyles = system.css(
-  formFieldPaddingStyles
+export const reactRecurlyFormFieldPaddingStyles = css(formFieldPaddingStyles);
+
+export const iFrameWrapper = styled.div<conditionalStyleProps>(
+  formBaseFieldStyles,
+  conditionalStyles,
+  css({ textIndent: 0 })
 );
 
-export const iFrameWrapper = styled.div<conditionalStyleProps>`
-  ${formBaseFieldStyles}
-  ${conditionalStyles}
-  text-indent: 0;
-`;
-
-const InputElement = styled.input<StyledInputProps>`
-  ${formFieldStyles}
-  ${conditionalStyles}
-  text-indent: 0;
-  padding-right: ${(props) => (props.icon ? `2.3rem` : `initial`)};
-`;
+const InputElement = styled.input<StyledInputProps>(
+  formFieldStyles,
+  conditionalStyles,
+  inputSizeStyles,
+  (props) =>
+    css({
+      paddingRight: props.icon ? `2.3rem` : `initial`,
+      textIndent: 0,
+    })
+);
 
 const inputStates = {
   error: {
@@ -109,6 +113,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       as: As,
       icon: IconSvg,
       type = 'text',
+      size,
       ...rest
     },
     ref
@@ -130,35 +135,38 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
     const AsComponent = As || InputElement;
     const ShownIcon = IconSvg || icon;
 
+    const trueSize = type === 'file' && size === 'small' ? 'smallFile' : size;
+
     return (
       <Box
+        color={color}
         display={type === 'hidden' ? 'none' : undefined}
         position="relative"
-        color={color}
       >
         <AsComponent
           {...rest}
           className={className}
           icon={error || valid || !!IconSvg}
           id={id || rest.htmlFor}
-          onChange={changeHandler}
+          inputSize={trueSize}
           ref={ref}
           type={type}
           variant={conditionalStyleState(
             Boolean(error),
             rest.activated !== undefined ? rest.activated : activatedStyle
           )}
+          onChange={changeHandler}
         />
         {!!ShownIcon && (
           <FlexBox
-            pr={IconSvg ? 12 : 16}
-            position="absolute"
             alignItems="center"
+            bottom="0"
+            position="absolute"
+            pr={IconSvg ? 12 : 16}
             right="0"
             top="0"
-            bottom="0"
           >
-            <ShownIcon size={IconSvg ? 24 : 16} aria-hidden />
+            <ShownIcon aria-hidden size={IconSvg ? 24 : 16} />
           </FlexBox>
         )}
       </Box>

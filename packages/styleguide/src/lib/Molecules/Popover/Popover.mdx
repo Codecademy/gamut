@@ -6,6 +6,7 @@ import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 import * as PopoverStories from './Popover.stories';
 
 export const parameters = {
+  title: 'Popover',
   subtitle: `Popover is a surface which takes a target element and shows an overlay positioned around that element.`,
   design: {
     type: 'figma',
@@ -35,11 +36,11 @@ Popovers are generally used for interactive contents, such as new and exciting f
 
 ### Beak
 
-Using the beak prop, you can add a beak to the popover.
+Using the `beak` prop, you can add a beak that is right, left, or center aligned to a `Popover`.
 
 <Canvas of={PopoverStories.Beak} />
 
-Tooltips with a _centered_ beak -`center`- are smaller sized and meant for a single small number of words, like keyboard shortcuts. Similar to the center aligned <LinkTo id="Molecules/Tips/ToolTip">ToolTip</LinkTo>.
+Popovers with a _centered_ beak -`center`- are intended to be smaller sized and meant for a single small number of words. They are similar to our <LinkTo id="Molecules/Tips/ToolTip">ToolTips</LinkTo>. Please note that center aligned `Popover`s `align="center"` can only render a centered beak.
 
 <Canvas of={PopoverStories.BeakCentered} />
 
@@ -52,7 +53,11 @@ The outline color is `theme.colors.secondary` so in Dark Mode, the outline will 
 
 ### Position
 
-Using the position prop, you can add a position (`above` or `below`) to the popover. It will be `below` by default.
+Using the `position` prop, you can add a position to the `Popover`.
+
+`above` and `below` will position the `Popover` centered to the vertical line of the target element.
+
+`center` will position the `Popover` centered to the horizontal center of the target element and shifted to the aligned side.
 
 <LayoutGrid gap={32}>
 
@@ -64,6 +69,14 @@ Using the position prop, you can add a position (`above` or `below`) to the popo
 <Column size={6} variant={false} mx={8}>
   #### Below
   <Canvas of={PopoverStories.Below} />
+</Column>
+<Column size={6} variant={false} mx={8}>
+  #### Center Left
+  <Canvas of={PopoverStories.CenterLeft} />
+</Column>
+<Column size={6} variant={false} mx={8}>
+  #### Center Right
+  <Canvas of={PopoverStories.CenterRight} />
 </Column>
 
 </LayoutGrid>

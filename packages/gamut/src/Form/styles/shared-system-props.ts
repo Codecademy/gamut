@@ -1,4 +1,9 @@
-import { system, theme, transitionConcat } from '@codecademy/gamut-styles';
+import {
+  css,
+  theme,
+  transitionConcat,
+  variant,
+} from '@codecademy/gamut-styles';
 
 export type conditionalStyleProps = {
   error?: boolean;
@@ -73,13 +78,11 @@ export const formBaseFieldStylesObject = {
     'ease-in-out'
   ),
   border: 1,
-  borderColor: 'border-disabled',
   borderRadius: 'md',
   [InputSelectors.HOVER]: {
     borderColor: 'primary',
   },
   [InputSelectors.PLACEHOLDER]: {
-    borderColor: 'border-disabled',
     fontStyle: 'italic',
   },
   [InputSelectors.DISABLED]: {
@@ -87,16 +90,16 @@ export const formBaseFieldStylesObject = {
   },
 } as const;
 
-export const formBaseFieldStyles = system.css(formBaseFieldStylesObject);
+export const formBaseFieldStyles = css(formBaseFieldStylesObject);
 
-export const formFieldStyles = system.css({
+export const formFieldStyles = css({
   ...formBaseFieldStylesObject,
   ...formFieldPaddingStyles,
   lineHeight: 'base',
   [InputSelectors.FOCUS]: formFieldFocusStyles,
 });
 
-export const conditionalStyles = system.variant({
+export const conditionalStyles = variant({
   variants: {
     error: {
       borderColor: 'feedback-error',
@@ -115,3 +118,22 @@ export const conditionalStyles = system.variant({
 export const conditionalStyleState = (error: boolean, activated: boolean) => {
   return error ? 'error' : activated ? 'activated' : undefined;
 };
+
+export const inputSizeStyles = variant({
+  prop: 'inputSize',
+  defaultVariant: 'base',
+  base: {
+    px: 8,
+  },
+  variants: {
+    base: {
+      ...formFieldPaddingStyles,
+    },
+    small: {
+      py: 3 as any,
+    },
+    smallFile: {
+      py: 2 as any,
+    },
+  },
+});

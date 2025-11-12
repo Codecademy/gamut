@@ -11,10 +11,10 @@ export const PracticeTarget: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    width={width}
+    fill="none"
     height={height}
     viewBox="0 0 174 126"
-    fill="none"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -36,54 +36,54 @@ export const PracticeTarget: React.FC<IllustrationProps> = ({
       strokeWidth="2.00554"
     />
     <path
-      fillRule="evenodd"
       clipRule="evenodd"
       d="M77.1933 43.9952L85.8372 69.0691L65.6219 61.9982L77.1933 43.9952Z"
       fill="#141C3A"
+      fillRule="evenodd"
       stroke="white"
       strokeWidth="2.00554"
     />
     <path
       d="M82.4316 56.3464L160.41 30.9524"
       stroke="white"
-      strokeWidth="2.00554"
       strokeLinecap="square"
+      strokeWidth="2.00554"
     />
     <path
       d="M160.473 30.3074L165.977 19.0265"
       stroke="white"
-      strokeWidth="2.00554"
       strokeLinecap="square"
+      strokeWidth="2.00554"
     />
     <path
       d="M153.07 32.7728L158.574 21.492"
       stroke="white"
-      strokeWidth="2.00554"
       strokeLinecap="square"
+      strokeWidth="2.00554"
     />
     <path
       d="M145.668 35.2379L151.172 23.957"
       stroke="white"
-      strokeWidth="2.00554"
       strokeLinecap="square"
+      strokeWidth="2.00554"
     />
     <path
       d="M160.664 30.5429L171.954 36.0479"
       stroke="white"
-      strokeWidth="2.00554"
       strokeLinecap="square"
+      strokeWidth="2.00554"
     />
     <path
       d="M153.261 33.6241L164.552 39.1291"
       stroke="white"
-      strokeWidth="2.00554"
       strokeLinecap="square"
+      strokeWidth="2.00554"
     />
     <path
       d="M145.855 36.0897L157.146 41.5946"
       stroke="white"
-      strokeWidth="2.00554"
       strokeLinecap="square"
+      strokeWidth="2.00554"
     />
   </svg>
 );

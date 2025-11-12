@@ -2,7 +2,7 @@ import { variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
-import { FloatingCard } from '../FloatingCard/FloatingCard';
+import { InternalFloatingCard } from '../InternalFloatingCard/InternalFloatingCard';
 import { focusVisibleStyle } from '../utils';
 
 const modalFocusVisibleStyle = focusVisibleStyle();
@@ -50,7 +50,7 @@ export interface ModalContainerProps
   extends StyleProps<typeof sizeVariant>,
     StyleProps<typeof layoutVariant> {}
 
-export const ModalContainer = styled(FloatingCard)<ModalContainerProps>(
+export const ModalContainer = styled(InternalFloatingCard)<ModalContainerProps>(
   sizeVariant,
   layoutVariant
 );

@@ -13,6 +13,6 @@ export interface DataList {
 
 export const DataList: DataList = ({ variant = 'default', ...rest }) => {
   return (
-    <DataGrid variant={variant} {...rest} shadow={false} scrollable={false} />
+    <DataGrid variant={variant} {...rest} scrollable={false} shadow={false} />
   );
 };

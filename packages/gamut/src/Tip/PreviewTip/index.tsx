@@ -80,20 +80,20 @@ export const PreviewTip: React.FC<PreviewTipProps> = ({
 
   return (
     <Tip {...tipProps} type="preview">
-      <Text aria-hidden={!isLive} aria-live="polite" screenreader>
-        <div id={descriptionId}>{description}</div>
-      </Text>
-
       <PreviewTipAnchor
         {...rest}
         aria-describedby={descriptionId}
         display={avatar && rest?.display === undefined ? 'flex' : rest?.display}
         tipType={avatar ? 'avatar' : 'anchor'}
-        onFocus={onFocus}
         onBlur={onBlur}
+        onFocus={onFocus}
       >
         {avatar || children}
       </PreviewTipAnchor>
+
+      <Text aria-hidden={!isLive} aria-live="polite" screenreader>
+        <div id={descriptionId}>{description}</div>
+      </Text>
     </Tip>
   );
 };

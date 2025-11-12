@@ -1,11 +1,33 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import * as React from 'react';
 
 import { Video } from '..';
 
+jest.mock('@vidstack/react', () => {
+  const react = require('react');
+  return {
+    // eslint-disable-next-line react/display-name
+    MediaPlayer: react.forwardRef<
+      HTMLIFrameElement,
+      { src: string; title: string }
+    >(
+      (
+        { src, title }: { src: string; title: string },
+        ref: React.Ref<HTMLIFrameElement>
+      ) => react.createElement('iframe', { ref, src, title })
+    ),
+    MediaProvider: ({ children }: { children: React.ReactNode }) => children,
+    Poster: ({ src, alt }: { src: string; alt: string }) =>
+      react.createElement('img', { alt, src }),
+    Track: () => null,
+    useMediaState: () => false,
+    useMediaRemote: () => ({}),
+  };
+});
+
 const renderView = setupRtl(Video, {});
 
-// TODO: Fix long-running(?) Video tests. We probably need to mock React Player.
-describe.skip('Video', () => {
+describe('Video', () => {
   it('loads a video with a vimeo URL', async () => {
     const { view } = renderView({
       videoUrl: 'https://vimeo.com/145702525',

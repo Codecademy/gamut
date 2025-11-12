@@ -5,8 +5,8 @@ import { ComponentHeader } from '~styleguide/blocks';
 import * as VideoStories from './Video.stories';
 
 export const parameters = {
-  subtitle: `A video player that can play both youtube and vimeo videos
-given a video URL.`,
+  title: 'Video',
+  subtitle: `A video player supporting HLS, DASH, YouTube, and Vimeo with enhanced accessibility and customization options.`,
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=31226-41393',
@@ -25,31 +25,38 @@ given a video URL.`,
 
 ## Usage
 
-Use the Video component to embed a YouTube or Vimeo video using a URL.
+The Video component is a feature-rich video player that supports multiple video sources and formats with enhanced accessibility features.
 
-### Best practices:
+### Key Features
 
-- Some videos might have settings where you cannot share/embed them, make sure to check the video URL before making the Video go live.
+- **Multiple Sources**: Supports YouTube, Vimeo, HLS, and DASH video streams
+- **Accessibility**: Enhanced keyboard navigation and screen reader support
+- **Internationalization**: Customizable UI text through translations props
+- **Captions**: Supports multiple caption formats (VTT, SRT, SSA)
+- **Chapters**: Video chapter navigation support
+- **Thumbnails**: Preview thumbnails on timeline hover
+- **Gestures**: Touch and mouse gesture controls
+
+### Best practices
+
+- Always provide descriptive video titles for accessibility
+- Include captions when possible
+- Use appropriate poster images for better initial loading experience
+- Some videos might have settings where you cannot share/embed them, make sure to check the video URL before making the Video go live
 
 ## Variants
 
-### Youtube link
+### HLS Stream With Captions, Chapters And Thumbnails
 
-The following video has a YouTube URL.
+<Canvas of={VideoStories.VideoWithTracksAndThumbnails} />
 
-<Canvas of={VideoStories.Default} />
+### YouTube Video
 
-### Vimeo
+<Canvas of={VideoStories.Youtube} />
 
-Here is an example with a Vimeo URL.
+### Vimeo Video
 
 <Canvas of={VideoStories.Vimeo} />
-
-### Placeholder
-
-Here is an example with a Vimeo URL.
-
-<Canvas of={VideoStories.VideoWithPlaceholder} />
 
 ## Playground
 

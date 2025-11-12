@@ -18,10 +18,10 @@ const SortAnchor = styled(Anchor)(
       color: 'text',
     },
     '> div': {
-      color: 'navy-300',
+      color: 'text-disabled',
     },
     '&:hover div': {
-      color: 'text-disabled',
+      color: 'text-secondary',
     },
   })
 );
@@ -32,7 +32,7 @@ const SortIcon = styled(ArrowChevronDownFilledIcon)(
       transform: 'rotate(180deg)',
     },
     active: {
-      color: 'text',
+      color: 'text-accent',
     },
   })
 );
@@ -61,13 +61,8 @@ export const SortControl: React.FC<SortControlProps> = ({
 
   return (
     <SortAnchor
-      aria-sort={
-        direction === 'none'
-          ? 'none'
-          : direction === 'asc'
-          ? 'ascending'
-          : 'descending'
-      }
+      aria-label={`sort by ${columnKey}`}
+      display="inline-flex"
       variant="interface"
       onClick={() =>
         onSort?.({
@@ -75,25 +70,23 @@ export const SortControl: React.FC<SortControlProps> = ({
           value: getNextSortDirection(direction),
         })
       }
-      display="inline-flex"
-      aria-label={`sort by ${columnKey}`}
     >
       {children}
-      <FlexBox column width={16} ml={8} mb={4}>
+      <FlexBox column mb={4} ml={8} width={16}>
         <SortIcon
-          aria-hidden={false}
-          asc
           active={direction === 'asc'}
-          size={9}
+          aria-hidden={false}
           aria-label="ascending"
+          asc
           color="currentColor"
+          size={9}
         />
         <SortIcon
-          aria-hidden={false}
-          size={9}
           active={direction === 'desc'}
+          aria-hidden={false}
           aria-label="descending"
           color="currentColor"
+          size={9}
         />
       </FlexBox>
     </SortAnchor>

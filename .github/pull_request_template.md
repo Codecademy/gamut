@@ -21,13 +21,18 @@ Please fill this in with how to test your PR within Gamut and populate it with t
 
 [Don't make me tap the sign.](https://i.imgur.com/sy93D9I.png)
 
+1. Go to story X
+2. Do something
+3. Do that something in dark mode
+4. Check it with VO
+5. Finish and do a celebratory dance
+
 #### PR Links and Envs
 
-| Repository   | PR Link                                                  | PR Env                                                   |
-| :----------- | :------------------------------------------------------- | :------------------------------------------------------- |
-| Monolith     | [Monolith PR](http://www.google.fr/ 'Named link title')  | [Monolith Env](http://www.google.fr/ 'Named link title') |
-| Portal       | [Portal Link](http://www.google.fr/ 'Named link title')  | [Portal Env](http://www.google.fr/ 'Named link title')   |
-| Another Repo | [Another Link](http://www.google.fr/ 'Named link title') | [Another Env](http://www.google.fr/ 'Named link title')  |
+| Repository   | PR Link                                                  |
+| :----------- | :------------------------------------------------------- |
+| Monolith     | [Monolith PR](http://www.google.fr/ 'Named link title')
+| Mono       | [Mono PR](http://www.google.fr/ 'Named link title')
 
 <!--
 Merging your changes

@@ -1,17 +1,11 @@
-import * as patterns from '@codecademy/gamut-patterns';
-import {
-  Canvas,
-  Controls,
-  IconGallery,
-  IconItem,
-  Meta,
-} from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
 import * as PatternsStories from './Patterns.stories';
 
 export const parameters = {
+  title: 'Patterns',
   subtitle: 'Standard background fill patterns.',
   status: 'current',
   design: {
@@ -33,18 +27,18 @@ export const parameters = {
 
 Patterns are intended to be able to take in a color and any system layout, positioning, and spacing props.
 
+```jsx
+import { DotsLoose } from '@codecademy/gamut-patterns';
+
+<DotsLoose width="128px" />;
+```
+
 ## Playground
 
-<Canvas sourceState="shown" of={PatternsStories.Default} />
+<Canvas of={PatternsStories.Default} sourceState="none" />
 
 <Controls />
 
 ## Patterns
 
-<IconGallery>
-  {Object.entries(patterns).map(([patternName, Pattern]) => (
-    <IconItem key={patternName} name={patternName}>
-      <Pattern width="128px" />
-    </IconItem>
-  ))}
-</IconGallery>
+<Canvas of={PatternsStories.AllPatterns} sourceState="none" />

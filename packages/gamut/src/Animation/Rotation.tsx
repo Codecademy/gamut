@@ -1,9 +1,10 @@
 import { timingValues } from '@codecademy/gamut-styles';
 import { motion } from 'framer-motion';
-import { ComponentProps } from 'react';
 import * as React from 'react';
 
-export interface RotationProps extends ComponentProps<typeof motion.div> {
+import { WithChildrenProp } from '../utils';
+
+export interface RotationProps extends WithChildrenProp {
   /**
    * Whether the container is rotated. Defaults to 180 (half a rotation)
    */
@@ -15,13 +16,15 @@ export interface RotationProps extends ComponentProps<typeof motion.div> {
   degrees?: number;
 
   /**
-   * Height of container. Defaults to 16.†
+   * Height of container. Defaults to 16.
    */
   height?: number;
   /**
    * Width of container. Defaults to 16.
    */
   width?: number;
+
+  'aria-hidden'?: boolean;
 }
 
 export const Rotation: React.FC<RotationProps> = ({
@@ -40,11 +43,11 @@ export const Rotation: React.FC<RotationProps> = ({
       height,
       width,
     }}
+    transition={{ duration: timingValues.medium / 1000, ease: 'easeInOut' }}
     variants={{
       rotated: { rotate: degrees },
       normal: { rotate: 0 },
     }}
-    transition={{ duration: timingValues.medium / 1000, ease: 'easeInOut' }}
     {...rest}
   >
     {children}

@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.11.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.10.0...@codecademy/gamut-styles@17.11.0) (2025-10-28)
+
+### Features
+
+- **LXStudio:** swap LXStudio font to Hanken Grotesk ([280e143](https://github.com/Codecademy/gamut/commit/280e143c9c6deac6c41ee09734ddd7190411508d))
+
+## [17.10.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.9.1...@codecademy/gamut-styles@17.10.0) (2025-10-15)
+
+### Features
+
+- Percipio theme + theme switcher tool ([4307902](https://github.com/Codecademy/gamut/commit/4307902838509a83024781ad70d3bdb77850afdb))
+
+### [17.9.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.9.0...@codecademy/gamut-styles@17.9.1) (2025-10-14)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+## [17.9.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.8.0...@codecademy/gamut-styles@17.9.0) (2025-08-20)
+
+### Features
+
+- **List, DataTable, DataList, + SystemProps:** add new base container query and List/DataGrid prop ([caae6ac](https://github.com/Codecademy/gamut/commit/caae6acdb9cc1d9a0fea0afd3d9204067fa8764b))
+
+## [17.8.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.7.0...@codecademy/gamut-styles@17.8.0) (2025-08-20)
+
+### Features
+
+- add nonce property to GamutProvider [FCORE-5007] ([190e36f](https://github.com/Codecademy/gamut/commit/190e36f98de6543515bb32f68054d5a26526d863))
+
+## [17.7.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.6.5...@codecademy/gamut-styles@17.7.0) (2025-07-22)
+
+### Features
+
+- **ContainerQueries:** add container queries to responsive props api ([f29d307](https://github.com/Codecademy/gamut/commit/f29d3071599f9c686b47687787ed44d1e9d826e1))
+
+### [17.6.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.6.4...@codecademy/gamut-styles@17.6.5) (2025-07-17)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+### [17.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.6.3...@codecademy/gamut-styles@17.6.4) (2025-06-17)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+### [17.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.6.2...@codecademy/gamut-styles@17.6.3) (2025-05-30)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+### [17.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.6.1...@codecademy/gamut-styles@17.6.2) (2025-04-25)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+### [17.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.6.0...@codecademy/gamut-styles@17.6.1) (2025-04-25)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+## [17.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.5.1...@codecademy/gamut-styles@17.6.0) (2025-03-27)
+
+### Features
+
+- LX Studio theme ([786cb49](https://github.com/Codecademy/gamut/commit/786cb49676875cbae9f028d6e523a94bfd95ba36))
+
+### [17.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.5.0...@codecademy/gamut-styles@17.5.1) (2025-02-19)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
 ## [17.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-styles@17.4.1...@codecademy/gamut-styles@17.5.0) (2025-02-10)
 
 ### Features

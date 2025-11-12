@@ -25,15 +25,15 @@ const motionVariants = {
   },
 };
 
-const BaseContainer = motion(Box);
+const BaseContainer = motion.create(Box);
 
 export const FadeInSlideOut: React.FC<WithChildrenProp> = ({ children }) => (
   <BaseContainer
-    variants={motionVariants}
-    initial="initial"
     animate="visible"
     exit="exit"
+    initial="initial"
     py={8}
+    variants={motionVariants}
   >
     {children}
   </BaseContainer>

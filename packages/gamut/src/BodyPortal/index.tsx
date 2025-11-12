@@ -9,7 +9,6 @@ const PortalWrapper = styled
   .div(
     system.css({
       position: 'absolute',
-      zIndex: 1,
       top: 0,
       left: 0,
       right: 0,
@@ -18,7 +17,19 @@ const PortalWrapper = styled
   )
   .withComponent(ColorMode);
 
-export const BodyPortal: React.FC<React.PropsWithChildren> = ({ children }) => {
+interface BodyPortalProps {
+  /**
+   * TEMPORARY: a stopgap solution to avoid zIndex conflicts -
+   * will be reworked with: GM-624
+   * previously, zIndex was set to 1 in the CSS function
+   */
+  zIndex?: number;
+}
+
+export const BodyPortal: React.FC<React.PropsWithChildren<BodyPortalProps>> = ({
+  children,
+  zIndex = 1,
+}) => {
   const [ready, setReady] = useState(false);
   const mode = useCurrentMode();
 
@@ -30,7 +41,7 @@ export const BodyPortal: React.FC<React.PropsWithChildren> = ({ children }) => {
   if (!ready) return null;
 
   return ReactDOM.createPortal(
-    <PortalWrapper mode={mode} alwaysSetVariables>
+    <PortalWrapper alwaysSetVariables mode={mode} zIndex={zIndex}>
       {children}
     </PortalWrapper>,
     document.body

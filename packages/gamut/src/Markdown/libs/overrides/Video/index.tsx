@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
+import { TrackProps } from '@vidstack/react';
 import { DetailedHTMLProps, VideoHTMLAttributes } from 'react';
 
 import { Video } from '../../../../Video';
@@ -7,7 +8,10 @@ import { Video } from '../../../../Video';
 export type MarkdownVideoProps = DetailedHTMLProps<
   VideoHTMLAttributes<HTMLVideoElement>,
   HTMLVideoElement
->;
+> & {
+  textTracks?: TrackProps[];
+  showPlayerEmbed?: boolean;
+};
 
 export const MarkdownVideo: React.FC<MarkdownVideoProps> = (props) => {
   if (props?.src) {
@@ -21,6 +25,8 @@ export const MarkdownVideo: React.FC<MarkdownVideoProps> = (props) => {
       videoTitle: props?.title,
       videoUrl: props?.src,
       width: Number(props?.width),
+      textTracks: props?.textTracks,
+      showPlayerEmbed: props?.showPlayerEmbed,
     };
 
     return <Video {...videoProps} />;

@@ -15,10 +15,10 @@ export const TableHeader = forwardRef<HTMLTableRowElement, TableHeaderProps>(
       <Box as="thead" display="block" position="sticky" top={0} zIndex={2}>
         <HeaderRowEl
           {...rest}
+          ref={ref}
+          scrollable={scrollable}
           spacing={spacing}
           variant={variant}
-          scrollable={scrollable}
-          ref={ref}
         >
           {children}
         </HeaderRowEl>

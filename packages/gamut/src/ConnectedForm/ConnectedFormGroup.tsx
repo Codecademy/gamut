@@ -89,19 +89,29 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   );
 
   const textError = customError || getErrorMessage(error);
+  const showError = !!(textError && !hideLabel);
+  const errorId = showError ? `${id || name}_error` : undefined;
 
   return (
     <FormGroup spacing={hideLabel ? 'tight' : spacing}>
       {hideLabel ? <HiddenText>{renderedLabel}</HiddenText> : renderedLabel}
-      <Component {...(rest as any)} name={name} disabled={disabled} />
+      <Component
+        {...(rest as any)}
+        aria-describedby={errorId}
+        aria-invalid={showError}
+        disabled={disabled}
+        name={name}
+      />
       {children}
-      {(error || customError) && !hideLabel && (
+      {showError && (
         <FormError
-          role={isFirstError ? 'alert' : 'status'}
           aria-live={isFirstError ? 'assertive' : 'off'}
+          id={errorId}
+          role={isFirstError ? 'alert' : 'status'}
           variant={errorType}
         >
           <Markdown
+            inline
             overrides={{
               a: {
                 allowedAttributes: ['href', 'target'],
@@ -113,9 +123,8 @@ export function ConnectedFormGroup<T extends ConnectedField>({
               },
             }}
             skipDefaultOverrides={{ a: true }}
-            inline
-            text={textError}
             spacing="none"
+            text={textError}
           />
         </FormError>
       )}

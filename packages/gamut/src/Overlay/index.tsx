@@ -33,12 +33,17 @@ export type OverlayProps = {
   shroud?: boolean;
   /** Whether the overlay allows scroll */
   allowScroll?: boolean;
+  /**
+   * z-index for the Overlay. Defaults to 3 to appear above common UI elements
+   * like headers . Can be overridden when needed for custom stacking orders.
+   */
+  zIndex?: number;
 };
 
 const OverlayContainer = styled(FlexBox)(
   states({
     shroud: {
-      bg: 'shadow-black-heavy',
+      bg: 'navy-600',
     },
     inline: {
       position: 'absolute',
@@ -56,6 +61,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
   allowScroll = false,
+  zIndex = 3,
 }) => {
   const handleOutsideClick = useCallback(() => {
     if (clickOutsideCloses) {
@@ -73,19 +79,20 @@ export const Overlay: React.FC<OverlayProps> = ({
 
   const content = (
     <OverlayContainer
-      position="fixed"
-      data-testid="overlay-content-container"
       center
-      inset={0}
       className={className}
+      data-floating="overlay"
+      data-testid="overlay-content-container"
       inline={inline}
+      inset={0}
+      position="fixed"
       shroud={shroud}
     >
       <FocusTrap
         active={!inline}
+        allowPageInteraction={allowScroll}
         onClickOutside={handleOutsideClick}
         onEscapeKey={handleEscapeKey}
-        allowPageInteraction={allowScroll}
       >
         {children}
       </FocusTrap>
@@ -94,5 +101,5 @@ export const Overlay: React.FC<OverlayProps> = ({
 
   if (inline) return content;
 
-  return <BodyPortal>{content}</BodyPortal>;
+  return <BodyPortal zIndex={zIndex}>{content}</BodyPortal>;
 };

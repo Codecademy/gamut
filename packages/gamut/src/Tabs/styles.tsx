@@ -20,7 +20,7 @@ export const tabContainerVariants = variant({
       },
     },
     block: {
-      bg: 'shadow-solid',
+      bg: 'background-contrast',
       mb: 16,
     },
   },

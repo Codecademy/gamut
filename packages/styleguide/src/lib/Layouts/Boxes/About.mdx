@@ -1,9 +1,17 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as boxParameters } from './Box/Box.mdx';
+import { parameters as flexBoxParameters } from './FlexBox/FlexBox.mdx';
+import { parameters as gridBoxParameters } from './GridBox/GridBox.mdx';
 
 export const parameters = {
-  id: 'Boxes',
+  id: 'Layouts/Boxes',
   title: 'Boxes',
   subtitle: 'Flexible container component with all system props available.',
 };
@@ -15,27 +23,9 @@ export const parameters = {
 Primitive box component that are meant to be a kitchen sink utility component for all basic layouts. These are meant to act as a configurable building block for almost any occasion. They are extremely flexible and have access to nearly all of our system props.
 
 <TableOfContents
-  links={[
-    {
-      id: 'Layouts/Boxes/Box',
-      status: 'current',
-      subtitle:
-        'Our primitive box component that is meant to be a kitchen sink utility component for all basic layouts',
-      title: 'Box',
-    },
-    {
-      id: 'Layouts/Boxes/FlexBox',
-      status: 'current',
-      subtitle:
-        'A specific flex component that extends `Box` with extra props for common flex configurations.',
-      title: 'FlexBox',
-    },
-    {
-      id: 'Layouts/Boxes/GridBox',
-      status: 'current',
-      subtitle:
-        'A specific grid component that extends `Box` with extra props for common grid configurations.',
-      title: 'GridBox',
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    boxParameters,
+    flexBoxParameters,
+    gridBoxParameters,
+  ])}
 />

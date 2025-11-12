@@ -70,14 +70,14 @@ export const wrapWithSlideAnimation = (
         {props.showButton === 'shown' && (
           <motion.div
             animate={props.showButton}
+            exit="hidden"
             initial={
               props.direction === 'forward' && isFirstRender.current
                 ? 'shown'
                 : 'hidden'
             }
-            variants={slideAnimationVariants}
-            exit="hidden"
             transition={{ duration: 0.3 }}
+            variants={slideAnimationVariants}
           >
             <WrappedComponent {...props} />
           </motion.div>
@@ -101,22 +101,22 @@ const fadeAnimationVariants = {
 export const createAnimatedFadeButton = (
   WrappedComponent: typeof PaginationButton
 ) => {
-  const AnimatedButton = motion(WrappedComponent);
+  const AnimatedButton = motion.create(WrappedComponent);
   return (props: React.ComponentProps<typeof AnimatedButton>) => (
     <AnimatedButton
+      animate={props.showButton}
       aria-label={
         props.showButton === 'hidden' ? undefined : props['aria-label']
       }
-      animate={props.showButton}
-      initial={false}
-      variants={fadeAnimationVariants}
       disabled={props.showButton === 'hidden'}
+      initial={false}
       transition={{
         transitionStart: { visibility: 'visible' },
         duration: 0.3,
         ease: [0.04, 0.62, 0.23, 0.98],
         transitionEnd: { visibility: 'hidden' },
       }}
+      variants={fadeAnimationVariants}
       {...props}
     />
   );

@@ -1,5 +1,5 @@
 import { FormGroup, Input } from '@codecademy/gamut';
-import { ViewIcon } from '@codecademy/gamut-icons';
+import * as icons from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Input> = {
@@ -9,6 +9,14 @@ const meta: Meta<typeof Input> = {
     name: 'example-input',
     placeholder: 'Placeholder',
     type: 'text',
+    size: 'base',
+  },
+  argTypes: {
+    icon: {
+      control: 'select',
+      options: Object.keys(icons),
+      mapping: icons,
+    },
   },
 };
 
@@ -91,7 +99,7 @@ export const CustomIcon: Story = {
     htmlFor: 'example-icon',
     name: 'example-icon',
     defaultValue: 'Hello...',
-    icon: ViewIcon,
+    icon: icons.ViewIcon,
   },
 };
 
@@ -101,7 +109,7 @@ export const FormGroupDefault: Story = {
     name: 'example-123',
   },
   render: (args) => (
-    <FormGroup label="i am a smol label" isSoloField htmlFor="example-123">
+    <FormGroup htmlFor="example-123" isSoloField label="i am a smol label">
       <Input {...args} />
     </FormGroup>
   ),
@@ -115,10 +123,10 @@ export const FormGroupError: Story = {
   },
   render: (args) => (
     <FormGroup
-      label="i am a smol label"
       error="this is not updog."
-      isSoloField
       htmlFor="example-123"
+      isSoloField
+      label="i am a smol label"
     >
       <Input {...args} />
     </FormGroup>
@@ -133,11 +141,11 @@ export const FormGroupLarge: Story = {
   },
   render: (args) => (
     <FormGroup
+      disabled
+      htmlFor="example-123"
+      isSoloField
       label="i am a large disabled label"
       labelSize="large"
-      disabled
-      isSoloField
-      htmlFor="example-123"
     >
       <Input {...args} />
     </FormGroup>
@@ -152,13 +160,70 @@ export const FormGroupErrorLarge: Story = {
   },
   render: (args) => (
     <FormGroup
-      label="i am also large label, but something is wrong."
       error="this is still not updog..."
-      labelSize="large"
-      isSoloField
       htmlFor="example-123"
+      isSoloField
+      label="i am also large label, but something is wrong."
+      labelSize="large"
     >
       <Input {...args} />
     </FormGroup>
   ),
+};
+
+export const TextSmall: Story = {
+  args: {
+    htmlFor: 'example-text',
+    defaultValue: 'This input has less padding!',
+    name: 'example-text',
+    type: 'text',
+    required: true,
+    size: 'small',
+  },
+};
+
+export const TextSmallError: Story = {
+  args: {
+    htmlFor: 'example-text',
+    defaultValue: 'Still works like a charm!',
+    name: 'example-text',
+    type: 'text',
+    required: true,
+    size: 'small',
+    error: true,
+  },
+};
+
+export const NumberSmall: Story = {
+  args: {
+    htmlFor: 'example-number',
+    name: 'example-number',
+    type: 'number',
+    defaultValue: 1,
+    size: 'small',
+    icon: icons.ViewIcon,
+  },
+};
+
+export const FileSmall: Story = {
+  args: {
+    htmlFor: 'example-file',
+    name: 'example-file',
+    type: 'file',
+    value: '',
+    onChange: () => {},
+    size: 'small',
+    valid: true,
+  },
+};
+
+export const DisabledSmall: Story = {
+  args: {
+    htmlFor: 'example-disabled',
+    name: 'example-disabled',
+    placeholder: 'Disabled',
+    disabled: true,
+    defaultValue: undefined,
+    size: 'small',
+  },
 };

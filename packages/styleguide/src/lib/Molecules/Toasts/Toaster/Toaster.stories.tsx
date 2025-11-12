@@ -1,19 +1,8 @@
 import { FillButton, GridBox, Toast, Toaster } from '@codecademy/gamut';
 import { AddIcon, TrashIcon } from '@codecademy/gamut-icons';
 import { Target } from '@codecademy/gamut-illustrations';
-import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
-
-const meta: Meta<typeof Toaster> = {
-  component: Toaster,
-  // This is a known issue with SB 8, see: https://github.com/storybookjs/storybook/issues/23170
-  // Will fix this casting when the issue is resolved
-  subcomponents: { Toast: Toast as React.ComponentType<unknown> },
-  args: {},
-};
-
-export default meta;
-type Story = StoryObj<typeof Toaster>;
+import type { Meta } from '@storybook/react';
+import { ComponentProps, useState } from 'react';
 
 const exampleToasts = [
   {
@@ -36,8 +25,20 @@ const exampleToasts = [
   },
 ];
 
-const ToasterExample: React.FC = () => {
-  const [toasts, setToasts] = useState<typeof exampleToasts>([]);
+const meta: Meta<typeof Toaster> = {
+  component: Toaster,
+  // This is a known issue with SB 8, see: https://github.com/storybookjs/storybook/issues/23170
+  // Will fix this casting when the issue is resolved
+  subcomponents: { Toast: Toast as React.ComponentType<unknown> },
+  args: {
+    toasts: exampleToasts,
+  },
+};
+
+export default meta;
+
+export const Default: React.FC<ComponentProps<typeof Toaster>> = (args) => {
+  const [toasts, setToasts] = useState(args.toasts || []);
 
   const removeToasts = () => {
     setToasts([]);
@@ -45,7 +46,7 @@ const ToasterExample: React.FC = () => {
 
   const addToasts = () => {
     if (!toasts.length) {
-      setTimeout(() => setToasts(exampleToasts), 1000);
+      setTimeout(() => setToasts(args.toasts || []), 1000);
     }
   };
 
@@ -58,18 +59,14 @@ const ToasterExample: React.FC = () => {
   return (
     <>
       <GridBox width={300}>
-        <FillButton onClick={removeToasts} mb={24} icon={TrashIcon}>
+        <FillButton icon={TrashIcon} mb={24} onClick={removeToasts}>
           Click me to remove all the Toasts
         </FillButton>
-        <FillButton onClick={addToasts} icon={AddIcon}>
+        <FillButton icon={AddIcon} onClick={addToasts}>
           Click me to reveal all the Toasts
         </FillButton>
       </GridBox>
-      <Toaster toasts={toasts} onClose={removeOne} />
+      <Toaster {...args} toasts={toasts} onClose={removeOne} />
     </>
   );
-};
-
-export const Default: Story = {
-  render: () => <ToasterExample />,
 };

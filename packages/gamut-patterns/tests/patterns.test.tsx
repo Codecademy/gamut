@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 
-import * as patterns from '../dist/patterns';
-import { CheckerDense as GenericPatternComponent } from '../dist/patterns/CheckerDense';
+import * as patterns from '../src/patterns';
+import { CheckerDense as GenericPatternComponent } from '../src/patterns/CheckerDense';
 
 const patternComponents = patterns as Record<
   string,

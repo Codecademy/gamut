@@ -1,4 +1,9 @@
-import { styledOptions, system, variant } from '@codecademy/gamut-styles';
+import {
+  Colors,
+  styledOptions,
+  system,
+  variant,
+} from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 
@@ -33,16 +38,19 @@ const colorVariants = variant({
       textColor: 'background',
     },
     tertiary: {
+      bg: 'transparent',
       border: 1,
       borderColor: 'border-secondary',
-      color: 'text-secondary',
-      bg: 'transparent',
+      textColor: 'text-secondary',
     },
     tertiaryFill: {
+      bg: 'background',
       border: 1,
       borderColor: 'border-secondary',
-      color: 'text-secondary',
-      bg: 'background',
+      textColor: 'text-secondary',
+    },
+    custom: {
+      textColor: 'text',
     },
   },
 });
@@ -57,7 +65,7 @@ const sizeVariants = variant({
     },
     sm: {
       height: `1rem`,
-      // the powers that be told us this was okay. please don't do this. seriously. - <3 web-plat
+      // The powers that be told us this was okay. Please don't do this. Seriously. - <3 Web-Plat
       fontSize: 10 as any,
     },
   },
@@ -66,13 +74,39 @@ const sizeVariants = variant({
 const badgeProps = variance.compose(
   system.space,
   system.layout,
-  system.typography
+  system.typography,
+  system.background,
+  system.color
 );
-export interface BadgeBaseProps
-  extends StyleProps<typeof badgeProps>,
-    StyleProps<typeof colorVariants>,
-    StyleProps<typeof sizeVariants>,
-    WithChildrenProp {}
+
+type StandardBadgeProps = {
+  background?: never;
+  bg?: never;
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'tertiaryFill' | 'accent';
+};
+
+type CustomBadgeBackgroundProps = {
+  background: string;
+  bg?: never;
+  variant: 'custom';
+};
+
+type CustomBadgeBgProps = {
+  background?: never;
+  bg: Colors;
+  variant: 'custom';
+};
+
+type BadgeBgPropsType =
+  | StandardBadgeProps
+  | CustomBadgeBackgroundProps
+  | CustomBadgeBgProps;
+
+export type BadgeBaseProps = StyleProps<typeof badgeProps> &
+  StyleProps<typeof colorVariants> &
+  StyleProps<typeof sizeVariants> &
+  BadgeBgPropsType &
+  WithChildrenProp;
 
 const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
   badgeProps,
@@ -80,9 +114,7 @@ const BadgeBase = styled('div', styledOptions)<BadgeBaseProps>(
   sizeVariants
 );
 
-export interface BadgeProps
-  extends Partial<IconComponentType>,
-    BadgeBaseProps {}
+export type BadgeProps = Partial<IconComponentType> & BadgeBaseProps;
 
 export const Badge: React.FC<BadgeProps> = ({ icon, children, ...rest }) => {
   const size = rest.size === 'sm' ? 'sm' : 'base';

@@ -43,8 +43,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
     return (
       <StyledTextArea
         {...rest}
-        id={id || rest.htmlFor}
         className={className}
+        id={id || rest.htmlFor}
         ref={ref}
         variant={conditionalStyleState(Boolean(error), activated)}
         onChange={(event) => changeHandler(event)}

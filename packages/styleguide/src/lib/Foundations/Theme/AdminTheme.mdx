@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, LinkTo } from '~styleguide/blocks';
+
+import * as TABLES from '../shared/adminElements';
+
+export const parameters = {
+  title: 'Admin Theme',
+  subtitle: 'Codecademy Admin Theme used within admin tools',
+  status: 'current',
+  source: {
+    repo: 'gamut-styles',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/themes',
+  },
+};
+
+<Meta title="Foundations/Theme/Admin Theme" />
+
+<AboutHeader {...parameters} />
+
+The Admin Theme is a theme used within the Codecademy Admin Tooling. It is built off of the Core Theme with some light mode and dark mode colors overridden for Admin Tooling. For all other tokens not listed here, refer to the <LinkTo id="Foundations/Theme/CoreTheme">Core Theme</LinkTo>.
+
+See <LinkTo id="Foundations/Theme/About">Theme/About</LinkTo> for more information on the theme object and how to use it.
+
+## Color modes
+
+We have 2 core color modes that we support: `light` and `dark`.
+
+Each color mode consists of a set of aliased color tokens that have a semantic meaning for how the color is used throughout our design system. For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-colormode--page).
+
+### Light mode
+
+<TABLES.AdminLightModeTable />
+
+### Dark mode
+
+<TABLES.AdminDarkModeTable />

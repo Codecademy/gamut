@@ -14,6 +14,10 @@ monospace`;
 export const fontSystem = `-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu",
 "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif`;
 
+export const fontLxStudio = `"Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
+"Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+sans-serif`;
+
 export const fontFamily = {
   accent: fontAccent,
   base: fontBase,
@@ -44,4 +48,11 @@ export const fontWeight = {
   title: 700,
   700: 700,
   400: 400,
+} as const;
+
+export const percipioFontFamily = {
+  accent: '"Roboto", sans-serif',
+  base: '"Roboto", sans-serif',
+  monospace: '"Roboto Mono", monospace',
+  system: '"Roboto", sans-serif',
 } as const;

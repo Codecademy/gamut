@@ -36,46 +36,46 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
     <FlexBox>
       <DisclosureButtonWrapper
         aria-expanded={isExpanded}
-        onClick={handleClick}
-        width="100%"
-        variant="interface"
-        py={verticalSpacing}
-        px={horizontalSpacing}
         disabled={disabled}
         height="100%"
+        px={horizontalSpacing}
+        py={verticalSpacing}
+        variant="interface"
+        width="100%"
+        onClick={handleClick}
       >
         {overline && (
           <Text
-            textAlign="start"
-            width="100%"
             color="text-secondary"
             fontFamily="accent"
+            textAlign="start"
             variant="p-small"
+            width="100%"
           >
             {overline}
           </Text>
         )}
         <FlexBox
+          alignItems="center"
+          columnGap={40}
           flexDirection="row"
           justifyContent="space-between"
-          columnGap={40}
-          alignItems="center"
         >
           <Text
-            textAlign="start"
             as={headingLevel}
-            width="100%"
-            p={0}
-            variant={titleSize}
             fontWeight="title"
+            p={0}
+            textAlign="start"
+            variant={titleSize}
+            width="100%"
           >
             {heading}
           </Text>
 
           <Box p={8}>
             <Rotation
-              rotated={isExpanded}
               height={rotationSize}
+              rotated={isExpanded}
               width={rotationSize}
             >
               {spacing === 'normal' ? (
@@ -87,7 +87,7 @@ export const DisclosureButton: React.FC<DisclosureButtonProps> = ({
           </Box>
         </FlexBox>
         {subheading && (
-          <Text textAlign="start" width="100%" variant={subheadingSize}>
+          <Text textAlign="start" variant={subheadingSize} width="100%">
             {subheading}
           </Text>
         )}

@@ -52,8 +52,8 @@ export const Tag: React.FC<TagProps> = ({
       case 'navigation':
         return (
           <TagAnchor
-            interactiveType="navigation"
             href={disabled ? '' : href}
+            interactiveType="navigation"
             onClick={onClick}
             {...sharedInteractiveProps}
           >
@@ -93,9 +93,9 @@ export const Tag: React.FC<TagProps> = ({
           disabled={disabled}
           icon={isLarge ? LargeMiniDeleteIcon : DefaultMiniDeleteIcon}
           isLarge={isLarge}
-          onClick={onDismiss || undefined}
           tip={disabled ? '' : 'Remove'}
           tipProps={{ placement: disabled ? undefined : 'floating' }}
+          onClick={onDismiss || undefined}
         />
       )}
     </Outline>

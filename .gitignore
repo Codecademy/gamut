@@ -63,3 +63,8 @@ report*.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# IDE - Cursor
+.cursor/*
+!.cursor/rules
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md

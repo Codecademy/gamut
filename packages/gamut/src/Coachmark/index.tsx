@@ -1,17 +1,26 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import * as React from 'react';
 
-import { Popover, PopoverProps } from '../Popover';
-import { WithChildrenProp } from '../utils';
+import { DelayedRenderWrapper } from '../DelayedRenderWrapper';
+import {
+  Popover,
+  PopoverFocusProps,
+  PopoverProps,
+  PopoverYPositionType,
+} from '../Popover';
 
-export interface CoachmarkProps extends WithChildrenProp {
+export type CoachmarkProps = PopoverFocusProps & {
   /**
    * Applied to the element to which the coachmark points.
    */
   activeElClassName?: string;
   /**
+   * A Coachmark should have children since it is a wrapper component.
+   */
+  children: React.ReactNode | React.ReactNode[];
+  /**
    * Amount of time (in ms) to delay rendering the coachmark.
-   * @default 500
+   * @default 0
    */
   delay?: number;
   /**
@@ -25,42 +34,49 @@ export interface CoachmarkProps extends WithChildrenProp {
   /**
    * Props to be passed into the popover component.
    */
-  popoverProps?: Partial<PopoverProps>;
-}
+  popoverProps?: Partial<
+    Omit<PopoverProps, 'beak' | 'position'> & PopoverYPositionType
+  >;
+};
 
 export const Coachmark: React.FC<CoachmarkProps> = ({
   children,
   shouldShow,
   activeElClassName,
-  delay = 500,
+  delay = 0,
   renderPopover,
   popoverProps,
+  skipFocusTrap = true,
+  onRequestClose,
 }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
   const activeElRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (shouldShow) {
-      timer = setTimeout(() => {
-        setIsOpen(shouldShow);
-      }, delay);
-    } else {
-      setIsOpen(shouldShow);
-    }
+  const skipFocusTrapProps = skipFocusTrap
+    ? ({ skipFocusTrap: true, onRequestClose: undefined } as const)
+    : ({ skipFocusTrap: undefined, onRequestClose } as const);
 
-    return () => clearTimeout(timer);
-  }, [shouldShow, delay]);
+  const PopoverContainer = () => (
+    <Popover
+      {...popoverProps}
+      isOpen={shouldShow}
+      targetRef={activeElRef}
+      {...skipFocusTrapProps}
+      animation="fade"
+    >
+      {renderPopover()}
+    </Popover>
+  );
 
   return (
     <>
-      <div ref={activeElRef} className={activeElClassName}>
+      <div className={activeElClassName} ref={activeElRef}>
         {children}
       </div>
-      <Popover {...popoverProps} targetRef={activeElRef} isOpen={isOpen}>
-        {renderPopover()}
-      </Popover>
+      {shouldShow && (
+        <DelayedRenderWrapper delay={delay}>
+          {PopoverContainer()}
+        </DelayedRenderWrapper>
+      )}
     </>
   );
 };

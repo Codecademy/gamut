@@ -1,6 +1,14 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as dialogParameters } from './Dialog/Dialog.mdx';
+import { parameters as modalParameters } from './Modal/Modal.mdx';
+import { parameters as overlayParameters } from './Overlay/Overlay.mdx';
 
 export const parameters = {
   id: 'Molecules/Modals',
@@ -16,31 +24,9 @@ export const parameters = {
 Use a modal to focus a user’s attention on an important piece of information or quick task.
 
 <TableOfContents
-  links={[
-    {
-      id: 'Molecules/Modals/Dialog',
-      subtitle: 'Structured dialog modals with binary options.',
-      title: 'Dialog',
-      status: 'updating',
-    },
-    {
-      id: 'Molecules/Modals/Modal',
-      subtitle: 'A simple Modal portal to escape current DOM Context.',
-      title: 'Modal',
-      status: 'updating',
-    },
-    {
-      id: 'Molecules/Modals/ModalDeprecated',
-      subtitle: 'Please see the Modal page for all new Modals.',
-      title: 'ModalDeprecated',
-      status: 'deprecated',
-    },
-    {
-      id: 'Molecules/Modals/Overlay',
-      subtitle:
-        "Overlay primitives are controlled components that are told whether they're open by their parent. They're very basic and don't have animations defined.",
-      title: 'Overlay',
-      status: 'current',
-    },
-  ]}
+  links={addParentPath(parameters.id, [
+    dialogParameters,
+    modalParameters,
+    overlayParameters,
+  ])}
 />

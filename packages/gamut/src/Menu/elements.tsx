@@ -5,10 +5,13 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import isObject from 'lodash/isObject';
 import { ComponentProps, forwardRef } from 'react';
 
 import { sharedStates } from '../Box/props';
 import { resetStyles, Selectors } from '../ButtonBase/ButtonBase';
+import { ToolTip, ToolTipProps } from '../Tip/ToolTip';
+import { MenuItem } from './MenuItem';
 
 enum MenuItemSelectors {
   OUTLINE = '&:after',
@@ -52,7 +55,6 @@ const StyledList = styled('ul', styledOptions<'ul'>())<ListProps>(
   }),
   system.states({
     root: {
-      minWidth: 192,
       bg: 'background',
       p: 0,
     },
@@ -72,9 +74,9 @@ export const List = forwardRef<
   <StyledList
     context={context}
     m={m}
+    ref={ref}
     root={root}
     showBorder={variant !== 'fixed'}
-    ref={ref}
     variant={variant}
     {...rest}
   />
@@ -151,6 +153,21 @@ const activeStates = system.states({
       bg: 'secondary',
     },
   },
+  // Is named isDisabled to avoid conflicts with the HTML `disabled` attribute
+  isDisabled: {
+    bg: 'inherit',
+    cursor: 'not-allowed',
+    fontWeight: 400,
+    textColor: 'text-disabled',
+    [Selectors.HOVER]: {
+      textColor: 'text-disabled',
+      textDecoration: 'none',
+    },
+    [Selectors.BEFORE]: {
+      content: "''",
+      bg: 'inherit',
+    },
+  },
 });
 
 const sizeVariants = system.variant({
@@ -208,7 +225,7 @@ export const ListLink = forwardRef<
   HTMLAnchorElement,
   ComponentProps<typeof StyledListLink>
 >(({ zIndex = 1, ...rest }, ref) => (
-  <StyledListLink zIndex={zIndex} ref={ref} {...rest} />
+  <StyledListLink ref={ref} zIndex={zIndex} {...rest} />
 ));
 
 export const ListButton = styled(
@@ -222,3 +239,33 @@ export const ListButton = styled(
   sharedStates,
   listProps
 );
+
+export const MenuToolTipWrapper: React.FC<
+  Pick<ComponentProps<typeof MenuItem>, 'children' | 'label'> & {
+    tipId: string;
+  }
+> = ({ children, label, tipId }) => {
+  if (!label) {
+    return <>{children}</>;
+  }
+
+  const defaultTipProps = {
+    placement: 'floating',
+    id: tipId,
+    inheritDims: true,
+    shouldRenderAriaTip: false,
+  };
+
+  const wrapperProps =
+    label && isObject(label)
+      ? {
+          ...defaultTipProps,
+          ...label,
+        }
+      : {
+          info: label,
+          ...defaultTipProps,
+        };
+
+  return <ToolTip {...(wrapperProps as ToolTipProps)}>{children}</ToolTip>;
+};

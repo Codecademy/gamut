@@ -28,6 +28,6 @@ const StyledSvg = styled(
 
 export const Svg = forwardRef<SVGSVGElement, ComponentProps<typeof StyledSvg>>(
   ({ height = '100%', width = '100%', ...rest }, ref) => (
-    <StyledSvg height={height} width={width} ref={ref} {...rest} />
+    <StyledSvg height={height} ref={ref} width={width} {...rest} />
   )
 );

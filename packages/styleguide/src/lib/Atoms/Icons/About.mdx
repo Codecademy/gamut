@@ -1,9 +1,18 @@
+import { Anchor } from '@codecademy/gamut';
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, TableOfContents } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  addParentPath,
+  Callout,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as miniParameters } from './Mini/Mini.mdx';
+import { parameters as regularParameters } from './Regular/Regular.mdx';
 
 export const parameters = {
-  id: 'Icons',
+  id: 'Atoms/Icons',
   title: 'Icons',
   subtitle:
     'SVG Icon components from [Streamline](https://streamlineicons.com/).',
@@ -41,23 +50,38 @@ export const parameters = {
 
 ### Troubleshooting
 
+Our icons all are transformed with a [custom Babel plugin](https://github.com/Codecademy/gamut/blob/cass-gm-fix-lx-icons/packages/gamut-icons/mask-plugin.js) that ensures our icons all can consistently render semi-opaque colors without overlay issues. This occasionally can cause unintended changes - if your icon isn't rendering the way you'd expect, try the steps below.
+
+<Callout
+  text={
+    <>
+      You can edit SVGs and see changes in real-time with{' '}
+      <Anchor href="https://www.svgviewer.dev/">SVGViewer</Anchor>
+    </>
+  }
+/>
+
 1. If the icon is not rendering correctly, check that if the initial asset has a `<mask>` -- if it does, ask the designer to remove it. Gamut will add in a mask during the build process.
 
+2. If the icon has `fill=none` on the `svg` element, you may need to move `fill=none` to each of the `path` elements instead, for example -
+
+```tsx
+
+// before
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"  height="24" width="24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M16.75 4.5V1.75c0 -0.55228 -0.4477 -1 -1 -1h-14c-0.55228 0 -1 0.44771 -1 1v14c0 0.5523 0.44772 1 1 1H4.5" stroke-width="1.5"/>
+  <path stroke="currentColor" stroke-linejoin="round" d="M7.25 8.25c0 -0.55229 0.44772 -1 1 -1h14c0.5523 0 1 0.44772 1 1v14c0 0.5523 -0.4477 1 -1 1h-14c-0.55229 0 -1 -0.4477 -1 -1v-14Z" stroke-width="1.5"/>
+</svg>
+
+// after
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24">
+  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M16.75 4.5V1.75a1 1 0 0 0-1-1h-14a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1H4.5" stroke-width="1.5"/>
+  <path fill="none" stroke="currentColor" stroke-linejoin="round" d="M7.25 8.25a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-14a1 1 0 0 1-1-1z" stroke-width="1.5"/>
+</svg>
+
+
+```
+
 <TableOfContents
-  links={[
-    {
-      id: 'Atoms/Icons/Mini',
-      subtitle:
-        'A subset of [Streamline Mini Bold](https://app.streamlinehq.com/streamline-mini-bold). These are a smaller set of icons that are bolder and work well in smaller resolutions.',
-      title: 'Mini',
-      status: 'current',
-    },
-    {
-      id: 'Atoms/Icons/Regular',
-      subtitle:
-        'A regular sized Icon set primarily from [Streamline Regular](https://app.streamlinehq.com/streamline-regular).',
-      title: 'Regular',
-      status: 'current',
-    },
-  ]}
+  links={addParentPath(parameters.id, [miniParameters, regularParameters])}
 />

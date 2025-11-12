@@ -1,3 +1,4 @@
+import { Anchor } from '@codecademy/gamut';
 import { Meta } from '@storybook/blocks';
 
 import { AboutHeader, Callout, LinkTo } from '~styleguide/blocks';
@@ -65,7 +66,7 @@ limit: number;
 ### Unit tests
 
 Your component should have unit tests in a `__tests__/MyComponent-test.tsx` file within its directory.
-Use Enzyme's `mount` to test it.
+Use `setupRtl` from `gamut-tests` to test it.
 
 We generally try to unit test all component logic, with the exception of class names in components that contain other logic.
 
@@ -77,7 +78,21 @@ All components must have Storybook stories showing their use. See <LinkTo id='Me
 
 Please fill out the pull request template, including links to the corresponding Abstract design and JIRA ticket.
 
-<Callout text="You can use a [Draft PR](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests#draft-pull-requests) to just run CI jobs. That includes deploying a Netlify preview and publishing alpha package versions to npm. 😉" />
+<Callout
+  text={
+    <>
+      You can use a{' '}
+      <Anchor
+        target="_"
+        href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests#draft-pull-requests"
+      >
+        Draft PR
+      </Anchor>{' '}
+      to just run CI jobs. That includes deploying a Netlify preview and
+      publishing alpha package versions to npm. 😉
+    </>
+  }
+/>
 
 ### Publishing updates
 

@@ -1,0 +1,110 @@
+import { Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+export const parameters = {
+  title: 'Validation',
+  subtitle: 'Robust form validation using react-hook-form.',
+  status: 'static',
+};
+
+<Meta title="Organisms/GridForm/Validation" />
+
+<ComponentHeader {...parameters} />
+
+## Validation
+
+GridForm uses [react-hook-form](https://react-hook-form.com) for validation, providing a robust and flexible validation system. All validation rules are applied to individual fields through the `validation` property.
+
+You can control when validation occurs by setting the `validation` prop on the GridForm:
+
+- `'onSubmit'` (default) - Validate only when the form is submitted
+- `'onChange'` - Validate on every change, submit button is disabled until all required fields are valid
+- `'onTouched'` - Validate when a field loses focus
+
+## Required Fields
+
+The most common validation is making fields required. You can specify required validation as a boolean or with a custom error message:
+
+```tsx
+// Simple required validation
+validation: {
+  required: true;
+}
+
+// Required with custom error message
+validation: {
+  required: 'Please enter your email address';
+}
+```
+
+## Pattern Validation
+
+Use regular expressions (regex) to validate field formats like email addresses, phone numbers, or custom patterns:
+
+```tsx
+validation: {
+  required: 'Email is required',
+  pattern: {
+    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    message: 'Please enter a valid email address'
+  }
+}
+```
+
+## Custom Validation
+
+For complex validation logic, use custom validation functions. These functions receive the field value and can return `true` for valid input or an error message string:
+
+```tsx
+validation: {
+  required: 'Please select a file',
+  validate: (files) => {
+    const file = files.item(0);
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    if (!allowedTypes.includes(file.type)) {
+      return 'Please upload a JPEG, PNG, or GIF image';
+    }
+    if (file.size > 2 * 1024 * 1024) {
+      return 'File size must be less than 2MB';
+    }
+    return true;
+  }
+}
+```
+
+## String Length Validation
+
+Validate minimum and maximum string lengths:
+
+```tsx
+validation: {
+  required: 'Message is required',
+  minLength: {
+    value: 10,
+    message: 'Message must be at least 10 characters'
+  },
+  maxLength: {
+    value: 500,
+    message: 'Message cannot exceed 500 characters'
+  }
+}
+```
+
+## Number Range Validation
+
+For number inputs, validate minimum and maximum values:
+
+```tsx
+validation: {
+  required: 'Age is required',
+  min: {
+    value: 18,
+    message: 'Must be at least 18 years old'
+  },
+  max: {
+    value: 99,
+    message: 'Age cannot exceed 99'
+  }
+}
+```

@@ -37,8 +37,8 @@ export const checkboxElement = system.css({
   minWidth: 22,
   width: 22,
   height: 22,
-  borderColor: 'currentColor',
-  borderRadius: 'md',
+  borderColor: 'border-primary',
+  borderRadius: '4px' as keyof typeof theme.borderRadii, // hardcoded so that it is not impacted by the theme's border-radius token
   borderStyle: 'solid',
   borderWidth: '2px',
   transition: transitionConcat(
@@ -53,7 +53,7 @@ export const checkboxElement = system.css({
 });
 
 export const polyline = system.css({
-  color: 'shadow-opaque',
+  color: 'background',
 });
 
 export const checkboxTextStates = system.states({
@@ -67,14 +67,21 @@ export const checkboxElementStates = system.states({
   multiline: {
     mt: 4,
   },
-  checked: {
+  active: {
     color: 'primary',
+    borderColor: 'primary',
   },
   disabled: {
     color: 'text-disabled',
     [InputSelectors.HOVER]: {
       outline: 'none',
     },
+  },
+  hasBg: {
+    bg: 'currentColor',
+  },
+  hideBorder: {
+    borderColor: 'transparent',
   },
 });
 

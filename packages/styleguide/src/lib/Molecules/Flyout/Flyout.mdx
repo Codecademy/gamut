@@ -5,6 +5,7 @@ import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 import * as FlyoutStories from './Flyout.stories';
 
 export const parameters = {
+  title: 'Flyout',
   subtitle: `Flyout is a general purpose container that animates into view.`,
   design: {
     type: 'figma',
@@ -28,10 +29,32 @@ On button click, a container animates in from the left or right side of the wind
 
 Internally, Flyout is a combination of <LinkTo id="Molecules/Modals/Overlay">Overlay</LinkTo> and <LinkTo id="Atoms/Drawer">Drawer</LinkTo>.
 
-Our Flyouts are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded` and `onChange`:
+Our Flyouts are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded` and `onChange`.
+
+The component that toggles the `Flyout` should include the `aria-expanded` attribute. The `aria-expanded` attribute should reflect the value of the `expanded` prop passed to the `Flyout`. In the example below, the `StrokeButton` controls the expansion of the `Flyout`, so the button has the `aria-expanded` attribute.
+
+```tsx
+const ExampleFlyout: React.FC = () => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <FlexBox>
+      <Flyout expanded={expanded} id={flyoutId}>
+        Example Flyout
+      </Flyout>
+      <StrokeButton
+        aria-expanded={expanded}
+        onClick={() => setExpanded((previousExpanded) => !previousExpanded)}
+      >
+        Set the proper aria-labels!
+      </StrokeButton>
+    </FlexBox>
+  );
+};
+```
 
 ## Playground
 
-<Canvas sourceState="shown" of={FlyoutStories.FlyoutExample} />
+<Canvas sourceState="shown" of={FlyoutStories.Default} />
 
 <Controls />

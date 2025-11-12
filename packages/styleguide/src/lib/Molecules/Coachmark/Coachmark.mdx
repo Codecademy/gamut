@@ -5,6 +5,7 @@ import { ComponentHeader } from '~styleguide/blocks';
 import * as CoachmarkStories from './Coachmark.stories';
 
 export const parameters = {
+  title: 'Coachmark',
   subtitle:
     'A Coachmark helps bring attention to a CTA by showing a popover around that element.',
   source: {
@@ -25,7 +26,7 @@ export const parameters = {
 
 ## Usage
 
-Use coachmark to guide learners about key functionality on a page or drive new feature adoption.
+Use `Coachmark` to guide learners about key functionality on a page or drive new feature adoption.
 
 ### Best practices:
 
@@ -36,11 +37,60 @@ Use coachmark to guide learners about key functionality on a page or drive new f
 
 - Long-term guidance or instructions should be provided in a more permanent location, such as a help center or documentation.
 
-## Variants
+## Guidance
 
-### Customizations
+The `Coachmark` component should be wrapped around the element you want to highlight. What a user sees is comes from `renderPopover` which is a function with an optional `onDismiss` argument that returns a React node. `Coachmark` uses its child element as a target for the `Popover`.
 
-Using the popoverProps, you can customize the look of the coachmark. For example, you can add an outline, beak, and pattern, as shown below.
+```jsx
+const ExampleCoachmark = () => {
+  const [shouldShow, setShouldShow] = useState(true);
+
+  const renderPopover = (onDismiss) => (
+    <Box >
+      <Text>This is the Popover</Text>
+      <FillButton
+        onClick={() => {
+          setShouldShow(false);
+          onDismiss();
+        }}
+      >
+        Click to un-show the Coachmark's Popover!
+      </FillButton>
+    </Box
+  );
+
+  return (
+    <Coachmark
+      renderPopover={renderPopover}
+      shouldShow={shouldShow}
+    >
+      <FillButton onClick={() => setShouldShow(true)}>Child element that triggers Coachmark</FillButton>
+    </Coachmark>
+  );
+};
+```
+
+### `shouldShow`
+
+A `Coachmark` can be set to show or hide based on the `shouldShow` prop. This is useful for controlling when the popover appears. For example, you might want to show the popover only in special circumstances, such as when a user first visits a page or not show again after they click a specific button.
+
+<Canvas of={CoachmarkStories.Default} />
+
+### `delay`
+
+The `delay` prop allows you to control how long the popover will wait before showing. This is useful for ensuring that the user has time to interact with the target element before the popover appears.
+
+This example has a delay of 3000 ms (3 seconds) between clicking the button and the popover appearing.
+
+<Canvas of={CoachmarkStories.Delay} />
+
+### `skipFocusTrap`
+
+The `skipFocusTrap` prop allows you to disable the focus trap that is normally applied to the popover. `skipFocusTrap` defaults to `true`, which means that the popover will not trap focus. However, if you need to to enable the focus trap you can set `skipFocusTrap` to `false` .
+
+### `popoverProps`
+
+Using `popoverProps`, you can customize the look of the rendered popover. For example, you can add an outline, beak, and pattern, as shown below.
 
 <Canvas of={CoachmarkStories.Customized} />
 

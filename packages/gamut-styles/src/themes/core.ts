@@ -2,6 +2,7 @@ import { createTheme } from '@codecademy/variance';
 
 import {
   borderRadii,
+  containerQueries,
   corePalette,
   elements,
   fontFamily,
@@ -19,7 +20,7 @@ import {
  */
 
 export const coreTheme = createTheme({
-  breakpoints: mediaQueries,
+  breakpoints: { ...mediaQueries, ...containerQueries },
   borderRadii,
   fontSize,
   fontFamily,
@@ -50,10 +51,13 @@ export const coreTheme = createTheme({
         selected: 'navy-100',
         disabled: 'navy-200',
         hover: 'navy-200',
+        success: 'green-0',
+        warning: 'yellow-0',
+        error: 'red-0',
       },
       shadow: {
-        opaque: 'shadow-white-heavy',
-        solid: 'gray-200',
+        primary: 'navy-800',
+        secondary: 'navy-600',
       },
       primary: {
         _: 'hyper-500',
@@ -87,7 +91,7 @@ export const coreTheme = createTheme({
         secondary: 'white-600',
       },
       feedback: {
-        error: 'red-0',
+        error: 'red-300',
         success: 'green-400',
         warning: 'yellow-0',
       },
@@ -99,10 +103,13 @@ export const coreTheme = createTheme({
         selected: 'white-100',
         disabled: 'white-200',
         hover: 'white-200',
+        success: 'green-900',
+        warning: 'yellow-900',
+        error: 'red-900',
       },
       shadow: {
-        opaque: 'shadow-black-heavy',
-        solid: 'black',
+        primary: 'white',
+        secondary: 'white-600',
       },
       primary: {
         _: 'yellow-500',
@@ -114,8 +121,8 @@ export const coreTheme = createTheme({
         hover: 'white-700',
       },
       danger: {
-        _: 'red-0',
-        hover: 'red-100',
+        _: 'red-300',
+        hover: 'red-400',
       },
       interface: {
         _: 'yellow-500',
@@ -129,11 +136,12 @@ export const coreTheme = createTheme({
       },
     },
   })
-  .addScale('borders', ({ colors }) => ({
+  .addScale('borders', ({ colors }: { colors: Record<string, string> }) => ({
     1: `1px solid ${colors['border-primary']}`,
     2: `2px solid ${colors['border-primary']}`,
   }))
   .createScaleVariables('elements')
+  .addName('core')
   .build();
 
 export type CoreThemeShape = typeof coreTheme;

@@ -40,7 +40,7 @@ export const radioLabel = css({
   [InputSelectors.BEFORE_AND_AFTER]: consistentLabelStyles,
   [InputSelectors.BEFORE]: {
     bg: 'background',
-    boxShadow: `0 0 0 1px ${theme.colors[`text-disabled`]}`,
+    boxShadow: `0 0 0 1px ${theme.colors[`border-primary`]}`,
     transition: timing.medium,
   },
   [InputSelectors.AFTER]: {

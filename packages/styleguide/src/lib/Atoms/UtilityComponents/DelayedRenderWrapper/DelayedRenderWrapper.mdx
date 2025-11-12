@@ -1,0 +1,33 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as DelayedRenderWrapperStories from './DelayedRenderWrapper.stories';
+
+export const parameters = {
+  title: 'DelayedRenderWrapper',
+  subtitle:
+    'A utility component that delays rendering of its children until after a specified delay.',
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/DelayedRenderWrapper/DelayedRenderWrapper.tsx',
+  },
+};
+
+<Meta of={DelayedRenderWrapperStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use `DelayedRenderWrapper` to wrap around a component that you want to delay rendering for a specified amount of time.
+
+The `delay` prop accepts a number in milliseconds. If a `delay` {'>'} 0 is provided, `DelayedRenderWrapper` will use a `setTimeout()` to determine when to render its children. If `delay` is 0 or not provided, it will render its children immediately.
+
+## Playground
+
+<Canvas sourceState="shown" of={DelayedRenderWrapperStories.Default} />
+
+<Controls />

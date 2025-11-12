@@ -10,6 +10,7 @@ import {
 import * as AnchorStories from './Anchor.stories';
 
 export const parameters = {
+  title: 'Anchor',
   subtitle: `A clickable text element that navigates to another page, resource, or location on the same page.`,
   design: {
     type: 'figma',
@@ -74,9 +75,13 @@ Use in menus or in instances where the context of the link makes it clear that i
 
 ### Standard
 
-Use outside of a paragraph or ‘menu’ instance.
+Use outside of a paragraph or `menu` instance.
 
-<Callout text="When placed inline with other bold text (e.g., headings), standard links not meet a11y standards. Include an icon to ensure the link is distinguishable. When placed alongside non-bold text, bold formatting provides adequate visual distinction." />
+<Callout text="When placed inline with other bold text (e.g., headings), standard links do not meet a11y standards. Include an icon to ensure the link is distinguishable. When placed alongside non-bold text, bold formatting provides adequate visual distinction." />
+
+### Standard Secondary
+
+Use outside of a paragraph or `menu` instance when a lower level of prominence is needed. This variant is suitable for secondary links where the Standard variant might feel too bold or attention-grabbing.
 
 <Canvas of={AnchorStories.Modes} />
 

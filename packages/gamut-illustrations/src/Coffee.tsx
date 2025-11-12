@@ -11,10 +11,10 @@ export const Coffee: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    width={width}
+    fill="none"
     height={height}
     viewBox="0 0 48 73"
-    fill="none"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
@@ -35,25 +35,25 @@ export const Coffee: React.FC<IllustrationProps> = ({
     />
     <defs>
       <pattern
+        height=".509"
         id="a"
         patternContentUnits="objectBoundingBox"
         width=".542"
-        height=".509"
       >
-        <use xlinkHref="#c" transform="scale(.06778 .06368)" />
+        <use transform="scale(.06778 .06368)" xlinkHref="#c" />
       </pattern>
       <pattern
+        height=".569"
         id="b"
         patternContentUnits="objectBoundingBox"
         width=".542"
-        height=".569"
       >
-        <use xlinkHref="#c" transform="scale(.06778 .07118)" />
+        <use transform="scale(.06778 .07118)" xlinkHref="#c" />
       </pattern>
       <image
+        height="8"
         id="c"
         width="8"
-        height="8"
         xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAeSURBVHgBzc4xAQAAAAEwEVxq6J+OGCzBQDk4MzgV8D0CqU26KA8AAAAASUVORK5CYII="
       />
     </defs>

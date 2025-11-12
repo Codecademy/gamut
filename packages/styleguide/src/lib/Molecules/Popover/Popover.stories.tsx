@@ -6,20 +6,20 @@ import {
   Popover,
   PopoverProps,
 } from '@codecademy/gamut';
-import {
-  CheckerDense,
-  CheckerLoose,
-  CheckerRegular,
-  DiagonalADense,
-  DiagonalALoose,
-  DiagonalARegular,
-} from '@codecademy/gamut-patterns';
+import * as patterns from '@codecademy/gamut-patterns';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useRef, useState } from 'react';
 
 const meta: Meta<typeof Popover> = {
   component: Popover,
   args: { children: undefined },
+  argTypes: {
+    pattern: {
+      control: 'select',
+      options: Object.keys(patterns),
+      mapping: patterns,
+    },
+  },
 };
 
 export default meta;
@@ -33,7 +33,7 @@ const PopoverExample = ({ p = 16, ...rest }: PopoverExampleProps) => {
   const toggleOpen = () => setOpen(!open);
   return (
     <>
-      <Box ref={activeElRef}>
+      <Box ref={activeElRef} width="fit-content">
         <FillButton onClick={toggleOpen}>Open Popover</FillButton>
       </Box>
       <FlexBox>
@@ -43,7 +43,7 @@ const PopoverExample = ({ p = 16, ...rest }: PopoverExampleProps) => {
           targetRef={activeElRef}
           onRequestClose={() => setOpen(false)}
         >
-          <FlexBox flexDirection="column" p={p} alignItems="flex-start">
+          <FlexBox alignItems="flex-start" flexDirection="column" p={p}>
             <Box mb={8}>Hooray!</Box>
             <FillButton size="small" onClick={() => setOpen(false)}>
               Close Popover
@@ -60,7 +60,7 @@ export const Default: Story = {
 };
 
 export const Beak: Story = {
-  render: (args) => <PopoverExample {...args} beak="left" />,
+  render: (args) => <PopoverExample {...args} beak="left" position="below" />,
 };
 
 export const BeakCentered: Story = {
@@ -68,34 +68,95 @@ export const BeakCentered: Story = {
 };
 
 export const Outline: Story = {
-  render: (args) => <PopoverExample {...args} outline />,
+  render: (args) => (
+    <PopoverExample {...args} align="right" beak="center" outline />
+  ),
 };
 
 export const Above: Story = {
-  render: (args) => <PopoverExample {...args} position="above" />,
+  render: (args) => <PopoverExample {...args} beak="center" position="above" />,
 };
 
 export const Below: Story = {
-  render: (args) => <PopoverExample {...args} />,
+  render: (args) => <PopoverExample {...args} beak="center" position="below" />,
+};
+export const CenterLeft: Story = {
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      align="left"
+      beak="center"
+      pattern={undefined}
+      position="center"
+    />
+  ),
+};
+
+export const CenterRight: Story = {
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      align="right"
+      beak="center"
+      pattern={undefined}
+      position="center"
+    />
+  ),
 };
 
 export const PopoverCheckerDense: Story = {
-  render: (args) => <PopoverExample {...args} pattern={CheckerDense} />,
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      pattern={patterns.CheckerDense}
+      position="below"
+    />
+  ),
 };
 export const PopoverCheckerLoose: Story = {
-  render: (args) => <PopoverExample {...args} pattern={CheckerLoose} />,
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      pattern={patterns.CheckerLoose}
+      position="below"
+    />
+  ),
 };
 export const PopoverCheckerRegular: Story = {
-  render: (args) => <PopoverExample {...args} pattern={CheckerRegular} />,
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      pattern={patterns.CheckerRegular}
+      position="below"
+    />
+  ),
 };
 export const PopoverDiagonalADense: Story = {
-  render: (args) => <PopoverExample {...args} pattern={DiagonalADense} />,
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      pattern={patterns.DiagonalADense}
+      position="below"
+    />
+  ),
 };
 export const PopoverDiagonalALoose: Story = {
-  render: (args) => <PopoverExample {...args} pattern={DiagonalALoose} />,
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      pattern={patterns.DiagonalALoose}
+      position="below"
+    />
+  ),
 };
 export const PopoverDiagonalARegular: Story = {
-  render: (args) => <PopoverExample {...args} pattern={DiagonalARegular} />,
+  render: (args) => (
+    <PopoverExample
+      {...args}
+      pattern={patterns.DiagonalARegular}
+      position="below"
+    />
+  ),
 };
 
 const PopoverWithoutFocus = (args: PopoverProps) => {
@@ -116,7 +177,7 @@ const PopoverWithoutFocus = (args: PopoverProps) => {
           targetRef={activeElRef}
           onRequestClose={() => setOpen(false)}
         >
-          <FlexBox flexDirection="column" p={16} alignItems="flex-start">
+          <FlexBox alignItems="flex-start" flexDirection="column" p={16}>
             Nothing clickable here but the container has fallback focus
           </FlexBox>
         </Popover>
@@ -135,6 +196,12 @@ export const Animation: Story = {
 
 export const Variant: Story = {
   render: (args) => (
-    <PopoverExample variant="secondary" beak="left" {...args} />
+    <PopoverExample
+      {...args}
+      align="center"
+      beak="left"
+      position="above"
+      variant="secondary"
+    />
   ),
 };

@@ -1,0 +1,113 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, TokenTable } from '~styleguide/blocks';
+
+import * as TABLES from '../shared/elements';
+
+export const parameters = {
+  title: 'Core Theme',
+  subtitle: 'The Emotion theme for Codecademy',
+  status: 'current',
+  source: {
+    repo: 'gamut-styles',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/themes',
+  },
+};
+
+<Meta title="Foundations/Theme/Core Theme" />
+
+<AboutHeader {...parameters} />
+
+## Color
+
+**Key**: `colors`
+
+All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches.
+
+### Standard colors
+
+Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
+
+<TokenTable {...TABLES.color} />
+
+### Solid color swatches
+
+Swatch colors are accessible with a dashcase key `colors['${color}-${weight}']`. Here's a list of all the solid swatches available.
+
+<TokenTable {...TABLES.swatch} />
+
+### Navy and white color swatches
+
+With the exception of the `weight-100`, `navy-800`, and `navy-900` color weights, our navy and white color weights are semi-transparent. Special consideration should be taken when using these colors, especially when overlapping. The white weights, with the non-transparent exceptions, are only visible in dark mode, and the navy weights, with the non-transparent exceptions, are only visible in light mode. You can swap modes using the `Color Mode` toggle at the top of this screen.
+
+These tokens are also accessible with a dashcase key `colors['${color}-${weight}']`.
+
+<TokenTable {...TABLES.rgbaSwatch} />
+
+## Color modes
+
+We have 2 core color modes that we support: `light` and `dark`.
+
+Each color mode consists of a set of aliased color tokens that have a semantic meaning for how the color is used throughout our design system. For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-colormode--page).
+
+### Light mode
+
+<TABLES.LightModeTable />
+
+### Dark mode
+
+<TABLES.DarkModeTable />
+
+## Typography
+
+export const sampleText = 'Example Text';
+
+export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+`;
+
+### Font family
+
+**Key**: `fontFamily`
+
+<TokenTable {...TABLES.fontFamily} />
+
+### Font size
+
+**Key**: `fontSize`
+
+<TokenTable {...TABLES.fontSize} />
+
+### Font weight
+
+**Key**: `fontWeight`
+
+<TokenTable {...TABLES.fontWeight} />
+
+### Line height
+
+**Key**: `lineHeight`
+
+<TokenTable {...TABLES.lineHeight} />
+
+## Space
+
+### Spacing
+
+**Key**: `spacing`
+
+<TokenTable {...TABLES.space} />
+
+## Layout
+
+### Breakpoints
+
+**Key**: `breakpoints`
+
+<TokenTable {...TABLES.breakpoint} />
+
+## Border Radius
+
+**Key**: `borderRadii`
+
+<TokenTable {...TABLES.borderRadii} />

@@ -39,16 +39,16 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
     return (
       <Button
         {...rest}
-        type="submit"
-        disabled
         aria-label={isLoading ? 'Loading' : undefined}
+        disabled
+        type="submit"
       >
         {/** This maintains button dimensions while hiding it from screen readers and the page */}
-        <Box as="span" opacity={0} aria-hidden>
+        <Box aria-hidden as="span" opacity={0}>
           {children}
         </Box>
         {isLoading && (
-          <FlexBox position="absolute" inset={0} center>
+          <FlexBox center inset={0} position="absolute">
             <Spinner size={16} />
             <HiddenText aria-live="polite">Loading</HiddenText>
           </FlexBox>
@@ -58,7 +58,7 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
   }
 
   return (
-    <Button {...rest} type="submit" disabled={isDisabled}>
+    <Button {...rest} disabled={isDisabled} type="submit">
       {children}
     </Button>
   );

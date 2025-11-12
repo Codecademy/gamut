@@ -1,10 +1,11 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { Callout, ComponentHeader } from '~styleguide/blocks';
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as AccordionDeprecatedStories from './AccordionDeprecated.stories';
 
 export const parameters = {
+  title: 'AccordionDeprecated',
   subtitle: `A molecule consisting of a "top" section and an expandable body,
 such as a "hint" section in the LE or a list of department jobs on a careers page.`,
   status: 'deprecated',
@@ -19,7 +20,15 @@ such as a "hint" section in the LE or a list of department jobs on a careers pag
 
 <ComponentHeader {...parameters} />
 
-<Callout text="Note: This component is deprecated. For similar functionality, consider using Disclosure or a List component." />
+<Callout
+  text={
+    <>
+      Note: This component is deprecated. For similar functionality, consider
+      using <LinkTo id="Molecules/Disclosure">Disclosure</LinkTo> or a{' '}
+      <LinkTo id="Organisms/Lists & Tables/List">List </LinkTo> component.
+    </>
+  }
+/>
 
 ## Usage
 
@@ -33,7 +42,7 @@ This Accordion component will fit to `100%` of the the height of their parent co
 
 ### When NOT to use:
 
-- [Having a button that reveals additional information]- for creating a single "Accordion", similar to an HTML [details](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) element, use the Disclosure component instead.
+- Having a button that reveals additional information- for creating a single "Accordion", similar to an HTML [details](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) element, use the Disclosure component instead.
 - Creating a "Accordion" with many rows — akin to an FAQ that lists out questions and reveals an answer when clicked, use the List component with expandable rows.
 
 ## Variants

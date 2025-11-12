@@ -1,0 +1,585 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, LinkTo } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Foundations/Theme/Creating Themes',
+  title: 'Creating Themes',
+  subtitle: `How to create custom themes using gamut-styles and the createTheme builder`,
+  status: 'current',
+};
+
+<Meta title="Foundations/Theme/Creating Themes" />
+
+<AboutHeader {...parameters} />
+
+The gamut-styles theme system is built on top of `@codecademy/variance` and provides a powerful, type-safe way to create custom themes. This guide will walk you through creating your own themes and understanding how they integrate with Gamut components.
+
+## Overview
+
+Themes in gamut-styles are created using the `createTheme` builder pattern, which provides:
+
+- **Type Safety**: Full TypeScript support with autocomplete and type checking
+- **CSS Variables**: Automatic generation of CSS custom properties
+- **Color Modes**: Built-in support for light/dark mode switching
+- **Composability**: Easy theme inheritance and customization
+- **Component Integration**: Seamless integration with gamut components
+
+## Basic Theme Structure
+
+All themes extend from a base theme and can be customized using the builder pattern:
+
+```tsx
+import { createTheme } from '@codecademy/variance';
+
+const myTheme = createTheme({
+  ...baseTheme,
+  fontFamily: customFontFamily,
+})
+  .addColors(colorPalette)
+  .addColorModes('light', colorModeConfig)
+  .addScale('customProperty', scaleFunction) // Only for NEW scales
+  .addName('my-theme')
+  .build();
+```
+
+## Creating a Custom Theme
+
+### Step 1: Start with a Base Theme
+
+It's best to start with the `coreTheme` as your foundation unless you are _sure_ you have a full replacement for all the tokens. You can refer to the Core Theme documentation for a full list of essential tokens.
+
+```tsx
+import { createTheme } from '@codecademy/variance';
+import { coreTheme } from '@codecademy/gamut-styles';
+
+const myCustomTheme = createTheme({
+  ...coreTheme,
+  // Your custom overrides here
+});
+```
+
+### Step 2: Define Your Color Palette
+
+Create a color palette object with your brand colors:
+
+```tsx
+const myColorPalette = {
+  brand: {
+    primary: '#004C54',
+    kelly: '#00B388',
+    secondary: '#000000',
+    accent: '#A5ACAF',
+    black: '#000000',
+    white: '#FFFFFF',
+    charcoal: '#565A5C',
+  },
+  kelly: {
+    50: '#E6FFF7',
+    100: '#CCFFEF',
+    200: '#99FFDF',
+    300: '#66FFCF',
+    400: '#33E6B0',
+    500: '#00B388',
+    600: '#009970',
+    700: '#008060',
+    800: '#006650',
+    900: '#004D3D',
+  },
+  midnight: {
+    50: '#E6F4F5',
+    100: '#CCE9EB',
+    200: '#99D3D7',
+    300: '#66BDC3',
+    400: '#33A7AF',
+    500: '#00919B',
+    600: '#007680',
+    700: '#005A66',
+    800: '#004C54',
+    900: '#003D4D',
+  },
+  silver: {
+    50: '#F7F8F8',
+    100: '#ECEEED',
+    200: '#D9DCDB',
+    300: '#C6CAC9',
+    400: '#B3B8B7',
+    500: '#A5ACAF',
+    600: '#8A9093',
+    700: '#6F7477',
+    800: '#565A5C',
+    900: '#3D4041',
+  },
+  accent: {
+    kelly: '#00B388',
+    midnight: '#004C54',
+    silver: '#A5ACAF',
+    gold: '#C5B358',
+  },
+
+  success: '#10B981',
+  warning: '#F59E0B',
+  error: '#DC2626',
+  info: '#3B82F6',
+};
+
+const myTheme = createTheme({
+  ...coreTheme,
+}).addColors(myColorPalette);
+```
+
+### Step 3: Configure Color Modes
+
+Define how your colors map to semantic tokens in different modes. For more information about color modes, see the <LinkTo id="Foundations/ColorMode">ColorMode documentation</LinkTo>.
+
+```tsx
+const myTheme = createTheme({
+  ...coreTheme,
+})
+  .addColors(myColorPalette)
+  .addColorModes('light', {
+    light: {
+      text: {
+        _: 'brand-black',
+        accent: 'brand-kelly',
+        disabled: 'silver-400',
+        secondary: 'silver-700',
+      },
+      feedback: {
+        error: 'error',
+        success: 'success',
+        warning: 'warning',
+      },
+      background: {
+        _: 'brand-white',
+        contrast: 'brand-white',
+        current: 'brand-white',
+        primary: 'kelly-50',
+        selected: 'kelly-100',
+        disabled: 'silver-200',
+        hover: 'kelly-100',
+        success: 'success',
+        warning: 'warning',
+        error: 'error',
+      },
+      shadow: {
+        primary: 'brand-black',
+        secondary: 'silver-600',
+      },
+      primary: {
+        _: 'brand-kelly',
+        hover: 'kelly-700',
+        inverse: 'brand-white',
+      },
+      secondary: {
+        _: 'brand-accent',
+        hover: 'silver-700',
+      },
+      danger: {
+        _: 'error',
+        hover: 'error',
+      },
+      interface: {
+        _: 'brand-kelly',
+        hover: 'kelly-700',
+      },
+      border: {
+        primary: 'kelly-500',
+        secondary: 'kelly-200',
+        tertiary: 'kelly-100',
+        disabled: 'silver-400',
+      },
+    },
+    dark: {
+      text: {
+        _: 'brand-white',
+        accent: 'brand-accent',
+        disabled: 'silver-500',
+        secondary: 'silver-400',
+      },
+      feedback: {
+        error: 'error',
+        success: 'success',
+        warning: 'warning',
+      },
+      background: {
+        _: 'brand-black',
+        contrast: 'brand-black',
+        current: 'brand-black',
+        primary: 'midnight-800',
+        selected: 'midnight-700',
+        disabled: 'midnight-700',
+        hover: 'midnight-700',
+        success: 'success',
+        warning: 'warning',
+        error: 'error',
+      },
+      shadow: {
+        primary: 'brand-black',
+        secondary: 'midnight-900',
+      },
+      primary: {
+        _: 'brand-accent',
+        hover: 'silver-400',
+        inverse: 'brand-black',
+      },
+      secondary: {
+        _: 'midnight-500',
+        hover: 'midnight-400',
+      },
+      danger: {
+        _: 'error',
+        hover: 'error',
+      },
+      interface: {
+        _: 'brand-accent',
+        hover: 'silver-400',
+      },
+      border: {
+        primary: 'midnight-600',
+        secondary: 'midnight-700',
+        tertiary: 'midnight-800',
+        disabled: 'silver-600',
+      },
+    },
+  });
+```
+
+### Step 4: Customizing Scales
+
+If you want to customize existing scales from `coreTheme` (like `spacing`, `fontFamily`, `fontWeight`, etc.), override them in the initial `createTheme()` object:
+
+```tsx
+const myTheme = createTheme({
+  ...coreTheme,
+  // Override existing scales
+  fontFamily: {
+    ...coreTheme.fontFamily,
+    base: '"Roboto", "Helvetica Neue", Arial, sans-serif',
+    heading: '"Roboto", "Helvetica Neue", Arial, sans-serif',
+    monospace: 'Menlo, Monaco, "Courier New", monospace',
+  },
+  fontWeight: {
+    ...coreTheme.fontWeight,
+    title: 900,
+    heading: 700,
+  },
+  spacing: {
+    ...coreTheme.spacing,
+    xs: 4,
+    sm: 8,
+    md: 16,
+  },
+})
+  .addColors(myColorPalette)
+  .addColorModes('light', colorModeConfig);
+```
+
+Use the `addScale` method to add **new** scales that don't exist in `coreTheme`. The `colors` parameter includes both palette colors and semantic color tokens:
+
+```tsx
+const myTheme = createTheme({
+  ...coreTheme,
+  // Override existing scales if needed
+  spacing: customSpacing,
+})
+  .addColors(myColorPalette)
+  .addColorModes('light', colorModeConfig)
+  .addScale('shadows', ({ colors }) => ({
+    sm: `0 1px 2px ${colors['shadow-primary']}`,
+    md: `0 4px 6px ${colors['shadow-secondary']}`,
+    lg: `0 10px 15px ${colors['shadow-primary']}`,
+    xl: `0 20px 25px ${colors['shadow-primary']}`,
+  }))
+  .addScale('customProperty', () => ({
+    small: '2px',
+    medium: '4px',
+    large: '8px',
+  }));
+```
+
+### Step 5: Create CSS Variables
+
+Convert scales to CSS variables for better performance and theming:
+
+```tsx
+const myTheme = createTheme({
+  ...coreTheme,
+})
+  .addColors(myColorPalette)
+  .addColorModes('light', colorModeConfig)
+  .addScale('shadows', shadowConfig)
+  .createScaleVariables('shadows') // Creates --shadow-sm, --shadow-md, etc.
+  .createScaleVariables('elements') // Creates CSS variables for elements scale
+  .addName('my-custom-theme')
+  .build();
+```
+
+## Complete Example
+
+```tsx
+import { createTheme } from '@codecademy/variance';
+import { coreTheme } from '@codecademy/gamut-styles';
+
+// Define your color palette
+const customPalette = {
+  brand: {
+    primary: '#004C54',
+    kelly: '#00B388',
+    secondary: '#000000',
+    accent: '#A5ACAF',
+    black: '#000000',
+    white: '#FFFFFF',
+    charcoal: '#565A5C',
+  },
+  kelly: {
+    50: '#E6FFF7',
+    100: '#CCFFEF',
+    200: '#99FFDF',
+    300: '#66FFCF',
+    400: '#33E6B0',
+    500: '#00B388',
+    600: '#009970',
+    700: '#008060',
+    800: '#006650',
+    900: '#004D3D',
+  },
+  midnight: {
+    50: '#E6F4F5',
+    100: '#CCE9EB',
+    200: '#99D3D7',
+    300: '#66BDC3',
+    400: '#33A7AF',
+    500: '#00919B',
+    600: '#007680',
+    700: '#005A66',
+    800: '#004C54',
+    900: '#003D4D',
+  },
+  silver: {
+    50: '#F7F8F8',
+    100: '#ECEEED',
+    200: '#D9DCDB',
+    300: '#C6CAC9',
+    400: '#B3B8B7',
+    500: '#A5ACAF',
+    600: '#8A9093',
+    700: '#6F7477',
+    800: '#565A5C',
+    900: '#3D4041',
+  },
+  accent: {
+    kelly: '#00B388',
+    midnight: '#004C54',
+    silver: '#A5ACAF',
+    gold: '#C5B358',
+  },
+
+  success: '#10B981',
+  warning: '#F59E0B',
+  error: '#DC2626',
+  info: '#3B82F6',
+};
+
+// Create the theme
+export const customTheme = createTheme({
+  ...coreTheme,
+  // Override existing scales
+  fontFamily: {
+    ...coreTheme.fontFamily,
+    base: '"Roboto", "Helvetica Neue", Arial, sans-serif',
+    heading: '"Roboto", "Helvetica Neue", Arial, sans-serif',
+    monospace: 'Menlo, Monaco, "Courier New", monospace',
+  },
+  fontWeight: {
+    ...coreTheme.fontWeight,
+    title: 900,
+    heading: 700,
+  },
+  spacing: {
+    ...coreTheme.spacing,
+    xs: 4,
+    sm: 8,
+    md: 16,
+  },
+})
+  .addColors(customPalette)
+  .addColorModes('light', {
+    light: {
+      text: {
+        _: 'brand-black',
+        accent: 'brand-kelly',
+        disabled: 'silver-400',
+        secondary: 'silver-700',
+      },
+      feedback: {
+        error: 'error',
+        success: 'success',
+        warning: 'warning',
+      },
+      background: {
+        _: 'brand-white',
+        contrast: 'brand-white',
+        current: 'brand-white',
+        primary: 'kelly-50',
+        selected: 'kelly-100',
+        disabled: 'silver-200',
+        hover: 'kelly-100',
+        success: 'success',
+        warning: 'warning',
+        error: 'error',
+      },
+      shadow: {
+        primary: 'brand-black',
+        secondary: 'silver-600',
+      },
+      primary: {
+        _: 'brand-kelly',
+        hover: 'kelly-700',
+        inverse: 'brand-white',
+      },
+      secondary: {
+        _: 'brand-accent',
+        hover: 'silver-700',
+      },
+      danger: {
+        _: 'error',
+        hover: 'error',
+      },
+      interface: {
+        _: 'brand-kelly',
+        hover: 'kelly-700',
+      },
+      border: {
+        primary: 'kelly-500',
+        secondary: 'kelly-200',
+        tertiary: 'kelly-100',
+        disabled: 'silver-400',
+      },
+    },
+    dark: {
+      text: {
+        _: 'brand-white',
+        accent: 'brand-accent',
+        disabled: 'silver-500',
+        secondary: 'silver-400',
+      },
+      feedback: {
+        error: 'error',
+        success: 'success',
+        warning: 'warning',
+      },
+      background: {
+        _: 'brand-black',
+        contrast: 'brand-black',
+        current: 'brand-black',
+        primary: 'midnight-800',
+        selected: 'midnight-700',
+        disabled: 'midnight-700',
+        hover: 'midnight-700',
+        success: 'success',
+        warning: 'warning',
+        error: 'error',
+      },
+      shadow: {
+        primary: 'brand-black',
+        secondary: 'midnight-900',
+      },
+      primary: {
+        _: 'brand-accent',
+        hover: 'silver-400',
+        inverse: 'brand-black',
+      },
+      secondary: {
+        _: 'midnight-500',
+        hover: 'midnight-400',
+      },
+      danger: {
+        _: 'error',
+        hover: 'error',
+      },
+      interface: {
+        _: 'brand-accent',
+        hover: 'silver-400',
+      },
+      border: {
+        primary: 'midnight-600',
+        secondary: 'midnight-700',
+        tertiary: 'midnight-800',
+        disabled: 'silver-600',
+      },
+    },
+  })
+  // Adding new custom scales that don't exist in coreTheme
+  .addScale('shadows', ({ colors }) => ({
+    // Using semantic colors so shadows adapt to light/dark mode
+    sm: `0 1px 2px 0 ${colors['shadow-primary']}`,
+    md: `0 4px 6px -1px ${colors['shadow-primary']}`,
+    lg: `0 10px 15px -3px ${colors['shadow-primary']}`,
+    xl: `0 20px 25px -5px ${colors['shadow-primary']}`,
+  }))
+  .createScaleVariables('shadows')
+  .addName('custom-theme')
+  .build();
+
+export type CustomThemeShape = typeof customTheme;
+export interface CustomTheme extends CustomThemeShape {}
+```
+
+## Using Your Custom Theme
+
+Follow the instructions detailed in <LinkTo id="Meta/Installation">Installation docs</LinkTo> to use your new custom theme with Gamut.
+
+## Best Practices
+
+1. **Replace all tokens or extend from coreTheme**: This ensures compatibility with Gamut components
+2. **Override vs Add scales**: Override existing scales (like `spacing`, `borderRadii`, `fontFamily`) in the initial `createTheme()` object. Only use `.addScale()` for truly new scales that don't exist in `coreTheme`
+3. **Use semantic color names**: Map your brand colors to semantic tokens (primary, secondary, etc.)
+4. **Provide both light and dark modes**: This ensures your theme works in all contexts
+5. **Use CSS variables for performance**: Convert frequently used scales to CSS variables
+6. **Keep color palettes organized**: Group related colors together (brand, neutral, feedback, etc.)
+7. **Test with Gamut components**: Ensure your theme works well with existing components
+
+If you'd like to test your theme with components locally, you can add it the Storybook `GamutThemeProvider.tsx` and `preview.ts` to see it in the theme switcher tool.
+
+```tsx
+// packages/styleguide/.storybook/theming/GamutThemeProvider.tsx
+    const themeMap = {
+      core: coreTheme,
+      admin: adminTheme,
+      lxStudio: lxStudioTheme,
+      percipio: percipioTheme,
+      your-theme-here: yourCustomTheme,
+    } as const;
+```
+
+```tsx
+// .storybook/preview.ts
+  theme: {
+    name: 'Theme',
+    description: 'Global theme for components',
+    defaultValue: 'percipio',
+    toolbar: {
+      icon: 'paintbrush',
+      items: [
+        { value: 'core', title: 'Core' },
+        { value: 'admin', title: 'Admin' },
+        { value: 'lxStudio', title: 'LX Studio' },
+        { value: 'percipio', title: 'Percipio' },
+        { value: 'your-theme-here', title: 'Custom Theme' },
+      ],
+      showName: true,
+    },
+  },
+```
+
+## Integration with Gamut Components
+
+All Gamut components automatically use your custom theme through the theme context. The components will:
+
+- Use your custom colors for semantic tokens
+- Apply your custom spacing, typography, and other design tokens
+- Support your color modes (light/dark switching)
+- Maintain type safety with your theme structure
+
+This means you can create a completely custom look and feel while maintaining full compatibility with the Gamut component library.

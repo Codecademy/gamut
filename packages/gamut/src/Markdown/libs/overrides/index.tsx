@@ -1,14 +1,18 @@
-import cx from 'classnames';
+import styled from '@emotion/styled';
 import HtmlToReact from 'html-to-react';
 import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
 import get from 'lodash/get';
 import * as React from 'react';
 
-// eslint-disable-next-line gamut/no-css-standalone
-import styles from '../../styles/index.module.scss';
 import { getLabel, isCheckboxParent, isInput, isLabelText } from './utils';
 
 const processNodeDefinitions = HtmlToReact.ProcessNodeDefinitions();
+
+const CheckboxParentLi = styled.li`
+  &::before {
+    display: none !important;
+  }
+`;
 
 export interface AttributesMap {
   [key: string]: string | boolean;
@@ -139,6 +143,7 @@ export const createVideoOverride = (
     ) as any;
 
     const altVideoSrc = [] as any;
+    const textTracks = [] as any;
 
     if (children) {
       children.forEach((element: any) => {
@@ -150,11 +155,22 @@ export const createVideoOverride = (
             });
           }
         } // Once we enable captions in the Video component, we can add an additional check here - GM-909
+        else if (element.type === 'track') {
+          textTracks.push({
+            src: element?.props.src,
+            language: element?.props.srcLang,
+            default: element?.props.default,
+            kind: element?.props.kind,
+            label: element?.props.label,
+            type: element?.props.type,
+          });
+        }
       });
     }
 
     const props = {
       src: altVideoSrc.length > 0 ? altVideoSrc : src,
+      textTracks,
       ...processedAttributes,
       children,
       key,
@@ -217,10 +233,7 @@ export const createInputOverride = (
       if (!Override.component) return null;
 
       if (isCheckboxParent(node, type)) {
-        const { className, ...rest } = props;
-        const plainLiClass = cx(styles[`checkbox-parent`], className);
-
-        return <li className={plainLiClass} {...rest} />;
+        return <CheckboxParentLi {...props} />;
       }
 
       if (isLabelText(node, type)) return null;

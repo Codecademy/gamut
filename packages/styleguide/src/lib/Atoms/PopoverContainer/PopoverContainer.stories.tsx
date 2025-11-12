@@ -39,25 +39,25 @@ export const Default: React.FC<ComponentProps<typeof PopoverContainer>> = (
   const target = useRef<HTMLDivElement>(null);
 
   return (
-    <FlexBox minHeight="480px" width={1} position="relative">
+    <FlexBox minHeight="480px" position="relative" width={1}>
       <FlexBox center flex={1}>
-        <PopoverContainer {...args} isOpen inline targetRef={target}>
+        <PopoverContainer {...args} inline isOpen targetRef={target}>
           <Background
-            display="flex"
-            bg="navy"
             alignItems="center"
-            justifyContent="center"
-            flexDirection="column"
+            bg="navy"
             dimensions="100px"
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
           >
             Pop Tart
           </Background>
         </PopoverContainer>
         <FlexBox
-          justifyContent="center"
           alignItems="center"
-          dimensions="200px"
           border={1}
+          dimensions="200px"
+          justifyContent="center"
           ref={target}
         >
           This balanced breakfast
@@ -67,32 +67,31 @@ export const Default: React.FC<ComponentProps<typeof PopoverContainer>> = (
   );
 };
 
-export const Alignment: React.FC<ComponentProps<typeof PopoverContainer>> = (
-  args
-) => {
+export const Alignment: React.FC<
+  ComponentProps<typeof PopoverContainer>
+> = () => {
   const target = useRef<HTMLDivElement>(null);
 
   return (
-    <FlexBox minHeight="480px" width={1} position="relative">
+    <FlexBox minHeight="480px" position="relative" width={1}>
       <FlexBox center flex={1}>
         {[...SINGLE_DIRECTIONS, ...MULTI_DIRECTIONS].map((alignment) => {
           return (
             <PopoverContainer
-              {...args}
-              key={alignment}
-              isOpen
-              inline
-              targetRef={target}
               alignment={alignment}
+              inline
+              isOpen
+              key={alignment}
               offset={20}
+              targetRef={target}
             >
               <Background
-                display="flex"
-                bg="navy"
                 alignItems="center"
-                justifyContent="center"
-                flexDirection="column"
+                bg="navy"
                 dimensions="100px"
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
               >
                 {alignment.split('-').map((val) => (
                   <Text as="p" variant="p-small">
@@ -104,10 +103,10 @@ export const Alignment: React.FC<ComponentProps<typeof PopoverContainer>> = (
           );
         })}
         <FlexBox
-          justifyContent="center"
           alignItems="center"
-          dimensions="200px"
           border={1}
+          dimensions="200px"
+          justifyContent="center"
           ref={target}
         >
           Transform Axis
@@ -117,34 +116,33 @@ export const Alignment: React.FC<ComponentProps<typeof PopoverContainer>> = (
   );
 };
 
-export const InvertAxis: React.FC<ComponentProps<typeof PopoverContainer>> = (
-  args
-) => {
+export const InvertAxis: React.FC<
+  ComponentProps<typeof PopoverContainer>
+> = () => {
   const target = useRef<HTMLDivElement>(null);
 
   return (
-    <FlexBox minHeight="480px" width={1} position="relative">
+    <FlexBox minHeight="480px" position="relative" width={1}>
       <FlexBox center flex={1}>
         {(['x', 'y'] as const).map((axis) => {
           return MULTI_DIRECTIONS.map((alignment) => {
             return (
               <PopoverContainer
-                {...args}
-                key={`${alignment}-${axis}`}
-                isOpen
-                invertAxis={axis}
-                targetRef={target}
                 alignment={alignment}
                 inline
+                invertAxis={axis}
+                isOpen
+                key={`${alignment}-${axis}`}
                 offset={20}
+                targetRef={target}
               >
                 <Background
-                  display="flex"
-                  bg="navy"
                   alignItems="center"
-                  justifyContent="center"
-                  flexDirection="column"
+                  bg="navy"
                   dimensions="100px"
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="center"
                 >
                   <Text as="p" variant="p-small">
                     {alignment}
@@ -159,10 +157,10 @@ export const InvertAxis: React.FC<ComponentProps<typeof PopoverContainer>> = (
         })}
 
         <FlexBox
-          justifyContent="center"
           alignItems="center"
-          dimensions="200px"
           border={1}
+          dimensions="200px"
+          justifyContent="center"
           ref={target}
         >
           Transform Axis
@@ -172,37 +170,35 @@ export const InvertAxis: React.FC<ComponentProps<typeof PopoverContainer>> = (
   );
 };
 
-export const Offset: React.FC<ComponentProps<typeof PopoverContainer>> = ({
-  offset,
-}) => {
+export const Offset: React.FC<ComponentProps<typeof PopoverContainer>> = () => {
   const target = useRef<HTMLDivElement>(null);
 
   return (
-    <FlexBox minHeight="480px" width={1} position="relative">
+    <FlexBox minHeight="480px" position="relative" width={1}>
       <FlexBox center flex={1}>
         {[...SINGLE_DIRECTIONS, ...MULTI_DIRECTIONS].map((alignment) => {
           return (
             <PopoverContainer
-              key={`${alignment}-${offset}`}
-              isOpen
-              targetRef={target}
               alignment={alignment}
               inline
-              offset={offset}
+              isOpen
+              key={`${alignment}-20`}
+              offset={20}
+              targetRef={target}
             >
               <Background
-                display="flex"
-                bg="navy"
                 alignItems="center"
-                justifyContent="center"
-                flexDirection="column"
+                bg="navy"
                 dimensions="100px"
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
               >
                 <Text as="p" variant="p-small">
                   {alignment}
                 </Text>
                 <Text as="p" variant="p-small">
-                  {offset}px
+                  20px
                 </Text>
               </Background>
             </PopoverContainer>
@@ -210,10 +206,10 @@ export const Offset: React.FC<ComponentProps<typeof PopoverContainer>> = ({
         })}
 
         <FlexBox
-          justifyContent="center"
           alignItems="center"
-          dimensions="200px"
           border={1}
+          dimensions="200px"
+          justifyContent="center"
           ref={target}
         >
           Transform Axis
@@ -223,39 +219,36 @@ export const Offset: React.FC<ComponentProps<typeof PopoverContainer>> = ({
   );
 };
 
-export const XandY: React.FC<ComponentProps<typeof PopoverContainer>> = ({
-  x,
-  y,
-}) => {
+export const XandY: React.FC<ComponentProps<typeof PopoverContainer>> = () => {
   const target = useRef<HTMLDivElement>(null);
 
   return (
-    <FlexBox minHeight="480px" width={1} position="relative">
+    <FlexBox minHeight="480px" position="relative" width={1}>
       <FlexBox center flex={1}>
         {[...SINGLE_DIRECTIONS, ...MULTI_DIRECTIONS].map((alignment) => {
           return (
             <PopoverContainer
-              key={`${alignment}-${x}-${y}`}
-              isOpen
-              targetRef={target}
               alignment={alignment}
               inline
-              x={x}
-              y={y}
+              isOpen
+              key={`${alignment}-0-0`}
+              targetRef={target}
+              x={0}
+              y={0}
             >
               <Background
-                display="flex"
-                bg="navy"
                 alignItems="center"
-                justifyContent="center"
-                flexDirection="column"
+                bg="navy"
                 dimensions="100px"
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
               >
                 <Text as="p" variant="p-small">
                   {alignment}
                 </Text>
                 <Text as="p" variant="p-small">
-                  {x}px / {y}px
+                  0px / 0px
                 </Text>
               </Background>
             </PopoverContainer>
@@ -263,10 +256,10 @@ export const XandY: React.FC<ComponentProps<typeof PopoverContainer>> = ({
         })}
 
         <FlexBox
-          justifyContent="center"
           alignItems="center"
-          dimensions="200px"
           border={1}
+          dimensions="200px"
+          justifyContent="center"
           ref={target}
         >
           Transform Axis

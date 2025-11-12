@@ -1,4 +1,4 @@
-@import "~@codecademy/gamut-styles/utils";
+@use "~@codecademy/gamut-styles/utils" as *;
 
 .accordionButton {
   align-items: center;

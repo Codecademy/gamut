@@ -5,12 +5,13 @@ import { ComponentHeader } from '~styleguide/blocks';
 import * as ModalStories from './Modal.stories';
 
 export const parameters = {
+  title: 'Modal',
   subtitle: `A simple Modal portal to escape current DOM Context.`,
   design: {
     type: 'figma',
     url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=2449%3A3770',
   },
-  status: 'updating',
+  status: 'current',
   source: {
     repo: 'gamut',
     githubLink:
@@ -25,27 +26,6 @@ export const parameters = {
 ## Usage
 
 Use a Modal to create a dialog on sits on top of a full screen overlay.
-
-## Customizing close behavior
-
-### Creating a custom close button
-
-By default, the Modal will render a close button.
-You can disable the default close button with the `hideCloseButton` prop by setting it to false.
-You can then use the `isOpen` prop to create other controls that toggle the Modal on and off.
-
-<Canvas of={ModalStories.CustomClose} />
-
-### Alternative closing methods
-
-Other than creating buttons that can close the Modal, there are other ways a Modal can be closed by the user.
-
-1. Clicking the content outside of the Modal
-2. Clicking the escape key on their keyboard
-
-All of these methods default to `true` for accessibility reasons, and rely on setting the required `onRequestClose` prop and making sure it toggles the `isOpen` prop on the Modal.
-
-<Canvas of={ModalStories.ClickOutside} />
 
 ## Size variants
 
@@ -73,17 +53,51 @@ A Modal with `size` `'small'` has a width of `400px` and a minimum height of `17
 
 <Canvas of={ModalStories.Small} />
 
+## Close behavior
+
+### Close button customization
+
+The Modal's close button can be customized through the `closeButtonProps` object:
+
+- `hidden?: boolean` - Whether to hide the default close button and pass your own through children to close the modal
+- `ref?: Ref<HTMLButtonElement>` - An optional ref to be passed to the close button for programmatic access
+- `tip?: string` - The close button tooltip text (defaults to "Close modal")
+- `disabled?: boolean` - Whether to disable the default close button
+
+This is useful when you need to programmatically interact with the close button, such as blurring focus or checking its state.
+
+<Canvas of={ModalStories.CloseButtonCustomization} />
+
+If the close button is hidden, you will need to create a custom way to close the modal. You can then use the `isOpen` prop to create other controls that toggle the Modal on and off.
+
+<Canvas of={ModalStories.CustomClose} />
+
+### Alternative closing methods
+
+Other than creating buttons that can close the Modal, there are other ways a Modal can be closed by the user.
+
+1. Clicking the content outside of the Modal
+2. Clicking the escape key on their keyboard
+
+All of these methods default to `true` for accessibility reasons, and rely on setting the required `onRequestClose` prop and making sure it toggles the `isOpen` prop on the Modal.
+
+<Canvas of={ModalStories.ClickOutside} />
+
 ## Scrollable
 
 A Modal can be made scrollable by including large content inside.
 
 <Canvas of={ModalStories.Scrollable} />
 
-## Multiple views
+## Focus management
 
-A single Modal can be used to navigate between different content within itself.
+The `containerFocusRef` prop allows you to programmatically control focus on the Modal container. This is useful for advanced focus management scenarios where you need to override the default focus behavior (the Modal has `data-autofocus` by default).
 
-<Canvas of={ModalStories.MultipleViews} />
+<Canvas of={ModalStories.FocusManagement} />
+
+Here are examples of how a `Modal` can use the `containerFocusRef` prop to control focus programmatically. This can be useful for accessibility or advanced focus scenarios.
+
+<Canvas of={ModalStories.ConfirmationOnClose} />
 
 ## Adding an image
 
@@ -92,6 +106,33 @@ The `image` prop can be used to include a full-width product image or illustrati
 Overflow for images will be cut off, so make sure the image is correctly sized for the modal.
 
 <Canvas of={ModalStories.WithImage} />
+
+## Multiple views
+
+A single `Modal` can be used to navigate between different content within itself by passing an array of `views` including `children`, `primaryCta`, and `secondaryCta`.
+
+Each view can also take a `title` that renders as a heading. However, if the `Modal` already has a `title` prop passed then that value will be the title rendered instead of the view's `title`.
+
+`primaryCta` and `secondaryCta` both take an `actionType` prop to determine the action of the button:
+
+- `primaryCta` can be `actionType="next"` to move to the next view or `actionType="confirm"` to do some action on the final view.
+- `secondaryCta` can be `actionType="back"` to move to the previous view or `actionType="cancel"` to close the modal.
+
+Try clicking all the buttons in the example to see them in action:
+
+<Canvas of={ModalStories.MultipleViews} />
+
+### Disabled
+
+The `primaryCta` and `secondaryCta` can be disabled, via the `disabled` prop, based on some logic or until some action has been done. Here the Next button is disabled until the checkbox is checked.
+
+<Canvas of={ModalStories.MultipleViewsDisabled} />
+
+### Danger variant
+
+The `primaryCta` with `actionType="confirm"` can add a `danger` variant, which will change the color of the button to red. This is useful for actions that are destructive or irreversible.
+
+<Canvas of={ModalStories.MultipleViewsDanger} />
 
 ## Playground
 

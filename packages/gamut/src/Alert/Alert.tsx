@@ -7,13 +7,15 @@ import { useMeasure } from 'react-use';
 import { Rotation } from '../Animation';
 import { Box } from '../Box';
 import { FillButton, IconButton, TextButton } from '../Button';
+import { CloseButtonProps } from '../Modals/types';
 import { ToolTip } from '../Tip/ToolTip';
 import { WithChildrenProp } from '../utils';
 import {
   AlertBanner,
   AlertBox,
   alertContentProps,
-  CollapsableContent,
+  CleanFillButton,
+  CollapsibleContent,
 } from './elements';
 import {
   alertVariants,
@@ -37,6 +39,7 @@ type AlertPlacementType =
 
 export type AlertProps = WithChildrenProp &
   AlertPlacementType & {
+    /** Sets the tabIndex of the Alert's Button component(s) to -1 */
     hidden?: boolean;
     className?: string;
     /** Callback to be called when the close icon is clicked */
@@ -46,11 +49,22 @@ export type AlertProps = WithChildrenProp &
       React.ComponentProps<typeof FillButton>,
       'variant' | 'mode' | 'size'
     > & { text?: string };
+    /** Props for customizing the close button */
+    closeButtonProps?: Omit<
+      NonNullable<CloseButtonProps['closeButtonProps']>,
+      'hidden'
+    >;
   };
 
 export const Alert: React.FC<AlertProps> = ({
   children,
   cta,
+  closeButtonProps: {
+    disabled: disableCloseButton,
+    ref: closeButtonRef,
+    tip: closeButtonTip = 'Close alert',
+    tipAlignment = 'bottom-center' as const,
+  } = {},
   onClose,
   hidden,
   type = 'general',
@@ -67,6 +81,7 @@ export const Alert: React.FC<AlertProps> = ({
   const { icon: Icon, bg } = activeAlert;
 
   const tipId = useId();
+  const collapsibleContentId = useId();
 
   const currentColorMode = useCurrentMode();
   const isSubtleVariant = type === 'subtle';
@@ -112,9 +127,9 @@ export const Alert: React.FC<AlertProps> = ({
     <Box {...alertContentProps}>{children}</Box>
   ) : (
     <TruncateMarkup
-      tokenize="characters"
       ellipsis={<span>...</span>}
       lines={1}
+      tokenize="characters"
       onTruncate={setTruncated}
     >
       {/** Truncate markup expects a single child element */}
@@ -136,19 +151,20 @@ export const Alert: React.FC<AlertProps> = ({
   const expandButton = truncated && !isInline && (
     <Box>
       <ToolTip
+        alignment="bottom-center"
         id={ariaId}
         info={buttonLabel}
-        alignment="bottom-center"
         placement="floating"
-        hasRepetitiveLabel
       >
         <TextButton
+          aria-controls={collapsibleContentId}
           aria-describedby={ariaId}
+          aria-expanded={expanded}
+          aria-label={expanded ? 'Collapse' : 'Expand'}
+          size="small"
           tabIndex={tabIndex}
           variant="secondary"
-          size="small"
           onClick={() => setExpanded(!expanded)}
-          aria-label={expanded ? 'Collapse' : 'Expand'}
         >
           <Rotation rotated={toggleState === 'expanded'}>
             <MiniChevronDownIcon />
@@ -166,15 +182,15 @@ export const Alert: React.FC<AlertProps> = ({
       gridRow={gridButtonOrder}
       pb={ctaButtonPadding}
     >
-      <FillButton
+      <CleanFillButton
         {...cta}
         mode={buttonColorMode}
-        variant="secondary"
         size="small"
         tabIndex={tabIndex}
+        variant="secondary"
       >
         {cta.children ?? cta.text}
-      </FillButton>
+      </CleanFillButton>
     </Box>
   );
 
@@ -182,16 +198,16 @@ export const Alert: React.FC<AlertProps> = ({
   return (
     <AlertWrapper
       bg={bg}
-      placement={placement}
       gridTemplateColumns={gridTemplateColumns}
+      placement={placement}
       pr={alertRightPadding}
       ref={ref}
       {...props}
     >
-      <Icon size={32} aria-hidden p={8} />
-      <CollapsableContent
+      <Icon aria-hidden p={8} size={32} />
+      <CollapsibleContent
         animate={toggleState}
-        aria-expanded={expanded}
+        id={collapsibleContentId}
         initial={toggleState}
         transition={{
           duration: 0.2,
@@ -203,18 +219,20 @@ export const Alert: React.FC<AlertProps> = ({
         }}
       >
         {isInline ? children : floatingContent}
-      </CollapsableContent>
+      </CollapsibleContent>
       {expandButton}
       {ctaButton}
       {onClose && (
         <IconButton
-          tabIndex={tabIndex}
-          variant="secondary"
-          size="small"
-          onClick={onClose}
+          disabled={disableCloseButton}
           icon={MiniDeleteIcon}
-          tip="Close alert"
-          tipProps={{ alignment: 'bottom-center', placement: 'floating' }}
+          ref={closeButtonRef}
+          size="small"
+          tabIndex={tabIndex}
+          tip={closeButtonTip}
+          tipProps={{ alignment: tipAlignment, placement: 'floating' }}
+          variant="secondary"
+          onClick={onClose}
         />
       )}
     </AlertWrapper>

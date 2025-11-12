@@ -1,8 +1,12 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { matchers } from '@emotion/jest';
 import { act, fireEvent, RenderResult, screen } from '@testing-library/react';
 
 import { DataGrid, DataGridProps } from '../DataGrid';
 import { ColumnConfig } from '../types';
+
+// Add the custom matchers provided by '@emotion/jest'
+expect.extend(matchers);
 
 type Row = { id: string; name: string; sin: string };
 type Columns = ColumnConfig<Row>[];
@@ -92,7 +96,7 @@ describe('DataGrid', () => {
     });
 
     it("clicking the row's checkbox deselects the row when the row is already selected", () => {
-      renderView({ selected: [1] });
+      renderView({ selected: ['1'] });
 
       const checkbox = screen.getByRole('checkbox', { name: 'Select 1' });
 
@@ -110,7 +114,7 @@ describe('DataGrid', () => {
     });
 
     it('selecting another row adds the row to the selection', () => {
-      renderView({ selected: [2] });
+      renderView({ selected: ['2'] });
 
       const checkbox = screen.getByRole('checkbox', { name: 'Select 1' });
 
@@ -173,14 +177,14 @@ describe('DataGrid', () => {
 
   describe('Expanding Rows', () => {
     it('Renders an expanded row when passed the correct id', () => {
-      renderView({ expanded: [1] });
+      renderView({ expanded: ['1'] });
 
       screen.getByText('Expanded 1');
       screen.getByRole('button', { expanded: true });
     });
 
     it('allows multiple expanded rows by default', () => {
-      renderView({ expanded: [1, 2] });
+      renderView({ expanded: ['1', '2'] });
 
       screen.getByText('Expanded 1');
       screen.getByText('Expanded 2');
@@ -205,7 +209,7 @@ describe('DataGrid', () => {
       });
     });
     it('calls the onRowExpand with the id omitted when an expanded row toggle is clicked', () => {
-      renderView({ expanded: [1] });
+      renderView({ expanded: ['1'] });
 
       const expandButton = screen.getByRole('button', { name: `Expand 1 Row` });
 
@@ -228,10 +232,10 @@ describe('DataGrid', () => {
       it('renders the column header with an ascending label when sorted', () => {
         renderView({
           columns: [{ key: 'name', sortable: true }],
-          query: { sort: {} },
+          query: { sort: { name: 'asc' } },
         });
 
-        expect(screen.queryByText('ascending')).toBeNull();
+        screen.getByLabelText('ascending');
       });
       it('renders the column header with an descending label when sorted', () => {
         renderView({
@@ -323,6 +327,68 @@ describe('DataGrid', () => {
             value: 'desc',
           },
         });
+      });
+
+      it('sets aria-sort="ascending" on column header when sorted ascending', () => {
+        renderView({
+          columns: [{ key: 'name', sortable: true }],
+          query: { sort: { name: 'asc' } },
+        });
+
+        const nameHeader = screen.getByRole('columnheader', { name: /name/i });
+        expect(nameHeader.tagName).toBe('TH');
+        expect(nameHeader).toHaveAttribute('aria-sort', 'ascending');
+      });
+
+      it('sets aria-sort="descending" on column header when sorted descending', () => {
+        renderView({
+          columns: [{ key: 'name', sortable: true }],
+          query: { sort: { name: 'desc' } },
+        });
+
+        const nameHeader = screen.getByRole('columnheader', { name: /name/i });
+        expect(nameHeader.tagName).toBe('TH');
+        expect(nameHeader).toHaveAttribute('aria-sort', 'descending');
+      });
+
+      it('sets aria-sort="none" on column header when not sorted', () => {
+        renderView({
+          columns: [{ key: 'name', sortable: true }],
+          query: { sort: {} },
+        });
+
+        const nameHeader = screen.getByRole('columnheader', { name: /name/i });
+        expect(nameHeader.tagName).toBe('TH');
+        expect(nameHeader).toHaveAttribute('aria-sort', 'none');
+      });
+
+      it('does not set aria-sort attribute on non-sortable column headers', () => {
+        renderView({
+          columns: [{ key: 'name', sortable: false }],
+          query: { sort: {} },
+        });
+
+        const nameHeader = screen.getByRole('columnheader', { name: /name/i });
+        expect(nameHeader.tagName).toBe('TH');
+        expect(nameHeader).not.toHaveAttribute('aria-sort');
+      });
+
+      it('sets correct aria-sort values on multiple sortable columns', () => {
+        renderView({
+          columns: [
+            { key: 'name', sortable: true },
+            { key: 'sin', sortable: true },
+          ],
+          query: { sort: { name: 'asc', sin: 'desc' } },
+        });
+
+        const nameHeader = screen.getByRole('columnheader', { name: /name/i });
+        const sinHeader = screen.getByRole('columnheader', { name: /sin/i });
+
+        expect(nameHeader.tagName).toBe('TH');
+        expect(sinHeader.tagName).toBe('TH');
+        expect(nameHeader).toHaveAttribute('aria-sort', 'ascending');
+        expect(sinHeader).toHaveAttribute('aria-sort', 'descending');
       });
     });
 
@@ -514,6 +580,54 @@ describe('DataGrid', () => {
 
         expect(scrollMock).not.toHaveBeenCalled();
       });
+    });
+  });
+
+  describe('wrapperWidth prop', () => {
+    it('applies wrapperWidth to the table container when provided', () => {
+      renderView({ wrapperWidth: '600px' });
+
+      const tableContainer = screen.getByTestId('scrollable-test');
+      expect(tableContainer).toHaveStyle({
+        maxWidth: '600px',
+        width: '600px',
+      });
+    });
+
+    it('uses default width when wrapperWidth is not provided', () => {
+      renderView();
+
+      const tableContainer = screen.getByTestId('scrollable-test');
+      expect(tableContainer).toHaveStyle({
+        maxWidth: '100%',
+        width: 'inherit',
+      });
+    });
+
+    it('passes wrapperWidth through to the underlying List component', () => {
+      renderView({ wrapperWidth: '750px' });
+
+      const tableContainer = screen.getByTestId('scrollable-test');
+      expect(tableContainer).toHaveStyle({
+        maxWidth: '750px',
+        width: '750px',
+      });
+    });
+  });
+
+  describe('Container query control', () => {
+    it('applies container query styles by default', () => {
+      const { view } = renderView();
+
+      const wrapper = view.container.querySelector('#test');
+      expect(wrapper).toHaveStyleRule('container-type', 'inline-size');
+    });
+
+    it('disables container queries when disableContainerQuery is true', () => {
+      const { view } = renderView({ disableContainerQuery: true });
+
+      const wrapper = view.container.querySelector('#test');
+      expect(wrapper).toHaveStyleRule('container-type', 'normal');
     });
   });
 });

@@ -34,11 +34,11 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
       htmlFor={field.name}
       id={field.id}
       name={field.name}
+      options={field.options}
       onChange={async (event) => {
         field?.onUpdate?.(event.target.value);
         await onChange(event);
       }}
-      options={field.options}
     />
   );
 };

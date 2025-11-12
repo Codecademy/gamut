@@ -11,10 +11,10 @@ export const Target: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    width={width}
+    fill="none"
     height={height}
     viewBox="0 0 135 97"
-    fill="none"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Target</title>
@@ -37,10 +37,10 @@ export const Target: React.FC<IllustrationProps> = ({
       strokeLinejoin="round"
     />
     <path
-      fillRule="evenodd"
       clipRule="evenodd"
       d="M56.792 37.243l5.09 14.758-11.902-4.163 6.812-10.595z"
       fill="#FFF0E5"
+      fillRule="evenodd"
       stroke="#10162F"
     />
     <path

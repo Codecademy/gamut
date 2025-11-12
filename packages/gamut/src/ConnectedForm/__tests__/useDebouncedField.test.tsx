@@ -1,7 +1,7 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
+import { act } from '@testing-library/react';
 import * as React from 'react';
-import { act } from 'react-dom/test-utils';
 
 import { Checkbox, Input } from '../../Form';
 import { WithChildrenProp } from '../../utils';
@@ -33,13 +33,13 @@ const mockCheckboxKey = 'episode-inter-mission';
 
 const FormWrapper: React.FC<WithChildrenProp> = ({ children }) => (
   <ConnectedForm
-    onSubmit={() => null}
     defaultValues={{
       [mockInputKey]: mockDefaultValue,
       [mockChangeKey]:
         'Final Fantasy VII Remake is a 2020 action role-playing game developed and published by Square Enix.',
       [mockCheckboxKey]: false,
     }}
+    onSubmit={() => null}
   >
     {children}
   </ConnectedForm>
@@ -67,12 +67,12 @@ const TestTextInput: React.FC<{ shouldDirtyOnChange?: boolean }> = ({
   return (
     <>
       <Input
+        htmlFor={mockInputKey}
         name={mockInputKey}
         type="text"
-        onChange={onChange}
-        onBlur={onBlur}
         value={value}
-        htmlFor={mockInputKey}
+        onBlur={onBlur}
+        onChange={onChange}
       />
       <button type="button" onClick={contrivedOnClick}>
         Click Me
@@ -89,11 +89,11 @@ const TestCheckboxInput: React.FC = () => {
 
   return (
     <Checkbox
-      onChange={onChange}
-      onBlur={onBlur}
       checked={Boolean(value)}
-      label="Checkbox"
       htmlFor={mockCheckboxKey}
+      label="Checkbox"
+      onBlur={onBlur}
+      onChange={onChange}
     />
   );
 };
@@ -114,7 +114,9 @@ describe('ConnectedForm - useDebouncedField', () => {
   it('should allow users to change the value', async () => {
     const { view } = renderView();
     const input = view.getByRole('textbox') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: mockChangeValue } });
+    act(() => {
+      fireEvent.change(input, { target: { value: mockChangeValue } });
+    });
 
     expect(input.value).toEqual(mockChangeValue);
   });

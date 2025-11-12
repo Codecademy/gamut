@@ -16,9 +16,9 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
       <ColEl
         {...activeVariants}
         {...rest}
-        type={type}
-        sticky={sticky}
         ref={ref}
+        sticky={sticky}
+        type={type}
       />
     );
   }

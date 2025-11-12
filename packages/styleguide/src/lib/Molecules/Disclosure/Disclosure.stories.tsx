@@ -22,9 +22,29 @@ const BackgroundWithPadding = ({
 };
 
 export const Default: Story = {
+  args: {
+    heading: 'All the options',
+    body: (
+      <Text maxWidth="600px">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis tempore
+        voluptatum, hic ipsum cum commodi laudantium? Mollitia quod totam
+        consequuntur facere, praesentium cumque nesciunt debitis officiis, ipsa
+        sapiente recusandae iusto.
+      </Text>
+    ),
+    overline: 'overline is text-secondary and fontFamily: accent',
+    subheading: 'subheading is text-secondary',
+    ctaText: 'Optional button - must include a callback!',
+    ctaCallback: () => {},
+    hasPanelBg: true,
+    initiallyExpanded: true,
+  },
+};
+
+export const DefaultBackground: Story = {
   render: () => (
     <BackgroundWithPadding bg="background-primary">
-      <Disclosure heading="default" body="Uses `background`" />
+      <Disclosure body="Uses `background`" heading="default" />
     </BackgroundWithPadding>
   ),
 };
@@ -33,9 +53,9 @@ export const SubtleBgBordered: Story = {
   render: () => (
     <BackgroundWithPadding bg="background-primary">
       <Disclosure
-        variant="subtle"
-        heading="subtle"
         body='Uses `background-selected`. For this example there is a `<Background>` set to `"background-primary"`.'
+        heading="subtle"
+        variant="subtle"
       />
     </BackgroundWithPadding>
   ),
@@ -45,9 +65,9 @@ export const Transparent: Story = {
   render: () => (
     <BackgroundWithPadding bg="background-primary">
       <Disclosure
-        variant="transparent"
-        heading="transparent"
         body="Notice the border and it uses `background-current` to inherit the existing background color."
+        heading="transparent"
+        variant="transparent"
       />
     </BackgroundWithPadding>
   ),
@@ -57,9 +77,9 @@ export const HasBorder: Story = {
   render: () => (
     <BackgroundWithPadding bg="background-primary">
       <Disclosure
-        heading="hasBorder (set to false)"
         body="This is a `default` variant without a border."
         hasBorder={false}
+        heading="hasBorder (set to false)"
       />
     </BackgroundWithPadding>
   ),
@@ -85,29 +105,5 @@ export const Compact: Story = {
     heading: 'Compact spacing',
     body: 'Lorem ipsum dolor sit amet consectetur. Ut consectetur adipiscing a donec sed volutpat. Tempor risus rhoncus quisque vel sit mattis. Accumsan vel posuere tortor sit mattis augue congue sit.',
     spacing: 'compact',
-  },
-};
-
-const ConstrainedText = () => {
-  return (
-    <Text maxWidth="600px">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis tempore
-      voluptatum, hic ipsum cum commodi laudantium? Mollitia quod totam
-      consequuntur facere, praesentium cumque nesciunt debitis officiis, ipsa
-      sapiente recusandae iusto.
-    </Text>
-  );
-};
-
-export const Playground: Story = {
-  args: {
-    heading: 'All the options',
-    body: <ConstrainedText />,
-    overline: 'overline is text-secondary and fontFamily: accent',
-    subheading: 'subheading is text-secondary',
-    ctaText: 'Optional button - must include a callback!',
-    ctaCallback: () => {},
-    hasPanelBg: true,
-    initiallyExpanded: true,
   },
 };

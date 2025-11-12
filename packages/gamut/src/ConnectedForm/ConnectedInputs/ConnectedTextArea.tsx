@@ -16,9 +16,9 @@ export const ConnectedTextArea: React.FC<ConnectedTextAreaProps> = ({
 
   return (
     <TextArea
+      aria-required={isRequired}
       disabled={isDisabled}
       error={Boolean(error)}
-      aria-required={isRequired}
       {...ref}
       {...rest}
     />

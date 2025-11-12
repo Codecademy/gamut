@@ -11,15 +11,15 @@ export const Confetti: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    width={width}
+    fill="none"
     height={height}
     viewBox="0 0 80 60"
-    fill="none"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
     <title>Confetti Illustration</title>
-    <rect width="80" height="60" fill="white" />
+    <rect fill="white" height="60" width="80" />
     <path
       d="M51.9001 43.4534L21.9763 52.8439L10 56.6023L23.2835 14.2055"
       fill="white"
@@ -90,17 +90,17 @@ export const Confetti: React.FC<IllustrationProps> = ({
     />
     <defs>
       <pattern
+        height="2.30418"
         id="pattern0"
         patternContentUnits="objectBoundingBox"
         width="3.19786"
-        height="2.30418"
       >
-        <use xlinkHref="#image0" transform="scale(0.0499666 0.0360028)" />
+        <use transform="scale(0.0499666 0.0360028)" xlinkHref="#image0" />
       </pattern>
       <image
+        height="64"
         id="image0"
         width="64"
-        height="64"
         xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACkSURBVHgB7dcxEsIwDAVR6f53Boo/FNBkPEkYrN3Xye3+xlVVz/pEu/XmEqgsr3AJVJZXuAQqyytcApXlFS6ByvIKl0BleYVLoLK8wiVQWV5BK/8oheWh+vuBVh67BMsXVB/cuPKYJVj+4B6rF29c+bFLsPziPUafvHHlxyzB8ifvbfXFN678tkuw/MX3NvrmG1d+myVY/ub7b/WPb1z5sb/CJS8ZOf4BH9R+4AAAAABJRU5ErkJggg=="
       />
     </defs>

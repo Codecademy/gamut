@@ -8,7 +8,7 @@ import { Overlay } from '../Overlay';
 import { Text } from '../Typography';
 import { ModalContainer, ModalContainerProps } from './elements';
 import { ImageContainer } from './ImageContainer';
-import { ModalBaseProps } from './types';
+import { CloseButtonProps, ModalBaseProps } from './types';
 
 interface DialogButtonProps {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ interface DialogButtonProps {
   onClick?: ComponentProps<typeof FillButton>['onClick'];
 }
 
-export interface DialogProps extends ModalBaseProps {
+export interface DialogProps extends ModalBaseProps, CloseButtonProps {
   title: ModalBaseProps['title'];
   size?: Exclude<ModalContainerProps['size'], 'fluid' | false>;
   variant?: Extract<
@@ -25,7 +25,6 @@ export interface DialogProps extends ModalBaseProps {
   >;
   confirmCta: DialogButtonProps;
   cancelCta?: DialogButtonProps;
-  closeButtonTipText?: string;
 }
 
 export const Dialog: React.FC<DialogProps> = ({
@@ -34,10 +33,17 @@ export const Dialog: React.FC<DialogProps> = ({
   children,
   confirmCta,
   cancelCta,
+  closeButtonProps: {
+    disabled: disableCloseButton,
+    hidden: hideCloseButton,
+    ref: closeButtonRef,
+    tip: closeButtonTip = 'Close dialog',
+    tipAlignment = 'top-center' as const,
+  } = {},
   onRequestClose,
   image,
+  containerFocusRef,
   size = 'small',
-  closeButtonTipText = 'Close dialog',
   ...rest
 }) => {
   const onConfirm: DialogButtonProps['onClick'] = (
@@ -57,45 +63,52 @@ export const Dialog: React.FC<DialogProps> = ({
   return (
     <Overlay shroud onRequestClose={onCancel as () => void} {...rest}>
       <ModalContainer
-        size={size}
         aria-hidden="false"
-        aria-modal="true"
-        role="dialog"
-        layout="dialog"
-        tabIndex={-1}
-        data-autofocus
         aria-label="dialog"
+        aria-labelledby={String(title)}
+        aria-modal="true"
+        data-autofocus
+        layout="dialog"
+        ref={containerFocusRef}
+        role="dialog"
+        size={size}
+        tabIndex={-1}
       >
-        <Text as="h2" fontSize={20} lineHeight="base" gridArea="title">
+        <Text as="h2" fontSize={20} gridArea="title" lineHeight="base">
           {title}
         </Text>
-        <Box gridArea="close">
-          <IconButton
-            size="small"
-            alignSelf="start"
-            icon={MiniDeleteIcon}
-            onClick={onCancel}
-            tip={closeButtonTipText}
-          />
-        </Box>
-        <Box as="div" gridArea="content" data-testid="dialog-content">
+        {!hideCloseButton && (
+          <Box gridArea="close">
+            <IconButton
+              alignSelf="start"
+              disabled={disableCloseButton}
+              icon={MiniDeleteIcon}
+              ref={closeButtonRef}
+              size="small"
+              tip={closeButtonTip}
+              tipProps={{ alignment: tipAlignment }}
+              onClick={onCancel}
+            />
+          </Box>
+        )}
+        <Box as="div" data-testid="dialog-content" gridArea="content">
           {image && <ImageContainer image={image} size={size} />}
           {children}
         </Box>
         {cancelCta && (
           <TextButton
             {...cancelCta}
+            gridArea="cancel"
+            justifySelf="end"
             variant="secondary"
             onClick={onCancel}
-            justifySelf="end"
-            gridArea="cancel"
           />
         )}
         <FillButton
           {...confirmCta}
+          gridArea="confirm"
           variant={variant}
           onClick={onConfirm}
-          gridArea="confirm"
         />
       </ModalContainer>
     </Overlay>

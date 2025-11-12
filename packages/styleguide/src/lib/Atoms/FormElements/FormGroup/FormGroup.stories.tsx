@@ -1,9 +1,14 @@
 import { FormGroup, Input } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
+import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
-const meta: Meta<typeof FormGroup> = {
+import { infotipNestedArgTypes } from '~styleguide/argTypes';
+
+const meta: TypeWithDeepControls<Meta<typeof FormGroup>> = {
   component: FormGroup,
-  args: {},
+  argTypes: {
+    ...infotipNestedArgTypes,
+  },
 };
 
 export default meta;
@@ -18,7 +23,7 @@ export const Default: Story = {
 
 const FormGroupHtmlForExample = () => {
   return (
-    <FormGroup label="I am a label!!" htmlFor="example1">
+    <FormGroup htmlFor="example1" label="I am a label!!">
       <Input htmlFor="example1" />
     </FormGroup>
   );
@@ -57,7 +62,7 @@ export const Error: Story = {
     description: 'You can tell by the asterisk.',
     error: 'You messed up dude.',
     htmlFor: 'required-error',
-    children: <Input defaultValue=">_>" htmlFor="required-error" error />,
+    children: <Input defaultValue=">_>" error htmlFor="required-error" />,
   },
 };
 
@@ -74,6 +79,7 @@ export const LowEmphasisInfoTip: Story = {
   args: {
     label: 'Low emphasis',
     infotip: {
+      alignment: 'bottom-left',
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     },
     children: <Input />,
@@ -85,6 +91,7 @@ export const HighEmphasisInfoTip: Story = {
     label: 'High emphasis',
     infotip: {
       emphasis: 'high',
+      alignment: 'bottom-left',
       info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     },
     children: <Input />,

@@ -1,19 +1,18 @@
 import { Box, FlexBox, Tag } from '@codecademy/gamut';
-import {
-  MiniCheckCircleIcon,
-  MiniChevronDownIcon,
-  MiniChevronUpIcon,
-  MiniKebabMenuIcon,
-  MiniPinIcon,
-  MiniRemoveCircleIcon,
-  MiniStarIcon,
-} from '@codecademy/gamut-icons';
+import * as icons from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Tag> = {
   component: Tag,
   args: {
     children: 'Tag',
+  },
+  argTypes: {
+    icon: {
+      control: 'select',
+      options: Object.keys(icons),
+      mapping: icons,
+    },
   },
 };
 
@@ -138,62 +137,66 @@ export const WithIcon: Story = {
     <FlexBox column>
       <FlexBox row>
         <Box mx={4}>
-          <Tag variant="readOnly" icon={MiniStarIcon}>
+          <Tag icon={icons.MiniStarIcon} variant="readOnly">
             Gotcha!
           </Tag>
         </Box>
         <Box mx={4}>
-          <Tag onDismiss={() => null} variant="selection" icon={MiniPinIcon}>
+          <Tag
+            icon={icons.MiniPinIcon}
+            variant="selection"
+            onDismiss={() => null}
+          >
             Tag!
           </Tag>
         </Box>
         <Box mx={4}>
-          <Tag variant="navigation" href="" icon={MiniCheckCircleIcon}>
+          <Tag href="" icon={icons.MiniCheckCircleIcon} variant="navigation">
             You&apos;re it!
           </Tag>
         </Box>
         <Box mx={4}>
           <Tag
-            onClick={() => null}
+            icon={icons.MiniRemoveCircleIcon}
             variant="suggestion"
-            icon={MiniRemoveCircleIcon}
+            onClick={() => null}
           >
             No tagbacks!
           </Tag>
         </Box>
       </FlexBox>
-      <FlexBox row mt={12}>
+      <FlexBox mt={12} row>
         <Box mx={4}>
-          <Tag size="large" variant="readOnly" icon={MiniChevronDownIcon}>
+          <Tag icon={icons.MiniChevronDownIcon} size="large" variant="readOnly">
             Duck,
           </Tag>
         </Box>
         <Box mx={4}>
           <Tag
-            onDismiss={() => null}
+            icon={icons.MiniChevronDownIcon}
             size="large"
             variant="selection"
-            icon={MiniChevronDownIcon}
+            onDismiss={() => null}
           >
             Duck,
           </Tag>
         </Box>
         <Box mx={4}>
           <Tag
+            href=""
+            icon={icons.MiniKebabMenuIcon}
             size="large"
             variant="navigation"
-            href=""
-            icon={MiniKebabMenuIcon}
           >
             Duck...
           </Tag>
         </Box>
         <Box mx={4}>
           <Tag
-            onClick={() => null}
+            icon={icons.MiniChevronUpIcon}
             size="large"
             variant="suggestion"
-            icon={MiniChevronUpIcon}
+            onClick={() => null}
           >
             Goose!
           </Tag>

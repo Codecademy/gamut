@@ -29,36 +29,37 @@ export const Disclosure: React.FC<DisclosureProps> = ({
   variant,
 }) => {
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
+
   return (
     <DisclosureWrapper
-      column
-      variant={variant}
-      hasBorder={hasBorder}
-      onClick={() => onClick?.()}
       as={isListItem ? 'li' : undefined}
+      column
+      hasBorder={hasBorder}
+      variant={variant}
+      onClick={() => onClick?.()}
     >
       <DisclosureButton
-        spacing={spacing}
+        disabled={disabled}
         heading={heading}
         headingLevel={headingLevel}
-        overline={overline}
-        subheading={subheading}
         isExpanded={isExpanded}
+        overline={overline}
         setIsExpanded={setIsExpanded}
-        disabled={disabled}
+        spacing={spacing}
+        subheading={subheading}
       />
       <AnimatePresence>
         {isExpanded && (
           <ExpandInCollapseOut>
             <DisclosureBody
               body={body}
-              hasPanelBg={hasPanelBg}
-              ctaText={ctaText}
-              spacing={spacing}
-              ctaCallback={ctaCallback}
               buttonPlacement={buttonPlacement}
-              href={href}
               buttonType={button}
+              ctaCallback={ctaCallback}
+              ctaText={ctaText}
+              hasPanelBg={hasPanelBg}
+              href={href}
+              spacing={spacing}
             />
           </ExpandInCollapseOut>
         )}

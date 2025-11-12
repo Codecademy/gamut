@@ -10,6 +10,7 @@ import {
 import * as BadgeStories from './Badge.stories';
 
 export const parameters = {
+  title: 'Badge',
   subtitle:
     'Badges are generally used as a standard way to highlight a short piece of text, likely a single word.',
   design: {
@@ -35,6 +36,7 @@ Use `Badge`s to display read-only information like statuses, attributes, and oth
 ### Best practices:
 
 - Use badges sparingly, as too many can dilute their effectiveness.
+- Custom colors should be used sparingly, consistently across similar contexts, and with sufficient contrast for accessibility.
 
 ### When NOT to use:
 
@@ -79,17 +81,30 @@ Use the tertiary variant to indicate background or supplementary information wit
 
 ### Tertiary-fill
 
-Use the tertiary-fill variant when a tertiary badge needs to sit above other content. This variant includes a bg-color that can overlap color modes and unpredictable content.
+Use the tertiary-fill variant when a tertiary `Badge` needs to sit above other content. This variant includes a bg-color that can overlap color modes and unpredictable content.
 
 <Canvas of={BadgeStories.TertiaryFill} />
 
 ### Accent
 
-Use the accent variant to draw attention to important details or statuses with a noticeable but less dominant emphasis than the primary badge.
+Use the accent variant to draw attention to important details or statuses with a noticeable but less dominant emphasis than the primary `Badge`.
 
-<Callout text="The accent variant does not respond to Color Mode." />
+<Callout
+  text={
+    <>
+      The accent variant does not respond to{' '}
+      <LinkTo id="Foundations/ColorMode">ColorMode</LinkTo>.
+    </>
+  }
+/>
 
 <Canvas of={BadgeStories.Accent} />
+
+### Custom
+
+Use the custom variant to create a `Badge` with a unique color scheme that fits your design needs. This variant allows for more flexibility in styling, but keep in mind best practices for color usage and accessibility.
+
+<Canvas of={BadgeStories.Custom} />
 
 ## Sizes
 

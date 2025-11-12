@@ -16,23 +16,27 @@ export * from './Card';
 export * from './Coachmark';
 export * from './ConnectedForm';
 export * from './ContentContainer';
+export * from './DelayedRenderWrapper';
 export * from './Disclosure';
 export * from './DataList';
 export * from './Drawer';
-export * from './FloatingCard/FloatingCard';
+export * from './FeatureShimmer';
 export * from './Flyout';
 export * from './FocusTrap';
 export * from './Form';
+export type {
+  OptionStrict,
+  ExtendedOption,
+  SelectDropdownGroup,
+} from './Form/SelectDropdown';
 export * from './GridForm';
 export * from './HiddenText';
 export * from './Layout/Column';
 export * from './Layout/LayoutGrid';
 export * from './List';
 export * from './Loading/Shimmer';
-export * from './Logo';
 export * from './Markdown';
 export * from './Menu';
-export * from './ModalDeprecated';
 export * from './Modals';
 export * from './Overlay';
 export * from './Pagination';
@@ -48,11 +52,9 @@ export * from './theming/VisualTheme';
 export * from './Toast/Toast';
 export * from './Toaster';
 export * from './Toggle';
-export * from './Tip/DeprecatedToolTip';
 export * from './Tip/InfoTip';
 export * from './Tip/PreviewTip';
 export * from './Tip/ToolTip';
-export type { DeprecatedToolTipProps } from './Tip/DeprecatedToolTip/types';
 export * from './typings/responsive-properties';
 export * from './Typography/Text';
 export type { HeadingTags } from './Typography/types';

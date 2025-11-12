@@ -5,6 +5,7 @@ import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 import * as ConnectedFormGroupStories from './ConnectedFormGroup.stories';
 
 export const parameters = {
+  title: 'ConnectedFormGroup',
   subtitle: `A form group for the ConnectedForm component.`,
   status: 'updating',
   source: {
@@ -50,15 +51,15 @@ export const parameters = {
 />
 ```
 
-## Variants
+## States
 
 A `ConnectedFormGroup` can be in one of three states: `default`, `error`, or `disabled`.
-
-### States
 
 - `default` being a standard group that can be interacted with.
 - `error` being a group that has an error message displayed.
 - `disabled` being a group that is disabled and therefore not interactable.
+
+<Canvas of={ConnectedFormGroupStories.States} />
 
 ## Playground
 

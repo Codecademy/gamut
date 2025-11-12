@@ -1,9 +1,8 @@
 import {
   ConnectedCheckbox,
   ConnectedForm,
-  ConnectedFormGroupProps,
-  ConnectedFormProps,
   ConnectedInput,
+  ConnectedNestedCheckboxes,
   ConnectedRadioGroupInput,
   ConnectedSelect,
   ConnectedTextArea,
@@ -14,9 +13,8 @@ import {
 } from '@codecademy/gamut';
 import { MiniArrowRightIcon, TerminalIcon } from '@codecademy/gamut-icons';
 import { action } from '@storybook/addon-actions';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { useState } from 'react';
-import * as React from 'react';
 
 const meta: Meta<typeof ConnectedForm> = {
   component: ConnectedForm,
@@ -24,101 +22,8 @@ const meta: Meta<typeof ConnectedForm> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ConnectedForm>;
 
-export const RadioWatchExample = () => {
-  const [showRadio, setShowRadio] = useState(false);
-  const [lastFormValues, setLastFormValues] = useState({
-    checkbox: 'not submitted',
-    radioGroup: 'not submitted',
-  });
-
-  const handleWatch = (values: string[]) => {
-    const [checkbox] = values;
-    return checkbox ? setShowRadio(true) : setShowRadio(false);
-  };
-
-  const { ConnectedFormGroup, ConnectedForm, connectedFormProps } =
-    useConnectedForm({
-      defaultValues: {
-        checkbox: false,
-        radioGroup: undefined,
-      },
-      validationRules: {
-        radioGroup: {
-          required: 'please fill this out.',
-        },
-      },
-      watchedFields: {
-        fields: ['checkbox', 'radioGroup'],
-        watchHandler: handleWatch,
-      },
-    });
-
-  return (
-    <ConnectedForm
-      onSubmit={({ checkbox, radioGroup }) => {
-        setLastFormValues({
-          checkbox: `${checkbox}`,
-          radioGroup: `${radioGroup}`,
-        });
-      }}
-      onError={(errors) => errors}
-      resetOnSubmit
-      {...connectedFormProps}
-    >
-      <Text as="code" lineHeight="base" mb={24}>
-        your last answers were {lastFormValues.checkbox} and{' '}
-        {lastFormValues.radioGroup}!
-      </Text>
-      <ConnectedFormGroup
-        name="checkbox"
-        label="a special checkbox"
-        spacing="tight"
-        field={{
-          component: ConnectedCheckbox,
-          label: 'check me to view the radio',
-          spacing: 'tight',
-        }}
-      />
-      {showRadio && (
-        <ConnectedFormGroup
-          name="radioGroup"
-          label="cool radiogroup bruh"
-          field={{
-            component: ConnectedRadioGroupInput,
-            options: [
-              { label: 'one', value: 'one' },
-              { label: 'two', value: 'two' },
-              { label: 'zero', value: 'zero' },
-            ],
-          }}
-        />
-      )}
-      <SubmitButton m={8}>submit the form, please</SubmitButton>
-    </ConnectedForm>
-  );
-};
-
-export const WatchedFields: Story = {
-  render: () => <RadioWatchExample />,
-};
-
-type ConnectedFormPlayground = {
-  connectedForm: Omit<
-    ConnectedFormProps<any>,
-    'defaultValue' | 'validationRules' | 'watchedFields' | 'onSubmit'
-  >;
-  connectedFormGroup: Omit<
-    ConnectedFormGroupProps<any>,
-    'name' | 'label' | 'field'
-  >;
-};
-
-const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
-  connectedForm,
-  connectedFormGroup,
-}) => {
+export const Default = () => {
   const { ConnectedFormGroup, ConnectedForm, connectedFormProps } =
     useConnectedForm({
       defaultValues: {
@@ -127,6 +32,7 @@ const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
         inputField: '',
         radioGroupField: undefined,
         textAreaField: '',
+        nestedCheckboxesField: ['react', 'typescript', 'backend'],
       },
       validationRules: {
         checkboxField: { required: 'you need to check this.' },
@@ -146,49 +52,46 @@ const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
 
   return (
     <ConnectedForm
-      onSubmit={(values) => {
-        action('Form Submitted')(values);
-      }}
+      alignItems="center"
       display="flex"
       flexDirection="column"
-      alignItems="center"
       justifyContent="space-between"
       minHeight="50rem"
+      onSubmit={(values) => {
+        action('Form Submitted')(values);
+        // eslint-disable-next-line no-console
+        console.log('Form Submitted', values);
+      }}
       {...connectedFormProps}
-      {...connectedForm}
     >
       <SubmitButton m={8}>submit this form</SubmitButton>
       <FormRequiredText />
       <ConnectedFormGroup
-        name="checkboxField"
-        label="checkbox field"
         field={{
           component: ConnectedCheckbox,
-          label: 'check it ouuut',
+          label: <div>check it ouuut</div>,
+          'aria-label': 'aria label',
         }}
-        {...connectedFormGroup}
+        label="checkbox field"
+        name="checkboxField"
       />
       <ConnectedFormGroup
-        name="selectField"
-        label="select field"
         field={{
           component: ConnectedSelect,
           options: ['one', 'two', 'zero'],
         }}
-        {...connectedFormGroup}
+        label="select field"
+        name="selectField"
       />
       <ConnectedFormGroup
-        name="inputField"
-        label="input field"
         field={{
           component: ConnectedInput,
           icon: TerminalIcon,
         }}
-        {...connectedFormGroup}
+        label="input field"
+        name="inputField"
       />
       <ConnectedFormGroup
-        name="radioGroupField"
-        label="radio group field"
         field={{
           component: ConnectedRadioGroupInput,
           options: [
@@ -227,22 +130,130 @@ const ConnectedFormPlayground: React.FC<ConnectedFormPlayground> = ({
             },
           ],
         }}
-        {...connectedFormGroup}
+        label="radio group field"
+        name="radioGroupField"
       />
       <ConnectedFormGroup
-        name="textAreaField"
-        label="text area field"
         field={{
           component: ConnectedTextArea,
         }}
-        {...connectedFormGroup}
+        label="text area field"
+        name="textAreaField"
+      />
+      <ConnectedFormGroup
+        field={{
+          component: ConnectedNestedCheckboxes,
+          options: [
+            {
+              value: 'frontend',
+              label: 'Frontend Technologies',
+              options: [
+                {
+                  value: 'react',
+                  label: 'React',
+                  options: [
+                    { value: 'nextjs', label: 'Next.js' },
+                    { value: 'typescript', label: 'TypeScript' },
+                  ],
+                },
+                {
+                  value: 'vue',
+                  label: 'Vue.js',
+                },
+                { value: 'angular', label: 'Angular' },
+              ],
+            },
+            {
+              value: 'backend',
+              label: 'Backend Technologies',
+              options: [
+                { value: 'node', label: 'Node.js' },
+                { value: 'python', label: 'Python' },
+                { value: 'java', label: 'Java' },
+              ],
+            },
+          ],
+          onUpdate: (selectedValues) =>
+            // eslint-disable-next-line no-console
+            console.log('Selected:', selectedValues),
+        }}
+        label="nested checkboxes field"
+        name="nestedCheckboxesField"
       />
     </ConnectedForm>
   );
 };
 
-export const Default: Story = {
-  render: () => (
-    <ConnectedFormPlayground connectedForm={{}} connectedFormGroup={{}} />
-  ),
+export const WatchedFields = () => {
+  const [showRadio, setShowRadio] = useState(false);
+  const [lastFormValues, setLastFormValues] = useState({
+    checkbox: 'not submitted',
+    radioGroup: 'not submitted',
+  });
+
+  const handleWatch = (values: string[]) => {
+    const [checkbox] = values;
+    return checkbox ? setShowRadio(true) : setShowRadio(false);
+  };
+
+  const { ConnectedFormGroup, ConnectedForm, connectedFormProps } =
+    useConnectedForm({
+      defaultValues: {
+        checkbox: false,
+        radioGroup: undefined,
+      },
+      validationRules: {
+        radioGroup: {
+          required: 'please fill this out.',
+        },
+      },
+      watchedFields: {
+        fields: ['checkbox', 'radioGroup'],
+        watchHandler: handleWatch,
+      },
+    });
+
+  return (
+    <ConnectedForm
+      resetOnSubmit
+      onError={(errors) => errors}
+      onSubmit={({ checkbox, radioGroup }) => {
+        setLastFormValues({
+          checkbox: `${checkbox}`,
+          radioGroup: `${radioGroup}`,
+        });
+      }}
+      {...connectedFormProps}
+    >
+      <Text as="code" lineHeight="base" mb={24}>
+        your last answers were {lastFormValues.checkbox} and{' '}
+        {lastFormValues.radioGroup}!
+      </Text>
+      <ConnectedFormGroup
+        field={{
+          component: ConnectedCheckbox,
+          label: 'check me to view the radio',
+          spacing: 'tight',
+        }}
+        label="a special checkbox"
+        name="checkbox"
+        spacing="tight"
+      />
+      {showRadio && (
+        <ConnectedFormGroup
+          field={{
+            component: ConnectedRadioGroupInput,
+            options: [
+              { label: 'one', value: 'one' },
+              { label: 'two', value: 'two' },
+              { label: 'zero', value: 'zero' },
+            ],
+          }}
+          label="cool radiogroup bruh"
+          name="radioGroup"
+        />
+      )}
+      <SubmitButton m={8}>submit the form, please</SubmitButton>
+    </ConnectedForm>
+  );
 };

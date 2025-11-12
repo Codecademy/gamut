@@ -37,7 +37,7 @@ export const Unchecked: Story = {
     htmlFor: 'example-unchecked',
     label: 'unchecked',
     name: 'example-unchecked',
-    checked: false,
+    checked: true,
   },
 };
 
@@ -47,6 +47,15 @@ export const Checked: Story = {
     label: 'checked',
     name: 'example-checked',
     checked: true,
+  },
+};
+
+export const Indeterminate: Story = {
+  args: {
+    htmlFor: 'indeterminate',
+    label: 'indeterminate',
+    name: 'example-indeterminate',
+    indeterminate: true,
   },
 };
 
@@ -86,73 +95,91 @@ export const SpacingTight: Story = {
     spacing: 'tight',
   },
   render: () => (
-    <>
-      <Checkbox
-        checked
-        readOnly
-        spacing="tight"
-        label="a small space"
-        htmlFor="spacing-1"
-        name="spacing-1"
-      />
-      <Checkbox
-        spacing="tight"
-        label="with three checkboxes"
-        htmlFor="spacing-2"
-        name="spacing-2"
-      />
-      <Checkbox
-        checked
-        readOnly
-        spacing="tight"
-        label="neat huh?"
-        htmlFor="spacing-3"
-        name="spacing-3"
-      />
-    </>
+    <Box as="fieldset" m={0} p={0}>
+      <legend>Tight Spacing</legend>
+      <FlexBox
+        as="ul"
+        column
+        style={{ listStyle: 'none', margin: 0, padding: 0 }}
+      >
+        {[
+          { id: 'spacing-1', label: 'a small space', checked: true },
+          { id: 'spacing-2', label: 'with three checkboxes', checked: false },
+          { id: 'spacing-3', label: 'neat huh?', checked: true },
+        ].map(({ id, label, checked }) => (
+          <Box as="li" key={id} mt={4}>
+            <Checkbox
+              checked={checked}
+              htmlFor={id}
+              label={label}
+              name={id}
+              readOnly
+              spacing="tight"
+            />
+          </Box>
+        ))}
+      </FlexBox>
+    </Box>
   ),
 };
 
 export const LabelsAsReactNodes: Story = {
   args: {},
   render: () => (
-    <>
-      <Checkbox
-        checked
-        readOnly
-        label="a string"
-        htmlFor="accessible-1"
-        name="accessible-1"
-      />
-      <Checkbox
-        label={
-          <FlexBox alignItems="center">
-            <MiniStarIcon mr={4} />a node <MiniStarIcon ml={4} />
-          </FlexBox>
-        }
-        aria-label="a node"
-        htmlFor="accessible-2"
-        name="accessible-2"
-      />
-      <Checkbox
-        dontAriaHideLabel
-        aria-label="Here is a link to click"
-        htmlFor="accessible-3"
-        name="accessible-3"
-        label={
-          <Box>
-            <Text aria-hidden>Here is a link to&nbsp;</Text>
-            <Anchor href="/">click</Anchor>
-            <Text aria-hidden>!</Text>
-          </Box>
-        }
-      />
-    </>
+    <Box as="fieldset" m={0} p={0}>
+      <legend>Labels as React Nodes</legend>
+      <FlexBox
+        as="ul"
+        column
+        style={{ listStyle: 'none', margin: 0, padding: 0 }}
+      >
+        <Box as="li" mt={4}>
+          <Checkbox
+            checked
+            htmlFor="accessible-1"
+            label="a string"
+            name="accessible-1"
+            readOnly
+          />
+        </Box>
+        <Box as="li" mt={4}>
+          <Checkbox
+            aria-label="a node"
+            htmlFor="accessible-2"
+            label={
+              <FlexBox alignItems="center">
+                <MiniStarIcon mr={4} />a node <MiniStarIcon ml={4} />
+              </FlexBox>
+            }
+            name="accessible-2"
+          />
+        </Box>
+        <Box as="li" mt={4}>
+          <Checkbox
+            aria-label="Here is a link to click"
+            dontAriaHideLabel
+            htmlFor="accessible-3"
+            label={
+              <Box>
+                <Text aria-hidden>Here is a link to&nbsp;</Text>
+                <Anchor href="/">click</Anchor>
+                <Text aria-hidden>!</Text>
+              </Box>
+            }
+            name="accessible-3"
+          />
+        </Box>
+      </FlexBox>
+    </Box>
   ),
 };
 
-type CustomCheckboxProps = Omit<CheckboxProps, 'checked'> & {
+type CustomCheckboxProps = Omit<
+  CheckboxProps,
+  'checked' | 'indeterminate' | 'label'
+> & {
   defaultChecked?: boolean;
+  label: string;
 };
 
 export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
@@ -170,11 +197,11 @@ export const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
 
   return (
     <Checkbox
-      htmlFor={htmlFor}
-      onChange={changeHandler}
-      label={label}
-      disabled={disabled}
       checked={currentChecked}
+      disabled={disabled}
+      htmlFor={htmlFor}
+      label={label}
+      onChange={changeHandler}
       {...rest}
     />
   );
@@ -193,10 +220,10 @@ export const ControlledCheckbox: React.FC = () => {
         </Column>
         <Column size={4}>
           <CustomCheckbox
-            htmlFor="a-custom-checkbox-again"
-            label="disabled custom checkbox"
             defaultChecked
             disabled
+            htmlFor="a-custom-checkbox-again"
+            label="disabled custom checkbox"
           />
         </Column>
         <Column size={4}>
@@ -210,4 +237,66 @@ export const ControlledCheckbox: React.FC = () => {
       </LayoutGrid>
     </Box>
   );
+};
+
+export const NestedCheckboxes: Story = {
+  render: () => {
+    const NestedCheckboxesComponent = () => {
+      const [childrenChecked, setChildrenChecked] = useState<boolean[]>([
+        false,
+        false,
+        false,
+      ]);
+
+      const allChecked = childrenChecked.every(Boolean);
+      const someChecked = childrenChecked.some(Boolean);
+
+      const isIndeterminate = !allChecked && someChecked;
+
+      const toggleAll = () => {
+        const next = !allChecked;
+        setChildrenChecked(childrenChecked.map(() => next));
+      };
+
+      const toggleChild = (index: number) => () => {
+        setChildrenChecked((prev) => {
+          const next = [...prev];
+          next[index] = !prev[index];
+          return next;
+        });
+      };
+
+      return (
+        <Box as="fieldset" border={1} borderRadius="sm" maxWidth="340px" p={16}>
+          <legend>My fave Gamut components</legend>
+          <Box ml={8}>
+            <Checkbox
+              htmlFor="nested-parent"
+              label="Select all components"
+              name="nested-parent"
+              onChange={toggleAll}
+              {...(isIndeterminate
+                ? { indeterminate: true as const, checked: false as const }
+                : { checked: allChecked })}
+            />
+          </Box>
+          <Box as="ul" listStyle="none" ml={32} p={0}>
+            {['Boxes', 'ToolTips', 'Pagination'].map((component, i) => (
+              <Box as="li" key={component}>
+                <Checkbox
+                  checked={childrenChecked[i]}
+                  htmlFor={`nested-child-${i}`}
+                  label={component}
+                  name={`nested-child-${i}`}
+                  onChange={toggleChild(i)}
+                />
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      );
+    };
+
+    return <NestedCheckboxesComponent />;
+  },
 };

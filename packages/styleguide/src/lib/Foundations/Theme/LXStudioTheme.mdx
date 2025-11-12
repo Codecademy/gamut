@@ -1,0 +1,102 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, LinkTo, TokenTable } from '~styleguide/blocks';
+
+import { color, swatch } from '../shared/elements';
+import * as TABLES from '../shared/lxStudioElements';
+
+export const parameters = {
+  title: 'LX Studio Theme',
+  subtitle: 'Theme used within the LX Studio',
+  status: 'current',
+  source: {
+    repo: 'gamut-styles',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/themes',
+  },
+};
+
+<Meta title="Foundations/Theme/LX Studio Theme" />
+
+<AboutHeader {...parameters} />
+
+The LX Studio Theme is a theme used within the LX Studio. It is built off of the Core Theme with additional tokens and overrides for the LX Studio. For all other tokens not listed here, refer to the <LinkTo id="Foundations/Theme/CoreTheme">Core Theme</LinkTo>.
+
+## Usage
+
+If you are using the LX Studio Theme via the Gamut theme provider in your app (i.e. `<GamutProvider theme={lxStudioTheme}>`), you can access the LX Studio Theme object via `theme` using our css-in-js utilities.
+
+```tsx
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+
+const Box = styled.div(css({ bg: 'lxStudioPurple', p: 4 })); // our system props inherently use the current theme
+
+const styles = styled.div`
+  blue: ${({ theme }) =>
+    theme.colors
+      .lxStudioPurple}; // theme here refers to the current theme, which is the LX Studio theme
+`;
+```
+
+If you have to import the theme object from `@codecademy/gamut-styles`, you will need to import the `lxStudioTheme` object, as `theme` references the Core Theme.
+
+```tsx
+import { css } from '@emotion/react';
+import { lxStudioTheme, theme } from '@codecademy/gamut-styles';
+
+const myStyles = css`
+  color: ${lxStudioTheme.colors.lxStudioPurple};
+`;
+
+const notWorkingStyles = css`
+  color: ${theme.colors
+    .lxStudioPurple}; // teal does not exist in the Core Theme colors so this does not work
+`;
+```
+
+See <LinkTo id="Foundations/Theme/About">Theme/About</LinkTo> for more information on the theme object and how to use it.
+
+## Color
+
+**Key**: `colors`
+
+All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches. The LX Studio Theme contains all the colors from the Core Theme, as well as additional colors for LX Studio.
+
+### LX Studio colors
+
+<TokenTable {...TABLES.lxStudioColor} />
+
+### Standard colors
+
+Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
+
+<TokenTable {...color} />
+
+### Solid color swatches
+
+Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a list of all the solid swatches available.
+
+<TokenTable {...swatch} />
+
+## Color modes
+
+Each color mode consists of a set of aliased color tokens that have a semantic meaning for how the color is used throughout our design system. For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-colormode--page).
+
+LX Studio currently only supports `light` mode.
+
+### Light mode
+
+<TABLES.LXStudioLightModeTable />
+
+## Font family
+
+**Key**: `fontFamily`
+
+<TokenTable {...TABLES.lxStudioFontFamily} />
+
+## Border Radius
+
+**Key**: `borderRadii`
+
+<TokenTable {...TABLES.lxStudioBorderRadii} />

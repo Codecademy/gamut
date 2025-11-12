@@ -2,7 +2,7 @@ import { Anchor, Box } from '@codecademy/gamut';
 import {
   Background,
   coreSwatches,
-  platformSwatches,
+  lxStudioColors,
   theme,
   trueColors,
 } from '@codecademy/gamut-styles';
@@ -10,24 +10,25 @@ import {
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
 import kebabCase from 'lodash/kebabCase';
 
-// CASS - fix
 import { Code, ColorScale, LinkTo, TokenTable } from '~styleguide/blocks';
 
-const PROP_COLUMN = {
+import { applyCorrectNotation } from './applyCorrectNotation';
+
+export const PROP_COLUMN = {
   key: 'key',
   name: 'Prop',
   size: 'md',
   render: ({ id }: any) => <Code>{id}</Code>,
 };
 
-const VALUE_COLUMN = {
+export const VALUE_COLUMN = {
   key: 'value',
   name: 'Value',
   size: 'lg',
   render: ({ value }: any) => <Code>{value}</Code>,
 };
 
-const PATH_COLUMN = {
+export const PATH_COLUMN = {
   key: 'path',
   name: 'Path',
   size: 'xl',
@@ -42,7 +43,9 @@ export const lightMode = {
     { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',
@@ -68,7 +71,9 @@ export const darkMode = {
     { ...PROP_COLUMN, size: 'lg' },
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',
@@ -92,7 +97,9 @@ export const color = {
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
+      ),
     },
     {
       key: 'swatch',
@@ -118,7 +125,7 @@ export const swatch = {
       render: ({ id, hexes }: any) => {
         return (
           <Code>
-            theme.colors[`{id}-{Object.keys(hexes)[0]}`]
+            theme.colors[&apos;{id}-{Object.keys(hexes)[0]}&apos;]
           </Code>
         );
       },
@@ -146,7 +153,7 @@ export const rgbaSwatch = {
       render: ({ id, hexes }: any) => {
         return (
           <Code>
-            theme.colors[`{id}-{Object.keys(hexes)[0]}`]
+            theme.colors[&apos;{id}-{Object.keys(hexes)[0]}&apos;]
           </Code>
         );
       },
@@ -175,8 +182,8 @@ export const rgbaSwatch = {
         return (
           <Background
             bg={id === 'white' ? 'navy' : 'white'}
-            p={4}
             borderRadius="md"
+            p={4}
           >
             <ColorScale colors={firstHexes} />
             <ColorScale colors={rest} />
@@ -187,33 +194,29 @@ export const rgbaSwatch = {
   ],
 };
 
-export const platformSwatch = {
-  rows: Object.entries(platformSwatches).map(([id, value]) => ({
+export const lxStudioColor = {
+  rows: Object.entries(lxStudioColors).map(([id, value]) => ({
     id,
-    hexes: value,
+    hex: value,
   })),
   columns: [
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ id, hexes }: any) => (
-        <Code>
-          theme.colors[`{id}-{Object.keys(hexes)[0]}`]
-        </Code>
+      render: ({ id }: any) => (
+        <Code>theme.colors{applyCorrectNotation({ id })}</Code>
       ),
     },
     {
       key: 'swatch',
       name: 'Swatch',
       size: 'fill',
-      render: ({ hexes }: { hexes: Record<string, string> }) => (
-        <ColorScale colors={hexes} />
-      ),
+      render: ({ hex }: any) => <ColorScale colors={{ hex }} />,
     },
   ],
 };
 
-const createExampleColumn = ({
+export const createExampleColumn = ({
   text,
   prop,
 }: {
@@ -328,7 +331,7 @@ export const space = {
       name: 'Example',
       size: 'fill',
       render: ({ value }: any) => (
-        <Box display="inline-block" width={value} height={value} bg="navy" />
+        <Box bg="navy" display="inline-block" height={value} width={value} />
       ),
     },
   ],
@@ -376,11 +379,11 @@ export const borderRadii = {
       size: 'fill',
       render: ({ value }: any) => (
         <Box
-          display="inline-block"
-          width="6rem"
-          height="4em"
           bg="navy"
           borderRadius={value}
+          display="inline-block"
+          height="4em"
+          width="6rem"
         />
       ),
     },
@@ -414,8 +417,8 @@ const PROPERTIES_COLUMN = {
     properties.map((property) => (
       <Anchor
         href={`https://developer.mozilla.org/en-US/docs/Web/CSS/${property}`}
-        target="_blank"
         rel=""
+        target="_blank"
       >
         <Code key={property}>{kebabCase(property)}</Code>
       </Anchor>

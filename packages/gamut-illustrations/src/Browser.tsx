@@ -11,15 +11,15 @@ export const Browser: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    width={width}
+    fill="none"
     height={height}
     viewBox="0 0 80 60"
-    fill="none"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
     <title>Browser Illustration</title>
-    <rect width="80" height="60" fill="white" />
+    <rect fill="white" height="60" width="80" />
     <path
       d="M70 5H10V55.3278H70V5Z"
       fill="white"
@@ -70,17 +70,17 @@ export const Browser: React.FC<IllustrationProps> = ({
     />
     <defs>
       <pattern
+        height="2.7861"
         id="pattern0"
         patternContentUnits="objectBoundingBox"
         width="4.99454"
-        height="2.7861"
       >
-        <use xlinkHref="#image0" transform="scale(0.0780397 0.0435328)" />
+        <use transform="scale(0.0780397 0.0435328)" xlinkHref="#image0" />
       </pattern>
       <image
+        height="64"
         id="image0"
         width="64"
-        height="64"
         xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAChSURBVHgB7dgxDoAwDMXQ5P53BoaIARaE2iJa+23p6j81ImKPK9qtk0ugsryKS6CyvIpLoLK8ikugsryKS6CyvIpLoLK8ikugsryKS6CyvIpLoLI8VN4faOW3gLJ8QOXDjSuPWYLlH+5l5csbV37ZJVj+5b2MbLxx5ZdZguUb72ll5xtXftolWL7zPY0cfOPKT7MEyw++fys/vnHlsb/DFwf+rf4QcSN+5wAAAABJRU5ErkJggg=="
       />
     </defs>

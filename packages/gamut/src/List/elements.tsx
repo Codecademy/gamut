@@ -8,8 +8,11 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
 import { Box } from '../Box';
+
+const { space, grid, flex, layout } = system;
 
 const olStyles = {
   alignItems: 'center',
@@ -47,18 +50,19 @@ const listVariants = variant({
 
 export interface ListProps
   extends StyleProps<typeof listVariants>,
-    StyleProps<typeof spacingVariants> {}
+    StyleProps<typeof spacingVariants>,
+    StyleProps<typeof space> {}
 
-export const ListEl = styled(
-  'ul',
-  styledOptions<'ul'>()
-)<ListProps>(listVariants);
+export const ListEl = styled('ul', styledOptions<'ul'>())<ListProps>(
+  listVariants,
+  space
+);
 
 const rowStates = states({
   isOl: {
     '&::before': {
       ...olStyles,
-      display: { _: 'none', xs: 'flex' },
+      display: { _: 'flex', c_base: 'none', c_sm: 'flex' },
       pl: 16,
     },
   },
@@ -68,10 +72,20 @@ const rowStates = states({
   },
   expanded: {
     display: 'flex',
-    flexDirection: { xs: 'column' },
+    flexDirection: { _: 'column', c_base: 'row', c_sm: 'column' },
   },
-  clickable: {
+  /**
+   * Overrides the background of the element to transparent.
+   */
+  transparentBg: {
+    bg: 'transparent',
+  },
+});
+
+const interactiveState = states({
+  interactive: {
     cursor: 'pointer',
+
     '&:hover': {
       bg: 'background-hover',
     },
@@ -87,12 +101,16 @@ const spacingVariants = variant({
   prop: 'spacing',
   variants: {
     normal: {
-      gap: { _: 8, xs: 40 },
+      rowGap: { _: 0, c_base: 8, c_sm: 0 },
+      columnGap: { _: 40, c_base: 8, c_sm: 40 },
     },
     condensed: {
       fontSize: 16,
-      gap: { _: 8, xs: 32 },
+      rowGap: { _: 0, c_base: 8, c_sm: 0 },
+      columnGap: { _: 32, c_base: 8, c_sm: 32 },
+      gap: { _: 40, c_base: 8, c_sm: 40 },
     },
+
     compact: {
       gap: 0,
       py: 0,
@@ -102,11 +120,10 @@ const spacingVariants = variant({
 
 const rowVariants = variant({
   prop: 'variant',
-  base: {
-    bg: 'background',
-  },
+  base: {},
   variants: {
     default: {
+      bg: 'background',
       border: 1,
       borderTop: 'none',
       '&:first-of-type': {
@@ -120,10 +137,12 @@ const rowVariants = variant({
       },
     },
     card: {
+      bg: 'background',
       border: 1,
       borderRadius: 'sm',
     },
     block: {
+      bg: 'background',
       border: 'none',
       borderRadius: 'sm',
     },
@@ -134,18 +153,19 @@ const rowVariants = variant({
 const rowBreakpointVariants = variant({
   prop: 'rowBreakpoint',
   defaultVariant: 'xs',
+
   variants: {
     xs: {
-      display: { _: 'grid', xs: 'flex' },
-      flexDirection: { _: 'column', xs: 'row' },
+      display: { _: 'flex', c_base: 'grid', c_sm: 'flex' },
+      flexDirection: { _: 'row', c_base: 'column', c_sm: 'row' },
     },
     sm: {
-      display: { _: 'grid', sm: 'flex' },
-      flexDirection: { _: 'column', sm: 'row' },
+      display: { _: 'grid', c_md: 'flex', md: 'flex' },
+      flexDirection: { _: 'column', c_md: 'row', md: 'row' },
     },
     md: {
-      display: { _: 'grid', md: 'flex' },
-      flexDirection: { _: 'column', md: 'row' },
+      display: { _: 'grid', c_lg: 'flex', lg: 'flex' },
+      flexDirection: { _: 'column', c_lg: 'row', lg: 'row' },
     },
     grid: { display: 'grid' },
   },
@@ -155,18 +175,21 @@ export interface RowProps
   extends StyleProps<typeof rowVariants>,
     StyleProps<typeof rowBreakpointVariants>,
     StyleProps<typeof spacingVariants>,
+    StyleProps<typeof interactiveState>,
     StyleProps<typeof rowStates>,
-    StyleProps<typeof system.grid> {}
+    StyleProps<typeof flex>,
+    StyleProps<typeof grid> {}
 
 export const RowEl = styled('li', styledOptions<'li'>())<RowProps>(
   css({
-    py: { _: 8, xs: 0 },
-    bg: 'inherit',
+    py: { _: 0, c_base: 8, c_sm: 0 },
+    width: 1,
   }),
-  variance.compose(system.grid),
+  variance.compose(grid, flex),
   rowBreakpointVariants,
   rowVariants,
   spacingVariants,
+  interactiveState,
   rowStates
 );
 
@@ -191,12 +214,13 @@ export interface HeaderProps
 export const HeaderRowEl = styled('tr', styledOptions)<HeaderProps>(
   css({
     display: 'flex',
-    position: { _: 'initial', xs: 'sticky' },
-    flexDirection: ['column', 'row'],
+    position: { _: 'sticky', c_base: 'initial', c_sm: 'sticky' },
+    flexDirection: { _: 'row', c_base: 'column', c_sm: 'row' },
     top: 0,
     bg: 'background-current',
     zIndex: 2,
     fontFamily: 'accent',
+    pb: { _: 0, c_base: 8, c_sm: 0 },
   }),
   spacingVariants,
   rowStates,
@@ -212,30 +236,62 @@ const columnType = variant({
     orderedHeader: {
       '&::before': {
         ...olStyles,
-        display: { _: 'flex', xs: 'none' },
+        display: { _: 'none', c_base: 'flex', c_sm: 'none' },
         pl: 8,
       },
     },
-
     content: {
-      gridColumnEnd: 'span 2',
+      gridColumn: { _: 'auto', c_base: 1, c_sm: 'auto' },
+      gridColumnEnd: { _: 'auto', c_base: 'span 1', c_sm: 'auto' },
     },
-    control: {
+    select: {
+      gridColumn: { _: 1, c_base: 3, c_sm: 1 },
+      gridRow: 1,
       minWidth: 'min-content',
       alignItems: {
-        _: 'flex-start',
-        xs: 'center',
+        _: 'center',
+        c_base: 'flex-start',
+        c_sm: 'center',
       },
       justifyItems: {
-        _: 'end',
-        xs: undefined,
+        _: 'auto',
+        c_base: 'end',
+        c_sm: 'auto',
       },
-
-      gridColumn: { _: 2, xs: 1 },
+    },
+    control: {
+      gridColumn: { _: 1, c_base: 3, c_sm: 1 },
       gridRow: 1,
+      minWidth: 'min-content',
+      alignItems: {
+        _: 'center',
+        c_base: 'flex-start',
+        c_sm: 'center',
+      },
+      justifyItems: {
+        _: 'auto',
+        c_base: 'end',
+        c_sm: 'auto',
+      },
+    },
+    tableControl: {
+      minWidth: 'min-content',
+      alignItems: {
+        _: 'center',
+        c_base: 'flex-start',
+        c_sm: 'center',
+      },
+      justifyItems: {
+        _: 'auto',
+        c_base: 'end',
+        c_sm: 'auto',
+      },
     },
     expand: {
       minWidth: 'min-content',
+    },
+    expandControl: {
+      gridColumnEnd: { _: 'auto', c_base: 'span 3', c_sm: 'auto' },
     },
   },
 });
@@ -245,10 +301,14 @@ const columnJustify = variant({
   defaultVariant: 'left',
   variants: {
     left: {
-      justifyContent: { xs: 'flex-start' },
+      justifyContent: {
+        _: 'flex-start',
+        c_base: 'initial',
+        c_sm: 'flex-start',
+      },
     },
     right: {
-      justifyContent: { xs: 'flex-end' },
+      justifyContent: { _: 'flex-end', c_base: 'initial', c_sm: 'flex-end' },
       '& div': {
         width: { sm: 'fit-content' },
       },
@@ -262,20 +322,20 @@ const columnSizes = variant({
   base: { minWidth: 0, maxWidth: 1, flexShrink: 1 },
   variants: {
     sm: {
-      flexBasis: { xs: '6rem' },
-      width: { xs: '6rem' },
+      flexBasis: { _: '6rem', c_base: 'auto', c_sm: '6rem' },
+      width: { _: '6rem', c_base: 'auto', c_sm: '6rem' },
     },
     md: {
-      flexBasis: { xs: '10rem' },
-      width: { xs: '10rem' },
+      flexBasis: { _: '10rem', c_base: 'auto', c_sm: '10rem' },
+      width: { _: '10rem', c_base: 'auto', c_sm: '10rem' },
     },
     lg: {
-      flexBasis: { xs: '12rem' },
-      width: { xs: '12rem' },
+      flexBasis: { _: '12rem', c_base: 'auto', c_sm: '12rem' },
+      width: { _: '12rem', c_base: 'auto', c_sm: '12rem' },
     },
     xl: {
-      flexBasis: { xs: '20rem' },
-      width: { xs: '20rem' },
+      flexBasis: { _: '20rem', c_base: 'auto', c_sm: '20rem' },
+      width: { _: '20rem', c_base: 'auto', c_sm: '20rem' },
     },
     content: {
       flexShrink: 0,
@@ -284,16 +344,15 @@ const columnSizes = variant({
 });
 
 const columnStates = states({
-  fill: { flexGrow: { xs: 1 } },
+  fill: { flexGrow: { _: 1, c_base: 0, c_sm: 1 } },
   sticky: {
-    width: '100%',
     height: '100%',
     bg: 'inherit',
   },
   delimiter: {
     overflow: 'visible',
     '&:after': {
-      display: { _: 'none', xs: 'block' },
+      display: { _: 'block', c_base: 'none', c_sm: 'block' },
       content: '""',
       bg: 'background-current',
       right: -4,
@@ -307,12 +366,30 @@ const columnStates = states({
     visibility: 'hidden',
     pointerEvents: 'none',
     opacity: 0,
+    height: 0,
   },
   columnHeader: {
     fontWeight: 400,
     overflow: 'visible',
     whiteSpace: 'normal',
     alignItems: 'flex-end',
+  },
+  dataTablePadding: {
+    '&:first-of-type': {
+      pl: 8,
+    },
+    '&:last-of-type': {
+      pr: 8,
+    },
+  },
+  /**
+   * We add this to every RowEl except expandable DataList because it causes a layout shift.
+   * In that case, the padding is instead added directly to the Expandable control.
+   */
+  lastChildPadding: {
+    '&:last-of-type': {
+      pr: 8,
+    },
   },
   wrap: {
     whiteSpace: 'normal',
@@ -329,20 +406,17 @@ const columnStates = states({
 const columnSpacing = variant({
   prop: 'spacing',
   base: {
-    px: { _: 16, xs: 0 },
+    px: { _: 0, c_base: 8, c_sm: 0 },
     '&:first-of-type': {
       pl: 8,
-    },
-    '&:last-of-type': {
-      pr: 8,
     },
   },
   variants: {
     normal: {
-      py: { _: 0, xs: 16 },
+      py: { _: 16, c_base: 0, c_sm: 16 },
     },
     condensed: {
-      py: { _: 0, xs: 8 },
+      py: { _: 8, c_base: 0, c_sm: 8 },
     },
     compact: {},
   },
@@ -354,7 +428,7 @@ export interface ColProps
     StyleProps<typeof columnType>,
     StyleProps<typeof columnStates>,
     StyleProps<typeof columnJustify>,
-    StyleProps<(typeof system)['layout']> {}
+    StyleProps<typeof layout> {}
 
 export const ColEl = styled(
   'div',
@@ -382,7 +456,7 @@ export const ColEl = styled(
   columnType,
   columnStates,
   columnJustify,
-  system.layout
+  layout
 );
 
 export const StickyHeaderColWrapper = styled.th(
@@ -390,7 +464,7 @@ export const StickyHeaderColWrapper = styled.th(
     '&:before': {
       content: '""',
       position: 'absolute',
-      bg: 'background',
+      bg: { _: 'background', c_base: 'transparent', c_sm: 'background' },
       width: '100%',
       height: '100%',
       top: 0,
@@ -400,26 +474,30 @@ export const StickyHeaderColWrapper = styled.th(
     '&:after': {
       content: '""',
       position: 'absolute',
-      bg: 'background-current',
+      bg: {
+        _: 'background-current',
+        c_base: 'inherit',
+        c_sm: 'background-current',
+      },
       width: '100%',
       height: '100%',
       top: 0,
       left: 0,
       zIndex: -1,
     },
+    display: 'flex',
+    flexShrink: 0,
     position: 'sticky',
     left: 0,
     zIndex: 1,
-    bg: 'inherit',
-
+    bg: { _: 'inherit', c_base: 'transparent', c_sm: 'inherit' },
     '&:not(:first-of-type)': {
-      left: { xs: 16 },
+      left: { _: 16, c_base: 0, c_sm: 16 },
       overflow: 'visible',
     },
     '&:not(:first-of-type):before': {
-      display: { _: 'none', xs: 'block' },
+      display: { _: 'block', c_base: 'none', c_sm: 'block' },
       content: '""',
-      bg: 'inherit',
       left: -16,
       height: 1,
       width: 16,
@@ -428,10 +506,33 @@ export const StickyHeaderColWrapper = styled.th(
   })
 );
 
-export const ListWrapper = styled(Box)(
-  states({
-    scrollable: {
-      boxShadow: { _: undefined, xs: 'inset -24px 0 24px -24px black' },
-    },
-  })
+const listStyles = css({
+  containerType: 'inline-size',
+});
+
+const listStates = states({
+  disableContainerQuery: {
+    containerType: 'normal',
+  },
+});
+
+export const StaticListWrapper = styled(Box)(listStyles, listStates);
+
+export const AnimatedListWrapper = styled(motion.create(Box))(
+  listStyles,
+  listStates
 );
+
+export const hiddenVariant = {
+  background: `linear-gradient(90deg, transparent 0%, transparent 40%, ${theme.colors['background-selected']} 50%, ${theme.colors['border-tertiary']} 100%)`,
+  backgroundSize: '0px 100%',
+  backgroundPosition: 'right',
+  backgroundRepeat: 'no-repeat',
+} as const;
+
+export const shadowVariant = {
+  background: `linear-gradient(90deg, transparent 0%, transparent 40%, ${theme.colors['background-selected']} 50%, ${theme.colors['border-tertiary']} 100%)`,
+  backgroundSize: '124px 100%',
+  backgroundPosition: 'right',
+  backgroundRepeat: 'no-repeat',
+};

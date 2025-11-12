@@ -11,7 +11,6 @@ type Story = StoryObj<typeof Box>;
 
 export const Default: Story = {
   args: {
-    as: 'div',
     children: 'Hello work, I am a box!',
   },
 };
@@ -26,17 +25,17 @@ export const Bordered: Story = {
 
 export const Positioning: Story = {
   render: () => (
-    <Box position="relative" height="500px">
-      <Box position="absolute" left="0" top="0" bg="gray-200" p={16}>
+    <Box height="500px" position="relative">
+      <Box bg="gray-200" left="0" p={16} position="absolute" top="0">
         Top Left
       </Box>
-      <Box position="absolute" bottom="0" left="0" bg="gray-200" p={16}>
+      <Box bg="gray-200" bottom="0" left="0" p={16} position="absolute">
         Bottom Left
       </Box>
-      <Box position="absolute" right="0" top="0" bg="gray-200" p={16}>
+      <Box bg="gray-200" p={16} position="absolute" right="0" top="0">
         Top Right
       </Box>
-      <Box position="absolute" right="0" bottom="0" bg="gray-200" p={16}>
+      <Box bg="gray-200" bottom="0" p={16} position="absolute" right="0">
         Bottom Right
       </Box>
     </Box>
@@ -45,14 +44,14 @@ export const Positioning: Story = {
 
 export const Lists: Story = {
   render: () => (
-    <Box as="ul" listStyle="none" p={16} border={1}>
-      <Box as="li" border={1} p={8} my={8}>
+    <Box as="ul" border={1} listStyle="none" p={16}>
+      <Box as="li" border={1} my={8} p={8}>
         list item 1
       </Box>
-      <Box as="li" border={1} p={8} my={8}>
+      <Box as="li" border={1} my={8} p={8}>
         list item 2
       </Box>
-      <Box as="li" border={1} p={8} my={8}>
+      <Box as="li" border={1} my={8} p={8}>
         and so on
       </Box>
     </Box>

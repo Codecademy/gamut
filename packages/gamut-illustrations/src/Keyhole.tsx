@@ -11,10 +11,10 @@ export const Keyhole: React.FC<IllustrationProps> = ({
   <svg
     aria-hidden={ariaHidden}
     className={className}
-    height={height}
-    width={width}
-    viewBox="0 0 88 136"
     fill="none"
+    height={height}
+    viewBox="0 0 88 136"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>Keyhole Icon</title>

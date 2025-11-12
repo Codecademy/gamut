@@ -7,7 +7,7 @@ import * as React from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { IconButton } from '../Button/IconButton';
-import { FloatingCard } from '../FloatingCard/FloatingCard';
+import { InternalFloatingCard } from '../InternalFloatingCard/InternalFloatingCard';
 import { Text } from '../Typography';
 import { WithChildrenProp } from '../utils';
 
@@ -30,7 +30,9 @@ const layoutVariants = system.variant({
   },
 });
 
-const ToastContainer = styled(FloatingCard)<StyleProps<typeof layoutVariants>>(
+const ToastContainer = styled(InternalFloatingCard)<
+  StyleProps<typeof layoutVariants>
+>(
   system.css({
     display: 'grid',
     width: 360,
@@ -76,25 +78,25 @@ export const Toast: React.FC<ToastProps> = ({
     if (typeof icon === 'string') {
       return (
         <IconContainer
-          gridArea="icon"
-          borderRadius="full"
           backgroundImage={`url(${icon})`}
+          borderRadius="full"
+          gridArea="icon"
         />
       );
     }
     return (
-      <IconContainer gridArea="icon" center>
+      <IconContainer center gridArea="icon">
         {icon}
       </IconContainer>
     );
   };
 
   return (
-    <ToastContainer role="status" aria-live="polite" layout={layoutType}>
+    <ToastContainer aria-live="polite" layout={layoutType} role="status">
       {renderIcon()}
       <Box gridArea="message" py={4}>
         {title && (
-          <Text variant="p-base" fontWeight="title" mb={4}>
+          <Text fontWeight="title" mb={4} variant="p-base">
             {title}
           </Text>
         )}
@@ -103,13 +105,13 @@ export const Toast: React.FC<ToastProps> = ({
         </Text>
       </Box>
       <IconButton
-        onClick={onClose}
-        size="small"
-        variant="secondary"
-        icon={MiniDeleteIcon}
         alignSelf="start"
+        icon={MiniDeleteIcon}
+        size="small"
         tip="Dismiss Toast"
         tipProps={{ placement: 'floating' }}
+        variant="secondary"
+        onClick={onClose}
       />
     </ToastContainer>
   );

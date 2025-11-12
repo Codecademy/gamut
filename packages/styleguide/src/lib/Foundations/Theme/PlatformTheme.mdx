@@ -1,0 +1,114 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, LinkTo, TokenTable } from '~styleguide/blocks';
+
+import { color, swatch } from '../shared/elements';
+import * as TABLES from '../shared/platformElements';
+
+export const parameters = {
+  title: 'Platform Theme',
+  subtitle: 'Codecademy Platform Theme used within the Learning Environment',
+  status: 'current',
+  source: {
+    repo: 'gamut-styles',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/themes',
+  },
+};
+
+<Meta title="Foundations/Theme/Platform Theme" />
+
+<AboutHeader {...parameters} />
+
+The Platform Theme is a theme used within the Codecademy Learning Environment. It is built off of the Core Theme with special colors for the Learning Environment. For all other tokens not listed here, refer to the <LinkTo id="Foundations/Theme/CoreTheme">Core Theme</LinkTo>.
+
+## Usage
+
+If you are using the Platform Theme via the Gamut theme provider in your app (i.e. `<GamutProvider theme={platformTheme}>`), you can access the Platform Theme object via `theme` using our css-in-js utilities.
+
+```tsx
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+
+const Box = styled.div(css({ bg: 'teal', p: 4 })); // our system props inherently use the current theme
+
+const styles = styled.div`
+  blue: ${({ theme }) =>
+    theme.colors
+      .teal}; // theme here refers to the current theme, which is the platform theme
+`;
+```
+
+If you have to import the theme object from `@codecademy/gamut-styles`, you will need to import the `platformTheme` object, as `theme` references the Core Theme.
+
+```tsx
+import { css } from '@emotion/react';
+import { platformTheme, theme } from '@codecademy/gamut-styles';
+
+const myStyles = css`
+  color: ${platformTheme.colors.teal};
+`;
+
+const notWorkingStyles = css`
+  color: ${theme.colors
+    .teal}; // teal does not exist in the Core Theme colors so this does not work
+`;
+```
+
+See <LinkTo id="Foundations/Theme/About">Theme/About</LinkTo> for more information on the theme object and how to use it.
+
+## Color
+
+**Key**: `colors`
+
+All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches. The Platform Theme contains all the colors from the Core Theme, as well as additional colors for the Learning Environment.
+
+### Platform colors
+
+<TokenTable {...TABLES.platformColor} />
+
+### Platform color swatches
+
+Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`.
+
+<TokenTable {...TABLES.platformSwatch} />
+
+### Platform editor colors
+
+There are some additional colors that are used specifically for the Monaco code editor in the Learning Environment. Since these colors must be in 6 digit hex format, they cannot use the original color tokens with RGBA values. Instead, the original values were converted to 6 digit hex using the respective light and dark mode background colors.
+
+The original colors being:
+
+- comment: `navy-500` (light) and `white-500` (dark)
+- indent-active: `navy-300` (light) and `white-300` (dark)
+- indent-inactive: `navy-400` (light) and `white-400` (dark)
+- line-number-active: `navy-700` (light) and `white-700` (dark)
+- line-number-inactive: `navy-500` (light) and `white-500` (dark)
+
+<TokenTable {...TABLES.platformEditorColor} />
+
+### Standard colors
+
+Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
+
+<TokenTable {...color} />
+
+### Solid color swatches
+
+Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a list of all the solid swatches available.
+
+<TokenTable {...swatch} />
+
+## Color modes
+
+We have 2 core color modes that we support: `light` and `dark`.
+
+Each color mode consists of a set of aliased color tokens that have a semantic meaning for how the color is used throughout our design system. For more on Color Modes please checkout the [full color mode documentation](/?path=/docs/foundations-colormode--page).
+
+### Light mode
+
+<TABLES.PlatformLightModeTable />
+
+### Dark mode
+
+<TABLES.PlatformDarkModeTable />

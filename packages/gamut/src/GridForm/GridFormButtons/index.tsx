@@ -49,19 +49,19 @@ export const GridFormButtons: React.FC<
   return (
     <Column size={props.size}>
       <GridBox
-        mb={8}
         alignSelf="center"
-        justifySelf={positions[props.position || 'left']}
         gridTemplateColumns={props.cancel ? 'auto auto' : undefined}
+        justifySelf={positions[props.position || 'left']}
+        mb={8}
       >
         {props.cancel && (
-          <TextButton {...props.cancel} mr={32} data-testid="cancel-button" />
+          <TextButton {...props.cancel} data-testid="cancel-button" mr={32} />
         )}
         <SubmitButton
           as={buttonMap[type]}
-          mode={props.mode}
           disabled={props.disabled}
           loading={props.loading}
+          mode={props.mode}
         >
           {props.contents}
         </SubmitButton>

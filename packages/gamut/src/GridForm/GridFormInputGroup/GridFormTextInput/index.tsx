@@ -33,12 +33,12 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
       htmlFor={field.name}
       id={field.id}
       name={field.name}
+      placeholder={field.placeholder}
+      type={field.type}
       onChange={async (event) => {
         field?.onUpdate?.(event.target.value);
         await onChange(event);
       }}
-      placeholder={field.placeholder}
-      type={field.type}
     />
   );
 };

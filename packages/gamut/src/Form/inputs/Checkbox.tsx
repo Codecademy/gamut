@@ -6,7 +6,7 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
+import { forwardRef, InputHTMLAttributes, useEffect, useRef } from 'react';
 
 import {
   checkboxElement,
@@ -19,21 +19,19 @@ import {
   polyline,
 } from '../styles';
 import { BaseInputProps } from '../types';
+import { CheckboxCheckedUnion, CheckboxLabelUnion } from './types';
 
 export type CheckboxTextProps = StyleProps<typeof checkboxTextStates>;
 export type CheckboxPaddingProps = StyleProps<typeof checkboxPadding>;
 
 export type CheckboxProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'value'
+  'checked' | 'value' | 'label' | 'aria-label'
 > &
+  CheckboxLabelUnion &
+  CheckboxCheckedUnion &
   CheckboxPaddingProps &
   Pick<BaseInputProps, 'name' | 'required'> & {
-    /**
-     * If the label is a ReactNode, an aria-label must be added.
-     */
-    label: ReactNode | string;
-    'aria-label'?: string;
     multiline?: boolean;
     className?: string;
     /**
@@ -68,6 +66,10 @@ export type CheckboxProps = Omit<
      */
     value?: string | boolean;
     id?: string;
+    /**
+     * Use if you want both the aria-label and text label to be read by voiceover - this component assumes that the aria-label and visual text label are identical.
+     * If you have a link in the Checkbox options, you should set this as true.
+     */
     dontAriaHideLabel?: boolean;
   };
 
@@ -78,9 +80,12 @@ const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled' | 'spacing'>>(
   checkboxLabelStates
 );
 
-const CheckboxElement = styled('div', styledOptions)<
-  Pick<CheckboxProps, 'checked' | 'multiline' | 'disabled'>
->(checkboxElement, checkboxElementStates);
+type CheckboxElementProps = StyleProps<typeof checkboxElementStates>;
+
+const CheckboxElement = styled('div', styledOptions)<CheckboxElementProps>(
+  checkboxElement,
+  checkboxElementStates
+);
 
 const CheckboxVector = styled.svg`
   position: absolute;
@@ -88,7 +93,7 @@ const CheckboxVector = styled.svg`
   left: -1px;
 `;
 
-const Polyline = styled.polyline<Pick<CheckboxProps, 'checked'>>`
+const Checkmark = styled.polyline<Pick<CheckboxProps, 'checked'>>`
   ${polyline}
   fill: none;
   stroke: currentColor;
@@ -97,6 +102,16 @@ const Polyline = styled.polyline<Pick<CheckboxProps, 'checked'>>`
   stroke-linejoin: round;
   stroke-dasharray: 18px;
   stroke-dashoffset: ${({ checked }) => (checked ? 0 : `18px`)};
+  transition: stroke-dashoffset ${timing.fast};
+`;
+
+const Line = styled.line<Pick<CheckboxProps, 'indeterminate'>>`
+  ${polyline}
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-dasharray: 18px;
+  stroke-dashoffset: ${({ indeterminate }) => (indeterminate ? 0 : `18px`)};
   transition: stroke-dashoffset ${timing.fast};
 `;
 
@@ -111,65 +126,99 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
       'aria-label': ariaLabel,
-      className,
-      label,
-      htmlFor,
-      multiline,
-      id,
       checked,
+      indeterminate,
+      className,
       disabled,
+      dontAriaHideLabel,
+      htmlFor,
+      id,
+      label,
+      multiline,
       spacing,
       value,
-      dontAriaHideLabel,
       ...rest
     },
     ref
   ) => {
+    const intRef = useRef<HTMLInputElement | null>(null);
+
+    function syncedRefs(element: HTMLInputElement | null) {
+      intRef.current = element;
+      if (ref) {
+        if (typeof ref === 'object') {
+          ref.current = element;
+        } else {
+          ref(element);
+        }
+      }
+    }
+
+    useEffect(() => {
+      if (intRef.current && indeterminate !== undefined && !checked) {
+        intRef.current.indeterminate = indeterminate;
+      }
+    }, [checked, indeterminate]);
+
+    const active = checked || indeterminate;
+
     return (
       <div className={className}>
         <Input
-          id={id || htmlFor}
-          labelled-by={`text-${id || htmlFor}`}
-          type="checkbox"
-          checked={checked}
-          disabled={disabled}
           aria-label={
             ariaLabel === undefined
               ? typeof label === 'string'
                 ? label
-                : undefined
+                : 'checkbox'
               : ariaLabel
           }
+          checked={checked}
+          disabled={disabled}
+          id={id || htmlFor}
+          labelled-by={`text-${id || htmlFor}`}
+          type="checkbox"
           value={`${value}`}
           {...rest}
-          ref={ref}
+          ref={syncedRefs}
         />
         <CheckboxLabel
-          htmlFor={id || htmlFor}
           disabled={disabled}
+          htmlFor={id || htmlFor}
           spacing={spacing}
         >
           <CheckboxElement
-            multiline={multiline}
-            checked={checked}
+            active={active}
             disabled={disabled}
+            hasBg={checked || indeterminate}
+            hideBorder={disabled && (checked || indeterminate)}
+            multiline={multiline}
           >
             <CheckboxVector
-              width="19px"
+              aria-hidden
+              color={active ? 'currentColor' : 'transparent'}
               height="19px"
               viewBox="0 0 19 19"
-              color={checked ? 'currentColor' : 'transparent'}
-              aria-hidden
+              width="19px"
             >
-              <path fill="currentColor" d="M1 1h19v19h-19z" />
-              <Polyline checked={checked} points="4 11 8 15 16 6" />
+              <Checkmark
+                // This should never happen if the types are working, but is a good back-up.
+                checked={checked && !indeterminate}
+                points="4 11 8 15 16 6"
+              />
+              <Line
+                indeterminate={indeterminate}
+                x1="4"
+                x2="16"
+                y1="10"
+                y2="10"
+              />
             </CheckboxVector>
           </CheckboxElement>
           <CheckboxText
+            aria-hidden={dontAriaHideLabel ? 'false' : 'true'}
+            disabled={disabled}
             id={`text-${id || htmlFor}`}
             multiline={multiline}
-            disabled={disabled}
-            aria-hidden={dontAriaHideLabel ? 'false' : 'true'}
           >
             {label}
           </CheckboxText>

@@ -1,0 +1,91 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
+
+import * as InternalFloatingCardStories from './InternalFloatingCard.stories';
+
+export const parameters = {
+  title: 'InternalFloatingCard',
+  subtitle:
+    'A card with a persistent patterned shadow meant for user feedback or interaction outside the normal flow.',
+  status: 'deprecated',
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=29975-39392&node-type=frame&t=SgphNxlCwEFrcv0X-0',
+  },
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/InternalFloatingCard',
+  },
+};
+
+<Meta of={InternalFloatingCardStories} />
+
+<ComponentHeader {...parameters} />
+
+<Callout
+  text={
+    <>
+      The InternalFloatingCard component is strictly for internal Gamut usage.
+      For instance, the{' '}
+      <LinkTo id="Molecules/Modals/Modal">Modal component</LinkTo> will use
+      InternalFloatingCard to style its content. However, InternalFloatingCard
+      is no longer exported for use in other libraries, in such cases, use{' '}
+      <LinkTo id="Atoms/Card">Card</LinkTo> instead.
+    </>
+  }
+/>
+
+## Usage
+
+- They have patterned drop shadow to indicate that are outside the normal document flow.
+- This is a shared component used to create `Toast`, `Dialog`, and `Coachmark`; before using this component directly please check that these components do not cover your use case!
+- `Tooltip` shares many styles with InternalFloatingCards but is used more widely and does not have a shadow as that might detract from the critical functions it serves.
+
+## Beaks
+
+InternalFloatingCards can optionally display a beak. This is used to indicate a point of interest to the user - that the content of the card describes. Beaks are primarily used in `Coachmarks`.
+
+<Canvas of={InternalFloatingCardStories.BeakBottomLeft} />
+<Canvas of={InternalFloatingCardStories.BeakBottomRight} />
+<Canvas of={InternalFloatingCardStories.BeakTopLeft} />
+<Canvas of={InternalFloatingCardStories.BeakTopRight} />
+
+## Shadow direction
+
+There are 2 types of shadow directions. The default shadow offset is bottom left.
+
+<Canvas of={InternalFloatingCardStories.ShadowBottomLeft} />
+<Canvas of={InternalFloatingCardStories.ShadowBottomRight} />
+
+## Shadow pattern
+
+We can specify the pattern of the InternalFloatingCard shadow by providing the `pattern` prop with the imported pattern from `@codecademy/gamut-patterns`.
+
+See the <LinkTo id="Atoms/Patterns">`Patterns`</LinkTo> story to view all the possible pattern options.
+
+<Canvas of={InternalFloatingCardStories.ShadowPattern} />
+
+## Card wrapper display
+
+By default a `InternalFloatingCard` has a wrapper with a display of `inline-block`. However, if you need to you can set the `containerDisplay` to `block`, as shown below:
+
+```tsx
+import { InternalFloatingCard } from '@codecademy/gamut';
+import { DotDense } from '@codecademy/gamut-patterns';
+
+export const MyComponent: React.FC = () => {
+  return (
+    <InternalFloatingCard pattern={DotDense} containerDisplay="block">
+      Take up all the space.
+    </InternalFloatingCard>
+  );
+};
+```
+
+## Playground
+
+<Canvas sourceState="shown" of={InternalFloatingCardStories.Default} />
+
+<Controls />

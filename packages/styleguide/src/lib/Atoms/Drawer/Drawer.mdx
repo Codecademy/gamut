@@ -5,6 +5,7 @@ import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 import * as DrawerStories from './Drawer.stories';
 
 export const parameters = {
+  title: 'Drawer',
   subtitle:
     'Animated container that expands horizontally to show its contents.',
   status: 'current',
@@ -33,6 +34,28 @@ Drawers animate between having `0` width and having a responsive width:
 An example of a molecule that uses Drawer is the <LinkTo id="Molecules/Flyout">Flyout</LinkTo>.
 
 Our Drawers are [controlled components](https://reactjs.org/docs/forms.html#controlled-components), so their checked value must be controlled by an external state passed in as `expanded`.
+
+The component that toggles the `Drawer` should include the `aria-expanded` attribute. The `aria-expanded` attribute should reflect the value of the `expanded` prop passed to the `Drawer`. In the example below, the `StrokeButton` controls the expansion of the `Drawer`, so the button has the `aria-expanded` attribute.
+
+```tsx
+const ExampleDrawer: React.FC = () => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <FlexBox>
+      <Drawer expanded={expanded} id={drawerId}>
+        Example Drawer
+      </Drawer>
+      <StrokeButton
+        aria-expanded={expanded}
+        onClick={() => setExpanded((previousExpanded) => !previousExpanded)}
+      >
+        Set the proper aria-labels!
+      </StrokeButton>
+    </FlexBox>
+  );
+};
+```
 
 ## Playground
 

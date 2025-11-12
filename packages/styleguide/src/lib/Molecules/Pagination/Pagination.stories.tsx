@@ -89,31 +89,31 @@ export const PaginationControlledExample: React.FC<PaginationProps> = (
   return (
     <>
       <FlexBox justifyContent="center" mb={24} p={12}>
-        <FormGroup label="Current Page" htmlFor="current-page">
+        <FormGroup htmlFor="current-page" label="Current Page">
           <Input
+            htmlFor="current-page"
             label="current page"
+            min={1}
+            type="number"
             value={pageNumber}
             onChange={(e) => setChangedPage(Number(e.target.value))}
-            type="number"
-            min={1}
-            htmlFor="current-page"
           />
         </FormGroup>
-        <FormGroup label="Total Pages" htmlFor="total-pages">
+        <FormGroup htmlFor="total-pages" label="Total Pages">
           <Input
+            htmlFor="total-pages"
             label="total pages"
+            min={1}
+            type="number"
             value={totalPages}
             onChange={(e) => setChangedTotalPages(e.target.value)}
-            type="number"
-            min={1}
-            htmlFor="total-pages"
           />
         </FormGroup>
       </FlexBox>
       <Pagination
         {...props}
-        totalPages={totalPages}
         pageNumber={pageNumber}
+        totalPages={totalPages}
         onChange={setChangedPage}
       />
     </>

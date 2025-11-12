@@ -19,66 +19,66 @@ export const NumberBlocks: React.FC<IllustrationProps> = ({
   >
     <title>Number Blocks Illustration</title>
     <path
+      d="M96.113 274.726l94.796-54.739 94.796 54.739-94.796 54.732-94.796-54.732z"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
-      d="M96.113 274.726l94.796-54.739 94.796 54.739-94.796 54.732-94.796-54.732z"
     />
     <path
+      d="M96.113 274.726l94.796-54.739 94.796 54.739-94.796 54.732-94.796-54.732z"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
-      d="M96.113 274.726l94.796-54.739 94.796 54.739-94.796 54.732-94.796-54.732z"
     />
     <path
-      fill="#F966FF"
-      stroke="#10162F"
-      strokeLinejoin="round"
-      strokeMiterlimit="10"
-      strokeWidth="2"
       d="M96.113 165.202l94.797-54.732 94.796 54.732-94.796 54.738-94.797-54.738z"
-    />
-    <path
       fill="#F966FF"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M112.343 165.058l78.567-44.998 78.566 44.998-78.566 45.003-78.567-45.003z"
-    />
-    <path
-      fill="#fff"
+      fill="#F966FF"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M190.91 329.888V220.039l94.796-54.732v109.849l-94.796 54.732z"
-    />
-    <path
       fill="#fff"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M199.393 314.817v-89.614l77.461-44.65v89.614l-77.461 44.65z"
-    />
-    <path
-      fill="#FFD300"
+      fill="#fff"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M96.113 274.729V165.13l94.796 54.738v109.593l-94.796-54.732z"
-    />
-    <path
       fill="#FFD300"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M104.228 270.099v-91.022l78.198 45.461v91.017l-78.198-45.456z"
+      fill="#FFD300"
+      stroke="#10162F"
+      strokeLinejoin="round"
+      strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <path
       d="M129.934 222.48v-2.214l2.928 1.714c7.497 4.355 8.211 3.856 8.996-1.571l1.643.928v45.484l11.781 6.783v2.214l-25.705-14.781v-2.213l11.71 6.783v-36.558l-11.353-6.569z"
@@ -97,66 +97,66 @@ export const NumberBlocks: React.FC<IllustrationProps> = ({
       />
     </g>
     <path
+      d="M96.113 165.256l94.796-54.738 94.796 54.738-94.796 54.732-94.796-54.732z"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
-      d="M96.113 165.256l94.796-54.738 94.796 54.738-94.796 54.732-94.796-54.732z"
     />
     <path
+      d="M96.113 165.256l94.796-54.738 94.796 54.738-94.796 54.732-94.796-54.732z"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
-      d="M96.113 165.256l94.796-54.738 94.796 54.738-94.796 54.732-94.796-54.732z"
     />
     <path
-      fill="#F966FF"
-      stroke="#10162F"
-      strokeLinejoin="round"
-      strokeMiterlimit="10"
-      strokeWidth="2"
       d="M96.113 55.732L190.91 1l94.796 54.732-94.796 54.739-94.797-54.739z"
-    />
-    <path
       fill="#F966FF"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M112.343 55.589L190.91 10.59l78.566 44.999-78.566 45.003-78.567-45.003z"
-    />
-    <path
-      fill="#fff"
+      fill="#F966FF"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M190.91 220.419V110.57l94.796-54.733v109.849l-94.796 54.733z"
-    />
-    <path
       fill="#fff"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M199.393 205.347v-89.614l77.461-44.65v89.614l-77.461 44.65z"
-    />
-    <path
-      fill="#FFD300"
+      fill="#fff"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M96.113 165.259V55.66l94.796 54.739v109.592l-94.796-54.732z"
-    />
-    <path
       fill="#FFD300"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M104.228 160.63V69.608l78.198 45.46v91.017l-78.198-45.455z"
+      fill="#FFD300"
+      stroke="#10162F"
+      strokeLinejoin="round"
+      strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <path
       d="M129.934 113.01v-2.213l2.928 1.713c7.497 4.356 8.211 3.856 8.996-1.571l1.643.929v45.483l11.781 6.784v2.213l-25.705-14.78v-2.214l11.71 6.783v-36.558l-11.353-6.569z"
@@ -175,66 +175,66 @@ export const NumberBlocks: React.FC<IllustrationProps> = ({
       />
     </g>
     <path
+      d="M1 329.367l94.796-54.739 94.796 54.739-94.796 54.732L1 329.367z"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
-      d="M1 329.367l94.796-54.739 94.796 54.739-94.796 54.732L1 329.367z"
     />
     <path
+      d="M1 329.367l94.796-54.739 94.796 54.739-94.796 54.732L1 329.367z"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
-      d="M1 329.367l94.796-54.739 94.796 54.739-94.796 54.732L1 329.367z"
     />
     <path
-      fill="#fff"
-      stroke="#10162F"
-      strokeLinejoin="round"
-      strokeMiterlimit="10"
-      strokeWidth="2"
       d="M1 219.843l94.796-54.733 94.796 54.733-94.796 54.738L1 219.843z"
-    />
-    <path
       fill="#fff"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M17.23 219.699l78.567-44.998 78.566 44.998-78.566 45.003-78.567-45.003z"
-    />
-    <path
-      fill="#FFD300"
+      fill="#fff"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M95.797 384.529V274.68l94.796-54.732v109.849l-94.796 54.732z"
-    />
-    <path
       fill="#FFD300"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M104.28 369.458v-89.614l77.46-44.65v89.614l-77.46 44.65z"
-    />
-    <path
-      fill="#F966FF"
+      fill="#FFD300"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M1 329.37V219.771l94.796 54.738v109.593L1 329.37z"
-    />
-    <path
       fill="#F966FF"
       stroke="#10162F"
       strokeLinejoin="round"
       strokeMiterlimit="10"
       strokeWidth="2"
+    />
+    <path
       d="M9.115 324.74v-91.022l78.198 45.461v91.017L9.115 324.74z"
+      fill="#F966FF"
+      stroke="#10162F"
+      strokeLinejoin="round"
+      strokeMiterlimit="10"
+      strokeWidth="2"
     />
     <g clipPath="url(#clip4)">
       <path

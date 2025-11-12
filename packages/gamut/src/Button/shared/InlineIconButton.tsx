@@ -13,6 +13,7 @@ type InlineIconButtonComponents =
 
 type InlineIconButtonType = InlineIconButtonComponents & {
   button: React.ComponentType<InlineIconButtonComponents>;
+  iconSize?: number;
 };
 
 export const InlineIconButton = forwardRef<
@@ -30,9 +31,14 @@ export const InlineIconButton = forwardRef<
     },
     ref
   ) => {
-    const content = appendIconToContent({ iconPosition, icon, children });
+    const content = appendIconToContent({
+      iconPosition,
+      icon,
+      iconSize: props.size === 'small' ? 12 : 16,
+      children,
+    });
     return (
-      <Button {...props} variant={variant} ref={ref}>
+      <Button {...props} ref={ref} variant={variant}>
         {content}
       </Button>
     );

@@ -33,6 +33,7 @@ export type PaginationButtonProps = ComponentProps<
   StyleProps<typeof paginationStrokeButtonStates> & {
     icon?: ComponentType<GamutIconProps>;
     buttonType?: 'stroke' | 'text';
+    href?: string;
   };
 
 export const PaginationButton = forwardRef<
@@ -44,17 +45,17 @@ export const PaginationButton = forwardRef<
     {
       children,
       icon: Icon,
-      variant = 'stroke',
+      buttonType = 'stroke',
       showButton = 'shown',
       ...props
     },
     ref
   ) => {
     const ButtonStyleWrapper = useMemo(() => {
-      return variant === 'stroke'
+      return buttonType === 'stroke'
         ? PaginationStrokeButtonInner
         : PaginationTextButtonInner;
-    }, [variant]);
+    }, [buttonType]);
 
     return (
       <ButtonStyleWrapper
@@ -63,7 +64,7 @@ export const PaginationButton = forwardRef<
         {...props}
         ref={ref}
       >
-        {Icon && <Icon width={14} height={14} aria-hidden />}
+        {Icon && <Icon aria-hidden height={14} width={14} />}
         {children}
       </ButtonStyleWrapper>
     );

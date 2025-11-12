@@ -1,6 +1,8 @@
 // Overrides for the Grid component
+@use "../functions/index.scss" as *;
 
 // NOTE: When updating, make sure you also update the gamut-styles/variables.js file
+
 $max-content-width: 1440px;
 
 $grid-cols: 12;

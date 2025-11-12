@@ -1,0 +1,89 @@
+import { Meta } from '@storybook/blocks';
+
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as adminThemeParameters } from './AdminTheme.mdx';
+import { parameters as coreThemeParameters } from './CoreTheme.mdx';
+import { parameters as creatingThemesParameters } from './CreatingThemes.mdx';
+import { parameters as lxStudioThemeParameters } from './LXStudioTheme.mdx';
+import { parameters as percipioThemeParameters } from './PercipioTheme.mdx';
+import { parameters as platformThemeParameters } from './PlatformTheme.mdx';
+
+export const parameters = {
+  id: 'Foundations/Theme',
+  title: 'Theme',
+  subtitle: `Emotion themes used within the Codecademy design system`,
+  status: 'current',
+};
+
+<Meta title="Foundations/Theme/About" />
+
+<AboutHeader {...parameters} />
+
+All Emotion components we build have access to a typed theme object allowing you to have direct access to all the design tokens without any imports.
+
+These are most easily available through our context and accessed via our `gamut-styles` utility functions.
+
+## Theme Switcher Tool
+
+You can preview how components look across different themes using the **Theme Switcher** tool in the Storybook toolbar (paintbrush icon). This allows you to:
+
+- Compare component appearance across different design systems
+- Test component compatibility with various themes
+- Ensure consistent behavior across all supported themes
+
+The theme switcher works in combination with the Color Mode selector, so you can test both light and dark variants of each theme. Available themes include Core, Admin, LX Studio, and Percipio.
+
+```tsx
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+
+// Single value using static color
+const Box = styled.div(css({ bg: 'navy-400', p: 4 }));
+
+// Multiple values using ColorMode semantic color
+const OtherCoolThing = styled.div(css({ color: 'primary', p: 4 }));
+```
+
+They can also be accessed directly as the `theme` prop on every styled component.
+
+```tsx
+import styled from '@emotion/styled';
+
+const styles = styled.div`
+  blue: ${({ theme }) => theme.colors.blue};
+`;
+```
+
+Or by importing the object from `@codecademy/gamut-styles` if you are not using our css-in-js utilities.
+
+```tsx
+import { css } from '@emotion/react';
+import { theme } from '@codecademy/gamut-styles';
+
+const myStyles = css`
+  font-size: ${theme.fontSize[14]};
+`;
+```
+
+## Themes
+
+<TableOfContents
+  links={addParentPath(parameters.id, [
+    coreThemeParameters,
+    adminThemeParameters,
+    lxStudioThemeParameters,
+    percipioThemeParameters,
+    platformThemeParameters,
+  ])}
+/>
+
+## Meta
+
+<TableOfContents
+  links={addParentPath(parameters.id, [creatingThemesParameters])}
+/>

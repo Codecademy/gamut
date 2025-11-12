@@ -20,11 +20,11 @@ export const MarkdownCheckbox: React.FC<MarkdownCheckboxProps> = ({
   return (
     <Checkbox
       checked={currentChecked}
+      data-testid="gamut-md-checkbox"
       htmlFor={label}
       label={label}
-      onChange={changeHandler}
-      data-testid="gamut-md-checkbox"
       spacing="tight"
+      onChange={changeHandler}
     />
   );
 };

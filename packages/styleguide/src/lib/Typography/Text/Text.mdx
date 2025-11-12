@@ -5,6 +5,7 @@ import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 import * as TextStories from './Text.stories';
 
 export const parameters = {
+  title: 'Text',
   subtitle:
     'This component is a specific primitive for handling UI Text in predictable and flexible ways.',
   design: {
@@ -94,6 +95,8 @@ Text has some special props with common use cases to make your life easier.
 ### Screenreader (default: false)
 
 <Canvas of={TextStories.Screenreader} />
+
+If you need the focus indicator of a screenreader to stay on the screen, you can wrap the screenreader `Text` inside a parent element, like `Box` and set its `aria-labeledby` attribute to that matches the `id` of the `Text`. Depending on your use case, you might need to also set `aria-hidden` on the `Text` in order for the screenreader to not read the same text twice. Inspect the example above to see how it works.
 
 ### Highlight
 

@@ -7,9 +7,13 @@ export const breakpoints = {
 } as const;
 
 export type MediaSize = keyof typeof breakpoints;
+export type ContainerSize = keyof typeof containerQueries;
 
 const createMediaQuery = (size: MediaSize, direction: 'min' | 'max') =>
   `@media only screen and (${direction}-width: ${breakpoints[size]})`;
+
+const createContainerQuery = (size: MediaSize, direction: 'min' | 'max') =>
+  `@container (${direction}-width: ${breakpoints[size]})`;
 
 export const mediaQueries = {
   xs: createMediaQuery('xs', 'min'),
@@ -17,6 +21,15 @@ export const mediaQueries = {
   md: createMediaQuery('md', 'min'),
   lg: createMediaQuery('lg', 'min'),
   xl: createMediaQuery('xl', 'min'),
+};
+
+export const containerQueries = {
+  c_base: '@container (min-width: 1px)',
+  c_xs: createContainerQuery('xs', 'min'),
+  c_sm: createContainerQuery('sm', 'min'),
+  c_md: createContainerQuery('md', 'min'),
+  c_lg: createContainerQuery('lg', 'min'),
+  c_xl: createContainerQuery('xl', 'min'),
 };
 
 export const contentWidths = {

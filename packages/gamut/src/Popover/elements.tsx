@@ -2,25 +2,26 @@ import { timingValues, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
-import * as React from 'react';
 
 import { BodyPortal } from '../BodyPortal';
 import { Box, FlexBox } from '../Box';
-import { popoverToolTipBodyAlignments } from '../Tip/shared/styles';
+import { popoverToolTipBodyAlignments } from '../Tip/shared/styles/styles';
 import { WithChildrenProp } from '../utils';
+import {
+  popoverStates,
+  raisedDivVariants,
+  transformValues,
+} from './styles/base';
+import { patternContainerBaseStyles } from './styles/pattern';
 import {
   beakBorderStates,
   beakBoxVariants,
   beakSize,
   beakVariants,
   outlineVariants,
-  patternContainerBaseStyles,
   patternVariantStyles,
-  popoverStates,
-  raisedDivVariants,
-  transformValues,
   widthStates,
-} from './styles';
+} from './styles/variants';
 import { PopoverProps } from './types';
 
 export type PopoverVariants = StyleProps<typeof raisedDivVariants> & {
@@ -67,9 +68,9 @@ export const PopoverPortal: React.FC<
       {isOpen && (
         <BodyPortal>
           <motion.div
-            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
             transition={{
               delay: timingValues.fast / 1000,
               duration: timingValues.fast / 1000,

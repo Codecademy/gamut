@@ -1,17 +1,11 @@
-import * as MINI from '@codecademy/gamut-icons/src/icons/mini';
-import {
-  Canvas,
-  Controls,
-  IconGallery,
-  IconItem,
-  Meta,
-} from '@storybook/blocks';
+import { Canvas, Controls, Meta } from '@storybook/blocks';
 
 import { ComponentHeader } from '~styleguide/blocks';
 
 import * as MiniIconStories from './Mini.stories';
 
 export const parameters = {
+  title: 'Mini',
   subtitle:
     'A subset of [Streamline Mini Bold](https://app.streamlinehq.com/streamline-mini-bold). These are a smaller set of icons that are bolder and work well in smaller resolutions.',
   design: {
@@ -38,18 +32,20 @@ Our icons by using standardized with a viewBox size of `"0 0 16 16"`. Icons shou
 
 All of our Icons are not minified by default, and optimized by [SVGO](https://github.com/svg/svgo) before build time. We like to preserve the source URL as well as any relevent comments or metadata within these SVGs.
 
+Example usage:
+
+```jsx
+import { MiniStarIcon } from '@codecademy/gamut-icons';
+
+<MiniStarIcon />;
+```
+
 ## Playground
 
-<Canvas sourceState="shown" of={MiniIconStories.Default} />
+<Canvas of={MiniIconStories.Default} sourceState="none" />
 
 <Controls />
 
 ## Icons
 
-<IconGallery>
-  {Object.entries(MINI).map(([iconName, Icon]) => (
-    <IconItem key={iconName} name={iconName}>
-      <Icon size={16} />
-    </IconItem>
-  ))}
-</IconGallery>
+<Canvas of={MiniIconStories.AllMiniIcons} sourceState="none" />

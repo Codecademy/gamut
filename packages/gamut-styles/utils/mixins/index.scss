@@ -1,6 +1,6 @@
-@import "font-smoothing";
-@import "no-select";
-@import "responsive";
-@import "shadow";
-@import "sr-only";
-@import "legacy";
+@forward "font-smoothing";
+@forward "no-select";
+@forward "responsive";
+@forward "shadow";
+@forward "sr-only";
+@forward "legacy";

@@ -8,15 +8,15 @@ export const ExpandInCollapseOut: React.FC<WithChildrenProp> = ({
 }) => {
   return (
     <motion.div
-      initial="collapsed"
-      exit="collapsed"
       animate="expanded"
+      exit="collapsed"
+      initial="collapsed"
       style={{ overflow: 'hidden' }}
+      transition={{ duration: timingValues.medium / 1000, ease: 'easeInOut' }}
       variants={{
         expanded: { height: 'auto' },
         collapsed: { height: 0 },
       }}
-      transition={{ duration: timingValues.medium / 1000, ease: 'easeInOut' }}
     >
       {children}
     </motion.div>
