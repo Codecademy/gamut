@@ -90,4 +90,3 @@ export const waitForLinkFocus = async (
     { timeout: 2000 }
   );
 };
-
