@@ -1,0 +1,117 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Refencing Code',
+  title: 'Refencing Code',
+  subtitle: 'Guidelines for referencing code and UI Elements',
+  status: 'static',
+};
+
+<Meta title="Meta/Gamut Writing Guide/Refencing Code" />
+
+<AboutHeader {...parameters} />
+
+This guide covers how to reference code elements, UI components, file paths, and commands consistently throughout documentation. Following these conventions ensures clarity and maintains a professional, accessible tone across all Gamut documentation.
+
+## Code in Text
+
+- Use backticks for inline code: `onClick`, `flex-direction`, `Box`, `StrokeButton`, `variant`, backgroundColor`, etc.
+- File and package names: `Button.tsx`, `package.json`, `@codecademy/gamut`
+  - Unless you're linking to them, in which case use permalinks
+- Values assigned for props or variables: `true`, `15px`, `null`
+- "The `Box` component" (first mention) → "the component" (subsequent mentions)
+- When plural, the component should stay singular and the “component” is the pluralized, e.g
+  - ✅ “These `Box` components are…”
+  - ❌ “These `Boxes` are…”
+
+## Code samples
+
+Code samples help developers understand how to implement components and patterns. Use them to demonstrate real-world usage, not just syntax.
+
+### Format:
+
+```tsx
+import { Button } from '@codecademy/gamut';
+export const Example: React.FC = () => (
+  <Button variant="primary">Click me</Button>
+);
+```
+
+### Guidelines:
+
+- Include necessary imports
+- Use realistic, working examples
+- Add comments for complex logic
+- Keep examples focused on one concept
+- Use TypeScript types
+
+## Command-Line syntax
+
+When documenting commands, use consistent formatting to make them easy to copy and execute. Commands should be ready to run without modification.
+
+### Format:
+
+```bash
+yarn add @codecademy/gamut-kit
+```
+
+### Guidelines:
+
+- Use bash syntax highlighting
+- Don't include command prompt symbols ($, #)
+- Show one command per block unless related
+
+## File Paths
+
+- Use backticks for file paths: `packages/gamut/src/Button/index.tsx`
+- Use relative paths when contextual (e.g., `./types.ts`)
+- Use paths from workspace root when further clarity is needed (e.g., `packages/gamut/src/Button/index.tsx`)
+- Use "in" for code locations: "in the `componentName.mdx` file"
+
+## UI element references
+
+When instructing users to interact with the interface, clearly identify what the UI elements are, where to find them, and how to interact with them.
+
+### Format:
+
+- Bold for UI labels: **Next**, **Back**, **Close**
+- Describe location: "Click the **Theme Switcher** (paintbrush icon)"
+- Use sentence case: "the **Show code** button"
+- Prefer words that aren't specific to input devices
+  - Use "click" as a device agnostic verb
+- Avoid directional language:
+  - ✅ "the following/adjacent form" or "in the previous section"
+  - ❌ "the form on the right" or "in the section above"
+
+## API reference
+
+Well-documented APIs make components easier to use and understand. Clear prop descriptions and type information help developers implement components correctly without needing to read the source code.
+
+### Props documentation:
+
+Add [JSDoc](https://jsdoc.app/) comments to the props to provide additional clarity for what these props do — these comments is used by TypeScript when hovering over a prop, additional it also shows up in the props table of a component's story in Storybook.
+
+```tsx
+export type ButtonProps = {
+  /**
+   * The visual style variant of the button.
+   */
+  variant: 'primary' | 'secondary';
+
+  /**
+   * Whether the button is disabled.
+   */
+  disabled?: boolean;
+};
+```
+
+### Guidelines:
+
+- Full sentence descriptions
+- Start boolean descriptions with "Whether"
+- Document required vs. optional props
+- Include type information
+- Use discretion for whether a comment is needed or not
+  - If unsure, include a comment
