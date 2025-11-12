@@ -15,13 +15,15 @@ export const parameters = {
 
 ## Voice
 
-- Use active voice: "The component renders..." not "The component is rendered by..."
+Use active voice rather than passive voice — it makes clear who should do what and eliminates ambiguity about responsibilities. Passive voice obscures who handles what and makes documentation harder to follow. E.g.  "The component renders..." not "The component is rendered by..."
+
 - Use second person ("you") when addressing the reader
 - Use imperative mood for instructions: "Add the component" not "You should add the component"
 
 ## Tense
 
-- Use present tense for current functionality: "The Button accepts a variant prop"
+Use present tense for current functionality — it's the simplest and most direct form of a verb, making writing more clearer. The more you use conditional or future tense, the harder your audience has to work to understand your meaning. E.g. "The `StrokeButton` component accepts a `variant` prop."
+
 - Use future tense sparingly, only for confirmed features
 - Avoid past tense except in changelogs or historical context
 
@@ -35,7 +37,6 @@ export const parameters = {
 ## Articles
 
 - Use articles (a, an, the) for clarity
-
 - "The Box component" (first mention) → "the component" (subsequent mentions)
 - When plural, the component should stay singular and the “component” is the pluralized, e.g
   - ✅ “These Box components are…”
