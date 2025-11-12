@@ -51,7 +51,7 @@ export const createMultiLinkSetup = (
 };
 
 export const clickButton = async (
-  view: ReturnType<ReturnType<typeof setupRtl<typeof InfoTip>>['view']>
+  view: ReturnType<ReturnType<typeof setupRtl<typeof InfoTip>>>['view']
 ) => {
   const button = view.getByLabelText('Show information');
   await act(async () => {
@@ -61,7 +61,7 @@ export const clickButton = async (
 };
 
 export const waitForPopoverLink = async (
-  view: ReturnType<ReturnType<typeof setupRtl<typeof InfoTip>>['view']>,
+  view: ReturnType<ReturnType<typeof setupRtl<typeof InfoTip>>>['view'],
   linkText: string
 ) => {
   return await waitFor(() => {
