@@ -1,0 +1,173 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as BarChartStories from './BarChart.stories';
+
+export const parameters = {
+  subtitle: `An accessible bar chart component for visualizing progress and comparisons across categories`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/📐-Gamut?node-id=55123-4176&node-type=frame&t=TtRz7Q9Kf1K69Hxe-0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/BarChart',
+  },
+};
+
+<Meta of={BarChartStories} />;
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use BarChart to visualize quantitative data across different categories, making it easy to compare values and track progress. This component is particularly useful for showing skill progression, achievement tracking, or any comparative data with optional stacked bars to show before/after states.
+
+### Best practices:
+
+- Use descriptive category labels (yLabel) that clearly identify what each bar represents
+- Provide accessible aria-label or aria-labelledby to describe the chart's purpose
+- Include icons when they add meaningful context to the categories
+- Use the stacked bar feature (startingValue + endingValue) to show progress or change over time
+- Keep the number of bars manageable (typically under 10) for optimal readability
+- Choose an appropriate xScale that creates clear, readable grid lines
+
+### When NOT to use:
+
+- For time-series data - consider using a line chart instead
+- For showing parts of a whole - use a pie chart or stacked bar chart
+- For complex multi-dimensional data - consider using a more specialized data visualization component
+
+## Anatomy
+
+1. **Scale Header** - Shows the numeric scale with unit labels across the top (hidden on mobile)
+2. **Bar Row** - Individual list item containing:
+   - Optional icon (24px)
+   - Category label (yLabel)
+   - Current value display
+   - Bar visualization with optional stacked foreground bar
+3. **Grid Lines** - Vertical lines marking scale intervals (hidden on mobile)
+
+## Variants
+
+### Default with Progress Bars
+
+Shows categories with both starting and ending values, visualizing progress as a stacked bar.
+
+<Canvas of={BarChartStories.Default} />
+
+### Simple Bars (No Progress)
+
+Shows categories with single values when you don't need to show progress.
+
+<Canvas of={BarChartStories.WithoutEndingValues} />
+
+### Without Icons
+
+Icons are optional - omit them when they don't add meaningful context.
+
+<Canvas of={BarChartStories.WithoutIcons} />
+
+## Interactive Rows
+
+Rows can be made interactive by providing `onClick` (renders as button) or `href` (renders as anchor link).
+
+<Canvas of={BarChartStories.InteractiveRows} />
+
+## Sorting and Ordering
+
+Control how bars are displayed with `sortBy` and `order` props.
+
+### Sorted by Label
+
+<Canvas of={BarChartStories.SortedByLabel} />
+
+### Sorted by Value (Descending)
+
+<Canvas of={BarChartStories.SortedByValue} />
+
+## Custom Styling
+
+Customize colors for text, foreground bars, and background bars.
+
+<Canvas of={BarChartStories.CustomColors} />
+
+## Scale and Range
+
+Adjust the `minRange`, `maxRange`, and `xScale` to fit your data.
+
+### Large Dataset
+
+<Canvas of={BarChartStories.LargeDataset} />
+
+### Different Scale
+
+<Canvas of={BarChartStories.DifferentScale} />
+
+## Accessibility
+
+### With aria-labelledby
+
+You can provide context with an external heading using `aria-labelledby`.
+
+<Canvas of={BarChartStories.WithAriaLabelledBy} />
+
+## Controlled Example
+
+Dynamically control sorting and ordering.
+
+<Canvas of={BarChartStories.Controlled} />
+
+## Playground
+
+<Canvas sourceState="shown" of={BarChartStories.Default} />
+
+<Controls />
+
+## Accessibility considerations
+
+- Always provide either `aria-label` or `aria-labelledby` to describe the chart
+- Each bar row automatically generates a descriptive aria-label (e.g., "10 XP gained - now at 1555 XP in Computer Science category")
+- Interactive rows are keyboard accessible (Tab to focus, Enter to activate)
+- The component uses semantic HTML with `<ul>` and `<li>` elements
+- Grid lines and scale headers are hidden on mobile to reduce visual clutter
+
+## Props
+
+### BarChartProps
+
+| Prop | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `aria-label` | `string` | Yes* | - | Accessible label for the chart (required if no aria-labelledby) |
+| `aria-labelledby` | `string` | Yes* | - | ID of element labeling the chart (required if no aria-label) |
+| `barValues` | `BarProps[]` | Yes | - | Array of bar data to display |
+| `maxRange` | `number` | Yes | - | Maximum value on the scale |
+| `minRange` | `number` | Yes | - | Minimum value on the scale |
+| `unit` | `string` | Yes | - | Unit label (e.g., "XP", "points", "hours") |
+| `xScale` | `number` | Yes | - | Interval for grid lines and scale markers |
+| `animate` | `boolean` | No | `false` | Enable animation for bars |
+| `order` | `'ascending' \| 'descending'` | No | `'ascending'` | Sort direction |
+| `sortBy` | `'label' \| 'value' \| 'none'` | No | `'none'` | How to sort bars |
+| `styleConfig` | `BarChartStyles` | No | `{}` | Custom colors for text and bars |
+
+### BarProps
+
+| Prop | Type | Required | Description |
+|------|------|----------|-------------|
+| `yLabel` | `string` | Yes | Category label |
+| `startingValue` | `number` | Yes | Primary value (or starting value for progress) |
+| `endingValue` | `number` | No | Ending value for showing progress |
+| `icon` | `React.ComponentType<GamutIconProps>` | No | Icon component to display |
+| `onClick` | `(event) => void` | No | Click handler (makes row a button) |
+| `href` | `string` | No | URL to link to (makes row an anchor) |
+
+### BarChartStyles
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `textColor` | `BoxProps['color']` | `'text'` | Color for text labels |
+| `foregroundBarColor` | `BoxProps['color']` | `'text'` | Color for foreground/progress bar |
+| `backgroundBarColor` | `BoxProps['color']` | `'primary'` | Color for background/total bar |
