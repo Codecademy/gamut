@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
+import { extractTextContent } from '../../utils/react';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
@@ -66,16 +67,19 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     }
   };
 
-  const handleOutsideClick = (e: MouseEvent) => {
-    if (
-      wrapperRef.current &&
-      (e.target instanceof HTMLElement
-        ? !wrapperRef.current?.contains(e?.target)
-        : true)
-    ) {
-      setTipIsHidden(true);
-    }
-  };
+  const handleOutsideClick = useCallback(
+    (e: MouseEvent) => {
+      if (
+        wrapperRef.current &&
+        (e.target instanceof HTMLElement
+          ? !wrapperRef.current?.contains(e?.target)
+          : true)
+      ) {
+        setTipIsHidden(true);
+      }
+    },
+    [setTipIsHidden]
+  );
 
   const clickHandler = () => {
     const currentTipState = !isTipHidden;
@@ -87,7 +91,11 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       }, 0);
     }
     // we want to call the onClick handler after the tip has mounted
-    if (onClick) setTimeout(() => onClick({ isTipHidden: currentTipState }), 0);
+    // For floating placement, wait a bit longer to ensure refs are set
+    if (onClick) {
+      const delay = placement === 'floating' ? 10 : 0;
+      setTimeout(() => onClick({ isTipHidden: currentTipState }), delay);
+    }
   };
 
   useEffect(() => {
@@ -95,7 +103,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  });
+  }, [handleOutsideClick]);
 
   useEffect(() => {
     if (!isTipHidden && placement === 'floating') {
@@ -106,27 +114,31 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         }
       };
 
-      const handleFocusOut = (event: FocusEvent) => {
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key !== 'Tab') return;
+
         const popoverContent = popoverContentRef.current;
-        const button = buttonRef.current;
-        const wrapper = wrapperRef.current;
+        if (!popoverContent) return;
 
-        const { relatedTarget } = event;
+        const focusableElements = popoverContent.querySelectorAll<HTMLElement>(
+          'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        );
 
-        if (relatedTarget instanceof Node) {
-          // If focus is moving back to the button or wrapper, allow it
-          const movingToButton =
-            button?.contains(relatedTarget) || wrapper?.contains(relatedTarget);
-          if (movingToButton) return;
+        if (focusableElements.length === 0) return;
 
-          // If focus is staying within the popover content, allow it
-          if (popoverContent?.contains(relatedTarget)) return;
-        }
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        const { activeElement } = document;
 
-        // Return focus to button to maintain logical tab order
-        setTimeout(() => {
+        const isTabbingForwardFromLast =
+          !event.shiftKey && activeElement === lastElement;
+        const isTabbingBackwardFromFirst =
+          event.shiftKey && activeElement === firstElement;
+
+        if (isTabbingForwardFromLast || isTabbingBackwardFromFirst) {
+          event.preventDefault();
           buttonRef.current?.focus();
-        }, 0);
+        }
       };
 
       // Wait for the popover ref to be set before attaching the listener
@@ -134,7 +146,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       const timeoutId = setTimeout(() => {
         popoverContent = popoverContentRef.current;
         if (popoverContent) {
-          popoverContent.addEventListener('focusout', handleFocusOut);
+          popoverContent.addEventListener('keydown', handleKeyDown);
         }
       }, 0);
 
@@ -143,7 +155,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       return () => {
         clearTimeout(timeoutId);
         if (popoverContent) {
-          popoverContent.removeEventListener('focusout', handleFocusOut);
+          popoverContent.removeEventListener('keydown', handleKeyDown);
         }
         document.removeEventListener('keydown', handleGlobalEscapeKey);
       };
@@ -164,13 +176,18 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     ...rest,
   };
 
+  const extractedTextContent = useMemo(() => extractTextContent(info), [info]);
+
+  const screenreaderInfo =
+    shouldAnnounce && !isTipHidden ? extractedTextContent : `\xa0`;
+
   const text = (
     <ScreenreaderNavigableText
       aria-hidden={isAriaHidden}
       aria-live="assertive"
       screenreader
     >
-      {shouldAnnounce && !isTipHidden ? info : `\xa0`}
+      {screenreaderInfo}
     </ScreenreaderNavigableText>
   );
 
