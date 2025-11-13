@@ -7,8 +7,8 @@ import {
 } from '~styleguide/blocks';
 
 import { parameters as aboutPagesParameters } from './About pages.mdx';
-import { parameters as componentMdxParameters } from './Component MDX.mdx';
-import { parameters as componentStoryTsxParameters } from './Component story tsx.mdx';
+import { parameters as componentCodeExamplesParameters } from './Component code examples.mdx';
+import { parameters as componentStoryDocumentationParameters } from './Component story documentation.mdx';
 
 export const parameters = {
   id: 'Meta/Gamut writing guide/Stories',
@@ -44,15 +44,14 @@ When you make a new story theres a few things to keep in mind:
 First find the right folder for your story in `packages/styleguide/stories` (e.g. `Atoms` | `Molecules` | `Organisms`).
 Once you've found it create a new folder with two new files `#{COMPONENT_NAME}.stories.tsx` and `#{COMPONENT_NAME}.mdx`. You can also store examples or other associated utility files in this folder.
 
-
 ## Learn more
 
 Explore the pages below for detailed guidelines on each part of the story structure:
 
 <TableOfContents
   links={addParentPath(parameters.id, [
-    componentStoryTsxParameters,
-    componentMdxParameters,
+    componentCodeExamplesParameters,
+    componentStoryDocumentationParameters,
     aboutPagesParameters,
   ])}
 />
