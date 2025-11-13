@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { findAllAdditionalScrollingParents, findResizingParent } from './utils';
 
@@ -20,20 +20,14 @@ export const useScrollingParentsEffect = (
       setTargetRect(targetRef?.current?.getBoundingClientRect());
     };
 
-    // For immediate updates during scroll
-    const immediateUpdate = () => {
-      updatePosition();
-    };
-
     const cleanup: (() => void)[] = [];
 
     // Add listeners to all scrolling parents (window scroll handled by useWindowScroll)
     scrollingParents.forEach((parent) => {
       if (parent.addEventListener) {
-        // Use immediate update for smoother experience
-        parent.addEventListener('scroll', immediateUpdate, { passive: true });
+        parent.addEventListener('scroll', updatePosition, { passive: true });
         cleanup.push(() =>
-          parent.removeEventListener('scroll', immediateUpdate)
+          parent.removeEventListener('scroll', updatePosition)
         );
       }
     });
@@ -68,4 +62,21 @@ export const useResizingParentEffect = (
     ro.observe(resizingParent);
     return () => ro.unobserve(resizingParent);
   }, [targetRef, setTargetRect]);
+};
+
+/**
+ * Memoizes the list of scrolling parent elements for a target element.
+ * This avoids expensive DOM traversals and getComputedStyle calls on every render.
+ * Returns an empty array if the target element is not available.
+ */
+export const useScrollingParents = (
+  targetRef: React.RefObject<HTMLElement | null>
+): HTMLElement[] => {
+  return useMemo(() => {
+    if (!targetRef.current) {
+      return [];
+    }
+    return findAllAdditionalScrollingParents(targetRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [targetRef.current]);
 };
