@@ -66,4 +66,7 @@ export * from './Tag50PercentOff';
 export * from './Target';
 export * from './TinyBlocks';
 export * from './types';
+export * from './VibeBuilder';
+export * from './VibeBuilderComputer';
+export * from './VibeBuilderPromotion';
 export * from './Warning';
