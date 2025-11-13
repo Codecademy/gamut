@@ -26,7 +26,7 @@ const preview: Preview = {
           [
             'About',
             'Brand',
-            'Best Practices',
+            'Best practices',
             'Contributing',
             'Deep Controls add-on',
             'FAQs',
