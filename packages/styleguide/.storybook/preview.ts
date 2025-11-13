@@ -43,6 +43,12 @@ const preview: Preview = {
               'Linking',
               'Referencing code',
               'Stories',
+              [
+                'About',
+                'About pages',
+                'Component story documentation',
+                'Component code examples',
+              ],
             ],
           ],
           'Foundations',
