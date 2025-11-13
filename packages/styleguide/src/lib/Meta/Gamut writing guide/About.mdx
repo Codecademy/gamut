@@ -1,0 +1,43 @@
+import { Meta } from '@storybook/blocks';
+
+import {
+  AboutHeader,
+  addParentPath,
+  LinkTo,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as documentationInCodeParameters } from './Documentation in code.mdx';
+import { parameters as formattingParameters } from './Formatting.mdx';
+import { parameters as generalPrinciplesParameters } from './General principles.mdx';
+import { parameters as languageAndGrammarParameters } from './Language and grammar.mdx';
+import { parameters as linkingParameters } from './Linking.mdx';
+import { parameters as referencingCodeParameters } from './Referencing code.mdx';
+import { parameters as storiesParameters } from './Stories/About.mdx';
+
+export const parameters = {
+  id: 'Meta/Gamut writing guide',
+  title: 'Gamut writing guide',
+  subtitle:
+    'Guidelines and standards for creating consistent, clear, and effective documentation.',
+};
+
+<Meta title="Meta/Gamut writing guide/About" />
+
+<AboutHeader {...parameters} />
+
+Welcome to the Gamut writing guide! Thanks for taking the time to learn about our documentation standards. This guide helps keep our documentation clear, consistent, and useful across the Gamut design system.
+
+If you're new here, start with <LinkTo id="Meta/Gamut writing guide/General principles">General principles</LinkTo> to get an overview of our documentation philosophy and best practices. For specific topics like formatting, code documentation, or writing Storybook stories, check out the other pages below.
+
+<TableOfContents
+  links={addParentPath(parameters.id, [
+    generalPrinciplesParameters,
+    documentationInCodeParameters,
+    formattingParameters,
+    languageAndGrammarParameters,
+    linkingParameters,
+    referencingCodeParameters,
+    storiesParameters,
+  ])}
+/>

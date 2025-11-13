@@ -1,0 +1,133 @@
+import { Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+export const parameters = {
+  title: 'Documentation in code',
+  subtitle: `Guidelines for documenting code in Gamut component files`,
+  status: 'current',
+};
+
+<Meta title="Meta/Gamut writing guide/Documentation in code" />
+
+<ComponentHeader {...parameters} />
+
+Good documentation starts in the code itself. By documenting components, props, and functions directly in your source files, you create a single source of truth that stays synchronized with the implementation and surfaces automatically in developer tools and Storybook.
+
+## Naming conventions
+
+Clear, descriptive names reduce the need for comments and make code self-documenting. Choose names that reveal intent and follow established patterns.
+
+### Variables and constants
+
+- Use `camelCase` for variables: `userName`, `isLoading`, `itemCount`
+- Use descriptive names that reveal purpose: `filteredResults` not `arr`
+- Boolean variables should use `is`, `has`, `should`, or `can` prefixes: `isVisible`, `hasError`, `shouldRender`
+- Use `SCREAMING_SNAKE_CASE` for true constants: `MAX_RETRY_COUNT`, `DEFAULT_TIMEOUT`
+- Avoid single-letter names except for short loops or mathematical operations
+- Use plural names for arrays and collections: `users`, `menuItems`
+
+### Functions and methods
+
+- Use `camelCase` for function names: `getUserData`, `calculateTotal`, `handleClick`
+- Start with verbs that describe the action: `get`, `set`, `fetch`, `handle`, `render`, `calculate`
+- Event handlers should use `handle` prefix: `handleSubmit`, `handleClickOutside`
+- Boolean-returning functions should ask a question: `isValidEmail`, `canAccessResource`, `hasPermission`
+- Keep names concise but descriptive: `fetchUserProfile` not `getUserProfileDataFromAPI`
+
+### Components
+
+- Use `PascalCase` for component names: `Button`, `UserProfile`, `NavigationMenu`
+- Name files to match the component: `Button.tsx`, `UserProfile.tsx`
+- Use descriptive names that indicate purpose: `SkipToContent`, `RadialProgress`, `Toggle`
+- Avoid generic names like `Component`, `Container`, `Wrapper` without context
+
+## Code comments
+
+Comments should explain _why_ code exists, not _what_ it does. Well-named variables and functions handle the "what." Reserve comments for non-obvious decisions, complex logic, and important context.
+
+### When to comment
+
+- **Complex logic**: Explain algorithms or non-obvious implementations
+
+  ```tsx
+  // Use binary search for O(log n) performance on sorted arrays
+  const index = binarySearch(sortedArray, target);
+  ```
+
+- **Business logic**: Document requirements or constraints
+
+  ```tsx
+  // Per WCAG 2.2, focus must return to trigger element on close
+  previousFocusRef.current?.focus();
+  ```
+
+- **Workarounds**: Explain temporary fixes or browser-specific code
+
+  ```tsx
+  // Safari doesn't support :focus-visible, fallback to :focus
+  // TODO: Remove when Safari 15+ is minimum supported version
+  ```
+
+- **Non-obvious decisions**: Clarify choices that might seem strange
+  ```tsx
+  // Delay state update to avoid race condition with async validation
+  setTimeout(() => setIsValid(true), 0);
+  ```
+
+### When NOT to comment
+
+- **Self-explanatory code**: Good names eliminate the need
+
+  ```tsx
+  // ❌ Bad: Comment restates the code
+  // Set loading to true
+  setIsLoading(true);
+
+  // ✅ Good: Code is self-documenting
+  setIsLoading(true);
+  ```
+
+- **Commented-out code**: Delete it; Git tracks history
+  ```tsx
+  // ❌ Bad: Dead code clutters the file
+  // const oldImplementation = () => { ... };
+  ```
+
+### Comment style
+
+- Use `//` for single-line comments, add a space after the `//` before commenting
+- Use `/** */` for JSDoc comments on exports (functions, types, components)
+- Write complete sentences with proper punctuation
+- Keep comments up-to-date when code changes
+
+## API reference
+
+Well-documented APIs make components easier to use and understand. Clear prop descriptions and type information help developers implement components correctly without needing to read the source code.
+
+### Props documentation:
+
+Add [JSDoc](https://jsdoc.app/) comments to the props to provide additional clarity for what these props do — these comments is used by TypeScript when hovering over a prop, additional it also shows up in the props table of a component's story in Storybook.
+
+```tsx
+export type ButtonProps = {
+  /**
+   * The visual style variant of the button.
+   */
+  variant: 'primary' | 'secondary';
+
+  /**
+   * Whether the button is disabled.
+   */
+  disabled?: boolean;
+};
+```
+
+### Guidelines:
+
+- Full sentence descriptions
+- Start boolean descriptions with "Whether"
+- Document required vs. optional props
+- Include type information
+- Use discretion for whether a comment is needed or not
+  - If unsure, include a comment

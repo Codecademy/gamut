@@ -3,13 +3,13 @@ import { Meta } from '@storybook/blocks';
 import { AboutHeader } from '~styleguide/blocks';
 
 export const parameters = {
-  id: 'Refencing Code',
-  title: 'Refencing Code',
+  id: 'Refencing code',
+  title: 'Refencing code',
   subtitle: 'Guidelines for referencing code and UI Elements',
   status: 'static',
 };
 
-<Meta title="Meta/Gamut Writing Guide/Refencing Code" />
+<Meta title="Meta/Gamut writing guide/Referencing code" />
 
 <AboutHeader {...parameters} />
 
@@ -70,6 +70,7 @@ yarn add @codecademy/gamut-kit
 - Use paths from workspace root when further clarity is needed (e.g., `packages/gamut/src/Button/index.tsx`)
 - Use "in" for code locations: "in the `componentName.mdx` file"
 
+
 ## UI element references
 
 When instructing users to interact with the interface, clearly identify what the UI elements are, where to find them, and how to interact with them.
@@ -85,33 +86,3 @@ When instructing users to interact with the interface, clearly identify what the
   - ✅ "the following/adjacent form" or "in the previous section"
   - ❌ "the form on the right" or "in the section above"
 
-## API reference
-
-Well-documented APIs make components easier to use and understand. Clear prop descriptions and type information help developers implement components correctly without needing to read the source code.
-
-### Props documentation:
-
-Add [JSDoc](https://jsdoc.app/) comments to the props to provide additional clarity for what these props do — these comments is used by TypeScript when hovering over a prop, additional it also shows up in the props table of a component's story in Storybook.
-
-```tsx
-export type ButtonProps = {
-  /**
-   * The visual style variant of the button.
-   */
-  variant: 'primary' | 'secondary';
-
-  /**
-   * Whether the button is disabled.
-   */
-  disabled?: boolean;
-};
-```
-
-### Guidelines:
-
-- Full sentence descriptions
-- Start boolean descriptions with "Whether"
-- Document required vs. optional props
-- Include type information
-- Use discretion for whether a comment is needed or not
-  - If unsure, include a comment

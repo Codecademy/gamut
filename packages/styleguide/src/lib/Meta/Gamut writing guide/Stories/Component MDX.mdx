@@ -1,0 +1,129 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Component MDX',
+  title: 'Component MDX',
+  subtitle: 'How to write .mdx documentation files for Gamut components',
+  status: 'static',
+};
+
+<Meta title="Meta/Gamut writing guide/Stories/Component MDX" />
+
+<AboutHeader {...parameters} />
+
+The `.mdx` file provides the documentation structure and context for your component. It combines the interactive stories from the `.stories.tsx` file with written documentation, usage guidelines, and metadata.
+
+## Story structure
+
+In our opinion, a good component story page consists of:
+
+1. **General Information:** Each component should define some key information on the `<Meta />` component
+2. **Flagship Story + Props:** A single default story showing the default state of the component with a connected props table right below it.
+3. **Variation Stories:** Granular subsections that show the discrete varaitions of the component and describe their use cases
+4. **Usage instructions and Guidelines:** A section that describes how to use the component should and shouldn't be used, and any guidelines that should be followed.
+
+## Basic structure
+
+Each component should have a `ComponentName.mdx` file that can use the `component-doc` snippet to generate a template that resembles the following:
+
+```tsx
+// For ComponentName.mdx, more details in the component-doc code snippet
+
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as ComponentStories from './ComponentName.stories';
+
+export const parameters = {
+  title: 'Template component',
+  subtitle: `Template component description...`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/XXX',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    // this is easy to find by right clicking on the file in VSCode and clicking "Copy Remote File Url From..." and the selecting 'main' or amending the url path below like so: https://github.com/Codecademy/gamut/blob/main/packages/${package}/src/file/location
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/ComponentName',
+  },
+};
+
+<Meta of={TemplateStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Etc...
+```
+
+## General information
+
+Each component should define key metadata in the `parameters` object:
+
+1. `title`: The name of the component, this helps with linking to the story.
+2. `subtitle`: What the component does, and what the component would typically be used for.
+3. `source`: The source package of the component (e.g. `gamut` | `gamut-styles`) and a link to the corresponding code.
+4. `status`: The health of the components API (e.g. `current` | `updating` | `deprecated` | `static`)
+5. `design`: A link to the Figma file that is associated with the component.
+
+```tsx
+import { Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as AnchorStories from './Anchor.stories';
+
+export const parameters = {
+  subtitle: `A clickable text element that navigates to another page, resource, or location on the same page.`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=993-0',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Anchor',
+  },
+};
+
+<Meta of={AnchorStories} />
+
+<ComponentHeader {...parameters} />
+
+```
+
+## Flagship story
+
+The Flagship story for a component should be intended to give the reader a broad overview of its high-level functionality. Its `Canvas` should automatically display the story's code by setting the prop `sourceState="shown"`.
+
+Try to include the major behaviors for the component that most readers would need to understand its uses.
+
+```tsx
+## Playground
+
+//If your flagship story is named Default, you don't need to specify it for the Playground
+<Canvas sourceState="shown" />
+
+<Controls />
+```
+
+## Granular stories
+
+Each subsequent story should elaborate on an important behavioral feature of the component.
+Try to show a single use of the behavior configurable with args.
+
+```tsx
+## Variant Anchors
+
+A short description should go here, as well as any variant specific usage guidelines.
+
+<Canvas of={AnchorStories.Variant} />
+
+```

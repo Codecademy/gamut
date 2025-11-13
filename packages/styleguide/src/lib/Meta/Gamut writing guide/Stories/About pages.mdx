@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, LinkTo } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'About pages',
+  title: 'About pages',
+  subtitle: 'How to create table of contents pages for component folders',
+  status: 'static',
+};
+
+<Meta title="Meta/Gamut writing guide/Stories/About pages" />
+
+<AboutHeader {...parameters} />
+
+An `About.mdx` file serves as a landing page for folders containing multiple related components or stories. It provides a brief overview and organized table of contents to help users understand what the folder contains and navigate to specific components. Keep these pages concise with clear descriptions—they're entry points, not detailed documentation.
+
+## When to create an About page
+
+Create an `About.mdx` file when multiple stories are presented in a folder. For example, the <LinkTo id="Atoms/Animations/About">Animation</LinkTo> folder contains an `About.mdx` file with a table of contents that links to specific components — in this case, the <LinkTo id="Atoms/Animations/ExpandInCollapseOut">ExpandInCollapseOut</LinkTo> component and the <LinkTo id="Atoms/Animations/Rotation">Rotation</LinkTo> component.
+
+## Basic structure
+
+Inside the `About.mdx` file, use the `toc-story` snippet to generate a template. Import the `parameters` object from the respective component's `<ComponentName>.mdx` file and pass it to the `<TableOfContents />` component.
+
+```tsx
+import { parameters as componentNameParameters } from './ComponentName.mdx';
+import { parameters as anotherComponentParameters } from './AnotherComponent.mdx';
+
+
+export const parameters = {
+  id: 'ParentDir/FolderName',
+  title: 'FolderName',
+  subtitle: 'Overview of the components in this folder.',
+};
+
+...
+
+<TableOfContents links={addParentPath(parameters.id, [componentNameParameters, anotherComponentParameters]))} />
+```
+
+## The addParentPath function
+
+The `addParentPath()` function is used to ensure that the links in the table of contents have the correct IDs, which are derived from the parent path and the component's ID or title.
+
+This function takes two arguments:
+
+1. The parent path (`parameters.id`) - defines the folder hierarchy
+2. An array of parameter objects from child components/pages
+
+## Best practices
+
+- **Write a clear overview**: Explain what the folder contains and how components relate to each other
+- **Order logically**: Arrange components in the table of contents by importance or usage frequency
+- **Keep it concise**: About pages should be brief entry points, not detailed documentation
+- **Use descriptive subtitles**: Help users understand what they'll find before clicking through
