@@ -480,12 +480,13 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: mockOption,
         state,
-        checkboxId: 'test-id',
+        name: 'test-id',
         isRequired: true,
         isDisabled: false,
         onBlur: mockOnBlur,
         onChange: mockOnChange,
         ref: mockRef,
+        flatOptions: [mockOption],
       });
 
       const { container } = render(result);
@@ -503,12 +504,13 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: mockOption,
         state,
-        checkboxId: 'test-id',
+        name: 'test-id',
         isRequired: false,
         isDisabled: false,
         onBlur: mockOnBlur,
         onChange: mockOnChange,
         ref: mockRef,
+        flatOptions: [mockOption],
       });
 
       const { container } = render(result);
@@ -525,12 +527,13 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: mockOption,
         state,
-        checkboxId: 'test-id',
+        name: 'test-id',
         isRequired: false,
         isDisabled: false,
         onBlur: mockOnBlur,
         onChange: mockOnChange,
         ref: mockRef,
+        flatOptions: [mockOption],
       });
 
       const { container } = render(result);
@@ -547,12 +550,13 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: { ...mockOption, level: 2 },
         state,
-        checkboxId: 'test-id',
+        name: 'test-id',
         isRequired: false,
         isDisabled: false,
         onBlur: mockOnBlur,
         onChange: mockOnChange,
         ref: mockRef,
+        flatOptions: [{ ...mockOption, level: 2 }],
       });
 
       const { container } = render(result);
@@ -567,12 +571,13 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: { ...mockOption, disabled: true },
         state,
-        checkboxId: 'test-id',
+        name: 'test-id',
         isRequired: false,
         isDisabled: true,
         onBlur: mockOnBlur,
         onChange: mockOnChange,
         ref: mockRef,
+        flatOptions: [{ ...mockOption, disabled: true }],
       });
 
       const { container } = render(result);
@@ -587,13 +592,14 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: mockOption,
         state,
-        checkboxId: 'test-id',
+        name: 'test-id',
         isRequired: false,
         isDisabled: false,
         onBlur: mockOnBlur,
         onChange: mockOnChange,
         ref: mockRef,
         error: true,
+        flatOptions: [mockOption],
       });
 
       const { container } = render(result);
@@ -612,12 +618,13 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: optionWithAriaLabel,
         state,
-        checkboxId: 'test-id',
+        name: 'test-id',
         isRequired: false,
         isDisabled: false,
         onBlur: mockOnBlur,
         onChange: mockOnChange,
         ref: mockRef,
+        flatOptions: [optionWithAriaLabel],
       });
 
       const { container } = render(result);
@@ -632,12 +639,13 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: mockOption,
         state,
-        checkboxId: 'test-id',
+        name: 'test-id',
         isRequired: false,
         isDisabled: false,
         onBlur: mockOnBlur,
         onChange: mockOnChange,
         ref: mockRef,
+        flatOptions: [mockOption],
       });
 
       const { container } = render(result);
@@ -656,18 +664,108 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: optionWithElementLabel as any, // ts should prevent this from ever happening but we have a default just in case
         state,
-        checkboxId: 'test-id',
+        name: 'test-id',
         isRequired: false,
         isDisabled: false,
         onBlur: mockOnBlur,
         onChange: mockOnChange,
         ref: mockRef,
+        flatOptions: [optionWithElementLabel as any],
       });
 
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
 
       expect(checkbox).toHaveAttribute('aria-label', 'checkbox');
+    });
+
+    it('should generate aria-controls with all nested descendants', () => {
+      const state = { checked: false };
+      const flatOptions = [
+        {
+          value: 'parent',
+          level: 0,
+          parentValue: undefined,
+          options: ['child1', 'child2'],
+          label: 'Parent',
+        },
+        {
+          value: 'child1',
+          level: 1,
+          parentValue: 'parent',
+          options: ['grandchild1'],
+          label: 'Child 1',
+        },
+        {
+          value: 'child2',
+          level: 1,
+          parentValue: 'parent',
+          options: [],
+          label: 'Child 2',
+        },
+        {
+          value: 'grandchild1',
+          level: 2,
+          parentValue: 'child1',
+          options: [],
+          label: 'Grandchild 1',
+        },
+      ];
+
+      const parentOption = flatOptions[0];
+
+      const result = renderCheckbox({
+        option: parentOption,
+        state,
+        name: 'test-parent',
+        isRequired: false,
+        isDisabled: false,
+        onBlur: mockOnBlur,
+        onChange: mockOnChange,
+        ref: mockRef,
+        flatOptions,
+      });
+
+      const { container } = render(result);
+      const checkbox = container.querySelector('input[type="checkbox"]');
+
+      // Should include all descendants (child1, grandchild1, child2), not just immediate children
+      expect(checkbox).toHaveAttribute(
+        'aria-controls',
+        'test-parent-child1 test-parent-grandchild1 test-parent-child2'
+      );
+    });
+
+    it('should not have aria-controls for leaf nodes', () => {
+      const state = { checked: false };
+      const flatOptions = [
+        {
+          value: 'leaf',
+          level: 0,
+          parentValue: undefined,
+          options: [],
+          label: 'Leaf',
+        },
+      ];
+
+      const leafOption = flatOptions[0];
+
+      const result = renderCheckbox({
+        option: leafOption,
+        state,
+        name: 'test-leaf',
+        isRequired: false,
+        isDisabled: false,
+        onBlur: mockOnBlur,
+        onChange: mockOnChange,
+        ref: mockRef,
+        flatOptions,
+      });
+
+      const { container } = render(result);
+      const checkbox = container.querySelector('input[type="checkbox"]');
+
+      expect(checkbox).not.toHaveAttribute('aria-controls');
     });
   });
 });
