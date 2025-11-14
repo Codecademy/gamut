@@ -61,7 +61,7 @@ export const ConnectedNestedCheckboxes: React.FC<
               return renderCheckbox({
                 option: { ...option, spacing },
                 state,
-                checkboxId: `${name}-${option.value}`,
+                name,
                 isRequired,
                 isDisabled,
                 onBlur,
@@ -76,7 +76,7 @@ export const ConnectedNestedCheckboxes: React.FC<
                   });
                 },
                 ref,
-                namePrefix: name,
+                flatOptions,
               });
             })}
           </Box>

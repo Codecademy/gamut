@@ -154,27 +154,27 @@ export const handleCheckboxChange = ({
 interface RenderCheckboxParams {
   option: FlatCheckbox;
   state: FlatCheckboxState;
-  checkboxId: string;
+  name: string;
   isRequired: boolean;
   isDisabled: boolean;
   onBlur: () => void;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   ref: React.RefCallback<HTMLInputElement>;
   error?: boolean;
-  namePrefix?: string;
+  flatOptions: FlatCheckbox[];
 }
 
 export const renderCheckbox = ({
   option,
   state,
-  checkboxId,
+  name,
   isRequired,
   isDisabled,
   onBlur,
   onChange,
   ref,
   error,
-  namePrefix,
+  flatOptions,
 }: RenderCheckboxParams) => {
   let checkedProps = {};
   if (state.checked) {
@@ -195,12 +195,13 @@ export const renderCheckbox = ({
     };
   }
 
-  // Generate aria-controls for parent checkboxes with immediate children only
-  // Each parent controls only its direct children, not all descendants
+  const checkboxId = `${name}-${option.value}`;
+
+  // Generate aria-controls for parent checkboxes with all nested descendants
   const ariaControls =
-    option.options.length > 0 && namePrefix
-      ? option.options
-          .map((childValue) => `${namePrefix}-${childValue}`)
+    option.options.length > 0
+      ? getAllDescendants(option.value, flatOptions)
+          .map((childValue) => `${name}-${childValue}`)
           .join(' ')
       : undefined;
 
