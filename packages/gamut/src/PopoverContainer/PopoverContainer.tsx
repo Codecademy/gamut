@@ -3,17 +3,17 @@ import { variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import * as React from 'react';
-import {
-  useIsomorphicLayoutEffect,
-  useWindowScroll,
-  useWindowSize,
-} from 'react-use';
+import { useWindowScroll, useWindowSize } from 'react-use';
 
 import { BodyPortal } from '../BodyPortal';
 import { FocusTrap } from '../FocusTrap';
-import { useResizingParentEffect, useScrollingParentsEffect } from './hooks';
+import {
+  useResizingParentEffect,
+  useScrollingParents,
+  useScrollingParentsEffect,
+} from './hooks';
 import { ContainerState, PopoverContainerProps } from './types';
-import { getContainers, getPosition, isInView } from './utils';
+import { getContainers, getPosition, isOutOfView } from './utils';
 
 const PopoverContent = styled.div(
   variance.compose(
@@ -37,15 +37,27 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   onRequestClose,
   targetRef,
   allowPageInteraction,
+  closeOnViewportExit = false,
   ...rest
 }) => {
   const popoverRef = useRef<HTMLDivElement>(null);
   const hasRequestedCloseRef = useRef(false);
+  const onRequestCloseRef = useRef(onRequestClose);
   const { width: winW, height: winH } = useWindowSize();
   const { x: winX, y: winY } = useWindowScroll();
   const [containers, setContainers] = useState<ContainerState>();
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const parent = containers?.parent;
+
+  // Memoize scrolling parents to avoid expensive DOM traversals
+  const scrollingParents = useScrollingParents(
+    targetRef as React.RefObject<HTMLElement | null>
+  );
+
+  // Keep onRequestClose ref up to date
+  useEffect(() => {
+    onRequestCloseRef.current = onRequestClose;
+  }, [onRequestClose]);
 
   const popoverPosition = useMemo(() => {
     if (parent !== undefined) {
@@ -97,19 +109,32 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   useResizingParentEffect(targetRef, setTargetRect);
 
-  useIsomorphicLayoutEffect(() => {
-    if (
-      containers?.viewport &&
-      !isInView(containers?.viewport) &&
-      !hasRequestedCloseRef.current
-    ) {
+  // Handle closeOnViewportExit with cached scrolling parents for performance
+  useEffect(() => {
+    if (!closeOnViewportExit) return;
+
+    const rect = targetRect || containers?.viewport;
+    if (!rect) return;
+
+    const isOut = isOutOfView(
+      rect,
+      targetRef?.current as HTMLElement,
+      scrollingParents
+    );
+
+    if (isOut && !hasRequestedCloseRef.current) {
       hasRequestedCloseRef.current = true;
-      onRequestClose?.();
-    } else if (containers?.viewport && isInView(containers?.viewport)) {
+      onRequestCloseRef.current?.();
+    } else if (!isOut) {
       hasRequestedCloseRef.current = false;
     }
-  }, [containers?.viewport, onRequestClose]);
-
+  }, [
+    targetRect,
+    containers?.viewport,
+    targetRef,
+    closeOnViewportExit,
+    scrollingParents,
+  ]);
   /**
    * Allows targetRef to be or contain a button that toggles the popover open and closed.
    * Without this check it would toggle closed then back open immediately.

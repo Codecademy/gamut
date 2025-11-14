@@ -83,6 +83,35 @@ Absolute offset values irrespective of the relative position. (e.g. x={-4} will 
 
 When `allowPageInteraction` is set to `true`, the page interaction is allowed. This is useful when the parent component is handling focus management and accessibility.
 
+### `closeOnViewportExit`
+
+By default, `closeOnViewportExit` is set to `false`, which means the popover will remain open even if the target element moves out of the viewport. This is the recommended default for interactive menus (like filter menus or action menus) where users need to interact with the popover content.
+
+If you set `closeOnViewportExit` to `true`, the popover will automatically close when the target element moves completely out of viewport. This can be useful for:
+
+- Informational popovers that should disappear when the target is no longer visible
+- Preventing orphaned popovers when content scrolls away
+- Notifications or temporary UI elements that should clean up automatically
+
+```tsx
+// Default behavior - popover stays open even if target scrolls out of view
+<PopoverContainer targetRef={targetRef} isOpen={isOpen}>
+  <Menu>
+    <MenuItem>Filter Option 1</MenuItem>
+    <MenuItem>Filter Option 2</MenuItem>
+  </Menu>
+</PopoverContainer>
+
+// Explicitly close when target exits viewport
+<PopoverContainer
+  targetRef={targetRef}
+  isOpen={isOpen}
+  closeOnViewportExit={true}
+>
+  <Box>Some helpful information</Box>
+</PopoverContainer>
+```
+
 ## Playground
 
 <Canvas sourceState="shown" of={PopoverContainerStories.Default} />
