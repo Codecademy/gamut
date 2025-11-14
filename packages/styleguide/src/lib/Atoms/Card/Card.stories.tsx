@@ -21,6 +21,14 @@ export const Default: Story = {
   },
 };
 
+const DemoCard = () => {
+  return <Card>Test testing tester</Card>;
+};
+
+export const DemoPlaceholder: Story = {
+  render: () => <DemoCard />,
+};
+
 export const StaticLight: Story = {
   render: () => (
     <Background bg="white">
