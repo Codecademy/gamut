@@ -28,32 +28,65 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   placement = tipDefaultProps.placement,
   ...rest
 }) => {
+  const isFloating = placement === 'floating';
+
   const [isTipHidden, setHideTip] = useState(true);
   const [isAriaHidden, setIsAriaHidden] = useState(false);
   const [shouldAnnounce, setShouldAnnounce] = useState(false);
+
   const wrapperRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const popoverContentRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
 
+  const pollTimeoutIdRef = useRef<NodeJS.Timeout | null>(null);
+  const ariaHiddenTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const announceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   useEffect(() => {
     setLoaded(true);
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (pollTimeoutIdRef.current) clearTimeout(pollTimeoutIdRef.current);
+      if (ariaHiddenTimeoutRef.current)
+        clearTimeout(ariaHiddenTimeoutRef.current);
+      if (announceTimeoutRef.current) clearTimeout(announceTimeoutRef.current);
+    };
+  }, []);
+
+  /*
+   * Clean up pending onClick poll for floating tips with interactive content
+   */
+  useEffect(() => {
+    if (isFloating && isTipHidden && pollTimeoutIdRef.current) {
+      clearTimeout(pollTimeoutIdRef.current);
+      pollTimeoutIdRef.current = null;
+    }
+  }, [isTipHidden, isFloating]);
 
   const setTipIsHidden = useCallback(
     (nextTipState: boolean) => {
       if (!nextTipState) {
         setHideTip(nextTipState);
         if (placement !== 'floating') {
-          // on inline component - stops text from being able to be navigated through, instead user can nav through visible text
-          setTimeout(() => {
+          if (ariaHiddenTimeoutRef.current) {
+            clearTimeout(ariaHiddenTimeoutRef.current);
+          }
+          ariaHiddenTimeoutRef.current = setTimeout(() => {
             setIsAriaHidden(true);
+            ariaHiddenTimeoutRef.current = null;
           }, 1000);
         }
       } else {
         if (isAriaHidden) setIsAriaHidden(false);
         setHideTip(nextTipState);
         setShouldAnnounce(false);
+        if (ariaHiddenTimeoutRef.current) {
+          clearTimeout(ariaHiddenTimeoutRef.current);
+          ariaHiddenTimeoutRef.current = null;
+        }
       }
     },
     [isAriaHidden, placement]
@@ -84,17 +117,55 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const clickHandler = () => {
     const currentTipState = !isTipHidden;
     setTipIsHidden(currentTipState);
+
+    // Clean up previous announce timeout if any
+    if (announceTimeoutRef.current) {
+      clearTimeout(announceTimeoutRef.current);
+      announceTimeoutRef.current = null;
+    }
+
     if (!currentTipState) {
       // Delay slightly to ensure focus has settled back on button before announcing
-      setTimeout(() => {
+      announceTimeoutRef.current = setTimeout(() => {
         setShouldAnnounce(true);
+        announceTimeoutRef.current = null;
       }, 0);
     }
-    // we want to call the onClick handler after the tip has mounted
-    // For floating placement, wait a bit longer to ensure refs are set
+
+    /*
+     * Handle onClick callback for programmatic focus of interactive elements.
+     *
+     * For floating tips: Poll until the portal ref is available (up to 20ms) to ensure
+     * focusable elements inside the portal are mounted and ready. This prevents calling
+     * onClick before the portal content exists in the DOM. Polling is cancelled if the
+     * tip is closed during the wait or if max attempts are reached.
+     *
+     * For inline tips: Call onClick immediately since no portal mounting is required.
+     */
     if (onClick) {
-      const delay = placement === 'floating' ? 10 : 0;
-      setTimeout(() => onClick({ isTipHidden: currentTipState }), delay);
+      if (isFloating) {
+        if (pollTimeoutIdRef.current) {
+          clearTimeout(pollTimeoutIdRef.current);
+          pollTimeoutIdRef.current = null;
+        }
+
+        const pollForRef = (attempts = 0) => {
+          if (popoverContentRef.current && !currentTipState) {
+            pollTimeoutIdRef.current = null;
+            onClick({ isTipHidden: currentTipState });
+          } else if (attempts < 20 && !currentTipState) {
+            pollTimeoutIdRef.current = setTimeout(
+              () => pollForRef(attempts + 1),
+              1
+            );
+          } else {
+            pollTimeoutIdRef.current = null;
+          }
+        };
+        pollForRef();
+      } else {
+        onClick({ isTipHidden: currentTipState });
+      }
     }
   };
 
@@ -162,8 +233,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     }
   }, [isTipHidden, placement, setTipIsHidden]);
 
-  const isFloating = placement === 'floating';
-
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
 
   const tipProps = {
@@ -171,8 +240,8 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     escapeKeyPressHandler,
     info,
     isTipHidden,
-    popoverContentRef,
     wrapperRef,
+    ...(isFloating && { popoverContentRef }),
     ...rest,
   };
 
@@ -201,9 +270,11 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     />
   );
 
-  /* on floating alignment
-  since Popover uses React.Portal the DOM order is incorrect so the screenreader text needs to be navigable, in the correct DOM order, and never aria-hidden
-  should be fixed in GM-797 */
+  /* 
+  on floating alignment
+  * since Popover uses React.Portal the DOM order is incorrect so the screenreader text needs to be navigable, in the correct DOM order, and never aria-hidden
+  * should be fixed in GM-797 
+  */
 
   return (
     <Tip {...tipProps} type="info">
