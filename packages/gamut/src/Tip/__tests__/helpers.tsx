@@ -6,6 +6,11 @@ import { createRef, RefObject } from 'react';
 import { Anchor } from '../../Anchor';
 import { Text } from '../../Typography';
 import { InfoTip } from '../InfoTip';
+import { TipPlacements } from '../shared/types';
+
+type InfoTipView = ReturnType<
+  ReturnType<typeof setupRtl<typeof InfoTip>>
+>['view'];
 
 export const createFocusOnClick = (ref: RefObject<HTMLAnchorElement>) => {
   return ({ isTipHidden }: { isTipHidden: boolean }) => {
@@ -50,9 +55,7 @@ export const createMultiLinkSetup = (
   return { firstLinkRef, info, onClick: createFocusOnClick(firstLinkRef) };
 };
 
-export const clickButton = async (
-  view: ReturnType<ReturnType<typeof setupRtl<typeof InfoTip>>>['view']
-) => {
+export const clickButton = async (view: InfoTipView) => {
   const button = view.getByLabelText('Show information');
   await act(async () => {
     await userEvent.click(button);
@@ -61,7 +64,7 @@ export const clickButton = async (
 };
 
 export const waitForPopoverLink = async (
-  view: ReturnType<ReturnType<typeof setupRtl<typeof InfoTip>>>['view'],
+  view: InfoTipView,
   linkText: string
 ) => {
   return await waitFor(() => {
@@ -92,7 +95,7 @@ export const waitForLinkFocus = async (
 };
 
 export const openTipAndWaitForLink = async (
-  view: ReturnType<ReturnType<typeof setupRtl<typeof InfoTip>>>['view'],
+  view: InfoTipView,
   linkText: string
 ) => {
   await clickButton(view);
@@ -103,7 +106,7 @@ export const openTipAndWaitForLink = async (
 };
 
 export const testEscapeKeyCloseTip = async (
-  view: ReturnType<ReturnType<typeof setupRtl<typeof InfoTip>>>['view'],
+  view: InfoTipView,
   contentToCheck: string,
   shouldReturnFocus = false
 ) => {
@@ -130,7 +133,7 @@ export const testEscapeKeyCloseTip = async (
 };
 
 export const testFocusWrap = async (
-  view: ReturnType<ReturnType<typeof setupRtl<typeof InfoTip>>>['view'],
+  view: InfoTipView,
   linkText: string,
   linkRef: RefObject<HTMLAnchorElement>,
   direction: 'forward' | 'backward'
@@ -149,11 +152,25 @@ export const testFocusWrap = async (
   });
 };
 
+export const getTipContent = (
+  view: InfoTipView,
+  text: string,
+  useQuery = false
+) => {
+  const getAllMethod = useQuery ? 'queryAllByText' : 'getAllByText';
+  const elements = view[getAllMethod](text);
+  // Find the tip body (not the screenreader text with aria-live="assertive")
+  return (
+    elements.find((el) => el.getAttribute('aria-live') !== 'assertive') ||
+    elements[0]
+  );
+};
+
 export const testTabbingBetweenLinks = async (
-  view: ReturnType<ReturnType<typeof setupRtl<typeof InfoTip>>>['view'],
+  view: InfoTipView,
   firstLinkText: string,
   secondLinkText: string,
-  placement: 'inline' | 'floating'
+  placement: TipPlacements
 ) => {
   await clickButton(view);
 
@@ -179,5 +196,60 @@ export const testTabbingBetweenLinks = async (
 
   if (placement === 'floating') {
     expect(view.getByLabelText('Show information')).not.toHaveFocus();
+  }
+};
+
+export const setupLinkTestWithPlacement = (
+  linkText: string,
+  placement: TipPlacements,
+  renderView: ReturnType<typeof setupRtl<typeof InfoTip>>
+) => {
+  const { linkRef, info, onClick } = createLinkSetup(linkText);
+  const { view } = renderView({ placement, info, onClick });
+  return { view, linkRef, info, onClick };
+};
+
+export const setupMultiLinkTestWithPlacement = (
+  firstLinkText: string,
+  secondLinkText: string,
+  placement: TipPlacements,
+  renderView: ReturnType<typeof setupRtl<typeof InfoTip>>
+) => {
+  const { info, onClick } = createMultiLinkSetup(firstLinkText, secondLinkText);
+  const { view } = renderView({ placement, info, onClick });
+  return { view, info, onClick };
+};
+
+export const testEscapeKeyWithOutsideFocus = async (
+  view: InfoTipView,
+  contentToCheck: string
+) => {
+  const outsideButton = document.createElement('button');
+  outsideButton.textContent = 'Outside Button';
+  document.body.appendChild(outsideButton);
+
+  try {
+    const button = await clickButton(view);
+
+    await waitFor(() => {
+      expect(button).toHaveAttribute('aria-expanded', 'true');
+      const tip = getTipContent(view, contentToCheck);
+      expect(tip).toBeVisible();
+    });
+
+    outsideButton.focus();
+    expect(outsideButton).toHaveFocus();
+
+    await act(async () => {
+      await userEvent.keyboard('{Escape}');
+    });
+
+    await waitFor(() => {
+      expect(button).toHaveAttribute('aria-expanded', 'false');
+      const tip = getTipContent(view, contentToCheck, true);
+      expect(tip).not.toBeVisible();
+    });
+  } finally {
+    document.body.removeChild(outsideButton);
   }
 };

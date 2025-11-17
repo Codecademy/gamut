@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { extractTextContent } from '../../utils/react';
 import { FloatingTip } from '../shared/FloatingTip';
@@ -20,6 +27,10 @@ export type InfoTipProps = TipBaseProps & {
   onClick?: (arg0: { isTipHidden: boolean }) => void;
 };
 
+const ARIA_HIDDEN_DELAY_MS = 1000;
+const FOCUSABLE_SELECTOR =
+  'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
+
 export const InfoTip: React.FC<InfoTipProps> = ({
   alignment = 'top-right',
   emphasis = 'low',
@@ -33,55 +44,79 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const [isTipHidden, setHideTip] = useState(true);
   const [isAriaHidden, setIsAriaHidden] = useState(false);
   const [shouldAnnounce, setShouldAnnounce] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const popoverContentRef = useRef<HTMLDivElement>(null);
-  const [loaded, setLoaded] = useState(false);
+  const popoverContentNodeRef = useRef<HTMLDivElement | null>(null);
 
-  const pollTimeoutIdRef = useRef<NodeJS.Timeout | null>(null);
   const ariaHiddenTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const announceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    setLoaded(true);
+  const getFocusableElements = useCallback(() => {
+    const popoverContent = popoverContentNodeRef.current;
+    if (!popoverContent) return [];
+
+    return Array.from(
+      popoverContent.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
+    );
   }, []);
 
+  const clearAndSetTimeout = useCallback(
+    (
+      timeoutRef: React.MutableRefObject<NodeJS.Timeout | null>,
+      callback: () => void,
+      delay: number
+    ) => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => {
+        callback();
+        timeoutRef.current = null;
+      }, delay);
+    },
+    []
+  );
+
+  const popoverContentRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      popoverContentNodeRef.current = node;
+
+      // We call onClick when the popover is mounted to make sure the refs are available
+      if (node && onClick && !isTipHidden && isFloating) {
+        onClick({ isTipHidden: false });
+      }
+    },
+    [onClick, isTipHidden, isFloating]
+  );
+
   useEffect(() => {
+    setLoaded(true);
+
+    const ariaHiddenTimeout = ariaHiddenTimeoutRef.current;
+    const announceTimeout = announceTimeoutRef.current;
+
     return () => {
-      if (pollTimeoutIdRef.current) clearTimeout(pollTimeoutIdRef.current);
-      if (ariaHiddenTimeoutRef.current)
-        clearTimeout(ariaHiddenTimeoutRef.current);
-      if (announceTimeoutRef.current) clearTimeout(announceTimeoutRef.current);
+      if (ariaHiddenTimeout) clearTimeout(ariaHiddenTimeout);
+      if (announceTimeout) clearTimeout(announceTimeout);
     };
   }, []);
 
-  /*
-   * Clean up pending onClick poll for floating tips with interactive content
-   */
-  useEffect(() => {
-    if (isFloating && isTipHidden && pollTimeoutIdRef.current) {
-      clearTimeout(pollTimeoutIdRef.current);
-      pollTimeoutIdRef.current = null;
-    }
-  }, [isTipHidden, isFloating]);
-
   const setTipIsHidden = useCallback(
     (nextTipState: boolean) => {
+      setHideTip(nextTipState);
+
       if (!nextTipState) {
-        setHideTip(nextTipState);
-        if (placement !== 'floating') {
-          if (ariaHiddenTimeoutRef.current) {
-            clearTimeout(ariaHiddenTimeoutRef.current);
-          }
-          ariaHiddenTimeoutRef.current = setTimeout(() => {
-            setIsAriaHidden(true);
-            ariaHiddenTimeoutRef.current = null;
-          }, 1000);
+        if (!isFloating) {
+          clearAndSetTimeout(
+            ariaHiddenTimeoutRef,
+            () => setIsAriaHidden(true),
+            ARIA_HIDDEN_DELAY_MS
+          );
         }
       } else {
         if (isAriaHidden) setIsAriaHidden(false);
-        setHideTip(nextTipState);
         setShouldAnnounce(false);
         if (ariaHiddenTimeoutRef.current) {
           clearTimeout(ariaHiddenTimeoutRef.current);
@@ -89,24 +124,15 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         }
       }
     },
-    [isAriaHidden, placement]
+    [isAriaHidden, isFloating, clearAndSetTimeout]
   );
-
-  const escapeKeyPressHandler = (
-    event: React.KeyboardEvent<HTMLDivElement>
-  ) => {
-    if (event.key === 'Escape') {
-      setTipIsHidden(true);
-    }
-  };
 
   const handleOutsideClick = useCallback(
     (e: MouseEvent) => {
+      const wrapper = wrapperRef.current;
       if (
-        wrapperRef.current &&
-        (e.target instanceof HTMLElement
-          ? !wrapperRef.current?.contains(e?.target)
-          : true)
+        wrapper &&
+        (e.target instanceof HTMLElement ? !wrapper.contains(e.target) : true)
       ) {
         setTipIsHidden(true);
       }
@@ -114,179 +140,168 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     [setTipIsHidden]
   );
 
-  const clickHandler = () => {
+  const clickHandler = useCallback(() => {
     const currentTipState = !isTipHidden;
     setTipIsHidden(currentTipState);
 
-    // Clean up previous announce timeout if any
-    if (announceTimeoutRef.current) {
-      clearTimeout(announceTimeoutRef.current);
-      announceTimeoutRef.current = null;
-    }
-
     if (!currentTipState) {
-      // Delay slightly to ensure focus has settled back on button before announcing
-      announceTimeoutRef.current = setTimeout(() => {
-        setShouldAnnounce(true);
-        announceTimeoutRef.current = null;
-      }, 0);
+      clearAndSetTimeout(announceTimeoutRef, () => setShouldAnnounce(true), 0);
     }
+  }, [isTipHidden, setTipIsHidden, clearAndSetTimeout]);
 
-    /*
-     * Handle onClick callback for programmatic focus of interactive elements.
-     *
-     * For floating tips: Poll until the portal ref is available (up to 20ms) to ensure
-     * focusable elements inside the portal are mounted and ready. This prevents calling
-     * onClick before the portal content exists in the DOM. Polling is cancelled if the
-     * tip is closed during the wait or if max attempts are reached.
-     *
-     * For inline tips: Call onClick immediately since no portal mounting is required.
-     */
-    if (onClick) {
-      if (isFloating) {
-        if (pollTimeoutIdRef.current) {
-          clearTimeout(pollTimeoutIdRef.current);
-          pollTimeoutIdRef.current = null;
+  const handleButtonKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLButtonElement>) => {
+      if (event.key === 'Tab' && event.shiftKey && !isTipHidden && isFloating) {
+        const focusableElements = getFocusableElements();
+
+        if (focusableElements.length > 0) {
+          event.preventDefault();
+          focusableElements[focusableElements.length - 1].focus();
         }
-
-        const pollForRef = (attempts = 0) => {
-          if (popoverContentRef.current && !currentTipState) {
-            pollTimeoutIdRef.current = null;
-            onClick({ isTipHidden: currentTipState });
-          } else if (attempts < 20 && !currentTipState) {
-            pollTimeoutIdRef.current = setTimeout(
-              () => pollForRef(attempts + 1),
-              1
-            );
-          } else {
-            pollTimeoutIdRef.current = null;
-          }
-        };
-        pollForRef();
-      } else {
-        onClick({ isTipHidden: currentTipState });
       }
+    },
+    [isTipHidden, isFloating, getFocusableElements]
+  );
+
+  useLayoutEffect(() => {
+    // for inline tips the onClick runs after DOM updates to make sure refs are available
+    if (!isFloating && !isTipHidden && onClick) {
+      onClick({ isTipHidden: false });
     }
-  };
+  }, [isTipHidden, isFloating, onClick]);
 
   useEffect(() => {
+    if (isTipHidden) return;
+
     document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, [handleOutsideClick]);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, [isTipHidden, handleOutsideClick]);
 
   useEffect(() => {
-    if (!isTipHidden && placement === 'floating') {
-      const handleGlobalEscapeKey = (e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-          setTipIsHidden(true);
+    if (isTipHidden) return;
+
+    const handleGlobalEscapeKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setTipIsHidden(true);
+        // We only return focus to the button for floating tips
+        if (isFloating) {
           buttonRef.current?.focus();
         }
-      };
+      }
+    };
 
-      const handleKeyDown = (event: KeyboardEvent) => {
+    document.addEventListener('keydown', handleGlobalEscapeKey);
+
+    if (isFloating) {
+      const handleTabKeyInPopover = (event: KeyboardEvent) => {
         if (event.key !== 'Tab') return;
 
-        const popoverContent = popoverContentRef.current;
-        if (!popoverContent) return;
-
-        const focusableElements = popoverContent.querySelectorAll<HTMLElement>(
-          'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
-        );
-
+        const focusableElements = getFocusableElements();
         if (focusableElements.length === 0) return;
 
         const firstElement = focusableElements[0];
         const lastElement = focusableElements[focusableElements.length - 1];
         const { activeElement } = document;
 
-        const isTabbingForwardFromLast =
-          !event.shiftKey && activeElement === lastElement;
-        const isTabbingBackwardFromFirst =
-          event.shiftKey && activeElement === firstElement;
+        const shouldWrapFocus =
+          (!event.shiftKey && activeElement === lastElement) ||
+          (event.shiftKey && activeElement === firstElement);
 
-        if (isTabbingForwardFromLast || isTabbingBackwardFromFirst) {
+        if (shouldWrapFocus) {
           event.preventDefault();
           buttonRef.current?.focus();
         }
       };
 
-      // Wait for the popover ref to be set before attaching the listener
       let popoverContent: HTMLDivElement | null = null;
       const timeoutId = setTimeout(() => {
-        popoverContent = popoverContentRef.current;
+        popoverContent = popoverContentNodeRef.current;
         if (popoverContent) {
-          popoverContent.addEventListener('keydown', handleKeyDown);
+          popoverContent.addEventListener('keydown', handleTabKeyInPopover);
         }
       }, 0);
-
-      document.addEventListener('keydown', handleGlobalEscapeKey);
 
       return () => {
         clearTimeout(timeoutId);
         if (popoverContent) {
-          popoverContent.removeEventListener('keydown', handleKeyDown);
+          popoverContent.removeEventListener('keydown', handleTabKeyInPopover);
         }
         document.removeEventListener('keydown', handleGlobalEscapeKey);
       };
     }
-  }, [isTipHidden, placement, setTipIsHidden]);
+
+    return () => document.removeEventListener('keydown', handleGlobalEscapeKey);
+  }, [isTipHidden, isFloating, setTipIsHidden, getFocusableElements]);
 
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
 
-  const tipProps = {
-    alignment,
-    escapeKeyPressHandler,
-    info,
-    isTipHidden,
-    wrapperRef,
-    ...(isFloating && { popoverContentRef }),
-    ...rest,
-  };
+  const tipProps = useMemo(
+    () => ({
+      alignment,
+      info,
+      isTipHidden,
+      wrapperRef,
+      ...(isFloating && { popoverContentRef }),
+      ...rest,
+    }),
+    [
+      alignment,
+      info,
+      isTipHidden,
+      wrapperRef,
+      isFloating,
+      popoverContentRef,
+      rest,
+    ]
+  );
 
   const extractedTextContent = useMemo(() => extractTextContent(info), [info]);
 
   const screenreaderInfo =
     shouldAnnounce && !isTipHidden ? extractedTextContent : `\xa0`;
 
-  const text = (
-    <ScreenreaderNavigableText
-      aria-hidden={isAriaHidden}
-      aria-live="assertive"
-      screenreader
-    >
-      {screenreaderInfo}
-    </ScreenreaderNavigableText>
+  const screenreaderText = useMemo(
+    () => (
+      <ScreenreaderNavigableText
+        aria-hidden={isAriaHidden}
+        aria-live="assertive"
+        screenreader
+      >
+        {screenreaderInfo}
+      </ScreenreaderNavigableText>
+    ),
+    [isAriaHidden, screenreaderInfo]
   );
 
-  const tip = (
-    <InfoTipButton
-      active={!isTipHidden}
-      aria-expanded={!isTipHidden}
-      emphasis={emphasis}
-      ref={buttonRef}
-      onClick={() => clickHandler()}
-    />
+  const button = useMemo(
+    () => (
+      <InfoTipButton
+        active={!isTipHidden}
+        aria-expanded={!isTipHidden}
+        emphasis={emphasis}
+        ref={buttonRef}
+        onClick={clickHandler}
+        onKeyDown={handleButtonKeyDown}
+      />
+    ),
+    [isTipHidden, emphasis, clickHandler, handleButtonKeyDown]
   );
 
-  /* 
-  on floating alignment
-  * since Popover uses React.Portal the DOM order is incorrect so the screenreader text needs to be navigable, in the correct DOM order, and never aria-hidden
-  * should be fixed in GM-797 
-  */
-
+  /*
+   * For floating placement, screenreader text comes before button to maintain
+   * correct DOM order despite Portal rendering. See GM-797 for planned fix.
+   */
   return (
     <Tip {...tipProps} type="info">
       {isFloating && alignment.includes('top') ? (
         <>
-          {text}
-          {tip}
+          {screenreaderText}
+          {button}
         </>
       ) : (
         <>
-          {tip}
-          {text}
+          {button}
+          {screenreaderText}
         </>
       )}
     </Tip>
