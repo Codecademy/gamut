@@ -5,7 +5,6 @@ import {
   DefaultValues,
   Mode,
   SubmitHandler,
-  UnpackNestedValue,
 } from 'react-hook-form';
 
 import { ButtonProps } from '../Button';
@@ -111,7 +110,7 @@ export function GridForm<Values extends FormValues<Values>>({
     isGridFormSection(field) ? field.fields : field
   );
 
-  type Defaults = UnpackNestedValue<DeepPartial<Values>>;
+  type Defaults = DeepPartial<Values>;
 
   const defaultValues = flatFields.reduce<Defaults>(
     // since our checkbox is a controlled input, it needs to be provided with a default value in order to reset correctly.
