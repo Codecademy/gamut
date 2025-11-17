@@ -7,7 +7,7 @@ export const parameters = {
   title: 'Figma MCP',
   subtitle:
     'Set up the Figma MCP locally to enable design to code generation, exclusive to Codecademy + Skillsoft employees.',
-  status: 'updating',
+  status: 'static',
 };
 
 <Meta title="Meta/MCP/Figma MCP" />
@@ -20,7 +20,7 @@ The offical guidance and documentation comes from Figma. Please reference [Figma
 
 ## Figma (desktop client app)
 
-If you haven't already, download the Figma desktop client app appropriate for your OS by going to [Figma's download page](https://www.figma.com/downloads/).
+Go to [Figma's download page](https://www.figma.com/downloads/) to download the appropriate version of the Figma desktop client for your OS.
 
 ### Start up local Figma MCP server
 
@@ -59,10 +59,6 @@ Similarly you can test the end point using:
 curl http://127.0.0.1:3845/mcp
 ```
 
-## (Optional) Check the rules
-
-In this repo, there are rules for Copilot (VScode) and Cursor to use the Figma MCP server. You can find them in `.github/instructions/figma.instructions.md` and `.cursor/rules/figma-rules.mdc` respectively.
-
 ## Prompt your MCP client
 
 You can prompt the MCP in two main ways:
@@ -74,7 +70,7 @@ You can prompt the MCP in two main ways:
 2. Selecting the node in the Figma interface, e.g.:
    > Generate the code for the current selection
 
-In the chat, you may be prompted to allow the Figma commands like `get_code()` to run.
+In the chat, you may be prompted to allow the Figma commands like `get_code()` to run. You can also add these commands to an allow list in your code editor's settings.
 
 ## Feedback for the Gamut team
 
