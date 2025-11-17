@@ -64,7 +64,7 @@ export const Popover: Story = {
   },
   render: (args) => (
     <FlexBox column width="fit-content">
-      <Menu {...args}>
+      <Menu aria-orientation="vertical" role="menubar">
         <MenuItem label="testing" onClick={() => null}>
           Menu item with Tooltip
         </MenuItem>

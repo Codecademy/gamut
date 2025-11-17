@@ -47,9 +47,10 @@ Use BarChart to visualize quantitative data across different categories, making 
 2. **Bar Row** - Individual list item containing:
    - Optional icon (24px)
    - Category label (yLabel)
-   - Current value display
+   - Value display showing starting value → ending value (or just current value)
    - Bar visualization with optional stacked foreground bar
 3. **Grid Lines** - Vertical lines marking scale intervals (hidden on mobile)
+4. **Alternating backgrounds** - Even rows have a subtle beige background for easier scanning
 
 ## Variants
 
@@ -168,6 +169,6 @@ Dynamically control sorting and ordering.
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `textColor` | `BoxProps['color']` | `'text'` | Color for text labels |
-| `foregroundBarColor` | `BoxProps['color']` | `'text'` | Color for foreground/progress bar |
-| `backgroundBarColor` | `BoxProps['color']` | `'primary'` | Color for background/total bar |
+| `textColor` | `BoxProps['color']` | `'navy-800'` | Color for text labels |
+| `foregroundBarColor` | `BoxProps['color']` | `'yellow'` | Color for foreground/progress bar |
+| `backgroundBarColor` | `BoxProps['color']` | `'paleBlue'` | Color for background/total bar |

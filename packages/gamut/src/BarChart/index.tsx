@@ -5,8 +5,8 @@ import { BarChartProvider } from './BarChartContext';
 import { BarRow } from './BarRow';
 import { GridLines } from './GridLines';
 import { ScaleChartHeader } from './ScaleChartHeader';
+import { sortAndOrderBarValues } from './shared';
 import { BarChartProps } from './types';
-import { sortAndOrderBarValues } from './utils';
 
 export type { BarChartProps, BarProps } from './types';
 

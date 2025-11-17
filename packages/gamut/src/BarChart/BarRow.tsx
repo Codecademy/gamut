@@ -11,7 +11,7 @@ import {
 } from './elements';
 import { RowBase } from './RowBase';
 import { BarProps } from './types';
-import { formatNumberUS, getPercentagesFilled, getValuesSummary } from './utils';
+import { formatNumberUS, getPercentagesFilled, getValuesSummary } from './shared';
 
 export const BarRow: React.FC<BarProps> = ({
   yLabel,
@@ -21,8 +21,7 @@ export const BarRow: React.FC<BarProps> = ({
   onClick,
   href,
 }) => {
-  const { styleConfig, minRange, maxRange, unit, animate } =
-    useBarChartContext();
+  const { styleConfig, minRange, maxRange, unit } = useBarChartContext();
 
   const { foregroundPercent, backgroundPercent } = getPercentagesFilled({
     startingValue,
@@ -47,27 +46,33 @@ export const BarRow: React.FC<BarProps> = ({
   // Determine the display value (use endingValue if available, otherwise startingValue)
   const displayValue = endingValue ?? startingValue;
 
-  const textColor = styleConfig.textColor ?? 'text';
-  const foregroundColor = styleConfig.foregroundBarColor ?? 'text';
-  const backgroundColor = styleConfig.backgroundBarColor ?? 'primary';
+  const textColor = styleConfig.textColor ?? 'navy-800';
+  const foregroundColor = styleConfig.foregroundBarColor ?? 'yellow';
+  const backgroundColor = styleConfig.backgroundBarColor ?? 'paleBlue';
+
+  // Determine if this is a stacked bar (has both starting and ending values)
+  const isStacked = endingValue !== undefined && endingValue !== startingValue;
+  
+  const valueDisplay = isStacked
+    ? `${formatNumberUS(startingValue)} ${unit} → ${formatNumberUS(endingValue)} ${unit}`
+    : `${formatNumberUS(displayValue)} ${unit}`;
 
   return (
     <Box as="li" listStyleType="none" m={0} p={0}>
       <RowBase
-        onClick={onClick}
-        href={href}
         aria-label={valuesSummary}
+        href={href}
+        onClick={onClick}
         role={hasInteraction ? undefined : 'listitem'}
         tabIndex={hasInteraction ? 0 : undefined}
       >
         <RowWrapper
-          display="flex"
           alignItems="center"
+          display="flex"
           gap={16}
-          py={12}
-          px={16}
-          borderRadius="sm"
           interactive={hasInteraction}
+          px={16}
+          py={12}
         >
           {Icon && (
             <FlexBox alignItems="center" flexShrink={0}>
@@ -76,34 +81,34 @@ export const BarRow: React.FC<BarProps> = ({
           )}
           <FlexBox
             flexDirection="column"
+            flexShrink={0}
             gap={4}
             minWidth={0}
-            width={{ _: '120px', sm: '150px' }}
-            flexShrink={0}
+            width={{ _: '140px', sm: '180px' }}
           >
             <Text
-              fontSize={14}
-              fontWeight="bold"
               color={textColor}
+              fontSize={16}
+              fontWeight="title"
               truncate="ellipsis"
             >
               {yLabel}
             </Text>
-            <Text fontSize={12} color={textColor}>
-              {`${formatNumberUS(displayValue)} ${unit}`}
+            <Text color="navy-600" fontSize={14}>
+              {valueDisplay}
             </Text>
           </FlexBox>
           <BarContainer>
             <BarElement
               barType="background"
               bg={backgroundColor}
-              width={animate ? backgroundWidth : backgroundWidth}
+              width={backgroundWidth}
             />
-            {endingValue !== undefined && (
+            {isStacked && (
               <BarElement
                 barType="foreground"
                 bg={foregroundColor}
-                width={animate ? foregroundWidth : foregroundWidth}
+                width={foregroundWidth}
               />
             )}
           </BarContainer>

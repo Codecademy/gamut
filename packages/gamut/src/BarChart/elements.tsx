@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 
 import { Box } from '../Box';
 
-// Minimum bar width in percentage to ensure visibility
-export const minBarWidth = 8;
+// Minimum bar width in pixels to ensure visibility
+export const minBarWidth = 2;
 
 const rowStates = states({
   interactive: {
@@ -28,6 +28,15 @@ const rowProps = variance.compose(
   system.color
 );
 
+const rowBase = {
+  '&:nth-of-type(odd)': {
+    bg: 'transparent',
+  },
+  '&:nth-of-type(even)': {
+    bg: 'background-selected',
+  },
+} as const;
+
 export interface RowWrapperProps
   extends StyleProps<typeof rowProps>,
     StyleProps<typeof rowStates> {}
@@ -35,15 +44,15 @@ export interface RowWrapperProps
 export const RowWrapper = styled(
   Box,
   styledOptions<'div'>(['interactive'])
-)<RowWrapperProps>(rowProps, rowStates);
+)<RowWrapperProps>(rowBase, rowProps, rowStates);
 
 const barContainerVariants = variant({
   prop: 'variant',
   defaultVariant: 'default',
   base: {
     position: 'relative',
-    height: { _: '8px', sm: '18px' },
-    borderRadius: { _: 'md', sm: 'xl' },
+    height: { _: '12px', sm: '20px' },
+    borderRadius: { _: 'md', sm: 'lg' },
     overflow: 'hidden',
     flexGrow: 1,
     minWidth: 0,
@@ -71,16 +80,16 @@ const barVariants = variant({
   },
   variants: {
     background: {
-      border: 1,
-      borderColor: 'border-primary',
+      borderWidth: 1,
+      borderStyle: 'solid',
+      borderColor: 'navy-200',
       transitionDelay: '0.1s',
     },
     foreground: {
-      top: 1,
+      top: '1px',
+      left: '1px',
       height: 'calc(100% - 2px)',
-      borderRightWidth: 1,
-      borderRightStyle: 'solid',
-      borderRightColor: 'border-primary',
+      borderRadius: 'inherit',
     },
   },
 });
@@ -96,8 +105,8 @@ const gridLineVariants = variant({
     top: 0,
     bottom: 0,
     width: '1px',
-    bg: 'border-tertiary',
-    opacity: 0.3,
+    bg: 'navy-200',
+    opacity: 0.5,
   },
   variants: {
     default: {},
@@ -112,4 +121,3 @@ export const GridContainer = styled(Box)(
   system.layout,
   system.positioning
 );
-

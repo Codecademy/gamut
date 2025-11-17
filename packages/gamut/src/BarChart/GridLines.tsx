@@ -2,39 +2,40 @@ import * as React from 'react';
 
 import { Box } from '../Box';
 import { useBarChartContext } from './BarChartContext';
-import { GridContainer, GridLine } from './elements';
+import { GridLine } from './elements';
 
 export const GridLines: React.FC = () => {
   const { xScale, minRange, maxRange } = useBarChartContext();
 
   const range = maxRange - minRange;
-  const numberOfLines = Math.floor(range / xScale);
+  const numberOfLines = Math.floor(range / xScale) + 1;
 
   const lines: React.ReactElement[] = [];
 
-  for (let i = 1; i <= numberOfLines; i++) {
+  // Create grid lines for each scale marker
+  for (let i = 0; i < numberOfLines; i++) {
     const position = (i * xScale) / range;
     const leftPercent = `${position * 100}%`;
 
     lines.push(
       <GridLine
+        data-testid={`grid-line-${i}`}
         key={`grid-line-${i}`}
         style={{ left: leftPercent }}
-        data-testid={`grid-line-${i}`}
       />
     );
   }
 
   return (
     <Box
-      position="absolute"
-      top={0}
-      left={0}
-      right={0}
       bottom={0}
       display={{ _: 'none', sm: 'flex' }}
+      left={0}
       pointerEvents="none"
-      zIndex={1}
+      position="absolute"
+      right={0}
+      top={0}
+      zIndex={0}
     >
       {lines}
     </Box>
