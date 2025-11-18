@@ -6,7 +6,7 @@ module.exports = {
     'plugin:react/jsx-runtime',
   ],
 
-  plugins: ['eslint-plugin-gamut', "eslint-plugin-no-inline-styles"],
+  plugins: ['eslint-plugin-gamut', 'eslint-plugin-no-inline-styles'],
 
   rules: {
     'gamut/prefer-themed': 'error',

@@ -11,6 +11,7 @@ export const ExpandInCollapseOut: React.FC<WithChildrenProp> = ({
       animate="expanded"
       exit="collapsed"
       initial="collapsed"
+      // eslint-disable-next-line no-inline-styles/no-inline-styles
       style={{ overflow: 'hidden' }}
       transition={{ duration: timingValues.medium / 1000, ease: 'easeInOut' }}
       variants={{
