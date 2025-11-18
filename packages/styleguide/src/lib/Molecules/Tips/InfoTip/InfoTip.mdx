@@ -53,11 +53,34 @@ This `floating` variant should only be used as needed.
 
 <Canvas of={InfoTipStories.Placement} />
 
+# Keyboard Navigation & Accessibility
+
 ## InfoTips with links or buttons
 
 Links or buttons within InfoTips should be used sparingly and only when the information is critical to the user's understanding of the content. If an infotip _absolutely requires_ a link or button, it needs to provide a programmatic focus by way of the `onClick` prop. The `onClick` prop accepts a function that calls the object `{isTipHidden}` and should focus when the tip is visible.
 
 <Canvas of={InfoTipStories.WithLinksOrButtons} />
+
+### Floating Placement
+
+When using `placement="floating"`, InfoTips implement **forward focus wrapping** to keep users within the tip context:
+
+- **Tab**: Navigate forward through focusable elements (links, buttons) inside the tip. When reaching the last element, wraps back to the InfoTip button
+- **Shift+Tab**: Navigate backward naturally - from the button, exits to the previous page element (no backward trap)
+- **Escape**: Closes the tip and returns focus to the InfoTip button
+
+<Canvas of={InfoTipStories.KeyboardNavigation} />
+
+### Global Escape Key Handling
+
+InfoTips listen for the Escape key globally and will close automatically **unless** a higher-priority element is open:
+
+- **InfoTips close on Escape** regardless of where keyboard focus is
+- **Modals and dialogs take priority** - InfoTips detect when `dialog[open]`, `role="dialog"`, or `role="alertdialog"` elements are present and defer Escape handling to them
+- After closing a modal, pressing Escape again will close the InfoTip
+- When an InfoTip closes via Escape, focus automatically returns to the InfoTip button
+
+<Canvas of={InfoTipStories.WithModal} />
 
 ## InfoTips and zIndex
 

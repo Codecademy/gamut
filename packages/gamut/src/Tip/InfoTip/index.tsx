@@ -30,6 +30,7 @@ export type InfoTipProps = TipBaseProps & {
 const ARIA_HIDDEN_DELAY_MS = 1000;
 const FOCUSABLE_SELECTOR =
   'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
+const MODAL_SELECTOR = 'dialog[open],[role="dialog"],[role="alertdialog"]';
 
 export const InfoTip: React.FC<InfoTipProps> = ({
   alignment = 'top-right',
@@ -149,20 +150,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     }
   }, [isTipHidden, setTipIsHidden, clearAndSetTimeout]);
 
-  const handleButtonKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLButtonElement>) => {
-      if (event.key === 'Tab' && event.shiftKey && !isTipHidden && isFloating) {
-        const focusableElements = getFocusableElements();
-
-        if (focusableElements.length > 0) {
-          event.preventDefault();
-          focusableElements[focusableElements.length - 1].focus();
-        }
-      }
-    },
-    [isTipHidden, isFloating, getFocusableElements]
-  );
-
   useLayoutEffect(() => {
     // for inline tips the onClick runs after DOM updates to make sure refs are available
     if (!isFloating && !isTipHidden && onClick) {
@@ -181,33 +168,30 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     if (isTipHidden) return;
 
     const handleGlobalEscapeKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setTipIsHidden(true);
-        // We only return focus to the button for floating tips
-        if (isFloating) {
-          buttonRef.current?.focus();
-        }
-      }
+      if (e.key !== 'Escape') return;
+
+      const hasModal = document.querySelector(MODAL_SELECTOR);
+      if (hasModal) return;
+
+      e.preventDefault();
+      setTipIsHidden(true);
+      buttonRef.current?.focus();
     };
 
     document.addEventListener('keydown', handleGlobalEscapeKey);
 
     if (isFloating) {
       const handleTabKeyInPopover = (event: KeyboardEvent) => {
-        if (event.key !== 'Tab') return;
+        if (event.key !== 'Tab' || event.shiftKey) return;
 
         const focusableElements = getFocusableElements();
         if (focusableElements.length === 0) return;
 
-        const firstElement = focusableElements[0];
         const lastElement = focusableElements[focusableElements.length - 1];
         const { activeElement } = document;
 
-        const shouldWrapFocus =
-          (!event.shiftKey && activeElement === lastElement) ||
-          (event.shiftKey && activeElement === firstElement);
-
-        if (shouldWrapFocus) {
+        // Only wrap forward: if on last element, wrap to button
+        if (activeElement === lastElement) {
           event.preventDefault();
           buttonRef.current?.focus();
         }
@@ -281,10 +265,9 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         emphasis={emphasis}
         ref={buttonRef}
         onClick={clickHandler}
-        onKeyDown={handleButtonKeyDown}
       />
     ),
-    [isTipHidden, emphasis, clickHandler, handleButtonKeyDown]
+    [isTipHidden, emphasis, clickHandler]
   );
 
   /*

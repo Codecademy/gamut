@@ -5,7 +5,6 @@ import userEvent from '@testing-library/user-event';
 import { InfoTip } from '../InfoTip';
 import {
   createLinkSetup,
-  createMultiLinkSetup,
   getTipContent,
   openTipAndWaitForLink,
   setupLinkTestWithPlacement,
@@ -42,7 +41,7 @@ describe('InfoTip', () => {
       expect(tip).toBeVisible();
     });
 
-    it('closes the tip when Escape key is pressed', async () => {
+    it('closes the tip when Escape key is pressed and returns focus to button', async () => {
       const { view } = renderView({});
 
       const button = view.getByLabelText('Show information');
@@ -59,6 +58,7 @@ describe('InfoTip', () => {
 
       await waitFor(() => {
         expect(tip).not.toBeVisible();
+        expect(button).toHaveFocus();
       });
     });
 
@@ -115,6 +115,37 @@ describe('InfoTip', () => {
     it('closes the tip when Escape is pressed even when focus is on an outside element', async () => {
       const { view } = renderView({});
       await testEscapeKeyWithOutsideFocus(view, info);
+    });
+
+    it('does not close the tip when Escape is pressed if a modal is open', async () => {
+      const { view } = renderView({});
+
+      const button = view.getByLabelText('Show information');
+      await act(async () => {
+        await userEvent.click(button);
+      });
+
+      const tip = getTipContent(view, info);
+      expect(tip).toBeVisible();
+
+      // Simulate a modal being present in the DOM
+      const mockModal = document.createElement('div');
+      mockModal.setAttribute('role', 'dialog');
+      document.body.appendChild(mockModal);
+
+      try {
+        await act(async () => {
+          await userEvent.keyboard('{Escape}');
+        });
+
+        // Tip should still be visible because modal is present
+        await waitFor(() => {
+          expect(tip).toBeVisible();
+          expect(button).toHaveAttribute('aria-expanded', 'true');
+        });
+      } finally {
+        document.body.removeChild(mockModal);
+      }
     });
   });
 
@@ -179,51 +210,6 @@ describe('InfoTip', () => {
       await testFocusWrap(view, linkText, linkRef, 'backward');
     });
 
-    it('wraps focus to last link when shift+tabbing backward from button', async () => {
-      const linkText = 'cool link';
-      const { view } = setupLinkTestWithPlacement(
-        linkText,
-        'floating',
-        renderView
-      );
-
-      const button = view.getByLabelText('Show information');
-
-      // Open the tip
-      await act(async () => {
-        await userEvent.click(button);
-      });
-
-      // Wait for the link to be focused
-      const link = await waitFor(() => {
-        const links = view.getAllByRole('link', { name: linkText });
-        expect(links.length).toBe(1);
-        return links[0];
-      });
-
-      await waitFor(() => {
-        expect(link).toHaveFocus();
-      });
-
-      // Tab forward to get back to the button
-      await act(async () => {
-        await userEvent.keyboard('{Tab}');
-      });
-
-      await waitFor(() => {
-        expect(button).toHaveFocus();
-      });
-
-      // Now Shift+Tab from the button should wrap back to the last link
-      await act(async () => {
-        await userEvent.keyboard('{Shift>}{Tab}{/Shift}');
-      });
-
-      await waitFor(() => {
-        expect(link).toHaveFocus();
-      });
-    });
-
     it('allows normal tabbing between focusable elements within popover', async () => {
       const firstLinkText = 'first link';
       const secondLinkText = 'second link';
@@ -245,6 +231,41 @@ describe('InfoTip', () => {
     it('closes the tip when Escape is pressed even when focus is on an outside element', async () => {
       const { view } = renderView({ placement: 'floating' });
       await testEscapeKeyWithOutsideFocus(view, info);
+    });
+
+    it('does not close the tip when Escape is pressed if a modal is open', async () => {
+      const { view } = renderView({ placement: 'floating' });
+
+      const button = view.getByLabelText('Show information');
+      await act(async () => {
+        await userEvent.click(button);
+      });
+
+      await waitFor(() => {
+        expect(button).toHaveAttribute('aria-expanded', 'true');
+        const tip = getTipContent(view, info);
+        expect(tip).toBeVisible();
+      });
+
+      // Simulate a modal being present in the DOM
+      const mockModal = document.createElement('div');
+      mockModal.setAttribute('role', 'dialog');
+      document.body.appendChild(mockModal);
+
+      try {
+        await act(async () => {
+          await userEvent.keyboard('{Escape}');
+        });
+
+        // Tip should still be visible because modal is present
+        await waitFor(() => {
+          const tip = getTipContent(view, info);
+          expect(tip).toBeVisible();
+          expect(button).toHaveAttribute('aria-expanded', 'true');
+        });
+      } finally {
+        document.body.removeChild(mockModal);
+      }
     });
   });
 });
