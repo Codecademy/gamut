@@ -70,6 +70,7 @@
     "eslint-plugin-gamut": "^2.0.0",
     "eslint-plugin-local-rules": "^1.1.0",
     "eslint-plugin-lodash": "^7.4.0",
+    "eslint-plugin-no-inline-styles": "^1.0.5",
     "gh-pages": "^5.0.0",
     "husky": "8.0.3",
     "identity-obj-proxy": "3.0.0",
