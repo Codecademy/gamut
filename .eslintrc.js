@@ -67,5 +67,11 @@ module.exports = {
         'lodash/import-scope': ['error', 'method'],
       },
     },
+    {
+      files: ['packages/gamut-illustrations/**'],
+      rules: {
+        'no-inline-styles/no-inline-styles': 'off',
+      },
+    },
   ],
 };
