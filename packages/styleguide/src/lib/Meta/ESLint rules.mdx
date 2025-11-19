@@ -15,7 +15,7 @@ export const parameters = {
 
 The `eslint-plugin-gamut` package provides custom ESLint rules to enforce best practices and maintain code quality across Gamut projects. These rules help ensure consistent styling patterns and proper usage of Gamut components.
 
-## Available Rules
+## Available rules
 
 ### `gamut/no-inline-style`
 
@@ -35,7 +35,7 @@ Disallows the use of inline `style` props on JSX elements. This rule encourages 
 <Component style={customStyles} />
 
 // Or with dynamic values
-<button style={{ width: isOpen ? '100%' : '50%' }} />
+<Alert style={{ width: isOpen ? '100%' : '50%' }} />
 ```
 
 #### ✅ Correct
@@ -43,18 +43,37 @@ Disallows the use of inline `style` props on JSX elements. This rule encourages 
 ```tsx
 // Use styled components
 import styled from '@emotion/styled';
+import { css } from '@codecademy/gamut-styles';
+import { Box } from '@codecademy/gamut';
 
-const Container = styled.div`
-  padding: 0;
-  margin: 10px;
-`;
+const Container = styled(Box)(
+  css({
+    p: 0,
+    m: 10,
+  })
+)
 
 // Use system props from Box components
 import { Box } from '@codecademy/gamut';
 
 <Box p={0} m={10} />
 
-// Use className with CSS modules or global styles
+// Use states utility for conditional styling
+import { states } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+
+const ExpandableContainer = styled.Box(
+  css({
+    width: '50%',
+  }),
+  states({
+    isExpanded: { width: '100%' },
+  })
+);
+
+<ExpandableContainer isExpanded={isExpanded} />
+
+// If need be, use className with CSS modules or global styles
 <div className="my-component" />
 ```
 
@@ -90,18 +109,26 @@ import '../components/Button.scss';
 ```tsx
 // Use styled components
 import styled from '@emotion/styled';
-
-const Button = styled.button`
-  padding: 16px;
-  background: blue;
-`;
-
-// Use utility functions from gamut-styles
+import { StrokeButton } from '@codecademy/gamut';
 import { css } from '@codecademy/gamut-styles';
 
-const buttonStyles = css({
-  p: 16,
-  bg: 'primary',
+const StyledStrokeButton = styled(StrokeButton)(
+  css({
+    p: 32,
+    bg: 'primary',
+  })
+);
+
+// Use utility functions from gamut-styles
+import { variant } from '@codecademy/gamut-styles';
+
+const buttonStyles = variant({
+  variants: {
+    primary: {
+      p: 16,
+      bg: 'primary',
+    },
+  },
 });
 ```
 
@@ -110,7 +137,7 @@ const buttonStyles = css({
 ### `gamut/import-paths`
 
 **Level:** `error`
-**Fixable:** Yes (auto-fixable)
+**Fixable:** Yes (auto-fixable using `--fix`)
 
 Ensures Gamut import statements use proper module paths. This rule enforces three requirements:
 
@@ -125,10 +152,10 @@ Ensures Gamut import statements use proper module paths. This rule enforces thre
 ```tsx
 // Don't use package imports within the same package
 // (when in @codecademy/gamut package)
-import { Button } from '@codecademy/gamut';
+import { FillButton } from '@codecademy/gamut';
 
 // Don't append /src
-import { Button } from '@codecademy/gamut/src';
+import { FillButton } from '@codecademy/gamut/src';
 
 // Don't append /dist
 import { theme } from '@codecademy/gamut-styles/dist';
@@ -138,10 +165,10 @@ import { theme } from '@codecademy/gamut-styles/dist';
 
 ```tsx
 // Use relative imports within the same package
-import { Button } from '../Button';
+import { Box } from '../Box';
 
 // Use clean package imports from other packages
-import { Button } from '@codecademy/gamut';
+import { FillButton } from '@codecademy/gamut';
 import { theme } from '@codecademy/gamut-styles';
 ```
 
@@ -152,7 +179,7 @@ import { theme } from '@codecademy/gamut-styles';
 ### `gamut/prefer-themed`
 
 **Level:** `off` (by default)
-**Fixable:** Yes (auto-fixable)
+**Fixable:** Yes (auto-fixable using `--fix`)
 
 Suggests using the `themed()` utility from `gamut-styles` instead of directly accessing theme values in styled components. When enabled, this rule helps maintain consistent theme access patterns.
 
@@ -161,7 +188,7 @@ Suggests using the `themed()` utility from `gamut-styles` instead of directly ac
 #### ❌ Flagged (when enabled)
 
 ```tsx
-const Button = styled.button`
+const StyledDiv = styled.div`
   color: ${({ theme }) => theme.colors.primary};
 `;
 ```
@@ -169,11 +196,14 @@ const Button = styled.button`
 #### ✅ Preferred
 
 ```tsx
-import { themed } from '@codecademy/gamut-styles';
+import { css, themed } from '@codecademy/gamut-styles';
+import { Box } from '@codecademy/gamut';
 
-const Button = styled.button`
-  color: ${themed('colors.primary')};
-`;
+const StyledBox = styled(Box)(
+  css({
+    color: themed('colors.primary'),
+  })
+);
 ```
 
 <Callout text="This rule is disabled by default but can be enabled in your project's ESLint config." />
@@ -197,7 +227,7 @@ module.exports = {
 };
 ```
 
-## Overriding Rules
+## Overriding rules
 
 You can override rules for specific files or directories:
 
@@ -215,7 +245,7 @@ module.exports = {
 };
 ```
 
-## Related Documentation
+## Related documentation
 
 - <LinkTo id="Meta/Best Practices">Best Practices</LinkTo> - Learn about Gamut styling
   best practices
