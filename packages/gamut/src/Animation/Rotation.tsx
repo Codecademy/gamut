@@ -35,7 +35,7 @@ export const Rotation: React.FC<RotationProps> = ({
   children,
   ...rest
 }) => (
-  /* eslint-disable no-inline-styles/no-inline-styles */
+  /* eslint-disable gamut/no-inline-style */
   <motion.div
     animate={rotated ? 'rotated' : 'normal'}
     style={{
@@ -53,5 +53,5 @@ export const Rotation: React.FC<RotationProps> = ({
   >
     {children}
   </motion.div>
-  /* eslint-enable no-inline-styles/no-inline-styles */
+  /* eslint-enable gamut/no-inline-style */
 );

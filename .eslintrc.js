@@ -6,11 +6,12 @@ module.exports = {
     'plugin:react/jsx-runtime',
   ],
 
-  plugins: ['eslint-plugin-gamut', 'eslint-plugin-no-inline-styles'],
+  plugins: ['eslint-plugin-gamut'],
 
   rules: {
     'gamut/prefer-themed': 'error',
     'gamut/no-css-standalone': 'error',
+    'gamut/no-inline-style': 'error',
     'gamut/import-paths': 'error',
     'import/no-extraneous-dependencies': 'off',
   },
@@ -57,7 +58,6 @@ module.exports = {
             callbacksLast: true,
           },
         ],
-        'no-inline-styles/no-inline-styles': 1,
       },
     },
     {
@@ -70,7 +70,7 @@ module.exports = {
     {
       files: ['packages/gamut-illustrations/**'],
       rules: {
-        'no-inline-styles/no-inline-styles': 'off',
+        'gamut/no-inline-style': 'off',
       },
     },
   ],
