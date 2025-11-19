@@ -97,11 +97,7 @@ export const SpacingTight: Story = {
   render: () => (
     <Box as="fieldset" m={0} p={0}>
       <legend>Tight Spacing</legend>
-      <FlexBox
-        as="ul"
-        column
-        style={{ listStyle: 'none', margin: 0, padding: 0 }}
-      >
+      <FlexBox as="ul" column listStyle="none" m={0} p={0}>
         {[
           { id: 'spacing-1', label: 'a small space', checked: true },
           { id: 'spacing-2', label: 'with three checkboxes', checked: false },
@@ -128,11 +124,7 @@ export const LabelsAsReactNodes: Story = {
   render: () => (
     <Box as="fieldset" m={0} p={0}>
       <legend>Labels as React Nodes</legend>
-      <FlexBox
-        as="ul"
-        column
-        style={{ listStyle: 'none', margin: 0, padding: 0 }}
-      >
+      <FlexBox as="ul" column listStyle="none" m={0} p={0}>
         <Box as="li" mt={4}>
           <Checkbox
             checked

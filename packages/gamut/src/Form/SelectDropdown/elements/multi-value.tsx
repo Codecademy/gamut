@@ -122,6 +122,7 @@ export const RemoveAllButton = (props: SizedIndicatorProps) => {
       tabIndex={0}
       {...restInnerProps}
       ref={removeAllButtonRef}
+      // eslint-disable-next-line gamut/no-inline-style
       style={style}
       onKeyDown={onKeyPress}
     >
