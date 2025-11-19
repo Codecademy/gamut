@@ -28,4 +28,3 @@ export default createRule({
   },
   name: 'no-inline-style',
 });
-

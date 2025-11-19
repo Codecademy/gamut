@@ -70,4 +70,3 @@ ruleTester.run('no-inline-style', rule, {
     },
   ],
 });
-
