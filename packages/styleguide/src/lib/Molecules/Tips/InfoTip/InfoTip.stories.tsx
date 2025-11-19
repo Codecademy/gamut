@@ -77,7 +77,7 @@ export const WithLinksOrButtons: Story = {
     placement: 'floating',
   },
   render: function WithLinksOrButtons(args) {
-    const ref = useRef<HTMLButtonElement>(null);
+    const ref = useRef<HTMLDivElement>(null);
 
     const onClick = ({ isTipHidden }: { isTipHidden: boolean }) => {
       if (!isTipHidden) ref.current?.focus();
@@ -89,9 +89,9 @@ export const WithLinksOrButtons: Story = {
         <InfoTip
           {...args}
           info={
-            <Text>
+            <Text ref={ref} tabIndex={-1}>
               Hey! Here is a{' '}
-              <Anchor href="https://giphy.com/search/nichijou" ref={ref}>
+              <Anchor href="https://giphy.com/search/nichijou">
                 cool link
               </Anchor>{' '}
               that is super important. This is a{' '}
@@ -128,58 +128,67 @@ export const ZIndex: Story = {
 };
 
 export const KeyboardNavigation: Story = {
-  args: {
-    placement: 'floating',
-  },
-  render: function KeyboardNavigation(args) {
+  render: function KeyboardNavigation() {
+    const floatingRef = useRef<HTMLDivElement>(null);
+    const inlineRef = useRef<HTMLDivElement>(null);
+
+    const examples = [
+      {
+        title: 'Floating Placement',
+        placement: 'floating' as const,
+        ref: floatingRef,
+        links: ['Link 1', 'Link 2', 'Link 3'],
+      },
+      {
+        title: 'Inline Placement',
+        placement: 'inline' as const,
+        alignment: 'bottom-right' as const,
+        ref: inlineRef,
+        links: ['Link A', 'Link B'],
+      },
+    ];
+
     return (
       <FlexBox center flexDirection="column" gap={24} py={64}>
         <GridBox gap={16} gridTemplateColumns="1fr 1fr">
-          <FlexBox flexDirection="column" gap={8}>
-            <Text fontSize={16} fontWeight="bold">
-              Floating Placement
-            </Text>
-            <FlexBox alignItems="center" gap={8}>
-              <Text>With focus trap</Text>
-              <InfoTip
-                {...args}
-                info={
-                  <Text>
-                    <Anchor href="https://example.com">Link 1</Anchor>,{' '}
-                    <Anchor href="https://example.com">Link 2</Anchor>,{' '}
-                    <Anchor href="https://example.com">Link 3</Anchor>
-                  </Text>
-                }
-                placement="floating"
-              />
-            </FlexBox>
-          </FlexBox>
+          {examples.map(({ title, placement, alignment, ref, links }) => {
+            const onClick = ({ isTipHidden }: { isTipHidden: boolean }) => {
+              if (!isTipHidden) ref.current?.focus();
+            };
 
-          <FlexBox flexDirection="column" gap={8}>
-            <Text fontSize={16} fontWeight="bold">
-              Inline Placement
-            </Text>
-            <FlexBox alignItems="center" gap={8}>
-              <Text>Normal tab flow</Text>
-              <InfoTip
-                {...args}
-                info={
-                  <Text>
-                    <Anchor href="https://example.com">Link A</Anchor>,{' '}
-                    <Anchor href="https://example.com">Link B</Anchor>
-                  </Text>
-                }
-                placement="inline"
-              />
-            </FlexBox>
-          </FlexBox>
+            return (
+              <FlexBox gap={8} key={placement}>
+                <Text fontSize={16} fontWeight="bold">
+                  {title}
+                </Text>
+                <InfoTip
+                  alignment={alignment}
+                  info={
+                    <Text ref={ref} tabIndex={-1}>
+                      {links.map((label, idx) => (
+                        <>
+                          {idx > 0 && ', '}
+                          <Anchor href="https://example.com" key={label}>
+                            {label}
+                          </Anchor>
+                          {idx < links.length - 1 && ' '}
+                        </>
+                      ))}
+                    </Text>
+                  }
+                  placement={placement}
+                  onClick={onClick}
+                />
+              </FlexBox>
+            );
+          })}
         </GridBox>
 
         <Box maxWidth={700}>
           <Text fontSize={14} fontWeight="bold" mb={8}>
             Keyboard Navigation:
           </Text>
-          <Text as="ul" fontSize={14} style={{ paddingLeft: '20px' }}>
+          <Box as="ul" fontSize={14} pl={16}>
             <li>
               <strong>Floating - Tab:</strong> Navigates forward through links,
               then wraps to button (contained)
@@ -199,7 +208,7 @@ export const KeyboardNavigation: Story = {
             <li>
               Escape works even when focus is on links or outside elements
             </li>
-          </Text>
+          </Box>
         </Box>
       </FlexBox>
     );

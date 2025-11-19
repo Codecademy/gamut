@@ -7,6 +7,7 @@ import {
   createLinkSetup,
   getTipContent,
   openTipAndWaitForLink,
+  pressKey,
   setupLinkTestWithPlacement,
   setupMultiLinkTestWithPlacement,
   testEscapeKeyCloseTip,
@@ -19,6 +20,66 @@ const info = 'I am information';
 const renderView = setupRtl(InfoTip, {
   info,
 });
+
+const openTipTabToLinkAndWaitForFocus = async (
+  view: ReturnType<typeof renderView>['view'],
+  linkText: string
+) => {
+  const link = await openTipAndWaitForLink(view, linkText);
+  await act(async () => {
+    await userEvent.tab();
+  });
+  await waitFor(() => {
+    expect(link).toHaveFocus();
+  });
+  return link;
+};
+
+const testModalDoesNotCloseInfoTip = async (
+  view: ReturnType<typeof renderView>['view'],
+  info: string,
+  useModalButton = false
+) => {
+  const button = view.getByLabelText('Show information');
+  await act(async () => {
+    await userEvent.click(button);
+  });
+
+  await waitFor(() => {
+    expect(button).toHaveAttribute('aria-expanded', 'true');
+    const tip = getTipContent(view, info);
+    expect(tip).toBeVisible();
+  });
+
+  const mockModal = document.createElement('div');
+  mockModal.setAttribute('role', 'dialog');
+
+  if (useModalButton) {
+    const modalButton = document.createElement('button');
+    modalButton.textContent = 'Modal button';
+    mockModal.appendChild(modalButton);
+    view.container.appendChild(mockModal);
+    modalButton.focus();
+  } else {
+    document.body.appendChild(mockModal);
+  }
+
+  try {
+    await pressKey('{Escape}');
+
+    await waitFor(() => {
+      const tip = getTipContent(view, info);
+      expect(tip).toBeVisible();
+      expect(button).toHaveAttribute('aria-expanded', 'true');
+    });
+  } finally {
+    if (useModalButton) {
+      view.container.removeChild(mockModal);
+    } else {
+      document.body.removeChild(mockModal);
+    }
+  }
+};
 
 describe('InfoTip', () => {
   describe('inline placement', () => {
@@ -52,9 +113,7 @@ describe('InfoTip', () => {
       const tip = getTipContent(view, info);
       expect(tip).toBeVisible();
 
-      await act(async () => {
-        await userEvent.keyboard('{Escape}');
-      });
+      await pressKey('{Escape}');
 
       await waitFor(() => {
         expect(tip).not.toBeVisible();
@@ -85,11 +144,7 @@ describe('InfoTip', () => {
       const { info, onClick } = createLinkSetup(linkText);
       const { view } = renderView({ info, onClick });
 
-      const link = await openTipAndWaitForLink(view, linkText);
-
-      await waitFor(() => {
-        expect(link).toHaveFocus();
-      });
+      await openTipTabToLinkAndWaitForFocus(view, linkText);
     });
 
     it('closes the tip when Escape is pressed even when focus is on a link inside', async () => {
@@ -97,15 +152,9 @@ describe('InfoTip', () => {
       const { info, onClick } = createLinkSetup(linkText);
       const { view } = renderView({ info, onClick });
 
-      const link = await openTipAndWaitForLink(view, linkText);
+      const link = await openTipTabToLinkAndWaitForFocus(view, linkText);
 
-      await waitFor(() => {
-        expect(link).toHaveFocus();
-      });
-
-      await act(async () => {
-        await userEvent.keyboard('{Escape}');
-      });
+      await pressKey('{Escape}');
 
       await waitFor(() => {
         expect(link).not.toBeVisible();
@@ -119,33 +168,7 @@ describe('InfoTip', () => {
 
     it('does not close the tip when Escape is pressed if a modal is open', async () => {
       const { view } = renderView({});
-
-      const button = view.getByLabelText('Show information');
-      await act(async () => {
-        await userEvent.click(button);
-      });
-
-      const tip = getTipContent(view, info);
-      expect(tip).toBeVisible();
-
-      // Simulate a modal being present in the DOM
-      const mockModal = document.createElement('div');
-      mockModal.setAttribute('role', 'dialog');
-      document.body.appendChild(mockModal);
-
-      try {
-        await act(async () => {
-          await userEvent.keyboard('{Escape}');
-        });
-
-        // Tip should still be visible because modal is present
-        await waitFor(() => {
-          expect(tip).toBeVisible();
-          expect(button).toHaveAttribute('aria-expanded', 'true');
-        });
-      } finally {
-        document.body.removeChild(mockModal);
-      }
+      await testModalDoesNotCloseInfoTip(view, info);
     });
   });
 
@@ -190,24 +213,24 @@ describe('InfoTip', () => {
 
     it('wraps focus to button when tabbing forward from last focusable element', async () => {
       const linkText = 'cool link';
-      const { view, linkRef } = setupLinkTestWithPlacement(
+      const { view, containerRef } = setupLinkTestWithPlacement(
         linkText,
         'floating',
         renderView
       );
 
-      await testFocusWrap(view, linkText, linkRef, 'forward');
+      await testFocusWrap(view, containerRef, 'forward');
     });
 
     it('wraps focus to button when shift+tabbing backward from first focusable element', async () => {
       const linkText = 'cool link';
-      const { view, linkRef } = setupLinkTestWithPlacement(
+      const { view, containerRef } = setupLinkTestWithPlacement(
         linkText,
         'floating',
         renderView
       );
 
-      await testFocusWrap(view, linkText, linkRef, 'backward');
+      await testFocusWrap(view, containerRef, 'backward');
     });
 
     it('allows normal tabbing between focusable elements within popover', async () => {
@@ -235,37 +258,7 @@ describe('InfoTip', () => {
 
     it('does not close the tip when Escape is pressed if a modal is open', async () => {
       const { view } = renderView({ placement: 'floating' });
-
-      const button = view.getByLabelText('Show information');
-      await act(async () => {
-        await userEvent.click(button);
-      });
-
-      await waitFor(() => {
-        expect(button).toHaveAttribute('aria-expanded', 'true');
-        const tip = getTipContent(view, info);
-        expect(tip).toBeVisible();
-      });
-
-      // Simulate a modal being present in the DOM
-      const mockModal = document.createElement('div');
-      mockModal.setAttribute('role', 'dialog');
-      document.body.appendChild(mockModal);
-
-      try {
-        await act(async () => {
-          await userEvent.keyboard('{Escape}');
-        });
-
-        // Tip should still be visible because modal is present
-        await waitFor(() => {
-          const tip = getTipContent(view, info);
-          expect(tip).toBeVisible();
-          expect(button).toHaveAttribute('aria-expanded', 'true');
-        });
-      } finally {
-        document.body.removeChild(mockModal);
-      }
+      await testModalDoesNotCloseInfoTip(view, info, true);
     });
   });
 });

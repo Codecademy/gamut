@@ -12,7 +12,7 @@ type InfoTipView = ReturnType<
   ReturnType<typeof setupRtl<typeof InfoTip>>
 >['view'];
 
-export const createFocusOnClick = (ref: RefObject<HTMLAnchorElement>) => {
+export const createFocusOnClick = (ref: RefObject<HTMLDivElement>) => {
   return ({ isTipHidden }: { isTipHidden: boolean }) => {
     if (!isTipHidden) {
       ref.current?.focus();
@@ -24,17 +24,14 @@ export const createLinkSetup = (
   linkText: string,
   href = 'https://example.com'
 ) => {
-  const linkRef = createRef<HTMLAnchorElement>();
+  const containerRef = createRef<HTMLDivElement>();
   const info = (
-    <Text>
-      Hey! Here is a{' '}
-      <Anchor href={href} ref={linkRef}>
-        {linkText}
-      </Anchor>{' '}
-      that is super important.
+    <Text ref={containerRef} tabIndex={-1}>
+      Hey! Here is a <Anchor href={href}>{linkText}</Anchor> that is super
+      important.
     </Text>
   );
-  return { linkRef, info, onClick: createFocusOnClick(linkRef) };
+  return { containerRef, info, onClick: createFocusOnClick(containerRef) };
 };
 
 export const createMultiLinkSetup = (
@@ -43,16 +40,14 @@ export const createMultiLinkSetup = (
   firstHref = 'https://example.com/1',
   secondHref = 'https://example.com/2'
 ) => {
-  const firstLinkRef = createRef<HTMLAnchorElement>();
+  const containerRef = createRef<HTMLDivElement>();
   const info = (
-    <Text>
-      <Anchor href={firstHref} ref={firstLinkRef}>
-        {firstLinkText}
-      </Anchor>{' '}
-      and <Anchor href={secondHref}>{secondLinkText}</Anchor>
+    <Text ref={containerRef} tabIndex={-1}>
+      <Anchor href={firstHref}>{firstLinkText}</Anchor> and{' '}
+      <Anchor href={secondHref}>{secondLinkText}</Anchor>
     </Text>
   );
-  return { firstLinkRef, info, onClick: createFocusOnClick(firstLinkRef) };
+  return { containerRef, info, onClick: createFocusOnClick(containerRef) };
 };
 
 export const clickButton = async (view: InfoTipView) => {
@@ -74,24 +69,35 @@ export const waitForPopoverLink = async (
   });
 };
 
-export const waitForLinkFocus = async (
-  linkRef: RefObject<HTMLAnchorElement>,
-  link: HTMLElement
+export const pressKey = async (key: string) => {
+  await act(async () => {
+    await userEvent.keyboard(key);
+  });
+};
+
+export const waitForContainerFocus = async (
+  containerRef: RefObject<HTMLDivElement>,
+  container: HTMLElement
 ) => {
   await waitFor(
     () => {
-      expect(linkRef.current).toBeTruthy();
-      expect(linkRef.current).toBe(link);
+      expect(containerRef.current).toBeTruthy();
+      expect(containerRef.current).toBe(container);
+      expect(container).toHaveFocus();
     },
     { timeout: 2000 }
   );
+};
 
-  await waitFor(
-    () => {
-      expect(link).toHaveFocus();
-    },
-    { timeout: 2000 }
-  );
+export const waitForLinkToHaveFocus = async (
+  view: InfoTipView,
+  linkText: string
+) => {
+  const link = view.getByRole('link', { name: linkText });
+  await waitFor(() => {
+    expect(link).toHaveFocus();
+  });
+  return link;
 };
 
 export const openTipAndWaitForLink = async (
@@ -117,9 +123,7 @@ export const testEscapeKeyCloseTip = async (
     expect(elements.length).toBeGreaterThan(0);
   });
 
-  await act(async () => {
-    await userEvent.keyboard('{Escape}');
-  });
+  await pressKey('{Escape}');
 
   await waitFor(() => {
     expect(view.queryByText(contentToCheck)).toBeNull();
@@ -134,18 +138,25 @@ export const testEscapeKeyCloseTip = async (
 
 export const testFocusWrap = async (
   view: InfoTipView,
-  linkText: string,
-  linkRef: RefObject<HTMLAnchorElement>,
+  containerRef: RefObject<HTMLDivElement>,
   direction: 'forward' | 'backward'
 ) => {
   const button = await clickButton(view);
-  const link = await waitForPopoverLink(view, linkText);
-  await waitForLinkFocus(linkRef, link);
 
-  await act(async () => {
-    const key = direction === 'forward' ? '{Tab}' : '{Shift>}{Tab}{/Shift}';
-    await userEvent.keyboard(key);
-  });
+  await waitFor(
+    () => {
+      expect(containerRef.current).toBeTruthy();
+      expect(containerRef.current).toHaveFocus();
+    },
+    { timeout: 2000 }
+  );
+
+  if (direction === 'forward') {
+    await pressKey('{Tab}');
+    await pressKey('{Tab}');
+  } else {
+    await pressKey('{Shift>}{Tab}{/Shift}');
+  }
 
   await waitFor(() => {
     expect(button).toHaveFocus();
@@ -178,19 +189,11 @@ export const testTabbingBetweenLinks = async (
     expect(view.getByText(firstLinkText)).toBeVisible();
   });
 
-  const firstLink = view.getByRole('link', { name: firstLinkText });
-  await waitFor(() => {
-    expect(firstLink).toHaveFocus();
-  });
+  await pressKey('{Tab}');
+  const firstLink = await waitForLinkToHaveFocus(view, firstLinkText);
 
-  await act(async () => {
-    await userEvent.keyboard('{Tab}');
-  });
-
-  const secondLink = view.getByRole('link', { name: secondLinkText });
-  await waitFor(() => {
-    expect(secondLink).toHaveFocus();
-  });
+  await pressKey('{Tab}');
+  await waitForLinkToHaveFocus(view, secondLinkText);
 
   expect(firstLink).not.toHaveFocus();
 
@@ -204,9 +207,9 @@ export const setupLinkTestWithPlacement = (
   placement: TipPlacements,
   renderView: ReturnType<typeof setupRtl<typeof InfoTip>>
 ) => {
-  const { linkRef, info, onClick } = createLinkSetup(linkText);
+  const { containerRef, info, onClick } = createLinkSetup(linkText);
   const { view } = renderView({ placement, info, onClick });
-  return { view, linkRef, info, onClick };
+  return { view, containerRef, info, onClick };
 };
 
 export const setupMultiLinkTestWithPlacement = (
@@ -240,9 +243,7 @@ export const testEscapeKeyWithOutsideFocus = async (
     outsideButton.focus();
     expect(outsideButton).toHaveFocus();
 
-    await act(async () => {
-      await userEvent.keyboard('{Escape}');
-    });
+    await pressKey('{Escape}');
 
     await waitFor(() => {
       expect(button).toHaveAttribute('aria-expanded', 'false');
