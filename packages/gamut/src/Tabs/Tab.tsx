@@ -11,13 +11,12 @@ import { useTab } from './TabProvider';
 
 interface TabBaseProps extends TabButtonProps, ReactAriaTabProps {}
 
-export type TabProps = TabBaseProps &
-  Omit<ReactAriaTabProps, 'id'> & {
-    /**
-     * the id matches up the tab and tab panel
-     */
-    id: string;
-  };
+export type TabProps = Omit<TabBaseProps, 'id'> & {
+  /**
+   * the id matches up the tab and tab panel
+   */
+  id: string;
+};
 
 const TabBase = styled(ReactAriaTab)<TabProps>(
   tabVariants,
