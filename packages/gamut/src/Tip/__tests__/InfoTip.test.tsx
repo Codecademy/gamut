@@ -16,6 +16,8 @@ import {
   testTabbingBetweenLinks,
 } from './helpers';
 
+// GMT-216
+
 const info = 'I am information';
 const renderView = setupRtl(InfoTip, {
   info,
