@@ -57,16 +57,18 @@ This `floating` variant should only be used as needed.
 
 ### InfoTips with links or buttons
 
-Links or buttons within InfoTips should be used sparingly and only when the information is critical to the user's understanding of the content. If an infotip _absolutely requires_ a link or button, it needs to provide a programmatic focus by way of the `onClick` prop. The `onClick` prop accepts a function that calls the object `{isTipHidden}` and should focus when the tip is visible.
+Links or buttons within InfoTips should be used sparingly and only when the information is critical to the user's understanding of the content. When an InfoTip opens, focus automatically moves to the tip content, allowing keyboard users to immediately interact with any links or buttons inside.
 
 <Canvas of={InfoTipStories.WithLinksOrButtons} />
 
-### Floating Placement
+### Automatic Focus Management
 
-When using `placement="floating"`, InfoTips implement **forward focus wrapping** to keep users within the tip context:
+InfoTips automatically manage focus for optimal keyboard accessibility:
 
-- **Tab**: Navigate forward through focusable elements (links, buttons) inside the tip. When reaching the last element, wraps back to the InfoTip button
-- **Shift+Tab**: Navigate backward naturally - from the button, exits to the previous page element (no backward trap)
+- **Opening**: Focus automatically moves to the tip content when opened
+- **Tab (Floating)**: Navigate forward through focusable elements (links, buttons) inside the tip. When reaching the last element, wraps back to the InfoTip button
+- **Shift+Tab (Floating)**: Navigate backward naturally - from the button, exits to the previous page element (no backward trap)
+- **Tab/Shift+Tab (Inline)**: Follows normal document flow
 - **Escape**: Closes the tip and returns focus to the InfoTip button
 
 <Canvas of={InfoTipStories.KeyboardNavigation} />

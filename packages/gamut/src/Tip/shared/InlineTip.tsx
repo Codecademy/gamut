@@ -23,6 +23,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   loading,
   narrow,
   overline,
+  contentRef,
   truncateLines,
   type,
   username,
@@ -65,7 +66,9 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
         color="currentColor"
         horizNarrow={narrow && isHorizontalCenter}
         id={id}
+        ref={contentRef}
         role={type === 'tool' ? 'tooltip' : undefined}
+        tabIndex={type === 'info' ? -1 : undefined}
         width={narrow && !isHorizontalCenter ? narrowWidth : 'max-content'}
         zIndex="auto"
       >

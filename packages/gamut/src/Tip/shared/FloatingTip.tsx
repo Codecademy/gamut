@@ -31,7 +31,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   loading,
   narrow,
   overline,
-  popoverContentRef,
+  contentRef,
   truncateLines,
   type,
   username,
@@ -167,7 +167,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         horizontalOffset={offset}
         isOpen={isPopoverOpen}
         outline
-        popoverContainerRef={popoverContentRef}
+        popoverContainerRef={contentRef}
         skipFocusTrap
         targetRef={ref}
         variant="secondary"

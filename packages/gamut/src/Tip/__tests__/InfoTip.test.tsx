@@ -143,16 +143,16 @@ describe('InfoTip', () => {
 
     it('allows focus to move to links within the tip', async () => {
       const linkText = 'cool link';
-      const { info, onClick } = createLinkSetup(linkText);
-      const { view } = renderView({ info, onClick });
+      const { info } = createLinkSetup(linkText);
+      const { view } = renderView({ info });
 
       await openTipTabToLinkAndWaitForFocus(view, linkText);
     });
 
     it('closes the tip when Escape is pressed even when focus is on a link inside', async () => {
       const linkText = 'cool link';
-      const { info, onClick } = createLinkSetup(linkText);
-      const { view } = renderView({ info, onClick });
+      const { info } = createLinkSetup(linkText);
+      const { view } = renderView({ info });
 
       const link = await openTipTabToLinkAndWaitForFocus(view, linkText);
 
@@ -186,8 +186,9 @@ describe('InfoTip', () => {
         await userEvent.click(view.getByRole('button'));
       });
 
-      // The first get by text result is the a11y text, the second is the actual tip text
-      expect(view.queryAllByText(info).length).toBe(2);
+      await waitFor(() => {
+        expect(view.getByText(info)).toBeVisible();
+      });
     });
 
     it('closes the tip when Escape key is pressed and returns focus to the button', async () => {
@@ -200,14 +201,13 @@ describe('InfoTip', () => {
 
     it('closes the tip with links when Escape key is pressed and returns focus to the button', async () => {
       const linkText = 'cool link';
-      const { info, onClick } = createLinkSetup(
+      const { info } = createLinkSetup(
         linkText,
         'https://giphy.com/search/nichijou'
       );
       const { view } = renderView({
         placement: 'floating',
         info,
-        onClick,
       });
 
       await testEscapeKeyCloseTip(view, linkText, true);

@@ -9,7 +9,7 @@ import {
   Text,
 } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 const meta: Meta<typeof InfoTip> = {
   component: InfoTip,
@@ -77,19 +77,13 @@ export const WithLinksOrButtons: Story = {
     placement: 'floating',
   },
   render: function WithLinksOrButtons(args) {
-    const ref = useRef<HTMLDivElement>(null);
-
-    const onClick = ({ isTipHidden }: { isTipHidden: boolean }) => {
-      if (!isTipHidden) ref.current?.focus();
-    };
-
     return (
       <FlexBox center py={64}>
         <Text mr={4}>This text is in a small space and needs info </Text>{' '}
         <InfoTip
           {...args}
           info={
-            <Text ref={ref} tabIndex={-1}>
+            <Text>
               Hey! Here is a{' '}
               <Anchor href="https://giphy.com/search/nichijou">
                 cool link
@@ -101,7 +95,6 @@ export const WithLinksOrButtons: Story = {
               that is also super important.
             </Text>
           }
-          onClick={onClick}
         />
       </FlexBox>
     );
@@ -129,21 +122,16 @@ export const ZIndex: Story = {
 
 export const KeyboardNavigation: Story = {
   render: function KeyboardNavigation() {
-    const floatingRef = useRef<HTMLDivElement>(null);
-    const inlineRef = useRef<HTMLDivElement>(null);
-
     const examples = [
       {
         title: 'Floating Placement',
         placement: 'floating' as const,
-        ref: floatingRef,
         links: ['Link 1', 'Link 2', 'Link 3'],
       },
       {
         title: 'Inline Placement',
         placement: 'inline' as const,
         alignment: 'bottom-right' as const,
-        ref: inlineRef,
         links: ['Link A', 'Link B'],
       },
     ];
@@ -151,11 +139,7 @@ export const KeyboardNavigation: Story = {
     return (
       <FlexBox center flexDirection="column" gap={24} py={64}>
         <GridBox gap={16} gridTemplateColumns="1fr 1fr">
-          {examples.map(({ title, placement, alignment, ref, links }) => {
-            const onClick = ({ isTipHidden }: { isTipHidden: boolean }) => {
-              if (!isTipHidden) ref.current?.focus();
-            };
-
+          {examples.map(({ title, placement, alignment, links }) => {
             return (
               <FlexBox gap={8} key={placement}>
                 <Text fontSize={16} fontWeight="bold">
@@ -164,7 +148,7 @@ export const KeyboardNavigation: Story = {
                 <InfoTip
                   alignment={alignment}
                   info={
-                    <Text ref={ref} tabIndex={-1}>
+                    <Text>
                       {links.map((label, idx) => (
                         <>
                           {idx > 0 && ', '}
@@ -177,7 +161,6 @@ export const KeyboardNavigation: Story = {
                     </Text>
                   }
                   placement={placement}
-                  onClick={onClick}
                 />
               </FlexBox>
             );
@@ -189,6 +172,10 @@ export const KeyboardNavigation: Story = {
             Keyboard Navigation:
           </Text>
           <Box as="ul" fontSize={14} pl={16}>
+            <li>
+              <strong>Opening:</strong> Focus automatically moves to the tip
+              content when opened
+            </li>
             <li>
               <strong>Floating - Tab:</strong> Navigates forward through links,
               then wraps to button (contained)

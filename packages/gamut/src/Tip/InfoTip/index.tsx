@@ -1,11 +1,4 @@
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
@@ -19,13 +12,8 @@ import { InfoTipButton } from './InfoTipButton';
 export type InfoTipProps = TipBaseProps & {
   alignment?: TipBaseAlignment;
   emphasis?: 'low' | 'high';
-  /**
-   * Called when the info tip is clicked - intended to be used for programmatic focus in the case of links within the tip.
-   */
-  onClick?: (arg0: { isTipHidden: boolean }) => void;
 };
 
-const ARIA_HIDDEN_DELAY_MS = 1000;
 const FOCUSABLE_SELECTOR =
   'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
 const MODAL_SELECTOR = 'dialog[open],[role="dialog"],[role="alertdialog"]';
@@ -34,92 +22,34 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   alignment = 'top-right',
   emphasis = 'low',
   info,
-  onClick,
   placement = tipDefaultProps.placement,
   ...rest
 }) => {
   const isFloating = placement === 'floating';
 
   const [isTipHidden, setHideTip] = useState(true);
-  const [isAriaHidden, setIsAriaHidden] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const popoverContentNodeRef = useRef<HTMLDivElement | null>(null);
-
-  const ariaHiddenTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const contentNodeRef = useRef<HTMLDivElement | null>(null);
 
   const getFocusableElements = useCallback(() => {
-    const popoverContent = popoverContentNodeRef.current;
-    if (!popoverContent) return [];
+    const content = contentNodeRef.current;
+    if (!content) return [];
 
     return Array.from(
-      popoverContent.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
+      content.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
     );
   }, []);
 
-  const clearAndSetTimeout = useCallback(
-    (
-      timeoutRef: React.MutableRefObject<NodeJS.Timeout | null>,
-      callback: () => void,
-      delay: number
-    ) => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-      timeoutRef.current = setTimeout(() => {
-        callback();
-        timeoutRef.current = null;
-      }, delay);
-    },
-    []
-  );
-
-  const popoverContentRef = useCallback(
-    (node: HTMLDivElement | null) => {
-      popoverContentNodeRef.current = node;
-
-      // We call onClick when the popover is mounted to make sure the refs are available
-      if (node && onClick && !isTipHidden && isFloating) {
-        onClick({ isTipHidden: false });
-      }
-    },
-    [onClick, isTipHidden, isFloating]
-  );
+  const contentRef = useCallback((node: HTMLDivElement | null) => {
+    contentNodeRef.current = node;
+  }, []);
 
   useEffect(() => {
     setLoaded(true);
-
-    const ariaHiddenTimeout = ariaHiddenTimeoutRef.current;
-
-    return () => {
-      if (ariaHiddenTimeout) clearTimeout(ariaHiddenTimeout);
-    };
   }, []);
-
-  const setTipIsHidden = useCallback(
-    (nextTipState: boolean) => {
-      setHideTip(nextTipState);
-
-      if (!nextTipState) {
-        if (!isFloating) {
-          clearAndSetTimeout(
-            ariaHiddenTimeoutRef,
-            () => setIsAriaHidden(true),
-            ARIA_HIDDEN_DELAY_MS
-          );
-        }
-      } else {
-        if (isAriaHidden) setIsAriaHidden(false);
-        if (ariaHiddenTimeoutRef.current) {
-          clearTimeout(ariaHiddenTimeoutRef.current);
-          ariaHiddenTimeoutRef.current = null;
-        }
-      }
-    },
-    [isAriaHidden, isFloating, clearAndSetTimeout]
-  );
 
   const handleOutsideClick = useCallback(
     (e: MouseEvent) => {
@@ -128,23 +58,15 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         wrapper &&
         (e.target instanceof HTMLElement ? !wrapper.contains(e.target) : true)
       ) {
-        setTipIsHidden(true);
+        setHideTip(true);
       }
     },
-    [setTipIsHidden]
+    []
   );
 
   const clickHandler = useCallback(() => {
-    const currentTipState = !isTipHidden;
-    setTipIsHidden(currentTipState);
-  }, [isTipHidden, setTipIsHidden]);
-
-  useLayoutEffect(() => {
-    // for inline tips the onClick runs after DOM updates to make sure refs are available
-    if (!isFloating && !isTipHidden && onClick) {
-      onClick({ isTipHidden: false });
-    }
-  }, [isTipHidden, isFloating, onClick]);
+    setHideTip(!isTipHidden);
+  }, [isTipHidden]);
 
   useEffect(() => {
     if (isTipHidden) return;
@@ -163,7 +85,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       if (hasModal) return;
 
       e.preventDefault();
-      setTipIsHidden(true);
+      setHideTip(true);
       buttonRef.current?.focus();
     };
 
@@ -186,25 +108,35 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         }
       };
 
-      let popoverContent: HTMLDivElement | null = null;
+      let content: HTMLDivElement | null = null;
       const timeoutId = setTimeout(() => {
-        popoverContent = popoverContentNodeRef.current;
-        if (popoverContent) {
-          popoverContent.addEventListener('keydown', handleTabKeyInPopover);
+        content = contentNodeRef.current;
+        if (content) {
+          content.addEventListener('keydown', handleTabKeyInPopover);
         }
       }, 0);
 
       return () => {
         clearTimeout(timeoutId);
-        if (popoverContent) {
-          popoverContent.removeEventListener('keydown', handleTabKeyInPopover);
+        if (content) {
+          content.removeEventListener('keydown', handleTabKeyInPopover);
         }
         document.removeEventListener('keydown', handleGlobalEscapeKey);
       };
     }
 
     return () => document.removeEventListener('keydown', handleGlobalEscapeKey);
-  }, [isTipHidden, isFloating, setTipIsHidden, getFocusableElements]);
+  }, [isTipHidden, isFloating, getFocusableElements]);
+
+  useEffect(() => {
+    if (isTipHidden) return;
+
+    const timeoutId = setTimeout(() => {
+      contentNodeRef.current?.focus();
+    }, 0);
+
+    return () => clearTimeout(timeoutId);
+  }, [isTipHidden]);
 
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
 
@@ -213,25 +145,13 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       alignment,
       info,
       isTipHidden,
+      contentRef,
       wrapperRef,
-      ...(isFloating && { popoverContentRef }),
       ...rest,
     }),
-    [
-      alignment,
-      info,
-      isTipHidden,
-      wrapperRef,
-      isFloating,
-      popoverContentRef,
-      rest,
-    ]
+    [alignment, info, isTipHidden, contentRef, wrapperRef, rest]
   );
 
-  /*
-   * For floating placement, screenreader text comes before button to maintain
-   * correct DOM order despite Portal rendering. See GM-797 for planned fix.
-   */
   return (
     <Tip {...tipProps} type="info">
       <InfoTipButton

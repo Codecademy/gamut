@@ -12,14 +12,6 @@ type InfoTipView = ReturnType<
   ReturnType<typeof setupRtl<typeof InfoTip>>
 >['view'];
 
-export const createFocusOnClick = (ref: RefObject<HTMLDivElement>) => {
-  return ({ isTipHidden }: { isTipHidden: boolean }) => {
-    if (!isTipHidden) {
-      ref.current?.focus();
-    }
-  };
-};
-
 export const createLinkSetup = (
   linkText: string,
   href = 'https://example.com'
@@ -31,7 +23,7 @@ export const createLinkSetup = (
       important.
     </Text>
   );
-  return { containerRef, info, onClick: createFocusOnClick(containerRef) };
+  return { containerRef, info };
 };
 
 export const createMultiLinkSetup = (
@@ -47,7 +39,7 @@ export const createMultiLinkSetup = (
       <Anchor href={secondHref}>{secondLinkText}</Anchor>
     </Text>
   );
-  return { containerRef, info, onClick: createFocusOnClick(containerRef) };
+  return { containerRef, info };
 };
 
 export const clickButton = async (view: InfoTipView) => {
@@ -58,35 +50,10 @@ export const clickButton = async (view: InfoTipView) => {
   return button;
 };
 
-export const waitForPopoverLink = async (
-  view: InfoTipView,
-  linkText: string
-) => {
-  return await waitFor(() => {
-    const links = view.getAllByRole('link', { name: linkText });
-    expect(links.length).toBe(1);
-    return links[0];
-  });
-};
-
 export const pressKey = async (key: string) => {
   await act(async () => {
     await userEvent.keyboard(key);
   });
-};
-
-export const waitForContainerFocus = async (
-  containerRef: RefObject<HTMLDivElement>,
-  container: HTMLElement
-) => {
-  await waitFor(
-    () => {
-      expect(containerRef.current).toBeTruthy();
-      expect(containerRef.current).toBe(container);
-      expect(container).toHaveFocus();
-    },
-    { timeout: 2000 }
-  );
 };
 
 export const waitForLinkToHaveFocus = async (
@@ -119,14 +86,15 @@ export const testEscapeKeyCloseTip = async (
   const button = await clickButton(view);
 
   await waitFor(() => {
-    const elements = view.getAllByText(contentToCheck);
-    expect(elements.length).toBeGreaterThan(0);
+    expect(view.getByText(contentToCheck)).toBeVisible();
+    expect(button).toHaveAttribute('aria-expanded', 'true');
   });
 
   await pressKey('{Escape}');
 
   await waitFor(() => {
     expect(view.queryByText(contentToCheck)).toBeNull();
+    expect(button).toHaveAttribute('aria-expanded', 'false');
   });
 
   if (shouldReturnFocus) {
@@ -143,10 +111,11 @@ export const testFocusWrap = async (
 ) => {
   const button = await clickButton(view);
 
+  // Wait for the popover container to have focus (automatic focus behavior)
   await waitFor(
     () => {
-      expect(containerRef.current).toBeTruthy();
-      expect(containerRef.current).toHaveFocus();
+      const popover = view.getByTestId('popover-content-container');
+      expect(popover).toHaveFocus();
     },
     { timeout: 2000 }
   );
@@ -168,13 +137,8 @@ export const getTipContent = (
   text: string,
   useQuery = false
 ) => {
-  const getAllMethod = useQuery ? 'queryAllByText' : 'getAllByText';
-  const elements = view[getAllMethod](text);
-  // Find the tip body (not the screenreader text with aria-live="assertive")
-  return (
-    elements.find((el) => el.getAttribute('aria-live') !== 'assertive') ||
-    elements[0]
-  );
+  const getMethod = useQuery ? 'queryByText' : 'getByText';
+  return view[getMethod](text);
 };
 
 export const testTabbingBetweenLinks = async (
@@ -186,7 +150,8 @@ export const testTabbingBetweenLinks = async (
   await clickButton(view);
 
   await waitFor(() => {
-    expect(view.getByText(firstLinkText)).toBeVisible();
+    const button = view.getByLabelText('Show information');
+    expect(button).toHaveAttribute('aria-expanded', 'true');
   });
 
   await pressKey('{Tab}');
@@ -207,9 +172,9 @@ export const setupLinkTestWithPlacement = (
   placement: TipPlacements,
   renderView: ReturnType<typeof setupRtl<typeof InfoTip>>
 ) => {
-  const { containerRef, info, onClick } = createLinkSetup(linkText);
-  const { view } = renderView({ placement, info, onClick });
-  return { view, containerRef, info, onClick };
+  const { containerRef, info } = createLinkSetup(linkText);
+  const { view } = renderView({ placement, info });
+  return { view, containerRef, info };
 };
 
 export const setupMultiLinkTestWithPlacement = (
@@ -218,9 +183,9 @@ export const setupMultiLinkTestWithPlacement = (
   placement: TipPlacements,
   renderView: ReturnType<typeof setupRtl<typeof InfoTip>>
 ) => {
-  const { info, onClick } = createMultiLinkSetup(firstLinkText, secondLinkText);
-  const { view } = renderView({ placement, info, onClick });
-  return { view, info, onClick };
+  const { info } = createMultiLinkSetup(firstLinkText, secondLinkText);
+  const { view } = renderView({ placement, info });
+  return { view, info };
 };
 
 export const testEscapeKeyWithOutsideFocus = async (
@@ -234,10 +199,13 @@ export const testEscapeKeyWithOutsideFocus = async (
   try {
     const button = await clickButton(view);
 
+    let isFloating = false;
     await waitFor(() => {
       expect(button).toHaveAttribute('aria-expanded', 'true');
       const tip = getTipContent(view, contentToCheck);
       expect(tip).toBeVisible();
+      // Check if this is a floating tip by looking for the popover
+      isFloating = view.queryByTestId('popover-content-container') !== null;
     });
 
     outsideButton.focus();
@@ -247,8 +215,13 @@ export const testEscapeKeyWithOutsideFocus = async (
 
     await waitFor(() => {
       expect(button).toHaveAttribute('aria-expanded', 'false');
-      const tip = getTipContent(view, contentToCheck, true);
-      expect(tip).not.toBeVisible();
+      // For floating tips, check popover is gone; for inline tips, check tip body is not visible
+      if (isFloating) {
+        expect(view.queryByTestId('popover-content-container')).toBeNull();
+      } else {
+        const tip = getTipContent(view, contentToCheck, true);
+        expect(tip).not.toBeVisible();
+      }
     });
   } finally {
     document.body.removeChild(outsideButton);
