@@ -7,7 +7,6 @@ import {
   useState,
 } from 'react';
 
-import { extractTextContent } from '../../utils/react';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
@@ -15,7 +14,6 @@ import {
   TipBaseProps,
   tipDefaultProps,
 } from '../shared/types';
-import { ScreenreaderNavigableText } from './elements';
 import { InfoTipButton } from './InfoTipButton';
 
 export type InfoTipProps = TipBaseProps & {
@@ -44,7 +42,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   const [isTipHidden, setHideTip] = useState(true);
   const [isAriaHidden, setIsAriaHidden] = useState(false);
-  const [shouldAnnounce, setShouldAnnounce] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -52,7 +49,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const popoverContentNodeRef = useRef<HTMLDivElement | null>(null);
 
   const ariaHiddenTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const announceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const getFocusableElements = useCallback(() => {
     const popoverContent = popoverContentNodeRef.current;
@@ -96,11 +92,9 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     setLoaded(true);
 
     const ariaHiddenTimeout = ariaHiddenTimeoutRef.current;
-    const announceTimeout = announceTimeoutRef.current;
 
     return () => {
       if (ariaHiddenTimeout) clearTimeout(ariaHiddenTimeout);
-      if (announceTimeout) clearTimeout(announceTimeout);
     };
   }, []);
 
@@ -118,7 +112,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         }
       } else {
         if (isAriaHidden) setIsAriaHidden(false);
-        setShouldAnnounce(false);
         if (ariaHiddenTimeoutRef.current) {
           clearTimeout(ariaHiddenTimeoutRef.current);
           ariaHiddenTimeoutRef.current = null;
@@ -144,11 +137,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const clickHandler = useCallback(() => {
     const currentTipState = !isTipHidden;
     setTipIsHidden(currentTipState);
-
-    if (!currentTipState) {
-      clearAndSetTimeout(announceTimeoutRef, () => setShouldAnnounce(true), 0);
-    }
-  }, [isTipHidden, setTipIsHidden, clearAndSetTimeout]);
+  }, [isTipHidden, setTipIsHidden]);
 
   useLayoutEffect(() => {
     // for inline tips the onClick runs after DOM updates to make sure refs are available
@@ -239,26 +228,12 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     ]
   );
 
-  const extractedTextContent = useMemo(() => extractTextContent(info), [info]);
-
-  const screenreaderInfo =
-    shouldAnnounce && !isTipHidden ? extractedTextContent : `\xa0`;
-
-  const screenreaderText = useMemo(
-    () => (
-      <ScreenreaderNavigableText
-        aria-hidden={isAriaHidden}
-        aria-live="assertive"
-        screenreader
-      >
-        {screenreaderInfo}
-      </ScreenreaderNavigableText>
-    ),
-    [isAriaHidden, screenreaderInfo]
-  );
-
-  const button = useMemo(
-    () => (
+  /*
+   * For floating placement, screenreader text comes before button to maintain
+   * correct DOM order despite Portal rendering. See GM-797 for planned fix.
+   */
+  return (
+    <Tip {...tipProps} type="info">
       <InfoTipButton
         active={!isTipHidden}
         aria-expanded={!isTipHidden}
@@ -266,27 +241,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         ref={buttonRef}
         onClick={clickHandler}
       />
-    ),
-    [isTipHidden, emphasis, clickHandler]
-  );
-
-  /*
-   * For floating placement, screenreader text comes before button to maintain
-   * correct DOM order despite Portal rendering. See GM-797 for planned fix.
-   */
-  return (
-    <Tip {...tipProps} type="info">
-      {isFloating && alignment.includes('top') ? (
-        <>
-          {screenreaderText}
-          {button}
-        </>
-      ) : (
-        <>
-          {button}
-          {screenreaderText}
-        </>
-      )}
     </Tip>
   );
 };
