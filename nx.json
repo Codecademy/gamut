@@ -37,7 +37,8 @@
       "inputs": ["production", "^production", "babelConfig", "ci"]
     },
     "verify": {
-      "cache": true
+      "cache": true,
+      "dependsOn": ["^build"]
     },
     "@nx/jest:jest": {
       "dependsOn": ["^build"],

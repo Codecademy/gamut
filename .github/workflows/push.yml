@@ -4,10 +4,9 @@ jobs:
   format:
     runs-on: ubuntu-latest
     steps:
-      - uses: Codecademy/run-on-yarn@v3.0.0
-        with:
-          node-version: 22
-          command: format:verify
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/yarn
+      - run: yarn format:verify
 
   lint:
     strategy:
@@ -16,10 +15,10 @@ jobs:
         command: ['lint', 'verify']
     runs-on: ubuntu-latest
     steps:
-      - uses: Codecademy/run-on-yarn@v3.0.0
-        with:
-          node-version: 22
-          command: build
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/yarn
+      - run: npx nx build eslint-plugin-gamut
+        if: ${{ matrix.command == 'lint' }}
       - run: yarn ${{ matrix.command }}
 
 on:
