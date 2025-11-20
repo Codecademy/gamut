@@ -46,9 +46,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
       height={inheritDims ? 'inherit' : undefined}
       ref={wrapperRef}
       width={inheritDims ? 'inherit' : undefined}
-      onKeyDown={
-        escapeKeyPressHandler ? (e) => escapeKeyPressHandler(e) : undefined
-      }
+      onKeyDown={escapeKeyPressHandler}
     >
       {children}
     </TargetContainer>

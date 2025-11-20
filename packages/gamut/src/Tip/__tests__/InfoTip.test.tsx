@@ -1,9 +1,10 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { act, waitFor } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { InfoTip } from '../InfoTip';
 import {
+  clickButton,
   createLinkSetup,
   getTipContent,
   openTipAndWaitForLink,
@@ -14,9 +15,8 @@ import {
   testEscapeKeyWithOutsideFocus,
   testFocusWrap,
   testTabbingBetweenLinks,
+  testTabFromPopoverWithNoInteractiveElements,
 } from './helpers';
-
-// GMT-216
 
 const info = 'I am information';
 const renderView = setupRtl(InfoTip, {
@@ -27,10 +27,9 @@ const openTipTabToLinkAndWaitForFocus = async (
   view: ReturnType<typeof renderView>['view'],
   linkText: string
 ) => {
+  const user = userEvent.setup();
   const link = await openTipAndWaitForLink(view, linkText);
-  await act(async () => {
-    await userEvent.tab();
-  });
+  await user.tab();
   await waitFor(() => {
     expect(link).toHaveFocus();
   });
@@ -42,10 +41,7 @@ const testModalDoesNotCloseInfoTip = async (
   info: string,
   useModalButton = false
 ) => {
-  const button = view.getByLabelText('Show information');
-  await act(async () => {
-    await userEvent.click(button);
-  });
+  const button = await clickButton(view);
 
   await waitFor(() => {
     expect(button).toHaveAttribute('aria-expanded', 'true');
@@ -86,15 +82,14 @@ const testModalDoesNotCloseInfoTip = async (
 describe('InfoTip', () => {
   describe('inline placement', () => {
     it('shows the tip when it is clicked on', async () => {
+      const user = userEvent.setup();
       const { view } = renderView({});
 
       const tip = view.getByText(info);
 
       expect(tip).not.toBeVisible();
 
-      await act(async () => {
-        await userEvent.click(view.getByRole('button'));
-      });
+      await user.click(view.getByRole('button'));
 
       expect(tip.parentElement).not.toHaveStyle({
         visibility: 'hidden',
@@ -107,10 +102,7 @@ describe('InfoTip', () => {
     it('closes the tip when Escape key is pressed and returns focus to button', async () => {
       const { view } = renderView({});
 
-      const button = view.getByLabelText('Show information');
-      await act(async () => {
-        await userEvent.click(button);
-      });
+      const button = await clickButton(view);
 
       const tip = getTipContent(view, info);
       expect(tip).toBeVisible();
@@ -165,7 +157,7 @@ describe('InfoTip', () => {
 
     it('closes the tip when Escape is pressed even when focus is on an outside element', async () => {
       const { view } = renderView({});
-      await testEscapeKeyWithOutsideFocus(view, info);
+      await testEscapeKeyWithOutsideFocus(view, info, false);
     });
 
     it('does not close the tip when Escape is pressed if a modal is open', async () => {
@@ -176,15 +168,14 @@ describe('InfoTip', () => {
 
   describe('floating placement', () => {
     it('shows the tip when it is clicked on', async () => {
+      const user = userEvent.setup();
       const { view } = renderView({
         placement: 'floating',
       });
 
       expect(view.queryByText(info)).toBeNull();
 
-      await act(async () => {
-        await userEvent.click(view.getByRole('button'));
-      });
+      await user.click(view.getByRole('button'));
 
       await waitFor(() => {
         expect(view.getByText(info)).toBeVisible();
@@ -255,12 +246,39 @@ describe('InfoTip', () => {
 
     it('closes the tip when Escape is pressed even when focus is on an outside element', async () => {
       const { view } = renderView({ placement: 'floating' });
-      await testEscapeKeyWithOutsideFocus(view, info);
+      await testEscapeKeyWithOutsideFocus(view, info, true);
     });
 
     it('does not close the tip when Escape is pressed if a modal is open', async () => {
       const { view } = renderView({ placement: 'floating' });
       await testModalDoesNotCloseInfoTip(view, info, true);
+    });
+
+    it('wraps focus to button when tabbing from popover with no interactive elements', async () => {
+      const { view } = renderView({ placement: 'floating' });
+      await testTabFromPopoverWithNoInteractiveElements(view);
+    });
+  });
+
+  describe('ariaLabel', () => {
+    it('applies default aria-label when ariaLabel is not provided', () => {
+      const { view } = renderView({});
+      view.getByLabelText('Show information');
+    });
+
+    it('applies custom aria-label when provided', () => {
+      const { view } = renderView({
+        ariaLabel: 'Additional details',
+      });
+      view.getByLabelText('Additional details');
+    });
+
+    it('works with floating placement', () => {
+      const { view } = renderView({
+        placement: 'floating',
+        ariaLabel: 'Help text',
+      });
+      view.getByLabelText('Help text');
     });
   });
 });

@@ -1,5 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { act, waitFor } from '@testing-library/react';
+import { waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createRef, RefObject } from 'react';
 
@@ -43,17 +43,15 @@ export const createMultiLinkSetup = (
 };
 
 export const clickButton = async (view: InfoTipView) => {
-  const button = view.getByLabelText('Show information');
-  await act(async () => {
-    await userEvent.click(button);
-  });
+  const user = userEvent.setup();
+  const button = view.getByRole('button');
+  await user.click(button);
   return button;
 };
 
 export const pressKey = async (key: string) => {
-  await act(async () => {
-    await userEvent.keyboard(key);
-  });
+  const user = userEvent.setup();
+  await user.keyboard(key);
 };
 
 export const waitForLinkToHaveFocus = async (
@@ -132,6 +130,26 @@ export const testFocusWrap = async (
   });
 };
 
+export const testTabFromPopoverWithNoInteractiveElements = async (
+  view: InfoTipView
+) => {
+  const button = await clickButton(view);
+
+  await waitFor(
+    () => {
+      const popover = view.getByTestId('popover-content-container');
+      expect(popover).toHaveFocus();
+    },
+    { timeout: 2000 }
+  );
+
+  await pressKey('{Tab}');
+
+  await waitFor(() => {
+    expect(button).toHaveFocus();
+  });
+};
+
 export const getTipContent = (
   view: InfoTipView,
   text: string,
@@ -147,10 +165,9 @@ export const testTabbingBetweenLinks = async (
   secondLinkText: string,
   placement: TipPlacements
 ) => {
-  await clickButton(view);
+  const button = await clickButton(view);
 
   await waitFor(() => {
-    const button = view.getByLabelText('Show information');
     expect(button).toHaveAttribute('aria-expanded', 'true');
   });
 
@@ -163,7 +180,7 @@ export const testTabbingBetweenLinks = async (
   expect(firstLink).not.toHaveFocus();
 
   if (placement === 'floating') {
-    expect(view.getByLabelText('Show information')).not.toHaveFocus();
+    expect(button).not.toHaveFocus();
   }
 };
 
@@ -190,22 +207,23 @@ export const setupMultiLinkTestWithPlacement = (
 
 export const testEscapeKeyWithOutsideFocus = async (
   view: InfoTipView,
-  contentToCheck: string
+  contentToCheck: string,
+  isFloating: boolean
 ) => {
+  const button = view.getByRole('button');
+
   const outsideButton = document.createElement('button');
   outsideButton.textContent = 'Outside Button';
   document.body.appendChild(outsideButton);
 
   try {
-    const button = await clickButton(view);
+    const user = userEvent.setup();
+    await user.click(button);
 
-    let isFloating = false;
     await waitFor(() => {
       expect(button).toHaveAttribute('aria-expanded', 'true');
       const tip = getTipContent(view, contentToCheck);
       expect(tip).toBeVisible();
-      // Check if this is a floating tip by looking for the popover
-      isFloating = view.queryByTestId('popover-content-container') !== null;
     });
 
     outsideButton.focus();

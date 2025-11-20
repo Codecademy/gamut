@@ -72,6 +72,18 @@ export const Placement: Story = {
   ),
 };
 
+export const AriaLabel: Story = {
+  render: (args) => (
+    <FlexBox center width={1}>
+      <InfoTip
+        {...args}
+        ariaLabel="Course details"
+        info="This button has a custom accessible label"
+      />
+    </FlexBox>
+  ),
+};
+
 export const WithLinksOrButtons: Story = {
   args: {
     placement: 'floating',

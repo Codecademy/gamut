@@ -11,6 +11,7 @@ import { InfoTipButton } from './InfoTipButton';
 
 export type InfoTipProps = TipBaseProps & {
   alignment?: TipBaseAlignment;
+  ariaLabel?: string;
   emphasis?: 'low' | 'high';
 };
 
@@ -20,6 +21,7 @@ const MODAL_SELECTOR = 'dialog[open],[role="dialog"],[role="alertdialog"]';
 
 export const InfoTip: React.FC<InfoTipProps> = ({
   alignment = 'top-right',
+  ariaLabel,
   emphasis = 'low',
   info,
   placement = tipDefaultProps.placement,
@@ -51,22 +53,19 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     setLoaded(true);
   }, []);
 
-  const handleOutsideClick = useCallback(
-    (e: MouseEvent) => {
-      const wrapper = wrapperRef.current;
-      if (
-        wrapper &&
-        (e.target instanceof HTMLElement ? !wrapper.contains(e.target) : true)
-      ) {
-        setHideTip(true);
-      }
-    },
-    []
-  );
+  const handleOutsideClick = useCallback((e: MouseEvent) => {
+    const wrapper = wrapperRef.current;
+    if (
+      wrapper &&
+      (e.target instanceof HTMLElement ? !wrapper.contains(e.target) : true)
+    ) {
+      setHideTip(true);
+    }
+  }, []);
 
   const clickHandler = useCallback(() => {
-    setHideTip(!isTipHidden);
-  }, [isTipHidden]);
+    setHideTip((prev) => !prev);
+  }, []);
 
   useEffect(() => {
     if (isTipHidden) return;
@@ -96,10 +95,18 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         if (event.key !== 'Tab' || event.shiftKey) return;
 
         const focusableElements = getFocusableElements();
-        if (focusableElements.length === 0) return;
+        const { activeElement } = document;
+
+        // If no focusable elements and popover itself has focus, wrap to button
+        if (focusableElements.length === 0) {
+          if (activeElement === contentNodeRef.current) {
+            event.preventDefault();
+            buttonRef.current?.focus();
+          }
+          return;
+        }
 
         const lastElement = focusableElements[focusableElements.length - 1];
-        const { activeElement } = document;
 
         // Only wrap forward: if on last element, wrap to button
         if (activeElement === lastElement) {
@@ -157,6 +164,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       <InfoTipButton
         active={!isTipHidden}
         aria-expanded={!isTipHidden}
+        aria-label={ariaLabel}
         emphasis={emphasis}
         ref={buttonRef}
         onClick={clickHandler}

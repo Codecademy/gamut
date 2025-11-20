@@ -152,9 +152,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         width={inheritDims ? 'inherit' : undefined}
         onBlur={toolOnlyEventFunc}
         onFocus={toolOnlyEventFunc}
-        onKeyDown={
-          escapeKeyPressHandler ? (e) => escapeKeyPressHandler(e) : undefined
-        }
+        onKeyDown={escapeKeyPressHandler}
         onMouseDown={(e) => e.preventDefault()}
         onMouseEnter={toolOnlyEventFunc}
       >
