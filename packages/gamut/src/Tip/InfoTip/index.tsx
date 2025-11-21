@@ -7,6 +7,7 @@ import {
   useState,
 } from 'react';
 
+import { getFocusableElements as getFocusableElementsUtil } from '../../utils/focus';
 import { extractTextContent } from '../../utils/react';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
@@ -28,8 +29,6 @@ export type InfoTipProps = TipBaseProps & {
 };
 
 const ARIA_HIDDEN_DELAY_MS = 1000;
-const FOCUSABLE_SELECTOR =
-  'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
 const MODAL_SELECTOR = 'dialog[open],[role="dialog"],[role="alertdialog"]';
 
 export const InfoTip: React.FC<InfoTipProps> = ({
@@ -55,12 +54,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const announceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const getFocusableElements = useCallback(() => {
-    const popoverContent = popoverContentNodeRef.current;
-    if (!popoverContent) return [];
-
-    return Array.from(
-      popoverContent.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
-    );
+    return getFocusableElementsUtil(popoverContentNodeRef.current);
   }, []);
 
   const clearAndSetTimeout = useCallback(
