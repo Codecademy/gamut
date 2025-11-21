@@ -15,8 +15,24 @@ export const focusVisibleStyle = (outlineOffset = '4px') => ({
  * Selector for all focusable elements in the DOM.
  * Includes links, buttons, form controls, and elements with non-negative tabindex.
  */
-export const FOCUSABLE_SELECTOR =
-  'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
+const FOCUSABLE_SELECTORS = [
+  '[contentEditable=true]:not([tabindex="-1"])',
+  '[tabindex]:not([tabindex="-1"])',
+  'a[href]:not([tabindex="-1"])',
+  'audio[controls]:not([tabindex="-1"])',
+  'button:not([disabled]):not([tabindex="-1"])',
+  'details:not([tabindex="-1"])',
+  'dialog',
+  'embed:not([tabindex="-1"])',
+  'iframe:not([tabindex="-1"])',
+  'input:not([disabled]):not([tabindex="-1"])',
+  'map[name] area[href]:not([tabindex="-1"])',
+  'object:not([tabindex="-1"])',
+  'select:not([disabled]):not([tabindex="-1"])',
+  'summary:not([tabindex="-1"])',
+  'textarea:not([disabled]):not([tabindex="-1"])',
+  'video[controls]:not([tabindex="-1"])',
+];
 
 /**
  * Gets all focusable elements within a container element.
@@ -36,6 +52,6 @@ export const getFocusableElements = (
   if (!container) return [];
 
   return Array.from(
-    container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
+    container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTORS.join(','))
   );
 };
