@@ -233,40 +233,37 @@ export const WithModal: Story = {
 
         <Box mt={16}>
           <Text fontSize={14}>
-            <strong>Test Escape Key Behavior with Modals:</strong>
+            <strong>Test Escape Key Behavior with Modals: </strong>
           </Text>
-          <Text fontSize={14}>
-            1. Click the InfoTip to open it
-            <br />
-            2. Click &quot;Open Modal&quot; button
-            <br />
-            3. Press Escape - should close modal only (InfoTip stays open)
-            <br />
-            4. Press Escape again - should close InfoTip
-            <br />
-            <br />
-            <em>
-              InfoTip detects when modals are open and defers Escape key
-              handling to them.
-            </em>
-          </Text>
+          <Box as="ol" fontSize={14}>
+            <li>Press enter to open the InfoTip</li>
+            <li>Tab to the &quot;Open Modal&quot; button and press enter</li>
+            <li>Press Escape - should close modal only (InfoTip stays open)</li>
+            <li>Press Escape again - should close InfoTip</li>
+            <li>
+              <em>
+                InfoTip detects when modals are open and defers Escape key
+                handling to them.
+              </em>
+            </li>
+          </Box>
         </Box>
 
         <Modal
           isOpen={isModalOpen}
+          size="small"
           title="Test Modal"
           onRequestClose={() => setIsModalOpen(false)}
         >
-          <Box p={16}>
+          <FlexBox column p={16}>
             <Text mb={16}>
-              This is a modal. Press Escape to close it.
-              <br />
-              The InfoTip should remain open behind this modal.
+              This is a modal. Press Escape to close it. The InfoTip should
+              remain open behind this modal.
             </Text>
             <FillButton onClick={() => setIsModalOpen(false)}>
               Close Modal
             </FillButton>
-          </Box>
+          </FlexBox>
         </Modal>
       </FlexBox>
     );
