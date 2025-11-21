@@ -23,7 +23,7 @@ export type InfoTipProps = TipBaseProps & {
   alignment?: TipBaseAlignment;
   emphasis?: 'low' | 'high';
   /**
-   * Called when the info tip is clicked - intended to be used for programmatic focus in the case of links within the tip.
+   * Called when the info tip is clicked - the onClick function is called after the DOM updates and the tip is mounted.
    */
   onClick?: (arg0: { isTipHidden: boolean }) => void;
 };
@@ -49,6 +49,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const popoverContentNodeRef = useRef<HTMLDivElement | null>(null);
+  const isInitialMount = useRef(true);
 
   const ariaHiddenTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const announceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -78,7 +79,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     (node: HTMLDivElement | null) => {
       popoverContentNodeRef.current = node;
 
-      // We call onClick when the popover is mounted to make sure the refs are available
       if (node && onClick && !isTipHidden && isFloating) {
         onClick({ isTipHidden: false });
       }
@@ -145,9 +145,18 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   }, [isTipHidden, setTipIsHidden, clearAndSetTimeout]);
 
   useLayoutEffect(() => {
-    // for inline tips the onClick runs after DOM updates to make sure refs are available
-    if (!isFloating && !isTipHidden && onClick) {
-      onClick({ isTipHidden: false });
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    if (!isFloating && onClick) {
+      onClick({ isTipHidden });
+    }
+  }, [isTipHidden, isFloating, onClick]);
+
+  useLayoutEffect(() => {
+    if (isFloating && isTipHidden && onClick) {
+      onClick({ isTipHidden: true });
     }
   }, [isTipHidden, isFloating, onClick]);
 

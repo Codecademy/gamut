@@ -170,6 +170,56 @@ describe('InfoTip', () => {
       const { view } = renderView({});
       await testModalDoesNotCloseInfoTip(view, info);
     });
+
+    it('calls onClick with isTipHidden: false when tip opens', async () => {
+      const onClick = jest.fn();
+      const { view } = renderView({ onClick });
+
+      const button = view.getByLabelText('Show information');
+      await act(async () => {
+        await userEvent.click(button);
+      });
+
+      await waitFor(() => {
+        expect(onClick).toHaveBeenCalledWith({ isTipHidden: false });
+      });
+    });
+
+    it('calls onClick with isTipHidden: true when tip closes', async () => {
+      const onClick = jest.fn();
+      const { view } = renderView({ onClick });
+
+      const button = view.getByLabelText('Show information');
+
+      await act(async () => {
+        await userEvent.click(button);
+      });
+
+      await waitFor(() => {
+        expect(onClick).toHaveBeenCalledWith({ isTipHidden: false });
+      });
+
+      onClick.mockClear();
+
+      await act(async () => {
+        await userEvent.click(button);
+      });
+
+      await waitFor(() => {
+        expect(onClick).toHaveBeenCalledWith({ isTipHidden: true });
+      });
+    });
+
+    it('does not call onClick on initial mount', async () => {
+      const onClick = jest.fn();
+      renderView({ onClick });
+
+      await act(async () => {
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      });
+
+      expect(onClick).not.toHaveBeenCalled();
+    });
   });
 
   describe('floating placement', () => {
@@ -259,6 +309,59 @@ describe('InfoTip', () => {
     it('does not close the tip when Escape is pressed if a modal is open', async () => {
       const { view } = renderView({ placement: 'floating' });
       await testModalDoesNotCloseInfoTip(view, info, true);
+    });
+
+    it('calls onClick with isTipHidden: false when tip opens', async () => {
+      const onClick = jest.fn();
+      const { view } = renderView({ placement: 'floating', onClick });
+
+      const button = view.getByLabelText('Show information');
+      await act(async () => {
+        await userEvent.click(button);
+      });
+
+      await waitFor(() => {
+        expect(onClick).toHaveBeenCalledWith({ isTipHidden: false });
+      });
+    });
+
+    it('calls onClick with isTipHidden: true when tip closes', async () => {
+      const onClick = jest.fn();
+      const { view } = renderView({ placement: 'floating', onClick });
+
+      const button = view.getByLabelText('Show information');
+
+      // Open the tip
+      await act(async () => {
+        await userEvent.click(button);
+      });
+
+      await waitFor(() => {
+        expect(onClick).toHaveBeenCalledWith({ isTipHidden: false });
+      });
+
+      onClick.mockClear();
+
+      // Close the tip
+      await act(async () => {
+        await userEvent.click(button);
+      });
+
+      await waitFor(() => {
+        expect(onClick).toHaveBeenCalledWith({ isTipHidden: true });
+      });
+    });
+
+    it('does not call onClick on initial mount', async () => {
+      const onClick = jest.fn();
+      renderView({ placement: 'floating', onClick });
+
+      // Wait a bit to ensure no calls were made
+      await act(async () => {
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      });
+
+      expect(onClick).not.toHaveBeenCalled();
     });
   });
 });
