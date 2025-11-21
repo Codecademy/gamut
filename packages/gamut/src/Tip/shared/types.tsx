@@ -78,7 +78,9 @@ export type TipPlacementComponentProps = Omit<
   escapeKeyPressHandler?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
   id?: string;
   isTipHidden?: boolean;
-  popoverContentRef?: React.RefObject<HTMLDivElement>;
+  popoverContentRef?:
+    | React.RefObject<HTMLDivElement>
+    | ((node: HTMLDivElement | null) => void);
   type: 'info' | 'tool' | 'preview';
   wrapperRef?: React.RefObject<HTMLDivElement>;
   zIndex?: number;

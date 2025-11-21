@@ -1,5 +1,5 @@
 export * from './createPromise';
-export * from './focusVisibleStyle';
+export * from './focus';
 export * from './generateResponsiveClassnames';
 export * from './omitProps';
 export * from './useIsMounted';
