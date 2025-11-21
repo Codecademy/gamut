@@ -1,10 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-<<<<<<< HEAD
-=======
 import { getFocusableElements as getFocusableElementsUtil } from '../../utils/focus';
-import { extractTextContent } from '../../utils/react';
->>>>>>> cass-ajr-GMT-1479
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
@@ -20,12 +16,6 @@ export type InfoTipProps = TipBaseProps & {
   emphasis?: 'low' | 'high';
 };
 
-<<<<<<< HEAD
-const FOCUSABLE_SELECTOR =
-  'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])';
-=======
-const ARIA_HIDDEN_DELAY_MS = 1000;
->>>>>>> cass-ajr-GMT-1479
 const MODAL_SELECTOR = 'dialog[open],[role="dialog"],[role="alertdialog"]';
 
 export const InfoTip: React.FC<InfoTipProps> = ({
@@ -46,16 +36,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const contentNodeRef = useRef<HTMLDivElement | null>(null);
 
   const getFocusableElements = useCallback(() => {
-<<<<<<< HEAD
-    const content = contentNodeRef.current;
-    if (!content) return [];
-
-    return Array.from(
-      content.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
-    );
-=======
-    return getFocusableElementsUtil(popoverContentNodeRef.current);
->>>>>>> cass-ajr-GMT-1479
+    return getFocusableElementsUtil(contentNodeRef.current);
   }, []);
 
   const contentRef = useCallback((node: HTMLDivElement | null) => {
