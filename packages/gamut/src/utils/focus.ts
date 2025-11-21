@@ -20,10 +20,10 @@ export const FOCUSABLE_SELECTOR =
 
 /**
  * Gets all focusable elements within a container element.
- * 
+ *
  * @param container - The container element to search within
  * @returns Array of focusable HTML elements, or empty array if container is null
- * 
+ *
  * @example
  * ```tsx
  * const focusableElements = getFocusableElements(popoverRef.current);
@@ -39,4 +39,3 @@ export const getFocusableElements = (
     container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
   );
 };
-
