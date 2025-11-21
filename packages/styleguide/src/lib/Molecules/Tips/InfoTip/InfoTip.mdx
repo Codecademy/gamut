@@ -53,7 +53,7 @@ This `floating` variant should only be used as needed.
 
 <Canvas of={InfoTipStories.Placement} />
 
-## Keyboard Navigation & Accessibility
+## Keyboard navigation & accessibility
 
 ### InfoTips with links or buttons
 
@@ -61,17 +61,17 @@ Links or buttons within InfoTips should be used sparingly and only when the info
 
 <Canvas of={InfoTipStories.WithLinksOrButtons} />
 
-### Floating Placement
+### Floating placement
 
-When using `placement="floating"`, InfoTips implement **forward focus wrapping** to keep users within the tip context:
+When using `placement="floating"`, InfoTips implements focus management for easier navigation:
 
-- **Tab**: Navigate forward through focusable elements (links, buttons) inside the tip. When reaching the last element, wraps back to the InfoTip button
-- **Shift+Tab**: Navigate backward naturally - from the button, exits to the previous page element (no backward trap)
+- **Tab**: Navigate forward through focusable elements (links, buttons) inside the tip. When reaching the last element, wraps back to the InfoTip button for convenience
+- **Shift+Tab**: Navigate backward naturally through the page
 - **Escape**: Closes the tip and returns focus to the InfoTip button
 
 <Canvas of={InfoTipStories.KeyboardNavigation} />
 
-### Global Escape Key Handling
+### Global Escape key handling
 
 InfoTips listen for the Escape key globally and will close automatically **unless** a higher-priority element is open:
 

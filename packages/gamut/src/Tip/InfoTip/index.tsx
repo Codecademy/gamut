@@ -266,7 +266,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   /*
    * For floating placement, screenreader text comes before button to maintain
-   * correct DOM order despite Portal rendering. See GM-797 for planned fix.
+   * correct DOM order despite Portal rendering. See GMT-64 for planned fix.
    */
   return (
     <Tip {...tipProps} type="info">
