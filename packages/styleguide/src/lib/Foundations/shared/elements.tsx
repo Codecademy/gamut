@@ -2,17 +2,27 @@ import { Anchor, Box } from '@codecademy/gamut';
 import {
   Background,
   coreSwatches,
+  css,
   lxStudioColors,
   theme,
   trueColors,
 } from '@codecademy/gamut-styles';
 // eslint-disable-next-line gamut/import-paths
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
+import styled from '@emotion/styled';
 import kebabCase from 'lodash/kebabCase';
+import React from 'react';
 
 import { Code, ColorScale, LinkTo, TokenTable } from '~styleguide/blocks';
 
 import { applyCorrectNotation } from './applyCorrectNotation';
+
+const AnchorCode = styled(Code)(
+  css({
+    textDecoration: 'underline',
+    mx: 4,
+  })
+);
 
 export const PROP_COLUMN = {
   key: 'key',
@@ -414,14 +424,18 @@ const PROPERTIES_COLUMN = {
     property: string;
     properties: string[];
   }) =>
-    properties.map((property) => (
-      <Anchor
-        href={`https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/${kebabCase(property)}`}
-        rel=""
-        target="_blank"
-      >
-        <Code key={property}>{kebabCase(property)}</Code>
-      </Anchor>
+    properties.map((property, index) => (
+      <React.Fragment key={property}>
+        <Anchor
+          href={`https://developer.mozilla.org/en-US/docs/Web/CSS/${kebabCase(
+            property
+          )}`}
+          rel=""
+          target="_blank"
+        >
+          <AnchorCode>{kebabCase(property)}</AnchorCode>
+        </Anchor>
+      </React.Fragment>
     )),
 };
 
