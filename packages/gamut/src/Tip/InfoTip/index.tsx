@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { getFocusableElements as getFocusableElementsUtil } from '../../utils/focus';
 import { FloatingTip } from '../shared/FloatingTip';
@@ -14,6 +21,10 @@ export type InfoTipProps = TipBaseProps & {
   alignment?: TipBaseAlignment;
   ariaLabel?: string;
   emphasis?: 'low' | 'high';
+  /**
+   * Called when the info tip is clicked - the onClick function is called after the DOM updates and the tip is mounted.
+   */
+  onClick?: (arg0: { isTipHidden: boolean }) => void;
 };
 
 const MODAL_SELECTOR = 'dialog[open],[role="dialog"],[role="alertdialog"]';
@@ -23,6 +34,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   ariaLabel,
   emphasis = 'low',
   info,
+  onClick,
   placement = tipDefaultProps.placement,
   ...rest
 }) => {
@@ -34,18 +46,42 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const contentNodeRef = useRef<HTMLDivElement | null>(null);
+  const isInitialMount = useRef(true);
 
   const getFocusableElements = useCallback(() => {
     return getFocusableElementsUtil(contentNodeRef.current);
   }, []);
 
-  const contentRef = useCallback((node: HTMLDivElement | null) => {
-    contentNodeRef.current = node;
-  }, []);
+  const contentRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      contentNodeRef.current = node;
+
+      if (node && onClick && !isTipHidden && isFloating) {
+        onClick({ isTipHidden: false });
+      }
+    },
+    [onClick, isTipHidden, isFloating]
+  );
 
   useEffect(() => {
     setLoaded(true);
   }, []);
+
+  useLayoutEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    if (!isFloating && onClick) {
+      onClick({ isTipHidden });
+    }
+  }, [isTipHidden, isFloating, onClick]);
+
+  useLayoutEffect(() => {
+    if (isFloating && isTipHidden && onClick) {
+      onClick({ isTipHidden: true });
+    }
+  }, [isTipHidden, isFloating, onClick]);
 
   const handleOutsideClick = useCallback((e: MouseEvent) => {
     const wrapper = wrapperRef.current;

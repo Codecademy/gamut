@@ -164,6 +164,46 @@ describe('InfoTip', () => {
       const { view } = renderView({});
       await testModalDoesNotCloseInfoTip(view, info);
     });
+
+    it('calls onClick with isTipHidden: false when tip opens', async () => {
+      const onClick = jest.fn();
+      const { view } = renderView({ onClick });
+
+      await clickButton(view);
+
+      await waitFor(() => {
+        expect(onClick).toHaveBeenCalledWith({ isTipHidden: false });
+      });
+    });
+
+    it('calls onClick with isTipHidden: true when tip closes', async () => {
+      const onClick = jest.fn();
+      const { view } = renderView({ onClick });
+
+      await clickButton(view);
+
+      await waitFor(() => {
+        expect(onClick).toHaveBeenCalledWith({ isTipHidden: false });
+      });
+
+      onClick.mockClear();
+
+      await clickButton(view);
+
+      await waitFor(() => {
+        expect(onClick).toHaveBeenCalledWith({ isTipHidden: true });
+      });
+    });
+
+    it('does not call onClick on initial mount', async () => {
+      const onClick = jest.fn();
+      renderView({ onClick });
+
+      // Wait a bit to ensure no calls were made
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      expect(onClick).not.toHaveBeenCalled();
+    });
   });
 
   describe('floating placement', () => {
@@ -257,6 +297,48 @@ describe('InfoTip', () => {
     it('wraps focus to button when tabbing from popover with no interactive elements', async () => {
       const { view } = renderView({ placement: 'floating' });
       await testTabFromPopoverWithNoInteractiveElements(view);
+    });
+
+    it('calls onClick with isTipHidden: false when tip opens', async () => {
+      const onClick = jest.fn();
+      const { view } = renderView({ placement: 'floating', onClick });
+
+      await clickButton(view);
+
+      await waitFor(() => {
+        expect(onClick).toHaveBeenCalledWith({ isTipHidden: false });
+      });
+    });
+
+    it('calls onClick with isTipHidden: true when tip closes', async () => {
+      const onClick = jest.fn();
+      const { view } = renderView({ placement: 'floating', onClick });
+
+      // Open the tip
+      await clickButton(view);
+
+      await waitFor(() => {
+        expect(onClick).toHaveBeenCalledWith({ isTipHidden: false });
+      });
+
+      onClick.mockClear();
+
+      // Close the tip
+      await clickButton(view);
+
+      await waitFor(() => {
+        expect(onClick).toHaveBeenCalledWith({ isTipHidden: true });
+      });
+    });
+
+    it('does not call onClick on initial mount', async () => {
+      const onClick = jest.fn();
+      renderView({ placement: 'floating', onClick });
+
+      // Wait a bit to ensure no calls were made
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      expect(onClick).not.toHaveBeenCalled();
     });
   });
 
