@@ -27,7 +27,7 @@ const AnchorCode = styled(Code)(
 export const PROP_COLUMN = {
   key: 'key',
   name: 'Prop',
-  size: 'md',
+  size: 'lg',
   render: ({ id }: any) => <Code>{id}</Code>,
 };
 
