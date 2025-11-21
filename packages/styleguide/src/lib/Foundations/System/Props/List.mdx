@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
+
+import { defaultColumns, getPropRows } from '../../shared/elements';
+
+export const parameters = {
+  title: 'List',
+  subtitle:
+    'Props for adjusting list styles when rendering a component as a `ul` or `ol`',
+};
+
+<Meta title="Foundations/System/Props/List" />
+
+<AboutHeader {...parameters} />
+
+List props control the appearance of ordered and unordered lists when components are rendered as `ul` or `ol` elements. These properties let you customize bullet styles, list positioning, and even use custom images as list markers, giving you full control over list presentation.
+
+<Callout text="The code snippet below is for demonstrative purposes to showcase how a component could inherit these system props." />
+
+```tsx
+import styled from '@emotion/styled';
+import { system } from '@codecademy/gamut-styles';
+
+const Box = styled.div(system.list);
+
+<Box
+  as="ul"
+  listStyleType="square"
+  listStylePosition="inside"
+  listStyleImage="none"
+>
+  <Box as="li">a list item</Box>
+</Box>;
+```
+
+<TokenTable rows={getPropRows('list')} columns={defaultColumns} />

@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
+
+import { defaultColumns, getPropRows } from '../../shared/elements';
+
+export const parameters = {
+  title: 'Typography',
+  subtitle: 'Props for text manipulation',
+};
+
+<Meta title="Foundations/System/Props/Typography" />
+
+<AboutHeader {...parameters} />
+
+Typography props give you fine-grained control over text styling and appearance. These properties connect to the theme's typography scales for font families, sizes, weights, and line heights, making it simple to maintain typographic consistency across your application while allowing for custom text transformations and decorations.
+
+<Callout text="The code snippet below is for demonstrative purposes to showcase how a component could inherit these system props." />
+
+```tsx
+import styled from '@emotion/styled';
+import { system } from '@codecademy/gamut-styles';
+
+const Text = styled.p(system.typography);
+
+<Text fontSize={16} fontFamily="accent" textTransform="uppercase" />;
+```
+
+<TokenTable rows={getPropRows('typography')} columns={defaultColumns} />

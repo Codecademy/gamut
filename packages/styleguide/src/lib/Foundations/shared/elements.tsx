@@ -430,7 +430,7 @@ const SCALE_COLUMN = {
   name: 'Scale',
   size: 'lg',
   render: ({ scale }: { scale: string }) => (
-    <LinkTo id={`foundations-theme--${kebabCase(scale)}`}>{scale}</LinkTo>
+    <LinkTo id="Foundations/Theme/Core Theme">{scale}</LinkTo>
   ),
 };
 

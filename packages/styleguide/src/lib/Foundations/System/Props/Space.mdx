@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
+
+import { defaultColumns, getPropRows } from '../../shared/elements';
+
+export const parameters = {
+  title: 'Space',
+  subtitle: 'Props for maintaining specific vertical and horizontal rhythms',
+};
+
+<Meta title="Foundations/System/Props/Space" />
+
+<AboutHeader {...parameters} />
+
+Space props provide a consistent way to apply margin and padding throughout your application. All spacing values reference the theme's spacing scale, ensuring visual consistency and making it easy to create responsive spacing patterns using array syntax.
+
+<Callout text="The code snippet below is for demonstrative purposes to showcase how a component could inherit these system props." />
+
+```tsx
+import styled from '@emotion/styled';
+import { system } from '@codecademy/gamut-styles';
+
+const Spacer = styled.div(system.space);
+
+<Spacer p={8} my={[16, 24, 32]} />;
+```
+
+<TokenTable rows={getPropRows('space')} columns={defaultColumns} />

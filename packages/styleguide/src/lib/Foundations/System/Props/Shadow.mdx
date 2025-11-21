@@ -1,0 +1,32 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
+
+import { defaultColumns, getPropRows } from '../../shared/elements';
+
+export const parameters = {
+  title: 'Shadow',
+  subtitle: 'Props for box and text shadows.',
+};
+
+<Meta title="Foundations/System/Props/Shadow" />
+
+<AboutHeader {...parameters} />
+
+Shadow props add depth and visual interest to your components through box and text shadows. These properties accept standard CSS shadow syntax, allowing you to create subtle elevation effects or dramatic visual depth. Use shadows consistently to establish visual hierarchy in your interface.
+
+<Callout text="The code snippet below is for demonstrative purposes to showcase how a component could inherit these system props." />
+
+```tsx
+import styled from '@emotion/styled';
+import { system } from '@codecademy/gamut-styles';
+
+const Box = styled.div(system.shadow);
+
+<Box
+  boxShadow="0 0 4px rgba(0, 0, 0, .15)"
+  textShadow="0 0 4px rgba(0, 0, 0, .15)"
+/>;
+```
+
+<TokenTable rows={getPropRows('shadows')} columns={defaultColumns} />
