@@ -5,22 +5,51 @@ import {
 
 import { PopoverPositionConfig, TargetRef } from './types';
 
-export const findResizingParent = ({
-  parentElement,
-}: HTMLElement): HTMLElement | null => {
-  if (parentElement) {
-    const { overflow, overflowY, overflowX } = getComputedStyle(parentElement);
+const getWindowDimensions = () => ({
+  height: window.innerHeight || document.documentElement.clientHeight,
+  width: window.innerWidth || document.documentElement.clientWidth,
+});
+
+const isRectOutOfBounds = (
+  rect: DOMRect,
+  container: { top: number; bottom: number; left: number; right: number }
+): boolean => {
+  const { top, bottom, left, right } = rect;
+  const {
+    top: containerTop,
+    bottom: containerBottom,
+    left: containerLeft,
+    right: containerRight,
+  } = container;
+
+  return (
+    bottom <= containerTop ||
+    top >= containerBottom ||
+    right <= containerLeft ||
+    left >= containerRight
+  );
+};
+
+export const findResizingParent = (
+  element: HTMLElement
+): HTMLElement | null => {
+  let currentElement = element.parentElement;
+
+  while (currentElement && currentElement !== document.body) {
+    const { overflow, overflowY, overflowX } = getComputedStyle(currentElement);
     if ([overflow, overflowY, overflowX].some((val) => val === 'clip')) {
-      return parentElement;
+      return currentElement;
     }
-    return findResizingParent(parentElement); // parent of this parent is used via prop destructure
+    currentElement = currentElement.parentElement;
   }
+
   return null;
 };
 
-/*
- * Finds all extra scrolling parents of an element.
- * This is useful for detecting scroll events on parents that may not be the direct parent, which should be managed by react-use's useWindowScroll.
+/**
+ * Finds all scrolling parents of an element.
+ * This is useful for detecting scroll events on parents that may not be the direct parent.
+ * Window scroll is handled separately by react-use's useWindowScroll.
  */
 export const findAllAdditionalScrollingParents = (
   element: HTMLElement
@@ -30,11 +59,15 @@ export const findAllAdditionalScrollingParents = (
 
   while (currentElement && currentElement !== document.body) {
     const { overflow, overflowY, overflowX } = getComputedStyle(currentElement);
-    if (
-      [overflow, overflowY, overflowX].some((val) =>
-        ['scroll', 'auto'].includes(val)
-      )
-    ) {
+    const isScrollable = [overflow, overflowY, overflowX].some((val) =>
+      ['scroll', 'auto'].includes(val)
+    );
+
+    const hasScrollableContent =
+      currentElement.scrollHeight > currentElement.clientHeight ||
+      currentElement.scrollWidth > currentElement.clientWidth;
+
+    if (isScrollable || hasScrollableContent) {
       scrollingParents.push(currentElement);
     }
     currentElement = currentElement.parentElement;
@@ -43,42 +76,62 @@ export const findAllAdditionalScrollingParents = (
   return scrollingParents;
 };
 
+/**
+ * Determines if an element is out of view, checking both the window viewport
+ * and all scrollable parent containers. Returns true if the element is completely
+ * outside the visible area of any containing scrollable parent or the window viewport.
+ * Used by closeOnViewportExit to detect when the target element has scrolled out of view.
+ * @param rect - The DOMRect of the target element
+ * @param target - The target element (optional)
+ * @param cachedScrollingParents - Pre-computed list of scrolling parents to avoid expensive DOM traversals (optional)
+ */
 export const isOutOfView = (
   rect: DOMRect,
-  target?: HTMLElement | null
+  target?: HTMLElement | null,
+  cachedScrollingParents?: HTMLElement[]
 ): boolean => {
-  const windowHeight =
-    window.innerHeight || document.documentElement.clientHeight;
-  const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-
-  const outOfViewport =
-    rect.bottom < 0 ||
-    rect.top > windowHeight ||
-    rect.right < 0 ||
-    rect.left > windowWidth;
-
-  if (outOfViewport || !target) {
-    return outOfViewport;
+  if (!target) {
+    const { height, width } = getWindowDimensions();
+    const windowRect = {
+      top: 0,
+      left: 0,
+      bottom: height,
+      right: width,
+    };
+    return isRectOutOfBounds(rect, windowRect);
   }
 
-  const scrollingParents = findAllAdditionalScrollingParents(target);
+  const scrollingParents =
+    cachedScrollingParents ?? findAllAdditionalScrollingParents(target);
 
-  for (const parent of scrollingParents) {
+  const { documentElement } = document;
+  const isDocumentScrollable =
+    documentElement.scrollHeight > documentElement.clientHeight ||
+    documentElement.scrollWidth > documentElement.clientWidth;
+
+  const allScrollableContainers = isDocumentScrollable
+    ? [documentElement, ...scrollingParents]
+    : scrollingParents;
+
+  for (const parent of allScrollableContainers) {
+    if (!parent.contains(target)) {
+      continue;
+    }
+
     const parentRect = parent.getBoundingClientRect();
-
-    const intersects =
-      rect.top < parentRect.bottom &&
-      rect.bottom > parentRect.top &&
-      rect.left < parentRect.right &&
-      rect.right > parentRect.left;
-
-    // If element doesn't intersect with a scrollable parent's visible area, it's out of view
-    if (!intersects) {
+    if (isRectOutOfBounds(rect, parentRect)) {
       return true;
     }
   }
 
-  return false;
+  const { height, width } = getWindowDimensions();
+  const windowRect = {
+    top: 0,
+    left: 0,
+    bottom: height,
+    right: width,
+  };
+  return isRectOutOfBounds(rect, windowRect);
 };
 
 export const ALIGN = {
@@ -121,36 +174,42 @@ export const getPosition = ({
   const xOffset = width + offset + x;
   const yOffset = height + offset + y;
 
-  const styles = {} as CSSObject;
-
   const alignments = alignment.split('-') as
     | ['top' | 'bottom' | 'left' | 'right']
     | ['top' | 'bottom', 'left' | 'right'];
 
+  const styles: CSSObject = {};
+
   if (alignments.length === 1) {
-    switch (alignments[0]) {
-      case 'left':
-      case 'right':
-        styles.transform = 'translate(0, -50%)';
-        styles.top = top + height / 2;
-        break;
-      case 'top':
-      case 'bottom':
-        styles.transform = 'translate(-50%, 0)';
-        styles.left = left + width / 2;
-    }
+    const [direction] = alignments;
+    const isVertical = direction === 'top' || direction === 'bottom';
+    styles.transform = isVertical ? 'translate(-50%, 0)' : 'translate(0, -50%)';
+    styles[isVertical ? 'left' : 'top'] = isVertical
+      ? left + width / 2
+      : top + height / 2;
   } else {
     const coef = AXIS[invertAxis ?? 'none'];
-    const [y, x] = alignments;
-    styles.transform = `translate(${percent(coef[x])}, ${percent(coef[y])})`;
+    const [yAxis, xAxis] = alignments;
+    styles.transform = `translate(${percent(coef[xAxis])}, ${percent(
+      coef[yAxis]
+    )})`;
   }
 
+  const alignmentOffsets: Record<
+    'left' | 'right' | 'top' | 'bottom',
+    { position: keyof CSSObject; value: number }
+  > = {
+    left: { position: 'right', value: right + xOffset },
+    right: { position: 'left', value: left + xOffset },
+    top: { position: 'bottom', value: bottom + yOffset },
+    bottom: { position: 'top', value: top + yOffset },
+  };
+
   alignments.forEach((alignment) => {
-    if (alignment === 'left') styles.right = right + xOffset;
-    if (alignment === 'right') styles.left = left + xOffset;
-    if (alignment === 'top') styles.bottom = bottom + yOffset;
-    if (alignment === 'bottom') styles.top = top + yOffset;
+    const { position, value } = alignmentOffsets[alignment];
+    styles[position] = value;
   });
+
   return styles;
 };
 
@@ -159,19 +218,19 @@ export const getContainers = (
   inline = false,
   scroll: { x: number; y: number }
 ) => {
-  const boundingClient = target.getBoundingClientRect();
+  const viewport = target.getBoundingClientRect();
 
   if (!inline) {
-    const { width, top, height, left } = boundingClient;
+    const { width, top, height, left } = viewport;
     return {
-      viewport: boundingClient,
+      viewport,
       parent: {
         width,
         height,
         top: top + scroll.y,
         left,
         right: document.body.offsetWidth - width - left,
-        bottom: -1 * (top + height + scroll.y),
+        bottom: -(top + height + scroll.y),
       },
     };
   }
@@ -182,7 +241,6 @@ export const getContainers = (
     offsetLeft: left,
     offsetTop: top,
   } = target;
-
   const offsetParent = target?.offsetParent as HTMLElement;
 
   return {
@@ -190,10 +248,10 @@ export const getContainers = (
       width,
       height,
       left,
-      right: offsetParent?.offsetWidth - left - width,
+      right: (offsetParent?.offsetWidth ?? 0) - left - width,
       top,
-      bottom: offsetParent?.offsetHeight - top - height,
+      bottom: (offsetParent?.offsetHeight ?? 0) - top - height,
     } as DOMRect,
-    viewport: boundingClient,
+    viewport,
   };
 };
