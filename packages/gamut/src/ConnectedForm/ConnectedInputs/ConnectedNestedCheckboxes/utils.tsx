@@ -224,11 +224,11 @@ export const renderCheckbox = ({
         }
         aria-required={isRequired}
         disabled={isDisabled || option.disabled}
-        htmlFor={checkboxId}
+        htmlFor={name}
         id={checkboxId}
         label={option.label}
         multiline={option.multiline}
-        name={checkboxId}
+        name={name}
         spacing={option.spacing}
         onBlur={onBlur}
         onChange={onChange}
