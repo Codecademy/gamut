@@ -154,25 +154,27 @@ export const handleCheckboxChange = ({
 interface RenderCheckboxParams {
   option: FlatCheckbox;
   state: FlatCheckboxState;
-  checkboxId: string;
+  name: string;
   isRequired: boolean;
   isDisabled: boolean;
   onBlur: () => void;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   ref: React.RefCallback<HTMLInputElement>;
   error?: boolean;
+  flatOptions: FlatCheckbox[];
 }
 
 export const renderCheckbox = ({
   option,
   state,
-  checkboxId,
+  name,
   isRequired,
   isDisabled,
   onBlur,
   onChange,
   ref,
   error,
+  flatOptions,
 }: RenderCheckboxParams) => {
   let checkedProps = {};
   if (state.checked) {
@@ -193,6 +195,16 @@ export const renderCheckbox = ({
     };
   }
 
+  const checkboxId = `${name}-${option.value}`;
+
+  // Generate aria-controls for parent checkboxes with all nested descendants
+  const ariaControls =
+    option.options.length > 0
+      ? getAllDescendants(option.value, flatOptions)
+          .map((childValue) => `${name}-${childValue}`)
+          .join(' ')
+      : undefined;
+
   return (
     <Box
       as="li"
@@ -201,6 +213,7 @@ export const renderCheckbox = ({
       ml={(option.level * 24) as any}
     >
       <Checkbox
+        aria-controls={ariaControls}
         aria-invalid={error}
         aria-label={
           option['aria-label'] === undefined
@@ -211,11 +224,11 @@ export const renderCheckbox = ({
         }
         aria-required={isRequired}
         disabled={isDisabled || option.disabled}
-        htmlFor={checkboxId}
+        htmlFor={name}
         id={checkboxId}
         label={option.label}
         multiline={option.multiline}
-        name={checkboxId}
+        name={name}
         spacing={option.spacing}
         onBlur={onBlur}
         onChange={onChange}
