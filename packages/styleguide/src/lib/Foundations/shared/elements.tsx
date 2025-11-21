@@ -416,7 +416,7 @@ const PROPERTIES_COLUMN = {
   }) =>
     properties.map((property) => (
       <Anchor
-        href={`https://developer.mozilla.org/en-US/docs/Web/CSS/${property}`}
+        href={`https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/${kebabCase(property)}`}
         rel=""
         target="_blank"
       >
