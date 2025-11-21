@@ -11,7 +11,6 @@ import {
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
 import styled from '@emotion/styled';
 import kebabCase from 'lodash/kebabCase';
-import React from 'react';
 
 import { Code, ColorScale, LinkTo, TokenTable } from '~styleguide/blocks';
 
@@ -424,18 +423,17 @@ const PROPERTIES_COLUMN = {
     property: string;
     properties: string[];
   }) =>
-    properties.map((property, index) => (
-      <React.Fragment key={property}>
-        <Anchor
-          href={`https://developer.mozilla.org/en-US/docs/Web/CSS/${kebabCase(
-            property
-          )}`}
-          rel=""
-          target="_blank"
-        >
-          <AnchorCode>{kebabCase(property)}</AnchorCode>
-        </Anchor>
-      </React.Fragment>
+    properties.map((property) => (
+      <Anchor
+        href={`https://developer.mozilla.org/en-US/docs/Web/CSS/${kebabCase(
+          property
+        )}`}
+        key={property}
+        rel=""
+        target="_blank"
+      >
+        <AnchorCode>{kebabCase(property)}</AnchorCode>
+      </Anchor>
     )),
 };
 
