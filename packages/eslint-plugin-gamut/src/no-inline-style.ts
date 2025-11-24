@@ -21,7 +21,7 @@ export default createRule({
     },
     messages: {
       noInlineStyle:
-        'The use of inline styles is discouraged, consider using styled components, design system utilities, or CSS classes instead.',
+        'The use of inline styles is discouraged — consider using styled components, design system utilities, or CSS classes instead.',
     },
     type: 'suggestion',
     schema: [],
