@@ -195,6 +195,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         active={!isTipHidden}
         aria-expanded={!isTipHidden}
         aria-label={ariaLabel}
+        aria-roledescription="More information button"
         emphasis={emphasis}
         ref={buttonRef}
         onClick={clickHandler}
