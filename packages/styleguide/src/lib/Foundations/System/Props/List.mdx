@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
+import { AboutHeader, LinkTo, TokenTable } from '~styleguide/blocks';
 
 import { defaultColumns, getPropRows } from '../../shared/elements';
 
@@ -17,22 +17,22 @@ export const parameters = {
 
 List props control the appearance of ordered and unordered lists when components are rendered as `ul` or `ol` elements. These properties let you customize bullet styles, list positioning, and even use custom images as list markers, giving you full control over list presentation.
 
-<Callout text="The code snippet below is for demonstrative purposes to showcase how a component could inherit these system props." />
+For more advanced list features, refer to the <LinkTo id="Organisms/Lists & Tables/List">List component</LinkTo>.
 
 ```tsx
 import styled from '@emotion/styled';
 import { system } from '@codecademy/gamut-styles';
 
-const Box = styled.div(system.list);
+const ListExample = styled.div(system.list);
 
-<Box
+<ListExample
   as="ul"
   listStyleType="square"
   listStylePosition="inside"
   listStyleImage="none"
 >
-  <Box as="li">a list item</Box>
-</Box>;
+  <ListExample as="li">a list item</ListExample>
+</ListExample>;
 ```
 
 <TokenTable rows={getPropRows('list')} columns={defaultColumns} />

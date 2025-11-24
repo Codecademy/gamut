@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
+import { AboutHeader, TokenTable } from '~styleguide/blocks';
 
 import { defaultColumns, getPropRows } from '../../shared/elements';
 
@@ -16,15 +16,16 @@ export const parameters = {
 
 Grid props give you powerful control over CSS Grid layouts. Define grid templates, control auto-placement behavior, and set gaps between grid items. These properties make it straightforward to create complex, responsive grid layouts with precise control over both container and item positioning.
 
-<Callout text="The code snippet below is for demonstrative purposes to showcase how a component could inherit these system props." />
-
 ```tsx
 import styled from '@emotion/styled';
 import { system } from '@codecademy/gamut-styles';
 
-const GridBox = styled.div(system.grid);
+const GridExample = styled.div(system.grid);
 
-<GridBox gridTemplateColumns="max-content 1fr max-content" columnGap={32} />;
+<GridExample
+  gridTemplateColumns="max-content 1fr max-content"
+  columnGap={32}
+/>;
 ```
 
 <TokenTable rows={getPropRows('grid')} columns={defaultColumns} />

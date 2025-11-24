@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
+import { AboutHeader, TokenTable } from '~styleguide/blocks';
 
 import { defaultColumns, getPropRows } from '../../shared/elements';
 
@@ -16,15 +16,13 @@ export const parameters = {
 
 Color props control the foreground, background, and border colors of elements. All color values are restricted to your theme's color palette, ensuring consistent color usage throughout your application. The `bg` shorthand provides a convenient way to set background colors quickly.
 
-<Callout text="The code snippet below is for demonstrative purposes to showcase how a component could inherit these system props." />
-
 ```tsx
 import styled from '@emotion/styled';
 import { system } from '@codecademy/gamut-styles';
 
-const Background = styled.div(system.color);
+const ColorExample = styled.div(system.color);
 
-<Background bg="navy" textColor="gray-100" borderColor="blue" />;
+<ColorExample bg="navy" textColor="gray-100" borderColor="blue" />;
 ```
 
 <TokenTable rows={getPropRows('color')} columns={defaultColumns} />

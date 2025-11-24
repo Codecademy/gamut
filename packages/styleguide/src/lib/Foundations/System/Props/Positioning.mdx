@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
+import { AboutHeader, TokenTable } from '~styleguide/blocks';
 
 import { defaultColumns, getPropRows } from '../../shared/elements';
 
@@ -17,15 +17,13 @@ export const parameters = {
 
 Positioning props control how elements are positioned within their parent containers and manage their stacking order. Use these properties to create fixed headers, absolute overlays, sticky navigation, and control layering with z-index. The `inset` shorthand provides a convenient way to set all four position values at once.
 
-<Callout text="The code snippet below is for demonstrative purposes to showcase how a component could inherit these system props." />
-
 ```tsx
 import styled from '@emotion/styled';
 import { system } from '@codecademy/gamut-styles';
 
-const Box = styled.div(system.positioning);
+const PositioningExample = styled.div(system.positioning);
 
-<Box position="absolute" zIndex={2} top="0" left="0" />;
+<PositioningExample position="absolute" zIndex={2} top="0" left="0" />;
 ```
 
 <TokenTable rows={getPropRows('positioning')} columns={defaultColumns} />

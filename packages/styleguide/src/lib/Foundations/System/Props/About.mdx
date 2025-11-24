@@ -51,15 +51,17 @@ You may import these groups directly from `gamut-styles`.
 import { variance } from '@codecademy/variance';
 import { system } from '@codecademy/gamut-styles';
 
-const Box = styled.div(variance.compose(system.layout, system.positioning));
+const ExampleContainer = styled.div(
+  variance.compose(system.layout, system.positioning)
+);
 
-<Box position="absolute" width="50px" height="50px" />;
+<ExampleContainer position="absolute" width="50px" height="50px" />;
 ```
 
 Each system prop has 3 important features:
 
 - `properties`: Any number of CSS Properties this prop is responsible for.
-- `scale`: A set of values that determines valid inputs for each prop (e.g. a scale of `colors` will restrict to only theme colors). These are generally aliases for more verbose or opaque css properties allowing you to specify a human readable name in your props. If a prop doesn't have a scale that means it accepts all valid CSSType values as props, however if it does have a scale it will only accept global values and keys of the provided scale.
+- `scale`: A set of values that determines valid inputs for each prop based on the selected theme and that theme's typing (e.g. if the `lxStudio` theme is being used, a scale of `colors` will restrict to the `lxStudio` theme's colors). These are generally aliases for more verbose or opaque CSS properties allowing you to specify a human readable name in your props. If a prop doesn't have a scale that means it accepts all valid `CSSType` values as props, however if it does have a scale it will only accept global values and keys of the provided scale.
 - `transform`: A function that changes the prop / scale value prior to adding it to the stylehseet. This allows us to add / change units for properties like `width` and `height`. Or ensure extra defaults or fallbacks are added dynamically.
 
 <TableOfContents

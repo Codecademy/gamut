@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
+import { AboutHeader, TokenTable } from '~styleguide/blocks';
 
 import { defaultColumns, getPropRows } from '../../shared/elements';
 
@@ -17,15 +17,18 @@ export const parameters = {
 
 Layout props control the visual structure and dimensions of elements. These properties determine how components take up space, their display behavior, and how they align within their containers. Use these props to set widths, heights, overflow behavior, and container types for responsive layouts.
 
-<Callout text="The code snippet below is for demonstrative purposes to showcase how a component could inherit these system props." />
-
 ```tsx
 import styled from '@emotion/styled';
 import { system } from '@codecademy/gamut-styles';
 
-const Box = styled.div(system.layout);
+const LayoutExample = styled.div(system.layout);
 
-<Box display="flex" width="50%" height="300px" verticalAlign="middle" />;
+<LayoutExample
+  display="flex"
+  width="50%"
+  height="300px"
+  verticalAlign="middle"
+/>;
 ```
 
 <TokenTable rows={getPropRows('layout')} columns={defaultColumns} />

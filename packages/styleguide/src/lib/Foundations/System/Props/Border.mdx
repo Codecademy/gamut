@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
+import { AboutHeader, TokenTable } from '~styleguide/blocks';
 
 import { defaultColumns, getPropRows } from '../../shared/elements';
 
@@ -14,17 +14,15 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-Border props enable you to add and style borders on any side of an element. These properties support directional borders (top, right, bottom, left) as well as convenient shorthands for horizontal and vertical borders. Border radius values connect to the theme's borderRadii scale for consistent corner rounding.
-
-<Callout text="The code snippet below is for demonstrative purposes to showcase how a component could inherit these system props." />
+Border props enable you to add and style borders on any side of an element. These properties support directional borders (top, right, bottom, left) as well as convenient shorthands for horizontal and vertical borders. Border radius values connect to the theme's `borderRadii` scale for consistent corner rounding.
 
 ```tsx
 import styled from '@emotion/styled';
 import { system } from '@codecademy/gamut-styles';
 
-const Box = styled.div(system.border);
+const BorderExample = styled.div(system.border);
 
-<Box
+<BorderExample
   border={1}
   borderLeft="none"
   borderRightStyle="dotted"
