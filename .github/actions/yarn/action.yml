@@ -12,4 +12,4 @@ runs:
 
     - name: Install dependencies
       shell: bash
-      run: yarn --immutable
+      run: corepack enable && yarn config set nodeLinker node-modules && yarn install --immutable
