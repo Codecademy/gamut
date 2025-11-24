@@ -1,0 +1,81 @@
+import { Meta } from '@storybook/blocks';
+
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as backgroundParameters } from './Background.mdx';
+import { parameters as borderParameters } from './Border.mdx';
+import { parameters as colorParameters } from './Color.mdx';
+import { parameters as flexParameters } from './Flex.mdx';
+import { parameters as gridParameters } from './Grid.mdx';
+import { parameters as layoutParameters } from './Layout.mdx';
+import { parameters as listParameters } from './List.mdx';
+import { parameters as positioningParameters } from './Positioning.mdx';
+import { parameters as shadowParameters } from './Shadow.mdx';
+import { parameters as spaceParameters } from './Space.mdx';
+import { parameters as typographyParameters } from './Typography.mdx';
+
+export const parameters = {
+  id: 'Foundations/System/Props',
+  title: 'Props',
+  subtitle:
+    'Reusable CSS-in-JS props with predictable behaviors and a consistent API for responsive CSS.',
+  status: 'current',
+  source: {
+    repo: 'gamut-styles',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut-styles/src/variance/config.ts',
+  },
+};
+
+<Meta title="Foundations/System/Props/About" />
+
+<AboutHeader {...parameters} />
+
+We provide a set of out of style functions out of the box through `@codecademy/gamut-styles` that are standardized throughout all of our components. These props are strongly typed and can be included as necessary on any styled component.
+
+System props have a few facets that are important to note:
+
+- They can some times represent multiple properties.
+- They may be restricted to specific token scales but will always have access to global css values like `initial` and `none`.
+- They may have a function that transforms the given value into a standardized value (e.g. `width={.5}` => `width: 50%`)
+
+We've grouped these into a few main groups that affect simliar behaviors: `layout`, `space`, `color`, `border`, `background`, `typography`, `positioning`, `grid`, `flex`, `shadow`.
+
+You may import these groups directly from `gamut-styles`.
+
+```tsx
+import { variance } from '@codecademy/variance';
+import { system } from '@codecademy/gamut-styles';
+
+const ExampleContainer = styled.div(
+  variance.compose(system.layout, system.positioning)
+);
+
+<ExampleContainer position="absolute" width="50px" height="50px" />;
+```
+
+Each system prop has 3 important features:
+
+- `properties`: Any number of CSS Properties this prop is responsible for.
+- `scale`: A set of values that determines valid inputs for each prop based on the selected theme and that theme's typing (e.g. if the `lxStudio` theme is being used, a scale of `colors` will restrict to the `lxStudio` theme's colors). These are generally aliases for more verbose or opaque CSS properties allowing you to specify a human readable name in your props. If a prop doesn't have a scale that means it accepts all valid `CSSType` values as props, however if it does have a scale it will only accept global values and keys of the provided scale.
+- `transform`: A function that changes the prop / scale value prior to adding it to the stylehseet. This allows us to add / change units for properties like `width` and `height`. Or ensure extra defaults or fallbacks are added dynamically.
+
+<TableOfContents
+  links={addParentPath(parameters.id, [
+    layoutParameters,
+    spaceParameters,
+    typographyParameters,
+    colorParameters,
+    borderParameters,
+    flexParameters,
+    gridParameters,
+    backgroundParameters,
+    positioningParameters,
+    shadowParameters,
+    listParameters,
+  ])}
+/>

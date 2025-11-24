@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, TokenTable } from '~styleguide/blocks';
+
+import { defaultColumns, getPropRows } from '../../shared/elements';
+
+export const parameters = {
+  title: 'Layout',
+  subtitle:
+    'Props for handling dimensions and other layout specific properties.',
+  status: 'updating',
+};
+
+<Meta title="Foundations/System/Props/Layout" />
+
+<AboutHeader {...parameters} />
+
+Layout props control the visual structure and dimensions of elements. These properties determine how components take up space, their display behavior, and how they align within their containers. Use these props to set widths, heights, overflow behavior, and container types for responsive layouts.
+
+```tsx
+import styled from '@emotion/styled';
+import { system } from '@codecademy/gamut-styles';
+
+const LayoutExample = styled.div(system.layout);
+
+<LayoutExample
+  display="flex"
+  width="50%"
+  height="300px"
+  verticalAlign="middle"
+/>;
+```
+
+<TokenTable rows={getPropRows('layout')} columns={defaultColumns} />
