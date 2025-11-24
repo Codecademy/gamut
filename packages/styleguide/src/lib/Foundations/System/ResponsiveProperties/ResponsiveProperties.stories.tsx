@@ -2,6 +2,7 @@ import { Box, FlexBox } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof FlexBox> = {
+  title: 'Foundations/System/Responsive properties',
   component: FlexBox,
   args: {
     center: true,
