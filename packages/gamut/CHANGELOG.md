@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [67.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.3.2...@codecademy/gamut@67.3.3) (2025-11-13)
+
+### Bug Fixes
+
+- **PopoverContainer:** Add all scrolling parents to closeOnViewportExit ([f8d0ce5](https://github.com/Codecademy/gamut/commit/f8d0ce59c923169ea4502b646e4d82f3d275880e))
+
 ### [67.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.3.1...@codecademy/gamut@67.3.2) (2025-11-10)
 
 ### Bug Fixes
