@@ -1,8 +1,9 @@
 // Added because SB and TS don't play nice with each other at the moment
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { DataList, DataTable, FlexBox } from '@codecademy/gamut';
+import { DataList, DataTable, FlexBox, Text } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
+import { useCallback, useEffect, useState } from 'react';
 
 import {
   cols,
@@ -212,4 +213,265 @@ const DataListDisableContainerQueryExample = () => {
 export const DisableContainerQuery: Story = {
   args: {},
   render: () => <DataListDisableContainerQueryExample />,
+};
+
+// Server-side filtering example component
+const ServerSideFilteringExample = () => {
+  // Mock data for our example
+  const allCrewMembers = [
+    {
+      id: 1,
+      name: 'Jean Luc Picard',
+      role: 'Captain',
+      ship: 'USS Enterprise',
+      species: 'Human',
+      status: 'Active',
+    },
+    {
+      id: 2,
+      name: 'Wesley Crusher',
+      role: 'Deus Ex Machina',
+      ship: 'USS Enterprise',
+      species: 'Human/Traveler',
+      status: 'Transcended',
+    },
+    {
+      id: 3,
+      name: 'Geordie LaForge',
+      role: 'Chief Engineer',
+      ship: 'USS Enterprise',
+      species: 'Human',
+      status: 'Active',
+    },
+    {
+      id: 4,
+      name: 'Data',
+      role: 'Lt. Commander',
+      ship: 'USS Enterprise',
+      species: 'Android',
+      status: 'Active',
+    },
+    {
+      id: 5,
+      name: 'William Riker',
+      role: 'First Officer',
+      ship: 'USS Titan',
+      species: 'Human',
+      status: 'Active',
+    },
+    {
+      id: 6,
+      name: 'Worf',
+      role: 'Security Officer',
+      ship: 'DS9',
+      species: 'Klingon',
+      status: 'Active',
+    },
+  ];
+
+  // State management for server-side filtering
+  const [rows, setRows] = useState(allCrewMembers);
+  const [query, setQuery] = useState({ sort: {}, filter: {} });
+  const [loading, setLoading] = useState(false);
+  const [apiCallInfo, setApiCallInfo] = useState('No filters applied yet');
+
+  // Mock API call function - in real implementation, replace with your actual API
+  const fetchFilteredData = useCallback(async (filterQuery) => {
+    setLoading(true);
+    
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // Build query params that would be sent to your API
+    const queryParams = new URLSearchParams();
+    
+    // Add filters to query params
+    if (filterQuery.filter) {
+      Object.entries(filterQuery.filter).forEach(([key, values]) => {
+        if (values && values.length > 0) {
+          queryParams.append(`filter[${key}]`, values.join(','));
+        }
+      });
+    }
+    
+    // Add sorts to query params
+    if (filterQuery.sort) {
+      Object.entries(filterQuery.sort).forEach(([key, direction]) => {
+        if (direction && direction !== 'none') {
+          queryParams.append(`sort[${key}]`, direction);
+        }
+      });
+    }
+    
+    // Show what would be sent to the API
+    const queryString = queryParams.toString();
+    setApiCallInfo(
+      queryString 
+        ? `API called with: ${queryString}`
+        : 'API called with no filters'
+    );
+    
+    // In a real implementation, you would make an actual API call here:
+    // const response = await fetch(`/api/crew?${queryString}`);
+    // const data = await response.json();
+    // return data.rows;
+    
+    // Mock server-side filtering logic (replace this with actual API response)
+    let filteredData = [...allCrewMembers];
+    
+    // Apply filters
+    if (filterQuery.filter) {
+      Object.entries(filterQuery.filter).forEach(([key, values]) => {
+        if (values && values.length > 0) {
+          filteredData = filteredData.filter(row => !values.includes(row[key]));
+        }
+      });
+    }
+    
+    // Apply sorting
+    if (filterQuery.sort) {
+      Object.entries(filterQuery.sort).forEach(([key, direction]) => {
+        if (direction && direction !== 'none') {
+          filteredData.sort((a, b) => {
+            const aVal = String(a[key]).toLowerCase();
+            const bVal = String(b[key]).toLowerCase();
+            const comparison = aVal.localeCompare(bVal);
+            return direction === 'asc' ? comparison : -comparison;
+          });
+        }
+      });
+    }
+    
+    return filteredData;
+  }, []);
+
+  // Handle query changes (filters and sorts)
+  const handleQueryChange = useCallback(async (change) => {
+    let newQuery = { ...query };
+    
+    switch (change.type) {
+      case 'filter': {
+        const { dimension, value } = change.payload;
+        newQuery = {
+          ...newQuery,
+          filter: { ...newQuery.filter, [dimension]: value },
+        };
+        break;
+      }
+      case 'sort': {
+        const { dimension, value } = change.payload;
+        newQuery = {
+          ...newQuery,
+          sort: { [dimension]: value },
+        };
+        break;
+      }
+      case 'reset': {
+        newQuery = { sort: {}, filter: {} };
+        break;
+      }
+    }
+    
+    setQuery(newQuery);
+    
+    // Fetch filtered data from server
+    const filteredRows = await fetchFilteredData(newQuery);
+    setRows(filteredRows);
+    setLoading(false);
+  }, [query, fetchFilteredData]);
+
+  // Initial load
+  useEffect(() => {
+    fetchFilteredData(query).then(data => {
+      setRows(data);
+      setLoading(false);
+    });
+  }, []);
+
+  // Column configuration with filterable columns
+  const columns = [
+    {
+      header: 'Name',
+      key: 'name',
+      size: 'lg',
+      type: 'header',
+      sortable: true,
+    },
+    {
+      header: 'Rank',
+      key: 'role',
+      size: 'lg',
+      sortable: true,
+    },
+    {
+      header: 'Ship',
+      key: 'ship',
+      size: 'lg',
+      sortable: true,
+      // Available filter options for this column
+      filters: ['USS Enterprise', 'USS Titan', 'DS9'],
+    },
+    {
+      header: 'Species',
+      key: 'species',
+      size: 'lg',
+      sortable: true,
+      // Available filter options for this column
+      filters: ['Human', 'Android', 'Klingon'],
+    },
+    {
+      header: 'Status',
+      key: 'status',
+      size: 'md',
+      fill: true,
+      sortable: true,
+      filters: ['Active', 'Transcended'],
+    },
+  ];
+
+  return (
+    <FlexBox column gap={16}>
+      <Text variant="title-sm">Server-Side Filtering Example</Text>
+      <Text color="text-secondary">
+        This example demonstrates how to implement server-side filtering. When you apply a filter or sort,
+        the component calls an API endpoint with the filter parameters instead of filtering locally.
+      </Text>
+      <FlexBox
+        bg="paleBlue"
+        borderRadius="md"
+        fontFamily="monospace"
+        fontSize={14}
+        p={12}
+      >
+        {apiCallInfo}
+      </FlexBox>
+      <DataList
+        columns={columns}
+        header
+        id="server-side-crew"
+        idKey="id"
+        loading={loading}
+        query={query}
+        rows={rows}
+        spacing="condensed"
+        onQueryChange={handleQueryChange}
+      />
+      <Text color="text-secondary" fontSize={14}>
+        <strong>Implementation notes:</strong>
+        <br />
+        • Replace <code>fetchFilteredData</code> with your actual API call
+        <br />
+        • The <code>onQueryChange</code> callback receives filter/sort changes
+        <br />
+        • Pass query parameters to your API endpoint
+        <br />
+        • Update rows with the filtered data from the API response
+        <br />• Use the <code>loading</code> prop to show loading state during API calls
+      </Text>
+    </FlexBox>
+  );
+};
+
+export const ServerSideFiltering: Story = {
+  render: () => <ServerSideFilteringExample />,
 };
