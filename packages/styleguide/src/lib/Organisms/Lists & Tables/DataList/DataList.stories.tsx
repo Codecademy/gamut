@@ -1,9 +1,9 @@
 // Added because SB and TS don't play nice with each other at the moment
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { DataList, DataTable, FlexBox, Text } from '@codecademy/gamut';
+import { Anchor, DataList, DataTable, FillButton, FlexBox, Text } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import {
   cols,
@@ -218,7 +218,7 @@ export const DisableContainerQuery: Story = {
 // Server-side filtering example component
 const ServerSideFilteringExample = () => {
   // Mock data for our example
-  const allCrewMembers = [
+  const allCrewMembers = useMemo(() => [
     {
       id: 1,
       name: 'Jean Luc Picard',
@@ -267,7 +267,7 @@ const ServerSideFilteringExample = () => {
       species: 'Klingon',
       status: 'Active',
     },
-  ];
+  ], []);
 
   // State management for server-side filtering
   const [rows, setRows] = useState(allCrewMembers);
@@ -343,7 +343,7 @@ const ServerSideFilteringExample = () => {
     }
     
     return filteredData;
-  }, []);
+  }, [allCrewMembers]);
 
   // Handle query changes (filters and sorts)
   const handleQueryChange = useCallback(async (change) => {
@@ -382,10 +382,15 @@ const ServerSideFilteringExample = () => {
 
   // Initial load
   useEffect(() => {
-    fetchFilteredData(query).then(data => {
-      setRows(data);
-      setLoading(false);
-    });
+    fetchFilteredData(query)
+      .then(data => {
+        setRows(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Column configuration with filterable columns
@@ -474,4 +479,159 @@ const ServerSideFilteringExample = () => {
 
 export const ServerSideFiltering: Story = {
   render: () => <ServerSideFilteringExample />,
+};
+
+// Custom expand/collapse example
+const CustomExpandExample = () => {
+  const crew = [
+    {
+      id: 1,
+      name: 'Jean Luc Picard',
+      role: 'Captain',
+      ship: 'USS Enterprise',
+      bio: 'An experienced Starfleet officer known for his diplomatic skills and moral integrity.',
+    },
+    {
+      id: 2,
+      name: 'Wesley Crusher',
+      role: 'Acting Ensign',
+      ship: 'USS Enterprise',
+      bio: 'A young prodigy who eventually transcends to a higher plane of existence.',
+    },
+    {
+      id: 3,
+      name: 'Geordie LaForge',
+      role: 'Chief Engineer',
+      ship: 'USS Enterprise',
+      bio: 'A brilliant engineer who can see with the help of his VISOR.',
+    },
+    {
+      id: 4,
+      name: 'Data',
+      role: 'Lt. Commander',
+      ship: 'USS Enterprise',
+      bio: 'An android exploring what it means to be human.',
+    },
+  ];
+
+  // Track which rows are expanded
+  const [expandedRows, setExpandedRows] = useState([]);
+
+  // Handler to toggle expansion from anywhere
+  const handleToggleExpand = useCallback((rowId) => {
+    setExpandedRows((prev) => {
+      if (prev.includes(rowId)) {
+        // Collapse: remove from array
+        return prev.filter((id) => id !== rowId);
+      }
+      // Expand: add to array
+      return [...prev, rowId];
+    });
+  }, []);
+
+  // Standard onRowExpand handler (for the built-in chevron button)
+  const onRowExpand = useCallback(
+    ({ payload: { rowId } }) => {
+      handleToggleExpand(rowId);
+    },
+    [handleToggleExpand]
+  );
+
+  // Columns with custom expand trigger in the name cell
+  const columns = [
+    {
+      header: 'Name',
+      key: 'name',
+      size: 'lg',
+      type: 'header',
+      render: (row) => (
+        <Anchor
+          variant="interface"
+          onClick={(e) => {
+            e.preventDefault();
+            handleToggleExpand(row.id);
+          }}
+        >
+          {row.name}
+        </Anchor>
+      ),
+    },
+    {
+      header: 'Rank',
+      key: 'role',
+      size: 'lg',
+    },
+    {
+      header: 'Ship',
+      key: 'ship',
+      size: 'lg',
+      fill: true,
+    },
+  ];
+
+  // Expanded content
+  const expandedContent = useCallback(
+    ({ row, onCollapse }) => (
+      <FlexBox column flex={1}>
+        <FlexBox borderTop={1} opacity={0.5} />
+        <FlexBox column gap={16} p={24}>
+          <Text variant="title-sm">Biography</Text>
+          <Text>{row.bio}</Text>
+          <FlexBox gap={8}>
+            <FillButton size="small" onClick={onCollapse}>
+              Close
+            </FillButton>
+            <FillButton
+              size="small"
+              variant="secondary"
+              onClick={() => {
+                // eslint-disable-next-line no-alert
+                alert(`More about ${row.name}`);
+              }}
+            >
+              Learn More
+            </FillButton>
+          </FlexBox>
+        </FlexBox>
+      </FlexBox>
+    ),
+    []
+  );
+
+  return (
+    <FlexBox column gap={16}>
+      <Text variant="title-sm">Custom Expand/Collapse Example</Text>
+      <Text color="text-secondary">
+        This example shows how to trigger row expansion from a custom element (like an anchor in the name column).
+        Click on any crew member&apos;s name to expand their row, or use the chevron button on the right.
+      </Text>
+      <DataList
+        columns={columns}
+        expanded={expandedRows}
+        expandedContent={expandedContent}
+        header
+        id="custom-expand"
+        idKey="id"
+        rows={crew}
+        spacing="condensed"
+        onRowExpand={onRowExpand}
+      />
+      <Text color="text-secondary" fontSize={14}>
+        <strong>Implementation notes:</strong>
+        <br />
+        • Manage expanded state yourself with <code>useState</code>
+        <br />
+        • Create a toggle handler that adds/removes row IDs from the expanded array
+        <br />
+        • Use the handler in custom <code>render</code> functions (like the Name column)
+        <br />
+        • Also connect it to <code>onRowExpand</code> so the built-in chevron works
+        <br />• The <code>expandedContent</code> callback receives an <code>onCollapse</code> function for custom close buttons
+      </Text>
+    </FlexBox>
+  );
+};
+
+export const CustomExpand: Story = {
+  render: () => <CustomExpandExample />,
 };
