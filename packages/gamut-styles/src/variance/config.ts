@@ -210,6 +210,8 @@ export const layout = {
   minBlockSize: { property: 'minBlockSize', transform: transformSize },
   maxBlockSize: { property: 'maxBlockSize', transform: transformSize },
   verticalAlign: { property: 'verticalAlign' },
+  writingMode: { property: 'writingMode' },
+  direction: { property: 'direction' },
   ...selfAlignments,
   ...gridItems,
   ...flexItems,
@@ -233,6 +235,7 @@ export const typography = {
   textDecoration: { property: 'textDecoration' },
   textTransform: { property: 'textTransform' },
   whiteSpace: { property: 'whiteSpace' },
+  textOrientation: { property: 'textOrientation' },
 } as const;
 
 export const margin = {
