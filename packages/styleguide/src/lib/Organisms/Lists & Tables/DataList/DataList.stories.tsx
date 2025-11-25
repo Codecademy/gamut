@@ -7,6 +7,11 @@ import {
   DataTable,
   FillButton,
   FlexBox,
+  List,
+  ListCol,
+  ListHeaderCol,
+  ListHeaderRow,
+  ListRow,
   Text,
 } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -803,17 +808,14 @@ const NestedTableExample = () => {
 
   const [expandedRows, setExpandedRows] = useState([]);
 
-  const onRowExpand = useCallback(
-    ({ payload: { toggle, rowId } }) => {
-      setExpandedRows((prev) => {
-        if (toggle) {
-          return prev.filter((id) => id !== rowId);
-        }
-        return [...prev, rowId];
-      });
-    },
-    []
-  );
+  const onRowExpand = useCallback(({ payload: { toggle, rowId } }) => {
+    setExpandedRows((prev) => {
+      if (toggle) {
+        return prev.filter((id) => id !== rowId);
+      }
+      return [...prev, rowId];
+    });
+  }, []);
 
   const columns = useMemo(
     () => [
@@ -915,18 +917,14 @@ const NestedTableExample = () => {
       />
       <Text color="text-secondary" fontSize={14}>
         <strong>Implementation notes:</strong>
-        <br />
-        • Use <code>DataTable</code> component inside{' '}
+        <br />• Use <code>DataTable</code> component inside{' '}
         <code>expandedContent</code>
-        <br />
-        • The nested table receives its own <code>columns</code>,{' '}
+        <br />• The nested table receives its own <code>columns</code>,{' '}
         <code>rows</code>, and <code>id</code>
-        <br />
-        • Add padding/margins for visual hierarchy (e.g., <code>pl=64</code> to
-        align with parent)
-        <br />
-        • Use <code>spacing=&quot;condensed&quot;</code> for nested tables to
-        save space
+        <br />• Add padding/margins for visual hierarchy (e.g.,{' '}
+        <code>pl=64</code> to align with parent)
+        <br />• Use <code>spacing=&quot;condensed&quot;</code> for nested tables
+        to save space
         <br />• Consider adding a background color to distinguish nested content
       </Text>
     </FlexBox>
@@ -935,4 +933,253 @@ const NestedTableExample = () => {
 
 export const NestedTable: Story = {
   render: () => <NestedTableExample />,
+};
+
+// List component as table in expanded content example
+const ListAsTableExample = () => {
+  const crew = useMemo(
+    () => [
+      {
+        id: 1,
+        name: 'Jean Luc Picard',
+        role: 'Captain',
+        ship: 'USS Enterprise',
+      },
+      {
+        id: 2,
+        name: 'Wesley Crusher',
+        role: 'Acting Ensign',
+        ship: 'USS Enterprise',
+      },
+      {
+        id: 3,
+        name: 'Geordie LaForge',
+        role: 'Chief Engineer',
+        ship: 'USS Enterprise',
+      },
+      {
+        id: 4,
+        name: 'Data',
+        role: 'Lt. Commander',
+        ship: 'USS Enterprise',
+      },
+    ],
+    []
+  );
+
+  // Mock mission data for each crew member
+  const missionData = useMemo(
+    () => ({
+      1: [
+        {
+          id: 'm1',
+          mission: 'First Contact with the Borg',
+          stardate: '42761.3',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+        {
+          id: 'm2',
+          mission: 'Diplomatic Mission to Romulus',
+          stardate: '43152.4',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+        {
+          id: 'm3',
+          mission: 'Rescue Operation at Wolf 359',
+          stardate: '44001.4',
+          status: 'Completed',
+          outcome: 'Partial Success',
+        },
+      ],
+      2: [
+        {
+          id: 'm4',
+          mission: 'Training Exercise Alpha',
+          stardate: '42523.7',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+        {
+          id: 'm5',
+          mission: 'Assist in Engine Repairs',
+          stardate: '42901.3',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+      ],
+      3: [
+        {
+          id: 'm6',
+          mission: 'Engine Overhaul Project',
+          stardate: '42686.4',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+        {
+          id: 'm7',
+          mission: 'Holodeck Maintenance',
+          stardate: '43125.8',
+          status: 'In Progress',
+          outcome: 'Pending',
+        },
+        {
+          id: 'm8',
+          mission: 'Warp Core Analysis',
+          stardate: '43349.2',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+        {
+          id: 'm9',
+          mission: 'Sensor Array Upgrade',
+          stardate: '43489.2',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+      ],
+      4: [
+        {
+          id: 'm10',
+          mission: 'Science Survey Mission',
+          stardate: '42761.9',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+        {
+          id: 'm11',
+          mission: 'Away Team Investigation',
+          stardate: '43125.8',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+      ],
+    }),
+    []
+  );
+
+  const [expandedRows, setExpandedRows] = useState([]);
+
+  const onRowExpand = useCallback(({ payload: { toggle, rowId } }) => {
+    setExpandedRows((prev) => {
+      if (toggle) {
+        return prev.filter((id) => id !== rowId);
+      }
+      return [...prev, rowId];
+    });
+  }, []);
+
+  const columns = useMemo(
+    () => [
+      {
+        header: 'Name',
+        key: 'name',
+        size: 'lg',
+        type: 'header',
+      },
+      {
+        header: 'Rank',
+        key: 'role',
+        size: 'lg',
+      },
+      {
+        header: 'Ship',
+        key: 'ship',
+        size: 'lg',
+        fill: true,
+      },
+    ],
+    []
+  );
+
+  const expandedContent = useCallback(
+    ({ row }) => {
+      const missions = missionData[row.id] || [];
+
+      return (
+        <FlexBox
+          bg="background-current"
+          borderColor="background-hover"
+          borderTop={1}
+          column
+          p={16}
+          pl={[16, , 64]}
+        >
+          <Text mb={12} variant="title-sm">
+            Mission History for {row.name}
+          </Text>
+          <List as="table" id={`missions-list-${row.id}`} variant="table">
+            <ListHeaderRow>
+              <ListHeaderCol size="xl" type="header">
+                Mission
+              </ListHeaderCol>
+              <ListHeaderCol size="md">Stardate</ListHeaderCol>
+              <ListHeaderCol size="sm">Status</ListHeaderCol>
+              <ListHeaderCol fill size="md">
+                Outcome
+              </ListHeaderCol>
+            </ListHeaderRow>
+            {missions.map((mission) => (
+              <ListRow key={mission.id}>
+                <ListCol size="xl" type="header">
+                  <Text truncate="ellipsis" truncateLines={1}>
+                    {mission.mission}
+                  </Text>
+                </ListCol>
+                <ListCol size="md">
+                  <Text>{mission.stardate}</Text>
+                </ListCol>
+                <ListCol size="sm">
+                  <Text>{mission.status}</Text>
+                </ListCol>
+                <ListCol fill size="md">
+                  <Text>{mission.outcome}</Text>
+                </ListCol>
+              </ListRow>
+            ))}
+          </List>
+        </FlexBox>
+      );
+    },
+    [missionData]
+  );
+
+  return (
+    <FlexBox column gap={16}>
+      <Text variant="title-sm">List Component as Table in Expanded Content</Text>
+      <Text color="text-secondary">
+        This example shows how to use the List component with{' '}
+        <code>as=&quot;table&quot;</code> inside expanded content. Click the
+        chevron to expand a crew member and see their mission history.
+      </Text>
+      <DataList
+        columns={columns}
+        expanded={expandedRows}
+        expandedContent={expandedContent}
+        header
+        id="list-as-table"
+        idKey="id"
+        rows={crew}
+        spacing="condensed"
+        onRowExpand={onRowExpand}
+      />
+      <Text color="text-secondary" fontSize={14}>
+        <strong>Implementation notes:</strong>
+        <br />• Use <code>List as=&quot;table&quot; variant=&quot;table&quot;</code>{' '}
+        as the container
+        <br />• Add <code>ListHeaderRow</code> with <code>ListHeaderCol</code>{' '}
+        components for headers
+        <br />• Use <code>ListRow</code> and <code>ListCol</code> for data rows
+        <br />• Set <code>type=&quot;header&quot;</code> on the first column for
+        row headers
+        <br />• List component gives you more flexibility than DataTable for custom
+        layouts
+      </Text>
+    </FlexBox>
+  );
+};
+
+export const ListAsTable: Story = {
+  render: () => <ListAsTableExample />,
 };
