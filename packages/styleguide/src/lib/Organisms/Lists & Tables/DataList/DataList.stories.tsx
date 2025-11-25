@@ -9,9 +9,8 @@ import {
   FlexBox,
   List,
   ListCol,
-  ListHeaderCol,
-  ListHeaderRow,
   ListRow,
+  TableHeader,
   Text,
 } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -1109,17 +1108,27 @@ const ListAsTableExample = () => {
           <Text mb={12} variant="title-sm">
             Mission History for {row.name}
           </Text>
-          <List as="table" id={`missions-list-${row.id}`} variant="table">
-            <ListHeaderRow>
-              <ListHeaderCol size="xl" type="header">
-                Mission
-              </ListHeaderCol>
-              <ListHeaderCol size="md">Stardate</ListHeaderCol>
-              <ListHeaderCol size="sm">Status</ListHeaderCol>
-              <ListHeaderCol fill size="md">
-                Outcome
-              </ListHeaderCol>
-            </ListHeaderRow>
+          <List
+            as="table"
+            header={
+              <TableHeader>
+                <ListCol columnHeader size="xl" type="header">
+                  Mission
+                </ListCol>
+                <ListCol columnHeader size="md">
+                  Stardate
+                </ListCol>
+                <ListCol columnHeader size="sm">
+                  Status
+                </ListCol>
+                <ListCol columnHeader fill size="md">
+                  Outcome
+                </ListCol>
+              </TableHeader>
+            }
+            id={`missions-list-${row.id}`}
+            variant="table"
+          >
             {missions.map((mission) => (
               <ListRow key={mission.id}>
                 <ListCol size="xl" type="header">
@@ -1147,7 +1156,9 @@ const ListAsTableExample = () => {
 
   return (
     <FlexBox column gap={16}>
-      <Text variant="title-sm">List Component as Table in Expanded Content</Text>
+      <Text variant="title-sm">
+        List Component as Table in Expanded Content
+      </Text>
       <Text color="text-secondary">
         This example shows how to use the List component with{' '}
         <code>as=&quot;table&quot;</code> inside expanded content. Click the
@@ -1166,15 +1177,17 @@ const ListAsTableExample = () => {
       />
       <Text color="text-secondary" fontSize={14}>
         <strong>Implementation notes:</strong>
-        <br />• Use <code>List as=&quot;table&quot; variant=&quot;table&quot;</code>{' '}
-        as the container
-        <br />• Add <code>ListHeaderRow</code> with <code>ListHeaderCol</code>{' '}
-        components for headers
+        <br />• Use{' '}
+        <code>List as=&quot;table&quot; variant=&quot;table&quot;</code> as the
+        container
+        <br />• Pass a <code>header</code> prop with <code>TableHeader</code>{' '}
+        containing <code>ListCol</code> components with{' '}
+        <code>columnHeader</code> prop
         <br />• Use <code>ListRow</code> and <code>ListCol</code> for data rows
         <br />• Set <code>type=&quot;header&quot;</code> on the first column for
         row headers
-        <br />• List component gives you more flexibility than DataTable for custom
-        layouts
+        <br />• List component gives you more flexibility than DataTable for
+        custom layouts
       </Text>
     </FlexBox>
   );
