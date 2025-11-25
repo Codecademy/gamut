@@ -21,9 +21,7 @@ type PlacementParam = { placement: Placement };
 
 export const createFocusOnClick = (ref: RefObject<HTMLDivElement>) => {
   return ({ isTipHidden }: { isTipHidden: boolean }) => {
-    if (!isTipHidden) {
-      ref.current?.focus();
-    }
+    if (!isTipHidden) ref.current?.focus();
   };
 };
 
@@ -120,9 +118,10 @@ export const testShowTipOnClick = async ({
   info,
   placement,
 }: ViewParam & InfoParam & PlacementParam) => {
-  const tip = placement === 'inline' ? view.getByText(info) : null;
+  const isInline = placement === 'inline';
+  const tip = isInline ? view.getByText(info) : null;
 
-  if (placement === 'inline') {
+  if (isInline) {
     expect(tip).not.toBeVisible();
   } else {
     expect(view.queryByText(info)).toBeNull();
@@ -132,7 +131,7 @@ export const testShowTipOnClick = async ({
     await userEvent.click(view.getByRole('button'));
   });
 
-  if (placement === 'inline') {
+  if (isInline) {
     expect(tip?.parentElement).not.toHaveStyle({
       visibility: 'hidden',
       opacity: 0,
@@ -154,29 +153,27 @@ export const testEscapeKeyReturnsFocus = async ({
     await userEvent.click(button);
   });
 
-  if (placement === 'inline') {
+  const isInline = placement === 'inline';
+
+  if (isInline) {
     const tip = getTipContent(view, info);
     expect(tip).toBeVisible();
-
-    await pressKey('{Escape}');
-
-    await waitFor(() => {
-      expect(tip).not.toBeVisible();
-      expect(button).toHaveFocus();
-    });
   } else {
     await waitFor(() => {
-      const elements = view.getAllByText(info);
-      expect(elements.length).toBeGreaterThan(0);
-    });
-
-    await pressKey('{Escape}');
-
-    await waitFor(() => {
-      expect(view.queryByText(info)).toBeNull();
-      expect(button).toHaveFocus();
+      expect(view.getAllByText(info).length).toBeGreaterThan(0);
     });
   }
+
+  await pressKey('{Escape}');
+
+  await waitFor(() => {
+    if (isInline) {
+      expect(getTipContent(view, info)).not.toBeVisible();
+    } else {
+      expect(view.queryByText(info)).toBeNull();
+    }
+    expect(button).toHaveFocus();
+  });
 };
 
 export const testFocusWrap = async ({
@@ -214,11 +211,10 @@ export const getTipContent = (
   text: string,
   useQuery = false
 ) => {
-  const getAllMethod = useQuery ? 'queryAllByText' : 'getAllByText';
-  const elements = view[getAllMethod](text);
+  const elements = view[useQuery ? 'queryAllByText' : 'getAllByText'](text);
   // Find the tip body (not the screenreader text with aria-live="assertive")
   return (
-    elements.find((el) => el.getAttribute('aria-live') !== 'assertive') ||
+    elements.find((el) => el.getAttribute('aria-live') !== 'assertive') ??
     elements[0]
   );
 };
@@ -314,14 +310,15 @@ const assertTipOpen = async ({
   info,
   placement,
 }: ViewParam & InfoParam & PlacementParam & { button: HTMLElement }) => {
-  if (placement === 'floating') {
+  const isFloating = placement === 'floating';
+
+  if (isFloating) {
     await waitFor(() => {
       expect(view.queryAllByText(info).length).toBe(2);
       expect(button).toHaveAttribute('aria-expanded', 'true');
     });
   } else {
-    const tip = getTipContent(view, info);
-    expect(tip).toBeVisible();
+    expect(getTipContent(view, info)).toBeVisible();
     expect(button).toHaveAttribute('aria-expanded', 'true');
   }
 };
@@ -332,18 +329,16 @@ const assertTipClosed = async ({
   info,
   placement,
 }: ViewParam & InfoParam & PlacementParam & { button: HTMLElement }) => {
-  if (placement === 'floating') {
-    await waitFor(() => {
+  const isFloating = placement === 'floating';
+
+  await waitFor(() => {
+    if (isFloating) {
       expect(view.queryByText(info)).toBeNull();
-      expect(button).toHaveAttribute('aria-expanded', 'false');
-    });
-  } else {
-    const tip = getTipContent(view, info);
-    await waitFor(() => {
-      expect(tip).not.toBeVisible();
-      expect(button).toHaveAttribute('aria-expanded', 'false');
-    });
-  }
+    } else {
+      expect(getTipContent(view, info)).not.toBeVisible();
+    }
+    expect(button).toHaveAttribute('aria-expanded', 'false');
+  });
 };
 
 const withTemporaryElement = async <T,>(
@@ -388,17 +383,20 @@ export const testModalDoesNotCloseInfoTip = async ({
   const mockModal = document.createElement('div');
   mockModal.setAttribute('role', 'dialog');
 
-  if (placement === 'floating') {
+  const isFloating = placement === 'floating';
+  const parent = isFloating ? view.container : document.body;
+
+  if (isFloating) {
     const modalButton = document.createElement('button');
     modalButton.textContent = 'Modal button';
     mockModal.appendChild(modalButton);
-    await withTemporaryElement(mockModal, view.container, async () => {
+    await withTemporaryElement(mockModal, parent, async () => {
       modalButton.focus();
       await pressKey('{Escape}');
       await assertTipOpen({ view, button, info, placement });
     });
   } else {
-    await withTemporaryElement(mockModal, document.body, async () => {
+    await withTemporaryElement(mockModal, parent, async () => {
       await pressKey('{Escape}');
       await assertTipOpen({ view, button, info, placement });
     });

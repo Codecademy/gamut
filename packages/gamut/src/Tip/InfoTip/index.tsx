@@ -64,9 +64,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       callback: () => void,
       delay: number
     ) => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+      clearTimeout(timeoutRef.current ?? undefined);
       timeoutRef.current = setTimeout(() => {
         callback();
         timeoutRef.current = null;
@@ -79,8 +77,8 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     (node: HTMLDivElement | null) => {
       popoverContentNodeRef.current = node;
 
-      if (node && onClick && !isTipHidden && isFloating) {
-        onClick({ isTipHidden: false });
+      if (node && !isTipHidden && isFloating) {
+        onClick?.({ isTipHidden: false });
       }
     },
     [onClick, isTipHidden, isFloating]
@@ -93,8 +91,8 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     const announceTimeout = announceTimeoutRef.current;
 
     return () => {
-      if (ariaHiddenTimeout) clearTimeout(ariaHiddenTimeout);
-      if (announceTimeout) clearTimeout(announceTimeout);
+      clearTimeout(ariaHiddenTimeout ?? undefined);
+      clearTimeout(announceTimeout ?? undefined);
     };
   }, []);
 
@@ -102,21 +100,17 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     (nextTipState: boolean) => {
       setHideTip(nextTipState);
 
-      if (!nextTipState) {
-        if (!isFloating) {
-          clearAndSetTimeout(
-            ariaHiddenTimeoutRef,
-            () => setIsAriaHidden(true),
-            ARIA_HIDDEN_DELAY_MS
-          );
-        }
-      } else {
+      if (!nextTipState && !isFloating) {
+        clearAndSetTimeout(
+          ariaHiddenTimeoutRef,
+          () => setIsAriaHidden(true),
+          ARIA_HIDDEN_DELAY_MS
+        );
+      } else if (nextTipState) {
         if (isAriaHidden) setIsAriaHidden(false);
         setShouldAnnounce(false);
-        if (ariaHiddenTimeoutRef.current) {
-          clearTimeout(ariaHiddenTimeoutRef.current);
-          ariaHiddenTimeoutRef.current = null;
-        }
+        clearTimeout(ariaHiddenTimeoutRef.current ?? undefined);
+        ariaHiddenTimeoutRef.current = null;
       }
     },
     [isAriaHidden, isFloating, clearAndSetTimeout]
@@ -125,10 +119,11 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const handleOutsideClick = useCallback(
     (e: MouseEvent) => {
       const wrapper = wrapperRef.current;
-      if (
+      const isOutside =
         wrapper &&
-        (e.target instanceof HTMLElement ? !wrapper.contains(e.target) : true)
-      ) {
+        (!(e.target instanceof HTMLElement) || !wrapper.contains(e.target));
+
+      if (isOutside) {
         setTipIsHidden(true);
       }
     },
@@ -149,11 +144,11 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       isInitialMount.current = false;
       return;
     }
-    if (!isFloating && onClick) {
-      onClick({ isTipHidden });
-    }
-    if (isFloating && isTipHidden && onClick) {
-      onClick({ isTipHidden: true });
+
+    if (!isFloating) {
+      onClick?.({ isTipHidden });
+    } else if (isTipHidden) {
+      onClick?.({ isTipHidden: true });
     }
   }, [isTipHidden, isFloating, onClick]);
 
@@ -168,10 +163,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     if (isTipHidden) return;
 
     const handleGlobalEscapeKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Escape') return;
-
-      const hasModal = document.querySelector(MODAL_SELECTOR);
-      if (hasModal) return;
+      if (e.key !== 'Escape' || document.querySelector(MODAL_SELECTOR)) return;
 
       e.preventDefault();
       setTipIsHidden(true);
@@ -188,10 +180,9 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         if (focusableElements.length === 0) return;
 
         const lastElement = focusableElements[focusableElements.length - 1];
-        const { activeElement } = document;
 
         // Only wrap forward: if on last element, wrap to button
-        if (activeElement === lastElement) {
+        if (document.activeElement === lastElement) {
           event.preventDefault();
           buttonRef.current?.focus();
         }
@@ -200,16 +191,12 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       let popoverContent: HTMLDivElement | null = null;
       const timeoutId = setTimeout(() => {
         popoverContent = popoverContentNodeRef.current;
-        if (popoverContent) {
-          popoverContent.addEventListener('keydown', handleTabKeyInPopover);
-        }
+        popoverContent?.addEventListener('keydown', handleTabKeyInPopover);
       }, 0);
 
       return () => {
         clearTimeout(timeoutId);
-        if (popoverContent) {
-          popoverContent.removeEventListener('keydown', handleTabKeyInPopover);
-        }
+        popoverContent?.removeEventListener('keydown', handleTabKeyInPopover);
         document.removeEventListener('keydown', handleGlobalEscapeKey);
       };
     }
@@ -242,7 +229,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const extractedTextContent = useMemo(() => extractTextContent(info), [info]);
 
   const screenreaderInfo =
-    shouldAnnounce && !isTipHidden ? extractedTextContent : `\xa0`;
+    shouldAnnounce && !isTipHidden ? extractedTextContent : '\xa0';
 
   const screenreaderText = useMemo(
     () => (
