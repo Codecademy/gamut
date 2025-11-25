@@ -1,7 +1,14 @@
 // Added because SB and TS don't play nice with each other at the moment
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { Anchor, DataList, DataTable, FillButton, FlexBox, Text } from '@codecademy/gamut';
+import {
+  Anchor,
+  DataList,
+  DataTable,
+  FillButton,
+  FlexBox,
+  Text,
+} from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
@@ -218,56 +225,59 @@ export const DisableContainerQuery: Story = {
 // Server-side filtering example component
 const ServerSideFilteringExample = () => {
   // Mock data for our example
-  const allCrewMembers = useMemo(() => [
-    {
-      id: 1,
-      name: 'Jean Luc Picard',
-      role: 'Captain',
-      ship: 'USS Enterprise',
-      species: 'Human',
-      status: 'Active',
-    },
-    {
-      id: 2,
-      name: 'Wesley Crusher',
-      role: 'Deus Ex Machina',
-      ship: 'USS Enterprise',
-      species: 'Human/Traveler',
-      status: 'Transcended',
-    },
-    {
-      id: 3,
-      name: 'Geordie LaForge',
-      role: 'Chief Engineer',
-      ship: 'USS Enterprise',
-      species: 'Human',
-      status: 'Active',
-    },
-    {
-      id: 4,
-      name: 'Data',
-      role: 'Lt. Commander',
-      ship: 'USS Enterprise',
-      species: 'Android',
-      status: 'Active',
-    },
-    {
-      id: 5,
-      name: 'William Riker',
-      role: 'First Officer',
-      ship: 'USS Titan',
-      species: 'Human',
-      status: 'Active',
-    },
-    {
-      id: 6,
-      name: 'Worf',
-      role: 'Security Officer',
-      ship: 'DS9',
-      species: 'Klingon',
-      status: 'Active',
-    },
-  ], []);
+  const allCrewMembers = useMemo(
+    () => [
+      {
+        id: 1,
+        name: 'Jean Luc Picard',
+        role: 'Captain',
+        ship: 'USS Enterprise',
+        species: 'Human',
+        status: 'Active',
+      },
+      {
+        id: 2,
+        name: 'Wesley Crusher',
+        role: 'Deus Ex Machina',
+        ship: 'USS Enterprise',
+        species: 'Human/Traveler',
+        status: 'Transcended',
+      },
+      {
+        id: 3,
+        name: 'Geordie LaForge',
+        role: 'Chief Engineer',
+        ship: 'USS Enterprise',
+        species: 'Human',
+        status: 'Active',
+      },
+      {
+        id: 4,
+        name: 'Data',
+        role: 'Lt. Commander',
+        ship: 'USS Enterprise',
+        species: 'Android',
+        status: 'Active',
+      },
+      {
+        id: 5,
+        name: 'William Riker',
+        role: 'First Officer',
+        ship: 'USS Titan',
+        species: 'Human',
+        status: 'Active',
+      },
+      {
+        id: 6,
+        name: 'Worf',
+        role: 'Security Officer',
+        ship: 'DS9',
+        species: 'Klingon',
+        status: 'Active',
+      },
+    ],
+    []
+  );
 
   // State management for server-side filtering
   const [rows, setRows] = useState(allCrewMembers);
@@ -276,114 +286,122 @@ const ServerSideFilteringExample = () => {
   const [apiCallInfo, setApiCallInfo] = useState('No filters applied yet');
 
   // Mock API call function - in real implementation, replace with your actual API
-  const fetchFilteredData = useCallback(async (filterQuery) => {
-    setLoading(true);
-    
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    // Build query params that would be sent to your API
-    const queryParams = new URLSearchParams();
-    
-    // Add filters to query params
-    if (filterQuery.filter) {
-      Object.entries(filterQuery.filter).forEach(([key, values]) => {
-        if (values && values.length > 0) {
-          queryParams.append(`filter[${key}]`, values.join(','));
-        }
-      });
-    }
-    
-    // Add sorts to query params
-    if (filterQuery.sort) {
-      Object.entries(filterQuery.sort).forEach(([key, direction]) => {
-        if (direction && direction !== 'none') {
-          queryParams.append(`sort[${key}]`, direction);
-        }
-      });
-    }
-    
-    // Show what would be sent to the API
-    const queryString = queryParams.toString();
-    setApiCallInfo(
-      queryString 
-        ? `API called with: ${queryString}`
-        : 'API called with no filters'
-    );
-    
-    // In a real implementation, you would make an actual API call here:
-    // const response = await fetch(`/api/crew?${queryString}`);
-    // const data = await response.json();
-    // return data.rows;
-    
-    // Mock server-side filtering logic (replace this with actual API response)
-    let filteredData = [...allCrewMembers];
-    
-    // Apply filters
-    if (filterQuery.filter) {
-      Object.entries(filterQuery.filter).forEach(([key, values]) => {
-        if (values && values.length > 0) {
-          filteredData = filteredData.filter(row => !values.includes(row[key]));
-        }
-      });
-    }
-    
-    // Apply sorting
-    if (filterQuery.sort) {
-      Object.entries(filterQuery.sort).forEach(([key, direction]) => {
-        if (direction && direction !== 'none') {
-          filteredData.sort((a, b) => {
-            const aVal = String(a[key]).toLowerCase();
-            const bVal = String(b[key]).toLowerCase();
-            const comparison = aVal.localeCompare(bVal);
-            return direction === 'asc' ? comparison : -comparison;
-          });
-        }
-      });
-    }
-    
-    return filteredData;
-  }, [allCrewMembers]);
+  const fetchFilteredData = useCallback(
+    async (filterQuery) => {
+      setLoading(true);
+
+      // Simulate API call delay
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
+      // Build query params that would be sent to your API
+      const queryParams = new URLSearchParams();
+
+      // Add filters to query params
+      if (filterQuery.filter) {
+        Object.entries(filterQuery.filter).forEach(([key, values]) => {
+          if (values && values.length > 0) {
+            queryParams.append(`filter[${key}]`, values.join(','));
+          }
+        });
+      }
+
+      // Add sorts to query params
+      if (filterQuery.sort) {
+        Object.entries(filterQuery.sort).forEach(([key, direction]) => {
+          if (direction && direction !== 'none') {
+            queryParams.append(`sort[${key}]`, direction);
+          }
+        });
+      }
+
+      // Show what would be sent to the API
+      const queryString = queryParams.toString();
+      setApiCallInfo(
+        queryString
+          ? `API called with: ${queryString}`
+          : 'API called with no filters'
+      );
+
+      // In a real implementation, you would make an actual API call here:
+      // const response = await fetch(`/api/crew?${queryString}`);
+      // const data = await response.json();
+      // return data.rows;
+
+      // Mock server-side filtering logic (replace this with actual API response)
+      let filteredData = [...allCrewMembers];
+
+      // Apply filters
+      if (filterQuery.filter) {
+        Object.entries(filterQuery.filter).forEach(([key, values]) => {
+          if (values && values.length > 0) {
+            filteredData = filteredData.filter(
+              (row) => !values.includes(row[key])
+            );
+          }
+        });
+      }
+
+      // Apply sorting
+      if (filterQuery.sort) {
+        Object.entries(filterQuery.sort).forEach(([key, direction]) => {
+          if (direction && direction !== 'none') {
+            filteredData.sort((a, b) => {
+              const aVal = String(a[key]).toLowerCase();
+              const bVal = String(b[key]).toLowerCase();
+              const comparison = aVal.localeCompare(bVal);
+              return direction === 'asc' ? comparison : -comparison;
+            });
+          }
+        });
+      }
+
+      return filteredData;
+    },
+    [allCrewMembers]
+  );
 
   // Handle query changes (filters and sorts)
-  const handleQueryChange = useCallback(async (change) => {
-    let newQuery = { ...query };
-    
-    switch (change.type) {
-      case 'filter': {
-        const { dimension, value } = change.payload;
-        newQuery = {
-          ...newQuery,
-          filter: { ...newQuery.filter, [dimension]: value },
-        };
-        break;
+  const handleQueryChange = useCallback(
+    async (change) => {
+      let newQuery = { ...query };
+
+      switch (change.type) {
+        case 'filter': {
+          const { dimension, value } = change.payload;
+          newQuery = {
+            ...newQuery,
+            filter: { ...newQuery.filter, [dimension]: value },
+          };
+          break;
+        }
+        case 'sort': {
+          const { dimension, value } = change.payload;
+          newQuery = {
+            ...newQuery,
+            sort: { [dimension]: value },
+          };
+          break;
+        }
+        case 'reset': {
+          newQuery = { sort: {}, filter: {} };
+          break;
+        }
       }
-      case 'sort': {
-        const { dimension, value } = change.payload;
-        newQuery = {
-          ...newQuery,
-          sort: { [dimension]: value },
-        };
-        break;
-      }
-      case 'reset': {
-        newQuery = { sort: {}, filter: {} };
-        break;
-      }
-    }
-    
-    setQuery(newQuery);
-    
-    // Fetch filtered data from server
-    const filteredRows = await fetchFilteredData(newQuery);
-    setRows(filteredRows);
-    setLoading(false);
-  }, [query, fetchFilteredData]);
+
+      setQuery(newQuery);
+
+      // Fetch filtered data from server
+      const filteredRows = await fetchFilteredData(newQuery);
+      setRows(filteredRows);
+      setLoading(false);
+    },
+    [query, fetchFilteredData]
+  );
 
   // Initial load
   useEffect(() => {
     fetchFilteredData(query)
-      .then(data => {
+      .then((data) => {
         setRows(data);
         setLoading(false);
       })
@@ -438,8 +456,9 @@ const ServerSideFilteringExample = () => {
     <FlexBox column gap={16}>
       <Text variant="title-sm">Server-Side Filtering Example</Text>
       <Text color="text-secondary">
-        This example demonstrates how to implement server-side filtering. When you apply a filter or sort,
-        the component calls an API endpoint with the filter parameters instead of filtering locally.
+        This example demonstrates how to implement server-side filtering. When
+        you apply a filter or sort, the component calls an API endpoint with the
+        filter parameters instead of filtering locally.
       </Text>
       <FlexBox
         bg="paleBlue"
@@ -463,15 +482,15 @@ const ServerSideFilteringExample = () => {
       />
       <Text color="text-secondary" fontSize={14}>
         <strong>Implementation notes:</strong>
-        <br />
-        • Replace <code>fetchFilteredData</code> with your actual API call
-        <br />
-        • The <code>onQueryChange</code> callback receives filter/sort changes
+        <br />• Replace <code>fetchFilteredData</code> with your actual API call
+        <br />• The <code>onQueryChange</code> callback receives filter/sort
+        changes
         <br />
         • Pass query parameters to your API endpoint
         <br />
         • Update rows with the filtered data from the API response
-        <br />• Use the <code>loading</code> prop to show loading state during API calls
+        <br />• Use the <code>loading</code> prop to show loading state during
+        API calls
       </Text>
     </FlexBox>
   );
@@ -481,152 +500,175 @@ export const ServerSideFiltering: Story = {
   render: () => <ServerSideFilteringExample />,
 };
 
-// Custom expand/collapse example
+// Custom expand/collapse example without chevron
 const CustomExpandExample = () => {
-  const crew = [
-    {
-      id: 1,
-      name: 'Jean Luc Picard',
-      role: 'Captain',
-      ship: 'USS Enterprise',
-      bio: 'An experienced Starfleet officer known for his diplomatic skills and moral integrity.',
-    },
-    {
-      id: 2,
-      name: 'Wesley Crusher',
-      role: 'Acting Ensign',
-      ship: 'USS Enterprise',
-      bio: 'A young prodigy who eventually transcends to a higher plane of existence.',
-    },
-    {
-      id: 3,
-      name: 'Geordie LaForge',
-      role: 'Chief Engineer',
-      ship: 'USS Enterprise',
-      bio: 'A brilliant engineer who can see with the help of his VISOR.',
-    },
-    {
-      id: 4,
-      name: 'Data',
-      role: 'Lt. Commander',
-      ship: 'USS Enterprise',
-      bio: 'An android exploring what it means to be human.',
-    },
-  ];
+  // Expanded data with crew members
+  const crewData = useMemo(
+    () => [
+      {
+        id: 1,
+        name: 'Jean Luc Picard',
+        role: 'Captain',
+        ship: 'USS Enterprise',
+        bio: 'An experienced Starfleet officer known for his diplomatic skills and moral integrity.',
+      },
+      {
+        id: 2,
+        name: 'Wesley Crusher',
+        role: 'Acting Ensign',
+        ship: 'USS Enterprise',
+        bio: 'A young prodigy who eventually transcends to a higher plane of existence.',
+      },
+      {
+        id: 3,
+        name: 'Geordie LaForge',
+        role: 'Chief Engineer',
+        ship: 'USS Enterprise',
+        bio: 'A brilliant engineer who can see with the help of his VISOR.',
+      },
+      {
+        id: 4,
+        name: 'Data',
+        role: 'Lt. Commander',
+        ship: 'USS Enterprise',
+        bio: 'An android exploring what it means to be human.',
+      },
+    ],
+    []
+  );
 
   // Track which rows are expanded
-  const [expandedRows, setExpandedRows] = useState([]);
+  const [expandedIds, setExpandedIds] = useState([]);
 
-  // Handler to toggle expansion from anywhere
+  // Handler to toggle expansion
   const handleToggleExpand = useCallback((rowId) => {
-    setExpandedRows((prev) => {
+    setExpandedIds((prev) => {
       if (prev.includes(rowId)) {
-        // Collapse: remove from array
         return prev.filter((id) => id !== rowId);
       }
-      // Expand: add to array
       return [...prev, rowId];
     });
   }, []);
 
-  // Standard onRowExpand handler (for the built-in chevron button)
-  const onRowExpand = useCallback(
-    ({ payload: { rowId } }) => {
-      handleToggleExpand(rowId);
-    },
-    [handleToggleExpand]
-  );
+  // Generate rows that include expanded content inline
+  const rows = useMemo(() => {
+    const result = [];
+    crewData.forEach((crew) => {
+      // Add the main row
+      result.push({
+        ...crew,
+        rowType: 'main',
+        mainId: crew.id,
+      });
 
-  // Columns with custom expand trigger in the name cell
-  const columns = [
-    {
-      header: 'Name',
-      key: 'name',
-      size: 'lg',
-      type: 'header',
-      render: (row) => (
-        <Anchor
-          variant="interface"
-          onClick={(e) => {
-            e.preventDefault();
-            handleToggleExpand(row.id);
-          }}
-        >
-          {row.name}
-        </Anchor>
-      ),
-    },
-    {
-      header: 'Rank',
-      key: 'role',
-      size: 'lg',
-    },
-    {
-      header: 'Ship',
-      key: 'ship',
-      size: 'lg',
-      fill: true,
-    },
-  ];
+      // If expanded, add an expanded content row
+      if (expandedIds.includes(crew.id)) {
+        result.push({
+          id: `${crew.id}-expanded`,
+          name: crew.name,
+          bio: crew.bio,
+          role: '',
+          ship: '',
+          rowType: 'expanded',
+          mainId: crew.id,
+        });
+      }
+    });
+    return result;
+  }, [crewData, expandedIds]);
 
-  // Expanded content
-  const expandedContent = useCallback(
-    ({ row, onCollapse }) => (
-      <FlexBox column flex={1}>
-        <FlexBox borderTop={1} opacity={0.5} />
-        <FlexBox column gap={16} p={24}>
-          <Text variant="title-sm">Biography</Text>
-          <Text>{row.bio}</Text>
-          <FlexBox gap={8}>
-            <FillButton size="small" onClick={onCollapse}>
-              Close
-            </FillButton>
-            <FillButton
-              size="small"
-              variant="secondary"
-              onClick={() => {
-                // eslint-disable-next-line no-alert
-                alert(`More about ${row.name}`);
+  // Columns with custom expand trigger and expanded content rendering
+  const columns = useMemo(
+    () => [
+      {
+        header: 'Name',
+        key: 'name',
+        size: 'lg',
+        type: 'header',
+        render: (row) => {
+          if (row.rowType === 'expanded') {
+            return (
+              <FlexBox column gap={16} pb={16} pt={8} width="100%">
+                <Text variant="title-sm">Biography</Text>
+                <Text>{row.bio}</Text>
+                <FlexBox gap={8}>
+                  <FillButton
+                    size="small"
+                    onClick={() => handleToggleExpand(row.mainId)}
+                  >
+                    Close
+                  </FillButton>
+                  <FillButton
+                    size="small"
+                    variant="secondary"
+                    onClick={() => {
+                      // eslint-disable-next-line no-alert
+                      alert(`More about ${row.name}`);
+                    }}
+                  >
+                    Learn More
+                  </FillButton>
+                </FlexBox>
+              </FlexBox>
+            );
+          }
+          return (
+            <Anchor
+              variant="interface"
+              onClick={(e) => {
+                e.preventDefault();
+                handleToggleExpand(row.id);
               }}
             >
-              Learn More
-            </FillButton>
-          </FlexBox>
-        </FlexBox>
-      </FlexBox>
-    ),
-    []
+              {row.name}
+            </Anchor>
+          );
+        },
+      },
+      {
+        header: 'Rank',
+        key: 'role',
+        size: 'lg',
+      },
+      {
+        header: 'Ship',
+        key: 'ship',
+        size: 'lg',
+        fill: true,
+      },
+    ],
+    [handleToggleExpand]
   );
 
   return (
     <FlexBox column gap={16}>
-      <Text variant="title-sm">Custom Expand/Collapse Example</Text>
+      <Text variant="title-sm">Custom Expand/Collapse (No Chevron)</Text>
       <Text color="text-secondary">
-        This example shows how to trigger row expansion from a custom element (like an anchor in the name column).
-        Click on any crew member&apos;s name to expand their row, or use the chevron button on the right.
+        This example shows expand/collapse without the built-in chevron button.
+        Click on any crew member&apos;s name to expand their bio inline.
       </Text>
       <DataList
         columns={columns}
-        expanded={expandedRows}
-        expandedContent={expandedContent}
         header
-        id="custom-expand"
+        id="custom-expand-no-chevron"
         idKey="id"
-        rows={crew}
+        rows={rows}
         spacing="condensed"
-        onRowExpand={onRowExpand}
       />
       <Text color="text-secondary" fontSize={14}>
         <strong>Implementation notes:</strong>
+        <br />• Don&apos;t use <code>expandedContent</code> or{' '}
+        <code>onRowExpand</code> props
         <br />
-        • Manage expanded state yourself with <code>useState</code>
+        • Generate rows dynamically - insert &quot;expanded&quot; rows after
+        expanded items
         <br />
-        • Create a toggle handler that adds/removes row IDs from the expanded array
+        • Use a <code>rowType</code> field to distinguish main vs expanded rows
         <br />
-        • Use the handler in custom <code>render</code> functions (like the Name column)
-        <br />
-        • Also connect it to <code>onRowExpand</code> so the built-in chevron works
-        <br />• The <code>expandedContent</code> callback receives an <code>onCollapse</code> function for custom close buttons
+        • In column <code>render</code> functions, check{' '}
+        <code>row.rowType</code> to render differently
+        <br />• For expanded rows, span content across the first column and
+        leave others empty
       </Text>
     </FlexBox>
   );
