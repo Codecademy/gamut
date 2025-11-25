@@ -662,10 +662,9 @@ const CustomExpandExample = () => {
         <br />
         • Generate rows dynamically - insert &quot;expanded&quot; rows after
         expanded items
-        <br />
-        • Use a <code>rowType</code> field to distinguish main vs expanded rows
-        <br />
-        • In column <code>render</code> functions, check{' '}
+        <br />• Use a <code>rowType</code> field to distinguish main vs expanded
+        rows
+        <br />• In column <code>render</code> functions, check{' '}
         <code>row.rowType</code> to render differently
         <br />• For expanded rows, span content across the first column and
         leave others empty
@@ -676,4 +675,264 @@ const CustomExpandExample = () => {
 
 export const CustomExpand: Story = {
   render: () => <CustomExpandExample />,
+};
+
+// Nested table in expanded content example
+const NestedTableExample = () => {
+  const crew = useMemo(
+    () => [
+      {
+        id: 1,
+        name: 'Jean Luc Picard',
+        role: 'Captain',
+        ship: 'USS Enterprise',
+      },
+      {
+        id: 2,
+        name: 'Wesley Crusher',
+        role: 'Acting Ensign',
+        ship: 'USS Enterprise',
+      },
+      {
+        id: 3,
+        name: 'Geordie LaForge',
+        role: 'Chief Engineer',
+        ship: 'USS Enterprise',
+      },
+      {
+        id: 4,
+        name: 'Data',
+        role: 'Lt. Commander',
+        ship: 'USS Enterprise',
+      },
+    ],
+    []
+  );
+
+  // Mock mission data for each crew member
+  const missionData = useMemo(
+    () => ({
+      1: [
+        {
+          id: 'm1',
+          mission: 'First Contact with the Borg',
+          stardate: '42761.3',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+        {
+          id: 'm2',
+          mission: 'Diplomatic Mission to Romulus',
+          stardate: '43152.4',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+        {
+          id: 'm3',
+          mission: 'Rescue Operation at Wolf 359',
+          stardate: '44001.4',
+          status: 'Completed',
+          outcome: 'Partial Success',
+        },
+      ],
+      2: [
+        {
+          id: 'm4',
+          mission: 'Training Exercise Alpha',
+          stardate: '42523.7',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+        {
+          id: 'm5',
+          mission: 'Assist in Engine Repairs',
+          stardate: '42901.3',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+      ],
+      3: [
+        {
+          id: 'm6',
+          mission: 'Engine Overhaul Project',
+          stardate: '42686.4',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+        {
+          id: 'm7',
+          mission: 'Holodeck Maintenance',
+          stardate: '43125.8',
+          status: 'In Progress',
+          outcome: 'Pending',
+        },
+        {
+          id: 'm8',
+          mission: 'Warp Core Analysis',
+          stardate: '43349.2',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+        {
+          id: 'm9',
+          mission: 'Sensor Array Upgrade',
+          stardate: '43489.2',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+      ],
+      4: [
+        {
+          id: 'm10',
+          mission: 'Science Survey Mission',
+          stardate: '42761.9',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+        {
+          id: 'm11',
+          mission: 'Away Team Investigation',
+          stardate: '43125.8',
+          status: 'Completed',
+          outcome: 'Success',
+        },
+      ],
+    }),
+    []
+  );
+
+  const [expandedRows, setExpandedRows] = useState([]);
+
+  const onRowExpand = useCallback(
+    ({ payload: { toggle, rowId } }) => {
+      setExpandedRows((prev) => {
+        if (toggle) {
+          return prev.filter((id) => id !== rowId);
+        }
+        return [...prev, rowId];
+      });
+    },
+    []
+  );
+
+  const columns = useMemo(
+    () => [
+      {
+        header: 'Name',
+        key: 'name',
+        size: 'lg',
+        type: 'header',
+      },
+      {
+        header: 'Rank',
+        key: 'role',
+        size: 'lg',
+      },
+      {
+        header: 'Ship',
+        key: 'ship',
+        size: 'lg',
+        fill: true,
+      },
+    ],
+    []
+  );
+
+  // Mission table columns
+  const missionColumns = useMemo(
+    () => [
+      {
+        header: 'Mission',
+        key: 'mission',
+        size: 'xl',
+        type: 'header',
+      },
+      {
+        header: 'Stardate',
+        key: 'stardate',
+        size: 'md',
+      },
+      {
+        header: 'Status',
+        key: 'status',
+        size: 'sm',
+      },
+      {
+        header: 'Outcome',
+        key: 'outcome',
+        size: 'md',
+        fill: true,
+      },
+    ],
+    []
+  );
+
+  const expandedContent = useCallback(
+    ({ row }) => (
+      <FlexBox
+        bg="background-current"
+        borderColor="background-hover"
+        borderTop={1}
+        column
+        p={16}
+        pl={[16, , 64]}
+      >
+        <Text mb={12} variant="title-sm">
+          Mission History for {row.name}
+        </Text>
+        <DataTable
+          columns={missionColumns}
+          header
+          id={`missions-${row.id}`}
+          idKey="id"
+          rows={missionData[row.id] || []}
+          spacing="condensed"
+          variant="table"
+        />
+      </FlexBox>
+    ),
+    [missionColumns, missionData]
+  );
+
+  return (
+    <FlexBox column gap={16}>
+      <Text variant="title-sm">Nested Table in Expanded Content</Text>
+      <Text color="text-secondary">
+        This example shows how to display a DataTable inside the expanded
+        content. Click the chevron to expand a crew member and see their mission
+        history.
+      </Text>
+      <DataList
+        columns={columns}
+        expanded={expandedRows}
+        expandedContent={expandedContent}
+        header
+        id="nested-table"
+        idKey="id"
+        rows={crew}
+        spacing="condensed"
+        onRowExpand={onRowExpand}
+      />
+      <Text color="text-secondary" fontSize={14}>
+        <strong>Implementation notes:</strong>
+        <br />
+        • Use <code>DataTable</code> component inside{' '}
+        <code>expandedContent</code>
+        <br />
+        • The nested table receives its own <code>columns</code>,{' '}
+        <code>rows</code>, and <code>id</code>
+        <br />
+        • Add padding/margins for visual hierarchy (e.g., <code>pl=64</code> to
+        align with parent)
+        <br />
+        • Use <code>spacing=&quot;condensed&quot;</code> for nested tables to
+        save space
+        <br />• Consider adding a background color to distinguish nested content
+      </Text>
+    </FlexBox>
+  );
+};
+
+export const NestedTable: Story = {
+  render: () => <NestedTableExample />,
 };
