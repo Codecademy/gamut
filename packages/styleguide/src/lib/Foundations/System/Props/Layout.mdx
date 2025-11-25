@@ -31,4 +31,10 @@ const LayoutExample = styled.div(system.layout);
 />;
 ```
 
+## Logical sizing
+
+The layout system now includes flow-relative sizing props from CSS Logical Properties Level&nbsp;1: `inlineSize`, `blockSize`, and their `min*` / `max*` counterparts.
+
+These behave just like `width` / `height`, but automatically map to the inline or block axis of the current writing mode. In `horizontal-tb`, `inlineSize` mirrors `width`; switch to `vertical-rl` or set `dir="rtl"` and `inlineSize` follows the text direction while `width` stays pinned to the physical horizontal axis. This provies support for internationalization of components without duplicating layout logic. For more details, see the [MDN guide on logical sizing](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values/Sizing).
+
 <TokenTable rows={getPropRows('layout')} columns={defaultColumns} />
