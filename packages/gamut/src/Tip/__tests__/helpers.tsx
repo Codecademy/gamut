@@ -5,12 +5,19 @@ import { createRef, RefObject } from 'react';
 
 import { Anchor } from '../../Anchor';
 import { Text } from '../../Typography';
-import { InfoTip } from '../InfoTip';
+import { InfoTip, InfoTipProps } from '../InfoTip';
 import { TipPlacements } from '../shared/types';
 
 type InfoTipView = ReturnType<
   ReturnType<typeof setupRtl<typeof InfoTip>>
 >['view'];
+
+type Placement = NonNullable<InfoTipProps['placement']>;
+
+type ViewParam = { view: InfoTipView };
+type LinkTextParam = { linkText: string };
+type InfoParam = { info: string };
+type PlacementParam = { placement: Placement };
 
 export const createFocusOnClick = (ref: RefObject<HTMLDivElement>) => {
   return ({ isTipHidden }: { isTipHidden: boolean }) => {
@@ -20,10 +27,13 @@ export const createFocusOnClick = (ref: RefObject<HTMLDivElement>) => {
   };
 };
 
-export const createLinkSetup = (
-  linkText: string,
-  href = 'https://example.com'
-) => {
+export const createLinkSetup = ({
+  linkText,
+  href = 'https://example.com',
+}: {
+  linkText: string;
+  href?: string;
+}) => {
   const containerRef = createRef<HTMLDivElement>();
   const info = (
     <Text ref={containerRef} tabIndex={-1}>
@@ -34,12 +44,17 @@ export const createLinkSetup = (
   return { containerRef, info, onClick: createFocusOnClick(containerRef) };
 };
 
-export const createMultiLinkSetup = (
-  firstLinkText: string,
-  secondLinkText: string,
+export const createMultiLinkSetup = ({
+  firstLinkText,
+  secondLinkText,
   firstHref = 'https://example.com/1',
-  secondHref = 'https://example.com/2'
-) => {
+  secondHref = 'https://example.com/2',
+}: {
+  firstLinkText: string;
+  secondLinkText: string;
+  firstHref?: string;
+  secondHref?: string;
+}) => {
   const containerRef = createRef<HTMLDivElement>();
   const info = (
     <Text ref={containerRef} tabIndex={-1}>
@@ -58,41 +73,16 @@ export const clickButton = async (view: InfoTipView) => {
   return button;
 };
 
-export const waitForPopoverLink = async (
-  view: InfoTipView,
-  linkText: string
-) => {
-  return await waitFor(() => {
-    const links = view.getAllByRole('link', { name: linkText });
-    expect(links.length).toBe(1);
-    return links[0];
-  });
-};
-
 export const pressKey = async (key: string) => {
   await act(async () => {
     await userEvent.keyboard(key);
   });
 };
 
-export const waitForContainerFocus = async (
-  containerRef: RefObject<HTMLDivElement>,
-  container: HTMLElement
-) => {
-  await waitFor(
-    () => {
-      expect(containerRef.current).toBeTruthy();
-      expect(containerRef.current).toBe(container);
-      expect(container).toHaveFocus();
-    },
-    { timeout: 2000 }
-  );
-};
-
-export const waitForLinkToHaveFocus = async (
-  view: InfoTipView,
-  linkText: string
-) => {
+export const waitForLinkToHaveFocus = async ({
+  view,
+  linkText,
+}: ViewParam & LinkTextParam) => {
   const link = view.getByRole('link', { name: linkText });
   await waitFor(() => {
     expect(link).toHaveFocus();
@@ -100,10 +90,10 @@ export const waitForLinkToHaveFocus = async (
   return link;
 };
 
-export const openTipAndWaitForLink = async (
-  view: InfoTipView,
-  linkText: string
-) => {
+export const openTipAndWaitForLink = async ({
+  view,
+  linkText,
+}: ViewParam & LinkTextParam) => {
   await clickButton(view);
   await waitFor(() => {
     expect(view.getByText(linkText)).toBeVisible();
@@ -111,11 +101,25 @@ export const openTipAndWaitForLink = async (
   return view.getByRole('link', { name: linkText });
 };
 
-export const testEscapeKeyCloseTip = async (
+export const openTipTabToLinkAndWaitForFocus = async (
   view: InfoTipView,
-  contentToCheck: string,
-  shouldReturnFocus = false
+  linkText: string
 ) => {
+  const link = await openTipAndWaitForLink({ view, linkText });
+  await act(async () => {
+    await userEvent.tab();
+  });
+  await waitFor(() => {
+    expect(link).toHaveFocus();
+  });
+  return link;
+};
+
+export const testEscapeKeyCloseTip = async ({
+  view,
+  contentToCheck,
+  shouldReturnFocus = false,
+}: ViewParam & { contentToCheck: string; shouldReturnFocus?: boolean }) => {
   const button = await clickButton(view);
 
   await waitFor(() => {
@@ -136,11 +140,14 @@ export const testEscapeKeyCloseTip = async (
   }
 };
 
-export const testFocusWrap = async (
-  view: InfoTipView,
-  containerRef: RefObject<HTMLDivElement>,
-  direction: 'forward' | 'backward'
-) => {
+export const testFocusWrap = async ({
+  view,
+  containerRef,
+  direction,
+}: ViewParam & {
+  containerRef: RefObject<HTMLDivElement>;
+  direction: 'forward' | 'backward';
+}) => {
   const button = await clickButton(view);
 
   await waitFor(
@@ -177,12 +184,16 @@ export const getTipContent = (
   );
 };
 
-export const testTabbingBetweenLinks = async (
-  view: InfoTipView,
-  firstLinkText: string,
-  secondLinkText: string,
-  placement: TipPlacements
-) => {
+export const testTabbingBetweenLinks = async ({
+  view,
+  firstLinkText,
+  secondLinkText,
+  placement,
+}: ViewParam & {
+  firstLinkText: string;
+  secondLinkText: string;
+  placement: TipPlacements;
+}) => {
   await clickButton(view);
 
   await waitFor(() => {
@@ -190,10 +201,13 @@ export const testTabbingBetweenLinks = async (
   });
 
   await pressKey('{Tab}');
-  const firstLink = await waitForLinkToHaveFocus(view, firstLinkText);
+  const firstLink = await waitForLinkToHaveFocus({
+    view,
+    linkText: firstLinkText,
+  });
 
   await pressKey('{Tab}');
-  await waitForLinkToHaveFocus(view, secondLinkText);
+  await waitForLinkToHaveFocus({ view, linkText: secondLinkText });
 
   expect(firstLink).not.toHaveFocus();
 
@@ -207,7 +221,7 @@ export const setupLinkTestWithPlacement = (
   placement: TipPlacements,
   renderView: ReturnType<typeof setupRtl<typeof InfoTip>>
 ) => {
-  const { containerRef, info, onClick } = createLinkSetup(linkText);
+  const { containerRef, info, onClick } = createLinkSetup({ linkText });
   const { view } = renderView({ placement, info, onClick });
   return { view, containerRef, info, onClick };
 };
@@ -218,25 +232,27 @@ export const setupMultiLinkTestWithPlacement = (
   placement: TipPlacements,
   renderView: ReturnType<typeof setupRtl<typeof InfoTip>>
 ) => {
-  const { info, onClick } = createMultiLinkSetup(firstLinkText, secondLinkText);
+  const { info, onClick } = createMultiLinkSetup({
+    firstLinkText,
+    secondLinkText,
+  });
   const { view } = renderView({ placement, info, onClick });
   return { view, info, onClick };
 };
 
-export const testEscapeKeyWithOutsideFocus = async (
-  view: InfoTipView,
-  contentToCheck: string
-) => {
+export const testEscapeKeyWithOutsideFocus = async ({
+  view,
+  info,
+}: ViewParam & InfoParam) => {
   const outsideButton = document.createElement('button');
   outsideButton.textContent = 'Outside Button';
-  document.body.appendChild(outsideButton);
 
-  try {
+  await withTemporaryElement(outsideButton, document.body, async () => {
     const button = await clickButton(view);
 
     await waitFor(() => {
       expect(button).toHaveAttribute('aria-expanded', 'true');
-      const tip = getTipContent(view, contentToCheck);
+      const tip = getTipContent(view, info);
       expect(tip).toBeVisible();
     });
 
@@ -247,10 +263,132 @@ export const testEscapeKeyWithOutsideFocus = async (
 
     await waitFor(() => {
       expect(button).toHaveAttribute('aria-expanded', 'false');
-      const tip = getTipContent(view, contentToCheck, true);
+      const tip = getTipContent(view, info, true);
       expect(tip).not.toBeVisible();
     });
-  } finally {
-    document.body.removeChild(outsideButton);
+  });
+};
+
+const assertTipOpen = async ({
+  view,
+  button,
+  info,
+  placement,
+}: ViewParam & InfoParam & PlacementParam & { button: HTMLElement }) => {
+  if (placement === 'floating') {
+    await waitFor(() => {
+      expect(view.queryAllByText(info).length).toBe(2);
+      expect(button).toHaveAttribute('aria-expanded', 'true');
+    });
+  } else {
+    const tip = getTipContent(view, info);
+    expect(tip).toBeVisible();
+    expect(button).toHaveAttribute('aria-expanded', 'true');
   }
+};
+
+const assertTipClosed = async ({
+  view,
+  button,
+  info,
+  placement,
+}: ViewParam & InfoParam & PlacementParam & { button: HTMLElement }) => {
+  if (placement === 'floating') {
+    await waitFor(() => {
+      expect(view.queryByText(info)).toBeNull();
+      expect(button).toHaveAttribute('aria-expanded', 'false');
+    });
+  } else {
+    const tip = getTipContent(view, info);
+    await waitFor(() => {
+      expect(tip).not.toBeVisible();
+      expect(button).toHaveAttribute('aria-expanded', 'false');
+    });
+  }
+};
+
+const withTemporaryElement = async <T,>(
+  element: HTMLElement,
+  parent: HTMLElement,
+  callback: () => Promise<T>
+): Promise<T> => {
+  parent.appendChild(element);
+  try {
+    return await callback();
+  } finally {
+    parent.removeChild(element);
+  }
+};
+
+export const testOutsideClick = async ({
+  view,
+  info,
+  placement,
+}: ViewParam & InfoParam & PlacementParam) => {
+  const button = await clickButton(view);
+
+  await assertTipOpen({ view, button, info, placement });
+
+  const outsideElement = document.createElement('div');
+
+  await withTemporaryElement(outsideElement, document.body, async () => {
+    await userEvent.click(outsideElement);
+    await assertTipClosed({ view, button, info, placement });
+  });
+};
+
+export const testModalDoesNotCloseInfoTip = async ({
+  view,
+  info,
+  placement,
+}: ViewParam & InfoParam & PlacementParam) => {
+  const button = await clickButton(view);
+
+  await assertTipOpen({ view, button, info, placement });
+
+  const mockModal = document.createElement('div');
+  mockModal.setAttribute('role', 'dialog');
+
+  if (placement === 'floating') {
+    const modalButton = document.createElement('button');
+    modalButton.textContent = 'Modal button';
+    mockModal.appendChild(modalButton);
+    await withTemporaryElement(mockModal, view.container, async () => {
+      modalButton.focus();
+      await pressKey('{Escape}');
+      await assertTipOpen({ view, button, info, placement });
+    });
+  } else {
+    await withTemporaryElement(mockModal, document.body, async () => {
+      await pressKey('{Escape}');
+      await assertTipOpen({ view, button, info, placement });
+    });
+  }
+};
+
+export const testRapidToggle = async ({
+  view,
+  onClick,
+}: ViewParam & { onClick: jest.Mock }) => {
+  const button = view.getByLabelText('Show information');
+
+  await act(async () => {
+    await userEvent.click(button);
+  });
+  await waitFor(() => expect(onClick).toHaveBeenCalledTimes(1));
+
+  await act(async () => {
+    await userEvent.click(button);
+  });
+  await waitFor(() => expect(onClick).toHaveBeenCalledTimes(2));
+
+  await act(async () => {
+    await userEvent.click(button);
+  });
+  await waitFor(() => expect(onClick).toHaveBeenCalledTimes(3));
+
+  expect(onClick).toHaveBeenCalledTimes(3);
+  expect(onClick).toHaveBeenNthCalledWith(1, { isTipHidden: false });
+  expect(onClick).toHaveBeenNthCalledWith(2, { isTipHidden: true });
+  expect(onClick).toHaveBeenNthCalledWith(3, { isTipHidden: false });
 };

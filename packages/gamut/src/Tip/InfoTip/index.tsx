@@ -152,9 +152,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     if (!isFloating && onClick) {
       onClick({ isTipHidden });
     }
-  }, [isTipHidden, isFloating, onClick]);
-
-  useLayoutEffect(() => {
     if (isFloating && isTipHidden && onClick) {
       onClick({ isTipHidden: true });
     }
