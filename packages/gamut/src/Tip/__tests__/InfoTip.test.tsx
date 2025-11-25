@@ -7,13 +7,13 @@ import {
   clickButton,
   createLinkSetup,
   getTipContent,
-  openTipAndWaitForLink,
+  openTipTabToLinkAndWaitForFocus,
   pressKey,
   setupLinkTestWithPlacement,
   setupMultiLinkTestWithPlacement,
-  testEscapeKeyCloseTip,
   testEscapeKeyWithOutsideFocus,
   testFocusWrap,
+  testModalDoesNotCloseInfoTip,
   testTabbingBetweenLinks,
   testTabFromPopoverWithNoInteractiveElements,
 } from './helpers';
@@ -23,94 +23,61 @@ const renderView = setupRtl(InfoTip, {
   info,
 });
 
-const openTipTabToLinkAndWaitForFocus = async (
-  view: ReturnType<typeof renderView>['view'],
-  linkText: string
-) => {
-  const user = userEvent.setup();
-  const link = await openTipAndWaitForLink(view, linkText);
-  await user.tab();
-  await waitFor(() => {
-    expect(link).toHaveFocus();
-  });
-  return link;
-};
-
-const testModalDoesNotCloseInfoTip = async (
-  view: ReturnType<typeof renderView>['view'],
-  info: string,
-  useModalButton = false
-) => {
-  const button = await clickButton(view);
-
-  await waitFor(() => {
-    expect(button).toHaveAttribute('aria-expanded', 'true');
-    const tip = getTipContent(view, info);
-    expect(tip).toBeVisible();
-  });
-
-  const mockModal = document.createElement('div');
-  mockModal.setAttribute('role', 'dialog');
-
-  if (useModalButton) {
-    const modalButton = document.createElement('button');
-    modalButton.textContent = 'Modal button';
-    mockModal.appendChild(modalButton);
-    view.container.appendChild(mockModal);
-    modalButton.focus();
-  } else {
-    document.body.appendChild(mockModal);
-  }
-
-  try {
-    await pressKey('{Escape}');
-
-    await waitFor(() => {
-      const tip = getTipContent(view, info);
-      expect(tip).toBeVisible();
-      expect(button).toHaveAttribute('aria-expanded', 'true');
-    });
-  } finally {
-    if (useModalButton) {
-      view.container.removeChild(mockModal);
-    } else {
-      document.body.removeChild(mockModal);
-    }
-  }
-};
-
 describe('InfoTip', () => {
-  describe('inline placement', () => {
+  describe.each<{ placement: 'inline' | 'floating' }>([
+    { placement: 'inline' },
+    { placement: 'floating' },
+  ])('$placement placement', ({ placement }) => {
     it('shows the tip when it is clicked on', async () => {
       const user = userEvent.setup();
-      const { view } = renderView({});
+      const { view } = renderView({ placement });
 
-      const tip = view.getByText(info);
+      const isInline = placement === 'inline';
+      const tip = isInline ? view.getByText(info) : null;
 
-      expect(tip).not.toBeVisible();
+      if (isInline) {
+        expect(tip).not.toBeVisible();
+      } else {
+        expect(view.queryByText(info)).toBeNull();
+      }
 
       await user.click(view.getByRole('button'));
 
-      expect(tip.parentElement).not.toHaveStyle({
-        visibility: 'hidden',
-        opacity: 0,
-      });
-
-      expect(tip).toBeVisible();
+      if (isInline) {
+        expect(tip?.parentElement).not.toHaveStyle({
+          visibility: 'hidden',
+          opacity: 0,
+        });
+        expect(tip).toBeVisible();
+      } else {
+        await waitFor(() => {
+          expect(view.getByText(info)).toBeVisible();
+        });
+      }
     });
 
     it('closes the tip when Escape key is pressed and returns focus to button', async () => {
-      const { view } = renderView({});
+      const { view } = renderView({ placement });
 
       const button = await clickButton(view);
 
-      const tip = getTipContent(view, info);
-      expect(tip).toBeVisible();
+      if (placement === 'inline') {
+        const tip = getTipContent(view, info);
+        expect(tip).toBeVisible();
+      } else {
+        await waitFor(() => {
+          expect(view.getByText(info)).toBeVisible();
+        });
+      }
 
       await pressKey('{Escape}');
 
       await waitFor(() => {
-        expect(tip).not.toBeVisible();
+        if (placement === 'inline') {
+          expect(getTipContent(view, info)).not.toBeVisible();
+        } else {
+          expect(view.queryByText(info)).toBeNull();
+        }
         expect(button).toHaveFocus();
       });
     });
@@ -121,30 +88,30 @@ describe('InfoTip', () => {
       const { view } = setupMultiLinkTestWithPlacement(
         firstLinkText,
         secondLinkText,
-        'inline',
+        placement,
         renderView
       );
 
-      await testTabbingBetweenLinks(
+      await testTabbingBetweenLinks({
         view,
         firstLinkText,
         secondLinkText,
-        'inline'
-      );
+        placement,
+      });
     });
 
     it('allows focus to move to links within the tip', async () => {
       const linkText = 'cool link';
-      const { info } = createLinkSetup(linkText);
-      const { view } = renderView({ info });
+      const { info, onClick } = createLinkSetup({ linkText });
+      const { view } = renderView({ placement, info, onClick });
 
       await openTipTabToLinkAndWaitForFocus(view, linkText);
     });
 
     it('closes the tip when Escape is pressed even when focus is on a link inside', async () => {
       const linkText = 'cool link';
-      const { info } = createLinkSetup(linkText);
-      const { view } = renderView({ info });
+      const { info, onClick } = createLinkSetup({ linkText });
+      const { view } = renderView({ placement, info, onClick });
 
       const link = await openTipTabToLinkAndWaitForFocus(view, linkText);
 
@@ -156,18 +123,18 @@ describe('InfoTip', () => {
     });
 
     it('closes the tip when Escape is pressed even when focus is on an outside element', async () => {
-      const { view } = renderView({});
-      await testEscapeKeyWithOutsideFocus(view, info, false);
+      const { view } = renderView({ placement });
+      await testEscapeKeyWithOutsideFocus({ view, info });
     });
 
     it('does not close the tip when Escape is pressed if a modal is open', async () => {
-      const { view } = renderView({});
-      await testModalDoesNotCloseInfoTip(view, info);
+      const { view } = renderView({ placement });
+      await testModalDoesNotCloseInfoTip({ view, info, placement });
     });
 
     it('calls onClick with isTipHidden: false when tip opens', async () => {
       const onClick = jest.fn();
-      const { view } = renderView({ onClick });
+      const { view } = renderView({ placement, onClick });
 
       await clickButton(view);
 
@@ -178,7 +145,7 @@ describe('InfoTip', () => {
 
     it('calls onClick with isTipHidden: true when tip closes', async () => {
       const onClick = jest.fn();
-      const { view } = renderView({ onClick });
+      const { view } = renderView({ placement, onClick });
 
       await clickButton(view);
 
@@ -197,7 +164,7 @@ describe('InfoTip', () => {
 
     it('does not call onClick on initial mount', async () => {
       const onClick = jest.fn();
-      renderView({ onClick });
+      renderView({ placement, onClick });
 
       // Wait a bit to ensure no calls were made
       await new Promise((resolve) => setTimeout(resolve, 100));
@@ -206,42 +173,31 @@ describe('InfoTip', () => {
     });
   });
 
-  describe('floating placement', () => {
-    it('shows the tip when it is clicked on', async () => {
-      const user = userEvent.setup();
-      const { view } = renderView({
-        placement: 'floating',
-      });
-
-      expect(view.queryByText(info)).toBeNull();
-
-      await user.click(view.getByRole('button'));
-
-      await waitFor(() => {
-        expect(view.getByText(info)).toBeVisible();
-      });
-    });
-
-    it('closes the tip when Escape key is pressed and returns focus to the button', async () => {
-      const { view } = renderView({
-        placement: 'floating',
-      });
-
-      await testEscapeKeyCloseTip(view, info, true);
-    });
-
+  describe('floating placement focus management', () => {
     it('closes the tip with links when Escape key is pressed and returns focus to the button', async () => {
       const linkText = 'cool link';
-      const { info } = createLinkSetup(
+      const { info, onClick } = createLinkSetup({
         linkText,
-        'https://giphy.com/search/nichijou'
-      );
+        href: 'https://giphy.com/search/nichijou',
+      });
       const { view } = renderView({
         placement: 'floating',
         info,
+        onClick,
       });
 
-      await testEscapeKeyCloseTip(view, linkText, true);
+      const button = await clickButton(view);
+
+      await waitFor(() => {
+        expect(view.getByText(linkText)).toBeVisible();
+      });
+
+      await pressKey('{Escape}');
+
+      await waitFor(() => {
+        expect(view.queryByText(linkText)).toBeNull();
+        expect(button).toHaveFocus();
+      });
     });
 
     it('wraps focus to button when tabbing forward from last focusable element', async () => {
@@ -252,7 +208,7 @@ describe('InfoTip', () => {
         renderView
       );
 
-      await testFocusWrap(view, containerRef, 'forward');
+      await testFocusWrap({ view, containerRef, direction: 'forward' });
     });
 
     it('wraps focus to button when shift+tabbing backward from first focusable element', async () => {
@@ -263,7 +219,7 @@ describe('InfoTip', () => {
         renderView
       );
 
-      await testFocusWrap(view, containerRef, 'backward');
+      await testFocusWrap({ view, containerRef, direction: 'backward' });
     });
 
     it('allows normal tabbing between focusable elements within popover', async () => {
@@ -276,69 +232,17 @@ describe('InfoTip', () => {
         renderView
       );
 
-      await testTabbingBetweenLinks(
+      await testTabbingBetweenLinks({
         view,
         firstLinkText,
         secondLinkText,
-        'floating'
-      );
-    });
-
-    it('closes the tip when Escape is pressed even when focus is on an outside element', async () => {
-      const { view } = renderView({ placement: 'floating' });
-      await testEscapeKeyWithOutsideFocus(view, info, true);
-    });
-
-    it('does not close the tip when Escape is pressed if a modal is open', async () => {
-      const { view } = renderView({ placement: 'floating' });
-      await testModalDoesNotCloseInfoTip(view, info, true);
+        placement: 'floating',
+      });
     });
 
     it('wraps focus to button when tabbing from popover with no interactive elements', async () => {
       const { view } = renderView({ placement: 'floating' });
       await testTabFromPopoverWithNoInteractiveElements(view);
-    });
-
-    it('calls onClick with isTipHidden: false when tip opens', async () => {
-      const onClick = jest.fn();
-      const { view } = renderView({ placement: 'floating', onClick });
-
-      await clickButton(view);
-
-      await waitFor(() => {
-        expect(onClick).toHaveBeenCalledWith({ isTipHidden: false });
-      });
-    });
-
-    it('calls onClick with isTipHidden: true when tip closes', async () => {
-      const onClick = jest.fn();
-      const { view } = renderView({ placement: 'floating', onClick });
-
-      // Open the tip
-      await clickButton(view);
-
-      await waitFor(() => {
-        expect(onClick).toHaveBeenCalledWith({ isTipHidden: false });
-      });
-
-      onClick.mockClear();
-
-      // Close the tip
-      await clickButton(view);
-
-      await waitFor(() => {
-        expect(onClick).toHaveBeenCalledWith({ isTipHidden: true });
-      });
-    });
-
-    it('does not call onClick on initial mount', async () => {
-      const onClick = jest.fn();
-      renderView({ placement: 'floating', onClick });
-
-      // Wait a bit to ensure no calls were made
-      await new Promise((resolve) => setTimeout(resolve, 100));
-
-      expect(onClick).not.toHaveBeenCalled();
     });
   });
 

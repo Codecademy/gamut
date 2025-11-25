@@ -45,19 +45,19 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const contentNodeRef = useRef<HTMLDivElement | null>(null);
+  const popoverContentNodeRef = useRef<HTMLDivElement | null>(null);
   const isInitialMount = useRef(true);
 
   const getFocusableElements = useCallback(() => {
-    return getFocusableElementsUtil(contentNodeRef.current);
+    return getFocusableElementsUtil(popoverContentNodeRef.current);
   }, []);
 
-  const contentRef = useCallback(
+  const popoverContentRef = useCallback(
     (node: HTMLDivElement | null) => {
-      contentNodeRef.current = node;
+      popoverContentNodeRef.current = node;
 
-      if (node && onClick && !isTipHidden && isFloating) {
-        onClick({ isTipHidden: false });
+      if (node && !isTipHidden && isFloating) {
+        onClick?.({ isTipHidden: false });
       }
     },
     [onClick, isTipHidden, isFloating]
@@ -67,35 +67,41 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     setLoaded(true);
   }, []);
 
+  const setTipIsHidden = useCallback((nextTipState: boolean) => {
+    setHideTip(nextTipState);
+  }, []);
+
+  const handleOutsideClick = useCallback(
+    (e: MouseEvent) => {
+      const wrapper = wrapperRef.current;
+      const isOutside =
+        wrapper &&
+        (!(e.target instanceof HTMLElement) || !wrapper.contains(e.target));
+
+      if (isOutside) {
+        setTipIsHidden(true);
+      }
+    },
+    [setTipIsHidden]
+  );
+
+  const clickHandler = useCallback(() => {
+    const currentTipState = !isTipHidden;
+    setTipIsHidden(currentTipState);
+  }, [isTipHidden, setTipIsHidden]);
+
   useLayoutEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
       return;
     }
-    if (!isFloating && onClick) {
-      onClick({ isTipHidden });
+
+    if (!isFloating) {
+      onClick?.({ isTipHidden });
+    } else if (isTipHidden) {
+      onClick?.({ isTipHidden: true });
     }
   }, [isTipHidden, isFloating, onClick]);
-
-  useLayoutEffect(() => {
-    if (isFloating && isTipHidden && onClick) {
-      onClick({ isTipHidden: true });
-    }
-  }, [isTipHidden, isFloating, onClick]);
-
-  const handleOutsideClick = useCallback((e: MouseEvent) => {
-    const wrapper = wrapperRef.current;
-    if (
-      wrapper &&
-      (e.target instanceof HTMLElement ? !wrapper.contains(e.target) : true)
-    ) {
-      setHideTip(true);
-    }
-  }, []);
-
-  const clickHandler = useCallback(() => {
-    setHideTip((prev) => !prev);
-  }, []);
 
   useEffect(() => {
     if (isTipHidden) return;
@@ -108,13 +114,10 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     if (isTipHidden) return;
 
     const handleGlobalEscapeKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Escape') return;
-
-      const hasModal = document.querySelector(MODAL_SELECTOR);
-      if (hasModal) return;
+      if (e.key !== 'Escape' || document.querySelector(MODAL_SELECTOR)) return;
 
       e.preventDefault();
-      setHideTip(true);
+      setTipIsHidden(true);
       buttonRef.current?.focus();
     };
 
@@ -129,7 +132,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
         // If no focusable elements and popover itself has focus, wrap to button
         if (focusableElements.length === 0) {
-          if (activeElement === contentNodeRef.current) {
+          if (activeElement === popoverContentNodeRef.current) {
             event.preventDefault();
             buttonRef.current?.focus();
           }
@@ -139,37 +142,33 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         const lastElement = focusableElements[focusableElements.length - 1];
 
         // Only wrap forward: if on last element, wrap to button
-        if (activeElement === lastElement) {
+        if (document.activeElement === lastElement) {
           event.preventDefault();
           buttonRef.current?.focus();
         }
       };
 
-      let content: HTMLDivElement | null = null;
+      let popoverContent: HTMLDivElement | null = null;
       const timeoutId = setTimeout(() => {
-        content = contentNodeRef.current;
-        if (content) {
-          content.addEventListener('keydown', handleTabKeyInPopover);
-        }
+        popoverContent = popoverContentNodeRef.current;
+        popoverContent?.addEventListener('keydown', handleTabKeyInPopover);
       }, 0);
 
       return () => {
         clearTimeout(timeoutId);
-        if (content) {
-          content.removeEventListener('keydown', handleTabKeyInPopover);
-        }
+        popoverContent?.removeEventListener('keydown', handleTabKeyInPopover);
         document.removeEventListener('keydown', handleGlobalEscapeKey);
       };
     }
 
     return () => document.removeEventListener('keydown', handleGlobalEscapeKey);
-  }, [isTipHidden, isFloating, getFocusableElements]);
+  }, [isTipHidden, isFloating, getFocusableElements, setTipIsHidden]);
 
   useEffect(() => {
     if (isTipHidden) return;
 
     const timeoutId = setTimeout(() => {
-      contentNodeRef.current?.focus();
+      popoverContentNodeRef.current?.focus();
     }, 0);
 
     return () => clearTimeout(timeoutId);
@@ -182,11 +181,11 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       alignment,
       info,
       isTipHidden,
-      contentRef,
+      contentRef: popoverContentRef,
       wrapperRef,
       ...rest,
     }),
-    [alignment, info, isTipHidden, contentRef, wrapperRef, rest]
+    [alignment, info, isTipHidden, popoverContentRef, wrapperRef, rest]
   );
 
   return (
