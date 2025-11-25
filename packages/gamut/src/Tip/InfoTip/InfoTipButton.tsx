@@ -22,7 +22,17 @@ export type InfoTipButtonProps = ComponentProps<typeof InfoTipButtonBase> &
   Pick<InfoTipProps, 'emphasis'>;
 
 export const InfoTipButton = forwardRef<ButtonBaseElements, InfoTipButtonProps>(
-  ({ active, children, emphasis, 'aria-label': ariaLabel, ...props }, ref) => {
+  (
+    {
+      active,
+      children,
+      emphasis,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledby,
+      ...props
+    },
+    ref
+  ) => {
     const Icon = emphasis === 'high' ? MiniInfoCircleIcon : MiniInfoOutlineIcon;
 
     return (
@@ -31,6 +41,7 @@ export const InfoTipButton = forwardRef<ButtonBaseElements, InfoTipButtonProps>(
         active={active}
         aria-expanded={active}
         aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledby}
         ref={ref}
       >
         {Icon && (

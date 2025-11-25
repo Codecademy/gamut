@@ -19,7 +19,14 @@ import { InfoTipButton } from './InfoTipButton';
 
 export type InfoTipProps = TipBaseProps & {
   alignment?: TipBaseAlignment;
+  /**
+   * Accessible label for the InfoTip button.
+   */
   ariaLabel?: string;
+  /**
+   * ID of an element that labels the InfoTip button.
+   */
+  ariaLabelledby?: string;
   emphasis?: 'low' | 'high';
   /**
    * Called when the info tip is clicked - the onClick function is called after the DOM updates and the tip is mounted.
@@ -32,6 +39,7 @@ const MODAL_SELECTOR = 'dialog[open],[role="dialog"],[role="alertdialog"]';
 export const InfoTip: React.FC<InfoTipProps> = ({
   alignment = 'top-right',
   ariaLabel,
+  ariaLabelledby,
   emphasis = 'low',
   info,
   onClick,
@@ -194,6 +202,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         active={!isTipHidden}
         aria-expanded={!isTipHidden}
         aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledby}
         aria-roledescription="More information button"
         emphasis={emphasis}
         ref={buttonRef}

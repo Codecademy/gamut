@@ -20,6 +20,7 @@ import {
 
 const info = 'I am information';
 const renderView = setupRtl(InfoTip, {
+  ariaLabel: 'Show information',
   info,
 });
 
@@ -247,7 +248,7 @@ describe('InfoTip', () => {
   });
 
   describe('ariaLabel', () => {
-    it('applies default aria-label when ariaLabel is not provided', () => {
+    it('applies aria-label from setup', () => {
       const { view } = renderView({});
       view.getByLabelText('Show information');
     });
