@@ -5,17 +5,17 @@ import userEvent from '@testing-library/user-event';
 import { InfoTip } from '../InfoTip';
 import {
   createLinkSetup,
-  getTipContent,
   openTipTabToLinkAndWaitForFocus,
   pressKey,
   setupLinkTestWithPlacement,
   setupMultiLinkTestWithPlacement,
-  testEscapeKeyCloseTip,
+  testEscapeKeyReturnsFocus,
   testEscapeKeyWithOutsideFocus,
   testFocusWrap,
   testModalDoesNotCloseInfoTip,
   testOutsideClick,
   testRapidToggle,
+  testShowTipOnClick,
   testTabbingBetweenLinks,
 } from './helpers';
 
@@ -29,6 +29,20 @@ describe('InfoTip', () => {
     { placement: 'inline' },
     { placement: 'floating' },
   ])('$placement placement', ({ placement }) => {
+    it('shows the tip when it is clicked on', async () => {
+      const { view } = renderView({
+        placement,
+      });
+      await testShowTipOnClick({ view, info, placement });
+    });
+
+    it('closes the tip when Escape key is pressed and returns focus to button', async () => {
+      const { view } = renderView({
+        placement,
+      });
+      await testEscapeKeyReturnsFocus({ view, info, placement });
+    });
+
     it('closes the tip when Escape is pressed even when focus is on an outside element', async () => {
       const { view } = renderView({
         placement,
@@ -159,93 +173,7 @@ describe('InfoTip', () => {
     });
   });
 
-  describe('inline placement', () => {
-    it('shows the tip when it is clicked on', async () => {
-      const { view } = renderView({});
-
-      const tip = view.getByText(info);
-
-      expect(tip).not.toBeVisible();
-
-      await act(async () => {
-        await userEvent.click(view.getByRole('button'));
-      });
-
-      expect(tip.parentElement).not.toHaveStyle({
-        visibility: 'hidden',
-        opacity: 0,
-      });
-
-      expect(tip).toBeVisible();
-    });
-
-    it('closes the tip when Escape key is pressed and returns focus to button', async () => {
-      const { view } = renderView({});
-
-      const button = view.getByLabelText('Show information');
-      await act(async () => {
-        await userEvent.click(button);
-      });
-
-      const tip = getTipContent(view, info);
-      expect(tip).toBeVisible();
-
-      await pressKey('{Escape}');
-
-      await waitFor(() => {
-        expect(tip).not.toBeVisible();
-        expect(button).toHaveFocus();
-      });
-    });
-  });
-
-  describe('floating placement', () => {
-    it('shows the tip when it is clicked on', async () => {
-      const { view } = renderView({
-        placement: 'floating',
-      });
-
-      expect(view.queryByText(info)).toBeNull();
-
-      await act(async () => {
-        await userEvent.click(view.getByRole('button'));
-      });
-
-      // The first get by text result is the a11y text, the second is the actual tip text
-      expect(view.queryAllByText(info).length).toBe(2);
-    });
-
-    it('closes the tip when Escape key is pressed and returns focus to the button', async () => {
-      const { view } = renderView({
-        placement: 'floating',
-      });
-
-      await testEscapeKeyCloseTip({
-        view,
-        contentToCheck: info,
-        shouldReturnFocus: true,
-      });
-    });
-
-    it('closes the tip with links when Escape key is pressed and returns focus to the button', async () => {
-      const linkText = 'cool link';
-      const { info, onClick } = createLinkSetup({
-        linkText,
-        href: 'https://giphy.com/search/nichijou',
-      });
-      const { view } = renderView({
-        placement: 'floating',
-        info,
-        onClick,
-      });
-
-      await testEscapeKeyCloseTip({
-        view,
-        contentToCheck: linkText,
-        shouldReturnFocus: true,
-      });
-    });
-
+  describe('floating placement focus management', () => {
     it('wraps focus to button when tabbing forward from last focusable element', async () => {
       const linkText = 'cool link';
       const { view, containerRef } = setupLinkTestWithPlacement(

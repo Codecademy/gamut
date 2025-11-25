@@ -115,26 +115,65 @@ export const openTipTabToLinkAndWaitForFocus = async (
   return link;
 };
 
-export const testEscapeKeyCloseTip = async ({
+export const testShowTipOnClick = async ({
   view,
-  contentToCheck,
-  shouldReturnFocus = false,
-}: ViewParam & { contentToCheck: string; shouldReturnFocus?: boolean }) => {
-  const button = await clickButton(view);
+  info,
+  placement,
+}: ViewParam & InfoParam & PlacementParam) => {
+  const tip = placement === 'inline' ? view.getByText(info) : null;
 
-  await waitFor(() => {
-    const elements = view.getAllByText(contentToCheck);
-    expect(elements.length).toBeGreaterThan(0);
+  if (placement === 'inline') {
+    expect(tip).not.toBeVisible();
+  } else {
+    expect(view.queryByText(info)).toBeNull();
+  }
+
+  await act(async () => {
+    await userEvent.click(view.getByRole('button'));
   });
 
-  await pressKey('{Escape}');
+  if (placement === 'inline') {
+    expect(tip?.parentElement).not.toHaveStyle({
+      visibility: 'hidden',
+      opacity: 0,
+    });
+    expect(tip).toBeVisible();
+  } else {
+    // The first get by text result is the a11y text, the second is the actual tip text
+    expect(view.queryAllByText(info).length).toBe(2);
+  }
+};
 
-  await waitFor(() => {
-    expect(view.queryByText(contentToCheck)).toBeNull();
+export const testEscapeKeyReturnsFocus = async ({
+  view,
+  info,
+  placement,
+}: ViewParam & InfoParam & PlacementParam) => {
+  const button = view.getByLabelText('Show information');
+  await act(async () => {
+    await userEvent.click(button);
   });
 
-  if (shouldReturnFocus) {
+  if (placement === 'inline') {
+    const tip = getTipContent(view, info);
+    expect(tip).toBeVisible();
+
+    await pressKey('{Escape}');
+
     await waitFor(() => {
+      expect(tip).not.toBeVisible();
+      expect(button).toHaveFocus();
+    });
+  } else {
+    await waitFor(() => {
+      const elements = view.getAllByText(info);
+      expect(elements.length).toBeGreaterThan(0);
+    });
+
+    await pressKey('{Escape}');
+
+    await waitFor(() => {
+      expect(view.queryByText(info)).toBeNull();
       expect(button).toHaveFocus();
     });
   }
