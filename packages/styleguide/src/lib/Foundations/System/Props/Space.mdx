@@ -1,8 +1,9 @@
-import { Meta } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 
 import { AboutHeader, TokenTable } from '~styleguide/blocks';
 
 import { defaultColumns, getPropRows } from '../../shared/elements';
+import * as SpaceStories from './Space.stories';
 
 export const parameters = {
   title: 'Space',
@@ -10,7 +11,7 @@ export const parameters = {
   status: 'updating',
 };
 
-<Meta title="Foundations/System/Props/Space" />
+<Meta of={SpaceStories} />
 
 <AboutHeader {...parameters} />
 
@@ -24,5 +25,21 @@ const SpaceExample = styled.div(system.space);
 
 <SpaceExample p={8} my={[16, 24, 32]} />;
 ```
+
+## Logical Properties
+
+Logical spacing properties like `mbl` (marginBlock) provide RTL-aware spacing that adapts to text direction. The `mbl` prop applies margin to both block start and block end, which in LTR layouts is equivalent to margin-top and margin-bottom.
+
+### `mbl` (marginBlock)
+
+<Canvas of={SpaceStories.MarginBlock} />
+
+### `mi` (marginInline)
+
+The `mi` prop applies margin to both inline start and inline end, which in LTR layouts is equivalent to margin-left and margin-right.
+
+<Canvas of={SpaceStories.MarginInline} />
+
+<Canvas of={SpaceStories.RTLComparison} />
 
 <TokenTable rows={getPropRows('space')} columns={defaultColumns} />
