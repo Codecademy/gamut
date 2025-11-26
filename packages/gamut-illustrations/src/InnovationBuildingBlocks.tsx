@@ -433,9 +433,13 @@ export const InnovationBuildingBlocks: React.FC<IllustrationProps> = ({
     </g>
     <defs>
       <clipPath id="clip0_739_38723">
-        <rect fill="white" height="224.28" transform="translate(6.37549 6)" width="287.524" />
+        <rect
+          fill="white"
+          height="224.28"
+          transform="translate(6.37549 6)"
+          width="287.524"
+        />
       </clipPath>
     </defs>
   </svg>
 );
-
