@@ -248,7 +248,7 @@ describe('InfoTip', () => {
   });
 
   describe('ariaLabel', () => {
-    it('applies aria-label from setup', () => {
+    it('applies aria-label when provided', () => {
       const { view } = renderView({});
       view.getByLabelText('Show information');
     });

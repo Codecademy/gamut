@@ -85,12 +85,14 @@ InfoTips listen for the Escape key globally and will close automatically **unles
 
 ## Custom Accessible Labeling
 
-**Important for Accessibility**: Always provide either `ariaLabel` or `ariaLabelledby` to ensure screen reader users understand the purpose of the InfoTip button.
+Provide either `ariaLabel` or `ariaLabelledby` to ensure screen reader users understand the purpose of the InfoTip button.
 
 The InfoTip button's accessible label can be customized using either prop:
 
 - **`ariaLabel`**: Directly sets the accessible label text. Useful when you want to provide a custom label without referencing another element.
 - **`ariaLabelledby`**: References the ID of another element to use as the label. Useful when you want the InfoTip button to be labeled by visible text elsewhere on the page. This is useful for when the `InfoTip` is beside text that contextualizes it.
+
+The `InfoTipButton` also has an `aria-roledescription` of `More information button` to provide essential context to screen reader users about the button's purpose.
 
 <Canvas of={InfoTipStories.AriaLabel} />
 

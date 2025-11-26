@@ -20,11 +20,11 @@ import { InfoTipButton } from './InfoTipButton';
 export type InfoTipProps = TipBaseProps & {
   alignment?: TipBaseAlignment;
   /**
-   * Accessible label for the InfoTip button.
+   * Accessible label for the InfoTip button. Its recommended to provide either `ariaLabel` or `ariaLabelledby`.
    */
   ariaLabel?: string;
   /**
-   * ID of an element that labels the InfoTip button.
+   * ID of an element that labels the InfoTip button. Its recommended to provide either `ariaLabel` or `ariaLabelledby`.
    */
   ariaLabelledby?: string;
   emphasis?: 'low' | 'high';

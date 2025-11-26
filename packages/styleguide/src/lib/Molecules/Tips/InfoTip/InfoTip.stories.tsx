@@ -4,10 +4,12 @@ import {
   FillButton,
   FlexBox,
   GridBox,
+  IconButton,
   InfoTip,
   Modal,
   Text,
 } from '@codecademy/gamut';
+import { SparkleIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 
@@ -74,12 +76,30 @@ export const Placement: Story = {
 
 export const AriaLabel: Story = {
   render: (args) => (
-    <FlexBox center width={1}>
-      <InfoTip
-        {...args}
-        ariaLabel="Course details"
-        info="This button has a custom accessible label"
-      />
+    <FlexBox center column my={48} width={1}>
+      <Box>
+        <IconButton
+          icon={SparkleIcon}
+          tip="This tool needs to be explained in the InfoTip"
+          tipProps={{ placement: 'floating' }}
+          onClick={() => null}
+        />
+        <InfoTip
+          {...args}
+          ariaLabel="You can learn more about this tool by opening the InfoTip"
+          info="This is some helpful info about the tool represented by the IconButton"
+        />
+      </Box>
+      <Box>
+        <Text id="custom-info-id" />
+        I am some helpful yet concise text that needs more explanation
+        <InfoTip
+          {...args}
+          alignment="bottom-left"
+          ariaLabelledby="custom-info-id"
+          info="I am clarifying information related to the concise text."
+        />
+      </Box>
     </FlexBox>
   ),
 };
