@@ -472,11 +472,9 @@ export const testInfoTipInsideModalClosesOnEscape = async ({
     });
   });
 
-  // Modal should still be open
   expect(view.getByRole('dialog')).toBeInTheDocument();
 };
 
-// Multiple InfoTips helpers
 export const getVisibleTip = ({
   view,
   text,
