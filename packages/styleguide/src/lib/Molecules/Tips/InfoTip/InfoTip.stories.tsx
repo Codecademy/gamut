@@ -22,14 +22,6 @@ const meta: Meta<typeof InfoTip> = {
 export default meta;
 type Story = StoryObj<typeof InfoTip>;
 
-export const Default: Story = {
-  render: (args) => (
-    <FlexBox center m={24} py={64}>
-      <Text mr={4}>Some text that needs info</Text> <InfoTip {...args} />
-    </FlexBox>
-  ),
-};
-
 export const Emphasis: Story = {
   args: {
     emphasis: 'high',
@@ -106,25 +98,6 @@ export const WithLinksOrButtons: Story = {
       </FlexBox>
     );
   },
-};
-
-export const ZIndex: Story = {
-  args: {
-    info: 'I am inline, cool',
-    zIndex: 5,
-  },
-  render: (args) => (
-    <FlexBox center flexDirection="column" m={24} py={64}>
-      <Box bg="paleBlue" zIndex={3}>
-        I will not be behind the infotip, sad + unreadable
-      </Box>
-      <InfoTip info="I am inline, cool" />
-      <Box bg="paleBlue" zIndex={3}>
-        I will be behind the infotip, nice + great
-      </Box>
-      <InfoTip {...args} />
-    </FlexBox>
-  ),
 };
 
 export const KeyboardNavigation: Story = {
@@ -215,62 +188,6 @@ export const KeyboardNavigation: Story = {
   },
 };
 
-export const WithModal: Story = {
-  args: {
-    placement: 'floating',
-    info: 'This InfoTip should not close when you press Escape inside the modal!',
-  },
-  render: function WithModal(args) {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    return (
-      <FlexBox center flexDirection="column" gap={16} py={64}>
-        <FlexBox alignItems="center" gap={8}>
-          <Text>Here is some information</Text>
-          <InfoTip {...args} />
-        </FlexBox>
-
-        <FillButton onClick={() => setIsModalOpen(true)}>Open Modal</FillButton>
-
-        <Box mt={16}>
-          <Text fontSize={14}>
-            <strong>Test Escape Key Behavior with Modals: </strong>
-          </Text>
-          <Box as="ol" fontSize={14}>
-            <li>Press enter to open the InfoTip</li>
-            <li>Tab to the &quot;Open Modal&quot; button and press enter</li>
-            <li>Press Escape - should close modal only (InfoTip stays open)</li>
-            <li>Press Escape again - should close InfoTip</li>
-            <li>
-              <em>
-                InfoTip detects when modals are open and defers Escape key
-                handling to them.
-              </em>
-            </li>
-          </Box>
-        </Box>
-
-        <Modal
-          isOpen={isModalOpen}
-          size="small"
-          title="Test Modal"
-          onRequestClose={() => setIsModalOpen(false)}
-        >
-          <FlexBox column p={16}>
-            <Text mb={16}>
-              This is a modal. Press Escape to close it. The InfoTip should
-              remain open behind this modal.
-            </Text>
-            <FillButton onClick={() => setIsModalOpen(false)}>
-              Close Modal
-            </FillButton>
-          </FlexBox>
-        </Modal>
-      </FlexBox>
-    );
-  },
-};
-
 export const InfoTipInsideModal: Story = {
   args: {
     placement: 'inline',
@@ -330,4 +247,31 @@ export const InfoTipInsideModal: Story = {
       </FlexBox>
     );
   },
+};
+
+export const ZIndex: Story = {
+  args: {
+    info: 'I am inline, cool',
+    zIndex: 5,
+  },
+  render: (args) => (
+    <FlexBox center flexDirection="column" m={24} py={64}>
+      <Box bg="paleBlue" zIndex={3}>
+        I will not be behind the infotip, sad + unreadable
+      </Box>
+      <InfoTip info="I am inline, cool" />
+      <Box bg="paleBlue" zIndex={3}>
+        I will be behind the infotip, nice + great
+      </Box>
+      <InfoTip {...args} />
+    </FlexBox>
+  ),
+};
+
+export const Default: Story = {
+  render: (args) => (
+    <FlexBox center m={24} py={64}>
+      <Text mr={4}>Some text that needs info</Text> <InfoTip {...args} />
+    </FlexBox>
+  ),
 };
