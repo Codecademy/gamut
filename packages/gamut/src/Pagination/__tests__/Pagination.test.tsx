@@ -13,7 +13,7 @@ const renderView = setupRtl(Pagination, {
 interface TestHelpersType {
   view: RenderResult<typeof queries, HTMLElement>;
   pageNumber?: number;
-  direction?: 'forward' | 'back';
+  btnDirection?: 'forward' | 'back';
 }
 
 const getPage = ({ view, pageNumber }: TestHelpersType) => {
@@ -31,8 +31,8 @@ const getForwardButton = ({ view }: TestHelpersType) => {
 const getJumpButtonCount = ({ view }: TestHelpersType) =>
   view.getAllByLabelText(/(Jump )+/).length;
 
-const getJumpButton = ({ view, pageNumber, direction }: TestHelpersType) => {
-  return view.getByLabelText(`Jump ${direction} to page ${pageNumber}`);
+const getJumpButton = ({ view, pageNumber, btnDirection }: TestHelpersType) => {
+  return view.getByLabelText(`Jump ${btnDirection} to page ${pageNumber}`);
 };
 
 describe('Pagination', () => {
@@ -181,7 +181,7 @@ describe('Pagination', () => {
       const forwardButton = getJumpButton({
         view,
         pageNumber: 6,
-        direction: 'forward',
+        btnDirection: 'forward',
       });
       fireEvent.click(forwardButton);
 
@@ -201,7 +201,7 @@ describe('Pagination', () => {
       const backButton = getJumpButton({
         view,
         pageNumber: 6,
-        direction: 'back',
+        btnDirection: 'back',
       });
 
       fireEvent.click(backButton);
@@ -217,7 +217,7 @@ describe('Pagination', () => {
       const backButton = getJumpButton({
         view,
         pageNumber: 3,
-        direction: 'back',
+        btnDirection: 'back',
       });
 
       fireEvent.click(backButton);
@@ -226,7 +226,7 @@ describe('Pagination', () => {
       const forwardButton = getJumpButton({
         view,
         pageNumber: 8,
-        direction: 'forward',
+        btnDirection: 'forward',
       });
 
       fireEvent.click(forwardButton);
