@@ -12,6 +12,7 @@ import {
   testEscapeKeyReturnsFocus,
   testEscapeKeyWithOutsideFocus,
   testFocusWrap,
+  testInfoTipInsideModalClosesOnEscape,
   testModalDoesNotCloseInfoTip,
   testOutsideClick,
   testRapidToggle,
@@ -55,6 +56,10 @@ describe('InfoTip', () => {
         placement,
       });
       await testModalDoesNotCloseInfoTip({ view, info, placement });
+    });
+
+    it('closes the tip when Escape is pressed if the InfoTip is inside a modal', async () => {
+      await testInfoTipInsideModalClosesOnEscape({ info, placement });
     });
 
     it('calls onClick with isTipHidden: false when tip opens', async () => {

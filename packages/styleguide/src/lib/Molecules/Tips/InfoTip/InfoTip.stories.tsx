@@ -270,3 +270,64 @@ export const WithModal: Story = {
     );
   },
 };
+
+export const InfoTipInsideModal: Story = {
+  args: {
+    placement: 'inline',
+    info: 'This is helpful information about the field. Try pressing Escape!',
+  },
+  render: function InfoTipInsideModal(args) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    return (
+      <FlexBox center flexDirection="column" gap={16} py={64}>
+        <FillButton onClick={() => setIsModalOpen(true)}>
+          Open Modal with InfoTip Inside
+        </FillButton>
+
+        <Box mt={16}>
+          <Text fontSize={14}>
+            <strong>Test InfoTip Inside Modal (Inline): </strong>
+          </Text>
+          <Box as="ol" fontSize={14}>
+            <li>Click &quot;Open Modal with InfoTip Inside&quot;</li>
+            <li>Click or press Enter on the InfoTip button (ⓘ icon)</li>
+            <li>Press Escape - should close InfoTip (Modal stays open)</li>
+            <li>Press Escape again - should close Modal</li>
+            <li>
+              <em>
+                Inline InfoTips work correctly inside Modals without z-index
+                issues.
+              </em>
+            </li>
+          </Box>
+        </Box>
+
+        <Modal
+          isOpen={isModalOpen}
+          size="medium"
+          title="Modal with InfoTip"
+          onRequestClose={() => setIsModalOpen(false)}
+        >
+          <FlexBox flexDirection="column" gap={16} p={16}>
+            <Text>This modal contains an InfoTip below:</Text>
+
+            <FlexBox alignItems="center" gap={8}>
+              <Text>Field Label</Text>
+              <InfoTip {...args} />
+            </FlexBox>
+
+            <Text color="text-disabled" fontSize={14}>
+              The InfoTip inside this modal can be closed with Escape without
+              closing the modal itself. Inline placement works correctly.
+            </Text>
+
+            <FillButton onClick={() => setIsModalOpen(false)}>
+              Close Modal
+            </FillButton>
+          </FlexBox>
+        </Modal>
+      </FlexBox>
+    );
+  },
+};

@@ -1,6 +1,8 @@
-import { ComponentProps } from 'react';
+import { ComponentProps, useState } from 'react';
 
 import { FillButton } from '../../Button';
+import { Modal } from '../../Modals';
+import { InfoTip, InfoTipProps } from '../InfoTip';
 import { ToolTip, ToolTipProps } from '../ToolTip';
 
 export const ToolTipMock: React.FC<
@@ -12,5 +14,24 @@ export const ToolTipMock: React.FC<
         Click me
       </FillButton>
     </ToolTip>
+  );
+};
+
+export const InfoTipInsideModalMock: React.FC<
+  Pick<InfoTipProps, 'info' | 'placement'>
+> = ({ info, placement }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <FillButton onClick={() => setIsOpen(true)}>Open Modal</FillButton>
+      <Modal
+        isOpen={isOpen}
+        title="Test Modal"
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <InfoTip info={info} placement={placement} />
+      </Modal>
+    </>
   );
 };

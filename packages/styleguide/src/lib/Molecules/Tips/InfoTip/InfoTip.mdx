@@ -82,6 +82,16 @@ InfoTips listen for the Escape key globally and will close automatically **unles
 
 <Canvas of={InfoTipStories.WithModal} />
 
+### InfoTips inside Modals
+
+InfoTips can be placed inside Modal content and will work correctly:
+
+- **InfoTips inside Modals close on Escape first** - When you press Escape, the InfoTip closes but the Modal stays open
+- **Pressing Escape again closes the Modal** - This provides proper layered keyboard navigation
+- **Focus management works correctly** - Focus returns to the InfoTip button when closed, maintaining proper focus flow within the Modal
+
+<Canvas of={InfoTipStories.InfoTipInsideModal} />
+
 ## InfoTips and zIndex
 
 You can change the zIndex of your `InfoTip` with the zIndex property.

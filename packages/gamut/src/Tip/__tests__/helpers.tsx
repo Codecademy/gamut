@@ -429,3 +429,49 @@ export const testRapidToggle = async ({
   expect(onClick).toHaveBeenNthCalledWith(2, { isTipHidden: true });
   expect(onClick).toHaveBeenNthCalledWith(3, { isTipHidden: false });
 };
+
+export const testInfoTipInsideModalClosesOnEscape = async ({
+  info,
+  placement,
+}: InfoParam & PlacementParam) => {
+  const { InfoTipInsideModalMock } = await import('./mocks');
+  const renderView = setupRtl(InfoTipInsideModalMock, { info, placement });
+  const { view } = renderView();
+
+  const openModalButton = view.getByRole('button', { name: 'Open Modal' });
+  await act(async () => {
+    await userEvent.click(openModalButton);
+  });
+
+  await waitFor(() => {
+    expect(view.getByRole('dialog')).toBeInTheDocument();
+  });
+
+  const infoTipButton = view.getByLabelText('Show information');
+
+  await act(async () => {
+    await userEvent.click(infoTipButton);
+  });
+
+  // Wait for InfoTip to be visible
+  await waitFor(() => {
+    const infoTexts = view.getAllByText(info);
+    const visibleInfo = infoTexts.find(
+      (el) => el.getAttribute('aria-hidden') !== 'true'
+    );
+    expect(visibleInfo).toBeVisible();
+  });
+
+  await pressKey('{Escape}');
+
+  // InfoTip should be closed - both the tip body and screenreader text should not be visible
+  await waitFor(() => {
+    const infoTexts = view.queryAllByText(info);
+    infoTexts.forEach((el) => {
+      expect(el).not.toBeVisible();
+    });
+  });
+
+  // Modal should still be open
+  expect(view.getByRole('dialog')).toBeInTheDocument();
+};
