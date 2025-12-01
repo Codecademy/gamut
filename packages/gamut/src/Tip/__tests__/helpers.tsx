@@ -1,5 +1,5 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { act, waitFor } from '@testing-library/react';
+import { act, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createRef, RefObject } from 'react';
 
@@ -475,44 +475,70 @@ export const testInfoTipInsideModalClosesOnEscape = async ({
   expect(view.getByRole('dialog')).toBeInTheDocument();
 };
 
+type ViewWithQueries = {
+  getAllByText: (text: string) => HTMLElement[];
+  getAllByLabelText: (text: string) => HTMLElement[];
+};
+
 export const getVisibleTip = ({
-  view,
   text,
+  placement,
 }: {
-  view: InfoTipView;
   text: string;
+  placement?: 'inline' | 'floating';
 }) => {
-  const elements = view.getAllByText(text);
-  return elements.find((el) => el.getAttribute('aria-hidden') === 'false');
+  const elements = screen.queryAllByText(text);
+
+  for (const el of elements) {
+    if (el.closest('[class*="ScreenreaderNavigableText"]')) {
+      continue;
+    }
+
+    if (!placement || placement === 'inline') {
+      const tipBody = el.closest('[class*="TipBody"]');
+      if (tipBody && tipBody.getAttribute('aria-hidden') === 'false') {
+        return el;
+      }
+    }
+
+    if (placement === 'floating') {
+      const popover = el.closest('[role="dialog"]');
+      if (popover) {
+        return el;
+      }
+    }
+  }
+
+  return undefined;
 };
 
 export const expectTipToBeVisible = ({
-  view,
   text,
+  placement,
 }: {
-  view: InfoTipView;
   text: string;
+  placement?: 'inline' | 'floating';
 }) => {
-  const tip = getVisibleTip({ view, text });
+  const tip = getVisibleTip({ text, placement });
   expect(tip).toBeVisible();
 };
 
 export const expectTipToBeClosed = ({
-  view,
   text,
+  placement,
 }: {
-  view: InfoTipView;
   text: string;
+  placement?: 'inline' | 'floating';
 }) => {
-  const tip = getVisibleTip({ view, text });
-  expect(tip).toBeUndefined();
+  const tip = getVisibleTip({ text, placement });
+  expect(tip).not.toBeVisible();
 };
 
 export const openInfoTipsWithKeyboard = async ({
   view,
   count,
 }: {
-  view: InfoTipView;
+  view: ViewWithQueries;
   count: number;
 }) => {
   const buttons = view.getAllByLabelText('Show information');

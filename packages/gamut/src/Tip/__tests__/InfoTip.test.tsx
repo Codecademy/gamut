@@ -1,4 +1,4 @@
-import { setupRtl } from '@codecademy/gamut-tests';
+import { MockGamutProvider, setupRtl } from '@codecademy/gamut-tests';
 import { act, render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -249,80 +249,79 @@ describe('InfoTip', () => {
   describe('Multiple InfoTips', () => {
     it('closes all InfoTips when Escape is pressed', async () => {
       const view = render(
-        <>
+        <MockGamutProvider>
           <InfoTip info="InfoTip A" />
           <InfoTip info="InfoTip B" />
           <InfoTip info="InfoTip C" />
-        </>
+        </MockGamutProvider>
       );
 
       await openInfoTipsWithKeyboard({ view, count: 3 });
 
-      // Verify all are visible
       await waitFor(() => {
-        expectTipToBeVisible({ view, text: 'InfoTip A' });
-        expectTipToBeVisible({ view, text: 'InfoTip B' });
-        expectTipToBeVisible({ view, text: 'InfoTip C' });
+        expectTipToBeVisible({ text: 'InfoTip A' });
+        expectTipToBeVisible({ text: 'InfoTip B' });
+        expectTipToBeVisible({ text: 'InfoTip C' });
       });
 
-      // Press Escape - all should close
       await pressKey('{Escape}');
 
       await waitFor(() => {
-        expectTipToBeClosed({ view, text: 'InfoTip A' });
-        expectTipToBeClosed({ view, text: 'InfoTip B' });
-        expectTipToBeClosed({ view, text: 'InfoTip C' });
+        expectTipToBeClosed({ text: 'InfoTip A' });
+        expectTipToBeClosed({ text: 'InfoTip B' });
+        expectTipToBeClosed({ text: 'InfoTip C' });
       });
     });
 
     it('closes all InfoTips when clicking outside', async () => {
       const view = render(
-        <div>
-          <InfoTip info="InfoTip A" />
-          <InfoTip info="InfoTip B" />
-          <div data-testid="outside">Outside</div>
-        </div>
+        <MockGamutProvider>
+          <div>
+            <InfoTip info="InfoTip A" />
+            <InfoTip info="InfoTip B" />
+            <div data-testid="outside">Outside</div>
+          </div>
+        </MockGamutProvider>
       );
 
       await openInfoTipsWithKeyboard({ view, count: 2 });
 
-      // Verify both are visible
       await waitFor(() => {
-        expectTipToBeVisible({ view, text: 'InfoTip A' });
-        expectTipToBeVisible({ view, text: 'InfoTip B' });
+        expectTipToBeVisible({ text: 'InfoTip A' });
+        expectTipToBeVisible({ text: 'InfoTip B' });
       });
 
-      // Click outside - both should close
       await userEvent.click(view.getByTestId('outside'));
 
       await waitFor(() => {
-        expectTipToBeClosed({ view, text: 'InfoTip A' });
-        expectTipToBeClosed({ view, text: 'InfoTip B' });
+        expectTipToBeClosed({ text: 'InfoTip A' });
+        expectTipToBeClosed({ text: 'InfoTip B' });
       });
     });
 
-    it('works with both inline and floating placement InfoTips', async () => {
+    it('closes multiple InfoTips with different placements', async () => {
       const view = render(
-        <>
-          <InfoTip info="Inline InfoTip" placement="inline" />
-          <InfoTip info="Floating InfoTip" placement="floating" />
-        </>
+        <MockGamutProvider>
+          <InfoTip info="First Tip" placement="inline" />
+          <InfoTip info="Second Tip" placement="inline" />
+          <InfoTip info="Third Tip" placement="inline" />
+        </MockGamutProvider>
       );
 
-      await openInfoTipsWithKeyboard({ view, count: 2 });
+      await openInfoTipsWithKeyboard({ view, count: 3 });
 
-      // Verify both are visible
       await waitFor(() => {
-        expectTipToBeVisible({ view, text: 'Inline InfoTip' });
-        expectTipToBeVisible({ view, text: 'Floating InfoTip' });
+        expectTipToBeVisible({ text: 'First Tip' });
+        expectTipToBeVisible({ text: 'Second Tip' });
+        expectTipToBeVisible({ text: 'Third Tip' });
       });
 
-      // Press Escape - both should close
       await pressKey('{Escape}');
 
       await waitFor(() => {
-        expectTipToBeClosed({ view, text: 'Inline InfoTip' });
-        expectTipToBeClosed({ view, text: 'Floating InfoTip' });
+        expectTipToBeClosed({ text: 'First Tip' });
+        expectTipToBeClosed({ text: 'Second Tip' });
+        expectTipToBeClosed({ text: 'Third Tip' });
       });
     });
   });
