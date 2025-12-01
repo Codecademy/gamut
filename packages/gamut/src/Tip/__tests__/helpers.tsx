@@ -475,3 +475,56 @@ export const testInfoTipInsideModalClosesOnEscape = async ({
   // Modal should still be open
   expect(view.getByRole('dialog')).toBeInTheDocument();
 };
+
+// Multiple InfoTips helpers
+export const getVisibleTip = ({
+  view,
+  text,
+}: {
+  view: InfoTipView;
+  text: string;
+}) => {
+  const elements = view.getAllByText(text);
+  return elements.find((el) => el.getAttribute('aria-hidden') === 'false');
+};
+
+export const expectTipToBeVisible = ({
+  view,
+  text,
+}: {
+  view: InfoTipView;
+  text: string;
+}) => {
+  const tip = getVisibleTip({ view, text });
+  expect(tip).toBeVisible();
+};
+
+export const expectTipToBeClosed = ({
+  view,
+  text,
+}: {
+  view: InfoTipView;
+  text: string;
+}) => {
+  const tip = getVisibleTip({ view, text });
+  expect(tip).toBeUndefined();
+};
+
+export const openInfoTipsWithKeyboard = async ({
+  view,
+  count,
+}: {
+  view: InfoTipView;
+  count: number;
+}) => {
+  const buttons = view.getAllByLabelText('Show information');
+  buttons[0].focus();
+  await userEvent.keyboard('{Enter}');
+
+  for (let i = 1; i < count; i += 1) {
+    // eslint-disable-next-line no-await-in-loop
+    await userEvent.tab();
+    // eslint-disable-next-line no-await-in-loop
+    await userEvent.keyboard('{Enter}');
+  }
+};

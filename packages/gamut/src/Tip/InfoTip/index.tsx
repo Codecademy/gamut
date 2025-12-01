@@ -173,7 +173,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       if (hasUnrelatedModal) return;
 
       e.preventDefault();
-      e.stopImmediatePropagation();
+      e.stopPropagation();
       setTipIsHidden(true);
       buttonRef.current?.focus();
     };

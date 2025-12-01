@@ -1,10 +1,13 @@
 import { setupRtl } from '@codecademy/gamut-tests';
-import { act, waitFor } from '@testing-library/react';
+import { act, render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { InfoTip } from '../InfoTip';
 import {
   createLinkSetup,
+  expectTipToBeClosed,
+  expectTipToBeVisible,
+  openInfoTipsWithKeyboard,
   openTipTabToLinkAndWaitForFocus,
   pressKey,
   setupLinkTestWithPlacement,
@@ -239,6 +242,87 @@ describe('InfoTip', () => {
         expect(secondLink).toHaveFocus();
         expect(button).not.toHaveFocus();
         expect(firstLink).not.toHaveFocus();
+      });
+    });
+  });
+
+  describe('Multiple InfoTips', () => {
+    it('closes all InfoTips when Escape is pressed', async () => {
+      const view = render(
+        <>
+          <InfoTip info="InfoTip A" />
+          <InfoTip info="InfoTip B" />
+          <InfoTip info="InfoTip C" />
+        </>
+      );
+
+      await openInfoTipsWithKeyboard({ view, count: 3 });
+
+      // Verify all are visible
+      await waitFor(() => {
+        expectTipToBeVisible({ view, text: 'InfoTip A' });
+        expectTipToBeVisible({ view, text: 'InfoTip B' });
+        expectTipToBeVisible({ view, text: 'InfoTip C' });
+      });
+
+      // Press Escape - all should close
+      await pressKey('{Escape}');
+
+      await waitFor(() => {
+        expectTipToBeClosed({ view, text: 'InfoTip A' });
+        expectTipToBeClosed({ view, text: 'InfoTip B' });
+        expectTipToBeClosed({ view, text: 'InfoTip C' });
+      });
+    });
+
+    it('closes all InfoTips when clicking outside', async () => {
+      const view = render(
+        <div>
+          <InfoTip info="InfoTip A" />
+          <InfoTip info="InfoTip B" />
+          <div data-testid="outside">Outside</div>
+        </div>
+      );
+
+      await openInfoTipsWithKeyboard({ view, count: 2 });
+
+      // Verify both are visible
+      await waitFor(() => {
+        expectTipToBeVisible({ view, text: 'InfoTip A' });
+        expectTipToBeVisible({ view, text: 'InfoTip B' });
+      });
+
+      // Click outside - both should close
+      await userEvent.click(view.getByTestId('outside'));
+
+      await waitFor(() => {
+        expectTipToBeClosed({ view, text: 'InfoTip A' });
+        expectTipToBeClosed({ view, text: 'InfoTip B' });
+      });
+    });
+
+    it('works with both inline and floating placement InfoTips', async () => {
+      const view = render(
+        <>
+          <InfoTip info="Inline InfoTip" placement="inline" />
+          <InfoTip info="Floating InfoTip" placement="floating" />
+        </>
+      );
+
+      await openInfoTipsWithKeyboard({ view, count: 2 });
+
+      // Verify both are visible
+      await waitFor(() => {
+        expectTipToBeVisible({ view, text: 'Inline InfoTip' });
+        expectTipToBeVisible({ view, text: 'Floating InfoTip' });
+      });
+
+      // Press Escape - both should close
+      await pressKey('{Escape}');
+
+      await waitFor(() => {
+        expectTipToBeClosed({ view, text: 'Inline InfoTip' });
+        expectTipToBeClosed({ view, text: 'Floating InfoTip' });
       });
     });
   });
