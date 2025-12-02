@@ -35,3 +35,17 @@ export const InfoTipInsideModalMock: React.FC<
     </>
   );
 };
+
+export const MultipleInfoTipsMock: React.FC<{
+  tips: Array<Pick<InfoTipProps, 'info' | 'placement'>>;
+  includeOutsideElement?: boolean;
+}> = ({ tips, includeOutsideElement }) => {
+  return (
+    <>
+      {tips.map((tip, index) => (
+        <InfoTip key={index} info={tip.info} placement={tip.placement} />
+      ))}
+      {includeOutsideElement && <div data-testid="outside">Outside</div>}
+    </>
+  );
+};

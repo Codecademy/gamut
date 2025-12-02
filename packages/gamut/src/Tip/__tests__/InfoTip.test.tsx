@@ -1,12 +1,12 @@
-import { MockGamutProvider, setupRtl } from '@codecademy/gamut-tests';
-import { act, render, waitFor } from '@testing-library/react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { act, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { InfoTip } from '../InfoTip';
 import {
   createLinkSetup,
-  expectTipToBeClosed,
-  expectTipToBeVisible,
+  expectTipsClosed,
+  expectTipsVisible,
   openInfoTipsWithKeyboard,
   openTipTabToLinkAndWaitForFocus,
   pressKey,
@@ -22,10 +22,12 @@ import {
   testShowTipOnClick,
   testTabbingBetweenLinks,
 } from './helpers';
+import { MultipleInfoTipsMock } from './mocks';
 
-const info = 'I am information';
+const infoText = 'I am information';
+const linkText = 'cool link';
 const renderView = setupRtl(InfoTip, {
-  info,
+  info: infoText,
 });
 
 describe('InfoTip', () => {
@@ -34,45 +36,37 @@ describe('InfoTip', () => {
     { placement: 'floating' },
   ])('$placement placement', ({ placement }) => {
     it('shows the tip when it is clicked on', async () => {
-      const { view } = renderView({
-        placement,
-      });
-      await testShowTipOnClick({ view, info, placement });
+      const { view } = renderView({ placement });
+      await testShowTipOnClick({ view, info: infoText, placement });
     });
 
     it('closes the tip when Escape key is pressed and returns focus to button', async () => {
-      const { view } = renderView({
-        placement,
-      });
-      await testEscapeKeyReturnsFocus({ view, info, placement });
+      const { view } = renderView({ placement });
+      await testEscapeKeyReturnsFocus({ view, info: infoText, placement });
     });
 
     it('closes the tip when Escape is pressed even when focus is on an outside element', async () => {
-      const { view } = renderView({
-        placement,
-      });
-      await testEscapeKeyWithOutsideFocus({ view, info });
+      const { view } = renderView({ placement });
+      await testEscapeKeyWithOutsideFocus({ view, info: infoText });
     });
 
     it('does not close the tip when Escape is pressed if a modal is open', async () => {
-      const { view } = renderView({
-        placement,
-      });
-      await testModalDoesNotCloseInfoTip({ view, info, placement });
+      const { view } = renderView({ placement });
+      await testModalDoesNotCloseInfoTip({ view, info: infoText, placement });
     });
 
     it('closes the tip when Escape is pressed if the InfoTip is inside a modal', async () => {
-      await testInfoTipInsideModalClosesOnEscape({ info, placement });
+      await testInfoTipInsideModalClosesOnEscape({
+        info: infoText,
+        placement,
+      });
     });
 
     it('calls onClick with isTipHidden: false when tip opens', async () => {
       const onClick = jest.fn();
-      const { view } = renderView({
-        placement,
-        onClick,
-      });
-
+      const { view } = renderView({ placement, onClick });
       const button = view.getByLabelText('Show information');
+
       await act(async () => {
         await userEvent.click(button);
       });
@@ -84,11 +78,7 @@ describe('InfoTip', () => {
 
     it('calls onClick with isTipHidden: true when tip closes', async () => {
       const onClick = jest.fn();
-      const { view } = renderView({
-        placement,
-        onClick,
-      });
-
+      const { view } = renderView({ placement, onClick });
       const button = view.getByLabelText('Show information');
 
       await act(async () => {
@@ -112,10 +102,7 @@ describe('InfoTip', () => {
 
     it('does not call onClick on initial mount', async () => {
       const onClick = jest.fn();
-      renderView({
-        placement,
-        onClick,
-      });
+      renderView({ placement, onClick });
 
       await act(async () => {
         await new Promise((resolve) => setTimeout(resolve, 100));
@@ -125,18 +112,13 @@ describe('InfoTip', () => {
     });
 
     it('closes the tip when clicking outside the wrapper', async () => {
-      const { view } = renderView({
-        placement,
-      });
-      await testOutsideClick({ view, info, placement });
+      const { view } = renderView({ placement });
+      await testOutsideClick({ view, info: infoText, placement });
     });
 
     it('handles rapid open/close cycles correctly', async () => {
       const onClick = jest.fn();
-      const { view } = renderView({
-        placement,
-        onClick,
-      });
+      const { view } = renderView({ placement, onClick });
       await testRapidToggle({ view, onClick });
     });
 
@@ -159,7 +141,6 @@ describe('InfoTip', () => {
     });
 
     it('allows focus to move to links within the tip', async () => {
-      const linkText = 'cool link';
       const { info, onClick } = createLinkSetup({ linkText });
       const { view } = renderView({ placement, info, onClick });
 
@@ -167,7 +148,6 @@ describe('InfoTip', () => {
     });
 
     it('closes the tip when Escape is pressed even when focus is on a link inside', async () => {
-      const linkText = 'cool link';
       const { info, onClick } = createLinkSetup({ linkText });
       const { view } = renderView({ placement, info, onClick });
 
@@ -182,26 +162,23 @@ describe('InfoTip', () => {
   });
 
   describe('floating placement focus management', () => {
-    it('wraps focus to button when tabbing forward from last focusable element', async () => {
-      const linkText = 'cool link';
-      const { view, containerRef } = setupLinkTestWithPlacement(
-        linkText,
-        'floating',
-        renderView
-      );
+    describe.each<{ direction: 'forward' | 'backward' }>([
+      { direction: 'forward' },
+      { direction: 'backward' },
+    ])('$direction tabbing', ({ direction }) => {
+      it(`wraps focus to button when ${
+        direction === 'forward'
+          ? 'tabbing forward from last'
+          : 'shift+tabbing backward from first'
+      } focusable element`, async () => {
+        const { view, containerRef } = setupLinkTestWithPlacement(
+          linkText,
+          'floating',
+          renderView
+        );
 
-      await testFocusWrap({ view, containerRef, direction: 'forward' });
-    });
-
-    it('wraps focus to button when shift+tabbing backward from first focusable element', async () => {
-      const linkText = 'cool link';
-      const { view, containerRef } = setupLinkTestWithPlacement(
-        linkText,
-        'floating',
-        renderView
-      );
-
-      await testFocusWrap({ view, containerRef, direction: 'backward' });
+        await testFocusWrap({ view, containerRef, direction });
+      });
     });
 
     it('does not wrap focus when tabbing from non-last focusable element', async () => {
@@ -248,80 +225,68 @@ describe('InfoTip', () => {
 
   describe('Multiple InfoTips', () => {
     it('closes all InfoTips when Escape is pressed', async () => {
-      const view = render(
-        <MockGamutProvider>
-          <InfoTip info="InfoTip A" />
-          <InfoTip info="InfoTip B" />
-          <InfoTip info="InfoTip C" />
-        </MockGamutProvider>
-      );
+      const tips = [
+        { info: 'InfoTip A' },
+        { info: 'InfoTip B' },
+        { info: 'InfoTip C' },
+      ];
+      const { view } = setupRtl(MultipleInfoTipsMock, { tips })();
 
-      await openInfoTipsWithKeyboard({ view, count: 3 });
+      await openInfoTipsWithKeyboard({ view, count: tips.length });
 
       await waitFor(() => {
-        expectTipToBeVisible({ text: 'InfoTip A' });
-        expectTipToBeVisible({ text: 'InfoTip B' });
-        expectTipToBeVisible({ text: 'InfoTip C' });
+        expectTipsVisible(tips.map(({ info }) => ({ text: info })));
       });
 
       await pressKey('{Escape}');
 
       await waitFor(() => {
-        expectTipToBeClosed({ text: 'InfoTip A' });
-        expectTipToBeClosed({ text: 'InfoTip B' });
-        expectTipToBeClosed({ text: 'InfoTip C' });
+        expectTipsClosed(tips.map(({ info }) => ({ text: info })));
       });
     });
 
     it('closes all InfoTips when clicking outside', async () => {
-      const view = render(
-        <MockGamutProvider>
-          <div>
-            <InfoTip info="InfoTip A" />
-            <InfoTip info="InfoTip B" />
-            <div data-testid="outside">Outside</div>
-          </div>
-        </MockGamutProvider>
-      );
+      const tips = [{ info: 'InfoTip A' }, { info: 'InfoTip B' }];
+      const { view } = setupRtl(MultipleInfoTipsMock, {
+        tips,
+        includeOutsideElement: true,
+      })();
 
-      await openInfoTipsWithKeyboard({ view, count: 2 });
+      await openInfoTipsWithKeyboard({ view, count: tips.length });
 
       await waitFor(() => {
-        expectTipToBeVisible({ text: 'InfoTip A' });
-        expectTipToBeVisible({ text: 'InfoTip B' });
+        expectTipsVisible(tips.map(({ info }) => ({ text: info })));
       });
 
       await userEvent.click(view.getByTestId('outside'));
 
       await waitFor(() => {
-        expectTipToBeClosed({ text: 'InfoTip A' });
-        expectTipToBeClosed({ text: 'InfoTip B' });
+        expectTipsClosed(tips.map(({ info }) => ({ text: info })));
       });
     });
 
     it('closes multiple InfoTips with different placements', async () => {
-      const view = render(
-        <MockGamutProvider>
-          <InfoTip info="First Tip" placement="inline" />
-          <InfoTip info="Second Tip" placement="inline" />
-          <InfoTip info="Third Tip" placement="inline" />
-        </MockGamutProvider>
-      );
+      const tips = [
+        { info: 'First Tip', placement: 'inline' as const },
+        { info: 'Second Tip', placement: 'floating' as const },
+        { info: 'Third Tip', placement: 'inline' as const },
+      ];
+      const { view } = setupRtl(MultipleInfoTipsMock, { tips })();
 
-      await openInfoTipsWithKeyboard({ view, count: 3 });
+      await openInfoTipsWithKeyboard({ view, count: tips.length });
 
       await waitFor(() => {
-        expectTipToBeVisible({ text: 'First Tip' });
-        expectTipToBeVisible({ text: 'Second Tip' });
-        expectTipToBeVisible({ text: 'Third Tip' });
+        expectTipsVisible(
+          tips.map(({ info, placement }) => ({ text: info, placement }))
+        );
       });
 
       await pressKey('{Escape}');
 
       await waitFor(() => {
-        expectTipToBeClosed({ text: 'First Tip' });
-        expectTipToBeClosed({ text: 'Second Tip' });
-        expectTipToBeClosed({ text: 'Third Tip' });
+        expectTipsClosed(
+          tips.map(({ info, placement }) => ({ text: info, placement }))
+        );
       });
     });
   });

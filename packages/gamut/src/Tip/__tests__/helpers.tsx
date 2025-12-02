@@ -502,7 +502,7 @@ export const getVisibleTip = ({
     }
 
     if (placement === 'floating') {
-      const popover = el.closest('[role="dialog"]');
+      const popover = el.closest('[data-testid="popover-content-container"]');
       if (popover) {
         return el;
       }
@@ -551,4 +551,20 @@ export const openInfoTipsWithKeyboard = async ({
     // eslint-disable-next-line no-await-in-loop
     await userEvent.keyboard('{Enter}');
   }
+};
+
+export const expectTipsVisible = (
+  tips: { text: string; placement?: 'inline' | 'floating' }[]
+) => {
+  tips.forEach((tip) => {
+    expectTipToBeVisible({ text: tip.text, placement: tip.placement });
+  });
+};
+
+export const expectTipsClosed = (
+  tips: { text: string; placement?: 'inline' | 'floating' }[]
+) => {
+  tips.forEach((tip) => {
+    expectTipToBeClosed({ text: tip.text, placement: tip.placement });
+  });
 };
