@@ -5,15 +5,15 @@ import { IllustrationProps } from './types';
 export const InnovationBuildingBlocks: React.FC<IllustrationProps> = ({
   'aria-hidden': ariaHidden,
   className,
-  height = '236',
-  width = '300',
+  height = '224',
+  width = '288',
 }) => (
   <svg
     aria-hidden={ariaHidden}
     className={className}
     fill="none"
     height={height}
-    viewBox="0 0 300 236"
+    viewBox="0 0 288 224"
     width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
