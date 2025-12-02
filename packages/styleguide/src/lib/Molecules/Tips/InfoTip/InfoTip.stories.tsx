@@ -210,7 +210,7 @@ export const KeyboardNavigation: Story = {
 export const InfoTipInsideModal: Story = {
   args: {
     placement: 'inline',
-    info: 'This is helpful information about the field. Try pressing Escape!',
+    info: 'This is helpful information about the Modal. Try pressing Escape!',
   },
   render: function InfoTipInsideModal(args) {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -229,13 +229,7 @@ export const InfoTipInsideModal: Story = {
             <li>Click &quot;Open Modal with InfoTip Inside&quot;</li>
             <li>Click or press Enter on the InfoTip button (ⓘ icon)</li>
             <li>Press Escape - should close InfoTip (Modal stays open)</li>
-            <li>Press Escape again - should close Modal</li>
-            <li>
-              <em>
-                Inline InfoTips work correctly inside Modals without z-index
-                issues.
-              </em>
-            </li>
+            <li>Press Escape again - should close Modal</li>{' '}
           </Box>
         </Box>
 
@@ -249,7 +243,7 @@ export const InfoTipInsideModal: Story = {
             <Text>This modal contains an InfoTip below:</Text>
 
             <FlexBox alignItems="center" gap={8}>
-              <Text>Field Label</Text>
+              <Text>Some text that needs explanation</Text>
               <InfoTip {...args} />
             </FlexBox>
 
