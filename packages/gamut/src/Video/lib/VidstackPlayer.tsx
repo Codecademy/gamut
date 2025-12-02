@@ -76,6 +76,7 @@ export const VidstackPlayer: React.FC<VidstackPlayerProps> = ({
   return (
     <VariableProvider
       className={className}
+      // eslint-disable-next-line gamut/no-inline-style
       style={{ width, height }}
       variables={vdsVariables}
     >
