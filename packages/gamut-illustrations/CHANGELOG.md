@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.56.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.55.1...@codecademy/gamut-illustrations@0.56.0) (2025-12-02)
+
+### Features
+
+- **Illustration:** added new InnovationBuildingBlocks ([#3223](https://github.com/Codecademy/gamut/issues/3223)) ([cee14e8](https://github.com/Codecademy/gamut/commit/cee14e85e100d871ae195ad0c70aff271c3e115f))
+
 ### [0.55.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.55.0...@codecademy/gamut-illustrations@0.55.1) (2025-10-28)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations

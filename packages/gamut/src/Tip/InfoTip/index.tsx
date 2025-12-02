@@ -122,14 +122,22 @@ export const InfoTip: React.FC<InfoTipProps> = ({
     if (isTipHidden) return;
 
     const handleGlobalEscapeKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Escape' || document.querySelector(MODAL_SELECTOR)) return;
+      if (e.key !== 'Escape') return;
+
+      const openModals = document.querySelectorAll(MODAL_SELECTOR);
+      const hasUnrelatedModal = Array.from(openModals).some(
+        (modal) => wrapperRef.current && !modal.contains(wrapperRef.current)
+      );
+
+      if (hasUnrelatedModal) return;
 
       e.preventDefault();
+      e.stopPropagation();
       setTipIsHidden(true);
       buttonRef.current?.focus();
     };
 
-    document.addEventListener('keydown', handleGlobalEscapeKey);
+    document.addEventListener('keydown', handleGlobalEscapeKey, true);
 
     if (isFloating) {
       const handleTabKeyInPopover = (event: KeyboardEvent) => {
@@ -165,7 +173,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       return () => {
         clearTimeout(timeoutId);
         popoverContent?.removeEventListener('keydown', handleTabKeyInPopover);
-        document.removeEventListener('keydown', handleGlobalEscapeKey);
+        document.removeEventListener('keydown', handleGlobalEscapeKey, true);
       };
     }
 

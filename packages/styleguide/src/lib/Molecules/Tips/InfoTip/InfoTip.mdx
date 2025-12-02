@@ -72,16 +72,16 @@ InfoTips automatically manage focus for optimal keyboard accessibility:
 
 <Canvas of={InfoTipStories.KeyboardNavigation} />
 
-### Global Escape key handling
+### InfoTips with Modals and Dialogs
 
-InfoTips listen for the Escape key globally and will close automatically **unless** a higher-priority element is open:
+InfoTips have intelligent Escape key handling that works correctly both inside and outside Modals:
 
-- **InfoTips close on Escape** regardless of where keyboard focus is
-- **Modals and dialogs take priority** - InfoTips detect when `dialog[open]`, `role="dialog"`, or `role="alertdialog"` elements are present and defer Escape handling to them
-- After closing a modal, pressing Escape again will close the InfoTip
-- When an InfoTip closes via Escape, focus automatically returns to the InfoTip button
+- **InfoTips close on Escape** regardless of where keyboard focus is, and focus returns to the InfoTip button
+- **InfoTips inside Modals close first** - When an InfoTip is placed inside a Modal, pressing Escape closes the InfoTip while keeping the Modal open
+- **Layered navigation** - After closing an InfoTip inside a Modal, pressing Escape again closes the Modal
+- **Modals take priority over external InfoTips** - InfoTips detect when `dialog[open]`, `role="dialog"`, or `role="alertdialog"` elements are present and defer Escape handling to them when the InfoTip is outside the Modal
 
-<Canvas of={InfoTipStories.WithModal} />
+<Canvas of={InfoTipStories.InfoTipInsideModal} />
 
 ## Custom Accessible Labeling
 
