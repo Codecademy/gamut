@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.0](https://github.com/Codecademy/gamut/compare/eslint-plugin-gamut@2.3.2...eslint-plugin-gamut@2.4.0) (2025-12-01)
+
+### Features
+
+- Disable inline `style` prop for components ([e695579](https://github.com/Codecademy/gamut/commit/e695579fdeb2de526a42d2aff2b75537918a9096))
+
 ### [2.3.2](https://github.com/Codecademy/gamut/compare/eslint-plugin-gamut@2.3.1...eslint-plugin-gamut@2.3.2) (2025-10-14)
 
 **Note:** Version bump only for package eslint-plugin-gamut
