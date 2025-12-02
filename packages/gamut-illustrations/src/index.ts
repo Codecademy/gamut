@@ -27,6 +27,7 @@ export * from './Heart';
 export * from './Hills';
 export * from './HomeOffice';
 export * from './Interest';
+export * from './InnovationBuildingBlocks';
 export * from './Interview';
 export * from './Keyhole';
 export * from './Knowledge';
