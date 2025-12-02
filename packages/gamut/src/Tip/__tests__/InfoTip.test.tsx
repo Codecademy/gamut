@@ -226,9 +226,9 @@ describe('InfoTip', () => {
   describe('Multiple InfoTips', () => {
     it('closes all InfoTips when Escape is pressed', async () => {
       const tips = [
-        { info: 'InfoTip A' },
-        { info: 'InfoTip B' },
-        { info: 'InfoTip C' },
+        { id: 'tip-a', info: 'InfoTip A' },
+        { id: 'tip-b', info: 'InfoTip B' },
+        { id: 'tip-c', info: 'InfoTip C' },
       ];
       const { view } = setupRtl(MultipleInfoTipsMock, { tips })();
 
@@ -246,7 +246,10 @@ describe('InfoTip', () => {
     });
 
     it('closes all InfoTips when clicking outside', async () => {
-      const tips = [{ info: 'InfoTip A' }, { info: 'InfoTip B' }];
+      const tips = [
+        { id: 'tip-a', info: 'InfoTip A' },
+        { id: 'tip-b', info: 'InfoTip B' },
+      ];
       const { view } = setupRtl(MultipleInfoTipsMock, {
         tips,
         includeOutsideElement: true,
@@ -267,9 +270,9 @@ describe('InfoTip', () => {
 
     it('closes multiple InfoTips with different placements', async () => {
       const tips = [
-        { info: 'First Tip', placement: 'inline' as const },
-        { info: 'Second Tip', placement: 'floating' as const },
-        { info: 'Third Tip', placement: 'inline' as const },
+        { id: 'tip-1', info: 'First Tip', placement: 'inline' as const },
+        { id: 'tip-2', info: 'Second Tip', placement: 'floating' as const },
+        { id: 'tip-3', info: 'Third Tip', placement: 'inline' as const },
       ];
       const { view } = setupRtl(MultipleInfoTipsMock, { tips })();
 

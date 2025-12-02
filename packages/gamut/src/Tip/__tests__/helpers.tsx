@@ -556,15 +556,15 @@ export const openInfoTipsWithKeyboard = async ({
 export const expectTipsVisible = (
   tips: { text: string; placement?: 'inline' | 'floating' }[]
 ) => {
-  tips.forEach((tip) => {
-    expectTipToBeVisible({ text: tip.text, placement: tip.placement });
+  tips.forEach(({ text, placement }) => {
+    expectTipToBeVisible({ text, placement });
   });
 };
 
 export const expectTipsClosed = (
   tips: { text: string; placement?: 'inline' | 'floating' }[]
 ) => {
-  tips.forEach((tip) => {
-    expectTipToBeClosed({ text: tip.text, placement: tip.placement });
+  tips.forEach(({ text, placement }) => {
+    expectTipToBeClosed({ text, placement });
   });
 };
