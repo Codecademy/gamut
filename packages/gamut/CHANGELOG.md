@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [67.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.4.0...@codecademy/gamut@67.4.1) (2025-12-02)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [67.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.3.3...@codecademy/gamut@67.4.0) (2025-12-01)
+
+### Features
+
+- Disable inline `style` prop for components ([e695579](https://github.com/Codecademy/gamut/commit/e695579fdeb2de526a42d2aff2b75537918a9096))
+
+### [67.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.3.2...@codecademy/gamut@67.3.3) (2025-11-13)
+
+### Bug Fixes
+
+- **PopoverContainer:** Add all scrolling parents to closeOnViewportExit ([f8d0ce5](https://github.com/Codecademy/gamut/commit/f8d0ce59c923169ea4502b646e4d82f3d275880e))
+
 ### [67.3.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.3.1...@codecademy/gamut@67.3.2) (2025-11-10)
 
 ### Bug Fixes

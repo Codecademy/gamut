@@ -29,6 +29,7 @@ const preview: Preview = {
             'Best practices',
             'Contributing',
             'Deep Controls add-on',
+            'ESLint rules',
             'FAQs',
             'Installation',
             'Stories',

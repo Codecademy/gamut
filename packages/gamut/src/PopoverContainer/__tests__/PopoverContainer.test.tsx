@@ -4,6 +4,13 @@ import { fireEvent, screen } from '@testing-library/react';
 
 import { PopoverContainer } from '..';
 import { PopoverContainerProps, TargetRef } from '../types';
+import * as utils from '../utils';
+import {
+  createMockDOMRect,
+  createNestedScrollableParents,
+  createScrollableParent,
+  setupWindowDimensions,
+} from './utils';
 
 // Add the custom matchers provided by '@emotion/jest'
 expect.extend(matchers);
@@ -282,6 +289,110 @@ describe('Popover', () => {
           );
         }
       );
+    });
+  });
+
+  describe('closeOnViewportExit with scrollable parents', () => {
+    beforeEach(() => {
+      setupWindowDimensions();
+    });
+
+    afterEach(() => {
+      document.body.innerHTML = '';
+      jest.restoreAllMocks();
+    });
+
+    it('findAllAdditionalScrollingParents finds scrollable parent elements', () => {
+      const { target } = createScrollableParent();
+
+      const parents = utils.findAllAdditionalScrollingParents(target);
+
+      expect(parents.length).toBeGreaterThan(0);
+    });
+
+    it('detects target is out of view when completely above scrollable parent viewport', () => {
+      const { parent, target } = createScrollableParent();
+
+      // Target is at y=50, but parent's visible viewport starts at y=200
+      jest
+        .spyOn(target, 'getBoundingClientRect')
+        .mockReturnValue(createMockDOMRect(50, 100, 100, 50));
+
+      jest
+        .spyOn(parent, 'getBoundingClientRect')
+        .mockReturnValue(createMockDOMRect(200, 0, 500, 200));
+
+      const targetRect = target.getBoundingClientRect();
+      const result = utils.isOutOfView(targetRect, target);
+
+      expect(result).toBe(true);
+    });
+
+    it('detects target is visible when within scrollable parent viewport', () => {
+      const { parent, target } = createScrollableParent();
+
+      // Target is within parent's visible viewport (y=250 is between parent's y=200 and y=400)
+      jest
+        .spyOn(target, 'getBoundingClientRect')
+        .mockReturnValue(createMockDOMRect(250, 100, 100, 50));
+
+      jest
+        .spyOn(parent, 'getBoundingClientRect')
+        .mockReturnValue(createMockDOMRect(200, 0, 500, 200));
+
+      const targetRect = target.getBoundingClientRect();
+      const result = utils.isOutOfView(targetRect, target);
+
+      expect(result).toBe(false);
+    });
+
+    it('detects target is out of view in nested scrollable parents', () => {
+      const { outerParent, innerParent, target } =
+        createNestedScrollableParents();
+
+      // Target is out of view in inner parent (y=500 is below inner parent's visible viewport at y=250-450)
+      // but might be visible in outer parent
+      jest
+        .spyOn(target, 'getBoundingClientRect')
+        .mockReturnValue(createMockDOMRect(500, 100, 100, 50));
+
+      jest
+        .spyOn(innerParent, 'getBoundingClientRect')
+        .mockReturnValue(createMockDOMRect(250, 50, 500, 200));
+
+      jest
+        .spyOn(outerParent, 'getBoundingClientRect')
+        .mockReturnValue(createMockDOMRect(100, 0, 600, 400));
+
+      const targetRect = target.getBoundingClientRect();
+      const result = utils.isOutOfView(targetRect, target);
+
+      // Should return true because target is out of view in the inner (closer) scrollable parent
+      expect(result).toBe(true);
+    });
+
+    it('detects target is visible when within nested scrollable parents', () => {
+      const { outerParent, innerParent, target } =
+        createNestedScrollableParents();
+
+      // Target is visible in both inner and outer parents
+      jest
+        .spyOn(target, 'getBoundingClientRect')
+        .mockReturnValue(createMockDOMRect(300, 100, 100, 50));
+
+      jest
+        .spyOn(innerParent, 'getBoundingClientRect')
+        .mockReturnValue(createMockDOMRect(250, 50, 500, 200));
+
+      jest
+        .spyOn(outerParent, 'getBoundingClientRect')
+        .mockReturnValue(createMockDOMRect(100, 0, 600, 400));
+
+      const targetRect = target.getBoundingClientRect();
+      const result = utils.isOutOfView(targetRect, target);
+
+      // Should return false because target is visible in all scrollable parents
+      expect(result).toBe(false);
     });
   });
 });
