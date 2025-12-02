@@ -27,6 +27,7 @@ const preview: Preview = {
             'About',
             'Best Practices',
             'Contributing',
+            'ESLint rules',
             'FAQs',
             'Stories',
             'Brand',

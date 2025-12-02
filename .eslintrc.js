@@ -13,6 +13,7 @@ module.exports = {
   rules: {
     'gamut/prefer-themed': 'error',
     'gamut/no-css-standalone': 'error',
+    'gamut/no-inline-style': 'error',
     'gamut/import-paths': 'error',
     'import/no-extraneous-dependencies': 'off',
   },
@@ -66,6 +67,12 @@ module.exports = {
       plugins: ['lodash'],
       rules: {
         'lodash/import-scope': ['error', 'method'],
+      },
+    },
+    {
+      files: ['packages/gamut-illustrations/**'],
+      rules: {
+        'gamut/no-inline-style': 'off',
       },
     },
   ],
