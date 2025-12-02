@@ -16,6 +16,7 @@ module.exports = {
     'gamut/prefer-themed': 'error',
     'gamut/no-css-standalone': 'error',
     'gamut/import-paths': 'error',
+    'gamut/no-inline-style': 'error',
   },
 };
 ```
