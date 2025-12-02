@@ -30,7 +30,11 @@ export const InfoTipInsideModalMock: React.FC<
         title="Test Modal"
         onRequestClose={() => setIsOpen(false)}
       >
-        <InfoTip ariaLabel="Show information" info={info} placement={placement} />
+        <InfoTip
+          ariaLabel="Show information"
+          info={info}
+          placement={placement}
+        />
       </Modal>
     </>
   );
