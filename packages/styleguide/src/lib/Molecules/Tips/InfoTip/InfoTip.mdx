@@ -92,7 +92,9 @@ The InfoTip button's accessible label can be customized using either prop:
 - **`ariaLabel`**: Directly sets the accessible label text. Useful when you want to provide a custom label without referencing another element.
 - **`ariaLabelledby`**: References the ID of another element to use as the label. Useful when you want the InfoTip button to be labeled by visible text elsewhere on the page. This is useful for when the `InfoTip` is beside text that contextualizes it.
 
-The `InfoTipButton` also has an `aria-roledescription` of `More information button` to provide essential context to screen reader users about the button's purpose.
+### Custom Role Description
+
+The `InfoTipButton` uses [`aria-roledescription="More information button"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-roledescription) to provide additional context to screen reader users about the button's specific purpose.
 
 <Canvas of={InfoTipStories.AriaLabel} />
 
