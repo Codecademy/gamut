@@ -201,6 +201,7 @@ export const Popover: React.FC<PopoverProps> = ({
       position={position}
       {...(popoverContainerRef ? { ref: popoverContainerRef } : {})}
       role={role}
+      // eslint-disable-next-line gamut/no-inline-style
       style={getPopoverPosition()}
       tabIndex={-1}
     >
