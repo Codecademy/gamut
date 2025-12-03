@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { IllustrationProps } from './types';
 
-export const VibeBuilderComputer: React.FC<IllustrationProps> = ({
+export const AIBuilderLanding: React.FC<IllustrationProps> = ({
   'aria-hidden': ariaHidden,
   className,
   height,
@@ -17,7 +17,7 @@ export const VibeBuilderComputer: React.FC<IllustrationProps> = ({
     width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
-    <title>Vibe Builder Computer</title>
+    <title>AI Builder Landing</title>
     <path
       d="M145.993 67.009c0-21.042-32.658-38.1-72.943-38.1S.107 45.966.107 67.008v3.837c0 21.042 32.658 38.101 72.943 38.101s72.943-17.059 72.943-38.1z"
       fill="#10162f"
