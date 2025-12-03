@@ -20,7 +20,7 @@ const FullTabs = (props: TabsProps) => (
       <TabPanel id="tab2">
         <p>tab 2 content</p>
       </TabPanel>
-      <TabPanel id="tab3">
+      <TabPanel id="tab3" shouldForceMount>
         <p>tab 3 content</p>
       </TabPanel>
     </TabPanels>
@@ -75,17 +75,20 @@ describe('Tabs', () => {
 
       view.getByText('Tab 1');
       view.getByText('tab 1 content');
+      expect(view.queryByText('tab 2 content')).toBeNull();
     });
 
     it('renders the second tab tab panel and calls onSelectionChange when second tab is clicked', async () => {
       const { view } = renderView();
 
       view.getByText('tab 1 content');
+      expect(view.queryByText('tab 2 content')).toBeNull();
 
       await act(() => userEvent.click(view.getByText('Tab 2')));
 
       view.getByText('tab 2 content');
       expect(mockOnSelectionChange).toHaveBeenCalledWith('tab2');
+      expect(view.queryByText('tab 1 content')).toBeNull();
     });
 
     it('renders the default selected key when passed', () => {
@@ -101,17 +104,20 @@ describe('Tabs', () => {
 
       view.getByText('Tab 1');
       view.getByText('tab 1 content');
+      expect(view.queryByText('tab 2 content')).toBeNull();
     });
 
     it('renders new tab panel and calls onSelectionChange when a tab is clicked', async () => {
       const { view } = renderViewControlled();
 
       view.getByText('tab 1 content');
+      expect(view.queryByText('tab 2 content')).toBeNull();
 
       await act(() => userEvent.click(view.getByText('Tab 2')));
 
       expect(mockOnSelectionChange).toHaveBeenCalledWith('tab2');
       view.getByText('tab 2 content');
+      expect(view.queryByText('tab 1 content')).toBeNull();
     });
   });
   describe('Disabled', () => {
@@ -129,6 +135,19 @@ describe('Tabs', () => {
       const tab = view.getByText('Tab 2');
       expect(tab).toHaveAttribute('aria-disabled', 'true');
       expect(tab).toHaveStyle('opacity: 0.25');
+    });
+  });
+
+  describe('Force mount', () => {
+    it('renders the tab panel when shouldForceMount is passed', () => {
+      const { view } = renderView();
+
+      view.getByText('tab 1 content'); // default tab
+      view.getByText('tab 3 content'); // force mounted tab
+      expect(view.getByText('tab 3 content').parentElement).toHaveStyle(
+        'display: none'
+      );
+      expect(view.queryByText('tab 2 content')).toBeNull(); // not force mounted tab
     });
   });
 });
