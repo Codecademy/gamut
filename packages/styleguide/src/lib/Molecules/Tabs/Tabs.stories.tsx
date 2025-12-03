@@ -74,7 +74,7 @@ export const Default: Story = {
           <Text as="h2">Welcome to Tab 1</Text>
           <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
         </TabPanel>
-        <TabPanel id="2">
+        <TabPanel id="2" shouldForceMount>
           <Text as="h2">Welcome to Tab 2</Text>
           <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
         </TabPanel>
@@ -256,6 +256,32 @@ export const Disabled: Story = {
           <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
         </TabPanel>
         <TabPanel id="3">
+          <Text as="h2">Welcome to Tab 3</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
+        </TabPanel>
+      </TabPanels>
+    </Tabs>
+  ),
+};
+
+export const ForceMount: Story = {
+  render: (args) => (
+    <Tabs {...args}>
+      <TabList>
+        <Tab id="1">Tab 1</Tab>
+        <Tab id="2">Tab 2</Tab>
+        <Tab id="3">Tab 3</Tab>
+      </TabList>
+      <TabPanels my={24}>
+        <TabPanel id="1" shouldForceMount>
+          <Text as="h2">Welcome to Tab 1</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
+        </TabPanel>
+        <TabPanel id="2" shouldForceMount>
+          <Text as="h2">Welcome to Tab 2</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
+        </TabPanel>
+        <TabPanel id="3" shouldForceMount>
           <Text as="h2">Welcome to Tab 3</Text>
           <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
         </TabPanel>

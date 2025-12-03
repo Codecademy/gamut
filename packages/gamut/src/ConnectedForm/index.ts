@@ -12,3 +12,4 @@ export {
   useGetInitialFormValue,
   useSubmitState,
 } from './utils';
+export type { Validate, UseFormReturn, SubmitHandler } from 'react-hook-form';
