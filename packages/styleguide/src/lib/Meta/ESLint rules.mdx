@@ -1,0 +1,255 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, Callout, LinkTo } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'ESLint rules',
+  title: 'ESLint rules',
+  subtitle: 'Custom ESLint rules for Gamut projects',
+  status: 'current',
+};
+
+<Meta title="Meta/ESLint rules" />
+
+<AboutHeader {...parameters} />
+
+The `eslint-plugin-gamut` package provides custom ESLint rules to enforce best practices and maintain code quality across Gamut projects. These rules help ensure consistent styling patterns and proper usage of Gamut components.
+
+## Available rules
+
+### `gamut/no-inline-style`
+
+**Level:** `error`
+
+Disallows the use of inline `style` props on JSX elements. This rule encourages the use of styled components, CSS classes, or design system utilities instead of inline styles.
+
+**Why?** Inline styles make it harder to maintain consistent styling, can't be optimized by build tools, and don't benefit from our design token system.
+
+#### ❌ Incorrect
+
+```tsx
+// Don't use inline style objects
+<div style={{ padding: 0, margin: 10 }} />
+
+// Even with variables
+<Component style={customStyles} />
+
+// Or with dynamic values
+<Alert style={{ width: isOpen ? '100%' : '50%' }} />
+```
+
+#### ✅ Correct
+
+```tsx
+// Use styled components
+import styled from '@emotion/styled';
+import { css } from '@codecademy/gamut-styles';
+import { Box } from '@codecademy/gamut';
+
+const Container = styled(Box)(
+  css({
+    p: 0,
+    m: 10,
+  })
+)
+
+// Use system props from Box components
+import { Box } from '@codecademy/gamut';
+
+<Box p={0} m={10} />
+
+// Use states utility for conditional styling
+import { states } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+
+const ExpandableContainer = styled.Box(
+  css({
+    width: '50%',
+  }),
+  states({
+    isExpanded: { width: '100%' },
+  })
+);
+
+<ExpandableContainer isExpanded={isExpanded} />
+
+// If need be, use className with CSS modules or global styles
+<div className="my-component" />
+```
+
+#### Disabling the rule
+
+For third-party components or edge cases where inline styles are necessary (e.g., framer-motion animations), you can disable the rule:
+
+```tsx
+// eslint-disable-next-line gamut/no-inline-style
+<motion.div style={{ transformOrigin: 'center' }} />
+```
+
+---
+
+### `gamut/no-css-standalone`
+
+**Level:** `error`
+
+Prevents importing standalone `.css` or `.scss` files. This rule enforces the use of CSS-in-JS solutions that integrate with our design system.
+
+**Why?** Standalone stylesheets bypass our theming system, can cause specificity conflicts, and don't benefit from component-scoped styling.
+
+#### ❌ Incorrect
+
+```tsx
+// Don't import CSS/SCSS files
+import './styles.css';
+import '../components/Button.scss';
+```
+
+#### ✅ Correct
+
+```tsx
+// Use styled components
+import styled from '@emotion/styled';
+import { StrokeButton } from '@codecademy/gamut';
+import { css } from '@codecademy/gamut-styles';
+
+const StyledStrokeButton = styled(StrokeButton)(
+  css({
+    p: 32,
+    bg: 'primary',
+  })
+);
+
+// Use utility functions from gamut-styles
+import { variant } from '@codecademy/gamut-styles';
+
+const buttonStyles = variant({
+  variants: {
+    primary: {
+      p: 16,
+      bg: 'primary',
+    },
+  },
+});
+```
+
+---
+
+### `gamut/import-paths`
+
+**Level:** `error`
+**Fixable:** Yes (auto-fixable using `--fix`)
+
+Ensures Gamut import statements use proper module paths. This rule enforces three requirements:
+
+1. Use relative imports when importing from the same package
+2. Don't append `/src` to import paths
+3. Don't append `/dist` to import paths
+
+**Why?** Proper import paths ensure compatibility across different environments and make refactoring easier.
+
+#### ❌ Incorrect
+
+```tsx
+// Don't use package imports within the same package
+// (when in @codecademy/gamut package)
+import { FillButton } from '@codecademy/gamut';
+
+// Don't append /src
+import { FillButton } from '@codecademy/gamut/src';
+
+// Don't append /dist
+import { theme } from '@codecademy/gamut-styles/dist';
+```
+
+#### ✅ Correct
+
+```tsx
+// Use relative imports within the same package
+import { Box } from '../Box';
+
+// Use clean package imports from other packages
+import { FillButton } from '@codecademy/gamut';
+import { theme } from '@codecademy/gamut-styles';
+```
+
+<Callout text="This rule includes auto-fix capabilities for /src and /dist violations!" />
+
+---
+
+### `gamut/prefer-themed`
+
+**Level:** `off` (by default)
+**Fixable:** Yes (auto-fixable using `--fix`)
+
+Suggests using the `themed()` utility from `gamut-styles` instead of directly accessing theme values in styled components. When enabled, this rule helps maintain consistent theme access patterns.
+
+**Why?** The `themed()` utility provides better type safety and ensures proper theme value resolution.
+
+#### ❌ Flagged (when enabled)
+
+```tsx
+const StyledDiv = styled.div`
+  color: ${({ theme }) => theme.colors.primary};
+`;
+```
+
+#### ✅ Preferred
+
+```tsx
+import { css, themed } from '@codecademy/gamut-styles';
+import { Box } from '@codecademy/gamut';
+
+const StyledBox = styled(Box)(
+  css({
+    color: themed('colors.primary'),
+  })
+);
+```
+
+<Callout text="This rule is disabled by default but can be enabled in your project's ESLint config." />
+
+---
+
+## Configuration
+
+These rules are automatically included when you extend the recommended configuration:
+
+```js
+// .eslintrc.js
+module.exports = {
+  plugins: ['eslint-plugin-gamut'],
+  rules: {
+    'gamut/no-inline-style': 'error',
+    'gamut/no-css-standalone': 'error',
+    'gamut/import-paths': 'error',
+    'gamut/prefer-themed': 'off',
+  },
+};
+```
+
+## Overriding rules
+
+You can override rules for specific files or directories:
+
+```js
+// .eslintrc.js
+module.exports = {
+  overrides: [
+    {
+      files: ['packages/gamut-illustrations/**'],
+      rules: {
+        'gamut/no-inline-style': 'off',
+      },
+    },
+  ],
+};
+```
+
+## Related documentation
+
+- <LinkTo id="Meta/Best Practices">Best Practices</LinkTo> - Learn about Gamut styling
+  best practices
+- <LinkTo id="Foundations/System/Props">System Props</LinkTo> - Using system props
+  as an alternative to inline styles
+- <LinkTo id="Foundations/System/Variants">Variants</LinkTo> - Creating styled variants
+  with gamut-styles
