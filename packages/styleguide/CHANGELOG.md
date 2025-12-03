@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [78.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.4.0...@codecademy/styleguide@78.5.0) (2025-12-03)
+
+### Features
+
+- **Tabs:** add shouldForceMount prop to TabPanel ([4fda27c](https://github.com/Codecademy/gamut/commit/4fda27c61defa9e80795fb3e0e17b9cc75c0b126))
+
 ## [78.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.3.3...@codecademy/styleguide@78.4.0) (2025-12-01)
 
 ### Features
