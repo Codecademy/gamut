@@ -16,6 +16,7 @@ import {
   TipBaseProps,
   tipDefaultProps,
 } from '../shared/types';
+import { isElementVisible } from '../shared/utils';
 import { ScreenreaderNavigableText } from './elements';
 import { InfoTipButton } from './InfoTipButton';
 
@@ -33,12 +34,6 @@ const ARIA_HIDDEN_DELAY_MS = 1000;
 // Match native dialogs with open attribute, and role-based dialogs that aren't aria-hidden
 const MODAL_SELECTOR =
   'dialog[open],[role="dialog"]:not([aria-hidden="true"]),[role="alertdialog"]:not([aria-hidden="true"])';
-
-// Check if an element is actually visible (not hidden via CSS)
-const isElementVisible = (element: Element): boolean => {
-  if (!(element instanceof HTMLElement)) return false;
-  return element.checkVisibility?.() ?? true;
-};
 
 export const InfoTip: React.FC<InfoTipProps> = ({
   alignment = 'top-right',
