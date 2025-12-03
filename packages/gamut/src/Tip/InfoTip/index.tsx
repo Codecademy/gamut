@@ -29,7 +29,16 @@ export type InfoTipProps = TipBaseProps & {
 };
 
 const ARIA_HIDDEN_DELAY_MS = 1000;
-const MODAL_SELECTOR = 'dialog[open],[role="dialog"],[role="alertdialog"]';
+
+// Match native dialogs with open attribute, and role-based dialogs that aren't aria-hidden
+const MODAL_SELECTOR =
+  'dialog[open],[role="dialog"]:not([aria-hidden="true"]),[role="alertdialog"]:not([aria-hidden="true"])';
+
+// Check if an element is actually visible (not hidden via CSS)
+const isElementVisible = (element: Element): boolean => {
+  if (!(element instanceof HTMLElement)) return false;
+  return element.checkVisibility?.() ?? true;
+};
 
 export const InfoTip: React.FC<InfoTipProps> = ({
   alignment = 'top-right',
@@ -167,7 +176,10 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
       const openModals = document.querySelectorAll(MODAL_SELECTOR);
       const hasUnrelatedModal = Array.from(openModals).some(
-        (modal) => wrapperRef.current && !modal.contains(wrapperRef.current)
+        (modal) =>
+          isElementVisible(modal) &&
+          wrapperRef.current &&
+          !modal.contains(wrapperRef.current)
       );
 
       if (hasUnrelatedModal) return;
