@@ -106,27 +106,33 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         }
       };
 
-      const handleFocusOut = (event: FocusEvent) => {
-        const popoverContent = popoverContentRef.current;
-        const button = buttonRef.current;
-        const wrapper = wrapperRef.current;
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === 'Tab') {
+          const popoverContent = popoverContentRef.current;
+          if (!popoverContent) return;
 
-        const { relatedTarget } = event;
+          const focusableElements =
+            popoverContent.querySelectorAll<HTMLElement>(
+              'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
+            );
 
-        if (relatedTarget instanceof Node) {
-          // If focus is moving back to the button or wrapper, allow it
-          const movingToButton =
-            button?.contains(relatedTarget) || wrapper?.contains(relatedTarget);
-          if (movingToButton) return;
+          if (focusableElements.length === 0) return;
 
-          // If focus is staying within the popover content, allow it
-          if (popoverContent?.contains(relatedTarget)) return;
+          const firstElement = focusableElements[0];
+          const lastElement = focusableElements[focusableElements.length - 1];
+          const { activeElement } = document;
+
+          // If tabbing forward from the last element, prevent default and move to button
+          if (!event.shiftKey && activeElement === lastElement) {
+            event.preventDefault();
+            buttonRef.current?.focus();
+          }
+          // If tabbing backward from the first element, prevent default and move to button
+          else if (event.shiftKey && activeElement === firstElement) {
+            event.preventDefault();
+            buttonRef.current?.focus();
+          }
         }
-
-        // Return focus to button to maintain logical tab order
-        setTimeout(() => {
-          buttonRef.current?.focus();
-        }, 0);
       };
 
       // Wait for the popover ref to be set before attaching the listener
@@ -134,7 +140,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       const timeoutId = setTimeout(() => {
         popoverContent = popoverContentRef.current;
         if (popoverContent) {
-          popoverContent.addEventListener('focusout', handleFocusOut);
+          popoverContent.addEventListener('keydown', handleKeyDown);
         }
       }, 0);
 
@@ -143,7 +149,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       return () => {
         clearTimeout(timeoutId);
         if (popoverContent) {
-          popoverContent.removeEventListener('focusout', handleFocusOut);
+          popoverContent.removeEventListener('keydown', handleKeyDown);
         }
         document.removeEventListener('keydown', handleGlobalEscapeKey);
       };
