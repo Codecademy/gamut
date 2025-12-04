@@ -6,6 +6,9 @@ import { Children, isValidElement } from 'react';
  * Useful for converting JSX to plain text for accessibility purposes
  * like screenreader announcements or aria-labels.
  *
+ * Also handles components that use a `text` prop instead of children
+ * (e.g. the Markdown component).
+ *
  * @param children - React children to extract text from
  * @returns Plain text string with all text content joined by spaces
  *
@@ -15,6 +18,7 @@ import { Children, isValidElement } from 'react';
  *   <div>Hello <strong>world</strong>!</div>
  * );
  * // Returns: "Hello world !"
+ *
  * ```
  */
 export const extractTextContent = (children: React.ReactNode): string => {
@@ -31,7 +35,8 @@ export const extractTextContent = (children: React.ReactNode): string => {
         return '';
       }
       if (isValidElement(child)) {
-        return extractTextContent(child.props.children);
+        const textContent = child.props.children ?? child.props.text ?? '';
+        return extractTextContent(textContent);
       }
       return '';
     })
