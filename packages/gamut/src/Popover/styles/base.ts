@@ -39,6 +39,9 @@ export const raisedDivVariants = variant({
       bg: popoverPrimaryBgColor,
       borderRadius: 'sm',
     },
-    secondary: { ...toolTipBodyCss },
+    secondary: {
+      ...toolTipBodyCss,
+      width: 'inherit',
+    },
   },
 });
