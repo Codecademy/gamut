@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [67.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.5.1...@codecademy/gamut@67.5.2) (2025-12-04)
+
+### Bug Fixes
+
+- **InfoTip:** wrap focus ([77457a2](https://github.com/Codecademy/gamut/commit/77457a2b918eea5601b77e74ba2517fc22484a7c))
+
+### [67.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.5.0...@codecademy/gamut@67.5.1) (2025-12-03)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [67.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.4.2...@codecademy/gamut@67.5.0) (2025-12-03)
+
+### Features
+
+- **Tabs:** add shouldForceMount prop to TabPanel ([4fda27c](https://github.com/Codecademy/gamut/commit/4fda27c61defa9e80795fb3e0e17b9cc75c0b126))
+
+### [67.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.4.1...@codecademy/gamut@67.4.2) (2025-12-03)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ### [67.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.4.0...@codecademy/gamut@67.4.1) (2025-12-02)
 
 **Note:** Version bump only for package @codecademy/gamut
