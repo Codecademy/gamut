@@ -122,7 +122,7 @@ export const KeyboardNavigation: Story = {
     ];
 
     return (
-      <FlexBox center flexDirection="column" gap={24} py={64}>
+      <FlexBox center column gap={24} py={64}>
         <GridBox gap={16} gridTemplateColumns="1fr 1fr">
           {examples.map(({ title, placement, alignment, ref, links }) => {
             const onClick = ({ isTipHidden }: { isTipHidden: boolean }) => {
