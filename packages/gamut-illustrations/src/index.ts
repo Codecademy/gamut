@@ -1,4 +1,6 @@
 export * from './Achievement';
+export * from './AIBuilder';
+export * from './AIBuilderLanding';
 export * from './Announcement';
 export * from './Bee';
 export * from './Bell';
@@ -27,6 +29,7 @@ export * from './Heart';
 export * from './Hills';
 export * from './HomeOffice';
 export * from './Interest';
+export * from './InnovationBuildingBlocks';
 export * from './Interview';
 export * from './Keyhole';
 export * from './Knowledge';
