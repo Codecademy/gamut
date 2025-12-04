@@ -1,4 +1,6 @@
 export * from './Achievement';
+export * from './AIBuilder';
+export * from './AIBuilderLanding';
 export * from './Announcement';
 export * from './Bee';
 export * from './Bell';
