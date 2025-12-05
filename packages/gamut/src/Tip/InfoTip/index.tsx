@@ -35,7 +35,8 @@ export type InfoTipProps = TipBaseProps & {
   onClick?: (arg0: { isTipHidden: boolean }) => void;
 };
 
-const MODAL_SELECTOR = 'dialog[open],[role="dialog"],[role="alertdialog"]';
+const MODAL_SELECTOR =
+  'dialog[open],[role="dialog"]:not([aria-hidden="true"]),[role="alertdialog"]:not([aria-hidden="true"])';
 
 export const InfoTip: React.FC<InfoTipProps> = ({
   alignment = 'top-right',
@@ -181,7 +182,8 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       };
     }
 
-    return () => document.removeEventListener('keydown', handleGlobalEscapeKey);
+    return () =>
+      document.removeEventListener('keydown', handleGlobalEscapeKey, true);
   }, [isTipHidden, isFloating, getFocusableElements, setTipIsHidden]);
 
   useEffect(() => {

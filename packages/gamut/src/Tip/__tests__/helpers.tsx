@@ -5,19 +5,17 @@ import { createRef, RefObject } from 'react';
 
 import { Anchor } from '../../Anchor';
 import { Text } from '../../Typography';
-import { InfoTip, InfoTipProps } from '../InfoTip';
+import { InfoTip } from '../InfoTip';
 import { TipPlacements } from '../shared/types';
 
 type InfoTipView = ReturnType<
   ReturnType<typeof setupRtl<typeof InfoTip>>
 >['view'];
 
-type Placement = NonNullable<InfoTipProps['placement']>;
-
 type ViewParam = { view: InfoTipView };
 type LinkTextParam = { linkText: string };
 type InfoParam = { info: string };
-type PlacementParam = { placement: Placement };
+type PlacementParam = { placement: TipPlacements };
 
 export const createFocusOnClick = (ref: RefObject<HTMLDivElement>) => {
   return ({ isTipHidden }: { isTipHidden: boolean }) => {
@@ -66,16 +64,13 @@ export const createMultiLinkSetup = ({
 };
 
 export const clickButton = async (view: InfoTipView) => {
-  const user = userEvent.setup();
   const button = view.getByRole('button');
-  await user.click(button);
+  await userEvent.click(button);
   return button;
 };
 
 export const pressKey = async (key: string) => {
-  await act(async () => {
-    await userEvent.keyboard(key);
-  });
+  await userEvent.keyboard(key);
 };
 
 export const waitForLinkToHaveFocus = async ({
@@ -105,9 +100,7 @@ export const openTipTabToLinkAndWaitForFocus = async (
   linkText: string
 ) => {
   const link = await openTipAndWaitForLink({ view, linkText });
-  await act(async () => {
-    await userEvent.tab();
-  });
+  await userEvent.tab();
   await waitFor(() => {
     expect(link).toHaveFocus();
   });
@@ -197,9 +190,9 @@ export const setupLinkTestWithPlacement = (
   placement: TipPlacements,
   renderView: ReturnType<typeof setupRtl<typeof InfoTip>>
 ) => {
-  const { containerRef, info, onClick } = createLinkSetup({ linkText });
+  const { info, onClick } = createLinkSetup({ linkText });
   const { view } = renderView({ placement, info, onClick });
-  return { view, containerRef, info, onClick };
+  return { view, info, onClick };
 };
 
 export const setupMultiLinkTestWithPlacement = (
@@ -225,9 +218,7 @@ export const testEscapeKeyWithOutsideFocus = async ({
 
   await withTemporaryElement(outsideButton, document.body, async () => {
     const button = view.getByLabelText('Show information');
-    await act(async () => {
-      await userEvent.click(button);
-    });
+    await userEvent.click(button);
 
     await waitFor(() => {
       expect(button).toHaveAttribute('aria-expanded', 'true');
@@ -345,19 +336,13 @@ export const testRapidToggle = async ({
 }: ViewParam & { onClick: jest.Mock }) => {
   const button = view.getByLabelText('Show information');
 
-  await act(async () => {
-    await userEvent.click(button);
-  });
+  await userEvent.click(button);
   await waitFor(() => expect(onClick).toHaveBeenCalledTimes(1));
 
-  await act(async () => {
-    await userEvent.click(button);
-  });
+  await userEvent.click(button);
   await waitFor(() => expect(onClick).toHaveBeenCalledTimes(2));
 
-  await act(async () => {
-    await userEvent.click(button);
-  });
+  await userEvent.click(button);
   await waitFor(() => expect(onClick).toHaveBeenCalledTimes(3));
 
   expect(onClick).toHaveBeenCalledTimes(3);
@@ -375,19 +360,14 @@ export const testInfoTipInsideModalClosesOnEscape = async ({
   const { view } = renderView();
 
   const openModalButton = view.getByRole('button', { name: 'Open Modal' });
-  await act(async () => {
-    await userEvent.click(openModalButton);
-  });
+  await userEvent.click(openModalButton);
 
   await waitFor(() => {
     expect(view.getByRole('dialog')).toBeInTheDocument();
   });
 
   const infoTipButton = view.getByLabelText('Show information');
-
-  await act(async () => {
-    await userEvent.click(infoTipButton);
-  });
+  await userEvent.click(infoTipButton);
 
   await waitFor(() => {
     expect(view.getByText(info)).toBeVisible();
@@ -436,9 +416,7 @@ export const openInfoTipsWithKeyboard = async ({
   });
 };
 
-export const expectTipsVisible = (
-  tips: { text: string; placement?: 'inline' | 'floating' }[]
-) => {
+export const expectTipsVisible = (tips: { text: string }[]) => {
   tips.forEach(({ text }) => {
     const element = screen.queryByText(text);
     expect(element).toBeInTheDocument();

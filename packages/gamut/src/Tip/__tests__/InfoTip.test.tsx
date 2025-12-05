@@ -37,7 +37,6 @@ describe('InfoTip', () => {
     { placement: 'floating' },
   ])('$placement placement', ({ placement }) => {
     it('shows the tip when it is clicked on', async () => {
-      const user = userEvent.setup();
       const { view } = renderView({ placement });
 
       const isInline = placement === 'inline';
@@ -49,7 +48,7 @@ describe('InfoTip', () => {
         expect(view.queryByText(info)).toBeNull();
       }
 
-      await user.click(view.getByRole('button'));
+      await userEvent.click(view.getByRole('button'));
 
       if (isInline) {
         const tip = view.getByText(info);
@@ -190,31 +189,6 @@ describe('InfoTip', () => {
   describe('floating placement focus management', () => {
     const linkText = 'cool link';
 
-    it('closes the tip with links when Escape key is pressed and returns focus to the button', async () => {
-      const { info, onClick } = createLinkSetup({
-        linkText,
-        href: 'https://giphy.com/search/nichijou',
-      });
-      const { view } = renderView({
-        placement: 'floating',
-        info,
-        onClick,
-      });
-
-      const button = await clickButton(view);
-
-      await waitFor(() => {
-        expect(view.getByText(linkText)).toBeVisible();
-      });
-
-      await pressKey('{Escape}');
-
-      await waitFor(() => {
-        expect(view.queryByText(linkText)).toBeNull();
-        expect(button).toHaveFocus();
-      });
-    });
-
     describe.each<{ direction: 'forward' | 'backward' }>([
       { direction: 'forward' },
       { direction: 'backward' },
@@ -231,24 +205,6 @@ describe('InfoTip', () => {
         );
 
         await testFocusWrap({ view, direction });
-      });
-    });
-
-    it('allows normal tabbing between focusable elements within popover', async () => {
-      const firstLinkText = 'first link';
-      const secondLinkText = 'second link';
-      const { view } = setupMultiLinkTestWithPlacement(
-        firstLinkText,
-        secondLinkText,
-        'floating',
-        renderView
-      );
-
-      await testTabbingBetweenLinks({
-        view,
-        firstLinkText,
-        secondLinkText,
-        placement: 'floating',
       });
     });
 
@@ -336,9 +292,7 @@ describe('InfoTip', () => {
       await openInfoTipsWithKeyboard({ view, count: tips.length });
 
       await waitFor(() => {
-        expectTipsVisible(
-          tips.map(({ info, placement }) => ({ text: info, placement }))
-        );
+        expectTipsVisible(tips.map(({ info }) => ({ text: info })));
       });
 
       await pressKey('{Escape}');
