@@ -5,7 +5,7 @@ export const KeyboardKey = styled.kbd(
   css({
     mx: 2 as any,
     fontFamily: 'monospace',
-    fontSize: 12 as any,
+    fontSize: '0.75rem' as any,
     bg: 'background-selected',
     border: 1,
     borderColor: 'border-tertiary',
