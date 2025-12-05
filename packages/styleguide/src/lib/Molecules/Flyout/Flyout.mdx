@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { ComponentHeader, KeyboardKey, LinkTo } from '~styleguide/blocks';
 
 import * as FlyoutStories from './Flyout.stories';
 
@@ -25,7 +25,7 @@ export const parameters = {
 
 ## Usage
 
-On button click, a container animates in from the left or right side of the window. Flyout can be configured to close by pressing the “X” close icon, pressing they “esc” key, and/or clicking outside of the container.
+On button click, a container animates in from the left or right side of the window. Flyout can be configured to close by pressing the "X" close icon, pressing the <KeyboardKey>Esc</KeyboardKey> key, and/or clicking outside of the container.
 
 Internally, Flyout is a combination of <LinkTo id="Molecules/Modals/Overlay">Overlay</LinkTo> and <LinkTo id="Atoms/Drawer">Drawer</LinkTo>.
 
