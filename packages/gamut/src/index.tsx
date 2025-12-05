@@ -16,6 +16,7 @@ export * from './Coachmark';
 export * from './ConnectedForm';
 export * from './ContentContainer';
 export * from './DelayedRenderWrapper';
+export * from './DetailedCode';
 export * from './Disclosure';
 export * from './DataList';
 export * from './Drawer';
