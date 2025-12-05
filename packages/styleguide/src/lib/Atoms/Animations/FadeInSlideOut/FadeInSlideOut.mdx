@@ -1,0 +1,31 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as FadeInSlideOut from './FadeInSlideOut.stories';
+
+export const parameters = {
+  subtitle: `An animation component that fades in when appearing and slides out when disappearing.`,
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/Animation/FadeInSlideOut.tsx',
+  },
+};
+
+<Meta of={FadeInSlideOut} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+This animation uses [Framer Motion](https://motion.dev/) to animate the appearance and disappearance of a component. The animation has three states, `initial`, `visible`, and `exit`.
+
+Wrap the `FadeInSlideOut` component with an `AnimatePresence` and pass in children components to be animated. The component should be conditionally rendered (using `&&` or a ternary operator). The animation is triggered when the component is added to or removed from the DOM, not by changing styles or props.
+
+## Playground
+
+<Canvas sourceState="shown" of={FadeInSlideOut.Default} />
+
+<Controls />
