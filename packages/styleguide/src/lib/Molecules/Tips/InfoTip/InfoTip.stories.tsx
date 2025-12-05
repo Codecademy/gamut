@@ -131,7 +131,7 @@ export const WithLinksOrButtons: Story = {
           {...args}
           ariaLabelledby="links-text"
           info={
-            <Text ref={ref} tabIndex={-1}>
+            <Text tabIndex={-1}>
               Hey! Here is a{' '}
               <Anchor href="https://giphy.com/search/nichijou">
                 cool link

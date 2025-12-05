@@ -33,6 +33,11 @@ export interface ConnectedFormGroupBaseProps
   name: string;
   label: React.ReactNode;
   required?: boolean;
+  /**
+   * InfoTip to display next to the field label. String labels automatically
+   * label the InfoTip button. For ReactNode labels, provide `ariaLabel` or
+   * set `labelledByFieldLabel: true` to ensure the InfoTip is accessible.
+   */
   infotip?: InfoTipProps;
 }
 

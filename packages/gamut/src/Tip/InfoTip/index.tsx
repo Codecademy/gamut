@@ -30,6 +30,11 @@ export type InfoTipProps = TipBaseProps & {
   ariaLabelledby?: string;
   emphasis?: 'low' | 'high';
   /**
+   * When true, the InfoTip button will be labelled by the form field's label element.
+   * This is automatic for string labels, but can be opted into for ReactNode labels.
+   */
+  labelledByFieldLabel?: boolean;
+  /**
    * Called when the info tip is clicked - the onClick function is called after the DOM updates and the tip is mounted.
    */
   onClick?: (arg0: { isTipHidden: boolean }) => void;
