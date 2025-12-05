@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'General principles',
+  title: 'General principles',
+  subtitle: 'Core principles for writing effective documentation',
+  status: 'static',
+};
+
+<Meta title="Meta/Gamut writing guide/General principles" />
+
+<AboutHeader {...parameters} />
+
+Good documentation does more than describe — it helps people succeed. These principles guide how we write about Gamut components, with a focus on clarity, accessibility, and usefulness. Whether documenting a new component or updating existing content, prioritize being clear about what something does, honest about its limitations, and helpful in showing how to use it effectively. We want to remove barriers and make it easier for designers and developers to do great work. Like our design system itself, this guide is a living document — it will continue to evolve as we add new features and learn from our users.
+
+## Voice and tone
+
+- Friendly and conversational: Write as if explaining to a colleague
+- Prefer "we" when a pronoun is needed
+  - "You" is acceptable when necessary, e.g., "Use your best judgement"
+- Encouraging without overpromising: Be supportive but realistic
+- Global audience awareness: Avoid idioms, slang, and culturally-specific references
+
+## Inclusivity
+
+- Use inclusive language that makes all contributors feel welcome
+- Define terms when first introduced
+- Consider contributors of varying experience levels and roles (designers and developers)
+
+## Transparency
+
+- Clearly indicate component status:
+  - `current`: Stable, recommended for use
+  - `updating`: In progress, API may change
+  - `deprecated`: Still supported but slated for deletion — do not use for new work
+  - `static`: Reference material, no active development
+- Link to source code and design files (GitHub, Figma)
+
+## Consistency
+
+- Use a single term for the same concept, including how it's referred to between the heading, body copy, and code examples.
+- Do not use the same term for 2 different concepts.
+- Maintain consistent component naming across packages
+- Follow established patterns from existing components
