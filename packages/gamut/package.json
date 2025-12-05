@@ -1,11 +1,11 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "67.3.3",
+  "version": "67.5.3",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "dependencies": {
-    "@codecademy/gamut-icons": "9.52.1",
-    "@codecademy/gamut-illustrations": "0.55.1",
+    "@codecademy/gamut-icons": "9.53.0",
+    "@codecademy/gamut-illustrations": "0.57.0",
     "@codecademy/gamut-patterns": "0.10.19",
     "@codecademy/gamut-styles": "17.11.0",
     "@codecademy/variance": "0.25.0",
@@ -21,7 +21,7 @@
     "react-aria-components": "1.8.0",
     "react-aria-tabpanel": "^4.4.0",
     "react-focus-on": "^3.10.0",
-    "react-hook-form": "^7.53.1",
+    "react-hook-form": "^7.65.0",
     "react-player": "^2.16.0",
     "react-select": "^5.2.2",
     "react-truncate-markup": "^5.1.2",

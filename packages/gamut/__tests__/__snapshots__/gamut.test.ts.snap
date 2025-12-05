@@ -52,6 +52,7 @@ exports[`Gamut Exported Keys 1`] = `
   "FormPropsContext",
   "FormRequiredText",
   "generateResponsiveClassnames",
+  "getFocusableElements",
   "GridBox",
   "GridForm",
   "GridFormContent",

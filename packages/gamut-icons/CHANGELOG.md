@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.53.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.52.1...@codecademy/gamut-icons@9.53.0) (2025-12-05)
+
+### Features
+
+- **Icons:** add coaching regular icon ([c46a3be](https://github.com/Codecademy/gamut/commit/c46a3beafcb596fdabf3d952fed037a17f143a26))
+
 ### [9.52.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.52.0...@codecademy/gamut-icons@9.52.1) (2025-10-28)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

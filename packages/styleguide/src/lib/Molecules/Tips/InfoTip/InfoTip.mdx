@@ -11,7 +11,7 @@ export const parameters = {
     type: 'figma',
     url: 'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/branch/ayKNSg6QvZUjsgw0FFysW4/%F0%9F%93%90-Gamut?type=design&node-id=41538-55277&mode=design&t=fGkWf5GSl5cj5fQo-0',
   },
-  status: 'current',
+  status: 'updating',
   source: {
     repo: 'gamut',
     githubLink:
@@ -53,11 +53,34 @@ This `floating` variant should only be used as needed.
 
 <Canvas of={InfoTipStories.Placement} />
 
-## InfoTips with links or buttons
+## Keyboard navigation & accessibility
 
-Links or buttons within InfoTips should be used sparingly and only when the information is critical to the user's understanding of the content. If an infotip _absolutely requires_ a link or button, it needs to provide a programmatic focus by way of the `onClick` prop. The `onClick` prop accepts a function that calls the object `{isTipHidden}` and should focus when the tip is visible.
+### InfoTips with links or buttons
+
+Links or buttons within InfoTips should be used sparingly and only when the information is critical to the user's understanding of the content. If an infotip _absolutely requires_ a link or button, it needs to provide a programmatic focus by way of the `onClick` prop. The `onClick` prop accepts a function that can accept an `{isTipHidden}` argument and using that you can set programmatic focus as needed.
 
 <Canvas of={InfoTipStories.WithLinksOrButtons} />
+
+### Floating placement
+
+When using `placement="floating"`, InfoTips implements focus management for easier navigation:
+
+- **Tab**: Navigate forward through focusable elements (links, buttons) inside the tip. When reaching the last element, wraps back to the InfoTip button for convenience
+- **Shift+Tab**: Navigate backward naturally through the page
+- **Escape**: Closes the tip and returns focus to the InfoTip button
+
+<Canvas of={InfoTipStories.KeyboardNavigation} />
+
+### InfoTips with Modals and Dialogs
+
+InfoTips have intelligent Escape key handling that works correctly both inside and outside Modals:
+
+- **InfoTips close on Escape** regardless of where keyboard focus is, and focus returns to the InfoTip button
+- **InfoTips inside Modals close first** - When an InfoTip is placed inside a Modal, pressing Escape closes the InfoTip while keeping the Modal open
+- **Layered navigation** - After closing an InfoTip inside a Modal, pressing Escape again closes the Modal
+- **Modals take priority over external InfoTips** - InfoTips detect when `dialog[open]`, `role="dialog"`, or `role="alertdialog"` elements are present and defer Escape handling to them when the InfoTip is outside the Modal
+
+<Canvas of={InfoTipStories.InfoTipInsideModal} />
 
 ## InfoTips and zIndex
 
