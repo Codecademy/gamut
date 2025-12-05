@@ -1,4 +1,4 @@
-import { FormGroup, GridForm, Input } from '@codecademy/gamut';
+import { FormGroup, GridForm, Input, Text } from '@codecademy/gamut';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -324,6 +324,77 @@ export const SweetContainer: Story = {
         name: 'custom-input',
         type: 'email',
         size: 12,
+      },
+    ],
+  },
+};
+
+/**
+ * InfoTip buttons are automatically labelled by string field labels for accessibility.
+ * Screen readers will announce "Field Label, button" when focusing the InfoTip.
+ */
+export const InfoTipAutoLabelling: Story = {
+  args: {
+    fields: [
+      {
+        label: 'Email address',
+        name: 'email',
+        size: 9,
+        type: 'email',
+        infotip: {
+          info: 'We will never share your email with third parties.',
+        },
+      },
+    ],
+  },
+};
+
+/**
+ * For ReactNode labels, you have three options for accessible InfoTip labelling:
+ * - `labelledByFieldLabel: true` - uses the field label
+ * - `ariaLabel` - provides a custom accessible name
+ * - `ariaLabelledby` - references another element on the page
+ */
+export const InfoTipWithReactNodeLabel: Story = {
+  render: (args) => (
+    <>
+      <Text as="h3" id="api-section-heading" mb={8}>
+        API Configuration
+      </Text>
+      <GridForm {...args} />
+    </>
+  ),
+  args: {
+    fields: [
+      {
+        label: <strong>Username (labelledByFieldLabel)</strong>,
+        name: 'username',
+        size: 9,
+        type: 'text',
+        infotip: {
+          info: 'Choose a unique username between 3-20 characters.',
+          labelledByFieldLabel: true,
+        },
+      },
+      {
+        label: <strong>Password (ariaLabel)</strong>,
+        name: 'password',
+        size: 9,
+        type: 'password',
+        infotip: {
+          info: 'Password must be at least 8 characters with one uppercase letter and one number.',
+          ariaLabel: 'Password requirements',
+        },
+      },
+      {
+        label: <strong>API Key (ariaLabelledby)</strong>,
+        name: 'apiKey',
+        size: 9,
+        type: 'text',
+        infotip: {
+          info: 'You can find your API key in the developer settings dashboard.',
+          ariaLabelledby: 'api-section-heading',
+        },
       },
     ],
   },

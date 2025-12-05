@@ -61,6 +61,26 @@ A `ConnectedFormGroup` can be in one of three states: `default`, `error`, or `di
 
 <Canvas of={ConnectedFormGroupStories.States} />
 
+## InfoTip
+
+A `ConnectedFormGroup` can include an `infotip` prop to provide additional context.
+
+### Automatic labelling
+
+InfoTip buttons are automatically labelled by string field labels for accessibility.
+
+<Canvas of={ConnectedFormGroupStories.InfoTipAutoLabelling} />
+
+### ReactNode labels
+
+For ReactNode labels (e.g., styled text or icons), you have three options:
+
+- `labelledByFieldLabel: true` - opt into automatic labelling by the field label
+- `ariaLabel` - provide a custom accessible name
+- `ariaLabelledby` - reference another element on the page, such as a section heading
+
+<Canvas of={ConnectedFormGroupStories.InfoTipWithReactNodeLabel} />
+
 ## Playground
 
 To see how a `ConnectedFormGroup` can be used in a `ConnectedForm`, check out the <LinkTo id="Organisms/ConnectedForm/ConnectedForm">ConnectedForm</LinkTo> page.

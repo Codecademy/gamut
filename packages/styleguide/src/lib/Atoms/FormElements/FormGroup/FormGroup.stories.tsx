@@ -97,3 +97,14 @@ export const HighEmphasisInfoTip: Story = {
     children: <Input />,
   },
 };
+
+export const InfoTipAutoLabelling: Story = {
+  args: {
+    label: 'Email address',
+    htmlFor: 'auto-label-input',
+    infotip: {
+      info: 'We will never share your email with third parties.',
+    },
+    children: <Input htmlFor="auto-label-input" type="email" />,
+  },
+};
