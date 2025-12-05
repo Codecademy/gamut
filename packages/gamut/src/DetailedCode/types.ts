@@ -3,6 +3,8 @@ export interface DetailedCodeProps {
   heading?: string;
   language: string;
   initiallyExpanded?: boolean;
+  preview?: boolean;
+  previewLines?: number;
 }
 
 export interface DetailedCodeButtonProps {
