@@ -238,4 +238,69 @@ describe('GridFormInputGroup', () => {
     });
     expect(view.container).not.toContainHTML('Column');
   });
+
+  describe('infotip accessibility', () => {
+    const info = 'helpful information';
+    const ariaLabel = 'Custom label';
+    const textLabel = 'Stub Text';
+    const checkboxLabel = 'Check me!';
+
+    it('automatically labels InfoTip button by the field label when label is a string', () => {
+      const { view } = renderView({
+        field: { ...stubTextField, infotip: { info } },
+      });
+
+      view.getByRole('button', { name: new RegExp(textLabel) });
+    });
+
+    it('uses explicit ariaLabel when provided', () => {
+      const { view } = renderView({
+        field: { ...stubTextField, infotip: { info, ariaLabel } },
+      });
+
+      view.getByRole('button', { name: ariaLabel });
+    });
+
+    it('uses explicit ariaLabelledby when provided', () => {
+      const externalLabelId = 'external-label-id';
+      const externalLabelText = 'External Label';
+
+      const { view } = renderView({
+        field: {
+          ...stubTextField,
+          infotip: { info, ariaLabelledby: externalLabelId },
+        },
+        externalLabel: { id: externalLabelId, text: externalLabelText },
+      });
+
+      view.getByRole('button', { name: externalLabelText });
+    });
+
+    it('does not automatically label InfoTip when label is a ReactNode', () => {
+      const { view } = renderView({
+        field: {
+          ...stubCheckboxField,
+          label: <span>{checkboxLabel}</span>,
+          infotip: { info, ariaLabel },
+        },
+      });
+
+      view.getByRole('button', { name: ariaLabel });
+      expect(
+        view.queryByRole('button', { name: new RegExp(checkboxLabel) })
+      ).toBeNull();
+    });
+
+    it('labels InfoTip by field label when labelledByFieldLabel is true with ReactNode label', () => {
+      const { view } = renderView({
+        field: {
+          ...stubCheckboxField,
+          label: <span>{checkboxLabel}</span>,
+          infotip: { info, labelledByFieldLabel: true },
+        },
+      });
+
+      view.getByRole('button', { name: new RegExp(checkboxLabel) });
+    });
+  });
 });
