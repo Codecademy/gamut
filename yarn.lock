@@ -8523,24 +8523,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:>=16.9.0":
-  version: 19.2.3
-  resolution: "@types/react-dom@npm:19.2.3"
-  peerDependencies:
-    "@types/react": ^19.2.0
-  checksum: b9c548f7378979cd8384444ae6c96f7a933b98e341c271c33e74231f27bf3082f04ad7c2927f1b1e6d8af35ccf83e549fce4978ebe0a02ded5a8803aa5f80e06
-  languageName: node
-  linkType: hard
-
-"@types/react-dom@npm:^18.0.0":
-  version: 18.3.7
-  resolution: "@types/react-dom@npm:18.3.7"
-  peerDependencies:
-    "@types/react": ^18.0.0
-  checksum: c8b63ec944d2a68992b4dba474003fe55ee1d949c4b9c8fe97eecb2290de23f76acfb670b2f7ceb46a5fc8e46808d1745369b03edda48a7a0cf730eff4c5d315
-  languageName: node
-  linkType: hard
-
 "@types/react-test-renderer@npm:>=16.9.0":
   version: 19.1.0
   resolution: "@types/react-test-renderer@npm:19.1.0"
@@ -8568,15 +8550,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:>=16.9.0":
-  version: 19.2.7
-  resolution: "@types/react@npm:19.2.7"
-  dependencies:
-    csstype: ^3.2.2
-  checksum: b1f4c9a45862ea392b9ead060a5b5730b4c41b21fde097db35e639a8a0978460468d8da87f47226230bd4681d6de48ffee695595540084a8a849dde027c66a46
-  languageName: node
-  linkType: hard
-
 "@types/react@npm:18.3.1":
   version: 18.3.1
   resolution: "@types/react@npm:18.3.1"
@@ -8584,17 +8557,6 @@ __metadata:
     "@types/prop-types": "*"
     csstype: ^3.0.2
   checksum: 9224ef319a0c2b7f66e7e7f06012aa5eb638a6c76c9742843eab1a5d243f2bed5ff829ddbb41efd60d33a266420528adfcb84cb93f238b00e905f98c3a355768
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^17":
-  version: 17.0.90
-  resolution: "@types/react@npm:17.0.90"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": ^0.16
-    csstype: ^3.2.2
-  checksum: 96de8ae4ecb49263de1a3adb405ab929fcb6577af4080b6aa17757c3ccc00a3163c0fab66e0938265888020bf7f31aefead2622385da81a8c562d01f60343b91
   languageName: node
   linkType: hard
 
@@ -8616,13 +8578,6 @@ __metadata:
   version: 0.12.2
   resolution: "@types/retry@npm:0.12.2"
   checksum: e5675035717b39ce4f42f339657cae9637cf0c0051cf54314a6a2c44d38d91f6544be9ddc0280587789b6afd056be5d99dbe3e9f4df68c286c36321579b1bf4a
-  languageName: node
-  linkType: hard
-
-"@types/scheduler@npm:^0.16":
-  version: 0.16.8
-  resolution: "@types/scheduler@npm:0.16.8"
-  checksum: 6c091b096daa490093bf30dd7947cd28e5b2cd612ec93448432b33f724b162587fed9309a0acc104d97b69b1d49a0f3fc755a62282054d62975d53d7fd13472d
   languageName: node
   linkType: hard
 
@@ -12148,7 +12103,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csstype@npm:^3.0.2, csstype@npm:^3.0.7, csstype@npm:^3.1.2, csstype@npm:^3.2.2":
+"csstype@npm:^3.0.2, csstype@npm:^3.0.7, csstype@npm:^3.1.2":
   version: 3.2.3
   resolution: "csstype@npm:3.2.3"
   checksum: cb882521b3398958a1ce6ca98c011aec0bde1c77ecaf8a1dd4db3b112a189939beae3b1308243b2fe50fc27eb3edeb0f73a5a4d91d928765dc6d5ecc7bda92ee
