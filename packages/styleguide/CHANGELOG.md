@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [78.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.5.0...@codecademy/styleguide@78.5.1) (2025-12-04)
+
+### Bug Fixes
+
+- **InfoTip:** wrap focus ([77457a2](https://github.com/Codecademy/gamut/commit/77457a2b918eea5601b77e74ba2517fc22484a7c))
+
 ## [78.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.4.0...@codecademy/styleguide@78.5.0) (2025-12-03)
 
 ### Features
