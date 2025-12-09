@@ -109,8 +109,5 @@ describe('FormGroup', () => {
 
       view.getByRole('button', { name: externalLabelText });
     });
-
-    // Note: No "ReactNode label" test case here because FormGroup.label
-    // is typed as string - automatic ariaLabelledby always applies.
   });
 });
