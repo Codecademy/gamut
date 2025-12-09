@@ -480,7 +480,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: mockOption,
         state,
-        name: 'test-id',
+        name: 'test',
         isRequired: true,
         isDisabled: false,
         onBlur: mockOnBlur,
@@ -504,7 +504,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: mockOption,
         state,
-        name: 'test-id',
+        name: 'test',
         isRequired: false,
         isDisabled: false,
         onBlur: mockOnBlur,
@@ -527,7 +527,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: mockOption,
         state,
-        name: 'test-id',
+        name: 'test',
         isRequired: false,
         isDisabled: false,
         onBlur: mockOnBlur,
@@ -550,7 +550,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: { ...mockOption, level: 2 },
         state,
-        name: 'test-id',
+        name: 'test',
         isRequired: false,
         isDisabled: false,
         onBlur: mockOnBlur,
@@ -571,7 +571,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: { ...mockOption, disabled: true },
         state,
-        name: 'test-id',
+        name: 'test',
         isRequired: false,
         isDisabled: true,
         onBlur: mockOnBlur,
@@ -592,7 +592,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: mockOption,
         state,
-        name: 'test-id',
+        name: 'test',
         isRequired: false,
         isDisabled: false,
         onBlur: mockOnBlur,
@@ -618,7 +618,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: optionWithAriaLabel,
         state,
-        name: 'test-id',
+        name: 'test',
         isRequired: false,
         isDisabled: false,
         onBlur: mockOnBlur,
@@ -639,7 +639,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: mockOption,
         state,
-        name: 'test-id',
+        name: 'test',
         isRequired: false,
         isDisabled: false,
         onBlur: mockOnBlur,
@@ -664,7 +664,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const result = renderCheckbox({
         option: optionWithElementLabel as any, // ts should prevent this from ever happening but we have a default just in case
         state,
-        name: 'test-id',
+        name: 'test',
         isRequired: false,
         isDisabled: false,
         onBlur: mockOnBlur,
