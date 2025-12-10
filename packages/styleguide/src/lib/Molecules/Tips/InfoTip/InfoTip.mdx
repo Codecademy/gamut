@@ -82,9 +82,24 @@ InfoTips have intelligent Escape key handling that works correctly both inside a
 
 <Canvas of={InfoTipStories.InfoTipInsideModal} />
 
-## InfoTips and zIndex
+## Custom Accessible Labeling
 
-You can change the zIndex of your `InfoTip` with the zIndex property.
+Provide either `ariaLabel` or `ariaLabelledby` to ensure screen reader users understand the purpose of the InfoTip button.
+
+The InfoTip button's accessible label can be customized using either prop:
+
+- **`ariaLabel`**: Directly sets the accessible label text. Useful when you want to provide a custom label without referencing another element.
+- **`ariaLabelledby`**: References the ID of another element to use as the label. Useful when you want the InfoTip button to be labeled by visible text elsewhere on the page. This is useful for when the `InfoTip` is beside text that contextualizes it.
+
+### Custom Role Description
+
+The `InfoTipButton` uses [`aria-roledescription="More information button"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-roledescription) to provide additional context to screen reader users about the button's specific purpose.
+
+<Canvas of={InfoTipStories.AriaLabel} />
+
+## Z-Index
+
+You can customize the `zIndex` of the InfoTip's portal with the `zIndex` prop. This works for both `inline` and `floating` placements, and is useful when the tip needs to appear above other positioned elements.
 
 <Canvas of={InfoTipStories.ZIndex} />
 

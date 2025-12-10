@@ -1,4 +1,4 @@
-import { Coachmark, FillButton, FlexBox, Text } from '@codecademy/gamut';
+import { Box, Coachmark, FillButton, FlexBox, Text } from '@codecademy/gamut';
 import * as patterns from '@codecademy/gamut-patterns';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ComponentProps, useEffect, useState } from 'react';
@@ -194,6 +194,42 @@ export const Customized: Story = {
       >
         <FillButton onClick={() => setShouldShow(true)}>A Button</FillButton>
       </Coachmark>
+    );
+  },
+};
+
+export const ZIndex: Story = {
+  args: {
+    popoverProps: {
+      position: 'below',
+      zIndex: 5,
+    },
+  },
+  render: function ZIndexExample(args) {
+    const [shouldShow, setShouldShow] = useState(true);
+
+    return (
+      <FlexBox flexDirection="column" gap={16}>
+        <Box bg="paleBlue" p={16} zIndex={3} position="relative">
+          Element with z-index: 3
+        </Box>
+        <Coachmark
+          {...args}
+          renderPopover={() => (
+            <FlexBox alignItems="flex-start" flexDirection="column" p={16}>
+              <Text mb={8}>This coachmark has z-index: 5 via popoverProps</Text>
+              <FillButton size="small" onClick={() => setShouldShow(false)}>
+                Got it
+              </FillButton>
+            </FlexBox>
+          )}
+          shouldShow={shouldShow}
+        >
+          <FillButton onClick={() => setShouldShow(true)}>
+            Show Coachmark
+          </FillButton>
+        </Coachmark>
+      </FlexBox>
     );
   },
 };

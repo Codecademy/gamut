@@ -61,12 +61,12 @@ export const PatternContainer = styled.div(
 );
 
 export const PopoverPortal: React.FC<
-  Pick<PopoverProps, 'animation' | 'isOpen'> & WithChildrenProp
-> = ({ animation, isOpen, ...rest }) =>
+  Pick<PopoverProps, 'animation' | 'isOpen' | 'zIndex'> & WithChildrenProp
+> = ({ animation, isOpen, zIndex, ...rest }) =>
   animation ? (
     <AnimatePresence>
       {isOpen && (
-        <BodyPortal>
+        <BodyPortal zIndex={zIndex}>
           <motion.div
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -81,7 +81,7 @@ export const PopoverPortal: React.FC<
       )}
     </AnimatePresence>
   ) : (
-    <BodyPortal {...rest} />
+    <BodyPortal zIndex={zIndex} {...rest} />
   );
 
 export type PopoverContainerProps = Pick<PopoverProps, 'position' | 'align'>;
