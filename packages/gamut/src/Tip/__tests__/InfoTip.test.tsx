@@ -236,6 +236,28 @@ describe('InfoTip', () => {
     });
   });
 
+  describe('ariaRoleDescription', () => {
+    it('applies default aria-roledescription', () => {
+      const { view } = renderView({});
+      const button = view.getByRole('button');
+      expect(button).toHaveAttribute(
+        'aria-roledescription',
+        'More information button'
+      );
+    });
+
+    it('applies custom aria-roledescription when provided', () => {
+      const { view } = renderView({
+        ariaRoleDescription: 'Botón de más información',
+      });
+      const button = view.getByRole('button');
+      expect(button).toHaveAttribute(
+        'aria-roledescription',
+        'Botón de más información'
+      );
+    });
+  });
+
   describe('Multiple InfoTips', () => {
     it('closes all InfoTips when Escape is pressed', async () => {
       const tips = [
