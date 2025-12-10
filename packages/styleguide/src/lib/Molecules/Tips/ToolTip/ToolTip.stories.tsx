@@ -1,8 +1,10 @@
 import {
+  Box,
   FillButton,
   FlexBox,
   IconButton,
   StrokeButton,
+  Text,
   ToolTip,
 } from '@codecademy/gamut';
 import {
@@ -130,6 +132,63 @@ export const Disabled: Story = {
           Using aria-disabled
         </FillButton>
       </ToolTip>
+    </FlexBox>
+  ),
+};
+
+export const ZIndex: Story = {
+  render: () => (
+    <FlexBox center flexDirection="column" gap={16} m={24} py={64}>
+      <Text variant="p-small">Inline placement:</Text>
+      <FlexBox alignItems="center" gap={16}>
+        <Box bg="paleBlue" p={8} zIndex={3} position="relative">
+          z-index: 3
+        </Box>
+        <ToolTip id="zindex-inline-default" info="Default z-index (inline)">
+          <FillButton aria-describedby="zindex-inline-default">
+            Default
+          </FillButton>
+        </ToolTip>
+        <Box bg="paleBlue" p={8} zIndex={3} position="relative">
+          z-index: 3
+        </Box>
+        <ToolTip id="zindex-inline-custom" info="z-index: 5 (inline)" zIndex={5}>
+          <FillButton aria-describedby="zindex-inline-custom">
+            z-index: 5
+          </FillButton>
+        </ToolTip>
+      </FlexBox>
+
+      <Text variant="p-small" mt={24}>
+        Floating placement:
+      </Text>
+      <FlexBox alignItems="center" gap={16}>
+        <Box bg="paleGreen" p={8} zIndex={3} position="relative">
+          z-index: 3
+        </Box>
+        <ToolTip
+          id="zindex-floating-default"
+          info="Default z-index (floating)"
+          placement="floating"
+        >
+          <FillButton aria-describedby="zindex-floating-default">
+            Default
+          </FillButton>
+        </ToolTip>
+        <Box bg="paleGreen" p={8} zIndex={3} position="relative">
+          z-index: 3
+        </Box>
+        <ToolTip
+          id="zindex-floating-custom"
+          info="z-index: 5 (floating)"
+          placement="floating"
+          zIndex={5}
+        >
+          <FillButton aria-describedby="zindex-floating-custom">
+            z-index: 5
+          </FillButton>
+        </ToolTip>
+      </FlexBox>
     </FlexBox>
   ),
 };

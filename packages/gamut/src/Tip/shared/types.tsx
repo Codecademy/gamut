@@ -51,14 +51,16 @@ export interface TipNewBaseProps {
    * If ToolTipWrapper should inherit the dimensions of the parent element. Can only be used for inline tips.
    */
   inheritDims?: boolean;
+  /**
+   * z-index for the tip's portal. Defaults to 1.
+   */
+  zIndex?: number;
 }
 export interface TipInlineProps extends TipNewBaseProps {
   placement?: 'inline';
-  zIndex?: number;
 }
 export interface TipFloatingProps extends TipNewBaseProps {
   placement: 'floating';
-  zIndex?: never;
   inheritDims?: never;
 }
 
@@ -83,5 +85,4 @@ export type TipPlacementComponentProps = Omit<
     | ((node: HTMLDivElement | null) => void);
   type: 'info' | 'tool' | 'preview';
   wrapperRef?: React.RefObject<HTMLDivElement>;
-  zIndex?: number;
 } & React.PropsWithChildren;

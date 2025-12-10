@@ -40,8 +40,8 @@ export const Popover: React.FC<PopoverProps> = ({
     variant,
   }),
   verticalOffset = getDefaultOffset({ axis: 'vertical', position, variant }),
-
   widthRestricted,
+  zIndex,
 }) => {
   const [popoverHeight, setPopoverHeight] = useState<number>(0);
   const [popoverWidth, setPopoverWidth] = useState<number>(0);
@@ -233,7 +233,11 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 
   return (
-    <PopoverPortal animation={animation} isOpen={Boolean(isOpen && targetRef)}>
+    <PopoverPortal
+      animation={animation}
+      isOpen={Boolean(isOpen && targetRef)}
+      zIndex={zIndex}
+    >
       {skipFocusTrap ? (
         <>{contents}</>
       ) : (
