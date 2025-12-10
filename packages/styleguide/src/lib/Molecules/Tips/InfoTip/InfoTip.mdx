@@ -94,7 +94,7 @@ The InfoTip button's accessible label can be customized using either prop:
 
 ### Custom Role Description
 
-The `InfoTipButton` uses [`aria-roledescription="More information button"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-roledescription) to provide additional context to screen reader users about the button's specific purpose.
+The `InfoTipButton` uses [`aria-roledescription`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-roledescription) to provide additional context to screen reader users about the button's specific purpose. This defaults to `"More information button"` but can be customized via the `ariaRoleDescription` prop for translation or other accessibility needs.
 
 <Canvas of={InfoTipStories.AriaLabel} />
 

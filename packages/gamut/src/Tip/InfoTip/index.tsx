@@ -28,6 +28,11 @@ export type InfoTipProps = TipBaseProps & {
    * ID of an element that labels the InfoTip button. Its recommended to provide either `ariaLabel` or `ariaLabelledby`.
    */
   ariaLabelledby?: string;
+  /**
+   * Accessible role description for the InfoTip button. Useful for translation.
+   * @default "More information button"
+   */
+  ariaRoleDescription?: string;
   emphasis?: 'low' | 'high';
   /**
    * When true, the InfoTip button will be labelled by the form field's label element.
@@ -47,6 +52,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   alignment = 'top-right',
   ariaLabel,
   ariaLabelledby,
+  ariaRoleDescription = 'More information button',
   emphasis = 'low',
   info,
   onClick,
@@ -222,7 +228,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         aria-expanded={!isTipHidden}
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledby}
-        aria-roledescription="More information button"
+        aria-roledescription={ariaRoleDescription}
         emphasis={emphasis}
         ref={buttonRef}
         onClick={clickHandler}
