@@ -4,9 +4,9 @@ import { ReactNode } from 'react';
 import * as React from 'react';
 
 import { ToastProps } from '..';
+import { FadeInSlideOut } from '../Animation/FadeInSlideOut';
 import { BodyPortal } from '../BodyPortal';
 import { Box } from '../Box';
-import { FadeInSlideOut } from '../Motion/FadeInSlideOut';
 import { Toast } from '../Toast/Toast';
 
 interface ToasterItem extends Omit<ToastProps, 'onClose'> {
