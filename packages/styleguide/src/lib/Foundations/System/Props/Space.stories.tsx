@@ -163,7 +163,7 @@ export const RTLComparison: Story = {
                     </Text>
                   </Box>
                 </Box>
-                <Box border={1} borderColor="danger" borderWidth={2}/>
+                <Box border={1} borderColor="danger" borderWidth={2} />
                 <Box
                   bg="yellow"
                   dir={direction}
