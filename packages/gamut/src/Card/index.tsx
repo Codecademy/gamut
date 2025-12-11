@@ -30,8 +30,15 @@ export const Card: React.FC<CardProps> = ({
   return (
     <MotionBox
       height={height}
+      initial={shadow === 'outline' ? 'initialOutline' : 'initial'}
       position="relative"
-      whileHover={isInteractive ? 'animate' : ''}
+      whileHover={
+        isInteractive
+          ? shadow === 'outline'
+            ? 'animateOutline'
+            : 'animate'
+          : ''
+      }
       width={width}
     >
       {hasPattern && (
