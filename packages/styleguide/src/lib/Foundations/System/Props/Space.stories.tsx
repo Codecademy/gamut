@@ -6,7 +6,6 @@ import {
   RadioGroup,
   Text,
 } from '@codecademy/gamut';
-import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ChangeEvent, useState } from 'react';
 
@@ -155,15 +154,16 @@ export const RTLComparison: Story = {
                     textAlign="center"
                   >
                     <Text as="strong" display="block" fontSize={16} mb={8}>
-                      mis={48}
+                      marginInlineStart={48}
                     </Text>
                     <Text fontSize={14}>Logical property</Text>
+                    <br />
                     <Text fontSize={14} mt={4}>
                       Margin on start (adapts to direction & writing mode)
                     </Text>
                   </Box>
                 </Box>
-                <Box border={1} />
+                <Box border={1} borderColor="danger" borderWidth={2}/>
                 <Box
                   bg="yellow"
                   dir={direction}
@@ -179,9 +179,10 @@ export const RTLComparison: Story = {
                     textAlign="center"
                   >
                     <Text as="strong" display="block" fontSize={16} mb={8}>
-                      ml={48}
+                      marginLeft={48}
                     </Text>
                     <Text fontSize={14}>Physical property</Text>
+                    <br />
                     <Text fontSize={14} mt={4}>
                       Margin on left (always fixed)
                     </Text>
@@ -194,8 +195,8 @@ export const RTLComparison: Story = {
             <Text as="strong" color="primary">
               Notice:
             </Text>{' '}
-            <code>mis</code> adapts to direction and writing mode,{' '}
-            <code>ml</code> stays fixed
+            <code>marginInlineStart</code> adapts to direction and writing mode,{' '}
+            <code>marginLeft</code> stays fixed
           </Text>
         </Box>
       );
