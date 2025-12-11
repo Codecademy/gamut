@@ -245,6 +245,21 @@ export const margin = {
   mb: { property: 'marginBottom', scale: 'spacing' },
   mr: { property: 'marginRight', scale: 'spacing' },
   ml: { property: 'marginLeft', scale: 'spacing' },
+  // Logical properties
+  mbl: {
+    property: 'margin',
+    properties: ['marginBlockStart', 'marginBlockEnd'],
+    scale: 'spacing',
+  },
+  mbls: { property: 'marginBlockStart', scale: 'spacing' },
+  mble: { property: 'marginBlockEnd', scale: 'spacing' },
+  mi: {
+    property: 'margin',
+    properties: ['marginInlineStart', 'marginInlineEnd'],
+    scale: 'spacing',
+  },
+  mis: { property: 'marginInlineStart', scale: 'spacing' },
+  mie: { property: 'marginInlineEnd', scale: 'spacing' },
 } as const;
 
 export const padding = {
@@ -263,6 +278,21 @@ export const padding = {
   pb: { property: 'paddingBottom', scale: 'spacing' },
   pr: { property: 'paddingRight', scale: 'spacing' },
   pl: { property: 'paddingLeft', scale: 'spacing' },
+  // Logical properties
+  pbl: {
+    property: 'padding',
+    properties: ['paddingBlockStart', 'paddingBlockEnd'],
+    scale: 'spacing',
+  },
+  pbls: { property: 'paddingBlockStart', scale: 'spacing' },
+  pble: { property: 'paddingBlockEnd', scale: 'spacing' },
+  pi: {
+    property: 'padding',
+    properties: ['paddingInlineStart', 'paddingInlineEnd'],
+    scale: 'spacing',
+  },
+  pis: { property: 'paddingInlineStart', scale: 'spacing' },
+  pie: { property: 'paddingInlineEnd', scale: 'spacing' },
 } as const;
 
 export const space = {
