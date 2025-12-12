@@ -81,7 +81,7 @@ export const hoverShadowLeft = {
     },
   },
   animateOutline: {
-    transform: 'translate(6px, -6px)',
+    transform: 'translate(4px, -4px)',
     boxShadow: `-8px 8px 0 0px ${theme.colors['shadow-primary']}, -8px 8px 0 1px ${theme.colors['shadow-primary']}`,
     transition: {
       duration: timingValues.fast / 1000,
