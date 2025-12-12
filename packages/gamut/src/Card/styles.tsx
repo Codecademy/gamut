@@ -35,7 +35,7 @@ export const shadowVariants = variant({
     patternLeft: {},
     patternRight: {},
     outline: {
-      boxShadow: `-6px 6px ${theme.colors['background-current']}, -6px 6px 0 1px ${theme.colors['border-primary']}`,
+      boxShadow: `-8px 8px ${theme.colors['background-current']}, -8px 8px 0 1px ${theme.colors['border-primary']}`,
     },
   },
 });
@@ -65,9 +65,24 @@ export const hoverShadowLeft = {
       ease: 'easeOut',
     },
   },
+  initialOutline: {
+    boxShadow: `-6px 6px 0 0px ${theme.colors['background-current']}, -6px 6px 0 1px ${theme.colors['border-primary']}`,
+    transition: {
+      duration: timingValues.fast / 1000,
+      ease: 'easeOut',
+    },
+  },
   animate: {
     transform: 'translate(4px, -4px)',
     boxShadow: `-8px 8px 0 ${theme.colors['shadow-primary']}`,
+    transition: {
+      duration: timingValues.fast / 1000,
+      ease: 'easeIn',
+    },
+  },
+  animateOutline: {
+    transform: 'translate(4px, -4px)',
+    boxShadow: `-8px 8px 0 0px ${theme.colors['shadow-primary']}, -8px 8px 0 1px ${theme.colors['shadow-primary']}`,
     transition: {
       duration: timingValues.fast / 1000,
       ease: 'easeIn',
