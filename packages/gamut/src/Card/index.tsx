@@ -24,21 +24,20 @@ export const Card: React.FC<CardProps> = ({
     variant === 'default' ? DynamicCardWrapper : StaticCardWrapper;
 
   const hasPattern = shadow === 'patternLeft' || shadow === 'patternRight';
+  const isOutline = shadow === 'outline';
 
   const setHoverShadow =
     shadow === 'patternRight' ? hoverShadowRight : hoverShadowLeft;
+
+  const initialVariant = isOutline ? 'initialOutline' : 'initial';
+  const animateVariant = isOutline ? 'animateOutline' : 'animate';
+
   return (
     <MotionBox
       height={height}
-      initial={shadow === 'outline' ? 'initialOutline' : 'initial'}
+      initial={initialVariant}
       position="relative"
-      whileHover={
-        isInteractive
-          ? shadow === 'outline'
-            ? 'animateOutline'
-            : 'animate'
-          : ''
-      }
+      whileHover={isInteractive ? animateVariant : ''}
       width={width}
     >
       {hasPattern && (
