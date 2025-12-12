@@ -23,7 +23,7 @@ export interface ComponentHeaderProps {
   title?: string;
   subtitle?: string;
   status?: 'current' | 'updating' | 'deprecated' | 'static';
-  design?: { url?: string };
+  design?: { type?: string; url?: string };
   source?: Source;
 }
 
