@@ -14,7 +14,7 @@ export interface BarChartContextProps {
 const defaultStyleConfig: Required<BarChartStyles> = {
   textColor: 'text',
   foregroundBarColor: 'feedback-warning',
-  backgroundBarColor: 'paleBlue',
+  backgroundBarColor: 'background-primary',
 };
 
 export const BarChartContext = createContext<BarChartContextProps>({

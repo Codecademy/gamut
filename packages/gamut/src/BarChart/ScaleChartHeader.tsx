@@ -1,3 +1,6 @@
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+
 import { FlexBox } from '../Box';
 import { Text } from '../Typography';
 import { formatNumberUSCompact } from './utils';
@@ -10,6 +13,12 @@ export interface ScaleChartHeaderProps {
   /** Number of labels to display */
   labelCount: number;
 }
+
+const StyledLabelText = styled(Text)(
+  css({
+    flex: 1,
+  })
+);
 
 /**
  * Calculates the value for a given label position
@@ -32,16 +41,15 @@ export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
   max,
 }) => {
   const scaleLabels = Array.from({ length: labelCount }, (_, i) => (
-    <Text
+    <StyledLabelText
       key={i}
       variant="p-small"
       textColor="text-secondary"
       data-testid="chart-header-label"
       textAlign={i === 0 ? 'left' : i === labelCount - 1 ? 'right' : 'center'}
-      flex={1}
     >
       {formatNumberUSCompact(getLabel(labelCount, i, max))}
-    </Text>
+    </StyledLabelText>
   ));
 
   return (
@@ -49,8 +57,8 @@ export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
       width="100%"
       justifyContent="space-between"
       mb={8}
-      pl={{ _: 80, sm: 120 }}
-      pr={{ _: 40, sm: 60 }}
+      pl={{ _: 64, sm: 96 }}
+      pr={{ _: 40, sm: 64 }}
       display={{ _: 'none', sm: 'flex' }}
       aria-hidden="true"
     >

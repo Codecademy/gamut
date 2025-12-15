@@ -18,8 +18,8 @@ const GridLineContainer = styled(Box)(
 
 const GridLine = styled(Box)(
   css({
-    borderLeft: '1px solid',
-    borderColor: 'border-tertiary',
+    borderLeft: 1,
+    borderColorLeft: 'border-tertiary',
     height: '100%',
     flex: 1,
     '&:first-of-type': {

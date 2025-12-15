@@ -32,7 +32,7 @@ const rowBaseStyles = css({
   '&:focus-visible': {
     outline: '2px solid',
     outlineColor: 'primary',
-    outlineOffset: 2,
+    outlineOffset: '2px',
   },
 });
 
@@ -95,8 +95,7 @@ export const BarRow = forwardRef<
     },
     ref
   ) => {
-    const { minRange, maxRange, unit, styleConfig, animate } =
-      useBarChartContext();
+    const { maxRange, unit, styleConfig, animate } = useBarChartContext();
 
     const isStacked = seriesTwoValue !== undefined;
     const displayValue = isStacked ? seriesTwoValue : seriesOneValue;
