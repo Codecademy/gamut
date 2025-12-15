@@ -5,16 +5,16 @@ import { ComponentHeader } from '~styleguide/blocks';
 import * as BarChartStories from './BarChart.stories';
 
 export const parameters = {
-  subtitle: `Template component`,
+  subtitle: `A horizontal bar chart for visualizing comparative data`,
   design: {
     type: 'figma',
-    url: 'https: //www.figma.com/file/XXX',
+    url: 'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=55123-4176',
   },
   status: 'current',
   source: {
     repo: 'gamut',
     githubLink:
-      'https: //github.com/Codecademy/gamut/blob/main/packages/gamut/src/Logo',
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/BarChart',
   },
 };
 
@@ -24,37 +24,54 @@ export const parameters = {
 
 ## Usage
 
-Use BarChart to [what it should be used for]
+Use BarChart to display comparative data across categories, such as skills progress, XP earned, or any quantitative metrics that benefit from visual comparison.
 
 ### Best practices:
 
-- [recommendation / best practice for implementation]
-- [recommendation / best practice for implementation]
+- Use consistent units across all bars in a chart
+- Limit the number of bars to maintain readability (5-10 is optimal)
+- Consider using the stacked variant to show progress toward a goal
+- Sort bars by value (descending) when ranking is important
 
 When NOT to use
 
-- [use case]- for [describe the use case], use the [similar component] component.
-- [use case]- for [describe the use case], use the [similar component] component
-
-## Anatomy
-
-[Insert image exported from Figma]
-
-1. [Element name]
-
-- [description including available options and ux writing if relevant]
+- For showing trends over time - use a line chart instead
+- For showing parts of a whole - use a pie or donut chart
+- For very small datasets (1-2 items) - consider using ProgressBar
 
 ## Variants
 
-### [Variant 1 name]
+### Simple (Non-stacked)
 
-Use the [variant 1 name] to [what it should be used for]
+Use the simple variant when showing single values per category. Only `seriesOneValue` is provided.
 
 <Canvas of={BarChartStories.Default} />
 
-## Playground
+### Stacked
 
-If you are using a story named 'Default', you can forgo the `of` prop.
+Use the stacked variant when showing progress within a total. Provide both `seriesOneValue` (progress) and `seriesTwoValue` (total).
+
+<Canvas of={BarChartStories.Stacked} />
+
+### With Icons
+
+Add icons to labels for better visual identification of categories.
+
+<Canvas of={BarChartStories.WithIcons} />
+
+### Animated
+
+Enable entrance animations for a more engaging experience.
+
+<Canvas of={BarChartStories.Animated} />
+
+### Interactive
+
+Rows can be made interactive with `onClick` handlers or `href` links.
+
+<Canvas of={BarChartStories.Interactive} />
+
+## Playground
 
 <Canvas sourceState="shown" of={BarChartStories.Default} />
 
@@ -62,10 +79,14 @@ If you are using a story named 'Default', you can forgo the `of` prop.
 
 ## Accessibility considerations
 
-- [Accessibility guidance]
+- Always provide either `aria-label` or `aria-labelledby` to describe the chart
+- Each row automatically generates an accessible label summarizing its values
+- Interactive rows (with onClick/href) are properly announced as buttons/links
+- Grid lines are marked as decorative and hidden from screen readers
+- The scale header is hidden on small screens and marked as decorative
 
 ## UX writing
 
-- [content]
-- [guidance]
-- [guidance]
+- Keep y-axis labels concise (1-3 words)
+- Use consistent unit labels (e.g., "XP", "hours", "points")
+- Consider locale-aware number formatting for international audiences

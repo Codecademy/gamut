@@ -6,45 +6,50 @@ import { Box } from '../../Box';
 
 export const minBarWidth = 8;
 
-const baseStyles = {
+const baseBarStyles = {
   alignItems: 'center',
   height: '100%',
   display: 'flex',
-  transitionDelay: '1.5s',
-  transition: 'width 0.5s',
   position: 'absolute',
+  left: 0,
   borderRadius: 'inherit',
-  borderColor: 'border-primary',
 } as const;
 
-export const Bar = styled(motion.div)(
+/**
+ * Animated bar element for background/total value display
+ */
+export const BackgroundBar = styled(motion.create(Box))(
   css({
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    ...baseStyles,
+    ...baseBarStyles,
+    border: 1,
+    borderColor: 'border-primary',
   })
 );
 
-export const ForegroundBar = styled(Box)(
+/**
+ * Foreground bar for stacked display (progress value)
+ * Color should be passed via bg prop from parent
+ */
+export const ForegroundBar = styled(motion.create(Box))(
   css({
-    ...baseStyles,
-    bg: 'feedback-warning',
-    borderLeftColor: 'transparent',
-    borderLeftStyle: 'solid',
-    borderLeftWidth: '1px',
-    borderRightStyle: 'solid',
-    borderRightWidth: '1px',
+    ...baseBarStyles,
     height: 'calc(100% - 2px)',
+    top: 1,
+    zIndex: 1,
   })
 );
 
+/**
+ * Container for bars with responsive height
+ */
 export const BarWrapper = styled(Box)(
   css({
     display: 'flex',
     overflow: 'hidden',
     position: 'relative',
     alignItems: 'center',
-    height: { _: '8px', sm: '18px' },
+    height: { _: 12, sm: 20 },
     borderRadius: { _: 'md', sm: 'xl' },
+    width: '100%',
   })
 );

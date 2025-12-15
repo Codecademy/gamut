@@ -1,7 +1,7 @@
+import { ColorAlias } from '@codecademy/gamut-styles';
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { HTMLProps } from 'react';
 
-import { BoxProps } from '../Box';
 import { ButtonProps } from '../Button';
 
 type BarChartAriaLabel = {
@@ -10,42 +10,53 @@ type BarChartAriaLabel = {
 };
 
 type BarChartAriaLabelledBy = {
-  'aria-label': never;
-  'aria-labelledby'?: string;
+  'aria-label'?: never;
+  'aria-labelledby': string;
 };
 
 type BarChartLabel = BarChartAriaLabel | BarChartAriaLabelledBy;
 
-type BarChartStyles = {
-  textColor?: Pick<BoxProps, 'color'>; // text default
-  foregroundBarColor?: Pick<BoxProps, 'color'>; // text default
-  backgroundBarColors?: Pick<BoxProps, 'color'>; // primary default
+export type BarChartStyles = {
+  /** Color for text labels. Defaults to 'text' */
+  textColor?: ColorAlias;
+  /** Color for the foreground/progress bar. Defaults to 'feedback-warning' */
+  foregroundBarColor?: ColorAlias;
+  /** Color for the background/total bar. Defaults to 'paleBlue' */
+  backgroundBarColor?: ColorAlias;
 };
 
-type BarProps = {
+export type BarProps = {
+  /** Label displayed on the y-axis for this bar */
   yLabel: string;
-  // The foreground stacked bar
-  startingValue: number;
-  // The background bar
-  endingValue?: number;
-  // The actual type is in Gamut
+  /** The foreground/progress bar value (always shown) */
+  seriesOneValue: number;
+  /** The background/total bar value (optional - creates stacked effect when provided) */
+  seriesTwoValue?: number;
+  /** Optional icon to display next to the label */
   icon?: React.ComponentType<GamutIconProps>;
-  // onClick
+  /** Click handler - makes row interactive as a button */
   onClick?: ButtonProps['onClick'];
-  // href
+  /** Link href - makes row interactive as an anchor */
   href?: HTMLProps<HTMLAnchorElement>['href'];
 };
+
 export type BarChartProps = BarChartLabel & {
-  // goes in hook
+  /** Whether to animate bars on mount */
   animate?: boolean;
+  /** Array of bar data to render */
   barValues: BarProps[];
-  // goes in hook
+  /** Maximum value for the x-axis scale */
   maxRange: number;
-  // goes in hook
+  /** Minimum value for the x-axis scale (usually 0) */
   minRange: number;
-  order: 'ascending' | 'descending';
-  sortBy: 'label' | 'value' | 'none';
-  string: 'XP';
-  styleConfig: BarChartStyles;
-  xScale: number;
+  /** Sort order for bars */
+  order?: 'ascending' | 'descending';
+  /** Property to sort bars by */
+  sortBy?: 'label' | 'value' | 'none';
+  /** Unit label to display (e.g., "XP") */
+  unit?: string;
+  /** Style configuration for colors */
+  styleConfig?: BarChartStyles;
+  /** Interval for x-axis scale markers */
+  xScale?: number;
 };
