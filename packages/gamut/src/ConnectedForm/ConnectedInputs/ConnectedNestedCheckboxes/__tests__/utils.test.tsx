@@ -463,7 +463,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
 
   describe('renderCheckbox', () => {
     const mockOption = {
-      value: 'test',
+      value: 'testing',
       label: 'Test Label',
       level: 1,
       parentValue: 'parent',
