@@ -164,9 +164,9 @@ export const CustomStyles: Story = {
   args: {
     barValues: stackedBarData,
     styleConfig: {
-      textColor: 'navy',
-      foregroundBarColor: 'feedback-success',
       backgroundBarColor: 'paleGreen',
+      foregroundBarColor: 'feedback-success',
+      textColor: 'navy',
     },
   },
 };

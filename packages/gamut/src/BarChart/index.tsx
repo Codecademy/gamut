@@ -5,32 +5,8 @@ import { BarChartProvider, useBarChart } from './BarChartProvider';
 import { BarRow } from './BarRow';
 import { GridLines } from './GridLines';
 import { ScaleChartHeader } from './ScaleChartHeader';
-import { BarChartProps, BarProps } from './types';
-
-/**
- * Sort bars based on sortBy and order configuration
- */
-function sortBars(
-  bars: BarProps[],
-  sortBy: BarChartProps['sortBy'],
-  order: BarChartProps['order']
-): BarProps[] {
-  if (sortBy === 'none' || !sortBy) {
-    return bars;
-  }
-
-  const sorted = [...bars].sort((a, b) => {
-    if (sortBy === 'label') {
-      return a.yLabel.localeCompare(b.yLabel);
-    }
-    // sortBy === 'value' - use seriesTwoValue if available, otherwise seriesOneValue
-    const aValue = a.seriesTwoValue ?? a.seriesOneValue;
-    const bValue = b.seriesTwoValue ?? b.seriesOneValue;
-    return aValue - bValue;
-  });
-
-  return order === 'descending' ? sorted.reverse() : sorted;
-}
+import { BarChartProps } from './types';
+import { sortBars } from './utils';
 
 export const BarChart: React.FC<BarChartProps> = ({
   'aria-label': ariaLabel,
@@ -55,7 +31,7 @@ export const BarChart: React.FC<BarChartProps> = ({
   });
 
   const sortedBars = useMemo(
-    () => sortBars(barValues, sortBy, order),
+    () => sortBars({ bars: barValues, sortBy, order }),
     [barValues, sortBy, order]
   );
 
@@ -64,12 +40,12 @@ export const BarChart: React.FC<BarChartProps> = ({
 
   return (
     <BarChartProvider value={contextValue}>
-      <Box width="100%" position="relative">
+      <Box position="relative" width="100%">
         {/* Scale header with x-axis labels */}
         <ScaleChartHeader
-          min={minRange}
-          max={maxRange}
           labelCount={tickCount}
+          max={maxRange}
+          min={minRange}
         />
 
         {/* Chart area with grid lines and bars */}
@@ -79,15 +55,15 @@ export const BarChart: React.FC<BarChartProps> = ({
 
           {/* Bar list */}
           <Box
-            as="ul"
             aria-label={ariaLabel}
             aria-labelledby={ariaLabelledBy}
-            p={0}
-            m={0}
+            as="ul"
             listStyle="none"
+            m={0}
+            p={0}
           >
             {sortedBars.map((bar, index) => (
-              <BarRow key={`${bar.yLabel}-${index}`} index={index} {...bar} />
+              <BarRow index={index} key={`${bar.yLabel}-${index}`} {...bar} />
             ))}
           </Box>
         </Box>

@@ -8,11 +8,13 @@ export const minBarWidth = 8;
 
 const baseBarStyles = {
   alignItems: 'center',
-  height: '100%',
-  display: 'flex',
-  position: 'absolute',
-  left: 0,
+  border: 1,
+  borderColor: 'border-primary',
   borderRadius: 'inherit',
+  display: 'flex',
+  height: '100%',
+  left: 0,
+  position: 'absolute',
 } as const;
 
 /**
@@ -21,8 +23,6 @@ const baseBarStyles = {
 export const BackgroundBar = styled(motion.create(Box))(
   css({
     ...baseBarStyles,
-    border: 1,
-    borderColor: 'border-primary',
   })
 );
 
@@ -33,9 +33,6 @@ export const BackgroundBar = styled(motion.create(Box))(
 export const ForegroundBar = styled(motion.create(Box))(
   css({
     ...baseBarStyles,
-    height: 'calc(100% - 2px)',
-    top: 1,
-    zIndex: 1,
   })
 );
 
@@ -48,6 +45,7 @@ export const BarWrapper = styled(Box)(
     overflow: 'hidden',
     position: 'relative',
     alignItems: 'center',
+    flex: 1,
     height: { _: 12, sm: 20 },
     borderRadius: { _: 'md', sm: 'xl' },
     width: '100%',

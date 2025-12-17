@@ -3,7 +3,8 @@ import styled from '@emotion/styled';
 
 import { FlexBox } from '../Box';
 import { Text } from '../Typography';
-import { formatNumberUSCompact } from './utils';
+import { useBarChartContext } from './BarChartProvider';
+import { formatNumberUSCompact, getLabel } from './utils';
 
 export interface ScaleChartHeaderProps {
   /** Minimum value on the scale */
@@ -20,47 +21,35 @@ const StyledLabelText = styled(Text)(
   })
 );
 
-/**
- * Calculates the value for a given label position
- */
-export const getLabel = (
-  labelCount: number,
-  labelIndex: number,
-  max: number
-): number => {
-  if (labelCount <= 1) return max;
-  const incrementalDecimal = labelIndex / (labelCount - 1);
-  return Math.floor(incrementalDecimal * max);
-};
-
-/**
- * Header component showing the x-axis scale labels
- */
 export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
   labelCount,
   max,
 }) => {
+  const { styleConfig } = useBarChartContext();
+
   const scaleLabels = Array.from({ length: labelCount }, (_, i) => (
     <StyledLabelText
-      key={i}
-      variant="p-small"
-      textColor="text-secondary"
       data-testid="chart-header-label"
-      textAlign={i === 0 ? 'left' : i === labelCount - 1 ? 'right' : 'center'}
+      key={i}
+      textAlign="center"
+      textColor={styleConfig.textColor}
+      variant="p-small"
     >
-      {formatNumberUSCompact(getLabel(labelCount, i, max))}
+      {formatNumberUSCompact({
+        num: getLabel({ labelCount, labelIndex: i, max }),
+      })}
     </StyledLabelText>
   ));
 
   return (
     <FlexBox
-      width="100%"
+      aria-hidden="true"
+      display={{ _: 'none', sm: 'flex' }}
       justifyContent="space-between"
       mb={8}
       pl={{ _: 64, sm: 96 }}
       pr={{ _: 40, sm: 64 }}
-      display={{ _: 'none', sm: 'flex' }}
-      aria-hidden="true"
+      width="100%"
     >
       {scaleLabels}
     </FlexBox>

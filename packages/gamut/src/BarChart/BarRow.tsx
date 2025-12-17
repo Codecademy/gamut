@@ -4,17 +4,16 @@ import { forwardRef, MouseEvent, MutableRefObject } from 'react';
 
 import { FlexBox } from '../Box';
 import { Text } from '../Typography';
-import { useBarChartContext } from './BarChartProvider';
-import { BarProps } from './types';
-import { calculateBarWidth } from './utils';
 import {
   BackgroundBar,
   BarWrapper,
   ForegroundBar,
   minBarWidth,
 } from './Bar/elements';
+import { useBarChartContext } from './BarChartProvider';
+import { BarProps } from './types';
+import { calculateBarWidth, getValuesSummary } from './utils';
 
-// Polymorphic row wrapper styles
 const rowBaseStyles = css({
   display: 'flex',
   alignItems: 'center',
@@ -54,29 +53,7 @@ const RowAnchor = styled('a', styledOptions<'a'>())(
 );
 
 export interface BarRowProps extends BarProps {
-  /** Index for animation staggering */
   index?: number;
-}
-
-/**
- * Generates an accessible summary of the bar values
- */
-function getValuesSummary({
-  yLabel,
-  seriesOneValue,
-  seriesTwoValue,
-  unit,
-}: {
-  yLabel: string;
-  seriesOneValue: number;
-  seriesTwoValue?: number;
-  unit: string;
-}): string {
-  if (seriesTwoValue !== undefined) {
-    const gained = seriesOneValue;
-    return `${gained} ${unit} gained - now at ${seriesTwoValue} ${unit} in ${yLabel} category`;
-  }
-  return `${seriesOneValue} ${unit} in ${yLabel} category`;
 }
 
 export const BarRow = forwardRef<
@@ -100,7 +77,6 @@ export const BarRow = forwardRef<
     const isStacked = seriesTwoValue !== undefined;
     const displayValue = isStacked ? seriesTwoValue : seriesOneValue;
 
-    // Calculate bar widths as percentages
     const backgroundBarWidth = calculateBarWidth({
       value: displayValue,
       maxRange,
@@ -123,64 +99,51 @@ export const BarRow = forwardRef<
       unit,
     });
 
-    // Animation delay for staggered bar entrance
     const animationDelay = animate ? index * 0.1 : 0;
 
     const rowContent = (
       <>
-        {/* Y-axis label with optional icon */}
         <FlexBox
           alignItems="center"
-          gap={8}
-          minWidth={{ _: 80, sm: 120 }}
+          color={styleConfig.textColor}
           flexShrink={0}
+          gap={8}
+          minWidth="200px"
         >
-          {Icon && <Icon size={16} color={styleConfig.textColor} />}
-          <Text
-            variant="p-small"
-            color={styleConfig.textColor}
-            truncate="ellipsis"
-            truncateLines={1}
-          >
+          {Icon && <Icon size={16} />}
+          <Text fontWeight='bold' truncate="ellipsis" truncateLines={1}>
             {yLabel}
           </Text>
         </FlexBox>
 
-        {/* Bar container */}
-        <FlexBox flex={1} alignItems="center" position="relative">
-          <BarWrapper>
-            {/* Background bar (total value in stacked, or single value in non-stacked) */}
-            <BackgroundBar
-              bg={styleConfig.backgroundBarColor}
+        <BarWrapper>
+          <BackgroundBar
+            animate={animate ? { width: bgWidthStr } : undefined}
+            bg={styleConfig.backgroundBarColor}
+            data-testid="background-bar"
+            initial={animate ? { width: '0%' } : undefined}
+            transition={{ duration: 0.5, delay: animationDelay }}
+            width={!animate ? bgWidthStr : undefined}
+          />
+          {isStacked && (
+            <ForegroundBar
+              animate={animate ? { width: fgWidthStr } : undefined}
+              bg={styleConfig.foregroundBarColor}
+              data-testid="foreground-bar"
               initial={animate ? { width: '0%' } : undefined}
-              animate={animate ? { width: bgWidthStr } : undefined}
-              style={!animate ? { width: bgWidthStr } : undefined}
-              transition={{ duration: 0.5, delay: animationDelay }}
-              data-testid="background-bar"
+              transition={{ duration: 0.5, delay: animationDelay + 0.25 }}
+              width={!animate ? fgWidthStr : undefined}
             />
+          )}
+        </BarWrapper>
 
-            {/* Foreground bar (progress value in stacked mode only) */}
-            {isStacked && (
-              <ForegroundBar
-                bg={styleConfig.foregroundBarColor}
-                initial={animate ? { width: '0%' } : undefined}
-                animate={animate ? { width: fgWidthStr } : undefined}
-                style={!animate ? { width: fgWidthStr } : undefined}
-                transition={{ duration: 0.5, delay: animationDelay + 0.25 }}
-                data-testid="foreground-bar"
-              />
-            )}
-          </BarWrapper>
-        </FlexBox>
-
-        {/* Value display */}
         <FlexBox
           alignItems="center"
+          flexShrink={0}
           justifyContent="flex-end"
           minWidth={{ _: 40, sm: 60 }}
-          flexShrink={0}
         >
-          <Text variant="p-small" color={styleConfig.textColor}>
+          <Text color={styleConfig.textColor} variant="p-small">
             {displayValue.toLocaleString()}
             {unit && ` ${unit}`}
           </Text>
@@ -188,13 +151,12 @@ export const BarRow = forwardRef<
       </>
     );
 
-    // Polymorphic rendering based on interactivity
     if (href) {
       return (
         <li>
           <RowAnchor
-            href={href}
             aria-label={valuesSummary}
+            href={href}
             ref={ref as MutableRefObject<HTMLAnchorElement>}
           >
             {rowContent}
@@ -207,6 +169,8 @@ export const BarRow = forwardRef<
       return (
         <li>
           <RowButton
+            aria-label={valuesSummary}
+            ref={ref as MutableRefObject<HTMLButtonElement>}
             type="button"
             onClick={onClick}
             onKeyDown={(e) => {
@@ -214,8 +178,6 @@ export const BarRow = forwardRef<
                 onClick(e as unknown as MouseEvent<HTMLButtonElement>);
               }
             }}
-            aria-label={valuesSummary}
-            ref={ref as MutableRefObject<HTMLButtonElement>}
           >
             {rowContent}
           </RowButton>
@@ -235,5 +197,3 @@ export const BarRow = forwardRef<
     );
   }
 );
-
-BarRow.displayName = 'BarRow';

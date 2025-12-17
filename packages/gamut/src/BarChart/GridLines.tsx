@@ -19,7 +19,7 @@ const GridLineContainer = styled(Box)(
 const GridLine = styled(Box)(
   css({
     borderLeft: 1,
-    borderColorLeft: 'border-tertiary',
+    borderColorLeft: 'background-disabled',
     height: '100%',
     flex: 1,
     '&:first-of-type': {
@@ -29,14 +29,13 @@ const GridLine = styled(Box)(
 );
 
 export interface GridLinesProps {
-  /** Number of grid lines to render */
   tickCount: number;
 }
 
 export const GridLines: React.FC<GridLinesProps> = ({ tickCount }) => {
   const lines = Array.from({ length: tickCount }, (_, i) => (
-    <GridLine key={i} aria-hidden="true" />
+    <GridLine aria-hidden key={i} />
   ));
 
-  return <GridLineContainer aria-hidden="true">{lines}</GridLineContainer>;
+  return <GridLineContainer aria-hidden>{lines}</GridLineContainer>;
 };
