@@ -5,14 +5,25 @@ import { Box } from '../Box';
 
 const GridLineContainer = styled(Box)(
   css({
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
     bottom: 0,
     display: { _: 'none', sm: 'flex' },
+    left: '200px',
     pointerEvents: 'none',
+    position: 'absolute',
+    right: '60px',
+    top: 0,
+    borderLeft: 1,
+    borderRight: 1,
+    borderColor: 'background-disabled',
     zIndex: 0,
+  })
+);
+
+const GridLineWrapper = styled(Box)(
+  css({
+    flex: 1,
+    display: 'flex',
+    height: '100%',
   })
 );
 
@@ -21,10 +32,7 @@ const GridLine = styled(Box)(
     borderLeft: 1,
     borderColorLeft: 'background-disabled',
     height: '100%',
-    flex: 1,
-    '&:first-of-type': {
-      borderLeft: 'none',
-    },
+    width: 0,
   })
 );
 
@@ -33,9 +41,13 @@ export interface GridLinesProps {
 }
 
 export const GridLines: React.FC<GridLinesProps> = ({ tickCount }) => {
-  const lines = Array.from({ length: tickCount }, (_, i) => (
-    <GridLine aria-hidden key={i} />
-  ));
+  const lines = Array.from({ length: tickCount - 2 }, (_, i) => {
+    return (
+      <GridLineWrapper aria-hidden justifyContent="center" key={i}>
+        <GridLine />
+      </GridLineWrapper>
+    );
+  });
 
   return <GridLineContainer aria-hidden>{lines}</GridLineContainer>;
 };

@@ -1,7 +1,7 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
-import { FlexBox } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { Text } from '../Typography';
 import { useBarChartContext } from './BarChartProvider';
 import { formatNumberUSCompact, getLabel } from './utils';
@@ -21,37 +21,51 @@ const StyledLabelText = styled(Text)(
   })
 );
 
+const StyledHeaderContainer = styled(FlexBox)(
+  css({
+    marginLeft: '200px',
+    paddingRight: '60px',
+    width: 'calc(100% - 200px - 60px)',
+  })
+);
+
 export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
   labelCount,
+  min,
   max,
 }) => {
   const { styleConfig } = useBarChartContext();
 
-  const scaleLabels = Array.from({ length: labelCount }, (_, i) => (
-    <StyledLabelText
-      data-testid="chart-header-label"
-      key={i}
-      textAlign="center"
-      textColor={styleConfig.textColor}
-      variant="p-small"
-    >
-      {formatNumberUSCompact({
-        num: getLabel({ labelCount, labelIndex: i, max }),
-      })}
-    </StyledLabelText>
-  ));
+  const scaleLabels = Array.from({ length: labelCount }, (_, i) => {
+    const isFirst = i === 0;
+    const isLast = i === labelCount - 1;
+    const textAlign = isFirst ? 'left' : isLast ? 'right' : 'center';
+
+    return (
+      <StyledLabelText
+        data-testid="chart-header-label"
+        key={i}
+        textAlign={textAlign}
+        textColor={styleConfig.textColor}
+        variant="p-small"
+      >
+        {formatNumberUSCompact({
+          num: getLabel({ labelCount, labelIndex: i, min, max }),
+        })}
+      </StyledLabelText>
+    );
+  });
 
   return (
-    <FlexBox
-      aria-hidden="true"
-      display={{ _: 'none', sm: 'flex' }}
-      justifyContent="space-between"
-      mb={8}
-      pl={{ _: 64, sm: 96 }}
-      pr={{ _: 40, sm: 64 }}
-      width="100%"
-    >
-      {scaleLabels}
-    </FlexBox>
+    <Box bg="red" width={1}>
+      <StyledHeaderContainer
+        aria-hidden="true"
+        display={{ _: 'none', sm: 'flex' }}
+        justifyContent="space-between"
+        mb={8}
+      >
+        {scaleLabels}
+      </StyledHeaderContainer>
+    </Box>
   );
 };

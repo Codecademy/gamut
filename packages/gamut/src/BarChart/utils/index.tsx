@@ -20,12 +20,16 @@ export const calculatePercent = ({ value, total }: { value: number; total: numbe
 
 export const calculateBarWidth = ({
   value,
+  minRange,
   maxRange,
 }: {
   value: number;
+  minRange: number;
   maxRange: number;
 }) => {
-  return Math.floor(calculatePercent({ value, total: maxRange }));
+  const range = maxRange - minRange;
+  const adjustedValue = value - minRange;
+  return Math.floor(calculatePercent({ value: adjustedValue, total: range }));
 };
 
 // Calculate tick spacing and nice minimum and maximum data points on the axis.
@@ -141,13 +145,15 @@ export const getValuesSummary = ({
 export const getLabel = ({
   labelCount,
   labelIndex,
+  min,
   max,
 }: {
   labelCount: number;
   labelIndex: number;
+  min: number;
   max: number;
 }): number => {
   if (labelCount <= 1) return max;
   const incrementalDecimal = labelIndex / (labelCount - 1);
-  return Math.floor(incrementalDecimal * max);
+  return Math.floor(min + incrementalDecimal * (max - min));
 };

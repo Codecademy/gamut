@@ -20,7 +20,7 @@ const rowBaseStyles = css({
   width: '100%',
   gap: 16,
   py: 8,
-  px: 0,
+  px: 16,
   bg: 'transparent',
   border: 'none',
   textDecoration: 'none',
@@ -72,19 +72,22 @@ export const BarRow = forwardRef<
     },
     ref
   ) => {
-    const { maxRange, unit, styleConfig, animate } = useBarChartContext();
+    const { minRange, maxRange, unit, styleConfig, animate } =
+      useBarChartContext();
 
     const isStacked = seriesTwoValue !== undefined;
     const displayValue = isStacked ? seriesTwoValue : seriesOneValue;
 
     const backgroundBarWidth = calculateBarWidth({
       value: displayValue,
+      minRange,
       maxRange,
     });
 
     const foregroundBarWidth = isStacked
       ? calculateBarWidth({
           value: seriesOneValue,
+          minRange,
           maxRange,
         })
       : 0;
@@ -111,7 +114,7 @@ export const BarRow = forwardRef<
           minWidth="200px"
         >
           {Icon && <Icon size={16} />}
-          <Text fontWeight='bold' truncate="ellipsis" truncateLines={1}>
+          <Text fontWeight="bold" truncate="ellipsis" truncateLines={1}>
             {yLabel}
           </Text>
         </FlexBox>
