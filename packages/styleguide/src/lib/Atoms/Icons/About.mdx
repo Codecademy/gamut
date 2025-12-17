@@ -42,8 +42,8 @@ export const parameters = {
    3. You should be using the Icon from Streamline, NOT Figma.
 2. If it doesn't already have it add the streamline slug (IE: `delete-1`) as the SVG title if it does not already exist and ensure the viewBox is set to `viewBox="0 0 24 24"`. Preserve the source URL, add any relevent comments, and disregard the asset size.
 3. Add the SVG asset to the appropriate folder in `packages/gamut-icons/src/svg/` - either [regular](https://github.com/Codecademy/gamut/tree/main/packages/gamut-icons) or [mini](https://github.com/Codecademy/gamut/tree/main/packages/gamut-icons/mini).
-   1. Regular Icons should follow the naming convention: `<ICON_NAME>Icon.svg`. (e.g. `AddIcon.svg`)
-   2. Mini Icons should follow the naming convention: `Mini<ICON_NAME>Icon.svg` (e.g. `MiniStarIcon.svg`).
+   1. Regular Icons should follow the naming convention: `<icon_name>-icon.svg` (e.g. `add-icon.svg` or `alarm-clock-icon.svg`)
+   2. Mini Icons should follow the naming convention: `mini-<icon_name>-icon.svg` (e.g. `mini-star-icon.svg`)
 4. Run `yarn build-all && yarn start` to see the icon add to Storybook.
    1. Regular Icons will by default be added to the `Interface` section alphabetically, however, you may change this in the config. I.e. if you added an icon that should belong in the `Vendor` section, you can make this change in the `constants.tsx` file.
 5. Make a PR describing where you got the Icon, what its use is with a description of its naming choice.
