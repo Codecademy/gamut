@@ -2,8 +2,30 @@ import { Preview } from '@storybook/react';
 
 import theme from './theming/GamutTheme';
 import { withEmotion } from './theming/GamutThemeProvider';
-import { breakpoints } from '@codecademy/gamut-styles';
+import { breakpoints, css } from '@codecademy/gamut-styles';
 import { DocsContainer } from './components/Elements/DocsContainer';
+import {
+  CodeOrSourceMdx,
+  HeadersMdx,
+} from '@storybook/blocks';
+import { components as htmlComponents } from '@storybook/components';
+import { styled } from '@storybook/theming';
+import { Link } from './components/Elements/Markdown';
+
+const WrappedPre = styled(htmlComponents.pre)(
+  // gives the source block a white background - pretty fragile but easy to change if needed
+  css({
+    '.docblock-source, .css-5owncf': { backgroundColor: 'background' },
+  })
+);
+
+const mdxComponents = {
+  ...htmlComponents,
+  code: CodeOrSourceMdx,
+  pre: WrappedPre,
+  ...HeadersMdx,
+  a: Link as any,
+};
 
 const preview: Preview = {
   parameters: {
@@ -15,6 +37,7 @@ const preview: Preview = {
       container: DocsContainer,
       theme: theme,
       toc: { headingSelector: 'h1, h2, h3' },
+      mdxComponents,
     },
     options: {
       storySort: {
