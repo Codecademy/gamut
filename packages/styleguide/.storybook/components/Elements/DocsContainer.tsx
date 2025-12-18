@@ -83,9 +83,7 @@ export const DocsContainer: React.FC<{
             <AssetProvider />
           </HelmetProvider>
           <SourceContainer channel={context.channel}>
-            <ThemeProvider theme={currentTheme}>
-              {children}
-            </ThemeProvider>
+            <ThemeProvider theme={currentTheme}>{children}</ThemeProvider>
           </SourceContainer>
         </ColorMode>
       </GamutProvider>

@@ -4,10 +4,7 @@ import theme from './theming/GamutTheme';
 import { withEmotion } from './theming/GamutThemeProvider';
 import { breakpoints, css } from '@codecademy/gamut-styles';
 import { DocsContainer } from './components/Elements/DocsContainer';
-import {
-  CodeOrSourceMdx,
-  HeadersMdx,
-} from '@storybook/blocks';
+import { CodeOrSourceMdx, HeadersMdx } from '@storybook/blocks';
 import { components as htmlComponents } from '@storybook/components';
 import { styled } from '@storybook/theming';
 import { Link } from './components/Elements/Markdown';
