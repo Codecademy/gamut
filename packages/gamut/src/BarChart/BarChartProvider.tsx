@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo } from 'react';
+import { createContext } from 'react';
 
 import { BarChartStyles } from './types';
 
@@ -29,40 +29,3 @@ export const BarChartContext = createContext<BarChartContextProps>({
 BarChartContext.displayName = 'BarChartContext';
 
 export const BarChartProvider = BarChartContext.Provider;
-
-export function useBarChartContext() {
-  return useContext(BarChartContext);
-}
-
-export interface UseBarChartOptions {
-  minRange: number;
-  maxRange: number;
-  xScale?: number;
-  unit?: string;
-  styleConfig?: BarChartStyles;
-  animate?: boolean;
-}
-
-export function useBarChart({
-  minRange,
-  maxRange,
-  xScale,
-  unit = '',
-  styleConfig,
-  animate = false,
-}: UseBarChartOptions) {
-  return useMemo(
-    () => ({
-      minRange,
-      maxRange,
-      xScale: xScale ?? Math.ceil((maxRange - minRange) / 5),
-      unit,
-      styleConfig: {
-        ...defaultStyleConfig,
-        ...styleConfig,
-      },
-      animate,
-    }),
-    [minRange, maxRange, xScale, unit, styleConfig, animate]
-  );
-}

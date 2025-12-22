@@ -1,4 +1,4 @@
-import { BarProps, BarChartProps } from '../types';
+import { BarChartProps, BarProps } from '../types';
 
 export const numDigits = ({ num }: { num: number }) => {
   return Math.max(Math.floor(Math.log10(Math.abs(num))), 0) + 1;
@@ -14,7 +14,13 @@ export const columnBaseSize = ({ experience = 3 }: { experience?: number }) => {
   };
 };
 
-export const calculatePercent = ({ value, total }: { value: number; total: number }) => {
+export const calculatePercent = ({
+  value,
+  total,
+}: {
+  value: number;
+  total: number;
+}) => {
   return (value / total) * 100;
 };
 
@@ -44,7 +50,10 @@ export const calculateTicksAndRange = ({
   maxPoint: number;
 }): [number, number, number] => {
   const range = niceNum({ range: maxPoint - minPoint, roundDown: false });
-  const tickSpacing = niceNum({ range: range / (maxTicks - 1), roundDown: true });
+  const tickSpacing = niceNum({
+    range: range / (maxTicks - 1),
+    roundDown: true,
+  });
   const niceMin = Math.floor(minPoint / tickSpacing) * tickSpacing;
   const niceMax = Math.ceil(maxPoint / tickSpacing) * tickSpacing;
   const tickCount = range / tickSpacing;
@@ -57,7 +66,13 @@ export const calculateTicksAndRange = ({
  * Takes the ceiling if round = false.
  * A nice number is a simple decimal number, for example if a number is 1234, a nice number would be 1000 or 2000.
  */
-export const niceNum = ({ range, roundDown }: { range: number; roundDown: boolean }): number => {
+export const niceNum = ({
+  range,
+  roundDown,
+}: {
+  range: number;
+  roundDown: boolean;
+}): number => {
   const exponent = Math.floor(Math.log10(range));
   const fraction = range / 10 ** exponent;
 
@@ -176,3 +191,7 @@ export const calculatePositionPercent = ({
   const adjustedValue = value - min;
   return (adjustedValue / range) * 100;
 };
+
+// Re-export hooks
+export { useBarChart, useBarChartContext, useLabelPositions } from './hooks';
+export type { LabelPosition, UseBarChartOptions } from './hooks';

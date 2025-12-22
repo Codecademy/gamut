@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 
 import { Box } from '../Box';
-import { BarChartProvider, useBarChart } from './BarChartProvider';
-import { BarRow } from './BarRow';
-import { GridLines } from './GridLines';
-import { ScaleChartHeader } from './ScaleChartHeader';
+import { Bar } from './Bar/Bar';
+import { BarChartProvider } from './BarChartProvider';
+import { GridLines } from './layout/GridLines';
+import { ScaleChartHeader } from './layout/ScaleChartHeader';
 import { BarChartProps } from './types';
-import { sortBars } from './utils';
+import { sortBars, useBarChart } from './utils';
 
 export const BarChart: React.FC<BarChartProps> = ({
   'aria-label': ariaLabel,
@@ -51,7 +51,7 @@ export const BarChart: React.FC<BarChartProps> = ({
         {/* Chart area with grid lines and bars */}
         <Box position="relative" width="100%">
           {/* Grid lines (hidden on small screens) */}
-          <GridLines tickCount={tickCount} min={minRange} max={maxRange} />
+          <GridLines max={maxRange} min={minRange} tickCount={tickCount} />
 
           {/* Bar list */}
           <Box
@@ -62,9 +62,12 @@ export const BarChart: React.FC<BarChartProps> = ({
             m={0}
             p={0}
           >
-            {sortedBars.map((bar, index) => (
-              <BarRow index={index} key={`${bar.yLabel}-${index}`} {...bar} />
-            ))}
+            {sortedBars.map((bar, index) => {
+              const uniqueKey = `${bar.yLabel}-${bar.seriesOneValue}-${
+                bar.seriesTwoValue ?? ''
+              }`;
+              return <Bar index={index} key={uniqueKey} {...bar} />;
+            })}
           </Box>
         </Box>
       </Box>

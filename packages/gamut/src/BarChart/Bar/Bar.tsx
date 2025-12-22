@@ -2,17 +2,20 @@ import { css, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { forwardRef, MouseEvent, MutableRefObject } from 'react';
 
-import { FlexBox } from '../Box';
-import { Text } from '../Typography';
+import { FlexBox } from '../../Box';
+import { Text } from '../../Typography';
 import {
   BackgroundBar,
   BarWrapper,
   ForegroundBar,
   minBarWidth,
-} from './Bar/elements';
-import { useBarChartContext } from './BarChartProvider';
-import { BarProps } from './types';
-import { calculateBarWidth, getValuesSummary } from './utils';
+} from './elements';
+import { BarProps } from '../types';
+import {
+  calculateBarWidth,
+  getValuesSummary,
+  useBarChartContext,
+} from '../utils';
 
 const rowBaseStyles = css({
   display: 'flex',
@@ -57,7 +60,7 @@ export interface BarRowProps extends BarProps {
   index?: number;
 }
 
-export const BarRow = forwardRef<
+export const Bar = forwardRef<
   HTMLDivElement | HTMLButtonElement | HTMLAnchorElement,
   BarRowProps
 >(
@@ -203,3 +206,4 @@ export const BarRow = forwardRef<
     );
   }
 );
+
