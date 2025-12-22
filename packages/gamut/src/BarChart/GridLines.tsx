@@ -2,11 +2,12 @@ import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
 import { Box } from '../Box';
+import { calculatePositionPercent, getLabel } from './utils';
 
 const GridLineContainer = styled(Box)(
   css({
     bottom: 0,
-    display: { _: 'none', sm: 'flex' },
+    display: { _: 'none', sm: 'block' },
     left: '200px',
     pointerEvents: 'none',
     position: 'absolute',
@@ -19,33 +20,38 @@ const GridLineContainer = styled(Box)(
   })
 );
 
-const GridLineWrapper = styled(Box)(
-  css({
-    flex: 1,
-    display: 'flex',
-    height: '100%',
-  })
-);
-
-const GridLine = styled(Box)(
+const GridLine = styled(Box)<{ positionPercent: number }>(
   css({
     borderLeft: 1,
     borderColorLeft: 'background-disabled',
     height: '100%',
+    position: 'absolute',
+    top: 0,
     width: 0,
+  }),
+  ({ positionPercent }) => ({
+    left: `${positionPercent}%`,
+    transform: 'translateX(-50%)',
   })
 );
 
 export interface GridLinesProps {
   tickCount: number;
+  min: number;
+  max: number;
 }
 
-export const GridLines: React.FC<GridLinesProps> = ({ tickCount }) => {
-  const lines = Array.from({ length: tickCount - 2 }, (_, i) => {
+export const GridLines: React.FC<GridLinesProps> = ({ tickCount, min, max }) => {
+  const lines = Array.from({ length: tickCount }, (_, i) => {
+    const labelValue = getLabel({ labelCount: tickCount, labelIndex: i, min, max });
+    const positionPercent = calculatePositionPercent({ value: labelValue, min, max });
+
     return (
-      <GridLineWrapper aria-hidden justifyContent="center" key={i}>
-        <GridLine />
-      </GridLineWrapper>
+      <GridLine
+        aria-hidden
+        key={i}
+        positionPercent={positionPercent}
+      />
     );
   });
 

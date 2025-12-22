@@ -1,10 +1,14 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
-import { Box, FlexBox } from '../Box';
+import { Box } from '../Box';
 import { Text } from '../Typography';
 import { useBarChartContext } from './BarChartProvider';
-import { formatNumberUSCompact, getLabel } from './utils';
+import {
+  calculatePositionPercent,
+  formatNumberUSCompact,
+  getLabel,
+} from './utils';
 
 export interface ScaleChartHeaderProps {
   /** Minimum value on the scale */
@@ -15,16 +19,34 @@ export interface ScaleChartHeaderProps {
   labelCount: number;
 }
 
-const StyledLabelText = styled(Text)(
+const StyledLabelText = styled(Text)<{ positionPercent: number; textAlign: 'left' | 'center' | 'right' }>(
   css({
-    flex: 1,
-  })
+    position: 'absolute',
+    whiteSpace: 'nowrap',
+    margin: 0,
+    padding: 0,
+  }),
+  ({ positionPercent, textAlign }) => {
+    let transform = '';
+    if (textAlign === 'left') {
+      transform = 'translateX(0)';
+    } else if (textAlign === 'right') {
+      transform = 'translateX(-100%)';
+    } else {
+      transform = 'translateX(-50%)';
+    }
+    return {
+      left: `${positionPercent}%`,
+      transform,
+    };
+  }
 );
 
-const StyledHeaderContainer = styled(FlexBox)(
+const StyledHeaderContainer = styled(Box)(
   css({
     marginLeft: '200px',
     paddingRight: '60px',
+    position: 'relative',
     width: 'calc(100% - 200px - 60px)',
   })
 );
@@ -37,32 +59,31 @@ export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
   const { styleConfig } = useBarChartContext();
 
   const scaleLabels = Array.from({ length: labelCount }, (_, i) => {
-    const isFirst = i === 0;
-    const isLast = i === labelCount - 1;
-    const textAlign = isFirst ? 'left' : isLast ? 'right' : 'center';
+    const labelValue = getLabel({ labelCount, labelIndex: i, min, max });
+    const positionPercent = calculatePositionPercent({ value: labelValue, min, max });
 
     return (
       <StyledLabelText
         data-testid="chart-header-label"
         key={i}
-        textAlign={textAlign}
+        positionPercent={positionPercent}
+        textAlign="center"
         textColor={styleConfig.textColor}
         variant="p-small"
       >
         {formatNumberUSCompact({
-          num: getLabel({ labelCount, labelIndex: i, min, max }),
+          num: labelValue,
         })}
       </StyledLabelText>
     );
   });
 
   return (
-    <Box bg="red" width={1}>
+    <Box width={1} mb={12}>
       <StyledHeaderContainer
         aria-hidden="true"
-        display={{ _: 'none', sm: 'flex' }}
-        justifyContent="space-between"
-        mb={8}
+        display={{ _: 'none', sm: 'block' }}
+        minHeight="24px"
       >
         {scaleLabels}
       </StyledHeaderContainer>

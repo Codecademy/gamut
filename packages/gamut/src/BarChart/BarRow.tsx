@@ -18,9 +18,9 @@ const rowBaseStyles = css({
   display: 'flex',
   alignItems: 'center',
   width: '100%',
-  gap: 16,
+  gap: 0,
   py: 8,
-  px: 16,
+  pr: 16,
   bg: 'transparent',
   border: 'none',
   textDecoration: 'none',
@@ -112,6 +112,7 @@ export const BarRow = forwardRef<
           flexShrink={0}
           gap={8}
           minWidth="200px"
+          pl={16}
         >
           {Icon && <Icon size={16} />}
           <Text fontWeight="bold" truncate="ellipsis" truncateLines={1}>
@@ -144,7 +145,7 @@ export const BarRow = forwardRef<
           alignItems="center"
           flexShrink={0}
           justifyContent="flex-end"
-          minWidth={{ _: 40, sm: 60 }}
+          minWidth="min-content"
         >
           <Text color={styleConfig.textColor} variant="p-small">
             {displayValue.toLocaleString()}

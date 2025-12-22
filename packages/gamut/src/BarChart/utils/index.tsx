@@ -157,3 +157,22 @@ export const getLabel = ({
   const incrementalDecimal = labelIndex / (labelCount - 1);
   return Math.floor(min + incrementalDecimal * (max - min));
 };
+
+/**
+ * Calculates the percentage position for a given value within a range
+ * Returns a value between 0 and 100 representing the position percentage
+ */
+export const calculatePositionPercent = ({
+  value,
+  min,
+  max,
+}: {
+  value: number;
+  min: number;
+  max: number;
+}): number => {
+  if (max === min) return 0;
+  const range = max - min;
+  const adjustedValue = value - min;
+  return (adjustedValue / range) * 100;
+};

@@ -51,7 +51,7 @@ export const BarChart: React.FC<BarChartProps> = ({
         {/* Chart area with grid lines and bars */}
         <Box position="relative" width="100%">
           {/* Grid lines (hidden on small screens) */}
-          <GridLines tickCount={tickCount} />
+          <GridLines tickCount={tickCount} min={minRange} max={maxRange} />
 
           {/* Bar list */}
           <Box
