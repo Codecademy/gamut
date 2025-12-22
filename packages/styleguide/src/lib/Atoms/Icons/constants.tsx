@@ -38,7 +38,6 @@ export const VENDOR_ICONS = pick(
     'ReactIcon',
     'RedditIcon',
     'RedditSolidIcon',
-    'SkillsoftIcon',
     'SlackIcon',
     'SpotifyIcon',
     'TikTokIcon',
