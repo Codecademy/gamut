@@ -44,10 +44,35 @@ const StyledLabelText = styled(Text)<{ positionPercent: number; textAlign: 'left
 
 const StyledHeaderContainer = styled(Box)(
   css({
-    marginLeft: '200px',
-    paddingRight: '60px',
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+    gap: 0,
     position: 'relative',
-    width: 'calc(100% - 200px - 60px)',
+  })
+);
+
+const HeaderLeftSpacer = styled(Box)(
+  css({
+    flexShrink: 0,
+    minWidth: '200px',
+    pl: 16,
+  })
+);
+
+const HeaderLabelArea = styled(Box)(
+  css({
+    flex: 1,
+    position: 'relative',
+    minHeight: '24px',
+  })
+);
+
+const HeaderRightSpacer = styled(Box)(
+  css({
+    flexShrink: 0,
+    minWidth: 'min-content',
+    pr: 16,
   })
 );
 
@@ -56,7 +81,7 @@ export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
   min,
   max,
 }) => {
-  const { styleConfig } = useBarChartContext();
+  const { styleConfig, unit } = useBarChartContext();
 
   const scaleLabels = Array.from({ length: labelCount }, (_, i) => {
     const labelValue = getLabel({ labelCount, labelIndex: i, min, max });
@@ -78,14 +103,27 @@ export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
     );
   });
 
+  // Ghost element to match the width of XP values column
+  const ghostValue = max.toLocaleString() + (unit ? ` ${unit}` : '');
+
   return (
     <Box width={1} mb={12}>
       <StyledHeaderContainer
         aria-hidden="true"
-        display={{ _: 'none', sm: 'block' }}
-        minHeight="24px"
+        display={{ _: 'none', sm: 'flex' }}
       >
-        {scaleLabels}
+        <HeaderLeftSpacer />
+        <HeaderLabelArea>{scaleLabels}</HeaderLabelArea>
+        <HeaderRightSpacer>
+          <Text
+            aria-hidden="true"
+            color={styleConfig.textColor}
+            variant="p-small"
+            visibility="hidden"
+          >
+            {ghostValue}
+          </Text>
+        </HeaderRightSpacer>
       </StyledHeaderContainer>
     </Box>
   );

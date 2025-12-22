@@ -21,6 +21,7 @@ const rowBaseStyles = css({
   gap: 0,
   py: 8,
   pr: 16,
+  position: 'relative',
   bg: 'transparent',
   border: 'none',
   textDecoration: 'none',
@@ -146,6 +147,7 @@ export const BarRow = forwardRef<
           flexShrink={0}
           justifyContent="flex-end"
           minWidth="min-content"
+          pr={16}
         >
           <Text color={styleConfig.textColor} variant="p-small">
             {displayValue.toLocaleString()}

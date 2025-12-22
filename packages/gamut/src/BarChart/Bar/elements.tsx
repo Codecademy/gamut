@@ -48,6 +48,5 @@ export const BarWrapper = styled(Box)(
     flex: 1,
     height: { _: 12, sm: 20 },
     borderRadius: { _: 'md', sm: 'xl' },
-    width: '100%',
   })
 );
