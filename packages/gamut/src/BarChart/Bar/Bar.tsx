@@ -4,18 +4,18 @@ import { forwardRef, MouseEvent, MutableRefObject } from 'react';
 
 import { FlexBox } from '../../Box';
 import { Text } from '../../Typography';
-import {
-  BackgroundBar,
-  BarWrapper,
-  ForegroundBar,
-  minBarWidth,
-} from './elements';
 import { BarProps } from '../types';
 import {
   calculateBarWidth,
   getValuesSummary,
   useBarChartContext,
 } from '../utils';
+import {
+  BackgroundBar,
+  BarWrapper,
+  ForegroundBar,
+  minBarWidth,
+} from './elements';
 
 const rowBaseStyles = css({
   display: 'flex',
@@ -98,6 +98,8 @@ export const Bar = forwardRef<
 
     const bgWidthStr = `${Math.max(minBarWidth, backgroundBarWidth)}%`;
     const fgWidthStr = `${Math.max(minBarWidth, foregroundBarWidth)}%`;
+
+    console.log('backgroundBarWidth', backgroundBarWidth, maxRange);
 
     const valuesSummary = getValuesSummary({
       yLabel,
@@ -206,4 +208,3 @@ export const Bar = forwardRef<
     );
   }
 );
-

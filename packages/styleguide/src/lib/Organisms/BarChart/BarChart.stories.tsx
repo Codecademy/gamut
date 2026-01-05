@@ -25,7 +25,7 @@ type Story = StoryObj<typeof BarChart>;
 // Sample data for non-stacked (simple) bars
 const simpleBarData: BarProps[] = [
   { yLabel: 'Python', seriesOneValue: 1500 },
-  { yLabel: 'JavaScript', seriesOneValue: 1200 },
+  { yLabel: 'JavaScript', seriesOneValue: 2000 },
   { yLabel: 'HTML/CSS', seriesOneValue: 800 },
   { yLabel: 'SQL', seriesOneValue: 600 },
   { yLabel: 'React', seriesOneValue: 450 },
@@ -34,7 +34,7 @@ const simpleBarData: BarProps[] = [
 // Sample data for stacked bars (with seriesTwoValue)
 const stackedBarData: BarProps[] = [
   { yLabel: 'Python', seriesOneValue: 200, seriesTwoValue: 1500 },
-  { yLabel: 'JavaScript', seriesOneValue: 150, seriesTwoValue: 1200 },
+  { yLabel: 'JavaScript', seriesOneValue: 1800, seriesTwoValue: 2000 },
   { yLabel: 'HTML/CSS', seriesOneValue: 100, seriesTwoValue: 800 },
   { yLabel: 'SQL', seriesOneValue: 50, seriesTwoValue: 600 },
   { yLabel: 'React', seriesOneValue: 75, seriesTwoValue: 450 },
@@ -51,7 +51,7 @@ const barDataWithIcons: BarProps[] = [
   {
     yLabel: 'JavaScript',
     seriesOneValue: 150,
-    seriesTwoValue: 1200,
+    seriesTwoValue: 2000,
     icon: TerminalIcon,
   },
   {
