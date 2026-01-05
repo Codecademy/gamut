@@ -39,7 +39,7 @@ export const shadowVariants = variant({
     patternLeft: {},
     patternRight: {},
     outline: {
-      boxShadow: `-${SHADOW_OFFSET}px ${SHADOW_OFFSET}px ${theme.colors['background-current']}, -${SHADOW_OFFSET}px ${SHADOW_OFFSET}px 0 -100px ${theme.colors['border-primary']}`,
+      boxShadow: `-${SHADOW_OFFSET}px ${SHADOW_OFFSET}px ${theme.colors['background-current']}, -${SHADOW_OFFSET}px ${SHADOW_OFFSET}px 0 1px ${theme.colors['border-primary']}`,
     },
   },
 });
