@@ -4,6 +4,7 @@ import { forwardRef, MouseEvent, MutableRefObject } from 'react';
 
 import { FlexBox } from '../../Box';
 import { Text } from '../../Typography';
+import { rightSpacerWidth } from '../layout/VerticalSpacer';
 import { BarProps } from '../types';
 import {
   calculateBarWidth,
@@ -99,8 +100,6 @@ export const Bar = forwardRef<
     const bgWidthStr = `${Math.max(minBarWidth, backgroundBarWidth)}%`;
     const fgWidthStr = `${Math.max(minBarWidth, foregroundBarWidth)}%`;
 
-    console.log('backgroundBarWidth', backgroundBarWidth, maxRange);
-
     const valuesSummary = getValuesSummary({
       yLabel,
       seriesOneValue,
@@ -151,8 +150,7 @@ export const Bar = forwardRef<
           alignItems="center"
           flexShrink={0}
           justifyContent="flex-end"
-          minWidth="min-content"
-          pr={16}
+          minWidth={rightSpacerWidth - 16}
         >
           <Text color={styleConfig.textColor} variant="p-small">
             {displayValue.toLocaleString()}

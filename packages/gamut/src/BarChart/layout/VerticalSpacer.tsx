@@ -4,6 +4,8 @@ import { ReactNode } from 'react';
 
 import { Box } from '../../Box';
 
+export const rightSpacerWidth = 160;
+
 const SpacerContainer = styled(Box)(
   css({
     display: 'flex',
@@ -32,7 +34,7 @@ const ContentArea = styled(Box)(
 const RightSpacer = styled(Box)(
   css({
     flexShrink: 0,
-    width: '160px',
+    width: rightSpacerWidth,
   })
 );
 
@@ -53,4 +55,3 @@ export const VerticalSpacer: React.FC<VerticalSpacerProps> = ({
     </SpacerContainer>
   );
 };
-
