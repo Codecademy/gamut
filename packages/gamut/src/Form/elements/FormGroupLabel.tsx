@@ -1,7 +1,7 @@
 import { states, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, useId } from 'react';
 import * as React from 'react';
 
 import { FlexBox } from '../..';
@@ -62,6 +62,13 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   size,
   ...rest
 }) => {
+  const labelId = useId();
+  const isStringLabel = typeof children === 'string';
+  const shouldLabelInfoTip =
+    (isStringLabel || infotip?.labelledByFieldLabel) &&
+    !infotip?.ariaLabel &&
+    !infotip?.ariaLabelledby;
+
   return (
     <FlexBox justifyContent="space-between" mb={4}>
       <Label
@@ -70,6 +77,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         className={className}
         disabled={disabled}
         htmlFor={htmlFor}
+        id={infotip && shouldLabelInfoTip ? labelId : undefined}
         size={size}
       >
         {children}
@@ -82,7 +90,12 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
             '\u00A0(optional)'
           ))}
       </Label>
-      {infotip && <InfoTip {...infotip} />}
+      {infotip && (
+        <InfoTip
+          {...infotip}
+          ariaLabelledby={shouldLabelInfoTip ? labelId : infotip.ariaLabelledby}
+        />
+      )}
     </FlexBox>
   );
 };
