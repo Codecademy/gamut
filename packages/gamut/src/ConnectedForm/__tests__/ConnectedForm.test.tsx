@@ -393,7 +393,7 @@ describe('ConnectedFormGroup infotip accessibility', () => {
   it('automatically labels InfoTip button by the field label when label is a string', () => {
     const { view } = renderWithInfotip({ infotip: { info } });
 
-    view.getByRole('button', { name: new RegExp(label) });
+    view.getByRole('button', { name: `${label}\u00A0(optional)` });
   });
 
   it('uses explicit ariaLabel when provided', () => {

@@ -343,6 +343,7 @@ export const InfoTipAutoLabelling: Story = {
         type: 'email',
         infotip: {
           info: 'We will never share your email with third parties.',
+          placement: 'floating',
         },
       },
     ],

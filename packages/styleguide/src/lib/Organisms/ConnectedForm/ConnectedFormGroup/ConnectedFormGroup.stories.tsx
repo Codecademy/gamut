@@ -134,7 +134,10 @@ export const InfoTipAutoLabelling: Story = {
     >
       <ConnectedFormGroup
         field={{ component: ConnectedInput, type: 'email' }}
-        infotip={{ info: 'We will never share your email with third parties.' }}
+        infotip={{
+          info: 'We will never share your email with third parties.',
+          placement: 'floating',
+        }}
         label="Email address"
         name="email"
       />
@@ -160,6 +163,7 @@ export const InfoTipWithReactNodeLabel: Story = {
       <ConnectedFormGroup
         field={{ component: ConnectedInput }}
         infotip={{
+          alignment: 'top-left',
           info: 'Choose a unique username between 3-20 characters.',
           labelledByFieldLabel: true,
         }}

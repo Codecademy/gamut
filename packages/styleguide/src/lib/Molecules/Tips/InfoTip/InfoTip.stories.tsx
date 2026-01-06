@@ -107,7 +107,6 @@ export const AriaLabel: Story = {
           I am some helpful yet concise text that needs more explanation
         </Text>
         <InfoTip
-          {...args}
           alignment="bottom-left"
           ariaLabelledby="custom-info-id"
           info="I am clarifying information related to the concise text."
