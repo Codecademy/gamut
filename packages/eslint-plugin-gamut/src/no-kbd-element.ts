@@ -4,10 +4,7 @@ export default createRule({
   create(context) {
     return {
       JSXOpeningElement(node) {
-        if (
-          node.name.type === 'JSXIdentifier' &&
-          node.name.name === 'kbd'
-        ) {
+        if (node.name.type === 'JSXIdentifier' && node.name.name === 'kbd') {
           context.report({
             messageId: 'noKbdElement',
             node,
@@ -19,7 +16,8 @@ export default createRule({
   defaultOptions: [],
   meta: {
     docs: {
-      description: 'Intended to be used in Storybook docs to disallow use of the `kbd` HTML element in favor of the `KeyboardKey` component for styling purposes.',
+      description:
+        'Intended to be used in Storybook docs to disallow use of the `kbd` HTML element in favor of the `KeyboardKey` component for styling purposes.',
       recommended: 'error',
     },
     messages: {
@@ -30,4 +28,3 @@ export default createRule({
   },
   name: 'no-kbd-element',
 });
-

@@ -54,4 +54,3 @@ ruleTester.run('no-kbd-element', rule, {
     },
   ],
 });
-
