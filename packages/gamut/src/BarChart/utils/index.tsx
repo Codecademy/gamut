@@ -1,4 +1,4 @@
-import { BarChartProps, BarProps } from '../types';
+import { BarChartProps, BarProps } from '../shared/types';
 
 export const numDigits = ({ num }: { num: number }) => {
   return Math.max(Math.floor(Math.log10(Math.abs(num))), 0) + 1;

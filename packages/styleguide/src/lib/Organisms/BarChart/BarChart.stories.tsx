@@ -35,9 +35,9 @@ const simpleBarData: BarProps[] = [
 const stackedBarData: BarProps[] = [
   { yLabel: 'Python', seriesOneValue: 200, seriesTwoValue: 1500 },
   { yLabel: 'JavaScript', seriesOneValue: 1800, seriesTwoValue: 2000 },
-  { yLabel: 'HTML/CSS', seriesOneValue: 100, seriesTwoValue: 800 },
-  { yLabel: 'SQL', seriesOneValue: 50, seriesTwoValue: 600 },
-  { yLabel: 'React', seriesOneValue: 75, seriesTwoValue: 450 },
+  { yLabel: 'HTML/CSS', seriesOneValue: 600, seriesTwoValue: 800 },
+  { yLabel: 'SQL', seriesOneValue: 550, seriesTwoValue: 600 },
+  { yLabel: 'React', seriesOneValue: 300, seriesTwoValue: 450 },
 ];
 
 // Sample data with icons

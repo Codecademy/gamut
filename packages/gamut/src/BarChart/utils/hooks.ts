@@ -1,7 +1,7 @@
 import { useContext, useMemo } from 'react';
 
 import { BarChartContext, BarChartContextProps } from '../BarChartProvider';
-import { BarChartStyles } from '../types';
+import { BarChartStyles } from '../shared/types';
 import { calculatePositionPercent, getLabel } from './index';
 
 export interface LabelPosition {
@@ -75,4 +75,3 @@ export function useBarChart({
     [minRange, maxRange, xScale, unit, styleConfig, animate]
   );
 }
-

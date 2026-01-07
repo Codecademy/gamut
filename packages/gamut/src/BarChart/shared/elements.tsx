@@ -4,7 +4,20 @@ import { motion } from 'framer-motion';
 
 import { Box } from '../../Box';
 
-export const minBarWidth = 8;
+/**
+ * Container for bars with responsive height
+ */
+export const BarWrapper = styled(Box)(
+  css({
+    display: 'flex',
+    overflow: 'hidden',
+    position: 'relative',
+    alignItems: 'center',
+    flex: 1,
+    height: { _: 12, sm: 20 },
+    borderRadius: { _: 'md', sm: 'xl' },
+  })
+);
 
 const baseBarStyles = {
   alignItems: 'center',
@@ -28,7 +41,6 @@ export const BackgroundBar = styled(motion.create(Box))(
 
 /**
  * Foreground bar for stacked display (progress value)
- * Color should be passed via bg prop from parent
  */
 export const ForegroundBar = styled(motion.create(Box))(
   css({
@@ -36,17 +48,11 @@ export const ForegroundBar = styled(motion.create(Box))(
   })
 );
 
-/**
- * Container for bars with responsive height
- */
-export const BarWrapper = styled(Box)(
+export const BarsList = styled('ul')(
   css({
-    display: 'flex',
-    overflow: 'hidden',
-    position: 'relative',
-    alignItems: 'center',
-    flex: 1,
-    height: { _: 12, sm: 20 },
-    borderRadius: { _: 'md', sm: 'xl' },
+    listStyle: 'none',
+    '& li:nth-of-type(even)': {
+      bg: 'background-selected',
+    },
   })
 );

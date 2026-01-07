@@ -1,2 +1,2 @@
 // Re-export bar elements
-export * from './elements';
+export * from '../shared/elements';

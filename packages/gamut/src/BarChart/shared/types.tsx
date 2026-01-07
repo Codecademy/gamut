@@ -1,8 +1,8 @@
-import { ColorAlias } from '@codecademy/gamut-styles';
 import { GamutIconProps } from '@codecademy/gamut-icons';
+import { ColorAlias } from '@codecademy/gamut-styles';
 import { HTMLProps } from 'react';
 
-import { ButtonProps } from '../Button';
+import { ButtonProps } from '../../Button';
 
 type BarChartAriaLabel = {
   'aria-label': string;
@@ -32,7 +32,7 @@ export type BarProps = {
   seriesOneValue: number;
   /** The background/total bar value (optional - creates stacked effect when provided) */
   seriesTwoValue?: number;
-  /** Optional icon to display next to the label */
+  /** Optional gamut-icon to display next to the label */
   icon?: React.ComponentType<GamutIconProps>;
   /** Click handler - makes row interactive as a button */
   onClick?: ButtonProps['onClick'];

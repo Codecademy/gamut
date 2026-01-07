@@ -4,19 +4,14 @@ import { forwardRef, MouseEvent, MutableRefObject } from 'react';
 
 import { FlexBox } from '../../Box';
 import { Text } from '../../Typography';
-import { rightSpacerWidth } from '../layout/VerticalSpacer';
-import { BarProps } from '../types';
+import { BackgroundBar, BarWrapper, ForegroundBar } from '../shared/elements';
+import { minBarWidth, rightSpacerWidth } from '../shared/styles';
+import { BarProps } from '../shared/types';
 import {
   calculateBarWidth,
   getValuesSummary,
   useBarChartContext,
 } from '../utils';
-import {
-  BackgroundBar,
-  BarWrapper,
-  ForegroundBar,
-  minBarWidth,
-} from './elements';
 
 const rowBaseStyles = css({
   display: 'flex',
@@ -115,9 +110,7 @@ export const Bar = forwardRef<
           alignItems="center"
           color={styleConfig.textColor}
           flexShrink={0}
-          gap={8}
           minWidth="200px"
-          pl={16}
         >
           {Icon && <Icon size={16} />}
           <Text fontWeight="bold" truncate="ellipsis" truncateLines={1}>

@@ -3,8 +3,7 @@ import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 
 import { Box } from '../../Box';
-
-export const rightSpacerWidth = 160;
+import { rightSpacerWidth } from '../shared/styles';
 
 const SpacerContainer = styled(Box)(
   css({

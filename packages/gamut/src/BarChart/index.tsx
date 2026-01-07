@@ -5,8 +5,9 @@ import { Bar } from './Bar/Bar';
 import { BarChartProvider } from './BarChartProvider';
 import { GridLines } from './layout/GridLines';
 import { ScaleChartHeader } from './layout/ScaleChartHeader';
-import { BarChartProps } from './types';
+import { BarChartProps } from './shared/types';
 import { sortBars, useBarChart } from './utils';
+import { BarsList } from './Bar';
 
 export const BarChart: React.FC<BarChartProps> = ({
   'aria-label': ariaLabel,
@@ -54,25 +55,16 @@ export const BarChart: React.FC<BarChartProps> = ({
           <GridLines max={maxRange} min={minRange} tickCount={tickCount} />
 
           {/* Bar list */}
-          <Box
-            aria-label={ariaLabel}
-            aria-labelledby={ariaLabelledBy}
-            as="ul"
-            listStyle="none"
-            m={0}
-            p={0}
-          >
+          <BarsList aria-label={ariaLabel} aria-labelledby={ariaLabelledBy}>
             {sortedBars.map((bar, index) => {
               const uniqueKey = `${bar.yLabel}-${bar.seriesOneValue}-${
                 bar.seriesTwoValue ?? ''
               }`;
               return <Bar index={index} key={uniqueKey} {...bar} />;
             })}
-          </Box>
+          </BarsList>
         </Box>
       </Box>
     </BarChartProvider>
   );
 };
-
-export * from './types';

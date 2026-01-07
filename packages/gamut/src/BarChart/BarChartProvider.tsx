@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import { BarChartStyles } from './types';
+import { BarChartStyles } from './shared/types';
 
 export interface BarChartContextProps {
   minRange: number;
