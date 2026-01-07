@@ -17,7 +17,7 @@ const SpacerContainer = styled(Box)(
 const LeftSpacer = styled(Box)(
   css({
     flexShrink: 0,
-    minWidth: labelAreaTotalWidth,
+    minWidth: { _: 200, sm: labelAreaTotalWidth },
     pl: 16,
   })
 );

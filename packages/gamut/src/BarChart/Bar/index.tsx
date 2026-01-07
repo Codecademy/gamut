@@ -1,16 +1,14 @@
+import { MiniArrowRightIcon } from '@codecademy/gamut-icons';
 import { forwardRef, MouseEvent, MutableRefObject } from 'react';
 
 import { FlexBox } from '../../Box';
 import { Text } from '../../Typography';
-import {
-  labelAreaTotalWidth,
-  minBarWidth,
-  rightSpacerWidth,
-} from '../shared/styles';
+import { minBarWidth, rightSpacerWidth } from '../shared/styles';
 import { BarProps } from '../shared/types';
 import {
   calculateBarWidth,
   getValuesSummary,
+  useBarBorderColor,
   useBarChartContext,
 } from '../utils';
 import {
@@ -47,8 +45,17 @@ export const Bar = forwardRef<
     const { minRange, maxRange, unit, styleConfig, animate } =
       useBarChartContext();
 
+    const getBorderColor = useBarBorderColor();
+
     const isStacked = seriesTwoValue !== undefined;
     const displayValue = isStacked ? seriesTwoValue : seriesOneValue;
+
+    const backgroundBorderColor = getBorderColor(
+      styleConfig.backgroundBarColor
+    );
+    const foregroundBorderColor = isStacked
+      ? getBorderColor(styleConfig.foregroundBarColor)
+      : undefined;
 
     const backgroundBarWidth = calculateBarWidth({
       value: displayValue,
@@ -83,7 +90,7 @@ export const Bar = forwardRef<
           color={styleConfig.textColor}
           flexShrink={0}
           pr={24}
-          width={labelAreaTotalWidth - barListItemPadding}
+          width={{ _: 184, sm: 224 }}
         >
           {Icon && <Icon mr={12 as any} size={24} />}
           <Text fontWeight="bold" truncate="ellipsis" truncateLines={1}>
@@ -95,6 +102,7 @@ export const Bar = forwardRef<
           <BackgroundBar
             animate={animate ? { width: bgWidthStr } : undefined}
             bg={styleConfig.backgroundBarColor}
+            borderColor={backgroundBorderColor}
             data-testid="background-bar"
             initial={animate ? { width: '0%' } : undefined}
             transition={{ duration: 0.5, delay: animationDelay }}
@@ -104,6 +112,7 @@ export const Bar = forwardRef<
             <ForegroundBar
               animate={animate ? { width: fgWidthStr } : undefined}
               bg={styleConfig.foregroundBarColor}
+              borderColor={foregroundBorderColor}
               data-testid="foreground-bar"
               initial={animate ? { width: '0%' } : undefined}
               transition={{ duration: 0.5, delay: animationDelay + 0.25 }}
@@ -119,6 +128,19 @@ export const Bar = forwardRef<
           pl={24}
           width={rightSpacerWidth - barListItemPadding}
         >
+          {isStacked && (
+            <>
+              <Text color="text-secondary" variant="p-small">
+                {seriesTwoValue.toLocaleString()}
+                {unit && ` ${unit}`}
+              </Text>
+              <MiniArrowRightIcon
+                color="text-secondary"
+                mx={12 as any}
+                size={16}
+              />
+            </>
+          )}
           <Text color={styleConfig.textColor} variant="p-small">
             {displayValue.toLocaleString()}
             {unit && ` ${unit}`}

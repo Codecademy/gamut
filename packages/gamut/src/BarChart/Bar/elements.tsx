@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 
 import { Box } from '../../Box';
 
+export const barListItemPadding = 16;
+
 const rowBaseStyles = css({
   display: 'flex',
   alignItems: 'center',
@@ -14,6 +16,7 @@ const rowBaseStyles = css({
   border: 'none',
   textDecoration: 'none',
   cursor: 'inherit',
+  p: barListItemPadding,
   '&:focus': {
     outline: 'none',
   },
@@ -51,15 +54,13 @@ export const BarWrapper = styled(Box)(
     position: 'relative',
     alignItems: 'center',
     flex: 1,
-    height: { _: 12, sm: 20 },
+    height: 20,
     borderRadius: { _: 'md', sm: 'xl' },
   })
 );
 
 const baseBarStyles = {
   alignItems: 'center',
-  border: 1,
-  borderColor: 'border-primary',
   borderRadius: 'inherit',
   display: 'flex',
   height: '100%',
@@ -69,28 +70,28 @@ const baseBarStyles = {
 
 /**
  * Animated bar element for background/total value display
+ * This bar has the border as it's the outer container
  */
 export const BackgroundBar = styled(motion.create(Box))(
   css({
     ...baseBarStyles,
+    borderWidth: '1px',
+    borderStyle: 'solid',
   })
 );
 
 /**
  * Foreground bar for stacked display (progress value)
+ * This bar also has a border with contrast-based color
  */
 export const ForegroundBar = styled(motion.create(Box))(
   css({
     ...baseBarStyles,
+    borderWidth: '1px',
+    borderStyle: 'solid',
   })
 );
 
-export const barListItemPadding = 16;
-
 export const BarListItem = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <Box as="li" p={barListItemPadding}>
-      {children}
-    </Box>
-  );
+  return <Box as="li">{children}</Box>;
 };
