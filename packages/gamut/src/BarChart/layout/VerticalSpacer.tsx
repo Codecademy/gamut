@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 
 import { Box } from '../../Box';
-import { rightSpacerWidth } from '../shared/styles';
+import { labelAreaTotalWidth, rightSpacerWidth } from '../shared/styles';
 
 const SpacerContainer = styled(Box)(
   css({
@@ -17,7 +17,7 @@ const SpacerContainer = styled(Box)(
 const LeftSpacer = styled(Box)(
   css({
     flexShrink: 0,
-    minWidth: '200px',
+    minWidth: labelAreaTotalWidth,
     pl: 16,
   })
 );

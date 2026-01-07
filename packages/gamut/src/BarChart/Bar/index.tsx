@@ -2,7 +2,11 @@ import { forwardRef, MouseEvent, MutableRefObject } from 'react';
 
 import { FlexBox } from '../../Box';
 import { Text } from '../../Typography';
-import { minBarWidth, rightSpacerWidth } from '../shared/styles';
+import {
+  labelAreaTotalWidth,
+  minBarWidth,
+  rightSpacerWidth,
+} from '../shared/styles';
 import { BarProps } from '../shared/types';
 import {
   calculateBarWidth,
@@ -11,6 +15,8 @@ import {
 } from '../utils';
 import {
   BackgroundBar,
+  BarListItem,
+  barListItemPadding,
   BarWrapper,
   ForegroundBar,
   RowAnchor,
@@ -76,9 +82,10 @@ export const Bar = forwardRef<
           alignItems="center"
           color={styleConfig.textColor}
           flexShrink={0}
-          minWidth="200px"
+          pr={24}
+          width={labelAreaTotalWidth - barListItemPadding}
         >
-          {Icon && <Icon size={24} />}
+          {Icon && <Icon mr={12 as any} size={24} />}
           <Text fontWeight="bold" truncate="ellipsis" truncateLines={1}>
             {yLabel}
           </Text>
@@ -109,7 +116,8 @@ export const Bar = forwardRef<
           alignItems="center"
           flexShrink={0}
           justifyContent="flex-end"
-          minWidth={rightSpacerWidth - 16}
+          pl={24}
+          width={rightSpacerWidth - barListItemPadding}
         >
           <Text color={styleConfig.textColor} variant="p-small">
             {displayValue.toLocaleString()}
@@ -119,49 +127,37 @@ export const Bar = forwardRef<
       </>
     );
 
-    if (href) {
-      return (
-        <li>
-          <RowAnchor
-            aria-label={valuesSummary}
-            href={href}
-            ref={ref as MutableRefObject<HTMLAnchorElement>}
-          >
-            {rowContent}
-          </RowAnchor>
-        </li>
-      );
-    }
-
-    if (onClick) {
-      return (
-        <li>
-          <RowButton
-            aria-label={valuesSummary}
-            ref={ref as MutableRefObject<HTMLButtonElement>}
-            type="button"
-            onClick={onClick}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                onClick(e as unknown as MouseEvent<HTMLButtonElement>);
-              }
-            }}
-          >
-            {rowContent}
-          </RowButton>
-        </li>
-      );
-    }
-
-    return (
-      <li>
-        <RowWrapper
-          aria-label={valuesSummary}
-          ref={ref as MutableRefObject<HTMLDivElement>}
-        >
-          {rowContent}
-        </RowWrapper>
-      </li>
+    const content = href ? (
+      <RowAnchor
+        aria-label={valuesSummary}
+        href={href}
+        ref={ref as MutableRefObject<HTMLAnchorElement>}
+      >
+        {rowContent}
+      </RowAnchor>
+    ) : onClick ? (
+      <RowButton
+        aria-label={valuesSummary}
+        ref={ref as MutableRefObject<HTMLButtonElement>}
+        type="button"
+        onClick={onClick}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            onClick(e as unknown as MouseEvent<HTMLButtonElement>);
+          }
+        }}
+      >
+        {rowContent}
+      </RowButton>
+    ) : (
+      <RowWrapper
+        aria-label={valuesSummary}
+        ref={ref as MutableRefObject<HTMLDivElement>}
+      >
+        {rowContent}
+      </RowWrapper>
     );
+
+    return <BarListItem>{content}</BarListItem>;
   }
 );

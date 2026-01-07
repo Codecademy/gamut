@@ -9,8 +9,6 @@ const rowBaseStyles = css({
   alignItems: 'center',
   width: '100%',
   gap: 0,
-  py: 8,
-  pr: 16,
   position: 'relative',
   bg: 'transparent',
   border: 'none',
@@ -86,3 +84,13 @@ export const ForegroundBar = styled(motion.create(Box))(
     ...baseBarStyles,
   })
 );
+
+export const barListItemPadding = 16;
+
+export const BarListItem = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Box as="li" p={barListItemPadding}>
+      {children}
+    </Box>
+  );
+};
