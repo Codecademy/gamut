@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 
 import { Box } from '../Box';
-import { Bar } from './Bar/Bar';
+import { Bar } from './Bar';
 import { BarChartProvider } from './BarChartProvider';
 import { GridLines } from './layout/GridLines';
 import { ScaleChartHeader } from './layout/ScaleChartHeader';
+import { BarsList } from './shared/elements';
 import { BarChartProps } from './shared/types';
 import { sortBars, useBarChart } from './utils';
-import { BarsList } from './Bar';
 
 export const BarChart: React.FC<BarChartProps> = ({
   'aria-label': ariaLabel,
