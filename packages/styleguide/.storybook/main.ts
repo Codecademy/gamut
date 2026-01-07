@@ -45,6 +45,7 @@ const config: StorybookConfig = {
     config.resolve = {
       ...config.resolve,
       alias: {
+        ...config.resolve?.alias,
         '~styleguide/blocks': resolve(__dirname, './components/'),
         '~styleguide/argTypes': resolve(__dirname, './argTypes/'),
         '@codecademy/gamut-styles$': resolve(
