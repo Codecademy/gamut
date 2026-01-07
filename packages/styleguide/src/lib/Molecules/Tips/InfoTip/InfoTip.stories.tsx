@@ -1,6 +1,7 @@
 import {
   Anchor,
   Box,
+  Coachmark,
   FillButton,
   FlexBox,
   GridBox,
@@ -195,6 +196,7 @@ export const InfoTipInsideModal: Story = {
   },
   render: function InfoTipInsideModal(args) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [showCoachmark, setShowCoachmark] = useState(false);
 
     return (
       <FlexBox center flexDirection="column" gap={16} py={64}>
@@ -233,6 +235,37 @@ export const InfoTipInsideModal: Story = {
               closing the modal itself. Inline placement works correctly.
             </Text>
 
+            <FlexBox alignItems="center" borderTop={1} gap={8} mt={8} pt={16}>
+              <Text id="modal-coachmark-text">
+                This modal also contains a Coachmark
+              </Text>
+              <Coachmark
+                popoverProps={{ zIndex: 3 }}
+                renderPopover={() => (
+                  <FlexBox
+                    alignItems="flex-start"
+                    flexDirection="column"
+                    p={16}
+                  >
+                    <Text mb={8}>
+                      This Coachmark is inside a Modal. Try pressing Escape!
+                    </Text>
+                    <FillButton
+                      size="small"
+                      onClick={() => setShowCoachmark(false)}
+                    >
+                      Got it
+                    </FillButton>
+                  </FlexBox>
+                )}
+                shouldShow={showCoachmark}
+              >
+                <FillButton size="small" onClick={() => setShowCoachmark(true)}>
+                  Show Coachmark
+                </FillButton>
+              </Coachmark>
+            </FlexBox>
+
             <FillButton onClick={() => setIsModalOpen(false)}>
               Close Modal
             </FillButton>
@@ -245,19 +278,49 @@ export const InfoTipInsideModal: Story = {
 
 export const ZIndex: Story = {
   args: {
-    info: 'I am inline, cool',
+    info: 'I have a custom z-index',
     zIndex: 5,
   },
   render: (args) => (
-    <FlexBox center flexDirection="column" m={24} py={64}>
-      <Box bg="paleBlue" zIndex={3}>
-        I will not be behind the infotip, sad + unreadable
-      </Box>
-      <InfoTip info="I am inline, cool" />
-      <Box bg="paleBlue" zIndex={3}>
-        I will be behind the infotip, nice + great
-      </Box>
-      <InfoTip {...args} />
+    <FlexBox center flexDirection="column" gap={16} m={24} py={64}>
+      <Text variant="p-small">Inline placement:</Text>
+      <FlexBox alignItems="center" gap={8}>
+        <Box bg="paleBlue" p={8} zIndex={3} position="relative">
+          z-index: 3
+        </Box>
+        <InfoTip ariaLabel="inline default" info="Default z-index (inline)" />
+        <Box bg="paleBlue" p={8} zIndex={3} position="relative">
+          z-index: 3
+        </Box>
+        <InfoTip
+          {...args}
+          ariaLabel="inline custom"
+          info="z-index: 5 (inline)"
+        />
+      </FlexBox>
+
+      <Text variant="p-small" mt={24}>
+        Floating placement:
+      </Text>
+      <FlexBox alignItems="center" gap={8}>
+        <Box bg="paleGreen" p={8} zIndex={3} position="relative">
+          z-index: 3
+        </Box>
+        <InfoTip
+          ariaLabel="floating default"
+          info="Default z-index (floating)"
+          placement="floating"
+        />
+        <Box bg="paleGreen" p={8} zIndex={3} position="relative">
+          z-index: 3
+        </Box>
+        <InfoTip
+          {...args}
+          ariaLabel="floating custom"
+          info="z-index: 5 (floating)"
+          placement="floating"
+        />
+      </FlexBox>
     </FlexBox>
   ),
 };
