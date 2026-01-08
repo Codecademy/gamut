@@ -1,9 +1,9 @@
-import { css, styledOptions } from '@codecademy/gamut-styles';
+import { css, states, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
 import { Box } from '../../Box';
-import { barListItemPadding } from '../shared/styles';
+import { barListItemPadding, iconPadding, iconWidth } from '../shared/styles';
 
 const rowBaseStyles = css({
   alignItems: 'center',
@@ -58,6 +58,14 @@ export const BarWrapper = styled(Box)(
     position: 'relative',
     width: { _: '100%', xs: 'auto' },
     mt: { _: 8, xs: 0 },
+  }),
+  states({
+    hasIcon: {
+      ml: {
+        _: (iconWidth + iconPadding) as any,
+        xs: 0,
+      },
+    },
   })
 );
 

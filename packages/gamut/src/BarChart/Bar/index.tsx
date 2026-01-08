@@ -3,7 +3,7 @@ import { forwardRef, MouseEvent, MutableRefObject, useRef } from 'react';
 
 import { FlexBox } from '../../Box';
 import { Text } from '../../Typography';
-import { minBarWidth } from '../shared/styles';
+import { iconPadding, iconWidth, minBarWidth } from '../shared/styles';
 import { BarProps } from '../shared/types';
 import { calculateBarWidth, getValuesSummary } from '../utils';
 import {
@@ -118,7 +118,7 @@ export const Bar = forwardRef<
         width="100%"
       >
         <FlexBox alignItems="center" color={textColor} flexShrink={0}>
-          {Icon && <Icon mr={12 as any} size={24} />}
+          {Icon && <Icon mr={iconPadding as any} size={iconWidth} />}
           <Text
             fontWeight="bold"
             truncate="ellipsis"
@@ -209,6 +209,7 @@ export const Bar = forwardRef<
         )}
         <Text
           color={isStacked ? seriesTwoLabel : seriesOneLabel}
+          fontWeight={isStacked ? 'bold' : 'normal'}
           variant="p-small"
           whiteSpace="nowrap"
         >
@@ -222,7 +223,7 @@ export const Bar = forwardRef<
       <>
         {labelsContainer}
         {leftLabel}
-        <BarWrapper>
+        <BarWrapper hasIcon={!!Icon}>
           <BackgroundBar
             animate={animate ? { width: bgWidthStr } : undefined}
             bg={backgroundBarColor}
