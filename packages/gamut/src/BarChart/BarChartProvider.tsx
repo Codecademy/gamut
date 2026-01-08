@@ -9,8 +9,10 @@ export interface BarChartContextProps {
   unit: string;
   styleConfig: Required<BarChartStyles>;
   animate: boolean;
-  widestLabelWidth: number | null;
-  setWidestLabelWidth: (width: number) => void;
+  widestLeftLabelWidth: number | null;
+  setWidestLeftLabelWidth: (width: number) => void;
+  widestRightLabelWidth: number | null;
+  setWidestRightLabelWidth: (width: number) => void;
   isMeasuring: boolean;
 }
 
@@ -27,8 +29,10 @@ export const BarChartContext = createContext<BarChartContextProps>({
   unit: '',
   styleConfig: defaultStyleConfig,
   animate: false,
-  widestLabelWidth: null,
-  setWidestLabelWidth: () => {},
+  widestLeftLabelWidth: null,
+  setWidestLeftLabelWidth: () => {},
+  widestRightLabelWidth: null,
+  setWidestRightLabelWidth: () => {},
   isMeasuring: true,
 });
 

@@ -191,13 +191,3 @@ export const calculatePositionPercent = ({
   const adjustedValue = value - min;
   return (adjustedValue / range) * 100;
 };
-
-// Re-export hooks
-export {
-  useBarChart,
-  useBarChartContext,
-  useBarBorderColor,
-  useLabelPositions,
-  useMeasureLabelWidth,
-} from './hooks';
-export type { LabelPosition, UseBarChartOptions } from './hooks';

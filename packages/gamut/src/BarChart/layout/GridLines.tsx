@@ -2,7 +2,7 @@ import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
 import { Box } from '../../Box';
-import { useLabelPositions } from '../utils';
+import { useLabelPositions } from '../utils/hooks';
 import { VerticalSpacer } from './VerticalSpacer';
 
 const GridLineWrapper = styled(Box)(

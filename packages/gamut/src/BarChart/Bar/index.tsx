@@ -3,24 +3,18 @@ import { forwardRef, MouseEvent, MutableRefObject, useRef } from 'react';
 
 import { FlexBox } from '../../Box';
 import { Text } from '../../Typography';
-import {
-  iconPadding,
-  iconWidth,
-  minBarWidth,
-  rightSpacerWidth,
-} from '../shared/styles';
+import { iconPadding, iconWidth, minBarWidth } from '../shared/styles';
 import { BarProps } from '../shared/types';
+import { calculateBarWidth, getValuesSummary } from '../utils';
 import {
-  calculateBarWidth,
-  getValuesSummary,
   useBarBorderColor,
   useBarChartContext,
-  useMeasureLabelWidth,
-} from '../utils';
+  useMeasureLeftLabelWidth,
+  useMeasureRightLabelWidth,
+} from '../utils/hooks';
 import {
   BackgroundBar,
   BarListItem,
-  barListItemPadding,
   BarWrapper,
   ForegroundBar,
   RowAnchor,
@@ -48,11 +42,20 @@ export const Bar = forwardRef<
     },
     ref
   ) => {
-    const { minRange, maxRange, unit, styleConfig, animate, widestLabelWidth } =
-      useBarChartContext();
+    const {
+      minRange,
+      maxRange,
+      unit,
+      styleConfig,
+      animate,
+      widestLeftLabelWidth,
+      widestRightLabelWidth,
+    } = useBarChartContext();
 
     const labelRef = useRef<HTMLDivElement>(null);
-    useMeasureLabelWidth({ ref: labelRef });
+    const rightLabelRef = useRef<HTMLDivElement>(null);
+    useMeasureLeftLabelWidth({ ref: labelRef });
+    useMeasureRightLabelWidth({ ref: rightLabelRef });
 
     const getBorderColor = useBarBorderColor();
 
@@ -92,8 +95,12 @@ export const Bar = forwardRef<
 
     const animationDelay = animate ? index * 0.1 : 0;
 
+    // Use the widest width if available, otherwise use min-content
     const widthValue =
-      widestLabelWidth === null ? 'min-content' : widestLabelWidth;
+      widestLeftLabelWidth === null ? 'min-content' : widestLeftLabelWidth;
+
+    const rightWidthValue =
+      widestRightLabelWidth === null ? 'min-content' : widestRightLabelWidth;
 
     const rowContent = (
       <>
@@ -106,7 +113,12 @@ export const Bar = forwardRef<
           width={widthValue}
         >
           {Icon && <Icon mr={iconPadding} size={iconWidth} />}
-          <Text fontWeight="bold" truncate="ellipsis" truncateLines={1}>
+          <Text
+            fontWeight="bold"
+            truncate="ellipsis"
+            truncateLines={1}
+            whiteSpace="nowrap"
+          >
             {yLabel}
           </Text>
         </FlexBox>
@@ -139,11 +151,16 @@ export const Bar = forwardRef<
           flexShrink={0}
           justifyContent="flex-end"
           pl={24}
-          width={rightSpacerWidth - barListItemPadding}
+          ref={rightLabelRef}
+          width={rightWidthValue}
         >
           {isStacked && (
             <>
-              <Text color="text-secondary" variant="p-small">
+              <Text
+                color="text-secondary"
+                variant="p-small"
+                whiteSpace="nowrap"
+              >
                 {seriesTwoValue.toLocaleString()}
                 {unit && ` ${unit}`}
               </Text>
@@ -154,7 +171,11 @@ export const Bar = forwardRef<
               />
             </>
           )}
-          <Text color={styleConfig.textColor} variant="p-small">
+          <Text
+            color={styleConfig.textColor}
+            variant="p-small"
+            whiteSpace="nowrap"
+          >
             {displayValue.toLocaleString()}
             {unit && ` ${unit}`}
           </Text>

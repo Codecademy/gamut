@@ -53,9 +53,9 @@ export const useLabelPositions = ({
   );
 };
 
-export function useBarChartContext(): BarChartContextProps {
+export const useBarChartContext = (): BarChartContextProps => {
   return useContext(BarChartContext);
-}
+};
 
 export interface UseBarChartOptions {
   minRange: number;
@@ -67,7 +67,7 @@ export interface UseBarChartOptions {
   barCount?: number;
 }
 
-export function useBarChart({
+export const useBarChart = ({
   minRange,
   maxRange,
   xScale,
@@ -75,24 +75,44 @@ export function useBarChart({
   styleConfig,
   animate = false,
   barCount = 0,
-}: UseBarChartOptions) {
-  const [widestLabelWidth, setWidestLabelWidthState] = useState<number | null>(
-    null
-  );
+}: UseBarChartOptions) => {
+  const [widestLeftLabelWidth, setWidestLeftLabelWidthState] = useState<
+    number | null
+  >(null);
+  const [widestRightLabelWidth, setWidestRightLabelWidthState] = useState<
+    number | null
+  >(null);
   const [isMeasuring, setIsMeasuring] = useState(true);
   const measuredCountRef = useRef(0);
-  const maxWidthRef = useRef(0);
+  const maxLeftWidthRef = useRef(0);
+  const maxRightWidthRef = useRef(0);
 
-  const setWidestLabelWidth = useCallback(
+  const setWidestLeftLabelWidth = useCallback(
     (width: number) => {
-      if (width > maxWidthRef.current) {
-        maxWidthRef.current = width;
-        setWidestLabelWidthState(width);
+      if (width > maxLeftWidthRef.current) {
+        maxLeftWidthRef.current = width;
+        setWidestLeftLabelWidthState(width);
       }
 
       measuredCountRef.current += 1;
       // Only stop measuring when we've received measurements from all bars
-      if (measuredCountRef.current >= barCount && barCount > 0) {
+      if (measuredCountRef.current >= barCount * 2 && barCount > 0) {
+        setIsMeasuring(false);
+      }
+    },
+    [barCount]
+  );
+
+  const setWidestRightLabelWidth = useCallback(
+    (width: number) => {
+      if (width > maxRightWidthRef.current) {
+        maxRightWidthRef.current = width;
+        setWidestRightLabelWidthState(width);
+      }
+
+      measuredCountRef.current += 1;
+      // Only stop measuring when we've received measurements from all bars (left + right)
+      if (measuredCountRef.current >= barCount * 2 && barCount > 0) {
         setIsMeasuring(false);
       }
     },
@@ -102,10 +122,9 @@ export function useBarChart({
   useEffect(() => {
     if (barCount > 0) {
       measuredCountRef.current = 0;
-      maxWidthRef.current = 0;
+      maxLeftWidthRef.current = 0;
+      maxRightWidthRef.current = 0;
       setIsMeasuring(true);
-      // Don't reset widestLabelWidth to null - keep the previous value
-      // until new measurements come in to prevent flickering
     }
   }, [barCount]);
 
@@ -120,8 +139,10 @@ export function useBarChart({
         ...styleConfig,
       },
       animate,
-      widestLabelWidth,
-      setWidestLabelWidth,
+      widestLeftLabelWidth,
+      setWidestLeftLabelWidth,
+      widestRightLabelWidth,
+      setWidestRightLabelWidth,
       isMeasuring,
     }),
     [
@@ -131,12 +152,14 @@ export function useBarChart({
       unit,
       styleConfig,
       animate,
-      widestLabelWidth,
-      setWidestLabelWidth,
+      widestLeftLabelWidth,
+      setWidestLeftLabelWidth,
+      widestRightLabelWidth,
+      setWidestRightLabelWidth,
       isMeasuring,
     ]
   );
-}
+};
 
 /**
  * Checks if a color is a color alias (exists in the color mode shape)
@@ -144,9 +167,7 @@ export function useBarChart({
 const isColorAlias = (
   mode: ColorModeShape,
   color: Colors
-): color is keyof ColorModeShape => {
-  return Object.keys(mode).includes(color);
-};
+): color is keyof ColorModeShape => Object.keys(mode).includes(color);
 
 /**
  * Hook that returns a function to get the highest contrast border color
@@ -157,7 +178,7 @@ const isColorAlias = (
  *
  * @returns A function that takes a background color and returns either 'white' or 'navy-900'
  */
-export function useBarBorderColor() {
+export const useBarBorderColor = () => {
   const [active, activeColors, , getColorValue] = useColorModes();
 
   const getBorderColor = useCallback(
@@ -181,14 +202,21 @@ export function useBarBorderColor() {
   );
 
   return getBorderColor;
-}
+};
 
-export const useMeasureLabelWidth = ({
+/**
+ * Generic hook for measuring element width and reporting to a callback.
+ * Used internally by useMeasureLeftLabelWidth and useMeasureRightLabelWidth.
+ */
+const useMeasureWidth = ({
   ref,
+  onMeasure,
+  isMeasuring,
 }: {
   ref: React.RefObject<HTMLElement>;
+  onMeasure: (width: number) => void;
+  isMeasuring: boolean;
 }): void => {
-  const { setWidestLabelWidth, isMeasuring } = useBarChartContext();
   const hasMeasuredRef = useRef(false);
 
   // Reset measurement flag when a new measurement cycle starts
@@ -210,8 +238,42 @@ export const useMeasureLabelWidth = ({
     const width = element?.getBoundingClientRect()?.width;
 
     if (width > 0) {
-      setWidestLabelWidth(width);
+      onMeasure(width);
       hasMeasuredRef.current = true;
     }
-  }, [ref, setWidestLabelWidth, isMeasuring]);
+  }, [ref, onMeasure, isMeasuring]);
+};
+
+/**
+ * Hook that measures a left label FlexBox width and reports it to the BarChartProvider.
+ * Uses useLayoutEffect for synchronous measurement to prevent layout shift.
+ */
+export const useMeasureLeftLabelWidth = ({
+  ref,
+}: {
+  ref: React.RefObject<HTMLElement>;
+}): void => {
+  const { setWidestLeftLabelWidth, isMeasuring } = useBarChartContext();
+  useMeasureWidth({
+    ref,
+    onMeasure: setWidestLeftLabelWidth,
+    isMeasuring,
+  });
+};
+
+/**
+ * Hook that measures a right label FlexBox width and reports it to the BarChartProvider.
+ * Uses useLayoutEffect for synchronous measurement to prevent layout shift.
+ */
+export const useMeasureRightLabelWidth = ({
+  ref,
+}: {
+  ref: React.RefObject<HTMLElement>;
+}): void => {
+  const { setWidestRightLabelWidth, isMeasuring } = useBarChartContext();
+  useMeasureWidth({
+    ref,
+    onMeasure: setWidestRightLabelWidth,
+    isMeasuring,
+  });
 };

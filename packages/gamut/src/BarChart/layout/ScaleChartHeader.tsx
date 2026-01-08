@@ -3,11 +3,11 @@ import styled from '@emotion/styled';
 
 import { Box } from '../../Box';
 import { Text } from '../../Typography';
+import { formatNumberUSCompact } from '../utils';
 import {
-  formatNumberUSCompact,
   useBarChartContext,
   useLabelPositions,
-} from '../utils';
+} from '../utils/hooks';
 import { VerticalSpacer } from './VerticalSpacer';
 
 export interface ScaleChartHeaderProps {

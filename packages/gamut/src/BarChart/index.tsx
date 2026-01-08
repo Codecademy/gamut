@@ -7,7 +7,8 @@ import { GridLines } from './layout/GridLines';
 import { ScaleChartHeader } from './layout/ScaleChartHeader';
 import { BarsList } from './shared/elements';
 import { BarChartProps } from './shared/types';
-import { sortBars, useBarChart } from './utils';
+import { sortBars } from './utils';
+import { useBarChart } from './utils/hooks';
 
 export const BarChart: React.FC<BarChartProps> = ({
   'aria-label': ariaLabel,
