@@ -1,15 +1,21 @@
 import { MiniArrowRightIcon } from '@codecademy/gamut-icons';
-import { forwardRef, MouseEvent, MutableRefObject } from 'react';
+import { forwardRef, MouseEvent, MutableRefObject, useRef } from 'react';
 
 import { FlexBox } from '../../Box';
 import { Text } from '../../Typography';
-import { minBarWidth, rightSpacerWidth } from '../shared/styles';
+import {
+  iconPadding,
+  iconWidth,
+  minBarWidth,
+  rightSpacerWidth,
+} from '../shared/styles';
 import { BarProps } from '../shared/types';
 import {
   calculateBarWidth,
   getValuesSummary,
   useBarBorderColor,
   useBarChartContext,
+  useMeasureLabelWidth,
 } from '../utils';
 import {
   BackgroundBar,
@@ -42,8 +48,11 @@ export const Bar = forwardRef<
     },
     ref
   ) => {
-    const { minRange, maxRange, unit, styleConfig, animate } =
+    const { minRange, maxRange, unit, styleConfig, animate, widestLabelWidth } =
       useBarChartContext();
+
+    const labelRef = useRef<HTMLDivElement>(null);
+    useMeasureLabelWidth({ ref: labelRef });
 
     const getBorderColor = useBarBorderColor();
 
@@ -83,6 +92,9 @@ export const Bar = forwardRef<
 
     const animationDelay = animate ? index * 0.1 : 0;
 
+    const widthValue =
+      widestLabelWidth === null ? 'min-content' : widestLabelWidth;
+
     const rowContent = (
       <>
         <FlexBox
@@ -90,9 +102,10 @@ export const Bar = forwardRef<
           color={styleConfig.textColor}
           flexShrink={0}
           pr={24}
-          width={{ _: 184, sm: 224 }}
+          ref={labelRef}
+          width={widthValue}
         >
-          {Icon && <Icon mr={12 as any} size={24} />}
+          {Icon && <Icon mr={iconPadding} size={iconWidth} />}
           <Text fontWeight="bold" truncate="ellipsis" truncateLines={1}>
             {yLabel}
           </Text>

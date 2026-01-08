@@ -22,6 +22,11 @@ export const BarChart: React.FC<BarChartProps> = ({
   styleConfig,
   xScale,
 }) => {
+  const sortedBars = useMemo(
+    () => sortBars({ bars: barValues, sortBy, order }),
+    [barValues, sortBy, order]
+  );
+
   const contextValue = useBarChart({
     minRange,
     maxRange,
@@ -29,12 +34,8 @@ export const BarChart: React.FC<BarChartProps> = ({
     unit,
     styleConfig,
     animate,
+    barCount: sortedBars?.length,
   });
-
-  const sortedBars = useMemo(
-    () => sortBars({ bars: barValues, sortBy, order }),
-    [barValues, sortBy, order]
-  );
 
   // Calculate number of ticks for the scale header
   const tickCount = Math.ceil((maxRange - minRange) / contextValue.xScale) + 1;

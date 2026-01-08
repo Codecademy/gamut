@@ -9,6 +9,9 @@ export interface BarChartContextProps {
   unit: string;
   styleConfig: Required<BarChartStyles>;
   animate: boolean;
+  widestLabelWidth: number | null;
+  setWidestLabelWidth: (width: number) => void;
+  isMeasuring: boolean;
 }
 
 const defaultStyleConfig: Required<BarChartStyles> = {
@@ -24,6 +27,9 @@ export const BarChartContext = createContext<BarChartContextProps>({
   unit: '',
   styleConfig: defaultStyleConfig,
   animate: false,
+  widestLabelWidth: null,
+  setWidestLabelWidth: () => {},
+  isMeasuring: true,
 });
 
 BarChartContext.displayName = 'BarChartContext';

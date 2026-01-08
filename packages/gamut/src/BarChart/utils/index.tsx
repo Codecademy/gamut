@@ -198,5 +198,6 @@ export {
   useBarChartContext,
   useBarBorderColor,
   useLabelPositions,
+  useMeasureLabelWidth,
 } from './hooks';
 export type { LabelPosition, UseBarChartOptions } from './hooks';

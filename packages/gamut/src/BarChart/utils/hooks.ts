@@ -4,7 +4,15 @@ import {
   useColorModes,
 } from '@codecademy/gamut-styles';
 import { getContrast } from 'polished';
-import { useCallback, useContext, useMemo } from 'react';
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { BarChartContext, BarChartContextProps } from '../BarChartProvider';
 import { BarChartStyles } from '../shared/types';
@@ -56,6 +64,7 @@ export interface UseBarChartOptions {
   unit?: string;
   styleConfig?: BarChartStyles;
   animate?: boolean;
+  barCount?: number;
 }
 
 export function useBarChart({
@@ -65,7 +74,41 @@ export function useBarChart({
   unit = '',
   styleConfig,
   animate = false,
+  barCount = 0,
 }: UseBarChartOptions) {
+  const [widestLabelWidth, setWidestLabelWidthState] = useState<number | null>(
+    null
+  );
+  const [isMeasuring, setIsMeasuring] = useState(true);
+  const measuredCountRef = useRef(0);
+  const maxWidthRef = useRef(0);
+
+  const setWidestLabelWidth = useCallback(
+    (width: number) => {
+      if (width > maxWidthRef.current) {
+        maxWidthRef.current = width;
+        setWidestLabelWidthState(width);
+      }
+
+      measuredCountRef.current += 1;
+      // Only stop measuring when we've received measurements from all bars
+      if (measuredCountRef.current >= barCount && barCount > 0) {
+        setIsMeasuring(false);
+      }
+    },
+    [barCount]
+  );
+
+  useEffect(() => {
+    if (barCount > 0) {
+      measuredCountRef.current = 0;
+      maxWidthRef.current = 0;
+      setIsMeasuring(true);
+      // Don't reset widestLabelWidth to null - keep the previous value
+      // until new measurements come in to prevent flickering
+    }
+  }, [barCount]);
+
   return useMemo(
     () => ({
       minRange,
@@ -77,8 +120,21 @@ export function useBarChart({
         ...styleConfig,
       },
       animate,
+      widestLabelWidth,
+      setWidestLabelWidth,
+      isMeasuring,
     }),
-    [minRange, maxRange, xScale, unit, styleConfig, animate]
+    [
+      minRange,
+      maxRange,
+      xScale,
+      unit,
+      styleConfig,
+      animate,
+      widestLabelWidth,
+      setWidestLabelWidth,
+      isMeasuring,
+    ]
   );
 }
 
@@ -126,3 +182,36 @@ export function useBarBorderColor() {
 
   return getBorderColor;
 }
+
+export const useMeasureLabelWidth = ({
+  ref,
+}: {
+  ref: React.RefObject<HTMLElement>;
+}): void => {
+  const { setWidestLabelWidth, isMeasuring } = useBarChartContext();
+  const hasMeasuredRef = useRef(false);
+
+  // Reset measurement flag when a new measurement cycle starts
+  const prevIsMeasuringRef = useRef(isMeasuring);
+  useEffect(() => {
+    if (isMeasuring && !prevIsMeasuringRef.current) {
+      // New measurement cycle started
+      hasMeasuredRef.current = false;
+    }
+    prevIsMeasuringRef.current = isMeasuring;
+  }, [isMeasuring]);
+
+  useLayoutEffect(() => {
+    if (!ref.current || hasMeasuredRef.current || !isMeasuring) {
+      return;
+    }
+
+    const element = ref.current;
+    const width = element?.getBoundingClientRect()?.width;
+
+    if (width > 0) {
+      setWidestLabelWidth(width);
+      hasMeasuredRef.current = true;
+    }
+  }, [ref, setWidestLabelWidth, isMeasuring]);
+};
