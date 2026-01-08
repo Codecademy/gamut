@@ -101,14 +101,12 @@ export const Bar = forwardRef<
 
     const animationDelay = animate ? index * 0.1 : 0;
 
-    // Use the widest width if available, otherwise use min-content
     const widthValue =
       widestLeftLabelWidth === null ? 'min-content' : widestLeftLabelWidth;
 
     const rightWidthValue =
       widestRightLabelWidth === null ? 'min-content' : widestRightLabelWidth;
 
-    // Labels container for small screens (above bar)
     const labelsContainer = (
       <FlexBox
         alignItems="center"
@@ -139,6 +137,7 @@ export const Bar = forwardRef<
             <>
               <Text
                 color={seriesOneLabel}
+                fontWeight="bold"
                 variant="p-small"
                 whiteSpace="nowrap"
               >
@@ -160,7 +159,6 @@ export const Bar = forwardRef<
       </FlexBox>
     );
 
-    // Left label for large screens (always rendered for measurement, hidden on small screens)
     const leftLabel = (
       <FlexBox
         alignItems="center"
@@ -183,7 +181,6 @@ export const Bar = forwardRef<
       </FlexBox>
     );
 
-    // Right label for large screens (always rendered for measurement, hidden on small screens)
     const rightLabel = (
       <FlexBox
         alignItems="center"
@@ -223,7 +220,7 @@ export const Bar = forwardRef<
       <>
         {labelsContainer}
         {leftLabel}
-        <BarWrapper hasIcon={!!Icon}>
+        <BarWrapper>
           <BackgroundBar
             animate={animate ? { width: bgWidthStr } : undefined}
             bg={backgroundBarColor}

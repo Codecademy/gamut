@@ -1,4 +1,4 @@
-import { css, states, styledOptions } from '@codecademy/gamut-styles';
+import { css, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
@@ -12,7 +12,7 @@ const rowBaseStyles = css({
   cursor: 'inherit',
   display: 'flex',
   flexDirection: { _: 'column', xs: 'row' },
-  gap: { _: 8, xs: 0 },
+
   p: barListItemPadding,
   position: 'relative',
   textDecoration: 'none',
@@ -58,14 +58,6 @@ export const BarWrapper = styled(Box)(
     position: 'relative',
     width: { _: '100%', xs: 'auto' },
     mt: { _: 8, xs: 0 },
-  }),
-  states({
-    hasIcon: {
-      ml: {
-        _: (iconWidth + iconPadding) as any,
-        xs: 0,
-      },
-    },
   })
 );
 
