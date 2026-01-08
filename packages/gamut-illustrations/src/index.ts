@@ -18,6 +18,7 @@ export * from './CodeCelebration';
 export * from './Coffee';
 export * from './Confetti';
 export * from './Conversation';
+export * from './CubeIllustration';
 export * from './CustomProject';
 export * from './EmailAt';
 export * from './Envelope';
