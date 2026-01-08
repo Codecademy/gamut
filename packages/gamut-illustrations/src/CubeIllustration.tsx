@@ -18,7 +18,7 @@ export const CubeIllustration: React.FC<IllustrationProps> = ({
     xmlns="http://www.w3.org/2000/svg"
   >
     <g clipPath="url(#clip0_2438_2846)">
-      <rect width="48" height="48" fill="white" />
+      <rect fill="white" height="48" width="48" />
       <path
         d="M45.2622 12.6602V36.0468L25.3724 48L3 37.1994V13.4076L22.8898 1.85815L45.2622 12.6602Z"
         fill="#10162F"
@@ -211,7 +211,7 @@ export const CubeIllustration: React.FC<IllustrationProps> = ({
     </g>
     <defs>
       <clipPath id="clip0_2438_2846">
-        <rect width="48" height="48" fill="white" />
+        <rect fill="white" height="48" width="48" />
       </clipPath>
     </defs>
   </svg>
