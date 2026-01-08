@@ -6,16 +6,17 @@ import { Box } from '../../Box';
 import { barListItemPadding } from '../shared/styles';
 
 const rowBaseStyles = css({
-  display: 'flex',
   alignItems: 'center',
-  width: '100%',
-  gap: 0,
-  position: 'relative',
   bg: 'transparent',
   border: 'none',
-  textDecoration: 'none',
   cursor: 'inherit',
+  display: 'flex',
+  flexDirection: { _: 'column', xs: 'row' },
+  gap: { _: 8, xs: 0 },
   p: barListItemPadding,
+  position: 'relative',
+  textDecoration: 'none',
+  width: '100%',
   '&:focus': {
     outline: 'none',
   },
@@ -48,13 +49,15 @@ export const RowAnchor = styled('a', styledOptions<'a'>())(
  */
 export const BarWrapper = styled(Box)(
   css({
+    alignItems: 'center',
+    borderRadius: { _: 'md' as any, xs: 'xl' },
     display: 'flex',
+    flex: { _: 'none', xs: 1 },
+    height: { _: 8, xs: 24 },
     overflow: 'hidden',
     position: 'relative',
-    alignItems: 'center',
-    flex: 1,
-    height: 20,
-    borderRadius: { _: 'md', sm: 'xl' },
+    width: { _: '100%', xs: 'auto' },
+    mt: { _: 8, xs: 0 },
   })
 );
 
@@ -74,8 +77,8 @@ const baseBarStyles = {
 export const BackgroundBar = styled(motion.create(Box))(
   css({
     ...baseBarStyles,
-    borderWidth: '1px',
     borderStyle: 'solid',
+    borderWidth: '1px',
   })
 );
 
@@ -86,8 +89,8 @@ export const BackgroundBar = styled(motion.create(Box))(
 export const ForegroundBar = styled(motion.create(Box))(
   css({
     ...baseBarStyles,
-    borderWidth: '1px',
     borderStyle: 'solid',
+    borderWidth: '1px',
   })
 );
 

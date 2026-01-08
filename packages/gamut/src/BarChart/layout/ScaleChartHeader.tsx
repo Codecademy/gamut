@@ -85,7 +85,7 @@ export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
     <Box mb={12} width={1}>
       <StyledHeaderContainer
         aria-hidden="true"
-        display={{ _: 'none', sm: 'block' }}
+        display={{ _: 'none', xs: 'block' }}
       >
         <VerticalSpacer>
           <HeaderLabelArea>{scaleLabels}</HeaderLabelArea>

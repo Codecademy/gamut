@@ -108,16 +108,16 @@ export const Bar = forwardRef<
     const rightWidthValue =
       widestRightLabelWidth === null ? 'min-content' : widestRightLabelWidth;
 
-    const rowContent = (
-      <>
-        <FlexBox
-          alignItems="center"
-          color={textColor}
-          flexShrink={0}
-          pr={24}
-          ref={labelRef}
-          width={widthValue}
-        >
+    // Labels container for small screens (above bar)
+    const labelsContainer = (
+      <FlexBox
+        alignItems="center"
+        display={{ _: 'flex', xs: 'none' }}
+        gap={8}
+        justifyContent="space-between"
+        width="100%"
+      >
+        <FlexBox alignItems="center" color={textColor} flexShrink={0}>
           {Icon && <Icon mr={12 as any} size={24} />}
           <Text
             fontWeight="bold"
@@ -129,6 +129,99 @@ export const Bar = forwardRef<
           </Text>
         </FlexBox>
 
+        <FlexBox
+          alignItems="center"
+          flexShrink={0}
+          gap={8}
+          justifyContent="flex-end"
+        >
+          {isStacked && (
+            <>
+              <Text
+                color={seriesOneLabel}
+                variant="p-small"
+                whiteSpace="nowrap"
+              >
+                {seriesOneValue.toLocaleString()}
+                {unit && ` ${unit}`}
+              </Text>
+              <MiniArrowRightIcon color={seriesOneLabel} size={16} />
+            </>
+          )}
+          <Text
+            color={isStacked ? seriesTwoLabel : seriesOneLabel}
+            variant="p-small"
+            whiteSpace="nowrap"
+          >
+            {displayValue.toLocaleString()}
+            {unit && ` ${unit}`}
+          </Text>
+        </FlexBox>
+      </FlexBox>
+    );
+
+    // Left label for large screens (always rendered for measurement, hidden on small screens)
+    const leftLabel = (
+      <FlexBox
+        alignItems="center"
+        color={textColor}
+        display={{ _: 'none', xs: 'flex' }}
+        flexShrink={0}
+        pr={{ _: 0, xs: 24 }}
+        ref={labelRef}
+        width={{ _: 'auto', xs: widthValue }}
+      >
+        {Icon && <Icon mr={12 as any} size={24} />}
+        <Text
+          fontWeight="bold"
+          truncate="ellipsis"
+          truncateLines={1}
+          whiteSpace="nowrap"
+        >
+          {yLabel}
+        </Text>
+      </FlexBox>
+    );
+
+    // Right label for large screens (always rendered for measurement, hidden on small screens)
+    const rightLabel = (
+      <FlexBox
+        alignItems="center"
+        display={{ _: 'none', xs: 'flex' }}
+        flexShrink={0}
+        justifyContent="flex-end"
+        pl={{ _: 0, xs: 24 }}
+        ref={rightLabelRef}
+        width={{ _: 'auto', xs: rightWidthValue }}
+      >
+        {isStacked && (
+          <>
+            <Text color={seriesOneLabel} variant="p-small" whiteSpace="nowrap">
+              {seriesOneValue.toLocaleString()}
+              {unit && ` ${unit}`}
+            </Text>
+            <MiniArrowRightIcon
+              color={seriesOneLabel}
+              mx={12 as any}
+              size={16}
+            />
+          </>
+        )}
+        <Text
+          color={isStacked ? seriesTwoLabel : seriesOneLabel}
+          variant="p-small"
+          whiteSpace="nowrap"
+        >
+          {displayValue.toLocaleString()}
+          {unit && ` ${unit}`}
+        </Text>
+      </FlexBox>
+    );
+
+    const rowContent = (
+      <>
+        {labelsContainer}
+        {leftLabel}
         <BarWrapper>
           <BackgroundBar
             animate={animate ? { width: bgWidthStr } : undefined}
@@ -151,41 +244,7 @@ export const Bar = forwardRef<
             />
           )}
         </BarWrapper>
-
-        <FlexBox
-          alignItems="center"
-          flexShrink={0}
-          justifyContent="flex-end"
-          pl={24}
-          ref={rightLabelRef}
-          width={rightWidthValue}
-        >
-          {isStacked && (
-            <>
-              <Text
-                color={seriesOneLabel}
-                variant="p-small"
-                whiteSpace="nowrap"
-              >
-                {seriesOneValue.toLocaleString()}
-                {unit && ` ${unit}`}
-              </Text>
-              <MiniArrowRightIcon
-                color={seriesOneLabel}
-                mx={12 as any}
-                size={16}
-              />
-            </>
-          )}
-          <Text
-            color={isStacked ? seriesTwoLabel : seriesOneLabel}
-            variant="p-small"
-            whiteSpace="nowrap"
-          >
-            {displayValue.toLocaleString()}
-            {unit && ` ${unit}`}
-          </Text>
-        </FlexBox>
+        {rightLabel}
       </>
     );
 

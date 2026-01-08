@@ -20,7 +20,7 @@ const GridLineWrapper = styled(Box)(
 const GridLineContainer = styled(Box)(
   css({
     bottom: 0,
-    display: { _: 'none', sm: 'block' },
+    display: { _: 'none', xs: 'block' },
     position: 'absolute',
     top: 0,
     left: 0,
