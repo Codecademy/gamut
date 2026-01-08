@@ -3,7 +3,8 @@ import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 
 import { Box } from '../../Box';
-import { labelAreaTotalWidth, rightSpacerWidth } from '../shared/styles';
+import { barListItemPadding } from '../shared/styles';
+import { useBarChartContext } from '../utils/hooks';
 
 const SpacerContainer = styled(Box)(
   css({
@@ -11,14 +12,6 @@ const SpacerContainer = styled(Box)(
     width: '100%',
     height: '100%',
     gap: 0,
-  })
-);
-
-const LeftSpacer = styled(Box)(
-  css({
-    flexShrink: 0,
-    minWidth: { _: 200, sm: labelAreaTotalWidth },
-    pl: 16,
   })
 );
 
@@ -30,17 +23,26 @@ const ContentArea = styled(Box)(
   })
 );
 
-const RightSpacer = styled(Box)(
-  css({
-    flexShrink: 0,
-    width: rightSpacerWidth,
-  })
-);
-
 export interface VerticalSpacerProps {
   children: ReactNode;
   className?: string;
 }
+
+const LeftSpacer: React.FC = () => {
+  const { widestLeftLabelWidth } = useBarChartContext();
+  const width =
+    widestLeftLabelWidth === null ? 'min-content' : widestLeftLabelWidth;
+
+  return <Box flexShrink={0} minWidth={width} ml={barListItemPadding} />;
+};
+
+const RightSpacer: React.FC = () => {
+  const { widestRightLabelWidth } = useBarChartContext();
+  const width =
+    widestRightLabelWidth === null ? 'min-content' : widestRightLabelWidth;
+
+  return <Box flexShrink={0} minWidth={width} mr={barListItemPadding} />;
+};
 
 export const VerticalSpacer: React.FC<VerticalSpacerProps> = ({
   children,

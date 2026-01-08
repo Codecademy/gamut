@@ -3,8 +3,7 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
 import { Box } from '../../Box';
-
-export const barListItemPadding = 16;
+import { barListItemPadding } from '../shared/styles';
 
 const rowBaseStyles = css({
   display: 'flex',

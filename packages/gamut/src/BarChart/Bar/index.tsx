@@ -112,7 +112,7 @@ export const Bar = forwardRef<
           ref={labelRef}
           width={widthValue}
         >
-          {Icon && <Icon mr={iconPadding} size={iconWidth} />}
+          {Icon && <Icon mr={12 as any} size={24} />}
           <Text
             fontWeight="bold"
             truncate="ellipsis"
