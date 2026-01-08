@@ -1,0 +1,92 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import { ComponentHeader } from '~styleguide/blocks';
+
+import * as BarChartStories from './BarChart.stories';
+
+export const parameters = {
+  subtitle: `A horizontal bar chart for visualizing comparative data`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=55123-4176',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/BarChart',
+  },
+};
+
+<Meta of={BarChartStories} />;
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use BarChart to display comparative data across categories, such as skills progress, XP earned, or any quantitative metrics that benefit from visual comparison.
+
+### Best practices:
+
+- Use consistent units across all bars in a chart
+- Limit the number of bars to maintain readability (5-10 is optimal)
+- Consider using the stacked variant to show progress toward a goal
+- Sort bars by value (descending) when ranking is important
+
+When NOT to use
+
+- For showing trends over time - use a line chart instead
+- For showing parts of a whole - use a pie or donut chart
+- For very small datasets (1-2 items) - consider using ProgressBar
+
+## Variants
+
+### Simple (Non-stacked)
+
+Use the simple variant when showing single values per category. Only `seriesOneValue` is provided.
+
+<Canvas of={BarChartStories.Default} />
+
+### Stacked
+
+Use the stacked variant when showing progress within a total. Provide both `seriesOneValue` (progress) and `seriesTwoValue` (total).
+
+<Canvas of={BarChartStories.Stacked} />
+
+### With Icons
+
+Add icons to labels for better visual identification of categories.
+
+<Canvas of={BarChartStories.WithIcons} />
+
+### Animated
+
+Enable entrance animations for a more engaging experience.
+
+<Canvas of={BarChartStories.Animated} />
+
+### Interactive
+
+Rows can be made interactive with `onClick` handlers or `href` links.
+
+<Canvas of={BarChartStories.Interactive} />
+
+## Playground
+
+<Canvas sourceState="shown" of={BarChartStories.Default} />
+
+<Controls />
+
+## Accessibility considerations
+
+- Always provide either `aria-label` or `aria-labelledby` to describe the chart
+- Each row automatically generates an accessible label summarizing its values
+- Interactive rows (with onClick/href) are properly announced as buttons/links
+- Grid lines are marked as decorative and hidden from screen readers
+- The scale header is hidden on small screens and marked as decorative
+
+## UX writing
+
+- Keep y-axis labels concise (1-3 words)
+- Use consistent unit labels (e.g., "XP", "hours", "points")
+- Consider locale-aware number formatting for international audiences
