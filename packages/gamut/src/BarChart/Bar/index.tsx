@@ -3,7 +3,7 @@ import { forwardRef, MouseEvent, MutableRefObject, useRef } from 'react';
 
 import { FlexBox } from '../../Box';
 import { Text } from '../../Typography';
-import { iconPadding, iconWidth, minBarWidth } from '../shared/styles';
+import { minBarWidth } from '../shared/styles';
 import { BarProps } from '../shared/types';
 import { calculateBarWidth, getValuesSummary } from '../utils';
 import {
@@ -52,6 +52,14 @@ export const Bar = forwardRef<
       widestRightLabelWidth,
     } = useBarChartContext();
 
+    const {
+      textColor,
+      backgroundBarColor,
+      foregroundBarColor,
+      seriesOneLabel,
+      seriesTwoLabel,
+    } = styleConfig;
+
     const labelRef = useRef<HTMLDivElement>(null);
     const rightLabelRef = useRef<HTMLDivElement>(null);
     useMeasureLeftLabelWidth({ ref: labelRef });
@@ -62,11 +70,9 @@ export const Bar = forwardRef<
     const isStacked = seriesTwoValue !== undefined;
     const displayValue = isStacked ? seriesTwoValue : seriesOneValue;
 
-    const backgroundBorderColor = getBorderColor(
-      styleConfig.backgroundBarColor
-    );
+    const backgroundBorderColor = getBorderColor(backgroundBarColor);
     const foregroundBorderColor = isStacked
-      ? getBorderColor(styleConfig.foregroundBarColor)
+      ? getBorderColor(foregroundBarColor)
       : undefined;
 
     const backgroundBarWidth = calculateBarWidth({
@@ -106,7 +112,7 @@ export const Bar = forwardRef<
       <>
         <FlexBox
           alignItems="center"
-          color={styleConfig.textColor}
+          color={textColor}
           flexShrink={0}
           pr={24}
           ref={labelRef}
@@ -126,7 +132,7 @@ export const Bar = forwardRef<
         <BarWrapper>
           <BackgroundBar
             animate={animate ? { width: bgWidthStr } : undefined}
-            bg={styleConfig.backgroundBarColor}
+            bg={backgroundBarColor}
             borderColor={backgroundBorderColor}
             data-testid="background-bar"
             initial={animate ? { width: '0%' } : undefined}
@@ -136,7 +142,7 @@ export const Bar = forwardRef<
           {isStacked && (
             <ForegroundBar
               animate={animate ? { width: fgWidthStr } : undefined}
-              bg={styleConfig.foregroundBarColor}
+              bg={foregroundBarColor}
               borderColor={foregroundBorderColor}
               data-testid="foreground-bar"
               initial={animate ? { width: '0%' } : undefined}
@@ -157,22 +163,22 @@ export const Bar = forwardRef<
           {isStacked && (
             <>
               <Text
-                color="text-secondary"
+                color={seriesOneLabel}
                 variant="p-small"
                 whiteSpace="nowrap"
               >
-                {seriesTwoValue.toLocaleString()}
+                {seriesOneValue.toLocaleString()}
                 {unit && ` ${unit}`}
               </Text>
               <MiniArrowRightIcon
-                color="text-secondary"
+                color={seriesOneLabel}
                 mx={12 as any}
                 size={16}
               />
             </>
           )}
           <Text
-            color={styleConfig.textColor}
+            color={isStacked ? seriesTwoLabel : seriesOneLabel}
             variant="p-small"
             whiteSpace="nowrap"
           >

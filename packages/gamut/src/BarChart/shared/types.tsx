@@ -23,6 +23,10 @@ export type BarChartStyles = {
   foregroundBarColor?: ColorAlias;
   /** Color for the background/total bar. Defaults to 'paleBlue' */
   backgroundBarColor?: ColorAlias;
+  /** Color for the series one label (first right label when stacked, or displayValue when not stacked). Defaults to 'text' */
+  seriesOneLabel?: ColorAlias;
+  /** Color for the series two label (displayValue when stacked). Defaults to 'text' */
+  seriesTwoLabel?: ColorAlias;
 };
 
 export type BarProps = {

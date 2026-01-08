@@ -22,7 +22,6 @@ const meta: Meta<typeof BarChart> = {
 export default meta;
 type Story = StoryObj<typeof BarChart>;
 
-// Sample data for non-stacked (simple) bars
 const simpleBarData: BarProps[] = [
   { yLabel: 'Python', seriesOneValue: 1500 },
   { yLabel: 'JavaScript', seriesOneValue: 2000 },
@@ -31,16 +30,19 @@ const simpleBarData: BarProps[] = [
   { yLabel: 'React', seriesOneValue: 450 },
 ];
 
-// Sample data for stacked bars (with seriesTwoValue)
 const stackedBarData: BarProps[] = [
   { yLabel: 'Python', seriesOneValue: 200, seriesTwoValue: 1500 },
-  { yLabel: 'JavaScript', seriesOneValue: 1800, seriesTwoValue: 2000 },
+  {
+    yLabel: 'JavaScript',
+    icon: TerminalIcon,
+    seriesOneValue: 1800,
+    seriesTwoValue: 2000,
+  },
   { yLabel: 'HTML/CSS', seriesOneValue: 600, seriesTwoValue: 800 },
   { yLabel: 'SQL', seriesOneValue: 550, seriesTwoValue: 600 },
   { yLabel: 'React', seriesOneValue: 300, seriesTwoValue: 450 },
 ];
 
-// Sample data with icons
 const barDataWithIcons: BarProps[] = [
   {
     yLabel: 'Python',
@@ -166,7 +168,9 @@ export const CustomStyles: Story = {
     styleConfig: {
       backgroundBarColor: 'text',
       foregroundBarColor: 'primary',
-      textColor: 'text',
+      textColor: 'primary',
+      seriesOneLabel: 'feedback-error',
+      seriesTwoLabel: 'feedback-success',
     },
   },
 };

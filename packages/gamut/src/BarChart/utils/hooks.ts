@@ -27,6 +27,8 @@ const defaultStyleConfig: Required<BarChartStyles> = {
   textColor: 'text',
   foregroundBarColor: 'feedback-warning',
   backgroundBarColor: 'background-primary',
+  seriesOneLabel: 'text-secondary',
+  seriesTwoLabel: 'primary',
 };
 
 /**
