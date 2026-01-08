@@ -4,10 +4,7 @@ import styled from '@emotion/styled';
 import { Box } from '../../Box';
 import { Text } from '../../Typography';
 import { formatNumberUSCompact } from '../utils';
-import {
-  useBarChartContext,
-  useLabelPositions,
-} from '../utils/hooks';
+import { useLabelPositions } from '../utils/hooks';
 import { VerticalSpacer } from './VerticalSpacer';
 
 export interface ScaleChartHeaderProps {
@@ -63,7 +60,6 @@ export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
   min,
   max,
 }) => {
-  const { styleConfig } = useBarChartContext();
   const labelPositions = useLabelPositions({ min, max, count: labelCount });
 
   const scaleLabels = labelPositions.map(({ value, positionPercent }) => (
@@ -72,7 +68,6 @@ export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
       key={`label-${value}-${positionPercent}`}
       positionPercent={positionPercent}
       textAlign="center"
-      textColor={styleConfig.textColor}
       variant="p-small"
     >
       {formatNumberUSCompact({
@@ -94,4 +89,3 @@ export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
     </Box>
   );
 };
-

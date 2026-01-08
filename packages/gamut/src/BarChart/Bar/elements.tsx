@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
 import { Box } from '../../Box';
-import { barListItemPadding, iconPadding, iconWidth } from '../shared/styles';
+import { barListItemPadding } from '../shared/styles';
 
 const rowBaseStyles = css({
   alignItems: 'center',
@@ -44,9 +44,6 @@ export const RowAnchor = styled('a', styledOptions<'a'>())(
   interactiveStyles
 );
 
-/**
- * Container for bars with responsive height
- */
 export const BarWrapper = styled(Box)(
   css({
     alignItems: 'center',
@@ -70,10 +67,6 @@ const baseBarStyles = {
   position: 'absolute',
 } as const;
 
-/**
- * Animated bar element for background/total value display
- * This bar has the border as it's the outer container
- */
 export const BackgroundBar = styled(motion.create(Box))(
   css({
     ...baseBarStyles,
@@ -82,10 +75,6 @@ export const BackgroundBar = styled(motion.create(Box))(
   })
 );
 
-/**
- * Foreground bar for stacked display (progress value)
- * This bar also has a border with contrast-based color
- */
 export const ForegroundBar = styled(motion.create(Box))(
   css({
     ...baseBarStyles,
