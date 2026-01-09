@@ -43,7 +43,6 @@ export const Code = styled.code`
   color: ${themed('colors.navy-700')};
   background-color: ${themed('colors.gray-100')};
   display: inline-block;
-  overflow-x: scroll;
 
   ::-webkit-scrollbar {
     width: 4px;

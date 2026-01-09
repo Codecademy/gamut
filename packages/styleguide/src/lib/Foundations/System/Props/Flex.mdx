@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, TokenTable } from '~styleguide/blocks';
+
+import { defaultColumns, getPropRows } from '../../shared/elements';
+
+export const parameters = {
+  title: 'Flex',
+  subtitle: 'Flex specific properties',
+  status: 'current',
+};
+
+<Meta title="Foundations/System/Props/Flex" />
+
+<AboutHeader {...parameters} />
+
+Flex props provide complete control over flexbox layouts, from container behavior to individual flex item properties. These properties make it easy to create flexible, responsive layouts with proper alignment and distribution of child elements. Use these on flex containers to control their children or on flex items to control their own behavior.
+
+```tsx
+import styled from '@emotion/styled';
+import { system } from '@codecademy/gamut-styles';
+
+const FlexExample = styled.div(system.flex);
+
+<FlexExample flex={1} justifyContent="center" alignItems="flex-start" />;
+```
+
+<TokenTable rows={getPropRows('flex')} columns={defaultColumns} />
