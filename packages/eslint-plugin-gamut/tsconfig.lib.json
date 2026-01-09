@@ -5,7 +5,8 @@
     "allowJs": true,
     "module": "CommonJS",
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "types": []
   },
   "exclude": [
     "jest.config.ts",
