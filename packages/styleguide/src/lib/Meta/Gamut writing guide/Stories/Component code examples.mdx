@@ -1,0 +1,79 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Component code examples',
+  title: 'Component code examples',
+  subtitle: 'How to write .stories.tsx files for Gamut components',
+  status: 'static',
+};
+
+<Meta title="Meta/Gamut writing guide/Stories/Component code examples" />
+
+<AboutHeader {...parameters} />
+
+The `.stories.tsx` file defines the interactive examples and variations of the component. These stories power the Storybook UI and provide developers with working code examples. Use concrete, realistic values in self-contained stories that are easy to copy and paste. Each story should demonstrate one clear variation or behavior.
+
+Our guidelines stem from the Storybook, specifically the [Component Story Format (CSF)](https://storybook.js.org/docs/8/api/csf) and [Writing stories in TypeScript](https://storybook.js.org/docs/writing-stories/typescript) documentation. We recommend using these resources for more detailed information.
+
+## Basic structure
+
+Each component should have a `ComponentName.stories.tsx` file that can use the `component-story` snippet to generate a template that resembles the following:
+
+```tsx
+// For ComponentName.stories.tsx
+
+import { ComponentName } from '@codecademy/gamut';
+import type { Meta, StoryObj } from '@storybook/react';
+
+const meta: Meta<typeof ComponentName> = {
+  component: ComponentName,
+  args: {
+    variant: 'default',
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof ComponentName>;
+
+export const Default: Story = {
+  args: {
+    children: <img src="./cinna.jpg" alt="jpeg" />,
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    children: 'Pro Content',
+    variant: 'secondary',
+  },
+};
+```
+
+## Rendered code examples
+
+Examples rendered via `<Canvas of={componentName.example} />` are stored in the `componentName.stories.tsx` file.
+
+When providing an example, use concretely applicable values. Avoid naming things like foo or bar, instead be opt for values that could be used in a practical setting, e.g. if deciding on the name of a boolean variable, don't use isBar — instead, consider the setting the example could be used, isModalOpen.
+
+When a user clicks **Show Code**, Storybook tries to show the underlying code, but Storybook is not good with abstractions. Instead of opting to be DRY, each example should contain all the code to render and when a user clicks on **Show Code**, they should be able to copy the code provided and render in their own project.
+
+```tsx
+// ❌ Don't abstract the logic into an InfoTipExample
+export const Default: Story = {
+  render: (args) => <InfoTipExample {...args} />,
+};
+```
+
+```tsx
+// ✅ Provide the actual code
+export const Default: Story = {
+  render: (args) => (
+    <FlexBox center m={24} py={64}>
+      <Text mr={4}>Some text that needs info</Text>
+      <InfoTip {...args} />
+    </FlexBox>
+  ),
+};
+```
