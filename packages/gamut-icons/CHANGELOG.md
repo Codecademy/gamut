@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.54.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.53.0...@codecademy/gamut-icons@9.54.0) (2025-12-23)
+
+### Features
+
+- **Icons:** [LPHYD-19490] - Added Admin, Hierarchy and Skillsoft icon ([ecb3c84](https://github.com/Codecademy/gamut/commit/ecb3c8462538049783d7a4ace2ec6ba9ea1e1e43))
+
+## [9.53.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.52.1...@codecademy/gamut-icons@9.53.0) (2025-12-05)
+
+### Features
+
+- **Icons:** add coaching regular icon ([c46a3be](https://github.com/Codecademy/gamut/commit/c46a3beafcb596fdabf3d952fed037a17f143a26))
+
 ### [9.52.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.52.0...@codecademy/gamut-icons@9.52.1) (2025-10-28)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

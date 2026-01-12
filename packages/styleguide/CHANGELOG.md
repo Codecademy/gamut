@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [78.5.5](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.5.4...@codecademy/styleguide@78.5.5) (2026-01-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [78.5.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.5.3...@codecademy/styleguide@78.5.4) (2025-12-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [78.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.5.2...@codecademy/styleguide@78.5.3) (2025-12-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [78.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.5.1...@codecademy/styleguide@78.5.2) (2025-12-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [78.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.5.0...@codecademy/styleguide@78.5.1) (2025-12-04)
+
+### Bug Fixes
+
+- **InfoTip:** wrap focus ([77457a2](https://github.com/Codecademy/gamut/commit/77457a2b918eea5601b77e74ba2517fc22484a7c))
+
+## [78.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.4.0...@codecademy/styleguide@78.5.0) (2025-12-03)
+
+### Features
+
+- **Tabs:** add shouldForceMount prop to TabPanel ([4fda27c](https://github.com/Codecademy/gamut/commit/4fda27c61defa9e80795fb3e0e17b9cc75c0b126))
+
+## [78.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.3.3...@codecademy/styleguide@78.4.0) (2025-12-01)
+
+### Features
+
+- Disable inline `style` prop for components ([e695579](https://github.com/Codecademy/gamut/commit/e695579fdeb2de526a42d2aff2b75537918a9096))
+
 ### [78.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.3.2...@codecademy/styleguide@78.3.3) (2025-11-13)
 
 ### Bug Fixes

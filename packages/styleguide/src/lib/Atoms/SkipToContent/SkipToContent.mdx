@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, KeyboardKey } from '~styleguide/blocks';
 
 import * as SkipToContentStories from './SkipToContent.stories';
 
@@ -21,11 +21,10 @@ export const parameters = {
 
 ## Usage
 
-Use `<SkipToContent />` to add a hidden-by-default link that becomes visible when the user <kbd>Tab</kbd>s over it (gives it focus).
+Use `<SkipToContent />` to add a hidden-by-default link that becomes visible when the user <KeyboardKey>Tab</KeyboardKey>s over it (gives it focus).
 It takes in the ID of the element it will scroll to and focus ([dev.to article explaining why](https://dev.to/robdodson/managing-focus-64l)) on click (via mouse or keyboard).
 
-This type of control is necessary for pages that have a bunch of stuff keyboard users would have to Tab through to get
-to the page's main content (like navigations).
+This type of control is necessary for pages that have a bunch of stuff keyboard users would have to <KeyboardKey>Tab</KeyboardKey> through to get to the page's main content (like navigations).
 
 For this element to work properly, there must be a `<SkipToContentTarget />` component with the id passed into this component for the `contentId` prop. The `<SkipToContentTarget />` component by default has a `tabIndex` of -1.
 Example:
@@ -43,7 +42,7 @@ Example:
 </div>
 ```
 
-To see it, keep tabbing around on this page or visit [the catalog](https://www.codecademy.com/catalog/language/javascript) and navigate via tab to see it in action.
+To see it, keep pressing <KeyboardKey>Tab</KeyboardKey> around on this page or visit [the catalog](https://www.codecademy.com/catalog/language/javascript) and navigate via <KeyboardKey>Tab</KeyboardKey> to see it in action.
 
 ## Playground
 

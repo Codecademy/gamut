@@ -59,7 +59,7 @@ export const GridFormNestedCheckboxInput: React.FC<
               return renderCheckbox({
                 option: { ...option, spacing: field.spacing },
                 state,
-                checkboxId: `${field.name}-${option.value}`,
+                name: field.name,
                 isRequired: !!required,
                 isDisabled: !!isDisabled,
                 onBlur,
@@ -75,6 +75,7 @@ export const GridFormNestedCheckboxInput: React.FC<
                 },
                 ref,
                 error,
+                flatOptions,
               });
             })}
           </Box>

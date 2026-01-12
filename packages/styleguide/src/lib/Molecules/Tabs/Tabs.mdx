@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { ComponentHeader, KeyboardKey, LinkTo } from '~styleguide/blocks';
 
 import * as TabStories from './Tabs.stories';
 
@@ -67,7 +67,7 @@ It is recommended to add a unique `aria-label` to the `TabNav` component, to dif
 
 ### Tabs with interactive content
 
-Normally, when you navigate to the contents of a `TabPanel` using the <kbd>tab</kbd> key or arrow keys, the entire section of the `TabPanel` will be in focus.
+Normally, when you navigate to the contents of a `TabPanel` using the <KeyboardKey>Tab</KeyboardKey> key or arrow keys, the entire section of the `TabPanel` will be in focus.
 
 However, if you have tabs with interactive content within them (such as a button or link), and tab into the `TabPanel`, the focus will be on the interactive content and not the entirety of the `TabPanel`.
 
@@ -78,6 +78,14 @@ However, if you have tabs with interactive content within them (such as a button
 You can disable a tab by passing the `isDisabled` prop to a specific `Tab` component. Or by passing an array of tab keys that should be disabled to the `disabledKeys` prop of the `Tabs` component.
 
 <Canvas of={TabStories.Disabled} />
+
+### Force mount
+
+By default, when a tab is not selected, the `TabPanel` is not mounted in the DOM. This is to improve performance and avoid unnecessary rendering. However, if you need to force mount the `TabPanel` even when it is not selected, you can pass the `shouldForceMount` prop to the `TabPanel` component.
+
+The `shouldForceMount` prop is a wrapper around the `shouldForceMount` prop in [react-aria-components](https://react-spectrum.adobe.com/react-aria/Tabs.html#tabpanel) that also visually hides the inactive tab panel.
+
+<Canvas of={TabStories.ForceMount} />
 
 ## Playground
 
