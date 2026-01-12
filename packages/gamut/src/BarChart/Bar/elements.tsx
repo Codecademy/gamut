@@ -83,6 +83,16 @@ export const ForegroundBar = styled(motion.create(Box))(
   })
 );
 
-export const BarListItem = ({ children }: { children: React.ReactNode }) => {
-  return <Box as="li">{children}</Box>;
+export const BarListItem = ({
+  'aria-label': ariaLabel,
+  children,
+}: {
+  'aria-label'?: string;
+  children: React.ReactNode;
+}) => {
+  return (
+    <Box aria-label={ariaLabel} as="li">
+      {children}
+    </Box>
+  );
 };

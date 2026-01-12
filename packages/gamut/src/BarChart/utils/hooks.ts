@@ -181,7 +181,7 @@ const isColorAlias = (
  * @returns A function that takes a background color and returns either 'white' or 'navy-900'
  */
 export const useBarBorderColor = () => {
-  const [active, activeColors, , getColorValue] = useColorModes();
+  const [, activeColors, , getColorValue] = useColorModes();
 
   const getBorderColor = useCallback(
     (bg: Colors): 'white' | 'navy-900' => {

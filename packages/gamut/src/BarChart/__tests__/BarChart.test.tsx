@@ -2,9 +2,9 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
 
 import { BarChart } from '..';
-import { BarProps } from '../types';
+import { BarProps } from '../shared/types';
 
-const defaultBarValues: BarProps[] = [
+const defaultBarValues = [
   { yLabel: 'Python', seriesOneValue: 100 },
   { yLabel: 'JavaScript', seriesOneValue: 75 },
 ];
@@ -18,16 +18,10 @@ const renderView = setupRtl(BarChart, {
 
 describe('BarChart', () => {
   describe('Basic Rendering', () => {
-    it('renders a list with the correct aria-label', () => {
+    it('renders a list with the correct number of list items', () => {
       const { view } = renderView();
 
-      const list = view.getByRole('list');
-      expect(list).toHaveAttribute('aria-label', 'Test chart');
-    });
-
-    it('renders the correct number of list items', () => {
-      const { view } = renderView();
-
+      view.getByRole('list', { name: 'Test chart' });
       const items = view.getAllByRole('listitem');
       expect(items).toHaveLength(2);
     });
@@ -35,15 +29,18 @@ describe('BarChart', () => {
     it('displays y-axis labels for each bar', () => {
       const { view } = renderView();
 
-      view.getByText('Python');
-      view.getByText('JavaScript');
+      const listItems = view.getAllByRole('listitem');
+      expect(listItems[0]).toHaveTextContent('Python');
+      expect(listItems[1]).toHaveTextContent('JavaScript');
     });
 
     it('displays values with unit when provided', () => {
       const { view } = renderView({ unit: 'XP' });
 
-      view.getByText('100 XP');
-      view.getByText('75 XP');
+      const xp100 = view.getAllByText('100 XP');
+      expect(xp100.length).toBeGreaterThan(0);
+      const xp75 = view.getAllByText('75 XP');
+      expect(xp75.length).toBeGreaterThan(0);
     });
   });
 
@@ -80,55 +77,42 @@ describe('BarChart', () => {
       { yLabel: 'Ruby', seriesOneValue: 25 },
     ];
 
-    it('preserves array order when sortBy is none', () => {
+    it.each([
+      {
+        description: 'preserves array order when sortBy is none',
+        sortBy: 'none' as const,
+        order: undefined,
+        expectedOrder: ['Python', 'JavaScript', 'Ruby'],
+      },
+      {
+        description: 'sorts by value ascending',
+        sortBy: 'value' as const,
+        order: 'ascending' as const,
+        expectedOrder: ['Ruby', 'Python', 'JavaScript'],
+      },
+      {
+        description: 'sorts by value descending',
+        sortBy: 'value' as const,
+        order: 'descending' as const,
+        expectedOrder: ['JavaScript', 'Python', 'Ruby'],
+      },
+      {
+        description: 'sorts by label ascending',
+        sortBy: 'label' as const,
+        order: 'ascending' as const,
+        expectedOrder: ['JavaScript', 'Python', 'Ruby'],
+      },
+    ])('$description', ({ sortBy, order, expectedOrder }) => {
       const { view } = renderView({
         barValues: unsortedBarValues,
-        sortBy: 'none',
+        sortBy,
+        ...(order && { order }),
       });
 
       const items = view.getAllByRole('listitem');
-      expect(items[0]).toHaveTextContent('Python');
-      expect(items[1]).toHaveTextContent('JavaScript');
-      expect(items[2]).toHaveTextContent('Ruby');
-    });
-
-    it('sorts by value ascending', () => {
-      const { view } = renderView({
-        barValues: unsortedBarValues,
-        sortBy: 'value',
-        order: 'ascending',
+      expectedOrder.forEach((label, index) => {
+        expect(items[index]).toHaveTextContent(label);
       });
-
-      const items = view.getAllByRole('listitem');
-      expect(items[0]).toHaveTextContent('Ruby');
-      expect(items[1]).toHaveTextContent('Python');
-      expect(items[2]).toHaveTextContent('JavaScript');
-    });
-
-    it('sorts by value descending', () => {
-      const { view } = renderView({
-        barValues: unsortedBarValues,
-        sortBy: 'value',
-        order: 'descending',
-      });
-
-      const items = view.getAllByRole('listitem');
-      expect(items[0]).toHaveTextContent('JavaScript');
-      expect(items[1]).toHaveTextContent('Python');
-      expect(items[2]).toHaveTextContent('Ruby');
-    });
-
-    it('sorts by label ascending', () => {
-      const { view } = renderView({
-        barValues: unsortedBarValues,
-        sortBy: 'label',
-        order: 'ascending',
-      });
-
-      const items = view.getAllByRole('listitem');
-      expect(items[0]).toHaveTextContent('JavaScript');
-      expect(items[1]).toHaveTextContent('Python');
-      expect(items[2]).toHaveTextContent('Ruby');
     });
   });
 
@@ -136,7 +120,12 @@ describe('BarChart', () => {
     it('renders a button when onClick is provided', () => {
       const onClick = jest.fn();
       const barValues: BarProps[] = [
-        { yLabel: 'Python', seriesOneValue: 100, onClick },
+        {
+          yLabel: 'Python',
+          seriesOneValue: 100,
+          onClick,
+          'aria-label': 'View Python details',
+        },
       ];
 
       const { view } = renderView({ barValues });
@@ -147,12 +136,19 @@ describe('BarChart', () => {
     it('calls onClick when button is clicked', async () => {
       const onClick = jest.fn();
       const barValues: BarProps[] = [
-        { yLabel: 'Python', seriesOneValue: 100, onClick },
+        {
+          yLabel: 'Python',
+          seriesOneValue: 100,
+          onClick,
+          'aria-label': 'View Python details',
+        },
       ];
 
       const { view } = renderView({ barValues });
 
-      const button = view.getByRole('button');
+      const button = view.getByRole('button', {
+        name: 'View Python details',
+      });
       await userEvent.click(button);
 
       expect(onClick).toHaveBeenCalled();
@@ -160,36 +156,43 @@ describe('BarChart', () => {
 
     it('renders an anchor when href is provided', () => {
       const barValues: BarProps[] = [
-        { yLabel: 'Python', seriesOneValue: 100, href: '/python' },
+        {
+          yLabel: 'Python',
+          seriesOneValue: 100,
+          href: '/python',
+          'aria-label': 'View Python details',
+        },
       ];
 
       const { view } = renderView({ barValues });
 
-      view.getByRole('link');
+      view.getByRole('link', { name: 'View Python details' });
     });
 
     it('sets correct href on anchor', () => {
       const barValues: BarProps[] = [
-        { yLabel: 'Python', seriesOneValue: 100, href: '/python' },
+        {
+          yLabel: 'Python',
+          seriesOneValue: 100,
+          href: '/python',
+          'aria-label': 'View Python details',
+        },
       ];
 
       const { view } = renderView({ barValues });
 
       const anchor = view.getByRole('link');
       expect(anchor).toHaveAttribute('href', '/python');
+      expect(anchor).toHaveAttribute('aria-label', 'View Python details');
     });
   });
 
-  describe('Accessibility (aria-label)', () => {
+  describe('Accessibility', () => {
     it('has aria-label on the list element', () => {
       const { view } = renderView({ 'aria-label': 'Skills chart' });
 
-      const list = view.getByRole('list');
-      expect(list).toHaveAttribute('aria-label', 'Skills chart');
+      view.getByRole('list', { name: 'Skills chart' });
     });
-  });
-
-  describe('Accessibility (aria-labelledby)', () => {
     it('has aria-labelledby on the list element when provided', () => {
       const { view } = renderView({
         'aria-label': undefined,
@@ -198,6 +201,41 @@ describe('BarChart', () => {
 
       const list = view.getByRole('list');
       expect(list).toHaveAttribute('aria-labelledby', 'chart-heading');
+    });
+    it('has aria-label on list items with unit', () => {
+      const { view } = renderView({ unit: 'XP' });
+
+      view.getByRole('listitem', {
+        name: '100 XP in Python category',
+      });
+
+      view.getByRole('listitem', {
+        name: '75 XP in JavaScript category',
+      });
+    });
+
+    it('has aria-label on interactive bars for both button/link and listitem', () => {
+      const onClick = jest.fn();
+      const { view } = renderView({
+        unit: 'XP',
+        barValues: [
+          {
+            yLabel: 'Python',
+            seriesOneValue: 100,
+            onClick,
+            'aria-label': 'View Python details',
+          },
+        ],
+      });
+
+      // Button should have the custom aria-label
+      const button = view.getByRole('button', { name: 'View Python details' });
+      expect(button).toHaveAttribute('aria-label', 'View Python details');
+
+      // Listitem should have the valuesSummary aria-label
+      view.getByRole('listitem', {
+        name: '100 XP in Python category',
+      });
     });
   });
 });

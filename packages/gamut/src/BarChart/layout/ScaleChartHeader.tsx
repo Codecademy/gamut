@@ -64,7 +64,6 @@ export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
 
   const scaleLabels = labelPositions.map(({ value, positionPercent }) => (
     <StyledLabelText
-      data-testid="chart-header-label"
       key={`label-${value}-${positionPercent}`}
       positionPercent={positionPercent}
       textAlign="center"

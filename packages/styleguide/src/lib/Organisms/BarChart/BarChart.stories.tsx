@@ -143,6 +143,7 @@ export const Interactive: Story = {
     barValues: simpleBarData.map((bar) => ({
       ...bar,
       onClick: action(`Clicked ${bar.yLabel}`),
+      'aria-label': `View ${bar.yLabel} course details`,
     })),
   },
 };
@@ -155,6 +156,7 @@ export const WithLinks: Story = {
     barValues: simpleBarData.map((bar) => ({
       ...bar,
       href: `#${bar.yLabel.toLowerCase().replace(/\s+/g, '-')}`,
+      'aria-label': `Go to ${bar.yLabel} course page`,
     })),
   },
 };

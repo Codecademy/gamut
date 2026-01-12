@@ -29,7 +29,7 @@ export type BarChartStyles = {
   seriesTwoLabel?: ColorAlias;
 };
 
-export type BarProps = {
+type BarPropsBase = {
   /** Label displayed on the y-axis for this bar */
   yLabel: string;
   /** The foreground/progress bar value (always shown) */
@@ -38,11 +38,20 @@ export type BarProps = {
   seriesTwoValue?: number;
   /** Optional gamut-icon to display next to the label */
   icon?: React.ComponentType<GamutIconProps>;
-  /** Click handler - makes row interactive as a button */
-  onClick?: ButtonProps['onClick'];
-  /** Link href - makes row interactive as an anchor */
-  href?: HTMLProps<HTMLAnchorElement>['href'];
 };
+
+type BarPropsWithoutInteraction = BarPropsBase & {
+  onClick?: never;
+  href?: never;
+};
+
+type BarPropsWithInteraction = BarPropsBase & {
+  onClick?: ButtonProps['onClick'];
+  href?: HTMLProps<HTMLAnchorElement>['href'];
+  'aria-label': string;
+};
+
+export type BarProps = BarPropsWithoutInteraction | BarPropsWithInteraction;
 
 export type BarChartProps = BarChartLabel & {
   /** Whether to animate bars on mount */

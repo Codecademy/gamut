@@ -71,6 +71,31 @@ Rows can be made interactive with `onClick` handlers or `href` links.
 
 <Canvas of={BarChartStories.Interactive} />
 
+When a bar has an `onClick` handler or `href` link, an `aria-label` is **required** for accessibility. This label is applied to the button or link element and should clearly describe the action or destination.
+
+**Best practices for `aria-label` text:**
+
+- **Be specific and action-oriented**: Describe what will happen when the user interacts with the bar
+
+  - ✅ Good: `"View Python course details"`, `"Go to JavaScript course page"`
+  - ❌ Avoid: `"Python"`, `"Click here"`, `"Link"`
+
+- **Include context**: Reference the bar's category or data when relevant
+
+  - ✅ Good: `"View Python course details"`, `"Go to JavaScript course page"`
+  - ❌ Avoid: Generic labels that don't relate to the specific bar
+
+- **Match user intent**: Use language that matches the action (view, navigate, edit, etc.)
+
+  - For buttons (`onClick`): Focus on the action, e.g., `"View Python course details"`, `"Edit JavaScript progress"`
+  - For links (`href`): Focus on the destination, e.g., `"Go to Python course page"`, `"Navigate to JavaScript dashboard"`
+
+- **Keep it concise**: Aim for 5-10 words that clearly communicate the purpose
+
+Note: The `aria-label` on the interactive element (button/link) is separate from the automatically generated `valuesSummary` that appears on the list item. Both serve different accessibility purposes - the interactive element's label describes the action, while the list item's label describes the data.
+
+<Canvas of={BarChartStories.WithLinks} />
+
 ## Playground
 
 <Canvas sourceState="shown" of={BarChartStories.Default} />
@@ -81,6 +106,7 @@ Rows can be made interactive with `onClick` handlers or `href` links.
 
 - Always provide either `aria-label` or `aria-labelledby` to describe the chart
 - Each row automatically generates an accessible label summarizing its values
+- **Interactive rows require an `aria-label`**: When using `onClick` or `href`, you must provide an `aria-label` prop for each interactive bar. This label is applied to the button or link element and should clearly describe the action or destination (see the Interactive section for best practices)
 - Interactive rows (with onClick/href) are properly announced as buttons/links
 - Grid lines are marked as decorative and hidden from screen readers
 - The scale header is hidden on small screens and marked as decorative
