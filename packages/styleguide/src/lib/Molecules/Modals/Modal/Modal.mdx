@@ -89,6 +89,16 @@ A Modal can be made scrollable by including large content inside.
 
 <Canvas of={ModalStories.Scrollable} />
 
+## Z-Index
+
+Modal accepts a `zIndex` prop (defaults to `3`) that controls the stacking order of its underlying Overlay. Use this when the modal needs to appear above other positioned elements like sticky headers or custom floating UI.
+
+```tsx
+<Modal zIndex={10} isOpen={isOpen} onRequestClose={handleClose}>
+  Content that needs to appear above other positioned elements
+</Modal>
+```
+
 ## Focus management
 
 The `containerFocusRef` prop allows you to programmatically control focus on the Modal container. This is useful for advanced focus management scenarios where you need to override the default focus behavior (the Modal has `data-autofocus` by default).
