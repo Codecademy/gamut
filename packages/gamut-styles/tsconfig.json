@@ -14,7 +14,8 @@
     "strictFunctionTypes": false,
     "strictPropertyInitialization": false,
     // disable import paths for lerna packages
-    "paths": {}
+    "paths": {},
+    "types": ["node"]
   },
   "files": [],
   "include": [],
