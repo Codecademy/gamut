@@ -62,11 +62,17 @@ type ResolvePropertyKey<P extends PropertyValue> = P extends DirectionalProperty
 
 export type ScaleValue<Config extends Prop> =
   Config['scale'] extends keyof Theme
-    ? keyof Theme[Config['scale']] | PropertyValues<ResolvePropertyKey<Config['property']>>
+    ?
+        | keyof Theme[Config['scale']]
+        | PropertyValues<ResolvePropertyKey<Config['property']>>
     : Config['scale'] extends MapScale
-    ? keyof Config['scale'] | PropertyValues<ResolvePropertyKey<Config['property']>>
+    ?
+        | keyof Config['scale']
+        | PropertyValues<ResolvePropertyKey<Config['property']>>
     : Config['scale'] extends ArrayScale
-    ? Config['scale'][number] | PropertyValues<ResolvePropertyKey<Config['property']>>
+    ?
+        | Config['scale'][number]
+        | PropertyValues<ResolvePropertyKey<Config['property']>>
     : PropertyValues<ResolvePropertyKey<Config['property']>, true>;
 
 export type Scale<Config extends Prop> = ResponsiveProp<

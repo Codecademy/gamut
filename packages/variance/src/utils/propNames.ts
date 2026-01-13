@@ -1,4 +1,4 @@
-import { BaseProperty } from '../types/config';
+import { BaseProperty, PropertyValue } from '../types/config';
 
 const SHORTHAND_PROPERTIES = [
   'border',
@@ -36,6 +36,12 @@ const compare = (a: number, b: number) => {
   return SORT.EQUAL;
 };
 
+const isShorthand = (prop: PropertyValue): boolean =>
+  typeof prop === 'string' && SHORTHAND_PROPERTIES.includes(prop);
+
+const getShorthandIndex = (prop: PropertyValue): number =>
+  typeof prop === 'string' ? SHORTHAND_PROPERTIES.indexOf(prop) : -1;
+
 /**
  * Orders all properties by the most dependent props
  * @param config
@@ -47,18 +53,15 @@ export const orderPropNames = (config: Record<string, BaseProperty>) =>
     const { property: aProp, properties: aProperties = [] } = aConf;
     const { property: bProp, properties: bProperties = [] } = bConf;
 
-    const aIsShorthand = SHORTHAND_PROPERTIES.includes(aProp);
-    const bIsShorthand = SHORTHAND_PROPERTIES.includes(bProp);
+    const aIsShorthand = isShorthand(aProp);
+    const bIsShorthand = isShorthand(bProp);
 
     if (aIsShorthand && bIsShorthand) {
       const aNum = aProperties.length;
       const bNum = bProperties.length;
 
       if (aProp !== bProp) {
-        return compare(
-          SHORTHAND_PROPERTIES.indexOf(aProp),
-          SHORTHAND_PROPERTIES.indexOf(bProp)
-        );
+        return compare(getShorthandIndex(aProp), getShorthandIndex(bProp));
       }
 
       if (aProp === bProp) {

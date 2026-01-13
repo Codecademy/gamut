@@ -65,7 +65,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   const contextValue = {
     hasGlobals: shouldInsertGlobals,
     hasCache: shouldCreateCache,
-    useLogicalProperties
+    useLogicalProperties,
   };
 
   const globals = shouldInsertGlobals && (
