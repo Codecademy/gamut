@@ -8,7 +8,6 @@ runs:
       uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610
       with:
         node-version-file: .nvmrc
-        cache: 'yarn'
 
     - name: Install dependencies
       shell: bash
