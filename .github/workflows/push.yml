@@ -15,15 +15,8 @@ jobs:
       - name: Enable Corepack (Yarn 4)
         run: corepack enable
         shell: bash
-      - uses: actions/cache@v4
-        id: yarn-cache
-        with:
-          path: |
-            **/node_modules
-            !**/node_modules/.cache
-          key: ${{ runner.os }}-yarn-node-${{ hashFiles('**/yarn.lock') }}
-        - name: Install Dependencies If Not Cached
-        run: \[ -d node_modules \] || yarn install --immutable
+      - name: Install Dependencies
+        run: yarn install --immutable
         shell: bash
       - run: yarn format:verify
         shell: bash
@@ -46,15 +39,8 @@ jobs:
       - name: Enable Corepack (Yarn 4)
         run: corepack enable
         shell: bash
-      - uses: actions/cache@v4
-        id: yarn-cache
-        with:
-          path: |
-            **/node_modules
-            !**/node_modules/.cache
-          key: ${{ runner.os }}-yarn-node-${{ hashFiles('**/yarn.lock') }}
-      - name: Install Dependencies If Not Cached
-        run: \[ -d node_modules \] || yarn install --immutable
+      - name: Install Dependencies
+        run: yarn install --immutable
         shell: bash
       - run: yarn build
         shell: bash
