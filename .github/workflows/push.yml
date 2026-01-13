@@ -20,8 +20,7 @@ jobs:
         with:
           node-version: 22
           command: build
-      - run: yarn ${{ matrix.command }}
-
+      - run: corepack enable && yarn ${{ matrix.command }}
 on:
   push:
     branches:
