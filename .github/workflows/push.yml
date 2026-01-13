@@ -4,10 +4,30 @@ jobs:
   format:
     runs-on: ubuntu-latest
     steps:
-      - uses: Codecademy/run-on-yarn@v3.0.0
+      - uses: actions/checkout@v4
         with:
-          node-version: 22
-          command: format:verify
+          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          fetch-depth: 1
+      - name: Setup Node.js
+        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610
+        with:
+          node-version-file: .nvmrc
+          cache: 'yarn'
+      - uses: actions/cache@v4
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+            !**/node_modules/.cache
+          key: ${{ runner.os }}-yarn-node-${{ hashFiles('**/yarn.lock') }}
+      - name: Enable Corepack (Yarn 4)
+        run: corepack enable
+        shell: bash
+      - name: Install Dependencies If Not Cached
+        run: \[ -d node_modules \] || yarn install --immutableß
+        shell: bash
+      - run: yarn format:verify
+        shell: bash
 
   lint:
     strategy:
@@ -16,11 +36,30 @@ jobs:
         command: ['lint', 'verify']
     runs-on: ubuntu-latest
     steps:
-      - uses: Codecademy/run-on-yarn@v3.0.0
+      - uses: actions/checkout@v4
         with:
-          node-version: 22
-          command: build
-      - run: corepack enable && yarn ${{ matrix.command }}
+          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          fetch-depth: 1
+      - name: Setup Node.js
+        uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610
+        with:
+          node-version-file: .nvmrc
+          cache: 'yarn'
+      - uses: actions/cache@v4
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+            !**/node_modules/.cache
+          key: ${{ runner.os }}-yarn-node-${{ hashFiles('**/yarn.lock') }}
+      - name: Enable Corepack (Yarn 4)
+        run: corepack enable
+        shell: bash
+      - name: Install Dependencies If Not Cached
+        run: \[ -d node_modules \] || yarn install --immutableß
+        shell: bash
+      - run: yarn build
+        shell: bash
 on:
   push:
     branches:
