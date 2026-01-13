@@ -55,25 +55,24 @@ export type PropertyValues<
   All extends true ? never : object | any[]
 >;
 
-// Extract the actual property key from a PropertyValue (handles DirectionalProperty)
-type ResolvePropertyKey<P extends PropertyValue> = P extends DirectionalProperty
-  ? P['physical'] | P['logical']
-  : P;
+// Extract a single property key from PropertyValue for type inference
+// Uses 'physical' for directional properties (both physical/logical have same value types)
+type BasePropertyKey<P> = P extends DirectionalProperty ? P['physical'] : P;
 
 export type ScaleValue<Config extends Prop> =
   Config['scale'] extends keyof Theme
     ?
         | keyof Theme[Config['scale']]
-        | PropertyValues<ResolvePropertyKey<Config['property']>>
+        | PropertyValues<BasePropertyKey<Config['property']>>
     : Config['scale'] extends MapScale
     ?
         | keyof Config['scale']
-        | PropertyValues<ResolvePropertyKey<Config['property']>>
+        | PropertyValues<BasePropertyKey<Config['property']>>
     : Config['scale'] extends ArrayScale
     ?
         | Config['scale'][number]
-        | PropertyValues<ResolvePropertyKey<Config['property']>>
-    : PropertyValues<ResolvePropertyKey<Config['property']>, true>;
+        | PropertyValues<BasePropertyKey<Config['property']>>
+    : PropertyValues<BasePropertyKey<Config['property']>, true>;
 
 export type Scale<Config extends Prop> = ResponsiveProp<
   ScaleValue<Config> | ((theme: Theme) => ScaleValue<Config>)
