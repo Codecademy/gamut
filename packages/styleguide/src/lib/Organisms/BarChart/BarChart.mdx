@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as BarChartStories from './BarChart.stories';
 
@@ -96,23 +96,57 @@ Note: The `aria-label` on the interactive element (button/link) is separate from
 
 <Canvas of={BarChartStories.WithLinks} />
 
-## Playground
-
-<Canvas sourceState="shown" of={BarChartStories.Default} />
-
-<Controls />
-
 ## Accessibility considerations
 
-- Always provide either `aria-label` or `aria-labelledby` to describe the chart
-- Each row automatically generates an accessible label summarizing its values
+### Chart and row labeling
+
+**Chart-level labeling:**
+
+- Always provide either `title` or `aria-labelledby` to describe the chart (see Title and description section below for details)
+- The chart is wrapped in a semantic `<figure>` element for proper structure
+
+**Row-level labeling:**
+
+- Each row automatically generates an accessible label summarizing its values (e.g., "100 XP in Python category")
+- Interactive rows (with `onClick` or `href`) are properly announced as buttons/links
 - **Interactive rows require an `aria-label`**: When using `onClick` or `href`, you must provide an `aria-label` prop for each interactive bar. This label is applied to the button or link element and should clearly describe the action or destination (see the Interactive section for best practices)
-- Interactive rows (with onClick/href) are properly announced as buttons/links
-- Grid lines are marked as decorative and hidden from screen readers
-- The scale header is hidden on small screens and marked as decorative
 
 ## UX writing
 
 - Keep y-axis labels concise (1-3 words)
 - Use consistent unit labels (e.g., "XP", "hours", "points")
 - Consider locale-aware number formatting for international audiences
+
+### Title and description
+
+The BarChart component uses semantic HTML to provide context and accessibility. The chart is wrapped in a [`<figure>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure) element, and the description is displayed in a [`<figcaption>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption) element. This semantic structure helps screen readers and other assistive technologies understand the relationship between the chart and its description. **Visual title + description is the greatly preferred pattern** for accessibility and user experience.
+
+**Preferred pattern: Visual title + description**
+
+Provide both `title` and `description` props to make the chart's purpose and key takeaways clear to all users:
+
+- `title`: A heading that identifies the chart. Can be a string or an object with `{ as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', title: string, variant?: Text['variant'] }` to specify the heading level and optionally override the default styling with a <LinkTo id="Typography/Text">Text variant</LinkTo>.
+- `description`: A summary of the information or the overall takeaway displayed in the `<figcaption>` element.
+
+<Canvas of={BarChartStories.WithVisualTitleAndDescription} />
+
+**Alternative patterns:**
+`hideTitle` and `hideDescription` will keep the screenreader text but hide the visual descriptions.
+
+<Canvas of={BarChartStories.WithHiddenTitleAndDescription} />
+
+- **External title with visual description**: Use `aria-labelledby` for the title but show the description visually when the title exists elsewhere but you want to display the description.
+
+<Canvas of={BarChartStories.WithExternalTitle} />
+
+**Best practices:**
+
+- Always provide a `description` prop - it's required and should summarize the chart's key information
+- Use semantic heading levels for titles (h1-h6) to maintain proper document structure
+- When using `aria-labelledby`, ensure the referenced element exists and is properly labeled
+
+## Playground
+
+<Canvas sourceState="shown" of={BarChartStories.Default} />
+
+<Controls />

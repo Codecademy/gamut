@@ -1,6 +1,7 @@
-import { useMemo } from 'react';
+import { useId, useMemo } from 'react';
 
 import { Box } from '../Box';
+import { Text } from '../Typography/Text';
 import { Bar } from './Bar';
 import { BarChartProvider } from './BarChartProvider';
 import { GridLines } from './layout/GridLines';
@@ -11,16 +12,19 @@ import { sortBars } from './utils';
 import { useBarChart } from './utils/hooks';
 
 export const BarChart: React.FC<BarChartProps> = ({
-  'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledBy,
   animate = false,
   barValues,
+  description,
+  hideDescription = false,
+  hideTitle = false,
   maxRange,
   minRange,
   order = 'ascending',
   sortBy = 'none',
-  unit = '',
   styleConfig,
+  title,
+  unit = '',
   xScale,
 }) => {
   const sortedBars = useMemo(
@@ -41,9 +45,25 @@ export const BarChart: React.FC<BarChartProps> = ({
   // Calculate number of ticks for the scale header
   const tickCount = Math.ceil((maxRange - minRange) / contextValue.xScale) + 1;
 
+  const titleId = useId();
+
+  const titleProps =
+    typeof title === 'string'
+      ? {
+          as: 'h2' as const,
+          children: title,
+          hidden: hideTitle,
+          id: titleId,
+          variant: 'title-xs' as const,
+        }
+      : title
+      ? { ...title, children: title.title, hidden: hideTitle, id: titleId }
+      : null;
+
   return (
     <BarChartProvider value={contextValue}>
-      <Box position="relative" width="100%">
+      {title && <Text mb={4} {...titleProps} />}
+      <Box as="figure" position="relative" width="100%">
         {/* Scale header with x-axis labels */}
         <ScaleChartHeader
           labelCount={tickCount}
@@ -51,13 +71,9 @@ export const BarChart: React.FC<BarChartProps> = ({
           min={minRange}
         />
 
-        {/* Chart area with grid lines and bars */}
         <Box position="relative" width="100%">
-          {/* Grid lines (hidden on small screens) */}
           <GridLines max={maxRange} min={minRange} tickCount={tickCount} />
-
-          {/* Bar list */}
-          <BarsList aria-label={ariaLabel} aria-labelledby={ariaLabelledBy}>
+          <BarsList aria-labelledby={ariaLabelledBy ?? titleId}>
             {sortedBars.map((bar, index) => {
               const uniqueKey = `${bar.yLabel}-${bar.seriesOneValue}-${
                 bar.seriesTwoValue ?? ''
@@ -66,6 +82,15 @@ export const BarChart: React.FC<BarChartProps> = ({
             })}
           </BarsList>
         </Box>
+        <Text
+          as="figcaption"
+          color="text-disabled"
+          hidden={hideDescription}
+          mt={8}
+          variant="p-small"
+        >
+          {description}
+        </Text>
       </Box>
     </BarChartProvider>
   );

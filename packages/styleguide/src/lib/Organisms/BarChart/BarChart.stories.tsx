@@ -1,4 +1,4 @@
-import { BarChart, BarProps } from '@codecademy/gamut';
+import { BarChart, BarProps, Box } from '@codecademy/gamut';
 import {
   BookFlipPageIcon,
   CodeIcon,
@@ -12,7 +12,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof BarChart> = {
   component: BarChart,
   args: {
-    'aria-label': 'Skills experience chart',
+    title: 'Skills experience chart',
+    description: 'Chart showing programming language experience levels',
     minRange: 0,
     maxRange: 2000,
     unit: 'XP',
@@ -82,6 +83,8 @@ const barDataWithIcons: BarProps[] = [
 export const Default: Story = {
   args: {
     barValues: simpleBarData,
+    title: 'Skills experience chart',
+    description: 'Chart showing programming language experience levels',
   },
 };
 
@@ -91,6 +94,8 @@ export const Default: Story = {
 export const Stacked: Story = {
   args: {
     barValues: stackedBarData,
+    title: 'Skills progress chart',
+    description: 'Progress toward total goals for each programming language',
   },
 };
 
@@ -100,6 +105,8 @@ export const Stacked: Story = {
 export const WithIcons: Story = {
   args: {
     barValues: barDataWithIcons,
+    title: 'Skills progress with icons',
+    description: 'Skills progress with visual icons for each category',
   },
 };
 
@@ -110,28 +117,8 @@ export const Animated: Story = {
   args: {
     barValues: stackedBarData,
     animate: true,
-  },
-};
-
-/**
- * Bar chart sorted by value in descending order
- */
-export const SortedByValue: Story = {
-  args: {
-    barValues: simpleBarData,
-    sortBy: 'value',
-    order: 'descending',
-  },
-};
-
-/**
- * Bar chart sorted alphabetically by label
- */
-export const SortedByLabel: Story = {
-  args: {
-    barValues: simpleBarData,
-    sortBy: 'label',
-    order: 'ascending',
+    title: 'Animated skills chart',
+    description: 'Animated chart showing progress with entrance animations',
   },
 };
 
@@ -145,6 +132,8 @@ export const Interactive: Story = {
       onClick: action(`Clicked ${bar.yLabel}`),
       'aria-label': `View ${bar.yLabel} course details`,
     })),
+    title: 'Interactive skills chart',
+    description: 'Click on any row to view detailed course information',
   },
 };
 
@@ -158,6 +147,100 @@ export const WithLinks: Story = {
       href: `#${bar.yLabel.toLowerCase().replace(/\s+/g, '-')}`,
       'aria-label': `Go to ${bar.yLabel} course page`,
     })),
+    title: 'Skills chart with links',
+    description: 'Each row links to its corresponding course page',
+  },
+};
+
+/**
+ * **Preferred pattern**: Visual title + description. This is the recommended approach for accessibility and user experience.
+ */
+export const WithVisualTitleAndDescription: Story = {
+  args: {
+    barValues: simpleBarData,
+    title: 'Programming Skills Overview',
+    description:
+      'Experience points earned across different programming languages',
+  },
+};
+
+/**
+ * Title and description hidden, using aria-labelledby to reference external heading.
+ * Use this pattern when the title and description are provided elsewhere in the page structure.
+ */
+export const WithHiddenTitleAndDescription: Story = {
+  render: () => {
+    return (
+      <BarChart
+        barValues={simpleBarData}
+        description="Experience points earned across different programming languages"
+        hideDescription
+        hideTitle
+        maxRange={2000}
+        minRange={0}
+        title="Programming Skills Overview"
+        unit="XP"
+      />
+    );
+  },
+};
+
+/**
+ * Visual description with external title using aria-labelledby.
+ * Use this pattern when the title exists elsewhere in the page but you want to show the description.
+ */
+export const WithExternalTitle: Story = {
+  render: () => {
+    return (
+      <>
+        <Box
+          as="h2"
+          bg="paleBlue"
+          border={1}
+          borderRadius="lg"
+          id="external-chart-title"
+          p={16}
+          textAlign="right"
+        >
+          Programming Skills Overview
+        </Box>
+        <BarChart
+          aria-labelledby="external-title"
+          barValues={simpleBarData}
+          description="Experience points earned across different programming languages"
+          hideDescription={false}
+          maxRange={2000}
+          minRange={0}
+          unit="XP"
+        />
+      </>
+    );
+  },
+};
+
+/**
+ * Bar chart sorted by value in descending order
+ */
+export const SortedByValue: Story = {
+  args: {
+    barValues: simpleBarData,
+    sortBy: 'value',
+    order: 'descending',
+    title: 'Skills ranked by experience',
+    description: 'Skills sorted by experience level from highest to lowest',
+  },
+};
+
+/**
+ * Bar chart sorted alphabetically by label
+ */
+export const SortedByLabel: Story = {
+  args: {
+    barValues: simpleBarData,
+    sortBy: 'label',
+    order: 'ascending',
+    title: 'Skills sorted alphabetically',
+    description: 'Skills sorted alphabetically by language name',
   },
 };
 
@@ -174,6 +257,8 @@ export const CustomStyles: Story = {
       seriesOneLabel: 'feedback-error',
       seriesTwoLabel: 'feedback-success',
     },
+    title: 'Custom styled skills chart',
+    description: 'Custom color scheme applied to chart elements',
   },
 };
 
@@ -185,5 +270,7 @@ export const CustomScale: Story = {
     barValues: simpleBarData,
     maxRange: 2000,
     xScale: 250,
+    title: 'Skills chart with custom scale',
+    description: 'Custom scale intervals for more granular value display',
   },
 };

@@ -1,16 +1,26 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { ColorAlias } from '@codecademy/gamut-styles';
-import { HTMLProps } from 'react';
+import { ComponentProps, HTMLProps } from 'react';
 
 import { ButtonProps } from '../../Button';
+import { Text } from '../../Typography/Text';
+import { HeadingTags } from '../../Typography/types';
 
+type titleType =
+  | string
+  | {
+      as?: HeadingTags;
+      title: string;
+      variant?: ComponentProps<typeof Text>['variant'];
+    };
 type BarChartAriaLabel = {
-  'aria-label': string;
+  title: titleType;
   'aria-labelledby'?: never;
+  hideTitle?: boolean;
 };
 
 type BarChartAriaLabelledBy = {
-  'aria-label'?: never;
+  title?: never;
   'aria-labelledby': string;
 };
 
@@ -58,6 +68,12 @@ export type BarChartProps = BarChartLabel & {
   animate?: boolean;
   /** Array of bar data to render */
   barValues: BarProps[];
+  /** Figure caption for the BarChart. This should be a summary of the information or the overall takeaway of the information in the chart */
+  description: string;
+  /** Hides the visual figcaption */
+  hideDescription?: boolean;
+  /** Hides the visual title for the chart UL */
+  hideTitle?: boolean;
   /** Maximum value for the x-axis scale */
   maxRange: number;
   /** Minimum value for the x-axis scale (usually 0) */

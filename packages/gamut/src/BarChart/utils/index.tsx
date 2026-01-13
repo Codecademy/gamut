@@ -149,9 +149,9 @@ export const getValuesSummary = ({
 }): string => {
   if (seriesTwoValue !== undefined) {
     const gained = seriesOneValue;
-    return `${gained} ${unit} gained - now at ${seriesTwoValue} ${unit} in ${yLabel} category`;
+    return `${gained} ${unit} gained - now at ${seriesTwoValue} ${unit} in ${yLabel}`;
   }
-  return `${seriesOneValue} ${unit} in ${yLabel} category`;
+  return `${seriesOneValue} ${unit} in ${yLabel}`;
 };
 
 /**
