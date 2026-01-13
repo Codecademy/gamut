@@ -4,6 +4,9 @@ jobs:
   format:
     runs-on: ubuntu-latest
     steps:
+      - name: Enable Corepack (Yarn 4)
+        run: corepack enable
+        shell: bash
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
@@ -20,9 +23,6 @@ jobs:
             **/node_modules
             !**/node_modules/.cache
           key: ${{ runner.os }}-yarn-node-${{ hashFiles('**/yarn.lock') }}
-      - name: Enable Corepack (Yarn 4)
-        run: corepack enable
-        shell: bash
       - name: Install Dependencies If Not Cached
         run: \[ -d node_modules \] || yarn install --immutableß
         shell: bash
@@ -36,6 +36,9 @@ jobs:
         command: ['lint', 'verify']
     runs-on: ubuntu-latest
     steps:
+      - name: Enable Corepack (Yarn 4)
+        run: corepack enable
+        shell: bash
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
@@ -52,9 +55,6 @@ jobs:
             **/node_modules
             !**/node_modules/.cache
           key: ${{ runner.os }}-yarn-node-${{ hashFiles('**/yarn.lock') }}
-      - name: Enable Corepack (Yarn 4)
-        run: corepack enable
-        shell: bash
       - name: Install Dependencies If Not Cached
         run: \[ -d node_modules \] || yarn install --immutableß
         shell: bash

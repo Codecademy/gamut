@@ -4,6 +4,9 @@ description: 'Setup a NodeJS environment, install deps, & builds packages'
 runs:
   using: 'composite'
   steps:
+    - name: Enable Corepack (Yarn 4)
+        run: corepack enable
+        shell: bash
     - name: Setup Node.js
       uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610
       with:
@@ -12,4 +15,4 @@ runs:
 
     - name: Install dependencies
       shell: bash
-      run: corepack enable && yarn install --immutable
+      run: yarn install --immutable
