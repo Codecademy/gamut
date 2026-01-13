@@ -24,7 +24,7 @@ jobs:
             !**/node_modules/.cache
           key: ${{ runner.os }}-yarn-node-${{ hashFiles('**/yarn.lock') }}
       - name: Install Dependencies If Not Cached
-        run: \[ -d node_modules \] || yarn install --immutableß
+        run: \[ -d node_modules \] || yarn install --immutable
         shell: bash
       - run: yarn format:verify
         shell: bash
@@ -56,7 +56,7 @@ jobs:
             !**/node_modules/.cache
           key: ${{ runner.os }}-yarn-node-${{ hashFiles('**/yarn.lock') }}
       - name: Install Dependencies If Not Cached
-        run: \[ -d node_modules \] || yarn install --immutableß
+        run: \[ -d node_modules \] || yarn install --immutable
         shell: bash
       - run: yarn build
         shell: bash
