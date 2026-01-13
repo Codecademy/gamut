@@ -42,7 +42,6 @@ export const BarChart: React.FC<BarChartProps> = ({
     barCount: sortedBars?.length,
   });
 
-  // Calculate number of ticks for the scale header
   const tickCount = Math.ceil((maxRange - minRange) / contextValue.xScale) + 1;
 
   const titleId = useId();
@@ -62,15 +61,23 @@ export const BarChart: React.FC<BarChartProps> = ({
 
   return (
     <BarChartProvider value={contextValue}>
-      {title && <Text mb={4} {...titleProps} />}
+      {title && (
+        <Box
+          borderBottom={1}
+          borderColor="background-disabled"
+          mb={24}
+          pb={8}
+          width="100%"
+        >
+          <Text mb={4} {...titleProps} />
+        </Box>
+      )}
       <Box as="figure" position="relative" width="100%">
-        {/* Scale header with x-axis labels */}
         <ScaleChartHeader
           labelCount={tickCount}
           max={maxRange}
           min={minRange}
         />
-
         <Box position="relative" width="100%">
           <GridLines max={maxRange} min={minRange} tickCount={tickCount} />
           <BarsList aria-labelledby={ariaLabelledBy ?? titleId}>
