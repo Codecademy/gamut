@@ -98,6 +98,7 @@ export const variance = {
       property,
       properties = [property],
       scale,
+      resolveProperty,
     } = config;
     const getScaleValue = createScaleLookup(scale);
     const alwaysTransform = scale === undefined || isArray(scale);
@@ -138,15 +139,27 @@ export const variance = {
         // for each property look up the scale value from theme if passed and apply any
         // final transforms to the value
         properties.forEach((property) => {
+          // Resolve directional properties if resolveProperty hook is provided
+          let resolvedProperty: string;
+          if (resolveProperty && typeof property === 'object') {
+            const useLogicalProperties =
+              (props.theme as { useLogicalProperties?: boolean })
+                ?.useLogicalProperties ?? true;
+            const mode = resolveProperty(useLogicalProperties);
+            resolvedProperty = property[mode];
+          } else {
+            resolvedProperty = property as string;
+          }
+
           let styleValue: ReturnType<typeof transform> = intermediateValue;
 
           if (useTransform && !isUndefined(styleValue)) {
-            styleValue = transform(styleValue, property, props);
+            styleValue = transform(styleValue, resolvedProperty, props);
           }
           switch (typeof styleValue) {
             case 'number':
             case 'string':
-              return (styles[property] = styleValue);
+              return (styles[resolvedProperty] = styleValue);
             case 'object':
               return Object.assign(styles, styleValue);
             default:

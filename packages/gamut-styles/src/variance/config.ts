@@ -1,4 +1,5 @@
 import { transformSize } from '@codecademy/variance';
+import { getPropertyMode } from '@codecademy/variance';
 
 export const color = {
   color: { property: 'color', scale: 'colors' },
@@ -243,8 +244,19 @@ export const margin = {
   },
   mt: { property: 'marginTop', scale: 'spacing' },
   mb: { property: 'marginBottom', scale: 'spacing' },
-  mr: { property: 'marginRight', scale: 'spacing' },
-  ml: { property: 'marginLeft', scale: 'spacing' },
+  mr: { property: {
+    physical: 'marginRight',
+    logical: 'marginInlineEnd',
+  },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode
+   },
+  ml: { property: {
+    physical: 'marginLeft',
+    logical: 'marginInlineStart',
+  },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode },
 } as const;
 
 export const padding = {

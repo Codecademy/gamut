@@ -1,5 +1,9 @@
 import { Theme } from '@emotion/react';
 
+import {
+  DirectionalProperty,
+  PropertyMode,
+} from '../getPropertyMode/getPropertyMode';
 import { DefaultCSSPropertyValue, PropertyTypes } from './properties';
 import {
   AbstractProps,
@@ -14,9 +18,11 @@ import { AllUnionKeys, Key, KeyFromUnion } from './utils';
 export type MapScale = Record<string | number, string | number>;
 export type ArrayScale = readonly (string | number)[] & { length: 0 };
 
+export type PropertyValue = keyof PropertyTypes | DirectionalProperty;
+
 export interface BaseProperty {
-  property: keyof PropertyTypes;
-  properties?: readonly (keyof PropertyTypes)[];
+  property: PropertyValue;
+  properties?: readonly PropertyValue[];
 }
 
 export interface Prop extends BaseProperty {
@@ -26,6 +32,8 @@ export interface Prop extends BaseProperty {
     prop?: string,
     props?: AbstractProps
   ) => string | number | CSSObject;
+  /** Hook to resolve directional properties (physical/logical) based on theme setting */
+  resolveProperty?: (useLogicalProperties: boolean) => PropertyMode;
 }
 
 export interface AbstractPropTransformer extends Prop {
@@ -47,14 +55,19 @@ export type PropertyValues<
   All extends true ? never : object | any[]
 >;
 
+// Extract the actual property key from a PropertyValue (handles DirectionalProperty)
+type ResolvePropertyKey<P extends PropertyValue> = P extends DirectionalProperty
+  ? P['physical'] | P['logical']
+  : P;
+
 export type ScaleValue<Config extends Prop> =
   Config['scale'] extends keyof Theme
-    ? keyof Theme[Config['scale']] | PropertyValues<Config['property']>
+    ? keyof Theme[Config['scale']] | PropertyValues<ResolvePropertyKey<Config['property']>>
     : Config['scale'] extends MapScale
-    ? keyof Config['scale'] | PropertyValues<Config['property']>
+    ? keyof Config['scale'] | PropertyValues<ResolvePropertyKey<Config['property']>>
     : Config['scale'] extends ArrayScale
-    ? Config['scale'][number] | PropertyValues<Config['property']>
-    : PropertyValues<Config['property'], true>;
+    ? Config['scale'][number] | PropertyValues<ResolvePropertyKey<Config['property']>>
+    : PropertyValues<ResolvePropertyKey<Config['property']>, true>;
 
 export type Scale<Config extends Prop> = ResponsiveProp<
   ScaleValue<Config> | ((theme: Theme) => ScaleValue<Config>)
