@@ -8,8 +8,12 @@ runs:
       uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
       with:
         node-version-file: .nvmrc
-    - name: Enable Corepack (Yarn 4)
-      run: corepack enable
+    - name: Enable Corepack and prepare Yarn 4
+      run: |
+        corepack enable
+        corepack prepare --activate
+        echo "Yarn version: $(yarn --version)"
+        echo "Node version: $(node --version)"
       shell: bash
     - name: Install dependencies
       shell: bash
