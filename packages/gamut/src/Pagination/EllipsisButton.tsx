@@ -6,7 +6,7 @@ import { wrapWithSlideAnimation } from './utils';
 
 export type EllipsisButtonProps = PaginationButtonProps & {
   'aria-label': string;
-  direction: 'back' | 'forward';
+  btnDirection: 'back' | 'forward';
 };
 
 const ellipsisButtonContents = { ellipsis: '•••', back: '«', forward: '»' };
@@ -15,13 +15,13 @@ export const BaseEllipsisButton = forwardRef<
   ButtonBaseElements,
   EllipsisButtonProps
   // eslint-disable-next-line react/prop-types
->(({ direction, showButton, ...props }, ref) => {
+>(({ btnDirection, showButton, ...props }, ref) => {
   const [contents, setContents] = useState(ellipsisButtonContents.ellipsis);
 
   return (
     <PaginationButton
       ellipsis
-      onMouseEnter={() => setContents(ellipsisButtonContents[direction])}
+      onMouseEnter={() => setContents(ellipsisButtonContents[btnDirection])}
       onMouseLeave={() => setContents(ellipsisButtonContents.ellipsis)}
       {...props}
       ref={ref}
