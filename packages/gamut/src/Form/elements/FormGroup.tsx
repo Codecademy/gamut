@@ -1,10 +1,12 @@
-import { variant } from '@codecademy/gamut-styles';
+import { css, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { ComponentProps } from 'react';
 import * as React from 'react';
 
+import { Anchor } from '../../Anchor';
 import { Box } from '../../Box';
+import { Markdown } from '../../Markdown';
 import { BaseInputProps } from '../types';
 import { FormError } from './FormError';
 import { FormGroupDescription } from './FormGroupDescription';
@@ -20,6 +22,8 @@ export interface FormGroupProps
   error?: string;
   description?: string;
   labelSize?: 'small' | 'large';
+  isFirstError?: boolean;
+  errorType?: 'initial' | 'absolute';
 }
 
 const formGroupSpacing = variant({
@@ -59,6 +63,12 @@ const FormGroupContainer: React.FC<
   return <StyledFormGroupContainer mb={mb} pb={pb} {...rest} />;
 };
 
+const ErrorAnchor = styled(Anchor)(
+  css({
+    color: 'feedback-error',
+  })
+);
+
 export const FormGroup: React.FC<FormGroupProps> = ({
   children,
   className,
@@ -71,6 +81,8 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   labelSize,
   required,
   isSoloField,
+  isFirstError,
+  errorType,
   ...rest
 }) => {
   const labelComponent = label ? (
@@ -97,11 +109,36 @@ export const FormGroup: React.FC<FormGroupProps> = ({
       {labelComponent}
       {descriptionComponent}
       {children}
-      {error && (
-        <FormError aria-live="polite" role="alert">
-          {error}
-        </FormError>
-      )}
+      {/*
+       * For screen readers to read new content, role="alert" and/or
+       * aria-live wrapper elements must be present *before* content is
+       * added. Thus, we need to render the FormError span always,
+       * regardless of whether or not there is an error.
+       */}
+      <FormError
+        aria-live={isFirstError ? 'assertive' : 'off'}
+        role={isFirstError ? 'alert' : 'status'}
+        variant={errorType}
+      >
+        {error && (
+          <Markdown
+            inline
+            overrides={{
+              a: {
+                allowedAttributes: ['href', 'target'],
+                component: ErrorAnchor,
+                processNode: (
+                  node: unknown,
+                  props: { onClick?: () => void }
+                ) => <ErrorAnchor {...props} />,
+              },
+            }}
+            skipDefaultOverrides={{ a: true }}
+            spacing="none"
+            text={error}
+          />
+        )}
+      </FormError>
     </FormGroupContainer>
   );
 };

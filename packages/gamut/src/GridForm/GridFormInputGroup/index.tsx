@@ -1,13 +1,9 @@
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import * as React from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
-import { Anchor } from '../../Anchor';
-import { FormError, FormGroup, FormGroupLabel } from '../../Form';
+import { FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
-import { Markdown } from '../../Markdown';
 import {
   GridFormField,
   GridFormHiddenField,
@@ -24,11 +20,7 @@ import { GridFormSweetContainerInput } from './GridFormSweetContainerInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
 
-const ErrorAnchor = styled(Anchor)(
-  css({
-    color: 'feedback-error',
-  })
-);
+
 
 export type GridFormInputGroupProps = {
   error?: string;
@@ -168,33 +160,14 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
   return (
     <Column rowspan={field?.rowspan ?? 1} size={field?.size}>
-      <FormGroup spacing={isTightCheckbox ? 'tight' : 'padded'}>
+      <FormGroup 
+        error={errorMessage}
+        errorType={isTightCheckbox ? 'initial' : 'absolute'}
+        isFirstError={isFirstError}
+        spacing={isTightCheckbox ? 'tight' : 'padded'}
+      >
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {getInput()}
-        {errorMessage && (
-          <FormError
-            aria-live={isFirstError ? 'assertive' : 'off'}
-            role={isFirstError ? 'alert' : 'status'}
-            variant={isTightCheckbox ? 'initial' : 'absolute'}
-          >
-            <Markdown
-              inline
-              overrides={{
-                a: {
-                  allowedAttributes: ['href', 'target'],
-                  component: ErrorAnchor,
-                  processNode: (
-                    node: unknown,
-                    props: { onClick?: () => void }
-                  ) => <ErrorAnchor {...props} />,
-                },
-              }}
-              skipDefaultOverrides={{ a: true }}
-              spacing="none"
-              text={errorMessage}
-            />
-          </FormError>
-        )}
       </FormGroup>
     </Column>
   );
