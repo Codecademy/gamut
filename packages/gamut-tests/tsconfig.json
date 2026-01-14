@@ -9,7 +9,8 @@
     "declaration": true,
     "jsx": "react-jsx",
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "types": []
   },
   "exclude": ["jest.config.ts"]
 }
