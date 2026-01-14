@@ -34,12 +34,14 @@ type GlobalsContext = {
   globals: {
     colorMode: 'light' | 'dark';
     theme: keyof typeof themeMap;
+    logicalProps: 'true' | 'false';
   };
 };
 
 export const withEmotion = (Story: any, context: GlobalsContext) => {
   const colorMode = context.globals.colorMode ?? 'light';
   const selectedTheme = context.globals.theme;
+  const useLogicalProperties = context.globals.logicalProps !== 'false';
   const background = corePalette[themeBackground[colorMode]];
   const storyRef = useRef<HTMLDivElement>(null);
   const currentTheme = themeMap[selectedTheme];
@@ -57,6 +59,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
       <GamutProvider
         useCache={false}
         useGlobals={false}
+        useLogicalProperties={useLogicalProperties}
         theme={currentTheme as unknown as Theme}
       >
         <Background
@@ -72,7 +75,10 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
 
   // Wrap all stories in minimal provider
   return (
-    <GamutProvider theme={currentTheme as unknown as Theme}>
+    <GamutProvider
+      useLogicalProperties={useLogicalProperties}
+      theme={currentTheme as unknown as Theme}
+    >
       <Background
         alwaysSetVariables
         bg={themeBackground[colorMode]}
