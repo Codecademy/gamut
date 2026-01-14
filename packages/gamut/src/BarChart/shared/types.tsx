@@ -5,6 +5,7 @@ import { ComponentProps, HTMLProps } from 'react';
 import { ButtonProps } from '../../Button';
 import { Text } from '../../Typography/Text';
 import { HeadingTags } from '../../Typography/types';
+import { CustomSortOption } from '../utils/hooks';
 
 type titleType =
   | string
@@ -48,7 +49,7 @@ type BarPropsBase = {
   seriesTwoValue?: number;
   /** Optional gamut-icon to display next to the label */
   icon?: React.ComponentType<GamutIconProps>;
-};
+} & Record<string, unknown>; // Allow additional properties for custom sorting/extended data
 
 type BarPropsWithoutInteraction = BarPropsBase & {
   onClick?: never;
@@ -58,16 +59,32 @@ type BarPropsWithoutInteraction = BarPropsBase & {
 type BarPropsWithInteraction = BarPropsBase & {
   onClick?: ButtonProps['onClick'];
   href?: HTMLProps<HTMLAnchorElement>['href'];
-  'aria-label': string;
+  ariaLabel: string;
 };
 
 export type BarProps = BarPropsWithoutInteraction | BarPropsWithInteraction;
 
-export type BarChartProps = BarChartLabel & {
+/**
+ * Helper type that extracts the element type from an array of bars.
+ * Handles both mutable and readonly arrays.
+ */
+export type InferBarType<T> = T extends readonly (infer U)[]
+  ? U extends BarProps
+    ? U
+    : BarProps
+  : T extends (infer U)[]
+  ? U extends BarProps
+    ? U
+    : BarProps
+  : BarProps;
+
+export type BarChartProps<
+  TBarValues extends BarProps[] | readonly BarProps[] = BarProps[]
+> = BarChartLabel & {
   /** Whether to animate bars on mount */
   animate?: boolean;
   /** Array of bar data to render */
-  barValues: BarProps[];
+  barValues: TBarValues;
   /** Figure caption for the BarChart. This should be a summary of the information or the overall takeaway of the information in the chart */
   description: string;
   /** Hides the visual figcaption */
@@ -78,14 +95,17 @@ export type BarChartProps = BarChartLabel & {
   maxRange: number;
   /** Minimum value for the x-axis scale (usually 0) */
   minRange: number;
-  /** Sort order for bars */
-  order?: 'ascending' | 'descending';
-  /** Property to sort bars by */
-  sortBy?: 'label' | 'value' | 'none';
   /** Unit label to display (e.g., "XP") */
   unit?: string;
   /** Style configuration for colors */
   styleConfig?: BarChartStyles;
   /** Interval for x-axis scale markers */
   xScale?: number;
+  /** Array of sort options to display in the dropdown. Can include string literals ('alphabetically', 'numerically', 'none') or custom sort functions. If not provided, the Select dropdown will not render. */
+  sortFns?: (
+    | 'alphabetically'
+    | 'numerically'
+    | 'none'
+    | CustomSortOption<InferBarType<TBarValues>>
+  )[];
 };

@@ -30,6 +30,7 @@ import {
 
 export type BarRowProps = BarProps & {
   index?: number;
+  ariaLabel?: string;
 };
 
 export const Bar = forwardRef<
@@ -44,8 +45,9 @@ export const Bar = forwardRef<
     onClick,
     href,
     index = 0,
+    ariaLabel,
   } = props;
-  const ariaLabel = 'aria-label' in props ? props['aria-label'] : undefined;
+
   const {
     minRange,
     maxRange,

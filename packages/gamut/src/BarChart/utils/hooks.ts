@@ -14,9 +14,10 @@ import {
   useState,
 } from 'react';
 
+import { SelectOptions } from '../../Form/inputs/Select';
 import { BarChartContext, BarChartContextProps } from '../BarChartProvider';
-import { BarChartStyles } from '../shared/types';
-import { calculatePositionPercent, getLabel } from './index';
+import { BarChartStyles, BarProps, InferBarType } from '../shared/types';
+import { calculatePositionPercent, getLabel, sortBars } from './index';
 
 export interface LabelPosition {
   value: number;
@@ -246,10 +247,6 @@ const useMeasureWidth = ({
   }, [ref, onMeasure, isMeasuring]);
 };
 
-/**
- * Hook that measures a left label FlexBox width and reports it to the BarChartProvider.
- * Uses useLayoutEffect for synchronous measurement to prevent layout shift.
- */
 export const useMeasureLeftLabelWidth = ({
   ref,
 }: {
@@ -263,10 +260,6 @@ export const useMeasureLeftLabelWidth = ({
   });
 };
 
-/**
- * Hook that measures a right label FlexBox width and reports it to the BarChartProvider.
- * Uses useLayoutEffect for synchronous measurement to prevent layout shift.
- */
 export const useMeasureRightLabelWidth = ({
   ref,
 }: {
@@ -278,4 +271,165 @@ export const useMeasureRightLabelWidth = ({
     onMeasure: setWidestRightLabelWidth,
     isMeasuring,
   });
+};
+
+export interface CustomSortOption<TBar extends BarProps = BarProps> {
+  label: string;
+  value: string;
+  sortFn: (bars: TBar[]) => TBar[];
+}
+
+export interface UseBarChartSortOptions<
+  TBarValues extends BarProps[] | readonly BarProps[] = BarProps[]
+> {
+  bars: TBarValues;
+  sortFns?: (
+    | 'alphabetically'
+    | 'numerically'
+    | 'none'
+    | CustomSortOption<InferBarType<TBarValues>>
+  )[];
+}
+
+export interface UseBarChartSortReturn<
+  TBarValues extends BarProps[] | readonly BarProps[] = BarProps[]
+> {
+  sortedBars: TBarValues;
+  sortValue: string;
+  onSortChange: (value: string) => void;
+  selectProps: {
+    options: SelectOptions;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    id: string;
+  } | null;
+}
+
+const SORT_OPTIONS: Record<string, string> = {
+  none: 'None',
+  'label-asc': 'Label (A-Z)',
+  'label-desc': 'Label (Z-A)',
+  'value-asc': 'Value (Low-High)',
+  'value-desc': 'Value (High-Low)',
+};
+
+/**
+ * Hook that manages bar sorting state and provides memoized sorted bars.
+ * Supports predefined sort options (via string literals) and custom sort functions.
+ * Only returns selectProps if sortFns is provided.
+ */
+export const useBarChartSort = <
+  TBarValues extends BarProps[] | readonly BarProps[] = BarProps[]
+>({
+  bars,
+  sortFns,
+}: UseBarChartSortOptions<TBarValues>): UseBarChartSortReturn<TBarValues> => {
+  type TBar = InferBarType<TBarValues>;
+  // Build options map and custom sort map from sortFns array
+  const { allSortOptions, customSortMap, defaultSortValue } = useMemo(() => {
+    if (!sortFns || sortFns.length === 0) {
+      return {
+        allSortOptions: null,
+        customSortMap: new Map<string, (bars: TBar[]) => TBar[]>(),
+        defaultSortValue: 'none',
+      };
+    }
+
+    const options: Record<string, string> = {};
+    const customMap = new Map<string, (bars: TBar[]) => TBar[]>();
+    const availableValues: string[] = [];
+
+    sortFns.forEach((item) => {
+      if (typeof item === 'string') {
+        if (item === 'alphabetically') {
+          options['label-asc'] = SORT_OPTIONS['label-asc'];
+          options['label-desc'] = SORT_OPTIONS['label-desc'];
+          availableValues.push('label-asc', 'label-desc');
+        } else if (item === 'numerically') {
+          options['value-asc'] = SORT_OPTIONS['value-asc'];
+          options['value-desc'] = SORT_OPTIONS['value-desc'];
+          availableValues.push('value-asc', 'value-desc');
+        } else if (item === 'none') {
+          options.none = SORT_OPTIONS.none;
+          availableValues.push('none');
+        }
+      } else {
+        // CustomSortOption
+        options[item.value] = item.label;
+        customMap.set(item.value, item.sortFn);
+        availableValues.push(item.value);
+      }
+    });
+
+    // Default to "none" if available, otherwise first option
+    const defaultVal = availableValues.includes('none')
+      ? 'none'
+      : availableValues[0] || 'none';
+
+    return {
+      allSortOptions: options,
+      customSortMap: customMap,
+      defaultSortValue: defaultVal,
+    };
+  }, [sortFns]);
+
+  const [sortValue, setSortValue] = useState<string>(defaultSortValue);
+
+  // Update sortValue when defaultSortValue changes (e.g., when sortFns changes)
+  useEffect(() => {
+    setSortValue(defaultSortValue);
+  }, [defaultSortValue]);
+
+  const sortedBars = useMemo(() => {
+    // Check if current selection is a custom sort function
+    const customSortFn = customSortMap.get(sortValue);
+    if (customSortFn) {
+      return customSortFn([...bars] as TBar[]) as unknown as TBarValues;
+    }
+
+    // Otherwise use predefined sort options
+    if (sortValue === 'none') {
+      return bars;
+    }
+
+    const [sortBy, order] = sortValue.split('-');
+    const sortByValue = sortBy as 'label' | 'value';
+    const orderValue = order === 'desc' ? 'descending' : 'ascending';
+
+    return sortBars({
+      bars: bars as TBar[],
+      sortBy: sortByValue,
+      order: orderValue,
+    }) as unknown as TBarValues;
+  }, [bars, sortValue, customSortMap]);
+
+  const onSortChange = useCallback((value: string) => {
+    setSortValue(value);
+  }, []);
+
+  const selectId = useRef(
+    `bar-chart-sort-${Math.random().toString(36).substr(2, 9)}`
+  );
+
+  const selectProps = useMemo(() => {
+    if (!allSortOptions) {
+      return null;
+    }
+
+    return {
+      options: allSortOptions,
+      value: sortValue,
+      onChange: (e: React.ChangeEvent<HTMLSelectElement>) => {
+        onSortChange(e.target.value);
+      },
+      id: selectId.current,
+    };
+  }, [sortValue, onSortChange, allSortOptions]);
+
+  return {
+    sortedBars,
+    sortValue,
+    onSortChange,
+    selectProps,
+  };
 };

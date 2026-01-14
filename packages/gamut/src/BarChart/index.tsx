@@ -1,17 +1,30 @@
-import { useId, useMemo } from 'react';
+import { css } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+import { useId } from 'react';
 
-import { Box } from '../Box';
+import { Box, FlexBox } from '../Box';
+import { Select } from '../Form/inputs/Select';
 import { Text } from '../Typography/Text';
 import { Bar } from './Bar';
 import { BarChartProvider } from './BarChartProvider';
 import { GridLines } from './layout/GridLines';
 import { ScaleChartHeader } from './layout/ScaleChartHeader';
 import { BarsList } from './shared/elements';
-import { BarChartProps } from './shared/types';
-import { sortBars } from './utils';
-import { useBarChart } from './utils/hooks';
+import { BarChartProps, BarProps, InferBarType } from './shared/types';
+import { useBarChart, useBarChartSort } from './utils/hooks';
 
-export const BarChart: React.FC<BarChartProps> = ({
+export type { BarProps, InferBarType };
+
+const WidthSelect = styled(Select)(
+  css({
+    width: 'max-content',
+    pr: 12,
+  })
+);
+
+export const BarChart = <
+  TBarValues extends BarProps[] | readonly BarProps[] = BarProps[]
+>({
   'aria-labelledby': ariaLabelledBy,
   animate = false,
   barValues,
@@ -20,17 +33,16 @@ export const BarChart: React.FC<BarChartProps> = ({
   hideTitle = false,
   maxRange,
   minRange,
-  order = 'ascending',
-  sortBy = 'none',
+  sortFns,
   styleConfig,
   title,
   unit = '',
   xScale,
-}) => {
-  const sortedBars = useMemo(
-    () => sortBars({ bars: barValues, sortBy, order }),
-    [barValues, sortBy, order]
-  );
+}: BarChartProps<TBarValues>) => {
+  const { sortedBars, selectProps } = useBarChartSort<TBarValues>({
+    bars: barValues,
+    sortFns,
+  });
 
   const contextValue = useBarChart({
     minRange,
@@ -59,19 +71,35 @@ export const BarChart: React.FC<BarChartProps> = ({
       ? { ...title, children: title.title, hidden: hideTitle, id: titleId }
       : null;
 
-  return (
-    <BarChartProvider value={contextValue}>
-      {title && (
-        <Box
-          borderBottom={1}
-          borderColor="background-disabled"
-          mb={24}
-          pb={8}
+  const titleContent =
+    (title && !hideTitle) || selectProps ? (
+      <Box
+        borderBottom={1}
+        borderColor="background-disabled"
+        mb={24}
+        pb={8}
+        width="100%"
+      >
+        <FlexBox
+          alignItems="center"
+          justifyContent="space-between"
           width="100%"
         >
-          <Text mb={4} {...titleProps} />
-        </Box>
-      )}
+          {titleProps && <Text mb={4} {...titleProps} />}
+          {selectProps && (
+            <WidthSelect
+              aria-label="Sort bars"
+              sizeVariant="small"
+              {...selectProps}
+            />
+          )}
+        </FlexBox>
+      </Box>
+    ) : null;
+
+  return (
+    <BarChartProvider value={contextValue}>
+      {title && titleContent}
       <Box as="figure" position="relative" width="100%">
         <ScaleChartHeader
           labelCount={tickCount}

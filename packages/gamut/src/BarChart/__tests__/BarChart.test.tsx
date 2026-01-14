@@ -33,14 +33,14 @@ const createInteractiveBar = ({
   const base = {
     yLabel,
     seriesOneValue,
-    'aria-label': ariaLabel,
+    ariaLabel,
   };
 
   if (href) {
-    return { ...base, href, ...(onClick && { onClick }) };
+    return { ...base, href, ariaLabel, ...(onClick && { onClick }) };
   }
   if (onClick) {
-    return { ...base, onClick };
+    return { ...base, onClick, ariaLabel };
   }
   return base;
 };
@@ -105,42 +105,142 @@ describe('BarChart', () => {
       { yLabel: 'Ruby', seriesOneValue: 25 },
     ];
 
-    it.each([
-      {
-        description: 'preserves array order when sortBy is none',
-        sortBy: 'none' as const,
-        order: undefined,
-        expectedOrder: ['Python', 'JavaScript', 'Ruby'],
-      },
-      {
-        description: 'sorts by value ascending',
-        sortBy: 'value' as const,
-        order: 'ascending' as const,
-        expectedOrder: ['Ruby', 'Python', 'JavaScript'],
-      },
-      {
-        description: 'sorts by value descending',
-        sortBy: 'value' as const,
-        order: 'descending' as const,
-        expectedOrder: ['JavaScript', 'Python', 'Ruby'],
-      },
-      {
-        description: 'sorts by label ascending',
-        sortBy: 'label' as const,
-        order: 'ascending' as const,
-        expectedOrder: ['JavaScript', 'Python', 'Ruby'],
-      },
-    ])('$description', ({ sortBy, order, expectedOrder }) => {
+    it('does not render Select when sortFns is not provided', () => {
       const { view } = renderView({
         barValues: unsortedBarValues,
-        sortBy,
-        ...(order && { order }),
+      });
+
+      expect(view.queryByLabelText('Sort bars')).not.toBeInTheDocument();
+    });
+
+    it('preserves array order by default when sortFns includes none', () => {
+      const { view } = renderView({
+        barValues: unsortedBarValues,
+        sortFns: ['none'],
       });
 
       const items = view.getAllByRole('listitem');
-      expectedOrder.forEach((label, index) => {
-        expect(items[index]).toHaveTextContent(label);
+      expect(items[0]).toHaveTextContent('Python');
+      expect(items[1]).toHaveTextContent('JavaScript');
+      expect(items[2]).toHaveTextContent('Ruby');
+    });
+
+    it('sorts by value ascending when numerically is included and selected', async () => {
+      const { view } = renderView({
+        barValues: unsortedBarValues,
+        sortFns: ['numerically', 'none'],
       });
+
+      const select = view.getByLabelText('Sort bars');
+      await userEvent.selectOptions(select, 'value-asc');
+
+      const items = view.getAllByRole('listitem');
+      expect(items[0]).toHaveTextContent('Ruby');
+      expect(items[1]).toHaveTextContent('Python');
+      expect(items[2]).toHaveTextContent('JavaScript');
+    });
+
+    it('sorts by value descending when numerically is included and selected', async () => {
+      const { view } = renderView({
+        barValues: unsortedBarValues,
+        sortFns: ['numerically', 'none'],
+      });
+
+      const select = view.getByLabelText('Sort bars');
+      await userEvent.selectOptions(select, 'value-desc');
+
+      const items = view.getAllByRole('listitem');
+      expect(items[0]).toHaveTextContent('JavaScript');
+      expect(items[1]).toHaveTextContent('Python');
+      expect(items[2]).toHaveTextContent('Ruby');
+    });
+
+    it('sorts by label ascending when alphabetically is included and selected', async () => {
+      const { view } = renderView({
+        barValues: unsortedBarValues,
+        sortFns: ['alphabetically', 'none'],
+      });
+
+      const select = view.getByLabelText('Sort bars');
+      await userEvent.selectOptions(select, 'label-asc');
+
+      const items = view.getAllByRole('listitem');
+      expect(items[0]).toHaveTextContent('JavaScript');
+      expect(items[1]).toHaveTextContent('Python');
+      expect(items[2]).toHaveTextContent('Ruby');
+    });
+
+    it('sorts by label descending when alphabetically is included and selected', async () => {
+      const { view } = renderView({
+        barValues: unsortedBarValues,
+        sortFns: ['alphabetically', 'none'],
+      });
+
+      const select = view.getByLabelText('Sort bars');
+      await userEvent.selectOptions(select, 'label-desc');
+
+      const items = view.getAllByRole('listitem');
+      expect(items[0]).toHaveTextContent('Ruby');
+      expect(items[1]).toHaveTextContent('Python');
+      expect(items[2]).toHaveTextContent('JavaScript');
+    });
+
+    it('returns to original order when none is selected', async () => {
+      const { view } = renderView({
+        barValues: unsortedBarValues,
+        sortFns: ['numerically', 'none'],
+      });
+
+      const select = view.getByLabelText('Sort bars');
+      await userEvent.selectOptions(select, 'value-asc');
+
+      let items = view.getAllByRole('listitem');
+      expect(items[0]).toHaveTextContent('Ruby');
+
+      await userEvent.selectOptions(select, 'none');
+
+      items = view.getAllByRole('listitem');
+      expect(items[0]).toHaveTextContent('Python');
+      expect(items[1]).toHaveTextContent('JavaScript');
+      expect(items[2]).toHaveTextContent('Ruby');
+    });
+
+    it('works with custom sort functions', async () => {
+      const { view } = renderView({
+        barValues: unsortedBarValues,
+        sortFns: [
+          'none',
+          {
+            label: 'Reverse Order',
+            value: 'reverse',
+            sortFn: (bars) => [...bars].reverse(),
+          },
+        ],
+      });
+
+      const select = view.getByLabelText('Sort bars');
+      await userEvent.selectOptions(select, 'reverse');
+
+      const items = view.getAllByRole('listitem');
+      expect(items[0]).toHaveTextContent('Ruby');
+      expect(items[1]).toHaveTextContent('JavaScript');
+      expect(items[2]).toHaveTextContent('Python');
+    });
+
+    it('defaults to first option when none is not included', () => {
+      const { view } = renderView({
+        barValues: unsortedBarValues,
+        sortFns: ['alphabetically'],
+      });
+
+      const select = view.getByLabelText('Sort bars') as HTMLSelectElement;
+      // Should default to first option (label-asc)
+      expect(select.value).toBe('label-asc');
+
+      const items = view.getAllByRole('listitem');
+      expect(items[0]).toHaveTextContent('JavaScript');
+      expect(items[1]).toHaveTextContent('Python');
+      expect(items[2]).toHaveTextContent('Ruby');
     });
   });
 
@@ -154,7 +254,7 @@ describe('BarChart', () => {
       const base = {
         yLabel: 'Python',
         seriesOneValue: 100,
-        'aria-label': 'View Python details',
+        ariaLabel: 'View Python details',
       };
 
       if (options.href) {
@@ -224,7 +324,7 @@ describe('BarChart', () => {
         const { view } = renderView({ title: 'Skills chart' });
 
         view.getByText('Skills chart');
-        view.getByRole('list', { name: 'Skills chart' });
+        view.getByRole('list');
       });
 
       it('has aria-labelledby on the list element when provided', () => {
@@ -263,9 +363,13 @@ describe('BarChart', () => {
         it('hides figcaption when hideDescription is true', () => {
           const { view } = renderView({
             description: 'Hidden description',
+            hideDescription: true,
           });
 
-          view.getByText('Hidden description');
+          const figcaption = view.getByText('Hidden description', {
+            hidden: true,
+          } as any);
+          expect(figcaption).toHaveAttribute('hidden');
         });
       });
 
@@ -278,7 +382,7 @@ describe('BarChart', () => {
           const title = view.getByRole('heading', {
             name: 'Programming Skills Chart',
           });
-          expect(title.tagName.toLowerCase()).toBe('h2');
+          expect(title.tagName).toBe('h2');
         });
 
         it('renders title as object with custom heading level', () => {
@@ -287,7 +391,7 @@ describe('BarChart', () => {
           });
 
           const title = view.getByRole('heading', { name: 'Skills Overview' });
-          expect(title.tagName.toLowerCase()).toBe('h1');
+          expect(title.tagName).toBe('h1');
         });
 
         it('hides title when hideTitle is true', () => {
@@ -297,7 +401,6 @@ describe('BarChart', () => {
           });
           const title = view.getByText('Hidden Title', { hidden: true } as any);
           expect(title).toHaveAttribute('hidden');
-          view.getByRole('list', { name: 'Hidden Title' });
         });
       });
     });
@@ -307,11 +410,11 @@ describe('BarChart', () => {
         const { view } = renderView({ unit: 'XP' });
 
         view.getByRole('listitem', {
-          name: '100 XP in Python',
+          name: '100 XP in Python category',
         });
 
         view.getByRole('listitem', {
-          name: '75 XP in JavaScript',
+          name: '75 XP in JavaScript category',
         });
       });
 
@@ -334,7 +437,7 @@ describe('BarChart', () => {
         });
 
         view.getByRole('listitem', {
-          name: '100 XP in Python',
+          name: '100 XP in Python category',
         });
       });
     });

@@ -71,6 +71,80 @@ Rows can be made interactive with `onClick` handlers or `href` links.
 
 <Canvas of={BarChartStories.Interactive} />
 
+### Sorting
+
+BarChart includes an optional sorting dropdown in the title area. The dropdown only renders when the `sortFns` prop is provided. You can control which sort options appear by including string literals or custom sort functions in the array.
+
+**String Literals:**
+
+- `'alphabetically'` - Adds both "Label (A-Z)" and "Label (Z-A)" options
+- `'numerically'` - Adds both "Value (Low-High)" and "Value (High-Low)" options
+- `'none'` - Adds "None" option (preserves original order)
+
+**Custom Sort Functions:**
+You can also provide custom sort functions as objects with:
+
+- `label`: The text displayed in the dropdown
+- `value`: A unique identifier for the sort option
+- `sortFn`: A function that takes an array of bars and returns a sorted array
+
+**Type Definition:**
+
+```typescript
+type CustomSortOption<TBar extends BarProps = BarProps> = {
+  label: string;
+  value: string;
+  sortFn: (bars: TBar[]) => TBar[];
+};
+
+// sortFns prop accepts:
+sortFns?: ('alphabetically' | 'numerically' | 'none' | CustomSortOption<TBar>)[]
+```
+
+**Automatic Type Inference:**
+TypeScript automatically infers the bar type from your `barValues` prop. This means custom properties (like `dateAdded`, `category`, etc.) are automatically typed in your sort functions - no type assertions needed!
+
+```typescript
+const barsWithDates = [
+  { yLabel: 'Python', seriesOneValue: 1500, dateAdded: new Date('2023-01-15') },
+  {
+    yLabel: 'JavaScript',
+    seriesOneValue: 2000,
+    dateAdded: new Date('2023-03-20'),
+  },
+  // ...
+];
+
+<BarChart
+  barValues={barsWithDates}
+  sortFns={[
+    {
+      label: 'Recently Added',
+      value: 'recent',
+      sortFn: (bars) => {
+        // TypeScript automatically knows bars have dateAdded property!
+        return [...bars].sort((a, b) => {
+          const aDate = a.dateAdded as Date | undefined;
+          const bDate = b.dateAdded as Date | undefined;
+          if (!aDate || !bDate) return 0;
+          return bDate.getTime() - aDate.getTime();
+        });
+      },
+    },
+  ]}
+/>;
+```
+
+**Note:** Since `BarProps` uses `Record<string, unknown>` for extensibility, custom properties are typed as `unknown` by default. You may need a simple type assertion (`as Date | undefined`) when accessing them, but the property names are fully type-checked.
+
+<Canvas of={BarChartStories.WithSorting} />
+
+**Example with Custom Sort Functions:**
+
+Custom sort functions can access additional properties on `BarProps` for domain-specific sorting, such as sorting by dates or categories.
+
+<Canvas of={BarChartStories.WithCustomSorting} />
+
 When a bar has an `onClick` handler or `href` link, an `aria-label` is **required** for accessibility. This label is applied to the button or link element and should clearly describe the action or destination.
 
 **Best practices for `aria-label` text:**

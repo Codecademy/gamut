@@ -1,4 +1,4 @@
-import { BarChartProps, BarProps } from '../shared/types';
+import { BarProps } from '../shared/types';
 
 export const numDigits = ({ num }: { num: number }) => {
   return Math.max(Math.floor(Math.log10(Math.abs(num))), 0) + 1;
@@ -113,8 +113,8 @@ export const sortBars = ({
   order,
 }: {
   bars: BarProps[];
-  sortBy: BarChartProps['sortBy'];
-  order: BarChartProps['order'];
+  sortBy: 'label' | 'value' | 'none';
+  order: 'ascending' | 'descending';
 }): BarProps[] => {
   if (sortBy === 'none' || !sortBy) {
     return bars;

@@ -1,9 +1,7 @@
 import { BarChart, BarProps, Box } from '@codecademy/gamut';
 import {
   BookFlipPageIcon,
-  CodeIcon,
   DataScienceIcon,
-  GameControllerIcon,
   TerminalIcon,
 } from '@codecademy/gamut-icons';
 import { action } from '@storybook/addon-actions';
@@ -49,7 +47,7 @@ const barDataWithIcons: BarProps[] = [
     yLabel: 'Python',
     seriesOneValue: 200,
     seriesTwoValue: 1500,
-    icon: CodeIcon,
+    icon: TerminalIcon,
   },
   {
     yLabel: 'JavaScript',
@@ -64,10 +62,10 @@ const barDataWithIcons: BarProps[] = [
     icon: DataScienceIcon,
   },
   {
-    yLabel: 'Game Dev',
+    yLabel: 'Backend',
     seriesOneValue: 50,
     seriesTwoValue: 600,
-    icon: GameControllerIcon,
+    icon: TerminalIcon,
   },
   {
     yLabel: 'Reading',
@@ -77,9 +75,6 @@ const barDataWithIcons: BarProps[] = [
   },
 ];
 
-/**
- * Default non-stacked bar chart showing single values
- */
 export const Default: Story = {
   args: {
     barValues: simpleBarData,
@@ -88,9 +83,6 @@ export const Default: Story = {
   },
 };
 
-/**
- * Stacked bar chart showing progress (seriesOneValue) over total (seriesTwoValue)
- */
 export const Stacked: Story = {
   args: {
     barValues: stackedBarData,
@@ -99,9 +91,6 @@ export const Stacked: Story = {
   },
 };
 
-/**
- * Bar chart with icons next to labels
- */
 export const WithIcons: Story = {
   args: {
     barValues: barDataWithIcons,
@@ -110,9 +99,6 @@ export const WithIcons: Story = {
   },
 };
 
-/**
- * Animated bar chart with staggered entrance
- */
 export const Animated: Story = {
   args: {
     barValues: stackedBarData,
@@ -122,9 +108,6 @@ export const Animated: Story = {
   },
 };
 
-/**
- * Interactive bar chart with clickable rows
- */
 export const Interactive: Story = {
   args: {
     barValues: simpleBarData.map((bar) => ({
@@ -137,9 +120,6 @@ export const Interactive: Story = {
   },
 };
 
-/**
- * Interactive bar chart with linked rows
- */
 export const WithLinks: Story = {
   args: {
     barValues: simpleBarData.map((bar) => ({
@@ -152,9 +132,6 @@ export const WithLinks: Story = {
   },
 };
 
-/**
- * **Preferred pattern**: Visual title + description. This is the recommended approach for accessibility and user experience.
- */
 export const WithVisualTitleAndDescription: Story = {
   args: {
     barValues: simpleBarData,
@@ -164,10 +141,6 @@ export const WithVisualTitleAndDescription: Story = {
   },
 };
 
-/**
- * Title and description hidden, using aria-labelledby to reference external heading.
- * Use this pattern when the title and description are provided elsewhere in the page structure.
- */
 export const WithHiddenTitleAndDescription: Story = {
   render: () => {
     return (
@@ -185,10 +158,6 @@ export const WithHiddenTitleAndDescription: Story = {
   },
 };
 
-/**
- * Visual description with external title using aria-labelledby.
- * Use this pattern when the title exists elsewhere in the page but you want to show the description.
- */
 export const WithExternalTitle: Story = {
   render: () => {
     return (
@@ -218,29 +187,82 @@ export const WithExternalTitle: Story = {
   },
 };
 
-/**
- * Bar chart sorted by value in descending order
- */
-export const SortedByValue: Story = {
+export const WithSorting: Story = {
   args: {
     barValues: simpleBarData,
-    sortBy: 'value',
-    order: 'descending',
-    title: 'Skills ranked by experience',
-    description: 'Skills sorted by experience level from highest to lowest',
+    sortFns: ['alphabetically', 'numerically', 'none'],
+    title: 'Skills experience chart',
+    description: 'Use the dropdown to sort bars by different criteria',
   },
 };
 
-/**
- * Bar chart sorted alphabetically by label
- */
-export const SortedByLabel: Story = {
+const customSortingBarValues = [
+  {
+    yLabel: 'Python',
+    seriesOneValue: 1500,
+    dateAdded: new Date('2023-01-15'),
+  },
+  {
+    yLabel: 'JavaScript',
+    seriesOneValue: 2000,
+    dateAdded: new Date('2023-03-20'),
+  },
+  {
+    yLabel: 'React',
+    seriesOneValue: 450,
+    dateAdded: new Date('2023-06-10'),
+  },
+  {
+    yLabel: 'TypeScript',
+    seriesOneValue: 300,
+    dateAdded: new Date('2023-08-05'),
+  },
+  {
+    yLabel: 'SQL',
+    seriesOneValue: 600,
+    dateAdded: new Date('2023-02-28'),
+  },
+];
+
+export const WithCustomSorting: Story = {
   args: {
-    barValues: simpleBarData,
-    sortBy: 'label',
-    order: 'ascending',
-    title: 'Skills sorted alphabetically',
-    description: 'Skills sorted alphabetically by language name',
+    barValues: customSortingBarValues,
+    sortFns: [
+      'none',
+      {
+        label: 'Recently Added',
+        value: 'recent',
+        sortFn: (bars) => {
+          return [...bars].sort((a, b) => {
+            // TypeScript infers the type from barValues, so dateAdded is properly typed
+            const aDate = a.dateAdded as Date | undefined;
+            const bDate = b.dateAdded as Date | undefined;
+            if (!aDate && !bDate) return 0;
+            if (!aDate) return 1;
+            if (!bDate) return -1;
+            return bDate.getTime() - aDate.getTime();
+          });
+        },
+      },
+      {
+        label: 'Oldest First',
+        value: 'oldest',
+        sortFn: (bars) => {
+          return [...bars].sort((a, b) => {
+            // TypeScript infers the type from barValues, so dateAdded is properly typed
+            const aDate = a.dateAdded as Date | undefined;
+            const bDate = b.dateAdded as Date | undefined;
+            if (!aDate && !bDate) return 0;
+            if (!aDate) return 1;
+            if (!bDate) return -1;
+            return aDate.getTime() - bDate.getTime();
+          });
+        },
+      },
+    ],
+    title: 'Skills chart with date sorting',
+    description:
+      'Custom sort functions can access additional properties on BarProps, such as dates',
   },
 };
 
