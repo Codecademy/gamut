@@ -47,3 +47,10 @@ export interface VendorPropertyTypes<Overrides = DefaultCSSPropertyValue>
 export interface CSSPropertyTypes<Overrides = DefaultCSSPropertyValue>
   extends PropertyTypes<Overrides>,
     VendorPropertyTypes<Overrides> {}
+
+export type PropertyMode = 'logical' | 'physical';
+
+export interface DirectionalProperty {
+  physical: keyof PropertyTypes;
+  logical: keyof PropertyTypes;
+}

@@ -1,10 +1,11 @@
 import { Theme } from '@emotion/react';
 
 import {
+  DefaultCSSPropertyValue,
   DirectionalProperty,
   PropertyMode,
-} from '../getPropertyMode/getPropertyMode';
-import { DefaultCSSPropertyValue, PropertyTypes } from './properties';
+  PropertyTypes,
+} from './properties';
 import {
   AbstractProps,
   CSSObject,
