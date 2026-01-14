@@ -77,12 +77,20 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     </>
   );
 
+  // Merge useLogicalProperties into theme so variance can access it via props.theme
+  const themeWithLogicalProperties = {
+    ...theme,
+    useLogicalProperties,
+  };
+
   if (activeCache.current) {
     return (
       <GamutContext.Provider value={contextValue}>
         <CacheProvider value={activeCache.current}>
           {globals}
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <ThemeProvider theme={themeWithLogicalProperties}>
+            {children}
+          </ThemeProvider>
         </CacheProvider>
       </GamutContext.Provider>
     );
@@ -91,7 +99,9 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   return (
     <GamutContext.Provider value={contextValue}>
       {globals}
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={themeWithLogicalProperties}>
+        {children}
+      </ThemeProvider>
     </GamutContext.Provider>
   );
 };
