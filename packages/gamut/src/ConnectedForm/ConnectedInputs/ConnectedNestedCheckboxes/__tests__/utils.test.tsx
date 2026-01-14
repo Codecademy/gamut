@@ -1,3 +1,4 @@
+import { GamutProvider, theme } from '@codecademy/gamut-styles';
 import { render } from '@testing-library/react';
 
 import {
@@ -544,26 +545,47 @@ describe('ConnectedNestedCheckboxes utils', () => {
       expect(checkbox).toHaveAttribute('aria-checked', 'false');
     });
 
-    it('should apply correct margin based on level', () => {
-      const state = { checked: false };
+    it.each([
+      {
+        useLogicalProperties: true,
+        marginProp: 'marginInlineStart',
+      },
+      {
+        useLogicalProperties: false,
+        marginProp: 'marginLeft',
+      },
+    ])(
+      'should apply correct margin based on level (useLogicalProperties: $useLogicalProperties)',
+      ({ useLogicalProperties, marginProp }) => {
+        const state = { checked: false };
 
-      const result = renderCheckbox({
-        option: { ...mockOption, level: 2 },
-        state,
-        name: 'test',
-        isRequired: false,
-        isDisabled: false,
-        onBlur: mockOnBlur,
-        onChange: mockOnChange,
-        ref: mockRef,
-        flatOptions: [{ ...mockOption, level: 2 }],
-      });
+        const result = renderCheckbox({
+          option: { ...mockOption, level: 2 },
+          state,
+          name: 'test',
+          isRequired: false,
+          isDisabled: false,
+          onBlur: mockOnBlur,
+          onChange: mockOnChange,
+          ref: mockRef,
+          flatOptions: [{ ...mockOption, level: 2 }],
+        });
 
-      const { container } = render(result);
-      const listItem = container.querySelector('li');
+        const { container } = render(
+          <GamutProvider
+            theme={theme}
+            useCache={false}
+            useGlobals={false}
+            useLogicalProperties={useLogicalProperties}
+          >
+            {result}
+          </GamutProvider>
+        );
+        const listItem = container.querySelector('li');
 
-      expect(listItem).toHaveStyle({ marginLeft: '48px' }); // 2 * 24px
-    });
+        expect(listItem).toHaveStyle({ [marginProp]: '48px' }); // 2 * 24px
+      }
+    );
 
     it('should handle disabled state', () => {
       const state = { checked: false };
