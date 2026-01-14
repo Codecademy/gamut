@@ -1,8 +1,10 @@
 import {
   Box,
   Checkbox,
+  Coachmark,
   FillButton,
   FlexBox,
+  InfoTip,
   Modal,
   StrokeButton,
   Text,
@@ -531,4 +533,93 @@ export const ConfirmationOnClose: React.FC = () => {
       </Modal>
     </>
   );
+};
+
+export const InfoTipInsideModal: Story = {
+  args: {
+    placement: 'inline',
+    info: 'This is helpful information about the Modal. Try pressing Escape!',
+  },
+  render: function InfoTipInsideModal(args) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [showCoachmark, setShowCoachmark] = useState(false);
+
+    return (
+      <FlexBox center flexDirection="column" gap={16} py={64}>
+        <FillButton onClick={() => setIsModalOpen(true)}>
+          Open Modal with InfoTip Inside
+        </FillButton>
+
+        <Box mt={16}>
+          <Text fontSize={14}>
+            <strong>Test InfoTip Inside Modal (Inline): </strong>
+          </Text>
+          <Box as="ol" fontSize={14}>
+            <li>Click &quot;Open Modal with InfoTip Inside&quot;</li>
+            <li>Click or press Enter on the InfoTip button (ⓘ icon)</li>
+            <li>Press Escape - should close InfoTip (Modal stays open)</li>
+            <li>Press Escape again - should close Modal</li>{' '}
+          </Box>
+        </Box>
+
+        <Modal
+          isOpen={isModalOpen}
+          size="medium"
+          title="Modal with InfoTip"
+          zIndex={1}
+          onRequestClose={() => setIsModalOpen(false)}
+        >
+          <FlexBox flexDirection="column" gap={16} p={16}>
+            <Text>This modal contains an InfoTip below:</Text>
+
+            <FlexBox alignItems="center" gap={8}>
+              <Text id="modal-infotip-text">
+                Some text that needs explanation
+              </Text>
+              <InfoTip {...args} ariaLabelledby="modal-infotip-text" />
+            </FlexBox>
+
+            <Text color="text-disabled" fontSize={14}>
+              The InfoTip inside this modal can be closed with Escape without
+              closing the modal itself. Inline placement works correctly.
+            </Text>
+
+            <FlexBox alignItems="center" borderTop={1} gap={8} mt={8} pt={16}>
+              <Text id="modal-coachmark-text">
+                This modal also contains a Coachmark
+              </Text>
+              <Coachmark
+                renderPopover={() => (
+                  <FlexBox
+                    alignItems="flex-start"
+                    flexDirection="column"
+                    p={16}
+                  >
+                    <Text mb={8}>
+                      This Coachmark is inside a Modal. Try pressing Escape!
+                    </Text>
+                    <FillButton
+                      size="small"
+                      onClick={() => setShowCoachmark(false)}
+                    >
+                      Got it
+                    </FillButton>
+                  </FlexBox>
+                )}
+                shouldShow={showCoachmark}
+              >
+                <FillButton size="small" onClick={() => setShowCoachmark(true)}>
+                  Show Coachmark
+                </FillButton>
+              </Coachmark>
+            </FlexBox>
+
+            <FillButton onClick={() => setIsModalOpen(false)}>
+              Close Modal
+            </FillButton>
+          </FlexBox>
+        </Modal>
+      </FlexBox>
+    );
+  },
 };
