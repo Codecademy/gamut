@@ -12,20 +12,13 @@ import {
   useMeasureLeftLabelWidth,
   useMeasureRightLabelWidth,
 } from '../utils/hooks';
-import {
-  BackgroundBar,
-  BarWrapper,
-  ForegroundBar,
-  RowAnchor,
-  RowButton,
-  RowWrapper,
-} from './elements';
+import { Bar, BarWrapper, RowAnchor, RowButton, RowWrapper } from './elements';
 
 export type BarRowProps = BarProps & {
   index?: number;
 };
 
-export const Bar = forwardRef<
+export const BarRow = forwardRef<
   HTMLDivElement | HTMLButtonElement | HTMLAnchorElement,
   BarRowProps
 >(
@@ -221,7 +214,7 @@ export const Bar = forwardRef<
         {labelsContainer}
         {leftLabel}
         <BarWrapper>
-          <BackgroundBar
+          <Bar
             animate={animate ? { width: bgWidthStr } : undefined}
             bg={backgroundBarColor}
             borderColor={backgroundBorderColor}
@@ -231,7 +224,7 @@ export const Bar = forwardRef<
             width={!animate ? bgWidthStr : undefined}
           />
           {isStacked && (
-            <ForegroundBar
+            <Bar
               animate={animate ? { width: fgWidthStr } : undefined}
               bg={foregroundBarColor}
               borderColor={foregroundBorderColor}

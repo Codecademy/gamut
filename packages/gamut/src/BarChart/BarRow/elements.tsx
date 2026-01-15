@@ -58,27 +58,15 @@ export const BarWrapper = styled(Box)(
   })
 );
 
-const baseBarStyles = {
-  alignItems: 'center',
-  borderRadius: 'inherit',
-  display: 'flex',
-  height: '100%',
-  left: 0,
-  position: 'absolute',
-} as const;
-
-export const BackgroundBar = styled(motion.create(Box))(
+export const Bar = styled(motion.create(Box))(
   css({
-    ...baseBarStyles,
+    alignItems: 'center',
+    borderRadius: 'inherit',
     borderStyle: 'solid',
     borderWidth: '1px',
-  })
-);
-
-export const ForegroundBar = styled(motion.create(Box))(
-  css({
-    ...baseBarStyles,
-    borderStyle: 'solid',
-    borderWidth: '1px',
+    display: 'flex',
+    height: '100%',
+    left: 0,
+    position: 'absolute',
   })
 );

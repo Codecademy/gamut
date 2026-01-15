@@ -6,8 +6,8 @@ import { Box, FlexBox } from '../Box';
 import { FormGroupLabel } from '../Form';
 import { Select } from '../Form/inputs/Select';
 import { Text } from '../Typography/Text';
-import { Bar } from './Bar';
 import { BarChartProvider } from './BarChartProvider';
+import { BarRow } from './BarRow';
 import { GridLines } from './layout/GridLines';
 import { ScaleChartHeader } from './layout/ScaleChartHeader';
 import { BarsList } from './shared/elements';
@@ -130,7 +130,7 @@ export const BarChart = <
               const uniqueKey = `${bar.yLabel}-${bar.seriesOneValue}-${
                 bar.seriesTwoValue ?? ''
               }`;
-              return <Bar index={index} key={uniqueKey} {...bar} />;
+              return <BarRow index={index} key={uniqueKey} {...bar} />;
             })}
           </BarsList>
         </Box>

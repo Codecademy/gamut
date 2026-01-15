@@ -7,27 +7,27 @@ import { VerticalSpacer } from './VerticalSpacer';
 
 const GridLineWrapper = styled(Box)(
   css({
-    position: 'absolute',
-    top: 0,
     bottom: 0,
     left: 0,
-    right: 0,
     pointerEvents: 'none',
+    position: 'absolute',
+    right: 0,
+    top: 0,
     zIndex: 0,
   })
 );
 
 const GridLineContainer = styled(Box)(
   css({
-    bottom: 0,
-    display: { _: 'none', xs: 'block' },
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
+    borderColor: 'background-disabled',
     borderLeft: 1,
     borderRight: 1,
-    borderColor: 'background-disabled',
+    bottom: 0,
+    display: { _: 'none', xs: 'block' },
+    left: 0,
+    position: 'absolute',
+    right: 0,
+    top: 0,
   })
 );
 
