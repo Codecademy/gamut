@@ -163,7 +163,7 @@ export const InfoTipWithReactNodeLabel: Story = {
       <ConnectedFormGroup
         field={{ component: ConnectedInput }}
         infotip={{
-          alignment: 'top-left',
+          alignment: 'bottom-left',
           info: 'Choose a unique username between 3-20 characters.',
           labelledByFieldLabel: true,
         }}
