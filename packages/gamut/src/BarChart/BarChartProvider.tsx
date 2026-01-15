@@ -32,9 +32,15 @@ export const BarChartContext = createContext<BarChartContextProps>({
   styleConfig: defaultStyleConfig,
   animate: false,
   widestLeftLabelWidth: null,
-  setWidestLeftLabelWidth: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setWidestLeftLabelWidth: () => {
+    // No-op: default context value
+  },
   widestRightLabelWidth: null,
-  setWidestRightLabelWidth: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setWidestRightLabelWidth: () => {
+    // No-op: default context value
+  },
   isMeasuring: true,
 });
 

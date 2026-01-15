@@ -1,13 +1,7 @@
 import { MiniArrowRightIcon } from '@codecademy/gamut-icons';
-import {
-  forwardRef,
-  MouseEvent,
-  MouseEventHandler,
-  MutableRefObject,
-  useRef,
-} from 'react';
+import { forwardRef, MouseEventHandler, MutableRefObject, useRef } from 'react';
 
-import { FlexBox } from '../../Box';
+import { Box, FlexBox } from '../../Box';
 import { Text } from '../../Typography';
 import { iconPadding, iconWidth, minBarWidth } from '../shared/styles';
 import { BarProps } from '../shared/types';
@@ -20,7 +14,6 @@ import {
 } from '../utils/hooks';
 import {
   BackgroundBar,
-  BarListItem,
   BarWrapper,
   ForegroundBar,
   RowAnchor,
@@ -30,7 +23,6 @@ import {
 
 export type BarRowProps = BarProps & {
   index?: number;
-  ariaLabel?: string;
 };
 
 export const Bar = forwardRef<
@@ -45,7 +37,6 @@ export const Bar = forwardRef<
     onClick,
     href,
     index = 0,
-    ariaLabel,
   } = props;
 
   const {
@@ -99,7 +90,6 @@ export const Bar = forwardRef<
   const fgWidthStr = `${Math.max(minBarWidth, foregroundBarWidth)}%`;
 
   const valuesSummary = getValuesSummary({
-    yLabel,
     seriesOneValue,
     seriesTwoValue,
     unit,
@@ -250,7 +240,7 @@ export const Bar = forwardRef<
 
   const content = href ? (
     <RowAnchor
-      aria-label={ariaLabel}
+      aria-label={valuesSummary}
       href={href}
       ref={ref as MutableRefObject<HTMLAnchorElement>}
       onClick={onClick as MouseEventHandler<HTMLAnchorElement>}
@@ -259,23 +249,19 @@ export const Bar = forwardRef<
     </RowAnchor>
   ) : onClick ? (
     <RowButton
-      aria-label={ariaLabel}
+      aria-label={valuesSummary}
       ref={ref as MutableRefObject<HTMLButtonElement>}
-      type="button"
       onClick={onClick}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter') {
-          onClick(e as unknown as MouseEvent<HTMLButtonElement>);
-        }
-      }}
     >
       {rowContent}
     </RowButton>
   ) : (
-    <RowWrapper ref={ref as MutableRefObject<HTMLDivElement>}>
-      {rowContent}
-    </RowWrapper>
+    <>
+      <RowWrapper ref={ref as MutableRefObject<HTMLDivElement>}>
+        <Text screenreader>{valuesSummary}</Text> {rowContent}
+      </RowWrapper>
+    </>
   );
 
-  return <BarListItem aria-label={valuesSummary}>{content}</BarListItem>;
+  return <Box as="li">{content}</Box>;
 });

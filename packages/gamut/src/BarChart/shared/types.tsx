@@ -59,7 +59,6 @@ type BarPropsWithoutInteraction = BarPropsBase & {
 type BarPropsWithInteraction = BarPropsBase & {
   onClick?: ButtonProps['onClick'];
   href?: HTMLProps<HTMLAnchorElement>['href'];
-  ariaLabel: string;
 };
 
 export type BarProps = BarPropsWithoutInteraction | BarPropsWithInteraction;

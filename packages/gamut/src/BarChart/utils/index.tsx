@@ -137,21 +137,20 @@ export const sortBars = ({
  * Generates an accessible summary of the bar values
  */
 export const getValuesSummary = ({
-  yLabel,
   seriesOneValue,
   seriesTwoValue,
   unit,
 }: {
-  yLabel: string;
   seriesOneValue: number;
   seriesTwoValue?: number;
   unit: string;
 }): string => {
+  const unitText = unit ? ` ${unit}` : '';
   if (seriesTwoValue !== undefined) {
     const gained = seriesOneValue;
-    return `${gained} ${unit} gained - now at ${seriesTwoValue} ${unit} in ${yLabel}`;
+    return `${gained}${unitText} gained - now at ${seriesTwoValue}${unitText} in `;
   }
-  return `${seriesOneValue} ${unit} in ${yLabel}`;
+  return `${seriesOneValue}${unitText} in `;
 };
 
 /**

@@ -145,28 +145,9 @@ Custom sort functions can access additional properties on `BarProps` for domain-
 
 <Canvas of={BarChartStories.WithCustomSorting} />
 
-When a bar has an `onClick` handler or `href` link, an `aria-label` is **required** for accessibility. This label is applied to the button or link element and should clearly describe the action or destination.
+When a bar has an `onClick` handler or `href` link, an `aria-label` is automatically generated from the bar's data and applied to the button or link element. The label summarizes the bar's values (e.g., "100 XP in Python" for a simple bar, or "200 XP gained - now at 1500 XP in Python" for a stacked bar).
 
-**Best practices for `aria-label` text:**
-
-- **Be specific and action-oriented**: Describe what will happen when the user interacts with the bar
-
-  - ✅ Good: `"View Python course details"`, `"Go to JavaScript course page"`
-  - ❌ Avoid: `"Python"`, `"Click here"`, `"Link"`
-
-- **Include context**: Reference the bar's category or data when relevant
-
-  - ✅ Good: `"View Python course details"`, `"Go to JavaScript course page"`
-  - ❌ Avoid: Generic labels that don't relate to the specific bar
-
-- **Match user intent**: Use language that matches the action (view, navigate, edit, etc.)
-
-  - For buttons (`onClick`): Focus on the action, e.g., `"View Python course details"`, `"Edit JavaScript progress"`
-  - For links (`href`): Focus on the destination, e.g., `"Go to Python course page"`, `"Navigate to JavaScript dashboard"`
-
-- **Keep it concise**: Aim for 5-10 words that clearly communicate the purpose
-
-Note: The `aria-label` on the interactive element (button/link) is separate from the automatically generated `valuesSummary` that appears on the list item. Both serve different accessibility purposes - the interactive element's label describes the action, while the list item's label describes the data.
+This ensures that screen reader users receive a clear, data-driven description when interacting with bars, without requiring manual `aria-label` props.
 
 <Canvas of={BarChartStories.WithLinks} />
 
@@ -181,9 +162,9 @@ Note: The `aria-label` on the interactive element (button/link) is separate from
 
 **Row-level labeling:**
 
-- Each row automatically generates an accessible label summarizing its values (e.g., "100 XP in Python category")
-- Interactive rows (with `onClick` or `href`) are properly announced as buttons/links
-- **Interactive rows require an `aria-label`**: When using `onClick` or `href`, you must provide an `aria-label` prop for each interactive bar. This label is applied to the button or link element and should clearly describe the action or destination (see the Interactive section for best practices)
+- For non-interactive bars: A hidden text element (visible only to screen readers) is automatically added as the first child of each list item, summarizing the bar's values (e.g., "100 XP in Python")
+- For interactive bars (with `onClick` or `href`): An `aria-label` is automatically generated from the bar's data and applied to the button or link element, ensuring proper screen reader announcements
+- All accessibility labels are automatically generated from the bar's data - no manual `aria-label` props are required
 
 ## UX writing
 

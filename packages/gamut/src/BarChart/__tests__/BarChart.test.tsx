@@ -22,25 +22,22 @@ const renderView = setupRtl(BarChart, {
 const createInteractiveBar = ({
   yLabel,
   seriesOneValue,
-  ariaLabel,
   href,
   onClick,
 }: Pick<BarProps, 'yLabel' | 'seriesOneValue'> & {
-  ariaLabel: string;
   href?: HTMLProps<HTMLAnchorElement>['href'];
   onClick?: ButtonProps['onClick'];
 }): BarProps => {
   const base = {
     yLabel,
     seriesOneValue,
-    ariaLabel,
   };
 
   if (href) {
-    return { ...base, href, ariaLabel, ...(onClick && { onClick }) };
+    return { ...base, href, ...(onClick && { onClick }) };
   }
   if (onClick) {
-    return { ...base, onClick, ariaLabel };
+    return { ...base, onClick };
   }
   return base;
 };
@@ -254,7 +251,6 @@ describe('BarChart', () => {
       const base = {
         yLabel: 'Python',
         seriesOneValue: 100,
-        ariaLabel: 'View Python details',
       };
 
       if (options.href) {
@@ -274,17 +270,23 @@ describe('BarChart', () => {
 
     it('renders a button when onClick is provided', () => {
       const onClick = jest.fn();
-      const { view } = renderView({ barValues: createPythonBar({ onClick }) });
+      const { view } = renderView({
+        barValues: createPythonBar({ onClick }),
+        unit: 'XP',
+      });
 
-      view.getByRole('button', { name: 'View Python details' });
+      view.getByRole('button', { name: '100 XP in Python' });
     });
 
     it('calls onClick when button is clicked', async () => {
       const onClick = jest.fn();
-      const { view } = renderView({ barValues: createPythonBar({ onClick }) });
+      const { view } = renderView({
+        barValues: createPythonBar({ onClick }),
+        unit: 'XP',
+      });
 
       const button = view.getByRole('button', {
-        name: 'View Python details',
+        name: '100 XP in Python',
       });
 
       await userEvent.click(button);
@@ -295,9 +297,10 @@ describe('BarChart', () => {
     it('renders an anchor when href is provided', () => {
       const { view } = renderView({
         barValues: createPythonBar({ href: '/python' }),
+        unit: 'XP',
       });
 
-      const anchor = view.getByRole('link', { name: 'View Python details' });
+      const anchor = view.getByRole('link', { name: '100 XP in Python' });
       expect(anchor).toHaveAttribute('href', '/python');
     });
 
@@ -305,10 +308,11 @@ describe('BarChart', () => {
       const onClick = jest.fn();
       const { view } = renderView({
         barValues: createPythonBar({ href: '/python', onClick }),
+        unit: 'XP',
       });
 
       const anchor = view.getByRole('link', {
-        name: 'View Python details',
+        name: '100 XP in Python',
       });
       expect(anchor).toHaveAttribute('href', '/python');
 
@@ -366,9 +370,7 @@ describe('BarChart', () => {
             hideDescription: true,
           });
 
-          const figcaption = view.getByText('Hidden description', {
-            hidden: true,
-          } as any);
+          const figcaption = view.getByText('Hidden description');
           expect(figcaption).toHaveAttribute('hidden');
         });
       });
@@ -399,26 +401,24 @@ describe('BarChart', () => {
             title: 'Hidden Title',
             hideTitle: true,
           });
-          const title = view.getByText('Hidden Title', { hidden: true } as any);
+          const title = view.getByText('Hidden Title');
           expect(title).toHaveAttribute('hidden');
         });
       });
     });
 
     describe('Row-level labeling', () => {
-      it('has aria-label on list items with unit', () => {
+      it('has hidden text in list items with unit for non-interactive bars', () => {
         const { view } = renderView({ unit: 'XP' });
 
-        view.getByRole('listitem', {
-          name: '100 XP in Python category',
-        });
+        const listItems = view.getAllByRole('listitem');
+        expect(listItems).toHaveLength(2);
 
-        view.getByRole('listitem', {
-          name: '75 XP in JavaScript category',
-        });
+        view.getByText('100 XP in Python');
+        view.getByText('75 XP in JavaScript');
       });
 
-      it('has aria-label on interactive bars for both button/link and listitem', () => {
+      it('has aria-label on interactive bars for button/link and no hidden text in listitem', () => {
         const onClick = jest.fn();
         const { view } = renderView({
           unit: 'XP',
@@ -426,19 +426,20 @@ describe('BarChart', () => {
             createInteractiveBar({
               yLabel: 'Python',
               seriesOneValue: 100,
-              ariaLabel: 'View Python details',
               onClick,
             }),
           ],
         });
 
         view.getByRole('button', {
-          name: 'View Python details',
+          name: '100 XP in Python',
         });
 
-        view.getByRole('listitem', {
-          name: '100 XP in Python category',
-        });
+        const listItem = view.getByRole('listitem');
+        const hiddenText = listItem.querySelector(
+          '[class*="screenreader"], [style*="position: absolute"]'
+        );
+        expect(hiddenText).not.toBeInTheDocument();
       });
     });
   });

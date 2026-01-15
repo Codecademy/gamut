@@ -113,7 +113,6 @@ export const Interactive: Story = {
     barValues: simpleBarData.map((bar) => ({
       ...bar,
       onClick: action(`Clicked ${bar.yLabel}`),
-      'aria-label': `View ${bar.yLabel} course details`,
     })),
     title: 'Interactive skills chart',
     description: 'Click on any row to view detailed course information',
@@ -125,7 +124,6 @@ export const WithLinks: Story = {
     barValues: simpleBarData.map((bar) => ({
       ...bar,
       href: `#${bar.yLabel.toLowerCase().replace(/\s+/g, '-')}`,
-      'aria-label': `Go to ${bar.yLabel} course page`,
     })),
     title: 'Skills chart with links',
     description: 'Each row links to its corresponding course page',

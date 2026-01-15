@@ -34,7 +34,7 @@ const interactiveStyles = css({
   },
 });
 
-export const RowWrapper = styled('div', styledOptions<'div'>())(rowBaseStyles);
+export const RowWrapper = styled('span')(rowBaseStyles);
 export const RowButton = styled('button', styledOptions<'button'>())(
   rowBaseStyles,
   interactiveStyles
@@ -82,17 +82,3 @@ export const ForegroundBar = styled(motion.create(Box))(
     borderWidth: '1px',
   })
 );
-
-export const BarListItem = ({
-  'aria-label': ariaLabel,
-  children,
-}: {
-  'aria-label'?: string;
-  children: React.ReactNode;
-}) => {
-  return (
-    <Box aria-label={ariaLabel} as="li">
-      {children}
-    </Box>
-  );
-};
