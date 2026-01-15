@@ -1,5 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import React, { useMemo } from 'react';
 
 import { Box } from '../../Box';
 import { useLabelPositions } from '../utils/hooks';
@@ -59,13 +60,17 @@ export const GridLines: React.FC<GridLinesProps> = ({
 }) => {
   const labelPositions = useLabelPositions({ min, max, count: tickCount });
 
-  const lines = labelPositions.map(({ positionPercent, value }) => (
-    <GridLine
-      aria-hidden
-      key={`gridline-${value}-${positionPercent}`}
-      positionPercent={positionPercent}
-    />
-  ));
+  const lines = useMemo(
+    () =>
+      labelPositions.map(({ positionPercent, value }) => (
+        <GridLine
+          aria-hidden
+          key={`gridline-${value}-${positionPercent}`}
+          positionPercent={positionPercent}
+        />
+      )),
+    [labelPositions]
+  );
 
   return (
     <GridLineWrapper aria-hidden>

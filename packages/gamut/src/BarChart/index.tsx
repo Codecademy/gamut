@@ -1,6 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { useId } from 'react';
+import { useId, useMemo } from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { FormGroupLabel } from '../Form';
@@ -11,10 +11,14 @@ import { BarRow } from './BarRow';
 import { GridLines } from './layout/GridLines';
 import { ScaleChartHeader } from './layout/ScaleChartHeader';
 import { BarsList } from './shared/elements';
+import {
+  BarChartTranslations,
+  defaultBarChartTranslations,
+} from './shared/translations';
 import { BarChartProps, BarProps, InferBarType } from './shared/types';
 import { useBarChart, useBarChartSort } from './utils/hooks';
 
-export type { BarProps, InferBarType };
+export type { BarProps, InferBarType, BarChartTranslations };
 
 const StyledFormGroupLabel = styled(FormGroupLabel)(
   css({
@@ -43,12 +47,30 @@ export const BarChart = <
   sortFns,
   styleConfig,
   title,
+  translations,
   unit = '',
   xScale,
 }: BarChartProps<TBarValues>) => {
+  const mergedTranslations = useMemo(
+    () => ({
+      ...defaultBarChartTranslations,
+      ...translations,
+      sortOptions: {
+        ...defaultBarChartTranslations.sortOptions,
+        ...translations?.sortOptions,
+      },
+      accessibility: {
+        ...defaultBarChartTranslations.accessibility,
+        ...translations?.accessibility,
+      },
+    }),
+    [translations]
+  );
+
   const { sortedBars, selectProps } = useBarChartSort<TBarValues>({
     bars: barValues,
     sortFns,
+    translations: mergedTranslations,
   });
 
   const contextValue = useBarChart({
@@ -59,6 +81,7 @@ export const BarChart = <
     styleConfig,
     animate,
     barCount: sortedBars?.length,
+    translations: mergedTranslations,
   });
 
   const tickCount = Math.ceil((maxRange - minRange) / contextValue.xScale) + 1;
@@ -101,7 +124,7 @@ export const BarChart = <
                 isSoloField
                 size="small"
               >
-                Order by:
+                {mergedTranslations.sortLabel}
               </StyledFormGroupLabel>
               <WidthSelect
                 sizeVariant="small"
@@ -116,7 +139,7 @@ export const BarChart = <
 
   return (
     <BarChartProvider value={contextValue}>
-      {title && titleContent}
+      {titleContent}
       <Box as="figure" position="relative" width="100%">
         <ScaleChartHeader
           labelCount={tickCount}
@@ -127,10 +150,13 @@ export const BarChart = <
           <GridLines max={maxRange} min={minRange} tickCount={tickCount} />
           <BarsList aria-labelledby={ariaLabelledBy ?? titleId}>
             {sortedBars.map((bar, index) => {
-              const uniqueKey = `${bar.yLabel}-${bar.seriesOneValue}-${
-                bar.seriesTwoValue ?? ''
-              }`;
-              return <BarRow index={index} key={uniqueKey} {...bar} />;
+              const key =
+                bar.yLabel && bar.seriesOneValue
+                  ? `${bar.yLabel}-${bar.seriesOneValue}-${
+                      bar.seriesTwoValue ?? ''
+                    }-${index}`
+                  : index;
+              return <BarRow index={index} key={key} {...bar} />;
             })}
           </BarsList>
         </Box>

@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader, LinkTo } from '~styleguide/blocks';
+import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as BarChartStories from './BarChart.stories';
 
@@ -10,7 +10,7 @@ export const parameters = {
     type: 'figma',
     url: 'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=55123-4176',
   },
-  status: 'current',
+  status: 'updating',
   source: {
     repo: 'gamut',
     githubLink:
@@ -205,3 +205,121 @@ Provide both `title` and `description` props to make the chart's purpose and key
 <Canvas sourceState="shown" of={BarChartStories.Default} />
 
 <Controls />
+
+## Internationalization
+
+<Callout text="We are currently updating global internationalization in Gamut, so the following features are subject to change." />
+
+BarChart supports internationalization through the `translations` prop, which allows you to customize all user-facing strings and configure locale-aware number formatting.
+
+**Translation Structure:**
+
+```typescript
+type BarChartTranslations = {
+  sortLabel: string;
+  sortOptions: {
+    none: string;
+    labelAsc: string;
+    labelDesc: string;
+    valueAsc: string;
+    valueDesc: string;
+  };
+  accessibility: {
+    gainedNowAt: string; // Template: "{value} {unit} gained - now at {value} {unit} in {label}"
+    inLabel: string; // Template: "{value} {unit} in {label}"
+    inOnly: string; // Template: "{value} {unit} in "
+  };
+  locale: string; // For Intl.NumberFormat, e.g., 'en', 'es', 'fr', 'de-DE'
+};
+```
+
+**Basic Usage:**
+
+The `translations` prop is optional and accepts partial translations that will be merged with the default English translations. This means you only need to provide the translations you want to override.
+
+```tsx
+<BarChart
+  title="Habilidades"
+  barValues={barData}
+  description="Progreso de habilidades"
+  minRange={0}
+  maxRange={200}
+  sortFns={['alphabetically', 'none']}
+  translations={{
+    sortLabel: 'Ordenar por:',
+    sortOptions: {
+      none: 'Ninguno',
+      labelAsc: 'Etiqueta (A-Z)',
+      labelDesc: 'Etiqueta (Z-A)',
+      valueAsc: 'Valor (Bajo-Alto)',
+      valueDesc: 'Valor (Alto-Bajo)',
+    },
+    locale: 'es',
+  }}
+/>
+```
+
+**Partial Translations:**
+
+You can provide only the translations you need to customize. All other strings will use the default English values:
+
+```tsx
+<BarChart
+  // ... other props
+  translations={{
+    sortLabel: 'Sort by:',
+    // sortOptions will use default English values
+    locale: 'en-GB', // Use British English number formatting
+  }}
+/>
+```
+
+**Locale-Aware Number Formatting:**
+
+The `locale` property controls how numbers are formatted throughout the chart using `Intl.NumberFormat`. This affects:
+
+- Scale labels on the x-axis
+- Value labels on bars
+- All numeric displays
+
+```tsx
+// German locale (1.000 instead of 1,000)
+<BarChart
+  // ... other props
+  translations={{
+    locale: 'de-DE',
+  }}
+/>
+
+// French locale
+<BarChart
+  // ... other props
+  translations={{
+    locale: 'fr-FR',
+  }}
+/>
+```
+
+**Accessibility Translations:**
+
+The accessibility strings are used in automatically generated `aria-label` attributes for interactive bars and screen reader text for non-interactive bars. These should be translated to match the language of your application:
+
+```tsx
+<BarChart
+  // ... other props
+  translations={{
+    accessibility: {
+      gainedNowAt: 'ganado - ahora en', // Spanish: "gained - now at"
+      inLabel: 'en', // Spanish: "in"
+      inOnly: 'en ', // Spanish: "in "
+    },
+  }}
+/>
+```
+
+**Best Practices:**
+
+- Always provide complete translations for the language your application uses
+- Use appropriate locale codes (e.g., `'en-US'`, `'es-ES'`, `'fr-FR'`) for number formatting
+- Test accessibility strings with screen readers in the target language
+- Consider creating translation objects that can be reused across multiple BarChart instances

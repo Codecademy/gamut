@@ -6,6 +6,7 @@ import { ButtonProps } from '../../Button';
 import { Text } from '../../Typography/Text';
 import { HeadingTags } from '../../Typography/types';
 import { CustomSortOption } from '../utils/hooks';
+import { BarChartTranslations } from './translations';
 
 type titleType =
   | string
@@ -107,6 +108,8 @@ export type BarChartProps<
     | 'none'
     | CustomSortOption<InferBarType<TBarValues>>
   )[];
+  /** Translations for internationalization. Partial translations will be merged with defaults. */
+  translations?: Partial<BarChartTranslations>;
 };
 
 export type BarChartRange = Pick<BarChartProps, 'minRange' | 'maxRange'>;

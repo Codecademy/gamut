@@ -1,3 +1,4 @@
+import { BarChartTranslations } from '../shared/translations';
 import { BarChartRange, BarChartUnit, BarProps } from '../shared/types';
 
 export const numDigits = ({ num }: { num: number }) => {
@@ -95,11 +96,22 @@ export const getPercentDiff = ({ v1, v2 }: { v1: number; v2: number }) => {
   return (Math.abs(v1 - v2) / ((v1 + v2) / 2)) * 100;
 };
 
-export const formatNumberUS = ({ num }: { num: number }) =>
-  Intl.NumberFormat('en').format(num);
+export const formatNumberUS = ({
+  num,
+  locale = 'en',
+}: {
+  num: number;
+  locale?: string;
+}) => Intl.NumberFormat(locale).format(num);
 
-export const formatNumberUSCompact = ({ num }: { num: number }) =>
-  Intl.NumberFormat('en', {
+export const formatNumberUSCompact = ({
+  num,
+  locale = 'en',
+}: {
+  num: number;
+  locale?: string;
+}) =>
+  Intl.NumberFormat(locale, {
     notation: 'compact',
     compactDisplay: 'short',
   }).format(num);
@@ -142,20 +154,22 @@ export const getValuesSummary = ({
   seriesTwoValue,
   unit,
   yLabel,
+  translations,
 }: Pick<BarProps, 'seriesOneValue' | 'seriesTwoValue' | 'yLabel'> &
   Required<Pick<BarChartUnit, 'unit'>> & {
     isInteractive: boolean;
+    translations: BarChartTranslations;
   }): string => {
   const unitText = unit ? ` ${unit}` : '';
 
   if (seriesTwoValue !== undefined) {
     const gained = seriesOneValue;
-    return `${gained}${unitText} gained - now at ${seriesTwoValue}${unitText} in ${yLabel}`;
+    return `${gained}${unitText} ${translations.accessibility.gainedNowAt} ${seriesTwoValue}${unitText} ${translations.accessibility.inLabel} ${yLabel}`;
   }
 
   return isInteractive
-    ? `${seriesOneValue}${unitText} in ${yLabel}`
-    : `${seriesOneValue}${unitText} in `;
+    ? `${seriesOneValue}${unitText} ${translations.accessibility.inLabel} ${yLabel}`
+    : `${seriesOneValue}${unitText} ${translations.accessibility.inOnly}`;
 };
 
 /**

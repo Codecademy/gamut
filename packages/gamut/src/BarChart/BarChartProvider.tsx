@@ -1,5 +1,9 @@
 import { createContext } from 'react';
 
+import {
+  BarChartTranslations,
+  defaultBarChartTranslations,
+} from './shared/translations';
 import { BarChartStyles } from './shared/types';
 
 export interface BarChartContextProps {
@@ -14,6 +18,7 @@ export interface BarChartContextProps {
   widestRightLabelWidth: number | null;
   setWidestRightLabelWidth: (width: number) => void;
   isMeasuring: boolean;
+  translations: BarChartTranslations;
 }
 
 const defaultStyleConfig: Required<BarChartStyles> = {
@@ -42,6 +47,7 @@ export const BarChartContext = createContext<BarChartContextProps>({
     // No-op: default context value
   },
   isMeasuring: true,
+  translations: defaultBarChartTranslations,
 });
 
 BarChartContext.displayName = 'BarChartContext';

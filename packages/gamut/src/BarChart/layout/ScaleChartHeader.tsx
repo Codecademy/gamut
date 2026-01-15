@@ -1,10 +1,11 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import React, { useMemo } from 'react';
 
 import { Box } from '../../Box';
 import { Text } from '../../Typography';
 import { formatNumberUSCompact } from '../utils';
-import { useLabelPositions } from '../utils/hooks';
+import { useBarChartContext, useLabelPositions } from '../utils/hooks';
 import { VerticalSpacer } from './VerticalSpacer';
 
 export interface ScaleChartHeaderProps {
@@ -60,20 +61,26 @@ export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
   min,
   max,
 }) => {
+  const { translations } = useBarChartContext();
   const labelPositions = useLabelPositions({ min, max, count: labelCount });
 
-  const scaleLabels = labelPositions.map(({ value, positionPercent }) => (
-    <StyledLabelText
-      key={`label-${value}-${positionPercent}`}
-      positionPercent={positionPercent}
-      textAlign="center"
-      variant="p-small"
-    >
-      {formatNumberUSCompact({
-        num: value,
-      })}
-    </StyledLabelText>
-  ));
+  const scaleLabels = useMemo(
+    () =>
+      labelPositions.map(({ value, positionPercent }) => (
+        <StyledLabelText
+          key={`label-${value}-${positionPercent}`}
+          positionPercent={positionPercent}
+          textAlign="center"
+          variant="p-small"
+        >
+          {formatNumberUSCompact({
+            num: value,
+            locale: translations.locale,
+          })}
+        </StyledLabelText>
+      )),
+    [labelPositions, translations.locale]
+  );
 
   return (
     <Box mb={12} width={1}>

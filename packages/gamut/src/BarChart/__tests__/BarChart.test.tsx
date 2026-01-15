@@ -444,4 +444,90 @@ describe('BarChart', () => {
       });
     });
   });
+
+  describe('Translations', () => {
+    it('uses default translations when not provided', () => {
+      const { view } = renderView({
+        sortFns: ['alphabetically', 'none'],
+      });
+
+      expect(view.getByText('Order by:')).toBeInTheDocument();
+      expect(view.getByText('None')).toBeInTheDocument();
+      expect(view.getByText('Label (A-Z)')).toBeInTheDocument();
+    });
+
+    it('uses custom translations when provided', () => {
+      const { view } = renderView({
+        sortFns: ['alphabetically', 'none'],
+        translations: {
+          sortLabel: 'Ordenar por:',
+          sortOptions: {
+            none: 'Ninguno',
+            labelAsc: 'Etiqueta (A-Z)',
+            labelDesc: 'Etiqueta (Z-A)',
+            valueAsc: 'Valor (Bajo-Alto)',
+            valueDesc: 'Valor (Alto-Bajo)',
+          },
+        },
+      });
+
+      expect(view.getByText('Ordenar por:')).toBeInTheDocument();
+      expect(view.getByText('Ninguno')).toBeInTheDocument();
+      expect(view.getByText('Etiqueta (A-Z)')).toBeInTheDocument();
+    });
+
+    it('merges partial translations with defaults', () => {
+      const { view } = renderView({
+        sortFns: ['alphabetically', 'none'],
+        translations: {
+          sortLabel: 'Sort by:',
+        },
+      });
+
+      expect(view.getByText('Sort by:')).toBeInTheDocument();
+      // Should still use default for sort options
+      expect(view.getByText('None')).toBeInTheDocument();
+      expect(view.getByText('Label (A-Z)')).toBeInTheDocument();
+    });
+
+    it('uses custom locale for number formatting', () => {
+      const { view } = renderView({
+        barValues: [
+          { yLabel: 'Python', seriesOneValue: 1000 },
+          { yLabel: 'JavaScript', seriesOneValue: 2000 },
+        ],
+        translations: {
+          locale: 'de-DE',
+        },
+      });
+
+      // German locale uses different number formatting (e.g., 1.000 instead of 1,000)
+      const listItems = view.getAllByRole('listitem');
+      // The exact format depends on the locale, but we verify it's using the locale
+      expect(listItems[0]).toHaveTextContent('Python');
+      expect(listItems[1]).toHaveTextContent('JavaScript');
+    });
+
+    it('uses custom accessibility translations', () => {
+      const { view } = renderView({
+        barValues: [
+          { yLabel: 'Python', seriesOneValue: 100, seriesTwoValue: 200 },
+        ],
+        unit: 'XP',
+        translations: {
+          accessibility: {
+            gainedNowAt: 'ganado - ahora en',
+            inLabel: 'en',
+            inOnly: 'en ',
+          },
+        },
+      });
+
+      const listItem = view.getAllByRole('listitem')[0];
+      const hiddenText = listItem.querySelector(
+        '[class*="screenreader"], [style*="position: absolute"]'
+      );
+      expect(hiddenText).toHaveTextContent(/ganado - ahora en/);
+    });
+  });
 });

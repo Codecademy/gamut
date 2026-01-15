@@ -16,6 +16,7 @@ import {
 
 import { SelectOptions } from '../../Form/inputs/Select';
 import { BarChartContext, BarChartContextProps } from '../BarChartProvider';
+import { BarChartTranslations } from '../shared/translations';
 import { BarChartStyles, BarProps, InferBarType } from '../shared/types';
 import { calculatePositionPercent, getLabel, sortBars } from './index';
 
@@ -68,6 +69,7 @@ export interface UseBarChartOptions {
   styleConfig?: BarChartStyles;
   animate?: boolean;
   barCount?: number;
+  translations: BarChartTranslations;
 }
 
 export const useBarChart = ({
@@ -78,6 +80,7 @@ export const useBarChart = ({
   styleConfig,
   animate = false,
   barCount = 0,
+  translations,
 }: UseBarChartOptions) => {
   const [widestLeftLabelWidth, setWidestLeftLabelWidthState] = useState<
     number | null
@@ -147,6 +150,7 @@ export const useBarChart = ({
       widestRightLabelWidth,
       setWidestRightLabelWidth,
       isMeasuring,
+      translations,
     }),
     [
       minRange,
@@ -160,6 +164,7 @@ export const useBarChart = ({
       widestRightLabelWidth,
       setWidestRightLabelWidth,
       isMeasuring,
+      translations,
     ]
   );
 };
@@ -289,6 +294,7 @@ export interface UseBarChartSortOptions<
     | 'none'
     | CustomSortOption<InferBarType<TBarValues>>
   )[];
+  translations: BarChartTranslations;
 }
 
 export interface UseBarChartSortReturn<
@@ -305,14 +311,6 @@ export interface UseBarChartSortReturn<
   } | null;
 }
 
-const SORT_OPTIONS: Record<string, string> = {
-  none: 'None',
-  'label-asc': 'Label (A-Z)',
-  'label-desc': 'Label (Z-A)',
-  'value-asc': 'Value (Low-High)',
-  'value-desc': 'Value (High-Low)',
-};
-
 /**
  * Hook that manages bar sorting state and provides memoized sorted bars.
  * Supports predefined sort options (via string literals) and custom sort functions.
@@ -323,6 +321,7 @@ export const useBarChartSort = <
 >({
   bars,
   sortFns,
+  translations,
 }: UseBarChartSortOptions<TBarValues>): UseBarChartSortReturn<TBarValues> => {
   type TBar = InferBarType<TBarValues>;
   // Build options map and custom sort map from sortFns array
@@ -342,15 +341,15 @@ export const useBarChartSort = <
     sortFns.forEach((item) => {
       if (typeof item === 'string') {
         if (item === 'alphabetically') {
-          options['label-asc'] = SORT_OPTIONS['label-asc'];
-          options['label-desc'] = SORT_OPTIONS['label-desc'];
+          options['label-asc'] = translations.sortOptions.labelAsc;
+          options['label-desc'] = translations.sortOptions.labelDesc;
           availableValues.push('label-asc', 'label-desc');
         } else if (item === 'numerically') {
-          options['value-asc'] = SORT_OPTIONS['value-asc'];
-          options['value-desc'] = SORT_OPTIONS['value-desc'];
+          options['value-asc'] = translations.sortOptions.valueAsc;
+          options['value-desc'] = translations.sortOptions.valueDesc;
           availableValues.push('value-asc', 'value-desc');
         } else if (item === 'none') {
-          options.none = SORT_OPTIONS.none;
+          options.none = translations.sortOptions.none;
           availableValues.push('none');
         }
       } else {
@@ -371,7 +370,7 @@ export const useBarChartSort = <
       customSortMap: customMap,
       defaultSortValue: defaultVal,
     };
-  }, [sortFns]);
+  }, [sortFns, translations]);
 
   const [sortValue, setSortValue] = useState<string>(defaultSortValue);
 
@@ -408,7 +407,7 @@ export const useBarChartSort = <
   }, []);
 
   const selectId = useRef(
-    `bar-chart-sort-${Math.random().toString(36).substr(2, 9)}`
+    `bar-chart-sort-${Math.random().toString(36).slice(2, 11)}`
   );
 
   const selectProps = useMemo(() => {
