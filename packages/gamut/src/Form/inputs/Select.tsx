@@ -48,7 +48,8 @@ const selectSizeVariants = variant({
   variants: {
     small: {
       height: '2rem',
-      px: 8,
+      pl: 8,
+      pr: 16,
       py: 0,
     },
     base: {
@@ -113,7 +114,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
           color={error ? 'feedback-error' : disabled ? 'text-disabled' : 'text'}
           position="absolute"
           pr={12}
-          right="0"
+          right={sizeVariant === 'small' ? 4 : 0}
           top="0"
         >
           {sizeVariant === 'small' ? (
