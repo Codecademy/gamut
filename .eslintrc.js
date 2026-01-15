@@ -75,5 +75,11 @@ module.exports = {
         'gamut/no-inline-style': 'off',
       },
     },
+    {
+      files: ['packages/styleguide/**/*.mdx'],
+      rules: {
+        'gamut/no-kbd-element': 'error',
+      },
+    },
   ],
 };
