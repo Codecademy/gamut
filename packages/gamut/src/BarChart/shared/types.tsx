@@ -108,3 +108,7 @@ export type BarChartProps<
     | CustomSortOption<InferBarType<TBarValues>>
   )[];
 };
+
+export type BarChartRange = Pick<BarChartProps, 'minRange' | 'maxRange'>;
+
+export type BarChartUnit = Pick<BarChartProps, 'unit'>;

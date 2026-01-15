@@ -1,4 +1,4 @@
-import { BarProps } from '../shared/types';
+import { BarChartRange, BarChartUnit, BarProps } from '../shared/types';
 
 export const numDigits = ({ num }: { num: number }) => {
   return Math.max(Math.floor(Math.log10(Math.abs(num))), 0) + 1;
@@ -30,32 +30,32 @@ export const calculateBarWidth = ({
   maxRange,
 }: {
   value: number;
-  minRange: number;
-  maxRange: number;
-}) => {
+} & BarChartRange) => {
   const range = maxRange - minRange;
   const adjustedValue = value - minRange;
   return Math.floor(calculatePercent({ value: adjustedValue, total: range }));
 };
 
-// Calculate tick spacing and nice minimum and maximum data points on the axis.
-
+/**
+ * Calculate tick spacing and nice minimum and maximum data points on the axis.
+ */
 export const calculateTicksAndRange = ({
   maxTicks,
-  minPoint,
-  maxPoint,
+  min,
+  max,
 }: {
   maxTicks: number;
-  minPoint: number;
-  maxPoint: number;
+} & {
+  min: BarChartRange['minRange'];
+  max: BarChartRange['maxRange'];
 }): [number, number, number] => {
-  const range = niceNum({ range: maxPoint - minPoint, roundDown: false });
+  const range = niceNum({ range: max - min, roundDown: false });
   const tickSpacing = niceNum({
     range: range / (maxTicks - 1),
     roundDown: true,
   });
-  const niceMin = Math.floor(minPoint / tickSpacing) * tickSpacing;
-  const niceMax = Math.ceil(maxPoint / tickSpacing) * tickSpacing;
+  const niceMin = Math.floor(min / tickSpacing) * tickSpacing;
+  const niceMax = Math.ceil(max / tickSpacing) * tickSpacing;
   const tickCount = range / tickSpacing;
   return [tickCount, niceMin, niceMax];
 };
@@ -107,15 +107,15 @@ export const formatNumberUSCompact = ({ num }: { num: number }) =>
 /**
  * Sort bars based on sortBy and order configuration
  */
-export const sortBars = ({
+export const sortBars = <T extends BarProps>({
   bars,
   sortBy,
   order,
 }: {
-  bars: BarProps[];
+  bars: T[];
   sortBy: 'label' | 'value' | 'none';
   order: 'ascending' | 'descending';
-}): BarProps[] => {
+}): T[] => {
   if (sortBy === 'none' || !sortBy) {
     return bars;
   }
@@ -137,20 +137,25 @@ export const sortBars = ({
  * Generates an accessible summary of the bar values
  */
 export const getValuesSummary = ({
+  isInteractive,
   seriesOneValue,
   seriesTwoValue,
   unit,
-}: {
-  seriesOneValue: number;
-  seriesTwoValue?: number;
-  unit: string;
-}): string => {
+  yLabel,
+}: Pick<BarProps, 'seriesOneValue' | 'seriesTwoValue' | 'yLabel'> &
+  Required<Pick<BarChartUnit, 'unit'>> & {
+    isInteractive: boolean;
+  }): string => {
   const unitText = unit ? ` ${unit}` : '';
+
   if (seriesTwoValue !== undefined) {
     const gained = seriesOneValue;
-    return `${gained}${unitText} gained - now at ${seriesTwoValue}${unitText} in `;
+    return `${gained}${unitText} gained - now at ${seriesTwoValue}${unitText} in ${yLabel}`;
   }
-  return `${seriesOneValue}${unitText} in `;
+
+  return isInteractive
+    ? `${seriesOneValue}${unitText} in ${yLabel}`
+    : `${seriesOneValue}${unitText} in `;
 };
 
 /**
@@ -164,8 +169,9 @@ export const getLabel = ({
 }: {
   labelCount: number;
   labelIndex: number;
-  min: number;
-  max: number;
+} & {
+  min: BarChartRange['minRange'];
+  max: BarChartRange['maxRange'];
 }): number => {
   if (labelCount <= 1) return max;
   const incrementalDecimal = labelIndex / (labelCount - 1);
@@ -182,8 +188,9 @@ export const calculatePositionPercent = ({
   max,
 }: {
   value: number;
-  min: number;
-  max: number;
+} & {
+  min: BarChartRange['minRange'];
+  max: BarChartRange['maxRange'];
 }): number => {
   if (max === min) return 0;
   const range = max - min;

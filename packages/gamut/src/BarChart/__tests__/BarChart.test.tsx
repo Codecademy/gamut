@@ -414,8 +414,9 @@ describe('BarChart', () => {
         const listItems = view.getAllByRole('listitem');
         expect(listItems).toHaveLength(2);
 
-        view.getByText('100 XP in Python');
-        view.getByText('75 XP in JavaScript');
+        // Non-interactive bars include "in " so screen readers read it with the adjacent category text
+        view.getByText('100 XP in ');
+        view.getByText('75 XP in ');
       });
 
       it('has aria-label on interactive bars for button/link and no hidden text in listitem', () => {
