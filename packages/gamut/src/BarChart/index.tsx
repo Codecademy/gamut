@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { useId } from 'react';
 
 import { Box, FlexBox } from '../Box';
+import { FormGroupLabel } from '../Form';
 import { Select } from '../Form/inputs/Select';
 import { Text } from '../Typography/Text';
 import { Bar } from './Bar';
@@ -15,6 +16,12 @@ import { useBarChart, useBarChartSort } from './utils/hooks';
 
 export type { BarProps, InferBarType };
 
+const StyledFormGroupLabel = styled(FormGroupLabel)(
+  css({
+    mr: 8,
+    mt: 4,
+  })
+);
 const WidthSelect = styled(Select)(
   css({
     width: 'max-content',
@@ -57,6 +64,7 @@ export const BarChart = <
   const tickCount = Math.ceil((maxRange - minRange) / contextValue.xScale) + 1;
 
   const titleId = useId();
+  const sortSelectId = useId();
 
   const titleProps =
     typeof title === 'string'
@@ -87,11 +95,20 @@ export const BarChart = <
         >
           {titleProps && <Text mb={4} {...titleProps} />}
           {selectProps && (
-            <WidthSelect
-              aria-label="Sort bars"
-              sizeVariant="small"
-              {...selectProps}
-            />
+            <FlexBox alignItems="center">
+              <StyledFormGroupLabel
+                htmlFor={sortSelectId}
+                isSoloField
+                size="small"
+              >
+                Order by:
+              </StyledFormGroupLabel>
+              <WidthSelect
+                sizeVariant="small"
+                {...selectProps}
+                id={sortSelectId}
+              />
+            </FlexBox>
           )}
         </FlexBox>
       </Box>
