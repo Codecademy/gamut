@@ -51,7 +51,11 @@ export const TableRow: DataRow = ({
   const { variant, listType } = useListContext();
   const dataTablePadding = listType === 'table' && variant === 'table';
 
-  const listColProps = { dataTablePadding, showOverflow };
+  // Determine first/last column for padding (avoiding SSR-unsafe :first-child/:last-child)
+  const isFirstColumn = !selectable; // If selectable, select column is first
+  const isLastColumn = !expandable; // If expandable, expand control is last
+
+  const listColProps = { showOverflow };
 
   const controlIndices = useMemo(() => {
     const controlIndices = new Map<number, number>();
@@ -87,6 +91,7 @@ export const TableRow: DataRow = ({
         <ListCol
           {...listColProps}
           display={{ _: 'flex', c_sm: 'flex' }}
+          firstColumn={dataTablePadding}
           size="content"
           type="select"
         >
@@ -106,12 +111,16 @@ export const TableRow: DataRow = ({
           gridRow: undefined,
         };
         const newKey = prefixId(`${id}-col-${String(key)}`);
+        const isFirst = index === 0 && isFirstColumn;
+        const isLast = index === columns.length - 1 && isLastColumn;
         const colProps = {
           ...listColProps,
           size,
           justify,
           fill,
           type,
+          firstColumn: dataTablePadding && isFirst,
+          lastColumn: dataTablePadding && isLast,
         };
 
         if (type === 'control') {
@@ -177,6 +186,7 @@ export const TableRow: DataRow = ({
       {expandable && (
         <ListCol
           {...listColProps}
+          lastColumn={dataTablePadding}
           order={{ _: 1000, c_sm: 'initial' }}
           type="expandControl"
         >

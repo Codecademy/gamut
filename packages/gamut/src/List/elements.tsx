@@ -383,14 +383,11 @@ const columnStates = states({
     },
   },
   /**
-   * We add this to every RowEl except expandable DataList because it causes a layout shift.
+   * Padding is added to the first and last columns of a RowEl except expandable DataList because it causes a layout shift.
    * In that case, the padding is instead added directly to the Expandable control.
    */
-  lastChildPadding: {
-    '&:last-of-type': {
-      pr: 8,
-    },
-  },
+  firstColumn: { pl: 8 },
+  lastColumn: { pr: 8 },
   wrap: {
     whiteSpace: 'normal',
   },
@@ -407,9 +404,6 @@ const columnSpacing = variant({
   prop: 'spacing',
   base: {
     px: { _: 0, c_base: 8, c_sm: 0 },
-    '&:first-of-type': {
-      pl: 8,
-    },
   },
   variants: {
     normal: {
@@ -459,43 +453,11 @@ export const ColEl = styled(
   layout
 );
 
-export const StickyHeaderColWrapper = styled.th(
-  css({
+const stickyHeaderStates = states({
+  notFirstStickyColumn: {
+    left: { _: 16, c_base: 0, c_sm: 16 },
+    overflow: 'visible',
     '&:before': {
-      content: '""',
-      position: 'absolute',
-      bg: { _: 'background', c_base: 'transparent', c_sm: 'background' },
-      width: '100%',
-      height: '100%',
-      top: 0,
-      left: 0,
-      zIndex: -1,
-    },
-    '&:after': {
-      content: '""',
-      position: 'absolute',
-      bg: {
-        _: 'background-current',
-        c_base: 'inherit',
-        c_sm: 'background-current',
-      },
-      width: '100%',
-      height: '100%',
-      top: 0,
-      left: 0,
-      zIndex: -1,
-    },
-    display: 'flex',
-    flexShrink: 0,
-    position: 'sticky',
-    left: 0,
-    zIndex: 1,
-    bg: { _: 'inherit', c_base: 'transparent', c_sm: 'inherit' },
-    '&:not(:first-of-type)': {
-      left: { _: 16, c_base: 0, c_sm: 16 },
-      overflow: 'visible',
-    },
-    '&:not(:first-of-type):before': {
       display: { _: 'block', c_base: 'none', c_sm: 'block' },
       content: '""',
       left: -16,
@@ -503,8 +465,49 @@ export const StickyHeaderColWrapper = styled.th(
       width: 16,
       position: 'absolute',
     },
-  })
-);
+  },
+});
+
+const stickyHeaderStyles = css({
+  '&:before': {
+    content: '""',
+    position: 'absolute',
+    bg: { _: 'background', c_base: 'transparent', c_sm: 'background' },
+    width: '100%',
+    height: '100%',
+    top: 0,
+    left: 0,
+    zIndex: -1,
+  },
+  '&:after': {
+    content: '""',
+    position: 'absolute',
+    bg: {
+      _: 'background-current',
+      c_base: 'inherit',
+      c_sm: 'background-current',
+    },
+    width: '100%',
+    height: '100%',
+    top: 0,
+    left: 0,
+    zIndex: -1,
+  },
+  display: 'flex',
+  flexShrink: 0,
+  position: 'sticky',
+  left: 0,
+  zIndex: 1,
+  bg: { _: 'inherit', c_base: 'transparent', c_sm: 'inherit' },
+});
+
+export interface StickyHeaderColWrapperProps
+  extends StyleProps<typeof stickyHeaderStates> {}
+
+export const StickyHeaderColWrapper = styled(
+  'th',
+  styledOptions<'th'>()
+)<StickyHeaderColWrapperProps>(stickyHeaderStyles, stickyHeaderStates);
 
 const listStyles = css({
   containerType: 'inline-size',

@@ -38,6 +38,10 @@ export const TableHeaderRow: HeaderComponent = ({
   const dataTablePadding = listType === 'table' && variant === 'table';
   const headerRowDirections = useListState().query?.sort;
 
+  // Determine first/last column for padding (avoiding SSR-unsafe :first-child/:last-child)
+  const isFirstColumn = !selectable; // If selectable, select column is first
+  const isLastColumn = !expandable; // If expandable, expand control is last
+
   return (
     <StyledHeaderRow
       invisible={invisible}
@@ -45,7 +49,7 @@ export const TableHeaderRow: HeaderComponent = ({
     >
       <>
         {selectable && (
-          <ListCol size="content">
+          <ListCol firstColumn={dataTablePadding} size="content">
             {!hideSelectAll && (
               <SelectControl
                 disabled={empty}
@@ -58,48 +62,59 @@ export const TableHeaderRow: HeaderComponent = ({
             )}
           </ListCol>
         )}
-        {columns.map(({ key, header, sortable, filters, ...colProps }) => {
-          const rowProperty = key as string;
-          const renderKey = prefixId(`header-col-${rowProperty}`);
-          const columnText = String(header || key);
-          const sortDirection = headerRowDirections?.[rowProperty] ?? 'none';
-          const ariaSortDirection =
-            sortDirection === 'none'
-              ? 'none'
-              : sortDirection === 'asc'
-              ? 'ascending'
-              : 'descending';
+        {columns.map(
+          ({ key, header, sortable, filters, ...colProps }, index) => {
+            const rowProperty = key as string;
+            const renderKey = prefixId(`header-col-${rowProperty}`);
+            const columnText = String(header || key);
+            const sortDirection = headerRowDirections?.[rowProperty] ?? 'none';
+            const ariaSortDirection =
+              sortDirection === 'none'
+                ? 'none'
+                : sortDirection === 'asc'
+                ? 'ascending'
+                : 'descending';
 
-          return (
-            <ListCol
-              key={renderKey}
-              {...colProps}
-              aria-sort={sortable ? ariaSortDirection : undefined}
-              columnHeader
-              dataTablePadding={dataTablePadding}
-            >
-              <FlexBox alignItems="flex-end" gap={8} height="100%" width="100%">
-                {filters && (
-                  <FilterControl
-                    columnKey={rowProperty}
-                    justify={colProps.justify}
-                    options={filters}
-                    onFilter={onFilter}
-                  />
-                )}
-                {sortable ? (
-                  <SortControl columnKey={rowProperty} onSort={onSort}>
-                    {columnText}
-                  </SortControl>
-                ) : (
-                  columnText
-                )}
-              </FlexBox>
-            </ListCol>
-          );
-        })}
+            const isFirst = index === 0 && isFirstColumn;
+            const isLast = index === columns.length - 1 && isLastColumn;
+
+            return (
+              <ListCol
+                key={renderKey}
+                {...colProps}
+                aria-sort={sortable ? ariaSortDirection : undefined}
+                columnHeader
+                firstColumn={dataTablePadding && isFirst}
+                lastColumn={dataTablePadding && isLast}
+              >
+                <FlexBox
+                  alignItems="flex-end"
+                  gap={8}
+                  height="100%"
+                  width="100%"
+                >
+                  {filters && (
+                    <FilterControl
+                      columnKey={rowProperty}
+                      justify={colProps.justify}
+                      options={filters}
+                      onFilter={onFilter}
+                    />
+                  )}
+                  {sortable ? (
+                    <SortControl columnKey={rowProperty} onSort={onSort}>
+                      {columnText}
+                    </SortControl>
+                  ) : (
+                    columnText
+                  )}
+                </FlexBox>
+              </ListCol>
+            );
+          }
+        )}
         {expandable && (
-          <ListCol ghost size="content">
+          <ListCol ghost lastColumn={dataTablePadding} size="content">
             <ExpandControl />
           </ListCol>
         )}
