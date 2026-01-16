@@ -28,8 +28,7 @@ export const parameters = {
 A tip is triggered by clicking on an information icon button and can be closed by clicking outside, pressing <KeyboardKey>Esc</KeyboardKey>, or clicking the info button again.
 
 Use an infotip to provide additional info about a nearby element or content.
-
-Infotip consists of an icon button and the .tip-bg subcomponent. The info button has low and high emphasis variants and the `.tip` has 4 alignment variants.
+The info button has low and high emphasis variants and the `Tip` has 4 alignment variants.
 
 ## Variants
 
@@ -57,17 +56,19 @@ This `floating` variant should only be used as needed.
 
 ### InfoTips with links or buttons
 
-Links or buttons within InfoTips should be used sparingly and only when the information is critical to the user's understanding of the content. If an infotip _absolutely requires_ a link or button, it needs to provide a programmatic focus by way of the `onClick` prop. The `onClick` prop accepts a function that can accept an `{isTipHidden}` argument and using that you can set programmatic focus as needed.
+Links or buttons within InfoTips should be used sparingly and only when the information is critical to the user's understanding of the content. When an InfoTip opens, focus automatically moves to the tip content, allowing keyboard users to immediately interact with any links or buttons inside.
 
 <Canvas of={InfoTipStories.WithLinksOrButtons} />
 
-### Floating placement
+### Automatic Focus Management
 
-When using `placement="floating"`, InfoTips implements focus management for easier navigation:
+InfoTips automatically manage focus for optimal keyboard accessibility:
 
-- **<KeyboardKey>Tab</KeyboardKey>**: Navigate forward through focusable elements (links, buttons) inside the tip. When reaching the last element, wraps back to the InfoTip button for convenience
-- **<KeyboardKey>Shift</KeyboardKey>+<KeyboardKey>Tab</KeyboardKey>**: Navigate backward naturally through the page
-- **<KeyboardKey>Esc</KeyboardKey>**: Closes the tip and returns focus to the InfoTip button
+- **Opening**: Focus automatically moves to the tip content when opened
+- ** <KeyboardKey>Tab</KeyboardKey> (Floating)**: Navigate forward through focusable elements (links, buttons) inside the tip. When reaching the last element, wraps back to the InfoTip button
+- **<KeyboardKey>Shift </KeyboardKey> + <KeyboardKey>Tab</KeyboardKey> (Floating)**: Navigate backward naturally - from the button, exits to the previous page element
+- **<KeyboardKey>Tab</KeyboardKey> or <KeyboardKey>Shift</KeyboardKey> +<KeyboardKey>Tab</KeyboardKey> (Inline)**: Follows normal document flow
+- **<KeyboardKey>Escape</KeyboardKey>**: Closes the tip and returns focus to the InfoTip button
 
 <Canvas of={InfoTipStories.KeyboardNavigation} />
 
@@ -81,6 +82,21 @@ InfoTips have intelligent Escape key handling that works correctly both inside a
 - **Modals take priority over external InfoTips** - InfoTips detect when `dialog[open]`, `role="dialog"`, or `role="alertdialog"` elements are present and defer <KeyboardKey>Esc</KeyboardKey> handling to them when the InfoTip is outside the Modal
 
 <Canvas of={InfoTipStories.InfoTipInsideModal} />
+
+## Custom Accessible Labeling
+
+Provide either `ariaLabel` or `ariaLabelledby` to ensure screen reader users understand the purpose of the InfoTip button.
+
+The InfoTip button's accessible label can be customized using either prop:
+
+- **`ariaLabel`**: Directly sets the accessible label text. Useful when you want to provide a custom label without referencing another element.
+- **`ariaLabelledby`**: References the ID of another element to use as the label. Useful when you want the InfoTip button to be labeled by visible text elsewhere on the page. This is useful for when the `InfoTip` is beside text that contextualizes it.
+
+### Custom Role Description
+
+The `InfoTipButton` uses [`aria-roledescription`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-roledescription) to provide additional context to screen reader users about the button's specific purpose. This defaults to `"More information button"` but can be customized via the `ariaRoleDescription` prop for translation or other accessibility needs.
+
+<Canvas of={InfoTipStories.AriaLabel} />
 
 ## InfoTips and zIndex
 
