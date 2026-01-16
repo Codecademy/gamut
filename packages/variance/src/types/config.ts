@@ -2,6 +2,7 @@ import { Theme } from '@emotion/react';
 
 import {
   DefaultCSSPropertyValue,
+  DirectionalProperties,
   DirectionalProperty,
   PropertyMode,
   PropertyTypes,
@@ -23,7 +24,7 @@ export type PropertyValue = keyof PropertyTypes | DirectionalProperty;
 
 export interface BaseProperty {
   property: PropertyValue;
-  properties?: readonly PropertyValue[];
+  properties?: readonly PropertyValue[] | DirectionalProperties;
 }
 
 export interface Prop extends BaseProperty {

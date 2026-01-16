@@ -54,3 +54,8 @@ export interface DirectionalProperty {
   physical: keyof PropertyTypes;
   logical: keyof PropertyTypes;
 }
+
+export interface DirectionalProperties {
+  physical: readonly (keyof PropertyTypes)[];
+  logical: readonly (keyof PropertyTypes)[];
+}

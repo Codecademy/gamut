@@ -233,16 +233,38 @@ export const margin = {
   m: { property: 'margin', scale: 'spacing' },
   mx: {
     property: 'margin',
-    properties: ['marginLeft', 'marginRight'],
+    properties: {
+      physical: ['marginLeft', 'marginRight'],
+      logical: ['marginInlineStart', 'marginInlineEnd'],
+    },
+    resolveProperty: getPropertyMode,
     scale: 'spacing',
   },
   my: {
     property: 'margin',
-    properties: ['marginTop', 'marginBottom'],
+    properties: {
+      physical: ['marginTop', 'marginBottom'],
+      logical: ['marginBlockStart', 'marginBlockEnd'],
+    },
+    resolveProperty: getPropertyMode,
     scale: 'spacing',
   },
-  mt: { property: 'marginTop', scale: 'spacing' },
-  mb: { property: 'marginBottom', scale: 'spacing' },
+  mt: {
+    property: {
+      physical: 'marginTop',
+      logical: 'marginBlockStart',
+    },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode,
+  },
+  mb: {
+    property: {
+      physical: 'marginBottom',
+      logical: 'marginBlockEnd',
+    },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode,
+  },
   mr: {
     property: {
       physical: 'marginRight',

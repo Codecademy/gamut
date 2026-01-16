@@ -42,6 +42,16 @@ const isShorthand = (prop: PropertyValue): boolean =>
 const getShorthandIndex = (prop: PropertyValue): number =>
   typeof prop === 'string' ? SHORTHAND_PROPERTIES.indexOf(prop) : -1;
 
+/** Get the count of properties, handling both array and DirectionalProperties object */
+const getPropertiesCount = (
+  properties: BaseProperty['properties']
+): number => {
+  if (!properties) return 0;
+  if (Array.isArray(properties)) return properties.length;
+  // DirectionalProperties object - use physical array length as representative
+  return properties.physical?.length ?? 0;
+};
+
 /**
  * Orders all properties by the most dependent props
  * @param config
@@ -50,15 +60,15 @@ export const orderPropNames = (config: Record<string, BaseProperty>) =>
   Object.keys(config).sort((a, b) => {
     const { [a]: aConf, [b]: bConf } = config;
 
-    const { property: aProp, properties: aProperties = [] } = aConf;
-    const { property: bProp, properties: bProperties = [] } = bConf;
+    const { property: aProp, properties: aProperties } = aConf;
+    const { property: bProp, properties: bProperties } = bConf;
 
     const aIsShorthand = isShorthand(aProp);
     const bIsShorthand = isShorthand(bProp);
 
     if (aIsShorthand && bIsShorthand) {
-      const aNum = aProperties.length;
-      const bNum = bProperties.length;
+      const aNum = getPropertiesCount(aProperties);
+      const bNum = getPropertiesCount(bProperties);
 
       if (aProp !== bProp) {
         return compare(getShorthandIndex(aProp), getShorthandIndex(bProp));
