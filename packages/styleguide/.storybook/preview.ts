@@ -163,6 +163,19 @@ export const globalTypes = {
       showName: true,
     },
   },
+  logicalProps: {
+    name: 'LogicalProps',
+    description: 'Toggle between logical and physical CSS properties',
+    defaultValue: 'true',
+    toolbar: {
+      icon: 'transfer',
+      items: [
+        { value: 'true', title: 'Logical' },
+        { value: 'false', title: 'Physical' },
+      ],
+      showName: true,
+    },
+  },
 };
 
 export const decorators = [withEmotion];
