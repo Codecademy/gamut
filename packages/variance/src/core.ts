@@ -104,7 +104,6 @@ export const variance = {
     const getScaleValue = createScaleLookup(scale);
     const alwaysTransform = scale === undefined || isArray(scale);
 
-    // Helper to check if properties is a DirectionalProperties object
     const isDirectionalProperties = (
       props: typeof configProperties
     ): props is DirectionalProperties =>
@@ -146,15 +145,15 @@ export const variance = {
             return styles;
         }
 
-        // Resolve useLogicalProperties from theme (used for both property and properties resolution)
         const useLogicalProperties =
           (props.theme as { useLogicalProperties?: boolean })
             ?.useLogicalProperties ?? true;
 
-        // Resolve properties array - handle DirectionalProperties object
-        let resolvedProperties: readonly (string | { physical: string; logical: string })[];
+        let resolvedProperties: readonly (
+          | string
+          | { physical: string; logical: string }
+        )[];
         if (isDirectionalProperties(configProperties)) {
-          // properties is { physical: [...], logical: [...] } - pick the right array
           const mode = resolveProperty
             ? resolveProperty(useLogicalProperties)
             : useLogicalProperties
@@ -162,14 +161,12 @@ export const variance = {
             : 'physical';
           resolvedProperties = configProperties[mode];
         } else {
-          // properties is an array or undefined - use as-is, defaulting to [property]
           resolvedProperties = configProperties ?? [property];
         }
 
         // for each property look up the scale value from theme if passed and apply any
         // final transforms to the value
         resolvedProperties.forEach((property) => {
-          // Resolve directional property if it's a DirectionalProperty object
           let resolvedProperty: string;
           if (resolveProperty && typeof property === 'object') {
             const mode = resolveProperty(useLogicalProperties);

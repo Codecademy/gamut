@@ -1,4 +1,5 @@
 import { BaseProperty, PropertyValue } from '../types/config';
+import { DirectionalProperties } from '../types/properties';
 
 const SHORTHAND_PROPERTIES = [
   'border',
@@ -42,14 +43,11 @@ const isShorthand = (prop: PropertyValue): boolean =>
 const getShorthandIndex = (prop: PropertyValue): number =>
   typeof prop === 'string' ? SHORTHAND_PROPERTIES.indexOf(prop) : -1;
 
-/** Get the count of properties, handling both array and DirectionalProperties object */
-const getPropertiesCount = (
-  properties: BaseProperty['properties']
-): number => {
+const getPropertiesCount = (properties: BaseProperty['properties']): number => {
   if (!properties) return 0;
   if (Array.isArray(properties)) return properties.length;
-  // DirectionalProperties object - use physical array length as representative
-  return properties.physical?.length ?? 0;
+  // DirectionalProperties object - using physical array length as representative, since the length for logical is the same
+  return (properties as DirectionalProperties).physical?.length ?? 0;
 };
 
 /**
