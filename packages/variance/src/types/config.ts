@@ -34,7 +34,6 @@ export interface Prop extends BaseProperty {
     prop?: string,
     props?: AbstractProps
   ) => string | number | CSSObject;
-  /** Hook to resolve directional properties (physical/logical) based on theme setting */
   resolveProperty?: (useLogicalProperties: boolean) => PropertyMode;
 }
 

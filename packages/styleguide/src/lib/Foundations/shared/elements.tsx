@@ -9,6 +9,7 @@ import {
 } from '@codecademy/gamut-styles';
 // eslint-disable-next-line gamut/import-paths
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
+import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import kebabCase from 'lodash/kebabCase';
 
@@ -412,29 +413,61 @@ export const DarkModeTable = () => (
 );
 /* eslint-disable gamut/import-paths */
 
+const PropertiesRenderer = ({
+  property,
+  properties,
+  resolveProperty,
+}: {
+  property: string | { physical: string; logical: string };
+  properties?: string[] | { physical: string[]; logical: string[] };
+  resolveProperty?: (useLogicalProperties: boolean) => 'logical' | 'physical';
+}) => {
+  const currentTheme = useTheme() as { useLogicalProperties?: boolean };
+  const useLogicalProperties = currentTheme?.useLogicalProperties ?? true;
+
+  const mode = resolveProperty
+    ? resolveProperty(useLogicalProperties)
+    : 'physical';
+
+  const resolvedProperty =
+    typeof property === 'string' ? property : property[mode];
+
+  let resolvedProperties: string[];
+  if (!properties) {
+    resolvedProperties = [resolvedProperty];
+  } else if (Array.isArray(properties)) {
+    resolvedProperties = properties;
+  } else {
+    resolvedProperties = properties[mode];
+  }
+
+  return (
+    <>
+      {resolvedProperties.map((prop) => (
+        <Anchor
+          href={`https://developer.mozilla.org/en-US/docs/Web/CSS/${kebabCase(
+            prop
+          )}`}
+          key={prop}
+          rel=""
+          target="_blank"
+        >
+          <AnchorCode>{kebabCase(prop)}</AnchorCode>
+        </Anchor>
+      ))}
+    </>
+  );
+};
+
 const PROPERTIES_COLUMN = {
   key: 'properties',
   name: 'Properties',
   size: 'xl',
-  render: ({
-    property,
-    properties = [property],
-  }: {
-    property: string;
-    properties: string[];
-  }) =>
-    properties.map((property) => (
-      <Anchor
-        href={`https://developer.mozilla.org/en-US/docs/Web/CSS/${kebabCase(
-          property
-        )}`}
-        key={property}
-        rel=""
-        target="_blank"
-      >
-        <AnchorCode>{kebabCase(property)}</AnchorCode>
-      </Anchor>
-    )),
+  render: (props: {
+    property: string | { physical: string; logical: string };
+    properties?: string[] | { physical: string[]; logical: string[] };
+    resolveProperty?: (useLogicalProperties: boolean) => 'logical' | 'physical';
+  }) => <PropertiesRenderer {...props} />,
 };
 
 const SCALE_COLUMN = {
@@ -450,7 +483,12 @@ const TRANSFORM_COLUMN = {
   key: 'transform',
   name: 'Transform',
   size: 'fill',
-  render: ({ transform }: any) => transform && <Code>{transform?.name}</Code>,
+  render: ({ transform, resolveProperty }: any) => (
+    <>
+      {transform && <Code>{transform?.name}</Code>}
+      {resolveProperty && <Code>{resolveProperty?.name}</Code>}
+    </>
+  ),
 };
 
 export const defaultColumns = [

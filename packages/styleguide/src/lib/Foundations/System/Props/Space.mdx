@@ -1,8 +1,9 @@
-import { Meta } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 
-import { AboutHeader, TokenTable } from '~styleguide/blocks';
+import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
 
 import { defaultColumns, getPropRows } from '../../shared/elements';
+import * as SpaceStories from './Space.stories';
 
 export const parameters = {
   title: 'Space',
@@ -10,7 +11,7 @@ export const parameters = {
   status: 'updating',
 };
 
-<Meta title="Foundations/System/Props/Space" />
+<Meta of={SpaceStories} title="Foundations/System/Props/Space" />
 
 <AboutHeader {...parameters} />
 
@@ -24,5 +25,17 @@ const SpaceExample = styled.div(system.space);
 
 <SpaceExample p={8} my={[16, 24, 32]} />;
 ```
+
+<Callout
+  text={
+    <>
+      Props like <code>mx</code> and <code>my</code> support both physical and
+      logical CSS properties. Use the <strong>LogicalProps</strong> toolbar to
+      switch between modes.
+    </>
+  }
+/>
+
+<Canvas of={SpaceStories.MarginExample} />
 
 <TokenTable rows={getPropRows('space')} columns={defaultColumns} />

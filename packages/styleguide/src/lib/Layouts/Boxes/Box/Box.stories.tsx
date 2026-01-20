@@ -20,7 +20,6 @@ export const Bordered: Story = {
     border: 1,
     p: 8,
     children: 'I am a bordered box',
-    ml: 24,
   },
 };
 
