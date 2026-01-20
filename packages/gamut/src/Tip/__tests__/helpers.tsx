@@ -309,6 +309,7 @@ export const testModalDoesNotCloseInfoTip = async ({
 
   const mockModal = document.createElement('div');
   mockModal.setAttribute('role', 'dialog');
+  mockModal.setAttribute('aria-modal', 'true');
 
   const isFloating = placement === 'floating';
   const parent = isFloating ? view.container : document.body;

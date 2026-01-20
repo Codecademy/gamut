@@ -15,7 +15,7 @@ import {
   TipBaseProps,
   tipDefaultProps,
 } from '../shared/types';
-import { isElementVisible } from '../shared/utils';
+import { isFloatingElementOpen } from '../shared/utils';
 import { InfoTipButton } from './InfoTipButton';
 
 export type InfoTipProps = TipBaseProps & {
@@ -138,12 +138,14 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       if (e.key !== 'Escape') return;
 
       const openModals = document.querySelectorAll(MODAL_SELECTOR);
-      const hasUnrelatedModal = Array.from(openModals).some(
-        (modal) =>
-          isElementVisible(modal) &&
-          wrapperRef.current &&
-          !modal.contains(wrapperRef.current)
-      );
+      const hasUnrelatedModal = Array.from(openModals).some((modal) => {
+        // Only consider floating elements that are actually open
+        if (!isFloatingElementOpen(modal)) {
+          return false;
+        }
+        // Check if it's unrelated to this InfoTip
+        return wrapperRef.current && !modal.contains(wrapperRef.current);
+      });
 
       if (hasUnrelatedModal) return;
 
