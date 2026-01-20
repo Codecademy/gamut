@@ -1,10 +1,12 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
-import { Colors } from '@codecademy/gamut-styles';
+import { borderRadii, Colors } from '@codecademy/gamut-styles';
 import * as React from 'react';
 
 import { DynamicCardWrapper, MotionBox, StaticCardWrapper } from './elements';
 import { hoverShadowLeft, hoverShadowRight, patternFadeInOut } from './styles';
 import { CardProps } from './types';
+
+type BorderRadiusToken = keyof typeof borderRadii;
 
 export const Card: React.FC<CardProps> = ({
   children,
@@ -17,21 +19,31 @@ export const Card: React.FC<CardProps> = ({
   height = '100%',
   ...rest
 }) => {
-  const defaultBorderRadius = isInteractive ? 'md' : 'none';
-  const trueBorderRadius = !borderRadius ? defaultBorderRadius : borderRadius;
+  const defaultBorderRadius: BorderRadiusToken = isInteractive ? 'md' : 'none';
+  const trueBorderRadius = borderRadius ?? defaultBorderRadius;
+  const resolvedBorderRadius =
+    borderRadii[trueBorderRadius as BorderRadiusToken];
 
   const SelectedWrapper =
     variant === 'default' ? DynamicCardWrapper : StaticCardWrapper;
 
   const hasPattern = shadow === 'patternLeft' || shadow === 'patternRight';
+  const isOutline = shadow === 'outline';
 
   const setHoverShadow =
-    shadow === 'patternRight' ? hoverShadowRight : hoverShadowLeft;
+    shadow === 'patternRight'
+      ? hoverShadowRight(resolvedBorderRadius)
+      : hoverShadowLeft(resolvedBorderRadius);
+
+  const initialVariant = isOutline ? 'initialOutline' : 'initial';
+  const animateVariant = isOutline ? 'animateOutline' : 'animate';
+
   return (
     <MotionBox
       height={height}
+      initial={initialVariant}
       position="relative"
-      whileHover={isInteractive ? 'animate' : ''}
+      whileHover={isInteractive ? animateVariant : ''}
       width={width}
     >
       {hasPattern && (
@@ -45,6 +57,7 @@ export const Card: React.FC<CardProps> = ({
             left={shadow === 'patternLeft' ? '-0.5rem' : undefined}
             position="absolute"
             right={shadow === 'patternRight' ? '-0.5rem' : undefined}
+            // eslint-disable-next-line gamut/no-inline-style
             style={{ borderRadius: 'inherit', color: 'currentcolor' }}
             top=".5rem"
           />

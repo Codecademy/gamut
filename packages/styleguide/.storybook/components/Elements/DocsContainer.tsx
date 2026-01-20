@@ -2,7 +2,6 @@ import {
   AssetProvider,
   coreTheme,
   createEmotionCache,
-  css,
   GamutProvider,
   platformPalette,
   adminTheme,
@@ -12,18 +11,13 @@ import {
   platformTheme,
   ColorMode,
 } from '@codecademy/gamut-styles';
-import { MDXProvider } from '@mdx-js/react';
 import {
-  CodeOrSourceMdx,
   DocsContainer as StorybookDocsContainer,
   DocsContextProps,
-  HeadersMdx,
   SourceContainer,
 } from '@storybook/blocks';
-import { components as htmlComponents } from '@storybook/components';
-import { styled, ThemeProvider } from '@storybook/theming';
+import { ThemeProvider } from '@storybook/theming';
 import { useMemo } from 'react';
-import { Link } from './Markdown';
 import { HelmetProvider } from 'react-helmet-async';
 import theme from '../../theming/GamutTheme';
 import { createTheme } from '@codecademy/variance';
@@ -38,21 +32,6 @@ const themeMap = {
   percipio: percipioTheme,
   platform: platformTheme,
 } as const;
-
-const WrappedPre = styled(htmlComponents.pre)(
-  // gives the source block a white background - pretty fragile but easy to change if needed
-  css({
-    '.docblock-source, .css-5owncf': { backgroundColor: 'background' },
-  })
-);
-
-const defaultComponents = {
-  ...htmlComponents,
-  code: CodeOrSourceMdx,
-  pre: WrappedPre,
-  ...HeadersMdx,
-  a: Link as any,
-};
 
 const themeSpecificStories = {
   'foundations-theme-lx-studio-theme--docs': 'lxStudio',
@@ -104,11 +83,7 @@ export const DocsContainer: React.FC<{
             <AssetProvider />
           </HelmetProvider>
           <SourceContainer channel={context.channel}>
-            <ThemeProvider theme={currentTheme}>
-              <MDXProvider components={defaultComponents}>
-                {children}
-              </MDXProvider>
-            </ThemeProvider>
+            <ThemeProvider theme={currentTheme}>{children}</ThemeProvider>
           </SourceContainer>
         </ColorMode>
       </GamutProvider>

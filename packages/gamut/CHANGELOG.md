@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [67.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.6.2...@codecademy/gamut@67.6.3) (2026-01-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [67.6.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.6.1...@codecademy/gamut@67.6.2) (2026-01-05)
+
+### Bug Fixes
+
+- **Card:** correct isInteractive prop's related boxshadow animation ([63098cd](https://github.com/Codecademy/gamut/commit/63098cd635643eae914af4f08d48a0ebc22bffbf))
+
+### [67.6.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.6.0...@codecademy/gamut@67.6.1) (2025-12-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [67.6.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.5.4...@codecademy/gamut@67.6.0) (2025-12-10)
+
+### Features
+
+- **ConnectedForm, GridForm:** Add aria-controls to nested checkboxes ([2a7a7ad](https://github.com/Codecademy/gamut/commit/2a7a7ade029972c2e7f990cc140d270b17123d9f))
+
+### [67.5.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.5.3...@codecademy/gamut@67.5.4) (2025-12-08)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [67.5.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.5.2...@codecademy/gamut@67.5.3) (2025-12-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [67.5.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.5.1...@codecademy/gamut@67.5.2) (2025-12-04)
+
+### Bug Fixes
+
+- **InfoTip:** wrap focus ([77457a2](https://github.com/Codecademy/gamut/commit/77457a2b918eea5601b77e74ba2517fc22484a7c))
+
+### [67.5.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.5.0...@codecademy/gamut@67.5.1) (2025-12-03)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [67.5.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.4.2...@codecademy/gamut@67.5.0) (2025-12-03)
+
+### Features
+
+- **Tabs:** add shouldForceMount prop to TabPanel ([4fda27c](https://github.com/Codecademy/gamut/commit/4fda27c61defa9e80795fb3e0e17b9cc75c0b126))
+
+### [67.4.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.4.1...@codecademy/gamut@67.4.2) (2025-12-03)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [67.4.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.4.0...@codecademy/gamut@67.4.1) (2025-12-02)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [67.4.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.3.3...@codecademy/gamut@67.4.0) (2025-12-01)
+
+### Features
+
+- Disable inline `style` prop for components ([e695579](https://github.com/Codecademy/gamut/commit/e695579fdeb2de526a42d2aff2b75537918a9096))
+
 ### [67.3.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.3.2...@codecademy/gamut@67.3.3) (2025-11-13)
 
 ### Bug Fixes
