@@ -39,11 +39,21 @@ export const DetailedCodeButton: React.FC<DetailedCodeButtonProps> = ({
         >
           <FlexBox alignItems="center" columnGap={12}>
             {heading && (
-              <Text as="h3" fontWeight="title" p={0} textAlign="start" variant="title-xs">
+              <Text
+                as="h3"
+                fontWeight="title"
+                p={0}
+                textAlign="start"
+                variant="title-xs"
+              >
                 {heading}
               </Text>
             )}
-            <Text color="text-secondary" fontFamily="monospace" variant="p-small">
+            <Text
+              color="text-secondary"
+              fontFamily="monospace"
+              variant="p-small"
+            >
               {language}
             </Text>
           </FlexBox>

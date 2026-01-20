@@ -34,7 +34,8 @@ export const DetailedCode: React.FC<DetailedCodeProps> = ({
     : code;
 
   // Show the button to expand the code if there is more code than the preview lines, and hide the button if there is no more code
-  const hasMoreCode = previewEnabled && code.split('\n').length > normalizedPreviewLines;
+  const hasMoreCode =
+    previewEnabled && code.split('\n').length > normalizedPreviewLines;
 
   const displayedCode = isExpanded ? code : previewCode;
 
