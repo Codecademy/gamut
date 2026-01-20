@@ -21,17 +21,18 @@ export const DetailedCodeButtonWrapper = styled(Anchor)(
   })
 );
 
-export const DetailedCodeBodyWrapper = styled(FlexBox)({
-  overflow: 'hidden',
-  '& pre': {
-    margin: 0,
-  },
-  '& > div': {
-    borderRadius: 0,
-    padding: 0,
-  },
-  // Remove margin from storybook source block, override default margin (25 top, 40 bottom)
-  '& .docblock-source': {
-    margin: 0,
-  },
-});
+export const DetailedCodeBodyWrapper = styled(FlexBox)(
+  css({
+    overflow: 'hidden',
+    '& pre': {
+      margin: 0,
+    },
+    '& > div': {
+      borderRadius: 'none',
+      padding: 0,
+    },
+    '& .docblock-source': {
+      margin: 0,
+    },
+  })
+);
