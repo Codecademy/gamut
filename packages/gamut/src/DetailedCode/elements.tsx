@@ -18,14 +18,6 @@ export const DetailedCodeButtonWrapper = styled(Anchor)(
   css({
     borderRadius: 'md',
     bg: 'inherit',
-    '&:hover': {
-      color: 'text',
-      bg: 'background-hover',
-    },
-    '&:focus': {
-      color: 'text',
-      bg: 'background-selected',
-    },
   })
 );
 
