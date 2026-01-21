@@ -7,6 +7,7 @@ const targetProject = kebabCase(
 
 module.exports = {
   ...nxPreset,
+  coverageReporters: ['clover', 'json', 'lcov', 'text'],
   reporters: process.env.CI
     ? [
         'default',
