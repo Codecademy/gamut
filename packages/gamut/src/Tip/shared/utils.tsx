@@ -56,71 +56,76 @@ export const isFloatingElementOpen = (element: Element): boolean => {
    * role="dialog" requires aria-modal="true" to be blocking.
    */
   const role = element.getAttribute('role');
-  if (role === 'dialog' || role === 'alertdialog') {
-    /**
-     * Exclude if explicitly hidden via aria-hidden="true".
-     * This handles elements that are in DOM but marked as hidden.
-     */
-    if (element.getAttribute('aria-hidden') === 'true') {
-      return false;
-    }
-
-    /**
-     * Check for collapsible dialogs (like help menus).
-     * If aria-expanded exists and is false, the dialog is closed.
-     * These dialogs stay in DOM but are collapsed when closed.
-     */
-    const ariaExpanded = element.getAttribute('aria-expanded');
-    if (ariaExpanded === 'false') {
-      return false;
-    }
-
-    /**
-     * Check if any child button with aria-expanded indicates the dialog is closed.
-     * Some dialogs use a toggle button pattern where the button's aria-expanded
-     * reflects the dialog's state.
-     */
-    const toggleButton = element.querySelector(
-      'button[aria-expanded], [role="button"][aria-expanded]'
-    );
-    if (
-      toggleButton &&
-      toggleButton.getAttribute('aria-expanded') === 'false'
-    ) {
-      return false;
-    }
-
-    /**
-     * Per ARIA spec, role="alertdialog" is always modal (blocking).
-     * For role="dialog", check aria-modal="true" to determine if it's blocking.
-     * Explicitly check for aria-modal="false" to handle edge cases.
-     */
-    if (role === 'alertdialog') {
-      // alertdialog is always modal per ARIA spec
-      return true;
-    }
-
-    /**
-     * For role="dialog", check aria-modal attribute.
-     * aria-modal="true" indicates a blocking modal (Modal, Dialog).
-     * aria-modal="false" or absence indicates non-blocking.
-     */
-    const ariaModal = element.getAttribute('aria-modal');
-    if (ariaModal === 'true') {
-      return true;
-    }
-    if (ariaModal === 'false') {
-      // Explicitly non-modal, should not block
-      return false;
-    }
-
-    /**
-     * Elements with role="dialog" but without aria-modal="true" are non-blocking.
-     * These include collapsible dialogs (help menus) and popovers (Popover, InfoTip, Tooltip)
-     * that use role="dialog". They should not prevent InfoTip from closing.
-     */
+  if (role !== 'dialog' && role !== 'alertdialog') {
     return false;
   }
 
+  /**
+   * Cache attribute values to avoid multiple DOM reads.
+   * Check aria-hidden first as it's a common exclusion case.
+   */
+  const ariaHidden = element.getAttribute('aria-hidden');
+  if (ariaHidden === 'true') {
+    return false;
+  }
+
+  /**
+   * Check for collapsible dialogs (like help menus).
+   * If aria-expanded exists and is false, the dialog is closed.
+   * These dialogs stay in DOM but are collapsed when closed.
+   */
+  const ariaExpanded = element.getAttribute('aria-expanded');
+  if (ariaExpanded === 'false') {
+    return false;
+  }
+
+  /**
+   * Per ARIA spec, role="alertdialog" is always modal (blocking).
+   * At this point, we've already verified:
+   * - The element is visible (not hidden via CSS)
+   * - It's not aria-hidden="true"
+   * - It's not aria-expanded="false"
+   * So if it's an alertdialog, it's open and blocking.
+   * Handle alertdialog here to avoid expensive DOM queries for dialog elements.
+   */
+  if (role === 'alertdialog') {
+    return true;
+  }
+
+  /**
+   * For role="dialog", check if any child button with aria-expanded indicates the dialog is closed.
+   * Some dialogs use a toggle button pattern where the button's aria-expanded
+   * reflects the dialog's state.
+   * Only perform this expensive querySelector operation after all other checks pass.
+   */
+  const toggleButton = element.querySelector(
+    'button[aria-expanded], [role="button"][aria-expanded]'
+  );
+  if (
+    toggleButton &&
+    toggleButton.getAttribute('aria-expanded') === 'false'
+  ) {
+    return false;
+  }
+
+  /**
+   * For role="dialog", check aria-modal attribute.
+   * aria-modal="true" indicates a blocking modal (Modal, Dialog).
+   * aria-modal="false" or absence indicates non-blocking.
+   */
+  const ariaModal = element.getAttribute('aria-modal');
+  if (ariaModal === 'true') {
+    return true;
+  }
+  if (ariaModal === 'false') {
+    // Explicitly non-modal, should not block
+    return false;
+  }
+
+  /**
+   * Elements with role="dialog" but without aria-modal="true" are non-blocking.
+   * These include collapsible dialogs (help menus) and popovers (Popover, InfoTip, Tooltip)
+   * that use role="dialog". They should not prevent InfoTip from closing.
+   */
   return false;
 };
