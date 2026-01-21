@@ -69,7 +69,10 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   const labelId = useId();
   const { infotipProps, shouldLabelInfoTip } = infotip
     ? createInfoTipProps(infotip, labelId)
-    : { infotipProps: undefined as InfoTipProps | undefined, shouldLabelInfoTip: false };
+    : {
+        infotipProps: undefined as InfoTipProps | undefined,
+        shouldLabelInfoTip: false,
+      };
 
   return (
     <FlexBox justifyContent="space-between" mb={4}>

@@ -3,12 +3,7 @@ import styled from '@emotion/styled';
 import { useEffect } from 'react';
 import * as React from 'react';
 
-import {
-  FormError,
-  FormGroup,
-  FormGroupLabel,
-  FormGroupProps,
-} from '..';
+import { FormError, FormGroup, FormGroupLabel, FormGroupProps } from '..';
 import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
