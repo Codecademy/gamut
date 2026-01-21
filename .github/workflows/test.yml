@@ -2,7 +2,7 @@ name: Test Suite
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened] 
+    types: [opened, synchronize, reopened]
 
 env:
   NODE_VERSION: '22.13.1'
@@ -47,3 +47,10 @@ jobs:
           name: test-results
           path: /tmp/test-results
           retention-days: 30
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.2.2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: /tmp/test-results/jest/**/coverage/lcov.info
+          flags: pr-coverage
+          fail_ci_if_error: false
