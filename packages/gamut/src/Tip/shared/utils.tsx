@@ -101,10 +101,7 @@ export const isFloatingElementOpen = (element: Element): boolean => {
   const toggleButton = element.querySelector(
     'button[aria-expanded], [role="button"][aria-expanded]'
   );
-  if (
-    toggleButton &&
-    toggleButton.getAttribute('aria-expanded') === 'false'
-  ) {
+  if (toggleButton && toggleButton.getAttribute('aria-expanded') === 'false') {
     return false;
   }
 

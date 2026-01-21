@@ -1,10 +1,10 @@
-import { isFloatingElementOpen, isElementVisible } from '../utils';
+import { isElementVisible, isFloatingElementOpen } from '../utils';
 
 /**
  * Helper to create a test element with mocked checkVisibility and automatic cleanup
  */
 const createTestElement = (
-  tagName: string = 'div',
+  tagName = 'div',
   options: {
     attributes?: Record<string, string>;
     styles?: Partial<CSSStyleDeclaration>;
@@ -12,7 +12,7 @@ const createTestElement = (
     children?: HTMLElement[];
   } = {}
 ): HTMLElement => {
-  const element = document.createElement(tagName) as HTMLElement;
+  const element = document.createElement(tagName);
 
   if (options.attributes) {
     Object.entries(options.attributes).forEach(([key, value]) => {
@@ -38,7 +38,6 @@ const createTestElement = (
 
   return element;
 };
-
 
 const withTemporaryElement = <T,>(
   element: HTMLElement,
