@@ -6,6 +6,10 @@ import * as React from 'react';
 
 import { FlexBox } from '../..';
 import { InfoTip, InfoTipProps } from '../../Tip/InfoTip';
+import {
+  createInfoTipProps,
+  InfoTipPropsWithoutAria,
+} from '../../Tip/InfoTip/utils';
 import { Text } from '../../Typography/Text';
 import { formBaseStyles, formFieldTextDisabledStyles } from '../styles';
 import { BaseInputProps } from '../types';
@@ -41,7 +45,7 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
     /**
      * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
      */
-    infotip?: InfoTipProps;
+    infotip?: InfoTipPropsWithoutAria;
     size?: 'small' | 'large';
     /**
      * Solo fields should always be required and have no optional/required text
@@ -63,11 +67,9 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   ...rest
 }) => {
   const labelId = useId();
-  const isStringLabel = typeof children === 'string';
-  const shouldLabelInfoTip =
-    (isStringLabel || infotip?.labelledByFieldLabel) &&
-    !infotip?.ariaLabel &&
-    !infotip?.ariaLabelledby;
+  const { infotipProps, shouldLabelInfoTip } = infotip
+    ? createInfoTipProps(infotip, labelId)
+    : { infotipProps: undefined as InfoTipProps | undefined, shouldLabelInfoTip: false };
 
   return (
     <FlexBox justifyContent="space-between" mb={4}>
@@ -90,12 +92,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
             '\u00A0(optional)'
           ))}
       </Label>
-      {infotip && (
-        <InfoTip
-          {...infotip}
-          ariaLabelledby={shouldLabelInfoTip ? labelId : infotip.ariaLabelledby}
-        />
-      )}
+      {infotipProps && <InfoTip {...infotipProps} />}
     </FlexBox>
   );
 };

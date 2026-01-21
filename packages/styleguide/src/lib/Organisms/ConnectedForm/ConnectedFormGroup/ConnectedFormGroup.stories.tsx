@@ -146,8 +146,8 @@ export const InfoTipAutoLabelling: Story = {
 };
 
 /**
- * For ReactNode labels, you have three options for accessible InfoTip labelling:
- * - `labelledByFieldLabel: true` - uses the field label
+ * For ReactNode labels, the InfoTip is automatically labelled by the field label.
+ * You can override this behavior by providing:
  * - `ariaLabel` - provides a custom accessible name
  * - `ariaLabelledby` - references another element on the page
  */
@@ -165,11 +165,10 @@ export const InfoTipWithReactNodeLabel: Story = {
         infotip={{
           alignment: 'bottom-left',
           info: 'Choose a unique username between 3-20 characters.',
-          labelledByFieldLabel: true,
         }}
         label={
           <Text as="span" fontWeight="bold">
-            Username (labelledByFieldLabel)
+            Username (automatic label)
           </Text>
         }
         name="username"

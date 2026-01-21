@@ -276,7 +276,7 @@ describe('GridFormInputGroup', () => {
       view.getByRole('button', { name: externalLabelText });
     });
 
-    it('does not automatically label InfoTip when label is a ReactNode', () => {
+    it('does not automatically label InfoTip when explicit ariaLabel is provided', () => {
       const { view } = renderView({
         field: {
           ...stubCheckboxField,
@@ -291,12 +291,12 @@ describe('GridFormInputGroup', () => {
       ).toBeNull();
     });
 
-    it('labels InfoTip by field label when labelledByFieldLabel is true with ReactNode label', () => {
+    it('automatically labels InfoTip by field label with ReactNode label', () => {
       const { view } = renderView({
         field: {
           ...stubCheckboxField,
           label: <span>{checkboxLabel}</span>,
-          infotip: { info, labelledByFieldLabel: true },
+          infotip: { info },
         },
       });
 

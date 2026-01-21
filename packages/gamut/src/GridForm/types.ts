@@ -6,7 +6,7 @@ import { MinimalCheckboxProps } from '../ConnectedForm';
 import { CheckboxLabelUnion, TextAreaProps } from '../Form';
 import { CheckboxPaddingProps } from '../Form/types';
 import { ColumnProps } from '../Layout';
-import { InfoTipProps } from '../Tip/InfoTip';
+import { InfoTipPropsWithoutAria } from '../Tip/InfoTip/utils';
 import { Text, TextProps } from '../Typography/Text';
 
 export interface BaseFormInputProps {
@@ -32,11 +32,11 @@ export type BaseFormField<Value> = {
   id?: string;
 
   /**
-   * InfoTip to display next to the field label. String labels automatically
-   * label the InfoTip button. For ReactNode labels, provide `ariaLabel` or
-   * set `labelledByFieldLabel: true` to ensure the InfoTip is accessible.
+   * InfoTip to display next to the field label. The InfoTip button is
+   * automatically labelled by the field label. To override this behavior,
+   * provide `ariaLabel` or `ariaLabelledby`.
    */
-  infotip?: InfoTipProps;
+  infotip?: InfoTipPropsWithoutAria;
 
   isSoloField?: boolean;
   name: string;

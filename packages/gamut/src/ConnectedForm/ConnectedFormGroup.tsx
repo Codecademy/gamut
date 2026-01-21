@@ -8,11 +8,11 @@ import {
   FormGroup,
   FormGroupLabel,
   FormGroupProps,
-  InfoTipProps,
 } from '..';
 import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
+import { InfoTipPropsWithoutAria } from '../Tip/InfoTip/utils';
 import { ConnectedField, FieldProps, SubmitContextProps } from './types';
 import { getErrorMessage, useField } from './utils';
 
@@ -34,11 +34,11 @@ export interface ConnectedFormGroupBaseProps
   label: React.ReactNode;
   required?: boolean;
   /**
-   * InfoTip to display next to the field label. String labels automatically
-   * label the InfoTip button. For ReactNode labels, provide `ariaLabel` or
-   * set `labelledByFieldLabel: true` to ensure the InfoTip is accessible.
+   * InfoTip to display next to the field label. The InfoTip button is
+   * automatically labelled by the field label. To override this behavior,
+   * provide `ariaLabel` or `ariaLabelledby`.
    */
-  infotip?: InfoTipProps;
+  infotip?: InfoTipPropsWithoutAria;
 }
 
 export interface ConnectedFormGroupProps<T extends ConnectedField>

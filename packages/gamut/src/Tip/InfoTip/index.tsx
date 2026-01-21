@@ -18,16 +18,13 @@ import {
 import { isFloatingElementOpen } from '../shared/utils';
 import { InfoTipButton } from './InfoTipButton';
 
-export type InfoTipProps = TipBaseProps & {
+type InfoTipPropsWithAriaLabel = TipBaseProps & {
   alignment?: TipBaseAlignment;
   /**
-   * Accessible label for the InfoTip button. Its recommended to provide either `ariaLabel` or `ariaLabelledby`.
+   * Accessible label for the InfoTip button.
    */
-  ariaLabel?: string;
-  /**
-   * ID of an element that labels the InfoTip button. Its recommended to provide either `ariaLabel` or `ariaLabelledby`.
-   */
-  ariaLabelledby?: string;
+  ariaLabel: string;
+  ariaLabelledby?: never;
   /**
    * Accessible role description for the InfoTip button. Useful for translation.
    * @default "More information button"
@@ -35,15 +32,33 @@ export type InfoTipProps = TipBaseProps & {
   ariaRoleDescription?: string;
   emphasis?: 'low' | 'high';
   /**
-   * When true, the InfoTip button will be labelled by the form field's label element.
-   * This is automatic for string labels, but can be opted into for ReactNode labels.
+   * Called when the info tip is clicked - the onClick function is called after the DOM updates and the tip is mounted.
    */
-  labelledByFieldLabel?: boolean;
+  onClick?: (arg0: { isTipHidden: boolean }) => void;
+};
+
+type InfoTipPropsWithAriaLabelledby = TipBaseProps & {
+  alignment?: TipBaseAlignment;
+  ariaLabel?: never;
+  /**
+   * ID of an element that labels the InfoTip button.
+   */
+  ariaLabelledby: string;
+  /**
+   * Accessible role description for the InfoTip button. Useful for translation.
+   * @default "More information button"
+   */
+  ariaRoleDescription?: string;
+  emphasis?: 'low' | 'high';
   /**
    * Called when the info tip is clicked - the onClick function is called after the DOM updates and the tip is mounted.
    */
   onClick?: (arg0: { isTipHidden: boolean }) => void;
 };
+
+export type InfoTipProps =
+  | InfoTipPropsWithAriaLabel
+  | InfoTipPropsWithAriaLabelledby;
 
 const MODAL_SELECTOR =
   'dialog[open],[role="dialog"]:not([aria-hidden="true"]),[role="alertdialog"]:not([aria-hidden="true"])';

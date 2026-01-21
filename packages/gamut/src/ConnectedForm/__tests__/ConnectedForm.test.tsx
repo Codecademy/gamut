@@ -425,7 +425,7 @@ describe('ConnectedFormGroup infotip accessibility', () => {
     view.getByRole('button', { name: externalLabelText });
   });
 
-  it('does not automatically label InfoTip when label is a ReactNode', () => {
+  it('does not automatically label InfoTip when explicit ariaLabel is provided', () => {
     const { view } = renderWithInfotip({
       infotip: { info, ariaLabel },
       fieldLabel: <span>{label}</span>,
@@ -435,9 +435,9 @@ describe('ConnectedFormGroup infotip accessibility', () => {
     expect(view.queryByRole('button', { name: new RegExp(label) })).toBeNull();
   });
 
-  it('labels InfoTip by field label when labelledByFieldLabel is true with ReactNode label', () => {
+  it('automatically labels InfoTip by field label with ReactNode label', () => {
     const { view } = renderWithInfotip({
-      infotip: { info, labelledByFieldLabel: true },
+      infotip: { info },
       fieldLabel: <span>{label}</span>,
     });
 
