@@ -7,8 +7,7 @@ const targetProject = kebabCase(
 
 module.exports = {
   ...nxPreset,
-  coverageReporters: ['json', 'text', 'clover', 'lcov'],
   reporters: process.env.CI
-    ? ['default', ['jest-junit', { outputName: `${targetProject}-report.xml` }]]
+    ? ['default', 'github-actions', ['jest-junit', { outputName: `${targetProject}-report.xml` }]]
     : ['default'],
 };

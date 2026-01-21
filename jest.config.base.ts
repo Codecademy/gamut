@@ -19,7 +19,6 @@ const baseConfig = (packageName: string, overrides: any) => {
     coverageDirectory: process.env.CI
       ? `/tmp/test-results/jest/${packageName}`
       : `../../coverage/packages/${packageName}`,
-    reporters: process.env.CI ? ['github-actions', 'summary'] : ['default'],
     moduleNameMapper: {
       '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|md)$':
         '<rootDir>/../../script/jest/fileMock',
