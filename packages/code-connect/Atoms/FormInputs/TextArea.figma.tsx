@@ -38,11 +38,9 @@ figma.connect(
         error: figma.textContent('input'),
         'error + focus': figma.textContent('input'),
       }),
-      placeholder: figma.enum('state', {
-        enabled: figma.textContent('placeholder'),
-        hover: figma.textContent('placeholder'),
-        focus: figma.textContent('placeholder'),
-        disabled: figma.textContent('placeholder'),
+      placeholder: figma.boolean('placeholder', {
+        true: figma.string('↳ placeholder'),
+        false: undefined,
       }),
       rows: figma.enum('rows', {
         '2': 2,

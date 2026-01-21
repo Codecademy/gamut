@@ -23,6 +23,13 @@ figma.connect(
           false: undefined,
         }),
       }),
+      iconPosition: figma.boolean('👁 leading icon', {
+        true: 'left',
+        false: figma.boolean('👁 trailing icon', {
+          true: 'right',
+          false: undefined,
+        }),
+      }),
       variant: figma.enum('variant', {
         Inline: 'inline',
         Interface: 'interface',

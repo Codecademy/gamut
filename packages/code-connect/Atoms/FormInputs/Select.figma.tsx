@@ -43,7 +43,7 @@ figma.connect(
         Error: true,
         Disabled: false,
       }),
-      options: figma.children('*'),
+      options: figma.children('option-*'),
       defaultValue: figma.string('selection'),
     },
     example: (props) => <Select {...props} />,

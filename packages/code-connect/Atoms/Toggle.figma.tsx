@@ -21,6 +21,7 @@ figma.connect(
       }),
       checked: figma.boolean('checked'),
       disabled: figma.boolean('disabled'),
+      label: figma.string('label'),
     },
     example: (props) => <Toggle {...props} />,
   }
