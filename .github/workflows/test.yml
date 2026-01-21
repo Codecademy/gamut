@@ -52,6 +52,6 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: Codecademy/gamut
-          files: /tmp/test-results/*/lcov.info
+          files: /tmp/test-results/jest/*/lcov.info
           flags: pr-coverage
           fail_ci_if_error: false
