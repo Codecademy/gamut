@@ -51,6 +51,7 @@ jobs:
         uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.2.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: /tmp/test-results/jest/**/coverage/lcov.info
+          slug: Codecademy/gamut
+          files: /tmp/test-results/*/lcov.info
           flags: pr-coverage
           fail_ci_if_error: false
