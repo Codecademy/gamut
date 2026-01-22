@@ -5,11 +5,7 @@ import { render } from '@testing-library/react';
 
 import { AssetProvider, createFontLinks } from '../AssetProvider';
 import { coreTheme, percipioTheme } from '../themes';
-import {
-  cleanupPreloadLinks,
-  getPreloadLinks,
-  mockGetFonts,
-} from './helpers';
+import { cleanupPreloadLinks, getPreloadLinks, mockGetFonts } from './helpers';
 
 const renderView = setupRtl(AssetProvider, {});
 

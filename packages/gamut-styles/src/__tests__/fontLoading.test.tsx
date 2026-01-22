@@ -2,11 +2,7 @@ import { render } from '@testing-library/react';
 
 import { AssetProvider } from '../AssetProvider';
 import { coreTheme, percipioTheme } from '../themes';
-import {
-  cleanupPreloadLinks,
-  getPreloadLinks,
-  mockGetFonts,
-} from './helpers';
+import { cleanupPreloadLinks, getPreloadLinks, mockGetFonts } from './helpers';
 
 // Type assertion to satisfy Theme interface in GamutProvider from theme.d.ts - this lib is typed to the CoreTheme interface
 const typedPercipioTheme = percipioTheme as any;
