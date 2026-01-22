@@ -32,7 +32,7 @@ type InfoTipPropsWithAriaLabel = TipBaseProps & {
   ariaRoleDescription?: string;
   emphasis?: 'low' | 'high';
   /**
-   * Called when the info tip is clicked - the onClick function is called after the DOM updates and the tip is mounted.
+   * Called when the InfoTip button is clicked - the onClick function is called after the DOM updates and the tip is mounted.
    */
   onClick?: (arg0: { isTipHidden: boolean }) => void;
 };
@@ -51,7 +51,7 @@ type InfoTipPropsWithAriaLabelledby = TipBaseProps & {
   ariaRoleDescription?: string;
   emphasis?: 'low' | 'high';
   /**
-   * Called when the info tip is clicked - the onClick function is called after the DOM updates and the tip is mounted.
+   * Called when the InfoTip button is clicked - the onClick function is called after the DOM updates and the tip is mounted.
    */
   onClick?: (arg0: { isTipHidden: boolean }) => void;
 };
