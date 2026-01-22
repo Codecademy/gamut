@@ -5,7 +5,11 @@ import { render } from '@testing-library/react';
 
 import { AssetProvider, createFontLinks } from '../AssetProvider';
 import { coreTheme, percipioTheme } from '../themes';
-import { getFonts } from '../utils/fontUtils';
+import {
+  cleanupPreloadLinks,
+  getPreloadLinks,
+  mockGetFonts,
+} from './helpers';
 
 const renderView = setupRtl(AssetProvider, {});
 
@@ -44,21 +48,10 @@ jest.mock('../remoteAssets/fonts', () => ({
   },
 }));
 
-const mockGetFonts = getFonts as jest.MockedFunction<typeof getFonts>;
-
 describe('AssetProvider', () => {
-  // Helper to get links from either container or document.head since React 19 hoists link elements
-  const getPreloadLinks = (container: HTMLElement) => {
-    const containerLinks = container.querySelectorAll('link[rel="preload"]');
-    if (containerLinks.length > 0) return containerLinks;
-    return document.head.querySelectorAll('link[rel="preload"][as="font"]');
-  };
-
   beforeEach(() => {
     jest.clearAllMocks();
-    document.head
-      .querySelectorAll('link[rel="preload"][as="font"]')
-      .forEach((el) => el.remove());
+    cleanupPreloadLinks();
   });
 
   describe('createFontLinks', () => {
