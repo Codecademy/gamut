@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { type JSX, useRef } from 'react';
 import * as React from 'react';
 
 import { DelayedRenderWrapper } from '../DelayedRenderWrapper';

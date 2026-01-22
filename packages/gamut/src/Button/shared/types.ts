@@ -1,6 +1,6 @@
 import { ColorModes } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import { ComponentProps, HTMLProps } from 'react';
+import type { ComponentProps, HTMLProps, JSX } from 'react';
 
 import { ButtonBase } from '../../ButtonBase';
 import { IconComponentType } from '../../utils';

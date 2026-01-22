@@ -30,6 +30,7 @@ import {
 } from './elements';
 import { getMemoizedStyles } from './styles';
 import {
+  ExtendedOption,
   OptionStrict,
   SelectDropdownGroup,
   SelectDropdownProps,
@@ -273,7 +274,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         inputWidth={inputWidth}
         isDisabled={disabled}
         isMulti={multiple}
-        isOptionDisabled={(option) => option.disabled}
+        isOptionDisabled={(option: ExtendedOption) => !!option.disabled}
         isSearchable={isSearchable}
         menuAlignment={menuAlignment}
         name={name}
@@ -285,7 +286,11 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         styles={memoizedStyles}
         value={multiple ? multiValues : parsedValue}
         onChange={changeHandler}
-        onKeyDown={multiple ? (e) => keyPressHandler(e) : undefined}
+        onKeyDown={
+          multiple
+            ? (e: KeyboardEvent<HTMLDivElement>) => keyPressHandler(e)
+            : undefined
+        }
         {...rest}
       />
     </SelectDropdownContext.Provider>

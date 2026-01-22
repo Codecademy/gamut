@@ -19,7 +19,7 @@ type LinkTextParam = { linkText: string };
 type InfoParam = { info: string };
 type PlacementParam = { placement: Placement };
 
-export const createFocusOnClick = (ref: RefObject<HTMLDivElement>) => {
+export const createFocusOnClick = (ref: RefObject<HTMLDivElement | null>) => {
   return ({ isTipHidden }: { isTipHidden: boolean }) => {
     if (!isTipHidden) ref.current?.focus();
   };
