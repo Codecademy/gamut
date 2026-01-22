@@ -1,5 +1,5 @@
 import { MiniArrowRightIcon } from '@codecademy/gamut-icons';
-import React, {
+import {
   forwardRef,
   MouseEventHandler,
   MutableRefObject,

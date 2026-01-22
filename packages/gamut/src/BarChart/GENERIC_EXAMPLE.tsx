@@ -373,11 +373,11 @@ export const WrongCategorySortingExample = () => {
           // bars is typed with both category and priority properties
           sortFn: (bars) => {
             return [...bars].sort((a, b) => {
-              // TypeScript knows this is wrong
               if (a.category !== b.category) {
+                // @ts-expect-error - we know this is wrong
                 return a.category.localeCompare(b.category);
               }
-              // TypeScript knows priority might not exist
+              // @ts-expect-error - we know priority might not exist
               return a.priority - b.priority;
             });
           },
@@ -387,7 +387,7 @@ export const WrongCategorySortingExample = () => {
           value: 'priority',
           sortFn: (bars) => {
             return [...bars].sort((a, b) => {
-              // Erroring correctly
+              // @ts-expect-error - we know priority might not exist
               return a.priority - b.priority;
             });
           },
