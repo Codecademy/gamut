@@ -22,6 +22,7 @@ figma.connect(
       }),
       info: figma.string('✏️ tooltip'),
       children: '{children}',
+      narrow: figma.boolean('narrow'),
     },
     example: ({ children, ...props }) => (
       <ToolTip {...props}>{children}</ToolTip>

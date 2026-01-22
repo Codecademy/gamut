@@ -1,6 +1,6 @@
 import React from 'react';
 import { Toaster } from '@codecademy/gamut';
-import { Bee } from '@codecademy/gamut-illustrations';
+import { Target } from '@codecademy/gamut-illustrations';
 import figma from '@figma/code-connect';
 
 /**
@@ -13,37 +13,45 @@ import figma from '@figma/code-connect';
 
 figma.connect(
   Toaster,
-  'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=19674%3A29150',
+  'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=117105-54074',
   {
     props: {
-      toasts: figma.boolean('Toast #1', {
-        true: figma.boolean('Toast #2', {
-          true: figma.boolean('Toast #3', {
-            true: figma.boolean('Toast #4', {
+      toasts: figma.boolean('toast-02', {
+        true: figma.boolean('toast-03', {
+          true: figma.boolean('toast-04', {
+            true: figma.boolean('toast-05', {
               true: [
                 {
                   id: 'toast1',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
                   title: 'Title with Optional Icon',
-                  icon: <Bee />,
+                  icon: <Target />,
                 },
                 {
                   id: 'toast2',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
-                  icon: <Bee />,
+                  icon: <Target />,
                 },
                 {
                   id: 'toast3',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
                   title: 'Title with Optional Icon',
+                  icon: <Target />,
                 },
                 {
                   id: 'toast4',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
+                },
+                {
+                  id: 'toast5',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
                 },
               ],
               false: [
@@ -52,41 +60,56 @@ figma.connect(
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
                   title: 'Title with Optional Icon',
-                  icon: <Bee />,
+                  icon: <Target />,
                 },
                 {
                   id: 'toast2',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
-                  icon: <Bee />,
+                  icon: <Target />,
                 },
                 {
                   id: 'toast3',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
                   title: 'Title with Optional Icon',
+                  icon: <Target />,
+                },
+                {
+                  id: 'toast4',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
                 },
               ],
             }),
-            false: figma.boolean('Toast #4', {
+            false: figma.boolean('toast-05', {
               true: [
                 {
                   id: 'toast1',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
                   title: 'Title with Optional Icon',
-                  icon: <Bee />,
+                  icon: <Target />,
                 },
                 {
                   id: 'toast2',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
-                  icon: <Bee />,
+                  icon: <Target />,
                 },
                 {
-                  id: 'toast4',
+                  id: 'toast3',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  title: 'Title with Optional Icon',
+                  icon: <Target />,
+                },
+                {
+                  id: 'toast5',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
                 },
               ],
               false: [
@@ -95,37 +118,51 @@ figma.connect(
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
                   title: 'Title with Optional Icon',
-                  icon: <Bee />,
+                  icon: <Target />,
                 },
                 {
                   id: 'toast2',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
-                  icon: <Bee />,
+                  icon: <Target />,
+                },
+                {
+                  id: 'toast3',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  title: 'Title with Optional Icon',
+                  icon: <Target />,
                 },
               ],
             }),
           }),
-          false: figma.boolean('Toast #3', {
-            true: figma.boolean('Toast #4', {
+          false: figma.boolean('toast-04', {
+            true: figma.boolean('toast-05', {
               true: [
                 {
                   id: 'toast1',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
                   title: 'Title with Optional Icon',
-                  icon: <Bee />,
+                  icon: <Target />,
                 },
                 {
-                  id: 'toast3',
+                  id: 'toast2',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
-                  title: 'Title with Optional Icon',
+                  icon: <Target />,
                 },
                 {
                   id: 'toast4',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
+                },
+                {
+                  id: 'toast5',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
                 },
               ],
               false: [
@@ -134,29 +171,42 @@ figma.connect(
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
                   title: 'Title with Optional Icon',
-                  icon: <Bee />,
+                  icon: <Target />,
                 },
                 {
-                  id: 'toast3',
+                  id: 'toast2',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
-                  title: 'Title with Optional Icon',
+                  icon: <Target />,
+                },
+                {
+                  id: 'toast4',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
                 },
               ],
             }),
-            false: figma.boolean('Toast #4', {
+            false: figma.boolean('toast-05', {
               true: [
                 {
                   id: 'toast1',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
                   title: 'Title with Optional Icon',
-                  icon: <Bee />,
+                  icon: <Target />,
                 },
                 {
-                  id: 'toast4',
+                  id: 'toast2',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
+                },
+                {
+                  id: 'toast5',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
                 },
               ],
               false: [
@@ -165,111 +215,182 @@ figma.connect(
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
                   title: 'Title with Optional Icon',
-                  icon: <Bee />,
+                  icon: <Target />,
+                },
+                {
+                  id: 'toast2',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
                 },
               ],
             }),
           }),
         }),
-        false: figma.boolean('Toast #2', {
-          true: figma.boolean('Toast #3', {
-            true: figma.boolean('Toast #4', {
+        false: figma.boolean('toast-03', {
+          true: figma.boolean('toast-04', {
+            true: figma.boolean('toast-05', {
               true: [
                 {
-                  id: 'toast2',
+                  id: 'toast1',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
-                  icon: <Bee />,
+                  title: 'Title with Optional Icon',
+                  icon: <Target />,
                 },
                 {
                   id: 'toast3',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
                   title: 'Title with Optional Icon',
+                  icon: <Target />,
                 },
                 {
                   id: 'toast4',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
+                },
+                {
+                  id: 'toast5',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
                 },
               ],
               false: [
                 {
-                  id: 'toast2',
+                  id: 'toast1',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
-                  icon: <Bee />,
+                  title: 'Title with Optional Icon',
+                  icon: <Target />,
                 },
                 {
                   id: 'toast3',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
                   title: 'Title with Optional Icon',
+                  icon: <Target />,
+                },
+                {
+                  id: 'toast4',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
                 },
               ],
             }),
-            false: figma.boolean('Toast #4', {
+            false: figma.boolean('toast-05', {
               true: [
                 {
-                  id: 'toast2',
+                  id: 'toast1',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
-                  icon: <Bee />,
+                  title: 'Title with Optional Icon',
+                  icon: <Target />,
                 },
                 {
-                  id: 'toast4',
+                  id: 'toast3',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  title: 'Title with Optional Icon',
+                  icon: <Target />,
+                },
+                {
+                  id: 'toast5',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
                 },
               ],
               false: [
                 {
-                  id: 'toast2',
+                  id: 'toast1',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
-                  icon: <Bee />,
+                  title: 'Title with Optional Icon',
+                  icon: <Target />,
+                },
+                {
+                  id: 'toast3',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  title: 'Title with Optional Icon',
+                  icon: <Target />,
                 },
               ],
             }),
           }),
-          false: figma.boolean('Toast #3', {
-            true: figma.boolean('Toast #4', {
+          false: figma.boolean('toast-04', {
+            true: figma.boolean('toast-05', {
               true: [
                 {
-                  id: 'toast3',
+                  id: 'toast1',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
                   title: 'Title with Optional Icon',
+                  icon: <Target />,
                 },
                 {
                   id: 'toast4',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
+                },
+                {
+                  id: 'toast5',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
                 },
               ],
               false: [
                 {
-                  id: 'toast3',
+                  id: 'toast1',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
                   title: 'Title with Optional Icon',
+                  icon: <Target />,
                 },
-              ],
-            }),
-            false: figma.boolean('Toast #4', {
-              true: [
                 {
                   id: 'toast4',
                   children:
                     'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
                 },
               ],
-              false: [],
+            }),
+            false: figma.boolean('toast-05', {
+              true: [
+                {
+                  id: 'toast1',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  title: 'Title with Optional Icon',
+                  icon: <Target />,
+                },
+                {
+                  id: 'toast5',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  icon: <Target />,
+                },
+              ],
+              false: [
+                {
+                  id: 'toast1',
+                  children:
+                    'Keep Body Text within Toasts to a maximum of 3 lines of text.',
+                  title: 'Title with Optional Icon',
+                  icon: <Target />,
+                },
+              ],
             }),
           }),
         }),
       }),
     },
-    example: (props) => <Toaster toasts={props.toasts} />,
+    example: (props) => <Toaster toasts={props.toasts} onClose={() => {}} />,
   }
 );

@@ -33,10 +33,14 @@ figma.connect(
         true: 'Learn more',
         false: undefined,
       }),
-      children: figma.textContent('text'),
+      // children: figma.textContent('children'),
       placement: figma.enum('placement', {
         inline: 'inline',
         floating: 'floating',
+      }),
+      children: figma.enum('placement', {
+        inline: figma.textContent('text'),
+        floating: figma.children('.alert-message'),
       }),
     },
     example: ({ children, ...props }) => (

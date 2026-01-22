@@ -11,27 +11,27 @@ import figma from '@figma/code-connect';
 
 figma.connect(
   Toast,
-  'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=1115%3A195',
+  'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=117004-53652',
   {
     props: {
-      title: figma.boolean('Title', {
-        true: figma.textContent('Title'),
+      title: figma.boolean('title', {
+        true: figma.string('↳ title'),
         false: undefined,
       }),
-      iconProps: figma.nestedProps('📐 Content', {
-        icon: figma.boolean('Image', {
-          true: 'test',
-          false: 'false',
-        }),
+      iconProps: figma.nestedProps('content', {
+        icon: figma.children('*')
       }),
-      icon: figma.boolean('Image', {
-        true: figma.children('*'),
+      icon: figma.boolean('icon', {
+        true: <SomeReactNode />,
         false: undefined,
       }),
-      children: figma.string('description'),
+      children: figma.boolean('description', {
+        true: figma.string('↳ description'),
+        false: undefined,
+      }),
     },
     example: ({ children, iconProps, ...props }) => (
-      <Toast icon={iconProps.icon} {...props}>
+      <Toast {...props}>
         {children}
       </Toast>
     ),

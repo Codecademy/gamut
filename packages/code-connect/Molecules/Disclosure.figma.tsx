@@ -31,8 +31,8 @@ figma.connect(
           true: figma.textContent('overline'),
           false: undefined,
         }),
-        subheading: figma.boolean('subheader', {
-          true: figma.textContent('subtitle'),
+        subheading: figma.boolean('subheading', {
+          true: figma.textContent('subheading'),
           false: undefined,
         }),
         heading: figma.textContent('heading'),
@@ -40,14 +40,21 @@ figma.connect(
       body: figma.children('.disclosureBody'),
       isExpanded: figma.boolean('isExpanded'),
       panelInfo: figma.nestedProps('.disclosureBody', {
-        hasPanelBg: figma.boolean('body-bg'),
+        hasPanelBg: figma.boolean('hasPanelBg'),
         ctaText: figma.boolean('cta', {
           true: 'Button Text',
+        }),
+      }),
+      buttonInfo: figma.nestedProps('.cta', {
+        buttonPlacement: figma.enum('buttonPlacement', {
+          left: 'left',
+          right: 'right',
         }),
       }),
     },
     example: ({
       headingInfo,
+      buttonInfo,
       body,
       variant,
       hasBorder,
@@ -61,11 +68,12 @@ figma.connect(
         hasBorder={hasBorder}
         hasPanelBg={panelInfo.hasPanelBg}
         heading={headingInfo.heading}
-        isExpanded={isExpanded}
+        initiallyExpanded={isExpanded}
         overline={headingInfo.overline}
         spacing={spacing}
         subheading={headingInfo.subheading}
         variant={variant}
+        buttonPlacement={buttonInfo.buttonPlacement}
       />
     ),
   }

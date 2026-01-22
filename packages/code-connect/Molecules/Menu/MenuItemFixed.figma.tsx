@@ -20,7 +20,10 @@ figma.connect(
         true: figma.instance('↳ icon'),
         false: undefined,
       }),
-      label: figma.string('label'),
+      label: figma.boolean('label', {
+        true: figma.string('↳ label'),
+        false: undefined,
+      }),
     },
     example: ({ label, ...props }) => <MenuItem {...props}>{label}</MenuItem>,
   }
