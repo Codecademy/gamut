@@ -1,18 +1,19 @@
 import '@testing-library/jest-dom';
 
+import { setupRtl } from '@codecademy/gamut-tests';
 import { render } from '@testing-library/react';
 
 import { AssetProvider, createFontLinks } from '../AssetProvider';
 import { coreTheme, percipioTheme } from '../themes';
 import { getFonts } from '../utils/fontUtils';
 
+const renderView = setupRtl(AssetProvider, {});
+
 jest.mock('../utils/fontUtils', () => ({
-  __esModule: true,
   getFonts: jest.fn(),
 }));
 
 jest.mock('../remoteAssets/fonts', () => ({
-  __esModule: true,
   webFonts: {
     core: [
       {
@@ -46,7 +47,7 @@ jest.mock('../remoteAssets/fonts', () => ({
 const mockGetFonts = getFonts as jest.MockedFunction<typeof getFonts>;
 
 describe('AssetProvider', () => {
-  // Helper to get links from either container or document.head (React 19 hoists link elements)
+  // Helper to get links from either container or document.head since React 19 hoists link elements
   const getPreloadLinks = (container: HTMLElement) => {
     const containerLinks = container.querySelectorAll('link[rel="preload"]');
     if (containerLinks.length > 0) return containerLinks;
@@ -55,7 +56,6 @@ describe('AssetProvider', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    // Clean up any links from previous tests (React 19 hoists link elements to head)
     document.head
       .querySelectorAll('link[rel="preload"][as="font"]')
       .forEach((el) => el.remove());
@@ -165,8 +165,8 @@ describe('AssetProvider', () => {
         },
       ]);
 
-      const { container } = render(<AssetProvider theme={coreTheme} />);
-      const links = getPreloadLinks(container);
+      const { view } = renderView();
+      const links = getPreloadLinks(view.container);
 
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
@@ -185,10 +185,8 @@ describe('AssetProvider', () => {
         },
       ]);
 
-      const { container } = render(
-        <AssetProvider theme={percipioTheme as any} />
-      );
-      const links = getPreloadLinks(container);
+      const { view } = renderView({ theme: percipioTheme as any });
+      const links = getPreloadLinks(view.container);
 
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
@@ -199,10 +197,10 @@ describe('AssetProvider', () => {
     });
 
     it('should handle theme without name property', () => {
-      const themeWithoutName = { ...coreTheme, name: undefined };
+      const themeWithoutName = { ...coreTheme, name: undefined } as any;
       mockGetFonts.mockReturnValue([]);
 
-      render(<AssetProvider theme={themeWithoutName} />);
+      renderView({ theme: themeWithoutName });
       expect(mockGetFonts).toHaveBeenCalledWith('core');
     });
 
@@ -210,7 +208,7 @@ describe('AssetProvider', () => {
       const themeWithInvalidName = { ...coreTheme, name: 'invalid-theme' };
       mockGetFonts.mockReturnValue([]);
 
-      render(<AssetProvider theme={themeWithInvalidName} />);
+      renderView({ theme: themeWithInvalidName });
       expect(mockGetFonts).toHaveBeenCalledWith('invalid-theme');
     });
 
@@ -219,32 +217,32 @@ describe('AssetProvider', () => {
         throw new Error('Font loading failed');
       });
 
-      const { container } = render(<AssetProvider theme={coreTheme} />);
-      const links = getPreloadLinks(container);
+      const { view } = renderView();
+      const links = getPreloadLinks(view.container);
       expect(links).toHaveLength(0);
     });
 
     it('should fallback to core fonts when getFonts returns undefined', () => {
-      mockGetFonts.mockReturnValue(undefined);
+      mockGetFonts.mockReturnValue(undefined as any);
 
-      const { container } = render(<AssetProvider theme={coreTheme} />);
-      const links = getPreloadLinks(container);
+      const { view } = renderView();
+      const links = getPreloadLinks(view.container);
       expect(links).toHaveLength(2);
     });
 
     it('should fallback to core fonts when getFonts returns null', () => {
-      mockGetFonts.mockReturnValue(null);
+      mockGetFonts.mockReturnValue(null as any);
 
-      const { container } = render(<AssetProvider theme={coreTheme} />);
-      const links = getPreloadLinks(container);
+      const { view } = renderView();
+      const links = getPreloadLinks(view.container);
       expect(links).toHaveLength(2);
     });
 
     it('should fallback to core fonts when getFonts returns non-array', () => {
-      mockGetFonts.mockReturnValue('not-an-array');
+      mockGetFonts.mockReturnValue('not-an-array' as any);
 
-      const { container } = render(<AssetProvider theme={coreTheme} />);
-      const links = getPreloadLinks(container);
+      const { view } = renderView();
+      const links = getPreloadLinks(view.container);
       expect(links).toHaveLength(0);
     });
 
@@ -267,8 +265,8 @@ describe('AssetProvider', () => {
         },
       ]);
 
-      const { container } = render(<AssetProvider theme={coreTheme} />);
-      const links = getPreloadLinks(container);
+      const { view } = renderView();
+      const links = getPreloadLinks(view.container);
 
       expect(links).toHaveLength(3);
       expect(links[0]).toHaveAttribute(
@@ -285,7 +283,7 @@ describe('AssetProvider', () => {
       );
     });
 
-    it('should only render valid font configurations', () => {
+    it('should only rnder valid font configurations ', () => {
       mockGetFonts.mockReturnValue([
         {
           filePath: 'https://www.codecademy.com/gamut/valid-font',
@@ -304,8 +302,8 @@ describe('AssetProvider', () => {
         } as any,
       ]);
 
-      const { container } = render(<AssetProvider theme={coreTheme} />);
-      const links = getPreloadLinks(container);
+      const { view } = renderView();
+      const links = getPreloadLinks(view.container);
 
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
@@ -333,8 +331,8 @@ describe('AssetProvider', () => {
         },
       ]);
 
-      const { container } = render(<AssetProvider theme={coreTheme} />);
-      const links = getPreloadLinks(container);
+      const { view } = renderView();
+      const links = getPreloadLinks(view.container);
 
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(

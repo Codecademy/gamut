@@ -8,12 +8,10 @@ import { getFonts } from '../utils/fontUtils';
 const typedPercipioTheme = percipioTheme as any;
 
 jest.mock('../utils/fontUtils', () => ({
-  __esModule: true,
   getFonts: jest.fn(),
 }));
 
 jest.mock('../remoteAssets/fonts', () => ({
-  __esModule: true,
   webFonts: {
     core: [
       {
