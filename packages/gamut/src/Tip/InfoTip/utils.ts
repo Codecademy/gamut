@@ -12,11 +12,6 @@ export type InfoTipPropsWithoutAria = Omit<
   ariaLabelledby?: string;
 };
 
-/**
- * Utility function to convert InfoTipPropsWithoutAria to InfoTipProps.
- * Ensures one of ariaLabel or ariaLabelledby is provided (using fallback if neither is provided).
- * Returns both the props and whether the label should be automatically labeled.
- */
 export const createInfoTipProps = (
   props: InfoTipPropsWithoutAria,
   fallbackAriaLabelledby?: string
@@ -27,7 +22,6 @@ export const createInfoTipProps = (
   const { ariaLabel, ariaLabelledby, ...rest } = props;
   const hasAriaLabel = ariaLabel !== undefined;
   const hasAriaLabelledby = ariaLabelledby !== undefined;
-  const shouldLabelInfoTip = !hasAriaLabel && !hasAriaLabelledby;
 
   if (hasAriaLabel) {
     return {
@@ -39,18 +33,30 @@ export const createInfoTipProps = (
     };
   }
 
-  const finalAriaLabelledby = ariaLabelledby ?? fallbackAriaLabelledby;
-  if (finalAriaLabelledby === undefined) {
-    throw new Error(
-      'InfoTip requires either ariaLabel or ariaLabelledby to be provided'
-    );
+  if (hasAriaLabelledby) {
+    return {
+      infotipProps: {
+        ...rest,
+        ariaLabelledby,
+      } as InfoTipProps,
+      shouldLabelInfoTip: false,
+    };
+  }
+
+  if (fallbackAriaLabelledby) {
+    return {
+      infotipProps: {
+        ...rest,
+        ariaLabelledby: fallbackAriaLabelledby,
+      } as InfoTipProps,
+      shouldLabelInfoTip: true,
+    };
   }
 
   return {
     infotipProps: {
       ...rest,
-      ariaLabelledby: finalAriaLabelledby,
     } as InfoTipProps,
-    shouldLabelInfoTip,
+    shouldLabelInfoTip: false,
   };
 };

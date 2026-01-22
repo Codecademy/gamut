@@ -21,9 +21,9 @@ import { InfoTipButton } from './InfoTipButton';
 type InfoTipPropsWithAriaLabel = TipBaseProps & {
   alignment?: TipBaseAlignment;
   /**
-   * Accessible label for the InfoTip button.
+   * Accessible label for the InfoTip button. ariaLabel or ariaLabelledby should be provided for accessibility.
    */
-  ariaLabel: string;
+  ariaLabel?: string;
   ariaLabelledby?: never;
   /**
    * Accessible role description for the InfoTip button. Useful for translation.
@@ -43,7 +43,7 @@ type InfoTipPropsWithAriaLabelledby = TipBaseProps & {
   /**
    * ID of an element that labels the InfoTip button.
    */
-  ariaLabelledby: string;
+  ariaLabelledby?: string;
   /**
    * Accessible role description for the InfoTip button. Useful for translation.
    * @default "More information button"
