@@ -44,11 +44,11 @@ figma.connect(
         }),
         info: figma.textContent('✏️ tip'),
       }),
+      disabled: figma.boolean('disabled'),
     },
     example: (props) => (
       <FormGroup
         {...props}
-        disabled={props.infoTipData?.disabled}
         infotip={{
           emphasis: props.infoTipData?.emphasis,
           info: props.toolTipInfo?.info,

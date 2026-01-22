@@ -15,30 +15,24 @@ figma.connect(
   {
     props: {
       disabled: figma.enum('state', {
-        Disabled: true,
+        disabled: true,
+        'filled + disabled': true,
       }),
       error: figma.enum('state', {
-        Error: true,
+        error: true,
+        'filled + error': true,
       }),
       size: figma.enum('size', {
         small: 'small',
         medium: 'medium',
       }),
       options: figma.children('option-*'),
-      placeholder: figma.enum('state', {
-        Enabled: figma.textContent('placeholder'),
-        Hover: figma.textContent('placeholder'),
-        Focus: figma.textContent('placeholder'),
-        Active: figma.textContent('placeholder'),
+      isSearchable: figma.boolean('isSearchable'),
+      placeholder: figma.boolean('placeholder', {
+        true: figma.textContent('placeholder'),
+        false: undefined,
       }),
-      defaultValue: figma.enum('state', {
-        Filled: figma.textContent('selection'),
-        'Filled + Hover': figma.textContent('selection'),
-        'Filled + Focus': figma.textContent('selection'),
-        'Filled + Active': figma.textContent('selection'),
-        Error: figma.textContent('selection'),
-        Disabled: figma.textContent('selection'),
-      }),
+      multiple: figma.boolean('multiple'),
     },
     example: (props) => <SelectDropdown {...props} />,
   }
