@@ -4,10 +4,9 @@ import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
 import { infotipNestedArgTypes } from '~styleguide/argTypes';
 
-
 const meta: TypeWithDeepControls<Meta<typeof FormGroup>> = {
   component: FormGroup,
-  argTypes: {  ...infotipNestedArgTypes},
+  argTypes: { ...infotipNestedArgTypes },
 };
 
 export default meta;
