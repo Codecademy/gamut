@@ -21,10 +21,10 @@ export interface PatternProps
   ref?: React.Ref<SVGSVGElement>;
 }
 
-const StyledSvg: StyledComponent<PatternProps, {}, {}> = styled(
+const StyledSvg = styled(
   'svg',
   styledOptions<'svg'>()
-)(patternStyles);
+)(patternStyles) as StyledComponent<PatternProps, {}, {}>;
 
 export const Svg = forwardRef<SVGSVGElement, PatternProps>(
   ({ height = '100%', width = '100%', ...rest }, ref) => (

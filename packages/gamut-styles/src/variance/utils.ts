@@ -20,8 +20,8 @@ export type SystemPropNames = (typeof allPropnames)[number];
 export type ElementOrProps = keyof JSX.IntrinsicElements | ThemeProps;
 export type ForwardableProps<El extends ElementOrProps, Additional> = Exclude<
   El extends keyof JSX.IntrinsicElements
-  ? keyof JSX.IntrinsicElements[El]
-  : keyof Element,
+    ? keyof JSX.IntrinsicElements[El]
+    : keyof Element,
   Additional | SystemPropNames
 >;
 
@@ -59,6 +59,6 @@ export function createStyledOptions<
  */
 export const styledOptions: typeof createStyledOptions &
   ReturnType<typeof createStyledOptions> = Object.assign(
-    createStyledOptions,
-    createStyledOptions()
-  );
+  createStyledOptions,
+  createStyledOptions()
+);

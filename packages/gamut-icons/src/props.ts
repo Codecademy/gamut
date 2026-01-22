@@ -12,7 +12,7 @@ export interface IconStyleProps extends StyleProps<typeof iconProps> {
 
 export interface GamutBaseIconProps
   extends Omit<React.SVGProps<SVGSVGElement>, keyof IconStyleProps>,
-  IconStyleProps {
+    IconStyleProps {
   /**
    * A suffix added to the end of the unique generated ID for the icon. This is useful if you have multiple of the same icon on the page and need to pass accessibility guidelines.
    */
@@ -46,7 +46,7 @@ export const iconProps = variance.compose(
   system.border
 );
 
-export const Svg: StyledComponent<GamutBaseIconProps, {}, {}> = styled(
+export const Svg = styled(
   'svg',
   styledOptions<'svg'>()
-)(iconProps);
+)(iconProps) as StyledComponent<GamutBaseIconProps, {}, {}>;
