@@ -62,6 +62,16 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: Codecademy/gamut
-          directory: /tmp/test-results/jest
           flags: ${{ github.event_name == 'pull_request' && 'pull-request' || 'main' }}
           fail_ci_if_error: false
+          directory: /tmp/test-results/jest
+          report_type: coverage
+      - name: Upload test results to Codecov
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.2.2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: Codecademy/gamut
+          flags: ${{ github.event_name == 'pull_request' && 'pull-request' || 'main' }}
+          fail_ci_if_error: false
+          directory: /tmp/test-results/junit
+          report_type: test_results
