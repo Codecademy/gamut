@@ -150,9 +150,15 @@ export const useFormState = () => {
 
 interface useFieldProps extends SubmitContextProps {
   name: string;
+  customValidation?: RegisterOptions;
 }
 
-export const useField = ({ name, disabled, loading }: useFieldProps) => {
+export const useField = ({
+  name,
+  disabled,
+  loading,
+  customValidation,
+}: useFieldProps) => {
   // This is fixed in a later react-hook-form version:
   // https://github.com/react-hook-form/react-hook-form/issues/2887
   // eslint-disable-next-line @typescript-eslint/unbound-method
@@ -176,10 +182,15 @@ export const useField = ({ name, disabled, loading }: useFieldProps) => {
     loading,
   });
 
-  const validation =
+  const formValidation =
     (validationRules &&
       validationRules[name as keyof typeof validationRules]) ??
     undefined;
+
+  const validation =
+    formValidation || customValidation
+      ? ({ ...formValidation, ...customValidation } as RegisterOptions)
+      : undefined;
 
   const ref = register(name, validation);
 

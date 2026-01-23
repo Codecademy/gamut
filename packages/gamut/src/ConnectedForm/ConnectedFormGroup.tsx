@@ -2,6 +2,7 @@ import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useEffect } from 'react';
 import * as React from 'react';
+import { RegisterOptions } from 'react-hook-form';
 
 import {
   FormError,
@@ -42,7 +43,10 @@ export interface ConnectedFormGroupProps<T extends ConnectedField>
   /**
    * An object consisting of a `component` key to specify what ConnectedFormInput to render - the remaining key/value pairs are that components desired props.
    */
-  field: Omit<React.ComponentProps<T>, 'name' | 'disabled'> & FieldProps<T>;
+  field: Omit<React.ComponentProps<T>, 'name' | 'disabled'> &
+    FieldProps<T> & {
+      customValidation?: RegisterOptions;
+    };
 }
 
 export function ConnectedFormGroup<T extends ConnectedField>({
@@ -60,11 +64,12 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   isSoloField,
   infotip,
 }: ConnectedFormGroupProps<T>) {
+  const { component: Component, customValidation, ...rest } = field;
   const { error, isFirstError, isDisabled, setError, validation } = useField({
     name,
     disabled,
+    customValidation,
   });
-  const { component: Component, ...rest } = field;
 
   useEffect(() => {
     if (customError) {
