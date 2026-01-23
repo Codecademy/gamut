@@ -21,10 +21,10 @@ permissions:
 
 jobs:
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 0
       - uses: ./.github/actions/yarn
@@ -41,7 +41,7 @@ jobs:
           ignore-commit-message: ${{ env.IGNORE_COMMIT_MESSAGE }}
       - name: Build All Packages
         run: yarn build
-      - name: Run test suite on affected projects
+      - name: Run test suite
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
             npx nx affected --target=test --parallel=4 --ci --coverage --runInBand
@@ -52,7 +52,7 @@ jobs:
           JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
           JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
       - name: Upload test results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         if: always()
         with:
           name: test-results
