@@ -63,4 +63,60 @@ describe('<Radio>', () => {
       testid
     );
   });
+
+  describe('InfoTip accessibility', () => {
+    const info = 'helpful information';
+    const labelText = 'Radio Label';
+
+    it('automatically links InfoTip to Radio label via aria-labelledby', () => {
+      const { view } = renderView({
+        label: labelText,
+        infotip: { info },
+      });
+
+      view.getByRole('button', { name: labelText });
+    });
+
+    it('uses explicit ariaLabel when provided', () => {
+      const ariaLabel = 'Custom label';
+      const { view } = renderView({
+        label: labelText,
+        infotip: { info, ariaLabel },
+      });
+
+      view.getByRole('button', { name: ariaLabel });
+      expect(
+        view.queryByRole('button', { name: labelText })
+      ).not.toBeInTheDocument();
+    });
+
+    it('uses explicit ariaLabelledby when provided', () => {
+      const externalLabelId = 'external-label-id';
+      const externalLabelText = 'External Label';
+      const { view } = renderView({
+        label: labelText,
+        infotip: { info, ariaLabelledby: externalLabelId },
+      });
+
+      // Add external label element that the InfoTip references
+      const externalLabel = document.createElement('span');
+      externalLabel.id = externalLabelId;
+      externalLabel.textContent = externalLabelText;
+      view.container.appendChild(externalLabel);
+
+      view.getByRole('button', { name: externalLabelText });
+      expect(
+        view.queryByRole('button', { name: labelText })
+      ).not.toBeInTheDocument();
+    });
+
+    it('links InfoTip to label with JSX label content', () => {
+      const { view } = renderView({
+        label: <span>{labelText}</span>,
+        infotip: { info },
+      });
+
+      view.getByRole('button', { name: labelText });
+    });
+  });
 });

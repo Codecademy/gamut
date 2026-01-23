@@ -4,7 +4,12 @@ import { act, RenderResult, waitFor } from '@testing-library/react';
 
 import { InfoTipProps } from '../../Tip/InfoTip';
 import { createPromise } from '../../utils';
-import { ConnectedForm, ConnectedFormGroup, ConnectedInput } from '..';
+import {
+  ConnectedForm,
+  ConnectedFormGroup,
+  ConnectedInput,
+  ConnectedRadioGroupInput,
+} from '..';
 import { PlainConnectedFields } from '../__fixtures__/helpers';
 
 const renderView = setupRtl(ConnectedForm, {
@@ -442,5 +447,90 @@ describe('ConnectedFormGroup infotip accessibility', () => {
     });
 
     view.getByRole('button', { name: new RegExp(label) });
+  });
+});
+
+describe('ConnectedRadioGroup InfoTip accessibility', () => {
+  const info = 'helpful information';
+  const radioLabel = 'Radio Option';
+  const ariaLabel = 'Custom InfoTip Label';
+
+  const renderConnectedFormGroupView = setupRtl(ConnectedForm, {
+    defaultValues: { radioGroup: '' },
+    onSubmit: jest.fn(),
+    children: null,
+  });
+
+  it('links Radio InfoTip to Radio label via aria-labelledby', () => {
+    const { view } = renderConnectedFormGroupView({
+      children: (
+        <ConnectedFormGroup
+          field={{
+            component: ConnectedRadioGroupInput,
+            options: [
+              {
+                label: radioLabel,
+                value: 'option1',
+                infotip: { info },
+              },
+            ],
+          }}
+          label="Radio Group Label"
+          name="radioGroup"
+        />
+      ),
+    });
+
+    view.getByRole('button', { name: radioLabel });
+  });
+
+  it('allows overriding Radio InfoTip aria-labelledby with explicit ariaLabel', () => {
+    const { view } = renderConnectedFormGroupView({
+      children: (
+        <ConnectedFormGroup
+          field={{
+            component: ConnectedRadioGroupInput,
+            options: [
+              {
+                label: radioLabel,
+                value: 'option1',
+                infotip: { info, ariaLabel },
+              },
+            ],
+          }}
+          label="Radio Group Label"
+          name="radioGroup"
+        />
+      ),
+    });
+
+    view.getByRole('button', { name: ariaLabel });
+    expect(
+      view.queryByRole('button', { name: radioLabel })
+    ).not.toBeInTheDocument();
+  });
+
+  it('links RadioGroup InfoTip to RadioGroup label via FormGroupLabel', () => {
+    const groupLabel = 'Radio Group Label';
+    const { view } = renderConnectedFormGroupView({
+      children: (
+        <ConnectedFormGroup
+          field={{
+            component: ConnectedRadioGroupInput,
+            options: [
+              {
+                label: radioLabel,
+                value: 'option1',
+              },
+            ],
+          }}
+          infotip={{ info }}
+          label={groupLabel}
+          name="radioGroup"
+        />
+      ),
+    });
+
+    view.getByRole('button', { name: `${groupLabel}\u00A0(optional)` });
   });
 });
