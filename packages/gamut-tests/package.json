@@ -6,7 +6,7 @@
   "dependencies": {
     "@codecademy/gamut-styles": "17.11.0",
     "component-test-setup": "*",
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.23"
   },
   "files": [
     "dist"
