@@ -4,6 +4,7 @@ import {
   setupRtl as setupRtlBase,
 } from 'component-test-setup';
 import overArgs from 'lodash/overArgs';
+import type { JSX } from 'react';
 import * as React from 'react';
 
 // See https://www.notion.so/codecademy/Frontend-Unit-Tests-1cbf4e078a6647559b4583dfb6d3cb18 for more info

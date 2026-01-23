@@ -1,9 +1,9 @@
 import { matchers } from '@emotion/jest';
 import { ThemeProvider } from '@emotion/react';
 import styled from '@emotion/styled';
+import { render as rtlRender } from '@testing-library/react';
 import { ComponentProps } from 'react';
 import * as React from 'react';
-import renderer from 'react-test-renderer';
 
 import { variance } from '../../src/core';
 import { theme } from '../__fixtures__/theme';
@@ -30,13 +30,13 @@ const setupRender = <T extends React.ElementType, P extends ComponentProps<T>>(
   return (props?: P) => {
     const mergedProps = { ...defaultProps, ...props };
 
-    return renderer
-      .create(
-        <ThemeProvider theme={theme}>
-          <Component {...(mergedProps as P)} />
-        </ThemeProvider>
-      )
-      .toJSON();
+    const { container } = rtlRender(
+      <ThemeProvider theme={theme}>
+        <Component {...(mergedProps as P)} />
+      </ThemeProvider>
+    );
+
+    return container.firstChild;
   };
 };
 
