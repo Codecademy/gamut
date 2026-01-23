@@ -3,10 +3,9 @@ import { useEffect, useMemo } from 'react';
 import { findAllAdditionalScrollingParents, findResizingParent } from './utils';
 
 export const useScrollingParentsEffect = (
-  targetRef: React.RefObject<Pick<
-    HTMLDivElement,
-    'getBoundingClientRect' | 'contains'
-  >>,
+  targetRef: React.RefObject<
+    Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
+  >,
   setTargetRect: (rect: DOMRect | undefined) => void
 ) => {
   useEffect(() => {
@@ -40,10 +39,9 @@ export const useScrollingParentsEffect = (
 };
 
 export const useResizingParentEffect = (
-  targetRef: React.RefObject<Pick<
-    HTMLDivElement,
-    'getBoundingClientRect' | 'contains'
-  >>,
+  targetRef: React.RefObject<
+    Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
+  >,
   setTargetRect: (rect: DOMRect | undefined) => void
 ) => {
   useEffect(() => {

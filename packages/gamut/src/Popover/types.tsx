@@ -98,10 +98,9 @@ export type PopoverProps = PopoverBaseProps &
     /**
      * The target element around which the popover will be positioned.
      */
-    targetRef: React.RefObject<Pick<
-      HTMLDivElement,
-      'getBoundingClientRect' | 'contains'
-    >>;
+    targetRef: React.RefObject<
+      Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
+    >;
 
     /**
      * The PopoverContainer which contents will be rendered into.

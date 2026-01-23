@@ -51,7 +51,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
 
   // Memoize scrolling parents to avoid expensive DOM traversals
   const scrollingParents = useScrollingParents(
-    targetRef as React.RefObject<HTMLElement | null>
+    targetRef as React.RefObject<HTMLElement>
   );
 
   // Keep onRequestClose ref up to date
