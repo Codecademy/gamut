@@ -1,3 +1,4 @@
+import { TerminalIcon } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
 import { HTMLProps } from 'react';
@@ -231,7 +232,6 @@ describe('BarChart', () => {
       });
 
       const select = view.getByLabelText('Sort bars') as HTMLSelectElement;
-      // Should default to first option (label-asc)
       expect(select.value).toBe('label-asc');
 
       const items = view.getAllByRole('listitem');
@@ -414,7 +414,6 @@ describe('BarChart', () => {
         const listItems = view.getAllByRole('listitem');
         expect(listItems).toHaveLength(2);
 
-        // Non-interactive bars include "in " so screen readers read it with the adjacent category text
         view.getByText('100 XP in ');
         view.getByText('75 XP in ');
       });
@@ -485,7 +484,6 @@ describe('BarChart', () => {
       });
 
       expect(view.getByText('Sort by:')).toBeInTheDocument();
-      // Should still use default for sort options
       expect(view.getByText('None')).toBeInTheDocument();
       expect(view.getByText('Label (A-Z)')).toBeInTheDocument();
     });
@@ -501,9 +499,7 @@ describe('BarChart', () => {
         },
       });
 
-      // German locale uses different number formatting (e.g., 1.000 instead of 1,000)
       const listItems = view.getAllByRole('listitem');
-      // The exact format depends on the locale, but we verify it's using the locale
       expect(listItems[0]).toHaveTextContent('Python');
       expect(listItems[1]).toHaveTextContent('JavaScript');
     });
@@ -528,6 +524,119 @@ describe('BarChart', () => {
         '[class*="screenreader"], [style*="position: absolute"]'
       );
       expect(hiddenText).toHaveTextContent(/ganado - ahora en/);
+      });
+
+  describe('Icons', () => {
+    it('renders icons when provided in bar data', () => {
+      const barValuesWithIcons: BarProps[] = [
+        { yLabel: 'Python', seriesOneValue: 100, icon: TerminalIcon },
+        { yLabel: 'JavaScript', seriesOneValue: 75 },
+      ];
+
+      const { view } = renderView({ barValues: barValuesWithIcons });
+
+      const listItems = view.getAllByRole('listitem');
+      expect(listItems).toHaveLength(2);
+
+      const pythonItem = listItems[0];
+      const iconInPython = pythonItem.querySelector('svg[role="img"]');
+      expect(iconInPython).toBeInTheDocument();
+
+      const javascriptItem = listItems[1];
+      const iconInJavascript =
+        javascriptItem.querySelector('svg[role="img"]');
+      expect(iconInJavascript).not.toBeInTheDocument();
+    });
+  });
+
+  describe('Custom Styling', () => {
+    it('applies custom textColor to labels', () => {
+      const { view } = renderView({
+        styleConfig: {
+          textColor: 'primary',
+        },
+      });
+
+      const listItems = view.getAllByRole('listitem');
+      expect(listItems).toHaveLength(2);
+    });
+
+    it('applies custom foregroundBarColor and backgroundBarColor', () => {
+      const { view } = renderView({
+        styleConfig: {
+          foregroundBarColor: 'primary',
+          backgroundBarColor: 'text',
+        },
+      });
+
+      const backgroundBars = view.getAllByTestId('background-bar');
+      expect(backgroundBars).toHaveLength(2);
+    });
+
+    it('applies custom seriesOneLabel and seriesTwoLabel colors', () => {
+      const stackedBarValues: BarProps[] = [
+        { yLabel: 'Python', seriesOneValue: 50, seriesTwoValue: 100 },
+        { yLabel: 'JavaScript', seriesOneValue: 25, seriesTwoValue: 75 },
+      ];
+
+      const { view } = renderView({
+        barValues: stackedBarValues,
+        styleConfig: {
+          seriesOneLabel: 'feedback-error',
+          seriesTwoLabel: 'feedback-success',
+        },
+      });
+
+      const listItems = view.getAllByRole('listitem');
+      expect(listItems).toHaveLength(2);
+    });
+
+    it('uses default styleConfig values when not provided', () => {
+      const { view } = renderView();
+
+      const listItems = view.getAllByRole('listitem');
+      expect(listItems).toHaveLength(2);
+      const backgroundBars = view.getAllByTestId('background-bar');
+      expect(backgroundBars).toHaveLength(2);
+    });
+  });
+
+
+  describe('Title Variant', () => {
+    it('applies custom variant when provided in title object', () => {
+      const { view } = renderView({
+        title: {
+          as: 'h1',
+          title: 'Custom Title',
+          variant: 'title-lg',
+        },
+      });
+
+      const title = view.getByRole('heading', { name: 'Custom Title' });
+      expect(title.tagName).toBe('H1');
+    });
+
+    it('uses default variant when variant is not provided in title object', () => {
+      const { view } = renderView({
+        title: {
+          as: 'h3',
+          title: 'Default Variant Title',
+        },
+      });
+
+      const title = view.getByRole('heading', {
+        name: 'Default Variant Title',
+      });
+      expect(title.tagName).toBe('H3');
+    });
+
+    it('uses default variant when title is a string', () => {
+      const { view } = renderView({
+        title: 'String Title',
+      });
+
+      const title = view.getByRole('heading', { name: 'String Title' });
+      expect(title.tagName).toBe('H2');
     });
   });
 });

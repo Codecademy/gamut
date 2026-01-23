@@ -158,7 +158,6 @@ export const BarRow = forwardRef<
               <>
                 <Text
                   color={seriesOneLabel}
-                  fontWeight="bold"
                   variant="p-small"
                   whiteSpace="nowrap"
                 >
@@ -170,6 +169,7 @@ export const BarRow = forwardRef<
             )}
             <Text
               color={isStacked ? seriesTwoLabel : seriesOneLabel}
+              fontWeight={isStacked ? 'bold' : 'normal'}
               variant="p-small"
               whiteSpace="nowrap"
             >

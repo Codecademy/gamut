@@ -1,10 +1,16 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { Callout, ComponentHeader, LinkTo } from '~styleguide/blocks';
+import {
+  Callout,
+  ComponentHeader,
+  ImageWrapper,
+  LinkTo,
+} from '~styleguide/blocks';
 
 import * as BarChartStories from './BarChart.stories';
 
 export const parameters = {
+  title: 'BarChart',
   subtitle: `A horizontal bar chart for visualizing comparative data`,
   design: {
     type: 'figma',
@@ -18,7 +24,7 @@ export const parameters = {
   },
 };
 
-<Meta of={BarChartStories} />;
+<Meta of={BarChartStories} />
 
 <ComponentHeader {...parameters} />
 
@@ -32,12 +38,54 @@ Use BarChart to display comparative data across categories, such as skills progr
 - Limit the number of bars to maintain readability (5-10 is optimal)
 - Consider using the stacked variant to show progress toward a goal
 - Sort bars by value (descending) when ranking is important
+- Ensure bar colors maintain at least a 3:1 contrast ratio with the background
 
-When NOT to use
+### When NOT to use:
 
-- For showing trends over time - use a line chart instead
-- For showing parts of a whole - use a pie or donut chart
-- For very small datasets (1-2 items) - consider using ProgressBar
+- **Progress tracking** – for displaying the completion status of a task, use the <LinkTo id="Atoms/ProgressBar">ProgressBar</LinkTo> component.
+
+## Anatomy
+
+<ImageWrapper
+  src="./organisms/barchart.png"
+  alt="The anatomy of the BarChart component, detailed below."
+/>
+
+1. **Bar row**
+
+- Represents a single category and its values.
+
+2. **Category icon** (optional)
+
+- Use to clarify or reinforce the category name.
+
+3. **Category label**
+
+- Displays gridlines and labels to indicate the scale of the data values.
+- The number of dividers, as well as the minimum and maximum values on the value axis, are adjustable.
+- The minimum value should always be 0.
+
+4. **Series one value**
+
+- Displays the numerical value of the series one bar for clarity and precise data representation.
+
+5. **Series two value** (optional)
+
+- Displays the numerical value of the series two bar for clarity and precise data representation.
+- Include a second series value by using the stacked property. Stacked bar charts compare parts of a whole and are best suited for displaying discrete data segmented into meaningful categories.
+
+6. ** Series one bar**
+
+- A visual representation of the first value for the associated category.
+- By default, the first series bars use the text color, however, it can be overridden to any color.
+- Bars include a required border that uses white or navy, chosen automatically to ensure the highest contrast with the bar color.
+
+8. **Series two bar** _(bars with zero value)_
+
+- A visual representation of the second value for the associated category.
+- By default, the second series bars use the primary color, however, it can be overridden to any color.
+- Bars include a required border that uses white or navy, chosen automatically to ensure the highest contrast with the bar color.
+- Bars include a required border that uses white or navy, chosen automatically to ensure the highest contrast with the bar color.
 
 ## Variants
 
@@ -150,6 +198,88 @@ When a bar has an `onClick` handler or `href` link, an `aria-label` is automatic
 This ensures that screen reader users receive a clear, data-driven description when interacting with bars, without requiring manual `aria-label` props.
 
 <Canvas of={BarChartStories.WithLinks} />
+
+## Interactive states
+
+BarChart supports both interactive and static bar rows, each with distinct visual states.
+
+### Static bars
+
+When bars have neither `onClick` handlers nor `href` links, they are rendered as static, non-interactive elements.
+
+<Canvas of={BarChartStories.Default} />
+
+### Interactive bars
+
+When bars have `onClick` handlers or `href` links, they become interactive. Interactive bars are rendered as buttons or anchor elements, providing full keyboard accessibility and proper semantic HTML.
+
+<Canvas of={BarChartStories.Interactive} />
+
+## Color modes
+
+BarChart automatically adapts to both light and dark color modes, ensuring proper contrast and readability in all themes. The component uses semantic color tokens that adjust based on the current color mode.  The `styleConfig` prop should be provided by semantic color tokens to ensure the `BarChart` is accessible in all color modes.
+
+## Custom styling
+
+BarChart supports custom color styling through the `styleConfig` prop, allowing you to customize the appearance of chart elements to match your design needs.
+
+### Style configuration options
+
+The `styleConfig` prop accepts an object with the following optional properties:
+
+- **`textColor`**: Color for text labels (y-axis labels). Defaults to `'text'`
+- **`foregroundBarColor`**: Color for the foreground/progress bar (used in stacked charts for `seriesOneValue`). Defaults to `'feedback-warning'`
+- **`backgroundBarColor`**: Color for the background/total bar (used for `seriesTwoValue` in stacked charts, or `seriesOneValue` in simple charts). Defaults to `'background-primary'`
+- **`seriesOneLabel`**: Color for the series one value label (first right label when stacked, or displayValue when not stacked). Defaults to `'text-secondary'`
+- **`seriesTwoLabel`**: Color for the series two value label (displayValue when stacked). Defaults to `'primary'`
+
+All color values should be valid color tokens from the Gamut design system. When customizing colors, ensure they maintain at least a 3:1 contrast ratio with the background for accessibility.
+
+### Default values
+
+If `styleConfig` is not provided, BarChart uses these default colors:
+
+```typescript
+{
+  textColor: 'text',
+  foregroundBarColor: 'feedback-warning',
+  backgroundBarColor: 'background-primary',
+  seriesOneLabel: 'text-secondary',
+  seriesTwoLabel: 'primary',
+}
+```
+
+### Example
+
+<Canvas of={BarChartStories.CustomStyles} />
+
+## Custom scale
+
+BarChart allows you to customize the x-axis scale interval using the `xScale` prop, which controls the spacing and granularity of scale markers along the horizontal axis.
+
+### Scale configuration
+
+The `xScale` prop determines the interval between scale markers on the x-axis. By default, BarChart automatically calculates an appropriate scale interval based on the `minRange` and `maxRange` values. However, you can override this with a custom interval to achieve more granular or specific scale markings.
+
+**When to use custom scale:**
+
+- When you need specific scale intervals (e.g., increments of 250, 500, or 1000)
+- When the automatic scale calculation doesn't provide the desired granularity
+- When you want to match scale intervals across multiple charts for consistency
+- When you need scale markers at specific values for better data interpretation
+
+**How it works:**
+
+The `xScale` value represents the interval between consecutive scale markers. For example:
+
+- `xScale: 250` creates markers at 0, 250, 500, 750, 1000, etc.
+- `xScale: 500` creates markers at 0, 500, 1000, 1500, 2000, etc.
+
+The number of tick marks is automatically calculated as: `Math.ceil((maxRange - minRange) / xScale) + 1`
+
+### Example
+
+<Canvas of={BarChartStories.CustomScale} />
 
 ## Accessibility considerations
 
