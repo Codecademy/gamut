@@ -101,13 +101,13 @@ export type PopoverProps = PopoverBaseProps &
     targetRef: React.RefObject<Pick<
       HTMLDivElement,
       'getBoundingClientRect' | 'contains'
-    > | null>;
+    >>;
 
     /**
      * The PopoverContainer which contents will be rendered into.
      */
     popoverContainerRef?:
-      | React.RefObject<HTMLDivElement | null>
+      | React.RefObject<HTMLDivElement>
       | React.RefCallback<HTMLDivElement>;
 
     /**

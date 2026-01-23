@@ -6,7 +6,7 @@ export const useScrollingParentsEffect = (
   targetRef: React.RefObject<Pick<
     HTMLDivElement,
     'getBoundingClientRect' | 'contains'
-  > | null>,
+  >>,
   setTargetRect: (rect: DOMRect | undefined) => void
 ) => {
   useEffect(() => {
@@ -43,7 +43,7 @@ export const useResizingParentEffect = (
   targetRef: React.RefObject<Pick<
     HTMLDivElement,
     'getBoundingClientRect' | 'contains'
-  > | null>,
+  >>,
   setTargetRect: (rect: DOMRect | undefined) => void
 ) => {
   useEffect(() => {
@@ -72,7 +72,7 @@ export const useResizingParentEffect = (
  * Returns an empty array if the target element is not available.
  */
 export const useScrollingParents = (
-  targetRef: React.RefObject<HTMLElement | null>
+  targetRef: React.RefObject<HTMLElement>
 ): HTMLElement[] => {
   return useMemo(() => {
     if (!targetRef.current) {

@@ -79,9 +79,9 @@ export type TipPlacementComponentProps = Omit<
   id?: string;
   isTipHidden?: boolean;
   popoverContentRef?:
-    | React.RefObject<HTMLDivElement | null>
+    | React.RefObject<HTMLDivElement>
     | ((node: HTMLDivElement | null) => void);
   type: 'info' | 'tool' | 'preview';
-  wrapperRef?: React.RefObject<HTMLDivElement | null>;
+  wrapperRef?: React.RefObject<HTMLDivElement>;
   zIndex?: number;
 } & React.PropsWithChildren;
