@@ -52,13 +52,14 @@ jobs:
           JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
       - name: Upload test results
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
-        if: always()
+        if: ${{ !cancelled() }}
         with:
           name: test-results
           path: /tmp/test-results
           retention-days: 30
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.2.2
+        if: ${{ !cancelled() }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: Codecademy/gamut
@@ -68,6 +69,7 @@ jobs:
           report_type: coverage
       - name: Upload test results to Codecov
         uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.2.2
+        if: ${{ !cancelled() }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: Codecademy/gamut
