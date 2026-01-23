@@ -3,6 +3,9 @@ name: Test Suite
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
 
 env:
   NODE_VERSION: '22.13.1'
@@ -27,16 +30,24 @@ jobs:
       - uses: ./.github/actions/yarn
       - name: Fetch main branch
         run: git fetch origin main:main
+        if: github.event_name == 'pull_request'
       - name: Ensure workflow is associated with a pull request
         uses: ./.github/actions/validate-pr-context
+        if: github.event_name == 'pull_request'
       - name: Skip build from automated commit
         uses: ./.github/actions/skip-automated-commits
+        if: github.event_name == 'pull_request'
         with:
           ignore-commit-message: ${{ env.IGNORE_COMMIT_MESSAGE }}
       - name: Build All Packages
         run: yarn build
       - name: Run test suite on affected projects
-        run: npx nx affected --target=test --parallel=4 --ci --coverage --runInBand
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            npx nx affected --target=test --parallel=4 --ci --coverage --runInBand
+          else
+            npx nx run-many --target=test --all --parallel=4 --ci --coverage --runInBand
+          fi
         env:
           JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
           JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
@@ -53,5 +64,5 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: Codecademy/gamut
           directory: /tmp/test-results/jest
-          flags: pr-coverage
+          flags: ${{ github.event_name == 'pull_request' && 'pull-request' || 'main' }}
           fail_ci_if_error: false
