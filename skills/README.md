@@ -87,6 +87,44 @@ Learn how to build forms including:
 - Accessibility best practices
 - Integration with react-hook-form
 
+### 🖼️ gamut-illustrations
+
+**Use brand illustrations for empty states, onboarding, and visual storytelling**
+
+Learn how to implement illustrations including:
+
+- 70+ available brand illustrations
+- Illustration categories (success, learning, error, etc.)
+- Sizing and styling illustrations
+- Empty state and onboarding patterns
+- Accessibility considerations
+
+### 🎭 gamut-patterns
+
+**Use background patterns and visual textures to enhance your UI designs**
+
+Learn how to use patterns including:
+
+- 28 pattern variations (9 styles × 3 densities + Herringbone)
+- Pattern styles (Dots, Waves, Grid, Lines, Stripes, etc.)
+- Density levels (Dense, Regular, Loose)
+- Background texture and visual interest
+- Performance and accessibility best practices
+
+### 🏛️ gamut-advanced-components
+
+**Advanced component patterns, composition techniques, and performance optimization**
+
+Learn advanced techniques including:
+
+- Building custom reusable components
+- Compound component patterns
+- Performance optimization (memoization, lazy loading)
+- Advanced styling and theming
+- Complex form patterns
+- Accessibility-first implementation
+- Debugging and testing strategies
+
 ## Usage
 
 ### For OpenCode Users

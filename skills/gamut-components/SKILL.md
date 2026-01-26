@@ -271,6 +271,146 @@ import { Menu } from '@codecademy/gamut';
 </Menu>;
 ```
 
+## Recent component additions
+
+The following components were recently added to Gamut:
+
+### Card
+
+A flexible container component for displaying grouped content with optional interactive states:
+
+```tsx
+import { Card } from '@codecademy/gamut';
+
+<Card p={24} isInteractive>
+  <Text variant="title-md">Card Title</Text>
+  <Text variant="p-base">Card content goes here</Text>
+</Card>;
+```
+
+**Key props:**
+
+- `isInteractive: boolean` - Adds hover and focus states for clickable cards
+- Standard Box props (padding, background, border, etc.)
+
+### FadeInSlideOut
+
+An animation component that fades in and slides out content with smooth transitions:
+
+```tsx
+import { FadeInSlideOut } from '@codecademy/gamut';
+
+<FadeInSlideOut isVisible={isVisible} slideDirection="up">
+  <Box>Animated content</Box>
+</FadeInSlideOut>;
+```
+
+**Key props:**
+
+- `isVisible: boolean` - Controls visibility and animation state
+- `slideDirection: 'up' | 'down' | 'left' | 'right'` - Direction of slide animation
+
+### DataList
+
+A semantic component for displaying key-value pairs or definition lists:
+
+```tsx
+import { DataList } from '@codecademy/gamut';
+
+<DataList
+  data={[
+    { key: 'Status', value: 'Active' },
+    { key: 'Created', value: '2024-01-15' },
+  ]}
+/>;
+```
+
+Perfect for displaying metadata, specifications, or structured information.
+
+### DataTable
+
+A comprehensive table component with sorting, filtering, and pagination support:
+
+```tsx
+import { DataTable } from '@codecademy/gamut';
+
+<DataTable
+  columns={[
+    { key: 'name', label: 'Name' },
+    { key: 'email', label: 'Email' },
+  ]}
+  rows={data}
+/>;
+```
+
+**Key features:**
+
+- Column definitions with custom rendering
+- Sortable columns
+- Filterable content
+- Pagination support
+
+### Video
+
+Embeds video content with proper accessibility and responsive sizing:
+
+```tsx
+import { Video } from '@codecademy/gamut';
+
+<Video src="https://example.com/video.mp4" title="Demo video" />;
+```
+
+**Key props:**
+
+- `src: string` - Video source URL or embed URL
+- `title: string` - Accessible title for the video
+- `controls: boolean` - Show native video controls (default: true)
+- `autoplay: boolean` - Auto-play video (default: false)
+
+### FeatureShimmer
+
+A loading placeholder component with shimmer animation for content that's loading:
+
+```tsx
+import { FeatureShimmer } from '@codecademy/gamut';
+
+<FeatureShimmer width={300} height={200} borderRadius="lg" />;
+```
+
+Used while content is loading to provide visual feedback.
+
+### Tabs enhancements
+
+The Tabs component now supports the `shouldForceMount` prop:
+
+```tsx
+import { Tabs } from '@codecademy/gamut';
+
+<Tabs shouldForceMount>
+  <Tabs.Tab label="Tab 1">Content 1</Tabs.Tab>
+  <Tabs.Tab label="Tab 2">Content 2</Tabs.Tab>
+</Tabs>;
+```
+
+**Key props:**
+
+- `shouldForceMount: boolean` - Keeps all tab content mounted in the DOM (useful for performance-critical content or animations)
+
+### InfoTip enhancements
+
+The InfoTip component now supports escape key handling:
+
+```tsx
+import { InfoTip } from '@codecademy/gamut';
+
+<InfoTip>
+  <InfoTip.Trigger>Hover me</InfoTip.Trigger>
+  <InfoTip.Content>Helpful information. Press ESC to close.</InfoTip.Content>
+</InfoTip>;
+```
+
+The component now closes when the user presses the Escape key, improving keyboard accessibility.
+
 ## Dependencies
 
 All Gamut components require:
