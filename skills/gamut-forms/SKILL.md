@@ -1,35 +1,33 @@
 ---
 name: gamut-forms
-description: Build accessible forms using Gamut's GridForm components
+description: Build accessible forms with Gamut GridForm components
 license: MIT
 compatibility: opencode
 metadata:
   package: '@codecademy/gamut'
   audience: developers
-  type: forms
 ---
 
-## What I do
+## Overview
 
-I help you build forms using Gamut's GridForm system by providing guidance on:
+GridForm provides structured, accessible form layouts. This skill covers:
 
-- Creating structured forms with GridForm
-- Using form input components
-- Form validation and error handling
-- Accessibility best practices for forms
-- Form layout and styling
-- Integration with form libraries like react-hook-form
+- Form structure and field types
+- Validation patterns
+- Error handling
+- Accessibility best practices
+- Integration with form libraries
+- Layout and styling
 
-## When to use me
+## Storybook Documentation
 
-Use this skill when you need to:
+Explore GridForm interactively in Storybook:
 
-- Build forms in a Gamut-based application
-- Create accessible and well-structured forms
-- Implement form validation
-- Use different input types (text, checkbox, radio, file, etc.)
-- Handle form submission and error states
-- Integrate with form state management
+- **[GridForm Overview](https://gamut.codecademy.com/?path=/docs/organisms-gridform-about--docs)** - Introduction and basic usage
+- **[Field Types](https://gamut.codecademy.com/?path=/docs/organisms-gridform-fields--docs)** - All available field types
+- **[Form Layout](https://gamut.codecademy.com/?path=/docs/organisms-gridform-layout--docs)** - Layout options and sections
+- **[Validation](https://gamut.codecademy.com/?path=/docs/organisms-gridform-validation--docs)** - Validation patterns and examples
+- **[Form States](https://gamut.codecademy.com/?path=/docs/organisms-gridform-states--docs)** - Loading, disabled, and error states
 
 ## Key concepts
 

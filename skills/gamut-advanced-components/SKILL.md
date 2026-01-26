@@ -1,37 +1,22 @@
 ---
 name: gamut-advanced-components
-description: Advanced component patterns, composition techniques, and performance optimization
+description: Advanced patterns, composition, and performance optimization with Gamut
 license: MIT
 compatibility: opencode
 metadata:
   package: '@codecademy/gamut'
-  audience: advanced developers, architects
-  type: advanced-guide
+  audience: advanced-developers
 ---
 
-## What I do
+## Overview
 
-I help you build advanced component patterns and optimize Gamut implementations by providing guidance on:
+This skill covers advanced techniques for building with Gamut components. It helps you:
 
-- Composing complex component hierarchies
-- Creating reusable component abstractions
-- Performance optimization techniques
-- Advanced styling and theming patterns
-- Custom component extension strategies
-- Accessibility-first advanced patterns
-
-## When to use me
-
-Use this skill when you need to:
-
-- Build complex, multi-component UI systems
-- Create reusable component abstractions for your application
-- Optimize performance in component-heavy applications
-- Implement custom component extensions or wrappers
-- Understand advanced styling techniques
-- Apply advanced accessibility patterns
-- Handle complex state management with forms
-- Debug component behavior and interactions
+- Build reusable custom components
+- Optimize performance (memoization, lazy loading)
+- Implement advanced styling and theming
+- Create compound component patterns
+- Debug and test complex implementations
 
 ## Advanced component composition
 

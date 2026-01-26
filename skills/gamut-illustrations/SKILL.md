@@ -1,34 +1,21 @@
 ---
 name: gamut-illustrations
-description: Use brand illustrations for empty states, onboarding, and visual storytelling
+description: Implement Gamut brand illustrations for empty states and onboarding
 license: MIT
 compatibility: opencode
 metadata:
   package: '@codecademy/gamut-illustrations'
   audience: developers
-  type: component-library
 ---
 
-## What I do
+## Overview
 
-I help you use Gamut illustrations effectively by providing guidance on:
+Gamut provides 70+ brand illustrations as React components for empty states, error pages, onboarding, and visual storytelling. This skill helps you:
 
-- Selecting the right illustration for your use case
-- Implementing illustration components in React
-- Customizing illustration sizing and styling
-- Using illustrations for empty states and onboarding
-- Following Codecademy's brand visual language
-
-## When to use me
-
-Use this skill when you need to:
-
-- Add illustrations to empty states, error pages, or loading screens
-- Implement onboarding visual storytelling
-- Display product feature highlights
-- Create engaging user experiences with brand-consistent artwork
-- Understand the available illustration library
-- Customize illustration appearance and sizing
+- Find and import the right illustration
+- Size and customize illustrations
+- Implement accessible illustration patterns
+- Follow Codecademy's visual language
 
 ## Available illustrations
 

@@ -1,35 +1,23 @@
 ---
 name: gamut-theming
-description: Create and customize themes in Gamut design system
+description: Create and customize themes in the Gamut design system
 license: MIT
 compatibility: opencode
 metadata:
   package: '@codecademy/gamut-styles'
   audience: developers
-  type: theming
 ---
 
-## What I do
+## Overview
 
-I help you create and customize themes in Gamut by providing guidance on:
+Gamut provides built-in themes and the tools to create custom ones. This skill covers:
 
-- Understanding the Gamut theme structure
-- Choosing the right theme for your application
+- Available pre-built themes
+- Theme structure and tokens
 - Creating custom themes
 - Extending existing themes
-- Managing color modes (light/dark)
-- Using theme values in components
-
-## When to use me
-
-Use this skill when you need to:
-
-- Set up theming for a Gamut-based application
-- Choose between available Gamut themes
-- Create a custom theme for your product
-- Extend or modify an existing theme
-- Implement dark mode or other color modes
-- Access theme values in styled components
+- Color modes (light/dark)
+- Accessing theme values
 
 ## Key concepts
 

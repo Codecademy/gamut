@@ -1,37 +1,32 @@
 ---
 name: gamut-styling
-description: Apply Gamut styles, themes, and design tokens using gamut-styles package
+description: Style applications with Gamut design tokens and themes
 license: MIT
 compatibility: opencode
 metadata:
   package: '@codecademy/gamut-styles'
   audience: developers
-  type: styling-system
 ---
 
-## What I do
+## Overview
 
-I help you style applications using the Gamut styling system by providing guidance on:
+Gamut's styling system provides design tokens, theming, and responsive utilities. This skill covers:
 
-- Setting up GamutProvider and theming
-- Using design tokens (colors, spacing, typography, etc.)
-- Accessing theme values via variance system
-- Applying global styles (Reboot, Typography)
-- Using SCSS utilities and mixins
-- Implementing responsive styles
-- Managing color modes (light/dark)
+- GamutProvider setup and theming
+- Design tokens (colors, spacing, typography)
+- Variance system for styled components
+- Responsive styles and breakpoints
+- Color modes (light/dark)
+- Global styles and SCSS utilities
 
-## When to use me
+## Storybook Documentation
 
-Use this skill when you need to:
+Explore the Gamut styling system in Storybook:
 
-- Set up Gamut styles in an application
-- Apply consistent design tokens from the Codecademy design system
-- Use theme colors, spacing, and typography values
-- Create styled components with Emotion
-- Apply responsive styles
-- Implement dark mode or color mode switching
-- Use SCSS utilities and functions
+- **[Color System](https://gamut.codecademy.com/?path=/docs/foundations-theme--colors)** - All theme colors and swatches
+- **[Spacing Scale](https://gamut.codecademy.com/?path=/docs/foundations-system-props--docs#space)** - Spacing values and usage
+- **[Typography](https://gamut.codecademy.com/?path=/docs/foundations-theme--typography)** - Font sizes, weights, and families
+- **[Responsive Properties](https://gamut.codecademy.com/?path=/docs/foundations-system-responsive-properties--page)** - Breakpoints and responsive styling
 
 ## Key concepts
 

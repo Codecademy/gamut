@@ -1,33 +1,22 @@
 ---
 name: gamut-quickstart
-description: Get started with Gamut design system in your application
+description: Set up Gamut design system in your React application
 license: MIT
 compatibility: opencode
 metadata:
   package: '@codecademy/gamut-kit'
   audience: developers
-  type: quickstart
 ---
 
-## What I do
+## Overview
 
-I help you get started with the Gamut design system by providing guidance on:
+Get Gamut running in your React app. This skill covers:
 
-- Installing Gamut packages in your application
-- Setting up the required providers and configuration
-- Creating your first components with Gamut
-- Understanding the package architecture
-- Choosing the right packages for your needs
-
-## When to use me
-
-Use this skill when you need to:
-
-- Set up Gamut in a new React application
-- Understand the Gamut package ecosystem
-- Get started with the basic setup and configuration
-- Make decisions about which Gamut packages to use
-- Troubleshoot initial setup issues
+- Installation (gamut-kit vs individual packages)
+- Setting up GamutProvider
+- Creating your first components
+- Framework integration (Next.js, Vite, CRA)
+- Troubleshooting setup issues
 
 ## Quick Start
 

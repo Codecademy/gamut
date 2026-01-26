@@ -1,37 +1,22 @@
 ---
 name: gamut-components
-description: Use Gamut React components correctly with proper props and patterns
+description: Build UIs with Gamut React components, layouts, and patterns
 license: MIT
 compatibility: opencode
 metadata:
   package: '@codecademy/gamut'
   audience: developers
-  type: component-library
 ---
 
-## What I do
+## Overview
 
-I help you use Gamut components correctly by providing guidance on:
+Gamut's component library covers layouts, typography, interactive components, and more. This skill helps you:
 
-- Component selection and usage patterns
-- Prop interfaces and TypeScript types
-- Layout components (Box, FlexBox, GridBox)
-- Typography components (Text)
-- Interactive components (Tabs, Disclosure, Drawer, Flyout, Menu)
-- Form components (GridForm)
-- Navigation components (Anchor, Breadcrumbs, SkipToContent)
-- Utility components (Badge, Tag, Coachmark, Overlay, PopoverContainer)
-
-## When to use me
-
-Use this skill when you need to:
-
-- Implement UI components from the Gamut design system
-- Understand which component to use for a specific use case
-- Access component props and TypeScript interfaces
-- Follow Codecademy's component patterns and best practices
-- Build layouts using the Box system
-- Implement accessible interactive components
+- Select and use components correctly
+- Access props and TypeScript types
+- Build layouts with the Box system
+- Implement interactive and accessible components
+- Follow Gamut patterns and best practices
 
 ## Storybook documentation
 

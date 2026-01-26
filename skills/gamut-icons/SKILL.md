@@ -1,33 +1,22 @@
 ---
 name: gamut-icons
-description: Use SVG icons from the Gamut icon library correctly
+description: Use 300+ icons from the Gamut icon library
 license: MIT
 compatibility: opencode
 metadata:
   package: '@codecademy/gamut-icons'
   audience: developers
-  type: icon-library
 ---
 
-## What I do
+## Overview
 
-I help you use icons from the Gamut icon library by providing guidance on:
+Gamut provides 300+ SVG icon components. This skill covers:
 
-- Finding and using available icons
-- Icon component props and customization
+- Finding and importing icons
 - Sizing and coloring icons
-- Accessibility best practices for icons
+- Icon props and customization
+- Accessibility best practices
 - Icon naming conventions
-
-## When to use me
-
-Use this skill when you need to:
-
-- Add icons to your UI from the Gamut icon library
-- Understand which icon to use for a specific purpose
-- Customize icon size, color, and other properties
-- Ensure icons are accessible
-- Find the correct icon component name
 
 ## Key concepts
 

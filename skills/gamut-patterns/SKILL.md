@@ -1,34 +1,21 @@
 ---
 name: gamut-patterns
-description: Use background patterns and visual textures to enhance your UI designs
+description: Add visual texture with Gamut background patterns
 license: MIT
 compatibility: opencode
 metadata:
   package: '@codecademy/gamut-patterns'
-  audience: designers, developers
-  type: component-library
+  audience: developers
 ---
 
-## What I do
+## Overview
 
-I help you use Gamut patterns effectively by providing guidance on:
+Gamut patterns are SVG background components that add visual texture and depth to your UI. This skill helps you:
 
-- Selecting the right background pattern for your design
-- Implementing pattern components in React
-- Customizing pattern density and styling
-- Using patterns to add visual interest and depth
-- Following Codecademy's design system patterns
-
-## When to use me
-
-Use this skill when you need to:
-
-- Add visual texture and depth to backgrounds
-- Create visual interest in sections or components
-- Implement brand-consistent pattern designs
-- Understand the available pattern library
-- Customize pattern appearance and sizing
-- Enhance empty states or hero sections with patterns
+- Choose from 28 pattern variations (9 styles in 3 densities)
+- Layer patterns as backgrounds
+- Customize pattern appearance
+- Follow density best practices
 
 ## Available patterns
 
