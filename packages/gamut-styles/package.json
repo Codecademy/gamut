@@ -4,7 +4,7 @@
   "version": "17.11.0",
   "author": "Jake Hiller <jake@codecademy.com>",
   "dependencies": {
-    "@codecademy/variance": "0.25.0",
+    "@codecademy/variance": "0.1.0",
     "@emotion/is-prop-valid": "^1.1.0",
     "polished": "^4.1.2"
   },
