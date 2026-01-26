@@ -1,6 +1,6 @@
 import { Canvas, Controls, Meta } from '@storybook/blocks';
 
-import { ComponentHeader } from '~styleguide/blocks';
+import { ComponentHeader, LinkTo } from '~styleguide/blocks';
 
 import * as CheckboxStories from './Checkbox.stories';
 
@@ -132,6 +132,12 @@ If you need to checkboxes to fit into a smaller space, you can use our `tight` s
 To ensure our `Checkboxes` are accessible, we require an `aria-label` be added if a `ReactNode` is set as the label.
 
 <Canvas of={CheckboxStories.LabelsAsReactNodes} />
+
+## InfoTip
+
+You can add an <LinkTo id="Molecules/Tips/InfoTip">`InfoTip`</LinkTo> to a Checkbox by passing the `infotip` prop. The InfoTip button is automatically labeled by the checkbox label for accessibility. To override this behavior, provide `ariaLabel` or `ariaLabelledby` in the infotip props.
+
+<Canvas of={CheckboxStories.InfoTip} />
 
 ## Playground
 

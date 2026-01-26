@@ -1,15 +1,15 @@
 import { states, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { HTMLAttributes, useId } from 'react';
+import { HTMLAttributes } from 'react';
 import * as React from 'react';
 
 import { FlexBox } from '../..';
-import { InfoTip, InfoTipProps } from '../../Tip/InfoTip';
+import { InfoTip } from '../../Tip/InfoTip';
 import {
-  createInfoTipProps,
   InfoTipSubComponentProps,
-} from '../../Tip/InfoTip/types';
+  useInfotipProps,
+} from '../../Tip/InfoTip/type-utils';
 import { Text } from '../../Typography/Text';
 import { formBaseStyles, formFieldTextDisabledStyles } from '../styles';
 import { BaseInputProps } from '../types';
@@ -66,13 +66,8 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   size,
   ...rest
 }) => {
-  const labelId = useId();
-  const { infotipProps, shouldLabelInfoTip } = infotip
-    ? createInfoTipProps(infotip, labelId)
-    : {
-        infotipProps: undefined as InfoTipProps | undefined,
-        shouldLabelInfoTip: false,
-      };
+  const { infotipProps, labelId, shouldLabelInfoTip } =
+    useInfotipProps(infotip);
 
   return (
     <FlexBox justifyContent="space-between" mb={4}>

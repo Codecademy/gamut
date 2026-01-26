@@ -1,21 +1,21 @@
 import { screenReaderOnly } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { forwardRef, InputHTMLAttributes, ReactNode, useId } from 'react';
+import { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 import * as React from 'react';
 
 import { FlexBox } from '../../Box';
-import { InfoTip, InfoTipProps } from '../../Tip/InfoTip';
+import { InfoTip } from '../../Tip/InfoTip';
 import {
-  createInfoTipProps,
   InfoTipSubComponentProps,
-} from '../../Tip/InfoTip/types';
+  useInfotipProps,
+} from '../../Tip/InfoTip/type-utils';
 import {
   conditionalRadioInputStyles,
   conditionalRadioLabelStyles,
+  InputWrapper,
   radioInput,
   radioLabel,
-  radioWrapper,
 } from '../styles';
 import { BaseInputProps } from '../types';
 
@@ -46,7 +46,6 @@ export interface RadioElementProps
   extends RadioProps,
     StyleProps<typeof conditionalRadioInputStyles> {}
 
-const RadioWrapper = styled.div(radioWrapper);
 const RadioLabel = styled.label<RadioElementProps>(
   radioLabel,
   conditionalRadioLabelStyles
@@ -82,16 +81,11 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   ) => {
     const inputId = id ? `${htmlFor}-${id}` : htmlFor;
     const styleState = conditionalStyleState(error, disabled);
-    const labelId = useId();
-    const { infotipProps, shouldLabelInfoTip } = infotip
-      ? createInfoTipProps(infotip, labelId)
-      : {
-          infotipProps: undefined as InfoTipProps | undefined,
-          shouldLabelInfoTip: false,
-        };
+    const { infotipProps, labelId, shouldLabelInfoTip } =
+      useInfotipProps(infotip);
 
     return (
-      <RadioWrapper className={className}>
+      <InputWrapper className={className}>
         <RadioInput
           checked={checked}
           disabled={disabled}
@@ -118,7 +112,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
             <InfoTip {...infotipProps} />
           </FlexBox>
         )}
-      </RadioWrapper>
+      </InputWrapper>
     );
   }
 );

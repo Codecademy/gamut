@@ -1,3 +1,5 @@
+import { useId } from 'react';
+
 import type { InfoTipBaseProps, InfoTipProps } from './index';
 
 type InfoTipAriaLabel = InfoTipBaseProps & {
@@ -71,4 +73,23 @@ export const createInfoTipProps = (
     } as InfoTipProps,
     shouldLabelInfoTip: false,
   };
+};
+
+/**
+ * Hook to handle infotip props and accessibility labeling.
+ * Extracts the common pattern used by Radio, Checkbox, and FormGroupLabel components.
+ *
+ * @param infotip - Optional infotip subcomponent props
+ * @returns Object containing infotipProps, labelId, and shouldLabelInfoTip flag
+ */
+export const useInfotipProps = (infotip?: InfoTipSubComponentProps) => {
+  const labelId = useId();
+  const { infotipProps, shouldLabelInfoTip } = infotip
+    ? createInfoTipProps(infotip, labelId)
+    : {
+        infotipProps: undefined as InfoTipProps | undefined,
+        shouldLabelInfoTip: false,
+      };
+
+  return { infotipProps, labelId, shouldLabelInfoTip };
 };
