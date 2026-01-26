@@ -6,9 +6,9 @@
   "dependencies": {
     "@codecademy/gamut-icons": "9.54.0",
     "@codecademy/gamut-illustrations": "0.58.0",
-    "@codecademy/gamut-patterns": "0.10.19",
-    "@codecademy/gamut-styles": "17.11.0",
-    "@codecademy/variance": "0.25.0",
+    "@codecademy/gamut-patterns": "0.1.0",
+    "@codecademy/gamut-styles": "1.1.3",
+    "@codecademy/variance": "0.1.0",
     "@types/marked": "^4.0.8",
     "@vidstack/react": "^1.12.12",
     "classnames": "^2.2.5",
