@@ -120,6 +120,13 @@ Use theme color tokens:
 <InfoIcon color="info" />
 ```
 
+### Icon Count
+
+Gamut provides **300+ icons** across the library:
+
+- **333 regular icons** in the standard icon set
+- **33 mini icons** for smaller UI elements
+
 ### Icon Naming Convention
 
 Icon names follow this pattern:
@@ -248,6 +255,13 @@ Icons are organized by purpose:
 - `SmileyStarEyesIcon`
 - `ThumbsUpFilledIcon`
 
+**Recent Additions (2025):**
+
+- `CoachingIcon` - Coaching/mentorship
+- `AdminIcon` - Administration
+- `HierarchyIcon` - Organizational hierarchy
+- `SkillsoftIcon` - Skillsoft branding
+
 **Special:**
 
 - `AiChatSparkIcon`
@@ -371,6 +385,12 @@ Always consider accessibility when using icons:
 />
 ```
 
+## Storybook Documentation
+
+Browse all available icons interactively in Storybook:
+
+- **[Icon Gallery](https://gamut.codecademy.com/?path=/docs/atoms-icon--docs)** - View all icons with search and filtering
+
 ## Dependencies
 
 The package requires:
@@ -387,7 +407,7 @@ yarn add @codecademy/gamut-icons
 
 ## Finding icons
 
-All available icons are located in `packages/gamut-icons/src/svg/regular/` as SVG files. The component name is the SVG filename converted to PascalCase with "Icon" suffix.
+All available icons are located in `packages/gamut-icons/src/svg/regular/` (regular icons) and `packages/gamut-icons/src/svg/mini/` (mini icons) as SVG files. The component name is the SVG filename converted to PascalCase with "Icon" suffix.
 
 Example:
 

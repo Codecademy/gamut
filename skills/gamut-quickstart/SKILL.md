@@ -134,20 +134,22 @@ export function Welcome() {
 **@codecademy/gamut-icons**
 
 - SVG icon components
-- 100+ icons for common use cases
+- 300+ icons for common use cases
 - Accessible icon components with proper ARIA support
 
 ### Supporting Packages
 
 **@codecademy/gamut-patterns**
 
-- Higher-level composition patterns
-- Common UI patterns and layouts
+- Background pattern components
+- 28 pattern variations (9 styles × 3 densities + Herringbone)
+- Visual texture and decoration for interfaces
 
 **@codecademy/gamut-illustrations**
 
-- Illustration assets
-- Brand illustrations for empty states, onboarding, etc.
+- Illustration components for empty states and onboarding
+- 70+ SVG illustrations organized by category
+- Consistent brand artwork across products
 
 **@codecademy/variance**
 

@@ -52,7 +52,7 @@ import {
 - `coreTheme`: General Codecademy applications, marketing sites
 - `platformTheme`: Main learning platform, learner-facing features
 - `adminTheme`: Internal tools, admin panels
-- `lxStudioTheme`: Content creation tools
+- `lxStudioTheme`: Content creation tools (uses Hanken Grotesk font)
 - `percipioTheme`: Percipio product integration
 
 ### Theme Structure
@@ -110,7 +110,7 @@ interface Theme {
 
   // Typography
   fontFamilies: {
-    base: string;       // Apercu
+    base: string;       // Apercu (core); Hanken Grotesk (lxStudio)
     monospace: string;  // Suisse Int'l Mono
     accent: string;     // Nunito Sans
   };
@@ -171,6 +171,8 @@ function App() {
   return <GamutProvider theme={coreTheme}>{/* Your app */}</GamutProvider>;
 }
 ```
+
+**[View all themes in Storybook →](https://gamut.codecademy.com/?path=/docs/foundations-theme--colors)**
 
 ### Creating a Custom Theme
 

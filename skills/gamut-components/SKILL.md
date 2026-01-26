@@ -33,6 +33,16 @@ Use this skill when you need to:
 - Build layouts using the Box system
 - Implement accessible interactive components
 
+## Storybook documentation
+
+View live examples and interactive documentation:
+
+- **Box System**: https://gamut.codecademy.com/?path=/docs/layouts-box--docs
+- **Text Typography**: https://gamut.codecademy.com/?path=/docs/typography-text--docs
+- **Tabs**: https://gamut.codecademy.com/?path=/docs/organisms-tabs--docs
+- **Disclosure**: https://gamut.codecademy.com/?path=/docs/molecules-disclosure--docs
+- **All Components**: https://gamut.codecademy.com/
+
 ## Key concepts
 
 ### Box System

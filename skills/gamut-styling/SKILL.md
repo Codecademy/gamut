@@ -35,6 +35,15 @@ Use this skill when you need to:
 
 ## Key concepts
 
+## Storybook Documentation
+
+Explore the Gamut styling system in Storybook:
+
+- **[Color System](https://gamut.codecademy.com/?path=/docs/foundations-theme--colors)** - All theme colors and swatches
+- **[Spacing Scale](https://gamut.codecademy.com/?path=/docs/foundations-system-props--docs#space)** - Spacing values and usage
+- **[Typography](https://gamut.codecademy.com/?path=/docs/foundations-theme--typography)** - Font sizes, weights, and families
+- **[Responsive Properties](https://gamut.codecademy.com/?path=/docs/foundations-system-responsive-properties--page)** - Breakpoints and responsive styling
+
 ### GamutProvider Setup
 
 Wrap your application with GamutProvider to enable theming and global styles:
@@ -88,6 +97,20 @@ const StyledBox = styled.div(system.space, system.color, system.layout);
   width={1} // width: 100%
 />;
 ```
+
+### Important Constraint
+
+**Inline `style` prop is disabled** on Gamut components. Always use variance system props instead:
+
+```tsx
+// ❌ Don't do this
+<Box style={{ padding: '16px', background: 'blue' }}>...</Box>
+
+// ✅ Do this instead
+<Box p={16} bg="primary">...</Box>
+```
+
+This ensures consistent styling and better TypeScript support.
 
 ### Color System
 
