@@ -47,15 +47,12 @@ jobs:
           else
             npx nx run-many --target=test --all --parallel=4 --ci --coverage --runInBand
           fi
-        env:
-          JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
-          JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
       - name: Upload test results
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         if: ${{ !cancelled() }}
         with:
           name: test-results
-          path: /tmp/test-results
+          path: ./coverage
           retention-days: 30
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.2.2
@@ -65,7 +62,7 @@ jobs:
           slug: Codecademy/gamut
           flags: ${{ github.event_name == 'pull_request' && 'pull-request' || 'main' }}
           fail_ci_if_error: false
-          directory: /tmp/test-results/jest
+          directory: ./coverage
           report_type: coverage
       - name: Upload test results to Codecov
         uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.2.2
@@ -75,5 +72,5 @@ jobs:
           slug: Codecademy/gamut
           flags: ${{ github.event_name == 'pull_request' && 'pull-request' || 'main' }}
           fail_ci_if_error: false
-          directory: /tmp/test-results/junit
+          directory: ./coverage
           report_type: test_results
