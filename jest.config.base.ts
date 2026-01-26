@@ -17,7 +17,9 @@ const baseConfig = (packageName: string, overrides: Config): Config => {
     preset: '../../jest.preset.js',
     clearMocks: true,
     coverageDirectory: outputDirectory,
-    coverageReporters: process.env.CI ? ['clover', 'json', 'lcov', 'text'] : ['html', 'text'],
+    coverageReporters: process.env.CI
+      ? ['clover', 'json', 'lcov', 'text']
+      : ['html', 'text'],
     reporters: process.env.CI
       ? [
           'default',
@@ -34,7 +36,7 @@ const baseConfig = (packageName: string, overrides: Config): Config => {
     ...overrides,
     coveragePathIgnorePatterns: [
       ...COVERAGE_PATH_IGNORE_PATTERNS,
-      ...overrides.coveragePathIgnorePatterns ?? [],
+      ...(overrides.coveragePathIgnorePatterns ?? []),
     ],
   };
 };
