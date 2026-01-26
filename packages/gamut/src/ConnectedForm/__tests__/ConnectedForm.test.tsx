@@ -4,6 +4,7 @@ import { act, RenderResult, waitFor } from '@testing-library/react';
 
 import { InfoTipProps } from '../../Tip/InfoTip';
 import { createPromise } from '../../utils';
+import { createExternalLabel } from '../../Form/__tests__/testUtils';
 import {
   ConnectedForm,
   ConnectedFormGroup,
@@ -437,7 +438,9 @@ describe('ConnectedFormGroup infotip accessibility', () => {
     });
 
     view.getByRole('button', { name: ariaLabel });
-    expect(view.queryByRole('button', { name: new RegExp(label) })).toBeNull();
+    expect(
+      view.queryByRole('button', { name: `${label} (optional)` })
+    ).toBeNull();
   });
 
   it('automatically labels InfoTip by field label with ReactNode label', () => {
@@ -446,7 +449,7 @@ describe('ConnectedFormGroup infotip accessibility', () => {
       fieldLabel: <span>{label}</span>,
     });
 
-    view.getByRole('button', { name: new RegExp(label) });
+    view.getByRole('button', { name: `${label} (optional)` });
   });
 });
 

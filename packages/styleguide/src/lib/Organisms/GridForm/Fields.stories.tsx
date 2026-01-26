@@ -329,10 +329,6 @@ export const SweetContainer: Story = {
   },
 };
 
-/**
- * InfoTip buttons are automatically labelled by string field labels for accessibility.
- * Screen readers will announce "Field Label, button" when focusing the InfoTip.
- */
 export const InfoTipAutoLabelling: Story = {
   args: {
     fields: [
@@ -350,12 +346,6 @@ export const InfoTipAutoLabelling: Story = {
   },
 };
 
-/**
- * For ReactNode labels, the InfoTip is automatically labelled by the field label.
- * You can override this behavior by providing:
- * - `ariaLabel` - provides a custom accessible name
- * - `ariaLabelledby` - references another element on the page
- */
 export const InfoTipWithReactNodeLabel: Story = {
   render: (args) => (
     <>

@@ -4,6 +4,7 @@ import { act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Radio } from '../inputs/Radio';
+import { createExternalLabel } from './testUtils';
 
 const onChangeCallback = jest.fn();
 const testid = 'my-test-id';
@@ -98,11 +99,7 @@ describe('<Radio>', () => {
         infotip: { info, ariaLabelledby: externalLabelId },
       });
 
-      // Add external label element that the InfoTip references
-      const externalLabel = document.createElement('span');
-      externalLabel.id = externalLabelId;
-      externalLabel.textContent = externalLabelText;
-      view.container.appendChild(externalLabel);
+      createExternalLabel(view, externalLabelId, externalLabelText);
 
       view.getByRole('button', { name: externalLabelText });
       expect(

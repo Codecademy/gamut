@@ -361,10 +361,12 @@ describe('isElementVisible', () => {
   it('returns true as fallback when checkVisibility is not available', () => {
     const div = createTestElement('div');
 
-    // Remove checkVisibility if it exists
-    if ('checkVisibility' in div) {
-      delete (div as any).checkVisibility;
-    }
+    // Override checkVisibility to be undefined to test fallback behavior
+    Object.defineProperty(div, 'checkVisibility', {
+      value: undefined,
+      writable: true,
+      configurable: true,
+    });
 
     withTemporaryElement(div, document.body, () => {
       expect(isElementVisible(div)).toBe(true);
