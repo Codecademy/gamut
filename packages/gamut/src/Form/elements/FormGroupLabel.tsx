@@ -8,8 +8,8 @@ import { FlexBox } from '../..';
 import { InfoTip, InfoTipProps } from '../../Tip/InfoTip';
 import {
   createInfoTipProps,
-  InfoTipPropsWithoutAria,
-} from '../../Tip/InfoTip/utils';
+  InfoTipSubComponentProps,
+} from '../../Tip/InfoTip/types';
 import { Text } from '../../Typography/Text';
 import { formBaseStyles, formFieldTextDisabledStyles } from '../styles';
 import { BaseInputProps } from '../types';
@@ -45,7 +45,7 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
     /**
      * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
      */
-    infotip?: InfoTipPropsWithoutAria;
+    infotip?: InfoTipSubComponentProps;
     size?: 'small' | 'large';
     /**
      * Solo fields should always be required and have no optional/required text

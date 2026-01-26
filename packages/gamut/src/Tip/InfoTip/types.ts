@@ -1,19 +1,31 @@
-import type { InfoTipProps } from './index';
+import type { InfoTipBaseProps, InfoTipProps } from './index';
+
+type InfoTipAriaLabel = InfoTipBaseProps & {
+  ariaLabel?: string;
+  ariaLabelledby?: never;
+};
+
+type InfoTipAriaLabelledby = InfoTipBaseProps & {
+  ariaLabel?: never;
+  ariaLabelledby?: string;
+};
+
+type InfoTipPropsAriaWithFallback = InfoTipBaseProps & {
+  ariaLabel?: never;
+  ariaLabelledby?: never;
+};
 
 /**
  * InfoTip props that allow both ariaLabel and ariaLabelledby to be optional.
  * Used in components that automatically provide ariaLabelledby when neither is provided.
  */
-export type InfoTipPropsWithoutAria = Omit<
-  InfoTipProps,
-  'ariaLabel' | 'ariaLabelledby'
-> & {
-  ariaLabel?: string;
-  ariaLabelledby?: string;
-};
+export type InfoTipSubComponentProps =
+  | InfoTipAriaLabel
+  | InfoTipAriaLabelledby
+  | InfoTipPropsAriaWithFallback;
 
 export const createInfoTipProps = (
-  props: InfoTipPropsWithoutAria,
+  props: InfoTipSubComponentProps,
   fallbackAriaLabelledby?: string
 ): {
   infotipProps: InfoTipProps;

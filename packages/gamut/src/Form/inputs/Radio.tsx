@@ -8,8 +8,8 @@ import { FlexBox } from '../../Box';
 import { InfoTip, InfoTipProps } from '../../Tip/InfoTip';
 import {
   createInfoTipProps,
-  InfoTipPropsWithoutAria,
-} from '../../Tip/InfoTip/utils';
+  InfoTipSubComponentProps,
+} from '../../Tip/InfoTip/types';
 import {
   conditionalRadioInputStyles,
   conditionalRadioLabelStyles,
@@ -29,7 +29,7 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> &
      * The InfoTip button is automatically labelled by the radio label.
      * To override this behavior, provide `ariaLabel` or `ariaLabelledby`.
      */
-    infotip?: InfoTipPropsWithoutAria;
+    infotip?: InfoTipSubComponentProps;
     /**
      * A label for your Radio input - should not include infotips or other interactive elements
      */

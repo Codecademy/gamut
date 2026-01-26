@@ -7,7 +7,7 @@ import { FormError, FormGroup, FormGroupLabel, FormGroupProps } from '..';
 import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
-import { InfoTipPropsWithoutAria } from '../Tip/InfoTip/utils';
+import { InfoTipSubComponentProps } from '../Tip/InfoTip/types';
 import { ConnectedField, FieldProps, SubmitContextProps } from './types';
 import { getErrorMessage, useField } from './utils';
 
@@ -33,7 +33,7 @@ export interface ConnectedFormGroupBaseProps
    * automatically labelled by the field label. To override this behavior,
    * provide `ariaLabel` or `ariaLabelledby`.
    */
-  infotip?: InfoTipPropsWithoutAria;
+  infotip?: InfoTipSubComponentProps;
 }
 
 export interface ConnectedFormGroupProps<T extends ConnectedField>

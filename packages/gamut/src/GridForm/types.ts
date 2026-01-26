@@ -6,7 +6,7 @@ import { MinimalCheckboxProps } from '../ConnectedForm';
 import { CheckboxLabelUnion, TextAreaProps } from '../Form';
 import { CheckboxPaddingProps } from '../Form/types';
 import { ColumnProps } from '../Layout';
-import { InfoTipPropsWithoutAria } from '../Tip/InfoTip/utils';
+import { InfoTipSubComponentProps } from '../Tip/InfoTip/types';
 import { Text, TextProps } from '../Typography/Text';
 
 export interface BaseFormInputProps {
@@ -36,7 +36,7 @@ export type BaseFormField<Value> = {
    * automatically labelled by the field label. To override this behavior,
    * provide `ariaLabel` or `ariaLabelledby`.
    */
-  infotip?: InfoTipPropsWithoutAria;
+  infotip?: InfoTipSubComponentProps;
 
   isSoloField?: boolean;
   name: string;

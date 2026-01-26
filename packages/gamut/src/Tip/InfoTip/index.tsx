@@ -18,13 +18,12 @@ import {
 import { isFloatingElementOpen } from '../shared/utils';
 import { InfoTipButton } from './InfoTipButton';
 
-type InfoTipPropsWithAriaLabel = TipBaseProps & {
+/**
+ * Base props shared by all InfoTip variants.
+ * Contains all common props except the aria-* specific props.
+ */
+export type InfoTipBaseProps = TipBaseProps & {
   alignment?: TipBaseAlignment;
-  /**
-   * Accessible label for the InfoTip button. ariaLabel or ariaLabelledby should be provided for accessibility.
-   */
-  ariaLabel?: string;
-  ariaLabelledby?: never;
   /**
    * Accessible role description for the InfoTip button. Useful for translation.
    * @default "More information button"
@@ -37,23 +36,20 @@ type InfoTipPropsWithAriaLabel = TipBaseProps & {
   onClick?: (arg0: { isTipHidden: boolean }) => void;
 };
 
-type InfoTipPropsWithAriaLabelledby = TipBaseProps & {
-  alignment?: TipBaseAlignment;
+type InfoTipPropsWithAriaLabel = InfoTipBaseProps & {
+  /**
+   * Accessible label for the InfoTip button. ariaLabel or ariaLabelledby should be provided for accessibility.
+   */
+  ariaLabel?: string;
+  ariaLabelledby?: never;
+};
+
+type InfoTipPropsWithAriaLabelledby = InfoTipBaseProps & {
   ariaLabel?: never;
   /**
    * ID of an element that labels the InfoTip button.
    */
   ariaLabelledby?: string;
-  /**
-   * Accessible role description for the InfoTip button. Useful for translation.
-   * @default "More information button"
-   */
-  ariaRoleDescription?: string;
-  emphasis?: 'low' | 'high';
-  /**
-   * Called when the InfoTip button is clicked - the onClick function is called after the DOM updates and the tip is mounted.
-   */
-  onClick?: (arg0: { isTipHidden: boolean }) => void;
 };
 
 export type InfoTipProps =
