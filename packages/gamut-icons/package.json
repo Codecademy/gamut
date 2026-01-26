@@ -1,11 +1,11 @@
 {
   "name": "@codecademy/gamut-icons",
   "description": "Icon library for codecademy.com",
-  "version": "9.54.0",
+  "version": "9.54.1",
   "author": "Codecademy <dev@codecademy.com>",
   "dependencies": {
-    "@codecademy/gamut-styles": "17.11.0",
-    "@codecademy/variance": "0.25.0"
+    "@codecademy/gamut-styles": "17.11.1",
+    "@codecademy/variance": "0.25.1"
   },
   "files": [
     "dist"
