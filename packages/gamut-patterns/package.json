@@ -5,8 +5,8 @@
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "bugs": "https://github.com/Codecademy/gamut/issues",
   "dependencies": {
-    "@codecademy/gamut-styles": "17.11.0",
-    "@codecademy/variance": "0.25.0",
+    "@codecademy/gamut-styles": "1.1.3",
+    "@codecademy/variance": "0.1.0",
     "classnames": "^2.2.5"
   },
   "files": [
