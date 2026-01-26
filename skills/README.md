@@ -15,21 +15,17 @@ Agent skills are markdown files that provide detailed instructions and context t
 
 ### 🚀 gamut-quickstart
 
-**Get started with Gamut design system in your application**
+**Set up Gamut design system in your React application**
 
-Learn how to set up Gamut including:
-
-- Installing packages (gamut-kit vs individual packages)
+- Installation (gamut-kit vs individual packages)
 - Setting up GamutProvider
 - Creating your first components
 - Framework integration (Next.js, Vite, CRA)
-- Troubleshooting common issues
+- Troubleshooting setup issues
 
 ### 🧩 gamut-components
 
-**Use Gamut React components correctly with proper props and patterns**
-
-Learn how to use Gamut's component library including:
+**Build UIs with Gamut React components, layouts, and patterns**
 
 - Layout components (Box, FlexBox, GridBox)
 - Typography (Text)
@@ -40,9 +36,7 @@ Learn how to use Gamut's component library including:
 
 ### 🎨 gamut-styling
 
-**Apply Gamut styles, themes, and design tokens using gamut-styles package**
-
-Learn how to style applications with:
+**Style applications with Gamut design tokens and themes**
 
 - GamutProvider setup
 - Design tokens (colors, spacing, typography)
@@ -54,9 +48,7 @@ Learn how to style applications with:
 
 ### 🎯 gamut-icons
 
-**Use SVG icons from the Gamut icon library correctly**
-
-Learn how to use icons including:
+**Use 300+ icons from the Gamut icon library**
 
 - Finding and importing icons
 - Icon props (size, color, etc.)
@@ -65,9 +57,7 @@ Learn how to use icons including:
 
 ### 🌈 gamut-theming
 
-**Create and customize themes in Gamut design system**
-
-Learn how to work with themes including:
+**Create and customize themes in the Gamut design system**
 
 - Available pre-built themes
 - Theme structure and tokens
@@ -77,9 +67,7 @@ Learn how to work with themes including:
 
 ### 📝 gamut-forms
 
-**Build accessible forms using Gamut's GridForm components**
-
-Learn how to build forms including:
+**Build accessible forms with Gamut GridForm components**
 
 - GridForm and GridFormInputGroup
 - Input types (text, checkbox, radio, file)
@@ -89,9 +77,7 @@ Learn how to build forms including:
 
 ### 🖼️ gamut-illustrations
 
-**Use brand illustrations for empty states, onboarding, and visual storytelling**
-
-Learn how to implement illustrations including:
+**Implement Gamut brand illustrations for empty states and onboarding**
 
 - 70+ available brand illustrations
 - Illustration categories (success, learning, error, etc.)
@@ -101,9 +87,7 @@ Learn how to implement illustrations including:
 
 ### 🎭 gamut-patterns
 
-**Use background patterns and visual textures to enhance your UI designs**
-
-Learn how to use patterns including:
+**Add visual texture with Gamut background patterns**
 
 - 28 pattern variations (9 styles × 3 densities + Herringbone)
 - Pattern styles (Dots, Waves, Grid, Lines, Stripes, etc.)
@@ -113,9 +97,7 @@ Learn how to use patterns including:
 
 ### 🏛️ gamut-advanced-components
 
-**Advanced component patterns, composition techniques, and performance optimization**
-
-Learn advanced techniques including:
+**Advanced patterns, composition, and performance optimization with Gamut**
 
 - Building custom reusable components
 - Compound component patterns
