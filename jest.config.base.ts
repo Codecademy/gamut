@@ -1,24 +1,30 @@
-const baseConfig = (packageName: string, overrides: any) => {
-  const baseCoveragePathIgnorePatterns = [
-    '<rootDir>/node_modules/',
-    '<rootDir>/dist/',
-    '/node_modules/',
-    '/dist/',
-    'packages/gamut-icons/dist/icons/',
-    'packages/gamut-patterns/dist/patterns/',
-  ];
-  const mergedCoveragePathIgnorePatterns = [
-    ...baseCoveragePathIgnorePatterns,
-    ...(overrides.coveragePathIgnorePatterns || []),
-  ];
+import type { Config } from 'jest';
+import path from 'node:path';
 
+const COVERAGE_PATH_IGNORE_PATTERNS = [
+  '<rootDir>/node_modules/',
+  '<rootDir>/dist/',
+  '/node_modules/',
+  '/dist/',
+  'packages/gamut-icons/dist/icons/',
+  'packages/gamut-patterns/dist/patterns/',
+];
+
+const baseConfig = (packageName: string, overrides: Config): Config => {
+  const outputDirectory = path.join(__dirname, `coverage/${packageName}`);
   return {
     displayName: packageName,
     preset: '../../jest.preset.js',
     clearMocks: true,
-    coverageDirectory: process.env.CI
-      ? `/tmp/test-results/jest/${packageName}`
-      : `../../coverage/packages/${packageName}`,
+    coverageDirectory: outputDirectory,
+    coverageReporters: process.env.CI ? ['clover', 'json', 'lcov', 'text'] : ['html', 'text'],
+    reporters: process.env.CI
+      ? [
+          'default',
+          'github-actions',
+          ['jest-junit', { addFileAttribute: true, outputDirectory }],
+        ]
+      : ['default'],
     moduleNameMapper: {
       '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|md)$':
         '<rootDir>/../../script/jest/fileMock',
@@ -26,7 +32,10 @@ const baseConfig = (packageName: string, overrides: any) => {
     },
     testPathIgnorePatterns: ['node_modules', 'dist'],
     ...overrides,
-    coveragePathIgnorePatterns: mergedCoveragePathIgnorePatterns,
+    coveragePathIgnorePatterns: [
+      ...COVERAGE_PATH_IGNORE_PATTERNS,
+      ...overrides.coveragePathIgnorePatterns ?? [],
+    ],
   };
 };
 
