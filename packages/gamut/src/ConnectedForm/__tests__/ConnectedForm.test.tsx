@@ -4,7 +4,6 @@ import { act, RenderResult, waitFor } from '@testing-library/react';
 
 import { InfoTipProps } from '../../Tip/InfoTip';
 import { createPromise } from '../../utils';
-import { createExternalLabel } from '../../Form/__tests__/testUtils';
 import {
   ConnectedForm,
   ConnectedFormGroup,

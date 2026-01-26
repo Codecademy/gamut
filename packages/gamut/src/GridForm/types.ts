@@ -6,7 +6,7 @@ import { MinimalCheckboxProps } from '../ConnectedForm';
 import { CheckboxLabelUnion, TextAreaProps } from '../Form';
 import { CheckboxPaddingProps } from '../Form/types';
 import { ColumnProps } from '../Layout';
-import { InfoTipSubComponentProps } from '../Tip/InfoTip/types';
+import { InfoTipSubComponentProps } from '../Tip/InfoTip/type-utils';
 import { Text, TextProps } from '../Typography/Text';
 
 export interface BaseFormInputProps {
