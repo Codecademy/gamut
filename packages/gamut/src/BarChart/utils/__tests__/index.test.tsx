@@ -41,15 +41,15 @@ describe('BarChart Utils', () => {
 
   describe('calculateBarWidth', () => {
     it('calculates bar width as percentage of range', () => {
-      expect(
-        calculateBarWidth({ value: 50, minRange: 0, maxRange: 100 })
-      ).toBe(50);
-      expect(
-        calculateBarWidth({ value: 25, minRange: 0, maxRange: 100 })
-      ).toBe(25);
-      expect(
-        calculateBarWidth({ value: 0, minRange: 0, maxRange: 100 })
-      ).toBe(0);
+      expect(calculateBarWidth({ value: 50, minRange: 0, maxRange: 100 })).toBe(
+        50
+      );
+      expect(calculateBarWidth({ value: 25, minRange: 0, maxRange: 100 })).toBe(
+        25
+      );
+      expect(calculateBarWidth({ value: 0, minRange: 0, maxRange: 100 })).toBe(
+        0
+      );
       expect(
         calculateBarWidth({ value: 100, minRange: 0, maxRange: 100 })
       ).toBe(100);
@@ -144,38 +144,65 @@ describe('BarChart Utils', () => {
 
   describe('getLabel', () => {
     it('calculates label value for given index', () => {
-      expect(getLabel({ labelCount: 5, labelIndex: 0, min: 0, max: 100 })).toBe(0);
-      expect(getLabel({ labelCount: 5, labelIndex: 4, min: 0, max: 100 })).toBe(100);
+      expect(getLabel({ labelCount: 5, labelIndex: 0, min: 0, max: 100 })).toBe(
+        0
+      );
+      expect(getLabel({ labelCount: 5, labelIndex: 4, min: 0, max: 100 })).toBe(
+        100
+      );
     });
 
     it('handles single label', () => {
-      expect(getLabel({ labelCount: 1, labelIndex: 0, min: 0, max: 100 })).toBe(100);
+      expect(getLabel({ labelCount: 1, labelIndex: 0, min: 0, max: 100 })).toBe(
+        100
+      );
     });
 
     it('calculates intermediate label values', () => {
-      const value = getLabel({ labelCount: 5, labelIndex: 2, min: 0, max: 100 });
+      const value = getLabel({
+        labelCount: 5,
+        labelIndex: 2,
+        min: 0,
+        max: 100,
+      });
       expect(value).toBeGreaterThan(0);
       expect(value).toBeLessThan(100);
     });
 
     it('handles non-zero min values', () => {
-      expect(getLabel({ labelCount: 5, labelIndex: 0, min: 50, max: 150 })).toBe(50);
-      expect(getLabel({ labelCount: 5, labelIndex: 4, min: 50, max: 150 })).toBe(150);
+      expect(
+        getLabel({ labelCount: 5, labelIndex: 0, min: 50, max: 150 })
+      ).toBe(50);
+      expect(
+        getLabel({ labelCount: 5, labelIndex: 4, min: 50, max: 150 })
+      ).toBe(150);
     });
   });
 
   describe('calculatePositionPercent', () => {
     it('calculates position percentage correctly', () => {
-      expect(calculatePositionPercent({ value: 50, min: 0, max: 100 })).toBe(50);
-      expect(calculatePositionPercent({ value: 25, min: 0, max: 100 })).toBe(25);
+      expect(calculatePositionPercent({ value: 50, min: 0, max: 100 })).toBe(
+        50
+      );
+      expect(calculatePositionPercent({ value: 25, min: 0, max: 100 })).toBe(
+        25
+      );
       expect(calculatePositionPercent({ value: 0, min: 0, max: 100 })).toBe(0);
-      expect(calculatePositionPercent({ value: 100, min: 0, max: 100 })).toBe(100);
+      expect(calculatePositionPercent({ value: 100, min: 0, max: 100 })).toBe(
+        100
+      );
     });
 
     it('handles non-zero min values', () => {
-      expect(calculatePositionPercent({ value: 75, min: 50, max: 100 })).toBe(50);
-      expect(calculatePositionPercent({ value: 50, min: 50, max: 100 })).toBe(0);
-      expect(calculatePositionPercent({ value: 100, min: 50, max: 100 })).toBe(100);
+      expect(calculatePositionPercent({ value: 75, min: 50, max: 100 })).toBe(
+        50
+      );
+      expect(calculatePositionPercent({ value: 50, min: 50, max: 100 })).toBe(
+        0
+      );
+      expect(calculatePositionPercent({ value: 100, min: 50, max: 100 })).toBe(
+        100
+      );
     });
 
     it('handles edge case when min equals max', () => {
@@ -183,8 +210,12 @@ describe('BarChart Utils', () => {
     });
 
     it('handles values outside range', () => {
-      expect(calculatePositionPercent({ value: 150, min: 0, max: 100 })).toBe(150);
-      expect(calculatePositionPercent({ value: -10, min: 0, max: 100 })).toBe(-10);
+      expect(calculatePositionPercent({ value: 150, min: 0, max: 100 })).toBe(
+        150
+      );
+      expect(calculatePositionPercent({ value: -10, min: 0, max: 100 })).toBe(
+        -10
+      );
     });
   });
 

@@ -524,7 +524,8 @@ describe('BarChart', () => {
         '[class*="screenreader"], [style*="position: absolute"]'
       );
       expect(hiddenText).toHaveTextContent(/ganado - ahora en/);
-      });
+    });
+  });
 
   describe('Icons', () => {
     it('renders icons when provided in bar data', () => {
@@ -543,8 +544,7 @@ describe('BarChart', () => {
       expect(iconInPython).toBeInTheDocument();
 
       const javascriptItem = listItems[1];
-      const iconInJavascript =
-        javascriptItem.querySelector('svg[role="img"]');
+      const iconInJavascript = javascriptItem.querySelector('svg[role="img"]');
       expect(iconInJavascript).not.toBeInTheDocument();
     });
   });
@@ -600,7 +600,6 @@ describe('BarChart', () => {
       expect(backgroundBars).toHaveLength(2);
     });
   });
-
 
   describe('Title Variant', () => {
     it('applies custom variant when provided in title object', () => {
