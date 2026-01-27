@@ -44,6 +44,7 @@
       "inputs": [
         "default",
         "^production",
+        "{workspaceRoot}/jest.config.base.ts",
         "{workspaceRoot}/jest.preset.js",
         "babelConfig",
         "ci"
