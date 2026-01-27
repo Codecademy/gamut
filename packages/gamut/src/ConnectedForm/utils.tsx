@@ -150,14 +150,14 @@ export const useFormState = () => {
 
 interface useFieldProps extends SubmitContextProps {
   name: string;
-  customValidation?: RegisterOptions;
+  customValidations?: RegisterOptions;
 }
 
 export const useField = ({
   name,
   disabled,
   loading,
-  customValidation,
+  customValidations,
 }: useFieldProps) => {
   // This is fixed in a later react-hook-form version:
   // https://github.com/react-hook-form/react-hook-form/issues/2887
@@ -188,8 +188,8 @@ export const useField = ({
     undefined;
 
   const validation =
-    formValidation || customValidation
-      ? ({ ...formValidation, ...customValidation } as RegisterOptions)
+    formValidation || customValidations
+      ? ({ ...formValidation, ...customValidations } as RegisterOptions)
       : undefined;
 
   const ref = register(name, validation);

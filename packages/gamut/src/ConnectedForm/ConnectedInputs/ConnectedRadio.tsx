@@ -7,11 +7,13 @@ import { ConnectedRadioProps } from './types';
 export const ConnectedRadio: React.FC<ConnectedRadioProps> = ({
   disabled,
   name,
+  customValidations,
   ...rest
 }) => {
   const { error, isDisabled, ref } = useField({
     name,
     disabled,
+    customValidations,
   });
 
   return (

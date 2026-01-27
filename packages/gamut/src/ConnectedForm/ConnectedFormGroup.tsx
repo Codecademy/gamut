@@ -45,7 +45,7 @@ export interface ConnectedFormGroupProps<T extends ConnectedField>
    */
   field: Omit<React.ComponentProps<T>, 'name' | 'disabled'> &
     FieldProps<T> & {
-      customValidation?: RegisterOptions;
+      customValidations?: RegisterOptions;
     };
 }
 
@@ -64,11 +64,11 @@ export function ConnectedFormGroup<T extends ConnectedField>({
   isSoloField,
   infotip,
 }: ConnectedFormGroupProps<T>) {
-  const { component: Component, customValidation, ...rest } = field;
+  const { component: Component, customValidations, ...rest } = field;
   const { error, isFirstError, isDisabled, setError, validation } = useField({
     name,
     disabled,
-    customValidation,
+    customValidations,
   });
 
   useEffect(() => {
@@ -80,13 +80,16 @@ export function ConnectedFormGroup<T extends ConnectedField>({
     }
   }, [customError, name, setError]);
 
+  const required =
+    Boolean(validation?.required) || Boolean(customValidations?.required);
+
   const renderedLabel = (
     <FormGroupLabel
       disabled={isDisabled}
       htmlFor={id || name}
       infotip={infotip}
       isSoloField={isSoloField}
-      required={!!validation?.required}
+      required={required}
       size={labelSize}
     >
       {label}
@@ -104,6 +107,7 @@ export function ConnectedFormGroup<T extends ConnectedField>({
         {...(rest as any)}
         aria-describedby={errorId}
         aria-invalid={showError}
+        customValidations={customValidations}
         disabled={disabled}
         name={name}
       />

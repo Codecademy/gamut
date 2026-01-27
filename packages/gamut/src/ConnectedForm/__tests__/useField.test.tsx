@@ -12,13 +12,13 @@ const mockDefaultValue = '';
 const customErrorMessage = 'Please enter a valid email address';
 const customRequiredMessage = 'Email is required';
 
-const TestFormWithCustomValidation: React.FC = () => {
+const TestFormWithCustomValidations: React.FC = () => {
   return (
     <>
       <ConnectedFormGroup
         field={{
           component: ConnectedInput,
-          customValidation: {
+          customValidations: {
             required: customRequiredMessage,
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -40,7 +40,7 @@ const TestFormWithBothValidations: React.FC = () => {
       <ConnectedFormGroup
         field={{
           component: ConnectedInput,
-          customValidation: {
+          customValidations: {
             minLength: {
               value: 5,
               message: 'Email must be at least 5 characters',
@@ -60,7 +60,7 @@ const renderView = setupRtl(ConnectedForm, {
     [mockInputKey]: mockDefaultValue,
   },
   onSubmit: () => null,
-  children: <TestFormWithCustomValidation />,
+  children: <TestFormWithCustomValidations />,
 });
 
 const renderViewWithBothValidations = setupRtl(ConnectedForm, {

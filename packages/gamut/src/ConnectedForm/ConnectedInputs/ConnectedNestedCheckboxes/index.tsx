@@ -15,11 +15,12 @@ import {
 
 export const ConnectedNestedCheckboxes: React.FC<
   ConnectedNestedCheckboxesProps
-> = ({ name, options, disabled, onUpdate, spacing }) => {
+> = ({ name, options, disabled, onUpdate, spacing, customValidations }) => {
   const { isDisabled, control, validation, isRequired, getValues, setValue } =
     useField({
       name,
       disabled,
+      customValidations,
     });
 
   const defaultValue: string[] = getValues()[name];
