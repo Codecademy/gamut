@@ -108,7 +108,7 @@ describe('BarChart', () => {
         barValues: unsortedBarValues,
       });
 
-      expect(view.queryByLabelText('Sort bars')).not.toBeInTheDocument();
+      expect(view.queryByLabelText('Order by:')).not.toBeInTheDocument();
     });
 
     it('preserves array order by default when sortFns includes none', () => {
@@ -129,7 +129,7 @@ describe('BarChart', () => {
         sortFns: ['numerically', 'none'],
       });
 
-      const select = view.getByLabelText('Sort bars');
+      const select = view.getByLabelText('Order by:');
       await userEvent.selectOptions(select, 'value-asc');
 
       const items = view.getAllByRole('listitem');
@@ -144,7 +144,7 @@ describe('BarChart', () => {
         sortFns: ['numerically', 'none'],
       });
 
-      const select = view.getByLabelText('Sort bars');
+      const select = view.getByLabelText('Order by:');
       await userEvent.selectOptions(select, 'value-desc');
 
       const items = view.getAllByRole('listitem');
@@ -159,7 +159,7 @@ describe('BarChart', () => {
         sortFns: ['alphabetically', 'none'],
       });
 
-      const select = view.getByLabelText('Sort bars');
+      const select = view.getByLabelText('Order by:');
       await userEvent.selectOptions(select, 'label-asc');
 
       const items = view.getAllByRole('listitem');
@@ -174,7 +174,7 @@ describe('BarChart', () => {
         sortFns: ['alphabetically', 'none'],
       });
 
-      const select = view.getByLabelText('Sort bars');
+      const select = view.getByLabelText('Order by:');
       await userEvent.selectOptions(select, 'label-desc');
 
       const items = view.getAllByRole('listitem');
@@ -189,7 +189,7 @@ describe('BarChart', () => {
         sortFns: ['numerically', 'none'],
       });
 
-      const select = view.getByLabelText('Sort bars');
+      const select = view.getByLabelText('Order by:');
       await userEvent.selectOptions(select, 'value-asc');
 
       let items = view.getAllByRole('listitem');
@@ -216,7 +216,7 @@ describe('BarChart', () => {
         ],
       });
 
-      const select = view.getByLabelText('Sort bars');
+      const select = view.getByLabelText('Order by:');
       await userEvent.selectOptions(select, 'reverse');
 
       const items = view.getAllByRole('listitem');
@@ -231,7 +231,7 @@ describe('BarChart', () => {
         sortFns: ['alphabetically'],
       });
 
-      const select = view.getByLabelText('Sort bars') as HTMLSelectElement;
+      const select = view.getByLabelText('Order by:') as HTMLSelectElement;
       expect(select.value).toBe('label-asc');
 
       const items = view.getAllByRole('listitem');
