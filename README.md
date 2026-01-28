@@ -219,14 +219,12 @@ for more information for why you have to do this.
 
 ### Adding a New Package
 
-1. Create a new directory at `packages/<package-name>/package.json`.
 1. Use NX generators to create the new package. For example:
    ```bash
-   yarn nx g @nx/react:library <package-name> --directory=packages/<package-name> --buildable --publishable
+   yarn nx g @nx/react:library <package-name> --buildable --publishable
    ```
-   - Make sure to set the `publishConfig` field to `{ "access": "public" }` to let your published package be public by default
-1. Create a minimal amount of source code in the new package
-   - Example: a simple `tsconfig.json` with a `index.ts` exporting a single object
+   - Make sure to set the `publishConfig` field to `{ "access": "public" }` in the generated package.json to let your published package be public by default
+1. Customize the generated source code as needed for your package
 1. Run `yarn install` from the repository root
 1. Send a `feat` PR adding that package with a version plan (using `yarn nx release plan`)
 1. Once merged, message out in our #frontend Slack channel to other Gamut developers to re-run `yarn install` after they merge from `main`
@@ -307,15 +305,21 @@ A scope is optional and consists of a noun describing a section of the codebase 
 
 **Breaking Changes**
 
-Adding an exclamation point after your type, before the colon, will indicate that your PR contains a breaking change, and increment the major version number of the modules you changed.
+Breaking changes are indicated in version plans by specifying a `major` version bump. When creating a version plan with `yarn nx release plan`, select "major" as the bump type for packages that introduce breaking changes.
 
-Examples:
+Examples of version plans with breaking changes:
 
-`feat!: made a breaking change in the Button component`
+```markdown
+---
+gamut: major
+---
 
-`feat(Button)!: made a breaking change in the Button component`
+Breaking: Removed deprecated Button variants
 
-You should do this if your changes introduce any incompatibilities with previous versions of the module.
+This removes the previously deprecated "primary-blue" and "secondary-red" variants.
+```
+
+You should create a major version bump if your changes introduce any incompatibilities with previous versions of the module.
 This will indicate to package consumers that they need to refactor their usage of the module to upgrade.
 
 #### Breaking Changes Release Process
@@ -338,7 +342,7 @@ Optional extra description for your changes.
 
 This goes in the description for your PR, between the `<!--- CHANGELOG-DESCRIPTION -->` comment tags in the PR template.
 
-If you include the text `BREAKING CHANGE:` in your description it will trigger a major version bump. We prefer to use the `feat!:` syntax for breaking changes described above.
+With NX Release and Version Plans, changelog content is primarily driven by the description in your version plan files, not the PR description. The version plan description will appear in the generated CHANGELOG.md files.
 
 ## Publishing Storybook
 

@@ -66,11 +66,13 @@ jobs:
           {
             echo 'result<<EOF'
             # List all published packages with alpha version
-            find packages -name "package.json" -not -path "*/node_modules/*" | xargs grep -l '"version"' | while read pkg; do
-              NAME=$(node -p "require('./$pkg').name")
-              VERSION=$(node -p "require('./$pkg').version")
-              if [[ "$VERSION" == *"alpha"* ]]; then
-                echo "${NAME}@${VERSION}"
+            for pkg in packages/*/package.json; do
+              if [ -f "$pkg" ]; then
+                NAME=$(node -p "try { require('./$pkg').name } catch(e) { '' }")
+                VERSION=$(node -p "try { require('./$pkg').version } catch(e) { '' }")
+                if [[ "$VERSION" == *"alpha"* ]] && [[ -n "$NAME" ]]; then
+                  echo "${NAME}@${VERSION}"
+                fi
               fi
             done
             echo 'EOF'
