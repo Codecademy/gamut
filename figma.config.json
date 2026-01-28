@@ -1,0 +1,7 @@
+{
+  "codeConnect": {
+    "include": ["packages/code-connect/**/*.{tsx,jsx}"],
+    "label": "React",
+    "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=23-5&p=f&m=dev"
+  }
+}

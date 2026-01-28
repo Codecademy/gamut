@@ -19,5 +19,5 @@
     "strict": true,
     "target": "esnext"
   },
-  "exclude": ["**/node_modules", "tmp"]
+  "exclude": ["**/node_modules", "tmp", "packages/code-connect"]
 }
