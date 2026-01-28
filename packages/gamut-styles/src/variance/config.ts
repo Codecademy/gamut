@@ -1,4 +1,4 @@
-import { transformSize } from '@codecademy/variance';
+import { getPropertyMode, transformSize } from '@codecademy/variance';
 
 export const color = {
   color: { property: 'color', scale: 'colors' },
@@ -233,36 +233,108 @@ export const margin = {
   m: { property: 'margin', scale: 'spacing' },
   mx: {
     property: 'margin',
-    properties: ['marginLeft', 'marginRight'],
+    properties: {
+      physical: ['marginLeft', 'marginRight'],
+      logical: ['marginInlineStart', 'marginInlineEnd'],
+    },
+    resolveProperty: getPropertyMode,
     scale: 'spacing',
   },
   my: {
     property: 'margin',
-    properties: ['marginTop', 'marginBottom'],
+    properties: {
+      physical: ['marginTop', 'marginBottom'],
+      logical: ['marginBlockStart', 'marginBlockEnd'],
+    },
+    resolveProperty: getPropertyMode,
     scale: 'spacing',
   },
-  mt: { property: 'marginTop', scale: 'spacing' },
-  mb: { property: 'marginBottom', scale: 'spacing' },
-  mr: { property: 'marginRight', scale: 'spacing' },
-  ml: { property: 'marginLeft', scale: 'spacing' },
+  mt: {
+    property: {
+      physical: 'marginTop',
+      logical: 'marginBlockStart',
+    },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode,
+  },
+  mb: {
+    property: {
+      physical: 'marginBottom',
+      logical: 'marginBlockEnd',
+    },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode,
+  },
+  mr: {
+    property: {
+      physical: 'marginRight',
+      logical: 'marginInlineEnd',
+    },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode,
+  },
+  ml: {
+    property: {
+      physical: 'marginLeft',
+      logical: 'marginInlineStart',
+    },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode,
+  },
 } as const;
 
 export const padding = {
   p: { property: 'padding', scale: 'spacing' },
   px: {
     property: 'padding',
-    properties: ['paddingLeft', 'paddingRight'],
+    properties: {
+      physical: ['paddingLeft', 'paddingRight'],
+      logical: ['paddingInlineStart', 'paddingInlineEnd'],
+    },
     scale: 'spacing',
+    resolveProperty: getPropertyMode,
   },
   py: {
     property: 'padding',
-    properties: ['paddingTop', 'paddingBottom'],
+    properties: {
+      physical: ['paddingTop', 'paddingBottom'],
+      logical: ['paddingBlockStart', 'paddingBlockEnd'],
+    },
     scale: 'spacing',
+    resolveProperty: getPropertyMode,
   },
-  pt: { property: 'paddingTop', scale: 'spacing' },
-  pb: { property: 'paddingBottom', scale: 'spacing' },
-  pr: { property: 'paddingRight', scale: 'spacing' },
-  pl: { property: 'paddingLeft', scale: 'spacing' },
+  pt: {
+    property: {
+      physical: 'paddingTop',
+      logical: 'paddingBlockStart',
+    },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode,
+  },
+  pb: {
+    property: {
+      physical: 'paddingBottom',
+      logical: 'paddingBlockEnd',
+    },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode,
+  },
+  pr: {
+    property: {
+      physical: 'paddingRight',
+      logical: 'paddingInlineEnd',
+    },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode,
+  },
+  pl: {
+    property: {
+      physical: 'paddingLeft',
+      logical: 'paddingInlineStart',
+    },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode,
+  },
 } as const;
 
 export const space = {
