@@ -45,7 +45,7 @@ jobs:
           if [ "${{ github.event_name }}" == "pull_request" ]; then
             npx nx affected --target=test --parallel=4 --ci --coverage --runInBand
           else
-            npx nx run-many --target=test --all --parallel=4 --ci --coverage --runInBand
+            npx nx run-many --target=test --all --parallel=4 --ci --coverage --runInBand --skip-nx-cache
           fi
       - name: Upload test results
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
