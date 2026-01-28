@@ -384,7 +384,7 @@ describe('BarChart', () => {
           const title = view.getByRole('heading', {
             name: 'Programming Skills Chart',
           });
-          expect(title.tagName).toBe('h2');
+          expect(title.tagName).toBe('H2');
         });
 
         it('renders title as object with custom heading level', () => {
@@ -393,7 +393,7 @@ describe('BarChart', () => {
           });
 
           const title = view.getByRole('heading', { name: 'Skills Overview' });
-          expect(title.tagName).toBe('h1');
+          expect(title.tagName).toBe('H1');
         });
 
         it('hides title when hideTitle is true', () => {
@@ -401,6 +401,7 @@ describe('BarChart', () => {
             title: 'Hidden Title',
             hideTitle: true,
           });
+
           const title = view.getByText('Hidden Title');
           expect(title).toHaveAttribute('hidden');
         });
@@ -414,8 +415,8 @@ describe('BarChart', () => {
         const listItems = view.getAllByRole('listitem');
         expect(listItems).toHaveLength(2);
 
-        view.getByText('100 XP in ');
-        view.getByText('75 XP in ');
+        expect(listItems[0]).toHaveTextContent(/100 XP in/);
+        expect(listItems[1]).toHaveTextContent(/75 XP in/);
       });
 
       it('has aria-label on interactive bars for button/link and no hidden text in listitem', () => {
@@ -439,7 +440,7 @@ describe('BarChart', () => {
         const hiddenText = listItem.querySelector(
           '[class*="screenreader"], [style*="position: absolute"]'
         );
-        expect(hiddenText).not.toBeInTheDocument();
+        expect(hiddenText).toBeNull();
       });
     });
   });
@@ -520,10 +521,7 @@ describe('BarChart', () => {
       });
 
       const listItem = view.getAllByRole('listitem')[0];
-      const hiddenText = listItem.querySelector(
-        '[class*="screenreader"], [style*="position: absolute"]'
-      );
-      expect(hiddenText).toHaveTextContent(/ganado - ahora en/);
+      expect(listItem).toHaveTextContent(/ganado - ahora en/);
     });
   });
 

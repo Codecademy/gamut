@@ -135,7 +135,9 @@ export const BarChart = <
           )}
         </FlexBox>
       </Box>
-    ) : null;
+    ) : (
+      <Text {...titleProps} />
+    );
 
   return (
     <BarChartProvider value={contextValue}>
