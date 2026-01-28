@@ -113,4 +113,9 @@ export type PopoverProps = PopoverBaseProps &
      * Whether to add width restrictions to Popover.
      */
     widthRestricted?: boolean;
+
+    /**
+     * z-index for the Popover's portal. Defaults to 1.
+     */
+    zIndex?: number;
   };

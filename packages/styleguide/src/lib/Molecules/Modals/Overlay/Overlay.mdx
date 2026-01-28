@@ -32,6 +32,12 @@ Unlike the legacy `Modal` implementations in the monolith, this:
 
 - If you need styles such as a background behind content, see `Modal` for general modals and `Dialog` for confirmation flows.
 
+## Z-Index
+
+The `zIndex` prop controls the stacking order of the overlay. It defaults to `3`, which places it above most common UI elements. Increase this value when the overlay needs to appear above other positioned elements like sticky headers or floating UI.
+
+<Canvas of={OverlayStories.ZIndex} />
+
 ## Playground
 
 <Canvas sourceState="shown" of={OverlayStories.Default} />

@@ -1,4 +1,4 @@
-import { Box, FlexBox, PreviewTip } from '@codecademy/gamut';
+import { Box, FlexBox, PreviewTip, Text } from '@codecademy/gamut';
 import { SmileyIndifferentIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
@@ -109,4 +109,71 @@ const TruncationExample = (args: React.ComponentProps<typeof PreviewTip>) => {
 
 export const Truncation: Story = {
   render: (args) => <TruncationExample {...args} />,
+};
+
+export const ZIndex: Story = {
+  args: {
+    zIndex: 5,
+  },
+  render: (args) => (
+    <FlexBox center flexDirection="column" gap={16} py={64}>
+      <Text variant="p-small">Inline placement:</Text>
+      <FlexBox alignItems="center" gap={16}>
+        <Box bg="paleBlue" p={8} zIndex={3} position="relative">
+          z-index: 3
+        </Box>
+        <PreviewTip
+          {...args}
+          alignment="bottom-right"
+          href="#"
+          linkDescription="Default z-index (inline)"
+        >
+          Default z-index
+        </PreviewTip>
+        <Box bg="paleBlue" p={8} zIndex={3} position="relative">
+          z-index: 3
+        </Box>
+        <PreviewTip
+          {...args}
+          alignment="top-right"
+          href="#"
+          linkDescription="z-index: 5 (inline)"
+          zIndex={5}
+        >
+          z-index: 5
+        </PreviewTip>
+      </FlexBox>
+
+      <Text variant="p-small" mt={24}>
+        Floating placement:
+      </Text>
+      <FlexBox alignItems="center" gap={16}>
+        <Box bg="paleGreen" p={8} zIndex={3} position="relative">
+          z-index: 3
+        </Box>
+        <PreviewTip
+          {...args}
+          alignment="bottom-right"
+          href="#"
+          linkDescription="Default z-index (floating)"
+          placement="floating"
+        >
+          Default z-index
+        </PreviewTip>
+        <Box bg="paleGreen" p={8} zIndex={3} position="relative">
+          z-index: 3
+        </Box>
+        <PreviewTip
+          {...args}
+          alignment="top-right"
+          href="#"
+          linkDescription="z-index: 5 (floating)"
+          placement="floating"
+          zIndex={5}
+        >
+          z-index: 5
+        </PreviewTip>
+      </FlexBox>
+    </FlexBox>
+  ),
 };

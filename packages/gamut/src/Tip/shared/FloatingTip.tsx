@@ -36,6 +36,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   type,
   username,
   wrapperRef,
+  zIndex,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -172,6 +173,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
         targetRef={ref}
         variant="secondary"
         widthRestricted={false}
+        zIndex={zIndex}
       >
         <FloatingTipTextWrapper
           horizNarrow={narrow && isHorizontalCenter}
