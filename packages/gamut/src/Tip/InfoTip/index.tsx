@@ -34,6 +34,18 @@ export type InfoTipBaseProps = TipBaseProps & {
    * Called when the InfoTip button is clicked - the onClick function is called after the DOM updates and the tip is mounted.
    */
   onClick?: (arg0: { isTipHidden: boolean }) => void;
+  /**
+   * Use the camelCase syntax to pass aria-* props to the InfoTip button.
+   */
+  'aria-label'?: never;
+  /**
+   * Use the camelCase syntax to pass aria-* props to the InfoTip button.
+   */
+  'aria-labelledby'?: never;
+  /**
+   * Use the camelCase syntax to pass aria-* props to the InfoTip button.
+   */
+  'aria-roledescription'?: never;
 };
 
 type InfoTipPropsWithAriaLabel = InfoTipBaseProps & {
