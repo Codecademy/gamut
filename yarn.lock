@@ -1616,25 +1616,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codecademy/gamut-icons@npm:9.54.1, @codecademy/gamut-icons@workspace:packages/gamut-icons":
+"@codecademy/gamut-icons@npm:9.54.2, @codecademy/gamut-icons@workspace:packages/gamut-icons":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-icons@workspace:packages/gamut-icons"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.11.1"
-    "@codecademy/variance": "npm:0.25.1"
+    "@codecademy/gamut-styles": "npm:17.11.2"
+    "@codecademy/variance": "npm:0.25.2"
   peerDependencies:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    lodash: ^4.17.5
+    lodash: ^4.17.23
     react: ^17.0.2 || ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-illustrations@npm:0.58.1, @codecademy/gamut-illustrations@workspace:packages/gamut-illustrations":
+"@codecademy/gamut-illustrations@npm:0.58.2, @codecademy/gamut-illustrations@workspace:packages/gamut-illustrations":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-illustrations@workspace:packages/gamut-illustrations"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.11.1"
+    "@codecademy/gamut-styles": "npm:17.11.2"
     classnames: "npm:^2.2.5"
   peerDependencies:
     "@emotion/react": ^11.4.0
@@ -1648,23 +1648,23 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-kit@workspace:packages/gamut-kit"
   dependencies:
-    "@codecademy/gamut": "npm:67.6.4"
-    "@codecademy/gamut-icons": "npm:9.54.1"
-    "@codecademy/gamut-illustrations": "npm:0.58.1"
-    "@codecademy/gamut-patterns": "npm:0.10.20"
-    "@codecademy/gamut-styles": "npm:17.11.1"
-    "@codecademy/gamut-tests": "npm:5.2.18"
-    "@codecademy/variance": "npm:0.25.1"
+    "@codecademy/gamut": "npm:67.6.5"
+    "@codecademy/gamut-icons": "npm:9.54.2"
+    "@codecademy/gamut-illustrations": "npm:0.58.2"
+    "@codecademy/gamut-patterns": "npm:0.10.21"
+    "@codecademy/gamut-styles": "npm:17.11.2"
+    "@codecademy/gamut-tests": "npm:5.2.19"
+    "@codecademy/variance": "npm:0.25.2"
     component-test-setup: "npm:^0.3.1"
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-patterns@npm:0.10.20, @codecademy/gamut-patterns@workspace:packages/gamut-patterns":
+"@codecademy/gamut-patterns@npm:0.10.21, @codecademy/gamut-patterns@workspace:packages/gamut-patterns":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-patterns@workspace:packages/gamut-patterns"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.11.1"
-    "@codecademy/variance": "npm:0.25.1"
+    "@codecademy/gamut-styles": "npm:17.11.2"
+    "@codecademy/variance": "npm:0.25.2"
     classnames: "npm:^2.2.5"
   peerDependencies:
     "@emotion/react": ^11.4.0
@@ -1674,51 +1674,51 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-styles@npm:17.11.1, @codecademy/gamut-styles@workspace:packages/gamut-styles":
+"@codecademy/gamut-styles@npm:17.11.2, @codecademy/gamut-styles@workspace:packages/gamut-styles":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-styles@workspace:packages/gamut-styles"
   dependencies:
-    "@codecademy/variance": "npm:0.25.1"
+    "@codecademy/variance": "npm:0.25.2"
     "@emotion/is-prop-valid": "npm:^1.1.0"
     polished: "npm:^4.1.2"
   peerDependencies:
     "@emotion/cache": ^11.4.0
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    lodash: ^4.17.5
+    lodash: ^4.17.23
     react: ^17.0.2 || ^18.2.0
     stylis: ^4.0.7
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-tests@npm:5.2.18, @codecademy/gamut-tests@workspace:packages/gamut-tests":
+"@codecademy/gamut-tests@npm:5.2.19, @codecademy/gamut-tests@workspace:packages/gamut-tests":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-tests@workspace:packages/gamut-tests"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.11.1"
+    "@codecademy/gamut-styles": "npm:17.11.2"
     component-test-setup: "npm:*"
-    lodash: "npm:^4.17.5"
+    lodash: "npm:^4.17.23"
   peerDependencies:
     react: ^17.0.2 || ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut@npm:67.6.4, @codecademy/gamut@workspace:packages/gamut":
+"@codecademy/gamut@npm:67.6.5, @codecademy/gamut@workspace:packages/gamut":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut@workspace:packages/gamut"
   dependencies:
-    "@codecademy/gamut-icons": "npm:9.54.1"
-    "@codecademy/gamut-illustrations": "npm:0.58.1"
-    "@codecademy/gamut-patterns": "npm:0.10.20"
-    "@codecademy/gamut-styles": "npm:17.11.1"
-    "@codecademy/variance": "npm:0.25.1"
+    "@codecademy/gamut-icons": "npm:9.54.2"
+    "@codecademy/gamut-illustrations": "npm:0.58.2"
+    "@codecademy/gamut-patterns": "npm:0.10.21"
+    "@codecademy/gamut-styles": "npm:17.11.2"
+    "@codecademy/variance": "npm:0.25.2"
     "@types/marked": "npm:^4.0.8"
     "@vidstack/react": "npm:^1.12.12"
     classnames: "npm:^2.2.5"
     framer-motion: "npm:^11.18.0"
     html-to-react: "npm:^1.6.0"
     invariant: "npm:^2.2.4"
-    lodash: "npm:^4.17.5"
+    lodash: "npm:^4.17.23"
     marked: "npm:^4.3.0"
     polished: "npm:^4.1.2"
     react-aria-components: "npm:1.8.0"
@@ -1768,12 +1768,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codecademy/variance@npm:0.25.1, @codecademy/variance@workspace:packages/variance":
+"@codecademy/variance@npm:0.25.2, @codecademy/variance@workspace:packages/variance":
   version: 0.0.0-use.local
   resolution: "@codecademy/variance@workspace:packages/variance"
   dependencies:
     csstype: "npm:^3.0.7"
-    lodash: "npm:^4.17.5"
+    lodash: "npm:^4.17.23"
   peerDependencies:
     "@emotion/react": "*"
     typescript: ">=4.3.5"
@@ -8134,10 +8134,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:4.17.0":
-  version: 4.17.0
-  resolution: "@types/lodash@npm:4.17.0"
-  checksum: 10c0/4c5b41c9a6c41e2c05d08499e96f7940bcf194dcfa84356235b630da920c2a5e05f193618cea76006719bec61c76617dff02defa9d29934f9f6a76a49291bd8f
+"@types/lodash@npm:4.17.23":
+  version: 4.17.23
+  resolution: "@types/lodash@npm:4.17.23"
+  checksum: 10c0/9d9cbfb684e064a2b78aab9e220d398c9c2a7d36bc51a07b184ff382fa043a99b3d00c16c7f109b4eb8614118f4869678dbae7d5c6700ed16fb9340e26cc0bf6
   languageName: node
   linkType: hard
 
@@ -14293,7 +14293,7 @@ __metadata:
     "@types/classnames": "npm:2.2.10"
     "@types/invariant": "npm:2.2.29"
     "@types/konami-code-js": "npm:^0.8.0"
-    "@types/lodash": "npm:4.17.0"
+    "@types/lodash": "npm:4.17.23"
     "@types/react": "npm:18.3.1"
     "@types/react-dom": "npm:18.3.0"
     "@types/react-test-renderer": "npm:^17.0.1"
@@ -14321,7 +14321,7 @@ __metadata:
     jest-junit: "npm:^16.0.0"
     lerna: "npm:7.2.0"
     lint-staged: "npm:14.0.1"
-    lodash: "npm:^4.17.5"
+    lodash: "npm:^4.17.23"
     micromatch: "npm:^4.0.5"
     mutationobserver-shim: "npm:^0.3.3"
     nx: "npm:21.4.0"
@@ -15627,16 +15627,6 @@ __metadata:
   version: 10.1.0
   resolution: "ip-address@npm:10.1.0"
   checksum: 10c0/0103516cfa93f6433b3bd7333fa876eb21263912329bfa47010af5e16934eeeff86f3d2ae700a3744a137839ddfad62b900c7a445607884a49b5d1e32a3d7566
-  languageName: node
-  linkType: hard
-
-"ip-address@npm:^9.0.5":
-  version: 9.0.5
-  resolution: "ip-address@npm:9.0.5"
-  dependencies:
-    jsbn: "npm:1.1.0"
-    sprintf-js: "npm:^1.1.3"
-  checksum: 10c0/331cd07fafcb3b24100613e4b53e1a2b4feab11e671e655d46dc09ee233da5011284d09ca40c4ecbdfe1d0004f462958675c224a804259f2f78d2465a87824bc
   languageName: node
   linkType: hard
 
@@ -17245,13 +17235,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsbn@npm:1.1.0":
-  version: 1.1.0
-  resolution: "jsbn@npm:1.1.0"
-  checksum: 10c0/4f907fb78d7b712e11dea8c165fe0921f81a657d3443dde75359ed52eb2b5d33ce6773d97985a089f09a65edd80b11cb75c767b57ba47391fee4c969f7215c96
-  languageName: node
-  linkType: hard
-
 "jsdoc-type-pratt-parser@npm:^4.0.0":
   version: 4.1.0
   resolution: "jsdoc-type-pratt-parser@npm:4.1.0"
@@ -17982,10 +17965,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.5":
-  version: 4.17.21
-  resolution: "lodash@npm:4.17.21"
-  checksum: 10c0/d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
+"lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.23":
+  version: 4.17.23
+  resolution: "lodash@npm:4.17.23"
+  checksum: 10c0/1264a90469f5bb95d4739c43eb6277d15b6d9e186df4ac68c3620443160fc669e2f14c11e7d8b2ccf078b81d06147c01a8ccced9aab9f9f63d50dcf8cace6bf6
   languageName: node
   linkType: hard
 
@@ -18564,12 +18547,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:*":
-  version: 10.0.3
-  resolution: "minimatch@npm:10.0.3"
+"minimatch@npm:*, minimatch@npm:^10.1.1":
+  version: 10.1.1
+  resolution: "minimatch@npm:10.1.1"
   dependencies:
     "@isaacs/brace-expansion": "npm:^5.0.0"
-  checksum: 10c0/e43e4a905c5d70ac4cec8530ceaeccb9c544b1ba8ac45238e2a78121a01c17ff0c373346472d221872563204eabe929ad02669bb575cb1f0cc30facab369f70f
+  checksum: 10c0/c85d44821c71973d636091fddbfbffe62370f5ee3caf0241c5b60c18cd289e916200acb2361b7e987558cd06896d153e25d505db9fc1e43e6b4b6752e2702902
   languageName: node
   linkType: hard
 
@@ -18588,15 +18571,6 @@ __metadata:
   dependencies:
     brace-expansion: "npm:^2.0.1"
   checksum: 10c0/85f407dcd38ac3e180f425e86553911d101455ca3ad5544d6a7cec16286657e4f8a9aa6695803025c55e31e35a91a2252b5dc8e7d527211278b8b65b4dbd5eac
-  languageName: node
-  linkType: hard
-
-"minimatch@npm:^10.1.1":
-  version: 10.1.1
-  resolution: "minimatch@npm:10.1.1"
-  dependencies:
-    "@isaacs/brace-expansion": "npm:^5.0.0"
-  checksum: 10c0/c85d44821c71973d636091fddbfbffe62370f5ee3caf0241c5b60c18cd289e916200acb2361b7e987558cd06896d153e25d505db9fc1e43e6b4b6752e2702902
   languageName: node
   linkType: hard
 
@@ -23499,17 +23473,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"socks@npm:^2.6.2":
-  version: 2.8.3
-  resolution: "socks@npm:2.8.3"
-  dependencies:
-    ip-address: "npm:^9.0.5"
-    smart-buffer: "npm:^4.2.0"
-  checksum: 10c0/d54a52bf9325165770b674a67241143a3d8b4e4c8884560c4e0e078aace2a728dffc7f70150660f51b85797c4e1a3b82f9b7aa25e0a0ceae1a243365da5c51a7
-  languageName: node
-  linkType: hard
-
-"socks@npm:^2.8.3":
+"socks@npm:^2.6.2, socks@npm:^2.8.3":
   version: 2.8.7
   resolution: "socks@npm:2.8.7"
   dependencies:
@@ -23697,13 +23661,6 @@ __metadata:
   dependencies:
     through: "npm:2"
   checksum: 10c0/7f489e7ed5ff8a2e43295f30a5197ffcb2d6202c9cf99357f9690d645b19c812bccf0be3ff336fea5054cda17ac96b91d67147d95dbfc31fbb5804c61962af85
-  languageName: node
-  linkType: hard
-
-"sprintf-js@npm:^1.1.3":
-  version: 1.1.3
-  resolution: "sprintf-js@npm:1.1.3"
-  checksum: 10c0/09270dc4f30d479e666aee820eacd9e464215cdff53848b443964202bf4051490538e5dd1b42e1a65cf7296916ca17640aebf63dae9812749c7542ee5f288dec
   languageName: node
   linkType: hard
 
