@@ -66,17 +66,46 @@ We provide a single package to manage the versions of a few core dependencies: `
 
 ### Publishing Modules
 
-1.  Create a version plan for your changes using `yarn nx release plan`. This will prompt you to select:
-    - Which packages are affected by your changes
-    - The type of version bump (major, minor, or patch)
-    - A description of the changes for the changelog
+This repository uses [NX Release](https://nx.dev/recipes/nx-release) with [Version Plans](https://nx.dev/recipes/nx-release/file-based-versioning-version-plans) for package versioning and publishing.
+
+#### Creating a Version Plan
+
+1.  Create a version plan for your changes using `yarn nx release plan`. This interactive command will prompt you to:
+    - Select which packages are affected by your changes
+    - Choose the type of version bump (major, minor, or patch)
+    - Provide a description of the changes for the changelog
 1.  The version plan will be saved as a markdown file in `.nx/version-plans/`
 1.  Commit this version plan file along with your code changes
+1.  The version plan will be applied when your PR is merged to main
+
+#### Version Plan Format
+
+Version plan files are markdown files with YAML front matter. Here's an example:
+
+```markdown
+---
+gamut: minor
+gamut-styles: patch
+---
+
+Add new Button variant and fix spacing issues
+
+- Added a new "ghost" variant to the Button component
+- Fixed margin spacing in the Card component
+```
+
+#### Publishing Process
+
 1.  Make your changes in a feature branch, and get another engineer to review your code
 1.  After your code has been reviewed and tested, you can merge your branch into main.
-1.  Make sure to update your PR title and add a short description of your changes for the changelog (see the [PR Title Guide](https://github.com/Codecademy/gamut#pr-title-guide))
+1.  Make sure to update your PR title following the [PR Title Guide](https://github.com/Codecademy/gamut#pr-title-guide)
 1.  To merge your changes, add the `Ship It` label to your Pull Request.
 1.  Once your branch is merged into main, it will be published automatically by GitHub Actions using NX Release.
+    - NX Release will apply all version plans found in `.nx/version-plans/`
+    - It will bump package versions according to the plans
+    - It will generate changelog entries from the version plan descriptions
+    - It will publish the packages to npm
+    - It will create git tags and GitHub releases
 1.  You can find the new version number on npmjs.com/package/<package-name>, or find it in that package's `package.json` on the `main` branch
 
 ### Publishing an alpha version of a module
