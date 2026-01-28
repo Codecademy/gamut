@@ -6,13 +6,20 @@ on:
       - main
   pull_request:
 
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+  issues: write
+  actions: write
+  statuses: write
+
 jobs:
   format:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           fetch-depth: 1
       - name: Setup and Build
         uses: ./.github/actions/yarn
@@ -28,7 +35,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           fetch-depth: 1
       - name: Setup and Build
         uses: ./.github/actions/yarn
@@ -42,7 +48,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           fetch-depth: 1
       - name: Setup and Build
         uses: ./.github/actions/yarn
