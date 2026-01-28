@@ -6,7 +6,7 @@ _The component library & design system for Codecademy._ ✨
 
 [![GitHub Actions](https://github.com/Codecademy/gamut/workflows/Test%20Suite/badge.svg)](https://github.com/Codecademy/gamut/actions)
 
-This repository is a monorepo that we manage using [Lerna](https://lerna.js.org/). That means that we publish several packages to npm from the same codebase, including:
+This repository is a monorepo that we manage using [NX](https://nx.dev/). That means that we publish several packages to npm from the same codebase, including:
 
 ## Gamut Kit
 
@@ -66,11 +66,17 @@ We provide a single package to manage the versions of a few core dependencies: `
 
 ### Publishing Modules
 
+1.  Create a version plan for your changes using `yarn nx release plan`. This will prompt you to select:
+    - Which packages are affected by your changes
+    - The type of version bump (major, minor, or patch)
+    - A description of the changes for the changelog
+1.  The version plan will be saved as a markdown file in `.nx/version-plans/`
+1.  Commit this version plan file along with your code changes
 1.  Make your changes in a feature branch, and get another engineer to review your code
 1.  After your code has been reviewed and tested, you can merge your branch into main.
 1.  Make sure to update your PR title and add a short description of your changes for the changelog (see the [PR Title Guide](https://github.com/Codecademy/gamut#pr-title-guide))
 1.  To merge your changes, add the `Ship It` label to your Pull Request.
-1.  Once your branch is merged into main, it will be published automatically by GitHub Actions.
+1.  Once your branch is merged into main, it will be published automatically by GitHub Actions using NX Release.
 1.  You can find the new version number on npmjs.com/package/<package-name>, or find it in that package's `package.json` on the `main` branch
 
 ### Publishing an alpha version of a module
@@ -87,7 +93,7 @@ Every PR that changes files in a package publishes alpha releases that you can u
 
 ### Working with pre-published changes
 
-> NOTE: Due to the inconsistencies of symlinks in a lerna repo, _instead_ of using `yarn link`, we recommend using the `npm-link-better` package with the `--copy` flag to copy packages into your local repo's `node_modules` directory.
+> NOTE: Due to the inconsistencies of symlinks in a monorepo, _instead_ of using `yarn link`, we recommend using the `npm-link-better` package with the `--copy` flag to copy packages into your local repo's `node_modules` directory.
 
 **Initial Setup:**
 
@@ -185,13 +191,16 @@ for more information for why you have to do this.
 ### Adding a New Package
 
 1. Create a new directory at `packages/<package-name>/package.json`.
-1. Use `yarn lerna create` to create the new package, copying values from existing `package.json`s when unsure.
-   - Also copy the `publishConfig` field to let your published package be public by default
+1. Use NX generators to create the new package. For example:
+   ```bash
+   yarn nx g @nx/react:library <package-name> --directory=packages/<package-name> --buildable --publishable
+   ```
+   - Make sure to set the `publishConfig` field to `{ "access": "public" }` to let your published package be public by default
 1. Create a minimal amount of source code in the new package
    - Example: a simple `tsconfig.json` with a `index.ts` exporting a single object
-1. Run `yarn lerna bootstrap` from the repository root
-1. Send a `feat` PR adding that package
-1. One merged, message out in our #frontend Slack channel to other Gamut developers to re-run `yarn lerna bootstrap` after they merge from `main`
+1. Run `yarn install` from the repository root
+1. Send a `feat` PR adding that package with a version plan (using `yarn nx release plan`)
+1. Once merged, message out in our #frontend Slack channel to other Gamut developers to re-run `yarn install` after they merge from `main`
 
 Notes:
 
@@ -209,11 +218,9 @@ For new packages, please use an NX generator plugin to create your initial packa
 
 Your PR Title should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) Format.
 
-Because we automatically squash merge Pull Requests, you'll need to format your PR title to match these guidelines since the title will become the commit message.
+Because we automatically squash merge Pull Requests, you'll need to format your PR title to match these guidelines.
 
-Your individual commits will affect the `alpha` version number, but not the final version once you merge to main.
-
-This Title format will be linted in the `conventional-pr-title` status check and prevent merging if you do not follow the correct format.
+**Note:** With the migration to NX Release and Version Plans, the version bumps are now determined by the version plan files you create using `yarn nx release plan`, rather than commit messages. However, we still recommend following Conventional Commits format for consistency and clarity.
 
 ### PR Title Format
 
@@ -249,7 +256,7 @@ Check out the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 
 **Type**
 
-The `type` determines what kind of version bump is needed. A `fix` will create a `patch` release, while a `feat` will create a `minor` release. Major version updates require a special syntax that is described below.
+The `type` describes what kind of change you're making. With NX Release and Version Plans, you'll specify the version bump (major/minor/patch) directly when creating your version plan using `yarn nx release plan`.
 
 `type` must be one of the following options:
 
