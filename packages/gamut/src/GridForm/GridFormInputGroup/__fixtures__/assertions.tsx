@@ -113,6 +113,54 @@ export const additionalRadioGroupTests = ({
       expect(tip).toBeVisible();
     });
 
+    it('links InfoTip to Radio label via aria-labelledby', () => {
+      const info = 'helpful information';
+      const labelText = 'Radio Option';
+
+      const { view } = renderField({
+        field: {
+          ...defaultFieldProps,
+          id: 'id',
+          options: [
+            {
+              label: labelText,
+              value: 'option1',
+              infotip: { info },
+            },
+          ],
+          name: 'name',
+        },
+      });
+
+      view.getByRole('button', { name: labelText });
+    });
+
+    it('allows overriding InfoTip aria-labelledby with explicit ariaLabel', () => {
+      const info = 'helpful information';
+      const labelText = 'Radio Option';
+      const ariaLabel = 'Custom InfoTip Label';
+
+      const { view } = renderField({
+        field: {
+          ...defaultFieldProps,
+          id: 'id',
+          options: [
+            {
+              label: labelText,
+              value: 'option1',
+              infotip: { info, ariaLabel },
+            },
+          ],
+          name: 'name',
+        },
+      });
+
+      view.getByRole('button', { name: ariaLabel });
+      expect(
+        view.queryByRole('button', { name: labelText })
+      ).not.toBeInTheDocument();
+    });
+
     describe('aria-label', () => {
       it('aria-label is set to the label by default', () => {
         const { view } = renderField({

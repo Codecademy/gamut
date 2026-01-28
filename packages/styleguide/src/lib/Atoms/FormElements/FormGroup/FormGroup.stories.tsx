@@ -1,4 +1,4 @@
-import { FormGroup, Input } from '@codecademy/gamut';
+import { Box, FormGroup, Input } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
@@ -6,9 +6,7 @@ import { infotipNestedArgTypes } from '~styleguide/argTypes';
 
 const meta: TypeWithDeepControls<Meta<typeof FormGroup>> = {
   component: FormGroup,
-  argTypes: {
-    ...infotipNestedArgTypes,
-  },
+  argTypes: { ...infotipNestedArgTypes },
 };
 
 export default meta;
@@ -96,4 +94,47 @@ export const HighEmphasisInfoTip: Story = {
     },
     children: <Input />,
   },
+};
+
+const InfoTipLabellingExamples = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap={32}>
+      <FormGroup
+        htmlFor="auto-label-input"
+        infotip={{
+          info: 'We will never share your email with third parties.',
+        }}
+        label="Auto-labelling (default)"
+      >
+        <Input htmlFor="auto-label-input" type="email" />
+      </FormGroup>
+
+      <FormGroup
+        htmlFor="aria-label-input"
+        infotip={{
+          ariaLabel: 'Email privacy information',
+          info: 'We will never share your email with third parties.',
+        }}
+        label="With ariaLabel"
+      >
+        <Input htmlFor="aria-label-input" type="email" />
+      </FormGroup>
+
+      <FormGroup
+        htmlFor="aria-labelledby-input"
+        infotip={{
+          ariaLabelledby: 'custom-label-id',
+          info: 'We will never share your email with third parties.',
+        }}
+        label="With ariaLabelledBy"
+      >
+        <span id="custom-label-id">Custom label for InfoTip button</span>
+        <Input htmlFor="aria-labelledby-input" type="email" />
+      </FormGroup>
+    </Box>
+  );
+};
+
+export const InfoTipAutoLabelling: Story = {
+  render: () => <InfoTipLabellingExamples />,
 };

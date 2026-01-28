@@ -4,6 +4,7 @@ import { act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Radio } from '../inputs/Radio';
+import { createExternalLabel } from './testUtils';
 
 const onChangeCallback = jest.fn();
 const testid = 'my-test-id';
@@ -62,5 +63,57 @@ describe('<Radio>', () => {
       'data-testid',
       testid
     );
+  });
+
+  describe('InfoTip accessibility', () => {
+    const info = 'helpful information';
+    const labelText = 'Radio Label';
+
+    it('automatically links InfoTip to Radio label via aria-labelledby', () => {
+      const { view } = renderView({
+        label: labelText,
+        infotip: { info },
+      });
+
+      view.getByRole('button', { name: labelText });
+    });
+
+    it('uses explicit ariaLabel when provided', () => {
+      const ariaLabel = 'Custom label';
+      const { view } = renderView({
+        label: labelText,
+        infotip: { info, ariaLabel },
+      });
+
+      view.getByRole('button', { name: ariaLabel });
+      expect(
+        view.queryByRole('button', { name: labelText })
+      ).not.toBeInTheDocument();
+    });
+
+    it('uses explicit ariaLabelledby when provided', () => {
+      const externalLabelId = 'external-label-id';
+      const externalLabelText = 'External Label';
+      const { view } = renderView({
+        label: labelText,
+        infotip: { info, ariaLabelledby: externalLabelId },
+      });
+
+      createExternalLabel(view, externalLabelId, externalLabelText);
+
+      view.getByRole('button', { name: externalLabelText });
+      expect(
+        view.queryByRole('button', { name: labelText })
+      ).not.toBeInTheDocument();
+    });
+
+    it('links InfoTip to label with JSX label content', () => {
+      const { view } = renderView({
+        label: <span>{labelText}</span>,
+        infotip: { info },
+      });
+
+      view.getByRole('button', { name: labelText });
+    });
   });
 });

@@ -12,8 +12,11 @@ import { MiniStarIcon } from '@codecademy/gamut-icons';
 import { Background } from '@codecademy/gamut-styles';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import type { TypeWithDeepControls } from 'storybook-addon-deep-controls';
 
-const meta: Meta<typeof Checkbox> = {
+import { infotipNestedArgTypes } from '~styleguide/argTypes';
+
+const meta: TypeWithDeepControls<Meta<typeof Checkbox>> = {
   component: Checkbox,
   args: {
     htmlFor: 'example-checkbox',
@@ -22,6 +25,9 @@ const meta: Meta<typeof Checkbox> = {
     checked: true,
     readOnly: true,
     onChange: () => {},
+  },
+  argTypes: {
+    ...infotipNestedArgTypes,
   },
 };
 
@@ -164,6 +170,20 @@ export const LabelsAsReactNodes: Story = {
       </FlexBox>
     </Box>
   ),
+};
+
+export const InfoTip: Story = {
+  args: {
+    htmlFor: 'example-infotip',
+    label: 'Checkbox with InfoTip',
+    name: 'example-infotip',
+    infotip: {
+      emphasis: 'high',
+      info: 'This is an infotip that provides additional information about the checkbox.',
+      placement: 'floating',
+    },
+    checked: false,
+  },
 };
 
 type CustomCheckboxProps = Omit<

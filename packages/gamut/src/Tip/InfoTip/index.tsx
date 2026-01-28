@@ -8,7 +8,6 @@ import {
 } from 'react';
 
 import { getFocusableElements as getFocusableElementsUtil } from '../../utils/focus';
-import { extractTextContent } from '../../utils/react';
 import { FloatingTip } from '../shared/FloatingTip';
 import { InlineTip } from '../shared/InlineTip';
 import {
@@ -16,27 +15,67 @@ import {
   TipBaseProps,
   tipDefaultProps,
 } from '../shared/types';
-import { isElementVisible } from '../shared/utils';
-import { ScreenreaderNavigableText } from './elements';
+import { isFloatingElementOpen } from '../shared/utils';
 import { InfoTipButton } from './InfoTipButton';
 
-export type InfoTipProps = TipBaseProps & {
+/**
+ * Base props shared by all InfoTip variants.
+ * Contains all common props except the aria-* specific props.
+ */
+export type InfoTipBaseProps = TipBaseProps & {
   alignment?: TipBaseAlignment;
+  /**
+   * Accessible role description for the InfoTip button. Useful for translation.
+   * @default "More information button"
+   */
+  ariaRoleDescription?: string;
   emphasis?: 'low' | 'high';
   /**
-   * Called when the info tip is clicked - the onClick function is called after the DOM updates and the tip is mounted.
+   * Called when the InfoTip button is clicked - the onClick function is called after the DOM updates and the tip is mounted.
    */
   onClick?: (arg0: { isTipHidden: boolean }) => void;
+  /**
+   * Use the camelCase syntax to pass aria-* props to the InfoTip button.
+   */
+  'aria-label'?: never;
+  /**
+   * Use the camelCase syntax to pass aria-* props to the InfoTip button.
+   */
+  'aria-labelledby'?: never;
+  /**
+   * Use the camelCase syntax to pass aria-* props to the InfoTip button.
+   */
+  'aria-roledescription'?: never;
 };
 
-const ARIA_HIDDEN_DELAY_MS = 1000;
+type InfoTipPropsWithAriaLabel = InfoTipBaseProps & {
+  /**
+   * Accessible label for the InfoTip button. ariaLabel or ariaLabelledby should be provided for accessibility.
+   */
+  ariaLabel?: string;
+  ariaLabelledby?: never;
+};
 
-// Match native dialogs with open attribute, and role-based dialogs that aren't aria-hidden
+type InfoTipPropsWithAriaLabelledby = InfoTipBaseProps & {
+  ariaLabel?: never;
+  /**
+   * ID of an element that labels the InfoTip button.
+   */
+  ariaLabelledby?: string;
+};
+
+export type InfoTipProps =
+  | InfoTipPropsWithAriaLabel
+  | InfoTipPropsWithAriaLabelledby;
+
 const MODAL_SELECTOR =
   'dialog[open],[role="dialog"]:not([aria-hidden="true"]),[role="alertdialog"]:not([aria-hidden="true"])';
 
 export const InfoTip: React.FC<InfoTipProps> = ({
   alignment = 'top-right',
+  ariaLabel,
+  ariaLabelledby,
+  ariaRoleDescription = 'More information button',
   emphasis = 'low',
   info,
   onClick,
@@ -46,8 +85,6 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const isFloating = placement === 'floating';
 
   const [isTipHidden, setHideTip] = useState(true);
-  const [isAriaHidden, setIsAriaHidden] = useState(false);
-  const [shouldAnnounce, setShouldAnnounce] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -55,27 +92,9 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const popoverContentNodeRef = useRef<HTMLDivElement | null>(null);
   const isInitialMount = useRef(true);
 
-  const ariaHiddenTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const announceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
   const getFocusableElements = useCallback(() => {
     return getFocusableElementsUtil(popoverContentNodeRef.current);
   }, []);
-
-  const clearAndSetTimeout = useCallback(
-    (
-      timeoutRef: React.MutableRefObject<NodeJS.Timeout | null>,
-      callback: () => void,
-      delay: number
-    ) => {
-      clearTimeout(timeoutRef.current ?? undefined);
-      timeoutRef.current = setTimeout(() => {
-        callback();
-        timeoutRef.current = null;
-      }, delay);
-    },
-    []
-  );
 
   const popoverContentRef = useCallback(
     (node: HTMLDivElement | null) => {
@@ -90,35 +109,11 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
   useEffect(() => {
     setLoaded(true);
-
-    const ariaHiddenTimeout = ariaHiddenTimeoutRef.current;
-    const announceTimeout = announceTimeoutRef.current;
-
-    return () => {
-      clearTimeout(ariaHiddenTimeout ?? undefined);
-      clearTimeout(announceTimeout ?? undefined);
-    };
   }, []);
 
-  const setTipIsHidden = useCallback(
-    (nextTipState: boolean) => {
-      setHideTip(nextTipState);
-
-      if (!nextTipState && !isFloating) {
-        clearAndSetTimeout(
-          ariaHiddenTimeoutRef,
-          () => setIsAriaHidden(true),
-          ARIA_HIDDEN_DELAY_MS
-        );
-      } else if (nextTipState) {
-        if (isAriaHidden) setIsAriaHidden(false);
-        setShouldAnnounce(false);
-        clearTimeout(ariaHiddenTimeoutRef.current ?? undefined);
-        ariaHiddenTimeoutRef.current = null;
-      }
-    },
-    [isAriaHidden, isFloating, clearAndSetTimeout]
-  );
+  const setTipIsHidden = useCallback((nextTipState: boolean) => {
+    setHideTip(nextTipState);
+  }, []);
 
   const handleOutsideClick = useCallback(
     (e: MouseEvent) => {
@@ -137,11 +132,7 @@ export const InfoTip: React.FC<InfoTipProps> = ({
   const clickHandler = useCallback(() => {
     const currentTipState = !isTipHidden;
     setTipIsHidden(currentTipState);
-
-    if (!currentTipState) {
-      clearAndSetTimeout(announceTimeoutRef, () => setShouldAnnounce(true), 0);
-    }
-  }, [isTipHidden, setTipIsHidden, clearAndSetTimeout]);
+  }, [isTipHidden, setTipIsHidden]);
 
   useLayoutEffect(() => {
     if (isInitialMount.current) {
@@ -170,12 +161,14 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       if (e.key !== 'Escape') return;
 
       const openModals = document.querySelectorAll(MODAL_SELECTOR);
-      const hasUnrelatedModal = Array.from(openModals).some(
-        (modal) =>
-          isElementVisible(modal) &&
-          wrapperRef.current &&
-          !modal.contains(wrapperRef.current)
-      );
+      const hasUnrelatedModal = Array.from(openModals).some((modal) => {
+        // Only consider floating elements that are actually open
+        if (!isFloatingElementOpen(modal)) {
+          return false;
+        }
+        // Check if it's unrelated to this InfoTip
+        return wrapperRef.current && !modal.contains(wrapperRef.current);
+      });
 
       if (hasUnrelatedModal) return;
 
@@ -192,7 +185,16 @@ export const InfoTip: React.FC<InfoTipProps> = ({
         if (event.key !== 'Tab' || event.shiftKey) return;
 
         const focusableElements = getFocusableElements();
-        if (focusableElements.length === 0) return;
+        const { activeElement } = document;
+
+        // If no focusable elements and popover itself has focus, wrap to button
+        if (focusableElements.length === 0) {
+          if (activeElement === popoverContentNodeRef.current) {
+            event.preventDefault();
+            buttonRef.current?.focus();
+          }
+          return;
+        }
 
         const lastElement = focusableElements[focusableElements.length - 1];
 
@@ -218,7 +220,17 @@ export const InfoTip: React.FC<InfoTipProps> = ({
 
     return () =>
       document.removeEventListener('keydown', handleGlobalEscapeKey, true);
-  }, [isTipHidden, isFloating, setTipIsHidden, getFocusableElements]);
+  }, [isTipHidden, isFloating, getFocusableElements, setTipIsHidden]);
+
+  useEffect(() => {
+    if (isTipHidden) return;
+
+    const timeoutId = setTimeout(() => {
+      popoverContentNodeRef.current?.focus();
+    }, 0);
+
+    return () => clearTimeout(timeoutId);
+  }, [isTipHidden]);
 
   const Tip = loaded && isFloating ? FloatingTip : InlineTip;
 
@@ -227,69 +239,25 @@ export const InfoTip: React.FC<InfoTipProps> = ({
       alignment,
       info,
       isTipHidden,
+      contentRef: popoverContentRef,
       wrapperRef,
-      ...(isFloating && { popoverContentRef }),
       ...rest,
     }),
-    [
-      alignment,
-      info,
-      isTipHidden,
-      wrapperRef,
-      isFloating,
-      popoverContentRef,
-      rest,
-    ]
+    [alignment, info, isTipHidden, popoverContentRef, wrapperRef, rest]
   );
 
-  const extractedTextContent = useMemo(() => extractTextContent(info), [info]);
-
-  const screenreaderInfo =
-    shouldAnnounce && !isTipHidden ? extractedTextContent : '\xa0';
-
-  const screenreaderText = useMemo(
-    () => (
-      <ScreenreaderNavigableText
-        aria-hidden={isAriaHidden}
-        aria-live="assertive"
-        screenreader
-      >
-        {screenreaderInfo}
-      </ScreenreaderNavigableText>
-    ),
-    [isAriaHidden, screenreaderInfo]
-  );
-
-  const button = useMemo(
-    () => (
+  return (
+    <Tip {...tipProps} type="info">
       <InfoTipButton
         active={!isTipHidden}
         aria-expanded={!isTipHidden}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledby}
+        aria-roledescription={ariaRoleDescription}
         emphasis={emphasis}
         ref={buttonRef}
         onClick={clickHandler}
       />
-    ),
-    [isTipHidden, emphasis, clickHandler]
-  );
-
-  /*
-   * For floating placement, screenreader text comes before button to maintain
-   * correct DOM order despite Portal rendering. See GMT-64 for planned fix.
-   */
-  return (
-    <Tip {...tipProps} type="info">
-      {isFloating && alignment.includes('top') ? (
-        <>
-          {screenreaderText}
-          {button}
-        </>
-      ) : (
-        <>
-          {button}
-          {screenreaderText}
-        </>
-      )}
     </Tip>
   );
 };

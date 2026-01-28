@@ -69,6 +69,12 @@ A field can include <LinkTo id="Molecules/Tips/InfoTip"> our existing `InfoTip`<
 
 <Canvas of={FormGroupStories.HighEmphasisInfoTip} />
 
+#### Accessibility
+
+InfoTip buttons are automatically labelled by string field labels for accessibility - you can override this behaviour if needed by passing `ariaLabel` or `ariaLabelledBy` to the field's `InfoTip` via the `infoTipProps` object.
+
+<Canvas of={FormGroupStories.InfoTipAutoLabelling} />
+
 ## Playground
 
 <Canvas sourceState="shown" of={FormGroupStories.Default} />

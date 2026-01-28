@@ -9,6 +9,7 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
   className,
   disabled,
   id,
+  infotip,
   label,
   'aria-label': ariaLabel,
   multiline,
@@ -41,6 +42,7 @@ export const ConnectedCheckbox: React.FC<ConnectedCheckboxProps> = ({
           disabled={isDisabled}
           htmlFor={name}
           id={id}
+          infotip={infotip}
           label={label}
           multiline={multiline}
           name={name}

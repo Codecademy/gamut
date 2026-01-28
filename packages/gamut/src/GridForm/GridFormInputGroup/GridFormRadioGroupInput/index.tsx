@@ -32,12 +32,13 @@ export const GridFormRadioGroupInput: React.FC<
         field.onUpdate?.(value);
       }}
     >
-      {field.options.map(({ label, value, ...rest }) => (
+      {field.options.map(({ label, value, infotip, ...rest }) => (
         <Radio
           {...register(field.name, field.validation)}
           disabled={disabled}
           error={error}
           id={field.id}
+          infotip={infotip}
           key={value}
           label={label}
           value={value}

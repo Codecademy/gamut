@@ -4,6 +4,7 @@ import {
   transitionConcat,
   variant,
 } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 
 export type conditionalStyleProps = {
   error?: boolean;
@@ -91,6 +92,15 @@ export const formBaseFieldStylesObject = {
 } as const;
 
 export const formBaseFieldStyles = css(formBaseFieldStylesObject);
+
+const inputWrapper = css({
+  margin: '0.25rem 0',
+  width: '100%',
+  fontWeight: 'normal',
+  display: 'flex',
+});
+
+export const InputWrapper = styled.div(inputWrapper);
 
 export const formFieldStyles = css({
   ...formBaseFieldStylesObject,
