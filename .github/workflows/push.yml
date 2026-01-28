@@ -7,12 +7,7 @@ on:
   pull_request:
 
 permissions:
-  id-token: write
   contents: read
-  pull-requests: write
-  issues: write
-  actions: write
-  statuses: write
 
 jobs:
   format:
