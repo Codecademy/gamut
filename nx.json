@@ -67,5 +67,21 @@
   "parallel": 3,
   "useInferencePlugins": false,
   "defaultBase": "main",
-  "analytics": false
+  "analytics": false,
+  "release": {
+    "projects": ["packages/*"],
+    "projectsRelationship": "independent",
+    "versionPlans": true,
+    "changelog": {
+      "workspaceChangelog": false,
+      "projectChangelogs": {
+        "createRelease": "github"
+      }
+    },
+    "git": {
+      "commit": true,
+      "commitMessage": "chore(release): publish",
+      "tag": true
+    }
+  }
 }
