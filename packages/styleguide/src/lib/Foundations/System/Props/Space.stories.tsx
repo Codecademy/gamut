@@ -1,4 +1,4 @@
-import { Box } from '@codecademy/gamut';
+import { Box, Markdown } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Box> = {
@@ -13,16 +13,36 @@ export const MarginExample: Story = {
   render: () => (
     <Box
       bg="primary"
-      color="white"
+      color="background-contrast"
       mb={64}
       ml={16}
       mr={32}
       mt={4}
       textAlign="center"
     >
-      This box has <code>mt={4}</code>, <code>mr={32}</code>,{' '}
-      <code>mb={64}</code>, and <code>ml={16}</code>. Inspect the example to see
-      what CSS properties are rendered.
+      This box has{' '}
+      <Markdown text="`mt={4}`, `mr={32}`, `mb={64}`, and `ml={16}`." /> Inspect
+      the example to see what CSS properties are rendered.
+    </Box>
+  ),
+};
+
+export const PaddingExample: Story = {
+  render: () => (
+    <Box bg="background-selected">
+      <Box
+        bg="primary"
+        color="background-contrast"
+        pb={64}
+        pl={16}
+        pr={32}
+        pt={4}
+        textAlign="center"
+      >
+        This box has{' '}
+        <Markdown text="`pt={4}`, `pr={32}`, `pb={64}`, and `pl={16}`." />{' '}
+        Inspect the example to see what CSS properties are rendered.
+      </Box>
     </Box>
   ),
 };

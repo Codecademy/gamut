@@ -287,18 +287,54 @@ export const padding = {
   p: { property: 'padding', scale: 'spacing' },
   px: {
     property: 'padding',
-    properties: ['paddingLeft', 'paddingRight'],
+    properties: {
+      physical: ['paddingLeft', 'paddingRight'],
+      logical: ['paddingInlineStart', 'paddingInlineEnd'],
+    },
     scale: 'spacing',
+    resolveProperty: getPropertyMode,
   },
   py: {
     property: 'padding',
-    properties: ['paddingTop', 'paddingBottom'],
+    properties: {
+      physical: ['paddingTop', 'paddingBottom'],
+      logical: ['paddingBlockStart', 'paddingBlockEnd'],
+    },
     scale: 'spacing',
+    resolveProperty: getPropertyMode,
   },
-  pt: { property: 'paddingTop', scale: 'spacing' },
-  pb: { property: 'paddingBottom', scale: 'spacing' },
-  pr: { property: 'paddingRight', scale: 'spacing' },
-  pl: { property: 'paddingLeft', scale: 'spacing' },
+  pt: {
+    property: {
+      physical: 'paddingTop',
+      logical: 'paddingBlockStart',
+    },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode,
+  },
+  pb: {
+    property: {
+      physical: 'paddingBottom',
+      logical: 'paddingBlockEnd',
+    },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode,
+  },
+  pr: {
+    property: {
+      physical: 'paddingRight',
+      logical: 'paddingInlineEnd',
+    },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode,
+  },
+  pl: {
+    property: {
+      physical: 'paddingLeft',
+      logical: 'paddingInlineStart',
+    },
+    scale: 'spacing',
+    resolveProperty: getPropertyMode,
+  },
 } as const;
 
 export const space = {

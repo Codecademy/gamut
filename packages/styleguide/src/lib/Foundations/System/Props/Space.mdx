@@ -26,16 +26,19 @@ const SpaceExample = styled.div(system.space);
 <SpaceExample p={8} my={[16, 24, 32]} />;
 ```
 
+These space props support both physical and logical CSS properties and will render the appropriate properties based on `useLogicalProperties`'s value passed into the `<GamutProvider>` at the root of your application.
+
 <Callout
   text={
     <>
-      Props like <code>mx</code> and <code>my</code> support both physical and
-      logical CSS properties. Use the <strong>LogicalProps</strong> toolbar to
+      You can use the <strong>LogicalProps</strong> button in thetoolbar to
       switch between modes.
     </>
   }
 />
 
 <Canvas of={SpaceStories.MarginExample} />
+
+<Canvas of={SpaceStories.PaddingExample} />
 
 <TokenTable rows={getPropRows('space')} columns={defaultColumns} />
