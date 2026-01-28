@@ -75,12 +75,19 @@
       "workspaceChangelog": false,
       "projectChangelogs": {
         "createRelease": "github"
+      },
+      "git": {
+        "commit": true,
+        "commitMessage": "chore(release): publish",
+        "tag": false
       }
     },
-    "git": {
-      "commit": true,
-      "commitMessage": "chore(release): publish",
-      "tag": true
+    "version": {
+      "git": {
+        "commit": true,
+        "commitMessage": "chore(release): publish",
+        "tag": true
+      }
     }
   }
 }
