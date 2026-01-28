@@ -53,7 +53,7 @@ jobs:
         run: |
           SHORT_SHA=${GITHUB_SHA:0:6}
           PREID="alpha.${SHORT_SHA}"
-          npx nx release version prerelease --preid="${PREID}" --skip-publish --yes
+          npx nx release version prerelease --preid="${PREID}" --skip-publish --git-commit=false --git-tag=false --yes
           npx nx release publish --tag="${PREID}" --yes
         env:
           GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
