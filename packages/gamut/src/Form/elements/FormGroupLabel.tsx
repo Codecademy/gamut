@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { HTMLAttributes } from 'react';
 import * as React from 'react';
 
-import { FlexBox } from '../..';
+import { FlexBox } from '../../Box';
 import { InfoTip, InfoTipProps } from '../../Tip/InfoTip';
 import { Text } from '../../Typography/Text';
 import { formBaseStyles, formFieldTextDisabledStyles } from '../styles';
