@@ -331,6 +331,28 @@ export const testModalDoesNotCloseInfoTip = async ({
   }
 };
 
+export const testNonBlockingDialogAllowsEscapeToCloseTip = async ({
+  view,
+  info,
+  placement,
+}: ViewParam & InfoParam & PlacementParam) => {
+  const button = await clickButton(view);
+
+  await assertTipOpen({ view, button, info });
+
+  const mockDialog = document.createElement('div');
+  mockDialog.setAttribute('role', 'dialog');
+  // No aria-modal="true" so it matches MODAL_SELECTOR but isFloatingElementOpen returns false
+
+  const isFloating = placement === 'floating';
+  const parent = isFloating ? view.container : document.body;
+
+  await withTemporaryElement(mockDialog, parent, async () => {
+    await pressKey('{Escape}');
+    await assertTipClosed({ view, button, info, placement });
+  });
+};
+
 export const testRapidToggle = async ({
   view,
   onClick,

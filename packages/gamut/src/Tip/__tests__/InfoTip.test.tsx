@@ -17,6 +17,7 @@ import {
   testFocusWrap,
   testInfoTipInsideModalClosesOnEscape,
   testModalDoesNotCloseInfoTip,
+  testNonBlockingDialogAllowsEscapeToCloseTip,
   testOutsideClick,
   testRapidToggle,
   testTabbingBetweenLinks,
@@ -93,6 +94,15 @@ describe('InfoTip', () => {
 
     it('closes the tip when Escape is pressed if the InfoTip is inside a modal', async () => {
       await testInfoTipInsideModalClosesOnEscape({ info, placement });
+    });
+
+    it('closes the tip when Escape is pressed even when a non-blocking dialog (e.g. role="dialog" without aria-modal) is in the DOM', async () => {
+      const { view } = renderView({ placement });
+      await testNonBlockingDialogAllowsEscapeToCloseTip({
+        view,
+        info,
+        placement,
+      });
     });
 
     it('closes the tip when clicking outside the wrapper', async () => {
