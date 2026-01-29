@@ -1,4 +1,4 @@
-import { GamutProvider, theme } from '@codecademy/gamut-styles';
+import { MockGamutProvider } from '@codecademy/gamut-tests';
 import { render } from '@testing-library/react';
 
 import {
@@ -546,17 +546,11 @@ describe('ConnectedNestedCheckboxes utils', () => {
     });
 
     it.each([
-      {
-        useLogicalProperties: true,
-        marginProp: 'marginInlineStart',
-      },
-      {
-        useLogicalProperties: false,
-        marginProp: 'marginLeft',
-      },
+      { useLogicalProperties: true, marginLeft: 'marginInlineStart' },
+      { useLogicalProperties: false, marginLeft: 'marginLeft' },
     ])(
       'should apply correct margin based on level (useLogicalProperties: $useLogicalProperties)',
-      ({ useLogicalProperties, marginProp }) => {
+      ({ useLogicalProperties, marginLeft }) => {
         const state = { checked: false, indeterminate: false };
 
         const result = renderCheckbox({
@@ -572,18 +566,13 @@ describe('ConnectedNestedCheckboxes utils', () => {
         });
 
         const { container } = render(
-          <GamutProvider
-            theme={theme}
-            useCache={false}
-            useGlobals={false}
-            useLogicalProperties={useLogicalProperties}
-          >
+          <MockGamutProvider useLogicalProperties={useLogicalProperties}>
             {result}
-          </GamutProvider>
+          </MockGamutProvider>
         );
         const listItem = container.querySelector('li');
 
-        expect(listItem).toHaveStyle({ [marginProp]: '3rem' }); // 24px * 2 = 48px = 3rem
+        expect(listItem).toHaveStyle({ [marginLeft]: '3rem' }); // 24px * 2 = 48px = 3rem
       }
     );
 

@@ -1,5 +1,4 @@
-import { GamutProvider, theme } from '@codecademy/gamut-styles';
-import { setupRtl } from '@codecademy/gamut-tests';
+import { MockGamutProvider, setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -92,20 +91,15 @@ describe('ConnectedNestedCheckboxes', () => {
     });
 
     it.each([
-      { useLogicalProperties: true, marginProp: 'marginInlineStart' },
-      { useLogicalProperties: false, marginProp: 'marginLeft' },
+      { useLogicalProperties: true, marginLeft: 'marginInlineStart' },
+      { useLogicalProperties: false, marginLeft: 'marginLeft' },
     ])(
       'should render checkboxes with proper indentation levels (useLogicalProperties: $useLogicalProperties)',
-      ({ useLogicalProperties, marginProp }) => {
+      ({ useLogicalProperties, marginLeft }) => {
         render(
-          <GamutProvider
-            theme={theme}
-            useCache={false}
-            useGlobals={false}
-            useLogicalProperties={useLogicalProperties}
-          >
+          <MockGamutProvider useLogicalProperties={useLogicalProperties}>
             <TestForm />
-          </GamutProvider>
+          </MockGamutProvider>
         );
 
         const frontendCheckbox = screen
@@ -117,10 +111,10 @@ describe('ConnectedNestedCheckboxes', () => {
           .getByLabelText('Express.js')
           .closest('li');
 
-        expect(frontendCheckbox).toHaveStyle({ [marginProp]: '0' });
-        expect(reactCheckbox).toHaveStyle({ [marginProp]: '1.5rem' });
-        expect(nodeCheckbox).toHaveStyle({ [marginProp]: '1.5rem' });
-        expect(expressCheckbox).toHaveStyle({ [marginProp]: '3rem' });
+        expect(frontendCheckbox).toHaveStyle({ [marginLeft]: '0' });
+        expect(reactCheckbox).toHaveStyle({ [marginLeft]: '1.5rem' });
+        expect(nodeCheckbox).toHaveStyle({ [marginLeft]: '1.5rem' });
+        expect(expressCheckbox).toHaveStyle({ [marginLeft]: '3rem' });
       }
     );
 

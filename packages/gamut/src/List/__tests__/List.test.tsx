@@ -1,6 +1,7 @@
 import { theme } from '@codecademy/gamut-styles';
-import { setupRtl } from '@codecademy/gamut-tests';
+import { MockGamutProvider, setupRtl } from '@codecademy/gamut-tests';
 import { matchers } from '@emotion/jest';
+import { render, screen } from '@testing-library/react';
 
 import { List } from '../List';
 import { ListCol } from '../ListCol';
@@ -48,17 +49,39 @@ describe('List', () => {
     expect(rowEl).toHaveStyle({ columnGap: theme.spacing[40] });
   });
 
-  it('configures columns with the correct variants', () => {
-    const { view } = renderView();
+  it.each([
+    {
+      useLogicalProperties: true,
+      paddingLeft: 'paddingInlineStart',
+      paddingRight: 'paddingInlineEnd',
+    },
+    {
+      useLogicalProperties: false,
+      paddingLeft: 'paddingLeft',
+      paddingRight: 'paddingRight',
+    },
+  ])(
+    'configures columns with the correct variants (useLogicalProperties: $useLogicalProperties)',
+    ({ useLogicalProperties, paddingLeft, paddingRight }) => {
+      render(
+        <MockGamutProvider useLogicalProperties={useLogicalProperties}>
+          <List id="list-el">
+            <ListRow data-testid="row-el">
+              <ListCol>Hello</ListCol>
+            </ListRow>
+          </List>
+        </MockGamutProvider>
+      );
 
-    const colEl = view.getByText('Hello');
+      const colEl = screen.getByText('Hello');
 
-    expect(colEl).not.toHaveStyle({ py: 16 });
-    expect(colEl).toHaveStyle({ paddingLeft: theme.spacing[8] });
-    expect(colEl).toHaveStyle({ paddingRight: theme.spacing[8] });
+      expect(colEl).not.toHaveStyle({ py: 16 });
+      expect(colEl).toHaveStyle({ [paddingLeft]: theme.spacing[8] });
+      expect(colEl).toHaveStyle({ [paddingRight]: theme.spacing[8] });
 
-    expect(colEl).not.toHaveStyle({ position: 'sticky' });
-  });
+      expect(colEl).not.toHaveStyle({ position: 'sticky' });
+    }
+  );
 
   it('fixes the row header column when scrollable - but not other columns', () => {
     const { view } = renderView({
