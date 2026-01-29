@@ -95,3 +95,22 @@ Hidden inputs can be used to include data that users can't see or modify with th
 We call it a "sweet container" so that bots do not immediately detect it as a honeypot input.
 
 <Canvas of={FieldsStories.SweetContainer} />
+
+## InfoTip
+
+Any field can include an `infotip` prop to provide additional context to users.
+
+### Automatic labelling
+
+InfoTip buttons are automatically labelled by string field labels for accessibility.
+
+<Canvas of={FieldsStories.InfoTipAutoLabelling} />
+
+### ReactNode labels
+
+For ReactNode labels, the InfoTip is automatically labelled by the field label. You can override this behavior by providing:
+
+- `ariaLabel` - provide a custom accessible name
+- `ariaLabelledby` - reference another element on the page, such as a section heading
+
+<Canvas of={FieldsStories.InfoTipWithReactNodeLabel} />
