@@ -1626,7 +1626,7 @@ __metadata:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
     lodash: ^4.17.23
-    react: ^17.0.2 || ^18.2.0
+    react: ^17.0.2 || ^18.3.0
   languageName: unknown
   linkType: soft
 
@@ -1639,8 +1639,8 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    react: ^17.0.2 || ^18.2.0
-    react-dom: ^17.0.2 || ^18.2.0
+    react: ^17.0.2 || ^18.3.0
+    react-dom: ^17.0.2 || ^18.3.0
   languageName: unknown
   linkType: soft
 
@@ -1669,8 +1669,8 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    react: ^17.0.2 || ^18.2.0
-    react-dom: ^17.0.2 || ^18.2.0
+    react: ^17.0.2 || ^18.3.0
+    react-dom: ^17.0.2 || ^18.3.0
   languageName: unknown
   linkType: soft
 
@@ -1686,7 +1686,7 @@ __metadata:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
     lodash: ^4.17.23
-    react: ^17.0.2 || ^18.2.0
+    react: ^17.0.2 || ^18.3.0
     stylis: ^4.0.7
   languageName: unknown
   linkType: soft
@@ -1699,7 +1699,7 @@ __metadata:
     component-test-setup: "npm:*"
     lodash: "npm:^4.17.23"
   peerDependencies:
-    react: ^17.0.2 || ^18.2.0
+    react: ^17.0.2 || ^18.3.0
   languageName: unknown
   linkType: soft
 
@@ -1733,8 +1733,8 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    react: ^17.0.2 || ^18.2.0
-    react-dom: ^17.0.2 || ^18.2.0
+    react: ^17.0.2 || ^18.3.0
+    react-dom: ^17.0.2 || ^18.3.0
   languageName: unknown
   linkType: soft
 
@@ -8254,21 +8254,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-test-renderer@npm:>=16.9.0":
+"@types/react-test-renderer@npm:18.3.0, @types/react-test-renderer@npm:>=16.9.0":
   version: 18.3.0
   resolution: "@types/react-test-renderer@npm:18.3.0"
   dependencies:
     "@types/react": "npm:*"
   checksum: 10c0/3c9748be52e8e659e7adf91dea6939486463264e6f633bf21c4cb116de18af7bef0595568a1e588160420b2f65289473075dda1cb417c2875df8cf7a09f5d913
-  languageName: node
-  linkType: hard
-
-"@types/react-test-renderer@npm:^17.0.1":
-  version: 17.0.9
-  resolution: "@types/react-test-renderer@npm:17.0.9"
-  dependencies:
-    "@types/react": "npm:^17"
-  checksum: 10c0/9147c6fbe08b4b8e130758b4b20af1cab7bbb770eadec5336c36d8ccac14202e703a58cd1e90f67b3753390a521ed23f80cb9184c06aafb56d196303cd3394b1
   languageName: node
   linkType: hard
 
@@ -14296,7 +14287,7 @@ __metadata:
     "@types/lodash": "npm:4.17.23"
     "@types/react": "npm:18.3.27"
     "@types/react-dom": "npm:18.3.1"
-    "@types/react-test-renderer": "npm:^17.0.1"
+    "@types/react-test-renderer": "npm:18.3.0"
     "@types/stylis": "npm:^4.2.0"
     "@typescript-eslint/eslint-plugin": "npm:^5.15.0"
     "@typescript-eslint/parser": "npm:^5.15.0"
