@@ -1,13 +1,19 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, Callout, Code, ImageWrapper, TokenTable } from '~styleguide/blocks';
+import {
+  AboutHeader,
+  Callout,
+  Code,
+  ImageWrapper,
+  TokenTable,
+} from '~styleguide/blocks';
 
 export const parameters = {
   id: 'Meta/Logical and physical CSS properties',
   title: 'Logical and physical CSS properties',
   subtitle:
     'Understanding CSS logical and physical properties and how Gamut supports both modes.',
-  status: 'static'
+  status: 'static',
 };
 
 <Meta title="Meta/Logical and physical CSS properties" />
@@ -34,7 +40,6 @@ Logical properties reference the flow of content:
 - **Inline axis** (text direction): `margin-inline-start`, `margin-inline-end`
 - **Block axis** (reading direction): `margin-block-start`, `margin-block-end`
 
-
 ## Using `useLogicalProperties` in Gamut
 
 Gamut supports both physical and logical CSS properties through the `useLogicalProperties` prop on `GamutProvider`. This allows you to choose which mode your application uses. By default, `useLogicalProperties` is set to `true`, meaning Gamut will use logical CSS properties. If you want to use physical CSS properties, you have to set `useLogicalProperties` to `false`.
@@ -46,17 +51,52 @@ Here are some examples of how physical and logical properties are affected by th
 <TokenTable
   idKey="prop"
   columns={[
-    { key: 'prop', name: 'Prop', size: 'sm', render: ({ prop }) => <Code>{prop}</Code> },
-    { key: 'physical', name: 'Physical', size: 'xl', render: ({ physical }) => physical.map((p) => <><Code key={p}>{p}</Code>{' '}</>)},
-    { key: 'logical', name: 'Logical', size: 'xl', render: ({ logical }) => logical.map((l) => <><Code key={l}>{l}</Code>{' '}</>) },
+    {
+      key: 'prop',
+      name: 'Prop',
+      size: 'sm',
+      render: ({ prop }) => <Code>{prop}</Code>,
+    },
+    {
+      key: 'physical',
+      name: 'Physical',
+      size: 'xl',
+      render: ({ physical }) =>
+        physical.map((p) => (
+          <>
+            <Code key={p}>{p}</Code>{' '}
+          </>
+        )),
+    },
+    {
+      key: 'logical',
+      name: 'Logical',
+      size: 'xl',
+      render: ({ logical }) =>
+        logical.map((l) => (
+          <>
+            <Code key={l}>{l}</Code>{' '}
+          </>
+        )),
+    },
   ]}
   rows={[
-    { prop: 'mx', physical: ['margin-left', 'margin-right'], logical: ['margin-inline-start', 'margin-inline-end'] },
-    { prop: 'my', physical: ['margin-top', 'margin-bottom'], logical: ['margin-block-start', 'margin-block-end'] },
+    {
+      prop: 'mx',
+      physical: ['margin-left', 'margin-right'],
+      logical: ['margin-inline-start', 'margin-inline-end'],
+    },
     { prop: 'mt', physical: ['margin-top'], logical: ['margin-block-start'] },
-    { prop: 'px', physical: ['padding-left', 'padding-right'], logical: ['padding-inline-start', 'padding-inline-end'] },
-    { prop: 'py', physical: ['padding-top', 'padding-bottom'], logical: ['padding-block-start', 'padding-block-end'] },
-    { prop: 'pb', physical: ['padding-bottom'], logical: ['padding-block-end'] },
+    {
+      prop: 'py',
+      physical: ['padding-top', 'padding-bottom'],
+      logical: ['padding-block-start', 'padding-block-end'],
+    },
+    {
+      prop: 'pb',
+      physical: ['padding-bottom'],
+      logical: ['padding-block-end'],
+    },
   ]}
 />
 
@@ -81,4 +121,3 @@ You can toggle between logical and physical properties in Storybook using the **
 />
 
 This allows you to preview how components render with either property mode without changing any code.
-
