@@ -80,6 +80,7 @@ export const Above: Story = {
 export const Below: Story = {
   render: (args) => <PopoverExample {...args} beak="center" position="below" />,
 };
+
 export const CenterLeft: Story = {
   render: (args) => (
     <PopoverExample
@@ -113,6 +114,7 @@ export const PopoverCheckerDense: Story = {
     />
   ),
 };
+
 export const PopoverCheckerLoose: Story = {
   render: (args) => (
     <PopoverExample
@@ -122,6 +124,7 @@ export const PopoverCheckerLoose: Story = {
     />
   ),
 };
+
 export const PopoverCheckerRegular: Story = {
   render: (args) => (
     <PopoverExample
@@ -131,6 +134,7 @@ export const PopoverCheckerRegular: Story = {
     />
   ),
 };
+
 export const PopoverDiagonalADense: Story = {
   render: (args) => (
     <PopoverExample
@@ -140,6 +144,7 @@ export const PopoverDiagonalADense: Story = {
     />
   ),
 };
+
 export const PopoverDiagonalALoose: Story = {
   render: (args) => (
     <PopoverExample
@@ -149,6 +154,7 @@ export const PopoverDiagonalALoose: Story = {
     />
   ),
 };
+
 export const PopoverDiagonalARegular: Story = {
   render: (args) => (
     <PopoverExample
