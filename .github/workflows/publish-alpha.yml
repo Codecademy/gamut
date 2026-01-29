@@ -53,18 +53,7 @@ jobs:
         run: |
           SHORT_SHA=${GITHUB_SHA:0:6}
           PREID="alpha.${SHORT_SHA}"
-
-          # Temporarily remove version plans directory to disable version plans
-          mv .nx/version-plans .nx/version-plans.backup
-
-          # Run alpha release
-          npx nx release version --git-commit=false --git-tag=false --git-push=false --preid="${PREID}" --dry-run
-
-          # Restore version plans directory
-          mv .nx/version-plans.backup .nx/version-plans
-
-          # Publish with alpha tag
-          npx nx release publish --tag="${PREID}" --dry-run
+          node script/release-alpha.mjs --preid="${PREID}"
         env:
           GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN  }}
