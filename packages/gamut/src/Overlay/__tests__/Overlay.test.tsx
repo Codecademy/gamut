@@ -15,11 +15,9 @@ const OverlayTest = (props?: Partial<OverlayProps>) => {
     </main>
   );
 };
-
 const overlayIsRendered = (view: ReturnType<typeof renderView>['view']) => {
   return Boolean(view.queryByTestId('overlay-content'));
 };
-
 const renderView = setupRtl(OverlayTest, {});
 
 describe('Overlay', () => {
@@ -31,6 +29,7 @@ describe('Overlay', () => {
 
   it('renders children when isOpen is true', () => {
     const { view } = renderView({ isOpen: true });
+
     expect(overlayIsRendered(view)).toBeTruthy();
   });
 
@@ -40,9 +39,7 @@ describe('Overlay', () => {
       isOpen: true,
       onRequestClose,
     });
-
     const baseElement = view.getByTestId('overlay-content');
-
     fireEvent.keyDown(baseElement, { key: 'Escape', code: 'Escape' });
 
     expect(onRequestClose).toHaveBeenCalled();
@@ -55,9 +52,7 @@ describe('Overlay', () => {
       escapeCloses: false,
       onRequestClose,
     });
-
     const baseElement = view.getByTestId('overlay-content');
-
     fireEvent.keyDown(baseElement, { key: 'Escape', code: 'Escape' });
 
     expect(onRequestClose).not.toHaveBeenCalled();
@@ -70,7 +65,6 @@ describe('Overlay', () => {
       clickOutsideCloses: true,
       onRequestClose,
     });
-
     // focus-trap listens to mouseDown, not click
     fireEvent.mouseDown(view.getByTestId('overlay-content-container'));
 
@@ -84,7 +78,6 @@ describe('Overlay', () => {
       clickOutsideCloses: true,
       onRequestClose,
     });
-
     fireEvent.mouseDown(view.getByTestId('overlay-content'));
 
     expect(onRequestClose).not.toHaveBeenCalled();
@@ -99,7 +92,6 @@ describe('Overlay', () => {
 
   it('renders inside its mounting container when inline is true', () => {
     const { view } = renderView({ inline: true, isOpen: true });
-
     /** main is accessible as overlay is rendering within its bounds */
     view.getByRole('main');
   });
@@ -112,10 +104,11 @@ describe('Overlay', () => {
       clickOutsideCloses: true,
       onRequestClose,
     });
-
     // focus-trap listens to mouseDown, not click
     fireEvent.mouseDown(view.getByTestId('overlay-content-container'));
+
     expect(onRequestClose).not.toHaveBeenCalled();
+
     fireEvent.keyDown(view.getByTestId('overlay-content'), {
       key: 'Escape',
       code: 'Escape',
@@ -128,9 +121,7 @@ describe('Overlay', () => {
     const styleTag = document.createElement('style');
     styleTag.innerHTML = '.fakeClassName { text-align: center; }';
     document.body.appendChild(styleTag);
-
     const { view } = renderView({ isOpen: true, className: 'fakeClassName' });
-
     const container = view.getByTestId('overlay-content-container');
 
     expect(container).toHaveStyle({ position: 'fixed' });

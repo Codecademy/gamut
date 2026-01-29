@@ -15,7 +15,6 @@ import {
 import { GridFormInputGroupTestComponent } from '../__fixtures__/renderers';
 
 const getById = queryByAttribute.bind(null, 'id');
-
 const renderView = setupRtl(GridFormInputGroupTestComponent, {
   setValue: jest.fn(),
   register: jest.fn().mockReturnValue({
@@ -26,18 +25,15 @@ const renderView = setupRtl(GridFormInputGroupTestComponent, {
 describe('GridFormInputGroup', () => {
   it('renders error text when an error exists', () => {
     const error = 'Oh no!';
-
     const { view } = renderView({ field: stubCheckboxField, error });
-
     view.getByText(error);
   });
+
   it('renders error text when an custom error exists', () => {
     const error = 'Oh no!';
-
     const { view } = renderView({
       field: { ...stubCheckboxField, customError: error },
     });
-
     view.getByText(error);
   });
 
@@ -45,7 +41,6 @@ describe('GridFormInputGroup', () => {
     const { view } = renderView({
       field: { ...stubCheckboxField, id: 'mycoolid' },
     });
-
     view.getByRole('checkbox');
   });
 
@@ -59,7 +54,6 @@ describe('GridFormInputGroup', () => {
         type: 'custom',
       },
     });
-
     view.getByText(text);
   });
 
@@ -69,6 +63,7 @@ describe('GridFormInputGroup', () => {
     });
 
     expect(view.getAllByRole('radio')).toHaveLength(2);
+
     view.getByRole('radiogroup');
   });
 
@@ -76,7 +71,6 @@ describe('GridFormInputGroup', () => {
     const { view } = renderView({
       field: { ...stubSelectField, id: 'mycoolid' },
     });
-
     view.getByRole('combobox');
   });
 
@@ -84,7 +78,6 @@ describe('GridFormInputGroup', () => {
     const { view } = renderView({
       field: { ...stubTextField, id: 'mycoolid' },
     });
-
     view.getByRole('textbox');
   });
 
@@ -107,13 +100,10 @@ describe('GridFormInputGroup', () => {
   it('invokes onUpdate when the field type is text and it gets changed', () => {
     const onUpdateSpy = jest.fn();
     const newVal = 'foo';
-
     const { view } = renderView({
       field: { ...stubTextField, onUpdate: onUpdateSpy },
     });
-
     const input = view.getByRole('textbox');
-
     act(() => {
       fireEvent.change(input, { target: { value: newVal } });
     });
@@ -124,13 +114,10 @@ describe('GridFormInputGroup', () => {
   it('invokes onUpdate when the field type is textarea and it gets changed', () => {
     const onUpdateSpy = jest.fn();
     const newVal = 'foo';
-
     const { view } = renderView({
       field: { ...stubTextareaField, onUpdate: onUpdateSpy },
     });
-
     const input = view.getByRole('textbox');
-
     act(() => {
       fireEvent.change(input, { target: { value: newVal } });
     });
@@ -141,13 +128,10 @@ describe('GridFormInputGroup', () => {
   it('invokes onUpdate when the field type is select and it gets changed', async () => {
     const onUpdateSpy = jest.fn();
     const newVal = 'bbb';
-
     const { view } = renderView({
       field: { ...stubSelectField, onUpdate: onUpdateSpy },
     });
-
     const select = view.getByRole('combobox');
-
     act(() => {
       fireEvent.change(select, { target: { value: newVal } });
     });
@@ -158,13 +142,10 @@ describe('GridFormInputGroup', () => {
   it('invokes onUpdate when the field type is checkbox and it gets changed', () => {
     const onUpdateSpy = jest.fn();
     const newVal = true;
-
     const { view } = renderView({
       field: { ...stubCheckboxField, onUpdate: onUpdateSpy },
     });
-
     const checkbox = view.getByRole('checkbox');
-
     act(() => {
       fireEvent.click(checkbox);
     });
@@ -175,13 +156,10 @@ describe('GridFormInputGroup', () => {
   it('invokes onUpdate when the field type is file and it gets changed', () => {
     const onUpdateSpy = jest.fn();
     const newVal = ['I swear this is a file'];
-
     const { view } = renderView({
       field: { ...stubFileField, onUpdate: onUpdateSpy },
     });
-
     const input = view.getByLabelText('Stub File (optional)');
-
     act(() => {
       fireEvent.change(input, { target: { files: newVal } });
     });
@@ -196,7 +174,6 @@ describe('GridFormInputGroup', () => {
       error: 'It broke',
       isFirstError: true,
     });
-
     const error = view.getByRole('alert');
 
     expect(error).toHaveAttribute('aria-live', 'assertive');
@@ -208,9 +185,7 @@ describe('GridFormInputGroup', () => {
       error: 'It broke',
       isFirstError: false,
     });
-
     const error = view.getByRole('status');
-
     view.container.getElementsByClassName('css-d7900z-Column e1y0e4q30');
 
     expect(error).toHaveAttribute('aria-live', 'off');
@@ -236,6 +211,7 @@ describe('GridFormInputGroup', () => {
     const { view } = renderView({
       field: { ...stubHiddenField },
     });
+
     expect(view.container).not.toContainHTML('Column');
   });
 });

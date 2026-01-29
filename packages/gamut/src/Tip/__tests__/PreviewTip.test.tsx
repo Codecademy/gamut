@@ -29,20 +29,19 @@ describe('PreviewTip', () => {
     });
     jest.useRealTimers();
   });
+
   describe('inline placement', () => {
     it('renders a link desc, user name, and overline', () => {
       const { view } = renderView({
         overline,
         username,
       });
-
       view.getByText(`Preview: ${overline} ${username} ${info}`);
     });
   });
 
   it('has an accessible description', async () => {
     const { view } = renderView({});
-
     await waitFor(() => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore: We need to update the rest of the testing suite to use the correct types (which are reliant on upgrading Node)
@@ -53,7 +52,6 @@ describe('PreviewTip', () => {
   it('calls onClick when clicked', async () => {
     const user = userEvent.setup({ delay: null });
     const { view } = renderView({});
-
     await act(async () => {
       await user.click(view.getByRole('link'));
     });
@@ -64,7 +62,6 @@ describe('PreviewTip', () => {
   describe('floating placement', () => {
     it('has an accessible description', async () => {
       const { view } = renderView({ placement: 'floating' });
-
       await waitFor(() => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore: We need to update the rest of the testing suite to use the correct types (which are reliant on upgrading Node)
@@ -85,7 +82,6 @@ describe('PreviewTip', () => {
         // Advance timers to trigger the tooltip show delay (300ms)
         jest.advanceTimersByTime(300);
       });
-
       await waitFor(() => {
         expect(view.queryAllByText(info).length).toBe(1);
       });
@@ -94,7 +90,6 @@ describe('PreviewTip', () => {
     it('calls onClick when clicked', async () => {
       const user = userEvent.setup({ delay: null });
       const { view } = renderView({});
-
       await act(async () => {
         await user.click(view.getByRole('link'));
       });

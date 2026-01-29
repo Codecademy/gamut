@@ -5,13 +5,11 @@ import userEvent from '@testing-library/user-event';
 import { Disclosure } from '..';
 
 const ctaCallback = jest.fn();
-
 const defaultProps = {
   header: 'hi there!',
   body: <div>This should render when expanded </div>,
   withBackground: false,
 };
-
 const renderView = setupRtl(Disclosure, defaultProps);
 
 describe('Disclosure', () => {
@@ -19,19 +17,19 @@ describe('Disclosure', () => {
     const { view } = renderView({
       initiallyExpanded: false,
     });
-
     const DisclosureButton = view.getByRole('button');
     let DisclosureBodyText = view.queryByText(
       'This should render when expanded'
     );
+
     expect(DisclosureBodyText).toBeNull();
     expect(DisclosureButton.getAttribute('aria-expanded')).toBe('false');
 
     await act(async () => {
       await userEvent.click(DisclosureButton);
     });
-
     DisclosureBodyText = view.getByText('This should render when expanded');
+
     expect(DisclosureButton.getAttribute('aria-expanded')).toBe('true');
   });
 
@@ -39,7 +37,6 @@ describe('Disclosure', () => {
     const { view } = renderView({
       initiallyExpanded: true,
     });
-
     const DisclosureButton = view.getByRole('button');
     view.getByText('This should render when expanded');
 
@@ -52,11 +49,11 @@ describe('Disclosure', () => {
       ctaText: 'click here',
       ctaCallback,
     });
-
     const CTAButton = view.getByText('click here');
     await act(async () => {
       await userEvent.click(CTAButton);
     });
-    expect(ctaCallback).toBeCalled();
+
+    expect(ctaCallback).toHaveBeenCalled();
   });
 });

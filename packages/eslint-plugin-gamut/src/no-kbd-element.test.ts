@@ -10,7 +10,6 @@ const ruleTester = new ESLintUtils.RuleTester({
     },
   },
 });
-
 ruleTester.run('no-kbd-element', rule, {
   valid: [
     `<div />`,

@@ -7,7 +7,6 @@ import { Radio } from '../inputs/Radio';
 
 const onChangeCallback = jest.fn();
 const testid = 'my-test-id';
-
 const renderView = setupRtl(Radio, {
   htmlFor: 'some-label',
   checked: true,
@@ -24,7 +23,6 @@ describe('<Radio>', () => {
 
   it('calls the onChange callback when the input changes', () => {
     const { view } = renderView({ checked: false });
-
     fireEvent.click(view.getByRole('radio', { checked: false }));
 
     expect(onChangeCallback).toHaveBeenCalled();
@@ -34,7 +32,6 @@ describe('<Radio>', () => {
     const { view } = renderView({
       label: <img alt="my cat" src="cat.jpg" />,
     });
-
     view.getByAltText('my cat');
   });
 

@@ -24,7 +24,6 @@ const targetRefObj = {
     },
   },
 };
-
 const PopoverTest = (props?: Partial<PopoverProps>) => (
   <ThemeProvider theme={theme}>
     <Popover isOpen targetRef={targetRefObj} {...props}>
@@ -38,11 +37,9 @@ const PopoverTest = (props?: Partial<PopoverProps>) => (
     </div>
   </ThemeProvider>
 );
-
 const popoverIsRendered = (view: ReturnType<typeof renderView>['view']) => {
   return Boolean(view.queryByTestId('popover-content'));
 };
-
 const renderView = setupRtl(PopoverTest);
 
 describe('Popover', () => {
@@ -54,6 +51,7 @@ describe('Popover', () => {
 
   it('renders children when isOpen is true', () => {
     const { view } = renderView({ isOpen: true });
+
     expect(popoverIsRendered(view)).toBeTruthy();
   });
 
@@ -64,7 +62,8 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.mouseDown(view.getByTestId('outside-popover'));
-    expect(onRequestClose).toBeCalledTimes(1);
+
+    expect(onRequestClose).toHaveBeenCalledTimes(1);
   });
 
   it('does not trigger onRequestClose callback when clicking inside', () => {
@@ -74,6 +73,7 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.mouseDown(view.getByTestId('popover-content-container'));
+
     expect(onRequestClose).not.toHaveBeenCalled();
   });
 
@@ -84,13 +84,14 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.keyDown(view.container, { key: 'escape', keyCode: 27 });
-    expect(onRequestClose).toBeCalledTimes(1);
+
+    expect(onRequestClose).toHaveBeenCalledTimes(1);
   });
 
   it('triggers onRequestClose callback when popover is out of viewport', () => {
     /* element is inside the viewport if the top and left value is greater than or equal to 0,
-      and right value is less than or equal to window.innerWidth
-      and bottom value is less than or equal to window.innerHeight */
+          and right value is less than or equal to window.innerWidth
+          and bottom value is less than or equal to window.innerHeight */
     const targetRefObj = {
       current: {
         contains: () => true,
@@ -110,14 +111,13 @@ describe('Popover', () => {
       },
     };
     const onRequestClose = jest.fn();
-
     renderView({
       targetRef: targetRefObj,
       isOpen: true,
       onRequestClose,
     });
 
-    expect(onRequestClose).toBeCalledTimes(1);
+    expect(onRequestClose).toHaveBeenCalledTimes(1);
   });
 
   it('does not onRequestClose callback when popover is out of viewport', () => {
@@ -140,14 +140,13 @@ describe('Popover', () => {
       },
     };
     const onRequestClose = jest.fn();
-
     renderView({
       targetRef: targetRefObj,
       isOpen: true,
       onRequestClose,
     });
 
-    expect(onRequestClose).not.toBeCalled();
+    expect(onRequestClose).not.toHaveBeenCalled();
   });
 
   it('does not show a beak if the prop is not provided', () => {
@@ -163,18 +162,15 @@ describe('Popover', () => {
       isOpen: true,
       beak: 'right',
     });
-
     view.getByTestId('popover-beak');
   });
 
   it("positions with default 'below', 'left', '20', '0' value when position, align, verticalOffset, horizontalOffset props are not provided respectively", () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
-
     const { view } = renderView({
       isOpen: true,
     });
-
     const popoverContentContainer = view.getByTestId(
       'popover-content-container'
     );
@@ -185,13 +181,11 @@ describe('Popover', () => {
   it('positions with given position and align values when provided', () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
-
     const { view } = renderView({
       isOpen: true,
       position: 'above',
       align: 'right',
     });
-
     const popoverContentContainer = view.getByTestId(
       'popover-content-container'
     );
@@ -205,14 +199,12 @@ describe('Popover', () => {
   it('positions with given verticalOffset value when provided', () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
-
     const { view } = renderView({
       isOpen: true,
       position: 'above',
       align: 'right',
       verticalOffset: 29,
     });
-
     const popoverContentContainer = view.getByTestId(
       'popover-content-container'
     );
@@ -226,14 +218,12 @@ describe('Popover', () => {
   it('positions with given horizontalOffset value when provided', () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
-
     const { view } = renderView({
       isOpen: true,
       position: 'above',
       align: 'right',
       horizontalOffset: 30,
     });
-
     const popoverContentContainer = view.getByTestId(
       'popover-content-container'
     );
@@ -247,14 +237,12 @@ describe('Popover', () => {
   it('positions round to whole number when ', () => {
     Object.defineProperty(window, 'scrollY', { value: 1.5 });
     Object.defineProperty(window, 'scrollX', { value: 1.5 });
-
     const { view } = renderView({
       isOpen: true,
       position: 'above',
       align: 'right',
       verticalOffset: 30,
     });
-
     const popoverContentContainer = view.getByTestId(
       'popover-content-container'
     );
@@ -278,7 +266,6 @@ describe('Popover', () => {
       isOpen: true,
       pattern: CheckerDense,
     });
-
     view.getByTestId('popover-pattern');
   });
 });

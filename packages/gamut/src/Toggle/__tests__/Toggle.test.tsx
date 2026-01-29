@@ -3,7 +3,6 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import { Toggle } from '..';
 
 const action = jest.fn();
-
 const renderView = setupRtl(Toggle, {
   label: 'Toggle Text',
   checked: true,
@@ -14,13 +13,11 @@ describe('Toggle', () => {
   describe('when the toggle is an input', () => {
     it('defaults to a checkbox input', () => {
       const { view } = renderView();
-
       view.getByRole('checkbox');
     });
 
     it('calls onChange when clicked', () => {
       const { view } = renderView();
-
       view.getByLabelText('Toggle Text').click();
 
       expect(action).toHaveBeenCalled();
@@ -28,7 +25,6 @@ describe('Toggle', () => {
 
     it('renders label node', () => {
       const { view } = renderView({ label: <p>hello</p> });
-
       view.getByText('hello');
     });
 
@@ -37,7 +33,6 @@ describe('Toggle', () => {
         label: undefined,
         ariaLabel: 'Toggle Text',
       });
-
       view.getByLabelText('Toggle Text');
     });
 
@@ -46,7 +41,6 @@ describe('Toggle', () => {
         label: <p>Hello</p>,
         ariaLabel: 'Toggle Text',
       });
-
       view.getByLabelText('Toggle Text');
     });
 
@@ -54,7 +48,6 @@ describe('Toggle', () => {
       const { view } = renderView({
         disabled: true,
       });
-
       view.getByLabelText('Toggle Text').click();
 
       expect(action).not.toHaveBeenCalled();
@@ -68,7 +61,6 @@ describe('Toggle', () => {
         onChange: undefined,
         onClick: action,
       });
-
       view.getByRole('switch');
     });
 
@@ -78,7 +70,6 @@ describe('Toggle', () => {
         onChange: undefined,
         onClick: action,
       });
-
       view.getByLabelText('Toggle Text').click();
 
       expect(action).toHaveBeenCalled();
@@ -92,7 +83,6 @@ describe('Toggle', () => {
         onChange: undefined,
         onClick: action,
       });
-
       view.getByLabelText('Toggle Text');
     });
 
@@ -104,7 +94,6 @@ describe('Toggle', () => {
         onChange: undefined,
         onClick: action,
       });
-
       view.getByLabelText('Toggle Text');
     });
 
@@ -115,7 +104,6 @@ describe('Toggle', () => {
         onChange: undefined,
         onClick: action,
       });
-
       view.getByLabelText('Toggle Text').click();
 
       expect(action).not.toHaveBeenCalled();

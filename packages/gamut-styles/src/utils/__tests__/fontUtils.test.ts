@@ -45,6 +45,7 @@ describe('fontUtils', () => {
       ({ input }) => {
         it('returns core fonts', () => {
           const fonts = getFonts(input as any);
+
           expect(fonts).toBe(webFonts.core);
         });
       }
@@ -52,18 +53,19 @@ describe('fontUtils', () => {
 
     it('should return percipio fonts for percipio theme', () => {
       const fonts = getFonts('percipio');
+
       expect(fonts).toBe(webFonts.percipio);
     });
 
     it('should return core fonts for core theme', () => {
       const fonts = getFonts('core');
+
       expect(fonts).toBe(webFonts.core);
     });
 
     it('should not mutate or corrupt the original webFonts object', () => {
       const originalCore = webFonts.core;
       const originalPercipio = webFonts.percipio;
-
       getFonts('percipio');
       getFonts('core');
       getFonts('invalid');
@@ -79,7 +81,6 @@ describe('fontUtils', () => {
       jest.doMock('../../remoteAssets/fonts', () => ({
         webFonts: undefined,
       }));
-
       // Re-import to get the mocked version
       jest.resetModules();
       const { getFonts: getFontsWithUndefined } = require('../fontUtils');
@@ -101,11 +102,10 @@ describe('fontUtils', () => {
           percipio: webFonts.percipio,
         },
       }));
-
       jest.resetModules();
       const { getFonts: getFontsWithUndefinedCore } = require('../fontUtils');
-
       const result = getFontsWithUndefinedCore('core');
+
       expect(result).toBeUndefined();
 
       jest.doMock('../../remoteAssets/fonts', () => ({

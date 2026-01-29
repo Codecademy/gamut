@@ -8,9 +8,7 @@ import { SubmitButton } from '../SubmitButton';
 jest.mock('react-hook-form', () => ({
   useFormContext: jest.fn(),
 }));
-
 const mockedHook = hookform.useFormContext as jest.Mock;
-
 const mockFormState = ({
   isValidating = false,
   isValid = true,
@@ -20,29 +18,25 @@ const mockFormState = ({
     formState: { isSubmitting, isValidating, isValid },
   }));
 };
-
 mockedHook.mockImplementation(() => ({
   formState: { isSubmitting: false, isValidating: false, isValid: false },
 }));
-
 const renderView = setupRtl(SubmitButton, {});
 
 describe('SubmitButton', () => {
   it('renders as a FillButton by default', () => {
     const { view } = renderView();
-
     const button = view.getByRole('button');
-
     const borderRadiusSize = theme.borderRadii.md;
+
     expect(button).toHaveStyle({ borderRadius: borderRadiusSize });
   });
 
   it('renders as a CTAButton when configured', () => {
     const { view } = renderView({ as: CTAButton });
-
     const button = view.getByRole('button');
-
     const borderRadiusSize = theme.borderRadii.md;
+
     expect(button).toHaveStyle({ borderRadius: borderRadiusSize });
   });
 
@@ -56,8 +50,10 @@ describe('SubmitButton', () => {
       disabled: ({ isValidating, isSubmitting, isValid }) =>
         isValidating || isSubmitting || !isValid,
     });
+
     expect(view.getByRole('button')).toBeDisabled();
   });
+
   it.each([
     [{}, 0],
     [{ isValidating: true }, 1],

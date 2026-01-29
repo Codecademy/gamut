@@ -8,7 +8,6 @@ const renderView = setupRtl(Badge, { children: badgeText });
 describe('Badge', () => {
   it('renders badge text', () => {
     const { view } = renderView();
-
     view.getByText(badgeText);
   });
 });

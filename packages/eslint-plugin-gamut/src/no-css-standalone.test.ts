@@ -5,7 +5,6 @@ import rule from './no-css-standalone';
 const ruleTester = new ESLintUtils.RuleTester({
   parser: '@typescript-eslint/parser',
 });
-
 ruleTester.run('no-css-standalone', rule, {
   valid: [
     ``,

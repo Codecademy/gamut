@@ -37,7 +37,6 @@ const mockOptions: NestedGridFormCheckboxOption[] = [
     label: 'Databases',
   },
 ];
-
 const mockOnUpdate = jest.fn();
 const mockOnSubmit = jest.fn();
 const TestForm: React.FC<{
@@ -69,14 +68,12 @@ const TestForm: React.FC<{
     onSubmit={mockOnSubmit}
   />
 );
-
 const renderView = setupRtl(TestForm, {});
 
 describe('GridFormNestedCheckboxInput', () => {
   describe('rendering', () => {
     it('should render all checkbox options in a flat list', () => {
       const { view } = renderView();
-
       view.getByLabelText('Frontend Technologies');
       view.getByLabelText('Backend Technologies');
       view.getByLabelText('Databases');
@@ -91,7 +88,6 @@ describe('GridFormNestedCheckboxInput', () => {
 
     it('should render checkboxes with proper indentation levels', () => {
       const { view } = renderView();
-
       const frontendCheckbox = view
         .getByLabelText('Frontend Technologies')
         .closest('li');
@@ -149,7 +145,6 @@ describe('GridFormNestedCheckboxInput', () => {
       const { view } = renderView({
         defaultValue: ['react', 'vue'],
       });
-
       const frontendCheckbox = view.getByLabelText(
         'Frontend Technologies'
       ) as HTMLInputElement;
@@ -162,8 +157,8 @@ describe('GridFormNestedCheckboxInput', () => {
       const { view } = renderView({
         defaultValue: ['react', 'vue', 'angular'],
       });
-
       const frontendCheckbox = view.getByLabelText('Frontend Technologies');
+
       expect(frontendCheckbox).toBeChecked();
     });
 
@@ -186,16 +181,14 @@ describe('GridFormNestedCheckboxInput', () => {
       const { view } = renderView({
         defaultValue: ['backend'],
       });
-
       const backendCheckbox = view.getByLabelText('Backend Technologies');
-      expect(backendCheckbox).toBeChecked();
 
+      expect(backendCheckbox).toBeChecked();
       expect(view.getByLabelText('Node.js')).toBeChecked();
       expect(view.getByLabelText('Python')).toBeChecked();
       expect(view.getByLabelText('Java')).toBeChecked();
       expect(view.getByLabelText('Express.js')).toBeChecked();
       expect(view.getByLabelText('Fastify')).toBeChecked();
-
       expect(view.getByLabelText('Frontend Technologies')).not.toBeChecked();
       expect(view.getByLabelText('React')).not.toBeChecked();
       expect(view.getByLabelText('Vue.js')).not.toBeChecked();
@@ -208,7 +201,6 @@ describe('GridFormNestedCheckboxInput', () => {
 
       expect(view.getByLabelText('Frontend Technologies')).toBeChecked();
       expect(view.getByLabelText('Backend Technologies')).toBeChecked();
-
       expect(view.getByLabelText('React')).toBeChecked();
       expect(view.getByLabelText('Vue.js')).toBeChecked();
       expect(view.getByLabelText('Angular')).toBeChecked();
@@ -236,7 +228,6 @@ describe('GridFormNestedCheckboxInput', () => {
 
       expect(frontendCheckbox.indeterminate).toBe(true);
       expect(backendCheckbox.indeterminate).toBe(true);
-
       expect(view.getByLabelText('Vue.js')).not.toBeChecked();
       expect(view.getByLabelText('Angular')).not.toBeChecked();
       expect(view.getByLabelText('Node.js')).not.toBeChecked();
@@ -249,7 +240,6 @@ describe('GridFormNestedCheckboxInput', () => {
       const { view } = renderView({
         defaultValue: ['backend'],
       });
-
       const backendCheckbox = view.getByLabelText(
         'Backend Technologies'
       ) as HTMLInputElement;
@@ -263,10 +253,8 @@ describe('GridFormNestedCheckboxInput', () => {
       });
 
       expect(pythonCheckbox).not.toBeChecked();
-
       expect(backendCheckbox.indeterminate).toBe(true);
       expect(backendCheckbox).not.toBeChecked();
-
       expect(view.getByLabelText('Node.js')).toBeChecked();
       expect(view.getByLabelText('Express.js')).toBeChecked();
       expect(view.getByLabelText('Fastify')).toBeChecked();
@@ -276,9 +264,7 @@ describe('GridFormNestedCheckboxInput', () => {
   describe('user interactions', () => {
     it('should update form value when leaf checkbox is clicked', async () => {
       const { view } = renderView();
-
       const reactCheckbox = view.getByLabelText('React');
-
       await act(async () => {
         fireEvent.click(reactCheckbox);
       });
@@ -288,14 +274,13 @@ describe('GridFormNestedCheckboxInput', () => {
       const frontendCheckbox = view.getByLabelText(
         'Frontend Technologies'
       ) as HTMLInputElement;
+
       expect(frontendCheckbox.indeterminate).toBe(true);
     });
 
     it('should select all children when parent checkbox is clicked', async () => {
       const { view } = renderView();
-
       const frontendCheckbox = view.getByLabelText('Frontend Technologies');
-
       await act(async () => {
         fireEvent.click(frontendCheckbox);
       });
@@ -304,7 +289,6 @@ describe('GridFormNestedCheckboxInput', () => {
       expect(view.getByLabelText('React')).toBeChecked();
       expect(view.getByLabelText('Vue.js')).toBeChecked();
       expect(view.getByLabelText('Angular')).toBeChecked();
-
       expect(mockOnUpdate).toHaveBeenCalledWith([
         'react',
         'vue',
@@ -317,8 +301,8 @@ describe('GridFormNestedCheckboxInput', () => {
       const { view } = renderView({
         defaultValue: ['react', 'vue', 'angular'],
       });
-
       const frontendCheckbox = view.getByLabelText('Frontend Technologies');
+
       expect(frontendCheckbox).toBeChecked();
 
       await act(async () => {
@@ -333,9 +317,7 @@ describe('GridFormNestedCheckboxInput', () => {
 
     it('should handle deeply nested selections correctly', async () => {
       const { view } = renderView();
-
       const nodeCheckbox = view.getByLabelText('Node.js');
-
       await act(async () => {
         fireEvent.click(nodeCheckbox);
       });
@@ -347,8 +329,8 @@ describe('GridFormNestedCheckboxInput', () => {
       const backendCheckbox = view.getByLabelText(
         'Backend Technologies'
       ) as HTMLInputElement;
-      expect(backendCheckbox.indeterminate).toBe(true);
 
+      expect(backendCheckbox.indeterminate).toBe(true);
       expect(mockOnUpdate).toHaveBeenCalledWith(['express', 'fastify', 'node']);
     });
 
@@ -356,10 +338,10 @@ describe('GridFormNestedCheckboxInput', () => {
       const { view } = renderView({
         defaultValue: ['react', 'vue', 'angular'],
       });
-
       const frontendCheckbox = view.getByLabelText(
         'Frontend Technologies'
       ) as HTMLInputElement;
+
       expect(frontendCheckbox).toBeChecked();
 
       const reactCheckbox = view.getByLabelText('React');
@@ -376,9 +358,7 @@ describe('GridFormNestedCheckboxInput', () => {
   describe('onUpdate callback', () => {
     it('should call onUpdate when checkbox values change', async () => {
       const { view } = renderView();
-
       const reactCheckbox = view.getByLabelText('React');
-
       await act(async () => {
         fireEvent.click(reactCheckbox);
       });
@@ -388,9 +368,7 @@ describe('GridFormNestedCheckboxInput', () => {
 
     it('should call onUpdate with correct values when parent is selected', async () => {
       const { view } = renderView();
-
       const frontendCheckbox = view.getByLabelText('Frontend Technologies');
-
       await act(async () => {
         fireEvent.click(frontendCheckbox);
       });
@@ -407,9 +385,7 @@ describe('GridFormNestedCheckboxInput', () => {
       const { view } = renderView({
         defaultValue: ['react'],
       });
-
       const reactCheckbox = view.getByLabelText('React');
-
       await act(async () => {
         fireEvent.click(reactCheckbox);
       });
@@ -429,8 +405,8 @@ describe('GridFormNestedCheckboxInput', () => {
 
     it('should not respond to clicks when disabled', async () => {
       const { view } = renderView({ disabled: true });
-
       const reactCheckbox = view.getByLabelText('React');
+
       expect(reactCheckbox).toBeDisabled();
       expect(reactCheckbox).not.toBeChecked();
 
@@ -466,7 +442,6 @@ describe('GridFormNestedCheckboxInput', () => {
       const { view } = renderView({
         customError: 'Please select at least one option',
       });
-
       const checkboxes = view.container.querySelectorAll(
         'input[type="checkbox"]'
       );
@@ -477,13 +452,10 @@ describe('GridFormNestedCheckboxInput', () => {
 
     it('should submit successfully when validation passes', async () => {
       const { view } = renderView();
-
       const reactCheckbox = view.getByLabelText('React');
-
       await act(async () => {
         fireEvent.click(reactCheckbox);
       });
-
       const submitButton = view.getByRole('button');
       await act(async () => {
         fireEvent.click(submitButton);
@@ -497,13 +469,13 @@ describe('GridFormNestedCheckboxInput', () => {
 
     it('should show validation errors and not submit when validation fails', async () => {
       const { view } = renderView();
-
       const submitButton = view.getByRole('button');
       await act(async () => {
         fireEvent.click(submitButton);
       });
 
       expect(mockOnSubmit).not.toHaveBeenCalled();
+
       view.getByText('Please check at least one option');
     });
   });
@@ -511,7 +483,6 @@ describe('GridFormNestedCheckboxInput', () => {
   describe('accessibility', () => {
     it('should have proper aria attributes', () => {
       const { view } = renderView();
-
       const checkbox = view.getByLabelText('Frontend Technologies');
 
       expect(checkbox).toHaveAttribute('aria-label', 'Frontend Technologies');
@@ -522,7 +493,6 @@ describe('GridFormNestedCheckboxInput', () => {
       const { view } = renderView({
         defaultValue: ['react'],
       });
-
       const frontendCheckbox = view.getByLabelText('Frontend Technologies');
 
       expect(frontendCheckbox).toHaveAttribute('aria-checked', 'mixed');
@@ -530,11 +500,11 @@ describe('GridFormNestedCheckboxInput', () => {
 
     it('should use proper list semantics', () => {
       const { view } = renderView();
-
       const list = view.container.querySelector('ul');
-      expect(list).toBeInTheDocument();
 
+      expect(list).toBeInTheDocument();
       expect(list?.children).toHaveLength(11); // Total flattened options
+
       Array.from(list?.children || []).forEach((item) => {
         // each child of the ul should be an li
         expect(item).toBeInstanceOf(HTMLLIElement);
@@ -545,8 +515,8 @@ describe('GridFormNestedCheckboxInput', () => {
   describe('edge cases', () => {
     it('should handle empty options array', () => {
       const { view } = renderView({ options: [] });
-
       const list = view.container.querySelector('ul');
+
       expect(list).toBeInTheDocument();
       expect(list?.children).toHaveLength(0);
     });
@@ -558,7 +528,6 @@ describe('GridFormNestedCheckboxInput', () => {
           { value: 'option2', label: 'Option 2' },
         ],
       });
-
       view.getByLabelText('Option 1');
       view.getByLabelText('Option 2');
     });

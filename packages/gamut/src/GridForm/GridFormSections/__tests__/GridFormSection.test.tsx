@@ -11,7 +11,6 @@ import { GridFormTextField } from '../../types';
 import { GridFormSectionTestComponent } from '../__fixtures__/renderers';
 
 const fields = [stubTextField, stubSelectField, stubFileField];
-
 const validStubTextField = {
   ...stubTextField,
   validation: {
@@ -22,7 +21,6 @@ const validStubTextField = {
     required: true,
   },
 };
-
 const validStubTextTwo: GridFormTextField = {
   label: 'Stub Text Again',
   name: 'stub-text-again',
@@ -36,9 +34,7 @@ const validStubTextTwo: GridFormTextField = {
     required: true,
   },
 };
-
 const validFields = [validStubTextField, validStubTextTwo];
-
 const renderView = setupRtl(GridFormSectionTestComponent, {
   fields,
   showRequired: false,
@@ -47,7 +43,6 @@ const renderView = setupRtl(GridFormSectionTestComponent, {
 describe('GridFormSections', () => {
   it('renders an array of fields', () => {
     const { view } = renderView();
-
     const textLabel = view.getByLabelText('Stub Text (optional)');
     const textField = view.getByRole('textbox', { name: /Stub Text/ });
     const radioLabel = view.getByLabelText('Stub Select (optional)');
@@ -64,7 +59,6 @@ describe('GridFormSections', () => {
       fields: validFields,
       mode: 'onChange',
     });
-
     await act(async () => {
       fireEvent.input(view.getByRole('textbox', { name: 'Stub Text' }), {
         target: {
@@ -73,7 +67,6 @@ describe('GridFormSections', () => {
         },
       });
     });
-
     await act(async () => {
       fireEvent.input(view.getByRole('textbox', { name: 'Stub Text Again' }), {
         target: {
@@ -81,7 +74,6 @@ describe('GridFormSections', () => {
         },
       });
     });
-
     await view.findByText('what is it?');
     await view.findByText('not enough updog');
   });
@@ -91,7 +83,6 @@ describe('GridFormSections', () => {
       fields: validFields,
       mode: 'onChange',
     });
-
     await act(async () => {
       fireEvent.input(view.getByRole('textbox', { name: 'Stub Text' }), {
         target: {
@@ -100,7 +91,6 @@ describe('GridFormSections', () => {
         },
       });
     });
-
     await act(async () => {
       fireEvent.input(view.getByRole('textbox', { name: 'Stub Text Again' }), {
         target: {

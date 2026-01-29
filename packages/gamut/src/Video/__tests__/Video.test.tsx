@@ -9,10 +9,19 @@ jest.mock('@vidstack/react', () => {
     // eslint-disable-next-line react/display-name
     MediaPlayer: react.forwardRef<
       HTMLIFrameElement,
-      { src: string; title: string }
+      {
+        src: string;
+        title: string;
+      }
     >(
       (
-        { src, title }: { src: string; title: string },
+        {
+          src,
+          title,
+        }: {
+          src: string;
+          title: string;
+        },
         ref: React.Ref<HTMLIFrameElement>
       ) => react.createElement('iframe', { ref, src, title })
     ),
@@ -24,7 +33,6 @@ jest.mock('@vidstack/react', () => {
     useMediaRemote: () => ({}),
   };
 });
-
 const renderView = setupRtl(Video, {});
 
 describe('Video', () => {
@@ -33,7 +41,6 @@ describe('Video', () => {
       videoUrl: 'https://vimeo.com/145702525',
       videoTitle: 'Super Science Friends',
     });
-
     await view.findByTitle('Super Science Friends');
   });
 
@@ -42,7 +49,6 @@ describe('Video', () => {
       videoUrl: 'Yl8yy5tpVIM',
       videoTitle: 'Workout with Rick Sanchez',
     });
-
     await view.findByTitle('Workout with Rick Sanchez');
   });
 });

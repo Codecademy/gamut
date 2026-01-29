@@ -16,7 +16,6 @@ import {
 } from './stubs';
 
 const fields = [stubCheckboxField, stubSelectField, stubTextField];
-
 const validationFields = [
   { ...stubCheckboxField, validation: { required: 'Please check' } },
   {
@@ -28,7 +27,6 @@ const validationFields = [
     validation: { required: 'Please enter text' },
   },
 ];
-
 export const getonUpdateAndFields = () => {
   const onUpdateCheckbox = jest.fn();
   const onUpdateSelect = jest.fn();
@@ -51,22 +49,22 @@ export const getonUpdateAndFields = () => {
     fields,
   };
 };
-
 const renderView = setupRtl(GridForm, {
   fields,
   submit: { type: 'fill', contents: <>Submit</>, size: 6 },
 });
-
 type RenderViewReturn = ReturnType<typeof renderView>;
-
 type CaseFindProps = {
   field: GridFormField;
   getBy: string;
   roleOrLabel: string;
-  nameId: { name: string } | undefined;
+  nameId:
+    | {
+        name: string;
+      }
+    | undefined;
   id: string;
 };
-
 const createAndFind = ({
   field,
   getBy,
@@ -75,7 +73,6 @@ const createAndFind = ({
   id,
 }: CaseFindProps) => {
   const fields = [{ id, ...field }];
-
   const { view } = renderView({
     fields,
   });
@@ -88,19 +85,15 @@ const createAndFind = ({
       return view.getByRole(roleOrLabel, nameId);
   }
 };
-
 const asyncRenderView = async (
   ...props: Parameters<typeof renderView>
 ): Promise<RenderViewReturn> => {
   let renderResults: RenderViewReturn;
-
   await act(async () => {
     renderResults = renderView(...props);
   });
-
   return renderResults!;
 };
-
 const getBaseCases = (view: RenderResult<typeof queries, HTMLElement>) => {
   const checkboxField = view.getByRole('checkbox', {
     name: 'Check me!',
@@ -113,10 +106,8 @@ const getBaseCases = (view: RenderResult<typeof queries, HTMLElement>) => {
   }) as HTMLInputElement;
   return { checkboxField, selectField, textField };
 };
-
 const selectValue = stubSelectOptions[1];
 const textValue = 'Hooray!';
-
 const doBaseFormActions = (
   selectField: HTMLInputElement,
   textField: HTMLInputElement,
@@ -126,9 +117,7 @@ const doBaseFormActions = (
     [selectField, selectValue],
     [textField, textValue],
   ] as const;
-
   fireEvent.click(checkboxField);
-
   for (const [selector, value] of newValues) {
     fireEvent.change(selector, {
       target: {
@@ -137,7 +126,6 @@ const doBaseFormActions = (
     });
   }
 };
-
 const baseResults = {
   [stubCheckboxField.name]: true,
   [stubSelectField.name]: selectValue,
@@ -148,17 +136,13 @@ describe('GridForm', () => {
   it('submits the form when all inputs are filled out', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
-
     const { view } = renderView({ onSubmit });
     const { checkboxField, selectField, textField } = getBaseCases(view);
-
     await act(async () => {
       doBaseFormActions(selectField, textField, checkboxField);
       fireEvent.submit(view.getByRole('button'));
-
       await api.innerPromise;
     });
-
     const result = await api.innerPromise;
 
     expect(result).toEqual(baseResults);
@@ -179,9 +163,10 @@ describe('GridForm', () => {
   it('does not add required text for a single input', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
-
     const { view } = renderView({ fields: [stubTextField], onSubmit });
+
     expect(view.queryByText('* Required')).toBeNull();
+
     view.getByLabelText('Stub Text');
   });
 
@@ -189,7 +174,6 @@ describe('GridForm', () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
     const { view } = renderView({ fields: validationFields, onSubmit });
-
     await act(async () => {
       fireEvent.click(view.getByRole('button'));
     });
@@ -206,7 +190,6 @@ describe('GridForm', () => {
       ];
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
-
       const { view } = renderView({ fields, onSubmit });
       const textField = view.getByRole('textbox');
 
@@ -219,7 +202,6 @@ describe('GridForm', () => {
       ];
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
-
       const { view } = renderView({ fields, onSubmit });
       const submitButton = view.getByRole('button');
 
@@ -232,13 +214,12 @@ describe('GridForm', () => {
       const fields = [
         { ...stubTextField, validation: { required: 'Please enter text' } },
       ];
-
       const { view } = await asyncRenderView({
         fields,
         validation: 'onChange',
       });
-
       const textField = view.getByRole('textbox');
+
       expect(textField).toHaveAttribute('aria-required');
     });
 
@@ -246,7 +227,6 @@ describe('GridForm', () => {
       const fields = [
         { ...stubTextField, validation: { required: 'Please enter text' } },
       ];
-
       const { view } = renderView({
         fields,
         validation: 'onChange',
@@ -256,9 +236,7 @@ describe('GridForm', () => {
           disabled: ({ isValid }) => !isValid,
         },
       });
-
       const textField = view.getByRole('textbox', { name: /Stub Text/ });
-
       await act(async () => {
         fireEvent.input(textField, {
           target: {
@@ -266,8 +244,8 @@ describe('GridForm', () => {
           },
         });
       });
-
       const submitButton = view.getByRole('button');
+
       expect(submitButton).toBeDisabled();
     });
 
@@ -277,15 +255,12 @@ describe('GridForm', () => {
       ];
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
-
       const { view } = renderView({
         fields,
         onSubmit,
         validation: 'onChange',
       });
-
       const textField = view.getByRole('textbox', { name: /Stub Text/ });
-
       await act(async () => {
         fireEvent.input(textField, {
           target: {
@@ -293,15 +268,14 @@ describe('GridForm', () => {
           },
         });
       });
-
       const submitButton = view.getByRole('button');
+
       expect(submitButton).not.toBeDisabled();
       expect(textField).toHaveAttribute('aria-required');
     });
 
     it('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
       const fields: GridFormField[] = [];
-
       const { view } = renderView({
         fields,
         validation: 'onChange',
@@ -312,8 +286,8 @@ describe('GridForm', () => {
           size: 6,
         },
       });
-
       const submitButton = view.getByRole('button');
+
       expect(submitButton).toBeDisabled();
     });
   });
@@ -326,7 +300,11 @@ describe('GridForm', () => {
         field: GridFormField,
         getBy: string,
         roleOrLabel: string,
-        nameId: { name: string } | undefined,
+        nameId:
+          | {
+              name: string;
+            }
+          | undefined,
         id: string
       ) => {
         const renderedField = createAndFind({
@@ -353,18 +331,14 @@ describe('GridForm', () => {
   it('submits hidden input value', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
-
     const { view } = renderView({
       fields: [stubHiddenField],
       onSubmit,
     });
-
     await act(async () => {
       fireEvent.submit(view.getByRole('button'));
-
       await api.innerPromise;
     });
-
     const result = await api.innerPromise;
 
     expect(result).toEqual({
@@ -375,18 +349,14 @@ describe('GridForm', () => {
   it('submits sweet container input value', async () => {
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
-
     const { view } = renderView({
       fields: [stubSweetContainerField],
       onSubmit,
     });
-
     await act(async () => {
       fireEvent.submit(view.getByRole('button'));
-
       await api.innerPromise;
     });
-
     const result = await api.innerPromise;
 
     expect(result).toEqual({
@@ -409,6 +379,7 @@ describe('GridForm', () => {
         ],
       });
       const sectionBreaks = view.getAllByTestId('form-section-break');
+
       expect(sectionBreaks.length).toEqual(1);
     });
 
@@ -426,6 +397,7 @@ describe('GridForm', () => {
         ],
       });
       const sectionBreaks = view.getAllByTestId('form-section-break');
+
       expect(sectionBreaks.length).toEqual(1);
     });
 
@@ -439,6 +411,7 @@ describe('GridForm', () => {
         ],
       });
       const sectionBreaks = view.queryByTestId('form-section-break');
+
       expect(sectionBreaks).not.toBeInTheDocument();
     });
 
@@ -452,6 +425,7 @@ describe('GridForm', () => {
         ],
       });
       const sectionBreaks = view.queryByTestId('form-section-break');
+
       expect(sectionBreaks).not.toBeInTheDocument();
     });
   });
@@ -459,26 +433,22 @@ describe('GridForm', () => {
   describe('Cancel button', () => {
     it('renders a cancel and submit button when "cancel" props are provided', async () => {
       const cancelOnClick = jest.fn();
-
       const { view } = renderView({
         cancel: { children: 'Cancel', onClick: cancelOnClick },
       });
-
       const buttons = view.getAllByRole('button');
       const cancelButton = view.getByText('Cancel');
-
       await act(async () => {
         fireEvent.click(cancelButton);
       });
 
       expect(cancelButton);
       expect(buttons.length).toEqual(2);
-      expect(cancelOnClick).toBeCalled();
+      expect(cancelOnClick).toHaveBeenCalled();
     });
 
     it('renders only a submit when "cancel" props are not provided', () => {
       const { view } = renderView();
-
       const buttons = view.getAllByRole('button');
 
       expect(buttons.length).toEqual(1);
@@ -490,13 +460,11 @@ describe('GridForm', () => {
     it('disables fields when form is successfully submitted', async () => {
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
-
       const { view } = await asyncRenderView({
         onSubmit,
         disableFieldsOnSubmit: true,
       });
       const { checkboxField, selectField, textField } = getBaseCases(view);
-
       await act(async () => {
         doBaseFormActions(selectField, textField, checkboxField);
         fireEvent.submit(view.getByRole('button'));
@@ -510,15 +478,12 @@ describe('GridForm', () => {
     it('does not disable fields when form has a validation error', async () => {
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
-
       const { view } = renderView({
         fields: validationFields,
         onSubmit,
         disableFieldsOnSubmit: true,
       });
-
       const { checkboxField, selectField, textField } = getBaseCases(view);
-
       await act(async () => {
         fireEvent.submit(view.getByRole('button'));
       });
@@ -531,19 +496,17 @@ describe('GridForm', () => {
 
   describe('resetOnSubmit', () => {
     // to-do: reset fields is working on the component but not here, fun.
-
     it('resets fields when form is successfully submitted', async () => {
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
-
       const { view } = await asyncRenderView({ onSubmit, resetOnSubmit: true });
       const { checkboxField, selectField, textField } = getBaseCases(view);
-
       await act(async () => {
         doBaseFormActions(selectField, textField, checkboxField);
         fireEvent.click(view.getByRole('button'));
       });
       const firstResult = await api.innerPromise;
+
       expect(firstResult).toEqual(baseResults);
 
       await waitFor(() => {
@@ -556,15 +519,12 @@ describe('GridForm', () => {
     it('does not reset fields when form is has a validation error', async () => {
       const api = createPromise<{}>();
       const onSubmit = async (values: {}) => api.resolve(values);
-
       const { view } = renderView({
         fields: validationFields,
         onSubmit,
         resetOnSubmit: true,
       });
-
       const { checkboxField, selectField, textField } = getBaseCases(view);
-
       await act(async () => {
         fireEvent.input(textField, {
           target: {
@@ -572,7 +532,6 @@ describe('GridForm', () => {
           },
         });
       });
-
       await act(async () => {
         fireEvent.submit(view.getByRole('button'));
       });

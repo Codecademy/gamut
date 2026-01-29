@@ -22,12 +22,14 @@ describe('Modal', () => {
 
   it('does not render children and title when isOpen is false', () => {
     const { view } = renderView({ isOpen: false });
+
     expect(view.queryByText('Hello world')).toBe(null);
     expect(view.queryByText('Title')).toBe(null);
   });
 
   it('does not render its close button if closeButtonProps.hidden is true', () => {
     const { view } = renderView({ closeButtonProps: { hidden: true } });
+
     expect(view.queryAllByRole('button').length).toBe(0);
   });
 
@@ -40,6 +42,7 @@ describe('Modal', () => {
     const { view } = renderView();
     const modal = view.getByTestId('overlay-content-container');
     fireEvent.keyDown(modal, { key: 'Escape', code: 'Escape' });
+
     expect(mockRequestClose).toHaveBeenCalledTimes(1);
   });
 
@@ -47,12 +50,14 @@ describe('Modal', () => {
     const { view } = renderView();
     // focus-trap listens to mouseDown, not click
     fireEvent.mouseDown(view.getByTestId('overlay-content-container'));
+
     expect(mockRequestClose).toHaveBeenCalledTimes(1);
   });
 
   it('does not trigger onRequestClose callback when clicking inside', () => {
     const { view } = renderView();
     fireEvent.mouseDown(view.getByTestId('modal-content'));
+
     expect(mockRequestClose).not.toHaveBeenCalled();
   });
 
@@ -69,8 +74,8 @@ describe('Modal', () => {
       const { view } = renderView({
         closeButtonProps: { ref: closeButtonRef },
       });
-
       const closeButton = view.getByRole('button');
+
       expect(closeButtonRef.current).toBe(closeButton);
     });
 
@@ -79,15 +84,15 @@ describe('Modal', () => {
       const { view } = renderView({
         closeButtonProps: { tip: customTip },
       });
-
       const closeButton = view.getByRole('button');
+
       expect(closeButton).toHaveAttribute('aria-label', customTip);
     });
 
     it('uses default tooltip text when closeButtonProps.tip is not provided', () => {
       const { view } = renderView();
-
       const closeButton = view.getByRole('button');
+
       expect(closeButton).toHaveAttribute('aria-label', 'Close modal');
     });
 
@@ -95,8 +100,8 @@ describe('Modal', () => {
       const { view } = renderView({
         closeButtonProps: { disabled: true },
       });
-
       const closeButton = view.getByRole('button');
+
       expect(closeButton).toBeDisabled();
     });
 
@@ -104,15 +109,15 @@ describe('Modal', () => {
       const { view } = renderView({
         closeButtonProps: { disabled: false },
       });
-
       const closeButton = view.getByRole('button');
+
       expect(closeButton).not.toBeDisabled();
     });
 
     it('enables the close button by default when closeButtonProps.disabled is not provided', () => {
       const { view } = renderView();
-
       const closeButton = view.getByRole('button');
+
       expect(closeButton).not.toBeDisabled();
     });
   });
@@ -123,8 +128,8 @@ describe('Modal', () => {
       const { view } = renderView({
         containerFocusRef,
       });
-
       const modalContainer = view.getByRole('dialog');
+
       expect(containerFocusRef.current).toBe(modalContainer);
     });
   });
@@ -142,6 +147,7 @@ describe('Modal', () => {
       });
       view.getByText('View 1');
       view.getByText('Title');
+
       expect(view.queryByText('Multi view')).toBe(null);
     });
 
@@ -158,6 +164,7 @@ describe('Modal', () => {
       });
       view.getByText('View 1');
       view.getByText('Multi view');
+
       expect(view.queryByText('Title')).toBe(null);
     });
 
@@ -183,13 +190,13 @@ describe('Modal', () => {
           },
         ],
       });
-
       view.getByText('View 1');
+
       expect(view.queryByText('View 2')).toBe(null);
 
       fireEvent.click(view.getByText('Next'));
-
       view.getByText('View 2');
+
       expect(view.queryByText('View 1')).toBe(null);
       expect(mockOnClick).toHaveBeenCalledTimes(1);
     });
@@ -216,15 +223,14 @@ describe('Modal', () => {
           },
         ],
       });
-
       fireEvent.click(view.getByText('Next'));
-
       view.getByText('View 2');
+
       expect(view.queryByText('View 1')).toBe(null);
 
       fireEvent.click(view.getByText('Back'));
-
       view.getByText('View 1');
+
       expect(view.queryByText('View 2')).toBe(null);
       expect(mockOnClick).toHaveBeenCalledTimes(1);
     });
@@ -240,10 +246,10 @@ describe('Modal', () => {
           },
         ],
       });
-
       const backButton = view.getByRole('button', {
         name: 'Back',
       });
+
       expect(backButton).toBeDisabled();
     });
 
@@ -258,10 +264,10 @@ describe('Modal', () => {
           },
         ],
       });
-
       const nextButton = view.getByRole('button', {
         name: 'Next',
       });
+
       expect(nextButton).toBeDisabled();
     });
 
@@ -293,17 +299,17 @@ describe('Modal', () => {
           },
         ],
       });
-
       const cancelButton = view.getByRole('button', {
         name: 'Cancel',
       });
+
       expect(cancelButton).toBeDisabled();
 
       fireEvent.click(view.getByText('Next'));
-
       const doneButton = view.getByRole('button', {
         name: 'Done',
       });
+
       expect(doneButton).toBeDisabled();
     });
 
@@ -321,10 +327,10 @@ describe('Modal', () => {
           },
         ],
       });
-
       const primaryButton = view.getByRole('button', {
         name: 'Confirm',
       });
+
       expect(primaryButton).toHaveStyle(
         `background-color: ${theme.colors.primary}`
       );
@@ -348,10 +354,10 @@ describe('Modal', () => {
           },
         ],
       });
-
       const primaryButton = view.getByRole('button', {
         name: 'Confirm',
       });
+
       expect(primaryButton).toHaveStyle(
         `background-color: ${theme.colors.primary}`
       );
@@ -371,10 +377,10 @@ describe('Modal', () => {
           },
         ],
       });
-
       const primaryButton = view.getByRole('button', {
         name: 'Next',
       });
+
       expect(primaryButton).toHaveStyle(
         `background-color: ${theme.colors.primary}`
       );
@@ -398,10 +404,10 @@ describe('Modal', () => {
           },
         ],
       });
-
       const primaryButton = view.getByRole('button', {
         name: 'Confirm',
       });
+
       expect(primaryButton).toHaveStyle(
         `background-color: ${theme.colors.danger}`
       );
@@ -423,8 +429,8 @@ describe('Modal', () => {
           },
         ],
       });
-
       fireEvent.click(view.getByText('Cancel'));
+
       expect(mockRequestClose).toHaveBeenCalledTimes(1);
       expect(mockOnClick).toHaveBeenCalledTimes(1);
     });
@@ -449,8 +455,8 @@ describe('Modal', () => {
           },
         ],
       });
-
       fireEvent.click(view.getByText('Confirm'));
+
       expect(mockOnClick).toHaveBeenCalledTimes(1);
     });
 
@@ -467,7 +473,6 @@ describe('Modal', () => {
               children: 'Confirm',
               onClick: mockOnClick,
             },
-
             secondaryCta: {
               actionType: 'cancel',
               children: 'Cancel',
@@ -476,7 +481,6 @@ describe('Modal', () => {
           },
         ],
       });
-
       view.getByAltText('test');
     });
   });

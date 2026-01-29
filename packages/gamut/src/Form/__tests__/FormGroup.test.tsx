@@ -6,7 +6,6 @@ import { Input } from '../inputs/Input';
 const renderView = setupRtl(FormGroup, {
   children: <Input id="up-dog" />,
 });
-
 const label = 'up dog';
 const htmlFor = 'up-dog';
 const optionalLabelText = `${label} (optional)`;
@@ -15,15 +14,16 @@ describe('FormGroup', () => {
   describe('when htmlFor is provided', () => {
     it('renders Label as a label', () => {
       const { view } = renderView({ label, htmlFor });
-
       view.getByLabelText(optionalLabelText);
     });
   });
+
   describe('when htmlFor is not provided', () => {
     it('renders Label as a div', () => {
       const { view } = renderView({ label });
 
       expect(view.queryByLabelText(optionalLabelText)).toBeNull();
+
       view.getByText(/up dog/);
     });
   });
@@ -34,7 +34,6 @@ describe('FormGroup', () => {
       htmlFor,
       required: true,
     });
-
     view.getByLabelText('up dog*');
   });
 
@@ -45,7 +44,6 @@ describe('FormGroup', () => {
       required: true,
       isSoloField: true,
     });
-
     view.getByLabelText('up dog');
   });
 
@@ -55,7 +53,6 @@ describe('FormGroup', () => {
       description:
         "i don't know what up dog is and at this point i'm too afraid to ask.",
     });
-
     view.getByText(
       "i don't know what up dog is and at this point i'm too afraid to ask."
     );
@@ -66,6 +63,7 @@ describe('FormGroup', () => {
       label: 'up dog',
       error: 'there is no up dog here...',
     });
+
     expect(view.getByRole('alert')).toHaveTextContent(
       'there is no up dog here...'
     );

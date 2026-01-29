@@ -11,7 +11,6 @@ jest.mock('../cache', () => {
   const cacheMock = jest.fn();
   return { createEmotionCache: cacheMock };
 });
-
 const renderView = setupRtl(GamutProvider, { theme });
 
 describe(GamutProvider, () => {
@@ -30,6 +29,7 @@ describe(GamutProvider, () => {
 
     expect(createEmotionCache).not.toHaveBeenCalled();
   });
+
   it('renders global styles', () => {
     renderView();
     const allStyles = Array.from(document.querySelectorAll('style')).filter(
@@ -38,6 +38,7 @@ describe(GamutProvider, () => {
 
     expect(allStyles.length).toBeGreaterThan(0);
   });
+
   it('does not render global styles when configured', () => {
     renderView({ useGlobals: false });
     const allStyles = Array.from(document.querySelectorAll('style')).filter(
@@ -55,15 +56,14 @@ describe(GamutProvider, () => {
         </ThemeContext.Consumer>
       ),
     });
-
     screen.getByText(JSON.stringify(theme));
   });
+
   it('it can have another GamutProvider as a child with creating multiple caches or globals', () => {
     renderView({
       useGlobals: false,
       children: <GamutProvider theme={theme} />,
     });
-
     const allStyles = Array.from(document.querySelectorAll('style')).filter(
       (el) => Boolean(el.getAttribute('data-emotion'))
     );
@@ -82,7 +82,6 @@ describe(GamutProvider, () => {
     renderView({
       variables: { cool: { '--cool': 'blue' } },
     });
-
     const rootElement = document.documentElement;
     const rootStyles = getComputedStyle(rootElement);
     const blue = rootStyles.getPropertyValue('--cool');

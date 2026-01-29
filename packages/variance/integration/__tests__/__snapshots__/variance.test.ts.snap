@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`style props parsers media query styles Equivalent Syntax SM and MD -  [ <2 empty items>, 16, 0, [length]: 4 ] === { sm: 16, md: 0 } 1`] = `
 {

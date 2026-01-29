@@ -6,6 +6,7 @@ describe('createTheme', () => {
   const base = {
     breakpoints: { xs: '1', sm: '2', md: '3', lg: '4', xl: '5' },
   };
+
   it('works', () => {
     expect(createTheme(base).build()).toEqual({
       ...base,
@@ -70,11 +71,13 @@ describe('createTheme', () => {
       (val) => `var(--color-${val})`
     );
     const builder = createTheme(base);
+
     it('creates color variables', () => {
       const theme = builder.addColors(staticColors).build();
 
       expect(theme.colors).toEqual(cssVariableReferences);
     });
+
     it('adds colorModes', () => {
       const theme = builder
         .addColors(staticColors)
@@ -92,7 +95,6 @@ describe('createTheme', () => {
         ...mapValues(staticColors, (val) => `var(--color-${val})`),
         primary: 'var(--color-primary)',
       });
-
       expect(theme._variables.mode).toEqual({
         '--color-primary': 'var(--color-red)',
       });
@@ -119,6 +121,7 @@ describe('createTheme', () => {
         '#000000'
       );
     });
+
     it('returns value checker for colors with deep values', () => {
       const theme = builder
         .addColors({
@@ -157,7 +160,6 @@ describe('createTheme', () => {
           },
         })
         .build();
-
       const override = createTheme(theme)
         .addColorModes('light', {
           light: {

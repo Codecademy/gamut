@@ -27,6 +27,7 @@ describe('orderPropNames', () => {
 
     expect(result).toEqual(['test2', 'test']);
   });
+
   it('orders higher precendence longhand properties before many lower precedence props', () => {
     const result = orderPropNames({
       test2: {
@@ -42,6 +43,7 @@ describe('orderPropNames', () => {
 
     expect(result).toEqual(['test2', 'test3', 'test']);
   });
+
   it('orders non-shorthand properties by length of properties responsible', () => {
     const result = orderPropNames({
       marginX: {
@@ -60,6 +62,7 @@ describe('orderPropNames', () => {
 
     expect(result).toEqual(['margin', 'marginX', 'marginY']);
   });
+
   it('orders non-shorthand properties by length of properties responsible', () => {
     const result = orderPropNames({
       marginX: {
@@ -81,6 +84,7 @@ describe('orderPropNames', () => {
 
     expect(result).toEqual(['margin', 'marginX', 'marginY', 'marginLeft']);
   });
+
   it('orders all props', () => {
     const result = orderPropNames(testConfig);
 

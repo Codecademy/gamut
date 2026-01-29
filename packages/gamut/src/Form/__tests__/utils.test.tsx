@@ -9,6 +9,7 @@ describe(parseSelectOptions, () => {
 
     expect(options).toMatchSnapshot();
   });
+
   it('creates an option list', () => {
     const options = parseSelectOptions({
       id: 'test',
@@ -17,6 +18,7 @@ describe(parseSelectOptions, () => {
 
     expect(options).toMatchSnapshot();
   });
+
   it('creates an option list as object', () => {
     const options = parseOptions({
       id: 'test',
@@ -25,6 +27,7 @@ describe(parseSelectOptions, () => {
 
     expect(options).toMatchSnapshot();
   });
+
   it('creates an option list as object without generated labels', () => {
     const options = parseOptions({
       id: 'test',

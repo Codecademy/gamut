@@ -6,7 +6,6 @@ import { ToolTipMock } from './mocks';
 
 const info = 'I am information';
 const onClick = jest.fn();
-
 const renderView = setupRtl(ToolTipMock, {
   info,
   id: 'info-id',
@@ -25,12 +24,12 @@ describe('ToolTip', () => {
 
     it('calls onClick when clicked', async () => {
       const { view } = renderView({});
-
       await userEvent.click(view.getByRole('button'));
 
       expect(onClick).toHaveBeenCalled();
     });
   });
+
   describe('floating placement', () => {
     it('has an accessible tooltip', () => {
       const { view } = renderView({ placement: 'floating' });
@@ -46,12 +45,11 @@ describe('ToolTip', () => {
       expect(view.queryAllByText(info).length).toBe(1);
 
       await userEvent.hover(view.getByRole('button'));
-
       await waitFor(() => expect(view.queryAllByText(info).length).toBe(2));
     });
+
     it('calls onClick when clicked', async () => {
       const { view } = renderView({});
-
       await userEvent.click(view.getByRole('button'));
 
       expect(onClick).toHaveBeenCalled();

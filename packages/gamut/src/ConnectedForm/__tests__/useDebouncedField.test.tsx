@@ -9,10 +9,8 @@ import { ConnectedForm } from '../ConnectedForm';
 import { useDebouncedField, useFormState } from '../utils';
 
 const mockedSetValue = jest.fn();
-
 jest.mock('react-hook-form', () => {
   const original = jest.requireActual('react-hook-form');
-
   return {
     ...original,
     useFormContext: () => {
@@ -23,14 +21,12 @@ jest.mock('react-hook-form', () => {
     },
   };
 });
-
 const mockInputKey = 'final-fantasy-vii';
 const mockDefaultValue = 'is your tv screen big enough?';
 const mockChangeValue =
   'A story of war and friendship. A story of love that can never be.';
 const mockChangeKey = 'remake-intergrade';
 const mockCheckboxKey = 'episode-inter-mission';
-
 const FormWrapper: React.FC<WithChildrenProp> = ({ children }) => (
   <ConnectedForm
     defaultValues={{
@@ -44,10 +40,9 @@ const FormWrapper: React.FC<WithChildrenProp> = ({ children }) => (
     {children}
   </ConnectedForm>
 );
-
-const TestTextInput: React.FC<{ shouldDirtyOnChange?: boolean }> = ({
-  shouldDirtyOnChange,
-}) => {
+const TestTextInput: React.FC<{
+  shouldDirtyOnChange?: boolean;
+}> = ({ shouldDirtyOnChange }) => {
   const { onBlur, onChange, value } = useDebouncedField({
     name: mockInputKey,
     watchUpdateKeyName: mockChangeKey,
@@ -55,7 +50,6 @@ const TestTextInput: React.FC<{ shouldDirtyOnChange?: boolean }> = ({
     shouldDirtyOnChange,
   });
   const { reset } = useFormState();
-
   const contrivedOnClick = () => {
     reset({
       [mockChangeKey]:
@@ -63,7 +57,6 @@ const TestTextInput: React.FC<{ shouldDirtyOnChange?: boolean }> = ({
       [mockInputKey]: mockChangeValue,
     });
   };
-
   return (
     <>
       <Input
@@ -80,13 +73,11 @@ const TestTextInput: React.FC<{ shouldDirtyOnChange?: boolean }> = ({
     </>
   );
 };
-
 const TestCheckboxInput: React.FC = () => {
   const { onBlur, onChange, value } = useDebouncedField({
     name: mockCheckboxKey,
     type: 'checkbox',
   });
-
   return (
     <Checkbox
       checked={Boolean(value)}
@@ -97,7 +88,6 @@ const TestCheckboxInput: React.FC = () => {
     />
   );
 };
-
 const renderView = setupRtl(TestTextInput).options({ wrapper: FormWrapper });
 const renderCheckboxView = setupRtl(TestCheckboxInput).options({
   wrapper: FormWrapper,
@@ -106,8 +96,8 @@ const renderCheckboxView = setupRtl(TestCheckboxInput).options({
 describe('ConnectedForm - useDebouncedField', () => {
   it('should properly receive the default value', () => {
     const { view } = renderView();
-
     const input = view.getByRole('textbox') as HTMLInputElement;
+
     expect(input.value).toEqual(mockDefaultValue);
   });
 
@@ -123,32 +113,32 @@ describe('ConnectedForm - useDebouncedField', () => {
 
   it("should ONLY update the input's value on the form on blur of input", async () => {
     const { view } = renderView({ shouldDirtyOnChange: false });
-
     const input = view.getByRole('textbox') as HTMLInputElement;
-
     input.focus();
+
     expect(mockedSetValue).toHaveBeenCalledTimes(0);
+
     await act(async () => {
       fireEvent.change(input, { target: { value: 't' } });
       fireEvent.change(input, { target: { value: 'ti' } });
       fireEvent.change(input, { target: { value: 'tif' } });
       fireEvent.change(input, { target: { value: 'tifa' } });
     });
-
     // Form has been dirtied by changing input
     input.blur();
+
     // Now it has finally been called to update the data
     expect(mockedSetValue).toHaveBeenCalledTimes(1);
-    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa', {
+    expect(mockedSetValue).toHaveBeenLastCalledWith(mockInputKey, 'tifa', {
       shouldDirty: true,
     });
   });
 
   it("doesn't call the dirty function on change if shouldDirtyOnChange is false", async () => {
     const { view } = renderView();
-
     const input = view.getByRole('textbox') as HTMLInputElement;
     input.focus();
+
     expect(mockedSetValue).toHaveBeenCalledTimes(0);
 
     await act(async () => {
@@ -157,12 +147,14 @@ describe('ConnectedForm - useDebouncedField', () => {
       fireEvent.change(input, { target: { value: 'tif' } });
       fireEvent.change(input, { target: { value: 'tifa' } });
     });
+
     // Form has NOT been dirtied by changing input
     expect(mockedSetValue).toHaveBeenCalledTimes(0);
 
     input.blur();
+
     expect(mockedSetValue).toHaveBeenCalledTimes(1);
-    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa', {
+    expect(mockedSetValue).toHaveBeenLastCalledWith(mockInputKey, 'tifa', {
       shouldDirty: true,
     });
   });
@@ -183,54 +175,57 @@ describe('ConnectedForm - useDebouncedField', () => {
 
   it('should allow the form to be re-dirtied after submission', async () => {
     const { view } = renderView({ shouldDirtyOnChange: true });
-
     const input = view.getByRole('textbox') as HTMLInputElement;
     const changeButton = view.getByRole('button');
-
     input.focus();
+
     expect(mockedSetValue).toHaveBeenCalledTimes(0);
+
     await act(async () => {
       fireEvent.change(input, { target: { value: 'tifa' } });
     });
+
     // Form has been dirtied by changing input
     expect(mockedSetValue).toHaveBeenCalledTimes(1);
-    expect(mockedSetValue).lastCalledWith('', '', { shouldDirty: true });
+    expect(mockedSetValue).toHaveBeenLastCalledWith('', '', {
+      shouldDirty: true,
+    });
 
     input.blur();
+
     // Now it has finally been called to update the data
     expect(mockedSetValue).toHaveBeenCalledTimes(2);
-    expect(mockedSetValue).lastCalledWith(mockInputKey, 'tifa', {
+    expect(mockedSetValue).toHaveBeenLastCalledWith(mockInputKey, 'tifa', {
       shouldDirty: false,
     });
 
     await act(async () => {
       fireEvent.click(changeButton);
     });
-
     input.focus();
     await act(async () => {
       fireEvent.change(input, { target: { value: 'tifa' } });
     });
+
     // Form has been dirtied by changing input
     expect(mockedSetValue).toHaveBeenCalledTimes(3);
-    expect(mockedSetValue).lastCalledWith('', '', { shouldDirty: true });
+    expect(mockedSetValue).toHaveBeenLastCalledWith('', '', {
+      shouldDirty: true,
+    });
   });
 
   it('can handle non-string values (aka a checkbox)', async () => {
     const { view } = renderCheckboxView();
-
     const input = view.getByRole('checkbox') as HTMLInputElement;
-    expect(input.checked).toBe(false);
 
+    expect(input.checked).toBe(false);
     // inital value setting
     expect(mockedSetValue).toHaveBeenCalledTimes(0);
 
     input.focus();
-
     await act(async () => {
       fireEvent.click(input);
     });
-
     input.blur();
 
     expect(mockedSetValue).toHaveBeenLastCalledWith(mockCheckboxKey, true, {
@@ -240,11 +235,9 @@ describe('ConnectedForm - useDebouncedField', () => {
     expect(mockedSetValue).toHaveBeenCalledTimes(1);
 
     input.focus();
-
     await act(async () => {
       fireEvent.click(input);
     });
-
     input.blur();
 
     expect(mockedSetValue).toHaveBeenLastCalledWith(mockCheckboxKey, false, {

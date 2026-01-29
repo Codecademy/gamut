@@ -7,7 +7,6 @@ jest.mock('react-use', () => ({
   ...jest.requireActual<{}>('react-use'),
   useMedia: () => false,
 }));
-
 const renderView = setupRtl(Drawer, {
   children: <div data-testid="drawer-content">Howdy!</div>,
 });
@@ -15,7 +14,6 @@ const renderView = setupRtl(Drawer, {
 describe('Drawer', () => {
   const expectDrawerOpen = (view: RenderResult) =>
     waitFor(() => view.getByTestId('drawer-content'));
-
   const expectDrawerClosed = (view: RenderResult) =>
     waitFor(() => expect(view.queryByTestId('drawer-content')).toBeNull());
 

@@ -11,7 +11,6 @@ const renderView = setupRtl(Anchor, { children: anchorText, href });
 describe('Anchor', () => {
   it('renders an anchor with the href', () => {
     const { view } = renderView();
-
     const anchorElement = view.getByRole('link');
 
     expect(anchorElement).toHaveAttribute('href', 'https://example.com');
@@ -19,7 +18,6 @@ describe('Anchor', () => {
 
   it('renders an anchor with an icon and href', () => {
     const { view } = renderView({ icon: MiniWarningTriangleIcon });
-
     const anchorElement = view.getByRole('link');
     screen.getByRole('img', { hidden: true });
 
@@ -28,7 +26,6 @@ describe('Anchor', () => {
 
   it('renders an anchor without an href as a button', () => {
     const { view } = renderView({ href: undefined });
-
     const buttonElement = view.getByRole('button');
 
     expect(buttonElement).toHaveTextContent(anchorText);

@@ -17,19 +17,15 @@ function withThemeProvider<Props>(
       <WrappedComponent {...props} />
     </ThemeProvider>
   );
-
   return WithBoundaryComponent;
 }
-
 const setupRtl = overArgs(
   setupRtlBase,
   withThemeProvider
 ) as typeof setupRtlBase;
-
 const renderView = setupRtl(Background, {
   children: <div data-testid="content" />,
 });
-
 const ActiveMode = () => {
   const { mode } = useTheme();
   return <div>{mode}</div>;
@@ -38,11 +34,11 @@ const ActiveMode = () => {
 describe('Background', () => {
   it('switches the default colormode when contrast standards are not met', () => {
     const { view } = renderView({ bg: 'navy' });
+
     expect(view.getByTestId('content').parentElement).toHaveStyleRule(
       '--color-background-current',
       theme.colors.navy
     );
-
     expect(view.getByTestId('content').parentElement).toHaveStyleRule(
       'background-color',
       theme.colors['background-current']
@@ -60,11 +56,11 @@ describe('Background', () => {
         </div>
       ),
     });
+
     expect(view.getByTestId('content').parentElement).toHaveStyleRule(
       '--color-background-current',
       theme.colors.navy
     );
-
     expect(view.getByTestId('nested-content').parentElement).toHaveStyleRule(
       '--color-background-current',
       theme.colors.beige
@@ -76,7 +72,6 @@ describe('Background', () => {
       bg: 'navy',
       children: <ActiveMode />,
     });
-
     view.getByText('dark');
   });
 
@@ -85,12 +80,12 @@ describe('Background', () => {
       bg: 'white',
       children: <ActiveMode />,
     });
-
     view.getByText('light');
   });
 
   it('it sets the current background color to the specified bg', () => {
     const { view } = renderView({ bg: 'paleBlue' });
+
     expect(view.getByTestId('content').parentElement).toHaveStyleRule(
       '--color-background-current',
       theme.colors.paleBlue
@@ -99,6 +94,7 @@ describe('Background', () => {
 
   it('it sets the current background color to the specified bg when switch modes', () => {
     const { view } = renderView({ bg: 'navy' });
+
     expect(view.getByTestId('content').parentElement).toHaveStyleRule(
       '--color-background-current',
       theme.colors.navy

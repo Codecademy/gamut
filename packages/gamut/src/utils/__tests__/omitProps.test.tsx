@@ -9,6 +9,7 @@ describe('omitProps', () => {
       two: 'submit',
       three: {},
     };
+
     expect(omitProps(['one'], props)).toEqual({ two: 'submit', three: {} });
   });
 
@@ -18,7 +19,6 @@ describe('omitProps', () => {
       two: 'submit',
       three: {},
     };
-
     const otherProps = omit(props, 'one');
 
     expect(omitProps(otherProps, props)).toEqual({ one: true });

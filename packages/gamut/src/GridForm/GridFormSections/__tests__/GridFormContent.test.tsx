@@ -9,7 +9,6 @@ const renderView = setupRtl(GridFormContentTestComponent, {
   field: stubTextField,
   showRequired: false,
 });
-
 const validStubTextField = {
   ...stubTextField,
   validation: {
@@ -24,7 +23,6 @@ const validStubTextField = {
 describe('GridFormContent', () => {
   it('renders the label and field', () => {
     const { view } = renderView();
-
     view.getByLabelText('Stub Text (optional)');
     view.getByRole('textbox', { name: /Stub Text/ });
   });
@@ -34,7 +32,6 @@ describe('GridFormContent', () => {
       field: validStubTextField,
       mode: 'onChange',
     });
-
     act(() => {
       fireEvent.input(view.getByRole('textbox', { name: /Stub Text/ }), {
         target: {
@@ -43,6 +40,7 @@ describe('GridFormContent', () => {
         },
       });
     });
+
     expect(await view.findAllByRole('alert')).toHaveLength(1);
   });
 });

@@ -38,11 +38,12 @@ const mockOptions: NestedConnectedCheckboxOption[] = [
     label: 'Databases',
   },
 ];
-
 const mockOnUpdate = jest.fn();
 const mockOnSubmit = jest.fn();
 const TestForm: React.FC<{
-  defaultValues?: { skills?: string[] };
+  defaultValues?: {
+    skills?: string[];
+  };
   validationRules?: any;
   disabled?: boolean;
   options?: NestedConnectedCheckboxOption[];
@@ -70,14 +71,12 @@ const TestForm: React.FC<{
     <SubmitButton>submit this form</SubmitButton>
   </ConnectedForm>
 );
-
 const renderView = setupRtl(TestForm, {});
 
 describe('ConnectedNestedCheckboxes', () => {
   describe('rendering', () => {
     it('should render all checkbox options in a flat list', () => {
       const { view } = renderView();
-
       view.getByLabelText('Frontend Technologies');
       view.getByLabelText('Backend Technologies');
       view.getByLabelText('Databases');
@@ -92,7 +91,6 @@ describe('ConnectedNestedCheckboxes', () => {
 
     it('should render checkboxes with proper indentation levels', () => {
       const { view } = renderView();
-
       const frontendCheckbox = view
         .getByLabelText('Frontend Technologies')
         .closest('li');
@@ -139,7 +137,6 @@ describe('ConnectedNestedCheckboxes', () => {
       const { view } = renderView({
         defaultValues: { skills: ['react', 'vue'] },
       });
-
       const frontendCheckbox = view.getByLabelText(
         'Frontend Technologies'
       ) as HTMLInputElement;
@@ -152,8 +149,8 @@ describe('ConnectedNestedCheckboxes', () => {
       const { view } = renderView({
         defaultValues: { skills: ['react', 'vue', 'angular'] },
       });
-
       const frontendCheckbox = view.getByLabelText('Frontend Technologies');
+
       expect(frontendCheckbox).toBeChecked();
     });
 
@@ -161,7 +158,6 @@ describe('ConnectedNestedCheckboxes', () => {
       const { view } = renderView({
         defaultValues: { skills: ['express', 'fastify'] },
       });
-
       const nodeCheckbox = view.getByLabelText('Node.js') as HTMLInputElement;
       const backendCheckbox = view.getByLabelText(
         'Backend Technologies'
@@ -177,10 +173,9 @@ describe('ConnectedNestedCheckboxes', () => {
       const { view } = renderView({
         defaultValues: { skills: ['backend'] },
       });
-
       const backendCheckbox = view.getByLabelText('Backend Technologies');
-      expect(backendCheckbox).toBeChecked();
 
+      expect(backendCheckbox).toBeChecked();
       expect(view.getByLabelText('Node.js')).toBeChecked();
       expect(view.getByLabelText('Python')).toBeChecked();
       expect(view.getByLabelText('Express.js')).toBeChecked();
@@ -194,7 +189,6 @@ describe('ConnectedNestedCheckboxes', () => {
 
       expect(view.getByLabelText('Frontend Technologies')).toBeChecked();
       expect(view.getByLabelText('Backend Technologies')).toBeChecked();
-
       expect(view.getByLabelText('React')).toBeChecked();
       expect(view.getByLabelText('Vue')).toBeChecked();
       expect(view.getByLabelText('Angular')).toBeChecked();
@@ -222,7 +216,6 @@ describe('ConnectedNestedCheckboxes', () => {
 
       expect(frontendCheckbox.indeterminate).toBe(true);
       expect(backendCheckbox.indeterminate).toBe(true);
-
       expect(view.getByLabelText('Vue')).not.toBeChecked();
       expect(view.getByLabelText('Angular')).not.toBeChecked();
       expect(view.getByLabelText('Node.js')).not.toBeChecked();
@@ -235,7 +228,6 @@ describe('ConnectedNestedCheckboxes', () => {
       const { view } = renderView({
         defaultValues: { skills: ['backend'] },
       });
-
       const backendCheckbox = view.getByLabelText(
         'Backend Technologies'
       ) as HTMLInputElement;
@@ -249,10 +241,8 @@ describe('ConnectedNestedCheckboxes', () => {
       });
 
       expect(pythonCheckbox).not.toBeChecked();
-
       expect(backendCheckbox.indeterminate).toBe(true);
       expect(backendCheckbox).not.toBeChecked();
-
       expect(view.getByLabelText('Node.js')).toBeChecked();
       expect(view.getByLabelText('Express.js')).toBeChecked();
       expect(view.getByLabelText('Fastify')).toBeChecked();
@@ -262,9 +252,7 @@ describe('ConnectedNestedCheckboxes', () => {
   describe('user interactions', () => {
     it('should update form value when leaf checkbox is clicked', async () => {
       const { view } = renderView();
-
       const reactCheckbox = view.getByLabelText('React');
-
       await act(async () => {
         fireEvent.click(reactCheckbox);
       });
@@ -274,14 +262,13 @@ describe('ConnectedNestedCheckboxes', () => {
       const frontendCheckbox = view.getByLabelText(
         'Frontend Technologies'
       ) as HTMLInputElement;
+
       expect(frontendCheckbox.indeterminate).toBe(true);
     });
 
     it('should select all children when parent checkbox is clicked', async () => {
       const { view } = renderView();
-
       const frontendCheckbox = view.getByLabelText('Frontend Technologies');
-
       await act(async () => {
         fireEvent.click(frontendCheckbox);
       });
@@ -290,7 +277,6 @@ describe('ConnectedNestedCheckboxes', () => {
       expect(view.getByLabelText('React')).toBeChecked();
       expect(view.getByLabelText('Vue')).toBeChecked();
       expect(view.getByLabelText('Angular')).toBeChecked();
-
       expect(mockOnUpdate).toHaveBeenCalledWith([
         'react',
         'vue',
@@ -303,8 +289,8 @@ describe('ConnectedNestedCheckboxes', () => {
       const { view } = renderView({
         defaultValues: { skills: ['react', 'vue', 'angular'] },
       });
-
       const frontendCheckbox = view.getByLabelText('Frontend Technologies');
+
       expect(frontendCheckbox).toBeChecked();
 
       await act(async () => {
@@ -319,9 +305,7 @@ describe('ConnectedNestedCheckboxes', () => {
 
     it('should handle deeply nested selections correctly', async () => {
       const { view } = renderView();
-
       const nodeCheckbox = view.getByLabelText('Node.js');
-
       await act(async () => {
         fireEvent.click(nodeCheckbox);
       });
@@ -333,8 +317,8 @@ describe('ConnectedNestedCheckboxes', () => {
       const backendCheckbox = view.getByLabelText(
         'Backend Technologies'
       ) as HTMLInputElement;
-      expect(backendCheckbox.indeterminate).toBe(true);
 
+      expect(backendCheckbox.indeterminate).toBe(true);
       expect(mockOnUpdate).toHaveBeenCalledWith(['express', 'fastify', 'node']);
     });
 
@@ -342,10 +326,10 @@ describe('ConnectedNestedCheckboxes', () => {
       const { view } = renderView({
         defaultValues: { skills: ['react', 'vue', 'angular'] },
       });
-
       const frontendCheckbox = view.getByLabelText(
         'Frontend Technologies'
       ) as HTMLInputElement;
+
       expect(frontendCheckbox).toBeChecked();
 
       const reactCheckbox = view.getByLabelText('React');
@@ -362,9 +346,7 @@ describe('ConnectedNestedCheckboxes', () => {
   describe('onUpdate callback', () => {
     it('should call onUpdate when checkbox values change', async () => {
       const { view } = renderView();
-
       const reactCheckbox = view.getByLabelText('React');
-
       await act(async () => {
         fireEvent.click(reactCheckbox);
       });
@@ -374,9 +356,7 @@ describe('ConnectedNestedCheckboxes', () => {
 
     it('should call onUpdate with correct values when parent is selected', async () => {
       const { view } = renderView();
-
       const frontendCheckbox = view.getByLabelText('Frontend Technologies');
-
       await act(async () => {
         fireEvent.click(frontendCheckbox);
       });
@@ -393,9 +373,7 @@ describe('ConnectedNestedCheckboxes', () => {
       const { view } = renderView({
         defaultValues: { skills: ['react'] },
       });
-
       const reactCheckbox = view.getByLabelText('React');
-
       await act(async () => {
         fireEvent.click(reactCheckbox);
       });
@@ -417,8 +395,8 @@ describe('ConnectedNestedCheckboxes', () => {
       const { view } = renderView({
         disabled: true,
       });
-
       const reactCheckbox = view.getByLabelText('React');
+
       expect(reactCheckbox).toBeDisabled();
       expect(reactCheckbox).not.toBeChecked();
 
@@ -441,7 +419,6 @@ describe('ConnectedNestedCheckboxes', () => {
       const validationRules = {
         skills: { required: 'At least one skill is required' },
       };
-
       const { view } = renderView({ validationRules });
 
       expect(view.getByLabelText('Frontend Technologies')).toHaveAttribute(
@@ -454,15 +431,11 @@ describe('ConnectedNestedCheckboxes', () => {
       const validationRules = {
         skills: { required: 'At least one skill is required' },
       };
-
       const { view } = renderView({ validationRules });
-
       const reactCheckbox = view.getByLabelText('React');
-
       await act(async () => {
         fireEvent.click(reactCheckbox);
       });
-
       const submitButton = view.getByRole('button');
       await act(async () => {
         fireEvent.click(submitButton);
@@ -478,15 +451,14 @@ describe('ConnectedNestedCheckboxes', () => {
       const validationRules = {
         skills: { required: 'At least one skill is required' },
       };
-
       const { view } = renderView({ validationRules });
-
       const submitButton = view.getByRole('button');
       await act(async () => {
         fireEvent.click(submitButton);
       });
 
       expect(mockOnSubmit).not.toHaveBeenCalled();
+
       view.getByText('At least one skill is required');
     });
   });
@@ -494,8 +466,8 @@ describe('ConnectedNestedCheckboxes', () => {
   describe('edge cases', () => {
     it('should handle empty options array', () => {
       const { view } = renderView({ options: [] });
-
       const list = view.container.querySelector('ul');
+
       expect(list).toBeInTheDocument();
       expect(list?.children).toHaveLength(0);
     });
@@ -507,7 +479,6 @@ describe('ConnectedNestedCheckboxes', () => {
           { value: 'option2', label: 'Option 2' },
         ],
       });
-
       view.getByLabelText('Option 1');
       view.getByLabelText('Option 2');
     });
@@ -537,7 +508,6 @@ describe('ConnectedNestedCheckboxes', () => {
   describe('accessibility', () => {
     it('should have proper aria attributes', () => {
       const { view } = renderView();
-
       const checkbox = view.getByLabelText('Frontend Technologies');
 
       expect(checkbox).toHaveAttribute('aria-label', 'Frontend Technologies');
@@ -548,7 +518,6 @@ describe('ConnectedNestedCheckboxes', () => {
       const { view } = renderView({
         defaultValues: { skills: ['react'] },
       });
-
       const frontendCheckbox = view.getByLabelText('Frontend Technologies');
 
       expect(frontendCheckbox).toHaveAttribute('aria-checked', 'mixed');
@@ -556,11 +525,11 @@ describe('ConnectedNestedCheckboxes', () => {
 
     it('should use proper list semantics', () => {
       const { view } = renderView({});
-
       const list = view.container.querySelector('ul');
-      expect(list).toBeInTheDocument();
 
+      expect(list).toBeInTheDocument();
       expect(list?.children).toHaveLength(11); // Total flattened options
+
       Array.from(list?.children || []).forEach((item) => {
         // each child of the ul should be an li
         expect(item).toBeInstanceOf(HTMLLIElement);

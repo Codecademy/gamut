@@ -26,7 +26,6 @@ const FullTabs = (props: TabsProps) => (
     </TabPanels>
   </Tabs>
 );
-
 const FullTabsControlled = (props: TabsProps) => {
   const [activeTab, setActiveTab] = useState(props.selectedKey ?? 'tab1');
   return (
@@ -59,7 +58,6 @@ const FullTabsControlled = (props: TabsProps) => {
     </Tabs>
   );
 };
-
 const mockOnSelectionChange = jest.fn();
 const renderView = setupRtl(FullTabs, {
   onSelectionChange: mockOnSelectionChange,
@@ -72,67 +70,70 @@ describe('Tabs', () => {
   describe('Uncontrolled', () => {
     it('renders the first tab and first tab panel when no default selected key is passed', () => {
       const { view } = renderView();
-
       view.getByText('Tab 1');
       view.getByText('tab 1 content');
+
       expect(view.queryByText('tab 2 content')).toBeNull();
     });
 
     it('renders the second tab tab panel and calls onSelectionChange when second tab is clicked', async () => {
       const { view } = renderView();
-
       view.getByText('tab 1 content');
+
       expect(view.queryByText('tab 2 content')).toBeNull();
 
       await act(() => userEvent.click(view.getByText('Tab 2')));
-
       view.getByText('tab 2 content');
+
       expect(mockOnSelectionChange).toHaveBeenCalledWith('tab2');
       expect(view.queryByText('tab 1 content')).toBeNull();
     });
 
     it('renders the default selected key when passed', () => {
       const { view } = renderView({ defaultSelectedKey: 'tab2' });
-
       view.getByText('Tab 2');
       view.getByText('tab 2 content');
     });
   });
+
   describe('Controlled', () => {
     it('renders the first tab and first tab panel', () => {
       const { view } = renderViewControlled();
-
       view.getByText('Tab 1');
       view.getByText('tab 1 content');
+
       expect(view.queryByText('tab 2 content')).toBeNull();
     });
 
     it('renders new tab panel and calls onSelectionChange when a tab is clicked', async () => {
       const { view } = renderViewControlled();
-
       view.getByText('tab 1 content');
+
       expect(view.queryByText('tab 2 content')).toBeNull();
 
       await act(() => userEvent.click(view.getByText('Tab 2')));
 
       expect(mockOnSelectionChange).toHaveBeenCalledWith('tab2');
+
       view.getByText('tab 2 content');
+
       expect(view.queryByText('tab 1 content')).toBeNull();
     });
   });
+
   describe('Disabled', () => {
     it('renders tab as disabled when isDisabled is passed', () => {
       const { view } = renderView();
-
       const tab = view.getByText('Tab 3');
+
       expect(tab).toHaveAttribute('aria-disabled', 'true');
       expect(tab).toHaveStyle('opacity: 0.25');
     });
 
     it('renders tab keys as disabled when disabledKeys is passed', () => {
       const { view } = renderView({ disabledKeys: ['tab2'] });
-
       const tab = view.getByText('Tab 2');
+
       expect(tab).toHaveAttribute('aria-disabled', 'true');
       expect(tab).toHaveStyle('opacity: 0.25');
     });
@@ -141,9 +142,9 @@ describe('Tabs', () => {
   describe('Force mount', () => {
     it('renders the tab panel when shouldForceMount is passed', () => {
       const { view } = renderView();
-
       view.getByText('tab 1 content'); // default tab
       view.getByText('tab 3 content'); // force mounted tab
+
       expect(view.getByText('tab 3 content').parentElement).toHaveStyle(
         'display: none'
       );

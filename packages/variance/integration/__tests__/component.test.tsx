@@ -7,6 +7,7 @@ import renderer from 'react-test-renderer';
 
 import { variance } from '../../src/core';
 import { theme } from '../__fixtures__/theme';
+
 // Add the custom matchers provided by '@emotion/jest'
 expect.extend(matchers);
 
@@ -22,14 +23,12 @@ const styles = variance.create({
     transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
   },
 });
-
 const setupRender = <T extends React.ElementType, P extends ComponentProps<T>>(
   Component: T,
   defaultProps?: P
 ) => {
   return (props?: P) => {
     const mergedProps = { ...defaultProps, ...props };
-
     return renderer
       .create(
         <ThemeProvider theme={theme}>
@@ -50,18 +49,18 @@ describe('style props', () => {
     const result = render();
 
     expect(result).toHaveStyleRule('margin', '0.25rem');
-
     expect(result).toHaveStyleRule('margin', '0.5rem', {
       target: 'XS',
     });
-
     expect(result).toHaveStyleRule('margin', '1rem', {
       target: 'SM',
     });
   });
+
   it('transforms style props', () => {
     expect(render({ width: '48px' })).toHaveStyleRule('width', '3rem');
   });
+
   it('composes props', () => {
     const render = setupRender(
       styled.div(
@@ -76,13 +75,11 @@ describe('style props', () => {
         width: ['24px', '32px'],
       }
     );
-
     const result = render();
 
     expect(result).toHaveStyleRule('width', '1.5rem');
     expect(result).toHaveStyleRule('margin', '1rem');
     expect(result).toHaveStyleRule('color', 'inherit');
-
     expect(result).toHaveStyleRule('width', '2rem', {
       target: 'XS',
     });
@@ -91,6 +88,7 @@ describe('style props', () => {
     });
   });
 });
+
 describe('static styles', () => {
   const css = variance.createCss({
     bg: { property: 'background' },
@@ -103,7 +101,6 @@ describe('static styles', () => {
     const Test = styled.div`
       background: yellow;
     `;
-
     const Div = styled.div(
       variant({
         variants: {
@@ -122,7 +119,6 @@ describe('static styles', () => {
         },
       })
     );
-
     const render = setupRender(Div, {
       variant: 'hi',
       children: <Test>Hello</Test>,
@@ -130,6 +126,7 @@ describe('static styles', () => {
 
     it('generates pseudo selector styles', () => {
       const result = render();
+
       expect(result).toHaveStyleRule('background', 'blue');
       expect(result).toHaveStyleRule('background', 'green', {
         target: ':hover',
@@ -138,6 +135,7 @@ describe('static styles', () => {
 
     it('generates selector styles', () => {
       const reseult = render({ variant: 'ho' });
+
       expect(reseult).toHaveStyleRule('background', 'blue');
       expect(reseult).toHaveStyleRule('background', 'navy', {
         target: '*',
@@ -146,6 +144,7 @@ describe('static styles', () => {
 
     it('handles falsey values', () => {
       const reseult = render({ variant: false });
+
       expect(reseult).not.toHaveStyleRule('background', 'blue');
       expect(reseult).not.toHaveStyleRule('background', 'navy', {
         target: '*',
@@ -170,6 +169,7 @@ describe('static styles', () => {
 
     it('generates pseudo selector styles', () => {
       const result = render();
+
       expect(result).toHaveStyleRule('background', 'blue');
       expect(result).toHaveStyleRule('background', 'green', {
         target: ':hover',
@@ -194,9 +194,9 @@ describe('static styles', () => {
         target: ':hover',
       });
     });
+
     it('can share config objects safely', () => {
       const hoverStyles = { '&:hover': { color: 'green' } } as const;
-
       const render = setupRender(
         styled.div(css({ ...hoverStyles }), css({ ...hoverStyles }))
       );

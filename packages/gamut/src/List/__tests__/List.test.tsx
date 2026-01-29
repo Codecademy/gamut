@@ -10,7 +10,6 @@ import { ListRow } from '../ListRow';
 expect.extend(matchers);
 
 // NOTE: We have removed the query styling tests here, they are to be replaced with visual tests: GM-1240
-
 const renderView = setupRtl(List, {
   children: (
     <ListRow data-testid="row-el">
@@ -23,25 +22,24 @@ const renderView = setupRtl(List, {
 describe('List', () => {
   it('renders a default list by default', () => {
     const { view } = renderView();
-
     const listEl = view.container.querySelector('ul');
     const rowEl = view.getByRole('listitem');
 
     expect(listEl).toHaveStyle({ borderRadius: '2px' });
     expect(rowEl).not.toHaveStyle({ minWidth: 'min-content' });
   });
+
   it('renders numbering for ordered lists  ', () => {
     const { view } = renderView({ as: 'ol' });
-
     const listEl = view.container.querySelector('ol');
     const rowEl = view.getByRole('listitem');
 
     expect(listEl).toBeTruthy();
     expect(rowEl).not.toHaveTextContent('1.');
   });
+
   it('configures rows with the correct variants', () => {
     const { view } = renderView();
-
     const rowEl = view.getByRole('listitem');
 
     expect(rowEl).toHaveStyle({ borderTop: 'none' });
@@ -50,13 +48,11 @@ describe('List', () => {
 
   it('configures columns with the correct variants', () => {
     const { view } = renderView();
-
     const colEl = view.getByText('Hello');
 
     expect(colEl).not.toHaveStyle({ py: 16 });
     expect(colEl).toHaveStyle({ paddingLeft: theme.spacing[8] });
     expect(colEl).toHaveStyle({ paddingRight: theme.spacing[8] });
-
     expect(colEl).not.toHaveStyle({ position: 'sticky' });
   });
 
@@ -70,7 +66,6 @@ describe('List', () => {
         </ListRow>
       ),
     });
-
     const headerEl = view.getByTestId('header-container');
     const contentEl = view.getByText('Content');
 
@@ -88,8 +83,8 @@ describe('List', () => {
         </ListRow>
       ),
     });
-
     view.getByRole('button').click();
+
     expect(onClick).toHaveBeenCalled();
   });
 
@@ -105,7 +100,6 @@ describe('List', () => {
         </ListRow>
       ),
     });
-
     view.getByText('Surprise!');
   });
 
@@ -121,25 +115,26 @@ describe('List', () => {
         </ListRow>
       ),
     });
+
     expect(view.queryByText('Surprise!')).toBeNull();
   });
 
   describe('wrapperWidth prop', () => {
     it('applies wrapperWidth to the table container when provided', () => {
       const { view } = renderView({ wrapperWidth: '500px' });
-
       const tableContainer = view.container.querySelector(
         '[data-testid="scrollable-list-el"]'
       );
+
       expect(tableContainer).toHaveStyle({ maxWidth: '500px', width: '500px' });
     });
 
     it('uses inherit width when wrapperWidth is not provided', () => {
       const { view } = renderView();
-
       const tableContainer = view.container.querySelector(
         '[data-testid="scrollable-list-el"]'
       );
+
       expect(tableContainer).toHaveStyle({
         maxWidth: '100%',
         width: 'inherit',
@@ -149,15 +144,15 @@ describe('List', () => {
 
   it('applies container query styles by default', () => {
     const { view } = renderView();
-
     const wrapper = view.container.querySelector('#list-el');
+
     expect(wrapper).toHaveStyleRule('container-type', 'inline-size');
   });
 
   it('disables container queries when disableContainerQuery is true', () => {
     const { view } = renderView({ disableContainerQuery: true });
-
     const wrapper = view.container.querySelector('#list-el');
+
     expect(wrapper).toHaveStyleRule('container-type', 'normal');
   });
 });

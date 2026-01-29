@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
-
 import { setupRtl } from '@codecademy/gamut-tests';
 
 import { MarkdownAnchor } from '../index';
@@ -9,7 +8,6 @@ const renderView = setupRtl(MarkdownAnchor);
 describe('MarkdownAnchor', () => {
   it('Adds target _blank to external links', () => {
     const { view } = renderView({ href: 'http://google.com' });
-
     const link = view.getByRole('link');
 
     expect(link).toHaveAttribute('target', '_blank');
@@ -56,7 +54,6 @@ describe('MarkdownAnchor', () => {
 
   it('renders its children', () => {
     const text = 'natalie rulez';
-
     const { view } = renderView({ href: '/', children: text });
     const link = view.getByRole('link');
 

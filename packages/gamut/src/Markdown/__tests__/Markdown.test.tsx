@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
-
 import { setupRtl } from '@codecademy/gamut-tests';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -8,12 +7,10 @@ import * as React from 'react';
 import { Markdown } from '../index';
 
 const mockTitle = 'a fake youtube';
-
 jest.mock('react-player', () => ({
   __esModule: true,
   default: () => <iframe title={mockTitle} />,
 }));
-
 jest.mock('@vidstack/react', () => ({
   __esModule: true,
   MediaPlayer: () => <iframe title={mockTitle} />,
@@ -23,7 +20,6 @@ jest.mock('@vidstack/react', () => ({
   useMediaState: jest.fn(),
   useMediaRemote: jest.fn(),
 }));
-
 const basicMarkdown = `
 # Heading 1
 
@@ -36,7 +32,6 @@ const jsCode = () => {
 \`\`\`
 
 `;
-
 const htmlMarkdown = `
 <h1>
   Heading 1
@@ -48,32 +43,26 @@ const htmlMarkdown = `
 
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `;
-
 const youtubeMarkdown = `
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `;
-
 const vimeoMarkdown = `
 <iframe src="https://player.vimeo.com/video/188237476?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `;
-
 const videoMarkdown = `
 <video src="/example.webm" title="video" />
 `;
-
 const videoSourceMarkdown = `
 <video controls poster="/images/spaceghost.gif">
   <source src="movie.mp4" type="video/mp4">
   <source src="movie.ogg" type="video/ogg">
 </video>
 `;
-
 const checkboxMarkdown = `
 - [ ] checkbox
 - [x] default checked checkbox
 - [ ] third checkbox
 `;
-
 const table = `
 | Tables   |      Are      |  Cool |
 |----------|:-------------:|------:|
@@ -81,19 +70,20 @@ const table = `
 | col 2 is |    centered   |   $12 |
 | col 3 is | right-aligned |    $1 |
     `;
-
 const renderView = setupRtl(Markdown);
 
 describe('<Markdown />', () => {
   it('renders standard Markdown', () => {
     renderView({ text: basicMarkdown });
     screen.getByRole('heading', { level: 1 });
+
     expect(document.querySelectorAll('h3').length).toEqual(1);
     expect(document.querySelectorAll('code').length).toEqual(1);
   });
 
   it('Renders html content in markdown', () => {
     renderView({ text: htmlMarkdown });
+
     expect(document.querySelectorAll('h1').length).toEqual(1);
     expect(document.querySelectorAll('h3').length).toEqual(1);
     expect(document.querySelectorAll('iframe').length).toEqual(1);
@@ -102,6 +92,7 @@ describe('<Markdown />', () => {
   it('Renders custom tables in markdown', () => {
     jest.spyOn(console, 'error').mockImplementation(jest.fn());
     renderView({ text: table });
+
     expect(
       document.querySelectorAll('div[class*="TableWrapper"]').length
     ).toEqual(1);
@@ -113,6 +104,7 @@ describe('<Markdown />', () => {
       skipDefaultOverrides: { table: true },
       text: table,
     });
+
     expect(document.querySelectorAll('table').length).toEqual(1);
     expect(
       document.querySelectorAll('div[class*="TableWrapper"]').length
@@ -138,6 +130,7 @@ describe('<Markdown />', () => {
     renderView({ text: videoSourceMarkdown });
     screen.getByTitle(mockTitle);
   });
+
   it('Renders YouTube iframes using the Video component', () => {
     renderView({ text: youtubeMarkdown });
     screen.getByTitle(mockTitle);
@@ -145,6 +138,7 @@ describe('<Markdown />', () => {
 
   it('Wraps the markdown in a div by default (block)', () => {
     renderView({ text: basicMarkdown });
+
     expect(
       document.querySelectorAll('div[class*="spacingTight"]').length
     ).toEqual(1);
@@ -152,6 +146,7 @@ describe('<Markdown />', () => {
 
   it('Wraps the markdown in a span when inline', () => {
     renderView({ text: basicMarkdown, inline: true });
+
     expect(
       document.querySelectorAll('div[class*="spacingTight"]').length
     ).toEqual(0);
@@ -162,6 +157,7 @@ describe('<Markdown />', () => {
 
   it('does not crash on a value-less attribute', () => {
     renderView({ text: `<h1 class />` });
+
     expect(document.querySelectorAll('h1').length).toEqual(1);
   });
 
@@ -170,12 +166,14 @@ describe('<Markdown />', () => {
       text: basicMarkdown,
       headerIds: false,
     });
+
     expect(document.querySelector('h1')?.getAttribute('id')).toBeNull();
     expect(document.querySelector('h3')?.getAttribute('id')).toBeNull();
   });
 
   it('renders id attributes on headers by default', () => {
     renderView({ text: basicMarkdown });
+
     expect(document.querySelector('h1')?.getAttribute('id')).toEqual(
       'heading-heading-1'
     );
@@ -193,17 +191,14 @@ describe('<Markdown />', () => {
 var test = true;
 \`\`\`
       `;
-
       const CodeBlock = (props: React.HTMLProps<HTMLElement>) => (
         <strong {...props}>custom codeblock 1</strong>
       );
-
       const overrides = {
         CodeBlock: {
           component: CodeBlock,
         },
       };
-
       renderView({ text, overrides });
       const codeblockEl = screen.getByText('custom codeblock 1');
 
@@ -220,11 +215,9 @@ var test = true;
 
 \`var test = false;\`
       `;
-
       const CodeBlock = (props: React.HTMLProps<HTMLDivElement>) => (
         <div {...props}>custom codeblock 2</div>
       );
-
       const overrides = {
         CodeBlock: {
           component: CodeBlock,
@@ -235,7 +228,6 @@ var test = true;
           ),
         },
       };
-
       renderView({ text, overrides });
       screen.getByText('custom codeblock 2');
       screen.getByText('custom code snippet 1');
@@ -247,7 +239,6 @@ var test = true;
       text: basicMarkdown,
       'data-testid': 'cool',
     } as any);
-
     screen.getByTestId('cool');
   });
 
@@ -255,7 +246,6 @@ var test = true;
     renderView({
       text: `<img src="http://google.com/"></img>`,
     });
-
     screen.getByRole('img');
   });
 
@@ -273,7 +263,9 @@ var test = true;
     it('Renders a link with text', () => {
       const text = '[link](/url)';
       const expectedText = `link`;
+
       expect(text).not.toEqual(expectedText);
+
       renderView({ text });
       screen.getByText(expectedText);
     });
@@ -297,18 +289,17 @@ var test = true;
       renderView({
         text: `<a href="#heading-one">heading</a>`,
       });
+
       expect(document.querySelectorAll('a').length).toEqual(1);
       expect(document.querySelectorAll('a[target="_blank"]').length).toEqual(0);
     });
 
     it('Allows onClicks callbacks', async () => {
       const onClick = jest.fn();
-
       renderView({
         onAnchorClick: onClick,
         text: `<a data-testid="testLink" href="http://google.com">google</a>`,
       });
-
       await userEvent.click(screen.getByText('google'));
 
       expect(onClick).toHaveBeenCalledTimes(1);
@@ -318,19 +309,18 @@ var test = true;
   describe('Allows passing in a custom tag overrides', () => {
     it('Allows passing in custom tag overrides', () => {
       const TestComponent = () => <strong>coooool</strong>;
-
       const text = `
 # Heading
 
 <TestComponent/>
       `;
-
       const overrides = {
         TestComponent: {
           component: TestComponent,
         },
       };
       renderView({ text, overrides });
+
       expect(document.querySelectorAll('strong').length).toEqual(1);
     });
 
@@ -340,7 +330,6 @@ var test = true;
         isCodeBlock?: boolean;
         isWebBrowser?: boolean;
       };
-
       const renderedProps: jest.Mock<RenderedProps> = jest.fn();
 
       beforeEach(() => {
@@ -349,12 +338,10 @@ var test = true;
 
 <TestComponent name="my name" isCodeBlock="true" isWebBrowser />
         `;
-
         const TestComponent = (props: any) => {
           renderedProps(props);
           return <strong>attr-testing-component</strong>;
         };
-
         const overrides = {
           TestComponent: {
             component: TestComponent,
@@ -366,6 +353,7 @@ var test = true;
 
       it('Allows passing in allowed attributes to overrides', () => {
         screen.getByText('attr-testing-component');
+
         expect(renderedProps.mock.calls[0][0].name).toEqual('my name');
       });
 
@@ -387,7 +375,9 @@ var test = true;
     it('replaces `&mdash;` with `---`', () => {
       const text = `This is some text with a &mdash; in the middle`;
       const expectedText = `This is some text with a \u2014 in the middle`;
+
       expect(text).not.toEqual(expectedText);
+
       renderView({ inline: true, text });
       screen.getByText(expectedText);
     });
@@ -438,6 +428,7 @@ an element
 - [x] default checked checkbox
 `,
       });
+
       expect(screen.getAllByTestId('gamut-md-checkbox').length).toEqual(2);
     });
   });

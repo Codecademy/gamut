@@ -151,7 +151,6 @@ describe('SelectDropdown Utils', () => {
       { label: 'Banana', value: 'banana' },
       { label: 'Orange', value: 'orange' },
     ];
-
     const groupedOptions: SelectDropdownGroup[] = [
       {
         label: 'Fruits',
@@ -172,6 +171,7 @@ describe('SelectDropdown Utils', () => {
     describe('with regular options', () => {
       it('filters single value correctly', () => {
         const result = filterValueFromOptions(regularOptions, 'apple', false);
+
         expect(result).toEqual([{ label: 'Apple', value: 'apple' }]);
       });
 
@@ -181,6 +181,7 @@ describe('SelectDropdown Utils', () => {
           ['apple', 'orange'],
           false
         );
+
         expect(result).toEqual([
           { label: 'Apple', value: 'apple' },
           { label: 'Orange', value: 'orange' },
@@ -193,6 +194,7 @@ describe('SelectDropdown Utils', () => {
           'nonexistent',
           false
         );
+
         expect(result).toEqual([]);
       });
 
@@ -202,6 +204,7 @@ describe('SelectDropdown Utils', () => {
           ['nonexistent1', 'nonexistent2'],
           false
         );
+
         expect(result).toEqual([]);
       });
     });
@@ -209,6 +212,7 @@ describe('SelectDropdown Utils', () => {
     describe('with grouped options', () => {
       it('filters single value correctly from groups', () => {
         const result = filterValueFromOptions(groupedOptions, 'apple', true);
+
         expect(result).toEqual([{ label: 'Apple', value: 'apple' }]);
       });
 
@@ -218,6 +222,7 @@ describe('SelectDropdown Utils', () => {
           ['apple', 'carrot'],
           true
         );
+
         expect(result).toEqual([
           { label: 'Apple', value: 'apple' },
           { label: 'Carrot', value: 'carrot' },
@@ -230,6 +235,7 @@ describe('SelectDropdown Utils', () => {
           'nonexistent',
           true
         );
+
         expect(result).toEqual([]);
       });
 
@@ -239,6 +245,7 @@ describe('SelectDropdown Utils', () => {
           ['apple', 'nonexistent'],
           true
         );
+
         expect(result).toEqual([{ label: 'Apple', value: 'apple' }]);
       });
     });
@@ -253,6 +260,7 @@ describe('SelectDropdown Utils', () => {
 
     it('removes single value correctly', () => {
       const result = removeValueFromSelectedOptions(selectedOptions, 'banana');
+
       expect(result).toEqual([
         { label: 'Apple', value: 'apple' },
         { label: 'Orange', value: 'orange' },
@@ -264,6 +272,7 @@ describe('SelectDropdown Utils', () => {
         'banana',
         'orange',
       ]);
+
       expect(result).toEqual([{ label: 'Apple', value: 'apple' }]);
     });
 
@@ -272,16 +281,19 @@ describe('SelectDropdown Utils', () => {
         selectedOptions,
         'nonexistent'
       );
+
       expect(result).toEqual(selectedOptions);
     });
 
     it('handles empty array', () => {
       const result = removeValueFromSelectedOptions([], 'apple');
+
       expect(result).toEqual([]);
     });
 
     it('handles undefined value', () => {
       const result = removeValueFromSelectedOptions(selectedOptions, undefined);
+
       expect(result).toEqual(selectedOptions);
     });
   });
@@ -295,11 +307,11 @@ describe('SelectDropdown Utils', () => {
           options: [{ label: 'Apple', value: 'apple' }],
         },
       ];
-
       if (isOptionsGrouped(options)) {
         // TypeScript should know this is SelectDropdownGroup[]
         // Find the group option (not the first one)
         const groupOption = options.find((option) => isOptionGroup(option));
+
         expect(groupOption).toHaveProperty('options');
         expect(groupOption?.label).toBe('Fruits');
       }
@@ -310,7 +322,6 @@ describe('SelectDropdown Utils', () => {
         label: 'Fruits',
         options: [{ label: 'Apple', value: 'apple' }],
       };
-
       if (isOptionGroup(option)) {
         // TypeScript should know this is SelectDropdownGroup
         expect(option.options).toBeDefined();

@@ -16,6 +16,7 @@ describe('Menu', () => {
     expect(screen.queryByRole('menu')).toBeNull();
     expect(screen.queryByRole('group')).toBeNull();
   });
+
   it('renders items without menuitem role as default', () => {
     renderView({
       children: <MenuItem>Cool Town</MenuItem>,
@@ -28,16 +29,17 @@ describe('Menu', () => {
     renderView({
       children: <MenuItem href="#link">Cool Town</MenuItem>,
     });
-
     screen.getByRole('link');
+
     expect(screen.queryByRole('menuitem')).toBeNull();
   });
+
   it('renders MenuItems with onClicks as buttons within a li', () => {
     renderView({
       children: <MenuItem onClick={() => null}>Cool Town</MenuItem>,
     });
-
     screen.getByRole('button');
+
     expect(screen.queryByRole('menuitem')).toBeNull();
   });
 
@@ -49,8 +51,8 @@ describe('Menu', () => {
         </MenuItem>
       ),
     });
-
     const button = screen.getByRole('button');
+
     expect(button).toHaveAttribute('aria-disabled', 'true');
     expect(screen.queryByRole('link')).toBeNull();
   });
@@ -64,11 +66,12 @@ describe('Menu', () => {
         </MenuItem>
       ),
     });
-
     const button = screen.getByRole('button');
+
     expect(button).toHaveAttribute('aria-disabled', 'true');
 
     await userEvent.click(button);
+
     // Since disabled MenuItems have their onClick overridden to an empty function, the original onClick should not be called
     expect(onClick).not.toHaveBeenCalled();
   });
@@ -78,9 +81,9 @@ describe('Menu', () => {
       variant: 'popover',
       children: <MenuSeparator />,
     });
-
     screen.getByRole('separator');
   });
+
   it('renders deep MenuSeparators', () => {
     renderView({
       variant: 'popover',
@@ -90,17 +93,17 @@ describe('Menu', () => {
         </Menu>
       ),
     });
-
     screen.getByRole('separator');
   });
+
   it('renders MenuSeparators when variant is fixed', () => {
     renderView({
       variant: 'fixed',
       children: <MenuSeparator />,
     });
-
     screen.getByRole('separator');
   });
+
   it('renders an icon only when specified', () => {
     renderView({
       children: <MenuItem>Cool Town</MenuItem>,
@@ -111,9 +114,9 @@ describe('Menu', () => {
     renderView({
       children: <MenuItem icon={MultipleUsersIcon}>Cool Town</MenuItem>,
     });
-
     screen.getByTestId('menuitem-icon');
   });
+
   it('renders `current page` screenreader text for active link', () => {
     renderView({
       children: (
@@ -122,9 +125,9 @@ describe('Menu', () => {
         </MenuItem>
       ),
     });
-
     screen.getByText('current page,');
   });
+
   it('renders `current action` screenreader text for active buttons', () => {
     renderView({
       children: (
@@ -133,9 +136,9 @@ describe('Menu', () => {
         </MenuItem>
       ),
     });
-
     screen.getByText('current action,');
   });
+
   it('renders `current item` screenreader text for active default ', () => {
     renderView({
       children: <MenuItem active>Cool Town</MenuItem>,
@@ -146,9 +149,9 @@ describe('Menu', () => {
     renderView({
       children: <MenuItem icon={MultipleUsersIcon}>Cool Town</MenuItem>,
     });
-
     screen.getByText('current item,');
   });
+
   it('render a ToolTip for interactive menu items with a label', async () => {
     const label = 'more people';
     const { view } = renderView({
@@ -156,10 +159,8 @@ describe('Menu', () => {
         <MenuItem icon={MultipleUsersIcon} label={label} onClick={() => null} />
       ),
     });
-
     const menuItem = view.getByLabelText(label);
     await userEvent.hover(menuItem);
-
     await view.findByText(label);
   });
 
@@ -172,13 +173,12 @@ describe('Menu', () => {
         </MenuItem>
       ),
     });
-
     const button = screen.getByRole('button');
+
     expect(button).toHaveAttribute('aria-describedby');
     expect(button).not.toHaveAttribute('aria-label');
 
     await userEvent.hover(button);
-
     await view.findByText(label);
   });
 
@@ -191,13 +191,12 @@ describe('Menu', () => {
         </MenuItem>
       ),
     });
-
     const button = screen.getByRole('link');
+
     expect(button).toHaveAttribute('aria-describedby');
     expect(button).not.toHaveAttribute('aria-label');
 
     await userEvent.hover(button);
-
     await view.findByText(label.info);
   });
 
@@ -208,6 +207,7 @@ describe('Menu', () => {
     });
 
     expect(view.queryByRole('tooltip', { hidden: true })).toBeNull();
+
     view.getByLabelText(label);
   });
 
@@ -223,13 +223,12 @@ describe('Menu', () => {
         </MenuItem>
       ),
     });
-
     const button = screen.getByRole('button');
+
     expect(button).toHaveAttribute('aria-disabled', 'true');
     expect(button).toHaveAttribute('aria-describedby');
 
     await userEvent.hover(button);
-
     await view.findByText(label.info);
   });
 
@@ -243,13 +242,12 @@ describe('Menu', () => {
         </MenuItem>
       ),
     });
-
     const button = screen.getByRole('button');
+
     expect(button).toHaveAttribute('aria-disabled', 'true');
     expect(button).toHaveAttribute('aria-describedby');
 
     await userEvent.hover(button);
-
     await view.findByText(label);
   });
 
@@ -258,9 +256,9 @@ describe('Menu', () => {
       renderView({ role: 'menu' });
       screen.getByRole('menu');
     });
+
     it('renders nested menus as groups', () => {
       renderView({ children: <Menu />, role: 'menu' });
-
       screen.getByRole('menu');
       screen.getByRole('group');
     });
@@ -270,24 +268,23 @@ describe('Menu', () => {
         children: <MenuItem>Cool Town</MenuItem>,
         role: 'menu',
       });
-
       screen.getByRole('menuitem');
     });
+
     it('renders link menuitems as anchors within a li with no role', () => {
       renderView({
         children: <MenuItem href="#link">Cool Town</MenuItem>,
         role: 'menu',
       });
-
       screen.getByRole('none');
       screen.getByRole('menuitem');
     });
+
     it('renders menuitems with onClicks as buttons within a li with no role', () => {
       renderView({
         children: <MenuItem onClick={() => null}>Cool Town</MenuItem>,
         role: 'menu',
       });
-
       screen.getByRole('none');
       screen.getByRole('menuitem');
     });

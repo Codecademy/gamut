@@ -26,7 +26,6 @@ const defaultBounding = {
   y: 0,
   toJSON: () => undefined,
 };
-
 const defaultTarget = {
   contains: () => false,
   offsetHeight: 200,
@@ -34,7 +33,6 @@ const defaultTarget = {
   offsetLeft: 150,
   offsetTop: 150,
 };
-
 const mockTargetRef = (
   target?: Partial<TargetRef>,
   viewport?: Partial<ReturnType<TargetRef['getBoundingClientRect']>>
@@ -54,13 +52,11 @@ const mockTargetRef = (
       ...target,
     },
   } as PopoverContainerProps['targetRef']);
-
 const defaultProps = {
   isOpen: true,
   inline: true,
   targetRef: mockTargetRef(),
 } as PopoverContainerProps;
-
 const RenderPopover = (props: PopoverContainerProps) => {
   return (
     <>
@@ -76,9 +72,7 @@ const RenderPopover = (props: PopoverContainerProps) => {
     </>
   );
 };
-
 const renderView = setupRtl(RenderPopover, defaultProps);
-
 const popoverIsRendered = () => {
   return Boolean(screen.queryByTestId('popover-content'));
 };
@@ -92,6 +86,7 @@ describe('Popover', () => {
 
   it('renders children when isOpen is true', () => {
     renderView({ isOpen: true });
+
     expect(popoverIsRendered()).toBeTruthy();
   });
 
@@ -102,7 +97,8 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.mouseDown(screen.getByTestId('outside-popover'));
-    expect(onRequestClose).toBeCalledTimes(1);
+
+    expect(onRequestClose).toHaveBeenCalledTimes(1);
   });
 
   it('does not trigger onRequestClose callback when clicking inside', () => {
@@ -112,7 +108,8 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.mouseDown(screen.getByTestId('popover-content-container'));
-    expect(onRequestClose).toBeCalledTimes(0);
+
+    expect(onRequestClose).toHaveBeenCalledTimes(0);
   });
 
   it('triggers onRequestClose callback when escape key is triggered', () => {
@@ -124,7 +121,8 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.keyDown(baseElement, { key: 'escape', keyCode: 27 });
-    expect(onRequestClose).toBeCalledTimes(1);
+
+    expect(onRequestClose).toHaveBeenCalledTimes(1);
   });
 
   it('triggers onRequestClose callback when popover is out of viewport and closeOnViewportExit is true', () => {
@@ -132,25 +130,25 @@ describe('Popover', () => {
       {},
       { top: -201, bottom: -1, left: 150, right: 350, x: 150, y: -201 }
     );
-
     const onRequestClose = jest.fn();
     renderView({
       targetRef: targetRefObj,
       onRequestClose,
       closeOnViewportExit: true,
     });
-    expect(onRequestClose).toBeCalledTimes(1);
+
+    expect(onRequestClose).toHaveBeenCalledTimes(1);
   });
 
   it('does not trigger onRequestClose callback when popover is in viewport', () => {
     const targetRefObj = mockTargetRef({}, { top: 1, x: 41, y: 1 });
-
     const onRequestClose = jest.fn();
     renderView({
       targetRef: targetRefObj,
       onRequestClose,
     });
-    expect(onRequestClose).toBeCalledTimes(0);
+
+    expect(onRequestClose).toHaveBeenCalledTimes(0);
   });
 
   it('does not trigger onRequestClose callback when closeOnViewportExit is false (default)', () => {
@@ -158,13 +156,13 @@ describe('Popover', () => {
       {},
       { top: -201, bottom: -1, left: 150, right: 350, x: 150, y: -201 }
     );
-
     const onRequestClose = jest.fn();
     renderView({
       targetRef: targetRefObj,
       onRequestClose,
     });
-    expect(onRequestClose).toBeCalledTimes(0);
+
+    expect(onRequestClose).toHaveBeenCalledTimes(0);
   });
 
   it('triggers onRequestClose callback when closeOnViewportExit is true', () => {
@@ -172,14 +170,14 @@ describe('Popover', () => {
       {},
       { top: -201, bottom: -1, left: 150, right: 350, x: 150, y: -201 }
     );
-
     const onRequestClose = jest.fn();
     renderView({
       targetRef: targetRefObj,
       onRequestClose,
       closeOnViewportExit: true,
     });
-    expect(onRequestClose).toBeCalledTimes(1);
+
+    expect(onRequestClose).toHaveBeenCalledTimes(1);
   });
 
   describe('alignments', () => {
@@ -201,12 +199,14 @@ describe('Popover', () => {
             expected: Record<string, unknown>
           ) => {
             renderView({ alignment });
+
             expect(screen.getByTestId('popover-content-container')).toHaveStyle(
               expected
             );
           }
         );
       });
+
       describe('inline - parent', () => {
         it.each([
           ['top-right', { left: '370px', bottom: '370px' }],
@@ -224,6 +224,7 @@ describe('Popover', () => {
             expected: Record<string, unknown>
           ) => {
             renderView({ alignment, inline: true });
+
             expect(screen.getByTestId('popover-content-container')).toHaveStyle(
               expected
             );
@@ -247,12 +248,14 @@ describe('Popover', () => {
           '%s',
           (alignment: PopoverContainerProps['alignment'], expected: string) => {
             renderView({ alignment });
+
             expect(
               screen.getByTestId('popover-content-container')
             ).toHaveStyleRule('transform', expected);
           }
         );
       });
+
       describe('inside', () => {
         it.each([
           ['top-right', 'translate(-100%, 0)'],
@@ -267,6 +270,7 @@ describe('Popover', () => {
           '%s',
           (alignment: PopoverContainerProps['alignment'], expected: string) => {
             renderView({ alignment, invertAxis: 'x' });
+
             expect(
               screen.getByTestId('popover-content-container')
             ).toHaveStyleRule('transform', expected);
@@ -274,6 +278,7 @@ describe('Popover', () => {
         );
       });
     });
+
     describe('offsets', () => {
       it.each([
         [5, 10, { left: '375px', bottom: '380px' }],
@@ -284,6 +289,7 @@ describe('Popover', () => {
         'X Offset %i - Y Offset %i',
         (x: number, y: number, expected: Record<string, unknown>) => {
           renderView({ alignment: 'top-right', x, y });
+
           expect(screen.getByTestId('popover-content-container')).toHaveStyle(
             expected
           );
@@ -304,7 +310,6 @@ describe('Popover', () => {
 
     it('findAllAdditionalScrollingParents finds scrollable parent elements', () => {
       const { target } = createScrollableParent();
-
       const parents = utils.findAllAdditionalScrollingParents(target);
 
       expect(parents.length).toBeGreaterThan(0);
@@ -312,16 +317,13 @@ describe('Popover', () => {
 
     it('detects target is out of view when completely above scrollable parent viewport', () => {
       const { parent, target } = createScrollableParent();
-
       // Target is at y=50, but parent's visible viewport starts at y=200
       jest
         .spyOn(target, 'getBoundingClientRect')
         .mockReturnValue(createMockDOMRect(50, 100, 100, 50));
-
       jest
         .spyOn(parent, 'getBoundingClientRect')
         .mockReturnValue(createMockDOMRect(200, 0, 500, 200));
-
       const targetRect = target.getBoundingClientRect();
       const result = utils.isOutOfView(targetRect, target);
 
@@ -330,16 +332,13 @@ describe('Popover', () => {
 
     it('detects target is visible when within scrollable parent viewport', () => {
       const { parent, target } = createScrollableParent();
-
       // Target is within parent's visible viewport (y=250 is between parent's y=200 and y=400)
       jest
         .spyOn(target, 'getBoundingClientRect')
         .mockReturnValue(createMockDOMRect(250, 100, 100, 50));
-
       jest
         .spyOn(parent, 'getBoundingClientRect')
         .mockReturnValue(createMockDOMRect(200, 0, 500, 200));
-
       const targetRect = target.getBoundingClientRect();
       const result = utils.isOutOfView(targetRect, target);
 
@@ -349,21 +348,17 @@ describe('Popover', () => {
     it('detects target is out of view in nested scrollable parents', () => {
       const { outerParent, innerParent, target } =
         createNestedScrollableParents();
-
       // Target is out of view in inner parent (y=500 is below inner parent's visible viewport at y=250-450)
       // but might be visible in outer parent
       jest
         .spyOn(target, 'getBoundingClientRect')
         .mockReturnValue(createMockDOMRect(500, 100, 100, 50));
-
       jest
         .spyOn(innerParent, 'getBoundingClientRect')
         .mockReturnValue(createMockDOMRect(250, 50, 500, 200));
-
       jest
         .spyOn(outerParent, 'getBoundingClientRect')
         .mockReturnValue(createMockDOMRect(100, 0, 600, 400));
-
       const targetRect = target.getBoundingClientRect();
       const result = utils.isOutOfView(targetRect, target);
 
@@ -374,20 +369,16 @@ describe('Popover', () => {
     it('detects target is visible when within nested scrollable parents', () => {
       const { outerParent, innerParent, target } =
         createNestedScrollableParents();
-
       // Target is visible in both inner and outer parents
       jest
         .spyOn(target, 'getBoundingClientRect')
         .mockReturnValue(createMockDOMRect(300, 100, 100, 50));
-
       jest
         .spyOn(innerParent, 'getBoundingClientRect')
         .mockReturnValue(createMockDOMRect(250, 50, 500, 200));
-
       jest
         .spyOn(outerParent, 'getBoundingClientRect')
         .mockReturnValue(createMockDOMRect(100, 0, 600, 400));
-
       const targetRect = target.getBoundingClientRect();
       const result = utils.isOutOfView(targetRect, target);
 

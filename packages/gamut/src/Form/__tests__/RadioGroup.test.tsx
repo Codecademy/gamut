@@ -23,9 +23,7 @@ describe('<RadioGroup>', () => {
   const createComponent = () => {
     const onChange = jest.fn();
     const { view } = renderView({ onChange });
-
     const firstInput = view.getAllByRole('radio')[0];
-
     return { firstInput, onChange, view };
   };
 
@@ -36,7 +34,6 @@ describe('<RadioGroup>', () => {
       'id',
       'what-salad-maker-do-you-prefer-0'
     );
-
     expect(firstInput).toHaveAttribute(
       'name',
       'what-salad-maker-do-you-prefer'
@@ -45,7 +42,6 @@ describe('<RadioGroup>', () => {
 
   it('sets the onChange prop on the child', () => {
     const { firstInput, onChange } = createComponent();
-
     fireEvent.click(firstInput);
 
     expect(onChange).toHaveBeenCalled();
@@ -53,7 +49,6 @@ describe('<RadioGroup>', () => {
 
   it('sets any additional props on the outer div', () => {
     const { view } = createComponent();
-
     view.getByTestId('my-test-id');
   });
 });

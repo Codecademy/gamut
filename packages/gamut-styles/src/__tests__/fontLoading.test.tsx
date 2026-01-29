@@ -2,14 +2,11 @@ import { render } from '@testing-library/react';
 
 import { AssetProvider } from '../AssetProvider';
 import { coreTheme, percipioTheme } from '../themes';
-
 // Type assertion to satisfy Theme interface in GamutProvider from theme.d.ts - this lib is typed to the CoreTheme interface
 const typedPercipioTheme = percipioTheme as any;
-
 jest.mock('../utils/fontUtils', () => ({
   getFonts: jest.fn(),
 }));
-
 jest.mock('../remoteAssets/fonts', () => ({
   webFonts: {
     core: [
@@ -28,7 +25,6 @@ jest.mock('../remoteAssets/fonts', () => ({
     ],
   },
 }));
-
 const mockGetFonts = require('../utils/fontUtils').getFonts;
 
 const mockDocumentFonts = {
@@ -38,12 +34,10 @@ const mockDocumentFonts = {
   addEventListener: jest.fn(),
   removeEventListener: jest.fn(),
 };
-
 Object.defineProperty(document, 'fonts', {
   value: mockDocumentFonts,
   writable: true,
 });
-
 const mockFetch = jest.fn();
 global.fetch = mockFetch;
 
@@ -64,10 +58,9 @@ describe('Font Loading and Error Handling', () => {
           name: 'Test Font',
         },
       ]);
-
       const { container } = render(<AssetProvider theme={coreTheme} />);
-
       const links = container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
         'href',
@@ -90,10 +83,9 @@ describe('Font Loading and Error Handling', () => {
           name: 'Font 2',
         },
       ]);
-
       const { container } = render(<AssetProvider theme={coreTheme} />);
-
       const links = container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(2);
       expect(links[0]).toHaveAttribute(
         'href',
@@ -111,11 +103,10 @@ describe('Font Loading and Error Handling', () => {
       mockGetFonts.mockImplementation(() => {
         throw new Error('Font loading failed');
       });
-
       const { container } = render(<AssetProvider theme={coreTheme} />);
-
       // Should not render any links when getFonts fails
       const links = container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(0);
     });
 
@@ -138,10 +129,9 @@ describe('Font Loading and Error Handling', () => {
           name: 'Another Valid Font',
         },
       ]);
-
       const { container } = render(<AssetProvider theme={coreTheme} />);
-
       const links = container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(2);
     });
   });
@@ -160,11 +150,10 @@ describe('Font Loading and Error Handling', () => {
           name: 'Font 2',
         },
       ]);
-
       const { container } = render(<AssetProvider theme={coreTheme} />);
-
       // Should render preload links for all fonts
       const links = container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(2);
       expect(links[0]).toHaveAttribute(
         'href',
@@ -184,7 +173,6 @@ describe('Font Loading and Error Handling', () => {
         value: undefined,
         writable: true,
       });
-
       mockGetFonts.mockReturnValue([
         {
           filePath: 'https://www.codecademy.com/gamut/test-font',
@@ -192,10 +180,9 @@ describe('Font Loading and Error Handling', () => {
           name: 'Test Font',
         },
       ]);
-
       const { container } = render(<AssetProvider theme={coreTheme} />);
-
       const links = container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(1);
 
       Object.defineProperty(document, 'fonts', {
@@ -207,7 +194,6 @@ describe('Font Loading and Error Handling', () => {
     it('should handle browsers without fetch API', () => {
       const originalFetch = global.fetch;
       global.fetch = undefined as any;
-
       mockGetFonts.mockReturnValue([
         {
           filePath: 'https://www.codecademy.com/gamut/test-font',
@@ -215,10 +201,9 @@ describe('Font Loading and Error Handling', () => {
           name: 'Test Font',
         },
       ]);
-
       const { container } = render(<AssetProvider theme={coreTheme} />);
-
       const links = container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(1);
 
       global.fetch = originalFetch;
@@ -234,7 +219,6 @@ describe('Font Loading and Error Handling', () => {
           name: 'Test Font',
         },
       ]);
-
       for (let i = 0; i < 10; i += 1) {
         const { unmount } = render(<AssetProvider theme={coreTheme} />);
         unmount();
@@ -253,9 +237,7 @@ describe('Font Loading and Error Handling', () => {
           name: 'Test Font',
         },
       ]);
-
       const { rerender } = render(<AssetProvider theme={coreTheme} />);
-
       for (let i = 0; i < 5; i += 1) {
         rerender(<AssetProvider theme={typedPercipioTheme} />);
         rerender(<AssetProvider theme={coreTheme} />);

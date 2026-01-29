@@ -21,9 +21,7 @@ const FocusTrapContainer: React.FC<Partial<FocusTrapProps>> = (props) => {
     </div>
   );
 };
-
 const renderFocusTrap = setupRtl(FocusTrapContainer);
-
 const focusTrapIsRendered = () => {
   return Boolean(screen.queryByTestId('focus-trap-content'));
 };
@@ -31,12 +29,14 @@ const focusTrapIsRendered = () => {
 describe('FocusTrap', () => {
   it('renders children', () => {
     renderFocusTrap();
+
     expect(focusTrapIsRendered()).toBeTruthy();
   });
 
   it('auto focuses on children', () => {
     renderFocusTrap();
     const expectedFocusedButton = screen.queryByTestId('button-inside');
+
     expect(document.activeElement).toEqual(expectedFocusedButton);
   });
 
@@ -46,6 +46,7 @@ describe('FocusTrap', () => {
       onEscapeKey,
     });
     fireEvent.keyDown(view.baseElement, { key: 'Escape', code: 'Escape' });
+
     expect(onEscapeKey.mock.calls.length).toBe(1);
   });
 
@@ -54,9 +55,9 @@ describe('FocusTrap', () => {
     renderFocusTrap({
       onClickOutside,
     });
-
     // focus-on listens to mouseDown, not click
     fireEvent.mouseDown(screen.getByTestId('focus-trap-outside'));
+
     expect(onClickOutside.mock.calls.length).toBe(1);
   });
 
@@ -66,6 +67,7 @@ describe('FocusTrap', () => {
       onClickOutside,
     });
     fireEvent.mouseDown(screen.getByTestId('focus-trap-content'));
+
     expect(onClickOutside.mock.calls.length).toBe(0);
   });
 });

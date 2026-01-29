@@ -3,7 +3,6 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import { Toaster } from '..';
 
 const onClose = jest.fn();
-
 const toasts = [
   {
     id: 'toast-1',
@@ -18,7 +17,6 @@ const toasts = [
     title: 'Status Toast 3',
   },
 ];
-
 const renderView = setupRtl(Toaster, {
   toasts,
   onClose,

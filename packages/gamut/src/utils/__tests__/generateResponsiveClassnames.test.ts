@@ -51,6 +51,7 @@ describe('generateResponsiveClassnames', () => {
       },
       styleMap
     );
+
     expect(classList).toEqual(['coolClass', 'lessCoolClass']);
   });
 

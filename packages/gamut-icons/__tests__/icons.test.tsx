@@ -8,8 +8,8 @@ const renderView = setupRtl(AddIcon);
 describe('Compiled gamut-icons:', () => {
   it('Hides the icon from screen readers by default', async () => {
     renderView();
-
     const svgEl = screen.getByRole('img', { hidden: true });
+
     expect(svgEl.getAttribute('aria-hidden')).toEqual('true');
   });
 
@@ -17,7 +17,6 @@ describe('Compiled gamut-icons:', () => {
     renderView({
       size: 1,
     });
-
     const svgEl = screen.getByRole('img', { hidden: true });
     const maskEl = svgEl.querySelector('mask');
 
@@ -28,7 +27,6 @@ describe('Compiled gamut-icons:', () => {
     renderView({
       title: 'Accessible',
     });
-
     const svgEl = screen.getByRole('img', { hidden: true });
     const titleEl = svgEl.querySelector('title');
 
@@ -37,8 +35,8 @@ describe('Compiled gamut-icons:', () => {
 
   it('Sets a default fill of #fff', () => {
     renderView();
-
     const svgEl = screen.getByRole('img', { hidden: true });
+
     expect(svgEl.getAttribute('fill')).toEqual('#fff');
   });
 });

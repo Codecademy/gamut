@@ -23,7 +23,6 @@ describe('Queries', () => {
         color: { property: 'color' },
         fontSize: { property: 'fontSize' },
       });
-
       const styles = css({
         color: { _: 'red', c_md: 'blue' },
         fontSize: { _: '16px', c_lg: '20px' },
@@ -47,7 +46,6 @@ describe('Queries', () => {
         fontSize: { property: 'fontSize' },
         padding: { property: 'padding' },
       });
-
       const styles = css({
         color: {
           _: 'red',
@@ -90,7 +88,6 @@ describe('Queries', () => {
         color: { property: 'color' },
         fontSize: { property: 'fontSize' },
       });
-
       const styles = css({
         color: { _: 'red', c_sm: 'green', c_lg: 'blue' },
         fontSize: { _: '14px', c_md: undefined, c_xl: '18px' },
@@ -116,7 +113,6 @@ describe('Queries', () => {
         color: { property: 'color' },
         fontSize: { property: 'fontSize' },
       });
-
       const styles = css({
         color: { _: 'red', c_sm: undefined, c_lg: 'green' },
         fontSize: { _: '14px', c_md: undefined, c_xl: '18px' },
@@ -138,7 +134,6 @@ describe('Queries', () => {
       const css = variance.createCss({
         color: { property: 'color' },
       });
-
       const styles = css({
         color: {
           _: 'red',
@@ -163,7 +158,6 @@ describe('Queries', () => {
         color: { property: 'color' },
         fontSize: { property: 'fontSize' },
       });
-
       const styles = css({
         color: { _: 'red', c_md: 'blue' },
         '&:hover': {
@@ -195,7 +189,6 @@ describe('Queries', () => {
         color: { property: 'color' },
         padding: { property: 'padding' },
       });
-
       const styles = css({
         color: { _: 'red', c_base: 'blue' },
         padding: { _: '8px', c_base: '12px' },
@@ -216,35 +209,34 @@ describe('Queries', () => {
         color: { property: 'color' },
         fontSize: { property: 'fontSize' },
       });
-
       // Array indices: 0: base, 1: xs, 2: sm, 3: md, 4: lg, 5: xl, 6: c_base, 7: c_xs, 8: c_sm, 9: c_md, 10: c_lg, 11: c_xl
       const styles = css({
         color: [
-          'red', // base
-          undefined, // xs
-          undefined, // sm
-          undefined, // md
-          undefined, // lg
-          undefined, // xl
-          'yellow', // c_base
-          'blue', // c_xs
-          'green', // c_sm
-          'purple', // c_md
-          'orange', // c_lg
+          'red',
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          'yellow',
+          'blue',
+          'green',
+          'purple',
+          'orange',
           'pink', // c_xl
         ],
         fontSize: [
-          '12px', // base
-          undefined, // xs
-          undefined, // sm
-          undefined, // md
-          undefined, // lg
-          undefined, // xl
-          '13px', // c_base
-          '14px', // c_xs
-          '16px', // c_sm
-          '18px', // c_md
-          '20px', // c_lg
+          '12px',
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          '13px',
+          '14px',
+          '16px',
+          '18px',
+          '20px',
           '22px', // c_xl
         ],
       })({ theme });
@@ -287,7 +279,6 @@ describe('Queries', () => {
         fontSize: { property: 'fontSize' },
         padding: { property: 'padding' },
       });
-
       const styles = css({
         color: { _: 'red', sm: 'blue', lg: 'green' },
         fontSize: { _: '14px', md: '16px', xl: '18px' },
@@ -322,7 +313,6 @@ describe('Queries', () => {
         color: { property: 'color' },
         fontSize: { property: 'fontSize' },
       });
-
       const styles = css({
         color: ['red', 'blue', 'green', 'purple', 'orange'],
         fontSize: ['12px', '14px', '16px', '18px', '20px'],
@@ -355,7 +345,6 @@ describe('Queries', () => {
         color: { property: 'color' },
         fontSize: { property: 'fontSize' },
       });
-
       const styles = css({
         color: ['red', 'blue', 'green'],
         fontSize: ['12px', '14px'],
@@ -380,7 +369,6 @@ describe('Queries', () => {
         fontSize: { property: 'fontSize' },
         padding: { property: 'padding' },
       });
-
       const styles = css({
         color: { _: 'red', md: 'blue', xl: 'green' },
         fontSize: ['12px', '14px', '16px', '18px', '20px'],
@@ -416,7 +404,6 @@ describe('Queries', () => {
         color: { property: 'color' },
         fontSize: { property: 'fontSize' },
       });
-
       const styles = css({
         color: { _: 'red', sm: undefined, lg: 'green' },
         fontSize: { _: '14px', md: undefined, xl: '18px' },
@@ -438,7 +425,6 @@ describe('Queries', () => {
       const css = variance.createCss({
         color: { property: 'color' },
       });
-
       const styles = css({
         color: {
           _: 'red',
@@ -463,7 +449,6 @@ describe('Queries', () => {
         color: { property: 'color' },
         fontSize: { property: 'fontSize' },
       });
-
       const styles = css({
         color: { _: 'red', md: 'blue' },
         '&:hover': {
@@ -498,7 +483,6 @@ describe('Queries', () => {
         padding: { property: 'padding' },
         margin: { property: 'margin' },
       });
-
       const styles = css({
         color: ['red', 'blue', 'green', 'purple', 'orange'],
         backgroundColor: { _: 'white', sm: 'lightgray', lg: 'darkgray' },
@@ -548,7 +532,6 @@ describe('Queries', () => {
       const css = variance.createCss({
         color: { property: 'color' },
       });
-
       const styles = css({
         color: { _: 'red', md: 'green', c_md: 'blue' },
       })({ theme });
@@ -570,7 +553,6 @@ describe('Queries', () => {
         fontSize: { property: 'fontSize' },
         padding: { property: 'padding' },
       });
-
       const styles = css({
         color: { _: 'red', c_md: 'blue', c_xl: 'green' },
         fontSize: ['12px', '14px', '16px', '18px', '20px'],
@@ -613,7 +595,6 @@ describe('Queries', () => {
         padding: { property: 'padding' },
         margin: { property: 'margin' },
       });
-
       const styles = css({
         color: ['red', 'blue', 'green', 'purple', 'orange'],
         backgroundColor: {

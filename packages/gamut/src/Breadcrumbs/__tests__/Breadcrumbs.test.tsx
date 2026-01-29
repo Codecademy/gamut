@@ -13,6 +13,7 @@ describe('Breadcrumbs', () => {
     view.getByText('one');
     view.getByText('two');
     view.getByText('three');
+
     expect(view.queryByRole('link')).toBeNull();
   });
 
@@ -27,18 +28,17 @@ describe('Breadcrumbs', () => {
     view.getByText('one');
     view.getByText('two');
     view.getByText('three');
+
     expect(view.getAllByRole('link')).toHaveLength(3);
   });
 
   it('passes payload to onClick if both are provided', async () => {
     const payload = { owo: 'hey' };
     const onClick = jest.fn();
-
     const { view } = renderView({
       crumbs: [{ title: 'one', href: '#one/path', payload }],
       onClick,
     });
-
     await userEvent.click(view.getByText('one'));
 
     expect(onClick).toHaveBeenCalledWith(

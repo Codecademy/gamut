@@ -7,11 +7,9 @@ import { AssetProvider, createFontLinks } from '../AssetProvider';
 import { coreTheme, percipioTheme } from '../themes';
 
 const renderView = setupRtl(AssetProvider, {});
-
 jest.mock('../utils/fontUtils', () => ({
   getFonts: jest.fn(),
 }));
-
 jest.mock('../remoteAssets/fonts', () => ({
   webFonts: {
     core: [
@@ -42,7 +40,6 @@ jest.mock('../remoteAssets/fonts', () => ({
     ],
   },
 }));
-
 const mockGetFonts = require('../utils/fontUtils').getFonts;
 
 describe('AssetProvider', () => {
@@ -64,7 +61,6 @@ describe('AssetProvider', () => {
           name: 'Test Font Woff1',
         },
       ];
-
       const { container } = render(<>{createFontLinks(fonts)}</>);
       const links = container.querySelectorAll('link[rel="preload"]');
 
@@ -81,12 +77,14 @@ describe('AssetProvider', () => {
     it('should handle empty fonts array', () => {
       const { container } = render(<>{createFontLinks([])}</>);
       const links = container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(0);
     });
 
     it('should handle undefined fonts parameter', () => {
       const { container } = render(<>{createFontLinks(undefined)}</>);
       const links = container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(2);
     });
 
@@ -108,9 +106,9 @@ describe('AssetProvider', () => {
           name: 'Font No Extensions',
         },
       ];
-
       const { container } = render(<>{createFontLinks(fonts)}</>);
       const links = container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
         'href',
@@ -137,9 +135,9 @@ describe('AssetProvider', () => {
           name: 'Another Valid Font',
         },
       ];
-
       const { container } = render(<>{createFontLinks(fonts)}</>);
       const links = container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(2);
     });
   });
@@ -153,7 +151,6 @@ describe('AssetProvider', () => {
           name: 'Apercu',
         },
       ]);
-
       const { view } = renderView();
       const links = view.container.querySelectorAll('link[rel="preload"]');
 
@@ -173,7 +170,6 @@ describe('AssetProvider', () => {
           name: 'Roboto',
         },
       ]);
-
       const { view } = renderView({ theme: percipioTheme as any });
       const links = view.container.querySelectorAll('link[rel="preload"]');
 
@@ -188,16 +184,16 @@ describe('AssetProvider', () => {
     it('should handle theme without name property', () => {
       const themeWithoutName = { ...coreTheme, name: undefined };
       mockGetFonts.mockReturnValue([]);
-
       renderView({ theme: themeWithoutName });
+
       expect(mockGetFonts).toHaveBeenCalledWith('core');
     });
 
     it('should handle theme with invalid name', () => {
       const themeWithInvalidName = { ...coreTheme, name: 'invalid-theme' };
       mockGetFonts.mockReturnValue([]);
-
       renderView({ theme: themeWithInvalidName });
+
       expect(mockGetFonts).toHaveBeenCalledWith('invalid-theme');
     });
 
@@ -205,33 +201,33 @@ describe('AssetProvider', () => {
       mockGetFonts.mockImplementation(() => {
         throw new Error('Font loading failed');
       });
-
       const { view } = renderView();
       const links = view.container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(0);
     });
 
     it('should fallback to core fonts when getFonts returns undefined', () => {
       mockGetFonts.mockReturnValue(undefined);
-
       const { view } = renderView();
       const links = view.container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(2);
     });
 
     it('should fallback to core fonts when getFonts returns null', () => {
       mockGetFonts.mockReturnValue(null);
-
       const { view } = renderView();
       const links = view.container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(2);
     });
 
     it('should fallback to core fonts when getFonts returns non-array', () => {
       mockGetFonts.mockReturnValue('not-an-array');
-
       const { view } = renderView();
       const links = view.container.querySelectorAll('link[rel="preload"]');
+
       expect(links).toHaveLength(0);
     });
 
@@ -253,7 +249,6 @@ describe('AssetProvider', () => {
           name: 'Font 3',
         },
       ]);
-
       const { view } = renderView();
       const links = view.container.querySelectorAll('link[rel="preload"]');
 
@@ -280,7 +275,7 @@ describe('AssetProvider', () => {
           name: 'Valid Font',
         },
         {
-          filePath: '', // Empty filePath
+          filePath: '',
           extensions: ['woff2'],
           name: 'Empty Path Font',
         },
@@ -290,7 +285,6 @@ describe('AssetProvider', () => {
           name: 'Missing Path Font',
         } as any,
       ]);
-
       const { view } = renderView();
       const links = view.container.querySelectorAll('link[rel="preload"]');
 
@@ -319,7 +313,6 @@ describe('AssetProvider', () => {
           name: 'Font Empty Extensions',
         },
       ]);
-
       const { view } = renderView();
       const links = view.container.querySelectorAll('link[rel="preload"]');
 

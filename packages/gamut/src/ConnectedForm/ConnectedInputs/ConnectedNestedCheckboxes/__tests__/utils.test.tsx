@@ -15,7 +15,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         { value: 'option1', label: 'Option 1' },
         { value: 'option2', label: 'Option 2' },
       ];
-
       const result = flattenOptions(options);
 
       expect(result).toHaveLength(2);
@@ -47,7 +46,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         },
         { value: 'parent2', label: 'Parent 2' },
       ];
-
       const result = flattenOptions(options);
 
       expect(result).toHaveLength(4);
@@ -95,7 +93,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
           ],
         },
       ];
-
       const result = flattenOptions(options);
 
       expect(result).toHaveLength(3);
@@ -107,12 +104,12 @@ describe('ConnectedNestedCheckboxes utils', () => {
 
     it('should handle empty options array', () => {
       const result = flattenOptions([]);
+
       expect(result).toEqual([]);
     });
 
     it('should convert numeric values to strings', () => {
       const options = [{ value: 123, label: 'Numeric Option' }];
-
       const result = flattenOptions(options as any);
 
       expect(result[0].value).toBe('123');
@@ -120,7 +117,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
 
     it('should handle custom level and parentValue parameters', () => {
       const options = [{ value: 'test', label: 'Test' }];
-
       const result = flattenOptions(options, 2, 'customParent');
 
       expect(result[0].level).toBe(2);
@@ -169,31 +165,37 @@ describe('ConnectedNestedCheckboxes utils', () => {
 
     it('should get all direct and indirect descendants', () => {
       const result = getAllDescendants('parent', flatOptions);
+
       expect(result).toEqual(['child1', 'grandchild1', 'child2']);
     });
 
     it('should get only direct descendants when no grandchildren exist', () => {
       const result = getAllDescendants('child2', flatOptions);
+
       expect(result).toEqual([]);
     });
 
     it('should get descendants for intermediate level nodes', () => {
       const result = getAllDescendants('child1', flatOptions);
+
       expect(result).toEqual(['grandchild1']);
     });
 
     it('should return empty array for leaf nodes', () => {
       const result = getAllDescendants('grandchild1', flatOptions);
+
       expect(result).toEqual([]);
     });
 
     it('should return empty array for non-existent parent', () => {
       const result = getAllDescendants('nonexistent', flatOptions);
+
       expect(result).toEqual([]);
     });
 
     it('should handle empty flatOptions array', () => {
       const result = getAllDescendants('parent', []);
+
       expect(result).toEqual([]);
     });
   });
@@ -247,24 +249,24 @@ describe('ConnectedNestedCheckboxes utils', () => {
     it('should set parent as checked when all descendants are selected', () => {
       const selectedValues = ['child1', 'child2', 'grandchild1'];
       const states = calculateStates(selectedValues, flatOptions);
-
       const parent1State = states.get('parent1');
+
       expect(parent1State).toEqual({ checked: true });
     });
 
     it('should set parent as indeterminate when some descendants are selected', () => {
       const selectedValues = ['child1', 'grandchild1'];
       const states = calculateStates(selectedValues, flatOptions);
-
       const parent1State = states.get('parent1');
+
       expect(parent1State).toEqual({ checked: false, indeterminate: true });
     });
 
     it('should set parent as unchecked when no descendants are selected', () => {
       const selectedValues: string[] = [];
       const states = calculateStates(selectedValues, flatOptions);
-
       const parent1State = states.get('parent1');
+
       expect(parent1State).toEqual({ checked: false, indeterminate: false });
     });
 
@@ -280,17 +282,17 @@ describe('ConnectedNestedCheckboxes utils', () => {
     it('should handle intermediate parent states correctly', () => {
       const selectedValues = ['grandchild1'];
       const states = calculateStates(selectedValues, flatOptions);
-
       const child1State = states.get('child1');
+
       expect(child1State).toEqual({ checked: true });
 
       const parent1State = states.get('parent1');
+
       expect(parent1State).toEqual({ checked: false, indeterminate: true });
     });
 
     it('should handle empty selected values', () => {
       const states = calculateStates([], flatOptions);
-
       flatOptions.forEach((option) => {
         const state = states.get(option.value);
         if (option.options.length > 0) {
@@ -304,9 +306,9 @@ describe('ConnectedNestedCheckboxes utils', () => {
     it('should handle all values selected', () => {
       const allValues = flatOptions.map((opt) => opt.value);
       const states = calculateStates(allValues, flatOptions);
-
       flatOptions.forEach((option) => {
         const state = states.get(option.value);
+
         expect(state?.checked).toBe(true);
       });
     });
@@ -348,7 +350,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const onChange = jest.fn();
       const onUpdate = jest.fn();
       const parentOption = flatOptions[0];
-
       handleCheckboxChange({
         option: parentOption,
         isChecked: true,
@@ -367,7 +368,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const onUpdate = jest.fn();
       const parentOption = flatOptions[0];
       const initialValues = ['parent', 'child1', 'child2', 'standalone'];
-
       handleCheckboxChange({
         option: parentOption,
         isChecked: false,
@@ -384,7 +384,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
     it('should add individual child when checked', () => {
       const onChange = jest.fn();
       const childOption = flatOptions[1];
-
       handleCheckboxChange({
         option: childOption,
         isChecked: true,
@@ -400,7 +399,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const onChange = jest.fn();
       const childOption = flatOptions[1];
       const initialValues = ['child1', 'child2'];
-
       handleCheckboxChange({
         option: childOption,
         isChecked: false,
@@ -416,7 +414,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const onChange = jest.fn();
       const parentOption = flatOptions[0];
       const initialValues = ['child1'];
-
       handleCheckboxChange({
         option: parentOption,
         isChecked: true,
@@ -441,14 +438,12 @@ describe('ConnectedNestedCheckboxes utils', () => {
           onChange,
         });
       }).not.toThrow();
-
       expect(onChange).toHaveBeenCalledWith(['child1']);
     });
 
     it('should handle leaf node selection without affecting other nodes', () => {
       const onChange = jest.fn();
       const standaloneOption = flatOptions[3];
-
       handleCheckboxChange({
         option: standaloneOption,
         isChecked: true,
@@ -469,14 +464,12 @@ describe('ConnectedNestedCheckboxes utils', () => {
       parentValue: 'parent',
       options: [],
     };
-
     const mockRef = jest.fn();
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
 
     it('should render a checked checkbox with correct props', () => {
       const state = { checked: true };
-
       const result = renderCheckbox({
         option: mockOption,
         state,
@@ -488,7 +481,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         ref: mockRef,
         flatOptions: [mockOption],
       });
-
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
 
@@ -500,7 +492,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
 
     it('should render an indeterminate checkbox with correct props', () => {
       const state = { checked: false, indeterminate: true };
-
       const result = renderCheckbox({
         option: mockOption,
         state,
@@ -512,7 +503,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         ref: mockRef,
         flatOptions: [mockOption],
       });
-
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
 
@@ -523,7 +513,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
 
     it('should render an unchecked checkbox with correct props', () => {
       const state = { checked: false };
-
       const result = renderCheckbox({
         option: mockOption,
         state,
@@ -535,7 +524,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         ref: mockRef,
         flatOptions: [mockOption],
       });
-
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
 
@@ -546,7 +534,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
 
     it('should apply correct margin based on level', () => {
       const state = { checked: false };
-
       const result = renderCheckbox({
         option: { ...mockOption, level: 2 },
         state,
@@ -558,7 +545,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         ref: mockRef,
         flatOptions: [{ ...mockOption, level: 2 }],
       });
-
       const { container } = render(result);
       const listItem = container.querySelector('li');
 
@@ -567,7 +553,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
 
     it('should handle disabled state', () => {
       const state = { checked: false };
-
       const result = renderCheckbox({
         option: { ...mockOption, disabled: true },
         state,
@@ -579,7 +564,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         ref: mockRef,
         flatOptions: [{ ...mockOption, disabled: true }],
       });
-
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
 
@@ -588,7 +572,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
 
     it('should handle error state', () => {
       const state = { checked: false };
-
       const result = renderCheckbox({
         option: mockOption,
         state,
@@ -601,7 +584,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         error: true,
         flatOptions: [mockOption],
       });
-
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
 
@@ -614,7 +596,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         ...mockOption,
         'aria-label': 'Custom aria label',
       };
-
       const result = renderCheckbox({
         option: optionWithAriaLabel,
         state,
@@ -626,7 +607,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         ref: mockRef,
         flatOptions: [optionWithAriaLabel],
       });
-
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
 
@@ -635,7 +615,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
 
     it('should fallback to label text for aria-label when label is string', () => {
       const state = { checked: false };
-
       const result = renderCheckbox({
         option: mockOption,
         state,
@@ -647,7 +626,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         ref: mockRef,
         flatOptions: [mockOption],
       });
-
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
 
@@ -660,9 +638,8 @@ describe('ConnectedNestedCheckboxes utils', () => {
         ...mockOption,
         label: <span>Element Label</span>,
       };
-
       const result = renderCheckbox({
-        option: optionWithElementLabel as any, // ts should prevent this from ever happening but we have a default just in case
+        option: optionWithElementLabel as any,
         state,
         name: 'test',
         isRequired: false,
@@ -672,7 +649,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         ref: mockRef,
         flatOptions: [optionWithElementLabel as any],
       });
-
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
 
@@ -711,9 +687,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
           label: 'Grandchild 1',
         },
       ];
-
       const parentOption = flatOptions[0];
-
       const result = renderCheckbox({
         option: parentOption,
         state,
@@ -725,7 +699,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         ref: mockRef,
         flatOptions,
       });
-
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
 
@@ -747,9 +720,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
           label: 'Leaf',
         },
       ];
-
       const leafOption = flatOptions[0];
-
       const result = renderCheckbox({
         option: leafOption,
         state,
@@ -761,7 +732,6 @@ describe('ConnectedNestedCheckboxes utils', () => {
         ref: mockRef,
         flatOptions,
       });
-
       const { container } = render(result);
       const checkbox = container.querySelector('input[type="checkbox"]');
 

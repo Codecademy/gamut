@@ -9,7 +9,6 @@ jest.mock('react-use', () => ({
   ...jest.requireActual<{}>('react-use'),
   useMedia: () => false,
 }));
-
 const renderView = setupRtl(Flyout, {
   children: <div data-testid="flyout-content">Howdy!</div>,
   closeLabel: 'Close flyout',
@@ -22,7 +21,6 @@ const renderView = setupRtl(Flyout, {
 describe('Flyout', () => {
   const expectFlyoutOpen = (view: RenderResult) =>
     waitFor(() => view.getByTestId('flyout-content'));
-
   const expectFlyoutClosed = (view: RenderResult) =>
     waitFor(() => expect(view.queryByTestId('flyout-content')).toBeNull());
 
@@ -38,7 +36,6 @@ describe('Flyout', () => {
 
   it('calls onClose on button click', async () => {
     const { props, view } = renderView({ expanded: true });
-
     await userEvent.click(view.getByLabelText('Close'));
 
     expect(props.onClose).toHaveBeenCalled();
@@ -52,20 +49,16 @@ describe('Flyout', () => {
 
     it('closes flyout', async () => {
       const { view } = renderView();
-
       clickOutsideFlyout(view);
-
       await expectFlyoutClosed(view);
     });
   });
 
   it('does not close flyout when clicking inside flyout', async () => {
     const { view } = renderView({ expanded: true });
-
     act(() => {
       fireEvent.mouseDown(view.getByTestId('flyout-content'));
     });
-
     await expectFlyoutOpen(view);
   });
 
@@ -80,9 +73,7 @@ describe('Flyout', () => {
 
     it('closes the flyout', async () => {
       const { view } = renderView();
-
       pressEsc(view);
-
       await expectFlyoutClosed(view);
     });
   });

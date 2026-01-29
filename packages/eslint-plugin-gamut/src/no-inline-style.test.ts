@@ -10,7 +10,6 @@ const ruleTester = new ESLintUtils.RuleTester({
     },
   },
 });
-
 ruleTester.run('no-inline-style', rule, {
   valid: [
     `<div />`,

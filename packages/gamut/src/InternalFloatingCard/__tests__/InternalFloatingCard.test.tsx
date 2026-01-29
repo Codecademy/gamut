@@ -12,6 +12,7 @@ describe('InternalFloatingCard', () => {
     const { props, view } = renderView();
     view.getByText('Float on okay');
     view.getByTitle('Checker Dense');
+
     expect(props.shadow).toBeUndefined();
   });
 

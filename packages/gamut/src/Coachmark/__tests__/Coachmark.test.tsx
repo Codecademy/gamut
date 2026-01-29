@@ -11,7 +11,6 @@ const renderPopover = () => (
     </button>
   </div>
 );
-
 const renderView = setupRtl(Coachmark, {
   renderPopover,
   shouldShow: true,
@@ -33,11 +32,13 @@ describe('Coachmark', () => {
 
   it('does not render Popover when shouldShow is false', () => {
     const { view } = renderView({ shouldShow: false });
+
     expect(view.queryByTestId('coachmark-popover-content')).toBeFalsy();
   });
 
   it('renders the popover when shouldShow is true', () => {
     const { view } = renderView({ delay: 0 });
+
     expect(view.queryByTestId('coachmark-popover-content')).toBeTruthy();
   });
 

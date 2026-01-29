@@ -9,11 +9,9 @@ import {
   openDropdown,
 } from '../__fixtures__/utils';
 import { SelectDropdown } from '../SelectDropdown';
-
 /** There is a state pollution issue with SelectDropdown and jest which is why these are broken up into their own file.
  *  Ticket to fix: https://skillsoftdev.atlassian.net/browse/GM-1297
  */
-
 jest.mock('@codecademy/gamut-icons', () => ({
   ...jest.requireActual<{}>('@codecademy/gamut-icons'),
   MiniChevronDownIcon: () => (
@@ -42,7 +40,6 @@ jest.mock('@codecademy/gamut-icons', () => ({
     </svg>
   ),
 }));
-
 const renderView = setupRtl(SelectDropdown, {
   options: groupedOptions,
   name: 'colors',
@@ -51,16 +48,12 @@ const renderView = setupRtl(SelectDropdown, {
 describe('SelectDropdown Grouped Options', () => {
   it('renders grouped options with group labels', async () => {
     const { view } = renderView({ options: groupedOptions });
-
     await openDropdown(view);
-
     view.getByText('Fruits');
     view.getByText('Vegetables');
-
     // Check that options within groups are rendered
     const fruitOptions = ['Apple', 'Banana', 'Orange'];
     const vegetableOptions = ['Carrot', 'Broccoli', 'Spinach'];
-
     [...fruitOptions, ...vegetableOptions].forEach((option) => {
       view.getByText(option);
     });
@@ -72,9 +65,7 @@ describe('SelectDropdown Grouped Options', () => {
       options: groupedOptions,
       onChange,
     });
-
     await openDropdown(view);
-
     await act(async () => {
       await userEvent.click(view.getByText('Apple'));
     });
@@ -97,9 +88,7 @@ describe('SelectDropdown Grouped Options', () => {
       options: groupedOptions,
       onChange,
     });
-
     await openDropdown(view);
-
     await act(async () => {
       await userEvent.click(view.getByText('Carrot'));
     });
@@ -121,24 +110,19 @@ describe('SelectDropdown Grouped Options', () => {
       options: groupedOptions,
       value: 'banana',
     });
-
     view.getByText('Banana');
   });
 
   it('renders grouped options with icons', async () => {
     const { view } = renderView({ options: groupedOptionsWithIcons });
-
     await openDropdown(view);
-
     view.getByText('Data Icons');
     view.getByText('Navigation Icons');
-
     const iconOptions = [
       'Data Transfer Vertical Icon',
       'Calendar Icon',
       'Earth Icon',
     ];
-
     iconOptions.forEach((icon) => {
       expect(view.getAllByText(icon)).toHaveLength(2); // title and span
     });
@@ -150,9 +134,7 @@ describe('SelectDropdown Grouped Options', () => {
       options: groupedOptionsWithIcons,
       onChange,
     });
-
     await openDropdown(view);
-
     await act(async () => {
       await userEvent.click(
         view.getByRole('option', {
@@ -180,12 +162,9 @@ describe('SelectDropdown Grouped Options', () => {
 
   it('renders grouped options with subtitles', async () => {
     const { view } = renderView({ options: groupedOptionsWithTitles });
-
     await openDropdown(view);
-
     view.getByText('Fruits');
     view.getByText('Vegetables');
-
     const fruitOptionsWithSubtitles = [
       { option: 'Apple', subtitle: 'Red and crunchy' },
       { option: 'Banana', subtitle: 'Yellow and sweet' },
@@ -193,7 +172,6 @@ describe('SelectDropdown Grouped Options', () => {
     const vegetableOptionsWithSubtitles = [
       { option: 'Carrot', subtitle: 'Orange and healthy' },
     ];
-
     [...fruitOptionsWithSubtitles, ...vegetableOptionsWithSubtitles].forEach(
       ({ option, subtitle }) => {
         view.getByText(option);
@@ -208,9 +186,7 @@ describe('SelectDropdown Grouped Options', () => {
       options: groupedOptionsWithTitles,
       onChange,
     });
-
     await openDropdown(view);
-
     await act(async () => {
       await userEvent.click(view.getByText('Apple'));
     });
@@ -235,17 +211,14 @@ describe('SelectDropdown Grouped Options', () => {
       multiple: true,
       onChange,
     });
-
     await openDropdown(view);
     await act(async () => {
       await userEvent.click(view.getByText('Apple'));
     });
-
     await openDropdown(view);
     await act(async () => {
       await userEvent.click(view.getByText('Carrot'));
     });
-
     view.getByText('Apple');
     view.getByText('Carrot');
 
@@ -291,12 +264,10 @@ describe('SelectDropdown Grouped Options', () => {
         ],
       },
     ];
-
     const { view } = renderView({ options: groupedOptionsWithDisabled });
-
     await openDropdown(view);
-
     const disabledOption = view.getByText('Banana');
+
     expect(disabledOption.closest('[role="option"]')).toHaveAttribute(
       'aria-disabled',
       'true'

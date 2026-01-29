@@ -20,7 +20,6 @@ jest.mock('@codecademy/gamut-icons', () => ({
     </svg>
   ),
 }));
-
 const renderView = setupRtl(Input, { 'aria-label': 'input' });
 
 describe('Input', () => {
@@ -31,11 +30,13 @@ describe('Input', () => {
 
   it('renders a number input type', () => {
     const { view } = renderView({ type: 'number' });
+
     expect(view.getByLabelText('input')).toHaveAttribute('type', 'number');
   });
 
   it('renders a file input type', () => {
     const { view } = renderView({ type: 'file' });
+
     expect(view.getByLabelText('input')).toHaveAttribute('type', 'file');
   });
 
@@ -44,7 +45,6 @@ describe('Input', () => {
       type: 'text',
       defaultValue: 'default value',
     });
-
     view.getByDisplayValue('default value');
   });
 
@@ -53,7 +53,6 @@ describe('Input', () => {
       type: 'number',
       defaultValue: 13,
     });
-
     view.getByDisplayValue(13);
   });
 
@@ -63,7 +62,6 @@ describe('Input', () => {
       defaultValue: 13,
       error: true,
     });
-
     view.getByTitle('Alert Icon');
   });
 
@@ -73,7 +71,6 @@ describe('Input', () => {
       defaultValue: 13,
       valid: true,
     });
-
     view.getByTitle('Check Circled Icon');
   });
 
@@ -83,7 +80,6 @@ describe('Input', () => {
       defaultValue: 13,
       icon: StreakIcon,
     });
-
     view.getByTitle('Streak Icon');
   });
 });

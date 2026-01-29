@@ -5,7 +5,6 @@ import rule from './prefer-themed';
 const ruleTester = new ESLintUtils.RuleTester({
   parser: '@typescript-eslint/parser',
 });
-
 ruleTester.run('prefer-themed', rule, {
   valid: [
     ``,

@@ -6,6 +6,7 @@ import { GridFormSectionTitle } from '../GridFormSectionTitle';
 
 // Add the custom matchers provided by '@emotion/jest'
 expect.extend(matchers);
+
 const renderView = setupRtl(GridFormSectionTitle, {
   title: 'Updog',
   numberOfFields: 3,
@@ -33,7 +34,6 @@ describe('GridFormSectionTitle', () => {
 
   it('renders the proper Column size when layout is set to center', () => {
     const { view } = renderView({ 'data-testid': 'columnId' });
-
     const column = view.getByTestId('columnId');
 
     expect(column).toHaveStyle({ gridColumnEnd: 'span 12' });
@@ -42,23 +42,17 @@ describe('GridFormSectionTitle', () => {
 
   it('renders the proper Column size according to number of fields when layout is set to left', () => {
     const { view } = renderView({ layout: 'left', 'data-testid': 'columnId' });
-
     const column = view.getByTestId('columnId');
 
     expect(column).toHaveStyle({ gridRowEnd: 'span 1' });
-
     expect(column).toHaveStyleRule('grid-row-end', 'span 3', {
       media: theme.breakpoints.md,
     });
-
     expect(column).toHaveStyle({ gridRowEnd: 'span 1' });
-
     expect(column).toHaveStyleRule('grid-row-end', 'span 3', {
       media: theme.breakpoints.md,
     });
-
     expect(column).toHaveStyle({ gridColumnEnd: 'span 12' });
-
     expect(column).toHaveStyleRule('grid-column-end', 'span 3', {
       media: theme.breakpoints.md,
     });

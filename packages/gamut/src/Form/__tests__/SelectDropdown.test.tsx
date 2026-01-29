@@ -10,11 +10,9 @@ import {
   selectOptionsObject,
 } from '../__fixtures__/utils';
 import { SelectDropdown } from '../SelectDropdown';
-
 /** There is a state pollution issue with SelectDropdown and jest which is why these are broken up into their own file.
  *  Ticket to fix: https://skillsoftdev.atlassian.net/browse/GM-1297
  */
-
 jest.mock('@codecademy/gamut-icons', () => ({
   ...jest.requireActual<{}>('@codecademy/gamut-icons'),
   MiniChevronDownIcon: () => (
@@ -43,7 +41,6 @@ jest.mock('@codecademy/gamut-icons', () => ({
     </svg>
   ),
 }));
-
 const renderView = setupRtl(SelectDropdown, {
   options: selectOptions,
   name: 'colors',
@@ -61,9 +58,7 @@ describe('SelectDropdown', () => {
     ['object', selectOptionsObject],
   ])('renders options when options is an %s', async (_, options) => {
     const { view } = renderView({ options });
-
     await openDropdown(view);
-
     view.getByText('green');
   });
 
@@ -84,17 +79,16 @@ describe('SelectDropdown', () => {
 
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified', async () => {
     const { view } = renderView({ shownOptionsLimit: 4 });
-
     await openDropdown(view);
 
     expect(view.getByRole('listbox')).toHaveStyle({ maxHeight: '12rem' });
   });
+
   it('renders a dropdown with the correct maxHeight when shownOptionsLimit is specified + size is "small"', async () => {
     const { view } = renderView({
       size: 'small',
       shownOptionsLimit: 4,
     });
-
     await openDropdown(view);
 
     expect(view.getByRole('listbox')).toHaveStyle({ maxHeight: '8rem' });
@@ -102,9 +96,7 @@ describe('SelectDropdown', () => {
 
   it('renders a dropdown with icons', async () => {
     const { view } = renderView({ options: optionsIconsArray });
-
     await openDropdown(view);
-
     optionsIconsArray.forEach((icon) => expect(view.getByTitle(icon.label)));
   });
 
@@ -115,7 +107,9 @@ describe('SelectDropdown', () => {
     });
 
     expect(view.getByTitle('Data Transfer Vertical Icon')).toBeInTheDocument();
+
     const selectedValueContainer = view.getByRole('combobox').closest('div');
+
     expect(selectedValueContainer).toHaveTextContent(
       'Data Transfer Vertical Icon'
     );
@@ -124,9 +118,7 @@ describe('SelectDropdown', () => {
   it('function passed to onInputChanges is called on input change', async () => {
     const onInputChange = jest.fn();
     const { view } = renderView({ onInputChange });
-
     await openDropdown(view);
-
     await act(async () => {
       await userEvent.click(view.getByText('red'));
     });
@@ -140,17 +132,14 @@ describe('SelectDropdown', () => {
       multiple: true,
       onChange,
     });
-
     await openDropdown(view);
     await act(async () => {
       await userEvent.click(view.getByText('red'));
     });
-
     await openDropdown(view);
     await act(async () => {
       await userEvent.click(view.getByText('green'));
     });
-
     view.getByText('red');
     view.getByText('green');
 
@@ -192,17 +181,14 @@ describe('SelectDropdown', () => {
       options: optionsWithAbbreviations,
       onChange,
     });
-
     await openDropdown(view);
     await act(async () => {
       await userEvent.click(view.getByText('United States of America'));
     });
-
     await openDropdown(view);
     await act(async () => {
       await userEvent.click(view.getByText('United Kingdom'));
     });
-
     view.getByText('USA');
     view.getByText('UK');
 
@@ -263,8 +249,8 @@ describe('SelectDropdown', () => {
           },
         },
       });
-
       const comboboxInput = view.getByRole('combobox');
+
       expect(comboboxInput).toHaveAttribute(
         'data-testid',
         'non-searchable-combobox'
@@ -274,6 +260,7 @@ describe('SelectDropdown', () => {
       const hiddenInput = view.container.querySelector(
         'input[type="hidden"][data-form-field="test-field"]'
       );
+
       expect(hiddenInput).toHaveAttribute('data-form-field', 'test-field');
       expect(hiddenInput).toHaveAttribute('data-hidden-attr', 'hidden-value');
     });
@@ -292,8 +279,8 @@ describe('SelectDropdown', () => {
           },
         },
       });
-
       const comboboxInput = view.getByRole('combobox');
+
       expect(comboboxInput).toHaveAttribute(
         'data-testid',
         'searchable-combobox'
@@ -306,6 +293,7 @@ describe('SelectDropdown', () => {
       const hiddenInput = view.container.querySelector(
         'input[type="hidden"][data-form-field="searchable-field"]'
       );
+
       expect(hiddenInput).toHaveAttribute(
         'data-form-field',
         'searchable-field'
@@ -326,8 +314,8 @@ describe('SelectDropdown', () => {
           },
         },
       });
-
       const comboboxInput = view.getByRole('combobox');
+
       expect(comboboxInput).toHaveAttribute('data-testid', 'combobox-only');
       expect(comboboxInput).toHaveAttribute(
         'data-aria-label',
@@ -345,8 +333,8 @@ describe('SelectDropdown', () => {
           },
         },
       });
-
       const comboboxInput = view.getByRole('combobox');
+
       // Should not have any combobox-specific attributes
       expect(comboboxInput).not.toHaveAttribute('data-form-field');
       expect(comboboxInput).not.toHaveAttribute('data-validation');
@@ -354,6 +342,7 @@ describe('SelectDropdown', () => {
       const hiddenInput = view.container.querySelector(
         'input[type="hidden"][data-form-field="hidden-only"]'
       );
+
       expect(hiddenInput).toHaveAttribute('data-form-field', 'hidden-only');
       expect(hiddenInput).toHaveAttribute('data-validation', 'required');
     });
@@ -371,8 +360,8 @@ describe('SelectDropdown', () => {
           },
         },
       });
-
       const comboboxInput = view.getByRole('combobox');
+
       expect(comboboxInput).toHaveAttribute('data-testid', 'multi-attr-test');
       expect(comboboxInput).toHaveAttribute('data-cy', 'combobox-element');
       expect(comboboxInput).toHaveAttribute(
@@ -396,8 +385,8 @@ describe('SelectDropdown', () => {
           },
         },
       });
-
       const comboboxInput = view.getByRole('combobox');
+
       expect(comboboxInput).toHaveAttribute('data-testid', 'type-test');
       expect(comboboxInput).toHaveAttribute('data-boolean-true', 'true');
       expect(comboboxInput).toHaveAttribute('data-boolean-false', 'false');

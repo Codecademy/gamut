@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
-
 import { setupRtl } from '@codecademy/gamut-tests';
 
 import { Markdown } from '../../../..';
@@ -7,7 +6,6 @@ import { Markdown } from '../../../..';
 const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
 veniam, quis nostrud exercitation ullamco laboris`;
-
 const renderView = setupRtl(Markdown);
 const detailsWithSummary = `
 <details>
@@ -15,7 +13,6 @@ const detailsWithSummary = `
   ${lorem}
 </details>
 `;
-
 const detailsWithoutSummary = `
 <details>
   ${lorem}
@@ -31,18 +28,23 @@ describe('Details', () => {
     const { view } = renderView({
       text: detailsWithoutSummary,
     });
+
     expect(view.getByTestId('gamut-md-details')).toBeInTheDocument();
   });
+
   it('Renders a default summary when it is not provided', () => {
     const { view } = renderView({
       text: detailsWithoutSummary,
     });
+
     expect(view.queryAllByText('Details')).toHaveLength(1);
   });
+
   it('Does not render the default summary when one is already provided', () => {
     const { view } = renderView({
       text: detailsWithSummary,
     });
+
     expect(view.queryAllByText('Details')).toHaveLength(0);
     expect(view.queryAllByText('View More')).toHaveLength(1);
   });

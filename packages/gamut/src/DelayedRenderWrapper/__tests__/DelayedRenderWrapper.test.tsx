@@ -26,7 +26,6 @@ describe('DelayedRenderWrapper', () => {
 
   it('should render children after the delay', () => {
     const { view } = renderView({ delay: 1000 });
-
     act(() => {
       jest.advanceTimersByTime(1000);
     });

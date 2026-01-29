@@ -4,33 +4,26 @@ import { fireEvent, queries, RenderResult } from '@testing-library/react';
 import { Pagination } from '..';
 
 const onChange = jest.fn();
-
 const renderView = setupRtl(Pagination, {
   totalPages: 10,
   onChange,
 });
-
 interface TestHelpersType {
   view: RenderResult<typeof queries, HTMLElement>;
   pageNumber?: number;
   direction?: 'forward' | 'back';
 }
-
 const getPage = ({ view, pageNumber }: TestHelpersType) => {
   return view.getByRole('button', { name: `Page ${pageNumber}` });
 };
-
 const getBackButton = ({ view }: TestHelpersType) => {
   return view.getByRole('button', { name: /(Navigate back to page )\d+/ });
 };
-
 const getForwardButton = ({ view }: TestHelpersType) => {
   return view.getByRole('button', { name: /(Navigate forward to page )\d+/ });
 };
-
 const getJumpButtonCount = ({ view }: TestHelpersType) =>
   view.getAllByLabelText(/(Jump )+/).length;
-
 const getJumpButton = ({ view, pageNumber, direction }: TestHelpersType) => {
   return view.getByLabelText(`Jump ${direction} to page ${pageNumber}`);
 };
@@ -38,12 +31,11 @@ const getJumpButton = ({ view, pageNumber, direction }: TestHelpersType) => {
 describe('Pagination', () => {
   it('sets page as current when clicked', async () => {
     const { view } = renderView({});
-
     const page1 = getPage({ view, pageNumber: 1 });
+
     expect(page1).toHaveAttribute('aria-current', 'page');
 
     const page2 = getPage({ view, pageNumber: 2 });
-
     fireEvent.click(page2);
 
     expect(page1).toHaveAttribute('aria-current', 'false');
@@ -85,14 +77,12 @@ describe('Pagination', () => {
 
   it('advances one page forward on forward button click', () => {
     const { view } = renderView({});
-
     const page1 = getPage({ view, pageNumber: 1 });
+
     expect(page1).toHaveAttribute('aria-current', 'page');
 
     const forwardButton = getForwardButton({ view });
-
     fireEvent.click(forwardButton);
-
     const page2 = getPage({ view, pageNumber: 2 });
 
     expect(page1).toHaveAttribute('aria-current', 'false');
@@ -101,15 +91,14 @@ describe('Pagination', () => {
 
   it('advances one page back on back button click', async () => {
     const { view } = renderView({ defaultPageNumber: 3 });
-
     const thirdPage = getPage({ view, pageNumber: 3 });
+
     expect(thirdPage).toHaveAttribute('aria-current', 'page');
 
     const backButton = getBackButton({ view });
-
     fireEvent.click(backButton);
-
     const page2 = getPage({ view, pageNumber: 2 });
+
     expect(page2).toHaveAttribute('aria-current', 'page');
     expect(thirdPage).toHaveAttribute('aria-current', 'false');
   });
@@ -132,23 +121,22 @@ describe('Pagination', () => {
 
   it('calls onChange with page number whenever page changes', () => {
     const { view } = renderView({});
-
     const page2 = getPage({ view, pageNumber: 2 });
-
     fireEvent.click(page2);
+
     expect(onChange).toHaveBeenCalledWith(2);
 
     const backButton = view.getByRole('button', {
       name: /(Navigate back to page )\d+/,
     });
     const forwardButton = getForwardButton({ view });
-
     fireEvent.click(backButton);
+
     expect(onChange).toHaveBeenCalledWith(1);
 
     fireEvent.click(forwardButton);
-    expect(onChange).toHaveBeenCalledWith(2);
 
+    expect(onChange).toHaveBeenCalledWith(2);
     expect(onChange).toHaveBeenCalledTimes(3);
   });
 
@@ -174,8 +162,8 @@ describe('Pagination', () => {
 
     it('advances chapterSize forward on jump forward button click', () => {
       const { view } = renderView({ totalPages: 15 });
-
       const page1 = getPage({ view, pageNumber: 1 });
+
       expect(page1).toHaveAttribute('aria-current', 'page');
 
       const forwardButton = getJumpButton({
@@ -184,7 +172,6 @@ describe('Pagination', () => {
         direction: 'forward',
       });
       fireEvent.click(forwardButton);
-
       const sixthPage = getPage({ view, pageNumber: 6 });
 
       expect(view.queryByRole('button', { name: 'Page 1' })).toBe(null);
@@ -193,7 +180,6 @@ describe('Pagination', () => {
 
     it('advances chapterSize back on jump back ellipsis button click', () => {
       const { view } = renderView({ defaultPageNumber: 15, totalPages: 15 });
-
       const page15 = view.getByRole('button', { name: `Last Page, Page 15` });
 
       expect(page15).toHaveAttribute('aria-current', 'page');
@@ -203,9 +189,7 @@ describe('Pagination', () => {
         pageNumber: 6,
         direction: 'back',
       });
-
       fireEvent.click(backButton);
-
       const page6 = getPage({ view, pageNumber: 6 });
 
       expect(page6).toHaveAttribute('aria-current', 'page');
@@ -213,14 +197,13 @@ describe('Pagination', () => {
 
     it('calls onChange with page number whenever jump buttons are clicked', () => {
       const { view } = renderView({ defaultPageNumber: 8, totalPages: 15 });
-
       const backButton = getJumpButton({
         view,
         pageNumber: 3,
         direction: 'back',
       });
-
       fireEvent.click(backButton);
+
       expect(onChange).toHaveBeenCalledWith(3);
 
       const forwardButton = getJumpButton({
@@ -228,7 +211,6 @@ describe('Pagination', () => {
         pageNumber: 8,
         direction: 'forward',
       });
-
       fireEvent.click(forwardButton);
 
       expect(onChange).toHaveBeenCalledWith(8);
@@ -238,8 +220,8 @@ describe('Pagination', () => {
   describe('when there is a pageNumber prop provided', () => {
     it('sets pageNumber to current page', () => {
       const { view } = renderView({ pageNumber: 5 });
-
       const page5 = getPage({ view, pageNumber: 5 });
+
       expect(page5).toHaveAttribute('aria-current', 'page');
     });
 
@@ -253,10 +235,9 @@ describe('Pagination', () => {
 
     it('calls onChange with the correct page', () => {
       const { view } = renderView({ pageNumber: 5 });
-
       const page5 = getPage({ view, pageNumber: 5 });
-
       fireEvent.click(page5);
+
       expect(onChange).toHaveBeenCalledWith(5);
     });
   });
