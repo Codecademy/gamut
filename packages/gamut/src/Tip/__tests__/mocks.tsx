@@ -30,7 +30,11 @@ export const InfoTipInsideModalMock: React.FC<
         title="Test Modal"
         onRequestClose={() => setIsOpen(false)}
       >
-        <InfoTip info={info} placement={placement} />
+        <InfoTip
+          ariaLabel="Show information"
+          info={info}
+          placement={placement}
+        />
       </Modal>
     </>
   );
@@ -43,7 +47,12 @@ export const MultipleInfoTipsMock: React.FC<{
   return (
     <>
       {tips.map(({ id, info, placement }) => (
-        <InfoTip info={info} key={id} placement={placement} />
+        <InfoTip
+          ariaLabel="Show information"
+          info={info}
+          key={id}
+          placement={placement}
+        />
       ))}
       {includeOutsideElement && <div data-testid="outside">Outside</div>}
     </>
