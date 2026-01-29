@@ -23,6 +23,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
   loading,
   narrow,
   overline,
+  contentRef,
   truncateLines,
   type,
   username,
@@ -45,9 +46,7 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
       height={inheritDims ? 'inherit' : undefined}
       ref={wrapperRef}
       width={inheritDims ? 'inherit' : undefined}
-      onKeyDown={
-        escapeKeyPressHandler ? (e) => escapeKeyPressHandler(e) : undefined
-      }
+      onKeyDown={escapeKeyPressHandler}
     >
       {children}
     </TargetContainer>
@@ -65,7 +64,9 @@ export const InlineTip: React.FC<TipWrapperProps> = ({
         color="currentColor"
         horizNarrow={narrow && isHorizontalCenter}
         id={id}
+        ref={contentRef}
         role={type === 'tool' ? 'tooltip' : undefined}
+        tabIndex={type === 'info' ? -1 : undefined}
         width={narrow && !isHorizontalCenter ? narrowWidth : 'max-content'}
         zIndex="auto"
       >
