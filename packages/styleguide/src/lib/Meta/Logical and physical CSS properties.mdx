@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, Callout, ImageWrapper, TokenTable } from '~styleguide/blocks';
+import { AboutHeader, Callout, Code, ImageWrapper, TokenTable } from '~styleguide/blocks';
 
 export const parameters = {
   id: 'Meta/Logical and physical CSS properties',
@@ -46,17 +46,17 @@ Here are some examples of how physical and logical properties are affected by th
 <TokenTable
   idKey="prop"
   columns={[
-    { key: 'prop', name: 'Prop', size: 'sm' },
-    { key: 'physical', name: 'Physical', size: 'xl' },
-    { key: 'logical', name: 'Logical', size: 'xl' },
+    { key: 'prop', name: 'Prop', size: 'sm', render: ({ prop }) => <Code>{prop}</Code> },
+    { key: 'physical', name: 'Physical', size: 'xl', render: ({ physical }) => physical.map((p) => <><Code key={p}>{p}</Code>{' '}</>)},
+    { key: 'logical', name: 'Logical', size: 'xl', render: ({ logical }) => logical.map((l) => <><Code key={l}>{l}</Code>{' '}</>) },
   ]}
   rows={[
-    { prop: 'mx', physical: 'margin-left, margin-right', logical: 'margin-inline-start, margin-inline-end' },
-    { prop: 'my', physical: 'margin-top, margin-bottom', logical: 'margin-block-start, margin-block-end' },
-    { prop: 'mt', physical: 'margin-top', logical: 'margin-block-start' },
-    { prop: 'px', physical: 'padding-left, padding-right', logical: 'padding-inline-start, padding-inline-end' },
-    { prop: 'py', physical: 'padding-top, padding-bottom', logical: 'padding-block-start, padding-block-end' },
-    { prop: 'pb', physical: 'padding-bottom', logical: 'padding-block-end' },
+    { prop: 'mx', physical: ['margin-left', 'margin-right'], logical: ['margin-inline-start', 'margin-inline-end'] },
+    { prop: 'my', physical: ['margin-top', 'margin-bottom'], logical: ['margin-block-start', 'margin-block-end'] },
+    { prop: 'mt', physical: ['margin-top'], logical: ['margin-block-start'] },
+    { prop: 'px', physical: ['padding-left', 'padding-right'], logical: ['padding-inline-start', 'padding-inline-end'] },
+    { prop: 'py', physical: ['padding-top', 'padding-bottom'], logical: ['padding-block-start', 'padding-block-end'] },
+    { prop: 'pb', physical: ['padding-bottom'], logical: ['padding-block-end'] },
   ]}
 />
 
