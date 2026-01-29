@@ -61,7 +61,7 @@ jobs:
         run: yarn build
 
       - name: NX Release
-        run: npx nx release -y --dry-run
+        run: npx nx release -y
         env:
           GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
