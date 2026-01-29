@@ -49,6 +49,7 @@ const preview: Preview = {
             'ESLint rules',
             'Contributing',
             'FAQs',
+            'Logical and physical CSS properties',
             'Stories',
           ],
           'Foundations',
