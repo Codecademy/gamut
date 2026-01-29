@@ -2,7 +2,9 @@ name: Test Suite
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened] 
+  push:
+    branches:
+      - main
 
 env:
   NODE_VERSION: '22.13.1'
@@ -18,32 +20,57 @@ permissions:
 
 jobs:
   test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 0
       - uses: ./.github/actions/yarn
       - name: Fetch main branch
         run: git fetch origin main:main
+        if: github.event_name == 'pull_request'
       - name: Ensure workflow is associated with a pull request
         uses: ./.github/actions/validate-pr-context
+        if: github.event_name == 'pull_request'
       - name: Skip build from automated commit
         uses: ./.github/actions/skip-automated-commits
+        if: github.event_name == 'pull_request'
         with:
           ignore-commit-message: ${{ env.IGNORE_COMMIT_MESSAGE }}
       - name: Build All Packages
         run: yarn build
-      - name: Run test suite on affected projects
-        run: npx nx affected --target=test --parallel=4 --ci --coverage --runInBand
-        env:
-          JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
-          JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
+      - name: Run test suite
+        run: |
+          if [ "${{ github.ref_name }}" == "main" ]; then
+            npx nx run-many --target=test --all --parallel=4 --ci --coverage --runInBand --skip-nx-cache
+          else
+            npx nx affected --target=test --parallel=4 --ci --coverage --runInBand
+          fi
       - name: Upload test results
-        uses: actions/upload-artifact@v4
-        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        if: ${{ !cancelled() }}
         with:
           name: test-results
-          path: /tmp/test-results
+          path: ./coverage
           retention-days: 30
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.2.2
+        if: ${{ !cancelled() }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: Codecademy/gamut
+          flags: ${{ github.event_name == 'pull_request' && 'pull-request' || 'main' }}
+          fail_ci_if_error: false
+          directory: ./coverage
+          report_type: coverage
+      - name: Upload test results to Codecov
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.2.2
+        if: ${{ !cancelled() }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: Codecademy/gamut
+          flags: ${{ github.event_name == 'pull_request' && 'pull-request' || 'main' }}
+          fail_ci_if_error: false
+          directory: ./coverage
+          report_type: test_results

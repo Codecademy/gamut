@@ -70,4 +70,44 @@ describe('FormGroup', () => {
       'there is no up dog here...'
     );
   });
+
+  describe('infotip accessibility', () => {
+    const info = 'helpful information';
+    const ariaLabel = 'Custom label';
+
+    it('automatically labels InfoTip button by the field label when label is a string', () => {
+      const { view } = renderView({ label, htmlFor, infotip: { info } });
+
+      view.getByRole('button', { name: new RegExp(label) });
+    });
+
+    it('uses explicit ariaLabel when provided', () => {
+      const { view } = renderView({
+        label,
+        htmlFor,
+        infotip: { info, ariaLabel },
+      });
+
+      view.getByRole('button', { name: ariaLabel });
+    });
+
+    it('uses explicit ariaLabelledby when provided', () => {
+      const externalLabelId = 'external-label-id';
+      const externalLabelText = 'External Label';
+
+      const { view } = renderView({
+        label,
+        htmlFor,
+        infotip: { info, ariaLabelledby: externalLabelId },
+        children: (
+          <>
+            <span id={externalLabelId}>{externalLabelText}</span>
+            <Input id={htmlFor} />
+          </>
+        ),
+      });
+
+      view.getByRole('button', { name: externalLabelText });
+    });
+  });
 });

@@ -12,13 +12,6 @@ import {
   InputSelectors,
 } from '.';
 
-export const radioWrapper = css({
-  margin: '0.25rem 0',
-  width: '100%',
-  fontWeight: 'normal',
-  display: 'flex',
-});
-
 const consistentLabelStyles = {
   content: '""',
   display: 'block',
