@@ -12,30 +12,28 @@ type Story = StoryObj<typeof Box>;
 export const DirectionalBorderExample: Story = {
   render: () => (
     <FlexBox gap={16} row>
-    <Box
-      bg="background-selected"
-      borderX={2}
-      borderY={1}
-      p={16}
-      textAlign="center"
-    >
-      This box has{' '}
-      <Markdown text="`borderX={2}`, `borderY={1}`." />{' '}
-      Inspect the example to see what CSS properties are rendered based on the
-      logical properties mode.
-    </Box>
-    <Box
-      bg="background-selected"
-      borderLeft={2}
-      borderRight={1}
-      p={16}
-      textAlign="center"
-    >
-      This box has{' '}
-      <Markdown text="`borderLeft={2}`, `borderRight={1}`." />{' '}
-      Inspect the example to see what CSS properties are rendered based on the
-      logical properties mode.
-    </Box>
+      <Box
+        bg="background-selected"
+        borderX={2}
+        borderY={1}
+        p={16}
+        textAlign="center"
+      >
+        This box has <Markdown text="`borderX={2}`, `borderY={1}`." /> Inspect
+        the example to see what CSS properties are rendered based on the logical
+        properties mode.
+      </Box>
+      <Box
+        bg="background-selected"
+        borderLeft={2}
+        borderRight={1}
+        p={16}
+        textAlign="center"
+      >
+        This box has <Markdown text="`borderLeft={2}`, `borderRight={1}`." />{' '}
+        Inspect the example to see what CSS properties are rendered based on the
+        logical properties mode.
+      </Box>
     </FlexBox>
   ),
 };
@@ -43,33 +41,32 @@ export const DirectionalBorderExample: Story = {
 export const BorderWidthExample: Story = {
   render: () => (
     <FlexBox gap={16} row>
-    <Box
-      bg="background-selected"
-      border={1}
-      borderWidthX="4px"
-      borderWidthY="10px"
-      p={16}
-      textAlign="center"
-    >
-      This box has{' '}
-      <Markdown text="`borderWidthX='4px'` and `borderWidthY='10px'`." />{' '}
-      Inspect the example to see what CSS properties are rendered based on the
-      logical properties mode.
-    </Box>
-    <Box
-      bg="background-selected"
-      border={1}
-      borderWidthRight="10px"
-      borderWidthTop="4px"
-
-      p={16}
-      textAlign="center"
-    >
-      This box has{' '}
-      <Markdown text="`borderWidthTop='4px'` and `borderWidthRight='10px'`." />{' '}
-      Inspect the example to see what CSS properties are rendered based on the
-      logical properties mode.
-    </Box>
+      <Box
+        bg="background-selected"
+        border={1}
+        borderWidthX="4px"
+        borderWidthY="10px"
+        p={16}
+        textAlign="center"
+      >
+        This box has{' '}
+        <Markdown text="`borderWidthX='4px'` and `borderWidthY='10px'`." />{' '}
+        Inspect the example to see what CSS properties are rendered based on the
+        logical properties mode.
+      </Box>
+      <Box
+        bg="background-selected"
+        border={1}
+        borderWidthRight="10px"
+        borderWidthTop="4px"
+        p={16}
+        textAlign="center"
+      >
+        This box has{' '}
+        <Markdown text="`borderWidthTop='4px'` and `borderWidthRight='10px'`." />{' '}
+        Inspect the example to see what CSS properties are rendered based on the
+        logical properties mode.
+      </Box>
     </FlexBox>
   ),
 };

@@ -42,10 +42,26 @@ export const border = {
     resolveProperty: getPropertyMode,
     scale: 'borders',
   },
-  borderTop: { property: { physical: 'borderTop', logical: 'borderBlockStart' }, resolveProperty: getPropertyMode, scale: 'borders' },
-  borderRight: { property: { physical: 'borderRight', logical: 'borderInlineEnd' }, resolveProperty: getPropertyMode, scale: 'borders' },
-  borderBottom: { property: { physical: 'borderBottom', logical: 'borderBlockEnd' }, resolveProperty: getPropertyMode, scale: 'borders' },
-  borderLeft: { property: { physical: 'borderLeft', logical: 'borderInlineStart' }, resolveProperty: getPropertyMode, scale: 'borders' },
+  borderTop: {
+    property: { physical: 'borderTop', logical: 'borderBlockStart' },
+    resolveProperty: getPropertyMode,
+    scale: 'borders',
+  },
+  borderRight: {
+    property: { physical: 'borderRight', logical: 'borderInlineEnd' },
+    resolveProperty: getPropertyMode,
+    scale: 'borders',
+  },
+  borderBottom: {
+    property: { physical: 'borderBottom', logical: 'borderBlockEnd' },
+    resolveProperty: getPropertyMode,
+    scale: 'borders',
+  },
+  borderLeft: {
+    property: { physical: 'borderLeft', logical: 'borderInlineStart' },
+    resolveProperty: getPropertyMode,
+    scale: 'borders',
+  },
   // Width
   borderWidth: { property: 'borderWidth' },
   borderWidthX: {
@@ -64,10 +80,25 @@ export const border = {
     },
     resolveProperty: getPropertyMode,
   },
-  borderWidthLeft: { property: { physical: 'borderLeftWidth', logical: 'borderInlineStartWidth' }, resolveProperty: getPropertyMode },
-  borderWidthRight: { property: { physical: 'borderRightWidth', logical: 'borderInlineEndWidth' }, resolveProperty: getPropertyMode },
-  borderWidthTop: { property: { physical: 'borderTopWidth', logical: 'borderBlockStartWidth' }, resolveProperty: getPropertyMode },
-  borderWidthBottom: { property: { physical: 'borderBottomWidth', logical: 'borderBlockEndWidth' }, resolveProperty: getPropertyMode },
+  borderWidthLeft: {
+    property: {
+      physical: 'borderLeftWidth',
+      logical: 'borderInlineStartWidth',
+    },
+    resolveProperty: getPropertyMode,
+  },
+  borderWidthRight: {
+    property: { physical: 'borderRightWidth', logical: 'borderInlineEndWidth' },
+    resolveProperty: getPropertyMode,
+  },
+  borderWidthTop: {
+    property: { physical: 'borderTopWidth', logical: 'borderBlockStartWidth' },
+    resolveProperty: getPropertyMode,
+  },
+  borderWidthBottom: {
+    property: { physical: 'borderBottomWidth', logical: 'borderBlockEndWidth' },
+    resolveProperty: getPropertyMode,
+  },
   // Radius
   borderRadius: { property: 'borderRadius', scale: 'borderRadii' },
   borderRadiusLeft: {
@@ -107,22 +138,34 @@ export const border = {
     scale: 'borderRadii',
   },
   borderRadiusTopLeft: {
-    property: { physical: 'borderTopLeftRadius', logical: 'borderStartStartRadius' },
+    property: {
+      physical: 'borderTopLeftRadius',
+      logical: 'borderStartStartRadius',
+    },
     resolveProperty: getPropertyMode,
     scale: 'borderRadii',
   },
   borderRadiusTopRight: {
-    property: { physical: 'borderTopRightRadius', logical: 'borderStartEndRadius' },
+    property: {
+      physical: 'borderTopRightRadius',
+      logical: 'borderStartEndRadius',
+    },
     resolveProperty: getPropertyMode,
     scale: 'borderRadii',
   },
   borderRadiusBottomRight: {
-    property: { physical: 'borderBottomRightRadius', logical: 'borderEndEndRadius' },
+    property: {
+      physical: 'borderBottomRightRadius',
+      logical: 'borderEndEndRadius',
+    },
     resolveProperty: getPropertyMode,
     scale: 'borderRadii',
   },
   borderRadiusBottomLeft: {
-    property: { physical: 'borderBottomLeftRadius', logical: 'borderEndStartRadius' },
+    property: {
+      physical: 'borderBottomLeftRadius',
+      logical: 'borderEndStartRadius',
+    },
     resolveProperty: getPropertyMode,
     scale: 'borderRadii',
   },
@@ -144,10 +187,25 @@ export const border = {
     },
     resolveProperty: getPropertyMode,
   },
-  borderStyleLeft: { property: { physical: 'borderLeftStyle', logical: 'borderInlineStartStyle' }, resolveProperty: getPropertyMode },
-  borderStyleRight: { property: { physical: 'borderRightStyle', logical: 'borderInlineEndStyle' }, resolveProperty: getPropertyMode },
-  borderStyleTop: { property: { physical: 'borderTopStyle', logical: 'borderBlockStartStyle' }, resolveProperty: getPropertyMode },
-  borderStyleBottom: { property: { physical: 'borderBottomStyle', logical: 'borderBlockEndStyle' }, resolveProperty: getPropertyMode },
+  borderStyleLeft: {
+    property: {
+      physical: 'borderLeftStyle',
+      logical: 'borderInlineStartStyle',
+    },
+    resolveProperty: getPropertyMode,
+  },
+  borderStyleRight: {
+    property: { physical: 'borderRightStyle', logical: 'borderInlineEndStyle' },
+    resolveProperty: getPropertyMode,
+  },
+  borderStyleTop: {
+    property: { physical: 'borderTopStyle', logical: 'borderBlockStartStyle' },
+    resolveProperty: getPropertyMode,
+  },
+  borderStyleBottom: {
+    property: { physical: 'borderBottomStyle', logical: 'borderBlockEndStyle' },
+    resolveProperty: getPropertyMode,
+  },
 } as const;
 
 const selfAlignments = {
