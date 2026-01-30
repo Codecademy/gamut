@@ -38,7 +38,7 @@ export const BorderColorExample: Story = {
       textAlign="center"
     >
       This box has{' '}
-      <Markdown text="`borderColorBottom='feedback-warning'` and `borderColorLeft='feedback-success'` and `borderColorRight='feedback-error'` and `borderColorTop='interface'`." />{' '}
+      <Markdown text="`borderColorBottom='feedback-warning'`, `borderColorLeft='feedback-success'`, `borderColorRight='feedback-error'`, and `borderColorTop='interface'`." />{' '}
       Inspect the example to see what CSS properties are rendered based on the
       logical properties mode.
     </Box>
