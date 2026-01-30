@@ -1,8 +1,9 @@
-import { Meta } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 
-import { AboutHeader, TokenTable } from '~styleguide/blocks';
+import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
 
 import { defaultColumns, getPropRows } from '../../shared/elements';
+import * as BorderStories from './Border.stories';
 
 export const parameters = {
   title: 'Border',
@@ -10,7 +11,7 @@ export const parameters = {
   status: 'updating',
 };
 
-<Meta title="Foundations/System/Props/Border" />
+<Meta of={BorderStories} title="Foundations/System/Props/Border" />
 
 <AboutHeader {...parameters} />
 
@@ -29,5 +30,20 @@ const BorderExample = styled.div(system.border);
   borderRadius="md"
 />;
 ```
+
+These border props support both physical and logical CSS properties and will render the appropriate properties based on `useLogicalProperties`'s value passed into the `<GamutProvider>` at the root of your application.
+
+<Callout
+  text={
+    <>
+      You can use the <strong>LogicalProps</strong> button in the toolbar to
+      switch between modes.
+    </>
+  }
+/>
+
+<Canvas of={BorderStories.DirectionalBorderExample} />
+
+<Canvas of={BorderStories.BorderWidthExample} />
 
 <TokenTable rows={getPropRows('border')} columns={defaultColumns} />
