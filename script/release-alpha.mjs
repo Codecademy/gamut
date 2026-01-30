@@ -2,10 +2,10 @@
 
 /**
  * Alpha Release Script
- * 
+ *
  * This script uses the NX Release programmatic API to publish alpha versions
  * of packages. It is designed to run in CI for pull requests.
- * 
+ *
  * Usage: node script/release-alpha.mjs --preid=alpha.abc123
  */
 
@@ -34,7 +34,7 @@ if (!preid) {
   process.exit(1);
 }
 
-(async () => {
+const releaseAlpha = async () => {
   console.log(`📦 Starting alpha release with preid: ${preid}`);
   if (dryRun) {
     console.log('🔍 DRY RUN MODE - No changes will be made');
@@ -57,7 +57,7 @@ if (!preid) {
     if (workspaceVersion) {
       console.log(`  Workspace version: ${workspaceVersion}`);
     }
-    
+
     // Log versioned projects
     const versionedProjects = Object.entries(projectsVersionData);
     if (versionedProjects.length > 0) {
@@ -97,4 +97,6 @@ if (!preid) {
     console.error(error);
     process.exit(1);
   }
-})();
+};
+
+await releaseAlpha();
