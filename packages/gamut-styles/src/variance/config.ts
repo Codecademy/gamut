@@ -23,10 +23,26 @@ export const color = {
     resolveProperty: getPropertyMode,
     scale: 'colors',
   },
-  borderColorLeft: { property: 'borderLeftColor', resolveProperty: getPropertyMode, scale: 'colors' },
-  borderColorRight: { property: 'borderRightColor', resolveProperty: getPropertyMode, scale: 'colors' },
-  borderColorTop: { property: 'borderTopColor', resolveProperty: getPropertyMode, scale: 'colors' },
-  borderColorBottom: { property: 'borderBottomColor', resolveProperty: getPropertyMode, scale: 'colors' },
+  borderColorLeft: {
+    property: 'borderLeftColor',
+    resolveProperty: getPropertyMode,
+    scale: 'colors',
+  },
+  borderColorRight: {
+    property: 'borderRightColor',
+    resolveProperty: getPropertyMode,
+    scale: 'colors',
+  },
+  borderColorTop: {
+    property: 'borderTopColor',
+    resolveProperty: getPropertyMode,
+    scale: 'colors',
+  },
+  borderColorBottom: {
+    property: 'borderBottomColor',
+    resolveProperty: getPropertyMode,
+    scale: 'colors',
+  },
 } as const;
 
 export const border = {
