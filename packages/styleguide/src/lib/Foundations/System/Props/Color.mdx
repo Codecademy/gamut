@@ -1,8 +1,9 @@
-import { Meta } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 
-import { AboutHeader, TokenTable } from '~styleguide/blocks';
+import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
 
 import { defaultColumns, getPropRows } from '../../shared/elements';
+import * as ColorStories from './Color.stories';
 
 export const parameters = {
   title: 'Color',
@@ -10,7 +11,7 @@ export const parameters = {
   status: 'current',
 };
 
-<Meta title="Foundations/System/Props/Color" />
+<Meta of={ColorStories} title="Foundations/System/Props/Color" />
 
 <AboutHeader {...parameters} />
 
@@ -24,5 +25,18 @@ const ColorExample = styled.div(system.color);
 
 <ColorExample bg="navy" textColor="gray-100" borderColor="blue" />;
 ```
+
+These color props support both physical and logical CSS properties and will render the appropriate properties based on `useLogicalProperties`'s value passed into the `<GamutProvider>` at the root of your application.
+
+<Callout
+  text={
+    <>
+      You can use the <strong>LogicalProps</strong> button in the toolbar to
+      switch between modes.
+    </>
+  }
+/>
+
+<Canvas of={ColorStories.BorderColorExample} />
 
 <TokenTable rows={getPropRows('color')} columns={defaultColumns} />

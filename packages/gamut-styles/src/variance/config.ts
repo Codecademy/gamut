@@ -7,18 +7,26 @@ export const color = {
   borderColor: { property: 'borderColor', scale: 'colors' },
   borderColorX: {
     property: 'borderColor',
-    properties: ['borderLeftColor', 'borderRightColor'],
+    properties: {
+      physical: ['borderLeftColor', 'borderRightColor'],
+      logical: ['borderInlineStartColor', 'borderInlineEndColor'],
+    },
+    resolveProperty: getPropertyMode,
     scale: 'colors',
   },
   borderColorY: {
     property: 'borderColor',
-    properties: ['borderTopColor', 'borderBottomColor'],
+    properties: {
+      physical: ['borderTopColor', 'borderBottomColor'],
+      logical: ['borderBlockStartColor', 'borderBlockEndColor'],
+    },
+    resolveProperty: getPropertyMode,
     scale: 'colors',
   },
-  borderColorLeft: { property: 'borderLeftColor', scale: 'colors' },
-  borderColorRight: { property: 'borderRightColor', scale: 'colors' },
-  borderColorTop: { property: 'borderTopColor', scale: 'colors' },
-  borderColorBottom: { property: 'borderBottomColor', scale: 'colors' },
+  borderColorLeft: { property: 'borderLeftColor', resolveProperty: getPropertyMode, scale: 'colors' },
+  borderColorRight: { property: 'borderRightColor', resolveProperty: getPropertyMode, scale: 'colors' },
+  borderColorTop: { property: 'borderTopColor', resolveProperty: getPropertyMode, scale: 'colors' },
+  borderColorBottom: { property: 'borderBottomColor', resolveProperty: getPropertyMode, scale: 'colors' },
 } as const;
 
 export const border = {
