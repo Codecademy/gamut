@@ -147,7 +147,9 @@ export const sortBars = <T extends BarProps>({
 };
 
 /**
- * Generates an accessible summary of the bar values
+ * Generates an accessible summary of the bar values for aria-label / screen reader.
+ * When translations.accessibility keys are functions, they are called with scoped
+ * context (values, label, unit, locale) and their return value is used as the full summary.
  */
 export const getValuesSummary = ({
   isInteractive,
@@ -162,15 +164,45 @@ export const getValuesSummary = ({
     translations: BarChartTranslations;
   }): string => {
   const unitText = unit ? ` ${unit}` : '';
+  const { locale } = translations;
 
   if (seriesTwoValue !== undefined) {
+    const { gainedNowAt, inLabel } = translations.accessibility;
+    if (typeof gainedNowAt === 'function') {
+      return gainedNowAt({
+        yLabel,
+        seriesOneValue,
+        seriesTwoValue,
+        unit,
+        locale,
+      });
+    }
     const gained = seriesOneValue;
-    return `${gained}${unitText} ${translations.accessibility.gainedNowAt} ${seriesTwoValue}${unitText} ${translations.accessibility.inLabel} ${yLabel}`;
+    return `${gained}${unitText} ${gainedNowAt} ${seriesTwoValue}${unitText} ${inLabel} ${yLabel}`;
   }
 
-  return isInteractive
-    ? `${seriesOneValue}${unitText} ${translations.accessibility.inLabel} ${yLabel}`
-    : `${seriesOneValue}${unitText} ${translations.accessibility.inOnly}`;
+  if (isInteractive) {
+    const { inLabel } = translations.accessibility;
+    if (typeof inLabel === 'function') {
+      return inLabel({
+        yLabel,
+        value: seriesOneValue,
+        unit,
+        locale,
+      });
+    }
+    return `${seriesOneValue}${unitText} ${inLabel} ${yLabel}`;
+  }
+
+  const { inOnly } = translations.accessibility;
+  if (typeof inOnly === 'function') {
+    return inOnly({
+      value: seriesOneValue,
+      unit,
+      locale,
+    });
+  }
+  return `${seriesOneValue}${unitText} ${inOnly}`;
 };
 
 /**

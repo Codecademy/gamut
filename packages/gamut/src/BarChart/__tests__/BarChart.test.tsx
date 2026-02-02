@@ -523,6 +523,67 @@ describe('BarChart', () => {
       const listItem = view.getAllByRole('listitem')[0];
       expect(listItem).toHaveTextContent(/ganado - ahora en/);
     });
+
+    it('uses function-based inLabel for single bar accessibility summary', () => {
+      const { view } = renderView({
+        barValues: [
+          {
+            yLabel: 'JavaScript',
+            seriesOneValue: 50,
+            onClick: () => undefined,
+          },
+        ],
+        unit: 'XP',
+        translations: {
+          accessibility: {
+            inLabel: (ctx) =>
+              `${ctx.value} ${ctx.unit} en ${ctx.yLabel}`.trim(),
+          },
+        },
+      });
+
+      const button = view.getByRole('button', { name: /50 XP en JavaScript/ });
+      expect(button).toBeInTheDocument();
+    });
+
+    it('uses function-based gainedNowAt for stacked bar accessibility summary', () => {
+      const { view } = renderView({
+        barValues: [
+          {
+            yLabel: 'Python',
+            seriesOneValue: 100,
+            seriesTwoValue: 200,
+          },
+        ],
+        unit: 'XP',
+        translations: {
+          accessibility: {
+            gainedNowAt: (ctx) =>
+              `${ctx.seriesOneValue} ${ctx.unit} gained - now at ${ctx.seriesTwoValue} ${ctx.unit} in ${ctx.yLabel}`,
+          },
+        },
+      });
+
+      const listItem = view.getAllByRole('listitem')[0];
+      expect(listItem).toHaveTextContent(
+        /100 XP gained - now at 200 XP in Python/
+      );
+    });
+
+    it('uses function-based inOnly for non-interactive single bar accessibility summary', () => {
+      const { view } = renderView({
+        barValues: [{ yLabel: 'Rust', seriesOneValue: 75 }],
+        unit: 'pts',
+        translations: {
+          accessibility: {
+            inOnly: (ctx) => `${ctx.value} ${ctx.unit}`.trim(),
+          },
+        },
+      });
+
+      const listItem = view.getAllByRole('listitem')[0];
+      expect(listItem).toHaveTextContent(/75 pts/);
+    });
   });
 
   describe('Icons', () => {
@@ -559,11 +620,11 @@ describe('BarChart', () => {
       expect(listItems).toHaveLength(2);
     });
 
-    it('applies custom foregroundBarColor and backgroundBarColor', () => {
+    it('applies custom seriesOneBarColor and seriesTwoBarColor', () => {
       const { view } = renderView({
         styleConfig: {
-          foregroundBarColor: 'primary',
-          backgroundBarColor: 'text',
+          seriesOneBarColor: 'primary',
+          seriesTwoBarColor: 'text',
         },
       });
 

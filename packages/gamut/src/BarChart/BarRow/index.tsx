@@ -53,8 +53,8 @@ export const BarRow = forwardRef<
 
     const {
       textColor,
-      backgroundBarColor,
-      foregroundBarColor,
+      seriesOneBarColor,
+      seriesTwoBarColor,
       seriesOneLabel,
       seriesTwoLabel,
     } = styleConfig;
@@ -69,14 +69,14 @@ export const BarRow = forwardRef<
     const isStacked = seriesTwoValue !== undefined;
     const displayValue = isStacked ? seriesTwoValue : seriesOneValue;
 
-    const { backgroundBorderColor, foregroundBorderColor } = useMemo(
+    const { seriesOneBorderColor, seriesTwoBorderColor } = useMemo(
       () => ({
-        backgroundBorderColor: getBorderColor(backgroundBarColor),
-        foregroundBorderColor: isStacked
-          ? getBorderColor(foregroundBarColor)
+        seriesTwoBorderColor: getBorderColor(seriesTwoBarColor),
+        seriesOneBorderColor: isStacked
+          ? getBorderColor(seriesOneBarColor)
           : undefined,
       }),
-      [getBorderColor, backgroundBarColor, isStacked, foregroundBarColor]
+      [getBorderColor, seriesOneBarColor, isStacked, seriesTwoBarColor]
     );
 
     const { bgWidthStr, fgWidthStr } = useMemo(() => {
@@ -277,9 +277,9 @@ export const BarRow = forwardRef<
           <BarWrapper>
             <Bar
               animate={animate ? { width: bgWidthStr } : undefined}
-              bg={isStacked ? backgroundBarColor : foregroundBarColor}
+              bg={isStacked ? seriesTwoBarColor : seriesOneBarColor}
               borderColor={
-                isStacked ? backgroundBorderColor : foregroundBorderColor
+                isStacked ? seriesTwoBorderColor : seriesOneBorderColor
               }
               data-testid="background-bar"
               initial={animate ? { width: '0%' } : undefined}
@@ -289,8 +289,8 @@ export const BarRow = forwardRef<
             {isStacked && (
               <Bar
                 animate={animate ? { width: fgWidthStr } : undefined}
-                bg={foregroundBarColor}
-                borderColor={foregroundBorderColor}
+                bg={seriesOneBarColor}
+                borderColor={seriesOneBorderColor}
                 data-testid="foreground-bar"
                 initial={animate ? { width: '0%' } : undefined}
                 transition={{ duration: 0.5, delay: animationDelay + 0.25 }}
@@ -304,16 +304,16 @@ export const BarRow = forwardRef<
       [
         animate,
         animationDelay,
-        backgroundBarColor,
-        backgroundBorderColor,
         bgWidthStr,
         fgWidthStr,
-        foregroundBarColor,
-        foregroundBorderColor,
         isStacked,
         labelsContainer,
         leftLabel,
         rightLabel,
+        seriesOneBarColor,
+        seriesOneBorderColor,
+        seriesTwoBarColor,
+        seriesTwoBorderColor,
       ]
     );
 

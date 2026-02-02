@@ -12,13 +12,25 @@ import { GridLines } from './layout/GridLines';
 import { ScaleChartHeader } from './layout/ScaleChartHeader';
 import { BarsList } from './shared/elements';
 import {
+  BarChartAccessibilityInLabelContext,
+  BarChartAccessibilityInOnlyContext,
+  BarChartAccessibilityStackedContext,
   BarChartTranslations,
   defaultBarChartTranslations,
+  PartialBarChartTranslations,
 } from './shared/translations';
 import { BarChartProps, BarProps, InferBarType } from './shared/types';
 import { useBarChart, useBarChartSort } from './utils/hooks';
 
-export type { BarProps, InferBarType, BarChartTranslations };
+export type {
+  BarChartAccessibilityInLabelContext,
+  BarChartAccessibilityInOnlyContext,
+  BarChartAccessibilityStackedContext,
+  BarProps,
+  InferBarType,
+  BarChartTranslations,
+  PartialBarChartTranslations,
+};
 
 const StyledFormGroupLabel = styled(FormGroupLabel)(
   css({

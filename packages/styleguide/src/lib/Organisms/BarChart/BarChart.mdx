@@ -228,8 +228,8 @@ BarChart supports custom color styling through the `styleConfig` prop, allowing 
 The `styleConfig` prop accepts an object with the following optional properties:
 
 - **`textColor`**: Color for text labels (y-axis labels). Defaults to `'text'`
-- **`foregroundBarColor`**: Color for the foreground/progress bar (used in stacked charts for `seriesOneValue`). Defaults to `'primary'`
-- **`backgroundBarColor`**: Color for the background/total bar (used for `seriesTwoValue` in stacked charts, or `seriesOneValue` in simple charts). Defaults to `'background-primary'`
+- **`seriesOneBarColor`**: Color for the series one bar (seriesOneValue: overlay in stacked charts, only bar in simple charts). Defaults to `'text'`
+- **`seriesTwoBarColor`**: Color for the series two bar (seriesTwoValue: full bar in stacked charts; unused in simple charts). Defaults to `'primary'`
 - **`seriesOneLabel`**: Color for the series one value label (first right label when stacked, or displayValue when not stacked). Defaults to `'text-secondary'`
 - **`seriesTwoLabel`**: Color for the series two value label (displayValue when stacked). Defaults to `'primary'`
 
@@ -242,8 +242,8 @@ If `styleConfig` is not provided, BarChart uses these default colors:
 ```typescript
 {
   textColor: 'text',
-  foregroundBarColor: 'primary',
-  backgroundBarColor: 'background-primary',
+  seriesOneBarColor: 'text',
+  seriesTwoBarColor: 'primary',
   seriesOneLabel: 'text-secondary',
   seriesTwoLabel: 'primary',
 }
@@ -344,6 +344,13 @@ BarChart supports internationalization through the `translations` prop, which al
 
 **Translation Structure:**
 
+- **sortLabel**, **sortOptions**, and **locale** are always strings.
+- **Accessibility keys** (`gainedNowAt`, `inLabel`, `inOnly`) may be either:
+  - **String** – Used as a fragment in the built-in template (e.g. "in", "gained - now at").
+  - **Function** – Receives scoped context (values, label, unit, locale) and returns the **entire** accessibility summary string. Use for nuanced i18n (pluralization, word order, locale-specific phrasing).
+
+The `translations` prop accepts `PartialBarChartTranslations`: you can override individual keys, and nested `accessibility` and `sortOptions` are merged with defaults at runtime.
+
 ```typescript
 type BarChartTranslations = {
   sortLabel: string;
@@ -355,12 +362,19 @@ type BarChartTranslations = {
     valueDesc: string;
   };
   accessibility: {
-    gainedNowAt: string; // Template: "{value} {unit} gained - now at {value} {unit} in {label}"
-    inLabel: string; // Template: "{value} {unit} in {label}"
-    inOnly: string; // Template: "{value} {unit} in "
+    gainedNowAt:
+      | string
+      | ((ctx: BarChartAccessibilityStackedContext) => string);
+    inLabel: string | ((ctx: BarChartAccessibilityInLabelContext) => string);
+    inOnly: string | ((ctx: BarChartAccessibilityInOnlyContext) => string);
   };
   locale: string; // For Intl.NumberFormat, e.g., 'en', 'es', 'fr', 'de-DE'
 };
+
+// Context types for function-based accessibility (exported from @codecademy/gamut):
+// BarChartAccessibilityStackedContext: { yLabel, seriesOneValue, seriesTwoValue, unit, locale }
+// BarChartAccessibilityInLabelContext:  { yLabel, value, unit, locale }
+// BarChartAccessibilityInOnlyContext:   { value, unit, locale }
 ```
 
 **Basic Usage:**
@@ -430,9 +444,11 @@ The `locale` property controls how numbers are formatted throughout the chart us
 />
 ```
 
-**Accessibility Translations:**
+**Accessibility Translations**
 
-The accessibility strings are used in automatically generated `aria-label` attributes for interactive bars and screen reader text for non-interactive bars. These should be translated to match the language of your application:
+**_Strings_**
+
+The accessibility strings are used in automatically generated `aria-label` attributes for interactive bars and screen reader text for non-interactive bars. You can provide string fragments that are interpolated into the built-in template:
 
 ```tsx
 <BarChart
@@ -447,9 +463,45 @@ The accessibility strings are used in automatically generated `aria-label` attri
 />
 ```
 
+<Canvas of={BarChartStories.WithStringTranslations} />
+
+**_Functions_**
+
+For full control over the accessibility summary (e.g. pluralization, word order, locale-specific phrasing), pass functions that receive scoped context and return the **entire** summary string. You can override only the keys you need; others fall back to defaults.
+
+```tsx
+import type {
+  BarChartAccessibilityStackedContext,
+  BarChartAccessibilityInLabelContext,
+  BarChartAccessibilityInOnlyContext,
+} from '@codecademy/gamut';
+
+<BarChart
+  // ... other props
+  translations={{
+    accessibility: {
+      // Stacked bars: full summary from context
+      gainedNowAt: (ctx: BarChartAccessibilityStackedContext) =>
+        `${ctx.seriesOneValue} ${ctx.unit} gained - now at ${ctx.seriesTwoValue} ${ctx.unit} in ${ctx.yLabel}`,
+      // Single bar with label (interactive)
+      inLabel: (ctx: BarChartAccessibilityInLabelContext) =>
+        `${ctx.value} ${ctx.unit} in ${ctx.yLabel}`.trim(),
+      // Single bar without label (non-interactive)
+      inOnly: (ctx: BarChartAccessibilityInOnlyContext) =>
+        `${ctx.value} ${ctx.unit}`.trim(),
+    },
+  }}
+/>;
+```
+
+{' '}
+
+<Canvas of={BarChartStories.WithFunctionTranslations} />
+
 **Best Practices:**
 
 - Always provide complete translations for the language your application uses
+- Use string accessibility keys when the default template order works; use functions when you need pluralization, different word order, or locale-specific phrasing
 - Use appropriate locale codes (e.g., `'en-US'`, `'es-ES'`, `'fr-FR'`) for number formatting
 - Test accessibility strings with screen readers in the target language
 - Consider creating translation objects that can be reused across multiple BarChart instances

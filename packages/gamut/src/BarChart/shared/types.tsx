@@ -6,7 +6,7 @@ import { ButtonProps } from '../../Button';
 import { Text } from '../../Typography/Text';
 import { HeadingTags } from '../../Typography/types';
 import { CustomSortOption } from '../utils/hooks';
-import { BarChartTranslations } from './translations';
+import { PartialBarChartTranslations } from './translations';
 
 type titleType =
   | string
@@ -31,10 +31,10 @@ type BarChartLabel = BarChartAriaLabel | BarChartAriaLabelledBy;
 export type BarChartStyles = {
   /** Color for text labels. Defaults to 'text' */
   textColor?: ColorAlias;
-  /** Color for the foreground/progress bar. Defaults to 'text' */
-  foregroundBarColor?: ColorAlias;
-  /** Color for the background/total bar. Defaults to 'primary' */
-  backgroundBarColor?: ColorAlias;
+  /** Color for the series one bar (seriesOneValue: overlay in stacked charts, only bar in simple charts). Defaults to 'text' */
+  seriesOneBarColor?: ColorAlias;
+  /** Color for the series two bar (seriesTwoValue: full bar in stacked charts; unused in simple). Defaults to 'primary' */
+  seriesTwoBarColor?: ColorAlias;
   /** Color for the series one label (first right label when stacked, or displayValue when not stacked). Defaults to 'text-secondary' */
   seriesOneLabel?: ColorAlias;
   /** Color for the series two label (displayValue when stacked). Defaults to 'primary' */
@@ -108,8 +108,12 @@ export type BarChartProps<
     | 'none'
     | CustomSortOption<InferBarType<TBarValues>>
   )[];
-  /** Translations for internationalization. Partial translations will be merged with defaults. */
-  translations?: Partial<BarChartTranslations>;
+  /**
+   * Translations for internationalization. Partial translations are merged with defaults.
+   * Accessibility keys (gainedNowAt, inLabel, inOnly) may be strings or functions that
+   * receive scoped context (values, label, unit, locale) and return the full summary.
+   */
+  translations?: PartialBarChartTranslations;
 };
 
 export type BarChartRange = Pick<BarChartProps, 'minRange' | 'maxRange'>;

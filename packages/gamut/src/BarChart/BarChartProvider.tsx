@@ -23,8 +23,8 @@ export interface BarChartContextProps {
 
 export const defaultStyleConfig: Required<BarChartStyles> = {
   textColor: 'text',
-  foregroundBarColor: 'text',
-  backgroundBarColor: 'primary',
+  seriesOneBarColor: 'text',
+  seriesTwoBarColor: 'primary',
   seriesOneLabel: 'text-secondary',
   seriesTwoLabel: 'primary',
 };

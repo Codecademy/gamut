@@ -6,6 +6,7 @@ import {
 } from '@codecademy/gamut-icons';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
+import type { ComponentProps } from 'react';
 
 const meta: Meta<typeof BarChart> = {
   component: BarChart,
@@ -15,6 +16,14 @@ const meta: Meta<typeof BarChart> = {
     minRange: 0,
     maxRange: 2000,
     unit: 'XP',
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'BarChart supports i18n via the `translations` prop. Accessibility keys (`gainedNowAt`, `inLabel`, `inOnly`) may be strings (fragments in the built-in template) or functions that receive scoped context (values, label, unit, locale) and return the full accessibility summary—useful for pluralization, word order, or locale-specific phrasing.',
+      },
+    },
   },
 };
 
@@ -271,8 +280,8 @@ export const CustomStyles: Story = {
   args: {
     barValues: stackedBarData,
     styleConfig: {
-      backgroundBarColor: 'text',
-      foregroundBarColor: 'primary',
+      seriesTwoBarColor: 'text',
+      seriesOneBarColor: 'primary',
       textColor: 'primary',
       seriesOneLabel: 'feedback-error',
       seriesTwoLabel: 'feedback-success',
@@ -292,5 +301,82 @@ export const CustomScale: Story = {
     xScale: 250,
     title: 'Skills chart with custom scale',
     description: 'Custom scale intervals for more granular value display',
+  },
+};
+
+/**
+ * Bar chart with string-based translations (e.g. Spanish).
+ * Partial translations are merged with defaults.
+ */
+export const WithStringTranslations: Story = {
+  args: {
+    barValues: stackedBarData,
+    sortFns: ['alphabetically', 'numerically', 'none'],
+    title: 'Gráfico de habilidades',
+    description: 'Progreso hacia los objetivos totales por lenguaje',
+    unit: 'XP',
+    translations: {
+      locale: 'es',
+      sortLabel: 'Ordenar por:',
+      sortOptions: {
+        none: 'Ninguno',
+        labelAsc: 'Etiqueta (A-Z)',
+        labelDesc: 'Etiqueta (Z-A)',
+        valueAsc: 'Valor (Bajo-Alto)',
+        valueDesc: 'Valor (Alto-Bajo)',
+      },
+      accessibility: {
+        gainedNowAt: 'ganado - ahora en',
+        inLabel: 'en',
+        inOnly: 'en ',
+      },
+    },
+  },
+};
+
+/**
+ * Bar chart with function-based accessibility translations.
+ * Functions receive scoped context (yLabel, values, unit, locale) and return the full
+ * accessibility summary—useful for pluralization, word order, or locale-specific phrasing.
+ */
+export const WithFunctionTranslations: Story = {
+  args: {
+    barValues: [
+      {
+        yLabel: 'Python',
+        seriesOneValue: 100,
+        seriesTwoValue: 200,
+        onClick: action('Clicked Python'),
+      },
+      {
+        yLabel: 'JavaScript',
+        seriesOneValue: 50,
+        onClick: action('Clicked JavaScript'),
+      },
+    ],
+    title: 'Skills chart with custom accessibility',
+    description:
+      'Accessibility summaries built via translation functions with full context',
+    unit: 'XP',
+    translations: {
+      accessibility: {
+        gainedNowAt: (ctx: {
+          yLabel: string;
+          seriesOneValue: number;
+          seriesTwoValue: number;
+          unit: string;
+          locale: string;
+        }) =>
+          `${ctx.seriesOneValue} ${ctx.unit} gained - now at ${ctx.seriesTwoValue} ${ctx.unit} in ${ctx.yLabel}`,
+        inLabel: (ctx: {
+          yLabel: string;
+          value: number;
+          unit: string;
+          locale: string;
+        }) => `${ctx.value} ${ctx.unit} in ${ctx.yLabel}`.trim(),
+        inOnly: (ctx: { value: number; unit: string; locale: string }) =>
+          `${ctx.value} ${ctx.unit}`.trim(),
+      },
+    } as unknown as ComponentProps<typeof BarChart>['translations'],
   },
 };
