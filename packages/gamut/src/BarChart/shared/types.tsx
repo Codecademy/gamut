@@ -31,13 +31,13 @@ type BarChartLabel = BarChartAriaLabel | BarChartAriaLabelledBy;
 export type BarChartStyles = {
   /** Color for text labels. Defaults to 'text' */
   textColor?: ColorAlias;
-  /** Color for the foreground/progress bar. Defaults to 'feedback-warning' */
+  /** Color for the foreground/progress bar. Defaults to 'text' */
   foregroundBarColor?: ColorAlias;
-  /** Color for the background/total bar. Defaults to 'paleBlue' */
+  /** Color for the background/total bar. Defaults to 'primary' */
   backgroundBarColor?: ColorAlias;
-  /** Color for the series one label (first right label when stacked, or displayValue when not stacked). Defaults to 'text' */
+  /** Color for the series one label (first right label when stacked, or displayValue when not stacked). Defaults to 'text-secondary' */
   seriesOneLabel?: ColorAlias;
-  /** Color for the series two label (displayValue when stacked). Defaults to 'text' */
+  /** Color for the series two label (displayValue when stacked). Defaults to 'primary' */
   seriesTwoLabel?: ColorAlias;
 };
 

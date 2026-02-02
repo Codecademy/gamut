@@ -15,7 +15,11 @@ import {
 } from 'react';
 
 import { SelectOptions } from '../../Form/inputs/Select';
-import { BarChartContext, BarChartContextProps } from '../BarChartProvider';
+import {
+  BarChartContext,
+  BarChartContextProps,
+  defaultStyleConfig,
+} from '../BarChartProvider';
 import { BarChartTranslations } from '../shared/translations';
 import { BarChartStyles, BarProps, InferBarType } from '../shared/types';
 import { calculatePositionPercent, getLabel, sortBars } from './index';
@@ -24,14 +28,6 @@ export interface LabelPosition {
   value: number;
   positionPercent: number;
 }
-
-const defaultStyleConfig: Required<BarChartStyles> = {
-  textColor: 'text',
-  foregroundBarColor: 'feedback-warning',
-  backgroundBarColor: 'background-primary',
-  seriesOneLabel: 'text-secondary',
-  seriesTwoLabel: 'primary',
-};
 
 /**
  * Hook that calculates label positions for a given range and count

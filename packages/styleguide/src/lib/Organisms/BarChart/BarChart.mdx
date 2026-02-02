@@ -228,7 +228,7 @@ BarChart supports custom color styling through the `styleConfig` prop, allowing 
 The `styleConfig` prop accepts an object with the following optional properties:
 
 - **`textColor`**: Color for text labels (y-axis labels). Defaults to `'text'`
-- **`foregroundBarColor`**: Color for the foreground/progress bar (used in stacked charts for `seriesOneValue`). Defaults to `'feedback-warning'`
+- **`foregroundBarColor`**: Color for the foreground/progress bar (used in stacked charts for `seriesOneValue`). Defaults to `'primary'`
 - **`backgroundBarColor`**: Color for the background/total bar (used for `seriesTwoValue` in stacked charts, or `seriesOneValue` in simple charts). Defaults to `'background-primary'`
 - **`seriesOneLabel`**: Color for the series one value label (first right label when stacked, or displayValue when not stacked). Defaults to `'text-secondary'`
 - **`seriesTwoLabel`**: Color for the series two value label (displayValue when stacked). Defaults to `'primary'`
@@ -242,7 +242,7 @@ If `styleConfig` is not provided, BarChart uses these default colors:
 ```typescript
 {
   textColor: 'text',
-  foregroundBarColor: 'feedback-warning',
+  foregroundBarColor: 'primary',
   backgroundBarColor: 'background-primary',
   seriesOneLabel: 'text-secondary',
   seriesTwoLabel: 'primary',

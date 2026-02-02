@@ -277,8 +277,10 @@ export const BarRow = forwardRef<
           <BarWrapper>
             <Bar
               animate={animate ? { width: bgWidthStr } : undefined}
-              bg={backgroundBarColor}
-              borderColor={backgroundBorderColor}
+              bg={isStacked ? backgroundBarColor : foregroundBarColor}
+              borderColor={
+                isStacked ? backgroundBorderColor : foregroundBorderColor
+              }
               data-testid="background-bar"
               initial={animate ? { width: '0%' } : undefined}
               transition={{ duration: 0.5, delay: animationDelay }}

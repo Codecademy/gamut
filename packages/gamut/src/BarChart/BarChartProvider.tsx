@@ -21,10 +21,10 @@ export interface BarChartContextProps {
   translations: BarChartTranslations;
 }
 
-const defaultStyleConfig: Required<BarChartStyles> = {
+export const defaultStyleConfig: Required<BarChartStyles> = {
   textColor: 'text',
-  foregroundBarColor: 'feedback-warning',
-  backgroundBarColor: 'background-primary',
+  foregroundBarColor: 'text',
+  backgroundBarColor: 'primary',
   seriesOneLabel: 'text-secondary',
   seriesTwoLabel: 'primary',
 };
