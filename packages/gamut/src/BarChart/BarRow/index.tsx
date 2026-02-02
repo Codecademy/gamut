@@ -300,17 +300,17 @@ export const BarRow = forwardRef<
         </>
       ),
       [
-        labelsContainer,
-        leftLabel,
         animate,
-        bgWidthStr,
+        animationDelay,
         backgroundBarColor,
         backgroundBorderColor,
-        animationDelay,
-        isStacked,
+        bgWidthStr,
         fgWidthStr,
         foregroundBarColor,
         foregroundBorderColor,
+        isStacked,
+        labelsContainer,
+        leftLabel,
         rightLabel,
       ]
     );

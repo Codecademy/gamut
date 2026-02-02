@@ -33,7 +33,7 @@ export const calculateBarWidth = ({
   value: number;
 } & BarChartRange) => {
   const range = maxRange - minRange;
-  const adjustedValue = value - minRange;
+  const adjustedValue = Math.max(0, Math.min(range, value - minRange));
   return Math.floor(calculatePercent({ value: adjustedValue, total: range }));
 };
 
@@ -80,10 +80,11 @@ export const niceNum = ({
   let niceFraction: number;
 
   if (roundDown) {
-    if (fraction < 1.5) niceFraction = 1;
-    else if (fraction < 3) niceFraction = 2;
-    else if (fraction < 7) niceFraction = 5;
-    else niceFraction = 10;
+    if (fraction >= 10) niceFraction = 10;
+    else if (fraction >= 5) niceFraction = 5;
+    else if (fraction >= 2) niceFraction = 2;
+    else if (fraction >= 1) niceFraction = 1;
+    else niceFraction = 1;
   } else if (fraction <= 1) niceFraction = 1;
   else if (fraction <= 2) niceFraction = 2;
   else if (fraction <= 5) niceFraction = 5;
