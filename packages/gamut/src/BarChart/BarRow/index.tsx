@@ -18,7 +18,14 @@ import {
   useMeasureLeftLabelWidth,
   useMeasureRightLabelWidth,
 } from '../utils/hooks';
-import { Bar, BarWrapper, RowAnchor, RowButton, RowWrapper } from './elements';
+import {
+  Bar,
+  BarWrapper,
+  RightLabelsHoverTarget,
+  RowAnchor,
+  RowButton,
+  RowWrapper,
+} from './elements';
 
 export type BarRowProps = BarProps & {
   index?: number;
@@ -71,12 +78,10 @@ export const BarRow = forwardRef<
 
     const { seriesOneBorderColor, seriesTwoBorderColor } = useMemo(
       () => ({
+        seriesOneBorderColor: getBorderColor(seriesOneBarColor),
         seriesTwoBorderColor: getBorderColor(seriesTwoBarColor),
-        seriesOneBorderColor: isStacked
-          ? getBorderColor(seriesOneBarColor)
-          : undefined,
       }),
-      [getBorderColor, seriesOneBarColor, isStacked, seriesTwoBarColor]
+      [getBorderColor, seriesOneBarColor, seriesTwoBarColor]
     );
 
     const { bgWidthStr, fgWidthStr } = useMemo(() => {
@@ -148,7 +153,7 @@ export const BarRow = forwardRef<
             </Text>
           </FlexBox>
 
-          <FlexBox
+          <RightLabelsHoverTarget
             alignItems="center"
             flexShrink={0}
             gap={8}
@@ -176,7 +181,7 @@ export const BarRow = forwardRef<
               {displayValue.toLocaleString(translations.locale)}
               {unit && ` ${unit}`}
             </Text>
-          </FlexBox>
+          </RightLabelsHoverTarget>
         </FlexBox>
       ),
       [
@@ -220,7 +225,7 @@ export const BarRow = forwardRef<
 
     const rightLabel = useMemo(
       () => (
-        <FlexBox
+        <RightLabelsHoverTarget
           alignItems="center"
           display={{ _: 'none', xs: 'flex' }}
           flexShrink={0}
@@ -255,7 +260,7 @@ export const BarRow = forwardRef<
             {displayValue.toLocaleString(translations.locale)}
             {unit && ` ${unit}`}
           </Text>
-        </FlexBox>
+        </RightLabelsHoverTarget>
       ),
       [
         isStacked,

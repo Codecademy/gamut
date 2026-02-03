@@ -1,4 +1,9 @@
-import { BarChart, BarProps, Box } from '@codecademy/gamut';
+import {
+  BarChart,
+  BarProps,
+  Box,
+  PartialBarChartTranslations,
+} from '@codecademy/gamut';
 import {
   BookFlipPageIcon,
   DataScienceIcon,
@@ -6,7 +11,6 @@ import {
 } from '@codecademy/gamut-icons';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
-import type { ComponentProps } from 'react';
 
 const meta: Meta<typeof BarChart> = {
   component: BarChart,
@@ -50,6 +54,30 @@ const stackedBarData: BarProps[] = [
   { yLabel: 'SQL', seriesOneValue: 550, seriesTwoValue: 600 },
   { yLabel: 'React', seriesOneValue: 300, seriesTwoValue: 450 },
 ];
+
+const accessibilityBarData: BarProps[] = [
+  { yLabel: 'Python', seriesOneValue: 200, seriesTwoValue: 1500 },
+  {
+    yLabel: 'JavaScript',
+    seriesOneValue: 1800,
+    seriesTwoValue: 2000,
+    href: '/javascript',
+  },
+  { yLabel: 'HTML/CSS', seriesOneValue: 600, seriesTwoValue: 800 },
+  { yLabel: 'SQL', seriesOneValue: 550, href: '/sql' },
+  { yLabel: 'Rust', seriesOneValue: 400 },
+  { yLabel: 'React', seriesOneValue: 300, seriesTwoValue: 450 },
+];
+
+const accessibilityTranslations: PartialBarChartTranslations = {
+  accessibility: {
+    gainedNowAt: (ctx) =>
+      `${ctx.seriesOneValue} ${ctx.unit} gained — now at ${ctx.seriesTwoValue} ${ctx.unit} in ${ctx.yLabel}`,
+    inLabel: (ctx) => `${ctx.value} ${ctx.unit} in ${ctx.yLabel}`,
+    inOnly: (ctx) => `${ctx.value} ${ctx.unit}`.trim(),
+  },
+  locale: 'en',
+};
 
 const barDataWithIcons: BarProps[] = [
   {
@@ -336,47 +364,15 @@ export const WithStringTranslations: Story = {
 
 /**
  * Bar chart with function-based accessibility translations.
- * Functions receive scoped context (yLabel, values, unit, locale) and return the full
- * accessibility summary—useful for pluralization, word order, or locale-specific phrasing.
+ * Exercises gainedNowAt (stacked), inLabel (link/button single bar), and inOnly (non-interactive single bar).
  */
 export const WithFunctionTranslations: Story = {
   args: {
-    barValues: [
-      {
-        yLabel: 'Python',
-        seriesOneValue: 100,
-        seriesTwoValue: 200,
-        onClick: action('Clicked Python'),
-      },
-      {
-        yLabel: 'JavaScript',
-        seriesOneValue: 50,
-        onClick: action('Clicked JavaScript'),
-      },
-    ],
-    title: 'Skills chart with custom accessibility',
+    barValues: accessibilityBarData,
     description:
-      'Accessibility summaries built via translation functions with full context',
+      'Custom aria-label summaries via translation functions (stacked, link, and non-interactive bars)',
+    title: 'Skills experience (accessibility functions)',
+    translations: accessibilityTranslations,
     unit: 'XP',
-    translations: {
-      accessibility: {
-        gainedNowAt: (ctx: {
-          yLabel: string;
-          seriesOneValue: number;
-          seriesTwoValue: number;
-          unit: string;
-          locale: string;
-        }) =>
-          `${ctx.seriesOneValue} ${ctx.unit} gained - now at ${ctx.seriesTwoValue} ${ctx.unit} in ${ctx.yLabel}`,
-        inLabel: (ctx: {
-          yLabel: string;
-          value: number;
-          unit: string;
-          locale: string;
-        }) => `${ctx.value} ${ctx.unit} in ${ctx.yLabel}`.trim(),
-        inOnly: (ctx: { value: number; unit: string; locale: string }) =>
-          `${ctx.value} ${ctx.unit}`.trim(),
-      },
-    } as unknown as ComponentProps<typeof BarChart>['translations'],
   },
 };

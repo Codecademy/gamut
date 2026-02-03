@@ -2,8 +2,10 @@ import { css, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
-import { Box } from '../../Box';
+import { Box, FlexBox } from '../../Box';
 import { barListItemPadding } from '../shared/styles';
+
+export const RightLabelsHoverTarget = styled(FlexBox)(css({}));
 
 const rowBaseStyles = css({
   alignItems: 'center',
@@ -41,7 +43,12 @@ export const RowButton = styled('button', styledOptions<'button'>())(
 );
 export const RowAnchor = styled('a', styledOptions<'a'>())(
   rowBaseStyles,
-  interactiveStyles
+  interactiveStyles,
+  css({
+    [`&:hover ${RightLabelsHoverTarget}`]: {
+      textDecoration: 'underline',
+    },
+  })
 );
 
 export const BarWrapper = styled(Box)(
