@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import * as React from 'react';
+import React, { useState } from 'react';
 
 import { DetailedCodeBody } from './DetailedCodeBody';
 import { DetailedCodeButton } from './DetailedCodeButton';
@@ -7,6 +6,7 @@ import { DetailedCodeWrapper } from './elements';
 import { DetailedCodeProps } from './types';
 
 const DEFAULT_PREVIEW_LINES = 10;
+const DEFAULT_LANGUAGE = 'tsx';
 
 const getPreviewCode = (code: string, previewLines: number) => {
   const lines = code.split('\n');
@@ -20,9 +20,8 @@ const getPreviewCode = (code: string, previewLines: number) => {
 
 export const DetailedCode: React.FC<DetailedCodeProps> = ({
   code,
-  heading,
   initiallyExpanded = false,
-  language,
+  language = DEFAULT_LANGUAGE,
   preview = false,
   previewLines = DEFAULT_PREVIEW_LINES,
 }) => {
@@ -33,20 +32,17 @@ export const DetailedCode: React.FC<DetailedCodeProps> = ({
     ? getPreviewCode(code, normalizedPreviewLines)
     : code;
 
-  // Show the button to expand the code if there is more code than the preview lines, and hide the button if there is no more code
   const hasMoreCode =
     previewEnabled && code.split('\n').length > normalizedPreviewLines;
 
   const displayedCode = isExpanded ? code : previewCode;
 
   return (
-    <DetailedCodeWrapper column>
+    <DetailedCodeWrapper>
       <DetailedCodeBody code={displayedCode} language={language} />
       {hasMoreCode && (
         <DetailedCodeButton
-          heading={heading}
           isExpanded={isExpanded}
-          language={language}
           setIsExpanded={setIsExpanded}
         />
       )}

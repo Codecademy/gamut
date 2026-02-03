@@ -1,4 +1,4 @@
-export const codeExample = `import {
+export const example = `import {
   ConnectedCheckbox,
   ConnectedInput,
   ConnectedSelect,

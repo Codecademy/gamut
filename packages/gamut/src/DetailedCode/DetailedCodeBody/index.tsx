@@ -12,7 +12,7 @@ export const DetailedCodeBody: React.FC<DetailedCodeBodyProps> = ({
   language,
 }) => {
   return (
-    <DetailedCodeBodyWrapper column>
+    <DetailedCodeBodyWrapper>
       <Source code={code} dark language={language as SourceLanguage} />
     </DetailedCodeBodyWrapper>
   );

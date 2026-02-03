@@ -1,6 +1,5 @@
 export interface DetailedCodeProps {
   code: string;
-  heading?: string;
   language: string;
   initiallyExpanded?: boolean;
   preview?: boolean;
@@ -8,9 +7,7 @@ export interface DetailedCodeProps {
 }
 
 export interface DetailedCodeButtonProps {
-  heading?: string;
   isExpanded?: boolean;
-  language: string;
   setIsExpanded?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
