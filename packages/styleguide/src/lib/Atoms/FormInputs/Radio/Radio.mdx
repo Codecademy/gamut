@@ -58,6 +58,14 @@ The `label` is a `ReactNode`, making it customizable outside of a standard text 
 
 <Canvas of={RadioStories.CustomLabel} />
 
+## RadioGroup with InfoTip
+
+You can add an InfoTip to a RadioGroup label by wrapping the `RadioGroup` with a `FormGroup` and passing the `infotip` prop. The InfoTip will be automatically linked to the RadioGroup label via `aria-labelledby` for accessibility.
+
+Individual Radio options can also have their own InfoTips, which are automatically linked to their respective labels.
+
+<Canvas of={RadioStories.RadioGroupWithInfoTips} />
+
 ## Playground
 
 <Canvas sourceState="shown" of={RadioStories.Default} />
