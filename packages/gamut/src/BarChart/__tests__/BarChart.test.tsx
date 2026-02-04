@@ -13,11 +13,10 @@ const defaultBarValues = [
 ];
 
 const renderView = setupRtl(BarChart, {
-  title: 'Test chart',
   barValues: defaultBarValues,
   description: 'Test chart description',
-  minRange: 0,
   maxRange: 200,
+  title: 'Test chart',
 });
 
 const createInteractiveBar = ({

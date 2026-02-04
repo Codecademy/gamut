@@ -55,7 +55,6 @@ export const BarChart = <
   hideDescription = false,
   hideTitle = false,
   maxRange,
-  minRange,
   sortFns,
   styleConfig,
   title,
@@ -86,7 +85,6 @@ export const BarChart = <
   });
 
   const contextValue = useBarChart({
-    minRange,
     maxRange,
     xScale,
     unit,
@@ -96,7 +94,7 @@ export const BarChart = <
     translations: mergedTranslations,
   });
 
-  const tickCount = Math.ceil((maxRange - minRange) / contextValue.xScale) + 1;
+  const tickCount = Math.ceil(maxRange / contextValue.xScale) + 1;
 
   const titleId = useId();
   const sortSelectId = useId();
@@ -155,13 +153,9 @@ export const BarChart = <
     <BarChartProvider value={contextValue}>
       {titleContent}
       <Box as="figure" position="relative" width="100%">
-        <ScaleChartHeader
-          labelCount={tickCount}
-          max={maxRange}
-          min={minRange}
-        />
+        <ScaleChartHeader labelCount={tickCount} max={maxRange} min={0} />
         <Box position="relative" width="100%">
-          <GridLines max={maxRange} min={minRange} tickCount={tickCount} />
+          <GridLines max={maxRange} min={0} tickCount={tickCount} />
           <BarsList aria-labelledby={ariaLabelledBy ?? titleId}>
             {sortedBars.map((bar, index) => {
               const key =

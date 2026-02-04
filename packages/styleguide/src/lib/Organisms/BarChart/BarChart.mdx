@@ -267,7 +267,7 @@ BarChart allows you to customize the x-axis scale interval using the `xScale` pr
 
 ### Scale configuration
 
-The `xScale` prop determines the interval between scale markers on the x-axis. By default, BarChart automatically calculates an appropriate scale interval based on the `minRange` and `maxRange` values. However, you can override this with a custom interval to achieve more granular or specific scale markings.
+The `xScale` prop determines the interval between scale markers on the x-axis. By default, BarChart automatically calculates an appropriate scale interval based on the `maxRange` value (the scale always starts at 0). However, you can override this with a custom interval to achieve more granular or specific scale markings.
 
 **When to use custom scale:**
 
@@ -283,7 +283,7 @@ The `xScale` value represents the interval between consecutive scale markers. Fo
 - `xScale: 250` creates markers at 0, 250, 500, 750, 1000, etc.
 - `xScale: 500` creates markers at 0, 500, 1000, 1500, 2000, etc.
 
-The number of tick marks is automatically calculated as: `Math.ceil((maxRange - minRange) / xScale) + 1`
+The number of tick marks is automatically calculated as: `Math.ceil(maxRange / xScale) + 1`
 
 ### Example
 
@@ -352,7 +352,6 @@ Provide only the translations you want to override; the rest fall back to defaul
   barValues={barData}
   description="Progreso de habilidades"
   maxRange={200}
-  minRange={0}
   sortFns={['alphabetically', 'none']}
   title="Habilidades"
   translations={{

@@ -93,8 +93,6 @@ export type BarChartProps<
   hideTitle?: boolean;
   /** Maximum value for the x-axis scale */
   maxRange: number;
-  /** Minimum value for the x-axis scale (usually 0) */
-  minRange: number;
   /** Unit label to display (e.g., "XP") */
   unit?: string;
   /** Style configuration for colors */
@@ -116,6 +114,7 @@ export type BarChartProps<
   translations?: PartialBarChartTranslations;
 };
 
-export type BarChartRange = Pick<BarChartProps, 'minRange' | 'maxRange'>;
+/** Internal type for range calculations; min is always 0 at the BarChart API level. */
+export type BarChartRange = { minRange: number; maxRange: number };
 
 export type BarChartUnit = Pick<BarChartProps, 'unit'>;

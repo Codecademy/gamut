@@ -15,10 +15,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof BarChart> = {
   component: BarChart,
   args: {
-    title: 'Skills experience chart',
     description: 'Chart showing programming language experience levels',
-    minRange: 0,
     maxRange: 2000,
+    title: 'Skills experience chart',
     unit: 'XP',
   },
   parameters: {
@@ -185,7 +184,6 @@ export const WithHiddenTitleAndDescription: Story = {
         hideDescription
         hideTitle
         maxRange={2000}
-        minRange={0}
         title="Programming Skills Overview"
         unit="XP"
       />
@@ -214,7 +212,6 @@ export const WithExternalTitle: Story = {
           description="Experience points earned across different programming languages"
           hideDescription={false}
           maxRange={2000}
-          minRange={0}
           unit="XP"
         />
       </>
