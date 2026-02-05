@@ -14,7 +14,6 @@ const ellipsisButtonContents = { ellipsis: '•••', back: '«', forward: '»
 export const BaseEllipsisButton = forwardRef<
   ButtonBaseElements,
   EllipsisButtonProps
-  // eslint-disable-next-line react/prop-types
 >(({ buttonDirection, showButton, ...props }, ref) => {
   const [contents, setContents] = useState(ellipsisButtonContents.ellipsis);
 
