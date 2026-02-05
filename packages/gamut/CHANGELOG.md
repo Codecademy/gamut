@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [68.0.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.0.0...@codecademy/gamut@68.0.1) (2026-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+## [68.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.6.5...@codecademy/gamut@68.0.0) (2026-01-29)
+
+### ⚠ BREAKING CHANGES
+
+- **InfoTip:** Remove aria-live and implement focus mgmt
+
+### Bug Fixes
+
+- **InfoTip:** Remove aria-live and implement focus mgmt ([af60f80](https://github.com/Codecademy/gamut/commit/af60f80b48657b3c8d9c646cb04b32cf14211747))
+
+### [67.6.5](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.6.4...@codecademy/gamut@67.6.5) (2026-01-28)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+### [67.6.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.6.3...@codecademy/gamut@67.6.4) (2026-01-26)
+
+**Note:** Version bump only for package @codecademy/gamut
+
 ### [67.6.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@67.6.2...@codecademy/gamut@67.6.3) (2026-01-12)
 
 **Note:** Version bump only for package @codecademy/gamut

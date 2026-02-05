@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.55.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.54.2...@codecademy/gamut-icons@9.55.0) (2026-02-04)
+
+### Features
+
+- **Icon:** :sparkles: Add Live Learning Icon ([7dfbf29](https://github.com/Codecademy/gamut/commit/7dfbf292b80a3eb242d6eb66ede31e91b110d307))
+
+### [9.54.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.54.1...@codecademy/gamut-icons@9.54.2) (2026-01-28)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+### [9.54.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.54.0...@codecademy/gamut-icons@9.54.1) (2026-01-26)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
 ## [9.54.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.53.0...@codecademy/gamut-icons@9.54.0) (2025-12-23)
 
 ### Features

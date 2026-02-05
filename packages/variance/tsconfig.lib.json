@@ -4,7 +4,8 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "rootDir": "./src",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "types": []
   },
   "files": [
     "../../node_modules/@nx/react/typings/cssmodule.d.ts",
