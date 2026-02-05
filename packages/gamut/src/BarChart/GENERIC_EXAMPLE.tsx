@@ -51,7 +51,6 @@ export const DateSortingExample = () => {
       barValues={barsWithDates}
       description="Sort by when each skill was added to your profile"
       maxRange={2000}
-      minRange={0}
       sortFns={[
         'none',
         {
@@ -136,7 +135,6 @@ export const CategorySortingExample = () => {
       barValues={barsWithCategory}
       description="Sort by category or priority"
       maxRange={2000}
-      minRange={0}
       sortFns={[
         'none',
         {
@@ -211,7 +209,6 @@ export const ComplexSortingExample = () => {
       barValues={barsWithMetadata}
       description="Sort by metadata properties"
       maxRange={2000}
-      minRange={0}
       sortFns={[
         'none',
         {
@@ -290,7 +287,6 @@ export const ExplicitTypeExample = () => {
       barValues={barsWithScore}
       description="Explicitly typed bars with score and update date"
       maxRange={2000}
-      minRange={0}
       sortFns={[
         'none',
         {
@@ -364,7 +360,6 @@ export const WrongCategorySortingExample = () => {
       barValues={barsWithWrongCategory}
       description="Sort by category or priority"
       maxRange={2000}
-      minRange={0}
       sortFns={[
         'none',
         {
