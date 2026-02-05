@@ -302,7 +302,6 @@ export interface UseBarChartSortReturn<
     options: SelectOptions;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-    id: string;
   } | null;
 }
 
@@ -401,10 +400,6 @@ export const useBarChartSort = <
     setSortValue(value);
   }, []);
 
-  const selectId = useRef(
-    `bar-chart-sort-${Math.random().toString(36).slice(2, 11)}`
-  );
-
   const selectProps = useMemo(() => {
     if (!allSortOptions) {
       return null;
@@ -416,7 +411,6 @@ export const useBarChartSort = <
       onChange: (e: React.ChangeEvent<HTMLSelectElement>) => {
         onSortChange(e.target.value);
       },
-      id: selectId.current,
     };
   }, [sortValue, onSortChange, allSortOptions]);
 

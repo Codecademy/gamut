@@ -61,20 +61,24 @@ Use BarChart to display comparative data across categories, such as skills progr
 
 3. **Category label**
 
+- Displays the category name on the y-axis (e.g. skill or metric name).
+
+4. **Scale / value axis**
+
 - Displays gridlines and labels to indicate the scale of the data values.
 - The number of dividers, as well as the minimum and maximum values on the value axis, are adjustable.
 - The minimum value should always be 0.
 
-4. **Series one value**
+5. **Series one value**
 
 - Displays the numerical value of the series one bar for clarity and precise data representation.
 
-5. **Series two value** (optional)
+6. **Series two value** (optional)
 
 - Displays the numerical value of the series two bar for clarity and precise data representation.
 - Include a second series value by using the stacked property. Stacked bar charts compare parts of a whole and are best suited for displaying discrete data segmented into meaningful categories.
 
-6. ** Series one bar**
+7. **Series one bar**
 
 - A visual representation of the first value for the associated category.
 - By default, the first series bars use the text color, however, it can be overridden to any color.
@@ -84,7 +88,6 @@ Use BarChart to display comparative data across categories, such as skills progr
 
 - A visual representation of the second value for the associated category.
 - By default, the second series bars use the primary color, however, it can be overridden to any color.
-- Bars include a required border that uses white or navy, chosen automatically to ensure the highest contrast with the bar color.
 - Bars include a required border that uses white or navy, chosen automatically to ensure the highest contrast with the bar color.
 
 ## Variants
@@ -405,6 +408,17 @@ translations={{
 - Use appropriate locale codes (e.g. `'en-US'`, `'es-ES'`, `'fr-FR'`) for number formatting.
 - Test accessibility summaries with screen readers in the target language.
 - Reuse translation objects across BarChart instances where possible.
+
+## Container query
+
+BarChart uses CSS container queries to determine responsive behavior based on the **chart container width** rather than viewport width. This ensures optimal display when the chart is placed in constrained layouts like sidebars or narrow columns.
+
+**Layout behavior:**
+
+- **Narrow container (below 480px)**: Label and value appear together above the bar in a single row.
+- **Wide container (480px and up, `c_xs` breakpoint)**: Label on the left, bar in the center, value on the right.
+
+The chart establishes a size container via `containerType="inline-size"` on the figure wrapper, so the layout responds to the width of the BarChart’s parent. For more on container queries in Gamut, see <LinkTo id="Foundations/System/Responsive Properties">Responsive properties</LinkTo>.
 
 ## Playground
 

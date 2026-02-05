@@ -1,4 +1,3 @@
-import { MiniArrowRightIcon } from '@codecademy/gamut-icons';
 import {
   forwardRef,
   MouseEventHandler,
@@ -11,7 +10,7 @@ import { Box, FlexBox } from '../../Box';
 import { Text } from '../../Typography';
 import { iconPadding, iconWidth, minBarWidth } from '../shared/styles';
 import { BarProps } from '../shared/types';
-import { calculateBarWidth, getValuesSummary } from '../utils';
+import { calculateBarWidth, formatValueWithUnit, getValuesSummary } from '../utils';
 import {
   useBarBorderColor,
   useBarChartContext,
@@ -26,6 +25,7 @@ import {
   RowButton,
   RowWrapper,
 } from './elements';
+import { ValueLabelsContent } from './ValueLabelsContent';
 
 export type BarRowProps = BarProps & {
   index?: number;
@@ -132,17 +132,52 @@ export const BarRow = forwardRef<
     const rightWidthValue =
       widestRightLabelWidth === null ? 'min-content' : widestRightLabelWidth;
 
+    const { seriesOneFormatted, displayValueFormatted } = useMemo(
+      () => ({
+        seriesOneFormatted: formatValueWithUnit({
+          value: seriesOneValue,
+          unit,
+          locale: translations.locale,
+        }),
+        displayValueFormatted: formatValueWithUnit({
+          value: displayValue,
+          unit,
+          locale: translations.locale,
+        }),
+      }),
+      [seriesOneValue, displayValue, unit, translations.locale]
+    );
+
+    const valueLabelsContent = useMemo(
+      () => (
+        <ValueLabelsContent
+          displayValueFormatted={displayValueFormatted}
+          isStacked={isStacked}
+          seriesOneFormatted={seriesOneFormatted}
+          seriesOneLabel={seriesOneLabel}
+          seriesTwoLabel={seriesTwoLabel}
+        />
+      ),
+      [
+        displayValueFormatted,
+        isStacked,
+        seriesOneFormatted,
+        seriesOneLabel,
+        seriesTwoLabel,
+      ]
+    );
+
     const labelsContainer = useMemo(
       () => (
         <FlexBox
           alignItems="center"
-          display={{ _: 'flex', xs: 'none' }}
+          display={{ _: 'flex', c_xs: 'none' }}
           gap={8}
           justifyContent="space-between"
           width="100%"
         >
           <FlexBox alignItems="center" color={textColor} flexShrink={0}>
-            {Icon && <Icon mr={iconPadding as any} size={iconWidth} />}
+            {Icon && <Icon mr={iconPadding} size={iconWidth} />}
             <Text
               fontWeight="bold"
               truncate="ellipsis"
@@ -159,43 +194,11 @@ export const BarRow = forwardRef<
             gap={8}
             justifyContent="flex-end"
           >
-            {isStacked && (
-              <>
-                <Text
-                  color={seriesOneLabel}
-                  variant="p-small"
-                  whiteSpace="nowrap"
-                >
-                  {seriesOneValue.toLocaleString(translations.locale)}
-                  {unit && ` ${unit}`}
-                </Text>
-                <MiniArrowRightIcon color={seriesOneLabel} size={16} />
-              </>
-            )}
-            <Text
-              color={isStacked ? seriesTwoLabel : seriesOneLabel}
-              fontWeight={isStacked ? 'bold' : 'normal'}
-              variant="p-small"
-              whiteSpace="nowrap"
-            >
-              {displayValue.toLocaleString(translations.locale)}
-              {unit && ` ${unit}`}
-            </Text>
+            {valueLabelsContent}
           </RightLabelsHoverTarget>
         </FlexBox>
       ),
-      [
-        textColor,
-        Icon,
-        yLabel,
-        isStacked,
-        seriesOneValue,
-        seriesOneLabel,
-        seriesTwoLabel,
-        displayValue,
-        unit,
-        translations.locale,
-      ]
+      [textColor, Icon, yLabel, valueLabelsContent]
     );
 
     const leftLabel = useMemo(
@@ -203,13 +206,13 @@ export const BarRow = forwardRef<
         <FlexBox
           alignItems="center"
           color={textColor}
-          display={{ _: 'none', xs: 'flex' }}
+          display={{ _: 'none', c_xs: 'flex' }}
           flexShrink={0}
-          pr={{ _: 0, xs: 24 }}
+          pr={{ _: 0, c_xs: 24 }}
           ref={labelRef}
-          width={{ _: 'auto', xs: widthValue }}
+          width={{ _: 'auto', c_xs: widthValue }}
         >
-          {Icon && <Icon mr={12 as any} size={24} />}
+          {Icon && <Icon mr={iconPadding} size={iconWidth} />}
           <Text
             fontWeight="bold"
             truncate="ellipsis"
@@ -227,51 +230,17 @@ export const BarRow = forwardRef<
       () => (
         <RightLabelsHoverTarget
           alignItems="center"
-          display={{ _: 'none', xs: 'flex' }}
+          display={{ _: 'none', c_xs: 'flex' }}
           flexShrink={0}
           justifyContent="flex-end"
-          pl={{ _: 0, xs: 24 }}
+          pl={{ _: 0, c_xs: 24 }}
           ref={rightLabelRef}
-          width={{ _: 'auto', xs: rightWidthValue }}
+          width={{ _: 'auto', c_xs: rightWidthValue }}
         >
-          {isStacked && (
-            <>
-              <Text
-                color={seriesOneLabel}
-                variant="p-small"
-                whiteSpace="nowrap"
-              >
-                {seriesOneValue.toLocaleString(translations.locale)}
-                {unit && ` ${unit}`}
-              </Text>
-              <MiniArrowRightIcon
-                color={seriesOneLabel}
-                mx={12 as any}
-                size={16}
-              />
-            </>
-          )}
-          <Text
-            color={isStacked ? seriesTwoLabel : seriesOneLabel}
-            fontWeight={isStacked ? 'bold' : 'normal'}
-            variant="p-small"
-            whiteSpace="nowrap"
-          >
-            {displayValue.toLocaleString(translations.locale)}
-            {unit && ` ${unit}`}
-          </Text>
+          {valueLabelsContent}
         </RightLabelsHoverTarget>
       ),
-      [
-        isStacked,
-        seriesOneValue,
-        seriesOneLabel,
-        seriesTwoLabel,
-        displayValue,
-        unit,
-        translations.locale,
-        rightWidthValue,
-      ]
+      [valueLabelsContent, rightWidthValue]
     );
 
     const rowContent = useMemo(

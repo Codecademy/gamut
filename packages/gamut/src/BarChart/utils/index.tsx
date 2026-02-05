@@ -105,6 +105,22 @@ export const formatNumberUS = ({
   locale?: string;
 }) => Intl.NumberFormat(locale).format(num);
 
+/**
+ * Formats a numeric value with optional unit for bar chart labels.
+ */
+export const formatValueWithUnit = ({
+  value,
+  unit,
+  locale = 'en',
+}: {
+  value: number;
+  unit: string;
+  locale?: string;
+}): string => {
+  const formatted = Intl.NumberFormat(locale).format(value);
+  return unit ? `${formatted} ${unit}` : formatted;
+};
+
 export const formatNumberUSCompact = ({
   num,
   locale = 'en',
@@ -244,3 +260,14 @@ export const calculatePositionPercent = ({
   const adjustedValue = value - min;
   return (adjustedValue / range) * 100;
 };
+
+/**
+ * Generates a stable key for a bar row (for React list keys).
+ */
+export const getBarRowKey = (
+  bar: Pick<BarProps, 'yLabel' | 'seriesOneValue' | 'seriesTwoValue'>,
+  index: number
+): string =>
+  bar.yLabel && bar.seriesOneValue
+    ? `${bar.yLabel}-${bar.seriesOneValue}-${bar.seriesTwoValue ?? ''}-${index}`
+    : String(index);

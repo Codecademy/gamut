@@ -20,6 +20,7 @@ import {
   PartialBarChartTranslations,
 } from './shared/translations';
 import { BarChartProps, BarProps, InferBarType } from './shared/types';
+import { getBarRowKey } from './utils';
 import { useBarChart, useBarChartSort } from './utils/hooks';
 
 export type {
@@ -145,27 +146,30 @@ export const BarChart = <
           )}
         </FlexBox>
       </Box>
-    ) : (
+    ) : titleProps ? (
       <Text {...titleProps} />
-    );
+    ) : null;
 
   return (
     <BarChartProvider value={contextValue}>
       {titleContent}
-      <Box as="figure" position="relative" width="100%">
+      <Box
+        as="figure"
+        containerType="inline-size"
+        position="relative"
+        width="100%"
+      >
         <ScaleChartHeader labelCount={tickCount} max={maxRange} min={0} />
         <Box position="relative" width="100%">
           <GridLines max={maxRange} min={0} tickCount={tickCount} />
           <BarsList aria-labelledby={ariaLabelledBy ?? titleId}>
-            {sortedBars.map((bar, index) => {
-              const key =
-                bar.yLabel && bar.seriesOneValue
-                  ? `${bar.yLabel}-${bar.seriesOneValue}-${
-                      bar.seriesTwoValue ?? ''
-                    }-${index}`
-                  : index;
-              return <BarRow index={index} key={key} {...bar} />;
-            })}
+            {sortedBars.map((bar, index) => (
+              <BarRow
+                index={index}
+                key={getBarRowKey(bar, index)}
+                {...bar}
+              />
+            ))}
           </BarsList>
         </Box>
         <Text
