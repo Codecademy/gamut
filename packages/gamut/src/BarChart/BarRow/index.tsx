@@ -10,7 +10,11 @@ import { Box, FlexBox } from '../../Box';
 import { Text } from '../../Typography';
 import { iconPadding, iconWidth, minBarWidth } from '../shared/styles';
 import { BarProps } from '../shared/types';
-import { calculateBarWidth, formatValueWithUnit, getValuesSummary } from '../utils';
+import {
+  calculateBarWidth,
+  formatValueWithUnit,
+  getValuesSummary,
+} from '../utils';
 import {
   useBarBorderColor,
   useBarChartContext,

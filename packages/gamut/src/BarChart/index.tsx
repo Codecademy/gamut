@@ -164,11 +164,7 @@ export const BarChart = <
           <GridLines max={maxRange} min={0} tickCount={tickCount} />
           <BarsList aria-labelledby={ariaLabelledBy ?? titleId}>
             {sortedBars.map((bar, index) => (
-              <BarRow
-                index={index}
-                key={getBarRowKey(bar, index)}
-                {...bar}
-              />
+              <BarRow index={index} key={getBarRowKey(bar, index)} {...bar} />
             ))}
           </BarsList>
         </Box>

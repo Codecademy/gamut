@@ -20,18 +20,10 @@ export const ValueLabelsContent = ({
   <>
     {isStacked && (
       <>
-        <Text
-          color={seriesOneLabel}
-          variant="p-small"
-          whiteSpace="nowrap"
-        >
+        <Text color={seriesOneLabel} variant="p-small" whiteSpace="nowrap">
           {seriesOneFormatted}
         </Text>
-        <MiniArrowRightIcon
-          color={seriesOneLabel}
-          mx={iconPadding}
-          size={16}
-        />
+        <MiniArrowRightIcon color={seriesOneLabel} mx={iconPadding} size={16} />
       </>
     )}
     <Text
