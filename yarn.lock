@@ -1616,7 +1616,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codecademy/gamut-icons@npm:9.54.2, @codecademy/gamut-icons@workspace:packages/gamut-icons":
+"@codecademy/gamut-icons@npm:9.54.2":
+  version: 9.54.2
+  resolution: "@codecademy/gamut-icons@npm:9.54.2"
+  dependencies:
+    "@codecademy/gamut-styles": "npm:17.11.2"
+    "@codecademy/variance": "npm:0.25.2"
+  peerDependencies:
+    "@emotion/react": ^11.4.0
+    "@emotion/styled": ^11.3.0
+    lodash: ^4.17.23
+    react: ^17.0.2 || ^18.2.0
+  checksum: 10c0/80f10b2261c4434a9c09fa9175a8107f9b505b0e7799d689d906cd7db6014260e4753353cac3f430ca98665b321fda93755ec451666e60771e1f44e03d68c178
+  languageName: node
+  linkType: hard
+
+"@codecademy/gamut-icons@workspace:packages/gamut-icons":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-icons@workspace:packages/gamut-icons"
   dependencies:
