@@ -1,11 +1,18 @@
 import { css, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { ComponentProps, forwardRef, HTMLProps, MutableRefObject } from 'react';
+import {
+  ComponentProps,
+  forwardRef,
+  HTMLProps,
+  MutableRefObject,
+  RefObject,
+} from 'react';
 
 export type ButtonBaseElements = HTMLAnchorElement | HTMLButtonElement;
 export type ButtonBaseRef =
   | ((instance: ButtonBaseElements | null) => void)
   | MutableRefObject<ButtonBaseElements | null>
+  | RefObject<ButtonBaseElements | null>
   | null;
 
 export type ButtonBaseElementProps = HTMLProps<
@@ -63,7 +70,7 @@ type ButtonBaseProps =
       ComponentProps<typeof ResetElementAnchor>);
 
 export const ButtonBase = forwardRef<
-  HTMLButtonElement | HTMLAnchorElement,
+  HTMLButtonElement | HTMLAnchorElement | null,
   ButtonBaseProps
 >(({ disabled, children, role, type = 'button', ...rest }, ref) => {
   if (!('href' in rest) || rest?.href === undefined || disabled) {

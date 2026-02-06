@@ -120,7 +120,7 @@ type AnchorBaseProps =
 type AnchorExtProps = Partial<AppendedIconProps> & AnchorBaseProps;
 
 export const Anchor = forwardRef<
-  HTMLAnchorElement | HTMLButtonElement,
+  HTMLAnchorElement | HTMLButtonElement | null,
   AnchorExtProps
 >(
   (
