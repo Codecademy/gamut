@@ -11,7 +11,15 @@ import { StrokeButton } from '../StrokeButton';
 import { TextButton } from '../TextButton';
 import { buttonProps, buttonVariants } from './styles';
 
-export interface ButtonBaseProps extends StyleProps<typeof buttonProps> {
+/** Optional anchor props so link-style buttons (with href) type-check. */
+type ButtonAnchorProps = Pick<
+  HTMLProps<HTMLAnchorElement>,
+  'href' | 'target' | 'rel' | 'download'
+>;
+
+export interface ButtonBaseProps
+  extends StyleProps<typeof buttonProps>,
+    Partial<ButtonAnchorProps> {
   onClick?: HTMLProps<HTMLButtonElement>['onClick'];
   variant?: (typeof buttonVariants)[number];
   size?: 'normal' | 'small' | 'large';

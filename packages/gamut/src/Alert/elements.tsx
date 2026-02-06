@@ -1,7 +1,7 @@
 import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import { ComponentProps, forwardRef } from 'react';
+import { type LegacyRef, ComponentProps, forwardRef } from 'react';
 
 import { Box } from '../Box';
 import { FillButton } from '../Button';
@@ -12,7 +12,7 @@ const StyledAlertBanner =
   styled(Background)<Pick<AlertProps, 'type' | 'placement'>>(placementVariants);
 
 export const AlertBanner = forwardRef<
-  HTMLDivElement,
+  HTMLDivElement | null,
   ComponentProps<typeof StyledAlertBanner>
 >(
   (
@@ -27,7 +27,7 @@ export const AlertBanner = forwardRef<
     <StyledAlertBanner
       aria-label={ariaLabel}
       aria-live={ariaLive}
-      ref={ref}
+      ref={ref as LegacyRef<HTMLDivElement>}
       role={role}
       {...rest}
     />
@@ -38,7 +38,7 @@ const StyledAlertBox =
   styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(placementVariants);
 
 export const AlertBox = forwardRef<
-  HTMLDivElement,
+  HTMLDivElement | null,
   ComponentProps<typeof StyledAlertBox>
 >(
   (
@@ -53,7 +53,7 @@ export const AlertBox = forwardRef<
     <StyledAlertBox
       aria-label={ariaLabel}
       aria-live={ariaLive}
-      ref={ref}
+      ref={ref as LegacyRef<HTMLDivElement>}
       role={role}
       {...rest}
     />

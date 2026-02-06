@@ -13,8 +13,9 @@ const FillButtonBase = createButtonComponent(sizeVariants, fillButtonVariants);
 
 export type FillButtonProps = InlineIconButtonProps<typeof FillButtonBase>;
 
-export const FillButton = forwardRef<ButtonBaseElements, FillButtonProps>(
-  ({ ...props }, ref) => {
-    return <InlineIconButton button={FillButtonBase} {...props} ref={ref} />;
-  }
-);
+export const FillButton = forwardRef<
+  ButtonBaseElements | null,
+  FillButtonProps
+>(({ ...props }, ref) => {
+  return <InlineIconButton button={FillButtonBase} {...props} ref={ref} />;
+});

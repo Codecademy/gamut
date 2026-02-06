@@ -17,7 +17,7 @@ type InlineIconButtonType = InlineIconButtonComponents & {
 };
 
 export const InlineIconButton = forwardRef<
-  ButtonBaseElements,
+  ButtonBaseElements | null,
   InlineIconButtonType
 >(
   (

@@ -12,7 +12,7 @@ export type EllipsisButtonProps = PaginationButtonProps & {
 const ellipsisButtonContents = { ellipsis: '•••', back: '«', forward: '»' };
 
 export const BaseEllipsisButton = forwardRef<
-  ButtonBaseElements,
+  ButtonBaseElements | null,
   EllipsisButtonProps
   // eslint-disable-next-line react/prop-types
 >(({ direction, showButton, ...props }, ref) => {

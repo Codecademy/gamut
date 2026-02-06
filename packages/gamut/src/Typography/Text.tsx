@@ -6,7 +6,7 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps, forwardRef } from 'react';
+import { type LegacyRef, ComponentProps, forwardRef } from 'react';
 
 import { typographyElementVariants, typographyStyleVariants } from './variants';
 
@@ -148,8 +148,8 @@ const StyledText = styled('span', styledOptions<'span'>())<TextProps>(
 );
 
 export const Text = forwardRef<
-  HTMLSpanElement,
+  HTMLSpanElement | null,
   ComponentProps<typeof StyledText>
 >(({ as = 'span', m = 0, ...rest }, ref) => (
-  <StyledText as={as} m={m} ref={ref} {...rest} />
+  <StyledText as={as} m={m} ref={ref as LegacyRef<HTMLSpanElement>} {...rest} />
 ));

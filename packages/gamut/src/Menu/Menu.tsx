@@ -4,7 +4,7 @@ import { List } from './elements';
 import { MenuProvider, useMenu } from './MenuContext';
 
 export const Menu = forwardRef<
-  HTMLUListElement | HTMLOListElement,
+  HTMLUListElement | HTMLOListElement | null,
   Omit<ComponentProps<typeof List>, 'root'>
 >(
   (

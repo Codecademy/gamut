@@ -92,7 +92,7 @@ export type InternalFloatingCardWithWrapper = InternalFloatingCardProps &
  * Please use the `Card` component instead.
  */
 export const InternalFloatingCard = forwardRef<
-  HTMLDivElement,
+  HTMLDivElement | null,
   InternalFloatingCardWithWrapper
 >(
   (
@@ -119,7 +119,11 @@ export const InternalFloatingCard = forwardRef<
         right={shadow === 'bottomRight' ? '-0.5rem' : undefined}
         top="0.5rem"
       />
-      <CardBody className={className} {...rest} ref={ref}>
+      <CardBody
+        className={className}
+        {...rest}
+        ref={ref as React.LegacyRef<HTMLDivElement>}
+      >
         {children}
       </CardBody>
     </Box>

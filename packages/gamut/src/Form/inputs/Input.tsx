@@ -103,7 +103,7 @@ const getInputState = (error: boolean, valid: boolean) => {
   return 'clean';
 };
 
-export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
+export const Input = forwardRef<HTMLInputElement | null, InputWrapperProps>(
   (
     {
       error,

@@ -64,7 +64,7 @@ const ExpandInCollapseOut: React.FC<
   );
 };
 
-export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
+export const ListRow = forwardRef<HTMLLIElement | null, ListRowProps>(
   (
     {
       children,

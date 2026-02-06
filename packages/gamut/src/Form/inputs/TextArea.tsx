@@ -31,24 +31,25 @@ const StyledTextArea = styled.textarea<TextAreaProps>`
   border-radius: 'md';
 `;
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
-  ({ error, className, id, ...rest }, ref) => {
-    const [activated, setActivated] = useState(false);
+export const TextArea = forwardRef<
+  HTMLTextAreaElement | null,
+  TextWrapperProps
+>(({ error, className, id, ...rest }, ref) => {
+  const [activated, setActivated] = useState(false);
 
-    const changeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-      rest?.onChange?.(event);
-      setActivated(true);
-    };
+  const changeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    rest?.onChange?.(event);
+    setActivated(true);
+  };
 
-    return (
-      <StyledTextArea
-        {...rest}
-        className={className}
-        id={id || rest.htmlFor}
-        ref={ref}
-        variant={conditionalStyleState(Boolean(error), activated)}
-        onChange={(event) => changeHandler(event)}
-      />
-    );
-  }
-);
+  return (
+    <StyledTextArea
+      {...rest}
+      className={className}
+      id={id || rest.htmlFor}
+      ref={ref}
+      variant={conditionalStyleState(Boolean(error), activated)}
+      onChange={(event) => changeHandler(event)}
+    />
+  );
+});

@@ -46,7 +46,7 @@ export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
   disableContainerQuery?: boolean;
 }
 
-export const List = forwardRef<HTMLUListElement, ListProps>(
+export const List = forwardRef<HTMLUListElement | null, ListProps>(
   (
     {
       as = 'ul',

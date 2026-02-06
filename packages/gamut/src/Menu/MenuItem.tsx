@@ -61,7 +61,7 @@ interface MenuTextItem extends HTMLProps, ForwardListItemProps {
 type MenuItemTypes = MenuItemIconOnly | MenuTextItem;
 
 export const MenuItem = forwardRef<
-  HTMLLIElement | HTMLAnchorElement | HTMLButtonElement,
+  HTMLLIElement | HTMLAnchorElement | HTMLButtonElement | null,
   MenuItemTypes
 >(
   (
