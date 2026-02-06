@@ -1,6 +1,6 @@
 import { CheckerDense } from '@codecademy/gamut-patterns';
 import { borderRadii, Colors } from '@codecademy/gamut-styles';
-import * as React from 'react';
+import { forwardRef } from 'react';
 
 import { DynamicCardWrapper, MotionBox, StaticCardWrapper } from './elements';
 import { hoverShadowLeft, hoverShadowRight, patternFadeInOut } from './styles';
@@ -8,17 +8,21 @@ import { CardProps } from './types';
 
 type BorderRadiusToken = keyof typeof borderRadii;
 
-export const Card: React.FC<CardProps> = ({
-  children,
-  variant = 'default',
-  shadow = 'none',
-  isInteractive = false,
-  pattern: Pattern = CheckerDense,
-  borderRadius,
-  width = '100%',
-  height = '100%',
-  ...rest
-}) => {
+export const Card = forwardRef<HTMLDivElement | null, CardProps>(
+  (
+    {
+      children,
+      variant = 'default',
+      shadow = 'none',
+      isInteractive = false,
+      pattern: Pattern = CheckerDense,
+      borderRadius,
+      width = '100%',
+      height = '100%',
+      ...rest
+    },
+    ref
+  ) => {
   const defaultBorderRadius: BorderRadiusToken = isInteractive ? 'md' : 'none';
   const trueBorderRadius = borderRadius ?? defaultBorderRadius;
   const resolvedBorderRadius =
@@ -73,6 +77,7 @@ export const Card: React.FC<CardProps> = ({
         maxWidth="100%"
         p={16}
         position="relative"
+        ref={ref as any}
         shadow={shadow}
         variant={variant}
         variants={setHoverShadow}
@@ -82,4 +87,5 @@ export const Card: React.FC<CardProps> = ({
       </SelectedWrapper>
     </MotionBox>
   );
-};
+  }
+);
