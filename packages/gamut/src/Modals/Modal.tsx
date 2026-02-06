@@ -115,7 +115,7 @@ export const Modal: React.FC<ModalProps> = ({
         className={className}
         data-autofocus
         layout={views && views?.length > 0 ? 'dialog' : 'standard'}
-        ref={containerFocusRef}
+        ref={containerFocusRef as React.LegacyRef<HTMLDivElement>}
         role="dialog"
         size={size}
         tabIndex={-1}

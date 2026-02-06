@@ -142,7 +142,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
       display="inline-flex"
       height={inheritDims ? 'inherit' : undefined}
       position="relative"
-      ref={wrapperRef}
+      ref={wrapperRef as React.LegacyRef<HTMLDivElement>}
       width={inheritDims ? 'inherit' : undefined}
       onMouseLeave={toolOnlyEventFunc}
     >

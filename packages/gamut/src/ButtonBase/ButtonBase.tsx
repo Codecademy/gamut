@@ -64,13 +64,18 @@ export const resetStyles = css({
 const ResetElement = styled('button', styledOptions<'button'>())(resetStyles);
 const ResetElementAnchor = styled('a', styledOptions<'a'>())(resetStyles);
 
-type ButtonBaseProps =
+type ButtonBasePropsUnion =
   | ComponentProps<typeof ResetElement>
   | (Exclude<ComponentProps<typeof ResetElement>, 'ref'> &
       ComponentProps<typeof ResetElementAnchor>);
 
+/** Ref override so RefObject<T | null> is accepted (React 19 / strict refs). */
+export type ButtonBaseProps = Omit<ButtonBasePropsUnion, 'ref'> & {
+  ref?: ButtonBaseRef;
+};
+
 export const ButtonBase = forwardRef<
-  HTMLButtonElement | HTMLAnchorElement | null,
+  ButtonBaseElements | null,
   ButtonBaseProps
 >(({ disabled, children, role, type = 'button', ...rest }, ref) => {
   if (!('href' in rest) || rest?.href === undefined || disabled) {
@@ -94,11 +99,11 @@ export const ButtonBase = forwardRef<
 
   return (
     <ResetElementAnchor
-      {...rest}
+      {...(rest as ComponentProps<typeof ResetElementAnchor>)}
       as="a"
-      href={rest?.href}
+      href={typeof rest?.href === 'string' ? rest.href : undefined}
       ref={ref as MutableRefObject<HTMLAnchorElement>}
-      role={role}
+      role={typeof role === 'string' ? role : undefined}
     >
       {children}
     </ResetElementAnchor>
