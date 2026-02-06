@@ -1,3 +1,4 @@
+import { MockGamutProvider } from '@codecademy/gamut-tests';
 import { render } from '@testing-library/react';
 
 import {
@@ -475,7 +476,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
     const mockOnBlur = jest.fn();
 
     it('should render a checked checkbox with correct props', () => {
-      const state = { checked: true };
+      const state = { checked: true, indeterminate: false };
 
       const result = renderCheckbox({
         option: mockOption,
@@ -522,7 +523,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
     });
 
     it('should render an unchecked checkbox with correct props', () => {
-      const state = { checked: false };
+      const state = { checked: false, indeterminate: false };
 
       const result = renderCheckbox({
         option: mockOption,
@@ -544,29 +545,39 @@ describe('ConnectedNestedCheckboxes utils', () => {
       expect(checkbox).toHaveAttribute('aria-checked', 'false');
     });
 
-    it('should apply correct margin based on level', () => {
-      const state = { checked: false };
+    it.each([
+      { useLogicalProperties: true, marginLeft: 'marginInlineStart' },
+      { useLogicalProperties: false, marginLeft: 'marginLeft' },
+    ])(
+      'should apply correct margin based on level (useLogicalProperties: $useLogicalProperties)',
+      ({ useLogicalProperties, marginLeft }) => {
+        const state = { checked: false, indeterminate: false };
 
-      const result = renderCheckbox({
-        option: { ...mockOption, level: 2 },
-        state,
-        name: 'test',
-        isRequired: false,
-        isDisabled: false,
-        onBlur: mockOnBlur,
-        onChange: mockOnChange,
-        ref: mockRef,
-        flatOptions: [{ ...mockOption, level: 2 }],
-      });
+        const result = renderCheckbox({
+          option: { ...mockOption, level: 2 },
+          state,
+          name: 'test',
+          isRequired: false,
+          isDisabled: false,
+          onBlur: mockOnBlur,
+          onChange: mockOnChange,
+          ref: mockRef,
+          flatOptions: [{ ...mockOption, level: 2 }],
+        });
 
-      const { container } = render(result);
-      const listItem = container.querySelector('li');
+        const { container } = render(
+          <MockGamutProvider useLogicalProperties={useLogicalProperties}>
+            {result}
+          </MockGamutProvider>
+        );
+        const listItem = container.querySelector('li');
 
-      expect(listItem).toHaveStyle({ marginLeft: '48px' }); // 2 * 24px
-    });
+        expect(listItem).toHaveStyle({ [marginLeft]: '3rem' }); // 24px * 2 = 48px = 3rem
+      }
+    );
 
     it('should handle disabled state', () => {
-      const state = { checked: false };
+      const state = { checked: false, indeterminate: false };
 
       const result = renderCheckbox({
         option: { ...mockOption, disabled: true },
@@ -587,7 +598,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
     });
 
     it('should handle error state', () => {
-      const state = { checked: false };
+      const state = { checked: false, indeterminate: false };
 
       const result = renderCheckbox({
         option: mockOption,
@@ -609,7 +620,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
     });
 
     it('should use custom aria-label when provided', () => {
-      const state = { checked: false };
+      const state = { checked: false, indeterminate: false };
       const optionWithAriaLabel = {
         ...mockOption,
         'aria-label': 'Custom aria label',
@@ -634,7 +645,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
     });
 
     it('should fallback to label text for aria-label when label is string', () => {
-      const state = { checked: false };
+      const state = { checked: false, indeterminate: false };
 
       const result = renderCheckbox({
         option: mockOption,
@@ -655,7 +666,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
     });
 
     it('should use default aria-label when label is not string', () => {
-      const state = { checked: false };
+      const state = { checked: false, indeterminate: false };
       const optionWithElementLabel = {
         ...mockOption,
         label: <span>Element Label</span>,
@@ -680,7 +691,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
     });
 
     it('should generate aria-controls with all nested descendants', () => {
-      const state = { checked: false };
+      const state = { checked: false, indeterminate: false };
       const flatOptions = [
         {
           value: 'parent',
@@ -737,7 +748,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
     });
 
     it('should not have aria-controls for leaf nodes', () => {
-      const state = { checked: false };
+      const state = { checked: false, indeterminate: false };
       const flatOptions = [
         {
           value: 'leaf',
