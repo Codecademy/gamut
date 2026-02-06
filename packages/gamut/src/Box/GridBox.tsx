@@ -1,10 +1,9 @@
 import { styledOptions, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { type ComponentProps, forwardRef, type LegacyRef } from 'react';
 
 import { boxProps, GridBoxProps, gridStates, sharedStates } from './props';
 
-const StyledGridBox = styled(
+export const GridBox = styled(
   'div',
   styledOptions(['fit', 'center', 'fitContent'])
 )<GridBoxProps>(
@@ -13,12 +12,5 @@ const StyledGridBox = styled(
   gridStates,
   boxProps
 );
-
-export const GridBox = forwardRef<
-  HTMLDivElement | null,
-  ComponentProps<typeof StyledGridBox>
->((props, ref) => (
-  <StyledGridBox {...props} ref={ref as LegacyRef<HTMLDivElement>} />
-));
 
 export type { GridBoxProps } from './props';
