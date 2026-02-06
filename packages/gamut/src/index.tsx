@@ -1,3 +1,5 @@
+/* eslint-disable-next-line @typescript-eslint/triple-slash-reference -- required so consumers get React 19 resize type augmentation */
+/// <reference path="./typings/react-optional-resize.d.ts" />
 export * from './AccordionDeprecated';
 export * from './AccordionAreaDeprecated';
 export * from './AccordionButtonDeprecated';
