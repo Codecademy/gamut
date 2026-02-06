@@ -65,11 +65,6 @@ When generating code from Figma designs, follow these rules:
 ### ❌ NEVER Do This:
 
 ```tsx
-// NEVER use hardcoded pixel values
-height: 24,
-width: '64px',
-fontSize: 14,
-
 // NEVER use hardcoded hex colors
 color: '#ffffff',
 backgroundColor: '#000000',
