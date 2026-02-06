@@ -22,7 +22,7 @@ export const parameters = {
 
 ## What are CSS logical properties?
 
-CSS logical properties are a modern approach to styling that adapts to the writing mode and text direction of your content, rather than being tied to physical screen directions. More information can be found on[MDN: CSS Logical Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values)
+CSS logical properties are a modern approach to styling that adapts to the writing mode and text direction of your content, rather than being tied to physical screen directions. More information can be found on [MDN: CSS Logical Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values)
 
 ### Physical Properties (Traditional)
 
@@ -46,7 +46,9 @@ Gamut supports both physical and logical CSS properties through the `useLogicalP
 
 ### Affected Props
 
-Here are some examples of how physical and logical properties are affected by the `useLogicalProperties` prop:
+When `useLogicalProperties` is enabled, Gamut replaces physical CSS properties with their logical equivalents. This applies to both **base properties** (like `marginLeft`, `width`) and **shorthand props** (like `mx`, `py`).
+
+The table below shows a few examples — this is not a comprehensive list.
 
 <TokenTable
   idKey="prop"
@@ -59,7 +61,7 @@ Here are some examples of how physical and logical properties are affected by th
     },
     {
       key: 'physical',
-      name: 'Physical',
+      name: 'Physical CSS',
       size: 'xl',
       render: ({ physical }) =>
         physical.map((p) => (
@@ -70,7 +72,7 @@ Here are some examples of how physical and logical properties are affected by th
     },
     {
       key: 'logical',
-      name: 'Logical',
+      name: 'Logical CSS',
       size: 'xl',
       render: ({ logical }) =>
         logical.map((l) => (
@@ -82,20 +84,34 @@ Here are some examples of how physical and logical properties are affected by th
   ]}
   rows={[
     {
+      prop: 'marginLeft',
+      physical: ['margin-left'],
+      logical: ['margin-inline-start'],
+    },
+    {
       prop: 'mx',
       physical: ['margin-left', 'margin-right'],
       logical: ['margin-inline-start', 'margin-inline-end'],
     },
-    { prop: 'mt', physical: ['margin-top'], logical: ['margin-block-start'] },
+    {
+      prop: 'paddingTop',
+      physical: ['padding-top'],
+      logical: ['padding-block-start'],
+    },
     {
       prop: 'py',
       physical: ['padding-top', 'padding-bottom'],
       logical: ['padding-block-start', 'padding-block-end'],
     },
     {
-      prop: 'pb',
-      physical: ['padding-bottom'],
-      logical: ['padding-block-end'],
+      prop: 'width',
+      physical: ['width'],
+      logical: ['inline-size'],
+    },
+    {
+      prop: 'height',
+      physical: ['height'],
+      logical: ['block-size'],
     },
   ]}
 />
