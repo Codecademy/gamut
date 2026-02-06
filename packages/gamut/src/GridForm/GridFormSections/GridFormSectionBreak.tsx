@@ -9,7 +9,9 @@ const hrProps = variance.compose(system.border, system.color, system.layout);
 
 export interface HrProps extends StyleProps<typeof hrProps> {}
 
-export const SectionBreak = styled('hr')<HrProps>(hrProps);
+export const SectionBreak = styled('hr')<HrProps>(
+  hrProps
+);
 
 export const GridFormSectionBreak: React.FC = () => {
   return (
