@@ -57,5 +57,10 @@ export * from './Tip/ToolTip';
 export * from './typings/responsive-properties';
 export * from './Typography/Text';
 export type { HeadingTags } from './Typography/types';
+export {
+  typographyElementVariants,
+  typographyStyleVariants,
+  typographyUtilities,
+} from './Typography/variants';
 export * from './utils';
 export * from './Video';
