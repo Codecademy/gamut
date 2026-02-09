@@ -1,6 +1,12 @@
 name: 'Setup Node & yarn'
 description: 'Setup a NodeJS environment, install deps, & builds packages'
 
+inputs:
+  immutable:
+    description: 'Run yarn install with --immutable (fail if lockfile would change)'
+    required: false
+    default: 'true'
+
 runs:
   using: 'composite'
   steps:
@@ -13,4 +19,9 @@ runs:
       shell: bash
     - name: Install dependencies
       shell: bash
-      run: yarn install --immutable
+      run: |
+        if [ "${{ inputs.immutable }}" = "true" ]; then
+          yarn install --immutable
+        else
+          yarn install
+        fi

@@ -20,13 +20,30 @@ permissions:
 
 jobs:
   test:
+    name: Test (React ${{ matrix.react_version }})
     runs-on: ubuntu-24.04
     timeout-minutes: 30
+    strategy:
+      matrix:
+        react_version: [18, 19]
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 0
+      - name: Set React version
+        if: matrix.react_version == 18
+        run: |
+          node -e "
+          const p = require('./package.json');
+          p.resolutions['react'] = '18.3.1';
+          p.resolutions['react-dom'] = '18.3.1';
+          p.resolutions['@types/react'] = '18.3.1';
+          p.resolutions['@types/react-dom'] = '18.3.0';
+          require('fs').writeFileSync('package.json', JSON.stringify(p, null, 2));
+          "
       - uses: ./.github/actions/yarn
+        with:
+          immutable: ${{ matrix.react_version == 19 }}
       - name: Fetch main branch
         run: git fetch origin main:main
         if: github.event_name == 'pull_request'
