@@ -1,7 +1,7 @@
 import { Column, LayoutGrid, Text } from '@codecademy/gamut';
-// eslint-disable-next-line gamut/import-paths
-import { typographyElementVariants } from '@codecademy/gamut/src/Typography/variants';
 import { Fragment } from 'react';
+
+import { typographyElementVariants } from '../../../../../gamut/src/Typography/variants';
 
 export const Elements: React.FC = () => (
   <LayoutGrid gap={32} my={48}>
