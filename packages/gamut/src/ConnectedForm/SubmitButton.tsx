@@ -61,7 +61,11 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
 
   return (
     <Button
-      {...({ ...rest, disabled: isDisabled, type: 'submit' } as React.ComponentProps<typeof Button> as any)}
+      {...({
+        ...rest,
+        disabled: isDisabled,
+        type: 'submit',
+      } as React.ComponentProps<typeof Button> as any)}
     >
       {children}
     </Button>

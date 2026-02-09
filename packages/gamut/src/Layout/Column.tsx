@@ -1,7 +1,7 @@
 import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps, forwardRef, type LegacyRef } from 'react';
+import { type LegacyRef, ComponentProps, forwardRef } from 'react';
 
 const rows = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6 };
 

@@ -10,6 +10,8 @@ export interface TabNavProps
     StyleProps<typeof tabContainerStates>,
     TabElementStyleProps {}
 
-export const TabNav = styled('nav', styledOptions<'nav'>())<
-  TabNavProps
->(tabElementBaseProps, tabContainerVariants, tabContainerStates);
+export const TabNav = styled('nav', styledOptions<'nav'>())<TabNavProps>(
+  tabElementBaseProps,
+  tabContainerVariants,
+  tabContainerStates
+);

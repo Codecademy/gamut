@@ -15,13 +15,26 @@ const StyledGridBox = styled(
   boxProps
 );
 
+type GridBoxIntrinsicElementRef<C extends keyof React.JSX.IntrinsicElements> =
+  React.JSX.IntrinsicElements[C] extends React.HTMLAttributes<infer E>
+    ? E
+    : HTMLElement;
+
+/** Props when rendering as intrinsic element C. Export for consumers to type polymorphic usage. */
+export type GridBoxPolymorphicProps<
+  C extends keyof React.JSX.IntrinsicElements = 'div',
+> = Omit<GridBoxProps, 'as'> &
+  React.JSX.IntrinsicElements[C] & {
+    as?: C;
+  } & React.RefAttributes<GridBoxIntrinsicElementRef<C> | null>;
+
 /** Type-only: widens ref to Ref<HTMLDivElement | null> for React 18/19 compatibility. */
 type GridBoxWithNullableRef = React.ForwardRefExoticComponent<
   ComponentProps<typeof StyledGridBox> &
     React.RefAttributes<HTMLDivElement | null>
 > & {
   withComponent: <C extends keyof React.JSX.IntrinsicElements>(
-    as: C
+    as: C,
   ) => React.ForwardRefExoticComponent<
     ComponentProps<typeof StyledGridBox> &
       React.RefAttributes<HTMLElement | null>

@@ -56,7 +56,9 @@ export const GridFormButtons: React.FC<
       >
         {props.cancel && (
           <TextButton
-            {...(props.cancel as React.ComponentProps<typeof TextButton> as any)}
+            {...(props.cancel as React.ComponentProps<
+              typeof TextButton
+            > as any)}
             data-testid="cancel-button"
             mr={32}
           />

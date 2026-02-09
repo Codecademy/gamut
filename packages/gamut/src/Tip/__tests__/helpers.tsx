@@ -17,9 +17,7 @@ type LinkTextParam = { linkText: string };
 type InfoParam = { info: string };
 type PlacementParam = { placement: TipPlacements };
 
-export const createFocusOnClick = (
-  ref: RefObject<HTMLDivElement | null>
-) => {
+export const createFocusOnClick = (ref: RefObject<HTMLDivElement | null>) => {
   return ({ isTipHidden }: { isTipHidden: boolean }) => {
     if (!isTipHidden) ref.current?.focus();
   };
@@ -425,7 +423,10 @@ export const openInfoTipsWithKeyboard = async ({
   await userEvent.keyboard('{Enter}');
 
   for (let i = 1; i < count; i += 1) {
+    // Sequential keyboard simulation must run in order; await-in-loop is intentional
+    // eslint-disable-next-line no-await-in-loop
     await userEvent.tab();
+    // eslint-disable-next-line no-await-in-loop
     await userEvent.keyboard('{Enter}');
   }
 

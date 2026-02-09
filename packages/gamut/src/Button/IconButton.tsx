@@ -1,6 +1,9 @@
 import { ComponentProps, forwardRef } from 'react';
 
-import type { ButtonBaseElements, ButtonBaseRef } from '../ButtonBase/ButtonBase';
+import type {
+  ButtonBaseElements,
+  ButtonBaseRef,
+} from '../ButtonBase/ButtonBase';
 import { ToolTip, ToolTipProps } from '../Tip/ToolTip';
 import { IconComponentType } from '../utils';
 import {
@@ -26,7 +29,10 @@ export type IconButtonProps = Omit<
     tipProps?: Omit<ToolTipProps, 'info' | 'children'>;
   };
 
-export const IconButton = forwardRef<ButtonBaseElements | null, IconButtonProps>(
+export const IconButton = forwardRef<
+  ButtonBaseElements | null,
+  IconButtonProps
+>(
   (
     {
       'aria-label': ariaLabel,
