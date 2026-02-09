@@ -1,6 +1,6 @@
 import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { type LegacyRef, ComponentProps, forwardRef } from 'react';
 
 import { Box } from '../Box';

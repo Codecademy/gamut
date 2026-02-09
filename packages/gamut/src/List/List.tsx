@@ -1,6 +1,7 @@
 import { DotLoose } from '@codecademy/gamut-patterns';
 import { timingValues } from '@codecademy/gamut-styles';
 import isArray from 'lodash/isArray';
+import type { MotionProps } from 'motion/react';
 import { ComponentProps, forwardRef, useEffect } from 'react';
 import * as React from 'react';
 
@@ -84,7 +85,11 @@ export const List = forwardRef<HTMLUListElement | null, ListProps>(
     const { isEnd, tableRef, setWrapperRef, handleScroll } =
       useScrollabilityCheck({ shadow, scrollable, children, loading, isEmpty });
 
-    const ListWrapper = shadow ? AnimatedListWrapper : StaticListWrapper;
+    const ListWrapper = (
+      shadow ? AnimatedListWrapper : StaticListWrapper
+    ) as React.ComponentType<
+      ComponentProps<typeof StaticListWrapper> & Partial<MotionProps>
+    >;
     const showShadow = shadow && scrollable && !isEnd && !isEmpty;
     const animationVar = showShadow ? 'shadow' : 'hidden';
 

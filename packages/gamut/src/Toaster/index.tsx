@@ -1,5 +1,5 @@
 import { ColorMode, ColorModes } from '@codecademy/gamut-styles';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'motion/react';
 import { ReactNode } from 'react';
 import * as React from 'react';
 

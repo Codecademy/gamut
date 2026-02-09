@@ -15,7 +15,7 @@ type FlexBoxWithNullableRef = React.ForwardRefExoticComponent<
   ComponentProps<typeof StyledFlexBox> &
     React.RefAttributes<HTMLDivElement | null>
 > & {
-  withComponent: <C extends keyof JSX.IntrinsicElements>(
+  withComponent: <C extends keyof React.JSX.IntrinsicElements>(
     as: C
   ) => React.ForwardRefExoticComponent<
     ComponentProps<typeof StyledFlexBox> &

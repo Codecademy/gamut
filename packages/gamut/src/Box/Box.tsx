@@ -14,7 +14,7 @@ const StyledBox = styled('div', styledOptions(['fit']))<BoxProps>(
 type BoxWithNullableRef = React.ForwardRefExoticComponent<
   ComponentProps<typeof StyledBox> & React.RefAttributes<HTMLDivElement | null>
 > & {
-  withComponent: <C extends keyof JSX.IntrinsicElements>(
+  withComponent: <C extends keyof React.JSX.IntrinsicElements>(
     as: C
   ) => React.ForwardRefExoticComponent<
     ComponentProps<typeof StyledBox> & React.RefAttributes<HTMLElement | null>
