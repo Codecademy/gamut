@@ -81,6 +81,31 @@ describe('orderPropNames', () => {
 
     expect(result).toEqual(['margin', 'marginX', 'marginY', 'marginLeft']);
   });
+
+  it('handles DirectionalProperties objects with physical/logical arrays', () => {
+    const result = orderPropNames({
+      mx: {
+        property: 'margin',
+        properties: {
+          physical: ['marginLeft', 'marginRight'],
+          logical: ['marginInlineStart', 'marginInlineEnd'],
+        },
+      },
+      my: {
+        property: 'margin',
+        properties: {
+          physical: ['marginTop', 'marginBottom'],
+          logical: ['marginBlockStart', 'marginBlockEnd'],
+        },
+      },
+      marginLeft: {
+        property: 'marginLeft',
+      },
+    });
+
+    expect(result).toEqual(['mx', 'my', 'marginLeft']);
+  });
+
   it('orders all props', () => {
     const result = orderPropNames(testConfig);
 
