@@ -1616,7 +1616,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codecademy/gamut-icons@npm:9.54.2, @codecademy/gamut-icons@workspace:packages/gamut-icons":
+"@codecademy/gamut-icons@npm:9.54.2":
+  version: 9.54.2
+  resolution: "@codecademy/gamut-icons@npm:9.54.2"
+  dependencies:
+    "@codecademy/gamut-styles": "npm:17.11.2"
+    "@codecademy/variance": "npm:0.25.2"
+  peerDependencies:
+    "@emotion/react": ^11.4.0
+    "@emotion/styled": ^11.3.0
+    lodash: ^4.17.23
+    react: ^17.0.2 || ^18.2.0
+  checksum: 10c0/80f10b2261c4434a9c09fa9175a8107f9b505b0e7799d689d906cd7db6014260e4753353cac3f430ca98665b321fda93755ec451666e60771e1f44e03d68c178
+  languageName: node
+  linkType: hard
+
+"@codecademy/gamut-icons@npm:9.55.0, @codecademy/gamut-icons@workspace:packages/gamut-icons":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-icons@workspace:packages/gamut-icons"
   dependencies:
@@ -1648,8 +1663,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-kit@workspace:packages/gamut-kit"
   dependencies:
-    "@codecademy/gamut": "npm:68.0.0"
-    "@codecademy/gamut-icons": "npm:9.54.2"
+    "@codecademy/gamut": "npm:68.0.1"
+    "@codecademy/gamut-icons": "npm:9.55.0"
     "@codecademy/gamut-illustrations": "npm:0.58.2"
     "@codecademy/gamut-patterns": "npm:0.10.21"
     "@codecademy/gamut-styles": "npm:17.11.2"
@@ -1703,7 +1718,43 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut@npm:68.0.0, @codecademy/gamut@workspace:packages/gamut":
+"@codecademy/gamut@npm:68.0.1":
+  version: 68.0.1
+  resolution: "@codecademy/gamut@npm:68.0.1"
+  dependencies:
+    "@codecademy/gamut-icons": "npm:9.55.0"
+    "@codecademy/gamut-illustrations": "npm:0.58.2"
+    "@codecademy/gamut-patterns": "npm:0.10.21"
+    "@codecademy/gamut-styles": "npm:17.11.2"
+    "@codecademy/variance": "npm:0.25.2"
+    "@types/marked": "npm:^4.0.8"
+    "@vidstack/react": "npm:^1.12.12"
+    classnames: "npm:^2.2.5"
+    framer-motion: "npm:^11.18.0"
+    html-to-react: "npm:^1.6.0"
+    invariant: "npm:^2.2.4"
+    lodash: "npm:^4.17.23"
+    marked: "npm:^4.3.0"
+    polished: "npm:^4.1.2"
+    react-aria-components: "npm:1.8.0"
+    react-aria-tabpanel: "npm:^4.4.0"
+    react-focus-on: "npm:^3.10.0"
+    react-hook-form: "npm:^7.65.0"
+    react-player: "npm:^2.16.0"
+    react-select: "npm:^5.2.2"
+    react-truncate-markup: "npm:^5.1.2"
+    react-use: "npm:^15.3.8"
+    sanitize-markdown: "npm:^2.6.7"
+  peerDependencies:
+    "@emotion/react": ^11.4.0
+    "@emotion/styled": ^11.3.0
+    react: ^17.0.2 || ^18.2.0
+    react-dom: ^17.0.2 || ^18.2.0
+  checksum: 10c0/5639b3edbaa0efe55ae4d1ee6a2b7e89b98a5181b69ff39260604429e9feb74ef90b8582e3de7c69ff7ff43eaa7c4b25730ad55d8422883e9bd47fa52c8d74b9
+  languageName: node
+  linkType: hard
+
+"@codecademy/gamut@workspace:packages/gamut":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut@workspace:packages/gamut"
   dependencies:

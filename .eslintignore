@@ -8,4 +8,6 @@ docs
 **/tmp
 packages/gamut-icons/src/icons
 packages/gamut-patterns/src/patterns
+**/code-connect/**
+packages/code-connect
 .nx

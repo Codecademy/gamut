@@ -46,11 +46,15 @@ const preview: Preview = {
           [
             'About',
             'Best Practices',
-            'ESLint rules',
             'Contributing',
+            'ESLint rules',
             'FAQs',
             'Logical and physical CSS properties',
             'Stories',
+            'Brand',
+            'Installation',
+            'Usage Guide',
+            'MCP',
           ],
           'Foundations',
           'Layouts',
@@ -173,6 +177,18 @@ export const globalTypes = {
       items: [
         { value: 'true', title: 'Logical' },
         { value: 'false', title: 'Physical' },
+      ],
+      showName: true,
+    },
+  },
+  direction: {
+    name: 'Direction',
+    description: 'Text direction for the page',
+    defaultValue: 'ltr',
+    toolbar: {
+      items: [
+        { value: 'ltr', icon: 'arrowright', title: 'Left-To-Right' },
+        { value: 'rtl', icon: 'arrowleft', title: 'Right-To-Left' },
       ],
       showName: true,
     },
