@@ -9,7 +9,9 @@ import styled, { StyledComponent } from '@emotion/styled';
 import {
   ChangeEvent,
   forwardRef,
+  ForwardRefExoticComponent,
   InputHTMLAttributes,
+  RefAttributes,
   useState,
 } from 'react';
 import * as React from 'react';
@@ -181,4 +183,6 @@ export const Input = forwardRef<
       </Box>
     );
   }
-);
+) as ForwardRefExoticComponent<
+  InputWrapperProps & RefAttributes<HTMLInputElement | null>
+>;

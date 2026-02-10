@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 import {
   ChangeEvent,
   forwardRef,
+  ForwardRefExoticComponent,
+  RefAttributes,
   TextareaHTMLAttributes,
   useState,
 } from 'react';
@@ -53,4 +55,6 @@ export const TextArea = forwardRef<
       onChange={(event) => changeHandler(event)}
     />
   );
-});
+}) as ForwardRefExoticComponent<
+  TextAreaProps & RefAttributes<HTMLTextAreaElement | null>
+>;
