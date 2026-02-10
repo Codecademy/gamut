@@ -1,12 +1,12 @@
 import { styledOptions, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
+import { type ComponentProps } from 'react';
 
 import {
   boxProps,
   GridBoxProps,
   gridStates,
-  ForwardRefStyledDivComponent,
   sharedStates,
 } from './props';
 
@@ -33,8 +33,22 @@ export type GridBoxPolymorphicProps<
     as?: C;
   } & React.RefAttributes<GridBoxIntrinsicElementRef<C> | null>;
 
-export const GridBox = StyledGridBox as unknown as ForwardRefStyledDivComponent<
-  typeof StyledGridBox
->;
+type GridBoxDefaultProps = ComponentProps<typeof StyledGridBox> &
+  React.RefAttributes<HTMLDivElement | null>;
+
+interface GridBoxPolymorphicComponent {
+  (props: GridBoxPolymorphicProps<'img'>): React.ReactElement;
+  (props: GridBoxPolymorphicProps<'form'>): React.ReactElement;
+  (props: GridBoxPolymorphicProps<'input'>): React.ReactElement;
+  (props: GridBoxDefaultProps): React.ReactElement;
+  withComponent: <C extends keyof React.JSX.IntrinsicElements>(
+    as: C
+  ) => React.ForwardRefExoticComponent<
+    ComponentProps<typeof StyledGridBox> &
+      React.RefAttributes<HTMLElement | null>
+  >;
+}
+
+export const GridBox = StyledGridBox as unknown as GridBoxPolymorphicComponent;
 
 export type { GridBoxProps } from './props';

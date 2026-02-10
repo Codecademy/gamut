@@ -1,8 +1,9 @@
 import { styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
+import { type ComponentProps } from 'react';
 
-import { BoxProps, boxProps, ForwardRefStyledDivComponent, sharedStates } from './props';
+import { BoxProps, boxProps, sharedStates } from './props';
 
 const StyledBox = styled('div', styledOptions(['fit']))<BoxProps>(
   sharedStates,
@@ -23,8 +24,22 @@ export type BoxPolymorphicProps<
     as?: C;
   } & React.RefAttributes<BoxIntrinsicElementRef<C> | null>;
 
-export const Box = StyledBox as unknown as ForwardRefStyledDivComponent<
-  typeof StyledBox
->;
+type BoxDefaultProps = ComponentProps<typeof StyledBox> &
+  React.RefAttributes<HTMLDivElement | null>;
+
+/** Polymorphic call signatures so as="img"|"form"|"input" accept intrinsic props (src, alt, action, name, etc.). */
+interface BoxPolymorphicComponent {
+  (props: BoxPolymorphicProps<'img'>): React.ReactElement;
+  (props: BoxPolymorphicProps<'form'>): React.ReactElement;
+  (props: BoxPolymorphicProps<'input'>): React.ReactElement;
+  (props: BoxDefaultProps): React.ReactElement;
+  withComponent: <C extends keyof React.JSX.IntrinsicElements>(
+    as: C
+  ) => React.ForwardRefExoticComponent<
+    ComponentProps<typeof StyledBox> & React.RefAttributes<HTMLElement | null>
+  >;
+}
+
+export const Box = StyledBox as unknown as BoxPolymorphicComponent;
 
 export type { BoxProps } from './props';

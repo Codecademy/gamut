@@ -177,5 +177,7 @@ export const Anchor = forwardRef<
     );
   }
 ) as ForwardRefExoticComponent<
-  AnchorExtProps & RefAttributes<HTMLAnchorElement | HTMLButtonElement | null>
+  Omit<AnchorExtProps, 'ref'> &
+    RefAttributes<HTMLAnchorElement | HTMLButtonElement | null> &
+    Pick<ComponentProps<typeof ButtonBase>, 'disabled'>
 >;

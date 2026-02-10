@@ -3,8 +3,10 @@ import styled from '@emotion/styled';
 import {
   ComponentProps,
   forwardRef,
+  ForwardRefExoticComponent,
   HTMLProps,
   MutableRefObject,
+  RefAttributes,
   RefObject,
 } from 'react';
 
@@ -108,4 +110,7 @@ export const ButtonBase = forwardRef<
       {children}
     </ResetElementAnchor>
   );
-});
+}) as ForwardRefExoticComponent<
+  Omit<ButtonBasePropsUnion, 'ref'> &
+    RefAttributes<ButtonBaseElements | null>
+>;

@@ -1,12 +1,12 @@
 import { css, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
+import { type ComponentProps } from 'react';
 
 import {
   boxProps,
   FlexBoxProps,
   flexStates,
-  ForwardRefStyledDivComponent,
   sharedStates,
 } from './props';
 
@@ -28,8 +28,22 @@ export type FlexBoxPolymorphicProps<
     as?: C;
   } & React.RefAttributes<FlexBoxIntrinsicElementRef<C> | null>;
 
-export const FlexBox = StyledFlexBox as unknown as ForwardRefStyledDivComponent<
-  typeof StyledFlexBox
->;
+type FlexBoxDefaultProps = ComponentProps<typeof StyledFlexBox> &
+  React.RefAttributes<HTMLDivElement | null>;
+
+interface FlexBoxPolymorphicComponent {
+  (props: FlexBoxPolymorphicProps<'img'>): React.ReactElement;
+  (props: FlexBoxPolymorphicProps<'form'>): React.ReactElement;
+  (props: FlexBoxPolymorphicProps<'input'>): React.ReactElement;
+  (props: FlexBoxDefaultProps): React.ReactElement;
+  withComponent: <C extends keyof React.JSX.IntrinsicElements>(
+    as: C
+  ) => React.ForwardRefExoticComponent<
+    ComponentProps<typeof StyledFlexBox> &
+      React.RefAttributes<HTMLElement | null>
+  >;
+}
+
+export const FlexBox = StyledFlexBox as unknown as FlexBoxPolymorphicComponent;
 
 export type { FlexBoxProps } from './props';
