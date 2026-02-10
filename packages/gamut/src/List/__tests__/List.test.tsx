@@ -48,22 +48,13 @@ describe('List', () => {
     expect(rowEl).toHaveStyle({ columnGap: theme.spacing[40] });
   });
 
-  // Note: Only testing one mode here since variant() caches styles after first render.
   it('configures columns with the correct variants', () => {
-    const useLogicalProperties = true;
-    const paddingLeft = useLogicalProperties
-      ? 'paddingInlineStart'
-      : 'paddingLeft';
-    const paddingRight = useLogicalProperties
-      ? 'paddingInlineEnd'
-      : 'paddingRight';
-
     const { view } = renderView();
     const colEl = view.getByText('Hello');
 
     expect(colEl).not.toHaveStyle({ py: 16 });
-    expect(colEl).toHaveStyle({ [paddingLeft]: theme.spacing[8] });
-    expect(colEl).toHaveStyle({ [paddingRight]: theme.spacing[8] });
+    expect(colEl).toHaveStyle({ paddingInlineStart: theme.spacing[8] });
+    expect(colEl).toHaveStyle({ paddingInlineEnd: theme.spacing[8] });
     expect(colEl).not.toHaveStyle({ position: 'sticky' });
   });
 

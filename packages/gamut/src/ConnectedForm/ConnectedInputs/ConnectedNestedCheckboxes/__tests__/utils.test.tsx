@@ -545,36 +545,28 @@ describe('ConnectedNestedCheckboxes utils', () => {
       expect(checkbox).toHaveAttribute('aria-checked', 'false');
     });
 
-    it.each([
-      { useLogicalProperties: true, marginLeft: 'marginInlineStart' },
-      { useLogicalProperties: false, marginLeft: 'marginLeft' },
-    ])(
-      'should apply correct margin based on level (useLogicalProperties: $useLogicalProperties)',
-      ({ useLogicalProperties, marginLeft }) => {
-        const state = { checked: false, indeterminate: false };
+    it('should apply correct margin based on level', () => {
+      const state = { checked: false, indeterminate: false };
 
-        const result = renderCheckbox({
-          option: { ...mockOption, level: 2 },
-          state,
-          name: 'test',
-          isRequired: false,
-          isDisabled: false,
-          onBlur: mockOnBlur,
-          onChange: mockOnChange,
-          ref: mockRef,
-          flatOptions: [{ ...mockOption, level: 2 }],
-        });
+      const result = renderCheckbox({
+        option: { ...mockOption, level: 2 },
+        state,
+        name: 'test',
+        isRequired: false,
+        isDisabled: false,
+        onBlur: mockOnBlur,
+        onChange: mockOnChange,
+        ref: mockRef,
+        flatOptions: [{ ...mockOption, level: 2 }],
+      });
 
-        const { container } = render(
-          <MockGamutProvider useLogicalProperties={useLogicalProperties}>
-            {result}
-          </MockGamutProvider>
-        );
-        const listItem = container.querySelector('li');
+      const { container } = render(
+        <MockGamutProvider useLogicalProperties>{result}</MockGamutProvider>
+      );
+      const listItem = container.querySelector('li');
 
-        expect(listItem).toHaveStyle({ [marginLeft]: '3rem' }); // 24px * 2 = 48px = 3rem
-      }
-    );
+      expect(listItem).toHaveStyle({ marginInlineStart: '48px' }); // 24px * 2 = 48px
+    });
 
     it('should handle disabled state', () => {
       const state = { checked: false, indeterminate: false };

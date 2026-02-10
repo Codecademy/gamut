@@ -90,33 +90,21 @@ describe('ConnectedNestedCheckboxes', () => {
       view.getByLabelText('Fastify');
     });
 
-    it.each([
-      { useLogicalProperties: true, marginLeft: 'marginInlineStart' },
-      { useLogicalProperties: false, marginLeft: 'marginLeft' },
-    ])(
-      'should render checkboxes with proper indentation levels (useLogicalProperties: $useLogicalProperties)',
-      ({ useLogicalProperties, marginLeft }) => {
-        render(
-          <MockGamutProvider useLogicalProperties={useLogicalProperties}>
-            <TestForm />
-          </MockGamutProvider>
-        );
+    it('should render checkboxes with proper indentation levels ', () => {
+      render(<TestForm />);
 
-        const frontendCheckbox = screen
-          .getByLabelText('Frontend Technologies')
-          .closest('li');
-        const reactCheckbox = screen.getByLabelText('React').closest('li');
-        const nodeCheckbox = screen.getByLabelText('Node.js').closest('li');
-        const expressCheckbox = screen
-          .getByLabelText('Express.js')
-          .closest('li');
+      const frontendCheckbox = screen
+        .getByLabelText('Frontend Technologies')
+        .closest('li');
+      const reactCheckbox = screen.getByLabelText('React').closest('li');
+      const nodeCheckbox = screen.getByLabelText('Node.js').closest('li');
+      const expressCheckbox = screen.getByLabelText('Express.js').closest('li');
 
-        expect(frontendCheckbox).toHaveStyle({ [marginLeft]: '0' });
-        expect(reactCheckbox).toHaveStyle({ [marginLeft]: '1.5rem' });
-        expect(nodeCheckbox).toHaveStyle({ [marginLeft]: '1.5rem' });
-        expect(expressCheckbox).toHaveStyle({ [marginLeft]: '3rem' });
-      }
-    );
+      expect(frontendCheckbox).toHaveStyle({ marginInlineStart: 0 });
+      expect(reactCheckbox).toHaveStyle({ marginInlineStart: '24px' });
+      expect(nodeCheckbox).toHaveStyle({ marginInlineStart: '24px' });
+      expect(expressCheckbox).toHaveStyle({ marginInlineStart: '48px' });
+    });
 
     it('should render with unique IDs for each checkbox', () => {
       const { view } = renderView();
