@@ -69,7 +69,7 @@ export const Dialog: React.FC<DialogProps> = ({
         aria-modal="true"
         data-autofocus
         layout="dialog"
-        ref={containerFocusRef as React.LegacyRef<HTMLDivElement>}
+        ref={containerFocusRef}
         role="dialog"
         size={size}
         tabIndex={-1}

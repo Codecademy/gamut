@@ -122,7 +122,7 @@ export const InternalFloatingCard = forwardRef<
       <CardBody
         className={className}
         {...rest}
-        ref={ref as React.LegacyRef<HTMLDivElement>}
+        ref={ref}
       >
         {children}
       </CardBody>

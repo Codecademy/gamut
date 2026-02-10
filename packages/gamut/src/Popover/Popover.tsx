@@ -200,7 +200,7 @@ export const Popover: React.FC<PopoverProps> = ({
       data-testid="popover-content-container"
       position={position}
       {...(popoverContainerRef
-        ? { ref: popoverContainerRef as React.LegacyRef<HTMLDivElement> }
+        ? { ref: popoverContainerRef }
         : {})}
       role={role}
       // eslint-disable-next-line gamut/no-inline-style

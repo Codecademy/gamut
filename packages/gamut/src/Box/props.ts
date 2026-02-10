@@ -1,7 +1,21 @@
 import { system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
+import type { ComponentProps } from 'react';
+import type React from 'react';
 
 import { WithChildrenProp } from '../utils';
+
+/** React 19 ref compat: shared type for styled div components with nullable ref and withComponent. See docs/EMOTION_12_CLEANUP.md. */
+export type ForwardRefStyledDivComponent<Styled extends React.ComponentType<any>> =
+  React.ForwardRefExoticComponent<
+    ComponentProps<Styled> & React.RefAttributes<HTMLDivElement | null>
+  > & {
+    withComponent: <C extends keyof React.JSX.IntrinsicElements>(
+      as: C
+    ) => React.ForwardRefExoticComponent<
+      ComponentProps<Styled> & React.RefAttributes<HTMLElement | null>
+    >;
+  };
 
 export const boxProps = variance.compose(
   system.space,

@@ -1,9 +1,14 @@
 import { css, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import * as React from 'react';
-import { type ComponentProps } from 'react';
 
-import { boxProps, FlexBoxProps, flexStates, sharedStates } from './props';
+import {
+  boxProps,
+  FlexBoxProps,
+  flexStates,
+  ForwardRefStyledDivComponent,
+  sharedStates,
+} from './props';
 
 const StyledFlexBox = styled(
   'div',
@@ -17,25 +22,14 @@ type FlexBoxIntrinsicElementRef<C extends keyof React.JSX.IntrinsicElements> =
 
 /** Props when rendering as intrinsic element C. Export for consumers to type polymorphic usage. */
 export type FlexBoxPolymorphicProps<
-  C extends keyof React.JSX.IntrinsicElements = 'div',
+  C extends keyof React.JSX.IntrinsicElements = 'div'
 > = Omit<FlexBoxProps, 'as'> &
   React.JSX.IntrinsicElements[C] & {
     as?: C;
   } & React.RefAttributes<FlexBoxIntrinsicElementRef<C> | null>;
 
-/** Type-only: widens ref to Ref<HTMLDivElement | null> for React 18/19 compatibility. */
-type FlexBoxWithNullableRef = React.ForwardRefExoticComponent<
-  ComponentProps<typeof StyledFlexBox> &
-    React.RefAttributes<HTMLDivElement | null>
-> & {
-  withComponent: <C extends keyof React.JSX.IntrinsicElements>(
-    as: C,
-  ) => React.ForwardRefExoticComponent<
-    ComponentProps<typeof StyledFlexBox> &
-      React.RefAttributes<HTMLElement | null>
-  >;
-};
-
-export const FlexBox = StyledFlexBox as unknown as FlexBoxWithNullableRef;
+export const FlexBox = StyledFlexBox as unknown as ForwardRefStyledDivComponent<
+  typeof StyledFlexBox
+>;
 
 export type { FlexBoxProps } from './props';

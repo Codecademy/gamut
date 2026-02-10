@@ -6,7 +6,7 @@ import {
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import isObject from 'lodash/isObject';
-import { type LegacyRef, ComponentProps, forwardRef } from 'react';
+import { ComponentProps, forwardRef } from 'react';
 
 import { sharedStates } from '../Box/props';
 import { resetStyles, Selectors } from '../ButtonBase/ButtonBase';
@@ -74,7 +74,7 @@ export const List = forwardRef<
   <StyledList
     context={context}
     m={m}
-    ref={ref as LegacyRef<HTMLUListElement>}
+    ref={ref}
     root={root}
     showBorder={variant !== 'fixed'}
     variant={variant}
@@ -226,7 +226,7 @@ export const ListLink = forwardRef<
   ComponentProps<typeof StyledListLink>
 >(({ zIndex = 1, ...rest }, ref) => (
   <StyledListLink
-    ref={ref as LegacyRef<HTMLAnchorElement>}
+    ref={ref}
     zIndex={zIndex}
     {...rest}
   />

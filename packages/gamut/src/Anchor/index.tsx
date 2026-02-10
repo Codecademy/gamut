@@ -1,7 +1,14 @@
 import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps, forwardRef, HTMLProps, RefObject } from 'react';
+import {
+  ComponentProps,
+  forwardRef,
+  ForwardRefExoticComponent,
+  HTMLProps,
+  RefAttributes,
+  RefObject,
+} from 'react';
 
 import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
 import { AppendedIconProps, appendIconToContent } from '../helpers';
@@ -169,4 +176,6 @@ export const Anchor = forwardRef<
       </AnchorBase>
     );
   }
-);
+) as ForwardRefExoticComponent<
+  AnchorExtProps & RefAttributes<HTMLAnchorElement | HTMLButtonElement | null>
+>;

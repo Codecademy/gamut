@@ -31,9 +31,10 @@ const StyledTextArea = styled.textarea<TextAreaProps>`
   border-radius: 'md';
 `;
 
+/** React 19 ref compat: Omit ref so forwardRef is the single source (see typings/react-19-compat.d.ts). */
 export const TextArea = forwardRef<
   HTMLTextAreaElement | null,
-  TextWrapperProps
+  Omit<TextWrapperProps, 'ref'>
 >(({ error, className, id, ...rest }, ref) => {
   const [activated, setActivated] = useState(false);
 

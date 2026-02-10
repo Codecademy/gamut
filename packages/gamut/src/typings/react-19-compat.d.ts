@@ -1,7 +1,7 @@
 /**
  * React 19 / Emotion type compatibility polyfills.
  *
- * REMOVE THIS FILE when @emotion/styled and @types/react fully support React 19
+ * REMOVE THIS FILE when Emotion 12 (and/or @types/react) fully support React 19
  * (e.g. optional onResize, nullable refs). Until then, these module augmentations
  * keep Gamut and its consumers type-checking with both React 18 and 19.
  *
@@ -27,7 +27,9 @@ declare module 'react' {
 /**
  * Not in this file (must stay in component code until upstream fixes):
  * - forwardRef<T | null> and ref prop overrides (ButtonBaseRef, etc.) – component API
- * - Casts when passing ref to DOM (ref as LegacyRef<T>) – implementation detail
+ * - Union-narrowing ref casts in Anchor and ButtonBase (ref can be anchor|button) – implementation detail
  * - Button union (onAnimationStart) casts in SubmitButton/GridFormButtons – union typing
  * - Optional href on ButtonProps – Gamut API choice for link-style buttons
  */
+
+/** Cleanup when Emotion 12 / @types/react support React 19: see packages/gamut/docs/EMOTION_12_CLEANUP.md */

@@ -1,7 +1,7 @@
 import { Background, css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'motion/react';
-import { type LegacyRef, ComponentProps, forwardRef } from 'react';
+import { ComponentProps, forwardRef } from 'react';
 
 import { Box } from '../Box';
 import { FillButton } from '../Button';
@@ -27,7 +27,7 @@ export const AlertBanner = forwardRef<
     <StyledAlertBanner
       aria-label={ariaLabel}
       aria-live={ariaLive}
-      ref={ref as LegacyRef<HTMLDivElement>}
+      ref={ref}
       role={role}
       {...rest}
     />
@@ -53,7 +53,7 @@ export const AlertBox = forwardRef<
     <StyledAlertBox
       aria-label={ariaLabel}
       aria-live={ariaLive}
-      ref={ref as LegacyRef<HTMLDivElement>}
+      ref={ref}
       role={role}
       {...rest}
     />
