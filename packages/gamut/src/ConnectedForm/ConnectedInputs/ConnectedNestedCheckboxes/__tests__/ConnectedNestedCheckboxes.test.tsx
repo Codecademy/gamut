@@ -1,4 +1,4 @@
-import { MockGamutProvider, setupRtl } from '@codecademy/gamut-tests';
+import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
