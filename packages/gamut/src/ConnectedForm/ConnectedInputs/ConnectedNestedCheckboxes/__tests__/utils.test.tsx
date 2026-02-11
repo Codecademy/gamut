@@ -1,4 +1,3 @@
-import { MockGamutProvider } from '@codecademy/gamut-tests';
 import { render } from '@testing-library/react';
 
 import {
