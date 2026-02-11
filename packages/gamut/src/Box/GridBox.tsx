@@ -33,7 +33,8 @@ export type GridBoxPolymorphicProps<
     as?: C;
   } & React.RefAttributes<GridBoxIntrinsicElementRef<C> | null>;
 
-type GridBoxDefaultProps = ComponentProps<typeof StyledGridBox> &
+/** Omit ref so we don't intersect with StyledGridBox's ref (React 19: accept RefObject<El | null>). */
+type GridBoxDefaultProps = Omit<ComponentProps<typeof StyledGridBox>, 'ref'> &
   React.RefAttributes<HTMLDivElement | null>;
 
 interface GridBoxPolymorphicComponent {

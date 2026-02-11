@@ -28,5 +28,5 @@ export const Form = forwardRef<
 >(({ method = 'post', ...props }, ref) => {
   return <StyledForm {...props} method={method} noValidate ref={ref} />;
 }) as ForwardRefExoticComponent<
-  FormProps & RefAttributes<HTMLFormElement | null>
+  Omit<FormProps, 'ref'> & RefAttributes<HTMLFormElement | null>
 >;

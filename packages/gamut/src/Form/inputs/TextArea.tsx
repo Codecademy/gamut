@@ -56,5 +56,5 @@ export const TextArea = forwardRef<
     />
   );
 }) as ForwardRefExoticComponent<
-  TextAreaProps & RefAttributes<HTMLTextAreaElement | null>
+  Omit<TextAreaProps, 'ref'> & RefAttributes<HTMLTextAreaElement | null>
 >;

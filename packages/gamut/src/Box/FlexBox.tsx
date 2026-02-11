@@ -28,7 +28,8 @@ export type FlexBoxPolymorphicProps<
     as?: C;
   } & React.RefAttributes<FlexBoxIntrinsicElementRef<C> | null>;
 
-type FlexBoxDefaultProps = ComponentProps<typeof StyledFlexBox> &
+/** Omit ref so we don't intersect with StyledFlexBox's ref (React 19: accept RefObject<El | null>). */
+type FlexBoxDefaultProps = Omit<ComponentProps<typeof StyledFlexBox>, 'ref'> &
   React.RefAttributes<HTMLDivElement | null>;
 
 interface FlexBoxPolymorphicComponent {

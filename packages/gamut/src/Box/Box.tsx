@@ -24,7 +24,8 @@ export type BoxPolymorphicProps<
     as?: C;
   } & React.RefAttributes<BoxIntrinsicElementRef<C> | null>;
 
-type BoxDefaultProps = ComponentProps<typeof StyledBox> &
+/** Omit ref so we don't intersect with StyledBox's ref (React 19: accept RefObject<El | null>). */
+type BoxDefaultProps = Omit<ComponentProps<typeof StyledBox>, 'ref'> &
   React.RefAttributes<HTMLDivElement | null>;
 
 /** Polymorphic call signatures so as="img"|"form"|"input" accept intrinsic props (src, alt, action, name, etc.). */

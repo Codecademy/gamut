@@ -184,5 +184,5 @@ export const Input = forwardRef<
     );
   }
 ) as ForwardRefExoticComponent<
-  InputWrapperProps & RefAttributes<HTMLInputElement | null>
+  Omit<InputWrapperProps, 'ref'> & RefAttributes<HTMLInputElement | null>
 >;
