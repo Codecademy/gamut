@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.58.2](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.58.1...@codecademy/gamut-illustrations@0.58.2) (2026-01-28)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+### [0.58.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.58.0...@codecademy/gamut-illustrations@0.58.1) (2026-01-26)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+## [0.58.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.57.0...@codecademy/gamut-illustrations@0.58.0) (2026-01-12)
+
+### Features
+
+- **Illustration:** :sparkles: Add CubeIllustration component ([348f3d3](https://github.com/Codecademy/gamut/commit/348f3d335e1dd949e85c22b62adef4e8b18a8e0e))
+
 ## [0.57.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-illustrations@0.56.0...@codecademy/gamut-illustrations@0.57.0) (2025-12-03)
 
 ### Features

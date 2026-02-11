@@ -1,0 +1,48 @@
+codecov:
+  require_ci_to_pass: false
+
+# use flags to differentiate coverage for:
+# - each package in the monorepo
+# - pull requests and the main branch
+#
+# use carryforward by default since we're testing with nx affected on everything
+# except the main branch.
+# https://docs.codecov.com/docs/carryforward-flags
+flag_management:
+  default_rules:
+    carryforward: true
+    paths:
+      - packages/*/
+  individual_flags:
+    # Workflow-specific flags (not package-based)
+    - name: pull-request
+      carryforward: true
+      paths:
+        - packages/
+    - name: main
+      carryforward: false
+      paths:
+        - packages/
+
+# https://docs.codecov.com/docs/codecovyml-reference#coverage
+coverage:
+  status:
+    # https://docs.codecov.com/docs/commit-status#project-status
+    project:
+      default:
+        target: 80%
+        threshold: 1%
+    # https://docs.codecov.com/docs/commit-status#patch-status
+    patch:
+      default:
+        target: 80%
+        threshold: 1%
+    # https://docs.codecov.com/docs/commit-status#changes-status
+    changes:
+      default:
+        informational: true
+
+# https://docs.codecov.com/docs/pull-request-comments
+comment:
+  # only comment if there are changes in coverage (positive or negative)
+  require_changes: true

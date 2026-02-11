@@ -83,13 +83,15 @@ export const getComponent = (componentName: string) => {
 
 type GridFormInputGroupTestComponentProps = GridFormInputGroupProps & {
   mode?: 'onSubmit' | 'onChange';
+  externalLabel?: { id: string; text: string };
 };
 
 export const GridFormInputGroupTestComponent: React.FC<
   GridFormInputGroupTestComponentProps
-> = ({ field, mode = 'onSubmit', ...rest }) => {
+> = ({ field, mode = 'onSubmit', externalLabel, ...rest }) => {
   return (
     <FormContext mode={mode}>
+      {externalLabel && <span id={externalLabel.id}>{externalLabel.text}</span>}
       <GridFormInputGroup field={field} {...rest} />
     </FormContext>
   );

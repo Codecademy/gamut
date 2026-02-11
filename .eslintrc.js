@@ -8,6 +8,8 @@ module.exports = {
 
   plugins: ['eslint-plugin-gamut'],
 
+  ignorePatterns: ['packages/code-connect/**/*'],
+
   rules: {
     'gamut/prefer-themed': 'error',
     'gamut/no-css-standalone': 'error',
@@ -71,6 +73,12 @@ module.exports = {
       files: ['packages/gamut-illustrations/**'],
       rules: {
         'gamut/no-inline-style': 'off',
+      },
+    },
+    {
+      files: ['packages/styleguide/**/*.mdx'],
+      rules: {
+        'gamut/no-kbd-element': 'error',
       },
     },
   ],

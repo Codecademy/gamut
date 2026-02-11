@@ -1,5 +1,9 @@
 import { theme, timingValues, variant } from '@codecademy/gamut-styles';
 
+const SHADOW_OFFSET = 8;
+const SHADOW_OFFSET_INITIAL = 6;
+const TRANSFORM_OFFSET = 4;
+
 export const cardVariants = variant({
   defaultVariant: 'default',
   base: {
@@ -35,7 +39,7 @@ export const shadowVariants = variant({
     patternLeft: {},
     patternRight: {},
     outline: {
-      boxShadow: `-6px 6px ${theme.colors['background-current']}, -6px 6px 0 1px ${theme.colors['border-primary']}`,
+      boxShadow: `-${SHADOW_OFFSET}px ${SHADOW_OFFSET}px ${theme.colors['background-current']}, -${SHADOW_OFFSET}px ${SHADOW_OFFSET}px 0 1px ${theme.colors['border-primary']}`,
     },
   },
 });
@@ -57,38 +61,59 @@ export const patternFadeInOut = {
   },
 };
 
-export const hoverShadowLeft = {
+export const hoverShadowLeft = (borderRadius?: string) => ({
   initial: {
     boxShadow: `0px 0px 0 ${theme.colors['shadow-primary']}`,
+    borderRadius,
+    transition: {
+      duration: timingValues.fast / 1000,
+      ease: 'easeOut',
+    },
+  },
+  initialOutline: {
+    boxShadow: `-${SHADOW_OFFSET_INITIAL}px ${SHADOW_OFFSET_INITIAL}px 0 0px ${theme.colors['background-current']}, -${SHADOW_OFFSET_INITIAL}px ${SHADOW_OFFSET_INITIAL}px 0 1px ${theme.colors['border-primary']}`,
+    borderRadius,
     transition: {
       duration: timingValues.fast / 1000,
       ease: 'easeOut',
     },
   },
   animate: {
-    transform: 'translate(4px, -4px)',
-    boxShadow: `-8px 8px 0 ${theme.colors['shadow-primary']}`,
+    transform: `translate(${TRANSFORM_OFFSET}px, -${TRANSFORM_OFFSET}px)`,
+    boxShadow: `-${SHADOW_OFFSET}px ${SHADOW_OFFSET}px 0 ${theme.colors['shadow-primary']}`,
+    borderRadius,
     transition: {
       duration: timingValues.fast / 1000,
       ease: 'easeIn',
     },
   },
-};
+  animateOutline: {
+    transform: `translate(${TRANSFORM_OFFSET}px, -${TRANSFORM_OFFSET}px)`,
+    boxShadow: `-${SHADOW_OFFSET}px ${SHADOW_OFFSET}px 0 0px ${theme.colors['shadow-primary']}, -${SHADOW_OFFSET}px ${SHADOW_OFFSET}px 0 1px ${theme.colors['shadow-primary']}`,
+    borderRadius,
+    transition: {
+      duration: timingValues.fast / 1000,
+      ease: 'easeIn',
+    },
+  },
+});
 
-export const hoverShadowRight = {
+export const hoverShadowRight = (borderRadius?: string) => ({
   initial: {
     boxShadow: `0px 0px 0 ${theme.colors['shadow-primary']}`,
+    borderRadius,
     transition: {
       duration: timingValues.fast / 1000,
       ease: 'easeOut',
     },
   },
   animate: {
-    transform: 'translate(-4px, -4px)',
-    boxShadow: `8px 8px 0 ${theme.colors['shadow-primary']}`,
+    transform: `translate(-${TRANSFORM_OFFSET}px, -${TRANSFORM_OFFSET}px)`,
+    boxShadow: `${SHADOW_OFFSET}px ${SHADOW_OFFSET}px 0 ${theme.colors['shadow-primary']}`,
+    borderRadius,
     transition: {
       duration: timingValues.fast / 1000,
       ease: 'easeIn',
     },
   },
-};
+});

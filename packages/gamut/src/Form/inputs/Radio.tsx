@@ -5,13 +5,17 @@ import { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 import * as React from 'react';
 
 import { FlexBox } from '../../Box';
-import { InfoTip, InfoTipProps } from '../../Tip/InfoTip';
+import { InfoTip } from '../../Tip/InfoTip';
+import {
+  InfoTipSubComponentProps,
+  useInfotipProps,
+} from '../../Tip/InfoTip/type-utils';
 import {
   conditionalRadioInputStyles,
   conditionalRadioLabelStyles,
+  InputWrapper,
   radioInput,
   radioLabel,
-  radioWrapper,
 } from '../styles';
 import { BaseInputProps } from '../types';
 
@@ -21,9 +25,11 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> &
     disabled?: boolean;
     id?: string;
     /**
-     * Infotip props to render to the right of your radio label
+     * Infotip props to render to the right of your radio label.
+     * The InfoTip button is automatically labelled by the radio label.
+     * To override this behavior, provide `ariaLabel` or `ariaLabelledby`.
      */
-    infotip?: InfoTipProps;
+    infotip?: InfoTipSubComponentProps;
     /**
      * A label for your Radio input - should not include infotips or other interactive elements
      */
@@ -40,7 +46,6 @@ export interface RadioElementProps
   extends RadioProps,
     StyleProps<typeof conditionalRadioInputStyles> {}
 
-const RadioWrapper = styled.div(radioWrapper);
 const RadioLabel = styled.label<RadioElementProps>(
   radioLabel,
   conditionalRadioLabelStyles
@@ -76,9 +81,11 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   ) => {
     const inputId = id ? `${htmlFor}-${id}` : htmlFor;
     const styleState = conditionalStyleState(error, disabled);
+    const { infotipProps, labelId, shouldLabelInfoTip } =
+      useInfotipProps(infotip);
 
     return (
-      <RadioWrapper className={className}>
+      <InputWrapper className={className}>
         <RadioInput
           checked={checked}
           disabled={disabled}
@@ -92,15 +99,20 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           onChange={onChange}
           {...rest}
         />
-        <RadioLabel disabled={disabled} htmlFor={htmlFor} variant={styleState}>
+        <RadioLabel
+          disabled={disabled}
+          htmlFor={htmlFor}
+          id={infotip && shouldLabelInfoTip ? labelId : undefined}
+          variant={styleState}
+        >
           {label}
         </RadioLabel>
-        {infotip && (
+        {infotipProps && (
           <FlexBox center pl={8}>
-            <InfoTip {...infotip} />
+            <InfoTip {...infotipProps} />
           </FlexBox>
         )}
-      </RadioWrapper>
+      </InputWrapper>
     );
   }
 );

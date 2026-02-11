@@ -10,7 +10,7 @@ export default {
     }
 
     if (micromatch.some(allChanges, 'yarn.lock')) {
-      commands.push(`npx yarn-deduplicate`);
+      commands.push(`yarn dedupe`);
     }
 
     const eslintExtensions = `{mdx,ts,tsx,js,jsx,json}`;
