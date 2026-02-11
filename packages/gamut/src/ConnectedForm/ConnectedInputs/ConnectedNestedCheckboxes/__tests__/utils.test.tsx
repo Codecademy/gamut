@@ -560,12 +560,10 @@ describe('ConnectedNestedCheckboxes utils', () => {
         flatOptions: [{ ...mockOption, level: 2 }],
       });
 
-      const { container } = render(
-        <MockGamutProvider useLogicalProperties>{result}</MockGamutProvider>
-      );
+      const { container } = render(result);
       const listItem = container.querySelector('li');
 
-      expect(listItem).toHaveStyle({ marginInlineStart: '48px' }); // 24px * 2 = 48px
+      expect(listItem).toHaveStyle({ marginInlineStart: '48px' }); // 2 * 24px
     });
 
     it('should handle disabled state', () => {

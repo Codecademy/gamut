@@ -1,6 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
-import { act, render, screen } from '@testing-library/react';
+import { act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { ConnectedForm, ConnectedFormGroup, SubmitButton } from '../../..';
@@ -90,20 +90,20 @@ describe('ConnectedNestedCheckboxes', () => {
       view.getByLabelText('Fastify');
     });
 
-    it('should render checkboxes with proper indentation levels ', () => {
-      render(<TestForm />);
+    it('should render checkboxes with proper indentation levels', () => {
+      const { view } = renderView();
 
-      const frontendCheckbox = screen
+      const frontendCheckbox = view
         .getByLabelText('Frontend Technologies')
         .closest('li');
-      const reactCheckbox = screen.getByLabelText('React').closest('li');
-      const nodeCheckbox = screen.getByLabelText('Node.js').closest('li');
-      const expressCheckbox = screen.getByLabelText('Express.js').closest('li');
+      const reactCheckbox = view.getByLabelText('React').closest('li');
+      const nodeCheckbox = view.getByLabelText('Node.js').closest('li');
+      const expressCheckbox = view.getByLabelText('Express.js').closest('li');
 
       expect(frontendCheckbox).toHaveStyle({ marginInlineStart: 0 });
-      expect(reactCheckbox).toHaveStyle({ marginInlineStart: '24px' });
-      expect(nodeCheckbox).toHaveStyle({ marginInlineStart: '24px' });
-      expect(expressCheckbox).toHaveStyle({ marginInlineStart: '48px' });
+      expect(reactCheckbox).toHaveStyle({ marginInlineStart: '1.5rem' });
+      expect(nodeCheckbox).toHaveStyle({ marginInlineStart: '1.5rem' });
+      expect(expressCheckbox).toHaveStyle({ marginInlineStart: '3rem' });
     });
 
     it('should render with unique IDs for each checkbox', () => {
