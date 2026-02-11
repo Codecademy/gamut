@@ -32,6 +32,7 @@ export type FlexBoxPolymorphicProps<
 type FlexBoxDefaultProps = Omit<ComponentProps<typeof StyledFlexBox>, 'ref'> &
   React.RefAttributes<HTMLDivElement | null>;
 
+/** Polymorphic call signatures so as="img"|"form"|"input" accept intrinsic props. */
 interface FlexBoxPolymorphicComponent {
   (props: FlexBoxPolymorphicProps<'img'>): React.ReactElement;
   (props: FlexBoxPolymorphicProps<'form'>): React.ReactElement;
@@ -40,7 +41,7 @@ interface FlexBoxPolymorphicComponent {
   withComponent: <C extends keyof React.JSX.IntrinsicElements>(
     as: C
   ) => React.ForwardRefExoticComponent<
-    ComponentProps<typeof StyledFlexBox> &
+    Omit<ComponentProps<typeof StyledFlexBox>, 'ref'> &
       React.RefAttributes<HTMLElement | null>
   >;
 }

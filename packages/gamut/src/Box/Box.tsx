@@ -37,7 +37,8 @@ interface BoxPolymorphicComponent {
   withComponent: <C extends keyof React.JSX.IntrinsicElements>(
     as: C
   ) => React.ForwardRefExoticComponent<
-    ComponentProps<typeof StyledBox> & React.RefAttributes<HTMLElement | null>
+    Omit<ComponentProps<typeof StyledBox>, 'ref'> &
+      React.RefAttributes<HTMLElement | null>
   >;
 }
 
