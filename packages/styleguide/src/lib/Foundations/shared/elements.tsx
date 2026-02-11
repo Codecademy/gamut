@@ -485,8 +485,8 @@ const TRANSFORM_COLUMN = {
   size: 'fill',
   render: ({ transform, resolveProperty }: any) => (
     <>
-      {transform && <Code>{transform?.name}</Code>}
-      {resolveProperty && <Code>{resolveProperty?.name}</Code>}
+      {transform && <Code>{transform.name}</Code>}{' '}
+      {resolveProperty && <Code>{resolveProperty.name}</Code>}
     </>
   ),
 };

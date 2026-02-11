@@ -1,8 +1,9 @@
 import { theme } from '@codecademy/gamut-styles';
-import { setupRtl } from '@codecademy/gamut-tests';
+import { MockGamutProvider, setupRtl } from '@codecademy/gamut-tests';
 import { matchers } from '@emotion/jest';
+import { render } from '@testing-library/react';
 
-import { List } from '../List';
+import { List, ListProps } from '../List';
 import { ListCol } from '../ListCol';
 import { ListRow } from '../ListRow';
 
@@ -122,28 +123,60 @@ describe('List', () => {
     expect(view.queryByText('Surprise!')).toBeNull();
   });
 
-  describe('wrapperWidth prop', () => {
-    it('applies wrapperWidth to the table container when provided', () => {
-      const { view } = renderView({ wrapperWidth: '500px' });
-
-      const tableContainer = view.container.querySelector(
-        '[data-testid="scrollable-list-el"]'
+  describe.each([
+    {
+      useLogicalProperties: true,
+      widthProp: 'inlineSize',
+      maxWidthProp: 'maxInlineSize',
+    },
+    {
+      useLogicalProperties: false,
+      widthProp: 'width',
+      maxWidthProp: 'maxWidth',
+    },
+  ])(
+    'wrapperWidth prop (useLogicalProperties: $useLogicalProperties)',
+    ({ useLogicalProperties, widthProp, maxWidthProp }) => {
+      const defaultChildren = (
+        <ListRow data-testid="row-el">
+          <ListCol>Hello</ListCol>
+        </ListRow>
       );
-      expect(tableContainer).toHaveStyle({ maxWidth: '500px', width: '500px' });
-    });
 
-    it('uses inherit width when wrapperWidth is not provided', () => {
-      const { view } = renderView();
+      const renderWithLogicalProps = (overrides?: Partial<ListProps>) =>
+        render(
+          <MockGamutProvider useLogicalProperties={useLogicalProperties}>
+            <List id="list-el" {...overrides}>
+              {overrides?.children ?? defaultChildren}
+            </List>
+          </MockGamutProvider>
+        );
 
-      const tableContainer = view.container.querySelector(
-        '[data-testid="scrollable-list-el"]'
-      );
-      expect(tableContainer).toHaveStyle({
-        maxWidth: '100%',
-        width: 'inherit',
+      it('applies wrapperWidth to the table container when provided', () => {
+        const view = renderWithLogicalProps({ wrapperWidth: '500px' });
+
+        const tableContainer = view.container.querySelector(
+          '[data-testid="scrollable-list-el"]'
+        );
+        expect(tableContainer).toHaveStyle({
+          [maxWidthProp]: '500px',
+          [widthProp]: '500px',
+        });
       });
-    });
-  });
+
+      it('uses inherit width when wrapperWidth is not provided', () => {
+        const view = renderWithLogicalProps();
+
+        const tableContainer = view.container.querySelector(
+          '[data-testid="scrollable-list-el"]'
+        );
+        expect(tableContainer).toHaveStyle({
+          [maxWidthProp]: '100%',
+          [widthProp]: 'inherit',
+        });
+      });
+    }
+  );
 
   it('applies container query styles by default', () => {
     const { view } = renderView();

@@ -1,6 +1,12 @@
-import { setupRtl } from '@codecademy/gamut-tests';
+import { MockGamutProvider, setupRtl } from '@codecademy/gamut-tests';
 import { matchers } from '@emotion/jest';
-import { act, fireEvent, RenderResult, screen } from '@testing-library/react';
+import {
+  act,
+  fireEvent,
+  render,
+  RenderResult,
+  screen,
+} from '@testing-library/react';
 
 import { DataGrid, DataGridProps } from '../DataGrid';
 import { ColumnConfig } from '../types';
@@ -583,37 +589,58 @@ describe('DataGrid', () => {
     });
   });
 
-  describe('wrapperWidth prop', () => {
-    it('applies wrapperWidth to the table container when provided', () => {
-      renderView({ wrapperWidth: '600px' });
+  describe.each([
+    {
+      useLogicalProperties: true,
+      widthProp: 'inlineSize',
+      maxWidthProp: 'maxInlineSize',
+    },
+    {
+      useLogicalProperties: false,
+      widthProp: 'width',
+      maxWidthProp: 'maxWidth',
+    },
+  ])(
+    'wrapperWidth prop (useLogicalProperties: $useLogicalProperties)',
+    ({ useLogicalProperties, widthProp, maxWidthProp }) => {
+      const renderWithLogicalProps = (overrides?: Partial<Props>) =>
+        render(
+          <MockGamutProvider useLogicalProperties={useLogicalProperties}>
+            <DataGrid {...props} {...overrides} />
+          </MockGamutProvider>
+        );
 
-      const tableContainer = screen.getByTestId('scrollable-test');
-      expect(tableContainer).toHaveStyle({
-        maxWidth: '600px',
-        width: '600px',
+      it('applies wrapperWidth to the table container when provided', () => {
+        renderWithLogicalProps({ wrapperWidth: '600px' });
+
+        const tableContainer = screen.getByTestId('scrollable-test');
+        expect(tableContainer).toHaveStyle({
+          [maxWidthProp]: '600px',
+          [widthProp]: '600px',
+        });
       });
-    });
 
-    it('uses default width when wrapperWidth is not provided', () => {
-      renderView();
+      it('uses default width when wrapperWidth is not provided', () => {
+        renderWithLogicalProps();
 
-      const tableContainer = screen.getByTestId('scrollable-test');
-      expect(tableContainer).toHaveStyle({
-        maxWidth: '100%',
-        width: 'inherit',
+        const tableContainer = screen.getByTestId('scrollable-test');
+        expect(tableContainer).toHaveStyle({
+          [maxWidthProp]: '100%',
+          [widthProp]: 'inherit',
+        });
       });
-    });
 
-    it('passes wrapperWidth through to the underlying List component', () => {
-      renderView({ wrapperWidth: '750px' });
+      it('passes wrapperWidth through to the underlying List component', () => {
+        renderWithLogicalProps({ wrapperWidth: '750px' });
 
-      const tableContainer = screen.getByTestId('scrollable-test');
-      expect(tableContainer).toHaveStyle({
-        maxWidth: '750px',
-        width: '750px',
+        const tableContainer = screen.getByTestId('scrollable-test');
+        expect(tableContainer).toHaveStyle({
+          [maxWidthProp]: '750px',
+          [widthProp]: '750px',
+        });
       });
-    });
-  });
+    }
+  );
 
   describe('Container query control', () => {
     it('applies container query styles by default', () => {
