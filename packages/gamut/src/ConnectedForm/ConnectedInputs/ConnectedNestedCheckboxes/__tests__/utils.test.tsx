@@ -522,7 +522,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
     });
 
     it('should render an unchecked checkbox with correct props', () => {
-      const state = { checked: false };
+      const state = { checked: false, indeterminate: false };
 
       const result = renderCheckbox({
         option: mockOption,
@@ -562,7 +562,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
       const { container } = render(result);
       const listItem = container.querySelector('li');
 
-      expect(listItem).toHaveStyle({ marginLeft: '48px' }); // 2 * 24px
+      expect(listItem).toHaveStyle({ marginInlineStart: '48px' }); // 2 * 24px
     });
 
     it('should handle disabled state', () => {

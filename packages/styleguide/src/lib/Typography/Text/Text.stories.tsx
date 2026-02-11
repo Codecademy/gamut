@@ -1,12 +1,12 @@
 import { Box, Column, LayoutGrid, Text } from '@codecademy/gamut';
-// eslint-disable-next-line gamut/import-paths
+import type { Meta, StoryObj } from '@storybook/react';
+import { Fragment } from 'react';
+
 import {
   typographyElementVariants,
   typographyStyleVariants,
   typographyUtilities,
-} from '@codecademy/gamut/src/Typography/variants';
-import type { Meta, StoryObj } from '@storybook/react';
-import { Fragment } from 'react';
+} from '../../../../../gamut/src/Typography/variants';
 
 const meta: Meta<typeof Text> = {
   component: Text,

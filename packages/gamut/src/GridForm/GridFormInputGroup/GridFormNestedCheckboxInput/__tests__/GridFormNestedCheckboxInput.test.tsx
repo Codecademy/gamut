@@ -99,10 +99,10 @@ describe('GridFormNestedCheckboxInput', () => {
       const nodeCheckbox = view.getByLabelText('Node.js').closest('li');
       const expressCheckbox = view.getByLabelText('Express.js').closest('li');
 
-      expect(frontendCheckbox).toHaveStyle({ marginLeft: '0' });
-      expect(reactCheckbox).toHaveStyle({ marginLeft: '1.5rem' });
-      expect(nodeCheckbox).toHaveStyle({ marginLeft: '1.5rem' });
-      expect(expressCheckbox).toHaveStyle({ marginLeft: '3rem' });
+      expect(frontendCheckbox).toHaveStyle({ marginInlineStart: 0 });
+      expect(reactCheckbox).toHaveStyle({ marginInlineStart: '1.5rem' });
+      expect(nodeCheckbox).toHaveStyle({ marginInlineStart: '1.5rem' });
+      expect(expressCheckbox).toHaveStyle({ marginInlineStart: '3rem' });
     });
 
     it('should render with unique IDs for each checkbox', () => {

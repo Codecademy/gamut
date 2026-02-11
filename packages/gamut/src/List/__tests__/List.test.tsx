@@ -50,13 +50,11 @@ describe('List', () => {
 
   it('configures columns with the correct variants', () => {
     const { view } = renderView();
-
     const colEl = view.getByText('Hello');
 
     expect(colEl).not.toHaveStyle({ py: 16 });
-    expect(colEl).toHaveStyle({ paddingLeft: theme.spacing[8] });
-    expect(colEl).toHaveStyle({ paddingRight: theme.spacing[8] });
-
+    expect(colEl).toHaveStyle({ paddingInlineStart: theme.spacing[8] });
+    expect(colEl).toHaveStyle({ paddingInlineEnd: theme.spacing[8] });
     expect(colEl).not.toHaveStyle({ position: 'sticky' });
   });
 

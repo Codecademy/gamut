@@ -2,22 +2,32 @@ import { Anchor, Box } from '@codecademy/gamut';
 import {
   Background,
   coreSwatches,
+  css,
   lxStudioColors,
   theme,
   trueColors,
 } from '@codecademy/gamut-styles';
 // eslint-disable-next-line gamut/import-paths
 import * as ALL_PROPS from '@codecademy/gamut-styles/src/variance/config';
+import { useTheme } from '@emotion/react';
+import styled from '@emotion/styled';
 import kebabCase from 'lodash/kebabCase';
 
 import { Code, ColorScale, LinkTo, TokenTable } from '~styleguide/blocks';
 
 import { applyCorrectNotation } from './applyCorrectNotation';
 
+const AnchorCode = styled(Code)(
+  css({
+    textDecoration: 'underline',
+    mx: 4,
+  })
+);
+
 export const PROP_COLUMN = {
   key: 'key',
   name: 'Prop',
-  size: 'md',
+  size: 'lg',
   render: ({ id }: any) => <Code>{id}</Code>,
 };
 
@@ -403,26 +413,61 @@ export const DarkModeTable = () => (
 );
 /* eslint-disable gamut/import-paths */
 
+const PropertiesRenderer = ({
+  property,
+  properties,
+  resolveProperty,
+}: {
+  property: string | { physical: string; logical: string };
+  properties?: string[] | { physical: string[]; logical: string[] };
+  resolveProperty?: (useLogicalProperties: boolean) => 'logical' | 'physical';
+}) => {
+  const currentTheme = useTheme() as { useLogicalProperties?: boolean };
+  const useLogicalProperties = currentTheme?.useLogicalProperties ?? true;
+
+  const mode = resolveProperty
+    ? resolveProperty(useLogicalProperties)
+    : 'physical';
+
+  const resolvedProperty =
+    typeof property === 'string' ? property : property[mode];
+
+  let resolvedProperties: string[];
+  if (!properties) {
+    resolvedProperties = [resolvedProperty];
+  } else if (Array.isArray(properties)) {
+    resolvedProperties = properties;
+  } else {
+    resolvedProperties = properties[mode];
+  }
+
+  return (
+    <>
+      {resolvedProperties.map((prop) => (
+        <Anchor
+          href={`https://developer.mozilla.org/en-US/docs/Web/CSS/${kebabCase(
+            prop
+          )}`}
+          key={prop}
+          rel=""
+          target="_blank"
+        >
+          <AnchorCode>{kebabCase(prop)}</AnchorCode>
+        </Anchor>
+      ))}
+    </>
+  );
+};
+
 const PROPERTIES_COLUMN = {
   key: 'properties',
   name: 'Properties',
   size: 'xl',
-  render: ({
-    property,
-    properties = [property],
-  }: {
-    property: string;
-    properties: string[];
-  }) =>
-    properties.map((property) => (
-      <Anchor
-        href={`https://developer.mozilla.org/en-US/docs/Web/CSS/${property}`}
-        rel=""
-        target="_blank"
-      >
-        <Code key={property}>{kebabCase(property)}</Code>
-      </Anchor>
-    )),
+  render: (props: {
+    property: string | { physical: string; logical: string };
+    properties?: string[] | { physical: string[]; logical: string[] };
+    resolveProperty?: (useLogicalProperties: boolean) => 'logical' | 'physical';
+  }) => <PropertiesRenderer {...props} />,
 };
 
 const SCALE_COLUMN = {
@@ -430,7 +475,7 @@ const SCALE_COLUMN = {
   name: 'Scale',
   size: 'lg',
   render: ({ scale }: { scale: string }) => (
-    <LinkTo id={`foundations-theme--${kebabCase(scale)}`}>{scale}</LinkTo>
+    <LinkTo id="Foundations/Theme/Core Theme">{scale}</LinkTo>
   ),
 };
 
@@ -438,7 +483,12 @@ const TRANSFORM_COLUMN = {
   key: 'transform',
   name: 'Transform',
   size: 'fill',
-  render: ({ transform }: any) => transform && <Code>{transform?.name}</Code>,
+  render: ({ transform, resolveProperty }: any) => (
+    <>
+      {transform && <Code>{transform?.name}</Code>}
+      {resolveProperty && <Code>{resolveProperty?.name}</Code>}
+    </>
+  ),
 };
 
 export const defaultColumns = [

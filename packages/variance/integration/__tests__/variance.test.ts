@@ -545,6 +545,101 @@ describe('variants', () => {
   });
 });
 
+describe('logical properties', () => {
+  const getPropertyMode = (useLogicalProperties: boolean) =>
+    useLogicalProperties ? 'logical' : 'physical';
+
+  it('uses logical properties when useLogicalProperties is true (default)', () => {
+    const parser = variance.create({
+      marginLeft: {
+        property: {
+          physical: 'marginLeft',
+          logical: 'marginInlineStart',
+        },
+        resolveProperty: getPropertyMode,
+      },
+    });
+
+    const result = parser({
+      marginLeft: '10px',
+      theme: { ...theme, useLogicalProperties: true },
+    });
+
+    expect(result).toEqual({ marginInlineStart: '10px' });
+  });
+
+  it('uses physical properties when useLogicalProperties is false', () => {
+    const parser = variance.create({
+      marginLeft: {
+        property: {
+          physical: 'marginLeft',
+          logical: 'marginInlineStart',
+        },
+        resolveProperty: getPropertyMode,
+      },
+    });
+
+    const result = parser({
+      marginLeft: '10px',
+      theme: { ...theme, useLogicalProperties: false },
+    });
+
+    expect(result).toEqual({ marginLeft: '10px' });
+  });
+
+  it('defaults to logical properties when useLogicalProperties is not set', () => {
+    const parser = variance.create({
+      width: {
+        property: {
+          physical: 'width',
+          logical: 'inlineSize',
+        },
+        resolveProperty: getPropertyMode,
+      },
+    });
+
+    const result = parser({
+      width: '100px',
+      theme,
+    });
+
+    expect(result).toEqual({ inlineSize: '100px' });
+  });
+
+  it('handles directional properties array with resolveProperty', () => {
+    const parser = variance.create({
+      mx: {
+        property: 'margin',
+        properties: {
+          physical: ['marginLeft', 'marginRight'],
+          logical: ['marginInlineStart', 'marginInlineEnd'],
+        },
+        resolveProperty: getPropertyMode,
+      },
+    });
+
+    const logicalResult = parser({
+      mx: '20px',
+      theme: { ...theme, useLogicalProperties: true },
+    });
+
+    expect(logicalResult).toEqual({
+      marginInlineStart: '20px',
+      marginInlineEnd: '20px',
+    });
+
+    const physicalResult = parser({
+      mx: '20px',
+      theme: { ...theme, useLogicalProperties: false },
+    });
+
+    expect(physicalResult).toEqual({
+      marginLeft: '20px',
+      marginRight: '20px',
+    });
+  });
+});
+
 describe('states', () => {
   const marginTransform = jest.fn();
 

@@ -1,0 +1,44 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
+
+import { defaultColumns, getPropRows } from '../../shared/elements';
+import * as SpaceStories from './Space.stories';
+
+export const parameters = {
+  title: 'Space',
+  subtitle: 'Props for maintaining specific vertical and horizontal rhythms',
+  status: 'updating',
+};
+
+<Meta of={SpaceStories} title="Foundations/System/Props/Space" />
+
+<AboutHeader {...parameters} />
+
+Space props provide a consistent way to apply margin and padding throughout your application. All spacing values reference the theme's spacing scale, ensuring visual consistency and making it easy to create responsive spacing patterns using array syntax.
+
+```tsx
+import styled from '@emotion/styled';
+import { system } from '@codecademy/gamut-styles';
+
+const SpaceExample = styled.div(system.space);
+
+<SpaceExample p={8} my={[16, 24, 32]} />;
+```
+
+These space props support both physical and logical CSS properties and will render the appropriate properties based on `useLogicalProperties`'s value passed into the `<GamutProvider>` at the root of your application.
+
+<Callout
+  text={
+    <>
+      You can use the <strong>LogicalProps</strong> button in the toolbar to
+      switch between modes.
+    </>
+  }
+/>
+
+<Canvas of={SpaceStories.MarginExample} />
+
+<Canvas of={SpaceStories.PaddingExample} />
+
+<TokenTable rows={getPropRows('space')} columns={defaultColumns} />

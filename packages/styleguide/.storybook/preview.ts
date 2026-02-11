@@ -49,6 +49,7 @@ const preview: Preview = {
             'Contributing',
             'ESLint rules',
             'FAQs',
+            'Logical and physical CSS properties',
             'Stories',
             'Brand',
             'Installation',
@@ -163,6 +164,31 @@ export const globalTypes = {
         { value: 'lxStudio', title: 'LX Studio' },
         { value: 'percipio', title: 'Percipio' },
         { value: 'platform', title: 'Learning Platform' },
+      ],
+      showName: true,
+    },
+  },
+  logicalProps: {
+    name: 'LogicalProps',
+    description: 'Toggle between logical and physical CSS properties',
+    defaultValue: 'true',
+    toolbar: {
+      icon: 'transfer',
+      items: [
+        { value: 'true', title: 'Logical' },
+        { value: 'false', title: 'Physical' },
+      ],
+      showName: true,
+    },
+  },
+  direction: {
+    name: 'Direction',
+    description: 'Text direction for the page',
+    defaultValue: 'ltr',
+    toolbar: {
+      items: [
+        { value: 'ltr', icon: 'arrowright', title: 'Left-To-Right' },
+        { value: 'rtl', icon: 'arrowleft', title: 'Right-To-Left' },
       ],
       showName: true,
     },
