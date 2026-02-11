@@ -34,11 +34,13 @@ interface BoxPolymorphicComponent {
   (props: BoxPolymorphicProps<'form'>): React.ReactElement;
   (props: BoxPolymorphicProps<'input'>): React.ReactElement;
   (props: BoxDefaultProps): React.ReactElement;
+  /** Return type accepts intrinsic props for C (e.g. withComponent('img') accepts src, alt, loading). */
   withComponent: <C extends keyof React.JSX.IntrinsicElements>(
     as: C
   ) => React.ForwardRefExoticComponent<
-    Omit<ComponentProps<typeof StyledBox>, 'ref'> &
-      React.RefAttributes<HTMLElement | null>
+    Omit<BoxProps, 'as'> &
+      React.JSX.IntrinsicElements[C] &
+      React.RefAttributes<BoxIntrinsicElementRef<C> | null>
   >;
 }
 

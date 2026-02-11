@@ -43,11 +43,13 @@ interface GridBoxPolymorphicComponent {
   (props: GridBoxPolymorphicProps<'form'>): React.ReactElement;
   (props: GridBoxPolymorphicProps<'input'>): React.ReactElement;
   (props: GridBoxDefaultProps): React.ReactElement;
+  /** Return type accepts intrinsic props for C (e.g. withComponent('img') accepts src, alt, loading). */
   withComponent: <C extends keyof React.JSX.IntrinsicElements>(
     as: C
   ) => React.ForwardRefExoticComponent<
-    Omit<ComponentProps<typeof StyledGridBox>, 'ref'> &
-      React.RefAttributes<HTMLElement | null>
+    Omit<GridBoxProps, 'as'> &
+      React.JSX.IntrinsicElements[C] &
+      React.RefAttributes<GridBoxIntrinsicElementRef<C> | null>
   >;
 }
 

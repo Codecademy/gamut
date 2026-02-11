@@ -38,11 +38,13 @@ interface FlexBoxPolymorphicComponent {
   (props: FlexBoxPolymorphicProps<'form'>): React.ReactElement;
   (props: FlexBoxPolymorphicProps<'input'>): React.ReactElement;
   (props: FlexBoxDefaultProps): React.ReactElement;
+  /** Return type accepts intrinsic props for C (e.g. withComponent('img') accepts src, alt, loading). */
   withComponent: <C extends keyof React.JSX.IntrinsicElements>(
     as: C
   ) => React.ForwardRefExoticComponent<
-    Omit<ComponentProps<typeof StyledFlexBox>, 'ref'> &
-      React.RefAttributes<HTMLElement | null>
+    Omit<FlexBoxProps, 'as'> &
+      React.JSX.IntrinsicElements[C] &
+      React.RefAttributes<FlexBoxIntrinsicElementRef<C> | null>
   >;
 }
 
