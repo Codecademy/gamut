@@ -20,7 +20,12 @@ declare module 'react' {
   }
 
   interface RefAttributes<T> {
-    ref?: React.LegacyRef<T | null> | undefined;
+    /** Explicit union so RefObject<T | null> from useRef(initial) is accepted (React 19 / strict refs). */
+    ref?:
+      | React.RefObject<T | null>
+      | React.RefCallback<T | null>
+      | null
+      | undefined;
   }
 }
 
