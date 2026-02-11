@@ -1,5 +1,6 @@
 import { ThemeProps } from '@codecademy/variance';
 import isPropValid from '@emotion/is-prop-valid';
+import type { JSX } from 'react';
 
 import { all as allProps } from './config';
 
@@ -41,6 +42,23 @@ export function createStyledOptions<
   };
 }
 
+/** Return type of createStyledOptions */
+export type StyledOptionsResult<
+  El extends ElementOrProps = 'div',
+  Additional extends string = never
+> = {
+  shouldForwardProp: (
+    prop: PropertyKey
+  ) => prop is ForwardableProps<El, Additional>;
+};
+
+/** Type for styledOptions - callable with generics AND has shouldForwardProp property */
+export interface StyledOptions extends StyledOptionsResult {
+  <El extends ElementOrProps = 'div', Additional extends string = never>(
+    additional?: readonly Additional[]
+  ): StyledOptionsResult<El, Additional>;
+}
+
 /**
  * @description
  * This object can be passed to the second argument of `styled('div', styledOptions)` or be called as a function to filter additional prop names
@@ -57,7 +75,7 @@ export function createStyledOptions<
  * styled(Box)()
  *
  */
-export const styledOptions = Object.assign(
+export const styledOptions: StyledOptions = Object.assign(
   createStyledOptions,
   createStyledOptions()
 );

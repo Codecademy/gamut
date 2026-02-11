@@ -1,7 +1,14 @@
 import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps, forwardRef, HTMLProps, RefObject } from 'react';
+import {
+  ComponentProps,
+  forwardRef,
+  ForwardRefExoticComponent,
+  HTMLProps,
+  RefAttributes,
+  RefObject,
+} from 'react';
 
 import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
 import { AppendedIconProps, appendIconToContent } from '../helpers';
@@ -120,7 +127,7 @@ type AnchorBaseProps =
 type AnchorExtProps = Partial<AppendedIconProps> & AnchorBaseProps;
 
 export const Anchor = forwardRef<
-  HTMLAnchorElement | HTMLButtonElement,
+  HTMLAnchorElement | HTMLButtonElement | null,
   AnchorExtProps
 >(
   (
@@ -169,4 +176,8 @@ export const Anchor = forwardRef<
       </AnchorBase>
     );
   }
-);
+) as ForwardRefExoticComponent<
+  Omit<AnchorExtProps, 'ref'> &
+    RefAttributes<HTMLAnchorElement | HTMLButtonElement | null> &
+    Pick<ComponentProps<typeof ButtonBase>, 'disabled'>
+>;

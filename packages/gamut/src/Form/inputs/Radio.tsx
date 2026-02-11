@@ -60,7 +60,7 @@ const conditionalStyleState = (error?: boolean, disabled?: boolean) => {
   return error ? 'error' : disabled ? 'disabled' : undefined;
 };
 
-export const Radio = forwardRef<HTMLInputElement, RadioProps>(
+export const Radio = forwardRef<HTMLInputElement | null, RadioProps>(
   (
     {
       checked,

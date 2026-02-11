@@ -8,7 +8,9 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
+import type { MotionProps } from 'motion/react';
+import { motion } from 'motion/react';
+import * as React from 'react';
 
 import { Box } from '../Box';
 
@@ -518,10 +520,9 @@ const listStates = states({
 
 export const StaticListWrapper = styled(Box)(listStyles, listStates);
 
-export const AnimatedListWrapper = styled(motion.create(Box))(
-  listStyles,
-  listStates
-);
+type AnimatedBoxProps = React.ComponentProps<typeof Box> & MotionProps;
+const AnimatedBox = motion.create(Box) as React.ComponentType<AnimatedBoxProps>;
+export const AnimatedListWrapper = styled(AnimatedBox)(listStyles, listStates);
 
 export const hiddenVariant = {
   background: `linear-gradient(90deg, transparent 0%, transparent 40%, ${theme.colors['background-selected']} 50%, ${theme.colors['border-tertiary']} 100%)`,

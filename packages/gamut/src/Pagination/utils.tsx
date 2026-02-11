@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useRef } from 'react';
 import * as React from 'react';
 
@@ -91,10 +91,13 @@ const fadeAnimationVariants = {
   shown: {
     opacity: 1,
     cursor: 'pointer',
+    visibility: 'visible' as const,
   },
   hidden: {
     opacity: 0,
     cursor: 'default',
+    visibility: 'hidden' as const,
+    transitionEnd: { visibility: 'hidden' as const },
   },
 };
 
@@ -111,10 +114,8 @@ export const createAnimatedFadeButton = (
       disabled={props.showButton === 'hidden'}
       initial={false}
       transition={{
-        transitionStart: { visibility: 'visible' },
         duration: 0.3,
         ease: [0.04, 0.62, 0.23, 0.98],
-        transitionEnd: { visibility: 'hidden' },
       }}
       variants={fadeAnimationVariants}
       {...props}

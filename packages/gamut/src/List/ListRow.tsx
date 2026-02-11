@@ -1,6 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import { ComponentProps, forwardRef, MouseEvent } from 'react';
 import * as React from 'react';
 
@@ -64,7 +64,7 @@ const ExpandInCollapseOut: React.FC<
   );
 };
 
-export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
+export const ListRow = forwardRef<HTMLLIElement | null, ListRowProps>(
   (
     {
       children,

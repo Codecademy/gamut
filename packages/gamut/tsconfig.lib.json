@@ -25,6 +25,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
+    "src/typings/**/*.d.ts",
     "../../packages/gamut-styles/dist/typings/theme.d.ts"
   ]
 }

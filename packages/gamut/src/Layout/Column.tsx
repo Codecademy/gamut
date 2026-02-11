@@ -71,8 +71,12 @@ const StyledColumn = styled(
 )<ColumnProps>(columnProps({ size: 12 }), columnVariants, columnProps);
 
 export const Column = forwardRef<
-  HTMLDivElement,
+  HTMLDivElement | null,
   ComponentProps<typeof StyledColumn>
 >(({ variant = 'fitContent', ...rest }, ref) => (
-  <StyledColumn ref={ref} variant={variant} {...rest} />
+  <StyledColumn
+    ref={ref}
+    variant={variant}
+    {...rest}
+  />
 ));

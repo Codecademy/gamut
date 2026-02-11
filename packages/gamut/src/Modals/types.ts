@@ -31,7 +31,7 @@ export interface ModalBaseProps
    * Otherwise, the ModalWrapper does has data-autofocus which will gain focus when the Modal is opened.
 
    */
-  containerFocusRef?: Ref<HTMLDivElement>;
+  containerFocusRef?: Ref<HTMLDivElement | null>;
 }
 
 /**
@@ -46,7 +46,7 @@ export type CloseButtonProps = {
     /**
      * An optional ref to be passed to the close button
      */
-    ref?: Ref<HTMLButtonElement>;
+    ref?: Ref<HTMLButtonElement | null>;
     /**
      * The close button tooltip text. Defaults to "Close modal"
      */

@@ -26,6 +26,12 @@ import {
 export type AlertType = keyof typeof alertVariants;
 export type AlertPlacements = 'inline' | 'floating';
 
+/** CTA rendered as a link (FillButton with href) */
+export type AlertCtaLink = Exclude<
+  React.ComponentProps<typeof FillButton>,
+  'variant' | 'mode' | 'size'
+> & { text?: string; href: string };
+
 // Subtle alert types should only be used inline
 type AlertPlacementType =
   | {
@@ -45,10 +51,12 @@ export type AlertProps = WithChildrenProp &
     /** Callback to be called when the close icon is clicked */
     onClose?: () => void;
     /** Call to Action Configuration */
-    cta?: Exclude<
-      React.ComponentProps<typeof FillButton>,
-      'variant' | 'mode' | 'size'
-    > & { text?: string };
+    cta?:
+      | (Exclude<
+          React.ComponentProps<typeof FillButton>,
+          'variant' | 'mode' | 'size'
+        > & { text?: string })
+      | AlertCtaLink;
     /** Props for customizing the close button */
     closeButtonProps?: Omit<
       NonNullable<CloseButtonProps['closeButtonProps']>,

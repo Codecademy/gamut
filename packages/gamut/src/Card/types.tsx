@@ -25,5 +25,5 @@ export interface CardWrapperProps
 
 export type CardProps = Omit<
   React.ComponentProps<typeof DynamicCardWrapper>,
-  'bg'
->;
+  'bg' | 'ref'
+> & { ref?: React.Ref<HTMLDivElement | null> };

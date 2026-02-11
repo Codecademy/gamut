@@ -6,7 +6,14 @@ import {
 import { css } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled, { StyledComponent } from '@emotion/styled';
-import { ChangeEvent, forwardRef, InputHTMLAttributes, useState } from 'react';
+import {
+  ChangeEvent,
+  forwardRef,
+  ForwardRefExoticComponent,
+  InputHTMLAttributes,
+  RefAttributes,
+  useState,
+} from 'react';
 import * as React from 'react';
 
 import { Box, FlexBox } from '../../Box';
@@ -103,7 +110,11 @@ const getInputState = (error: boolean, valid: boolean) => {
   return 'clean';
 };
 
-export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
+/** React 19 ref compat: Omit ref so forwardRef is the single source (see typings/react-19-compat.d.ts). */
+export const Input = forwardRef<
+  HTMLInputElement | null,
+  Omit<InputWrapperProps, 'ref'>
+>(
   (
     {
       error,
@@ -172,4 +183,6 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
       </Box>
     );
   }
-);
+) as ForwardRefExoticComponent<
+  Omit<InputWrapperProps, 'ref'> & RefAttributes<HTMLInputElement | null>
+>;

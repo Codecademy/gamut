@@ -14,7 +14,8 @@
           "rm -rf ./dist",
           "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
           "tsc --emitDeclarationOnly --project ./tsconfig.lib.json",
-          "cpy './src/**/*.{d.ts,scss,svg,png}' ./dist"
+          "cpy './src/**/*.{d.ts,scss,svg,png}' ./dist",
+          "node ./scripts/fix-resize-reference.cjs"
         ],
         "parallel": false
       }

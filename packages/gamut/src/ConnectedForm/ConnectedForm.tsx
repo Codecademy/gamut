@@ -105,7 +105,7 @@ export const ConnectedForm = forwardRef(
       watchedFields,
       ...rest
     }: ConnectedFormProps<Values>,
-    ref: React.ForwardedRef<HTMLFormElement>
+    ref: React.ForwardedRef<HTMLFormElement | null>
   ) => {
     const {
       clearErrors,
@@ -181,7 +181,9 @@ export const ConnectedForm = forwardRef(
       </PropsProvider>
     );
   }
-) as <Values extends FormValues<Values>>(
-  props: ConnectedFormProps<Values>,
-  ref: React.ForwardedRef<HTMLFormElement>
-) => React.ReactElement;
+) as {
+  <Values extends FormValues<Values>>(
+    props: ConnectedFormProps<Values> &
+      React.RefAttributes<HTMLFormElement | null>
+  ): React.ReactNode;
+};

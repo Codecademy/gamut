@@ -1,6 +1,6 @@
 import { styledOptions, system } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
-import styled from '@emotion/styled';
+import styled, { StyledComponent } from '@emotion/styled';
 
 export interface IconStyleProps extends StyleProps<typeof iconProps> {
   /**
@@ -46,4 +46,7 @@ export const iconProps = variance.compose(
   system.border
 );
 
-export const Svg = styled('svg', styledOptions<'svg'>())(iconProps);
+export const Svg = styled(
+  'svg',
+  styledOptions<'svg'>()
+)(iconProps) as StyledComponent<GamutBaseIconProps, {}, {}>;

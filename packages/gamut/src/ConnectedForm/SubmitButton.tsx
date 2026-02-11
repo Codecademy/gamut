@@ -38,10 +38,12 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
   if (isLoading) {
     return (
       <Button
-        {...rest}
-        aria-label={isLoading ? 'Loading' : undefined}
-        disabled
-        type="submit"
+        {...({
+          ...rest,
+          'aria-label': isLoading ? 'Loading' : undefined,
+          disabled: true,
+          type: 'submit',
+        } as React.ComponentProps<typeof Button> as any)}
       >
         {/** This maintains button dimensions while hiding it from screen readers and the page */}
         <Box aria-hidden as="span" opacity={0}>
@@ -58,7 +60,13 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({
   }
 
   return (
-    <Button {...rest} disabled={isDisabled} type="submit">
+    <Button
+      {...({
+        ...rest,
+        disabled: isDisabled,
+        type: 'submit',
+      } as React.ComponentProps<typeof Button> as any)}
+    >
       {children}
     </Button>
   );

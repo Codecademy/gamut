@@ -16,8 +16,9 @@ const StrokeButtonBase = createButtonComponent(
 
 export type StrokeButtonProps = InlineIconButtonProps<typeof StrokeButtonBase>;
 
-export const StrokeButton = forwardRef<ButtonBaseElements, StrokeButtonProps>(
-  ({ ...props }, ref) => {
-    return <InlineIconButton button={StrokeButtonBase} {...props} ref={ref} />;
-  }
-);
+export const StrokeButton = forwardRef<
+  ButtonBaseElements | null,
+  StrokeButtonProps
+>(({ ...props }, ref) => {
+  return <InlineIconButton button={StrokeButtonBase} {...props} ref={ref} />;
+});

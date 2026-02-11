@@ -1,12 +1,18 @@
 import { Background } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
+import type { MotionProps } from 'motion/react';
+import { motion } from 'motion/react';
+import type { ComponentProps } from 'react';
+import * as React from 'react';
 
 import { Box } from '../Box';
 import { cardVariants, shadowVariants } from './styles';
 import { CardWrapperProps } from './types';
 
-export const MotionBox = motion.create(Box);
+type MotionBoxProps = ComponentProps<typeof Box> & MotionProps;
+export const MotionBox = motion.create(
+  Box
+) as React.ComponentType<MotionBoxProps>;
 
 export const DynamicCardWrapper = styled(MotionBox)<CardWrapperProps>(
   cardVariants,

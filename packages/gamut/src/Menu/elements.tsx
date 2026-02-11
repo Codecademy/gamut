@@ -68,7 +68,7 @@ const StyledList = styled('ul', styledOptions<'ul'>())<ListProps>(
 );
 
 export const List = forwardRef<
-  HTMLUListElement,
+  HTMLUListElement | null,
   ComponentProps<typeof StyledList>
 >(({ context = true, m = 0, root = true, variant, ...rest }, ref) => (
   <StyledList
@@ -222,10 +222,14 @@ const StyledListLink = styled('a', styledOptions<'a'>())<ListLinkProps>(
 );
 
 export const ListLink = forwardRef<
-  HTMLAnchorElement,
+  HTMLAnchorElement | null,
   ComponentProps<typeof StyledListLink>
 >(({ zIndex = 1, ...rest }, ref) => (
-  <StyledListLink ref={ref} zIndex={zIndex} {...rest} />
+  <StyledListLink
+    ref={ref}
+    zIndex={zIndex}
+    {...rest}
+  />
 ));
 
 export const ListButton = styled(

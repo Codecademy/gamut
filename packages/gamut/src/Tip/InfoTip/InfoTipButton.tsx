@@ -21,7 +21,10 @@ const InfoTipButtonBase = createButtonComponent<InfoButtonStatesProps>(
 export type InfoTipButtonProps = ComponentProps<typeof InfoTipButtonBase> &
   Pick<InfoTipProps, 'emphasis'>;
 
-export const InfoTipButton = forwardRef<ButtonBaseElements, InfoTipButtonProps>(
+export const InfoTipButton = forwardRef<
+  ButtonBaseElements | null,
+  InfoTipButtonProps
+>(
   (
     {
       active,

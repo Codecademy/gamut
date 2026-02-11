@@ -148,7 +148,7 @@ const StyledText = styled('span', styledOptions<'span'>())<TextProps>(
 );
 
 export const Text = forwardRef<
-  HTMLSpanElement,
+  HTMLSpanElement | null,
   ComponentProps<typeof StyledText>
 >(({ as = 'span', m = 0, ...rest }, ref) => (
   <StyledText as={as} m={m} ref={ref} {...rest} />

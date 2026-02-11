@@ -13,8 +13,9 @@ const TextButtonBase = createButtonComponent(textButtonVariants, sizeVariants);
 
 export type TextButtonProps = InlineIconButtonProps<typeof TextButtonBase>;
 
-export const TextButton = forwardRef<ButtonBaseElements, TextButtonProps>(
-  ({ ...props }, ref) => {
-    return <InlineIconButton button={TextButtonBase} {...props} ref={ref} />;
-  }
-);
+export const TextButton = forwardRef<
+  ButtonBaseElements | null,
+  TextButtonProps
+>(({ ...props }, ref) => {
+  return <InlineIconButton button={TextButtonBase} {...props} ref={ref} />;
+});

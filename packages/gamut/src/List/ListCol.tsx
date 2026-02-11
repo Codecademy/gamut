@@ -7,7 +7,7 @@ import { PublicListProps } from './types';
 export interface ListColProps
   extends PublicListProps<ComponentProps<typeof ColEl>> {}
 
-export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
+export const ListCol = forwardRef<HTMLDivElement | null, ListColProps>(
   ({ type, columnHeader, 'aria-sort': ariaSort, ...rest }, ref) => {
     const { listType, scrollable, ...activeVariants } = useListContext();
     const isOl = listType === 'ol';
