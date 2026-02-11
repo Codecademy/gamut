@@ -4,16 +4,11 @@ import { useEffect } from 'react';
 import * as React from 'react';
 import { RegisterOptions } from 'react-hook-form';
 
-import {
-  FormError,
-  FormGroup,
-  FormGroupLabel,
-  FormGroupProps,
-  InfoTipProps,
-} from '..';
+import { FormError, FormGroup, FormGroupLabel, FormGroupProps } from '..';
 import { Anchor } from '../Anchor';
 import { HiddenText } from '../HiddenText';
 import { Markdown } from '../Markdown';
+import { InfoTipSubComponentProps } from '../Tip/InfoTip/type-utils';
 import { ConnectedField, FieldProps, SubmitContextProps } from './types';
 import { getErrorMessage, useField } from './utils';
 
@@ -34,7 +29,12 @@ export interface ConnectedFormGroupBaseProps
   name: string;
   label: React.ReactNode;
   required?: boolean;
-  infotip?: InfoTipProps;
+  /**
+   * InfoTip to display next to the field label. The InfoTip button is
+   * automatically labelled by the field label. To override this behavior,
+   * provide `ariaLabel` or `ariaLabelledby`.
+   */
+  infotip?: InfoTipSubComponentProps;
 }
 
 export interface ConnectedFormGroupProps<T extends ConnectedField>

@@ -4,17 +4,20 @@ import {
   FillButton,
   FlexBox,
   GridBox,
+  IconButton,
   InfoTip,
   Modal,
   Text,
 } from '@codecademy/gamut';
+import { SparkleIcon } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 const meta: Meta<typeof InfoTip> = {
   component: InfoTip,
   args: {
     alignment: 'top-left',
+    ariaLabel: 'More information',
     info: `I am additional information about a nearby element or content.`,
   },
 };
@@ -28,7 +31,10 @@ export const Emphasis: Story = {
   },
   render: (args) => (
     <FlexBox center m={24} py={64}>
-      <Text mr={4}>Some text that needs info</Text> <InfoTip {...args} />
+      <Text id="emphasis-text" mr={4}>
+        Some text that needs info
+      </Text>
+      <InfoTip {...args} ariaLabelledby="emphasis-text" />
     </FlexBox>
   ),
 };
@@ -38,10 +44,15 @@ export const Alignments: Story = {
     <GridBox gap={24} gridTemplateColumns="1fr 1fr" ml={8} py={64}>
       {(['top-right', 'top-left', 'bottom-right', 'bottom-left'] as const).map(
         (alignment) => {
+          const labelId = `alignment-${alignment}`;
           return (
             <Box key={alignment}>
-              <Text>{alignment}</Text>
-              <InfoTip {...args} alignment={alignment} />
+              <Text id={labelId}>{alignment}</Text>
+              <InfoTip
+                {...args}
+                alignment={alignment}
+                ariaLabelledby={labelId}
+              />
             </Box>
           );
         }
@@ -56,10 +67,51 @@ export const Placement: Story = {
   },
   render: (args) => (
     <FlexBox center>
-      <Text mr={4}>
+      <Text id="placement-text" mr={4}>
         This text is in a small space and needs floating placement
       </Text>{' '}
-      <InfoTip {...args} />
+      <InfoTip {...args} ariaLabelledby="placement-text" />
+    </FlexBox>
+  ),
+};
+
+export const AriaLabel: Story = {
+  render: (args) => (
+    <FlexBox center column gap={24} my={48} width={1}>
+      <FlexBox alignItems="center" gap={8}>
+        <Text fontSize={16} fontWeight="bold">
+          Using ariaLabel (no visible label text):
+        </Text>
+      </FlexBox>
+      <FlexBox alignItems="center" gap={8}>
+        <IconButton
+          icon={SparkleIcon}
+          tip="This tool needs to be explained in the InfoTip"
+          tipProps={{ placement: 'floating' }}
+          onClick={() => null}
+        />
+        <InfoTip
+          {...args}
+          ariaLabel="Learn more about this tool"
+          info="This is some helpful info about the tool represented by the IconButton"
+        />
+      </FlexBox>
+
+      <FlexBox alignItems="center" gap={8}>
+        <Text fontSize={16} fontWeight="bold">
+          Using ariaLabelledby (references visible text):
+        </Text>
+      </FlexBox>
+      <FlexBox alignItems="center" gap={8}>
+        <Text id="custom-info-id">
+          I am some helpful yet concise text that needs more explanation
+        </Text>
+        <InfoTip
+          alignment="bottom-left"
+          ariaLabelledby="custom-info-id"
+          info="I am clarifying information related to the concise text."
+        />
+      </FlexBox>
     </FlexBox>
   ),
 };
@@ -69,19 +121,16 @@ export const WithLinksOrButtons: Story = {
     placement: 'floating',
   },
   render: function WithLinksOrButtons(args) {
-    const ref = useRef<HTMLDivElement>(null);
-
-    const onClick = ({ isTipHidden }: { isTipHidden: boolean }) => {
-      if (!isTipHidden) ref.current?.focus();
-    };
-
     return (
       <FlexBox center py={64}>
-        <Text mr={4}>This text is in a small space and needs info </Text>{' '}
+        <Text id="links-text" mr={4}>
+          This text is in a small space and needs info
+        </Text>{' '}
         <InfoTip
           {...args}
+          ariaLabelledby="links-text"
           info={
-            <Text ref={ref} tabIndex={-1}>
+            <Text tabIndex={-1}>
               Hey! Here is a{' '}
               <Anchor href="https://giphy.com/search/nichijou">
                 cool link
@@ -93,7 +142,6 @@ export const WithLinksOrButtons: Story = {
               that is also super important.
             </Text>
           }
-          onClick={onClick}
         />
       </FlexBox>
     );
@@ -102,42 +150,35 @@ export const WithLinksOrButtons: Story = {
 
 export const KeyboardNavigation: Story = {
   render: function KeyboardNavigation() {
-    const floatingRef = useRef<HTMLDivElement>(null);
-    const inlineRef = useRef<HTMLDivElement>(null);
-
     const examples = [
       {
         title: 'Floating Placement',
         placement: 'floating' as const,
-        ref: floatingRef,
         links: ['Link 1', 'Link 2', 'Link 3'],
       },
       {
         title: 'Inline Placement',
         placement: 'inline' as const,
         alignment: 'bottom-right' as const,
-        ref: inlineRef,
         links: ['Link A', 'Link B'],
       },
     ];
 
     return (
-      <FlexBox center column gap={24} py={64}>
+      <FlexBox center flexDirection="column" gap={24} py={64}>
         <GridBox gap={16} gridTemplateColumns="1fr 1fr">
-          {examples.map(({ title, placement, alignment, ref, links }) => {
-            const onClick = ({ isTipHidden }: { isTipHidden: boolean }) => {
-              if (!isTipHidden) ref.current?.focus();
-            };
-
+          {examples.map(({ title, placement, alignment, links }) => {
+            const labelId = `keyboard-nav-${placement}`;
             return (
               <FlexBox gap={8} key={placement}>
-                <Text fontSize={16} fontWeight="bold">
+                <Text fontSize={16} fontWeight="bold" id={labelId}>
                   {title}
                 </Text>
                 <InfoTip
                   alignment={alignment}
+                  ariaLabelledby={labelId}
                   info={
-                    <Text ref={ref} tabIndex={-1}>
+                    <Text>
                       {links.map((label, idx) => (
                         <>
                           {idx > 0 && ', '}
@@ -150,7 +191,6 @@ export const KeyboardNavigation: Story = {
                     </Text>
                   }
                   placement={placement}
-                  onClick={onClick}
                 />
               </FlexBox>
             );
@@ -162,6 +202,10 @@ export const KeyboardNavigation: Story = {
             Keyboard Navigation:
           </Text>
           <Box as="ul" fontSize={14} pl={16}>
+            <li>
+              <strong>Opening:</strong> Focus automatically moves to the tip
+              content when opened
+            </li>
             <li>
               <strong>Floating - Tab:</strong> Navigates forward through links,
               then wraps to button (contained)
@@ -224,8 +268,10 @@ export const InfoTipInsideModal: Story = {
             <Text>This modal contains an InfoTip below:</Text>
 
             <FlexBox alignItems="center" gap={8}>
-              <Text>Some text that needs explanation</Text>
-              <InfoTip {...args} />
+              <Text id="modal-infotip-text">
+                Some text that needs explanation
+              </Text>
+              <InfoTip {...args} ariaLabelledby="modal-infotip-text" />
             </FlexBox>
 
             <Text color="text-disabled" fontSize={14}>
@@ -250,14 +296,17 @@ export const ZIndex: Story = {
   },
   render: (args) => (
     <FlexBox center flexDirection="column" m={24} py={64}>
-      <Box bg="paleBlue" zIndex={3}>
+      <Box bg="background-primary" zIndex={3}>
         I will not be behind the infotip, sad + unreadable
       </Box>
-      <InfoTip info="I am inline, cool" />
-      <Box bg="paleBlue" zIndex={3}>
+      <InfoTip
+        ariaLabel="z-index example without override"
+        info="I am inline, cool"
+      />
+      <Box bg="background-primary" zIndex={3}>
         I will be behind the infotip, nice + great
       </Box>
-      <InfoTip {...args} />
+      <InfoTip {...args} ariaLabel="z-index example with override" />
     </FlexBox>
   ),
 };
@@ -265,7 +314,10 @@ export const ZIndex: Story = {
 export const Default: Story = {
   render: (args) => (
     <FlexBox center m={24} py={64}>
-      <Text mr={4}>Some text that needs info</Text> <InfoTip {...args} />
+      <Text id="default-text" mr={4}>
+        Some text that needs info
+      </Text>
+      <InfoTip {...args} ariaLabelledby="default-text" />
     </FlexBox>
   ),
 };

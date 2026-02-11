@@ -8,6 +8,12 @@ import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { forwardRef, InputHTMLAttributes, useEffect, useRef } from 'react';
 
+import { FlexBox } from '../../Box';
+import { InfoTip } from '../../Tip/InfoTip';
+import {
+  InfoTipSubComponentProps,
+  useInfotipProps,
+} from '../../Tip/InfoTip/type-utils';
 import {
   checkboxElement,
   checkboxElementStates,
@@ -16,6 +22,7 @@ import {
   checkboxLabelStates,
   checkboxPadding,
   checkboxTextStates,
+  InputWrapper,
   polyline,
 } from '../styles';
 import { BaseInputProps } from '../types';
@@ -38,6 +45,12 @@ export type CheckboxProps = Omit<
      * [The for/id string of a label or labelable form-related element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor). The outer FormGroup or FormLabel should have an identical string as the inner FormElement for accessibility purposes.
      */
     htmlFor: string;
+    /**
+     * Infotip props to render to the right of your checkbox label.
+     * The InfoTip button is automatically labelled by the checkbox label.
+     * To override this behavior, provide `ariaLabel` or `ariaLabelledby`.
+     */
+    infotip?: InfoTipSubComponentProps;
     /**
      * @remarks
      * The `value` prop here gets passed to the underlying `input` component
@@ -133,6 +146,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       dontAriaHideLabel,
       htmlFor,
       id,
+      infotip,
       label,
       multiline,
       spacing,
@@ -142,6 +156,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     ref
   ) => {
     const intRef = useRef<HTMLInputElement | null>(null);
+    const { infotipProps, labelId, shouldLabelInfoTip } =
+      useInfotipProps(infotip);
 
     function syncedRefs(element: HTMLInputElement | null) {
       intRef.current = element;
@@ -161,9 +177,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     }, [checked, indeterminate]);
 
     const active = checked || indeterminate;
+    const textId = shouldLabelInfoTip ? labelId : `text-${id || htmlFor}`;
 
     return (
-      <div className={className}>
+      <InputWrapper className={className}>
         <Input
           aria-label={
             ariaLabel === undefined
@@ -175,7 +192,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           checked={checked}
           disabled={disabled}
           id={id || htmlFor}
-          labelled-by={`text-${id || htmlFor}`}
+          labelled-by={textId}
           type="checkbox"
           value={`${value}`}
           {...rest}
@@ -217,13 +234,18 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           <CheckboxText
             aria-hidden={dontAriaHideLabel ? 'false' : 'true'}
             disabled={disabled}
-            id={`text-${id || htmlFor}`}
+            id={textId}
             multiline={multiline}
           >
             {label}
           </CheckboxText>
         </CheckboxLabel>
-      </div>
+        {infotipProps && (
+          <FlexBox center pl={8}>
+            <InfoTip {...infotipProps} />
+          </FlexBox>
+        )}
+      </InputWrapper>
     );
   }
 );
