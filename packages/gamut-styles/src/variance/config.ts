@@ -320,16 +320,63 @@ export const layout = {
   overflowY: { property: 'overflowY' },
   dimensions: {
     property: 'width',
-    properties: ['width', 'height'],
+    properties: {
+      physical: ['width', 'height'],
+      logical: ['inlineSize', 'blockSize'],
+    },
+    resolveProperty: getPropertyMode,
     transform: transformSize,
   },
-  width: { property: 'width', transform: transformSize },
-  minWidth: { property: 'minWidth', transform: transformSize },
-  maxWidth: { property: 'maxWidth', transform: transformSize },
-  height: { property: 'height', transform: transformSize },
-  minHeight: { property: 'minHeight', transform: transformSize },
-  maxHeight: { property: 'maxHeight', transform: transformSize },
+  width: {
+    property: {
+      physical: 'width',
+      logical: 'inlineSize',
+    },
+    resolveProperty: getPropertyMode,
+    transform: transformSize,
+  },
+  minWidth: {
+    property: {
+      physical: 'minWidth',
+      logical: 'minInlineSize',
+    },
+    resolveProperty: getPropertyMode,
+    transform: transformSize,
+  },
+  maxWidth: {
+    property: {
+      physical: 'maxWidth',
+      logical: 'maxInlineSize',
+    },
+    resolveProperty: getPropertyMode,
+    transform: transformSize,
+  },
+  height: {
+    property: {
+      physical: 'height',
+      logical: 'blockSize',
+    },
+    resolveProperty: getPropertyMode,
+    transform: transformSize,
+  },
+  minHeight: {
+    property: {
+      physical: 'minHeight',
+      logical: 'minBlockSize',
+    },
+    resolveProperty: getPropertyMode,
+    transform: transformSize,
+  },
+  maxHeight: {
+    property: {
+      physical: 'maxHeight',
+      logical: 'maxBlockSize',
+    },
+    resolveProperty: getPropertyMode,
+    transform: transformSize,
+  },
   verticalAlign: { property: 'verticalAlign' },
+  direction: { property: 'direction' },
   ...selfAlignments,
   ...gridItems,
   ...flexItems,

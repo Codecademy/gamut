@@ -68,9 +68,8 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
           alwaysSetVariables
           bg={themeBackground[colorMode]}
           ref={storyRef}
-          dir={direction}
         >
-          {Story()}
+          <div dir={direction}>{Story()}</div>
         </Background>
       </GamutProvider>
     );
@@ -86,9 +85,8 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
         alwaysSetVariables
         bg={themeBackground[colorMode]}
         ref={storyRef}
-        dir={direction}
       >
-        {Story()}
+        <div dir={direction}>{Story()}</div>
       </Background>
     </GamutProvider>
   );
