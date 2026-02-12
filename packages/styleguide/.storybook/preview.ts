@@ -177,6 +177,19 @@ export const globalTypes = {
       showName: true,
     },
   },
+  direction: {
+    name: 'Direction',
+    description: 'Text direction (LTR or RTL)',
+    defaultValue: 'ltr',
+    toolbar: {
+      icon: 'arrowright',
+      items: [
+        { value: 'ltr', title: 'Left-to-Right (LTR)', icon: 'arrowright' },
+        { value: 'rtl', title: 'Right-to-Left (RTL)', icon: 'arrowleft' },
+      ],
+      showName: true,
+    },
+  },
 };
 
 export const decorators = [withEmotion];
