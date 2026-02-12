@@ -1,10 +1,10 @@
 {
   "name": "@codecademy/gamut-tests",
   "description": "Shared component test setup for Gamut applications",
-  "version": "5.2.19",
+  "version": "5.2.20",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "dependencies": {
-    "@codecademy/gamut-styles": "17.11.2",
+    "@codecademy/gamut-styles": "17.11.3",
     "component-test-setup": "*",
     "lodash": "^4.17.23"
   },
