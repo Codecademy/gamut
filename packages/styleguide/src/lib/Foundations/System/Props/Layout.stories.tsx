@@ -19,9 +19,8 @@ export const WidthExample: Story = {
         p={16}
         width="50%"
       >
-        This box has <Markdown text="`width='50%' and height='300px'`." /> It
-        takes up half the width of its container. Inspect the box to see the
-        rendered CSS property.
+        This box has <Markdown text="`width='50%' and height='300px'`." />{' '}
+        Inspect the box to see the rendered CSS property.
       </Box>
     </Box>
   ),
