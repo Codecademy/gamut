@@ -285,7 +285,11 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         styles={memoizedStyles}
         value={multiple ? multiValues : parsedValue}
         onChange={changeHandler}
-        onKeyDown={multiple ? (e: React.KeyboardEvent<HTMLDivElement>) => keyPressHandler(e) : undefined}
+        onKeyDown={
+          multiple
+            ? (e: React.KeyboardEvent<HTMLDivElement>) => keyPressHandler(e)
+            : undefined
+        }
         {...rest}
       />
     </SelectDropdownContext.Provider>

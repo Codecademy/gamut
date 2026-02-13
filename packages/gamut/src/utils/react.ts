@@ -36,10 +36,10 @@ export const extractTextContent = (children: React.ReactNode): string => {
         return '';
       }
       if (isValidElement(child)) {
-        const props = (child as React.ReactElement<{
+        const { props } = child as React.ReactElement<{
           children?: React.ReactNode;
           text?: string;
-        }>).props;
+        }>;
         const textContent = props.children ?? props.text ?? '';
         return extractTextContent(textContent);
       }

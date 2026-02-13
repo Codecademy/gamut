@@ -1,6 +1,6 @@
-import type React from 'react';
 import { ThemeProps } from '@codecademy/variance';
 import isPropValid from '@emotion/is-prop-valid';
+import type React from 'react';
 
 import { all as allProps } from './config';
 
@@ -18,9 +18,7 @@ const validPropnames = allPropnames.filter(isPropValid);
 
 export type SystemPropNames = (typeof allPropnames)[number];
 
-export type ElementOrProps =
-  | keyof React.JSX.IntrinsicElements
-  | ThemeProps;
+export type ElementOrProps = keyof React.JSX.IntrinsicElements | ThemeProps;
 export type ForwardableProps<El extends ElementOrProps, Additional> = Exclude<
   El extends keyof React.JSX.IntrinsicElements
     ? keyof React.JSX.IntrinsicElements[El]
