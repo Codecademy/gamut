@@ -226,7 +226,6 @@ describe('Popover', () => {
               expect(
                 screen.getByTestId('popover-content-container')
               ).toHaveStyle(expected);
-              // Clean up between iterations
               cleanup();
             });
           }
@@ -278,7 +277,6 @@ describe('Popover', () => {
               expect(
                 screen.getByTestId('popover-content-container')
               ).toHaveStyle(expected);
-              // Clean up between iterations
               cleanup();
             });
           }
@@ -364,7 +362,6 @@ describe('Popover', () => {
             expect(screen.getByTestId('popover-content-container')).toHaveStyle(
               expected
             );
-            // Clean up between iterations
             cleanup();
           });
         }
