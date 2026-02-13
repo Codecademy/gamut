@@ -39,6 +39,28 @@ yarn add @codecademy/gamut-kit @emotion/react @emotion/styled
 
 3. Wrap your application root with `GamutProvider` and give it the theme you would like to use for your app.
 
+**React 19:**
+
+```tsx
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { GamutProvider, theme } from '@codecademy/gamut-styles';
+
+import { App } from './App';
+
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  const root = createRoot(rootElement);
+  root.render(
+    <GamutProvider>
+      <App />
+    </GamutProvider>
+  );
+}
+```
+
+**React 18:**
+
 ```tsx
 import React from 'react';
 import { render } from 'react-dom';
@@ -47,13 +69,14 @@ import { GamutProvider, theme } from '@codecademy/gamut-styles';
 import { App } from './App';
 
 const rootElement = document.getElementById('root');
-
-render(
-  <GamutProvider>
-    <App />
-  </GamutProvider>,
-  rootElement
-);
+if (rootElement) {
+  render(
+    <GamutProvider>
+      <App />
+    </GamutProvider>,
+    rootElement
+  );
+}
 ```
 
 GamutProvider handles a few critical tasks that need to happen in order for components to work.

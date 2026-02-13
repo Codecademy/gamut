@@ -43,8 +43,8 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
   const [isFocused, setIsFocused] = useState(false);
 
   // Use refs to store timeouts to prevent race conditions
-  const hoverDelayRef = useRef<NodeJS.Timeout | undefined>();
-  const focusDelayRef = useRef<NodeJS.Timeout | undefined>();
+  const hoverDelayRef = useRef<NodeJS.Timeout | undefined>(undefined);
+  const focusDelayRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   const commonPopoverProps = getPopoverAlignmentAndPattern({ alignment, type });
   const dims = getAlignmentStyles({ avatar, alignment, type });
@@ -175,7 +175,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
           horizNarrow={narrow && isHorizontalCenter}
           isHoverType={isHoverType}
           narrow={narrow && !isHorizontalCenter}
-          ref={childRef}
+          ref={childRef as unknown as React.RefObject<HTMLDivElement>}
         >
           {contents}
         </FloatingTipTextWrapper>
