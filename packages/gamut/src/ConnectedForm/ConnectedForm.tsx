@@ -181,7 +181,7 @@ export const ConnectedForm = forwardRef(
       </PropsProvider>
     );
   }
-) as <Values extends FormValues<Values>>(
-  props: ConnectedFormProps<Values>,
-  ref: React.ForwardedRef<HTMLFormElement>
-) => React.ReactElement;
+  // CASS COME BACK TO THIS
+  // React 19 JSX types expect single-arg components; forwardRef uses (props, ref)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+) as any;
