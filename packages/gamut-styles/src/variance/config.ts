@@ -296,13 +296,38 @@ export const positioning = {
   position: { property: 'position' },
   inset: {
     property: 'inset',
-    properties: ['top', 'right', 'bottom', 'left'],
+    properties: {
+      physical: ['top', 'right', 'bottom', 'left'],
+      logical: [
+        'insetBlockStart',
+        'insetInlineEnd',
+        'insetBlockEnd',
+        'insetInlineStart',
+      ],
+    },
+    resolveProperty: getPropertyMode,
     transform: transformSize,
   },
-  top: { property: 'top', transform: transformSize },
-  right: { property: 'right', transform: transformSize },
-  bottom: { property: 'bottom', transform: transformSize },
-  left: { property: 'left', transform: transformSize },
+  top: {
+    property: { physical: 'top', logical: 'insetBlockStart' },
+    resolveProperty: getPropertyMode,
+    transform: transformSize,
+  },
+  right: {
+    property: { physical: 'right', logical: 'insetInlineEnd' },
+    resolveProperty: getPropertyMode,
+    transform: transformSize,
+  },
+  bottom: {
+    property: { physical: 'bottom', logical: 'insetBlockEnd' },
+    resolveProperty: getPropertyMode,
+    transform: transformSize,
+  },
+  left: {
+    property: { physical: 'left', logical: 'insetInlineStart' },
+    resolveProperty: getPropertyMode,
+    transform: transformSize,
+  },
   zIndex: { property: 'zIndex' },
   opacity: { property: 'opacity' },
 } as const;
@@ -316,8 +341,14 @@ export const layout = {
   containerType: { property: 'containerType' },
   display: { property: 'display' },
   overflow: { property: 'overflow' },
-  overflowX: { property: 'overflowX' },
-  overflowY: { property: 'overflowY' },
+  overflowX: {
+    property: { physical: 'overflowX', logical: 'overflowInline' },
+    resolveProperty: getPropertyMode,
+  },
+  overflowY: {
+    property: { physical: 'overflowY', logical: 'overflowBlock' },
+    resolveProperty: getPropertyMode,
+  },
   dimensions: {
     property: 'width',
     properties: ['width', 'height'],
