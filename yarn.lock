@@ -1616,31 +1616,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codecademy/gamut-icons@npm:9.55.0, @codecademy/gamut-icons@workspace:packages/gamut-icons":
+"@codecademy/gamut-icons@npm:9.55.1, @codecademy/gamut-icons@workspace:packages/gamut-icons":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-icons@workspace:packages/gamut-icons"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.11.2"
+    "@codecademy/gamut-styles": "npm:17.11.3"
     "@codecademy/variance": "npm:0.25.2"
   peerDependencies:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
     lodash: ^4.17.23
-    react: ^17.0.2 || ^18.2.0
+    react: ^17.0.2 || ^18.3.0
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-illustrations@npm:0.58.2, @codecademy/gamut-illustrations@workspace:packages/gamut-illustrations":
+"@codecademy/gamut-illustrations@npm:0.58.3, @codecademy/gamut-illustrations@workspace:packages/gamut-illustrations":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-illustrations@workspace:packages/gamut-illustrations"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.11.2"
+    "@codecademy/gamut-styles": "npm:17.11.3"
     classnames: "npm:^2.2.5"
   peerDependencies:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    react: ^17.0.2 || ^18.2.0
-    react-dom: ^17.0.2 || ^18.2.0
+    react: ^17.0.2 || ^18.3.0
+    react-dom: ^17.0.2 || ^18.3.0
   languageName: unknown
   linkType: soft
 
@@ -1648,33 +1648,33 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-kit@workspace:packages/gamut-kit"
   dependencies:
-    "@codecademy/gamut": "npm:68.0.1"
-    "@codecademy/gamut-icons": "npm:9.55.0"
-    "@codecademy/gamut-illustrations": "npm:0.58.2"
-    "@codecademy/gamut-patterns": "npm:0.10.21"
-    "@codecademy/gamut-styles": "npm:17.11.2"
-    "@codecademy/gamut-tests": "npm:5.2.19"
+    "@codecademy/gamut": "npm:68.0.2"
+    "@codecademy/gamut-icons": "npm:9.55.1"
+    "@codecademy/gamut-illustrations": "npm:0.58.3"
+    "@codecademy/gamut-patterns": "npm:0.10.22"
+    "@codecademy/gamut-styles": "npm:17.11.3"
+    "@codecademy/gamut-tests": "npm:5.2.20"
     "@codecademy/variance": "npm:0.25.2"
     component-test-setup: "npm:^0.3.1"
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-patterns@npm:0.10.21, @codecademy/gamut-patterns@workspace:packages/gamut-patterns":
+"@codecademy/gamut-patterns@npm:0.10.22, @codecademy/gamut-patterns@workspace:packages/gamut-patterns":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-patterns@workspace:packages/gamut-patterns"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.11.2"
+    "@codecademy/gamut-styles": "npm:17.11.3"
     "@codecademy/variance": "npm:0.25.2"
     classnames: "npm:^2.2.5"
   peerDependencies:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    react: ^17.0.2 || ^18.2.0
-    react-dom: ^17.0.2 || ^18.2.0
+    react: ^17.0.2 || ^18.3.0
+    react-dom: ^17.0.2 || ^18.3.0
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-styles@npm:17.11.2, @codecademy/gamut-styles@workspace:packages/gamut-styles":
+"@codecademy/gamut-styles@npm:17.11.3, @codecademy/gamut-styles@workspace:packages/gamut-styles":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-styles@workspace:packages/gamut-styles"
   dependencies:
@@ -1686,31 +1686,31 @@ __metadata:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
     lodash: ^4.17.23
-    react: ^17.0.2 || ^18.2.0
+    react: ^17.0.2 || ^18.3.0
     stylis: ^4.0.7
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-tests@npm:5.2.19, @codecademy/gamut-tests@workspace:packages/gamut-tests":
+"@codecademy/gamut-tests@npm:5.2.20, @codecademy/gamut-tests@workspace:packages/gamut-tests":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-tests@workspace:packages/gamut-tests"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.11.2"
+    "@codecademy/gamut-styles": "npm:17.11.3"
     component-test-setup: "npm:*"
     lodash: "npm:^4.17.23"
   peerDependencies:
-    react: ^17.0.2 || ^18.2.0
+    react: ^17.0.2 || ^18.3.0
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut@npm:68.0.1, @codecademy/gamut@workspace:packages/gamut":
+"@codecademy/gamut@npm:68.0.2, @codecademy/gamut@workspace:packages/gamut":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut@workspace:packages/gamut"
   dependencies:
-    "@codecademy/gamut-icons": "npm:9.55.0"
-    "@codecademy/gamut-illustrations": "npm:0.58.2"
-    "@codecademy/gamut-patterns": "npm:0.10.21"
-    "@codecademy/gamut-styles": "npm:17.11.2"
+    "@codecademy/gamut-icons": "npm:9.55.1"
+    "@codecademy/gamut-illustrations": "npm:0.58.3"
+    "@codecademy/gamut-patterns": "npm:0.10.22"
+    "@codecademy/gamut-styles": "npm:17.11.3"
     "@codecademy/variance": "npm:0.25.2"
     "@types/marked": "npm:^4.0.8"
     "@vidstack/react": "npm:^1.12.12"
@@ -1733,8 +1733,8 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.4.0
     "@emotion/styled": ^11.3.0
-    react: ^17.0.2 || ^18.2.0
-    react-dom: ^17.0.2 || ^18.2.0
+    react: ^17.0.2 || ^18.3.0
+    react-dom: ^17.0.2 || ^18.3.0
   languageName: unknown
   linkType: soft
 
@@ -8245,30 +8245,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:18.3.0":
-  version: 18.3.0
-  resolution: "@types/react-dom@npm:18.3.0"
+"@types/react-dom@npm:18.3.1":
+  version: 18.3.1
+  resolution: "@types/react-dom@npm:18.3.1"
   dependencies:
     "@types/react": "npm:*"
-  checksum: 10c0/6c90d2ed72c5a0e440d2c75d99287e4b5df3e7b011838cdc03ae5cd518ab52164d86990e73246b9d812eaf02ec351d74e3b4f5bd325bf341e13bf980392fd53b
+  checksum: 10c0/8b416551c60bb6bd8ec10e198c957910cfb271bc3922463040b0d57cf4739cdcd24b13224f8d68f10318926e1ec3cd69af0af79f0291b599a992f8c80d47f1eb
   languageName: node
   linkType: hard
 
-"@types/react-test-renderer@npm:>=16.9.0":
+"@types/react-test-renderer@npm:18.3.0, @types/react-test-renderer@npm:>=16.9.0":
   version: 18.3.0
   resolution: "@types/react-test-renderer@npm:18.3.0"
   dependencies:
     "@types/react": "npm:*"
   checksum: 10c0/3c9748be52e8e659e7adf91dea6939486463264e6f633bf21c4cb116de18af7bef0595568a1e588160420b2f65289473075dda1cb417c2875df8cf7a09f5d913
-  languageName: node
-  linkType: hard
-
-"@types/react-test-renderer@npm:^17.0.1":
-  version: 17.0.9
-  resolution: "@types/react-test-renderer@npm:17.0.9"
-  dependencies:
-    "@types/react": "npm:^17"
-  checksum: 10c0/9147c6fbe08b4b8e130758b4b20af1cab7bbb770eadec5336c36d8ccac14202e703a58cd1e90f67b3753390a521ed23f80cb9184c06aafb56d196303cd3394b1
   languageName: node
   linkType: hard
 
@@ -8281,13 +8272,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.3.1":
-  version: 18.3.1
-  resolution: "@types/react@npm:18.3.1"
+"@types/react@npm:18.3.27":
+  version: 18.3.27
+  resolution: "@types/react@npm:18.3.27"
   dependencies:
     "@types/prop-types": "npm:*"
-    csstype: "npm:^3.0.2"
-  checksum: 10c0/18d856c12a4ec93f3cda2d58ef3d77a9480818afd3af895f812896fb82cfca1f35a692ab1add4ce826a4eb58a071624c7d1c8c6c4ccfb81c100d2916dc607614
+    csstype: "npm:^3.2.2"
+  checksum: 10c0/a761d2f58de03d0714806cc65d32bb3d73fb33a08dd030d255b47a295e5fff2a775cf1c20b786824d8deb6454eaccce9bc6998d9899c14fc04bbd1b0b0b72897
   languageName: node
   linkType: hard
 
@@ -11772,10 +11763,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csstype@npm:^3.0.2, csstype@npm:^3.0.7, csstype@npm:^3.1.2":
-  version: 3.1.3
-  resolution: "csstype@npm:3.1.3"
-  checksum: 10c0/80c089d6f7e0c5b2bd83cf0539ab41474198579584fa10d86d0cafe0642202343cbc119e076a0b1aece191989477081415d66c9fefbf3c957fc2fc4b7009f248
+"csstype@npm:^3.0.2, csstype@npm:^3.0.7, csstype@npm:^3.1.2, csstype@npm:^3.2.2":
+  version: 3.2.3
+  resolution: "csstype@npm:3.2.3"
+  checksum: 10c0/cd29c51e70fa822f1cecd8641a1445bed7063697469d35633b516e60fe8c1bde04b08f6c5b6022136bb669b64c63d4173af54864510fbb4ee23281801841a3ce
   languageName: node
   linkType: hard
 
@@ -14294,9 +14285,9 @@ __metadata:
     "@types/invariant": "npm:2.2.29"
     "@types/konami-code-js": "npm:^0.8.0"
     "@types/lodash": "npm:4.17.23"
-    "@types/react": "npm:18.3.1"
-    "@types/react-dom": "npm:18.3.0"
-    "@types/react-test-renderer": "npm:^17.0.1"
+    "@types/react": "npm:18.3.27"
+    "@types/react-dom": "npm:18.3.1"
+    "@types/react-test-renderer": "npm:18.3.0"
     "@types/stylis": "npm:^4.2.0"
     "@typescript-eslint/eslint-plugin": "npm:^5.15.0"
     "@typescript-eslint/parser": "npm:^5.15.0"
