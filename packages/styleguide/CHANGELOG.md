@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [79.1.2](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.1.1...@codecademy/styleguide@79.1.2) (2026-02-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+### [79.1.1](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.1.0...@codecademy/styleguide@79.1.1) (2026-02-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [79.1.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.0.0...@codecademy/styleguide@79.1.0) (2026-02-09)
+
+### Features
+
+- Figma CodeConnect and MCP documentation and enablement ([7236a27](https://github.com/Codecademy/gamut/commit/7236a27ecc88eb6794049f06928e6c573213ae60))
+
 ## [79.0.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@78.5.5...@codecademy/styleguide@79.0.0) (2026-01-29)
 
 ### ⚠ BREAKING CHANGES
