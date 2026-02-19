@@ -1,10 +1,7 @@
 import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
 import * as React from 'react';
+import { Anchor, Rotation, FlexBox, Text } from '@codecademy/gamut';
 
-import { Anchor } from '../../Anchor';
-import { Rotation } from '../../Animation';
-import { FlexBox } from '../../Box';
-import { Text } from '../../Typography';
 import { DetailedCodeButtonProps } from '../types';
 
 export const DetailedCodeButton: React.FC<DetailedCodeButtonProps> = ({

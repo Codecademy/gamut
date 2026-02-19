@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { DetailedCodeBody } from './DetailedCodeBody';
-import { DetailedCodeButton } from './DetailedCodeButton';
+// import { DetailedCodeButton } from './DetailedCodeButton';
 import { DetailedCodeWrapper } from './elements';
 import { DetailedCodeProps } from './types';
 
@@ -39,13 +39,19 @@ export const DetailedCode: React.FC<DetailedCodeProps> = ({
 
   return (
     <DetailedCodeWrapper>
-      <DetailedCodeBody code={displayedCode} language={language} />
-      {hasMoreCode && (
+      <DetailedCodeBody
+        code={displayedCode}
+        language={language}
+        showFloatingBadge={hasMoreCode}
+        isExpanded={isExpanded}
+        setIsExpanded={setIsExpanded}
+      />
+      {/* {hasMoreCode && (
         <DetailedCodeButton
           isExpanded={isExpanded}
           setIsExpanded={setIsExpanded}
         />
-      )}
+      )} */}
     </DetailedCodeWrapper>
   );
 };
