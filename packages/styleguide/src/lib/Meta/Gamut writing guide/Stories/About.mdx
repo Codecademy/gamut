@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/blocks';
+
+import {
+  AboutHeader,
+  addParentPath,
+  TableOfContents,
+} from '~styleguide/blocks';
+
+import { parameters as aboutPagesParameters } from './About pages.mdx';
+import { parameters as componentCodeExamplesParameters } from './Component code examples.mdx';
+import { parameters as componentStoryDocumentationParameters } from './Component story documentation.mdx';
+
+export const parameters = {
+  id: 'Meta/Gamut writing guide/Stories',
+  title: 'Stories',
+  subtitle: 'Guidelines and tooling for writing Storybook stories and docs.',
+  status: 'static',
+};
+
+<Meta title="Meta/Gamut writing guide/Stories/About" />
+
+<AboutHeader {...parameters} />
+
+This guide covers how to write and organize Storybook stories for Gamut components. Use it when creating new component documentation or updating existing stories.
+
+## Quick start
+
+We've provided a few helpful vscode snippets to help get through boilerplate. To use these start to type these strings in the editor and pick the template and fill out the tab targets.
+
+- `component-story`: The default TSX story template for code examples.
+- `component-doc`: The default component documentation template for a component's MDX file.
+- `toc-story`: A simple template for a Table of Contents category page.
+
+## File structure and naming
+
+When making a new story, there are a few things to keep in mind:
+
+- The folder structure is indicative of our flavor of atomic design.
+- The folder struture is identical to the storybook hierarchy generated.
+- For non-component related file names with more than one word, use a space between the words and use sentence case.
+  - Example: `General principles.mdx`
+  - Component-related files should use kebab-case: `RadialProgress.mdx`
+
+First find the right folder for the story in `packages/styleguide/stories` (e.g. `Atoms` | `Molecules` | `Organisms`).
+After finding it, create a new folder with two new files `#{COMPONENT_NAME}.stories.tsx` and `#{COMPONENT_NAME}.mdx`. This folder can also contain examples or other associated utility files.
+
+## Learn more
+
+Explore the pages below for detailed guidelines on each part of the story structure:
+
+<TableOfContents
+  links={addParentPath(parameters.id, [
+    aboutPagesParameters,
+    componentStoryDocumentationParameters,
+    componentCodeExamplesParameters,
+  ])}
+/>

@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Language and grammar',
+  title: 'Language and grammar',
+  subtitle: 'Guidelines for language usage and grammar in documentation',
+  status: 'static',
+};
+
+<Meta title="Meta/Gamut writing guide/Language and grammar" />
+
+<AboutHeader {...parameters} />
+
+## Voice
+
+Use active voice rather than passive voice — it makes clear who should do what and eliminates ambiguity about responsibilities. Passive voice obscures who handles what and makes documentation harder to follow. E.g. "The component renders..." not "The component is rendered by..."
+
+Use imperative mood for instructions: "Add the component" not "You should add the component"
+
+## Tense
+
+Use present tense for current functionality — it's the simplest and most direct form of a verb, making writing more clearer. The more conditional or future tense is used, the harder the audience has to work to understand the meaning. E.g. "The `StrokeButton` component accepts a `variant` prop."
+
+- Use future tense sparingly, only for confirmed features
+- Avoid past tense except in changelogs or historical context
+
+## Pronouns
+
+With active voice and imperative mood, we can often forgo pronouns entirely. However, if a pronoun is still necessary, consider these rules:
+
+- Prefer "we" when a pronoun is needed
+  - "You" is acceptable when necessary, e.g., "Use your best judgement"
+- Avoid "I/my/me" entirely
+
+## Articles
+
+- Use articles (a, an, the) for clarity
+- Omit articles in lists when appropriate for brevity
+
+## Abbreviations and Acronyms
+
+- Spell out on first use: "Web Content Accessibility Guidelines (WCAG)"
+- Use abbreviations for common terms in the domain of web design and development:
+  - HTML, CSS, API, UI, UX, etc.
+- Avoid uncommon abbreviations without definition
+
+## Capitalization
+
+- Sentence case for all headings, buttons, and UI text
+- PascalCase for component names: `MyComponent`, `ButtonGroup`
+- camelCase for props and variables: `onClick`, `backgroundColor`
+- Capitalize proper nouns: Codecademy, Storybook, Figma, GitHub
