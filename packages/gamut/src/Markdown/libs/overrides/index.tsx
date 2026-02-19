@@ -39,6 +39,10 @@ const attributeMap: { [key: string]: string } = {
 type OverrideSettingsBase = {
   component?: React.ComponentType<any>;
   allowedAttributes?: string[];
+  /**
+   * Receives props from html-to-react including `key`. When spreading props into JSX,
+   * extract key first (e.g. `const { key, ...rest } = props; return <Component key={key} {...rest} />`)
+   */
   processNode?: (node: HTMLToReactNode, props: object) => React.ReactNode;
   shouldProcessNode?: (node: HTMLToReactNode) => boolean;
 };
@@ -82,6 +86,19 @@ export const processAttributes = (attributes: AttributesMap = {}) =>
     };
   }, {});
 
+/**
+ * Extracts `key` from props before spreading into JSX.
+ * html-to-react includes key in the props object; React requires keys to be passed
+ * directly, not via spread. Use this when rendering components from override factories.
+ */
+const propsWithKey = <P extends object>(
+  props: P & { key?: React.Key },
+  render: (rest: Omit<P, 'key'>, key: React.Key | undefined) => React.ReactNode
+) => {
+  const { key: elementKey, ...rest } = props;
+  return render(rest as Omit<P, 'key'>, elementKey);
+};
+
 // generic html tag override
 export const createTagOverride = (
   tagName: string,
@@ -112,9 +129,12 @@ export const createTagOverride = (
       return Override.processNode(node, props);
     }
 
-    if (!Override.component) return null;
+    const Component = Override.component;
+    if (!Component) return null;
 
-    return <Override.component {...props} />;
+    return propsWithKey(props, (rest, key) => (
+      <Component key={key} {...rest} />
+    ));
   },
 });
 
@@ -180,9 +200,12 @@ export const createVideoOverride = (
       return Override.processNode(node, props);
     }
 
-    if (!Override.component) return null;
+    const Component = Override.component;
+    if (!Component) return null;
 
-    return <Override.component {...props} />;
+    return propsWithKey(props, (rest, key) => (
+      <Component key={key} {...rest} />
+    ));
   },
 });
 
@@ -203,13 +226,14 @@ export const createCodeBlockOverride = (
       const [, language = undefined] =
         props.className?.match(/language-([^\s]+)/) || [];
 
-      if (!Override.component) return null;
+      const Component = Override.component;
+      if (!Component) return null;
 
-      return (
-        <Override.component {...props} language={language}>
-          {props.children?.[0]}
-        </Override.component>
-      );
+      return propsWithKey(props, (rest, key) => (
+        <Component key={key} {...rest} language={language}>
+          {rest.children?.[0]}
+        </Component>
+      ));
     },
     ...Override,
   });
@@ -230,15 +254,18 @@ export const createInputOverride = (
     processNode(node: HTMLToReactNode, props: any) {
       const label = getLabel(node);
 
-      if (!Override.component) return null;
+      const Component = Override.component;
+      if (!Component) return null;
 
-      if (isCheckboxParent(node, type)) {
-        return <CheckboxParentLi {...props} />;
-      }
+      return propsWithKey(props, (rest, key) => {
+        if (isCheckboxParent(node, type)) {
+          return <CheckboxParentLi key={key} {...rest} />;
+        }
 
-      if (isLabelText(node, type)) return null;
+        if (isLabelText(node, type)) return null;
 
-      return <Override.component label={label} {...props} />;
+        return <Component key={key} label={label} {...rest} />;
+      });
     },
     ...Override,
   });
