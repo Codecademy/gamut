@@ -12,6 +12,7 @@ import {
   MiniArrowRightIcon,
   MiniDeleteIcon,
   MiniRibbonIcon,
+  MiniStarIcon,
   SearchIcon,
 } from '@codecademy/gamut-icons';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -42,12 +43,15 @@ export const Secondary: Story = {
 
 export const InlineIcons: Story = {
   render: () => (
-    <FlexBox gap={16} row>
+    <FlexBox flexDirection={{ _: 'column', sm: 'row' }} gap={16}>
       <FillButton icon={MiniArrowLeftIcon} maxWidth="fit-content">
         FillButton
       </FillButton>
-      <StrokeButton icon={MiniRibbonIcon} maxWidth="fit-content">
-        Leading icon
+      <StrokeButton
+        icon={[MiniRibbonIcon, MiniStarIcon]}
+        maxWidth="fit-content"
+      >
+        StrokeButton
       </StrokeButton>
       <TextButton
         icon={MiniArrowRightIcon}

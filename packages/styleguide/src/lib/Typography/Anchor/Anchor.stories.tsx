@@ -8,7 +8,7 @@ const meta: Meta<typeof Anchor> = {
   component: Anchor,
   args: {
     children: 'Click me',
-    href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    // href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     icon: icons.MiniInfoOutlineIcon,
     iconPosition: 'left',
     target: '_blank',
@@ -30,7 +30,7 @@ export const Default: Story = {
   args: {},
 };
 
-export const IconAnchor: Story = {
+export const IconFlexAnchor: Story = {
   render: (args) => (
     <GridBox gap={4}>
       <Anchor
@@ -54,11 +54,10 @@ export const IconAnchor: Story = {
   ),
 };
 
-export const IconAnchorExample: Story = {
+export const IconInlineAnchorExample: Story = {
   render: (args) => (
     <Text fontSize={14}>
-      I started painting as a hobby when I was little. I didn&apos;t know I had
-      any talent. I believe talent is just a pursued interest.e{' '}
+      I started painting as a hobby when I was little.{' '}
       <Anchor
         {...args}
         href="/"
@@ -66,10 +65,20 @@ export const IconAnchorExample: Story = {
         iconPosition="left"
         variant="inline"
       >
+        I didn&apos;t know I had any talent.
+      </Anchor>{' '}
+      I believe talent is just a pursued interest.{' '}
+      <Anchor
+        {...args}
+        href="/"
+        icon={icons.BulbIcon}
+        iconPosition="right"
+        variant="inline"
+      >
         Anybody can do what I do.
       </Anchor>{' '}
       Just go back and put one little more happy tree in there. Everybody&apos;s
-      different.{' '}
+      different. <br />
       <Anchor
         {...args}
         href="/"
@@ -93,4 +102,8 @@ export const IconModes: Story = {
 
 export const PolymorphicAnchor: Story = {
   render: () => <PolymorphicAnchors />,
+};
+
+export const DisabledAnchor: Story = {
+  render: () => <Anchor disabled> This is disabled, inspect me! </Anchor>,
 };

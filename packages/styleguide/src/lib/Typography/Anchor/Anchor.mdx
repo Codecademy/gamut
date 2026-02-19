@@ -87,9 +87,16 @@ Use outside of a paragraph or `menu` instance when a lower level of prominence i
 
 ## Icons
 
-Anchors can be rendered with leading and trailing icons to provide additional context or visual distinction.
+Gamut icons can be added to the `Anchor` component using the `icon` prop. For leading or trailing icons, provide a single icon to the `Icon` prop and set the `iconPosition` prop to either `left` or `right`.
+If you provide `icon` with an array of two icons, the first icon will be rendered in the left position and the second icon will be rendered in the right position — also `iconPosition` should be omitted.
 
-<Canvas of={AnchorStories.IconAnchorExample} />
+By default the icons will be NOT be inline.
+
+<Canvas of={AnchorStories.IconFlexAnchor} />
+
+You can set `variant="inline"` to render the icons inline with the text. This is useful for links that are part of a paragraph or text-heavy content.
+
+<Canvas of={AnchorStories.IconInlineAnchorExample} />
 
 Icons are also responsive to ColorMode.
 
@@ -100,6 +107,12 @@ Icons are also responsive to ColorMode.
 Our Anchors are polymorphic - they can be rendered as a button or a link component. This allows for better accessibility and flexibility as this happens automatically based on the props passed to the Anchor. Please use this sparingly and when appropriate (for example, a `button` that navigates to a new page).
 
 <Canvas of={AnchorStories.PolymorphicAnchor} />
+
+### Disabled Anchor
+
+The `Anchor` component can be disabled by passing the `disabled` prop. Since `<a>` elements do not support the `disabled` attribute, the `Anchor` component will render as a `<button>` when disabled.
+
+<Canvas of={AnchorStories.DisabledAnchor} />
 
 ## Playground
 

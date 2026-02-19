@@ -11,6 +11,7 @@ import {
   BashShellIcon,
   FileIcon,
   InformationalIcon,
+  MiniOpenIcon,
   MultipleUsersIcon,
   PeopleIcon,
   RatingStarCircleIcon,
@@ -51,7 +52,9 @@ export const Default: Story = {
       <>
         <MenuItem>Menu item</MenuItem>
         <MenuItem active>Active item</MenuItem>
-        <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
+        <MenuItem icon={[RatingStarCircleIcon, MiniOpenIcon]}>
+          Multi icons
+        </MenuItem>
         <MenuItem>Menu item</MenuItem>
       </>
     ),
@@ -65,7 +68,7 @@ export const Popover: Story = {
   render: (args) => (
     <FlexBox column width="fit-content">
       <Menu {...args}>
-        <MenuItem label="testing" onClick={() => null}>
+        <MenuItem label="Extra extra!" onClick={() => null}>
           Menu item with Tooltip
         </MenuItem>
         <MenuItem active onClick={() => null}>
@@ -94,6 +97,12 @@ export const Popover: Story = {
         >
           Disabled button with ToolTip
         </MenuItem>
+        <MenuItem
+          icon={[RatingStarCircleIcon, MiniOpenIcon]}
+          onClick={() => null}
+        >
+          Multi icons
+        </MenuItem>
       </Menu>
     </FlexBox>
   ),
@@ -107,7 +116,7 @@ export const Fixed: Story = {
     <FlexBox column width="fit-content">
       <nav>
         <Menu {...args}>
-          <MenuItem label="testing" onClick={() => null}>
+          <MenuItem label="Read all about it" onClick={() => null}>
             Menu item with Tooltip
           </MenuItem>
           <MenuItem active onClick={() => null}>
@@ -186,7 +195,9 @@ export const NoRoleMenu: Story = {
         <MenuItem>Menu item</MenuItem>
         <MenuItem active>Active item</MenuItem>
         <MenuItem icon={MultipleUsersIcon}>Icon item</MenuItem>
-        <MenuItem>Menu item</MenuItem>
+        <MenuItem icon={MiniOpenIcon} iconPosition="right">
+          Menu item
+        </MenuItem>
       </>
     ),
   },
@@ -283,7 +294,7 @@ export const IconMenu: Story = {
           icon={RatingStarCircleIcon}
           label={{
             alignment: 'right-center',
-            info: <Text color="hyper">I am bold and different</Text>,
+            info: <Text color="primary">I am bold and different</Text>,
             narrow: true,
           }}
         />
@@ -344,6 +355,7 @@ export const FloatingMenuExample: React.FC = () => {
               >
                 Active item
               </MenuItem>
+
               <MenuItem
                 active={activeIndex === 2}
                 icon={MultipleUsersIcon}
@@ -351,8 +363,13 @@ export const FloatingMenuExample: React.FC = () => {
               >
                 Icon item
               </MenuItem>
-              <MenuItem active={activeIndex === 3} onClick={() => null}>
-                A complex action
+
+              <MenuItem
+                active={activeIndex === 3}
+                icon={[RatingStarCircleIcon, MiniOpenIcon]}
+                onClick={() => null}
+              >
+                Multi Icons
               </MenuItem>
             </Menu>
           </FlexBox>
