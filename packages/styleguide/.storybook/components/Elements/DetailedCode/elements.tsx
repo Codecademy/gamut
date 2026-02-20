@@ -1,6 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { FlexBox, TextButton } from '@codecademy/gamut';
+import { FlexBox } from '@codecademy/gamut';
 
 export const DetailedCodeWrapper = styled(FlexBox)(
   css({
@@ -27,13 +27,20 @@ export const DetailedCodeBodyWrapper = styled(FlexBox)<{
   })
 );
 
-export const FloatingExpandButton = styled(TextButton)(
+export const FloatingIndicator = styled(FlexBox)(
   css({
     position: 'absolute',
     bottom: 16,
     left: '50%',
     transform: 'translateX(-50%)',
     zIndex: 1,
-    bg: 'white',
+    bg: 'inherit',
+    px: 12,
+    py: 4,
+    borderRadius: 'lg',
+    fontSize: 26,
+    fontWeight: 700,
+    color: 'white',
+    letterSpacing: '0.1em',
   })
 );

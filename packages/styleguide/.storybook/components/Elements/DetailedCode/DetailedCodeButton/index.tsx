@@ -7,10 +7,11 @@ import { DetailedCodeButtonProps } from '../types';
 export const DetailedCodeButton: React.FC<DetailedCodeButtonProps> = ({
   isExpanded,
   setIsExpanded,
+  language,
 }) => {
   const handleClick = () => {
     if (setIsExpanded) {
-      setIsExpanded((prev: boolean) => !prev);
+      setIsExpanded((prev) => !prev);
     }
   };
 
@@ -30,10 +31,15 @@ export const DetailedCodeButton: React.FC<DetailedCodeButtonProps> = ({
         justifyContent="space-between"
         width="100%"
       >
-        <Text>{isExpanded ? 'Show Less Code' : 'Show More Code'}</Text>
-        <Rotation height={16} rotated={isExpanded} width={16}>
-          <MiniChevronDownIcon aria-hidden size={16} />
-        </Rotation>
+        <Text>{language}</Text>
+        <FlexBox columnGap={8} flexDirection="row" alignItems="center">
+          <Text fontWeight={400}>
+            {isExpanded ? 'Show Less Code' : 'Show More Code'}
+          </Text>
+          <Rotation height={16} rotated={isExpanded} width={16}>
+            <MiniChevronDownIcon aria-hidden size={16} />
+          </Rotation>
+        </FlexBox>
       </FlexBox>
     </Anchor>
   );

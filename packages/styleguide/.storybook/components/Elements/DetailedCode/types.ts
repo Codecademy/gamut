@@ -12,14 +12,13 @@ export interface DetailedCodeProps {
 }
 
 export interface DetailedCodeButtonProps {
-  isExpanded?: boolean;
-  setIsExpanded?: React.Dispatch<React.SetStateAction<boolean>>;
+  isExpanded: boolean;
+  setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>;
+  language: SourceLanguage;
 }
 
 export interface DetailedCodeBodyProps {
   code: string;
-  language: string;
+  language: SourceLanguage;
   showFloatingBadge?: boolean;
-  isExpanded?: boolean;
-  setIsExpanded?: React.Dispatch<React.SetStateAction<boolean>>;
 }

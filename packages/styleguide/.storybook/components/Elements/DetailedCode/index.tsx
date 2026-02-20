@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 import { DetailedCodeBody } from './DetailedCodeBody';
-// import { DetailedCodeButton } from './DetailedCodeButton';
+import { DetailedCodeButton } from './DetailedCodeButton';
 import { DetailedCodeWrapper } from './elements';
 import { DetailedCodeProps } from './types';
 
-const DEFAULT_PREVIEW_LINES = 10;
+const DEFAULT_PREVIEW_LINES = 20;
 const DEFAULT_LANGUAGE = 'tsx';
 
 const getPreviewCode = (code: string, previewLines: number) => {
@@ -42,16 +42,15 @@ export const DetailedCode: React.FC<DetailedCodeProps> = ({
       <DetailedCodeBody
         code={displayedCode}
         language={language}
-        showFloatingBadge={hasMoreCode}
-        isExpanded={isExpanded}
-        setIsExpanded={setIsExpanded}
+        showFloatingBadge={hasMoreCode && !isExpanded}
       />
-      {/* {hasMoreCode && (
+      {hasMoreCode && (
         <DetailedCodeButton
           isExpanded={isExpanded}
           setIsExpanded={setIsExpanded}
+          language={language}
         />
-      )} */}
+      )}
     </DetailedCodeWrapper>
   );
 };
