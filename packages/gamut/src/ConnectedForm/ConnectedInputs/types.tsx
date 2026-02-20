@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { RegisterOptions } from 'react-hook-form';
 
 import {
   CheckboxLabelUnion,
@@ -15,6 +16,7 @@ export interface BaseConnectedFieldProps {
 }
 export interface ConnectedFieldProps extends BaseConnectedFieldProps {
   name: string;
+  customValidations?: RegisterOptions;
 }
 
 export interface MinimalCheckboxProps
