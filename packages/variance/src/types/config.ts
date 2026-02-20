@@ -1,6 +1,12 @@
 import { Theme } from '@emotion/react';
 
-import { DefaultCSSPropertyValue, PropertyTypes } from './properties';
+import {
+  DefaultCSSPropertyValue,
+  DirectionalProperties,
+  DirectionalProperty,
+  PropertyMode,
+  PropertyTypes,
+} from './properties';
 import {
   AbstractProps,
   CSSObject,
@@ -14,9 +20,11 @@ import { AllUnionKeys, Key, KeyFromUnion } from './utils';
 export type MapScale = Record<string | number, string | number>;
 export type ArrayScale = readonly (string | number)[] & { length: 0 };
 
+export type PropertyValue = keyof PropertyTypes | DirectionalProperty;
+
 export interface BaseProperty {
-  property: keyof PropertyTypes;
-  properties?: readonly (keyof PropertyTypes)[];
+  property: PropertyValue;
+  properties?: readonly PropertyValue[] | DirectionalProperties;
 }
 
 export interface Prop extends BaseProperty {
@@ -26,6 +34,7 @@ export interface Prop extends BaseProperty {
     prop?: string,
     props?: AbstractProps
   ) => string | number | CSSObject;
+  resolveProperty?: (useLogicalProperties: boolean) => PropertyMode;
 }
 
 export interface AbstractPropTransformer extends Prop {
@@ -47,14 +56,24 @@ export type PropertyValues<
   All extends true ? never : object | any[]
 >;
 
+// Extract a single property key from PropertyValue for type inference
+// Uses 'physical' for directional properties (both physical/logical have same value types)
+type BasePropertyKey<P> = P extends DirectionalProperty ? P['physical'] : P;
+
 export type ScaleValue<Config extends Prop> =
   Config['scale'] extends keyof Theme
-    ? keyof Theme[Config['scale']] | PropertyValues<Config['property']>
+    ?
+        | keyof Theme[Config['scale']]
+        | PropertyValues<BasePropertyKey<Config['property']>>
     : Config['scale'] extends MapScale
-    ? keyof Config['scale'] | PropertyValues<Config['property']>
+    ?
+        | keyof Config['scale']
+        | PropertyValues<BasePropertyKey<Config['property']>>
     : Config['scale'] extends ArrayScale
-    ? Config['scale'][number] | PropertyValues<Config['property']>
-    : PropertyValues<Config['property'], true>;
+    ?
+        | Config['scale'][number]
+        | PropertyValues<BasePropertyKey<Config['property']>>
+    : PropertyValues<BasePropertyKey<Config['property']>, true>;
 
 export type Scale<Config extends Prop> = ResponsiveProp<
   ScaleValue<Config> | ((theme: Theme) => ScaleValue<Config>)
