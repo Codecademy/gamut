@@ -63,6 +63,25 @@ GamutProvider handles a few critical tasks that need to happen in order for comp
 3. Adds Global styles and CSS Variables
 4. Sets the current Color Mode context and variables.
 
+### Content Security Policy (CSP)
+
+If your app uses a strict Content-Security-Policy (e.g. `style-src` without `'unsafe-inline'`), pass a nonce to `GamutProvider` so Emotion and other Gamut-managed style tags are allowed:
+
+```tsx
+<GamutProvider nonce={yourCspNonce}>
+  <App />
+</GamutProvider>
+```
+
+Your nonce should be the same value you use in your CSP header (e.g. `style-src 'self' 'nonce-{value}'`). Gamut uses the [get-nonce](https://www.npmjs.com/package/get-nonce) singleton so that style tags injected by react-style-singleton (e.g. from FocusTrap) also receive this nonce.
+
+**Motion components:** When you pass a nonce to GamutProvider, it also wraps children in framer-motion's MotionConfig so that motion components (Drawer, Alert, List, Toaster, etc.) get the nonce on their injected style tags. No extra wrapper is needed.
+
+**Video (Vidstack):** The Video component uses `@vidstack/react`, which applies styles via inline styles (element.style / CSSOM). CSP nonces apply only to `<style>` and `<script>` elements, not to inline style attributes, so **nonce cannot fix** Vidstack's CSP violations. If you use strict CSP and the Video component, relax CSP for that context (e.g. allow the Video route or sandbox) or avoid using Video where strict CSP is required.
+
+
+
+
 **Note:** For react frameworks like Next and Gatsby this will be slightly different (see the SSR section for further steps for each framework). Your entry points for each framework will be:
 
 - **Next** `_app.tsx`

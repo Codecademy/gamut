@@ -5,6 +5,7 @@ import {
   Theme,
   ThemeProvider,
 } from '@emotion/react';
+import { MotionConfig } from 'framer-motion';
 import { setNonce } from 'get-nonce';
 import { useContext, useEffect, useRef } from 'react';
 import * as React from 'react';
@@ -33,12 +34,19 @@ export interface GamutProviderProps {
 export const GamutContext = React.createContext<{
   hasGlobals?: boolean;
   hasCache?: boolean;
+  nonce?: string;
 }>({
   hasGlobals: false,
   hasCache: false,
 });
 
 GamutContext.displayName = 'GamutContext';
+
+/**
+ * Returns the CSP nonce passed to GamutProvider, if any.
+ */
+export const useNonce = (): string | undefined =>
+  useContext(GamutContext).nonce;
 
 export const GamutProvider: React.FC<GamutProviderProps> = ({
   children,
@@ -68,6 +76,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   const contextValue = {
     hasGlobals: shouldInsertGlobals,
     hasCache: shouldCreateCache,
+    nonce,
   };
 
   const globals = shouldInsertGlobals && (
@@ -79,12 +88,22 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     </>
   );
 
+  const content = (
+    <ThemeProvider theme={theme}>
+      {nonce ? (
+        <MotionConfig nonce={nonce}>{children}</MotionConfig>
+      ) : (
+        children
+      )}
+    </ThemeProvider>
+  );
+
   if (activeCache.current) {
     return (
       <GamutContext.Provider value={contextValue}>
         <CacheProvider value={activeCache.current}>
           {globals}
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          {content}
         </CacheProvider>
       </GamutContext.Provider>
     );
@@ -93,7 +112,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   return (
     <GamutContext.Provider value={contextValue}>
       {globals}
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      {content}
     </GamutContext.Provider>
   );
 };
