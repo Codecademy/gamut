@@ -79,9 +79,6 @@ Your nonce should be the same value you use in your CSP header (e.g. `style-src 
 
 **Video (Vidstack):** The Video component uses `@vidstack/react`, which applies styles via inline styles (element.style / CSSOM). CSP nonces apply only to `<style>` and `<script>` elements, not to inline style attributes, so **nonce cannot fix** Vidstack's CSP violations. If you use strict CSP and the Video component, relax CSP for that context (e.g. allow the Video route or sandbox) or avoid using Video where strict CSP is required.
 
-
-
-
 **Note:** For react frameworks like Next and Gatsby this will be slightly different (see the SSR section for further steps for each framework). Your entry points for each framework will be:
 
 - **Next** `_app.tsx`

@@ -90,11 +90,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
 
   const content = (
     <ThemeProvider theme={theme}>
-      {nonce ? (
-        <MotionConfig nonce={nonce}>{children}</MotionConfig>
-      ) : (
-        children
-      )}
+      {nonce ? <MotionConfig nonce={nonce}>{children}</MotionConfig> : children}
     </ThemeProvider>
   );
 
