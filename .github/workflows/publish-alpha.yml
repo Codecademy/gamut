@@ -49,9 +49,11 @@ jobs:
       - run: npx nx run-many --target=publish-build --parallel=3
 
       - name: Publish alpha packages
+        id: publish-alpha
         run: |
           SHORT_SHA=${GITHUB_SHA:0:6}
-          yarn lerna publish --no-verify-access --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${SHORT_SHA} --dist-tag=alpha.${SHORT_SHA}
+          PREID="alpha.${SHORT_SHA}"
+          node script/release-alpha.mjs --preid="${PREID}"
         env:
           GH_TOKEN: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN  }}
@@ -62,7 +64,16 @@ jobs:
         run: |
           {
             echo 'result<<EOF'
-            yarn lerna ll --parseable | grep alpha | awk -F: '{print $2"@"$3}' || true
+            # List all published packages with alpha version
+            for pkg in packages/*/package.json; do
+              if [ -f "$pkg" ]; then
+                NAME=$(node -p "try { require('./$pkg').name } catch(e) { '' }")
+                VERSION=$(node -p "try { require('./$pkg').version } catch(e) { '' }")
+                if [[ "$VERSION" == *"alpha"* ]] && [[ -n "$NAME" ]]; then
+                  echo "${NAME}@${VERSION}"
+                fi
+              fi
+            done
             echo 'EOF'
           } >> $GITHUB_OUTPUT
 

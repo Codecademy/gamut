@@ -6,7 +6,7 @@ _The component library & design system for Codecademy._ ✨
 
 [![GitHub Actions](https://github.com/Codecademy/gamut/workflows/Test%20Suite/badge.svg)](https://github.com/Codecademy/gamut/actions)
 
-This repository is a monorepo that we manage using [Lerna](https://lerna.js.org/). That means that we publish several packages to npm from the same codebase, including:
+This repository is a monorepo that we manage using [NX](https://nx.dev/). That means that we publish several packages to npm from the same codebase, including:
 
 ## Gamut Kit
 
@@ -66,11 +66,46 @@ We provide a single package to manage the versions of a few core dependencies: `
 
 ### Publishing Modules
 
+This repository uses [NX Release](https://nx.dev/recipes/nx-release) with [Version Plans](https://nx.dev/recipes/nx-release/file-based-versioning-version-plans) for package versioning and publishing.
+
+#### Creating a Version Plan
+
+1.  Create a version plan for your changes using `yarn nx release plan`. This interactive command will prompt you to:
+    - Select which packages are affected by your changes
+    - Choose the type of version bump (major, minor, or patch)
+    - Provide a description of the changes for the changelog
+1.  The version plan will be saved as a markdown file in `.nx/version-plans/`
+1.  Commit this version plan file along with your code changes
+1.  The version plan will be applied when your PR is merged to main
+
+#### Version Plan Format
+
+Version plan files are markdown files with YAML front matter. Here's an example:
+
+```markdown
+---
+gamut: minor
+gamut-styles: patch
+---
+
+Add new Button variant and fix spacing issues
+
+- Added a new "ghost" variant to the Button component
+- Fixed margin spacing in the Card component
+```
+
+#### Publishing Process
+
 1.  Make your changes in a feature branch, and get another engineer to review your code
 1.  After your code has been reviewed and tested, you can merge your branch into main.
-1.  Make sure to update your PR title and add a short description of your changes for the changelog (see the [PR Title Guide](https://github.com/Codecademy/gamut#pr-title-guide))
+1.  Make sure to update your PR title following the [PR Title Guide](https://github.com/Codecademy/gamut#pr-title-guide)
 1.  To merge your changes, add the `Ship It` label to your Pull Request.
-1.  Once your branch is merged into main, it will be published automatically by GitHub Actions.
+1.  Once your branch is merged into main, it will be published automatically by GitHub Actions using NX Release.
+    - NX Release will apply all version plans found in `.nx/version-plans/`
+    - It will bump package versions according to the plans
+    - It will generate changelog entries from the version plan descriptions
+    - It will publish the packages to npm
+    - It will create git tags and GitHub releases
 1.  You can find the new version number on npmjs.com/package/<package-name>, or find it in that package's `package.json` on the `main` branch
 
 ### Publishing an alpha version of a module
@@ -87,7 +122,7 @@ Every PR that changes files in a package publishes alpha releases that you can u
 
 ### Working with pre-published changes
 
-> NOTE: Due to the inconsistencies of symlinks in a lerna repo, _instead_ of using `yarn link`, we recommend using the `npm-link-better` package with the `--copy` flag to copy packages into your local repo's `node_modules` directory.
+> NOTE: Due to the inconsistencies of symlinks in a monorepo, _instead_ of using `yarn link`, we recommend using the `npm-link-better` package with the `--copy` flag to copy packages into your local repo's `node_modules` directory.
 
 **Initial Setup:**
 
@@ -184,14 +219,15 @@ for more information for why you have to do this.
 
 ### Adding a New Package
 
-1. Create a new directory at `packages/<package-name>/package.json`.
-1. Use `yarn lerna create` to create the new package, copying values from existing `package.json`s when unsure.
-   - Also copy the `publishConfig` field to let your published package be public by default
-1. Create a minimal amount of source code in the new package
-   - Example: a simple `tsconfig.json` with a `index.ts` exporting a single object
-1. Run `yarn lerna bootstrap` from the repository root
-1. Send a `feat` PR adding that package
-1. One merged, message out in our #frontend Slack channel to other Gamut developers to re-run `yarn lerna bootstrap` after they merge from `main`
+1. Use NX generators to create the new package. For example:
+   ```bash
+   yarn nx g @nx/react:library <package-name> --buildable --publishable
+   ```
+   - Make sure to set the `publishConfig` field to `{ "access": "public" }` in the generated package.json to let your published package be public by default
+1. Customize the generated source code as needed for your package
+1. Run `yarn install` from the repository root
+1. Send a `feat` PR adding that package with a version plan (using `yarn nx release plan`)
+1. Once merged, message out in our #frontend Slack channel to other Gamut developers to re-run `yarn install` after they merge from `main`
 
 Notes:
 
@@ -209,11 +245,9 @@ For new packages, please use an NX generator plugin to create your initial packa
 
 Your PR Title should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) Format.
 
-Because we automatically squash merge Pull Requests, you'll need to format your PR title to match these guidelines since the title will become the commit message.
+Because we automatically squash merge Pull Requests, you'll need to format your PR title to match these guidelines.
 
-Your individual commits will affect the `alpha` version number, but not the final version once you merge to main.
-
-This Title format will be linted in the `conventional-pr-title` status check and prevent merging if you do not follow the correct format.
+**Note:** With the migration to NX Release and Version Plans, the version bumps are now determined by the version plan files you create using `yarn nx release plan`, rather than commit messages. However, we still recommend following Conventional Commits format for consistency and clarity.
 
 ### PR Title Format
 
@@ -249,7 +283,7 @@ Check out the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 
 **Type**
 
-The `type` determines what kind of version bump is needed. A `fix` will create a `patch` release, while a `feat` will create a `minor` release. Major version updates require a special syntax that is described below.
+The `type` describes what kind of change you're making. With NX Release and Version Plans, you'll specify the version bump (major/minor/patch) directly when creating your version plan using `yarn nx release plan`.
 
 `type` must be one of the following options:
 
@@ -271,15 +305,21 @@ A scope is optional and consists of a noun describing a section of the codebase 
 
 **Breaking Changes**
 
-Adding an exclamation point after your type, before the colon, will indicate that your PR contains a breaking change, and increment the major version number of the modules you changed.
+Breaking changes are indicated in version plans by specifying a `major` version bump. When creating a version plan with `yarn nx release plan`, select "major" as the bump type for packages that introduce breaking changes.
 
-Examples:
+Examples of version plans with breaking changes:
 
-`feat!: made a breaking change in the Button component`
+```markdown
+---
+gamut: major
+---
 
-`feat(Button)!: made a breaking change in the Button component`
+Breaking: Removed deprecated Button variants
 
-You should do this if your changes introduce any incompatibilities with previous versions of the module.
+This removes the previously deprecated "primary-blue" and "secondary-red" variants.
+```
+
+You should create a major version bump if your changes introduce any incompatibilities with previous versions of the module.
 This will indicate to package consumers that they need to refactor their usage of the module to upgrade.
 
 #### Breaking Changes Release Process
@@ -302,7 +342,7 @@ Optional extra description for your changes.
 
 This goes in the description for your PR, between the `<!--- CHANGELOG-DESCRIPTION -->` comment tags in the PR template.
 
-If you include the text `BREAKING CHANGE:` in your description it will trigger a major version bump. We prefer to use the `feat!:` syntax for breaking changes described above.
+With NX Release and Version Plans, changelog content is primarily driven by the description in your version plan files, not the PR description. The version plan description will appear in the generated CHANGELOG.md files.
 
 ## Publishing Storybook
 
