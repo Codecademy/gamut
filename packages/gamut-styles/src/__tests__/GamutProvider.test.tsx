@@ -2,6 +2,7 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import createCache from '@emotion/cache';
 import { ThemeContext } from '@emotion/react';
 import { screen } from '@testing-library/react';
+import { setNonce } from 'get-nonce';
 
 import { createEmotionCache } from '../cache';
 import { GamutProvider } from '../GamutProvider';
@@ -12,11 +13,16 @@ jest.mock('../cache', () => {
   return { createEmotionCache: cacheMock };
 });
 
+jest.mock('get-nonce', () => ({
+  setNonce: jest.fn(),
+}));
+
 const renderView = setupRtl(GamutProvider, { theme });
 
 describe(GamutProvider, () => {
   beforeEach(() => {
     jest.resetAllMocks();
+    (setNonce as jest.Mock).mockClear();
   });
 
   it('renders with a cache by default', () => {
@@ -76,6 +82,20 @@ describe(GamutProvider, () => {
     renderView({ cache: createCache({ key: 'gamut' }) });
 
     expect(createEmotionCache).toHaveBeenCalledTimes(0);
+  });
+
+  it('calls setNonce with the nonce prop', () => {
+    renderView({ nonce: 'my-csp-nonce' });
+
+    expect(setNonce).toHaveBeenCalledWith('my-csp-nonce');
+  });
+
+  it('passes nonce to createEmotionCache when provided', () => {
+    renderView({ nonce: 'emotion-csp-nonce' });
+
+    expect(createEmotionCache).toHaveBeenCalledWith({
+      nonce: 'emotion-csp-nonce',
+    });
   });
 
   it('can render custom variables', () => {

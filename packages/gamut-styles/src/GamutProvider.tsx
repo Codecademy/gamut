@@ -5,7 +5,8 @@ import {
   Theme,
   ThemeProvider,
 } from '@emotion/react';
-import { useContext, useRef } from 'react';
+import { setNonce } from 'get-nonce';
+import { useContext, useEffect, useRef } from 'react';
 import * as React from 'react';
 
 import { createEmotionCache } from './cache';
@@ -51,6 +52,13 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   const { hasGlobals, hasCache } = useContext(GamutContext);
   const shouldCreateCache = useCache && !hasCache;
   const shouldInsertGlobals = useGlobals && !hasGlobals;
+
+  // Feed nonce to get-nonce singleton so react-style-singleton (e.g. via react-aria-components) can set it on injected style tags for CSP
+  useEffect(() => {
+    if (nonce) {
+      setNonce(nonce);
+    }
+  }, [nonce]);
 
   // Do not initialize a new cache if one has been provided as props
   const activeCache = useRef<EmotionCache | false>(
