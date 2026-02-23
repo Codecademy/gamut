@@ -20,14 +20,6 @@ const meta: Meta<typeof BarChart> = {
     title: 'Skills experience chart',
     unit: 'XP',
   },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'BarChart supports i18n via the `translations` prop. Accessibility keys (`gainedNowAt`, `inLabel`, `inOnly`) may be strings (fragments in the built-in template) or functions that receive scoped context (values, label, unit, locale) and return the full accessibility summary—useful for pluralization, word order, or locale-specific phrasing.',
-      },
-    },
-  },
 };
 
 export default meta;
@@ -266,7 +258,6 @@ export const WithCustomSorting: Story = {
         value: 'recent',
         sortFn: (bars) => {
           return [...bars].sort((a, b) => {
-            // TypeScript infers the type from barValues, so dateAdded is properly typed
             const aDate = a.dateAdded as Date | undefined;
             const bDate = b.dateAdded as Date | undefined;
             if (!aDate && !bDate) return 0;
@@ -281,7 +272,6 @@ export const WithCustomSorting: Story = {
         value: 'oldest',
         sortFn: (bars) => {
           return [...bars].sort((a, b) => {
-            // TypeScript infers the type from barValues, so dateAdded is properly typed
             const aDate = a.dateAdded as Date | undefined;
             const bDate = b.dateAdded as Date | undefined;
             if (!aDate && !bDate) return 0;
@@ -298,9 +288,6 @@ export const WithCustomSorting: Story = {
   },
 };
 
-/**
- * Bar chart with custom styling
- */
 export const CustomStyles: Story = {
   args: {
     barValues: stackedBarData,
@@ -316,9 +303,6 @@ export const CustomStyles: Story = {
   },
 };
 
-/**
- * Bar chart with custom xScale interval
- */
 export const CustomScale: Story = {
   args: {
     barValues: simpleBarData,
@@ -329,10 +313,6 @@ export const CustomScale: Story = {
   },
 };
 
-/**
- * Bar chart with string-based translations (e.g. Spanish).
- * Partial translations are merged with defaults.
- */
 export const WithStringTranslations: Story = {
   args: {
     barValues: stackedBarData,
@@ -359,10 +339,6 @@ export const WithStringTranslations: Story = {
   },
 };
 
-/**
- * Bar chart with function-based accessibility translations.
- * Exercises gainedNowAt (stacked), inLabel (link/button single bar), and inOnly (non-interactive single bar).
- */
 export const WithFunctionTranslations: Story = {
   args: {
     barValues: accessibilityBarData,
