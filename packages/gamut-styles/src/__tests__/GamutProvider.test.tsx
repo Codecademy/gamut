@@ -117,7 +117,9 @@ describe(GamutProvider, () => {
       children: <NonceConsumer />,
     });
 
-    expect(screen.getByTestId('nonce-value')).toHaveTextContent('context-nonce');
+    expect(screen.getByTestId('nonce-value')).toHaveTextContent(
+      'context-nonce'
+    );
   });
 
   it('useNonce returns undefined when no nonce is provided', () => {
