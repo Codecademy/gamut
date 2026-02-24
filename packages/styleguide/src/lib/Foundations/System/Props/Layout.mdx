@@ -1,8 +1,9 @@
-import { Meta } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 
 import { AboutHeader, TokenTable } from '~styleguide/blocks';
 
 import { defaultColumns, getPropRows } from '../../shared/elements';
+import * as LayoutStories from './Layout.stories';
 
 export const parameters = {
   title: 'Layout',
@@ -16,6 +17,16 @@ export const parameters = {
 <AboutHeader {...parameters} />
 
 Layout props control the visual structure and dimensions of elements. These properties determine how components take up space, their display behavior, and how they align within their containers. Use these props to set widths, heights, overflow behavior, and container types for responsive layouts.
+
+## Examples
+
+### Overflow X
+
+<Canvas of={LayoutStories.OverflowXExample} />
+
+### Overflow Y
+
+<Canvas of={LayoutStories.OverflowYExample} />
 
 ```tsx
 import styled from '@emotion/styled';
