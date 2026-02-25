@@ -13,16 +13,16 @@ export const OverflowXExample: Story = {
   render: () => (
     <Box
       bg="background-selected"
-      p={16}
-      width="200px"
       overflowX="scroll"
+      p={16}
       whiteSpace="nowrap"
+      width="200px"
     >
       <Box
         bg="primary"
         color="background-contrast"
-        p={8}
         display="inline-block"
+        p={8}
       >
         This content is wider than its container and has{' '}
         <Markdown text="`overflowX='scroll'`." /> Inspect the example to see
@@ -34,7 +34,7 @@ export const OverflowXExample: Story = {
 
 export const OverflowYExample: Story = {
   render: () => (
-    <Box bg="background-selected" p={16} height="100px" overflowY="scroll">
+    <Box bg="background-selected" height="100px" overflowY="scroll" p={16}>
       <Box bg="primary" color="background-contrast" p={8}>
         This content is taller than its container and has{' '}
         <Markdown text="`overflowY='scroll'`." /> Inspect the example to see
