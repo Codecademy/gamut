@@ -1,6 +1,6 @@
-import { setupRtl } from '@codecademy/gamut-tests';
+import { MockGamutProvider, setupRtl } from '@codecademy/gamut-tests';
 import { matchers } from '@emotion/jest';
-import { fireEvent, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 
 import { PopoverContainer } from '..';
 import { PopoverContainerProps, TargetRef } from '../types';
@@ -102,7 +102,7 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.mouseDown(screen.getByTestId('outside-popover'));
-    expect(onRequestClose).toBeCalledTimes(1);
+    expect(onRequestClose).toHaveBeenCalledTimes(1);
   });
 
   it('does not trigger onRequestClose callback when clicking inside', () => {
@@ -112,7 +112,7 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.mouseDown(screen.getByTestId('popover-content-container'));
-    expect(onRequestClose).toBeCalledTimes(0);
+    expect(onRequestClose).toHaveBeenCalledTimes(0);
   });
 
   it('triggers onRequestClose callback when escape key is triggered', () => {
@@ -124,7 +124,7 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.keyDown(baseElement, { key: 'escape', keyCode: 27 });
-    expect(onRequestClose).toBeCalledTimes(1);
+    expect(onRequestClose).toHaveBeenCalledTimes(1);
   });
 
   it('triggers onRequestClose callback when popover is out of viewport and closeOnViewportExit is true', () => {
@@ -139,7 +139,7 @@ describe('Popover', () => {
       onRequestClose,
       closeOnViewportExit: true,
     });
-    expect(onRequestClose).toBeCalledTimes(1);
+    expect(onRequestClose).toHaveBeenCalledTimes(1);
   });
 
   it('does not trigger onRequestClose callback when popover is in viewport', () => {
@@ -150,7 +150,7 @@ describe('Popover', () => {
       targetRef: targetRefObj,
       onRequestClose,
     });
-    expect(onRequestClose).toBeCalledTimes(0);
+    expect(onRequestClose).toHaveBeenCalledTimes(0);
   });
 
   it('does not trigger onRequestClose callback when closeOnViewportExit is false (default)', () => {
@@ -164,7 +164,7 @@ describe('Popover', () => {
       targetRef: targetRefObj,
       onRequestClose,
     });
-    expect(onRequestClose).toBeCalledTimes(0);
+    expect(onRequestClose).toHaveBeenCalledTimes(0);
   });
 
   it('triggers onRequestClose callback when closeOnViewportExit is true', () => {
@@ -179,54 +179,106 @@ describe('Popover', () => {
       onRequestClose,
       closeOnViewportExit: true,
     });
-    expect(onRequestClose).toBeCalledTimes(1);
+    expect(onRequestClose).toHaveBeenCalledTimes(1);
   });
 
   describe('alignments', () => {
     describe('render context', () => {
       describe('portal - viewport', () => {
         it.each([
-          ['top-right', { left: '370px', bottom: '370px' }],
-          ['top-left', { right: '370px', bottom: '370px' }],
-          ['bottom-right', { left: '370px', top: '370px' }],
-          ['bottom-left', { right: '370px', top: '370px' }],
-          ['top', { left: '250px', bottom: '370px' }],
-          ['left', { right: '370px', top: '250px' }],
-          ['bottom', { left: '250px', top: '370px' }],
-          ['right', { left: '370px', top: '250px' }],
-        ] as const)(
-          '%s',
-          (
-            alignment: PopoverContainerProps['alignment'],
-            expected: Record<string, unknown>
-          ) => {
-            renderView({ alignment });
-            expect(screen.getByTestId('popover-content-container')).toHaveStyle(
-              expected
-            );
+          {
+            useLogicalProperties: true,
+            top: 'insetBlockStart',
+            bottom: 'insetBlockEnd',
+            left: 'insetInlineStart',
+            right: 'insetInlineEnd',
+          },
+          {
+            useLogicalProperties: false,
+            top: 'top',
+            bottom: 'bottom',
+            left: 'left',
+            right: 'right',
+          },
+        ])(
+          'renders correct position styles (useLogicalProperties: $useLogicalProperties)',
+          ({ useLogicalProperties, top, bottom, left, right }) => {
+            const alignmentTests: [
+              PopoverContainerProps['alignment'],
+              Record<string, string>
+            ][] = [
+              ['top-right', { [left]: '370px', [bottom]: '370px' }],
+              ['top-left', { [right]: '370px', [bottom]: '370px' }],
+              ['bottom-right', { [left]: '370px', [top]: '370px' }],
+              ['bottom-left', { [right]: '370px', [top]: '370px' }],
+              ['top', { [left]: '250px', [bottom]: '370px' }],
+              ['left', { [right]: '370px', [top]: '250px' }],
+              ['bottom', { [left]: '250px', [top]: '370px' }],
+              ['right', { [left]: '370px', [top]: '250px' }],
+            ];
+
+            alignmentTests.forEach(([alignment, expected]) => {
+              render(
+                <MockGamutProvider useLogicalProperties={useLogicalProperties}>
+                  <RenderPopover {...defaultProps} alignment={alignment} />
+                </MockGamutProvider>
+              );
+              expect(
+                screen.getByTestId('popover-content-container')
+              ).toHaveStyle(expected);
+              cleanup();
+            });
           }
         );
       });
       describe('inline - parent', () => {
         it.each([
-          ['top-right', { left: '370px', bottom: '370px' }],
-          ['top-left', { right: '370px', bottom: '370px' }],
-          ['bottom-right', { left: '370px', top: '370px' }],
-          ['bottom-left', { right: '370px', top: '370px' }],
-          ['top', { left: '250px', bottom: '370px' }],
-          ['left', { right: '370px', top: '250px' }],
-          ['bottom', { left: '250px', top: '370px' }],
-          ['right', { left: '370px', top: '250px' }],
-        ] as const)(
-          '%s',
-          (
-            alignment: PopoverContainerProps['alignment'],
-            expected: Record<string, unknown>
-          ) => {
-            renderView({ alignment, inline: true });
-            expect(screen.getByTestId('popover-content-container')).toHaveStyle(
-              expected
-            );
+          {
+            useLogicalProperties: true,
+            top: 'insetBlockStart',
+            bottom: 'insetBlockEnd',
+            left: 'insetInlineStart',
+            right: 'insetInlineEnd',
+          },
+          {
+            useLogicalProperties: false,
+            top: 'top',
+            bottom: 'bottom',
+            left: 'left',
+            right: 'right',
+          },
+        ])(
+          'renders correct position styles (useLogicalProperties: $useLogicalProperties)',
+          ({ useLogicalProperties, top, bottom, left, right }) => {
+            const alignmentTests: [
+              PopoverContainerProps['alignment'],
+              Record<string, string>
+            ][] = [
+              ['top-right', { [left]: '370px', [bottom]: '370px' }],
+              ['top-left', { [right]: '370px', [bottom]: '370px' }],
+              ['bottom-right', { [left]: '370px', [top]: '370px' }],
+              ['bottom-left', { [right]: '370px', [top]: '370px' }],
+              ['top', { [left]: '250px', [bottom]: '370px' }],
+              ['left', { [right]: '370px', [top]: '250px' }],
+              ['bottom', { [left]: '250px', [top]: '370px' }],
+              ['right', { [left]: '370px', [top]: '250px' }],
+            ];
+
+            alignmentTests.forEach(([alignment, expected]) => {
+              render(
+                <MockGamutProvider useLogicalProperties={useLogicalProperties}>
+                  <RenderPopover
+                    {...defaultProps}
+                    alignment={alignment}
+                    inline
+                  />
+                </MockGamutProvider>
+              );
+              expect(
+                screen.getByTestId('popover-content-container')
+              ).toHaveStyle(expected);
+              cleanup();
+            });
           }
         );
       });
@@ -276,17 +328,42 @@ describe('Popover', () => {
     });
     describe('offsets', () => {
       it.each([
-        [5, 10, { left: '375px', bottom: '380px' }],
-        [-15, 10, { left: '355px', bottom: '380px' }],
-        [605, -100, { left: '975px', bottom: '270px' }],
-        [-25, -10, { left: '345px', bottom: '360px' }],
-      ] as const)(
-        'X Offset %i - Y Offset %i',
-        (x: number, y: number, expected: Record<string, unknown>) => {
-          renderView({ alignment: 'top-right', x, y });
-          expect(screen.getByTestId('popover-content-container')).toHaveStyle(
-            expected
-          );
+        {
+          useLogicalProperties: true,
+          bottom: 'insetBlockEnd',
+          left: 'insetInlineStart',
+        },
+        {
+          useLogicalProperties: false,
+          bottom: 'bottom',
+          left: 'left',
+        },
+      ])(
+        'renders correct offset styles (useLogicalProperties: $useLogicalProperties)',
+        ({ useLogicalProperties, bottom, left }) => {
+          const offsetTests: [number, number, Record<string, string>][] = [
+            [5, 10, { [left]: '375px', [bottom]: '380px' }],
+            [-15, 10, { [left]: '355px', [bottom]: '380px' }],
+            [605, -100, { [left]: '975px', [bottom]: '270px' }],
+            [-25, -10, { [left]: '345px', [bottom]: '360px' }],
+          ];
+
+          offsetTests.forEach(([x, y, expected]) => {
+            render(
+              <MockGamutProvider useLogicalProperties={useLogicalProperties}>
+                <RenderPopover
+                  {...defaultProps}
+                  alignment="top-right"
+                  x={x}
+                  y={y}
+                />
+              </MockGamutProvider>
+            );
+            expect(screen.getByTestId('popover-content-container')).toHaveStyle(
+              expected
+            );
+            cleanup();
+          });
         }
       );
     });
