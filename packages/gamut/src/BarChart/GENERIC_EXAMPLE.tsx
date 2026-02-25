@@ -320,37 +320,37 @@ export const ExplicitTypeExample = () => {
 // ============================================================================
 // Example 6: Purposefully wrong example to show type errors
 // ============================================================================
+// One bar is missing category/priority, so the inferred element type is a union.
+// The sortFn then gets bars where .category and .priority may be undefined.
 
 const barsWithWrongCategory = [
   {
     yLabel: 'Python',
     seriesOneValue: 1500,
-    category: 'backend' as const,
+    category: 'backend',
     priority: 1,
   },
   {
     yLabel: 'JavaScript',
     seriesOneValue: 2000,
-    category: 'frontend' as const,
+    category: 'frontend',
     priority: 2,
   },
   {
     yLabel: 'React',
     seriesOneValue: 450,
-    category: 'frontend' as const,
+    category: 'frontend',
     priority: 3,
   },
   {
     yLabel: 'TypeScript',
     seriesOneValue: 300,
-    category: 'frontend' as const,
+    category: 'frontend',
     priority: 4,
   },
   {
     yLabel: 'SQL',
     seriesOneValue: 600,
-    catty: 'backend' as const,
-    purr: 5,
   },
 ];
 
@@ -365,14 +365,13 @@ export const WrongCategorySortingExample = () => {
         {
           label: 'By Category',
           value: 'category',
-          // bars is typed with both category and priority properties
           sortFn: (bars) => {
             return [...bars].sort((a, b) => {
               if (a.category !== b.category) {
-                // @ts-expect-error - we know this is wrong
+                // @ts-expect-error - not all bars have category (5th bar is missing it)
                 return a.category.localeCompare(b.category);
               }
-              // @ts-expect-error - we know priority might not exist
+              // @ts-expect-error - not all bars have priority (5th bar is missing it)
               return a.priority - b.priority;
             });
           },
@@ -382,7 +381,7 @@ export const WrongCategorySortingExample = () => {
           value: 'priority',
           sortFn: (bars) => {
             return [...bars].sort((a, b) => {
-              // @ts-expect-error - we know priority might not exist
+              // @ts-expect-error - not all bars have priority (5th bar is missing it)
               return a.priority - b.priority;
             });
           },
