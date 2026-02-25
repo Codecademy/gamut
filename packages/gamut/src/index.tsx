@@ -6,6 +6,7 @@ export * from './Anchor';
 export * from './Animation';
 export * from './AppWrapper';
 export * from './Badge';
+export * from './BarChart';
 export * from './BodyPortal';
 export * from './Box';
 export * from './Breadcrumbs';

@@ -1,0 +1,55 @@
+import { createContext } from 'react';
+
+import {
+  BarChartTranslations,
+  defaultBarChartTranslations,
+} from './shared/translations';
+import { BarChartStyles } from './shared/types';
+
+export interface BarChartContextProps {
+  minRange: number;
+  maxRange: number;
+  xScale: number;
+  unit: string;
+  styleConfig: Required<BarChartStyles>;
+  animate: boolean;
+  widestLeftLabelWidth: number | null;
+  setWidestLeftLabelWidth: (width: number) => void;
+  widestRightLabelWidth: number | null;
+  setWidestRightLabelWidth: (width: number) => void;
+  isMeasuring: boolean;
+  translations: BarChartTranslations;
+}
+
+export const defaultStyleConfig: Required<BarChartStyles> = {
+  textColor: 'text',
+  seriesOneBarColor: 'text',
+  seriesTwoBarColor: 'primary',
+  seriesOneLabel: 'text-secondary',
+  seriesTwoLabel: 'primary',
+};
+
+export const BarChartContext = createContext<BarChartContextProps>({
+  minRange: 0,
+  maxRange: 100,
+  xScale: 10,
+  unit: '',
+  styleConfig: defaultStyleConfig,
+  animate: false,
+  widestLeftLabelWidth: null,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setWidestLeftLabelWidth: () => {
+    // No-op: default context value
+  },
+  widestRightLabelWidth: null,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setWidestRightLabelWidth: () => {
+    // No-op: default context value
+  },
+  isMeasuring: true,
+  translations: defaultBarChartTranslations,
+});
+
+BarChartContext.displayName = 'BarChartContext';
+
+export const BarChartProvider = BarChartContext.Provider;
