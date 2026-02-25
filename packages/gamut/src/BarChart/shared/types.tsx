@@ -50,7 +50,7 @@ type BarPropsBase = {
   seriesTwoValue?: number;
   /** Optional gamut-icon to display next to the label */
   icon?: React.ComponentType<GamutIconProps>;
-} & Record<string, unknown>; // Allow additional properties for custom sorting/extended data
+};
 
 type BarPropsWithoutInteraction = BarPropsBase & {
   onClick?: never;
