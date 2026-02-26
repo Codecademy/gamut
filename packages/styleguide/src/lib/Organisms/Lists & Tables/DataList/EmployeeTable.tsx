@@ -295,8 +295,8 @@ const COLUMNS: ColumnConfig<EmployeeRow>[] = [
     ),
   },
   {
-    key: 'id',
-    header: ' ',
+    key: 'actions',
+    header: 'Actions',
     size: 'content',
     type: 'control',
     render: () => (
