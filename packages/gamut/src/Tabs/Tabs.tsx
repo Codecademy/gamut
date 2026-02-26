@@ -25,6 +25,7 @@ export const Tabs: React.FC<TabsProps> = (props) => {
       {/* currently only supporting dark mode for the LE variant. */}
       {props.variant === 'block' ? (
         <Background bg="navy-800" height="100%">
+          test here
           <TabsBase position="relative" zIndex={0} {...props} />
         </Background>
       ) : (
