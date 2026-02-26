@@ -273,7 +273,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         inputWidth={inputWidth}
         isDisabled={disabled}
         isMulti={multiple}
-        isOptionDisabled={(option: { disabled?: boolean }) => option.disabled}
+        isOptionDisabled={(option: { disabled?: boolean }) => option.disabled ?? false}
         isSearchable={isSearchable}
         menuAlignment={menuAlignment}
         name={name}

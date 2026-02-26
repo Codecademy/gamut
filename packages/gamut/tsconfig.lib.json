@@ -5,7 +5,9 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "paths": {},
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
   "files": [
     "../../node_modules/@nx/react/typings/cssmodule.d.ts",
@@ -25,6 +27,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
+    "src/react-18-ref.d.ts",
     "../../packages/gamut-styles/dist/typings/theme.d.ts"
   ]
 }
