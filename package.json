@@ -133,6 +133,10 @@
     "start": "yarn && yarn start:storybook",
     "start:storybook": "nx storybook styleguide",
     "test": "nx run-many --target=test --all",
+    "test:gamut": "jest --config=packages/gamut/jest.config.ts",
+    "test:gamut:react18": "node script/test-gamut-react-version.js 18",
+    "test:gamut:react19": "node script/test-gamut-react-version.js 19",
+    "test:gamut:all": "yarn test:gamut:react18 && yarn test:gamut:react19",
     "verify": "nx run-many --target=verify --parallel=3 --all",
     "verify-all": "yarn verify"
   },
