@@ -20,7 +20,7 @@ const StyledDataListWrapper = styled.div`
   width: 100%;
 
   thead tr {
-    background: var(--color-background-selected) !important;
+    background: var(--color-background-selected);
     border-top-left-radius: ${theme.borderRadii.xl};
     border-top-right-radius: ${theme.borderRadii.xl};
   }
@@ -59,6 +59,7 @@ const HEALTH_TAG_STYLES: Record<SkillHealth, { bg: string; color: string }> = {
   'Above target': { bg: 'background-success', color: 'feedback-success' },
   // NOTE: `theme.colors` is a global variable that is imported from `@codecademy/gamut-styles`
   // and `yellow-400` is a static color, i.e. it doesn't switch when toggling between light and dark mode.
+  // it also does NOT pass a contrast test
   'Needs improvement': {
     bg: 'background-warning',
     color: `${theme.colors['yellow-400']}`,
