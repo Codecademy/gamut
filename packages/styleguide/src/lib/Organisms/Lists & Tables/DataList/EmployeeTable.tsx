@@ -25,9 +25,13 @@ const StyledDataListWrapper = styled.div`
     border-top-right-radius: ${theme.borderRadii.xl};
   }
 
+  thead th > div {
+    align-items: center;
+  }
+
   thead th,
-  thead th a {
-    font-weight: 700;
+  thead th button {
+    font-weight: 700 !important;
   }
 
   tbody tr:last-child {
