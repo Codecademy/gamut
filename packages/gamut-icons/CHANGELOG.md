@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.56.0](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.55.1...@codecademy/gamut-icons@9.56.0) (2026-02-19)
+
+### Features
+
+- **Icons:** add reply-to-message and add-reaction icons ([df1803a](https://github.com/Codecademy/gamut/commit/df1803a47de5dcf5b9de9ce7e26e8fbda1ad8817))
+
 ### [9.55.1](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-icons@9.55.0...@codecademy/gamut-icons@9.55.1) (2026-02-12)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
