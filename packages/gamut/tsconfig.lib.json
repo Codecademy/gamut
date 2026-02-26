@@ -27,7 +27,6 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/react-18-ref.d.ts",
     "../../packages/gamut-styles/dist/typings/theme.d.ts"
   ]
 }
