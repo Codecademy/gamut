@@ -5,9 +5,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "paths": {},
-    "types": [
-      "node"
-    ]
+    "types": ["node"]
   },
   "files": [
     "../../node_modules/@nx/react/typings/cssmodule.d.ts",

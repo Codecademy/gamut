@@ -44,6 +44,9 @@ try {
   }
 } finally {
   fs.writeFileSync(pkgPath, pkgBackup);
-  run('yarn', ['install'], { stdio: 'pipe', env: { ...process.env, CI: undefined } });
+  run('yarn', ['install'], {
+    stdio: 'pipe',
+    env: { ...process.env, CI: undefined },
+  });
 }
 process.exit(exitCode);

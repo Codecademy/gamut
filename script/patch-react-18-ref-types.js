@@ -8,7 +8,13 @@
 const fs = require('fs');
 const path = require('path');
 
-const typesReactPath = path.join(__dirname, '..', 'node_modules', '@types', 'react');
+const typesReactPath = path.join(
+  __dirname,
+  '..',
+  'node_modules',
+  '@types',
+  'react'
+);
 const pkgPath = path.join(typesReactPath, 'package.json');
 
 if (!fs.existsSync(pkgPath)) {
@@ -24,7 +30,8 @@ if (major !== 18) {
 }
 
 const oldRef = 'type Ref<T> = RefCallback<T> | RefObject<T> | null;';
-const newRef = 'type Ref<T> = RefCallback<T> | RefObject<T> | RefObject<T | null> | null;';
+const newRef =
+  'type Ref<T> = RefCallback<T> | RefObject<T> | RefObject<T | null> | null;';
 
 const files = ['index.d.ts', 'ts5.0/index.d.ts'];
 let patched = 0;
@@ -41,5 +48,7 @@ for (const file of files) {
 }
 
 if (patched > 0) {
-  console.log(`patch-react-18-ref-types: patched Ref type in ${patched} file(s)`);
+  console.log(
+    `patch-react-18-ref-types: patched Ref type in ${patched} file(s)`
+  );
 }

@@ -53,8 +53,16 @@ describe(parseSelectOptions, () => {
     });
 
     expect(options).toHaveLength(2);
-    expect(options[0]).toMatchObject({ key: 'test-val', label: 'Value', value: 'val' });
-    expect(options[1]).toMatchObject({ key: 'test-val2', label: 'Value 2', value: 'val2' });
+    expect(options[0]).toMatchObject({
+      key: 'test-val',
+      label: 'Value',
+      value: 'val',
+    });
+    expect(options[1]).toMatchObject({
+      key: 'test-val2',
+      label: 'Value 2',
+      value: 'val2',
+    });
   });
 
   it('creates an option list as object without generated labels', () => {

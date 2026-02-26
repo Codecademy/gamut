@@ -38,11 +38,14 @@ Object.assign(pkg.resolutions, next);
 
 if (pkg.dependencies) {
   if (pkg.dependencies.react) pkg.dependencies.react = next.react;
-  if (pkg.dependencies['react-dom']) pkg.dependencies['react-dom'] = next['react-dom'];
+  if (pkg.dependencies['react-dom'])
+    pkg.dependencies['react-dom'] = next['react-dom'];
 }
 if (pkg.devDependencies) {
-  if (pkg.devDependencies['@types/react']) pkg.devDependencies['@types/react'] = next['@types/react'];
-  if (pkg.devDependencies['@types/react-dom']) pkg.devDependencies['@types/react-dom'] = next['@types/react-dom'];
+  if (pkg.devDependencies['@types/react'])
+    pkg.devDependencies['@types/react'] = next['@types/react'];
+  if (pkg.devDependencies['@types/react-dom'])
+    pkg.devDependencies['@types/react-dom'] = next['@types/react-dom'];
 }
 
 fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
