@@ -12,8 +12,29 @@ import {
   MiniKebabMenuIcon,
   MiniWarningTriangleIcon,
 } from '@codecademy/gamut-icons';
-import { Background, ColorMode, theme } from '@codecademy/gamut-styles';
+import { theme } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import { useCallback, useMemo, useState } from 'react';
+
+const StyledDataListWrapper = styled.div`
+  width: 100%;
+
+  thead tr {
+    background: var(--color-background-selected) !important;
+    border-top-left-radius: ${theme.borderRadii.xl};
+    border-top-right-radius: ${theme.borderRadii.xl};
+  }
+
+  thead th,
+  thead th a {
+    font-weight: 700;
+  }
+
+  tbody tr:last-child {
+    border-bottom-left-radius: ${theme.borderRadii.xl};
+    border-bottom-right-radius: ${theme.borderRadii.xl};
+  }
+`;
 
 type SkillHealth =
   | 'On target'
@@ -319,8 +340,7 @@ export function EmployeeTable() {
   );
 
   return (
-    <ColorMode mode="dark">
-      <Background bg='background-selected' borderRadius="xl" overflow="hidden">
+    <StyledDataListWrapper>
       <DataList
         columns={COLUMNS}
         header
@@ -332,7 +352,6 @@ export function EmployeeTable() {
         onQueryChange={onQueryChange}
         onRowSelect={onRowSelect}
       />
-      </Background>
-    </ColorMode>
+    </StyledDataListWrapper>
   );
 }

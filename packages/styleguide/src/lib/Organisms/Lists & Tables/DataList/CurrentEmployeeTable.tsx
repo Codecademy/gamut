@@ -1,5 +1,19 @@
 // @ts-nocheck
-import { Box, DataList, FlexBox, Text } from '@codecademy/gamut';
+import { DataList, FlexBox, Text } from '@codecademy/gamut';
+import styled from '@emotion/styled';
+
+const StyledDataListWrapper = styled.div`
+  width: 100%;
+
+  thead tr {
+    background: var(--color-background-selected) !important;
+  }
+
+  thead th,
+  thead th a {
+    font-weight: 700;
+  }
+`;
 
 const EmployeeCell = ({ name, role }) => (
   <FlexBox flexDirection="column">
@@ -146,7 +160,7 @@ const rows = [
 
 export function CurrentEmployeeTable() {
   return (
-    <Box>
+    <StyledDataListWrapper>
       <DataList
         header
         id="employees-table"
@@ -156,6 +170,6 @@ export function CurrentEmployeeTable() {
         spacing="normal"
         onRowSelect={() => {}}
       />
-    </Box>
+    </StyledDataListWrapper>
   );
 }
