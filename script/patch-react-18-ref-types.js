@@ -29,8 +29,13 @@ if (major !== 18) {
   process.exit(0);
 }
 
-const oldRef = 'type Ref<T> = RefCallback<T> | RefObject<T> | null;';
-const newRef =
+// Match the Ref type line with optional leading whitespace (indentation)
+const refTypeRegex = /^(\s*)type Ref<T> = RefCallback<T> \| RefObject<T> \| null;$/m;
+const refTypeReplacement =
+  '$1type Ref<T> = RefCallback<T> | RefObject<T> | RefObject<T | null> | null;';
+
+const oldRefExact = 'type Ref<T> = RefCallback<T> | RefObject<T> | null;';
+const newRefExact =
   'type Ref<T> = RefCallback<T> | RefObject<T> | RefObject<T | null> | null;';
 
 const files = ['index.d.ts', 'ts5.0/index.d.ts'];
@@ -40,9 +45,12 @@ for (const file of files) {
   const filePath = path.join(typesReactPath, file);
   if (!fs.existsSync(filePath)) continue;
   let content = fs.readFileSync(filePath, 'utf8');
-  if (content.includes(oldRef)) {
-    content = content.replace(oldRef, newRef);
-    fs.writeFileSync(filePath, content);
+  let newContent = content.replace(refTypeRegex, refTypeReplacement);
+  if (newContent === content && content.includes(oldRefExact)) {
+    newContent = content.replace(oldRefExact, newRefExact);
+  }
+  if (newContent !== content) {
+    fs.writeFileSync(filePath, newContent);
     patched++;
   }
 }
