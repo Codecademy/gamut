@@ -183,12 +183,13 @@ export const globalTypes = {
   },
   direction: {
     name: 'Direction',
-    description: 'Text direction for the page',
+    description: 'Text direction (LTR or RTL)',
     defaultValue: 'ltr',
     toolbar: {
+      icon: 'arrowright',
       items: [
-        { value: 'ltr', icon: 'arrowright', title: 'Left-To-Right' },
-        { value: 'rtl', icon: 'arrowleft', title: 'Right-To-Left' },
+        { value: 'ltr', title: 'Left-to-Right (LTR)', icon: 'arrowright' },
+        { value: 'rtl', title: 'Right-to-Left (RTL)', icon: 'arrowleft' },
       ],
       showName: true,
     },
