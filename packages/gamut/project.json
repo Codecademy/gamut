@@ -20,7 +20,7 @@
       }
     },
     "test": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "verify"],
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/gamut"],
       "options": {
