@@ -8,6 +8,7 @@ import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import { ComponentProps, forwardRef } from 'react';
 
+import { OptionalScrollProps } from '../utils';
 import { typographyElementVariants, typographyStyleVariants } from './variants';
 
 const displayVariants = variant({
@@ -120,16 +121,14 @@ const textProps = variance.compose(
   truncateLinesProps
 );
 
+// CASSIE, come back to this
 export interface BaseTextProps
   extends StyleProps<typeof textProps>,
     StyleProps<typeof textStates>,
     StyleProps<typeof elementVariants>,
     StyleProps<typeof truncateVariants>,
-    StyleProps<typeof displayVariants> {
-  /** Optional so ellipsis-only truncation doesn't require scroll handlers (React 19+) */
-  onScrollEnd?: (event: React.UIEvent<HTMLSpanElement>) => void;
-  onScrollEndCapture?: (event: React.UIEvent<HTMLSpanElement>) => void;
-}
+    StyleProps<typeof displayVariants>,
+    OptionalScrollProps {}
 
 // if you're going to truncate, you need to provide both of these props or neither
 export interface TextTruncateProps extends BaseTextProps {

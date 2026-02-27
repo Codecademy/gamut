@@ -1,10 +1,11 @@
 import { DotLoose } from '@codecademy/gamut-patterns';
 import { timingValues } from '@codecademy/gamut-styles';
 import isArray from 'lodash/isArray';
-import { ComponentProps, forwardRef, useEffect } from 'react';
+import { forwardRef, useEffect } from 'react';
 import * as React from 'react';
 
 import { Box, BoxProps, FlexBox } from '../Box';
+import { CompatibleComponentProps } from '../utils';
 import {
   AnimatedListWrapper,
   hiddenVariant,
@@ -16,7 +17,7 @@ import { useScrollabilityCheck } from './hooks';
 import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
-export interface ListProps extends AllListProps<ComponentProps<typeof ListEl>> {
+export interface ListProps extends AllListProps<CompatibleComponentProps<typeof ListEl>> {
   /** Whether List should be an ol, ul element, or table */
   as?: 'ol' | 'ul' | 'table';
   /** Whether a placeholder width should be set when loading */
