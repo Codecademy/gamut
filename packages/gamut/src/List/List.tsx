@@ -17,7 +17,8 @@ import { useScrollabilityCheck } from './hooks';
 import { ListProvider, useList } from './ListProvider';
 import { AllListProps } from './types';
 
-export interface ListProps extends AllListProps<CompatibleComponentProps<typeof ListEl>> {
+export interface ListProps
+  extends AllListProps<CompatibleComponentProps<typeof ListEl>> {
   /** Whether List should be an ol, ul element, or table */
   as?: 'ol' | 'ul' | 'table';
   /** Whether a placeholder width should be set when loading */

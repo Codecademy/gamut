@@ -7,7 +7,9 @@ import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
 
 export interface TableHeaderProps
-  extends Partial<PublicListProps<CompatibleComponentProps<typeof HeaderRowEl>>> {}
+  extends Partial<
+    PublicListProps<CompatibleComponentProps<typeof HeaderRowEl>>
+  > {}
 
 export const TableHeader = forwardRef<HTMLTableRowElement, TableHeaderProps>(
   ({ children, ...rest }, ref) => {

@@ -30,7 +30,8 @@ if (major !== 18) {
 }
 
 // Match the Ref type line with optional leading whitespace (indentation)
-const refTypeRegex = /^(\s*)type Ref<T> = RefCallback<T> \| RefObject<T> \| null;$/m;
+const refTypeRegex =
+  /^(\s*)type Ref<T> = RefCallback<T> \| RefObject<T> \| null;$/m;
 const refTypeReplacement =
   '$1type Ref<T> = RefCallback<T> | RefObject<T> | RefObject<T | null> | null;';
 
@@ -44,7 +45,7 @@ let patched = 0;
 for (const file of files) {
   const filePath = path.join(typesReactPath, file);
   if (!fs.existsSync(filePath)) continue;
-  let content = fs.readFileSync(filePath, 'utf8');
+  const content = fs.readFileSync(filePath, 'utf8');
   let newContent = content.replace(refTypeRegex, refTypeReplacement);
   if (newContent === content && content.includes(oldRefExact)) {
     newContent = content.replace(oldRefExact, newRefExact);
