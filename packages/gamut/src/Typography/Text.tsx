@@ -125,7 +125,11 @@ export interface BaseTextProps
     StyleProps<typeof textStates>,
     StyleProps<typeof elementVariants>,
     StyleProps<typeof truncateVariants>,
-    StyleProps<typeof displayVariants> {}
+    StyleProps<typeof displayVariants> {
+  /** Optional so ellipsis-only truncation doesn't require scroll handlers (React 19+) */
+  onScrollEnd?: (event: React.UIEvent<HTMLSpanElement>) => void;
+  onScrollEndCapture?: (event: React.UIEvent<HTMLSpanElement>) => void;
+}
 
 // if you're going to truncate, you need to provide both of these props or neither
 export interface TextTruncateProps extends BaseTextProps {
@@ -147,9 +151,8 @@ const StyledText = styled('span', styledOptions<'span'>())<TextProps>(
   textProps
 );
 
-export const Text = forwardRef<
-  HTMLSpanElement,
-  ComponentProps<typeof StyledText>
->(({ as = 'span', m = 0, ...rest }, ref) => (
-  <StyledText as={as} m={m} ref={ref} {...rest} />
-));
+export const Text = forwardRef<HTMLSpanElement, ComponentProps<typeof StyledText>>(
+  ({ as = 'span', m = 0, ...rest }, ref) => (
+    <StyledText as={as} m={m} ref={ref} {...rest} />
+  )
+);
