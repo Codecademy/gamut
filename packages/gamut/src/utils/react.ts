@@ -1,3 +1,4 @@
+import type React from 'react';
 import { Children, isValidElement } from 'react';
 
 /**
@@ -35,7 +36,11 @@ export const extractTextContent = (children: React.ReactNode): string => {
         return '';
       }
       if (isValidElement(child)) {
-        const textContent = child.props.children ?? child.props.text ?? '';
+        const { props } = child as React.ReactElement<{
+          children?: React.ReactNode;
+          text?: string;
+        }>;
+        const textContent = props.children ?? props.text ?? '';
         return extractTextContent(textContent);
       }
       return '';

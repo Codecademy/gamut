@@ -1,8 +1,9 @@
 import { theme, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { HTMLAttributes } from 'react';
 import * as React from 'react';
+
+import { CompatibleComponentProps } from '../../utils';
 
 const errorSpanVariants = variant({
   base: {
@@ -30,7 +31,7 @@ const errorSpanVariants = variant({
 const ErrorSpan = styled.span(errorSpanVariants);
 
 type FormErrorProps = StyleProps<typeof errorSpanVariants> &
-  HTMLAttributes<HTMLSpanElement>;
+  CompatibleComponentProps<'span'>;
 
 export const FormError: React.FC<FormErrorProps> = (props) => {
   return <ErrorSpan {...props} />;

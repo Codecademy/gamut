@@ -1,12 +1,15 @@
-import { ComponentProps, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { Box } from '../Box';
+import { CompatibleComponentProps } from '../utils';
 import { HeaderRowEl } from './elements';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
 
 export interface TableHeaderProps
-  extends Partial<PublicListProps<ComponentProps<typeof HeaderRowEl>>> {}
+  extends Partial<
+    PublicListProps<CompatibleComponentProps<typeof HeaderRowEl>>
+  > {}
 
 export const TableHeader = forwardRef<HTMLTableRowElement, TableHeaderProps>(
   ({ children, ...rest }, ref) => {

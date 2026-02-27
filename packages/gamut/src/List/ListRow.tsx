@@ -1,17 +1,17 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ComponentProps, forwardRef, MouseEvent } from 'react';
+import { forwardRef, MouseEvent } from 'react';
 import * as React from 'react';
 
 import { Box } from '../Box';
-import { WithChildrenProp } from '../utils';
+import { CompatibleComponentProps, WithChildrenProp } from '../utils';
 import { RowEl } from './elements';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
 
 export interface RowProps
-  extends Partial<PublicListProps<ComponentProps<typeof RowEl>>> {
+  extends Partial<PublicListProps<CompatibleComponentProps<typeof RowEl>>> {
   header?: boolean;
 }
 
