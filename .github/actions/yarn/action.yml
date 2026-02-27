@@ -14,3 +14,6 @@ runs:
     - name: Install dependencies
       shell: bash
       run: yarn install --immutable
+    - name: Patch React 18 ref types
+      run: node script/patch-react-18-ref-types.js
+      shell: bash
