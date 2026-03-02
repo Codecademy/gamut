@@ -130,7 +130,7 @@ describe('Pagination', () => {
     expect(getPage({ view, pageNumber: 7 }));
   });
 
-  it('calls onChange with page number whenever page changes', () => {
+  it('calls onChange with page number whenever page changes', async () => {
     const { view } = renderView({});
 
     const page2 = getPage({ view, pageNumber: 2 });
@@ -138,7 +138,7 @@ describe('Pagination', () => {
     fireEvent.click(page2);
     expect(onChange).toHaveBeenCalledWith(2);
 
-    const backButton = view.getByRole('button', {
+    const backButton = await view.findByRole('button', {
       name: /(Navigate back to page )\d+/,
     });
     const forwardButton = getForwardButton({ view });

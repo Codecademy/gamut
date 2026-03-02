@@ -13,9 +13,8 @@ const StyledFlexBox = styled(
 )<FlexBoxProps>(css({ display: 'flex' }), sharedStates, flexStates, boxProps);
 
 export const FlexBox =
-  asCompatibleForwardRefComponent<CompatibleStyledComponentProps<
-    typeof StyledFlexBox,
-    HTMLDivElement
-  >>(StyledFlexBox);
+  asCompatibleForwardRefComponent<
+    CompatibleStyledComponentProps<typeof StyledFlexBox, HTMLDivElement>
+  >(StyledFlexBox);
 
 export type { FlexBoxProps } from './props';

@@ -523,7 +523,9 @@ export const StaticListWrapper = styled(Box)(listStyles, listStates);
 export const AnimatedListWrapper = styled(motion.create(Box))(
   listStyles,
   listStates
-) as React.ComponentType<React.ComponentProps<typeof Box> & Record<string, unknown>>;
+) as React.ComponentType<
+  React.ComponentProps<typeof Box> & Record<string, unknown>
+>;
 
 export const hiddenVariant = {
   background: `linear-gradient(90deg, transparent 0%, transparent 40%, ${theme.colors['background-selected']} 50%, ${theme.colors['border-tertiary']} 100%)`,

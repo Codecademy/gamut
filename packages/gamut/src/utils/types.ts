@@ -67,7 +67,9 @@ export type CompatibleStyledComponentProps<
  * so this centralizes the type assertion instead of repeating it in each file.
  * Parameter accepts ComponentType<unknown> so Emotion's StyledComponent (ref: LegacyRef) is accepted.
  */
-export function asCompatibleForwardRefComponent<P extends CompatibleRefAttributes<HTMLElement>>(
+export function asCompatibleForwardRefComponent<
+  P extends CompatibleRefAttributes<HTMLElement>
+>(
   component: React.ComponentType<P> | React.ComponentType<unknown>
 ): React.ForwardRefExoticComponent<P> {
   return component as unknown as React.ForwardRefExoticComponent<P>;

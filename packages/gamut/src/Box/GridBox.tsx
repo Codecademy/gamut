@@ -18,7 +18,6 @@ const StyledGridBox = styled(
 );
 
 export const GridBox =
-  asCompatibleForwardRefComponent<CompatibleStyledComponentProps<
-    typeof StyledGridBox,
-    HTMLDivElement
-  >>(StyledGridBox);
+  asCompatibleForwardRefComponent<
+    CompatibleStyledComponentProps<typeof StyledGridBox, HTMLDivElement>
+  >(StyledGridBox);

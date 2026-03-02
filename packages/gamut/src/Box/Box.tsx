@@ -13,9 +13,8 @@ const StyledBox = styled('div', styledOptions(['fit']))<BoxProps>(
 );
 
 export const Box =
-  asCompatibleForwardRefComponent<CompatibleStyledComponentProps<
-    typeof StyledBox,
-    HTMLDivElement
-  >>(StyledBox);
+  asCompatibleForwardRefComponent<
+    CompatibleStyledComponentProps<typeof StyledBox, HTMLDivElement>
+  >(StyledBox);
 
 export type { BoxProps } from './props';
