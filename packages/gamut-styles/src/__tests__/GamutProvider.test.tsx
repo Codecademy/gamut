@@ -84,23 +84,6 @@ describe(GamutProvider, () => {
     expect(createEmotionCache).toHaveBeenCalledTimes(0);
   });
 
-  /**
-   * Nonce (CSP) behavior:
-   *
-   * Unit tests (this file):
-   * - GamutProvider calls setNonce(nonce) from get-nonce when the nonce prop is set, so the
-   *   get-nonce singleton is updated and libraries like react-style-singleton can use getNonce()
-   *   when injecting <style> tags.
-   * - createEmotionCache receives { nonce } so Emotion-injected style tags get the nonce attribute.
-   * - useNonce() returns the nonce from GamutContext when provided, or undefined otherwise.
-   *
-   * Manual / integration testing:
-   * - Run Storybook with a strict CSP that allows styles only via nonce (e.g. serve with
-   *   style-src 'self' 'nonce-storybook-csp-nonce'). Confirm stories render without CSP errors.
-   * - In an app: pass nonce={yourCspNonce} to GamutProvider, set the same nonce in your CSP
-   *   header, and verify Emotion and motion components (Drawer, FocusTrap, etc.) don’t trigger
-   *   CSP violations. Check that injected <style> elements have the nonce attribute.
-   */
   it('calls setNonce with the nonce prop', () => {
     renderView({ nonce: 'my-csp-nonce' });
 
