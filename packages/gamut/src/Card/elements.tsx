@@ -1,7 +1,7 @@
 import { Background } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { motion } from 'motion/react';
 import type { Variants } from 'motion/react';
+import { motion } from 'motion/react';
 import * as React from 'react';
 
 import { Box } from '../Box';
