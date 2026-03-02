@@ -12,6 +12,8 @@ import {
   simpleColumns,
   simpleRows,
 } from '../examples';
+import { CurrentEmployeeTable } from './CurrentEmployeeTable';
+import { EmployeeTable } from './EmployeeTable';
 
 const meta: Meta<typeof DataList> = {
   component: DataList,
@@ -212,4 +214,12 @@ const DataListDisableContainerQueryExample = () => {
 export const DisableContainerQuery: Story = {
   args: {},
   render: () => <DataListDisableContainerQueryExample />,
+};
+
+export const EmployeeTableExample: Story = {
+  render: () => <EmployeeTable />,
+};
+
+export const CurrentEmployeeTableExample: Story = {
+  render: () => <CurrentEmployeeTable />,
 };

@@ -191,6 +191,18 @@ The example below demonstrates the difference between default container query be
 
 <Callout text="In most cases, you should use the default container query behavior as it provides better responsive design. Only disable container queries when you have specific layout requirements that conflict with the default behavior." />
 
+## Employee table example
+
+An example of a DataList used to display employee skill data, with custom cell renderers for health status tags, gap warning indicators, and a row action menu.
+
+<Canvas of={DataListStories.EmployeeTableExample} />
+
+### Passing React elements directly as row values
+
+Row values can be React elements — rendered as-is inside the cell without needing a `render` function on the column. This is useful when the data is already shaped at the call site.
+
+<Canvas of={DataListStories.CurrentEmployeeTableExample} />
+
 ## Playground
 
 <Canvas sourceState="shown" of={DataListStories.Default} />
