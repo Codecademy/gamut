@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [68.0.4](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.0.3...@codecademy/gamut@68.0.4) (2026-03-02)
+
+### Bug Fixes
+
+- **GamutProvider:** CSP improvements ([1026353](https://github.com/Codecademy/gamut/commit/10263537c190aff0e5686872da2be2a30b1d9201)), closes [/github.com/adobe/react-spectrum/issues/8273#issuecomment-3897820426](https://github.com/Codecademy//github.com/adobe/react-spectrum/issues/8273/issues/issuecomment-3897820426)
+
 ### [68.0.3](https://github.com/Codecademy/gamut/compare/@codecademy/gamut@68.0.2...@codecademy/gamut@68.0.3) (2026-02-19)
 
 **Note:** Version bump only for package @codecademy/gamut
