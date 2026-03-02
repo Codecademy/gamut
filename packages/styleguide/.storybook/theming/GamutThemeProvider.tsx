@@ -12,7 +12,6 @@ import {
 } from '@codecademy/gamut-styles/src';
 import { Theme } from '@emotion/react';
 
-/** Nonce passed to GamutProvider so Storybook works behind strict CSP (e.g. style-src 'nonce-{value}'). This is a test and will be removed*/
 const STORYBOOK_CSP_NONCE = 'storybook-csp-nonce';
 
 /**
@@ -58,7 +57,6 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
   if (process.env.NODE_ENV === 'test') {
     return (
       <GamutProvider
-        nonce={STORYBOOK_CSP_NONCE}
         useCache={false}
         useGlobals={false}
         theme={currentTheme as unknown as Theme}
@@ -76,10 +74,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
 
   // Wrap all stories in minimal provider
   return (
-    <GamutProvider
-      nonce={STORYBOOK_CSP_NONCE}
-      theme={currentTheme as unknown as Theme}
-    >
+    <GamutProvider theme={currentTheme as unknown as Theme}>
       <Background
         alwaysSetVariables
         bg={themeBackground[colorMode]}
