@@ -16,7 +16,9 @@ type MotionBoxProps = React.ComponentProps<typeof Box> & {
   variants?: Variants;
 };
 
-export const MotionBox = motion.create(Box) as React.ComponentType<MotionBoxProps>;
+export const MotionBox = motion.create(
+  Box
+) as React.ComponentType<MotionBoxProps>;
 
 export const DynamicCardWrapper = styled(MotionBox)<CardWrapperProps>(
   cardVariants,
