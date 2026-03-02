@@ -6,6 +6,8 @@
   "dependencies": {
     "@codecademy/variance": "0.25.2",
     "@emotion/is-prop-valid": "^1.1.0",
+    "framer-motion": "^11.18.0",
+    "get-nonce": "^1.0.0",
     "polished": "^4.1.2"
   },
   "files": [

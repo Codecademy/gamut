@@ -91,7 +91,7 @@ GamutProvider handles a few critical tasks that need to happen in order for comp
 - **Next** `_app.tsx`
 - **Gatsby** `gatsby-ssr.js` `gatsby-browser.js` and use `wrapRootElement` in each.
 
-4. Add required types for your theme, which will determine what props Gamut components allow.
+5. Add required types for your theme, which will determine what props Gamut components allow.
 
 ```tsx
 // theme.d.ts
@@ -107,7 +107,7 @@ declare module '@emotion/react' {
 
 For more information this declaration please checkout the [official emotion documentation](https://emotion.sh/docs/typescript#define-a-theme)!
 
-5. Start Building!
+6. Start Building!
 
 ```tsx
 import { Background } from '@codecademy/gamut-styles';
@@ -119,3 +119,15 @@ export const App = () => (
   </Background>
 );
 ```
+
+### Content Security Policy (CSP)
+
+If your app uses a strict Content-Security-Policy (e.g. `style-src` without `'unsafe-inline'`), pass a nonce to `GamutProvider` so Emotion and other Gamut-managed style tags are allowed:
+
+```tsx
+<GamutProvider nonce={yourCspNonce}>
+  <App />
+</GamutProvider>
+```
+
+Your nonce should be the same value you use in your CSP header (e.g. `style-src 'self' 'nonce-{value}'`).
