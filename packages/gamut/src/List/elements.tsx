@@ -8,7 +8,8 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
+import * as React from 'react';
 
 import { Box } from '../Box';
 
@@ -518,10 +519,11 @@ const listStates = states({
 
 export const StaticListWrapper = styled(Box)(listStyles, listStates);
 
+// Type assertion avoids TS4023 (UNDEFINED_VOID_ONLY) in declaration emit with React 19 types
 export const AnimatedListWrapper = styled(motion.create(Box))(
   listStyles,
   listStates
-);
+) as React.ComponentType<React.ComponentProps<typeof Box> & Record<string, unknown>>;
 
 export const hiddenVariant = {
   background: `linear-gradient(90deg, transparent 0%, transparent 40%, ${theme.colors['background-selected']} 50%, ${theme.colors['border-tertiary']} 100%)`,

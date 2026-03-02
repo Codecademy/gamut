@@ -4,8 +4,8 @@ import { FeatureShimmer } from '..';
 
 const mockIntersectionObserver = jest.fn();
 const mockUseReducedMotion = jest.fn();
-jest.mock('framer-motion', () => ({
-  ...jest.requireActual('framer-motion'),
+jest.mock('motion/react', () => ({
+  ...jest.requireActual('motion/react'),
   get useReducedMotion() {
     return mockUseReducedMotion;
   },

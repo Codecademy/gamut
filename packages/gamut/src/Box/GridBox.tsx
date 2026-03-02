@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import {
   asCompatibleForwardRefComponent,
   CompatibleStyledComponentProps,
-} from '../utils';
+} from '../utils/types';
 import { boxProps, GridBoxProps, gridStates, sharedStates } from './props';
 
 const StyledGridBox = styled(

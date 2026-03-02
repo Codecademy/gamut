@@ -175,7 +175,7 @@ export const FloatingTip: React.FC<TipWrapperProps> = ({
           horizNarrow={narrow && isHorizontalCenter}
           isHoverType={isHoverType}
           narrow={narrow && !isHorizontalCenter}
-          ref={childRef as unknown as React.RefObject<HTMLDivElement>}
+          ref={childRef}
         >
           {contents}
         </FloatingTipTextWrapper>

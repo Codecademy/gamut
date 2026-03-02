@@ -33,9 +33,9 @@ export type CompatibleComponentProps<T extends ElementType> =
   WithOptionalScrollProps<ComponentProps<T>>;
 
 /**
- * Ref type compatible with React 18 and 19.
- * In React 18 @types/react, Ref<T> does not include RefObject<T | null>, so useRef<T | null>(null)
- * can cause TS2322. Using this type in component ref props avoids that without patching @types/react.
+ * Ref type for component ref props so useRef<T | null>(null) is accepted.
+ * Our @types/react patch fixed LegacyRef for DOM/forwardRef; Ref<T> is unchanged and still
+ * does not include RefObject<T | null>. Use this type when declaring ref props (e.g. on Box).
  */
 export type CompatibleRef<T> =
   | React.RefCallback<T>
@@ -65,9 +65,10 @@ export type CompatibleStyledComponentProps<
  * Treats a styled component (Emotion StyledComponent) as a ForwardRefExoticComponent
  * with compatible props. Emotion’s type doesn’t extend React’s ForwardRefExoticComponent,
  * so this centralizes the type assertion instead of repeating it in each file.
+ * Parameter accepts ComponentType<unknown> so Emotion's StyledComponent (ref: LegacyRef) is accepted.
  */
 export function asCompatibleForwardRefComponent<P extends CompatibleRefAttributes<HTMLElement>>(
-  component: React.ComponentType<P>
+  component: React.ComponentType<P> | React.ComponentType<unknown>
 ): React.ForwardRefExoticComponent<P> {
   return component as unknown as React.ForwardRefExoticComponent<P>;
 }

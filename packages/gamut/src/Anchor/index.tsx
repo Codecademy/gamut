@@ -1,24 +1,16 @@
 import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import {
-  forwardRef,
-  ForwardRefExoticComponent,
-  HTMLProps,
-  RefObject,
-} from 'react';
+import { forwardRef, HTMLProps, RefObject } from 'react';
 
 import { ButtonBase, ButtonSelectors } from '../ButtonBase/ButtonBase';
 import { AppendedIconProps, appendIconToContent } from '../helpers';
-import {
-  CompatibleComponentProps,
-  CompatibleRefAttributes,
-  WithOptionalScrollProps,
-} from '../utils';
+import { CompatibleComponentProps } from '../utils';
 
 export interface AnchorProps
   extends StyleProps<typeof anchorProps>,
     StyleProps<typeof anchorVariants> {
+  disabled?: boolean;
   onClick?: HTMLProps<HTMLAnchorElement>['onClick'];
 }
 
@@ -181,7 +173,4 @@ const AnchorComponent = forwardRef<
   }
 );
 
-export const Anchor: ForwardRefExoticComponent<
-  WithOptionalScrollProps<AnchorExtProps> &
-    CompatibleRefAttributes<HTMLAnchorElement | HTMLButtonElement>
-> = AnchorComponent;
+export const Anchor = AnchorComponent;

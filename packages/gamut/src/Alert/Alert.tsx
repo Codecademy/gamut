@@ -211,7 +211,7 @@ export const Alert: React.FC<AlertProps> = ({
         initial={toggleState}
         transition={{
           duration: 0.2,
-          ease: 'easeInOut',
+          ease: 'easeInOut' as const,
         }}
         variants={{
           collapsed: { height: '2rem' },

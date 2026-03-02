@@ -1,6 +1,6 @@
 import { Box, FadeInSlideOut, FillButton, FlexBox } from '@codecademy/gamut';
 import type { Meta } from '@storybook/react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 
 const meta: Meta<typeof FadeInSlideOut> = {

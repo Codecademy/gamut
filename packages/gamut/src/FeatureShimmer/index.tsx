@@ -1,6 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'motion/react';
 
 import { Box, BoxProps } from '../Box';
 
@@ -24,7 +24,7 @@ const boxVariants = {
     backgroundColor: 'rgba(0, 0, 0, 0)',
     borderColor: 'rgba(0, 0, 0, 0)',
     transition: {
-      ease: 'easeOut',
+      ease: 'easeOut' as const,
       duration: 0.3,
       delay: 4,
     },
@@ -37,12 +37,12 @@ const shimmerVariants = {
     backgroundColor: 'rgba(0, 0, 0, 0)',
     transition: {
       left: {
-        ease: 'easeInOut',
+        ease: 'easeInOut' as const,
         duration: 2,
         delay: 2,
       },
       backgroundColor: {
-        ease: 'easeOut',
+        ease: 'easeOut' as const,
         duration: 1,
         delay: 4,
       },

@@ -1,0 +1,13 @@
+diff --git a/node_modules/@types/react/index.d.ts b/node_modules/@types/react/index.d.ts
+--- a/node_modules/@types/react/index.d.ts
++++ b/node_modules/@types/react/index.d.ts
+@@ -200,7 +200,8 @@
+      * ```
+      */
+     // TODO: Remove the string ref special case from `PropsWithRef` once we remove LegacyRef
+-    type LegacyRef<T> = string | Ref<T>;
++    // Gamut polyfill: accept RefObject<T | null> so useRef<T | null>(null) is assignable to ref (React 18/19 compat)
++    type LegacyRef<T> = string | Ref<T> | RefObject<T | null>;
+ 
+     /**
+      * Retrieves the type of the 'ref' prop for a given component type or tag name.

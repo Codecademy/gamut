@@ -3,7 +3,7 @@ import { GamutIconProps } from '@codecademy/gamut-icons';
 import { IllustrationProps } from '@codecademy/gamut-illustrations';
 import { PatternProps } from '@codecademy/gamut-patterns';
 import { css, timingValues } from '@codecademy/gamut-styles';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import * as React from 'react';
 import { useState } from 'react';
 import styled from '@emotion/styled';

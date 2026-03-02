@@ -1,7 +1,7 @@
 import { timingValues, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 
 import { BodyPortal } from '../BodyPortal';
 import { Box, FlexBox } from '../Box';

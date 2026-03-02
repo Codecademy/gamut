@@ -1,5 +1,5 @@
 import { timingValues } from '@codecademy/gamut-styles';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 import { WithChildrenProp } from '../utils';
 

@@ -19,6 +19,15 @@ export const Card: React.FC<CardProps> = ({
   height = '100%',
   ...rest
 }) => {
+  // Omit event handlers that conflict between React types and Motion types
+  const {
+    onAnimationStart: _a,
+    onAnimationEnd: _b,
+    onDragStart: _c,
+    onDrag: _d,
+    onDragEnd: _e,
+    ...restProps
+  } = rest;
   const defaultBorderRadius: BorderRadiusToken = isInteractive ? 'md' : 'none';
   const trueBorderRadius = borderRadius ?? defaultBorderRadius;
   const resolvedBorderRadius =
@@ -76,7 +85,7 @@ export const Card: React.FC<CardProps> = ({
         shadow={shadow}
         variant={variant}
         variants={setHoverShadow}
-        {...rest}
+        {...restProps}
       >
         {children}
       </SelectedWrapper>
