@@ -1714,6 +1714,7 @@ __metadata:
     "@codecademy/gamut-patterns": "npm:0.10.23"
     "@codecademy/gamut-styles": "npm:17.11.4"
     "@codecademy/variance": "npm:0.25.2"
+    "@react-aria/interactions": "npm:3.25.0"
     "@types/marked": "npm:^4.0.8"
     "@vidstack/react": "npm:^1.12.12"
     classnames: "npm:^2.2.5"

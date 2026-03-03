@@ -9,6 +9,7 @@
     "@codecademy/gamut-patterns": "0.10.23",
     "@codecademy/gamut-styles": "17.11.4",
     "@codecademy/variance": "0.25.2",
+    "@react-aria/interactions": "3.25.0",
     "@types/marked": "^4.0.8",
     "@vidstack/react": "^1.12.12",
     "classnames": "^2.2.5",
