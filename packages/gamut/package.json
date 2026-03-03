@@ -19,9 +19,8 @@
     "lodash": "^4.17.23",
     "marked": "^4.3.0",
     "polished": "^4.1.2",
-    "react-aria-components": "1.8.0",
-    "react-aria-tabpanel": "^4.4.0",
-    "react-focus-on": "^3.10.0",
+    "react-aria-components": "1.7.1",
+    "react-focus-on": "3.10.0",
     "react-hook-form": "^7.65.0",
     "react-player": "^2.16.0",
     "react-select": "^5.2.2",
@@ -34,6 +33,9 @@
   ],
   "license": "MIT",
   "main": "./dist/index.js",
+  "overrides": {
+    "@react-aria/interactions": "3.25.0"
+  },
   "module": "./dist/index.js",
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
