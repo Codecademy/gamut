@@ -83,9 +83,7 @@ export function asCompatibleForwardRefComponent<
 export function asCompatibleForwardRefComponentWithStyled<
   P extends CompatibleRefAttributes<HTMLElement>,
   C extends React.ComponentType<unknown> & { withComponent?: unknown }
->(
-  component: C
-): React.ForwardRefExoticComponent<P> & Pick<C, 'withComponent'> {
+>(component: C): React.ForwardRefExoticComponent<P> & Pick<C, 'withComponent'> {
   return component as unknown as React.ForwardRefExoticComponent<P> &
     Pick<C, 'withComponent'>;
 }
