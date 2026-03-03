@@ -17,11 +17,7 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-Confirmation dialog boxes are used to verify that a learner wants to take a specific action. They are generally used for actions that are irreversible, may result in critical consequences or loss of data, have other severe consequences, or happen infrequently.
-
-They use the <LinkTo id="Molecules/Modals/Dialog">Dialog component in Gamut</LinkTo> and, for actions with serious or irreversible consequences, the `Danger` variant should be used.
-
-Confirmation dialogs create intentional friction to verify that a learner wants to take a high-impact action, such as:
+Confirmation dialogs use the <LinkTo id="Molecules/Modals/Dialog">Dialog component in Gamut</LinkTo> to create intentional friction to verify that a learner wants to take a high-impact action, such as:
 
 - Irreversible actions (e.g., submitting payment)
 - Loss of data, time, or work (e.g., deleting a course)
@@ -48,6 +44,7 @@ Adding friction for these purposes helps improve trust and avoid unintentional a
 - **Avoid using “Yes” or “No,”** as they can be misinterpreted in global English and internationalization contexts.
 - **CTA1 matches the verb from the heading** to confirm the action.
 - **CTA2 clarifies the alternative or undo** path.
+  - Whenever possible, be specific about the alternative. However, when space is limited, 'Cancel' can be used.
 
 ### Examples — putting it all together
 
