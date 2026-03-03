@@ -1,10 +1,8 @@
 import { styledOptions, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
-import {
-  asCompatibleForwardRefComponent,
-  CompatibleStyledComponentProps,
-} from '../utils/types';
+import type { CompatibleStyledComponentProps } from '../utils/types';
+import { asCompatibleForwardRefComponentWithStyled } from '../utils/types';
 import { boxProps, GridBoxProps, gridStates, sharedStates } from './props';
 
 const StyledGridBox = styled(
@@ -17,7 +15,7 @@ const StyledGridBox = styled(
   boxProps
 );
 
-export const GridBox =
-  asCompatibleForwardRefComponent<
-    CompatibleStyledComponentProps<typeof StyledGridBox, HTMLDivElement>
-  >(StyledGridBox);
+export const GridBox = asCompatibleForwardRefComponentWithStyled<
+  CompatibleStyledComponentProps<typeof StyledGridBox, HTMLDivElement>,
+  typeof StyledGridBox
+>(StyledGridBox);

@@ -74,3 +74,18 @@ export function asCompatibleForwardRefComponent<
 ): React.ForwardRefExoticComponent<P> {
   return component as unknown as React.ForwardRefExoticComponent<P>;
 }
+
+/**
+ * Like asCompatibleForwardRefComponent but also preserves the Emotion StyledComponent
+ * `withComponent` method on the return type so consumers can use Box.withComponent('span').
+ * C is inferred from the component argument so only P is passed at the call site.
+ */
+export function asCompatibleForwardRefComponentWithStyled<
+  P extends CompatibleRefAttributes<HTMLElement>,
+  C extends React.ComponentType<unknown> & { withComponent?: unknown }
+>(
+  component: C
+): React.ForwardRefExoticComponent<P> & Pick<C, 'withComponent'> {
+  return component as unknown as React.ForwardRefExoticComponent<P> &
+    Pick<C, 'withComponent'>;
+}
