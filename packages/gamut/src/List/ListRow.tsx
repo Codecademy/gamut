@@ -9,6 +9,7 @@ import { WithChildrenProp } from '../utils';
 import { RowEl } from './elements';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
+import { markFirstCol } from './utils';
 
 export interface RowProps
   extends Partial<PublicListProps<ComponentProps<typeof RowEl>>> {
@@ -84,7 +85,8 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
       (!renderExpanded && !onClick) || isTable
         ? { ...rowConfig, ...rowProps }
         : { spacing: keepSpacingWhileExpanded ? rowConfig.spacing : undefined };
-    let content = children;
+    const markedChildren = markFirstCol(children);
+    let content = markedChildren;
     const renderNumbering = isOl && renderExpanded === undefined && !onClick;
 
     if ((renderExpanded || Boolean(onClick)) && !isTable) {
@@ -106,7 +108,7 @@ export const ListRow = forwardRef<HTMLLIElement, ListRowProps>(
           {...rowProps}
           ref={ref}
         >
-          {children}
+          {markedChildren}
         </RowEl>
       );
     }

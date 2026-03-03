@@ -407,7 +407,7 @@ const columnSpacing = variant({
   prop: 'spacing',
   base: {
     px: { _: 0, c_base: 8, c_sm: 0 },
-    '&:first-of-type': {
+    '&[data-first-col]': {
       pl: 8,
     },
   },
