@@ -11,7 +11,7 @@ const meta: Meta<typeof PopoverContainer> = {
     inline: true,
     x: 0,
     y: 0,
-    // offset: 20,
+    offset: 20,
   },
   argTypes: {
     targetRef: {
