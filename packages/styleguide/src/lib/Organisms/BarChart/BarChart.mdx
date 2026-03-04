@@ -1,0 +1,427 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import {
+  Callout,
+  ComponentHeader,
+  ImageWrapper,
+  LinkTo,
+} from '~styleguide/blocks';
+
+import * as BarChartStories from './BarChart.stories';
+
+export const parameters = {
+  title: 'BarChart',
+  subtitle: `A horizontal bar chart for visualizing comparative data`,
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/design/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=55123-4176',
+  },
+  status: 'current',
+  source: {
+    repo: 'gamut',
+    githubLink:
+      'https://github.com/Codecademy/gamut/blob/main/packages/gamut/src/BarChart',
+  },
+};
+
+<Meta of={BarChartStories} />
+
+<ComponentHeader {...parameters} />
+
+## Usage
+
+Use BarChart to display comparative data across categories, such as skills progress, XP earned, or any quantitative metrics that benefit from visual comparison.
+
+### Best practices:
+
+- Use consistent units across all bars in a chart
+- Limit the number of bars to maintain readability (5-10 is optimal)
+- Consider using the stacked variant to show progress toward a goal
+- Sort bars by value (descending) when ranking is important
+- Ensure bar colors maintain at least a 3:1 contrast ratio with the background
+
+### When NOT to use:
+
+- **Progress tracking** – for displaying the completion status of a task, use the <LinkTo id="Atoms/ProgressBar">ProgressBar</LinkTo> component.
+
+## Anatomy
+
+<ImageWrapper
+  src="./organisms/barchart.png"
+  alt="The anatomy of the BarChart component, detailed below."
+/>
+
+1. **Bar row**
+
+- Represents a single category and its values.
+
+2. **Category icon** (optional)
+
+- Use to clarify or reinforce the category name.
+
+3. **Category label**
+
+- Displays the category name on the y-axis (e.g. skill or metric name).
+
+4. **Scale / value axis**
+
+- Displays gridlines and labels to indicate the scale of the data values.
+- The number of dividers, as well as the minimum and maximum values on the value axis, are adjustable.
+- The minimum value should always be 0.
+
+5. **Series one value**
+
+- Displays the numerical value of the series one bar for clarity and precise data representation.
+
+6. **Series two value** (optional)
+
+- Displays the numerical value of the series two bar for clarity and precise data representation.
+- Include a second series value by using the stacked property. Stacked bar charts compare parts of a whole and are best suited for displaying discrete data segmented into meaningful categories.
+
+7. **Series one bar**
+
+- A visual representation of the first value for the associated category.
+- By default, the first series bars use the text color, however, it can be overridden to any color.
+- Bars include a required border that uses white or navy, chosen automatically to ensure the highest contrast with the bar color.
+
+8. **Series two bar** _(bars with zero value)_
+
+- A visual representation of the second value for the associated category.
+- By default, the second series bars use the primary color, however, it can be overridden to any color.
+- Bars include a required border that uses white or navy, chosen automatically to ensure the highest contrast with the bar color.
+
+## Variants
+
+### Simple (Non-stacked)
+
+Use the simple variant when showing single values per category. Only `seriesOneValue` is provided.
+
+<Canvas of={BarChartStories.Default} />
+
+### Stacked
+
+Use the stacked variant when showing progress within a total. Provide both `seriesOneValue` (progress) and `seriesTwoValue` (total).
+
+<Canvas of={BarChartStories.Stacked} />
+
+### With Icons
+
+Add icons to labels for better visual identification of categories.
+
+<Canvas of={BarChartStories.WithIcons} />
+
+### Animated
+
+Enable entrance animations for a more engaging experience.
+
+<Canvas of={BarChartStories.Animated} />
+
+### Interactive
+
+Rows can be made interactive with `onClick` handlers or `href` links.
+
+<Canvas of={BarChartStories.Interactive} />
+
+### With Links
+
+When a bar has an `href` link, an `aria-label` is automatically generated from the bar's data and applied to the anchor. The label summarizes the bar's values (e.g., "100 XP in Python" for a simple bar, or "200 XP gained - now at 1500 XP in Python" for a stacked bar), so screen reader users get a clear, data-driven description without manual `aria-label` props.
+
+<Canvas of={BarChartStories.WithLinks} />
+
+## Title and description
+
+The BarChart component uses semantic HTML to provide context and accessibility. The chart is wrapped in a [`<figure>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure) element, and the description is displayed in a [`<figcaption>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption) element. This semantic structure helps screen readers and other assistive technologies understand the relationship between the chart and its description. **Visual title + description is the greatly preferred pattern** for accessibility and user experience.
+
+**Preferred pattern: Visual title + description**
+
+Provide both `title` and `description` props to make the chart's purpose and key takeaways clear to all users:
+
+- `title`: A heading that identifies the chart. Can be a string or an object with `{ as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6', title: string, variant?: Text['variant'] }` to specify the heading level and optionally override the default styling with a <LinkTo id="Typography/Text">Text variant</LinkTo>.
+- `description`: A summary of the information or the overall takeaway displayed in the `<figcaption>` element.
+
+<Canvas of={BarChartStories.WithVisualTitleAndDescription} />
+
+**Alternative patterns:**
+`hideTitle` and `hideDescription` will keep the screenreader text but hide the visual descriptions.
+
+<Canvas of={BarChartStories.WithHiddenTitleAndDescription} />
+
+**External title with visual description:** Use `aria-labelledby` for the title when the title exists elsewhere but you want to display the description.
+
+<Canvas of={BarChartStories.WithExternalTitle} />
+
+**Best practices:**
+
+- Always provide a `description` prop - it's required and should summarize the chart's key information
+- Use semantic heading levels for titles (h1-h6) to maintain proper document structure
+- When using `aria-labelledby`, ensure the referenced element exists and is properly labeled
+
+## Sorting
+
+BarChart includes an optional sorting dropdown in the title area. The dropdown only renders when the `sortFns` prop is provided. You can control which sort options appear by including string literals or custom sort functions in the array.
+
+**String Literals:**
+
+- `'alphabetically'` - Adds both "Label (A-Z)" and "Label (Z-A)" options
+- `'numerically'` - Adds both "Value (Low-High)" and "Value (High-Low)" options
+- `'none'` - Adds "None" option (preserves original order)
+
+**Custom Sort Functions:**
+You can also provide custom sort functions as objects with:
+
+- `label`: The text displayed in the dropdown
+- `value`: A unique identifier for the sort option
+- `sortFn`: A function that takes an array of bars and returns a sorted array
+
+**Type Definition:**
+
+```typescript
+type CustomSortOption<TBar extends BarProps = BarProps> = {
+  label: string;
+  value: string;
+  sortFn: (bars: TBar[]) => TBar[];
+};
+
+// sortFns prop accepts:
+sortFns?: ('alphabetically' | 'numerically' | 'none' | CustomSortOption<TBar>)[]
+```
+
+**Automatic Type Inference:**
+TypeScript automatically infers the bar type from your `barValues` prop. This means custom properties (like `dateAdded`, `category`, etc.) are automatically typed in your sort functions - no type assertions needed!
+
+```typescript
+const barsWithDates = [
+  { yLabel: 'Python', seriesOneValue: 1500, dateAdded: new Date('2023-01-15') },
+  {
+    yLabel: 'JavaScript',
+    seriesOneValue: 2000,
+    dateAdded: new Date('2023-03-20'),
+  },
+  // ...
+];
+
+<BarChart
+  barValues={barsWithDates}
+  sortFns={[
+    {
+      label: 'Recently Added',
+      value: 'recent',
+      sortFn: (bars) => {
+        // TypeScript automatically knows bars have dateAdded property!
+        return [...bars].sort((a, b) => {
+          const aDate = a.dateAdded as Date | undefined;
+          const bDate = b.dateAdded as Date | undefined;
+          if (!aDate || !bDate) return 0;
+          return bDate.getTime() - aDate.getTime();
+        });
+      },
+    },
+  ]}
+/>;
+```
+
+**Note:** Since `BarProps` uses `Record<string, unknown>` for extensibility, custom properties are typed as `unknown` by default. You may need a simple type assertion (`as Date | undefined`) when accessing them, but the property names are fully type-checked.
+
+<Canvas of={BarChartStories.WithSorting} />
+
+**Example with Custom Sort Functions:**
+
+Custom sort functions can access additional properties on `BarProps` for domain-specific sorting, such as sorting by dates or categories.
+
+<Canvas of={BarChartStories.WithCustomSorting} />
+
+## Custom styling
+
+BarChart supports custom color styling through the `styleConfig` prop, allowing you to customize the appearance of chart elements to match your design needs.
+
+### Style configuration options
+
+The `styleConfig` prop accepts an object with the following optional properties:
+
+- **`textColor`**: Color for text labels (y-axis labels). Defaults to `'text'`
+- **`seriesOneBarColor`**: Color for the series one bar (seriesOneValue: overlay in stacked charts, only bar in simple charts). Defaults to `'text'`
+- **`seriesTwoBarColor`**: Color for the series two bar (seriesTwoValue: full bar in stacked charts; unused in simple charts). Defaults to `'primary'`
+- **`seriesOneLabel`**: Color for the series one value label (first right label when stacked, or displayValue when not stacked). Defaults to `'text-secondary'`
+- **`seriesTwoLabel`**: Color for the series two value label (displayValue when stacked). Defaults to `'primary'`
+
+All color values should be valid color tokens from the Gamut design system. When customizing colors, ensure they maintain at least a 3:1 contrast ratio with the background for accessibility.
+
+### Default values
+
+If `styleConfig` is not provided, BarChart uses these default colors:
+
+```typescript
+{
+  textColor: 'text',
+  seriesOneBarColor: 'text',
+  seriesTwoBarColor: 'primary',
+  seriesOneLabel: 'text-secondary',
+  seriesTwoLabel: 'primary',
+}
+```
+
+### Example
+
+<Canvas of={BarChartStories.CustomStyles} />
+
+## Custom scale
+
+BarChart allows you to customize the x-axis scale interval using the `xScale` prop, which controls the spacing and granularity of scale markers along the horizontal axis.
+
+### Scale configuration
+
+The `xScale` prop determines the interval between scale markers on the x-axis. By default, BarChart automatically calculates an appropriate scale interval based on the `maxRange` value (the scale always starts at 0). However, you can override this with a custom interval to achieve more granular or specific scale markings.
+
+**When to use custom scale:**
+
+- When you need specific scale intervals (e.g., increments of 250, 500, or 1000)
+- When the automatic scale calculation doesn't provide the desired granularity
+- When you want to match scale intervals across multiple charts for consistency
+- When you need scale markers at specific values for better data interpretation
+
+**How it works:**
+
+The `xScale` value represents the interval between consecutive scale markers. For example:
+
+- `xScale: 250` creates markers at 0, 250, 500, 750, 1000, etc.
+- `xScale: 500` creates markers at 0, 500, 1000, 1500, 2000, etc.
+
+The number of tick marks is automatically calculated as: `Math.ceil(maxRange / xScale) + 1`
+
+### Example
+
+<Canvas of={BarChartStories.CustomScale} />
+
+## Color modes
+
+BarChart automatically adapts to both light and dark color modes, ensuring proper contrast and readability in all themes. The component uses semantic color tokens that adjust based on the current color mode. The `styleConfig` prop should be provided by semantic color tokens to ensure the `BarChart` is accessible in all color modes.
+
+## Accessibility considerations
+
+### Chart and row labeling
+
+**Chart-level labeling:**
+
+- Always provide either `title` or `aria-labelledby` to describe the chart (see Title and description section below for details)
+- The chart is wrapped in a semantic `<figure>` element for proper structure
+
+**Row-level labeling:**
+
+- For non-interactive bars: A hidden text element (visible only to screen readers) is automatically added as the first child of each list item, summarizing the bar's values (e.g., "100 XP in Python")
+- For interactive bars (with `onClick` or `href`): An `aria-label` is automatically generated from the bar's data and applied to the button or link element, ensuring proper screen reader announcements
+- All accessibility labels are automatically generated from the bar's data - no manual `aria-label` props are required
+
+## UX writing
+
+- Keep y-axis labels concise (1-3 words)
+- Use consistent unit labels (e.g., "XP", "hours", "points")
+- Consider locale-aware number formatting for international audiences
+
+## Interactive states
+
+BarChart supports both interactive and static bar rows, each with distinct visual states.
+
+### Static bars
+
+When bars have neither `onClick` handlers nor `href` links, they are rendered as static, non-interactive elements.
+
+<Canvas of={BarChartStories.Default} />
+
+### Interactive bars
+
+When bars have `onClick` handlers or `href` links, they become interactive. Interactive bars are rendered as buttons or anchor elements, providing full keyboard accessibility and proper semantic HTML.
+
+<Canvas of={BarChartStories.Interactive} />
+
+## Internationalization
+
+<Callout text="We are currently updating global internationalization in Gamut, so the following features are subject to change." />
+
+BarChart supports internationalization through the `translations` prop. You can customize user-facing strings (including sort dropdown and accessibility summaries) and configure locale-aware number formatting. The prop accepts `PartialBarChartTranslations`: override only the keys you need; nested `accessibility` and `sortOptions` are merged with defaults at runtime.
+
+### Translation structure
+
+- **sortLabel**, **sortOptions**, and **locale** — Always strings. Control the sort dropdown label, option labels, and number-formatting locale.
+- **Accessibility keys** (`gainedNowAt`, `inLabel`, `inOnly`) — Used in auto-generated `aria-label` and screen reader text for bars. Each key can be:
+  - **String** — A fragment interpolated into the built-in template (e.g. `"in"`, `"gained - now at"`). Use when the default word order works for your language.
+  - **Function** — Receives scoped context (values, label, unit, locale) and returns the **entire** summary string. Use for pluralization, different word order, or locale-specific phrasing.
+
+### Basic usage
+
+Provide only the translations you want to override; the rest fall back to default English.
+
+```tsx
+<BarChart
+  barValues={barData}
+  description="Progreso de habilidades"
+  maxRange={200}
+  sortFns={['alphabetically', 'none']}
+  title="Habilidades"
+  translations={{
+    accessibility: {
+      gainedNowAt: 'ganado - ahora en',
+      inLabel: 'en',
+      inOnly: 'en ',
+    },
+    locale: 'es',
+    sortLabel: 'Ordenar por:',
+    sortOptions: {
+      labelAsc: 'Etiqueta (A-Z)',
+      labelDesc: 'Etiqueta (Z-A)',
+      none: 'Ninguno',
+      valueAsc: 'Valor (Bajo-Alto)',
+      valueDesc: 'Valor (Alto-Bajo)',
+    },
+  }}
+/>
+```
+
+<Canvas of={BarChartStories.WithStringTranslations} />
+
+### Partial translations and locale
+
+You can override a single key; the rest keep their defaults. The **locale** property controls number formatting (scale labels, value labels) via `Intl.NumberFormat`:
+
+```tsx
+// Only change locale; sort and accessibility use defaults
+translations={{ locale: 'de-DE' }}
+
+// Override just sort label and locale
+translations={{
+  locale: 'en-GB',
+  sortLabel: 'Sort by:',
+}}
+```
+
+### Accessibility: strings vs functions
+
+**Strings** — Use when the built-in template order fits your language. Fragments are plugged into the default pattern (e.g. `"{value} {unit} {inLabel} {yLabel}"`).
+
+**Functions** — Use when you need full control. Each function receives context (`yLabel`, values, `unit`, `locale`) and returns the complete summary string.
+
+<Canvas of={BarChartStories.WithFunctionTranslations} />
+
+**Best practices:**
+
+- Provide complete translations for the language your app uses; use partial overrides for one-off changes.
+- Prefer string accessibility keys when the default order works; use functions for pluralization, word order, or locale-specific phrasing.
+- Use appropriate locale codes (e.g. `'en-US'`, `'es-ES'`, `'fr-FR'`) for number formatting.
+- Test accessibility summaries with screen readers in the target language.
+- Reuse translation objects across BarChart instances where possible.
+
+## Container query
+
+BarChart uses CSS container queries to determine responsive behavior based on the **chart container width** rather than viewport width. This ensures optimal display when the chart is placed in constrained layouts like sidebars or narrow columns.
+
+**Layout behavior:**
+
+- **Narrow container (below 480px)**: Label and value appear together above the bar in a single row.
+- **Wide container (480px and up, `c_xs` breakpoint)**: Label on the left, bar in the center, value on the right.
+
+The chart establishes a size container via `containerType="inline-size"` on the figure wrapper, so the layout responds to the width of the BarChart’s parent. For more on container queries in Gamut, see <LinkTo id="Foundations/System/Responsive Properties">Responsive properties</LinkTo>.
+
+## Playground
+
+<Canvas sourceState="shown" of={BarChartStories.Default} />
+
+<Controls />
