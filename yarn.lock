@@ -1616,11 +1616,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@codecademy/gamut-icons@npm:9.56.1, @codecademy/gamut-icons@workspace:packages/gamut-icons":
+"@codecademy/gamut-icons@npm:9.56.2, @codecademy/gamut-icons@workspace:packages/gamut-icons":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-icons@workspace:packages/gamut-icons"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.11.4"
+    "@codecademy/gamut-styles": "npm:17.11.5"
     "@codecademy/variance": "npm:0.25.2"
   peerDependencies:
     "@emotion/react": ^11.4.0
@@ -1630,11 +1630,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-illustrations@npm:0.58.4, @codecademy/gamut-illustrations@workspace:packages/gamut-illustrations":
+"@codecademy/gamut-illustrations@npm:0.58.5, @codecademy/gamut-illustrations@workspace:packages/gamut-illustrations":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-illustrations@workspace:packages/gamut-illustrations"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.11.4"
+    "@codecademy/gamut-styles": "npm:17.11.5"
     classnames: "npm:^2.2.5"
   peerDependencies:
     "@emotion/react": ^11.4.0
@@ -1648,22 +1648,22 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-kit@workspace:packages/gamut-kit"
   dependencies:
-    "@codecademy/gamut": "npm:68.0.4"
-    "@codecademy/gamut-icons": "npm:9.56.1"
-    "@codecademy/gamut-illustrations": "npm:0.58.4"
-    "@codecademy/gamut-patterns": "npm:0.10.23"
-    "@codecademy/gamut-styles": "npm:17.11.4"
-    "@codecademy/gamut-tests": "npm:5.2.21"
+    "@codecademy/gamut": "npm:68.0.5"
+    "@codecademy/gamut-icons": "npm:9.56.2"
+    "@codecademy/gamut-illustrations": "npm:0.58.5"
+    "@codecademy/gamut-patterns": "npm:0.10.24"
+    "@codecademy/gamut-styles": "npm:17.11.5"
+    "@codecademy/gamut-tests": "npm:5.2.22"
     "@codecademy/variance": "npm:0.25.2"
     component-test-setup: "npm:^0.3.1"
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-patterns@npm:0.10.23, @codecademy/gamut-patterns@workspace:packages/gamut-patterns":
+"@codecademy/gamut-patterns@npm:0.10.24, @codecademy/gamut-patterns@workspace:packages/gamut-patterns":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-patterns@workspace:packages/gamut-patterns"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.11.4"
+    "@codecademy/gamut-styles": "npm:17.11.5"
     "@codecademy/variance": "npm:0.25.2"
     classnames: "npm:^2.2.5"
   peerDependencies:
@@ -1674,7 +1674,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-styles@npm:17.11.4, @codecademy/gamut-styles@workspace:packages/gamut-styles":
+"@codecademy/gamut-styles@npm:17.11.5, @codecademy/gamut-styles@workspace:packages/gamut-styles":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-styles@workspace:packages/gamut-styles"
   dependencies:
@@ -1693,11 +1693,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut-tests@npm:5.2.21, @codecademy/gamut-tests@workspace:packages/gamut-tests":
+"@codecademy/gamut-tests@npm:5.2.22, @codecademy/gamut-tests@workspace:packages/gamut-tests":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut-tests@workspace:packages/gamut-tests"
   dependencies:
-    "@codecademy/gamut-styles": "npm:17.11.4"
+    "@codecademy/gamut-styles": "npm:17.11.5"
     component-test-setup: "npm:*"
     lodash: "npm:^4.17.23"
   peerDependencies:
@@ -1705,14 +1705,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@codecademy/gamut@npm:68.0.4, @codecademy/gamut@workspace:packages/gamut":
+"@codecademy/gamut@npm:68.0.5, @codecademy/gamut@workspace:packages/gamut":
   version: 0.0.0-use.local
   resolution: "@codecademy/gamut@workspace:packages/gamut"
   dependencies:
-    "@codecademy/gamut-icons": "npm:9.56.1"
-    "@codecademy/gamut-illustrations": "npm:0.58.4"
-    "@codecademy/gamut-patterns": "npm:0.10.23"
-    "@codecademy/gamut-styles": "npm:17.11.4"
+    "@codecademy/gamut-icons": "npm:9.56.2"
+    "@codecademy/gamut-illustrations": "npm:0.58.5"
+    "@codecademy/gamut-patterns": "npm:0.10.24"
+    "@codecademy/gamut-styles": "npm:17.11.5"
     "@codecademy/variance": "npm:0.25.2"
     "@react-aria/interactions": "npm:3.25.0"
     "@types/marked": "npm:^4.0.8"
@@ -1724,9 +1724,8 @@ __metadata:
     marked: "npm:^4.3.0"
     motion: "npm:^12.0.0"
     polished: "npm:^4.1.2"
-    react-aria-components: "npm:1.15.1"
-    react-aria-tabpanel: "npm:^4.4.0"
-    react-focus-on: "npm:^3.10.0"
+    react-aria-components: "npm:1.7.1"
+    react-focus-on: "npm:3.10.0"
     react-hook-form: "npm:^7.65.0"
     react-player: "npm:^2.16.0"
     react-select: "npm:^5.2.2"
@@ -2603,7 +2602,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@internationalized/date@npm:^3.11.0":
+"@internationalized/date@npm:^3.11.0, @internationalized/date@npm:^3.7.0":
   version: 3.11.0
   resolution: "@internationalized/date@npm:3.11.0"
   dependencies:
@@ -2631,7 +2630,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@internationalized/string@npm:^3.2.7":
+"@internationalized/string@npm:^3.2.5, @internationalized/string@npm:^3.2.7":
   version: 3.2.7
   resolution: "@internationalized/string@npm:3.2.7"
   dependencies:
@@ -4703,28 +4702,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/autocomplete@npm:3.0.0-rc.5":
-  version: 3.0.0-rc.5
-  resolution: "@react-aria/autocomplete@npm:3.0.0-rc.5"
+"@react-aria/autocomplete@npm:3.0.0-beta.1":
+  version: 3.0.0-beta.1
+  resolution: "@react-aria/autocomplete@npm:3.0.0-beta.1"
   dependencies:
-    "@react-aria/combobox": "npm:^3.14.2"
-    "@react-aria/focus": "npm:^3.21.4"
-    "@react-aria/i18n": "npm:^3.12.15"
-    "@react-aria/interactions": "npm:^3.27.0"
-    "@react-aria/listbox": "npm:^3.15.2"
-    "@react-aria/searchfield": "npm:^3.8.11"
-    "@react-aria/textfield": "npm:^3.18.4"
-    "@react-aria/utils": "npm:^3.33.0"
-    "@react-stately/autocomplete": "npm:3.0.0-beta.4"
-    "@react-stately/combobox": "npm:^3.12.2"
-    "@react-types/autocomplete": "npm:3.0.0-alpha.37"
-    "@react-types/button": "npm:^3.15.0"
-    "@react-types/shared": "npm:^3.33.0"
+    "@react-aria/combobox": "npm:^3.12.1"
+    "@react-aria/focus": "npm:^3.20.1"
+    "@react-aria/i18n": "npm:^3.12.7"
+    "@react-aria/interactions": "npm:^3.24.1"
+    "@react-aria/listbox": "npm:^3.14.2"
+    "@react-aria/searchfield": "npm:^3.8.2"
+    "@react-aria/textfield": "npm:^3.17.1"
+    "@react-aria/utils": "npm:^3.28.1"
+    "@react-stately/autocomplete": "npm:3.0.0-beta.0"
+    "@react-stately/combobox": "npm:^3.10.3"
+    "@react-types/autocomplete": "npm:3.0.0-alpha.29"
+    "@react-types/button": "npm:^3.11.0"
+    "@react-types/shared": "npm:^3.28.0"
     "@swc/helpers": "npm:^0.5.0"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
     react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10c0/9ae82bc6e271dac7ae1d7612900520ab3e14215f6af1af752a6564dbf7bed90386ff4080c0ff67e840234f155e85a5e189c6e24c92275980eb24a3d880c84def
+  checksum: 10c0/e5c81e2ef61b2286b3dd9a3f48ba3d16913f82ddc4d7c60f8a58204ddaafbedbfe5a99cee2d327634f4698720414a0aea5fc47bc433ca9a12273818cdcfd6535
   languageName: node
   linkType: hard
 
@@ -4806,20 +4805,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/collections@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "@react-aria/collections@npm:3.0.2"
+"@react-aria/collections@npm:3.0.0-beta.1":
+  version: 3.0.0-beta.1
+  resolution: "@react-aria/collections@npm:3.0.0-beta.1"
   dependencies:
-    "@react-aria/interactions": "npm:^3.27.0"
-    "@react-aria/ssr": "npm:^3.9.10"
-    "@react-aria/utils": "npm:^3.33.0"
-    "@react-types/shared": "npm:^3.33.0"
+    "@react-aria/interactions": "npm:^3.24.1"
+    "@react-aria/ssr": "npm:^3.9.7"
+    "@react-aria/utils": "npm:^3.28.1"
+    "@react-types/shared": "npm:^3.28.0"
     "@swc/helpers": "npm:^0.5.0"
-    use-sync-external-store: "npm:^1.6.0"
+    use-sync-external-store: "npm:^1.4.0"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
     react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10c0/2476975c72c8804b5f588cf58677ce9f05255651d14f938540049e49eee6e9411b1a791ddd6ba5571bcff19ada709089f1b78724ad7a2c291578ea9632c6841a
+  checksum: 10c0/5d2cae903e747aab4b28ab61fc2fbb88a8538c60ce70d207569d9d5b6f79544b4a4fce84dc1c1b8e87ad0f2b5b7a4280e03008e79726a74ebcd60ffcdc68550d
   languageName: node
   linkType: hard
 
@@ -4847,7 +4846,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/combobox@npm:^3.14.2":
+"@react-aria/combobox@npm:^3.12.1, @react-aria/combobox@npm:^3.14.2":
   version: 3.14.2
   resolution: "@react-aria/combobox@npm:3.14.2"
   dependencies:
@@ -4936,7 +4935,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/dnd@npm:^3.11.5":
+"@react-aria/dnd@npm:^3.11.5, @react-aria/dnd@npm:^3.9.1":
   version: 3.11.5
   resolution: "@react-aria/dnd@npm:3.11.5"
   dependencies:
@@ -4958,7 +4957,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/focus@npm:^3.21.4":
+"@react-aria/focus@npm:^3.20.1, @react-aria/focus@npm:^3.21.4":
   version: 3.21.4
   resolution: "@react-aria/focus@npm:3.21.4"
   dependencies:
@@ -5035,7 +5034,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/i18n@npm:^3.12.15":
+"@react-aria/i18n@npm:^3.12.15, @react-aria/i18n@npm:^3.12.7":
   version: 3.12.15
   resolution: "@react-aria/i18n@npm:3.12.15"
   dependencies:
@@ -5067,22 +5066,6 @@ __metadata:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
     react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
   checksum: 10c0/091c7b7b2f94b2fefed440b97a986eff0320d5ba5e1a43c195a912e035aa8ce4d4be15f1852b2dffdbcc6a70190a74f0809e4d4cf3d7646b70c9f9b0fca829f5
-  languageName: node
-  linkType: hard
-
-"@react-aria/interactions@npm:^3.27.0":
-  version: 3.27.0
-  resolution: "@react-aria/interactions@npm:3.27.0"
-  dependencies:
-    "@react-aria/ssr": "npm:^3.9.10"
-    "@react-aria/utils": "npm:^3.33.0"
-    "@react-stately/flags": "npm:^3.1.2"
-    "@react-types/shared": "npm:^3.33.0"
-    "@swc/helpers": "npm:^0.5.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-    react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10c0/52148c240e57e74fd5c78ad82f1924ebd457e9464b3b39508762672f9a1c73d789f3a5b0fec77cc48a7c27cb918f9c0aec3ba3962366818d01fd42735eff835c
   languageName: node
   linkType: hard
 
@@ -5131,7 +5114,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/listbox@npm:^3.15.2":
+"@react-aria/listbox@npm:^3.14.2, @react-aria/listbox@npm:^3.15.2":
   version: 3.15.2
   resolution: "@react-aria/listbox@npm:3.15.2"
   dependencies:
@@ -5151,7 +5134,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/live-announcer@npm:^3.4.4":
+"@react-aria/live-announcer@npm:^3.4.1, @react-aria/live-announcer@npm:^3.4.4":
   version: 3.4.4
   resolution: "@react-aria/live-announcer@npm:3.4.4"
   dependencies:
@@ -5282,7 +5265,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/searchfield@npm:^3.8.11":
+"@react-aria/searchfield@npm:^3.8.11, @react-aria/searchfield@npm:^3.8.2":
   version: 3.8.11
   resolution: "@react-aria/searchfield@npm:3.8.11"
   dependencies:
@@ -5394,7 +5377,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/ssr@npm:^3.9.10, @react-aria/ssr@npm:^3.9.8":
+"@react-aria/ssr@npm:^3.9.10, @react-aria/ssr@npm:^3.9.7, @react-aria/ssr@npm:^3.9.8":
   version: 3.9.10
   resolution: "@react-aria/ssr@npm:3.9.10"
   dependencies:
@@ -5487,7 +5470,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/textfield@npm:^3.18.4":
+"@react-aria/textfield@npm:^3.17.1, @react-aria/textfield@npm:^3.18.4":
   version: 3.18.4
   resolution: "@react-aria/textfield@npm:3.18.4"
   dependencies:
@@ -5543,6 +5526,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-aria/toolbar@npm:3.0.0-beta.14":
+  version: 3.0.0-beta.14
+  resolution: "@react-aria/toolbar@npm:3.0.0-beta.14"
+  dependencies:
+    "@react-aria/focus": "npm:^3.20.1"
+    "@react-aria/i18n": "npm:^3.12.7"
+    "@react-aria/utils": "npm:^3.28.1"
+    "@react-types/shared": "npm:^3.28.0"
+    "@swc/helpers": "npm:^0.5.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
+    react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
+  checksum: 10c0/71ceddd731d32c18bc5716d9beb213703e4bf7eaaa515a4f994ee8d8c03a92b5bc902dfaf6e1574fccb6df2949331ce32d567521e426733ebd02f755779177d9
+  languageName: node
+  linkType: hard
+
 "@react-aria/toolbar@npm:3.0.0-beta.23":
   version: 3.0.0-beta.23
   resolution: "@react-aria/toolbar@npm:3.0.0-beta.23"
@@ -5595,7 +5594,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/utils@npm:^3.28.2, @react-aria/utils@npm:^3.33.0":
+"@react-aria/utils@npm:^3.28.1, @react-aria/utils@npm:^3.28.2, @react-aria/utils@npm:^3.33.0":
   version: 3.33.0
   resolution: "@react-aria/utils@npm:3.33.0"
   dependencies:
@@ -5612,7 +5611,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/virtualizer@npm:^4.1.12":
+"@react-aria/virtualizer@npm:^4.1.3":
   version: 4.1.12
   resolution: "@react-aria/virtualizer@npm:4.1.12"
   dependencies:
@@ -5644,15 +5643,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-stately/autocomplete@npm:3.0.0-beta.4":
-  version: 3.0.0-beta.4
-  resolution: "@react-stately/autocomplete@npm:3.0.0-beta.4"
+"@react-stately/autocomplete@npm:3.0.0-beta.0":
+  version: 3.0.0-beta.0
+  resolution: "@react-stately/autocomplete@npm:3.0.0-beta.0"
   dependencies:
-    "@react-stately/utils": "npm:^3.11.0"
+    "@react-stately/utils": "npm:^3.10.4"
     "@swc/helpers": "npm:^0.5.0"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10c0/1dd69bc262bd761f21b2ff7c594f8ffbfc34e12bbb721d6077739a59646be9cbcdff8652874ca1402c8644ac5639275fa928172e478db10770ae951af629b03f
+  checksum: 10c0/8a127ba8365b73ba383fc762fe9092053446d9eae9120ed49c972ea1df7fb048bb9ba729951bd8f60dd422458a591bf59cbbdaca1a14d3c8fec3a7be7c6a24c3
   languageName: node
   linkType: hard
 
@@ -5717,7 +5716,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-stately/combobox@npm:^3.12.2":
+"@react-stately/combobox@npm:^3.10.3, @react-stately/combobox@npm:^3.12.2":
   version: 3.12.2
   resolution: "@react-stately/combobox@npm:3.12.2"
   dependencies:
@@ -5828,7 +5827,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-stately/layout@npm:^4.5.3":
+"@react-stately/layout@npm:^4.2.1":
   version: 4.5.3
   resolution: "@react-stately/layout@npm:4.5.3"
   dependencies:
@@ -5948,7 +5947,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-stately/selection@npm:^3.20.8":
+"@react-stately/selection@npm:^3.20.0, @react-stately/selection@npm:^3.20.8":
   version: 3.20.8
   resolution: "@react-stately/selection@npm:3.20.8"
   dependencies:
@@ -5976,7 +5975,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-stately/table@npm:^3.15.3":
+"@react-stately/table@npm:^3.14.0, @react-stately/table@npm:^3.15.3":
   version: 3.15.3
   resolution: "@react-stately/table@npm:3.15.3"
   dependencies:
@@ -6063,7 +6062,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-stately/utils@npm:^3.11.0":
+"@react-stately/utils@npm:^3.10.4, @react-stately/utils@npm:^3.10.5, @react-stately/utils@npm:^3.11.0":
   version: 3.11.0
   resolution: "@react-stately/utils@npm:3.11.0"
   dependencies:
@@ -6074,7 +6073,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-stately/virtualizer@npm:^4.4.5":
+"@react-stately/virtualizer@npm:^4.3.1, @react-stately/virtualizer@npm:^4.4.5":
   version: 4.4.5
   resolution: "@react-stately/virtualizer@npm:4.4.5"
   dependencies:
@@ -6087,16 +6086,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-types/autocomplete@npm:3.0.0-alpha.37":
-  version: 3.0.0-alpha.37
-  resolution: "@react-types/autocomplete@npm:3.0.0-alpha.37"
+"@react-types/autocomplete@npm:3.0.0-alpha.29":
+  version: 3.0.0-alpha.29
+  resolution: "@react-types/autocomplete@npm:3.0.0-alpha.29"
   dependencies:
-    "@react-types/combobox": "npm:^3.13.11"
-    "@react-types/searchfield": "npm:^3.6.7"
-    "@react-types/shared": "npm:^3.33.0"
+    "@react-types/combobox": "npm:^3.13.3"
+    "@react-types/searchfield": "npm:^3.6.0"
+    "@react-types/shared": "npm:^3.28.0"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10c0/e7d9a86dc3cd67fddbc9f0e1660cd359df8b3ffef2db47f76b9cb8e9ce1e9e55652e38bb9707347e90ebd4ef8500b4053a38d0738b5a77cb0248169c22647325
+  checksum: 10c0/3ebe256bc99586284cab626fa9385ed04ac07d90dde25797bf8272d93a862729fcb05f78ddf4a19147fcca47ce515b7fdf82b7b2f65ec44ea87039bc3a0fbcb5
   languageName: node
   linkType: hard
 
@@ -6112,7 +6111,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-types/button@npm:^3.15.0":
+"@react-types/button@npm:^3.11.0, @react-types/button@npm:^3.15.0":
   version: 3.15.0
   resolution: "@react-types/button@npm:3.15.0"
   dependencies:
@@ -6158,7 +6157,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-types/combobox@npm:^3.13.11":
+"@react-types/combobox@npm:^3.13.11, @react-types/combobox@npm:^3.13.3":
   version: 3.13.11
   resolution: "@react-types/combobox@npm:3.13.11"
   dependencies:
@@ -6195,7 +6194,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-types/form@npm:^3.7.17":
+"@react-types/form@npm:^3.7.10":
   version: 3.7.17
   resolution: "@react-types/form@npm:3.7.17"
   dependencies:
@@ -6206,7 +6205,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-types/grid@npm:^3.3.7":
+"@react-types/grid@npm:^3.3.0, @react-types/grid@npm:^3.3.7":
   version: 3.3.7
   resolution: "@react-types/grid@npm:3.3.7"
   dependencies:
@@ -6306,7 +6305,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-types/searchfield@npm:^3.6.7":
+"@react-types/searchfield@npm:^3.6.0, @react-types/searchfield@npm:^3.6.7":
   version: 3.6.7
   resolution: "@react-types/searchfield@npm:3.6.7"
   dependencies:
@@ -6329,7 +6328,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-types/shared@npm:^3.29.0, @react-types/shared@npm:^3.33.0":
+"@react-types/shared@npm:^3.28.0, @react-types/shared@npm:^3.29.0, @react-types/shared@npm:^3.33.0":
   version: 3.33.0
   resolution: "@react-types/shared@npm:3.33.0"
   peerDependencies:
@@ -6360,7 +6359,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-types/table@npm:^3.13.5":
+"@react-types/table@npm:^3.11.0, @react-types/table@npm:^3.13.5":
   version: 3.13.5
   resolution: "@react-types/table@npm:3.13.5"
   dependencies:
@@ -11370,16 +11369,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"create-react-class@npm:^15.6.2":
-  version: 15.7.0
-  resolution: "create-react-class@npm:15.7.0"
-  dependencies:
-    loose-envify: "npm:^1.3.1"
-    object-assign: "npm:^4.1.1"
-  checksum: 10c0/bce4b46e6d85b424cb50ca8089266c7664fcecfd81abaafb829680fae2e2e60dc6999cac88f5a16a38473ed284859f2328935a42fc5cd1b7cc48888fdd8363c9
-  languageName: node
-  linkType: hard
-
 "create-require@npm:^1.1.0":
   version: 1.1.1
   resolution: "create-require@npm:1.1.1"
@@ -13899,13 +13888,6 @@ __metadata:
   version: 3.3.3
   resolution: "flatted@npm:3.3.3"
   checksum: 10c0/e957a1c6b0254aa15b8cce8533e24165abd98fadc98575db082b786b5da1b7d72062b81bfdcd1da2f4d46b6ed93bec2434e62333e9b4261d79ef2e75a10dd538
-  languageName: node
-  linkType: hard
-
-"focus-group@npm:^0.2.2":
-  version: 0.2.3
-  resolution: "focus-group@npm:0.2.3"
-  checksum: 10c0/258940ab75fdf53e6309657fc1d57a88cc6b7e5f1e48ac8f8d1a2bc4fd5c38166e19a8e428e6a91a0b9ba6003c5ab31b0de79d5c20faba7c6263e07f33d172f1
   languageName: node
   linkType: hard
 
@@ -18019,7 +18001,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.3.1, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -21505,61 +21487,44 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-aria-components@npm:1.15.1":
-  version: 1.15.1
-  resolution: "react-aria-components@npm:1.15.1"
+"react-aria-components@npm:1.7.1":
+  version: 1.7.1
+  resolution: "react-aria-components@npm:1.7.1"
   dependencies:
-    "@internationalized/date": "npm:^3.11.0"
-    "@internationalized/string": "npm:^3.2.7"
-    "@react-aria/autocomplete": "npm:3.0.0-rc.5"
-    "@react-aria/collections": "npm:^3.0.2"
-    "@react-aria/dnd": "npm:^3.11.5"
-    "@react-aria/focus": "npm:^3.21.4"
-    "@react-aria/interactions": "npm:^3.27.0"
-    "@react-aria/live-announcer": "npm:^3.4.4"
-    "@react-aria/overlays": "npm:^3.31.1"
-    "@react-aria/ssr": "npm:^3.9.10"
-    "@react-aria/textfield": "npm:^3.18.4"
-    "@react-aria/toolbar": "npm:3.0.0-beta.23"
-    "@react-aria/utils": "npm:^3.33.0"
-    "@react-aria/virtualizer": "npm:^4.1.12"
-    "@react-stately/autocomplete": "npm:3.0.0-beta.4"
-    "@react-stately/layout": "npm:^4.5.3"
-    "@react-stately/selection": "npm:^3.20.8"
-    "@react-stately/table": "npm:^3.15.3"
-    "@react-stately/utils": "npm:^3.11.0"
-    "@react-stately/virtualizer": "npm:^4.4.5"
-    "@react-types/form": "npm:^3.7.17"
-    "@react-types/grid": "npm:^3.3.7"
-    "@react-types/shared": "npm:^3.33.0"
-    "@react-types/table": "npm:^3.13.5"
+    "@internationalized/date": "npm:^3.7.0"
+    "@internationalized/string": "npm:^3.2.5"
+    "@react-aria/autocomplete": "npm:3.0.0-beta.1"
+    "@react-aria/collections": "npm:3.0.0-beta.1"
+    "@react-aria/dnd": "npm:^3.9.1"
+    "@react-aria/focus": "npm:^3.20.1"
+    "@react-aria/interactions": "npm:^3.24.1"
+    "@react-aria/live-announcer": "npm:^3.4.1"
+    "@react-aria/toolbar": "npm:3.0.0-beta.14"
+    "@react-aria/utils": "npm:^3.28.1"
+    "@react-aria/virtualizer": "npm:^4.1.3"
+    "@react-stately/autocomplete": "npm:3.0.0-beta.0"
+    "@react-stately/layout": "npm:^4.2.1"
+    "@react-stately/selection": "npm:^3.20.0"
+    "@react-stately/table": "npm:^3.14.0"
+    "@react-stately/utils": "npm:^3.10.5"
+    "@react-stately/virtualizer": "npm:^4.3.1"
+    "@react-types/form": "npm:^3.7.10"
+    "@react-types/grid": "npm:^3.3.0"
+    "@react-types/shared": "npm:^3.28.0"
+    "@react-types/table": "npm:^3.11.0"
     "@swc/helpers": "npm:^0.5.0"
     client-only: "npm:^0.0.1"
-    react-aria: "npm:^3.46.0"
-    react-stately: "npm:^3.44.0"
-    use-sync-external-store: "npm:^1.6.0"
+    react-aria: "npm:^3.38.1"
+    react-stately: "npm:^3.36.1"
+    use-sync-external-store: "npm:^1.4.0"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
     react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10c0/6aa61901aa67086d403d9d7b52ea8dd3ca4239bd04bbeff83e09292131e31da91bc94dee6841cb53f36e32ff614e708d22c5590e14eae6eba5712256e31658f4
+  checksum: 10c0/586ddd71425a094409ef7edcc72ed8380a6decb1f26276a61fd598cd4f47d5edd9dc75af7b423307be5432d24ee5387e461c204b30518acd4265d0630426a90f
   languageName: node
   linkType: hard
 
-"react-aria-tabpanel@npm:^4.4.0":
-  version: 4.4.0
-  resolution: "react-aria-tabpanel@npm:4.4.0"
-  dependencies:
-    create-react-class: "npm:^15.6.2"
-    focus-group: "npm:^0.2.2"
-    prop-types: "npm:^15.6.0"
-  peerDependencies:
-    react: 0.14.x || ^15.0.0 || ^16.0.0
-    react-dom: 0.14.x || ^15.0.0 || ^16.0.0
-  checksum: 10c0/77db13157f482f630ca4e0550697d03287bc0c35260f2e63e5e57baa5ea6f205f3bd6c7fad254354131e43713bffea67693835a1bf60038ad943621359b9f233
-  languageName: node
-  linkType: hard
-
-"react-aria@npm:^3.46.0":
+"react-aria@npm:^3.38.1":
   version: 3.46.0
   resolution: "react-aria@npm:3.46.0"
   dependencies:
@@ -21689,7 +21654,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-focus-on@npm:^3.10.0":
+"react-focus-on@npm:3.10.0":
   version: 3.10.0
   resolution: "react-focus-on@npm:3.10.0"
   dependencies:
@@ -25450,7 +25415,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.6.0":
+"use-sync-external-store@npm:^1.4.0, use-sync-external-store@npm:^1.6.0":
   version: 1.6.0
   resolution: "use-sync-external-store@npm:1.6.0"
   peerDependencies:
