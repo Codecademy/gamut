@@ -1,7 +1,7 @@
 // Added because SB and TS don't play nice with each other at the moment
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { DataList, DataTable, FlexBox } from '@codecademy/gamut';
+import { DataList, DataTable, FlexBox, InfoTip, Text } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import {
@@ -21,8 +21,13 @@ const meta: Meta<typeof DataList> = {
     query: { sort: { name: 'desc', role: 'asc' } },
     rows: [
       {
-        name: 'Jean Luc Picard',
-        role: 'Captain',
+        name: (
+          <>
+            Some Project&nbsp;<Text color="danger"> Error Publishing</Text>
+            <InfoTip info="Extra info here" placement="floating" />
+          </>
+        ),
+        role: 'something else',
         ship: 'USS Enterprise',
         age: '59',
         species: 'Human',
@@ -73,7 +78,7 @@ const meta: Meta<typeof DataList> = {
       {
         header: 'Name',
         key: 'name',
-        size: 'lg',
+        size: 'xl',
         type: 'header',
         sortable: true,
       },
