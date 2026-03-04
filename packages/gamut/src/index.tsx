@@ -15,6 +15,7 @@ export * from './Card';
 export * from './Coachmark';
 export * from './ConnectedForm';
 export * from './ContentContainer';
+export * from './DatePicker';
 export * from './DelayedRenderWrapper';
 export * from './Disclosure';
 export * from './DataList';
