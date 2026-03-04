@@ -1,7 +1,9 @@
 /**
- * DatePicker – Calendar components for use by DatePickerCalendar.
- * Full DatePicker provider and DatePickerInput will be added in a follow-up.
+ * DatePicker – Calendar, DatePickerInput, and related components.
+ * DatePicker provider and DatePickerCalendar will be added in a follow-up.
  */
+export { DatePickerInput } from './DatePickerInput';
+export type { DatePickerInputProps } from './DatePickerInput';
 export {
   Calendar,
   CalendarHeader,
