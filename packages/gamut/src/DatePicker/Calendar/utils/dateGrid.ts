@@ -101,3 +101,11 @@ export function isDateDisabled(
 ): boolean {
   return disabledDates.some((d) => isSameDay(date, d));
 }
+
+/**
+ * Clamp a day to the last day of the given month (e.g. Jan 31 -> Feb 28).
+ */
+export function clampToMonth(year: number, month: number, day: number): Date {
+  const last = new Date(year, month + 1, 0).getDate();
+  return new Date(year, month, Math.min(day, last));
+}

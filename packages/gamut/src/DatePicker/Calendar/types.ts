@@ -32,12 +32,14 @@ export interface CalendarBodyProps {
   locale?: string;
   /** 0 = Sunday, 1 = Monday (default from locale if not set) */
   weekStartsOn?: 0 | 1;
+  /** Id of the month/year heading (aria-labelledby on grid) */
+  labelledById?: string;
   /** For keyboard nav: which cell has focus (roving tabindex) */
   focusedDate?: Date | null;
   /** Callback when focused date changes (e.g. arrow keys) */
   onFocusedDateChange?: (date: Date | null) => void;
-  /** Id of the month/year heading (aria-labelledby on grid) */
-  labelledById?: string;
+  /** Called when grid keyboard nav changes month (e.g. Page Up/Down). Pass setVisibleDate so the calendar updates. */
+  onVisibleDateChange?: (newDate: Date) => void;
 }
 
 export interface QuickAction {
