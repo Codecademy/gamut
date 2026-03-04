@@ -1,9 +1,18 @@
 /**
- * DatePicker – Calendar, DatePickerInput, and related components.
- * DatePicker provider and DatePickerCalendar will be added in a follow-up.
+ * DatePicker – Single-date picker with input + calendar popover.
  */
+export { DatePicker } from './DatePicker';
+export { DatePickerCalendar } from './DatePickerCalendar';
+export type { DatePickerCalendarProps } from './DatePickerCalendar';
 export { DatePickerInput } from './DatePickerInput';
 export type { DatePickerInputProps } from './DatePickerInput';
+export { useDatePicker } from './useDatePicker';
+export type {
+  DatePickerProps,
+  UseDatePickerArgs,
+  UseDatePickerReturn,
+  UseDatePickerInputProps,
+} from './types';
 export {
   Calendar,
   CalendarHeader,

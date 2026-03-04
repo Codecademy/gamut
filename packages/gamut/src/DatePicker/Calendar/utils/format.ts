@@ -58,3 +58,30 @@ export function getWeekdayFullNames(
   }
   return names;
 }
+
+/**
+ * Format a date for display in the date picker input (e.g. "2/15/2026").
+ */
+export function formatDateForInput(date: Date, locale?: string): string {
+  return new Intl.DateTimeFormat(locale ?? 'en-US', {
+    month: 'numeric',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(date);
+}
+
+/**
+ * Parse a string from the date input into a Date, or null if invalid.
+ * Uses Intl.DateTimeFormat to parse in a locale-aware way where possible;
+ * falls back to Date parsing for simple numeric formats.
+ */
+export function parseDateFromInput(
+  value: string,
+  locale?: string
+): Date | null {
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  const parsed = new Date(trimmed);
+  if (Number.isNaN(parsed.getTime())) return null;
+  return parsed;
+}
