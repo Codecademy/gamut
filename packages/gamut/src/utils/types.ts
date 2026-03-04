@@ -33,15 +33,11 @@ export type CompatibleComponentProps<T extends ElementType> =
   WithOptionalScrollProps<ComponentProps<T>>;
 
 /**
- * Ref type for component ref props so useRef<T | null>(null) is accepted.
- * Our @types/react patch fixed LegacyRef for DOM/forwardRef; Ref<T> is unchanged and still
- * does not include RefObject<T | null>. Use this type when declaring ref props (e.g. on Box).
+ * Ref type for component ref props. Accepts React's LegacyRef so consumers can pass
+ * refs without type errors (useRef, callback refs, or legacy string refs). Use when
+ * declaring ref props (e.g. on Box).
  */
-export type CompatibleRef<T> =
-  | React.RefCallback<T>
-  | React.RefObject<T>
-  | React.RefObject<T | null>
-  | null;
+export type CompatibleRef<T> = React.LegacyRef<T> | null;
 
 /**
  * RefAttributes with ref typed as CompatibleRef so React 18 consumers can pass
