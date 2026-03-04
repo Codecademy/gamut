@@ -8,7 +8,7 @@ import {
   useId,
 } from 'react';
 
-import { FlexBox } from '../Box';
+import { AppendedIconProps, appendIconToContent } from '../helpers';
 import { ToolTipProps } from '../Tip/ToolTip';
 import { Text } from '../Typography';
 import {
@@ -49,10 +49,12 @@ interface MenuItemIconOnly extends HTMLProps, ForwardListItemProps {
   /** ToolTips will only render for interactive items, otherwise the label will be used as a generic aria-label  */
   label: ToolTipLabel;
   disabled?: boolean;
+  iconPosition?: never;
 }
 
 interface MenuTextItem extends HTMLProps, ForwardListItemProps {
-  icon?: React.ComponentType<GamutIconProps>;
+  icon?: AppendedIconProps['icon'];
+  iconPosition?: 'left' | 'right';
   children: React.ReactNode;
   label?: ToolTipLabel;
   disabled?: boolean;
@@ -72,6 +74,7 @@ export const MenuItem = forwardRef<
       height = 1,
       href,
       icon: Icon,
+      iconPosition = 'left',
       label,
       target,
       width = 1,
@@ -116,21 +119,18 @@ export const MenuItem = forwardRef<
       isDisabled: disabled,
     };
 
-    const content = (
-      <>
-        {Icon && (
-          <FlexBox width="fit-content">
-            <Icon
-              data-testid="menuitem-icon"
-              mr={children ? 12 : 0}
-              size={rest.spacing === 'condensed' ? 16 : 24}
-            />
-          </FlexBox>
-        )}
-        {active && <Text screenreader>{currentItemText[listItemType]},</Text>}
-        {children}
-      </>
-    );
+    const content = appendIconToContent({
+      icon: Icon,
+      iconSize: rest.spacing === 'condensed' ? 16 : 24,
+      iconAndTextGap: children ? 12 : 0,
+      iconPosition,
+      children: (
+        <>
+          {active && <Text screenreader>{currentItemText[listItemType]},</Text>}
+          {children}
+        </>
+      ),
+    } as AppendedIconProps);
 
     if (listItemType === 'link' && !disabled) {
       const linkRef = ref as MutableRefObject<HTMLAnchorElement>;
