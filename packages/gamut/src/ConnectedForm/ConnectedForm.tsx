@@ -82,6 +82,18 @@ export interface ConnectedFormProps<Values extends {}>
   };
 }
 
+/**
+ * Explicit type for the ConnectedForm component so that declaration emission
+ * preserves the generic (Values) for consumers. Without this, forwardRef
+ * would be inferred as any and the .d.ts would lose onSubmit/onError types.
+ */
+export interface ConnectedFormComponent {
+  <Values extends FormValues<Values>>(
+    props: ConnectedFormProps<Values>,
+    ref: React.ForwardedRef<HTMLFormElement>
+  ): React.ReactElement;
+}
+
 export type FormProviderCustomProps = FormProviderProps & FormContextProps;
 
 export const FormPropsContext = React.createContext<Partial<FormContextProps>>(
@@ -181,7 +193,5 @@ export const ConnectedForm = forwardRef(
       </PropsProvider>
     );
   }
-  // CASS COME BACK TO THIS
-  // React 19 JSX types expect single-arg components; forwardRef uses (props, ref)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-) as any;
+  // CASS - come back to this
+) as ConnectedFormComponent;
