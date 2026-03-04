@@ -1,5 +1,4 @@
 import { MockGamutProvider, setupRtl } from '@codecademy/gamut-tests';
-import { matchers } from '@emotion/jest';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 
 import { PopoverContainer } from '..';
@@ -11,9 +10,6 @@ import {
   createScrollableParent,
   setupWindowDimensions,
 } from './utils';
-
-// Add the custom matchers provided by '@emotion/jest'
-expect.extend(matchers);
 
 const defaultBounding = {
   bottom: 350,
@@ -211,9 +207,12 @@ describe('Popover', () => {
               ['top-left', { [right]: '370px', [bottom]: '370px' }],
               ['bottom-right', { [left]: '370px', [top]: '370px' }],
               ['bottom-left', { [right]: '370px', [top]: '370px' }],
-              ['top', { [left]: '250px', [bottom]: '370px' }],
+              // 'top'/'bottom' center horizontally using a physical screen coordinate,
+              // so the horizontal position is always physical `left` regardless of
+              // useLogicalProperties — it bypasses variance via physicalStyles.
+              ['top', { left: '250px', [bottom]: '370px' }],
               ['left', { [right]: '370px', [top]: '250px' }],
-              ['bottom', { [left]: '250px', [top]: '370px' }],
+              ['bottom', { left: '250px', [top]: '370px' }],
               ['right', { [left]: '370px', [top]: '250px' }],
             ];
 
@@ -258,9 +257,10 @@ describe('Popover', () => {
               ['top-left', { [right]: '370px', [bottom]: '370px' }],
               ['bottom-right', { [left]: '370px', [top]: '370px' }],
               ['bottom-left', { [right]: '370px', [top]: '370px' }],
-              ['top', { [left]: '250px', [bottom]: '370px' }],
+              // See comment above re: physical 'left' for centered alignments.
+              ['top', { left: '250px', [bottom]: '370px' }],
               ['left', { [right]: '370px', [top]: '250px' }],
-              ['bottom', { [left]: '250px', [top]: '370px' }],
+              ['bottom', { left: '250px', [top]: '370px' }],
               ['right', { [left]: '370px', [top]: '250px' }],
             ];
 
@@ -299,9 +299,9 @@ describe('Popover', () => {
           '%s',
           (alignment: PopoverContainerProps['alignment'], expected: string) => {
             renderView({ alignment });
-            expect(
-              screen.getByTestId('popover-content-container')
-            ).toHaveStyleRule('transform', expected);
+            expect(screen.getByTestId('popover-content-container')).toHaveStyle(
+              { transform: expected }
+            );
           }
         );
       });
@@ -319,9 +319,9 @@ describe('Popover', () => {
           '%s',
           (alignment: PopoverContainerProps['alignment'], expected: string) => {
             renderView({ alignment, invertAxis: 'x' });
-            expect(
-              screen.getByTestId('popover-content-container')
-            ).toHaveStyleRule('transform', expected);
+            expect(screen.getByTestId('popover-content-container')).toHaveStyle(
+              { transform: expected }
+            );
           }
         );
       });
