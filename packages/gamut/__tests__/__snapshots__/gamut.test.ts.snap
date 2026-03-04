@@ -17,6 +17,7 @@ exports[`Gamut Exported Keys 1`] = `
   "Checkbox",
   "Coachmark",
   "Column",
+  "CompatibleComponentProps",
   "ConnectedCheckbox",
   "ConnectedForm",
   "ConnectedFormGroup",
@@ -59,6 +60,7 @@ exports[`Gamut Exported Keys 1`] = `
   "GridFormContent",
   "HiddenText",
   "IconButton",
+  "IconComponentType",
   "iFrameWrapper",
   "InfoTip",
   "Input",
@@ -73,6 +75,7 @@ exports[`Gamut Exported Keys 1`] = `
   "MenuSeparator",
   "Modal",
   "omitProps",
+  "OptionalScrollProps",
   "Overlay",
   "Pagination",
   "Popover",
@@ -120,5 +123,7 @@ exports[`Gamut Exported Keys 1`] = `
   "useLocalQuery",
   "useSubmitState",
   "Video",
+  "WithChildrenProp",
+  "WithOptionalScrollProps",
 ]
 `;

@@ -5,8 +5,8 @@ import {
   Theme,
   ThemeProvider,
 } from '@emotion/react';
-import { MotionConfig } from 'framer-motion';
 import { setNonce } from 'get-nonce';
+import { MotionConfig } from 'motion/react';
 import { useContext, useEffect, useRef } from 'react';
 import * as React from 'react';
 

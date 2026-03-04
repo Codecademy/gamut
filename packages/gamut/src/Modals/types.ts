@@ -1,8 +1,9 @@
-import { ComponentProps, Ref } from 'react';
+import { Ref } from 'react';
 import * as React from 'react';
 
 import { OverlayProps } from '../Overlay';
 import { TipCenterAlignment } from '../Tip/shared/types';
+import { CompatibleComponentProps } from '../utils';
 import { ModalContainer } from './elements';
 
 export interface ModalOverlayProps
@@ -18,7 +19,7 @@ export interface ModalOverlayProps
 
 export interface ModalBaseProps
   extends ModalOverlayProps,
-    Omit<ComponentProps<typeof ModalContainer>, 'title'> {
+    Omit<CompatibleComponentProps<typeof ModalContainer>, 'title'> {
   title?: React.ReactNode;
   /**
    * Heading titles for the Modal. They should almost always be the default `h2`, but should sometimes be `h1` if the Modal takes up the entire page

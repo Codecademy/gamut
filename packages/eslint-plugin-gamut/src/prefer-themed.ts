@@ -48,7 +48,7 @@ export default createRule({
   meta: {
     docs: {
       description: 'Prefer themed style utility',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     fixable: 'code',
     messages: {

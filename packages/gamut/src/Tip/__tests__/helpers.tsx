@@ -17,7 +17,7 @@ type LinkTextParam = { linkText: string };
 type InfoParam = { info: string };
 type PlacementParam = { placement: TipPlacements };
 
-export const createFocusOnClick = (ref: RefObject<HTMLDivElement>) => {
+export const createFocusOnClick = (ref: RefObject<HTMLDivElement | null>) => {
   return ({ isTipHidden }: { isTipHidden: boolean }) => {
     if (!isTipHidden) ref.current?.focus();
   };
@@ -419,24 +419,22 @@ export const openInfoTipsWithKeyboard = async ({
 }) => {
   const buttons = view.getAllByLabelText('Show information');
 
-  await act(async () => {
-    buttons[0].focus();
-    await userEvent.keyboard('{Enter}');
-
-    for (let i = 1; i < count; i += 1) {
-      // eslint-disable-next-line no-await-in-loop
-      await userEvent.tab();
-      // eslint-disable-next-line no-await-in-loop
+  // Sequential: each tip must open before focusing the next (portals/effects are async)
+  for (let i = 0; i < count; i += 1) {
+    // eslint-disable-next-line no-await-in-loop -- opening tips one-by-one is intentional
+    await act(async () => {
+      buttons[i].focus();
       await userEvent.keyboard('{Enter}');
-    }
-  });
-
-  // Wait for all tips to finish opening
-  await waitFor(() => {
-    buttons.forEach((button) => {
-      expect(button).toHaveAttribute('aria-expanded', 'true');
     });
-  });
+    // Wait for this tip to open before opening the next (portals/effects can be async)
+    // eslint-disable-next-line no-await-in-loop -- opening tips one-by-one is intentional
+    await waitFor(
+      () => {
+        expect(buttons[i]).toHaveAttribute('aria-expanded', 'true');
+      },
+      { timeout: 2000 }
+    );
+  }
 };
 
 export const expectTipsVisible = (tips: { text: string }[]) => {

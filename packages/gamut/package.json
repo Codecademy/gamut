@@ -13,11 +13,11 @@
     "@types/marked": "^4.0.8",
     "@vidstack/react": "^1.12.12",
     "classnames": "^2.2.5",
-    "framer-motion": "^11.18.0",
     "html-to-react": "^1.6.0",
     "invariant": "^2.2.4",
     "lodash": "^4.17.23",
     "marked": "^4.3.0",
+    "motion": "^12.0.0",
     "polished": "^4.1.2",
     "react-aria-components": "1.7.1",
     "react-focus-on": "3.10.0",
@@ -40,8 +40,8 @@
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "react": "^17.0.2 || ^18.3.0",
-    "react-dom": "^17.0.2 || ^18.3.0"
+    "react": "^18.3.0 || ^19.0.0",
+    "react-dom": "^18.3.0 || ^19.0.0"
   },
   "publishConfig": {
     "access": "public"

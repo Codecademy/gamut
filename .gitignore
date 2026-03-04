@@ -51,6 +51,9 @@ tmp
 dist/storybook
 dist/docs
 
+# ESLint cache
+.eslintcache
+
 # NX
 dist/out-tsc
 *.tsbuildinfo

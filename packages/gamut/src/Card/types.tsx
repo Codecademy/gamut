@@ -25,5 +25,10 @@ export interface CardWrapperProps
 
 export type CardProps = Omit<
   React.ComponentProps<typeof DynamicCardWrapper>,
-  'bg'
+  | 'bg'
+  | 'onAnimationStart'
+  | 'onAnimationEnd'
+  | 'onDragStart'
+  | 'onDrag'
+  | 'onDragEnd'
 >;

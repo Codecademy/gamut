@@ -3,4 +3,10 @@ export * from './focus';
 export * from './generateResponsiveClassnames';
 export * from './omitProps';
 export * from './useIsMounted';
-export * from './types';
+export {
+  CompatibleComponentProps,
+  IconComponentType,
+  OptionalScrollProps,
+  WithChildrenProp,
+  WithOptionalScrollProps,
+} from './types';

@@ -49,6 +49,11 @@ module.exports = {
         '@typescript-eslint/no-unsafe-return': 'off',
         '@typescript-eslint/restrict-plus-operands': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
+        // v7 recommended rules we keep off for now
+        '@typescript-eslint/no-unsafe-enum-comparison': 'off',
+        '@typescript-eslint/no-duplicate-type-constituents': 'off',
+        '@typescript-eslint/no-base-to-string': 'off',
+        '@typescript-eslint/no-redundant-type-constituents': 'off',
         'import/no-cycle': 'off',
         'react/no-unknown-property': [
           'error',
@@ -79,6 +84,14 @@ module.exports = {
       files: ['packages/styleguide/**/*.mdx'],
       rules: {
         'gamut/no-kbd-element': 'error',
+      },
+    },
+    {
+      files: ['script/**/*.js'],
+      env: { node: true, es2020: true },
+      rules: {
+        'no-console': 'off',
+        'no-plusplus': 'off',
       },
     },
   ],

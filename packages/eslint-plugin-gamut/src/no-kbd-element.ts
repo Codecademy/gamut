@@ -18,7 +18,7 @@ export default createRule({
     docs: {
       description:
         'Intended to be used in Storybook docs to disallow use of the `kbd` HTML element in favor of the `KeyboardKey` component for styling purposes.',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     messages: {
       noKbdElement: 'Please use the `KeyboardKey` component instead.',

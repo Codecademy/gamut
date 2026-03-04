@@ -5,6 +5,7 @@ import { render } from '@testing-library/react';
 
 import { AssetProvider, createFontLinks } from '../AssetProvider';
 import { coreTheme, percipioTheme } from '../themes';
+import { clearPreloadLinks, getPreloadLinks } from './preloadLinks';
 
 const renderView = setupRtl(AssetProvider, {});
 
@@ -48,6 +49,7 @@ const mockGetFonts = require('../utils/fontUtils').getFonts;
 describe('AssetProvider', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    clearPreloadLinks();
   });
 
   describe('createFontLinks', () => {
@@ -65,8 +67,8 @@ describe('AssetProvider', () => {
         },
       ];
 
-      const { container } = render(<>{createFontLinks(fonts)}</>);
-      const links = container.querySelectorAll('link[rel="preload"]');
+      render(<>{createFontLinks(fonts)}</>);
+      const links = getPreloadLinks();
 
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
@@ -79,14 +81,14 @@ describe('AssetProvider', () => {
     });
 
     it('should handle empty fonts array', () => {
-      const { container } = render(<>{createFontLinks([])}</>);
-      const links = container.querySelectorAll('link[rel="preload"]');
+      render(<>{createFontLinks([])}</>);
+      const links = getPreloadLinks();
       expect(links).toHaveLength(0);
     });
 
     it('should handle undefined fonts parameter', () => {
-      const { container } = render(<>{createFontLinks(undefined)}</>);
-      const links = container.querySelectorAll('link[rel="preload"]');
+      render(<>{createFontLinks(undefined)}</>);
+      const links = getPreloadLinks();
       expect(links).toHaveLength(2);
     });
 
@@ -109,8 +111,8 @@ describe('AssetProvider', () => {
         },
       ];
 
-      const { container } = render(<>{createFontLinks(fonts)}</>);
-      const links = container.querySelectorAll('link[rel="preload"]');
+      render(<>{createFontLinks(fonts)}</>);
+      const links = getPreloadLinks();
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
         'href',
@@ -138,8 +140,8 @@ describe('AssetProvider', () => {
         },
       ];
 
-      const { container } = render(<>{createFontLinks(fonts)}</>);
-      const links = container.querySelectorAll('link[rel="preload"]');
+      render(<>{createFontLinks(fonts)}</>);
+      const links = getPreloadLinks();
       expect(links).toHaveLength(2);
     });
   });
@@ -154,8 +156,8 @@ describe('AssetProvider', () => {
         },
       ]);
 
-      const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      renderView();
+      const links = getPreloadLinks();
 
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
@@ -174,8 +176,8 @@ describe('AssetProvider', () => {
         },
       ]);
 
-      const { view } = renderView({ theme: percipioTheme as any });
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      renderView({ theme: percipioTheme as any });
+      const links = getPreloadLinks();
 
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
@@ -206,32 +208,32 @@ describe('AssetProvider', () => {
         throw new Error('Font loading failed');
       });
 
-      const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      renderView();
+      const links = getPreloadLinks();
       expect(links).toHaveLength(0);
     });
 
     it('should fallback to core fonts when getFonts returns undefined', () => {
       mockGetFonts.mockReturnValue(undefined);
 
-      const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      renderView();
+      const links = getPreloadLinks();
       expect(links).toHaveLength(2);
     });
 
     it('should fallback to core fonts when getFonts returns null', () => {
       mockGetFonts.mockReturnValue(null);
 
-      const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      renderView();
+      const links = getPreloadLinks();
       expect(links).toHaveLength(2);
     });
 
     it('should fallback to core fonts when getFonts returns non-array', () => {
       mockGetFonts.mockReturnValue('not-an-array');
 
-      const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      renderView();
+      const links = getPreloadLinks();
       expect(links).toHaveLength(0);
     });
 
@@ -254,8 +256,8 @@ describe('AssetProvider', () => {
         },
       ]);
 
-      const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      renderView();
+      const links = getPreloadLinks();
 
       expect(links).toHaveLength(3);
       expect(links[0]).toHaveAttribute(
@@ -291,8 +293,8 @@ describe('AssetProvider', () => {
         } as any,
       ]);
 
-      const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      renderView();
+      const links = getPreloadLinks();
 
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
@@ -320,8 +322,8 @@ describe('AssetProvider', () => {
         },
       ]);
 
-      const { view } = renderView();
-      const links = view.container.querySelectorAll('link[rel="preload"]');
+      renderView();
+      const links = getPreloadLinks();
 
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(

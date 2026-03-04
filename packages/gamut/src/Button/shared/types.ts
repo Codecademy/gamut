@@ -1,5 +1,6 @@
 import { ColorModes } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
+import type React from 'react';
 import { ComponentProps, HTMLProps } from 'react';
 
 import { ButtonBase } from '../../ButtonBase';
@@ -23,7 +24,7 @@ export type ButtonProps = ButtonBaseProps & ComponentProps<typeof ButtonBase>;
 
 export type InlineIconButtonProps<
   BaseButtonType extends
-    | keyof JSX.IntrinsicElements
+    | keyof React.JSX.IntrinsicElements
     | React.JSXElementConstructor<any>
 > = ComponentProps<BaseButtonType> &
   Partial<IconComponentType> & {
