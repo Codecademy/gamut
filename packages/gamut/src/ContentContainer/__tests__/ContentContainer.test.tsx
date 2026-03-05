@@ -10,7 +10,8 @@ describe('ContentContainer', () => {
     const { view } = renderView({ size: 'medium' });
 
     expect(
-      window.getComputedStyle(view.container.firstChild as Element).maxInlineSize
+      window.getComputedStyle(view.container.firstChild as Element)
+        .maxInlineSize
     ).toBe(contentWidths.max);
   });
 });
