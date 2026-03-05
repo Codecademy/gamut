@@ -5,7 +5,9 @@ import {
   Theme,
   ThemeProvider,
 } from '@emotion/react';
-import { useContext, useRef } from 'react';
+import { MotionConfig } from 'framer-motion';
+import { setNonce } from 'get-nonce';
+import { useContext, useEffect, useRef } from 'react';
 import * as React from 'react';
 
 import { createEmotionCache } from './cache';
@@ -36,12 +38,19 @@ export interface GamutProviderProps {
 export const GamutContext = React.createContext<{
   hasGlobals?: boolean;
   hasCache?: boolean;
+  nonce?: string;
 }>({
   hasGlobals: false,
   hasCache: false,
 });
 
 GamutContext.displayName = 'GamutContext';
+
+/**
+ * Returns the CSP nonce passed to GamutProvider, if any.
+ */
+export const useNonce = (): string | undefined =>
+  useContext(GamutContext).nonce;
 
 export const GamutProvider: React.FC<GamutProviderProps> = ({
   children,
@@ -57,6 +66,13 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   const shouldCreateCache = useCache && !hasCache;
   const shouldInsertGlobals = useGlobals && !hasGlobals;
 
+  // Feed nonce to get-nonce singleton so react-style-singleton (e.g. via react-aria-components) can set it on injected style tags for CSP
+  useEffect(() => {
+    if (nonce) {
+      setNonce(nonce);
+    }
+  }, [nonce]);
+
   // Do not initialize a new cache if one has been provided as props
   const activeCache = useRef<EmotionCache | false>(
     shouldCreateCache && (cache ?? createEmotionCache(nonce ? { nonce } : {}))
@@ -66,6 +82,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     hasGlobals: shouldInsertGlobals,
     hasCache: shouldCreateCache,
     useLogicalProperties,
+    nonce,
   };
 
   const globals = shouldInsertGlobals && (
@@ -82,6 +99,11 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     ...theme,
     useLogicalProperties,
   };
+  const content = (
+    <ThemeProvider theme={theme}>
+      {nonce ? <MotionConfig nonce={nonce}>{children}</MotionConfig> : children}
+    </ThemeProvider>
+  );
 
   if (activeCache.current) {
     return (
@@ -91,6 +113,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
           <ThemeProvider theme={themeWithLogicalProperties}>
             {children}
           </ThemeProvider>
+          {content}
         </CacheProvider>
       </GamutContext.Provider>
     );
@@ -99,9 +122,13 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   return (
     <GamutContext.Provider value={contextValue}>
       {globals}
+<<<<<<< HEAD
       <ThemeProvider theme={themeWithLogicalProperties}>
         {children}
       </ThemeProvider>
+=======
+      {content}
+>>>>>>> main
     </GamutContext.Provider>
   );
 };
