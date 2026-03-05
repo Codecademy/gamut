@@ -1,8 +1,9 @@
-import { Meta } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 
 import { AboutHeader, TokenTable } from '~styleguide/blocks';
 
 import { defaultColumns, getPropRows } from '../../shared/elements';
+import * as LayoutStories from './Layout.stories';
 
 export const parameters = {
   title: 'Layout',
@@ -11,7 +12,7 @@ export const parameters = {
   status: 'updating',
 };
 
-<Meta title="Foundations/System/Props/Layout" />
+<Meta title="Foundations/System/Props/Layout" of={LayoutStories} />
 
 <AboutHeader {...parameters} />
 
@@ -30,5 +31,15 @@ const LayoutExample = styled.div(system.layout);
   verticalAlign="middle"
 />;
 ```
+
+## Examples
+
+### Width
+
+<Canvas of={LayoutStories.WidthExample} />
+
+### Direction
+
+<Canvas of={LayoutStories.DirectionExample} />
 
 <TokenTable rows={getPropRows('layout')} columns={defaultColumns} />

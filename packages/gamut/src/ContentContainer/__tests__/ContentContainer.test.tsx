@@ -6,11 +6,12 @@ import { ContentContainer } from '..';
 const renderView = setupRtl(ContentContainer);
 
 describe('ContentContainer', () => {
-  it('has maxWidth of contentWidths.max when size is medium', () => {
+  it('has maxInlineSize of contentWidths.max when size is medium', () => {
     const { view } = renderView({ size: 'medium' });
 
-    expect(view.container.firstChild).toHaveStyle(
-      `maxWidth: ${contentWidths.max}`
-    );
+    expect(
+      window.getComputedStyle(view.container.firstChild as Element)
+        .maxInlineSize
+    ).toBe(contentWidths.max);
   });
 });
