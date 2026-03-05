@@ -122,13 +122,10 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   return (
     <GamutContext.Provider value={contextValue}>
       {globals}
-<<<<<<< HEAD
       <ThemeProvider theme={themeWithLogicalProperties}>
         {children}
       </ThemeProvider>
-=======
       {content}
->>>>>>> main
     </GamutContext.Provider>
   );
 };
