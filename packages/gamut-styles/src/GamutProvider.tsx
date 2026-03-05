@@ -100,7 +100,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     useLogicalProperties,
   };
   const content = (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeWithLogicalProperties}>
       {nonce ? <MotionConfig nonce={nonce}>{children}</MotionConfig> : children}
     </ThemeProvider>
   );
@@ -110,9 +110,6 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
       <GamutContext.Provider value={contextValue}>
         <CacheProvider value={activeCache.current}>
           {globals}
-          <ThemeProvider theme={themeWithLogicalProperties}>
-            {children}
-          </ThemeProvider>
           {content}
         </CacheProvider>
       </GamutContext.Provider>
@@ -122,9 +119,6 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   return (
     <GamutContext.Provider value={contextValue}>
       {globals}
-      <ThemeProvider theme={themeWithLogicalProperties}>
-        {children}
-      </ThemeProvider>
       {content}
     </GamutContext.Provider>
   );
