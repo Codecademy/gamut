@@ -66,7 +66,9 @@ export function useDatePicker(
     }
   }, [formattedValue]);
 
-  const openCalendar = useCallback(() => setIsCalendarOpen(true), []);
+  const openCalendar = useCallback(() => {
+    setIsCalendarOpen(true);
+  }, []);
   const closeCalendar = useCallback(() => {
     setIsCalendarOpen(false);
     inputRef.current?.focus();

@@ -1,5 +1,3 @@
-import { useRef } from 'react';
-
 import { Box } from '../Box';
 import { PopoverContainer } from '../PopoverContainer';
 import { DatePickerCalendar } from './DatePickerCalendar';
@@ -27,7 +25,6 @@ export function DatePicker({
     inputProps: rawInputProps,
     calendarProps,
     isCalendarOpen,
-    openCalendar,
     closeCalendar,
     calendarDialogId,
   } = useDatePicker({
@@ -37,7 +34,6 @@ export function DatePicker({
     disabledDates,
   });
 
-  const containerRef = useRef<HTMLDivElement>(null);
   const { inputRef, ...restInputProps } = rawInputProps;
 
   const inputProps = {
@@ -53,17 +49,7 @@ export function DatePicker({
 
   return (
     <>
-      <Box
-        ref={containerRef}
-        onClick={openCalendar}
-        onKeyDown={(e) => {
-          if (e.key === 'ArrowDown' || e.key === 'Down') {
-            e.preventDefault();
-            openCalendar();
-          }
-        }}
-        width="fit-content"
-      >
+      <Box width="fit-content">
         <DatePickerInput {...inputProps} ref={inputRef} />
       </Box>
       <PopoverContainer
@@ -73,7 +59,7 @@ export function DatePicker({
         allowPageInteraction
         isOpen={isCalendarOpen}
         onRequestClose={closeCalendar}
-        targetRef={containerRef}
+        targetRef={inputRef}
       >
         <div aria-label="Choose date" id={calendarDialogId} role="dialog">
           <DatePickerCalendar {...calendarProps} dialogId={calendarDialogId} />
