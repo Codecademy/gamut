@@ -1,8 +1,9 @@
-import { Meta } from '@storybook/blocks';
+import { Canvas, Meta } from '@storybook/blocks';
 
 import { AboutHeader, TokenTable } from '~styleguide/blocks';
 
 import { defaultColumns, getPropRows } from '../../shared/elements';
+import * as PositioningStories from './Positioning.stories';
 
 export const parameters = {
   title: 'Positioning',
@@ -11,7 +12,7 @@ export const parameters = {
   status: 'updating',
 };
 
-<Meta title="Foundations/System/Props/Positioning" />
+<Meta title="Foundations/System/Props/Positioning" of={PositioningStories} />
 
 <AboutHeader {...parameters} />
 
@@ -25,5 +26,9 @@ const PositioningExample = styled.div(system.positioning);
 
 <PositioningExample position="absolute" zIndex={2} top="0" left="0" />;
 ```
+
+These positioning props support both physical and logical CSS properties and will render the appropriate properties based on `useLogicalProperties`'s value passed into the `<GamutProvider>` at the root of your application.
+
+<Canvas of={PositioningStories.PositionExample} />
 
 <TokenTable rows={getPropRows('positioning')} columns={defaultColumns} />
