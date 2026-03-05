@@ -6,15 +6,11 @@ import { ContentContainer } from '..';
 const renderView = setupRtl(ContentContainer);
 
 describe('ContentContainer', () => {
-  // Note: Only testing one mode here since variant() caches styles after first render.
   it('has maxInlineSize of contentWidths.max when size is medium', () => {
-    const useLogicalProperties = true;
-    const maxWidthProp = useLogicalProperties ? 'maxInlineSize' : 'maxWidth';
-
     const { view } = renderView({ size: 'medium' });
 
-    expect(view.container.firstChild).toHaveStyle(
-      `${maxWidthProp}: ${contentWidths.max}`
-    );
+    expect(
+      window.getComputedStyle(view.container.firstChild as Element).maxInlineSize
+    ).toBe(contentWidths.max);
   });
 });
