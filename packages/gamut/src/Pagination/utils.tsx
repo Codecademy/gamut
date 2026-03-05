@@ -72,7 +72,7 @@ export const wrapWithSlideAnimation = (
             animate={props.showButton}
             exit="hidden"
             initial={
-              props.direction === 'forward' && isFirstRender.current
+              props.buttonDirection === 'forward' && isFirstRender.current
                 ? 'shown'
                 : 'hidden'
             }

@@ -39,7 +39,6 @@ export type PaginationButtonProps = ComponentProps<
 export const PaginationButton = forwardRef<
   ButtonBaseElements,
   PaginationButtonProps
-  // eslint-disable-next-line react/prop-types
 >(
   (
     {

@@ -12,7 +12,7 @@ export const parameters = {
   status: 'updating',
 };
 
-<Meta title="Foundations/System/Props/Layout" />
+<Meta title="Foundations/System/Props/Layout" of={LayoutStories} />
 
 <AboutHeader {...parameters} />
 
@@ -41,5 +41,15 @@ const LayoutExample = styled.div(system.layout);
   verticalAlign="middle"
 />;
 ```
+
+## Examples
+
+### Width
+
+<Canvas of={LayoutStories.WidthExample} />
+
+### Direction
+
+<Canvas of={LayoutStories.DirectionExample} />
 
 <TokenTable rows={getPropRows('layout')} columns={defaultColumns} />
