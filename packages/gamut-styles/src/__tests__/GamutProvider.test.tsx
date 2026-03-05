@@ -62,7 +62,7 @@ describe(GamutProvider, () => {
       ),
     });
 
-    screen.getByText(JSON.stringify(theme));
+    screen.getByText(JSON.stringify({ ...theme, useLogicalProperties: true }));
   });
   it('it can have another GamutProvider as a child with creating multiple caches or globals', () => {
     renderView({

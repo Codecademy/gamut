@@ -6,13 +6,19 @@ import {
 import overArgs from 'lodash/overArgs';
 import * as React from 'react';
 
-// See https://www.notion.so/codecademy/Frontend-Unit-Tests-1cbf4e078a6647559b4583dfb6d3cb18 for more info
+// See https://skillsoftdev.atlassian.net/wiki/spaces/779a16d9c7ea452eab11b39cbbe771ce/pages/4441315387/Frontend+Unit+Tests for more info
 
-export const MockGamutProvider: React.FC<{ children?: React.ReactNode }> = ({
-  children,
-}) => {
+export const MockGamutProvider: React.FC<{
+  children?: React.ReactNode;
+  useLogicalProperties?: boolean;
+}> = ({ children, useLogicalProperties }) => {
   return (
-    <GamutProvider theme={theme} useCache={false} useGlobals={false}>
+    <GamutProvider
+      theme={theme}
+      useCache={false}
+      useGlobals={false}
+      useLogicalProperties={useLogicalProperties}
+    >
       {children}
     </GamutProvider>
   );

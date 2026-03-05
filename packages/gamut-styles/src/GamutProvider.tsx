@@ -29,6 +29,10 @@ export interface GamutProviderProps {
    * Pass a nonce to the cache to prevent CSP errors
    */
   nonce?: string;
+  /**
+   * Whether to use logical properties for the theme
+   */
+  useLogicalProperties?: boolean;
 }
 
 export const GamutContext = React.createContext<{
@@ -56,6 +60,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   useGlobals = true,
   useCache = true,
   nonce,
+  useLogicalProperties = true,
 }) => {
   const { hasGlobals, hasCache } = useContext(GamutContext);
   const shouldCreateCache = useCache && !hasCache;
@@ -76,6 +81,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   const contextValue = {
     hasGlobals: shouldInsertGlobals,
     hasCache: shouldCreateCache,
+    useLogicalProperties,
     nonce,
   };
 
@@ -88,8 +94,13 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     </>
   );
 
+  // Merge useLogicalProperties into theme so variance can access it via props.theme
+  const themeWithLogicalProperties = {
+    ...theme,
+    useLogicalProperties,
+  };
   const content = (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeWithLogicalProperties}>
       {nonce ? <MotionConfig nonce={nonce}>{children}</MotionConfig> : children}
     </ThemeProvider>
   );

@@ -52,6 +52,9 @@ export const DocsContainer: React.FC<{
 
   const globalTheme =
     (context as any).store.userGlobals?.globals?.theme || 'core';
+  const globalLogicalProps = (context as any).store.userGlobals?.globals
+    ?.logicalProps;
+  const useLogicalProperties = globalLogicalProps !== 'false';
 
   const { currentTheme } = useMemo(() => {
     const findThemeStory: keyof typeof themeSpecificStories | undefined =
@@ -77,6 +80,7 @@ export const DocsContainer: React.FC<{
         cache={createEmotionCache({ speedy: false })}
         // This is typed to the CoreTheme in theme.d.ts
         theme={currentTheme as unknown as CoreTheme}
+        useLogicalProperties={useLogicalProperties}
       >
         <ColorMode mode="light">
           <HelmetProvider>

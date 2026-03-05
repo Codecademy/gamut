@@ -1,0 +1,139 @@
+import { Meta } from '@storybook/blocks';
+
+import {
+  AboutHeader,
+  Callout,
+  Code,
+  ImageWrapper,
+  TokenTable,
+} from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Meta/Logical and physical CSS properties',
+  title: 'Logical and physical CSS properties',
+  subtitle:
+    'Understanding CSS logical and physical properties and how Gamut supports both modes.',
+  status: 'static',
+};
+
+<Meta title="Meta/Logical and physical CSS properties" />
+
+<AboutHeader {...parameters} />
+
+## What are CSS logical properties?
+
+CSS logical properties are a modern approach to styling that adapts to the writing mode and text direction of your content, rather than being tied to physical screen directions. More information can be found on [MDN: CSS Logical Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values)
+
+### Physical Properties (Traditional)
+
+Physical properties reference the physical dimensions of the viewport. For example:
+
+- `margin-left`, `margin-right`, `margin-top`, `margin-bottom`
+- `padding-left`, `padding-right`, `padding-top`, `padding-bottom`
+
+These work well for left-to-right (LTR) languages but require manual overrides for right-to-left (RTL) languages like Arabic or Hebrew.
+
+### Logical Properties (Modern)
+
+Logical properties reference the flow of content:
+
+- **Inline axis** (text direction): `margin-inline-start`, `margin-inline-end`
+- **Block axis** (reading direction): `margin-block-start`, `margin-block-end`
+
+## Using `useLogicalProperties` in Gamut
+
+Gamut supports both physical and logical CSS properties through the `useLogicalProperties` prop on `GamutProvider`. This allows you to choose which mode your application uses. By default, `useLogicalProperties` is set to `true`, meaning Gamut will use logical CSS properties. If you want to use physical CSS properties, you have to set `useLogicalProperties` to `false`.
+
+### Affected Props
+
+When `useLogicalProperties` is enabled, Gamut replaces physical CSS properties with their logical equivalents. This applies to both **base properties** (like `marginLeft`, `width`) and **shorthand props** (like `mx`, `py`).
+
+The table below shows a few examples — this is not a comprehensive list.
+
+<TokenTable
+  idKey="prop"
+  columns={[
+    {
+      key: 'prop',
+      name: 'Prop',
+      size: 'sm',
+      render: ({ prop }) => <Code>{prop}</Code>,
+    },
+    {
+      key: 'physical',
+      name: 'Physical CSS',
+      size: 'xl',
+      render: ({ physical }) =>
+        physical.map((p) => (
+          <>
+            <Code key={p}>{p}</Code>{' '}
+          </>
+        )),
+    },
+    {
+      key: 'logical',
+      name: 'Logical CSS',
+      size: 'xl',
+      render: ({ logical }) =>
+        logical.map((l) => (
+          <>
+            <Code key={l}>{l}</Code>{' '}
+          </>
+        )),
+    },
+  ]}
+  rows={[
+    {
+      prop: 'marginLeft',
+      physical: ['margin-left'],
+      logical: ['margin-inline-start'],
+    },
+    {
+      prop: 'mx',
+      physical: ['margin-left', 'margin-right'],
+      logical: ['margin-inline-start', 'margin-inline-end'],
+    },
+    {
+      prop: 'paddingTop',
+      physical: ['padding-top'],
+      logical: ['padding-block-start'],
+    },
+    {
+      prop: 'py',
+      physical: ['padding-top', 'padding-bottom'],
+      logical: ['padding-block-start', 'padding-block-end'],
+    },
+    {
+      prop: 'width',
+      physical: ['width'],
+      logical: ['inline-size'],
+    },
+    {
+      prop: 'height',
+      physical: ['height'],
+      logical: ['block-size'],
+    },
+  ]}
+/>
+
+<Callout
+  text={
+    <>
+      Props like <code>m</code> and <code>p</code> (which set all four sides at
+      once) are not affected by this setting, as the CSS <code>margin</code> and{' '}
+      <code>padding</code> shorthands work identically in both modes.
+    </>
+  }
+/>
+
+## Previewing in Storybook
+
+You can toggle between logical and physical properties in Storybook using the **LogicalProps** toolbar button:
+
+<ImageWrapper
+  src="./meta/toolbar.png"
+  alt="The Storybook toolbar with the LogicalProps toggle highlighted."
+  height="auto"
+/>
+
+This allows you to preview how components render with either property mode without changing any code.

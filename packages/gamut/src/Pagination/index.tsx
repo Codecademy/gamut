@@ -159,8 +159,8 @@ export const Pagination: React.FC<PaginationProps> = ({
         <>
           <AnimatedSlideButton
             aria-label="Jump back to page 1"
+            buttonDirection="back"
             buttonType={variant}
-            direction="back"
             display={hideOnMobile}
             href={navigation}
             showButton={shownPageArray[0] === 1 ? 'hidden' : 'shown'}
@@ -170,8 +170,8 @@ export const Pagination: React.FC<PaginationProps> = ({
           </AnimatedSlideButton>
           <EllipsisButton
             aria-label={`Jump back to page ${backPageNumber}`}
+            buttonDirection="back"
             buttonType={variant}
-            direction="back"
             display={hideOnMobile}
             href={navigation}
             showButton={shownPageArray[0] === 1 ? 'hidden' : 'shown'}
@@ -196,8 +196,8 @@ export const Pagination: React.FC<PaginationProps> = ({
         <>
           <EllipsisButton
             aria-label={`Jump forward to page ${forwardPageNumber}`}
+            buttonDirection="forward"
             buttonType={variant}
-            direction="forward"
             display={hideOnMobile}
             href={navigation}
             showButton={
@@ -211,8 +211,8 @@ export const Pagination: React.FC<PaginationProps> = ({
           />
           <AnimatedSlideButton
             aria-label={`Jump forward to last page, page ${totalPages}`}
+            buttonDirection="forward"
             buttonType={variant}
-            direction="forward"
             display={hideOnMobile}
             href={navigation}
             showButton={
