@@ -7,6 +7,8 @@ import {
   PopoverProps,
 } from '@codecademy/gamut';
 import * as patterns from '@codecademy/gamut-patterns';
+import { theme } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useRef, useState } from 'react';
 
@@ -31,13 +33,23 @@ const PopoverExample = ({ p = 16, ...rest }: PopoverExampleProps) => {
   const [open, setOpen] = useState(false);
   const activeElRef = useRef<HTMLDivElement>(null);
   const toggleOpen = () => setOpen(!open);
+
+  const PopoverWithClearBeak = styled(Popover)`
+    & [data-testid='popover-beak'] {
+      background: linear-gradient(
+        to top left,
+        ${theme.colors['background-current']} 50%,
+        transparent 50%
+      );
+    }
+  `;
   return (
     <>
       <Box ref={activeElRef} width="fit-content">
         <FillButton onClick={toggleOpen}>Open Popover</FillButton>
       </Box>
       <FlexBox>
-        <Popover
+        <PopoverWithClearBeak
           {...(rest as any)}
           isOpen={open}
           targetRef={activeElRef}
@@ -49,10 +61,35 @@ const PopoverExample = ({ p = 16, ...rest }: PopoverExampleProps) => {
               Close Popover
             </FillButton>
           </FlexBox>
-        </Popover>
+        </PopoverWithClearBeak>
       </FlexBox>
     </>
   );
+};
+
+export const ClearBeakExample: Story = {
+  render: (args) => (
+    <FlexBox gap={16}>
+      <PopoverExample {...args} beak="center" p={0} />
+      <PopoverExample {...args} beak="center" p={0} position="above" />
+      <PopoverExample
+        {...args}
+        align="right"
+        beak="center"
+        p={0}
+        pattern={undefined}
+        position="center"
+      />
+      <PopoverExample
+        {...args}
+        align="left"
+        beak="center"
+        p={0}
+        pattern={undefined}
+        position="center"
+      />
+    </FlexBox>
+  ),
 };
 
 export const Default: Story = {
