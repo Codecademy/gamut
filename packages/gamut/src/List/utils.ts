@@ -13,6 +13,8 @@ export const markEdgeCols = (children: ReactNode): ReactNode => {
     const props: Record<string, boolean> = {};
     if (i === 0) props['data-first-col'] = true;
     if (i === lastIdx) props['data-last-col'] = true;
-    return Object.keys(props).length ? cloneElement(child, props as object) : child;
+    return Object.keys(props).length
+      ? cloneElement(child, props as object)
+      : child;
   });
 };
