@@ -387,7 +387,7 @@ const columnStates = states({
    * In that case, the padding is instead added directly to the Expandable control.
    */
   lastChildPadding: {
-    '&:last-of-type': {
+    '&[data-last-col]': {
       pr: 8,
     },
   },
@@ -407,7 +407,7 @@ const columnSpacing = variant({
   prop: 'spacing',
   base: {
     px: { _: 0, c_base: 8, c_sm: 0 },
-    '&:first-of-type': {
+    '&[data-first-col]': {
       pl: 8,
     },
   },

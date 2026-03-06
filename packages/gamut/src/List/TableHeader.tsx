@@ -4,6 +4,7 @@ import { Box } from '../Box';
 import { HeaderRowEl } from './elements';
 import { useListContext } from './ListProvider';
 import { PublicListProps } from './types';
+import { markEdgeCols } from './utils';
 
 export interface TableHeaderProps
   extends Partial<PublicListProps<ComponentProps<typeof HeaderRowEl>>> {}
@@ -20,7 +21,7 @@ export const TableHeader = forwardRef<HTMLTableRowElement, TableHeaderProps>(
           spacing={spacing}
           variant={variant}
         >
-          {children}
+          {markEdgeCols(children)}
         </HeaderRowEl>
       </Box>
     );

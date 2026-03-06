@@ -43,67 +43,70 @@ export const TableHeaderRow: HeaderComponent = ({
       invisible={invisible}
       isDataList={listType === 'table' && variant !== 'table'}
     >
-      <>
-        {selectable && (
-          <ListCol size="content">
-            {!hideSelectAll && (
-              <SelectControl
-                disabled={empty}
-                label="Select All"
-                name={prefixId('all')}
-                rowId="header"
-                selected={selected}
-                onSelect={onSelect}
-              />
-            )}
-          </ListCol>
-        )}
-        {columns.map(({ key, header, sortable, filters, ...colProps }) => {
-          const rowProperty = key as string;
-          const renderKey = prefixId(`header-col-${rowProperty}`);
-          const columnText = String(header || key);
-          const sortDirection = headerRowDirections?.[rowProperty] ?? 'none';
-          const ariaSortDirection =
-            sortDirection === 'none'
-              ? 'none'
-              : sortDirection === 'asc'
-              ? 'ascending'
-              : 'descending';
+      {selectable && (
+        <ListCol size="content">
+          {!hideSelectAll && (
+            <SelectControl
+              disabled={empty}
+              label="Select All"
+              name={prefixId('all')}
+              rowId="header"
+              selected={selected}
+              onSelect={onSelect}
+            />
+          )}
+        </ListCol>
+      )}
+      {columns.map(({ key, header, sortable, filters, ...colProps }) => {
+        const rowProperty = key as string;
+        const renderKey = prefixId(`header-col-${rowProperty}`);
+        const columnText = String(header || key);
+        const sortDirection = headerRowDirections?.[rowProperty] ?? 'none';
+        const ariaSortDirection =
+          sortDirection === 'none'
+            ? 'none'
+            : sortDirection === 'asc'
+            ? 'ascending'
+            : 'descending';
 
-          return (
-            <ListCol
-              key={renderKey}
-              {...colProps}
-              aria-sort={sortable ? ariaSortDirection : undefined}
-              columnHeader
-              dataTablePadding={dataTablePadding}
+        return (
+          <ListCol
+            key={renderKey}
+            {...colProps}
+            aria-sort={sortable ? ariaSortDirection : undefined}
+            columnHeader
+            dataTablePadding={dataTablePadding}
+          >
+            <FlexBox
+              alignItems={selectable ? 'center' : 'flex-end'}
+              gap={8}
+              height="100%"
+              width="100%"
             >
-              <FlexBox alignItems="flex-end" gap={8} height="100%" width="100%">
-                {filters && (
-                  <FilterControl
-                    columnKey={rowProperty}
-                    justify={colProps.justify}
-                    options={filters}
-                    onFilter={onFilter}
-                  />
-                )}
-                {sortable ? (
-                  <SortControl columnKey={rowProperty} onSort={onSort}>
-                    {columnText}
-                  </SortControl>
-                ) : (
-                  columnText
-                )}
-              </FlexBox>
-            </ListCol>
-          );
-        })}
-        {expandable && (
-          <ListCol ghost size="content">
-            <ExpandControl />
+              {filters && (
+                <FilterControl
+                  columnKey={rowProperty}
+                  justify={colProps.justify}
+                  options={filters}
+                  onFilter={onFilter}
+                />
+              )}
+              {sortable ? (
+                <SortControl columnKey={rowProperty} onSort={onSort}>
+                  {columnText}
+                </SortControl>
+              ) : (
+                columnText
+              )}
+            </FlexBox>
           </ListCol>
-        )}
-      </>
+        );
+      })}
+      {expandable && (
+        <ListCol ghost size="content">
+          <ExpandControl />
+        </ListCol>
+      )}
     </StyledHeaderRow>
   );
 };
