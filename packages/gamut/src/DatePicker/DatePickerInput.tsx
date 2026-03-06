@@ -6,7 +6,7 @@ import {
   formatDateForInput,
   parseDateFromInput,
 } from './Calendar/utils/format';
-import { useDatePickerContext } from './DatePickerContext';
+import { useDatePicker } from './DatePickerContext';
 
 /**
  * Props for DatePickerInput. When used inside DatePicker, only overrides (e.g. placeholder, label).
@@ -26,7 +26,7 @@ export const DatePickerInput = forwardRef<
   HTMLInputElement,
   DatePickerInputProps
 >((props, ref) => {
-  const context = useDatePickerContext();
+  const context = useDatePicker();
   if (context == null) {
     return (
       <Input

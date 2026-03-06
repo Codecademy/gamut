@@ -6,7 +6,7 @@ import {
   CalendarFooter,
   CalendarHeader,
 } from './Calendar';
-import { useDatePickerContext } from './DatePickerContext';
+import { useDatePicker } from './DatePickerContext';
 
 export type DatePickerCalendarProps = {
   /** Optional id for the dialog (for aria-controls from input). */
@@ -22,7 +22,7 @@ export type DatePickerCalendarProps = {
  * all props from parent (standalone mode).
  */
 export function DatePickerCalendar(props: DatePickerCalendarProps) {
-  const context = useDatePickerContext();
+  const context = useDatePicker();
   const generatedId = useId();
   const fallbackDialogId = `datepicker-calendar-${generatedId.replace(
     /:/g,
@@ -37,12 +37,7 @@ export function DatePickerCalendar(props: DatePickerCalendarProps) {
     );
   }
 
-  const {
-    selectedDate,
-    setSelectedDate,
-    disabledDates,
-    locale,
-  } = context;
+  const { selectedDate, setSelectedDate, disabledDates, locale } = context;
 
   const firstOfMonth = (d: Date) => new Date(d.getFullYear(), d.getMonth(), 1);
 
