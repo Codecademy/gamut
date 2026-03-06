@@ -1,12 +1,16 @@
 import { CalendarIcon } from '@codecademy/gamut-icons';
-import { ComponentProps, forwardRef } from 'react';
+import { ComponentProps, forwardRef, useEffect, useRef, useState } from 'react';
 
 import { Input } from '../Form/inputs/Input';
+import {
+  formatDateForInput,
+  parseDateFromInput,
+} from './Calendar/utils/format';
+import { useDatePickerContext } from './DatePickerContext';
 
 /**
- * Props for DatePickerInput. Extends all Input props except `type` and `icon`,
- * which are fixed: the input is always type="text" (for formatted date display)
- * and shows CalendarIcon.
+ * Props for DatePickerInput. When used inside DatePicker, only overrides (e.g. placeholder, label).
+ * When used outside DatePicker, pass value, onChange, and other input props.
  */
 export type DatePickerInputProps = Omit<
   ComponentProps<typeof Input>,
@@ -14,17 +18,118 @@ export type DatePickerInputProps = Omit<
 >;
 
 /**
- * A controlled, presentational date input. Wraps the form Input with type="text"
- * and CalendarIcon. The parent (or useDatePicker) is responsible for formatting
- * the date value for display and parsing manual entry.
- *
- * Use for single-date (pass value/onChange for one date) or as the start/end
- * field in range mode (two instances with distinct labels, e.g. "Start date" / "End date").
+ * Date input. When inside DatePicker: owns local input value state and syncs to
+ * shared selectedDate via context on blur/parse; opens calendar on click/arrow down.
+ * When outside DatePicker: fully controlled by props.
  */
-export const DatePickerInput = forwardRef<HTMLInputElement, DatePickerInputProps>(
-  (props, ref) => {
-    return <Input {...props} ref={ref} type="text" icon={CalendarIcon} />;
+export const DatePickerInput = forwardRef<
+  HTMLInputElement,
+  DatePickerInputProps
+>((props, ref) => {
+  const context = useDatePickerContext();
+  if (context == null) {
+    return (
+      <Input
+        {...props}
+        ref={ref}
+        type="text"
+        icon={CalendarIcon}
+        placeholder={props.placeholder ?? 'MM/DD/YYYY'}
+      />
+    );
   }
-);
 
-DatePickerInput.displayName = 'DatePickerInput';
+  const {
+    selectedDate,
+    setSelectedDate,
+    openCalendar,
+    inputRef,
+    locale,
+    isCalendarOpen,
+    calendarDialogId,
+  } = context;
+
+  const [inputValue, setInputValue] = useState(() =>
+    selectedDate ? formatDateForInput(selectedDate, locale) : ''
+  );
+  const isInputFocusedRef = useRef(false);
+
+  const formattedValue = selectedDate
+    ? formatDateForInput(selectedDate, locale)
+    : '';
+
+  // Sync input from shared selectedDate (e.g. after calendar select). Skip when
+  // input is focused so we don't overwrite while the user is typing.
+  useEffect(() => {
+    if (!isInputFocusedRef.current) {
+      setInputValue(formattedValue);
+    }
+  }, [formattedValue]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+    setInputValue(raw);
+    if (!raw.trim()) {
+      setSelectedDate(null);
+      return;
+    }
+    const parsed = parseDateFromInput(raw, locale);
+    if (parsed) setSelectedDate(parsed);
+  };
+
+  const handleBlur = () => {
+    isInputFocusedRef.current = false;
+    const trimmed = inputValue.trim();
+    if (!trimmed) {
+      setSelectedDate(null);
+      return;
+    }
+    const parsed = parseDateFromInput(trimmed, locale);
+    if (parsed) {
+      setSelectedDate(parsed);
+      setInputValue(formatDateForInput(parsed, locale));
+    } else {
+      setInputValue(formattedValue);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'ArrowDown' || e.key === 'Down') {
+      e.preventDefault();
+      openCalendar();
+    }
+  };
+
+  // what is this doing?
+  // forwarded ref vs context inputRef?
+  const setRef = (el: HTMLInputElement | null) => {
+    (inputRef as React.MutableRefObject<HTMLInputElement | null>).current = el;
+    if (typeof ref === 'function') ref(el);
+    else if (ref)
+      (ref as React.MutableRefObject<HTMLInputElement | null>).current = el;
+  };
+
+  return (
+    <Input
+      {...props}
+      ref={setRef}
+      type="text"
+      icon={CalendarIcon}
+      value={inputValue}
+      onChange={handleChange}
+      onFocus={() => {
+        isInputFocusedRef.current = true;
+      }}
+      onBlur={handleBlur}
+      onKeyDown={handleKeyDown}
+      onClick={openCalendar}
+      role="combobox"
+      aria-expanded={isCalendarOpen}
+      aria-controls={calendarDialogId}
+      aria-haspopup="dialog"
+      aria-autocomplete="none"
+      placeholder={props.placeholder ?? 'MM/DD/YYYY'}
+      label={props.label ?? 'Date'}
+    />
+  );
+});

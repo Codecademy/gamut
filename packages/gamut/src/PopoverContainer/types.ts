@@ -92,4 +92,9 @@ export interface PopoverContainerProps
    * Defaults to false.
    */
   closeOnViewportExit?: boolean;
+  /**
+   * Optional props passed to the internal FocusTrap (react-focus-on).
+   * Use e.g. { autoFocus: false, focusLock: false } to keep focus on the trigger when the popover opens.
+   */
+  focusOnProps?: Partial<import('../FocusTrap').FocusTrapProps['focusOnProps']>;
 }

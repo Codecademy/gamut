@@ -38,6 +38,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   targetRef,
   allowPageInteraction,
   closeOnViewportExit = false,
+  focusOnProps,
   ...rest
 }) => {
   const popoverRef = useRef<HTMLDivElement>(null);
@@ -221,6 +222,7 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
       allowPageInteraction={inline || allowPageInteraction}
       onClickOutside={handleClickOutside}
       onEscapeKey={onRequestClose}
+      focusOnProps={focusOnProps}
     >
       <PopoverContent
         data-floating="popover"
