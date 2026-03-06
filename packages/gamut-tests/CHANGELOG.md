@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.2.22](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.2.21...@codecademy/gamut-tests@5.2.22) (2026-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-tests
+
 ### [5.2.21](https://github.com/Codecademy/gamut/compare/@codecademy/gamut-tests@5.2.20...@codecademy/gamut-tests@5.2.21) (2026-03-02)
 
 **Note:** Version bump only for package @codecademy/gamut-tests
