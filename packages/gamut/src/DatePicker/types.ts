@@ -39,7 +39,6 @@ export interface DatePickerContextValue {
   isCalendarOpen: boolean;
   openCalendar: () => void;
   closeCalendar: () => void;
-  inputRef: React.RefObject<HTMLInputElement | null>;
   locale: string;
   disabledDates: Date[];
   calendarDialogId: string;

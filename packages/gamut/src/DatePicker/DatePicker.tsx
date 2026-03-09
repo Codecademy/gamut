@@ -49,7 +49,6 @@ export function DatePicker({
       isCalendarOpen,
       openCalendar,
       closeCalendar,
-      inputRef,
       locale,
       disabledDates,
       calendarDialogId, // do we need this in context? or just pass it as props? does that defeat the purpose of the context?
@@ -82,7 +81,7 @@ export function DatePicker({
             placeholder={placeholder}
             label={label}
             id={id}
-            // ref={inputRef}
+            ref={inputRef}
           />
         </Box>
         <PopoverContainer

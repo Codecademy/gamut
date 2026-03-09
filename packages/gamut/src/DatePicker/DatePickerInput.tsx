@@ -43,7 +43,6 @@ export const DatePickerInput = forwardRef<
     selectedDate,
     setSelectedDate,
     openCalendar,
-    inputRef,
     locale,
     isCalendarOpen,
     calendarDialogId,
@@ -100,19 +99,10 @@ export const DatePickerInput = forwardRef<
     }
   };
 
-  // what is this doing?
-  // forwarded ref vs context inputRef?
-  const setRef = (el: HTMLInputElement | null) => {
-    (inputRef as React.MutableRefObject<HTMLInputElement | null>).current = el;
-    if (typeof ref === 'function') ref(el);
-    else if (ref)
-      (ref as React.MutableRefObject<HTMLInputElement | null>).current = el;
-  };
-
   return (
     <Input
       {...props}
-      ref={setRef}
+      ref={ref}
       type="text"
       icon={CalendarIcon}
       value={inputValue}
