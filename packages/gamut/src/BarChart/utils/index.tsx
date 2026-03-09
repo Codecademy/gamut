@@ -5,16 +5,6 @@ export const numDigits = ({ num }: { num: number }) => {
   return Math.max(Math.floor(Math.log10(Math.abs(num))), 0) + 1;
 };
 
-export const columnBaseSize = ({ experience = 3 }: { experience?: number }) => {
-  const digits = numDigits({ num: experience });
-  return {
-    sm: digits > 4 ? 5 : 4,
-    md: digits > 4 ? 5 : 4,
-    lg: digits > 4 ? 4 : 5,
-    xl: digits > 4 ? 5 : 4,
-  };
-};
-
 export const calculatePercent = ({
   value,
   total,
