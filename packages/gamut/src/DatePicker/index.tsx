@@ -5,13 +5,12 @@ export { DatePicker } from './DatePicker';
 export {
   DatePickerContext,
   DatePickerProvider,
-  useDatePickerContext,
+  useDatePicker,
 } from './DatePickerContext';
 export { DatePickerCalendar } from './DatePickerCalendar';
 export type { DatePickerCalendarProps } from './DatePickerCalendar';
 export { DatePickerInput } from './DatePickerInput';
 export type { DatePickerInputProps } from './DatePickerInput';
-export { useDatePicker } from './useDatePicker';
 export type {
   DatePickerContextValue,
   DatePickerProps,
