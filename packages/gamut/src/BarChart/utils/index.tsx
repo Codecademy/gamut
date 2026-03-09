@@ -141,7 +141,7 @@ export const sortBars = <T extends BarProps>({
 
   const sorted = [...bars].sort((a, b) => {
     if (sortBy === 'label') {
-      return a.yLabel.localeCompare(b.yLabel);
+      return a.categoryLabel.localeCompare(b.categoryLabel);
     }
     // sortBy === 'value' - use seriesTwoValue if available, otherwise seriesOneValue
     const aValue = a.seriesTwoValue ?? a.seriesOneValue;
@@ -162,9 +162,9 @@ export const getValuesSummary = ({
   seriesOneValue,
   seriesTwoValue,
   unit,
-  yLabel,
+  categoryLabel,
   translations,
-}: Pick<BarProps, 'seriesOneValue' | 'seriesTwoValue' | 'yLabel'> &
+}: Pick<BarProps, 'seriesOneValue' | 'seriesTwoValue' | 'categoryLabel'> &
   Required<Pick<BarChartUnit, 'unit'>> & {
     isInteractive: boolean;
     translations: BarChartTranslations;
@@ -176,7 +176,7 @@ export const getValuesSummary = ({
     const { gainedNowAt, inLabel } = translations.accessibility;
     if (typeof gainedNowAt === 'function') {
       return gainedNowAt({
-        yLabel,
+        categoryLabel,
         seriesOneValue,
         seriesTwoValue,
         unit,
@@ -184,20 +184,20 @@ export const getValuesSummary = ({
       });
     }
     const gained = seriesOneValue;
-    return `${gained}${unitText} ${gainedNowAt} ${seriesTwoValue}${unitText} ${inLabel} ${yLabel}`;
+    return `${gained}${unitText} ${gainedNowAt} ${seriesTwoValue}${unitText} ${inLabel} ${categoryLabel}`;
   }
 
   if (isInteractive) {
     const { inLabel } = translations.accessibility;
     if (typeof inLabel === 'function') {
       return inLabel({
-        yLabel,
+        categoryLabel,
         value: seriesOneValue,
         unit,
         locale,
       });
     }
-    return `${seriesOneValue}${unitText} ${inLabel} ${yLabel}`;
+    return `${seriesOneValue}${unitText} ${inLabel} ${categoryLabel}`;
   }
 
   const { inOnly } = translations.accessibility;
@@ -255,9 +255,9 @@ export const calculatePositionPercent = ({
  * Generates a stable key for a bar row (for React list keys).
  */
 export const getBarRowKey = (
-  bar: Pick<BarProps, 'yLabel' | 'seriesOneValue' | 'seriesTwoValue'>,
+  bar: Pick<BarProps, 'categoryLabel' | 'seriesOneValue' | 'seriesTwoValue'>,
   index: number
 ): string =>
-  bar.yLabel && bar.seriesOneValue
-    ? `${bar.yLabel}-${bar.seriesOneValue}-${bar.seriesTwoValue ?? ''}-${index}`
+  bar.categoryLabel && bar.seriesOneValue
+    ? `${bar.categoryLabel}-${bar.seriesOneValue}-${bar.seriesTwoValue ?? ''}-${index}`
     : String(index);

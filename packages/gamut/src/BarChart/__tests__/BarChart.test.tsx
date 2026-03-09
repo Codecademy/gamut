@@ -8,8 +8,8 @@ import { BarChart } from '..';
 import { BarProps } from '../shared/types';
 
 const defaultBarValues = [
-  { yLabel: 'Python', seriesOneValue: 100 },
-  { yLabel: 'JavaScript', seriesOneValue: 75 },
+  { categoryLabel: 'Python', seriesOneValue: 100 },
+  { categoryLabel: 'JavaScript', seriesOneValue: 75 },
 ];
 
 const renderView = setupRtl(BarChart, {
@@ -20,16 +20,16 @@ const renderView = setupRtl(BarChart, {
 });
 
 const createInteractiveBar = ({
-  yLabel,
+  categoryLabel,
   seriesOneValue,
   href,
   onClick,
-}: Pick<BarProps, 'yLabel' | 'seriesOneValue'> & {
+}: Pick<BarProps, 'categoryLabel' | 'seriesOneValue'> & {
   href?: HTMLProps<HTMLAnchorElement>['href'];
   onClick?: ButtonProps['onClick'];
 }): BarProps => {
   const base = {
-    yLabel,
+    categoryLabel,
     seriesOneValue,
   };
 
@@ -81,8 +81,8 @@ describe('BarChart', () => {
 
     it('renders both foreground and background bars when seriesTwoValue is provided', () => {
       const stackedBarValues: BarProps[] = [
-        { yLabel: 'Python', seriesOneValue: 50, seriesTwoValue: 100 },
-        { yLabel: 'JavaScript', seriesOneValue: 25, seriesTwoValue: 75 },
+        { categoryLabel: 'Python', seriesOneValue: 50, seriesTwoValue: 100 },
+        { categoryLabel: 'JavaScript', seriesOneValue: 25, seriesTwoValue: 75 },
       ];
 
       const { view } = renderView({ barValues: stackedBarValues });
@@ -97,9 +97,9 @@ describe('BarChart', () => {
 
   describe('Sorting', () => {
     const unsortedBarValues: BarProps[] = [
-      { yLabel: 'Python', seriesOneValue: 50 },
-      { yLabel: 'JavaScript', seriesOneValue: 100 },
-      { yLabel: 'Ruby', seriesOneValue: 25 },
+      { categoryLabel: 'Python', seriesOneValue: 50 },
+      { categoryLabel: 'JavaScript', seriesOneValue: 100 },
+      { categoryLabel: 'Ruby', seriesOneValue: 25 },
     ];
 
     it('does not render Select when sortFns is not provided', () => {
@@ -248,7 +248,7 @@ describe('BarChart', () => {
       } = {}
     ): BarProps[] => {
       const base = {
-        yLabel: 'Python',
+        categoryLabel: 'Python',
         seriesOneValue: 100,
       };
 
@@ -424,7 +424,7 @@ describe('BarChart', () => {
           unit: 'XP',
           barValues: [
             createInteractiveBar({
-              yLabel: 'Python',
+              categoryLabel: 'Python',
               seriesOneValue: 100,
               onClick,
             }),
@@ -491,8 +491,8 @@ describe('BarChart', () => {
     it('uses custom locale for number formatting', () => {
       const { view } = renderView({
         barValues: [
-          { yLabel: 'Python', seriesOneValue: 1000 },
-          { yLabel: 'JavaScript', seriesOneValue: 2000 },
+          { categoryLabel: 'Python', seriesOneValue: 1000 },
+          { categoryLabel: 'JavaScript', seriesOneValue: 2000 },
         ],
         translations: {
           locale: 'de-DE',
@@ -507,7 +507,7 @@ describe('BarChart', () => {
     it('uses custom accessibility translations', () => {
       const { view } = renderView({
         barValues: [
-          { yLabel: 'Python', seriesOneValue: 100, seriesTwoValue: 200 },
+          { categoryLabel: 'Python', seriesOneValue: 100, seriesTwoValue: 200 },
         ],
         unit: 'XP',
         translations: {
@@ -527,7 +527,7 @@ describe('BarChart', () => {
       const { view } = renderView({
         barValues: [
           {
-            yLabel: 'JavaScript',
+            categoryLabel: 'JavaScript',
             seriesOneValue: 50,
             onClick: () => undefined,
           },
@@ -536,7 +536,7 @@ describe('BarChart', () => {
         translations: {
           accessibility: {
             inLabel: (ctx) =>
-              `${ctx.value} ${ctx.unit} en ${ctx.yLabel}`.trim(),
+              `${ctx.value} ${ctx.unit} en ${ctx.categoryLabel}`.trim(),
           },
         },
       });
@@ -549,7 +549,7 @@ describe('BarChart', () => {
       const { view } = renderView({
         barValues: [
           {
-            yLabel: 'Python',
+            categoryLabel: 'Python',
             seriesOneValue: 100,
             seriesTwoValue: 200,
           },
@@ -558,7 +558,7 @@ describe('BarChart', () => {
         translations: {
           accessibility: {
             gainedNowAt: (ctx) =>
-              `${ctx.seriesOneValue} ${ctx.unit} gained - now at ${ctx.seriesTwoValue} ${ctx.unit} in ${ctx.yLabel}`,
+              `${ctx.seriesOneValue} ${ctx.unit} gained - now at ${ctx.seriesTwoValue} ${ctx.unit} in ${ctx.categoryLabel}`,
           },
         },
       });
@@ -571,7 +571,7 @@ describe('BarChart', () => {
 
     it('uses function-based inOnly for non-interactive single bar accessibility summary', () => {
       const { view } = renderView({
-        barValues: [{ yLabel: 'Rust', seriesOneValue: 75 }],
+        barValues: [{ categoryLabel: 'Rust', seriesOneValue: 75 }],
         unit: 'pts',
         translations: {
           accessibility: {
@@ -588,8 +588,8 @@ describe('BarChart', () => {
   describe('Icons', () => {
     it('renders icons when provided in bar data', () => {
       const barValuesWithIcons: BarProps[] = [
-        { yLabel: 'Python', seriesOneValue: 100, icon: TerminalIcon },
-        { yLabel: 'JavaScript', seriesOneValue: 75 },
+        { categoryLabel: 'Python', seriesOneValue: 100, icon: TerminalIcon },
+        { categoryLabel: 'JavaScript', seriesOneValue: 75 },
       ];
 
       const { view } = renderView({ barValues: barValuesWithIcons });
@@ -633,8 +633,8 @@ describe('BarChart', () => {
 
     it('applies custom seriesOneLabel and seriesTwoLabel colors', () => {
       const stackedBarValues: BarProps[] = [
-        { yLabel: 'Python', seriesOneValue: 50, seriesTwoValue: 100 },
-        { yLabel: 'JavaScript', seriesOneValue: 25, seriesTwoValue: 75 },
+        { categoryLabel: 'Python', seriesOneValue: 50, seriesTwoValue: 100 },
+        { categoryLabel: 'JavaScript', seriesOneValue: 25, seriesTwoValue: 75 },
       ];
 
       const { view } = renderView({

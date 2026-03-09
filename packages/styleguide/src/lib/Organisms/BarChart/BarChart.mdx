@@ -191,9 +191,9 @@ TypeScript automatically infers the bar type from your `barValues` prop. This me
 
 ```typescript
 const barsWithDates = [
-  { yLabel: 'Python', seriesOneValue: 1500, dateAdded: new Date('2023-01-15') },
+  { categoryLabel: 'Python', seriesOneValue: 1500, dateAdded: new Date('2023-01-15') },
   {
-    yLabel: 'JavaScript',
+    categoryLabel: 'JavaScript',
     seriesOneValue: 2000,
     dateAdded: new Date('2023-03-20'),
   },
@@ -395,9 +395,9 @@ translations={{
 
 ### Accessibility: strings vs functions
 
-**Strings** — Use when the built-in template order fits your language. Fragments are plugged into the default pattern (e.g. `"{value} {unit} {inLabel} {yLabel}"`).
+**Strings** — Use when the built-in template order fits your language. Fragments are plugged into the default pattern (e.g. `"{value} {unit} {inLabel} {categoryLabel}"`).
 
-**Functions** — Use when you need full control. Each function receives context (`yLabel`, values, `unit`, `locale`) and returns the complete summary string.
+**Functions** — Use when you need full control. Each function receives context (`categoryLabel`, values, `unit`, `locale`) and returns the complete summary string.
 
 <Canvas of={BarChartStories.WithFunctionTranslations} />
 

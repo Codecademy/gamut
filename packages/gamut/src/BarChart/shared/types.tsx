@@ -42,8 +42,8 @@ export type BarChartStyles = {
 };
 
 type BarPropsBase = {
-  /** Label displayed on the y-axis for this bar */
-  yLabel: string;
+  /** Label displayed for this category (e.g. on the y-axis) */
+  categoryLabel: string;
   /** The foreground/progress bar value (always shown) */
   seriesOneValue: number;
   /** The background/total bar value (optional - creates stacked effect when provided) */

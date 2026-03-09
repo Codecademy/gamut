@@ -18,27 +18,27 @@ import type { BarProps } from './shared/types';
 // Define bars with custom dateAdded property
 const barsWithDates = [
   {
-    yLabel: 'Python',
+    categoryLabel: 'Python',
     seriesOneValue: 1500,
     dateAdded: new Date('2023-01-15'),
   },
   {
-    yLabel: 'JavaScript',
+    categoryLabel: 'JavaScript',
     seriesOneValue: 2000,
     dateAdded: new Date('2023-03-20'),
   },
   {
-    yLabel: 'React',
+    categoryLabel: 'React',
     seriesOneValue: 450,
     dateAdded: new Date('2023-06-10'),
   },
   {
-    yLabel: 'TypeScript',
+    categoryLabel: 'TypeScript',
     seriesOneValue: 300,
     dateAdded: new Date('2023-08-05'),
   },
   {
-    yLabel: 'SQL',
+    categoryLabel: 'SQL',
     seriesOneValue: 600,
     dateAdded: new Date('2023-02-28'),
   },
@@ -98,31 +98,31 @@ export const DateSortingExample = () => {
 
 const barsWithCategory = [
   {
-    yLabel: 'Python',
+    categoryLabel: 'Python',
     seriesOneValue: 1500,
     category: 'backend' as const,
     priority: 1,
   },
   {
-    yLabel: 'JavaScript',
+    categoryLabel: 'JavaScript',
     seriesOneValue: 2000,
     category: 'frontend' as const,
     priority: 2,
   },
   {
-    yLabel: 'React',
+    categoryLabel: 'React',
     seriesOneValue: 450,
     category: 'frontend' as const,
     priority: 3,
   },
   {
-    yLabel: 'TypeScript',
+    categoryLabel: 'TypeScript',
     seriesOneValue: 300,
     category: 'frontend' as const,
     priority: 4,
   },
   {
-    yLabel: 'SQL',
+    categoryLabel: 'SQL',
     seriesOneValue: 600,
     category: 'backend' as const,
     priority: 5,
@@ -175,7 +175,7 @@ export const CategorySortingExample = () => {
 
 const barsWithMetadata = [
   {
-    yLabel: 'Python',
+    categoryLabel: 'Python',
     seriesOneValue: 1500,
     metadata: {
       addedDate: new Date('2023-01-15'),
@@ -184,7 +184,7 @@ const barsWithMetadata = [
     },
   },
   {
-    yLabel: 'JavaScript',
+    categoryLabel: 'JavaScript',
     seriesOneValue: 2000,
     metadata: {
       addedDate: new Date('2023-03-20'),
@@ -193,7 +193,7 @@ const barsWithMetadata = [
     },
   },
   {
-    yLabel: 'React',
+    categoryLabel: 'React',
     seriesOneValue: 450,
     metadata: {
       addedDate: new Date('2023-06-10'),
@@ -268,13 +268,13 @@ type BarWithScore = BarProps & {
 
 const barsWithScore: BarWithScore[] = [
   {
-    yLabel: 'Python',
+    categoryLabel: 'Python',
     seriesOneValue: 1500,
     score: 85,
     lastUpdated: new Date('2024-01-01'),
   },
   {
-    yLabel: 'JavaScript',
+    categoryLabel: 'JavaScript',
     seriesOneValue: 2000,
     score: 95,
     lastUpdated: new Date('2024-01-15'),
@@ -325,31 +325,31 @@ export const ExplicitTypeExample = () => {
 
 const barsWithWrongCategory = [
   {
-    yLabel: 'Python',
+    categoryLabel: 'Python',
     seriesOneValue: 1500,
     category: 'backend',
     priority: 1,
   },
   {
-    yLabel: 'JavaScript',
+    categoryLabel: 'JavaScript',
     seriesOneValue: 2000,
     category: 'frontend',
     priority: 2,
   },
   {
-    yLabel: 'React',
+    categoryLabel: 'React',
     seriesOneValue: 450,
     category: 'frontend',
     priority: 3,
   },
   {
-    yLabel: 'TypeScript',
+    categoryLabel: 'TypeScript',
     seriesOneValue: 300,
     category: 'frontend',
     priority: 4,
   },
   {
-    yLabel: 'SQL',
+    categoryLabel: 'SQL',
     seriesOneValue: 600,
   },
 ];

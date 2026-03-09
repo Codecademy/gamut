@@ -26,45 +26,45 @@ export default meta;
 type Story = StoryObj<typeof BarChart>;
 
 const simpleBarData: BarProps[] = [
-  { yLabel: 'Python', seriesOneValue: 1500 },
-  { yLabel: 'JavaScript', seriesOneValue: 2000 },
-  { yLabel: 'HTML/CSS', seriesOneValue: 800 },
-  { yLabel: 'SQL', seriesOneValue: 600 },
-  { yLabel: 'React', seriesOneValue: 450 },
+  { categoryLabel: 'Python', seriesOneValue: 1500 },
+  { categoryLabel: 'JavaScript', seriesOneValue: 2000 },
+  { categoryLabel: 'HTML/CSS', seriesOneValue: 800 },
+  { categoryLabel: 'SQL', seriesOneValue: 600 },
+  { categoryLabel: 'React', seriesOneValue: 450 },
 ];
 
 const stackedBarData: BarProps[] = [
-  { yLabel: 'Python', seriesOneValue: 200, seriesTwoValue: 1500 },
+  { categoryLabel: 'Python', seriesOneValue: 200, seriesTwoValue: 1500 },
   {
-    yLabel: 'JavaScript',
+    categoryLabel: 'JavaScript',
     icon: TerminalIcon,
     seriesOneValue: 1800,
     seriesTwoValue: 2000,
   },
-  { yLabel: 'HTML/CSS', seriesOneValue: 600, seriesTwoValue: 800 },
-  { yLabel: 'SQL', seriesOneValue: 550, seriesTwoValue: 600 },
-  { yLabel: 'React', seriesOneValue: 300, seriesTwoValue: 450 },
+  { categoryLabel: 'HTML/CSS', seriesOneValue: 600, seriesTwoValue: 800 },
+  { categoryLabel: 'SQL', seriesOneValue: 550, seriesTwoValue: 600 },
+  { categoryLabel: 'React', seriesOneValue: 300, seriesTwoValue: 450 },
 ];
 
 const accessibilityBarData: BarProps[] = [
-  { yLabel: 'Python', seriesOneValue: 200, seriesTwoValue: 1500 },
+  { categoryLabel: 'Python', seriesOneValue: 200, seriesTwoValue: 1500 },
   {
-    yLabel: 'JavaScript',
+    categoryLabel: 'JavaScript',
     seriesOneValue: 1800,
     seriesTwoValue: 2000,
     href: '/javascript',
   },
-  { yLabel: 'HTML/CSS', seriesOneValue: 600, seriesTwoValue: 800 },
-  { yLabel: 'SQL', seriesOneValue: 550, href: '/sql' },
-  { yLabel: 'Rust', seriesOneValue: 400 },
-  { yLabel: 'React', seriesOneValue: 300, seriesTwoValue: 450 },
+  { categoryLabel: 'HTML/CSS', seriesOneValue: 600, seriesTwoValue: 800 },
+  { categoryLabel: 'SQL', seriesOneValue: 550, href: '/sql' },
+  { categoryLabel: 'Rust', seriesOneValue: 400 },
+  { categoryLabel: 'React', seriesOneValue: 300, seriesTwoValue: 450 },
 ];
 
 const accessibilityTranslations: PartialBarChartTranslations = {
   accessibility: {
     gainedNowAt: (ctx) =>
-      `${ctx.seriesOneValue} ${ctx.unit} gained — now at ${ctx.seriesTwoValue} ${ctx.unit} in ${ctx.yLabel}`,
-    inLabel: (ctx) => `${ctx.value} ${ctx.unit} in ${ctx.yLabel}`,
+      `${ctx.seriesOneValue} ${ctx.unit} gained — now at ${ctx.seriesTwoValue} ${ctx.unit} in ${ctx.categoryLabel}`,
+    inLabel: (ctx) => `${ctx.value} ${ctx.unit} in ${ctx.categoryLabel}`,
     inOnly: (ctx) => `${ctx.value} ${ctx.unit}`.trim(),
   },
   locale: 'en',
@@ -72,31 +72,31 @@ const accessibilityTranslations: PartialBarChartTranslations = {
 
 const barDataWithIcons: BarProps[] = [
   {
-    yLabel: 'Python',
+    categoryLabel: 'Python',
     seriesOneValue: 200,
     seriesTwoValue: 1500,
     icon: TerminalIcon,
   },
   {
-    yLabel: 'JavaScript',
+    categoryLabel: 'JavaScript',
     seriesOneValue: 150,
     seriesTwoValue: 2000,
     icon: TerminalIcon,
   },
   {
-    yLabel: 'Data Science',
+    categoryLabel: 'Data Science',
     seriesOneValue: 100,
     seriesTwoValue: 800,
     icon: DataScienceIcon,
   },
   {
-    yLabel: 'Backend',
+    categoryLabel: 'Backend',
     seriesOneValue: 50,
     seriesTwoValue: 600,
     icon: TerminalIcon,
   },
   {
-    yLabel: 'Reading',
+    categoryLabel: 'Reading',
     seriesOneValue: 75,
     seriesTwoValue: 450,
     icon: BookFlipPageIcon,
@@ -140,7 +140,7 @@ export const Interactive: Story = {
   args: {
     barValues: simpleBarData.map((bar) => ({
       ...bar,
-      onClick: action(`Clicked ${bar.yLabel}`),
+      onClick: action(`Clicked ${bar.categoryLabel}`),
     })),
     title: 'Interactive skills chart',
     description: 'Click on any row to view detailed course information',
@@ -151,7 +151,7 @@ export const WithLinks: Story = {
   args: {
     barValues: simpleBarData.map((bar) => ({
       ...bar,
-      href: `#${bar.yLabel.toLowerCase().replace(/\s+/g, '-')}`,
+      href: `#${bar.categoryLabel.toLowerCase().replace(/\s+/g, '-')}`,
     })),
     title: 'Skills chart with links',
     description: 'Each row links to its corresponding course page',
@@ -222,27 +222,27 @@ export const WithSorting: Story = {
 
 const customSortingBarValues = [
   {
-    yLabel: 'Python',
+    categoryLabel: 'Python',
     seriesOneValue: 1500,
     dateAdded: new Date('2023-01-15'),
   },
   {
-    yLabel: 'JavaScript',
+    categoryLabel: 'JavaScript',
     seriesOneValue: 2000,
     dateAdded: new Date('2023-03-20'),
   },
   {
-    yLabel: 'React',
+    categoryLabel: 'React',
     seriesOneValue: 450,
     dateAdded: new Date('2023-06-10'),
   },
   {
-    yLabel: 'TypeScript',
+    categoryLabel: 'TypeScript',
     seriesOneValue: 300,
     dateAdded: new Date('2023-08-05'),
   },
   {
-    yLabel: 'SQL',
+    categoryLabel: 'SQL',
     seriesOneValue: 600,
     dateAdded: new Date('2023-02-28'),
   },

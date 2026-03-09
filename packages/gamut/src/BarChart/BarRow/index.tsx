@@ -41,7 +41,7 @@ export const BarRow = forwardRef<
 >(
   (
     {
-      yLabel,
+      categoryLabel,
       seriesOneValue,
       seriesTwoValue,
       icon: Icon,
@@ -114,7 +114,7 @@ export const BarRow = forwardRef<
           seriesOneValue,
           seriesTwoValue,
           unit,
-          yLabel,
+          categoryLabel,
           translations,
         }),
       [
@@ -123,7 +123,7 @@ export const BarRow = forwardRef<
         seriesOneValue,
         seriesTwoValue,
         unit,
-        yLabel,
+        categoryLabel,
         translations,
       ]
     );
@@ -188,7 +188,7 @@ export const BarRow = forwardRef<
               truncateLines={1}
               whiteSpace="nowrap"
             >
-              {yLabel}
+              {categoryLabel}
             </Text>
           </FlexBox>
 
@@ -202,7 +202,7 @@ export const BarRow = forwardRef<
           </RightLabelsHoverTarget>
         </FlexBox>
       ),
-      [textColor, Icon, yLabel, valueLabelsContent]
+      [textColor, Icon, categoryLabel, valueLabelsContent]
     );
 
     const leftLabel = useMemo(
@@ -223,11 +223,11 @@ export const BarRow = forwardRef<
             truncateLines={1}
             whiteSpace="nowrap"
           >
-            {yLabel}
+            {categoryLabel}
           </Text>
         </FlexBox>
       ),
-      [textColor, Icon, yLabel, widthValue]
+      [textColor, Icon, categoryLabel, widthValue]
     );
 
     const rightLabel = useMemo(

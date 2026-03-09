@@ -19,7 +19,7 @@ export type BarChartAccessibilityInOnlyContext =
  */
 export type BarChartAccessibilityInLabelContext =
   BarChartAccessibilityInOnlyContext & {
-    yLabel: string;
+    categoryLabel: string;
   };
 
 /**
@@ -29,7 +29,7 @@ export type BarChartAccessibilityInLabelContext =
  */
 export type BarChartAccessibilityStackedContext =
   BarChartAccessibilityContextBase & {
-    yLabel: string;
+    categoryLabel: string;
     seriesOneValue: number;
     seriesTwoValue: number;
   };
