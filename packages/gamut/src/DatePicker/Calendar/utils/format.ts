@@ -72,9 +72,11 @@ export function formatDateForInput(date: Date, locale?: string): string {
 
 /**
  * Parse a string from the date input into a Date, or null if invalid.
- * Uses Intl.DateTimeFormat to parse in a locale-aware way where possible;
- * falls back to Date parsing for simple numeric formats.
+ * Only returns a date when the input is a complete valid date (e.g. "2/15/2026").
+ * Partial input like "1" or "2/15" returns null even though Date("1") would parse.
  */
+
+//this logic needs some work
 export function parseDateFromInput(
   value: string,
   locale?: string
@@ -83,5 +85,9 @@ export function parseDateFromInput(
   if (!trimmed) return null;
   const parsed = new Date(trimmed);
   if (Number.isNaN(parsed.getTime())) return null;
-  return parsed;
+  const formatted = formatDateForInput(parsed, locale);
+  if (formatted === trimmed) return parsed;
+  const parts = trimmed.split(/[/-]/);
+  if (parts.length >= 3) return parsed;
+  return null;
 }

@@ -92,6 +92,7 @@ export function DatePicker({
           isOpen={isCalendarOpen}
           onRequestClose={closeCalendar}
           targetRef={inputRef}
+          // look into if we can kill this and mess with where we are focusing instead
           focusOnProps={{ autoFocus: false, focusLock: false }} // without this we cant type in the input but there has to be a better way
         >
           <div aria-label="Choose date" id={calendarDialogId} role="dialog">
