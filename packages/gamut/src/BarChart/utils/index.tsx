@@ -13,14 +13,14 @@ export const calculatePercent = ({
 
 export const calculateBarWidth = ({
   value,
-  maxRange,
+  maxScaleValue,
 }: {
   value: number;
-  maxRange: number;
+  maxScaleValue: number;
 }) => {
-  const adjustedValue = Math.max(0, Math.min(maxRange, value));
+  const adjustedValue = Math.max(0, Math.min(maxScaleValue, value));
   return Math.floor(
-    calculatePercent({ value: adjustedValue, total: maxRange })
+    calculatePercent({ value: adjustedValue, total: maxScaleValue })
   );
 };
 

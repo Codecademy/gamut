@@ -16,7 +16,7 @@ const meta: Meta<typeof BarChart> = {
   component: BarChart,
   args: {
     description: 'Chart showing programming language experience levels',
-    maxRange: 2000,
+    maxScaleValue: 2000,
     title: 'Skills experience chart',
     unit: 'XP',
   },
@@ -175,7 +175,7 @@ export const WithHiddenTitleAndDescription: Story = {
         description="Experience points earned across different programming languages"
         hideDescription
         hideTitle
-        maxRange={2000}
+        maxScaleValue={2000}
         title="Programming Skills Overview"
         unit="XP"
       />
@@ -203,7 +203,7 @@ export const WithExternalTitle: Story = {
           barValues={simpleBarData}
           description="Experience points earned across different programming languages"
           hideDescription={false}
-          maxRange={2000}
+          maxScaleValue={2000}
           unit="XP"
         />
       </>
@@ -306,7 +306,7 @@ export const CustomStyles: Story = {
 export const CustomScale: Story = {
   args: {
     barValues: simpleBarData,
-    maxRange: 2000,
+    maxScaleValue: 2000,
     scaleInterval: 250,
     title: 'Skills chart with custom scale',
     description: 'Custom scale intervals for more granular value display',

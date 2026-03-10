@@ -21,16 +21,16 @@ describe('BarChart Utils', () => {
   });
 
   describe('calculateBarWidth', () => {
-    it('calculates bar width as percentage of maxRange', () => {
-      expect(calculateBarWidth({ value: 50, maxRange: 100 })).toBe(50);
-      expect(calculateBarWidth({ value: 25, maxRange: 100 })).toBe(25);
-      expect(calculateBarWidth({ value: 0, maxRange: 100 })).toBe(0);
-      expect(calculateBarWidth({ value: 100, maxRange: 100 })).toBe(100);
+    it('calculates bar width as percentage of maxScaleValue', () => {
+      expect(calculateBarWidth({ value: 50, maxScaleValue: 100 })).toBe(50);
+      expect(calculateBarWidth({ value: 25, maxScaleValue: 100 })).toBe(25);
+      expect(calculateBarWidth({ value: 0, maxScaleValue: 100 })).toBe(0);
+      expect(calculateBarWidth({ value: 100, maxScaleValue: 100 })).toBe(100);
     });
 
     it('handles values outside range', () => {
-      expect(calculateBarWidth({ value: 150, maxRange: 100 })).toBe(100);
-      expect(calculateBarWidth({ value: -10, maxRange: 100 })).toBe(0);
+      expect(calculateBarWidth({ value: 150, maxScaleValue: 100 })).toBe(100);
+      expect(calculateBarWidth({ value: -10, maxScaleValue: 100 })).toBe(0);
     });
   });
 
@@ -75,7 +75,7 @@ describe('BarChart Utils', () => {
 
   describe('scaleInterval tick count calculation', () => {
     it('calculates tick count correctly with custom scaleInterval', () => {
-      // Formula: Math.ceil(maxRange / scaleInterval) + 1
+      // Formula: Math.ceil(maxScaleValue / scaleInterval) + 1
       const tickCount1 = Math.ceil(1000 / 250) + 1;
       expect(tickCount1).toBe(5);
 

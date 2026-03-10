@@ -22,8 +22,9 @@ type BarChartAriaLabel = {
 };
 
 type BarChartAriaLabelledBy = {
-  title?: never;
   'aria-labelledby': string;
+  hideTitle?: true;
+  title?: never;
 };
 
 type BarChartLabel = BarChartAriaLabel | BarChartAriaLabelledBy;
@@ -92,7 +93,7 @@ export type BarChartProps<
   /** Hides the visual title for the chart UL */
   hideTitle?: boolean;
   /** Maximum value for the x-axis scale */
-  maxRange: number;
+  maxScaleValue: number;
   /** Unit label to display (e.g., "XP") */
   unit?: string;
   /** Style configuration for colors */

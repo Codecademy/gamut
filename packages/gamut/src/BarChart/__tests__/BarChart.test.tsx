@@ -15,7 +15,7 @@ const defaultBarValues = [
 const renderView = setupRtl(BarChart, {
   barValues: defaultBarValues,
   description: 'Test chart description',
-  maxRange: 200,
+  maxScaleValue: 200,
   title: 'Test chart',
 });
 

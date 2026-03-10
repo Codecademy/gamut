@@ -56,7 +56,7 @@ export const useBarChartContext = (): BarChartContextProps => {
 };
 
 export interface UseBarChartOptions {
-  maxRange: number;
+  maxScaleValue: number;
   scaleInterval?: number;
   unit?: string;
   styleConfig?: BarChartStyles;
@@ -66,7 +66,7 @@ export interface UseBarChartOptions {
 }
 
 export const useBarChart = ({
-  maxRange,
+  maxScaleValue,
   scaleInterval,
   unit = '',
   styleConfig,
@@ -128,8 +128,8 @@ export const useBarChart = ({
 
   return useMemo(
     () => ({
-      maxRange,
-      scaleInterval: scaleInterval ?? Math.ceil(maxRange / 5),
+      maxScaleValue,
+      scaleInterval: scaleInterval ?? Math.ceil(maxScaleValue / 5),
       unit,
       styleConfig: {
         ...defaultStyleConfig,
@@ -144,7 +144,7 @@ export const useBarChart = ({
       translations,
     }),
     [
-      maxRange,
+      maxScaleValue,
       scaleInterval,
       unit,
       styleConfig,

@@ -50,7 +50,7 @@ export const DateSortingExample = () => {
     <BarChart
       barValues={barsWithDates}
       description="Sort by when each skill was added to your profile"
-      maxRange={2000}
+      maxScaleValue={2000}
       sortFns={[
         'none',
         {
@@ -134,7 +134,7 @@ export const CategorySortingExample = () => {
     <BarChart
       barValues={barsWithCategory}
       description="Sort by category or priority"
-      maxRange={2000}
+      maxScaleValue={2000}
       sortFns={[
         'none',
         {
@@ -208,7 +208,7 @@ export const ComplexSortingExample = () => {
     <BarChart
       barValues={barsWithMetadata}
       description="Sort by metadata properties"
-      maxRange={2000}
+      maxScaleValue={2000}
       sortFns={[
         'none',
         {
@@ -286,7 +286,7 @@ export const ExplicitTypeExample = () => {
     <BarChart
       barValues={barsWithScore}
       description="Explicitly typed bars with score and update date"
-      maxRange={2000}
+      maxScaleValue={2000}
       sortFns={[
         'none',
         {
@@ -359,7 +359,7 @@ export const WrongCategorySortingExample = () => {
     <BarChart
       barValues={barsWithWrongCategory}
       description="Sort by category or priority"
-      maxRange={2000}
+      maxScaleValue={2000}
       sortFns={[
         'none',
         {
