@@ -2,9 +2,10 @@ import { setupRtl } from '@codecademy/gamut-tests';
 import createCache from '@emotion/cache';
 import { ThemeContext } from '@emotion/react';
 import { screen } from '@testing-library/react';
+import { setNonce } from 'get-nonce';
 
 import { createEmotionCache } from '../cache';
-import { GamutProvider } from '../GamutProvider';
+import { GamutProvider, useNonce } from '../GamutProvider';
 import { coreTheme as theme } from '../themes';
 
 jest.mock('../cache', () => {
@@ -12,11 +13,16 @@ jest.mock('../cache', () => {
   return { createEmotionCache: cacheMock };
 });
 
+jest.mock('get-nonce', () => ({
+  setNonce: jest.fn(),
+}));
+
 const renderView = setupRtl(GamutProvider, { theme });
 
 describe(GamutProvider, () => {
   beforeEach(() => {
     jest.resetAllMocks();
+    (setNonce as jest.Mock).mockClear();
   });
 
   it('renders with a cache by default', () => {
@@ -76,6 +82,45 @@ describe(GamutProvider, () => {
     renderView({ cache: createCache({ key: 'gamut' }) });
 
     expect(createEmotionCache).toHaveBeenCalledTimes(0);
+  });
+
+  it('calls setNonce with the nonce prop', () => {
+    renderView({ nonce: 'my-csp-nonce' });
+
+    expect(setNonce).toHaveBeenCalledWith('my-csp-nonce');
+  });
+
+  it('useNonce returns the nonce from context when provided', () => {
+    const NonceConsumer = () => {
+      const nonce = useNonce();
+      return <span data-testid="nonce-value">{nonce ?? 'none'}</span>;
+    };
+    renderView({
+      nonce: 'context-nonce',
+      children: <NonceConsumer />,
+    });
+
+    expect(screen.getByTestId('nonce-value')).toHaveTextContent(
+      'context-nonce'
+    );
+  });
+
+  it('useNonce returns undefined when no nonce is provided', () => {
+    const NonceConsumer = () => {
+      const nonce = useNonce();
+      return <span data-testid="nonce-value">{nonce ?? 'none'}</span>;
+    };
+    renderView({ children: <NonceConsumer /> });
+
+    expect(screen.getByTestId('nonce-value')).toHaveTextContent('none');
+  });
+
+  it('passes nonce to createEmotionCache when provided', () => {
+    renderView({ nonce: 'emotion-csp-nonce' });
+
+    expect(createEmotionCache).toHaveBeenCalledWith({
+      nonce: 'emotion-csp-nonce',
+    });
   });
 
   it('can render custom variables', () => {

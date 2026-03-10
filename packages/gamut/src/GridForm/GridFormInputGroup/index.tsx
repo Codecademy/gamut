@@ -186,7 +186,13 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
                   processNode: (
                     node: unknown,
                     props: { onClick?: () => void }
-                  ) => <ErrorAnchor {...props} />,
+                  ) => {
+                    const { key: elementKey, ...rest } =
+                      props as React.ComponentProps<typeof ErrorAnchor> & {
+                        key?: React.Key;
+                      };
+                    return <ErrorAnchor key={elementKey} {...rest} />;
+                  },
                 },
               }}
               skipDefaultOverrides={{ a: true }}

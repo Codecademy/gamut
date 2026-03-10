@@ -32,4 +32,10 @@ describe(createEmotionCache, () => {
     const container = document.getElementById('emotion-styles');
     expect(container).toBe(null);
   });
+
+  it('passes nonce to the cache for CSP when provided', () => {
+    const cache = createEmotionCache({ nonce: 'csp-nonce-123' });
+
+    expect(cache.nonce).toBe('csp-nonce-123');
+  });
 });
