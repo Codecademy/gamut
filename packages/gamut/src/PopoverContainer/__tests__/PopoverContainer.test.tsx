@@ -339,9 +339,9 @@ describe('Popover', () => {
                 <RenderPopover {...defaultProps} alignment={alignment} />
               </MockGamutProvider>
             );
-            expect(
-              screen.getByTestId('popover-content-container')
-            ).toHaveStyle(expected);
+            expect(screen.getByTestId('popover-content-container')).toHaveStyle(
+              expected
+            );
             cleanup();
           }
         );
@@ -396,9 +396,9 @@ describe('Popover', () => {
                 <RenderPopover {...defaultProps} alignment={alignment} />
               </MockGamutProvider>
             );
-            expect(
-              screen.getByTestId('popover-content-container')
-            ).toHaveStyle({ transform: expected });
+            expect(screen.getByTestId('popover-content-container')).toHaveStyle(
+              { transform: expected }
+            );
             cleanup();
           }
         );
