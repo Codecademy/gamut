@@ -12,6 +12,8 @@ import {
 } from '@codecademy/gamut-styles/src';
 import { Theme } from '@emotion/react';
 
+const STORYBOOK_CSP_NONCE = 'storybook-csp-nonce';
+
 /**
  * Story functions must be called as a regular function to avoid full-remounts
  * See: https://github.com/storybookjs/storybook/issues/12255
