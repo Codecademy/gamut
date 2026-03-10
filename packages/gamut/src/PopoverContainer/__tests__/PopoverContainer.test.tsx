@@ -326,6 +326,85 @@ describe('Popover', () => {
         );
       });
     });
+    describe('physicalStyles', () => {
+      describe('centered alignments always use physical left regardless of useLogicalProperties', () => {
+        it.each([
+          ['top', { left: '250px' }],
+          ['bottom', { left: '250px' }],
+        ] as const)(
+          '%s alignment has physical left: 250px even with useLogicalProperties',
+          (alignment, expected) => {
+            render(
+              <MockGamutProvider useLogicalProperties>
+                <RenderPopover {...defaultProps} alignment={alignment} />
+              </MockGamutProvider>
+            );
+            expect(
+              screen.getByTestId('popover-content-container')
+            ).toHaveStyle(expected);
+            cleanup();
+          }
+        );
+      });
+
+      describe('invertAxis transform flips in RTL', () => {
+        const container = {
+          top: 150,
+          left: 150,
+          right: 200,
+          bottom: 200,
+          height: 200,
+          width: 200,
+        };
+
+        it.each([
+          ['top-right', false, 'translate(-100%, 0)'],
+          ['top-right', true, 'translate(100%, 0)'],
+          ['top-left', false, 'translate(100%, 0)'],
+          ['top-left', true, 'translate(-100%, 0)'],
+          ['bottom-right', false, 'translate(-100%, 0)'],
+          ['bottom-right', true, 'translate(100%, 0)'],
+          ['bottom-left', false, 'translate(100%, 0)'],
+          ['bottom-left', true, 'translate(-100%, 0)'],
+        ] as const)(
+          '%s invertAxis="x" isRtl=%s → %s',
+          (alignment, isRtl, expected) => {
+            const result = utils.getPosition({
+              alignment,
+              container,
+              invertAxis: 'x',
+              isRtl,
+            });
+            expect(result.physicalStyles?.transform).toBe(expected);
+          }
+        );
+      });
+
+      describe('transform is always applied as a physical inline style', () => {
+        it.each([
+          [true, 'top-right', 'translate(0, 0)'],
+          [false, 'top-right', 'translate(0, 0)'],
+          [true, 'top', 'translate(-50%, 0)'],
+          [false, 'top', 'translate(-50%, 0)'],
+          [true, 'left', 'translate(0, -50%)'],
+          [false, 'left', 'translate(0, -50%)'],
+        ] as const)(
+          'useLogicalProperties=%s, alignment=%s → transform: %s',
+          (useLogicalProperties, alignment, expected) => {
+            render(
+              <MockGamutProvider useLogicalProperties={useLogicalProperties}>
+                <RenderPopover {...defaultProps} alignment={alignment} />
+              </MockGamutProvider>
+            );
+            expect(
+              screen.getByTestId('popover-content-container')
+            ).toHaveStyle({ transform: expected });
+            cleanup();
+          }
+        );
+      });
+    });
+
     describe('offsets', () => {
       it.each([
         {
