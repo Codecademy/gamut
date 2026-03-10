@@ -2,29 +2,10 @@ import {
   calculateBarWidth,
   calculatePercent,
   calculatePositionPercent,
-  calculateTicksAndRange,
   getLabel,
-  niceNum,
-  numDigits,
 } from '../index';
 
 describe('BarChart Utils', () => {
-  describe('numDigits', () => {
-    it('calculates number of digits correctly', () => {
-      expect(numDigits({ num: 0 })).toBe(1);
-      expect(numDigits({ num: 5 })).toBe(1);
-      expect(numDigits({ num: 10 })).toBe(2);
-      expect(numDigits({ num: 100 })).toBe(3);
-      expect(numDigits({ num: 1000 })).toBe(4);
-      expect(numDigits({ num: 12345 })).toBe(5);
-    });
-
-    it('handles negative numbers', () => {
-      expect(numDigits({ num: -5 })).toBe(1);
-      expect(numDigits({ num: -100 })).toBe(3);
-    });
-  });
-
   describe('calculatePercent', () => {
     it('calculates percentage correctly', () => {
       expect(calculatePercent({ value: 50, total: 100 })).toBe(50);
@@ -50,59 +31,6 @@ describe('BarChart Utils', () => {
     it('handles values outside range', () => {
       expect(calculateBarWidth({ value: 150, maxRange: 100 })).toBe(100);
       expect(calculateBarWidth({ value: -10, maxRange: 100 })).toBe(0);
-    });
-  });
-
-  describe('niceNum', () => {
-    it('returns nice numbers when roundDown is true', () => {
-      expect(niceNum({ range: 1234, roundDown: true })).toBe(1000);
-      expect(niceNum({ range: 567, roundDown: true })).toBe(500);
-      expect(niceNum({ range: 234, roundDown: true })).toBe(200);
-      expect(niceNum({ range: 123, roundDown: true })).toBe(100);
-      expect(niceNum({ range: 67, roundDown: true })).toBe(50);
-      expect(niceNum({ range: 34, roundDown: true })).toBe(20);
-      expect(niceNum({ range: 12, roundDown: true })).toBe(10);
-    });
-
-    it('returns nice numbers when roundDown is false', () => {
-      expect(niceNum({ range: 1234, roundDown: false })).toBe(2000);
-      expect(niceNum({ range: 567, roundDown: false })).toBe(1000);
-      expect(niceNum({ range: 234, roundDown: false })).toBe(500);
-      expect(niceNum({ range: 123, roundDown: false })).toBe(200);
-      expect(niceNum({ range: 67, roundDown: false })).toBe(100);
-      expect(niceNum({ range: 34, roundDown: false })).toBe(50);
-      expect(niceNum({ range: 12, roundDown: false })).toBe(20);
-    });
-
-    it('handles small ranges', () => {
-      expect(niceNum({ range: 1, roundDown: true })).toBe(1);
-      expect(niceNum({ range: 1, roundDown: false })).toBe(1);
-    });
-  });
-
-  describe('calculateTicksAndRange', () => {
-    it('calculates tick count and nice range (min is always 0)', () => {
-      const [tickCount, niceMin, niceMax] = calculateTicksAndRange({
-        maxTicks: 5,
-        max: 100,
-      });
-
-      expect(tickCount).toBeGreaterThan(0);
-      expect(niceMin).toBe(0);
-      expect(niceMax).toBeGreaterThanOrEqual(100);
-    });
-
-    it('handles different maxTicks values', () => {
-      const [tickCount1] = calculateTicksAndRange({
-        maxTicks: 3,
-        max: 100,
-      });
-      const [tickCount2] = calculateTicksAndRange({
-        maxTicks: 10,
-        max: 100,
-      });
-
-      expect(tickCount2).toBeGreaterThan(tickCount1);
     });
   });
 
