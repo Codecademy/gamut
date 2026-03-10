@@ -5,7 +5,14 @@ import { motion } from 'framer-motion';
 import { Box, FlexBox } from '../../Box';
 import { barListItemPadding } from '../shared/styles';
 
-export const RightLabelsHoverTarget = styled(FlexBox)(css({}));
+export const RightLabelsHoverTarget = styled(FlexBox)(
+  css({
+    alignItems: 'center',
+    flexShrink: 0,
+    height: 'stretch',
+    justifyContent: 'flex-end',
+  })
+);
 
 const rowBaseStyles = css({
   alignItems: 'center',

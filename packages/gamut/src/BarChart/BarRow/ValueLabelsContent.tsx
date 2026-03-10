@@ -10,6 +10,13 @@ export type ValueLabelsContentProps = {
   isStacked: boolean;
 } & Pick<Required<BarChartStyles>, 'seriesOneLabel' | 'seriesTwoLabel'>;
 
+const valueLabelProps = {
+  height: 'fit-content',
+  lineHeight: 'title',
+  variant: 'p-small',
+  whiteSpace: 'nowrap',
+} as const;
+
 export const ValueLabelsContent = ({
   seriesOneFormatted,
   displayValueFormatted,
@@ -20,7 +27,7 @@ export const ValueLabelsContent = ({
   <>
     {isStacked && (
       <>
-        <Text color={seriesOneLabel} variant="p-small" whiteSpace="nowrap">
+        <Text color={seriesOneLabel} {...valueLabelProps}>
           {seriesOneFormatted}
         </Text>
         <MiniArrowRightIcon color={seriesOneLabel} mx={iconPadding} size={16} />
@@ -29,8 +36,7 @@ export const ValueLabelsContent = ({
     <Text
       color={isStacked ? seriesTwoLabel : seriesOneLabel}
       fontWeight={isStacked ? 'bold' : 'normal'}
-      variant="p-small"
-      whiteSpace="nowrap"
+      {...valueLabelProps}
     >
       {displayValueFormatted}
     </Text>

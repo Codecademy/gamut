@@ -189,12 +189,7 @@ export const BarRow = forwardRef<
             </Text>
           </FlexBox>
 
-          <RightLabelsHoverTarget
-            alignItems="center"
-            flexShrink={0}
-            gap={8}
-            justifyContent="flex-end"
-          >
+          <RightLabelsHoverTarget gap={8}>
             {valueLabelsContent}
           </RightLabelsHoverTarget>
         </FlexBox>
@@ -230,10 +225,7 @@ export const BarRow = forwardRef<
     const rightLabel = useMemo(
       () => (
         <RightLabelsHoverTarget
-          alignItems="center"
           display={{ _: 'none', c_xs: 'flex' }}
-          flexShrink={0}
-          justifyContent="flex-end"
           pl={{ _: 0, c_xs: 24 }}
           ref={rightLabelRef}
           width={{ _: 'auto', c_xs: rightWidthValue }}
