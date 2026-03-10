@@ -73,9 +73,9 @@ describe('BarChart Utils', () => {
     });
   });
 
-  describe('xScale tick count calculation', () => {
-    it('calculates tick count correctly with custom xScale', () => {
-      // Formula: Math.ceil(maxRange / xScale) + 1
+  describe('scaleInterval tick count calculation', () => {
+    it('calculates tick count correctly with custom scaleInterval', () => {
+      // Formula: Math.ceil(maxRange / scaleInterval) + 1
       const tickCount1 = Math.ceil(1000 / 250) + 1;
       expect(tickCount1).toBe(5);
 

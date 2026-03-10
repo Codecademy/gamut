@@ -45,7 +45,7 @@ export const BarChart = <
   title,
   translations,
   unit = '',
-  xScale,
+  scaleInterval,
 }: BarChartProps<TBarValues>) => {
   const mergedTranslations = useMemo(
     () => ({
@@ -71,7 +71,7 @@ export const BarChart = <
 
   const contextValue = useBarChart({
     maxRange,
-    xScale,
+    scaleInterval,
     unit,
     styleConfig,
     animate,
@@ -79,7 +79,7 @@ export const BarChart = <
     translations: mergedTranslations,
   });
 
-  const tickCount = Math.ceil(maxRange / contextValue.xScale) + 1;
+  const tickCount = Math.ceil(maxRange / contextValue.scaleInterval) + 1;
 
   const titleId = useId();
   const sortSelectId = useId();

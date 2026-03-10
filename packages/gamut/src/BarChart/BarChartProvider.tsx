@@ -8,7 +8,7 @@ import { BarChartStyles } from './shared/types';
 
 export interface BarChartContextProps {
   maxRange: number;
-  xScale: number;
+  scaleInterval: number;
   unit: string;
   styleConfig: Required<BarChartStyles>;
   animate: boolean;
@@ -30,7 +30,7 @@ export const defaultStyleConfig: Required<BarChartStyles> = {
 
 export const BarChartContext = createContext<BarChartContextProps>({
   maxRange: 100,
-  xScale: 10,
+  scaleInterval: 10,
   unit: '',
   styleConfig: defaultStyleConfig,
   animate: false,

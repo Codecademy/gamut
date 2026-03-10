@@ -307,7 +307,7 @@ export const CustomScale: Story = {
   args: {
     barValues: simpleBarData,
     maxRange: 2000,
-    xScale: 250,
+    scaleInterval: 250,
     title: 'Skills chart with custom scale',
     description: 'Custom scale intervals for more granular value display',
   },

@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 
 import { Box } from '../../Box';
 import { Text } from '../../Typography';
-import { formatNumberUSCompact } from '../utils';
+import { formatNumberUnitCompact } from '../utils';
 import { useBarChartContext, useLabelPositions } from '../utils/hooks';
 import { VerticalSpacer } from './VerticalSpacer';
 
@@ -70,7 +70,7 @@ export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
           textAlign="center"
           variant="p-small"
         >
-          {formatNumberUSCompact({
+          {formatNumberUnitCompact({
             num: value,
             locale: translations.locale,
           })}

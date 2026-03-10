@@ -98,7 +98,7 @@ export type BarChartProps<
   /** Style configuration for colors */
   styleConfig?: BarChartStyles;
   /** Interval for x-axis scale markers */
-  xScale?: number;
+  scaleInterval?: number;
   /** Array of sort options to display in the dropdown. Can include string literals ('alphabetically', 'numerically', 'none') or custom sort functions. If not provided, the Select dropdown will not render. */
   sortFns?: (
     | 'alphabetically'

@@ -40,7 +40,7 @@ export const formatValueWithUnit = ({
   return unit ? `${formatted} ${unit}` : formatted;
 };
 
-export const formatNumberUSCompact = ({
+export const formatNumberUnitCompact = ({
   num,
   locale = 'en',
 }: {
@@ -72,7 +72,6 @@ export const sortBars = <T extends BarProps>({
     if (sortBy === 'label') {
       return a.categoryLabel.localeCompare(b.categoryLabel);
     }
-    // sortBy === 'value' - use seriesTwoValue if available, otherwise seriesOneValue
     const aValue = a.seriesTwoValue ?? a.seriesOneValue;
     const bValue = b.seriesTwoValue ?? b.seriesOneValue;
     return aValue - bValue;
