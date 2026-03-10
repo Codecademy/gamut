@@ -8,12 +8,10 @@ import { VerticalSpacer } from './VerticalSpacer';
 
 const GridLineWrapper = styled(Box)(
   css({
-    bottom: 0,
-    left: 0,
+    inset: 0,
     pointerEvents: 'none',
     position: 'absolute',
-    right: 0,
-    top: 0,
+
     zIndex: 0,
   })
 );
@@ -21,14 +19,10 @@ const GridLineWrapper = styled(Box)(
 const GridLineContainer = styled(Box)(
   css({
     borderColor: 'background-disabled',
-    borderLeft: 1,
-    borderRight: 1,
-    bottom: 0,
+    borderX: 1,
     display: { _: 'none', xs: 'block' },
-    left: 0,
+    inset: 0,
     position: 'absolute',
-    right: 0,
-    top: 0,
   })
 );
 
