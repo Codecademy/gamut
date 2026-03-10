@@ -1,10 +1,6 @@
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import { useId, useMemo } from 'react';
 
 import { Box, FlexBox } from '../Box';
-import { FormGroupLabel } from '../Form';
-import { Select } from '../Form/inputs/Select';
 import { Text } from '../Typography/Text';
 import { BarChartProvider } from './BarChartProvider';
 import { BarRow } from './BarRow';
@@ -20,6 +16,7 @@ import {
   PartialBarChartTranslations,
 } from './shared/translations';
 import { BarChartProps, BarProps, InferBarType } from './shared/types';
+import { StyledFormGroupLabel, WidthSelect } from './SortSelect';
 import { getBarRowKey } from './utils';
 import { useBarChart, useBarChartSort } from './utils/hooks';
 
@@ -32,19 +29,6 @@ export type {
   BarChartTranslations,
   PartialBarChartTranslations,
 };
-
-const StyledFormGroupLabel = styled(FormGroupLabel)(
-  css({
-    mr: 8,
-    mt: 4,
-  })
-);
-const WidthSelect = styled(Select)(
-  css({
-    width: 'max-content',
-    pr: 12,
-  })
-);
 
 export const BarChart = <
   TBarValues extends BarProps[] | readonly BarProps[] = BarProps[]
@@ -159,9 +143,9 @@ export const BarChart = <
         position="relative"
         width="100%"
       >
-        <ScaleChartHeader labelCount={tickCount} max={maxRange} min={0} />
+        <ScaleChartHeader labelCount={tickCount} max={maxRange} />
         <Box position="relative" width="100%">
-          <GridLines max={maxRange} min={0} tickCount={tickCount} />
+          <GridLines max={maxRange} tickCount={tickCount} />
           <BarsList aria-labelledby={ariaLabelledBy ?? titleId}>
             {sortedBars.map((bar, index) => (
               <BarRow index={index} key={getBarRowKey(bar, index)} {...bar} />

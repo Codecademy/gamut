@@ -52,7 +52,6 @@ export const BarRow = forwardRef<
     ref
   ) => {
     const {
-      minRange,
       maxRange,
       unit,
       styleConfig,
@@ -91,13 +90,11 @@ export const BarRow = forwardRef<
     const { bgWidthStr, fgWidthStr } = useMemo(() => {
       const bgWidth = calculateBarWidth({
         value: displayValue,
-        minRange,
         maxRange,
       });
       const fgWidth = isStacked
         ? calculateBarWidth({
             value: seriesOneValue,
-            minRange,
             maxRange,
           })
         : 0;
@@ -105,7 +102,7 @@ export const BarRow = forwardRef<
         bgWidthStr: `${Math.max(minBarWidth, bgWidth)}%`,
         fgWidthStr: `${Math.max(minBarWidth, fgWidth)}%`,
       };
-    }, [displayValue, isStacked, seriesOneValue, minRange, maxRange]);
+    }, [displayValue, isStacked, seriesOneValue, maxRange]);
 
     const valuesSummary = useMemo(
       () =>

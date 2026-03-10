@@ -40,37 +40,16 @@ describe('BarChart Utils', () => {
   });
 
   describe('calculateBarWidth', () => {
-    it('calculates bar width as percentage of range', () => {
-      expect(calculateBarWidth({ value: 50, minRange: 0, maxRange: 100 })).toBe(
-        50
-      );
-      expect(calculateBarWidth({ value: 25, minRange: 0, maxRange: 100 })).toBe(
-        25
-      );
-      expect(calculateBarWidth({ value: 0, minRange: 0, maxRange: 100 })).toBe(
-        0
-      );
-      expect(
-        calculateBarWidth({ value: 100, minRange: 0, maxRange: 100 })
-      ).toBe(100);
-    });
-
-    it('handles non-zero minRange', () => {
-      expect(
-        calculateBarWidth({ value: 75, minRange: 50, maxRange: 100 })
-      ).toBe(50);
-      expect(
-        calculateBarWidth({ value: 50, minRange: 50, maxRange: 100 })
-      ).toBe(0);
+    it('calculates bar width as percentage of maxRange', () => {
+      expect(calculateBarWidth({ value: 50, maxRange: 100 })).toBe(50);
+      expect(calculateBarWidth({ value: 25, maxRange: 100 })).toBe(25);
+      expect(calculateBarWidth({ value: 0, maxRange: 100 })).toBe(0);
+      expect(calculateBarWidth({ value: 100, maxRange: 100 })).toBe(100);
     });
 
     it('handles values outside range', () => {
-      expect(
-        calculateBarWidth({ value: 150, minRange: 0, maxRange: 100 })
-      ).toBe(100);
-      expect(
-        calculateBarWidth({ value: -10, minRange: 0, maxRange: 100 })
-      ).toBe(0);
+      expect(calculateBarWidth({ value: 150, maxRange: 100 })).toBe(100);
+      expect(calculateBarWidth({ value: -10, maxRange: 100 })).toBe(0);
     });
   });
 
@@ -102,143 +81,85 @@ describe('BarChart Utils', () => {
   });
 
   describe('calculateTicksAndRange', () => {
-    it('calculates tick count and nice range', () => {
+    it('calculates tick count and nice range (min is always 0)', () => {
       const [tickCount, niceMin, niceMax] = calculateTicksAndRange({
         maxTicks: 5,
-        min: 0,
         max: 100,
       });
 
       expect(tickCount).toBeGreaterThan(0);
-      expect(niceMin).toBeLessThanOrEqual(0);
+      expect(niceMin).toBe(0);
       expect(niceMax).toBeGreaterThanOrEqual(100);
     });
 
     it('handles different maxTicks values', () => {
       const [tickCount1] = calculateTicksAndRange({
         maxTicks: 3,
-        min: 0,
         max: 100,
       });
       const [tickCount2] = calculateTicksAndRange({
         maxTicks: 10,
-        min: 0,
         max: 100,
       });
 
       expect(tickCount2).toBeGreaterThan(tickCount1);
     });
-
-    it('handles non-zero min values', () => {
-      const [tickCount, niceMin, niceMax] = calculateTicksAndRange({
-        maxTicks: 5,
-        min: 50,
-        max: 150,
-      });
-
-      expect(niceMin).toBeLessThanOrEqual(50);
-      expect(niceMax).toBeGreaterThanOrEqual(150);
-      expect(tickCount).toBeGreaterThan(0);
-    });
   });
 
   describe('getLabel', () => {
     it('calculates label value for given index', () => {
-      expect(getLabel({ labelCount: 5, labelIndex: 0, min: 0, max: 100 })).toBe(
-        0
-      );
-      expect(getLabel({ labelCount: 5, labelIndex: 4, min: 0, max: 100 })).toBe(
-        100
-      );
+      expect(getLabel({ labelCount: 5, labelIndex: 0, max: 100 })).toBe(0);
+      expect(getLabel({ labelCount: 5, labelIndex: 4, max: 100 })).toBe(100);
     });
 
     it('handles single label', () => {
-      expect(getLabel({ labelCount: 1, labelIndex: 0, min: 0, max: 100 })).toBe(
-        100
-      );
+      expect(getLabel({ labelCount: 1, labelIndex: 0, max: 100 })).toBe(100);
     });
 
     it('calculates intermediate label values', () => {
       const value = getLabel({
         labelCount: 5,
         labelIndex: 2,
-        min: 0,
         max: 100,
       });
       expect(value).toBeGreaterThan(0);
       expect(value).toBeLessThan(100);
     });
-
-    it('handles non-zero min values', () => {
-      expect(
-        getLabel({ labelCount: 5, labelIndex: 0, min: 50, max: 150 })
-      ).toBe(50);
-      expect(
-        getLabel({ labelCount: 5, labelIndex: 4, min: 50, max: 150 })
-      ).toBe(150);
-    });
   });
 
   describe('calculatePositionPercent', () => {
     it('calculates position percentage correctly', () => {
-      expect(calculatePositionPercent({ value: 50, min: 0, max: 100 })).toBe(
-        50
-      );
-      expect(calculatePositionPercent({ value: 25, min: 0, max: 100 })).toBe(
-        25
-      );
-      expect(calculatePositionPercent({ value: 0, min: 0, max: 100 })).toBe(0);
-      expect(calculatePositionPercent({ value: 100, min: 0, max: 100 })).toBe(
-        100
-      );
+      expect(calculatePositionPercent({ value: 50, max: 100 })).toBe(50);
+      expect(calculatePositionPercent({ value: 25, max: 100 })).toBe(25);
+      expect(calculatePositionPercent({ value: 0, max: 100 })).toBe(0);
+      expect(calculatePositionPercent({ value: 100, max: 100 })).toBe(100);
     });
 
-    it('handles non-zero min values', () => {
-      expect(calculatePositionPercent({ value: 75, min: 50, max: 100 })).toBe(
-        50
-      );
-      expect(calculatePositionPercent({ value: 50, min: 50, max: 100 })).toBe(
-        0
-      );
-      expect(calculatePositionPercent({ value: 100, min: 50, max: 100 })).toBe(
-        100
-      );
-    });
-
-    it('handles edge case when min equals max', () => {
-      expect(calculatePositionPercent({ value: 50, min: 50, max: 50 })).toBe(0);
+    it('handles edge case when max is 0', () => {
+      expect(calculatePositionPercent({ value: 50, max: 0 })).toBe(0);
     });
 
     it('handles values outside range', () => {
-      expect(calculatePositionPercent({ value: 150, min: 0, max: 100 })).toBe(
-        150
-      );
-      expect(calculatePositionPercent({ value: -10, min: 0, max: 100 })).toBe(
-        -10
-      );
+      expect(calculatePositionPercent({ value: 150, max: 100 })).toBe(150);
+      expect(calculatePositionPercent({ value: -10, max: 100 })).toBe(-10);
     });
   });
 
   describe('xScale tick count calculation', () => {
     it('calculates tick count correctly with custom xScale', () => {
-      // Formula: Math.ceil((maxRange - minRange) / xScale) + 1
-      const tickCount1 = Math.ceil((1000 - 0) / 250) + 1;
+      // Formula: Math.ceil(maxRange / xScale) + 1
+      const tickCount1 = Math.ceil(1000 / 250) + 1;
       expect(tickCount1).toBe(5);
 
-      const tickCount2 = Math.ceil((2000 - 0) / 500) + 1;
+      const tickCount2 = Math.ceil(2000 / 500) + 1;
       expect(tickCount2).toBe(5);
 
-      const tickCount3 = Math.ceil((100 - 0) / 25) + 1;
+      const tickCount3 = Math.ceil(100 / 25) + 1;
       expect(tickCount3).toBe(5);
     });
 
-    it('handles non-zero minRange', () => {
-      const tickCount = Math.ceil((150 - 50) / 25) + 1;
-      expect(tickCount).toBe(5);
-    });
-
     it('handles fractional results correctly', () => {
-      const tickCount = Math.ceil((100 - 0) / 30) + 1;
+      const tickCount = Math.ceil(100 / 30) + 1;
       expect(tickCount).toBe(5); // Math.ceil(100/30) = 4, +1 = 5
     });
   });

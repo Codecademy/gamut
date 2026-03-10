@@ -30,26 +30,24 @@ export interface LabelPosition {
 }
 
 /**
- * Hook that calculates label positions for a given range and count
- * Returns an array of { value, positionPercent } objects
+ * Hook that calculates label positions for a given max and count (scale min is always 0).
+ * Returns an array of { value, positionPercent } objects.
  */
 export const useLabelPositions = ({
-  min,
   max,
   count,
 }: {
-  min: number;
   max: number;
   count: number;
 }): LabelPosition[] => {
   return useMemo(
     () =>
       Array.from({ length: count }, (_, i) => {
-        const value = getLabel({ labelCount: count, labelIndex: i, min, max });
-        const positionPercent = calculatePositionPercent({ value, min, max });
+        const value = getLabel({ labelCount: count, labelIndex: i, max });
+        const positionPercent = calculatePositionPercent({ value, max });
         return { value, positionPercent };
       }),
-    [min, max, count]
+    [max, count]
   );
 };
 
@@ -66,8 +64,6 @@ export interface UseBarChartOptions {
   barCount?: number;
   translations: BarChartTranslations;
 }
-
-const MIN_RANGE = 0;
 
 export const useBarChart = ({
   maxRange,
@@ -132,7 +128,6 @@ export const useBarChart = ({
 
   return useMemo(
     () => ({
-      minRange: MIN_RANGE,
       maxRange,
       xScale: xScale ?? Math.ceil(maxRange / 5),
       unit,

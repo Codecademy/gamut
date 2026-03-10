@@ -49,16 +49,14 @@ const GridLine = styled(Box)<{ positionPercent: number }>(
 
 export interface GridLinesProps {
   tickCount: number;
-  min: number;
   max: number;
 }
 
 export const GridLines: React.FC<GridLinesProps> = ({
   tickCount,
-  min,
   max,
 }) => {
-  const labelPositions = useLabelPositions({ min, max, count: tickCount });
+  const labelPositions = useLabelPositions({ max, count: tickCount });
 
   const lines = useMemo(
     () =>

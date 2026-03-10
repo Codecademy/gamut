@@ -114,7 +114,4 @@ export type BarChartProps<
   translations?: PartialBarChartTranslations;
 };
 
-/** Internal type for range calculations; min is always 0 at the BarChart API level. */
-export type BarChartRange = { minRange: number; maxRange: number };
-
 export type BarChartUnit = Pick<BarChartProps, 'unit'>;

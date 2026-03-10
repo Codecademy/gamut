@@ -9,9 +9,7 @@ import { useBarChartContext, useLabelPositions } from '../utils/hooks';
 import { VerticalSpacer } from './VerticalSpacer';
 
 export interface ScaleChartHeaderProps {
-  /** Minimum value on the scale */
-  min: number;
-  /** Maximum value on the scale */
+  /** Maximum value on the scale (min is always 0) */
   max: number;
   /** Number of labels to display */
   labelCount: number;
@@ -58,11 +56,10 @@ const HeaderLabelArea = styled(Box)(
 
 export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
   labelCount,
-  min,
   max,
 }) => {
   const { translations } = useBarChartContext();
-  const labelPositions = useLabelPositions({ min, max, count: labelCount });
+  const labelPositions = useLabelPositions({ max, count: labelCount });
 
   const scaleLabels = useMemo(
     () =>

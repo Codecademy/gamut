@@ -1,5 +1,5 @@
 import { BarChartTranslations } from '../shared/translations';
-import { BarChartRange, BarChartUnit, BarProps } from '../shared/types';
+import { BarChartUnit, BarProps } from '../shared/types';
 
 export const numDigits = ({ num }: { num: number }) => {
   return Math.max(Math.floor(Math.log10(Math.abs(num))), 0) + 1;
@@ -17,38 +17,33 @@ export const calculatePercent = ({
 
 export const calculateBarWidth = ({
   value,
-  minRange,
   maxRange,
 }: {
   value: number;
-} & BarChartRange) => {
-  const range = maxRange - minRange;
-  const adjustedValue = Math.max(0, Math.min(range, value - minRange));
-  return Math.floor(calculatePercent({ value: adjustedValue, total: range }));
+  maxRange: number;
+}) => {
+  const adjustedValue = Math.max(0, Math.min(maxRange, value));
+  return Math.floor(calculatePercent({ value: adjustedValue, total: maxRange }));
 };
 
 /**
- * Calculate tick spacing and nice minimum and maximum data points on the axis.
+ * Calculate tick spacing and nice maximum for the axis (min is always 0).
  */
 export const calculateTicksAndRange = ({
   maxTicks,
-  min,
   max,
 }: {
   maxTicks: number;
-} & {
-  min: BarChartRange['minRange'];
-  max: BarChartRange['maxRange'];
+  max: number;
 }): [number, number, number] => {
-  const range = niceNum({ range: max - min, roundDown: false });
+  const range = niceNum({ range: max, roundDown: false });
   const tickSpacing = niceNum({
     range: range / (maxTicks - 1),
     roundDown: true,
   });
-  const niceMin = Math.floor(min / tickSpacing) * tickSpacing;
   const niceMax = Math.ceil(max / tickSpacing) * tickSpacing;
   const tickCount = range / tickSpacing;
-  return [tickCount, niceMin, niceMax];
+  return [tickCount, 0, niceMax];
 };
 
 /**
@@ -212,43 +207,35 @@ export const getValuesSummary = ({
 };
 
 /**
- * Calculates the value for a given label position
+ * Calculates the value for a given label position (scale min is always 0).
  */
 export const getLabel = ({
   labelCount,
   labelIndex,
-  min,
   max,
 }: {
   labelCount: number;
   labelIndex: number;
-} & {
-  min: BarChartRange['minRange'];
-  max: BarChartRange['maxRange'];
+  max: number;
 }): number => {
   if (labelCount <= 1) return max;
   const incrementalDecimal = labelIndex / (labelCount - 1);
-  return Math.floor(min + incrementalDecimal * (max - min));
+  return Math.floor(incrementalDecimal * max);
 };
 
 /**
- * Calculates the percentage position for a given value within a range
- * Returns a value between 0 and 100 representing the position percentage
+ * Calculates the percentage position for a given value within 0–max range.
+ * Returns a value between 0 and 100 representing the position percentage.
  */
 export const calculatePositionPercent = ({
   value,
-  min,
   max,
 }: {
   value: number;
-} & {
-  min: BarChartRange['minRange'];
-  max: BarChartRange['maxRange'];
+  max: number;
 }): number => {
-  if (max === min) return 0;
-  const range = max - min;
-  const adjustedValue = value - min;
-  return (adjustedValue / range) * 100;
+  if (max === 0) return 0;
+  return (value / max) * 100;
 };
 
 /**

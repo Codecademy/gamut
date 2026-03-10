@@ -7,7 +7,6 @@ import {
 import { BarChartStyles } from './shared/types';
 
 export interface BarChartContextProps {
-  minRange: number;
   maxRange: number;
   xScale: number;
   unit: string;
@@ -30,7 +29,6 @@ export const defaultStyleConfig: Required<BarChartStyles> = {
 };
 
 export const BarChartContext = createContext<BarChartContextProps>({
-  minRange: 0,
   maxRange: 100,
   xScale: 10,
   unit: '',
@@ -38,9 +36,7 @@ export const BarChartContext = createContext<BarChartContextProps>({
   animate: false,
   widestLeftLabelWidth: null,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setWidestLeftLabelWidth: () => {
-    // No-op: default context value
-  },
+  setWidestLeftLabelWidth: () => {},
   widestRightLabelWidth: null,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setWidestRightLabelWidth: () => {
@@ -49,7 +45,5 @@ export const BarChartContext = createContext<BarChartContextProps>({
   isMeasuring: true,
   translations: defaultBarChartTranslations,
 });
-
-BarChartContext.displayName = 'BarChartContext';
 
 export const BarChartProvider = BarChartContext.Provider;
