@@ -14,9 +14,7 @@ expect.extend(matchers);
 const renderView = setupRtl(List, {
   children: (
     <ListRow data-testid="row-el">
-      <ListCol data-first-col data-last-col>
-        Hello
-      </ListCol>
+      <ListCol>Hello</ListCol>
     </ListRow>
   ),
   id: 'list-el',

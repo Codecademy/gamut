@@ -101,7 +101,6 @@ const spacingVariants = variant({
   prop: 'spacing',
   base: {
     px: { _: 8, c_base: 0, c_sm: 8 },
-    // px: 8,
   },
   variants: {
     normal: {
