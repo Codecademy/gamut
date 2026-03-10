@@ -52,10 +52,7 @@ export interface GridLinesProps {
   max: number;
 }
 
-export const GridLines: React.FC<GridLinesProps> = ({
-  tickCount,
-  max,
-}) => {
+export const GridLines: React.FC<GridLinesProps> = ({ tickCount, max }) => {
   const labelPositions = useLabelPositions({ max, count: tickCount });
 
   const lines = useMemo(

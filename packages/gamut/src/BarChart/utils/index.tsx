@@ -19,7 +19,9 @@ export const calculateBarWidth = ({
   maxRange: number;
 }) => {
   const adjustedValue = Math.max(0, Math.min(maxRange, value));
-  return Math.floor(calculatePercent({ value: adjustedValue, total: maxRange }));
+  return Math.floor(
+    calculatePercent({ value: adjustedValue, total: maxRange })
+  );
 };
 
 /**
@@ -178,5 +180,7 @@ export const getBarRowKey = (
   index: number
 ): string =>
   bar.categoryLabel && bar.seriesOneValue
-    ? `${bar.categoryLabel}-${bar.seriesOneValue}-${bar.seriesTwoValue ?? ''}-${index}`
+    ? `${bar.categoryLabel}-${bar.seriesOneValue}-${
+        bar.seriesTwoValue ?? ''
+      }-${index}`
     : String(index);
