@@ -47,8 +47,9 @@ Use BarChart to display comparative data across categories, such as skills progr
 ## Anatomy
 
 <ImageWrapper
-  src="./organisms/barchart.png"
   alt="The anatomy of the BarChart component, detailed below."
+  height="auto"
+  src="./organisms/barchart.png"
 />
 
 1. **Bar row**
@@ -191,7 +192,11 @@ TypeScript automatically infers the bar type from your `barValues` prop. This me
 
 ```typescript
 const barsWithDates = [
-  { categoryLabel: 'Python', seriesOneValue: 1500, dateAdded: new Date('2023-01-15') },
+  {
+    categoryLabel: 'Python',
+    seriesOneValue: 1500,
+    dateAdded: new Date('2023-01-15'),
+  },
   {
     categoryLabel: 'JavaScript',
     seriesOneValue: 2000,
