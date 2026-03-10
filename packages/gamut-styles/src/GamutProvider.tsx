@@ -60,7 +60,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   useGlobals = true,
   useCache = true,
   nonce,
-  useLogicalProperties = true,
+  useLogicalProperties = false,
 }) => {
   const { hasGlobals, hasCache } = useContext(GamutContext);
   const shouldCreateCache = useCache && !hasCache;

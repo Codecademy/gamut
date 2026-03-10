@@ -50,8 +50,9 @@ describe('List', () => {
   });
 
   // Note: Only testing one mode here since variant() caches styles after first render.
+  // RTL: will set to logical properties after switching to opt-out
   it('configures columns with the correct variants', () => {
-    const useLogicalProperties = true;
+    const useLogicalProperties = false;
     const paddingLeft = useLogicalProperties
       ? 'paddingInlineStart'
       : 'paddingLeft';
