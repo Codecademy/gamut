@@ -35,7 +35,6 @@ export const TableHeaderRow: HeaderComponent = ({
   const { expandable, selectable, onSelect, onFilter, onSort, prefixId } =
     useControlContext();
   const { variant, listType } = useListContext();
-  const dataTablePadding = listType === 'table' && variant === 'table';
   const headerRowDirections = useListState().query?.sort;
 
   return (
@@ -44,7 +43,7 @@ export const TableHeaderRow: HeaderComponent = ({
       isDataList={listType === 'table' && variant !== 'table'}
     >
       {selectable && (
-        <ListCol data-first-col size="content">
+        <ListCol size="content">
           {!hideSelectAll && (
             <SelectControl
               disabled={empty}
@@ -57,7 +56,7 @@ export const TableHeaderRow: HeaderComponent = ({
           )}
         </ListCol>
       )}
-      {columns.map(({ key, header, sortable, filters, ...colProps }, idx) => {
+      {columns.map(({ key, header, sortable, filters, ...colProps }) => {
         const rowProperty = key as string;
         const renderKey = prefixId(`header-col-${rowProperty}`);
         const columnText = String(header || key);
@@ -68,18 +67,12 @@ export const TableHeaderRow: HeaderComponent = ({
             : sortDirection === 'asc'
             ? 'ascending'
             : 'descending';
-        const isFirst = !selectable && idx === 0;
-        const isLast = !expandable && idx === columns.length - 1;
-
         return (
           <ListCol
             key={renderKey}
             {...colProps}
-            {...(isFirst && { 'data-first-col': true })}
-            {...(isLast && { 'data-last-col': true })}
             aria-sort={sortable ? ariaSortDirection : undefined}
             columnHeader
-            dataTablePadding={dataTablePadding}
           >
             <FlexBox
               alignItems={selectable ? 'center' : 'flex-end'}
@@ -107,7 +100,7 @@ export const TableHeaderRow: HeaderComponent = ({
         );
       })}
       {expandable && (
-        <ListCol data-last-col ghost size="content">
+        <ListCol ghost size="content">
           <ExpandControl />
         </ListCol>
       )}

@@ -9,7 +9,6 @@ import {
 import { Text } from '../../..';
 import { ListCol, ListRow } from '../../../List';
 import { ColProps } from '../../../List/elements';
-import { useListContext } from '../../../List/ListProvider';
 import { Shimmer } from '../../../Loading/Shimmer';
 import { ExpandControl, SelectControl } from '../../Controls';
 import { useControlContext } from '../../hooks/useListControls';
@@ -48,10 +47,7 @@ export const TableRow: DataRow = ({
     prefixId,
   } = useControlContext();
 
-  const { variant, listType } = useListContext();
-  const dataTablePadding = listType === 'table' && variant === 'table';
-
-  const listColProps = { dataTablePadding, showOverflow };
+  const listColProps = { showOverflow };
 
   const controlIndices = useMemo(() => {
     const controlIndices = new Map<number, number>();
@@ -86,7 +82,6 @@ export const TableRow: DataRow = ({
       {selectable && (
         <ListCol
           {...listColProps}
-          data-first-col
           display={{ _: 'flex', c_sm: 'flex' }}
           size="content"
           type="select"
@@ -114,13 +109,6 @@ export const TableRow: DataRow = ({
           fill,
           type,
         };
-        const isFirst = !selectable && index === 0;
-        const isLast = !expandable && index === columns.length - 1;
-        const edgeProps = {
-          ...(isFirst && { 'data-first-col': true }),
-          ...(isLast && { 'data-last-col': true }),
-        };
-
         if (type === 'control') {
           const controlIndex = controlIndices.get(index) ?? 0;
 
@@ -149,7 +137,7 @@ export const TableRow: DataRow = ({
 
         if (loading) {
           return (
-            <ListCol {...colProps} key={newKey} {...edgeProps}>
+            <ListCol {...colProps} key={newKey}>
               <Shimmer
                 height="calc(100% - 1rem)"
                 minHeight={24}
@@ -160,7 +148,7 @@ export const TableRow: DataRow = ({
         }
 
         return (
-          <ListCol {...colProps} key={newKey} {...colConfig} {...edgeProps}>
+          <ListCol {...colProps} key={newKey} {...colConfig}>
             {render ? (
               render(row)
             ) : typeof row[key] === 'string' || typeof row[key] === 'number' ? (
@@ -184,7 +172,6 @@ export const TableRow: DataRow = ({
       {expandable && (
         <ListCol
           {...listColProps}
-          data-last-col
           order={{ _: 1000, c_sm: 'initial' }}
           type="expandControl"
         >
