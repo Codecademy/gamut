@@ -7,7 +7,7 @@ import {
 } from '@emotion/react';
 import { MotionConfig } from 'framer-motion';
 import { setNonce } from 'get-nonce';
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useMemo, useRef } from 'react';
 import * as React from 'react';
 
 import { createEmotionCache } from './cache';
@@ -94,15 +94,23 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     </>
   );
 
-  // Merge useLogicalProperties into theme so variance can access it via props.theme
-  const themeWithLogicalProperties = {
-    ...theme,
-    useLogicalProperties,
-  };
-  const content = (
-    <ThemeProvider theme={themeWithLogicalProperties}>
-      {nonce ? <MotionConfig nonce={nonce}>{children}</MotionConfig> : children}
-    </ThemeProvider>
+  // Merge useLogicalProperties into theme so variance can access it via props.theme.
+  const themeWithLogicalProperties = useMemo(
+    () => ({ ...theme, useLogicalProperties }),
+    [theme, useLogicalProperties]
+  );
+
+  const content = useMemo(
+    () => (
+      <ThemeProvider theme={themeWithLogicalProperties}>
+        {nonce ? (
+          <MotionConfig nonce={nonce}>{children}</MotionConfig>
+        ) : (
+          children
+        )}
+      </ThemeProvider>
+    ),
+    [themeWithLogicalProperties, nonce, children]
   );
 
   if (activeCache.current) {

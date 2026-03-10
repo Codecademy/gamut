@@ -523,7 +523,7 @@ describe('ConnectedNestedCheckboxes utils', () => {
     });
 
     it('should render an unchecked checkbox with correct props', () => {
-      const state = { checked: false, indeterminate: false };
+      const state = { checked: false };
 
       const result = renderCheckbox({
         option: mockOption,
