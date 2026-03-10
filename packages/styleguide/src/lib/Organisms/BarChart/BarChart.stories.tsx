@@ -199,7 +199,7 @@ export const WithExternalTitle: Story = {
           Programming Skills Overview
         </Box>
         <BarChart
-          aria-labelledby="external-title"
+          aria-labelledby="external-chart-title"
           barValues={simpleBarData}
           description="Experience points earned across different programming languages"
           hideDescription={false}
