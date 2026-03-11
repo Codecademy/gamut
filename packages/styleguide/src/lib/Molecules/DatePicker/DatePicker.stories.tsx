@@ -28,6 +28,7 @@ export const Default: Story = {
           setSelectedDate={setSelectedDate}
           label="Date"
           placeholder="MM/DD/YYYY"
+          locale="de-DE"
         />
       </Box>
     );
@@ -46,6 +47,27 @@ export const WithInitialDate: Story = {
         label="Date"
         placeholder="MM/DD/YYYY"
       />
+    );
+  },
+};
+
+/** Range mode: two inputs for start and end date. First calendar click sets start, second sets end. */
+export const Range: Story = {
+  render: function DatePickerStory() {
+    const [startDate, setStartDate] = useState<Date | null>(null);
+    const [endDate, setEndDate] = useState<Date | null>(null);
+    return (
+      <Box p={32}>
+        <DatePicker
+          mode="range"
+          startDate={startDate}
+          endDate={endDate}
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+          startLabel="Start date"
+          endLabel="End date"
+        />
+      </Box>
     );
   },
 };
@@ -74,13 +96,8 @@ export const ComposedWithContext: Story = {
 };
 
 function ComposedDatePickerLayout() {
-  const {
-    isCalendarOpen,
-    openCalendar,
-    closeCalendar,
-    calendarDialogId,
-    inputRef,
-  } = useDatePicker();
+  const { isCalendarOpen, openCalendar, closeCalendar, calendarDialogId } =
+    useDatePicker();
 
   return (
     <>
@@ -90,7 +107,7 @@ function ComposedDatePickerLayout() {
       <PopoverContainer
         isOpen={isCalendarOpen}
         onRequestClose={closeCalendar}
-        targetRef={inputRef}
+        // targetRef={inputRef}
         alignment="bottom-left"
         invertAxis="x"
         offset={10}

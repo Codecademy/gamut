@@ -1,6 +1,14 @@
 /**
- * DatePicker – Single-date picker with input + calendar popover.
+ * DatePicker – Single-date and range picker with input + calendar popover.
  */
+export type {
+  DatePickerContextValue,
+  DatePickerProps,
+  DatePickerRangeProps,
+  DatePickerSingleProps,
+  UseDatePickerReturn,
+} from './types';
+
 export { DatePicker } from './DatePicker';
 export {
   DatePickerContext,
@@ -11,13 +19,7 @@ export { DatePickerCalendar } from './DatePickerCalendar';
 export type { DatePickerCalendarProps } from './DatePickerCalendar';
 export { DatePickerInput } from './DatePickerInput';
 export type { DatePickerInputProps } from './DatePickerInput';
-export type {
-  DatePickerContextValue,
-  DatePickerProps,
-  UseDatePickerArgs,
-  UseDatePickerReturn,
-  UseDatePickerInputProps,
-} from './types';
+
 export {
   Calendar,
   CalendarHeader,

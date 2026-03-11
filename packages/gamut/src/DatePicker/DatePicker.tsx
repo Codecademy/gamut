@@ -1,36 +1,33 @@
-import {
-  useCallback,
-  useEffect,
-  useId,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { useCallback, useId, useMemo, useRef, useState } from 'react';
 
-import { Box } from '../Box';
+import { FlexBox } from '../Box';
 import { PopoverContainer } from '../PopoverContainer';
 import { DatePickerCalendar } from './DatePickerCalendar';
 import { DatePickerProvider } from './DatePickerContext';
 import { DatePickerInput } from './DatePickerInput';
-import type { DatePickerContextValue, DatePickerProps } from './types';
+import type {
+  DatePickerContextValue,
+  DatePickerRangeProps,
+  DatePickerProps,
+} from './types';
+
+function isRangeProps(props: DatePickerProps): props is DatePickerRangeProps {
+  return props.mode === 'range';
+}
 
 /**
- * Single-date DatePicker. Holds shared state (selectedDate, isCalendarOpen, inputRef)
- * and provides it via context. DatePickerInput and DatePickerCalendar own their
- * specific state and update this shared state when needed.
- * With no children, renders the default layout (input + calendar popover).
- * With children, renders only children so you can compose the layout yourself.
+ * DatePicker: single-date or range. Holds shared state and provides it via context.
+ * Single: selectedDate, setSelectedDate. Range: startDate, endDate, setStartDate, setEndDate.
+ * With no children, renders default layout (input + calendar popover).
  */
-export function DatePicker({
-  selectedDate,
-  setSelectedDate,
-  locale = 'en-US',
-  disabledDates = [],
-  placeholder,
-  label,
-  id,
-  children,
-}: DatePickerProps) {
+export const DatePicker: React.FC<DatePickerProps> = (props) => {
+  const {
+    locale = 'en-US',
+    disabledDates = [],
+    placeholder,
+    mode,
+    children,
+  } = props;
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dialogId = useId();
@@ -42,20 +39,41 @@ export function DatePicker({
     inputRef.current?.focus();
   }, []);
 
+  // do we want to refer to this as startDate or selectedDate internally? its the selected date in single mode and the start date in range mode
+  const startDate = isRangeProps(props) ? props.startDate : props.selectedDate;
+  const endDate = isRangeProps(props) ? props.endDate : null; // null vs undefined?
+
+  const setSelection = useCallback(
+    (start: Date | null, end?: Date | null) => {
+      if (isRangeProps(props)) {
+        props.setStartDate(start);
+        props.setEndDate(end ?? null);
+      } else {
+        props.setSelectedDate(start);
+      }
+    },
+    [props]
+  );
+
   const contextValue = useMemo<DatePickerContextValue>(
     () => ({
-      selectedDate,
-      setSelectedDate,
+      mode: mode ?? 'single',
+      selectedDate: startDate,
+      startDate,
+      endDate,
+      setSelection,
       isCalendarOpen,
       openCalendar,
       closeCalendar,
       locale,
       disabledDates,
-      calendarDialogId, // do we need this in context? or just pass it as props? does that defeat the purpose of the context?
+      calendarDialogId,
     }),
     [
-      selectedDate,
-      setSelectedDate,
+      mode,
+      startDate,
+      endDate,
+      setSelection,
       isCalendarOpen,
       openCalendar,
       closeCalendar,
@@ -65,25 +83,42 @@ export function DatePicker({
     ]
   );
 
-  useEffect(() => {
-    if (!isCalendarOpen) return;
-    const id = setTimeout(() => inputRef.current?.focus(), 0);
-    return () => clearTimeout(id);
-  }, [isCalendarOpen]);
+  // what is this doing
+  // useEffect(() => {
+  //   if (!isCalendarOpen) return;
+  //   const id = setTimeout(() => inputRef.current?.focus(), 0);
+  //   return () => clearTimeout(id);
+  // }, [isCalendarOpen]);
 
   const content =
     children !== undefined ? (
       children
     ) : (
       <>
-        <Box width="fit-content">
-          <DatePickerInput
-            placeholder={placeholder}
-            label={label}
-            id={id}
-            ref={inputRef}
-          />
-        </Box>
+        <FlexBox width="fit-content" gap={8} wrap>
+          {mode === 'range' ? (
+            <>
+              <DatePickerInput
+                rangePart="start"
+                placeholder={placeholder}
+                label={props.startLabel}
+                ref={inputRef}
+              />
+              <DatePickerInput
+                rangePart="end"
+                placeholder={placeholder}
+                label={props.endLabel}
+                // does this need a ref?
+              />
+            </>
+          ) : (
+            <DatePickerInput
+              placeholder={placeholder}
+              label={props.label}
+              ref={inputRef}
+            />
+          )}
+        </FlexBox>
         <PopoverContainer
           alignment="bottom-left"
           invertAxis="x"
@@ -105,4 +140,4 @@ export function DatePicker({
   return (
     <DatePickerProvider value={contextValue}>{content}</DatePickerProvider>
   );
-}
+};

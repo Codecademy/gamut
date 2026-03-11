@@ -54,6 +54,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   focusedDate,
   onFocusedDateChange,
   onVisibleDateChange,
+  onEscapeKeyPress,
 }) => {
   const year = visibleDate.getFullYear();
   const month = visibleDate.getMonth();
@@ -72,7 +73,11 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
 
   const focusButton = useCallback((date: Date | null) => {
     if (date === null) return;
-    const key = new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
+    const key = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate()
+    ).getTime();
     buttonRefs.current.get(key)?.focus();
   }, []);
 
@@ -118,7 +123,11 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
           newDate = new Date(date);
           newDate.setDate(newDate.getDate() - 7);
           if (newDate.getMonth() !== month || newDate.getFullYear() !== year) {
-            newVisibleDate = new Date(newDate.getFullYear(), newDate.getMonth(), 1);
+            newVisibleDate = new Date(
+              newDate.getFullYear(),
+              newDate.getMonth(),
+              1
+            );
           }
           break;
         case 'ArrowDown':
@@ -126,16 +135,25 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
           newDate = new Date(date);
           newDate.setDate(newDate.getDate() + 7);
           if (newDate.getMonth() !== month || newDate.getFullYear() !== year) {
-            newVisibleDate = new Date(newDate.getFullYear(), newDate.getMonth(), 1);
+            newVisibleDate = new Date(
+              newDate.getFullYear(),
+              newDate.getMonth(),
+              1
+            );
           }
           break;
         case 'Home':
           e.preventDefault();
-          newDate = datesWithRow.find(({ rowIndex }) => rowIndex === currentRow)?.date ?? date;
+          newDate =
+            datesWithRow.find(({ rowIndex }) => rowIndex === currentRow)
+              ?.date ?? date;
           break;
         case 'End':
           e.preventDefault();
-          newDate = [...datesWithRow].reverse().find(({ rowIndex }) => rowIndex === currentRow)?.date ?? date;
+          newDate =
+            [...datesWithRow]
+              .reverse()
+              .find(({ rowIndex }) => rowIndex === currentRow)?.date ?? date;
           break;
         case 'PageDown':
           e.preventDefault();
@@ -144,7 +162,11 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
           } else {
             newDate = clampToMonth(year, month + 1, day);
           }
-          newVisibleDate = new Date(newDate.getFullYear(), newDate.getMonth(), 1);
+          newVisibleDate = new Date(
+            newDate.getFullYear(),
+            newDate.getMonth(),
+            1
+          );
           break;
         case 'PageUp':
           e.preventDefault();
@@ -153,12 +175,20 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
           } else {
             newDate = clampToMonth(year, month - 1, day);
           }
-          newVisibleDate = new Date(newDate.getFullYear(), newDate.getMonth(), 1);
+          newVisibleDate = new Date(
+            newDate.getFullYear(),
+            newDate.getMonth(),
+            1
+          );
           break;
         case 'Enter':
         case ' ':
           e.preventDefault();
           if (!isDateDisabled(date, disabledDates)) onDateSelect(date);
+          return;
+        case 'Escape':
+          e.preventDefault();
+          onEscapeKeyPress?.();
           return;
         default:
           return;
@@ -181,7 +211,11 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   );
 
   const setButtonRef = useCallback((date: Date, el: HTMLElement | null) => {
-    const k = new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
+    const k = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate()
+    ).getTime();
     if (el) buttonRefs.current.set(k, el);
     else buttonRefs.current.delete(k);
   }, []);
@@ -199,7 +233,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
       </thead>
       <tbody>
         {weeks.map((week, rowIndex) => (
-          <tr key={rowIndex} role="row">
+          <tr key={rowIndex}>
             {week.map((date, colIndex) => {
               if (date === null) {
                 return (
@@ -213,7 +247,8 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                 isDateInRange(date, selectedDate, endDate);
               const disabled = isDateDisabled(date, disabledDates);
               const today = isToday(date);
-              const isFocused = focusTarget !== null && isSameDay(date, focusTarget);
+              const isFocused =
+                focusTarget !== null && isSameDay(date, focusTarget);
 
               return (
                 <td
@@ -231,7 +266,9 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                     isInRange={inRange}
                     onClick={() => onDateSelect(date)}
                     tabIndex={isFocused ? 0 : -1}
-                    onKeyDown={(e: React.KeyboardEvent) => handleKeyDown(e, date)}
+                    onKeyDown={(e: React.KeyboardEvent) =>
+                      handleKeyDown(e, date)
+                    }
                     onFocus={() => onFocusedDateChange?.(date)}
                   >
                     {date.getDate()}

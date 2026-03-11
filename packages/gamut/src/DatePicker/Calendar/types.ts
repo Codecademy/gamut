@@ -40,6 +40,8 @@ export interface CalendarBodyProps {
   onFocusedDateChange?: (date: Date | null) => void;
   /** Called when grid keyboard nav changes month (e.g. Page Up/Down). Pass setVisibleDate so the calendar updates. */
   onVisibleDateChange?: (newDate: Date) => void;
+  /** Called when the escape key is pressed */
+  onEscapeKeyPress?: () => void;
 }
 
 export interface QuickAction {

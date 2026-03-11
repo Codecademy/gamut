@@ -91,3 +91,46 @@ export function parseDateFromInput(
   if (parts.length >= 3) return parsed;
   return null;
 }
+
+const RANGE_SEPARATOR = ' – ';
+
+/**
+ * Format a date range for the input (e.g. "2/15/2026 – 2/20/2026").
+ */
+export function formatDateRangeForInput(
+  startDate: Date | null,
+  endDate: Date | null,
+  locale?: string
+): string {
+  if (!startDate && !endDate) return '';
+  if (!startDate) return formatDateForInput(endDate!, locale);
+  if (!endDate) return formatDateForInput(startDate, locale);
+  return `${formatDateForInput(startDate, locale)}${RANGE_SEPARATOR}${formatDateForInput(endDate, locale)}`;
+}
+
+/**
+ * Parse a range string (e.g. "2/15/2026 – 2/20/2026") into { startDate, endDate }.
+ * Returns null if invalid. Single date is allowed and yields startDate = endDate.
+ */
+export function parseDateRangeFromInput(
+  value: string,
+  locale?: string
+): { startDate: Date; endDate: Date } | null {
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  const parts = trimmed.split(RANGE_SEPARATOR).map((s) => s.trim());
+  if (parts.length === 1) {
+    const d = parseDateFromInput(parts[0], locale);
+    if (!d) return null;
+    return { startDate: d, endDate: new Date(d) };
+  }
+  if (parts.length === 2) {
+    const start = parseDateFromInput(parts[0], locale);
+    const end = parseDateFromInput(parts[1], locale);
+    if (!start || !end) return null;
+    return start.getTime() <= end.getTime()
+      ? { startDate: start, endDate: end }
+      : { startDate: end, endDate: start };
+  }
+  return null;
+}
