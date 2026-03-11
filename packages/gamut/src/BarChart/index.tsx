@@ -12,8 +12,6 @@ import {
   BarChartStackedSummaryContext,
   BarChartTranslations,
   defaultBarChartTranslations,
-  getDefaultSingleValueBarSummary,
-  getDefaultStackedBarSummary,
   PartialBarChartTranslations,
 } from './shared/translations';
 import { BarChartProps, BarProps, InferBarType } from './shared/types';
@@ -29,7 +27,6 @@ export type {
   BarChartTranslations,
   PartialBarChartTranslations,
 };
-export { getDefaultSingleValueBarSummary, getDefaultStackedBarSummary };
 
 export const BarChart = <
   TBarValues extends BarProps[] | readonly BarProps[] = BarProps[]
