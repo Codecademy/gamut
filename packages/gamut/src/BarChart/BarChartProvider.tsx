@@ -12,10 +12,10 @@ export interface BarChartContextProps {
   unit: string;
   styleConfig: Required<BarChartStyles>;
   animate: boolean;
-  widestLeftLabelWidth: number | null;
-  setWidestLeftLabelWidth: (width: number) => void;
-  widestRightLabelWidth: number | null;
-  setWidestRightLabelWidth: (width: number) => void;
+  widestCategoryLabelWidth: number | null;
+  setWidestCategoryLabelWidth: (width: number) => void;
+  widestTotalValueLabelWidth: number | null;
+  setWidestTotalValueLabelWidth: (width: number) => void;
   isMeasuring: boolean;
   translations: BarChartTranslations;
 }
@@ -34,12 +34,12 @@ export const BarChartContext = createContext<BarChartContextProps>({
   unit: '',
   styleConfig: defaultStyleConfig,
   animate: false,
-  widestLeftLabelWidth: null,
+  widestCategoryLabelWidth: null,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setWidestLeftLabelWidth: () => {},
-  widestRightLabelWidth: null,
+  setWidestCategoryLabelWidth: () => {},
+  widestTotalValueLabelWidth: null,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setWidestRightLabelWidth: () => {
+  setWidestTotalValueLabelWidth: () => {
     // No-op: default context value
   },
   isMeasuring: true,

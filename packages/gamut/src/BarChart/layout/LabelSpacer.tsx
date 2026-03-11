@@ -29,17 +29,21 @@ export interface LabelSpacerProps {
 }
 
 const PreLabelSpacer: React.FC = () => {
-  const { widestLeftLabelWidth } = useBarChartContext();
+  const { widestCategoryLabelWidth } = useBarChartContext();
   const width =
-    widestLeftLabelWidth === null ? 'min-content' : widestLeftLabelWidth;
+    widestCategoryLabelWidth === null
+      ? 'min-content'
+      : widestCategoryLabelWidth;
 
   return <Box flexShrink={0} minWidth={width} ml={barListItemPadding} />;
 };
 
 const PostLabelSpacer: React.FC = () => {
-  const { widestRightLabelWidth } = useBarChartContext();
+  const { widestTotalValueLabelWidth } = useBarChartContext();
   const width =
-    widestRightLabelWidth === null ? 'min-content' : widestRightLabelWidth;
+    widestTotalValueLabelWidth === null
+      ? 'min-content'
+      : widestTotalValueLabelWidth;
 
   return <Box flexShrink={0} minWidth={width} mr={barListItemPadding} />;
 };

@@ -74,22 +74,20 @@ export const useBarChart = ({
   barCount = 0,
   translations,
 }: UseBarChartOptions) => {
-  const [widestLeftLabelWidth, setWidestLeftLabelWidthState] = useState<
-    number | null
-  >(null);
-  const [widestRightLabelWidth, setWidestRightLabelWidthState] = useState<
-    number | null
-  >(null);
+  const [widestCategoryLabelWidth, setWidestCategoryLabelWidthState] =
+    useState<number | null>(null);
+  const [widestTotalValueLabelWidth, setWidestTotalValueLabelWidthState] =
+    useState<number | null>(null);
   const [isMeasuring, setIsMeasuring] = useState(true);
   const measuredCountRef = useRef(0);
-  const maxLeftWidthRef = useRef(0);
-  const maxRightWidthRef = useRef(0);
+  const maxCategoryLabelWidthRef = useRef(0);
+  const maxTotalValueLabelWidthRef = useRef(0);
 
-  const setWidestLeftLabelWidth = useCallback(
+  const setWidestCategoryLabelWidth = useCallback(
     (width: number) => {
-      if (width > maxLeftWidthRef.current) {
-        maxLeftWidthRef.current = width;
-        setWidestLeftLabelWidthState(width);
+      if (width > maxCategoryLabelWidthRef.current) {
+        maxCategoryLabelWidthRef.current = width;
+        setWidestCategoryLabelWidthState(width);
       }
 
       measuredCountRef.current += 1;
@@ -101,15 +99,15 @@ export const useBarChart = ({
     [barCount]
   );
 
-  const setWidestRightLabelWidth = useCallback(
+  const setWidestTotalValueLabelWidth = useCallback(
     (width: number) => {
-      if (width > maxRightWidthRef.current) {
-        maxRightWidthRef.current = width;
-        setWidestRightLabelWidthState(width);
+      if (width > maxTotalValueLabelWidthRef.current) {
+        maxTotalValueLabelWidthRef.current = width;
+        setWidestTotalValueLabelWidthState(width);
       }
 
       measuredCountRef.current += 1;
-      // Only stop measuring when we've received measurements from all bars (left + right)
+      // Only stop measuring when we've received measurements from all bars (category + total value)
       if (measuredCountRef.current >= barCount * 2 && barCount > 0) {
         setIsMeasuring(false);
       }
@@ -120,8 +118,8 @@ export const useBarChart = ({
   useEffect(() => {
     if (barCount > 0) {
       measuredCountRef.current = 0;
-      maxLeftWidthRef.current = 0;
-      maxRightWidthRef.current = 0;
+      maxCategoryLabelWidthRef.current = 0;
+      maxTotalValueLabelWidthRef.current = 0;
       setIsMeasuring(true);
     }
   }, [barCount]);
@@ -136,10 +134,10 @@ export const useBarChart = ({
         ...styleConfig,
       },
       animate,
-      widestLeftLabelWidth,
-      setWidestLeftLabelWidth,
-      widestRightLabelWidth,
-      setWidestRightLabelWidth,
+      widestCategoryLabelWidth,
+      setWidestCategoryLabelWidth,
+      widestTotalValueLabelWidth,
+      setWidestTotalValueLabelWidth,
       isMeasuring,
       translations,
     }),
@@ -149,10 +147,10 @@ export const useBarChart = ({
       unit,
       styleConfig,
       animate,
-      widestLeftLabelWidth,
-      setWidestLeftLabelWidth,
-      widestRightLabelWidth,
-      setWidestRightLabelWidth,
+      widestCategoryLabelWidth,
+      setWidestCategoryLabelWidth,
+      widestTotalValueLabelWidth,
+      setWidestTotalValueLabelWidth,
       isMeasuring,
       translations,
     ]
@@ -204,7 +202,7 @@ export const useBarBorderColor = () => {
 
 /**
  * Generic hook for measuring element width and reporting to a callback.
- * Used internally by useMeasureLeftLabelWidth and useMeasureRightLabelWidth.
+ * Used internally by useMeasureCategoryLabelWidth and useMeasureTotalValueLabelWidth.
  */
 const useMeasureWidth = ({
   ref,
@@ -242,28 +240,28 @@ const useMeasureWidth = ({
   }, [ref, onMeasure, isMeasuring]);
 };
 
-export const useMeasureLeftLabelWidth = ({
+export const useMeasureCategoryLabelWidth = ({
   ref,
 }: {
   ref: React.RefObject<HTMLElement>;
 }): void => {
-  const { setWidestLeftLabelWidth, isMeasuring } = useBarChartContext();
+  const { setWidestCategoryLabelWidth, isMeasuring } = useBarChartContext();
   useMeasureWidth({
     ref,
-    onMeasure: setWidestLeftLabelWidth,
+    onMeasure: setWidestCategoryLabelWidth,
     isMeasuring,
   });
 };
 
-export const useMeasureRightLabelWidth = ({
+export const useMeasureTotalValueLabelWidth = ({
   ref,
 }: {
   ref: React.RefObject<HTMLElement>;
 }): void => {
-  const { setWidestRightLabelWidth, isMeasuring } = useBarChartContext();
+  const { setWidestTotalValueLabelWidth, isMeasuring } = useBarChartContext();
   useMeasureWidth({
     ref,
-    onMeasure: setWidestRightLabelWidth,
+    onMeasure: setWidestTotalValueLabelWidth,
     isMeasuring,
   });
 };

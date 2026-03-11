@@ -2,7 +2,7 @@ import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useMemo } from 'react';
 
-import { Box } from '../../Box';
+import { Box, FlexBox } from '../../Box';
 import { Text } from '../../Typography';
 import { formatNumberUnitCompact } from '../utils';
 import { useBarChartContext, useLabelPositions } from '../utils/hooks';
@@ -41,7 +41,7 @@ const StyledLabelText = styled(Text)<{
   }
 );
 
-const StyledHeaderContainer = styled(Box)(
+const StyledHeaderContainer = styled(FlexBox)(
   css({
     alignItems: 'center',
     position: 'relative',

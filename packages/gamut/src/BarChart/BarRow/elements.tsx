@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Box, FlexBox } from '../../Box';
 import { barListItemPadding } from '../shared/styles';
 
-export const RightLabelsHoverTarget = styled(FlexBox)(
+export const TotalValueLabelsHoverTarget = styled(FlexBox)(
   css({
     alignItems: 'center',
     flexShrink: 0,
@@ -52,7 +52,7 @@ export const RowAnchor = styled('a', styledOptions<'a'>())(
   rowBaseStyles,
   interactiveStyles,
   css({
-    [`&:hover ${RightLabelsHoverTarget}`]: {
+    [`&:hover ${TotalValueLabelsHoverTarget}`]: {
       textDecoration: 'underline',
     },
   })

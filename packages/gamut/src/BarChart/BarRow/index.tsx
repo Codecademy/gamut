@@ -18,16 +18,16 @@ import {
 import {
   useBarBorderColor,
   useBarChartContext,
-  useMeasureLeftLabelWidth,
-  useMeasureRightLabelWidth,
+  useMeasureCategoryLabelWidth,
+  useMeasureTotalValueLabelWidth,
 } from '../utils/hooks';
 import {
   Bar,
   BarWrapper,
-  RightLabelsHoverTarget,
   RowAnchor,
   RowButton,
   RowWrapper,
+  TotalValueLabelsHoverTarget,
 } from './elements';
 import { ValueLabelsContent } from './ValueLabelsContent';
 
@@ -56,8 +56,8 @@ export const BarRow = forwardRef<
       unit,
       styleConfig,
       animate,
-      widestLeftLabelWidth,
-      widestRightLabelWidth,
+      widestCategoryLabelWidth,
+      widestTotalValueLabelWidth,
       translations,
     } = useBarChartContext();
 
@@ -70,9 +70,9 @@ export const BarRow = forwardRef<
     } = styleConfig;
 
     const labelRef = useRef<HTMLDivElement>(null);
-    const rightLabelRef = useRef<HTMLDivElement>(null);
-    useMeasureLeftLabelWidth({ ref: labelRef });
-    useMeasureRightLabelWidth({ ref: rightLabelRef });
+    const totalValueLabelRef = useRef<HTMLDivElement>(null);
+    useMeasureCategoryLabelWidth({ ref: labelRef });
+    useMeasureTotalValueLabelWidth({ ref: totalValueLabelRef });
 
     const getBorderColor = useBarBorderColor();
 
@@ -119,10 +119,14 @@ export const BarRow = forwardRef<
     const animationDelay = animate ? index * 0.1 : 0;
 
     const widthValue =
-      widestLeftLabelWidth === null ? 'min-content' : widestLeftLabelWidth;
+      widestCategoryLabelWidth === null
+        ? 'min-content'
+        : widestCategoryLabelWidth;
 
-    const rightWidthValue =
-      widestRightLabelWidth === null ? 'min-content' : widestRightLabelWidth;
+    const totalValueLabelWidthValue =
+      widestTotalValueLabelWidth === null
+        ? 'min-content'
+        : widestTotalValueLabelWidth;
 
     const { seriesOneFormatted, displayValueFormatted } = useMemo(
       () => ({
@@ -180,15 +184,15 @@ export const BarRow = forwardRef<
             </Text>
           </FlexBox>
 
-          <RightLabelsHoverTarget gap={8}>
+          <TotalValueLabelsHoverTarget gap={8}>
             {valueLabelsContent}
-          </RightLabelsHoverTarget>
+          </TotalValueLabelsHoverTarget>
         </FlexBox>
       ),
       [textColor, Icon, categoryLabel, valueLabelsContent]
     );
 
-    const leftLabel = useMemo(
+    const categoryLabelNode = useMemo(
       () => (
         <FlexBox
           alignItems="center"
@@ -214,25 +218,25 @@ export const BarRow = forwardRef<
       [textColor, Icon, categoryLabel, widthValue]
     );
 
-    const rightLabel = useMemo(
+    const totalValueLabelNode = useMemo(
       () => (
-        <RightLabelsHoverTarget
+        <TotalValueLabelsHoverTarget
           display={{ _: 'none', c_xs: 'flex' }}
           pl={{ _: 0, c_xs: 24 }}
-          ref={rightLabelRef}
-          width={{ _: 'auto', c_xs: rightWidthValue }}
+          ref={totalValueLabelRef}
+          width={{ _: 'auto', c_xs: totalValueLabelWidthValue }}
         >
           {valueLabelsContent}
-        </RightLabelsHoverTarget>
+        </TotalValueLabelsHoverTarget>
       ),
-      [valueLabelsContent, rightWidthValue]
+      [valueLabelsContent, totalValueLabelWidthValue]
     );
 
     const rowContent = useMemo(
       () => (
         <>
           {labelsContainer}
-          {leftLabel}
+          {categoryLabelNode}
           <BarWrapper>
             <Bar
               animate={animate ? { width: bgWidthStr } : undefined}
@@ -257,7 +261,7 @@ export const BarRow = forwardRef<
               />
             )}
           </BarWrapper>
-          {rightLabel}
+          {totalValueLabelNode}
         </>
       ),
       [
@@ -267,8 +271,8 @@ export const BarRow = forwardRef<
         fgWidthStr,
         isStacked,
         labelsContainer,
-        leftLabel,
-        rightLabel,
+        categoryLabelNode,
+        totalValueLabelNode,
         seriesOneBarColor,
         seriesOneBorderColor,
         seriesTwoBarColor,

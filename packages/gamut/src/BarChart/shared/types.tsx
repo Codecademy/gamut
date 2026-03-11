@@ -36,7 +36,7 @@ export type BarChartStyles = {
   seriesOneBarColor?: ColorAlias;
   /** Color for the series two bar (seriesTwoValue: full bar in stacked charts; unused in simple). Defaults to 'primary' */
   seriesTwoBarColor?: ColorAlias;
-  /** Color for the series one label (first right label when stacked, or displayValue when not stacked). Defaults to 'text-secondary' */
+  /** Color for the series one label (first total value label when stacked, or displayValue when not stacked). Defaults to 'text-secondary' */
   seriesOneLabel?: ColorAlias;
   /** Color for the series two label (displayValue when stacked). Defaults to 'primary' */
   seriesTwoLabel?: ColorAlias;
