@@ -1,48 +1,37 @@
-/** Shared context fields for accessibility translation functions. */
-type BarChartAccessibilityContextBase = {
+/** Shared context fields for accessibility summary functions. */
+type BarChartSummaryContextBase = {
   unit: string;
   locale: string;
 };
 
 /**
- * Context passed to the single-bar accessibility translation function (inOnly).
- * Used for non-interactive bars when the summary does not include the row label.
+ * Context passed to the stacked-bar summary function (stackedBarSummary).
+ * Used for rows that have seriesTwoValue (two values per row).
  */
-export type BarChartAccessibilityInOnlyContext =
-  BarChartAccessibilityContextBase & {
+export type BarChartStackedSummaryContext = BarChartSummaryContextBase & {
+  categoryLabel: string;
+  seriesOneValue: number;
+  seriesTwoValue: number;
+  /** Precomputed: seriesTwoValue - seriesOneValue. Use in the summary string (e.g. "50 XP gained - now at 150 XP"). */
+  gained: number;
+};
+
+/**
+ * Context passed to the single-value bar summary function (singleValueBarSummary).
+ * Used for all single-bar rows (no seriesTwoValue). The component uses the returned string as aria-label (when row is link/button) or screenreader-only text (when row is a div).
+ */
+export type BarChartSingleValueBarSummaryContext =
+  BarChartSummaryContextBase & {
+    categoryLabel: string;
     value: number;
-  };
-
-/**
- * Context passed to the single-bar-with-label accessibility translation function (inLabel).
- * Used for interactive bars (button/link) when the summary includes the row label.
- */
-export type BarChartAccessibilityInLabelContext =
-  BarChartAccessibilityInOnlyContext & {
-    categoryLabel: string;
-  };
-
-/**
- * Context passed to the stacked-bar accessibility translation function (gainedNowAt).
- * Use when you need full control over the accessibility summary for stacked bars,
- * e.g. for pluralization, word order, or locale-specific phrasing.
- */
-export type BarChartAccessibilityStackedContext =
-  BarChartAccessibilityContextBase & {
-    categoryLabel: string;
-    seriesOneValue: number;
-    seriesTwoValue: number;
   };
 
 /**
  * BarChart translation configuration for internationalization.
  *
- * **Accessibility keys** (`gainedNowAt`, `inLabel`, `inOnly`) may be either:
- * - **String** – Used as a fragment in the built-in template (e.g. "in", "gained - now at").
- *   Backward compatible with existing usage.
- * - **Function** – Receives scoped context (values, label, unit, locale) and returns the
- *   **entire** accessibility summary string. Use for nuanced i18n (pluralization, word
- *   order, locale-specific phrasing).
+ * **Accessibility** is function-only. Two optional summary functions; when omitted, default English summaries are used.
+ * - **stackedBarSummary**: Used for stacked (two-value) rows. Context includes `gained` (seriesTwoValue - seriesOneValue).
+ * - **singleValueBarSummary**: Used for all single-value rows. Return value is placed as aria-label (when row is link/button) or screenreader-only text (when not).
  *
  * **sortLabel**, **sortOptions**, and **locale** are always strings.
  */
@@ -56,11 +45,12 @@ export type BarChartTranslations = {
     valueDesc: string;
   };
   accessibility: {
-    gainedNowAt:
-      | string
-      | ((ctx: BarChartAccessibilityStackedContext) => string);
-    inLabel: string | ((ctx: BarChartAccessibilityInLabelContext) => string);
-    inOnly: string | ((ctx: BarChartAccessibilityInOnlyContext) => string);
+    /** Used for stacked (two-value) rows. Context includes `gained` for the numeric difference. */
+    stackedBarSummary?: (ctx: BarChartStackedSummaryContext) => string;
+    /** Used for all single-value rows. Same return value is placed as aria-label (when row is link/button) or screenreader-only text (when not). */
+    singleValueBarSummary?: (
+      ctx: BarChartSingleValueBarSummaryContext
+    ) => string;
   };
   /** For Intl.NumberFormat (e.g. 'en', 'es', 'fr'). */
   locale: string;
@@ -77,6 +67,26 @@ export type PartialBarChartTranslations = Partial<
   accessibility?: Partial<BarChartTranslations['accessibility']>;
 };
 
+/**
+ * Default stacked-bar summary (English).
+ */
+export const getDefaultStackedBarSummary = (
+  ctx: BarChartStackedSummaryContext
+): string => {
+  const unitText = ctx.unit ? ` ${ctx.unit}` : '';
+  return `Starting value - ${ctx.seriesOneValue}${unitText}. ${ctx.gained}${unitText} gained - now at ${ctx.seriesTwoValue}${unitText} in ${ctx.categoryLabel}`;
+};
+
+/**
+ * Default single-value bar summary (English).
+ */
+export const getDefaultSingleValueBarSummary = (
+  ctx: BarChartSingleValueBarSummaryContext
+): string => {
+  const unitText = ctx.unit ? ` ${ctx.unit}` : '';
+  return `${ctx.value}${unitText} in ${ctx.categoryLabel}`;
+};
+
 export const defaultBarChartTranslations: BarChartTranslations = {
   sortLabel: 'Order by:',
   sortOptions: {
@@ -87,9 +97,8 @@ export const defaultBarChartTranslations: BarChartTranslations = {
     valueDesc: 'Value (High-Low)',
   },
   accessibility: {
-    gainedNowAt: 'gained - now at',
-    inLabel: 'in',
-    inOnly: 'in ',
+    stackedBarSummary: getDefaultStackedBarSummary,
+    singleValueBarSummary: getDefaultSingleValueBarSummary,
   },
   locale: 'en',
 };

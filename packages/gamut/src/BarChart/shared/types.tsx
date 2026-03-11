@@ -109,8 +109,9 @@ export type BarChartProps<
   )[];
   /**
    * Translations for internationalization. Partial translations are merged with defaults.
-   * Accessibility keys (gainedNowAt, inLabel, inOnly) may be strings or functions that
-   * receive scoped context (values, label, unit, locale) and return the full summary.
+   * Accessibility is function-only. Two optional keys: stackedBarSummary, singleValueBarSummary.
+   * stackedBarSummary: used for stacked (two-value) rows; context includes gained (seriesTwoValue - seriesOneValue).
+   * singleValueBarSummary: used for all single-value rows; the returned string is set as aria-label on the row's link/button when interactive, or rendered in screenreader-only text when not.
    */
   translations?: PartialBarChartTranslations;
 };

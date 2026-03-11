@@ -107,22 +107,13 @@ export const BarRow = forwardRef<
     const valuesSummary = useMemo(
       () =>
         getValuesSummary({
-          isInteractive: !!(href || onClick),
           seriesOneValue,
           seriesTwoValue,
           unit,
           categoryLabel,
           translations,
         }),
-      [
-        href,
-        onClick,
-        seriesOneValue,
-        seriesTwoValue,
-        unit,
-        categoryLabel,
-        translations,
-      ]
+      [seriesOneValue, seriesTwoValue, unit, categoryLabel, translations]
     );
 
     const animationDelay = animate ? index * 0.1 : 0;
@@ -201,6 +192,7 @@ export const BarRow = forwardRef<
       () => (
         <FlexBox
           alignItems="center"
+          aria-hidden
           color={textColor}
           display={{ _: 'none', c_xs: 'flex' }}
           flexShrink={0}

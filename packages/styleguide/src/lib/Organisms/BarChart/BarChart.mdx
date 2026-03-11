@@ -347,9 +347,41 @@ BarChart supports internationalization through the `translations` prop. You can 
 ### Translation structure
 
 - **sortLabel**, **sortOptions**, and **locale** — Always strings. Control the sort dropdown label, option labels, and number-formatting locale.
-- **Accessibility keys** (`gainedNowAt`, `inLabel`, `inOnly`) — Used in auto-generated `aria-label` and screen reader text for bars. Each key can be:
-  - **String** — A fragment interpolated into the built-in template (e.g. `"in"`, `"gained - now at"`). Use when the default word order works for your language.
-  - **Function** — Receives scoped context (values, label, unit, locale) and returns the **entire** summary string. Use for pluralization, different word order, or locale-specific phrasing.
+- **Accessibility** — Two optional summary functions; when omitted, default English summaries are used. Each function receives context and returns the full summary string.
+  - **stackedBarSummary** — Used for stacked (two-value) rows. Context includes `seriesOneValue`, `seriesTwoValue`, **gained** (seriesTwoValue - seriesOneValue), `unit`, `locale`, `categoryLabel`.
+  - **singleValueBarSummary** — Used for all single-value rows. Context includes `value`, `unit`, `locale`, `categoryLabel`.
+
+### Where accessibility summaries appear
+
+Each bar row gets one summary from either `stackedBarSummary` (stacked rows) or `singleValueBarSummary` (single-value rows). That string is then exposed as **`aria-label`** on the row's link or button when the row is interactive, or as **screenreader-only text** (visually hidden) when the row is not interactive.
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Used for</th>
+      <th>Context (props)</th>
+      <th>Default English interpolation</th>
+      <th>Summary exposed as</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>stackedBarSummary</code></td>
+      <td>Stacked rows (two values per row)</td>
+      <td><code>seriesOneValue</code>, <code>seriesTwoValue</code>, <code>gained</code>, <code>unit</code>, <code>locale</code>, <code>categoryLabel</code></td>
+      <td><code>Starting value - &#123;seriesOneValue&#125;&#123;unit&#125;. &#123;gained&#125;&#123;unit&#125; gained - now at &#123;seriesTwoValue&#125;&#123;unit&#125; in &#123;categoryLabel&#125;</code></td>
+      <td><code>aria-label</code> (if link/button) or screenreader-only text</td>
+    </tr>
+    <tr>
+      <td><code>singleValueBarSummary</code></td>
+      <td>Single-value rows</td>
+      <td><code>value</code>, <code>unit</code>, <code>locale</code>, <code>categoryLabel</code></td>
+      <td><code>&#123;value&#125;&#123;unit&#125; in &#123;categoryLabel&#125;</code></td>
+      <td><code>aria-label</code> (if link/button) or screenreader-only text</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Basic usage
 
@@ -364,9 +396,10 @@ Provide only the translations you want to override; the rest fall back to defaul
   title="Habilidades"
   translations={{
     accessibility: {
-      gainedNowAt: 'ganado - ahora en',
-      inLabel: 'en',
-      inOnly: 'en ',
+      stackedBarSummary: (ctx) =>
+        `Valor inicial - ${ctx.seriesOneValue} ${ctx.unit}. ${ctx.gained} ${ctx.unit} ganado - ahora en ${ctx.seriesTwoValue} ${ctx.unit} en ${ctx.categoryLabel}`,
+      singleValueBarSummary: (ctx) =>
+        `${ctx.value} ${ctx.unit} en ${ctx.categoryLabel}`,
     },
     locale: 'es',
     sortLabel: 'Ordenar por:',
@@ -398,18 +431,11 @@ translations={{
 }}
 ```
 
-### Accessibility: strings vs functions
-
-**Strings** — Use when the built-in template order fits your language. Fragments are plugged into the default pattern (e.g. `"{value} {unit} {inLabel} {categoryLabel}"`).
-
-**Functions** — Use when you need full control. Each function receives context (`categoryLabel`, values, `unit`, `locale`) and returns the complete summary string.
-
 <Canvas of={BarChartStories.WithFunctionTranslations} />
 
 **Best practices:**
 
-- Provide complete translations for the language your app uses; use partial overrides for one-off changes.
-- Prefer string accessibility keys when the default order works; use functions for pluralization, word order, or locale-specific phrasing.
+- Provide summary functions for the locales your app uses; use default behavior when the default English is acceptable.
 - Use appropriate locale codes (e.g. `'en-US'`, `'es-ES'`, `'fr-FR'`) for number formatting.
 - Test accessibility summaries with screen readers in the target language.
 - Reuse translation objects across BarChart instances where possible.

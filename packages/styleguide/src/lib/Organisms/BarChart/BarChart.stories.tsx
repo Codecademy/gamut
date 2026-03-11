@@ -62,10 +62,10 @@ const accessibilityBarData: BarProps[] = [
 
 const accessibilityTranslations: PartialBarChartTranslations = {
   accessibility: {
-    gainedNowAt: (ctx) =>
+    stackedBarSummary: (ctx) =>
       `${ctx.seriesOneValue} ${ctx.unit} gained — now at ${ctx.seriesTwoValue} ${ctx.unit} in ${ctx.categoryLabel}`,
-    inLabel: (ctx) => `${ctx.value} ${ctx.unit} in ${ctx.categoryLabel}`,
-    inOnly: (ctx) => `${ctx.value} ${ctx.unit}`.trim(),
+    singleValueBarSummary: (ctx) =>
+      `${ctx.value} ${ctx.unit} in ${ctx.categoryLabel}`,
   },
   locale: 'en',
 };
@@ -331,9 +331,10 @@ export const WithStringTranslations: Story = {
         valueDesc: 'Valor (Alto-Bajo)',
       },
       accessibility: {
-        gainedNowAt: 'ganado - ahora en',
-        inLabel: 'en',
-        inOnly: 'en ',
+        stackedBarSummary: (ctx) =>
+          `Valor inicial - ${ctx.seriesOneValue} ${ctx.unit}. ${ctx.gained} ${ctx.unit} ganado - ahora en ${ctx.seriesTwoValue} ${ctx.unit} en ${ctx.categoryLabel}`,
+        singleValueBarSummary: (ctx) =>
+          `${ctx.value} ${ctx.unit} en ${ctx.categoryLabel}`,
       },
     },
   },

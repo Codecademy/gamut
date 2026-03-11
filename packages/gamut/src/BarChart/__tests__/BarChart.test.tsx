@@ -1,7 +1,7 @@
 import { TerminalIcon } from '@codecademy/gamut-icons';
 import { setupRtl } from '@codecademy/gamut-tests';
 import userEvent from '@testing-library/user-event';
-import { HTMLProps } from 'react';
+import { act, HTMLProps } from 'react';
 
 import { ButtonProps } from '../../Button';
 import { BarChart } from '..';
@@ -129,7 +129,9 @@ describe('BarChart', () => {
       });
 
       const select = view.getByLabelText('Order by:');
-      await userEvent.selectOptions(select, 'value-asc');
+      await act(async () => {
+        await userEvent.selectOptions(select, 'value-asc');
+      });
 
       const items = view.getAllByRole('listitem');
       expect(items[0]).toHaveTextContent('Ruby');
@@ -144,7 +146,9 @@ describe('BarChart', () => {
       });
 
       const select = view.getByLabelText('Order by:');
-      await userEvent.selectOptions(select, 'value-desc');
+      await act(async () => {
+        await userEvent.selectOptions(select, 'value-desc');
+      });
 
       const items = view.getAllByRole('listitem');
       expect(items[0]).toHaveTextContent('JavaScript');
@@ -159,7 +163,9 @@ describe('BarChart', () => {
       });
 
       const select = view.getByLabelText('Order by:');
-      await userEvent.selectOptions(select, 'label-asc');
+      await act(async () => {
+        await userEvent.selectOptions(select, 'label-asc');
+      });
 
       const items = view.getAllByRole('listitem');
       expect(items[0]).toHaveTextContent('JavaScript');
@@ -174,7 +180,9 @@ describe('BarChart', () => {
       });
 
       const select = view.getByLabelText('Order by:');
-      await userEvent.selectOptions(select, 'label-desc');
+      await act(async () => {
+        await userEvent.selectOptions(select, 'label-desc');
+      });
 
       const items = view.getAllByRole('listitem');
       expect(items[0]).toHaveTextContent('Ruby');
@@ -189,12 +197,16 @@ describe('BarChart', () => {
       });
 
       const select = view.getByLabelText('Order by:');
-      await userEvent.selectOptions(select, 'value-asc');
+      await act(async () => {
+        await userEvent.selectOptions(select, 'value-asc');
+      });
 
       let items = view.getAllByRole('listitem');
       expect(items[0]).toHaveTextContent('Ruby');
 
-      await userEvent.selectOptions(select, 'none');
+      await act(async () => {
+        await userEvent.selectOptions(select, 'none');
+      });
 
       items = view.getAllByRole('listitem');
       expect(items[0]).toHaveTextContent('Python');
@@ -216,7 +228,9 @@ describe('BarChart', () => {
       });
 
       const select = view.getByLabelText('Order by:');
-      await userEvent.selectOptions(select, 'reverse');
+      await act(async () => {
+        await userEvent.selectOptions(select, 'reverse');
+      });
 
       const items = view.getAllByRole('listitem');
       expect(items[0]).toHaveTextContent('Ruby');
@@ -304,7 +318,7 @@ describe('BarChart', () => {
     });
 
     it('calls onClick when href and onClick are provided', async () => {
-      const onClick = jest.fn();
+      const onClick = jest.fn((e: { preventDefault(): void }) => e.preventDefault());
       const { view } = renderView({
         barValues: createPythonBar({ href: '/python', onClick }),
         unit: 'XP',
@@ -512,18 +526,26 @@ describe('BarChart', () => {
         unit: 'XP',
         translations: {
           accessibility: {
-            gainedNowAt: 'ganado - ahora en',
-            inLabel: 'en',
-            inOnly: 'en ',
+            stackedBarSummary: ({
+              seriesOneValue,
+              unit,
+              gained,
+              seriesTwoValue,
+              categoryLabel,
+            }) =>
+              `Valor inicial - ${seriesOneValue} ${unit}. ${gained} ${unit} ganado - ahora en ${seriesTwoValue} ${unit} en ${categoryLabel}`,
+            singleValueBarSummary: ({ value, unit, categoryLabel }) =>
+              `${value} ${unit} en ${categoryLabel}`,
           },
         },
       });
 
       const listItem = view.getAllByRole('listitem')[0];
+      expect(listItem).toHaveTextContent(/Valor inicial/);
       expect(listItem).toHaveTextContent(/ganado - ahora en/);
     });
 
-    it('uses function-based inLabel for single bar accessibility summary', () => {
+    it('uses function-based singleValueBarSummary for single bar accessibility summary', () => {
       const { view } = renderView({
         barValues: [
           {
@@ -535,8 +557,8 @@ describe('BarChart', () => {
         unit: 'XP',
         translations: {
           accessibility: {
-            inLabel: (ctx) =>
-              `${ctx.value} ${ctx.unit} en ${ctx.categoryLabel}`.trim(),
+            singleValueBarSummary: ({ value, unit, categoryLabel }) =>
+              `${value} ${unit} en ${categoryLabel}`.trim(),
           },
         },
       });
@@ -545,7 +567,7 @@ describe('BarChart', () => {
       expect(button).toBeInTheDocument();
     });
 
-    it('uses function-based gainedNowAt for stacked bar accessibility summary', () => {
+    it('uses function-based stackedBarSummary for stacked bar accessibility summary', () => {
       const { view } = renderView({
         barValues: [
           {
@@ -557,25 +579,32 @@ describe('BarChart', () => {
         unit: 'XP',
         translations: {
           accessibility: {
-            gainedNowAt: (ctx) =>
-              `${ctx.seriesOneValue} ${ctx.unit} gained - now at ${ctx.seriesTwoValue} ${ctx.unit} in ${ctx.categoryLabel}`,
+            stackedBarSummary: ({
+              seriesOneValue,
+              unit,
+              gained,
+              seriesTwoValue,
+              categoryLabel,
+            }) =>
+              `${seriesOneValue} ${unit}, +${gained} ${unit} - now at ${seriesTwoValue} ${unit} in ${categoryLabel}`,
           },
         },
       });
 
       const listItem = view.getAllByRole('listitem')[0];
       expect(listItem).toHaveTextContent(
-        /100 XP gained - now at 200 XP in Python/
+        /100 XP, \+100 XP - now at 200 XP in Python/
       );
     });
 
-    it('uses function-based inOnly for non-interactive single bar accessibility summary', () => {
+    it('uses function-based singleValueBarSummary for non-interactive single bar accessibility summary', () => {
       const { view } = renderView({
         barValues: [{ categoryLabel: 'Rust', seriesOneValue: 75 }],
         unit: 'pts',
         translations: {
           accessibility: {
-            inOnly: (ctx) => `${ctx.value} ${ctx.unit}`.trim(),
+            singleValueBarSummary: ({ value, unit }) =>
+              `${value} ${unit}`.trim(),
           },
         },
       });

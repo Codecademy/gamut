@@ -8,11 +8,12 @@ import { GridLines } from './layout/GridLines';
 import { ScaleChartHeader } from './layout/ScaleChartHeader';
 import { BarsList } from './shared/elements';
 import {
-  BarChartAccessibilityInLabelContext,
-  BarChartAccessibilityInOnlyContext,
-  BarChartAccessibilityStackedContext,
+  BarChartSingleValueBarSummaryContext,
+  BarChartStackedSummaryContext,
   BarChartTranslations,
   defaultBarChartTranslations,
+  getDefaultSingleValueBarSummary,
+  getDefaultStackedBarSummary,
   PartialBarChartTranslations,
 } from './shared/translations';
 import { BarChartProps, BarProps, InferBarType } from './shared/types';
@@ -21,14 +22,14 @@ import { getBarRowKey } from './utils';
 import { useBarChart, useBarChartSort } from './utils/hooks';
 
 export type {
-  BarChartAccessibilityInLabelContext,
-  BarChartAccessibilityInOnlyContext,
-  BarChartAccessibilityStackedContext,
+  BarChartSingleValueBarSummaryContext,
+  BarChartStackedSummaryContext,
   BarProps,
   InferBarType,
   BarChartTranslations,
   PartialBarChartTranslations,
 };
+export { getDefaultSingleValueBarSummary, getDefaultStackedBarSummary };
 
 export const BarChart = <
   TBarValues extends BarProps[] | readonly BarProps[] = BarProps[]

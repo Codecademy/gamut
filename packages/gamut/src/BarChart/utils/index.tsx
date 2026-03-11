@@ -1,4 +1,8 @@
-import { BarChartTranslations } from '../shared/translations';
+import {
+  BarChartTranslations,
+  getDefaultSingleValueBarSummary,
+  getDefaultStackedBarSummary,
+} from '../shared/translations';
 import { BarChartUnit, BarProps } from '../shared/types';
 
 export const calculatePercent = ({
@@ -81,12 +85,9 @@ export const sortBars = <T extends BarProps>({
 };
 
 /**
- * Generates an accessible summary of the bar values for aria-label / screen reader.
- * When translations.accessibility keys are functions, they are called with scoped
- * context (values, label, unit, locale) and their return value is used as the full summary.
+ * Returns the accessibility summary for a bar row. The summary is used as aria-label on the row's link/button when interactive, or as screenreader-only text when not. Summaries come from stackedBarSummary (stacked rows) or singleValueBarSummary (single-value rows), with default implementations when not overridden.
  */
 export const getValuesSummary = ({
-  isInteractive,
   seriesOneValue,
   seriesTwoValue,
   unit,
@@ -94,49 +95,32 @@ export const getValuesSummary = ({
   translations,
 }: Pick<BarProps, 'seriesOneValue' | 'seriesTwoValue' | 'categoryLabel'> &
   Required<Pick<BarChartUnit, 'unit'>> & {
-    isInteractive: boolean;
     translations: BarChartTranslations;
   }): string => {
-  const unitText = unit ? ` ${unit}` : '';
   const { locale } = translations;
+  const singleValueCtx = {
+    value: seriesOneValue,
+    unit,
+    locale,
+    categoryLabel,
+  };
 
   if (seriesTwoValue !== undefined) {
-    const { gainedNowAt, inLabel } = translations.accessibility;
-    if (typeof gainedNowAt === 'function') {
-      return gainedNowAt({
-        categoryLabel,
-        seriesOneValue,
-        seriesTwoValue,
-        unit,
-        locale,
-      });
-    }
-    const gained = seriesOneValue;
-    return `${gained}${unitText} ${gainedNowAt} ${seriesTwoValue}${unitText} ${inLabel} ${categoryLabel}`;
-  }
-
-  if (isInteractive) {
-    const { inLabel } = translations.accessibility;
-    if (typeof inLabel === 'function') {
-      return inLabel({
-        categoryLabel,
-        value: seriesOneValue,
-        unit,
-        locale,
-      });
-    }
-    return `${seriesOneValue}${unitText} ${inLabel} ${categoryLabel}`;
-  }
-
-  const { inOnly } = translations.accessibility;
-  if (typeof inOnly === 'function') {
-    return inOnly({
-      value: seriesOneValue,
+    const gained = seriesTwoValue - seriesOneValue;
+    const stackedCtx = {
+      categoryLabel,
+      seriesOneValue,
+      seriesTwoValue,
       unit,
       locale,
-    });
+      gained,
+    };
+    return (translations.accessibility.stackedBarSummary ??
+      getDefaultStackedBarSummary)(stackedCtx);
   }
-  return `${seriesOneValue}${unitText} ${inOnly}`;
+
+  return (translations.accessibility.singleValueBarSummary ??
+    getDefaultSingleValueBarSummary)(singleValueCtx);
 };
 
 /**
