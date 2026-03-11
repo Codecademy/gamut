@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 
 import { Box } from '../../Box';
 import { useLabelPositions } from '../utils/hooks';
-import { VerticalSpacer } from './VerticalSpacer';
+import { LabelSpacer } from './LabelSpacer';
 
 const GridLineWrapper = styled(Box)(
   css({
@@ -63,9 +63,9 @@ export const GridLines: React.FC<GridLinesProps> = ({ tickCount, max }) => {
 
   return (
     <GridLineWrapper aria-hidden>
-      <VerticalSpacer>
+      <LabelSpacer>
         <GridLineContainer>{lines}</GridLineContainer>
-      </VerticalSpacer>
+      </LabelSpacer>
     </GridLineWrapper>
   );
 };

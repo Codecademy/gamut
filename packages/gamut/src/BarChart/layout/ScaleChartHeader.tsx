@@ -6,7 +6,7 @@ import { Box } from '../../Box';
 import { Text } from '../../Typography';
 import { formatNumberUnitCompact } from '../utils';
 import { useBarChartContext, useLabelPositions } from '../utils/hooks';
-import { VerticalSpacer } from './VerticalSpacer';
+import { LabelSpacer } from './LabelSpacer';
 
 export interface ScaleChartHeaderProps {
   /** Maximum value on the scale (min is always 0) */
@@ -85,9 +85,9 @@ export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
         aria-hidden="true"
         display={{ _: 'none', xs: 'block' }}
       >
-        <VerticalSpacer>
+        <LabelSpacer>
           <HeaderLabelArea>{scaleLabels}</HeaderLabelArea>
-        </VerticalSpacer>
+        </LabelSpacer>
       </StyledHeaderContainer>
     </Box>
   );
