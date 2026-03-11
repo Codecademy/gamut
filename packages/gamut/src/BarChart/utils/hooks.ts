@@ -74,8 +74,9 @@ export const useBarChart = ({
   barCount = 0,
   translations,
 }: UseBarChartOptions) => {
-  const [widestCategoryLabelWidth, setWidestCategoryLabelWidthState] =
-    useState<number | null>(null);
+  const [widestCategoryLabelWidth, setWidestCategoryLabelWidthState] = useState<
+    number | null
+  >(null);
   const [widestTotalValueLabelWidth, setWidestTotalValueLabelWidthState] =
     useState<number | null>(null);
   const [isMeasuring, setIsMeasuring] = useState(true);

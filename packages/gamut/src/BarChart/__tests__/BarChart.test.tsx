@@ -318,7 +318,9 @@ describe('BarChart', () => {
     });
 
     it('calls onClick when href and onClick are provided', async () => {
-      const onClick = jest.fn((e: { preventDefault(): void }) => e.preventDefault());
+      const onClick = jest.fn((e: { preventDefault(): void }) =>
+        e.preventDefault()
+      );
       const { view } = renderView({
         barValues: createPythonBar({ href: '/python', onClick }),
         unit: 'XP',

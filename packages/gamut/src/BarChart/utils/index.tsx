@@ -115,12 +115,16 @@ export const getValuesSummary = ({
       locale,
       gained,
     };
-    return (translations.accessibility.stackedBarSummary ??
-      getDefaultStackedBarSummary)(stackedCtx);
+    return (
+      translations.accessibility.stackedBarSummary ??
+      getDefaultStackedBarSummary
+    )(stackedCtx);
   }
 
-  return (translations.accessibility.singleValueBarSummary ??
-    getDefaultSingleValueBarSummary)(singleValueCtx);
+  return (
+    translations.accessibility.singleValueBarSummary ??
+    getDefaultSingleValueBarSummary
+  )(singleValueCtx);
 };
 
 /**

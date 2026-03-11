@@ -20,7 +20,7 @@ const rowBaseStyles = css({
   border: 'none',
   cursor: 'inherit',
   display: 'flex',
-  flexDirection: { _: 'column', xs: 'row' },
+  flexDirection: { _: 'column', c_xs: 'row' },
 
   p: barListItemPadding,
   position: 'relative',
@@ -61,14 +61,14 @@ export const RowAnchor = styled('a', styledOptions<'a'>())(
 export const BarWrapper = styled(Box)(
   css({
     alignItems: 'center',
-    borderRadius: { _: 'md' as any, xs: 'xl' },
+    borderRadius: { _: 'md' as any, c_xs: 'xl' },
     display: 'flex',
-    flex: { _: 'none', xs: 1 },
-    height: { _: 8, xs: 24 },
+    flex: { _: 'none', c_xs: 1 },
+    height: { _: 8, c_xs: 24 },
     overflow: 'hidden',
     position: 'relative',
-    width: { _: '100%', xs: 'auto' },
-    mt: { _: 8, xs: 0 },
+    width: { _: '100%', c_xs: 'auto' },
+    mt: { _: 8, c_xs: 0 },
   })
 );
 
