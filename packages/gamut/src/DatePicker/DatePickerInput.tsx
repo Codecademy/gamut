@@ -55,6 +55,7 @@ export const DatePickerInput = forwardRef<
     startDate,
     endDate,
     setSelection,
+    setActiveRangePart,
     openCalendar,
     locale,
     isCalendarOpen,
@@ -143,7 +144,9 @@ export const DatePickerInput = forwardRef<
       value={inputValue}
       onChange={handleChange}
       onFocus={() => {
+        console.log('input focus');
         isInputFocusedRef.current = true;
+        if (isRange && rangePart) setActiveRangePart(rangePart);
       }}
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}

@@ -51,6 +51,9 @@ export interface DatePickerRangeProps extends DatePickerBaseProps {
 /** Props for the DatePicker provider / standalone component. */
 export type DatePickerProps = DatePickerSingleProps | DatePickerRangeProps;
 
+/** Which range input is active (focused); null = calendar drives both (selection mode). */
+export type ActiveRangePart = 'start' | 'end' | null;
+
 /** Shared state provided by DatePicker via context. */
 export interface DatePickerContextValue {
   mode: 'single' | 'range';
@@ -60,8 +63,12 @@ export interface DatePickerContextValue {
   startDate: Date | null;
   /** Range only: end date. */
   endDate: Date | null;
-  /** Range only: set full range. */
+  /** Set selection. Single: (date). Range: (start, end). */
   setSelection: (startDate: Date | null, endDate?: Date | null) => void;
+  /** Range only: which input is active (start/end focused); null = selection mode. */
+  activeRangePart: ActiveRangePart;
+  /** Range only: set which input is active (e.g. when input receives focus). */
+  setActiveRangePart: (part: ActiveRangePart) => void;
   isCalendarOpen: boolean;
   openCalendar: () => void;
   closeCalendar: () => void;

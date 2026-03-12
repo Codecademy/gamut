@@ -29,6 +29,9 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     children,
   } = props;
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [activeRangePart, setActiveRangePart] = useState<
+    'start' | 'end' | null
+  >(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dialogId = useId();
   const calendarDialogId = `datepicker-dialog-${dialogId.replace(/:/g, '')}`;
@@ -36,6 +39,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const openCalendar = useCallback(() => setIsCalendarOpen(true), []);
   const closeCalendar = useCallback(() => {
     setIsCalendarOpen(false);
+    setActiveRangePart(null);
     inputRef.current?.focus();
   }, []);
 
@@ -62,6 +66,8 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       startDate,
       endDate,
       setSelection,
+      activeRangePart: mode === 'range' ? activeRangePart : null,
+      setActiveRangePart: mode === 'range' ? setActiveRangePart : () => {},
       isCalendarOpen,
       openCalendar,
       closeCalendar,
@@ -74,6 +80,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       startDate,
       endDate,
       setSelection,
+      activeRangePart,
       isCalendarOpen,
       openCalendar,
       closeCalendar,

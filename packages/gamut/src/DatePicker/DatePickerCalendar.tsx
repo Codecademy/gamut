@@ -43,6 +43,8 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     startDate,
     setSelection,
     endDate,
+    activeRangePart,
+    setActiveRangePart,
     disabledDates,
     locale,
     closeCalendar,
@@ -73,6 +75,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
 
   const handleDateSelect = (date: Date) => {
     console.log('handle date select');
+    setActiveRangePart(null);
     // single date select
     if (!isRange) {
       // If clicked date is the same as Start Date: Clear Start Date
@@ -84,7 +87,24 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
       setSelection(date);
       return;
     }
-    // Range mode
+
+    // Range mode: field targeting (start or end input was focused)
+    if (activeRangePart === 'start') {
+      const newEnd =
+        endDate != null && date.getTime() <= endDate.getTime() ? endDate : null;
+      setSelection(date, newEnd);
+      return;
+    }
+    if (activeRangePart === 'end') {
+      const newStart =
+        startDate != null && date.getTime() >= startDate.getTime()
+          ? startDate
+          : null;
+      setSelection(newStart, date);
+      return;
+    }
+
+    // Range selection mode (no field focused: calendar drives both)
     if (startDate && endDate) {
       // If clicked date > Start: Updates End Date to new date (Start remains)
       if (date.getTime() > startDate.getTime()) {
@@ -94,6 +114,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
       else {
         setSelection(date, endDate);
       }
+      return;
     }
     // Start is Set, End is Empty
     else if (startDate && !endDate) {
@@ -105,11 +126,9 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
       else {
         setSelection(startDate, date);
       }
+      return;
     }
-    // otherwise set start to selected date
-    else {
-      setSelection(date, null);
-    }
+    setSelection(date, null);
   };
 
   const handleClearDate = () => {
