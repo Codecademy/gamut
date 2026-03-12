@@ -189,7 +189,7 @@ export const WithExternalTitle: Story = {
       <>
         <Box
           as="h2"
-          bg="paleBlue"
+          bg="background-selected"
           border={1}
           borderRadius="lg"
           id="external-chart-title"
