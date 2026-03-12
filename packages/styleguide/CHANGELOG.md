@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [79.2.0](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.1.4...@codecademy/styleguide@79.2.0) (2026-03-12)
+
+### Features
+
+- Logical properties ([4c340c3](https://github.com/Codecademy/gamut/commit/4c340c3949bad30fce4f9ffabb2018763df5c4ba))
+
 ### [79.1.4](https://github.com/Codecademy/gamut/compare/@codecademy/styleguide@79.1.3...@codecademy/styleguide@79.1.4) (2026-03-09)
 
 **Note:** Version bump only for package @codecademy/styleguide

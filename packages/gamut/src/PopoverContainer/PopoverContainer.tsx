@@ -59,19 +59,41 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
     onRequestCloseRef.current = onRequestClose;
   }, [onRequestClose]);
 
+  // Detect RTL direction from the target element and watch for attribute changes so the
+  // position recalculates when changes occur
+  const [isRtl, setIsRtl] = useState(false);
+  useEffect(() => {
+    const checkDirection = () => {
+      const target = targetRef?.current;
+      const el = target instanceof Element ? target : document.documentElement;
+      setIsRtl(getComputedStyle(el).direction === 'rtl');
+    };
+
+    checkDirection();
+
+    const observer = new MutationObserver(checkDirection);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['dir'],
+      subtree: true,
+    });
+    return () => observer.disconnect();
+  }, [targetRef]);
+
   const popoverPosition = useMemo(() => {
     if (parent !== undefined) {
       return getPosition({
         alignment,
         container: parent,
         invertAxis,
+        isRtl,
         offset,
         x,
         y,
       });
     }
-    return {};
-  }, [parent, x, y, offset, alignment, invertAxis]);
+    return { styles: {}, physicalStyles: undefined };
+  }, [parent, x, y, offset, alignment, invertAxis, isRtl]);
 
   useEffect(() => {
     const target = targetRef?.current;
@@ -229,7 +251,11 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
         ref={popoverRef}
         tabIndex={-1}
         zIndex={inline ? 5 : 'initial'}
-        {...popoverPosition}
+        {...popoverPosition.styles}
+        /* Physical inline style for centered alignments (top/bottom) where
+           inset-inline-start would incorrectly flip the center point in RTL */
+        /* eslint-disable-next-line gamut/no-inline-style */
+        style={popoverPosition.physicalStyles}
         {...rest}
       />
     </FocusTrap>
