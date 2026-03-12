@@ -1,6 +1,6 @@
-import { setupRtl } from '@codecademy/gamut-tests';
+import { MockGamutProvider, setupRtl } from '@codecademy/gamut-tests';
 import { fireEvent } from '@testing-library/dom';
-import { act } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { ConnectedForm, ConnectedFormGroup, SubmitButton } from '../../..';
@@ -90,21 +90,33 @@ describe('ConnectedNestedCheckboxes', () => {
       view.getByLabelText('Fastify');
     });
 
-    it('should render checkboxes with proper indentation levels', () => {
-      const { view } = renderView();
+    it.each([
+      { useLogicalProperties: true, marginLeft: 'marginInlineStart' },
+      { useLogicalProperties: false, marginLeft: 'marginLeft' },
+    ])(
+      'should render checkboxes with proper indentation levels (useLogicalProperties: $useLogicalProperties)',
+      ({ useLogicalProperties, marginLeft }) => {
+        render(
+          <MockGamutProvider useLogicalProperties={useLogicalProperties}>
+            <TestForm />
+          </MockGamutProvider>
+        );
 
-      const frontendCheckbox = view
-        .getByLabelText('Frontend Technologies')
-        .closest('li');
-      const reactCheckbox = view.getByLabelText('React').closest('li');
-      const nodeCheckbox = view.getByLabelText('Node.js').closest('li');
-      const expressCheckbox = view.getByLabelText('Express.js').closest('li');
+        const frontendCheckbox = screen
+          .getByLabelText('Frontend Technologies')
+          .closest('li');
+        const reactCheckbox = screen.getByLabelText('React').closest('li');
+        const nodeCheckbox = screen.getByLabelText('Node.js').closest('li');
+        const expressCheckbox = screen
+          .getByLabelText('Express.js')
+          .closest('li');
 
-      expect(frontendCheckbox).toHaveStyle({ marginLeft: '0' });
-      expect(reactCheckbox).toHaveStyle({ marginLeft: '1.5rem' });
-      expect(nodeCheckbox).toHaveStyle({ marginLeft: '1.5rem' });
-      expect(expressCheckbox).toHaveStyle({ marginLeft: '3rem' });
-    });
+        expect(frontendCheckbox).toHaveStyle({ [marginLeft]: '0' });
+        expect(reactCheckbox).toHaveStyle({ [marginLeft]: '1.5rem' });
+        expect(nodeCheckbox).toHaveStyle({ [marginLeft]: '1.5rem' });
+        expect(expressCheckbox).toHaveStyle({ [marginLeft]: '3rem' });
+      }
+    );
 
     it('should render with unique IDs for each checkbox', () => {
       const { view } = renderView();

@@ -18,6 +18,7 @@ import {
   TransformerMap,
   Variant,
 } from './types/config';
+import { DirectionalProperties } from './types/properties';
 import { BreakpointCache, CSSObject, ThemeProps } from './types/props';
 import { getStaticCss } from './utils/getStaticProperties';
 import { orderPropNames } from './utils/propNames';
@@ -96,11 +97,20 @@ export const variance = {
     const {
       transform = identity,
       property,
-      properties = [property],
+      properties: configProperties,
       scale,
+      resolveProperty,
     } = config;
     const getScaleValue = createScaleLookup(scale);
     const alwaysTransform = scale === undefined || isArray(scale);
+
+    const isDirectionalProperties = (
+      props: typeof configProperties
+    ): props is DirectionalProperties =>
+      props !== undefined &&
+      !isArray(props) &&
+      'physical' in props &&
+      'logical' in props;
 
     return {
       ...config,
@@ -135,18 +145,45 @@ export const variance = {
             return styles;
         }
 
+        const useLogicalProperties =
+          (props.theme as { useLogicalProperties?: boolean })
+            ?.useLogicalProperties ?? true;
+
+        let resolvedProperties: readonly (
+          | string
+          | { physical: string; logical: string }
+        )[];
+        if (isDirectionalProperties(configProperties)) {
+          const mode = resolveProperty
+            ? resolveProperty(useLogicalProperties)
+            : useLogicalProperties
+            ? 'logical'
+            : 'physical';
+          resolvedProperties = configProperties[mode];
+        } else {
+          resolvedProperties = configProperties ?? [property];
+        }
+
         // for each property look up the scale value from theme if passed and apply any
         // final transforms to the value
-        properties.forEach((property) => {
+        resolvedProperties.forEach((property) => {
+          let resolvedProperty: string;
+          if (resolveProperty && typeof property === 'object') {
+            const mode = resolveProperty(useLogicalProperties);
+            resolvedProperty = property[mode];
+          } else {
+            resolvedProperty = property as string;
+          }
+
           let styleValue: ReturnType<typeof transform> = intermediateValue;
 
           if (useTransform && !isUndefined(styleValue)) {
-            styleValue = transform(styleValue, property, props);
+            styleValue = transform(styleValue, resolvedProperty, props);
           }
           switch (typeof styleValue) {
             case 'number':
             case 'string':
-              return (styles[property] = styleValue);
+              return (styles[resolvedProperty] = styleValue);
             case 'object':
               return Object.assign(styles, styleValue);
             default:
