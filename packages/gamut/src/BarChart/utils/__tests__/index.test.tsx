@@ -37,22 +37,22 @@ describe('BarChart Utils', () => {
   describe('getLabel', () => {
     it('calculates label value for given index', () => {
       expect(
-        getLabel({ labelCount: 5, labelIndex: 0, maxScaleValue: 100 })
+        getLabel({ tickCount: 5, labelIndex: 0, maxScaleValue: 100 })
       ).toBe(0);
       expect(
-        getLabel({ labelCount: 5, labelIndex: 4, maxScaleValue: 100 })
+        getLabel({ tickCount: 5, labelIndex: 4, maxScaleValue: 100 })
       ).toBe(100);
     });
 
     it('handles single label', () => {
       expect(
-        getLabel({ labelCount: 1, labelIndex: 0, maxScaleValue: 100 })
+        getLabel({ tickCount: 1, labelIndex: 0, maxScaleValue: 100 })
       ).toBe(100);
     });
 
     it('calculates intermediate label values', () => {
       const value = getLabel({
-        labelCount: 5,
+        tickCount: 5,
         labelIndex: 2,
         maxScaleValue: 100,
       });

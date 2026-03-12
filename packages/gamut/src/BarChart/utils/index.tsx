@@ -3,7 +3,12 @@ import {
   getDefaultSingleValueBarSummary,
   getDefaultStackedBarSummary,
 } from '../shared/translations';
-import { BarChartUnit, BarProps, MaxScaleValue } from '../shared/types';
+import {
+  BarChartUnit,
+  BarProps,
+  MaxScaleValue,
+  ScaleTickCount,
+} from '../shared/types';
 
 export const calculatePercent = ({
   value,
@@ -131,16 +136,16 @@ export const getValuesSummary = ({
  * Calculates the value for a given label position (scale min is always 0).
  */
 export const getLabel = ({
-  labelCount,
+  tickCount,
   labelIndex,
   maxScaleValue,
 }: {
-  labelCount: number;
+  tickCount: ScaleTickCount;
   labelIndex: number;
   maxScaleValue: MaxScaleValue;
 }): number => {
-  if (labelCount <= 1) return maxScaleValue;
-  const incrementalDecimal = labelIndex / (labelCount - 1);
+  if (tickCount <= 1) return maxScaleValue;
+  const incrementalDecimal = labelIndex / (tickCount - 1);
   return Math.floor(incrementalDecimal * maxScaleValue);
 };
 

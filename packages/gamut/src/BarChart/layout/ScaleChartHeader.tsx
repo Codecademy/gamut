@@ -55,7 +55,7 @@ export const ScaleChartHeader: React.FC<ScaleAxisLayoutProps> = ({
   const { translations } = useBarChartContext();
   const labelPositions = useLabelPositions({
     maxScaleValue,
-    count: tickCount,
+    tickCount,
   });
 
   const scaleLabels = useMemo(

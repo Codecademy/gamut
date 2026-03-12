@@ -26,6 +26,7 @@ import {
   BarProps,
   InferBarType,
   MaxScaleValue,
+  ScaleTickCount,
 } from '../shared/types';
 import { calculatePositionPercent, getLabel, sortBars } from './index';
 
@@ -35,23 +36,23 @@ export interface LabelPosition {
 }
 
 /**
- * Hook that calculates label positions for a given maxScaleValue and count (scale min is always 0).
+ * Hook that calculates label positions for a given maxScaleValue and tickCount (scale min is always 0).
  * Returns an array of { value, positionPercent } objects.
  */
 export const useLabelPositions = ({
   maxScaleValue,
-  count,
+  tickCount,
 }: {
   maxScaleValue: MaxScaleValue;
-  count: number;
+  tickCount: ScaleTickCount;
 }): LabelPosition[] => {
   return useMemo(
     () =>
-      Array.from({ length: count }, (_, i) => {
+      Array.from({ length: tickCount }, (_, i) => {
         const value = getLabel({
-          labelCount: count,
           labelIndex: i,
           maxScaleValue,
+          tickCount,
         });
         const positionPercent = calculatePositionPercent({
           value,
@@ -59,7 +60,7 @@ export const useLabelPositions = ({
         });
         return { value, positionPercent };
       }),
-    [maxScaleValue, count]
+    [maxScaleValue, tickCount]
   );
 };
 

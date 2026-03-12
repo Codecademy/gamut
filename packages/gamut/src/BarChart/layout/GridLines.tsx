@@ -48,7 +48,7 @@ export const GridLines: React.FC<ScaleAxisLayoutProps> = ({
 }) => {
   const labelPositions = useLabelPositions({
     maxScaleValue,
-    count: tickCount,
+    tickCount,
   });
 
   const lines = useMemo(

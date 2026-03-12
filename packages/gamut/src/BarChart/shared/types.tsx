@@ -29,14 +29,17 @@ type BarChartAriaLabelledBy = {
 
 type BarChartLabel = BarChartAriaLabel | BarChartAriaLabelledBy;
 
-/** Maximum value for the value scale (min is always 0) */
-export type MaxScaleValue = number;
-
 /** Props for components that lay out the scale axis (header labels or grid lines) */
 export type ScaleAxisLayoutProps = {
-  maxScaleValue: MaxScaleValue;
+  maxScaleValue: number;
   tickCount: number;
 };
+
+/** Maximum value for the value scale (min is always 0) */
+export type MaxScaleValue = ScaleAxisLayoutProps['maxScaleValue'];
+
+/** Number of labels/ticks on the scale axis. Must be at least 1. */
+export type ScaleTickCount = ScaleAxisLayoutProps['tickCount'];
 
 export type BarChartStyles = {
   /** Color for text labels. Defaults to 'text' */
