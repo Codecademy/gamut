@@ -18,7 +18,15 @@ export interface BackgroundProps
   bg: Colors;
 }
 
-const isColorAlias = (
+/**
+ * Type guard that checks whether a color is a semantic alias in the given mode
+ * (e.g. "text", "primary") rather than a raw theme color key.
+ *
+ * @param mode - The color mode shape to check against
+ * @param color - The color key to test
+ * @returns True if `color` is a key in `mode` (i.e. a ColorAlias)
+ */
+export const isColorAlias = (
   mode: ColorModeShape,
   color: Colors
 ): color is ColorAlias => {

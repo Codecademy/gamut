@@ -1,6 +1,7 @@
 import {
-  ColorModeShape,
+  ColorAlias,
   Colors,
+  isColorAlias,
   useColorModes,
 } from '@codecademy/gamut-styles';
 import { getContrast } from 'polished';
@@ -172,14 +173,6 @@ export const useBarChart = ({
 };
 
 /**
- * Checks if a color is a color alias (exists in the color mode shape)
- */
-const isColorAlias = (
-  mode: ColorModeShape,
-  color: Colors
-): color is keyof ColorModeShape => Object.keys(mode).includes(color);
-
-/**
  * Hook that returns a function to get the highest contrast border color
  * (white or navy-900) for a given background color.
  *
@@ -194,7 +187,9 @@ export const useBarBorderColor = () => {
   const getBorderColor = useCallback(
     (bg: Colors): 'white' | 'navy-900' => {
       /** If a color alias was used then look up the true color key from the active mode */
-      const trueColor = isColorAlias(activeColors, bg) ? activeColors[bg] : bg;
+      const trueColor = isColorAlias(activeColors, bg)
+        ? activeColors[bg as ColorAlias]
+        : bg;
 
       const backgroundColor = getColorValue(trueColor);
       const whiteContrast = getContrast(
