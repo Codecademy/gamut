@@ -24,6 +24,7 @@ export const Default: Story = {
 export const StaticLight: Story = {
   render: () => (
     <Background bg="white">
+      <p>Test test</p>
       <FlexBox border={1} gap={16} p={16} row>
         <Box flexGrow={1}>
           <Card variant="white">White variant</Card>
