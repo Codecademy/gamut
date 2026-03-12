@@ -1,11 +1,11 @@
 import { Meta } from '@storybook/blocks';
 
-import { AboutHeader, LinkTo } from '~styleguide/blocks';
+import { AboutHeader, ImageWrapper, LinkTo } from '~styleguide/blocks';
 
 export const parameters = {
   title: 'Confirmation dialogs',
   subtitle:
-    'Simplify the language, prioritize the message, and make sure the implication of what learners are saying "Yes" (or "No") to is crystal clear.',
+    'Use the same verb from the triggering button, heading, to action confirmation button; clearly communicate the consequences; and keep the copy decision-focused.',
   status: 'static',
   design: {
     type: 'figma',
@@ -17,39 +17,57 @@ export const parameters = {
 
 <AboutHeader {...parameters} />
 
-Confirmation dialog boxes are used to verify that a learner wants to take a specific action. They are generally used for actions that are irreversible, may result in critical consequences or loss of data, have other severe consequences, or happen infrequently.
+Confirmation dialogs use the <LinkTo id="Molecules/Modals/Dialog">Dialog component in Gamut</LinkTo> to create intentional friction to verify that a learner wants to take a high-impact action, such as:
 
-They use the <LinkTo id="Molecules/Modals/Dialog">Dialog component in Gamut</LinkTo> and, for actions with serious or irreversible consequences, the `Danger` variant should be used.
+- Irreversible actions (e.g., submitting payment)
+- Loss of data, time, or work (e.g., deleting a course)
+- Unexpected consequences (e.g., losing learning history on an existing prototype when when generating a new prototype)
+
+Adding friction for these purposes helps improve trust and avoid unintentional actions by making sure learners clearly understand the consequences before continuing. It also lets us offer alternatives or undo options when needed.
 
 ## Best practices
 
-### Headline
+### Heading
 
-- **Ask or inform about one main action**, clearly and simply.
-- **Frame your headline as a binary question**, when possible, with 2 unambiguous answers (i.e. Yes/No, Stay/Leave).
-- **Be specific.** Instead of "Are you sure?" focus on what you want to ensure they're sure about (i.e. "Reset your progress?" or "Delete the file?").
+- **Ask or inform about one main action**, mirroring the button that triggered the confirmation dialog.
+- **Frame your headline as a binary question**, when possible, with 2 unambiguous answers.
+- **Avoid generic “Are you sure?” headings and body text.** This phrasing takes up space, increases cognitive load, and may undermine users' confidence or be interpreted as patronizing.
 
-### Explanation
+### Body (optional)
 
-- **Share only relevant information** that may help the learner make their decision.
-- **Avoid redundancy.** If you've already set the stage in your headline, there's no need to re-ask the same question in your explanation. If the explanation doesn't add anything new, leave it out (i.e. "Permanently delete this item? Yes/No").
-- **Avoid filler.** Questions like "Are you sure you want to \_\_\_?" take up space, increase cognitive load, and may undermine users' confidence or be interpreted as patronizing.
-- **Keep to 1-2 lines**, unless more is required to get all the information across.
+- **Add essential information about the contextual consequences.** State what will happen, what will be lost/changed, and any critical conditions.
+- **Avoid redundancy.** If the heading is already self-explanatory, the body is not needed.
+- **Keep to 1–2 lines, unless more is required to get all the information across.**
 
-### Button copy
+### Buttons (CTA1 and CTA2)
 
-- **Options should be clear and distinct.** Each option should be distinctly different and there should be no opportunity for learners to mix them up (i.e. "Delete" and "Cancel" are ambiguous choices whereas "Yes, remove" and "Cancel" clear up the confusion.
-- **Add context to reaffirm the action.** Instead of "Yes," use "Yes, reset progress."
-- **Match the verb in your headline.** If you use "Save" in your headline, use "Save" in your button copy, rather than keep. Consistency helps keep the message clear. All of this should also match whatever the learner clicked on that triggered the confirmation dialog.
+- **Avoid using “Yes” or “No,”** as they can be misinterpreted in global English and internationalization contexts.
+- **CTA1 matches the verb from the heading** to confirm the action.
+- **CTA2 clarifies the alternative or undo** path.
+  - Whenever possible, be specific about the alternative. However, when space is limited, 'Cancel' can be used.
+
+### Examples — putting it all together
+
+<ImageWrapper
+  src="./ux writing/delete_this_course.png"
+  alt="Delete this course confirmation dialog"
+/>
+
+<ImageWrapper
+  src="./ux writing/delete_study_plan.png"
+  alt="Delete study plan confirmation dialog"
+/>
+
+<ImageWrapper
+  src="./ux writing/clear_chat.png"
+  alt="Clear chat confirmation dialog"
+/>
 
 ## Checklist
 
-- Is the language consistent from the wording on the button that opened the confirmation box, to the headline,
-- Does the headline make the action clear?
-- Is the headline framed as a question, if possible?
-- Does the explanation provide relevant details and consequences of the action?
-- Is the explanation 1-2 lines long?
-- Are the words on the buttons clear and distinct?
-- Do the buttons include context to reaffirm the action?
-- Is your copy at a reading level of grade 7 or below? Test with [Hemingway App](https://hemingwayapp.com).
-- Have you asked someone unrelated to the project to read the message and did they understand it?
+- Is the action irreversible, destructive, or has unexpected consequences? If not, consider using a different pattern.
+- Is the same verb used from the action triggering the confirmation dialog, to the heading, to CTA1?
+- Did you avoid filler language such as “Are you sure you want to...?”
+- Does the body front-load the critical consequence in 1–3 lines?
+- Are the buttons mutually exclusive (and avoid using “Yes/No”)?
+- Is there a safer alternative or undo to mention? (If available, offer the option as CTA2.)
