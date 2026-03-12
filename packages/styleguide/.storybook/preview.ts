@@ -175,8 +175,8 @@ export const globalTypes = {
     toolbar: {
       icon: 'transfer',
       items: [
-        { value: 'true', title: 'Logical' },
         { value: 'false', title: 'Physical' },
+        { value: 'true', title: 'Logical' }
       ],
       showName: true,
     },
