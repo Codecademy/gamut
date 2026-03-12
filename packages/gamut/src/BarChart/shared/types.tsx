@@ -29,6 +29,15 @@ type BarChartAriaLabelledBy = {
 
 type BarChartLabel = BarChartAriaLabel | BarChartAriaLabelledBy;
 
+/** Maximum value for the value scale (min is always 0) */
+export type MaxScaleValue = number;
+
+/** Props for components that lay out the scale axis (header labels or grid lines) */
+export type ScaleAxisLayoutProps = {
+  maxScaleValue: MaxScaleValue;
+  tickCount: number;
+};
+
 export type BarChartStyles = {
   /** Color for text labels. Defaults to 'text' */
   textColor?: ColorAlias;
@@ -92,13 +101,13 @@ export type BarChartProps<
   hideDescription?: boolean;
   /** Hides the visual title for the chart UL */
   hideTitle?: boolean;
-  /** Maximum value for the x-axis scale */
-  maxScaleValue: number;
+  /** Maximum value for the value scale */
+  maxScaleValue: MaxScaleValue;
   /** Unit label to display (e.g., "XP") */
   unit?: string;
   /** Style configuration for colors */
   styleConfig?: BarChartStyles;
-  /** Interval for x-axis scale markers */
+  /** Interval for the value scale markers */
   scaleInterval?: number;
   /** Array of sort options to display in the dropdown. Can include string literals ('alphabetically', 'numerically', 'none') or custom sort functions. If not provided, the Select dropdown will not render. */
   sortFns?: (

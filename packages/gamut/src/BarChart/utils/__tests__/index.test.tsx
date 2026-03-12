@@ -36,19 +36,25 @@ describe('BarChart Utils', () => {
 
   describe('getLabel', () => {
     it('calculates label value for given index', () => {
-      expect(getLabel({ labelCount: 5, labelIndex: 0, max: 100 })).toBe(0);
-      expect(getLabel({ labelCount: 5, labelIndex: 4, max: 100 })).toBe(100);
+      expect(
+        getLabel({ labelCount: 5, labelIndex: 0, maxScaleValue: 100 })
+      ).toBe(0);
+      expect(
+        getLabel({ labelCount: 5, labelIndex: 4, maxScaleValue: 100 })
+      ).toBe(100);
     });
 
     it('handles single label', () => {
-      expect(getLabel({ labelCount: 1, labelIndex: 0, max: 100 })).toBe(100);
+      expect(
+        getLabel({ labelCount: 1, labelIndex: 0, maxScaleValue: 100 })
+      ).toBe(100);
     });
 
     it('calculates intermediate label values', () => {
       const value = getLabel({
         labelCount: 5,
         labelIndex: 2,
-        max: 100,
+        maxScaleValue: 100,
       });
       expect(value).toBeGreaterThan(0);
       expect(value).toBeLessThan(100);
@@ -57,19 +63,31 @@ describe('BarChart Utils', () => {
 
   describe('calculatePositionPercent', () => {
     it('calculates position percentage correctly', () => {
-      expect(calculatePositionPercent({ value: 50, max: 100 })).toBe(50);
-      expect(calculatePositionPercent({ value: 25, max: 100 })).toBe(25);
-      expect(calculatePositionPercent({ value: 0, max: 100 })).toBe(0);
-      expect(calculatePositionPercent({ value: 100, max: 100 })).toBe(100);
+      expect(calculatePositionPercent({ value: 50, maxScaleValue: 100 })).toBe(
+        50
+      );
+      expect(calculatePositionPercent({ value: 25, maxScaleValue: 100 })).toBe(
+        25
+      );
+      expect(calculatePositionPercent({ value: 0, maxScaleValue: 100 })).toBe(
+        0
+      );
+      expect(calculatePositionPercent({ value: 100, maxScaleValue: 100 })).toBe(
+        100
+      );
     });
 
-    it('handles edge case when max is 0', () => {
-      expect(calculatePositionPercent({ value: 50, max: 0 })).toBe(0);
+    it('handles edge case when maxScaleValue is 0', () => {
+      expect(calculatePositionPercent({ value: 50, maxScaleValue: 0 })).toBe(0);
     });
 
     it('handles values outside range', () => {
-      expect(calculatePositionPercent({ value: 150, max: 100 })).toBe(150);
-      expect(calculatePositionPercent({ value: -10, max: 100 })).toBe(-10);
+      expect(calculatePositionPercent({ value: 150, maxScaleValue: 100 })).toBe(
+        150
+      );
+      expect(calculatePositionPercent({ value: -10, maxScaleValue: 100 })).toBe(
+        -10
+      );
     });
   });
 

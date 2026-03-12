@@ -3,7 +3,7 @@ import {
   getDefaultSingleValueBarSummary,
   getDefaultStackedBarSummary,
 } from '../shared/translations';
-import { BarChartUnit, BarProps } from '../shared/types';
+import { BarChartUnit, BarProps, MaxScaleValue } from '../shared/types';
 
 export const calculatePercent = ({
   value,
@@ -20,7 +20,7 @@ export const calculateBarWidth = ({
   maxScaleValue,
 }: {
   value: number;
-  maxScaleValue: number;
+  maxScaleValue: MaxScaleValue;
 }) => {
   const adjustedValue = Math.max(0, Math.min(maxScaleValue, value));
   return Math.floor(
@@ -133,30 +133,30 @@ export const getValuesSummary = ({
 export const getLabel = ({
   labelCount,
   labelIndex,
-  max,
+  maxScaleValue,
 }: {
   labelCount: number;
   labelIndex: number;
-  max: number;
+  maxScaleValue: MaxScaleValue;
 }): number => {
-  if (labelCount <= 1) return max;
+  if (labelCount <= 1) return maxScaleValue;
   const incrementalDecimal = labelIndex / (labelCount - 1);
-  return Math.floor(incrementalDecimal * max);
+  return Math.floor(incrementalDecimal * maxScaleValue);
 };
 
 /**
- * Calculates the percentage position for a given value within 0–max range.
+ * Calculates the percentage position for a given value within 0–maxScaleValue range.
  * Returns a value between 0 and 100 representing the position percentage.
  */
 export const calculatePositionPercent = ({
   value,
-  max,
+  maxScaleValue,
 }: {
   value: number;
-  max: number;
+  maxScaleValue: MaxScaleValue;
 }): number => {
-  if (max === 0) return 0;
-  return (value / max) * 100;
+  if (maxScaleValue === 0) return 0;
+  return (value / maxScaleValue) * 100;
 };
 
 /**

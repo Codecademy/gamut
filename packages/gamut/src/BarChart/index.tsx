@@ -141,9 +141,9 @@ export const BarChart = <
         position="relative"
         width="100%"
       >
-        <ScaleChartHeader labelCount={tickCount} max={maxScaleValue} />
+        <ScaleChartHeader maxScaleValue={maxScaleValue} tickCount={tickCount} />
         <Box position="relative" width="100%">
-          <GridLines max={maxScaleValue} tickCount={tickCount} />
+          <GridLines maxScaleValue={maxScaleValue} tickCount={tickCount} />
           <BarsList aria-labelledby={ariaLabelledBy ?? titleId}>
             {sortedBars.map((bar, index) => (
               <BarRow index={index} key={getBarRowKey(bar, index)} {...bar} />

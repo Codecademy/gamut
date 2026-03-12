@@ -4,10 +4,10 @@ import {
   BarChartTranslations,
   defaultBarChartTranslations,
 } from './shared/translations';
-import { BarChartStyles } from './shared/types';
+import { BarChartStyles, MaxScaleValue } from './shared/types';
 
 export interface BarChartContextProps {
-  maxScaleValue: number;
+  maxScaleValue: MaxScaleValue;
   scaleInterval: number;
   unit: string;
   styleConfig: Required<BarChartStyles>;

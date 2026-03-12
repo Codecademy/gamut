@@ -4,16 +4,10 @@ import React, { useMemo } from 'react';
 
 import { Box, FlexBox } from '../../Box';
 import { Text } from '../../Typography';
+import { ScaleAxisLayoutProps } from '../shared/types';
 import { formatNumberUnitCompact } from '../utils';
 import { useBarChartContext, useLabelPositions } from '../utils/hooks';
 import { LabelSpacer } from './LabelSpacer';
-
-export interface ScaleChartHeaderProps {
-  /** Maximum value on the scale (min is always 0) */
-  max: number;
-  /** Number of labels to display */
-  labelCount: number;
-}
 
 const StyledLabelText = styled(Text)<{
   positionPercent: number;
@@ -54,12 +48,15 @@ const HeaderLabelArea = styled(Box)(
   })
 );
 
-export const ScaleChartHeader: React.FC<ScaleChartHeaderProps> = ({
-  labelCount,
-  max,
+export const ScaleChartHeader: React.FC<ScaleAxisLayoutProps> = ({
+  maxScaleValue,
+  tickCount,
 }) => {
   const { translations } = useBarChartContext();
-  const labelPositions = useLabelPositions({ max, count: labelCount });
+  const labelPositions = useLabelPositions({
+    maxScaleValue,
+    count: tickCount,
+  });
 
   const scaleLabels = useMemo(
     () =>

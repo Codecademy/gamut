@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import React, { useMemo } from 'react';
 
 import { Box } from '../../Box';
+import { ScaleAxisLayoutProps } from '../shared/types';
 import { useLabelPositions } from '../utils/hooks';
 import { LabelSpacer } from './LabelSpacer';
 
@@ -41,13 +42,14 @@ const GridLine = styled(Box)<{ positionPercent: number }>(
   })
 );
 
-export interface GridLinesProps {
-  tickCount: number;
-  max: number;
-}
-
-export const GridLines: React.FC<GridLinesProps> = ({ tickCount, max }) => {
-  const labelPositions = useLabelPositions({ max, count: tickCount });
+export const GridLines: React.FC<ScaleAxisLayoutProps> = ({
+  maxScaleValue,
+  tickCount,
+}) => {
+  const labelPositions = useLabelPositions({
+    maxScaleValue,
+    count: tickCount,
+  });
 
   const lines = useMemo(
     () =>

@@ -21,7 +21,12 @@ import {
   defaultStyleConfig,
 } from '../BarChartProvider';
 import { BarChartTranslations } from '../shared/translations';
-import { BarChartStyles, BarProps, InferBarType } from '../shared/types';
+import {
+  BarChartStyles,
+  BarProps,
+  InferBarType,
+  MaxScaleValue,
+} from '../shared/types';
 import { calculatePositionPercent, getLabel, sortBars } from './index';
 
 export interface LabelPosition {
@@ -30,24 +35,31 @@ export interface LabelPosition {
 }
 
 /**
- * Hook that calculates label positions for a given max and count (scale min is always 0).
+ * Hook that calculates label positions for a given maxScaleValue and count (scale min is always 0).
  * Returns an array of { value, positionPercent } objects.
  */
 export const useLabelPositions = ({
-  max,
+  maxScaleValue,
   count,
 }: {
-  max: number;
+  maxScaleValue: MaxScaleValue;
   count: number;
 }): LabelPosition[] => {
   return useMemo(
     () =>
       Array.from({ length: count }, (_, i) => {
-        const value = getLabel({ labelCount: count, labelIndex: i, max });
-        const positionPercent = calculatePositionPercent({ value, max });
+        const value = getLabel({
+          labelCount: count,
+          labelIndex: i,
+          maxScaleValue,
+        });
+        const positionPercent = calculatePositionPercent({
+          value,
+          maxScaleValue,
+        });
         return { value, positionPercent };
       }),
-    [max, count]
+    [maxScaleValue, count]
   );
 };
 
@@ -56,7 +68,7 @@ export const useBarChartContext = (): BarChartContextProps => {
 };
 
 export interface UseBarChartOptions {
-  maxScaleValue: number;
+  maxScaleValue: MaxScaleValue;
   scaleInterval?: number;
   unit?: string;
   styleConfig?: BarChartStyles;
