@@ -1,5 +1,4 @@
 import {
-  ColorAlias,
   Colors,
   isColorAlias,
   useColorModes,
@@ -188,7 +187,7 @@ export const useBarBorderColor = () => {
     (bg: Colors): 'white' | 'navy-900' => {
       /** If a color alias was used then look up the true color key from the active mode */
       const trueColor = isColorAlias(activeColors, bg)
-        ? activeColors[bg as ColorAlias]
+        ? activeColors[bg]
         : bg;
 
       const backgroundColor = getColorValue(trueColor);
