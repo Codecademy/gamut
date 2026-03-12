@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import * as React from 'react';
 
+import { TextButton } from '../../Button';
 import { CalendarBodyProps } from './types';
 import {
   clampToMonth,
@@ -12,7 +13,6 @@ import {
   isSameDay,
 } from './utils/dateGrid';
 import { getWeekdayFullNames, getWeekdayLabels } from './utils/format';
-import { TextButton } from '../../Button';
 
 const DateButton = styled(TextButton)(
   states({
@@ -200,12 +200,13 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
       }
     },
     [
+      onFocusedDateChange,
       datesWithRow,
-      disabledDates,
       month,
       year,
+      disabledDates,
       onDateSelect,
-      onFocusedDateChange,
+      onEscapeKeyPress,
       onVisibleDateChange,
     ]
   );
@@ -233,10 +234,12 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
       </thead>
       <tbody>
         {weeks.map((week, rowIndex) => (
-          <tr key={rowIndex}>
+          <tr key={week.join('-')}>
             {week.map((date, colIndex) => {
               if (date === null) {
                 return (
+                  // fix this error
+                  // eslint-disable-next-line react/no-array-index-key, jsx-a11y/control-has-associated-label
                   <td key={`empty-${rowIndex}-${colIndex}`} role="gridcell" />
                 );
               }
@@ -257,19 +260,19 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                   role="gridcell"
                 >
                   <DateButton
+                    disabled={disabled}
+                    isInRange={inRange}
+                    isSelected={selected}
+                    isToday={today}
                     ref={(el) => setButtonRef(date, el as HTMLElement | null)}
+                    tabIndex={isFocused ? 0 : -1}
                     variant="secondary"
                     width="36px"
-                    disabled={disabled}
-                    isToday={today}
-                    isSelected={selected}
-                    isInRange={inRange}
                     onClick={() => onDateSelect(date)}
-                    tabIndex={isFocused ? 0 : -1}
+                    onFocus={() => onFocusedDateChange?.(date)}
                     onKeyDown={(e: React.KeyboardEvent) =>
                       handleKeyDown(e, date)
                     }
-                    onFocus={() => onFocusedDateChange?.(date)}
                   >
                     {date.getDate()}
                   </DateButton>

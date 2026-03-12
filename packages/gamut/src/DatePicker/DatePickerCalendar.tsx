@@ -74,7 +74,6 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
   // If Start == End (single day range): Clicking it clears everything
 
   const handleDateSelect = (date: Date) => {
-    console.log('handle date select');
     setActiveRangePart(null);
     // single date select
     if (!isRange) {
@@ -123,27 +122,27 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
         return;
       }
       // if clicked on start date, end date becomes start date
-      else if (date.getTime() === startDate.getTime()) {
+      if (date.getTime() === startDate.getTime()) {
         setSelection(endDate, null);
         return;
       }
       // if clicked on end date, clears end date and start remains
-      else if (date.getTime() === endDate.getTime()) {
+      if (date.getTime() === endDate.getTime()) {
         setSelection(startDate, null);
         return;
       }
       // If clicked date > Start: Updates End Date to new date (Start remains)
-      else if (date.getTime() > startDate.getTime()) {
+      if (date.getTime() > startDate.getTime()) {
         setSelection(startDate, date);
+        return;
       }
       // If clicked date < Start: Updates Start Date to new date (End remains) - extends range to the left
-      else {
-        setSelection(date, endDate);
-      }
+
+      setSelection(date, endDate);
       return;
     }
     // Start is Set, End is Empty
-    else if (startDate && !endDate) {
+    if (startDate && !endDate) {
       // If clicked date < Start: Restarts selection with clicked date as new Start
       if (date.getTime() < startDate.getTime()) {
         setSelection(date, null);
@@ -175,30 +174,30 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     <Calendar>
       <CalendarHeader
         currentMonthYear={visibleDate}
-        onCurrentMonthYearChange={setVisibleDate}
-        locale={locale}
         headingId={headingId}
+        locale={locale}
+        onCurrentMonthYearChange={setVisibleDate}
       />
       <CalendarBody
-        visibleDate={visibleDate}
-        selectedDate={startDate}
-        endDate={endDate}
-        onDateSelect={handleDateSelect}
         disabledDates={disabledDates}
+        endDate={endDate}
         focusedDate={focusTarget}
-        onFocusedDateChange={setFocusedDate}
-        onVisibleDateChange={setVisibleDate}
         labelledById={headingId}
         locale={locale}
+        selectedDate={startDate}
+        visibleDate={visibleDate}
         weekStartsOn={weekStartsOn}
+        onDateSelect={handleDateSelect}
         onEscapeKeyPress={closeCalendar}
+        onFocusedDateChange={setFocusedDate}
+        onVisibleDateChange={setVisibleDate}
       />
       <CalendarFooter
+        onClearDate={handleClearDate}
+        onCurrentMonthYearChange={setVisibleDate}
         onSelectedDateChange={(date) =>
           date === null ? handleClearDate() : handleTodayClick()
         }
-        onCurrentMonthYearChange={setVisibleDate}
-        onClearDate={handleClearDate}
         onTodayClick={handleTodayClick}
       />
     </Calendar>

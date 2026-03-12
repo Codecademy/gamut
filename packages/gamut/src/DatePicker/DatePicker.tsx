@@ -7,8 +7,8 @@ import { DatePickerProvider } from './DatePickerContext';
 import { DatePickerInput } from './DatePickerInput';
 import type {
   DatePickerContextValue,
-  DatePickerRangeProps,
   DatePickerProps,
+  DatePickerRangeProps,
 } from './types';
 
 function isRangeProps(props: DatePickerProps): props is DatePickerRangeProps {
@@ -102,40 +102,40 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       children
     ) : (
       <>
-        <FlexBox width="fit-content" gap={8} wrap>
+        <FlexBox gap={8} width="fit-content" wrap>
           {mode === 'range' ? (
             <>
               <DatePickerInput
-                rangePart="start"
-                placeholder={placeholder}
                 label={props.startLabel}
+                placeholder={placeholder}
+                rangePart="start"
                 ref={inputRef}
               />
               <DatePickerInput
-                rangePart="end"
-                placeholder={placeholder}
                 label={props.endLabel}
+                placeholder={placeholder}
+                rangePart="end"
                 // does this need a ref?
               />
             </>
           ) : (
             <DatePickerInput
-              placeholder={placeholder}
               label={props.label}
+              placeholder={placeholder}
               ref={inputRef}
             />
           )}
         </FlexBox>
         <PopoverContainer
           alignment="bottom-left"
-          invertAxis="x"
-          offset={10}
           allowPageInteraction
-          isOpen={isCalendarOpen}
-          onRequestClose={closeCalendar}
-          targetRef={inputRef}
           // look into if we can kill this and mess with where we are focusing instead
-          focusOnProps={{ autoFocus: false, focusLock: false }} // without this we cant type in the input but there has to be a better way
+          focusOnProps={{ autoFocus: false, focusLock: false }}
+          invertAxis="x"
+          isOpen={isCalendarOpen}
+          offset={10}
+          targetRef={inputRef}
+          onRequestClose={closeCalendar} // without this we cant type in the input but there has to be a better way
         >
           <div aria-label="Choose date" id={calendarDialogId} role="dialog">
             <DatePickerCalendar dialogId={calendarDialogId} />

@@ -38,15 +38,20 @@ export const DatePickerInput = forwardRef<
 >(({ placeholder, label, rangePart, ...rest }, ref) => {
   const context = useDatePicker();
   // do we want to do this or just throw an error?
+  // if (context == null) {
+  //   return (
+  //     <Input
+  //       {...rest}
+  //       icon={CalendarIcon}
+  //       placeholder={placeholder ?? 'MM/DD/YYYY'}
+  //       ref={ref}
+  //       type="text"
+  //     />
+  //   );
+  // }
   if (context == null) {
-    return (
-      <Input
-        {...rest}
-        ref={ref}
-        type="text"
-        icon={CalendarIcon}
-        placeholder={placeholder ?? 'MM/DD/YYYY'}
-      />
+    throw new Error(
+      'DatePickerInput must be used inside a DatePicker (it reads shared state from context).'
     );
   }
 
@@ -102,14 +107,12 @@ export const DatePickerInput = forwardRef<
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('handle change');
     const raw = e.target.value;
     setInputValue(raw);
     applyValueToSelection(raw);
   };
 
   const handleBlur = () => {
-    console.log('handle blur');
     isInputFocusedRef.current = false;
     const formatted = applyValueToSelection(inputValue.trim());
     if (formatted) setInputValue(formatted);
@@ -137,27 +140,26 @@ export const DatePickerInput = forwardRef<
   return (
     <Input
       {...rest}
-      id={inputId}
-      ref={ref}
-      type="text"
+      aria-autocomplete="none"
+      aria-controls={calendarDialogId}
+      aria-expanded={isCalendarOpen}
+      aria-haspopup="dialog"
       icon={CalendarIcon}
+      id={inputId}
+      label={label ?? defaultLabel} // this isnt actually adding a label
+      placeholder={placeholder ?? 'MM/DD/YYYY'}
+      ref={ref}
+      role="combobox"
+      type="text"
       value={inputValue}
+      onBlur={handleBlur}
       onChange={handleChange}
+      onClick={handleOpenCalendar}
       onFocus={() => {
-        console.log('input focus');
         isInputFocusedRef.current = true;
         if (isRange && rangePart) setActiveRangePart(rangePart);
       }}
-      onBlur={handleBlur}
       onKeyDown={handleKeyDown}
-      onClick={handleOpenCalendar}
-      role="combobox"
-      aria-expanded={isCalendarOpen}
-      aria-controls={calendarDialogId}
-      aria-haspopup="dialog"
-      aria-autocomplete="none"
-      placeholder={placeholder ?? 'MM/DD/YYYY'}
-      label={label ?? defaultLabel} // this isnt actually adding a label
     />
   );
 });

@@ -76,7 +76,7 @@ export function formatDateForInput(date: Date, locale?: string): string {
  * Partial input like "1" or "2/15" returns null even though Date("1") would parse.
  */
 
-//this logic needs some work
+// this logic needs some work
 export function parseDateFromInput(
   value: string,
   locale?: string

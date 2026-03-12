@@ -24,11 +24,11 @@ export const Default: Story = {
     return (
       <Box p={32}>
         <DatePicker
+          label="Date"
+          locale="de-DE"
+          placeholder="MM/DD/YYYY"
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
-          label="Date"
-          placeholder="MM/DD/YYYY"
-          locale="de-DE"
         />
       </Box>
     );
@@ -42,10 +42,10 @@ export const WithInitialDate: Story = {
     );
     return (
       <DatePicker
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
         label="Date"
         placeholder="MM/DD/YYYY"
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
       />
     );
   },
@@ -59,13 +59,13 @@ export const Range: Story = {
     return (
       <Box p={32}>
         <DatePicker
-          mode="range"
-          startDate={startDate}
           endDate={endDate}
-          setStartDate={setStartDate}
-          setEndDate={setEndDate}
-          startLabel="Start date"
           endLabel="End date"
+          mode="range"
+          setEndDate={setEndDate}
+          setStartDate={setStartDate}
+          startDate={startDate}
+          startLabel="Start date"
         />
       </Box>
     );
@@ -83,10 +83,10 @@ export const ComposedWithContext: Story = {
     return (
       <Box p={32}>
         <DatePicker
-          selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
           label="Start date"
           placeholder="MM/DD/YYYY"
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
         >
           <ComposedDatePickerLayout />
         </DatePicker>
@@ -102,18 +102,18 @@ function ComposedDatePickerLayout() {
 
   return (
     <>
-      <Box onClick={openCalendar} width="fit-content">
+      <Box width="fit-content" onClick={openCalendar}>
         <DatePickerInput ref={inputRef} />
       </Box>
       <PopoverContainer
-        isOpen={isCalendarOpen}
-        onRequestClose={closeCalendar}
-        targetRef={inputRef}
         alignment="bottom-left"
-        invertAxis="x"
-        offset={10}
         allowPageInteraction
         focusOnProps={{ autoFocus: false, focusLock: false }}
+        invertAxis="x"
+        isOpen={isCalendarOpen}
+        offset={10}
+        targetRef={inputRef}
+        onRequestClose={closeCalendar}
       >
         <div aria-label="Choose date" id={calendarDialogId} role="dialog">
           <DatePickerCalendar dialogId={calendarDialogId} />

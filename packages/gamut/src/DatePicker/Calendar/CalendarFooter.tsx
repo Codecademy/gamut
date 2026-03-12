@@ -30,7 +30,6 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
   onTodayClick,
   onSelectedDateChange,
   onCurrentMonthYearChange,
-  quickActions = [],
 }) => {
   const handleClearDate = () => {
     onSelectedDateChange(null);

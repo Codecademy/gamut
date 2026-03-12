@@ -29,23 +29,23 @@ export const Default: Story = {
       <Calendar>
         <CalendarHeader
           currentMonthYear={visibleDate}
-          onCurrentMonthYearChange={setVisibleDate}
-          locale="en-US"
           headingId={headingId}
+          locale="en-US"
+          onCurrentMonthYearChange={setVisibleDate}
         />
         <CalendarBody
-          visibleDate={visibleDate}
-          selectedDate={selectedDate}
-          onDateSelect={setSelectedDate}
           focusedDate={focusedDate}
-          onFocusedDateChange={setFocusedDate}
-          onVisibleDateChange={setVisibleDate}
           labelledById={headingId}
           locale="en-US"
+          selectedDate={selectedDate}
+          visibleDate={visibleDate}
+          onDateSelect={setSelectedDate}
+          onFocusedDateChange={setFocusedDate}
+          onVisibleDateChange={setVisibleDate}
         />
         <CalendarFooter
-          onSelectedDateChange={setSelectedDate}
           onCurrentMonthYearChange={setVisibleDate}
+          onSelectedDateChange={setSelectedDate}
         />
       </Calendar>
     );
