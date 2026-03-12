@@ -1,8 +1,4 @@
-import {
-  Colors,
-  isColorAlias,
-  useColorModes,
-} from '@codecademy/gamut-styles';
+import { Colors, isColorAlias, useColorModes } from '@codecademy/gamut-styles';
 import { getContrast } from 'polished';
 import {
   useCallback,
@@ -186,9 +182,7 @@ export const useBarBorderColor = () => {
   const getBorderColor = useCallback(
     (bg: Colors): 'white' | 'navy-900' => {
       /** If a color alias was used then look up the true color key from the active mode */
-      const trueColor = isColorAlias(activeColors, bg)
-        ? activeColors[bg]
-        : bg;
+      const trueColor = isColorAlias(activeColors, bg) ? activeColors[bg] : bg;
 
       const backgroundColor = getColorValue(trueColor);
       const whiteContrast = getContrast(
