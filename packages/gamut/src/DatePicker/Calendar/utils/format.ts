@@ -105,7 +105,10 @@ export function formatDateRangeForInput(
   if (!startDate && !endDate) return '';
   if (!startDate) return formatDateForInput(endDate!, locale);
   if (!endDate) return formatDateForInput(startDate, locale);
-  return `${formatDateForInput(startDate, locale)}${RANGE_SEPARATOR}${formatDateForInput(endDate, locale)}`;
+  return `${formatDateForInput(
+    startDate,
+    locale
+  )}${RANGE_SEPARATOR}${formatDateForInput(endDate, locale)}`;
 }
 
 /**

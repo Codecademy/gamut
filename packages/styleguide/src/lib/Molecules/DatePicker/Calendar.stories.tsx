@@ -21,7 +21,9 @@ export const Default: Story = {
     const headingId = useId();
     const [visibleDate, setVisibleDate] = useState(() => new Date());
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-    const [focusedDate, setFocusedDate] = useState<Date | null>(() => new Date());
+    const [focusedDate, setFocusedDate] = useState<Date | null>(
+      () => new Date()
+    );
 
     return (
       <Calendar>

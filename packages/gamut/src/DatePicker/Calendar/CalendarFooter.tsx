@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { FlexBox } from '../../Box';
 import { TextButton } from '../../Button';
-import { CalendarFooterProps, QuickAction } from './types';
+import { CalendarFooterProps } from './types';
 
 // function formatQuickActionLabel(action: QuickAction): string {
 //   const { num, timePeriod } = action;
