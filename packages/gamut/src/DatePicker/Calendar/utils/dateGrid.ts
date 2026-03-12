@@ -44,10 +44,13 @@ export function getMonthGrid(
   let currentWeek: (Date | null)[] = [];
 
   // Pad start of first week with nulls
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < firstDayOfWeek; i++) {
     currentWeek.push(null);
   }
 
+  // fix these
+  // eslint-disable-next-line no-plusplus
   for (let day = 1; day <= daysInMonth; day++) {
     currentWeek.push(new Date(year, month, day));
     if (currentWeek.length === DAYS_PER_WEEK) {

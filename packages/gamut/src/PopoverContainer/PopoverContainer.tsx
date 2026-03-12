@@ -220,9 +220,9 @@ export const PopoverContainer: React.FC<PopoverContainerProps> = ({
   const content = (
     <FocusTrap
       allowPageInteraction={inline || allowPageInteraction}
+      focusOnProps={focusOnProps}
       onClickOutside={handleClickOutside}
       onEscapeKey={onRequestClose}
-      focusOnProps={focusOnProps}
     >
       <PopoverContent
         data-floating="popover"

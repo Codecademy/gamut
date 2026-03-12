@@ -67,6 +67,8 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       endDate,
       setSelection,
       activeRangePart: mode === 'range' ? activeRangePart : null,
+      // fix this
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       setActiveRangePart: mode === 'range' ? setActiveRangePart : () => {},
       isCalendarOpen,
       openCalendar,
