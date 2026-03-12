@@ -168,6 +168,7 @@ export const BarRow = forwardRef<
         <FlexBox
           alignItems="center"
           display={{ _: 'flex', c_xs: 'none' }}
+          flexWrap="wrap"
           gap={8}
           justifyContent="space-between"
           width="100%"
