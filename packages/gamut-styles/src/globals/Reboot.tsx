@@ -3,7 +3,7 @@ import * as React from 'react';
 
 export const Reboot: React.FC<{ theme: Theme }> = ({ theme }) => {
   const { useLogicalProperties } = theme;
-  // const useLogicalProperties = true;
+
   const rebootStyles = css`
     /**
   * https://raw.githubusercontent.com/twbs/bootstrap/v4-dev/scss/_reboot.scss
