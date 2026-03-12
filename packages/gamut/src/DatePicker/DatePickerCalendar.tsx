@@ -40,7 +40,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
 
   const {
     mode,
-    selectedDate,
+    startDate,
     setSelection,
     endDate,
     disabledDates,
@@ -53,38 +53,61 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     new Date(date.getFullYear(), date.getMonth(), 1);
 
   const [visibleDate, setVisibleDate] = useState(() =>
-    firstOfMonth(selectedDate ?? new Date())
+    firstOfMonth(startDate ?? new Date())
   );
   const [focusedDate, setFocusedDate] = useState<Date | null>(
-    () => selectedDate ?? endDate ?? new Date()
+    () => startDate ?? endDate ?? new Date()
   );
 
   useEffect(() => {
-    const anchor = selectedDate ?? endDate;
+    const anchor = startDate ?? endDate;
     if (anchor) {
       setVisibleDate(firstOfMonth(anchor));
-      setFocusedDate(selectedDate ?? endDate ?? new Date());
+      setFocusedDate(startDate ?? endDate ?? new Date());
     }
-  }, [selectedDate, endDate]);
+  }, [startDate, endDate]);
+
+  // Clicking Start Date: Clears it. If End exists, End becomes new Start
+  // Clicking End Date: Clears End Date (Start remains)
+  // If Start == End (single day range): Clicking it clears everything
 
   const handleDateSelect = (date: Date) => {
+    console.log('handle date select');
+    // single date select
     if (!isRange) {
+      // If clicked date is the same as Start Date: Clear Start Date
+      if (startDate && date.getTime() === startDate.getTime()) {
+        setSelection(null);
+        return;
+      }
+      // If clicked date is not the same as Start Date: Set Start Date to clicked date
       setSelection(date);
       return;
     }
-    // Range mode: first click = start, second = end; if both set, next click starts over
-    const hasStart = selectedDate != null;
-    const hasEnd = endDate != null;
-    if (hasStart && hasEnd) {
-      setSelection(date, null);
-    } else if (hasStart && !hasEnd) {
-      const start = selectedDate!;
-      if (date.getTime() < start.getTime()) {
-        setSelection(date, start);
-      } else {
-        setSelection(start, date);
+    // Range mode
+    if (startDate && endDate) {
+      // If clicked date > Start: Updates End Date to new date (Start remains)
+      if (date.getTime() > startDate.getTime()) {
+        setSelection(startDate, date);
       }
-    } else {
+      // If clicked date < Start: Updates Start Date to new date (End remains) - extends range to the left
+      else {
+        setSelection(date, endDate);
+      }
+    }
+    // Start is Set, End is Empty
+    else if (startDate && !endDate) {
+      // If clicked date < Start: Restarts selection with clicked date as new Start
+      if (date.getTime() < startDate.getTime()) {
+        setSelection(date, null);
+      }
+      // If clicked date > Start: Sets it as End Date
+      else {
+        setSelection(startDate, date);
+      }
+    }
+    // otherwise set start to selected date
+    else {
       setSelection(date, null);
     }
   };
@@ -101,7 +124,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     setFocusedDate(today);
   };
 
-  const focusTarget = focusedDate ?? selectedDate ?? endDate ?? new Date();
+  const focusTarget = focusedDate ?? startDate ?? endDate ?? new Date();
 
   return (
     <Calendar>
@@ -113,7 +136,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
       />
       <CalendarBody
         visibleDate={visibleDate}
-        selectedDate={selectedDate}
+        selectedDate={startDate}
         endDate={endDate}
         onDateSelect={handleDateSelect}
         disabledDates={disabledDates}

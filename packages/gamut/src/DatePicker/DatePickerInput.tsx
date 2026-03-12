@@ -101,12 +101,14 @@ export const DatePickerInput = forwardRef<
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('handle change');
     const raw = e.target.value;
     setInputValue(raw);
     applyValueToSelection(raw);
   };
 
   const handleBlur = () => {
+    console.log('handle blur');
     isInputFocusedRef.current = false;
     const formatted = applyValueToSelection(inputValue.trim());
     if (formatted) setInputValue(formatted);
