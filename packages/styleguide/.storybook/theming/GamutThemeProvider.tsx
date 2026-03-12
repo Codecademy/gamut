@@ -44,7 +44,7 @@ type GlobalsContext = {
 export const withEmotion = (Story: any, context: GlobalsContext) => {
   const colorMode = context.globals.colorMode ?? 'light';
   const selectedTheme = context.globals.theme;
-  const useLogicalProperties = context.globals.logicalProps !== 'false';
+  const useLogicalProperties = Boolean(context.globals.logicalProps);
   const direction = context.globals.direction ?? 'ltr';
   const background = corePalette[themeBackground[colorMode]];
   const storyRef = useRef<HTMLDivElement>(null);
