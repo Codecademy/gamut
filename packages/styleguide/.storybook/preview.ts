@@ -176,7 +176,7 @@ export const globalTypes = {
       icon: 'transfer',
       items: [
         { value: 'false', title: 'Physical' },
-        { value: 'true', title: 'Logical' }
+        { value: 'true', title: 'Logical' },
       ],
       showName: true,
     },
