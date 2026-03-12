@@ -7,7 +7,7 @@ import {
   useDatePicker,
 } from '@codecademy/gamut';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const meta: Meta<typeof DatePicker> = {
   component: DatePicker,
@@ -98,16 +98,17 @@ export const ComposedWithContext: Story = {
 function ComposedDatePickerLayout() {
   const { isCalendarOpen, openCalendar, closeCalendar, calendarDialogId } =
     useDatePicker();
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   return (
     <>
       <Box onClick={openCalendar} width="fit-content">
-        <DatePickerInput />
+        <DatePickerInput ref={inputRef} />
       </Box>
       <PopoverContainer
         isOpen={isCalendarOpen}
         onRequestClose={closeCalendar}
-        // targetRef={inputRef}
+        targetRef={inputRef}
         alignment="bottom-left"
         invertAxis="x"
         offset={10}
