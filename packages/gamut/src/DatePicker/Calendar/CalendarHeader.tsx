@@ -13,13 +13,12 @@ import { formatMonthYear } from './utils/format';
 export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   currentMonthYear,
   onCurrentMonthYearChange,
+  secondMonthYear,
   onPreviousMonthClick,
   onNextMonthClick,
   locale,
   headingId,
 }) => {
-  const monthYear = formatMonthYear(currentMonthYear, locale);
-
   const handlePreviousMonth = () => {
     const previousMonth = new Date(
       currentMonthYear.getFullYear(),
@@ -49,9 +48,24 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
         tip="Previous month"
         onClick={handlePreviousMonth}
       />
-
-      <Text aria-live="polite" as="h2" id={headingId} variant="title-sm">
-        {monthYear}
+      <Text
+        aria-live="polite"
+        as="h2"
+        fontSize={16}
+        fontWeight="title"
+        id={headingId}
+      >
+        {formatMonthYear(currentMonthYear, locale)}
+      </Text>
+      <Text
+        aria-live="polite"
+        as="h2"
+        display={{ _: 'none', xs: 'initial' }}
+        fontSize={16}
+        fontWeight="title"
+        id={headingId}
+      >
+        {formatMonthYear(secondMonthYear, locale)}
       </Text>
       <IconButton
         aria-label="Next month"

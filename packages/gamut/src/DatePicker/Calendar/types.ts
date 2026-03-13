@@ -7,6 +7,8 @@ export interface CalendarHeaderProps {
   currentMonthYear: Date;
   /** Called when the user navigates to a different month. Pass the new date (e.g. setVisibleDate) so the calendar updates. */
   onCurrentMonthYearChange: (newDate: Date) => void;
+  /** Currently displayed second month and year (used for heading and prev/next range) */
+  secondMonthYear: Date;
   /** Optional. Called after navigating to previous month; use for click tracking. */
   onPreviousMonthClick?: () => void;
   /** Optional. Called after navigating to next month; use for click tracking. */

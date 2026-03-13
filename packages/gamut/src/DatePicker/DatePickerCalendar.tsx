@@ -1,5 +1,6 @@
-import { useEffect, useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 
+import { Box, FlexBox } from '../Box';
 import {
   Calendar,
   CalendarBody,
@@ -48,6 +49,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     disabledDates,
     locale,
     closeCalendar,
+    isCalendarOpen,
   } = context;
 
   const isRange = mode === 'range';
@@ -60,14 +62,20 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
   const [focusedDate, setFocusedDate] = useState<Date | null>(
     () => startDate ?? endDate ?? new Date()
   );
+  const wasOpenRef = useRef(false);
 
+  // Sync visible month to selection only when the calendar opens, not on every
+  // date click. Otherwise clicking a date in the second month would jump the view.
   useEffect(() => {
+    const justOpened = isCalendarOpen && !wasOpenRef.current;
+    wasOpenRef.current = isCalendarOpen;
+    if (!justOpened) return;
     const anchor = startDate ?? endDate;
     if (anchor) {
       setVisibleDate(firstOfMonth(anchor));
       setFocusedDate(startDate ?? endDate ?? new Date());
     }
-  }, [startDate, endDate]);
+  }, [isCalendarOpen, startDate, endDate]);
 
   // Clicking Start Date: Clears it. If End exists, End becomes new Start
   // Clicking End Date: Clears End Date (Start remains)
@@ -170,28 +178,53 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
 
   const focusTarget = focusedDate ?? startDate ?? endDate ?? new Date();
 
+  const addMonths = (date: Date, n: number) =>
+    new Date(date.getFullYear(), date.getMonth() + n, 1);
+  const secondMonthDate = addMonths(visibleDate, 1);
+
   return (
     <Calendar>
-      <CalendarHeader
-        currentMonthYear={visibleDate}
-        headingId={headingId}
-        locale={locale}
-        onCurrentMonthYearChange={setVisibleDate}
-      />
-      <CalendarBody
-        disabledDates={disabledDates}
-        endDate={endDate}
-        focusedDate={focusTarget}
-        labelledById={headingId}
-        locale={locale}
-        selectedDate={startDate}
-        visibleDate={visibleDate}
-        weekStartsOn={weekStartsOn}
-        onDateSelect={handleDateSelect}
-        onEscapeKeyPress={closeCalendar}
-        onFocusedDateChange={setFocusedDate}
-        onVisibleDateChange={setVisibleDate}
-      />
+      <Box p={24}>
+        <CalendarHeader
+          currentMonthYear={visibleDate}
+          headingId={headingId}
+          locale={locale}
+          secondMonthYear={secondMonthDate}
+          onCurrentMonthYearChange={setVisibleDate}
+        />
+        <FlexBox>
+          <CalendarBody
+            disabledDates={disabledDates}
+            endDate={endDate}
+            focusedDate={focusTarget}
+            labelledById={headingId}
+            locale={locale}
+            selectedDate={startDate}
+            visibleDate={visibleDate}
+            weekStartsOn={weekStartsOn}
+            onDateSelect={handleDateSelect}
+            onEscapeKeyPress={closeCalendar}
+            onFocusedDateChange={setFocusedDate}
+            onVisibleDateChange={setVisibleDate}
+          />
+          <Box display={{ _: 'none', xs: 'initial' }} pl={{ _: 0, xs: 32 }}>
+            <CalendarBody
+              disabledDates={disabledDates}
+              endDate={endDate}
+              focusedDate={focusTarget}
+              labelledById={headingId}
+              locale={locale}
+              selectedDate={startDate}
+              visibleDate={secondMonthDate}
+              weekStartsOn={weekStartsOn}
+              onDateSelect={handleDateSelect}
+              onEscapeKeyPress={closeCalendar}
+              onFocusedDateChange={setFocusedDate}
+              onVisibleDateChange={setVisibleDate}
+            />
+          </Box>
+        </FlexBox>
+      </Box>
       <CalendarFooter
         onClearDate={handleClearDate}
         onCurrentMonthYearChange={setVisibleDate}
