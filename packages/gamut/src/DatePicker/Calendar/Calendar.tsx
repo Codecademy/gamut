@@ -11,6 +11,5 @@ export const Calendar = styled.div(
     borderRadius: 'lg',
     boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
     width: 'max-content',
-    p: 24,
   })
 );

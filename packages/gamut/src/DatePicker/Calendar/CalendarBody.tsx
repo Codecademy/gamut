@@ -1,4 +1,4 @@
-import { states } from '@codecademy/gamut-styles';
+import { css, states } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import * as React from 'react';
@@ -14,18 +14,61 @@ import {
 } from './utils/dateGrid';
 import { getWeekdayFullNames, getWeekdayLabels } from './utils/format';
 
+const TableHeader = styled.th(
+  css({
+    fontSize: 14,
+    fontWeight: 'base',
+    color: 'text-disabled',
+    textAlign: 'center',
+  })
+);
+
 const DateButton = styled(TextButton)(
   states({
     isToday: {
-      bg: 'navy-200',
+      position: 'relative',
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        bottom: 4,
+        left: '50%',
+        width: 4,
+        height: 4,
+        borderRadius: 'full',
+        bg: 'hyper',
+      },
     },
     isSelected: {
-      color: 'background',
       bg: 'text',
+      color: 'background',
+      '&:hover, &:focus': {
+        bg: 'secondary-hover',
+        color: 'background',
+      },
+      '&::after': {
+        bg: 'background',
+      },
     },
     isInRange: {
-      bg: 'border-secondary',
+      bg: 'text-disabled',
+      color: 'background',
+      borderRadius: 'none',
+      '&:hover, &:focus': {
+        bg: 'secondary-hover',
+        color: 'background',
+      },
     },
+    disabled: {
+      color: 'text-disabled',
+      textDecoration: 'line-through',
+    },
+  }),
+  css({
+    fontWeight: 'base',
+    width: '32px',
+    // '&:hover, &:focus': {
+    //   bg: 'background-hover',
+    // },
   })
 );
 
@@ -226,9 +269,9 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
       <thead>
         <tr>
           {weekdayLabels.map((label, i) => (
-            <th abbr={weekdayFullNames[i]} key={label} scope="col">
+            <TableHeader abbr={weekdayFullNames[i]} key={label} scope="col">
               {label}
-            </th>
+            </TableHeader>
           ))}
         </tr>
       </thead>
@@ -246,10 +289,12 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
               const selected =
                 isSameDay(date, selectedDate) || isSameDay(date, endDate);
               const inRange =
-                (selectedDate !== null || endDate !== null) &&
+                !!selectedDate &&
+                !!endDate &&
                 isDateInRange(date, selectedDate, endDate);
               const disabled = isDateDisabled(date, disabledDates);
               const today = isToday(date);
+              // this is making the selected date a differnet color bc it is focused, look into further
               const isFocused =
                 focusTarget !== null && isSameDay(date, focusTarget);
 
@@ -267,7 +312,6 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
                     ref={(el) => setButtonRef(date, el as HTMLElement | null)}
                     tabIndex={isFocused ? 0 : -1}
                     variant="secondary"
-                    width="36px"
                     onClick={() => onDateSelect(date)}
                     onFocus={() => onFocusedDateChange?.(date)}
                     onKeyDown={(e: React.KeyboardEvent) =>

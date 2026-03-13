@@ -79,7 +79,7 @@ export function isSameDay(a: Date | null, b: Date | null): boolean {
 }
 
 /**
- * Check if `date` is between `start` and `end` (inclusive), ignoring time.
+ * Check if `date` is between `start` and `end` (exclusive), ignoring time.
  */
 export function isDateInRange(
   date: Date,
@@ -92,7 +92,7 @@ export function isDateInRange(
   const e = end !== null ? toDateOnly(end).getTime() : s;
   const low = Math.min(s, e);
   const high = Math.max(s, e);
-  return d >= low && d <= high;
+  return d > low && d < high;
 }
 
 /**

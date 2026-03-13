@@ -51,7 +51,7 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
       alignItems="center"
       borderTop={1}
       justifyContent="space-between"
-      py={12}
+      p={12}
     >
       <TextButton onClick={handleClearDate}>Clear</TextButton>
       <FlexBox gap={32}>
