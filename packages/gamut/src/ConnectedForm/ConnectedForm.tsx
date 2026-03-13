@@ -84,13 +84,12 @@ export interface ConnectedFormProps<Values extends {}>
 
 /**
  * Explicit type for the ConnectedForm component so that declaration emission
- * preserves the generic (Values) for consumers. Without this, forwardRef
- * would be inferred as any and the .d.ts would lose onSubmit/onError types.
+ * preserves the generic (Values) for consumers. Single-argument signature
+ * matches React 18/19 createElement(type, props); ref is passed via props.ref.
  */
 export interface ConnectedFormComponent {
   <Values extends FormValues<Values>>(
-    props: ConnectedFormProps<Values>,
-    ref: React.ForwardedRef<HTMLFormElement>
+    props: ConnectedFormProps<Values> & React.RefAttributes<HTMLFormElement>
   ): React.ReactElement;
 }
 
