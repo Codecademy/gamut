@@ -94,5 +94,19 @@ module.exports = {
         'no-plusplus': 'off',
       },
     },
+    {
+      files: ['*.ts', '*.tsx', '*.js', '*.jsx'],
+      rules: {
+        'no-restricted-syntax': [
+          'error',
+          {
+            selector:
+              "MemberExpression[object.type='Identifier'][object.name='JSX']",
+            message:
+              'Use React.JSX.* instead of global JSX namespace for React 19 compatibility.',
+          },
+        ],
+      },
+    },
   ],
 };

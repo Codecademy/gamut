@@ -51,7 +51,8 @@
     "build": "nx build @codecademy/gamut",
     "build:watch": "yarn build && onchange ./src -- yarn build",
     "compile": "babel ./src --out-dir ./dist --extensions \".ts,.tsx\"",
-    "verify": "tsc --noEmit"
+    "verify": "tsc --noEmit",
+    "verify:react19": "tsc --noEmit"
   },
   "sideEffects": [
     "**/*.css",
