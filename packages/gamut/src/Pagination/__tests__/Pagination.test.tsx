@@ -13,7 +13,7 @@ const renderView = setupRtl(Pagination, {
 interface TestHelpersType {
   view: RenderResult<typeof queries, HTMLElement>;
   pageNumber?: number;
-  direction?: 'forward' | 'back';
+  buttonDirection?: 'forward' | 'back';
 }
 
 const getPage = ({ view, pageNumber }: TestHelpersType) => {
@@ -31,8 +31,12 @@ const getForwardButton = ({ view }: TestHelpersType) => {
 const getJumpButtonCount = ({ view }: TestHelpersType) =>
   view.getAllByLabelText(/(Jump )+/).length;
 
-const getJumpButton = ({ view, pageNumber, direction }: TestHelpersType) => {
-  return view.getByLabelText(`Jump ${direction} to page ${pageNumber}`);
+const getJumpButton = ({
+  view,
+  pageNumber,
+  buttonDirection,
+}: TestHelpersType) => {
+  return view.getByLabelText(`Jump ${buttonDirection} to page ${pageNumber}`);
 };
 
 describe('Pagination', () => {
@@ -181,7 +185,7 @@ describe('Pagination', () => {
       const forwardButton = getJumpButton({
         view,
         pageNumber: 6,
-        direction: 'forward',
+        buttonDirection: 'forward',
       });
       fireEvent.click(forwardButton);
 
@@ -201,7 +205,7 @@ describe('Pagination', () => {
       const backButton = getJumpButton({
         view,
         pageNumber: 6,
-        direction: 'back',
+        buttonDirection: 'back',
       });
 
       fireEvent.click(backButton);
@@ -217,7 +221,7 @@ describe('Pagination', () => {
       const backButton = getJumpButton({
         view,
         pageNumber: 3,
-        direction: 'back',
+        buttonDirection: 'back',
       });
 
       fireEvent.click(backButton);
@@ -226,12 +230,44 @@ describe('Pagination', () => {
       const forwardButton = getJumpButton({
         view,
         pageNumber: 8,
-        direction: 'forward',
+        buttonDirection: 'forward',
       });
 
       fireEvent.click(forwardButton);
 
       expect(onChange).toHaveBeenCalledWith(8);
+    });
+
+    it('shows arrow on ellipsis button hover', () => {
+      const { view } = renderView({ totalPages: 15, defaultPageNumber: 8 });
+
+      const jumpForwardButton = getJumpButton({
+        view,
+        pageNumber: 13,
+        buttonDirection: 'forward',
+      });
+
+      expect(jumpForwardButton).toHaveTextContent('•••');
+
+      fireEvent.mouseEnter(jumpForwardButton);
+      expect(jumpForwardButton).toHaveTextContent('»');
+
+      fireEvent.mouseLeave(jumpForwardButton);
+      expect(jumpForwardButton).toHaveTextContent('•••');
+
+      const jumpBackButton = getJumpButton({
+        view,
+        pageNumber: 3,
+        buttonDirection: 'back',
+      });
+
+      expect(jumpBackButton).toHaveTextContent('•••');
+
+      fireEvent.mouseEnter(jumpBackButton);
+      expect(jumpBackButton).toHaveTextContent('«');
+
+      fireEvent.mouseLeave(jumpBackButton);
+      expect(jumpBackButton).toHaveTextContent('•••');
     });
   });
 
