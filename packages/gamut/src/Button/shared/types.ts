@@ -23,7 +23,7 @@ export type ButtonProps = ButtonBaseProps & ComponentProps<typeof ButtonBase>;
 
 export type InlineIconButtonProps<
   BaseButtonType extends
-    | keyof JSX.IntrinsicElements
+    | keyof React.JSX.IntrinsicElements
     | React.JSXElementConstructor<any>
 > = ComponentProps<BaseButtonType> &
   Partial<IconComponentType> & {

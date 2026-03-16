@@ -2,12 +2,12 @@ import { render } from '@testing-library/react';
 
 import { AssetProvider } from '../AssetProvider';
 import { coreTheme, percipioTheme } from '../themes';
+import { getFontsMock } from './fontUtilsMock';
 
-// Type assertion to satisfy Theme interface in GamutProvider from theme.d.ts - this lib is typed to the CoreTheme interface
 const typedPercipioTheme = percipioTheme as any;
 
 jest.mock('../utils/fontUtils', () => ({
-  getFonts: jest.fn(),
+  getFonts: require('./fontUtilsMock').getFontsMock,
 }));
 
 jest.mock('../remoteAssets/fonts', () => ({
@@ -29,7 +29,13 @@ jest.mock('../remoteAssets/fonts', () => ({
   },
 }));
 
-const mockGetFonts = require('../utils/fontUtils').getFonts;
+const mockGetFonts = getFontsMock;
+
+function getPreloadLinks(container: HTMLElement): NodeListOf<Element> {
+  const inContainer = container.querySelectorAll('link[rel="preload"]');
+  if (inContainer.length > 0) return inContainer;
+  return document.querySelectorAll('link[rel="preload"]');
+}
 
 const mockDocumentFonts = {
   load: jest.fn(),
@@ -47,12 +53,25 @@ Object.defineProperty(document, 'fonts', {
 const mockFetch = jest.fn();
 global.fetch = mockFetch;
 
+const defaultFonts = [
+  {
+    filePath: 'https://www.codecademy.com/gamut/apercu-regular-pro',
+    extensions: ['woff2', 'woff'],
+    name: 'Apercu',
+  },
+];
+
 describe('Font Loading and Error Handling', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    mockGetFonts.mockReturnValue(defaultFonts);
     mockDocumentFonts.load.mockClear();
     mockDocumentFonts.check.mockClear();
     mockFetch.mockClear();
+  });
+
+  afterEach(() => {
+    mockGetFonts.mockReturnValue(defaultFonts);
   });
 
   describe('Font Preloading', () => {
@@ -67,7 +86,7 @@ describe('Font Loading and Error Handling', () => {
 
       const { container } = render(<AssetProvider theme={coreTheme} />);
 
-      const links = container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(container);
       expect(links).toHaveLength(1);
       expect(links[0]).toHaveAttribute(
         'href',
@@ -93,7 +112,7 @@ describe('Font Loading and Error Handling', () => {
 
       const { container } = render(<AssetProvider theme={coreTheme} />);
 
-      const links = container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(container);
       expect(links).toHaveLength(2);
       expect(links[0]).toHaveAttribute(
         'href',
@@ -114,8 +133,7 @@ describe('Font Loading and Error Handling', () => {
 
       const { container } = render(<AssetProvider theme={coreTheme} />);
 
-      // Should not render any links when getFonts fails
-      const links = container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(container);
       expect(links).toHaveLength(0);
     });
 
@@ -141,7 +159,7 @@ describe('Font Loading and Error Handling', () => {
 
       const { container } = render(<AssetProvider theme={coreTheme} />);
 
-      const links = container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(container);
       expect(links).toHaveLength(2);
     });
   });
@@ -163,8 +181,7 @@ describe('Font Loading and Error Handling', () => {
 
       const { container } = render(<AssetProvider theme={coreTheme} />);
 
-      // Should render preload links for all fonts
-      const links = container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(container);
       expect(links).toHaveLength(2);
       expect(links[0]).toHaveAttribute(
         'href',
@@ -195,7 +212,7 @@ describe('Font Loading and Error Handling', () => {
 
       const { container } = render(<AssetProvider theme={coreTheme} />);
 
-      const links = container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(container);
       expect(links).toHaveLength(1);
 
       Object.defineProperty(document, 'fonts', {
@@ -218,7 +235,7 @@ describe('Font Loading and Error Handling', () => {
 
       const { container } = render(<AssetProvider theme={coreTheme} />);
 
-      const links = container.querySelectorAll('link[rel="preload"]');
+      const links = getPreloadLinks(container);
       expect(links).toHaveLength(1);
 
       global.fetch = originalFetch;
