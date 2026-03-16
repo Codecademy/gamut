@@ -1,5 +1,4 @@
 import { Source } from '@storybook/blocks';
-import * as React from 'react';
 
 import { DetailedCodeBodyWrapper, FloatingIndicator } from '../elements';
 import { DetailedCodeBodyProps } from '../types';

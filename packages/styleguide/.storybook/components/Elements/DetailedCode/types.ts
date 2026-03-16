@@ -13,7 +13,7 @@ export interface DetailedCodeProps {
 
 export interface DetailedCodeButtonProps {
   isExpanded: boolean;
-  setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>;
+  onToggle: () => void;
   language: SourceLanguage;
 }
 

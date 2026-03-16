@@ -8,16 +8,6 @@ import { DetailedCodeProps } from './types';
 const DEFAULT_PREVIEW_LINES = 20;
 const DEFAULT_LANGUAGE = 'tsx';
 
-const getPreviewCode = (code: string, previewLines: number) => {
-  const lines = code.split('\n');
-
-  if (lines.length <= previewLines) {
-    return code;
-  }
-
-  return lines.slice(0, previewLines).join('\n');
-};
-
 export const DetailedCode: React.FC<DetailedCodeProps> = ({
   code,
   initiallyExpanded = false,
@@ -28,12 +18,13 @@ export const DetailedCode: React.FC<DetailedCodeProps> = ({
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
   const normalizedPreviewLines = Math.max(0, previewLines);
   const previewEnabled = preview && normalizedPreviewLines > 0;
+  
+  const codeLines = code.split('\n');
+  const hasMoreCode = previewEnabled && codeLines.length > normalizedPreviewLines;
+  
   const previewCode = previewEnabled
-    ? getPreviewCode(code, normalizedPreviewLines)
+    ? codeLines.slice(0, normalizedPreviewLines).join('\n')
     : code;
-
-  const hasMoreCode =
-    previewEnabled && code.split('\n').length > normalizedPreviewLines;
 
   const displayedCode = isExpanded ? code : previewCode;
 
@@ -47,7 +38,7 @@ export const DetailedCode: React.FC<DetailedCodeProps> = ({
       {hasMoreCode && (
         <DetailedCodeButton
           isExpanded={isExpanded}
-          setIsExpanded={setIsExpanded}
+          onToggle={() => setIsExpanded((prev) => !prev)}
           language={language}
         />
       )}
