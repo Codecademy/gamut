@@ -12,6 +12,8 @@ import {
 } from '@codecademy/gamut-styles/src';
 import { Theme } from '@emotion/react';
 
+const STORYBOOK_CSP_NONCE = 'storybook-csp-nonce';
+
 /**
  * Story functions must be called as a regular function to avoid full-remounts
  * See: https://github.com/storybookjs/storybook/issues/12255
@@ -34,12 +36,16 @@ type GlobalsContext = {
   globals: {
     colorMode: 'light' | 'dark';
     theme: keyof typeof themeMap;
+    logicalProps: 'true' | 'false';
+    direction: 'ltr' | 'rtl';
   };
 };
 
 export const withEmotion = (Story: any, context: GlobalsContext) => {
   const colorMode = context.globals.colorMode ?? 'light';
   const selectedTheme = context.globals.theme;
+  const useLogicalProperties = context.globals.logicalProps !== 'false';
+  const direction = context.globals.direction ?? 'ltr';
   const background = corePalette[themeBackground[colorMode]];
   const storyRef = useRef<HTMLDivElement>(null);
   const currentTheme = themeMap[selectedTheme];
@@ -57,6 +63,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
       <GamutProvider
         useCache={false}
         useGlobals={false}
+        useLogicalProperties={useLogicalProperties}
         theme={currentTheme as unknown as Theme}
       >
         <Background
@@ -64,7 +71,7 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
           bg={themeBackground[colorMode]}
           ref={storyRef}
         >
-          {Story()}
+          <div dir={direction}>{Story()}</div>
         </Background>
       </GamutProvider>
     );
@@ -72,13 +79,16 @@ export const withEmotion = (Story: any, context: GlobalsContext) => {
 
   // Wrap all stories in minimal provider
   return (
-    <GamutProvider theme={currentTheme as unknown as Theme}>
+    <GamutProvider
+      useLogicalProperties={useLogicalProperties}
+      theme={currentTheme as unknown as Theme}
+    >
       <Background
         alwaysSetVariables
         bg={themeBackground[colorMode]}
         ref={storyRef}
       >
-        {Story()}
+        <div dir={direction}>{Story()}</div>
       </Background>
     </GamutProvider>
   );

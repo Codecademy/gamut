@@ -5,6 +5,12 @@ import {
 
 import { PopoverPositionConfig, TargetRef } from './types';
 
+export interface PopoverPositionResult {
+  styles: CSSObject;
+  /** Applied as inline style to bypass logical property conversion when logical properties produce wrong results */
+  physicalStyles?: CSSObject;
+}
+
 const getWindowDimensions = () => ({
   height: window.innerHeight || document.documentElement.clientHeight,
   width: window.innerWidth || document.documentElement.clientWidth,
@@ -162,6 +168,23 @@ const AXIS = {
   },
 };
 
+/**
+ * Computes the absolute position styles for a popover relative to a target element.
+ *
+ * Returns two style objects:
+ * - `styles`: position edge values (left/right/top/bottom) passed as variance props so
+ *   they are converted to logical properties (inset-inline-start etc.) when
+ *   `useLogicalProperties` is enabled. Corner and edge alignments automatically flip
+ *   sides in RTL layouts as a result.
+ * - `physicalStyles`: applied as an inline `style` prop, bypassing logical conversion.
+ *   Used for transforms (CSS transforms have no logical equivalent — `translate(-100%, 0)`
+ *   always shifts physically left) and for centered alignments whose `left` value is a
+ *   physical screen coordinate that must not flip in RTL.
+ *
+ * When `invertAxis` is set and `isRtl` is true, the x-transform coefficient is negated
+ * so that the shift moves toward the target rather than away from it after logical
+ * positions have flipped the element to the opposite physical side.
+ */
 export const getPosition = ({
   alignment,
   container,
@@ -169,7 +192,8 @@ export const getPosition = ({
   x = 0,
   y = 0,
   invertAxis,
-}: PopoverPositionConfig) => {
+  isRtl = false,
+}: PopoverPositionConfig & { isRtl?: boolean }): PopoverPositionResult => {
   const { top, left, bottom, right, height, width } = container;
   const xOffset = width + offset + x;
   const yOffset = height + offset + y;
@@ -179,18 +203,26 @@ export const getPosition = ({
     | ['top' | 'bottom', 'left' | 'right'];
 
   const styles: CSSObject = {};
+  const physicalStyles: CSSObject = {};
 
   if (alignments.length === 1) {
     const [direction] = alignments;
     const isVertical = direction === 'top' || direction === 'bottom';
-    styles.transform = isVertical ? 'translate(-50%, 0)' : 'translate(0, -50%)';
-    styles[isVertical ? 'left' : 'top'] = isVertical
-      ? left + width / 2
-      : top + height / 2;
+
+    if (isVertical) {
+      // Center x is a physical screen coordinate — this should not flip in RTL.
+      physicalStyles.left = left + width / 2;
+      physicalStyles.transform = 'translate(-50%, 0)';
+    } else {
+      styles.top = top + height / 2;
+      physicalStyles.transform = 'translate(0, -50%)';
+    }
   } else {
     const coef = AXIS[invertAxis ?? 'none'];
     const [yAxis, xAxis] = alignments;
-    styles.transform = `translate(${percent(coef[xAxis])}, ${percent(
+    // Negate x coefficient in RTL so invertAxis shifts toward the target.
+    const xCoef = isRtl ? -coef[xAxis] : coef[xAxis];
+    physicalStyles.transform = `translate(${percent(xCoef)}, ${percent(
       coef[yAxis]
     )})`;
   }
@@ -210,7 +242,12 @@ export const getPosition = ({
     styles[position] = value;
   });
 
-  return styles;
+  return {
+    styles,
+    physicalStyles: Object.keys(physicalStyles).length
+      ? physicalStyles
+      : undefined,
+  };
 };
 
 export const getContainers = (

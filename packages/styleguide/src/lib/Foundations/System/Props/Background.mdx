@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, TokenTable } from '~styleguide/blocks';
+
+import { defaultColumns, getPropRows } from '../../shared/elements';
+
+export const parameters = {
+  title: 'Background',
+  subtitle:
+    'Props for background manipulation (sizing / repitition / images), for background color see `colors`.',
+  status: 'current',
+};
+
+<Meta title="Foundations/System/Props/Background" />
+
+<AboutHeader {...parameters} />
+
+Background props control how background images and patterns are displayed on elements. These properties give you control over image sizing, positioning, and repetition behavior. For solid background colors, use the color props which connect to the theme's color palette.
+
+```tsx
+import styled from '@emotion/styled';
+import { system } from '@codecademy/gamut-styles';
+import myBg from './myBg.png';
+
+const BackgroundExample = styled.div(system.background);
+
+<BackgroundExample background={`url(${myBg}`} backgroundSize="cover" />;
+```
+
+<TokenTable rows={getPropRows('background')} columns={defaultColumns} />
