@@ -1,6 +1,6 @@
-import type React from 'react';
 import { ThemeProps } from '@codecademy/variance';
 import isPropValid from '@emotion/is-prop-valid';
+import type React from 'react';
 
 import { all as allProps } from './config';
 

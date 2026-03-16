@@ -35,7 +35,10 @@ export const extractTextContent = (children: React.ReactNode): string => {
         return '';
       }
       if (isValidElement(child)) {
-        const props = child.props as { children?: React.ReactNode; text?: string };
+        const props = child.props as {
+          children?: React.ReactNode;
+          text?: string;
+        };
         const textContent = props.children ?? props.text ?? '';
         return extractTextContent(textContent);
       }
