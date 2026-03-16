@@ -34,10 +34,10 @@ export type CompatibleComponentProps<T extends ElementType> =
 
 /**
  * Ref type for component ref props. Accepts React's LegacyRef so consumers can pass
- * refs without type errors (useRef, callback refs, or legacy string refs). Use when
- * declaring ref props (e.g. on Box).
+ * refs without type errors (useRef, callback refs, or legacy string refs). Typed with
+ * T | null so RefObject<T | null> from useRef<HTMLElement>(null) is assignable (React 18 & 19).
  */
-export type CompatibleRef<T> = React.LegacyRef<T> | null;
+export type CompatibleRef<T> = React.LegacyRef<T | null> | null;
 
 /**
  * RefAttributes with ref typed as CompatibleRef so React 18 consumers can pass
