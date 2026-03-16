@@ -74,7 +74,7 @@ const allowClickStyle = css`
 
 const StyledFlexbox = styled(FlexBox)(allowClickStyle);
 
-export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
+export const Select = forwardRef<HTMLSelectElement | null, SelectWrapperProps>(
   (
     {
       className,

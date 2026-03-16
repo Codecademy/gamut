@@ -135,7 +135,7 @@ const Input = styled.input`
 
 const CheckboxText = styled.span<CheckboxTextProps>(checkboxTextStates);
 
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+export const Checkbox = forwardRef<HTMLInputElement | null, CheckboxProps>(
   (
     {
       'aria-label': ariaLabel,

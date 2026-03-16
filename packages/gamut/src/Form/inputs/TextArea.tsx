@@ -31,7 +31,7 @@ const StyledTextArea = styled.textarea<TextAreaProps>`
   border-radius: 'md';
 `;
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextWrapperProps>(
+export const TextArea = forwardRef<HTMLTextAreaElement | null, TextWrapperProps>(
   ({ error, className, id, ...rest }, ref) => {
     const [activated, setActivated] = useState(false);
 
