@@ -35,6 +35,7 @@ tmp
 # Yarn 3+ files
 .yarn/*
 !.yarn/patches
+patches/*.patch.disabled
 !.yarn/plugins
 !.yarn/releases
 !.yarn/sdks

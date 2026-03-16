@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 /**
  * Sets package.json resolutions (and root dependencies) for React 18 or 19.
+ * When switching to 19, disables the @types/react 18-only patch so patch-package
+ * does not try to apply it to @types/react@19. When switching to 18, restores the patch.
  * Usage: node script/set-react-resolutions.js <18|19>
  * Used by CI and by test:gamut:react18 / test:gamut:react19 for local runs.
  */
@@ -8,13 +10,32 @@
 const fs = require('fs');
 const path = require('path');
 
+const REPO_ROOT = path.join(__dirname, '..');
+const PATCH_NAME = '@types+react+18.3.28.patch';
+const PATCH_PATH = path.join(REPO_ROOT, 'patches', PATCH_NAME);
+const PATCH_DISABLED = path.join(REPO_ROOT, 'patches', PATCH_NAME + '.disabled');
+
+function toggleTypesReactPatch(enable) {
+  if (enable) {
+    if (fs.existsSync(PATCH_DISABLED)) {
+      fs.renameSync(PATCH_DISABLED, PATCH_PATH);
+      console.log('Restored @types/react 18 patch for patch-package.');
+    }
+  } else {
+    if (fs.existsSync(PATCH_PATH)) {
+      fs.renameSync(PATCH_PATH, PATCH_DISABLED);
+      console.log('Disabled @types/react 18 patch.');
+    }
+  }
+}
+
 const version = process.argv[2];
 if (version !== '18' && version !== '19') {
   console.error('Usage: node script/set-react-resolutions.js <18|19>');
   process.exit(1);
 }
 
-const pkgPath = path.join(__dirname, '..', 'package.json');
+const pkgPath = path.join(REPO_ROOT, 'package.json');
 const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
 
 const resolutions = {
@@ -48,5 +69,6 @@ if (pkg.devDependencies) {
     pkg.devDependencies['@types/react-dom'] = next['@types/react-dom'];
 }
 
+toggleTypesReactPatch(version === '18');
 fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
 console.log(`Set React resolutions to ${version}.x`);

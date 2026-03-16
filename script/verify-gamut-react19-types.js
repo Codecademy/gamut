@@ -45,6 +45,7 @@ try {
   }
 } finally {
   fs.writeFileSync(pkgPath, pkgBackup);
+  run('node', ['script/set-react-resolutions.js', '18']);
   run('yarn', ['install'], {
     stdio: 'pipe',
     env: { ...process.env, CI: undefined },
