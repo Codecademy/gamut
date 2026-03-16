@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/blocks';
+
+import { AboutHeader, Callout, ImageWrapper } from '~styleguide/blocks';
+
+export const parameters = {
+  id: 'Code Connect',
+  title: 'Code Connect',
+  subtitle: 'Exploring Code Connect features in Figma.',
+  status: 'static',
+};
+
+<Meta title="Meta/MCP/Code Connect" />
+
+<AboutHeader {...parameters} />
+
+Code Connect provides Figma with the actual code for Figma components. In providing accurate code, this helps the Figma MCP generate accurate code snippets for designs that use these components.
+
+More information can be found at [Figma Code Connect documentation](https://www.figma.com/code-connect-docs/)
+
+<Callout text="Any changes to Code Connect files should be requested through the Gamut team and NOT done on an individual or a separate team." />
+
+## Code Connected components
+
+When visiting the Figma file, you'll know if a component is set up with Code Connect if you select the component and see the sidebar includes a "Code Connect" section.
+
+<ImageWrapper
+  src="./mcp/component_with_code_connect.png"
+  alt="A Figma component, Badge, with the Code Connect sidebar open."
+/>
+
+### Exploring behavior
+
+For components with Code Connect, you can also click on the "Explore behavior" button to open a modal that allows you to edit the component's props. Editing these props will automatically update the code in the modal's Code Connect section to give you a sense of how to adapt your component accordingly.
+
+<ImageWrapper
+  src="./mcp/component_playground.png"
+  alt="The 'Component playground' modal, with the Badge component's props editable."
+/>

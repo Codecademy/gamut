@@ -8,6 +8,8 @@ module.exports = {
 
   plugins: ['eslint-plugin-gamut'],
 
+  ignorePatterns: ['packages/code-connect/**/*'],
+
   rules: {
     'gamut/prefer-themed': 'error',
     'gamut/no-css-standalone': 'error',

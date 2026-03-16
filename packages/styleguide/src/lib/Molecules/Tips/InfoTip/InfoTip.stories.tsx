@@ -296,14 +296,14 @@ export const ZIndex: Story = {
   },
   render: (args) => (
     <FlexBox center flexDirection="column" m={24} py={64}>
-      <Box bg="paleBlue" zIndex={3}>
+      <Box bg="background-primary" zIndex={3}>
         I will not be behind the infotip, sad + unreadable
       </Box>
       <InfoTip
         ariaLabel="z-index example without override"
         info="I am inline, cool"
       />
-      <Box bg="paleBlue" zIndex={3}>
+      <Box bg="background-primary" zIndex={3}>
         I will be behind the infotip, nice + great
       </Box>
       <InfoTip {...args} ariaLabel="z-index example with override" />
