@@ -519,13 +519,24 @@ const listStates = states({
 
 export const StaticListWrapper = styled(Box)(listStyles, listStates);
 
-// Type assertion avoids TS4023 (UNDEFINED_VOID_ONLY) in declaration emit with React 19 types
-export const AnimatedListWrapper = styled(motion.create(Box))(
-  listStyles,
-  listStates
-) as React.ComponentType<
-  React.ComponentProps<typeof Box> & Record<string, unknown>
->;
+const AnimatedListWrapperInner = styled(motion.create(Box))(listStyles, listStates);
+type AnimatedListWrapperProps = Omit<
+  React.ComponentProps<typeof Box> & Record<string, unknown>,
+  | 'onAnimationStart'
+  | 'onAnimationEnd'
+  | 'onDragStart'
+  | 'onDrag'
+  | 'onDragEnd'
+> & {
+  onAnimationStart?: (definition: unknown) => void;
+  onAnimationEnd?: (definition: unknown) => void;
+  onDragStart?: (event: unknown, info?: unknown) => void;
+  onDrag?: (event: unknown, info?: unknown) => void;
+  onDragEnd?: (event: unknown, info?: unknown) => void;
+};
+export const AnimatedListWrapper: React.FC<AnimatedListWrapperProps> = (
+  props
+) => <AnimatedListWrapperInner {...props} />;
 
 export const hiddenVariant = {
   background: `linear-gradient(90deg, transparent 0%, transparent 40%, ${theme.colors['background-selected']} 50%, ${theme.colors['border-tertiary']} 100%)`,
