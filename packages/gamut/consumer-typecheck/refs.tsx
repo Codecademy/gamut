@@ -3,8 +3,9 @@
  * RefObject<T | null> from useRef<T>(null) when consumed with React 18/19.
  * Run: tsc --noEmit -p packages/gamut/consumer-typecheck (after building gamut).
  */
-import { Box, Text, TextArea } from '@codecademy/gamut';
 import { useRef } from 'react';
+
+import { Box, Text, TextArea } from '../dist';
 
 export function ConsumerRefs() {
   const titleRef = useRef<HTMLHeadingElement>(null);

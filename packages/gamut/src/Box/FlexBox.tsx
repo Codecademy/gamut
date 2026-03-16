@@ -14,9 +14,10 @@ const StyledFlexBox = styled(
 export const FlexBox: React.ForwardRefExoticComponent<
   CompatibleStyledComponentProps<typeof StyledFlexBox, HTMLDivElement>
 > &
-  Pick<typeof StyledFlexBox, 'withComponent'> = asCompatibleForwardRefComponentWithStyled<
-  CompatibleStyledComponentProps<typeof StyledFlexBox, HTMLDivElement>,
-  typeof StyledFlexBox
->(StyledFlexBox);
+  Pick<typeof StyledFlexBox, 'withComponent'> =
+  asCompatibleForwardRefComponentWithStyled<
+    CompatibleStyledComponentProps<typeof StyledFlexBox, HTMLDivElement>,
+    typeof StyledFlexBox
+  >(StyledFlexBox);
 
 export type { FlexBoxProps } from './props';

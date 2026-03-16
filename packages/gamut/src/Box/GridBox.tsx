@@ -19,7 +19,8 @@ const StyledGridBox = styled(
 export const GridBox: React.ForwardRefExoticComponent<
   CompatibleStyledComponentProps<typeof StyledGridBox, HTMLDivElement>
 > &
-  Pick<typeof StyledGridBox, 'withComponent'> = asCompatibleForwardRefComponentWithStyled<
-  CompatibleStyledComponentProps<typeof StyledGridBox, HTMLDivElement>,
-  typeof StyledGridBox
->(StyledGridBox);
+  Pick<typeof StyledGridBox, 'withComponent'> =
+  asCompatibleForwardRefComponentWithStyled<
+    CompatibleStyledComponentProps<typeof StyledGridBox, HTMLDivElement>,
+    typeof StyledGridBox
+  >(StyledGridBox);
