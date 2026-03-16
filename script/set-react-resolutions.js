@@ -13,7 +13,11 @@ const path = require('path');
 const REPO_ROOT = path.join(__dirname, '..');
 const PATCH_NAME = '@types+react+18.3.28.patch';
 const PATCH_PATH = path.join(REPO_ROOT, 'patches', PATCH_NAME);
-const PATCH_DISABLED = path.join(REPO_ROOT, 'patches', PATCH_NAME + '.disabled');
+const PATCH_DISABLED = path.join(
+  REPO_ROOT,
+  'patches',
+  PATCH_NAME + '.disabled'
+);
 
 function toggleTypesReactPatch(enable) {
   if (enable) {
@@ -21,11 +25,9 @@ function toggleTypesReactPatch(enable) {
       fs.renameSync(PATCH_DISABLED, PATCH_PATH);
       console.log('Restored @types/react 18 patch for patch-package.');
     }
-  } else {
-    if (fs.existsSync(PATCH_PATH)) {
-      fs.renameSync(PATCH_PATH, PATCH_DISABLED);
-      console.log('Disabled @types/react 18 patch.');
-    }
+  } else if (fs.existsSync(PATCH_PATH)) {
+    fs.renameSync(PATCH_PATH, PATCH_DISABLED);
+    console.log('Disabled @types/react 18 patch.');
   }
 }
 
