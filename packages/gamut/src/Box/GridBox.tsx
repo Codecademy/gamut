@@ -1,5 +1,6 @@
 import { styledOptions, system } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import React from 'react';
 
 import type { CompatibleStyledComponentProps } from '../utils/types';
 import { asCompatibleForwardRefComponentWithStyled } from '../utils/types';
@@ -15,7 +16,10 @@ const StyledGridBox = styled(
   boxProps
 );
 
-export const GridBox = asCompatibleForwardRefComponentWithStyled<
+export const GridBox: React.ForwardRefExoticComponent<
+  CompatibleStyledComponentProps<typeof StyledGridBox, HTMLDivElement>
+> &
+  Pick<typeof StyledGridBox, 'withComponent'> = asCompatibleForwardRefComponentWithStyled<
   CompatibleStyledComponentProps<typeof StyledGridBox, HTMLDivElement>,
   typeof StyledGridBox
 >(StyledGridBox);

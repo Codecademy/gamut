@@ -1,5 +1,6 @@
 import { styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import React from 'react';
 
 import type { CompatibleStyledComponentProps } from '../utils/types';
 import { asCompatibleForwardRefComponentWithStyled } from '../utils/types';
@@ -10,7 +11,10 @@ const StyledBox = styled('div', styledOptions(['fit']))<BoxProps>(
   boxProps
 );
 
-export const Box = asCompatibleForwardRefComponentWithStyled<
+export const Box: React.ForwardRefExoticComponent<
+  CompatibleStyledComponentProps<typeof StyledBox, HTMLDivElement>
+> &
+  Pick<typeof StyledBox, 'withComponent'> = asCompatibleForwardRefComponentWithStyled<
   CompatibleStyledComponentProps<typeof StyledBox, HTMLDivElement>,
   typeof StyledBox
 >(StyledBox);

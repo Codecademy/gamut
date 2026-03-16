@@ -142,7 +142,11 @@
     "test:gamut:react19": "node script/test-gamut-react-version.js 19",
     "test:gamut:all": "yarn test:gamut:react18 && yarn test:gamut:react19",
     "verify": "nx run-many --target=verify --parallel=3 --all",
-    "verify-all": "yarn verify"
+    "verify-all": "yarn verify",
+    "verify:gamut:react18": "node script/verify-gamut-react18-types.js",
+    "verify:gamut:react19": "node script/verify-gamut-react19-types.js",
+    "verify:gamut:types": "yarn verify:gamut:react18 && yarn verify:gamut:react19",
+    "verify:gamut:consumer": "tsc --noEmit -p packages/gamut/consumer-typecheck"
   },
   "workspaces": {
     "packages": [

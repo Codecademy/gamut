@@ -6,7 +6,7 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import { ComponentProps, forwardRef } from 'react';
+import React, { ComponentProps, forwardRef } from 'react';
 
 import { OptionalScrollProps, WithOptionalScrollProps } from '../utils';
 import { typographyElementVariants, typographyStyleVariants } from './variants';
@@ -150,14 +150,18 @@ const StyledText = styled('span', styledOptions<'span'>())<TextProps>(
   textProps
 );
 
-export const Text = forwardRef<
-  HTMLElement | null,
-  WithOptionalScrollProps<ComponentProps<typeof StyledText>>
->(({ as = 'span', m = 0, ...rest }, ref) => (
-  <StyledText
-    as={as}
-    m={m}
-    ref={ref}
-    {...(rest as ComponentProps<typeof StyledText>)}
-  />
-));
+export type TextPropsWithRef = Omit<
+  WithOptionalScrollProps<ComponentProps<typeof StyledText>>,
+  'ref'
+> & { ref?: React.Ref<HTMLElement | null> };
+
+export const Text = forwardRef<HTMLElement | null, TextPropsWithRef>(
+  ({ as = 'span', m = 0, ...rest }, ref) => (
+    <StyledText
+      as={as}
+      m={m}
+      ref={ref}
+      {...(rest as ComponentProps<typeof StyledText>)}
+    />
+  )
+);

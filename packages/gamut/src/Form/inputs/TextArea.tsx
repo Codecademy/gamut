@@ -1,6 +1,6 @@
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
-import {
+import React, {
   ChangeEvent,
   forwardRef,
   TextareaHTMLAttributes,
@@ -31,9 +31,13 @@ const StyledTextArea = styled.textarea<TextAreaProps>`
   border-radius: 'md';
 `;
 
+export type TextWrapperPropsWithRef = Omit<TextWrapperProps, 'ref'> & {
+  ref?: React.Ref<HTMLTextAreaElement | null>;
+};
+
 export const TextArea = forwardRef<
   HTMLTextAreaElement | null,
-  TextWrapperProps
+  TextWrapperPropsWithRef
 >(({ error, className, id, ...rest }, ref) => {
   const [activated, setActivated] = useState(false);
 

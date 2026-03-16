@@ -125,3 +125,47 @@ jobs:
           name: test-results-react-18
           path: ./coverage
           retention-days: 30
+
+  test-react-19:
+    name: Test suite (React 19)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      YARN_ENABLE_IMMUTABLE_INSTALLS: false
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+      - name: Fetch main branch
+        run: git fetch origin main:main
+        if: github.event_name == 'pull_request'
+      - uses: ./.github/actions/yarn
+      - name: Set React 19 resolutions
+        run: node script/set-react-resolutions.js 19
+      - name: Install dependencies
+        run: yarn install
+        shell: bash
+      - name: Build all packages
+        run: yarn build
+        shell: bash
+      - name: Typecheck Gamut (React 19)
+        run: yarn nx run gamut:verify
+        shell: bash
+      - name: Consumer-style type-check (React 19)
+        run: yarn verify:gamut:consumer
+        shell: bash
+      - name: Run test suite
+        run: |
+          if [ "${{ github.ref_name }}" == "main" ]; then
+            npx nx run-many --target=test --all --parallel=4 --ci --coverage --runInBand --skip-nx-cache
+          else
+            npx nx affected --target=test --parallel=4 --ci --coverage --runInBand
+          fi
+        shell: bash
+      - name: Upload test results (React 19)
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        if: ${{ !cancelled() }}
+        with:
+          name: test-results-react-19
+          path: ./coverage
+          retention-days: 30
