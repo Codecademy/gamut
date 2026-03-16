@@ -18,15 +18,10 @@ export const DetailedCodeButton: React.FC<DetailedCodeButtonProps> = ({
       width="100%"
       onClick={onToggle}
     >
-      <FlexBox
-        columnGap={16}
-        justifyContent="space-between"
-      >
+      <FlexBox columnGap={16} justifyContent="space-between">
         <Text>{language}</Text>
         <FlexBox columnGap={8} flexDirection="row" alignItems="center">
-          <Text>
-            {isExpanded ? 'Show Less Code' : 'Show More Code'}
-          </Text>
+          <Text>{isExpanded ? 'Show Less Code' : 'Show More Code'}</Text>
           <Rotation rotated={isExpanded}>
             <MiniChevronDownIcon aria-hidden size={16} />
           </Rotation>

@@ -18,10 +18,11 @@ export const DetailedCode: React.FC<DetailedCodeProps> = ({
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded);
   const normalizedPreviewLines = Math.max(0, previewLines);
   const previewEnabled = preview && normalizedPreviewLines > 0;
-  
+
   const codeLines = code.split('\n');
-  const hasMoreCode = previewEnabled && codeLines.length > normalizedPreviewLines;
-  
+  const hasMoreCode =
+    previewEnabled && codeLines.length > normalizedPreviewLines;
+
   const previewCode = previewEnabled
     ? codeLines.slice(0, normalizedPreviewLines).join('\n')
     : code;
