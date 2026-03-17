@@ -57,10 +57,8 @@ export const DatePickerInput = forwardRef<
 
   const {
     mode,
-    startDate,
-    endDate,
+    startOrSelectedDate,
     setSelection,
-    setActiveRangePart,
     openCalendar,
     locale,
     isCalendarOpen,
@@ -73,7 +71,8 @@ export const DatePickerInput = forwardRef<
   const inputId = `datepicker-input-${inputID.replace(/:/g, '')}`;
 
   // Range with two inputs: each input binds to one part. Single or range combined: one value.
-  const boundDate = isRange && rangePart === 'end' ? endDate : startDate;
+  const boundDate =
+    isRange && rangePart === 'end' ? context.endDate : startOrSelectedDate;
   const formattedValue =
     boundDate != null ? formatDateForInput(boundDate, locale) : '';
 
@@ -92,16 +91,16 @@ export const DatePickerInput = forwardRef<
     const trimmed = raw.trim();
     if (!trimmed) {
       if (isRange && rangePart) {
-        if (rangePart === 'start') setSelection(null, endDate);
-        else setSelection(startDate, null);
+        if (rangePart === 'start') setSelection(null, context.endDate);
+        else setSelection(startOrSelectedDate, null);
       } else setSelection(null);
       return undefined;
     }
     const parsed = parseDateFromInput(trimmed, locale);
     if (!parsed) return undefined;
     if (isRange && rangePart) {
-      if (rangePart === 'start') setSelection(parsed, endDate);
-      else setSelection(startDate, parsed);
+      if (rangePart === 'start') setSelection(parsed, context.endDate);
+      else setSelection(startOrSelectedDate, parsed);
     } else setSelection(parsed);
     return formatDateForInput(parsed, locale);
   };
@@ -157,7 +156,7 @@ export const DatePickerInput = forwardRef<
       onClick={handleOpenCalendar}
       onFocus={() => {
         isInputFocusedRef.current = true;
-        if (isRange && rangePart) setActiveRangePart(rangePart);
+        if (isRange && rangePart) context.setActiveRangePart(rangePart);
       }}
       onKeyDown={handleKeyDown}
     />

@@ -55,24 +55,38 @@ export type DatePickerProps = DatePickerSingleProps | DatePickerRangeProps;
 export type ActiveRangePart = 'start' | 'end' | null;
 
 /** Shared state provided by DatePicker via context. */
-export interface DatePickerContextValue {
-  mode: 'single' | 'range';
-  /** Selected date (single) or start date (range). Same value as startDate. */
-  selectedDate: Date | null;
-  /** Alias for selectedDate (same value). */
-  startDate: Date | null;
-  /** Range only: end date. */
-  endDate: Date | null;
-  /** Set selection. Single: (date). Range: (start, end). */
-  setSelection: (startDate: Date | null, endDate?: Date | null) => void;
-  /** Range only: which input is active (start/end focused); null = selection mode. */
-  activeRangePart: ActiveRangePart;
-  /** Range only: set which input is active (e.g. when input receives focus). */
-  setActiveRangePart: (part: ActiveRangePart) => void;
+export interface DatePickerBaseContextValue {
   isCalendarOpen: boolean;
   openCalendar: () => void;
   closeCalendar: () => void;
   locale: string;
   disabledDates: Date[];
   calendarDialogId: string;
+  /** Start date (range) or selected date (single). */
+  startOrSelectedDate: Date | null;
+  /** Set selection. Single: (date). Range: (start, end). */
+  setSelection: (
+    startOrSelectedDate: Date | null,
+    endDate?: Date | null
+  ) => void;
 }
+
+export interface DatePickerSingleContextValue
+  extends DatePickerBaseContextValue {
+  mode: 'single';
+}
+
+export interface DatePickerRangeContextValue
+  extends DatePickerBaseContextValue {
+  mode: 'range';
+  /** Range only: end date. */
+  endDate: Date | null;
+  /** Range only: which input is active (start/end focused); null = selection mode. */
+  activeRangePart: ActiveRangePart;
+  /** Range only: set which input is active (e.g. when input receives focus). */
+  setActiveRangePart: (part: ActiveRangePart) => void;
+}
+
+export type DatePickerContextValue =
+  | DatePickerSingleContextValue
+  | DatePickerRangeContextValue;

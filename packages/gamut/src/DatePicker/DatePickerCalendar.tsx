@@ -42,12 +42,8 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
 
   const {
     mode,
-    startDate,
-    selectedDate,
+    startOrSelectedDate,
     setSelection,
-    endDate,
-    activeRangePart,
-    setActiveRangePart,
     disabledDates,
     locale,
     closeCalendar,
@@ -55,14 +51,15 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
   } = context;
 
   const isRange = mode === 'range';
+  const endDate = isRange ? context.endDate : undefined;
   const firstOfMonth = (date: Date) =>
     new Date(date.getFullYear(), date.getMonth(), 1);
 
   const [visibleDate, setVisibleDate] = useState(() =>
-    firstOfMonth(startDate ?? new Date())
+    firstOfMonth(startOrSelectedDate ?? new Date())
   );
   const [focusedDate, setFocusedDate] = useState<Date | null>(
-    () => startDate ?? endDate ?? new Date()
+    () => startOrSelectedDate ?? endDate ?? new Date()
   );
   const wasOpenRef = useRef(false);
 
@@ -72,23 +69,23 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     const justOpened = isCalendarOpen && !wasOpenRef.current;
     wasOpenRef.current = isCalendarOpen;
     if (!justOpened) return;
-    const anchor = startDate ?? endDate;
+    const anchor = startOrSelectedDate ?? endDate;
     if (anchor) {
       setVisibleDate(firstOfMonth(anchor));
-      setFocusedDate(startDate ?? endDate ?? new Date());
+      setFocusedDate(startOrSelectedDate ?? endDate ?? new Date());
     }
-  }, [isCalendarOpen, startDate, endDate]);
+  }, [isCalendarOpen, startOrSelectedDate, endDate]);
 
   const onDateSelect = (date: Date) => {
-    setActiveRangePart(null);
     if (!isRange) {
-      handleDateSelectSingle(date, selectedDate, setSelection);
+      handleDateSelectSingle(date, startOrSelectedDate, setSelection);
     } else {
+      context.setActiveRangePart(null);
       handleDateSelectRange(
         date,
-        activeRangePart,
-        startDate,
-        endDate,
+        context.activeRangePart,
+        startOrSelectedDate,
+        context.endDate,
         setSelection
       );
     }
@@ -106,7 +103,8 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     setFocusedDate(today);
   };
 
-  const focusTarget = focusedDate ?? startDate ?? endDate ?? new Date();
+  const focusTarget =
+    focusedDate ?? startOrSelectedDate ?? endDate ?? new Date();
 
   const addMonths = (date: Date, n: number) =>
     new Date(date.getFullYear(), date.getMonth() + n, 1);
@@ -129,7 +127,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             focusedDate={focusTarget}
             labelledById={headingId}
             locale={locale}
-            selectedDate={startDate}
+            selectedDate={startOrSelectedDate}
             visibleDate={visibleDate}
             weekStartsOn={weekStartsOn}
             onDateSelect={onDateSelect}
@@ -144,7 +142,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
               focusedDate={focusTarget}
               labelledById={headingId}
               locale={locale}
-              selectedDate={startDate}
+              selectedDate={startOrSelectedDate}
               visibleDate={secondMonthDate}
               weekStartsOn={weekStartsOn}
               onDateSelect={onDateSelect}

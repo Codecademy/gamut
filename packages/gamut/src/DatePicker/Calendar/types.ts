@@ -24,7 +24,7 @@ export interface CalendarBodyProps {
   visibleDate: Date;
   /** Selected start date (single or range start) */
   selectedDate: Date | null;
-  /** Selected end date (range only; null for single-date mode) */
+  /** Selected end date (range only; undefined for single-date mode) */
   endDate?: Date | null;
   /** Dates that should be disabled (unselectable) */
   disabledDates?: Date[];

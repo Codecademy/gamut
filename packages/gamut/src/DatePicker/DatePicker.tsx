@@ -43,9 +43,10 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     inputRef.current?.focus();
   }, []);
 
-  // do we want to refer to this as startDate or selectedDate internally? its the selected date in single mode and the start date in range mode
-  const startDate = isRangeProps(props) ? props.startDate : props.selectedDate;
-  const endDate = isRangeProps(props) ? props.endDate : null; // null vs undefined?
+  const startOrSelectedDate = isRangeProps(props)
+    ? props.startDate
+    : props.selectedDate;
+  const endDate = isRangeProps(props) ? props.endDate : null;
 
   const setSelection = useCallback(
     (start: Date | null, end?: Date | null) => {
@@ -59,39 +60,40 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     [props]
   );
 
-  // discriminated union type
-  const contextValue = useMemo<DatePickerContextValue>(
-    () => ({
-      mode: mode ?? 'single',
-      selectedDate: startDate,
-      startDate,
-      endDate,
+  const contextValue = useMemo<DatePickerContextValue>(() => {
+    const base = {
+      startOrSelectedDate,
       setSelection,
-      activeRangePart: mode === 'range' ? activeRangePart : null,
-      // fix this
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      setActiveRangePart: mode === 'range' ? setActiveRangePart : () => {},
       isCalendarOpen,
       openCalendar,
       closeCalendar,
       locale,
       disabledDates,
       calendarDialogId,
-    }),
-    [
-      mode,
-      startDate,
-      endDate,
-      setSelection,
-      activeRangePart,
-      isCalendarOpen,
-      openCalendar,
-      closeCalendar,
-      locale,
-      disabledDates,
-      calendarDialogId,
-    ]
-  );
+    };
+    return mode === 'range'
+      ? {
+          ...base,
+          mode: 'range',
+          endDate,
+          activeRangePart,
+          setActiveRangePart,
+        }
+      : { ...base, mode: 'single' };
+  }, [
+    mode,
+    startOrSelectedDate,
+    endDate,
+    setSelection,
+    activeRangePart,
+    setActiveRangePart,
+    isCalendarOpen,
+    openCalendar,
+    closeCalendar,
+    locale,
+    disabledDates,
+    calendarDialogId,
+  ]);
 
   // what is this doing
   // useEffect(() => {
