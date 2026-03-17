@@ -29,24 +29,11 @@ import { getRelativeTodayLabel } from './utils/format';
 export const CalendarFooter: React.FC<CalendarFooterProps> = ({
   onClearDate,
   onTodayClick,
-  onSelectedDateChange,
-  onCurrentMonthYearChange,
   locale,
   clearText,
+  disabled,
+  showClearButton,
 }) => {
-  const handleClearDate = () => {
-    onSelectedDateChange(null);
-    onClearDate?.();
-  };
-
-  const handleTodayClick = () => {
-    const today = new Date();
-    onSelectedDateChange(today);
-    onCurrentMonthYearChange(
-      new Date(today.getFullYear(), today.getMonth(), 1)
-    );
-    onTodayClick?.();
-  };
   // const actions = quickActions.slice(0, 3);
 
   return (
@@ -56,9 +43,13 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
       justifyContent="space-between"
       p={12}
     >
-      <TextButton onClick={handleClearDate}>{clearText}</TextButton>
+      {showClearButton && (
+        <TextButton disabled={disabled} onClick={() => onClearDate?.()}>
+          {clearText}
+        </TextButton>
+      )}
       <FlexBox gap={32}>
-        <TextButton onClick={handleTodayClick}>
+        <TextButton onClick={() => onTodayClick?.()}>
           {getRelativeTodayLabel(locale)}
         </TextButton>
       </FlexBox>

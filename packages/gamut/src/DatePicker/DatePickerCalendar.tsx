@@ -156,12 +156,10 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
       </Box>
       <CalendarFooter
         clearText={translations.clear}
+        disabled={startOrSelectedDate === null && endDate === null}
         locale={locale}
+        showClearButton={isRange}
         onClearDate={handleClearDate}
-        onCurrentMonthYearChange={setVisibleDate}
-        onSelectedDateChange={(date) =>
-          date === null ? handleClearDate() : handleTodayClick()
-        }
         onTodayClick={handleTodayClick}
       />
     </Calendar>

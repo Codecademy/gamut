@@ -51,16 +51,35 @@ export interface QuickAction {
   timePeriod: 'day' | 'week' | 'month' | 'year';
   onClick: () => void;
 }
-
 export interface CalendarFooterProps {
+  disabled?: boolean;
+  showClearButton?: boolean;
   locale?: string;
   clearText: string;
   onClearDate?: () => void;
   onTodayClick?: () => void;
-  /** Called when the user navigates to a different month. Pass the new date (e.g. setVisibleDate) so the calendar updates. */
-  onSelectedDateChange: (newDate: Date | null) => void;
-  onCurrentMonthYearChange: (newDate: Date) => void;
-
   /** Max 3 quick actions (e.g. "7 days", "1 month") */
   quickActions?: QuickAction[];
 }
+
+// interface CalendarFooterBaseProps {
+//   disabled?: boolean;
+//   locale?: string;
+//   onTodayClick?: () => void;
+//   /** Max 3 quick actions (e.g. "7 days", "1 month") */
+//   quickActions?: QuickAction[];
+// }
+
+// interface CalendarFooterWithClearProps extends CalendarFooterBaseProps {
+//   showClearButton: true;
+//   clearText: string;
+//   onClearDate: () => void;
+// }
+
+// interface CalendarFooterNoClearProps extends CalendarFooterBaseProps {
+//   showClearButton?: false;
+// }
+
+// export type CalendarFooterProps =
+//   | CalendarFooterWithClearProps
+//   | CalendarFooterNoClearProps;
