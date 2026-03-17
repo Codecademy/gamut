@@ -57,6 +57,9 @@ const DateButton = styled(TextButton)(
         bg: 'secondary-hover',
         color: 'background',
       },
+      '&::after': {
+        bg: 'background',
+      },
     },
     disabled: {
       color: 'text-disabled',
