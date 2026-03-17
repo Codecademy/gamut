@@ -85,19 +85,19 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
     nonce,
   };
 
-  const globals = shouldInsertGlobals && (
-    <>
-      <Typography theme={theme} />
-      <Reboot theme={theme} />
-      <Variables variables={theme._variables} />
-      {variables && <Variables variables={variables} />}
-    </>
-  );
-
   // Merge useLogicalProperties into theme so variance can access it via props.theme.
   const themeWithLogicalProperties = useMemo(
     () => ({ ...theme, useLogicalProperties }),
     [theme, useLogicalProperties]
+  );
+
+  const globals = shouldInsertGlobals && (
+    <>
+      <Typography theme={themeWithLogicalProperties} />
+      <Reboot theme={themeWithLogicalProperties} />
+      <Variables variables={theme._variables} />
+      {variables && <Variables variables={variables} />}
+    </>
   );
 
   const content = useMemo(
