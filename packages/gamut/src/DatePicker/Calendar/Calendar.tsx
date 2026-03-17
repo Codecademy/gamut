@@ -1,15 +1,26 @@
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { CheckerDense } from '@codecademy/gamut-patterns';
+import * as React from 'react';
+
+import { Box } from '../../Box';
 
 /**
  * Outer wrapper for the calendar (header + body + footer).
  * Used by DatePickerCalendar to group the calendar content.
+ * Renders a CheckerDense pattern shadow at offset left 8, top 8.
  */
-export const Calendar = styled.div(
-  css({
-    backgroundColor: 'background',
-    borderRadius: 'lg',
-    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
-    width: 'max-content',
-  })
+export const Calendar: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => (
+  <Box position="relative" width="max-content">
+    <CheckerDense left={8} position="absolute" top={8} />
+    <Box
+      bg="background"
+      border={1}
+      borderRadius="sm"
+      position="relative"
+      zIndex={1}
+    >
+      {children}
+    </Box>
+  </Box>
 );

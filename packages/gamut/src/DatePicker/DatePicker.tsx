@@ -1,4 +1,12 @@
-import { useCallback, useId, useMemo, useRef, useState } from 'react';
+import { MiniArrowRightIcon } from '@codecademy/gamut-icons';
+import {
+  useCallback,
+  useId,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { FlexBox } from '../Box';
 import { PopoverContainer } from '../PopoverContainer';
@@ -37,6 +45,18 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dialogId = useId();
   const calendarDialogId = `datepicker-dialog-${dialogId.replace(/:/g, '')}`;
+  const popoverOffset = 4;
+
+  // Align popover left edge with input left edge. PopoverContainer's "bottom-right"
+  // sets popover left = target left + (target width + offset + x), so we pass
+  // x = -(target width + offset) to get popover left = target left.
+  const [popoverX, setPopoverX] = useState(0);
+  useLayoutEffect(() => {
+    if (isCalendarOpen && inputRef.current) {
+      const width = inputRef.current.offsetWidth;
+      setPopoverX(-(width + popoverOffset));
+    }
+  }, [isCalendarOpen, popoverOffset]);
 
   const openCalendar = useCallback(() => setIsCalendarOpen(true), []);
   const closeCalendar = useCallback(() => {
@@ -124,6 +144,8 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
                 rangePart="start"
                 ref={inputRef}
               />
+              <MiniArrowRightIcon alignSelf="center" />{' '}
+              {/* hide when they stack */}
               <DatePickerInput
                 label={props.endLabel}
                 placeholder={placeholder}
@@ -140,15 +162,15 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
           )}
         </FlexBox>
         <PopoverContainer
-          alignment="bottom-left"
+          alignment="bottom-right"
           allowPageInteraction
-          // look into if we can kill this and mess with where we are focusing instead
           focusOnProps={{ autoFocus: false, focusLock: false }}
-          invertAxis="x"
           isOpen={isCalendarOpen}
-          offset={10}
+          offset={popoverOffset}
           targetRef={inputRef}
-          onRequestClose={closeCalendar} // without this we cant type in the input but there has to be a better way
+          x={popoverX}
+          y={0}
+          onRequestClose={closeCalendar}
         >
           <div aria-label="Choose date" id={calendarDialogId} role="dialog">
             <DatePickerCalendar dialogId={calendarDialogId} />

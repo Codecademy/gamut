@@ -1,4 +1,4 @@
-import { CalendarIcon } from '@codecademy/gamut-icons';
+import { MiniCalendarIcon } from '@codecademy/gamut-icons';
 import {
   ComponentProps,
   forwardRef,
@@ -153,7 +153,7 @@ export const DatePickerInput = forwardRef<
         aria-controls={calendarDialogId}
         aria-expanded={isCalendarOpen}
         aria-haspopup="dialog"
-        icon={CalendarIcon}
+        icon={() => <MiniCalendarIcon size={16} />}
         id={inputId}
         placeholder={placeholder ?? getDateFormatPattern(locale)}
         ref={ref}
