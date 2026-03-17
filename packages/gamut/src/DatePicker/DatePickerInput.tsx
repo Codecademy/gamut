@@ -8,6 +8,7 @@ import {
   useState,
 } from 'react';
 
+import { FormGroup } from '../Form/elements/FormGroup';
 import { Input } from '../Form/inputs/Input';
 import {
   formatDateForInput,
@@ -138,28 +139,36 @@ export const DatePickerInput = forwardRef<
       : 'Date';
 
   return (
-    <Input
-      {...rest}
-      aria-autocomplete="none"
-      aria-controls={calendarDialogId}
-      aria-expanded={isCalendarOpen}
-      aria-haspopup="dialog"
-      icon={CalendarIcon} // add mini calendar icon and update
-      id={inputId}
-      label={label ?? defaultLabel} // this isnt actually adding a label
-      placeholder={placeholder ?? getDateFormatPattern(locale)}
-      ref={ref}
-      role="combobox"
-      type="text"
-      value={inputValue}
-      onBlur={handleBlur}
-      onChange={handleChange}
-      onClick={handleOpenCalendar}
-      onFocus={() => {
-        isInputFocusedRef.current = true;
-        if (isRange && rangePart) context.setActiveRangePart(rangePart);
-      }}
-      onKeyDown={handleKeyDown}
-    />
+    <FormGroup
+      htmlFor={inputId}
+      isSoloField // should probaly be based on a prop
+      label={label ?? defaultLabel}
+      pb={0}
+      spacing="tight"
+      width="170px"
+    >
+      <Input
+        {...rest}
+        aria-autocomplete="none"
+        aria-controls={calendarDialogId}
+        aria-expanded={isCalendarOpen}
+        aria-haspopup="dialog"
+        icon={CalendarIcon}
+        id={inputId}
+        placeholder={placeholder ?? getDateFormatPattern(locale)}
+        ref={ref}
+        role="combobox"
+        type="text"
+        value={inputValue}
+        onBlur={handleBlur}
+        onChange={handleChange}
+        onClick={handleOpenCalendar}
+        onFocus={() => {
+          isInputFocusedRef.current = true;
+          if (isRange && rangePart) context.setActiveRangePart(rangePart);
+        }}
+        onKeyDown={handleKeyDown}
+      />
+    </FormGroup>
   );
 });
