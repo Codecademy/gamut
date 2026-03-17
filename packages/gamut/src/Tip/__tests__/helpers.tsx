@@ -419,24 +419,15 @@ export const openInfoTipsWithKeyboard = async ({
 }) => {
   const buttons = view.getAllByLabelText('Show information');
 
-  await act(async () => {
-    buttons[0].focus();
-    await userEvent.keyboard('{Enter}');
-
-    for (let i = 1; i < count; i += 1) {
-      // eslint-disable-next-line no-await-in-loop
-      await userEvent.tab();
-      // eslint-disable-next-line no-await-in-loop
+  for (let i = 0; i < count; i += 1) {
+    await act(async () => {
+      buttons[i].focus();
       await userEvent.keyboard('{Enter}');
-    }
-  });
-
-  // Wait for all tips to finish opening
-  await waitFor(() => {
-    buttons.forEach((button) => {
-      expect(button).toHaveAttribute('aria-expanded', 'true');
     });
-  });
+    await waitFor(() => {
+      expect(buttons[i]).toHaveAttribute('aria-expanded', 'true');
+    });
+  }
 };
 
 export const expectTipsVisible = (tips: { text: string }[]) => {
