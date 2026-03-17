@@ -6,7 +6,7 @@
  * Format month and year for the calendar header (e.g. "February 2026").
  */
 export const formatMonthYear = (date: Date, locale?: string) => {
-  return new Intl.DateTimeFormat(locale ?? 'en-US', {
+  return new Intl.DateTimeFormat(locale, {
     month: 'long',
     year: 'numeric',
   }).format(date);
@@ -17,7 +17,7 @@ export const formatMonthYear = (date: Date, locale?: string) => {
  * Order depends on weekStartsOn: 0 = Sunday first, 1 = Monday first.
  */
 export const getWeekdayLabels = (locale?: string, weekStartsOn: 0 | 1 = 0) => {
-  const formatter = new Intl.DateTimeFormat(locale ?? 'en-US', {
+  const formatter = new Intl.DateTimeFormat(locale, {
     weekday: 'short',
   });
   // Jan 7, 2024 is a Sunday; add 0..6 days to get Sun..Sat
@@ -41,7 +41,7 @@ export const getWeekdayFullNames = (
   locale?: string,
   weekStartsOn: 0 | 1 = 0
 ) => {
-  const formatter = new Intl.DateTimeFormat(locale ?? 'en-US', {
+  const formatter = new Intl.DateTimeFormat(locale, {
     weekday: 'long',
   });
   const sunday = new Date(2024, 0, 7);
@@ -57,10 +57,50 @@ export const getWeekdayFullNames = (
 };
 
 /**
+ * Get localized "next month" and "previous month" labels for calendar nav.
+ * Uses Intl.RelativeTimeFormat with numeric: "auto" (e.g. "next month", "last month").
+ */
+export const getRelativeMonthLabels = (locale?: string) => {
+  const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
+  return {
+    nextMonth: rtf.format(1, 'month'),
+    lastMonth: rtf.format(-1, 'month'),
+  };
+};
+
+/**
+ * Get the locale's short date format pattern (e.g. "MM/DD/YYYY" for en-US,
+ * "DD/MM/YYYY" for en-GB). Uses Intl.DateTimeFormat formatToParts to infer
+ * order and separators. Useful for parsing or building locale-aware inputs.
+ */
+export const getDateFormatPattern = (locale?: string) => {
+  const parts = new Intl.DateTimeFormat(locale, {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(new Date(2025, 0, 15));
+
+  return parts
+    .map((p) => {
+      switch (p.type) {
+        case 'day':
+          return 'DD';
+        case 'month':
+          return 'MM';
+        case 'year':
+          return 'YYYY';
+        default:
+          return p.value;
+      }
+    })
+    .join('');
+};
+
+/**
  * Format a date for display in the date picker input (e.g. "2/15/2026").
  */
 export const formatDateForInput = (date: Date, locale?: string) => {
-  return new Intl.DateTimeFormat(locale ?? 'en-US', {
+  return new Intl.DateTimeFormat(locale, {
     month: 'numeric',
     day: 'numeric',
     year: 'numeric',

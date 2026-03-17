@@ -59,7 +59,7 @@ export interface DatePickerBaseContextValue {
   isCalendarOpen: boolean;
   openCalendar: () => void;
   closeCalendar: () => void;
-  locale: string;
+  locale?: string;
   disabledDates: Date[];
   calendarDialogId: string;
   /** Start date (range) or selected date (single). */

@@ -26,7 +26,6 @@ export const Default: Story = {
         <DatePicker
           label="Date"
           locale="de-DE"
-          placeholder="MM/DD/YYYY"
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
         />
@@ -43,7 +42,6 @@ export const WithInitialDate: Story = {
     return (
       <DatePicker
         label="Date"
-        placeholder="MM/DD/YYYY"
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
       />
@@ -84,7 +82,6 @@ export const ComposedWithContext: Story = {
       <Box p={32}>
         <DatePicker
           label="Start date"
-          placeholder="MM/DD/YYYY"
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
         >

@@ -11,6 +11,7 @@ import {
 import { Input } from '../Form/inputs/Input';
 import {
   formatDateForInput,
+  getDateFormatPattern,
   parseDateFromInput,
 } from './Calendar/utils/format';
 import { useDatePicker } from './DatePickerContext';
@@ -146,7 +147,7 @@ export const DatePickerInput = forwardRef<
       icon={CalendarIcon} // add mini calendar icon and update
       id={inputId}
       label={label ?? defaultLabel} // this isnt actually adding a label
-      placeholder={placeholder ?? 'MM/DD/YYYY'}
+      placeholder={placeholder ?? getDateFormatPattern(locale)}
       ref={ref}
       role="combobox"
       type="text"

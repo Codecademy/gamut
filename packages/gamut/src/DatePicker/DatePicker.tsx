@@ -21,13 +21,7 @@ function isRangeProps(props: DatePickerProps): props is DatePickerRangeProps {
  * With no children, renders default layout (input + calendar popover).
  */
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
-  const {
-    locale = 'en-US',
-    disabledDates = [],
-    placeholder,
-    mode,
-    children,
-  } = props;
+  const { locale, disabledDates = [], placeholder, mode, children } = props;
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [activeRangePart, setActiveRangePart] = useState<
     'start' | 'end' | null
