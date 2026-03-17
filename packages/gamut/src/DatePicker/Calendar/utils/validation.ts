@@ -7,17 +7,17 @@
  * Check if a date is in the past (before today at start of day).
  * Useful for disabling past dates in the calendar.
  */
-export function isPastDate(date: Date): boolean {
+export const isPastDate = (date: Date) => {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const d = new Date(date);
-  d.setHours(0, 0, 0, 0);
-  return d.getTime() < today.getTime();
-}
+  const normalizedDate = new Date(date);
+  normalizedDate.setHours(0, 0, 0, 0);
+  return normalizedDate.getTime() < today.getTime();
+};
 
 /**
  * Check if a date is valid (finite and not NaN).
  */
-export function isValidDate(date: Date): boolean {
+export const isValidDate = (date: Date) => {
   return date instanceof Date && !Number.isNaN(date.getTime());
-}
+};

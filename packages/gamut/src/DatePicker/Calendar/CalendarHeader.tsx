@@ -57,16 +57,18 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
       >
         {formatMonthYear(currentMonthYear, locale)}
       </Text>
-      <Text
-        aria-live="polite"
-        as="h2"
-        display={{ _: 'none', xs: 'initial' }}
-        fontSize={16}
-        fontWeight="title"
-        id={headingId}
-      >
-        {formatMonthYear(secondMonthYear, locale)}
-      </Text>
+      {secondMonthYear && (
+        <Text
+          aria-live="polite"
+          as="h2"
+          display={{ _: 'none', xs: 'initial' }}
+          fontSize={16}
+          fontWeight="title"
+          id={headingId}
+        >
+          {formatMonthYear(secondMonthYear, locale)}
+        </Text>
+      )}
       <IconButton
         aria-label="Next month"
         icon={MiniChevronRightIcon}

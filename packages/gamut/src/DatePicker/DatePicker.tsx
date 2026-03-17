@@ -59,6 +59,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     [props]
   );
 
+  // discriminated union type
   const contextValue = useMemo<DatePickerContextValue>(
     () => ({
       mode: mode ?? 'single',

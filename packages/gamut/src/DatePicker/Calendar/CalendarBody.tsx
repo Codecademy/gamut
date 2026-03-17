@@ -6,13 +6,13 @@ import * as React from 'react';
 import { TextButton } from '../../Button';
 import { CalendarBodyProps } from './types';
 import {
-  clampToMonth,
   getMonthGrid,
   isDateDisabled,
   isDateInRange,
   isSameDay,
 } from './utils/dateGrid';
 import { getWeekdayFullNames, getWeekdayLabels } from './utils/format';
+import { getDatesWithRow, keyHandler } from './utils/keyHandler';
 
 const TableHeader = styled.th(
   css({
@@ -66,24 +66,8 @@ const DateButton = styled(TextButton)(
   css({
     fontWeight: 'base',
     width: '32px',
-    // '&:hover, &:focus': {
-    //   bg: 'background-hover',
-    // },
   })
 );
-
-/** Flat list of dates in grid order (row-major, non-null only) with row index for Home/End */
-function getDatesWithRow(
-  weeks: (Date | null)[][]
-): { date: Date; rowIndex: number }[] {
-  const result: { date: Date; rowIndex: number }[] = [];
-  weeks.forEach((week, rowIndex) => {
-    week.forEach((date) => {
-      if (date !== null) result.push({ date, rowIndex });
-    });
-  });
-  return result;
-}
 
 export const CalendarBody: React.FC<CalendarBodyProps> = ({
   visibleDate,
@@ -129,119 +113,19 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   }, [focusTarget, focusButton]);
 
   const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent, date: Date) => {
-      if (!onFocusedDateChange) return;
-      const key = date.getTime();
-      const idx = datesWithRow.findIndex(({ date: d }) => d.getTime() === key);
-      if (idx < 0) return;
-
-      const currentRow = datesWithRow[idx].rowIndex;
-      const day = date.getDate();
-
-      let newDate: Date | null = null;
-      let newVisibleDate: Date | null = null;
-
-      switch (e.key) {
-        case 'ArrowLeft':
-          e.preventDefault();
-          if (idx > 0) {
-            newDate = datesWithRow[idx - 1].date;
-          } else {
-            const lastDayPrevMonth = new Date(year, month, 0);
-            newDate = lastDayPrevMonth;
-            newVisibleDate = new Date(year, month - 1, 1);
-          }
-          break;
-        case 'ArrowRight':
-          e.preventDefault();
-          if (idx < datesWithRow.length - 1) {
-            newDate = datesWithRow[idx + 1].date;
-          } else {
-            newDate = new Date(year, month + 1, 1);
-            newVisibleDate = new Date(year, month + 1, 1);
-          }
-          break;
-        case 'ArrowUp':
-          e.preventDefault();
-          newDate = new Date(date);
-          newDate.setDate(newDate.getDate() - 7);
-          if (newDate.getMonth() !== month || newDate.getFullYear() !== year) {
-            newVisibleDate = new Date(
-              newDate.getFullYear(),
-              newDate.getMonth(),
-              1
-            );
-          }
-          break;
-        case 'ArrowDown':
-          e.preventDefault();
-          newDate = new Date(date);
-          newDate.setDate(newDate.getDate() + 7);
-          if (newDate.getMonth() !== month || newDate.getFullYear() !== year) {
-            newVisibleDate = new Date(
-              newDate.getFullYear(),
-              newDate.getMonth(),
-              1
-            );
-          }
-          break;
-        case 'Home':
-          e.preventDefault();
-          newDate =
-            datesWithRow.find(({ rowIndex }) => rowIndex === currentRow)
-              ?.date ?? date;
-          break;
-        case 'End':
-          e.preventDefault();
-          newDate =
-            [...datesWithRow]
-              .reverse()
-              .find(({ rowIndex }) => rowIndex === currentRow)?.date ?? date;
-          break;
-        case 'PageDown':
-          e.preventDefault();
-          if (e.shiftKey) {
-            newDate = clampToMonth(year + 1, month, day);
-          } else {
-            newDate = clampToMonth(year, month + 1, day);
-          }
-          newVisibleDate = new Date(
-            newDate.getFullYear(),
-            newDate.getMonth(),
-            1
-          );
-          break;
-        case 'PageUp':
-          e.preventDefault();
-          if (e.shiftKey) {
-            newDate = clampToMonth(year - 1, month, day);
-          } else {
-            newDate = clampToMonth(year, month - 1, day);
-          }
-          newVisibleDate = new Date(
-            newDate.getFullYear(),
-            newDate.getMonth(),
-            1
-          );
-          break;
-        case 'Enter':
-        case ' ':
-          e.preventDefault();
-          if (!isDateDisabled(date, disabledDates)) onDateSelect(date);
-          return;
-        case 'Escape':
-          e.preventDefault();
-          onEscapeKeyPress?.();
-          return;
-        default:
-          return;
-      }
-
-      if (newDate !== null) {
-        onFocusedDateChange(newDate);
-        if (newVisibleDate !== null) onVisibleDateChange?.(newVisibleDate);
-      }
-    },
+    (e: React.KeyboardEvent, date: Date) =>
+      keyHandler(
+        e,
+        date,
+        onFocusedDateChange,
+        datesWithRow,
+        month,
+        year,
+        disabledDates,
+        onDateSelect,
+        onEscapeKeyPress,
+        onVisibleDateChange
+      ),
     [
       onFocusedDateChange,
       datesWithRow,

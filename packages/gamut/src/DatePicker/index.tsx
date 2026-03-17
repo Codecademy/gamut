@@ -6,7 +6,6 @@ export type {
   DatePickerProps,
   DatePickerRangeProps,
   DatePickerSingleProps,
-  UseDatePickerReturn,
 } from './types';
 
 export { DatePicker } from './DatePicker';

@@ -8,15 +8,15 @@ export interface CalendarHeaderProps {
   /** Called when the user navigates to a different month. Pass the new date (e.g. setVisibleDate) so the calendar updates. */
   onCurrentMonthYearChange: (newDate: Date) => void;
   /** Currently displayed second month and year (used for heading and prev/next range) */
-  secondMonthYear: Date;
-  /** Optional. Called after navigating to previous month; use for click tracking. */
+  secondMonthYear?: Date;
+  /** Called after navigating to previous month; use for click tracking. */
   onPreviousMonthClick?: () => void;
-  /** Optional. Called after navigating to next month; use for click tracking. */
+  /** Called after navigating to next month; use for click tracking. */
   onNextMonthClick?: () => void;
   /** Locale for month/year formatting (e.g. 'en-US') */
   locale?: string;
-  /** Optional id for the heading (for grid aria-labelledby) */
-  headingId?: string;
+  /** id for the heading (for grid aria-labelledby) */
+  headingId: string;
 }
 
 export interface CalendarBodyProps {
@@ -35,13 +35,13 @@ export interface CalendarBodyProps {
   /** 0 = Sunday, 1 = Monday (default from locale if not set) */
   weekStartsOn?: 0 | 1;
   /** Id of the month/year heading (aria-labelledby on grid) */
-  labelledById?: string;
+  labelledById: string;
   /** For keyboard nav: which cell has focus (roving tabindex) */
-  focusedDate?: Date | null;
+  focusedDate: Date | null;
   /** Callback when focused date changes (e.g. arrow keys) */
-  onFocusedDateChange?: (date: Date | null) => void;
+  onFocusedDateChange: (date: Date | null) => void;
   /** Called when grid keyboard nav changes month (e.g. Page Up/Down). Pass setVisibleDate so the calendar updates. */
-  onVisibleDateChange?: (newDate: Date) => void;
+  onVisibleDateChange: (newDate: Date) => void;
   /** Called when the escape key is pressed */
   onEscapeKeyPress?: () => void;
 }

@@ -76,26 +76,3 @@ export interface DatePickerContextValue {
   disabledDates: Date[];
   calendarDialogId: string;
 }
-
-/** Input props returned by useDatePicker for DatePickerInput. */
-export interface UseDatePickerInputProps {
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
-  label?: string;
-  id?: string;
-  placeholder?: string;
-  error?: boolean;
-  inputRef: React.RefObject<HTMLInputElement | null>;
-  role?: 'combobox';
-  'aria-expanded'?: boolean;
-  'aria-controls'?: string;
-  'aria-haspopup'?: 'dialog';
-  'aria-autocomplete'?: 'none';
-}
-
-/** Return value of useDatePicker() (same as context value). */
-export type UseDatePickerReturn = DatePickerContextValue;

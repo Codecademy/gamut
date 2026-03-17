@@ -8,19 +8,19 @@ const DAYS_PER_WEEK = 7;
 /**
  * Normalize to start of day in local time for comparison.
  */
-function toDateOnly(d: Date): Date {
-  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-}
+const toDateOnly = (date: Date) => {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+};
 
 /**
  * Get the weekday for a date (0 = Sunday, 6 = Saturday).
  * Optionally use weekStartsOn to compute "offset" for display (e.g. Monday = 0).
  */
-export function getDayOfWeek(date: Date, weekStartsOn: 0 | 1 = 0): number {
+export const getDayOfWeek = (date: Date, weekStartsOn: 0 | 1 = 0) => {
   const sundayBased = date.getDay();
   if (weekStartsOn === 0) return sundayBased;
   return (sundayBased + 6) % 7; // Monday = 0
-}
+};
 
 /**
  * Returns an array of weeks for the given month. Each week is an array of 7 items:
@@ -30,11 +30,11 @@ export function getDayOfWeek(date: Date, weekStartsOn: 0 | 1 = 0): number {
  * @param month - Month 0-11 (0 = January)
  * @param weekStartsOn - 0 = Sunday, 1 = Monday
  */
-export function getMonthGrid(
+export const getMonthGrid = (
   year: number,
   month: number,
   weekStartsOn: 0 | 1 = 0
-): (Date | null)[][] {
+) => {
   const first = new Date(year, month, 1);
   const last = new Date(year, month + 1, 0);
   const firstDayOfWeek = getDayOfWeek(first, weekStartsOn);
@@ -68,47 +68,37 @@ export function getMonthGrid(
   }
 
   return weeks;
-}
+};
 
 /**
  * Check if two dates are the same calendar day (ignoring time).
  */
-export function isSameDay(a: Date | null, b: Date | null): boolean {
+export const isSameDay = (a: Date | null, b: Date | null) => {
   if (a === null || b === null) return false;
   return toDateOnly(a).getTime() === toDateOnly(b).getTime();
-}
+};
 
 /**
  * Check if `date` is between `start` and `end` (exclusive), ignoring time.
  */
-export function isDateInRange(
+export const isDateInRange = (
   date: Date,
   start: Date | null,
   end: Date | null
-): boolean {
+) => {
   if (start === null) return false;
-  const d = toDateOnly(date).getTime();
-  const s = toDateOnly(start).getTime();
-  const e = end !== null ? toDateOnly(end).getTime() : s;
-  const low = Math.min(s, e);
-  const high = Math.max(s, e);
-  return d > low && d < high;
-}
+  const normalizedDateTime = toDateOnly(date).getTime();
+  const normalizedStartDateTime = toDateOnly(start).getTime();
+  const normalizedEndDateTime =
+    end !== null ? toDateOnly(end).getTime() : normalizedStartDateTime;
+  const low = Math.min(normalizedStartDateTime, normalizedEndDateTime);
+  const high = Math.max(normalizedStartDateTime, normalizedEndDateTime);
+  return normalizedDateTime > low && normalizedDateTime < high;
+};
 
 /**
  * Check if `date` is in the `disabledDates` list (by calendar day).
  */
-export function isDateDisabled(
-  date: Date,
-  disabledDates: Date[] = []
-): boolean {
+export const isDateDisabled = (date: Date, disabledDates: Date[] = []) => {
   return disabledDates.some((d) => isSameDay(date, d));
-}
-
-/**
- * Clamp a day to the last day of the given month (e.g. Jan 31 -> Feb 28).
- */
-export function clampToMonth(year: number, month: number, day: number): Date {
-  const last = new Date(year, month + 1, 0).getDate();
-  return new Date(year, month, Math.min(day, last));
-}
+};
