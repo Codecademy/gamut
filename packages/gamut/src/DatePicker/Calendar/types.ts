@@ -10,7 +10,7 @@ export interface CalendarHeaderProps {
   /** Currently displayed second month and year (used for heading and prev/next range) */
   secondMonthYear?: Date;
   /** Called after navigating to previous month; use for click tracking. */
-  onPreviousMonthClick?: () => void;
+  onLastMonthClick?: () => void;
   /** Called after navigating to next month; use for click tracking. */
   onNextMonthClick?: () => void;
   /** Locale for month/year formatting (e.g. 'en-US') */

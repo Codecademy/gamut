@@ -8,25 +8,27 @@ import { FlexBox } from '../../Box';
 import { IconButton } from '../../Button';
 import { Text } from '../../Typography';
 import { CalendarHeaderProps } from './types';
-import { formatMonthYear } from './utils/format';
+import { formatMonthYear, getRelativeMonthLabels } from './utils/format';
 
 export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   currentMonthYear,
   onCurrentMonthYearChange,
   secondMonthYear,
-  onPreviousMonthClick,
+  onLastMonthClick,
   onNextMonthClick,
   locale,
   headingId,
 }) => {
-  const handlePreviousMonth = () => {
-    const previousMonth = new Date(
+  const { nextMonth, lastMonth } = getRelativeMonthLabels(locale);
+
+  const handleLastMonth = () => {
+    const lastMonth = new Date(
       currentMonthYear.getFullYear(),
       currentMonthYear.getMonth() - 1,
       1
     );
-    onCurrentMonthYearChange?.(previousMonth);
-    onPreviousMonthClick?.();
+    onCurrentMonthYearChange?.(lastMonth);
+    onLastMonthClick?.();
   };
 
   const handleNextMonth = () => {
@@ -42,11 +44,11 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   return (
     <FlexBox alignItems="center" justifyContent="space-between" pb={16}>
       <IconButton
-        aria-label="Previous month"
+        aria-label={lastMonth}
         icon={MiniChevronLeftIcon}
         size="small"
-        tip="Previous month"
-        onClick={handlePreviousMonth}
+        tip={lastMonth}
+        onClick={handleLastMonth}
       />
       <Text
         aria-live="polite"
@@ -70,10 +72,10 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
         </Text>
       )}
       <IconButton
-        aria-label="Next month"
+        aria-label={nextMonth}
         icon={MiniChevronRightIcon}
         size="small"
-        tip="Next month"
+        tip={nextMonth}
         onClick={handleNextMonth}
       />
     </FlexBox>
