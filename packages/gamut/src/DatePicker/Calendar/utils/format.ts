@@ -3,6 +3,12 @@
  */
 
 /**
+ * Capitalize the first character of a string; rest unchanged (e.g. "next month" → "Next month").
+ */
+export const capitalizeFirst = (str: string) =>
+  str.length === 0 ? str : str[0].toUpperCase() + str.slice(1);
+
+/**
  * Format month and year for the calendar header (e.g. "February 2026").
  */
 export const formatMonthYear = (date: Date, locale?: string) => {
@@ -63,9 +69,17 @@ export const getWeekdayFullNames = (
 export const getRelativeMonthLabels = (locale?: string) => {
   const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
   return {
-    nextMonth: rtf.format(1, 'month'),
-    lastMonth: rtf.format(-1, 'month'),
+    nextMonth: capitalizeFirst(rtf.format(1, 'month')),
+    lastMonth: capitalizeFirst(rtf.format(-1, 'month')),
   };
+};
+
+/**
+ * Get localized "today" label (e.g. "today").
+ */
+export const getRelativeTodayLabel = (locale?: string) => {
+  const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
+  return capitalizeFirst(rtf.format(0, 'day'));
 };
 
 /**

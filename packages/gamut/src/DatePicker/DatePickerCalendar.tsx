@@ -154,6 +154,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
         </FlexBox>
       </Box>
       <CalendarFooter
+        locale={locale}
         onClearDate={handleClearDate}
         onCurrentMonthYearChange={setVisibleDate}
         onSelectedDateChange={(date) =>

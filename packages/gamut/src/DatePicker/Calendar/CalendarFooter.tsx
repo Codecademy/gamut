@@ -3,6 +3,7 @@ import * as React from 'react';
 import { FlexBox } from '../../Box';
 import { TextButton } from '../../Button';
 import { CalendarFooterProps } from './types';
+import { getRelativeTodayLabel } from './utils/format';
 
 // function formatQuickActionLabel(action: QuickAction): string {
 //   const { num, timePeriod } = action;
@@ -30,6 +31,7 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
   onTodayClick,
   onSelectedDateChange,
   onCurrentMonthYearChange,
+  locale,
 }) => {
   const handleClearDate = () => {
     onSelectedDateChange(null);
@@ -55,7 +57,9 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
     >
       <TextButton onClick={handleClearDate}>Clear</TextButton>
       <FlexBox gap={32}>
-        <TextButton onClick={handleTodayClick}>Today</TextButton>
+        <TextButton onClick={handleTodayClick}>
+          {getRelativeTodayLabel(locale)}
+        </TextButton>
       </FlexBox>
     </FlexBox>
   );

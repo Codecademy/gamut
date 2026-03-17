@@ -53,6 +53,7 @@ export interface QuickAction {
 }
 
 export interface CalendarFooterProps {
+  locale?: string;
   onClearDate?: () => void;
   onTodayClick?: () => void;
   /** Called when the user navigates to a different month. Pass the new date (e.g. setVisibleDate) so the calendar updates. */
