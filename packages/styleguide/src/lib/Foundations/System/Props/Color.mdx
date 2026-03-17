@@ -1,0 +1,42 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import { AboutHeader, Callout, TokenTable } from '~styleguide/blocks';
+
+import { defaultColumns, getPropRows } from '../../shared/elements';
+import * as ColorStories from './Color.stories';
+
+export const parameters = {
+  title: 'Color',
+  subtitle: 'Specific color properties',
+  status: 'current',
+};
+
+<Meta of={ColorStories} title="Foundations/System/Props/Color" />
+
+<AboutHeader {...parameters} />
+
+Color props control the foreground, background, and border colors of elements. All color values are restricted to your theme's color palette, ensuring consistent color usage throughout your application. The `bg` shorthand provides a convenient way to set background colors quickly.
+
+```tsx
+import styled from '@emotion/styled';
+import { system } from '@codecademy/gamut-styles';
+
+const ColorExample = styled.div(system.color);
+
+<ColorExample bg="navy" textColor="gray-100" borderColor="blue" />;
+```
+
+These color props support both physical and logical CSS properties and will render the appropriate properties based on `useLogicalProperties`'s value passed into the `<GamutProvider>` at the root of your application.
+
+<Callout
+  text={
+    <>
+      You can use the <strong>LogicalProps</strong> button in the toolbar to
+      switch between modes.
+    </>
+  }
+/>
+
+<Canvas of={ColorStories.BorderColorExample} />
+
+<TokenTable rows={getPropRows('color')} columns={defaultColumns} />

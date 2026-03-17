@@ -7,7 +7,7 @@ import {
 } from '@emotion/react';
 import { MotionConfig } from 'framer-motion';
 import { setNonce } from 'get-nonce';
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useMemo, useRef } from 'react';
 import * as React from 'react';
 
 import { createEmotionCache } from './cache';
@@ -29,6 +29,10 @@ export interface GamutProviderProps {
    * Pass a nonce to the cache to prevent CSP errors
    */
   nonce?: string;
+  /**
+   * Whether to use logical properties for the theme
+   */
+  useLogicalProperties?: boolean;
 }
 
 export const GamutContext = React.createContext<{
@@ -56,6 +60,7 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   useGlobals = true,
   useCache = true,
   nonce,
+  useLogicalProperties = false,
 }) => {
   const { hasGlobals, hasCache } = useContext(GamutContext);
   const shouldCreateCache = useCache && !hasCache;
@@ -76,22 +81,36 @@ export const GamutProvider: React.FC<GamutProviderProps> = ({
   const contextValue = {
     hasGlobals: shouldInsertGlobals,
     hasCache: shouldCreateCache,
+    useLogicalProperties,
     nonce,
   };
 
+  // Merge useLogicalProperties into theme so variance can access it via props.theme.
+  const themeWithLogicalProperties = useMemo(
+    () => ({ ...theme, useLogicalProperties }),
+    [theme, useLogicalProperties]
+  );
+
   const globals = shouldInsertGlobals && (
     <>
-      <Typography theme={theme} />
-      <Reboot theme={theme} />
+      <Typography theme={themeWithLogicalProperties} />
+      <Reboot theme={themeWithLogicalProperties} />
       <Variables variables={theme._variables} />
       {variables && <Variables variables={variables} />}
     </>
   );
 
-  const content = (
-    <ThemeProvider theme={theme}>
-      {nonce ? <MotionConfig nonce={nonce}>{children}</MotionConfig> : children}
-    </ThemeProvider>
+  const content = useMemo(
+    () => (
+      <ThemeProvider theme={themeWithLogicalProperties}>
+        {nonce ? (
+          <MotionConfig nonce={nonce}>{children}</MotionConfig>
+        ) : (
+          children
+        )}
+      </ThemeProvider>
+    ),
+    [themeWithLogicalProperties, nonce, children]
   );
 
   if (activeCache.current) {
