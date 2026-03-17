@@ -22,12 +22,13 @@ export const Default: Story = {
   render: function DatePickerStory() {
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     return (
-      <Box p={32}>
+      <Box>
         <DatePicker
           label="Date"
           locale="de-DE"
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
+          translations={{ clear: 'Löschen' }}
         />
       </Box>
     );
@@ -55,7 +56,7 @@ export const Range: Story = {
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
     return (
-      <Box p={32}>
+      <Box>
         <DatePicker
           endDate={endDate}
           endLabel="End date"

@@ -5,10 +5,11 @@ import { PopoverContainer } from '../PopoverContainer';
 import { DatePickerCalendar } from './DatePickerCalendar';
 import { DatePickerProvider } from './DatePickerContext';
 import { DatePickerInput } from './DatePickerInput';
-import type {
-  DatePickerContextValue,
-  DatePickerProps,
-  DatePickerRangeProps,
+import { DEFAULT_DATE_PICKER_TRANSLATIONS } from './translations';
+import {
+  type DatePickerContextValue,
+  type DatePickerProps,
+  type DatePickerRangeProps,
 } from './types';
 
 function isRangeProps(props: DatePickerProps): props is DatePickerRangeProps {
@@ -21,7 +22,14 @@ function isRangeProps(props: DatePickerProps): props is DatePickerRangeProps {
  * With no children, renders default layout (input + calendar popover).
  */
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
-  const { locale, disabledDates = [], placeholder, mode, children } = props;
+  const {
+    locale,
+    disabledDates = [],
+    placeholder,
+    mode,
+    children,
+    translations: translationsProp,
+  } = props;
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [activeRangePart, setActiveRangePart] = useState<
     'start' | 'end' | null
@@ -55,6 +63,10 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   );
 
   const contextValue = useMemo<DatePickerContextValue>(() => {
+    const translations = {
+      ...DEFAULT_DATE_PICKER_TRANSLATIONS,
+      ...translationsProp,
+    };
     const base = {
       startOrSelectedDate,
       setSelection,
@@ -64,6 +76,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       locale,
       disabledDates,
       calendarDialogId,
+      translations,
     };
     return mode === 'range'
       ? {
@@ -87,6 +100,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     locale,
     disabledDates,
     calendarDialogId,
+    translationsProp,
   ]);
 
   // what is this doing

@@ -32,6 +32,7 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
   onSelectedDateChange,
   onCurrentMonthYearChange,
   locale,
+  clearText,
 }) => {
   const handleClearDate = () => {
     onSelectedDateChange(null);
@@ -55,7 +56,7 @@ export const CalendarFooter: React.FC<CalendarFooterProps> = ({
       justifyContent="space-between"
       p={12}
     >
-      <TextButton onClick={handleClearDate}>Clear</TextButton>
+      <TextButton onClick={handleClearDate}>{clearText}</TextButton>
       <FlexBox gap={32}>
         <TextButton onClick={handleTodayClick}>
           {getRelativeTodayLabel(locale)}

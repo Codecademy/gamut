@@ -48,6 +48,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     locale,
     closeCalendar,
     isCalendarOpen,
+    translations,
   } = context;
 
   const isRange = mode === 'range';
@@ -154,6 +155,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
         </FlexBox>
       </Box>
       <CalendarFooter
+        clearText={translations.clear}
         locale={locale}
         onClearDate={handleClearDate}
         onCurrentMonthYearChange={setVisibleDate}

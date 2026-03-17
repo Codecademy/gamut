@@ -18,6 +18,8 @@ export interface DatePickerBaseProps {
   children?: React.ReactNode;
   /** Placeholder for the input. */
   placeholder?: string;
+  /** Override UI strings (e.g. clear button). Merged with defaults. */
+  translations?: DatePickerTranslations;
 }
 
 /** Props for the DatePicker (single-date mode). */
@@ -54,6 +56,12 @@ export type DatePickerProps = DatePickerSingleProps | DatePickerRangeProps;
 /** Which range input is active (focused); null = calendar drives both (selection mode). */
 export type ActiveRangePart = 'start' | 'end' | null;
 
+/** Optional translations for DatePicker UI strings. Pass to override defaults. */
+export interface DatePickerTranslations {
+  /** Label for the clear date button (default: "Clear"). */
+  clear?: string;
+}
+
 /** Shared state provided by DatePicker via context. */
 export interface DatePickerBaseContextValue {
   isCalendarOpen: boolean;
@@ -62,6 +70,8 @@ export interface DatePickerBaseContextValue {
   locale?: string;
   disabledDates: Date[];
   calendarDialogId: string;
+  /** UI string overrides (e.g. clear button). */
+  translations: Required<DatePickerTranslations>;
   /** Start date (range) or selected date (single). */
   startOrSelectedDate: Date | null;
   /** Set selection. Single: (date). Range: (start, end). */
