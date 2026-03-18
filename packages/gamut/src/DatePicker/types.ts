@@ -59,7 +59,15 @@ export type ActiveRangePart = 'start' | 'end' | null;
 /** Optional translations for DatePicker UI strings. Pass to override defaults. */
 export interface DatePickerTranslations {
   /** Label for the clear date button (default: "Clear"). */
-  clear?: string;
+  clearText?: string;
+  /** Default label for the date input in single mode (default: "Date"). */
+  dateLabel?: string;
+  /** Default label for the start date input in range mode (default: "Start date"). */
+  startDateLabel?: string;
+  /** Default label for the end date input in range mode (default: "End date"). */
+  endDateLabel?: string;
+  /** aria-label for the calendar dialog (default: "Choose date"). */
+  calendarDialogAriaLabel?: string;
 }
 
 /** Shared state provided by DatePicker via context. */

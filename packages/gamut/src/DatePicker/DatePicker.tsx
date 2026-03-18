@@ -172,7 +172,11 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
           y={0}
           onRequestClose={closeCalendar}
         >
-          <div aria-label="Choose date" id={calendarDialogId} role="dialog">
+          <div
+            aria-label={contextValue.translations.calendarDialogAriaLabel}
+            id={calendarDialogId}
+            role="dialog"
+          >
             <DatePickerCalendar dialogId={calendarDialogId} />
           </div>
         </PopoverContainer>

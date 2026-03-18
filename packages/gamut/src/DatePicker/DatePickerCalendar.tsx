@@ -155,7 +155,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
         </FlexBox>
       </Box>
       <CalendarFooter
-        clearText={translations.clear}
+        clearText={translations.clearText}
         disabled={startOrSelectedDate === null && endDate === null}
         locale={locale}
         showClearButton={isRange}

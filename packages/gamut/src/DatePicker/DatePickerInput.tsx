@@ -65,6 +65,7 @@ export const DatePickerInput = forwardRef<
     locale,
     isCalendarOpen,
     calendarDialogId,
+    translations,
   } = context;
 
   const isRange = mode === 'range';
@@ -131,12 +132,11 @@ export const DatePickerInput = forwardRef<
     openCalendar();
   };
 
-  const defaultLabel =
-    isRange && rangePart === 'end'
-      ? 'End date'
-      : isRange
-      ? 'Start date'
-      : 'Date';
+  const defaultLabel = !isRange
+    ? translations.dateLabel
+    : rangePart === 'end'
+    ? translations.endDateLabel
+    : translations.startDateLabel;
 
   return (
     <FormGroup
