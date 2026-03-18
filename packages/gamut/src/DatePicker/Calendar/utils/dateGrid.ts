@@ -8,8 +8,12 @@ const DAYS_PER_WEEK = 7;
 /**
  * Normalize to start of day in local time for comparison.
  */
-const toDateOnly = (date: Date) => {
-  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+const normalizeDate = (date: Date) => {
+  return new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate()
+  ).getTime();
 };
 
 /**
@@ -75,7 +79,7 @@ export const getMonthGrid = (
  */
 export const isSameDay = (a: Date | null, b: Date | null) => {
   if (a === null || b === null) return false;
-  return toDateOnly(a).getTime() === toDateOnly(b).getTime();
+  return normalizeDate(a) === normalizeDate(b);
 };
 
 /**
@@ -87,10 +91,10 @@ export const isDateInRange = (
   end: Date | null
 ) => {
   if (start === null) return false;
-  const normalizedDateTime = toDateOnly(date).getTime();
-  const normalizedStartDateTime = toDateOnly(start).getTime();
+  const normalizedDateTime = normalizeDate(date);
+  const normalizedStartDateTime = normalizeDate(start);
   const normalizedEndDateTime =
-    end !== null ? toDateOnly(end).getTime() : normalizedStartDateTime;
+    end !== null ? normalizeDate(end) : normalizedStartDateTime;
   const low = Math.min(normalizedStartDateTime, normalizedEndDateTime);
   const high = Math.max(normalizedStartDateTime, normalizedEndDateTime);
   return normalizedDateTime > low && normalizedDateTime < high;

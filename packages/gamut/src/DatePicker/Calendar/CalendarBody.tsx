@@ -11,7 +11,7 @@ import {
   isDateInRange,
   isSameDay,
 } from './utils/dateGrid';
-import { getWeekdayFullNames, getWeekdayLabels } from './utils/format';
+import { getWeekdayNames } from './utils/format';
 import { getDatesWithRow, keyHandler } from './utils/keyHandler';
 
 const TableHeader = styled.th(
@@ -31,7 +31,6 @@ const DateButton = styled(TextButton)(
         content: '""',
         position: 'absolute',
         bottom: 4,
-        left: '50%',
         width: 4,
         height: 4,
         borderRadius: 'full',
@@ -94,8 +93,8 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   const year = visibleDate.getFullYear();
   const month = visibleDate.getMonth();
   const weeks = getMonthGrid(year, month, weekStartsOn);
-  const weekdayLabels = getWeekdayLabels(locale, weekStartsOn);
-  const weekdayFullNames = getWeekdayFullNames(locale, weekStartsOn);
+  const weekdayLabels = getWeekdayNames('short', locale, weekStartsOn);
+  const weekdayFullNames = getWeekdayNames('long', locale, weekStartsOn);
   const buttonRefs = useRef<Map<number, HTMLElement>>(new Map());
 
   const datesWithRow = useMemo(() => getDatesWithRow(weeks), [weeks]);

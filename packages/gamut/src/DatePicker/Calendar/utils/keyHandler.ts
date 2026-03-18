@@ -35,8 +35,9 @@ export const keyHandler = (
   /** When true, adjacent month to the left is visible; don't change visible date when moving focus there. */
   hasAdjacentMonthLeft?: boolean
 ) => {
-  const key = date.getTime();
-  const idx = datesWithRow.findIndex(({ date: d }) => d.getTime() === key);
+  const idx = datesWithRow.findIndex(
+    ({ date: dateWithRow }) => dateWithRow.getTime() === date.getTime()
+  );
   if (idx < 0) return;
 
   const currentRow = datesWithRow[idx].rowIndex;

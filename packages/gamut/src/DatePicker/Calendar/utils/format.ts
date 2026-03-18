@@ -2,6 +2,8 @@
  * Date formatting for the calendar using Intl.DateTimeFormat.
  */
 
+import { isValidDate } from './validation';
+
 /**
  * Capitalize the first character of a string; rest unchanged (e.g. "next month" → "Next month").
  */
@@ -19,42 +21,24 @@ export const formatMonthYear = (date: Date, locale?: string) => {
 };
 
 /**
- * Get short weekday labels for column headers (e.g. ["Su", "Mo", ...]).
+ * Get weekday names for column headers or abbr attributes.
  * Order depends on weekStartsOn: 0 = Sunday first, 1 = Monday first.
+ * @param format - 'short' for abbreviated (e.g. "Su", "Mo"), 'long' for full (e.g. "Sunday", "Monday")
  */
-export const getWeekdayLabels = (locale?: string, weekStartsOn: 0 | 1 = 0) => {
-  const formatter = new Intl.DateTimeFormat(locale, {
-    weekday: 'short',
-  });
-  // Jan 7, 2024 is a Sunday; add 0..6 days to get Sun..Sat
-  const sunday = new Date(2024, 0, 7);
-  const labels = Array.from({ length: 7 }, (_, i) => {
-    const d = new Date(sunday);
-    d.setDate(sunday.getDate() + i);
-    return formatter.format(d);
-  });
-  if (weekStartsOn === 1) {
-    return [...labels.slice(1), labels[0]];
-  }
-  return labels;
-};
-
-/**
- * Get full weekday names for abbr attributes (e.g. "Sunday", "Monday").
- * Same order as getWeekdayLabels.
- */
-export const getWeekdayFullNames = (
+export const getWeekdayNames = (
+  format: 'short' | 'long',
   locale?: string,
   weekStartsOn: 0 | 1 = 0
 ) => {
   const formatter = new Intl.DateTimeFormat(locale, {
-    weekday: 'long',
+    weekday: format,
   });
+  // Jan 7, 2024 is a Sunday; add 0..6 days to get Sun..Sat
   const sunday = new Date(2024, 0, 7);
   const names = Array.from({ length: 7 }, (_, i) => {
-    const d = new Date(sunday);
-    d.setDate(sunday.getDate() + i);
-    return formatter.format(d);
+    const date = new Date(sunday);
+    date.setDate(sunday.getDate() + i);
+    return formatter.format(date);
   });
   if (weekStartsOn === 1) {
     return [...names.slice(1), names[0]];
@@ -95,8 +79,8 @@ export const getDateFormatPattern = (locale?: string) => {
   }).formatToParts(new Date(2025, 0, 15));
 
   return parts
-    .map((p) => {
-      switch (p.type) {
+    .map((part) => {
+      switch (part.type) {
         case 'day':
           return 'DD';
         case 'month':
@@ -104,7 +88,7 @@ export const getDateFormatPattern = (locale?: string) => {
         case 'year':
           return 'YYYY';
         default:
-          return p.value;
+          return part.value;
       }
     })
     .join('');
@@ -132,7 +116,7 @@ export const parseDateFromInput = (value: string, locale?: string) => {
   const trimmed = value.trim();
   if (!trimmed) return null;
   const parsed = new Date(trimmed);
-  if (Number.isNaN(parsed.getTime())) return null;
+  if (!isValidDate(parsed)) return null;
   const formatted = formatDateForInput(parsed, locale);
   if (formatted === trimmed) return parsed;
   const parts = trimmed.split(/[/-]/);
@@ -166,11 +150,11 @@ export const formatDateRangeForInput = (
 export const parseDateRangeFromInput = (value: string, locale?: string) => {
   const trimmed = value.trim();
   if (!trimmed) return null;
-  const parts = trimmed.split(RANGE_SEPARATOR).map((s) => s.trim());
+  const parts = trimmed.split(RANGE_SEPARATOR).map((part) => part.trim());
   if (parts.length === 1) {
-    const d = parseDateFromInput(parts[0], locale);
-    if (!d) return null;
-    return { startDate: d, endDate: new Date(d) };
+    const date = parseDateFromInput(parts[0], locale);
+    if (!date) return null;
+    return { startDate: date, endDate: new Date(date) };
   }
   if (parts.length === 2) {
     const start = parseDateFromInput(parts[0], locale);
