@@ -79,7 +79,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   visibleDate,
   selectedDate,
   endDate = null,
-  disabledDates,
+  disabledDates = [],
   onDateSelect,
   locale,
   weekStartsOn = 0,
@@ -127,8 +127,8 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
         datesWithRow,
         month,
         year,
-        onDateSelect,
         disabledDates,
+        onDateSelect,
         onEscapeKeyPress,
         onVisibleDateChange
       ),

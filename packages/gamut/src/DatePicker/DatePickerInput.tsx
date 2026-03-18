@@ -143,6 +143,7 @@ export const DatePickerInput = forwardRef<
       htmlFor={inputId}
       isSoloField // should probaly be based on a prop
       label={label ?? defaultLabel}
+      mb={0}
       pb={0}
       spacing="tight"
       width="170px"

@@ -87,7 +87,8 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
         context.activeRangePart,
         startOrSelectedDate,
         context.endDate,
-        setSelection
+        setSelection,
+        disabledDates
       );
     }
   };

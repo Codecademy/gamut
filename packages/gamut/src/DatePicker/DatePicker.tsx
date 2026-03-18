@@ -1,12 +1,5 @@
 import { MiniArrowRightIcon } from '@codecademy/gamut-icons';
-import {
-  useCallback,
-  useId,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { useCallback, useId, useMemo, useRef, useState } from 'react';
 
 import { FlexBox } from '../Box';
 import { PopoverContainer } from '../PopoverContainer';
@@ -45,18 +38,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dialogId = useId();
   const calendarDialogId = `datepicker-dialog-${dialogId.replace(/:/g, '')}`;
-  const popoverOffset = 4;
-
-  // Align popover left edge with input left edge. PopoverContainer's "bottom-right"
-  // sets popover left = target left + (target width + offset + x), so we pass
-  // x = -(target width + offset) to get popover left = target left.
-  const [popoverX, setPopoverX] = useState(0);
-  useLayoutEffect(() => {
-    if (isCalendarOpen && inputRef.current) {
-      const width = inputRef.current.offsetWidth;
-      setPopoverX(-(width + popoverOffset));
-    }
-  }, [isCalendarOpen, popoverOffset]);
 
   const openCalendar = useCallback(() => setIsCalendarOpen(true), []);
   const closeCalendar = useCallback(() => {
@@ -123,13 +104,6 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     translationsProp,
   ]);
 
-  // what is this doing
-  // useEffect(() => {
-  //   if (!isCalendarOpen) return;
-  //   const id = setTimeout(() => inputRef.current?.focus(), 0);
-  //   return () => clearTimeout(id);
-  // }, [isCalendarOpen]);
-
   const content =
     children !== undefined ? (
       children
@@ -144,7 +118,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
                 rangePart="start"
                 ref={inputRef}
               />
-              <MiniArrowRightIcon alignSelf="center" />{' '}
+              <MiniArrowRightIcon alignSelf="center" />
               {/* hide when they stack */}
               <DatePickerInput
                 label={props.endLabel}
@@ -162,14 +136,14 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
           )}
         </FlexBox>
         <PopoverContainer
-          alignment="bottom-right"
+          alignment="bottom-left"
           allowPageInteraction
           focusOnProps={{ autoFocus: false, focusLock: false }}
+          invertAxis="x"
           isOpen={isCalendarOpen}
-          offset={popoverOffset}
           targetRef={inputRef}
-          x={popoverX}
-          y={0}
+          x={-20}
+          y={-16}
           onRequestClose={closeCalendar}
         >
           <div

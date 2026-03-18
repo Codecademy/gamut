@@ -26,8 +26,8 @@ export const keyHandler = (
   datesWithRow: { date: Date; rowIndex: number }[],
   month: number,
   year: number,
+  disabledDates: Date[],
   onDateSelect: (date: Date) => void,
-  disabledDates?: Date[],
   onEscapeKeyPress?: () => void,
   onVisibleDateChange?: (newDate: Date) => void
 ) => {
