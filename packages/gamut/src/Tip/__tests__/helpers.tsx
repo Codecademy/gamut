@@ -419,7 +419,8 @@ export const openInfoTipsWithKeyboard = async ({
 }) => {
   const buttons = view.getAllByLabelText('Show information');
 
-  for (let i = 0; i < count; i += 1) {
+  const openNext = async (i: number): Promise<void> => {
+    if (i >= count) return;
     await act(async () => {
       buttons[i].focus();
       await userEvent.keyboard('{Enter}');
@@ -427,7 +428,9 @@ export const openInfoTipsWithKeyboard = async ({
     await waitFor(() => {
       expect(buttons[i]).toHaveAttribute('aria-expanded', 'true');
     });
-  }
+    await openNext(i + 1);
+  };
+  await openNext(0);
 };
 
 export const expectTipsVisible = (tips: { text: string }[]) => {

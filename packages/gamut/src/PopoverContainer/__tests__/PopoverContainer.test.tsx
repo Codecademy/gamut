@@ -97,8 +97,8 @@ describe('Popover', () => {
       const targetRef = React.useRef<HTMLDivElement>(null);
       return (
         <MockGamutProvider>
-          <div ref={targetRef} data-testid="popover-target" />
-          <PopoverContainer isOpen inline targetRef={targetRef}>
+          <div data-testid="popover-target" ref={targetRef} />
+          <PopoverContainer inline isOpen targetRef={targetRef}>
             <div data-testid="popover-content">Content</div>
           </PopoverContainer>
           <div data-testid="outside-popover">outside</div>

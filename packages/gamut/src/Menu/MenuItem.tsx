@@ -60,10 +60,7 @@ interface MenuTextItem extends HTMLProps, ForwardListItemProps {
 
 type MenuItemTypes = MenuItemIconOnly | MenuTextItem;
 
-type MenuItemRefElement =
-  | HTMLLIElement
-  | HTMLAnchorElement
-  | HTMLButtonElement;
+type MenuItemRefElement = HTMLLIElement | HTMLAnchorElement | HTMLButtonElement;
 
 /**
  * Narrows the forwarded ref union to a specific element type for the current render branch.

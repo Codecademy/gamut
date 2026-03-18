@@ -65,7 +65,7 @@ describe('ButtonBase', () => {
   it('forwards ref to the anchor when href is provided', () => {
     const ref = React.createRef<HTMLAnchorElement>();
     render(
-      <ButtonBase ref={ref} href="https://www.codecademy.com">
+      <ButtonBase href="https://www.codecademy.com" ref={ref}>
         {buttonText}
       </ButtonBase>
     );
