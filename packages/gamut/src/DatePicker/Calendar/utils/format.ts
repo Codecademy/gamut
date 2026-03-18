@@ -5,10 +5,10 @@
 import { isValidDate } from './validation';
 
 /**
- * Capitalize the first character of a string; rest unchanged (e.g. "next month" → "Next month").
+ * Capitalize the first character of a string using the locale; rest unchanged (e.g. "next month" → "Next month").
  */
-export const capitalizeFirst = (str: string) =>
-  str.length === 0 ? str : str[0].toUpperCase() + str.slice(1);
+export const capitalizeFirst = (str: string, locale?: string) =>
+  str.length === 0 ? str : str[0].toLocaleUpperCase(locale) + str.slice(1);
 
 /**
  * Format month and year for the calendar header (e.g. "February 2026").
@@ -53,8 +53,8 @@ export const getWeekdayNames = (
 export const getRelativeMonthLabels = (locale?: string) => {
   const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
   return {
-    nextMonth: capitalizeFirst(rtf.format(1, 'month')),
-    lastMonth: capitalizeFirst(rtf.format(-1, 'month')),
+    nextMonth: capitalizeFirst(rtf.format(1, 'month'), locale),
+    lastMonth: capitalizeFirst(rtf.format(-1, 'month'), locale),
   };
 };
 
@@ -63,7 +63,7 @@ export const getRelativeMonthLabels = (locale?: string) => {
  */
 export const getRelativeTodayLabel = (locale?: string) => {
   const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
-  return capitalizeFirst(rtf.format(0, 'day'));
+  return capitalizeFirst(rtf.format(0, 'day'), locale);
 };
 
 /**
