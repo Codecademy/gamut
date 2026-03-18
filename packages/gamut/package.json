@@ -33,10 +33,10 @@
   ],
   "license": "MIT",
   "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "overrides": {
     "@react-aria/interactions": "3.25.0"
   },
-  "module": "./dist/index.js",
   "peerDependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
