@@ -64,6 +64,9 @@ const DateButton = styled(TextButton)(
     disabled: {
       color: 'text-disabled',
       textDecoration: 'line-through',
+      '&:hover': {
+        textDecoration: 'line-through',
+      },
     },
   }),
   css({
@@ -76,7 +79,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   visibleDate,
   selectedDate,
   endDate = null,
-  disabledDates = [],
+  disabledDates,
   onDateSelect,
   locale,
   weekStartsOn = 0,
@@ -97,7 +100,7 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   const focusTarget = focusedDate ?? selectedDate;
 
   const isToday = useCallback(
-    (d: Date | null) => d !== null && isSameDay(d, new Date()),
+    (date: Date | null) => date !== null && isSameDay(date, new Date()),
     []
   );
 
@@ -124,8 +127,8 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
         datesWithRow,
         month,
         year,
-        disabledDates,
         onDateSelect,
+        disabledDates,
         onEscapeKeyPress,
         onVisibleDateChange
       ),
