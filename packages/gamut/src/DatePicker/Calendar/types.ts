@@ -44,6 +44,10 @@ export interface CalendarBodyProps {
   onVisibleDateChange: (newDate: Date) => void;
   /** Called when the escape key is pressed */
   onEscapeKeyPress?: () => void;
+  /** When true (e.g. two-month view), arrow keys move focus to adjacent month without changing visible date. */
+  hasAdjacentMonthRight?: boolean;
+  /** When true (e.g. two-month view), arrow keys move focus to adjacent month without changing visible date. */
+  hasAdjacentMonthLeft?: boolean;
 }
 
 export interface QuickAction {

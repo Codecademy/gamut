@@ -29,7 +29,11 @@ export const keyHandler = (
   disabledDates: Date[],
   onDateSelect: (date: Date) => void,
   onEscapeKeyPress?: () => void,
-  onVisibleDateChange?: (newDate: Date) => void
+  onVisibleDateChange?: (newDate: Date) => void,
+  /** When true, adjacent month to the right is visible; don't change visible date when moving focus there. */
+  hasAdjacentMonthRight?: boolean,
+  /** When true, adjacent month to the left is visible; don't change visible date when moving focus there. */
+  hasAdjacentMonthLeft?: boolean
 ) => {
   const key = date.getTime();
   const idx = datesWithRow.findIndex(({ date: d }) => d.getTime() === key);
@@ -37,6 +41,8 @@ export const keyHandler = (
 
   const currentRow = datesWithRow[idx].rowIndex;
   const day = date.getDate();
+  const hasRight = !!hasAdjacentMonthRight;
+  const hasLeft = !!hasAdjacentMonthLeft;
 
   let newDate: Date | null = null;
   let newVisibleDate: Date | null = null;
@@ -49,7 +55,9 @@ export const keyHandler = (
       } else {
         const lastDayPrevMonth = new Date(year, month, 0);
         newDate = lastDayPrevMonth;
-        newVisibleDate = new Date(year, month - 1, 1);
+        if (!hasLeft) {
+          newVisibleDate = new Date(year, month - 1, 1);
+        }
       }
       break;
     case 'ArrowRight':
@@ -58,7 +66,9 @@ export const keyHandler = (
         newDate = datesWithRow[idx + 1].date;
       } else {
         newDate = new Date(year, month + 1, 1);
-        newVisibleDate = new Date(year, month + 1, 1);
+        if (!hasRight) {
+          newVisibleDate = new Date(year, month + 1, 1);
+        }
       }
       break;
     case 'ArrowUp':
@@ -66,7 +76,13 @@ export const keyHandler = (
       newDate = new Date(date);
       newDate.setDate(newDate.getDate() - 7);
       if (newDate.getMonth() !== month || newDate.getFullYear() !== year) {
-        newVisibleDate = new Date(newDate.getFullYear(), newDate.getMonth(), 1);
+        if (!hasLeft) {
+          newVisibleDate = new Date(
+            newDate.getFullYear(),
+            newDate.getMonth(),
+            1
+          );
+        }
       }
       break;
     case 'ArrowDown':
@@ -74,7 +90,13 @@ export const keyHandler = (
       newDate = new Date(date);
       newDate.setDate(newDate.getDate() + 7);
       if (newDate.getMonth() !== month || newDate.getFullYear() !== year) {
-        newVisibleDate = new Date(newDate.getFullYear(), newDate.getMonth(), 1);
+        if (!hasRight) {
+          newVisibleDate = new Date(
+            newDate.getFullYear(),
+            newDate.getMonth(),
+            1
+          );
+        }
       }
       break;
     case 'Home':

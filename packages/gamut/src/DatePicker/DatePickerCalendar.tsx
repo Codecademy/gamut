@@ -1,4 +1,6 @@
+import { breakpoints } from '@codecademy/gamut-styles';
 import { useEffect, useId, useRef, useState } from 'react';
+import { useMedia } from 'react-use';
 
 import { Box, FlexBox } from '../Box';
 import {
@@ -112,6 +114,8 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
     new Date(date.getFullYear(), date.getMonth() + n, 1);
   const secondMonthDate = addMonths(visibleDate, 1);
 
+  const isTwoMonthsVisible = useMedia(`(min-width: ${breakpoints.xs})`);
+
   return (
     <Calendar>
       <Box p={24}>
@@ -127,6 +131,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
             disabledDates={disabledDates}
             endDate={endDate}
             focusedDate={focusTarget}
+            hasAdjacentMonthRight={isTwoMonthsVisible}
             labelledById={headingId}
             locale={locale}
             selectedDate={startOrSelectedDate}
@@ -142,6 +147,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = ({
               disabledDates={disabledDates}
               endDate={endDate}
               focusedDate={focusTarget}
+              hasAdjacentMonthLeft={isTwoMonthsVisible}
               labelledById={headingId}
               locale={locale}
               selectedDate={startOrSelectedDate}

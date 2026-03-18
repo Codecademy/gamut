@@ -88,6 +88,8 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
   onFocusedDateChange,
   onVisibleDateChange,
   onEscapeKeyPress,
+  hasAdjacentMonthRight,
+  hasAdjacentMonthLeft,
 }) => {
   const year = visibleDate.getFullYear();
   const month = visibleDate.getMonth();
@@ -130,7 +132,9 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
         disabledDates,
         onDateSelect,
         onEscapeKeyPress,
-        onVisibleDateChange
+        onVisibleDateChange,
+        hasAdjacentMonthRight,
+        hasAdjacentMonthLeft
       ),
     [
       onFocusedDateChange,
@@ -141,6 +145,8 @@ export const CalendarBody: React.FC<CalendarBodyProps> = ({
       onDateSelect,
       onEscapeKeyPress,
       onVisibleDateChange,
+      hasAdjacentMonthLeft,
+      hasAdjacentMonthRight,
     ]
   );
 
