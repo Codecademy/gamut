@@ -19,7 +19,7 @@ export const DetailedCode: React.FC<DetailedCodeProps> = ({
   const normalizedPreviewLines = Math.max(0, previewLines);
   const previewEnabled = preview && normalizedPreviewLines > 0;
 
-  const codeLines = code.split('\n');
+  const codeLines = code.trimEnd().split('\n');
   const hasMoreCode =
     previewEnabled && codeLines.length > normalizedPreviewLines;
 
@@ -34,7 +34,8 @@ export const DetailedCode: React.FC<DetailedCodeProps> = ({
       <DetailedCodeBody
         code={displayedCode}
         language={language}
-        showFloatingBadge={hasMoreCode && !isExpanded}
+        showEllipses={hasMoreCode && !isExpanded}
+        codeLines={codeLines.length}
       />
       {hasMoreCode && (
         <DetailedCodeButton

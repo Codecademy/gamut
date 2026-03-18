@@ -20,5 +20,6 @@ export interface DetailedCodeButtonProps {
 export interface DetailedCodeBodyProps {
   code: string;
   language: SourceLanguage;
-  showFloatingBadge?: boolean;
+  showEllipses?: boolean;
+  codeLines: number;
 }

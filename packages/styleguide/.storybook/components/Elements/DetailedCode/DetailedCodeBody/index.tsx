@@ -6,13 +6,16 @@ import { DetailedCodeBodyProps } from '../types';
 export const DetailedCodeBody: React.FC<DetailedCodeBodyProps> = ({
   code,
   language,
-  showFloatingBadge = false,
+  showEllipses = false,
+  codeLines,
 }) => {
   return (
-    <DetailedCodeBodyWrapper hasFloatingBadge={showFloatingBadge}>
+    <DetailedCodeBodyWrapper hasShowCodeButton={showEllipses}>
       <Source code={code} dark language={language} />
-      {showFloatingBadge && (
-        <FloatingIndicator aria-label="More code below">...</FloatingIndicator>
+      {showEllipses && (
+        <FloatingIndicator aria-label="More code below">
+          ...{codeLines} more lines
+        </FloatingIndicator>
       )}
     </DetailedCodeBodyWrapper>
   );

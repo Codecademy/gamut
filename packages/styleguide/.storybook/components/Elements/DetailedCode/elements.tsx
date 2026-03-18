@@ -1,6 +1,6 @@
 import { css } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { FlexBox } from '@codecademy/gamut';
+import { FlexBox, Box } from '@codecademy/gamut';
 
 export const DetailedCodeWrapper = styled(FlexBox)(
   css({
@@ -13,8 +13,8 @@ export const DetailedCodeWrapper = styled(FlexBox)(
 );
 
 export const DetailedCodeBodyWrapper = styled(FlexBox)<{
-  hasFloatingBadge?: boolean;
-}>(({ hasFloatingBadge }) =>
+  hasShowCodeButton?: boolean;
+}>(({ hasShowCodeButton }) =>
   css({
     position: 'relative',
     flexDirection: 'column',
@@ -22,25 +22,24 @@ export const DetailedCodeBodyWrapper = styled(FlexBox)<{
     '& .docblock-source': {
       borderRadius: 'none',
       margin: 0,
-      pb: hasFloatingBadge ? 48 : 0,
+      pb: hasShowCodeButton ? 32 : 0,
     },
   })
 );
 
-export const FloatingIndicator = styled(FlexBox)(
+export const FloatingIndicator = styled(Box)(
   css({
     position: 'absolute',
     bottom: 16,
-    left: '50%',
-    transform: 'translateX(-50%)',
+    left: 16,
     zIndex: 1,
     bg: 'inherit',
     px: 12,
     py: 4,
-    borderRadius: 'lg',
-    fontSize: 26,
-    fontWeight: 700,
-    color: 'white',
+    fontSize: 14,
+    fontFamily: 'monospace',
     letterSpacing: '0.1em',
+    /* Color to match the text color in the Source component */
+    textColor: '#C9CDCF',
   })
 );
