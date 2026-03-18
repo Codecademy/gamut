@@ -1,4 +1,6 @@
 import { setupRtl } from '@codecademy/gamut-tests';
+import { render } from '@testing-library/react';
+import React from 'react';
 
 import { ButtonBase } from '../ButtonBase';
 
@@ -52,5 +54,21 @@ describe('ButtonBase', () => {
       const el = view.getByText(buttonText);
       expect(el.getAttribute('disabled')).toBe('');
     });
+  });
+
+  it('forwards ref to the button element', () => {
+    const ref = React.createRef<HTMLButtonElement>();
+    render(<ButtonBase ref={ref}>{buttonText}</ButtonBase>);
+    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+  });
+
+  it('forwards ref to the anchor when href is provided', () => {
+    const ref = React.createRef<HTMLAnchorElement>();
+    render(
+      <ButtonBase ref={ref} href="https://www.codecademy.com">
+        {buttonText}
+      </ButtonBase>
+    );
+    expect(ref.current).toBeInstanceOf(HTMLAnchorElement);
   });
 });
