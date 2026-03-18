@@ -23,7 +23,7 @@
     "default": ["{projectRoot}/**/*"],
     "production": [
       "default",
-      "!{projectRoot}/**/*.(test|spec).ts{,.snap}",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/**/__tests__/**/*",
       "!{projectRoot}/**/__fixtures__/**/*",
       "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
