@@ -2,6 +2,8 @@ import { css, Global, Theme } from '@emotion/react';
 import * as React from 'react';
 
 export const Reboot: React.FC<{ theme: Theme }> = ({ theme }) => {
+  const { useLogicalProperties } = theme;
+
   const rebootStyles = css`
     /**
   * https://raw.githubusercontent.com/twbs/bootstrap/v4-dev/scss/_reboot.scss
@@ -63,7 +65,7 @@ export const Reboot: React.FC<{ theme: Theme }> = ({ theme }) => {
       font-weight: ${theme.fontWeight.base};
       line-height: ${theme.lineHeight.base};
       color: ${theme.colors.text};
-      text-align: left;
+      text-align: ${useLogicalProperties ? 'start' : 'left'};
       background-color: ${theme.colors.background};
     }
 
@@ -102,7 +104,7 @@ export const Reboot: React.FC<{ theme: Theme }> = ({ theme }) => {
     h4,
     h5,
     h6 {
-      margin-top: 0;
+      ${useLogicalProperties ? 'margin-block-start' : 'margin-top'}: 0;
     }
 
     /*
@@ -112,8 +114,8 @@ export const Reboot: React.FC<{ theme: Theme }> = ({ theme }) => {
   */
 
     p {
-      margin-top: 0;
-      margin-bottom: ${theme.spacing[16]};
+      ${useLogicalProperties ? 'margin-block-start' : 'margin-top'}: 0;
+      ${useLogicalProperties ? 'margin-block-end' : 'margin-bottom'}: 1rem;
     }
 
     /*
@@ -130,11 +132,11 @@ export const Reboot: React.FC<{ theme: Theme }> = ({ theme }) => {
       text-decoration: underline;
       text-decoration: underline dotted;
       cursor: help;
-      border-bottom: 0;
+      ${useLogicalProperties ? 'border-block-end' : 'border-bottom'}: 0;
     }
 
     address {
-      margin-bottom: 1rem;
+      ${useLogicalProperties ? 'margin-block-end' : 'margin-bottom'}: 1rem;
       font-style: normal;
       line-height: inherit;
     }
@@ -142,15 +144,15 @@ export const Reboot: React.FC<{ theme: Theme }> = ({ theme }) => {
     ol,
     ul,
     dl {
-      margin-top: 0;
-      margin-bottom: 1rem;
+      ${useLogicalProperties ? 'margin-block-start' : 'margin-top'}: 0;
+      ${useLogicalProperties ? 'margin-block-end' : 'margin-bottom'}: 1rem;
     }
 
     ol ol,
     ul ul,
     ol ul,
     ul ol {
-      margin-bottom: 0;
+      ${useLogicalProperties ? 'margin-block-end' : 'margin-bottom'}: 0;
     }
 
     dt {
@@ -159,12 +161,15 @@ export const Reboot: React.FC<{ theme: Theme }> = ({ theme }) => {
 
     dd {
       /* Undo browser default */
-      margin-bottom: 0.5rem;
-      margin-left: 0;
+      ${useLogicalProperties ? 'margin-block-end' : 'margin-bottom'}: 0.5rem;
+      ${useLogicalProperties ? 'margin-inline-start' : 'margin-left'}: 0;
     }
 
     blockquote {
-      margin: 0 0 1rem;
+      ${useLogicalProperties ? 'margin-block-start' : 'margin-top'}: 0;
+      ${useLogicalProperties ? 'margin-block-end' : 'margin-bottom'}: 1rem;
+      ${useLogicalProperties ? 'margin-inline-start' : 'margin-left'}: 0;
+      ${useLogicalProperties ? 'margin-inline-end' : 'margin-right'}: 0;
     }
 
     dfn {
@@ -196,10 +201,10 @@ export const Reboot: React.FC<{ theme: Theme }> = ({ theme }) => {
     }
 
     sub {
-      bottom: -0.25em;
+      ${useLogicalProperties ? 'inset-block-end' : 'bottom'}: -0.25em;
     }
     sup {
-      top: -0.5em;
+      ${useLogicalProperties ? 'inset-block-start' : 'top'}: -0.5em;
     }
 
     /*
@@ -257,9 +262,9 @@ export const Reboot: React.FC<{ theme: Theme }> = ({ theme }) => {
 
     pre {
       /* Remove browser default top margin */
-      margin-top: 0;
+      ${useLogicalProperties ? 'margin-block-start' : 'margin-top'}: 0;
       /* Reset browser default of \`1em\` to use \`rem\`s */
-      margin-bottom: 1rem;
+      ${useLogicalProperties ? 'margin-block-end' : 'margin-bottom'}: 1rem;
       /* Don't allow content to break outside */
       overflow: auto;
       /* We have @viewport set which causes scrollbars to overlap content in IE11 and Edge, so */
@@ -272,7 +277,10 @@ Figures
 */
     figure {
       /* Apply a consistent margin strategy (matches our type styles). */
-      margin: 0 0 1rem;
+      ${useLogicalProperties ? 'margin-block-start' : 'margin-top'}: 0;
+      ${useLogicalProperties ? 'margin-block-end' : 'margin-bottom'}: 1rem;
+      ${useLogicalProperties ? 'margin-inline-start' : 'margin-left'}: 0;
+      ${useLogicalProperties ? 'margin-inline-end' : 'margin-right'}: 0;
     }
 
     /* Images and content */
@@ -294,10 +302,10 @@ Figures
     }
 
     caption {
-      padding-top: ${theme.spacing[16]};
-      padding-bottom: ${theme.spacing[16]};
+      ${useLogicalProperties ? 'padding-block-start' : 'padding-top'}: 1rem;
+      ${useLogicalProperties ? 'padding-block-end' : 'padding-bottom'}: 1rem;
       color: ${theme.spacing[16]};
-      text-align: left;
+      text-align: ${useLogicalProperties ? 'start' : 'left'};
       caption-side: bottom;
     }
 
@@ -312,7 +320,7 @@ Figures
     label {
       /* Allow labels to use \`margin\` for spacing. */
       display: inline-block;
-      margin-bottom: 0;
+      ${useLogicalProperties ? 'margin-block-end' : 'margin-bottom'}: 0;
     }
 
     /* Remove the default \`border-radius\` that macOS Chrome adds.
@@ -403,7 +411,7 @@ Figures
   So we reset that to ensure fieldsets behave more like a standard block element.
   See https://github.com/twbs/bootstrap/issues/12359
   and https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements */
-      min-width: 0;
+      ${useLogicalProperties ? 'min-inline-size' : 'min-width'}: 0;
       /* Reset the default outline behavior of fieldsets so they don't affect page layout.*/
       padding: 0;
       margin: 0;
@@ -414,11 +422,11 @@ Figures
     /* 2. Correct the color inheritance from \`fieldset\` elements in IE. */
     legend {
       display: block;
-      width: 100%;
+      ${useLogicalProperties ? 'inline-size' : 'width'}: 100%;
       /* 1 */
-      max-width: 100%;
+      ${useLogicalProperties ? 'max-inline-size' : 'max-width'}: 100%;
       padding: 0;
-      margin-bottom: 0.5rem;
+      ${useLogicalProperties ? 'margin-block-end' : 'margin-bottom'}: 0.5rem;
       font-size: 1.5rem;
       line-height: inherit;
       /* 2 */
