@@ -21,6 +21,6 @@ jobs:
 
       - name: Setup and Build
         uses: ./.github/actions/yarn
-
-      - name: Check release plan
+      - uses: nrwl/nx-set-shas@v4
+      - name: Verify release plan
         run: npx nx release plan:check
