@@ -85,6 +85,7 @@
     "react-test-renderer": "18.3.1",
     "sass": "^1.77.0",
     "sass-loader": "^16.0.0",
+    "start-server-and-test": "^2.1.5",
     "storybook": "^10.3.1",
     "storybook-addon-deep-controls": "^0.9.5",
     "style-loader": "^4.0.0",
