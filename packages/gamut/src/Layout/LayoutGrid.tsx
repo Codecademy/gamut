@@ -2,6 +2,7 @@ import { pxRem, styledOptions, system, theme } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
 import pick from 'lodash/pick';
+import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 
 const columns = 12;
 
@@ -39,9 +40,11 @@ const grid = variance.create({
 
 const gridProps = variance.compose(system.space, grid);
 
-export interface LayoutGridProps extends StyleProps<typeof gridProps> {}
+export interface LayoutGridProps
+  extends StyleProps<typeof gridProps>,
+    ComponentPropsWithoutRef<'div'> {}
 
-export const LayoutGrid = styled(
+const StyledLayoutGrid = styled(
   'div',
   styledOptions(grid.propNames)
 )<LayoutGridProps>(
@@ -52,3 +55,6 @@ export const LayoutGrid = styled(
   }),
   gridProps
 );
+
+export const LayoutGrid =
+  StyledLayoutGrid as unknown as ComponentType<LayoutGridProps>;

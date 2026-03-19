@@ -1,6 +1,11 @@
 import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import type {
+  ComponentPropsWithoutRef,
+  ForwardRefExoticComponent,
+  RefAttributes,
+} from 'react';
 import { ComponentProps, forwardRef } from 'react';
 
 const rows = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6 };
@@ -63,16 +68,23 @@ const columnProps = variance.compose(
 export type ColumnVariantProps = StyleProps<typeof columnVariants>;
 export type ColumnStyleProps = StyleProps<typeof columnProps>;
 
-export interface ColumnProps extends ColumnVariantProps, ColumnStyleProps {}
+export interface ColumnProps
+  extends ColumnVariantProps,
+    ColumnStyleProps,
+    ComponentPropsWithoutRef<'div'> {}
 
 const StyledColumn = styled(
   'div',
   styledOptions(columnProps.propNames)
 )<ColumnProps>(columnProps({ size: 12 }), columnVariants, columnProps);
 
-export const Column = forwardRef<
+const ColumnComponent = forwardRef<
   HTMLDivElement,
   ComponentProps<typeof StyledColumn>
 >(({ variant = 'fitContent', ...rest }, ref) => (
   <StyledColumn ref={ref} variant={variant} {...rest} />
 ));
+
+export const Column = ColumnComponent as unknown as ForwardRefExoticComponent<
+  ColumnProps & RefAttributes<HTMLDivElement>
+>;

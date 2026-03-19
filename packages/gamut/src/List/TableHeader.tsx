@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { ComponentProps, forwardRef } from 'react';
 
 import { Box } from '../Box';
@@ -8,7 +9,7 @@ import { PublicListProps } from './types';
 export interface TableHeaderProps
   extends Partial<PublicListProps<ComponentProps<typeof HeaderRowEl>>> {}
 
-export const TableHeader = forwardRef<HTMLTableRowElement, TableHeaderProps>(
+const TableHeaderComponent = forwardRef<HTMLTableRowElement, TableHeaderProps>(
   ({ children, ...rest }, ref) => {
     const { spacing, scrollable, variant } = useListContext();
     return (
@@ -26,3 +27,8 @@ export const TableHeader = forwardRef<HTMLTableRowElement, TableHeaderProps>(
     );
   }
 );
+
+export const TableHeader =
+  TableHeaderComponent as unknown as ForwardRefExoticComponent<
+    TableHeaderProps & RefAttributes<HTMLTableRowElement>
+  >;

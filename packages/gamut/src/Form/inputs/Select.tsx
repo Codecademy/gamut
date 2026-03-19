@@ -6,6 +6,7 @@ import { variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import {
   ChangeEvent,
   forwardRef,
@@ -74,7 +75,7 @@ const allowClickStyle = css`
 
 const StyledFlexbox = styled(FlexBox)(allowClickStyle);
 
-export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
+const SelectComponent = forwardRef<HTMLSelectElement, SelectWrapperProps>(
   (
     {
       className,
@@ -139,3 +140,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectWrapperProps>(
     );
   }
 );
+
+export const Select = SelectComponent as unknown as ForwardRefExoticComponent<
+  SelectProps & RefAttributes<HTMLSelectElement>
+>;

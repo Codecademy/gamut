@@ -1,18 +1,21 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { forwardRef, useState } from 'react';
 
-import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
-import { PaginationButton, PaginationButtonProps } from './PaginationButton';
+import { ButtonBaseElements as ButtonBaseElementsValue } from '../ButtonBase/ButtonBase';
+import type { PaginationButtonProps } from './PaginationButton';
+import { PaginationButton } from './PaginationButton';
 import { wrapWithSlideAnimation } from './utils';
 
-export type EllipsisButtonProps = PaginationButtonProps & {
+/** Props for EllipsisButton. Use when wrapping or composing EllipsisButton. */
+export interface EllipsisButtonProps extends PaginationButtonProps {
   'aria-label': string;
   buttonDirection: 'back' | 'forward';
-};
+}
 
 const ellipsisButtonContents = { ellipsis: '•••', back: '«', forward: '»' };
 
-export const BaseEllipsisButton = forwardRef<
-  ButtonBaseElements,
+const BaseEllipsisButtonComponent = forwardRef<
+  ButtonBaseElementsValue,
   EllipsisButtonProps
 >(({ buttonDirection, showButton, ...props }, ref) => {
   const [contents, setContents] = useState(ellipsisButtonContents.ellipsis);
@@ -30,5 +33,10 @@ export const BaseEllipsisButton = forwardRef<
     </PaginationButton>
   );
 });
+
+export const BaseEllipsisButton =
+  BaseEllipsisButtonComponent as unknown as ForwardRefExoticComponent<
+    EllipsisButtonProps & RefAttributes<ButtonBaseElementsValue>
+  >;
 
 export const EllipsisButton = wrapWithSlideAnimation(BaseEllipsisButton);

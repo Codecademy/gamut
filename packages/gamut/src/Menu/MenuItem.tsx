@@ -1,5 +1,6 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import isString from 'lodash/isString';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import {
   ComponentProps,
   forwardRef,
@@ -58,6 +59,8 @@ interface MenuTextItem extends HTMLProps, ForwardListItemProps {
   disabled?: boolean;
 }
 
+export type MenuItemProps = MenuItemIconOnly | MenuTextItem;
+
 type MenuItemTypes = MenuItemIconOnly | MenuTextItem;
 
 type MenuItemRefElement = HTMLLIElement | HTMLAnchorElement | HTMLButtonElement;
@@ -72,7 +75,7 @@ function narrowMenuItemRef<T extends MenuItemRefElement>(
   return ref as Ref<T>;
 }
 
-export const MenuItem = forwardRef<
+const MenuItemComponent = forwardRef<
   HTMLLIElement | HTMLAnchorElement | HTMLButtonElement,
   MenuItemTypes
 >(
@@ -192,3 +195,9 @@ export const MenuItem = forwardRef<
     );
   }
 );
+
+export const MenuItem =
+  MenuItemComponent as unknown as ForwardRefExoticComponent<
+    MenuItemProps &
+      RefAttributes<HTMLLIElement | HTMLAnchorElement | HTMLButtonElement>
+  >;

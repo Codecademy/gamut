@@ -1,3 +1,4 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { ComponentProps, forwardRef } from 'react';
 
 import { ColEl, StickyHeaderColWrapper } from './elements';
@@ -7,7 +8,7 @@ import { PublicListProps } from './types';
 export interface ListColProps
   extends PublicListProps<ComponentProps<typeof ColEl>> {}
 
-export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
+const ListColComponent = forwardRef<HTMLDivElement, ListColProps>(
   ({ type, columnHeader, 'aria-sort': ariaSort, ...rest }, ref) => {
     const { listType, scrollable, ...activeVariants } = useListContext();
     const isOl = listType === 'ol';
@@ -48,3 +49,7 @@ export const ListCol = forwardRef<HTMLDivElement, ListColProps>(
     return <>{col}</>;
   }
 );
+
+export const ListCol = ListColComponent as unknown as ForwardRefExoticComponent<
+  ListColProps & RefAttributes<HTMLDivElement>
+>;

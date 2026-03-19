@@ -1,9 +1,16 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
 import { StyleProps } from '@codecademy/variance';
-import { ComponentProps, ComponentType, forwardRef, useMemo } from 'react';
+import type {
+  ComponentType,
+  ForwardRefExoticComponent,
+  RefAttributes,
+} from 'react';
+import { ComponentProps, forwardRef, useMemo } from 'react';
 
+import type { ButtonBaseProps, ButtonElementProps } from '../Button/shared';
 import { createButtonComponent } from '../Button/shared';
-import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
+import type { ButtonBaseElements } from '../ButtonBase/ButtonBase';
+import { ButtonBaseElements as ButtonBaseElementsValue } from '../ButtonBase/ButtonBase';
 import {
   paginationStrokeButtonStates,
   paginationStrokeVariant,
@@ -27,18 +34,25 @@ export const PaginationStrokeButtonInner =
     paginationStrokeVariant
   );
 
-export type PaginationButtonProps = ComponentProps<
-  typeof PaginationStrokeButtonInner
-> &
-  StyleProps<typeof paginationStrokeButtonStates> & {
-    icon?: ComponentType<GamutIconProps>;
-    buttonType?: 'stroke' | 'text';
-    href?: string;
-  };
+/** Props for PaginationButton. Use when wrapping or composing PaginationButton. */
+export interface PaginationButtonProps
+  extends ButtonBaseProps,
+    ButtonElementProps,
+    StyleProps<typeof paginationStrokeButtonStates> {
+  icon?: ComponentType<GamutIconProps>;
+  buttonType?: 'stroke' | 'text';
+  href?: string;
+  showButton?: 'shown' | 'hidden';
+}
 
-export const PaginationButton = forwardRef<
-  ButtonBaseElements,
-  PaginationButtonProps
+const PaginationButtonComponent = forwardRef<
+  ButtonBaseElementsValue,
+  ComponentProps<typeof PaginationStrokeButtonInner> &
+    StyleProps<typeof paginationStrokeButtonStates> & {
+      icon?: ComponentType<GamutIconProps>;
+      buttonType?: 'stroke' | 'text';
+      href?: string;
+    }
 >(
   (
     {
@@ -69,3 +83,8 @@ export const PaginationButton = forwardRef<
     );
   }
 );
+
+export const PaginationButton =
+  PaginationButtonComponent as unknown as ForwardRefExoticComponent<
+    PaginationButtonProps & RefAttributes<ButtonBaseElements>
+  >;

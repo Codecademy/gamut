@@ -1,6 +1,11 @@
 import { styledOptions, system, variant } from '@codecademy/gamut-styles';
 import { StyleProps, variance } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import type {
+  ComponentPropsWithoutRef,
+  ForwardRefExoticComponent,
+  RefAttributes,
+} from 'react';
 import {
   ComponentProps,
   ComponentType,
@@ -14,12 +19,21 @@ import {
   ButtonSelectors,
   narrowButtonBaseRef,
 } from '../ButtonBase/ButtonBase';
-import { AppendedIconProps, appendIconToContent } from '../helpers';
+import type { AppendedIconProps } from '../helpers';
+import { appendIconToContent } from '../helpers';
 
 export interface AnchorProps
   extends StyleProps<typeof anchorProps>,
     StyleProps<typeof anchorVariants> {
   onClick?: HTMLProps<HTMLAnchorElement>['onClick'];
+}
+
+/** Props for Anchor. Use this type when wrapping or composing Anchor. */
+export interface AnchorComponentProps
+  extends AnchorProps,
+    ComponentPropsWithoutRef<'a'>,
+    Partial<Omit<AppendedIconProps, 'children'>> {
+  disabled?: boolean;
 }
 
 const outlineFocusVisible = {
@@ -136,7 +150,7 @@ type AnchorBaseProps =
 
 type AnchorExtProps = Partial<AppendedIconProps> & AnchorBaseProps;
 
-export const Anchor = forwardRef<
+const AnchorComponent = forwardRef<
   HTMLAnchorElement | HTMLButtonElement,
   AnchorExtProps
 >(
@@ -187,3 +201,7 @@ export const Anchor = forwardRef<
     );
   }
 );
+
+export const Anchor = AnchorComponent as unknown as ForwardRefExoticComponent<
+  AnchorComponentProps & RefAttributes<HTMLAnchorElement | HTMLButtonElement>
+>;

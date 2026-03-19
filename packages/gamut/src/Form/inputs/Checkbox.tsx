@@ -6,6 +6,7 @@ import {
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { forwardRef, InputHTMLAttributes, useEffect, useRef } from 'react';
 
 import { FlexBox } from '../../Box';
@@ -135,7 +136,7 @@ const Input = styled.input`
 
 const CheckboxText = styled.span<CheckboxTextProps>(checkboxTextStates);
 
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+const CheckboxComponent = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
       'aria-label': ariaLabel,
@@ -249,3 +250,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     );
   }
 );
+
+export const Checkbox =
+  CheckboxComponent as unknown as ForwardRefExoticComponent<
+    CheckboxProps & RefAttributes<HTMLInputElement>
+  >;

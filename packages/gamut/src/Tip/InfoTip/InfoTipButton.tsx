@@ -2,11 +2,13 @@ import {
   MiniInfoCircleIcon,
   MiniInfoOutlineIcon,
 } from '@codecademy/gamut-icons';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { ComponentProps, forwardRef } from 'react';
 
+import type { ButtonBaseProps, ButtonElementProps } from '../../Button/shared';
 import { createButtonComponent } from '../../Button/shared';
-import { ButtonBaseElements } from '../../ButtonBase/ButtonBase';
-import { InfoTipProps } from '.';
+import { ButtonBaseElements as ButtonBaseElementsValue } from '../../ButtonBase/ButtonBase';
+import type { InfoTipProps } from '.';
 import {
   infoButtonStates,
   InfoButtonStatesProps,
@@ -18,10 +20,18 @@ const InfoTipButtonBase = createButtonComponent<InfoButtonStatesProps>(
   infoButtonStates
 );
 
-export type InfoTipButtonProps = ComponentProps<typeof InfoTipButtonBase> &
-  Pick<InfoTipProps, 'emphasis'>;
+/** Props for InfoTipButton. Use when wrapping or composing InfoTipButton. */
+export interface InfoTipButtonProps
+  extends ButtonBaseProps,
+    ButtonElementProps,
+    Pick<InfoTipProps, 'emphasis'> {
+  active?: boolean;
+}
 
-export const InfoTipButton = forwardRef<ButtonBaseElements, InfoTipButtonProps>(
+const InfoTipButtonComponent = forwardRef<
+  ButtonBaseElementsValue,
+  ComponentProps<typeof InfoTipButtonBase> & Pick<InfoTipProps, 'emphasis'>
+>(
   (
     {
       active,
@@ -56,3 +66,8 @@ export const InfoTipButton = forwardRef<ButtonBaseElements, InfoTipButtonProps>(
     );
   }
 );
+
+export const InfoTipButton =
+  InfoTipButtonComponent as unknown as ForwardRefExoticComponent<
+    InfoTipButtonProps & RefAttributes<ButtonBaseElementsValue>
+  >;

@@ -1,6 +1,7 @@
 import { states, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
 import styled from '@emotion/styled';
+import type { ComponentType } from 'react';
 
 import { ButtonBase } from '../ButtonBase';
 import {
@@ -12,7 +13,9 @@ import {
 export interface TabButtonProps
   extends StyleProps<typeof tabVariants>,
     StyleProps<typeof tabStates>,
-    TabElementStyleProps {}
+    TabElementStyleProps {
+  role?: string;
+}
 
 const tabSelectedStyles = {
   fontWeight: 700,
@@ -94,8 +97,11 @@ export const tabStates = states({
   },
 });
 
-export const TabButton = styled(ButtonBase)<TabButtonProps>(
+const StyledTabButton = styled(ButtonBase)<TabButtonProps>(
   tabVariants,
   tabStates,
   tabElementBaseProps
 );
+
+export const TabButton =
+  StyledTabButton as unknown as ComponentType<TabButtonProps>;

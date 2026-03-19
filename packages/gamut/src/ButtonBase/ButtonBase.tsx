@@ -1,5 +1,10 @@
 import { css, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import type {
+  ComponentPropsWithoutRef,
+  ForwardRefExoticComponent,
+  RefAttributes,
+} from 'react';
 import { ComponentProps, forwardRef, HTMLProps, Ref } from 'react';
 
 export type ButtonBaseElements = HTMLAnchorElement | HTMLButtonElement;
@@ -54,7 +59,11 @@ export const resetStyles = css({
 const ResetElement = styled('button', styledOptions<'button'>())(resetStyles);
 const ResetElementAnchor = styled('a', styledOptions<'a'>())(resetStyles);
 
-type ButtonBaseProps =
+/** Props for ButtonBase. Use this type when wrapping or composing ButtonBase. */
+export type ButtonBaseProps = ComponentPropsWithoutRef<'button'> &
+  Partial<ComponentPropsWithoutRef<'a'>> & { as?: never };
+
+type ButtonBasePropsInternal =
   | ComponentProps<typeof ResetElement>
   | (Exclude<ComponentProps<typeof ResetElement>, 'ref'> &
       ComponentProps<typeof ResetElementAnchor>);
@@ -69,9 +78,9 @@ export function narrowButtonBaseRef<T extends ButtonBaseElements>(
   return ref as Ref<T>;
 }
 
-export const ButtonBase = forwardRef<
+const ButtonBaseComponent = forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
-  ButtonBaseProps
+  ButtonBasePropsInternal
 >(({ disabled, children, role, type = 'button', ...rest }, ref) => {
   if (!('href' in rest) || rest?.href === undefined || disabled) {
     // @ts-expect-error we need this to turn a disabled anchor into a button without passing on the href prop
@@ -104,3 +113,8 @@ export const ButtonBase = forwardRef<
     </ResetElementAnchor>
   );
 });
+
+export const ButtonBase =
+  ButtonBaseComponent as unknown as ForwardRefExoticComponent<
+    ButtonBaseProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>
+  >;

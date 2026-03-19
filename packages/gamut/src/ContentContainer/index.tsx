@@ -1,6 +1,8 @@
 import { contentWidths, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
+import type { ComponentType } from 'react';
 
+import type { BoxProps } from '../Box';
 import { Box } from '../Box';
 
 const contentContainerVariants = variant({
@@ -28,4 +30,12 @@ const contentContainerVariants = variant({
   },
 });
 
-export const ContentContainer = styled(Box)(contentContainerVariants);
+const StyledContentContainer = styled(Box)(contentContainerVariants);
+
+/** Props for ContentContainer. Use when wrapping or composing ContentContainer. */
+export interface ContentContainerProps extends BoxProps {
+  size?: 'small' | 'medium' | 'wide';
+}
+
+export const ContentContainer =
+  StyledContentContainer as unknown as ComponentType<ContentContainerProps>;
