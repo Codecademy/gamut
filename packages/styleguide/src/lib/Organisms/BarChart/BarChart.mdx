@@ -349,7 +349,7 @@ BarChart supports internationalization through the `translations` prop. You can 
 - **sortLabel**, **sortOptions**, and **locale** — Always strings. Control the sort dropdown label, option labels, and number-formatting locale.
 - **Accessibility** — Two optional summary functions; when omitted, default English summaries are used. Each function receives context and returns the full summary string.
   - `**stackedBarSummary**` — Used for stacked (two-value) rows. Context includes `seriesOneValue`, `seriesTwoValue`, **gained** (seriesTwoValue - seriesOneValue), `unit`, `locale`, `categoryLabel`.
-  - **singleValueBarSummary** — Used for all single-value rows. Context includes `value`, `unit`, `locale`, `categoryLabel`.
+  - `**singleValueBarSummary**` — Used for all single-value rows. Context includes `value`, `unit`, `locale`, `categoryLabel`.
 
 ### Where accessibility summaries appear
 
