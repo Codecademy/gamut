@@ -13,10 +13,10 @@ export const DatePickerProvider = DatePickerContext.Provider;
  * Must be used inside a DatePicker. For composed layouts, use this to get
  * openCalendar, closeCalendar, isCalendarOpen, inputRef, calendarDialogId, etc.
  */
-export function useDatePicker(): DatePickerContextValueType {
+export const useDatePicker = (): DatePickerContextValueType => {
   const value = useContext(DatePickerContext);
   if (value == null) {
     throw new Error('useDatePickerContext must be used within a DatePicker.');
   }
   return value;
-}
+};
