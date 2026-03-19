@@ -71,7 +71,7 @@ export const useConnectedForm = <
     () => ({
       ConnectedFormGroup:
         ConnectedFormGroup as ConnectedGroupStrictProps<Values>,
-      ConnectedForm: ConnectedForm as unknown as ConnectedFormStrictProps<
+      ConnectedForm: ConnectedForm as ConnectedFormStrictProps<
         Values,
         ValidationRules
       >,
