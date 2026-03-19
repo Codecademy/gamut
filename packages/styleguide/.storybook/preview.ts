@@ -143,8 +143,8 @@ export const globalTypes = {
       icon: 'circlehollow',
       // Array of plain string values or MenuItem shape (see below)
       items: [
-        { value: 'light', icon: 'circlehollow', title: 'light' },
-        { value: 'dark', icon: 'circle', title: 'dark' },
+        { value: 'light', icon: 'circlehollow', title: 'Light' },
+        { value: 'dark', icon: 'circle', title: 'Dark' },
       ],
       // Property that specifies if the name of the item will be displayed
       showName: true,
