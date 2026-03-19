@@ -61,7 +61,7 @@ const config: StorybookConfig = {
       },
     };
     config.infrastructureLogging = {
-      level: 'warn'
+      level: 'warn',
     };
     return config;
   },
