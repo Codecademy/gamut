@@ -99,9 +99,6 @@ const interactiveState = states({
 
 const spacingVariants = variant({
   prop: 'spacing',
-  base: {
-    px: { _: 8, c_base: 0, c_sm: 8 },
-  },
   variants: {
     normal: {
       rowGap: { _: 0, c_base: 8, c_sm: 0 },
@@ -113,6 +110,7 @@ const spacingVariants = variant({
       columnGap: { _: 32, c_base: 8, c_sm: 32 },
       gap: { _: 40, c_base: 8, c_sm: 40 },
     },
+
     compact: {
       gap: 0,
       py: 0,
@@ -376,6 +374,23 @@ const columnStates = states({
     whiteSpace: 'normal',
     alignItems: 'flex-end',
   },
+  dataTablePadding: {
+    '&:first-of-type': {
+      pl: 8,
+    },
+    '&:last-of-type': {
+      pr: 8,
+    },
+  },
+  /**
+   * We add this to every RowEl except expandable DataList because it causes a layout shift.
+   * In that case, the padding is instead added directly to the Expandable control.
+   */
+  lastChildPadding: {
+    '&:last-of-type': {
+      pr: 8,
+    },
+  },
   wrap: {
     whiteSpace: 'normal',
   },
@@ -392,6 +407,9 @@ const columnSpacing = variant({
   prop: 'spacing',
   base: {
     px: { _: 0, c_base: 8, c_sm: 0 },
+    '&:first-of-type': {
+      pl: 8,
+    },
   },
   variants: {
     normal: {
@@ -467,8 +485,6 @@ export const StickyHeaderColWrapper = styled.th(
       left: 0,
       zIndex: -1,
     },
-    // p: 0 removes the browser's default padding of 1px
-    p: 0,
     display: 'flex',
     flexShrink: 0,
     position: 'sticky',
