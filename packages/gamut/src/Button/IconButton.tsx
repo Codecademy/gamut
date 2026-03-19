@@ -1,8 +1,11 @@
-import { ComponentProps, forwardRef } from 'react';
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
+import { forwardRef } from 'react';
 
-import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
-import { ToolTip, ToolTipProps } from '../Tip/ToolTip';
-import { IconComponentType } from '../utils';
+import type { ButtonBaseElements } from '../ButtonBase/ButtonBase';
+import type { ToolTipProps } from '../Tip/ToolTip';
+import { ToolTip } from '../Tip/ToolTip';
+import type { IconComponentType } from '../utils';
+import type { ButtonBaseProps, ButtonElementProps } from './shared';
 import {
   createButtonComponent,
   iconSizeMapping,
@@ -15,14 +18,17 @@ const IconButtonBase = createButtonComponent(
   textButtonVariants
 );
 
-export type IconButtonProps = ComponentProps<typeof IconButtonBase> &
-  IconComponentType & {
-    'aria-label'?: string;
-    tip: string;
-    tipProps?: Omit<ToolTipProps, 'info' | 'children'>;
-  };
+/** Props for IconButton. Use this type when wrapping or composing IconButton. */
+export interface IconButtonProps
+  extends ButtonBaseProps,
+    ButtonElementProps,
+    IconComponentType {
+  'aria-label'?: string;
+  tip: string;
+  tipProps?: Omit<ToolTipProps, 'info' | 'children'>;
+}
 
-export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
+const IconButtonComponent = forwardRef<ButtonBaseElements, IconButtonProps>(
   (
     {
       'aria-label': ariaLabel,
@@ -54,3 +60,8 @@ export const IconButton = forwardRef<ButtonBaseElements, IconButtonProps>(
     );
   }
 );
+
+export const IconButton =
+  IconButtonComponent as unknown as ForwardRefExoticComponent<
+    IconButtonProps & RefAttributes<ButtonBaseElements>
+  >;

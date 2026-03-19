@@ -1,10 +1,12 @@
+import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { forwardRef } from 'react';
 
-import { ButtonBaseElements } from '../ButtonBase/ButtonBase';
+import type { ButtonBaseElements } from '../ButtonBase/ButtonBase';
+import type { IconComponentType } from '../utils';
+import type { ButtonBaseProps, ButtonElementProps } from './shared';
 import {
   createButtonComponent,
   InlineIconButton,
-  InlineIconButtonProps,
   sizeVariants,
   strokeButtonVariants,
 } from './shared';
@@ -14,10 +16,21 @@ const StrokeButtonBase = createButtonComponent(
   strokeButtonVariants
 );
 
-export type StrokeButtonProps = InlineIconButtonProps<typeof StrokeButtonBase>;
+/** Props for StrokeButton. Use this type when wrapping or composing StrokeButton. */
+export interface StrokeButtonProps
+  extends ButtonBaseProps,
+    ButtonElementProps,
+    Partial<IconComponentType> {
+  iconPosition?: 'right' | 'left';
+}
 
-export const StrokeButton = forwardRef<ButtonBaseElements, StrokeButtonProps>(
+const StrokeButtonComponent = forwardRef<ButtonBaseElements, StrokeButtonProps>(
   ({ ...props }, ref) => {
     return <InlineIconButton button={StrokeButtonBase} {...props} ref={ref} />;
   }
 );
+
+export const StrokeButton =
+  StrokeButtonComponent as unknown as ForwardRefExoticComponent<
+    StrokeButtonProps & RefAttributes<ButtonBaseElements>
+  >;

@@ -1,6 +1,7 @@
 import { ColorModes } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import { ComponentProps, HTMLProps } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
+import { ComponentProps } from 'react';
 
 import { ButtonBase } from '../../ButtonBase';
 import { IconComponentType } from '../../utils';
@@ -11,8 +12,10 @@ import { StrokeButton } from '../StrokeButton';
 import { TextButton } from '../TextButton';
 import { buttonProps, buttonVariants } from './styles';
 
+/** Shared HTML attributes for button/anchor elements used by ButtonBase. */
+export type ButtonElementProps = ComponentPropsWithoutRef<'button'>;
+
 export interface ButtonBaseProps extends StyleProps<typeof buttonProps> {
-  onClick?: HTMLProps<HTMLButtonElement>['onClick'];
   variant?: (typeof buttonVariants)[number];
   size?: 'normal' | 'small' | 'large';
   as?: never;

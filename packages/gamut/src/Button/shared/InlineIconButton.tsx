@@ -1,18 +1,18 @@
 import { forwardRef } from 'react';
 
-import { ButtonBaseElements } from '../../ButtonBase/ButtonBase';
+import type { ButtonBaseElements } from '../../ButtonBase/ButtonBase';
 import { appendIconToContent } from '../../helpers';
-import { FillButtonProps } from '../FillButton';
-import { StrokeButtonProps } from '../StrokeButton';
-import { TextButtonProps } from '../TextButton';
+import type { FillButtonProps } from '../FillButton';
+import type { StrokeButtonProps } from '../StrokeButton';
+import type { TextButtonProps } from '../TextButton';
 
-type InlineIconButtonComponents =
+type InlineIconButtonProps =
   | FillButtonProps
   | StrokeButtonProps
   | TextButtonProps;
 
-type InlineIconButtonType = InlineIconButtonComponents & {
-  button: React.ComponentType<InlineIconButtonComponents>;
+type InlineIconButtonType = InlineIconButtonProps & {
+  button: React.ComponentType<InlineIconButtonProps>;
   iconSize?: number;
 };
 
@@ -37,10 +37,13 @@ export const InlineIconButton = forwardRef<
       iconSize: props.size === 'small' ? 12 : 16,
       children,
     });
+    const ButtonWithRef = Button as React.ForwardRefExoticComponent<
+      InlineIconButtonProps & React.RefAttributes<ButtonBaseElements>
+    >;
     return (
-      <Button {...props} ref={ref} variant={variant}>
+      <ButtonWithRef {...props} ref={ref} variant={variant}>
         {content}
-      </Button>
+      </ButtonWithRef>
     );
   }
 );
