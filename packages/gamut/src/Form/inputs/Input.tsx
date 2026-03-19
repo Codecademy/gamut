@@ -80,17 +80,13 @@ export const iFrameWrapper = forwardRef<
 const InputElement = forwardRef<
   HTMLInputElement,
   StyledInputProps & InputHTMLAttributes<HTMLInputElement>
->((props, ref) => {
+>(({ icon, ...props }, ref) => {
   const { rest } = useVariance(
     props as Record<string, unknown>,
     formFieldStyles,
     conditionalStyles,
     inputSizeStyles,
-    (p) =>
-      css({
-        paddingRight: (p as any).icon ? `2.3rem` : `initial`,
-        textIndent: 0,
-      })
+    () => css({ paddingRight: icon ? `2.3rem` : `initial`, textIndent: 0 })
   );
   return <input ref={ref} {...rest} />;
 });

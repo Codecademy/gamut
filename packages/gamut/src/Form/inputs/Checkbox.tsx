@@ -145,13 +145,13 @@ const checkmarkStaticStyles = system.css({
 const Checkmark = forwardRef<
   SVGPolylineElement,
   Pick<CheckboxProps, 'checked'> & SVGAttributes<SVGPolylineElement>
->((props, ref) => {
+>(({ checked, ...props }, ref) => {
   const { rest } = useVariance(
     props as Record<string, unknown>,
     polyline,
     checkmarkStaticStyles,
-    (p) => ({
-      strokeDashoffset: (p as any).checked ? 0 : '18px',
+    () => ({
+      strokeDashoffset: checked ? 0 : '18px',
       transition: `stroke-dashoffset ${timing.fast}`,
     })
   );
@@ -168,13 +168,13 @@ const lineStaticStyles = system.css({
 const Line = forwardRef<
   SVGLineElement,
   Pick<CheckboxProps, 'indeterminate'> & SVGAttributes<SVGLineElement>
->((props, ref) => {
+>(({ indeterminate, ...props }, ref) => {
   const { rest } = useVariance(
     props as Record<string, unknown>,
     polyline,
     lineStaticStyles,
-    (p) => ({
-      strokeDashoffset: (p as any).indeterminate ? 0 : '18px',
+    () => ({
+      strokeDashoffset: indeterminate ? 0 : '18px',
       transition: `stroke-dashoffset ${timing.fast}`,
     })
   );
