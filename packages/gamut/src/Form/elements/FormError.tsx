@@ -1,6 +1,5 @@
-import { theme, variant } from '@codecademy/gamut-styles';
+import { createComponent, theme, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import styled from '@emotion/styled';
 import { HTMLAttributes } from 'react';
 import * as React from 'react';
 
@@ -27,7 +26,7 @@ const errorSpanVariants = variant({
   },
 });
 
-const ErrorSpan = styled.span(errorSpanVariants);
+const ErrorSpan = createComponent('span')(errorSpanVariants);
 
 type FormErrorProps = StyleProps<typeof errorSpanVariants> &
   HTMLAttributes<HTMLSpanElement>;

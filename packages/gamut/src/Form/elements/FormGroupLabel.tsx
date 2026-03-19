@@ -1,6 +1,5 @@
-import { states, variant } from '@codecademy/gamut-styles';
+import { createComponent, states, variant } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import styled from '@emotion/styled';
 import { HTMLAttributes } from 'react';
 import * as React from 'react';
 
@@ -53,7 +52,7 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
     isSoloField?: boolean;
   };
 
-const Label = styled.label<FormGroupLabelProps>(labelSizeVariants, labelStates);
+const Label = createComponent('label')<FormGroupLabelProps>(labelSizeVariants, labelStates);
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   children,

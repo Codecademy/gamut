@@ -1,11 +1,11 @@
 import {
+  createComponent,
   noSelect,
   screenReaderOnly,
   styledOptions,
   timing,
 } from '@codecademy/gamut-styles';
 import { StyleProps } from '@codecademy/variance';
-import styled from '@emotion/styled';
 import { forwardRef, InputHTMLAttributes, useEffect, useRef } from 'react';
 
 import { FlexBox } from '../../Box';
@@ -86,7 +86,7 @@ export type CheckboxProps = Omit<
     dontAriaHideLabel?: boolean;
   };
 
-const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled' | 'spacing'>>(
+const CheckboxLabel = createComponent('label')<Pick<CheckboxProps, 'disabled' | 'spacing'>>(
   noSelect,
   checkboxLabel,
   checkboxPadding,
@@ -95,45 +95,46 @@ const CheckboxLabel = styled.label<Pick<CheckboxProps, 'disabled' | 'spacing'>>(
 
 type CheckboxElementProps = StyleProps<typeof checkboxElementStates>;
 
-const CheckboxElement = styled('div', styledOptions)<CheckboxElementProps>(
+const CheckboxElement = createComponent('div', styledOptions)<CheckboxElementProps>(
   checkboxElement,
   checkboxElementStates
 );
 
-const CheckboxVector = styled.svg`
-  position: absolute;
-  top: -1px;
-  left: -1px;
-`;
+const CheckboxVector = createComponent('svg')(() => ({
+  position: 'absolute' as const,
+  top: '-1px',
+  left: '-1px',
+}));
 
-const Checkmark = styled.polyline<Pick<CheckboxProps, 'checked'>>`
-  ${polyline}
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 18px;
-  stroke-dashoffset: ${({ checked }) => (checked ? 0 : `18px`)};
-  transition: stroke-dashoffset ${timing.fast};
-`;
+const Checkmark = createComponent('polyline')<Pick<CheckboxProps, 'checked'>>(
+  polyline,
+  ({ checked }: any) => ({
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    strokeDasharray: '18px',
+    strokeDashoffset: checked ? 0 : '18px',
+    transition: `stroke-dashoffset ${timing.fast}`,
+  })
+);
 
-const Line = styled.line<Pick<CheckboxProps, 'indeterminate'>>`
-  ${polyline}
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-dasharray: 18px;
-  stroke-dashoffset: ${({ indeterminate }) => (indeterminate ? 0 : `18px`)};
-  transition: stroke-dashoffset ${timing.fast};
-`;
+const Line = createComponent('line')<Pick<CheckboxProps, 'indeterminate'>>(
+  polyline,
+  ({ indeterminate }: any) => ({
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeDasharray: '18px',
+    strokeDashoffset: indeterminate ? 0 : '18px',
+    transition: `stroke-dashoffset ${timing.fast}`,
+  })
+);
 
-const Input = styled.input`
-  ${screenReaderOnly}
-  ${checkboxInput}
-`;
+const Input = createComponent('input')(screenReaderOnly, checkboxInput);
 
-const CheckboxText = styled.span<CheckboxTextProps>(checkboxTextStates);
+const CheckboxText = createComponent('span')<CheckboxTextProps>(checkboxTextStates);
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (

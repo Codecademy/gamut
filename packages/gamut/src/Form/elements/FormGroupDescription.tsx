@@ -1,6 +1,5 @@
-import { css } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
+import { createComponent, css } from '@codecademy/gamut-styles';
 
 import { formBaseStyles } from '../styles';
 
-export const FormGroupDescription = styled.div(css(formBaseStyles));
+export const FormGroupDescription = createComponent('div')(css(formBaseStyles));
