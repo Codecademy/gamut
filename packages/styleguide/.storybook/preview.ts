@@ -89,16 +89,6 @@ const preview: Preview = {
     },
     viewport: {
       options: {
-        responsive: {
-          name: 'Responsive',
-          type: 'desktop',
-          // Storybook 10 requires `styles` on every viewport; missing it breaks the
-          // iframe wrapper (e.g. "can't access property 'width', … is undefined").
-          styles: {
-            width: '100%',
-            height: '100%',
-          },
-        },
         xs: {
           name: `XS - ${breakpoints.xs}`,
           styles: {
@@ -140,13 +130,6 @@ const preview: Preview = {
           type: 'desktop',
         },
       },
-    },
-  },
-
-  initialGlobals: {
-    viewport: {
-      value: 'responsive',
-      isRotated: false,
     },
   },
 };
