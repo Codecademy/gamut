@@ -48,7 +48,7 @@ const IconButtonComponent = forwardRef<ButtonBaseElements, IconButtonProps>(
     return (
       <ToolTip info={tip} {...(tipProps as any)}>
         <IconButtonBase
-          {...props}
+          {...(props as any)}
           aria-label={ariaLabel || tip}
           ref={ref}
           size={size}

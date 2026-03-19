@@ -1,5 +1,5 @@
 import { ColorModes } from '@codecademy/gamut-styles';
-import { ComponentProps } from 'react';
+import { ComponentProps, ComponentType } from 'react';
 import * as React from 'react';
 
 import { GridBox } from '../../Box';
@@ -58,7 +58,7 @@ export const GridFormButtons: React.FC<
           <TextButton {...props.cancel} data-testid="cancel-button" mr={32} />
         )}
         <SubmitButton
-          as={buttonMap[type]}
+          as={buttonMap[type] as ComponentType<ButtonProps>}
           disabled={props.disabled}
           loading={props.loading}
           mode={props.mode}

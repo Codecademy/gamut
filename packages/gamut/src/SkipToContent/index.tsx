@@ -2,6 +2,7 @@ import { MiniArrowDownIcon } from '@codecademy/gamut-icons';
 import { themed, timing } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { ComponentType } from 'react';
 import * as React from 'react';
 
 import { Box } from '../Box';
@@ -80,11 +81,12 @@ const StyledSkipToContentTarget = styled.div(({ theme, children }) => {
   `;
 });
 
-type DataTestId = { 'data-testid'?: string };
+/** Props for SkipToContentTarget. */
+export type SkipToContentTargetProps = React.ComponentPropsWithoutRef<'div'> & {
+  'data-testid'?: string;
+};
 
-export const SkipToContentTarget: React.FC<
-  React.ComponentProps<typeof StyledSkipToContentTarget> & DataTestId
-> = ({
+export const SkipToContentTarget = (({
   tabIndex = -1,
   'data-testid': dataTestId = 'skip-to-content-target',
   ...rest
@@ -96,4 +98,4 @@ export const SkipToContentTarget: React.FC<
       {...rest}
     />
   );
-};
+}) as ComponentType<SkipToContentTargetProps>;
