@@ -2,7 +2,7 @@ import { css, styledOptions } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
-import { Box, FlexBox } from '../../Box';
+import { FlexBox } from '../../Box';
 import { barListItemPadding } from '../shared/styles';
 
 export const TotalValueLabelsHoverTarget = styled(FlexBox)(
