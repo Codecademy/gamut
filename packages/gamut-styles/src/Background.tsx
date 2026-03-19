@@ -24,7 +24,7 @@ export interface BackgroundProps
  *
  * @param mode - The color mode shape to check against
  * @param color - The color key to test
- * @returns True if `color` is a key in `mode` (i.e. a ColorAlias)
+ * @returns `true` if `color` is a key in `mode` (i.e. a ColorAlias)
  */
 export const isColorAlias = (
   mode: ColorModeShape,
