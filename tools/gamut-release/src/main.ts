@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 
 /**
  * Alpha Release Script
@@ -28,7 +29,7 @@ function parseArgs(argv: string[]): ParsedArgs {
 }
 
 const parsedArgs = parseArgs(process.argv.slice(2));
-const preid = parsedArgs.preid;
+const { preid } = parsedArgs;
 const dryRun = parsedArgs.dryRun === true || parsedArgs.d === true;
 const verbose = parsedArgs.verbose === true;
 
