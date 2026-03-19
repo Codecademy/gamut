@@ -10,7 +10,6 @@ env:
   NODE_VERSION: '22.13.1'
   NODE_OPTIONS: '--max_old_space_size=8196'
   NX_CLOUD: false
-  IGNORE_COMMIT_MESSAGE: 'chore(release): publish'
 
 permissions:
   id-token: write
@@ -46,11 +45,6 @@ jobs:
       - name: Ensure workflow is associated with a pull request
         uses: ./.github/actions/validate-pr-context
         if: github.event_name == 'pull_request'
-      - name: Skip build from automated commit
-        uses: ./.github/actions/skip-automated-commits
-        if: github.event_name == 'pull_request'
-        with:
-          ignore-commit-message: ${{ env.IGNORE_COMMIT_MESSAGE }}
       - name: Build All Packages
         run: yarn build
       - name: Run test suite
